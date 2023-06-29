@@ -1,0 +1,106 @@
+#########################################################################
+### Linker spec file for Pokemon Mystery Dungeon: Explorers of Sky US ###
+###            Pass this to the SDK's makelcf.exe utility             ###
+###                 along with the ARM9-TS template.                  ###
+###                              WIP                                  ###
+#########################################################################
+
+Static main
+{
+	Address 0x02000000
+	StackSize 0 2048
+
+	### Vendor libraries ###
+	Object asm/middleware.o
+	Object lib/asm/jn_spl.o
+	Object lib/NitroSDK/asm/wvr.o
+	Object lib/NitroDWC/asm/dwcbm.o
+	Object lib/NitroDWC/asm/dwcaccount.o
+	Object lib/asm/wifi.o
+	Object lib/asm/libVCT.o
+	Object lib/asm/nnsys.o
+
+	### NitroSDK ###
+	Object lib/NitroSDK/asm/fx_sincos.o
+	Object lib/NitroSDK/asm/fx_mtx22.o
+	Object lib/NitroSDK/asm/fx_mtx33.o
+	Object lib/NitroSDK/asm/fx_mtx43.o
+	Object lib/NitroSDK/asm/fx_mtx44.o
+	Object lib/NitroSDK/asm/fx_cp.o
+	Object lib/NitroSDK/asm/fx_vec.o
+	Object lib/NitroSDK/asm/fx_trig.o
+	Object lib/NitroSDK/asm/fx_atanidx.o
+	Object lib/NitroSDK/asm/fx.o
+	Object lib/NitroSDK/asm/gx.o
+	Object lib/NitroSDK/asm/gxstate.o
+	Object lib/NitroSDK/asm/gx_vramcnt.o
+	Object lib/NitroSDK/asm/gx_bgcnt.o
+	Object lib/NitroSDK/asm/g2.o
+	Object lib/NitroSDK/asm/g3b.o
+	Object lib/NitroSDK/asm/g3imm.o
+	Object lib/NitroSDK/asm/g3x.o
+	Object lib/NitroSDK/asm/g3_util.o
+	Object lib/NitroSDK/asm/gx_load2d.o
+	Object lib/NitroSDK/asm/gx_load3d.o
+	Object lib/NitroSDK/asm/g3.o
+	Object lib/NitroSDK/asm/gxasm.o
+	Object lib/NitroSDK/src/os/os_irqHandler.o
+	Object lib/NitroSDK/src/os/os_irqTable.o
+	Object lib/NitroSDK/src/os/os_interrupt.o
+	Object lib/NitroSDK/src/os/os_spinLock.o
+	Object lib/NitroSDK/src/os/os_printf.o
+	Object lib/NitroSDK/src/os/os_thread.o
+	Object lib/NitroSDK/src/os/os_context.o
+	Object lib/NitroSDK/src/os/os_emulator.o
+	Object lib/NitroSDK/src/os/os_message.o
+	Object lib/NitroSDK/src/os/os_mutex.o
+	Object lib/NitroSDK/src/os/os_cache.o
+	Object lib/NitroSDK/src/os/os_init.o
+	Object lib/NitroSDK/src/os/os_arena.o
+	Object lib/NitroSDK/src/os/os_alloc.o
+	Object lib/NitroSDK/src/os/os_tcm.o
+	Object lib/NitroSDK/src/os/os_protectionUnit.o
+	Object lib/NitroSDK/src/os/os_protectionRegion.o
+	Object lib/NitroSDK/src/os/os_exception.o
+	Object lib/NitroSDK/src/os/os_timer.o
+	Object lib/NitroSDK/src/os/os_tick.o
+	Object lib/NitroSDK/src/os/os_alarm.o
+	Object lib/NitroSDK/src/os/os_valarm.o
+	Object lib/NitroSDK/src/os/os_system.o
+	Object lib/NitroSDK/src/os/os_reset.o
+	Object lib/NitroSDK/src/os/os_ownerInfo.o
+	Object lib/NitroSDK/src/os/os_vramExclusive.o
+	Object lib/NitroSDK/src/os/os_entropy.o
+	Object lib/NitroSDK/src/os/os_terminate_proc.o
+	Object lib/NitroSDK/asm/mi_wram.o
+	Object lib/NitroSDK/asm/mi_dma.o
+	Object lib/NitroSDK/asm/mi_dma_hblank.o
+	Object lib/NitroSDK/asm/mi_dma_gxcommand.o
+	Object lib/NitroSDK/asm/mi_memory.o
+	Object lib/NitroSDK/asm/mi_swap.o
+	Object lib/NitroSDK/asm/mi_uncompress.o
+	Object lib/NitroSDK/asm/mi_dma_card.o
+	Object lib/NitroSDK/asm/mi_compress.o
+	Object lib/NitroSDK/asm/mi_init.o
+	Object lib/asm/nitro.o
+	Object lib/asm/msl.o
+}
+
+Autoload ITCM
+{
+	Address 0x01FF8000
+	Object lib/NitroSDK/src/os/os_irqHandler.o (.itcm)
+	Object lib/NitroSDK/src/os/os_reset.o (.itcm)
+	Object lib/NitroSDK/asm/mi_dma.o (.itcm)
+	Object lib/NitroSDK/asm/mi_dma_gxcommand.o (.itcm)
+	Object lib/asm/nitro.o (.itcm)
+}
+
+Autoload DTCM
+{
+	Address 0x027E0000
+	Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm)
+	Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm)
+	Object lib/NitroSDK/src/os/os_irqHandler.o (.dtcm.bss)
+	Object lib/NitroSDK/src/os/os_irqTable.o (.dtcm.bss)
+}
