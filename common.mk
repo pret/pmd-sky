@@ -8,9 +8,19 @@ PROJECT_ROOT := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 # Because mwldarm expects absolute paths to be WIN32 paths,
 # all paths referring up from BUILD_DIR must be relative.
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+WORK_DIR   := $(shell grealpath --relative-to $(CURDIR) $(PROJECT_ROOT))
+else
 WORK_DIR   := $(shell realpath --relative-to $(CURDIR) $(PROJECT_ROOT))
+endif
+
 $(shell mkdir -p $(BUILD_DIR))
+ifeq ($(UNAME_S),Darwin)
+BACK_REL   := $(shell grealpath --relative-to $(BUILD_DIR) $(CURDIR))
+else
 BACK_REL   := $(shell realpath --relative-to $(BUILD_DIR) $(CURDIR))
+endif
 
 # Recursive wildcard function
 rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
