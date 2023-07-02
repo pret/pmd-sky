@@ -230,10 +230,6 @@ $(NEF): $(LCF) $(RESPONSE) $(ALL_OBJS)
 .INTERMEDIATE: $(BUILD_DIR)/obj.list
 
 $(SBIN): build/%.sbin: build/%.nef
-ifeq ($(SBIN),$(BUILD_DIR)/main.sbin)
-# Overlay 123 is encrypted in the retail ROM, so we need to reencrypt it after building it
-	cd $(BUILD_DIR) && ../../$(MOD123ENCRY) encry main OVY_123_enc.sbin 123 && mv OVY_123_enc.sbin OVY_123.sbin
-endif
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) --quiet -c $*.sha1
 endif

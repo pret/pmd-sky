@@ -29,7 +29,7 @@ DEFINES = $(GF_DEFINES) $(GLB_DEFINES)
 
 # Secure CRC
 ifeq ($(buildname),pmdsky.us)
-SECURE_CRC := 0xA0FF
+SECURE_CRC := 0x96A1
 endif
 
 ifndef SECURE_CRC
