@@ -106,47 +106,47 @@ Overlay OVY_0
 }
 Overlay OVY_1
 {
-	After main
+	After OVY_0
 	Object asm/overlay_01.o
 }
 Overlay OVY_2
 {
-	After main
+	After OVY_0
 	Object asm/overlay_02.o
 }
 Overlay OVY_3
 {
-	After main
+	After OVY_1
 	Object asm/overlay_03.o
 }
 Overlay OVY_4
 {
-	After main
+	After OVY_1
 	Object asm/overlay_04.o
 }
 Overlay OVY_5
 {
-	After main
+	After OVY_1
 	Object asm/overlay_05.o
 }
 Overlay OVY_6
 {
-	After main
+	After OVY_1
 	Object asm/overlay_06.o
 }
 Overlay OVY_7
 {
-	After main
+	After OVY_1
 	Object asm/overlay_07.o
 }
 Overlay OVY_8
 {
-	After main
+	After OVY_1
 	Object asm/overlay_08.o
 }
 Overlay OVY_9
 {
-	After main
+	After OVY_1
 	Object asm/overlay_09.o
 }
 Overlay OVY_10
@@ -156,119 +156,119 @@ Overlay OVY_10
 }
 Overlay OVY_11
 {
-	After main
+	After OVY_10
 	Object asm/overlay_11.o
 }
 Overlay OVY_12
 {
-	After main
+	After OVY_11
 }
 Overlay OVY_13
 {
-	After main
+	After OVY_11
 	Object asm/overlay_13.o
 }
 Overlay OVY_14
 {
-	After main
+	After OVY_11
 	Object asm/overlay_14.o
 }
 Overlay OVY_15
 {
-	After main
+	After OVY_11
 	Object asm/overlay_15.o
 }
 Overlay OVY_16
 {
-	After main
+	After OVY_11
 	Object asm/overlay_16.o
 }
 Overlay OVY_17
 {
-	After main
+	After OVY_11
 	Object asm/overlay_17.o
 }
 Overlay OVY_18
 {
-	After main
+	After OVY_11
 	Object asm/overlay_18.o
 }
 Overlay OVY_19
 {
-	After main
+	After OVY_11
 	Object asm/overlay_19.o
 }
 Overlay OVY_20
 {
-	After main
+	After OVY_11
 	Object asm/overlay_21.o
 }
 Overlay OVY_21
 {
-	After main
+	After OVY_11
 	Object asm/overlay_21.o
 }
 Overlay OVY_22
 {
-	After main
+	After OVY_11
 	Object asm/overlay_22.o
 }
 Overlay OVY_23
 {
-	After main
+	After OVY_11
 	Object asm/overlay_23.o
 }
 Overlay OVY_24
 {
-	After main
+	After OVY_11
 	Object asm/overlay_24.o
 }
 Overlay OVY_25
 {
-	After main
+	After OVY_11
 	Object asm/overlay_25.o
 }
 Overlay OVY_26
 {
-	After main
+	After OVY_11
 	Object asm/overlay_26.o
 }
 Overlay OVY_27
 {
-	After main
+	After OVY_11
 	Object asm/overlay_27.o
 }
 Overlay OVY_28
 {
-	After main
+	After OVY_11
 	Object asm/overlay_28.o
 }
 Overlay OVY_29
 {
-	After main
+	After OVY_10
 	Object asm/overlay_29.o
 }
 Overlay OVY_30
 {
-	After main
+	After OVY_29
 	Object asm/overlay_30.o
 }
 Overlay OVY_31
 {
-	After main
+	After OVY_29
 	Object asm/overlay_31.o
 }
 Overlay OVY_32
 {
-	After main
+	After OVY_29
 }
 Overlay OVY_33
 {
-	After main
+	After OVY_29
 }
 Overlay OVY_34
 {
-	After main
+	After OVY_10
 	Object asm/overlay_34.o
 }
 Overlay OVY_35
