@@ -9,14 +9,14 @@ ov18_0238A140: @ 0x0238A140
 	push {r3, lr}
 	mov r0, #0x3c4
 	mov r1, #8
-	bl FUN_02001170
+	bl MemAlloc
 	ldr r1, _0238A298 @ =0x0238D620
 	mov r2, #1
 	str r0, [r1]
 	strb r2, [r0, #0x10]
 	ldr r0, [r1]
 	add r0, r0, #0x14
-	bl FUN_02023690
+	bl InitPreprocessorArgs
 	ldr r3, _0238A298 @ =0x0238D620
 	mov r1, #0
 	ldr r2, [r3]
@@ -50,8 +50,8 @@ ov18_0238A140: @ 0x0238A140
 	strh r0, [r2, #0xa4]
 	ldr r0, [r3]
 	strh r1, [r0, #0x8c]
-	bl FUN_020573A0
-	bl FUN_02041400
+	bl sub_020573A0
+	bl sub_02041400
 	ldr r1, _0238A29C @ =0x0238A090
 	ldr r0, _0238A298 @ =0x0238D620
 	ldr r3, [r1]
@@ -109,7 +109,7 @@ ov18_0238A2A0: @ 0x0238A2A0
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A2CC
-	bl FUN_0202F334
+	bl sub_0202F334
 _0238A2CC:
 	ldr r0, _0238A428 @ =0x0238D620
 	ldr r1, [r0]
@@ -120,7 +120,7 @@ _0238A2CC:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A2F4
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 _0238A2F4:
 	ldr r0, _0238A428 @ =0x0238D620
 	ldr r1, [r0]
@@ -131,14 +131,14 @@ _0238A2F4:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A31C
-	bl FUN_0202F954
+	bl sub_0202F954
 _0238A31C:
 	ldr r0, _0238A428 @ =0x0238D620
 	ldr r0, [r0]
 	ldr r0, [r0, #0x88]
 	tst r0, #0x80
 	bne _0238A334
-	bl FUN_0203A618
+	bl sub_0203A618
 _0238A334:
 	ldr r0, _0238A428 @ =0x0238D620
 	ldr r1, [r0]
@@ -149,7 +149,7 @@ _0238A334:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A35C
-	bl FUN_0203088C
+	bl sub_0203088C
 _0238A35C:
 	ldr r0, _0238A428 @ =0x0238D620
 	ldr r1, [r0]
@@ -160,7 +160,7 @@ _0238A35C:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A384
-	bl FUN_0203088C
+	bl sub_0203088C
 _0238A384:
 	ldr r0, _0238A428 @ =0x0238D620
 	ldr r1, [r0]
@@ -171,7 +171,7 @@ _0238A384:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A3AC
-	bl FUN_0202E6B0
+	bl sub_0202E6B0
 _0238A3AC:
 	ldr r0, _0238A428 @ =0x0238D620
 	ldr r1, [r0]
@@ -182,7 +182,7 @@ _0238A3AC:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A3D4
-	bl FUN_0202BC60
+	bl sub_0202BC60
 _0238A3D4:
 	ldr r0, _0238A428 @ =0x0238D620
 	ldr r1, [r0]
@@ -193,7 +193,7 @@ _0238A3D4:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A3FC
-	bl FUN_0203088C
+	bl sub_0203088C
 _0238A3FC:
 	ldr r0, _0238A428 @ =0x0238D620
 	ldr r1, [r0]
@@ -204,7 +204,7 @@ _0238A3FC:
 	mvn r1, #1
 	cmp r0, r1
 	popeq {r3, pc}
-	bl FUN_0202F334
+	bl sub_0202F334
 	pop {r3, pc}
 	.align 2, 0
 _0238A428: .4byte 0x0238D620
@@ -223,7 +223,7 @@ ov18_0238A42C: @ 0x0238A42C
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A48C
-	bl FUN_0202F180
+	bl IsDBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A48C
@@ -234,7 +234,7 @@ ov18_0238A468: @ 0x0238A468
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl FUN_0202F148
+	bl FreeDBox
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -255,14 +255,14 @@ _0238A498:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A4F4
-	bl FUN_0202F66C
+	bl sub_0202F66C
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A4F4
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FUN_0202F650
+	bl FreePortraitBox
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -283,14 +283,14 @@ _0238A500:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A55C
-	bl FUN_0202FB9C
+	bl sub_0202FB9C
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A55C
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl FUN_0202F8FC
+	bl sub_0202F8FC
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -311,14 +311,14 @@ _0238A568:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A5C4
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A5C4
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FUN_0202B4C4
+	bl FreeNormalMenu
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -339,14 +339,14 @@ _0238A5D0:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A62C
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A62C
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl FUN_0202B4C4
+	bl FreeNormalMenu
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -367,14 +367,14 @@ _0238A638:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A694
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A694
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl FUN_0202B4C4
+	bl FreeNormalMenu
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -395,14 +395,14 @@ _0238A6A0:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A6FC
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A6FC
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl FUN_0202B4C4
+	bl FreeNormalMenu
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -418,11 +418,11 @@ _0238A708:
 	ldr r0, [r0, #0x88]
 	tst r0, #0x80
 	bne _0238A740
-	bl FUN_0203A9B8
+	bl sub_0203A9B8
 	cmp r0, #0
 	movne r0, #0
 	bne _0238A734
-	bl FUN_0203A51C
+	bl sub_0203A51C
 	mov r0, #1
 _0238A734:
 	cmp r0, #0
@@ -450,15 +450,15 @@ _0238A774:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A7C8
-	bl FUN_020308C4
+	bl sub_020308C4
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A7C8
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl FUN_020308A0
-	bl FUN_020407C0
+	bl sub_020308A0
+	bl sub_020407C0
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -479,15 +479,15 @@ _0238A7D4:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A834
-	bl FUN_0202E6E4
+	bl sub_0202E6E4
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A834
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #9]
-	bl FUN_0202E6C8
-	bl FUN_02041A00
+	bl sub_0202E6C8
+	bl sub_02041A00
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -508,14 +508,14 @@ _0238A840:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A89C
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A89C
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl FUN_0202B4C4
+	bl FreeNormalMenu
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -536,14 +536,14 @@ _0238A8A8:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A904
-	bl FUN_0202BCBC
+	bl sub_0202BCBC
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A904
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl FUN_0202BC44
+	bl FreeAdvancedMenu
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -564,14 +564,14 @@ _0238A910:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A96C
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A96C
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc]
-	bl FUN_0202B4C4
+	bl FreeNormalMenu
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -592,15 +592,15 @@ _0238A978:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A9D8
-	bl FUN_020308C4
+	bl sub_020308C4
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A9D8
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xd]
-	bl FUN_020308A0
-	bl FUN_020407C0
+	bl sub_020308A0
+	bl sub_020407C0
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -621,14 +621,14 @@ _0238A9E4:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238AA40
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AA40
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
-	bl FUN_0202B4C4
+	bl FreeNormalMenu
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -649,14 +649,14 @@ _0238AA4C:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238AAA8
-	bl FUN_0202F180
+	bl IsDBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AAA8
 	ldr r0, _0238AABC @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xf]
-	bl FUN_0202F148
+	bl FreeDBox
 	ldr r0, _0238AABC @ =0x0238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -681,7 +681,7 @@ ov18_0238AAC0: @ 0x0238AAC0
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl FUN_02089544
+	bl Vsprintf
 	pop {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -696,7 +696,7 @@ ov18_0238AAE8: @ 0x0238AAE8
 	mov r8, r3
 	ldr r7, [sp, #0x28]
 	mov r6, #0
-	bl FUN_02013884
+	bl GetMovesetLevelUpPtr
 	mov r5, r0
 	mov r4, #1
 	ldr fp, _0238ABAC @ =0x0000021F
@@ -704,7 +704,7 @@ ov18_0238AAE8: @ 0x0238AAE8
 _0238AB18:
 	mov r0, r5
 	add r1, sp, #0
-	bl FUN_0205384C
+	bl sub_0205384C
 	ldrb r1, [r0]
 	add r5, r0, #1
 	cmp r1, r8
@@ -714,7 +714,7 @@ _0238AB18:
 	bge _0238AB98
 	ldrh r0, [sp]
 	mov r1, r7
-	bl FUN_02053880
+	bl sub_02053880
 	cmp r0, #0
 	beq _0238AB98
 	ldrh r1, [sp]
@@ -792,7 +792,7 @@ _0238AC28:
 	beq _0238ACD4
 	add r1, sp, #6
 	mov r0, r6
-	bl FUN_02053DD0
+	bl GetEvoFamily
 	mov r8, r0
 	mov r7, #0
 	add r5, sp, #0x14
@@ -843,7 +843,7 @@ ov18_0238ACE4: @ 0x0238ACE4
 	mov r8, r3
 	ldr r7, [sp, #0x28]
 	ldr r6, [sp, #0x2c]
-	bl FUN_02013884
+	bl GetMovesetLevelUpPtr
 	mov r5, r0
 	mov r4, #1
 	ldr fp, _0238ADA4 @ =0x0000021F
@@ -851,7 +851,7 @@ ov18_0238ACE4: @ 0x0238ACE4
 _0238AD14:
 	mov r0, r5
 	add r1, sp, #0
-	bl FUN_0205384C
+	bl sub_0205384C
 	ldrb r1, [r0]
 	add r5, r0, #1
 	cmp r1, r8
@@ -861,7 +861,7 @@ _0238AD14:
 	bge _0238AD90
 	ldrh r0, [sp]
 	mov r1, r7
-	bl FUN_02053880
+	bl sub_02053880
 	cmp r0, #0
 	beq _0238AD90
 	ldrh r0, [sp]
@@ -943,7 +943,7 @@ _0238AE24:
 	beq _0238AEE0
 	add r1, sp, #0xa
 	mov r0, r8
-	bl FUN_02053DD0
+	bl GetEvoFamily
 	mov sl, r0
 	mov sb, #0
 	add r7, sp, #0x18
@@ -1000,7 +1000,7 @@ ov18_0238AEF0: @ 0x0238AEF0
 	ldrsh r0, [r0, #0x8c]
 	asr r1, r1, #0x10
 	bl ov18_0238ADA8
-	bl FUN_02013454
+	bl GetMoveName
 	mov r3, r0
 	ldr r1, _0238AF38 @ =0x0238D5F8
 	mov r0, r4
@@ -1019,10 +1019,10 @@ ov18_0238AF3C: @ 0x0238AF3C
 	sub sp, sp, #0x54
 	sub sp, sp, #0x400
 	mov r4, r0
-	bl FUN_02027B1C
-	bl FUN_0200ECFC
+	bl sub_02027B1C
+	bl GetGold
 	str r0, [sp, #0x428]
-	bl FUN_02041414
+	bl sub_02041414
 	cmp r0, #0
 	ldrne r0, [sp, #0x428]
 	add ip, sp, #0x400
@@ -1034,19 +1034,19 @@ ov18_0238AF3C: @ 0x0238AF3C
 	add r0, sp, #4
 	mov r1, #0x100
 	str ip, [sp]
-	bl FUN_020223F0
+	bl PreprocessString
 	ldr r3, _0238AFD0 @ =0x00000225
 	mov r0, r4
 	mov r1, #4
 	mov r2, #2
-	bl FUN_02026268
+	bl sub_02026268
 	add r3, sp, #4
 	mov r0, r4
 	mov r1, #0x16
 	mov r2, #0x10
-	bl FUN_02026214
+	bl sub_02026214
 	mov r0, r4
-	bl FUN_02027AF0
+	bl sub_02027AF0
 	add sp, sp, #0x54
 	add sp, sp, #0x400
 	pop {r3, r4, pc}
@@ -1063,18 +1063,18 @@ ov18_0238AFD4: @ 0x0238AFD4
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
-	bl FUN_02001188
+	bl MemFree
 	ldr r0, _0238B018 @ =0x0238D620
 	mov r1, #0
 	str r1, [r0]
-	bl FUN_02041414
+	bl sub_02041414
 	cmp r0, #0
 	beq _0238B010
 	mov r0, #0x1f4
 	rsb r0, r0, #0
-	bl FUN_0200ED58
+	bl AddMoneyCarried
 _0238B010:
-	bl FUN_020572EC
+	bl sub_020572EC
 	pop {r3, pc}
 	.align 2, 0
 _0238B018: .4byte 0x0238D620
@@ -1332,13 +1332,13 @@ ov18_0238BE90: @ 0x0238BE90
 	ldr r0, _0238BF08 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	popne {r3, pc}
 	ldr r0, _0238BF08 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
 	b _0238BEFC
@@ -1399,13 +1399,13 @@ ov18_0238BFA8: @ 0x0238BFA8
 	ldr r0, _0238C038 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	popne {r3, pc}
 	ldr r0, _0238C038 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	cmp r0, #8
 	bgt _0238BFFC
 	cmp r0, #2
@@ -1464,37 +1464,37 @@ _0238C03C:
 	arm_func_start ov18_0238C164
 ov18_0238C164: @ 0x0238C164
 	push {r3, lr}
-	bl FUN_0203A5A8
+	bl sub_0203A5A8
 	cmp r0, #0
 	beq _0238C1CC
-	bl FUN_0203A9EC
+	bl sub_0203A9EC
 	cmp r0, #0
 	popeq {r3, pc}
 	add r1, sp, #0
 	mov r0, #0
-	bl FUN_0200625C
+	bl GetPressedButtons
 	ldrh r0, [sp]
 	tst r0, #8
 	popeq {r3, pc}
 	mov r0, #0
-	bl FUN_02017CCC
-	bl FUN_0203AAB0
+	bl sub_02017CCC
+	bl sub_0203AAB0
 	ldr r1, _0238C218 @ =0x0238D620
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x8c]
-	bl FUN_0203A5F0
+	bl sub_0203A5F0
 	ldr r0, _0238C218 @ =0x0238D620
 	mov r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
 	pop {r3, pc}
 _0238C1CC:
-	bl FUN_0203AA20
+	bl sub_0203AA20
 	mvn r1, #0
 	cmp r0, r1
 	bne _0238C1EC
-	bl FUN_0203A51C
+	bl sub_0203A51C
 	mov r0, #0
 	bl ov18_0238BE28
 	pop {r3, pc}
@@ -1506,7 +1506,7 @@ _0238C1EC:
 	ldr r0, [r2]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
-	bl FUN_0203FA64
+	bl sub_0203FA64
 	mov r0, #0x15
 	bl ov18_0238BE28
 	pop {r3, pc}
@@ -1528,13 +1528,13 @@ ov18_0238C27C: @ 0x0238C27C
 	ldr r0, _0238C33C @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	popne {r3, pc}
 	ldr r0, _0238C33C @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	sub r0, r0, #5
 	cmp r0, #0xb
 	addls pc, pc, r0, lsl #2
@@ -1574,7 +1574,7 @@ _0238C320:
 	bl ov18_0238BE28
 	pop {r3, pc}
 _0238C32C:
-	bl FUN_0203A638
+	bl sub_0203A638
 	mov r0, #0x11
 	bl ov18_0238BE28
 	pop {r3, pc}
@@ -1589,10 +1589,10 @@ _0238C340:
 	arm_func_start ov18_0238C364
 ov18_0238C364: @ 0x0238C364
 	push {r3, lr}
-	bl FUN_0203F398
+	bl sub_0203F398
 	cmp r0, #1
 	popne {r3, pc}
-	bl FUN_0203F990
+	bl sub_0203F990
 	ldr r0, _0238C394 @ =0x0238D620
 	mvn r2, #1
 	ldr r1, [r0]
@@ -1611,14 +1611,14 @@ _0238C398:
 	arm_func_start ov18_0238C3C0
 ov18_0238C3C0: @ 0x0238C3C0
 	push {r4, lr}
-	bl FUN_020407EC
+	bl sub_020407EC
 	movs r4, r0
 	beq _0238C3E4
 	ldr r0, _0238C424 @ =0x0238D620
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
-	bl FUN_0203FD80
+	bl sub_0203FD80
 _0238C3E4:
 	cmp r4, #1
 	beq _0238C40C
@@ -1658,7 +1658,7 @@ ov18_0238C428: @ 0x0238C428
 	ldrsh r0, [r1, #4]
 	ldrsh r2, [r1, #8]
 	add r1, r1, #0x14
-	bl FUN_02041A40
+	bl PrintIqSkillsMenu
 	ldr r0, _0238C474 @ =0x0238D620
 	mov r1, #0x1c
 	ldr r0, [r0]
@@ -1676,11 +1676,11 @@ _0238C47C:
 	arm_func_start ov18_0238C4A0
 ov18_0238C4A0: @ 0x0238C4A0
 	push {r3, lr}
-	bl FUN_0203FD38
+	bl sub_0203FD38
 	ldr r1, _0238C4E4 @ =0x0238D620
 	ldr r1, [r1]
 	str r0, [r1, #0x3a0]
-	bl FUN_02041094
+	bl sub_02041094
 	ldr r2, _0238C4E4 @ =0x0238D620
 	mov ip, #0x400
 	ldr r1, [r2]
@@ -1709,15 +1709,15 @@ ov18_0238C528: @ 0x0238C528
 	mov r4, #0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	popne {r3, r4, r5, pc}
-	bl FUN_02041094
+	bl sub_02041094
 	ldr r1, _0238C714 @ =0x0238D620
 	mov r5, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xa]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	sub r1, r0, #4
 	cmp r1, #0xe
 	addls pc, pc, r1, lsl #2
@@ -1741,85 +1741,85 @@ _0238C570: @ jump table
 _0238C5AC:
 	ldr r0, _0238C718 @ =0x00003F07
 	mov r1, #0x100
-	bl FUN_02017C74
+	bl sub_020182B8
 	mov r0, r5
 	mov r4, #1
-	bl FUN_02041000
+	bl sub_02041000
 	b _0238C6E4
 _0238C5C8:
 	mov r4, #1
-	bl FUN_0200ECFC
+	bl GetGold
 	cmp r0, #0x1f4
 	bge _0238C5EC
 	mov r0, #0
-	bl FUN_02017CCC
+	bl sub_02017CCC
 	mov r0, #0x13
 	bl ov18_0238BE28
 	pop {r3, r4, r5, pc}
 _0238C5EC:
 	mov r0, r5
-	bl FUN_02041194
+	bl sub_02041194
 	cmp r0, #0
 	beq _0238C62C
-	bl FUN_02041414
+	bl sub_02041414
 	cmp r0, #0
 	bne _0238C614
 	ldr r0, _0238C71C @ =0x00001308
-	bl FUN_02017C80
+	bl sub_02017C80
 	b _0238C620
 _0238C614:
 	ldr r0, _0238C718 @ =0x00003F07
 	mov r1, #0x100
-	bl FUN_02017C74
+	bl sub_020182B8
 _0238C620:
 	mov r0, r5
-	bl FUN_020412B0
+	bl sub_020412B0
 	b _0238C6E4
 _0238C62C:
 	mov r0, #2
-	bl FUN_02017CCC
+	bl sub_02017CCC
 	b _0238C6E4
 _0238C638:
 	mov r0, r5
 	mov r4, #1
-	bl FUN_02041364
+	bl sub_02041364
 	cmp r0, #0
 	beq _0238C664
 	ldr r0, _0238C718 @ =0x00003F07
 	mov r1, #0x100
-	bl FUN_02017C74
+	bl sub_020182B8
 	mov r0, r5
-	bl FUN_02041394
+	bl sub_02041394
 	b _0238C6E4
 _0238C664:
 	mov r0, #2
-	bl FUN_02017CCC
+	bl sub_02017CCC
 	b _0238C6E4
 _0238C670:
 	mov r0, r4
-	bl FUN_02017CCC
+	bl sub_02017CCC
 	mov r0, r5
-	bl FUN_020416BC
-	bl FUN_020410A4
+	bl sub_020416BC
+	bl sub_020410A4
 	mov r4, #1
 	b _0238C6E4
 _0238C68C:
 	mov r0, r4
-	bl FUN_02017CCC
+	bl sub_02017CCC
 	mov r0, r5
-	bl FUN_020416DC
-	bl FUN_020410A4
+	bl sub_020416DC
+	bl sub_020410A4
 	mov r4, #1
 	b _0238C6E4
 _0238C6A8:
 	ldr r0, _0238C718 @ =0x00003F07
-	bl FUN_02017C80
+	bl sub_02017C80
 	mov r0, #0x21
 	bl ov18_0238BE28
 	b _0238C6E4
 _0238C6BC:
 	mov r0, r4
-	bl FUN_02017CCC
+	bl sub_02017CCC
 	mov r0, #0x1d
 	bl ov18_0238BE28
 	b _0238C6E4
@@ -1827,7 +1827,7 @@ _0238C6D0:
 	cmp r0, #6
 	beq _0238C6E0
 	mov r0, #1
-	bl FUN_02017CCC
+	bl sub_02017CCC
 _0238C6E0:
 	mov r4, #1
 _0238C6E4:
@@ -1839,7 +1839,7 @@ _0238C6E4:
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _0238C708
-	bl FUN_020307EC
+	bl sub_020307EC
 _0238C708:
 	mov r0, #0x19
 	bl ov18_0238BE28
@@ -1853,16 +1853,16 @@ _0238C71C: .4byte 0x00001308
 	arm_func_start ov18_0238C720
 ov18_0238C720: @ 0x0238C720
 	push {r4, lr}
-	bl FUN_02041094
+	bl sub_02041094
 	mov r4, r0
-	bl FUN_02041154
+	bl sub_02041154
 	ldr r1, _0238C788 @ =0x0238D620
 	cmp r4, #0
 	ldr r1, [r1]
 	str r0, [r1, #0x24]
 	bne _0238C760
 	mov r0, r4
-	bl FUN_02041424
+	bl sub_02041424
 	cmp r0, #0
 	bne _0238C760
 	mov r0, #0x22
@@ -1870,7 +1870,7 @@ ov18_0238C720: @ 0x0238C720
 	pop {r4, pc}
 _0238C760:
 	mov r0, r4
-	bl FUN_02041364
+	bl sub_02041364
 	cmp r0, #0
 	beq _0238C77C
 	mov r0, #0x24
@@ -1900,15 +1900,15 @@ ov18_0238C808: @ 0x0238C808
 	ldr r0, _0238C884 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	popne {r4, pc}
-	bl FUN_02041094
+	bl sub_02041094
 	ldr r1, _0238C884 @ =0x0238D620
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	cmp r0, #0
 	beq _0238C850
 	cmp r0, #1
@@ -1916,12 +1916,12 @@ ov18_0238C808: @ 0x0238C808
 	pop {r4, pc}
 _0238C850:
 	mov r0, r4
-	bl FUN_02041484
+	bl sub_02041484
 	ldr r0, _0238C884 @ =0x0238D620
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
-	bl FUN_0203FD80
+	bl sub_0203FD80
 	mov r0, #0x2a
 	bl ov18_0238BE28
 	pop {r4, pc}
@@ -1945,15 +1945,15 @@ ov18_0238C8D0: @ 0x0238C8D0
 	ldr r0, _0238C94C @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	popne {r4, pc}
-	bl FUN_02041094
+	bl sub_02041094
 	ldr r1, _0238C94C @ =0x0238D620
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	cmp r0, #0
 	beq _0238C918
 	cmp r0, #1
@@ -1961,12 +1961,12 @@ ov18_0238C8D0: @ 0x0238C8D0
 	pop {r4, pc}
 _0238C918:
 	mov r0, r4
-	bl FUN_02041484
+	bl sub_02041484
 	ldr r0, _0238C94C @ =0x0238D620
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
-	bl FUN_0203FD80
+	bl sub_0203FD80
 	mov r0, #0x2c
 	bl ov18_0238BE28
 	pop {r4, pc}
@@ -1989,7 +1989,7 @@ _0238C950:
 	arm_func_start ov18_0238C9B8
 ov18_0238C9B8: @ 0x0238C9B8
 	push {r3, lr}
-	bl FUN_0204159C
+	bl sub_0204159C
 	cmp r0, #0
 	ldreq r0, _0238CA14 @ =0x0238D620
 	moveq r1, #0x2f
@@ -2035,11 +2035,11 @@ ov18_0238CAD4: @ 0x0238CAD4
 	sub sp, sp, #4
 	add r1, sp, #0
 	mov r0, #0
-	bl FUN_0200625C
+	bl GetPressedButtons
 	ldr r0, _0238CBD8 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl FUN_0202BCFC
+	bl GetAdvancedMenuCurrentOption
 	ldr r1, _0238CBD8 @ =0x0238D620
 	ldr r2, [r1]
 	strh r0, [r2, #0x8c]
@@ -2049,7 +2049,7 @@ ov18_0238CAD4: @ 0x0238CAD4
 	ldr r1, [r1]
 	ldrsb r0, [r1, #0xb]
 	ldrsh r4, [r1, #0x8c]
-	bl FUN_0202C1E4
+	bl sub_0202C1E4
 	ldr r0, _0238CBD8 @ =0x0238D620
 	mov r1, r4
 	ldr r0, [r0]
@@ -2080,13 +2080,13 @@ ov18_0238CAD4: @ 0x0238CAD4
 _0238CB8C:
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xb]
-	bl FUN_0202BCBC
+	bl sub_0202BCBC
 	cmp r0, #0
 	bne _0238CBD0
 	ldr r0, _0238CBD8 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl FUN_0202BD10
+	bl GetAdvancedMenuResult
 	mvn r1, #0
 	cmp r0, r1
 	bne _0238CBC8
@@ -2113,18 +2113,18 @@ ov18_0238CC00: @ 0x0238CC00
 	ldr r0, _0238CD84 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl FUN_0202BD10
+	bl GetAdvancedMenuResult
 	ldr r1, _0238CD84 @ =0x0238D620
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xc]
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	popne {r4, pc}
 	ldr r0, _0238CD84 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	sub r0, r0, #4
 	cmp r0, #9
 	addls pc, pc, r0, lsl #2
@@ -2156,7 +2156,7 @@ ov18_0238CC94: @ 0x0238CC94
 	mov r4, r0
 	ldr r0, [r1]
 	str r4, [r0, #0x24]
-	bl FUN_020415BC
+	bl sub_020415BC
 	arm_func_end ov18_0238CC94
 
 	arm_func_start ov18_0238CCA8
@@ -2164,7 +2164,7 @@ ov18_0238CCA8: @ 0x0238CCA8
 	cmp r0, #0
 	mov r0, r4
 	beq _0238CCCC
-	bl FUN_0203FD14
+	bl sub_0203FD14
 	ldr r0, _0238CD84 @ =0x0238D620
 	arm_func_end ov18_0238CCA8
 
@@ -2175,7 +2175,7 @@ ov18_0238CCBC: @ 0x0238CCBC
 	str r1, [r0, #0x80]
 	pop {r4, pc}
 _0238CCCC:
-	bl FUN_02041614
+	bl sub_02041614
 	ldr r0, _0238CD84 @ =0x0238D620
 	ldr r0, [r0]
 	arm_func_end ov18_0238CCBC
@@ -2184,7 +2184,7 @@ _0238CCCC:
 ov18_0238CCD8: @ 0x0238CCD8
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
-	bl FUN_0203FD80
+	bl sub_0203FD80
 	mov r0, #0x3a
 	bl ov18_0238BE28
 	pop {r4, pc}
@@ -2224,7 +2224,7 @@ _0238CD5C:
 	ldrsb r0, [r0, #0xb]
 	cmp r0, r1
 	beq _0238CD78
-	bl FUN_0202BBF0
+	bl sub_0202BBF0
 _0238CD78:
 	mov r0, #0x34
 	bl ov18_0238BE28
@@ -2246,14 +2246,14 @@ _0238CD88:
 	arm_func_start ov18_0238CE20
 ov18_0238CE20: @ 0x0238CE20
 	push {r4, lr}
-	bl FUN_020407EC
+	bl sub_020407EC
 	movs r4, r0
 	beq _0238CE44
 	ldr r0, _0238CE84 @ =0x0238D620
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
-	bl FUN_0203FD80
+	bl sub_0203FD80
 _0238CE44:
 	cmp r4, #1
 	beq _0238CE6C
@@ -2285,13 +2285,13 @@ ov18_0238CE88: @ 0x0238CE88
 	mov r1, #0xc000
 	ldr r0, [r0]
 	str r1, [r0, #0x88]
-	bl FUN_02041094
-	bl FUN_02041154
+	bl sub_02041094
+	bl sub_02041154
 	ldr r1, _0238CED4 @ =0x0238D620
 	ldr r1, [r1]
 	str r0, [r1, #0x24]
 	mov r0, #4
-	bl FUN_02041154
+	bl sub_02041154
 	ldr r1, _0238CED4 @ =0x0238D620
 	mov r2, #0x3f
 	ldr r3, [r1]
@@ -2306,18 +2306,18 @@ _0238CED4: .4byte 0x0238D620
 	arm_func_start ov18_0238CED8
 ov18_0238CED8: @ 0x0238CED8
 	push {r3, lr}
-	bl FUN_02041094
+	bl sub_02041094
 	ldr r0, _0238CF94 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	popne {r3, pc}
-	bl FUN_0203FD38
+	bl sub_0203FD38
 	ldr r0, _0238CF94 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	sub r0, r0, #4
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
@@ -2331,8 +2331,8 @@ _0238CF1C: @ jump table
 	b _0238CF6C @ case 5
 	b _0238CF38 @ case 6
 _0238CF38:
-	bl FUN_02041094
-	bl FUN_02041364
+	bl sub_02041094
+	bl sub_02041364
 	cmp r0, #0
 	beq _0238CF54
 	mov r0, #0x42
@@ -2353,7 +2353,7 @@ _0238CF6C:
 	ldrsb r0, [r0, #0xb]
 	cmp r0, r1
 	beq _0238CF88
-	bl FUN_0202BBF0
+	bl sub_0202BBF0
 _0238CF88:
 	mov r0, #0x3c
 	bl ov18_0238BE28
@@ -2365,19 +2365,19 @@ _0238CF94: .4byte 0x0238D620
 	arm_func_start ov18_0238CF98
 ov18_0238CF98: @ 0x0238CF98
 	push {r4, lr}
-	bl FUN_0203FD38
+	bl sub_0203FD38
 	mov r4, r0
-	bl FUN_02041094
+	bl sub_02041094
 	cmp r0, #4
 	blt _0238CFF0
-	bl FUN_0203FD2C
+	bl sub_0203FD2C
 	ldr r2, _0238D030 @ =0x0238D620
 	mov r1, r0
 	ldr r0, [r2]
 	mov r2, #8
 	add r0, r0, #0xa6
 	add r0, r0, #0x300
-	bl FUN_0208729C
+	bl Memcpy
 	ldr r0, _0238D030 @ =0x0238D620
 	mov r2, #0
 	ldr r1, [r0]
@@ -2390,7 +2390,7 @@ _0238CFF0:
 	ldr r0, _0238D030 @ =0x0238D620
 	ldr r0, [r0]
 	str r4, [r0, #0x3a0]
-	bl FUN_02041094
+	bl sub_02041094
 	ldr r1, _0238D030 @ =0x0238D620
 	ldr r1, [r1]
 	add r1, r1, #0x300
@@ -2422,15 +2422,15 @@ ov18_0238D098: @ 0x0238D098
 	ldr r0, _0238D128 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	popne {r4, pc}
-	bl FUN_02041094
+	bl sub_02041094
 	ldr r1, _0238D128 @ =0x0238D620
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	cmp r0, #0
 	beq _0238D0E0
 	cmp r0, #1
@@ -2438,15 +2438,15 @@ ov18_0238D098: @ 0x0238D098
 	pop {r4, pc}
 _0238D0E0:
 	mov r0, r4
-	bl FUN_02041484
-	bl FUN_0203FD2C
+	bl sub_02041484
+	bl sub_0203FD2C
 	ldrh r0, [r0, #4]
-	bl FUN_02041614
+	bl sub_02041614
 	ldr r0, _0238D128 @ =0x0238D620
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
-	bl FUN_0203FD80
+	bl sub_0203FD80
 	ldr r0, _0238D128 @ =0x0238D620
 	mov r1, #0x48
 	ldr r0, [r0]
@@ -2473,15 +2473,15 @@ ov18_0238D174: @ 0x0238D174
 	ldr r0, _0238D204 @ =0x0238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl FUN_0202B4F0
+	bl IsNormalMenuActive
 	cmp r0, #0
 	popne {r4, pc}
-	bl FUN_02041094
+	bl sub_02041094
 	ldr r1, _0238D204 @ =0x0238D620
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	cmp r0, #0
 	beq _0238D1BC
 	cmp r0, #1
@@ -2489,15 +2489,15 @@ ov18_0238D174: @ 0x0238D174
 	pop {r4, pc}
 _0238D1BC:
 	mov r0, r4
-	bl FUN_02041484
-	bl FUN_0203FD2C
+	bl sub_02041484
+	bl sub_0203FD2C
 	ldrh r0, [r0, #4]
-	bl FUN_02041614
+	bl sub_02041614
 	ldr r0, _0238D204 @ =0x0238D620
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
-	bl FUN_0203FD80
+	bl sub_0203FD80
 	ldr r0, _0238D204 @ =0x0238D620
 	mov r1, #0x4a
 	ldr r0, [r0]

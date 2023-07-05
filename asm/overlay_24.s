@@ -56,7 +56,7 @@ _0238A15C: @ jump table
 _0238A1F8:
 	add r0, r2, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F180
+	bl IsDBoxActive
 	cmp r0, #0
 	bne _0238A604
 	mov r0, #0x1a
@@ -65,20 +65,20 @@ _0238A1F8:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F3A4
+	bl ShowDBox
 	b _0238A604
 _0238A22C:
-	bl FUN_02306C9C
+	bl ov11_02306C9C
 	cmp r0, #3
 	beq _0238A250
 	cmp r0, #4
 	bne _0238A604
-	bl FUN_02306C64
+	bl ov11_02306C64
 	mov r0, #0x11
 	bl ov24_0238A610
 	b _0238A604
 _0238A250:
-	bl FUN_02306C64
+	bl ov11_02306C64
 	ldr r1, _0238A60C @ =0x0238C600
 	ldr r1, [r1]
 	str r0, [r1, #0x1e8]
@@ -88,7 +88,7 @@ _0238A250:
 _0238A26C:
 	add r0, r2, #0x200
 	ldrsb r0, [r0, #0x8f]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	cmp r0, #1
 	beq _0238A2A4
 	cmp r0, #4
@@ -107,25 +107,25 @@ _0238A2A4:
 	bl ov24_0238A610
 	b _0238A604
 _0238A2B4:
-	bl FUN_022DC504
+	bl ov11_022DC504
 	mov r0, #3
 	pop {r3, pc}
 _0238A2C0:
-	bl FUN_0230D220
+	bl ov00_0230D220
 	cmp r0, #0
 	bne _0238A604
 	ldr r0, _0238A60C @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F180
+	bl IsDBoxActive
 	cmp r0, #0
 	bne _0238A604
 	ldr r0, _0238A60C @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F3A4
+	bl ShowDBox
 	ldr r0, _0238A60C @ =0x0238C600
 	mov r2, #0x27
 	ldr r1, [r0]
@@ -133,17 +133,17 @@ _0238A2C0:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F2C4
+	bl sub_0202F2C4
 	ldr r0, _0238A60C @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	b _0238A604
 _0238A334:
 	add r0, r2, #0x200
 	ldrsb r0, [r0, #0x8f]
-	bl FUN_0202B57C
+	bl GetNormalMenuResult
 	cmp r0, #1
 	ldrne r1, _0238A60C @ =0x0238C600
 	ldrne r1, [r1]
@@ -155,7 +155,7 @@ _0238A334:
 	cmp r0, #7
 	bne _0238A604
 	bl ov24_0238C47C
-	bl FUN_020107DC
+	bl sub_020107DC
 	cmp r0, #0
 	beq _0238A38C
 	cmp r0, #1
@@ -190,33 +190,33 @@ _0238A3CC:
 	bl ov24_0238A610
 	b _0238A604
 _0238A3DC:
-	bl FUN_02036CD4
+	bl GetKeyboardStatus
 	cmp r0, #3
 	bne _0238A604
-	bl FUN_0203755C
+	bl GetKeyboardStringResult
 	ldr r2, _0238A60C @ =0x0238C600
 	mov r1, r0
 	ldr r0, [r2]
 	add r0, r0, #0x42
-	bl FUN_02025100
+	bl StrcpySimple
 	ldr r0, _0238A60C @ =0x0238C600
 	mov r2, #0x10
 	ldr r1, [r0]
 	add r0, r1, #0x22
 	add r1, r1, #0x42
-	bl FUN_020251F4
+	bl StrncpySimpleNoPadSafe
 	mov r0, #0x24
 	bl ov24_0238A610
 	b _0238A604
 _0238A424:
-	bl FUN_02037468
+	bl sub_02037468
 	cmp r0, #0
 	beq _0238A604
 	mov r0, #0x22
 	bl ov24_0238A610
 	b _0238A604
 _0238A43C:
-	bl FUN_0203931C
+	bl sub_0203931C
 	cmp r0, #0
 	bne _0238A464
 	ldr r0, _0238A60C @ =0x0238C600
@@ -241,7 +241,7 @@ ov24_0238A468: @ 0x0238A468
 	bl ov24_0238A610
 	b _0238A604
 _0238A488:
-	bl FUN_02039218
+	bl sub_02039218
 	cmp r0, #0
 	beq _0238A604
 	ldr r0, _0238A60C @ =0x0238C600
@@ -265,12 +265,12 @@ _0238A4A8:
 _0238A4D8:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8e]
-	bl FUN_0202836C
+	bl sub_0202836C
 	ldr r0, _0238A60C @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8e]
-	bl FUN_0202C70C
+	bl sub_0202C70C
 	b _0238A604
 _0238A4FC:
 	ldr r0, [r1, #8]
@@ -283,14 +283,14 @@ _0238A4FC:
 _0238A518:
 	add r0, r2, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F180
+	bl IsDBoxActive
 	cmp r0, #0
 	bne _0238A604
 	ldr r0, _0238A60C @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F148
+	bl FreeDBox
 	ldr r0, _0238A60C @ =0x0238C600
 	mvn r2, #1
 	ldr r1, [r0]
@@ -299,7 +299,7 @@ _0238A518:
 	bl ov24_0238A610
 	b _0238A604
 _0238A55C:
-	bl FUN_0203D538
+	bl sub_0203D538
 	mvn r1, #0
 	cmp r0, r1
 	beq _0238A578
@@ -307,12 +307,12 @@ _0238A55C:
 	beq _0238A588
 	b _0238A604
 _0238A578:
-	bl FUN_0203EFD4
+	bl sub_0203EFD4
 	mov r0, #4
 	bl ov24_0238A610
 	b _0238A604
 _0238A588:
-	bl FUN_0203EFD4
+	bl sub_0203EFD4
 	mov r0, #4
 	bl ov24_0238A610
 	b _0238A604
@@ -326,21 +326,21 @@ _0238A598:
 	bl ov24_0238A610
 	b _0238A604
 _0238A5B8:
-	bl FUN_0230D220
+	bl ov00_0230D220
 	cmp r0, #0
 	bne _0238A604
 	ldr r0, _0238A60C @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F180
+	bl IsDBoxActive
 	cmp r0, #0
 	bne _0238A604
 	ldr r0, _0238A60C @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F3A4
+	bl ShowDBox
 	ldr r0, _0238A60C @ =0x0238C600
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
@@ -416,38 +416,38 @@ _0238A658: @ jump table
 _0238A6F4:
 	mov r0, #0
 	strb r0, [r1, #0x1f0]
-	bl FUN_0202F0B0
+	bl CreateDBox
 	ldr r2, _0238B384 @ =0x0238C600
 	mov r1, #3
 	ldr r3, [r2]
 	mov r2, #1
 	strb r0, [r3, #0x28c]
 	mov r0, #0
-	bl FUN_0202F5AC
+	bl CreatePortraitBox
 	ldr r2, _0238B384 @ =0x0238C600
 	mov r1, #0x71
 	ldr r3, [r2]
 	strb r0, [r3, #0x28d]
 	ldr r0, [r2]
 	add r0, r0, #0x294
-	bl FUN_0204D7D4
+	bl InitPortraitBoxWithMonsterId
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x294
-	bl FUN_0204D804
+	bl SetPortraitUnknownAttr
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r2, [r0]
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r3, [r0]
 	ldrb r0, [r3, #0x21]
@@ -461,12 +461,12 @@ _0238A6F4:
 	bne _0238A7B8
 	ldr r2, _0238B390 @ =0x0000038A
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238A7C4
 _0238A7B8:
 	ldr r2, _0238B394 @ =0x0000038B
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 _0238A7C4:
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r3, #4
@@ -482,7 +482,7 @@ _0238A7E4:
 	ldr r1, _0238B398 @ =0x00003008
 	ldr r2, _0238B39C @ =0x0000038F
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238A800:
 	ldr r0, _0238B3A0 @ =0x0238C5C0
@@ -491,7 +491,7 @@ _0238A800:
 	ldr r3, _0238B3A8 @ =0x0238C538
 	mov r2, #0
 	str r4, [sp]
-	bl FUN_0202B0EC
+	bl CreateNormalMenu
 	ldr r1, _0238B384 @ =0x0238C600
 	ldr r1, [r1]
 	strb r0, [r1, #0x28f]
@@ -506,13 +506,13 @@ _0238A82C:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B398 @ =0x00003008
 	ldr r3, [r0]
@@ -520,7 +520,7 @@ _0238A82C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238A890:
 	bl ov24_0238C47C
@@ -535,13 +535,13 @@ _0238A890:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B38C @ =0x00003018
 	ldr r3, [r0]
@@ -549,7 +549,7 @@ _0238A890:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238A900:
 	bl ov24_0238C47C
@@ -561,13 +561,13 @@ _0238A900:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B38C @ =0x00003018
 	ldr r3, [r0]
@@ -575,7 +575,7 @@ _0238A900:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238A964:
 	bl ov24_0238C47C
@@ -593,13 +593,13 @@ _0238A964:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B38C @ =0x00003018
 	ldr r3, [r0]
@@ -607,7 +607,7 @@ _0238A964:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238A9E0:
 	bl ov24_0238C47C
@@ -625,13 +625,13 @@ _0238A9E0:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B38C @ =0x00003018
 	ldr r3, [r0]
@@ -639,7 +639,7 @@ _0238A9E0:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238AA5C:
 	bl ov24_0238C47C
@@ -657,13 +657,13 @@ _0238AA5C:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B38C @ =0x00003018
 	ldr r3, [r0]
@@ -671,11 +671,11 @@ _0238AA5C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238AAD8:
 	ldr r0, _0238B3B0 @ =0x0000220F
-	bl FUN_02017CB4
+	bl sub_02018428
 	bl ov24_0238C47C
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r3, #1
@@ -688,13 +688,13 @@ _0238AAD8:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B38C @ =0x00003018
 	ldr r3, [r0]
@@ -702,7 +702,7 @@ _0238AAD8:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238AB50:
 	bl ov24_0238C47C
@@ -720,18 +720,18 @@ _0238AB50:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
-	bl FUN_0201077C
+	bl SetPortraitExpressionId
+	bl sub_0201077C
 	ldr r1, _0238B384 @ =0x0238C600
 	ldr r1, [r1]
 	str r0, [r1, #0x1f8]
-	bl FUN_0204FD3C
+	bl IncrementNbEggsHatched
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B38C @ =0x00003018
 	ldr r3, [r0]
@@ -739,7 +739,7 @@ _0238AB50:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238ABE0:
 	mov r2, #0x12
@@ -757,11 +757,11 @@ _0238ABF8:
 	cmp r0, #0
 	bgt _0238B37C
 	mov r0, #3
-	bl FUN_02017C10
+	bl sub_02017C10
 	cmp r0, #0
 	bne _0238AC2C
 	mov r0, #3
-	bl FUN_02017C50
+	bl sub_0201820C
 _0238AC2C:
 	ldr r1, _0238B384 @ =0x0238C600
 	mov r2, #4
@@ -774,7 +774,7 @@ _0238AC2C:
 	ldr r2, [r1]
 	add r1, r2, #0x52
 	str r1, [r2, #0x230]
-	bl FUN_02010794
+	bl sub_02010794
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r2, _0238B3BC @ =0x00000397
 	ldr r3, [r0]
@@ -782,7 +782,7 @@ _0238AC2C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238AC80:
 	mov r2, #0x1b
@@ -793,7 +793,7 @@ _0238AC80:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r2, _0238B3C0 @ =0x00000396
 	ldr r4, [r0]
@@ -807,11 +807,11 @@ _0238AC80:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238ACE0:
 	ldr r0, _0238B3B0 @ =0x0000220F
-	bl FUN_02017CB4
+	bl sub_02018428
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r2, _0238B3C4 @ =0x00000715
 	ldr r1, [r0]
@@ -829,7 +829,7 @@ _0238ACE0:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r3, #0x1b
 	ldr r1, [r0]
@@ -841,7 +841,7 @@ _0238ACE0:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B38C @ =0x00003018
 	ldr r4, [r0]
@@ -852,7 +852,7 @@ _0238ACE0:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238AD90:
 	mov r0, #0
@@ -860,20 +860,20 @@ _0238AD90:
 	mov r2, r0
 	mov r1, #0x11
 	str r0, [sp]
-	bl FUN_0202B0EC
+	bl CreateNormalMenu
 	ldr r1, _0238B384 @ =0x0238C600
 	ldr r1, [r1]
 	strb r0, [r1, #0x28f]
 	b _0238B37C
 _0238ADB8:
 	add r0, r1, #0x1bc
-	bl FUN_0206351C
+	bl sub_0206351C
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r1, #0x71
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r1, [r0, #0xbc]
-	bl FUN_0201077C
+	bl sub_0201077C
 	ldr r2, _0238B384 @ =0x0238C600
 	mov r4, #6
 	ldr r1, [r2]
@@ -888,13 +888,13 @@ _0238ADB8:
 	arm_func_start ov24_0238ADFC
 ov24_0238ADFC: @ 0x0238ADFC
 	str r3, [r0, #0x1c4]
-	bl FUN_0201077C
+	bl sub_0201077C
 	mov r1, r0
 	add r0, sp, #8
 	mov r2, #1
 	mov r3, #0
-	bl FUN_02053B60
-	bl FUN_0201077C
+	bl sub_02053B60
+	bl sub_0201077C
 	add r2, sp, #8
 	mov r1, r0
 	mov r0, #1
@@ -905,16 +905,16 @@ ov24_0238ADFC: @ 0x0238ADFC
 	ldr r2, [r0]
 	add r0, r2, #0x248
 	add r2, r2, #0x42
-	bl FUN_02052F8C
+	bl sub_02052F8C
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x248
-	bl FUN_023061E4
+	bl ov11_023061E4
 	b _0238B37C
 _0238AE60:
 	mov r0, #0
-	bl FUN_02055964
+	bl GetFirstEmptyMemberIdx
 	mvn r1, #0
 	cmp r0, r1
 	bne _0238AEB4
@@ -922,12 +922,12 @@ _0238AE60:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F2C4
+	bl sub_0202F2C4
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r1, #0x14
 	ldr r0, [r0]
@@ -953,12 +953,12 @@ _0238AECC:
 	ldrsb r0, [r0, #0x8c]
 	ldr r2, _0238B3D4 @ =0x000003A2
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238AF00:
-	bl FUN_0200224C
+	bl Rand16Bit
 	mov r1, #0x64
-	bl FUN_0208FEA4
+	bl DivideInt
 	ldr r0, _0238B3D8 @ =0x020A1868
 	ldrsh r0, [r0]
 	cmp r1, r0
@@ -971,7 +971,7 @@ _0238AF00:
 	streq r0, [r1]
 	beq _0238B37C
 	bl ov24_0238C4CC
-	bl FUN_0200EDC0
+	bl IsBagFull
 	cmp r0, #0
 	beq _0238AFC0
 	ldr r0, _0238B384 @ =0x0238C600
@@ -988,13 +988,13 @@ _0238AF00:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B38C @ =0x00003018
 	ldr r3, [r0]
@@ -1002,7 +1002,7 @@ _0238AF00:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238AFC0:
 	ldr r0, _0238B384 @ =0x0238C600
@@ -1013,13 +1013,13 @@ _0238AFC0:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, _0238B38C @ =0x00003018
 	ldr r3, [r0]
@@ -1027,7 +1027,7 @@ _0238AFC0:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r3, #0x25
 	ldr r2, [r0]
@@ -1038,7 +1038,7 @@ _0238AFC0:
 	ldrsh r2, [r2, #0x16]
 	strh r2, [sp, #0x10]
 	strh r1, [sp, #0x12]
-	bl FUN_0200F84C
+	bl SpecialProcAddItemToBag
 	mov r0, #0
 	strb r0, [sp, #0x14]
 	ldr r0, _0238B384 @ =0x0238C600
@@ -1051,7 +1051,7 @@ _0238AFC0:
 	ldr r2, _0238B3E0 @ =0x0238C514
 	add r1, sp, #0x14
 	add r0, r0, #0x100
-	bl FUN_0200D670
+	bl sub_0200D670
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x7a
@@ -1067,16 +1067,16 @@ _0238B094:
 _0238B0A8:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F2C4
+	bl sub_0202F2C4
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	b _0238B37C
 _0238B0CC:
 	add r0, r1, #0x1bc
-	bl FUN_0206351C
+	bl sub_0206351C
 	ldr r3, _0238B384 @ =0x0238C600
 	mov r2, #1
 	ldr r0, [r3]
@@ -1091,16 +1091,16 @@ _0238B0CC:
 	strh r4, [r0, #0xd0]
 	ldr r0, [r3]
 	add r0, r0, #0x1bc
-	bl FUN_0203D438
+	bl sub_0203D438
 	b _0238B37C
 _0238B114:
-	bl FUN_0201077C
+	bl sub_0201077C
 	mov r1, r0
 	add r0, sp, #8
 	mov r2, #1
 	mov r3, #0
-	bl FUN_02053B60
-	bl FUN_0201077C
+	bl sub_02053B60
+	bl sub_0201077C
 	mov r2, #1
 	str r2, [sp]
 	ldr r1, _0238B384 @ =0x0238C600
@@ -1108,7 +1108,7 @@ _0238B114:
 	ldr r1, [r1]
 	add r3, sp, #8
 	add r1, r1, #0x42
-	bl FUN_02055DD0
+	bl sub_02055DD0
 	ldr r1, _0238B384 @ =0x0238C600
 	mov r2, #0x26
 	ldr r3, [r1]
@@ -1122,7 +1122,7 @@ _0238B170:
 	add r1, r1, #0x42
 	add r0, r0, #0x3a
 	mov r2, #0xa
-	bl FUN_0202511C
+	bl StrncpySimple
 	ldr r2, _0238B384 @ =0x0238C600
 	ldr r0, _0238B3E4 @ =0x020A18B8
 	ldr r1, [r2]
@@ -1157,14 +1157,14 @@ _0238B170:
 	ldrb r1, [r2, #0xf]
 	add r0, r1, r0
 	strb r0, [r2, #0xf]
-	bl FUN_0201077C
-	bl FUN_0204FDFC
+	bl sub_0201077C
+	bl SetPokemonJoined
 	ldr r1, _0238B384 @ =0x0238C600
 	mov r0, #0
 	ldr r2, [r1]
 	add r1, r2, #0x22
 	str r1, [r2, #0x230]
-	bl FUN_02010794
+	bl sub_02010794
 	mov r3, #0x15
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r1, #0x1b
@@ -1174,7 +1174,7 @@ _0238B170:
 	str r1, [r0]
 	bl ov24_0238C4CC
 	mov r0, #5
-	bl FUN_02017C50
+	bl sub_0201820C
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r1, #0x1c
 	ldr r3, [r0]
@@ -1182,7 +1182,7 @@ _0238B170:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238B278:
 	mov r0, #0xa
@@ -1191,12 +1191,12 @@ _0238B278:
 _0238B284:
 	mov r0, #0x20
 	str r0, [r1, #8]
-	bl FUN_02310BDC
+	bl ov11_02310BDC
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	ldr r0, _0238B384 @ =0x0238C600
 	ldr r2, _0238B3F4 @ =0x000003A3
 	ldr ip, [r0]
@@ -1207,12 +1207,12 @@ _0238B284:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B37C
 _0238B2D4:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F148
+	bl FreeDBox
 	ldr r1, _0238B384 @ =0x0238C600
 	mvn r3, #1
 	ldr r2, [r1]
@@ -1223,7 +1223,7 @@ _0238B2D4:
 	add r3, r1, #0x66
 	add r1, r1, #0x42
 	add r3, r3, #0x100
-	bl FUN_020367F0
+	bl ShowKeyboard
 	b _0238B37C
 _0238B310:
 	add r0, r1, #0x66
@@ -1231,18 +1231,18 @@ _0238B310:
 	add r3, r0, #0x100
 	mov r0, #2
 	mov r2, #0
-	bl FUN_020367F0
+	bl ShowKeyboard
 	b _0238B37C
 _0238B32C:
 	add r0, r1, #0x22
-	bl FUN_0203909C
+	bl sub_0203909C
 	b _0238B37C
 _0238B338:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	mov r0, #4
-	bl FUN_02017C50
+	bl sub_0201820C
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r1, #0x18
 	ldr r3, [r0]
@@ -1250,7 +1250,7 @@ _0238B338:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	ldr r0, _0238B384 @ =0x0238C600
 	mov r1, #4
 	ldr r0, [r0]
@@ -1351,38 +1351,38 @@ _0238B434: @ jump table
 _0238B4D0:
 	mov r0, #0
 	strb r0, [r1, #0x1f0]
-	bl FUN_0202F0B0
+	bl CreateDBox
 	ldr r2, _0238C164 @ =0x0238C600
 	mov r1, #3
 	ldr r3, [r2]
 	mov r2, #1
 	strb r0, [r3, #0x28c]
 	mov r0, #0
-	bl FUN_0202F5AC
+	bl CreatePortraitBox
 	ldr r2, _0238C164 @ =0x0238C600
 	mov r1, #0x71
 	ldr r3, [r2]
 	strb r0, [r3, #0x28d]
 	ldr r0, [r2]
 	add r0, r0, #0x294
-	bl FUN_0204D7D4
+	bl InitPortraitBoxWithMonsterId
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x294
-	bl FUN_0204D804
+	bl SetPortraitUnknownAttr
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r2, [r0]
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r3, [r0]
 	ldrb r0, [r3, #0x21]
@@ -1396,12 +1396,12 @@ _0238B4D0:
 	bne _0238B594
 	ldr r2, _0238C16C @ =0x0000038A
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238B5A0
 _0238B594:
 	ldr r2, _0238C170 @ =0x0000038B
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 _0238B5A0:
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r3, #4
@@ -1417,7 +1417,7 @@ _0238B5C0:
 	ldr r1, _0238C174 @ =0x00003008
 	ldr r2, _0238C178 @ =0x0000038F
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238B5DC:
 	ldr r0, _0238C17C @ =0x0238C5C0
@@ -1426,7 +1426,7 @@ _0238B5DC:
 	ldr r3, _0238C184 @ =0x0238C538
 	mov r2, #0
 	str r4, [sp]
-	bl FUN_0202B0EC
+	bl CreateNormalMenu
 	ldr r1, _0238C164 @ =0x0238C600
 	ldr r1, [r1]
 	strb r0, [r1, #0x28f]
@@ -1441,13 +1441,13 @@ _0238B608:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C174 @ =0x00003008
 	ldr r3, [r0]
@@ -1455,7 +1455,7 @@ _0238B608:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238B66C:
 	bl ov24_0238C47C
@@ -1470,13 +1470,13 @@ _0238B66C:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C168 @ =0x00003018
 	ldr r3, [r0]
@@ -1484,7 +1484,7 @@ _0238B66C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238B6DC:
 	bl ov24_0238C47C
@@ -1496,13 +1496,13 @@ _0238B6DC:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C168 @ =0x00003018
 	ldr r3, [r0]
@@ -1510,7 +1510,7 @@ _0238B6DC:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238B740:
 	bl ov24_0238C47C
@@ -1528,13 +1528,13 @@ _0238B740:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C168 @ =0x00003018
 	ldr r3, [r0]
@@ -1542,7 +1542,7 @@ _0238B740:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238B7BC:
 	bl ov24_0238C47C
@@ -1560,13 +1560,13 @@ _0238B7BC:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C168 @ =0x00003018
 	ldr r3, [r0]
@@ -1574,7 +1574,7 @@ _0238B7BC:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238B838:
 	bl ov24_0238C47C
@@ -1592,13 +1592,13 @@ _0238B838:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C168 @ =0x00003018
 	ldr r3, [r0]
@@ -1606,11 +1606,11 @@ _0238B838:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238B8B4:
 	ldr r0, _0238C18C @ =0x0000220F
-	bl FUN_02017CB4
+	bl sub_02018428
 	bl ov24_0238C47C
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r3, #1
@@ -1623,13 +1623,13 @@ _0238B8B4:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C168 @ =0x00003018
 	ldr r3, [r0]
@@ -1637,7 +1637,7 @@ _0238B8B4:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238B92C:
 	bl ov24_0238C47C
@@ -1655,18 +1655,18 @@ _0238B92C:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
-	bl FUN_0201077C
+	bl SetPortraitExpressionId
+	bl sub_0201077C
 	ldr r1, _0238C164 @ =0x0238C600
 	ldr r1, [r1]
 	str r0, [r1, #0x1f8]
-	bl FUN_0204FD3C
+	bl IncrementNbEggsHatched
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C168 @ =0x00003018
 	ldr r3, [r0]
@@ -1674,7 +1674,7 @@ _0238B92C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238B9BC:
 	mov r2, #0x12
@@ -1692,11 +1692,11 @@ _0238B9D4:
 	cmp r0, #0
 	bgt _0238C158
 	mov r0, #3
-	bl FUN_02017C10
+	bl sub_02017C10
 	cmp r0, #0
 	bne _0238BA08
 	mov r0, #3
-	bl FUN_02017C50
+	bl sub_0201820C
 _0238BA08:
 	ldr r1, _0238C164 @ =0x0238C600
 	mov r2, #4
@@ -1709,7 +1709,7 @@ _0238BA08:
 	ldr r2, [r1]
 	add r1, r2, #0x52
 	str r1, [r2, #0x230]
-	bl FUN_02010794
+	bl sub_02010794
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r2, _0238C198 @ =0x00000397
 	ldr r3, [r0]
@@ -1717,7 +1717,7 @@ _0238BA08:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238BA5C:
 	mov r2, #0x1b
@@ -1728,7 +1728,7 @@ _0238BA5C:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r2, _0238C19C @ =0x00000396
 	ldr r4, [r0]
@@ -1742,11 +1742,11 @@ _0238BA5C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238BABC:
 	ldr r0, _0238C18C @ =0x0000220F
-	bl FUN_02017CB4
+	bl sub_02018428
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r2, _0238C1A0 @ =0x00000715
 	ldr r1, [r0]
@@ -1764,7 +1764,7 @@ _0238BABC:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r3, #0x1b
 	ldr r1, [r0]
@@ -1776,7 +1776,7 @@ _0238BABC:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C168 @ =0x00003018
 	ldr r4, [r0]
@@ -1787,7 +1787,7 @@ _0238BABC:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238BB6C:
 	mov r0, #0
@@ -1795,20 +1795,20 @@ _0238BB6C:
 	mov r2, r0
 	mov r1, #0x11
 	str r0, [sp]
-	bl FUN_0202B0EC
+	bl CreateNormalMenu
 	ldr r1, _0238C164 @ =0x0238C600
 	ldr r1, [r1]
 	strb r0, [r1, #0x28f]
 	b _0238C158
 _0238BB94:
 	add r0, r1, #0x1bc
-	bl FUN_0206351C
+	bl sub_0206351C
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r1, #0x71
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r1, [r0, #0xbc]
-	bl FUN_0201077C
+	bl sub_0201077C
 	ldr r2, _0238C164 @ =0x0238C600
 	mov r4, #6
 	ldr r1, [r2]
@@ -1819,13 +1819,13 @@ _0238BB94:
 	strb r4, [r0, #0x1be]
 	ldr r0, [r2]
 	str r3, [r0, #0x1c4]
-	bl FUN_0201077C
+	bl sub_0201077C
 	mov r1, r0
 	add r0, sp, #0x12
 	mov r2, #1
 	mov r3, #0
-	bl FUN_02053B60
-	bl FUN_0201077C
+	bl sub_02053B60
+	bl sub_0201077C
 	add r2, sp, #0x12
 	mov r1, r0
 	mov r0, #1
@@ -1836,16 +1836,16 @@ _0238BB94:
 	ldr r2, [r0]
 	add r0, r2, #0x248
 	add r2, r2, #0x42
-	bl FUN_02052F8C
+	bl sub_02052F8C
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x248
-	bl FUN_023061E4
+	bl ov11_023061E4
 	b _0238C158
 _0238BC3C:
 	mov r0, #0
-	bl FUN_02055964
+	bl GetFirstEmptyMemberIdx
 	mvn r1, #0
 	cmp r0, r1
 	bne _0238BC90
@@ -1853,12 +1853,12 @@ _0238BC3C:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F2C4
+	bl sub_0202F2C4
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r1, #0x14
 	ldr r0, [r0]
@@ -1884,12 +1884,12 @@ _0238BCA8:
 	ldrsb r0, [r0, #0x8c]
 	ldr r2, _0238C1B0 @ =0x000003A2
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238BCDC:
-	bl FUN_0200224C
+	bl Rand16Bit
 	mov r1, #0x64
-	bl FUN_0208FEA4
+	bl DivideInt
 	ldr r0, _0238C1B4 @ =0x020A1868
 	ldrsh r0, [r0]
 	cmp r1, r0
@@ -1902,7 +1902,7 @@ _0238BCDC:
 	streq r0, [r1]
 	beq _0238C158
 	bl ov24_0238C4CC
-	bl FUN_0200EDC0
+	bl IsBagFull
 	cmp r0, #0
 	beq _0238BD9C
 	ldr r0, _0238C164 @ =0x0238C600
@@ -1919,13 +1919,13 @@ _0238BCDC:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C168 @ =0x00003018
 	ldr r3, [r0]
@@ -1933,7 +1933,7 @@ _0238BCDC:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238BD9C:
 	ldr r0, _0238C164 @ =0x0238C600
@@ -1944,13 +1944,13 @@ _0238BD9C:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl FUN_0204D7F4
+	bl SetPortraitExpressionId
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl FUN_0202F690
+	bl ShowPortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, _0238C168 @ =0x00003018
 	ldr r3, [r0]
@@ -1958,7 +1958,7 @@ _0238BD9C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r3, #0x25
 	ldr r2, [r0]
@@ -1969,7 +1969,7 @@ _0238BD9C:
 	ldrsh r2, [r2, #0x16]
 	strh r2, [sp, #0xe]
 	strh r1, [sp, #0x10]
-	bl FUN_0200F84C
+	bl SpecialProcAddItemToBag
 	mov r0, #0
 	strb r0, [sp, #8]
 	ldr r0, _0238C164 @ =0x0238C600
@@ -1982,7 +1982,7 @@ _0238BD9C:
 	ldr r2, _0238C1BC @ =0x0238C514
 	add r1, sp, #8
 	add r0, r0, #0x100
-	bl FUN_0200D670
+	bl sub_0200D670
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x7a
@@ -1998,16 +1998,16 @@ _0238BE70:
 _0238BE84:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F2C4
+	bl sub_0202F2C4
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	b _0238C158
 _0238BEA8:
 	add r0, r1, #0x1bc
-	bl FUN_0206351C
+	bl sub_0206351C
 	ldr r3, _0238C164 @ =0x0238C600
 	mov r2, #1
 	ldr r0, [r3]
@@ -2022,16 +2022,16 @@ _0238BEA8:
 	strh r4, [r0, #0xd0]
 	ldr r0, [r3]
 	add r0, r0, #0x1bc
-	bl FUN_0203D438
+	bl sub_0203D438
 	b _0238C158
 _0238BEF0:
-	bl FUN_0201077C
+	bl sub_0201077C
 	mov r1, r0
 	add r0, sp, #0x12
 	mov r2, #1
 	mov r3, #0
-	bl FUN_02053B60
-	bl FUN_0201077C
+	bl sub_02053B60
+	bl sub_0201077C
 	mov r2, #1
 	str r2, [sp]
 	ldr r1, _0238C164 @ =0x0238C600
@@ -2039,7 +2039,7 @@ _0238BEF0:
 	ldr r1, [r1]
 	add r3, sp, #0x12
 	add r1, r1, #0x42
-	bl FUN_02055DD0
+	bl sub_02055DD0
 	ldr r1, _0238C164 @ =0x0238C600
 	mov r2, #0x26
 	ldr r3, [r1]
@@ -2053,7 +2053,7 @@ _0238BF4C:
 	add r1, r1, #0x42
 	add r0, r0, #0x3a
 	mov r2, #0xa
-	bl FUN_0202511C
+	bl StrncpySimple
 	ldr r2, _0238C164 @ =0x0238C600
 	ldr r0, _0238C1C0 @ =0x020A18B8
 	ldr r1, [r2]
@@ -2088,14 +2088,14 @@ _0238BF4C:
 	ldrb r1, [r2, #0xf]
 	add r0, r1, r0
 	strb r0, [r2, #0xf]
-	bl FUN_0201077C
-	bl FUN_0204FDFC
+	bl sub_0201077C
+	bl SetPokemonJoined
 	ldr r1, _0238C164 @ =0x0238C600
 	mov r0, #0
 	ldr r2, [r1]
 	add r1, r2, #0x22
 	str r1, [r2, #0x230]
-	bl FUN_02010794
+	bl sub_02010794
 	mov r3, #0x15
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r1, #0x1b
@@ -2105,7 +2105,7 @@ _0238BF4C:
 	str r1, [r0]
 	bl ov24_0238C4CC
 	mov r0, #5
-	bl FUN_02017C50
+	bl sub_0201820C
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r1, #0x1c
 	ldr r3, [r0]
@@ -2113,7 +2113,7 @@ _0238BF4C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238C054:
 	mov r0, #0xa
@@ -2122,12 +2122,12 @@ _0238C054:
 _0238C060:
 	mov r0, #0x20
 	str r0, [r1, #8]
-	bl FUN_02310BDC
+	bl ov11_02310BDC
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	ldr r0, _0238C164 @ =0x0238C600
 	ldr r2, _0238C1D0 @ =0x000003A3
 	ldr ip, [r0]
@@ -2138,12 +2138,12 @@ _0238C060:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	b _0238C158
 _0238C0B0:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FUN_0202F148
+	bl FreeDBox
 	ldr r1, _0238C164 @ =0x0238C600
 	mvn r3, #1
 	ldr r2, [r1]
@@ -2154,7 +2154,7 @@ _0238C0B0:
 	add r3, r1, #0x66
 	add r1, r1, #0x42
 	add r3, r3, #0x100
-	bl FUN_020367F0
+	bl ShowKeyboard
 	b _0238C158
 _0238C0EC:
 	add r0, r1, #0x66
@@ -2162,18 +2162,18 @@ _0238C0EC:
 	add r3, r0, #0x100
 	mov r0, #2
 	mov r2, #0
-	bl FUN_020367F0
+	bl ShowKeyboard
 	b _0238C158
 _0238C108:
 	add r0, r1, #0x22
-	bl FUN_0203909C
+	bl sub_0203909C
 	b _0238C158
 _0238C114:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FUN_0202F6DC
+	bl HidePortraitBox
 	mov r0, #4
-	bl FUN_02017C50
+	bl sub_0201820C
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r1, #0x18
 	ldr r3, [r0]
@@ -2181,7 +2181,7 @@ _0238C114:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl FUN_0202F1B4
+	bl ShowMessageInDBox
 	ldr r0, _0238C164 @ =0x0238C600
 	mov r1, #4
 	ldr r0, [r0]
@@ -2226,7 +2226,7 @@ ov24_0238C1D4: @ 0x0238C1D4
 	push {r3, lr}
 	mov r0, #0x2a8
 	mov r1, #6
-	bl FUN_02001170
+	bl MemAlloc
 	ldr r1, _0238C33C @ =0x0238C600
 	mov r3, #0
 	str r0, [r1]
@@ -2238,40 +2238,40 @@ ov24_0238C1D4: @ 0x0238C1D4
 	strb r2, [r0, #0x28c]
 	ldr r0, [r1]
 	strb r2, [r0, #0x28d]
-	bl FUN_0201077C
+	bl sub_0201077C
 	ldr r2, _0238C33C @ =0x0238C600
 	mov r1, r0
 	ldr r0, [r2]
 	add r0, r0, #0x52
-	bl FUN_02052394
+	bl GetNameRaw
 	ldr r0, _0238C33C @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x66
 	add r0, r0, #0x100
 	add r1, r1, #0x52
-	bl FUN_02025230
+	bl SpecialStrcpy
 	ldr r0, _0238C33C @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x22
 	add r1, r1, #0x52
-	bl FUN_02089694
+	bl Strcpy
 	ldr r0, _0238C33C @ =0x0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x42
 	add r1, r1, #0x66
 	add r1, r1, #0x100
-	bl FUN_02025100
-	bl FUN_0201077C
+	bl StrcpySimple
+	bl sub_0201077C
 	mov r1, r0
 	ldr r0, _0238C33C @ =0x0238C600
 	mov r2, #0x4e
 	ldr r0, [r0]
 	add r0, r0, #0x66
-	bl FUN_02052440
+	bl GetNameWithGender
 	ldr r0, _0238C33C @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x1f8
-	bl FUN_02023690
+	bl InitPreprocessorArgs
 	mov r3, #0x71
 	ldr r0, _0238C33C @ =0x0238C600
 	mov r2, #0
@@ -2283,11 +2283,11 @@ ov24_0238C1D4: @ 0x0238C1D4
 	str r2, [r1, #0xc]
 	ldr r0, [r0]
 	str r2, [r0, #0x2a4]
-	bl FUN_0201077C
+	bl sub_0201077C
 	cmp r0, #0
 	bne _0238C2FC
 	mov r0, #8
-	bl FUN_0204FBFC
+	bl GetAdventureLogCompleted
 	ldr r1, _0238C33C @ =0x0238C600
 	mov r2, #0
 	ldr r3, [r1]
@@ -2295,18 +2295,18 @@ ov24_0238C1D4: @ 0x0238C1D4
 	ldr r1, [r1]
 	mov r0, #1
 	strb r2, [r1, #0x21]
-	bl FUN_020107C4
+	bl sub_020107C4
 	b _0238C32C
 _0238C2FC:
-	bl FUN_020107AC
+	bl sub_020107AC
 	ldr r1, _0238C33C @ =0x0238C600
 	mov r2, #1
 	ldr r3, [r1]
 	strb r0, [r3, #0x20]
 	ldr r0, [r1]
 	strb r2, [r0, #0x21]
-	bl FUN_0201077C
-	bl FUN_0200EB90
+	bl sub_0201077C
+	bl sub_0200EB90
 	ldr r1, _0238C33C @ =0x0238C600
 	ldr r1, [r1]
 	strh r0, [r1, #0x16]
@@ -2326,7 +2326,7 @@ ov24_0238C340: @ 0x0238C340
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
-	bl FUN_02001188
+	bl MemFree
 	ldr r0, _0238C368 @ =0x0238C600
 	mov r1, #0
 	str r1, [r0]
@@ -2364,12 +2364,12 @@ ov24_0238C47C: @ 0x0238C47C
 	ldrsb r0, [r0, #0x8f]
 	cmp r0, r1
 	popeq {r3, pc}
-	bl FUN_0202836C
+	bl sub_0202836C
 	ldr r0, _0238C4C8 @ =0x0238C600
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8f]
-	bl FUN_0202B4C4
+	bl FreeNormalMenu
 	ldr r0, _0238C4C8 @ =0x0238C600
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2390,7 +2390,7 @@ ov24_0238C4CC: @ 0x0238C4CC
 	cmp r0, r1
 	popne {r3, pc}
 	mov r0, #0
-	bl FUN_0202F0B0
+	bl CreateDBox
 	ldr r1, _0238C504 @ =0x0238C600
 	ldr r1, [r1]
 	strb r0, [r1, #0x28c]

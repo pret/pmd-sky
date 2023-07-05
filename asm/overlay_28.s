@@ -56,7 +56,7 @@ _0238A1B4:
 	sub r1, r2, r1
 	add r0, r5, #0x1a
 	add r1, r3, r1, lsl #6
-	bl FUN_02089694
+	bl Strcpy
 	ldr r0, [r5, #4]
 	mov r2, #0
 	asr r3, r0, #0x10
@@ -78,7 +78,7 @@ _0238A1B4:
 	and r0, r0, #0xff
 	mov r2, #0x20
 	mov r3, #2
-	bl FUN_02028EE8
+	bl sub_02028EE8
 	add r1, r5, #0x1a
 	b _0238A260
 _0238A250:
@@ -115,7 +115,7 @@ _0238A2A4:
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0xc]
 	and r0, r0, #0xff
-	bl FUN_02028F88
+	bl sub_02028F88
 	ldr r2, _0238A454 @ =0x0238ADA0
 	ldr r0, _0238A460 @ =0x0238AD0C
 	ldr r1, [r2]
@@ -166,7 +166,7 @@ _0238A338:
 	and r0, r0, #0xff
 	mov r2, #0x20
 	mov r3, #2
-	bl FUN_02028EE8
+	bl sub_02028EE8
 	mov r0, #3
 	str r0, [r5]
 _0238A398:
@@ -178,7 +178,7 @@ _0238A398:
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0xc]
 	and r0, r0, #0xff
-	bl FUN_02028F88
+	bl sub_02028F88
 	ldr r0, _0238A454 @ =0x0238ADA0
 	ldr r1, _0238A460 @ =0x0238AD0C
 	ldr r0, [r0]
@@ -212,7 +212,7 @@ _0238A41C:
 	and r0, r0, #0xff
 	mov r2, #0x20
 	mov r3, #0x18
-	bl FUN_02028EE8
+	bl sub_02028EE8
 	mov r0, #0
 	b _0238A44C
 _0238A448:
@@ -233,7 +233,7 @@ ov28_0238A468: @ 0x0238A468
 	push {r4, lr}
 	mov r4, r0
 	ldr r0, _0238A488 @ =0x0238ACFC
-	bl FUN_020348E4
+	bl sub_020348E4
 	cmp r0, #0
 	ldrne r0, _0238A48C @ =0x0238ADA0
 	strne r4, [r0]
@@ -248,7 +248,7 @@ ov28_0238A490: @ 0x0238A490
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r0, _0238A578 @ =0x00003618
 	mov r1, #8
-	bl FUN_02001170
+	bl MemAlloc
 	ldr r1, _0238A57C @ =0x0238AD80
 	cmp r0, #0
 	str r0, [r1]
@@ -292,7 +292,7 @@ _0238A528:
 	sub r0, r4, r6
 	add r0, r2, r0, lsl #6
 	lsr r1, r1, #0x10
-	bl FUN_020258B8
+	bl GetStringFromFileVeneer
 	add r4, r4, #1
 _0238A54C:
 	cmp r4, r5
@@ -321,12 +321,12 @@ ov28_0238A58C: @ 0x0238A58C
 	bl ov28_0238AB5C
 	bl FUN_02025C14
 	bl FUN_02027170
-	bl FUN_02027228
+	bl sub_02027228
 	ldr r0, _0238A5C8 @ =0x0238AD80
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
-	bl FUN_02001188
+	bl MemFree
 	ldr r0, _0238A5C8 @ =0x0238AD80
 	mov r1, #0
 	str r1, [r0]
@@ -437,19 +437,19 @@ ov28_0238AB5C: @ 0x0238AB5C
 	mov r3, r2
 	str r0, [sp]
 	str r0, [sp, #4]
-	bl FUN_02028EE8
+	bl sub_02028EE8
 	mov r2, #0x20
 	add r1, sp, #0
 	mov r3, r2
 	mov r0, #1
-	bl FUN_02028EE8
+	bl sub_02028EE8
 	add r1, sp, #0
 	mov r0, #0
 	str r4, [sp]
-	bl FUN_02028F88
+	bl sub_02028F88
 	add r1, sp, #0
 	mov r0, #1
-	bl FUN_02028F88
+	bl sub_02028F88
 	mov r0, #0
 	mov r1, #1
 	bl FUN_0202825C
@@ -518,7 +518,7 @@ _0238AC74:
 _0238AC9C:
 	add r0, sp, #0
 	mov r1, #3
-	bl FUN_020276C0
+	bl sub_020276C0
 	ldr r1, _0238ACF8 @ =0x0238AD80
 	ldr r2, [r1]
 	add r2, r2, r7
@@ -526,7 +526,7 @@ _0238AC9C:
 	ldr r0, [r1]
 	add r0, r0, r7
 	ldrsb r0, [r0, #9]
-	bl FUN_0202810C
+	bl sub_0202810C
 	ldr r0, _0238ACF8 @ =0x0238AD80
 	lsr r6, r5, #0x1f
 	ldr r0, [r0]
@@ -536,7 +536,7 @@ _0238AC9C:
 	mov r2, r8
 	mov r3, r4
 	add r1, r6, r1, ror #29
-	bl FUN_02026214
+	bl sub_02026214
 	add sp, sp, #0x10
 	pop {r4, r5, r6, r7, r8, pc}
 	.align 2, 0

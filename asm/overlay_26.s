@@ -9,33 +9,33 @@ ov26_0238A140: @ 0x0238A140
 	push {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	add r0, sp, #0
-	bl FUN_0204F158
+	bl sub_0204F158
 	cmp r0, #0
 	moveq r0, #0
 	beq _0238A528
 	add r1, sp, #0xc
 	add r2, sp, #8
 	mov r0, #2
-	bl FUN_0204C5DC
+	bl sub_0204C5DC
 	ldr r0, [sp, #8]
 	lsl r0, r0, #0x18
 	asr r0, r0, #0x18
-	bl FUN_0205F0D8
+	bl GetAcceptedMission
 	mov r5, r0
 	ldrb r2, [sp]
 	add r0, sp, #2
 	mov r1, r5
-	bl FUN_0205F118
+	bl sub_0205F118
 	cmp r0, #0
 	bne _0238A1A8
 	mvn r0, #0
-	bl FUN_022E6E8C
+	bl ov11_022E6E8C
 	mov r0, #0
 	b _0238A528
 _0238A1A8:
 	mov r0, #0x9c
 	mov r1, #8
-	bl FUN_02001170
+	bl MemAlloc
 	ldr r1, _0238A530 @ =0x0238AF60
 	mov r4, #0
 	str r0, [r1]
@@ -48,19 +48,19 @@ _0238A1A8:
 	mov r1, #0x68
 	str r5, [r2, #0x90]
 	ldrb r2, [r5, #1]
-	bl FUN_0204B820
+	bl SaveScriptVariableValue
 	ldrb r2, [r5, #2]
 	mov r0, r4
 	mov r1, #0x69
-	bl FUN_0204B820
+	bl SaveScriptVariableValue
 	ldr r0, _0238A530 @ =0x0238AF60
 	ldr r0, [r0]
 	ldr r0, [r0, #0x90]
-	bl FUN_0205F9D4
+	bl sub_0205F9D4
 	ldr r0, _0238A530 @ =0x0238AF60
 	ldr r0, [r0]
 	add r0, r0, #8
-	bl FUN_02023690
+	bl InitPreprocessorArgs
 	ldr r0, _0238A530 @ =0x0238AF60
 	mov r2, r4
 	ldr r3, [r0]
@@ -79,12 +79,12 @@ _0238A1A8:
 	str r2, [r1, #0x2c]
 	ldr r0, [r0]
 	add r0, r0, #0x60
-	bl FUN_0206351C
+	bl sub_0206351C
 	ldr r0, _0238A530 @ =0x0238AF60
 	ldr r1, [r0]
 	ldr r0, [r1, #0x90]
 	add r1, r1, #0x60
-	bl FUN_02062E5C
+	bl sub_02062E5C
 	ldr r0, _0238A530 @ =0x0238AF60
 	mov r3, #2
 	ldr r1, [r0]
@@ -100,13 +100,13 @@ _0238A1A8:
 	cmpne r0, #0xa
 	beq _0238A2B8
 	ldrsh r0, [sp, #4]
-	bl FUN_0204D368
+	bl IncrementExclusiveMonsterCounts
 _0238A2B8:
 	ldrsh r0, [sp, #6]
 	cmp r0, #0
 	beq _0238A2CC
 	ldrsh r0, [sp, #6]
-	bl FUN_0204D368
+	bl IncrementExclusiveMonsterCounts
 _0238A2CC:
 	ldr r0, _0238A530 @ =0x0238AF60
 	ldr r1, [r0]
@@ -181,7 +181,7 @@ _0238A3A0:
 	ldr r0, [r0]
 	ldr r0, [r0, #0x98]
 	and r0, r0, #0xff
-	bl FUN_02050420
+	bl SetChallengeLetterCleared
 	ldr r0, _0238A530 @ =0x0238AF60
 	ldr r2, [r0]
 	ldr r1, [r2, #0x98]
@@ -194,7 +194,7 @@ _0238A3A0:
 	str r1, [r2, #0x94]
 	ldr r0, [r0]
 	add r0, r0, #0x60
-	bl FUN_0206351C
+	bl sub_0206351C
 	ldr r0, _0238A530 @ =0x0238AF60
 	ldr r2, [r0]
 	ldr r1, [r2, #0x90]
@@ -213,7 +213,7 @@ _0238A3A0:
 	cmp r0, #4
 	bhi _0238A458
 	add r0, r1, #4
-	bl FUN_0204F8A8
+	bl GetOutlawLeaderLevel
 	ldr r1, _0238A530 @ =0x0238AF60
 	ldr r1, [r1]
 	str r0, [r1, #0x64]
@@ -231,7 +231,7 @@ ov26_0238A468: @ 0x0238A468
 	ldr r0, [r0]
 	ldr r0, [r0, #0x90]
 	ldrsh r0, [r0, #0xe]
-	bl FUN_02055148
+	bl IsMonsterOnTeam
 	cmp r0, #0
 	beq _0238A4A0
 	ldr r0, _0238A530 @ =0x0238AF60
@@ -255,7 +255,7 @@ _0238A4A0:
 _0238A4C4:
 	add r0, r1, #0x60
 	ldr r4, [r1, #0x88]
-	bl FUN_0206351C
+	bl sub_0206351C
 	ldr r0, _0238A530 @ =0x0238AF60
 	ldr r2, _0238A560 @ =0x000001E3
 	ldr r1, [r0]
@@ -310,7 +310,7 @@ ov26_0238A568: @ 0x0238A568
 	bl ov26_0238A90C
 	ldr r0, _0238A59C @ =0x0238AF60
 	ldr r0, [r0]
-	bl FUN_02001188
+	bl MemFree
 	ldr r0, _0238A59C @ =0x0238AF60
 	mov r1, #0
 	str r1, [r0]
@@ -384,7 +384,7 @@ ov26_0238A90C: @ 0x0238A90C
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	beq _0238A93C
-	bl FUN_0202F148
+	bl FreeDBox
 	ldr r0, _0238A96C @ =0x0238AF60
 	mvn r1, #1
 	ldr r0, [r0]
@@ -396,7 +396,7 @@ _0238A93C:
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
 	popeq {r3, pc}
-	bl FUN_0202F650
+	bl FreePortraitBox
 	ldr r0, _0238A96C @ =0x0238AF60
 	mvn r1, #1
 	ldr r0, [r0]
@@ -411,7 +411,7 @@ ov26_0238A970: @ 0x0238A970
 	push {r3, lr}
 	mov r0, #8
 	mov r1, r0
-	bl FUN_02001170
+	bl MemAlloc
 	ldr r1, _0238A998 @ =0x0238AF64
 	mov r2, #0
 	str r0, [r1]
@@ -429,7 +429,7 @@ ov26_0238A99C: @ 0x0238A99C
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
-	bl FUN_02001188
+	bl MemFree
 	ldr r0, _0238A9C4 @ =0x0238AF64
 	mov r1, #0
 	str r1, [r0]
@@ -446,39 +446,39 @@ ov26_0238A9C8: @ 0x0238A9C8
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	bne _0238AA5C
-	bl FUN_0205633C
+	bl sub_0205633C
 	cmp r0, #0
 	beq _0238A9FC
 	mov r0, #1
-	bl FUN_022E6E8C
+	bl ov11_022E6E8C
 	mov r0, #4
 	pop {r4, pc}
 _0238A9FC:
-	bl FUN_0204AFC0
+	bl GetGameMode
 	cmp r0, #4
 	bne _0238AA10
-	bl FUN_0204E780
+	bl sub_0204E780
 	b _0238AA14
 _0238AA10:
-	bl FUN_0204E770
+	bl sub_0204E770
 _0238AA14:
 	mov r4, r0
 	mov r0, r4
-	bl FUN_02051340
-	bl FUN_0200F7DC
+	bl GetMaxItemsAllowed
+	bl RemoveAllItemsStartingAt
 	mov r0, r4
-	bl FUN_02051358
+	bl IsMoneyAllowed
 	cmp r0, #0
 	bne _0238AA3C
 	mov r0, #0
-	bl FUN_0200ED1C
+	bl SetMoneyCarried
 _0238AA3C:
 	mov r0, r4
-	bl FUN_020577BC
+	bl sub_020577BC
 	mov r0, #1
-	bl FUN_02056318
+	bl sub_02056318
 	mov r0, #1
-	bl FUN_022E6E8C
+	bl ov11_022E6E8C
 	mov r0, #4
 	pop {r4, pc}
 _0238AA5C:
@@ -493,7 +493,7 @@ ov26_0238AA68: @ 0x0238AA68
 	push {r3, lr}
 	mov r0, #8
 	mov r1, r0
-	bl FUN_02001170
+	bl MemAlloc
 	ldr r1, _0238AA90 @ =0x0238AF68
 	mov r2, #0
 	str r0, [r1]
@@ -511,7 +511,7 @@ ov26_0238AA94: @ 0x0238AA94
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
-	bl FUN_02001188
+	bl MemFree
 	ldr r0, _0238AABC @ =0x0238AF68
 	mov r1, #0
 	str r1, [r0]
@@ -548,7 +548,7 @@ ov26_0238AC14: @ 0x0238AC14
 	push {r3, lr}
 	mov r0, #8
 	mov r1, r0
-	bl FUN_02001170
+	bl MemAlloc
 	ldr r1, _0238AC3C @ =0x0238AF6C
 	mov r2, #0
 	str r0, [r1]
@@ -566,7 +566,7 @@ ov26_0238AC40: @ 0x0238AC40
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
-	bl FUN_02001188
+	bl MemFree
 	ldr r0, _0238AC68 @ =0x0238AF6C
 	mov r1, #0
 	str r1, [r0]
@@ -587,21 +587,21 @@ ov26_0238AC6C: @ 0x0238AC6C
 	beq _0238ACC0
 	b _0238ACCC
 _0238AC90:
-	bl FUN_0205633C
+	bl sub_0205633C
 	cmp r0, #0
 	bne _0238ACA8
-	bl FUN_0230CDE0
+	bl ov11_0230CDE
 	mov r0, #4
 	pop {r3, pc}
 _0238ACA8:
-	bl FUN_020587C8
+	bl sub_020587C8
 	ldr r0, _0238ACD4 @ =0x0238AF6C
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #4]
 	b _0238ACCC
 _0238ACC0:
-	bl FUN_022E6E68
+	bl ov00_022E6E68
 	mov r0, #4
 	pop {r3, pc}
 _0238ACCC:
@@ -616,7 +616,7 @@ ov26_0238ACD8: @ 0x0238ACD8
 	push {r3, lr}
 	mov r0, #8
 	mov r1, r0
-	bl FUN_02001170
+	bl MemAlloc
 	ldr r1, _0238AD0C @ =0x0238AF70
 	mov r2, #0
 	str r0, [r1]
@@ -637,7 +637,7 @@ ov26_0238AD10: @ 0x0238AD10
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
-	bl FUN_02001188
+	bl MemFree
 	ldr r0, _0238AD38 @ =0x0238AF70
 	mov r1, #0
 	str r1, [r0]
