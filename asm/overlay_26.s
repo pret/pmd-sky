@@ -5,7 +5,7 @@
 	.text
 
 	arm_func_start ov26_0238A140
-ov26_0238A140: @ 0x0238A140
+ov26_0238A140: ; 0x0238A140
 	push {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	add r0, sp, #0
@@ -36,7 +36,7 @@ _0238A1A8:
 	mov r0, #0x9c
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _0238A530 @ =0x0238AF60
+	ldr r1, _0238A530 ; =0x0238AF60
 	mov r4, #0
 	str r0, [r1]
 	str r4, [r0]
@@ -53,15 +53,15 @@ _0238A1A8:
 	mov r0, r4
 	mov r1, #0x69
 	bl SaveScriptVariableValue
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	ldr r0, [r0]
 	ldr r0, [r0, #0x90]
 	bl sub_0205F9D4
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	ldr r0, [r0]
 	add r0, r0, #8
 	bl InitPreprocessorArgs
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	mov r2, r4
 	ldr r3, [r0]
 	ldr r1, [r3, #0x90]
@@ -80,12 +80,12 @@ _0238A1A8:
 	ldr r0, [r0]
 	add r0, r0, #0x60
 	bl sub_0206351C
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	ldr r1, [r0]
 	ldr r0, [r1, #0x90]
 	add r1, r1, #0x60
 	bl sub_02062E5C
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	mov r3, #2
 	ldr r1, [r0]
 	mov r2, r4
@@ -108,57 +108,57 @@ _0238A2B8:
 	ldrsh r0, [sp, #6]
 	bl IncrementExclusiveMonsterCounts
 _0238A2CC:
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	ldr r1, [r0]
 	ldr r2, [r1, #0x90]
 	ldrb r2, [r2, #1]
 	cmp r2, #0xc
 	addls pc, pc, r2, lsl #2
 	b _0238A504
-_0238A2E8: @ jump table
-	b _0238A31C @ case 0
-	b _0238A328 @ case 1
-	b _0238A334 @ case 2
-	b _0238A340 @ case 3
-	b _0238A504 @ case 4
-	b _0238A504 @ case 5
-	b _0238A34C @ case 6
-	b _0238A358 @ case 7
-	b _0238A364 @ case 8
-	b _0238A370 @ case 9
-	b _0238A37C @ case 10
-	b _0238A3A0 @ case 11
-	b _0238A4C4 @ case 12
+_0238A2E8: ; jump table
+	b _0238A31C ; case 0
+	b _0238A328 ; case 1
+	b _0238A334 ; case 2
+	b _0238A340 ; case 3
+	b _0238A504 ; case 4
+	b _0238A504 ; case 5
+	b _0238A34C ; case 6
+	b _0238A358 ; case 7
+	b _0238A364 ; case 8
+	b _0238A370 ; case 9
+	b _0238A37C ; case 10
+	b _0238A3A0 ; case 11
+	b _0238A4C4 ; case 12
 _0238A31C:
-	ldr r0, _0238A534 @ =0x0238AE92
+	ldr r0, _0238A534 ; =0x0238AE92
 	str r0, [r1, #0x94]
 	b _0238A50C
 _0238A328:
-	ldr r0, _0238A538 @ =0x0238AE86
+	ldr r0, _0238A538 ; =0x0238AE86
 	str r0, [r1, #0x94]
 	b _0238A50C
 _0238A334:
-	ldr r0, _0238A53C @ =0x0238AE7A
+	ldr r0, _0238A53C ; =0x0238AE7A
 	str r0, [r1, #0x94]
 	b _0238A50C
 _0238A340:
-	ldr r0, _0238A540 @ =0x0238AE6E
+	ldr r0, _0238A540 ; =0x0238AE6E
 	str r0, [r1, #0x94]
 	b _0238A50C
 _0238A34C:
-	ldr r0, _0238A544 @ =0x0238AE56
+	ldr r0, _0238A544 ; =0x0238AE56
 	str r0, [r1, #0x94]
 	b _0238A50C
 _0238A358:
-	ldr r0, _0238A548 @ =0x0238AE62
+	ldr r0, _0238A548 ; =0x0238AE62
 	str r0, [r1, #0x94]
 	b _0238A50C
 _0238A364:
-	ldr r0, _0238A54C @ =0x0238AE4A
+	ldr r0, _0238A54C ; =0x0238AE4A
 	str r0, [r1, #0x94]
 	b _0238A50C
 _0238A370:
-	ldr r0, _0238A550 @ =0x0238AE3E
+	ldr r0, _0238A550 ; =0x0238AE3E
 	str r0, [r1, #0x94]
 	b _0238A50C
 _0238A37C:
@@ -168,7 +168,7 @@ _0238A37C:
 	mov r2, #0x1f8
 	strh r2, [r1, #0x60]
 	ldr r0, [r0]
-	ldr r1, _0238A554 @ =0x0238AE32
+	ldr r1, _0238A554 ; =0x0238AE32
 	str r1, [r0, #0x94]
 	b _0238A50C
 _0238A3A0:
@@ -182,20 +182,20 @@ _0238A3A0:
 	ldr r0, [r0, #0x98]
 	and r0, r0, #0xff
 	bl SetChallengeLetterCleared
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	ldr r2, [r0]
 	ldr r1, [r2, #0x98]
 	cmp r1, #0
-	ldreq r0, _0238A558 @ =0x0238AE9E
+	ldreq r0, _0238A558 ; =0x0238AE9E
 	streq r0, [r2, #0x94]
 	beq _0238A50C
 	ldr r4, [r2, #0x88]
-	ldr r1, _0238A55C @ =0x0238AE20
+	ldr r1, _0238A55C ; =0x0238AE20
 	str r1, [r2, #0x94]
 	ldr r0, [r0]
 	add r0, r0, #0x60
 	bl sub_0206351C
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	ldr r2, [r0]
 	ldr r1, [r2, #0x90]
 	ldrsh r1, [r1, #0xe]
@@ -214,7 +214,7 @@ _0238A3A0:
 	bhi _0238A458
 	add r0, r1, #4
 	bl GetOutlawLeaderLevel
-	ldr r1, _0238A530 @ =0x0238AF60
+	ldr r1, _0238A530 ; =0x0238AF60
 	ldr r1, [r1]
 	str r0, [r1, #0x64]
 	b _0238A460
@@ -222,19 +222,19 @@ _0238A458:
 	mov r0, #1
 	str r0, [r2, #0x64]
 _0238A460:
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	mov r1, #0
 	arm_func_end ov26_0238A140
 
 	arm_func_start ov26_0238A468
-ov26_0238A468: @ 0x0238A468
+ov26_0238A468: ; 0x0238A468
 	ldr r0, [r0]
 	ldr r0, [r0, #0x90]
 	ldrsh r0, [r0, #0xe]
 	bl IsMonsterOnTeam
 	cmp r0, #0
 	beq _0238A4A0
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	mov r3, #0
 	ldr r2, [r0]
 	mov r1, #0x3e8
@@ -243,7 +243,7 @@ ov26_0238A468: @ 0x0238A468
 	str r1, [r0, #0x68]
 	b _0238A50C
 _0238A4A0:
-	ldr r0, _0238A530 @ =0x0238AF60
+	ldr r0, _0238A530 ; =0x0238AF60
 	mov r1, #6
 	ldr r3, [r0]
 	ldr r2, [r3, #0x90]
@@ -256,13 +256,13 @@ _0238A4C4:
 	add r0, r1, #0x60
 	ldr r4, [r1, #0x88]
 	bl sub_0206351C
-	ldr r0, _0238A530 @ =0x0238AF60
-	ldr r2, _0238A560 @ =0x000001E3
+	ldr r0, _0238A530 ; =0x0238AF60
+	ldr r2, _0238A560 ; =0x000001E3
 	ldr r1, [r0]
 	mov r3, #0
 	strh r2, [r1, #0x60]
 	ldr r2, [r0]
-	ldr r1, _0238A55C @ =0x0238AE20
+	ldr r1, _0238A55C ; =0x0238AE20
 	strb r3, [r2, #0x62]
 	ldr r2, [r0]
 	str r4, [r2, #0x88]
@@ -270,10 +270,10 @@ _0238A4C4:
 	str r1, [r0, #0x94]
 	b _0238A50C
 _0238A504:
-	ldr r0, _0238A564 @ =0x0238AE26
+	ldr r0, _0238A564 ; =0x0238AE26
 	str r0, [r1, #0x94]
 _0238A50C:
-	ldr r1, _0238A530 @ =0x0238AF60
+	ldr r1, _0238A530 ; =0x0238AF60
 	mvn r3, #1
 	ldr r2, [r1]
 	mov r0, #1
@@ -301,17 +301,17 @@ _0238A564: .4byte 0x0238AE26
 	arm_func_end ov26_0238A468
 
 	arm_func_start ov26_0238A568
-ov26_0238A568: @ 0x0238A568
+ov26_0238A568: ; 0x0238A568
 	push {r3, lr}
-	ldr r0, _0238A59C @ =0x0238AF60
+	ldr r0, _0238A59C ; =0x0238AF60
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
 	bl ov26_0238A90C
-	ldr r0, _0238A59C @ =0x0238AF60
+	ldr r0, _0238A59C ; =0x0238AF60
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0238A59C @ =0x0238AF60
+	ldr r0, _0238A59C ; =0x0238AF60
 	mov r1, #0
 	str r1, [r0]
 	pop {r3, pc}
@@ -376,28 +376,28 @@ _0238A5A0:
 	.byte 0x3C, 0x00, 0x01, 0x00, 0x3D, 0x00, 0x01, 0x00, 0x3F, 0x00, 0x01, 0x00
 
 	arm_func_start ov26_0238A90C
-ov26_0238A90C: @ 0x0238A90C
+ov26_0238A90C: ; 0x0238A90C
 	push {r3, lr}
-	ldr r0, _0238A96C @ =0x0238AF60
+	ldr r0, _0238A96C ; =0x0238AF60
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	beq _0238A93C
 	bl FreeDBox
-	ldr r0, _0238A96C @ =0x0238AF60
+	ldr r0, _0238A96C ; =0x0238AF60
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #4]
 _0238A93C:
-	ldr r0, _0238A96C @ =0x0238AF60
+	ldr r0, _0238A96C ; =0x0238AF60
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
 	popeq {r3, pc}
 	bl FreePortraitBox
-	ldr r0, _0238A96C @ =0x0238AF60
+	ldr r0, _0238A96C ; =0x0238AF60
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #5]
@@ -407,12 +407,12 @@ _0238A96C: .4byte 0x0238AF60
 	arm_func_end ov26_0238A90C
 
 	arm_func_start ov26_0238A970
-ov26_0238A970: @ 0x0238A970
+ov26_0238A970: ; 0x0238A970
 	push {r3, lr}
 	mov r0, #8
 	mov r1, r0
 	bl MemAlloc
-	ldr r1, _0238A998 @ =0x0238AF64
+	ldr r1, _0238A998 ; =0x0238AF64
 	mov r2, #0
 	str r0, [r1]
 	str r2, [r0, #4]
@@ -423,14 +423,14 @@ _0238A998: .4byte 0x0238AF64
 	arm_func_end ov26_0238A970
 
 	arm_func_start ov26_0238A99C
-ov26_0238A99C: @ 0x0238A99C
+ov26_0238A99C: ; 0x0238A99C
 	push {r3, lr}
-	ldr r0, _0238A9C4 @ =0x0238AF64
+	ldr r0, _0238A9C4 ; =0x0238AF64
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
 	bl MemFree
-	ldr r0, _0238A9C4 @ =0x0238AF64
+	ldr r0, _0238A9C4 ; =0x0238AF64
 	mov r1, #0
 	str r1, [r0]
 	pop {r3, pc}
@@ -439,9 +439,9 @@ _0238A9C4: .4byte 0x0238AF64
 	arm_func_end ov26_0238A99C
 
 	arm_func_start ov26_0238A9C8
-ov26_0238A9C8: @ 0x0238A9C8
+ov26_0238A9C8: ; 0x0238A9C8
 	push {r4, lr}
-	ldr r0, _0238AA64 @ =0x0238AF64
+	ldr r0, _0238AA64 ; =0x0238AF64
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -489,12 +489,12 @@ _0238AA64: .4byte 0x0238AF64
 	arm_func_end ov26_0238A9C8
 
 	arm_func_start ov26_0238AA68
-ov26_0238AA68: @ 0x0238AA68
+ov26_0238AA68: ; 0x0238AA68
 	push {r3, lr}
 	mov r0, #8
 	mov r1, r0
 	bl MemAlloc
-	ldr r1, _0238AA90 @ =0x0238AF68
+	ldr r1, _0238AA90 ; =0x0238AF68
 	mov r2, #0
 	str r0, [r1]
 	str r2, [r0, #4]
@@ -505,14 +505,14 @@ _0238AA90: .4byte 0x0238AF68
 	arm_func_end ov26_0238AA68
 
 	arm_func_start ov26_0238AA94
-ov26_0238AA94: @ 0x0238AA94
+ov26_0238AA94: ; 0x0238AA94
 	push {r3, lr}
-	ldr r0, _0238AABC @ =0x0238AF68
+	ldr r0, _0238AABC ; =0x0238AF68
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
 	bl MemFree
-	ldr r0, _0238AABC @ =0x0238AF68
+	ldr r0, _0238AABC ; =0x0238AF68
 	mov r1, #0
 	str r1, [r0]
 	pop {r3, pc}
@@ -544,12 +544,12 @@ _0238AAC0:
 	.byte 0x18, 0xAF, 0x38, 0x02
 
 	arm_func_start ov26_0238AC14
-ov26_0238AC14: @ 0x0238AC14
+ov26_0238AC14: ; 0x0238AC14
 	push {r3, lr}
 	mov r0, #8
 	mov r1, r0
 	bl MemAlloc
-	ldr r1, _0238AC3C @ =0x0238AF6C
+	ldr r1, _0238AC3C ; =0x0238AF6C
 	mov r2, #0
 	str r0, [r1]
 	str r2, [r0, #4]
@@ -560,14 +560,14 @@ _0238AC3C: .4byte 0x0238AF6C
 	arm_func_end ov26_0238AC14
 
 	arm_func_start ov26_0238AC40
-ov26_0238AC40: @ 0x0238AC40
+ov26_0238AC40: ; 0x0238AC40
 	push {r3, lr}
-	ldr r0, _0238AC68 @ =0x0238AF6C
+	ldr r0, _0238AC68 ; =0x0238AF6C
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
 	bl MemFree
-	ldr r0, _0238AC68 @ =0x0238AF6C
+	ldr r0, _0238AC68 ; =0x0238AF6C
 	mov r1, #0
 	str r1, [r0]
 	pop {r3, pc}
@@ -576,9 +576,9 @@ _0238AC68: .4byte 0x0238AF6C
 	arm_func_end ov26_0238AC40
 
 	arm_func_start ov26_0238AC6C
-ov26_0238AC6C: @ 0x0238AC6C
+ov26_0238AC6C: ; 0x0238AC6C
 	push {r3, lr}
-	ldr r0, _0238ACD4 @ =0x0238AF6C
+	ldr r0, _0238ACD4 ; =0x0238AF6C
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -595,7 +595,7 @@ _0238AC90:
 	pop {r3, pc}
 _0238ACA8:
 	bl sub_020587C8
-	ldr r0, _0238ACD4 @ =0x0238AF6C
+	ldr r0, _0238ACD4 ; =0x0238AF6C
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #4]
@@ -612,12 +612,12 @@ _0238ACD4: .4byte 0x0238AF6C
 	arm_func_end ov26_0238AC6C
 
 	arm_func_start ov26_0238ACD8
-ov26_0238ACD8: @ 0x0238ACD8
+ov26_0238ACD8: ; 0x0238ACD8
 	push {r3, lr}
 	mov r0, #8
 	mov r1, r0
 	bl MemAlloc
-	ldr r1, _0238AD0C @ =0x0238AF70
+	ldr r1, _0238AD0C ; =0x0238AF70
 	mov r2, #0
 	str r0, [r1]
 	str r2, [r0]
@@ -631,14 +631,14 @@ _0238AD0C: .4byte 0x0238AF70
 	arm_func_end ov26_0238ACD8
 
 	arm_func_start ov26_0238AD10
-ov26_0238AD10: @ 0x0238AD10
+ov26_0238AD10: ; 0x0238AD10
 	push {r3, lr}
-	ldr r0, _0238AD38 @ =0x0238AF70
+	ldr r0, _0238AD38 ; =0x0238AF70
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
 	bl MemFree
-	ldr r0, _0238AD38 @ =0x0238AF70
+	ldr r0, _0238AD38 ; =0x0238AF70
 	mov r1, #0
 	str r1, [r0]
 	pop {r3, pc}
@@ -661,7 +661,7 @@ _0238AD3C:
 	.byte 0x03, 0x10, 0xA0, 0x03, 0x00, 0x00, 0x90, 0x05, 0x00, 0x10, 0x80, 0x05
 
 	arm_func_start ov26_0238ADFC
-ov26_0238ADFC: @ 0x0238ADFC
+ov26_0238ADFC: ; 0x0238ADFC
 	b _0238AE10
 _0238AE00:
 	.byte 0x15, 0xEE, 0xF2, 0xEB, 0x17, 0x70, 0xFD, 0xEB, 0x04, 0x00, 0xA0, 0xE3, 0x00, 0x00, 0x00, 0xEA
@@ -670,4 +670,4 @@ _0238AE10:
 	add sp, sp, #0xe8
 	pop {r3, pc}
 	arm_func_end ov26_0238ADFC
-	@ 0x0238AE1C
+	; 0x0238AE1C

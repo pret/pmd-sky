@@ -5,26 +5,26 @@
 	.text
 
 	arm_func_start ov09_0233CA80
-ov09_0233CA80: @ 0x0233CA80
+ov09_0233CA80: ; 0x0233CA80
 	push {r3, r4, r5, r6, r7, r8, sb, lr}
 	bl sub_02003BAC
 	bl sub_02017EE8
 	mov r0, #0x314
 	mov r1, #8
 	bl MemAlloc
-	ldr r2, _0233CBB8 @ =0x0233F7E0
+	ldr r2, _0233CBB8 ; =0x0233F7E0
 	mov r1, #0
 	str r0, [r2]
 	str r1, [r0, #0x3c]
 	arm_func_end ov09_0233CA80
 
 	arm_func_start ov09_0233CAA8
-ov09_0233CAA8: @ 0x0233CAA8
+ov09_0233CAA8: ; 0x0233CAA8
 	ldr r0, [r2]
 	sub r3, r1, #2
 	strb r3, [r0]
 	ldr r0, [r2]
-	ldr r7, _0233CBBC @ =0x0233F61C
+	ldr r7, _0233CBBC ; =0x0233F61C
 	strb r3, [r0, #1]
 	ldr r0, [r2]
 	strb r3, [r0, #2]
@@ -35,9 +35,9 @@ ov09_0233CAA8: @ 0x0233CAA8
 	arm_func_end ov09_0233CAA8
 
 	arm_func_start ov09_0233CAD8
-ov09_0233CAD8: @ 0x0233CAD8
+ov09_0233CAD8: ; 0x0233CAD8
 	ldr r0, [r2]
-	ldr r3, _0233CBC0 @ =0x0233F664
+	ldr r3, _0233CBC0 ; =0x0233F664
 	add r6, r0, #0x4c
 	add r8, r0, #0x284
 	mov r2, r1
@@ -54,15 +54,15 @@ _0233CAEC:
 	arm_func_end ov09_0233CAD8
 
 	arm_func_start ov09_0233CB10
-ov09_0233CB10: @ 0x0233CB10
+ov09_0233CB10: ; 0x0233CB10
 	add r6, r6, #4
 	blt _0233CAEC
 	strh r2, [r6]
 	strh r2, [r6, #2]
-	ldr r6, _0233CBC4 @ =0x000004FD
+	ldr r6, _0233CBC4 ; =0x000004FD
 	mov r5, #0
 	mov r4, #1
-	ldr sb, _0233CBB8 @ =0x0233F7E0
+	ldr sb, _0233CBB8 ; =0x0233F7E0
 	mvn r8, #0
 	b _0233CB90
 _0233CB38:
@@ -70,7 +70,7 @@ _0233CB38:
 	arm_func_end ov09_0233CB10
 
 	arm_func_start ov09_0233CB3C
-ov09_0233CB3C: @ 0x0233CB3C
+ov09_0233CB3C: ; 0x0233CB3C
 	bl sub_0204CA1C
 	cmp r0, #0
 	bne _0233CB8C
@@ -99,7 +99,7 @@ _0233CB90:
 	ldr r0, [r7]
 	cmp r0, r8
 	bne _0233CB38
-	ldr r0, _0233CBB8 @ =0x0233F7E0
+	ldr r0, _0233CBB8 ; =0x0233F7E0
 	ldr r1, [r0]
 	add r0, r1, #8
 	add r1, r1, #0x4c
@@ -114,14 +114,14 @@ _0233CBC4: .4byte 0x000004FD
 	arm_func_end ov09_0233CB3C
 
 	arm_func_start ov09_0233CBC8
-ov09_0233CBC8: @ 0x0233CBC8
+ov09_0233CBC8: ; 0x0233CBC8
 	push {r3, lr}
-	ldr r0, _0233CBF4 @ =0x0233F7E0
+	ldr r0, _0233CBF4 ; =0x0233F7E0
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
 	bl MemFree
-	ldr r0, _0233CBF4 @ =0x0233F7E0
+	ldr r0, _0233CBF4 ; =0x0233F7E0
 	mov r1, #0
 	str r1, [r0]
 	bl sub_02003BC8
@@ -162,33 +162,33 @@ _0233CBF8:
 	.byte 0x00, 0x00, 0x50, 0xE3, 0x01, 0x00, 0x40, 0xC2
 
 	arm_func_start ov09_0233CDC8
-ov09_0233CDC8: @ 0x0233CDC8
+ov09_0233CDC8: ; 0x0233CDC8
 	strgt r0, [r5, #0x48]
 	bgt _0233D918
 	add r3, sp, #0xf00
-	ldr r4, _0233D930 @ =0x000004EF
+	ldr r4, _0233D930 ; =0x000004EF
 	arm_func_end ov09_0233CDC8
 
 	arm_func_start ov09_0233CDD8
-ov09_0233CDD8: @ 0x0233CDD8
+ov09_0233CDD8: ; 0x0233CDD8
 	add r3, r3, #8
 	strh r4, [r3, #0x80]
 	add ip, r5, #0x284
 	arm_func_end ov09_0233CDD8
 
 	arm_func_start ov09_0233CDE4
-ov09_0233CDE4: @ 0x0233CDE4
+ov09_0233CDE4: ; 0x0233CDE4
 	mov lr, #0x10
 	str ip, [sp, #0xfe0]
-	ldr r0, _0233D934 @ =0x0233F58C
-	ldr r1, _0233D938 @ =0x00401A13
+	ldr r0, _0233D934 ; =0x0233F58C
+	ldr r1, _0233D938 ; =0x00401A13
 	add r2, sp, #0xf80
 	str lr, [sp, #0xf8c]
 	mov ip, #6
 	add r3, r5, #8
 	str ip, [sp]
 	bl ov09_0233E030
-	ldr r1, _0233D928 @ =0x0233F7E0
+	ldr r1, _0233D928 ; =0x0233F7E0
 	ldr r2, [r1]
 	strb r0, [r2]
 	ldr r1, [r1]
@@ -196,10 +196,10 @@ ov09_0233CDE4: @ 0x0233CDE4
 	cmp r0, #0
 	mvneq r0, #0
 	streq r0, [r1, #0x14]
-	ldr r0, _0233D93C @ =0x0233F59C
+	ldr r0, _0233D93C ; =0x0233F59C
 	bl CreateDBox
-	ldr r3, _0233D928 @ =0x0233F7E0
-	ldr r1, _0233D940 @ =0x00000404
+	ldr r3, _0233D928 ; =0x0233F7E0
+	ldr r1, _0233D940 ; =0x00000404
 	ldr ip, [r3]
 	add r2, r1, #0xed
 	strb r0, [ip, #1]
@@ -207,7 +207,7 @@ ov09_0233CDE4: @ 0x0233CDE4
 	mov r3, #0
 	ldrsb r0, [r0, #1]
 	bl ShowMessageInDBox
-	ldr r0, _0233D928 @ =0x0233F7E0
+	ldr r0, _0233D928 ; =0x0233F7E0
 	mov r3, #0
 	ldr r2, [r0]
 	mov r1, #4
@@ -408,7 +408,7 @@ _0233D944:
 	.byte 0x7C, 0xF5, 0x33, 0x02
 
 	arm_func_start ov09_0233D964
-ov09_0233D964: @ 0x0233D964
+ov09_0233D964: ; 0x0233D964
 	push {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -445,7 +445,7 @@ _0233D9D0:
 	arm_func_end ov09_0233D964
 
 	arm_func_start ov09_0233D9DC
-ov09_0233D9DC: @ 0x0233D9DC
+ov09_0233D9DC: ; 0x0233D9DC
 	mov r1, #0
 	str r1, [r0, #0x18]
 	str r1, [r0, #0x1c]
@@ -456,7 +456,7 @@ ov09_0233D9DC: @ 0x0233D9DC
 	arm_func_end ov09_0233D9DC
 
 	arm_func_start ov09_0233D9F8
-ov09_0233D9F8: @ 0x0233D9F8
+ov09_0233D9F8: ; 0x0233D9F8
 	push {r4, lr}
 	mov r4, r0
 	ldr r1, [r4, #0xc]
@@ -481,7 +481,7 @@ ov09_0233D9F8: @ 0x0233D9F8
 	arm_func_end ov09_0233D9F8
 
 	arm_func_start ov09_0233DA4C
-ov09_0233DA4C: @ 0x0233DA4C
+ov09_0233DA4C: ; 0x0233DA4C
 	push {r4, lr}
 	mov r4, r0
 	bl sub_02017EE8
@@ -494,7 +494,7 @@ ov09_0233DA4C: @ 0x0233DA4C
 	arm_func_end ov09_0233DA4C
 
 	arm_func_start ov09_0233DA70
-ov09_0233DA70: @ 0x0233DA70
+ov09_0233DA70: ; 0x0233DA70
 	push {r3, lr}
 	ldr r3, [r0, #0xc]
 	mvn r1, #0
@@ -523,7 +523,7 @@ _0233DA88:
 	arm_func_end ov09_0233DA70
 
 	arm_func_start ov09_0233DAD0
-ov09_0233DAD0: @ 0x0233DAD0
+ov09_0233DAD0: ; 0x0233DAD0
 	push {r4, lr}
 	mov r4, r0
 	ldr r2, [r4, #0xc]
@@ -561,7 +561,7 @@ _0233DB10:
 	arm_func_end ov09_0233DAD0
 
 	arm_func_start ov09_0233DB54
-ov09_0233DB54: @ 0x0233DB54
+ov09_0233DB54: ; 0x0233DB54
 	ldrb r1, [r0, #0x15]
 	cmp r1, #0
 	moveq r1, #1
@@ -571,7 +571,7 @@ ov09_0233DB54: @ 0x0233DB54
 	arm_func_end ov09_0233DB54
 
 	arm_func_start ov09_0233DB6C
-ov09_0233DB6C: @ 0x0233DB6C
+ov09_0233DB6C: ; 0x0233DB6C
 	ldrb r1, [r0, #0x16]
 	cmp r1, #0
 	moveq r1, #1
@@ -581,14 +581,14 @@ ov09_0233DB6C: @ 0x0233DB6C
 	arm_func_end ov09_0233DB6C
 
 	arm_func_start ov09_0233DB84
-ov09_0233DB84: @ 0x0233DB84
+ov09_0233DB84: ; 0x0233DB84
 	mov r1, #0x78
 	str r1, [r0, #0x28]
 	bx lr
 	arm_func_end ov09_0233DB84
 
 	arm_func_start ov09_0233DB90
-ov09_0233DB90: @ 0x0233DB90
+ov09_0233DB90: ; 0x0233DB90
 	push {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	movs r6, r3
@@ -701,7 +701,7 @@ _0233DD1C:
 	subgt r0, r0, #1
 	strgt r0, [r8, #0x28]
 	ldrh r1, [sp]
-	ldr r0, _0233DEE8 @ =0x00000F04
+	ldr r0, _0233DEE8 ; =0x00000F04
 	tst r1, r0
 	beq _0233DD68
 	bl sub_02003B5C
@@ -826,7 +826,7 @@ _0233DEE8: .4byte 0x00000F04
 	arm_func_end ov09_0233DB90
 
 	arm_func_start ov09_0233DEEC
-ov09_0233DEEC: @ 0x0233DEEC
+ov09_0233DEEC: ; 0x0233DEEC
 	push {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
 	mov r4, #0
@@ -916,7 +916,7 @@ _0233E028:
 	arm_func_end ov09_0233DEEC
 
 	arm_func_start ov09_0233E030
-ov09_0233E030: @ 0x0233E030
+ov09_0233E030: ; 0x0233E030
 	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x34
 	mov sl, r3
@@ -945,7 +945,7 @@ _0233E060:
 	mov r7, #0x100
 	b _0233E0B8
 _0233E094:
-	ldr r3, _0233E2C8 @ =0x0000C402
+	ldr r3, _0233E2C8 ; =0x0000C402
 	mov r0, r5
 	mov r1, r7
 	str r4, [sp]
@@ -981,11 +981,11 @@ _0233E0B8:
 	addne ip, sp, #0x14
 	ldmne sb, {r0, r1, r2, r3}
 	stmne ip, {r0, r1, r2, r3}
-	ldrne r0, _0233E2CC @ =ov09_0233E3DC
+	ldrne r0, _0233E2CC ; =ov09_0233E3DC
 	orr sl, sl, #0x8000
 	strne r0, [sp, #0x14]
 	bne _0233E144
-	ldr r0, _0233E2D0 @ =0x0233F794
+	ldr r0, _0233E2D0 ; =0x0233F794
 	add sb, sp, #0x14
 	ldm r0, {r0, r1, r2, r3}
 	stm sb, {r0, r1, r2, r3}
@@ -1057,7 +1057,7 @@ _0233E208:
 	ldrbne r0, [sp, #0x1b]
 	subne r0, r1, r0
 	strbne r0, [sp, #0x19]
-	ldr r0, _0233E2CC @ =ov09_0233E3DC
+	ldr r0, _0233E2CC ; =ov09_0233E3DC
 	cmp r8, #0
 	str r0, [r7]
 	str sl, [r7, #0x100]
@@ -1104,7 +1104,7 @@ _0233E2D0: .4byte 0x0233F794
 	arm_func_end ov09_0233E030
 
 	arm_func_start ov09_0233E2D4
-ov09_0233E2D4: @ 0x0233E2D4
+ov09_0233E2D4: ; 0x0233E2D4
 	push {r3, lr}
 	bl GetDialogBoxField0xC
 	mov r1, #1
@@ -1121,7 +1121,7 @@ ov09_0233E2D4: @ 0x0233E2D4
 	arm_func_end ov09_0233E2D4
 
 	arm_func_start ov09_0233E308
-ov09_0233E308: @ 0x0233E308
+ov09_0233E308: ; 0x0233E308
 	push {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetDialogBoxField0xC
@@ -1142,7 +1142,7 @@ ov09_0233E308: @ 0x0233E308
 	arm_func_end ov09_0233E308
 
 	arm_func_start ov09_0233E34C
-ov09_0233E34C: @ 0x0233E34C
+ov09_0233E34C: ; 0x0233E34C
 	push {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetDialogBoxField0xC
@@ -1160,7 +1160,7 @@ ov09_0233E34C: @ 0x0233E34C
 	arm_func_end ov09_0233E34C
 
 	arm_func_start ov09_0233E384
-ov09_0233E384: @ 0x0233E384
+ov09_0233E384: ; 0x0233E384
 	push {r3, lr}
 	bl GetDialogBoxField0xC
 	ldr r0, [r0, #0x1a0]
@@ -1172,7 +1172,7 @@ ov09_0233E384: @ 0x0233E384
 	arm_func_end ov09_0233E384
 
 	arm_func_start ov09_0233E3A4
-ov09_0233E3A4: @ 0x0233E3A4
+ov09_0233E3A4: ; 0x0233E3A4
 	push {r3, lr}
 	bl GetDialogBoxField0xC
 	ldrb r1, [r0, #0x1a4]
@@ -1181,7 +1181,7 @@ ov09_0233E3A4: @ 0x0233E3A4
 	ldrb r1, [r0, #0x1a5]
 	cmp r1, #0
 	mvnne r0, #0
-	popne {r3, pc}
+	ldmneia sp!,  {r3, pc}
 	add r0, r0, #8
 	bl sub_02032578
 	pop {r3, pc}
@@ -1191,7 +1191,7 @@ _0233E3D4:
 	arm_func_end ov09_0233E3A4
 
 	arm_func_start ov09_0233E3DC
-ov09_0233E3DC: @ 0x0233E3DC
+ov09_0233E3DC: ; 0x0233E3DC
 	push {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x34
 	mov r6, r0
@@ -1200,14 +1200,14 @@ ov09_0233E3DC: @ 0x0233E3DC
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
 	b _0233E7E8
-_0233E3FC: @ jump table
-	b _0233E418 @ case 0
-	b _0233E430 @ case 1
-	b _0233E444 @ case 2
-	b _0233E44C @ case 3
-	b _0233E4AC @ case 4
-	b _0233E76C @ case 5
-	b _0233E7B0 @ case 6
+_0233E3FC: ; jump table
+	b _0233E418 ; case 0
+	b _0233E430 ; case 1
+	b _0233E444 ; case 2
+	b _0233E44C ; case 3
+	b _0233E4AC ; case 4
+	b _0233E76C ; case 5
+	b _0233E7B0 ; case 6
 _0233E418:
 	ldrsb r0, [r6, #0x10]
 	bl sub_0202810C
@@ -1268,7 +1268,7 @@ _0233E4AC:
 	tst r0, #1
 	beq _0233E52C
 	mov r3, #0
-	ldr r2, _0233E7F0 @ =0x00000408
+	ldr r2, _0233E7F0 ; =0x00000408
 	add r1, sp, #0x10
 	str r3, [sp]
 	mov ip, #1
@@ -1482,7 +1482,7 @@ _0233E7F0: .4byte 0x00000408
 	arm_func_end ov09_0233E3DC
 
 	arm_func_start ov09_0233E7F4
-ov09_0233E7F4: @ 0x0233E7F4
+ov09_0233E7F4: ; 0x0233E7F4
 	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x154
 	mov sl, r0
@@ -1528,7 +1528,7 @@ _0233E88C:
 	str r6, [sp, #0x13c]
 	add r0, sp, #0x104
 	str r0, [sp]
-	ldr r3, _0233E914 @ =0x0000C402
+	ldr r3, _0233E914 ; =0x0000C402
 	add r0, sp, #4
 	mov r1, #0x100
 	mov r2, #0x4f0
@@ -1564,7 +1564,7 @@ _0233E914: .4byte 0x0000C402
 	arm_func_end ov09_0233E7F4
 
 	arm_func_start ov09_0233E918
-ov09_0233E918: @ 0x0233E918
+ov09_0233E918: ; 0x0233E918
 	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x3c
 	mov sl, r1
@@ -1640,13 +1640,13 @@ _0233E9C4:
 	ldr r0, [sp, #8]
 	add r4, sp, #0x1c
 	cmp r0, #0
-	ldreq r0, _0233EC18 @ =0x0233F7A4
+	ldreq r0, _0233EC18 ; =0x0233F7A4
 	orreq sl, sl, #0x300000
 	ldmeq r0, {r0, r1, r2, r3}
 	stmeq r4, {r0, r1, r2, r3}
 	ldmne r0, {r0, r1, r2, r3}
 	stmne r4, {r0, r1, r2, r3}
-	ldrne r0, _0233EC1C @ =ov09_0233ED84
+	ldrne r0, _0233EC1C ; =ov09_0233ED84
 	str r7, [sp, #0x28]
 	strne r0, [sp, #0x1c]
 	ldrb r0, [sp, #0x22]
@@ -1728,7 +1728,7 @@ _0233EB48:
 	ldrbne r0, [sp, #0x23]
 	subne r0, r1, r0
 	strbne r0, [sp, #0x21]
-	ldr r0, _0233EC1C @ =ov09_0233ED84
+	ldr r0, _0233EC1C ; =ov09_0233ED84
 	cmp sb, #0
 	str r0, [r7]
 	str sl, [r7, #0x100]
@@ -1778,7 +1778,7 @@ _0233EC1C: .4byte ov09_0233ED84
 	arm_func_end ov09_0233E918
 
 	arm_func_start ov09_0233EC20
-ov09_0233EC20: @ 0x0233EC20
+ov09_0233EC20: ; 0x0233EC20
 	push {r3, lr}
 	bl GetDialogBoxField0xC
 	mov r1, #1
@@ -1796,7 +1796,7 @@ ov09_0233EC20: @ 0x0233EC20
 	arm_func_end ov09_0233EC20
 
 	arm_func_start ov09_0233EC58
-ov09_0233EC58: @ 0x0233EC58
+ov09_0233EC58: ; 0x0233EC58
 	push {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetDialogBoxField0xC
@@ -1816,7 +1816,7 @@ ov09_0233EC58: @ 0x0233EC58
 	arm_func_end ov09_0233EC58
 
 	arm_func_start ov09_0233EC98
-ov09_0233EC98: @ 0x0233EC98
+ov09_0233EC98: ; 0x0233EC98
 	push {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetDialogBoxField0xC
@@ -1826,7 +1826,7 @@ ov09_0233EC98: @ 0x0233EC98
 	cmpne r0, #4
 	cmpne r0, #8
 	movne r0, #0
-	popne {r3, r4, r5, pc}
+	ldmneia sp!,  {r3, r4, r5, pc}
 	mov r0, #1
 	mov r2, #0
 	strb r0, [r4, #0x1a8]
@@ -1845,7 +1845,7 @@ ov09_0233EC98: @ 0x0233EC98
 	arm_func_end ov09_0233EC98
 
 	arm_func_start ov09_0233ECFC
-ov09_0233ECFC: @ 0x0233ECFC
+ov09_0233ECFC: ; 0x0233ECFC
 	push {r3, lr}
 	bl GetDialogBoxField0xC
 	ldr r0, [r0, #0x1a4]
@@ -1857,7 +1857,7 @@ ov09_0233ECFC: @ 0x0233ECFC
 	arm_func_end ov09_0233ECFC
 
 	arm_func_start ov09_0233ED1C
-ov09_0233ED1C: @ 0x0233ED1C
+ov09_0233ED1C: ; 0x0233ED1C
 	push {r4, lr}
 	bl GetDialogBoxField0xC
 	ldrb r1, [r0, #0x1a8]
@@ -1889,7 +1889,7 @@ _0233ED7C:
 	arm_func_end ov09_0233ED1C
 
 	arm_func_start ov09_0233ED84
-ov09_0233ED84: @ 0x0233ED84
+ov09_0233ED84: ; 0x0233ED84
 	push {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x34
 	mov r6, r0
@@ -1898,14 +1898,14 @@ ov09_0233ED84: @ 0x0233ED84
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
 	b _0233F12C
-_0233EDA4: @ jump table
-	b _0233EDC0 @ case 0
-	b _0233EDD8 @ case 1
-	b _0233EDEC @ case 2
-	b _0233EE4C @ case 3
-	b _0233F094 @ case 4
-	b _0233F0A4 @ case 5
-	b _0233F0F4 @ case 6
+_0233EDA4: ; jump table
+	b _0233EDC0 ; case 0
+	b _0233EDD8 ; case 1
+	b _0233EDEC ; case 2
+	b _0233EE4C ; case 3
+	b _0233F094 ; case 4
+	b _0233F0A4 ; case 5
+	b _0233F0F4 ; case 6
 _0233EDC0:
 	ldrsb r0, [r6, #0x10]
 	bl sub_0202810C
@@ -1963,7 +1963,7 @@ _0233EE4C:
 	tst r0, #1
 	beq _0233EECC
 	mov r3, #0
-	ldr r2, _0233F134 @ =0x00000408
+	ldr r2, _0233F134 ; =0x00000408
 	add r1, sp, #0x10
 	str r3, [sp]
 	mov ip, #1
@@ -2154,7 +2154,7 @@ _0233F134: .4byte 0x00000408
 	arm_func_end ov09_0233ED84
 
 	arm_func_start ov09_0233F138
-ov09_0233F138: @ 0x0233F138
+ov09_0233F138: ; 0x0233F138
 	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	ldr r4, [sl, #0xc]
@@ -2215,7 +2215,7 @@ _0233F1DC:
 	arm_func_end ov09_0233F138
 
 	arm_func_start ov09_0233F210
-ov09_0233F210: @ 0x0233F210
+ov09_0233F210: ; 0x0233F210
 	push {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x28
 	mov r7, r0
@@ -2233,7 +2233,7 @@ ov09_0233F210: @ 0x0233F210
 	mov r1, #0
 	str r1, [sp]
 	ldrh r2, [r0, #0xa0]
-	ldr r3, _0233F3B4 @ =0x0000C402
+	ldr r3, _0233F3B4 ; =0x0000C402
 	add r0, r4, #0x1a8
 	mov r1, #0x100
 	bl PreprocessStringFromMessageId
@@ -2241,7 +2241,7 @@ ov09_0233F210: @ 0x0233F210
 	bl sub_020265A8
 	cmp r7, #0
 	mov ip, r0
-	ldreq r0, _0233F3B8 @ =0x0233F7B4
+	ldreq r0, _0233F3B8 ; =0x0233F7B4
 	str ip, [r4, #0x1a4]
 	addeq r7, sp, #0x18
 	ldmeq r0, {r0, r1, r2, r3}
@@ -2249,7 +2249,7 @@ ov09_0233F210: @ 0x0233F210
 	addne lr, sp, #0x18
 	ldmne r7, {r0, r1, r2, r3}
 	stmne lr, {r0, r1, r2, r3}
-	ldrne r0, _0233F3BC @ =ov09_0233F3FC
+	ldrne r0, _0233F3BC ; =ov09_0233F3FC
 	str r4, [sp, #0x24]
 	strne r0, [sp, #0x18]
 	ldrb r0, [sp, #0x1e]
@@ -2289,7 +2289,7 @@ ov09_0233F210: @ 0x0233F210
 	cmp r0, #0
 	movlt r0, #0
 	strlt r0, [r4, #0x2ac]
-	ldr r0, _0233F3BC @ =ov09_0233F3FC
+	ldr r0, _0233F3BC ; =ov09_0233F3FC
 	cmp r5, #0
 	str r0, [r4]
 	str r6, [r4, #0x100]
@@ -2330,7 +2330,7 @@ _0233F3BC: .4byte ov09_0233F3FC
 	arm_func_end ov09_0233F210
 
 	arm_func_start ov09_0233F3C0
-ov09_0233F3C0: @ 0x0233F3C0
+ov09_0233F3C0: ; 0x0233F3C0
 	push {r4, lr}
 	mov r4, r0
 	bl GetDialogBoxField0xC
@@ -2341,7 +2341,7 @@ ov09_0233F3C0: @ 0x0233F3C0
 	arm_func_end ov09_0233F3C0
 
 	arm_func_start ov09_0233F3DC
-ov09_0233F3DC: @ 0x0233F3DC
+ov09_0233F3DC: ; 0x0233F3DC
 	push {r3, lr}
 	bl GetDialogBoxField0xC
 	ldr r0, [r0, #0x19c]
@@ -2353,7 +2353,7 @@ ov09_0233F3DC: @ 0x0233F3DC
 	arm_func_end ov09_0233F3DC
 
 	arm_func_start ov09_0233F3FC
-ov09_0233F3FC: @ 0x0233F3FC
+ov09_0233F3FC: ; 0x0233F3FC
 	push {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x2c
 	mov r5, r0
@@ -2362,11 +2362,11 @@ ov09_0233F3FC: @ 0x0233F3FC
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	b _0233F564
-_0233F41C: @ jump table
-	b _0233F42C @ case 0
-	b _0233F444 @ case 1
-	b _0233F48C @ case 2
-	b _0233F548 @ case 3
+_0233F41C: ; jump table
+	b _0233F42C ; case 0
+	b _0233F444 ; case 1
+	b _0233F48C ; case 2
+	b _0233F548 ; case 3
 _0233F42C:
 	ldrsb r0, [r5, #0x10]
 	bl sub_0202810C
@@ -2458,4 +2458,4 @@ _0233F564:
 	add sp, sp, #0x2c
 	pop {r3, r4, r5, r6, pc}
 	arm_func_end ov09_0233F3FC
-	@ 0x0233F56C
+	; 0x0233F56C

@@ -5,10 +5,10 @@
 	.text
 
 	arm_func_start ov16_0238A140
-ov16_0238A140: @ 0x0238A140
+ov16_0238A140: ; 0x0238A140
 	push {r3, r4, r5, lr}
 	sub sp, sp, #0x128
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r2, [r1]
 	str r0, [r2, #0x70]
 	ldr r0, [r1]
@@ -16,70 +16,70 @@ ov16_0238A140: @ 0x0238A140
 	cmp r2, #0x2c
 	addls pc, pc, r2, lsl #2
 	b _0238B0C4
-_0238A168: @ jump table
-	b _0238A21C @ case 0
-	b _0238A274 @ case 1
-	b _0238A2D8 @ case 2
-	b _0238A344 @ case 3
-	b _0238A370 @ case 4
-	b _0238B0C4 @ case 5
-	b _0238A318 @ case 6
-	b _0238A928 @ case 7
-	b _0238A95C @ case 8
-	b _0238A9C4 @ case 9
-	b _0238AEA0 @ case 10
-	b _0238AE3C @ case 11
-	b _0238AE6C @ case 12
-	b _0238A640 @ case 13
-	b _0238A614 @ case 14
-	b _0238AE74 @ case 15
-	b _0238A574 @ case 16
-	b _0238A5D8 @ case 17
-	b _0238A480 @ case 18
-	b _0238A50C @ case 19
-	b _0238A440 @ case 20
-	b _0238B0C4 @ case 21
-	b _0238A730 @ case 22
-	b _0238A850 @ case 23
-	b _0238B0C4 @ case 24
-	b _0238B0C4 @ case 25
-	b _0238A668 @ case 26
-	b _0238A6F4 @ case 27
-	b _0238A9F4 @ case 28
-	b _0238AA58 @ case 29
-	b _0238AA94 @ case 30
-	b _0238AAD8 @ case 31
-	b _0238AFF8 @ case 32
-	b _0238AED8 @ case 33
-	b _0238AF98 @ case 34
-	b _0238AFD0 @ case 35
-	b _0238B0C4 @ case 36
-	b _0238AFEC @ case 37
-	b _0238B0C4 @ case 38
-	b _0238B038 @ case 39
-	b _0238B0C4 @ case 40
-	b _0238B0C4 @ case 41
-	b _0238B0C4 @ case 42
-	b _0238B0C4 @ case 43
-	b _0238A424 @ case 44
+_0238A168: ; jump table
+	b _0238A21C ; case 0
+	b _0238A274 ; case 1
+	b _0238A2D8 ; case 2
+	b _0238A344 ; case 3
+	b _0238A370 ; case 4
+	b _0238B0C4 ; case 5
+	b _0238A318 ; case 6
+	b _0238A928 ; case 7
+	b _0238A95C ; case 8
+	b _0238A9C4 ; case 9
+	b _0238AEA0 ; case 10
+	b _0238AE3C ; case 11
+	b _0238AE6C ; case 12
+	b _0238A640 ; case 13
+	b _0238A614 ; case 14
+	b _0238AE74 ; case 15
+	b _0238A574 ; case 16
+	b _0238A5D8 ; case 17
+	b _0238A480 ; case 18
+	b _0238A50C ; case 19
+	b _0238A440 ; case 20
+	b _0238B0C4 ; case 21
+	b _0238A730 ; case 22
+	b _0238A850 ; case 23
+	b _0238B0C4 ; case 24
+	b _0238B0C4 ; case 25
+	b _0238A668 ; case 26
+	b _0238A6F4 ; case 27
+	b _0238A9F4 ; case 28
+	b _0238AA58 ; case 29
+	b _0238AA94 ; case 30
+	b _0238AAD8 ; case 31
+	b _0238AFF8 ; case 32
+	b _0238AED8 ; case 33
+	b _0238AF98 ; case 34
+	b _0238AFD0 ; case 35
+	b _0238B0C4 ; case 36
+	b _0238AFEC ; case 37
+	b _0238B0C4 ; case 38
+	b _0238B038 ; case 39
+	b _0238B0C4 ; case 40
+	b _0238B0C4 ; case 41
+	b _0238B0C4 ; case 42
+	b _0238B0C4 ; case 43
+	b _0238A424 ; case 44
 _0238A21C:
 	bl ov16_0238CBD0
 	cmp r0, #0
 	bne _0238A240
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0xf
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
 	bl ov16_0238B148
 	b _0238B0C4
 _0238A240:
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #6
 	ldr r0, [r0]
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
-	ldr r2, _0238B0D0 @ =0x00000431
+	ldr r0, _0238B0CC ; =0x0238CE40
+	ldr r2, _0238B0D0 ; =0x00000431
 	ldr r3, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
@@ -90,7 +90,7 @@ _0238A274:
 	bl ov16_0238CBD0
 	cmp r0, #0
 	bne _0238A298
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0xf
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
@@ -98,14 +98,14 @@ _0238A274:
 	b _0238B0C4
 _0238A298:
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r3, #6
 	ldr r1, [r0]
-	ldr r2, _0238B0D4 @ =0x00000432
+	ldr r2, _0238B0D4 ; =0x00000432
 	str r3, [r1, #0x74]
 	ldr r3, [r0]
 	mov r1, #0x18
@@ -115,11 +115,11 @@ _0238A298:
 	b _0238B0C4
 _0238A2D8:
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r3, #1
 	ldr r1, [r0]
 	add r2, r3, #0x440
@@ -131,14 +131,14 @@ _0238A2D8:
 	bl ShowMessageInDBox
 	b _0238B0C4
 _0238A318:
-	ldr r0, _0238B0D8 @ =0x0238CDE4
+	ldr r0, _0238B0D8 ; =0x0238CDE4
 	mov r4, #3
-	ldr r1, _0238B0DC @ =0x00300011
-	ldr r3, _0238B0E0 @ =0x0238CD40
+	ldr r1, _0238B0DC ; =0x00300011
+	ldr r3, _0238B0E0 ; =0x0238CD40
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238B0C4
@@ -146,8 +146,8 @@ _0238A344:
 	mov r1, #1
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
-	ldr r2, _0238B0E4 @ =0x00000442
+	ldr r0, _0238B0CC ; =0x0238CE40
+	ldr r2, _0238B0E4 ; =0x00000442
 	ldr r3, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
@@ -158,14 +158,14 @@ _0238A370:
 	mov r1, #5
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldr r0, [r0, #0x88]
 	cmp r0, #0
 	ble _0238A394
 	bl sub_020572EC
 _0238A394:
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r2, [r0]
 	ldr r1, [r2, #0x88]
 	cmp r1, #1
@@ -173,12 +173,12 @@ _0238A394:
 	mov r1, #4
 	str r1, [r2, #0x74]
 	ldr r1, [r0]
-	ldr r2, _0238B0E8 @ =0x00000449
+	ldr r2, _0238B0E8 ; =0x00000449
 	ldrsb r0, [r1, #0xc1]
 	add r3, r1, #0xe8
 	mov r1, #0x18
 	bl ShowMessageInDBox
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #0x88]
@@ -188,7 +188,7 @@ _0238A3DC:
 	cmp r0, #0
 	mov r1, #0x18
 	bne _0238A408
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r2, #0x440
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
@@ -196,7 +196,7 @@ _0238A3DC:
 	bl ShowMessageInDBox
 	b _0238B0C4
 _0238A408:
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	add r2, r1, #0x430
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
@@ -213,11 +213,11 @@ _0238A424:
 	b _0238B0C4
 _0238A440:
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r3, #0x27
 	ldr r1, [r0]
 	rsb r2, r3, #0x460
@@ -225,7 +225,7 @@ _0238A440:
 	arm_func_end ov16_0238A140
 
 	arm_func_start ov16_0238A468
-ov16_0238A468: @ 0x0238A468
+ov16_0238A468: ; 0x0238A468
 	ldr r3, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
@@ -234,14 +234,14 @@ ov16_0238A468: @ 0x0238A468
 	b _0238B0C4
 _0238A480:
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r2, #0xa
 	ldr r0, [r0]
 	ldr r1, [r0, #0x3c]
 	add r0, r0, #0x138
 	add r1, r1, #0x3a
 	bl StrncpySimpleNoPadSafe
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r2, [r0]
 	add r1, r2, #0x138
 	str r1, [r2, #0x120]
@@ -257,7 +257,7 @@ _0238A480:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #8
 	mov r4, #0x13
 	ldr r3, [r0]
@@ -275,29 +275,29 @@ _0238A50C:
 	ldrsh r0, [r0, #0xc]
 	bl IsMonsterOnTeam
 	cmp r0, #0
-	ldrne r0, _0238B0CC @ =0x0238CE40
+	ldrne r0, _0238B0CC ; =0x0238CE40
 	movne r1, #0x1a
-	ldreq r0, _0238B0CC @ =0x0238CE40
+	ldreq r0, _0238B0CC ; =0x0238CE40
 	moveq r1, #0x1c
 	ldr r0, [r0]
 	mov r4, #2
 	str r1, [r0, #0x74]
-	ldr r0, _0238B0CC @ =0x0238CE40
-	ldr r3, _0238B0EC @ =0x0238CD08
+	ldr r0, _0238B0CC ; =0x0238CE40
+	ldr r3, _0238B0EC ; =0x0238CD08
 	ldr r1, [r0]
-	ldr r0, _0238B0D8 @ =0x0238CDE4
+	ldr r0, _0238B0D8 ; =0x0238CDE4
 	str r4, [r1, #0x78]
-	ldr r1, _0238B0F0 @ =0x00300013
+	ldr r1, _0238B0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238B0C4
 _0238A574:
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r2, [r0]
 	ldrsh r1, [r2, #0x44]
 	orr r1, r1, #0x20000
@@ -310,10 +310,10 @@ _0238A574:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r3, #0x11
 	ldr r1, [r0]
-	ldr r2, _0238B0F4 @ =0x00000434
+	ldr r2, _0238B0F4 ; =0x00000434
 	str r3, [r1, #0x74]
 	ldr r3, [r0]
 	mov r1, #8
@@ -327,25 +327,25 @@ _0238A5D8:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238B0D8 @ =0x0238CDE4
-	ldr r1, _0238B0F0 @ =0x00300013
-	ldr r3, _0238B0EC @ =0x0238CD08
+	ldr r0, _0238B0D8 ; =0x0238CDE4
+	ldr r1, _0238B0F0 ; =0x00300013
+	ldr r3, _0238B0EC ; =0x0238CD08
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238B0C4
 _0238A614:
-	ldr r0, _0238B0F8 @ =0x0238CDD4
+	ldr r0, _0238B0F8 ; =0x0238CDD4
 	mov r4, #3
-	ldr r3, _0238B0FC @ =0x0238CD20
+	ldr r3, _0238B0FC ; =0x0238CD20
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238B0C4
@@ -356,20 +356,20 @@ _0238A640:
 	add r0, sp, #0x18
 	mov r1, #3
 	bl sub_0203F150
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc4]
 	b _0238B0C4
 _0238A668:
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r2, #0xa
 	ldr r0, [r0]
 	ldr r1, [r0, #0x3c]
 	add r0, r0, #0x138
 	add r1, r1, #0x3a
 	bl StrncpySimpleNoPadSafe
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r2, [r0]
 	add r1, r2, #0x138
 	str r1, [r2, #0x120]
@@ -385,7 +385,7 @@ _0238A668:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r4, #0x1b
 	ldr r2, [r0]
 	mov r1, #8
@@ -402,13 +402,13 @@ _0238A6F4:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238B0D8 @ =0x0238CDE4
-	ldr r1, _0238B0F0 @ =0x00300013
-	ldr r3, _0238B0EC @ =0x0238CD08
+	ldr r0, _0238B0D8 ; =0x0238CDE4
+	ldr r1, _0238B0F0 ; =0x00300013
+	ldr r3, _0238B0EC ; =0x0238CD08
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238B0C4
@@ -416,7 +416,7 @@ _0238A730:
 	mov r2, #0
 	str r2, [r0, #0x40]
 	ldr r3, [r1]
-	ldr r0, _0238B100 @ =0x00000125
+	ldr r0, _0238B100 ; =0x00000125
 	ldr r1, [r3, #0x3c]
 	ldrsh r1, [r1, #4]
 	cmp r1, r0
@@ -435,7 +435,7 @@ _0238A760:
 	blt _0238A760
 	cmp r2, #1
 	bne _0238A7D8
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r3, #0
 _0238A78C:
 	ldr r2, [r0]
@@ -467,27 +467,27 @@ _0238A7DC:
 	beq _0238A820
 	b _0238A838
 _0238A7F0:
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldrsh r0, [r1, #0xc]
 	cmp r0, #0
 	moveq r0, #1
 	streq r0, [r1, #0x40]
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0x10
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
 	bl ov16_0238B148
 	b _0238B0C4
 _0238A820:
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
 	bl ov16_0238B148
 	b _0238B0C4
 _0238A838:
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0x14
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
@@ -517,7 +517,7 @@ _0238A850:
 	cmp r0, #0
 	ldreq r0, [r1, #0xfc]
 	streq r0, [r1, #0xf8]
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0
 	ldr r3, [r0]
 	ldr r2, [r3, #0x40]
@@ -554,10 +554,10 @@ _0238A918:
 _0238A928:
 	bl ov16_0238CAE8
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r3, #8
 	ldr r1, [r0]
-	ldr r2, _0238B104 @ =0x0000043E
+	ldr r2, _0238B104 ; =0x0000043E
 	str r3, [r1, #0x74]
 	ldr r3, [r0]
 	mov r1, #0x18
@@ -572,32 +572,32 @@ _0238A95C:
 	ldrsh r0, [r0, #0xc]
 	bl IsMonsterOnTeam
 	cmp r0, #0
-	ldrne r0, _0238B0CC @ =0x0238CE40
+	ldrne r0, _0238B0CC ; =0x0238CE40
 	movne r1, #0x1a
-	ldreq r0, _0238B0CC @ =0x0238CE40
+	ldreq r0, _0238B0CC ; =0x0238CE40
 	moveq r1, #0x1c
 	ldr r0, [r0]
 	mov r4, #2
 	str r1, [r0, #0x74]
-	ldr r0, _0238B0CC @ =0x0238CE40
-	ldr r3, _0238B0EC @ =0x0238CD08
+	ldr r0, _0238B0CC ; =0x0238CE40
+	ldr r3, _0238B0EC ; =0x0238CD08
 	ldr r1, [r0]
-	ldr r0, _0238B0D8 @ =0x0238CDE4
+	ldr r0, _0238B0D8 ; =0x0238CDE4
 	str r4, [r1, #0x78]
-	ldr r1, _0238B0F0 @ =0x00300013
+	ldr r1, _0238B0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238B0C4
 _0238A9C4:
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r3, #8
 	ldr r1, [r0]
-	ldr r2, _0238B108 @ =0x0000043A
+	ldr r2, _0238B108 ; =0x0000043A
 	str r3, [r1, #0x74]
 	ldr r3, [r0]
 	mov r1, #0x18
@@ -608,7 +608,7 @@ _0238A9C4:
 _0238A9F4:
 	ldrsb r0, [r0, #0xc1]
 	bl sub_0202F2C4
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r3, #0x14
 	ldr r1, [r0]
 	mov r2, #3
@@ -639,8 +639,8 @@ _0238AA58:
 	ldr r0, [r1]
 	str r2, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
-	ldr r2, _0238B10C @ =0x0000043C
+	ldr r0, _0238B0CC ; =0x0238CE40
+	ldr r2, _0238B10C ; =0x0000043C
 	ldr r3, [r0]
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
@@ -651,10 +651,10 @@ _0238AA94:
 	mov r1, #0x1f
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r2, #3
 	ldr r1, [r0]
-	ldr r3, _0238B110 @ =0x0000140F
+	ldr r3, _0238B110 ; =0x0000140F
 	str r2, [r1, #0xe0]
 	ldr r1, [r0]
 	rsb r2, r2, #0x440
@@ -667,7 +667,7 @@ _0238AA94:
 	b _0238B0C4
 _0238AAD8:
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r2, [r0]
 	ldr r1, [r2, #0x3c]
 	ldrsh r1, [r1, #4]
@@ -675,88 +675,88 @@ _0238AAD8:
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
 	bl IsMonsterNotNicknamed
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	mov r2, #1
 	ldr r3, [r1]
 	strb r0, [r3, #0x46]
 	ldr r0, [r1]
 	strb r2, [r0]
 	bl IncrementNbEvolutions
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldr r0, [r1, #0x40]
 	add r0, r1, r0, lsl #1
 	ldrsh r0, [r0, #0xc]
 	bl SetPokemonJoined
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x44]
 	bl sub_02056410
 	cmp r0, #0
 	beq _0238AB84
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x44]
 	bl sub_020564B0
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0x8c]
 	bl SetTeamSetupHeroOnly
 	cmp r0, #0
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	movne r1, #2
 	ldr r0, [r0]
 	moveq r1, #1
 	str r1, [r0, #0x88]
 	b _0238AB9C
 _0238AB84:
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r2, #0
 	ldr r1, [r0]
 	strb r2, [r1, #0x8c]
 	ldr r0, [r0]
 	str r2, [r0, #0x88]
 _0238AB9C:
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r2, [r0]
 	ldr r1, [r2, #0x40]
 	add r0, r2, #0x44
 	add r1, r2, r1, lsl #1
 	ldrsh r1, [r1, #0xc]
 	bl sub_0205A288
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x44]
 	bl ov16_0238CC64
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x8c]
 	cmp r0, #0
 	beq _0238ABF4
 	bl sub_02056880
 	bl GetActiveTeamMember
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	ldrsh r1, [r1, #0x44]
 	strh r1, [r0, #8]
 _0238ABF4:
-	ldr r1, _0238B0CC @ =0x0238CE40
-	ldr r0, _0238B114 @ =0x020A18C4
+	ldr r1, _0238B0CC ; =0x0238CE40
+	ldr r0, _0238B114 ; =0x020A18C4
 	ldr r3, [r1]
 	ldrsh r2, [r0]
 	ldr r4, [r3, #0x3c]
-	ldr r0, _0238B118 @ =0x000003E7
+	ldr r0, _0238B118 ; =0x000003E7
 	ldrsh r3, [r4, #0xa]
 	add r2, r3, r2
 	strh r2, [r4, #0xa]
 	ldr r1, [r1]
-	ldr r3, _0238B11C @ =0x020A18D0
+	ldr r3, _0238B11C ; =0x020A18D0
 	ldr r2, [r1, #0x3c]
 	ldrsh r1, [r2, #0xa]
 	cmp r1, r0
 	strhgt r0, [r2, #0xa]
-	ldr r1, _0238B0CC @ =0x0238CE40
-	ldr r0, _0238B120 @ =0x020A18E4
+	ldr r1, _0238B0CC ; =0x0238CE40
+	ldr r0, _0238B120 ; =0x020A18E4
 	ldr r1, [r1]
 	ldrsh r5, [r0]
 	ldr r1, [r1, #0x3c]
@@ -777,7 +777,7 @@ _0238ABF4:
 	add r3, r5, r4
 	lsl r2, r2, #0x10
 	asr r4, r2, #0x10
-	ldr r2, _0238B0CC @ =0x0238CE40
+	ldr r2, _0238B0CC ; =0x0238CE40
 	cmp r4, #0xff
 	ldr r1, [r2]
 	lsl r3, r3, #0x10
@@ -826,7 +826,7 @@ _0238AD2C:
 	add r0, sp, #8
 	bl sub_02010260
 _0238AD40:
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldr r0, [r1, #0x40]
 	add r0, r1, r0, lsl #1
@@ -853,11 +853,11 @@ _0238AD8C:
 	add r0, sp, #8
 	bl sub_02010260
 _0238ADA0:
-	ldr r0, _0238B124 @ =0x00003F01
+	ldr r0, _0238B124 ; =0x00003F01
 	bl sub_02018428
 	mov r0, #8
 	bl sub_0201820C
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x46]
 	cmp r0, #0
@@ -868,29 +868,29 @@ _0238ADA0:
 	add r0, sp, #0xe
 	ldrsh r1, [r1, #4]
 	bl GetNameRaw
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
 	ldrsh r0, [r0, #4]
 	bl GetNameString
-	ldr r2, _0238B0CC @ =0x0238CE40
+	ldr r2, _0238B0CC ; =0x0238CE40
 	mov r1, r0
 	ldr r0, [r2]
 	arm_func_end ov16_0238A468
 
 	arm_func_start ov16_0238ADFC
-ov16_0238ADFC: @ 0x0238ADFC
+ov16_0238ADFC: ; 0x0238ADFC
 	mov r2, #0xa
 	ldr r0, [r0, #0x3c]
 	add r0, r0, #0x3a
 	bl sub_02025314
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0x21
 	ldr r0, [r0]
 	str r1, [r0, #0x74]
 _0238AE1C:
-	ldr r0, _0238B0CC @ =0x0238CE40
-	ldr r2, _0238B128 @ =0x0000043F
+	ldr r0, _0238B0CC ; =0x0238CE40
+	ldr r2, _0238B128 ; =0x0000043F
 	ldr r3, [r0]
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
@@ -900,7 +900,7 @@ _0238AE1C:
 _0238AE3C:
 	ldrsb r0, [r0, #0xc1]
 	bl FreeDBox
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xc1]
@@ -917,8 +917,8 @@ _0238AE74:
 	mov r1, #5
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
-	ldr r2, _0238B12C @ =0x0000042D
+	ldr r0, _0238B0CC ; =0x0238CE40
+	ldr r2, _0238B12C ; =0x0000042D
 	ldr r3, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
@@ -932,8 +932,8 @@ _0238AEA0:
 	mov r1, #0x29
 	str r1, [r0, #0x70]
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
-	ldr r2, _0238B130 @ =0x00000433
+	ldr r0, _0238B0CC ; =0x0238CE40
+	ldr r2, _0238B130 ; =0x00000433
 	ldr r3, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
@@ -942,19 +942,19 @@ _0238AEA0:
 	b _0238B0C4
 _0238AED8:
 	bl ov11_02310BDC
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0x20
 	ldr r0, [r0]
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238B0CC @ =0x0238CE40
-	ldr r2, _0238B134 @ =0x00000447
+	ldr r0, _0238B0CC ; =0x0238CE40
+	ldr r2, _0238B134 ; =0x00000447
 	ldr r3, [r0]
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
 	bl ShowMessageInDBox
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	mvn r0, #1
 	ldr r1, [r1]
 	ldrsb r1, [r1, #0xc2]
@@ -964,7 +964,7 @@ _0238AED8:
 	mov r1, #3
 	mov r2, #1
 	bl CreatePortraitBox
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r2, [r1]
 	strb r0, [r2, #0xc2]
 	ldr r2, [r1]
@@ -973,17 +973,17 @@ _0238AED8:
 	add r1, r2, r1, lsl #1
 	ldrsh r1, [r1, #0xc]
 	bl InitPortraitBoxWithMonsterId
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0xc8
 	bl SetPortraitUnknownAttr
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xc8
 	bl SetPortraitExpressionId
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0xc2]
 	add r1, r1, #0xc8
@@ -992,7 +992,7 @@ _0238AED8:
 _0238AF98:
 	ldrsb r0, [r0, #0xc1]
 	bl FreeDBox
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	mvn r3, #1
 	ldr r2, [r1]
 	mov r0, #2
@@ -1021,15 +1021,15 @@ _0238AFF8:
 	str r2, [r0, #0x74]
 	ldr r2, [r1]
 	mov ip, #4
-	ldr r0, _0238B0D8 @ =0x0238CDE4
-	ldr r1, _0238B0DC @ =0x00300011
-	ldr r3, _0238B0EC @ =0x0238CD08
+	ldr r0, _0238B0D8 ; =0x0238CDE4
+	ldr r1, _0238B0DC ; =0x00300011
+	ldr r3, _0238B0EC ; =0x0238CD08
 	str ip, [r2, #0x78]
 	mov ip, #2
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238B0C4
@@ -1049,26 +1049,26 @@ _0238B040:
 	blt _0238B040
 	cmp ip, #2
 	bge _0238B088
-	ldr r0, _0238B0CC @ =0x0238CE40
+	ldr r0, _0238B0CC ; =0x0238CE40
 	mov r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
 	bl ov16_0238B148
 	b _0238B0C4
 _0238B088:
-	ldr r1, _0238B138 @ =0x00000446
+	ldr r1, _0238B138 ; =0x00000446
 	mov r0, #0xf
 	strh r1, [sp, #0x98]
 	str r0, [sp, #0x9c]
 	str ip, [sp]
 	mov ip, #4
-	ldr r0, _0238B13C @ =0x0238CDC4
-	ldr r1, _0238B140 @ =0x00009813
-	ldr r3, _0238B144 @ =ov16_0238CB30
+	ldr r0, _0238B13C ; =0x0238CDC4
+	ldr r1, _0238B140 ; =0x00009813
+	ldr r3, _0238B144 ; =ov16_0238CB30
 	add r2, sp, #0x90
 	str ip, [sp, #4]
 	bl CreateAdvancedMenu
-	ldr r1, _0238B0CC @ =0x0238CE40
+	ldr r1, _0238B0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 _0238B0C4:
@@ -1109,79 +1109,79 @@ _0238B144: .4byte ov16_0238CB30
 	arm_func_end ov16_0238ADFC
 
 	arm_func_start ov16_0238B148
-ov16_0238B148: @ 0x0238B148
+ov16_0238B148: ; 0x0238B148
 	push {r3, r4, r5, lr}
 	sub sp, sp, #0x128
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r0, [r1]
 	ldr r2, [r0, #0x70]
 	cmp r2, #0x2c
 	addls pc, pc, r2, lsl #2
 	b _0238C0C4
-_0238B168: @ jump table
-	b _0238B21C @ case 0
-	b _0238B274 @ case 1
-	b _0238B2D8 @ case 2
-	b _0238B344 @ case 3
-	b _0238B370 @ case 4
-	b _0238C0C4 @ case 5
-	b _0238B318 @ case 6
-	b _0238B928 @ case 7
-	b _0238B95C @ case 8
-	b _0238B9C4 @ case 9
-	b _0238BEA0 @ case 10
-	b _0238BE3C @ case 11
-	b _0238BE6C @ case 12
-	b _0238B640 @ case 13
-	b _0238B614 @ case 14
-	b _0238BE74 @ case 15
-	b _0238B574 @ case 16
-	b _0238B5D8 @ case 17
-	b _0238B480 @ case 18
-	b _0238B50C @ case 19
-	b _0238B440 @ case 20
-	b _0238C0C4 @ case 21
-	b _0238B730 @ case 22
-	b _0238B850 @ case 23
-	b _0238C0C4 @ case 24
-	b _0238C0C4 @ case 25
-	b _0238B668 @ case 26
-	b _0238B6F4 @ case 27
-	b _0238B9F4 @ case 28
-	b _0238BA58 @ case 29
-	b _0238BA94 @ case 30
-	b _0238BAD8 @ case 31
-	b _0238BFF8 @ case 32
-	b _0238BED8 @ case 33
-	b _0238BF98 @ case 34
-	b _0238BFD0 @ case 35
-	b _0238C0C4 @ case 36
-	b _0238BFEC @ case 37
-	b _0238C0C4 @ case 38
-	b _0238C038 @ case 39
-	b _0238C0C4 @ case 40
-	b _0238C0C4 @ case 41
-	b _0238C0C4 @ case 42
-	b _0238C0C4 @ case 43
-	b _0238B424 @ case 44
+_0238B168: ; jump table
+	b _0238B21C ; case 0
+	b _0238B274 ; case 1
+	b _0238B2D8 ; case 2
+	b _0238B344 ; case 3
+	b _0238B370 ; case 4
+	b _0238C0C4 ; case 5
+	b _0238B318 ; case 6
+	b _0238B928 ; case 7
+	b _0238B95C ; case 8
+	b _0238B9C4 ; case 9
+	b _0238BEA0 ; case 10
+	b _0238BE3C ; case 11
+	b _0238BE6C ; case 12
+	b _0238B640 ; case 13
+	b _0238B614 ; case 14
+	b _0238BE74 ; case 15
+	b _0238B574 ; case 16
+	b _0238B5D8 ; case 17
+	b _0238B480 ; case 18
+	b _0238B50C ; case 19
+	b _0238B440 ; case 20
+	b _0238C0C4 ; case 21
+	b _0238B730 ; case 22
+	b _0238B850 ; case 23
+	b _0238C0C4 ; case 24
+	b _0238C0C4 ; case 25
+	b _0238B668 ; case 26
+	b _0238B6F4 ; case 27
+	b _0238B9F4 ; case 28
+	b _0238BA58 ; case 29
+	b _0238BA94 ; case 30
+	b _0238BAD8 ; case 31
+	b _0238BFF8 ; case 32
+	b _0238BED8 ; case 33
+	b _0238BF98 ; case 34
+	b _0238BFD0 ; case 35
+	b _0238C0C4 ; case 36
+	b _0238BFEC ; case 37
+	b _0238C0C4 ; case 38
+	b _0238C038 ; case 39
+	b _0238C0C4 ; case 40
+	b _0238C0C4 ; case 41
+	b _0238C0C4 ; case 42
+	b _0238C0C4 ; case 43
+	b _0238B424 ; case 44
 _0238B21C:
 	bl ov16_0238CBD0
 	cmp r0, #0
 	bne _0238B240
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0xf
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
 	bl ov16_0238B148
 	b _0238C0C4
 _0238B240:
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #6
 	ldr r0, [r0]
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
-	ldr r2, _0238C0D0 @ =0x00000431
+	ldr r0, _0238C0CC ; =0x0238CE40
+	ldr r2, _0238C0D0 ; =0x00000431
 	ldr r3, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
@@ -1192,7 +1192,7 @@ _0238B274:
 	bl ov16_0238CBD0
 	cmp r0, #0
 	bne _0238B298
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0xf
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
@@ -1200,14 +1200,14 @@ _0238B274:
 	b _0238C0C4
 _0238B298:
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r3, #6
 	ldr r1, [r0]
-	ldr r2, _0238C0D4 @ =0x00000432
+	ldr r2, _0238C0D4 ; =0x00000432
 	str r3, [r1, #0x74]
 	ldr r3, [r0]
 	mov r1, #0x18
@@ -1217,11 +1217,11 @@ _0238B298:
 	b _0238C0C4
 _0238B2D8:
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r3, #1
 	ldr r1, [r0]
 	add r2, r3, #0x440
@@ -1233,14 +1233,14 @@ _0238B2D8:
 	bl ShowMessageInDBox
 	b _0238C0C4
 _0238B318:
-	ldr r0, _0238C0D8 @ =0x0238CDE4
+	ldr r0, _0238C0D8 ; =0x0238CDE4
 	mov r4, #3
-	ldr r1, _0238C0DC @ =0x00300011
-	ldr r3, _0238C0E0 @ =0x0238CD40
+	ldr r1, _0238C0DC ; =0x00300011
+	ldr r3, _0238C0E0 ; =0x0238CD40
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238C0C4
@@ -1248,8 +1248,8 @@ _0238B344:
 	mov r1, #1
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
-	ldr r2, _0238C0E4 @ =0x00000442
+	ldr r0, _0238C0CC ; =0x0238CE40
+	ldr r2, _0238C0E4 ; =0x00000442
 	ldr r3, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
@@ -1260,14 +1260,14 @@ _0238B370:
 	mov r1, #5
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldr r0, [r0, #0x88]
 	cmp r0, #0
 	ble _0238B394
 	bl sub_020572EC
 _0238B394:
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r2, [r0]
 	ldr r1, [r2, #0x88]
 	cmp r1, #1
@@ -1275,12 +1275,12 @@ _0238B394:
 	mov r1, #4
 	str r1, [r2, #0x74]
 	ldr r1, [r0]
-	ldr r2, _0238C0E8 @ =0x00000449
+	ldr r2, _0238C0E8 ; =0x00000449
 	ldrsb r0, [r1, #0xc1]
 	add r3, r1, #0xe8
 	mov r1, #0x18
 	bl ShowMessageInDBox
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #0x88]
@@ -1290,7 +1290,7 @@ _0238B3DC:
 	cmp r0, #0
 	mov r1, #0x18
 	bne _0238B408
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r2, #0x440
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
@@ -1298,7 +1298,7 @@ _0238B3DC:
 	bl ShowMessageInDBox
 	b _0238C0C4
 _0238B408:
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	add r2, r1, #0x430
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
@@ -1315,11 +1315,11 @@ _0238B424:
 	b _0238C0C4
 _0238B440:
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r3, #0x27
 	ldr r1, [r0]
 	rsb r2, r3, #0x460
@@ -1332,14 +1332,14 @@ _0238B440:
 	b _0238C0C4
 _0238B480:
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r2, #0xa
 	ldr r0, [r0]
 	ldr r1, [r0, #0x3c]
 	add r0, r0, #0x138
 	add r1, r1, #0x3a
 	bl StrncpySimpleNoPadSafe
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r2, [r0]
 	add r1, r2, #0x138
 	str r1, [r2, #0x120]
@@ -1355,7 +1355,7 @@ _0238B480:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #8
 	mov r4, #0x13
 	ldr r3, [r0]
@@ -1373,29 +1373,29 @@ _0238B50C:
 	ldrsh r0, [r0, #0xc]
 	bl IsMonsterOnTeam
 	cmp r0, #0
-	ldrne r0, _0238C0CC @ =0x0238CE40
+	ldrne r0, _0238C0CC ; =0x0238CE40
 	movne r1, #0x1a
-	ldreq r0, _0238C0CC @ =0x0238CE40
+	ldreq r0, _0238C0CC ; =0x0238CE40
 	moveq r1, #0x1c
 	ldr r0, [r0]
 	mov r4, #2
 	str r1, [r0, #0x74]
-	ldr r0, _0238C0CC @ =0x0238CE40
-	ldr r3, _0238C0EC @ =0x0238CD08
+	ldr r0, _0238C0CC ; =0x0238CE40
+	ldr r3, _0238C0EC ; =0x0238CD08
 	ldr r1, [r0]
-	ldr r0, _0238C0D8 @ =0x0238CDE4
+	ldr r0, _0238C0D8 ; =0x0238CDE4
 	str r4, [r1, #0x78]
-	ldr r1, _0238C0F0 @ =0x00300013
+	ldr r1, _0238C0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238C0C4
 _0238B574:
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r2, [r0]
 	ldrsh r1, [r2, #0x44]
 	orr r1, r1, #0x20000
@@ -1408,10 +1408,10 @@ _0238B574:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r3, #0x11
 	ldr r1, [r0]
-	ldr r2, _0238C0F4 @ =0x00000434
+	ldr r2, _0238C0F4 ; =0x00000434
 	str r3, [r1, #0x74]
 	ldr r3, [r0]
 	mov r1, #8
@@ -1425,25 +1425,25 @@ _0238B5D8:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238C0D8 @ =0x0238CDE4
-	ldr r1, _0238C0F0 @ =0x00300013
-	ldr r3, _0238C0EC @ =0x0238CD08
+	ldr r0, _0238C0D8 ; =0x0238CDE4
+	ldr r1, _0238C0F0 ; =0x00300013
+	ldr r3, _0238C0EC ; =0x0238CD08
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238C0C4
 _0238B614:
-	ldr r0, _0238C0F8 @ =0x0238CDD4
+	ldr r0, _0238C0F8 ; =0x0238CDD4
 	mov r4, #3
-	ldr r3, _0238C0FC @ =0x0238CD20
+	ldr r3, _0238C0FC ; =0x0238CD20
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238C0C4
@@ -1454,20 +1454,20 @@ _0238B640:
 	add r0, sp, #0xb0
 	mov r1, #3
 	bl sub_0203F150
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc4]
 	b _0238C0C4
 _0238B668:
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r2, #0xa
 	ldr r0, [r0]
 	ldr r1, [r0, #0x3c]
 	add r0, r0, #0x138
 	add r1, r1, #0x3a
 	bl StrncpySimpleNoPadSafe
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r2, [r0]
 	add r1, r2, #0x138
 	str r1, [r2, #0x120]
@@ -1483,7 +1483,7 @@ _0238B668:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
 	bl ShowDBox
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r4, #0x1b
 	ldr r2, [r0]
 	mov r1, #8
@@ -1500,13 +1500,13 @@ _0238B6F4:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238C0D8 @ =0x0238CDE4
-	ldr r1, _0238C0F0 @ =0x00300013
-	ldr r3, _0238C0EC @ =0x0238CD08
+	ldr r0, _0238C0D8 ; =0x0238CDE4
+	ldr r1, _0238C0F0 ; =0x00300013
+	ldr r3, _0238C0EC ; =0x0238CD08
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238C0C4
@@ -1514,7 +1514,7 @@ _0238B730:
 	mov r2, #0
 	str r2, [r0, #0x40]
 	ldr r3, [r1]
-	ldr r0, _0238C100 @ =0x00000125
+	ldr r0, _0238C100 ; =0x00000125
 	ldr r1, [r3, #0x3c]
 	ldrsh r1, [r1, #4]
 	cmp r1, r0
@@ -1533,7 +1533,7 @@ _0238B760:
 	blt _0238B760
 	cmp r2, #1
 	bne _0238B7D8
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r3, #0
 _0238B78C:
 	ldr r2, [r0]
@@ -1565,27 +1565,27 @@ _0238B7DC:
 	beq _0238B820
 	b _0238B838
 _0238B7F0:
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldrsh r0, [r1, #0xc]
 	cmp r0, #0
 	moveq r0, #1
 	streq r0, [r1, #0x40]
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0x10
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
 	bl ov16_0238B148
 	b _0238C0C4
 _0238B820:
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
 	bl ov16_0238B148
 	b _0238C0C4
 _0238B838:
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0x14
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
@@ -1615,7 +1615,7 @@ _0238B850:
 	cmp r0, #0
 	ldreq r0, [r1, #0xfc]
 	streq r0, [r1, #0xf8]
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0
 	ldr r3, [r0]
 	ldr r2, [r3, #0x40]
@@ -1652,10 +1652,10 @@ _0238B918:
 _0238B928:
 	bl ov16_0238CAE8
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r3, #8
 	ldr r1, [r0]
-	ldr r2, _0238C104 @ =0x0000043E
+	ldr r2, _0238C104 ; =0x0000043E
 	str r3, [r1, #0x74]
 	ldr r3, [r0]
 	mov r1, #0x18
@@ -1670,32 +1670,32 @@ _0238B95C:
 	ldrsh r0, [r0, #0xc]
 	bl IsMonsterOnTeam
 	cmp r0, #0
-	ldrne r0, _0238C0CC @ =0x0238CE40
+	ldrne r0, _0238C0CC ; =0x0238CE40
 	movne r1, #0x1a
-	ldreq r0, _0238C0CC @ =0x0238CE40
+	ldreq r0, _0238C0CC ; =0x0238CE40
 	moveq r1, #0x1c
 	ldr r0, [r0]
 	mov r4, #2
 	str r1, [r0, #0x74]
-	ldr r0, _0238C0CC @ =0x0238CE40
-	ldr r3, _0238C0EC @ =0x0238CD08
+	ldr r0, _0238C0CC ; =0x0238CE40
+	ldr r3, _0238C0EC ; =0x0238CD08
 	ldr r1, [r0]
-	ldr r0, _0238C0D8 @ =0x0238CDE4
+	ldr r0, _0238C0D8 ; =0x0238CDE4
 	str r4, [r1, #0x78]
-	ldr r1, _0238C0F0 @ =0x00300013
+	ldr r1, _0238C0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238C0C4
 _0238B9C4:
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r3, #8
 	ldr r1, [r0]
-	ldr r2, _0238C108 @ =0x0000043A
+	ldr r2, _0238C108 ; =0x0000043A
 	str r3, [r1, #0x74]
 	ldr r3, [r0]
 	mov r1, #0x18
@@ -1706,7 +1706,7 @@ _0238B9C4:
 _0238B9F4:
 	ldrsb r0, [r0, #0xc1]
 	bl sub_0202F2C4
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r3, #0x14
 	ldr r1, [r0]
 	mov r2, #3
@@ -1737,8 +1737,8 @@ _0238BA58:
 	ldr r0, [r1]
 	str r2, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
-	ldr r2, _0238C10C @ =0x0000043C
+	ldr r0, _0238C0CC ; =0x0238CE40
+	ldr r2, _0238C10C ; =0x0000043C
 	ldr r3, [r0]
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
@@ -1749,10 +1749,10 @@ _0238BA94:
 	mov r1, #0x1f
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r2, #3
 	ldr r1, [r0]
-	ldr r3, _0238C110 @ =0x0000140F
+	ldr r3, _0238C110 ; =0x0000140F
 	str r2, [r1, #0xe0]
 	ldr r1, [r0]
 	rsb r2, r2, #0x440
@@ -1765,7 +1765,7 @@ _0238BA94:
 	b _0238C0C4
 _0238BAD8:
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r2, [r0]
 	ldr r1, [r2, #0x3c]
 	ldrsh r1, [r1, #4]
@@ -1773,88 +1773,88 @@ _0238BAD8:
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
 	bl IsMonsterNotNicknamed
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	mov r2, #1
 	ldr r3, [r1]
 	strb r0, [r3, #0x46]
 	ldr r0, [r1]
 	strb r2, [r0]
 	bl IncrementNbEvolutions
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldr r0, [r1, #0x40]
 	add r0, r1, r0, lsl #1
 	ldrsh r0, [r0, #0xc]
 	bl SetPokemonJoined
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x44]
 	bl sub_02056410
 	cmp r0, #0
 	beq _0238BB84
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x44]
 	bl sub_020564B0
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0x8c]
 	bl SetTeamSetupHeroOnly
 	cmp r0, #0
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	movne r1, #2
 	ldr r0, [r0]
 	moveq r1, #1
 	str r1, [r0, #0x88]
 	b _0238BB9C
 _0238BB84:
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r2, #0
 	ldr r1, [r0]
 	strb r2, [r1, #0x8c]
 	ldr r0, [r0]
 	str r2, [r0, #0x88]
 _0238BB9C:
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r2, [r0]
 	ldr r1, [r2, #0x40]
 	add r0, r2, #0x44
 	add r1, r2, r1, lsl #1
 	ldrsh r1, [r1, #0xc]
 	bl sub_0205A288
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x44]
 	bl ov16_0238CC64
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x8c]
 	cmp r0, #0
 	beq _0238BBF4
 	bl sub_02056880
 	bl GetActiveTeamMember
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	ldrsh r1, [r1, #0x44]
 	strh r1, [r0, #8]
 _0238BBF4:
-	ldr r1, _0238C0CC @ =0x0238CE40
-	ldr r0, _0238C114 @ =0x020A18C4
+	ldr r1, _0238C0CC ; =0x0238CE40
+	ldr r0, _0238C114 ; =0x020A18C4
 	ldr r3, [r1]
 	ldrsh r2, [r0]
 	ldr r4, [r3, #0x3c]
-	ldr r0, _0238C118 @ =0x000003E7
+	ldr r0, _0238C118 ; =0x000003E7
 	ldrsh r3, [r4, #0xa]
 	add r2, r3, r2
 	strh r2, [r4, #0xa]
 	ldr r1, [r1]
-	ldr r3, _0238C11C @ =0x020A18D0
+	ldr r3, _0238C11C ; =0x020A18D0
 	ldr r2, [r1, #0x3c]
 	ldrsh r1, [r2, #0xa]
 	cmp r1, r0
 	strhgt r0, [r2, #0xa]
-	ldr r1, _0238C0CC @ =0x0238CE40
-	ldr r0, _0238C120 @ =0x020A18E4
+	ldr r1, _0238C0CC ; =0x0238CE40
+	ldr r0, _0238C120 ; =0x020A18E4
 	ldr r1, [r1]
 	ldrsh r5, [r0]
 	ldr r1, [r1, #0x3c]
@@ -1875,7 +1875,7 @@ _0238BBF4:
 	add r3, r5, r4
 	lsl r2, r2, #0x10
 	asr r4, r2, #0x10
-	ldr r2, _0238C0CC @ =0x0238CE40
+	ldr r2, _0238C0CC ; =0x0238CE40
 	cmp r4, #0xff
 	ldr r1, [r2]
 	lsl r3, r3, #0x10
@@ -1924,7 +1924,7 @@ _0238BD2C:
 	add r0, sp, #8
 	bl sub_02010260
 _0238BD40:
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldr r0, [r1, #0x40]
 	add r0, r1, r0, lsl #1
@@ -1951,11 +1951,11 @@ _0238BD8C:
 	add r0, sp, #8
 	bl sub_02010260
 _0238BDA0:
-	ldr r0, _0238C124 @ =0x00003F01
+	ldr r0, _0238C124 ; =0x00003F01
 	bl sub_02018428
 	mov r0, #8
 	bl sub_0201820C
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x46]
 	cmp r0, #0
@@ -1966,25 +1966,25 @@ _0238BDA0:
 	add r0, sp, #0xe
 	ldrsh r1, [r1, #4]
 	bl GetNameRaw
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
 	ldrsh r0, [r0, #4]
 	bl GetNameString
-	ldr r2, _0238C0CC @ =0x0238CE40
+	ldr r2, _0238C0CC ; =0x0238CE40
 	mov r1, r0
 	ldr r0, [r2]
 	mov r2, #0xa
 	ldr r0, [r0, #0x3c]
 	add r0, r0, #0x3a
 	bl sub_02025314
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0x21
 	ldr r0, [r0]
 	str r1, [r0, #0x74]
 _0238BE1C:
-	ldr r0, _0238C0CC @ =0x0238CE40
-	ldr r2, _0238C128 @ =0x0000043F
+	ldr r0, _0238C0CC ; =0x0238CE40
+	ldr r2, _0238C128 ; =0x0000043F
 	ldr r3, [r0]
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
@@ -1994,7 +1994,7 @@ _0238BE1C:
 _0238BE3C:
 	ldrsb r0, [r0, #0xc1]
 	bl FreeDBox
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xc1]
@@ -2011,8 +2011,8 @@ _0238BE74:
 	mov r1, #5
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
-	ldr r2, _0238C12C @ =0x0000042D
+	ldr r0, _0238C0CC ; =0x0238CE40
+	ldr r2, _0238C12C ; =0x0000042D
 	ldr r3, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
@@ -2026,8 +2026,8 @@ _0238BEA0:
 	mov r1, #0x29
 	str r1, [r0, #0x70]
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
-	ldr r2, _0238C130 @ =0x00000433
+	ldr r0, _0238C0CC ; =0x0238CE40
+	ldr r2, _0238C130 ; =0x00000433
 	ldr r3, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
@@ -2036,19 +2036,19 @@ _0238BEA0:
 	b _0238C0C4
 _0238BED8:
 	bl ov11_02310BDC
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0x20
 	ldr r0, [r0]
 	str r1, [r0, #0x74]
 	bl ov16_0238CB98
-	ldr r0, _0238C0CC @ =0x0238CE40
-	ldr r2, _0238C134 @ =0x00000447
+	ldr r0, _0238C0CC ; =0x0238CE40
+	ldr r2, _0238C134 ; =0x00000447
 	ldr r3, [r0]
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
 	bl ShowMessageInDBox
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	mvn r0, #1
 	ldr r1, [r1]
 	ldrsb r1, [r1, #0xc2]
@@ -2058,7 +2058,7 @@ _0238BED8:
 	mov r1, #3
 	mov r2, #1
 	bl CreatePortraitBox
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r2, [r1]
 	strb r0, [r2, #0xc2]
 	ldr r2, [r1]
@@ -2067,17 +2067,17 @@ _0238BED8:
 	add r1, r2, r1, lsl #1
 	ldrsh r1, [r1, #0xc]
 	bl InitPortraitBoxWithMonsterId
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0xc8
 	bl SetPortraitUnknownAttr
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xc8
 	bl SetPortraitExpressionId
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0xc2]
 	add r1, r1, #0xc8
@@ -2086,7 +2086,7 @@ _0238BED8:
 _0238BF98:
 	ldrsb r0, [r0, #0xc1]
 	bl FreeDBox
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	mvn r3, #1
 	ldr r2, [r1]
 	mov r0, #2
@@ -2115,15 +2115,15 @@ _0238BFF8:
 	str r2, [r0, #0x74]
 	ldr r2, [r1]
 	mov ip, #4
-	ldr r0, _0238C0D8 @ =0x0238CDE4
-	ldr r1, _0238C0DC @ =0x00300011
-	ldr r3, _0238C0EC @ =0x0238CD08
+	ldr r0, _0238C0D8 ; =0x0238CDE4
+	ldr r1, _0238C0DC ; =0x00300011
+	ldr r3, _0238C0EC ; =0x0238CD08
 	str ip, [r2, #0x78]
 	mov ip, #2
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238C0C4
@@ -2143,26 +2143,26 @@ _0238C040:
 	blt _0238C040
 	cmp ip, #2
 	bge _0238C088
-	ldr r0, _0238C0CC @ =0x0238CE40
+	ldr r0, _0238C0CC ; =0x0238CE40
 	mov r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0, #0x70]
 	bl ov16_0238B148
 	b _0238C0C4
 _0238C088:
-	ldr r1, _0238C138 @ =0x00000446
+	ldr r1, _0238C138 ; =0x00000446
 	mov r0, #0xf
 	strh r1, [sp, #0x20]
 	str r0, [sp, #0x24]
 	str ip, [sp]
 	mov ip, #4
-	ldr r0, _0238C13C @ =0x0238CDC4
-	ldr r1, _0238C140 @ =0x00009813
-	ldr r3, _0238C144 @ =ov16_0238CB30
+	ldr r0, _0238C13C ; =0x0238CDC4
+	ldr r1, _0238C140 ; =0x00009813
+	ldr r3, _0238C144 ; =ov16_0238CB30
 	add r2, sp, #0x18
 	str ip, [sp, #4]
 	bl CreateAdvancedMenu
-	ldr r1, _0238C0CC @ =0x0238CE40
+	ldr r1, _0238C0CC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 _0238C0C4:
@@ -2203,23 +2203,23 @@ _0238C144: .4byte ov16_0238CB30
 	arm_func_end ov16_0238B148
 
 	arm_func_start ov16_0238C148
-ov16_0238C148: @ 0x0238C148
+ov16_0238C148: ; 0x0238C148
 	push {r3, lr}
-	ldr r0, _0238C1C8 @ =0x0238CE40
+	ldr r0, _0238C1C8 ; =0x0238CE40
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0238C170
 	mov r0, #0x150
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _0238C1C8 @ =0x0238CE40
+	ldr r1, _0238C1C8 ; =0x0238CE40
 	str r0, [r1]
 _0238C170:
-	ldr r0, _0238C1C8 @ =0x0238CE40
+	ldr r0, _0238C1C8 ; =0x0238CE40
 	ldr r0, [r0]
 	add r0, r0, #0xe8
 	bl InitPreprocessorArgs
-	ldr r1, _0238C1C8 @ =0x0238CE40
+	ldr r1, _0238C1C8 ; =0x0238CE40
 	mov r0, #0
 	ldr r2, [r1]
 	sub r3, r0, #2
@@ -2242,14 +2242,14 @@ _0238C1C8: .4byte 0x0238CE40
 	arm_func_end ov16_0238C148
 
 	arm_func_start ov16_0238C1CC
-ov16_0238C1CC: @ 0x0238C1CC
+ov16_0238C1CC: ; 0x0238C1CC
 	push {r3, lr}
-	ldr r0, _0238C1F4 @ =0x0238CE40
+	ldr r0, _0238C1F4 ; =0x0238CE40
 	ldr r0, [r0]
 	cmp r0, #0
 	popeq {r3, pc}
 	bl MemFree
-	ldr r0, _0238C1F4 @ =0x0238CE40
+	ldr r0, _0238C1F4 ; =0x0238CE40
 	mov r1, #0
 	str r1, [r0]
 	pop {r3, pc}
@@ -2403,20 +2403,20 @@ _0238C1F8:
 	.byte 0x02, 0x3F, 0x00, 0x00, 0x04, 0xCE, 0x38, 0x02
 
 	arm_func_start ov16_0238CAE8
-ov16_0238CAE8: @ 0x0238CAE8
+ov16_0238CAE8: ; 0x0238CAE8
 	push {r3, lr}
-	ldr r0, _0238CB2C @ =0x0238CE40
+	ldr r0, _0238CB2C ; =0x0238CE40
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc3]
 	cmp r0, r1
 	popeq {r3, pc}
 	bl sub_0202836C
-	ldr r0, _0238CB2C @ =0x0238CE40
+	ldr r0, _0238CB2C ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc3]
 	bl FreeNormalMenu
-	ldr r0, _0238CB2C @ =0x0238CE40
+	ldr r0, _0238CB2C ; =0x0238CE40
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xc3]
@@ -2426,13 +2426,13 @@ _0238CB2C: .4byte 0x0238CE40
 	arm_func_end ov16_0238CAE8
 
 	arm_func_start ov16_0238CB30
-ov16_0238CB30: @ 0x0238CB30
+ov16_0238CB30: ; 0x0238CB30
 	push {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x54
-	ldr r2, _0238CB8C @ =0x0238CE40
-	ldr r3, _0238CB90 @ =0x0000C402
+	ldr r2, _0238CB8C ; =0x0238CE40
+	ldr r3, _0238CB90 ; =0x0000C402
 	ldr r6, [r2]
-	ldr r2, _0238CB94 @ =0x0238CE28
+	ldr r2, _0238CB94 ; =0x0238CE28
 	add r5, r6, r1, lsl #2
 	ldr r1, [r5, #0x50]
 	add ip, sp, #4
@@ -2457,17 +2457,17 @@ _0238CB94: .4byte 0x0238CE28
 	arm_func_end ov16_0238CB30
 
 	arm_func_start ov16_0238CB98
-ov16_0238CB98: @ 0x0238CB98
+ov16_0238CB98: ; 0x0238CB98
 	push {r3, lr}
-	ldr r1, _0238CBCC @ =0x0238CE40
+	ldr r1, _0238CBCC ; =0x0238CE40
 	mvn r0, #1
 	ldr r1, [r1]
 	ldrsb r1, [r1, #0xc1]
 	cmp r1, r0
-	popne {r3, pc}
+	ldmneia sp!,  {r3, pc}
 	mov r0, #0
 	bl CreateDBox
-	ldr r1, _0238CBCC @ =0x0238CE40
+	ldr r1, _0238CBCC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc1]
 	pop {r3, pc}
@@ -2476,14 +2476,14 @@ _0238CBCC: .4byte 0x0238CE40
 	arm_func_end ov16_0238CB98
 
 	arm_func_start ov16_0238CBD0
-ov16_0238CBD0: @ 0x0238CBD0
+ov16_0238CBD0: ; 0x0238CBD0
 	push {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x3c
 	bl sub_02059B08
-	ldr r1, _0238CC5C @ =0x020B0A48
+	ldr r1, _0238CC5C ; =0x020B0A48
 	mov r6, #0
 	ldr r8, [r1]
-	ldr sb, _0238CC60 @ =0x0000022B
+	ldr sb, _0238CC60 ; =0x0000022B
 	mov r5, r0
 	mov r7, r6
 	add r4, sp, #0
@@ -2521,10 +2521,10 @@ _0238CC60: .4byte 0x0000022B
 	arm_func_end ov16_0238CBD0
 
 	arm_func_start ov16_0238CC64
-ov16_0238CC64: @ 0x0238CC64
+ov16_0238CC64: ; 0x0238CC64
 	push {r3, lr}
 	bl GetTeamMember
-	ldr r1, _0238CC90 @ =0x0238CE40
+	ldr r1, _0238CC90 ; =0x0238CE40
 	ldr r2, [r1]
 	str r0, [r2, #0x3c]
 	ldr r0, [r1]
@@ -2538,8 +2538,8 @@ _0238CC90: .4byte 0x0238CE40
 	arm_func_end ov16_0238CC64
 
 	arm_func_start ov16_0238CC94
-ov16_0238CC94: @ 0x0238CC94
-	ldr r0, _0238CCA4 @ =0x0238CE40
+ov16_0238CC94: ; 0x0238CC94
+	ldr r0, _0238CCA4 ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0xdc]
 	bx lr
@@ -2548,8 +2548,8 @@ _0238CCA4: .4byte 0x0238CE40
 	arm_func_end ov16_0238CC94
 
 	arm_func_start ov16_0238CCA8
-ov16_0238CCA8: @ 0x0238CCA8
-	ldr r0, _0238CCB8 @ =0x0238CE40
+ov16_0238CCA8: ; 0x0238CCA8
+	ldr r0, _0238CCB8 ; =0x0238CE40
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0xde]
 	bx lr
@@ -2558,8 +2558,8 @@ _0238CCB8: .4byte 0x0238CE40
 	arm_func_end ov16_0238CCA8
 
 	arm_func_start ov16_0238CCBC
-ov16_0238CCBC: @ 0x0238CCBC
-	ldr r0, _0238CCD4 @ =0x0238CE40
+ov16_0238CCBC: ; 0x0238CCBC
+	ldr r0, _0238CCD4 ; =0x0238CE40
 	ldr r0, [r0]
 	cmp r0, #0
 	moveq r0, #0
@@ -2570,8 +2570,8 @@ _0238CCD4: .4byte 0x0238CE40
 	arm_func_end ov16_0238CCBC
 
 	arm_func_start ov16_0238CCD8
-ov16_0238CCD8: @ 0x0238CCD8
-	ldr r0, _0238CCEC @ =0x0238CE40
+ov16_0238CCD8: ; 0x0238CCD8
+	ldr r0, _0238CCEC ; =0x0238CE40
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #0xe0]
@@ -2581,8 +2581,8 @@ _0238CCEC: .4byte 0x0238CE40
 	arm_func_end ov16_0238CCD8
 
 	arm_func_start ov16_0238CCF0
-ov16_0238CCF0: @ 0x0238CCF0
-	ldr r0, _0238CD04 @ =0x0238CE40
+ov16_0238CCF0: ; 0x0238CCF0
+	ldr r0, _0238CD04 ; =0x0238CE40
 	mov r1, #4
 	ldr r0, [r0]
 	str r1, [r0, #0xd8]
@@ -2590,4 +2590,4 @@ ov16_0238CCF0: @ 0x0238CCF0
 	.align 2, 0
 _0238CD04: .4byte 0x0238CE40
 	arm_func_end ov16_0238CCF0
-	@ 0x0238CD08
+	; 0x0238CD08
