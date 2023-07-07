@@ -6,7 +6,7 @@
 
 	arm_func_start EntryOverlay13
 EntryOverlay13: ; 0x0238A140
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	bl sub_0201F2E4
 	ldr r0, _0238A184 ; =0x00000428
 	mov r1, #8
@@ -22,20 +22,20 @@ EntryOverlay13: ; 0x0238A140
 	sub r2, r3, #2
 	strb r2, [r1, #6]
 	bl sub_020348E4
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238A184: .4byte 0x00000428
-_0238A188: .4byte 0x0238CEA0
-_0238A18C: .4byte 0x0238C024
+_0238A184: .word 0x00000428
+_0238A188: .word 0x0238CEA0
+_0238A18C: .word 0x0238C024
 	arm_func_end EntryOverlay13
 
 	arm_func_start ExitOverlay13
 ExitOverlay13: ; 0x0238A190
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238A1C4 ; =0x0238CEA0
 	ldr r0, [r0]
 	cmp r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 	bl sub_0201F2E4
 	ldr r0, _0238A1C4 ; =0x0238CEA0
 	ldr r0, [r0]
@@ -43,14 +43,14 @@ ExitOverlay13: ; 0x0238A190
 	ldr r0, _0238A1C4 ; =0x0238CEA0
 	mov r1, #0
 	str r1, [r0]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238A1C4: .4byte 0x0238CEA0
+_0238A1C4: .word 0x0238CEA0
 	arm_func_end ExitOverlay13
 
 	arm_func_start Overlay13SwitchFunctionNa238A1C8
 Overlay13SwitchFunctionNa238A1C8: ; 0x0238A1C8
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238A570 ; =0x0238CEA0
 	ldr r0, [r0]
 	ldrb r0, [r0]
@@ -304,17 +304,17 @@ _0238A558:
 	mvn r0, #0
 	bl ov11_022E6E8C
 	mov r0, #4
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 _0238A568:
 	mov r0, #1
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238A570: .4byte 0x0238CEA0
+_0238A570: .word 0x0238CEA0
 	arm_func_end ov13_0238A468
 
 	arm_func_start Overlay13SwitchFunctionNa238A574
 Overlay13SwitchFunctionNa238A574: ; 0x0238A574
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x178
 	add r0, sp, #0xb0
 	bl GetReleasedStylus
@@ -445,7 +445,7 @@ _0238A73C:
 	ldrsb r0, [r0, #2]
 	str r3, [sp, #0x1c]
 	str r2, [sp, #0x20]
-	ldm r1, {r1, r2}
+	ldmia r1, {r1, r2}
 	bl sub_02028770
 	ldr r0, _0238B4F8 ; =0x0238CEA0
 	mov r1, #8
@@ -538,7 +538,7 @@ _0238A8B8:
 	add r1, sp, #0x1c
 	str r3, [sp, #0x1c]
 	str r2, [sp, #0x20]
-	ldm r1, {r1, r2}
+	ldmia r1, {r1, r2}
 	bl sub_02028770
 	ldr r0, _0238B4F8 ; =0x0238CEA0
 	ldr r3, _0238B50C ; =0x0238CF24
@@ -548,7 +548,7 @@ _0238A8B8:
 	ldr r1, _0238B510 ; =0x0238C1AC
 	add r4, r7, r4
 	ldrb r4, [r4, #0x54]
-	lsl r4, r4, #1
+	mov r4, r4, lsl #1
 	ldrh r5, [r3, r4]
 	ldrh r6, [r1, r4]
 	str r2, [r7, #0x14]
@@ -563,7 +563,7 @@ _0238A8B8:
 	ldr r0, [r0]
 	add r0, r0, #0x6c
 	bl GetStringFromFileVeneer
-	asr r0, r5, #8
+	mov r0, r5, asr #8
 	ldr r4, _0238B4F8 ; =0x0238CEA0
 	and r1, r0, #0xff
 	ldr r2, [r4]
@@ -577,7 +577,7 @@ _0238A8B8:
 	add r6, r0, r1, lsl #1
 	b _0238A9A4
 _0238A968:
-	lsl r0, r7, #1
+	mov r0, r7, lsl #1
 	ldrh sb, [r0, r6]
 	ldr r0, [r4]
 	add r0, r0, #0x26c
@@ -585,7 +585,7 @@ _0238A968:
 	add r0, r0, r7, lsl #6
 	bl GetStringFromFileVeneer
 	ldr r2, [r4]
-	lsl r1, r7, #3
+	mov r1, r7, lsl #3
 	add r0, r2, #0x26c
 	strh sb, [r5, r1]
 	add r1, r0, r7, lsl #6
@@ -597,7 +597,7 @@ _0238A9A4:
 	bne _0238A968
 	ldr r0, _0238B4F8 ; =0x0238CEA0
 	ldr r1, _0238B514 ; =0x0238CECC
-	lsl r2, r8, #3
+	mov r2, r8, lsl #3
 	mov r3, #0
 	ldr r0, [r0]
 	strh r3, [r1, r2]
@@ -736,11 +736,11 @@ _0238ABA4:
 	ldrb r2, [r1, #0x54]
 	ldr r1, _0238B50C ; =0x0238CF24
 	ldr r5, _0238B528 ; =0x0238C390
-	lsl r2, r2, #1
+	mov r2, r2, lsl #1
 	ldrh r2, [r1, r2]
 	mov r1, #0
 	and r4, r2, #0xff00
-	asr r2, r4, #7
+	mov r2, r4, asr #7
 	add r2, r4, r2, lsr #24
 	add r0, r0, r2, asr #8
 	add r5, r5, r0, lsl #4
@@ -815,7 +815,7 @@ _0238ACC0:
 	ldr r1, _0238B4F8 ; =0x0238CEA0
 	add r0, r0, r0, lsl #1
 	ldr r3, [r1]
-	lsl r2, r0, #1
+	mov r2, r0, lsl #1
 	ldr r1, _0238B52C ; =0x0238C14C
 	ldrsb r0, [r3, #2]
 	ldrh r2, [r1, r2]
@@ -840,7 +840,7 @@ _0238AD00:
 	ldr r1, _0238B530 ; =0x0238C0B8
 	add r0, r4, #0x3b4
 	add r2, r2, r3, lsl #1
-	lsl r2, r2, #1
+	mov r2, r2, lsl #1
 	ldrsh r1, [r1, r2]
 	bl InitPortraitBoxWithMonsterId
 	ldr r0, _0238B4F8 ; =0x0238CEA0
@@ -872,7 +872,7 @@ _0238AD00:
 	ldr r2, _0238B52C ; =0x0238C14C
 	mov r1, #0x18
 	add r3, r4, r3
-	lsl r3, r3, #1
+	mov r3, r3, lsl #1
 	ldrh r2, [r2, r3]
 	mov r3, #0
 	bl ShowMessageInDBox
@@ -1164,8 +1164,8 @@ _0238B1B4:
 	ldrsb r0, [r4, #4]
 	add r2, r2, #0xb2
 	add r2, r2, #0x600
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	bl ShowMessageInDBox
 	ldr r0, _0238B4F8 ; =0x0238CEA0
 	ldr r1, [r0]
@@ -1278,7 +1278,7 @@ _0238B360:
 	ldr r1, _0238B530 ; =0x0238C0B8
 	add r2, r4, #0x400
 	add r0, r3, r0, lsl #1
-	lsl r0, r0, #1
+	mov r0, r0, lsl #1
 	ldrsh r3, [r1, r0]
 	add r0, sp, #0x4c
 	add r1, r4, #0x3e4
@@ -1374,30 +1374,30 @@ _0238B4C0:
 	str r0, [r1, #0x20]
 	b _0238BD74
 	.align 2, 0
-_0238B4F8: .4byte 0x0238CEA0
-_0238B4FC: .4byte 0x0238C064
-_0238B500: .4byte 0x0238C034
-_0238B504: .4byte 0x0238C054
-_0238B508: .4byte ov13_0238BE6C
-_0238B50C: .4byte 0x0238CF24
-_0238B510: .4byte 0x0238C1AC
-_0238B514: .4byte 0x0238CECC
-_0238B518: .4byte 0x0238C230
-_0238B51C: .4byte 0x0238CEAC
-_0238B520: .4byte 0x00300011
-_0238B524: .4byte 0x0238C01C
-_0238B528: .4byte 0x0238C390
-_0238B52C: .4byte 0x0238C14C
-_0238B530: .4byte 0x0238C0B8
-_0238B534: .4byte 0x00002208
-_0238B538: .4byte 0x000005CC
-_0238B53C: .4byte 0x0238C010
-_0238B540: .4byte 0x0238C044
-_0238B544: .4byte 0x000006AD
-_0238B548: .4byte 0x000006AE
-_0238B54C: .4byte 0x000006AF
-_0238B550: .4byte 0x000006B1
-_0238B554: .4byte 0x000006C9
+_0238B4F8: .word 0x0238CEA0
+_0238B4FC: .word 0x0238C064
+_0238B500: .word 0x0238C034
+_0238B504: .word 0x0238C054
+_0238B508: .word ov13_0238BE6C
+_0238B50C: .word 0x0238CF24
+_0238B510: .word 0x0238C1AC
+_0238B514: .word 0x0238CECC
+_0238B518: .word 0x0238C230
+_0238B51C: .word 0x0238CEAC
+_0238B520: .word 0x00300011
+_0238B524: .word 0x0238C01C
+_0238B528: .word 0x0238C390
+_0238B52C: .word 0x0238C14C
+_0238B530: .word 0x0238C0B8
+_0238B534: .word 0x00002208
+_0238B538: .word 0x000005CC
+_0238B53C: .word 0x0238C010
+_0238B540: .word 0x0238C044
+_0238B544: .word 0x000006AD
+_0238B548: .word 0x000006AE
+_0238B54C: .word 0x000006AF
+_0238B550: .word 0x000006B1
+_0238B554: .word 0x000006C9
 _0238B558:
 	ldrh r1, [sp, #0xb0]
 	tst r1, #1
@@ -1619,7 +1619,7 @@ _0238B878:
 	ldr r1, [r1]
 	ldrb r1, [r1, #0x5f]
 	add r0, r1, r0, lsl #1
-	lsl r0, r0, #1
+	mov r0, r0, lsl #1
 	ldrsh r4, [r2, r0]
 	mov r0, r4
 	bl GetMonsterGenderVeneer
@@ -1654,7 +1654,7 @@ _0238B910:
 	mov r1, #0x15
 	add r0, r6, r7
 	bl DivideInt
-	lsl r0, r1, #1
+	mov r0, r1, lsl #1
 	ldrsh sl, [fp, r0]
 	mov r1, #0
 	mov r0, sl
@@ -1943,24 +1943,24 @@ _0238BD1C:
 	strb r1, [r0]
 _0238BD74:
 	add sp, sp, #0x178
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0238BD7C: .4byte 0x000006C2
-_0238BD80: .4byte 0x000006C3
-_0238BD84: .4byte 0x000006C5
-_0238BD88: .4byte 0x00300013
-_0238BD8C: .4byte 0x0238C074
-_0238BD90: .4byte 0x0238C0F8
-_0238BD94: .4byte 0x0238C08C
-_0238BD98: .4byte 0x0238CEBC
-_0238BD9C: .4byte 0x00001011
-_0238BDA0: .4byte GetOptionStringFromID
-_0238BDA4: .4byte 0x0238C014
+_0238BD7C: .word 0x000006C2
+_0238BD80: .word 0x000006C3
+_0238BD84: .word 0x000006C5
+_0238BD88: .word 0x00300013
+_0238BD8C: .word 0x0238C074
+_0238BD90: .word 0x0238C0F8
+_0238BD94: .word 0x0238C08C
+_0238BD98: .word 0x0238CEBC
+_0238BD9C: .word 0x00001011
+_0238BDA0: .word GetOptionStringFromID
+_0238BDA4: .word 0x0238C014
 	arm_func_end ov13_0238ADFC
 
 	arm_func_start GetPersonality
 GetPersonality: ; 0x0238BDA8
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238BDEC ; =0x0238CEA0
 	mov ip, #0
 	ldr lr, [r0]
@@ -1977,14 +1977,14 @@ _0238BDC0:
 	movlt ip, r1
 	cmp r3, #0x10
 	blt _0238BDC0
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238BDEC: .4byte 0x0238CEA0
+_0238BDEC: .word 0x0238CEA0
 	arm_func_end GetPersonality
 
 	arm_func_start GetOptionStringFromID
 GetOptionStringFromID: ; 0x0238BDF0
-	push {r3, r4, lr}
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x54
 	ldr r2, _0238BE40 ; =0x0238CEA0
 	add ip, sp, #4
@@ -2003,11 +2003,11 @@ GetOptionStringFromID: ; 0x0238BDF0
 	bl PreprocessString
 	mov r0, r4
 	add sp, sp, #0x54
-	pop {r3, r4, pc}
+	ldmdb sp!, {r3, r4, pc}
 	.align 2, 0
-_0238BE40: .4byte 0x0238CEA0
-_0238BE44: .4byte 0x0238CE70
-_0238BE48: .4byte 0x0000C402
+_0238BE40: .word 0x0238CEA0
+_0238BE44: .word 0x0238CE70
+_0238BE48: .word 0x0000C402
 	arm_func_end GetOptionStringFromID
 
 	arm_func_start WaitForNextStep
@@ -2020,12 +2020,12 @@ WaitForNextStep: ; 0x0238BE4C
 	str r0, [r1, #0x30]
 	bx lr
 	.align 2, 0
-_0238BE68: .4byte 0x0238CEA0
+_0238BE68: .word 0x0238CEA0
 	arm_func_end WaitForNextStep
 
 	arm_func_start ov13_0238BE6C
 ov13_0238BE6C: ; 0x0238BE6C
-	push {r4, r5, lr}
+	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x54
 	sub sp, sp, #0x400
 	mov r4, r0
@@ -2124,12 +2124,12 @@ ov13_0238BE6C: ; 0x0238BE6C
 	bl sub_02027AF0
 	add sp, sp, #0x54
 	add sp, sp, #0x400
-	pop {r4, r5, pc}
+	ldmdb sp!, {r4, r5, pc}
 	.align 2, 0
-_0238BFFC: .4byte 0x0238CEA0
-_0238C000: .4byte 0x000006CA
-_0238C004: .4byte 0x0000C402
-_0238C008: .4byte 0x000006CB
-_0238C00C: .4byte 0x000006CD
+_0238BFFC: .word 0x0238CEA0
+_0238C000: .word 0x000006CA
+_0238C004: .word 0x0000C402
+_0238C008: .word 0x000006CB
+_0238C00C: .word 0x000006CD
 	arm_func_end ov13_0238BE6C
 	; 0x0238C010

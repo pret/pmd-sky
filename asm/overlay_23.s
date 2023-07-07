@@ -6,7 +6,7 @@
 
 	arm_func_start ov23_0238A140
 ov23_0238A140: ; 0x0238A140
-	push {r3, r4, lr}
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x30c
 	ldr r1, _0238B0DC ; =0x0238D8A0
 	ldr r2, [r1]
@@ -117,7 +117,7 @@ _0238A2A0:
 	ldreq r0, _0238B0DC ; =0x0238D8A0
 	moveq r1, #3
 	ldreq r0, [r0]
-	strbeq r1, [r0, #0x90]
+	streqb r1, [r0, #0x90]
 	beq _0238A314
 	mov r0, #0
 	bl sub_02043380
@@ -125,7 +125,7 @@ _0238A2A0:
 	ldrne r0, _0238B0DC ; =0x0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
-	strbne r1, [r0, #0x90]
+	strneb r1, [r0, #0x90]
 _0238A314:
 	mov r0, #1
 	bl sub_02043320
@@ -133,14 +133,14 @@ _0238A314:
 	ldrne r0, _0238B0DC ; =0x0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
-	strbne r1, [r0, #0x91]
+	strneb r1, [r0, #0x91]
 	bne _0238A34C
 	bl IsBagFull
 	cmp r0, #0
 	ldrne r0, _0238B0DC ; =0x0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
-	strbne r1, [r0, #0x91]
+	strneb r1, [r0, #0x91]
 _0238A34C:
 	ldr r0, _0238B0DC ; =0x0238D8A0
 	ldr r0, [r0]
@@ -498,11 +498,11 @@ _0238A85C:
 	ldrne r0, _0238B0DC ; =0x0238D8A0
 	movne r1, #0
 	ldrne r0, [r0]
-	strbne r1, [r0, #0x90]
+	strneb r1, [r0, #0x90]
 	ldreq r0, _0238B0DC ; =0x0238D8A0
 	moveq r1, #3
 	ldreq r0, [r0]
-	strbeq r1, [r0, #0x90]
+	streqb r1, [r0, #0x90]
 	b _0238A8B8
 _0238A8B0:
 	mov r0, #0
@@ -589,8 +589,8 @@ _0238A938:
 	ldr r1, _0238B174 ; =0x00001013
 	add r2, r2, #0xd1
 	add r2, r2, #0x2900
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	stmib sp, {r2, r3}
 	ldr r3, _0238B178 ; =0x00000315
 	mov r2, #0
@@ -919,8 +919,8 @@ _0238AE3C:
 	ldr r1, _0238B174 ; =0x00001013
 	add r2, r2, #0xd1
 	add r2, r2, #0x2900
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	stmib sp, {r2, r3}
 	ldr r3, _0238B178 ; =0x00000315
 	mov r2, #0
@@ -1062,68 +1062,68 @@ _0238B0C8:
 	str r1, [r0, #0xc]
 	b _0238B1F4
 	.align 2, 0
-_0238B0DC: .4byte 0x0238D8A0
-_0238B0E0: .4byte 0x00003008
-_0238B0E4: .4byte 0x0238D448
-_0238B0E8: .4byte 0x0238D438
-_0238B0EC: .4byte 0x0238D334
-_0238B0F0: .4byte 0x0238D3F8
-_0238B0F4: .4byte 0x00300013
-_0238B0F8: .4byte 0x0238D374
-_0238B0FC: .4byte 0x0238D468
-_0238B100: .4byte 0x0238D484
-_0238B104: .4byte 0x00003018
-_0238B108: .4byte 0x0238D4A4
-_0238B10C: .4byte 0x0000031A
-_0238B110: .4byte 0x0238D4C0
-_0238B114: .4byte 0x0238D4DC
-_0238B118: .4byte 0x00000326
-_0238B11C: .4byte 0x0238D4F8
-_0238B120: .4byte 0x0238D51C
-_0238B124: .4byte 0x0000032A
-_0238B128: .4byte 0x0238D540
-_0238B12C: .4byte 0x0238D55C
-_0238B130: .4byte 0x0238D2F0
-_0238B134: .4byte 0x0238D578
-_0238B138: .4byte 0x0238D594
-_0238B13C: .4byte 0x0238D5AC
-_0238B140: .4byte 0x0238D5CC
-_0238B144: .4byte 0x0238D5E8
-_0238B148: .4byte 0x0238D608
-_0238B14C: .4byte 0x0238D628
-_0238B150: .4byte 0x0238D408
-_0238B154: .4byte 0x0238D354
-_0238B158: .4byte 0x0238D64C
-_0238B15C: .4byte 0x0238D2EC
-_0238B160: .4byte 0x0238D670
-_0238B164: .4byte 0x0238D68C
-_0238B168: .4byte 0x0238D69C
-_0238B16C: .4byte 0x0000C402
-_0238B170: .4byte 0x0238D428
-_0238B174: .4byte 0x00001013
-_0238B178: .4byte 0x00000315
-_0238B17C: .4byte 0x0238D6A8
-_0238B180: .4byte 0x0238D6CC
-_0238B184: .4byte 0x0000031E
-_0238B188: .4byte 0x0238D6F0
-_0238B18C: .4byte 0x0238D418
-_0238B190: .4byte 0x0238D2FC
-_0238B194: .4byte 0x0238D708
-_0238B198: .4byte 0x0238D71C
-_0238B19C: .4byte 0x0238D73C
-_0238B1A0: .4byte 0x0238D75C
-_0238B1A4: .4byte 0x0238D77C
-_0238B1A8: .4byte 0x0238D79C
-_0238B1AC: .4byte 0x0238D7BC
-_0238B1B0: .4byte 0x0238D314
-_0238B1B4: .4byte 0x0238D2E8
-_0238B1B8: .4byte 0x0238D7E0
-_0238B1BC: .4byte 0x0238D7FC
-_0238B1C0: .4byte 0x00000322
-_0238B1C4: .4byte 0x0238D81C
-_0238B1C8: .4byte 0x0238D834
-_0238B1CC: .4byte 0x0238D854
-_0238B1D0: .4byte 0x0238D868
+_0238B0DC: .word 0x0238D8A0
+_0238B0E0: .word 0x00003008
+_0238B0E4: .word 0x0238D448
+_0238B0E8: .word 0x0238D438
+_0238B0EC: .word 0x0238D334
+_0238B0F0: .word 0x0238D3F8
+_0238B0F4: .word 0x00300013
+_0238B0F8: .word 0x0238D374
+_0238B0FC: .word 0x0238D468
+_0238B100: .word 0x0238D484
+_0238B104: .word 0x00003018
+_0238B108: .word 0x0238D4A4
+_0238B10C: .word 0x0000031A
+_0238B110: .word 0x0238D4C0
+_0238B114: .word 0x0238D4DC
+_0238B118: .word 0x00000326
+_0238B11C: .word 0x0238D4F8
+_0238B120: .word 0x0238D51C
+_0238B124: .word 0x0000032A
+_0238B128: .word 0x0238D540
+_0238B12C: .word 0x0238D55C
+_0238B130: .word 0x0238D2F0
+_0238B134: .word 0x0238D578
+_0238B138: .word 0x0238D594
+_0238B13C: .word 0x0238D5AC
+_0238B140: .word 0x0238D5CC
+_0238B144: .word 0x0238D5E8
+_0238B148: .word 0x0238D608
+_0238B14C: .word 0x0238D628
+_0238B150: .word 0x0238D408
+_0238B154: .word 0x0238D354
+_0238B158: .word 0x0238D64C
+_0238B15C: .word 0x0238D2EC
+_0238B160: .word 0x0238D670
+_0238B164: .word 0x0238D68C
+_0238B168: .word 0x0238D69C
+_0238B16C: .word 0x0000C402
+_0238B170: .word 0x0238D428
+_0238B174: .word 0x00001013
+_0238B178: .word 0x00000315
+_0238B17C: .word 0x0238D6A8
+_0238B180: .word 0x0238D6CC
+_0238B184: .word 0x0000031E
+_0238B188: .word 0x0238D6F0
+_0238B18C: .word 0x0238D418
+_0238B190: .word 0x0238D2FC
+_0238B194: .word 0x0238D708
+_0238B198: .word 0x0238D71C
+_0238B19C: .word 0x0238D73C
+_0238B1A0: .word 0x0238D75C
+_0238B1A4: .word 0x0238D77C
+_0238B1A8: .word 0x0238D79C
+_0238B1AC: .word 0x0238D7BC
+_0238B1B0: .word 0x0238D314
+_0238B1B4: .word 0x0238D2E8
+_0238B1B8: .word 0x0238D7E0
+_0238B1BC: .word 0x0238D7FC
+_0238B1C0: .word 0x00000322
+_0238B1C4: .word 0x0238D81C
+_0238B1C8: .word 0x0238D834
+_0238B1CC: .word 0x0238D854
+_0238B1D0: .word 0x0238D868
 _0238B1D4:
 	ldr r0, _0238B0DC ; =0x0238D8A0
 	ldr r1, [r0]
@@ -1152,11 +1152,11 @@ _0238B1F4:
 	arm_func_end caseD_2c
 _0238B230:
 	add sp, sp, #0x30c
-	pop {r3, r4, pc}
+	ldmdb sp!, {r3, r4, pc}
 
 	arm_func_start ov23_0238B238
 ov23_0238B238: ; 0x0238B238
-	push {r3, r4, lr}
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x30c
 	ldr r0, _0238C1CC ; =0x0238D8A0
 	ldr r2, [r0]
@@ -1265,7 +1265,7 @@ _0238B390:
 	ldreq r0, _0238C1CC ; =0x0238D8A0
 	moveq r1, #3
 	ldreq r0, [r0]
-	strbeq r1, [r0, #0x90]
+	streqb r1, [r0, #0x90]
 	beq _0238B404
 	mov r0, #0
 	bl sub_02043380
@@ -1273,7 +1273,7 @@ _0238B390:
 	ldrne r0, _0238C1CC ; =0x0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
-	strbne r1, [r0, #0x90]
+	strneb r1, [r0, #0x90]
 _0238B404:
 	mov r0, #1
 	bl sub_02043320
@@ -1281,14 +1281,14 @@ _0238B404:
 	ldrne r0, _0238C1CC ; =0x0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
-	strbne r1, [r0, #0x91]
+	strneb r1, [r0, #0x91]
 	bne _0238B43C
 	bl IsBagFull
 	cmp r0, #0
 	ldrne r0, _0238C1CC ; =0x0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
-	strbne r1, [r0, #0x91]
+	strneb r1, [r0, #0x91]
 _0238B43C:
 	ldr r0, _0238C1CC ; =0x0238D8A0
 	ldr r0, [r0]
@@ -1646,11 +1646,11 @@ _0238B94C:
 	ldrne r0, _0238C1CC ; =0x0238D8A0
 	movne r1, #0
 	ldrne r0, [r0]
-	strbne r1, [r0, #0x90]
+	strneb r1, [r0, #0x90]
 	ldreq r0, _0238C1CC ; =0x0238D8A0
 	moveq r1, #3
 	ldreq r0, [r0]
-	strbeq r1, [r0, #0x90]
+	streqb r1, [r0, #0x90]
 	b _0238B9A8
 _0238B9A0:
 	mov r0, #0
@@ -1737,8 +1737,8 @@ _0238BA28:
 	ldr r1, _0238C264 ; =0x00001013
 	add r2, r2, #0xd1
 	add r2, r2, #0x2900
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	stmib sp, {r2, r3}
 	ldr r3, _0238C268 ; =0x00000315
 	mov r2, #0
@@ -2063,8 +2063,8 @@ _0238BF2C:
 	ldr r1, _0238C264 ; =0x00001013
 	add r2, r2, #0xd1
 	add r2, r2, #0x2900
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	stmib sp, {r2, r3}
 	ldr r3, _0238C268 ; =0x00000315
 	mov r2, #0
@@ -2206,68 +2206,68 @@ _0238C1B8:
 	str r1, [r0, #0xc]
 	b _0238C2E4
 	.align 2, 0
-_0238C1CC: .4byte 0x0238D8A0
-_0238C1D0: .4byte 0x00003008
-_0238C1D4: .4byte 0x0238D448
-_0238C1D8: .4byte 0x0238D438
-_0238C1DC: .4byte 0x0238D334
-_0238C1E0: .4byte 0x0238D3F8
-_0238C1E4: .4byte 0x00300013
-_0238C1E8: .4byte 0x0238D374
-_0238C1EC: .4byte 0x0238D468
-_0238C1F0: .4byte 0x0238D484
-_0238C1F4: .4byte 0x00003018
-_0238C1F8: .4byte 0x0238D4A4
-_0238C1FC: .4byte 0x0000031A
-_0238C200: .4byte 0x0238D4C0
-_0238C204: .4byte 0x0238D4DC
-_0238C208: .4byte 0x00000326
-_0238C20C: .4byte 0x0238D4F8
-_0238C210: .4byte 0x0238D51C
-_0238C214: .4byte 0x0000032A
-_0238C218: .4byte 0x0238D540
-_0238C21C: .4byte 0x0238D55C
-_0238C220: .4byte 0x0238D2F0
-_0238C224: .4byte 0x0238D578
-_0238C228: .4byte 0x0238D594
-_0238C22C: .4byte 0x0238D5AC
-_0238C230: .4byte 0x0238D5CC
-_0238C234: .4byte 0x0238D5E8
-_0238C238: .4byte 0x0238D608
-_0238C23C: .4byte 0x0238D628
-_0238C240: .4byte 0x0238D408
-_0238C244: .4byte 0x0238D354
-_0238C248: .4byte 0x0238D64C
-_0238C24C: .4byte 0x0238D2EC
-_0238C250: .4byte 0x0238D670
-_0238C254: .4byte 0x0238D68C
-_0238C258: .4byte 0x0238D69C
-_0238C25C: .4byte 0x0000C402
-_0238C260: .4byte 0x0238D428
-_0238C264: .4byte 0x00001013
-_0238C268: .4byte 0x00000315
-_0238C26C: .4byte 0x0238D6A8
-_0238C270: .4byte 0x0238D6CC
-_0238C274: .4byte 0x0000031E
-_0238C278: .4byte 0x0238D6F0
-_0238C27C: .4byte 0x0238D418
-_0238C280: .4byte 0x0238D2FC
-_0238C284: .4byte 0x0238D708
-_0238C288: .4byte 0x0238D71C
-_0238C28C: .4byte 0x0238D73C
-_0238C290: .4byte 0x0238D75C
-_0238C294: .4byte 0x0238D77C
-_0238C298: .4byte 0x0238D79C
-_0238C29C: .4byte 0x0238D7BC
-_0238C2A0: .4byte 0x0238D314
-_0238C2A4: .4byte 0x0238D2E8
-_0238C2A8: .4byte 0x0238D7E0
-_0238C2AC: .4byte 0x0238D7FC
-_0238C2B0: .4byte 0x00000322
-_0238C2B4: .4byte 0x0238D81C
-_0238C2B8: .4byte 0x0238D834
-_0238C2BC: .4byte 0x0238D854
-_0238C2C0: .4byte 0x0238D868
+_0238C1CC: .word 0x0238D8A0
+_0238C1D0: .word 0x00003008
+_0238C1D4: .word 0x0238D448
+_0238C1D8: .word 0x0238D438
+_0238C1DC: .word 0x0238D334
+_0238C1E0: .word 0x0238D3F8
+_0238C1E4: .word 0x00300013
+_0238C1E8: .word 0x0238D374
+_0238C1EC: .word 0x0238D468
+_0238C1F0: .word 0x0238D484
+_0238C1F4: .word 0x00003018
+_0238C1F8: .word 0x0238D4A4
+_0238C1FC: .word 0x0000031A
+_0238C200: .word 0x0238D4C0
+_0238C204: .word 0x0238D4DC
+_0238C208: .word 0x00000326
+_0238C20C: .word 0x0238D4F8
+_0238C210: .word 0x0238D51C
+_0238C214: .word 0x0000032A
+_0238C218: .word 0x0238D540
+_0238C21C: .word 0x0238D55C
+_0238C220: .word 0x0238D2F0
+_0238C224: .word 0x0238D578
+_0238C228: .word 0x0238D594
+_0238C22C: .word 0x0238D5AC
+_0238C230: .word 0x0238D5CC
+_0238C234: .word 0x0238D5E8
+_0238C238: .word 0x0238D608
+_0238C23C: .word 0x0238D628
+_0238C240: .word 0x0238D408
+_0238C244: .word 0x0238D354
+_0238C248: .word 0x0238D64C
+_0238C24C: .word 0x0238D2EC
+_0238C250: .word 0x0238D670
+_0238C254: .word 0x0238D68C
+_0238C258: .word 0x0238D69C
+_0238C25C: .word 0x0000C402
+_0238C260: .word 0x0238D428
+_0238C264: .word 0x00001013
+_0238C268: .word 0x00000315
+_0238C26C: .word 0x0238D6A8
+_0238C270: .word 0x0238D6CC
+_0238C274: .word 0x0000031E
+_0238C278: .word 0x0238D6F0
+_0238C27C: .word 0x0238D418
+_0238C280: .word 0x0238D2FC
+_0238C284: .word 0x0238D708
+_0238C288: .word 0x0238D71C
+_0238C28C: .word 0x0238D73C
+_0238C290: .word 0x0238D75C
+_0238C294: .word 0x0238D77C
+_0238C298: .word 0x0238D79C
+_0238C29C: .word 0x0238D7BC
+_0238C2A0: .word 0x0238D314
+_0238C2A4: .word 0x0238D2E8
+_0238C2A8: .word 0x0238D7E0
+_0238C2AC: .word 0x0238D7FC
+_0238C2B0: .word 0x00000322
+_0238C2B4: .word 0x0238D81C
+_0238C2B8: .word 0x0238D834
+_0238C2BC: .word 0x0238D854
+_0238C2C0: .word 0x0238D868
 _0238C2C4:
 	ldr r0, _0238C1CC ; =0x0238D8A0
 	ldr r1, [r0]
@@ -2295,12 +2295,12 @@ _0238C2E4:
 	bl ov23_0238D0E0
 _0238C320:
 	add sp, sp, #0x30c
-	pop {r3, r4, pc}
+	ldmdb sp!, {r3, r4, pc}
 	arm_func_end ov23_0238B238
 
 	arm_func_start ov23_0238C328
 ov23_0238C328: ; 0x0238C328
-	push {r4, lr}
+	stmdb sp!, {r4, lr}
 	bl sub_02044094
 	bl sub_020440DC
 	bl sub_02042B98
@@ -2371,26 +2371,26 @@ _0238C3FC:
 	strb r0, [r1, #0x88]
 	bl ov23_0238A140
 	mov r0, #1
-	pop {r4, pc}
+	ldmdb sp!, {r4, pc}
 	.align 2, 0
-_0238C440: .4byte 0x0238A134
-_0238C444: .4byte 0x0238D8A0
+_0238C440: .word 0x0238A134
+_0238C444: .word 0x0238D8A0
 	arm_func_end ov23_0238C328
 
 	arm_func_start ov23_0238C448
 ov23_0238C448: ; 0x0238C448
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238C470 ; =0x0238D8A0
 	ldr r0, [r0]
 	cmp r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 	bl MemFree
 	ldr r0, _0238C470 ; =0x0238D8A0
 	mov r1, #0
 	str r1, [r0]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238C470: .4byte 0x0238D8A0
+_0238C470: .word 0x0238D8A0
 	arm_func_end ov23_0238C448
 _0238C474:
 	.byte 0x38, 0x40, 0x2D, 0xE9, 0x10, 0x0C, 0x9F, 0xE5, 0x00, 0x10, 0x90, 0xE5
@@ -2670,22 +2670,22 @@ _0238D01C:
 	.byte 0x04, 0x00, 0xA0, 0xE3, 0x38, 0x80, 0xBD, 0xE8
 _0238D088:
 	mov r0, #1
-	pop {r3, r4, r5, pc}
+	ldmdb sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0238D090: .4byte 0x0238D8A0
+_0238D090: .word 0x0238D8A0
 	arm_func_end ov23_0238CCF0
 _0238D094:
 	.byte 0xB8, 0xF6, 0x0A, 0x02
 
 	arm_func_start ov23_0238D098
 ov23_0238D098: ; 0x0238D098
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238D0DC ; =0x0238D8A0
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x99]
 	cmp r0, r1
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 	bl sub_0202836C
 	ldr r0, _0238D0DC ; =0x0238D8A0
 	ldr r0, [r0]
@@ -2695,14 +2695,14 @@ ov23_0238D098: ; 0x0238D098
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x99]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D0DC: .4byte 0x0238D8A0
+_0238D0DC: .word 0x0238D8A0
 	arm_func_end ov23_0238D098
 
 	arm_func_start ov23_0238D0E0
 ov23_0238D0E0: ; 0x0238D0E0
-	push {r4, r5, r6, lr}
+	stmdb sp!, {r4, r5, r6, lr}
 	ldr r3, _0238D144 ; =0x0238D8A0
 	mov r6, r0
 	ldr r3, [r3]
@@ -2710,7 +2710,7 @@ ov23_0238D0E0: ; 0x0238D0E0
 	ldr r0, [r3]
 	mov r4, r2
 	cmp r0, #1
-	popeq {r4, r5, r6, pc}
+	ldmeqdb sp!, {r4, r5, r6, pc}
 	ldrsb r1, [r3, #0x88]
 	add r0, r3, #0x1ac
 	bl SetPortraitExpressionId
@@ -2726,25 +2726,25 @@ ov23_0238D0E0: ; 0x0238D0E0
 	mov r2, r4
 	add r3, r3, #0x9c
 	bl ShowMessageInDBox
-	pop {r4, r5, r6, pc}
+	ldmdb sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0238D144: .4byte 0x0238D8A0
+_0238D144: .word 0x0238D8A0
 	arm_func_end ov23_0238D0E0
 
 	arm_func_start ov23_0238D148
 ov23_0238D148: ; 0x0238D148
-	push {r3, r4, r5, lr}
+	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
 	add r4, sp, #0
 _0238D154:
-	lsl r0, r5, #0x10
-	asr r0, r0, #0x10
+	mov r0, r5, lsl #0x10
+	mov r0, r0, asr #0x10
 	bl sub_02043568
 	tst r0, #1
 	beq _0238D19C
-	lsl r0, r5, #0x10
+	mov r0, r5, lsl #0x10
 	mov r1, r4
-	asr r0, r0, #0x10
+	mov r0, r0, asr #0x10
 	bl sub_0200FFAC
 	cmp r0, #0
 	beq _0238D19C
@@ -2752,8 +2752,8 @@ _0238D154:
 	bl SpecialProcAddItemToBag
 	cmp r0, #0
 	beq _0238D19C
-	lsl r0, r5, #0x10
-	asr r0, r0, #0x10
+	mov r0, r5, lsl #0x10
+	mov r0, r0, asr #0x10
 	bl sub_020101A0
 _0238D19C:
 	add r5, r5, #1
@@ -2762,12 +2762,12 @@ _0238D19C:
 	bl RemoveEmptyItemsInBag
 	bl sub_0201007C
 	bl sub_02042AF8
-	pop {r3, r4, r5, pc}
+	ldmdb sp!, {r3, r4, r5, pc}
 	arm_func_end ov23_0238D148
 
 	arm_func_start ov23_0238D1B8
 ov23_0238D1B8: ; 0x0238D1B8
-	push {r3, r4, r5, lr}
+	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r5, #0
 	add r4, sp, #0
@@ -2776,9 +2776,9 @@ _0238D1C8:
 	bl sub_02042B84
 	tst r0, #1
 	beq _0238D21C
-	lsl r0, r5, #0x10
+	mov r0, r5, lsl #0x10
 	mov r1, r4
-	asr r0, r0, #0x10
+	mov r0, r0, asr #0x10
 	bl CopyItemAtIdx
 	cmp r0, #0
 	beq _0238D21C
@@ -2789,8 +2789,8 @@ _0238D1C8:
 	cmp r0, #0
 	beq _0238D21C
 _0238D208:
-	lsl r0, r5, #0x10
-	asr r0, r0, #0x10
+	mov r0, r5, lsl #0x10
+	mov r0, r0, asr #0x10
 	bl RemoveItem
 	mov r0, r4
 	bl sub_020103AC
@@ -2801,12 +2801,12 @@ _0238D21C:
 	bl RemoveEmptyItemsInBag
 	bl sub_020434D4
 	add sp, sp, #8
-	pop {r3, r4, r5, pc}
+	ldmdb sp!, {r3, r4, r5, pc}
 	arm_func_end ov23_0238D1B8
 
 	arm_func_start ov23_0238D238
 ov23_0238D238: ; 0x0238D238
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238D274 ; =0x0238D8A0
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x24]
@@ -2820,19 +2820,19 @@ ov23_0238D238: ; 0x0238D238
 	strh r1, [sp, #2]
 	bl SpecialProcAddItemToBag
 	bl sub_020434D4
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D274: .4byte 0x0238D8A0
+_0238D274: .word 0x0238D8A0
 	arm_func_end ov23_0238D238
 
 	arm_func_start ov23_0238D278
 ov23_0238D278: ; 0x0238D278
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238D2E4 ; =0x0238D8A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x20]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, asr #0x10
 	bl GetItemAtIdx
 	ldrb r0, [r0, #1]
 	cmp r0, #0
@@ -2841,21 +2841,21 @@ ov23_0238D278: ; 0x0238D278
 	cmp r0, #0
 	bne _0238D2B4
 	bl sub_02042AF8
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 _0238D2B4:
 	ldr r0, _0238D2E4 ; =0x0238D8A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x20]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, asr #0x10
 	bl RemoveItemNoHole
 	ldr r0, _0238D2E4 ; =0x0238D8A0
 	ldr r0, [r0]
 	add r0, r0, #0x18
 	bl sub_020103AC
 	bl sub_02042AF8
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D2E4: .4byte 0x0238D8A0
+_0238D2E4: .word 0x0238D8A0
 	arm_func_end ov23_0238D278
 	; 0x0238D2E8

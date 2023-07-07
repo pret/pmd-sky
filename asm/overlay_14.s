@@ -6,7 +6,7 @@
 
 	arm_func_start SentrySetupState
 SentrySetupState: ; 0x0238A140
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r4, r0
 	ldr r0, _0238A504 ; =0x000038D4
 	mov r1, #8
@@ -165,7 +165,7 @@ _0238A2BC:
 	ldr r1, [r0]
 	add r0, r1, #0x2a8
 	add r1, r1, #0x1e4
-	bl ov11_022F4C64
+	bl ov11_022F6F08
 	ldr r0, _0238A508 ; =0x0238DB80
 	mov r1, #0x800
 	ldr r0, [r0]
@@ -184,7 +184,7 @@ _0238A3E8:
 	add r0, r1, #0x36c
 	add r0, r0, r8
 	add r1, r1, #0x1e4
-	bl ov11_022F4C64
+	bl ov11_022F6F08
 	ldr r0, [r4]
 	mov r1, r7
 	add r0, r0, #0x36c
@@ -196,7 +196,7 @@ _0238A3E8:
 	add r0, r0, #0xc00
 	add r0, r0, r8
 	add r1, r1, #0x1e4
-	bl ov11_022F4C64
+	bl ov11_022F6F08
 	ldr r0, [r4]
 	mov r1, r5
 	add r0, r0, #0x3ac
@@ -208,7 +208,7 @@ _0238A3E8:
 	add r0, r0, #0x1800
 	add r0, r0, r8
 	add r1, r1, #0x1e4
-	bl ov11_022F4C64
+	bl ov11_022F6F08
 	ldr r0, [r4]
 	mov r1, r5
 	arm_func_end SentrySetupState
@@ -233,7 +233,7 @@ _0238A494:
 	add r0, r0, #0x2800
 	add r0, r0, r4
 	add r1, r1, #0x1e4
-	bl ov11_022F4C64
+	bl ov11_022F6F08
 	ldr r0, [r7]
 	mov r1, r8
 	add r0, r0, #0x2c
@@ -252,20 +252,20 @@ _0238A494:
 	beq _0238A4FC
 	mov r1, #6
 	str r1, [r2, #0x108]
-	bl sub_02017DF4
+	bl sub_02017B58
 _0238A4FC:
 	mov r0, #1
-	pop {r4, r5, r6, r7, r8, sb, sl, pc}
+	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0238A504: .4byte 0x000038D4
-_0238A508: .4byte 0x0238DB80
-_0238A50C: .4byte 0x88080000
-_0238A510: .4byte 0xC8100000
+_0238A504: .word 0x000038D4
+_0238A508: .word 0x0238DB80
+_0238A50C: .word 0x88080000
+_0238A510: .word 0xC8100000
 	arm_func_end ov14_0238A468
 
 	arm_func_start ov14_0238A514
 ov14_0238A514: ; 0x0238A514
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238A6AC ; =0x0238DB80
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
@@ -369,20 +369,20 @@ _0238A680:
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x200
-	ldmneia sp!,  {r3, pc}
+	ldmnedb sp!, {r3, pc}
 	ldrsb r0, [r1, #9]
 	mvn r1, #1
 	cmp r0, r1
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 	bl HidePortraitBox
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238A6AC: .4byte 0x0238DB80
+_0238A6AC: .word 0x0238DB80
 	arm_func_end ov14_0238A514
 
 	arm_func_start ov14_0238A6B0
 ov14_0238A6B0: ; 0x0238A6B0
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
@@ -409,7 +409,7 @@ ov14_0238A6B0: ; 0x0238A6B0
 _0238A710:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238A71C:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -437,7 +437,7 @@ _0238A71C:
 _0238A778:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238A784:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -465,7 +465,7 @@ _0238A784:
 _0238A7E0:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238A7EC:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -493,7 +493,7 @@ _0238A7EC:
 _0238A848:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238A854:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -521,7 +521,7 @@ _0238A854:
 _0238A8B0:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238A8BC:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -549,7 +549,7 @@ _0238A8BC:
 _0238A918:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238A924:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -577,7 +577,7 @@ _0238A924:
 _0238A980:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238A98C:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -605,7 +605,7 @@ _0238A98C:
 _0238A9E8:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238A9F4:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -633,7 +633,7 @@ _0238A9F4:
 _0238AA50:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238AA5C:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -661,7 +661,7 @@ _0238AA5C:
 _0238AAB8:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238AAC4:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -689,7 +689,7 @@ _0238AAC4:
 _0238AB20:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238AB2C:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -717,27 +717,27 @@ _0238AB2C:
 _0238AB88:
 	cmp r2, #0
 	moveq r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 _0238AB94:
 	mov r0, #1
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238AB9C: .4byte 0x0238DB80
+_0238AB9C: .word 0x0238DB80
 	arm_func_end ov14_0238A6B0
 
 	arm_func_start ov14_0238ABA0
 ov14_0238ABA0: ; 0x0238ABA0
-	push {r4, r5, lr}
+	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x54
 	mov r4, r1
-	lsl r1, r4, #0x10
+	mov r1, r4, lsl #0x10
 	mov r5, r0
-	asr r0, r1, #0x10
+	mov r0, r1, asr #0x10
 	bl GetSentryDutyGamePoints
 	add r1, r4, #0x6e0
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	str r0, [sp, #0x28]
-	lsr r0, r1, #0x10
+	mov r0, r1, lsr #0x10
 	bl StringFromMessageId
 	str r0, [sp, #0x3c]
 	add r0, sp, #4
@@ -749,15 +749,15 @@ ov14_0238ABA0: ; 0x0238ABA0
 	bl PreprocessString
 	mov r0, r5
 	add sp, sp, #0x54
-	pop {r4, r5, pc}
+	ldmdb sp!, {r4, r5, pc}
 	.align 2, 0
-_0238ABFC: .4byte 0x0238DAE8
-_0238AC00: .4byte 0x0000C402
+_0238ABFC: .word 0x0238DAE8
+_0238AC00: .word 0x0000C402
 	arm_func_end ov14_0238ABA0
 
 	arm_func_start ov14_0238AC04
 ov14_0238AC04: ; 0x0238AC04
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	rsb ip, r0, #0x10
 	mov r3, #1
 	ldr r0, _0238AC3C ; =0x0238DB84
@@ -771,20 +771,20 @@ _0238AC1C:
 	add r3, r3, #1
 	cmp r3, #0x10
 	blt _0238AC1C
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238AC3C: .4byte 0x0238DB84
+_0238AC3C: .word 0x0238DB84
 	arm_func_end ov14_0238AC04
 
 	arm_func_start ov14_0238AC40
 ov14_0238AC40: ; 0x0238AC40
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r1, _0238ACE4 ; =0x0238DB80
 	ldr ip, [r1]
 	add r0, ip, #0x3000
 	ldr r2, [r0, #0x880]
 	ldr r3, [r0, #0x888]
-	lsl r0, r2, #2
+	mov r0, r2, lsl #2
 	add r0, r0, #0xf7
 	add r0, r0, #0x600
 	add r0, r3, r0
@@ -797,8 +797,8 @@ ov14_0238AC40: ; 0x0238AC40
 	ldr r3, [r0]
 	ldr r2, [r3, #0x114]
 	ldrsb r0, [r3, #1]
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	add r3, r3, #0xa4
 	bl ShowMessageInDBox
 	ldr r0, _0238ACE4 ; =0x0238DB80
@@ -814,14 +814,14 @@ ov14_0238AC40: ; 0x0238AC40
 	ldr r0, [r1]
 	add r2, r0, #0x3000
 	ldr r0, [r2, #0x888]
-	lsr r1, r0, #0x1f
+	mov r1, r0, lsr #0x1f
 	rsb r0, r1, r0, lsl #30
 	add r0, r1, r0, ror #30
 	str r0, [r2, #0x888]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238ACE4: .4byte 0x0238DB80
-_0238ACE8: .4byte 0x00000408
+_0238ACE4: .word 0x0238DB80
+_0238ACE8: .word 0x00000408
 	arm_func_end ov14_0238AC40
 _0238ACEC:
 	.byte 0x08, 0x40, 0x2D, 0xE9
@@ -830,7 +830,7 @@ _0238ACEC:
 
 	arm_func_start ov14_0238AD04
 ov14_0238AD04: ; 0x0238AD04
-	push {r4, lr}
+	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x18
 	mov r4, r0
 	mvn r1, #1
@@ -893,14 +893,14 @@ _0238ADE8:
 	bl sub_02027AF0
 _0238ADF0:
 	add sp, sp, #0x18
-	pop {r4, pc}
+	ldmdb sp!, {r4, pc}
 	.align 2, 0
-_0238ADF8: .4byte 0x0238DB80
+_0238ADF8: .word 0x0238DB80
 	arm_func_end ov14_0238AD04
 
 	arm_func_start SentryUpdateDisplay
 SentryUpdateDisplay: ; 0x0238ADFC
-	push {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x6c
 	ldr r1, _0238B690 ; =0x0238D970
 	ldr r0, _0238B694 ; =0x0238DB80
@@ -920,8 +920,8 @@ SentryUpdateDisplay: ; 0x0238ADFC
 	ldr r0, [r0, #0x874]
 	mov r1, #0x3c
 	bl DivideInt
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, asr #0x10
 	cmp r0, #9
 	blt _0238AECC
 	add r0, r4, #0x3000
@@ -1039,7 +1039,7 @@ _0238AFDC:
 	str r1, [sp, #0x14]
 	ldr r1, [r0, #0x8b0]
 	add r0, r2, #0x3a8
-	lsl r3, r1, #8
+	mov r3, r1, lsl #8
 	add r1, sp, #0x14
 	add r0, r0, #0x3000
 	mov r2, #0
@@ -1181,15 +1181,15 @@ _0238B1F8:
 	mov r2, fp
 	add r0, r0, #0x800
 	add r3, r1, #0x36c
-	lsl r1, r0, #0x10
+	mov r1, r0, lsl #0x10
 	add r0, r3, sb
-	asr r1, r1, #0x10
+	mov r1, r1, asr #0x10
 	bl ov11_022F52E8
-	lsl r0, sl, #1
+	mov r0, sl, lsl #1
 	ldrsh r1, [r7, r0]
 	ldr r0, [r5]
 	mov r2, #0
-	lsl r1, r1, #8
+	mov r1, r1, lsl #8
 	add r0, r0, #0x36c
 	str r1, [sp, #0x14]
 	add r0, r0, sb
@@ -1382,12 +1382,12 @@ _0238B4E4:
 	mov r5, #0xc4
 _0238B500:
 	ldr r0, [r6]
-	lsl r1, r4, #4
+	mov r1, r4, lsl #4
 	add r0, r0, #0x2c
 	add r0, r0, #0x2800
 	mla r0, r4, r5, r0
 	add r1, r1, #0xd6
-	lsl r3, r1, #8
+	mov r3, r1, lsl #8
 	mov r1, r8
 	mov r2, r7
 	str r3, [sp, #0x14]
@@ -1487,31 +1487,31 @@ _0238B67C:
 	blt _0238B5F0
 _0238B688:
 	add sp, sp, #0x6c
-	pop {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0238B690: .4byte 0x0238D970
-_0238B694: .4byte 0x0238DB80
-_0238B698: .4byte 0x0238DA40
-_0238B69C: .4byte 0x00000806
-_0238B6A0: .4byte 0x00001005
-_0238B6A4: .4byte 0x00000801
-_0238B6A8: .4byte 0x00001002
-_0238B6AC: .4byte 0x00000802
-_0238B6B0: .4byte 0x0238DB84
-_0238B6B4: .4byte 0x0238DA60
-_0238B6B8: .4byte 0x0000C402
-_0238B6BC: .4byte 0x0238DB0C
-_0238B6C0: .4byte 0x0238DB18
-_0238B6C4: .4byte 0x0238DB24
-_0238B6C8: .4byte 0x0238DB28
-_0238B6CC: .4byte 0x00001004
-_0238B6D0: .4byte 0x00001003
-_0238B6D4: .4byte 0x00002C05
+_0238B690: .word 0x0238D970
+_0238B694: .word 0x0238DB80
+_0238B698: .word 0x0238DA40
+_0238B69C: .word 0x00000806
+_0238B6A0: .word 0x00001005
+_0238B6A4: .word 0x00000801
+_0238B6A8: .word 0x00001002
+_0238B6AC: .word 0x00000802
+_0238B6B0: .word 0x0238DB84
+_0238B6B4: .word 0x0238DA60
+_0238B6B8: .word 0x0000C402
+_0238B6BC: .word 0x0238DB0C
+_0238B6C0: .word 0x0238DB18
+_0238B6C4: .word 0x0238DB24
+_0238B6C8: .word 0x0238DB28
+_0238B6CC: .word 0x00001004
+_0238B6D0: .word 0x00001003
+_0238B6D4: .word 0x00002C05
 	arm_func_end SentryUpdateDisplay
 
-	arm_func_start SentrySetExitingState
-SentrySetExitingState: ; 0x0238B6D8
-	push {r3, lr}
+	arm_func_start SentrySetExitingState__0238B6D8
+SentrySetExitingState__0238B6D8: ; 0x0238B6D8
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238B704 ; =0x0238DB80
 	mov r1, #0
 	ldr r0, [r0]
@@ -1521,20 +1521,20 @@ SentrySetExitingState: ; 0x0238B6D8
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #0x104]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238B704: .4byte 0x0238DB80
-	arm_func_end SentrySetExitingState
+_0238B704: .word 0x0238DB80
+	arm_func_end SentrySetExitingState__0238B6D8
 
 	arm_func_start ov14_0238B708
 ov14_0238B708: ; 0x0238B708
-	push {r3, r4, r5, r6, r7, lr}
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r0, _0238B7F8 ; =0x0238DB80
 	ldr r0, [r0]
 	cmp r0, #0
-	popeq {r3, r4, r5, r6, r7, pc}
+	ldmeqdb sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, r0, #0x2a8
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	ldr r7, _0238B7F8 ; =0x0238DB80
 	mov r4, #0
 	mov r6, #0xc4
@@ -1543,17 +1543,17 @@ _0238B730:
 	ldr r0, [r7]
 	add r0, r0, #0x36c
 	add r0, r0, r5
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	ldr r0, [r7]
 	add r0, r0, #0x3ac
 	add r0, r0, #0xc00
 	add r0, r0, r5
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	ldr r0, [r7]
 	add r0, r0, #0x3ec
 	add r0, r0, #0x1800
 	add r0, r0, r5
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	add r4, r4, #1
 	cmp r4, #0x10
 	blt _0238B730
@@ -1565,24 +1565,24 @@ _0238B784:
 	add r0, r0, #0x2c
 	add r0, r0, #0x2800
 	mla r0, r6, r4, r0
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	add r6, r6, #1
 	cmp r6, #2
 	blt _0238B784
 	ldr r0, _0238B7F8 ; =0x0238DB80
 	ldr r0, [r0]
 	add r0, r0, #0x120
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	ldr r0, _0238B7F8 ; =0x0238DB80
 	ldr r0, [r0]
 	add r0, r0, #0x1e4
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	ldr r0, _0238B7F8 ; =0x0238DB80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x11c]
 	cmp r0, #2
 	beq _0238B7DC
-	bl sub_02017EE8
+	bl sub_02017B70
 _0238B7DC:
 	ldr r0, _0238B7F8 ; =0x0238DB80
 	ldr r0, [r0]
@@ -1590,14 +1590,14 @@ _0238B7DC:
 	ldr r0, _0238B7F8 ; =0x0238DB80
 	mov r1, #0
 	str r1, [r0]
-	pop {r3, r4, r5, r6, r7, pc}
+	ldmdb sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0238B7F8: .4byte 0x0238DB80
+_0238B7F8: .word 0x0238DB80
 	arm_func_end ov14_0238B708
 
 	arm_func_start SentryRunState
 SentryRunState: ; 0x0238B7FC
-	push {r3, r4, r5, lr}
+	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	ldr r0, _0238C12C ; =0x0238DB80
 	ldr r2, [r0]
@@ -1994,8 +1994,8 @@ _0238BD6C:
 	mov r1, r4
 	ldr r2, [r3, #0x114]
 	ldrsb r0, [r3, #1]
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	add r3, r3, #0xa4
 	bl ShowMessageInDBox
 _0238BDA4:
@@ -2242,47 +2242,47 @@ _0238C120:
 	mov r0, #1
 _0238C124:
 	add sp, sp, #8
-	pop {r3, r4, r5, pc}
+	ldmdb sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0238C12C: .4byte 0x0238DB80
-_0238C130: .4byte 0x0238DB94
-_0238C134: .4byte 0x04080800
-_0238C138: .4byte 0x0238D9C8
-_0238C13C: .4byte ov14_0238ABA0
-_0238C140: .4byte 0x0238D9D8
-_0238C144: .4byte 0x00003018
-_0238C148: .4byte 0x0238D9B8
-_0238C14C: .4byte 0x00000142
-_0238C150: .4byte 0x000006D9
-_0238C154: .4byte 0x000006D8
-_0238C158: .4byte 0x000006DA
-_0238C15C: .4byte 0x000006DB
-_0238C160: .4byte 0x00003028
-_0238C164: .4byte 0x000006EB
-_0238C168: .4byte 0x000006DC
-_0238C16C: .4byte 0x000006EE
-_0238C170: .4byte 0x000006EF
-_0238C174: .4byte 0x00002311
-_0238C178: .4byte 0x000006F1
-_0238C17C: .4byte 0x000006F2
-_0238C180: .4byte 0x00002C07
-_0238C184: .4byte 0x000006EC
-_0238C188: .4byte 0x000006ED
-_0238C18C: .4byte 0x00002C09
-_0238C190: .4byte 0x000006F3
-_0238C194: .4byte 0x000006F4
-_0238C198: .4byte 0x000001E3
-_0238C19C: .4byte 0x000006F5
-_0238C1A0: .4byte 0x000006F6
-_0238C1A4: .4byte 0x0238D9F8
-_0238C1A8: .4byte 0x0238ACEC
-_0238C1AC: .4byte 0x0238D988
-_0238C1B0: .4byte ov14_0238AD04
-_0238C1B4: .4byte 0x0238D998
-_0238C1B8: .4byte 0x0238D9A8
-_0238C1BC: .4byte 0x0238DAA0
-_0238C1C0: .4byte 0x0238D9E8
-_0238C1C4: .4byte 0x0238DA08
+_0238C12C: .word 0x0238DB80
+_0238C130: .word 0x0238DB94
+_0238C134: .word 0x04080800
+_0238C138: .word 0x0238D9C8
+_0238C13C: .word ov14_0238ABA0
+_0238C140: .word 0x0238D9D8
+_0238C144: .word 0x00003018
+_0238C148: .word 0x0238D9B8
+_0238C14C: .word 0x00000142
+_0238C150: .word 0x000006D9
+_0238C154: .word 0x000006D8
+_0238C158: .word 0x000006DA
+_0238C15C: .word 0x000006DB
+_0238C160: .word 0x00003028
+_0238C164: .word 0x000006EB
+_0238C168: .word 0x000006DC
+_0238C16C: .word 0x000006EE
+_0238C170: .word 0x000006EF
+_0238C174: .word 0x00002311
+_0238C178: .word 0x000006F1
+_0238C17C: .word 0x000006F2
+_0238C180: .word 0x00002C07
+_0238C184: .word 0x000006EC
+_0238C188: .word 0x000006ED
+_0238C18C: .word 0x00002C09
+_0238C190: .word 0x000006F3
+_0238C194: .word 0x000006F4
+_0238C198: .word 0x000001E3
+_0238C19C: .word 0x000006F5
+_0238C1A0: .word 0x000006F6
+_0238C1A4: .word 0x0238D9F8
+_0238C1A8: .word 0x0238ACEC
+_0238C1AC: .word 0x0238D988
+_0238C1B0: .word ov14_0238AD04
+_0238C1B4: .word 0x0238D998
+_0238C1B8: .word 0x0238D9A8
+_0238C1BC: .word 0x0238DAA0
+_0238C1C0: .word 0x0238D9E8
+_0238C1C4: .word 0x0238DA08
 	arm_func_end SentryRunState
 
 	arm_func_start SentrySetStateIntermediate
@@ -2295,7 +2295,7 @@ SentrySetStateIntermediate: ; 0x0238C1C8
 	str r0, [r1, #0x110]
 	bx lr
 	.align 2, 0
-_0238C1E4: .4byte 0x0238DB80
+_0238C1E4: .word 0x0238DB80
 	arm_func_end SentrySetStateIntermediate
 
 	arm_func_start SentryState0
@@ -2309,18 +2309,18 @@ SentryState0: ; 0x0238C1E8
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C208: .4byte 0x0238DB80
+_0238C208: .word 0x0238DB80
 	arm_func_end SentryState0
 
 	arm_func_start SentryState1
 SentryState1: ; 0x0238C20C
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238C260 ; =0x0238DB80
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
 	bl IsNormalMenuActive
 	cmp r0, #0
-	ldmneia sp!,  {r3, pc}
+	ldmnedb sp!, {r3, pc}
 	ldr r0, _0238C260 ; =0x0238DB80
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
@@ -2332,13 +2332,13 @@ SentryState1: ; 0x0238C20C
 _0238C248:
 	mov r0, #2
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 _0238C254:
 	mov r0, #6
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238C260: .4byte 0x0238DB80
+_0238C260: .word 0x0238DB80
 	arm_func_end SentryState1
 
 	arm_func_start SentryState2
@@ -2352,18 +2352,18 @@ SentryState2: ; 0x0238C264
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C284: .4byte 0x0238DB80
+_0238C284: .word 0x0238DB80
 	arm_func_end SentryState2
 
 	arm_func_start SentryState3
 SentryState3: ; 0x0238C288
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238C3AC ; =0x0238DB80
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
 	bl IsNormalMenuActive
 	cmp r0, #0
-	ldmneia sp!,  {r3, pc}
+	ldmnedb sp!, {r3, pc}
 	ldr r0, _0238C3AC ; =0x0238DB80
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
@@ -2438,10 +2438,10 @@ _0238C390:
 	add r0, r0, #0x3000
 	str r1, [r0, #0x890]
 _0238C3A4:
-	bl SentrySetExitingState
-	pop {r3, pc}
+	bl SentrySetExitingState__0238B6D8
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238C3AC: .4byte 0x0238DB80
+_0238C3AC: .word 0x0238DB80
 	arm_func_end SentryState3
 
 	arm_func_start SentryState4
@@ -2455,16 +2455,16 @@ SentryState4: ; 0x0238C3B0
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C3D0: .4byte 0x0238DB80
+_0238C3D0: .word 0x0238DB80
 	arm_func_end SentryState4
 
-	arm_func_start SentrySetExitingState
-SentrySetExitingState: ; 0x0238C3D4
-	ldr ip, _0238C3DC ; =SentrySetExitingState
+	arm_func_start SentrySetExitingState__0238C3D4
+SentrySetExitingState__0238C3D4: ; 0x0238C3D4
+	ldr ip, _0238C3DC ; =SentrySetExitingState__0238B6D8
 	bx ip
 	.align 2, 0
-_0238C3DC: .4byte SentrySetExitingState
-	arm_func_end SentrySetExitingState
+_0238C3DC: .word SentrySetExitingState__0238B6D8
+	arm_func_end SentrySetExitingState__0238C3D4
 
 	arm_func_start SentryState6
 SentryState6: ; 0x0238C3E0
@@ -2477,7 +2477,7 @@ SentryState6: ; 0x0238C3E0
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C400: .4byte 0x0238DB80
+_0238C400: .word 0x0238DB80
 	arm_func_end SentryState6
 
 	arm_func_start SentryState7
@@ -2488,7 +2488,7 @@ SentryState7: ; 0x0238C404
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C418: .4byte 0x0238DB80
+_0238C418: .word 0x0238DB80
 	arm_func_end SentryState7
 
 	arm_func_start SentryState8
@@ -2502,7 +2502,7 @@ SentryState8: ; 0x0238C41C
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C43C: .4byte 0x0238DB80
+_0238C43C: .word 0x0238DB80
 	arm_func_end SentryState8
 
 	arm_func_start SentryState9
@@ -2516,7 +2516,7 @@ SentryState9: ; 0x0238C440
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C460: .4byte 0x0238DB80
+_0238C460: .word 0x0238DB80
 	arm_func_end SentryState9
 
 	arm_func_start SentryStateA
@@ -2527,7 +2527,7 @@ SentryStateA: ; 0x0238C464
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C478: .4byte 0x0238DB80
+_0238C478: .word 0x0238DB80
 	arm_func_end SentryStateA
 
 	arm_func_start SentryStateB
@@ -2538,12 +2538,12 @@ SentryStateB: ; 0x0238C47C
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C490: .4byte 0x0238DB80
+_0238C490: .word 0x0238DB80
 	arm_func_end SentryStateB
 
 	arm_func_start SentryStateGenerateChoices
 SentryStateGenerateChoices: ; 0x0238C494
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x20
 	ldr r0, _0238CA54 ; =0x0238DB80
 	ldr r1, _0238CA58 ; =0x000003FA
@@ -2608,7 +2608,7 @@ _0238C564:
 	add r0, r4, #0x3000
 	ldr r1, [r0, #0x880]
 	ldr r0, [r0, #0x87c]
-	lsl r1, r1, #1
+	mov r1, r1, lsl #1
 	add r0, r4, r0, lsl #1
 	ldrsh r1, [r3, r1]
 	add r0, r0, #0x3800
@@ -2650,8 +2650,8 @@ _0238C61C:
 	cmp r3, r1
 	beq _0238C648
 	add r1, r8, #1
-	lsl r1, r1, #0x10
-	asr r8, r1, #0x10
+	mov r1, r1, lsl #0x10
+	mov r8, r1, asr #0x10
 _0238C640:
 	cmp r8, r0
 	blt _0238C61C
@@ -2679,7 +2679,7 @@ _0238C690:
 	mov r0, #0
 	mov r1, #0x65
 	bl RandRange
-	lsl r0, r0, #1
+	mov r0, r0, lsl #1
 	ldrsh r8, [r4, r0]
 	ldrsh r0, [r6, #4]
 	bl FemaleToMaleForm
@@ -2707,8 +2707,8 @@ _0238C6F0:
 	cmp r8, r2
 	beq _0238C718
 	add r0, r0, #1
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, asr #0x10
 _0238C710:
 	cmp r0, sb
 	blt _0238C6F0
@@ -2720,24 +2720,24 @@ _0238C718:
 	strh r8, [r0, #0xa2]
 _0238C72C:
 	add r0, sb, #1
-	lsl r0, r0, #0x10
-	asr sb, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov sb, r0, asr #0x10
 	cmp sb, #4
 	blt _0238C670
 	ldr r0, _0238CA68 ; =0x0238DB2C
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r1, _0238CA54 ; =0x0238DB80
 	ldr r0, _0238CA6C ; =0x0238DB44
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	ldr r1, [r1, #0x880]
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r1, _0238CA54 ; =0x0238DB80
 	ldr r0, _0238CA70 ; =0x0238DB58
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	ldr r1, [r1, #0x87c]
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238CA54 ; =0x0238DB80
 	ldr r2, _0238CA74 ; =0x880A0000
 	ldr r3, [r0]
@@ -2745,9 +2745,9 @@ _0238C72C:
 	ldr r1, [r0, #0x880]
 	add r0, r3, #0x3a8
 	add r1, r1, #1
-	lsl r1, r1, #0x10
+	mov r1, r1, lsl #0x10
 	add r0, r0, #0x3000
-	asr r1, r1, #0x10
+	mov r1, r1, asr #0x10
 	bl ov11_022F6FE0
 	ldr r0, _0238CA54 ; =0x0238DB80
 	ldr r1, _0238CA78 ; =0x00001001
@@ -2761,7 +2761,7 @@ _0238C72C:
 	add r0, r1, #0x6c
 	add r0, r0, #0x3400
 	add r1, r1, #0x1e4
-	bl ov11_022F4C64
+	bl ov11_022F6F08
 	ldr r0, _0238CA54 ; =0x0238DB80
 	ldr r1, _0238CA7C ; =0x00001003
 	ldr r0, [r0]
@@ -2778,7 +2778,7 @@ _0238C72C:
 	add r0, r1, #0x1b4
 	add r0, r0, #0x2800
 	add r1, r1, #0x120
-	bl ov11_022F4C64
+	bl ov11_022F6F08
 	ldr r0, _0238CA54 ; =0x0238DB80
 	ldr r1, _0238CA80 ; =0x48140000
 	ldr r0, [r0]
@@ -2831,7 +2831,7 @@ _0238C88C:
 	add r0, r0, #0x2c00
 	add r0, r0, r8
 	add r1, r1, #0x120
-	bl ov11_022F4C64
+	bl ov11_022F6F08
 	ldr r0, [r4]
 	ldr r1, _0238CA80 ; =0x48140000
 	add r0, r0, #0x188
@@ -2851,7 +2851,7 @@ _0238C88C:
 	add r0, r0, #0x3000
 	add r0, r0, r8
 	add r1, r1, #0x120
-	bl ov11_022F4C64
+	bl ov11_022F6F08
 	cmp sb, #3
 	addls pc, pc, sb, lsl #2
 	b _0238C984
@@ -2893,8 +2893,8 @@ _0238C984:
 	bl ShowPortraitBox
 _0238C9C0:
 	add r0, sb, #1
-	lsl r0, r0, #0x10
-	asr sb, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov sb, r0, asr #0x10
 	cmp sb, #4
 	blt _0238C88C
 	ldr r0, _0238CA54 ; =0x0238DB80
@@ -2929,29 +2929,29 @@ _0238CA10:
 	ldr r0, [r1]
 	str r2, [r0, #0x110]
 	add sp, sp, #0x20
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0238CA54: .4byte 0x0238DB80
-_0238CA58: .4byte 0x000003FA
-_0238CA5C: .4byte 0x000005DC
-_0238CA60: .4byte 0x020A1BB0
-_0238CA64: .4byte 0x00000119
-_0238CA68: .4byte 0x0238DB2C
-_0238CA6C: .4byte 0x0238DB44
-_0238CA70: .4byte 0x0238DB58
-_0238CA74: .4byte 0x880A0000
-_0238CA78: .4byte 0x00001001
-_0238CA7C: .4byte 0x00001003
-_0238CA80: .4byte 0x48140000
-_0238CA84: .4byte 0x0238D970
-_0238CA88: .4byte 0x08120000
-_0238CA8C: .4byte 0x00000807
-_0238CA90: .4byte 0x00002C04
+_0238CA54: .word 0x0238DB80
+_0238CA58: .word 0x000003FA
+_0238CA5C: .word 0x000005DC
+_0238CA60: .word 0x020A1BB0
+_0238CA64: .word 0x00000119
+_0238CA68: .word 0x0238DB2C
+_0238CA6C: .word 0x0238DB44
+_0238CA70: .word 0x0238DB58
+_0238CA74: .word 0x880A0000
+_0238CA78: .word 0x00001001
+_0238CA7C: .word 0x00001003
+_0238CA80: .word 0x48140000
+_0238CA84: .word 0x0238D970
+_0238CA88: .word 0x08120000
+_0238CA8C: .word 0x00000807
+_0238CA90: .word 0x00002C04
 	arm_func_end SentryStateGenerateChoices
 
 	arm_func_start SentryStateGetUserChoice
 SentryStateGetUserChoice: ; 0x0238CA94
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x38
 	ldr r2, _0238CFA4 ; =0x0238DB80
 	mov r1, #0x3c
@@ -2969,9 +2969,9 @@ SentryStateGetUserChoice: ; 0x0238CA94
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x874]
 	bl DivideInt
-	lsl r0, r0, #0x10
-	asr r8, r0, #0x10
-	lsr r1, r8, #0x1f
+	mov r0, r0, lsl #0x10
+	mov r8, r0, asr #0x10
+	mov r1, r8, lsr #0x1f
 	rsb r0, r1, r8, lsl #28
 	add r0, r1, r0, ror #28
 	bl ov14_0238AC04
@@ -3027,8 +3027,8 @@ _0238CB64:
 	b _0238CBCC
 _0238CBB8:
 	add r1, r1, #1
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
+	mov r1, r1, lsl #0x10
+	mov r1, r1, asr #0x10
 _0238CBC4:
 	cmp r1, #4
 	blt _0238CB64
@@ -3038,8 +3038,8 @@ _0238CBCC:
 	ldrh r0, [sp]
 	tst r0, #1
 	movne r0, #0
-	strhne r0, [sp, #2]
-	strhne r0, [sp]
+	strneh r0, [sp, #2]
+	strneh r0, [sp]
 	movne r4, #1
 _0238CBEC:
 	cmp r4, #0
@@ -3279,8 +3279,8 @@ _0238CEEC:
 	bl ShowPortraitBox
 _0238CEFC:
 	add r0, sb, #1
-	lsl r0, r0, #0x10
-	asr sb, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov sb, r0, asr #0x10
 	cmp sb, #4
 	blt _0238CE50
 	b _0238CF1C
@@ -3323,21 +3323,21 @@ _0238CF5C:
 	strb r1, [r0, #0x89f]
 _0238CF9C:
 	add sp, sp, #0x38
-	pop {r4, r5, r6, r7, r8, sb, sl, pc}
+	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0238CFA4: .4byte 0x0238DB80
-_0238CFA8: .4byte 0x0238DA20
-_0238CFAC: .4byte 0x00003F02
-_0238CFB0: .4byte 0x00003F03
-_0238CFB4: .4byte 0x00003F01
-_0238CFB8: .4byte 0x0238D96C
-_0238CFBC: .4byte 0x0238DA80
-_0238CFC0: .4byte 0x00002C06
+_0238CFA4: .word 0x0238DB80
+_0238CFA8: .word 0x0238DA20
+_0238CFAC: .word 0x00003F02
+_0238CFB0: .word 0x00003F03
+_0238CFB4: .word 0x00003F01
+_0238CFB8: .word 0x0238D96C
+_0238CFBC: .word 0x0238DA80
+_0238CFC0: .word 0x00002C06
 	arm_func_end ov14_0238CCF0
 
 	arm_func_start SentryStateFinalizeRound
 SentryStateFinalizeRound: ; 0x0238CFC4
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x20
 	ldr r2, _0238D2FC ; =0x0238DB80
 	mov r0, #0
@@ -3363,12 +3363,12 @@ SentryStateFinalizeRound: ; 0x0238CFC4
 	ldr r0, [r0]
 	add r0, r0, #0x3a8
 	add r0, r0, #0x3000
-	bl ov11_022F4BE4
+	bl ov11_022F7058
 	ldr r0, _0238D2FC ; =0x0238DB80
 	ldr r0, [r0]
 	add r0, r0, #0x6c
 	add r0, r0, #0x3400
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	ldr r1, _0238D2FC ; =0x0238DB80
 	mov r3, #1
 	ldr r0, [r1]
@@ -3381,7 +3381,7 @@ SentryStateFinalizeRound: ; 0x0238CFC4
 	ldr r0, [r1]
 	add r0, r0, #0x1b4
 	add r0, r0, #0x2800
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 _0238D078:
 	ldr r0, _0238D300 ; =0x0238D970
 	ldr r4, _0238D2FC ; =0x0238DB80
@@ -3398,17 +3398,17 @@ _0238D09C:
 	add r0, r0, #0x278
 	add r0, r0, #0x2800
 	add r0, r0, sb
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	ldr r0, [r4]
 	add r0, r0, #0x188
 	add r0, r0, #0x2c00
 	add r0, r0, sb
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	ldr r0, [r4]
 	add r0, r0, #0x98
 	add r0, r0, #0x3000
 	add r0, r0, sb
-	bl ov11_022F4BE4
+	bl ov11_022F6EFC
 	cmp r7, #3
 	addls pc, pc, r7, lsl #2
 	b _0238D124
@@ -3450,8 +3450,8 @@ _0238D124:
 	bl ShowPortraitBox
 _0238D160:
 	add r0, r7, #1
-	lsl r0, r0, #0x10
-	asr r7, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
 	cmp r7, #4
 	blt _0238D09C
 	ldr r0, _0238D2FC ; =0x0238DB80
@@ -3555,11 +3555,11 @@ _0238D2EC:
 	str r0, [r1, #0x110]
 _0238D2F4:
 	add sp, sp, #0x20
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0238D2FC: .4byte 0x0238DB80
-_0238D300: .4byte 0x0238D970
-_0238D304: .4byte 0x00001B58
+_0238D2FC: .word 0x0238DB80
+_0238D300: .word 0x0238D970
+_0238D304: .word 0x00001B58
 	arm_func_end SentryStateFinalizeRound
 
 	arm_func_start SentryStateF
@@ -3570,12 +3570,12 @@ SentryStateF: ; 0x0238D308
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D31C: .4byte 0x0238DB80
+_0238D31C: .word 0x0238DB80
 	arm_func_end SentryStateF
 
 	arm_func_start SentryState10
 SentryState10: ; 0x0238D320
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r2, _0238D390 ; =0x0238DB80
 	mvn r1, #1
 	ldr r0, [r2]
@@ -3603,10 +3603,10 @@ _0238D368:
 	str r3, [r2, #0x114]
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D390: .4byte 0x0238DB80
-_0238D394: .4byte 0x00002C08
+_0238D390: .word 0x0238DB80
+_0238D394: .word 0x00002C08
 	arm_func_end SentryState10
 
 	arm_func_start SentryState11
@@ -3617,7 +3617,7 @@ SentryState11: ; 0x0238D398
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D3AC: .4byte 0x0238DB80
+_0238D3AC: .word 0x0238DB80
 	arm_func_end SentryState11
 
 	arm_func_start SentryState12
@@ -3635,8 +3635,8 @@ SentryState12: ; 0x0238D3B0
 	str r2, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D3E0: .4byte 0x0238DB80
-_0238D3E4: .4byte 0x00002311
+_0238D3E0: .word 0x0238DB80
+_0238D3E4: .word 0x00002311
 	arm_func_end SentryState12
 
 	arm_func_start SentryState13
@@ -3651,7 +3651,7 @@ SentryState13: ; 0x0238D3E8
 	str r2, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D40C: .4byte 0x0238DB80
+_0238D40C: .word 0x0238DB80
 	arm_func_end SentryState13
 
 	arm_func_start SentryState14
@@ -3662,12 +3662,12 @@ SentryState14: ; 0x0238D410
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D424: .4byte 0x0238DB80
+_0238D424: .word 0x0238DB80
 	arm_func_end SentryState14
 
 	arm_func_start SentryState15
 SentryState15: ; 0x0238D428
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238D464 ; =0x0238DB80
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3676,20 +3676,20 @@ SentryState15: ; 0x0238D428
 	bge _0238D450
 	mov r0, #0x14
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 _0238D450:
 	mov r0, #0x304
 	bl sub_02017C80
 	mov r0, #0x16
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D464: .4byte 0x0238DB80
+_0238D464: .word 0x0238DB80
 	arm_func_end SentryState15
 
 	arm_func_start SentryState16
 SentryState16: ; 0x0238D468
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r2, _0238D4BC ; =0x0238DB80
 	mvn r1, #0x3f
 	ldr r0, [r2]
@@ -3701,7 +3701,7 @@ SentryState16: ; 0x0238D468
 	add r0, r0, #0x3000
 	ldr r3, [r0, #0x8b0]
 	cmp r3, r1
-	popge {r3, pc}
+	ldmgedb sp!, {r3, pc}
 	mov r3, #0
 	strb r3, [r0, #0x89c]
 	ldr r1, [r2]
@@ -3709,9 +3709,9 @@ SentryState16: ; 0x0238D468
 	add r1, r1, #0x3000
 	str r3, [r1, #0x8ac]
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D4BC: .4byte 0x0238DB80
+_0238D4BC: .word 0x0238DB80
 	arm_func_end SentryState16
 
 	arm_func_start SentryState17
@@ -3746,12 +3746,12 @@ SentryState17: ; 0x0238D4C0
 	str r2, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D534: .4byte 0x0238DB80
+_0238D534: .word 0x0238DB80
 	arm_func_end SentryState17
 
 	arm_func_start SentryState18
 SentryState18: ; 0x0238D538
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238D56C ; =0x0238DB80
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3760,13 +3760,13 @@ SentryState18: ; 0x0238D538
 	bge _0238D560
 	mov r0, #0x17
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 _0238D560:
 	mov r0, #0xe
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D56C: .4byte 0x0238DB80
+_0238D56C: .word 0x0238DB80
 	arm_func_end SentryState18
 
 	arm_func_start SentryState19
@@ -3777,12 +3777,12 @@ SentryState19: ; 0x0238D570
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D584: .4byte 0x0238DB80
+_0238D584: .word 0x0238DB80
 	arm_func_end SentryState19
 
 	arm_func_start SentryState1A
 SentryState1A: ; 0x0238D588
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238D5C4 ; =0x0238DB80
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3791,20 +3791,20 @@ SentryState1A: ; 0x0238D588
 	bge _0238D5B0
 	mov r0, #0x19
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 _0238D5B0:
 	mov r0, #0x304
 	bl sub_02017C80
 	mov r0, #0x1b
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D5C4: .4byte 0x0238DB80
+_0238D5C4: .word 0x0238DB80
 	arm_func_end SentryState1A
 
 	arm_func_start SentryStateFinalizePoints
 SentryStateFinalizePoints: ; 0x0238D5C8
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r2, _0238D654 ; =0x0238DB80
 	mvn r1, #0x3f
 	ldr r0, [r2]
@@ -3816,7 +3816,7 @@ SentryStateFinalizePoints: ; 0x0238D5C8
 	add r0, r0, #0x3000
 	ldr r3, [r0, #0x8b0]
 	cmp r3, r1
-	popge {r3, pc}
+	ldmgedb sp!, {r3, pc}
 	ldr r3, [r0, #0x88c]
 	ldr r1, [r0, #0x894]
 	add r1, r3, r1
@@ -3839,9 +3839,9 @@ _0238D634:
 	add r1, r1, #0x3000
 	str r2, [r1, #0x8ac]
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D654: .4byte 0x0238DB80
+_0238D654: .word 0x0238DB80
 	arm_func_end SentryStateFinalizePoints
 
 	arm_func_start SentryState1C
@@ -3862,13 +3862,13 @@ SentryState1C: ; 0x0238D658
 	str r2, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D694: .4byte 0x0238DB80
-_0238D698: .4byte 0x00002310
+_0238D694: .word 0x0238DB80
+_0238D698: .word 0x00002310
 	arm_func_end SentryState1C
 
 	arm_func_start SentryState1D
 SentryState1D: ; 0x0238D69C
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238D6FC ; =0x0238DB80
 	ldr r1, [r0]
 	add r0, r1, #0x3000
@@ -3889,13 +3889,13 @@ _0238D6CC:
 	bge _0238D6F0
 	mov r0, #0x1c
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 _0238D6F0:
 	mov r0, #0xe
 	bl SentrySetStateIntermediate
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D6FC: .4byte 0x0238DB80
+_0238D6FC: .word 0x0238DB80
 	arm_func_end SentryState1D
 
 	arm_func_start SentryState1E
@@ -3906,12 +3906,12 @@ SentryState1E: ; 0x0238D700
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D714: .4byte 0x0238DB80
+_0238D714: .word 0x0238DB80
 	arm_func_end SentryState1E
 
 	arm_func_start SentryState1F
 SentryState1F: ; 0x0238D718
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238D790 ; =0x0238DB80
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3925,13 +3925,13 @@ SentryState1F: ; 0x0238D718
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x8b4]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 _0238D754:
 	ldr r0, [r0, #0x8b4]
 	cmp r0, #0x1e
 	bne _0238D768
 	mov r0, #0x1e
-	bl sub_02017F28
+	bl sub_02017B7C
 _0238D768:
 	ldr r0, _0238D790 ; =0x0238DB80
 	ldr r0, [r0]
@@ -3940,11 +3940,11 @@ _0238D768:
 	cmp r1, #0
 	subgt r1, r1, #1
 	strgt r1, [r0, #0x8b4]
-	ldmgtia sp!,  {r3, pc}
-	bl SentrySetExitingState
-	pop {r3, pc}
+	ldmgtdb sp!, {r3, pc}
+	bl SentrySetExitingState__0238B6D8
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D790: .4byte 0x0238DB80
+_0238D790: .word 0x0238DB80
 	arm_func_end SentryState1F
 
 	arm_func_start SentryState20
@@ -3955,12 +3955,12 @@ SentryState20: ; 0x0238D794
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D7A8: .4byte 0x0238DB80
+_0238D7A8: .word 0x0238DB80
 	arm_func_end SentryState20
 
 	arm_func_start SentryState21
 SentryState21: ; 0x0238D7AC
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238D824 ; =0x0238DB80
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3974,13 +3974,13 @@ SentryState21: ; 0x0238D7AC
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x8b4]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 _0238D7E8:
 	ldr r0, [r0, #0x8b4]
 	cmp r0, #0x1e
 	bne _0238D7FC
 	mov r0, #0x1e
-	bl sub_02017F28
+	bl sub_02017B7C
 _0238D7FC:
 	ldr r0, _0238D824 ; =0x0238DB80
 	ldr r0, [r0]
@@ -3989,16 +3989,16 @@ _0238D7FC:
 	cmp r1, #0
 	subgt r1, r1, #1
 	strgt r1, [r0, #0x8b4]
-	ldmgtia sp!,  {r3, pc}
-	bl SentrySetExitingState
-	pop {r3, pc}
+	ldmgtdb sp!, {r3, pc}
+	bl SentrySetExitingState__0238B6D8
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238D824: .4byte 0x0238DB80
+_0238D824: .word 0x0238DB80
 	arm_func_end SentryState21
 
 	arm_func_start ov14_0238D828
 ov14_0238D828: ; 0x0238D828
-	push {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov sb, r1
 	mov sl, r0
@@ -4013,7 +4013,7 @@ ov14_0238D828: ; 0x0238D828
 	sublt r0, r2, r0
 	addlt r0, r1, r0, lsl #3
 	strlt r0, [r8]
-	lsl r0, r4, #8
+	mov r0, r4, lsl #8
 	str r0, [sp, #4]
 	add r5, sp, #0
 	ldr fp, _0238D968 ; =0x0000080F
@@ -4022,7 +4022,7 @@ ov14_0238D828: ; 0x0238D828
 _0238D87C:
 	ldrb r1, [sl], #1
 	ldr r0, [r8]
-	lsl r0, r0, #8
+	mov r0, r0, lsl #8
 	str r0, [sp]
 	cmp r1, #0x30
 	blo _0238D8DC
@@ -4030,8 +4030,8 @@ _0238D87C:
 	bhi _0238D8DC
 	sub r0, r1, #0x2b
 	orr r0, r0, #0x800
-	lsl r0, r0, #0x10
-	asr r1, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r1, r0, asr #0x10
 	ldr r2, [r8]
 	mov r0, r7
 	add r2, r2, #8
@@ -4081,8 +4081,8 @@ _0238D950:
 	bne _0238D87C
 	str r7, [sb]
 	add sp, sp, #8
-	pop {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0238D968: .4byte 0x0000080F
+_0238D968: .word 0x0000080F
 	arm_func_end ov14_0238D828
 	; 0x0238D96C

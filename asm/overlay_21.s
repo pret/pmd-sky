@@ -6,7 +6,7 @@
 
 	arm_func_start ov21_0238A140
 ov21_0238A140: ; 0x0238A140
-	push {r4, r5, r6, r7, r8, sb, sl, lr}
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x180
 	ldr r4, _0238B08C ; =0x0238CF40
 	ldr r1, [r4]
@@ -122,8 +122,8 @@ _0238A274:
 	ldr r1, [r0]
 	add r0, r1, #0xc8
 	ldr r1, [r1, #0x28]
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	ldr r0, _0238B08C ; =0x0238CF40
 	ldr r1, [r0]
@@ -162,8 +162,8 @@ _0238A378:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -190,8 +190,8 @@ _0238A3E0:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -236,8 +236,8 @@ _0238A478:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -280,8 +280,8 @@ _0238A520:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -307,8 +307,8 @@ _0238A594:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -335,8 +335,8 @@ _0238A5FC:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -365,8 +365,8 @@ _0238A668:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -395,8 +395,8 @@ _0238A6DC:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -428,8 +428,8 @@ _0238A750:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -458,8 +458,8 @@ _0238A7D0:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -496,8 +496,8 @@ _0238A854:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -528,8 +528,8 @@ _0238A8D4:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -631,8 +631,8 @@ _0238AA1C:
 	ldr r1, _0238B134 ; =0x00001013
 	add r2, r2, #0xd1
 	add r2, r2, #0x2900
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	stmib sp, {r2, r3}
 	ldr r3, _0238B138 ; =0x0000033E
 	mov r2, #0
@@ -654,8 +654,8 @@ _0238AAC0:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -809,8 +809,8 @@ _0238AD04:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -895,8 +895,8 @@ _0238AE54:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	ldr r0, _0238B08C ; =0x0238CF40
 	ldr r1, [r0]
@@ -920,8 +920,8 @@ _0238AE94:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -1043,63 +1043,63 @@ _0238B064:
 	mov r1, #1
 	b _0238B188
 	.align 2, 0
-_0238B08C: .4byte 0x0238CF40
-_0238B090: .4byte 0x0238CBB8
-_0238B094: .4byte 0x00003008
-_0238B098: .4byte 0x000003B2
-_0238B09C: .4byte 0x000001EF
-_0238B0A0: .4byte 0x0238CBD4
-_0238B0A4: .4byte 0x0238CA28
-_0238B0A8: .4byte ov21_0238C9A4
-_0238B0AC: .4byte 0x00300013
-_0238B0B0: .4byte 0x0238CAA8
-_0238B0B4: .4byte 0x0238CB68
-_0238B0B8: .4byte 0x0238CBF8
-_0238B0BC: .4byte 0x000003B3
-_0238B0C0: .4byte 0x0238CB88
-_0238B0C4: .4byte 0x0238CA68
-_0238B0C8: .4byte 0x0238CC18
-_0238B0CC: .4byte 0x00003018
-_0238B0D0: .4byte 0x000003C5
-_0238B0D4: .4byte 0x000003C7
-_0238B0D8: .4byte 0x0238CC3C
-_0238B0DC: .4byte 0x000003B7
-_0238B0E0: .4byte 0x0238CC5C
-_0238B0E4: .4byte 0x000003B6
-_0238B0E8: .4byte 0x0238CC7C
-_0238B0EC: .4byte 0x0238CC9C
-_0238B0F0: .4byte 0x000003B5
-_0238B0F4: .4byte 0x0238CCC0
-_0238B0F8: .4byte 0x0238CCE4
-_0238B0FC: .4byte 0x0238CD00
-_0238B100: .4byte 0x0238CD24
-_0238B104: .4byte 0x000003C2
-_0238B108: .4byte 0x0238CD44
-_0238B10C: .4byte 0x0238CD68
-_0238B110: .4byte 0x0238CD8C
-_0238B114: .4byte 0x0238CDB4
-_0238B118: .4byte 0x0238CB78
-_0238B11C: .4byte 0x00400013
-_0238B120: .4byte 0x0238CA88
-_0238B124: .4byte 0x0238CDDC
-_0238B128: .4byte 0x0238CE00
-_0238B12C: .4byte 0x0000C402
-_0238B130: .4byte 0x0238CB98
-_0238B134: .4byte 0x00001013
-_0238B138: .4byte 0x0000033E
-_0238B13C: .4byte 0x0238CE0C
-_0238B140: .4byte 0x000003BD
-_0238B144: .4byte 0x000003BB
-_0238B148: .4byte 0x0238CE34
-_0238B14C: .4byte 0x0238CA38
-_0238B150: .4byte 0x0238CE4C
-_0238B154: .4byte 0x0238CE78
-_0238B158: .4byte 0x0238CEA4
-_0238B15C: .4byte 0x000003C1
-_0238B160: .4byte 0x000003BA
-_0238B164: .4byte 0x0238CED0
-_0238B168: .4byte 0x00001311
-_0238B16C: .4byte 0x0238CEF8
+_0238B08C: .word 0x0238CF40
+_0238B090: .word 0x0238CBB8
+_0238B094: .word 0x00003008
+_0238B098: .word 0x000003B2
+_0238B09C: .word 0x000001EF
+_0238B0A0: .word 0x0238CBD4
+_0238B0A4: .word 0x0238CA28
+_0238B0A8: .word ov21_0238C9A4
+_0238B0AC: .word 0x00300013
+_0238B0B0: .word 0x0238CAA8
+_0238B0B4: .word 0x0238CB68
+_0238B0B8: .word 0x0238CBF8
+_0238B0BC: .word 0x000003B3
+_0238B0C0: .word 0x0238CB88
+_0238B0C4: .word 0x0238CA68
+_0238B0C8: .word 0x0238CC18
+_0238B0CC: .word 0x00003018
+_0238B0D0: .word 0x000003C5
+_0238B0D4: .word 0x000003C7
+_0238B0D8: .word 0x0238CC3C
+_0238B0DC: .word 0x000003B7
+_0238B0E0: .word 0x0238CC5C
+_0238B0E4: .word 0x000003B6
+_0238B0E8: .word 0x0238CC7C
+_0238B0EC: .word 0x0238CC9C
+_0238B0F0: .word 0x000003B5
+_0238B0F4: .word 0x0238CCC0
+_0238B0F8: .word 0x0238CCE4
+_0238B0FC: .word 0x0238CD00
+_0238B100: .word 0x0238CD24
+_0238B104: .word 0x000003C2
+_0238B108: .word 0x0238CD44
+_0238B10C: .word 0x0238CD68
+_0238B110: .word 0x0238CD8C
+_0238B114: .word 0x0238CDB4
+_0238B118: .word 0x0238CB78
+_0238B11C: .word 0x00400013
+_0238B120: .word 0x0238CA88
+_0238B124: .word 0x0238CDDC
+_0238B128: .word 0x0238CE00
+_0238B12C: .word 0x0000C402
+_0238B130: .word 0x0238CB98
+_0238B134: .word 0x00001013
+_0238B138: .word 0x0000033E
+_0238B13C: .word 0x0238CE0C
+_0238B140: .word 0x000003BD
+_0238B144: .word 0x000003BB
+_0238B148: .word 0x0238CE34
+_0238B14C: .word 0x0238CA38
+_0238B150: .word 0x0238CE4C
+_0238B154: .word 0x0238CE78
+_0238B158: .word 0x0238CEA4
+_0238B15C: .word 0x000003C1
+_0238B160: .word 0x000003BA
+_0238B164: .word 0x0238CED0
+_0238B168: .word 0x00001311
+_0238B16C: .word 0x0238CEF8
 _0238B170:
 	ldr r0, _0238B08C ; =0x0238CF40
 	ldr r0, [r0]
@@ -1123,8 +1123,8 @@ _0238B188:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	ldr r0, _0238B08C ; =0x0238CF40
 	ldr r1, [r0]
@@ -1179,8 +1179,8 @@ _0238B260:
 _0238B28C:
 	ldr r1, [r0, #0x914]
 	add r0, sp, #0x68
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
+	mov r1, r1, lsl #0x10
+	mov r1, r1, asr #0x10
 	bl sub_0205B028
 	add r0, sp, #0x68
 	mov r1, #3
@@ -1191,8 +1191,8 @@ _0238B28C:
 	b _0238B7B8
 _0238B2BC:
 	ldr r0, [r0, #0x914]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, asr #0x10
 	bl sub_0203FA64
 	mov r1, #0
 	mov r2, r1
@@ -1216,8 +1216,8 @@ _0238B2EC:
 	b _0238B7B8
 _0238B318:
 	ldr r0, [r0, #0x914]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, asr #0x10
 	bl GetTeamMember
 	mov r1, r0
 	ldrsh r0, [r1, #4]
@@ -1239,8 +1239,8 @@ _0238B344:
 	ldr r0, [r4]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -1270,8 +1270,8 @@ _0238B3B8:
 	mov r0, r4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x914]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
+	mov r0, r0, lsl #0x10
+	mov r0, r0, asr #0x10
 	bl GetTeamMember
 	ldrsh r1, [r0, #4]
 	mov r0, #2
@@ -1317,8 +1317,8 @@ _0238B434:
 	ldr r3, _0238B138 ; =0x0000033E
 	add r2, r2, #0xd1
 	add r2, r2, #0x2900
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	str r2, [sp, #4]
 	add r4, r4, #0x30
 	mov r2, #0
@@ -1340,8 +1340,8 @@ _0238B4CC:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -1368,8 +1368,8 @@ _0238B538:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -1409,8 +1409,8 @@ _0238B5D0:
 	ldr r0, [r4]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -1458,8 +1458,8 @@ _0238B68C:
 	ldr r0, [r0]
 	ldr r1, [r0, #0x28]
 	add r0, r0, #0xc8
-	lsl r1, r1, #0x18
-	asr r1, r1, #0x18
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
 	bl SetPortraitExpressionId
 	mov r0, r4
 	ldr r1, [r0]
@@ -1514,8 +1514,8 @@ _0238B724:
 	ldr r3, _0238B138 ; =0x0000033E
 	add r2, r2, #0xd1
 	add r2, r2, #0x2900
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
+	mov r2, r2, lsl #0x10
+	mov r2, r2, lsr #0x10
 	str r2, [sp, #4]
 	add r4, r4, #0x30
 	mov r2, #0
@@ -1526,16 +1526,16 @@ _0238B724:
 	strb r0, [r1, #0x85]
 _0238B7B8:
 	add sp, sp, #0x180
-	pop {r4, r5, r6, r7, r8, sb, sl, pc}
+	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0238B7C0: .4byte 0x000003BE
-_0238B7C4: .4byte 0x000003CA
-_0238B7C8: .4byte 0x0238CBA8
-_0238B7CC: .4byte 0x0238CAD0
-_0238B7D0: .4byte 0x000003CB
-_0238B7D4: .4byte 0x0238CA50
-_0238B7D8: .4byte 0x000003B9
-_0238B7DC: .4byte 0x000003C9
+_0238B7C0: .word 0x000003BE
+_0238B7C4: .word 0x000003CA
+_0238B7C8: .word 0x0238CBA8
+_0238B7CC: .word 0x0238CAD0
+_0238B7D0: .word 0x000003CB
+_0238B7D4: .word 0x0238CA50
+_0238B7D8: .word 0x000003B9
+_0238B7DC: .word 0x000003C9
 	arm_func_end ov21_0238ADFC
 
 	arm_func_start ov21_0238B7E0
@@ -1556,24 +1556,24 @@ _0238B7F8:
 _0238B810:
 	ldr r1, _0238B844 ; =0xFFFFFE06
 	add r1, r0, r1
-	asr r0, r1, #1
+	mov r0, r1, asr #1
 	add r0, r1, r0, lsr #30
-	asr r0, r0, #2
-	lsl r0, r0, #2
+	mov r0, r0, asr #2
+	mov r0, r0, lsl #2
 	add r0, r0, #0xfa
 	add r0, r0, #0x100
 	bx lr
 	.align 2, 0
-_0238B834: .4byte 0x000001C3
-_0238B838: .4byte 0x000002FE
-_0238B83C: .4byte 0x000001C7
-_0238B840: .4byte 0x00000336
-_0238B844: .4byte 0xFFFFFE06
+_0238B834: .word 0x000001C3
+_0238B838: .word 0x000002FE
+_0238B83C: .word 0x000001C7
+_0238B840: .word 0x00000336
+_0238B844: .word 0xFFFFFE06
 	arm_func_end ov21_0238B7E0
 
 	arm_func_start ov21_0238B848
 ov21_0238B848: ; 0x0238B848
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238B8F0 ; =0x0000093C
 	mov r1, #6
 	bl MemAlloc
@@ -1614,27 +1614,27 @@ ov21_0238B848: ; 0x0238B848
 	str r2, [r1, #0x28]
 	bl ov21_0238A140
 	mov r0, #1
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238B8F0: .4byte 0x0000093C
-_0238B8F4: .4byte 0x0238CF40
-_0238B8F8: .4byte 0x000001EF
+_0238B8F0: .word 0x0000093C
+_0238B8F4: .word 0x0238CF40
+_0238B8F8: .word 0x000001EF
 	arm_func_end ov21_0238B848
 
 	arm_func_start ov21_0238B8FC
 ov21_0238B8FC: ; 0x0238B8FC
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238B924 ; =0x0238CF40
 	ldr r0, [r0]
 	cmp r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 	bl MemFree
 	ldr r0, _0238B924 ; =0x0238CF40
 	mov r1, #0
 	str r1, [r0]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238B924: .4byte 0x0238CF40
+_0238B924: .word 0x0238CF40
 	arm_func_end ov21_0238B8FC
 _0238B928:
 	.byte 0x00, 0x40, 0x2D, 0xE9, 0x0C, 0xD0, 0x4D, 0xE2
@@ -1896,7 +1896,7 @@ _0238B928:
 
 	arm_func_start ov21_0238C920
 ov21_0238C920: ; 0x0238C920
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238C9A0 ; =0x0238CF40
 	mvn r1, #1
 	ldr r0, [r0]
@@ -1918,7 +1918,7 @@ _0238C960:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
 	cmp r0, r1
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 	bl sub_0202836C
 	ldr r0, _0238C9A0 ; =0x0238CF40
 	ldr r0, [r0]
@@ -1928,14 +1928,14 @@ _0238C960:
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x83]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238C9A0: .4byte 0x0238CF40
+_0238C9A0: .word 0x0238CF40
 	arm_func_end ov21_0238C920
 
 	arm_func_start ov21_0238C9A4
 ov21_0238C9A4: ; 0x0238C9A4
-	push {r3, r4, lr}
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x54
 	sub sp, sp, #0x400
 	mov r4, r0
@@ -1964,10 +1964,10 @@ ov21_0238C9A4: ; 0x0238C9A4
 	bl sub_02027AF0
 	add sp, sp, #0x54
 	add sp, sp, #0x400
-	pop {r3, r4, pc}
+	ldmdb sp!, {r3, r4, pc}
 	.align 2, 0
-_0238CA1C: .4byte 0x0238CF24
-_0238CA20: .4byte 0x0000C402
-_0238CA24: .4byte 0x00000225
+_0238CA1C: .word 0x0238CF24
+_0238CA20: .word 0x0000C402
+_0238CA24: .word 0x00000225
 	arm_func_end ov21_0238C9A4
 	; 0x0238CA28

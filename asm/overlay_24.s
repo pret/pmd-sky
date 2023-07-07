@@ -6,7 +6,7 @@
 
 	arm_func_start ov24_0238A140
 ov24_0238A140: ; 0x0238A140
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238A60C ; =0x0238C600
 	ldr r2, [r0]
 	ldr r1, [r2]
@@ -109,7 +109,7 @@ _0238A2A4:
 _0238A2B4:
 	bl ov11_022DC504
 	mov r0, #3
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 _0238A2C0:
 	bl ov00_0230D220
 	cmp r0, #0
@@ -347,14 +347,14 @@ _0238A5B8:
 	bl ov24_0238A610
 _0238A604:
 	mov r0, #0
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238A60C: .4byte 0x0238C600
+_0238A60C: .word 0x0238C600
 	arm_func_end ov24_0238A468
 
 	arm_func_start ov24_0238A610
 ov24_0238A610: ; 0x0238A610
-	push {r3, r4, lr}
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x1c
 	ldr r1, _0238B384 ; =0x0238C600
 	ldr r3, _0238B388 ; =0x0238C50A
@@ -1257,42 +1257,42 @@ _0238B338:
 	str r1, [r0, #8]
 _0238B37C:
 	add sp, sp, #0x1c
-	pop {r3, r4, pc}
+	ldmdb sp!, {r3, r4, pc}
 	.align 2, 0
-_0238B384: .4byte 0x0238C600
-_0238B388: .4byte 0x0238C50A
-_0238B38C: .4byte 0x00003018
-_0238B390: .4byte 0x0000038A
-_0238B394: .4byte 0x0000038B
-_0238B398: .4byte 0x00003008
-_0238B39C: .4byte 0x0000038F
-_0238B3A0: .4byte 0x0238C5C0
-_0238B3A4: .4byte 0x00300013
-_0238B3A8: .4byte 0x0238C538
-_0238B3AC: .4byte 0x00000391
-_0238B3B0: .4byte 0x0000220F
-_0238B3B4: .4byte 0x00000392
-_0238B3B8: .4byte 0x00000393
-_0238B3BC: .4byte 0x00000397
-_0238B3C0: .4byte 0x00000396
-_0238B3C4: .4byte 0x00000715
-_0238B3C8: .4byte 0x00000395
-_0238B3CC: .4byte 0x0238C520
-_0238B3D0: .4byte 0x0238C508
-_0238B3D4: .4byte 0x000003A2
-_0238B3D8: .4byte 0x020A1868
-_0238B3DC: .4byte 0x000003A1
-_0238B3E0: .4byte 0x0238C514
-_0238B3E4: .4byte 0x020A18B8
-_0238B3E8: .4byte 0x020A18DC
-_0238B3EC: .4byte 0x020A18E0
-_0238B3F0: .4byte 0x00000399
-_0238B3F4: .4byte 0x000003A3
+_0238B384: .word 0x0238C600
+_0238B388: .word 0x0238C50A
+_0238B38C: .word 0x00003018
+_0238B390: .word 0x0000038A
+_0238B394: .word 0x0000038B
+_0238B398: .word 0x00003008
+_0238B39C: .word 0x0000038F
+_0238B3A0: .word 0x0238C5C0
+_0238B3A4: .word 0x00300013
+_0238B3A8: .word 0x0238C538
+_0238B3AC: .word 0x00000391
+_0238B3B0: .word 0x0000220F
+_0238B3B4: .word 0x00000392
+_0238B3B8: .word 0x00000393
+_0238B3BC: .word 0x00000397
+_0238B3C0: .word 0x00000396
+_0238B3C4: .word 0x00000715
+_0238B3C8: .word 0x00000395
+_0238B3CC: .word 0x0238C520
+_0238B3D0: .word 0x0238C508
+_0238B3D4: .word 0x000003A2
+_0238B3D8: .word 0x020A1868
+_0238B3DC: .word 0x000003A1
+_0238B3E0: .word 0x0238C514
+_0238B3E4: .word 0x020A18B8
+_0238B3E8: .word 0x020A18DC
+_0238B3EC: .word 0x020A18E0
+_0238B3F0: .word 0x00000399
+_0238B3F4: .word 0x000003A3
 	arm_func_end ov24_0238ADFC
 
 	arm_func_start ov24_0238B3F8
 ov24_0238B3F8: ; 0x0238B3F8
-	push {r3, r4, lr}
+	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x1c
 	ldr r3, _0238C160 ; =0x0238C50A
 	add r2, sp, #0x12
@@ -2188,42 +2188,42 @@ _0238C114:
 	str r1, [r0, #8]
 _0238C158:
 	add sp, sp, #0x1c
-	pop {r3, r4, pc}
+	ldmdb sp!, {r3, r4, pc}
 	.align 2, 0
-_0238C160: .4byte 0x0238C50A
-_0238C164: .4byte 0x0238C600
-_0238C168: .4byte 0x00003018
-_0238C16C: .4byte 0x0000038A
-_0238C170: .4byte 0x0000038B
-_0238C174: .4byte 0x00003008
-_0238C178: .4byte 0x0000038F
-_0238C17C: .4byte 0x0238C5C0
-_0238C180: .4byte 0x00300013
-_0238C184: .4byte 0x0238C538
-_0238C188: .4byte 0x00000391
-_0238C18C: .4byte 0x0000220F
-_0238C190: .4byte 0x00000392
-_0238C194: .4byte 0x00000393
-_0238C198: .4byte 0x00000397
-_0238C19C: .4byte 0x00000396
-_0238C1A0: .4byte 0x00000715
-_0238C1A4: .4byte 0x00000395
-_0238C1A8: .4byte 0x0238C520
-_0238C1AC: .4byte 0x0238C508
-_0238C1B0: .4byte 0x000003A2
-_0238C1B4: .4byte 0x020A1868
-_0238C1B8: .4byte 0x000003A1
-_0238C1BC: .4byte 0x0238C514
-_0238C1C0: .4byte 0x020A18B8
-_0238C1C4: .4byte 0x020A18DC
-_0238C1C8: .4byte 0x020A18E0
-_0238C1CC: .4byte 0x00000399
-_0238C1D0: .4byte 0x000003A3
+_0238C160: .word 0x0238C50A
+_0238C164: .word 0x0238C600
+_0238C168: .word 0x00003018
+_0238C16C: .word 0x0000038A
+_0238C170: .word 0x0000038B
+_0238C174: .word 0x00003008
+_0238C178: .word 0x0000038F
+_0238C17C: .word 0x0238C5C0
+_0238C180: .word 0x00300013
+_0238C184: .word 0x0238C538
+_0238C188: .word 0x00000391
+_0238C18C: .word 0x0000220F
+_0238C190: .word 0x00000392
+_0238C194: .word 0x00000393
+_0238C198: .word 0x00000397
+_0238C19C: .word 0x00000396
+_0238C1A0: .word 0x00000715
+_0238C1A4: .word 0x00000395
+_0238C1A8: .word 0x0238C520
+_0238C1AC: .word 0x0238C508
+_0238C1B0: .word 0x000003A2
+_0238C1B4: .word 0x020A1868
+_0238C1B8: .word 0x000003A1
+_0238C1BC: .word 0x0238C514
+_0238C1C0: .word 0x020A18B8
+_0238C1C4: .word 0x020A18DC
+_0238C1C8: .word 0x020A18E0
+_0238C1CC: .word 0x00000399
+_0238C1D0: .word 0x000003A3
 	arm_func_end ov24_0238B3F8
 
 	arm_func_start ov24_0238C1D4
 ov24_0238C1D4: ; 0x0238C1D4
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	mov r0, #0x2a8
 	mov r1, #6
 	bl MemAlloc
@@ -2314,25 +2314,25 @@ _0238C32C:
 	mov r0, #0
 	bl ov24_0238A610
 	mov r0, #1
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238C33C: .4byte 0x0238C600
+_0238C33C: .word 0x0238C600
 	arm_func_end ov24_0238C1D4
 
 	arm_func_start ov24_0238C340
 ov24_0238C340: ; 0x0238C340
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238C368 ; =0x0238C600
 	ldr r0, [r0]
 	cmp r0, #0
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 	bl MemFree
 	ldr r0, _0238C368 ; =0x0238C600
 	mov r1, #0
 	str r1, [r0]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238C368: .4byte 0x0238C600
+_0238C368: .word 0x0238C600
 	arm_func_end ov24_0238C340
 _0238C36C:
 	.byte 0x08, 0x40, 0x2D, 0xE9
@@ -2356,14 +2356,14 @@ _0238C36C:
 
 	arm_func_start ov24_0238C47C
 ov24_0238C47C: ; 0x0238C47C
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238C4C8 ; =0x0238C600
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8f]
 	cmp r0, r1
-	popeq {r3, pc}
+	ldmeqdb sp!, {r3, pc}
 	bl sub_0202836C
 	ldr r0, _0238C4C8 ; =0x0238C600
 	ldr r0, [r0]
@@ -2374,14 +2374,14 @@ ov24_0238C47C: ; 0x0238C47C
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x28f]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238C4C8: .4byte 0x0238C600
+_0238C4C8: .word 0x0238C600
 	arm_func_end ov24_0238C47C
 
 	arm_func_start ov24_0238C4CC
 ov24_0238C4CC: ; 0x0238C4CC
-	push {r3, lr}
+	stmdb sp!, {r3, lr}
 	ldr r0, _0238C504 ; =0x0238C600
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2394,8 +2394,8 @@ ov24_0238C4CC: ; 0x0238C4CC
 	ldr r1, _0238C504 ; =0x0238C600
 	ldr r1, [r1]
 	strb r0, [r1, #0x28c]
-	pop {r3, pc}
+	ldmdb sp!, {r3, pc}
 	.align 2, 0
-_0238C504: .4byte 0x0238C600
+_0238C504: .word 0x0238C600
 	arm_func_end ov24_0238C4CC
 	; 0x0238C508
