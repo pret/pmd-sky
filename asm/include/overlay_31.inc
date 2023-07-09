@@ -88,7 +88,6 @@
 .public sub_020416DC
 .public sub_02041A00
 .public sub_02041B7C
-.public FUN_01FFA3C4
 .public sub_0203FE5C
 .public ov29_022E0C2C
 .public ov11_02300BF8
@@ -229,3 +228,4 @@
 .public sub_0202F334
 .public sub_020416FC
 .public sub_020410A4
+.public AiMovement

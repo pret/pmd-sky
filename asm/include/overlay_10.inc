@@ -25,7 +25,7 @@
 .public sub_0204F244
 .public ShowPortraitBox
 .public sub_020263C8
-.public LoadFileFromRom
+.public LoadFileFromRom__02008C3C
 .public sub_02033350
 .public sub_02001808
 .public Rand16Bit

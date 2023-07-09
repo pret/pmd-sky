@@ -88,6 +88,7 @@ Autoload ITCM
 	Object lib/NitroSDK/asm/mi_dma.o (.itcm)
 	Object lib/NitroSDK/asm/mi_dma_gxcommand.o (.itcm)
 	Object lib/asm/nitro.o (.itcm)
+	Object asm/itcm.o (.itcm)
 }
 
 Autoload DTCM

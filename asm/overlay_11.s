@@ -2011,7 +2011,7 @@ _022DDC6C:
 	ldr r2, _022DDD60 ; =0x0000030F
 	add r0, sp, #0x14
 	add r1, sp, #0x20
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r1, [sp, #0x14]
 	mov r0, #0x400
 	add r6, r1, #2
@@ -9624,13 +9624,13 @@ _022E46D0:
 	ldmdb sp!, {r4, r5, r6, pc}
 	arm_func_end ov11_022E469C
 
-	arm_func_start LoadFileFromRom
-LoadFileFromRom: ; 0x022E46DC
-	ldr ip, _022E46E4 ; =LoadFileFromRom
+	arm_func_start LoadFileFromRom__022E46DC
+LoadFileFromRom__022E46DC: ; 0x022E46DC
+	ldr ip, _022E46E4 ; =LoadFileFromRom__02008C3C
 	bx ip
 	.align 2, 0
-_022E46E4: .word LoadFileFromRom
-	arm_func_end LoadFileFromRom
+_022E46E4: .word LoadFileFromRom__02008C3C
+	arm_func_end LoadFileFromRom__022E46DC
 
 	arm_func_start ov11_022E46E8
 ov11_022E46E8: ; 0x022E46E8
@@ -15394,7 +15394,7 @@ ov11_022E9438: ; 0x022E9438
 _022E9468:
 	cmp r4, #2
 	ldmnedb sp!, {r4, pc}
-	bl GetScenarioBalance
+	bl GetScenarioBalance__0204CB94
 	cmp r0, #6
 	movhs r4, #3
 	bhs _022E9498
@@ -19000,7 +19000,7 @@ _022EC2BC:
 	ldr r2, [sp]
 	add r1, sp, #0x4c
 	add r0, sl, #0x174
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r1, _022ECD00 ; =0x02320C6C
 	add r0, sp, #0x4c
 	add r2, sp, #0xd6
@@ -19008,7 +19008,7 @@ _022EC2BC:
 	ldr r2, _022ECD04 ; =0x0000030F
 	add r0, sl, #0x184
 	add r1, sp, #0x4c
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r1, _022ECD08 ; =0x02320C80
 	add r0, sp, #0x4c
 	add r2, sp, #0xe0
@@ -19016,7 +19016,7 @@ _022EC2BC:
 	ldr r2, _022ECD04 ; =0x0000030F
 	add r0, sl, #0x18c
 	add r1, sp, #0x4c
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r1, [sl, #0x184]
 	ldr r0, [sl, #0x174]
 	ldrh r2, [r1]
@@ -19638,7 +19638,7 @@ _022ECBA8:
 	ldr r2, [sp]
 	add r0, r4, #8
 	add r1, sp, #0x4c
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	mov r0, #1
 	strb r0, [r4]
 	strb r0, [r4, #1]
@@ -19757,7 +19757,7 @@ _022ECD5C:
 	add r0, sl, #0x174
 	add r1, sp, #0x38
 	mov r2, #6
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r1, _022ED220 ; =0x02320C6C
 	add r0, sp, #0x38
 	add r2, sp, #0xc2
@@ -19765,7 +19765,7 @@ _022ECD5C:
 	ldr r2, _022ED224 ; =0x0000030F
 	add r0, sl, #0x184
 	add r1, sp, #0x38
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r1, _022ED228 ; =0x02320C80
 	add r0, sp, #0x38
 	add r2, sp, #0xcc
@@ -19773,7 +19773,7 @@ _022ECD5C:
 	add r0, sl, #0x18c
 	add r1, sp, #0x38
 	mov r2, #6
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	add r1, sl, #0xea
 	ldr r0, [sl, #0x184]
 	ldr sb, [sl, #0x174]
@@ -20860,7 +20860,7 @@ _022EDD48:
 	ldr r2, _022EDE60 ; =0x0000030F
 	add r1, sp, #0
 	add r0, r5, #0x18c
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr lr, [r5, #0x18c]
 	add r4, r5, #0x1e0
 	ldrb r2, [lr]
@@ -20965,7 +20965,7 @@ _022EDECC:
 	beq _022EE074
 	ldr r2, _022EE0BC ; =0x0000030F
 	add r0, sp, #0x18
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r0, [sp, #0x18]
 	bl GetAtSize
 	mov r4, r0
@@ -41034,7 +41034,7 @@ _022FF760:
 	ldr r0, [r0, #4]
 	mov r2, #8
 	add r0, r0, #8
-	bl LoadFileFromRom
+	bl LoadFileFromRom__022E46DC
 	ldr r0, _022FF9E0 ; =0x02324D14
 	ldr r2, [r0, #4]
 	ldr r1, [r2, #8]

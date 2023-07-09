@@ -7777,7 +7777,7 @@ ov31_02389C2C: ; 0x02389C2C
 	cmp r1, #0
 	ldmneia sp!,  {r3, pc}
 	mov r1, #1
-	bl FUN_01FFA3C4
+	bl AiMovement
 	ldmdb sp!, {r3, pc}
 	arm_func_end ov31_02389C2C
 

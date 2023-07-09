@@ -8288,7 +8288,7 @@ ov10_022C3938: ; 0x022C3938
 	ldr sl, [sp, #0x9c]
 	ldr sb, [sp, #0xa0]
 	ldr r8, [sp, #0xa4]
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r1, [sp, #0x64]
 	add r0, sp, #0x60
 	bl HandleSir0Translation
@@ -8642,7 +8642,7 @@ ov10_022C3E8C: ; 0x022C3E8C
 	mov fp, r3
 	str r4, [sp, #0x10]
 	ldr r5, [sp, #0x50]
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r1, [sp, #0x20]
 	add r0, sp, #0x10
 	bl HandleSir0Translation
@@ -8673,7 +8673,7 @@ ov10_022C3E8C: ; 0x022C3E8C
 	str r2, [sp, #0x18]
 	mov r2, #0xf
 	str r3, [sp, #0x1c]
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r1, [sp, #0x18]
 	add r0, sp, #0x14
 	bl HandleSir0Translation

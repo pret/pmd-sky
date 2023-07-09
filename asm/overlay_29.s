@@ -143,10 +143,10 @@ ov29_022DC33C: ; 0x022DC33C
 	ldr r4, [r3, #0xe0]
 	add r0, sp, #0
 	mov r1, #0x1b000
-	bl FUN_01FF8130
+	bl sub_01FF8130
 	add r0, sp, #0
 	add r1, r4, #0x3c00
-	bl FUN_01FF81CC
+	bl sub_01FF81CC
 	ldr r0, _022DC53C ; =0x00018304
 	mov r5, #0
 	ldr r4, _022DC530 ; =0x02353880
@@ -202,7 +202,7 @@ _022DC454:
 	strh r3, [r4, #0x12]
 	strh r2, [r4, #0x22]
 	strh r1, [r4]
-	bl FUN_01FF8C60
+	bl sub_01FF8C60
 _022DC50C:
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10
@@ -230,7 +230,7 @@ ov29_022DC544: ; 0x022DC544
 	mov r2, #0x300
 	ldr r1, [r1, r0, lsl #2]
 	add r0, sp, #0
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r4, [sp]
 	ldr r2, [sp, #4]
 	mov r0, r4
@@ -5259,13 +5259,13 @@ _022E0950:
 _022E0958: .word 0x02353538
 	arm_func_end StoryRestrictionsEnabled
 
-	arm_func_start GetScenarioBalance
-GetScenarioBalance: ; 0x022E095C
-	ldr ip, _022E0964 ; =GetScenarioBalance
+	arm_func_start GetScenarioBalance__022E095C
+GetScenarioBalance__022E095C: ; 0x022E095C
+	ldr ip, _022E0964 ; =GetScenarioBalance__0204CB94
 	bx ip
 	.align 2, 0
-_022E0964: .word GetScenarioBalance
-	arm_func_end GetScenarioBalance
+_022E0964: .word GetScenarioBalance__0204CB94
+	arm_func_end GetScenarioBalance__022E095C
 
 	arm_func_start FadeToBlack
 FadeToBlack: ; 0x022E0968
@@ -13387,18 +13387,18 @@ ov29_022E6FBC: ; 0x022E6FBC
 	bne _022E707C
 	ldr r1, _022E79EC ; =0x02351594
 	add r0, sp, #0x48
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	b _022E709C
 _022E707C:
 	cmp r0, #2
 	add r0, sp, #0x48
 	bne _022E7094
 	ldr r1, _022E79F0 ; =0x023515B0
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	b _022E709C
 _022E7094:
 	ldr r1, _022E79F4 ; =0x023515CC
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 _022E709C:
 	mov r0, #0x65
 	bl AdvanceFrame
@@ -19474,7 +19474,7 @@ _022EBD80:
 	mov r0, r4
 	ldr r1, [r1]
 	str r4, [r1, #0xc4]
-	bl FUN_01FFBDF4
+	bl sub_01FFBDF4
 	bl TryActivateArtificialWeatherAbilities
 	mov r1, #0
 	mov r0, r4
@@ -19692,7 +19692,7 @@ _022EC0BC:
 	ldr r1, [r4]
 	mov r0, r8
 	str r8, [r1, #0xc4]
-	bl FUN_01FFBDF4
+	bl sub_01FFBDF4
 	bl TryActivateArtificialWeatherAbilities
 	ldrh r0, [sl]
 	tst r0, #0x8000
@@ -19876,7 +19876,7 @@ _022EC380:
 	movs sb, r0
 	moveq r0, #0
 	ldmeqdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl FUN_01FFBDF4
+	bl sub_01FFBDF4
 	mov r0, #0
 	bl DisplayActions
 	cmp r0, #0
@@ -36058,7 +36058,7 @@ _022FA210:
 	b _022FA27C
 _022FA274:
 	mov r1, r2
-	bl FUN_01FFA3C4
+	bl AiMovement
 _022FA27C:
 	add r0, r4, #0x100
 	ldrsh r1, [r0, #0x7e]
@@ -37469,7 +37469,7 @@ _022FB518: .word 0x00000C25
 	arm_func_start ov29_022FB51C
 ov29_022FB51C: ; 0x022FB51C
 	stmdb sp!, {r3, lr}
-	bl GetScenarioBalance
+	bl GetScenarioBalance__0204CB94
 	cmp r0, #2
 	movhs r0, #1
 	movlo r0, #0
@@ -37535,7 +37535,7 @@ ov29_022FB5EC: ; 0x022FB5EC
 	stmdb sp!, {r4, lr}
 	bl GetSpawnThreshold
 	mov r4, r0
-	bl GetScenarioBalance
+	bl GetScenarioBalance__022E095C
 	cmp r4, r0
 	movls r0, #1
 	movhi r0, #0
@@ -42023,7 +42023,7 @@ _022FF368:
 	b _022FF3A4
 _022FF39C:
 	mov r0, r5
-	bl FUN_01FFB658
+	bl ChooseAiMove
 _022FF3A4:
 	mov r0, #1
 	ldmdb sp!, {r3, r4, r5, pc}
@@ -52757,7 +52757,7 @@ _02308450:
 	cmp r0, #0
 	bne _02308510
 	mov r0, r5
-	bl FUN_01FFB658
+	bl ChooseAiMove
 	ldrh r0, [r4, #0x4a]
 	cmp r0, #0
 	ldmnedb sp!, {r3, r4, r5, pc}
@@ -52775,7 +52775,7 @@ _023084A8:
 	ldmeqdb sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, #1
-	bl FUN_01FFA3C4
+	bl AiMovement
 	ldrb r0, [r4, #6]
 	cmp r0, #0
 	ldmeqdb sp!, {r3, r4, r5, pc}
@@ -52810,14 +52810,14 @@ _0230852C:
 	beq _02308548
 	mov r0, r5
 	mov r1, #1
-	bl FUN_01FFA3C4
+	bl AiMovement
 _02308548:
 	ldrh r0, [r4, #0x4a]
 	cmp r0, #0
 	cmpne r0, #1
 	ldmnedb sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl FUN_01FFB658
+	bl ChooseAiMove
 	ldrsh r0, [r4, #2]
 	bl GetCanMoveFlag
 	cmp r0, #0
@@ -68380,7 +68380,7 @@ _02316074:
 	bne _02316074
 	mov r0, r7
 	mov r1, r4
-	bl FUN_01FFA3C4
+	bl AiMovement
 	add r3, sp, #0
 	add r2, r8, #0x4a
 	mov r1, #0xa
@@ -70296,7 +70296,7 @@ _02317B70:
 	add r1, r0, #1
 	mov r0, r5
 	strb r1, [r4, #0xf2]
-	bl FUN_01FFB62C
+	bl sub_01FFB62C
 	ldr r0, _02317C14 ; =0x00000115
 	bl ov29_022EACCC
 	ldr r2, _02317C18 ; =0x00000D3C
@@ -81130,7 +81130,7 @@ _02321008:
 	mov r1, #0
 	bl ov29_022E1A40
 	mov r0, r8
-	bl FUN_01FFB62C
+	bl sub_01FFB62C
 	mov r0, #1
 	bl ov29_022E2EC4
 	mov r0, r8
@@ -97595,7 +97595,7 @@ _0232EA2C:
 	mov r1, r4
 	mov r2, r8
 	mov r3, #0
-	bl FUN_01FFBE5C
+	bl LightningRodStormDrainCheck
 	movs r5, r0
 	beq _0232EA6C
 	bl ov29_022E6338
@@ -97612,7 +97612,7 @@ _0232EA6C:
 	mov r1, r4
 	mov r2, r8
 	mov r3, #1
-	bl FUN_01FFBE5C
+	bl LightningRodStormDrainCheck
 	movs r5, r0
 	beq _0232EAAC
 	bl ov29_022E6388
@@ -123008,7 +123008,7 @@ LoadFixedRoomData: ; 0x02343D90
 	ldr r1, _02343DC0 ; =0x02353110
 	ldr r0, [r0]
 	mov r2, #0
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r0, _02343DBC ; =0x02353794
 	ldr r0, [r0]
 	ldr r1, [r0], #8

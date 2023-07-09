@@ -75,7 +75,7 @@
 .public ov01_02337DD0
 .public sub_02043320
 .public ov01_02337D00
-.public LoadFileFromRom
+.public LoadFileFromRom__02008C3C
 .public sub_020434FC
 .public GetLanguageType
 .public RandInt
@@ -87,3 +87,5 @@
 .public InitPreprocessorArgs
 .public sub_0200D8E4
 .public sub_02043434
+.public sub_02046D20
+.public sub_0200FD48

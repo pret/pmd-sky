@@ -106,7 +106,7 @@
 .public sub_02063734
 .public sub_0200CF78
 .public GetDebugFlag2
-.public GetScenarioBalance
+.public GetScenarioBalance__0204CB94
 .public sub_0204F158
 .public sub_0204BED8
 .public sub_02055474
@@ -715,3 +715,4 @@
 .public ClampComponentAbs
 .public sub_020420F4
 .public sub_02003A40
+.public LoadFileFromRom__02008C3C

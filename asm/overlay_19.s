@@ -236,7 +236,7 @@ _0238A3E8: .word 0x0238DAE8
 ov19_0238A3EC: ; 0x0238A3EC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
-	bl GetScenarioBalance
+	bl GetScenarioBalance__0204CB94
 	mov r6, #0
 	ldr r5, _0238A464 ; =0x0238DAE8
 	mov r4, r0
@@ -512,7 +512,7 @@ _0238A790:
 	b _0238C598
 _0238A7D8:
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov19_0238C5A8
 	ldr r1, _0238B424 ; =0x02324DB0
 	mvn r0, #1
@@ -610,7 +610,7 @@ _0238A934:
 	beq _0238C598
 	ldr r0, _0238B45C ; =0x00003F02
 	mov r1, #0x100
-	bl sub_020182B8
+	bl sub_02017C74
 	ldrsb r0, [r8, #0x20]
 	bl ov10_022BCDA8
 	str r0, [r8, #0x58]
@@ -716,7 +716,7 @@ _0238AAA8:
 	b _0238C598
 _0238AAD4:
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	bl sub_0203A998
 	cmp r0, #0
 	bne _0238AAF4
@@ -1043,7 +1043,7 @@ _0238AF0C:
 	cmp r0, #0
 	beq _0238AFB8
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #0x3d
 	str r0, [r8, #4]
 	mov r0, #0x1c
@@ -1085,7 +1085,7 @@ _0238AFB8:
 	b _0238C598
 _0238B01C:
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #0x3d
 	str r0, [r8, #4]
 	mov r0, #0x1c
@@ -1238,7 +1238,7 @@ _0238B218: ; jump table
 	b _0238B234 ; case 5
 	b _0238B2B8 ; case 6
 _0238B234:
-	bl sub_020473A4
+	bl sub_02046D20
 	add r0, r8, #0x100
 	mov r1, #0
 	strh r1, [r0]
@@ -1301,7 +1301,7 @@ _0238B2B8:
 	b _0238C598
 _0238B320:
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	add r0, r8, #0x10
 	mov r1, #0
 	bl SetPortraitExpressionId
@@ -2058,7 +2058,7 @@ _0238BE08:
 	cmp r1, r0
 	bne _0238BE28
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #3
 	b _0238C59C
 _0238BE28:
@@ -2119,7 +2119,7 @@ _0238BEE0:
 	mov r3, r1
 	bl sub_02065BAC
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #0x3d
 	str r0, [r8, #4]
 	mov r0, #0x2c
@@ -2133,7 +2133,7 @@ _0238BEE0:
 	strne r0, [r8]
 	bne _0238C598
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #0x11
 	str r0, [r8]
 	b _0238C598
@@ -2196,7 +2196,7 @@ _0238C004:
 	moveq r0, #0
 	cmp r0, #0xa
 	bne _0238C598
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #0
 	add r1, r8, #0x100
 	ldrsh r1, [r1, #4]
@@ -2216,7 +2216,7 @@ _0238C004:
 	strne r0, [r8]
 	bne _0238C598
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #0x13
 	str r0, [r8]
 	b _0238C598
@@ -2311,7 +2311,7 @@ _0238C1BC:
 	cmp r0, #8
 	bne _0238C200
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r1, _0238C4FC ; =0x0238E1B4
 	add r0, r8, #0x10
 	bl SetPortraitAttrStruct
@@ -2329,7 +2329,7 @@ _0238C200:
 	cmp r0, #1
 	bhi _0238C598
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	add r0, r8, #0x10
 	mov r1, #0
 	bl SetPortraitUnknownAttr
@@ -2373,7 +2373,7 @@ _0238C2A0:
 	moveq r0, #0
 	cmp r0, #0xa
 	bne _0238C598
-	bl sub_020473A4
+	bl sub_02046D20
 	add r0, r8, #0x100
 	mov r1, #0
 	strh r1, [r0]
@@ -2464,7 +2464,7 @@ _0238C3AC:
 	str r0, [r8]
 	b _0238C598
 _0238C410:
-	bl sub_020473A4
+	bl sub_02046D20
 	add r0, r8, #0x100
 	mov r1, #0
 	strh r1, [r0]
@@ -2543,7 +2543,7 @@ _0238C50C:
 	cmp r1, r0
 	bne _0238C544
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #3
 	b _0238C59C
 _0238C544:
@@ -2551,7 +2551,7 @@ _0238C544:
 	cmpne r1, #0xe
 	bne _0238C558
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 _0238C558:
 	mov r0, #0x3e
 	str r0, [r8, #4]
@@ -3003,7 +3003,7 @@ ov19_0238CB2C: ; 0x0238CB2C
 	bl GetTeamMember
 	mov r4, r0
 	mov r0, #1
-	bl sub_0201820C
+	bl sub_02017C50
 	add r0, sp, #4
 	bl InitPreprocessorArgs
 	ldr r0, _0238CBB8 ; =0x02324DB0
@@ -3257,7 +3257,7 @@ _0238CE78:
 	strb sl, [r0, #0x18]
 	cmp r4, #1
 	movne r0, #1
-	ldmneia sp!,  {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmnedb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, #1
 	b _0238CEAC
 _0238CE9C:
@@ -3533,7 +3533,7 @@ _0238D250:
 	str r0, [r4]
 	b _0238D300
 _0238D274:
-	bl sub_020473A4
+	bl sub_02046D20
 	add r0, r4, #0x100
 	mov r1, #0
 	strh r1, [r0]
@@ -3541,7 +3541,7 @@ _0238D274:
 	str r0, [r4, #4]
 	b _0238D300
 _0238D290:
-	bl sub_020473A4
+	bl sub_02046D20
 	add r0, r4, #0x100
 	mov r1, #0
 	strh r1, [r0]
@@ -3584,7 +3584,7 @@ ov19_0238D310: ; 0x0238D310
 	ldr r0, _0238D384 ; =0x02324DB0
 	ldr r4, [r0]
 	bl ov19_0238D47C
-	bl sub_020473A4
+	bl sub_02046D20
 	add r0, r4, #0x100
 	mov r1, #0
 	strh r1, [r0]

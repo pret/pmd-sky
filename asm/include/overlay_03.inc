@@ -23,7 +23,7 @@
 .public ov01_0233580C
 .public sub_020433C0
 .public MemFree
-.public DebugPrint0
+.public DebugPrint0__0200C1FC
 .public sub_02046BB4
 .public sub_02010154
 .public ov01_023375B0
@@ -140,7 +140,7 @@
 .public ov01_0232CB1C
 .public GetMaxItemsAllowed
 .public MemcpySimple
-.public LoadFileFromRom
+.public LoadFileFromRom__02008C3C
 .public IsItemValidVeneer
 .public sub_0205B6EC
 .public sub_02042CF0
@@ -242,3 +242,4 @@
 .public ov01_02335FA8
 .public sub_0202BCBC
 .public sub_020698B8
+.public sub_02046D20

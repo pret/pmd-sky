@@ -118,7 +118,7 @@ ov03_0233CB3C: ; 0x0233CB3C
 	ldr r0, _0233CB90 ; =0x02346BF0
 	mov r1, #0
 	str r1, [r0, #4]
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #0
 	bl ov01_023375B0
 	mov r0, #1
@@ -392,7 +392,7 @@ _0233CF0C:
 	ldr r1, _0233CF94 ; =0x00004001
 	ldr r0, [r0]
 	str r1, [r0, #0x10]
-	bl sub_020473A4
+	bl sub_02046D20
 	b _0233CF68
 _0233CF30:
 	bl ov03_0234472C
@@ -435,7 +435,7 @@ ov03_0233CF9C: ; 0x0233CF9C
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqdb sp!, {r3, pc}
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233CFD0 ; =0x02346BF0
 	ldr r0, [r0]
 	bl MemFree
@@ -463,7 +463,7 @@ ov03_0233CFD4: ; 0x0233CFD4
 	bl sub_0204E644
 	cmp r0, #0
 	movne r0, #1
-	ldmneia sp!,  {r3, pc}
+	ldmnedb sp!, {r3, pc}
 _0233D010:
 	mov r0, #0
 	ldmdb sp!, {r3, pc}
@@ -2070,7 +2070,7 @@ _0233E620:
 	cmp r0, #0
 	beq _0233F2C4
 _0233E644:
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233EE08 ; =0x02346BC0
 	ldr r1, _0233EE50 ; =0x00000312
 	ldr r0, [r0]
@@ -2121,7 +2121,7 @@ _0233E6D0:
 	ldr r1, _0233EE54 ; =0x00000321
 	ldr r0, [r0]
 	str r1, [r0]
-	bl sub_020473A4
+	bl sub_02046D20
 	b _0233F2C4
 _0233E704:
 	bl GetKeyboardStatus
@@ -2373,7 +2373,7 @@ _0233EA70:
 	mov r7, #0xb
 _0233EA74:
 	ldr r0, _0233EE5C ; =0x02346A64
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r5, _0233EE60 ; =0x02346A68
 	ldr r4, _0233EE08 ; =0x02346BC0
 	mov r6, #0
@@ -2382,12 +2382,12 @@ _0233EA88:
 	mov r0, r5
 	add r1, r1, r6
 	ldrb r1, [r1, #0x10c]
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	add r6, r6, #1
 	cmp r6, #0x36
 	blt _0233EA88
 	ldr r0, _0233EE5C ; =0x02346A64
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	cmp r7, #0xa
 	addls pc, pc, r7, lsl #2
 	b _0233F2C4
@@ -4817,7 +4817,7 @@ _02340D20:
 	ldmdb sp!, {r3, pc}
 _02340D28:
 	cmp r0, #2
-	ldmneia sp!,  {r3, pc}
+	ldmnedb sp!, {r3, pc}
 	bl ov00_022BD274
 	cmp r0, #0
 	beq _02340D54
@@ -5828,7 +5828,7 @@ _02341B80:
 	bl ov02_02338EC4
 	cmp r0, #5
 	bne _02341BB0
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _02341D00 ; =0x02346BC8
 	ldr r1, _02341DB8 ; =0x00004008
@@ -6705,7 +6705,7 @@ _02342818:
 	cmp r5, #5
 	bne _0234287C
 	bl sub_02069904
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _02341D00 ; =0x02346BC8
 	ldr r1, _02341DB8 ; =0x00004008
@@ -7253,7 +7253,7 @@ _0234301C:
 	mov r1, #0xe8
 	str r2, [r0, #0x1c]
 	str r1, [r0, #0x20]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02342FD0 ; =0x02346BC8
 	ldr r1, _02343F74 ; =0x00005006
 	ldr r0, [r0]
@@ -7348,7 +7348,7 @@ _0234319C:
 	bl sub_02066494
 	cmp r4, #5
 	bne _023431CC
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _02342FD0 ; =0x02346BC8
 	ldr r1, _02343F84 ; =0x00004008
@@ -7358,7 +7358,7 @@ _0234319C:
 _023431CC:
 	cmp r0, #0x1f
 	bne _02344184
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02342FD0 ; =0x02346BC8
 	ldr r1, _02343F88 ; =0x00005003
 	ldr r0, [r0]
@@ -7668,7 +7668,7 @@ _02343650:
 	ldr r1, _02343F74 ; =0x00005006
 	ldr r0, [r0]
 	str r1, [r0]
-	bl sub_020473A4
+	bl sub_02046D20
 	b _02344184
 _02343668:
 	cmp r4, #0x1f
@@ -7688,7 +7688,7 @@ _02343678:
 	cmp r5, #5
 	bne _023436C4
 	bl sub_02046BB4
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _02342FD0 ; =0x02346BC8
 	ldr r1, _02343F84 ; =0x00004008
@@ -7714,7 +7714,7 @@ _023436FC:
 	sub r0, r4, #0x1e
 	cmp r0, #1
 	bhi _02344184
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02342FD0 ; =0x02346BC8
 	ldr r1, _02343F88 ; =0x00005003
 	ldr r0, [r0]
@@ -7726,7 +7726,7 @@ _02343720:
 	bl sub_02066494
 	cmp r4, #5
 	bne _02343750
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _02342FD0 ; =0x02346BC8
 	ldr r1, _02343F84 ; =0x00004008
@@ -7750,7 +7750,7 @@ _02343778:
 	bl sub_02066494
 	cmp r4, #5
 	bne _023437A8
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _02342FD0 ; =0x02346BC8
 	ldr r1, _02343F84 ; =0x00004008
@@ -8004,7 +8004,7 @@ _02343B08:
 	strgt r1, [r0, #0xae0]
 	cmp r5, #5
 	bne _02343B68
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _02342FD0 ; =0x02346BC8
 	ldr r1, _02343F84 ; =0x00004008
@@ -8427,7 +8427,7 @@ _02344130:
 	bne _02344170
 	ldr r0, _02343F74 ; =0x00005006
 	str r0, [r1]
-	bl sub_020473A4
+	bl sub_02046D20
 _02344170:
 	ldr r0, _02343FF0 ; =0x02346BC8
 	mov r1, #0
@@ -8701,7 +8701,7 @@ _023444CC:
 	streq r0, [r4]
 	b _023446DC
 _023444E0:
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #0x12
 	bl sub_020668B4
 	mov r0, #3
@@ -8938,7 +8938,7 @@ _023447E8:
 	str r0, [sp, #0xac]
 	ldr r0, [r4, #8]
 	str r0, [sp, #0xa0]
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #0xa
 	str r0, [sp]
 	mov r5, #8
@@ -9687,7 +9687,7 @@ _02345250:
 	ldrb r0, [r7, #0xad]
 	cmp r0, #0
 	bne _02345298
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02345A64 ; =0x00002010
 	ldr r0, [r0]
@@ -9900,7 +9900,7 @@ _0234557C:
 	bl ov01_023375D0
 	cmp r4, #0x1d
 	bne _023455B8
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02345AF8 ; =0x00002003
 	ldr r0, [r0]
@@ -9909,7 +9909,7 @@ _0234557C:
 _023455B8:
 	cmp r4, #0x1e
 	bne _023455D8
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02345A64 ; =0x00002010
 	ldr r0, [r0]
@@ -10065,7 +10065,7 @@ _023457F4:
 	bl sub_02066494
 	cmp r0, #0x1f
 	bne _02346640
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02345B14 ; =0x00003033
 	ldr r0, [r0]
@@ -10293,7 +10293,7 @@ _02345B5C:
 	sub r0, r4, #0x1e
 	cmp r0, #1
 	bhi _02346640
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02345B14 ; =0x00003033
 	ldr r0, [r0]
@@ -10354,7 +10354,7 @@ _02345C10:
 	ldr r0, [r0]
 	strb r1, [r0, #0x14]
 _02345C4C:
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02345B14 ; =0x00003033
 	ldr r0, [r0]
@@ -10364,7 +10364,7 @@ _02345C64:
 	bl sub_02066494
 	cmp r0, #0x1f
 	bne _02346640
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02345B14 ; =0x00003033
 	ldr r0, [r0]
@@ -10502,7 +10502,7 @@ _02345E2C:
 	ldr r3, [r2, #4]
 	ldr r2, _02346670 ; =0x0000030F
 	ldrb r8, [r3, #0xae]
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	mov r5, #0
 	mov fp, r5
 	mov r4, #1
@@ -10626,7 +10626,7 @@ _02346010:
 	bl sub_02066494
 	cmp r0, #0x1f
 	bne _02346640
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02346678 ; =0x00003533
 	ldr r0, [r0]
@@ -10829,7 +10829,7 @@ _02346300:
 	sub r0, r4, #0x1e
 	cmp r0, #1
 	bhi _02346640
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02346678 ; =0x00003533
 	ldr r0, [r0]
@@ -10866,7 +10866,7 @@ _02346374:
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x14]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02346678 ; =0x00003533
 	ldr r0, [r0]
@@ -10899,7 +10899,7 @@ _023463FC:
 	cmp r0, #1
 	bne _02346424
 	bl ov03_023466E8
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02346678 ; =0x00003533
 	ldr r0, [r0]
@@ -10995,7 +10995,7 @@ _02346560:
 	cmp r0, #1
 	bne _02346640
 	bl sub_020420F4
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02346678 ; =0x00003533
 	ldr r0, [r0]
@@ -11005,7 +11005,7 @@ _02346588:
 	bl sub_02066494
 	cmp r0, #0x1f
 	bne _02346640
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _02345A5C ; =0x02346BDC
 	ldr r1, _02346678 ; =0x00003533
 	ldr r0, [r0]

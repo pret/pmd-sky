@@ -26,7 +26,7 @@
 .public RemoveItemNoHole
 .public sub_02065BAC
 .public sub_02011528
-.public GetScenarioBalance
+.public GetScenarioBalance__0204CB94
 .public PreprocessString
 .public sub_02055474
 .public sub_0202E6C8
@@ -135,3 +135,6 @@
 .public SetPortraitUnknownAttr
 .public sub_02056E04
 .public sub_020407C0
+.public sub_02046D20
+.public sub_02017C74
+.public sub_02017C50

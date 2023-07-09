@@ -85,7 +85,6 @@
 .public sub_02008F88
 .public sub_0201C0CC
 .public sub_02009514
-.public FUN_01FFA3C4
 .public sub_02056754
 .public DecrementStackItem
 .public sub_020038E8
@@ -131,7 +130,6 @@
 .public GetCanMoveFlag
 .public sub_0204AEE0
 .public sub_0201CF90
-.public FUN_01FFBDF4
 .public ov10_022BFD58
 .public sub_02017A68
 .public ov10_022BEC08
@@ -190,7 +188,6 @@
 .public RemoveEquivItem
 .public FailsWhileMuzzled
 .public ov31_0238941C
-.public FUN_01FFB62C
 .public StrncpySimple
 .public ov10_022C26BC
 .public sub_0204AEA0
@@ -288,7 +285,6 @@
 .public Vsprintf
 .public sub_0202AAE8
 .public ov10_022BFB6C
-.public FUN_01FFB658
 .public GetMaxReachedFloor
 .public IsMoneyAllowed
 .public sub_02017B70
@@ -313,10 +309,8 @@
 .public GetSpriteSize
 .public GetType
 .public sub_0201D1B0
-.public FUN_01FF8C60
 .public sub_02025314
 .public SetMoneyCarried
-.public FUN_01FF81CC
 .public sub_02048240
 .public sub_02051EB8
 .public sub_02008F3C
@@ -370,7 +364,6 @@
 .public GetActualBuyPrice
 .public ov10_022BDC68
 .public RemoveItem
-.public FUN_01FFBE5C
 .public sub_02027148
 .public sub_02055020
 .public ov31_023877EC
@@ -428,7 +421,7 @@
 .public sub_0201E730
 .public sub_020483D8
 .public ov10_022C1E80
-.public LoadFileFromRom
+.public LoadFileFromRom__02008C3C
 .public ov30_02382E08
 .public UnloadWte
 .public sub_02058C3C
@@ -612,7 +605,6 @@
 .public GetMaxItemsAllowed
 .public sub_02024FC8
 .public sub_0204AEC0
-.public FUN_01FF8130
 .public Memcpy32
 .public sub_02051EF0
 .public sub_02057CE8
@@ -658,3 +650,12 @@
 .public DebugPrint0__0200C1FC
 .public GetSpriteIndex__020526EC
 .public GetSpriteIndex__02052708
+.public LightningRodStormDrainCheck
+.public ChooseAiMove
+.public AiMovement
+.public sub_01FF81CC
+.public sub_01FFBDF4
+.public sub_01FFB62C
+.public sub_01FF8C60
+.public sub_01FF8130
+.public GetScenarioBalance__0204CB94

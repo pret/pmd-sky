@@ -188,7 +188,7 @@ _0233CBE4:
 	ldr r0, _0233CC44 ; =0x0233F670
 	mov r1, #0
 	str r1, [r0, #4]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233CC48 ; =0x0233F640
 	mov r1, #0
 	str r1, [r0]
@@ -592,7 +592,7 @@ ov04_0233D1A0: ; 0x0233D1A0
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqdb sp!, {r3, pc}
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233D1D4 ; =0x0233F670
 	ldr r0, [r0]
 	bl MemFree
@@ -647,7 +647,7 @@ ov04_0233D1D8: ; 0x0233D1D8
 	ldr r2, _0233D2B0 ; =0x0000030F
 	add r0, sp, #0
 	strb ip, [r3, #0x92d]
-	bl LoadFileFromRom
+	bl LoadFileFromRom__02008C3C
 	ldr r0, _0233D2A8 ; =0x0233F644
 	ldr r2, [sp]
 	ldr r0, [r0]
@@ -966,7 +966,7 @@ _0233D648:
 	bl GetTeamNameCheck
 	add r0, sp, #0xec
 	bl InitPreprocessorArgs
-	bl sub_02050CE4
+	bl sub_0200FD48
 	mov r5, r0
 	bl sub_0200FD78
 	sub r0, r5, r0
@@ -1036,7 +1036,7 @@ _0233D804:
 	bl ov04_0233CBA0
 	cmp r0, #8
 	bne _0233EEB4
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233E264 ; =0x00001001
 	str r0, [r4]
 	b _0233EEB4
@@ -1424,7 +1424,7 @@ _0233DD54:
 _0233DD90:
 	mvn r0, #0
 	str r0, [r4, #0xc]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233E264 ; =0x00001001
 	str r0, [r4]
 	b _0233EEB4
@@ -2036,7 +2036,7 @@ _0233E670:
 	bl ov04_0233CBA0
 	cmp r0, #8
 	bne _0233E6D4
-	bl sub_02050CE4
+	bl sub_0200FD48
 	mov r5, r0
 	bl sub_0200FD78
 	add r1, r4, #0x1800
@@ -2683,11 +2683,11 @@ ov04_0233EF8C: ; 0x0233EF8C
 	ldrb r1, [r4, #3]
 	cmp r0, r1
 	movne r0, #3
-	ldmneia sp!,  {r4, pc}
+	ldmnedb sp!, {r4, pc}
 	ldrb r0, [r4]
 	cmp r0, #0xf
 	movne r0, #2
-	ldmneia sp!,  {r4, pc}
+	ldmnedb sp!, {r4, pc}
 	ldrsh r0, [r4, #0x1c]
 	cmp r0, #0
 	beq _0233F098
@@ -2764,7 +2764,7 @@ ov04_0233F0A8: ; 0x0233F0A8
 	ldrb r1, [r4]
 	cmp r1, #0x14
 	movne r0, #2
-	ldmneia sp!,  {r4, pc}
+	ldmnedb sp!, {r4, pc}
 	ldrb r1, [r4, #3]
 	cmp r0, r1
 	movne r0, #3
@@ -2785,11 +2785,11 @@ ov04_0233F0E0: ; 0x0233F0E0
 	ldrb r1, [r5, #3]
 	cmp r0, r1
 	movne r0, #3
-	ldmneia sp!,  {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmnedb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldrb r0, [r5]
 	cmp r0, #0x13
 	movne r0, #2
-	ldmneia sp!,  {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmnedb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldrh r0, [r5, #4]
 	cmp r0, #0x3e8
 	movhi r0, #6
@@ -3091,7 +3091,7 @@ _0233F500:
 	bl InitStandardItem
 	bl ov04_0233CAC8
 	cmp r0, #0
-	ldmneia sp!,  {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmnedb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldrsh r0, [r4, #4]
 	bl IsItemInTimeDarkness
 	cmp r0, #0
