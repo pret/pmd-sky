@@ -243,7 +243,7 @@ _0233CCE8:
 	bl ov01_0232E94C
 	cmp r0, #0
 	bne _0233D338
-	bl ov00_0232F3F4
+	bl ov01_0232F3F4
 	bl ov05_0233CA80
 	ldr r0, _0233D344 ; =0x0233FCCC
 	mov r1, #3
@@ -343,7 +343,7 @@ _0233CE2C:
 	cmp r0, #0
 	bne _0233D338
 	mov r0, #0x13
-	bl ov00_023310B8
+	bl ov01_023310B8
 	mov r0, #3
 	b _0233D33C
 _0233CE48:
@@ -645,7 +645,7 @@ _0233D288:
 	bne _0233D338
 	bl ov05_0233D424
 	mov r0, #0x13
-	bl ov00_023310B8
+	bl ov01_023310B8
 	mov r0, #3
 	b _0233D33C
 _0233D2A4:
@@ -686,7 +686,7 @@ _0233D31C:
 	bne _0233D338
 	bl ov05_0233DBA0
 	mov r0, #0x13
-	bl ov00_023310B8
+	bl ov01_023310B8
 	mov r0, #3
 	b _0233D33C
 _0233D338:

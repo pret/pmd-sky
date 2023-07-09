@@ -264,7 +264,7 @@
 .public GetMoveMaxGinsengBoost
 .public SetPokemonJoined
 .public ov31_023860A4
-.public DebugPrint0
+.public DebugPrint0__0200C1FC
 .public sub_0204AF20
 .public SetMonsterFlag2
 .public ReplaceWanFromBinFile
@@ -659,3 +659,5 @@
 .public sub_01FF8C60
 .public sub_01FF8130
 .public GetScenarioBalance__0204CB94
+.public CheckTeamMemberIdx__02056228
+.public ov01_0233103C

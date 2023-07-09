@@ -40,7 +40,7 @@
 .public ov01_0233767C
 .public ov01_0232C5C8
 .public ov01_02337C54
-.public ov00_023310B8
+.public ov01_023310B8
 .public ov01_0233769C
 .public MemAlloc
 .public sub_02059060
@@ -53,7 +53,7 @@
 .public sub_02027AF0
 .public PreprocessString
 .public ov01_02338C28
-.public ov00_0232F3F4
+.public ov01_0232F3F4
 .public sub_02029FBC
 .public ov01_023398A4
 .public ov01_02338C34

@@ -33,7 +33,7 @@
 .public CreateNormalMenu
 .public sub_0203088C
 .public CreatePortraitBox
-.public DebugPrint0
+.public DebugPrint0__0200C1FC
 .public GetNormalMenuResult
 .public sub_02010758
 .public IsDBoxActive

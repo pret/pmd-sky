@@ -189,7 +189,7 @@ _0233CCA0:
 	mov r0, #1
 	b _0233CD34
 _0233CCB4:
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #0x11
 	bl sub_020668B4
 	ldr r0, _0233CD3C ; =0x0233EEC0
@@ -435,7 +435,7 @@ _0233CF78:
 	ldr r1, _0233D4D4 ; =0x00000321
 	ldr r0, [r0]
 	str r1, [r0]
-	bl sub_020473A4
+	bl sub_02046D20
 	b _0233D4C4
 _0233CFA4:
 	bl GetKeyboardStatus
@@ -537,7 +537,7 @@ _0233D0D8:
 	movlt r4, #0
 _0233D110:
 	ldr r0, _0233D4DC ; =0x0233EDCC
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r6, _0233D4E0 ; =0x0233EDD0
 	ldr r5, _0233D4CC ; =0x0233EEC4
 	mov r7, #0
@@ -546,12 +546,12 @@ _0233D124:
 	mov r0, r6
 	add r1, r1, r7
 	ldrb r1, [r1, #0x44]
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	add r7, r7, #1
 	cmp r7, #0x22
 	blt _0233D124
 	ldr r0, _0233D4DC ; =0x0233EDCC
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0233D4CC ; =0x0233EEC4
 	cmp r4, #7
 	ldr r1, [r0]
@@ -854,7 +854,7 @@ _0233D548:
 	strh r3, [r2, #0xb0]
 	ldr r0, [r0]
 	bl MemZero
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
 	.align 2, 0
@@ -935,7 +935,7 @@ _0233D690:
 	bl ov01_0232E94C
 	cmp r0, #0
 	bne _0233DC68
-	bl ov00_0232F3F4
+	bl ov01_0232F3F4
 	bl ov06_0233CA80
 	bl sub_0205ED84
 	cmp r0, #0
@@ -1030,7 +1030,7 @@ _0233D7F0:
 	cmp r0, #0
 	bne _0233DC68
 	mov r0, #0x12
-	bl ov00_023310B8
+	bl ov01_023310B8
 	mov r0, #3
 	b _0233DC6C
 _0233D80C:
@@ -1288,7 +1288,7 @@ _0233DB80:
 	streq r1, [r0, #0xc]
 	b _0233DC68
 _0233DB9C:
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov06_0233CAC8
 	cmp r0, #1
 	bne _0233DBB8
@@ -1377,7 +1377,7 @@ ov06_0233DCC0: ; 0x0233DCC0
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqdb sp!, {r3, pc}
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233DCF4 ; =0x0233EEEC
 	ldr r0, [r0]
 	bl MemFree
@@ -1569,7 +1569,7 @@ _0233DF44:
 	bl ov02_02338EC4
 	cmp r0, #5
 	bne _0233DF74
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _0233E8E0 ; =0x0233EEC8
 	ldr r1, _0233E8E8 ; =0x00001005
@@ -1619,7 +1619,7 @@ _0233DFF0:
 	cmp r0, fp
 	beq _0233E018
 	ldr r0, _0233E904 ; =0x0233EDD4
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	b _0233E0F0
 _0233E018:
 	ldr r1, [r7, #4]
@@ -1627,7 +1627,7 @@ _0233E018:
 	cmp r1, r0
 	beq _0233E034
 	ldr r0, _0233E90C ; =0x0233EDFC
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	b _0233E0F0
 _0233E034:
 	bl GetLanguageType
@@ -1635,7 +1635,7 @@ _0233E034:
 	cmp r1, r0
 	beq _0233E050
 	ldr r0, _0233E910 ; =0x0233EE24
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	b _0233E0F0
 _0233E050:
 	add r0, r7, #0x20
@@ -1647,7 +1647,7 @@ _0233E050:
 	cmp r1, r2
 	beq _0233E07C
 	ldr r0, _0233E914 ; =0x0233EE4C
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	b _0233E0F0
 _0233E07C:
 	ldr r2, [sp, #8]
@@ -1672,7 +1672,7 @@ _0233E07C:
 	cmp r0, #0
 	bne _0233E0EC
 	ldr r0, _0233E918 ; =0x0233EE84
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	strb r6, [r7]
 	strb r5, [r7, #4]
 	strb r6, [r7, #5]
@@ -1833,7 +1833,7 @@ _0233E2F8:
 	streq r1, [r0, #4]
 	b _0233E69C
 _0233E314:
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r1, _0233E8E0 ; =0x0233EEC8
 	mov r0, #0x14
 	ldr r1, [r1]
@@ -2080,7 +2080,7 @@ _0233E6A0:
 	bl ov06_0233CB10
 	bl sub_02069904
 	bl sub_02046BB4
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _0233E8E0 ; =0x0233EEC8
 	ldr r1, _0233E8E8 ; =0x00001005
@@ -2314,7 +2314,7 @@ _0233E9E8:
 	add r7, r7, #1
 	cmp r7, #9
 	blt _0233E9E8
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #1
 	ldmdb sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -2373,7 +2373,7 @@ ov06_0233ECCC: ; 0x0233ECCC
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqdb sp!, {r3, pc}
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233ED00 ; =0x0233EEF0
 	ldr r0, [r0]
 	bl MemFree

@@ -188,7 +188,7 @@ _0233CC58:
 	bl ov01_0232E94C
 	cmp r0, #0
 	bne _0233CF68
-	bl ov00_0232F3F4
+	bl ov01_0232F3F4
 	bl ov03_0233CA80
 	mov r0, #1
 	mov r1, #0
@@ -289,7 +289,7 @@ ov03_0233CDC8: ; 0x0233CDC8
 	cmp r0, #0
 	bne _0233CF68
 	mov r0, #0xf
-	bl ov00_023310B8
+	bl ov01_023310B8
 	arm_func_end ov03_0233CDC8
 
 	arm_func_start ov03_0233CDD8

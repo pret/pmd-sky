@@ -26,7 +26,7 @@
 .public sub_0201007C
 .public sub_02043254
 .public StrncpySimpleNoPadSafe
-.public ov00_0232F3F4
+.public ov01_0232F3F4
 .public ov01_0232E94C
 .public sub_0204329C
 .public sub_02043568
@@ -40,7 +40,7 @@
 .public sub_020103AC
 .public sub_02003BC8
 .public sub_0204A018
-.public ov00_023310B8
+.public ov01_023310B8
 .public sub_020440B8
 .public sub_02043468
 .public sub_02043380

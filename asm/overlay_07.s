@@ -3349,7 +3349,7 @@ _0233F85C:
 	bl ov01_0232E94C
 	cmp r0, #0
 	bne _0233FC90
-	bl ov00_0232F3F4
+	bl ov01_0232F3F4
 	bl sub_0204A1CC
 	bl ov00_022BCA80
 	cmp r0, #3
@@ -3477,7 +3477,7 @@ _0233FA3C:
 	cmp r0, #0
 	bne _0233FC90
 	mov r0, #0x10
-	bl ov00_023310B8
+	bl ov01_023310B8
 	mov r0, #3
 	b _0233FC94
 _0233FA58:

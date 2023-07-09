@@ -22958,14 +22958,16 @@ ov02_0233CAD8: ; 0x0233CAD8
 	ldr r0, _0233CB30 ; =0x0235AACC
 	ldrb r0, [r0]
 	cmp r0, #0
-	bne _0233CB10
+	bne ov02_0233CB10
 	mov r1, #1
 	mov r2, r1
 	mov r0, #3
 	mov r3, #8
 	bl ov02_0234D8E0
 	arm_func_end ov02_0233CAD8
-_0233CB10:
+
+	arm_func_start ov02_0233CB10
+ov02_0233CB10: ; 0x0233CB10
 	mov r0, #3
 	mov r1, #0
 	mov r2, #0x15
@@ -22977,6 +22979,7 @@ _0233CB10:
 	.align 2, 0
 _0233CB30: .word 0x0235AACC
 _0233CB34: .word ov02_0233CB38
+	arm_func_end ov02_0233CB10
 
 	arm_func_start ov02_0233CB38
 ov02_0233CB38: ; 0x0233CB38

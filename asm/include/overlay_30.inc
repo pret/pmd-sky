@@ -27,7 +27,7 @@
 .public ov29_022E2978
 .public ov29_02338768
 .public ov29_02344B1C
-.public GetSpriteIndex
+.public GetSpriteIndex__022F7388
 .public ov29_022FB920
 .public sub_02034EB4
 .public sub_02034D0C

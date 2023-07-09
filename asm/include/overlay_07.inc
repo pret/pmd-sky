@@ -39,7 +39,7 @@
 .public sub_0203931C
 .public ov00_022BD398
 .public ov01_0232C5C8
-.public ov00_023310B8
+.public ov01_023310B8
 .public ov01_02337938
 .public MemAlloc
 .public ov01_02335FA8
@@ -81,7 +81,7 @@
 .public sub_02046BA0
 .public sub_02046BB4
 .public sub_0202F8FC
-.public ov00_0232F3F4
+.public ov01_0232F3F4
 .public sub_02029FBC
 .public NoteSaveBase
 .public sub_02017CCC

@@ -3447,7 +3447,7 @@ ov30_023859DC: ; 0x023859DC
 	bl ov29_022DEA10
 	mov r5, r0
 	mov r0, r8
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	mov r4, r0
 	add r0, sp, #8
 	add r1, sp, #4
@@ -3530,7 +3530,7 @@ ov30_02385B10: ; 0x02385B10
 	bl ov29_022DEA10
 	mov r5, r0
 	mov r0, r8
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	mov r4, r0
 	add r0, sp, #8
 	add r1, sp, #4

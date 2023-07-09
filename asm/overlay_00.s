@@ -1820,7 +1820,7 @@ ov00_022BE094: ; 0x022BE094
 	bl sub_020348E4
 	cmp r0, #0
 	ldmeqdb sp!, {r3, pc}
-	bl ov00_0232F3F4
+	bl ov01_0232F3F4
 	ldmdb sp!, {r3, pc}
 	.align 2, 0
 _022BE0B0: .word 0x02317FA0
@@ -1901,7 +1901,7 @@ _022BE184:
 	bl sub_020519D0
 	bl sub_0201DC90
 	bl ov00_022BE4D8
-	bl ov00_0232E768
+	bl ov01_0232E768
 	ldr r1, _022BE3BC ; =0x023187EC
 	mov r2, #1
 	ldr r0, _022BE3C0 ; =ov00_022BE3CC
@@ -1948,12 +1948,12 @@ _022BE234:
 	bne _022BE320
 	cmp sl, #4
 	bne _022BE268
-	bl ov00_0233AE64
+	bl ov01_0233AE64
 	b _022BE2A4
 _022BE268:
 	cmp sl, #2
 	bne _022BE278
-	bl ov00_02337914
+	bl ov01_02337914
 	b _022BE2A4
 _022BE278:
 	cmp sl, #5
@@ -1967,7 +1967,7 @@ _022BE278:
 	b _022BE2A4
 _022BE29C:
 	mov r0, #0
-	bl ov00_023310B8
+	bl ov01_023310B8
 _022BE2A4:
 	str r5, [r4, #4]
 	b _022BE304
@@ -1997,18 +1997,18 @@ _022BE2E4:
 	str r0, [r4, #4]
 _022BE304:
 	bl sub_02006E14
-	bl ov00_0232EA30
+	bl ov01_0232EA30
 	bl sub_020039E4
-	bl ov00_0232EC30
+	bl ov01_0232EC30
 	bl sub_02034A80
 	bl sub_02028848
 	b _022BE1E8
 _022BE320:
 	mov r0, #0
 	bl sub_0200383C
-	bl ov00_0232E7E8
+	bl ov01_0232E7E8
 	bl sub_02034710
-	bl ov00_0232E7C0
+	bl ov01_0232E7C0
 	bl ov00_022BE51C
 	bl sub_0201DCD0
 	bl sub_02051B44
@@ -2022,7 +2022,7 @@ _022BE320:
 	bl LoadOverlay
 	bl sub_020184B4
 	bl sub_020024B0
-	bl ov00_02329520
+	bl ov01_02329520
 	ldr r2, _022BE3C8 ; =0x04000208
 	mov r0, #1
 	ldrh r1, [r2]
@@ -2064,12 +2064,12 @@ ov00_022BE3CC: ; 0x022BE3CC
 	bl ov00_022BE6D0
 	bl sub_02003990
 _022BE3EC:
-	bl ov00_0232BE98
-	bl ov00_0233103C
-	bl ov00_0232ED5C
+	bl ov01_0232BE98
+	bl ov01_0233103C
+	bl ov01_0232ED5C
 	bl ov00_022BE774
-	bl ov00_0232C244
-	bl ov00_0232C4D8
+	bl ov01_0232C244
+	bl ov01_0232C4D8
 	bl sub_0201DD48
 	bl sub_0201F464
 	ldr r0, _022BE4A4 ; =0x023187EC
@@ -2096,7 +2096,7 @@ _022BE420:
 	mov r1, #2
 	bl sub_02008F64
 _022BE464:
-	bl ov00_0232ED84
+	bl ov01_0232ED84
 	mov r0, r4
 	bl sub_02028A64
 	bl sub_0201BE5C
@@ -79279,7 +79279,7 @@ _023000F8:
 	ldr r1, _0230038C ; =0x0231AD64
 	bl Strstr
 	movs sl, r0
-	beq _023002F0
+	beq ov00_023002F0
 	ldr fp, _02300390 ; =0x0231AD7C
 	ldr r5, _02300394 ; =0x0231AD94
 	mov r6, #0x800
@@ -79409,7 +79409,9 @@ _023002DC:
 	movs sl, r0
 	bne _0230011C
 	arm_func_end ov00_0230002C
-_023002F0:
+
+	arm_func_start ov00_023002F0
+ov00_023002F0: ; 023002F0
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	ldrne r0, [r8, #0x1f4]
@@ -79463,6 +79465,7 @@ _023003A4: .word 0x0231AD9C
 _023003A8: .word 0x0231ADA4
 _023003AC: .word 0x0001D4C0
 _023003B0: .word 0x0231ADCC
+	arm_func_end ov00_023002F0
 
 	arm_func_start ov00_023003B4
 ov00_023003B4: ; 0x023003B4

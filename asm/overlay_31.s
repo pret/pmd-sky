@@ -847,7 +847,7 @@ ov31_0238372C: ; 0x0238372C
 	bl ov29_02337B2C
 	cmp r0, #0
 	movne r0, #1
-	ldmneia sp!,  {r3, pc}
+	ldmnedb sp!, {r3, pc}
 _0238375C:
 	mov r0, #0
 	ldmdb sp!, {r3, pc}
@@ -1060,7 +1060,7 @@ _02383A1C:
 	bl Arm9LoadUnkFieldNa0x2029EC8
 	mov r1, r0
 	ldr r0, _0238489C ; =0x02389F64
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl GetNbItemsInBag
 	ldr r2, _02384898 ; =0x0238A26C
 	cmp r6, #0
@@ -3552,7 +3552,7 @@ _02385DC8:
 _02385DD4:
 	ldr r0, _02385FA4 ; =0x00003F07
 	mov r1, #0x100
-	bl sub_020182B8
+	bl sub_02017C74
 	b _02385DEC
 _02385DE4:
 	mov r0, #0
@@ -4112,13 +4112,13 @@ _02386534:
 	beq _02386568
 	mov r0, #2
 	mov r2, r1
-	bl sub_0203FE5C
+	bl sub_0204019C
 	mov r4, r0
 	b _02386578
 _02386568:
 	mov r0, #3
 	mov r2, r1
-	bl sub_0203FE5C
+	bl sub_0204019C
 	mov r4, r0
 _02386578:
 	mov r0, #0x1e
@@ -5053,7 +5053,7 @@ _02387278:
 	bge _023872FC
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx
+	bl CheckTeamMemberIdx__022F9C34
 	cmp r0, #0
 	movne r6, #0
 _023872FC:
@@ -5536,7 +5536,7 @@ _02387958:
 	ldrsh r0, [r6, #0xc]
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx
+	bl CheckTeamMemberIdx__022F9C34
 	cmp r0, #0
 	ldrsh r1, [r6, #0x12]
 	ldrsh r0, [r6, #0x16]
@@ -6146,7 +6146,7 @@ _0238826C:
 	ldrsh r0, [r6, #0xc]
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx
+	bl CheckTeamMemberIdx__022F9C34
 	str r0, [sp, #4]
 	b _023882E8
 _023882A0:
@@ -6163,7 +6163,7 @@ _023882A0:
 	ldrsh r5, [r6, #0xe]
 	ldrsh r8, [r6, #0x10]
 	ldrsh r0, [r6, #8]
-	bl CheckTeamMemberIdx
+	bl CheckTeamMemberIdx__02056228
 	str r0, [sp, #4]
 	mov r1, r6
 	add r0, sp, #0xc
@@ -6998,7 +6998,7 @@ _0238900C:
 	tst r0, #0xff
 	beq _02389058
 	ldrsh r0, [fp, #8]
-	bl ov29_02056264
+	bl ov29_022F9C40
 	cmp r0, #0
 	bne _02389058
 	ldrsh r1, [fp, #0xc]
@@ -7386,7 +7386,7 @@ _0238970C:
 	bne _02389780
 	ldr r0, _02389910 ; =0x00003F07
 	mov r1, #0x100
-	bl sub_020182B8
+	bl sub_02017C74
 	ldrb r0, [r5, #0x528]
 	cmp r0, #0
 	beq _0238973C
@@ -7463,7 +7463,7 @@ _02389820:
 	beq _02389840
 	ldr r0, _02389918 ; =0x00003F03
 	mov r1, #0x100
-	bl sub_020182B8
+	bl sub_02017C74
 	b _023898AC
 _02389840:
 	ldrsb r0, [r5]
@@ -7473,7 +7473,7 @@ _02389840:
 	mov r4, r0
 	ldr r0, _02389910 ; =0x00003F07
 	mov r1, #0x100
-	bl sub_020182B8
+	bl sub_02017C74
 	ldrb r0, [r5, #0x528]
 	cmp r0, #0
 	add r0, r5, r4
@@ -7667,7 +7667,7 @@ _02389AD0:
 	add r0, r0, #0x12000
 	ldr r8, [r0, #0xb28]
 	mov r0, r8
-	bl ov02_0234FB6C
+	bl ov02_0234FB60
 	cmp r0, #0
 	beq _02389B08
 	ldr r1, [r8, #0xb4]
@@ -7775,7 +7775,7 @@ ov31_02389C2C: ; 0x02389C2C
 	strh r1, [r3, #0x80]
 	ldrb r1, [r3, #7]
 	cmp r1, #0
-	ldmneia sp!,  {r3, pc}
+	ldmnedb sp!, {r3, pc}
 	mov r1, #1
 	bl AiMovement
 	ldmdb sp!, {r3, pc}
@@ -7793,7 +7793,7 @@ _02389C78:
 	add r0, r0, #0x12000
 	ldr r7, [r0, #0xb28]
 	mov r0, r7
-	bl ov02_0234FB6C
+	bl ov02_0234FB60
 	cmp r0, #0
 	beq _02389CA4
 	mov r0, r7

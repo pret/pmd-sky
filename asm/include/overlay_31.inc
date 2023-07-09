@@ -7,7 +7,7 @@
 .public AllManip1
 .public IsBlinded
 .public sub_020585B4
-.public CheckTeamMemberIdx
+.public CheckTeamMemberIdx__022F9C34
 .public ov29_022EB8F4
 .public sub_020348E4
 .public sub_0203083C
@@ -23,7 +23,7 @@
 .public ov10_022BCE58
 .public sub_020265A8
 .public ov29_022E87DC
-.public DebugPrint0
+.public DebugPrint0__0200C1FC
 .public FreeDBox
 .public sub_02028284
 .public ov29_022EBA70
@@ -229,3 +229,8 @@
 .public sub_020416FC
 .public sub_020410A4
 .public AiMovement
+.public ov02_0234FB60
+.public ov29_022F9C40
+.public sub_02017C74
+.public sub_0204019C
+.public CheckTeamMemberIdx__02056228

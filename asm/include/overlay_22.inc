@@ -38,7 +38,7 @@
 .public GetActualBuyPrice
 .public sub_02017CCC
 .public sub_0202C7D0
-.public DebugPrint0
+.public DebugPrint0__0200C1FC
 .public ShowMessageInDBox
 .public Strcat
 .public sub_02042BBC

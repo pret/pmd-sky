@@ -39,7 +39,7 @@
 .public sub_02043400
 .public sub_0204E6A4
 .public sub_02043218
-.public ov00_0232F3F4
+.public ov01_0232F3F4
 .public sub_0205B77C
 .public sub_02037570
 .public ov01_02338BEC
@@ -174,7 +174,7 @@
 .public GetAdvancedMenuResult
 .public sub_0203D438
 .public GetHeldButtons
-.public ov00_023310B8
+.public ov01_023310B8
 .public sub_020663DC
 .public ov01_02338B08
 .public sub_0203FD38

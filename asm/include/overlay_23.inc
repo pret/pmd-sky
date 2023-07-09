@@ -46,7 +46,7 @@
 .public sub_02043380
 .public CreateNormalMenu
 .public RemoveItemNoHole
-.public DebugPrint0
+.public DebugPrint0__0200C1FC
 .public sub_02043568
 .public sub_020582E0
 .public InitPortraitBoxWithMonsterId

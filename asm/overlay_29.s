@@ -6838,7 +6838,7 @@ ov29_022E1D2C: ; 0x022E1D2C
 	mov r1, r8
 	mov r0, #0
 	bl ov29_022F9408
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	mov r4, r0
 	add r0, sp, #8
 	add r1, sp, #4
@@ -7110,7 +7110,7 @@ ov29_022E20C0: ; 0x022E20C0
 	mov r0, #0
 	bl ov29_022F9408
 	mov r4, r0
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	mov r3, r0
 	add r0, sp, #8
 	add r1, sp, #4
@@ -7156,7 +7156,7 @@ _022E211C:
 	ldr r1, [r7, #0xb4]
 	mov r0, r4
 	strb r2, [r1, #8]
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	strh r0, [r7, #0xa8]
 	strb r6, [r7, #0xaa]
 	ldr r0, [sp, #8]
@@ -14791,7 +14791,7 @@ ov29_022E82CC: ; 0x022E82CC
 	bne _022E82F0
 _022E82E4:
 	ldr r0, _022E8404 ; =0x00000229
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	str r0, [sp, #0x18]
 _022E82F0:
 	ldrb r0, [r8, #0xc4]
@@ -28453,7 +28453,7 @@ _022F39D8:
 	tst r0, #0xff
 	beq _022F3A40
 	ldrsh r0, [r7, #8]
-	bl CheckTeamMemberIdx
+	bl CheckTeamMemberIdx__022F9C34
 	cmp r0, #0
 	ldrsh r0, [sb, #0xc]
 	ldreqsh r8, [r7, #8]
@@ -32640,8 +32640,8 @@ EntityIsValid__022F7364: ; 0x022F7364
 	bx lr
 	arm_func_end EntityIsValid__022F7364
 
-	arm_func_start GetSpriteIndex
-GetSpriteIndex: ; 0x022F7388
+	arm_func_start GetSpriteIndex__022F7388
+GetSpriteIndex__022F7388: ; 0x022F7388
 	ldr r2, _022F73A0 ; =0x02353538
 	ldr r1, _022F73A4 ; =0x00019914
 	ldr r2, [r2]
@@ -32651,7 +32651,7 @@ GetSpriteIndex: ; 0x022F7388
 	.align 2, 0
 _022F73A0: .word 0x02353538
 _022F73A4: .word 0x00019914
-	arm_func_end GetSpriteIndex
+	arm_func_end GetSpriteIndex__022F7388
 
 	arm_func_start JoinedAtRangeCheck2Veneer
 JoinedAtRangeCheck2Veneer: ; 0x022F73A8
@@ -33448,7 +33448,7 @@ _022F7E4C:
 	strneb r5, [sb]
 	bne _022F7E94
 	ldrsh r0, [sb, #8]
-	bl CheckTeamMemberIdx
+	bl CheckTeamMemberIdx__02056228
 	cmp r0, #0
 	strneb r4, [sb]
 _022F7E94:
@@ -35591,13 +35591,13 @@ _022F9C00:
 	ldmdb sp!, {r3, r4, pc}
 	arm_func_end ov29_022F9B8C
 
-	arm_func_start CheckTeamMemberIdx
-CheckTeamMemberIdx: ; 0x022F9C34
-	ldr ip, _022F9C3C ; =CheckTeamMemberIdx
+	arm_func_start CheckTeamMemberIdx__022F9C34
+CheckTeamMemberIdx__022F9C34: ; 0x022F9C34
+	ldr ip, _022F9C3C ; =CheckTeamMemberIdx__02056228
 	bx ip
 	.align 2, 0
-_022F9C3C: .word CheckTeamMemberIdx
-	arm_func_end CheckTeamMemberIdx
+_022F9C3C: .word CheckTeamMemberIdx__02056228
+	arm_func_end CheckTeamMemberIdx__022F9C34
 
 	arm_func_start ov29_022F9C40
 ov29_022F9C40: ; 0x022F9C40
@@ -39734,7 +39734,7 @@ _022FD36C:
 	mov r1, r7
 	mov r0, #0
 	bl ov29_022F9408
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	mov r4, r0
 	mov r0, #1
 	bl ov29_022DEA10
@@ -40042,7 +40042,7 @@ ov29_022FD7A0: ; 0x022FD7A0
 	mov r0, r4
 	bl ov29_022F9408
 	mov r8, r0
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	mov r4, r0
 	mov r0, r7
 	mov r1, #1
@@ -40086,7 +40086,7 @@ _022FD864:
 	strh r0, [r1, #4]
 	ldr r1, [r7, #0xb4]
 	strh r6, [r1, #2]
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	strh r0, [r7, #0xa8]
 	cmp r4, #0
 	beq _022FD904
@@ -46068,7 +46068,7 @@ _023028FC:
 	mov r1, r8, lsl #1
 	add r0, sp, #0x2c
 	ldrsh r0, [r0, r1]
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	cmp r0, #0
 	bne _02302944
 _0230292C:
@@ -47486,7 +47486,7 @@ EvolveMonster: ; 0x02303C7C
 	mov r0, #1
 	bl ov29_0234B06C
 	mov r0, r5
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	strh r5, [r6, #4]
 	strh r5, [r6, #2]
 	mov r4, r0
@@ -47825,7 +47825,7 @@ _0230414C:
 	b _023041E4
 _02304198:
 	ldr r0, _023046D0 ; =0x00000229
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	mov r1, r0
 	add r0, r7, #0x2c
 	bl sub_0201C0E8
@@ -48342,7 +48342,7 @@ ov29_02304830: ; 0x02304830
 	b _0230492C
 _023048E0:
 	ldr r0, _02304950 ; =0x00000229
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	mov r1, r0
 	add r0, r5, #0x2c
 	bl sub_0201C0E8
@@ -50828,7 +50828,7 @@ _02306A84:
 	bl ov29_022F9408
 	strh r0, [r6, #4]
 	ldrsh r0, [r6, #4]
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	strh r0, [r8, #0xa8]
 	mov r0, r8
 	bl GetSleepAnimationId
@@ -69665,7 +69665,7 @@ _023172C0:
 	cmp r0, #0
 	beq _0231730C
 	mov r0, r5
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	movs r4, r0
 	bne _02317318
 _0231730C:
@@ -74641,7 +74641,7 @@ _0231B5A0:
 	strh r0, [r7, #4]
 	ldr r4, [r8, #0xb4]
 	ldrsh r0, [r4, #4]
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	strh r0, [r8, #0xa8]
 	ldrb r0, [r4, #0xd8]
 	cmp r0, #2
@@ -77431,7 +77431,7 @@ _0231DC60:
 	bge _0231DCAC
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx
+	bl CheckTeamMemberIdx__022F9C34
 	cmp r0, #0
 	movne r6, #0
 _0231DCAC:
@@ -96270,13 +96270,13 @@ _0232D8F4: .word 0x022C47DC
 _0232D8F8: .word 0x00000CD7
 	arm_func_end ov29_0232D860
 
-	arm_func_start ov01_0232D8FC
-ov01_0232D8FC: ; 0x0232D8FC
+	arm_func_start ov29_0232D8FC
+ov29_0232D8FC: ; 0x0232D8FC
 	stmdb sp!, {r3, lr}
 	bl ov29_023383BC
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end ov01_0232D8FC
+	arm_func_end ov29_0232D8FC
 
 	arm_func_start ov29_0232D90C
 ov29_0232D90C: ; 0x0232D90C
@@ -98684,7 +98684,7 @@ _0232F8B8: ; jump table
 	b ov29_02330ED0 ; case 91
 	b ov29_023319D0 ; case 92
 	b ov29_0233069C ; case 93
-	b ov00_0233103C ; case 94
+	b ov01_0233103C ; case 94
 	b ov29_0233111C ; case 95
 	b ov29_02331B3C ; case 96
 	b ov29_02330AA8 ; case 97
@@ -102292,7 +102292,7 @@ ov29_02332340: ; 0x02332340
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl ov01_0232D8FC
+	bl ov29_0232D8FC
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02332340
@@ -105890,7 +105890,7 @@ _023352C0:
 	cmp r0, r4
 	beq _02335420
 	ldrsh r0, [r7, #4]
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	strh r0, [sl, #0xa8]
 	mov r0, sl
 	bl GetSleepAnimationId
@@ -105973,7 +105973,7 @@ _023353F0:
 	cmp r0, r4
 	beq _02335420
 	ldrsh r0, [r7, #4]
-	bl GetSpriteIndex
+	bl GetSpriteIndex__022F7388
 	strh r0, [sl, #0xa8]
 	mov r0, sl
 	bl GetSleepAnimationId
@@ -136274,7 +136274,7 @@ _0234ECE4:
 	add sl, sb, r5, lsl #5
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx
+	bl CheckTeamMemberIdx__022F9C34
 	strb r0, [sl, #4]
 	str r7, [sl, #0x1c]
 	str r6, [sb, r5, lsl #5]

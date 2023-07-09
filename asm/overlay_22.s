@@ -1035,7 +1035,7 @@ _0238AE00: ; jump table
 	b _0238AFA4 ; case 48
 _0238AEC4:
 	ldr r0, _0238BD64 ; =0x0238E9D0
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r1, #1
 	ldr r0, [r0]
@@ -1057,7 +1057,7 @@ _0238AEC4:
 	b _0238C16C
 _0238AF18:
 	ldr r0, _0238BD70 ; =0x0238E9D8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl sub_02042AF8
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
@@ -1080,7 +1080,7 @@ _0238AF18:
 	b _0238C16C
 _0238AF70:
 	ldr r0, _0238BD7C ; =0x0238E9E4
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #5
 	ldr r0, _0238BD80 ; =0x0238E980
 	ldr r1, _0238BD84 ; =0x00300013
@@ -1098,7 +1098,7 @@ _0238AFA4:
 	b _0238C16C
 _0238AFB0:
 	ldr r0, _0238BD8C ; =0x0238E9F4
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r2, #1
@@ -1119,7 +1119,7 @@ _0238AFB0:
 	b _0238C16C
 _0238B000:
 	ldr r0, _0238BD98 ; =0x0238EA04
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r2, #4
@@ -1140,7 +1140,7 @@ _0238B000:
 	b _0238C16C
 _0238B050:
 	ldr r0, _0238BDA0 ; =0x0238EA10
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r2, #1
@@ -1161,7 +1161,7 @@ _0238B050:
 	b _0238C16C
 _0238B0A0:
 	ldr r0, _0238BDA8 ; =0x0238EA1C
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r2, #0x11
@@ -1182,7 +1182,7 @@ _0238B0A0:
 	b _0238C16C
 _0238B0F0:
 	ldr r0, _0238BDB0 ; =0x0238EA28
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238BD60 ; =0x0238EC70
 	mov r0, #1
@@ -1202,7 +1202,7 @@ _0238B0F0:
 	b _0238C16C
 _0238B13C:
 	ldr r0, _0238BDB8 ; =0x0238EA34
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238BD60 ; =0x0238EC70
 	mov r0, #1
@@ -1222,7 +1222,7 @@ _0238B13C:
 	b _0238C16C
 _0238B188:
 	ldr r0, _0238BDC0 ; =0x0238EA40
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238BD60 ; =0x0238EC70
 	mov r0, #1
@@ -1242,7 +1242,7 @@ _0238B188:
 	b _0238C16C
 _0238B1D4:
 	ldr r0, _0238BDC8 ; =0x0238EA4C
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238BD60 ; =0x0238EC70
 	mov r0, #1
@@ -1262,7 +1262,7 @@ _0238B1D4:
 	b _0238C16C
 _0238B220:
 	ldr r0, _0238BDD0 ; =0x0238EA58
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238BD60 ; =0x0238EC70
 	mov r0, #1
@@ -1282,7 +1282,7 @@ _0238B220:
 	b _0238C16C
 _0238B26C:
 	ldr r0, _0238BDD8 ; =0x0238EA64
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r2, #1
@@ -1303,7 +1303,7 @@ _0238B26C:
 	b _0238C16C
 _0238B2BC:
 	ldr r0, _0238BDE0 ; =0x0238EA70
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r2, #0x11
@@ -1324,7 +1324,7 @@ _0238B2BC:
 	b _0238C16C
 _0238B30C:
 	ldr r0, _0238BDE8 ; =0x0238EA7C
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238BD60 ; =0x0238EC70
 	mov r2, #0x1d
@@ -1351,7 +1351,7 @@ _0238B30C:
 	b _0238C16C
 _0238B374:
 	ldr r0, _0238BDF0 ; =0x0238EA88
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r2, #0x1d
@@ -1381,7 +1381,7 @@ _0238B3D8:
 	b _0238C16C
 _0238B3E0:
 	ldr r0, _0238BDF4 ; =0x0238EA94
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r3, #0x13
@@ -1405,7 +1405,7 @@ _0238B3E0:
 	b _0238C16C
 _0238B43C:
 	ldr r0, _0238BDFC ; =0x0238EAA8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r3, #0x14
 	ldr r1, [r0]
@@ -1429,7 +1429,7 @@ _0238B43C:
 	b _0238C16C
 _0238B498:
 	ldr r0, _0238BE04 ; =0x0238EAB8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
@@ -1462,7 +1462,7 @@ _0238B4F0:
 	b _0238C16C
 _0238B510:
 	ldr r0, _0238BE08 ; =0x0238EAC8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r2, _0238BD74 ; =0x0000017F
 	ldr r1, [r0]
@@ -1498,7 +1498,7 @@ _0238B574:
 	b _0238C16C
 _0238B594:
 	ldr r0, _0238BE0C ; =0x0238EAD8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r3, _0238BE10 ; =0x0238E8A0
 	ldr r0, [r0]
@@ -1517,7 +1517,7 @@ _0238B594:
 	b _0238C16C
 _0238B5DC:
 	ldr r0, _0238BE1C ; =0x0238EAE8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r2, _0238BE20 ; =0x0238E85C
 	ldr r1, [r0]
@@ -1561,7 +1561,7 @@ _0238B680:
 	ldrsh r1, [r2, #0x30]
 	ldrh r2, [r2, #0x2e]
 	ldr r0, _0238BE28 ; =0x0238EAF8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r0, [r0]
 	add r0, r0, #0x50
@@ -1610,7 +1610,7 @@ _0238B680:
 	b _0238C16C
 _0238B748:
 	ldr r0, _0238BE40 ; =0x0238EB20
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238D528
 	cmp r0, #0
 	bne _0238B790
@@ -1651,7 +1651,7 @@ _0238B7A0:
 	b _0238C16C
 _0238B7D8:
 	ldr r0, _0238BE48 ; =0x0238EB30
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r3, #0x1f
@@ -1675,7 +1675,7 @@ _0238B7D8:
 	b _0238C16C
 _0238B834:
 	ldr r0, _0238BE50 ; =0x0238EB40
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r3, #0x20
 	ldr r1, [r0]
@@ -1699,7 +1699,7 @@ _0238B834:
 	b _0238C16C
 _0238B890:
 	ldr r0, _0238BE58 ; =0x0238EB50
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
@@ -1724,7 +1724,7 @@ _0238B890:
 	b _0238C16C
 _0238B8F0:
 	ldr r0, _0238BE5C ; =0x0238EB60
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r2, _0238BD74 ; =0x0000017F
 	ldr r1, [r0]
@@ -1751,7 +1751,7 @@ _0238B8F0:
 	b _0238C16C
 _0238B958:
 	ldr r0, _0238BE60 ; =0x0238EB70
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #3
 	ldr r0, _0238BE14 ; =0x0238E990
 	ldr r3, _0238BE64 ; =0x0238E880
@@ -1765,7 +1765,7 @@ _0238B958:
 	b _0238C16C
 _0238B98C:
 	ldr r0, _0238BE68 ; =0x0238EB80
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r2, _0238BE20 ; =0x0238E85C
 	ldr r1, [r0]
@@ -1800,7 +1800,7 @@ _0238B98C:
 	b _0238C16C
 _0238BA14:
 	ldr r0, _0238BE70 ; =0x0238EB90
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #2
 	ldr r0, _0238BE74 ; =0x0238E9A0
 	ldr r1, _0238BD84 ; =0x00300013
@@ -1814,7 +1814,7 @@ _0238BA14:
 	b _0238C16C
 _0238BA48:
 	ldr r0, _0238BE7C ; =0x0238EBA4
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #2
 	ldr r0, _0238BE74 ; =0x0238E9A0
 	ldr r1, _0238BD84 ; =0x00300013
@@ -1828,7 +1828,7 @@ _0238BA48:
 	b _0238C16C
 _0238BA7C:
 	ldr r0, _0238BE80 ; =0x0238EBB8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r0, [r0]
 	add r0, r0, #0x50
@@ -1884,7 +1884,7 @@ _0238BA7C:
 	b _0238C16C
 _0238BB58:
 	ldr r0, _0238BE84 ; =0x0238EBC8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl GetNbItemsInBag
 	cmp r0, #0
 	beq _0238BB7C
@@ -1920,7 +1920,7 @@ _0238BBA0:
 	b _0238C16C
 _0238BBD8:
 	ldr r0, _0238BE90 ; =0x0238EBD8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238BD60 ; =0x0238EC70
 	mov r0, #0
@@ -1947,7 +1947,7 @@ _0238BBD8:
 	b _0238C16C
 _0238BC40:
 	ldr r0, _0238BE98 ; =0x0238EBE4
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r0, [r0]
@@ -2106,7 +2106,7 @@ _0238BE9C: .word 0x0238E8FC
 _0238BEA0: .word 0x0238EBF0
 _0238BEA4:
 	ldr r0, _0238BEA0 ; =0x0238EBF0
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r8, _0238BD60 ; =0x0238EC70
 	mov r6, #0
@@ -2177,7 +2177,7 @@ _0238BF48:
 	b _0238C16C
 _0238BFB4:
 	ldr r0, _0238C174 ; =0x0238EC00
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #2
 	ldr r0, _0238BE74 ; =0x0238E9A0
 	ldr r1, _0238BD84 ; =0x00300013
@@ -2191,7 +2191,7 @@ _0238BFB4:
 	b _0238C16C
 _0238BFE8:
 	ldr r0, _0238C178 ; =0x0238EC10
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	mov r2, #1
 	ldr r1, [r0]
@@ -2212,7 +2212,7 @@ _0238BFE8:
 	b _0238C16C
 _0238C038:
 	ldr r0, _0238C174 ; =0x0238EC00
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #2
 	ldr r0, _0238BE74 ; =0x0238E9A0
 	ldr r1, _0238BD84 ; =0x00300013
@@ -2226,7 +2226,7 @@ _0238C038:
 	b _0238C16C
 _0238C06C:
 	ldr r0, _0238C174 ; =0x0238EC00
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #2
 	ldr r0, _0238BE74 ; =0x0238E9A0
 	ldr r1, _0238BD84 ; =0x00300013
@@ -2240,7 +2240,7 @@ _0238C06C:
 	b _0238C16C
 _0238C0A0:
 	ldr r0, _0238C17C ; =0x0238EC24
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
@@ -2269,7 +2269,7 @@ _0238C0A0:
 	b _0238C16C
 _0238C110:
 	ldr r0, _0238C180 ; =0x0238EC38
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238BD60 ; =0x0238EC70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
@@ -2363,7 +2363,7 @@ _0238C1A4: ; jump table
 	b _0238C348 ; case 48
 _0238C268:
 	ldr r0, _0238D108 ; =0x0238E9D0
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r1, #1
 	ldr r0, [r0]
@@ -2385,7 +2385,7 @@ _0238C268:
 	b _0238D510
 _0238C2BC:
 	ldr r0, _0238D114 ; =0x0238E9D8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl sub_02042AF8
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
@@ -2408,7 +2408,7 @@ _0238C2BC:
 	b _0238D510
 _0238C314:
 	ldr r0, _0238D120 ; =0x0238E9E4
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #5
 	ldr r0, _0238D124 ; =0x0238E980
 	ldr r1, _0238D128 ; =0x00300013
@@ -2426,7 +2426,7 @@ _0238C348:
 	b _0238D510
 _0238C354:
 	ldr r0, _0238D130 ; =0x0238E9F4
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r2, #1
@@ -2447,7 +2447,7 @@ _0238C354:
 	b _0238D510
 _0238C3A4:
 	ldr r0, _0238D13C ; =0x0238EA04
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r2, #4
@@ -2468,7 +2468,7 @@ _0238C3A4:
 	b _0238D510
 _0238C3F4:
 	ldr r0, _0238D144 ; =0x0238EA10
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r2, #1
@@ -2489,7 +2489,7 @@ _0238C3F4:
 	b _0238D510
 _0238C444:
 	ldr r0, _0238D14C ; =0x0238EA1C
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r2, #0x11
@@ -2510,7 +2510,7 @@ _0238C444:
 	b _0238D510
 _0238C494:
 	ldr r0, _0238D154 ; =0x0238EA28
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238D104 ; =0x0238EC70
 	mov r0, #1
@@ -2530,7 +2530,7 @@ _0238C494:
 	b _0238D510
 _0238C4E0:
 	ldr r0, _0238D15C ; =0x0238EA34
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238D104 ; =0x0238EC70
 	mov r0, #1
@@ -2550,7 +2550,7 @@ _0238C4E0:
 	b _0238D510
 _0238C52C:
 	ldr r0, _0238D164 ; =0x0238EA40
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238D104 ; =0x0238EC70
 	mov r0, #1
@@ -2570,7 +2570,7 @@ _0238C52C:
 	b _0238D510
 _0238C578:
 	ldr r0, _0238D16C ; =0x0238EA4C
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238D104 ; =0x0238EC70
 	mov r0, #1
@@ -2590,7 +2590,7 @@ _0238C578:
 	b _0238D510
 _0238C5C4:
 	ldr r0, _0238D174 ; =0x0238EA58
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238D104 ; =0x0238EC70
 	mov r0, #1
@@ -2610,7 +2610,7 @@ _0238C5C4:
 	b _0238D510
 _0238C610:
 	ldr r0, _0238D17C ; =0x0238EA64
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r2, #1
@@ -2631,7 +2631,7 @@ _0238C610:
 	b _0238D510
 _0238C660:
 	ldr r0, _0238D184 ; =0x0238EA70
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r2, #0x11
@@ -2652,7 +2652,7 @@ _0238C660:
 	b _0238D510
 _0238C6B0:
 	ldr r0, _0238D18C ; =0x0238EA7C
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238D104 ; =0x0238EC70
 	mov r2, #0x1d
@@ -2679,7 +2679,7 @@ _0238C6B0:
 	b _0238D510
 _0238C718:
 	ldr r0, _0238D194 ; =0x0238EA88
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r2, #0x1d
@@ -2709,7 +2709,7 @@ _0238C77C:
 	b _0238D510
 _0238C784:
 	ldr r0, _0238D198 ; =0x0238EA94
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r3, #0x13
@@ -2733,7 +2733,7 @@ _0238C784:
 	b _0238D510
 _0238C7E0:
 	ldr r0, _0238D1A0 ; =0x0238EAA8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r3, #0x14
 	ldr r1, [r0]
@@ -2757,7 +2757,7 @@ _0238C7E0:
 	b _0238D510
 _0238C83C:
 	ldr r0, _0238D1A8 ; =0x0238EAB8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
@@ -2790,7 +2790,7 @@ _0238C894:
 	b _0238D510
 _0238C8B4:
 	ldr r0, _0238D1AC ; =0x0238EAC8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r2, _0238D118 ; =0x0000017F
 	ldr r1, [r0]
@@ -2826,7 +2826,7 @@ _0238C918:
 	b _0238D510
 _0238C938:
 	ldr r0, _0238D1B0 ; =0x0238EAD8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r3, _0238D1B4 ; =0x0238E8A0
 	ldr r0, [r0]
@@ -2845,7 +2845,7 @@ _0238C938:
 	b _0238D510
 _0238C980:
 	ldr r0, _0238D1C0 ; =0x0238EAE8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r2, _0238D1C4 ; =0x0238E85C
 	ldr r1, [r0]
@@ -2889,7 +2889,7 @@ _0238CA24:
 	ldrsh r1, [r2, #0x30]
 	ldrh r2, [r2, #0x2e]
 	ldr r0, _0238D1CC ; =0x0238EAF8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r0, [r0]
 	add r0, r0, #0x50
@@ -2938,7 +2938,7 @@ _0238CA24:
 	b _0238D510
 _0238CAEC:
 	ldr r0, _0238D1E4 ; =0x0238EB20
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238D528
 	cmp r0, #0
 	bne _0238CB34
@@ -2979,7 +2979,7 @@ _0238CB44:
 	b _0238D510
 _0238CB7C:
 	ldr r0, _0238D1EC ; =0x0238EB30
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r3, #0x1f
@@ -3003,7 +3003,7 @@ _0238CB7C:
 	b _0238D510
 _0238CBD8:
 	ldr r0, _0238D1F4 ; =0x0238EB40
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r3, #0x20
 	ldr r1, [r0]
@@ -3027,7 +3027,7 @@ _0238CBD8:
 	b _0238D510
 _0238CC34:
 	ldr r0, _0238D1FC ; =0x0238EB50
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
@@ -3053,7 +3053,7 @@ _0238CC34:
 	arm_func_end ov22_0238C184
 ov22_0238CC94:
 	ldr r0, _0238D200 ; =0x0238EB60
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r2, _0238D118 ; =0x0000017F
 	ldr r1, [r0]
@@ -3095,7 +3095,7 @@ ov22_0238CCF0: ; 0x0238CCF0
 	b _0238D510
 _0238CCFC:
 	ldr r0, _0238D204 ; =0x0238EB70
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #3
 	ldr r0, _0238D1B8 ; =0x0238E990
 	ldr r3, _0238D208 ; =0x0238E880
@@ -3109,7 +3109,7 @@ _0238CCFC:
 	b _0238D510
 _0238CD30:
 	ldr r0, _0238D20C ; =0x0238EB80
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r2, _0238D1C4 ; =0x0238E85C
 	ldr r1, [r0]
@@ -3144,7 +3144,7 @@ _0238CD30:
 	b _0238D510
 _0238CDB8:
 	ldr r0, _0238D214 ; =0x0238EB90
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #2
 	ldr r0, _0238D218 ; =0x0238E9A0
 	ldr r1, _0238D128 ; =0x00300013
@@ -3158,7 +3158,7 @@ _0238CDB8:
 	b _0238D510
 _0238CDEC:
 	ldr r0, _0238D220 ; =0x0238EBA4
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #2
 	ldr r0, _0238D218 ; =0x0238E9A0
 	ldr r1, _0238D128 ; =0x00300013
@@ -3172,7 +3172,7 @@ _0238CDEC:
 	b _0238D510
 _0238CE20:
 	ldr r0, _0238D224 ; =0x0238EBB8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r0, [r0]
 	add r0, r0, #0x50
@@ -3228,7 +3228,7 @@ _0238CE20:
 	b _0238D510
 _0238CEFC:
 	ldr r0, _0238D228 ; =0x0238EBC8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl GetNbItemsInBag
 	cmp r0, #0
 	beq _0238CF20
@@ -3264,7 +3264,7 @@ _0238CF44:
 	b _0238D510
 _0238CF7C:
 	ldr r0, _0238D234 ; =0x0238EBD8
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r1, _0238D104 ; =0x0238EC70
 	mov r0, #0
@@ -3291,7 +3291,7 @@ _0238CF7C:
 	b _0238D510
 _0238CFE4:
 	ldr r0, _0238D23C ; =0x0238EBE4
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r0, [r0]
@@ -3450,7 +3450,7 @@ _0238D240: .word 0x0238E8FC
 _0238D244: .word 0x0238EBF0
 _0238D248:
 	ldr r0, _0238D244 ; =0x0238EBF0
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov22_0238E7E4
 	ldr r8, _0238D104 ; =0x0238EC70
 	mov r6, #0
@@ -3521,7 +3521,7 @@ _0238D2EC:
 	b _0238D510
 _0238D358:
 	ldr r0, _0238D518 ; =0x0238EC00
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #2
 	ldr r0, _0238D218 ; =0x0238E9A0
 	ldr r1, _0238D128 ; =0x00300013
@@ -3535,7 +3535,7 @@ _0238D358:
 	b _0238D510
 _0238D38C:
 	ldr r0, _0238D51C ; =0x0238EC10
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	mov r2, #1
 	ldr r1, [r0]
@@ -3556,7 +3556,7 @@ _0238D38C:
 	b _0238D510
 _0238D3DC:
 	ldr r0, _0238D518 ; =0x0238EC00
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #2
 	ldr r0, _0238D218 ; =0x0238E9A0
 	ldr r1, _0238D128 ; =0x00300013
@@ -3570,7 +3570,7 @@ _0238D3DC:
 	b _0238D510
 _0238D410:
 	ldr r0, _0238D518 ; =0x0238EC00
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r4, #2
 	ldr r0, _0238D218 ; =0x0238E9A0
 	ldr r1, _0238D128 ; =0x00300013
@@ -3584,7 +3584,7 @@ _0238D410:
 	b _0238D510
 _0238D444:
 	ldr r0, _0238D520 ; =0x0238EC24
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
@@ -3613,7 +3613,7 @@ _0238D444:
 	b _0238D510
 _0238D4B4:
 	ldr r0, _0238D524 ; =0x0238EC38
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _0238D104 ; =0x0238EC70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]

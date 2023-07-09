@@ -24,11 +24,11 @@
 .public sub_02046BE8
 .public ov01_02338E68
 .public ov00_022BD264
-.public ov00_0232F3F4
+.public ov01_0232F3F4
 .public GetKeyboardStringResult
 .public sub_020668B4
 .public sub_02046A9C
-.public ov00_023310B8
+.public ov01_023310B8
 .public sub_02069DC0
 .public ov01_02337614
 .public sub_0205EC98
@@ -57,7 +57,7 @@
 .public DungeonRequestsDoneWrapper
 .public ov02_02338E48
 .public sub_02003BFC
-.public DebugPrint0
+.public DebugPrint0__0200C1FC
 .public sub_0204DD80
 .public ov01_02338A24
 .public ov00_022BCBAC
@@ -85,3 +85,4 @@
 .public sub_02046B04
 .public sub_02046BB4
 .public sub_02003BC8
+.public sub_02046D20

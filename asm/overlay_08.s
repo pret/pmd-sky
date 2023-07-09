@@ -199,7 +199,7 @@ _0233CCD4:
 	bl ov08_0233CD3C
 	cmp r0, #0
 	movne r0, #5
-	ldmneia sp!,  {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmnedb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _0233CCE4:
 	mov r0, #0
 	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -324,7 +324,7 @@ ov08_0233CE14: ; 0x0233CE14
 	ldr r0, _0233CE68 ; =0x0233EC24
 	ldrb r1, [r0]
 	cmp r1, #0
-	ldmneia sp!,  {r3, pc}
+	ldmnedb sp!, {r3, pc}
 	mov r1, #1
 	strb r1, [r0]
 	mov r1, #0
@@ -805,7 +805,7 @@ _0233D4A0:
 	cmp r0, #1
 	bne _0233D4D0
 	ldr r0, _0233D5A8 ; =0x0233EA70
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, [r4, #4]
 	ldrb r0, [r0, #0xd14]
 	cmp r0, #0
@@ -849,12 +849,12 @@ _0233D514: ; jump table
 	b _0233D568 ; case 9
 _0233D53C:
 	ldr r0, _0233D5AC ; =0x0233EA94
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov08_0233E1D8
 	b _0233D574
 _0233D54C:
 	ldr r0, _0233D5B0 ; =0x0233EAA4
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	bl ov08_0233E16C
 	b _0233D574
 _0233D55C:
@@ -961,7 +961,7 @@ ov08_0233D66C: ; 0x0233D66C
 	ldrh r0, [r0, #0xe]
 	cmp r0, #0
 	beq _0233D6B4
-	bl ov00_022C329
+	bl ov00_022C3298
 	cmp r0, #7
 	bne _0233D6B4
 	ldr r0, _0233D6BC ; =0x0233EC28
@@ -1003,7 +1003,7 @@ ov08_0233D6E8: ; 0x0233D6E8
 	ldrh r0, [r0, #0xe]
 	cmp r0, #0
 	beq _0233D730
-	bl ov00_022C329
+	bl ov00_022C3298
 	cmp r0, #0xe
 	bne _0233D730
 	ldr r0, _0233D738 ; =0x0233EC28
@@ -1069,7 +1069,7 @@ ov08_0233D788: ; 0x0233D788
 	ldrh r0, [r0, #0xe]
 	cmp r0, #0
 	beq _0233D80C
-	bl ov00_022C329
+	bl ov00_022C3298
 	cmp r0, #0xa
 	bne _0233D80C
 	ldr r0, _0233D814 ; =0x0233EC28
@@ -1744,7 +1744,7 @@ ov08_0233DFF8: ; 0x0233DFF8
 	ldrh r1, [r0]
 	cmp r1, #0
 	movne r0, #0
-	ldmneia sp!,  {r3, pc}
+	ldmnedb sp!, {r3, pc}
 	ldr r1, [r0, #0x18]
 	mov r2, #1
 	cmp r1, #0
@@ -1863,7 +1863,7 @@ _0233E194:
 	mov r0, #0
 _0233E1B8:
 	cmp r0, #0
-	ldmneia sp!,  {r3, pc}
+	ldmnedb sp!, {r3, pc}
 	mov r0, #0xa
 	bl ov08_0233DB60
 	ldmdb sp!, {r3, pc}
@@ -1935,7 +1935,7 @@ _0233E25C:
 	str r3, [r1, #0xe4]
 	ldr r0, [r0]
 	str r3, [r0, #0xe8]
-	bl sub_020473A4
+	bl sub_02046D20
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
 	.align 2, 0
@@ -2254,7 +2254,7 @@ _0233E710:
 	bl ov08_0233CED0
 	mov r0, #0
 	str r0, [r5, #0xe8]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r1, _0233E7CC ; =0x000004E2
 	mov r0, #0x1c
 	mov r2, #0
@@ -2268,7 +2268,7 @@ _0233E74C:
 	bl ov08_0233CED0
 	mov r0, #0
 	str r0, [r5, #0xe8]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r1, _0233E7CC ; =0x000004E2
 	mov r0, #0x1c
 	mov r2, #0
@@ -2290,7 +2290,7 @@ _0233E79C:
 	bl ov08_0233CED0
 	bl ov08_0233CDC8
 	mov r0, #0x18
-	bl ov00_023310B8
+	bl ov01_023310B8
 	mov r0, #3
 	b _0233E7C0
 _0233E7B4:
@@ -2314,7 +2314,7 @@ ov08_0233E7D8: ; 0x0233E7D8
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqdb sp!, {r3, pc}
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233E80C ; =0x0234C920
 	ldr r0, [r0]
 	bl MemFree
@@ -2349,11 +2349,11 @@ ov08_0233E844: ; 0x0233E844
 	mov r5, r0
 	ldr r0, _0233E870 ; =0x0233EBFC
 	mov r4, r1
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	cmp r4, #0xb
 	str r4, [r5]
 	cmpne r4, #0xe
-	ldmneia sp!,  {r3, r4, r5, pc}
+	ldmnedb sp!, {r3, r4, r5, pc}
 	bl ov08_0233CD18
 	ldmdb sp!, {r3, r4, r5, pc}
 	.align 2, 0

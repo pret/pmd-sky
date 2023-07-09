@@ -27,7 +27,7 @@
 .public ov00_022BF640
 .public ov01_0232C0CC
 .public ov00_022C4C08
-.public DebugPrint0
+.public DebugPrint0__0200C1FC
 .public ov01_0232C10C
 .public sub_0207BA08
 .public ov00_022C6EFC
@@ -37,7 +37,7 @@
 .public sub_020467F0
 .public ov01_0232C370
 .public InitPreprocessorArgs
-.public ov00_023310B8
+.public ov01_023310B8
 .public sub_02003BC8
 .public sub_020255D8
 .public sub_02046A9C
@@ -60,3 +60,5 @@
 .public ov00_022C3270
 .public ov00_022BFB14
 .public Rand16Bit
+.public ov00_022C3298
+.public sub_02046D20

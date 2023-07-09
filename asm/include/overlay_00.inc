@@ -92,7 +92,7 @@
 .public sub_0208B298
 .public sub_02008F88
 .public sub_0207B854
-.public ov00_0232F3F4
+.public ov01_0232F3F4
 .public sub_02079888
 .public Strcat
 .public sub_02051C24
@@ -112,7 +112,7 @@
 .public sub_02079FB4
 .public sub_0207911C
 .public EnableIrqFlag
-.public ov00_023310B8
+.public ov01_023310B8
 .public ov00_0232E7E8
 .public sub_0207B1E8
 .public sub_0207DB20
@@ -216,3 +216,19 @@
 .public Strchr
 .public sub_0207F70C
 .public sub_020798D8
+.public ov01_0232EA30
+.public ov01_02329520
+.public ov01_023310B8
+.public ov01_0232C4D8
+.public ov01_02337914
+.public ov01_0232E768
+.public ov01_0232EC30
+.public ov01_0232ED84
+.public ov01_0232E7E8
+.public ov01_0232ED5C
+.public ov01_0232E7C0
+.public ov01_0233103C
+.public ov01_0232F3F4
+.public ov01_0232C244
+.public ov01_0232BE98
+.public ov01_0233AE64

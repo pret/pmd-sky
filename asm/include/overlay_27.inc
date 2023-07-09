@@ -25,7 +25,7 @@
 .public sub_0200FD78
 .public sub_02042258
 .public sub_0202836C
-.public DebugPrint0
+.public DebugPrint0__0200C1FC
 .public CreateDBox
 .public sub_0202F2C4
 .public FreeNormalMenu
@@ -43,3 +43,4 @@
 .public CopyItemAtIdx
 .public RemoveEmptyItemsInBag
 .public PreprocessString
+.public sub_0200FD48

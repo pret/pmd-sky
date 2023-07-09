@@ -44075,14 +44075,17 @@ SetQuestionMarks: ; 0x020250E4
 	strb r1, [r0, #3]
 	bx lr
 	arm_func_end SetQuestionMarks
-_02025100:
+
+	arm_func_start StrcpySimple
+StrcpySimple:
 	ldrb r2, [r1], #1
 	mov r3, r0
 	strb r2, [r0], #1
 	ldrb r2, [r3]
 	cmp r2, #0
-	bne _02025100
+	bne StrcpySimple
 	bx lr
+	arm_func_end StrcpySimple
 
 	arm_func_start StrncpySimple
 StrncpySimple: ; 0x0202511C
@@ -64765,7 +64768,7 @@ ShowKeyboard: ; 0x020367F0
 	ldr r0, [r0]
 	add r0, r0, #0x6e
 	add r0, r0, #0x100
-	bl _02025100
+	bl StrcpySimple
 _02036850:
 	ldr r0, _02036CB0 ; =0x020AFDF0
 	mov r2, #0
@@ -66718,7 +66721,7 @@ _02038760:
 	add r1, r0, #0x6e
 	ldr r0, [r0, #0xf8]
 	add r1, r1, #0x100
-	bl _02025100
+	bl StrcpySimple
 _02038794:
 	ldr r0, _02038900 ; =0x020AFDF0
 	ldr r1, [r0]
@@ -70836,7 +70839,7 @@ sub_0203C5C8: ; 0x0203C5C8
 	bl GetKeyboardStringResult
 	mov r1, r0
 	add r0, sp, #0
-	bl _02025100
+	bl StrcpySimple
 	ldrb r0, [sp]
 	bl sub_0203BBEC
 	cmp r0, #0
@@ -80205,7 +80208,7 @@ _02044EE8:
 	mov r0, #0x68
 	smlabb r0, r1, r0, r2
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx
+	bl CheckTeamMemberIdx__02056228
 	cmp r0, #0
 	ldrsh r1, [r8, #0x12]
 	ldrsh r0, [r8, #0x16]
@@ -101221,8 +101224,8 @@ _020561D8:
 _02056224: .word 0x020B0A48
 	arm_func_end sub_020561C0
 
-	arm_func_start CheckTeamMemberIdx
-CheckTeamMemberIdx: ; 0x02056228
+	arm_func_start CheckTeamMemberIdx__02056228
+CheckTeamMemberIdx__02056228: ; 0x02056228
 	ldr r1, _0205625C ; =0x000055AA
 	cmp r0, r1
 	moveq r0, #1
@@ -101239,7 +101242,7 @@ CheckTeamMemberIdx: ; 0x02056228
 	.align 2, 0
 _0205625C: .word 0x000055AA
 _02056260: .word 0x00005AA5
-	arm_func_end CheckTeamMemberIdx
+	arm_func_end CheckTeamMemberIdx__02056228
 
 	arm_func_start sub_02056264
 sub_02056264: ; 0x02056264
@@ -104037,7 +104040,7 @@ sub_02058674: ; 0x02058674
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl CheckTeamMemberIdx
+	bl CheckTeamMemberIdx__02056228
 	cmp r0, #0
 	ldmnedb sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -145473,10 +145476,13 @@ sub_0207B848: ; 0x0207B848
 	and r0, r0, #0x1f
 	bx lr
 	arm_func_end sub_0207B848
-_0207B854:
+
+	arm_func_start sub_0207B854
+sub_0207B854: ; 0x0207B854
 	subs r0, r0, #4
-	bhs _0207B854
+	bhs sub_0207B854
 	bx lr
+	arm_func_end sub_0207B854
 
 	arm_func_start sub_0207B860
 sub_0207B860: ; 0x0207B860
@@ -147255,7 +147261,7 @@ _0207CD74:
 	mov r0, r4
 	bl SetIrqFlag
 	mov r0, r6
-	bl _0207B854
+	bl sub_0207B854
 	bl EnableIrqFlag
 	mov r4, r0
 	bl sub_0207D49C
@@ -147664,7 +147670,7 @@ sub_0207D270: ; 0x0207D270
 	mov r4, #1
 _0207D2AC:
 	mov r0, r6
-	bl _0207B854
+	bl sub_0207B854
 	mov r0, r5
 	mov r1, r4
 	bl sub_0207DAFC
@@ -153180,7 +153186,7 @@ sub_02081F60: ; 0x02081F60
 	mov r7, r0
 	ldr r0, _02082008 ; =0x00996A00
 	mov r6, r1
-	bl _0207B854
+	bl sub_0207B854
 	bl sub_02082440
 	cmp r0, #1
 	beq _02081FF0
@@ -153209,7 +153215,7 @@ _02081FC0:
 	mov r4, #1
 _02081FD8:
 	mov r0, r5
-	bl _0207B854
+	bl sub_0207B854
 	mov r0, r4
 	bl sub_02082420
 	cmp r0, #0
@@ -153431,7 +153437,7 @@ _020822B4:
 	str r6, [r0]
 _020822C4:
 	ldr r0, _02082324 ; =0x00708100
-	bl _0207B854
+	bl sub_0207B854
 	bl EnableIrqFlag
 	ldr r0, [sp, #4]
 	bl sub_02078C3C
@@ -155996,7 +156002,7 @@ sub_02084404: ; 0x02084404
 	mov r4, #1
 _0208444C:
 	mov r0, r6
-	bl _0207B854
+	bl sub_0207B854
 	mov r0, r5
 	mov r1, r4
 	bl sub_0207DAFC
@@ -156158,7 +156164,7 @@ sub_020845F8: ; 0x020845F8
 	ldr r4, _02084680 ; =0x000A3A47
 _02084644:
 	mov r0, r4
-	bl _0207B854
+	bl sub_0207B854
 	bl sub_0208200C
 	cmp r0, #4
 	beq _02084644
