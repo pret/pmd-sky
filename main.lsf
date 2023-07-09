@@ -9,7 +9,6 @@ Static main
 {
 	Address 0x02000000
 	StackSize 0 2048
-	Object src/main.o
 	Object asm/main.o
 
 	### Vendor libraries ###

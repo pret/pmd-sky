@@ -75,7 +75,7 @@ ov29_022DC314: ; 0x022DC314
 	mov r5, r0
 	ldr r0, _022DC338 ; =0x0234FD14
 	mov r4, r1
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	mov r0, r5
 	mov r1, r4
 	bl sub_02008BF4
@@ -3438,7 +3438,7 @@ _022DEF94:
 	bl ov29_022DDE00
 	ldr r0, _022DFF3C ; =0x023510C8
 	mov r1, #0x3e0
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r0, _022DFF40 ; =0x02353538
 	cmp r5, #0
 	str sb, [r0]
@@ -32702,7 +32702,7 @@ ov29_022F740C: ; 0x022F740C
 	mov r6, r1
 	add r1, r2, #0x114
 	add r5, r1, #0x19800
-	bl GetSpriteIndex
+	bl GetSpriteIndex__020526EC
 	mov r4, r0
 	mov r1, r7, lsl #1
 	mov r0, r7
@@ -32721,7 +32721,7 @@ ov29_022F740C: ; 0x022F740C
 	ldmnedb sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl GetSpriteIndex
+	bl GetSpriteIndex__020526EC
 	cmp r4, r0
 	moveq r0, r7, lsl #1
 	ldreqsh r1, [r5, r0]
@@ -32738,7 +32738,7 @@ _022F7490:
 	ldmnedb sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl GetSpriteIndex
+	bl GetSpriteIndex__020526EC
 	cmp r4, r0
 	moveq r0, r7, lsl #1
 	ldreqsh r1, [r5, r0]
@@ -32761,7 +32761,7 @@ ov29_022F74D4: ; 0x022F74D4
 	ldrsh r1, [r2, r1]
 	cmp r1, #0
 	bne _022F75BC
-	bl GetSpriteIndex
+	bl GetSpriteIndex__020526EC
 	mov r4, r0
 	mov r0, r6
 	bl IsShaymin
@@ -32832,7 +32832,7 @@ ov29_022F75D4: ; 0x022F75D4
 	add r1, r1, #0x114
 	mov r0, r5
 	add r4, r1, #0x19800
-	bl GetSpriteIndex
+	bl GetSpriteIndex__020526EC
 	mov r1, #1
 	str r1, [sp]
 	mov r1, r6, lsl #1
@@ -57586,17 +57586,17 @@ _0230C940:
 	bl FixedPoint64ToInt
 	mov r1, r0
 	ldr r0, _0230C4A4 ; =0x02352984
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	add r0, sp, #0xa0
 	bl FixedPoint64ToInt
 	mov r1, r0
 	ldr r0, _0230C4A8 ; =0x02352990
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	add r0, sp, #0x98
 	bl FixedPoint64ToInt
 	mov r1, r0
 	ldr r0, _0230C4AC ; =0x0235299C
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	ldr r1, _0230C4B0 ; =0x020A18F4
 	add r0, sp, #0x70
 	ldr r1, [r1]
@@ -86043,7 +86043,7 @@ _023254C8:
 	cmp fp, #0
 	beq _02325500
 	ldr r0, _0232561C ; =0x00000229
-	bl GetSpriteIndex
+	bl GetSpriteIndex__02052708
 	mov r1, r0
 	mov r0, #1
 	bl ov29_022F6F68
@@ -86051,7 +86051,7 @@ _023254C8:
 	b _02325530
 _02325500:
 	ldrsh r0, [r7, #4]
-	bl GetSpriteIndex
+	bl GetSpriteIndex__02052708
 	mov r1, r0
 	mov r0, #1
 	bl ov29_022F6F68
@@ -87568,13 +87568,13 @@ _023268B4: .word 0x00000ECE
 _023268B8: .word 0x00000ECF
 	arm_func_end ov29_0232680C
 
-	arm_func_start FUN_023268BC
-FUN_023268BC: ; 0x023268BC
+	arm_func_start ov29_023268BC
+ov29_023268BC: ; 0x023268BC
 	stmdb sp!, {r3, lr}
 	bl ov29_02315D84
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_023268BC
+	arm_func_end ov29_023268BC
 
 	arm_func_start ov29_023268CC
 ov29_023268CC: ; 0x023268CC
@@ -88703,14 +88703,14 @@ ov29_023276E8: ; 0x023276E8
 _02327740: .word 0x02352AE8
 	arm_func_end ov29_023276E8
 
-	arm_func_start FUN_02327744
-FUN_02327744: ; 0x02327744
+	arm_func_start ov29_02327744
+ov29_02327744: ; 0x02327744
 	stmdb sp!, {r3, lr}
 	mov r2, #0
 	bl TryInflictShadowHoldStatus
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_02327744
+	arm_func_end ov29_02327744
 
 	arm_func_start ov29_02327758
 ov29_02327758: ; 0x02327758
@@ -89067,13 +89067,13 @@ _02327BD8: .word 0x022C4604
 _02327BDC: .word 0x02352AEC
 	arm_func_end ov29_02327B5C
 
-	arm_func_start FUN_02327BE0
-FUN_02327BE0: ; 0x02327BE0
+	arm_func_start ov29_02327BE0
+ov29_02327BE0: ; 0x02327BE0
 	stmdb sp!, {r3, lr}
 	bl ov29_02319378
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_02327BE0
+	arm_func_end ov29_02327BE0
 
 	arm_func_start ov29_02327BF0
 ov29_02327BF0: ; 0x02327BF0
@@ -89147,8 +89147,8 @@ ov29_02327C74: ; 0x02327C74
 	ldmdb sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_02327C74
 
-	arm_func_start FUN_02327CD8
-FUN_02327CD8: ; 0x02327CD8
+	arm_func_start ov29_02327CD8
+ov29_02327CD8: ; 0x02327CD8
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
@@ -89184,7 +89184,7 @@ _02327D4C:
 	ldmdb sp!, {r4, r5, r6, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end FUN_02327CD8
+	arm_func_end ov29_02327CD8
 
 	arm_func_start ov29_02327D60
 ov29_02327D60: ; 0x02327D60
@@ -89220,13 +89220,13 @@ _02327DC0:
 _02327DCC: .word 0x02352AE8
 	arm_func_end ov29_02327D60
 
-	arm_func_start FUN_02327DD0
-FUN_02327DD0: ; 0x02327DD0
+	arm_func_start ov29_02327DD0
+ov29_02327DD0: ; 0x02327DD0
 	stmdb sp!, {r3, lr}
 	bl TryInflictSleeplessStatus
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_02327DD0
+	arm_func_end ov29_02327DD0
 
 	arm_func_start ov29_02327DE0
 ov29_02327DE0: ; 0x02327DE0
@@ -89666,13 +89666,13 @@ _02328384:
 _02328390: .word 0x022C465C
 	arm_func_end ov29_02328328
 
-	arm_func_start FUN_02328394
-FUN_02328394: ; 0x02328394
+	arm_func_start ov29_02328394
+ov29_02328394: ; 0x02328394
 	stmdb sp!, {r3, lr}
 	bl ov29_02318F10
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_02328394
+	arm_func_end ov29_02328394
 
 	arm_func_start ov29_023283A4
 ov29_023283A4: ; 0x023283A4
@@ -89785,13 +89785,13 @@ _02328518:
 _02328524: .word 0x022C4448
 	arm_func_end ov29_023284BC
 
-	arm_func_start FUN_02328528
-FUN_02328528: ; 0x02328528
+	arm_func_start ov29_02328528
+ov29_02328528: ; 0x02328528
 	stmdb sp!, {r3, lr}
 	bl ov29_02318E70
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_02328528
+	arm_func_end ov29_02328528
 
 	arm_func_start ov29_02328538
 ov29_02328538: ; 0x02328538
@@ -90172,8 +90172,8 @@ _02328A4C: .word 0x02353538
 _02328A50: .word 0x00000EC6
 	arm_func_end ov29_023289F8
 
-	arm_func_start FUN_02328A54
-FUN_02328A54: ; 0x02328A54
+	arm_func_start ov29_02328A54
+ov29_02328A54: ; 0x02328A54
 	stmdb sp!, {r3, lr}
 	ldr r2, _02328A70 ; =0x02352AEC
 	mov r3, #1
@@ -90183,10 +90183,10 @@ FUN_02328A54: ; 0x02328A54
 	ldmdb sp!, {r3, pc}
 	.align 2, 0
 _02328A70: .word 0x02352AEC
-	arm_func_end FUN_02328A54
+	arm_func_end ov29_02328A54
 
-	arm_func_start FUN_02328A74
-FUN_02328A74: ; 0x02328A74
+	arm_func_start ov29_02328A74
+ov29_02328A74: ; 0x02328A74
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -90216,10 +90216,10 @@ _02328AD0:
 	ldmdb sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02328ADC: .word 0x022C451C
-	arm_func_end FUN_02328A74
+	arm_func_end ov29_02328A74
 
-	arm_func_start FUN_02328AE0
-FUN_02328AE0: ; 0x02328AE0
+	arm_func_start ov29_02328AE0
+ov29_02328AE0: ; 0x02328AE0
 	stmdb sp!, {r3, lr}
 	ldr r2, _02328AFC ; =0x02352AE8
 	mov r3, #1
@@ -90229,10 +90229,10 @@ FUN_02328AE0: ; 0x02328AE0
 	ldmdb sp!, {r3, pc}
 	.align 2, 0
 _02328AFC: .word 0x02352AE8
-	arm_func_end FUN_02328AE0
+	arm_func_end ov29_02328AE0
 
-	arm_func_start FUN_02328B00
-FUN_02328B00: ; 0x02328B00
+	arm_func_start ov29_02328B00
+ov29_02328B00: ; 0x02328B00
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r8, r0
@@ -90269,10 +90269,10 @@ _02328B78:
 	ldmdb sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02328B84: .word 0x022C44A0
-	arm_func_end FUN_02328B00
+	arm_func_end ov29_02328B00
 
-	arm_func_start FUN_02328B88
-FUN_02328B88: ; 0x02328B88
+	arm_func_start ov29_02328B88
+ov29_02328B88: ; 0x02328B88
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x20
 	mov r7, r2
@@ -90335,10 +90335,10 @@ _02328C64:
 	.align 2, 0
 _02328C6C: .word 0x00000ED7
 _02328C70: .word 0x0000270F
-	arm_func_end FUN_02328B88
+	arm_func_end ov29_02328B88
 
-	arm_func_start FUN_02328C74
-FUN_02328C74: ; 0x02328C74
+	arm_func_start ov29_02328C74
+ov29_02328C74: ; 0x02328C74
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r7, r0
@@ -90397,10 +90397,10 @@ _02328D30:
 	.align 2, 0
 _02328D3C: .word 0x022C48A4
 _02328D40: .word 0x00000CD2
-	arm_func_end FUN_02328C74
+	arm_func_end ov29_02328C74
 
-	arm_func_start FUN_02328D44
-FUN_02328D44: ; 0x02328D44
+	arm_func_start ov29_02328D44
+ov29_02328D44: ; 0x02328D44
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x20
 	mov r5, #0
@@ -90442,10 +90442,10 @@ FUN_02328D44: ; 0x02328D44
 	ldmdb sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02328DE0: .word 0x022C4568
-	arm_func_end FUN_02328D44
+	arm_func_end ov29_02328D44
 
-	arm_func_start FUN_02328DE4
-FUN_02328DE4: ; 0x02328DE4
+	arm_func_start ov29_02328DE4
+ov29_02328DE4: ; 0x02328DE4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r2
 	mov r6, r1
@@ -90485,10 +90485,10 @@ _02328E64:
 	.align 2, 0
 _02328E6C: .word 0x022C48C0
 _02328E70: .word 0x00000CD3
-	arm_func_end FUN_02328DE4
+	arm_func_end ov29_02328DE4
 
-	arm_func_start FUN_02328E74
-FUN_02328E74: ; 0x02328E74
+	arm_func_start ov29_02328E74
+ov29_02328E74: ; 0x02328E74
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	mov r6, r2
@@ -90511,7 +90511,7 @@ FUN_02328E74: ; 0x02328E74
 	mov r0, #1
 	add sp, sp, #8
 	ldmdb sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end FUN_02328E74
+	arm_func_end ov29_02328E74
 
 	arm_func_start ov29_02328ECC
 ov29_02328ECC: ; 0x02328ECC
@@ -90776,8 +90776,8 @@ ov29_023291F4: ; 0x023291F4
 _02329238: .word 0x000003E7
 	arm_func_end ov29_023291F4
 
-	arm_func_start FUN_0232923C
-FUN_0232923C: ; 0x0232923C
+	arm_func_start ov29_0232923C
+ov29_0232923C: ; 0x0232923C
 	stmdb sp!, {r3, lr}
 	ldr r2, _02329254 ; =0x02352AE8
 	ldr r2, [r2]
@@ -90786,10 +90786,10 @@ FUN_0232923C: ; 0x0232923C
 	ldmdb sp!, {r3, pc}
 	.align 2, 0
 _02329254: .word 0x02352AE8
-	arm_func_end FUN_0232923C
+	arm_func_end ov29_0232923C
 
-	arm_func_start FUN_02329258
-FUN_02329258: ; 0x02329258
+	arm_func_start ov29_02329258
+ov29_02329258: ; 0x02329258
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x20
 	mov r4, #0
@@ -90885,7 +90885,7 @@ _02329350:
 	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _023293C8: .word 0x00000221
-	arm_func_end FUN_02329258
+	arm_func_end ov29_02329258
 
 	arm_func_start ov29_023293CC
 ov29_023293CC: ; 0x023293CC
@@ -90997,8 +90997,8 @@ _0232952C: .word 0x00000ED9
 _02329530: .word 0x0000270F
 	arm_func_end ov29_02329438
 
-	arm_func_start FUN_02329534
-FUN_02329534: ; 0x02329534
+	arm_func_start ov29_02329534
+ov29_02329534: ; 0x02329534
 	stmdb sp!, {r3, lr}
 	ldr r2, _02329550 ; =0x02352AEC
 	mov r3, #2
@@ -91008,10 +91008,10 @@ FUN_02329534: ; 0x02329534
 	ldmdb sp!, {r3, pc}
 	.align 2, 0
 _02329550: .word 0x02352AEC
-	arm_func_end FUN_02329534
+	arm_func_end ov29_02329534
 
-	arm_func_start FUN_02329554
-FUN_02329554: ; 0x02329554
+	arm_func_start ov29_02329554
+ov29_02329554: ; 0x02329554
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov sb, r1
@@ -91086,15 +91086,15 @@ _02329650:
 _02329658: .word 0x00000DC3
 _0232965C: .word 0x00000DB6
 _02329660: .word 0x00000DB5
-	arm_func_end FUN_02329554
+	arm_func_end ov29_02329554
 
-	arm_func_start FUN_02329664
-FUN_02329664: ; 0x02329664
+	arm_func_start ov29_02329664
+ov29_02329664: ; 0x02329664
 	stmdb sp!, {r3, lr}
 	bl ov29_023194B8
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_02329664
+	arm_func_end ov29_02329664
 
 	arm_func_start ov29_02329674
 ov29_02329674: ; 0x02329674
@@ -91848,16 +91848,16 @@ _0232A03C:
 _0232A048: .word 0x02352AEC
 	arm_func_end ov29_02329FE0
 
-	arm_func_start FUN_0232A04C
-FUN_0232A04C: ; 0x0232A04C
+	arm_func_start ov29_0232A04C
+ov29_0232A04C: ; 0x0232A04C
 	ldr ip, _0232A054 ; =ov29_0232C310
 	bx ip
 	.align 2, 0
 _0232A054: .word ov29_0232C310
-	arm_func_end FUN_0232A04C
+	arm_func_end ov29_0232A04C
 
-	arm_func_start FUN_0232A058
-FUN_0232A058: ; 0x0232A058
+	arm_func_start ov29_0232A058
+ov29_0232A058: ; 0x0232A058
 	stmdb sp!, {r3, lr}
 	ldr r2, _0232A074 ; =0x02352AE8
 	mov r3, #2
@@ -91867,7 +91867,7 @@ FUN_0232A058: ; 0x0232A058
 	ldmdb sp!, {r3, pc}
 	.align 2, 0
 _0232A074: .word 0x02352AE8
-	arm_func_end FUN_0232A058
+	arm_func_end ov29_0232A058
 
 	arm_func_start ov01_0232A078
 ov01_0232A078: ; 0x0232A078
@@ -92040,13 +92040,13 @@ ov29_0232A27C: ; 0x0232A27C
 _0232A2A8: .word 0x02352AEC
 	arm_func_end ov29_0232A27C
 
-	arm_func_start FUN_0232A2AC
-FUN_0232A2AC: ; 0x0232A2AC
+	arm_func_start ov29_0232A2AC
+ov29_0232A2AC: ; 0x0232A2AC
 	stmdb sp!, {r3, lr}
 	bl ov29_02318FAC
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232A2AC
+	arm_func_end ov29_0232A2AC
 
 	arm_func_start ov29_0232A2BC
 ov29_0232A2BC: ; 0x0232A2BC
@@ -92194,13 +92194,13 @@ _0232A474:
 _0232A47C: .word 0x022C4748
 	arm_func_end ov29_0232A414
 
-	arm_func_start FUN_0232A480
-FUN_0232A480: ; 0x0232A480
+	arm_func_start ov29_0232A480
+ov29_0232A480: ; 0x0232A480
 	stmdb sp!, {r3, lr}
 	bl TryInflictIngrainStatus
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232A480
+	arm_func_end ov29_0232A480
 
 	arm_func_start ov29_0232A490
 ov29_0232A490: ; 0x0232A490
@@ -92231,15 +92231,15 @@ _0232A4E0: .word 0x022C49D4
 _0232A4E4: .word 0x00000EE4
 	arm_func_end ov29_0232A490
 
-	arm_func_start FUN_0232A4E8
-FUN_0232A4E8: ; 0x0232A4E8
+	arm_func_start ov29_0232A4E8
+ov29_0232A4E8: ; 0x0232A4E8
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	mov r3, #0
 	bl ov29_023160DC
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232A4E8
+	arm_func_end ov29_0232A4E8
 
 	arm_func_start ov29_0232A500
 ov29_0232A500: ; 0x0232A500
@@ -92337,8 +92337,8 @@ _0232A628:
 _0232A63C: .word 0x022C44C4
 	arm_func_end ov02_0232A5AC
 
-	arm_func_start FUN_0232A640
-FUN_0232A640: ; 0x0232A640
+	arm_func_start ov29_0232A640
+ov29_0232A640: ; 0x0232A640
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r4, [r0, #0xb4]
@@ -92360,10 +92360,10 @@ _0232A678:
 	ldmdb sp!, {r3, r4, pc}
 	.align 2, 0
 _0232A684: .word 0x00000EE5
-	arm_func_end FUN_0232A640
+	arm_func_end ov29_0232A640
 
-	arm_func_start FUN_0232A688
-FUN_0232A688: ; 0x0232A688
+	arm_func_start ov29_0232A688
+ov29_0232A688: ; 0x0232A688
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -92390,7 +92390,7 @@ _0232A6E0:
 	mov r0, r4
 	add sp, sp, #4
 	ldmdb sp!, {r3, r4, r5, r6, pc}
-	arm_func_end FUN_0232A688
+	arm_func_end ov29_0232A688
 
 	arm_func_start ov29_0232A6EC
 ov29_0232A6EC: ; 0x0232A6EC
@@ -92769,13 +92769,13 @@ _0232AC3C: .word 0x00000163
 _0232AC40: .word 0x022C44B4
 	arm_func_end ov29_0232A8EC
 
-	arm_func_start FUN_0232AC44
-FUN_0232AC44: ; 0x0232AC44
+	arm_func_start ov29_0232AC44
+ov29_0232AC44: ; 0x0232AC44
 	stmdb sp!, {r3, lr}
 	bl ov29_02315CE8
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232AC44
+	arm_func_end ov29_0232AC44
 
 	arm_func_start ov29_0232AC54
 ov29_0232AC54: ; 0x0232AC54
@@ -93369,15 +93369,15 @@ _0232B42C: .word 0x000003E7
 _0232B430: .word 0x022C49C4
 	arm_func_end ov29_0232B368
 
-	arm_func_start FUN_0232B434
-FUN_0232B434: ; 0x0232B434
+	arm_func_start ov29_0232B434
+ov29_0232B434: ; 0x0232B434
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	mov r3, #0
 	bl TryInflictParalysisStatus
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232B434
+	arm_func_end ov29_0232B434
 
 	arm_func_start ov29_0232B44C
 ov29_0232B44C: ; 0x0232B44C
@@ -93436,15 +93436,15 @@ _0232B4F0:
 _0232B4FC: .word 0x022C448C
 	arm_func_end ov29_0232B494
 
-	arm_func_start FUN_0232B500
-FUN_0232B500: ; 0x0232B500
+	arm_func_start ov29_0232B500
+ov29_0232B500: ; 0x0232B500
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #0xb4]
 	ldrb r2, [r2, #0x4c]
 	bl TryBlowAway
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232B500
+	arm_func_end ov29_0232B500
 
 	arm_func_start ov29_0232B518
 ov29_0232B518: ; 0x0232B518
@@ -93496,8 +93496,8 @@ _0232B5C0: .word 0x00000DC3
 _0232B5C4: .word 0x00000EEE
 	arm_func_end ov29_0232B518
 
-	arm_func_start FUN_0232B5C8
-FUN_0232B5C8: ; 0x0232B5C8
+	arm_func_start ov29_0232B5C8
+ov29_0232B5C8: ; 0x0232B5C8
 	stmdb sp!, {r3, lr}
 	ldr r2, _0232B5E4 ; =0x02352AE8
 	mov r3, #2
@@ -93507,10 +93507,10 @@ FUN_0232B5C8: ; 0x0232B5C8
 	ldmdb sp!, {r3, pc}
 	.align 2, 0
 _0232B5E4: .word 0x02352AE8
-	arm_func_end FUN_0232B5C8
+	arm_func_end ov29_0232B5C8
 
-	arm_func_start FUN_0232B5E8
-FUN_0232B5E8: ; 0x0232B5E8
+	arm_func_start ov29_0232B5E8
+ov29_0232B5E8: ; 0x0232B5E8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r5, r2
 	ldrh ip, [r5, #4]
@@ -93562,16 +93562,16 @@ _0232B694:
 	.align 2, 0
 _0232B69C: .word 0x00000123
 _0232B6A0: .word 0x022C44A4
-	arm_func_end FUN_0232B5E8
+	arm_func_end ov29_0232B5E8
 
-	arm_func_start FUN_0232B6A4
-FUN_0232B6A4: ; 0x0232B6A4
+	arm_func_start ov29_0232B6A4
+ov29_0232B6A4: ; 0x0232B6A4
 	stmdb sp!, {r3, lr}
 	mov r2, #0
 	bl ov29_0231662C
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232B6A4
+	arm_func_end ov29_0232B6A4
 
 	arm_func_start ov29_0232B6B8
 ov29_0232B6B8: ; 0x0232B6B8
@@ -93795,8 +93795,8 @@ ov29_0232B928: ; 0x0232B928
 	ldmdb sp!, {r3, pc}
 	arm_func_end ov29_0232B928
 
-	arm_func_start FUN_0232B940
-FUN_0232B940: ; 0x0232B940
+	arm_func_start ov29_0232B940
+ov29_0232B940: ; 0x0232B940
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
@@ -93835,10 +93835,10 @@ _0232B9B8:
 	bx lr
 	.align 2, 0
 _0232B9CC: .word 0x022C4554
-	arm_func_end FUN_0232B940
+	arm_func_end ov29_0232B940
 
-	arm_func_start FUN_0232B9D0
-FUN_0232B9D0: ; 0x0232B9D0
+	arm_func_start ov29_0232B9D0
+ov29_0232B9D0: ; 0x0232B9D0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -93870,7 +93870,7 @@ _0232BA14:
 _0232BA3C:
 	mov r0, r4
 	ldmdb sp!, {r4, r5, r6, pc}
-	arm_func_end FUN_0232B9D0
+	arm_func_end ov29_0232B9D0
 
 	arm_func_start ov29_0232BA44
 ov29_0232BA44: ; 0x0232BA44
@@ -94529,13 +94529,13 @@ _0232C2F8: .word 0x00000EF6
 _0232C2FC: .word 0x00000EF7
 	arm_func_end ov29_0232C27C
 
-	arm_func_start FUN_0232C300
-FUN_0232C300: ; 0x0232C300
+	arm_func_start ov29_0232C300
+ov29_0232C300: ; 0x0232C300
 	stmdb sp!, {r3, lr}
 	bl ov29_022EF5D8
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232C300
+	arm_func_end ov29_0232C300
 
 	arm_func_start ov29_0232C310
 ov29_0232C310: ; 0x0232C310
@@ -95066,15 +95066,15 @@ _0232CA0C: .word 0x00000F02
 _0232CA10: .word 0x00000F01
 	arm_func_end ov29_0232C84C
 
-	arm_func_start FUN_0232CA14
-FUN_0232CA14: ; 0x0232CA14
+	arm_func_start ov29_0232CA14
+ov29_0232CA14: ; 0x0232CA14
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	mov r3, r2
 	bl LowerSpeed
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232CA14
+	arm_func_end ov29_0232CA14
 
 	arm_func_start ov29_0232CA2C
 ov29_0232CA2C: ; 0x0232CA2C
@@ -95347,14 +95347,14 @@ _0232CD88: .word 0x02353538
 _0232CD8C: .word 0x00000F08
 	arm_func_end ov29_0232CCC4
 
-	arm_func_start FUN_0232CD90
-FUN_0232CD90: ; 0x0232CD90
+	arm_func_start ov29_0232CD90
+ov29_0232CD90: ; 0x0232CD90
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	bl ov29_0231657C
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232CD90
+	arm_func_end ov29_0232CD90
 
 	arm_func_start ov29_0232CDA4
 ov29_0232CDA4: ; 0x0232CDA4
@@ -95424,8 +95424,8 @@ ov29_0232CE50: ; 0x0232CE50
 _0232CE78: .word 0x022C456C
 	arm_func_end ov29_0232CE50
 
-	arm_func_start FUN_0232CE7C
-FUN_0232CE7C: ; 0x0232CE7C
+	arm_func_start ov29_0232CE7C
+ov29_0232CE7C: ; 0x0232CE7C
 	stmdb sp!, {r3, lr}
 	ldr r2, _0232CE90 ; =0x00000F09
 	bl LogMessageByIdWithPopupCheckUserTarget
@@ -95433,17 +95433,17 @@ FUN_0232CE7C: ; 0x0232CE7C
 	ldmdb sp!, {r3, pc}
 	.align 2, 0
 _0232CE90: .word 0x00000F09
-	arm_func_end FUN_0232CE7C
+	arm_func_end ov29_0232CE7C
 
-	arm_func_start FUN_0232CE94
-FUN_0232CE94: ; 0x0232CE94
+	arm_func_start ov29_0232CE94
+ov29_0232CE94: ; 0x0232CE94
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	mov r3, #0
 	bl TryInflictCoweringStatus
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232CE94
+	arm_func_end ov29_0232CE94
 
 	arm_func_start ov29_0232CEAC
 ov29_0232CEAC: ; 0x0232CEAC
@@ -95504,13 +95504,13 @@ ov29_0232CF54: ; 0x0232CF54
 _0232CF70: .word 0x022C45BC
 	arm_func_end ov29_0232CF54
 
-	arm_func_start FUN_0232CF74
-FUN_0232CF74: ; 0x0232CF74
+	arm_func_start ov29_0232CF74
+ov29_0232CF74: ; 0x0232CF74
 	stmdb sp!, {r3, lr}
 	bl ov29_0231EA40
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232CF74
+	arm_func_end ov29_0232CF74
 
 	arm_func_start ov29_0232CF84
 ov29_0232CF84: ; 0x0232CF84
@@ -96522,13 +96522,13 @@ _0232DC4C: .word 0x02352AEC
 _0232DC50: .word 0x02352AE8
 	arm_func_end ov29_0232DAD0
 
-	arm_func_start FUN_0232DC54
-FUN_0232DC54: ; 0x0232DC54
+	arm_func_start ov29_0232DC54
+ov29_0232DC54: ; 0x0232DC54
 	stmdb sp!, {r3, lr}
 	bl ov29_02318984
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232DC54
+	arm_func_end ov29_0232DC54
 
 	arm_func_start ov29_0232DC64
 ov29_0232DC64: ; 0x0232DC64
@@ -96614,13 +96614,13 @@ _0232DD70: .word 0x022C4944
 _0232DD74: .word 0x00000EBC
 	arm_func_end ov29_0232DCD4
 
-	arm_func_start FUN_0232DD78
-FUN_0232DD78: ; 0x0232DD78
+	arm_func_start ov29_0232DD78
+ov29_0232DD78: ; 0x0232DD78
 	stmdb sp!, {r3, lr}
 	bl BoostOrLowerSpeed
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232DD78
+	arm_func_end ov29_0232DD78
 
 	arm_func_start ov29_0232DD88
 ov29_0232DD88: ; 0x0232DD88
@@ -96877,14 +96877,14 @@ ov29_0232E084: ; 0x0232E084
 _0232E0E0: .word 0x00000F2B
 	arm_func_end ov29_0232E084
 
-	arm_func_start FUN_0232E0E4
-FUN_0232E0E4: ; 0x0232E0E4
+	arm_func_start ov29_0232E0E4
+ov29_0232E0E4: ; 0x0232E0E4
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	bl ov29_0230DAB8
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232E0E4
+	arm_func_end ov29_0232E0E4
 
 	arm_func_start ov29_0232E0F8
 ov29_0232E0F8: ; 0x0232E0F8
@@ -97369,24 +97369,24 @@ ov29_0232E714: ; 0x0232E714
 _0232E730: .word 0x02352AE8
 	arm_func_end ov29_0232E714
 
-	arm_func_start FUN_0232E734
-FUN_0232E734: ; 0x0232E734
+	arm_func_start ov29_0232E734
+ov29_0232E734: ; 0x0232E734
 	stmdb sp!, {r3, lr}
 	bl ov29_02314E60
 	mov r0, #1
 	ldmdb sp!, {r3, pc}
-	arm_func_end FUN_0232E734
+	arm_func_end ov29_0232E734
 
-	arm_func_start FUN_0232E744
-FUN_0232E744: ; 0x0232E744
+	arm_func_start ov29_0232E744
+ov29_0232E744: ; 0x0232E744
 	ldr ip, _0232E74C ; =ov29_0232CA70
 	bx ip
 	.align 2, 0
 _0232E74C: .word ov29_0232CA70
-	arm_func_end FUN_0232E744
+	arm_func_end ov29_0232E744
 
-	arm_func_start FUN_0232E750
-FUN_0232E750: ; 0x0232E750
+	arm_func_start ov29_0232E750
+ov29_0232E750: ; 0x0232E750
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -97404,7 +97404,7 @@ FUN_0232E750: ; 0x0232E750
 	bl ov29_0234AFFC
 	mov r0, r4
 	ldmdb sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end FUN_0232E750
+	arm_func_end ov29_0232E750
 
 	arm_func_start ov29_0232E794
 ov29_0232E794: ; 0x0232E794
@@ -99309,7 +99309,7 @@ ov29_02330360: ; 0x02330360
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_023268BC
+	bl ov29_023268BC
 	mov sl, r0
 	b _023326CC
 _0233037C:
@@ -99370,7 +99370,7 @@ ov29_02330430: ; 0x02330430
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328B88
+	bl ov29_02328B88
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330430
@@ -99392,7 +99392,7 @@ ov29_02330468: ; 0x02330468
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232B5E8
+	bl ov29_0232B5E8
 	mov sl, r0
 	b _023326CC
 _02330484:
@@ -99422,7 +99422,7 @@ ov29_023304BC: ; 0x023304BC
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02327744
+	bl ov29_02327744
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_023304BC
@@ -99448,7 +99448,7 @@ ov29_023304F4: ; 0x023304F4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
-	bl FUN_02327CD8
+	bl ov29_02327CD8
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_023304F4
@@ -99463,7 +99463,7 @@ ov29_02330520: ; 0x02330520
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
-	bl FUN_02327CD8
+	bl ov29_02327CD8
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330520
@@ -99478,7 +99478,7 @@ ov29_0233054C: ; 0x0233054C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
-	bl FUN_02327CD8
+	bl ov29_02327CD8
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_0233054C
@@ -99493,7 +99493,7 @@ ov29_02330578: ; 0x02330578
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
-	bl FUN_02327CD8
+	bl ov29_02327CD8
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330578
@@ -99508,7 +99508,7 @@ ov29_023305A4: ; 0x023305A4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
-	bl FUN_02327CD8
+	bl ov29_02327CD8
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_023305A4
@@ -99524,7 +99524,7 @@ ov29_023305D0: ; 0x023305D0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
-	bl FUN_02327CD8
+	bl ov29_02327CD8
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_023305D0
@@ -99537,7 +99537,7 @@ ov29_02330600: ; 0x02330600
 	mov r1, r4
 	mov r2, r8
 	str r7, [sp]
-	bl FUN_0232B940
+	bl ov29_0232B940
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330600
@@ -99649,7 +99649,7 @@ ov29_02330728: ; 0x02330728
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328A74
+	bl ov29_02328A74
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330728
@@ -99660,7 +99660,7 @@ ov29_02330744: ; 0x02330744
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328B00
+	bl ov29_02328B00
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330744
@@ -99794,7 +99794,7 @@ ov29_023308B0: ; 0x023308B0
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232B9D0
+	bl ov29_0232B9D0
 	mov sl, r0
 	b _023326CC
 _023308CC:
@@ -99824,7 +99824,7 @@ ov29_02330904: ; 0x02330904
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328D44
+	bl ov29_02328D44
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330904
@@ -99944,7 +99944,7 @@ ov29_02330A54: ; 0x02330A54
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232B434
+	bl ov29_0232B434
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330A54
@@ -99988,7 +99988,7 @@ ov29_02330AC4: ; 0x02330AC4
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232A688
+	bl ov29_0232A688
 	mov sl, r0
 	b _023326CC
 _02330AE0:
@@ -100007,7 +100007,7 @@ ov29_02330AFC: ; 0x02330AFC
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232B500
+	bl ov29_0232B500
 	mov sl, r0
 	b _023326CC
 _02330B18:
@@ -100026,7 +100026,7 @@ ov29_02330B34: ; 0x02330B34
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232B5C8
+	bl ov29_0232B5C8
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330B34
@@ -100037,7 +100037,7 @@ ov29_02330B50: ; 0x02330B50
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232923C
+	bl ov29_0232923C
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330B50
@@ -100086,7 +100086,7 @@ ov29_02330BDC: ; 0x02330BDC
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02329534
+	bl ov29_02329534
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330BDC
@@ -100108,7 +100108,7 @@ ov29_02330C14: ; 0x02330C14
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328AE0
+	bl ov29_02328AE0
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330C14
@@ -100119,7 +100119,7 @@ ov29_02330C30: ; 0x02330C30
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232A058
+	bl ov29_0232A058
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330C30
@@ -100242,7 +100242,7 @@ ov29_02330D80: ; 0x02330D80
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02329258
+	bl ov29_02329258
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330D80
@@ -100338,7 +100338,7 @@ ov29_02330E7C: ; 0x02330E7C
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328C74
+	bl ov29_02328C74
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330E7C
@@ -100360,7 +100360,7 @@ ov29_02330EB4: ; 0x02330EB4
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232CA14
+	bl ov29_0232CA14
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330EB4
@@ -100393,7 +100393,7 @@ ov29_02330F08: ; 0x02330F08
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02327DD0
+	bl ov29_02327DD0
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330F08
@@ -100448,7 +100448,7 @@ ov29_02330F94: ; 0x02330F94
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328528
+	bl ov29_02328528
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330F94
@@ -100459,7 +100459,7 @@ ov29_02330FB0: ; 0x02330FB0
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328394
+	bl ov29_02328394
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330FB0
@@ -100570,7 +100570,7 @@ ov29_02331100: ; 0x02331100
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232A04C
+	bl ov29_0232A04C
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331100
@@ -100641,7 +100641,7 @@ ov29_023311C4: ; 0x023311C4
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232A4E8
+	bl ov29_0232A4E8
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_023311C4
@@ -100782,7 +100782,7 @@ ov29_02331354: ; 0x02331354
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232A480
+	bl ov29_0232A480
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331354
@@ -100900,7 +100900,7 @@ ov29_02331488: ; 0x02331488
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232A2AC
+	bl ov29_0232A2AC
 	mov sl, r0
 	b _023326CC
 _023314A4:
@@ -100930,7 +100930,7 @@ ov29_023314DC: ; 0x023314DC
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328A54
+	bl ov29_02328A54
 	mov sl, r0
 	b _023326CC
 _023314F8:
@@ -101124,7 +101124,7 @@ ov29_0233170C: ; 0x0233170C
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328DE4
+	bl ov29_02328DE4
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_0233170C
@@ -101255,7 +101255,7 @@ ov29_02331878: ; 0x02331878
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232AC44
+	bl ov29_0232AC44
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331878
@@ -101266,7 +101266,7 @@ ov29_02331894: ; 0x02331894
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232CE94
+	bl ov29_0232CE94
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331894
@@ -101356,7 +101356,7 @@ ov29_0233197C: ; 0x0233197C
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02328E74
+	bl ov29_02328E74
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_0233197C
@@ -101430,7 +101430,7 @@ ov29_02331A40: ; 0x02331A40
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232C300
+	bl ov29_0232C300
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331A40
@@ -101452,7 +101452,7 @@ ov29_02331A78: ; 0x02331A78
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232A640
+	bl ov29_0232A640
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331A78
@@ -101490,7 +101490,7 @@ ov29_02331AE8: ; 0x02331AE8
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232CD90
+	bl ov29_0232CD90
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331AE8
@@ -101512,7 +101512,7 @@ ov29_02331B20: ; 0x02331B20
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232B6A4
+	bl ov29_0232B6A4
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331B20
@@ -101583,7 +101583,7 @@ ov29_02331BE4: ; 0x02331BE4
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232CF74
+	bl ov29_0232CF74
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331BE4
@@ -101594,7 +101594,7 @@ ov29_02331C00: ; 0x02331C00
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02327BE0
+	bl ov29_02327BE0
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331C00
@@ -101785,7 +101785,7 @@ ov29_02331E14: ; 0x02331E14
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232CE7C
+	bl ov29_0232CE7C
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331E14
@@ -101883,7 +101883,7 @@ ov29_02331F18: ; 0x02331F18
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02329554
+	bl ov29_02329554
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331F18
@@ -102009,7 +102009,7 @@ ov29_02332068: ; 0x02332068
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_02329664
+	bl ov29_02329664
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02332068
@@ -102347,7 +102347,7 @@ ov29_023323CC: ; 0x023323CC
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232DC54
+	bl ov29_0232DC54
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_023323CC
@@ -102369,7 +102369,7 @@ ov29_02332404: ; 0x02332404
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232DD78
+	bl ov29_0232DD78
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02332404
@@ -102446,7 +102446,7 @@ ov29_023324C8: ; 0x023324C8
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232E0E4
+	bl ov29_0232E0E4
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_023324C8
@@ -102602,7 +102602,7 @@ ov29_02332658: ; 0x02332658
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232E734
+	bl ov29_0232E734
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02332658
@@ -102613,7 +102613,7 @@ ov29_02332674: ; 0x02332674
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232E744
+	bl ov29_0232E744
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02332674
@@ -102624,7 +102624,7 @@ ov29_02332690: ; 0x02332690
 	mov r1, r4
 	mov r2, r8
 	mov r3, r7
-	bl FUN_0232E750
+	bl ov29_0232E750
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02332690
@@ -107850,7 +107850,7 @@ ov29_02336DB0: ; 0x02336DB0
 	tst r0, #0x200
 	beq _02336DE0
 	ldr r0, _02336F48 ; =0x02352F14
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 _02336DE0:
 	ldrh r1, [r4]
 	tst r1, #0x1000
@@ -134362,14 +134362,14 @@ _0234D38C:
 	sub r1, r1, #0xb
 	orr r1, r1, #0x90000
 	str r1, [sp, #8]
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 	b _0234D3D0
 _0234D3BC:
 	bl ov29_02337EE8
 	mov r1, r0
 	ldr r0, _0234D45C ; =0x02353380
 	str r1, [sp, #8]
-	bl DebugPrint0
+	bl DebugPrint0__0200C1FC
 _0234D3D0:
 	ldrsh r0, [r4, #4]
 	str r0, [sp, #0xc]

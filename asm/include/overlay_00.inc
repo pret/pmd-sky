@@ -77,7 +77,7 @@
 .public sub_0201DC90
 .public sub_02003A40
 .public sub_02079B14
-.public FUN_02000088
+.public sub_02000088
 .public sub_0201BE84
 .public Memset
 .public sub_020024B0

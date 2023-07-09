@@ -69,7 +69,7 @@
 .public sub_02008F4C
 .public ItemZInit
 .public sub_02046BE8
-.public FUN_02035024
+.public sub_02035024
 .public sub_020038E8
 .public sub_0202FBBC
 .public sub_02008F88
@@ -275,7 +275,7 @@
 .public sub_02008F64
 .public IncrementNbBigTreasureWins
 .public InitPortraitBoxWithMonsterId
-.public FUN_0206C120
+.public sub_0206C120
 .public sub_0205730C
 .public sub_0206A878
 .public sub_02063600
@@ -373,8 +373,8 @@
 .public sub_02065B3C
 .public ov10_022BCC7C
 .public sub_0206B9DC
-.public FUN_0204BECC
-.public FUN_0204CA48
+.public sub_0204BECC
+.public sub_0204CA48
 .public sub_0205EC78
 .public ov10_022BDB80
 .public sub_0201BCF4
@@ -410,7 +410,7 @@
 .public ScriptSpecialProcess0x3
 .public GetLearnableIqSkills
 .public GetNameWithGender
-.public FUN_02065974
+.public sub_02065974
 .public sub_02028A64
 .public sub_0200B908
 .public sub_02017B94
@@ -506,7 +506,7 @@
 .public sub_02055DD0
 .public ShowKeyboard
 .public sub_02017B88
-.public FUN_02034E60
+.public sub_02034E60
 .public sub_0204C880
 .public sub_0200A5B0
 .public sub_02009194
@@ -528,7 +528,7 @@
 .public GetMaxReachedFloor
 .public EnableIqSkill
 .public sub_0203F398
-.public FUN_02065BD8
+.public sub_02065BD8
 .public LoadOverlay
 .public sub_0201DF38
 .public GetItemMoveId16
@@ -596,7 +596,7 @@
 .public sub_0204804C
 .public sub_0203FA64
 .public ShowPortraitBox
-.public FUN_0206C144
+.public sub_0206C144
 .public GetNormalMenuResult
 .public sub_02034F20
 .public MemArenaAlloc
@@ -693,7 +693,7 @@
 .public sub_02041364
 .public sub_0202F16C
 .public sub_0201BF64
-.public FUN_020367B4
+.public sub_020367B4
 .public sub_0204F050
 .public sub_0203909C
 .public GetAdvancedMenuCurrentOption

@@ -655,3 +655,6 @@
 .public GetVictoriesOnOneFloor
 .public GetRegenSpeed
 .public ov30_02382874
+.public DebugPrint0__0200C1FC
+.public GetSpriteIndex__020526EC
+.public GetSpriteIndex__02052708
