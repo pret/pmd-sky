@@ -16,7 +16,7 @@
 .public ov01_0232C10C
 .public sub_02047150
 .public sub_0202D5E4
-.public ov10_022BCDBC
+.public ov00_022BCDBC
 .public ov00_022BD2F4
 .public ov00_022BD5A0
 .public sub_0202D59C
@@ -69,7 +69,7 @@
 .public sub_0202D55C
 .public GetLanguageType
 .public ov01_02339988
-.public ov10_022BD744
+.public ov00_022BD744
 .public InitPreprocessorArgs
 .public StrncpySimpleNoPadSafe
 .public ov00_022BCCAC

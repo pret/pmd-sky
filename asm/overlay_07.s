@@ -1642,7 +1642,7 @@ _0233E06C:
 	mov r1, #0
 	mov r2, r1
 	add r0, r4, #0x48
-	bl ov10_022BCDBC
+	bl ov00_022BCDBC
 	cmp r0, #2
 	bne _0233E0D0
 	add r0, r4, #0x48
@@ -1841,7 +1841,7 @@ _0233E33C:
 	add r0, r4, #0x48
 	add r1, r4, #0x3c
 	mov r2, #1
-	bl ov10_022BCDBC
+	bl ov00_022BCDBC
 _0233E34C:
 	mov r1, #1
 	add r0, sp, #0x104
@@ -2703,7 +2703,7 @@ _0233EF98:
 	add r0, r1, #0x10
 	add r1, r1, #0x30
 	mov r2, #0
-	bl ov10_022BCDBC
+	bl ov00_022BCDBC
 	cmp r0, #2
 	bne _0233EFD0
 	ldr r1, _0233F5C8 ; =0x00003701
@@ -3010,7 +3010,7 @@ _0233F3F0:
 	ldr r1, [r0]
 	add r0, r1, #0x10
 	add r1, r1, #0x30
-	bl ov10_022BCDBC
+	bl ov00_022BCDBC
 	ldr r1, _0233F5F0 ; =0x000036FE
 	mov r0, #0x1c
 	bl ov07_0233F6AC
@@ -5149,7 +5149,7 @@ _02341234:
 	ldrb r0, [r4, #0x2b4]
 	bl ov00_022BD730
 	ldrb r0, [r4, #0x2b5]
-	bl ov10_022BD744
+	bl ov00_022BD744
 	ldrb r0, [r4, #0x2b6]
 	bl ov00_022BD758
 	ldrb r0, [r4, #0x2b7]
