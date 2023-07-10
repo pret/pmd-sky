@@ -666,7 +666,6 @@
 .public ScriptSpecialProcess0x17
 .public GetItemAtIdx
 .public GetPartner
-.public ov29_022DEBA4
 .public sub_0201DE10
 .public sub_02056E04
 .public SaveScriptVariableValue
