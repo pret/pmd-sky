@@ -2,7 +2,7 @@
 #pragma once
 .public ov29_0234FB6C
 .public GetRecruitRate2
-.public ov11_022EA428
+.public ov29_022EA428
 .public sub_02030A2C
 .public AllManip1
 .public IsBlinded
@@ -90,7 +90,7 @@
 .public sub_02041B7C
 .public sub_0203FE5C
 .public ov29_022E0C2C
-.public ov11_02300BF8
+.public ov29_02300BF8
 .public CanMonsterSpawn
 .public ov29_022E1618
 .public sub_020420F4

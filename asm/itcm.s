@@ -2485,7 +2485,7 @@ _01FFAF28:
 	b _01FFB2A4
 _01FFAF7C:
 	mov r0, sb
-	bl ov11_022FBE04
+	bl ov29_022FBE04
 	cmp r0, #0
 	bne _01FFB2A4
 	add r0, r4, #4

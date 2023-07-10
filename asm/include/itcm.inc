@@ -33,7 +33,7 @@
 .public sub_020275F8
 .public sub_0207A244
 .public AbilityIsActive2
-.public ov11_022FBE04
+.public ov29_022FBE04
 .public IqSkillIsEnabled
 .public ov29_022E333C
 .public SetMonsterActionFields
