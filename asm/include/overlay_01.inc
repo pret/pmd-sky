@@ -305,3 +305,16 @@
 .public sub_0202C38C
 .public ov00_022BD780
 .public sub_0202BD48
+.public ov00_022BD4EC
+.public CardBackupError
+.public ov00_022BDC6C
+.public ov00_022BCD2C
+.public sub_02046A20
+.public sub_0205B80C
+.public sub_020590DC
+.public sub_02046C30
+.public sub_02046D44
+.public sub_0205B77C
+.public ov00_022BCCAC
+.public ov00_022BD3F4
+.public ov00_022BDE24

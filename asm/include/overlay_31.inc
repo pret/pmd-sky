@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public ov02_0234FB6C
+.public ov29_0234FB6C
 .public GetRecruitRate2
 .public ov11_022EA428
 .public sub_02030A2C
@@ -105,7 +105,7 @@
 .public ov29_022EB44C
 .public sub_0202F474
 .public ov29_023021F0
-.public ov02_02347100
+.public ov29_02347100
 .public ov29_022EBBE8
 .public sub_02041484
 .public PrintIqSkillsMenu
@@ -229,7 +229,7 @@
 .public sub_020416FC
 .public sub_020410A4
 .public AiMovement
-.public ov02_0234FB60
+.public ov29_0234FB60
 .public ov29_022F9C40
 .public sub_02017C74
 .public sub_0204019C

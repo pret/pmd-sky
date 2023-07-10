@@ -49,7 +49,7 @@
 .public ov01_0232DEE0
 .public sub_0208FE3C
 .public sub_02029F88
-.public ov02_02338EC4
+.public ov01_02338EC4
 .public sub_02027AF0
 .public PreprocessString
 .public ov01_02338C28

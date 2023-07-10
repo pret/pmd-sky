@@ -55,7 +55,7 @@
 .public GetKeyboardStatus
 .public MemcpySimple
 .public DungeonRequestsDoneWrapper
-.public ov02_02338E48
+.public ov01_02338E48
 .public sub_02003BFC
 .public DebugPrint0__0200C1FC
 .public sub_0204DD80
@@ -70,7 +70,7 @@
 .public sub_02067664
 .public sub_0204E210
 .public sub_02069904
-.public ov02_02338EC4
+.public ov01_02338EC4
 .public sub_02003B94
 .public ov01_0233769C
 .public sub_0205FD88

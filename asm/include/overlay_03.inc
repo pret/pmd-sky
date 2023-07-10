@@ -153,7 +153,7 @@
 .public sub_02055E14
 .public GetTeamNameCheck
 .public ov01_0232D8FC
-.public ov02_02338EC4
+.public ov01_02338EC4
 .public sub_02003B94
 .public sub_02066990
 .public UnloadFile
@@ -226,7 +226,7 @@
 .public sub_0206351C
 .public sub_020630A4
 .public ov00_022BD780
-.public ov02_0232D590
+.public ov01_0232D590
 .public ov01_0232D1F4
 .public GetPressedButtons
 .public ov01_0233462C

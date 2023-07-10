@@ -5440,7 +5440,7 @@ _02387830:
 	beq _0238786C
 	mov r0, r5
 	ldr r8, [r5, #0xb4]
-	bl ov02_02347100
+	bl ov29_02347100
 	strb r0, [r8, #0x161]
 _0238786C:
 	add r0, sp, #0x218
@@ -7667,7 +7667,7 @@ _02389AD0:
 	add r0, r0, #0x12000
 	ldr r8, [r0, #0xb28]
 	mov r0, r8
-	bl ov02_0234FB60
+	bl ov29_0234FB60
 	cmp r0, #0
 	beq _02389B08
 	ldr r1, [r8, #0xb4]
@@ -7793,7 +7793,7 @@ _02389C78:
 	add r0, r0, #0x12000
 	ldr r7, [r0, #0xb28]
 	mov r0, r7
-	bl ov02_0234FB60
+	bl ov29_0234FB60
 	cmp r0, #0
 	beq _02389CA4
 	mov r0, r7

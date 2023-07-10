@@ -2433,7 +2433,7 @@ _02384AC8:
 	mov r0, r4
 	mov r1, r5
 	mov r2, r8
-	bl ov02_02345538
+	bl ov29_02345538
 _02384B08:
 	add r6, r6, #1
 	cmp r6, #0x40

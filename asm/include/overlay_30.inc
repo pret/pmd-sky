@@ -14,7 +14,7 @@
 .public Memset
 .public ov29_02344B30
 .public ov29_022E1608
-.public ov02_02345538
+.public ov29_02345538
 .public ov29_022E1A40
 .public sub_02048DC4
 .public ov29_022E2018

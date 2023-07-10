@@ -5648,7 +5648,7 @@ _0232DE2E:
 	mvn r1, r1
 	cmp r0, r1
 	beq _0232DE5A
-	bl ov01_0232FE98
+	bl ov02_0232FE98
 _0232DE5A:
 	add r0, r4, #0
 	pop {r4, pc}
@@ -5753,7 +5753,7 @@ _0232DF10:
 	str r0, [sp, #0xc]
 _0232DF26:
 	ldr r0, [sp, #8]
-	bl ov01_0232E8D8
+	bl ov02_0232E8D8
 	ldr r0, _0232E1E0 ; =0x0235853C
 	ldr r1, [r0, #0x2c]
 	mov r0, #1
@@ -6092,7 +6092,7 @@ _0232E200:
 	mvn r1, r1
 	cmp r0, r1
 	beq _0232E20E
-	bl ov01_0232FE98
+	bl ov02_0232FE98
 _0232E20E:
 	mov r1, #0
 	ldr r0, _0232E540 ; =0x02352F64
@@ -6408,7 +6408,7 @@ _0232E47A:
 	add r3, r2, #0
 	ldr r0, [r0]
 	add r0, r0, #1
-	bl ov01_0232FE1C
+	bl ov02_0232FE1C
 	cmp r0, #0
 	bgt _0232E4F4
 	ldr r0, [sp, #0x50]
@@ -6507,7 +6507,7 @@ _0232E578:
 	ldr r0, [r0]
 	cmp r0, r5
 	beq _0232E584
-	bl ov01_0232FE98
+	bl ov02_0232FE98
 _0232E584:
 	mov r1, #0
 	ldr r0, _0232E87C ; =0x02352F64
@@ -6798,7 +6798,7 @@ _0232E7D2:
 	mvn r1, r1
 	cmp r0, r1
 	beq _0232E7E2
-	bl ov01_0232FE98
+	bl ov02_0232FE98
 _0232E7E2:
 	mov r1, #0
 	ldr r0, _0232E87C ; =0x02352F64
@@ -6933,8 +6933,8 @@ _0232E8D2:
 _0232E8D4: .word 0x0235853C
 	thumb_func_end ov02_0232E8AC
 
-	thumb_func_start ov01_0232E8D8
-ov01_0232E8D8: ; 0x0232E8D8
+	thumb_func_start ov02_0232E8D8
+ov02_0232E8D8: ; 0x0232E8D8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0232E91C ; =0x0235929C
@@ -6972,7 +6972,7 @@ _0232E920: .word 0x0235853C
 _0232E924: .word 0x02358560
 _0232E928: .word 0x0235855C
 _0232E92C: .word 0xC0A80B01
-	thumb_func_end ov01_0232E8D8
+	thumb_func_end ov02_0232E8D8
 
 	thumb_func_start ov02_0232E930
 ov02_0232E930: ; 0x0232E930
@@ -9733,8 +9733,8 @@ ov02_0232FE08: ; 0x0232FE08
 	.align 2, 0
 	thumb_func_end ov02_0232FE08
 
-	thumb_func_start ov01_0232FE1C
-ov01_0232FE1C: ; 0x0232FE1C
+	thumb_func_start ov02_0232FE1C
+ov02_0232FE1C: ; 0x0232FE1C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	ldr r2, [r1]
@@ -9773,7 +9773,7 @@ ov01_0232FE1C: ; 0x0232FE1C
 	pop {r4, r5, r6, pc}
 	nop
 _0232FE6C: .word 0x01FF6210
-	thumb_func_end ov01_0232FE1C
+	thumb_func_end ov02_0232FE1C
 
 	thumb_func_start ov02_0232FE70
 ov02_0232FE70: ; 0x0232FE70
@@ -9809,13 +9809,13 @@ ov02_0232FE8C: ; 0x0232FE8C
 _0232FE94: .word ov00_022CF1D8
 	thumb_func_end ov02_0232FE8C
 
-	thumb_func_start ov01_0232FE98
-ov01_0232FE98: ; 0x0232FE98
+	thumb_func_start ov02_0232FE98
+ov02_0232FE98: ; 0x0232FE98
 	ldr r3, _0232FE9C ; =ov00_022CF3C8
 	bx r3
 	.align 2, 0
 _0232FE9C: .word ov00_022CF3C8
-	thumb_func_end ov01_0232FE98
+	thumb_func_end ov02_0232FE98
 
 	thumb_func_start ov02_0232FEA0
 ov02_0232FEA0: ; 0x0232FEA0

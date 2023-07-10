@@ -139,7 +139,7 @@
 .public ov01_02338B08
 .public ov00_022BD578
 .public sub_0202C728
-.public ov02_02338EC4
+.public ov01_02338EC4
 .public sub_02039304
 .public ov01_0232B540
 .public ov00_022BD730

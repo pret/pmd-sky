@@ -1863,7 +1863,7 @@ _0233E364:
 	str r1, [r0]
 	b _0233F854
 _0233E37C:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #1
 	beq _0233E3F4
 	cmp r0, #4
@@ -1912,7 +1912,7 @@ _0233E40C:
 _0233E424:
 	bl ov05_0233CB84
 	mov r4, r0
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #5
 	bne _0233E454
 	bl sub_020473A4
@@ -1964,7 +1964,7 @@ _0233E4A8:
 	str r1, [r0]
 	b _0233F854
 _0233E4EC:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #4
 	bne _0233E628
 	bl ov05_0233CAA8
@@ -2058,7 +2058,7 @@ _0233E628:
 	str r1, [r0]
 	b _0233F854
 _0233E64C:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #4
 	bne _0233E694
 	mov r0, #0
@@ -2087,7 +2087,7 @@ _0233E694:
 	str r1, [r0]
 	b _0233F854
 _0233E6B8:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #4
 	bne _0233E780
 	mov r0, #0
@@ -2149,7 +2149,7 @@ _0233E780:
 	str r1, [r0]
 	b _0233F854
 _0233E7A4:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	mov r4, r0
 	bl ov05_0233CB84
 	cmp r4, #5
@@ -2220,7 +2220,7 @@ _0233E888:
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	str r0, [r1, #0x7d8]
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #5
 	bne _0233E8D4
 	bl ov05_0233F980
@@ -2285,7 +2285,7 @@ _0233E948:
 	str r1, [r0]
 	b _0233F854
 _0233E9A4:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	mov r5, r0
 	bl ov05_0233CB34
 	mov r4, r0
@@ -2341,7 +2341,7 @@ _0233EA40:
 	str r1, [r0]
 	b _0233F854
 _0233EA78:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	mov r4, r0
 	bl ov05_0233CB84
 	cmp r4, #5
@@ -2423,7 +2423,7 @@ _0233EBA8: .word 0x00003024
 _0233EBAC: .word 0x00003025
 _0233EBB0: .word 0x00003026
 _0233EBB4:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #4
 	bne _0233ED00
 	mov r0, #0
@@ -2523,7 +2523,7 @@ _0233ED00:
 	b _0233F854
 _0233ED24:
 	bl ov01_02339988
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	mov r4, r0
 	bl ov05_0233CB84
 	mov r5, r0
@@ -2584,7 +2584,7 @@ _0233EDEC:
 	str r1, [r0]
 	b _0233F854
 _0233EE0C:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	mov r5, r0
 	bl ov05_0233CB34
 	mov r4, r0
@@ -2630,7 +2630,7 @@ _0233EE94:
 	str r1, [r0]
 	b _0233F854
 _0233EEB8:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #4
 	bne _0233EF9C
 	mov r0, #0
@@ -2700,7 +2700,7 @@ _0233EF9C:
 	str r1, [r0]
 	b _0233F854
 _0233EFC0:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #4
 	bne _0233F118
 	mov r0, #0
@@ -2804,7 +2804,7 @@ _0233F118:
 	b _0233F854
 _0233F13C:
 	bl ov01_02339988
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	mov r4, r0
 	bl ov05_0233CB84
 	mov r5, r0
@@ -2865,7 +2865,7 @@ _0233F204:
 	str r1, [r0]
 	b _0233F854
 _0233F224:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #0
 	beq _0233F854
 	bl ov01_02338B08
@@ -2875,7 +2875,7 @@ _0233F224:
 	str r1, [r0]
 	b _0233F854
 _0233F248:
-	bl ov02_02338EC4
+	bl ov01_02338EC4
 	cmp r0, #6
 	bne _0233F3EC
 	bl ov01_02338B08

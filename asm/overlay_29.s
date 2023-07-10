@@ -92294,8 +92294,8 @@ _0232A59C:
 _0232A5A8: .word 0x02352AEC
 	arm_func_end ov29_0232A524
 
-	arm_func_start ov02_0232A5AC
-ov02_0232A5AC: ; 0x0232A5AC
+	arm_func_start ov29_0232A5AC
+ov29_0232A5AC: ; 0x0232A5AC
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
@@ -92335,7 +92335,7 @@ _0232A628:
 	bx lr
 	.align 2, 0
 _0232A63C: .word 0x022C44C4
-	arm_func_end ov02_0232A5AC
+	arm_func_end ov29_0232A5AC
 
 	arm_func_start ov29_0232A640
 ov29_0232A640: ; 0x0232A640
@@ -99550,7 +99550,7 @@ ov29_02330624: ; 0x02330624
 	mov r1, r4
 	mov r2, r8
 	str r7, [sp]
-	bl ov02_0232A5AC
+	bl ov29_0232A5AC
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02330624
