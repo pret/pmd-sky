@@ -1,4 +1,3 @@
-#include <nitro/fs/overlay.h>
 #pragma once
 .public sub_02048764
 .public CreateDBox

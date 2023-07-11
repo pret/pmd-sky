@@ -1,4 +1,3 @@
-#include <nitro/fs/overlay.h>
 #pragma once
 .public ov29_0234FB6C
 .public GetRecruitRate2

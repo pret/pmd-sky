@@ -14,9 +14,6 @@ include filesystem.mk
 
 $(ASM_OBJS): MWASFLAGS += -DPM_ASM -include config.h
 
-$(BUILD_DIR)/asm/nitrocrypto.o:  MWCCVER := 1.2/sp2p3
-$(BUILD_DIR)/lib/msl/src/*.o:    EXCCFLAGS := -Cpp_exceptions on
-
 $(ASM_OBJS): $(WORK_DIR)/include/config.h
 $(C_OBJS):   $(WORK_DIR)/include/global.h
 
@@ -57,13 +54,13 @@ sub: ; @$(MAKE) -C sub
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
 
+$(SBIN_LZ): $(BUILD_DIR)/component.files
+	$(COMPSTATIC) -9 -c -f $<
+
 $(NEF): libsyscall
 
 libsyscall:
 	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
-
-$(SBIN_LZ): $(BUILD_DIR)/component.files
-	$(COMPSTATIC) -9 -c -f $<
 
 $(BUILD_DIR)/component.files: main ;
 
@@ -78,14 +75,6 @@ endif
 
 $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 	$(WINE) $(MAKEBNR) $< $@
-
-# TODO: move to NitroSDK makefile
-FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
-PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
-$(FX_CONST_H): $(TOOLSDIR)/gen_fx_consts/fx_const.csv
-	$(MKFXCONST) $@
-sdk: $(FX_CONST_H)
-$(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
 
 compare: @$(MAKE) COMPARE=1
 

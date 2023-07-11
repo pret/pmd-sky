@@ -1,4 +1,3 @@
-#include <nitro/fs/overlay.h>
 #pragma once
 .public GetHeldButtons
 .public ov01_02338E54

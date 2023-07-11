@@ -13951,7 +13951,7 @@ ov00_022C826C: ; 0x022C826C
 	sub sp, sp, #8
 	mov r4, r0
 	ldr r0, _022C8464 ; =0x02000BDC
-	bl sub_02000B9C
+	bl OSi_ReferSymbol
 	ldr r3, [r4, #0x18]
 	ldr r5, [r4, #0x14]
 	cmp r3, #0
@@ -19505,7 +19505,7 @@ ov00_022CCD90: ; 0x022CCD90
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _022CCDC4 ; =0x02000BF4
-	bl sub_02000B9C
+	bl OSi_ReferSymbol
 	ldr r0, _022CCDC8 ; =0x02318868
 	ldr r1, [r0]
 	cmp r1, #0
@@ -26495,7 +26495,7 @@ ov00_022D2B44: ; 0x022D2B44
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _022D2B6C ; =0x02000C1C
-	bl sub_02000B9C
+	bl OSi_ReferSymbol
 	ldr r0, _022D2B70 ; =0x022B966C
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xa4]
@@ -35912,7 +35912,7 @@ ov00_022DB054: ; 0x022DB054
 	mov r6, r0
 	ldr r0, _022DB0CC ; =0x02000C34
 	mov r5, #0
-	bl sub_02000B9C
+	bl OSi_ReferSymbol
 	mov r0, r6
 	bl ov00_022EE018
 	mov r4, r0

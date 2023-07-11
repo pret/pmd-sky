@@ -1,4 +1,3 @@
-#include <nitro/fs/overlay.h>
 #pragma once
 .public ShowMessageInDBox
 .public sub_0202A66C

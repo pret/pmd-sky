@@ -1,4 +1,3 @@
-#include <nitro/fs/overlay.h>
 #pragma once
 .public ov00_0233103C
 .public sub_02079940
@@ -57,7 +56,7 @@
 .public sub_0208B360
 .public Wcslen
 .public sub_02085074
-.public sub_02000B9C
+.public OSi_ReferSymbol
 .public Strcpy
 .public sub_0207C2B8
 .public sub_02008F64

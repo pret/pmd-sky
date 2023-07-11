@@ -1,4 +1,3 @@
-#include <nitro/fs/overlay.h>
 #pragma once
 .public DebugPrint0__0200C1FC
 .public ov00_022EF548

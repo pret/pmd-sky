@@ -1,0 +1,3 @@
+./tools/mwasmarm_patcher/mwasmarm_patcher -q tools/mwccarm/2.0/sp2p2/mwasmarm.exe
+shasum --quiet -c ./pmdsky.us/filesystem.sha1
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -C all install INSTALL_PREFIX=/Users/chenghanngan/Documents/Programs/ReverseEngineering/PRET/pmd-sky/build/pmdsky.us GAME_CODE=C2SE
