@@ -58019,7 +58019,7 @@ _022EDD08:
 	b _022ED9D0
 _022EDD10:
 	mov r0, #0x4000
-	blx sub_02000088
+	blx SVC_WaitByLoop
 	b _022ED9D0
 _022EDD1C:
 	add sp, sp, #0x3c
@@ -58074,7 +58074,7 @@ _022EDDA8:
 	cmp r0, #1
 	beq _022EDDD0
 	mov r0, r7
-	blx sub_02000088
+	blx SVC_WaitByLoop
 	b _022EDDA8
 _022EDDD0:
 	mov r0, r4
@@ -58117,7 +58117,7 @@ _022EDE34:
 	cmp r0, #1
 	ldmeqdb sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r4
-	blx sub_02000088
+	blx SVC_WaitByLoop
 	b _022EDE34
 _022EDE5C:
 	.byte 0xF0, 0x81, 0xBD, 0xE8
@@ -58173,7 +58173,7 @@ _022EDEE8:
 	cmp r0, #1
 	beq _022EDF10
 	mov r0, r4
-	blx sub_02000088
+	blx SVC_WaitByLoop
 	b _022EDEE8
 _022EDF10:
 	mov r0, #1

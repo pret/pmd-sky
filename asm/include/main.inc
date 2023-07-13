@@ -59,9 +59,9 @@
 .public sub_01FF97CC
 .public GetKeyN2MSwitch
 .public sub_01FF8D0C
-.public sub_02000088
+.public SVC_WaitByLoop
 .public MIi_UncompressBackward
 .public OSi_ReferSymbol
-.public sub_0200078E
+.public SVC_CpuSet
 .public _start_ModuleParams
 .public _start_AutoloadDoneCallback
