@@ -89,6 +89,6 @@
 .public sub_02010044
 .public sub_0201255C
 .public sub_0202C7BC
-.public ov00_0230DB58
+.public ov11_0230DB58
 .public SetPortraitUnknownAttr
 .public sub_020037A4

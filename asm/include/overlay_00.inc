@@ -231,3 +231,5 @@
 .public ov01_0232C244
 .public ov01_0232BE98
 .public ov01_0233AE64
+.public ov08_0233E230
+.public ov09_0233CA80

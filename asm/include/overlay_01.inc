@@ -317,3 +317,7 @@
 .public ov00_022BCCAC
 .public ov00_022BD3F4
 .public ov00_022BDE24
+.public ov04_0233CC4C
+.public ov05_0233CC10
+.public ov06_0233D51C
+.public ov07_0233F6E0

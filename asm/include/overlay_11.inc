@@ -714,3 +714,17 @@
 .public sub_020420F4
 .public sub_02003A40
 .public LoadFileFromRom__02008C3C
+.public ov17_0238A140
+.public ov15_0238AE98
+.public ov16_0238C1CC
+.public ov18_0238A140
+.public ov19_0238D56C
+.public ov20_0238A160
+.public ov21_0238B8FC
+.public ov22_0238D640
+.public ov23_0238C328
+.public ov24_0238C1D4
+.public ov25_0238B134
+.public ov26_0238A568
+.public ov27_0238BA7C
+.public ov28_0238A490

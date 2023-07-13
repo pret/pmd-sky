@@ -124,7 +124,7 @@ Overlay OVY_19
 Overlay OVY_20
 {
 	After OVY_11
-	Object asm/overlay_21.o
+	Object asm/overlay_20.o
 }
 Overlay OVY_21
 {

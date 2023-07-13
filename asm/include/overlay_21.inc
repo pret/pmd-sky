@@ -1,7 +1,7 @@
 #pragma once
 .public MemAlloc
 .public SetPortraitUnknownAttr
-.public ov11_0230C91
+.public ov11_0230C910
 .public ShowMessageInDBox
 .public PrintIqSkillsMenu
 .public GetGold

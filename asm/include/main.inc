@@ -8,7 +8,7 @@
 .public ov00_022C2340
 .public ov11_023061CC
 .public ov02_0233CDD8
-.public ov11_022DC240
+.public ExplorersOfSkyMain
 .public ov00_022F98B4
 .public ov01_02337C54
 .public ov00_022C2450

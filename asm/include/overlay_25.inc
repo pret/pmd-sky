@@ -7,7 +7,7 @@
 .public sub_0202E6C8
 .public CreateDBox
 .public sub_0200D670
-.public ov11_0230C91
+.public ov11_0230C910
 .public sub_0202F8FC
 .public sub_02027B1C
 .public PreprocessString

@@ -1,7 +1,7 @@
 #pragma once
 .public sub_0205633C
 .public IsMoneyAllowed
-.public ov11_0230CDE
+.public ov11_0230CDE0
 .public InitPreprocessorArgs
 .public SetMoneyCarried
 .public sub_0206351C
