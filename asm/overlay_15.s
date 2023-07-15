@@ -63,7 +63,7 @@ ov15_0238A140: ; 0x0238A140
 	mov r0, #0
 	bl ov15_0238A4E8
 	mov r0, #1
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A228: .word 0x0238B180
 _0238A22C: .word 0x00000183
@@ -254,7 +254,7 @@ _0238A488:
 	b _0238A4D4
 _0238A4AC:
 	mov r0, #3
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 _0238A4B4:
 	ldrsb r0, [r1, #0x80]
 	bl IsDBoxActive
@@ -266,7 +266,7 @@ _0238A4B4:
 	bl ov15_0238A4E8
 _0238A4D4:
 	mov r0, #0
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238A4DC: .word 0x0238B180
 _0238A4E0: .word 0x00001308
@@ -820,7 +820,7 @@ _0238AD00:
 	bl sub_0202F954
 _0238AD08:
 	add sp, sp, #8
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AD10: .word 0x0238B180
 _0238AD14: .word 0x00003008
@@ -868,7 +868,7 @@ ov15_0238AD78: ; 0x0238AD78
 	ldr r0, [r0]
 	add r0, r0, #0x54
 	bl sub_02039B0C
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238ADBC: .word 0x0238B180
 _0238ADC0: .word 0x00000385
@@ -919,7 +919,7 @@ ov15_0238ADFC: ; 0x0238ADFC
 	bl sub_02027AF0
 	add sp, sp, #0x54
 	add sp, sp, #0x400
-	ldmdb sp!, {r3, r4, pc}
+	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _0238AE64: .word 0x00000373
 _0238AE68: .word 0x0000C402
@@ -936,7 +936,7 @@ ov15_0238AE98: ; 0x0238AE98
 	ldr r0, _0238AF40 ; =0x0238B180
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	ldrsb r1, [r0, #0x80]
 	mvn r0, #1
 	cmp r1, r0
@@ -977,7 +977,7 @@ _0238AF24:
 	ldr r0, _0238AF40 ; =0x0238B180
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AF40: .word 0x0238B180
 _0238AF44: .word 0x0238B11C

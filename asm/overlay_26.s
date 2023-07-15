@@ -282,7 +282,7 @@ _0238A50C:
 	strb r3, [r1, #5]
 _0238A528:
 	add sp, sp, #0x10
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238A530: .word 0x0238AF60
 _0238A534: .word 0x0238AE92
@@ -306,7 +306,7 @@ ov26_0238A568: ; 0x0238A568
 	ldr r0, _0238A59C ; =0x0238AF60
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl ov26_0238A90C
 	ldr r0, _0238A59C ; =0x0238AF60
 	ldr r0, [r0]
@@ -314,7 +314,7 @@ ov26_0238A568: ; 0x0238A568
 	ldr r0, _0238A59C ; =0x0238AF60
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A59C: .word 0x0238AF60
 	arm_func_end ov26_0238A568
@@ -395,13 +395,13 @@ _0238A93C:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl FreePortraitBox
 	ldr r0, _0238A96C ; =0x0238AF60
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #5]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A96C: .word 0x0238AF60
 	arm_func_end ov26_0238A90C
@@ -417,7 +417,7 @@ ov26_0238A970: ; 0x0238A970
 	str r0, [r1]
 	str r2, [r0, #4]
 	mov r0, #1
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A998: .word 0x0238AF64
 	arm_func_end ov26_0238A970
@@ -428,12 +428,12 @@ ov26_0238A99C: ; 0x0238A99C
 	ldr r0, _0238A9C4 ; =0x0238AF64
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl MemFree
 	ldr r0, _0238A9C4 ; =0x0238AF64
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A9C4: .word 0x0238AF64
 	arm_func_end ov26_0238A99C
@@ -452,7 +452,7 @@ ov26_0238A9C8: ; 0x0238A9C8
 	mov r0, #1
 	bl ov11_022E6E8C
 	mov r0, #4
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 _0238A9FC:
 	bl GetGameMode
 	cmp r0, #4
@@ -480,10 +480,10 @@ _0238AA3C:
 	mov r0, #1
 	bl ov11_022E6E8C
 	mov r0, #4
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 _0238AA5C:
 	mov r0, #1
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238AA64: .word 0x0238AF64
 	arm_func_end ov26_0238A9C8
@@ -499,7 +499,7 @@ ov26_0238AA68: ; 0x0238AA68
 	str r0, [r1]
 	str r2, [r0, #4]
 	mov r0, #1
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AA90: .word 0x0238AF68
 	arm_func_end ov26_0238AA68
@@ -510,12 +510,12 @@ ov26_0238AA94: ; 0x0238AA94
 	ldr r0, _0238AABC ; =0x0238AF68
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl MemFree
 	ldr r0, _0238AABC ; =0x0238AF68
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AABC: .word 0x0238AF68
 	arm_func_end ov26_0238AA94
@@ -554,7 +554,7 @@ ov26_0238AC14: ; 0x0238AC14
 	str r0, [r1]
 	str r2, [r0, #4]
 	mov r0, #1
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AC3C: .word 0x0238AF6C
 	arm_func_end ov26_0238AC14
@@ -565,12 +565,12 @@ ov26_0238AC40: ; 0x0238AC40
 	ldr r0, _0238AC68 ; =0x0238AF6C
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl MemFree
 	ldr r0, _0238AC68 ; =0x0238AF6C
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AC68: .word 0x0238AF6C
 	arm_func_end ov26_0238AC40
@@ -592,7 +592,7 @@ _0238AC90:
 	bne _0238ACA8
 	bl ov11_0230CDE0
 	mov r0, #4
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238ACA8:
 	bl sub_020587C8
 	ldr r0, _0238ACD4 ; =0x0238AF6C
@@ -603,10 +603,10 @@ _0238ACA8:
 _0238ACC0:
 	bl ov00_022E6E68
 	mov r0, #4
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238ACCC:
 	mov r0, #1
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238ACD4: .word 0x0238AF6C
 	arm_func_end ov26_0238AC6C
@@ -625,7 +625,7 @@ ov26_0238ACD8: ; 0x0238ACD8
 	mov r1, #5
 	strh r1, [r0, #4]
 	mov r0, #1
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AD0C: .word 0x0238AF70
 	arm_func_end ov26_0238ACD8
@@ -636,12 +636,12 @@ ov26_0238AD10: ; 0x0238AD10
 	ldr r0, _0238AD38 ; =0x0238AF70
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl MemFree
 	ldr r0, _0238AD38 ; =0x0238AF70
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AD38: .word 0x0238AF70
 	arm_func_end ov26_0238AD10
@@ -668,7 +668,7 @@ _0238AE00:
 _0238AE10:
 	mov r0, #1
 	add sp, sp, #0xe8
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	arm_func_end ov26_0238ADFC
 	; 0x0238AE1C
 

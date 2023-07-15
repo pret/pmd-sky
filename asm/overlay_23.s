@@ -1152,7 +1152,7 @@ _0238B1F4:
 	arm_func_end caseD_2c
 _0238B230:
 	add sp, sp, #0x30c
-	ldmdb sp!, {r3, r4, pc}
+	ldmia sp!, {r3, r4, pc}
 
 	arm_func_start ov23_0238B238
 ov23_0238B238: ; 0x0238B238
@@ -2295,7 +2295,7 @@ _0238C2E4:
 	bl ov23_0238D0E0
 _0238C320:
 	add sp, sp, #0x30c
-	ldmdb sp!, {r3, r4, pc}
+	ldmia sp!, {r3, r4, pc}
 	arm_func_end ov23_0238B238
 
 	arm_func_start ov23_0238C328
@@ -2371,7 +2371,7 @@ _0238C3FC:
 	strb r0, [r1, #0x88]
 	bl ov23_0238A140
 	mov r0, #1
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238C440: .word 0x0238A134
 _0238C444: .word 0x0238D8A0
@@ -2383,12 +2383,12 @@ ov23_0238C448: ; 0x0238C448
 	ldr r0, _0238C470 ; =0x0238D8A0
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl MemFree
 	ldr r0, _0238C470 ; =0x0238D8A0
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238C470: .word 0x0238D8A0
 	arm_func_end ov23_0238C448
@@ -2670,7 +2670,7 @@ _0238D01C:
 	.byte 0x04, 0x00, 0xA0, 0xE3, 0x38, 0x80, 0xBD, 0xE8
 _0238D088:
 	mov r0, #1
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238D090: .word 0x0238D8A0
 	arm_func_end ov23_0238CCF0
@@ -2685,7 +2685,7 @@ ov23_0238D098: ; 0x0238D098
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x99]
 	cmp r0, r1
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl sub_0202836C
 	ldr r0, _0238D0DC ; =0x0238D8A0
 	ldr r0, [r0]
@@ -2695,7 +2695,7 @@ ov23_0238D098: ; 0x0238D098
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x99]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D0DC: .word 0x0238D8A0
 	arm_func_end ov23_0238D098
@@ -2710,7 +2710,7 @@ ov23_0238D0E0: ; 0x0238D0E0
 	ldr r0, [r3]
 	mov r4, r2
 	cmp r0, #1
-	ldmeqdb sp!, {r4, r5, r6, pc}
+	ldmeqia sp!, {r4, r5, r6, pc}
 	ldrsb r1, [r3, #0x88]
 	add r0, r3, #0x1ac
 	bl SetPortraitExpressionId
@@ -2726,7 +2726,7 @@ ov23_0238D0E0: ; 0x0238D0E0
 	mov r2, r4
 	add r3, r3, #0x9c
 	bl ShowMessageInDBox
-	ldmdb sp!, {r4, r5, r6, pc}
+	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0238D144: .word 0x0238D8A0
 	arm_func_end ov23_0238D0E0
@@ -2762,7 +2762,7 @@ _0238D19C:
 	bl RemoveEmptyItemsInBag
 	bl sub_0201007C
 	bl sub_02042AF8
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov23_0238D148
 
 	arm_func_start ov23_0238D1B8
@@ -2801,7 +2801,7 @@ _0238D21C:
 	bl RemoveEmptyItemsInBag
 	bl sub_020434D4
 	add sp, sp, #8
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov23_0238D1B8
 
 	arm_func_start ov23_0238D238
@@ -2820,7 +2820,7 @@ ov23_0238D238: ; 0x0238D238
 	strh r1, [sp, #2]
 	bl SpecialProcAddItemToBag
 	bl sub_020434D4
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D274: .word 0x0238D8A0
 	arm_func_end ov23_0238D238
@@ -2841,7 +2841,7 @@ ov23_0238D278: ; 0x0238D278
 	cmp r0, #0
 	bne _0238D2B4
 	bl sub_02042AF8
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238D2B4:
 	ldr r0, _0238D2E4 ; =0x0238D8A0
 	ldr r0, [r0]
@@ -2854,7 +2854,7 @@ _0238D2B4:
 	add r0, r0, #0x18
 	bl sub_020103AC
 	bl sub_02042AF8
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D2E4: .word 0x0238D8A0
 	arm_func_end ov23_0238D278

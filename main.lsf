@@ -24,177 +24,177 @@ Autoload DTCM
 }
 Overlay OVY_0
 {
-	After main
+	Address 0x022BCA80
 	Object asm/overlay_00.o
 }
 Overlay OVY_1
 {
-	After OVY_0
+	Address 0x02329520
 	Object asm/overlay_01.o
 }
 Overlay OVY_2
 {
-	After OVY_0
+	Address 0x02329520
 	Object asm/overlay_02.o
 }
 Overlay OVY_3
 {
-	After OVY_1
+	Address 0x0233CA80
 	Object asm/overlay_03.o
 }
 Overlay OVY_4
 {
-	After OVY_1
+	Address 0x0233CA80
 	Object asm/overlay_04.o
 }
 Overlay OVY_5
 {
-	After OVY_1
+	Address 0x0233CA80
 	Object asm/overlay_05.o
 }
 Overlay OVY_6
 {
-	After OVY_1
+	Address 0x0233CA80
 	Object asm/overlay_06.o
 }
 Overlay OVY_7
 {
-	After OVY_1
+	Address 0x0233CA80
 	Object asm/overlay_07.o
 }
 Overlay OVY_8
 {
-	After OVY_1
+	Address 0x0233CA80
 	Object asm/overlay_08.o
 }
 Overlay OVY_9
 {
-	After OVY_1
+	Address 0x0233CA80
 	Object asm/overlay_09.o
 }
 Overlay OVY_10
 {
-	After main
+	Address 0x022BCA80
 	Object asm/overlay_10.o
 }
 Overlay OVY_11
 {
-	After OVY_10
+	Address 0x022DC240
 	Object asm/overlay_11.o
 }
 Overlay OVY_12
 {
-	After OVY_11
+	Address 0x0238A140
 }
 Overlay OVY_13
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_13.o
 }
 Overlay OVY_14
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_14.o
 }
 Overlay OVY_15
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_15.o
 }
 Overlay OVY_16
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_16.o
 }
 Overlay OVY_17
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_17.o
 }
 Overlay OVY_18
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_18.o
 }
 Overlay OVY_19
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_19.o
 }
 Overlay OVY_20
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_20.o
 }
 Overlay OVY_21
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_21.o
 }
 Overlay OVY_22
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_22.o
 }
 Overlay OVY_23
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_23.o
 }
 Overlay OVY_24
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_24.o
 }
 Overlay OVY_25
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_25.o
 }
 Overlay OVY_26
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_26.o
 }
 Overlay OVY_27
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_27.o
 }
 Overlay OVY_28
 {
-	After OVY_11
+	Address 0x0238A140
 	Object asm/overlay_28.o
 }
 Overlay OVY_29
 {
-	After OVY_10
+	Address 0x022DC240
 	Object asm/overlay_29.o
 }
 Overlay OVY_30
 {
-	After OVY_29
+	Address 0x02382820
 	Object asm/overlay_30.o
 }
 Overlay OVY_31
 {
-	After OVY_29
+	Address 0x02382820
 	Object asm/overlay_31.o
 }
 Overlay OVY_32
 {
-	After OVY_29
+	Address 0x02382820
 }
 Overlay OVY_33
 {
-	After OVY_29
+	Address 0x02382820
 }
 Overlay OVY_34
 {
-	After OVY_10
+	Address 0x022DC240
 	Object asm/overlay_34.o
 }
 Overlay OVY_35
 {
-	After main
+	Address 0x022BCA80
 }

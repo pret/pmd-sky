@@ -16,13 +16,13 @@ _0238A154:
 	ldrsh r2, [r3, ip]
 	cmp r0, r2
 	addeq r0, r3, ip
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	add lr, lr, #1
 _0238A16C:
 	cmp lr, #0x42
 	blo _0238A154
 	mov r0, #0
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A17C: .word 0x0238DBCC
 	arm_func_end GetBarItem
@@ -50,7 +50,7 @@ ov19_0238A1A8: ; 0x0238A1A8
 	stmdb sp!, {r3, lr}
 	bl GetBarItem
 	add r0, r0, #0xe
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	arm_func_end ov19_0238A1A8
 
 	arm_func_start ov19_0238A1B8
@@ -111,7 +111,7 @@ _0238A264:
 	mov r0, r5
 	bl MemFree
 	mov r0, r4
-	ldmdb sp!, {r4, r5, r6, pc}
+	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end GetRecruitableMonsterAll
 
 	arm_func_start GetRecruitableMonsterList
@@ -160,7 +160,7 @@ _0238A308:
 	mov r0, r5
 	bl MemFree
 	mov r0, r4
-	ldmdb sp!, {r4, r5, r6, r7, r8, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0238A318: .word 0x0238DAF4
 	arm_func_end GetRecruitableMonsterList
@@ -216,7 +216,7 @@ _0238A3C0:
 	mov r0, r5
 	bl MemFree
 	mov r0, r4
-	ldmdb sp!, {r4, r5, r6, r7, r8, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0238A3D0: .word 0x0238DAF4
 	arm_func_end GetRecruitableMonsterListRestricted
@@ -265,7 +265,7 @@ _0238A450:
 	cmp r7, #6
 	blt _0238A408
 	mov r0, r6
-	ldmdb sp!, {r4, r5, r6, r7, r8, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0238A464: .word 0x0238DAE8
 	arm_func_end ov19_0238A3EC
@@ -279,13 +279,13 @@ ov19_0238A468: ; 0x0238A468
 	ldrnesb r0, [r0, #0xc]
 	mvnne r1, #1
 	cmpne r0, r1
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl FreePortraitBox
 	ldr r0, _0238A4A0 ; =0x02324DB0
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xc]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A4A0: .word 0x02324DB0
 	arm_func_end ov19_0238A468
@@ -2575,7 +2575,7 @@ _0238C598:
 _0238C59C:
 	add sp, sp, #0x308
 	add sp, sp, #0x800
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end ov19_0238ADFC
 
 	arm_func_start ov19_0238C5A8
@@ -2619,7 +2619,7 @@ _0238C624:
 	ldr r0, _0238C63C ; =0x02324DB0
 	ldr r0, [r0]
 	str sb, [r0, #0x64]
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238C63C: .word 0x02324DB0
 	arm_func_end ov19_0238C5A8
@@ -2663,7 +2663,7 @@ ov19_0238C670: ; 0x0238C670
 _0238C6B4:
 	mov r0, r5
 	add sp, sp, #0x50
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238C6C0: .word 0x02324DB0
 	arm_func_end ov19_0238C670
@@ -2738,7 +2738,7 @@ _0238C79C:
 	mov r0, #1
 _0238C7A4:
 	add sp, sp, #8
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238C7AC: .word 0x02324DB0
 	arm_func_end ov19_0238C6C4
@@ -2767,7 +2767,7 @@ ov19_0238C7B0: ; 0x0238C7B0
 _0238C7FC:
 	mov r0, r5
 	add sp, sp, #0x50
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238C808: .word 0x02324DB0
 	arm_func_end ov19_0238C7B0
@@ -2833,7 +2833,7 @@ _0238C8C0:
 _0238C8E8:
 	mov r0, #1
 	add sp, sp, #0x54
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0238C8F4: .word 0x02324DB0
 _0238C8F8: .word 0x000045E9
@@ -2897,7 +2897,7 @@ ov19_0238C900: ; 0x0238C900
 	cmp r6, #0
 	movne r0, #2
 	add sp, sp, #0x54
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0238C9E0: .word 0x02324DB0
 _0238C9E4: .word 0x0238E1CC
@@ -2983,7 +2983,7 @@ _0238CABC:
 	bl MemFree
 	mov r0, #1
 	add sp, sp, #0x5c
-	ldmdb sp!, {r4, r5, r6, r7, r8, sb, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0238CB20: .word 0x02324DB0
 _0238CB24: .word 0x0000068A
@@ -3026,7 +3026,7 @@ ov19_0238CB2C: ; 0x0238CB2C
 	mov r1, #0x400
 	bl PreprocessStringFromMessageId
 	add sp, sp, #0x54
-	ldmdb sp!, {r3, r4, r5, r6, pc}
+	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _0238CBB8: .word 0x02324DB0
 _0238CBBC: .word 0x000045EC
@@ -3128,7 +3128,7 @@ _0238CCC4:
 
 	arm_func_start ov19_0238CCD8
 ov19_0238CCD8: ; 0x0238CCD8
-	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238CCDC: .word 0x02324DB0
 _0238CCE0: .word 0x0238E2C0
@@ -3257,7 +3257,7 @@ _0238CE78:
 	strb sl, [r0, #0x18]
 	cmp r4, #1
 	movne r0, #1
-	ldmnedb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, #1
 	b _0238CEAC
 _0238CE9C:
@@ -3270,7 +3270,7 @@ _0238CEAC:
 _0238CEB0:
 	cmp sb, #6
 	blt _0238CD28
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238CEBC: .word 0x02324DB0
 	arm_func_end ov19_0238CCF0
@@ -3408,7 +3408,7 @@ _0238D0A0:
 	mov r0, r4
 	bl MemFree
 	add sp, sp, #0x70
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238D0BC: .word 0x02324DB0
 _0238D0C0: .word 0x0000068A
@@ -3572,7 +3572,7 @@ _0238D2AC:
 	str r0, [r4, #4]
 _0238D300:
 	add sp, sp, #0xc0
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238D308: .word 0x02324DB0
 _0238D30C: .word 0x000045E0
@@ -3610,7 +3610,7 @@ _0238D378:
 	mov r0, #8
 _0238D37C:
 	str r0, [r4]
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238D384: .word 0x02324DB0
 	arm_func_end ov19_0238D310
@@ -3622,7 +3622,7 @@ ov19_0238D388: ; 0x0238D388
 	cmp r0, #0
 	movne r0, #0xa
 	moveq r0, #0
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	arm_func_end ov19_0238D388
 
 	arm_func_start ov19_0238D3A0
@@ -3656,7 +3656,7 @@ ov19_0238D3A0: ; 0x0238D3A0
 	stmib sp, {r4, ip}
 	bl sub_02046A20
 	add sp, sp, #0xf4
-	ldmdb sp!, {r4, r5, r6, r7, pc}
+	ldmia sp!, {r4, r5, r6, r7, pc}
 	arm_func_end ov19_0238D3A0
 
 	arm_func_start ov19_0238D418
@@ -3666,15 +3666,15 @@ ov19_0238D418: ; 0x0238D418
 	mvn r2, #0
 	cmp r0, r2
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	sub r1, r2, #1
 	cmp r0, r1
 	moveq r0, #0xa
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	sub r1, r2, #2
 	cmp r0, r1
 	moveq r0, #0xa
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	arm_func_end ov19_0238D418
 
 	arm_func_start ov19_0238D450
@@ -3685,10 +3685,10 @@ ov19_0238D450: ; 0x0238D450
 	ldr r2, [r0]
 	ldrsb r0, [r2, #0xc]
 	cmp r0, r1
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	add r1, r2, #0x10
 	bl ShowPortraitBox
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D478: .word 0x02324DB0
 	arm_func_end ov19_0238D450
@@ -3701,9 +3701,9 @@ ov19_0238D47C: ; 0x0238D47C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc]
 	cmp r0, r1
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl HidePortraitBox
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D4A0: .word 0x02324DB0
 	arm_func_end ov19_0238D47C
@@ -3724,7 +3724,7 @@ ov19_0238D4A4: ; 0x0238D4A4
 	mov r4, r0
 	bl ov10_022BD394
 	mov r0, r4
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238D4E0: .word 0x02324DB0
 	arm_func_end ov19_0238D4A4
@@ -3737,13 +3737,13 @@ ov19_0238D4E4: ; 0x0238D4E4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x20]
 	cmp r0, r1
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl ov00_022BCCF4
 	ldr r0, _0238D518 ; =0x02324DB0
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x20]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D518: .word 0x02324DB0
 	arm_func_end ov19_0238D4E4
@@ -3756,7 +3756,7 @@ ov19_0238D51C: ; 0x0238D51C
 	ldr r2, [r1]
 	ldrsb r1, [r2, #0x20]
 	cmp r1, r0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	ldr r0, [r2, #0xd4]
 	bl sub_0203FD80
 	bl sub_020407C0
@@ -3768,7 +3768,7 @@ ov19_0238D51C: ; 0x0238D51C
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x20]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D568: .word 0x02324DB0
 	arm_func_end ov19_0238D51C
@@ -3807,7 +3807,7 @@ ov19_0238D56C: ; 0x0238D56C
 	str r0, [r4, #4]
 	str r0, [r4, #8]
 	mov r0, #1
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238D5F0: .word 0x00000A68
 _0238D5F4: .word 0x02324DB0
@@ -3850,7 +3850,7 @@ ov19_0238D5FC: ; 0x0238D5FC
 	str r0, [r4, #8]
 _0238D67C:
 	mov r0, #1
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238D684: .word 0x02324DB0
 _0238D688: .word 0x00000163

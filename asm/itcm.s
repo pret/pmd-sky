@@ -55,7 +55,7 @@ _01FF8090:
 	cmp r6, r2
 	blt _01FF8014
 _01FF80AC:
-	ldmdb sp!, {r0, r1, r2, r3, r4, r5, r6, r7, pc}
+	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_01FF8000
 
 	arm_func_start sub_01FF80B0
@@ -89,7 +89,7 @@ _01FF80C4:
 	cmp r6, r2
 	blt _01FF80C4
 _01FF811C:
-	ldmdb sp!, {r0, r1, r2, r3, r4, r5, r6, r7, pc}
+	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_01FF80B0
 _01FF8120:
 	.byte 0x24, 0x82, 0xFF, 0x01, 0x9C, 0x84, 0xFF, 0x01, 0x28, 0x87, 0xFF, 0x01, 0x28, 0x8C, 0xFF, 0x01
@@ -130,7 +130,7 @@ sub_01FF8130: ; 0x01FF8130
 	str r4, [r0, #8]
 _01FF81B0:
 	add sp, sp, #0x10
-	ldmdb sp!, {r4, r5, r6, pc}
+	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _01FF81B8: .word 0x020AFC80
 _01FF81BC: .word 0x02099734
@@ -438,7 +438,7 @@ sub_01FF8A10: ; 0x01FF8A10
 	str r0, [r3, #0x98]
 	str r1, [r3, #-0x24]
 	add sp, sp, #0x30
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FF8C1C: .word 0x020A9FB0
 _01FF8C20: .word 0x04000444
@@ -455,9 +455,9 @@ sub_01FF8C60: ; 0x01FF8C60
 	stmdb sp!, {r3, lr}
 	ldrb r1, [r0, #0x27]
 	cmp r1, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl sub_01FF8A10
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	arm_func_end sub_01FF8C60
 
 	arm_func_start sub_01FF8C78
@@ -484,14 +484,14 @@ sub_01FF8CAC: ; 0x01FF8CAC
 	mov r5, r0
 	bl sub_01FF8C78
 	movs r4, r0
-	ldmeqdb sp!, {r3, r4, r5, pc}
+	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x28
 	bl sub_0207C4C8
 	mov r0, #3
 	strh r0, [r4]
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_01FF8CAC
 
 	arm_func_start sub_01FF8CDC
@@ -500,14 +500,14 @@ sub_01FF8CDC: ; 0x01FF8CDC
 	mov r5, r0
 	bl sub_01FF8C78
 	movs r4, r0
-	ldmeqdb sp!, {r3, r4, r5, pc}
+	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x34
 	bl sub_0207C4C8
 	mov r0, #2
 	strh r0, [r4]
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_01FF8CDC
 
 	arm_func_start sub_01FF8D0C
@@ -516,14 +516,14 @@ sub_01FF8D0C: ; 0x01FF8D0C
 	bl sub_01FF8C78
 	movs r4, r0
 	moveq r0, #0
-	ldmeqdb sp!, {r4, pc}
+	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x26
 	bl sub_0207C40C
 	mov r1, #0
 	mov r0, r4
 	strh r1, [r4]
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	arm_func_end sub_01FF8D0C
 
 	arm_func_start sub_01FF8D3C
@@ -532,14 +532,14 @@ sub_01FF8D3C: ; 0x01FF8D3C
 	bl sub_01FF8C78
 	movs r4, r0
 	moveq r0, #0
-	ldmeqdb sp!, {r4, pc}
+	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x26
 	bl sub_0207C40C
 	mov r1, #1
 	mov r0, r4
 	strh r1, [r4]
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	arm_func_end sub_01FF8D3C
 
 	arm_func_start sub_01FF8D6C
@@ -548,14 +548,14 @@ sub_01FF8D6C: ; 0x01FF8D6C
 	bl sub_01FF8C78
 	movs r4, r0
 	moveq r0, #0
-	ldmeqdb sp!, {r4, pc}
+	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x28
 	bl sub_0207C40C
 	mov r1, #3
 	mov r0, r4
 	strh r1, [r4]
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	arm_func_end sub_01FF8D6C
 
 	arm_func_start sub_01FF8D9C
@@ -564,14 +564,14 @@ sub_01FF8D9C: ; 0x01FF8D9C
 	bl sub_01FF8C78
 	movs r4, r0
 	moveq r0, #0
-	ldmeqdb sp!, {r4, pc}
+	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x34
 	bl sub_0207C40C
 	mov r1, #2
 	mov r0, r4
 	strh r1, [r4]
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	arm_func_end sub_01FF8D9C
 
 	arm_func_start sub_01FF8DCC
@@ -663,7 +663,7 @@ _01FF8EDC:
 	strh r1, [r0]
 _01FF8EF4:
 	add sp, sp, #0x200
-	ldmdb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _01FF8EFC: .word 0x020AFC80
 _01FF8F00: .word 0x01FF8120
@@ -713,7 +713,7 @@ _01FF8F44:
 	beq _01FF8F98
 	mvnlo r0, #0
 	movhs r0, #1
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _01FF8F98:
 	cmp r6, #0
 	bne _01FF9004
@@ -756,17 +756,17 @@ _01FF901C:
 	cmp r8, #0
 	mvnne r0, #0
 	moveq r0, #1
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _01FF9034:
 	cmp r7, #0
 	beq _01FF904C
 	cmp sb, #0
 	mvnne r0, #0
 	moveq r0, #1
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _01FF904C:
 	mov r0, #0
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FF9054: .word 0x02099E44
 _01FF9058: .word 0x0000FFFE
@@ -785,23 +785,23 @@ sub_01FF905C: ; 0x01FF905C
 	mov r0, sb
 	bl sub_0202760C
 	cmp r5, #0
-	ldmltdb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmltia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldrb r1, [r7, #7]
 	cmp r5, r1, lsl #3
-	ldmgedb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmgeia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldrb r3, [r7, #6]
 	cmp r6, #0
 	add r1, r6, r8
 	mov r2, r3, lsl #3
 	bge _01FF90B8
 	cmp r1, #0
-	ldmltdb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmltia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r6, #0
 _01FF90B8:
 	cmp r1, r2
 	blt _01FF90CC
 	cmp r6, r2
-	ldmgedb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmgeia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	sub r1, r2, #1
 _01FF90CC:
 	mov r2, r5, asr #2
@@ -828,7 +828,7 @@ _01FF90F8:
 _01FF911C:
 	cmp r6, r1
 	ble _01FF90F8
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end sub_01FF905C
 
 	arm_func_start sub_01FF9128
@@ -927,7 +927,7 @@ _01FF9274:
 	bl sub_02027AF0
 _01FF9288:
 	add sp, sp, #0x14
-	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FF9290: .word 0x022A88DC
 _01FF9294: .word 0x022A88FC
@@ -1039,7 +1039,7 @@ _01FF940C:
 	bl sub_02027AF0
 _01FF9420:
 	add sp, sp, #0x20
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FF9428: .word 0x022A88DC
 _01FF942C: .word 0x022A88FC
@@ -1059,7 +1059,7 @@ GetKeyN2MSwitch: ; 0x01FF9434
 	ldr r1, [r3, r1, lsl #2]
 	blx r1
 	add sp, sp, #8
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _01FF9464: .word 0x020A2CF8
 	arm_func_end GetKeyN2MSwitch
@@ -1108,13 +1108,13 @@ GetKeyN2MBaseForm: ; 0x01FF94D4
 	blt _01FF94F4
 _01FF94EC:
 	mov r0, #0
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _01FF94F4:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl GetKeyN2M
 	bl GetAllBaseForms
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _01FF9508: .word 0x0000022B
 	arm_func_end GetKeyN2MBaseForm
@@ -1132,7 +1132,7 @@ GetKeyM2NSwitch: ; 0x01FF950C
 	ldr r1, [r3, r1, lsl #2]
 	blx r1
 	add sp, sp, #8
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _01FF953C: .word 0x020A2CF8
 	arm_func_end GetKeyM2NSwitch
@@ -1188,7 +1188,7 @@ _01FF95D4:
 _01FF95D8:
 	bl GetAllBaseForms
 	bl GetKeyM2N
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _01FF95E4: .word 0x00000483
 	arm_func_end GetKeyM2NBaseForm
@@ -1238,7 +1238,7 @@ _01FF97D4:
 	strh r1, [r0]
 	bl sub_01FF98E8
 	bl sub_01FF9800
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _01FF97F8: .word 0x022B99D0
 _01FF97FC: .word 0x04000208
@@ -1359,7 +1359,7 @@ _01FF9964:
 	mov r2, sl
 	add r0, r8, r4
 	bl sub_01FF9990
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FF9988: .word 0x027FFC2C
 _01FF998C: .word 0x027FFE20
@@ -1385,7 +1385,7 @@ _01FF99B4:
 	strb r4, [r7]
 	cmp ip, r2
 	add r0, r0, ip
-	ldmgedb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmgeia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldr r4, _01FF9A64 ; =0x04100010
 	mov sb, r0, lsr #8
 	mov r6, #0xb7
@@ -1420,7 +1420,7 @@ _01FF9A38:
 	add sb, sb, #2
 	add r0, r0, #0x200
 	blt _01FF99E8
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _01FF9A54: .word 0x027FFE60
 _01FF9A58: .word 0x000001FF
@@ -1446,7 +1446,7 @@ sub_01FF9A68: ; 0x01FF9A68
 	str r5, [r1, #4]
 	str r4, [r1, #8]
 	bl SetIrqFlag
-	ldmdb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_01FF9A68
 
 	arm_func_start sub_01FF9AA8
@@ -1477,7 +1477,7 @@ sub_01FF9AA8: ; 0x01FF9AA8
 	str r1, [r3, #8]
 _01FF9B08:
 	bl SetIrqFlag
-	ldmdb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _01FF9B10: .word 0x040000B0
 _01FF9B14: .word 0x81400001
@@ -1521,7 +1521,7 @@ _01FF9B88:
 	ldr r1, _01FF9B98 ; =0x040000B0
 	ldr r0, [r1]
 	ldr r0, [r1]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _01FF9B98: .word 0x040000B0
 _01FF9B9C: .word 0x81400001
@@ -1670,7 +1670,7 @@ ShouldMonsterRunAwayVariationOutlawCheck: ; 0x01FFA390
 	moveq r4, #1
 _01FFA3BC:
 	mov r0, r4
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ShouldMonsterRunAwayVariationOutlawCheck
 
 	arm_func_start AiMovement
@@ -2702,7 +2702,7 @@ _01FFB264:
 	strneb r1, [sb, #0x14e]
 _01FFB2A4:
 	add sp, sp, #0x88
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FFB2AC: .word 0x000003E7
 _01FFB2B0: .word 0x000F423F
@@ -2790,7 +2790,7 @@ _01FFB38C:
 	ldrsh r1, [r1, r3]
 	add r1, r2, r1
 	strh r1, [sb, #0x8e]
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _01FFB3E0:
 	add r5, r5, #1
 _01FFB3E4:
@@ -2825,7 +2825,7 @@ _01FFB3F0:
 	ldrsh r1, [r1, r3]
 	add r1, r2, r1
 	strh r1, [sb, #0x8e]
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _01FFB460:
 	ldrb r0, [sb, #0x7c]
 	cmp r0, #4
@@ -2848,7 +2848,7 @@ _01FFB460:
 	ldrsh r1, [r1, r3]
 	add r1, r2, r1
 	strh r1, [sb, #0x8e]
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _01FFB4B8:
 	mov r4, #0
 	b _01FFB518
@@ -2873,7 +2873,7 @@ _01FFB4C0:
 	strh r2, [sb, #0x8c]
 	ldrsh r1, [r1, #2]
 	strh r1, [sb, #0x8e]
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _01FFB514:
 	add r4, r4, #1
 _01FFB518:
@@ -2920,7 +2920,7 @@ _01FFB554:
 	strh r6, [sb, #0x8c]
 	strh r7, [sb, #0x8e]
 	mov r0, #1
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _01FFB5C0:
 	add r5, r5, #1
 	add r8, r8, #1
@@ -2929,7 +2929,7 @@ _01FFB5C8:
 	blt _01FFB554
 _01FFB5D0:
 	mov r0, #1
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _01FFB5D8:
 	mov r0, #8
 	bl DungeonRandInt
@@ -2947,7 +2947,7 @@ _01FFB5D8:
 	ldrsh r1, [r1, r3]
 	add r1, r2, r1
 	strh r1, [sb, #0x8e]
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FFB61C: .word 0x02353538
 _01FFB620: .word 0x0235177C
@@ -3451,7 +3451,7 @@ _01FFBCEC:
 	bl UpdateAiTargetPos
 _01FFBD0C:
 	add sp, sp, #0x44
-	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FFBD14: .word 0x02353538
 _01FFBD18: .word 0x022C4580
@@ -3466,7 +3466,7 @@ sub_01FFBD20: ; 0x01FFBD20
 	mov r0, r6
 	bl IsMonster__0231A9D4
 	cmp r0, #0
-	ldmeqdb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r5, [r6, #0xb4]
 	ldrb r0, [r5, #6]
 	cmp r0, #0
@@ -3503,10 +3503,10 @@ _01FFBDB0:
 	mov r1, #0x7a
 	bl AbilityIsActive2
 	cmp r0, #0
-	ldmeqdb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, [r4, #8]
 	cmp r0, #0
-	ldmnedb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
 	mov r1, r6
 	bl sub_01FFBF78
@@ -3514,7 +3514,7 @@ _01FFBDB0:
 	strne r6, [r4, #8]
 	ldrne r0, [r5, #0xb0]
 	strne r0, [r4, #0xc]
-	ldmdb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _01FFBDF0: .word 0x02353538
 	arm_func_end sub_01FFBD20
@@ -3527,7 +3527,7 @@ sub_01FFBDF4: ; 0x01FFBDF4
 	mov r0, r7
 	bl EntityIsValid__02319F8C
 	cmp r0, #0
-	ldmeqdb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r4, _01FFBE58 ; =0x02353538
 	mov r5, #0
 _01FFBE18:
@@ -3547,7 +3547,7 @@ _01FFBE48:
 	add r5, r5, #1
 	cmp r5, #0x14
 	blt _01FFBE18
-	ldmdb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _01FFBE58: .word 0x02353538
 	arm_func_end sub_01FFBDF4
@@ -3621,14 +3621,14 @@ _01FFBF4C:
 _01FFBF50:
 	cmp r0, #0
 	ldrne r0, [r6, r7, lsl #3]
-	ldmnedb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _01FFBF5C:
 	add r5, r5, #1
 _01FFBF60:
 	cmp r5, #2
 	blt _01FFBE80
 	mov r0, #0
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FFBF70: .word 0x01FFB654
 _01FFBF74: .word 0x02353538
@@ -3666,6 +3666,6 @@ _01FFBFD8:
 	moveq r0, #0
 	and r0, r0, #0xff
 	add sp, sp, #0x10
-	ldmdb sp!, {r4, r5, r6, pc}
+	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_01FFBF78
 	; 0x01FFBFF0

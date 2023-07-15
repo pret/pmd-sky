@@ -255,7 +255,7 @@ _0238A494:
 	bl sub_02017B58
 _0238A4FC:
 	mov r0, #1
-	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0238A504: .word 0x000038D4
 _0238A508: .word 0x0238DB80
@@ -369,13 +369,13 @@ _0238A680:
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x200
-	ldmnedb sp!, {r3, pc}
+	ldmneia sp!, {r3, pc}
 	ldrsb r0, [r1, #9]
 	mvn r1, #1
 	cmp r0, r1
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl HidePortraitBox
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A6AC: .word 0x0238DB80
 	arm_func_end ov14_0238A514
@@ -409,7 +409,7 @@ ov14_0238A6B0: ; 0x0238A6B0
 _0238A710:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238A71C:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -437,7 +437,7 @@ _0238A71C:
 _0238A778:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238A784:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -465,7 +465,7 @@ _0238A784:
 _0238A7E0:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238A7EC:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -493,7 +493,7 @@ _0238A7EC:
 _0238A848:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238A854:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -521,7 +521,7 @@ _0238A854:
 _0238A8B0:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238A8BC:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -549,7 +549,7 @@ _0238A8BC:
 _0238A918:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238A924:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -577,7 +577,7 @@ _0238A924:
 _0238A980:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238A98C:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -605,7 +605,7 @@ _0238A98C:
 _0238A9E8:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238A9F4:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -633,7 +633,7 @@ _0238A9F4:
 _0238AA50:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238AA5C:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -661,7 +661,7 @@ _0238AA5C:
 _0238AAB8:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238AAC4:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -689,7 +689,7 @@ _0238AAC4:
 _0238AB20:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238AB2C:
 	ldr r0, _0238AB9C ; =0x0238DB80
 	ldr r1, [r0]
@@ -717,10 +717,10 @@ _0238AB2C:
 _0238AB88:
 	cmp r2, #0
 	moveq r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 _0238AB94:
 	mov r0, #1
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AB9C: .word 0x0238DB80
 	arm_func_end ov14_0238A6B0
@@ -749,7 +749,7 @@ ov14_0238ABA0: ; 0x0238ABA0
 	bl PreprocessString
 	mov r0, r5
 	add sp, sp, #0x54
-	ldmdb sp!, {r4, r5, pc}
+	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _0238ABFC: .word 0x0238DAE8
 _0238AC00: .word 0x0000C402
@@ -771,7 +771,7 @@ _0238AC1C:
 	add r3, r3, #1
 	cmp r3, #0x10
 	blt _0238AC1C
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AC3C: .word 0x0238DB84
 	arm_func_end ov14_0238AC04
@@ -818,7 +818,7 @@ ov14_0238AC40: ; 0x0238AC40
 	rsb r0, r1, r0, lsl #30
 	add r0, r1, r0, ror #30
 	str r0, [r2, #0x888]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238ACE4: .word 0x0238DB80
 _0238ACE8: .word 0x00000408
@@ -893,7 +893,7 @@ _0238ADE8:
 	bl sub_02027AF0
 _0238ADF0:
 	add sp, sp, #0x18
-	ldmdb sp!, {r4, pc}
+	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238ADF8: .word 0x0238DB80
 	arm_func_end ov14_0238AD04
@@ -1487,7 +1487,7 @@ _0238B67C:
 	blt _0238B5F0
 _0238B688:
 	add sp, sp, #0x6c
-	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238B690: .word 0x0238D970
 _0238B694: .word 0x0238DB80
@@ -1521,7 +1521,7 @@ SentrySetExitingState__0238B6D8: ; 0x0238B6D8
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #0x104]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238B704: .word 0x0238DB80
 	arm_func_end SentrySetExitingState__0238B6D8
@@ -1532,7 +1532,7 @@ ov14_0238B708: ; 0x0238B708
 	ldr r0, _0238B7F8 ; =0x0238DB80
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, r0, #0x2a8
 	bl ov11_022F6EFC
 	ldr r7, _0238B7F8 ; =0x0238DB80
@@ -1590,7 +1590,7 @@ _0238B7DC:
 	ldr r0, _0238B7F8 ; =0x0238DB80
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, r4, r5, r6, r7, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0238B7F8: .word 0x0238DB80
 	arm_func_end ov14_0238B708
@@ -2242,7 +2242,7 @@ _0238C120:
 	mov r0, #1
 _0238C124:
 	add sp, sp, #8
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238C12C: .word 0x0238DB80
 _0238C130: .word 0x0238DB94
@@ -2320,7 +2320,7 @@ SentryState1: ; 0x0238C20C
 	ldrsb r0, [r0, #0xb]
 	bl IsNormalMenuActive
 	cmp r0, #0
-	ldmnedb sp!, {r3, pc}
+	ldmneia sp!, {r3, pc}
 	ldr r0, _0238C260 ; =0x0238DB80
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
@@ -2332,11 +2332,11 @@ SentryState1: ; 0x0238C20C
 _0238C248:
 	mov r0, #2
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238C254:
 	mov r0, #6
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238C260: .word 0x0238DB80
 	arm_func_end SentryState1
@@ -2363,7 +2363,7 @@ SentryState3: ; 0x0238C288
 	ldrsb r0, [r0, #0xa]
 	bl IsNormalMenuActive
 	cmp r0, #0
-	ldmnedb sp!, {r3, pc}
+	ldmneia sp!, {r3, pc}
 	ldr r0, _0238C3AC ; =0x0238DB80
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
@@ -2439,7 +2439,7 @@ _0238C390:
 	str r1, [r0, #0x890]
 _0238C3A4:
 	bl SentrySetExitingState__0238B6D8
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238C3AC: .word 0x0238DB80
 	arm_func_end SentryState3
@@ -2929,7 +2929,7 @@ _0238CA10:
 	ldr r0, [r1]
 	str r2, [r0, #0x110]
 	add sp, sp, #0x20
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238CA54: .word 0x0238DB80
 _0238CA58: .word 0x000003FA
@@ -3323,7 +3323,7 @@ _0238CF5C:
 	strb r1, [r0, #0x89f]
 _0238CF9C:
 	add sp, sp, #0x38
-	ldmdb sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0238CFA4: .word 0x0238DB80
 _0238CFA8: .word 0x0238DA20
@@ -3555,7 +3555,7 @@ _0238D2EC:
 	str r0, [r1, #0x110]
 _0238D2F4:
 	add sp, sp, #0x20
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238D2FC: .word 0x0238DB80
 _0238D300: .word 0x0238D970
@@ -3603,7 +3603,7 @@ _0238D368:
 	str r3, [r2, #0x114]
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D390: .word 0x0238DB80
 _0238D394: .word 0x00002C08
@@ -3676,13 +3676,13 @@ SentryState15: ; 0x0238D428
 	bge _0238D450
 	mov r0, #0x14
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238D450:
 	mov r0, #0x304
 	bl sub_02017C80
 	mov r0, #0x16
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D464: .word 0x0238DB80
 	arm_func_end SentryState15
@@ -3701,7 +3701,7 @@ SentryState16: ; 0x0238D468
 	add r0, r0, #0x3000
 	ldr r3, [r0, #0x8b0]
 	cmp r3, r1
-	ldmgedb sp!, {r3, pc}
+	ldmgeia sp!, {r3, pc}
 	mov r3, #0
 	strb r3, [r0, #0x89c]
 	ldr r1, [r2]
@@ -3709,7 +3709,7 @@ SentryState16: ; 0x0238D468
 	add r1, r1, #0x3000
 	str r3, [r1, #0x8ac]
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D4BC: .word 0x0238DB80
 	arm_func_end SentryState16
@@ -3760,11 +3760,11 @@ SentryState18: ; 0x0238D538
 	bge _0238D560
 	mov r0, #0x17
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238D560:
 	mov r0, #0xe
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D56C: .word 0x0238DB80
 	arm_func_end SentryState18
@@ -3791,13 +3791,13 @@ SentryState1A: ; 0x0238D588
 	bge _0238D5B0
 	mov r0, #0x19
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238D5B0:
 	mov r0, #0x304
 	bl sub_02017C80
 	mov r0, #0x1b
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D5C4: .word 0x0238DB80
 	arm_func_end SentryState1A
@@ -3816,7 +3816,7 @@ SentryStateFinalizePoints: ; 0x0238D5C8
 	add r0, r0, #0x3000
 	ldr r3, [r0, #0x8b0]
 	cmp r3, r1
-	ldmgedb sp!, {r3, pc}
+	ldmgeia sp!, {r3, pc}
 	ldr r3, [r0, #0x88c]
 	ldr r1, [r0, #0x894]
 	add r1, r3, r1
@@ -3839,7 +3839,7 @@ _0238D634:
 	add r1, r1, #0x3000
 	str r2, [r1, #0x8ac]
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D654: .word 0x0238DB80
 	arm_func_end SentryStateFinalizePoints
@@ -3889,11 +3889,11 @@ _0238D6CC:
 	bge _0238D6F0
 	mov r0, #0x1c
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238D6F0:
 	mov r0, #0xe
 	bl SentrySetStateIntermediate
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D6FC: .word 0x0238DB80
 	arm_func_end SentryState1D
@@ -3925,7 +3925,7 @@ SentryState1F: ; 0x0238D718
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x8b4]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238D754:
 	ldr r0, [r0, #0x8b4]
 	cmp r0, #0x1e
@@ -3940,9 +3940,9 @@ _0238D768:
 	cmp r1, #0
 	subgt r1, r1, #1
 	strgt r1, [r0, #0x8b4]
-	ldmgtdb sp!, {r3, pc}
+	ldmgtia sp!, {r3, pc}
 	bl SentrySetExitingState__0238B6D8
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D790: .word 0x0238DB80
 	arm_func_end SentryState1F
@@ -3974,7 +3974,7 @@ SentryState21: ; 0x0238D7AC
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x8b4]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238D7E8:
 	ldr r0, [r0, #0x8b4]
 	cmp r0, #0x1e
@@ -3989,9 +3989,9 @@ _0238D7FC:
 	cmp r1, #0
 	subgt r1, r1, #1
 	strgt r1, [r0, #0x8b4]
-	ldmgtdb sp!, {r3, pc}
+	ldmgtia sp!, {r3, pc}
 	bl SentrySetExitingState__0238B6D8
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D824: .word 0x0238DB80
 	arm_func_end SentryState21
@@ -4081,7 +4081,7 @@ _0238D950:
 	bne _0238D87C
 	str r7, [sb]
 	add sp, sp, #8
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238D968: .word 0x0000080F
 	arm_func_end ov14_0238D828

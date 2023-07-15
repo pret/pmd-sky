@@ -1073,7 +1073,7 @@ _0238B088:
 	strb r0, [r1, #0xc3]
 _0238B0C4:
 	add sp, sp, #0x128
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238B0CC: .word 0x0238CE40
 _0238B0D0: .word 0x00000431
@@ -2167,7 +2167,7 @@ _0238C088:
 	strb r0, [r1, #0xc3]
 _0238C0C4:
 	add sp, sp, #0x128
-	ldmdb sp!, {r3, r4, r5, pc}
+	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238C0CC: .word 0x0238CE40
 _0238C0D0: .word 0x00000431
@@ -2236,7 +2236,7 @@ _0238C170:
 	strb r3, [r1, #0xc3]
 	bl ov16_0238A140
 	mov r0, #1
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238C1C8: .word 0x0238CE40
 	arm_func_end ov16_0238C148
@@ -2247,12 +2247,12 @@ ov16_0238C1CC: ; 0x0238C1CC
 	ldr r0, _0238C1F4 ; =0x0238CE40
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl MemFree
 	ldr r0, _0238C1F4 ; =0x0238CE40
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238C1F4: .word 0x0238CE40
 	arm_func_end ov16_0238C1CC
@@ -2410,7 +2410,7 @@ ov16_0238CAE8: ; 0x0238CAE8
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc3]
 	cmp r0, r1
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl sub_0202836C
 	ldr r0, _0238CB2C ; =0x0238CE40
 	ldr r0, [r0]
@@ -2420,7 +2420,7 @@ ov16_0238CAE8: ; 0x0238CAE8
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xc3]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238CB2C: .word 0x0238CE40
 	arm_func_end ov16_0238CAE8
@@ -2449,7 +2449,7 @@ ov16_0238CB30: ; 0x0238CB30
 	bl PreprocessString
 	mov r0, r4
 	add sp, sp, #0x54
-	ldmdb sp!, {r3, r4, r5, r6, pc}
+	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _0238CB8C: .word 0x0238CE40
 _0238CB90: .word 0x0000C402
@@ -2470,7 +2470,7 @@ ov16_0238CB98: ; 0x0238CB98
 	ldr r1, _0238CBCC ; =0x0238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc1]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238CBCC: .word 0x0238CE40
 	arm_func_end ov16_0238CB98
@@ -2514,7 +2514,7 @@ _0238CC40:
 	blt _0238CBF8
 	mov r0, r6
 	add sp, sp, #0x3c
-	ldmdb sp!, {r4, r5, r6, r7, r8, sb, pc}
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0238CC5C: .word 0x020B0A48
 _0238CC60: .word 0x0000022B
@@ -2532,7 +2532,7 @@ ov16_0238CC64: ; 0x0238CC64
 	add r0, r0, #0xb1
 	add r1, r1, #0x3a
 	bl StrcpySimple
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238CC90: .word 0x0238CE40
 	arm_func_end ov16_0238CC64

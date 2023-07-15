@@ -160,7 +160,7 @@ _0238A368:
 _0238A370:
 	mov r0, #1
 	add sp, sp, #0xc
-	ldmdb sp!, {r4, r5, r6, r7, pc}
+	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _0238A37C: .word 0x02324DB8
 _0238A380: .word 0x0238CE80
@@ -267,7 +267,7 @@ _0238A490:
 _0238A8D0:
 	mov r0, #1
 	add sp, sp, #0x18c
-	ldmdb sp!, {r4, r5, r6, r7, pc}
+	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _0238A8DC: .word 0x0238CE80
 	arm_func_end ov27_0238A468
@@ -306,10 +306,10 @@ ov27_0238A928: ; 0x0238A928
 	bl IsDBoxActive
 	cmp r0, #0
 	movne r0, #1
-	ldmnedb sp!, {r3, pc}
+	ldmneia sp!, {r3, pc}
 _0238A954:
 	mov r0, #0
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A95C: .word 0x0238CE80
 	arm_func_end ov27_0238A928
@@ -322,13 +322,13 @@ ov27_0238A960: ; 0x0238A960
 	ldr r1, [r1]
 	ldrsb r1, [r1, #8]
 	cmp r1, r0
-	ldmnedb sp!, {r3, pc}
+	ldmneia sp!, {r3, pc}
 	mov r0, #0
 	bl CreateDBox
 	ldr r1, _0238A994 ; =0x0238CE80
 	ldr r1, [r1]
 	strb r0, [r1, #8]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A994: .word 0x0238CE80
 	arm_func_end ov27_0238A960
@@ -1466,7 +1466,7 @@ _0238BA2C:
 	bl ShowMessageInDBox
 _0238BA74:
 	add sp, sp, #0x30c
-	ldmdb sp!, {r3, r4, pc}
+	ldmia sp!, {r3, r4, pc}
 	arm_func_end ov27_0238ADFC
 
 	arm_func_start ov27_0238BA7C
@@ -1524,7 +1524,7 @@ _0238BB0C:
 	strb r0, [r1, #0x80]
 	bl ov27_0238A998
 	mov r0, #1
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238BB50: .word 0x0238CE84
 	arm_func_end ov27_0238BA7C
@@ -1535,12 +1535,12 @@ ov27_0238BB54: ; 0x0238BB54
 	ldr r0, _0238BB7C ; =0x0238CE84
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl MemFree
 	ldr r0, _0238BB7C ; =0x0238CE84
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238BB7C: .word 0x0238CE84
 	arm_func_end ov27_0238BB54
@@ -1770,7 +1770,7 @@ ov27_0238C900: ; 0x0238C900
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x91]
 	cmp r0, r1
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl sub_0202836C
 	ldr r0, _0238C944 ; =0x0238CE84
 	ldr r0, [r0]
@@ -1780,7 +1780,7 @@ ov27_0238C900: ; 0x0238C900
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x91]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238C944: .word 0x0238CE84
 	arm_func_end ov27_0238C900

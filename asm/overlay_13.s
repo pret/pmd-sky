@@ -22,7 +22,7 @@ EntryOverlay13: ; 0x0238A140
 	sub r2, r3, #2
 	strb r2, [r1, #6]
 	bl sub_020348E4
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A184: .word 0x00000428
 _0238A188: .word 0x0238CEA0
@@ -35,7 +35,7 @@ ExitOverlay13: ; 0x0238A190
 	ldr r0, _0238A1C4 ; =0x0238CEA0
 	ldr r0, [r0]
 	cmp r0, #0
-	ldmeqdb sp!, {r3, pc}
+	ldmeqia sp!, {r3, pc}
 	bl sub_0201F2E4
 	ldr r0, _0238A1C4 ; =0x0238CEA0
 	ldr r0, [r0]
@@ -43,7 +43,7 @@ ExitOverlay13: ; 0x0238A190
 	ldr r0, _0238A1C4 ; =0x0238CEA0
 	mov r1, #0
 	str r1, [r0]
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A1C4: .word 0x0238CEA0
 	arm_func_end ExitOverlay13
@@ -304,10 +304,10 @@ _0238A558:
 	mvn r0, #0
 	bl ov11_022E6E8C
 	mov r0, #4
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 _0238A568:
 	mov r0, #1
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A570: .word 0x0238CEA0
 	arm_func_end ov13_0238A468
@@ -1943,7 +1943,7 @@ _0238BD1C:
 	strb r1, [r0]
 _0238BD74:
 	add sp, sp, #0x178
-	ldmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238BD7C: .word 0x000006C2
 _0238BD80: .word 0x000006C3
@@ -1977,7 +1977,7 @@ _0238BDC0:
 	movlt ip, r1
 	cmp r3, #0x10
 	blt _0238BDC0
-	ldmdb sp!, {r3, pc}
+	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238BDEC: .word 0x0238CEA0
 	arm_func_end GetPersonality
@@ -2003,7 +2003,7 @@ GetOptionStringFromID: ; 0x0238BDF0
 	bl PreprocessString
 	mov r0, r4
 	add sp, sp, #0x54
-	ldmdb sp!, {r3, r4, pc}
+	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _0238BE40: .word 0x0238CEA0
 _0238BE44: .word 0x0238CE70
@@ -2124,7 +2124,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	bl sub_02027AF0
 	add sp, sp, #0x54
 	add sp, sp, #0x400
-	ldmdb sp!, {r4, r5, pc}
+	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _0238BFFC: .word 0x0238CEA0
 _0238C000: .word 0x000006CA
