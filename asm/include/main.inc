@@ -65,3 +65,4 @@
 .public SVC_CpuSet
 .public _start_ModuleParams
 .public _start_AutoloadDoneCallback
+.public OS_IRQTable

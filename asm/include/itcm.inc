@@ -71,3 +71,4 @@
 .public EntityIsValid__02319F8C
 .public ov29_0230175C
 .public ov29_02348D00
+.public dtcm_bss

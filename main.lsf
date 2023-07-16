@@ -21,6 +21,8 @@ Autoload ITCM
 Autoload DTCM
 {
 	Address 0x027E0000
+	Object asm/dtcm.o (.dtcm)
+	Object asm/dtcm.o (.bss)
 }
 Overlay OVY_0
 {
