@@ -1,6 +1,5 @@
 	.include "asm/macros.inc"
 	.include "itcm.inc"
-	.include "global.inc"
 
 	.section .itcm,4,1,4
 

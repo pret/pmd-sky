@@ -1,6 +1,5 @@
 	.include "asm/macros.inc"
 	.include "main.inc"
-	.include "global.inc"
 
 	.text
 
@@ -170494,7 +170493,7 @@ sub_020907F4: ; 0x020907F4
 	mov r1, r0
 	mov r0, #3
 	swi 0x123456
-	ldmia sp!, {pc}
+	ldr pc, [sp], #4
 	arm_func_end sub_020907F4
 
 	arm_func_start sub_02090808
@@ -170503,7 +170502,7 @@ sub_02090808: ; 0x02090808
 	mov r1, #0
 	mov r0, #7
 	swi 0x123456
-	ldmia sp!, {pc}
+	ldr pc, [sp], #4
 	arm_func_end sub_02090808
 _0209081C:
 	.byte 0xF8, 0x40, 0x2D, 0xE9
