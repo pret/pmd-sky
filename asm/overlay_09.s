@@ -8,7 +8,7 @@
 ov09_0233CA80: ; 0x0233CA80
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bl sub_02003BAC
-	bl sub_02017EE8
+	bl sub_02017B70
 	mov r0, #0x314
 	mov r1, #8
 	bl MemAlloc
@@ -470,7 +470,7 @@ ov09_0233D9F8: ; 0x0233D9F8
 	ldrh r0, [r0, #2]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl sub_02017DF4
+	bl sub_02017B58
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r4, #0x14]
@@ -484,7 +484,7 @@ ov09_0233D9F8: ; 0x0233D9F8
 ov09_0233DA4C: ; 0x0233DA4C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_02017EE8
+	bl sub_02017B70
 	mov r0, #0
 	strb r0, [r4, #0x14]
 	sub r0, r0, #1
@@ -652,7 +652,7 @@ _0233DC74:
 	bgt _0233DCF0
 	bne _0233DC90
 	mov r0, #0x12c
-	bl sub_02017F28
+	bl sub_02017B7C
 	b _0233DCF0
 _0233DC90:
 	cmp r0, #0

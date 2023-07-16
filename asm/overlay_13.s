@@ -897,7 +897,7 @@ _0238ADF8:
 ov13_0238ADFC: ; 0x0238ADFC
 	bl sub_0202F2C4
 	mov r0, #0xb4
-	bl sub_02017F28
+	bl sub_02017B7C
 	ldr r0, _0238B4F8 ; =0x0238CEA0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]

@@ -19,7 +19,7 @@ ExplorersOfSkyMain: ; 0x022DC240
 	str r2, [r1, #4]
 	bl sub_02028E2C
 	bl sub_02017A68
-	bl sub_02017EE8
+	bl sub_02017B70
 	ldr r0, _022DC59C ; =0x022DD0A0
 	ldr r0, [r0, #8]
 	cmp r0, #3

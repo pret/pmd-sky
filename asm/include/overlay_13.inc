@@ -7,7 +7,7 @@
 .public sub_0202F2C4
 .public sub_02018428
 .public GetKeyboardStatus
-.public sub_02017F28
+.public sub_02017B7C
 .public sub_02037468
 .public InitPreprocessorArgs
 .public CreateAdvancedMenu

@@ -19,7 +19,7 @@
 .public sub_020265A8
 .public sub_02027648
 .public sub_0202810C
-.public sub_02017F28
+.public sub_02017B7C
 .public sub_02032568
 .public sub_02031AF8
 .public sub_02031A3C
@@ -38,7 +38,7 @@
 .public sub_02032070
 .public sub_02032984
 .public sub_02032578
-.public sub_02017EE8
+.public sub_02017B70
 .public sub_02003BAC
 .public IsMenuOptionActive
 .public sub_02032960
@@ -46,7 +46,7 @@
 .public InitPreprocessorArgs
 .public GetDialogBoxField0xC
 .public MemFree
-.public sub_02017DF4
+.public sub_02017B58
 .public ov01_02330E38
 .public sub_02017B0C
 .public sub_02032160
