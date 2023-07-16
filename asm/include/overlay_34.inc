@@ -55,7 +55,7 @@
 .public sub_02034710
 .public sub_0202AABC
 .public sub_02003990
-.public sub_0200BA08
+.public sub_0200BC54
 .public sub_02017B70
 .public IsDBoxActive
 .public sub_020039E4
