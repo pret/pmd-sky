@@ -101348,8 +101348,8 @@ _0205628C: .word 0x000055AA
 _02056290: .word 0x00005AA5
 	arm_func_end sub_02056264
 
-	arm_func_start IsMonsterIdInNormalRange
-IsMonsterIdInNormalRange: ; 0x02056294
+	arm_func_start IsMonsterIdInNormalRange__02056294
+IsMonsterIdInNormalRange__02056294: ; 0x02056294
 	cmp r0, #0
 	blt _020562AC
 	ldr r1, _020562B4 ; =0x0000022B
@@ -101361,7 +101361,7 @@ _020562AC:
 	bx lr
 	.align 2, 0
 _020562B4: .word 0x0000022B
-	arm_func_end IsMonsterIdInNormalRange
+	arm_func_end IsMonsterIdInNormalRange__02056294
 _020562B8:
 	.byte 0x00, 0x00, 0x50, 0xE3, 0x01, 0x00, 0xA0, 0xB3
 	.byte 0x00, 0x00, 0xA0, 0xA3, 0xFF, 0x00, 0x00, 0xE2, 0x1E, 0xFF, 0x2F, 0xE1
@@ -102251,7 +102251,7 @@ _02056DA0:
 	beq _02056DE4
 	ldrsh r8, [r7, #8]
 	mov r0, r8
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	beq _02056DE4
 	mov r0, r8
@@ -102295,7 +102295,7 @@ _02056E34:
 	beq _02056E98
 	ldrsh r8, [r7, #8]
 	mov r0, r8
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	beq _02056E98
 	mov r0, r8
@@ -102617,7 +102617,7 @@ _0205724C:
 	cmp r1, r4
 	streqb r6, [r8]
 	beq _020572B0
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	ldrnesh r0, [r8, #8]
 	movne r0, r0, lsl #1
@@ -102677,7 +102677,7 @@ _02057338:
 	tst r0, #0xff
 	beq _02057388
 	ldrsh r0, [r7, #8]
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	beq _02057388
 	ldrsh r0, [r7, #8]
@@ -102733,7 +102733,7 @@ _020573E8:
 	tst r0, #0xff
 	beq _0205742C
 	ldrsh r0, [r7, #8]
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	beq _0205742C
 	ldrsh r0, [r7, #8]
@@ -102801,7 +102801,7 @@ _020574C0:
 	tst r0, #0xff
 	beq _02057514
 	ldrsh r0, [sb, #8]
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	beq _02057514
 	ldrsh r0, [sb, #8]
@@ -103276,7 +103276,7 @@ _02057B50:
 	bl GetBaseFormCastformCherrimDeoxys
 	strh r0, [r8, #0xc]
 	ldrsh r0, [r8, #8]
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	beq _02057C14
 	ldrb r0, [r8, #1]

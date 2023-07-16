@@ -31083,7 +31083,7 @@ _022F5E1C:
 	addne r6, r5, #3
 	bne _022F5E84
 	ldrsh r0, [r4, #8]
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__022F9C68
 	cmp r0, #0
 	beq _022F5E84
 	bl ov29_022E08A0
@@ -33788,7 +33788,7 @@ _022F8330:
 	mov r1, r5
 	bl ov29_022FE048
 	ldrsh r0, [r4, #8]
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	beq _022F83A8
 	ldr r0, _022F85D0 ; =0x02353538
@@ -33890,7 +33890,7 @@ _022F84AC:
 	mov r1, r7
 	bl ov29_022FE048
 	ldrsh r0, [r4, #8]
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	beq _022F856C
 	ldr r0, _022F85D0 ; =0x02353538
@@ -35618,13 +35618,13 @@ ov29_022F9C4C: ; 0x022F9C4C
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022F9C4C
 
-	arm_func_start IsMonsterIdInNormalRange
-IsMonsterIdInNormalRange: ; 0x022F9C68
-	ldr ip, _022F9C70 ; =IsMonsterIdInNormalRange
+	arm_func_start IsMonsterIdInNormalRange__022F9C68
+IsMonsterIdInNormalRange__022F9C68: ; 0x022F9C68
+	ldr ip, _022F9C70 ; =IsMonsterIdInNormalRange__02056294
 	bx ip
 	.align 2, 0
-_022F9C70: .word IsMonsterIdInNormalRange
-	arm_func_end IsMonsterIdInNormalRange
+_022F9C70: .word IsMonsterIdInNormalRange__02056294
+	arm_func_end IsMonsterIdInNormalRange__022F9C68
 
 	arm_func_start ov29_022F9C74
 ov29_022F9C74: ; 0x022F9C74
@@ -36413,7 +36413,7 @@ _022FA6C4:
 	movne sb, #1
 	bne _022FA70C
 	ldrsh r0, [r4, #8]
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	movne sb, #1
 _022FA70C:
@@ -54491,7 +54491,7 @@ _02309D3C:
 	b _02309DC8
 _02309D60:
 	ldrsh r0, [r6, #8]
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__022F9C68
 	cmp r0, #0
 	beq _02309DB4
 	ldr r0, _02309FFC ; =0x02353538
@@ -126349,7 +126349,7 @@ _02346AE8:
 	tst r0, #0xff
 	beq _02346B5C
 	ldrsh r0, [r8, #8]
-	bl IsMonsterIdInNormalRange
+	bl IsMonsterIdInNormalRange__02056294
 	cmp r0, #0
 	beq _02346B5C
 	add r0, r8, #0x3e

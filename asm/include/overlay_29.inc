@@ -660,3 +660,4 @@
 .public GetScenarioBalance__0204CB94
 .public CheckTeamMemberIdx__02056228
 .public ov01_0233103C
+.public IsMonsterIdInNormalRange__02056294
