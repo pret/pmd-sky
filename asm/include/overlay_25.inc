@@ -25,7 +25,7 @@
 .public ov11_0230BA64
 .public ShowMessageInDBox
 .public ov11_0230B9BC
-.public sub_020182B8
+.public sub_02017C74
 .public sub_0202E3CC
 .public MemAlloc
 .public sub_0202F2C4

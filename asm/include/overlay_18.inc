@@ -1,6 +1,6 @@
 #pragma once
 .public sub_020572EC
-.public sub_020182B8
+.public sub_02017C74
 .public sub_02041424
 .public sub_0202F66C
 .public sub_0202F334

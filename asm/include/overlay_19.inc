@@ -14,7 +14,6 @@
 .public sub_02046C30
 .public HidePortraitBox
 .public sub_02056094
-.public sub_020182B8
 .public sub_020308A0
 .public sub_0203F990
 .public sub_02017CCC

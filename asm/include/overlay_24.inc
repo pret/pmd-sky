@@ -57,7 +57,7 @@
 .public DivideInt
 .public InitPreprocessorArgs
 .public sub_020107C4
-.public sub_02018428
+.public sub_02017CB4
 .public IncrementNbEggsHatched
 .public sub_020107DC
 .public GetAdventureLogCompleted

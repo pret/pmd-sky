@@ -854,7 +854,7 @@ _0238AD8C:
 	bl sub_02010260
 _0238ADA0:
 	ldr r0, _0238B124 ; =0x00003F01
-	bl sub_02018428
+	bl sub_02017CB4
 	mov r0, #8
 	bl sub_0201820C
 	ldr r0, _0238B0CC ; =0x0238CE40
@@ -1952,7 +1952,7 @@ _0238BD8C:
 	bl sub_02010260
 _0238BDA0:
 	ldr r0, _0238C124 ; =0x00003F01
-	bl sub_02018428
+	bl sub_02017CB4
 	mov r0, #8
 	bl sub_0201820C
 	ldr r0, _0238C0CC ; =0x0238CE40

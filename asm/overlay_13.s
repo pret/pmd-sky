@@ -401,7 +401,7 @@ _0238A6B4:
 	cmp r0, #0x4b
 	blt _0238A6E0
 	add r0, sp, #0x14
-	bl sub_0207B9EC
+	bl sub_0204A198
 	ldrb r1, [sp, #0x19]
 	ldr r0, _0238B4F8 ; =0x0238CEA0
 	ldr r0, [r0]
@@ -409,7 +409,7 @@ _0238A6B4:
 	b _0238A6F4
 _0238A6E0:
 	add r0, sp, #0xd4
-	bl sub_0207BA08
+	bl sub_02004F74
 	ldr r0, _0238B4F8 ; =0x0238CEA0
 	ldrb r1, [sp, #0xd5]
 	ldr r0, [r0]
@@ -987,7 +987,7 @@ _0238AF38:
 	b _0238BD74
 _0238AF44:
 	ldr r0, _0238B534 ; =0x00002208
-	bl sub_02018428
+	bl sub_02017CB4
 	ldr r0, _0238B4F8 ; =0x0238CEA0
 	mov r2, #3
 	ldr r1, [r0]
@@ -1020,7 +1020,7 @@ _0238AFA0:
 	b _0238BD74
 _0238AFBC:
 	ldr r0, _0238B534 ; =0x00002208
-	bl sub_02018428
+	bl sub_02017CB4
 	ldr r0, _0238B4F8 ; =0x0238CEA0
 	mov r2, #2
 	ldr r1, [r0]
@@ -1442,7 +1442,7 @@ _0238B5A4:
 	ldr r2, [r3, #0x20]
 	add r2, r2, #1
 	str r2, [r3, #0x20]
-	bl sub_020182B8
+	bl sub_02017C74
 	b _0238BD74
 _0238B608:
 	ldr r1, [r0, #0x28]

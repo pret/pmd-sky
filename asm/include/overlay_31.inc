@@ -31,7 +31,6 @@
 .public sub_0203FD44
 .public sub_02027B1C
 .public ov29_022EBAB0
-.public sub_020182B8
 .public ov29_022EBB68
 .public IsHeldItemInBag
 .public ov29_0234FBD4

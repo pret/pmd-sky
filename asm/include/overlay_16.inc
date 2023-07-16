@@ -29,7 +29,7 @@
 .public InitPortraitBoxWithMonsterId
 .public InitPreprocessorArgs
 .public sub_02010260
-.public sub_02018428
+.public sub_02017CB4
 .public CreatePortraitBox
 .public GetNameString
 .public IsMainCharacter

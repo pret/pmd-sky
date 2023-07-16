@@ -5,7 +5,7 @@
 .public PreprocessString
 .public sub_0202F8FC
 .public sub_0202F2C4
-.public sub_02018428
+.public sub_02017CB4
 .public GetKeyboardStatus
 .public sub_02017B7C
 .public sub_02037468
@@ -37,13 +37,13 @@
 .public SetPortraitUnknownAttr
 .public FreePortraitBox
 .public sub_020348E4
-.public sub_0207BA08
+.public sub_02004F74
 .public GetNameRaw
 .public sub_02048794
 .public GetKeyboardStringResult
 .public InitPortraitBoxWithMonsterId
 .public ov11_022E6E8C
-.public sub_0207B9EC
+.public sub_0204A198
 .public IsDBoxActive
 .public SaveScriptVariableValue
 .public GetDebugFlag1
@@ -56,7 +56,7 @@
 .public FreeDBox
 .public sub_0203931C
 .public sub_02027AF0
-.public sub_020182B8
+.public sub_02017C74
 .public ov11_023039D4
 .public sub_0202836C
 .public sub_02027B1C

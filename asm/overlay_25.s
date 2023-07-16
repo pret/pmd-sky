@@ -95,7 +95,7 @@ _0238A260:
 	beq _0238A674
 	ldr r0, _0238A680 ; =0x00003F02
 	mov r1, #0x100
-	bl sub_020182B8
+	bl sub_02017C74
 	ldr r0, _0238A67C ; =0x0238B5E0
 	ldr r0, [r0]
 	add r0, r0, #0xc

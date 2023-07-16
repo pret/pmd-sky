@@ -1741,7 +1741,7 @@ _0238C570: ; jump table
 _0238C5AC:
 	ldr r0, _0238C718 ; =0x00003F07
 	mov r1, #0x100
-	bl sub_020182B8
+	bl sub_02017C74
 	mov r0, r5
 	mov r4, #1
 	bl sub_02041000
@@ -1770,7 +1770,7 @@ _0238C5EC:
 _0238C614:
 	ldr r0, _0238C718 ; =0x00003F07
 	mov r1, #0x100
-	bl sub_020182B8
+	bl sub_02017C74
 _0238C620:
 	mov r0, r5
 	bl sub_020412B0
@@ -1787,7 +1787,7 @@ _0238C638:
 	beq _0238C664
 	ldr r0, _0238C718 ; =0x00003F07
 	mov r1, #0x100
-	bl sub_020182B8
+	bl sub_02017C74
 	mov r0, r5
 	bl sub_02041394
 	b _0238C6E4
