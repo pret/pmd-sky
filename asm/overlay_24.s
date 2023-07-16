@@ -761,7 +761,7 @@ _0238ABF8:
 	cmp r0, #0
 	bne _0238AC2C
 	mov r0, #3
-	bl sub_0201820C
+	bl sub_02017C50
 _0238AC2C:
 	ldr r1, _0238B384 ; =0x0238C600
 	mov r2, #4
@@ -1174,7 +1174,7 @@ _0238B170:
 	str r1, [r0]
 	bl ov24_0238C4CC
 	mov r0, #5
-	bl sub_0201820C
+	bl sub_02017C50
 	ldr r0, _0238B384 ; =0x0238C600
 	mov r1, #0x1c
 	ldr r3, [r0]
@@ -1242,7 +1242,7 @@ _0238B338:
 	ldrsb r0, [r0, #0x8d]
 	bl HidePortraitBox
 	mov r0, #4
-	bl sub_0201820C
+	bl sub_02017C50
 	ldr r0, _0238B384 ; =0x0238C600
 	mov r1, #0x18
 	ldr r3, [r0]
@@ -1696,7 +1696,7 @@ _0238B9D4:
 	cmp r0, #0
 	bne _0238BA08
 	mov r0, #3
-	bl sub_0201820C
+	bl sub_02017C50
 _0238BA08:
 	ldr r1, _0238C164 ; =0x0238C600
 	mov r2, #4
@@ -2105,7 +2105,7 @@ _0238BF4C:
 	str r1, [r0]
 	bl ov24_0238C4CC
 	mov r0, #5
-	bl sub_0201820C
+	bl sub_02017C50
 	ldr r0, _0238C164 ; =0x0238C600
 	mov r1, #0x1c
 	ldr r3, [r0]
@@ -2173,7 +2173,7 @@ _0238C114:
 	ldrsb r0, [r0, #0x8d]
 	bl HidePortraitBox
 	mov r0, #4
-	bl sub_0201820C
+	bl sub_02017C50
 	ldr r0, _0238C164 ; =0x0238C600
 	mov r1, #0x18
 	ldr r3, [r0]

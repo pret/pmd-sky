@@ -1122,7 +1122,7 @@ ov17_0238B7CC: ; 0x0238B7CC
 	mov r0, #3
 	ldr r1, [r1]
 	strh r0, [r1, #0x7e]
-	bl sub_0201820C
+	bl sub_02017C50
 	ldr r0, _0238B850 ; =0x0238BE00
 	ldr r0, [r0]
 	add r0, r0, #0x200

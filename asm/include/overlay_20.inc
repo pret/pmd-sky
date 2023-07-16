@@ -48,7 +48,7 @@
 .public sub_02011F60
 .public CreatePortraitBox
 .public InitStandardItem
-.public sub_0201820C
+.public sub_02017C50
 .public GetNormalMenuResult
 .public sub_02046C78
 .public sub_02011F30

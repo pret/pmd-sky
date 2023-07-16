@@ -120,7 +120,6 @@
 .public sub_02046B04
 .public sub_0203FD80
 .public GetDungeonMode
-.public sub_0201820C
 .public sub_020420F4
 .public sub_02065B70
 .public ov11_022E8124

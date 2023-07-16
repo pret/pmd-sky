@@ -856,7 +856,7 @@ _0238ADA0:
 	ldr r0, _0238B124 ; =0x00003F01
 	bl sub_02017CB4
 	mov r0, #8
-	bl sub_0201820C
+	bl sub_02017C50
 	ldr r0, _0238B0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x46]
@@ -1954,7 +1954,7 @@ _0238BDA0:
 	ldr r0, _0238C124 ; =0x00003F01
 	bl sub_02017CB4
 	mov r0, #8
-	bl sub_0201820C
+	bl sub_02017C50
 	ldr r0, _0238C0CC ; =0x0238CE40
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x46]

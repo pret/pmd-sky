@@ -700,7 +700,7 @@ _0238AC34:
 	mov r0, #0x25
 	str r0, [sb, #0xc]
 	mov r0, #4
-	bl sub_0201820C
+	bl sub_02017C50
 	b _0238B05C
 _0238AC84:
 	bl sub_02046C78
@@ -788,7 +788,7 @@ _0238AD78:
 	mov r0, #0x2c
 	str r0, [sb, #0xc]
 	mov r0, #4
-	bl sub_0201820C
+	bl sub_02017C50
 	b _0238B05C
 _0238ADC8:
 	bl sub_02046C78

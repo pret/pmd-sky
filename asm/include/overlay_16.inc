@@ -35,7 +35,7 @@
 .public IsMainCharacter
 .public FreeNormalMenu
 .public CreateDBox
-.public sub_0201820C
+.public sub_02017C50
 .public SetPortraitUnknownAttr
 .public sub_02025314
 .public GetTeamMember

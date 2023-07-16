@@ -41,7 +41,7 @@
 .public sub_0204018C
 .public sub_02041A00
 .public sub_0203AA20
-.public sub_0201820C
+.public sub_02017C50
 .public ov11_022DC504
 .public sub_0203FD80
 .public sub_02057444

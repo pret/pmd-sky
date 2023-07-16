@@ -12,7 +12,7 @@
 .public sub_0202836C
 .public CreateNormalMenu
 .public sub_0203EFD4
-.public sub_0201820C
+.public sub_02017C50
 .public IsBagFull
 .public SetPokemonJoined
 .public IsDBoxActive
