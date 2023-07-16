@@ -40,22 +40,15 @@ clean: tidy clean-filesystem clean-tools
 	@$(MAKE) -C lib/syscall clean
 	@$(MAKE) -C sub clean
 
-SBIN_LZ        := $(SBIN)_LZ
-.PHONY: main_lz
-
 sdk9 sdk7: sdk
 main filesystem: | sdk9
 sub: | sdk7
 
 main: $(SBIN) $(ELF)
-main_lz: $(SBIN_LZ)
 sub: ; @$(MAKE) -C sub
 
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
-
-$(SBIN_LZ): $(BUILD_DIR)/component.files
-	$(COMPSTATIC) -9 -c -f $<
 
 $(NEF): libsyscall
 
@@ -66,7 +59,7 @@ $(BUILD_DIR)/component.files: main ;
 
 $(HEADER_TEMPLATE): ;
 
-$(ROM): $(ROMSPEC) tools filesystem main_lz sub $(BANNER)
+$(ROM): $(ROMSPEC) tools filesystem main sub $(BANNER)
 	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(NITROFS_FILES:files/%=%)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)

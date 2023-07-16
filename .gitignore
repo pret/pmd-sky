@@ -62,7 +62,6 @@ files/**/*.c
 # Utilities
 ntruncompbw
 *.elf
-*.sbin_LZ
 *.diff
 
 *.dSYM

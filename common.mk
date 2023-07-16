@@ -53,9 +53,6 @@ CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
 MKFXCONST    := $(TOOLSDIR)/gen_fx_consts/gen_fx_consts$(EXE)
 MOD123ENCRY  := $(TOOLSDIR)/mod123encry/mod123encry$(EXE)
 
-# Decompiled NitroSDK tools
-COMPSTATIC   := $(TOOLSDIR)/compstatic/compstatic$(EXE)
-
 NTRMERGE      := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
 ASM_PROCESSOR := $(TOOLSDIR)/asm_processor/compile.sh
 
@@ -69,7 +66,6 @@ NATIVE_TOOLS := \
 	$(ASPATCH) \
 	$(CSV2BIN) \
 	$(MKFXCONST) \
-	$(COMPSTATIC) \
 	$(MOD123ENCRY)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
