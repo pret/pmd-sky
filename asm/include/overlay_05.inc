@@ -18,7 +18,6 @@
 .public GetTeamNameCheck
 .public ov01_02337718
 .public ov01_02338A24
-.public sub_020473A4
 .public ov01_023376DC
 .public sub_02057030
 .public ov00_022BD338
@@ -107,3 +106,4 @@
 .public ov01_0232DD00
 .public sub_0204A018
 .public InitPreprocessorArgs
+.public sub_02046D20

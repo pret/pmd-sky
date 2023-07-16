@@ -165,7 +165,7 @@ ov05_0233CB9C: ; 0x0233CB9C
 	ldr r0, _0233CC08 ; =0x0233FCCC
 	mov r1, #0
 	str r1, [r0]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233CC0C ; =0x0233FCA0
 	mov r1, #0
 	str r1, [r0]
@@ -725,7 +725,7 @@ ov05_0233D398: ; 0x0233D398
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233D3CC ; =0x0233FCCC
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -1719,7 +1719,7 @@ _0233E13C:
 	str r0, [r2, #0x2d4]
 	rsb r0, r3, #0x1000
 	str r0, [r2]
-	bl sub_020473A4
+	bl sub_02046D20
 	b _0233F854
 _0233E178:
 	sub r0, r4, #0xc
@@ -1915,7 +1915,7 @@ _0233E424:
 	bl ov01_02338EC4
 	cmp r0, #5
 	bne _0233E454
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233EB5C ; =0x0000300F
@@ -2154,7 +2154,7 @@ _0233E7A4:
 	bl ov05_0233CB84
 	cmp r4, #5
 	bne _0233E7D4
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233EB5C ; =0x0000300F
@@ -2164,7 +2164,7 @@ _0233E7A4:
 _0233E7D4:
 	cmp r0, #0xd
 	bne _0233F854
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233EB80 ; =0x00003022
 	ldr r0, [r0]
@@ -2302,7 +2302,7 @@ _0233E9A4:
 	add r0, r0, #0x78
 	add r0, r0, #0x1800
 	bl sub_02047150
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233EB5C ; =0x0000300F
@@ -2334,7 +2334,7 @@ _0233EA40:
 	add r0, r0, #0x78
 	add r0, r0, #0x1800
 	bl sub_02047150
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233EB80 ; =0x00003022
 	ldr r0, [r0]
@@ -2347,7 +2347,7 @@ _0233EA78:
 	cmp r4, #5
 	bne _0233EAAC
 	bl sub_02046BB4
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233EB5C ; =0x0000300F
@@ -2558,7 +2558,7 @@ _0233ED6C:
 	strgt r1, [r0, #0x884]
 	cmp r4, #5
 	bne _0233EDCC
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233EB5C ; =0x0000300F
@@ -2596,7 +2596,7 @@ _0233EE0C:
 	cmp r5, #5
 	bne _0233EE58
 	bl sub_02046BB4
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233EB5C ; =0x0000300F
@@ -2623,7 +2623,7 @@ _0233EE94:
 	sub r0, r4, #0xc
 	cmp r0, #1
 	bhi _0233F854
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233EB80 ; =0x00003022
 	ldr r0, [r0]
@@ -2839,7 +2839,7 @@ _0233F184:
 	strgt r1, [r0, #0x884]
 	cmp r4, #5
 	bne _0233F1E4
-	bl sub_020473A4
+	bl sub_02046D20
 	bl ov01_02338C34
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233EB5C ; =0x0000300F
@@ -3251,7 +3251,7 @@ _0233F760:
 _0233F7AC:
 	cmp r0, #2
 	bne _0233F7CC
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233F8A4 ; =0x00001001
 	ldr r0, [r0]
@@ -3287,7 +3287,7 @@ _0233F7E8:
 _0233F82C:
 	cmp r0, #2
 	bne _0233F84C
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0233EB00 ; =0x0233FCA8
 	ldr r1, _0233F8A4 ; =0x00001001
 	ldr r0, [r0]
