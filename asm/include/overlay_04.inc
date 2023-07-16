@@ -70,7 +70,6 @@
 .public sub_02046B04
 .public sub_0204322C
 .public sub_02003B94
-.public sub_020473A4
 .public ov01_02337DD0
 .public sub_02043320
 .public ov01_02337D00

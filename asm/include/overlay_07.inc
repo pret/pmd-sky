@@ -20,7 +20,7 @@
 .public ov00_022BD5A0
 .public sub_0202D59C
 .public sub_0203909C
-.public sub_020473A4
+.public sub_02046D20
 .public ov01_02338EB0
 .public ov01_0232C148
 .public GetKeyboardStatus

@@ -50,7 +50,6 @@
 .public ov00_022C0A64
 .public ov00_022C329
 .public ov00_022C33BC
-.public sub_020473A4
 .public sub_02046C78
 .public ov00_022C32E4
 .public sub_0207F6C4

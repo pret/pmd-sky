@@ -50,7 +50,6 @@
 .public sub_02066990
 .public sub_0204A1CC
 .public sub_0205ED84
-.public sub_020473A4
 .public GetKeyboardStatus
 .public MemcpySimple
 .public DungeonRequestsDoneWrapper

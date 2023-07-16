@@ -115,7 +115,6 @@
 .public sub_02054FB8
 .public sub_02034A38
 .public MemFree
-.public sub_020473A4
 .public sub_0203A998
 .public sub_02041094
 .public RandRange

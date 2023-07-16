@@ -40,7 +40,7 @@
 .public sub_0202C3A8
 .public DivideInt
 .public MemFree
-.public sub_020473A4
+.public sub_02046D20
 .public sub_02011EC4
 .public sub_0202B530
 .public sub_0202C7E4

@@ -28,7 +28,7 @@ ov20_0238A160: ; 0x0238A160
 	add r0, r1, #0x9c
 	bl sub_020125CC
 _0238A188:
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, _0238A1AC ; =0x0238D120
 	ldr r0, [r0]
 	bl MemFree
@@ -268,7 +268,7 @@ _0238A678:
 _0238A68C:
 	mov r0, #0
 	str r0, [sb, #0x14]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldrsb r0, [sb, #0x18]
 	bl HidePortraitBox
 	mov r0, #0
@@ -670,7 +670,7 @@ _0238ABEC:
 	bl InitStandardItem
 	add r0, sp, #0x10
 	bl AddItemToBagNoHeld
-	bl sub_020473A4
+	bl sub_02046D20
 	ldrsb r0, [sb, #0x18]
 	bl HidePortraitBox
 	mov r0, #0
@@ -733,7 +733,7 @@ _0238ACC0:
 	bl sub_020103AC
 	mov r0, #0x2b
 	str r0, [sb, #0xc]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldrsb r0, [sb, #0x18]
 	bl HidePortraitBox
 	mov r0, #0
@@ -760,7 +760,7 @@ _0238AD24:
 	bl sub_020103AC
 	mov r0, #0x2b
 	str r0, [sb, #0xc]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldrsb r0, [sb, #0x18]
 	bl HidePortraitBox
 	mov r0, #0
@@ -803,7 +803,7 @@ _0238ADDC:
 	bne _0238B05C
 	mov r0, #0x2e
 	str r0, [sb, #0xc]
-	bl sub_020473A4
+	bl sub_02046D20
 	bl sub_020037A4
 
 	arm_func_start ov20_0238ADFC
@@ -1168,7 +1168,7 @@ ov20_0238B410: ; 0x0238B410
 	bl HidePortraitBox
 	mov r0, #0
 	strb r0, [r4, #0xa4]
-	bl sub_020473A4
+	bl sub_02046D20
 	ldr r0, [r4, #0x9c]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}

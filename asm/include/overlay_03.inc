@@ -11,7 +11,6 @@
 .public sub_020440DC
 .public IsItemInTimeDarkness
 .public SetQuestionMarks
-.public sub_020473A4
 .public ov01_0232CA30
 .public sub_0206645C
 .public sub_02037468
