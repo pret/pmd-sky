@@ -66,3 +66,8 @@
 .public _start_ModuleParams
 .public _start_AutoloadDoneCallback
 .public OS_IRQTable
+.public ov00_022BDADC
+.public ov00_0230D71C
+.public ov00_022E6E68
+.public sub_0203BCCC
+.public ov00_0230D000
