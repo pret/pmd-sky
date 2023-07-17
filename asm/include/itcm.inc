@@ -72,3 +72,7 @@
 .public ov29_0230175C
 .public ov29_02348D00
 .public dtcm_bss
+.public sub_0201E4D4
+.public sub_02004FCC
+.public sub_0201BD50
+.public sub_0201BD80
