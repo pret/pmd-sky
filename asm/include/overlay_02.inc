@@ -250,3 +250,10 @@
 .public sub_02079B14
 .public sub_020827F4
 .public sub_020819EC
+.public ov02_0233C114
+.public sub_0207CD44
+.public ov00_022CEF10
+.public sub_02079DE0
+.public ov00_022D4B88
+.public ov00_022CF8F8
+.public Strcpy
