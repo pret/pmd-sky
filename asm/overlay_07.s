@@ -2367,53 +2367,53 @@ ov07_0233EA24: ; 0x0233EA24
 	arm_func_end ov07_0233EA24
 
 	arm_func_start ov07_0233EA5C
-ov07_0233EA5C: @ 0x0233EA5C
-	ldr r0, _0233EA70 @ =0x02341B70
+ov07_0233EA5C: ; 0x0233EA5C
+	ldr r0, _0233EA70 ; =0x02341B70
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x8e]
 	bx lr
 	.align 2, 0
-_0233EA70: .4byte 0x02341B70
+_0233EA70: .word 0x02341B70
 	arm_func_end ov07_0233EA5C
 
 	arm_func_start ov07_0233EA74
-ov07_0233EA74: @ 0x0233EA74
-	push {r4, lr}
+ov07_0233EA74: ; 0x0233EA74
+	stmdb sp!, {r4, lr}
 	ldrb r0, [r1]
 	cmp r0, #1
 	bne _0233EA94
-	bl FUN_02337CAC
-	ldr r0, _0233EAEC @ =0x02341B70
+	bl ov01_02337CAC
+	ldr r0, _0233EAEC ; =0x02341B70
 	mov r3, #1
 	b _0233EAD4
 _0233EA94:
-	ldr r0, _0233EAEC @ =0x02341B70
+	ldr r0, _0233EAEC ; =0x02341B70
 	mov r1, #0x10
 	ldr r4, [r0]
 	add r0, r4, #0x1c
-	bl FUN_02003250
+	bl MemZero
 	mov r0, #0xc
 	strb r0, [r4, #0x1c]
-	bl FUN_020205A0
+	bl GetLanguageType
 	strb r0, [r4, #0x1e]
 	add r0, r4, #0x20
 	mov r1, #0xc
-	bl FUN_02337B3C
+	bl ov01_02337B3C
 	strb r0, [r4, #0x1f]
-	bl FUN_02337CAC
-	ldr r0, _0233EAEC @ =0x02341B70
+	bl ov01_02337CAC
+	ldr r0, _0233EAEC ; =0x02341B70
 	mov r3, #0
 _0233EAD4:
 	ldr r2, [r0]
-	ldr r1, _0233EAF0 @ =0x00001002
+	ldr r1, _0233EAF0 ; =0x00001002
 	strb r3, [r2, #0x8d]
 	ldr r0, [r0]
 	str r1, [r0]
-	pop {r4, pc}
+	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0233EAEC: .4byte 0x02341B70
-_0233EAF0: .4byte 0x00001002
+_0233EAEC: .word 0x02341B70
+_0233EAF0: .word 0x00001002
 	arm_func_end ov07_0233EA74
 
 	arm_func_start ov07_0233EAF4

@@ -1747,7 +1747,7 @@ ov08_0233DFF8: ; 0x0233DFF8
 	ldr r1, [r0, #0x18]
 	mov r2, #1
 	cmp r1, #0
-	ldreq r1, _0233E0D8 ; =0x0233E0F8
+	ldreq r1, _0233E0D8 ; =ov08_0233E0F8
 	ldr r3, _0233E0DC ; =0x0234AD00
 	streq r1, [r0, #0x18]
 	ldr r0, _0233E0E0 ; =0x0234AC80
@@ -1796,7 +1796,7 @@ _0233E0BC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233E0D4: .word 0x0233EC30
-_0233E0D8: .word 0x0233E0F8
+_0233E0D8: .word ov08_0233E0F8
 _0233E0DC: .word 0x0234AD00
 _0233E0E0: .word 0x0234AC80
 _0233E0E4: .word 0x0234AE00
@@ -1805,10 +1805,18 @@ _0233E0EC: .word 0x0234ACD4
 _0233E0F0: .word 0x0234BA20
 _0233E0F4: .word ov08_0233E118
 	arm_func_end ov08_0233DFF8
-_0233E0F8:
-	.byte 0x08, 0x40, 0x2D, 0xE9, 0xB2, 0x00, 0xD0, 0xE1
-	.byte 0x08, 0x00, 0x50, 0xE3, 0x08, 0x80, 0xBD, 0x18, 0x09, 0x00, 0xA0, 0xE3, 0x93, 0xFE, 0xFF, 0xEB
-	.byte 0xC2, 0xF6, 0xF4, 0xEB, 0x08, 0x80, 0xBD, 0xE8
+
+	arm_func_start ov08_0233E0F8
+ov08_0233E0F8: ; 0x0233E0F8
+	stmdb sp!, {r3, lr}
+	ldrh r0, [r0, #2]
+	cmp r0, #8
+	ldmneia sp!, {r3, pc}
+	mov r0, #9
+	bl ov08_0233DB60
+	bl WaitForever2
+	ldmia sp!, {r3, pc}
+	arm_func_end ov08_0233E0F8
 
 	arm_func_start ov08_0233E118
 ov08_0233E118: ; 0x0233E118
