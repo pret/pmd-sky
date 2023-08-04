@@ -602,7 +602,7 @@ _0238A95C:
 	strb r0, [r3, #0x82]
 	str r2, [sp]
 	ldr r0, _0238AD64 ; =0x0238B09C
-	ldr r3, _0238AD68 ; =0x0238AE6C
+	ldr r3, _0238AD68 ; =ov15_0238AE6C
 	str r2, [sp, #4]
 	bl sub_020305B4
 	ldr r1, _0238AD10 ; =0x0238B180
@@ -766,7 +766,7 @@ _0238ABD4:
 	strb r0, [r3, #0x82]
 	str r2, [sp]
 	ldr r0, _0238AD64 ; =0x0238B09C
-	ldr r3, _0238AD68 ; =0x0238AE6C
+	ldr r3, _0238AD68 ; =ov15_0238AE6C
 	str r2, [sp, #4]
 	bl sub_020305B4
 	ldr r1, _0238AD10 ; =0x0238B180
@@ -843,7 +843,7 @@ _0238AD58: .word 0x0000037E
 _0238AD5C: .word 0x0238B10C
 _0238AD60: .word 0x00001017
 _0238AD64: .word 0x0238B09C
-_0238AD68: .word 0x0238AE6C
+_0238AD68: .word ov15_0238AE6C
 _0238AD6C: .word 0x0001869F
 _0238AD70: .word 0x00000382
 _0238AD74: .word 0x0238B114
@@ -923,11 +923,26 @@ ov15_0238ADFC: ; 0x0238ADFC
 _0238AE64: .word 0x00000373
 _0238AE68: .word 0x0000C402
 	arm_func_end ov15_0238ADFC
-_0238AE6C:
-	.byte 0x0C, 0x00, 0x9F, 0xE5
-	.byte 0x0C, 0xC0, 0x9F, 0xE5, 0x00, 0x00, 0x90, 0xE5, 0xD8, 0x00, 0xD0, 0xE5, 0x1C, 0xFF, 0x2F, 0xE1
-	.byte 0x80, 0xB1, 0x38, 0x02, 0x78, 0xAD, 0x38, 0x02, 0x08, 0x40, 0x2D, 0xE9, 0xAB, 0xFC, 0xFF, 0xEB
-	.byte 0x01, 0x00, 0xA0, 0xE3, 0x08, 0x80, 0xBD, 0xE8
+
+	arm_func_start ov15_0238AE6C
+ov15_0238AE6C: ; 0x0238AE6C
+	ldr r0, _0238AE80 ; =0x0238B180
+	ldr ip, _0238AE84 ; =ov15_0238AD78
+	ldr r0, [r0]
+	ldrb r0, [r0, #0xd8]
+	bx ip
+	.align 2, 0
+_0238AE80: .word 0x0238B180
+_0238AE84: .word ov15_0238AD78
+	arm_func_end ov15_0238AE6C
+
+	arm_func_start ov15_0238AE88
+ov15_0238AE88: ; 0x0238AE88
+	stmdb sp!, {r3, lr}
+	bl ov15_0238A140
+	mov r0, #1
+	ldmia sp!, {r3, pc}
+	arm_func_end ov15_0238AE88
 
 	arm_func_start ov15_0238AE98
 ov15_0238AE98: ; 0x0238AE98
