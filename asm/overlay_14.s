@@ -822,10 +822,16 @@ ov14_0238AC40: ; 0x0238AC40
 _0238ACE4: .word 0x0238DB80
 _0238ACE8: .word 0x00000408
 	arm_func_end ov14_0238AC40
-_0238ACEC:
-	.byte 0x08, 0x40, 0x2D, 0xE9
-	.byte 0x01, 0x10, 0xE0, 0xE3, 0x01, 0x00, 0x50, 0xE1, 0x08, 0x80, 0xBD, 0x08, 0x95, 0x73, 0xF2, 0xEB
-	.byte 0x08, 0x80, 0xBD, 0xE8
+
+	arm_func_start ov14_0238ACEC
+ov14_0238ACEC: ; 0x0238ACEC
+	stmdb sp!, {r3, lr}
+	mvn r1, #1
+	cmp r0, r1
+	ldmeqia sp!, {r3, pc}
+	bl sub_02027B58
+	ldmia sp!, {r3, pc}
+	arm_func_end ov14_0238ACEC
 
 	arm_func_start ov14_0238AD04
 ov14_0238AD04: ; 0x0238AD04
@@ -2044,7 +2050,7 @@ _0238BE30:
 	cmp r1, r0
 	bne _0238BE6C
 	ldr r0, _0238C1A4 ; =0x0238D9F8
-	ldr r1, _0238C1A8 ; =0x0238ACEC
+	ldr r1, _0238C1A8 ; =ov14_0238ACEC
 	bl sub_0202F8C4
 	ldr r1, _0238C12C ; =0x0238DB80
 	ldr r1, [r1]
@@ -2274,7 +2280,7 @@ _0238C198: .word 0x000001E3
 _0238C19C: .word 0x000006F5
 _0238C1A0: .word 0x000006F6
 _0238C1A4: .word 0x0238D9F8
-_0238C1A8: .word 0x0238ACEC
+_0238C1A8: .word ov14_0238ACEC
 _0238C1AC: .word 0x0238D988
 _0238C1B0: .word ov14_0238AD04
 _0238C1B4: .word 0x0238D998
