@@ -192,3 +192,9 @@
 .public sub_02057CE8
 .public sub_02063FC8
 .public sub_0201E730
+.public sub_020562B8
+.public sub_020534BC
+.public sub_02055CCC
+.public ov11_023061CC
+.public ov11_02306C9C
+.public ov11_02306C64
