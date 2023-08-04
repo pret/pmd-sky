@@ -53,3 +53,15 @@
 .public sub_02027B1C
 .public sub_02031914
 .public sub_02033758
+.public ov00_022BE680
+.public ov01_023310B8
+.public sub_02052060
+.public ov01_02330210
+.public ov01_0232EDAC
+.public FreeDBox
+.public ov00_022BE8D0
+.public ov01_02330E00
+.public IsDBoxActive
+.public ov00_022BE5C8
+.public ov00_022BE57C
+.public ov01_0232E94C
