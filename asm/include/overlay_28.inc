@@ -14,3 +14,10 @@
 .public sub_02027170
 .public sub_02027228
 .public GetStringFromFileVeneer
+.public sub_02025B90
+.public sub_0202822C
+.public ov11_022E6E8C
+.public sub_02028FA0
+.public sub_02025B80
+.public sub_02028354
+.public ov11_022E6EC8
