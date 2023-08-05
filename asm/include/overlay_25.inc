@@ -48,3 +48,8 @@
 .public FreeNormalMenu
 .public sub_0202836C
 .public ov11_0230B724
+.public FreePortraitBox
+.public FreeDBox
+.public ov11_022E6E8C
+.public ov00_022E6E68
+.public ov11_022E6EC8
