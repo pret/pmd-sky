@@ -7,5 +7,11 @@ Static arm7
 Autoload MAIN
 {
 	Address 0x027E0000
-	Object asm/arm7.o
+	Object asm/main.o
+}
+
+Autoload WRAM
+{
+	Address 0x037F8000
+	Object asm/wram.o
 }
