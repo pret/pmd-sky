@@ -7,7 +7,7 @@
 ExplorersOfSkyMain: ; 0x022DC240
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xa0
-	ldr r3, _022DC598 ; =0x022DC738
+	ldr r3, _022DC598 ; =ov34_022DC738
 	ldr r1, _022DC59C ; =0x022DD0A0
 	mov r2, #0
 	str r3, [sp, #0x8c]
@@ -243,7 +243,7 @@ _022DC584:
 	add sp, sp, #0xa0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022DC598: .word 0x022DC738
+_022DC598: .word ov34_022DC738
 _022DC59C: .word 0x022DD0A0
 _022DC5A0: .word 0x022DD080
 _022DC5A4: .word ov34_022DC5B0
@@ -364,9 +364,15 @@ ov34_022DC718: ; 0x022DC718
 	.align 2, 0
 _022DC734: .word 0x022DD0A0
 	arm_func_end ov34_022DC718
-_022DC738:
-	.byte 0x04, 0xC0, 0x9F, 0xE5, 0x01, 0x00, 0xA0, 0xE3
-	.byte 0x1C, 0xFF, 0x2F, 0xE1, 0x18, 0xC7, 0x2D, 0x02
+
+	arm_func_start ov34_022DC738
+ov34_022DC738: ; 0x022DC738
+	ldr ip, _022DC744 ; =ov34_022DC718
+	mov r0, #1
+	bx ip
+	.align 2, 0
+_022DC744: .word ov34_022DC718
+	arm_func_end ov34_022DC738
 
 	arm_func_start ov34_022DC748
 ov34_022DC748: ; 0x022DC748
