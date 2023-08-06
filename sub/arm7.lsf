@@ -1,0 +1,11 @@
+Static arm7
+{
+	Address 0x02000000
+	StackSize 1024 1024
+}
+
+Autoload MAIN
+{
+	Address 0x027E0000
+	Object asm/arm7.o
+}
