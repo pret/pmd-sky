@@ -8,6 +8,9 @@ Arm9
 
 Arm7
 {
+	Static $(BUILD_DIR)/arm7.sbin
+	OverlayDefs $(BUILD_DIR)/arm7.sbin
+	Nef $(BUILD_DIR)/arm7.nef
 }
 
 Property
