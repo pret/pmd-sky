@@ -232,3 +232,10 @@
 .public sub_02017C74
 .public sub_0204019C
 .public CheckTeamMemberIdx__02056228
+.public ShouldMonsterRunAwayVariation
+.public sub_020307A4
+.public IsRecruitingAllowed
+.public ov29_0234F77C
+.public GetSpeciesString
+.public Vsprintf
+.public sub_02028354
