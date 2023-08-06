@@ -2085,7 +2085,7 @@ _022DDE7C:
 	ldr sp, [r6]
 	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, pc}
 _022DDEBC:
-	.byte 0x05, 0x00, 0x00, 0xEA
+	b _022DDED8
 _022DDEC0:
 	ldr r6, _022DDEF0 ; =0x023735F4
 	ldr sp, [r6]
@@ -2093,7 +2093,7 @@ _022DDEC0:
 	ldr r2, [r7]
 	bx r2
 _022DDED4:
-	.byte 0xFF, 0xFF, 0xFF, 0xEA
+	b _022DDED8
 _022DDED8:
 	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, pc}
 	.align 2, 0
@@ -2159,7 +2159,7 @@ _022DDF78:
 	ldr sp, [r6]
 	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, pc}
 _022DDFB4:
-	.byte 0x04, 0x00, 0x00, 0xEA
+	b _022DDFCC
 _022DDFB8:
 	ldr r6, _022DDFD8 ; =0x023735F4
 	ldr sp, [r6]
@@ -15089,9 +15089,17 @@ ov29_022E8650: ; 0x022E8650
 	.align 2, 0
 _022E8698: .word 0x02353554
 	arm_func_end ov29_022E8650
-_022E869C:
-	.byte 0x01, 0x00, 0xA0, 0xE3
-	.byte 0x1E, 0xFF, 0x2F, 0xE1, 0x1E, 0xFF, 0x2F, 0xE1
+
+	arm_func_start ov29_022E869C
+ov29_022E869C: ; 0x022E869C
+	mov r0, #1
+	bx lr
+	arm_func_end ov29_022E869C
+
+	arm_func_start ov29_022E86A4
+ov29_022E86A4: ; 0x022E86A4
+	bx lr
+	arm_func_end ov29_022E86A4
 
 	arm_func_start ov29_022E86A8
 ov29_022E86A8: ; 0x022E86A8
@@ -58509,8 +58517,12 @@ _0230D6FC:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_0230D688
-_0230D704:
-	.byte 0x00, 0x00, 0xA0, 0xE3, 0x1E, 0xFF, 0x2F, 0xE1
+
+	arm_func_start ov29_0230D704
+ov29_0230D704: ; 0x0230D704
+	mov r0, #0
+	bx lr
+	arm_func_end ov29_0230D704
 
 	arm_func_start ov29_0230D70C
 ov29_0230D70C: ; 0x0230D70C
@@ -100500,10 +100512,17 @@ ov29_02331020: ; 0x02331020
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_02331020
-_0233103C:
-	.byte 0x09, 0x00, 0xA0, 0xE1
-	.byte 0x04, 0x10, 0xA0, 0xE1, 0x08, 0x20, 0xA0, 0xE1, 0x07, 0x30, 0xA0, 0xE1, 0x25, 0xDA, 0xFF, 0xEB
-	.byte 0x00, 0xA0, 0xA0, 0xE1, 0x9C, 0x05, 0x00, 0xEA
+
+	arm_func_start ov29_0233103C
+ov29_0233103C: ; 0x0233103C
+	mov r0, sb
+	mov r1, r4
+	mov r2, r8
+	mov r3, r7
+	bl ov29_023278E8
+	mov sl, r0
+	b _023326CC
+	arm_func_end ov29_0233103C
 
 	arm_func_start ov29_02331058
 ov29_02331058: ; 0x02331058
@@ -100559,9 +100578,17 @@ ov29_023310C8: ; 0x023310C8
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_023310C8
-_023310E4:
-	.byte 0x09, 0x00, 0xA0, 0xE1, 0x04, 0x10, 0xA0, 0xE1, 0x08, 0x20, 0xA0, 0xE1
-	.byte 0x07, 0x30, 0xA0, 0xE1, 0x85, 0xEC, 0xFF, 0xEB, 0x00, 0xA0, 0xA0, 0xE1, 0x72, 0x05, 0x00, 0xEA
+
+	arm_func_start ov29_023310E4
+ov29_023310E4: ; 0x023310E4
+	mov r0, sb
+	mov r1, r4
+	mov r2, r8
+	mov r3, r7
+	bl ov29_0232C310
+	mov sl, r0
+	b _023326CC
+	arm_func_end ov29_023310E4
 
 	arm_func_start ov29_02331100
 ov29_02331100: ; 0x02331100
@@ -101020,9 +101047,17 @@ ov29_023315D8: ; 0x023315D8
 	mov sl, r0
 	b _023326CC
 	arm_func_end ov29_023315D8
-_023315F4:
-	.byte 0x09, 0x00, 0xA0, 0xE1, 0x04, 0x10, 0xA0, 0xE1, 0x08, 0x20, 0xA0, 0xE1
-	.byte 0x07, 0x30, 0xA0, 0xE1, 0xAE, 0xE9, 0xFF, 0xEB, 0x00, 0xA0, 0xA0, 0xE1, 0x2E, 0x04, 0x00, 0xEA
+
+	arm_func_start ov29_023315F4
+ov29_023315F4: ; 0x023315F4
+	mov r0, sb
+	mov r1, r4
+	mov r2, r8
+	mov r3, r7
+	bl ov29_0232BCC4
+	mov sl, r0
+	b _023326CC
+	arm_func_end ov29_023315F4
 
 	arm_func_start ov29_02331610
 ov29_02331610: ; 0x02331610
@@ -132403,7 +132438,8 @@ _0234BA40:
 	bl AdvanceFrame
 	b _0234BA28
 _0234BA4C:
-	.byte 0x38, 0x80, 0xBD, 0xE8
+	ldmia sp!, {r3, r4, r5, pc}
+	.align 2, 0
 _0234BA50: .word 0x023537CC
 	arm_func_end ov29_0234BA18
 
@@ -132552,9 +132588,14 @@ _0234BBCC:
 	movne r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end OpenMessageLog
-_0234BBDC:
-	.byte 0x00, 0xC0, 0x9F, 0xE5
-	.byte 0x1C, 0xFF, 0x2F, 0xE1, 0x60, 0x0B, 0x2E, 0x02
+
+	arm_func_start ov29_0234BBDC
+ov29_0234BBDC: ; 0x0234BBDC
+	ldr ip, _0234BBE4 ; =ov29_022E0B60
+	bx ip
+	.align 2, 0
+_0234BBE4: .word ov29_022E0B60
+	arm_func_end ov29_0234BBDC
 
 	arm_func_start ov29_0234BBE8
 ov29_0234BBE8: ; 0x0234BBE8
@@ -133450,7 +133491,8 @@ _0234C7C0:
 	bl AdvanceFrame
 	b _0234C750
 _0234C7CC:
-	.byte 0xF8, 0x80, 0xBD, 0xE8
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+	.align 2, 0
 _0234C7D0: .word 0x023537E0
 	arm_func_end ov29_0234C738
 
@@ -136667,9 +136709,16 @@ ov29_0234F21C: ; 0x0234F21C
 	.align 2, 0
 _0234F244: .word 0x02353834
 	arm_func_end ov29_0234F21C
-_0234F248:
-	.byte 0x04, 0xC0, 0x9F, 0xE5, 0x04, 0x00, 0x9F, 0xE5
-	.byte 0x1C, 0xFF, 0x2F, 0xE1, 0xF4, 0xF3, 0x34, 0x02, 0x34, 0x38, 0x35, 0x02
+
+	arm_func_start ov29_0234F248
+ov29_0234F248: ; 0x0234F248
+	ldr ip, _0234F254 ; =ov29_0234F3F4
+	ldr r0, _0234F258 ; =0x02353834
+	bx ip
+	.align 2, 0
+_0234F254: .word ov29_0234F3F4
+_0234F258: .word 0x02353834
+	arm_func_end ov29_0234F248
 
 	arm_func_start ov29_0234F25C
 ov29_0234F25C: ; 0x0234F25C
