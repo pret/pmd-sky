@@ -1,17 +1,24 @@
 Static arm7
 {
-	Address 0x02000000
+	Address 0x02380000
 	StackSize 1024 1024
-}
-
-Autoload MAIN
-{
-	Address 0x027E0000
-	Object asm/main.o
 }
 
 Autoload WRAM
 {
 	Address 0x037F8000
 	Object asm/wram.o
+	Object asm/wram.o (.wram)
+}
+
+Autoload MAIN
+{
+	Address 0x027E0000
+	Object asm/main.o
+	Object asm/main.o (.wram)
+}
+
+Autoload EXT_WRAM
+{
+	Address 0x06000000
 }
