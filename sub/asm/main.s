@@ -40,7 +40,7 @@ sub_027E0000: ; 0x027E0000
 sub_027E01CC: ; 0x027E01CC
 	stmdb sp!, {r3, lr}
 	mov r1, r0
-	ldr r0, _027E023C ; =0x027F7878
+	ldr r0, _027E023C ; =mainBssFiller
 	mov r2, #1
 	bl sub_037FC6D4
 	ldr r0, _027E0240 ; =0x027F78D0
@@ -68,7 +68,7 @@ _027E0230:
 	ldmia sp!, {r3, lr}
 	bx lr
 	.align 2, 0
-_027E023C: .word 0x027F7878
+_027E023C: .word mainBssFiller
 _027E0240: .word 0x027F78D0
 	arm_func_end sub_027E01CC
 
@@ -307,7 +307,7 @@ _027E0560: .word 0x027FFF98
 
 	arm_func_start sub_027E0564
 sub_027E0564: ; 0x027E0564
-	ldr r2, _027E0594 ; =0x027F7878
+	ldr r2, _027E0594 ; =mainBssFiller
 	mov r3, #0
 _027E056C:
 	add r1, r2, r3
@@ -321,13 +321,13 @@ _027E056C:
 	str r1, [r0, #0x574]
 	bx lr
 	.align 2, 0
-_027E0594: .word 0x027F7878
+_027E0594: .word mainBssFiller
 _027E0598: .word 0x027F8878
 	arm_func_end sub_027E0564
 
 	arm_func_start sub_027E059C
 sub_027E059C: ; 0x027E059C
-	ldr r1, _027E05D0 ; =0x027F7878
+	ldr r1, _027E05D0 ; =mainBssFiller
 	mov r3, #0
 	mov r2, r3
 _027E05A8:
@@ -342,7 +342,7 @@ _027E05A8:
 	mov r0, r3, lsr #5
 	bx ip
 	.align 2, 0
-_027E05D0: .word 0x027F7878
+_027E05D0: .word mainBssFiller
 _027E05D4: .word sub_027E05D8
 	arm_func_end sub_027E059C
 
@@ -577,7 +577,7 @@ sub_027E0898: ; 0x027E0898
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x20
 _027E08A0:
-	ldr r0, _027E16F0 ; =0x027F7878
+	ldr r0, _027E16F0 ; =mainBssFiller
 	add r1, sp, #0x1c
 	add r0, r0, #0x28
 	mov r2, #1
@@ -1543,7 +1543,7 @@ _027E16D4:
 	bl sub_037FDD14
 	b _027E19CC
 	.align 2, 0
-_027E16F0: .word 0x027F7878
+_027E16F0: .word mainBssFiller
 _027E16F4: .word 0x027F8878
 _027E16F8: .word 0x00000182
 _027E16FC: .word 0x027F7900
@@ -1743,7 +1743,7 @@ _027E19CC:
 	bl sub_027E1A08
 	b _027E08A0
 _027E19D8:
-	ldr r0, _027E16F0 ; =0x027F7878
+	ldr r0, _027E16F0 ; =mainBssFiller
 	mov r1, sb
 	add r0, r0, #0x58
 	mov r2, #1
@@ -1842,7 +1842,7 @@ sub_027E1AE8: ; 0x027E1AE8
 	mov r5, r0
 	bl sub_027E0700
 	movs r1, r0
-	ldr r4, _027E1B64 ; =0x027F7878
+	ldr r4, _027E1B64 ; =mainBssFiller
 	moveq r0, #0
 	beq _027E1B1C
 	mov r0, #0x2b
@@ -1872,7 +1872,7 @@ _027E1B5C:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
-_027E1B64: .word 0x027F7878
+_027E1B64: .word mainBssFiller
 	arm_func_end sub_027E1AE8
 
 	arm_func_start sub_027E1B68
@@ -1882,7 +1882,7 @@ sub_027E1B68: ; 0x027E1B68
 	mov r2, #0x40
 	ldr r0, [r1, #0x544]
 	ldr r1, [r1, #0x548]
-	ldr r5, _027E1BF4 ; =0x027F7878
+	ldr r5, _027E1BF4 ; =mainBssFiller
 	bl sub_037FCC74
 	mov r4, r0
 	ldr r1, _027E1BF8 ; =0x00000185
@@ -1914,7 +1914,7 @@ _027E1BE8:
 	bx lr
 	.align 2, 0
 _027E1BF0: .word 0x027F8878
-_027E1BF4: .word 0x027F7878
+_027E1BF4: .word mainBssFiller
 _027E1BF8: .word 0x00000185
 _027E1BFC: .word 0x027F78A0
 	arm_func_end sub_027E1B68
@@ -1937,7 +1937,7 @@ sub_027E1C0C: ; 0x027E1C0C
 	mov r2, #0
 	strh r2, [r0, #0x5e]
 	strh r2, [r0, #0x60]
-	ldr r4, _027E1C98 ; =0x027F7878
+	ldr r4, _027E1C98 ; =mainBssFiller
 	strh r2, [r0, #0x88]
 	beq _027E1C4C
 	mov r3, #0x2c
@@ -1967,7 +1967,7 @@ _027E1C8C:
 	bx lr
 	.align 2, 0
 _027E1C94: .word 0x027F8878
-_027E1C98: .word 0x027F7878
+_027E1C98: .word mainBssFiller
 	arm_func_end sub_027E1C0C
 
 	arm_func_start sub_027E1C9C
@@ -1989,7 +1989,7 @@ sub_027E1CC0: ; 0x027E1CC0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r0, _027E1D58 ; =0x027F8878
 	mov r6, #1
-	ldr r8, _027E1D5C ; =0x027F7878
+	ldr r8, _027E1D5C ; =mainBssFiller
 	ldr sb, [r0, #0x550]
 	ldr r5, _027E1D60 ; =0x027F7184
 	add r7, sp, #0
@@ -2031,7 +2031,7 @@ _027E1D50:
 	bx lr
 	.align 2, 0
 _027E1D58: .word 0x027F8878
-_027E1D5C: .word 0x027F7878
+_027E1D5C: .word mainBssFiller
 _027E1D60: .word 0x027F7184
 	arm_func_end sub_027E1CC0
 
@@ -5466,7 +5466,7 @@ sub_027E4BD4: ; 0x027E4BD4
 	ldr r4, [sl, #8]
 	ldr r5, [sl, #0xc]
 	ldr r6, [sl, #0x10]
-	ldr r0, _027E4F60 ; =0x027F7878
+	ldr r0, _027E4F60 ; =mainBssFiller
 	cmp r1, #0
 	mov r7, #0
 	bne _027E4C58
@@ -5694,7 +5694,7 @@ _027E4F50:
 	bx lr
 	.align 2, 0
 _027E4F5C: .word 0x027F8878
-_027E4F60: .word 0x027F7878
+_027E4F60: .word mainBssFiller
 _027E4F64: .word 0x0000FFFF
 	arm_func_end sub_027E4BD4
 
@@ -6984,7 +6984,7 @@ _027E608C: .word 0x027E5F8C
 sub_027E6090: ; 0x027E6090
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _027E6138 ; =0x027F8878
-	ldr r4, _027E613C ; =0x027F7878
+	ldr r4, _027E613C ; =mainBssFiller
 	ldr r5, [r0, #0x550]
 	bl sub_037FDD00
 	ldrh r1, [r5, #0xce]
@@ -7029,7 +7029,7 @@ _027E6130:
 	bx lr
 	.align 2, 0
 _027E6138: .word 0x027F8878
-_027E613C: .word 0x027F7878
+_027E613C: .word mainBssFiller
 	arm_func_end sub_027E6090
 
 	arm_func_start sub_027E6140
@@ -27591,3 +27591,7 @@ _027F7174:
 	.byte 0xCC, 0xE5, 0x7E, 0x02, 0x01, 0x00, 0x01, 0x00, 0x0C, 0xE6, 0x7E, 0x02, 0x01, 0x00, 0x01, 0x00
 	.byte 0x4C, 0xE6, 0x7E, 0x02, 0x32, 0x2E, 0x38, 0x33, 0x2E, 0x30, 0x30, 0x00, 0x01, 0x00, 0x04, 0x00
 	.byte 0x08, 0x00, 0x00, 0x00
+
+	.bss
+mainBssFiller:
+	.space 0x1968
