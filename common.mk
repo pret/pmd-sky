@@ -203,7 +203,7 @@ $(LCF): $(LSF) $(LCF_TEMPLATE)
 ifeq ($(PROC),arm946e)
 	$(SED) -i '1i KEEP_SECTION\n{\n\t.exceptix\n}' $@
 else
-	$(SED) -i '/\} > check\.WORKRAM/a SDK_SUBPRIV_ARENA_LO = SDK_SUBPRIV_ARENA_LO + SDK_AUTOLOAD.EXT_WRAM.SIZE + SDK_AUTOLOAD.EXT_WRAM.BSS_SIZE;' $@
+	$(SED) -i '/\} > check\.WORKRAM/a SDK_SUBPRIV_ARENA_LO = SDK_SUBPRIV_ARENA_LO;' $@
 endif
 
 RESPONSE_TEMPLATE    := $(PROJECT_ROOT)/mwldarm.response.template

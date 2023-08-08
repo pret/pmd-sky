@@ -16,8 +16,3 @@ Autoload MAIN
 	Address 0x027E0000
 	Object asm/main.o
 }
-
-Overlay EXT_WRAM
-{
-	Address 0x06000000
-}

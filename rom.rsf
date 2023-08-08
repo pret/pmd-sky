@@ -9,7 +9,7 @@ Arm9
 Arm7
 {
 	Static sub/build/arm7.sbin
-	OverlayDefs sub/build/arm7.sbin
+	OverlayDefs sub/build/arm7_defs.sbin
 	Nef sub/build/arm7.nef
 }
 
