@@ -17,7 +17,7 @@ $(ASM_OBJS): MWASFLAGS += -DPM_ASM -include config.h
 $(ASM_OBJS): $(WORK_DIR)/include/config.h
 $(C_OBJS):   $(WORK_DIR)/include/global.h
 
-ROM             := $(BUILD_DIR)/poke$(buildname).nds
+ROM             := $(BUILD_DIR)/$(buildname).nds
 BANNER          := $(ROM:%.nds=%.bnr)
 BANNER_SPEC     := $(buildname)/banner.bsf
 ICON_PNG        := $(buildname)/icon.png
@@ -60,7 +60,7 @@ $(BUILD_DIR)/component.files: main ;
 $(HEADER_TEMPLATE): ;
 
 $(ROM): $(ROMSPEC) tools filesystem main sub $(BANNER)
-	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(NITROFS_FILES:files/%=%)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
+	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) -c $(buildname)/rom.sha1
