@@ -55,12 +55,18 @@ $(NEF): libsyscall
 libsyscall:
 	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
 
+NITROFS_FILES_FILE := $(BUILD_DIR)/nitrofs_files.txt
+
+# There are too many data files, exceeding Windows's command length limit. Write the file list to a file to get around this limit.
+nitrofs_files_file:
+	echo "NITROFS_FILES=" $(NITROFS_FILES:files/%=%) > $(NITROFS_FILES_FILE)
+
 $(BUILD_DIR)/component.files: main ;
 
 $(HEADER_TEMPLATE): ;
 
-$(ROM): $(ROMSPEC) tools filesystem main sub $(BANNER)
-	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
+$(ROM): $(ROMSPEC) tools filesystem main sub $(BANNER) nitrofs_files_file
+	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -M$(NITROFS_FILES_FILE) -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) -c $(buildname)/rom.sha1

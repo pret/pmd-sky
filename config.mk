@@ -36,7 +36,6 @@ ifndef SECURE_CRC
 $(error Unsupported ROM: $(GAME_LANGUAGE))
 endif
 
-# At present this repository only supports the 1.0 US ROM
 SUPPORTED_ROMS   := pmdsky.us
 ifneq ($(filter $(buildname),$(SUPPORTED_ROMS)),$(buildname))
 $(error $(buildname) is not supported, choose from: $(SUPPORTED_ROMS))
