@@ -6,75 +6,75 @@
 	arm_func_start ov03_0233CA80
 ov03_0233CA80: ; 0x0233CA80
 	ldr ip, _0233CA90 ; =MemZero
-	ldr r0, _0233CA94 ; =0x02346BE0
+	ldr r0, _0233CA94 ; =_02346BE0
 	mov r1, #0x10
 	bx ip
 	.align 2, 0
 _0233CA90: .word MemZero
-_0233CA94: .word 0x02346BE0
+_0233CA94: .word _02346BE0
 	arm_func_end ov03_0233CA80
 
 	arm_func_start ov03_0233CA98
 ov03_0233CA98: ; 0x0233CA98
-	ldr r1, _0233CAA4 ; =0x02346BE0
+	ldr r1, _0233CAA4 ; =_02346BE0
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0233CAA4: .word 0x02346BE0
+_0233CAA4: .word _02346BE0
 	arm_func_end ov03_0233CA98
 
 	arm_func_start ov03_0233CAA8
 ov03_0233CAA8: ; 0x0233CAA8
-	ldr r1, _0233CAB4 ; =0x02346BE0
+	ldr r1, _0233CAB4 ; =_02346BE0
 	str r0, [r1, #4]
 	bx lr
 	.align 2, 0
-_0233CAB4: .word 0x02346BE0
+_0233CAB4: .word _02346BE0
 	arm_func_end ov03_0233CAA8
 
 	arm_func_start ov03_0233CAB8
 ov03_0233CAB8: ; 0x0233CAB8
-	ldr r0, _0233CAC4 ; =0x02346BE0
+	ldr r0, _0233CAC4 ; =_02346BE0
 	ldr r0, [r0, #4]
 	bx lr
 	.align 2, 0
-_0233CAC4: .word 0x02346BE0
+_0233CAC4: .word _02346BE0
 	arm_func_end ov03_0233CAB8
 
 	arm_func_start ov03_0233CAC8
 ov03_0233CAC8: ; 0x0233CAC8
-	ldr r1, _0233CAD4 ; =0x02346BE0
+	ldr r1, _0233CAD4 ; =_02346BE0
 	str r0, [r1, #8]
 	bx lr
 	.align 2, 0
-_0233CAD4: .word 0x02346BE0
+_0233CAD4: .word _02346BE0
 	arm_func_end ov03_0233CAC8
 
 	arm_func_start ov03_0233CAD8
 ov03_0233CAD8: ; 0x0233CAD8
-	ldr r0, _0233CAE4 ; =0x02346BE0
+	ldr r0, _0233CAE4 ; =_02346BE0
 	ldr r0, [r0, #8]
 	bx lr
 	.align 2, 0
-_0233CAE4: .word 0x02346BE0
+_0233CAE4: .word _02346BE0
 	arm_func_end ov03_0233CAD8
 
 	arm_func_start ov03_0233CAE8
 ov03_0233CAE8: ; 0x0233CAE8
-	ldr r1, _0233CAF4 ; =0x02346BE0
+	ldr r1, _0233CAF4 ; =_02346BE0
 	str r0, [r1, #0xc]
 	bx lr
 	.align 2, 0
-_0233CAF4: .word 0x02346BE0
+_0233CAF4: .word _02346BE0
 	arm_func_end ov03_0233CAE8
 
 	arm_func_start ov03_0233CAF8
 ov03_0233CAF8: ; 0x0233CAF8
-	ldr r0, _0233CB04 ; =0x02346BE0
+	ldr r0, _0233CB04 ; =_02346BE0
 	ldr r0, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0233CB04: .word 0x02346BE0
+_0233CB04: .word _02346BE0
 	arm_func_end ov03_0233CAF8
 
 	arm_func_start ov03_0233CB08
@@ -11211,3 +11211,7 @@ _02346734: .word 0x02346BDC
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x7A, 0x38, 0x7B, 0x38, 0x7C, 0x38, 0x00, 0x00
+
+	.bss
+_02346BE0:
+	.space 0x20

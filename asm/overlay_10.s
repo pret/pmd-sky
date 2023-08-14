@@ -835,14 +835,14 @@ _022BD568: .word 0x022C43B0
 	arm_func_start ov10_022BD56C
 ov10_022BD56C: ; 0x022BD56C
 	stmdb sp!, {r3, lr}
-	ldr r0, _022BD5A8 ; =0x022DC220
+	ldr r0, _022BD5A8 ; =_022DC220
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0xa4
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _022BD5A8 ; =0x022DC220
+	ldr r1, _022BD5A8 ; =_022DC220
 	mov r2, #0
 	str r0, [r1]
 	str r2, [r0]
@@ -850,13 +850,13 @@ ov10_022BD56C: ; 0x022BD56C
 	str r2, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022BD5A8: .word 0x022DC220
+_022BD5A8: .word _022DC220
 	arm_func_end ov10_022BD56C
 
 	arm_func_start ov10_022BD5AC
 ov10_022BD5AC: ; 0x022BD5AC
 	stmdb sp!, {r3, lr}
-	ldr r0, _022BD710 ; =0x022DC220
+	ldr r0, _022BD710 ; =_022DC220
 	ldr r1, [r0]
 	ldr r0, [r1]
 	cmp r0, #4
@@ -872,7 +872,7 @@ _022BD5DC:
 	ldr r0, _022BD714 ; =0x020B0A48
 	mov r1, #0x68
 	ldr r0, [r0]
-	ldr r2, _022BD710 ; =0x022DC220
+	ldr r2, _022BD710 ; =_022DC220
 	add r0, r0, #0x9000
 	ldr r0, [r0, #0x84c]
 	mla r0, r3, r1, r0
@@ -883,12 +883,12 @@ _022BD5DC:
 	bl sub_020562B8
 	cmp r0, #0
 	beq _022BD668
-	ldr r0, _022BD710 ; =0x022DC220
+	ldr r0, _022BD710 ; =_022DC220
 	ldr r0, [r0]
 	ldr r1, [r0, #0x4c]
 	add r0, r0, #8
 	bl sub_020534BC
-	ldr r0, _022BD710 ; =0x022DC220
+	ldr r0, _022BD710 ; =_022DC220
 	mov r2, #0
 	ldr r1, [r0]
 	strb r2, [r1, #0xe]
@@ -899,25 +899,25 @@ _022BD5DC:
 	bl sub_02055CCC
 	mvn r1, #0
 	cmp r0, r1
-	ldreq r0, _022BD710 ; =0x022DC220
+	ldreq r0, _022BD710 ; =_022DC220
 	moveq r1, #1
 	ldreq r0, [r0]
 	streq r1, [r0]
 	beq _022BD690
 _022BD668:
-	ldr r0, _022BD710 ; =0x022DC220
+	ldr r0, _022BD710 ; =_022DC220
 	ldr r1, [r0]
 	ldr r0, [r1, #4]
 	add r0, r0, #1
 	str r0, [r1, #4]
 _022BD67C:
-	ldr r0, _022BD710 ; =0x022DC220
+	ldr r0, _022BD710 ; =_022DC220
 	ldr ip, [r0]
 	ldr r3, [ip, #4]
 	cmp r3, #4
 	blt _022BD5DC
 _022BD690:
-	ldr r0, _022BD710 ; =0x022DC220
+	ldr r0, _022BD710 ; =_022DC220
 	ldr r1, [r0]
 	ldr r0, [r1, #4]
 	cmp r0, #4
@@ -927,7 +927,7 @@ _022BD690:
 _022BD6AC:
 	add r0, r1, #8
 	bl ov11_023061CC
-	ldr r0, _022BD710 ; =0x022DC220
+	ldr r0, _022BD710 ; =_022DC220
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0]
@@ -938,7 +938,7 @@ _022BD6C8:
 	cmpne r0, #4
 	bne _022BD708
 	bl ov11_02306C64
-	ldr r0, _022BD710 ; =0x022DC220
+	ldr r0, _022BD710 ; =_022DC220
 	mov r1, #0
 	ldr r3, [r0]
 	ldr r2, [r3, #4]
@@ -954,24 +954,24 @@ _022BD708:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022BD710: .word 0x022DC220
+_022BD710: .word _022DC220
 _022BD714: .word 0x020B0A48
 	arm_func_end ov10_022BD5AC
 
 	arm_func_start ov10_022BD718
 ov10_022BD718: ; 0x022BD718
 	stmdb sp!, {r3, lr}
-	ldr r0, _022BD740 ; =0x022DC220
+	ldr r0, _022BD740 ; =_022DC220
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _022BD740 ; =0x022DC220
+	ldr r0, _022BD740 ; =_022DC220
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022BD740: .word 0x022DC220
+_022BD740: .word _022DC220
 	arm_func_end ov10_022BD718
 
 	arm_func_start ov10_022BD744
@@ -15204,3 +15204,7 @@ ov10_022C434C: ; 0x022C434C
 	.byte 0x10, 0x00, 0x00, 0x00, 0x19, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x0C, 0x00, 0x09, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x10, 0x00, 0x0C, 0x00, 0x19, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x00, 0x00
+
+	.bss
+_022DC220:
+	.space 0x20

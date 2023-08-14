@@ -9,7 +9,7 @@ ov07_0233CA80: ; 0x0233CA80
 	mov r0, #0x14
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _0233CAC4 ; =0x02341B80
+	ldr r1, _0233CAC4 ; =_02341B80
 	mov r2, #0
 	str r0, [r1]
 	str r2, [r0]
@@ -27,12 +27,12 @@ ov07_0233CAA8: ; 0x0233CAA8
 	strb r2, [r0, #0x10]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233CAC4: .word 0x02341B80
+_0233CAC4: .word _02341B80
 	arm_func_end ov07_0233CAA8
 
 	arm_func_start ov07_0233CAC8
 ov07_0233CAC8: ; 0x0233CAC8
-	ldr r1, _0233CAE4 ; =0x02341B80
+	ldr r1, _0233CAE4 ; =_02341B80
 	mov r2, #1
 	ldr r3, [r1]
 	str r0, [r3, #0xc]
@@ -44,7 +44,7 @@ ov07_0233CAD8: ; 0x0233CAD8
 	strb r2, [r0, #0x10]
 	bx lr
 	.align 2, 0
-_0233CAE4: .word 0x02341B80
+_0233CAE4: .word _02341B80
 	arm_func_end ov07_0233CAD8
 
 	arm_func_start ov07_0233CAE8
@@ -56,7 +56,7 @@ ov07_0233CAE8: ; 0x0233CAE8
 	mov r7, #5
 	mov r6, #3
 	mov r8, #1
-	ldr r4, _0233CCEC ; =0x02341B80
+	ldr r4, _0233CCEC ; =_02341B80
 	b _0233CCDC
 _0233CB0C:
 	ldr r1, [r4]
@@ -184,11 +184,11 @@ _0233CC88:
 	b _0233CCDC
 _0233CCB8:
 	bl ov01_02338EB0
-	ldr r1, _0233CCEC ; =0x02341B80
+	ldr r1, _0233CCEC ; =_02341B80
 	ldr r1, [r1]
 	strb r0, [r1, #8]
 	bl ov01_02338B08
-	ldr r0, _0233CCEC ; =0x02341B80
+	ldr r0, _0233CCEC ; =_02341B80
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -198,32 +198,32 @@ _0233CCDC:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0233CCEC: .word 0x02341B80
+_0233CCEC: .word _02341B80
 
 	arm_func_start ov07_0233CCF0
 ov07_0233CCF0: ; 0x0233CCF0
-	ldr r0, _0233CD00 ; =0x02341B80
+	ldr r0, _0233CD00 ; =_02341B80
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	bx lr
 	.align 2, 0
-_0233CD00: .word 0x02341B80
+_0233CD00: .word _02341B80
 	arm_func_end ov07_0233CCF0
 
 	arm_func_start ov07_0233CD04
 ov07_0233CD04: ; 0x0233CD04
 	stmdb sp!, {r3, lr}
-	ldr r0, _0233CD2C ; =0x02341B80
+	ldr r0, _0233CD2C ; =_02341B80
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _0233CD2C ; =0x02341B80
+	ldr r0, _0233CD2C ; =_02341B80
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233CD2C: .word 0x02341B80
+_0233CD2C: .word _02341B80
 	arm_func_end ov07_0233CD04
 
 	arm_func_start ov07_0233CD30
@@ -5726,3 +5726,7 @@ _023418B8: .word 0x02341B78
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
+
+	.bss
+_02341B80:
+	.space 0x20

@@ -19,7 +19,6 @@ sub/build/**
 
 # Generated files
 *.4bpp
-*.lz
 *.gbapal
 
 # For asmdiff

@@ -11,7 +11,7 @@ ov28_0238A140: ; 0x0238A140
 	str r1, [r0, #0xc]
 	str r2, [r0, #4]
 	sub r2, r2, #1
-	ldr r1, _0238A17C ; =0x0238ADA0
+	ldr r1, _0238A17C ; =_0238ADA0
 	str r2, [r0, #8]
 	ldr r2, [r1]
 	mov r1, #0xc
@@ -21,7 +21,7 @@ ov28_0238A140: ; 0x0238A140
 	strh r1, [r0, #0x18]
 	bx lr
 	.align 2, 0
-_0238A17C: .word 0x0238ADA0
+_0238A17C: .word _0238ADA0
 _0238A180: .word 0x0238AD28
 	arm_func_end ov28_0238A140
 
@@ -41,7 +41,7 @@ _0238A1A0: ; jump table
 	b _0238A398 ; case 3
 	b _0238A41C ; case 4
 _0238A1B4:
-	ldr r0, _0238A454 ; =0x0238ADA0
+	ldr r0, _0238A454 ; =_0238ADA0
 	ldr r1, _0238A458 ; =0x0238AD80
 	ldr r2, [r0]
 	mov r0, #0xc
@@ -115,7 +115,7 @@ _0238A2A4:
 	ldr r0, [r5, #0xc]
 	and r0, r0, #0xff
 	bl sub_02028F88
-	ldr r2, _0238A454 ; =0x0238ADA0
+	ldr r2, _0238A454 ; =_0238ADA0
 	ldr r0, _0238A460 ; =0x0238AD0C
 	ldr r1, [r2]
 	ldr r3, [r5, #4]
@@ -178,7 +178,7 @@ _0238A398:
 	ldr r0, [r5, #0xc]
 	and r0, r0, #0xff
 	bl sub_02028F88
-	ldr r0, _0238A454 ; =0x0238ADA0
+	ldr r0, _0238A454 ; =_0238ADA0
 	ldr r1, _0238A460 ; =0x0238AD0C
 	ldr r0, [r0]
 	ldr r2, [r5, #4]
@@ -220,7 +220,7 @@ _0238A44C:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0238A454: .word 0x0238ADA0
+_0238A454: .word _0238ADA0
 _0238A458: .word 0x0238AD80
 _0238A45C: .word 0x0238AD24
 _0238A460: .word 0x0238AD0C
@@ -234,12 +234,12 @@ ov28_0238A468: ; 0x0238A468
 	ldr r0, _0238A488 ; =0x0238ACFC
 	bl sub_020348E4
 	cmp r0, #0
-	ldrne r0, _0238A48C ; =0x0238ADA0
+	ldrne r0, _0238A48C ; =_0238ADA0
 	strne r4, [r0]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238A488: .word 0x0238ACFC
-_0238A48C: .word 0x0238ADA0
+_0238A48C: .word _0238ADA0
 	arm_func_end ov28_0238A468
 
 	arm_func_start ov28_0238A490
@@ -272,7 +272,7 @@ _0238A4E4:
 	strb r2, [r1, #9]
 	cmp r3, #0x14
 	blt _0238A4E4
-	ldr r1, _0238A580 ; =0x0238ADA0
+	ldr r1, _0238A580 ; =_0238ADA0
 	mov r0, #0xc
 	ldr r2, [r1]
 	ldr r1, _0238A584 ; =0x0238AD24
@@ -308,7 +308,7 @@ _0238A54C:
 	.align 2, 0
 _0238A578: .word 0x00003618
 _0238A57C: .word 0x0238AD80
-_0238A580: .word 0x0238ADA0
+_0238A580: .word _0238ADA0
 _0238A584: .word 0x0238AD24
 _0238A588: .word 0x0238AD2C
 	arm_func_end ov28_0238A490
@@ -356,7 +356,7 @@ _0238A608:
 	bl ov11_022E6EC8
 	cmp r0, #0
 	beq _0238AB44
-	ldr r0, _0238AB54 ; =0x0238ADA0
+	ldr r0, _0238AB54 ; =_0238ADA0
 	mov r1, r6
 	ldr r0, [r0]
 	cmp r0, #0
@@ -432,7 +432,7 @@ _0238A718:
 	add r4, r4, #1
 	cmp r4, #0x14
 	blt _0238A6D0
-	ldr r0, _0238AB54 ; =0x0238ADA0
+	ldr r0, _0238AB54 ; =_0238ADA0
 	ldr r2, [r0]
 	cmp r2, #0
 	bne _0238A854
@@ -470,7 +470,7 @@ _0238A790:
 	ldr r0, [r4, #0x40c]
 	and r0, r0, #0xff
 	bl sub_02028F88
-	ldr r0, _0238AB54 ; =0x0238ADA0
+	ldr r0, _0238AB54 ; =_0238ADA0
 	ldr r1, _0238AB58 ; =0x0238AD0C
 	ldr r0, [r0]
 	ldr r2, [r4, #0x404]
@@ -543,7 +543,7 @@ _0238A8A4:
 	ldr r0, [r4, #0x2c]
 	and r0, r0, #0xff
 	bl sub_02028F88
-	ldr r0, _0238AB54 ; =0x0238ADA0
+	ldr r0, _0238AB54 ; =_0238ADA0
 	ldr r1, _0238AB58 ; =0x0238AD0C
 	ldr r0, [r0]
 	ldr r2, [r4, #0x24]
@@ -612,7 +612,7 @@ _0238A9A8:
 	ldr r0, [r4, #0x448]
 	and r0, r0, #0xff
 	bl sub_02028F88
-	ldr r0, _0238AB54 ; =0x0238ADA0
+	ldr r0, _0238AB54 ; =_0238ADA0
 	ldr r1, _0238AB58 ; =0x0238AD0C
 	ldr r0, [r0]
 	ldr r2, [r4, #0x440]
@@ -637,7 +637,7 @@ _0238A9A8:
 	str r0, [r4, #0x44c]
 	b _0238AA48
 _0238AA2C:
-	ldr r0, _0238AB54 ; =0x0238ADA0
+	ldr r0, _0238AB54 ; =_0238ADA0
 	ldr r1, _0238AB58 ; =0x0238AD0C
 	ldr r0, [r0]
 	ldr r2, [r4, #0x440]
@@ -682,7 +682,7 @@ _0238AAC0:
 	bl ov28_0238AB5C
 	mov r0, #0
 	bl ov11_022E6E8C
-	ldr r0, _0238AB54 ; =0x0238ADA0
+	ldr r0, _0238AB54 ; =_0238ADA0
 	ldr r0, [r0]
 	cmp r0, #5
 	addls pc, pc, r0, lsl #2
@@ -727,7 +727,7 @@ _0238AB48:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0238AB50: .word 0x0238AD80
-_0238AB54: .word 0x0238ADA0
+_0238AB54: .word _0238ADA0
 _0238AB58: .word 0x0238AD0C
 	arm_func_end ov28_0238A5CC
 
@@ -859,3 +859,7 @@ _0238ACF8: .word 0x0238AD80
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
+
+	.bss
+_0238ADA0:
+	.space 0x20

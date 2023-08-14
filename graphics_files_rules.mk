@@ -10,9 +10,6 @@ $(8BPP_NSCR_FILES): GFX_FLAGS = -bitdepth 8
 $(8BPP_COMP10_NOPAD_NCLR_PNG_FILES): GFX_FLAGS = -bitdepth 8 -nopad -comp 10
 $(8BPP_COMP10_NOPAD_NCLR_PAL_FILES): GFX_FLAGS = -bitdepth 8 -nopad -comp 10
 
-LZ_FLAGS                     := -l2 -s
-$(PADDED_LZ_FILES): LZ_FLAGS += -A4
-
 %.NCGR: %.png
 	$(GFX) $< $@ $(GFX_FLAGS)
 
@@ -27,6 +24,3 @@ $(PADDED_LZ_FILES): LZ_FLAGS += -A4
 
 %.nbfp: %.png
 	$(GFX) $< $@ $(GFX_FLAGS)
-
-%.lz: %
-	$(NTRCOMP) $(LZ_FLAGS) -o $@ $<
