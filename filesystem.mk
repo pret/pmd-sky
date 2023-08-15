@@ -42,25 +42,31 @@ NITROFS_FILES := \
 	files/BALANCE/waza_p.bin \
 	files/BALANCE/waza_p2.bin \
 	files/DUNGEON/dungeon.bin \
-	files/DUNGEON/sub_obj.wan \
 	files/DUNGEON/sub.bgp \
 	files/DUNGEON/sub2.bgp \
+	files/DUNGEON/sub_obj.wan \
 	files/DWC/utility.bin \
 	files/EFFECT/ame.wba \
 	files/EFFECT/effect.bin \
 	files/EFFECT/test.wba \
 	files/FONT/alert.wan \
-	files/FONT/b_pal_p.bin \
-	files/FONT/b_pal_r.bin \
 	files/FONT/b_pal.bin \
 	files/FONT/b_pal2.bin \
+	files/FONT/b_pal_p.bin \
+	files/FONT/b_pal_r.bin \
+	files/FONT/banner.bin \
 	files/FONT/banner_c.bin \
 	files/FONT/banner_s.bin \
-	files/FONT/banner.bin \
 	files/FONT/clrmark1.w16 \
 	files/FONT/clrmark2.w16 \
 	files/FONT/cursor.wan \
 	files/FONT/cursor16.wan \
+	files/FONT/frame.wte \
+	files/FONT/frame0.wte \
+	files/FONT/frame1.wte \
+	files/FONT/frame2.wte \
+	files/FONT/frame3.wte \
+	files/FONT/frame4.wte \
 	files/FONT/frame_b0.chr \
 	files/FONT/frame_b0.pal \
 	files/FONT/frame_b1.chr \
@@ -73,16 +79,10 @@ NITROFS_FILES := \
 	files/FONT/frame_b4.pal \
 	files/FONT/frame_bg.chr \
 	files/FONT/frame_bg.pal \
-	files/FONT/frame.wte \
-	files/FONT/frame0.wte \
-	files/FONT/frame1.wte \
-	files/FONT/frame2.wte \
-	files/FONT/frame3.wte \
-	files/FONT/frame4.wte \
-	files/FONT/kanji_b.dat \
-	files/FONT/kanji_rd.dat \
 	files/FONT/kanji.dat \
 	files/FONT/kanji.dic \
+	files/FONT/kanji_b.dat \
+	files/FONT/kanji_rd.dat \
 	files/FONT/kaomado.kao \
 	files/FONT/markfont.dat \
 	files/FONT/markfont.pal \
@@ -269,14 +269,14 @@ NITROFS_FILES := \
 	files/GROUND/as106.wan \
 	files/GROUND/as107.wan \
 	files/GROUND/as108.wan \
-	files/GROUND/c_wipe_f.wte \
-	files/GROUND/c_wipe_f.wtu \
-	files/GROUND/c_wipe_n.wte \
-	files/GROUND/c_wipe_n.wtu \
 	files/GROUND/c_wipe.wte \
 	files/GROUND/c_wipe.wtu \
 	files/GROUND/c_wipe2.wte \
 	files/GROUND/c_wipe2.wtu \
+	files/GROUND/c_wipe_f.wte \
+	files/GROUND/c_wipe_f.wtu \
+	files/GROUND/c_wipe_n.wte \
+	files/GROUND/c_wipe_n.wtu \
 	files/GROUND/circle.wte \
 	files/GROUND/circle.wtu \
 	files/GROUND/d01p11a1.wan \
@@ -387,8 +387,6 @@ NITROFS_FILES := \
 	files/GROUND/d73p41t1.wte \
 	files/GROUND/d73p41t1.wtu \
 	files/GROUND/d79p41a1.wan \
-	files/GROUND/g_te_tst.wte \
-	files/GROUND/g_te_tst.wtu \
 	files/GROUND/g01p01a1.wan \
 	files/GROUND/g01p01a2.wan \
 	files/GROUND/g01p01a3.wan \
@@ -407,6 +405,8 @@ NITROFS_FILES := \
 	files/GROUND/g01p09a1.wan \
 	files/GROUND/g01p10a1.wan \
 	files/GROUND/g01p10c1.wan \
+	files/GROUND/g_te_tst.wte \
+	files/GROUND/g_te_tst.wtu \
 	files/GROUND/h01p99d1.wan \
 	files/GROUND/h02p99a1.wan \
 	files/GROUND/h02p99c1.wan \
@@ -8443,11 +8443,11 @@ NITROFS_FILES := \
 	files/SOUND/SE/ev_s10.sed \
 	files/SOUND/SE/ev_s23.sed \
 	files/SOUND/SE/ev_s30.sed \
-	files/SOUND/SE/event_s.sed \
 	files/SOUND/SE/event.sed \
-	files/SOUND/SE/motion_s.sed \
+	files/SOUND/SE/event_s.sed \
 	files/SOUND/SE/motion.sed \
 	files/SOUND/SE/motion.swd \
+	files/SOUND/SE/motion_s.sed \
 	files/SOUND/SE/state.sed \
 	files/SOUND/SE/trap.sed \
 	files/SOUND/SE/waza1.sed \
