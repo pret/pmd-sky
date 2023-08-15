@@ -27,7 +27,7 @@ ExplorersOfSkyMain: ; 0x022DC240
 _022DC28C:
 	bl sub_0201DC90
 	bl ov34_022DC748
-	ldr r1, _022DC5A0 ; =0x022DD080
+	ldr r1, _022DC5A0 ; =_022DD080
 	mov r2, #1
 	ldr r0, _022DC5A4 ; =ov34_022DC5B0
 	strb r2, [r1]
@@ -136,7 +136,7 @@ _022DC404:
 	mov r8, #1
 	mov fp, #2
 	ldr r5, _022DC59C ; =_022DD0A0
-	ldr r4, _022DC5A0 ; =0x022DD080
+	ldr r4, _022DC5A0 ; =_022DD080
 	mov r7, r8
 	mov r6, r8
 	mov sb, fp
@@ -245,7 +245,7 @@ _022DC584:
 	.align 2, 0
 _022DC598: .word ov34_022DC738
 _022DC59C: .word _022DD0A0
-_022DC5A0: .word 0x022DD080
+_022DC5A0: .word _022DD080
 _022DC5A4: .word ov34_022DC5B0
 _022DC5A8: .word 0x022DCFF4
 _022DC5AC: .word 0x022DD004
@@ -265,7 +265,7 @@ _022DC5D0:
 	bl ov34_022DCA70
 	bl sub_0201DD48
 	bl sub_0201F464
-	ldr r0, _022DC710 ; =0x022DD080
+	ldr r0, _022DC710 ; =_022DD080
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _022DC5F0
@@ -275,7 +275,7 @@ _022DC5F0:
 	bl sub_0201BE28
 	bl sub_02017A80
 	bl sub_02003A40
-	ldr r1, _022DC710 ; =0x022DD080
+	ldr r1, _022DC710 ; =_022DD080
 	mov r4, r0
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -342,13 +342,13 @@ _022DC6C4:
 	bl sub_02051C24
 _022DC6F8:
 	bl sub_0201BF4C
-	ldr r1, _022DC710 ; =0x022DD080
+	ldr r1, _022DC710 ; =_022DD080
 	mov r2, #0
 	mov r0, r4
 	strb r2, [r1]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022DC710: .word 0x022DD080
+_022DC710: .word _022DD080
 _022DC714: .word _022DD0A0
 	arm_func_end ov34_022DC5B0
 
@@ -1088,7 +1088,10 @@ _022DCFF0: .word 0x022DD08C
 	.byte 0x8C, 0xCE, 0x2D, 0x02, 0xD8, 0xCE, 0x2D, 0x02, 0x1D, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x3D, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x1F, 0x3D, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x20, 0x3D, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+
+	.data
+_022DD080:
+	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 	.bss
