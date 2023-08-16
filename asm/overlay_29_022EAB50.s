@@ -3,38 +3,6 @@
 
 	.text
 
-	arm_func_start DungeonRandOutcome__022EAB20
-DungeonRandOutcome__022EAB20: ; 0x022EAB20
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl DungeonRand16Bit
-	mov r0, r0, lsl #0x10
-	mov r1, r0, lsr #0x10
-	mov r0, #0x64
-	mul r0, r1, r0
-	cmp r4, r0, asr #16
-	movgt r0, #1
-	movle r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r4, pc}
-	arm_func_end DungeonRandOutcome__022EAB20
-
-	arm_func_start DungeonRandOutcome__022EAB50
-DungeonRandOutcome__022EAB50: ; 0x022EAB50
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl DungeonRand16Bit
-	mov r0, r0, lsl #0x10
-	mov r1, r0, lsr #0x10
-	mov r0, #0x64
-	mul r0, r1, r0
-	cmp r4, r0, asr #16
-	movgt r0, #1
-	movle r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r4, pc}
-	arm_func_end DungeonRandOutcome__022EAB50
-
 	arm_func_start CalcStatusDuration
 CalcStatusDuration: ; 0x022EAB80
 	stmdb sp!, {r4, r5, r6, lr}

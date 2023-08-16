@@ -869,3 +869,5 @@
 .public FreePortraitBox
 .public CreatePortraitBox
 .public IsPunchMove
+.public DungeonRandOutcome__022EAB20
+.public DungeonRandOutcome__022EAB50
