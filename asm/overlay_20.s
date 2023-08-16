@@ -24,7 +24,7 @@ _0238A15C: .word ov20_0238B294
 	arm_func_start ov20_0238A160
 ov20_0238A160: ; 0x0238A160
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238A1AC ; =_0238D120
+	ldr r0, _0238A1AC ; =ov20_0238D120
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0238A1A4
@@ -35,24 +35,24 @@ ov20_0238A160: ; 0x0238A160
 	bl sub_020125CC
 _0238A188:
 	bl sub_02046D20
-	ldr r0, _0238A1AC ; =_0238D120
+	ldr r0, _0238A1AC ; =ov20_0238D120
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0238A1AC ; =_0238D120
+	ldr r0, _0238A1AC ; =ov20_0238D120
 	mov r1, #0
 	str r1, [r0]
 _0238A1A4:
 	bl sub_020017EC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238A1AC: .word _0238D120
+_0238A1AC: .word ov20_0238D120
 	arm_func_end ov20_0238A160
 
 	arm_func_start ov20_0238A1B0
 ov20_0238A1B0: ; 0x0238A1B0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xb0
-	ldr r0, _0238B144 ; =_0238D120
+	ldr r0, _0238B144 ; =ov20_0238D120
 	ldr r8, [r0]
 	ldr r0, [r8]
 	cmp r0, #8
@@ -85,7 +85,7 @@ _0238A210:
 	cmp r0, #0
 	beq _0238B288
 _0238A228:
-	ldr sl, _0238B144 ; =_0238D120
+	ldr sl, _0238B144 ; =ov20_0238D120
 	ldr sb, [sl]
 	ldr r0, [sb, #4]
 	cmp r0, #9
@@ -1179,7 +1179,7 @@ _0238B130:
 	str r0, [r8]
 	b _0238B288
 	.align 2, 0
-_0238B144: .word _0238D120
+_0238B144: .word ov20_0238D120
 _0238B148: .word 0x000045EE
 _0238B14C: .word 0x0238CFEC
 _0238B150: .word 0x000045ED
@@ -1284,7 +1284,7 @@ _0238B28C:
 	arm_func_start ov20_0238B294
 ov20_0238B294: ; 0x0238B294
 	stmdb sp!, {r4, lr}
-	ldr r1, _0238B33C ; =_0238D120
+	ldr r1, _0238B33C ; =ov20_0238D120
 	mov r4, r0
 	ldr r0, [r1]
 	cmp r0, #0
@@ -1292,12 +1292,12 @@ ov20_0238B294: ; 0x0238B294
 	mov r0, #0xb4
 	mov r1, #8
 	bl MemAlloc
-	ldr r2, _0238B33C ; =_0238D120
+	ldr r2, _0238B33C ; =ov20_0238D120
 	mov r1, #0xb4
 	str r0, [r2]
 	bl MemZero
 _0238B2C8:
-	ldr r0, _0238B33C ; =_0238D120
+	ldr r0, _0238B33C ; =ov20_0238D120
 	mov r1, #0
 	ldr r2, [r0]
 	mvn r0, #1
@@ -1327,13 +1327,13 @@ _0238B2C8:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238B33C: .word _0238D120
+_0238B33C: .word ov20_0238D120
 	arm_func_end ov20_0238B294
 
 	arm_func_start ov20_0238B340
 ov20_0238B340: ; 0x0238B340
 	stmdb sp!, {r4, lr}
-	ldr r1, _0238B394 ; =_0238D120
+	ldr r1, _0238B394 ; =ov20_0238D120
 	mov r4, r0
 	ldr r0, [r1]
 	ldrb r1, [r0, #0xa4]
@@ -1341,13 +1341,13 @@ ov20_0238B340: ; 0x0238B340
 	bne _0238B360
 	bl ov20_0238B4A8
 _0238B360:
-	ldr r1, _0238B394 ; =_0238D120
+	ldr r1, _0238B394 ; =ov20_0238D120
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x188
 	str r2, [r1, #0x7c]
 	bl StringFromMessageId
-	ldr r2, _0238B394 ; =_0238D120
+	ldr r2, _0238B394 ; =ov20_0238D120
 	mov r1, r0
 	ldr r2, [r2]
 	ldr r0, _0238B398 ; =0x0000301C
@@ -1355,7 +1355,7 @@ _0238B360:
 	bl sub_02046C30
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238B394: .word _0238D120
+_0238B394: .word ov20_0238D120
 _0238B398: .word 0x0000301C
 	arm_func_end ov20_0238B340
 
@@ -1370,7 +1370,7 @@ ov20_0238B39C: ; 0x0238B39C
 	bne _0238B3BC
 	bl ov20_0238B4A8
 _0238B3BC:
-	ldr r1, _0238B40C ; =_0238D120
+	ldr r1, _0238B40C ; =ov20_0238D120
 	add r0, sp, #0xc
 	ldr r2, [r1]
 	mov r3, #0x188
@@ -1379,7 +1379,7 @@ _0238B3BC:
 	bl MemZero
 	mov r0, #0
 	str r0, [sp, #0xc]
-	ldr r1, _0238B40C ; =_0238D120
+	ldr r1, _0238B40C ; =ov20_0238D120
 	stmia sp, {r4, r5}
 	ldr r1, [r1]
 	add r3, sp, #0xc
@@ -1391,7 +1391,7 @@ _0238B3BC:
 	add sp, sp, #0xa4
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_0238B40C: .word _0238D120
+_0238B40C: .word ov20_0238D120
 	arm_func_end ov20_0238B39C
 
 	arm_func_start ov20_0238B410
@@ -2527,7 +2527,7 @@ _0238C360:
 	cmp r5, #0
 	mov r3, #0
 	beq _0238C3A4
-	ldr r2, _0238C4DC ; =_0238D140
+	ldr r2, _0238C4DC ; =ov20_0238D140
 	b _0238C394
 _0238C380:
 	ldr r0, [r4]
@@ -2541,7 +2541,7 @@ _0238C394:
 	blt _0238C380
 	b _0238C3C0
 _0238C3A4:
-	ldr r1, _0238C4DC ; =_0238D140
+	ldr r1, _0238C4DC ; =ov20_0238D140
 	ldr r0, _0238C4E0 ; =0x0000041A
 	mov r2, r3
 _0238C3B0:
@@ -2622,7 +2622,7 @@ _0238C3C0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0238C4D8: .word 0x0238D12C
-_0238C4DC: .word _0238D140
+_0238C4DC: .word ov20_0238D140
 _0238C4E0: .word 0x0000041A
 _0238C4E4: .word 0x0000032F
 	arm_func_end ov20_0238C2E0
@@ -3021,7 +3021,7 @@ ov20_0238CA3C: ; 0x0238CA3C
 	ldmeqia sp!, {r3, pc}
 	ldr r2, [ip, #0x1b8]
 	mov r3, #0
-	ldr r1, _0238CAD8 ; =_0238D140
+	ldr r1, _0238CAD8 ; =ov20_0238D140
 	b _0238CA74
 _0238CA60:
 	ldr r0, [r2]
@@ -3034,7 +3034,7 @@ _0238CA74:
 	cmp r3, r0
 	blt _0238CA60
 	mov r2, #0
-	ldr r1, _0238CAD8 ; =_0238D140
+	ldr r1, _0238CAD8 ; =ov20_0238D140
 	ldr r0, _0238CADC ; =0x0000041A
 	b _0238CA98
 _0238CA90:
@@ -3058,7 +3058,7 @@ _0238CA98:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238CAD4: .word 0x0238D12C
-_0238CAD8: .word _0238D140
+_0238CAD8: .word ov20_0238D140
 _0238CADC: .word 0x0000041A
 	arm_func_end ov20_0238CA3C
 
@@ -3464,10 +3464,11 @@ _0238CF78: .word 0x00004628
 	.byte 0x02, 0x00, 0x00, 0x00
 	
 	.data
-_0238D120:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov20_0238D120
+ov20_0238D120:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 	.bss
-_0238D140:
+	.global ov20_0238D140
+ov20_0238D140:
 	.space 0x420

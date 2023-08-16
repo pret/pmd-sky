@@ -6,75 +6,75 @@
 	arm_func_start ov03_0233CA80
 ov03_0233CA80: ; 0x0233CA80
 	ldr ip, _0233CA90 ; =MemZero
-	ldr r0, _0233CA94 ; =_02346BE0
+	ldr r0, _0233CA94 ; =ov03_02346BE0
 	mov r1, #0x10
 	bx ip
 	.align 2, 0
 _0233CA90: .word MemZero
-_0233CA94: .word _02346BE0
+_0233CA94: .word ov03_02346BE0
 	arm_func_end ov03_0233CA80
 
 	arm_func_start ov03_0233CA98
 ov03_0233CA98: ; 0x0233CA98
-	ldr r1, _0233CAA4 ; =_02346BE0
+	ldr r1, _0233CAA4 ; =ov03_02346BE0
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0233CAA4: .word _02346BE0
+_0233CAA4: .word ov03_02346BE0
 	arm_func_end ov03_0233CA98
 
 	arm_func_start ov03_0233CAA8
 ov03_0233CAA8: ; 0x0233CAA8
-	ldr r1, _0233CAB4 ; =_02346BE0
+	ldr r1, _0233CAB4 ; =ov03_02346BE0
 	str r0, [r1, #4]
 	bx lr
 	.align 2, 0
-_0233CAB4: .word _02346BE0
+_0233CAB4: .word ov03_02346BE0
 	arm_func_end ov03_0233CAA8
 
 	arm_func_start ov03_0233CAB8
 ov03_0233CAB8: ; 0x0233CAB8
-	ldr r0, _0233CAC4 ; =_02346BE0
+	ldr r0, _0233CAC4 ; =ov03_02346BE0
 	ldr r0, [r0, #4]
 	bx lr
 	.align 2, 0
-_0233CAC4: .word _02346BE0
+_0233CAC4: .word ov03_02346BE0
 	arm_func_end ov03_0233CAB8
 
 	arm_func_start ov03_0233CAC8
 ov03_0233CAC8: ; 0x0233CAC8
-	ldr r1, _0233CAD4 ; =_02346BE0
+	ldr r1, _0233CAD4 ; =ov03_02346BE0
 	str r0, [r1, #8]
 	bx lr
 	.align 2, 0
-_0233CAD4: .word _02346BE0
+_0233CAD4: .word ov03_02346BE0
 	arm_func_end ov03_0233CAC8
 
 	arm_func_start ov03_0233CAD8
 ov03_0233CAD8: ; 0x0233CAD8
-	ldr r0, _0233CAE4 ; =_02346BE0
+	ldr r0, _0233CAE4 ; =ov03_02346BE0
 	ldr r0, [r0, #8]
 	bx lr
 	.align 2, 0
-_0233CAE4: .word _02346BE0
+_0233CAE4: .word ov03_02346BE0
 	arm_func_end ov03_0233CAD8
 
 	arm_func_start ov03_0233CAE8
 ov03_0233CAE8: ; 0x0233CAE8
-	ldr r1, _0233CAF4 ; =_02346BE0
+	ldr r1, _0233CAF4 ; =ov03_02346BE0
 	str r0, [r1, #0xc]
 	bx lr
 	.align 2, 0
-_0233CAF4: .word _02346BE0
+_0233CAF4: .word ov03_02346BE0
 	arm_func_end ov03_0233CAE8
 
 	arm_func_start ov03_0233CAF8
 ov03_0233CAF8: ; 0x0233CAF8
-	ldr r0, _0233CB04 ; =_02346BE0
+	ldr r0, _0233CB04 ; =ov03_02346BE0
 	ldr r0, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0233CB04: .word _02346BE0
+_0233CB04: .word ov03_02346BE0
 	arm_func_end ov03_0233CAF8
 
 	arm_func_start ov03_0233CB08
@@ -710,7 +710,7 @@ _0233D358:
 	mov r0, #0xf
 	bl ov01_023375C0
 	ldr r1, _0233D660 ; =0x02346958
-	ldr r3, _0233D664 ; =_02346B20
+	ldr r3, _0233D664 ; =ov03_02346B20
 	ldr r1, [r1, r0, lsl #3]
 	ldr r0, _0233D668 ; =0x02346954
 	str r1, [r3]
@@ -925,7 +925,7 @@ _0233D654: .word 0x00003849
 _0233D658: .word 0x0000384C
 _0233D65C: .word 0x0000384D
 _0233D660: .word 0x02346958
-_0233D664: .word _02346B20
+_0233D664: .word ov03_02346B20
 _0233D668: .word 0x02346954
 _0233D66C: .word 0x0234673C
 _0233D670: .word 0x00000501
@@ -1153,7 +1153,7 @@ _0233D960:
 ov03_0233D964: ; 0x0233D964
 	bl ov01_023375C0
 	ldr r1, _0233DD84 ; =0x02346958
-	ldr r3, _0233DD88 ; =_02346B20
+	ldr r3, _0233DD88 ; =ov03_02346B20
 	ldr r1, [r1, r0, lsl #3]
 	ldr r0, _0233DD8C ; =0x02346954
 	str r1, [r3]
@@ -1447,7 +1447,7 @@ _0233DD78: .word 0x0000384A
 _0233DD7C: .word 0x0000384B
 _0233DD80: .word 0x0000384E
 _0233DD84: .word 0x02346958
-_0233DD88: .word _02346B20
+_0233DD88: .word ov03_02346B20
 _0233DD8C: .word 0x02346954
 _0233DD90: .word 0x0234673C
 _0233DD94: .word 0x00000301
@@ -11201,7 +11201,8 @@ _02346734: .word 0x02346BDC
 	.byte 0x64, 0x61, 0x74, 0x00,
 
 	.data
-_02346B20:
+	.global ov03_02346B20
+ov03_02346B20:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -11216,5 +11217,6 @@ _02346B20:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x7A, 0x38, 0x7B, 0x38, 0x7C, 0x38, 0x00, 0x00
 
 	.bss
-_02346BE0:
+	.global ov03_02346BE0
+ov03_02346BE0:
 	.space 0x20

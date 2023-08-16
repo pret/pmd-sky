@@ -214,7 +214,7 @@ _022DC518:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022DC52C: .word 0x00019628
-_022DC530: .word _02353860 + 0x20
+_022DC530: .word ov29_02353860 + 0x20
 _022DC534: .word 0x020AFC70
 _022DC538: .word 0x00007FFF
 _022DC53C: .word 0x00018304
@@ -290,7 +290,7 @@ ov29_022DC61C: ; 0x022DC61C
 	bl ov29_022DC544
 	ldr r0, _022DC650 ; =0x023538B4
 	bl ov29_022DC240
-	ldr r1, _022DC658 ; =_023534E0
+	ldr r1, _022DC658 ; =ov29_023534E0
 	ldr r0, _022DC650 ; =0x023538B4
 	ldr r1, [r1]
 	bl ov29_022DC314
@@ -298,7 +298,7 @@ ov29_022DC61C: ; 0x022DC61C
 	.align 2, 0
 _022DC650: .word 0x023538B4
 _022DC654: .word 0x0001963C
-_022DC658: .word _023534E0
+_022DC658: .word ov29_023534E0
 	arm_func_end ov29_022DC61C
 
 	arm_func_start ov29_022DC65C

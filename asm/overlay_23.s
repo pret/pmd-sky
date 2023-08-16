@@ -7,7 +7,7 @@
 ov23_0238A140: ; 0x0238A140
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x30c
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r2, [r1]
 	str r0, [r2, #8]
 	ldr r2, [r1]
@@ -65,7 +65,7 @@ _0238A218:
 	mov r0, #0
 	strb r1, [r2, #0x88]
 	bl CreateDBox
-	ldr r2, _0238B0DC ; =_0238D8A0
+	ldr r2, _0238B0DC ; =ov23_0238D8A0
 	mov r4, #0x73
 	ldr r3, [r2]
 	mov r1, #3
@@ -75,19 +75,19 @@ _0238A218:
 	mov r2, #1
 	str r4, [r3, #0x9c]
 	bl CreatePortraitBox
-	ldr r2, _0238B0DC ; =_0238D8A0
+	ldr r2, _0238B0DC ; =ov23_0238D8A0
 	mov r1, r4
 	ldr r3, [r2]
 	strb r0, [r3, #0x96]
 	ldr r0, [r2]
 	add r0, r0, #0x1ac
 	bl InitPortraitBoxWithMonsterId
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1ac
 	bl SetPortraitUnknownAttr
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, _0238B0E0 ; =0x00003008
 	ldr r3, [r0]
 	mov r2, #0x318
@@ -98,7 +98,7 @@ _0238A218:
 _0238A2A0:
 	ldr r0, _0238B0E4 ; =0x0238D448
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r3, [r0]
 	add r1, r3, #0x90
 	str r1, [sp, #0x6c]
@@ -113,7 +113,7 @@ _0238A2A0:
 	strb r2, [r0, #0x92]
 	bl GetNbItemsInBag
 	cmp r0, #0
-	ldreq r0, _0238B0DC ; =_0238D8A0
+	ldreq r0, _0238B0DC ; =ov23_0238D8A0
 	moveq r1, #3
 	ldreq r0, [r0]
 	streqb r1, [r0, #0x90]
@@ -121,7 +121,7 @@ _0238A2A0:
 	mov r0, #0
 	bl sub_02043380
 	cmp r0, #0
-	ldrne r0, _0238B0DC ; =_0238D8A0
+	ldrne r0, _0238B0DC ; =ov23_0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
 	strneb r1, [r0, #0x90]
@@ -129,19 +129,19 @@ _0238A314:
 	mov r0, #1
 	bl sub_02043320
 	cmp r0, #0
-	ldrne r0, _0238B0DC ; =_0238D8A0
+	ldrne r0, _0238B0DC ; =ov23_0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
 	strneb r1, [r0, #0x91]
 	bne _0238A34C
 	bl IsBagFull
 	cmp r0, #0
-	ldrne r0, _0238B0DC ; =_0238D8A0
+	ldrne r0, _0238B0DC ; =ov23_0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
 	strneb r1, [r0, #0x91]
 _0238A34C:
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldr r0, [r0]
 	cmp r0, #1
@@ -153,7 +153,7 @@ _0238A34C:
 	add r1, r4, #0x210
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238B230
@@ -165,7 +165,7 @@ _0238A38C:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238B230
@@ -176,7 +176,7 @@ _0238A3B8:
 	bl sub_020434D4
 	bl ov23_0238D098
 	mov r3, #0
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r4, #0x73
 	ldr r2, [r0]
 	ldr r1, _0238B0E0 ; =0x00003008
@@ -193,7 +193,7 @@ _0238A404:
 	ldr r0, _0238B100 ; =0x0238D484
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r2, #1
 	ldr r1, [r0]
 	mov r4, #0x73
@@ -214,7 +214,7 @@ _0238A454:
 	ldr r0, _0238B108 ; =0x0238D4A4
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r3, #4
 	ldr r1, [r0]
 	mov r2, #1
@@ -235,7 +235,7 @@ _0238A4A4:
 	ldr r0, _0238B110 ; =0x0238D4C0
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r2, #1
 	ldr r1, [r0]
 	mov r4, #0x73
@@ -256,7 +256,7 @@ _0238A4F4:
 	ldr r0, _0238B114 ; =0x0238D4DC
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r3, #1
 	ldr r1, [r0]
 	mov r2, #0
@@ -277,7 +277,7 @@ _0238A544:
 	ldr r0, _0238B11C ; =0x0238D4F8
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r2, #1
 	ldr r1, [r0]
 	mov r4, #0x73
@@ -298,7 +298,7 @@ _0238A594:
 	ldr r0, _0238B120 ; =0x0238D51C
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r3, #1
 	ldr r1, [r0]
 	mov r2, #0
@@ -319,7 +319,7 @@ _0238A5E4:
 	ldr r0, _0238B128 ; =0x0238D540
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r3, #1
 	ldr r1, [r0]
 	mov r2, #0
@@ -340,7 +340,7 @@ _0238A634:
 	ldr r0, _0238B12C ; =0x0238D55C
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r3, #0xf
 	ldr r1, [r0]
 	mov r2, #0
@@ -355,7 +355,7 @@ _0238A634:
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, _0238B104 ; =0x00003018
 	ldr r4, [r0]
 	mov r2, #0x328
@@ -370,7 +370,7 @@ _0238A6A8:
 	ldr r0, _0238B134 ; =0x0238D578
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r2, #0xf
 	ldr r1, [r0]
 	mov r4, #0x73
@@ -396,7 +396,7 @@ _0238A704:
 	bl DebugPrint0__0200C1FC
 	bl sub_02042730
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r4, #0x73
 	mov r2, #0xe
 	ldr r1, [r0]
@@ -416,7 +416,7 @@ _0238A704:
 _0238A758:
 	ldr r0, _0238B140 ; =0x0238D5CC
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r3, #0xf
 	ldr r1, [r0]
 	mov r2, #0
@@ -436,15 +436,15 @@ _0238A758:
 _0238A7A4:
 	ldr r0, _0238B144 ; =0x0238D5E8
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl HidePortraitBox
@@ -453,22 +453,22 @@ _0238A7A4:
 	mov r2, #8
 	mov r3, #1
 	bl sub_02042258
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x97]
 	b _0238B230
 _0238A800:
 	ldr r0, _0238B148 ; =0x0238D608
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl HidePortraitBox
@@ -477,14 +477,14 @@ _0238A800:
 	mov r2, #8
 	mov r3, #1
 	bl sub_02042258
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x97]
 	b _0238B230
 _0238A85C:
 	ldr r0, _0238B14C ; =0x0238D628
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r0]
 	add r0, r1, #0x90
 	str r0, [sp, #0x104]
@@ -494,11 +494,11 @@ _0238A85C:
 	ldrsh r0, [r1, #0x1c]
 	bl sub_0200CCA8
 	cmp r0, #0
-	ldrne r0, _0238B0DC ; =_0238D8A0
+	ldrne r0, _0238B0DC ; =ov23_0238D8A0
 	movne r1, #0
 	ldrne r0, [r0]
 	strneb r1, [r0, #0x90]
-	ldreq r0, _0238B0DC ; =_0238D8A0
+	ldreq r0, _0238B0DC ; =ov23_0238D8A0
 	moveq r1, #3
 	ldreq r0, [r0]
 	streqb r1, [r0, #0x90]
@@ -507,7 +507,7 @@ _0238A8B0:
 	mov r0, #0
 	strb r0, [r1, #0x90]
 _0238A8B8:
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r2, #0
 	ldr r1, [r0]
 	mov r4, #3
@@ -520,7 +520,7 @@ _0238A8B8:
 	add r1, r4, #0x210
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238B230
@@ -536,20 +536,20 @@ _0238A8FC:
 	add r1, r4, #0x210
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238B230
 _0238A938:
 	ldr r0, _0238B160 ; =0x0238D670
 	bl DebugPrint0__0200C1FC
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, _0238B164 ; =0x0238D68C
 	ldr r2, [r1]
 	ldrsh r1, [r2, #0x1c]
 	ldrh r2, [r2, #0x1a]
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov lr, #0
 	ldr ip, [r0]
 	ldr r2, _0238B168 ; =0x0238D69C
@@ -576,7 +576,7 @@ _0238A938:
 	bl PreprocessString
 	add r0, sp, #0x1d4
 	bl InitPreprocessorArgs
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	add r1, sp, #0x1d4
 	ldr r3, [r0]
 	ldr r0, _0238B170 ; =0x0238D428
@@ -594,20 +594,20 @@ _0238A938:
 	ldr r3, _0238B178 ; =0x00000315
 	mov r2, #0
 	bl sub_0202E3CC
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x9a]
 	b _0238B230
 _0238AA1C:
 	ldr r0, _0238B17C ; =0x0238D6A8
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
 	cmp r1, #1
 	bne _0238AA54
 	bl ov23_0238D278
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r1, #0x15
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -627,7 +627,7 @@ _0238AA54:
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r1, _0238B0E0 ; =0x00003008
@@ -644,13 +644,13 @@ _0238AA54:
 _0238AAC0:
 	ldr r0, _0238B180 ; =0x0238D6CC
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
 	cmp r1, #1
 	bne _0238AAF8
 	bl ov23_0238D1B8
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r1, #0x16
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -670,7 +670,7 @@ _0238AAF8:
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r1, _0238B0E0 ; =0x00003008
@@ -694,7 +694,7 @@ _0238AB64:
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238B230
@@ -708,7 +708,7 @@ _0238AB98:
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238B230
@@ -724,13 +724,13 @@ _0238ABCC:
 	cmp r0, #0
 	beq _0238AC08
 _0238ABF4:
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #0xc]
 	b _0238AC28
 _0238AC08:
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r0]
 	ldr r0, [r1, #8]
 	cmp r0, #0x16
@@ -741,7 +741,7 @@ _0238AC08:
 _0238AC28:
 	bl sub_02042AF8
 	bl sub_020434D4
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov ip, #0x73
 	ldr r1, [r0]
 	mov r2, #1
@@ -760,7 +760,7 @@ _0238AC68:
 	bl DebugPrint0__0200C1FC
 	bl sub_02043218
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r3, #0x19
 	ldr r1, [r0]
 	mov r2, #0
@@ -781,7 +781,7 @@ _0238ACBC:
 	ldr r0, _0238B1A0 ; =0x0238D75C
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r2, #0x19
 	ldr r1, [r0]
 	mov ip, #0x73
@@ -801,18 +801,18 @@ _0238ACBC:
 _0238AD0C:
 	ldr r0, _0238B1A4 ; =0x0238D77C
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r2, #0x2b
 	ldr r1, [r0]
 	str r2, [r1, #0xc]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl HidePortraitBox
@@ -822,22 +822,22 @@ _0238AD54:
 	mov r1, #0
 	mov r2, #8
 	bl sub_02042CF0
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x98]
 	b _0238B230
 _0238AD74:
 	ldr r0, _0238B1A8 ; =0x0238D79C
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl HidePortraitBox
@@ -845,7 +845,7 @@ _0238AD74:
 	mov r1, #0
 	mov r2, #8
 	bl sub_02042CF0
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x98]
 	b _0238B230
@@ -859,7 +859,7 @@ _0238ADCC:
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	arm_func_end ov23_0238A140
@@ -879,14 +879,14 @@ _0238AE00:
 	add r1, ip, #0x210
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238B230
 _0238AE3C:
 	ldr r0, _0238B1B8 ; =0x0238D7E0
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r2, _0238B168 ; =0x0238D69C
 	ldr lr, [r0]
 	ldr r3, _0238B16C ; =0x0000C402
@@ -906,7 +906,7 @@ _0238AE3C:
 	bl PreprocessString
 	add r0, sp, #0x2bc
 	bl InitPreprocessorArgs
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	add r1, sp, #0x2bc
 	ldr r3, [r0]
 	ldr r0, _0238B170 ; =0x0238D428
@@ -924,20 +924,20 @@ _0238AE3C:
 	ldr r3, _0238B178 ; =0x00000315
 	mov r2, #0
 	bl sub_0202E3CC
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x9a]
 	b _0238B230
 _0238AEEC:
 	ldr r0, _0238B1BC ; =0x0238D7FC
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
 	cmp r1, #1
 	bne _0238AF24
 	bl ov23_0238D238
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r1, #0x20
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -951,7 +951,7 @@ _0238AF24:
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r1, _0238B0E0 ; =0x00003008
@@ -964,7 +964,7 @@ _0238AF24:
 	ldrsb r0, [r3, #0x95]
 	add r3, r3, #0x9c
 	bl ov23_0238D0E0
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r3, #0x24
 	ldr r2, [r0]
 	mov r1, #0x25
@@ -982,20 +982,20 @@ _0238AF94:
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238B230
 _0238AFC8:
 	ldr r0, _0238B1C8 ; =0x0238D834
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
 	cmp r1, #1
 	bne _0238B000
 	bl ov23_0238D148
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r1, #0x21
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -1015,7 +1015,7 @@ _0238B000:
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r1, _0238B0E0 ; =0x00003008
@@ -1039,7 +1039,7 @@ _0238B06C:
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238B0DC ; =_0238D8A0
+	ldr r1, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238B230
@@ -1055,13 +1055,13 @@ _0238B0A0:
 	cmp r0, #0
 	beq _0238B1D4
 _0238B0C8:
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #0xc]
 	b _0238B1F4
 	.align 2, 0
-_0238B0DC: .word _0238D8A0
+_0238B0DC: .word ov23_0238D8A0
 _0238B0E0: .word 0x00003008
 _0238B0E4: .word 0x0238D448
 _0238B0E8: .word 0x0238D438
@@ -1124,7 +1124,7 @@ _0238B1C8: .word 0x0238D834
 _0238B1CC: .word 0x0238D854
 _0238B1D0: .word 0x0238D868
 _0238B1D4:
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, [r0]
 	ldr r0, [r1, #8]
 	cmp r0, #0x21
@@ -1135,7 +1135,7 @@ _0238B1D4:
 _0238B1F4:
 	bl sub_02042AF8
 	bl sub_020434D4
-	ldr r0, _0238B0DC ; =_0238D8A0
+	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	mov r2, #1
 	ldr r1, [r0]
 	mov r3, #0x73
@@ -1157,7 +1157,7 @@ _0238B230:
 ov23_0238B238: ; 0x0238B238
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x30c
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r2, [r0]
 	ldr r0, [r2, #8]
 	cmp r0, #0x2b
@@ -1213,7 +1213,7 @@ _0238B308:
 	mov r0, #0
 	strb r1, [r2, #0x88]
 	bl CreateDBox
-	ldr r2, _0238C1CC ; =_0238D8A0
+	ldr r2, _0238C1CC ; =ov23_0238D8A0
 	mov r4, #0x73
 	ldr r3, [r2]
 	mov r1, #3
@@ -1223,19 +1223,19 @@ _0238B308:
 	mov r2, #1
 	str r4, [r3, #0x9c]
 	bl CreatePortraitBox
-	ldr r2, _0238C1CC ; =_0238D8A0
+	ldr r2, _0238C1CC ; =ov23_0238D8A0
 	mov r1, r4
 	ldr r3, [r2]
 	strb r0, [r3, #0x96]
 	ldr r0, [r2]
 	add r0, r0, #0x1ac
 	bl InitPortraitBoxWithMonsterId
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1ac
 	bl SetPortraitUnknownAttr
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, _0238C1D0 ; =0x00003008
 	ldr r3, [r0]
 	mov r2, #0x318
@@ -1246,7 +1246,7 @@ _0238B308:
 _0238B390:
 	ldr r0, _0238C1D4 ; =0x0238D448
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r3, [r0]
 	add r1, r3, #0x90
 	str r1, [sp, #0x2d4]
@@ -1261,7 +1261,7 @@ _0238B390:
 	strb r2, [r0, #0x92]
 	bl GetNbItemsInBag
 	cmp r0, #0
-	ldreq r0, _0238C1CC ; =_0238D8A0
+	ldreq r0, _0238C1CC ; =ov23_0238D8A0
 	moveq r1, #3
 	ldreq r0, [r0]
 	streqb r1, [r0, #0x90]
@@ -1269,7 +1269,7 @@ _0238B390:
 	mov r0, #0
 	bl sub_02043380
 	cmp r0, #0
-	ldrne r0, _0238C1CC ; =_0238D8A0
+	ldrne r0, _0238C1CC ; =ov23_0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
 	strneb r1, [r0, #0x90]
@@ -1277,19 +1277,19 @@ _0238B404:
 	mov r0, #1
 	bl sub_02043320
 	cmp r0, #0
-	ldrne r0, _0238C1CC ; =_0238D8A0
+	ldrne r0, _0238C1CC ; =ov23_0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
 	strneb r1, [r0, #0x91]
 	bne _0238B43C
 	bl IsBagFull
 	cmp r0, #0
-	ldrne r0, _0238C1CC ; =_0238D8A0
+	ldrne r0, _0238C1CC ; =ov23_0238D8A0
 	movne r1, #3
 	ldrne r0, [r0]
 	strneb r1, [r0, #0x91]
 _0238B43C:
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldr r0, [r0]
 	cmp r0, #1
@@ -1301,7 +1301,7 @@ _0238B43C:
 	add r1, r4, #0x210
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
@@ -1313,7 +1313,7 @@ _0238B47C:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
@@ -1324,7 +1324,7 @@ _0238B4A8:
 	bl sub_020434D4
 	bl ov23_0238D098
 	mov r3, #0
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r4, #0x73
 	ldr r2, [r0]
 	ldr r1, _0238C1D0 ; =0x00003008
@@ -1341,7 +1341,7 @@ _0238B4F4:
 	ldr r0, _0238C1F0 ; =0x0238D484
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r2, #1
 	ldr r1, [r0]
 	mov r4, #0x73
@@ -1362,7 +1362,7 @@ _0238B544:
 	ldr r0, _0238C1F8 ; =0x0238D4A4
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r3, #4
 	ldr r1, [r0]
 	mov r2, #1
@@ -1383,7 +1383,7 @@ _0238B594:
 	ldr r0, _0238C200 ; =0x0238D4C0
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r2, #1
 	ldr r1, [r0]
 	mov r4, #0x73
@@ -1404,7 +1404,7 @@ _0238B5E4:
 	ldr r0, _0238C204 ; =0x0238D4DC
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r3, #1
 	ldr r1, [r0]
 	mov r2, #0
@@ -1425,7 +1425,7 @@ _0238B634:
 	ldr r0, _0238C20C ; =0x0238D4F8
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r2, #1
 	ldr r1, [r0]
 	mov r4, #0x73
@@ -1446,7 +1446,7 @@ _0238B684:
 	ldr r0, _0238C210 ; =0x0238D51C
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r3, #1
 	ldr r1, [r0]
 	mov r2, #0
@@ -1467,7 +1467,7 @@ _0238B6D4:
 	ldr r0, _0238C218 ; =0x0238D540
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r3, #1
 	ldr r1, [r0]
 	mov r2, #0
@@ -1488,7 +1488,7 @@ _0238B724:
 	ldr r0, _0238C21C ; =0x0238D55C
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r3, #0xf
 	ldr r1, [r0]
 	mov r2, #0
@@ -1503,7 +1503,7 @@ _0238B724:
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, _0238C1F4 ; =0x00003018
 	ldr r4, [r0]
 	mov r2, #0x328
@@ -1518,7 +1518,7 @@ _0238B798:
 	ldr r0, _0238C224 ; =0x0238D578
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r2, #0xf
 	ldr r1, [r0]
 	mov r4, #0x73
@@ -1544,7 +1544,7 @@ _0238B7F4:
 	bl DebugPrint0__0200C1FC
 	bl sub_02042730
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r4, #0x73
 	mov r2, #0xe
 	ldr r1, [r0]
@@ -1564,7 +1564,7 @@ _0238B7F4:
 _0238B848:
 	ldr r0, _0238C230 ; =0x0238D5CC
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r3, #0xf
 	ldr r1, [r0]
 	mov r2, #0
@@ -1584,15 +1584,15 @@ _0238B848:
 _0238B894:
 	ldr r0, _0238C234 ; =0x0238D5E8
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl HidePortraitBox
@@ -1601,22 +1601,22 @@ _0238B894:
 	mov r2, #8
 	mov r3, #1
 	bl sub_02042258
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x97]
 	b _0238C320
 _0238B8F0:
 	ldr r0, _0238C238 ; =0x0238D608
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl HidePortraitBox
@@ -1625,14 +1625,14 @@ _0238B8F0:
 	mov r2, #8
 	mov r3, #1
 	bl sub_02042258
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x97]
 	b _0238C320
 _0238B94C:
 	ldr r0, _0238C23C ; =0x0238D628
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r0]
 	add r0, r1, #0x90
 	str r0, [sp, #0x23c]
@@ -1642,11 +1642,11 @@ _0238B94C:
 	ldrsh r0, [r1, #0x1c]
 	bl sub_0200CCA8
 	cmp r0, #0
-	ldrne r0, _0238C1CC ; =_0238D8A0
+	ldrne r0, _0238C1CC ; =ov23_0238D8A0
 	movne r1, #0
 	ldrne r0, [r0]
 	strneb r1, [r0, #0x90]
-	ldreq r0, _0238C1CC ; =_0238D8A0
+	ldreq r0, _0238C1CC ; =ov23_0238D8A0
 	moveq r1, #3
 	ldreq r0, [r0]
 	streqb r1, [r0, #0x90]
@@ -1655,7 +1655,7 @@ _0238B9A0:
 	mov r0, #0
 	strb r0, [r1, #0x90]
 _0238B9A8:
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r2, #0
 	ldr r1, [r0]
 	mov r4, #3
@@ -1668,7 +1668,7 @@ _0238B9A8:
 	add r1, r4, #0x210
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
@@ -1684,20 +1684,20 @@ _0238B9EC:
 	add r1, r4, #0x210
 	str r4, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
 _0238BA28:
 	ldr r0, _0238C250 ; =0x0238D670
 	bl DebugPrint0__0200C1FC
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, _0238C254 ; =0x0238D68C
 	ldr r2, [r1]
 	ldrsh r1, [r2, #0x1c]
 	ldrh r2, [r2, #0x1a]
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov lr, #0
 	ldr ip, [r0]
 	ldr r2, _0238C258 ; =0x0238D69C
@@ -1724,7 +1724,7 @@ _0238BA28:
 	bl PreprocessString
 	add r0, sp, #0xf4
 	bl InitPreprocessorArgs
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	add r1, sp, #0xf4
 	ldr r3, [r0]
 	ldr r0, _0238C260 ; =0x0238D428
@@ -1742,20 +1742,20 @@ _0238BA28:
 	ldr r3, _0238C268 ; =0x00000315
 	mov r2, #0
 	bl sub_0202E3CC
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x9a]
 	b _0238C320
 _0238BB0C:
 	ldr r0, _0238C26C ; =0x0238D6A8
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
 	cmp r1, #1
 	bne _0238BB44
 	bl ov23_0238D278
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r1, #0x15
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -1775,7 +1775,7 @@ _0238BB44:
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r1, _0238C1D0 ; =0x00003008
@@ -1792,13 +1792,13 @@ _0238BB44:
 _0238BBB0:
 	ldr r0, _0238C270 ; =0x0238D6CC
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
 	cmp r1, #1
 	bne _0238BBE8
 	bl ov23_0238D1B8
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r1, #0x16
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -1818,7 +1818,7 @@ _0238BBE8:
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r1, _0238C1D0 ; =0x00003008
@@ -1842,7 +1842,7 @@ _0238BC54:
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
@@ -1856,7 +1856,7 @@ _0238BC88:
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
@@ -1872,13 +1872,13 @@ _0238BCBC:
 	cmp r0, #0
 	beq _0238BCF8
 _0238BCE4:
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #0xc]
 	b _0238BD18
 _0238BCF8:
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r0]
 	ldr r0, [r1, #8]
 	cmp r0, #0x16
@@ -1889,7 +1889,7 @@ _0238BCF8:
 _0238BD18:
 	bl sub_02042AF8
 	bl sub_020434D4
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov ip, #0x73
 	ldr r1, [r0]
 	mov r2, #1
@@ -1908,7 +1908,7 @@ _0238BD58:
 	bl DebugPrint0__0200C1FC
 	bl sub_02043218
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r3, #0x19
 	ldr r1, [r0]
 	mov r2, #0
@@ -1929,7 +1929,7 @@ _0238BDAC:
 	ldr r0, _0238C290 ; =0x0238D75C
 	bl DebugPrint0__0200C1FC
 	bl ov23_0238D098
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r2, #0x19
 	ldr r1, [r0]
 	mov ip, #0x73
@@ -1949,18 +1949,18 @@ _0238BDAC:
 _0238BDFC:
 	ldr r0, _0238C294 ; =0x0238D77C
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r2, #0x2b
 	ldr r1, [r0]
 	str r2, [r1, #0xc]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl HidePortraitBox
@@ -1970,22 +1970,22 @@ _0238BE44:
 	mov r1, #0
 	mov r2, #8
 	bl sub_02042CF0
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x98]
 	b _0238C320
 _0238BE64:
 	ldr r0, _0238C298 ; =0x0238D79C
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl HidePortraitBox
@@ -1993,7 +1993,7 @@ _0238BE64:
 	mov r1, #0
 	mov r2, #8
 	bl sub_02042CF0
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x98]
 	b _0238C320
@@ -2007,7 +2007,7 @@ _0238BEBC:
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
@@ -2023,14 +2023,14 @@ _0238BEF0:
 	add r1, ip, #0x210
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
 _0238BF2C:
 	ldr r0, _0238C2A8 ; =0x0238D7E0
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r2, _0238C258 ; =0x0238D69C
 	ldr lr, [r0]
 	ldr r3, _0238C25C ; =0x0000C402
@@ -2050,7 +2050,7 @@ _0238BF2C:
 	bl PreprocessString
 	add r0, sp, #0xc
 	bl InitPreprocessorArgs
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	add r1, sp, #0xc
 	ldr r3, [r0]
 	ldr r0, _0238C260 ; =0x0238D428
@@ -2068,20 +2068,20 @@ _0238BF2C:
 	ldr r3, _0238C268 ; =0x00000315
 	mov r2, #0
 	bl sub_0202E3CC
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x9a]
 	b _0238C320
 _0238BFDC:
 	ldr r0, _0238C2AC ; =0x0238D7FC
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
 	cmp r1, #1
 	bne _0238C014
 	bl ov23_0238D238
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r1, #0x20
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -2095,7 +2095,7 @@ _0238C014:
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r1, _0238C1D0 ; =0x00003008
@@ -2108,7 +2108,7 @@ _0238C014:
 	ldrsb r0, [r3, #0x95]
 	add r3, r3, #0x9c
 	bl ov23_0238D0E0
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r3, #0x24
 	ldr r2, [r0]
 	mov r1, #0x25
@@ -2126,20 +2126,20 @@ _0238C084:
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
 _0238C0B8:
 	ldr r0, _0238C2B8 ; =0x0238D834
 	bl DebugPrint0__0200C1FC
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
 	cmp r1, #1
 	bne _0238C0F0
 	bl ov23_0238D148
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r1, #0x21
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -2159,7 +2159,7 @@ _0238C0F0:
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r1, _0238C1D0 ; =0x00003008
@@ -2183,7 +2183,7 @@ _0238C15C:
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
-	ldr r1, _0238C1CC ; =_0238D8A0
+	ldr r1, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
@@ -2199,13 +2199,13 @@ _0238C190:
 	cmp r0, #0
 	beq _0238C2C4
 _0238C1B8:
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #0xc]
 	b _0238C2E4
 	.align 2, 0
-_0238C1CC: .word _0238D8A0
+_0238C1CC: .word ov23_0238D8A0
 _0238C1D0: .word 0x00003008
 _0238C1D4: .word 0x0238D448
 _0238C1D8: .word 0x0238D438
@@ -2268,7 +2268,7 @@ _0238C2B8: .word 0x0238D834
 _0238C2BC: .word 0x0238D854
 _0238C2C0: .word 0x0238D868
 _0238C2C4:
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, [r0]
 	ldr r0, [r1, #8]
 	cmp r0, #0x21
@@ -2279,7 +2279,7 @@ _0238C2C4:
 _0238C2E4:
 	bl sub_02042AF8
 	bl sub_020434D4
-	ldr r0, _0238C1CC ; =_0238D8A0
+	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	mov r2, #1
 	ldr r1, [r0]
 	mov r3, #0x73
@@ -2308,7 +2308,7 @@ ov23_0238C328: ; 0x0238C328
 	mov r1, #8
 	ldr r4, [r2]
 	bl MemAlloc
-	ldr r1, _0238C444 ; =_0238D8A0
+	ldr r1, _0238C444 ; =ov23_0238D8A0
 	mov r2, #0
 	str r0, [r1]
 	str r2, [r0, #0x28]
@@ -2321,7 +2321,7 @@ ov23_0238C328: ; 0x0238C328
 	ldr r0, [r1]
 	add r0, r0, #0x9c
 	bl InitPreprocessorArgs
-	ldr r0, _0238C444 ; =_0238D8A0
+	ldr r0, _0238C444 ; =ov23_0238D8A0
 	mov r3, #0x73
 	ldr r1, [r0]
 	mov r2, #0
@@ -2343,7 +2343,7 @@ ov23_0238C328: ; 0x0238C328
 	ldr r0, [r0]
 	add r0, r0, #0x1c0
 	bl sub_02034A38
-	ldr r1, _0238C444 ; =_0238D8A0
+	ldr r1, _0238C444 ; =ov23_0238D8A0
 	mov r2, #0xff
 	ldr r3, [r1]
 	str r0, [r3, #0x1bc]
@@ -2351,7 +2351,7 @@ ov23_0238C328: ; 0x0238C328
 	str r2, [r0, #4]
 _0238C3F0:
 	mov r3, #0
-	ldr r1, _0238C444 ; =_0238D8A0
+	ldr r1, _0238C444 ; =ov23_0238D8A0
 	mov r0, r3
 _0238C3FC:
 	ldr r2, [r1]
@@ -2360,7 +2360,7 @@ _0238C3FC:
 	strb r0, [r2, #0x90]
 	cmp r3, #5
 	blt _0238C3FC
-	ldr r1, _0238C444 ; =_0238D8A0
+	ldr r1, _0238C444 ; =ov23_0238D8A0
 	mvn r3, #1
 	ldr r2, [r1]
 	strb r3, [r2, #0x97]
@@ -2373,29 +2373,29 @@ _0238C3FC:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238C440: .word 0x0238A134
-_0238C444: .word _0238D8A0
+_0238C444: .word ov23_0238D8A0
 	arm_func_end ov23_0238C328
 
 	arm_func_start ov23_0238C448
 ov23_0238C448: ; 0x0238C448
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238C470 ; =_0238D8A0
+	ldr r0, _0238C470 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _0238C470 ; =_0238D8A0
+	ldr r0, _0238C470 ; =ov23_0238D8A0
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C470: .word _0238D8A0
+_0238C470: .word ov23_0238D8A0
 	arm_func_end ov23_0238C448
 
 	arm_func_start ov23_0238C474
 ov23_0238C474: ; 0x0238C474
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r1, [r0]
 	ldr r2, [r1, #0x8c]
 	cmp r2, #3
@@ -2479,7 +2479,7 @@ _0238C598:
 	bne _0238CFD0
 	mov r0, #0x23
 	bl ov23_0238A140
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
@@ -2493,7 +2493,7 @@ _0238C5C4:
 	b _0238C66C
 _0238C5DC:
 	bl sub_02042664
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #0x2a
@@ -2514,15 +2514,15 @@ _0238C60C:
 _0238C624:
 	bne _0238C634
 	bl sub_02042B50
-	ldr r1, _0238D090 ; =_0238D8A0
+	ldr r1, _0238D090 ; =ov23_0238D8A0
 	b _0238C63C
 _0238C634:
 	bl sub_02042ADC
-	ldr r1, _0238D090 ; =_0238D8A0
+	ldr r1, _0238D090 ; =ov23_0238D8A0
 _0238C63C:
 	ldr r1, [r1]
 	str r0, [r1, #0x20]
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
 	add r1, r1, #0x18
@@ -2546,7 +2546,7 @@ _0238C66C:
 	mov r0, #0
 	bl sub_02017CCC
 	bl sub_02042ADC
-	ldr r1, _0238D090 ; =_0238D8A0
+	ldr r1, _0238D090 ; =ov23_0238D8A0
 	ldr r2, [r1]
 	str r0, [r2, #0x20]
 	ldr r1, [r1]
@@ -2556,12 +2556,12 @@ _0238C66C:
 	mov r0, r0, asr #0x10
 	bl CopyItemAtIdx
 	bl sub_02042664
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x97]
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r3, #5
 	ldr r1, [r0]
 	mov r2, #0x12
@@ -2582,7 +2582,7 @@ _0238C704:
 	beq _0238C7D0
 	b _0238CFD0
 _0238C728:
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2, #8]
 	cmp r1, #0x10
@@ -2591,7 +2591,7 @@ _0238C728:
 	bl sub_0200CCA8
 	cmp r0, #0
 	bne _0238C76C
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r3, #9
 	ldr r2, [r0]
 	mov r1, #0x2a
@@ -2600,7 +2600,7 @@ _0238C728:
 	str r1, [r0, #8]
 	b _0238C7A0
 _0238C76C:
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r3, #0x2a
 	ldr r2, [r0]
 	mov r1, #0x13
@@ -2617,12 +2617,12 @@ _0238C78C:
 _0238C7A0:
 	bl ov23_0238D098
 	bl sub_02042664
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x97]
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r1, #0x2a
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -2630,12 +2630,12 @@ _0238C7A0:
 _0238C7D0:
 	bl ov23_0238D098
 	bl sub_02042664
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x97]
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r3, #0x12
 	ldr r2, [r0]
 	mov r1, #0x2a
@@ -2646,7 +2646,7 @@ _0238C7D0:
 _0238C80C:
 	bl ov23_0238D098
 	bl sub_02042744
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r1, #0xf
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -2656,11 +2656,11 @@ _0238C828:
 	bl sub_0202E6E4
 	cmp r0, #0
 	bne _0238CFD0
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x9a]
 	bl sub_0202E6C8
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r0, #0xf
@@ -2685,11 +2685,11 @@ _0238C888:
 	b _0238CFD0
 _0238C89C:
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0xf
@@ -2714,7 +2714,7 @@ _0238C900:
 	bl ov23_0238D1B8
 	bl ov23_0238D098
 	bl sub_02042AF8
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r3, #6
 	ldr r1, [r0]
 	mov r2, #0x16
@@ -2726,11 +2726,11 @@ _0238C900:
 	b _0238CFD0
 _0238C934:
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0xf
@@ -2752,7 +2752,7 @@ _0238C974:
 	bne _0238C9C8
 	bl sub_0204317C
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #1
@@ -2774,16 +2774,16 @@ _0238C9C8:
 	bl ov23_0238A140
 	b _0238CFD0
 _0238C9EC:
-	ldrne r0, _0238D090 ; =_0238D8A0
+	ldrne r0, _0238D090 ; =ov23_0238D8A0
 	ldrne r0, [r0]
 	strneh r4, [r0, #0x24]
 	bne _0238CA0C
 	bl sub_0204352C
-	ldr r1, _0238D090 ; =_0238D8A0
+	ldr r1, _0238D090 ; =ov23_0238D8A0
 	ldr r1, [r1]
 	strh r0, [r1, #0x24]
 _0238CA0C:
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r1, [r0]
 	ldrsh r0, [r1, #0x24]
 	add r1, r1, #0x18
@@ -2806,7 +2806,7 @@ _0238CA2C:
 	bl sub_02017CCC
 	mov r0, r4
 	bl sub_0204323C
-	ldr r2, _0238D090 ; =_0238D8A0
+	ldr r2, _0238D090 ; =ov23_0238D8A0
 	ldr r1, _0238D094 ; =0x020AF6B8
 	ldr r0, [r2]
 	mov r3, #0
@@ -2829,7 +2829,7 @@ _0238CA2C:
 	strb r3, [r0, #0x18]
 	bl sub_0204317C
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r3, #1
 	ldr r1, [r0]
 	mov r2, #0x1d
@@ -2856,7 +2856,7 @@ _0238CB0C:
 	bl ov23_0238D098
 	bl sub_0204317C
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #6
@@ -2871,7 +2871,7 @@ _0238CB50:
 	bl ov23_0238D098
 	bl sub_0204317C
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0x98]
@@ -2881,7 +2881,7 @@ _0238CB50:
 	moveq r0, #0x1e
 	movne r0, #0x1f
 	str r0, [r1, #0xc]
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r1, #0x29
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -2889,7 +2889,7 @@ _0238CB50:
 _0238CB98:
 	bl sub_0204317C
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #0x1d
@@ -2901,7 +2901,7 @@ _0238CB98:
 	str r1, [r0, #8]
 	b _0238CFD0
 _0238CBCC:
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r1, #0x1a
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -2913,11 +2913,11 @@ _0238CBE8:
 	bl sub_0202E6E4
 	cmp r0, #0
 	bne _0238CFD0
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x9a]
 	bl sub_0202E6C8
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r0, #0x1a
@@ -2937,7 +2937,7 @@ _0238CC24:
 _0238CC48:
 	bl ov23_0238D238
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0x20
@@ -2950,11 +2950,11 @@ _0238CC48:
 	b _0238CFD0
 _0238CC7C:
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	arm_func_end ov23_0238C474
 
 	arm_func_start ov23_0238CC94
@@ -2981,7 +2981,7 @@ ov23_0238CCBC: ; 0x0238CCBC
 	bl IsDBoxActive
 	cmp r0, #0
 	bne _0238CFD0
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x99]
 	arm_func_end ov23_0238CCBC
@@ -3004,7 +3004,7 @@ _0238CCF8:
 	bl ov23_0238D148
 	bl ov23_0238D098
 	bl sub_020434D4
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0x21
@@ -3017,11 +3017,11 @@ _0238CCF8:
 	b _0238CFD0
 _0238CD30:
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0x1a
@@ -3041,18 +3041,18 @@ _0238CD7C:
 	bl IsDBoxActive
 	cmp r0, #0
 	bne _0238CFD0
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r2, #0x2e
 	ldr r1, [r0]
 	str r2, [r1, #8]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl HidePortraitBox
@@ -3061,7 +3061,7 @@ _0238CDCC:
 	ldrsb r0, [r1, #0x99]
 	bl GetNormalMenuResult
 	cmp r0, #1
-	ldrne r1, _0238D090 ; =_0238D8A0
+	ldrne r1, _0238D090 ; =ov23_0238D8A0
 	ldrne r1, [r1]
 	strne r0, [r1, #0x28]
 	cmp r0, #6
@@ -3087,7 +3087,7 @@ _0238CE28:
 	bl HasStorableItems
 	cmp r0, #0
 	bne _0238CE54
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldr r0, [r0]
 	cmp r0, #1
@@ -3150,7 +3150,7 @@ _0238CEE0:
 	b _0238CFD0
 _0238CF08:
 	bl ov23_0238D098
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x98]
@@ -3158,7 +3158,7 @@ _0238CF08:
 _0238CF20:
 	ldr r0, [r1, #0xc]
 	bl ov23_0238A140
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #0x10]
@@ -3180,7 +3180,7 @@ _0238CF64:
 _0238CF6C:
 	ldr r0, [r1, #0xc]
 	bl ov23_0238A140
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #0x10]
@@ -3198,11 +3198,11 @@ _0238CFA0:
 	bl IsDBoxActive
 	cmp r0, #0
 	bne _0238CFD0
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl ShowDBox
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl ov23_0238A140
@@ -3211,18 +3211,18 @@ _0238CFD0:
 _0238CFD4:
 	cmp r0, #3
 	bne _0238D088
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	mov r2, #2
 	ldr r1, [r0]
 	str r2, [r1, #0x8c]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl HidePortraitBox
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202836C
@@ -3232,11 +3232,11 @@ _0238D01C:
 	str r0, [r1, #0x8c]
 	bl sub_020440B8
 	bl sub_02042BBC
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
 	bl FreeDBox
-	ldr r0, _0238D090 ; =_0238D8A0
+	ldr r0, _0238D090 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
 	bl FreePortraitBox
@@ -3262,37 +3262,37 @@ _0238D088:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0238D090: .word _0238D8A0
+_0238D090: .word ov23_0238D8A0
 	arm_func_end ov23_0238CCF0
 _0238D094: .word 0x020AF6B8
 
 	arm_func_start ov23_0238D098
 ov23_0238D098: ; 0x0238D098
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238D0DC ; =_0238D8A0
+	ldr r0, _0238D0DC ; =ov23_0238D8A0
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x99]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
 	bl sub_0202836C
-	ldr r0, _0238D0DC ; =_0238D8A0
+	ldr r0, _0238D0DC ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x99]
 	bl FreeNormalMenu
-	ldr r0, _0238D0DC ; =_0238D8A0
+	ldr r0, _0238D0DC ; =ov23_0238D8A0
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x99]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D0DC: .word _0238D8A0
+_0238D0DC: .word ov23_0238D8A0
 	arm_func_end ov23_0238D098
 
 	arm_func_start ov23_0238D0E0
 ov23_0238D0E0: ; 0x0238D0E0
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r3, _0238D144 ; =_0238D8A0
+	ldr r3, _0238D144 ; =ov23_0238D8A0
 	mov r6, r0
 	ldr r3, [r3]
 	mov r5, r1
@@ -3303,12 +3303,12 @@ ov23_0238D0E0: ; 0x0238D0E0
 	ldrsb r1, [r3, #0x88]
 	add r0, r3, #0x1ac
 	bl SetPortraitExpressionId
-	ldr r0, _0238D144 ; =_0238D8A0
+	ldr r0, _0238D144 ; =ov23_0238D8A0
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x96]
 	add r1, r1, #0x1ac
 	bl ShowPortraitBox
-	ldr r1, _0238D144 ; =_0238D8A0
+	ldr r1, _0238D144 ; =ov23_0238D8A0
 	mov r0, r6
 	ldr r3, [r1]
 	mov r1, r5
@@ -3317,7 +3317,7 @@ ov23_0238D0E0: ; 0x0238D0E0
 	bl ShowMessageInDBox
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0238D144: .word _0238D8A0
+_0238D144: .word ov23_0238D8A0
 	arm_func_end ov23_0238D0E0
 
 	arm_func_start ov23_0238D148
@@ -3396,11 +3396,11 @@ _0238D21C:
 	arm_func_start ov23_0238D238
 ov23_0238D238: ; 0x0238D238
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238D274 ; =_0238D8A0
+	ldr r0, _0238D274 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x24]
 	bl sub_02010154
-	ldr r1, _0238D274 ; =_0238D8A0
+	ldr r1, _0238D274 ; =ov23_0238D8A0
 	add r0, sp, #0
 	ldr r2, [r1]
 	ldrsh r1, [r2, #0x1c]
@@ -3411,13 +3411,13 @@ ov23_0238D238: ; 0x0238D238
 	bl sub_020434D4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D274: .word _0238D8A0
+_0238D274: .word ov23_0238D8A0
 	arm_func_end ov23_0238D238
 
 	arm_func_start ov23_0238D278
 ov23_0238D278: ; 0x0238D278
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238D2E4 ; =_0238D8A0
+	ldr r0, _0238D2E4 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x20]
 	mov r0, r0, lsl #0x10
@@ -3432,20 +3432,20 @@ ov23_0238D278: ; 0x0238D278
 	bl sub_02042AF8
 	ldmia sp!, {r3, pc}
 _0238D2B4:
-	ldr r0, _0238D2E4 ; =_0238D8A0
+	ldr r0, _0238D2E4 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x20]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl RemoveItemNoHole
-	ldr r0, _0238D2E4 ; =_0238D8A0
+	ldr r0, _0238D2E4 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	add r0, r0, #0x18
 	bl sub_020103AC
 	bl sub_02042AF8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D2E4: .word _0238D8A0
+_0238D2E4: .word ov23_0238D8A0
 	arm_func_end ov23_0238D278
 	; 0x0238D2E8
 
@@ -3541,6 +3541,6 @@ _0238D2E4: .word _0238D8A0
 	.byte 0x5F, 0x47, 0x45, 0x54, 0x5F, 0x54, 0x48, 0x41, 0x4E, 0x4B, 0x53, 0x3A, 0x0A, 0x00, 0x00, 0x00
 	
 	.data
-_0238D8A0:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.global ov23_0238D8A0
+ov23_0238D8A0:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

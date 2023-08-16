@@ -96,7 +96,7 @@
 .public sub_02048384
 .public ov29_02336F4C
 .public ov29_022FBF58
-.public _023534E0
+.public ov29_023534E0
 .public ov29_0234BB2C
 .public ov29_022FCD04
 .public ov29_022F7308
@@ -288,7 +288,7 @@
 .public ov29_02305814
 .public ov29_0233785C
 .public sub_02048400
-.public _02353860
+.public ov29_02353860
 .public sub_01FF81CC
 .public ov29_022EAF48
 .public ov29_022FE2E4
