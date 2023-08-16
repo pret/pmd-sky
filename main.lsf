@@ -1,8 +1,8 @@
 #########################################################################
 ### Linker spec file for Pokemon Mystery Dungeon: Explorers of Sky US ###
-###			Pass this to the SDK's makelcf.exe utility			 ###
-###				 along with the ARM9-TS template.				  ###
-###							  WIP								  ###
+###            Pass this to the SDK's makelcf.exe utility             ###
+###                 along with the ARM9-TS template.                  ###
+###                                WIP                                ###
 #########################################################################
 
 Static main

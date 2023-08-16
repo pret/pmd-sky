@@ -8607,17 +8607,6 @@ NITROFS_FILES := \
 	files/TOP/title_0.bgp \
 	files/TOP/title_1.bgp \
 
-# TODO: file rules
-# Some filenames are stripped and replaced with a serial number
-# such that the XYZth file is mapped to a/X/Y/Z.
-# Temporary names for now
-define arc_strip_name
-$(2): $(1)
-SRC_ARCS  += $(1)
-DIFF_ARCS += $(2)
-.PHONY: $(2)
-endef
-
 $(DIFF_ARCS):
 	cp $< $@
 
@@ -8657,6 +8646,5 @@ endif
 
 clean-fs: clean-filesystem
 clean-filesystem:
-	$(RM) files/msgdata/msg/*.bin
 	$(RM) $(DIFF_ARCS) $(NAIXS)
 	$(RM) -r $(FS_CLEAN_TARGETS)

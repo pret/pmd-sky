@@ -2,7 +2,7 @@ name: build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
   workflow_dispatch:
 
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Update and Install Software
+      - name: Update and install software
         run: |
           sudo apt update
           sudo ACCEPT_EULA=Y apt -y --fix-missing --allow-downgrades upgrade
@@ -34,10 +34,10 @@ jobs:
           sudo apt update
           sudo apt -y --allow-downgrades install --install-recommends winehq-stable
 
-      - name: Checkout Repo
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Repo
+      - name: Set up repo
         run: |
           mkdir -p ~/download
           cd ~/download
@@ -80,7 +80,7 @@ jobs:
       
       - name: Checkout xMAP
         if: ${{ github.event_name == 'push' }}
-        uses: actions/checkout@master
+        uses: actions/checkout@main
         with:
           path: 'xmap'
           ref: 'xmap'
