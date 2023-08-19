@@ -12,11 +12,6 @@ ALL_BUILDDIRS  := $(BUILD_DIR)/lib
 include common.mk
 include filesystem.mk
 
-$(ASM_OBJS): MWASFLAGS += -DPM_ASM -include config.h
-
-$(ASM_OBJS): $(WORK_DIR)/include/config.h
-$(C_OBJS):   $(WORK_DIR)/include/global.h
-
 ROM             := $(BUILD_DIR)/$(buildname).nds
 BANNER          := $(ROM:%.nds=%.bnr)
 BANNER_SPEC     := $(buildname)/banner.bsf
