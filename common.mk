@@ -70,6 +70,12 @@ NATIVE_TOOLS := \
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 
+PRECOMPILE_SRC := include/global.pch
+PRECOMPILE_OBJ := $(BUILD_DIR)/precompile/global.mch
+PRECOMPILE_OBJ_BASENAME := global.mch
+PRECOMPILE_OBJ_DIR := $(dir $(PRECOMPILE_OBJ))
+PRECOMPILE_DEPFILE := $(BUILD_DIR)/precompile/global.d
+
 # Directories
 SRC_SUBDIR                := src
 ASM_SUBDIR                := asm
@@ -117,9 +123,17 @@ MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -gccinc -i . -i ./include -i $(W
 MWLDFLAGS         := -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
-$(C_OBJS):   MWCFLAGS  +=          -include global.h
+# The foreach iterates through all library folders defined in LIB_SUBDIRS
+# and generates the relevant includes
+# e.g. -I$(WORK_DIR)/lib/NitroSDK/include -I$(WORK_DIR)/lib/NitroSystem/include
+LIBRARY_INCLUDE_FLAGS := -I$(WORK_DIR)/lib/msl/include/MSL_C $(foreach dname,$(LIB_SUBDIRS),-I$(WORK_DIR)/lib/$(dname)/include)
 
-MW_COMPILE = $(WINE) $(MWCC) $(MWCFLAGS)
+SRC_INCLUDE_FLAGS := -i ./include -i ./include/library -i $(WORK_DIR)/files $(LIBRARY_INCLUDE_FLAGS)
+SDK_INCLUDE_FLAGS := $(LIBRARY_INCLUDE_FLAGS)
+
+MW_COMPILE_SRC = $(WINE) $(MWCC) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
+MW_COMPILE_SRC_PRECOMPILE = $(WINE) $(MWCC) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS)
+
 MW_ASSEMBLE = $(WINE) $(MWAS) $(MWASFLAGS)
 
 export MWCIncludes := lib/include
@@ -132,7 +146,7 @@ OVERLAYS          :=
 endif
 
 # Make sure build directories exist before compiling anything
-DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS))
+DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS) $(PRECOMPILE_OBJ_DIR))
 
 .SECONDARY:
 .SECONDEXPANSION:
@@ -146,37 +160,58 @@ $(MWAS):
 	$(ASPATCH) -q $@
 
 ifeq ($(NODEP),)
-ifneq ($(WINPATH),)
-PROJECT_ROOT_NT := $(shell $(WINPATH) -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
-define fixdep
-$(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(PROJECT_ROOT_NT)#$(PROJECT_ROOT)#g' $(1)
-touch -r $(1:%.d=%.o) $(1)
-endef
-else
-define fixdep
-$(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g' $(1)
-touch -r $(1:%.d=%.o) $(1)
-endef
-endif
-DEPFLAGS := -gccdep -MD
-DEPFILES := $(ALL_OBJS:%.o=%.d)
-MW_COMPILE += $(DEPFLAGS)
-$(GLOBAL_ASM_OBJS): BUILD_C := $(ASM_PROCESSOR) "$(MW_COMPILE)" "$(MW_ASSEMBLE)"
-BUILD_C ?= $(MW_COMPILE) -c -o
+  ifneq ($(WINPATH),)
+    PROJECT_ROOT_NT := $(shell $(WINPATH) -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
+    define fixdep
+      $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(PROJECT_ROOT_NT)#$(PROJECT_ROOT)#g' $(1)
+      touch -r $(1:%.d=%.o) $(1)
+    endef
+    define fixdep_precompile
+      $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(PROJECT_ROOT_NT)#$(PROJECT_ROOT)#g' $(1)
+      touch -r $(1:%.d=%.mch) $(1)
+    endef
+  else
+    define fixdep
+      $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g' $(1)
+      touch -r $(1:%.d=%.o) $(1)
+    endef
+    define fixdep_precompile
+      $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g' $(1)
+      touch -r $(1:%.d=%.mch) $(1)
+    endef
+  endif
+  DEPFLAGS := -gccdep -MD
+  DEPFILES := $(ALL_OBJS:%.o=%.d)
+  MW_COMPILE_SRC += $(DEPFLAGS)
+  MW_COMPILE_SRC_PRECOMPILE += $(DEPFLAGS)
+  $(GLOBAL_ASM_OBJS): BUILD_C_SRC := $(ASM_PROCESSOR) "$(MW_COMPILE_SRC)" "$(MW_ASSEMBLE)"
+  BUILD_C_SRC ?= $(MW_COMPILE_SRC) -c -o
+  BUILD_C_LIB := $(MW_COMPILE_LIB) -c -o
 
+$(PRECOMPILE_DEPFILE):
 $(DEPFILES):
 
-$(BUILD_DIR)/%.o: %.c
-$(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
-	$(BUILD_C) $@ $<
-	@$(call fixdep,$(BUILD_DIR)/$*.d)
+$(PRECOMPILE_OBJ): $(PRECOMPILE_SRC)
+	$(MW_COMPILE_SRC_PRECOMPILE) $(PRECOMPILE_SRC) -precompile $(PRECOMPILE_OBJ)
+	@$(call fixdep_precompile,$(PRECOMPILE_DEPFILE))
+
+$(BUILD_DIR)/src/%.o: src/%.c $(PRECOMPILE_OBJ)
+$(BUILD_DIR)/src/%.o: src/%.c $(BUILD_DIR)/src/%.d $(PRECOMPILE_OBJ)
+	$(BUILD_C_SRC) $@ $<
+	@$(call fixdep,$(BUILD_DIR)/src/$*.d)
+
+$(BUILD_DIR)/lib/%.o: lib/%.c $(NITRO_PRECOMPILE_OBJ)
+$(BUILD_DIR)/lib/%.o: lib/%.c $(BUILD_DIR)/lib/%.d $(NITRO_PRECOMPILE_OBJ)
+	$(MW_COMPILE_LIB) -I$(dir $<) -c -o $@ $<
+	@$(call fixdep,$(BUILD_DIR)/lib/$*.d)
 
 $(BUILD_DIR)/%.o: %.s
 $(BUILD_DIR)/%.o: %.s $(BUILD_DIR)/%.d
-	$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $<
+	$(WINE) $(MWAS) $(MWASFLAGS) -I$(dir $<) $(DEPFLAGS) -o $@ $<
 	@$(call fixdep,$(BUILD_DIR)/$*.d)
 
 include $(wildcard $(DEPFILES))
+-include $(PRECOMPILE_DEPFILE)
 else
 $(GLOBAL_ASM_OBJS): BUILD_C := $(ASM_PROCESSOR) "$(MW_COMPILE)" "$(MW_ASSEMBLE)"
 BUILD_C ?= $(MW_COMPILE) -c -o
