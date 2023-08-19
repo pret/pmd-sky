@@ -22,10 +22,8 @@ Other disassembly and/or decompilation projects:
 * [**Pokémon Mystery Dungeon: Red Rescue Team**](https://github.com/pret/pmd-red)
 
 Gen 4 decompilation projects:
-* [**Pokémon Diamond and Pearl (pret)**](https://github.com/pret/pokediamond)
-* [**Pokémon Platinum (pret)**](https://github.com/pret/pokeplatinum) 
-* [**Pokémon Platinum (JimB16)**](https://github.com/JimB16/PokePlat)
-* [**Pokémon Platinum (Ganix)**](https://github.com/KernelEquinox/PokePlatinum)
+* [**Pokémon Diamond and Pearl**](https://github.com/pret/pokediamond)
+* [**Pokémon Platinum**](https://github.com/pret/pokeplatinum) 
 * [**Pokémon HeartGold and SoulSilver**](https://github.com/pret/pokeheartgold)
 
 ## Contacts
