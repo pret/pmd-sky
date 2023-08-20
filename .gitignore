@@ -27,6 +27,7 @@ sub/build/**
 *.d
 *.o
 *.sbin
+*.tmp
 
 # MacOS garbage
 .DS_Store
