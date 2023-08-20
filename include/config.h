@@ -1,4 +1,0 @@
-#ifndef PMDSKY_CONFIG_H
-#define PMDSKY_CONFIG_H
-
-#endif //PMDSKY_CONFIG_H

@@ -1,1 +1,0 @@
-option('native', type : 'boolean', value : false, description: 'Force native compilation, even in a cross-compilation setup')
