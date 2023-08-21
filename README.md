@@ -30,5 +30,5 @@ Gen 4 decompilation projects:
 
 You can find us on:
 
-* [Discord (PRET, #pmd-sky)](https://discord.gg/d5dubZ3)
+* [Discord (pret, #pmd-sky)](https://discord.gg/d5dubZ3)
 * [IRC](https://web.libera.chat/?#pret)
