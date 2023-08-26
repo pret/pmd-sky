@@ -14,6 +14,8 @@ env:
   CALCROM_DISCORD_WEBHOOK_USERNAME: OK
   CALCROM_WEBHOOK_URL: ${{ secrets.WEBHOOKURL }}
   COMPARE: 1
+  MWCCARM_URL: ${{ secrets.MWCCARMURL }}
+  NITROSDK_URL: ${{ secrets.NITROSDKURL }}
 
 jobs:
   build:
@@ -41,8 +43,10 @@ jobs:
         run: |
           mkdir -p ~/download
           cd ~/download
-          wget https://cdn.discordapp.com/attachments/698589325620936736/845499146982129684/mwccarm.zip
-          wget https://cdn.discordapp.com/attachments/698589325620936736/722822401963851797/NitroSDK-3_2-060901.7z
+          echo "::add-mask::$MWCCARM_URL"
+          echo "::add-mask::$NITROSDK_URL"
+          wget $MWCCARM_URL
+          wget $NITROSDK_URL
           unzip mwccarm.zip
           mv mwccarm $GITHUB_WORKSPACE/tools
           7z x NitroSDK-3_2-060901.7z
