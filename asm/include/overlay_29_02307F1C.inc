@@ -1,0 +1,14 @@
+#pragma once
+.public AbilityIsActive2
+.public AdvanceFrame
+.public DungeonRandInt
+.public DungeonRandRange
+.public EntityIsValid__02307EF8
+.public GetMonsterIdToSpawn
+.public GetTileAtEntity
+.public GetTileSafe
+.public HasHeldItem
+.public MewSpawnCheck
+.public MultiplyByFixedPoint
+.public SpawnMonster
+.public ov29_022E38E0
