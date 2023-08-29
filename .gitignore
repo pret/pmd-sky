@@ -12,6 +12,7 @@ tools/bin/**
 # Build folder
 build/**
 sub/build/**
+toolchain_tmp/
 
 # Icon build files
 *.nbfp
