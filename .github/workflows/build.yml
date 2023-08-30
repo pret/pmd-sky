@@ -46,10 +46,10 @@ jobs:
           unzip mwccarm.zip
           mv mwccarm $GITHUB_WORKSPACE/tools
           7z x NitroSDK-4_2-071210-jp.7z
-          mv NitroSDK-4_2-071210-jp/tools/bin $GITHUB_WORKSPACE/tools
-          mv NitroSDK-4_2-071210-jp/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
-          mv NitroSDK-4_2-071210-jp/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
-          mv NitroSDK-4_2-071210-jp/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
+          mv tools/bin $GITHUB_WORKSPACE/tools
+          mv include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
+          mv include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
+          mv include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
         working-directory: ~
 
       - name: Build
