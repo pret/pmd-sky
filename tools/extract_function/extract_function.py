@@ -14,6 +14,10 @@ if len(sys.argv) != 3:
     exit(1)
 
 _, function_location, function_header = sys.argv
+if function_location.endswith('.s'):
+    function_location = function_location[:-2]
+if function_header.endswith(';'):
+    function_header = function_header[:-1]
 
 left_parentheses_index = function_header.find('(')
 if left_parentheses_index >= 0:
@@ -147,21 +151,32 @@ def write_inc_file(lines: List[str], file_path: str):
     with open(file_path, 'w') as inc_file:
         inc_file.writelines(write_lines)
 
+print('Updating', LSF_FILE_PATH)
+with open(LSF_FILE_PATH, 'w') as lsf_file:
+    lsf_file.writelines(lsf_lines)
+
+if remove_orig_file:
+    print('Removing', original_file_path)
+    os.remove(original_file_path)
+    print('Removing', original_inc_path)
+    os.remove(original_inc_path)
+else:
+    print('Updating', original_file_path)
+    with open(original_file_path, 'w') as original_file:
+        original_file.writelines(original_asm_lines)
+    print('Updating', original_inc_path)
+    write_inc_file(original_asm_lines, original_inc_path)
+
 if include_new_asm_file:
+    new_asm_file_path = os.path.join(ASM_FOLDER, new_asm_name)
+    print('Creating', new_asm_file_path)
     with open(os.path.join(ASM_FOLDER, new_asm_name), 'w') as new_asm_file:
         new_asm_file.write(new_asm_header)
         new_asm_file.writelines(new_asm_lines)
 
-if remove_orig_file:
-    os.remove(original_file_path)
-    os.remove(original_inc_path)
-else:
-    with open(original_file_path, 'w') as original_file:
-        original_file.writelines(original_asm_lines)
-    write_inc_file(original_asm_lines, original_inc_path)
-
-if include_new_asm_file:
-    write_inc_file(new_asm_lines, os.path.join(INCLUDE_FOLDER, f'{file_prefix}{new_file_address}.inc'))
+    new_asm_inc_path = os.path.join(INCLUDE_FOLDER, f'{file_prefix}{new_file_address}.inc')
+    print('Creating', new_asm_inc_path)
+    write_inc_file(new_asm_lines, new_asm_inc_path)
 
 function_body = f"""{function_header}
 {{
@@ -176,10 +191,12 @@ if merge_prev_file:
         if line != '\n' and not line.startswith('#'):
             header_lines[i] += f'{function_header};\n'
             break
+    print('Updating', header_file_path)
     with open(header_file_path, 'w') as header_file:
         header_file.writelines(header_lines)
 
     src_file_path = os.path.join(SRC_FOLDER, f'{merge_prev_file}.c')
+    print('Updating', src_file_path)
     with open(src_file_path, 'a') as src_file:
         src_file.write(f'\n{function_body}\n')
 
@@ -195,20 +212,23 @@ elif merge_next_file:
             add_file.writelines(file_lines)
 
     header_file_path = os.path.join(HEADER_FOLDER, f'{merge_next_file}.h')
+    print('Updating', header_file_path)
     add_in_body_start(header_file_path, f'{function_header};\n')
 
     src_file_path = os.path.join(SRC_FOLDER, f'{merge_next_file}.c')
+    print('Updating', src_file_path)
     add_in_body_start(src_file_path, f'{function_body}\n\n')
 
 else:
-    with open(os.path.join(HEADER_FOLDER, f'{extract_file_name}.h'), 'w') as new_header_file:
+    header_file_path = os.path.join(HEADER_FOLDER, f'{extract_file_name}.h')
+    print('Creating', header_file_path)
+    with open(header_file_path, 'w') as new_header_file:
         file_guard = f'PMDSKY_{(file_prefix + extract_function_address).upper()}_H'
         new_header_file.write(f'#ifndef {file_guard}\n#define {file_guard}\n\n')
         new_header_file.write(f'{function_header};\n\n')
         new_header_file.write(f'#endif //{file_guard}\n')
 
-    with open(os.path.join(SRC_FOLDER, f'{extract_file_name}.c'), 'w') as new_src_file:
+    src_file_path = os.path.join(SRC_FOLDER, f'{extract_file_name}.c')
+    print('Creating', src_file_path)
+    with open(src_file_path, 'w') as new_src_file:
         new_src_file.write(f'#include "{extract_file_name}.h\n\n{function_body}\n')
-
-with open(LSF_FILE_PATH, 'w') as lsf_file:
-    lsf_file.writelines(lsf_lines)
