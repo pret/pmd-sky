@@ -2,26 +2,29 @@ This doc details the steps necessary to build a copy of _Pokémon Mystery Dungeo
 
 ## 0. Clone the repository
 
-Using a terminal or Git client, clone this repository to your local device. All the steps that followed should be performed in the directory to which you cloned this repository.
+Using a terminal or Git client, clone this repository to your local device. All the steps that follow should be performed in the directory where you cloned this repository.
 
-## 1. Install MWCC compiler
+## 1. Installing MWCC compiler and Nitro SDK
 
-Step 1 and 2 can also be executed automatically by running `make install_toolchain`
+To install the compiler and SDK needed for this project, run `make install_toolchain`. You will need `wget` and `p7zip` installed to run this command.
 
-The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. We cannot distribute the correct compiler here, so join the PRET Discord, download the pinned `mwccarm.zip` zip in `#pokediamond`, and extract it to `tools/`. At the end of this operation, you should have the file `tools/mwccarm/2.0/sp2p2/mwccarm.exe`.
+If you have issues with the `make` command above, you can also install the compiler and SDK manually.
 
-In the future, a GCC option will be available so MWCC is not required to build; however, it is required for a matching ROM.
+### Manual installation
+The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. Join the pret Discord, download the pinned `mwccarm.zip` zip in `#pokediamond`, and extract it to `tools/`. At the end of this operation, you should have the file `tools/mwccarm/2.0/sp2p2/mwccarm.exe`. In the future, a GCC option will be available so MWCC is not required to build; however, it is required for a matching ROM.
 
-## 2. Install Nitro SDK
+For Nitro SDK, download the `NitroSDK-4_2-071210-jp.7z` file pinned in the pret Discord in `#pokeheartgold`. Extract and copy the folder `tools/bin` from the Nitro SDK into the folder `tools` in your `pmd-sky` clone. At the end of this operation, you should have the file `tools/bin/makelcf.exe` inside your `pmd-sky` clone. Finally, copy `include/nitro/specfiles/ARM7-TS.lcf.template` into the subdirectory `sub`, and `include/nitro/specfiles/ARM9-TS.lcf.template` and `include/nitro/specfiles/mwldarm.response.template` into the project root.
 
-As with the compiler, the Nitro SDK is proprietary and cannot be distributed here. Download the `NitroSDK-4_2-071210-jp.7z` file pinned in the PRET Discord in `#pokeheartgold`. Extract and copy the folder `tools/bin` from the Nitro SDK into the folder `tools` in your `pmd-sky` clone. At the end of this operation, you should have the file `tools/bin/makelcf.exe` inside your `pmd-sky` clone. Finally, copy `include/nitro/specfiles/ARM7-TS.lcf.template` into the subdirectory `sub`, and `include/nitro/specfiles/ARM9-TS.lcf.template` and `include/nitro/specfiles/mwldarm.response.template` into the project root.
-
-## 3. Dependencies
+## 2. Dependencies
 
 ### Linux
 
-If you have Nix with flake support enabled, you can also use `nix develop` to start an environment with the tools present.
+For Linux, if you have the [Nix](https://nixos.wiki/wiki/Nix_package_manager) package manager with [flake](https://nixos.wiki/wiki/Flakes) support enabled, you can install dependencies with it. Otherwise, you can install dependencies manually.
 
+#### Nix flake
+Use `nix develop` to start an environment with the tools present.
+
+#### Manual installation
 Building the ROM requires the following packages. If you cannot find one or more of these using your package distribution, it may be under a different name.
 
 * make
@@ -35,8 +38,6 @@ Building the ROM requires the following packages. If you cannot find one or more
 * pugixml (libpugixml-dev on Ubuntu)
 
 NOTE: If you are using Arch/Manjaro or Void, you will only need base-devel instead of build-essentials or make or git. You will still need wine.
-
-Currently WSL2 has an issue with mwldarm not being able to locate its executable. Please use WSL1 or another build environment to mitigate this issue until a solution is found.
 
 ### Windows
 
@@ -91,7 +92,7 @@ $ brew install coreutils make gnu-sed llvm arm-gcc-bin libpng git pkg-config
 $ brew install wine-crossover
 ```
 
-## 4. Build ROM
+## 3. Build ROM
 
 Run `make` to build the ROM. The ROM will be output as `build/pmdsky.us/pmdsky.us.nds`
 

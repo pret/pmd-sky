@@ -32,3 +32,4 @@ toolchain_tmp/
 
 # MacOS garbage
 .DS_Store
+*.plist
