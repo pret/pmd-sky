@@ -10,6 +10,8 @@ Static main
 	Address 0x02000000
 	StackSize 0 2048
 	Object asm/main.o
+	Object src/main_pack.o
+	Object asm/main_0200C484.o
 }
 
 Autoload ITCM

@@ -59,9 +59,9 @@ def get_line_address(line: str):
 for i, line in enumerate(original_lines):
     if first_function_start_line is None and line.startswith(ARM_FUNC_START):
         first_function_start_line = i
-    if line == f'{ARM_FUNC_START}{function_name}\n':
+    if line.strip() == f'{ARM_FUNC_START}{function_name}'.strip():
         function_start_line = i
-    elif line.startswith(f'\tarm_func_end {function_name}'):
+    elif line.strip() == f'arm_func_end {function_name}'.strip():
         function_end_line = i
     
     if function_start_line is not None and extract_function_address is None and ADDRESS_FIND in line:
@@ -231,4 +231,4 @@ else:
     src_file_path = os.path.join(SRC_FOLDER, f'{extract_file_name}.c')
     print('Creating', src_file_path)
     with open(src_file_path, 'w') as new_src_file:
-        new_src_file.write(f'#include "{extract_file_name}.h\n\n{function_body}\n')
+        new_src_file.write(f'#include "{extract_file_name}.h\"\n\n{function_body}\n')
