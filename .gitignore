@@ -29,6 +29,7 @@ toolchain_tmp/
 *.o
 *.sbin
 *.tmp
+*.pyc
 
 # MacOS garbage
 .DS_Store
