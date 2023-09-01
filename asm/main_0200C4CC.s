@@ -45913,13 +45913,13 @@ sub_020318D0: ; 0x020318D0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020318D0
 
-	arm_func_start KeyWaitInit__02031908
-KeyWaitInit__02031908: ; 0x02031908
+	arm_func_start sub_02031908
+sub_02031908: ; 0x02031908
 	ldr ip, _02031910 ; =KeyWaitInit__02006DA4
 	bx ip
 	.align 2, 0
 _02031910: .word KeyWaitInit__02006DA4
-	arm_func_end KeyWaitInit__02031908
+	arm_func_end sub_02031908
 
 	arm_func_start sub_02031914
 sub_02031914: ; 0x02031914
@@ -46160,7 +46160,7 @@ _02031C34:
 	mov r0, r7
 	bl sub_02032684
 _02031C4C:
-	bl KeyWaitInit__02031908
+	bl sub_02031908
 	mov r1, #0
 	strb r1, [r7, #0xf4]
 	str r1, [r7, #0xd8]
@@ -47394,7 +47394,7 @@ _02032B7C:
 	mov r0, r7
 	bl sub_020330EC
 _02032B94:
-	bl KeyWaitInit__02031908
+	bl sub_02031908
 	mov r1, #0
 	str r1, [r7, #0xd8]
 	sub r0, r1, #1
