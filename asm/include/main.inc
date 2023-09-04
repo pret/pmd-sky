@@ -5,9 +5,7 @@
 .public DecompressAtFromMemoryPointer
 .public DivideInt
 .public FileInit
-.public GetFileLengthInPack
 .public IntToFloat
-.public LoadFileInPack
 .public MultiplyFloat
 .public Sprintf
 .public Sqrtf

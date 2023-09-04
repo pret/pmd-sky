@@ -21,4 +21,20 @@ struct pack_file_opened {
     struct file_stream opened_file;
 };
 
+// Correspond to a .bin pack archive
+enum pack_file_id {
+    PACK_ARCHIVE_MONSTER = 0,
+    PACK_ARCHIVE_M_ATTACK = 1,
+    PACK_ARCHIVE_M_GROUND = 2,
+    PACK_ARCHIVE_EFFECT = 3,
+    PACK_ARCHIVE_DUNGEON = 4,
+    PACK_ARCHIVE_M_LEVEL = 5
+};
+
+// Contain return result of the AllocAndLoadFileInPack function
+struct pack_alloc_and_load_result {
+    void* data;
+    u32 length;
+};
+
 #endif

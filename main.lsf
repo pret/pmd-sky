@@ -11,7 +11,7 @@ Static main
 	StackSize 0 2048
 	Object asm/main.o
 	Object src/main_pack.o
-	Object asm/main_0200C484.o
+	Object asm/main_0200C4CC.o
 }
 
 Autoload ITCM
