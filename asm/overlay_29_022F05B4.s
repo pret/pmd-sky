@@ -3701,7 +3701,7 @@ _022F39D8:
 	tst r0, #0xff
 	beq _022F3A40
 	ldrsh r0, [r7, #8]
-	bl CheckTeamMemberIdx__022F9C34
+	bl CheckTeamMemberIdxVeneer
 	cmp r0, #0
 	ldrsh r0, [sb, #0xc]
 	ldreqsh r8, [r7, #8]

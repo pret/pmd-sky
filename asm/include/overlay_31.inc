@@ -6,7 +6,7 @@
 .public AllManip1
 .public IsBlinded
 .public sub_020585B4
-.public CheckTeamMemberIdx__022F9C34
+.public CheckTeamMemberIdxVeneer
 .public DisableDungeonSubMenuOption
 .public sub_020348E4
 .public sub_0203083C

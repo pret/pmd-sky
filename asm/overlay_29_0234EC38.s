@@ -58,7 +58,7 @@ _0234ECE4:
 	add sl, sb, r5, lsl #5
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx__022F9C34
+	bl CheckTeamMemberIdxVeneer
 	strb r0, [sl, #4]
 	str r7, [sl, #0x1c]
 	str r6, [sb, r5, lsl #5]

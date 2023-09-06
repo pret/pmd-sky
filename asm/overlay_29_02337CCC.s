@@ -14698,13 +14698,13 @@ _02344530:
 	ldmia sp!, {r3, pc}
 	arm_func_end IsHiddenStairsFloor
 
-	arm_func_start IsSecretBazaar__02344538
-IsSecretBazaar__02344538: ; 0x02344538
+	arm_func_start IsSecretBazaarVeneer
+IsSecretBazaarVeneer: ; 0x02344538
 	ldr ip, _02344540 ; =IsSecretBazaar
 	bx ip
 	.align 2, 0
 _02344540: .word IsSecretBazaar
-	arm_func_end IsSecretBazaar__02344538
+	arm_func_end IsSecretBazaarVeneer
 
 	arm_func_start ov29_02344544
 ov29_02344544: ; 0x02344544

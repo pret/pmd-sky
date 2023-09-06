@@ -924,8 +924,8 @@ ov01_0232A048: ; 0x0232A048
 _0232A074: .word ov01_0233C240
 	arm_func_end ov01_0232A048
 
-	arm_func_start DoMoveNightShade
-DoMoveNightShade: ; 0x0232A078
+	arm_func_start sub_0232A078
+sub_0232A078: ; 0x0232A078
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
@@ -1006,7 +1006,7 @@ _0232A180:
 	.align 2, 0
 _0232A18C: .word ov01_0233C240
 _0232A190: .word ov01_0233C0C0
-	arm_func_end DoMoveNightShade
+	arm_func_end sub_0232A078
 
 	arm_func_start ov01_0232A194
 ov01_0232A194: ; 0x0232A194
@@ -1807,7 +1807,7 @@ _0232ABBC:
 	cmpne r1, #2
 	movne r1, #3
 	strne r1, [r0, #0x7c]
-	ldr r0, _0232ABFC ; =DoMoveNightShade
+	ldr r0, _0232ABFC ; =sub_0232A078
 	bl ov00_022BFB9C
 	cmp r0, #2
 	ldrne r0, _0232ABF8 ; =ov01_0233C240
@@ -1818,7 +1818,7 @@ _0232ABBC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232ABF8: .word ov01_0233C240
-_0232ABFC: .word DoMoveNightShade
+_0232ABFC: .word sub_0232A078
 	arm_func_end ov01_0232AB88
 
 	arm_func_start ov01_0232AC00

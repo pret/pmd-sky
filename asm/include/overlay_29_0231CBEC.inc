@@ -5,7 +5,7 @@
 .public CalcDamageFixedNoCategory
 .public CanSeeInvisibleMonsters
 .public CeilFixedPoint
-.public CheckTeamMemberIdx__022F9C34
+.public CheckTeamMemberIdxVeneer
 .public ClearMonsterActionFields
 .public DisplayMessage2
 .public DungeonRandInt

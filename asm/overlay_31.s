@@ -5368,7 +5368,7 @@ _02387278:
 	bge _023872FC
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx__022F9C34
+	bl CheckTeamMemberIdxVeneer
 	cmp r0, #0
 	movne r6, #0
 _023872FC:
@@ -5862,7 +5862,7 @@ _02387958:
 	ldrsh r0, [r6, #0xc]
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx__022F9C34
+	bl CheckTeamMemberIdxVeneer
 	cmp r0, #0
 	ldrsh r1, [r6, #0x12]
 	ldrsh r0, [r6, #0x16]
@@ -6472,7 +6472,7 @@ _0238826C:
 	ldrsh r0, [r6, #0xc]
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx__022F9C34
+	bl CheckTeamMemberIdxVeneer
 	str r0, [sp, #4]
 	b _023882E8
 _023882A0:

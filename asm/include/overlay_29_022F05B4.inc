@@ -5,7 +5,7 @@
 .public AddMoneyCarried
 .public AdvanceFrame
 .public CeilFixedPoint
-.public CheckTeamMemberIdx__022F9C34
+.public CheckTeamMemberIdxVeneer
 .public __divsi3
 .public DungeonRandInt
 .public EntityIsValid__022F0590

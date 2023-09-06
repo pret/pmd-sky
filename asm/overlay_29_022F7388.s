@@ -2954,13 +2954,13 @@ _022F9C00:
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end ov29_022F9B8C
 
-	arm_func_start CheckTeamMemberIdx__022F9C34
-CheckTeamMemberIdx__022F9C34: ; 0x022F9C34
+	arm_func_start CheckTeamMemberIdxVeneer
+CheckTeamMemberIdxVeneer: ; 0x022F9C34
 	ldr ip, _022F9C3C ; =CheckTeamMemberIdx
 	bx ip
 	.align 2, 0
 _022F9C3C: .word CheckTeamMemberIdx
-	arm_func_end CheckTeamMemberIdx__022F9C34
+	arm_func_end CheckTeamMemberIdxVeneer
 
 	arm_func_start ov29_022F9C40
 ov29_022F9C40: ; 0x022F9C40
@@ -2981,13 +2981,13 @@ ov29_022F9C4C: ; 0x022F9C4C
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022F9C4C
 
-	arm_func_start IsMonsterIdInNormalRange__022F9C68
-IsMonsterIdInNormalRange__022F9C68: ; 0x022F9C68
+	arm_func_start IsMonsterIdInNormalRangeVeneer
+IsMonsterIdInNormalRangeVeneer: ; 0x022F9C68
 	ldr ip, _022F9C70 ; =IsMonsterIdInNormalRange
 	bx ip
 	.align 2, 0
 _022F9C70: .word IsMonsterIdInNormalRange
-	arm_func_end IsMonsterIdInNormalRange__022F9C68
+	arm_func_end IsMonsterIdInNormalRangeVeneer
 
 	arm_func_start ov29_022F9C74
 ov29_022F9C74: ; 0x022F9C74

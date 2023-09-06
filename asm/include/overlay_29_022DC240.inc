@@ -188,7 +188,7 @@
 .public LoadScriptVariableValue
 .public ov29_02338A4C
 .public ov29_023362EC
-.public IsSecretBazaar__02344538
+.public IsSecretBazaarVeneer
 .public sub_0200A2F4
 .public EnemyEvolution
 .public ov29_022E0F6C

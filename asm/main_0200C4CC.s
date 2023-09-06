@@ -11783,13 +11783,13 @@ _0201590C:
 _0201592C:
 	ldr r0, [sp, #0x44]
 	ldr r1, _02015D0C ; =0x02098FC0
-	bl StrcmpTag__020235F8
+	bl StrcmpTagVeneer
 	cmp r0, #0
 	beq _02015CD8
 	ldr r0, [sp, #0x48]
-	bl StoiTag__02023604
+	bl StoiTagVeneer
 	ldr r0, [sp, #0x4c]
-	bl StoiTag__02023604
+	bl StoiTagVeneer
 	ldr r1, _02015D10 ; =0x020AF710
 	add ip, r5, #2
 	ldr r1, [r1]
@@ -12453,13 +12453,13 @@ _02016210:
 _0201622C:
 	ldr r0, [sp]
 	ldr r1, _02016288 ; =0x02098FC0
-	bl StrcmpTag__020235F8
+	bl StrcmpTagVeneer
 	cmp r0, #0
 	beq _02016270
 	ldr r0, [sp, #4]
-	bl StoiTag__02023604
+	bl StoiTagVeneer
 	ldr r0, [sp, #8]
-	bl StoiTag__02023604
+	bl StoiTagVeneer
 	mov r0, r0, lsl #0x10
 	add r5, r5, r0, asr #16
 	b _02016270
@@ -28425,21 +28425,21 @@ PreprocessStringFromMessageId: ; 0x020235B8
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	arm_func_end PreprocessStringFromMessageId
 
-	arm_func_start StrcmpTag__020235F8
-StrcmpTag__020235F8: ; 0x020235F8
+	arm_func_start StrcmpTagVeneer
+StrcmpTagVeneer: ; 0x020235F8
 	ldr ip, _02023600 ; =StrcmpTag
 	bx ip
 	.align 2, 0
 _02023600: .word StrcmpTag
-	arm_func_end StrcmpTag__020235F8
+	arm_func_end StrcmpTagVeneer
 
-	arm_func_start StoiTag__02023604
-StoiTag__02023604: ; 0x02023604
+	arm_func_start StoiTagVeneer
+StoiTagVeneer: ; 0x02023604
 	ldr ip, _0202360C ; =StoiTag
 	bx ip
 	.align 2, 0
 _0202360C: .word StoiTag
-	arm_func_end StoiTag__02023604
+	arm_func_end StoiTagVeneer
 
 	arm_func_start sub_02023610
 sub_02023610: ; 0x02023610
@@ -73292,13 +73292,13 @@ sub_0204872C: ; 0x0204872C
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0204872C
 
-	arm_func_start EventFlagBackup__02048758
-EventFlagBackup__02048758: ; 0x02048758
+	arm_func_start EventFlagBackupVeneer
+EventFlagBackupVeneer: ; 0x02048758
 	ldr ip, _02048760 ; =EventFlagBackup
 	bx ip
 	.align 2, 0
 _02048760: .word EventFlagBackup
-	arm_func_end EventFlagBackup__02048758
+	arm_func_end EventFlagBackupVeneer
 
 	arm_func_start sub_02048764
 sub_02048764: ; 0x02048764
@@ -73977,7 +73977,7 @@ NoteSaveBase: ; 0x02048F84
 	bl SetNotifyNote
 	bl GetTime
 	mov r7, r0
-	bl EventFlagBackup__02048758
+	bl EventFlagBackupVeneer
 	cmp sb, #3
 	bne _02048FE0
 	bl sub_02048BFC
@@ -163243,7 +163243,7 @@ _020908D0: .word 0x020AEEF0
 	.byte 0x20, 0x20, 0x50, 0x72, 0x69, 0x6E, 0x74, 0x20, 0x20, 0x00, 0x00, 0x00, 0x21, 0x21, 0x21, 0x21
 	.byte 0x21, 0x20, 0x46, 0x61, 0x74, 0x61, 0x6C, 0x20, 0x21, 0x21, 0x21, 0x21, 0x21, 0x0A, 0x00, 0x00
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x28, 0x4E, 0x55, 0x4C, 0x4C, 0x29, 0x0A, 0x00, 0x25, 0x73, 0x0A, 0x00
-	
+
 	.global STRING_EFFECT_EFFECT_BIN ; 0x02094b64
 	STRING_EFFECT_EFFECT_BIN:
 	.string "EFFECT/effect.bin"
@@ -163263,7 +163263,7 @@ _020908D0: .word 0x020AEEF0
 	STRING_DUNGEON_DUNGEON_BIN:
 	.string "DUNGEON/dungeon.bin"
 	.align 4
-	
+
 	.global STRING_MONSTER_M_ATTACK_BIN ; 0x02094bb4
 	STRING_MONSTER_M_ATTACK_BIN:
 	.string "MONSTER/m_attack.bin"
