@@ -10510,7 +10510,7 @@ _02345E2C:
 	ldr r3, [r2, #4]
 	ldr r2, _02346670 ; =0x0000030F
 	ldrb r8, [r3, #0xae]
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	mov r5, #0
 	mov fp, r5
 	mov r4, #1

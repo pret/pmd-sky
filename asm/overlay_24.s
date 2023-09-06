@@ -434,13 +434,13 @@ _0238A6F4:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x294
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r2, [r0]
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -505,7 +505,7 @@ _0238A82C:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -534,7 +534,7 @@ _0238A890:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -560,7 +560,7 @@ _0238A900:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -592,7 +592,7 @@ _0238A964:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -624,7 +624,7 @@ _0238A9E0:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -656,7 +656,7 @@ _0238AA5C:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -687,7 +687,7 @@ _0238AAD8:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -719,7 +719,7 @@ _0238AB50:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	bl sub_0201077C
 	ldr r1, _0238B384 ; =ov24_0238C600
 	ldr r1, [r1]
@@ -828,7 +828,7 @@ _0238ACE0:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	mov r3, #0x1b
 	ldr r1, [r0]
@@ -957,7 +957,7 @@ _0238AECC:
 _0238AF00:
 	bl Rand16Bit
 	mov r1, #0x64
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _0238B3D8 ; =0x020A1868
 	ldrsh r0, [r0]
 	cmp r1, r0
@@ -987,7 +987,7 @@ _0238AF00:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1012,7 +1012,7 @@ _0238AFC0:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B384 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1369,13 +1369,13 @@ _0238B4D0:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x294
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r2, [r0]
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1440,7 +1440,7 @@ _0238B608:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1469,7 +1469,7 @@ _0238B66C:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1495,7 +1495,7 @@ _0238B6DC:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1527,7 +1527,7 @@ _0238B740:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1559,7 +1559,7 @@ _0238B7BC:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1591,7 +1591,7 @@ _0238B838:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1622,7 +1622,7 @@ _0238B8B4:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1654,7 +1654,7 @@ _0238B92C:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	bl sub_0201077C
 	ldr r1, _0238C164 ; =ov24_0238C600
 	ldr r1, [r1]
@@ -1763,7 +1763,7 @@ _0238BABC:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	mov r3, #0x1b
 	ldr r1, [r0]
@@ -1888,7 +1888,7 @@ _0238BCA8:
 _0238BCDC:
 	bl Rand16Bit
 	mov r1, #0x64
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _0238C1B4 ; =0x020A1868
 	ldrsh r0, [r0]
 	cmp r1, r0
@@ -1918,7 +1918,7 @@ _0238BCDC:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -1943,7 +1943,7 @@ _0238BD9C:
 	add r0, r2, #0x100
 	ldrsb r1, [r0, #0xf0]
 	add r0, r2, #0x294
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C164 ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x200
@@ -2253,7 +2253,7 @@ ov24_0238C1D4: ; 0x0238C1D4
 	ldr r1, [r0]
 	add r0, r1, #0x22
 	add r1, r1, #0x52
-	bl Strcpy
+	bl strcpy
 	ldr r0, _0238C33C ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x42

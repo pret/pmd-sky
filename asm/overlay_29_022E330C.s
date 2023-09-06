@@ -9,7 +9,7 @@ ItemIsActive__022E330C: ; 0x022E330C
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -19,8 +19,8 @@ ItemIsActive__022E330C: ; 0x022E330C
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ItemIsActive__022E330C
 
-	arm_func_start ov29_022E333C
-ov29_022E333C: ; 0x022E333C
+	arm_func_start GetVisibilityRange
+GetVisibilityRange: ; 0x022E333C
 	ldr r0, _022E3358 ; =0x02353538
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
@@ -30,7 +30,7 @@ ov29_022E333C: ; 0x022E333C
 	bx lr
 	.align 2, 0
 _022E3358: .word 0x02353538
-	arm_func_end ov29_022E333C
+	arm_func_end GetVisibilityRange
 
 	arm_func_start ov29_022E335C
 ov29_022E335C: ; 0x022E335C
@@ -63,7 +63,7 @@ _022E33B0:
 	add r4, r0, #0x1a000
 	ldr r0, [r4, #0x10]
 	ldr r5, [r0, #0xb4]
-	bl ov29_02335A10
+	bl DisplayUi
 	ldr r1, _022E3428 ; =0x02353538
 	ldr r0, _022E342C ; =0x000003E7
 	ldr r1, [r1]
@@ -119,9 +119,9 @@ _022E3458:
 	cmp r7, #0x20
 	blt _022E3454
 	mov r0, #0
-	bl ov29_022E2EC4
-	bl ov29_02336F4C
-	bl ov29_02339CE8
+	bl UpdateCamera
+	bl UpdateTrapsVisibility
+	bl UpdateMinimap
 	ldr r1, _022E34AC ; =0x00000B77
 	mov r0, r4
 	bl LogMessageByIdWithPopupCheckUser
@@ -237,13 +237,13 @@ ov29_022E3590: ; 0x022E3590
 	mov r2, r4
 	and r3, r3, #0xff
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov29_022E3590
 
-	arm_func_start ov29_022E35E4
-ov29_022E35E4: ; 0x022E35E4
+	arm_func_start PlayEffectAnimationEntity
+PlayEffectAnimationEntity: ; 0x022E35E4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x30
 	mov r8, r0
@@ -273,7 +273,7 @@ ov29_022E35E4: ; 0x022E35E4
 	moveq r0, #1
 	movne r0, #0
 	and r0, r0, #0xff
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 _022E365C:
 	add r0, sp, #0
 	mov r2, r7
@@ -374,4 +374,4 @@ _022E37A8:
 	.align 2, 0
 _022E37B0: .word 0x02353538
 _022E37B4: .word 0x0001A226
-	arm_func_end ov29_022E35E4
+	arm_func_end PlayEffectAnimationEntity

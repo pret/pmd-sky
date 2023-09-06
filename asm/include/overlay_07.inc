@@ -33,7 +33,7 @@
 .public ov00_022BCCF4
 .public sub_02003BC8
 .public ov00_022BD758
-.public Strcat
+.public strcat
 .public ov00_022BCFD0
 .public sub_0203931C
 .public ov00_022BD398
@@ -123,7 +123,7 @@
 .public ov00_022BCD4C
 .public ov01_02338BEC
 .public ov00_022BD6E0
-.public DivideInt
+.public __divsi3
 .public sub_0202D07C
 .public ov00_022BD71C
 .public sub_0202C3A8

@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_023456BC
-ov29_023456BC: ; 0x023456BC
+	arm_func_start RemoveGroundItem
+RemoveGroundItem: ; 0x023456BC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r2, r0
 	mov r7, r1
@@ -21,13 +21,13 @@ ov29_023456BC: ; 0x023456BC
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrh r1, [r5]
 	mov r4, r0
 	tst r1, #0x20
 	beq _02345770
 	ldrsh r0, [r4, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	beq _02345770
 	ldrb r0, [r4]
@@ -76,7 +76,7 @@ _02345784:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _023457C4: .word 0x02353538
-	arm_func_end ov29_023456BC
+	arm_func_end RemoveGroundItem
 
 	arm_func_start ov29_023457C8
 ov29_023457C8: ; 0x023457C8
@@ -102,7 +102,7 @@ ov29_023457C8: ; 0x023457C8
 	cmp r0, #2
 	moveq r4, #1
 	mov r0, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -245,8 +245,8 @@ _02345A34: .word 0xFFFF000F
 _02345A38: .word 0x020AFC4C
 	arm_func_end ov29_023457C8
 
-	arm_func_start ov29_02345A3C
-ov29_02345A3C: ; 0x02345A3C
+	arm_func_start SpawnDroppedItemWrapper
+SpawnDroppedItemWrapper: ; 0x02345A3C
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0xc0
 	mov r5, r2
@@ -283,13 +283,13 @@ ov29_02345A3C: ; 0x02345A3C
 	mov r2, r5
 	mov r3, #1
 	str r4, [sp, #4]
-	bl ov29_02345AD8
+	bl SpawnDroppedItem
 	add sp, sp, #0xc0
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov29_02345A3C
+	arm_func_end SpawnDroppedItemWrapper
 
-	arm_func_start ov29_02345AD8
-ov29_02345AD8: ; 0x02345AD8
+	arm_func_start SpawnDroppedItem
+SpawnDroppedItem: ; 0x02345AD8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov r8, r1
@@ -377,7 +377,7 @@ _02345B8C:
 	add r0, sp, #0xc
 	mov r1, r7
 	mov r2, #1
-	bl ov29_02345538
+	bl SpawnItem
 	cmp r0, #0
 	movne r5, #1
 	b _02345C44
@@ -396,7 +396,7 @@ _02345C44:
 	beq _02345CF4
 	ldrsh r0, [sp, #0xc]
 	ldrsh r1, [sp, #0xe]
-	bl ov29_023391EC
+	bl DrawMinimapTile
 	ldrsh r0, [sp, #0xc]
 	ldrsh r1, [sp, #0xe]
 	bl GetTile
@@ -475,7 +475,7 @@ _02345D74: .word 0x00000BDA
 _02345D78: .word 0x00000BDB
 _02345D7C: .word 0x00000BDF
 _02345D80: .word 0x00000BDC
-	arm_func_end ov29_02345AD8
+	arm_func_end SpawnDroppedItem
 
 	arm_func_start ov29_02345D84
 ov29_02345D84: ; 0x02345D84
@@ -598,7 +598,7 @@ _02345EE0:
 	ldr r1, [sp, #4]
 	add r0, sp, #0x14
 	mov r2, #1
-	bl ov29_02345538
+	bl SpawnItem
 	cmp r0, #0
 	movne r4, #1
 	b _02345F7C
@@ -676,12 +676,12 @@ _02346058: .word 0x00000B74
 _0234605C: .word 0x00000B75
 	arm_func_end ov29_02345D84
 
-	arm_func_start ov29_02346060
-ov29_02346060: ; 0x02346060
+	arm_func_start TryGenerateUnownStoneDrop
+TryGenerateUnownStoneDrop: ; 0x02346060
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
-	bl ov29_022E08A0
+	bl IsMarowakTrainingMaze
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -705,12 +705,12 @@ ov29_02346060: ; 0x02346060
 	mov r1, r1, asr #0x10
 	mov r2, #0
 	mov r3, #2
-	bl ov29_023472C4
+	bl GenerateItem
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023460D8: .word 0x022C4474
-	arm_func_end ov29_02346060
+	arm_func_end TryGenerateUnownStoneDrop
 
 	arm_func_start ov29_023460DC
 ov29_023460DC: ; 0x023460DC
@@ -723,10 +723,10 @@ ov29_023460DC: ; 0x023460DC
 	bl ov29_022FB51C
 	cmp r0, #0
 	beq _02346134
-	bl ov29_022E0880
+	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
 	bne _02346134
-	bl ov29_022E08A0
+	bl IsMarowakTrainingMaze
 	cmp r0, #0
 	bne _02346134
 	mov r0, r4
@@ -873,7 +873,7 @@ _02346310:
 	mov r0, r7
 	mov r2, r5
 	mov r3, #2
-	bl ov29_023472C4
+	bl GenerateItem
 	mov r0, #1
 _02346330:
 	add sp, sp, #0x18
@@ -1034,7 +1034,7 @@ _023464C4:
 	ldr r2, [r6, #0xc]
 	add r0, r0, #4
 	rsb r0, r2, r0, lsl #8
-	bl DivideInt
+	bl __divsi3
 	add r1, sp, #0x6c
 	str r0, [r1, r8, lsl #3]
 	add r0, fp, r8, lsl #2
@@ -1045,7 +1045,7 @@ _023464C4:
 	ldr r2, [r6, #0x10]
 	add r0, r0, #4
 	rsb r0, r2, r0, lsl #8
-	bl DivideInt
+	bl __divsi3
 	add r1, sp, #0x6c
 	add r1, r1, r8, lsl #3
 	str r0, [r1, #4]
@@ -1182,12 +1182,12 @@ _02346784:
 	mla r1, r8, r5, sl
 	add r0, r6, r8, lsl #2
 	mov r2, #1
-	bl ov29_02345538
+	bl SpawnItem
 	mov r0, r8, lsl #2
 	add r1, r6, r8, lsl #2
 	ldrsh r0, [r6, r0]
 	ldrsh r1, [r1, #2]
-	bl ov29_023391EC
+	bl DrawMinimapTile
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
 	mov r4, r0, asr #0x10
@@ -1233,8 +1233,8 @@ HasHeldItem: ; 0x023467E4
 	bx lr
 	arm_func_end HasHeldItem
 
-	arm_func_start ov29_02346834
-ov29_02346834: ; 0x02346834
+	arm_func_start GenerateMoneyQuantity
+GenerateMoneyQuantity: ; 0x02346834
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #0x64
@@ -1259,7 +1259,7 @@ _02346870:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02346884: .word 0x020A1F20
-	arm_func_end ov29_02346834
+	arm_func_end GenerateMoneyQuantity
 
 	arm_func_start ov29_02346888
 ov29_02346888: ; 0x02346888
@@ -1283,7 +1283,7 @@ ov29_02346888: ; 0x02346888
 	mov r3, r0
 	mov r1, #0xbe0
 	str r0, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _023468F0
 	mov r0, #2
@@ -1420,7 +1420,7 @@ _02346A78:
 	beq _02346AC4
 	ldr sb, [r8, #0xb4]
 	add r0, sb, #0x62
-	bl sub_0200CC38
+	bl IsLosableItem
 	cmp r0, #0
 	beq _02346AC4
 	mov r1, r7
@@ -1456,11 +1456,11 @@ _02346AE8:
 	tst r0, #0xff
 	beq _02346B5C
 	ldrsh r0, [r8, #8]
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	beq _02346B5C
 	add r0, r8, #0x3e
-	bl sub_0200CC38
+	bl IsLosableItem
 	cmp r0, #0
 	beq _02346B5C
 	mov r1, fp
@@ -1483,7 +1483,7 @@ _02346B7C:
 	ldr r0, [r0, #0x384]
 	mla sb, r4, r5, r0
 	mov r0, sb
-	bl sub_0200CC38
+	bl IsLosableItem
 	cmp r0, #0
 	beq _02346BB8
 	mov r0, sb
@@ -1506,8 +1506,8 @@ _02346BD0: .word 0x02353538
 _02346BD4: .word 0x020AF6B8
 	arm_func_end ov29_02346A64
 
-	arm_func_start ov29_02346BD8
-ov29_02346BD8: ; 0x02346BD8
+	arm_func_start CheckTeamItemsFlags
+CheckTeamItemsFlags: ; 0x02346BD8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r1, _02346CB4 ; =0x020AF6B8
 	mov r7, #0
@@ -1572,7 +1572,7 @@ _02346CA4:
 	.align 2, 0
 _02346CB4: .word 0x020AF6B8
 _02346CB8: .word 0x02353538
-	arm_func_end ov29_02346BD8
+	arm_func_end CheckTeamItemsFlags
 
 	arm_func_start ov29_02346CBC
 ov29_02346CBC: ; 0x02346CBC
@@ -1758,8 +1758,8 @@ _02346F0C: .word 0x02353538
 _02346F10: .word 0x023531C8
 	arm_func_end ov29_02346EBC
 
-	arm_func_start ov29_02346F14
-ov29_02346F14: ; 0x02346F14
+	arm_func_start AddHeldItemToBag
+AddHeldItemToBag: ; 0x02346F14
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	bl GetCurrentBagCapacity
@@ -1805,7 +1805,7 @@ _02346FA4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02346FB4: .word 0x020AF6B8
-	arm_func_end ov29_02346F14
+	arm_func_end AddHeldItemToBag
 
 	arm_func_start ov29_02346FB8
 ov29_02346FB8: ; 0x02346FB8
@@ -1852,13 +1852,13 @@ _02347018:
 _0234702C: .word 0x022C4CD8
 	arm_func_end ov29_02347000
 
-	arm_func_start ov29_02347030
-ov29_02347030: ; 0x02347030
+	arm_func_start RemoveEmptyItemsInBagWrapper
+RemoveEmptyItemsInBagWrapper: ; 0x02347030
 	stmdb sp!, {r3, lr}
 	bl RemoveEmptyItemsInBag
 	bl ov29_022FB920
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02347030
+	arm_func_end RemoveEmptyItemsInBagWrapper
 
 	arm_func_start ov29_02347040
 ov29_02347040: ; 0x02347040
@@ -1926,13 +1926,13 @@ ov29_02347100: ; 0x02347100
 	mov r1, r0
 	mov r0, r4
 	mov r2, #0xa
-	bl ov29_022EB44C
+	bl GetItemToUseByIndex
 	mov r4, r0
 	bl ov29_022EBB98
 	cmp r0, #0x90
 	bhs _0234717C
 	mov r0, r4
-	bl ov29_022EB5D8
+	bl GetItemAction
 	cmp r0, #0
 	beq _0234717C
 	ldrb r0, [r4]
@@ -1945,7 +1945,7 @@ ov29_02347100: ; 0x02347100
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl ov29_023186CC
+	bl MonsterHasEmbargoStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -2013,7 +2013,7 @@ _02347224:
 	beq _023472B8
 	bl DungeonRand16Bit
 	mov r1, sb
-	bl DivideInt
+	bl __divsi3
 	mov r0, r1, lsl #0x10
 	add r1, sp, #0
 	mov r0, r0, asr #0x10
@@ -2048,8 +2048,8 @@ _023472B8:
 _023472C0: .word 0x02353538
 	arm_func_end ov29_02347184
 
-	arm_func_start ov29_023472C4
-ov29_023472C4: ; 0x023472C4
+	arm_func_start GenerateItem
+GenerateItem: ; 0x023472C4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r3
 	mov r4, r1
@@ -2094,11 +2094,11 @@ _02347324:
 	movne r3, #0x28
 	mul r1, r2, r3
 	mov r0, r5
-	bl ov29_02346834
+	bl GenerateMoneyQuantity
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02347374: .word 0x02353538
-	arm_func_end ov29_023472C4
+	arm_func_end GenerateItem
 
 	arm_func_start ov29_02347378
 ov29_02347378: ; 0x02347378
@@ -2135,12 +2135,12 @@ _023473BC:
 	beq _023474CC
 	ldr r5, [sl, #0xc]
 	sub r0, r5, r8
-	bl Abs
+	bl abs
 	cmp r0, #0xc
 	bge _02347410
 	ldr r0, [sl, #0x10]
 	sub r0, r0, sb
-	bl Abs
+	bl abs
 	cmp r0, #0xc
 	blt _023474CC
 _02347410:
@@ -2151,12 +2151,12 @@ _02347410:
 	sub r0, r8, r5
 	mov r1, #0x18
 	mov r7, r6
-	bl DivideInt
+	bl __divsi3
 	ldr r1, [sp, #0x10]
 	str r0, [sp, #8]
 	sub r0, sb, r1
 	mov r1, #0x18
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #4]
 	mov r5, r6
 _0234744C:
@@ -2175,7 +2175,7 @@ _0234744C:
 	str r1, [sl, #0x1c]
 	mov r0, sl
 	add r1, sp, #0xc
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	mov r0, #0
 	str r0, [sp]
 	mov r0, sl
@@ -2375,7 +2375,7 @@ _02347750:
 	add r0, r4, #0xcc
 	mov r2, fp
 	bl ov29_022E1A90
-	bl ov29_02337E94
+	bl IsWaterTileset
 	cmp r0, #0
 	ldr r0, [r4, #0xd8]
 	ldr r1, [r4, #0xdc]
@@ -2465,7 +2465,7 @@ _02347894:
 	bl InitMove
 	ldr r0, [r7, #0xc]
 	add r1, sp, #0x34
-	bl ov29_02324854
+	bl TwoTurnMoveForcedMiss
 	cmp r0, #0
 	ldr r0, [sp, #8]
 	mov r1, #1
@@ -2627,7 +2627,7 @@ _02347AF4:
 	add r1, r4, #0xcc
 	mov r3, #1
 	str r5, [sp, #4]
-	bl ov29_02345AD8
+	bl SpawnDroppedItem
 	b _02347B34
 _02347B1C:
 	ldr r1, [sp, #8]
@@ -2653,7 +2653,7 @@ ItemIsActive__02347B50: ; 0x02347B50
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}

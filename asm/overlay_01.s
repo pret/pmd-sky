@@ -924,8 +924,8 @@ ov01_0232A048: ; 0x0232A048
 _0232A074: .word ov01_0233C240
 	arm_func_end ov01_0232A048
 
-	arm_func_start ov01_0232A078
-ov01_0232A078: ; 0x0232A078
+	arm_func_start DoMoveNightShade
+DoMoveNightShade: ; 0x0232A078
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
@@ -1006,7 +1006,7 @@ _0232A180:
 	.align 2, 0
 _0232A18C: .word ov01_0233C240
 _0232A190: .word ov01_0233C0C0
-	arm_func_end ov01_0232A078
+	arm_func_end DoMoveNightShade
 
 	arm_func_start ov01_0232A194
 ov01_0232A194: ; 0x0232A194
@@ -1807,7 +1807,7 @@ _0232ABBC:
 	cmpne r1, #2
 	movne r1, #3
 	strne r1, [r0, #0x7c]
-	ldr r0, _0232ABFC ; =ov01_0232A078
+	ldr r0, _0232ABFC ; =DoMoveNightShade
 	bl ov00_022BFB9C
 	cmp r0, #2
 	ldrne r0, _0232ABF8 ; =ov01_0233C240
@@ -1818,7 +1818,7 @@ _0232ABBC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232ABF8: .word ov01_0233C240
-_0232ABFC: .word ov01_0232A078
+_0232ABFC: .word DoMoveNightShade
 	arm_func_end ov01_0232AB88
 
 	arm_func_start ov01_0232AC00
@@ -3385,8 +3385,8 @@ ov01_0232C008: ; 0x0232C008
 _0232C020: .word 0x0233C0D8
 	arm_func_end ov01_0232C008
 
-	arm_func_start FUN_0232C024
-FUN_0232C024: ; 0x0232C024
+	arm_func_start ov01_0232C024
+ov01_0232C024: ; 0x0232C024
 	ldr r0, _0232C03C ; =0x0233C0D8
 	ldr r1, [r0]
 	cmp r1, #0
@@ -3395,7 +3395,7 @@ FUN_0232C024: ; 0x0232C024
 	bx lr
 	.align 2, 0
 _0232C03C: .word 0x0233C0D8
-	arm_func_end FUN_0232C024
+	arm_func_end ov01_0232C024
 
 	arm_func_start ov01_0232C040
 ov01_0232C040: ; 0x0232C040
@@ -3501,7 +3501,7 @@ ov01_0232C148: ; 0x0232C148
 	ldr r1, _0232C1D0 ; =0x0233C780
 	ldr r0, _0232C1CC ; =0x0233C800
 	ldrsh r1, [r1]
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r1, r6
 	mov r0, #0xc
 	str r0, [sp]
@@ -3512,7 +3512,7 @@ ov01_0232C148: ; 0x0232C148
 	str r2, [sp, #0xc]
 	ldr r0, _0232C1CC ; =0x0233C800
 	mov r3, r2
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r1, _0232C1CC ; =0x0233C800
 	mov r0, #0
 	strh r0, [r1, #0x38]
@@ -3551,7 +3551,7 @@ ov01_0232C1D8: ; 0x0232C1D8
 	str r3, [sp, #8]
 	mov r3, r2
 	str r2, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r0, _0232C23C ; =0x0233C140
 	mov r1, #1
 	strb r1, [r0]
@@ -3633,7 +3633,7 @@ ov01_0232C2E4: ; 0x0232C2E4
 	mov r2, r0
 	ldr r0, [r1]
 	mov r1, #2
-	bl sub_0201D484
+	bl LoadWanTableEntryFromPack
 	ldr r1, _0232C368 ; =0x0233C87C
 	b _0232C358
 _0232C330:
@@ -3645,7 +3645,7 @@ _0232C330:
 	mov r2, r0
 	ldr r0, [r1]
 	mov r1, #2
-	bl sub_0201D484
+	bl LoadWanTableEntryFromPack
 	ldr r1, _0232C368 ; =0x0233C87C
 _0232C358:
 	strh r0, [r1]
@@ -3689,7 +3689,7 @@ ov01_0232C3AC: ; 0x0232C3AC
 	ldr r1, _0232C44C ; =0x0233C87C
 	ldr r0, _0232C448 ; =0x0233C8FC
 	ldrsh r1, [r1]
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r0, #0xd
 	str r0, [sp]
 	mov r1, #0
@@ -3702,7 +3702,7 @@ ov01_0232C3AC: ; 0x0232C3AC
 	rsb r2, r3, r6, lsl #29
 	add r2, r3, r2, ror #29
 	mov r3, #0x20
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	mov r1, #0
 	ldr r0, _0232C448 ; =0x0233C8FC
 	strh r1, [r0, #0x38]
@@ -3751,7 +3751,7 @@ ov01_0232C454: ; 0x0232C454
 	add r2, r3, r2, ror #29
 	mov r3, #0x20
 	str ip, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r0, _0232C4D0 ; =0x0233C144
 	mov r1, #1
 	strb r1, [r0]
@@ -7567,13 +7567,13 @@ ov01_0232F830: ; 0x0232F830
 	bl InitPreprocessorArgs
 	ldr r1, _0232F904 ; =0x00002710
 	mov r0, r4
-	bl DivideUInt
+	bl __udivsi3
 	ldr r1, _0232F904 ; =0x00002710
-	bl DivideUInt
+	bl __udivsi3
 	str r1, [sp, #0x28]
 	ldr r1, _0232F904 ; =0x00002710
 	mov r0, r4
-	bl DivideUInt
+	bl __udivsi3
 	mov r0, r5
 	str r1, [sp, #0x2c]
 	bl sub_02027B1C
@@ -8409,7 +8409,7 @@ ov01_02330224: ; 0x02330224
 	ldr r1, [r0]
 	add r0, r1, #0x94
 	ldrsh r1, [r1, #0x90]
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r1, #4
 	str r1, [sp]
 	mov r2, #0
@@ -8421,7 +8421,7 @@ ov01_02330224: ; 0x02330224
 	mov r3, r2
 	ldr r0, [r0]
 	add r0, r0, #0x94
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r0, _02330584 ; =0x0233C164
 	mov r2, #0x78
 	ldr r1, [r0]
@@ -8449,7 +8449,7 @@ ov01_02330224: ; 0x02330224
 	ldr r0, [r0]
 	ldrsh r1, [r0, #0x90]
 	add r0, r0, #0x110
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r0, #5
 	str r0, [sp]
 	mov r2, #0
@@ -8462,7 +8462,7 @@ ov01_02330224: ; 0x02330224
 	mov r1, #8
 	add r0, r0, #0x110
 	mov r3, #0x100
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	mov ip, #0x78
 	ldr r1, _02330584 ; =0x0233C164
 	mov r3, #0x64
@@ -8493,7 +8493,7 @@ ov01_02330224: ; 0x02330224
 	ldr r1, [r0]
 	add r0, r1, #0x18c
 	ldrsh r1, [r1, #0x90]
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r0, #6
 	str r0, [sp]
 	mov r2, #0
@@ -8506,7 +8506,7 @@ ov01_02330224: ; 0x02330224
 	ldr r0, [r0]
 	mov r3, #0x200
 	add r0, r0, #0x18c
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r1, _02330584 ; =0x0233C164
 	mov r3, #0x78
 	ldr r0, [r1]
@@ -8526,7 +8526,7 @@ ov01_02330224: ; 0x02330224
 	ldr r0, [r0]
 	ldrsh r1, [r0, #0x92]
 	add r0, r0, #0x208
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r0, #7
 	str r0, [sp]
 	mov r2, #0
@@ -8538,7 +8538,7 @@ ov01_02330224: ; 0x02330224
 	ldr r0, [r0]
 	mov r3, #0x300
 	add r0, r0, #0x208
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r1, _02330584 ; =0x0233C164
 	mov r2, #0x50
 	ldr r0, [r1]
@@ -8982,7 +8982,7 @@ _02330B38:
 	mov r3, r2
 	add r0, ip, #0x94
 	str r2, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r0, _02330D54 ; =0x0233C164
 	ldr r2, [r0]
 	ldr r1, [r2, #0x48]
@@ -9032,7 +9032,7 @@ _02330BE8:
 	add r0, r3, #0x110
 	mov r3, #0x100
 	str r2, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r1, _02330D54 ; =0x0233C164
 	ldr r2, [r1]
 	ldr r0, [r2, #0x48]
@@ -9075,7 +9075,7 @@ _02330C64:
 	moveq r1, #0
 	mov r3, #0x200
 	str r2, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r2, _02330D54 ; =0x0233C164
 	mov ip, #0x9c
 	ldr r1, [r2]
@@ -9110,7 +9110,7 @@ _02330CEC:
 	movne r1, #0
 	mov r3, #0x300
 	str r2, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r0, _02330D54 ; =0x0233C164
 	mov r1, #0
 	ldr r0, [r0]
@@ -9270,7 +9270,7 @@ _02330F18:
 	add r0, sp, #0x10
 	ldr r2, [r1, r3, lsl #3]
 	ldr r1, _02330FF0 ; =0x0233B504
-	bl Sprintf
+	bl sprintf
 	ldr r0, _02330FF4 ; =0x020AFC68
 	add r1, sp, #0x10
 	ldr r0, [r0]
@@ -9287,7 +9287,7 @@ _02330F18:
 	ldr r1, _02330FE4 ; =0x0233C174
 	ldr r0, _02330FF8 ; =0x0233C978
 	ldrsh r1, [r1, #2]
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r3, #0xa
 	mov r1, #0
 	str r3, [sp]
@@ -9297,7 +9297,7 @@ _02330F18:
 	ldr r0, _02330FF8 ; =0x0233C978
 	str r2, [sp, #0xc]
 	mov r2, r1
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r2, _02330FF8 ; =0x0233C978
 	mov r0, #0
 	strh r0, [r2, #0x38]
@@ -9397,8 +9397,8 @@ _023310DC: .word 0x0233B558
 _023310E0: .word 0x0233C178
 	arm_func_end ov01_023310B8
 
-	arm_func_start ov01_023310E4
-ov01_023310E4: ; 0x023310E4
+	arm_func_start CreateMainMenus
+CreateMainMenus: ; 0x023310E4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r0, #0x184
 	mov r1, #8
@@ -9502,7 +9502,7 @@ _0233124C:
 	beq _02331268
 	mov r0, #2
 	mov r1, #1
-	bl ov01_02331630
+	bl AddSubMenuOption
 _02331268:
 	bl sub_02048480
 	cmp r0, #0
@@ -9516,7 +9516,7 @@ _02331268:
 	beq _023312A0
 	mov r0, #0xa
 	mov r1, r4
-	bl ov01_02331558
+	bl AddMainMenuOption
 	b _0233131C
 _023312A0:
 	bl sub_0204E210
@@ -9524,7 +9524,7 @@ _023312A0:
 	bne _023312BC
 	mov r0, #0xd
 	mov r1, r4
-	bl ov01_02331558
+	bl AddMainMenuOption
 	b _0233131C
 _023312BC:
 	mvn r1, #0
@@ -9532,27 +9532,27 @@ _023312BC:
 	beq _023312D8
 	mov r0, #0x1b
 	mov r1, r4
-	bl ov01_02331558
+	bl AddMainMenuOption
 	b _0233131C
 _023312D8:
 	mov r1, r4
 	mov r0, #0x1a
 	mov r4, #0
-	bl ov01_02331558
+	bl AddMainMenuOption
 	bl sub_0204E644
 	cmp r0, #0
 	beq _0233131C
 	mov r0, #0xc
 	mov r1, #1
-	bl ov01_02331558
+	bl AddMainMenuOption
 	b _0233131C
 _02331304:
 	mov r1, r4
 	mov r0, #0xb
-	bl ov01_02331558
+	bl AddMainMenuOption
 	mov r0, #0xe
 	mov r1, r4
-	bl ov01_02331558
+	bl AddMainMenuOption
 _0233131C:
 	mov r0, #4
 	bl GetPerformanceFlagWithChecks
@@ -9560,7 +9560,7 @@ _0233131C:
 	beq _02331338
 	mov r0, #0xf
 	mov r1, #1
-	bl ov01_02331558
+	bl AddMainMenuOption
 _02331338:
 	mov r0, #3
 	bl GetPerformanceFlagWithChecks
@@ -9568,7 +9568,7 @@ _02331338:
 	beq _02331354
 	mov r0, #0x12
 	mov r1, #1
-	bl ov01_02331558
+	bl AddMainMenuOption
 _02331354:
 	mov r0, #4
 	bl GetPerformanceFlagWithChecks
@@ -9576,7 +9576,7 @@ _02331354:
 	beq _02331370
 	mov r0, #0x11
 	mov r1, #1
-	bl ov01_02331558
+	bl AddMainMenuOption
 _02331370:
 	mov r0, #8
 	bl GetPerformanceFlagWithChecks
@@ -9584,7 +9584,7 @@ _02331370:
 	beq _0233138C
 	mov r0, #0x13
 	mov r1, #1
-	bl ov01_02331558
+	bl AddMainMenuOption
 _0233138C:
 	mov r0, #0x1a
 	bl GetPerformanceFlagWithChecks
@@ -9592,37 +9592,37 @@ _0233138C:
 	beq _023313A8
 	mov r0, #0x14
 	mov r1, #1
-	bl ov01_02331630
+	bl AddSubMenuOption
 _023313A8:
 	mov r0, #1
 	bl GetPerformanceFlagWithChecks
 	mov r1, r0
 	mov r0, #8
-	bl ov01_02331630
+	bl AddSubMenuOption
 	mov r0, #9
 	mov r1, #1
-	bl ov01_02331630
+	bl AddSubMenuOption
 	mov r0, #0x18
 	mov r1, #1
-	bl ov01_02331630
+	bl AddSubMenuOption
 	mov r0, #7
 	mov r1, #1
-	bl ov01_02331630
+	bl AddSubMenuOption
 	b _023313FC
 _023313E4:
 	mov r0, #0x18
 	mov r1, #1
-	bl ov01_02331630
+	bl AddSubMenuOption
 	mov r0, #3
 	mov r1, #1
-	bl ov01_02331558
+	bl AddMainMenuOption
 _023313FC:
 	mov r0, #0x19
 	mov r1, #1
-	bl ov01_02331558
+	bl AddMainMenuOption
 	mov r0, #0x10
 	mov r1, #1
-	bl ov01_02331630
+	bl AddSubMenuOption
 	ldr r0, _0233154C ; =0x0233C178
 	ldr r0, [r0]
 	ldr r0, [r0, #0x114]
@@ -9635,28 +9635,28 @@ _023313FC:
 	beq _0233144C
 	mov r0, #0x1f
 	mov r1, #0
-	bl ov01_02331558
+	bl AddMainMenuOption
 	b _02331480
 _0233144C:
 	mov r0, #0x1d
 	mov r1, #1
-	bl ov01_02331558
+	bl AddMainMenuOption
 	b _02331480
 _0233145C:
 	cmp r4, #0
 	beq _02331474
 	mov r0, #0x1e
 	mov r1, #0
-	bl ov01_02331558
+	bl AddMainMenuOption
 	b _02331480
 _02331474:
 	mov r0, #0x1c
 	mov r1, #1
-	bl ov01_02331558
+	bl AddMainMenuOption
 _02331480:
 	mov r0, #0x21
 	mov r1, #1
-	bl ov01_02331630
+	bl AddSubMenuOption
 	ldr r2, _0233154C ; =0x0233C178
 	mov r1, #0
 	ldr r4, [r2]
@@ -9709,10 +9709,10 @@ _02331480:
 _0233154C: .word 0x0233C178
 _02331550: .word 0x000001E6
 _02331554: .word 0x000001EA
-	arm_func_end ov01_023310E4
+	arm_func_end CreateMainMenus
 
-	arm_func_start ov01_02331558
-ov01_02331558: ; 0x02331558
+	arm_func_start AddMainMenuOption
+AddMainMenuOption: ; 0x02331558
 	ldr r2, _023315EC ; =0x0233B5D0
 	b _023315DC
 _02331560:
@@ -9756,7 +9756,7 @@ _023315DC:
 	.align 2, 0
 _023315EC: .word 0x0233B5D0
 _023315F0: .word 0x0233C178
-	arm_func_end ov01_02331558
+	arm_func_end AddMainMenuOption
 
 	arm_func_start ov01_023315F4
 ov01_023315F4: ; 0x023315F4
@@ -9780,8 +9780,8 @@ _0233161C:
 _0233162C: .word 0x0233C178
 	arm_func_end ov01_023315F4
 
-	arm_func_start ov01_02331630
-ov01_02331630: ; 0x02331630
+	arm_func_start AddSubMenuOption
+AddSubMenuOption: ; 0x02331630
 	ldr r2, _023316C4 ; =0x0233B588
 	b _023316B4
 _02331638:
@@ -9825,7 +9825,7 @@ _023316B4:
 	.align 2, 0
 _023316C4: .word 0x0233B588
 _023316C8: .word 0x0233C178
-	arm_func_end ov01_02331630
+	arm_func_end AddSubMenuOption
 
 	arm_func_start ov01_023316CC
 ov01_023316CC: ; 0x023316CC
@@ -12005,7 +12005,7 @@ _02333580:
 	mov r1, r8
 	mov r2, r5
 	mov r3, r4
-	bl sub_0202A3E4
+	bl PrintClearMark
 	ldr r1, [sb]
 	add r8, r8, #2
 	add r1, r1, r7
@@ -13309,7 +13309,7 @@ _023346EC:
 	beq _02334764
 	mov r0, #0
 	bl sub_02017CCC
-	bl FUN_02334E20
+	bl ov01_02334E20
 	ldr r0, _02334B90 ; =0x0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
@@ -13330,7 +13330,7 @@ _02334764:
 	tst r0, #0x80000
 	beq _023347B0
 _02334784:
-	bl FUN_02334E20
+	bl ov01_02334E20
 	ldr r0, _02334B90 ; =0x0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
@@ -13467,7 +13467,7 @@ _02334954:
 	bne _023349A8
 	mov r0, #0
 	bl sub_02017CCC
-	bl FUN_02334E20
+	bl ov01_02334E20
 	ldr r0, _02334B90 ; =0x0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
@@ -13707,7 +13707,7 @@ _02334C9C:
 _02334CA0:
 	mov r0, r5
 	mov r1, r6
-	bl Strcpy
+	bl strcpy
 	ldr r2, [r7, #0xc]
 	cmp r2, r4
 	beq _02334CD8
@@ -13824,8 +13824,8 @@ _02334E18:
 	ldmia sp!, {r4, pc}
 	arm_func_end ov01_02334D70
 
-	arm_func_start FUN_02334E20
-FUN_02334E20: ; 0x02334E20
+	arm_func_start ov01_02334E20
+ov01_02334E20: ; 0x02334E20
 	ldr r0, _02334E4C ; =0x0233C1A0
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #8]
@@ -13839,7 +13839,7 @@ FUN_02334E20: ; 0x02334E20
 	bx lr
 	.align 2, 0
 _02334E4C: .word 0x0233C1A0
-	arm_func_end FUN_02334E20
+	arm_func_end ov01_02334E20
 
 	arm_func_start ov01_02334E50
 ov01_02334E50: ; 0x02334E50
@@ -14048,11 +14048,11 @@ _023350EC:
 	bge _0233513C
 	mov r0, r5
 	mov r1, #0x12
-	bl DivideInt
+	bl __divsi3
 	mov r6, r1
 	mov r0, r5
 	mov r1, #0x12
-	bl DivideInt
+	bl __divsi3
 	mov r1, #0xc
 	mul r2, r6, r1
 	mov r1, r0, lsl #4
@@ -14180,13 +14180,13 @@ ov01_02335280: ; 0x02335280
 	mov r0, r0, lsl #0x10
 	mov r4, r0, asr #0x10
 	mov r0, r4
-	bl DivideInt
+	bl __divsi3
 	movs r6, r1
 	movne r5, #2
 	mov r0, r4
 	mov r1, #6
 	moveq r5, #0
-	bl DivideInt
+	bl __divsi3
 	add r0, r6, r0, lsl #3
 	add r0, r0, r5
 	mov r0, r0, lsl #0x10
@@ -14450,7 +14450,7 @@ ov01_0233562C: ; 0x0233562C
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -14466,12 +14466,12 @@ ov01_02335654: ; 0x02335654
 	cmp r1, #0x5b
 	bne _0233569C
 	ldr r1, _02335720 ; =0x0233BB04
-	bl Strcmp
+	bl strcmp
 	cmp r0, #0
 	beq _02335694
 	ldr r1, _02335724 ; =0x0233BB0C
 	mov r0, r4
-	bl Strcmp
+	bl strcmp
 	cmp r0, #0
 	bne _0233569C
 _02335694:
@@ -16958,7 +16958,7 @@ _02337764:
 	str r1, [r0]
 	b _023378E0
 _02337788:
-	bl FUN_023378FC
+	bl ov01_023378FC
 	cmp r0, #1
 	ldreq r0, _023378E8 ; =0x0233C1F4
 	moveq r1, #0x1000
@@ -16992,7 +16992,7 @@ _023377E0:
 	mov r0, #1
 	str r0, [r4, #4]
 _023377FC:
-	bl FUN_023378FC
+	bl ov01_023378FC
 	cmp r0, #1
 	bne _023378AC
 	mov r0, #0xe0
@@ -17030,13 +17030,13 @@ _02337860:
 	str r0, [r4, #4]
 	b _023378AC
 _02337888:
-	bl FUN_023378FC
+	bl ov01_023378FC
 	cmp r0, #1
 	bne _023378AC
 	mov r0, #1
 	b _023378B0
 _0233789C:
-	bl FUN_023378FC
+	bl ov01_023378FC
 	cmp r0, #1
 	moveq r0, #2
 	beq _023378B0
@@ -17067,15 +17067,15 @@ _023378F4: .word 0x0000023B
 _023378F8: .word 0x00000239
 	arm_func_end ov01_02337718
 
-	arm_func_start FUN_023378FC
-FUN_023378FC: ; 0x023378FC
+	arm_func_start ov01_023378FC
+ov01_023378FC: ; 0x023378FC
 	stmdb sp!, {r3, lr}
 	bl sub_02046C78
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end FUN_023378FC
+	arm_func_end ov01_023378FC
 
 	arm_func_start ov01_02337914
 ov01_02337914: ; 0x02337914
@@ -17458,7 +17458,7 @@ ov01_02337D30: ; 0x02337D30
 	bl ov01_0232B020
 	mov r0, #1
 	bl ov01_0232B080
-	bl FUN_0232C024
+	bl ov01_0232C024
 	ldr r0, _02337DCC ; =0x0233C210
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x18]
@@ -17944,7 +17944,7 @@ _02338438:
 _02338474:
 	ldr r0, [sb, #0x58]
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #0
 	bne _023384B8
 	ldr r0, _02338844 ; =0x0233C210
@@ -21384,7 +21384,7 @@ _0233AE74: .word 0x0233C0A4
 	.byte 0x55, 0x6E, 0x6B, 0x6E, 0x6F, 0x77, 0x6E, 0x20, 0x45, 0x72, 0x72, 0x6F, 0x72, 0x20, 0x43, 0x6F
 	.byte 0x64, 0x65, 0x20, 0x3A, 0x20, 0x25, 0x30, 0x35, 0x64, 0x0A, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0xEC, 0xAD, 0x33, 0x02, 0x00, 0x00, 0x00, 0x00, 0x04, 0xAE, 0x33, 0x02
-	
+
 	.data
 	.global ov01_0233C0C0
 ov01_0233C0C0:

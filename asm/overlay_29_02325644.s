@@ -35,8 +35,8 @@ ov29_02325644: ; 0x02325644
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_02325644
 
-	arm_func_start ov29_023256B4
-ov29_023256B4: ; 0x023256B4
+	arm_func_start PlayMoveAnimation
+PlayMoveAnimation: ; 0x023256B4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x18
 	mov r8, r2
@@ -190,7 +190,7 @@ _023258E0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _023258E8: .word 0x02352AD8
-	arm_func_end ov29_023256B4
+	arm_func_end PlayMoveAnimation
 
 	arm_func_start ov29_023258EC
 ov29_023258EC: ; 0x023258EC
@@ -483,7 +483,7 @@ _02325CC8:
 	cmpne r1, #0xe3
 	bne _02325CEC
 	mov r0, r5
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	movne r0, #0
 	moveq r0, #1
@@ -498,7 +498,7 @@ _02325CEC:
 _02325D04:
 	mov r0, r5
 	mov r1, r4
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -555,8 +555,8 @@ ov29_02325D7C: ; 0x02325D7C
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_02325D7C
 
-	arm_func_start ov29_02325DC0
-ov29_02325DC0: ; 0x02325DC0
+	arm_func_start DoMoveDamage__02325DC0
+DoMoveDamage__02325DC0: ; 0x02325DC0
 	stmdb sp!, {r3, lr}
 	str r3, [sp]
 	mov r3, #0x100
@@ -566,10 +566,10 @@ ov29_02325DC0: ; 0x02325DC0
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02325DC0
+	arm_func_end DoMoveDamage__02325DC0
 
-	arm_func_start ov29_02325DE4
-ov29_02325DE4: ; 0x02325DE4
+	arm_func_start DoMoveIronTail
+DoMoveIronTail: ; 0x02325DE4
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	str r3, [sp]
@@ -604,10 +604,10 @@ _02325E50:
 	.align 2, 0
 _02325E5C: .word 0x022C4440
 _02325E60: .word 0x02352AEC
-	arm_func_end ov29_02325DE4
+	arm_func_end DoMoveIronTail
 
-	arm_func_start ov29_02325E64
-ov29_02325E64: ; 0x02325E64
+	arm_func_start DoMoveDamageMultihitUntilMiss
+DoMoveDamageMultihitUntilMiss: ; 0x02325E64
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr ip, _02325EB8 ; =0x0237CA70
@@ -633,10 +633,10 @@ ov29_02325E64: ; 0x02325E64
 _02325EB8: .word 0x0237CA70
 _02325EBC: .word 0x02352AF0
 _02325EC0: .word 0x0237CA69
-	arm_func_end ov29_02325E64
+	arm_func_end DoMoveDamageMultihitUntilMiss
 
-	arm_func_start ov29_02325EC4
-ov29_02325EC4: ; 0x02325EC4
+	arm_func_start DoMoveYawn
+DoMoveYawn: ; 0x02325EC4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -653,10 +653,10 @@ ov29_02325EC4: ; 0x02325EC4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02325EFC: .word 0x022C4860
-	arm_func_end ov29_02325EC4
+	arm_func_end DoMoveYawn
 
-	arm_func_start ov29_02325F00
-ov29_02325F00: ; 0x02325F00
+	arm_func_start DoMoveSleep
+DoMoveSleep: ; 0x02325F00
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -673,10 +673,10 @@ ov29_02325F00: ; 0x02325F00
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02325F38: .word 0x022C4720
-	arm_func_end ov29_02325F00
+	arm_func_end DoMoveSleep
 
-	arm_func_start ov29_02325F3C
-ov29_02325F3C: ; 0x02325F3C
+	arm_func_start DoMoveNightmare
+DoMoveNightmare: ; 0x02325F3C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -692,10 +692,10 @@ ov29_02325F3C: ; 0x02325F3C
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02325F70: .word 0x022C4724
-	arm_func_end ov29_02325F3C
+	arm_func_end DoMoveNightmare
 
-	arm_func_start ov29_02325F74
-ov29_02325F74: ; 0x02325F74
+	arm_func_start DoMoveMorningSun
+DoMoveMorningSun: ; 0x02325F74
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -713,18 +713,18 @@ ov29_02325F74: ; 0x02325F74
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02325FB0: .word 0x022C4984
-	arm_func_end ov29_02325F74
+	arm_func_end DoMoveMorningSun
 
-	arm_func_start ov29_02325FB4
-ov29_02325FB4: ; 0x02325FB4
+	arm_func_start DoMoveVitalThrow
+DoMoveVitalThrow: ; 0x02325FB4
 	stmdb sp!, {r3, lr}
-	bl ov29_02319584
+	bl TryInflictVitalThrowStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02325FB4
+	arm_func_end DoMoveVitalThrow
 
-	arm_func_start ov29_02325FC4
-ov29_02325FC4: ; 0x02325FC4
+	arm_func_start DoMoveDig
+DoMoveDig: ; 0x02325FC4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r0
 	mov r7, r1
@@ -749,7 +749,7 @@ _02326000:
 _02326014:
 	mov r0, r8
 	mov r1, r6
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _02326050
 	ldr r1, _02326080 ; =0x022C47E4
@@ -780,10 +780,10 @@ _02326074:
 _0232607C: .word 0x00000EC4
 _02326080: .word 0x022C47E4
 _02326084: .word 0x00000CD6
-	arm_func_end ov29_02325FC4
+	arm_func_end DoMoveDig
 
-	arm_func_start ov29_02326088
-ov29_02326088: ; 0x02326088
+	arm_func_start DoMoveSweetScent
+DoMoveSweetScent: ; 0x02326088
 	stmdb sp!, {r3, lr}
 	ldr r2, _023260A4 ; =0x02352AE8
 	mov r3, #1
@@ -793,10 +793,10 @@ ov29_02326088: ; 0x02326088
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023260A4: .word 0x02352AE8
-	arm_func_end ov29_02326088
+	arm_func_end DoMoveSweetScent
 
-	arm_func_start ov29_023260A8
-ov29_023260A8: ; 0x023260A8
+	arm_func_start DoMoveCharm
+DoMoveCharm: ; 0x023260A8
 	stmdb sp!, {r3, lr}
 	ldr r2, _023260CC ; =0x02352AEC
 	mov ip, #1
@@ -808,10 +808,10 @@ ov29_023260A8: ; 0x023260A8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023260CC: .word 0x02352AEC
-	arm_func_end ov29_023260A8
+	arm_func_end DoMoveCharm
 
-	arm_func_start ov29_023260D0
-ov29_023260D0: ; 0x023260D0
+	arm_func_start DoMoveRainDance
+DoMoveRainDance: ; 0x023260D0
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _02326120 ; =0x022C4654
 	ldr r2, _02326124 ; =0x02353538
@@ -823,7 +823,7 @@ ov29_023260D0: ; 0x023260D0
 	mov r0, #1
 	mov r1, #0
 	strh r3, [r2, #0x42]
-	bl ov29_023354C4
+	bl TryActivateWeather
 	cmp r0, #0
 	bne _02326118
 	ldr r2, _02326128 ; =0x00000EC5
@@ -837,10 +837,10 @@ _02326118:
 _02326120: .word 0x022C4654
 _02326124: .word 0x02353538
 _02326128: .word 0x00000EC5
-	arm_func_end ov29_023260D0
+	arm_func_end DoMoveRainDance
 
-	arm_func_start ov29_0232612C
-ov29_0232612C: ; 0x0232612C
+	arm_func_start DoMoveHail
+DoMoveHail: ; 0x0232612C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _0232617C ; =0x022C4654
 	ldr r2, _02326180 ; =0x02353538
@@ -852,7 +852,7 @@ ov29_0232612C: ; 0x0232612C
 	mov r0, #1
 	mov r1, #0
 	strh r3, [r2, #0x44]
-	bl ov29_023354C4
+	bl TryActivateWeather
 	cmp r0, #0
 	bne _02326174
 	ldr r2, _02326184 ; =0x00000EC8
@@ -866,20 +866,20 @@ _02326174:
 _0232617C: .word 0x022C4654
 _02326180: .word 0x02353538
 _02326184: .word 0x00000EC8
-	arm_func_end ov29_0232612C
+	arm_func_end DoMoveHail
 
-	arm_func_start ov29_02326188
-ov29_02326188: ; 0x02326188
+	arm_func_start DoMoveHealStatus
+DoMoveHealStatus: ; 0x02326188
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	mov r3, #0
-	bl ov29_02305C28
+	bl EndNegativeStatusConditionWrapper
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02326188
+	arm_func_end DoMoveHealStatus
 
-	arm_func_start ov29_023261A0
-ov29_023261A0: ; 0x023261A0
+	arm_func_start DoMoveBubble
+DoMoveBubble: ; 0x023261A0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -909,19 +909,19 @@ _023261FC:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02326208: .word 0x022C462C
-	arm_func_end ov29_023261A0
+	arm_func_end DoMoveBubble
 
-	arm_func_start ov29_0232620C
-ov29_0232620C: ; 0x0232620C
+	arm_func_start DoMoveEncore
+DoMoveEncore: ; 0x0232620C
 	stmdb sp!, {r3, lr}
 	mov r2, #0
-	bl ov29_02316720
+	bl TryInflictEncoreStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_0232620C
+	arm_func_end DoMoveEncore
 
-	arm_func_start ov29_02326220
-ov29_02326220: ; 0x02326220
+	arm_func_start DoMoveRage
+DoMoveRage: ; 0x02326220
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
@@ -940,10 +940,10 @@ ov29_02326220: ; 0x02326220
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02326260: .word 0x00000CCF
-	arm_func_end ov29_02326220
+	arm_func_end DoMoveRage
 
-	arm_func_start ov29_02326264
-ov29_02326264: ; 0x02326264
+	arm_func_start DoMoveSuperFang
+DoMoveSuperFang: ; 0x02326264
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x20
 	mov r7, r1
@@ -965,7 +965,7 @@ ov29_02326264: ; 0x02326264
 	mov sb, r0
 	mov r1, r5
 	mov r0, r6
-	bl ov29_02324E44
+	bl GetDamageSourceWrapper
 	add r3, sp, #0x1c
 	stmia sp, {r3, r4, sb}
 	str r0, [sp, #0xc]
@@ -993,10 +993,10 @@ _0232630C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _02326318: .word 0x00000EC9
-	arm_func_end ov29_02326264
+	arm_func_end DoMoveSuperFang
 
-	arm_func_start ov29_0232631C
-ov29_0232631C: ; 0x0232631C
+	arm_func_start DoMovePainSplit
+DoMovePainSplit: ; 0x0232631C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -1059,10 +1059,10 @@ _023263B8:
 	.align 2, 0
 _02326400: .word 0x000003E7
 _02326404: .word 0x00000ECA
-	arm_func_end ov29_0232631C
+	arm_func_end DoMovePainSplit
 
-	arm_func_start ov29_02326408
-ov29_02326408: ; 0x02326408
+	arm_func_start DoMoveTorment
+DoMoveTorment: ; 0x02326408
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov sb, r1
@@ -1153,20 +1153,20 @@ _0232653C:
 	.align 2, 0
 _02326548: .word 0x00000ECB
 _0232654C: .word 0x00000ECC
-	arm_func_end ov29_02326408
+	arm_func_end DoMoveTorment
 
-	arm_func_start ov29_02326550
-ov29_02326550: ; 0x02326550
+	arm_func_start DoMoveStringShot
+DoMoveStringShot: ; 0x02326550
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	mov r3, r2
 	bl LowerSpeed
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02326550
+	arm_func_end DoMoveStringShot
 
-	arm_func_start ov29_02326568
-ov29_02326568: ; 0x02326568
+	arm_func_start DoMoveSwagger
+DoMoveSwagger: ; 0x02326568
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r2, #1
 	mov r3, #0
@@ -1183,10 +1183,10 @@ ov29_02326568: ; 0x02326568
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023265A0: .word 0x02352AEC
-	arm_func_end ov29_02326568
+	arm_func_end DoMoveSwagger
 
-	arm_func_start ov29_023265A4
-ov29_023265A4: ; 0x023265A4
+	arm_func_start DoMoveSnore
+DoMoveSnore: ; 0x023265A4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r8, r0
@@ -1194,7 +1194,7 @@ ov29_023265A4: ; 0x023265A4
 	mov r6, r2
 	mov r5, r3
 	mov r4, #0
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	beq _02326624
 	mov r0, r8
@@ -1231,10 +1231,10 @@ _02326634:
 	.align 2, 0
 _02326640: .word 0x022C4600
 _02326644: .word 0x00000ECD
-	arm_func_end ov29_023265A4
+	arm_func_end DoMoveSnore
 
-	arm_func_start ov29_02326648
-ov29_02326648: ; 0x02326648
+	arm_func_start DoMoveScreech
+DoMoveScreech: ; 0x02326648
 	stmdb sp!, {r3, lr}
 	ldr r2, _0232666C ; =0x02352AEC
 	mov ip, #1
@@ -1246,10 +1246,10 @@ ov29_02326648: ; 0x02326648
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232666C: .word 0x02352AEC
-	arm_func_end ov29_02326648
+	arm_func_end DoMoveScreech
 
-	arm_func_start ov29_02326670
-ov29_02326670: ; 0x02326670
+	arm_func_start DoMoveDamageCringe30
+DoMoveDamageCringe30: ; 0x02326670
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -1279,10 +1279,10 @@ _023266CC:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _023266D8: .word 0x022C444C
-	arm_func_end ov29_02326670
+	arm_func_end DoMoveDamageCringe30
 
-	arm_func_start ov29_023266DC
-ov29_023266DC: ; 0x023266DC
+	arm_func_start DoMoveWeatherBall
+DoMoveWeatherBall: ; 0x023266DC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	mov r8, r0
@@ -1293,7 +1293,7 @@ ov29_023266DC: ; 0x023266DC
 	mov r4, r0
 	mov r0, r8
 	mov r1, r7
-	bl ov29_02307C78
+	bl EndFrozenStatus
 	ldr ip, _02326748 ; =0x022C4B54
 	ldr r2, _0232674C ; =0x022C48DC
 	ldr ip, [ip, r4, lsl #2]
@@ -1303,7 +1303,7 @@ ov29_023266DC: ; 0x023266DC
 	mov r1, r7
 	mov r3, r6
 	str r5, [sp, #4]
-	bl ov29_02332CDC
+	bl DealDamageWithType
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -1313,10 +1313,10 @@ ov29_023266DC: ; 0x023266DC
 	.align 2, 0
 _02326748: .word 0x022C4B54
 _0232674C: .word 0x022C48DC
-	arm_func_end ov29_023266DC
+	arm_func_end DoMoveWeatherBall
 
-	arm_func_start ov29_02326750
-ov29_02326750: ; 0x02326750
+	arm_func_start DoMoveWhirlpool
+DoMoveWhirlpool: ; 0x02326750
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r5, r1
@@ -1353,10 +1353,10 @@ _023267C8:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _023267D4: .word 0x022C44A4
-	arm_func_end ov29_02326750
+	arm_func_end DoMoveWhirlpool
 
-	arm_func_start ov29_023267D8
-ov29_023267D8: ; 0x023267D8
+	arm_func_start DoMoveFakeTears
+DoMoveFakeTears: ; 0x023267D8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r2, _02326808 ; =0x02352AE8
@@ -1371,10 +1371,10 @@ ov29_023267D8: ; 0x023267D8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02326808: .word 0x02352AE8
-	arm_func_end ov29_023267D8
+	arm_func_end DoMoveFakeTears
 
-	arm_func_start ov29_0232680C
-ov29_0232680C: ; 0x0232680C
+	arm_func_start DoMoveSpite
+DoMoveSpite: ; 0x0232680C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r5, r1
 	ldr r1, [r5, #0xb4]
@@ -1424,18 +1424,18 @@ _023268AC:
 	.align 2, 0
 _023268B4: .word 0x00000ECE
 _023268B8: .word 0x00000ECF
-	arm_func_end ov29_0232680C
+	arm_func_end DoMoveSpite
 
-	arm_func_start ov29_023268BC
-ov29_023268BC: ; 0x023268BC
+	arm_func_start DoMoveFocusEnergy
+DoMoveFocusEnergy: ; 0x023268BC
 	stmdb sp!, {r3, lr}
-	bl ov29_02315D84
+	bl TryInflictFocusEnergyStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_023268BC
+	arm_func_end DoMoveFocusEnergy
 
-	arm_func_start ov29_023268CC
-ov29_023268CC: ; 0x023268CC
+	arm_func_start DoMoveSmokescreen
+DoMoveSmokescreen: ; 0x023268CC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -1447,28 +1447,28 @@ ov29_023268CC: ; 0x023268CC
 	mov r0, r5
 	mov r1, r4
 	mov r3, #0
-	bl ov29_02315C00
+	bl TryInflictWhifferStatus
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02326904: .word 0x022C47C4
-	arm_func_end ov29_023268CC
+	arm_func_end DoMoveSmokescreen
 
-	arm_func_start ov29_02326908
-ov29_02326908: ; 0x02326908
+	arm_func_start DoMoveMirrorMove
+DoMoveMirrorMove: ; 0x02326908
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl ov29_02307C78
+	bl EndFrozenStatus
 	mov r0, r5
 	mov r1, r4
-	bl ov29_02319418
+	bl TryInflictMirrorMoveStatus
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02326908
+	arm_func_end DoMoveMirrorMove
 
-	arm_func_start ov29_0232692C
-ov29_0232692C: ; 0x0232692C
+	arm_func_start DoMoveOverheat
+DoMoveOverheat: ; 0x0232692C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	mov r8, r1
@@ -1476,7 +1476,7 @@ ov29_0232692C: ; 0x0232692C
 	ldr r5, [sb, #0xb4]
 	mov r6, r3
 	mov r4, #0
-	bl ov29_02307C78
+	bl EndFrozenStatus
 	mov r0, sb
 	mov r1, r8
 	mov r2, r7
@@ -1495,10 +1495,10 @@ ov29_0232692C: ; 0x0232692C
 _02326988:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov29_0232692C
+	arm_func_end DoMoveOverheat
 
-	arm_func_start ov29_02326990
-ov29_02326990: ; 0x02326990
+	arm_func_start DoMoveAuroraBeam
+DoMoveAuroraBeam: ; 0x02326990
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -1532,10 +1532,10 @@ _023269F8:
 	.align 2, 0
 _02326A04: .word 0x022C4428
 _02326A08: .word 0x02352AEC
-	arm_func_end ov29_02326990
+	arm_func_end DoMoveAuroraBeam
 
-	arm_func_start ov29_02326A0C
-ov29_02326A0C: ; 0x02326A0C
+	arm_func_start DoMoveMemento
+DoMoveMemento: ; 0x02326A0C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
@@ -1563,10 +1563,10 @@ ov29_02326A0C: ; 0x02326A0C
 	.align 2, 0
 _02326A6C: .word 0x02352AEC
 _02326A70: .word 0x02352AE8
-	arm_func_end ov29_02326A0C
+	arm_func_end DoMoveMemento
 
-	arm_func_start ov29_02326A74
-ov29_02326A74: ; 0x02326A74
+	arm_func_start DoMoveOctazooka
+DoMoveOctazooka: ; 0x02326A74
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -1598,10 +1598,10 @@ _02326AD4:
 	.align 2, 0
 _02326AE0: .word 0x022C4500
 _02326AE4: .word 0x02352AEC
-	arm_func_end ov29_02326A74
+	arm_func_end DoMoveOctazooka
 
-	arm_func_start ov29_02326AE8
-ov29_02326AE8: ; 0x02326AE8
+	arm_func_start DoMoveFlatter
+DoMoveFlatter: ; 0x02326AE8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r2, #1
 	mov r3, #0
@@ -1618,15 +1618,15 @@ ov29_02326AE8: ; 0x02326AE8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02326B20: .word 0x02352AE8
-	arm_func_end ov29_02326AE8
+	arm_func_end DoMoveFlatter
 
-	arm_func_start ov29_02326B24
-ov29_02326B24: ; 0x02326B24
+	arm_func_start DoMoveWillOWisp
+DoMoveWillOWisp: ; 0x02326B24
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
 	mov r5, r1
-	bl ov29_02313C74
+	bl FlashFireShouldActivate
 	movs r4, r0
 	beq _02326B94
 	ldr r3, [r5, #0xb4]
@@ -1665,10 +1665,10 @@ _02326BAC:
 	.align 2, 0
 _02326BB8: .word 0x00000CDD
 _02326BBC: .word 0x00000CDC
-	arm_func_end ov29_02326B24
+	arm_func_end DoMoveWillOWisp
 
-	arm_func_start ov29_02326BC0
-ov29_02326BC0: ; 0x02326BC0
+	arm_func_start DoMoveReturn
+DoMoveReturn: ; 0x02326BC0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x20
 	mov sb, r0
@@ -1704,7 +1704,7 @@ _02326C20:
 	mov r1, r4
 	mov r4, r0
 	mov r0, r7
-	bl ov29_02324E44
+	bl GetDamageSourceWrapper
 	add r3, sp, #0x1c
 	stmia sp, {r3, r5}
 	str r4, [sp, #8]
@@ -1730,28 +1730,28 @@ _02326C20:
 _02326C98: .word 0x022C4C0C
 _02326C9C: .word 0x000003E7
 _02326CA0: .word 0x022C4C0E
-	arm_func_end ov29_02326BC0
+	arm_func_end DoMoveReturn
 
-	arm_func_start ov29_02326CA4
-ov29_02326CA4: ; 0x02326CA4
-	ldr ip, _02326CB0 ; =ov29_02314EB8
+	arm_func_start DoMoveGrudge
+DoMoveGrudge: ; 0x02326CA4
+	ldr ip, _02326CB0 ; =TryInflictGrudgeStatus
 	mov r2, #1
 	bx ip
 	.align 2, 0
-_02326CB0: .word ov29_02314EB8
-	arm_func_end ov29_02326CA4
+_02326CB0: .word TryInflictGrudgeStatus
+	arm_func_end DoMoveGrudge
 
-	arm_func_start ov29_02326CB4
-ov29_02326CB4: ; 0x02326CB4
+	arm_func_start DoMoveCounter
+DoMoveCounter: ; 0x02326CB4
 	stmdb sp!, {r3, lr}
 	mov r2, #4
 	bl ov29_02318D98
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02326CB4
+	arm_func_end DoMoveCounter
 
-	arm_func_start ov29_02326CC8
-ov29_02326CC8: ; 0x02326CC8
+	arm_func_start DoMoveDamageBurn10FlameWheel
+DoMoveDamageBurn10FlameWheel: ; 0x02326CC8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r8, r0
@@ -1759,7 +1759,7 @@ ov29_02326CC8: ; 0x02326CC8
 	mov r6, r2
 	mov r5, r3
 	mov r4, #0
-	bl ov29_02307C78
+	bl EndFrozenStatus
 	mov r0, r8
 	mov r1, r7
 	mov r2, r6
@@ -1788,10 +1788,10 @@ _02326D40:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02326D4C: .word 0x022C4688
-	arm_func_end ov29_02326CC8
+	arm_func_end DoMoveDamageBurn10FlameWheel
 
-	arm_func_start ov29_02326D50
-ov29_02326D50: ; 0x02326D50
+	arm_func_start DoMoveDamageBurn10
+DoMoveDamageBurn10: ; 0x02326D50
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r8, r0
@@ -1799,7 +1799,7 @@ ov29_02326D50: ; 0x02326D50
 	mov r6, r2
 	mov r5, r3
 	mov r4, #0
-	bl ov29_02307C78
+	bl EndFrozenStatus
 	mov r0, r8
 	mov r1, r7
 	mov r2, r6
@@ -1828,10 +1828,10 @@ _02326DC8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02326DD4: .word 0x022C4544
-	arm_func_end ov29_02326D50
+	arm_func_end DoMoveDamageBurn10
 
-	arm_func_start ov29_02326DD8
-ov29_02326DD8: ; 0x02326DD8
+	arm_func_start DoMoveExpose
+DoMoveExpose: ; 0x02326DD8
 	stmdb sp!, {r3, lr}
 	ldrh r3, [r2, #4]
 	ldr r2, _02326E00 ; =0x0000013B
@@ -1839,15 +1839,15 @@ ov29_02326DD8: ; 0x02326DD8
 	moveq r2, #0x7a
 	movne r2, #0x51
 	mov r3, #0
-	bl ov29_023174C8
+	bl TryInflictExposedStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02326E00: .word 0x0000013B
-	arm_func_end ov29_02326DD8
+	arm_func_end DoMoveExpose
 
-	arm_func_start ov29_02326E04
-ov29_02326E04: ; 0x02326E04
+	arm_func_start DoMoveDoubleTeam
+DoMoveDoubleTeam: ; 0x02326E04
 	stmdb sp!, {r3, lr}
 	ldr r2, _02326E1C ; =0x02352AE8
 	ldr r2, [r2]
@@ -1856,10 +1856,10 @@ ov29_02326E04: ; 0x02326E04
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02326E1C: .word 0x02352AE8
-	arm_func_end ov29_02326E04
+	arm_func_end DoMoveDoubleTeam
 
-	arm_func_start ov29_02326E20
-ov29_02326E20: ; 0x02326E20
+	arm_func_start DoMoveGust
+DoMoveGust: ; 0x02326E20
 	stmdb sp!, {r3, lr}
 	ldr ip, [r1, #0xb4]
 	mov lr, #1
@@ -1876,10 +1876,10 @@ ov29_02326E20: ; 0x02326E20
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02326E20
+	arm_func_end DoMoveGust
 
-	arm_func_start ov29_02326E60
-ov29_02326E60: ; 0x02326E60
+	arm_func_start DoMoveBoostDefense1
+DoMoveBoostDefense1: ; 0x02326E60
 	stmdb sp!, {r3, lr}
 	ldr r2, _02326E7C ; =0x02352AEC
 	mov r3, #1
@@ -1889,20 +1889,20 @@ ov29_02326E60: ; 0x02326E60
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02326E7C: .word 0x02352AEC
-	arm_func_end ov29_02326E60
+	arm_func_end DoMoveBoostDefense1
 
-	arm_func_start ov29_02326E80
-ov29_02326E80: ; 0x02326E80
+	arm_func_start DoMoveParalyze__02326E80
+DoMoveParalyze__02326E80: ; 0x02326E80
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	mov r3, #0
 	bl TryInflictParalysisStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02326E80
+	arm_func_end DoMoveParalyze__02326E80
 
-	arm_func_start ov29_02326E98
-ov29_02326E98: ; 0x02326E98
+	arm_func_start DoMoveBoostAttack1
+DoMoveBoostAttack1: ; 0x02326E98
 	stmdb sp!, {r3, lr}
 	ldr r2, _02326EB4 ; =0x02352AEC
 	mov r3, #1
@@ -1912,17 +1912,17 @@ ov29_02326E98: ; 0x02326E98
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02326EB4: .word 0x02352AEC
-	arm_func_end ov29_02326E98
+	arm_func_end DoMoveBoostAttack1
 
-	arm_func_start ov29_02326EB8
-ov29_02326EB8: ; 0x02326EB8
+	arm_func_start DoMoveRazorWind
+DoMoveRazorWind: ; 0x02326EB8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r2
 	mov r6, r1
 	mov r1, r5
 	mov r7, r0
 	mov r4, r3
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _02326F14
 	ldr r1, _02326F40 ; =0x022C48B0
@@ -1955,10 +1955,10 @@ _02326F38:
 	.align 2, 0
 _02326F40: .word 0x022C48B0
 _02326F44: .word 0x00000CCD
-	arm_func_end ov29_02326EB8
+	arm_func_end DoMoveRazorWind
 
-	arm_func_start ov29_02326F48
-ov29_02326F48: ; 0x02326F48
+	arm_func_start DoMoveBide
+DoMoveBide: ; 0x02326F48
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
@@ -1977,10 +1977,10 @@ ov29_02326F48: ; 0x02326F48
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02326F88: .word 0x00000CCE
-	arm_func_end ov29_02326F48
+	arm_func_end DoMoveBide
 
-	arm_func_start ov29_02326F8C
-ov29_02326F8C: ; 0x02326F8C
+	arm_func_start DoMoveBideUnleash
+DoMoveBideUnleash: ; 0x02326F8C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x20
 	mov r3, #0
@@ -2024,10 +2024,10 @@ ov29_02326F8C: ; 0x02326F8C
 	.align 2, 0
 _0232702C: .word 0x000003E7
 _02327030: .word 0x0000023E
-	arm_func_end ov29_02326F8C
+	arm_func_end DoMoveBideUnleash
 
-	arm_func_start ov29_02327034
-ov29_02327034: ; 0x02327034
+	arm_func_start DoMoveCrunch
+DoMoveCrunch: ; 0x02327034
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	str r3, [sp]
@@ -2062,10 +2062,10 @@ _023270A0:
 	.align 2, 0
 _023270AC: .word 0x022C4450
 _023270B0: .word 0x02352AEC
-	arm_func_end ov29_02327034
+	arm_func_end DoMoveCrunch
 
-	arm_func_start ov29_023270B4
-ov29_023270B4: ; 0x023270B4
+	arm_func_start DoMoveDamageCringe20
+DoMoveDamageCringe20: ; 0x023270B4
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -2095,10 +2095,10 @@ _02327110:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _0232711C: .word 0x022C4534
-	arm_func_end ov29_023270B4
+	arm_func_end DoMoveDamageCringe20
 
-	arm_func_start ov29_02327120
-ov29_02327120: ; 0x02327120
+	arm_func_start DoMoveDamageParalyze20
+DoMoveDamageParalyze20: ; 0x02327120
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -2128,10 +2128,10 @@ _0232717C:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02327188: .word 0x022C4658
-	arm_func_end ov29_02327120
+	arm_func_end DoMoveDamageParalyze20
 
-	arm_func_start ov29_0232718C
-ov29_0232718C: ; 0x0232718C
+	arm_func_start DoMoveEndeavor
+DoMoveEndeavor: ; 0x0232718C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x20
 	mov r4, #0
@@ -2147,7 +2147,7 @@ ov29_0232718C: ; 0x0232718C
 	subs r5, r1, r0
 	mov r0, r8
 	movmi r5, r4
-	bl ov29_02319748
+	bl MirrorMoveIsActive
 	cmp r0, #0
 	mov r0, r7
 	movne r8, sb
@@ -2158,7 +2158,7 @@ ov29_0232718C: ; 0x0232718C
 	mov r1, r6
 	mov r6, r0
 	mov r0, r7
-	bl ov29_02324E44
+	bl GetDamageSourceWrapper
 	mov r2, r5
 	add r5, sp, #0x1c
 	str r5, [sp]
@@ -2180,10 +2180,10 @@ ov29_0232718C: ; 0x0232718C
 	and r0, r0, #0xff
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov29_0232718C
+	arm_func_end DoMoveEndeavor
 
-	arm_func_start ov29_0232724C
-ov29_0232724C: ; 0x0232724C
+	arm_func_start DoMoveFacade
+DoMoveFacade: ; 0x0232724C
 	stmdb sp!, {r3, lr}
 	ldr ip, [r0, #0xb4]
 	mov lr, #0x100
@@ -2201,10 +2201,10 @@ ov29_0232724C: ; 0x0232724C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02327288: .word 0x022C4718
-	arm_func_end ov29_0232724C
+	arm_func_end DoMoveFacade
 
-	arm_func_start ov29_0232728C
-ov29_0232728C: ; 0x0232728C
+	arm_func_start DoMoveDamageLowerSpeed20
+DoMoveDamageLowerSpeed20: ; 0x0232728C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -2234,10 +2234,10 @@ _023272E8:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _023272F4: .word 0x022C4514
-	arm_func_end ov29_0232728C
+	arm_func_end DoMoveDamageLowerSpeed20
 
-	arm_func_start ov29_023272F8
-ov29_023272F8: ; 0x023272F8
+	arm_func_start DoMoveBrickBreak
+DoMoveBrickBreak: ; 0x023272F8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	ldr r5, [r6, #0xb4]
@@ -2262,16 +2262,16 @@ ov29_023272F8: ; 0x023272F8
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r7
 	mov r1, r6
-	bl ov29_023064F4
+	bl EndReflectClassStatus
 _0232735C:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02327364: .word 0x00000ED2
-	arm_func_end ov29_023272F8
+	arm_func_end DoMoveBrickBreak
 
-	arm_func_start ov29_02327368
-ov29_02327368: ; 0x02327368
+	arm_func_start DoMoveDamageLowerSpeed100
+DoMoveDamageLowerSpeed100: ; 0x02327368
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -2298,17 +2298,17 @@ _023273C0:
 	mov r0, r4
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end ov29_02327368
+	arm_func_end DoMoveDamageLowerSpeed100
 
-	arm_func_start ov29_023273CC
-ov29_023273CC: ; 0x023273CC
+	arm_func_start DoMoveFocusPunch
+DoMoveFocusPunch: ; 0x023273CC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r2
 	mov r6, r1
 	mov r1, r5
 	mov r7, r0
 	mov r4, r3
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _02327428
 	ldr r1, _02327454 ; =0x022C48B4
@@ -2340,10 +2340,10 @@ _0232744C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02327454: .word 0x022C48B4
-	arm_func_end ov29_023273CC
+	arm_func_end DoMoveFocusPunch
 
-	arm_func_start ov29_02327458
-ov29_02327458: ; 0x02327458
+	arm_func_start DoMoveDamageDrain
+DoMoveDamageDrain: ; 0x02327458
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	mov r8, r1
@@ -2365,14 +2365,14 @@ _02327498:
 	beq _023274B8
 	mov r0, sb
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r6, #0
 	bne _023274C8
 _023274B8:
 	mov r0, r8
 	mov r1, #0x3a
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	mov r6, r0
 _023274C8:
 	mov r0, sb
@@ -2406,7 +2406,7 @@ _023274C8:
 	mov r0, sb
 	mov r1, r5
 	add r3, r2, #0x22c
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	b _02327590
 _0232754C:
 	ldr r1, [sb, #0xb4]
@@ -2430,10 +2430,10 @@ _0232756C:
 _02327590:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov29_02327458
+	arm_func_end DoMoveDamageDrain
 
-	arm_func_start ov29_02327598
-ov29_02327598: ; 0x02327598
+	arm_func_start DoMoveReversal
+DoMoveReversal: ; 0x02327598
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	ldr ip, [r0, #0xb4]
@@ -2481,10 +2481,10 @@ _0232761C:
 	.align 2, 0
 _02327644: .word 0x000003E7
 _02327648: .word 0x022C4994
-	arm_func_end ov29_02327598
+	arm_func_end DoMoveReversal
 
-	arm_func_start ov29_0232764C
-ov29_0232764C: ; 0x0232764C
+	arm_func_start DoMoveSmellingSalt
+DoMoveSmellingSalt: ; 0x0232764C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	ldr ip, [r4, #0xb4]
@@ -2501,7 +2501,7 @@ ov29_0232764C: ; 0x0232764C
 	mov r1, r4
 	mov r0, r5
 	and r4, r2, #0xff
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 	b _023276AC
 _02327694:
 	mov r3, #0x100
@@ -2513,10 +2513,10 @@ _02327694:
 _023276AC:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_0232764C
+	arm_func_end DoMoveSmellingSalt
 
-	arm_func_start ov29_023276B4
-ov29_023276B4: ; 0x023276B4
+	arm_func_start DoMoveMetalSound
+DoMoveMetalSound: ; 0x023276B4
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r2, _023276E4 ; =0x02352AE8
@@ -2531,10 +2531,10 @@ ov29_023276B4: ; 0x023276B4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023276E4: .word 0x02352AE8
-	arm_func_end ov29_023276B4
+	arm_func_end DoMoveMetalSound
 
-	arm_func_start ov29_023276E8
-ov29_023276E8: ; 0x023276E8
+	arm_func_start DoMoveTickle
+DoMoveTickle: ; 0x023276E8
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	ldr r2, _02327740 ; =0x02352AE8
@@ -2559,28 +2559,28 @@ ov29_023276E8: ; 0x023276E8
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _02327740: .word 0x02352AE8
-	arm_func_end ov29_023276E8
+	arm_func_end DoMoveTickle
 
-	arm_func_start ov29_02327744
-ov29_02327744: ; 0x02327744
+	arm_func_start DoMoveShadowHold
+DoMoveShadowHold: ; 0x02327744
 	stmdb sp!, {r3, lr}
 	mov r2, #0
 	bl TryInflictShadowHoldStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02327744
+	arm_func_end DoMoveShadowHold
 
-	arm_func_start ov29_02327758
-ov29_02327758: ; 0x02327758
+	arm_func_start DoMoveHaze
+DoMoveHaze: ; 0x02327758
 	stmdb sp!, {r3, lr}
 	mov r2, #1
-	bl ov29_02319624
+	bl TryResetStatChanges
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02327758
+	arm_func_end DoMoveHaze
 
-	arm_func_start ov29_0232776C
-ov29_0232776C: ; 0x0232776C
+	arm_func_start DoMoveDamageMultihitFatigue
+DoMoveDamageMultihitFatigue: ; 0x0232776C
 	stmdb sp!, {r3, r4, r5, lr}
 	str r3, [sp]
 	mov r3, #0x100
@@ -2602,10 +2602,10 @@ _023277AC:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023277B4: .word 0x0237CA6A
-	arm_func_end ov29_0232776C
+	arm_func_end DoMoveDamageMultihitFatigue
 
-	arm_func_start ov29_023277B8
-ov29_023277B8: ; 0x023277B8
+	arm_func_start DoMoveDamageWeightDependent
+DoMoveDamageWeightDependent: ; 0x023277B8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	ldr r1, [r6, #0xb4]
@@ -2625,10 +2625,10 @@ ov29_023277B8: ; 0x023277B8
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_023277B8
+	arm_func_end DoMoveDamageWeightDependent
 
-	arm_func_start ov29_02327804
-ov29_02327804: ; 0x02327804
+	arm_func_start DoMoveDamageBoostAllStats
+DoMoveDamageBoostAllStats: ; 0x02327804
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0xc
 	str r3, [sp]
@@ -2688,10 +2688,10 @@ _023278D4:
 	.align 2, 0
 _023278E0: .word 0x022C4488
 _023278E4: .word 0x02352AE8
-	arm_func_end ov29_02327804
+	arm_func_end DoMoveDamageBoostAllStats
 
-	arm_func_start ov29_023278E8
-ov29_023278E8: ; 0x023278E8
+	arm_func_start DoMoveSynthesis
+DoMoveSynthesis: ; 0x023278E8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -2709,20 +2709,20 @@ ov29_023278E8: ; 0x023278E8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02327924: .word 0x022C4954
-	arm_func_end ov29_023278E8
+	arm_func_end DoMoveSynthesis
 
-	arm_func_start ov29_02327928
-ov29_02327928: ; 0x02327928
+	arm_func_start DoMoveBoostSpeed1
+DoMoveBoostSpeed1: ; 0x02327928
 	stmdb sp!, {r3, lr}
 	mov r2, #0
 	mov r3, #1
 	bl BoostSpeedOneStage
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02327928
+	arm_func_end DoMoveBoostSpeed1
 
-	arm_func_start ov29_02327940
-ov29_02327940: ; 0x02327940
+	arm_func_start DoMoveRapidSpin
+DoMoveRapidSpin: ; 0x02327940
 	stmdb sp!, {r3, r4, r5, lr}
 	str r3, [sp]
 	mov r3, #0x100
@@ -2752,10 +2752,10 @@ _023279A0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023279A8: .word 0x0237CA6D
-	arm_func_end ov29_02327940
+	arm_func_end DoMoveRapidSpin
 
-	arm_func_start ov29_023279AC
-ov29_023279AC: ; 0x023279AC
+	arm_func_start DoMoveSureShot
+DoMoveSureShot: ; 0x023279AC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -2766,15 +2766,15 @@ ov29_023279AC: ; 0x023279AC
 	mov r2, r0
 	mov r0, r5
 	mov r1, r4
-	bl ov29_02315B70
+	bl TryInflictSureShotStatus
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023279E0: .word 0x022C4798
-	arm_func_end ov29_023279AC
+	arm_func_end DoMoveSureShot
 
-	arm_func_start ov29_023279E4
-ov29_023279E4: ; 0x023279E4
+	arm_func_start DoMoveCosmicPower
+DoMoveCosmicPower: ; 0x023279E4
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r2, _02327A20 ; =0x02352AEC
 	mov r3, #1
@@ -2793,10 +2793,10 @@ ov29_023279E4: ; 0x023279E4
 	.align 2, 0
 _02327A20: .word 0x02352AEC
 _02327A24: .word 0x02352AE8
-	arm_func_end ov29_023279E4
+	arm_func_end DoMoveCosmicPower
 
-	arm_func_start ov29_02327A28
-ov29_02327A28: ; 0x02327A28
+	arm_func_start DoMoveSkyAttack
+DoMoveSkyAttack: ; 0x02327A28
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r6, r2
@@ -2805,7 +2805,7 @@ ov29_02327A28: ; 0x02327A28
 	mov r8, r0
 	mov r5, r3
 	mov r4, #0
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _02327AB8
 	ldr r1, _02327AE8 ; =0x022C48A8
@@ -2852,10 +2852,10 @@ _02327ADC:
 _02327AE8: .word 0x022C48A8
 _02327AEC: .word 0x022C4538
 _02327AF0: .word 0x00000CD1
-	arm_func_end ov29_02327A28
+	arm_func_end DoMoveSkyAttack
 
-	arm_func_start ov29_02327AF4
-ov29_02327AF4: ; 0x02327AF4
+	arm_func_start DoMoveDamageFreeze15
+DoMoveDamageFreeze15: ; 0x02327AF4
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -2884,10 +2884,10 @@ _02327B4C:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02327B58: .word 0x022C4634
-	arm_func_end ov29_02327AF4
+	arm_func_end DoMoveDamageFreeze15
 
-	arm_func_start ov29_02327B5C
-ov29_02327B5C: ; 0x02327B5C
+	arm_func_start DoMoveMeteorMash
+DoMoveMeteorMash: ; 0x02327B5C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -2923,28 +2923,28 @@ _02327BCC:
 	.align 2, 0
 _02327BD8: .word 0x022C4604
 _02327BDC: .word 0x02352AEC
-	arm_func_end ov29_02327B5C
+	arm_func_end DoMoveMeteorMash
 
-	arm_func_start ov29_02327BE0
-ov29_02327BE0: ; 0x02327BE0
+	arm_func_start DoMoveEndure
+DoMoveEndure: ; 0x02327BE0
 	stmdb sp!, {r3, lr}
-	bl ov29_02319378
+	bl TryInflictEndureStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02327BE0
+	arm_func_end DoMoveEndure
 
-	arm_func_start ov29_02327BF0
-ov29_02327BF0: ; 0x02327BF0
+	arm_func_start DoMoveLowerSpeed1
+DoMoveLowerSpeed1: ; 0x02327BF0
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	mov r3, r2
 	bl LowerSpeed
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02327BF0
+	arm_func_end DoMoveLowerSpeed1
 
-	arm_func_start ov29_02327C08
-ov29_02327C08: ; 0x02327C08
+	arm_func_start DoMoveDamageConfuse10
+DoMoveDamageConfuse10: ; 0x02327C08
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	str r3, [sp]
@@ -2974,10 +2974,10 @@ _02327C64:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02327C70: .word 0x022C4690
-	arm_func_end ov29_02327C08
+	arm_func_end DoMoveDamageConfuse10
 
-	arm_func_start ov29_02327C74
-ov29_02327C74: ; 0x02327C74
+	arm_func_start DoMovePsywave
+DoMovePsywave: ; 0x02327C74
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -3003,10 +3003,10 @@ ov29_02327C74: ; 0x02327C74
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_02327C74
+	arm_func_end DoMovePsywave
 
-	arm_func_start ov29_02327CD8
-ov29_02327CD8: ; 0x02327CD8
+	arm_func_start DoMoveDamageLowerDefensiveStatVariable
+DoMoveDamageLowerDefensiveStatVariable: ; 0x02327CD8
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
@@ -3042,10 +3042,10 @@ _02327D4C:
 	ldmia sp!, {r4, r5, r6, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end ov29_02327CD8
+	arm_func_end DoMoveDamageLowerDefensiveStatVariable
 
-	arm_func_start ov29_02327D60
-ov29_02327D60: ; 0x02327D60
+	arm_func_start DoMovePsychoBoost
+DoMovePsychoBoost: ; 0x02327D60
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	str r3, [sp]
@@ -3076,18 +3076,18 @@ _02327DC0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02327DCC: .word 0x02352AE8
-	arm_func_end ov29_02327D60
+	arm_func_end DoMovePsychoBoost
 
-	arm_func_start ov29_02327DD0
-ov29_02327DD0: ; 0x02327DD0
+	arm_func_start DoMoveUproar
+DoMoveUproar: ; 0x02327DD0
 	stmdb sp!, {r3, lr}
 	bl TryInflictSleeplessStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02327DD0
+	arm_func_end DoMoveUproar
 
-	arm_func_start ov29_02327DE0
-ov29_02327DE0: ; 0x02327DE0
+	arm_func_start DoMoveWaterSpout
+DoMoveWaterSpout: ; 0x02327DE0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	ldr ip, [r0, #0xb4]
@@ -3135,10 +3135,10 @@ _02327E64:
 	.align 2, 0
 _02327E8C: .word 0x000003E7
 _02327E90: .word 0x022C49A4
-	arm_func_end ov29_02327DE0
+	arm_func_end DoMoveWaterSpout
 
-	arm_func_start ov29_02327E94
-ov29_02327E94: ; 0x02327E94
+	arm_func_start DoMovePsychUp
+DoMovePsychUp: ; 0x02327E94
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r7, r0
@@ -3181,10 +3181,10 @@ _02327EB4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02327F30: .word 0x00000D62
-	arm_func_end ov29_02327E94
+	arm_func_end DoMovePsychUp
 
-	arm_func_start DealDamageWithRecoil
-DealDamageWithRecoil: ; 0x02327F34
+	arm_func_start DoMoveDamageWithRecoil
+DoMoveDamageWithRecoil: ; 0x02327F34
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x18
 	str r3, [sp]
@@ -3196,7 +3196,7 @@ DealDamageWithRecoil: ; 0x02327F34
 	cmp r0, #0
 	beq _02327FFC
 	mov r0, r7
-	bl EntityIsValid__0232800C
+	bl EntityIsValidMoveEffects__0232800C
 	cmp r0, #0
 	beq _02327FFC
 	ldr r1, [r7, #0xb4]
@@ -3213,7 +3213,7 @@ DealDamageWithRecoil: ; 0x02327F34
 	mov r0, r7
 	mov r1, #7
 	moveq r5, #1
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _02327FFC
 	mov r0, r7
@@ -3241,4 +3241,4 @@ _02327FFC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02328008: .word 0x000003E7
-	arm_func_end DealDamageWithRecoil
+	arm_func_end DoMoveDamageWithRecoil

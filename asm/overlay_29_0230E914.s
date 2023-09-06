@@ -156,7 +156,7 @@ _0230EB0C:
 	ldr r1, [r0]
 	cmp r1, #3
 	bne _0230ED8C
-	bl ov29_022E1610
+	bl GetItemInfo
 	mov r8, r0
 	mov r6, #0x80
 	b _0230EB84
@@ -382,18 +382,18 @@ _0230EE50:
 _0230EE68:
 	mov r0, sl
 	mov r1, r4
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	beq _0230EFE0
 	ldrsh r6, [r4, #4]
 	ldrsh r7, [sl, #4]
 	sub r0, r7, r6
-	bl Abs
+	bl abs
 	mov r5, r0
 	ldrsh r8, [r4, #6]
 	ldrsh sb, [sl, #6]
 	sub r0, sb, r8
-	bl Abs
+	bl abs
 	ldr r1, [sl, #0xb4]
 	ldrb r1, [r1, #0xee]
 	cmp r1, #0

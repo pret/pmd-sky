@@ -13,7 +13,7 @@ TryInflictSleepStatus: ; 0x023118D8
 	mov r7, r0
 	mov r6, r1
 	str r4, [sp]
-	bl ov29_023119E4
+	bl IsProtectedFromSleepClassStatus
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, [r6, #0xb4]
@@ -79,8 +79,8 @@ _023119DC: .word 0x00000D07
 _023119E0: .word 0x00000D04
 	arm_func_end TryInflictSleepStatus
 
-	arm_func_start ov29_023119E4
-ov29_023119E4: ; 0x023119E4
+	arm_func_start IsProtectedFromSleepClassStatus
+IsProtectedFromSleepClassStatus: ; 0x023119E4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r7, r1
@@ -102,7 +102,7 @@ ov29_023119E4: ; 0x023119E4
 	mov r0, r8
 	mov r1, r7
 	mov r2, r4
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #1
 	bne _02311B78
@@ -112,7 +112,7 @@ _02311A48:
 	mov r0, r8
 	mov r1, r7
 	mov r2, r4
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #1
 	bne _02311B78
@@ -187,7 +187,7 @@ _02311B4C:
 	mov r1, r7
 	mov r2, r4
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -201,7 +201,7 @@ _02311B84: .word 0x00000DA5
 _02311B88: .word 0x00000DA6
 _02311B8C: .word 0x00000DB1
 _02311B90: .word 0x00000DC2
-	arm_func_end ov29_023119E4
+	arm_func_end IsProtectedFromSleepClassStatus
 
 	arm_func_start DefenderAbilityIsActive__02311B94
 DefenderAbilityIsActive__02311B94: ; 0x02311B94
@@ -223,14 +223,14 @@ _02311BC8:
 	cmpne r3, #0
 	beq _02311BE8
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 _02311BE8:
 	mov r0, r5
 	mov r1, r4
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end DefenderAbilityIsActive__02311B94
 
@@ -240,7 +240,7 @@ ItemIsActive__02311BF8: ; 0x02311BF8
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -255,7 +255,7 @@ ov29_02311C28: ; 0x02311C28
 	stmdb sp!, {r3, lr}
 	ldrb ip, [sp, #8]
 	str ip, [sp]
-	bl ov29_023119E4
+	bl IsProtectedFromSleepClassStatus
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -274,7 +274,7 @@ TryInflictNightmareStatus: ; 0x02311C4C
 	mov r6, r1
 	str r2, [sp]
 	mov r4, #0
-	bl ov29_023119E4
+	bl IsProtectedFromSleepClassStatus
 	cmp r0, #0
 	bne _02311D4C
 	ldr r5, [r6, #0xb4]
@@ -355,7 +355,7 @@ TryInflictNappingStatus: ; 0x02311D60
 	mov r8, r0
 	mov r7, r1
 	str r5, [sp]
-	bl ov29_023119E4
+	bl IsProtectedFromSleepClassStatus
 	cmp r0, #0
 	bne _02311E5C
 	ldr r5, [r7, #0xb4]
@@ -432,7 +432,7 @@ TryInflictYawningStatus: ; 0x02311E70
 	mov r6, r0
 	mov r5, r1
 	str r2, [sp]
-	bl ov29_023119E4
+	bl IsProtectedFromSleepClassStatus
 	cmp r0, #0
 	bne _02311F6C
 	ldr r1, [r5, #0xb4]
@@ -586,7 +586,7 @@ TryInflictPausedStatus: ; 0x0231206C
 	ldrb r2, [sp, #0x18]
 	mov r0, r7
 	mov r1, r6
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -594,7 +594,7 @@ _023120BC:
 	ldrb r2, [sp, #0x18]
 	mov r0, r7
 	mov r1, r6
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -676,14 +676,14 @@ TryInflictInfatuatedStatus: ; 0x023121AC
 	mov r1, r4
 	mov r2, r8
 	ldr r6, [r4, #0xb4]
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	bne _0231231C
 	mov r0, r5
 	mov r1, r4
 	mov r2, r8
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	bne _0231231C
@@ -714,7 +714,7 @@ _02312260:
 	mov r1, r4
 	mov r2, r8
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	movne r0, #0
 	bne _0231231C
@@ -783,14 +783,14 @@ TryInflictBurnStatus: ; 0x02312338
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -898,7 +898,7 @@ _02312504:
 	bl UpdateStatusIconFlags
 	mov r0, sb
 	mov r1, #0x19
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023125E8
 	cmp r5, #0
@@ -1010,14 +1010,14 @@ TryInflictPoisonedStatus: ; 0x02312664
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -1128,7 +1128,7 @@ _02312830:
 _02312840:
 	mov r0, sb
 	mov r1, #0x19
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02312914
 	cmp r4, #0
@@ -1211,14 +1211,14 @@ TryInflictBadlyPoisonedStatus: ; 0x0231293C
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -1321,7 +1321,7 @@ _02312AEC:
 _02312AFC:
 	mov r0, sb
 	mov r1, #0x19
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02312BD0
 	cmp r4, #0
@@ -1410,13 +1410,13 @@ TryInflictFrozenStatus: ; 0x02312BF8
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov ip, #4
@@ -1425,7 +1425,7 @@ TryInflictFrozenStatus: ; 0x02312BF8
 	mov r2, r5
 	rsb r3, ip, #0xdc0
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
@@ -1484,7 +1484,7 @@ _02312D48:
 	mov r2, r5
 	rsb r3, ip, #0xdc0
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldrb r0, [r4, #0xc4]
@@ -1517,7 +1517,7 @@ _02312D88:
 	bl TryActivateQuickFeet
 	mov r0, r6
 	mov r1, #0
-	bl ov29_0231B4EC
+	bl ChangeShayminForme
 	cmp r0, #3
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r2, _02312E1C ; =0x00000D23
@@ -1551,14 +1551,14 @@ TryInflictConstrictionStatus: ; 0x02312E20
 	mov r0, r7
 	mov r1, r6
 	mov r2, r4
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
 	mov r1, r6
 	mov r2, r4
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1645,14 +1645,14 @@ TryInflictShadowHoldStatus: ; 0x02312F78
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -1821,13 +1821,13 @@ TryInflictWrappedStatus: ; 0x023131F4
 	mov r0, r7
 	mov r1, r6
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
 	mov r1, r6
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r4, [r7, #0xb4]
@@ -1997,13 +1997,13 @@ TryInflictPetrifiedStatus: ; 0x0231346C
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r5
@@ -2139,7 +2139,7 @@ _02313678:
 	ldrb r2, [sp, #0x2c]
 	mov r0, r8
 	mov r1, r7
-	bl ov29_02301B2C
+	bl IsProtectedFromStatDrops
 	cmp r0, #0
 	bne _023137E8
 	mov r0, r7
@@ -2188,7 +2188,7 @@ _02313720:
 	bl ov29_022E4D28
 	mov r0, r7
 	mov r1, #0x61
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, r5, lsl #0x11
 	movne r5, r0, asr #0x10
@@ -2287,7 +2287,7 @@ _02313890:
 	ldrb r2, [sp, #0x2c]
 	mov r0, r8
 	mov r1, r7
-	bl ov29_02301B2C
+	bl IsProtectedFromStatDrops
 	cmp r0, #0
 	bne _0231397C
 _023138B4:
@@ -2302,7 +2302,7 @@ _023138B4:
 	bl ov29_022E4DCC
 	mov r0, r7
 	mov r1, #0x61
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, r5, lsl #0x11
 	movne r5, r0, asr #0x10
@@ -2403,7 +2403,7 @@ _02313A24:
 _02313A3C:
 	mov r0, r8
 	mov r1, #0x61
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, r6, lsl #0x11
 	movne r6, r0, asr #0x10
@@ -2506,7 +2506,7 @@ _02313B90:
 _02313BA8:
 	mov r0, r8
 	mov r1, #0x61
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, r6, lsl #0x11
 	movne r6, r0, asr #0x10
@@ -2563,8 +2563,8 @@ _02313C6C: .word 0x00000D8E
 _02313C70: .word 0x00000DD6
 	arm_func_end BoostDefensiveStat
 
-	arm_func_start ov29_02313C74
-ov29_02313C74: ; 0x02313C74
+	arm_func_start FlashFireShouldActivate
+FlashFireShouldActivate: ; 0x02313C74
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -2575,7 +2575,7 @@ ov29_02313C74: ; 0x02313C74
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, #0x6b
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -2593,10 +2593,10 @@ ov29_02313C74: ; 0x02313C74
 	movge r0, #1
 	movlt r0, #2
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02313C74
+	arm_func_end FlashFireShouldActivate
 
-	arm_func_start ov29_02313CE4
-ov29_02313CE4: ; 0x02313CE4
+	arm_func_start ActivateFlashFire
+ActivateFlashFire: ; 0x02313CE4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r0, r5
@@ -2621,7 +2621,7 @@ _02313D34:
 	mov r0, r5
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02313CE4
+	arm_func_end ActivateFlashFire
 
 	arm_func_start ApplyOffensiveStatMultiplier
 ApplyOffensiveStatMultiplier: ; 0x02313D40
@@ -2659,7 +2659,7 @@ _02313DAC:
 	ldrb r2, [sp, #0x30]
 	mov r0, sb
 	mov r1, r8
-	bl ov29_02301B2C
+	bl IsProtectedFromStatDrops
 	cmp r0, #0
 	bne _02313F3C
 _02313DCC:
@@ -2812,7 +2812,7 @@ _02313FD0:
 	ldrb r2, [sp, #0x30]
 	mov r0, sb
 	mov r1, r8
-	bl ov29_02301B2C
+	bl IsProtectedFromStatDrops
 	cmp r0, #0
 	bne _023140C0
 _02313FF0:
@@ -2928,7 +2928,7 @@ _0231415C:
 _02314174:
 	mov r0, r6
 	mov r1, #0x61
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	ldr r1, [sp, #0x20]
 	cmp r0, #0
 	movne r0, r4, lsl #0x11
@@ -3014,7 +3014,7 @@ _0231429C:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r8
-	bl ov29_02301B2C
+	bl IsProtectedFromStatDrops
 	cmp r0, #0
 	bne _023143C4
 	mov r0, r7
@@ -3041,7 +3041,7 @@ _0231429C:
 _02314308:
 	mov r0, r6
 	mov r1, #0x61
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, r4, lsl #0x11
 	movne r4, r0, asr #0x10
@@ -3118,14 +3118,14 @@ TryInflictCringeStatus: ; 0x023143E8
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -3176,7 +3176,7 @@ _02314498:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r7
 	mov r1, r6
-	bl ov29_0231B364
+	bl TryActivateSteadfast
 	mov r0, r7
 	mov r1, r6
 	bl TryActivateQuickFeet
@@ -3214,14 +3214,14 @@ TryInflictParalysisStatus: ; 0x02314544
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	bne _023147D0
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	bne _023147D0
@@ -3315,7 +3315,7 @@ _023146E0:
 _023146F0:
 	mov r0, sb
 	mov r1, #0x19
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023147C4
 	cmp r4, #0
@@ -3508,13 +3508,13 @@ LowerSpeed: ; 0x02314954
 	mov r0, sl
 	mov r1, sb
 	mov r2, r7
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, sl
 	mov r1, sb
 	mov r2, r7
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, #0
@@ -3609,14 +3609,14 @@ TrySealMove: ; 0x02314ABC
 	moveq r0, r5
 	beq _02314C18
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, r5
 	bne _02314C18
 	mov r0, r8
 	mov r1, r7
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, r5
 	bne _02314C18
@@ -3657,7 +3657,7 @@ _02314B74:
 	mov r1, r7
 	mov r2, #1
 	str r5, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	movne r0, #0
 	bne _02314C18
@@ -3786,8 +3786,8 @@ _02314D30:
 _02314D3C: .word 0x00000D61
 	arm_func_end ResetHitChanceStat
 
-	arm_func_start ov29_02314D40
-ov29_02314D40: ; 0x02314D40
+	arm_func_start ExclusiveItemEffectIsActiveWithLogging
+ExclusiveItemEffectIsActiveWithLogging: ; 0x02314D40
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r6, r1
@@ -3824,7 +3824,7 @@ _02314DB8:
 _02314DBC:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_02314D40
+	arm_func_end ExclusiveItemEffectIsActiveWithLogging
 
 	arm_func_start ov29_02314DC4
 ov29_02314DC4: ; 0x02314DC4
@@ -3859,7 +3859,7 @@ TryActivateQuickFeet: ; 0x02314E1C
 	mov r5, r0
 	mov r0, r4
 	mov r1, #0x6d
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -3873,8 +3873,8 @@ TryActivateQuickFeet: ; 0x02314E1C
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end TryActivateQuickFeet
 
-	arm_func_start ov29_02314E60
-ov29_02314E60: ; 0x02314E60
+	arm_func_start TryInflictTerrifiedStatus
+TryInflictTerrifiedStatus: ; 0x02314E60
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r2, _02314EB0 ; =0x022C4618
 	mov r4, r1
@@ -3898,10 +3898,10 @@ ov29_02314E60: ; 0x02314E60
 	.align 2, 0
 _02314EB0: .word 0x022C4618
 _02314EB4: .word 0x00000DE5
-	arm_func_end ov29_02314E60
+	arm_func_end TryInflictTerrifiedStatus
 
-	arm_func_start ov29_02314EB8
-ov29_02314EB8: ; 0x02314EB8
+	arm_func_start TryInflictGrudgeStatus
+TryInflictGrudgeStatus: ; 0x02314EB8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, r1
 	ldr r5, [r7, #0xb4]
@@ -3937,7 +3937,7 @@ _02314F2C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02314F34: .word 0x00000ED1
-	arm_func_end ov29_02314EB8
+	arm_func_end TryInflictGrudgeStatus
 
 	arm_func_start TryInflictConfusedStatus
 TryInflictConfusedStatus: ; 0x02314F38
@@ -3954,14 +3954,14 @@ TryInflictConfusedStatus: ; 0x02314F38
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	mov r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -3989,7 +3989,7 @@ _02314FD8:
 	mov r1, r6
 	mov r2, r5
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -4008,14 +4008,14 @@ _02315028:
 	beq _02315048
 	mov r0, r7
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _02315054
 _02315048:
 	mov r0, r6
 	mov r1, #0x40
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 _02315054:
 	cmp r0, #0
 	beq _0231507C

@@ -13,7 +13,7 @@
 .public GetMaxPpWrapper
 .public GetPressedButtons
 .public GetReleasedStylus
-.public GetScenarioBalance__0204CB94
+.public GetScenarioBalance
 .public GetTileSafe
 .public HandleFaint
 .public HandleSir0Translation
@@ -33,7 +33,7 @@
 .public ov29_022DE15C
 .public ov29_022DE854
 .public ov29_022E34B0
-.public ov29_022E38E0
+.public AnimationDelayOrSomething
 .public ov29_022E3A40
 .public ov29_022E68BC
 .public ov29_022E8270
@@ -42,14 +42,14 @@
 .public ov29_022E9FD0
 .public ov29_022EA370
 .public ov29_022ED9D0
-.public ov29_022FDDC0
+.public SubInitMonster
 .public ov29_02303F18
 .public ov29_023046E8
-.public ov29_023356C0
+.public LoadTextureUi
 .public ov29_02335760
 .public ov29_02335774
 .public ov29_02335804
-.public ov29_02336204
+.public IsCurrentTilesetBackground
 .public ov29_0233A248
 .public ov29_023457C8
 .public ov29_0234B034

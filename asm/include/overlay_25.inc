@@ -11,7 +11,7 @@
 .public sub_0202F8FC
 .public sub_02027B1C
 .public PreprocessString
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public GetPressedButtons
 .public HidePortraitBox
 .public ov11_0230B8C0
@@ -32,7 +32,7 @@
 .public InitPortraitBoxWithMonsterId
 .public ov11_0230BD28
 .public GetNormalMenuResult
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public ShowDBox
 .public sub_0202F8C4
 .public sub_02026268

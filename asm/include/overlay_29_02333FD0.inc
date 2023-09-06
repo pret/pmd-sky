@@ -1,6 +1,6 @@
 #pragma once
-.public AbilityIsActive2
-.public Abs
+.public AbilityIsActiveVeneer
+.public abs
 .public AdvanceFrame
 .public DungeonRandInt
 .public EntityIsValid__023350D8
@@ -15,9 +15,9 @@
 .public TryActivateArtificialWeatherAbilities
 .public TryWeatherFormChange
 .public ov29_022DE608
-.public ov29_022DE620
-.public ov29_022E38E0
+.public GetWeatherColorTable
+.public AnimationDelayOrSomething
 .public ov29_022E5FE8
-.public ov29_023007A8
-.public ov29_023354C4
+.public IsMonsterSleeping
+.public TryActivateWeather
 .public ov29_02338A4C

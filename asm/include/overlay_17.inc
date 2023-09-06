@@ -63,7 +63,7 @@
 .public GetActiveRosterIndex
 .public ShowPortraitBox
 .public sub_0203C940
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public ShowMessageInDBox
 .public ov00_022E6E68
 .public sub_0203C9E4
@@ -85,5 +85,5 @@
 .public InitPortraitBoxWithMonsterId
 .public CreateDBox
 .public sub_020564B0
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public sub_02056F60

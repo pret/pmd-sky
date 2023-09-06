@@ -3,6 +3,6 @@
 
 #include "dungeon_mode.h"
 
-u8 EntityIsValid__0232A3D8(struct entity *entity);
+u8 EntityIsValidMoveEffects__0232A3D8(struct entity *entity);
 
 #endif //PMDSKY_OVERLAY_29_0232A3D8_H

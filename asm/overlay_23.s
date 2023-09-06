@@ -86,7 +86,7 @@ _0238A218:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1ac
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	ldr r1, _0238B0E0 ; =0x00003008
 	ldr r3, [r0]
@@ -492,7 +492,7 @@ _0238A85C:
 	cmp r0, #1
 	bne _0238A8B0
 	ldrsh r0, [r1, #0x1c]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	ldrne r0, _0238B0DC ; =ov23_0238D8A0
 	movne r1, #0
@@ -1234,7 +1234,7 @@ _0238B308:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1ac
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	ldr r1, _0238C1D0 ; =0x00003008
 	ldr r3, [r0]
@@ -1640,7 +1640,7 @@ _0238B94C:
 	cmp r0, #1
 	bne _0238B9A0
 	ldrsh r0, [r1, #0x1c]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	ldrne r0, _0238C1CC ; =ov23_0238D8A0
 	movne r1, #0
@@ -2588,7 +2588,7 @@ _0238C728:
 	cmp r1, #0x10
 	bne _0238C78C
 	ldrsh r0, [r2, #0x1c]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	bne _0238C76C
 	ldr r0, _0238D090 ; =ov23_0238D8A0
@@ -3302,7 +3302,7 @@ ov23_0238D0E0: ; 0x0238D0E0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	ldrsb r1, [r3, #0x88]
 	add r0, r3, #0x1ac
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238D144 ; =ov23_0238D8A0
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x96]

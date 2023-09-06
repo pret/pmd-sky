@@ -38,7 +38,7 @@
 .public ov00_0230D71C
 .public sub_02027AF0
 .public sub_0202C3A8
-.public DivideInt
+.public __divsi3
 .public MemFree
 .public sub_02046D20
 .public sub_02011EC4
@@ -67,7 +67,7 @@
 .public GetItemAtIdx
 .public ShowPortraitBox
 .public sub_020327CC
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public sub_02011E18
 .public HidePortraitBox
 .public sub_0202B568
@@ -77,7 +77,7 @@
 .public sub_02011DB8
 .public sub_0202D16C
 .public sub_02011E24
-.public sub_0200CE74
+.public IsTicketItem
 .public sub_0201227C
 .public IsBagFull
 .public sub_0202B558
@@ -90,7 +90,7 @@
 .public sub_0201255C
 .public sub_0202C7BC
 .public ov11_0230DB58
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public sub_020037A4
 .public ov11_022E6E8C
 .public ov00_022E6E68

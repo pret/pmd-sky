@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_0234DDF4
-ov29_0234DDF4: ; 0x0234DDF4
+	arm_func_start OpenMenu
+OpenMenu: ; 0x0234DDF4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x38
 	mov r0, #0x22
@@ -56,7 +56,7 @@ _0234DE78:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	cmp sl, #0
 	mvnne r4, #0
 	bne _0234DEE8
@@ -107,11 +107,11 @@ _0234DF5C:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0xc
-	bl ov29_022EB54C
+	bl GetItemToUse
 	ldrb r1, [r0]
 	orr r1, r1, #4
 	strb r1, [r0]
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov30_0238367C
 	mov r0, #1
 	bl ov29_022EB398
@@ -123,7 +123,7 @@ _0234DF9C:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0xd
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r7, r0
 	bl GetLeader
 	mov r1, r7
@@ -139,7 +139,7 @@ _0234DFD8:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0xe
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r7, r0
 	bl GetLeader
 	mov r1, r7
@@ -155,7 +155,7 @@ _0234E014:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0xf
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r7, r0
 	bl GetLeader
 	mov r1, r7
@@ -201,7 +201,7 @@ _0234E0B8:
 	bl sub_0204AF20
 	cmp r0, #0
 	beq _0234E140
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl GetLeader
 	bl ov29_022F0C1C
 	cmp r0, #0
@@ -213,12 +213,12 @@ _0234E0EC:
 	bl sub_0204AF20
 	cmp r0, #0
 	beq _0234E140
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0x15
 	mov r7, r0
-	bl ov29_022EB54C
+	bl GetItemToUse
 	ldrsh r0, [r0, #4]
 	bl GetItemMoveId16
 	mov r1, r0
@@ -245,7 +245,7 @@ _0234E168:
 	mov r0, #1
 	bl ov29_022EB398
 	bl GetLeader
-	bl ov31_0238704C
+	bl TeamMenu
 	cmp r0, #0
 	ldrne r5, [sp, #0x10]
 	bl ov29_022F0B9C
@@ -266,29 +266,29 @@ _0234E1B0:
 	beq _0234E1D8
 	b _0234E288
 _0234E1BC:
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	mov r1, #0
 	bl ov31_02387688
 	b _0234E28C
 _0234E1CC:
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov29_022F5A0C
 	b _0234E28C
 _0234E1D8:
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov29_022F5DC0
 	b _0234E28C
 _0234E1E4:
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov31_02387660
 	b _0234E28C
 _0234E1F0:
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	mov r1, #1
 	bl ov31_02387688
 	b _0234E28C
 _0234E200:
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov30_023851C0
 	mov r7, #0
 	mov r8, r7
@@ -303,7 +303,7 @@ _0234E214:
 	bl EntityIsValid__0234DDD0
 	cmp r0, #0
 	beq _0234E278
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	ldrb r0, [r0, #4]
 	cmp r8, r0
 	bne _0234E274
@@ -315,7 +315,7 @@ _0234E214:
 	ldr r0, [sp, #4]
 	mov r1, #0
 	mov r2, #1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	mov sb, #0
 	b _0234E28C
 _0234E274:
@@ -404,14 +404,14 @@ _0234E38C:
 	ldr r0, [sp, #0x24]
 	mov r1, #0
 	mov r2, #1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	ldr r0, [sp, #0x24]
 	mov r2, #1
 	add r0, r0, #4
 	mov r1, #0
 	mov r3, r2
-	bl ov29_02337428
-	bl ov29_022E9618
+	bl DrawTileGrid
+	bl GetLeaderMonster
 	strb r8, [r0, #0x4e]
 	mov r0, #0
 	bl ov29_022EB398
@@ -431,14 +431,14 @@ _0234E3CC:
 	bl ov29_022F0B9C
 	cmp r0, #0x1d
 	bne _0234E40C
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov30_02385FE0
 	b _0234E3CC
 _0234E40C:
 	bl ov29_022F0B9C
 	cmp r0, #0x1e
 	bne _0234E428
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	mov r1, #0
 	bl ov31_023860A4
 	b _0234E3CC
@@ -446,7 +446,7 @@ _0234E428:
 	bl ov29_022F0B9C
 	cmp r0, #0x33
 	bne _0234E444
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	mov r1, #0
 	bl ov31_023860A4
 	b _0234E3CC
@@ -454,7 +454,7 @@ _0234E444:
 	bl ov29_022F0B9C
 	cmp r0, #0x1f
 	bne _0234E45C
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov31_0238619C
 	b _0234E3CC
 _0234E45C:
@@ -474,7 +474,7 @@ _0234E48C:
 	bl sub_0204AF20
 	cmp r0, #0
 	beq _0234E4CC
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	ldrb r2, [r0, #4]
 	ldr r3, [sb]
 	ldrb r1, [r0, #0xa]
@@ -491,8 +491,8 @@ _0234E4CC:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #1
-	bl ov29_022F98B4
-	bl ov29_0233779C
+	bl TryPointCameraToMonster
+	bl HideTileGrid
 	bl ov29_022F0B9C
 	cmp r0, #0
 	bne _0234E890
@@ -550,11 +550,11 @@ _0234E5A4:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0x10
-	bl ov29_022EB54C
+	bl GetItemToUse
 	ldrb r1, [r0]
 	orr r1, r1, #4
 	strb r1, [r0]
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov30_0238367C
 	mov r0, #1
 	bl ov29_022EB398
@@ -566,7 +566,7 @@ _0234E5E4:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0x11
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r5, r0
 	bl GetLeader
 	mov r1, r5
@@ -582,7 +582,7 @@ _0234E620:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0x12
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r5, r0
 	bl GetLeader
 	mov r1, r5
@@ -598,7 +598,7 @@ _0234E65C:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0x13
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r5, r0
 	bl GetLeader
 	mov r1, r5
@@ -616,7 +616,7 @@ _0234E698:
 	bl sub_0204AF20
 	cmp r0, #0
 	beq _0234E720
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl GetLeader
 	bl ov29_022F0C1C
 	cmp r0, #0
@@ -628,12 +628,12 @@ _0234E6CC:
 	bl sub_0204AF20
 	cmp r0, #0
 	beq _0234E720
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0x15
 	mov r7, r0
-	bl ov29_022EB54C
+	bl GetItemToUse
 	ldrsh r0, [r0, #4]
 	bl GetItemMoveId16
 	mov r1, r0
@@ -712,7 +712,7 @@ _0234E800:
 	mov r0, #2
 	mov r1, #0
 	bl ov29_022EA428
-	bl ov29_0234FA24
+	bl OthersMenu
 	cmp r0, #0
 	bne _0234E890
 	bl ov29_022F0B9C
@@ -723,7 +723,7 @@ _0234E800:
 _0234E834:
 	cmp r4, #5
 	bne _0234E86C
-	bl ov31_0238878C
+	bl RestMenu
 	ldr r0, _0234E8E8 ; =0x02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
@@ -776,7 +776,7 @@ _0234E8E8: .word 0x02353538
 _0234E8EC: .word 0x02382804
 _0234E8F0: .word 0x0235352C
 _0234E8F4: .word 0x00000B6A
-	arm_func_end ov29_0234DDF4
+	arm_func_end OpenMenu
 
 	arm_func_start ov29_0234E8F8
 ov29_0234E8F8: ; 0x0234E8F8

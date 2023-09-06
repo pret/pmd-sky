@@ -1,6 +1,6 @@
 #pragma once
-.public AbilityIsActive2
-.public Abs
+.public AbilityIsActiveVeneer
+.public abs
 .public CalcStatusDuration
 .public CanAttackInDirection
 .public DungeonRandInt
@@ -23,7 +23,7 @@
 .public SubstitutePlaceholderStringTags
 .public TryAddTargetToAiTargetList
 .public UpdateStatusIconFlags
-.public ov29_022E274C
+.public CanSeeTarget
 .public ov29_022E3F74
 .public ov29_022E3F78
 .public ov29_022E3F7C

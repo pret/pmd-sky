@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022EE36C
-ov29_022EE36C: ; 0x022EE36C
+	arm_func_start ApplyMudTrapEffect
+ApplyMudTrapEffect: ; 0x022EE36C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	movs r4, r1
@@ -60,10 +60,10 @@ _022EE424:
 	.align 2, 0
 _022EE42C: .word 0x02352AEC
 _022EE430: .word 0x02352AE8
-	arm_func_end ov29_022EE36C
+	arm_func_end ApplyMudTrapEffect
 
-	arm_func_start ov29_022EE434
-ov29_022EE434: ; 0x022EE434
+	arm_func_start ApplyStickyTrapEffect
+ApplyStickyTrapEffect: ; 0x022EE434
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xcc
 	mov sb, r1
@@ -200,10 +200,10 @@ _022EE61C: .word 0x00000E5F
 _022EE620: .word 0x02353538
 _022EE624: .word 0x00000309
 _022EE628: .word 0x00000E5E
-	arm_func_end ov29_022EE434
+	arm_func_end ApplyStickyTrapEffect
 
-	arm_func_start ov29_022EE62C
-ov29_022EE62C: ; 0x022EE62C
+	arm_func_start ApplyGrimyTrapEffect
+ApplyGrimyTrapEffect: ; 0x022EE62C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xd8
 	movs sl, r1
@@ -281,7 +281,7 @@ _022EE6FC:
 	mov r0, r8
 	mov r2, #2
 	add r5, r5, #1
-	bl ov29_02344BD0
+	bl GenerateStandardItem
 	cmp r6, #0
 	beq _022EE7AC
 	ldr r0, [sp, #4]
@@ -340,10 +340,10 @@ _022EE810: .word 0x02353538
 _022EE814: .word 0x00000E63
 _022EE818: .word 0x00000E61
 _022EE81C: .word 0x00000E62
-	arm_func_end ov29_022EE62C
+	arm_func_end ApplyGrimyTrapEffect
 
-	arm_func_start ov29_022EE820
-ov29_022EE820: ; 0x022EE820
+	arm_func_start ApplyPitfallTrapEffect
+ApplyPitfallTrapEffect: ; 0x022EE820
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	movs r7, r1
 	mov r8, r0
@@ -355,7 +355,7 @@ ov29_022EE820: ; 0x022EE820
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_02344148
+	bl AreLateGameTrapsEnabled
 	cmp r0, #0
 	bne _022EE868
 	ldr r1, _022EE984 ; =0x00000E64
@@ -367,7 +367,7 @@ _022EE868:
 	ldr r5, [r7, #0xb4]
 	bne _022EE8AC
 	mov r0, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _022EE8AC
 	mov r0, r6
@@ -398,7 +398,7 @@ _022EE8AC:
 	ldrsh r1, [r1]
 	mov r2, #0x11
 	mov r3, #0x254
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	ldr r0, _022EE980 ; =0x02353538
 	mov r1, #2
 	ldr r0, [r0]
@@ -445,10 +445,10 @@ _022EE984: .word 0x00000E64
 _022EE988: .word 0x022C44E4
 _022EE98C: .word 0x00000E66
 _022EE990: .word 0x00000E65
-	arm_func_end ov29_022EE820
+	arm_func_end ApplyPitfallTrapEffect
 
-	arm_func_start ov29_022EE994
-ov29_022EE994: ; 0x022EE994
+	arm_func_start ApplySummonTrapEffect
+ApplySummonTrapEffect: ; 0x022EE994
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r0, #3
@@ -459,7 +459,7 @@ ov29_022EE994: ; 0x022EE994
 	ldr r0, [r1]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_02344148
+	bl AreLateGameTrapsEnabled
 	cmp r0, #0
 	bne _022EE9D8
 	ldr r1, _022EEA24 ; =0x00000E68
@@ -491,10 +491,10 @@ _022EEA20: .word 0x02353538
 _022EEA24: .word 0x00000E68
 _022EEA28: .word 0x0000030F
 _022EEA2C: .word 0x00000E67
-	arm_func_end ov29_022EE994
+	arm_func_end ApplySummonTrapEffect
 
-	arm_func_start ov29_022EEA30
-ov29_022EEA30: ; 0x022EEA30
+	arm_func_start ApplyPpZeroTrapEffect
+ApplyPpZeroTrapEffect: ; 0x022EEA30
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x20
 	movs r4, r1
@@ -558,22 +558,22 @@ _022EEB08:
 	.align 2, 0
 _022EEB10: .word 0x00000E69
 _022EEB14: .word 0x00000E6A
-	arm_func_end ov29_022EEA30
+	arm_func_end ApplyPpZeroTrapEffect
 
-	arm_func_start ov29_022EEB18
-ov29_022EEB18: ; 0x022EEB18
+	arm_func_start ApplyPokemonTrapEffect
+ApplyPokemonTrapEffect: ; 0x022EEB18
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	mov sl, r0
 	mov r4, r1
 	mov r7, #0
-	bl ov29_022E333C
+	bl GetVisibilityRange
 	ldr r1, _022EED1C ; =0x02353538
 	mov r5, r0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_02344148
+	bl AreLateGameTrapsEnabled
 	cmp r0, #0
 	bne _022EEB60
 	ldr r1, _022EED20 ; =0x00000E6B
@@ -626,7 +626,7 @@ _022EEBE4:
 	ldr r1, [r0]
 	cmp r1, #3
 	bne _022EECD8
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r0, [r0]
 	tst r0, #2
 	bne _022EECD8
@@ -678,12 +678,12 @@ _022EEC70:
 	beq _022EECCC
 	add r0, sp, #0xe
 	mov r1, #0
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	add r7, r7, #1
 _022EECCC:
 	mov r0, r6
 	mov r1, sb
-	bl ov29_023391EC
+	bl DrawMinimapTile
 _022EECD8:
 	add r6, r6, #1
 _022EECDC:
@@ -711,10 +711,10 @@ _022EED1C: .word 0x02353538
 _022EED20: .word 0x00000E6B
 _022EED24: .word 0x00000E6C
 _022EED28: .word 0x00000E6D
-	arm_func_end ov29_022EEB18
+	arm_func_end ApplyPokemonTrapEffect
 
-	arm_func_start ov29_022EED2C
-ov29_022EED2C: ; 0x022EED2C
+	arm_func_start ApplyTripTrapEffect
+ApplyTripTrapEffect: ; 0x022EED2C
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x18
 	movs r5, r1
@@ -733,7 +733,7 @@ ov29_022EED2C: ; 0x022EED2C
 	mov r0, r5
 	mov r1, #0x2c
 	ldr r4, [r5, #0xb4]
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _022EEE38
 	ldrb r0, [r4, #0x62]
@@ -756,7 +756,7 @@ ov29_022EED2C: ; 0x022EED2C
 _022EEDC4:
 	mov r0, #0
 	strb r0, [r4, #0x62]
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	ldr r1, _022EEE40 ; =0x0000130F
 	mov r0, r5
 	bl ov29_022E56A0
@@ -791,17 +791,17 @@ _022EEE40: .word 0x0000130F
 _022EEE44: .word 0x0235171C
 _022EEE48: .word 0x0235171E
 _022EEE4C: .word 0x02351844
-	arm_func_end ov29_022EED2C
+	arm_func_end ApplyTripTrapEffect
 
-	arm_func_start ov29_022EEE50
-ov29_022EEE50: ; 0x022EEE50
+	arm_func_start ApplyStealthRockTrapEffect
+ApplyStealthRockTrapEffect: ; 0x022EEE50
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r4, r1
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r4
 	mov r1, #0xd
 	ldr r5, [r4, #0xb4]
-	bl ov29_02301EAC
+	bl HasTypeAffectedByGravity
 	cmp r0, #0
 	bne _022EEEBC
 	ldrsh r2, [r5, #0x12]
@@ -820,7 +820,7 @@ ov29_022EEE50: ; 0x022EEE50
 	mov r0, r4
 	mov r1, r1, asr #8
 	mov r2, #0x16
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	ldmia sp!, {r3, r4, r5, pc}
 _022EEEBC:
 	mov r0, #0
@@ -836,10 +836,10 @@ _022EEEDC: .word 0x000003E7
 _022EEEE0: .word 0x022C4770
 _022EEEE4: .word 0x0000026D
 _022EEEE8: .word 0x00000E6E
-	arm_func_end ov29_022EEE50
+	arm_func_end ApplyStealthRockTrapEffect
 
-	arm_func_start ov29_022EEEEC
-ov29_022EEEEC: ; 0x022EEEEC
+	arm_func_start ApplyToxicSpikesTrapEffect
+ApplyToxicSpikesTrapEffect: ; 0x022EEEEC
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r4, r1
 	mov r5, r0
@@ -849,7 +849,7 @@ ov29_022EEEEC: ; 0x022EEEEC
 	ldrsh r1, [r1]
 	mov r2, #0x15
 	mov r3, #0x26c
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	mov r0, r4
 	bl ov29_022FBD80
 	cmp r0, #0
@@ -862,10 +862,10 @@ ov29_022EEEEC: ; 0x022EEEEC
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022EEF3C: .word 0x022C45CC
-	arm_func_end ov29_022EEEEC
+	arm_func_end ApplyToxicSpikesTrapEffect
 
-	arm_func_start ov29_022EEF40
-ov29_022EEF40: ; 0x022EEF40
+	arm_func_start ApplyRandomTrapEffect
+ApplyRandomTrapEffect: ; 0x022EEF40
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x64
 	movs sb, r2
@@ -892,7 +892,7 @@ ov29_022EEF40: ; 0x022EEF40
 	mov r1, sl
 	mov r2, sb
 	str r4, [sp, #8]
-	bl ov29_022EF154
+	bl ApplyTrapEffect
 	b _022EF064
 _022EEFB0:
 	ldr r0, [sb, #0xb4]
@@ -937,9 +937,9 @@ _022EF020:
 	mov r2, r6
 	mov r1, sl
 	stmib sp, {r4, fp}
-	bl ov29_022EF154
+	bl ApplyTrapEffect
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	add sb, sb, #1
 _022EF05C:
 	cmp sb, r7
@@ -950,10 +950,10 @@ _022EF064:
 	.align 2, 0
 _022EF06C: .word 0x022C4B18
 _022EF070: .word 0x02353538
-	arm_func_end ov29_022EEF40
+	arm_func_end ApplyRandomTrapEffect
 
-	arm_func_start ov29_022EF074
-ov29_022EF074: ; 0x022EF074
+	arm_func_start ApplyGrudgeTrapEffect
+ApplyGrudgeTrapEffect: ; 0x022EF074
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov sl, r0
 	mov r0, #3
@@ -995,7 +995,7 @@ _022EF0C4:
 	mov r0, sb
 	mov r1, sb
 	mov r2, r6
-	bl ov29_02314EB8
+	bl TryInflictGrudgeStatus
 	cmp r0, #0
 	movne r7, r5
 _022EF11C:
@@ -1014,10 +1014,10 @@ _022EF11C:
 _022EF148: .word 0x0000030F
 _022EF14C: .word 0x02353538
 _022EF150: .word 0x00000E6F
-	arm_func_end ov29_022EF074
+	arm_func_end ApplyGrudgeTrapEffect
 
-	arm_func_start ov29_022EF154
-ov29_022EF154: ; 0x022EF154
+	arm_func_start ApplyTrapEffect
+ApplyTrapEffect: ; 0x022EF154
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldrb ip, [sp, #0x24]
@@ -1066,22 +1066,22 @@ _022EF180: ; jump table
 _022EF204:
 	mov r0, r6
 	mov r1, r5
-	bl ov29_022EE36C
+	bl ApplyMudTrapEffect
 	b _022EF454
 _022EF214:
 	mov r0, r6
 	mov r1, r5
-	bl ov29_022EE434
+	bl ApplyStickyTrapEffect
 	b _022EF454
 _022EF224:
 	mov r0, r6
 	mov r1, r5
-	bl ov29_022EE62C
+	bl ApplyGrimyTrapEffect
 	b _022EF454
 _022EF234:
 	mov r0, r6
 	mov r1, lr
-	bl ov29_022EE994
+	bl ApplySummonTrapEffect
 	mov r4, #1
 	b _022EF454
 _022EF248:
@@ -1089,7 +1089,7 @@ _022EF248:
 	ldrb r3, [sp, #0x28]
 	mov r0, r6
 	mov r1, r5
-	bl ov29_022EE820
+	bl ApplyPitfallTrapEffect
 	b _022EF454
 _022EF260:
 	cmp r5, #0
@@ -1163,7 +1163,7 @@ _022EF348:
 	add r2, r5, #4
 	mov r3, #1
 	stmia sp, {r4, ip}
-	bl ov29_02320448
+	bl TryExplosion
 	b _022EF454
 _022EF368:
 	ldr ip, _022EF464 ; =0x00000251
@@ -1172,12 +1172,12 @@ _022EF368:
 	add r2, r5, #4
 	mov r3, #2
 	stmia sp, {r4, ip}
-	bl ov29_02320448
+	bl TryExplosion
 	b _022EF454
 _022EF388:
 	mov r0, r6
 	mov r1, r5
-	bl ov29_022EEA30
+	bl ApplyPpZeroTrapEffect
 	b _022EF454
 _022EF398:
 	cmp r5, #0
@@ -1187,18 +1187,18 @@ _022EF398:
 	ldrsh r1, [r0]
 	mov r0, r5
 	mov r2, #0xf
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	b _022EF454
 _022EF3BC:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl ov29_02319624
+	bl TryResetStatChanges
 	b _022EF454
 _022EF3D0:
 	mov r0, r6
 	mov r1, lr
-	bl ov29_022EEB18
+	bl ApplyPokemonTrapEffect
 	mov r4, #1
 	b _022EF454
 _022EF3E4:
@@ -1209,31 +1209,31 @@ _022EF3E4:
 	ldrsh r1, [r0]
 	mov r0, r5
 	mov r2, #0xa
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	b _022EF454
 _022EF408:
 	mov r0, r6
 	mov r1, r5
-	bl ov29_022EEE50
+	bl ApplyStealthRockTrapEffect
 	b _022EF454
 _022EF418:
 	mov r0, r6
 	mov r1, r5
-	bl ov29_022EEEEC
+	bl ApplyToxicSpikesTrapEffect
 	b _022EF454
 _022EF428:
 	mov r0, r6
 	mov r1, r5
-	bl ov29_022EED2C
+	bl ApplyTripTrapEffect
 	b _022EF454
 _022EF438:
 	str lr, [sp]
-	bl ov29_022EEF40
+	bl ApplyRandomTrapEffect
 	b _022EF454
 _022EF444:
 	mov r0, r6
 	mov r1, lr
-	bl ov29_022EF074
+	bl ApplyGrudgeTrapEffect
 	mov r4, #1
 _022EF454:
 	mov r0, r4
@@ -1246,7 +1246,7 @@ _022EF468: .word 0x022C45C8
 _022EF46C: .word 0x00000252
 _022EF470: .word 0x022C4418
 _022EF474: .word 0x00000245
-	arm_func_end ov29_022EF154
+	arm_func_end ApplyTrapEffect
 
 	arm_func_start ov29_022EF478
 ov29_022EF478: ; 0x022EF478
@@ -1261,10 +1261,10 @@ ov29_022EF478: ; 0x022EF478
 	cmp r0, #2
 	bne _022EF4AC
 	mov r0, r4
-	bl ov29_022E1608
+	bl GetTrapInfo
 	strb r5, [r0]
 _022EF4AC:
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022EF478
 
@@ -1353,12 +1353,12 @@ _022EF5D0: .word 0x0000017B
 _022EF5D4: .word 0x0235171C
 	arm_func_end ov29_022EF4B4
 
-	arm_func_start ov29_022EF5D8
-ov29_022EF5D8: ; 0x022EF5D8
+	arm_func_start RevealTrapsNearby
+RevealTrapsNearby: ; 0x022EF5D8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r5, #0
-	bl ov29_022E333C
+	bl GetVisibilityRange
 	ldrb r7, [r8, #0x25]
 	mov r6, r0
 	cmp r7, #0xff
@@ -1430,8 +1430,8 @@ _022EF6C4:
 	ldr r1, _022EF6F8 ; =0x00000E02
 	mov r0, r8
 	bl LogMessageByIdWithPopupCheckUser
-	bl ov29_02339CE8
-	bl ov29_02336F4C
+	bl UpdateMinimap
+	bl UpdateTrapsVisibility
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _022EF6E4:
 	ldr r1, _022EF6FC ; =0x00000E03
@@ -1442,7 +1442,7 @@ _022EF6E4:
 _022EF6F4: .word 0x02353538
 _022EF6F8: .word 0x00000E02
 _022EF6FC: .word 0x00000E03
-	arm_func_end ov29_022EF5D8
+	arm_func_end RevealTrapsNearby
 
 	arm_func_start ov29_022EF700
 ov29_022EF700: ; 0x022EF700
@@ -1466,7 +1466,7 @@ _022EF730:
 	arm_func_start ov29_022EF738
 ov29_022EF738: ; 0x022EF738
 	stmdb sp!, {r3, lr}
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	beq _022EF780
 	ldr r0, _022EF798 ; =0x02353538

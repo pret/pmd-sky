@@ -31,10 +31,10 @@
 .public ov00_0230D71C
 .public GetType
 .public SpecialStrcpy
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public StrncpySimpleNoPadSafe
 .public FemaleToMaleForm
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public FreePortraitBox
 .public sub_020348E4
 .public sub_02004F74
@@ -46,8 +46,8 @@
 .public sub_0204A198
 .public IsDBoxActive
 .public SaveScriptVariableValue
-.public GetDebugFlag1
-.public DivideInt
+.public GetDebugFlag
+.public __divsi3
 .public ov11_022E6EC8
 .public GetMonsterGenderVeneer
 .public sub_0203909C
@@ -67,7 +67,7 @@
 .public SetBothScreensWindowsColor
 .public FreeAdvancedMenu
 .public GetPressedButtons
-.public SetPortraitAttrStruct
+.public SetPortraitOffset
 .public IsAdvancedMenuActive
 .public ov00_022E6E68
 .public GetNormalMenuResult

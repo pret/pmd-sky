@@ -73,7 +73,7 @@ _02308374:
 	ldrb r1, [r4, #0xbc]
 	cmp r1, #6
 	bls _02308394
-	bl ov29_022EF9EC
+	bl ShouldRunMonsterAi
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 _02308394:
@@ -263,8 +263,8 @@ _02308618:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_023085DC
 
-	arm_func_start ov29_0230863C
-ov29_0230863C: ; 0x0230863C
+	arm_func_start ApplyDamageAndEffects
+ApplyDamageAndEffects: ; 0x0230863C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x40
 	ldr r7, [sp, #0x68]
@@ -329,7 +329,7 @@ _023086D4:
 	blt _02308F64
 _02308730:
 	ldrb r0, [r8, #0xd]
-	bl ov29_0231EA30
+	bl CategoryIsNotPhysical
 	cmp r0, #0
 	bne _02308778
 	cmp sl, sb
@@ -337,13 +337,13 @@ _02308730:
 	ldrsh r1, [sl, #4]
 	ldrsh r0, [sb, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	bgt _02308778
 	ldrsh r1, [sl, #6]
 	ldrsh r0, [sb, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	ble _02308780
 _02308778:
@@ -369,7 +369,7 @@ _023087B4:
 	movne r0, #1
 	bne _02308F64
 	ldrb r0, [r8, #0xd]
-	bl ov29_0231EA30
+	bl CategoryIsNotPhysical
 	mov r4, r0
 	cmp sl, sb
 	mov r5, #0
@@ -377,13 +377,13 @@ _023087B4:
 	ldrsh r1, [sl, #4]
 	ldrsh r0, [sb, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	bgt _02308808
 	ldrsh r1, [sl, #6]
 	ldrsh r0, [sb, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	ble _02308810
 _02308808:
@@ -391,7 +391,7 @@ _02308808:
 	b _02308A28
 _02308810:
 	add r0, sp, #0x2c
-	bl ResetDamageDesc
+	bl ResetDamageData
 	ldr r0, [sb, #0xb4]
 	cmp r4, #0
 	ldrb r0, [r0, #0xd5]
@@ -543,13 +543,13 @@ _02308A28:
 	ldrsh r1, [sl, #4]
 	ldrsh r0, [sb, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	bgt _02308A6C
 	ldrsh r1, [sl, #6]
 	ldrsh r0, [sb, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	ble _02308A74
 _02308A6C:
@@ -557,7 +557,7 @@ _02308A6C:
 	b _02308ECC
 _02308A74:
 	ldrb r0, [r8, #0xd]
-	bl ov29_0231EA30
+	bl CategoryIsNotPhysical
 	mov r4, r0
 	mov r0, sb
 	mov r1, #0xb
@@ -655,7 +655,7 @@ _02308BB0:
 	beq _02308C00
 	mov r0, sl
 	mov r1, #0xa
-	bl ov29_02301EAC
+	bl HasTypeAffectedByGravity
 	cmp r0, #0
 	bne _02308C00
 	mov r0, sl
@@ -884,7 +884,7 @@ _02308ECC:
 	mov r0, r4
 	mov r2, #0xc
 	mov r3, #0x238
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 _02308F4C:
 	mov r0, sl
 	mov r1, sb
@@ -917,4 +917,4 @@ _02308FAC: .word 0x022C467C
 _02308FB0: .word 0x022C4524
 _02308FB4: .word 0x022C4638
 _02308FB8: .word 0x02353538
-	arm_func_end ov29_0230863C
+	arm_func_end ApplyDamageAndEffects

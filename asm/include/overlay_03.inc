@@ -138,7 +138,7 @@
 .public ov01_0232CB1C
 .public GetMaxItemsAllowed
 .public MemcpySimple
-.public LoadFileFromRom__02008C3C
+.public LoadFileFromRom
 .public IsItemValidVeneer
 .public sub_0205B6EC
 .public sub_02042CF0

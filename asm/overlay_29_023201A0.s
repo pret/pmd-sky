@@ -13,7 +13,7 @@ ov29_023201A0: ; 0x023201A0
 	mov r0, r4
 	bl ov29_022F9C74
 	mov r0, r4
-	bl ov29_02321104
+	bl EnsureCanStandCurrentTile
 	mov r0, r4
 	bl ov29_02321238
 	ldmia sp!, {r4, pc}
@@ -91,7 +91,7 @@ _023202C4:
 	mov r2, r7
 	bl ov29_022E1A90
 	mov r0, sl
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _023202EC
 	mov r0, r4
@@ -104,7 +104,7 @@ _023202EC:
 	ldrsh r2, [sp, #2]
 	mov r0, sl
 	mov r3, #1
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02320328
@@ -137,12 +137,12 @@ ov29_0232033C: ; 0x0232033C
 	sub r0, r8, r2, lsl #8
 	mov r6, r2, lsl #8
 	mov r7, r1, lsl #8
-	bl Abs
+	bl abs
 	cmp r0, #0xc
 	bge _02320394
 	ldr r0, [sl, #0x10]
 	sub r0, r0, r7
-	bl Abs
+	bl abs
 	cmp r0, #0xc
 	blt _0232041C
 _02320394:
@@ -150,11 +150,11 @@ _02320394:
 	sub r0, r6, r8
 	mov r1, #0xc
 	mov r5, #0
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp]
 	sub r0, r7, sb
 	mov r1, #0xc
-	bl DivideInt
+	bl __divsi3
 	mov fp, r0
 	mov r4, r5
 _023203C0:
@@ -170,9 +170,9 @@ _023203C0:
 	str r1, [sl, #0x1c]
 	mov r0, sl
 	add r1, sp, #4
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	mov r0, sl
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _0232040C
 	mov r0, #0x1a
@@ -189,15 +189,15 @@ _0232041C:
 	str r7, [sp, #8]
 	mov r2, #0
 	str r2, [sl, #0x1c]
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	mov r0, #0x1a
 	bl AdvanceFrame
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end ov29_0232033C
 
-	arm_func_start ov29_02320448
-ov29_02320448: ; 0x02320448
+	arm_func_start TryExplosion
+TryExplosion: ; 0x02320448
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov sl, r0
@@ -222,7 +222,7 @@ _0232047C:
 	beq _023204B0
 	mov r0, r6
 	mov r1, r7
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _023204BC
 _023204B0:
@@ -341,7 +341,7 @@ _02320634:
 	bne _02320660
 	add r0, sp, #0xc
 	mov r1, #0
-	bl ov29_023456BC
+	bl RemoveGroundItem
 _02320660:
 	mov r6, #1
 _02320664:
@@ -398,7 +398,7 @@ _02320714:
 _02320718:
 	mov r0, r5
 	mov r1, r6
-	bl ov29_02336A84
+	bl DetermineTileWalkableNeighbors
 	add r5, r5, #1
 	cmp r5, #0x38
 	blt _02320718
@@ -406,8 +406,8 @@ _02320718:
 	cmp r6, #0x20
 	blt _02320714
 _0232073C:
-	bl ov29_02339CE8
-	bl ov29_02336F4C
+	bl UpdateMinimap
+	bl UpdateTrapsVisibility
 _02320744:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -418,4 +418,4 @@ _02320754: .word 0x00000BFB
 _02320758: .word 0x023529B8
 _0232075C: .word 0x02353700
 _02320760: .word 0x0000026F
-	arm_func_end ov29_02320448
+	arm_func_end TryExplosion

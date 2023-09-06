@@ -1,5 +1,5 @@
 #pragma once
-.public Abs
+.public abs
 .public AiMovement
 .public ApplyDamage
 .public BoostOffensiveStat
@@ -21,7 +21,7 @@
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MonsterIsType
-.public ResetDamageDesc
+.public ResetDamageData
 .public SetActionPassTurnOrWalk
 .public SubstitutePlaceholderStringTags
 .public UpdateAiTargetPos
@@ -30,17 +30,17 @@
 .public ov29_022E45D0
 .public ov29_022E57D4
 .public ov29_022E5E84
-.public ov29_022EF9EC
+.public ShouldRunMonsterAi
 .public ov29_022FB538
 .public ov29_02300B40
 .public ov29_02300D50
 .public ov29_0230175C
-.public ov29_02301EAC
-.public ov29_0230D11C
+.public HasTypeAffectedByGravity
+.public ApplyDamageAndEffectsWrapper
 .public ov29_0230D654
 .public ov29_0230E914
 .public ov29_0230F728
-.public ov29_0231EA30
+.public CategoryIsNotPhysical
 .public ov29_0231EDFC
 .public ov29_023380FC
 .public sub_02054EC8

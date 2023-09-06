@@ -1,5 +1,5 @@
 #pragma once
-.public AbilityIsActive2
+.public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public DungeonRandInt
 .public DungeonRandRange
@@ -11,4 +11,4 @@
 .public MewSpawnCheck
 .public MultiplyByFixedPoint
 .public SpawnMonster
-.public ov29_022E38E0
+.public AnimationDelayOrSomething

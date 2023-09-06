@@ -103,7 +103,7 @@ _022EC750:
 	moveq sl, fp
 	mov r0, sb
 	movne sl, r7
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldrne r0, [r4]
 	mov r1, #0x38
@@ -111,7 +111,7 @@ _022EC750:
 	addne r0, r0, #0x3000
 	strneb r6, [r0, #0xe36]
 	mov r0, sb
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldrne r0, [r4]
 	addne r0, r0, sl
@@ -199,7 +199,7 @@ ov29_022EC8A8: ; 0x022EC8A8
 	mov r0, r2
 	mov r1, #0x30
 	mov r4, r3
-	bl DivideInt
+	bl __divsi3
 	mov r3, r1, lsl #1
 	and r0, r3, #0xff
 	mov r2, r0, lsr #1
@@ -338,7 +338,7 @@ _022ECA8C:
 	ldr r0, [r0, r5, lsl #2]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl ov29_022EAE14
+	bl ChangeDungeonMusic
 	mov r0, r5, lsl #2
 	add r0, r0, #8
 	mov r2, r0, lsl #0x10
@@ -348,7 +348,7 @@ _022ECA8C:
 	mov r2, #0x10
 	bl ov29_022EC8A8
 	mov r0, r4
-	bl ov29_022EAE14
+	bl ChangeDungeonMusic
 _022ECAD0:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
@@ -434,7 +434,7 @@ _022ECB70:
 	mov r1, #1
 	mov r0, r4
 	mov r2, r1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	mov r0, r4
 	bl DisplayActions
 	bl IsFloorOver
@@ -463,7 +463,7 @@ _022ECC2C:
 	mov r1, #1
 	mov r0, r4
 	mov r2, r1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	mov r0, r4
 	bl DisplayActions
 	bl IsFloorOver
@@ -492,7 +492,7 @@ _022ECC9C:
 	mov r1, #1
 	mov r0, r4
 	mov r2, r1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	mov r0, r4
 	bl DisplayActions
 	bl IsFloorOver
@@ -517,7 +517,7 @@ _022ECD0C:
 	mov r1, #1
 	mov r0, r4
 	mov r2, r1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	mov r0, r4
 	bl DisplayActions
 	bl IsFloorOver
@@ -558,7 +558,7 @@ ov29_022ECD84: ; 0x022ECD84
 	cmp r1, #0
 	ldmeqia sp!, {r4, pc}
 	ldr r0, _022ECDBC ; =0x0237C974
-	bl ov29_02300164
+	bl GetMonsterName
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022ECDBC: .word 0x0237C974

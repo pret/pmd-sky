@@ -116,7 +116,7 @@ _022FCB14:
 	cmp r0, r4
 	bne _022FCBA4
 	ldrsh r0, [r6, #0xc]
-	bl ov29_022FF6C4
+	bl IsInvalidSpawnTile
 	cmp r0, #0
 	bne _022FCBA4
 	mov r1, #0
@@ -158,7 +158,7 @@ _022FCBBC:
 	bl GetTile
 	mov r1, r0
 	ldrsh r0, [r6, #0xc]
-	bl ov29_022FF6C4
+	bl IsInvalidSpawnTile
 	cmp r0, #0
 	bne _022FCC40
 	mov r1, #0
@@ -197,7 +197,7 @@ _022FCC60:
 	bl GetTile
 	mov r1, r0
 	ldrsh r0, [r6, #0xc]
-	bl ov29_022FF6C4
+	bl IsInvalidSpawnTile
 	cmp r0, #0
 	bne _022FCCC4
 	mov r1, #0
@@ -271,8 +271,8 @@ _022FCD70: .word 0x02353538
 _022FCD74: .word 0x0237C690
 	arm_func_end ov29_022FCD04
 
-	arm_func_start ov29_022FCD78
-ov29_022FCD78: ; 0x022FCD78
+	arm_func_start SpawnInitialMonsters
+SpawnInitialMonsters: ; 0x022FCD78
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x34
 	add r0, sp, #0x24
@@ -297,10 +297,10 @@ ov29_022FCD78: ; 0x022FCD78
 	beq _022FCDDC
 _022FCDD0:
 	add r0, sp, #0x24
-	bl ov29_022FE420
+	bl GetOutlawSpawnData
 	b _022FCE34
 _022FCDDC:
-	bl ov29_023491A4
+	bl GetMissionDestination
 	ldrsh r2, [r0, #0xc]
 	mov r0, r7
 	mov r1, #7
@@ -433,7 +433,7 @@ _022FCFB4:
 	mov r2, #0
 	add r1, r1, #0xce0
 	add r1, r1, #0xc000
-	bl ov29_022E9A0C
+	bl FindFarthestUnoccupiedTileWithin2
 	cmp r0, #0
 	ldrnesh r1, [sp]
 	ldrnesh r0, [sp, #2]
@@ -448,7 +448,7 @@ _022FCFEC:
 	mov r2, #0
 	add r1, r1, #0xce0
 	add r1, r1, #0xc000
-	bl ov29_022E99F0
+	bl FindClosestUnoccupiedTileWithin2
 	cmp r0, #0
 	ldrnesh r1, [sp]
 	ldrnesh r0, [sp, #2]
@@ -484,7 +484,7 @@ _022FD070:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022FD080: .word 0x02353538
-	arm_func_end ov29_022FCD78
+	arm_func_end SpawnInitialMonsters
 
 	arm_func_start SpawnMonster
 SpawnMonster: ; 0x022FD084
@@ -497,19 +497,19 @@ SpawnMonster: ; 0x022FD084
 	bl GetTile
 	mov r1, r0
 	ldrsh r0, [r7]
-	bl ov29_022FF6C4
+	bl IsInvalidSpawnTile
 	cmp r0, #0
 	movne r0, #0
 	bne _022FD2F8
 	ldrsh r0, [r7]
-	bl ov29_022E20C0
+	bl CreateEnemyEntity
 	movs r4, r0
 	mov r0, #0
 	beq _022FD2F8
 	ldr r3, _022FD300 ; =0x0237C690
 	mov r1, r4
 	mov r2, r7
-	bl ov29_022FD9D4
+	bl InitMonster
 	ldr r5, [r4, #0xb4]
 	mov r0, #1
 	strb r0, [r5, #6]
@@ -567,7 +567,7 @@ _022FD194:
 	add r2, r5, #0x1a
 	add r3, r5, #0x1c
 	str ip, [sp, #4]
-	bl ov29_022FC234
+	bl InitEnemyStatsAndMoves
 	ldrb r1, [r5, #6]
 	cmp r1, #0
 	beq _022FD1D0
@@ -578,7 +578,7 @@ _022FD1D0:
 	cmp r1, #0
 	beq _022FD1F0
 	ldrb r0, [r7, #2]
-	bl ov29_022EFB04
+	bl IsSecretBazaarNpcBehavior
 	cmp r0, #0
 	beq _022FD1F0
 _022FD1E8:
@@ -685,15 +685,15 @@ ov29_022FD318: ; 0x022FD318
 	bl GetTile
 	mov r1, r0
 	mov r0, r7
-	bl ov29_022FF6C4
+	bl IsInvalidSpawnTile
 	cmp r0, #0
 	movne r0, #0
 	bne _022FD3AC
 _022FD36C:
 	mov r1, r7
 	mov r0, #0
-	bl ov29_022F9408
-	bl GetSpriteIndex__022F7388
+	bl GetMonsterApparentId
+	bl DungeonGetSpriteIndex
 	mov r4, r0
 	mov r0, #1
 	bl ov29_022DEA10
@@ -782,7 +782,7 @@ _022FD420:
 	mov r1, r7
 	mov r0, #1
 	strh r8, [sp, #0xc]
-	bl ov29_022FD9D4
+	bl InitMonster
 	ldr r8, [r7, #0xb4]
 	mov r2, #0
 	strb r2, [r8, #6]
@@ -896,7 +896,7 @@ _022FD570:
 	bl GetCurrentBagCapacity
 	cmp r0, #1
 	beq _022FD760
-	bl ov29_022E0880
+	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
 	bne _022FD760
 	mov r0, r7
@@ -943,7 +943,7 @@ _022FD6FC:
 	cmp r0, #0
 	bne _022FD760
 	mov r0, #0
-	bl ov29_022E7AC4
+	bl GetItemIdToSpawn
 	mov r1, r0
 	cmp r1, #0xb7
 	beq _022FD760
@@ -951,7 +951,7 @@ _022FD6FC:
 	mov r2, #0
 	bl InitStandardItem
 	mov r0, r8
-	bl ov29_02346F14
+	bl AddHeldItemToBag
 	mov r0, #1
 	strb r0, [r8, #0xfc]
 _022FD760:
@@ -999,9 +999,9 @@ ov29_022FD7A0: ; 0x022FD7A0
 	ble _022FD864
 	mov r1, r6
 	mov r0, r4
-	bl ov29_022F9408
+	bl GetMonsterApparentId
 	mov r8, r0
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	mov r4, r0
 	mov r0, r7
 	mov r1, #1
@@ -1038,14 +1038,14 @@ _022FD864:
 	ldrh r2, [r7, #6]
 	strh r2, [sp, #0x1c]
 	str r0, [sp, #0x14]
-	bl ov29_022F9408
+	bl GetMonsterApparentId
 	mov r1, #0
 	strb r1, [r7, #0x22]
 	ldr r1, [r7, #0xb4]
 	strh r0, [r1, #4]
 	ldr r1, [r7, #0xb4]
 	strh r6, [r1, #2]
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	strh r0, [r7, #0xa8]
 	cmp r4, #0
 	beq _022FD904
@@ -1096,7 +1096,7 @@ _022FD94C:
 	movne r0, #0
 	and r0, r0, #0xff
 	mov r3, #0
-	bl ov29_022FD9D4
+	bl InitMonster
 	ldrsh r2, [r5, #2]
 	add r0, r5, #0x124
 	add r1, r5, #0x12
@@ -1105,7 +1105,7 @@ _022FD94C:
 	add r2, r5, #0x1a
 	add r3, r5, #0x1c
 	str r4, [sp, #4]
-	bl ov29_022FC234
+	bl InitEnemyStatsAndMoves
 	ldrsh r2, [r5, #0x12]
 	ldrsh r1, [r5, #0x16]
 	ldr r0, _022FD9D0 ; =0x000003E7
@@ -1125,8 +1125,8 @@ _022FD94C:
 _022FD9D0: .word 0x000003E7
 	arm_func_end ov29_022FD7A0
 
-	arm_func_start ov29_022FD9D4
-ov29_022FD9D4: ; 0x022FD9D4
+	arm_func_start InitMonster
+InitMonster: ; 0x022FD9D4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	ldr r4, _022FDDB0 ; =0x02353538
@@ -1139,7 +1139,7 @@ ov29_022FD9D4: ; 0x022FD9D4
 	mov r6, r2
 	mov r0, r4
 	mov r5, r3
-	bl ov29_022FDDC0
+	bl SubInitMonster
 	mov r0, #0
 	ldrb r2, [r6, #2]
 	mov r3, #1
@@ -1155,10 +1155,10 @@ ov29_022FD9D4: ; 0x022FD9D4
 	mov r0, r7
 	ldrsh r1, [r6, #0xa]
 	ldrsh r2, [r6, #0xc]
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	mov r0, r7
 	mov r1, #0
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	cmp r8, #0
 	bne _022FDAD4
 	ldrsh r1, [r6]
@@ -1275,7 +1275,7 @@ _022FDB18:
 	strb r3, [r4, #0x23c]
 	strb r3, [r4, #0x23d]
 	strb r3, [r4, #0x23f]
-	bl ov29_022FDDC0
+	bl SubInitMonster
 	add r0, r4, #0x62
 	bl ItemZInit
 	mov r2, #0
@@ -1383,10 +1383,10 @@ _022FDDB0: .word 0x02353538
 _022FDDB4: .word 0x0000017F
 _022FDDB8: .word 0x0000028A
 _022FDDBC: .word 0x0235276C
-	arm_func_end ov29_022FD9D4
+	arm_func_end InitMonster
 
-	arm_func_start ov29_022FDDC0
-ov29_022FDDC0: ; 0x022FDDC0
+	arm_func_start SubInitMonster
+SubInitMonster: ; 0x022FDDC0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	mov r2, #0
@@ -1514,7 +1514,7 @@ _022FDF48:
 	.align 2, 0
 _022FDF9C: .word 0x022C4C6C
 _022FDFA0: .word 0x02353538
-	arm_func_end ov29_022FDDC0
+	arm_func_end SubInitMonster
 
 	arm_func_start ov29_022FDFA4
 ov29_022FDFA4: ; 0x022FDFA4
@@ -1657,8 +1657,8 @@ _022FE190: .word 0x000055AA
 _022FE194: .word 0x00005AA5
 	arm_func_end ov29_022FE048
 
-	arm_func_start ov29_022FE198
-ov29_022FE198: ; 0x022FE198
+	arm_func_start MarkShopkeeperSpawn
+MarkShopkeeperSpawn: ; 0x022FE198
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr ip, _022FE248 ; =0x02353538
 	mov r6, #0
@@ -1708,10 +1708,10 @@ _022FE1E8:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022FE248: .word 0x02353538
-	arm_func_end ov29_022FE198
+	arm_func_end MarkShopkeeperSpawn
 
-	arm_func_start ov29_022FE24C
-ov29_022FE24C: ; 0x022FE24C
+	arm_func_start SpawnShopkeepers
+SpawnShopkeepers: ; 0x022FE24C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x10
 	ldr r0, _022FE2E0 ; =0x02353538
@@ -1754,7 +1754,7 @@ _022FE2C8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022FE2E0: .word 0x02353538
-	arm_func_end ov29_022FE24C
+	arm_func_end SpawnShopkeepers
 
 	arm_func_start ov29_022FE2E4
 ov29_022FE2E4: ; 0x022FE2E4
@@ -1767,8 +1767,8 @@ ov29_022FE2E4: ; 0x022FE2E4
 _022FE2F8: .word 0x02353538
 	arm_func_end ov29_022FE2E4
 
-	arm_func_start ov29_022FE2FC
-ov29_022FE2FC: ; 0x022FE2FC
+	arm_func_start GetMaxHpAtLevel
+GetMaxHpAtLevel: ; 0x022FE2FC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	mov r8, r0
@@ -1782,7 +1782,7 @@ _022FE320:
 	mov r0, r4
 	mov r1, r8
 	mov r2, r5
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldrh r0, [sp, #4]
 	add r5, r5, #1
 	add r6, r6, r0
@@ -1792,10 +1792,10 @@ _022FE33C:
 	mov r0, r6
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-	arm_func_end ov29_022FE2FC
+	arm_func_end GetMaxHpAtLevel
 
-	arm_func_start ov29_022FE350
-ov29_022FE350: ; 0x022FE350
+	arm_func_start GetOffensiveStatAtLevel
+GetOffensiveStatAtLevel: ; 0x022FE350
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0xc
 	mov r7, r2
@@ -1812,7 +1812,7 @@ _022FE380:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r7
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldrb r0, [sb, #6]
 	add r7, r7, #1
 	add r8, r8, r0
@@ -1824,10 +1824,10 @@ _022FE39C:
 	mov r0, r8
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov29_022FE350
+	arm_func_end GetOffensiveStatAtLevel
 
-	arm_func_start ov29_022FE3B8
-ov29_022FE3B8: ; 0x022FE3B8
+	arm_func_start GetDefensiveStatAtLevel
+GetDefensiveStatAtLevel: ; 0x022FE3B8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0xc
 	mov r7, r2
@@ -1844,7 +1844,7 @@ _022FE3E8:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r7
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldrb r0, [sb, #8]
 	add r7, r7, #1
 	add r8, r8, r0
@@ -1856,10 +1856,10 @@ _022FE404:
 	mov r0, r8
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov29_022FE3B8
+	arm_func_end GetDefensiveStatAtLevel
 
-	arm_func_start ov29_022FE420
-ov29_022FE420: ; 0x022FE420
+	arm_func_start GetOutlawSpawnData
+GetOutlawSpawnData: ; 0x022FE420
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _022FE4A0 ; =0x02353538
 	mov r4, r0
@@ -1868,7 +1868,7 @@ ov29_022FE420: ; 0x022FE420
 	add r0, r0, #0x400
 	bl GetMissionRank
 	mov r5, r0
-	bl ov29_023491A4
+	bl GetMissionDestination
 	ldrsh r2, [r0, #0xe]
 	ldr r0, _022FE4A4 ; =0x020A1998
 	mov r1, r5, lsl #1
@@ -1895,7 +1895,7 @@ ov29_022FE420: ; 0x022FE420
 	.align 2, 0
 _022FE4A0: .word 0x02353538
 _022FE4A4: .word 0x020A1998
-	arm_func_end ov29_022FE420
+	arm_func_end GetOutlawSpawnData
 
 	arm_func_start ov29_022FE4A8
 ov29_022FE4A8: ; 0x022FE4A8
@@ -1912,7 +1912,7 @@ ExecuteMonsterAction: ; 0x022FE4BC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	bl ov29_022FBD08
 	mov r0, #1
 	bl ov29_0234B024
@@ -2196,7 +2196,7 @@ _022FE8D8:
 	mov r2, r8
 	mov r3, #0
 	strh r4, [sp, #2]
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	ldrb r1, [r6, #0x4c]
 	add r2, sp, #0
 	mov r0, sb
@@ -2210,7 +2210,7 @@ _022FE8D8:
 	beq _022FE95C
 	mov r0, sb
 	mov r1, #0x6f
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _022FE94C
@@ -2271,7 +2271,7 @@ _022FE9F0:
 	b _022FEBB4
 _022FEA08:
 	mov r0, sb
-	bl ov29_022F52CC
+	bl UseSingleUseItemWrapper
 	b _022FEBB4
 _022FEA14:
 	mov r0, sb
@@ -2340,7 +2340,7 @@ _022FEAC8:
 	mov r0, sb
 	bl ov29_022F996C
 	mov r0, sb
-	bl ov29_022F54BC
+	bl UseThrowableItem
 	b _022FEBB4
 _022FEAEC:
 	mov r0, r4
@@ -2374,7 +2374,7 @@ _022FEB44:
 	mov r2, r4
 	mov r3, r4
 	add r1, sb, #4
-	bl ov29_022EDFA0
+	bl TryTriggerTrap
 	b _022FEBB4
 _022FEB5C:
 	mov r0, sb
@@ -2406,7 +2406,7 @@ _022FEBAC:
 	strh r0, [r6, #0x4a]
 _022FEBB4:
 	mov r0, sb
-	bl ov29_022EDDD4
+	bl TrySpawnTrapperTrap
 	mov r0, sb
 	bl EntityIsValid__022FED98
 	cmp r0, #0
@@ -2462,7 +2462,7 @@ _022FEC68:
 	mov r0, sb
 	bl LogMessageByIdWithPopupCheckUser
 _022FEC88:
-	bl ov29_022FF168
+	bl TryActivateFlashFireOnAllMonsters
 	bl ov29_022EC85C
 	cmp r0, #0
 	bne _022FECB4
@@ -2517,7 +2517,7 @@ _022FED48:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _022FED50:
 	mov r0, sb
-	bl ov29_02321104
+	bl EnsureCanStandCurrentTile
 _022FED58:
 	mov r0, sb
 	bl ov29_0230FC24

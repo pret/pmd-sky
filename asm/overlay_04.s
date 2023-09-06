@@ -646,7 +646,7 @@ ov04_0233D1D8: ; 0x0233D1D8
 	ldr r2, _0233D2B0 ; =0x0000030F
 	add r0, sp, #0
 	strb ip, [r3, #0x92d]
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, _0233D2A8 ; =0x0233F644
 	ldr r2, [sp]
 	ldr r0, [r0]

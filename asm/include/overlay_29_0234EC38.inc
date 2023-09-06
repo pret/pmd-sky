@@ -37,7 +37,7 @@
 .public ov29_022EA428
 .public ov29_022F0C98
 .public ov29_02300818
-.public ov29_023361D4
+.public IsFullFloorFixedRoom
 .public ov29_02347100
 .public ov29_0234DD90
 .public ov29_0234DDA0

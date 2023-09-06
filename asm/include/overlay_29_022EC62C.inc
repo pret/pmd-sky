@@ -1,8 +1,8 @@
 #pragma once
-.public AbilityIsActive2
+.public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public DisplayActions
-.public DivideInt
+.public __divsi3
 .public EntityIsValid__022EC608
 .public EntityIsValid__022ECDC0
 .public ExecuteMonsterAction
@@ -14,9 +14,9 @@
 .public TryForcedLoss
 .public TrySpawnMonsterAndTickSpawnCounter
 .public ov29_022E5DBC
-.public ov29_022EAE14
+.public ChangeDungeonMusic
 .public ov29_022EAEF0
 .public ov29_022EF9C8
 .public ov29_022F2FE4
-.public ov29_022F98B4
-.public ov29_02300164
+.public TryPointCameraToMonster
+.public GetMonsterName

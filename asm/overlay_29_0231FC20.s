@@ -25,14 +25,14 @@ _0231FC5C:
 	beq _0231FC7C
 	mov r0, r6
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _0231FC88
 _0231FC7C:
 	mov r0, sl
 	mov r1, #0xe
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 _0231FC88:
 	cmp r0, #0
 	beq _0231FCB4
@@ -50,7 +50,7 @@ _0231FCB4:
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_023440DC
+	bl AreTileJumpsAllowed
 	cmp r0, #0
 	bne _0231FCE4
 	ldr r2, _0231FDD8 ; =0x00000E55
@@ -101,12 +101,12 @@ _0231FD1C:
 	mov r1, r6
 	mov r2, r7
 	mov r3, r5
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	mov r0, sl
 	mov r1, r4
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	mov r0, sl
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _0231FD1C
 	mov r0, fp
@@ -116,7 +116,7 @@ _0231FDB4:
 	mov r0, sl
 	bl ov29_022F9C74
 	mov r0, sl
-	bl ov29_02321104
+	bl EnsureCanStandCurrentTile
 	mov r0, sl
 	bl ov29_0232124C
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -141,7 +141,7 @@ TryBlowAway: ; 0x0231FDE0
 	mov r4, r2
 	str r1, [sp, #0x20]
 	mov fp, #0
-	bl ov29_023440DC
+	bl AreTileJumpsAllowed
 	cmp r0, #0
 	bne _0231FE30
 	ldr r2, _02320158 ; =0x00000B97
@@ -179,14 +179,14 @@ _0231FE8C:
 	beq _0231FEAC
 	mov r0, sl
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _0231FEB8
 _0231FEAC:
 	mov r0, sb
 	mov r1, #0xe
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 _0231FEB8:
 	cmp r0, #0
 	beq _0231FED4
@@ -247,7 +247,7 @@ _0231FF84:
 	mov r0, sb
 	bl ov29_022E1A90
 	mov r0, sb
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _0231FFAC
 	mov r0, #0x19
@@ -283,7 +283,7 @@ _02320010:
 	ldrsh r2, [sp, #0x2e]
 	mov r0, sb
 	mov r3, #1
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	ldr r0, [sp, #0x20]
 	sub r0, r0, #1
 	str r0, [sp, #0x20]
@@ -329,7 +329,7 @@ _0232009C:
 	bl InitMove
 	add r1, sp, #0x24
 	mov r0, r4
-	bl ov29_02324854
+	bl TwoTurnMoveForcedMiss
 	cmp r0, #0
 	bne _02320118
 	mov r0, sl
@@ -359,7 +359,7 @@ _02320118:
 	mov r0, sb
 	bl ov29_022F9C74
 	mov r0, sb
-	bl ov29_02321104
+	bl EnsureCanStandCurrentTile
 	mov r0, sb
 	bl ov29_02321238
 _0232014C:

@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov31_02382820
-ov31_02382820: ; 0x02382820
+	arm_func_start EntryOverlay31
+EntryOverlay31: ; 0x02382820
 	stmdb sp!, {r3, lr}
 	ldr r0, _0238285C ; =0x02389DB4
 	bl sub_020348E4
@@ -23,7 +23,7 @@ ov31_02382820: ; 0x02382820
 	.align 2, 0
 _0238285C: .word 0x02389DB4
 _02382860: .word ov31_0238A260
-	arm_func_end ov31_02382820
+	arm_func_end EntryOverlay31
 
 	arm_func_start ov31_02382864
 ov31_02382864: ; 0x02382864
@@ -206,8 +206,8 @@ _02382AB8: .word 0x02353538
 _02382ABC: .word 0x000008B8
 	arm_func_end ov31_02382A34
 
-	arm_func_start ov31_02382AC0
-ov31_02382AC0: ; 0x02382AC0
+	arm_func_start DungeonMenuSwitch
+DungeonMenuSwitch: ; 0x02382AC0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x54
 	ldr r1, _02382B4C ; =0x02353538
@@ -246,7 +246,7 @@ ov31_02382AC0: ; 0x02382AC0
 	.align 2, 0
 _02382B4C: .word 0x02353538
 _02382B50: .word 0x02389E14
-	arm_func_end ov31_02382AC0
+	arm_func_end DungeonMenuSwitch
 
 	arm_func_start ov31_02382B54
 ov31_02382B54: ; 0x02382B54
@@ -312,7 +312,7 @@ _02382BEC:
 	ldr r0, _02382DA0 ; =0x02389DC4
 	bl sub_0202F8C4
 	ldr r2, _02382D8C ; =ov31_0238A260
-	ldr r1, _02382DA4 ; =ov31_02382AC0
+	ldr r1, _02382DA4 ; =DungeonMenuSwitch
 	ldr r2, [r2]
 	strb r0, [r2, #2]
 	ldr r0, _02382DA8 ; =0x02389DA4
@@ -409,7 +409,7 @@ _02382D94: .word 0x00000233
 _02382D98: .word 0x02389DD4
 _02382D9C: .word ov31_02382864
 _02382DA0: .word 0x02389DC4
-_02382DA4: .word ov31_02382AC0
+_02382DA4: .word DungeonMenuSwitch
 _02382DA8: .word 0x02389DA4
 	arm_func_end ov31_02382B54
 
@@ -644,7 +644,7 @@ _0238308C:
 	ldr r1, _02383218 ; =ov31_0238A2A0
 	ldr r1, [r1, #4]
 	str r0, [r1, #4]
-	bl FUN_0238328C
+	bl ov31_0238328C
 	ldr r0, _02383218 ; =ov31_0238A2A0
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #4]
@@ -682,7 +682,7 @@ _023830F4:
 	mov r0, #4
 	b _02383210
 _02383144:
-	bl FUN_0238328C
+	bl ov31_0238328C
 	ldr r0, _02383218 ; =ov31_0238A2A0
 	mov r3, #2
 	ldr r2, [r0, #4]
@@ -777,8 +777,8 @@ _02383284: .word ov31_0238A2A0
 _02383288: .word 0x02389E20
 	arm_func_end ov31_02383248
 
-	arm_func_start FUN_0238328C
-FUN_0238328C: ; 0x0238328C
+	arm_func_start ov31_0238328C
+ov31_0238328C: ; 0x0238328C
 	stmdb sp!, {r3, lr}
 	ldr r0, _023832EC ; =ov31_0238A2A0
 	mvn r1, #1
@@ -806,7 +806,7 @@ _023832BC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023832EC: .word ov31_0238A2A0
-	arm_func_end FUN_0238328C
+	arm_func_end ov31_0238328C
 
 	arm_func_start ov31_023832F0
 ov31_023832F0: ; 0x023832F0
@@ -815,7 +815,7 @@ ov31_023832F0: ; 0x023832F0
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl FUN_0238328C
+	bl ov31_0238328C
 	ldr r0, _02383324 ; =ov31_0238A2A0
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -995,7 +995,7 @@ _02383528:
 	ldrsh r1, [r1, #6]
 	bl GetTile
 	ldr r0, [r0, #0x10]
-	bl ov29_022E1610
+	bl GetItemInfo
 	mov r1, r0
 	ldrb r0, [r1]
 	tst r0, #1
@@ -1018,7 +1018,7 @@ _02383528:
 _02383590:
 	ldr r1, _02383650 ; =0x02389F5C
 	mov r0, r8
-	bl Strcpy
+	bl strcpy
 	ldr r0, _02383644 ; =0x0238A26C
 	mov r1, #3
 	ldr r0, [r0]
@@ -1092,7 +1092,7 @@ ov31_0238367C: ; 0x0238367C
 	bl GetLeader
 	mov r1, #0
 	mov r2, #0xb
-	bl ov29_022EB54C
+	bl GetItemToUse
 	ldrsh r1, [r0, #4]
 	mov r2, #0
 	add lr, sp, #0xc
@@ -1145,7 +1145,7 @@ ov31_0238372C: ; 0x0238372C
 	cmp r1, #0
 	beq _0238375C
 	add r0, r0, #4
-	bl ov29_02337B2C
+	bl PositionHasItem
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, pc}
@@ -1692,12 +1692,12 @@ _02383F00:
 	bl StringFromMessageId
 	mov r1, r0
 	add r0, sp, #0x4c
-	bl Strcpy
+	bl strcpy
 	b _02383F34
 _02383F28:
 	ldr r1, _023848CC ; =0x02389F5C
 	add r0, sp, #0x4c
-	bl Strcpy
+	bl strcpy
 _02383F34:
 	mov r1, #2
 	mov r0, r8
@@ -1727,7 +1727,7 @@ _02383F7C:
 	ldrsh r1, [r1, #6]
 	bl GetTile
 	ldr r0, [r0, #0x10]
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r1, [r0]
 	tst r1, #1
 	movne r1, #1
@@ -1742,12 +1742,12 @@ _02383F7C:
 	bl StringFromMessageId
 	mov r1, r0
 	add r0, sp, #0x4c
-	bl Strcpy
+	bl strcpy
 	b _02383FF0
 _02383FE4:
 	ldr r1, _023848CC ; =0x02389F5C
 	add r0, sp, #0x4c
-	bl Strcpy
+	bl strcpy
 _02383FF0:
 	mov r0, r8
 	bl sub_02027B1C
@@ -1848,7 +1848,7 @@ _02384138:
 	ldrsh r1, [sl, #6]
 	bl GetTile
 	ldr r0, [r0, #0x10]
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r1, [r0]
 	tst r1, #1
 	movne r1, #1
@@ -1932,7 +1932,7 @@ _02384278:
 	ldrsh r1, [sl, #6]
 	bl GetTile
 	ldr r0, [r0, #0x10]
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r1, [r0]
 	tst r1, #1
 	movne r1, #1
@@ -2029,7 +2029,7 @@ _023843D0:
 	ldrsh r1, [sl, #6]
 	bl GetTile
 	ldr r0, [r0, #0x10]
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r1, [r0]
 	mov r4, #1
 	tst r1, #1
@@ -2096,7 +2096,7 @@ _023844FC:
 	mov r1, r0
 	mov r0, sl
 	mov r2, #0xa
-	bl ov29_022EB44C
+	bl GetItemToUseByIndex
 	mov r8, r0
 	ldr r0, [sl, #0xb4]
 	str r0, [sp, #0x14]
@@ -2109,7 +2109,7 @@ _023844FC:
 	bne _02384598
 	ldrsh r1, [r8, #4]
 	mov r0, #9
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	ldrsh r0, [r8, #4]
 	bl GetItemCategoryVeneer
 	cmp r0, #6
@@ -2132,7 +2132,7 @@ _02384588:
 	cmp r0, #0
 	beq _02384598
 	mov r0, #9
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384598:
 	bl ov00_022EBB98
 	cmp r0, #0x80
@@ -2144,14 +2144,14 @@ _02384598:
 	beq _023845C4
 	ldrsh r1, [r8, #4]
 	mov r0, #0xa
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _023845C4:
 	mov r0, r8
-	bl ov29_022EB5D8
+	bl GetItemAction
 	movs r4, r0
 	beq _02384654
 	ldrsh r1, [r8, #4]
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	ldrb r0, [r8]
 	tst r0, #8
 	movne r0, #1
@@ -2159,17 +2159,17 @@ _023845C4:
 	tst r0, #0xff
 	beq _023845FC
 	mov r0, r4
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _023845FC:
 	mov r0, r8
 	bl ov29_023468FC
 	cmp r0, #0
 	bne _02384614
 	mov r0, r4
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384614:
 	mov r0, sl
-	bl ov29_023186CC
+	bl MonsterHasEmbargoStatus
 	cmp r0, #0
 	bne _02384634
 	mov r0, r8
@@ -2178,14 +2178,14 @@ _02384614:
 	beq _0238463C
 _02384634:
 	mov r0, r4
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _0238463C:
 	mov r0, r8
-	bl sub_0200CDF8
+	bl IsItemUsableNow
 	cmp r0, #0
 	bne _02384654
 	mov r0, r4
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384654:
 	bl ov00_022EBB98
 	cmp r0, #0x33
@@ -2207,11 +2207,11 @@ _0238468C:
 	tst r0, #0x10
 	beq _023846A8
 	mov r0, #0x3d
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	b _023846B0
 _023846A8:
 	mov r0, #0x3c
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _023846B0:
 	ldr r0, _023848A4 ; =0x020AF6B8
 	mov r3, #0
@@ -2237,9 +2237,9 @@ _023846C8:
 	tst r1, #0xff
 	beq _0238471C
 	mov r0, #0x3c
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x3d
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	b _02384728
 _0238471C:
 	add r3, r3, #1
@@ -2257,7 +2257,7 @@ _02384728:
 	mov r2, #0
 	mov r0, #0x36
 	str r2, [sp, #0x18]
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	mov r4, #0
 _02384758:
 	ldr r0, _023848A8 ; =0x02353538
@@ -2303,7 +2303,7 @@ _023847EC:
 	cmp r0, #0
 	bne _02384860
 	mov r0, #0x36
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	b _02384860
 _02384804:
 	ldr r0, _023848A8 ; =0x02353538
@@ -2313,23 +2313,23 @@ _02384804:
 	beq _02384860
 	ldrsh r1, [r8, #4]
 	mov r0, #0x37
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	mov r0, r8
 	bl IsHeldItemInBag
 	cmp r0, #0
 	beq _02384840
 	ldrsh r1, [r8, #4]
 	mov r0, #0x3e
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _02384840:
 	mov r0, sl
 	bl ov29_02300B40
 	cmp r0, #0
 	beq _02384860
 	mov r0, #0x37
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x3e
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384860:
 	bl ov00_022EBB98
 	cmp r0, #0x33
@@ -2343,7 +2343,7 @@ _02384860:
 	bne _023848D4
 	ldrsh r1, [r8, #4]
 	mov r0, #8
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	b _02384908
 	.align 2, 0
 _02384898: .word 0x0238A26C
@@ -2367,14 +2367,14 @@ _023848D4:
 	bne _02384908
 	ldrsh r1, [r8, #4]
 	mov r0, #0x3a
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	ldr r0, [r4, #0x10]
 	bl ov29_022E1620
 	bl ov29_02348D00
 	cmp r0, #0
 	beq _02384908
 	mov r0, #0x3a
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384908:
 	ldrsh r0, [r8, #4]
 	bl GetItemCategoryVeneer
@@ -2382,7 +2382,7 @@ _02384908:
 	bne _02384928
 	ldrsh r1, [r8, #4]
 	mov r0, #0x27
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	b _02384950
 _02384928:
 	ldrsh r0, [r8, #4]
@@ -2391,55 +2391,55 @@ _02384928:
 	ldrsh r1, [r8, #4]
 	bne _02384948
 	mov r0, #0x41
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	b _02384950
 _02384948:
 	mov r0, #0xb
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _02384950:
 	ldr r0, [sp, #0x14]
 	bl ov29_02302368
 	cmp r0, #0
 	bne _02384978
 	mov r0, #0x27
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x41
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0xb
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384978:
 	mov r0, sl
-	bl ov29_023186CC
+	bl MonsterHasEmbargoStatus
 	cmp r0, #0
 	beq _023849A0
 	mov r0, #0x27
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x41
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0xb
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _023849A0:
 	mov r0, r8
 	bl ov29_02348D00
 	cmp r0, #0
 	beq _023849D8
 	mov r0, #0x27
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x41
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0xb
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0xa
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #9
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _023849D8:
 	mov r0, r8
-	bl sub_0200CDF8
+	bl IsItemUsableNow
 	cmp r0, #0
 	bne _02384C48
 	mov r0, #0xb
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	b _02384C48
 _023849F4:
 	bl ov00_022EBB98
@@ -2478,32 +2478,32 @@ _023849F4:
 	beq _02384AC0
 	ldrsh r1, [r8, #4]
 	mov r0, #0x37
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	mov r0, r8
 	bl IsHeldItemInBag
 	cmp r0, #0
 	beq _02384AA4
 	ldrsh r1, [r8, #4]
 	mov r0, #0x3e
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _02384AA4:
 	ldr r0, [sp, #0x24]
 	cmp r0, #0
 	beq _02384AC0
 	mov r0, #0x37
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x3e
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384AC0:
 	ldrb r0, [fp, #7]
 	cmp r0, #0
 	beq _02384BEC
 	mov r0, r8
-	bl ov29_022EB5D8
+	bl GetItemAction
 	movs r4, r0
 	beq _02384B5C
 	ldrsh r1, [r8, #4]
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	ldrb r0, [r8]
 	tst r0, #8
 	movne r0, #1
@@ -2511,17 +2511,17 @@ _02384AC0:
 	tst r0, #0xff
 	beq _02384B04
 	mov r0, r4
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384B04:
 	mov r0, r8
 	bl ov29_023468FC
 	cmp r0, #0
 	bne _02384B1C
 	mov r0, r4
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384B1C:
 	ldr r0, [sp, #0x20]
-	bl ov29_023186CC
+	bl MonsterHasEmbargoStatus
 	cmp r0, #0
 	bne _02384B3C
 	mov r0, r8
@@ -2530,14 +2530,14 @@ _02384B1C:
 	beq _02384B44
 _02384B3C:
 	mov r0, r4
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384B44:
 	mov r0, r8
-	bl sub_0200CDF8
+	bl IsItemUsableNow
 	cmp r0, #0
 	bne _02384B5C
 	mov r0, r4
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384B5C:
 	ldrsh r0, [r8, #4]
 	bl GetItemCategoryVeneer
@@ -2545,7 +2545,7 @@ _02384B5C:
 	bne _02384B7C
 	ldrsh r1, [r8, #4]
 	mov r0, #0x27
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	b _02384B98
 _02384B7C:
 	ldrsh r0, [r8, #4]
@@ -2554,42 +2554,42 @@ _02384B7C:
 	bne _02384B98
 	ldrsh r1, [r8, #4]
 	mov r0, #0x41
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _02384B98:
 	ldr r0, [sp, #0x14]
 	bl ov29_02302368
 	cmp r0, #0
 	bne _02384BB8
 	mov r0, #0x27
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x41
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384BB8:
 	mov r0, sl
-	bl ov29_023186CC
+	bl MonsterHasEmbargoStatus
 	cmp r0, #0
 	bne _02384BD8
 	mov r0, sl
-	bl ov29_023186CC
+	bl MonsterHasEmbargoStatus
 	cmp r0, #0
 	beq _02384C48
 _02384BD8:
 	mov r0, #0x27
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x41
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	b _02384C48
 _02384BEC:
 	ldrsh r1, [r8, #4]
 	mov r0, #0x38
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	cmp r4, #0
 	beq _02384C08
 	mov r0, #0x38
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384C08:
 	ldr r0, [sp, #0x20]
-	bl ov29_023186CC
+	bl MonsterHasEmbargoStatus
 	cmp r0, #0
 	bne _02384C28
 	mov r0, r8
@@ -2598,18 +2598,18 @@ _02384C08:
 	beq _02384C30
 _02384C28:
 	mov r0, #0x38
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384C30:
 	mov r0, r8
-	bl sub_0200CDF8
+	bl IsItemUsableNow
 	cmp r0, #0
 	bne _02384C48
 	mov r0, #0x38
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02384C48:
 	ldrsh r1, [r8, #4]
 	mov r0, #0xc
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	bl ov29_022EB9A0
 	bl ov29_022EBA84
 	mov r2, #0
@@ -2922,7 +2922,7 @@ _023850D8:
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	strb r1, [r0, #0x247]
-	bl ov29_0233779C
+	bl HideTileGrid
 	bl ov31_023837C8
 	mov r0, #0x14
 	bl AdvanceFrame
@@ -2987,8 +2987,8 @@ _02385190:
 _023851BC: .word 0x000008E8
 	arm_func_end ov31_0238513C
 
-	arm_func_start ov31_023851C0
-ov31_023851C0: ; 0x023851C0
+	arm_func_start MovesMenu
+MovesMenu: ; 0x023851C0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0xc
 	ldr r1, _023853B8 ; =0x02353538
@@ -3036,13 +3036,13 @@ _0238521C:
 	add r0, sp, #8
 	mov r2, #1
 	str r1, [sp, #4]
-	bl ov31_02385404
+	bl HandleMovesMenu
 	cmp r0, #0
 	bne _023853B0
 	bl ov29_022F0B9C
 	cmp r0, #0x1d
 	bne _0238529C
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov31_02385FE0
 	mov r0, #1
 	bl ov29_022EB398
@@ -3054,7 +3054,7 @@ _0238529C:
 	mov r0, #0xb
 	mov r1, #0
 	bl ov29_022EA428
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	mov r1, #0
 	bl ov31_023860A4
 	mov r0, #1
@@ -3067,7 +3067,7 @@ _023852CC:
 	mov r0, #0xb
 	mov r1, #0
 	bl ov29_022EA428
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	mov r1, #0
 	bl ov31_023860A4
 	mov r0, #1
@@ -3080,7 +3080,7 @@ _023852FC:
 	mov r0, #0xb
 	mov r1, #0
 	bl ov29_022EA428
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov31_0238619C
 	mov r0, #1
 	bl ov29_022EB398
@@ -3092,7 +3092,7 @@ _02385328:
 	mov r0, #0xb
 	mov r1, #0
 	bl ov29_022EA428
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	bl ov31_02386204
 	mov r0, #1
 	bl ov29_022EB398
@@ -3104,7 +3104,7 @@ _02385354:
 	mov r0, #0xb
 	mov r1, #0
 	bl ov29_022EA428
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	mov r1, #1
 	bl ov31_02386308
 	mov r0, #1
@@ -3127,7 +3127,7 @@ _023853B0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _023853B8: .word 0x02353538
-	arm_func_end ov31_023851C0
+	arm_func_end MovesMenu
 
 	arm_func_start ov31_023853BC
 ov31_023853BC: ; 0x023853BC
@@ -3137,7 +3137,7 @@ ov31_023853BC: ; 0x023853BC
 	mov ip, #0
 	str lr, [sp]
 	str ip, [sp, #4]
-	bl ov31_02385404
+	bl HandleMovesMenu
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	arm_func_end ov31_023853BC
@@ -3150,13 +3150,13 @@ ov31_023853E0: ; 0x023853E0
 	mov ip, #1
 	str lr, [sp]
 	str ip, [sp, #4]
-	bl ov31_02385404
+	bl HandleMovesMenu
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	arm_func_end ov31_023853E0
 
-	arm_func_start ov31_02385404
-ov31_02385404: ; 0x02385404
+	arm_func_start HandleMovesMenu
+HandleMovesMenu: ; 0x02385404
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x12c
 	str r1, [sp, #4]
@@ -3287,7 +3287,7 @@ _023855A8:
 	ldr r0, [sp]
 	ldr sl, [r6, #0xb4]
 	str r6, [r0]
-	bl ov29_022E9618
+	bl GetLeaderMonster
 	strb sb, [r0, #0x4e]
 	mov r0, r6
 	mov r1, #0
@@ -3396,7 +3396,7 @@ _02385738:
 	beq _02385770
 	mov r0, #0x14
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _02385770:
 	ldrb r0, [sb, fp, lsl #3]
 	tst r0, #1
@@ -3409,35 +3409,35 @@ _02385770:
 	tst r0, #8
 	beq _023857A4
 	mov r0, #0x33
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	b _023857BC
 _023857A4:
 	mov r0, #0x1e
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	b _023857BC
 _023857B0:
 	mov r0, #0x1f
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _023857BC:
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	beq _023857E0
 	mov r0, #0x20
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	mov r0, #0x21
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _023857E0:
 	mov r0, #0x1d
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	bne _02385804
 	mov r0, #0x20
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	b _0238595C
 _02385804:
 	ldr r0, _02385F70 ; =0x0238A270
@@ -3529,7 +3529,7 @@ _0238592C:
 	cmp r0, #0
 	bne _0238593C
 	mov r0, #0x20
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _0238593C:
 	ldr r1, _02385F70 ; =0x0238A270
 	mov r0, r8
@@ -3538,7 +3538,7 @@ _0238593C:
 	cmp r0, #0
 	bne _0238595C
 	mov r0, #0x21
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _0238595C:
 	ldr r1, _02385F70 ; =0x0238A270
 	mov r0, r8
@@ -3547,7 +3547,7 @@ _0238595C:
 	cmp r0, #0
 	bne _0238597C
 	mov r0, #0x21
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _0238597C:
 	ldr r0, [sp, #8]
 	cmp r0, #0
@@ -3566,7 +3566,7 @@ _023859B0:
 	cmp r8, #0
 	bne _023859C0
 	mov r0, #0x14
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _023859C0:
 	bl ov29_022EB9A0
 	ldr r0, [sp, #0xc]
@@ -3579,7 +3579,7 @@ _023859C0:
 	cmp r0, #0
 	beq _02385A08
 	mov r0, r6
-	bl ov29_022E2A38
+	bl GetTeamMemberIndex
 	mov r2, r0
 	mov r1, r5
 	add r0, r7, #0x4a
@@ -3594,7 +3594,7 @@ _02385A08:
 	cmp r0, #0
 	beq _02385EFC
 	mov r0, r6
-	bl ov29_022E2A38
+	bl GetTeamMemberIndex
 	mov r2, r0
 	mov r1, r5
 	add r0, r7, #0x4a
@@ -3614,7 +3614,7 @@ _02385A40:
 	cmp r0, #0
 	beq _02385A88
 	mov r0, r6
-	bl ov29_022E2A38
+	bl GetTeamMemberIndex
 	mov r2, r0
 	mov r1, r5
 	add r0, r7, #0x4a
@@ -3628,7 +3628,7 @@ _02385A88:
 	cmp r0, #0
 	beq _02385EFC
 	mov r0, r6
-	bl ov29_022E2A38
+	bl GetTeamMemberIndex
 	mov r2, r0
 	mov r1, r5
 	add r0, r7, #0x4a
@@ -3643,7 +3643,7 @@ _02385AC0:
 	cmp r0, #0
 	beq _02385EFC
 	mov r0, r6
-	bl ov29_022E2A38
+	bl GetTeamMemberIndex
 	mov r2, r0
 	mov r1, r5
 	add r0, r7, #0x4a
@@ -3914,7 +3914,7 @@ _02385EAC:
 	cmp r0, #0
 	beq _02385EF0
 	mov r0, r6
-	bl ov29_022E2A38
+	bl GetTeamMemberIndex
 	mov r2, r0
 	mov r1, r5
 	add r0, r7, #0x4a
@@ -3941,7 +3941,7 @@ _02385EFC:
 	mov r0, #8
 	mov r1, #0x1e
 	bl ov29_022EA370
-	bl ov29_0233779C
+	bl HideTileGrid
 	mov r0, #0x1b
 	bl AdvanceFrame
 	bl sub_020407C0
@@ -3954,7 +3954,7 @@ _02385EFC:
 	mov r1, #0
 	str r1, [r0, #8]
 _02385F50:
-	bl ov29_022E9618
+	bl GetLeaderMonster
 	ldr r1, [sp, #0x10]
 	add r2, sp, #0x2c
 	ldr r1, [r2, r1, lsl #2]
@@ -3977,7 +3977,7 @@ _02385F98: .word 0x0000099B
 _02385F9C: .word 0x000009A8
 _02385FA0: .word 0x000009BA
 _02385FA4: .word 0x00003F07
-	arm_func_end ov31_02385404
+	arm_func_end HandleMovesMenu
 
 	arm_func_start ov31_02385FA8
 ov31_02385FA8: ; 0x02385FA8
@@ -4500,10 +4500,10 @@ _02386694:
 	bl ov29_022EBA70
 	mov r0, #0x22
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	mov r0, #0x21
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	ldr r0, [r7]
 	mov r3, #0
 	add r1, r0, #1
@@ -4528,11 +4528,11 @@ _023866EC:
 	tst r0, #0xff
 	bne _02386708
 	mov r0, #0x21
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02386708:
 	mov r0, #0x1d
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	add r0, sp, #0x18
 	str r0, [sp, #0x84]
 	mov r0, fp
@@ -4656,7 +4656,7 @@ _023868C8:
 	mov r1, r5
 	add r0, r0, #0x124
 	mov r2, #0x22
-	bl Memcpy
+	bl memcpy
 	b _023864E0
 _023868E8:
 	cmp sl, #2
@@ -4713,14 +4713,14 @@ _02386950:
 	ldr r1, _02386B20 ; =0x000008D6
 	mov r3, r0
 	str r2, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	mov r7, r0
 	b _023869F4
 _023869C0:
 	ldr r1, _02386B24 ; =0x000008D7
 	mov r3, r0
 	str r2, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	mov r7, r0
 	b _023869F4
 _023869D8:
@@ -4729,7 +4729,7 @@ _023869D8:
 	ldr r1, _02386B24 ; =0x000008D7
 	mov r3, r0
 	str r2, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	mov r7, r0
 _023869F4:
 	mov r0, #1
@@ -4938,10 +4938,10 @@ _02386C90:
 	bl ov29_022EBA70
 	mov r0, #0x25
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	mov r0, #0xc
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	bl ov29_022EB9A0
 	bl ov29_022EBA84
 	mov r1, #0
@@ -5019,7 +5019,7 @@ _02386D70:
 	ldr r1, [r0]
 	cmp r1, #2
 	bne _02386E68
-	bl ov29_022E1608
+	bl GetTrapInfo
 	ldrb r3, [r0]
 	add r2, sp, #0xc
 	ldr r1, _02386F20 ; =0x00001013
@@ -5191,8 +5191,8 @@ _02387044: .word ov31_023899B8
 _02387048: .word 0x0238A280
 	arm_func_end ov31_02387014
 
-	arm_func_start ov31_0238704C
-ov31_0238704C: ; 0x0238704C
+	arm_func_start TeamMenu
+TeamMenu: ; 0x0238704C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x13c
 	mov sl, r0
@@ -5300,10 +5300,10 @@ _023871B0:
 	ldr r4, [r1, #0xb28]
 	mov r1, #0
 	ldr r5, [r4, #0xb4]
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	mov r0, #0x19
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	ldrb r0, [r5, #7]
 	cmp r0, #0
 	bne _02387278
@@ -5332,18 +5332,18 @@ _023871B0:
 _02387260:
 	mov r0, #0x34
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _0238726C:
 	mov r0, #0x1c
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 _02387278:
 	mov r0, #0x30
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	mov r0, #0x1a
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	ldrb r0, [r5, #7]
 	cmp r0, #0
 	ldreq r0, _02387624 ; =0x02353538
@@ -5360,7 +5360,7 @@ _02387278:
 	beq _02387320
 	mov r0, #0x3b
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	ldrsh r0, [r5, #0xc]
 	mov r6, #1
 	cmp r0, #4
@@ -5380,22 +5380,22 @@ _023872FC:
 	cmp r6, #0
 	bne _02387320
 	mov r0, #0x3b
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02387320:
 	mov r0, r5
 	bl ov00_022FBAF0
 	cmp r0, #0
 	beq _0238735C
 	mov r0, #0x19
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x3b
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x1a
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x30
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	mov r0, #0x34
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 	b _02387380
 _0238735C:
 	ldrb r0, [r5, #7]
@@ -5406,7 +5406,7 @@ _0238735C:
 	cmp r0, #0
 	bne _02387380
 	mov r0, #0x1a
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02387380:
 	bl ov29_022EB9A0
 	cmp r8, #0
@@ -5593,7 +5593,7 @@ _0238762C: .word 0x00000A3C
 _02387630: .word 0x0238A024
 _02387634: .word 0x00000233
 _02387638: .word 0x0237C91C
-	arm_func_end ov31_0238704C
+	arm_func_end TeamMenu
 
 	arm_func_start ov31_0238763C
 ov31_0238763C: ; 0x0238763C
@@ -5827,7 +5827,7 @@ _023878D0:
 	add r0, sp, #0x68
 	mov r1, r5
 	mov r2, #0x80
-	bl Memset
+	bl memset
 	mov r8, r5
 	ldr fp, _0238808C ; =0x000003E7
 	b _02387B80
@@ -5878,7 +5878,7 @@ _02387958:
 	bgt _02387A18
 	ldr r1, _02388090 ; =0x0238A044
 	add r0, sp, #0xa8
-	bl Strcpy
+	bl strcpy
 	b _02387B20
 _02387A18:
 	cmp r1, fp
@@ -5891,7 +5891,7 @@ _02387A18:
 	bgt _02387A48
 	ldr r1, _02388094 ; =0x0238A04C
 	add r0, sp, #0xa8
-	bl Strcpy
+	bl strcpy
 	b _02387B20
 _02387A48:
 	cmp r1, fp
@@ -5904,11 +5904,11 @@ _02387A48:
 	add r0, sp, #0xa8
 	bgt _02387A78
 	ldr r1, _02388098 ; =0x0238A054
-	bl Strcpy
+	bl strcpy
 	b _02387B20
 _02387A78:
 	ldr r1, _0238809C ; =0x0238A05C
-	bl Strcpy
+	bl strcpy
 	b _02387B20
 _02387A84:
 	add r1, r1, r0
@@ -5922,7 +5922,7 @@ _02387A84:
 	bgt _02387AB8
 	ldr r1, _023880A0 ; =0x0238A064
 	add r0, sp, #0xa8
-	bl Strcpy
+	bl strcpy
 	b _02387B20
 _02387AB8:
 	cmp r1, fp
@@ -5935,7 +5935,7 @@ _02387AB8:
 	bgt _02387AE8
 	ldr r1, _023880A4 ; =0x0238A06C
 	add r0, sp, #0xa8
-	bl Strcpy
+	bl strcpy
 	b _02387B20
 _02387AE8:
 	cmp r1, fp
@@ -5948,11 +5948,11 @@ _02387AE8:
 	add r0, sp, #0xa8
 	bgt _02387B18
 	ldr r1, _023880A8 ; =0x0238A074
-	bl Strcpy
+	bl strcpy
 	b _02387B20
 _02387B18:
 	ldr r1, _023880AC ; =0x0238A07C
-	bl Strcpy
+	bl strcpy
 _02387B20:
 	add r0, sp, #0xa8
 	str r0, [sp, #0x54]
@@ -6270,7 +6270,7 @@ _02387F8C:
 	bne _02387FEC
 	cmp r4, #0
 	beq _0238800C
-	bl ov29_0233779C
+	bl HideTileGrid
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0238800C
@@ -6280,7 +6280,7 @@ _02387F8C:
 	bl ov00_022F98B4
 	b _0238800C
 _02387FEC:
-	bl ov29_0233779C
+	bl HideTileGrid
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0238800C
@@ -6489,7 +6489,7 @@ _023882A0:
 	ldrsh r5, [r6, #0xe]
 	ldrsh r8, [r6, #0x10]
 	ldrsh r0, [r6, #8]
-	bl CheckTeamMemberIdx__02056228
+	bl CheckTeamMemberIdx
 	str r0, [sp, #4]
 	mov r1, r6
 	add r0, sp, #0xc
@@ -6507,14 +6507,14 @@ _023882E8:
 	bgt _02388320
 	ldr r1, _02388420 ; =0x0238A0A8
 	add r0, sp, #0x4c
-	bl Strcpy
+	bl strcpy
 	b _023883B8
 _02388320:
 	cmp r5, r0, lsl #1
 	bgt _02388338
 	ldr r1, _02388424 ; =0x0238A0B0
 	add r0, sp, #0x4c
-	bl Strcpy
+	bl strcpy
 	b _023883B8
 _02388338:
 	add r0, r0, r0, lsl #1
@@ -6522,11 +6522,11 @@ _02388338:
 	add r0, sp, #0x4c
 	bgt _02388354
 	ldr r1, _02388428 ; =0x0238A0B8
-	bl Strcpy
+	bl strcpy
 	b _023883B8
 _02388354:
 	ldr r1, _0238842C ; =0x0238A0C0
-	bl Strcpy
+	bl strcpy
 	b _023883B8
 _02388360:
 	cmp r5, r0, asr #2
@@ -6534,14 +6534,14 @@ _02388360:
 	bgt _0238837C
 	ldr r1, _02388430 ; =0x0238A0C8
 	add r0, sp, #0x4c
-	bl Strcpy
+	bl strcpy
 	b _023883B8
 _0238837C:
 	cmp r5, r0, lsl #1
 	bgt _02388394
 	ldr r1, _02388434 ; =0x0238A0D0
 	add r0, sp, #0x4c
-	bl Strcpy
+	bl strcpy
 	b _023883B8
 _02388394:
 	add r0, r0, r0, lsl #1
@@ -6549,11 +6549,11 @@ _02388394:
 	add r0, sp, #0x4c
 	bgt _023883B0
 	ldr r1, _02388438 ; =0x0238A0D8
-	bl Strcpy
+	bl strcpy
 	b _023883B8
 _023883B0:
 	ldr r1, _0238843C ; =0x0238A0E0
-	bl Strcpy
+	bl strcpy
 _023883B8:
 	add r0, sp, #0x4c
 	str r0, [sp, #0xc8]
@@ -6774,7 +6774,7 @@ _023886BC:
 	bl ov31_02388744
 	mov r0, #0x1b
 	bl AdvanceFrame
-	bl ov29_0233779C
+	bl HideTileGrid
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end ov31_02388534
 
@@ -6850,8 +6850,8 @@ ov31_02388744: ; 0x02388744
 	ldmia sp!, {r4, pc}
 	arm_func_end ov31_02388744
 
-	arm_func_start ov31_0238878C
-ov31_0238878C: ; 0x0238878C
+	arm_func_start RestMenu
+RestMenu: ; 0x0238878C
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x9c
 	ldr r0, _023889B8 ; =0x0238A284
@@ -6937,11 +6937,11 @@ _023888BC:
 	mov r3, r2
 	mov r0, #0
 	str r2, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	movne r0, #1
 	bne _023888F0
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	mov r1, #0x2b
 	bl SetMonsterActionFields
 	mov r0, #0
@@ -6958,11 +6958,11 @@ _02388908:
 	mov r3, r2
 	mov r0, #0
 	str r2, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	movne r2, #1
 	bne _02388964
-	bl ov29_022F0B8C
+	bl GetLeaderAction
 	mov r1, #0x2e
 	bl SetMonsterActionFields
 	bl GetLeader
@@ -7011,7 +7011,7 @@ _023889CC: .word 0x000008C5
 _023889D0: .word 0x000008C6
 _023889D4: .word 0x0000025A
 _023889D8: .word 0x02353538
-	arm_func_end ov31_0238878C
+	arm_func_end RestMenu
 
 	arm_func_start ov31_023889DC
 ov31_023889DC: ; 0x023889DC
@@ -7165,8 +7165,8 @@ _02388BFC: .word 0x020A1870
 _02388C00: .word 0x000003E7
 	arm_func_end ov31_023889DC
 
-	arm_func_start ov31_02388C04
-ov31_02388C04: ; 0x02388C04
+	arm_func_start RecruitmentSearchMenuLoop
+RecruitmentSearchMenuLoop: ; 0x02388C04
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0xa0
 	ldr r0, _02388D30 ; =0x0238A288
@@ -7259,7 +7259,7 @@ _02388D44: .word 0x00000B46
 _02388D48: .word 0x0238A134
 _02388D4C: .word 0x00001813
 _02388D50: .word ov31_02388D54
-	arm_func_end ov31_02388C04
+	arm_func_end RecruitmentSearchMenuLoop
 
 	arm_func_start ov31_02388D54
 ov31_02388D54: ; 0x02388D54
@@ -7294,7 +7294,7 @@ _02388D90:
 	ldr r1, _02388E58 ; =0x0238A154
 	mov r0, fp
 	mov r3, r6
-	bl FUN_02388E60
+	bl ov31_02388E60
 	mov r0, r6
 	mov r1, #0x40
 	mov r2, fp
@@ -7338,19 +7338,19 @@ _02388E58: .word 0x0238A154
 _02388E5C: .word 0x00000B47
 	arm_func_end ov31_02388D54
 
-	arm_func_start FUN_02388E60
-FUN_02388E60: ; 0x02388E60
+	arm_func_start ov31_02388E60
+ov31_02388E60: ; 0x02388E60
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r2, sp, #0xc
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end FUN_02388E60
+	arm_func_end ov31_02388E60
 
 	arm_func_start ov31_02388E88
 ov31_02388E88: ; 0x02388E88
@@ -7436,7 +7436,7 @@ _02388F94:
 	mov r4, #0
 	beq _023890B4
 	mov r0, r8
-	bl ov29_0230DB14
+	bl SpecificRecruitCheck
 	cmp r0, #0
 	beq _023890B4
 	mov r0, r8
@@ -7607,8 +7607,8 @@ ov31_023891A8: ; 0x023891A8
 _023891F8: .word 0x0238A1A0
 	arm_func_end ov31_023891A8
 
-	arm_func_start ov31_023891FC
-ov31_023891FC: ; 0x023891FC
+	arm_func_start HelpMenuLoop
+HelpMenuLoop: ; 0x023891FC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0xa0
 	ldr r0, _023893FC ; =0x0238A28C
@@ -7758,7 +7758,7 @@ _0238940C: .word 0x0238A1A0
 _02389410: .word 0x0238A180
 _02389414: .word 0x00009833
 _02389418: .word ov31_023891A8
-	arm_func_end ov31_023891FC
+	arm_func_end HelpMenuLoop
 
 	arm_func_start ov31_0238941C
 ov31_0238941C: ; 0x0238941C
@@ -7850,7 +7850,7 @@ ov31_0238948: ; 0x0238948C
 	ldr r1, [r5, #0x524]
 	add r0, r5, #0x78
 	ldr r1, [r1, #0xb4]
-	bl ov29_02300164
+	bl GetMonsterName
 	add r0, r5, #0x78
 	str r0, [sp, #0xe4]
 _02389560:
@@ -7891,14 +7891,14 @@ _02389578:
 	bl ov29_022EBA70
 	mov r0, #0x2f
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	mov r0, #0xc
 	mov r1, #0
-	bl ov29_022EB81C
+	bl AddDungeonSubMenuOption
 	cmp r4, #0
 	beq _02389610
 	mov r0, #0x2f
-	bl ov29_022EB8F4
+	bl DisableDungeonSubMenuOption
 _02389610:
 	add r1, r5, #0x6c
 	add r0, r5, #4
@@ -8234,7 +8234,7 @@ ov31_02389A78: ; 0x02389A78
 	mov sl, r0
 	ldrb r0, [r4, #7]
 	strb r0, [sl, #0x528]
-	bl ov29_022E9618
+	bl GetLeaderMonster
 	ldrb r1, [r0, #0xa]
 	add r0, sp, #0x14
 	bl sub_02058C4C
@@ -8242,7 +8242,7 @@ ov31_02389A78: ; 0x02389A78
 	cmp r0, #0
 	beq _02389B64
 	mov r6, #0
-	bl ov29_022E9618
+	bl GetLeaderMonster
 	ldrb r1, [r0, #0xa]
 	add r0, sp, #8
 	bl sub_02058C4C

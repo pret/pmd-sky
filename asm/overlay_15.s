@@ -48,12 +48,12 @@ ov15_0238A140: ; 0x0238A140
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xdc
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238A228 ; =ov15_0238B180
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xdc
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238A228 ; =ov15_0238B180
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]

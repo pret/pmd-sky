@@ -520,7 +520,7 @@ _0238A830:
 	ldr r1, [r0]
 	mov r0, #0xb
 	strb r2, [r1, #0x5d]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _0238BD74
 	ldr r0, _0238B504 ; =0x0238C054
@@ -846,12 +846,12 @@ _0238AD00:
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
@@ -1652,7 +1652,7 @@ _0238B8BC:
 _0238B910:
 	mov r1, #0x15
 	add r0, r6, r7
-	bl DivideInt
+	bl __divsi3
 	mov r0, r1, lsl #1
 	ldrsh sl, [fp, r0]
 	mov r1, #0
@@ -1723,17 +1723,17 @@ _0238B9FC:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	ldr r1, _0238BDA4 ; =0x0238C014
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
@@ -1764,17 +1764,17 @@ _0238BA70:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	ldr r1, _0238BDA4 ; =0x0238C014
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
@@ -1800,17 +1800,17 @@ _0238BB10:
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	ldr r1, _0238BDA4 ; =0x0238C014
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
@@ -1856,17 +1856,17 @@ _0238BB98:
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	ldr r1, _0238BDA4 ; =0x0238C014
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]

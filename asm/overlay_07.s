@@ -1199,13 +1199,13 @@ ov07_0233D9DC: ; 0x0233D9DC
 	bl PreprocessStringFromMessageId
 	ldr r1, _0233DAA4 ; =0x02341ACC
 	mov r0, r5
-	bl Strcat
+	bl strcat
 	ldrh r1, [r7, r6]
 	add r0, sp, #0x54
 	bl ov07_0233DC48
 	mov r0, r5
 	add r1, sp, #0x54
-	bl Strcat
+	bl strcat
 	ldrb r0, [r8, #2]
 	cmp r0, #0
 	movne r0, #1
@@ -1314,13 +1314,13 @@ ov07_0233DB50: ; 0x0233DB50
 	bl PreprocessStringFromMessageId
 	ldr r1, _0233DC44 ; =0x02341ACC
 	mov r0, r5
-	bl Strcat
+	bl strcat
 	ldrh r1, [r8, r7]
 	mov r0, r6
 	bl ov07_0233DC48
 	mov r0, r5
 	mov r1, r6
-	bl Strcat
+	bl strcat
 	mov r0, r4
 	mov r1, #4
 	mov r2, #2
@@ -5521,7 +5521,7 @@ _02341688:
 	bge _023416F0
 	mov r0, r7
 	mov r1, #0x1b
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #0
 	bne _023416E4
 	strb r6, [sl, r8]

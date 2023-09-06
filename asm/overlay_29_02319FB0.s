@@ -187,7 +187,7 @@ _0231A23C:
 	bne _0231A260
 	mov r0, r6
 	mov r1, #1
-	bl ov29_02300634
+	bl MonsterHasNegativeStatus
 	cmp r0, #0
 	bne _0231A358
 	mov r0, #0
@@ -196,7 +196,7 @@ _0231A260:
 	cmp r0, #0x400
 	bne _0231A280
 	mov r0, r6
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	bne _0231A358
 	mov r0, #0
@@ -227,7 +227,7 @@ _0231A2B8:
 	mov r0, r6
 	mov r1, #1
 	bne _0231A304
-	bl ov29_02300634
+	bl MonsterHasNegativeStatus
 	cmp r0, #0
 	bne _0231A358
 	mov r0, r6
@@ -237,7 +237,7 @@ _0231A2B8:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0231A304:
-	bl ov29_02300634
+	bl MonsterHasNegativeStatus
 	cmp r0, #0
 	bne _0231A358
 	mov r0, r6
@@ -277,7 +277,7 @@ ov29_0231A364: ; 0x0231A364
 	mov r6, r3
 	ldr r5, [r7, #0xb4]
 	mov r4, #1
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _0231A3A4
@@ -302,7 +302,7 @@ _0231A3A4:
 	beq _0231A404
 	ldrsh r0, [r5, #2]
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _0231A45C ; =0x02353538
 	ldr r0, [r0]
 	add r0, r0, r1
@@ -512,12 +512,12 @@ IsTargetInRange: ; 0x0231A694
 	mov r8, r2
 	mov r7, r3
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	ldrsh r2, [sb, #4]
 	ldrsh r1, [r5, #4]
 	mov r6, r0
 	sub r0, r2, r1
-	bl Abs
+	bl abs
 	mov r4, r0
 	cmp r4, r6
 	movle r4, r6
@@ -578,8 +578,8 @@ _0231A798: .word 0x0235171C
 _0231A79C: .word 0x0235171E
 	arm_func_end IsTargetInRange
 
-	arm_func_start ov29_0231A7A0
-ov29_0231A7A0: ; 0x0231A7A0
+	arm_func_start ShouldUsePp
+ShouldUsePp: ; 0x0231A7A0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
 	mov r1, #0x52
@@ -638,7 +638,7 @@ _0231A868:
 _0231A870: .word 0x022C459C
 _0231A874: .word 0x00000DF5
 _0231A878: .word 0x00000DF7
-	arm_func_end ov29_0231A7A0
+	arm_func_end ShouldUsePp
 
 	arm_func_start ExclusiveItemEffectIsActive__0231A87C
 ExclusiveItemEffectIsActive__0231A87C: ; 0x0231A87C
@@ -667,7 +667,7 @@ ov29_0231A8A0: ; 0x0231A8A0
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_02344160
+	bl AreMovesEnabled
 	cmp r0, #0
 	bne _0231A8EC
 	ldr r1, _0231A9D0 ; =0x00000DFD
@@ -678,7 +678,7 @@ _0231A8EC:
 	mov r1, r7
 	mov r0, sb
 	strb r1, [r4, #0x23f]
-	bl ov29_0231A7A0
+	bl ShouldUsePp
 	cmp r0, #0
 	movne r7, #1
 	strneb r7, [r4, #0x23f]
@@ -763,7 +763,7 @@ ov29_0231A9F8: ; 0x0231A9F8
 	mov r1, #0
 	mov r2, #0x15
 	ldr r5, [r7, #0xb4]
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r1, r0
 	ldrb r0, [r1]
 	ldrh r4, [r1]
@@ -798,7 +798,7 @@ _0231AA74:
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_023440AC
+	bl AreOrbsAllowed
 	cmp r0, #0
 	mov r4, #1
 	bne _0231AAB4
@@ -879,7 +879,7 @@ _0231ABA0:
 	bne _0231AC00
 	mov r0, r7
 	mov r2, #0x7a
-	bl ov29_022EB60C
+	bl RemoveUsedItem
 	ldrb r2, [sp, #0x10]
 	mov r0, #0xa
 	mov r1, #0
@@ -915,7 +915,7 @@ _0231AC24:
 	mov r0, r7
 	mov r1, #0
 	mov r2, #0x7a
-	bl ov29_022EB60C
+	bl RemoveUsedItem
 _0231AC4C:
 	mov r0, r7
 	bl EnemyEvolution
@@ -1092,8 +1092,8 @@ _0231AE54:
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_0231AE3C
 
-	arm_func_start ov29_0231AE90
-ov29_0231AE90: ; 0x0231AE90
+	arm_func_start GetEntityNaturalGiftInfo
+GetEntityNaturalGiftInfo: ; 0x0231AE90
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	bl IsMonster__0231A9D4
@@ -1129,10 +1129,10 @@ _0231AF00:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0231AF08: .word 0x022C5130
-	arm_func_end ov29_0231AE90
+	arm_func_end GetEntityNaturalGiftInfo
 
-	arm_func_start ov29_0231AF0C
-ov29_0231AF0C: ; 0x0231AF0C
+	arm_func_start GetEntityWeatherBallType
+GetEntityWeatherBallType: ; 0x0231AF0C
 	stmdb sp!, {r3, lr}
 	bl GetApparentWeather
 	ldr r1, _0231AF20 ; =0x022C48DC
@@ -1140,7 +1140,7 @@ ov29_0231AF0C: ; 0x0231AF0C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0231AF20: .word 0x022C48DC
-	arm_func_end ov29_0231AF0C
+	arm_func_end GetEntityWeatherBallType
 
 	arm_func_start ov29_0231AF24
 ov29_0231AF24: ; 0x0231AF24
@@ -1241,8 +1241,8 @@ _0231B034:
 _0231B05C: .word 0x02353538
 	arm_func_end ov29_0231B008
 
-	arm_func_start ov29_0231B060
-ov29_0231B060: ; 0x0231B060
+	arm_func_start ActivateMotorDrive
+ActivateMotorDrive: ; 0x0231B060
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r2, _0231B0A0 ; =0x00000C3B
@@ -1251,7 +1251,7 @@ ov29_0231B060: ; 0x0231B060
 	mov r1, #0
 	mov r3, #2
 	str ip, [sp]
-	bl ov29_0234B250
+	bl LogMessageByIdWithPopupCheckParticipants
 	mov r0, r4
 	mov r1, r4
 	mov r2, #0
@@ -1261,10 +1261,10 @@ ov29_0231B060: ; 0x0231B060
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _0231B0A0: .word 0x00000C3B
-	arm_func_end ov29_0231B060
+	arm_func_end ActivateMotorDrive
 
-	arm_func_start ov29_0231B0A4
-ov29_0231B0A4: ; 0x0231B0A4
+	arm_func_start TryActivateFrisk
+TryActivateFrisk: ; 0x0231B0A4
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r5, r0
@@ -1328,4 +1328,4 @@ _0231B184:
 	.align 2, 0
 _0231B18C: .word 0x00000C3D
 _0231B190: .word 0x00000C3C
-	arm_func_end ov29_0231B0A4
+	arm_func_end TryActivateFrisk

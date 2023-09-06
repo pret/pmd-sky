@@ -446,7 +446,7 @@ _02382DC8:
 	cmp r0, #3
 	bne _02382E60
 	mov r0, r8
-	bl ov29_022E1610
+	bl GetItemInfo
 	mov r6, r0
 	mov r0, sl
 	mov r1, r6
@@ -532,7 +532,7 @@ _02382EDC:
 	cmp r0, #2
 	bne _02382F84
 	mov r0, r8
-	bl ov29_022E1608
+	bl GetTrapInfo
 	mov r6, r0
 	mov r0, sl
 	mov r1, r6
@@ -786,7 +786,7 @@ _0238329C:
 	add r0, sp, #0x1c
 	mov r1, #0
 	mov r2, #0x240
-	bl Memset
+	bl memset
 	add r1, sp, #0x18
 	mov r0, r8
 	mov r2, #1
@@ -2175,7 +2175,7 @@ _023846E8:
 	add r0, r0, #0x138
 	add r4, r0, #0xcc00
 	mov r0, r4
-	bl Memset
+	bl memset
 	mov r0, sl
 	mov r1, r4
 	mov r2, #1
@@ -2245,7 +2245,7 @@ ov30_0238483C: ; 0x0238483C
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x14
-	bl Memset
+	bl memset
 	mov r0, r5
 	bl ov30_02385EC4
 	strh r0, [r4]
@@ -2432,7 +2432,7 @@ _02384AC8:
 	mov r0, r4
 	mov r1, r5
 	mov r2, r8
-	bl ov29_02345538
+	bl SpawnItem
 _02384B08:
 	add r6, r6, #1
 	cmp r6, #0x40
@@ -2452,7 +2452,7 @@ ov30_02384B24: ; 0x02384B24
 	mov r0, r4
 	mov r1, #0
 	mov r2, #6
-	bl Memset
+	bl memset
 	mov r0, r5
 	mov r1, r4
 	mov r2, #1
@@ -2521,12 +2521,12 @@ _02384BAC:
 	ldrb r2, [sp, #2]
 	add r1, sp, #4
 	mov r3, #0
-	bl ov29_022E2260
+	bl SpawnTrap
 	movs r1, r0
 	beq _02384C54
 	mov r0, r4
 	mov r2, r5
-	bl ov29_022ED858
+	bl BindTrapToTile
 _02384C54:
 	add sb, sb, #1
 	cmp sb, #0x40
@@ -2671,7 +2671,7 @@ ov30_02384E28: ; 0x02384E28
 	add r0, sp, #0x18
 	mov r1, #0
 	mov r2, #0x240
-	bl Memset
+	bl memset
 	mov r0, sl
 	bl ov30_02385EF4
 	mov r0, sl
@@ -2697,7 +2697,7 @@ ov30_02384E28: ; 0x02384E28
 	add r0, sp, #0xe
 	mov r1, #0
 	mov r2, #2
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #0xe
 	mov r2, #2
@@ -2707,7 +2707,7 @@ ov30_02384E28: ; 0x02384E28
 	mov r1, #0
 	strh r2, [sp, #0x1c]
 	mov r2, #2
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #0xc
 	mov r2, #2
@@ -2815,7 +2815,7 @@ ov30_02384E28: ; 0x02384E28
 	add r0, sp, #8
 	mov r1, #0
 	mov r2, #1
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #8
 	mov r2, #1
@@ -2825,7 +2825,7 @@ ov30_02384E28: ; 0x02384E28
 	mov r1, #0
 	strb r2, [sp, #0x76]
 	mov r2, #1
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #7
 	mov r2, #1
@@ -2835,7 +2835,7 @@ ov30_02384E28: ; 0x02384E28
 	mov r1, #0
 	strb r2, [sp, #0x77]
 	mov r2, #1
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #6
 	mov r2, #1
@@ -2845,7 +2845,7 @@ ov30_02384E28: ; 0x02384E28
 	mov r1, #0
 	strb r2, [sp, #0x78]
 	mov r2, #1
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #5
 	mov r2, #1
@@ -2858,7 +2858,7 @@ ov30_02384E28: ; 0x02384E28
 	add r0, sp, #0xa
 	mov r1, #0
 	mov r2, #2
-	bl Memset
+	bl memset
 	add r1, sp, #0xa
 	mov r0, sl
 	mov r2, #2
@@ -2911,7 +2911,7 @@ ov30_023851C0: ; 0x023851C0
 	add r0, sp, #4
 	mov r1, #0
 	mov r2, #1
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #4
 	mov r2, #1
@@ -2924,7 +2924,7 @@ ov30_023851C0: ; 0x023851C0
 	add r0, sp, #3
 	mov r1, #0
 	mov r2, #1
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #3
 	mov r2, #1
@@ -3143,7 +3143,7 @@ ov30_023853E0: ; 0x023853E0
 	add r0, sp, #2
 	mov r1, #0
 	mov r2, #1
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #2
 	mov r2, #1
@@ -3153,7 +3153,7 @@ ov30_023853E0: ; 0x023853E0
 	mov r1, #0
 	mov r2, #1
 	strb r3, [sp, #0x123]
-	bl Memset
+	bl memset
 	add r1, sp, #1
 	mov r0, sl
 	mov r2, #1
@@ -3163,7 +3163,7 @@ ov30_023853E0: ; 0x023853E0
 	mov r1, #0
 	strb r2, [sp, #0x124]
 	mov r2, #4
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #0x10
 	mov r2, #4
@@ -3336,7 +3336,7 @@ _02385630:
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #1
-	bl Memset
+	bl memset
 	mov r0, sl
 	add r1, sp, #0
 	mov r2, #1
@@ -3427,7 +3427,7 @@ _023859BC:
 	bl ov29_023021F0
 	mov r0, r7
 	mov r1, #0
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 _023859D0:
 	add sp, sp, #0x258
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -3446,7 +3446,7 @@ ov30_023859DC: ; 0x023859DC
 	bl ov29_022DEA10
 	mov r5, r0
 	mov r0, r8
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	mov r4, r0
 	add r0, sp, #8
 	add r1, sp, #4
@@ -3529,7 +3529,7 @@ ov30_02385B10: ; 0x02385B10
 	bl ov29_022DEA10
 	mov r5, r0
 	mov r0, r8
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	mov r4, r0
 	add r0, sp, #8
 	add r1, sp, #4

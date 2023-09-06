@@ -235,7 +235,7 @@ _0238A3E8: .word 0x0238DAE8
 ov19_0238A3EC: ; 0x0238A3EC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	mov r6, #0
 	ldr r5, _0238A464 ; =0x0238DAE8
 	mov r4, r0
@@ -369,7 +369,7 @@ _0238A4C8: ; jump table
 _0238A5CC:
 	mvn r0, #0
 	mov r1, #0
-	bl ov11_022E8124
+	bl InitRandomNpcJobs
 	bl ov11_02311D6C
 	mov r0, #1
 	str r0, [r8, #4]
@@ -1252,7 +1252,7 @@ _0238B250:
 	add r0, r8, #0x10
 	mov r1, #0xc
 	str r2, [sp, #0x7ec]
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	bl ov19_0238D450
 	mov r0, #4
 	ldr r1, _0238B484 ; =0x0000101C
@@ -1279,7 +1279,7 @@ _0238B2B8:
 	add r0, r8, #0x10
 	mov r1, #0xc
 	str r2, [sp, #0x79c]
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	bl ov19_0238D450
 	mov r0, #5
 	ldr r1, _0238B484 ; =0x0000101C
@@ -1303,7 +1303,7 @@ _0238B320:
 	bl sub_02046D20
 	add r0, r8, #0x10
 	mov r1, #0
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	add r0, r8, #0x100
 	mov r1, #0
 	strh r1, [r0]
@@ -1318,7 +1318,7 @@ _0238B34C:
 	add r0, r8, #0x10
 	mov r1, #7
 	str r2, [sp, #0x74c]
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	bl ov19_0238D450
 	mov r0, #6
 	ldr r1, _0238B484 ; =0x0000101C
@@ -1342,7 +1342,7 @@ _0238B3B4:
 	bl ov19_0238D47C
 	add r0, r8, #0x10
 	mov r1, #0
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	add r0, sp, #0x6b0
 	bl InitPreprocessorArgs
 	ldr r1, [r8, #0xd4]
@@ -1902,7 +1902,7 @@ _0238BB9C:
 	bl PreprocessStringFromMessageId
 	mov r0, r5
 	add r1, r5, #0x400
-	bl Strcat
+	bl strcat
 	add r0, sp, #0x114
 	ldrsh r0, [r0, #0x66]
 	cmp r0, #0
@@ -1933,7 +1933,7 @@ _0238BC38:
 	beq _0238BC8C
 	ldr r1, _0238C4CC ; =0x0238E2C0
 	mov r0, r5
-	bl Strcat
+	bl strcat
 	mov r1, r7, lsl #1
 	ldrh r1, [r4, r1]
 	ldr r0, [sp, #0x10]
@@ -1947,7 +1947,7 @@ _0238BC38:
 	bl PreprocessStringFromMessageId
 	mov r0, r5
 	add r1, r5, #0x400
-	bl Strcat
+	bl strcat
 _0238BC8C:
 	add r7, r7, #1
 	cmp r7, #6
@@ -2230,7 +2230,7 @@ _0238C07C:
 	bl InitPortraitBoxWithMonsterId
 	add r0, r8, #0x10
 	mov r1, #0x13
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, [r8, #0xd4]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -2239,12 +2239,12 @@ _0238C07C:
 	beq _0238C0D0
 	ldr r1, _0238C4E0 ; =0x0238E1BC
 	add r0, r8, #0x10
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	b _0238C0DC
 _0238C0D0:
 	ldr r1, _0238C4E4 ; =0x0238E1C4
 	add r0, r8, #0x10
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 _0238C0DC:
 	ldr r0, _0238B440 ; =0x0000301C
 	ldr r1, _0238C4E8 ; =0x000045DB
@@ -2274,7 +2274,7 @@ _0238C0FC:
 	bl InitPortraitBoxWithMonsterId
 	add r0, r8, #0x10
 	mov r1, #0x13
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, [r8, #0xd4]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -2283,12 +2283,12 @@ _0238C0FC:
 	beq _0238C174
 	ldr r1, _0238C4EC ; =0x0238E1A4
 	add r0, r8, #0x10
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	b _0238C180
 _0238C174:
 	ldr r1, _0238C4F0 ; =0x0238E1AC
 	add r0, r8, #0x10
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 _0238C180:
 	bl ov19_0238D450
 	ldr r1, _0238C4F4 ; =0x0238E220
@@ -2313,10 +2313,10 @@ _0238C1BC:
 	bl sub_02046D20
 	ldr r1, _0238C4FC ; =0x0238E1B4
 	add r0, r8, #0x10
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	add r0, r8, #0x10
 	mov r1, #0
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	add r0, r8, #0x100
 	mov r1, #0
 	strh r1, [r0]
@@ -2331,10 +2331,10 @@ _0238C200:
 	bl sub_02046D20
 	add r0, r8, #0x10
 	mov r1, #0
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r1, _0238C4FC ; =0x0238E1B4
 	add r0, r8, #0x10
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	add r0, r8, #0x100
 	mov r1, #0
 	strh r1, [r0]
@@ -2936,7 +2936,7 @@ ov19_0238C9F0: ; 0x0238C9F0
 	bl PreprocessStringFromMessageId
 	mov r0, r5
 	add r1, r5, #0x400
-	bl Strcat
+	bl strcat
 	cmp sb, #0
 	beq _0238CABC
 	ldrsh r2, [r4, #8]
@@ -3081,14 +3081,14 @@ _0238CC4C:
 	bl InitPreprocessorArgs
 	ldr r1, _0238CCE0 ; =0x0238E2C0
 	mov r0, sl
-	bl Strcat
+	bl strcat
 	ldr r1, [r4, #0xd4]
 	mov r0, sl
 	orr r1, r1, #0x20000
 	str r1, [sp, #0xc]
 	ldr r1, _0238CCE4 ; =0x0238E2C4
 	str r5, [sp, #0x1c]
-	bl Strcat
+	bl strcat
 	add r0, sp, #0xc
 	str r0, [sp]
 	mov r0, #1
@@ -3108,7 +3108,7 @@ ov19_0238CC94: ; 0x0238CC94
 ov19_0238CCA8: ; 0x0238CCA8
 	mov r0, sl
 	mov r1, sb
-	bl Strcat
+	bl strcat
 	add r0, fp, #0x14
 	and r1, r5, #0xff
 	arm_func_end ov19_0238CCA8
@@ -3338,7 +3338,7 @@ _0238CF84:
 	ldr r0, [sp, #0xc]
 	str r0, [sp, #0x58]
 	mov r0, r5
-	bl Abs
+	bl abs
 	str r0, [sp, #0x44]
 	cmp r8, #1
 	ldreq r0, [sl, #0x20]
@@ -3794,10 +3794,10 @@ ov19_0238D56C: ; 0x0238D56C
 	bl InitPortraitBoxWithMonsterId
 	add r0, r4, #0x10
 	mov r1, #0
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	add r0, r4, #0x10
 	mov r1, #0
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	add r0, r4, #0x5c
 	bl sub_020580C4
 	mov r0, #0
@@ -3832,10 +3832,10 @@ ov19_0238D5FC: ; 0x0238D5FC
 	bl InitPortraitBoxWithMonsterId
 	add r0, r4, #0x10
 	mov r1, #0
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	add r0, r4, #0x10
 	mov r1, #0
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	add r0, r4, #0x5c
 	bl sub_020580C4
 	ldr r0, [r4]

@@ -78,25 +78,25 @@ ov29_02344BA8: ; 0x02344BA8
 _02344BCC: .word 0x023531BC
 	arm_func_end ov29_02344BA8
 
-	arm_func_start ov29_02344BD0
-ov29_02344BD0: ; 0x02344BD0
-	ldr ip, _02344BE0 ; =ov29_023472C4
+	arm_func_start GenerateStandardItem
+GenerateStandardItem: ; 0x02344BD0
+	ldr ip, _02344BE0 ; =GenerateItem
 	mov r3, r2
 	mov r2, #0
 	bx ip
 	.align 2, 0
-_02344BE0: .word ov29_023472C4
-	arm_func_end ov29_02344BD0
+_02344BE0: .word GenerateItem
+	arm_func_end GenerateStandardItem
 
-	arm_func_start ov29_02344BE4
-ov29_02344BE4: ; 0x02344BE4
-	ldr ip, _02344BF4 ; =ov29_023472C4
+	arm_func_start GenerateCleanItem
+GenerateCleanItem: ; 0x02344BE4
+	ldr ip, _02344BF4 ; =GenerateItem
 	mov r2, #0
 	mov r3, #2
 	bx ip
 	.align 2, 0
-_02344BF4: .word ov29_023472C4
-	arm_func_end ov29_02344BE4
+_02344BF4: .word GenerateItem
+	arm_func_end GenerateCleanItem
 
 	arm_func_start ov29_02344BF8
 ov29_02344BF8: ; 0x02344BF8
@@ -113,7 +113,7 @@ _02344C10:
 	bne _02344C10
 	bl DungeonRand16Bit
 	mov r1, #0xc
-	bl DivideInt
+	bl __divsi3
 	add r2, sp, #0
 	mov r0, #6
 	smlabb r0, r1, r0, r2
@@ -234,11 +234,11 @@ _02344DB0:
 	b _02344DEC
 _02344DE0:
 	mov r0, sl
-	bl ov29_022E7AC4
+	bl GetItemIdToSpawn
 	mov fp, r0
 _02344DEC:
 	mov r0, fp
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	moveq r0, #0
 	streq r0, [sp]
@@ -246,7 +246,7 @@ _02344DEC:
 	mov r1, fp
 	add r0, sp, #0x14
 	mov r2, #0
-	bl ov29_023472C4
+	bl GenerateItem
 	ldr r0, [sp]
 	add r1, sp, #0x14
 	cmp r0, #0
@@ -255,7 +255,7 @@ _02344DEC:
 	orrne r0, r0, #2
 	strneb r0, [sp, #0x14]
 	add r0, sp, #0x1a
-	bl ov29_02345538
+	bl SpawnItem
 	cmp sl, #0
 	addeq r8, r8, #1
 _02344E40:
@@ -370,11 +370,11 @@ _02344FC0:
 	mov r1, r6
 	mov r2, r5
 	mov r3, r4
-	bl ov29_023472C4
+	bl GenerateItem
 	mov r1, r7
 	mov r2, fp
 	add r0, sl, sb, lsl #2
-	bl ov29_02345538
+	bl SpawnItem
 	add sb, sb, #1
 _02344FE8:
 	cmp sb, r8
@@ -413,8 +413,8 @@ _02345050:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_02345004
 
-	arm_func_start ov29_02345058
-ov29_02345058: ; 0x02345058
+	arm_func_start TryLeaderItemPickUp
+TryLeaderItemPickUp: ; 0x02345058
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x198
 	mov sl, r0
@@ -431,7 +431,7 @@ ov29_02345058: ; 0x02345058
 	ldr r1, [r0]
 	cmp r1, #3
 	bne _02345508
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r1, [r7, #0x4e]
 	mov r5, r0
 	mov r0, r4
@@ -511,7 +511,7 @@ _0234515C:
 	bl sub_02024FE8
 	mov r0, sl
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldr r1, _02345520 ; =0x00000BD6
 	mov r0, r4
 	bl LogMessageByIdWithPopupCheckUser
@@ -607,7 +607,7 @@ _023452D8:
 	bl sub_02024FE8
 	mov r0, sl
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldr r0, _02345528 ; =0x00001304
 	bl ov29_022EACCC
 	add r0, sp, #0xcc
@@ -692,7 +692,7 @@ _02345418:
 	bl sub_02024FE8
 	mov r0, sl
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldr r1, _0234552C ; =0x00000BD4
 	mov r0, r4
 	bl LogMessageByIdWithPopupCheckUser
@@ -722,7 +722,7 @@ _023454BC:
 	bl sub_02024FE8
 	mov r0, sl
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldr r1, _02345530 ; =0x00000BD5
 	mov r0, r4
 	bl LogMessageByIdWithPopupCheckUser
@@ -748,15 +748,15 @@ _02345528: .word 0x00001304
 _0234552C: .word 0x00000BD4
 _02345530: .word 0x00000BD5
 _02345534: .word 0x00000BD7
-	arm_func_end ov29_02345058
+	arm_func_end TryLeaderItemPickUp
 
-	arm_func_start ov29_02345538
-ov29_02345538: ; 0x02345538
+	arm_func_start SpawnItem
+SpawnItem: ; 0x02345538
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
-	bl ov29_022E2314
+	bl SpawnItemEntity
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -795,7 +795,7 @@ _023455A8:
 	tst r0, #0x20
 	beq _0234563C
 	ldrsh r0, [r6, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	beq _0234563C
 	ldrb r0, [r6]
@@ -845,4 +845,4 @@ _02345648:
 	.align 2, 0
 _02345690: .word 0x023537B0
 _02345694: .word 0x02353538
-	arm_func_end ov29_02345538
+	arm_func_end SpawnItem

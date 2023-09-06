@@ -3,17 +3,17 @@
 
 	.text
 
-	arm_func_start ov29_02305C28
-ov29_02305C28: ; 0x02305C28
+	arm_func_start EndNegativeStatusConditionWrapper
+EndNegativeStatusConditionWrapper: ; 0x02305C28
 	stmdb sp!, {r3, lr}
 	mov ip, #0
 	str ip, [sp]
-	bl ov29_023058C4
+	bl EndNegativeStatusCondition
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02305C28
+	arm_func_end EndNegativeStatusConditionWrapper
 
-	arm_func_start ov29_02305C3C
-ov29_02305C3C: ; 0x02305C3C
+	arm_func_start TransferNegativeStatusCondition
+TransferNegativeStatusCondition: ; 0x02305C3C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0xb8
 	mov sb, r0
@@ -30,7 +30,7 @@ ov29_02305C3C: ; 0x02305C3C
 	mov r1, r5
 	ldr r6, [sb, #0xb4]
 	ldr r7, [r8, #0xb4]
-	bl ov29_02300634
+	bl MonsterHasNegativeStatus
 	cmp r0, #0
 	beq _02305D28
 	mov r0, sb
@@ -63,7 +63,7 @@ ov29_02305C3C: ; 0x02305C3C
 	orr r5, r5, r0
 	mov r0, sb
 	mov r1, r8
-	bl ov29_023078EC
+	bl TransferNegativeBlinkerClassStatus
 	orr r5, r5, r0
 	mov r0, sb
 	mov r1, r8
@@ -80,7 +80,7 @@ _02305D28:
 	mov r0, sb
 	mov r1, r8
 	mov r2, #1
-	bl ov29_0231662C
+	bl TryInflictPerishSongStatus
 	cmp r0, #0
 	ldrneb r1, [r6, #0x106]
 	orrne r0, r5, #0x11
@@ -98,7 +98,7 @@ _02305D68:
 	mov r1, r8
 	mov r2, #0
 	mov r3, #1
-	bl ov29_023174C8
+	bl TryInflictExposedStatus
 	cmp r0, #0
 	ldrneb r1, [r6, #0xfe]
 	orrne r0, r5, #0x11
@@ -112,13 +112,13 @@ _02305DAC:
 	mov r0, sb
 	mov r1, r8
 	mov r2, #0
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	bne _02305E08
 	mov r0, sb
 	mov r1, r8
 	mov r2, #0
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	bne _02305E08
 	mov r2, #0
@@ -231,7 +231,7 @@ _02305F4C:
 _02305F54: .word 0x00000CCC
 _02305F58: .word 0x00000CCB
 _02305F5C: .word 0x00000CCA
-	arm_func_end ov29_02305C3C
+	arm_func_end TransferNegativeStatusCondition
 
 	arm_func_start ov29_02305F60
 ov29_02305F60: ; 0x02305F60
@@ -244,7 +244,7 @@ ov29_02305F60: ; 0x02305F60
 	ldr r5, [r4, #0xb4]
 	mov r1, #0
 	mov r0, r5
-	bl ov29_022FDDC0
+	bl SubInitMonster
 	mov ip, #0
 	strb ip, [r5, #0x106]
 	strb ip, [r5, #0xfe]
@@ -269,8 +269,8 @@ _02305FA0:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_02305F60
 
-	arm_func_start ov29_02305FDC
-ov29_02305FDC: ; 0x02305FDC
+	arm_func_start EndSleepClassStatus
+EndSleepClassStatus: ; 0x02305FDC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r1
 	mov sb, r0
@@ -324,7 +324,7 @@ _02306070:
 	ldrsh r1, [r0]
 	mov r0, r8
 	mov r2, #8
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	b _02306164
 _023060A8:
 	mov r0, sb
@@ -354,7 +354,7 @@ _023060E8:
 	mov r1, r8
 	mov r3, r2
 	str r6, [sp]
-	bl ov29_023058C4
+	bl EndNegativeStatusCondition
 	b _02306164
 _02306118:
 	cmp r7, #0
@@ -396,10 +396,10 @@ _02306198: .word 0x0000024E
 _0230619C: .word 0x022C45A0
 _023061A0: .word 0x022C4868
 _023061A4: .word 0x00000C91
-	arm_func_end ov29_02305FDC
+	arm_func_end EndSleepClassStatus
 
-	arm_func_start ov29_023061A8
-ov29_023061A8: ; 0x023061A8
+	arm_func_start EndBurnClassStatus
+EndBurnClassStatus: ; 0x023061A8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -409,7 +409,7 @@ ov29_023061A8: ; 0x023061A8
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, #0
 	ldr r4, [r5, #0xb4]
-	arm_func_end ov29_023061A8
+	arm_func_end EndBurnClassStatus
 
 	arm_func_start ov29_023061CC
 ov29_023061CC: ; 0x023061CC
@@ -658,8 +658,8 @@ _023064EC: .word 0x00000CB7
 _023064F0: .word 0x00000CBC
 	arm_func_end EndCringeClassStatus
 
-	arm_func_start ov29_023064F4
-ov29_023064F4: ; 0x023064F4
+	arm_func_start EndReflectClassStatus
+EndReflectClassStatus: ; 0x023064F4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r0, r5
@@ -800,10 +800,10 @@ _023066C8: .word 0x00000CB4
 _023066CC: .word 0x00000CB5
 _023066D0: .word 0x00000CBE
 _023066D4: .word 0x00000CC1
-	arm_func_end ov29_023064F4
+	arm_func_end EndReflectClassStatus
 
-	arm_func_start ov29_023066D8
-ov29_023066D8: ; 0x023066D8
+	arm_func_start TryRemoveSnatchedMonsterFromDungeonStruct
+TryRemoveSnatchedMonsterFromDungeonStruct: ; 0x023066D8
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	mov r0, r4
@@ -825,10 +825,10 @@ ov29_023066D8: ; 0x023066D8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02306724: .word 0x02353538
-	arm_func_end ov29_023066D8
+	arm_func_end TryRemoveSnatchedMonsterFromDungeonStruct
 
-	arm_func_start ov29_02306728
-ov29_02306728: ; 0x02306728
+	arm_func_start EndCurseClassStatus
+EndCurseClassStatus: ; 0x02306728
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, r1
 	mov r8, r0
@@ -874,7 +874,7 @@ _023067AC:
 _023067C4:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_023066D8
+	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	b _02306894
 _023067D4:
 	mov r1, #0
@@ -943,10 +943,10 @@ _023068B4: .word 0x00000CA5
 _023068B8: .word 0x00000CBF
 _023068BC: .word 0x00000CC2
 _023068C0: .word 0x00000CC3
-	arm_func_end ov29_02306728
+	arm_func_end EndCurseClassStatus
 
-	arm_func_start ov29_023068C4
-ov29_023068C4: ; 0x023068C4
+	arm_func_start EndLeechSeedClassStatus
+EndLeechSeedClassStatus: ; 0x023068C4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r0, r5
@@ -987,10 +987,10 @@ _0230692C:
 	.align 2, 0
 _02306948: .word 0x00000C94
 _0230694C: .word 0x00000CAF
-	arm_func_end ov29_023068C4
+	arm_func_end EndLeechSeedClassStatus
 
-	arm_func_start ov29_02306950
-ov29_02306950: ; 0x02306950
+	arm_func_start EndSureShotClassStatus
+EndSureShotClassStatus: ; 0x02306950
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r0, r5
@@ -1042,10 +1042,10 @@ _023069E0:
 _023069F4: .word 0x00000CA1
 _023069F8: .word 0x00000CA2
 _023069FC: .word 0x00000CA3
-	arm_func_end ov29_02306950
+	arm_func_end EndSureShotClassStatus
 
-	arm_func_start ov29_02306A00
-ov29_02306A00: ; 0x02306A00
+	arm_func_start EndInvisibleClassStatus
+EndInvisibleClassStatus: ; 0x02306A00
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r1
 	mov r4, #0
@@ -1085,10 +1085,10 @@ _02306A74:
 _02306A84:
 	ldrsh r1, [r6, #2]
 	mov r0, r8
-	bl ov29_022F9408
+	bl GetMonsterApparentId
 	strh r0, [r6, #4]
 	ldrsh r0, [r6, #4]
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	strh r0, [r8, #0xa8]
 	mov r0, r8
 	bl GetSleepAnimationId
@@ -1122,17 +1122,17 @@ _02306AFC:
 	cmp r5, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r8
-	bl ov29_02321104
+	bl EnsureCanStandCurrentTile
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02306B18: .word 0x00000CA8
 _02306B1C: .word 0x00000CB8
 _02306B20: .word 0x00000CB6
 _02306B24: .word 0x00000CAC
-	arm_func_end ov29_02306A00
+	arm_func_end EndInvisibleClassStatus
 
-	arm_func_start ov29_02306B28
-ov29_02306B28: ; 0x02306B28
+	arm_func_start EndBlinkerClassStatus
+EndBlinkerClassStatus: ; 0x02306B28
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r0, r5
@@ -1184,18 +1184,18 @@ _02306BB8:
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, #0x31
 	bl AdvanceFrame
-	bl ov29_02336F4C
-	bl ov29_02339CE8
+	bl UpdateTrapsVisibility
+	bl UpdateMinimap
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02306BE8: .word 0x00000CA9
 _02306BEC: .word 0x00000CAA
 _02306BF0: .word 0x00000CAB
 _02306BF4: .word 0x00000CAD
-	arm_func_end ov29_02306B28
+	arm_func_end EndBlinkerClassStatus
 
-	arm_func_start ov29_02306BF8
-ov29_02306BF8: ; 0x02306BF8
+	arm_func_start EndMuzzledStatus
+EndMuzzledStatus: ; 0x02306BF8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r0, r5
@@ -1226,10 +1226,10 @@ _02306C4C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02306C60: .word 0x00000CB9
-	arm_func_end ov29_02306BF8
+	arm_func_end EndMuzzledStatus
 
-	arm_func_start ov29_02306C64
-ov29_02306C64: ; 0x02306C64
+	arm_func_start EndMiracleEyeStatus
+EndMiracleEyeStatus: ; 0x02306C64
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r0, r5
@@ -1244,7 +1244,7 @@ ov29_02306C64: ; 0x02306C64
 	ldrb r0, [r4, #0xf5]
 	cmp r0, #0
 	beq _02306CB8
-	arm_func_end ov29_02306C64
+	arm_func_end EndMiracleEyeStatus
 
 	arm_func_start ov29_02306C9C
 ov29_02306C9C: ; 0x02306C9C
@@ -1266,8 +1266,8 @@ _02306CB8:
 _02306CCC: .word 0x00000CC4
 	arm_func_end ov29_02306C9C
 
-	arm_func_start ov29_02306CD0
-ov29_02306CD0: ; 0x02306CD0
+	arm_func_start EndMagnetRiseStatus
+EndMagnetRiseStatus: ; 0x02306CD0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r1
 	mov r0, r6
@@ -1304,7 +1304,7 @@ _02306D2C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02306D50: .word 0x00000CC5
-	arm_func_end ov29_02306CD0
+	arm_func_end EndMagnetRiseStatus
 
 	arm_func_start ov29_02306D54
 ov29_02306D54: ; 0x02306D54
@@ -1332,7 +1332,7 @@ _02306DA0:
 	cmp r0, #0
 	beq _02306DB0
 	mov r0, sb
-	bl ov29_02306CD0
+	bl EndMagnetRiseStatus
 _02306DB0:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -1689,7 +1689,7 @@ _02307280:
 	mov r0, sb
 	mov r1, r8
 	mov r2, #1
-	bl ov29_023163A8
+	bl TryInflictTauntStatus
 	mov sl, r0
 	mov r4, #1
 	b _0230731C
@@ -1717,7 +1717,7 @@ _023072E4:
 	mov r0, sb
 	mov r1, r8
 	mov r2, #1
-	bl ov29_02316720
+	bl TryInflictEncoreStatus
 	mov sl, r0
 	mov r4, #1
 	b _0230731C
@@ -1809,7 +1809,7 @@ _0230741C:
 	mov r1, r8
 	mov r3, r2
 	str r4, [sp]
-	bl ov29_02315E24
+	bl TryInflictDecoyStatus
 	mov r5, r0
 	b _0230749C
 _02307440:
@@ -1817,7 +1817,7 @@ _02307440:
 	mov r1, r8
 	mov r2, r4
 	mov r3, #1
-	bl ov29_0231827C
+	bl TryInflictGastroAcidStatus
 	mov r5, r0
 	mov r4, #1
 	b _0230749C
@@ -1826,7 +1826,7 @@ _02307460:
 	mov r1, r8
 	mov r2, r4
 	mov r3, #1
-	bl ov29_023185A8
+	bl TryInflictHealBlockStatus
 	mov r5, r0
 	mov r4, #1
 	b _0230749C
@@ -1835,7 +1835,7 @@ _02307480:
 	mov r1, r8
 	mov r2, r4
 	mov r3, #1
-	bl ov29_0231872C
+	bl TryInflictEmbargoStatus
 	mov r5, r0
 	mov r4, #1
 _0230749C:
@@ -1856,7 +1856,7 @@ _023074C8:
 	beq _02307500
 	mov r0, sb
 	mov r1, r8
-	bl ov29_023066D8
+	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	add r3, r7, #0xd8
 	add r2, sl, #0xd8
 	mov r1, #5
@@ -1874,7 +1874,7 @@ _02307500:
 	mov r1, sb
 	mov r2, #1
 	mov r3, #0
-	bl ov29_02306728
+	bl EndCurseClassStatus
 	orr r0, r6, #1
 	and r6, r0, #0xff
 	b _023076A0
@@ -1886,7 +1886,7 @@ _02307528:
 	mov r1, r8
 	mov r2, #1
 	str r3, [sp]
-	bl ov29_02315E24
+	bl TryInflictDecoyStatus
 	orr r0, r6, #0x11
 	and r6, r0, #0xff
 	b _023076A0
@@ -1895,7 +1895,7 @@ _02307554:
 	beq _023075AC
 	mov r0, sb
 	mov r1, r8
-	bl ov29_023066D8
+	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	add r3, r7, #0xd8
 	add r2, sl, #0xd8
 	mov r1, #5
@@ -1921,7 +1921,7 @@ _023075AC:
 	mov r1, sb
 	mov r2, #4
 	mov r3, #0
-	bl ov29_02306728
+	bl EndCurseClassStatus
 	orr r0, r6, #1
 	and r6, r0, #0xff
 	b _023076A0
@@ -1930,7 +1930,7 @@ _023075D4:
 	beq _02307614
 	mov r0, sb
 	mov r1, r8
-	bl ov29_023066D8
+	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	add r3, r7, #0xd8
 	add r2, sl, #0xd8
 	mov r1, #5
@@ -1950,7 +1950,7 @@ _02307614:
 	mov r1, sb
 	mov r2, #5
 	mov r3, #0
-	bl ov29_02306728
+	bl EndCurseClassStatus
 	orr r0, r6, #1
 	and r6, r0, #0xff
 	b _023076A0
@@ -1959,7 +1959,7 @@ _0230763C:
 	beq _0230767C
 	mov r0, sb
 	mov r1, r8
-	bl ov29_023066D8
+	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	add r3, r7, #0xd8
 	add r2, sl, #0xd8
 	mov r1, #5
@@ -1979,7 +1979,7 @@ _0230767C:
 	mov r1, sb
 	mov r2, #6
 	mov r3, #0
-	bl ov29_02306728
+	bl EndCurseClassStatus
 	orr r0, r6, #1
 	and r6, r0, #0xff
 _023076A0:
@@ -2126,7 +2126,7 @@ _02307884:
 	mov r1, r8
 	mov r2, r4
 	mov r3, #1
-	bl ov29_02315C00
+	bl TryInflictWhifferStatus
 	mov sl, r0
 	mov r4, #1
 _023078A0:
@@ -2152,8 +2152,8 @@ _023078C0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	arm_func_end ov29_023077FC
 
-	arm_func_start ov29_023078EC
-ov29_023078EC: ; 0x023078EC
+	arm_func_start TransferNegativeBlinkerClassStatus
+TransferNegativeBlinkerClassStatus: ; 0x023078EC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r4, #0
 	mov sb, r0
@@ -2194,7 +2194,7 @@ _02307974:
 	mov r1, r8
 	mov r2, #1
 	mov r3, r4
-	bl ov29_023176CC
+	bl TryInflictBlinkerStatus
 	mov sl, r0
 	mov r4, #1
 	b _023079C4
@@ -2202,14 +2202,14 @@ _02307994:
 	mov r0, sb
 	mov r1, r8
 	mov r2, #1
-	bl ov29_02317844
+	bl TryInflictCrossEyedStatus
 	mov sl, r0
 	mov r4, #1
 	b _023079C4
 _023079B0:
 	mov r0, sb
 	mov r1, r8
-	bl ov29_02317AF4
+	bl TryInflictDropeyeStatus
 	mov sl, r0
 	mov r4, #1
 _023079C4:
@@ -2236,12 +2236,12 @@ _023079E4:
 	beq _02307A24
 	mov r0, #0x31
 	bl AdvanceFrame
-	bl ov29_02336F4C
-	bl ov29_02339CE8
+	bl UpdateTrapsVisibility
+	bl UpdateMinimap
 _02307A24:
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end ov29_023078EC
+	arm_func_end TransferNegativeBlinkerClassStatus
 
 	arm_func_start ov29_02307A2C
 ov29_02307A2C: ; 0x02307A2C
@@ -2280,7 +2280,7 @@ _02307AA8:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #1
-	bl ov29_02317124
+	bl TryInflictMuzzledStatus
 	mov r5, r0
 	mov r4, #1
 _02307AC0:
@@ -2338,7 +2338,7 @@ ov29_02307B0C: ; 0x02307B0C
 	mov r0, sl
 	mov r1, sb
 	mov r2, #1
-	bl ov29_02318850
+	bl TryInflictMiracleEyeStatus
 	mov r5, r0
 	mov r4, #1
 _02307B90:
@@ -2389,7 +2389,7 @@ _02307C0C:
 	mov r1, r5
 	mov r2, #0
 	str r3, [sp]
-	bl ov29_02305FDC
+	bl EndSleepClassStatus
 	mov r3, #1
 _02307C3C:
 	mov r0, r3
@@ -2413,8 +2413,8 @@ ov29_02307C48: ; 0x02307C48
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_02307C48
 
-	arm_func_start ov29_02307C78
-ov29_02307C78: ; 0x02307C78
+	arm_func_start EndFrozenStatus
+EndFrozenStatus: ; 0x02307C78
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -2442,14 +2442,14 @@ ov29_02307C78: ; 0x02307C78
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02307CDC: .word 0x00000C9F
-	arm_func_end ov29_02307C78
+	arm_func_end EndFrozenStatus
 
 	arm_func_start ov29_02307CE0
 ov29_02307CE0: ; 0x02307CE0
 	stmdb sp!, {r4, lr}
 	ldr r4, [r0, #0xb4]
 	mov r1, #0
-	bl ov29_02307D54
+	bl TryRestoreRoostTyping
 	mov r1, #0
 	strb r1, [r4, #0xff]
 	ldrsh r0, [r4, #2]
@@ -2462,8 +2462,8 @@ ov29_02307CE0: ; 0x02307CE0
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_02307CE0
 
-	arm_func_start ov29_02307D18
-ov29_02307D18: ; 0x02307D18
+	arm_func_start EndProtectStatus
+EndProtectStatus: ; 0x02307D18
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -2477,12 +2477,12 @@ ov29_02307D18: ; 0x02307D18
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, r4
-	bl ov29_023064F4
+	bl EndReflectClassStatus
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02307D18
+	arm_func_end EndProtectStatus
 
-	arm_func_start ov29_02307D54
-ov29_02307D54: ; 0x02307D54
+	arm_func_start TryRestoreRoostTyping
+TryRestoreRoostTyping: ; 0x02307D54
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -2511,7 +2511,7 @@ ov29_02307D54: ; 0x02307D54
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02307DBC: .word 0x00000CC8
-	arm_func_end ov29_02307D54
+	arm_func_end TryRestoreRoostTyping
 
 	arm_func_start ov29_02307DC0
 ov29_02307DC0: ; 0x02307DC0
@@ -2564,13 +2564,13 @@ _02307E2C:
 	ldrsh r1, [sb, #4]
 	ldrsh r0, [r6, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	bgt _02307E94
 	ldrsh r1, [sb, #6]
 	ldrsh r0, [r6, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	movle r8, #1
 	ble _02307EC4

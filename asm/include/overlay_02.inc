@@ -43,7 +43,7 @@
 .public ov00_022CF284
 .public ov00_022CF338
 .public sub_02082654
-.public DivideUInt
+.public __udivsi3
 .public ov00_022ED7C0
 .public sub_0207F338
 .public sub_0207B030
@@ -78,7 +78,7 @@
 .public sub_02076FC8
 .public sub_0207AE44
 .public ov00_022D6C88
-.public Memcpy
+.public memcpy
 .public sub_02082420
 .public ov00_022D5110
 .public sub_0208FE84
@@ -90,7 +90,7 @@
 .public ov00_022BF3E0
 .public ov00_022BF814
 .public EnableIrqFlag
-.public Memcmp
+.public memcmp
 .public sub_0207F894
 .public ov00_022CF918
 .public ov00_022ED85C
@@ -109,7 +109,7 @@
 .public SetIrqFlag
 .public sub_0207BA08
 .public sub_0207C4C8
-.public Strncpy
+.public strncpy
 .public ov00_022ED8C0
 .public ov00_022C4718
 .public ClearIrqFlag
@@ -165,7 +165,7 @@
 .public ov00_022C74A0
 .public sub_0207EF9C
 .public ov00_022BFB14
-.public DivideInt
+.public __divsi3
 .public sub_02077598
 .public sub_02078CC8
 .public ov00_022BF640
@@ -175,14 +175,14 @@
 .public sub_020772C4
 .public sub_0207C3B4
 .public sub_0207EF2C
-.public Strlen
+.public strlen
 .public sub_0207A0CC
 .public sub_0207C7DC
 .public ov00_022D7AB0
 .public sub_020812F8
 .public sub_0207ADCC
 .public ov00_022D7864
-.public Memset
+.public memset
 .public ov00_022C6EFC
 .public ov00_022D4DE4
 .public sub_0207D13C
@@ -256,4 +256,4 @@
 .public sub_02079DE0
 .public ov00_022D4B88
 .public ov00_022CF8F8
-.public Strcpy
+.public strcpy

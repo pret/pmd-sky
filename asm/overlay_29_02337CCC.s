@@ -37,7 +37,7 @@ _02337D34:
 	ldrsh r1, [r6, #2]
 	add r0, r8, r0
 	add r1, r5, r1
-	bl ov29_02336A84
+	bl DetermineTileWalkableNeighbors
 	add r8, r8, #1
 	cmp r8, #1
 	ble _02337D34
@@ -75,7 +75,7 @@ _02337D9C:
 	ldrsh r1, [r7, #2]
 	add r0, r5, r0
 	add r1, r6, r1
-	bl ov29_023391EC
+	bl DrawMinimapTile
 	add r5, r5, #1
 	cmp r5, #1
 	ble _02337D9C
@@ -100,7 +100,7 @@ _02337E0C:
 	add r5, r5, #1
 	cmp r5, #0x14
 	blt _02337DE4
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 	mov r0, r7
 	bl ov29_022E66C4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -112,7 +112,7 @@ ov29_02337E2C: ; 0x02337E2C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, #0
-	bl ov29_02337E94
+	bl IsWaterTileset
 	cmp r0, #0
 	ldrh r0, [r5]
 	beq _02337E54
@@ -141,8 +141,8 @@ _02337E8C: .word 0x02353538
 _02337E90: .word 0x020A1AE8
 	arm_func_end ov29_02337E2C
 
-	arm_func_start ov29_02337E94
-ov29_02337E94: ; 0x02337E94
+	arm_func_start IsWaterTileset
+IsWaterTileset: ; 0x02337E94
 	ldr r0, _02337EB8 ; =0x02353538
 	mov r1, #0xc
 	ldr r0, [r0]
@@ -155,7 +155,7 @@ ov29_02337E94: ; 0x02337E94
 	.align 2, 0
 _02337EB8: .word 0x02353538
 _02337EBC: .word 0x022C6327
-	arm_func_end ov29_02337E94
+	arm_func_end IsWaterTileset
 
 	arm_func_start ov29_02337EC0
 ov29_02337EC0: ; 0x02337EC0
@@ -223,8 +223,8 @@ _02337F90: .word 0x0000022A
 _02337F94: .word 0x000003D7
 	arm_func_end ov29_02337EE8
 
-	arm_func_start ov29_02337F98
-ov29_02337F98: ; 0x02337F98
+	arm_func_start GetRandomSpawnMonsterID
+GetRandomSpawnMonsterID: ; 0x02337F98
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x20
 	ldr r0, _02338040 ; =0x02353538
@@ -274,7 +274,7 @@ _02338024:
 _02338040: .word 0x02353538
 _02338044: .word 0x0000022A
 _02338048: .word 0x000003D7
-	arm_func_end ov29_02337F98
+	arm_func_end GetRandomSpawnMonsterID
 
 	arm_func_start ov29_0233804C
 ov29_0233804C: ; 0x0233804C
@@ -442,8 +442,8 @@ _02338274:
 _02338284: .word 0x0235171C
 	arm_func_end ov29_023381C0
 
-	arm_func_start ov29_02338288
-ov29_02338288: ; 0x02338288
+	arm_func_start NearbyAllyIqSkillIsEnabled
+NearbyAllyIqSkillIsEnabled: ; 0x02338288
 	stmdb sp!, {r3, lr}
 	mov r2, #0
 	bl ov29_023381C0
@@ -452,7 +452,7 @@ ov29_02338288: ; 0x02338288
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02338288
+	arm_func_end NearbyAllyIqSkillIsEnabled
 
 	arm_func_start ov29_023382A8
 ov29_023382A8: ; 0x023382A8
@@ -516,8 +516,8 @@ ov29_02338350: ; 0x02338350
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_02338350
 
-	arm_func_start ov29_0233836C
-ov29_0233836C: ; 0x0233836C
+	arm_func_start ResetGravity
+ResetGravity: ; 0x0233836C
 	ldr r0, _02338388 ; =0x02353538
 	ldr ip, _0233838C ; =MemZero
 	ldr r0, [r0]
@@ -528,7 +528,7 @@ ov29_0233836C: ; 0x0233836C
 	.align 2, 0
 _02338388: .word 0x02353538
 _0233838C: .word MemZero
-	arm_func_end ov29_0233836C
+	arm_func_end ResetGravity
 
 	arm_func_start GravityIsActive
 GravityIsActive: ; 0x02338390
@@ -597,7 +597,7 @@ ov29_02338430: ; 0x02338430
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, #1
-	bl ov29_02338794
+	bl HiddenStairsTrigger
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_02338430
 
@@ -636,8 +636,8 @@ _023384B8: .word 0x02353538
 _023384BC: .word 0x00012AFE
 	arm_func_end ov29_0233847C
 
-	arm_func_start ov29_023384C0
-ov29_023384C0: ; 0x023384C0
+	arm_func_start ShouldBoostKecleonShopSpawnChance
+ShouldBoostKecleonShopSpawnChance: ; 0x023384C0
 	ldr r0, _023384D4 ; =0x02353538
 	ldr r0, [r0]
 	add r0, r0, #0x12000
@@ -645,10 +645,10 @@ ov29_023384C0: ; 0x023384C0
 	bx lr
 	.align 2, 0
 _023384D4: .word 0x02353538
-	arm_func_end ov29_023384C0
+	arm_func_end ShouldBoostKecleonShopSpawnChance
 
-	arm_func_start ov29_023384D8
-ov29_023384D8: ; 0x023384D8
+	arm_func_start SetShouldBoostKecleonShopSpawnChance
+SetShouldBoostKecleonShopSpawnChance: ; 0x023384D8
 	ldr r1, _023384EC ; =0x02353538
 	ldr r1, [r1]
 	add r1, r1, #0x12000
@@ -656,10 +656,10 @@ ov29_023384D8: ; 0x023384D8
 	bx lr
 	.align 2, 0
 _023384EC: .word 0x02353538
-	arm_func_end ov29_023384D8
+	arm_func_end SetShouldBoostKecleonShopSpawnChance
 
-	arm_func_start ov29_023384F0
-ov29_023384F0: ; 0x023384F0
+	arm_func_start UpdateShouldBoostKecleonShopSpawnChance
+UpdateShouldBoostKecleonShopSpawnChance: ; 0x023384F0
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233852C ; =0x02353538
 	mov r2, #0
@@ -667,7 +667,7 @@ ov29_023384F0: ; 0x023384F0
 	mov r0, #0x5e
 	add r1, r1, #0x12000
 	strb r2, [r1, #0xb24]
-	bl ov29_0230F840
+	bl TeamMemberHasExclusiveItemEffectActive
 	cmp r0, #0
 	ldrne r0, _0233852C ; =0x02353538
 	movne r1, #1
@@ -677,7 +677,7 @@ ov29_023384F0: ; 0x023384F0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233852C: .word 0x02353538
-	arm_func_end ov29_023384F0
+	arm_func_end UpdateShouldBoostKecleonShopSpawnChance
 
 	arm_func_start ov29_02338530
 ov29_02338530: ; 0x02338530
@@ -690,8 +690,8 @@ ov29_02338530: ; 0x02338530
 _02338544: .word 0x02353538
 	arm_func_end ov29_02338530
 
-	arm_func_start ov29_02338548
-ov29_02338548: ; 0x02338548
+	arm_func_start SetDoughSeedFlag
+SetDoughSeedFlag: ; 0x02338548
 	ldr r1, _0233855C ; =0x02353538
 	ldr r1, [r1]
 	add r1, r1, #0x4000
@@ -699,10 +699,10 @@ ov29_02338548: ; 0x02338548
 	bx lr
 	.align 2, 0
 _0233855C: .word 0x02353538
-	arm_func_end ov29_02338548
+	arm_func_end SetDoughSeedFlag
 
-	arm_func_start ov29_02338560
-ov29_02338560: ; 0x02338560
+	arm_func_start TrySpawnDoughSeedPoke
+TrySpawnDoughSeedPoke: ; 0x02338560
 	stmdb sp!, {r3, lr}
 	ldr r0, _023385BC ; =0x02353538
 	ldr r0, [r0]
@@ -710,7 +710,7 @@ ov29_02338560: ; 0x02338560
 	ldrb r0, [r0, #0xc8]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	bne _023385A4
 	ldr r1, _023385C0 ; =0x02352B5C
@@ -730,10 +730,10 @@ _023385A4:
 	.align 2, 0
 _023385BC: .word 0x02353538
 _023385C0: .word 0x02352B5C
-	arm_func_end ov29_02338560
+	arm_func_end TrySpawnDoughSeedPoke
 
-	arm_func_start IsSecretBazaar__023385C4
-IsSecretBazaar__023385C4: ; 0x023385C4
+	arm_func_start IsSecretBazaar
+IsSecretBazaar: ; 0x023385C4
 	ldr r0, _023385E8 ; =0x02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -745,10 +745,10 @@ IsSecretBazaar__023385C4: ; 0x023385C4
 	bx lr
 	.align 2, 0
 _023385E8: .word 0x02353538
-	arm_func_end IsSecretBazaar__023385C4
+	arm_func_end IsSecretBazaar
 
-	arm_func_start ov29_023385EC
-ov29_023385EC: ; 0x023385EC
+	arm_func_start ShouldBoostHiddenStairsSpawnChance
+ShouldBoostHiddenStairsSpawnChance: ; 0x023385EC
 	ldr r0, _02338600 ; =0x02353538
 	ldr r0, [r0]
 	add r0, r0, #0x12000
@@ -756,10 +756,10 @@ ov29_023385EC: ; 0x023385EC
 	bx lr
 	.align 2, 0
 _02338600: .word 0x02353538
-	arm_func_end ov29_023385EC
+	arm_func_end ShouldBoostHiddenStairsSpawnChance
 
-	arm_func_start ov29_02338604
-ov29_02338604: ; 0x02338604
+	arm_func_start SetShouldBoostHiddenStairsSpawnChance
+SetShouldBoostHiddenStairsSpawnChance: ; 0x02338604
 	ldr r1, _02338618 ; =0x02353538
 	ldr r1, [r1]
 	add r1, r1, #0x12000
@@ -767,10 +767,10 @@ ov29_02338604: ; 0x02338604
 	bx lr
 	.align 2, 0
 _02338618: .word 0x02353538
-	arm_func_end ov29_02338604
+	arm_func_end SetShouldBoostHiddenStairsSpawnChance
 
-	arm_func_start ov29_0233861C
-ov29_0233861C: ; 0x0233861C
+	arm_func_start UpdateShouldBoostHiddenStairsSpawnChance
+UpdateShouldBoostHiddenStairsSpawnChance: ; 0x0233861C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02338658 ; =0x02353538
 	mov r2, #0
@@ -778,7 +778,7 @@ ov29_0233861C: ; 0x0233861C
 	mov r0, #0x5f
 	add r1, r1, #0x12000
 	strb r2, [r1, #0xb25]
-	bl ov29_0230F840
+	bl TeamMemberHasExclusiveItemEffectActive
 	cmp r0, #0
 	ldrne r0, _02338658 ; =0x02353538
 	movne r1, #1
@@ -788,7 +788,7 @@ ov29_0233861C: ; 0x0233861C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02338658: .word 0x02353538
-	arm_func_end ov29_0233861C
+	arm_func_end UpdateShouldBoostHiddenStairsSpawnChance
 
 	arm_func_start IsSecretRoom
 IsSecretRoom: ; 0x0233865C
@@ -808,7 +808,7 @@ _02338680: .word 0x02353538
 	arm_func_start IsSecretFloor
 IsSecretFloor: ; 0x02338684
 	stmdb sp!, {r3, lr}
-	bl IsSecretBazaar__023385C4
+	bl IsSecretBazaar
 	cmp r0, #0
 	bne _023386A0
 	bl IsSecretRoom
@@ -825,7 +825,7 @@ _023386A8:
 	arm_func_start ov29_023386B0
 ov29_023386B0: ; 0x023386B0
 	stmdb sp!, {r3, lr}
-	bl IsSecretBazaar__023385C4
+	bl IsSecretBazaar
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, pc}
@@ -836,8 +836,8 @@ ov29_023386B0: ; 0x023386B0
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_023386B0
 
-	arm_func_start ov29_023386D8
-ov29_023386D8: ; 0x023386D8
+	arm_func_start HiddenStairsPresent
+HiddenStairsPresent: ; 0x023386D8
 	ldr r0, _02338704 ; =0x02353538
 	mvn r1, #0
 	ldr r0, [r0]
@@ -851,7 +851,7 @@ ov29_023386D8: ; 0x023386D8
 	bx lr
 	.align 2, 0
 _02338704: .word 0x02353538
-	arm_func_end ov29_023386D8
+	arm_func_end HiddenStairsPresent
 
 	arm_func_start ov29_02338708
 ov29_02338708: ; 0x02338708
@@ -874,7 +874,7 @@ _02338738: .word 0x02353538
 	arm_func_start ov29_0233873C
 ov29_0233873C: ; 0x0233873C
 	stmdb sp!, {r3, lr}
-	bl ov29_023386D8
+	bl HiddenStairsPresent
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _02338764 ; =0x02353538
@@ -902,11 +902,11 @@ ov29_02338768: ; 0x02338768
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_02338768
 
-	arm_func_start ov29_02338794
-ov29_02338794: ; 0x02338794
+	arm_func_start HiddenStairsTrigger
+HiddenStairsTrigger: ; 0x02338794
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl ov29_023386D8
+	bl HiddenStairsPresent
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r0, _02338848 ; =0x02353538
@@ -934,7 +934,7 @@ ov29_02338794: ; 0x02338794
 	add r0, r0, #0xcc00
 	mov r1, #0x41
 	mov r2, #1
-	bl ov29_022E37DC
+	bl PlayEffectAnimationPos
 	bl GetLeader
 	ldr r1, _0233884C ; =0x00000F31
 	bl LogMessageByIdWithPopupCheckUser
@@ -947,13 +947,13 @@ _0233881C:
 	add r1, r0, #0xcc00
 	ldrsh r0, [r1, #0xe8]
 	ldrsh r1, [r1, #0xea]
-	bl ov29_023391EC
-	bl ov29_02336F4C
+	bl DrawMinimapTile
+	bl UpdateTrapsVisibility
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02338848: .word 0x02353538
 _0233884C: .word 0x00000F31
-	arm_func_end ov29_02338794
+	arm_func_end HiddenStairsTrigger
 
 	arm_func_start ov29_02338850
 ov29_02338850: ; 0x02338850
@@ -1408,7 +1408,7 @@ _02338E04:
 	add r7, r8, r6, lsl #6
 	mov r0, r7
 	mov r4, r6, lsl #6
-	bl sub_0201E730
+	bl InitRender3dElement
 	strb fp, [r7, #0x3c]
 	strh fp, [r8, r4]
 	strh fp, [r7, #2]
@@ -1734,8 +1734,8 @@ _023391E4: .word 0x02353538
 _023391E8: .word 0x022C631C
 	arm_func_end ov29_023391C0
 
-	arm_func_start ov29_023391EC
-ov29_023391EC: ; 0x023391EC
+	arm_func_start DrawMinimapTile
+DrawMinimapTile: ; 0x023391EC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
 	mov sl, r0
@@ -1847,7 +1847,7 @@ _02339344:
 	cmp r0, #1
 	bne _0233946C
 	ldr r0, [sp, #4]
-	bl ov29_022E2498
+	bl ShouldMinimapDisplayEntity
 	cmp r0, #0
 	beq _0233946C
 	ldr r0, [sp, #4]
@@ -1956,7 +1956,7 @@ _023394F4:
 	ldreq r2, [sp, #0x18]
 	cmpeq r2, #0
 	beq _0233953C
-	bl ov29_022E1608
+	bl GetTrapInfo
 	ldrb r1, [r0]
 	ldr r0, _023398D4 ; =0x02352FF4
 	mov r7, #0
@@ -2154,7 +2154,7 @@ _0233979C:
 	add r6, r0, r4, lsl #6
 	ldr r1, [r2, r1, lsl #2]
 	mov r0, r6
-	bl ov29_0233A2F0
+	bl InitMinimapDisplayTile
 	ldr r0, _023398CC ; =0x0235376C
 	ldrsh r1, [sp, #0x2e]
 	ldr r0, [r0, #8]
@@ -2165,7 +2165,7 @@ _0233979C:
 	add r0, r8, r1, lsl #2
 	ldr r1, [r2, r0, lsl #2]
 	mov r0, r7
-	bl ov29_0233A2F0
+	bl InitMinimapDisplayTile
 	add r0, fp, #0xe000
 	ldrb r1, [r0, #0x445]
 	cmp r1, #0
@@ -2212,7 +2212,7 @@ _023398C8: .word 0x02353538
 _023398CC: .word 0x0235376C
 _023398D0: .word 0x0237CFB8
 _023398D4: .word 0x02352FF4
-	arm_func_end ov29_023391EC
+	arm_func_end DrawMinimapTile
 
 	arm_func_start ov29_023398D8
 ov29_023398D8: ; 0x023398D8
@@ -2504,8 +2504,8 @@ ov29_02339CD4: ; 0x02339CD4
 _02339CE4: .word 0x0237CFB8
 	arm_func_end ov29_02339CD4
 
-	arm_func_start ov29_02339CE8
-ov29_02339CE8: ; 0x02339CE8
+	arm_func_start UpdateMinimap
+UpdateMinimap: ; 0x02339CE8
 	stmdb sp!, {r4, r5, r6, lr}
 	bl GetMinimapData
 	cmp r0, #0
@@ -2520,7 +2520,7 @@ _02339D0C:
 _02339D10:
 	mov r0, r5
 	mov r1, r6
-	bl ov29_023391EC
+	bl DrawMinimapTile
 	add r5, r5, #1
 	cmp r5, #0x38
 	blt _02339D10
@@ -2547,7 +2547,7 @@ _02339D54:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02339D78: .word 0x0235376C
-	arm_func_end ov29_02339CE8
+	arm_func_end UpdateMinimap
 
 	arm_func_start ov29_02339D7C
 ov29_02339D7C: ; 0x02339D7C
@@ -2959,8 +2959,8 @@ _0233A274:
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_0233A248
 
-	arm_func_start ov29_0233A290
-ov29_0233A290: ; 0x0233A290
+	arm_func_start InitWeirdMinimapMatrix
+InitWeirdMinimapMatrix: ; 0x0233A290
 	stmdb sp!, {r3, r4, r5, lr}
 	bl GetMinimapData
 	add r1, r0, #0xe000
@@ -2987,10 +2987,10 @@ _0233A2C0:
 	add r0, r0, #0xe000
 	strb r3, [r0, #0x446]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_0233A290
+	arm_func_end InitWeirdMinimapMatrix
 
-	arm_func_start ov29_0233A2F0
-ov29_0233A2F0: ; 0x0233A2F0
+	arm_func_start InitMinimapDisplayTile
+InitMinimapDisplayTile: ; 0x0233A2F0
 	ldr r3, [r0]
 	ldmia r1, {r2, ip}
 	and r2, r3, r2
@@ -3087,7 +3087,7 @@ ov29_0233A2F0: ; 0x0233A2F0
 	orr r1, ip, r1
 	str r1, [r0, #0x3c]
 	bx lr
-	arm_func_end ov29_0233A2F0
+	arm_func_end InitMinimapDisplayTile
 
 	arm_func_start ov29_0233A470
 ov29_0233A470: ; 0x0233A470
@@ -3306,7 +3306,7 @@ GenerateFloor: ; 0x0233A6D8
 	strb r3, [r2, #3]
 	strb r3, [r2, #1]
 	strb r3, [r2, #7]
-	bl ov29_02342F08
+	bl ResetHiddenStairsSpawn
 	bl IsOutlawMonsterHouseFloor
 	ldr r1, _0233AE64 ; =0x02353538
 	ldr r3, _0233AE6C ; =0x0237CFBC
@@ -3315,7 +3315,7 @@ GenerateFloor: ; 0x0233A6D8
 	add r2, r2, #0xc4
 	strb r0, [r3, #8]
 	add r0, r2, #0x4000
-	bl ov29_02342D9C
+	bl GetHiddenStairsType
 	ldr r1, _0233AE64 ; =0x02353538
 	ldr r2, _0233AE6C ; =0x0237CFBC
 	ldr r1, [r1]
@@ -3334,7 +3334,7 @@ GenerateFloor: ; 0x0233A6D8
 	mov r1, #0
 	strb r1, [r0, #6]
 	ldrb r0, [sb, #7]
-	bl ov29_02342EBC
+	bl GetFinalKecleonShopSpawnChance
 	ldr r1, _0233AE6C ; =0x0237CFBC
 	strh r0, [r1, #0xc]
 	ldrb r0, [sb, #8]
@@ -3363,7 +3363,7 @@ GenerateFloor: ; 0x0233A6D8
 	b _0233A828
 _0233A810:
 	ldrb r0, [sb, #6]
-	bl Abs
+	bl abs
 	ldr r1, _0233AE64 ; =0x02353538
 	ldr r1, [r1]
 	add r1, r1, #0x700
@@ -3394,7 +3394,7 @@ _0233A870:
 	ldr r0, [r1]
 	add r0, r0, #0xc4
 	add r0, r0, #0x4000
-	bl ov29_02342C68
+	bl ResetImportantSpawnPositions
 	mov r6, #0
 	mvn r5, #0
 	ldr r4, _0233AE64 ; =0x02353538
@@ -3491,13 +3491,13 @@ _0233A9DC:
 _0233A9E4:
 	ldr r1, [sp, #8]
 	mov r0, #0x38
-	bl DivideInt
+	bl __divsi3
 	cmp r0, #7
 	movle r0, #1
 	strle r0, [sp, #8]
 	ldr r1, [sp, #4]
 	mov r0, #0x20
-	bl DivideInt
+	bl __divsi3
 	ldr r1, [r4]
 	cmp r0, #7
 	add r2, r1, #0x4000
@@ -3695,10 +3695,10 @@ _0233ACA0:
 	and r4, r0, #0xff
 	mov r0, sb
 	mov r1, r4
-	bl SpawnNonEnemies
+	bl MarkNonEnemySpawns
 	mov r0, sb
 	mov r1, r4
-	bl SpawnEnemies
+	bl MarkEnemySpawns
 	bl ResolveInvalidSpawns
 	ldr r0, _0233AE64 ; =0x02353538
 	mvn r1, #0
@@ -3747,10 +3747,10 @@ _0233AD44:
 	bl FinalizeJunctions
 	mov r0, sb
 	mov r1, #0
-	bl SpawnNonEnemies
+	bl MarkNonEnemySpawns
 	mov r0, sb
 	mov r1, #0
-	bl SpawnEnemies
+	bl MarkEnemySpawns
 	bl ResolveInvalidSpawns
 _0233AD98:
 	ldr r0, _0233AE6C ; =0x0237CFBC
@@ -3765,7 +3765,7 @@ _0233AD98:
 	ldrsh r0, [r1, #0x20]
 	ldrsh r1, [r1, #0x22]
 	mov r3, #0
-	bl ov29_022FE198
+	bl MarkShopkeeperSpawn
 _0233ADCC:
 	ldr r0, _0233AE6C ; =0x0237CFBC
 	ldr r0, [r0, #0x30]
@@ -3832,8 +3832,8 @@ DungeonRand100: ; 0x0233AE84
 _0233AE90: .word DungeonRandInt
 	arm_func_end DungeonRand100
 
-	arm_func_start ov29_0233AE94
-ov29_0233AE94: ; 0x0233AE94
+	arm_func_start ClearHiddenStairs
+ClearHiddenStairs: ; 0x0233AE94
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233AF04 ; =0x0235378C
 	ldrb r0, [r0]
@@ -3861,12 +3861,12 @@ ov29_0233AE94: ; 0x0233AE94
 	orr r1, r1, #1
 	strh r1, [r0]
 _0233AEFC:
-	bl ov29_02342F08
+	bl ResetHiddenStairsSpawn
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233AF04: .word 0x0235378C
 _0233AF08: .word 0x0237CFBC
-	arm_func_end ov29_0233AE94
+	arm_func_end ClearHiddenStairs
 
 	arm_func_start FlagHallwayJunctions
 FlagHallwayJunctions: ; 0x0233AF0C
@@ -5316,7 +5316,7 @@ _0233C3E0:
 	mov r5, r0, asr #0x10
 	b _0233C444
 _0233C3F0:
-	bl ov29_023424D0
+	bl GetNextFixedRoomAction
 	str r0, [sp, #0x18]
 	mov r0, r8
 	mov r1, sb
@@ -5331,7 +5331,7 @@ _0233C3F0:
 	mov ip, #1
 	mov r3, sb
 	str ip, [sp]
-	bl ov29_02342F30
+	bl PlaceFixedRoomTile
 	cmp r0, #0
 	ldrne r0, [sp, #0x1c]
 	strneh r8, [r0, #0xe4]
@@ -5406,7 +5406,7 @@ _0233C500:
 	cmp r5, #0x10
 	ble _0233C4FC
 _0233C534:
-	bl ov29_02336204
+	bl IsCurrentTilesetBackground
 	cmp r0, #0
 	beq _0233C584
 	mov r6, #0
@@ -5435,13 +5435,13 @@ _0233C584:
 _0233C590:
 	add r1, r4, #4
 	mov r0, #0x38
-	bl DivideInt
+	bl __divsi3
 	mov r6, r0
 	cmp r6, #2
 	add r1, r5, #4
 	mov r0, #0x20
 	movlt r6, #1
-	bl DivideInt
+	bl __divsi3
 	mov r7, r0
 	cmp r7, #2
 	movlt r7, #1
@@ -6175,7 +6175,7 @@ _0233CFA8:
 	mov r0, r5
 	mov r1, r8
 	str r4, [sl, r6, lsl #2]
-	bl DivideInt
+	bl __divsi3
 	add r4, r4, r0
 	add r6, r6, #1
 _0233CFC0:
@@ -6190,7 +6190,7 @@ _0233CFDC:
 	mov r0, r4
 	mov r1, r7
 	str r6, [sb, r5, lsl #2]
-	bl DivideInt
+	bl __divsi3
 	add r6, r6, r0
 	add r5, r5, #1
 _0233CFF4:
@@ -9444,13 +9444,13 @@ _0233FD34:
 	ldrsh r1, [r8, #4]
 	ldrsh r0, [r8]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #5
 	blt _0233FF6C
 	ldrsh r1, [r8, #6]
 	ldrsh r0, [r8, #2]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #4
 	blt _0233FF6C
 	ldr r0, _0233FF90 ; =0x0237CFBC
@@ -10613,8 +10613,8 @@ _02340D40:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ShuffleSpawnPositions
 
-	arm_func_start SpawnNonEnemies
-SpawnNonEnemies: ; 0x02340D4C
+	arm_func_start MarkNonEnemySpawns
+MarkNonEnemySpawns: ; 0x02340D4C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xe00
 	ldr r3, _02341458 ; =0x02353538
@@ -10894,11 +10894,11 @@ _0234113C:
 	beq _02341228
 	add r0, r6, r6, lsl #2
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	mov r4, r0
 	mov r0, r6, lsl #3
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	mov r1, r0
 	mov r0, r4
 	bl DungeonRandRange
@@ -11112,10 +11112,10 @@ _02341460: .word 0x0002C9E8
 _02341464: .word 0x00012AFA
 _02341468: .word 0x022C44AC
 _0234146C: .word 0x022C440C
-	arm_func_end SpawnNonEnemies
+	arm_func_end MarkNonEnemySpawns
 
-	arm_func_start SpawnEnemies
-SpawnEnemies: ; 0x02341470
+	arm_func_start MarkEnemySpawns
+MarkEnemySpawns: ; 0x02341470
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x204
 	sub sp, sp, #0xc00
@@ -11134,7 +11134,7 @@ SpawnEnemies: ; 0x02341470
 	b _023414BC
 _023414B0:
 	mov r0, r1
-	bl Abs
+	bl abs
 	mov r8, r0
 _023414BC:
 	mov r6, #0
@@ -11278,11 +11278,11 @@ _023416A0:
 	beq _02341754
 	rsb r0, r7, r7, lsl #3
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	mov r4, r0
 	mov r0, r7, lsl #3
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	mov r1, r0
 	mov r0, r4
 	bl DungeonRandRange
@@ -11323,7 +11323,7 @@ _02341754:
 _02341760: .word 0x02353538
 _02341764: .word 0x0237CFBC
 _02341768: .word 0x022C4660
-	arm_func_end SpawnEnemies
+	arm_func_end MarkEnemySpawns
 
 	arm_func_start SetSecondaryTerrainOnWall
 SetSecondaryTerrainOnWall: ; 0x0234176C
@@ -12271,8 +12271,8 @@ _023424B8:
 _023424CC: .word 0x000001C2
 	arm_func_end ov29_0234217C
 
-	arm_func_start ov29_023424D0
-ov29_023424D0: ; 0x023424D0
+	arm_func_start GetNextFixedRoomAction
+GetNextFixedRoomAction: ; 0x023424D0
 	ldr r1, _02342510 ; =0x0237CFBC
 	ldrh r0, [r1, #0xa]
 	cmp r0, #0
@@ -12293,7 +12293,7 @@ _02342504:
 	.align 2, 0
 _02342510: .word 0x0237CFBC
 _02342514: .word 0x0235378C
-	arm_func_end ov29_023424D0
+	arm_func_end GetNextFixedRoomAction
 
 	arm_func_start ov29_02342518
 ov29_02342518: ; 0x02342518
@@ -12306,7 +12306,7 @@ ov29_02342518: ; 0x02342518
 	strh r4, [r0]
 	strb lr, [r0, #6]
 	str ip, [sp]
-	bl ov29_02342F30
+	bl PlaceFixedRoomTile
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end ov29_02342518
@@ -12385,7 +12385,7 @@ _0234260C:
 	str r0, [sp, #0x14]
 	b _02342728
 _02342648:
-	bl ov29_023424D0
+	bl GetNextFixedRoomAction
 	mov fp, r0
 	mov r0, r4
 	mov r1, r8
@@ -12463,7 +12463,7 @@ _02342760:
 	ldrsh sb, [sl]
 	b _023427B4
 _02342768:
-	bl ov29_023424D0
+	bl GetNextFixedRoomAction
 	mov r6, r0
 	mov r0, sb
 	mov r1, r8
@@ -12478,7 +12478,7 @@ _02342768:
 	strh ip, [r6]
 	strb r5, [r6, #6]
 	str fp, [sp]
-	bl ov29_02342F30
+	bl PlaceFixedRoomTile
 	strb r7, [r6, #7]
 	strb r7, [r4, #0x2e0]
 	add sb, sb, #1
@@ -12825,7 +12825,7 @@ _02342C30:
 	mov sb, r4
 	b _02342C44
 _02342C38:
-	bl ov29_023424D0
+	bl GetNextFixedRoomAction
 	strh r0, [sl], #2
 	add sb, sb, #1
 _02342C44:
@@ -12842,8 +12842,8 @@ _02342C60: .word 0x0235378C
 _02342C64: .word 0x0237CFBC
 	arm_func_end ov29_02342BEC
 
-	arm_func_start ov29_02342C68
-ov29_02342C68: ; 0x02342C68
+	arm_func_start ResetImportantSpawnPositions
+ResetImportantSpawnPositions: ; 0x02342C68
 	add r0, r0, #0x8c00
 	mvn r1, #0
 	strh r1, [r0, #0x1c]
@@ -12853,7 +12853,7 @@ ov29_02342C68: ; 0x02342C68
 	strh r1, [r0, #0x24]
 	strh r1, [r0, #0x26]
 	bx lr
-	arm_func_end ov29_02342C68
+	arm_func_end ResetImportantSpawnPositions
 
 	arm_func_start SpawnStairs
 SpawnStairs: ; 0x02342C8C
@@ -12932,8 +12932,8 @@ _02342D94: .word 0x0235378C
 _02342D98: .word 0x0237CFBC
 	arm_func_end SpawnStairs
 
-	arm_func_start ov29_02342D9C
-ov29_02342D9C: ; 0x02342D9C
+	arm_func_start GetHiddenStairsType
+GetHiddenStairsType: ; 0x02342D9C
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _02342EB0 ; =0x02353538
 	mov r5, r0
@@ -12967,7 +12967,7 @@ _02342E00:
 	ldrsb r0, [r0, #0x98]
 	cmp r0, #2
 	beq _02342E24
-	bl ov29_02349208
+	bl IsDestinationFloor
 	cmp r0, #0
 	beq _02342E2C
 _02342E24:
@@ -12985,10 +12985,10 @@ _02342E30:
 	beq _02342EA4
 	bl DungeonRand16Bit
 	mov r1, #0x64
-	bl DivideInt
+	bl __divsi3
 	mov r5, r1
 	ldrb r6, [r6, #0x1b]
-	bl ov29_023385EC
+	bl ShouldBoostHiddenStairsSpawnChance
 	cmp r0, #0
 	beq _02342E94
 	ldr r1, _02342EB8 ; =0x022C4850
@@ -12997,7 +12997,7 @@ _02342E30:
 	bl MultiplyByFixedPoint
 	mov r6, r0
 	mov r0, #0
-	bl ov29_02338604
+	bl SetShouldBoostHiddenStairsSpawnChance
 	mov r0, r6, asr #7
 	add r0, r6, r0, lsr #24
 	mov r6, r0, asr #8
@@ -13015,13 +13015,13 @@ _02342EA8:
 _02342EB0: .word 0x02353538
 _02342EB4: .word 0x0235378C
 _02342EB8: .word 0x022C4850
-	arm_func_end ov29_02342D9C
+	arm_func_end GetHiddenStairsType
 
-	arm_func_start ov29_02342EBC
-ov29_02342EBC: ; 0x02342EBC
+	arm_func_start GetFinalKecleonShopSpawnChance
+GetFinalKecleonShopSpawnChance: ; 0x02342EBC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov29_023384C0
+	bl ShouldBoostKecleonShopSpawnChance
 	cmp r0, #0
 	moveq r0, r4
 	ldmeqia sp!, {r4, pc}
@@ -13031,7 +13031,7 @@ ov29_02342EBC: ; 0x02342EBC
 	bl MultiplyByFixedPoint
 	mov r4, r0
 	mov r0, #0
-	bl ov29_023384D8
+	bl SetShouldBoostKecleonShopSpawnChance
 	mov r0, r4, asr #7
 	add r0, r4, r0, lsr #24
 	mov r0, r0, lsl #8
@@ -13039,10 +13039,10 @@ ov29_02342EBC: ; 0x02342EBC
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02342F04: .word 0x022C484C
-	arm_func_end ov29_02342EBC
+	arm_func_end GetFinalKecleonShopSpawnChance
 
-	arm_func_start ov29_02342F08
-ov29_02342F08: ; 0x02342F08
+	arm_func_start ResetHiddenStairsSpawn
+ResetHiddenStairsSpawn: ; 0x02342F08
 	ldr r1, _02342F28 ; =0x0237CFBC
 	mvn r2, #0
 	strh r2, [r1, #0x1c]
@@ -13054,10 +13054,10 @@ ov29_02342F08: ; 0x02342F08
 	.align 2, 0
 _02342F28: .word 0x0237CFBC
 _02342F2C: .word 0x0235378C
-	arm_func_end ov29_02342F08
+	arm_func_end ResetHiddenStairsSpawn
 
-	arm_func_start ov29_02342F30
-ov29_02342F30: ; 0x02342F30
+	arm_func_start PlaceFixedRoomTile
+PlaceFixedRoomTile: ; 0x02342F30
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x34
 	ldr r4, _02343928 ; =0x00000FFF
@@ -13134,7 +13134,7 @@ _02343010:
 	strh r4, [r0, #0xa6]
 	mov r0, #0xb
 	str r3, [sp]
-	bl ov29_022ED970
+	bl SpawnEnemyTrapAtPos
 _0234304C:
 	ldrh r1, [r6]
 	mov r0, #0
@@ -13191,7 +13191,7 @@ _023430B8:
 	ldr r1, [r2]
 	add r1, r1, #0xcc00
 	strh r4, [r1, #0xee]
-	bl ov29_0234396C
+	bl FixedRoomActionParamToDirection
 	ldr r1, _0234392C ; =0x02353538
 	mov r2, #0
 	ldr r1, [r1]
@@ -13293,7 +13293,7 @@ _02343268:
 	strb r0, [r6, #7]
 	b _0234391C
 _02343290:
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	ldrh r1, [r6]
 	cmp r0, #0
 	moveq r2, #1
@@ -13313,7 +13313,7 @@ _02343290:
 	strb r0, [r6, #7]
 	b _0234391C
 _023432DC:
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	ldrh r1, [r6]
 	cmp r0, #0
 	moveq r2, #1
@@ -13355,7 +13355,7 @@ _0234334C:
 	add r1, r1, r7, lsl #2
 	add r1, r1, #0xcc00
 	strh r4, [r1, #0xee]
-	bl ov29_0234396C
+	bl FixedRoomActionParamToDirection
 	ldr r1, _0234392C ; =0x02353538
 	mov r2, #0
 	ldr r1, [r1]
@@ -13413,7 +13413,7 @@ _023433B8:
 	ldrsh r3, [sl, #2]
 	mov r1, r5
 	mov r2, r4
-	bl ov29_02344430
+	bl GenerateAndSpawnItem
 	b _02343678
 _02343468:
 	bl IsTreasureBox
@@ -13432,7 +13432,7 @@ _02343468:
 	mov r3, #0
 	mov r0, #0x49
 	str r3, [sp, #4]
-	bl ov29_02344430
+	bl GenerateAndSpawnItem
 	b _02343678
 _023434B0:
 	ldr r0, _0234392C ; =0x02353538
@@ -13477,7 +13477,7 @@ _02343528:
 	mov sl, #0
 	mov r2, r4
 	str sl, [sp, #4]
-	bl ov29_02344430
+	bl GenerateAndSpawnItem
 	b _02343678
 _02343548:
 	ldr r2, _0234394C ; =0x00000578
@@ -13492,7 +13492,7 @@ _02343548:
 	ldrsh r3, [sl, #2]
 	mov r1, r5
 	mov r2, r4
-	bl ov29_02344430
+	bl GenerateAndSpawnItem
 	b _02343678
 _02343580:
 	add r1, r2, #1
@@ -13508,7 +13508,7 @@ _02343580:
 	mov r2, #0
 	str r2, [sp, #4]
 	mov r2, r4
-	bl ov29_02344430
+	bl GenerateAndSpawnItem
 	b _02343678
 _023435BC:
 	add r1, r2, #0xa
@@ -13532,7 +13532,7 @@ _023435BC:
 	mov fp, r0, lsl #0x10
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	ldr r3, [sl, #4]
 	ldr r0, [sp, #0x20]
 	str r3, [sp]
@@ -13548,7 +13548,7 @@ _023435BC:
 	ldrsh r3, [r3, sl]
 	mov r1, r5
 	mov r2, r4
-	bl ov29_02344430
+	bl GenerateAndSpawnItem
 	b _02343678
 _02343658:
 	ldr r2, [sl, #4]
@@ -13558,15 +13558,15 @@ _02343658:
 	ldrsh r3, [sl, #2]
 	mov r1, r5
 	mov r2, r4
-	bl ov29_02344430
+	bl GenerateAndSpawnItem
 _02343678:
 	ldrsh r0, [r7]
-	bl ov29_02344190
+	bl GetMatchingMonsterId
 	movs fp, r0
 	beq _023438BC
 	mov r0, sb, asr #0xc
 	and r0, r0, #0xff
-	bl ov29_0234396C
+	bl FixedRoomActionParamToDirection
 	mov r1, #0
 	str r1, [sp, #8]
 	ldrb r1, [r7, #2]
@@ -13713,7 +13713,7 @@ _02343898:
 	bne _023438BC
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
-	bl ov29_022FBE58
+	bl InitOtherMonsterData
 _023438BC:
 	ldrb r0, [r8]
 	cmp r0, #0x19
@@ -13729,7 +13729,7 @@ _023438BC:
 	str r1, [sp]
 	ldrb r3, [r8, #1]
 	mov r1, r5
-	bl ov29_022ED970
+	bl SpawnEnemyTrapAtPos
 _023438F8:
 	ldrb r0, [r8, #3]
 	tst r0, #8
@@ -13762,16 +13762,16 @@ _0234395C: .word 0x0234FDFC
 _02343960: .word 0x00000229
 _02343964: .word 0x022C5938
 _02343968: .word 0x0002C9E6
-	arm_func_end ov29_02342F30
+	arm_func_end PlaceFixedRoomTile
 
-	arm_func_start ov29_0234396C
-ov29_0234396C: ; 0x0234396C
+	arm_func_start FixedRoomActionParamToDirection
+FixedRoomActionParamToDirection: ; 0x0234396C
 	cmp r0, #0
 	moveq r0, #0xff
 	subne r0, r0, #1
 	andne r0, r0, #0xff
 	bx lr
-	arm_func_end ov29_0234396C
+	arm_func_end FixedRoomActionParamToDirection
 
 	arm_func_start ov29_02343980
 ov29_02343980: ; 0x02343980
@@ -13791,7 +13791,7 @@ _02343994:
 	mov r2, r6
 	mov r3, r7
 	str r4, [sp]
-	bl ov29_02342F30
+	bl PlaceFixedRoomTile
 _023439BC:
 	add r6, r6, #1
 	cmp r6, #0x38
@@ -13815,7 +13815,7 @@ ov29_023439D8: ; 0x023439D8
 	str r2, [sp, #4]
 	cmp r1, #0
 	bne _02343CC0
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	ldrsh r1, [sl, #4]
 	cmp r0, #0
 	str r0, [sp, #8]
@@ -13895,7 +13895,7 @@ _02343B0C:
 	add r1, r1, #0xd200
 	ldrh r1, [r1, #0x60]
 	mov r3, r8
-	bl ov29_02342F30
+	bl PlaceFixedRoomTile
 	ldrh r0, [r7, #2]
 	cmp fp, #0xff
 	orr r0, r0, #3
@@ -13986,8 +13986,8 @@ _02343C6C:
 	ldrsh r0, [sl, #4]
 	sub r1, r1, #1
 	bl ov29_02336694
-	bl ov29_02336A4C
-	bl ov29_02336F4C
+	bl DetermineAllTilesWalkableNeighbors
+	bl UpdateTrapsVisibility
 	mov r0, #0xc
 	bl IsCurrentMissionType
 	cmp r0, #0
@@ -14014,8 +14014,8 @@ _02343CD0: .word 0x02353538
 _02343CD4: .word 0xFFFFCFEF
 	arm_func_end ov29_023439D8
 
-	arm_func_start ov29_02343CD8
-ov29_02343CD8: ; 0x02343CD8
+	arm_func_start ApplyKeyEffect
+ApplyKeyEffect: ; 0x02343CD8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrsh r1, [r4, #6]
@@ -14035,12 +14035,12 @@ _02343D10:
 	mov r0, r4
 	add r3, r2, #1
 	bl ov29_023439D8
-	bl ov29_02339CE8
+	bl UpdateMinimap
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02343D28: .word 0x00000B94
 _02343D2C: .word 0x00000B93
-	arm_func_end ov29_02343CD8
+	arm_func_end ApplyKeyEffect
 
 	arm_func_start ov29_02343D30
 ov29_02343D30: ; 0x02343D30
@@ -14065,7 +14065,7 @@ _02343D68:
 	mov r1, r4
 	add r3, r2, #2
 	bl ov29_023439D8
-	bl ov29_02339CE8
+	bl UpdateMinimap
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02343D88: .word 0x00000B95
@@ -14079,7 +14079,7 @@ LoadFixedRoomData: ; 0x02343D90
 	ldr r1, _02343DC0 ; =0x02353110
 	ldr r0, [r0]
 	mov r2, #0
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, _02343DBC ; =0x02353794
 	ldr r0, [r0]
 	ldr r1, [r0], #8
@@ -14123,8 +14123,8 @@ ov29_02343DD8: ; 0x02343DD8
 _02343E1C: .word 0x02353794
 	arm_func_end ov29_02343DD8
 
-	arm_func_start ov29_02343E20
-ov29_02343E20: ; 0x02343E20
+	arm_func_start LoadFixedRoom
+LoadFixedRoom: ; 0x02343E20
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	movs r4, r2
@@ -14171,7 +14171,7 @@ _02343E78:
 	ldrne r1, _02344044 ; =0x00000483
 	cmpne r0, r1
 	beq _0234400C
-	bl ov29_02344190
+	bl GetMatchingMonsterId
 	movs r8, r0
 	beq _0234400C
 	mov r7, #0
@@ -14281,10 +14281,10 @@ _02344044: .word 0x00000483
 _02344048: .word 0x02353538
 _0234404C: .word 0x00000485
 _02344050: .word 0x022C5938
-	arm_func_end ov29_02343E20
+	arm_func_end LoadFixedRoom
 
-	arm_func_start ov29_02344054
-ov29_02344054: ; 0x02344054
+	arm_func_start OpenFixedBin
+OpenFixedBin: ; 0x02344054
 	stmdb sp!, {r3, lr}
 	mov r0, #0xc
 	mov r1, #0
@@ -14299,10 +14299,10 @@ ov29_02344054: ; 0x02344054
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02344084: .word 0x02353794
-	arm_func_end ov29_02344054
+	arm_func_end OpenFixedBin
 
-	arm_func_start ov29_02344088
-ov29_02344088: ; 0x02344088
+	arm_func_start CloseFixedBin
+CloseFixedBin: ; 0x02344088
 	stmdb sp!, {r3, lr}
 	ldr r0, _023440A8 ; =0x02353794
 	ldr r0, [r0]
@@ -14313,10 +14313,10 @@ ov29_02344088: ; 0x02344088
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023440A8: .word 0x02353794
-	arm_func_end ov29_02344088
+	arm_func_end CloseFixedBin
 
-	arm_func_start ov29_023440AC
-ov29_023440AC: ; 0x023440AC
+	arm_func_start AreOrbsAllowed
+AreOrbsAllowed: ; 0x023440AC
 	cmp r0, #0
 	beq _023440BC
 	cmp r0, #0xa5
@@ -14332,10 +14332,10 @@ _023440C4:
 	bx lr
 	.align 2, 0
 _023440D8: .word 0x022C6C77
-	arm_func_end ov29_023440AC
+	arm_func_end AreOrbsAllowed
 
-	arm_func_start ov29_023440DC
-ov29_023440DC: ; 0x023440DC
+	arm_func_start AreTileJumpsAllowed
+AreTileJumpsAllowed: ; 0x023440DC
 	cmp r0, #0
 	beq _023440EC
 	cmp r0, #0xa5
@@ -14351,10 +14351,10 @@ _023440F4:
 	bx lr
 	.align 2, 0
 _02344108: .word 0x022C6C78
-	arm_func_end ov29_023440DC
+	arm_func_end AreTileJumpsAllowed
 
-	arm_func_start ov29_0234410C
-ov29_0234410C: ; 0x0234410C
+	arm_func_start AreTrawlOrbsAllowed
+AreTrawlOrbsAllowed: ; 0x0234410C
 	cmp r0, #0
 	beq _0234411C
 	cmp r0, #0xa5
@@ -14370,18 +14370,18 @@ _02344124:
 	bx lr
 	.align 2, 0
 _02344138: .word 0x022C6C79
-	arm_func_end ov29_0234410C
+	arm_func_end AreTrawlOrbsAllowed
 
-	arm_func_start ov29_0234413C
-ov29_0234413C: ; 0x0234413C
-	ldr ip, _02344144 ; =ov29_023440AC
+	arm_func_start AreOrbsAllowedVeneer
+AreOrbsAllowedVeneer: ; 0x0234413C
+	ldr ip, _02344144 ; =AreOrbsAllowed
 	bx ip
 	.align 2, 0
-_02344144: .word ov29_023440AC
-	arm_func_end ov29_0234413C
+_02344144: .word AreOrbsAllowed
+	arm_func_end AreOrbsAllowedVeneer
 
-	arm_func_start ov29_02344148
-ov29_02344148: ; 0x02344148
+	arm_func_start AreLateGameTrapsEnabled
+AreLateGameTrapsEnabled: ; 0x02344148
 	mov r1, #0xc
 	mul r1, r0, r1
 	ldr r0, _0234415C ; =0x022C6C75
@@ -14389,10 +14389,10 @@ ov29_02344148: ; 0x02344148
 	bx lr
 	.align 2, 0
 _0234415C: .word 0x022C6C75
-	arm_func_end ov29_02344148
+	arm_func_end AreLateGameTrapsEnabled
 
-	arm_func_start ov29_02344160
-ov29_02344160: ; 0x02344160
+	arm_func_start AreMovesEnabled
+AreMovesEnabled: ; 0x02344160
 	mov r1, #0xc
 	mul r1, r0, r1
 	ldr r0, _02344174 ; =0x022C6C76
@@ -14400,10 +14400,10 @@ ov29_02344160: ; 0x02344160
 	bx lr
 	.align 2, 0
 _02344174: .word 0x022C6C76
-	arm_func_end ov29_02344160
+	arm_func_end AreMovesEnabled
 
-	arm_func_start ov29_02344178
-ov29_02344178: ; 0x02344178
+	arm_func_start IsRoomIlluminated
+IsRoomIlluminated: ; 0x02344178
 	mov r1, #0xc
 	mul r1, r0, r1
 	ldr r0, _0234418C ; =0x022C6C74
@@ -14411,10 +14411,10 @@ ov29_02344178: ; 0x02344178
 	bx lr
 	.align 2, 0
 _0234418C: .word 0x022C6C74
-	arm_func_end ov29_02344178
+	arm_func_end IsRoomIlluminated
 
-	arm_func_start ov29_02344190
-ov29_02344190: ; 0x02344190
+	arm_func_start GetMatchingMonsterId
+GetMatchingMonsterId: ; 0x02344190
 	stmdb sp!, {r4, lr}
 	cmp r0, #0
 	ldrne r2, _023442A4 ; =0x00000483
@@ -14499,7 +14499,7 @@ _023442A8: .word 0x00000467
 _023442AC: .word 0x0000020F
 _023442B0: .word 0x02353538
 _023442B4: .word 0x0000020D
-	arm_func_end ov29_02344190
+	arm_func_end GetMatchingMonsterId
 
 	arm_func_start ov29_023442B8
 ov29_023442B8: ; 0x023442B8
@@ -14575,8 +14575,8 @@ _023443A8:
 _023443B0: .word 0x00000579
 	arm_func_end ov29_023442B8
 
-	arm_func_start ov29_023443B4
-ov29_023443B4: ; 0x023443B4
+	arm_func_start GenerateItemExplicit
+GenerateItemExplicit: ; 0x023443B4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r7, r0
@@ -14595,7 +14595,7 @@ ov29_023443B4: ; 0x023443B4
 	strh r5, [r7, #2]
 	b _02344420
 _023443F8:
-	bl ov29_02344BE4
+	bl GenerateCleanItem
 	b _02344420
 _02344400:
 	mov r0, r7
@@ -14611,10 +14611,10 @@ _02344420:
 	orr r0, r0, r4
 	strb r0, [r7]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_023443B4
+	arm_func_end GenerateItemExplicit
 
-	arm_func_start ov29_02344430
-ov29_02344430: ; 0x02344430
+	arm_func_start GenerateAndSpawnItem
+GenerateAndSpawnItem: ; 0x02344430
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	ldrb ip, [sp, #0x1c]
@@ -14631,25 +14631,25 @@ ov29_02344430: ; 0x02344430
 	ldr r3, [sp, #0x18]
 	mov r2, r4
 	mov r1, #0x49
-	bl ov29_023443B4
+	bl GenerateItemExplicit
 	b _023444A0
 _02344478:
 	ldr r3, [sp, #0x18]
 	mov r1, r5
 	mov r2, r4
-	bl ov29_023443B4
+	bl GenerateItemExplicit
 	b _023444A0
 _0234448C:
 	ldr r3, [sp, #0x18]
 	add r0, sp, #4
 	mov r1, r5
 	mov r2, r4
-	bl ov29_023443B4
+	bl GenerateItemExplicit
 _023444A0:
 	add r0, sp, #0
 	add r1, sp, #4
 	mov r2, #1
-	bl ov29_02345538
+	bl SpawnItem
 	ldr r0, _023444D0 ; =0x02353538
 	ldr r0, [r0]
 	add r0, r0, #0x3f00
@@ -14660,7 +14660,7 @@ _023444A0:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _023444D0: .word 0x02353538
-	arm_func_end ov29_02344430
+	arm_func_end GenerateAndSpawnItem
 
 	arm_func_start ov29_023444D4
 ov29_023444D4: ; 0x023444D4
@@ -14671,7 +14671,7 @@ ov29_023444D4: ; 0x023444D4
 	add r0, r0, #0x7e
 	add r0, r0, #0x700
 	bl MemZero
-	bl IsSecretBazaar__023385C4
+	bl IsSecretBazaar
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
@@ -14684,7 +14684,7 @@ _02344508: .word 0x02353538
 	arm_func_start IsHiddenStairsFloor
 IsHiddenStairsFloor: ; 0x0234450C
 	stmdb sp!, {r3, lr}
-	bl IsSecretBazaar__023385C4
+	bl IsSecretBazaar
 	cmp r0, #0
 	bne _02344528
 	bl IsSecretRoom
@@ -14700,10 +14700,10 @@ _02344530:
 
 	arm_func_start IsSecretBazaar__02344538
 IsSecretBazaar__02344538: ; 0x02344538
-	ldr ip, _02344540 ; =IsSecretBazaar__023385C4
+	ldr ip, _02344540 ; =IsSecretBazaar
 	bx ip
 	.align 2, 0
-_02344540: .word IsSecretBazaar__023385C4
+_02344540: .word IsSecretBazaar
 	arm_func_end IsSecretBazaar__02344538
 
 	arm_func_start ov29_02344544
@@ -14903,7 +14903,7 @@ _023447FC:
 	add r0, sp, #0
 	mov r1, r6
 	mov r2, #2
-	bl ov29_02344BD0
+	bl GenerateStandardItem
 	add r0, sp, #0
 	bl ov29_02345004
 	ldr r0, _02344AA8 ; =0x00000F3A

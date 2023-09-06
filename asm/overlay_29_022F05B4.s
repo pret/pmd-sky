@@ -129,7 +129,7 @@ _022F0700:
 	stmia sp, {r2, r4}
 	bl ov29_02322DDC
 	mov r0, r4
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	mov r3, #0
 	add r0, sp, #0x10
 	add r2, sp, #8
@@ -144,7 +144,7 @@ _022F0700:
 	bl GetLeader
 	mov r1, r4
 	mov r2, r1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
@@ -321,7 +321,7 @@ ov29_022F0984: ; 0x022F0984
 	ldrsh r1, [r4, #2]
 	add r0, sp, #0xc
 	mov r5, r3
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	ldrb r0, [r4, #6]
 	cmp r0, #0
 	bne _022F09E0
@@ -466,24 +466,24 @@ _022F0B84: .word 0x023526B8
 _022F0B88: .word 0x00000225
 	arm_func_end ov29_022F0B10
 
-	arm_func_start ov29_022F0B8C
-ov29_022F0B8C: ; 0x022F0B8C
+	arm_func_start GetLeaderAction
+GetLeaderAction: ; 0x022F0B8C
 	stmdb sp!, {r3, lr}
-	bl ov29_022E9618
+	bl GetLeaderMonster
 	add r0, r0, #0x4a
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022F0B8C
+	arm_func_end GetLeaderAction
 
 	arm_func_start ov29_022F0B9C
 ov29_022F0B9C: ; 0x022F0B9C
 	stmdb sp!, {r3, lr}
-	bl ov29_022E9618
+	bl GetLeaderMonster
 	ldrh r0, [r0, #0x4a]
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022F0B9C
 
-	arm_func_start ov29_022F0BAC
-ov29_022F0BAC: ; 0x022F0BAC
+	arm_func_start GetEntityTouchscreenArea
+GetEntityTouchscreenArea: ; 0x022F0BAC
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r3, r0
@@ -512,7 +512,7 @@ ov29_022F0BAC: ; 0x022F0BAC
 	str r0, [r6, #4]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end ov29_022F0BAC
+	arm_func_end GetEntityTouchscreenArea
 
 	arm_func_start ov29_022F0C1C
 ov29_022F0C1C: ; 0x022F0C1C
@@ -609,7 +609,7 @@ _022F0D44:
 	mov r0, #0
 	mov r1, r0
 	bl ov29_02339190
-	bl ov29_02339CE8
+	bl UpdateMinimap
 	mov r0, #4
 	mov r1, #0x2f
 	bl ov29_022EA370
@@ -668,7 +668,7 @@ _022F0E18:
 	moveq r0, #1
 	movne r0, #0
 	strb r0, [r5]
-	bl ov29_02339CE8
+	bl UpdateMinimap
 	b _022F0D78
 _022F0E30:
 	cmp sl, #0
@@ -701,7 +701,7 @@ _022F0E64:
 	ldr r0, _022F0ECC ; =0x0237CFBB
 	mov r1, #1
 	strb r1, [r0]
-	bl ov29_02339CE8
+	bl UpdateMinimap
 	mov r0, #0
 	bl ov29_022E0DF0
 	mov r0, #0x2f
@@ -719,8 +719,8 @@ _022F0ED4: .word 0x0237C694
 _022F0ED8: .word 0x00003F03
 	arm_func_end ov29_022F0C98
 
-	arm_func_start ov29_022F0EDC
-ov29_022F0EDC: ; 0x022F0EDC
+	arm_func_start SetLeaderAction
+SetLeaderAction: ; 0x022F0EDC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xdc
 	ldr r1, _022F1DDC ; =0x02353538
@@ -741,7 +741,7 @@ ov29_022F0EDC: ; 0x022F0EDC
 	bl GetLeader
 	mov r1, #1
 	mov r2, r1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	bl GetLeader
 	bl ov29_022FB538
 	bl GetLeader
@@ -792,7 +792,7 @@ _022F0FAC:
 	bl ov29_0234E8F8
 	bl ov29_022E0B44
 	bl sub_02006B70
-	bl ov29_022E9618
+	bl GetLeaderMonster
 	ldrh r0, [r0, #0x4a]
 	cmp r0, #0
 	bne _022F2B34
@@ -815,7 +815,7 @@ _022F1024:
 	ldrb r0, [r0, #0x78b]
 	cmp r0, #0
 	beq _022F1064
-	bl ov29_022F308C
+	bl ShouldLeaderKeepRunning
 	cmp r0, #0
 	movne r0, #2
 	strneh r0, [sb, #0x4a]
@@ -845,7 +845,7 @@ _022F1064:
 _022F10AC:
 	mov r0, #0
 	str r0, [sp, #0x6c]
-	bl ov29_022EB3C8
+	bl SetLeaderActionFields
 	ldr r0, _022F1DE4 ; =0x0237C9A4
 	mov r1, #0
 	strb r1, [r0]
@@ -1040,7 +1040,7 @@ _022F1364:
 	cmp r0, #0
 	beq _022F13B0
 	mov r0, #1
-	bl ov29_022EB3C8
+	bl SetLeaderActionFields
 	ldr r0, _022F1DDC ; =0x02353538
 	mov r1, #1
 	ldr r0, [r0]
@@ -1156,7 +1156,7 @@ _022F1470:
 	bne _022F15C0
 _022F1548:
 	add r0, sp, #0xa6
-	bl ov29_02337B68
+	bl PositionHasMonster
 	cmp r0, #0
 	beq _022F16F4
 	ldr r1, [sp, #0x60]
@@ -1196,7 +1196,7 @@ _022F15C0:
 	cmpeq r1, r0
 	bne _022F16F4
 	add r0, sp, #0xa6
-	bl ov29_02337B68
+	bl PositionHasMonster
 	str r0, [sp, #0x74]
 	cmp r0, #0
 	beq _022F16A4
@@ -1410,13 +1410,13 @@ _022F18B4:
 	ldrsh r1, [sp, #0xb2]
 	ldrsh r0, [r6, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	mov r0, r0, lsl #0x10
 	mov r8, r0, asr #0x10
 	ldrsh r1, [sp, #0xb4]
 	ldrsh r0, [r6, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	mov r0, r0, lsl #0x10
 	mov r1, r0, asr #0x10
 	ldr r0, [sp, #0x78]
@@ -1449,13 +1449,13 @@ _022F198C:
 	ldrsh r1, [sp, #0xb2]
 	ldrsh r0, [r6, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	bgt _022F19DC
 	ldrsh r1, [sp, #0xb4]
 	ldrsh r0, [r6, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	bgt _022F19DC
 	ldr r0, [sp, #0x78]
@@ -1495,7 +1495,7 @@ _022F19DC:
 	cmp r0, #0
 	beq _022F1CE0
 	mov r0, #1
-	bl ov29_022EB3C8
+	bl SetLeaderActionFields
 	ldr r0, _022F1DDC ; =0x02353538
 	mov r1, #1
 	ldr r0, [r0]
@@ -1511,7 +1511,7 @@ _022F1A64:
 	mov r0, r6
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, #1
-	bl ov29_022EB3C8
+	bl SetLeaderActionFields
 	ldr r0, _022F1DDC ; =0x02353538
 	mov r1, #1
 	ldr r0, [r0]
@@ -1633,12 +1633,12 @@ _022F1C04:
 	beq _022F2970
 _022F1C28:
 	mov r0, r6
-	bl ov29_022E2A38
+	bl GetTeamMemberIndex
 	mov r2, r4, lsl #0x10
 	mov r1, r0
 	add r0, sb, #0x4a
 	mov r2, r2, asr #0x10
-	bl ov29_022EBC98
+	bl SetActionUseMovePlayer
 	b _022F2970
 _022F1C48:
 	ldr r0, [sp, #0x34]
@@ -1701,7 +1701,7 @@ _022F1D10:
 	beq _022F1D84
 	mov r0, r6
 	add r1, sp, #0xcc
-	bl ov29_022F0BAC
+	bl GetEntityTouchscreenArea
 	ldr r0, [sp, #0xd4]
 	ldr r1, [sp, #0xcc]
 	ldr r2, [sp, #0xd8]
@@ -1714,7 +1714,7 @@ _022F1D10:
 	mov r1, r1, asr #0x10
 	mov r2, r2, asr #0x10
 	mov r3, r3, asr #0x10
-	bl ov29_022E0CB8
+	bl CheckTouchscreenArea
 	cmp r0, #0
 	beq _022F1D84
 	mov r0, #0
@@ -1771,7 +1771,7 @@ _022F1E04:
 	ldrb r0, [r5, #0x35]
 	cmp r0, #0
 	beq _022F1E3C
-	bl ov29_0233779C
+	bl HideTileGrid
 	ldr r0, _022F1DE4 ; =0x0237C9A4
 	mov r1, #0
 	strb r1, [r0, #2]
@@ -1837,7 +1837,7 @@ _022F1EF8:
 	bne _022F1F68
 	mov r0, r6
 	add r1, sp, #0xbc
-	bl ov29_022F0BAC
+	bl GetEntityTouchscreenArea
 	ldr r0, _022F1DEC ; =0x0237C6A4
 	ldrh r0, [r0]
 	tst r0, #0x100
@@ -1854,7 +1854,7 @@ _022F1EF8:
 	mov r1, r1, asr #0x10
 	mov r2, r2, asr #0x10
 	mov r3, r3, asr #0x10
-	bl ov29_022E0CB8
+	bl CheckTouchscreenArea
 	cmp r0, #0
 	movne r8, #1
 _022F1F68:
@@ -1903,7 +1903,7 @@ _022F1FC0:
 	ldr r0, [r1, #0xb4]
 	str r0, [sp, #0xc]
 	mov r0, r6
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	beq _022F203C
 	cmp fp, #0
@@ -1970,11 +1970,11 @@ _022F20EC:
 	cmp r0, #0
 	beq _022F2118
 	mov r0, r6
-	bl ov29_023186CC
+	bl MonsterHasEmbargoStatus
 	cmp r0, #0
 	beq _022F2118
 	mov r0, r6
-	bl ov29_02318700
+	bl LogItemBlockedByEmbargo
 	mov r0, #0
 	str r0, [sp, #0x44]
 _022F2118:
@@ -1996,7 +1996,7 @@ _022F2150:
 	cmp r8, #0
 	beq _022F2970
 	mov r0, #0xb
-	bl ov29_022EB3C8
+	bl SetLeaderActionFields
 	add r0, fp, #1
 	strb r0, [sb, #0x4e]
 	mov r0, #0
@@ -2187,7 +2187,7 @@ _022F23C4:
 	ldrb r0, [r5, #0x35]
 	cmp r0, #0
 	beq _022F243C
-	bl ov29_0233779C
+	bl HideTileGrid
 	ldr r0, _022F1DE4 ; =0x0237C9A4
 	mov r1, #0
 	strb r1, [r0, #2]
@@ -2337,7 +2337,7 @@ _022F25D8:
 	bne _022F2748
 	ldrb r1, [fp, #0x4c]
 	mov r0, r6
-	bl ov29_0230105C
+	bl CanMonsterMoveInDirection
 	cmp r0, #0
 	moveq r0, #0
 	beq _022F2748
@@ -2351,7 +2351,7 @@ _022F25D8:
 	mov r2, #1
 	mov r3, r0
 	str r0, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #2
 	moveq r0, #0
 	beq _022F2748
@@ -2454,7 +2454,7 @@ _022F2804:
 	bl LogMessageByIdWithPopupCheckUser
 _022F282C:
 	mov r0, #1
-	bl ov29_022EB3C8
+	bl SetLeaderActionFields
 	ldr r1, _022F1DDC ; =0x02353538
 	mov r3, #1
 	ldr r0, [r1]
@@ -2469,7 +2469,7 @@ _022F282C:
 	b _022F2970
 _022F2864:
 	mov r0, #2
-	bl ov29_022EB3C8
+	bl SetLeaderActionFields
 	ldr r0, [sp, #0x40]
 	cmp r0, #0
 	beq _022F289C
@@ -2545,7 +2545,7 @@ _022F2970:
 	ldrb r0, [r5, #0x35]
 	cmp r0, #0
 	beq _022F2980
-	bl ov29_0233779C
+	bl HideTileGrid
 _022F2980:
 	ldrh r0, [sb, #0x4a]
 	cmp r0, #0x2d
@@ -2557,7 +2557,7 @@ _022F2980:
 	cmp r0, #0
 	bne _022F2B34
 	mov r0, #0
-	bl ov29_022EB3C8
+	bl SetLeaderActionFields
 	b _022F1024
 _022F29B0:
 	ldrb r0, [sp, #0xb6]
@@ -2607,7 +2607,7 @@ _022F2A00:
 	moveq r0, #1
 	movne r0, #0
 	and r0, r0, #0xff
-	bl ov29_0234DDF4
+	bl OpenMenu
 	bl sub_02006B70
 	b _022F2A9C
 _022F2A70:
@@ -2620,7 +2620,7 @@ _022F2A70:
 	moveq r0, #1
 	movne r0, #0
 	and r0, r0, #0xff
-	bl ov29_0234DDF4
+	bl OpenMenu
 	bl sub_02006B70
 _022F2A9C:
 	bl ov29_022E0B44
@@ -2628,7 +2628,7 @@ _022F2A9C:
 	mov r1, #0
 	strb r1, [r0, #2]
 	strb r1, [r5, #0x35]
-	bl ov29_0233779C
+	bl HideTileGrid
 	bl IsFloorOver
 	cmp r0, #0
 	bne _022F2B34
@@ -2666,7 +2666,7 @@ _022F2B18:
 _022F2B34:
 	add sp, sp, #0xdc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov29_022F0EDC
+	arm_func_end SetLeaderAction
 
 	arm_func_start ov29_022F2B3C
 ov29_022F2B3C: ; 0x022F2B3C
@@ -2965,7 +2965,7 @@ _022F2F7C:
 	ldrb r1, [r5, #0x36]
 	add r0, r0, #4
 	mov r2, #0
-	bl ov29_02337428
+	bl DrawTileGrid
 _022F2FB4:
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -3031,8 +3031,8 @@ _022F3084: .word 0x02353538
 _022F3088: .word 0x0237C694
 	arm_func_end ov29_022F2FE4
 
-	arm_func_start ov29_022F308C
-ov29_022F308C: ; 0x022F308C
+	arm_func_start ShouldLeaderKeepRunning
+ShouldLeaderKeepRunning: ; 0x022F308C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x68
 	ldr r0, _022F35D4 ; =0x02353538
@@ -3395,7 +3395,7 @@ _022F35CC:
 _022F35D4: .word 0x02353538
 _022F35D8: .word 0x0235171C
 _022F35DC: .word 0x0235171E
-	arm_func_end ov29_022F308C
+	arm_func_end ShouldLeaderKeepRunning
 
 	arm_func_start ov29_022F35E0
 ov29_022F35E0: ; 0x022F35E0
@@ -3422,8 +3422,8 @@ ov29_022F35E0: ; 0x022F35E0
 	bx lr
 	arm_func_end ov29_022F35E0
 
-	arm_func_start ov29_022F3634
-ov29_022F3634: ; 0x022F3634
+	arm_func_start CheckLeaderTile
+CheckLeaderTile: ; 0x022F3634
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	bl GetLeader
 	movs r4, r0
@@ -3473,7 +3473,7 @@ _022F36CC: ; jump table
 	ldmia sp!, {r4, r5, r6, r7, r8, pc} ; case 6
 _022F36E8:
 	mov r0, r5
-	bl ov29_022E1608
+	bl GetTrapInfo
 	mov r6, r0
 	mov r7, #0
 	mov r0, r4
@@ -3487,7 +3487,7 @@ _022F36E8:
 	bne _022F372C
 	mov r0, #1
 	strb r0, [r5, #0x20]
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 	mov r8, #1
 _022F372C:
 	ldrb r0, [r6, #1]
@@ -3508,17 +3508,17 @@ _022F3750:
 	add r1, r4, #4
 	mov r2, #0
 	mov r3, #1
-	bl ov29_022EDFA0
+	bl TryTriggerTrap
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _022F3778:
 	mov r0, r5
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r0, [r0]
 	tst r0, #2
 	bne _022F37A0
 	add r0, r4, #4
 	mov r1, #1
-	bl ov29_02345058
+	bl TryLeaderItemPickUp
 	bl ov29_022FB920
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _022F37A0:
@@ -3532,11 +3532,11 @@ _022F37A0:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _022F37C0:
 	mov r0, #1
-	bl ov29_02338794
+	bl HiddenStairsTrigger
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022F37CC: .word 0x02353538
-	arm_func_end ov29_022F3634
+	arm_func_end CheckLeaderTile
 
 	arm_func_start ov29_022F37D0
 ov29_022F37D0: ; 0x022F37D0
@@ -3598,7 +3598,7 @@ ov29_022F3890: ; 0x022F3890
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r5, r1
 	mov r6, r0
-	bl ov29_022E9618
+	bl GetLeaderMonster
 	mov r4, r0
 	cmp r5, #0
 	beq _022F38D0
@@ -3642,8 +3642,8 @@ _022F3928:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end ov29_022F3890
 
-	arm_func_start ov29_022F3934
-ov29_022F3934: ; 0x022F3934
+	arm_func_start ChangeLeader
+ChangeLeader: ; 0x022F3934
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r0, _022F3AE4 ; =0x02353538
 	ldr r0, [r0]
@@ -3661,7 +3661,7 @@ ov29_022F3934: ; 0x022F3934
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _022F3970:
 	mov r0, #2
-	bl ov29_02346BD8
+	bl CheckTeamItemsFlags
 	cmp r0, #0
 	bne _022F398C
 	bl ov29_022F670C
@@ -3736,7 +3736,7 @@ _022F3A6C:
 	bne _022F3A6C
 	mov r0, r6
 	mov r1, #1
-	bl ov29_022E2E54
+	bl PointCameraToMonster
 	bl ov29_022E8104
 	bl ov29_022E81F8
 	mov r0, fp
@@ -3767,7 +3767,7 @@ _022F3AEC: .word 0x00000BA5
 _022F3AF0: .word 0x00000BA6
 _022F3AF4: .word 0x0235355C
 _022F3AF8: .word 0x00000BA7
-	arm_func_end ov29_022F3934
+	arm_func_end ChangeLeader
 
 	arm_func_start ov29_022F3AFC
 ov29_022F3AFC: ; 0x022F3AFC
@@ -4061,27 +4061,27 @@ _022F3EE0:
 	ldrsh r0, [r7, r0]
 	mov r1, #0x18
 	add r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	ldr r1, _022F40B4 ; =0x0001A226
 	ldr r3, [sp, #4]
 	ldrsh r2, [r7, r1]
 	mov r7, r0
 	mov r1, #0x18
 	add r0, r3, r2
-	bl DivideInt
+	bl __divsi3
 	mov r8, r0
 	strh r7, [sb]
 	strh r8, [sb, #2]
 	ldrsh r1, [sb]
 	ldrsh r0, [r5, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #2
 	ble _022F3F58
 	ldrsh r1, [sb, #2]
 	ldrsh r0, [r5, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #2
 	bgt _022F3F5C
 _022F3F58:
@@ -4214,12 +4214,12 @@ ov29_022F40B8: ; 0x022F40B8
 	ldrsh r1, [sl, #4]
 	ldrsh r0, [sb]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	ldrsh r2, [sl, #6]
 	ldrsh r1, [sb, #2]
 	mov r6, r0
 	sub r0, r2, r1
-	bl Abs
+	bl abs
 	mov r7, r0
 	cmp r6, r7
 	movgt r1, #1
@@ -4256,7 +4256,7 @@ _022F4198:
 	ldrsh r0, [sb]
 	add r1, r2, r1
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	ldr r1, _022F4268 ; =0x0235171C
 	ldrsh r3, [sl, #6]
 	add r1, r1, r8, lsl #2
@@ -4265,7 +4265,7 @@ _022F4198:
 	ldrsh r1, [sb, #2]
 	add r0, r3, r2
 	sub r0, r0, r1
-	bl Abs
+	bl abs
 	cmp fp, r6
 	cmple r0, r7
 	bgt _022F4208
@@ -4384,13 +4384,13 @@ _022F434C: .word 0x02353538
 ov29_022F4350: ; 0x022F4350
 	ldr r2, [r0, #0xb4]
 	mov r3, #1
-	ldr ip, _022F436C ; =ov29_02345058
+	ldr ip, _022F436C ; =TryLeaderItemPickUp
 	add r0, r0, #4
 	mov r1, #0
 	strb r3, [r2, #0x4e]
 	bx ip
 	.align 2, 0
-_022F436C: .word ov29_02345058
+_022F436C: .word TryLeaderItemPickUp
 	arm_func_end ov29_022F4350
 
 	arm_func_start ov29_022F4370
@@ -4400,7 +4400,7 @@ ov29_022F4370: ; 0x022F4370
 	mov r1, #0
 	mov r2, #0xfe
 	mov r6, r0
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov sb, #0
 	mov lr, #1
 	mov r4, r0
@@ -4578,7 +4578,7 @@ ov29_022F45CC: ; 0x022F45CC
 	mov r1, #0
 	mov r2, #2
 	ldr sb, [r4, #0xb4]
-	bl ov29_022EB54C
+	bl GetItemToUse
 	ldrb r1, [r8, #0x4e]
 	mov r5, r0
 	mov r0, r5
@@ -4655,7 +4655,7 @@ _022F46C0:
 	beq _022F472C
 	add r0, sl, #4
 	mov r2, #1
-	bl ov29_02345538
+	bl SpawnItem
 	b _022F4734
 _022F472C:
 	mov r0, r1
@@ -4678,7 +4678,7 @@ _022F4734:
 	b _022F4778
 _022F4770:
 	mov r0, sb
-	bl ov29_02346F14
+	bl AddHeldItemToBag
 _022F4778:
 	add r1, sp, #6
 	mov r0, #0
@@ -4728,7 +4728,7 @@ _022F47CC:
 	b _022F4834
 _022F482C:
 	mov r0, sb
-	bl ov29_02346F14
+	bl AddHeldItemToBag
 _022F4834:
 	add r1, sp, #0
 	mov r0, #0
@@ -4763,7 +4763,7 @@ _022F4878:
 	mov r0, sl
 	add r1, r1, #0x4000
 	ldrb r1, [r1, #0xc4]
-	bl ov29_02307F4C
+	bl TryTriggerMonsterHouse
 _022F48B8:
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
@@ -4838,7 +4838,7 @@ _022F4928:
 	mov r0, r6
 	add r1, r1, #0x4000
 	ldrb r1, [r1, #0xc4]
-	bl ov29_02307F4C
+	bl TryTriggerMonsterHouse
 _022F49C8:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
@@ -4861,7 +4861,7 @@ ov29_022F49E0: ; 0x022F49E0
 	ldr r2, _022F4BC8 ; =0x00001565
 	mov r0, r7
 	mov r1, #1
-	bl ov29_022EB54C
+	bl GetItemToUse
 	ldrb r1, [r5, #0x62]
 	mov r6, r0
 	tst r1, #8
@@ -4934,7 +4934,7 @@ _022F4AF0:
 	strneb r0, [r5, #0x63]
 	bne _022F4B24
 	mov r0, r5
-	bl ov29_02346F14
+	bl AddHeldItemToBag
 _022F4B24:
 	ldrh r2, [sp]
 	ldrh r0, [sp, #2]
@@ -4954,9 +4954,9 @@ _022F4B24:
 	add r0, r0, #0x3f4
 	add r0, r0, #0x400
 	add r0, r0, r1, lsl #6
-	bl ov29_02346F14
+	bl AddHeldItemToBag
 _022F4B70:
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	ldr r0, _022F4BD4 ; =0x00001317
 	bl ov29_022EACCC
 	ldr r1, _022F4BD8 ; =0x00000BB6
@@ -4975,7 +4975,7 @@ _022F4B70:
 	mov r0, r7
 	add r1, r1, #0x4000
 	ldrb r1, [r1, #0xc4]
-	bl ov29_02307F4C
+	bl TryTriggerMonsterHouse
 _022F4BC0:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -5005,7 +5005,7 @@ ov29_022F4BF8: ; 0x022F4BF8
 	mov r1, #0
 	mov r2, #4
 	ldr r6, [r5, #0xb4]
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r4, r0
 	mov r1, r4
 	mov r0, #0
@@ -5083,7 +5083,7 @@ _022F4D08:
 	mov r1, r4
 	add r0, r5, #4
 	mov r2, #1
-	bl ov29_02345538
+	bl SpawnItem
 	cmp r0, #0
 	bne _022F4D48
 	ldr r1, _022F4D9C ; =0x00000BB8
@@ -5093,7 +5093,7 @@ _022F4D08:
 _022F4D48:
 	mov r0, r4
 	bl ItemZInit
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	ldr r0, _022F4DA0 ; =0x00001317
 	bl ov29_022EACCC
 	mov r0, #0
@@ -5108,7 +5108,7 @@ _022F4D48:
 	ldr r1, [r1]
 	add r1, r1, #0x4000
 	ldrb r1, [r1, #0xc4]
-	bl ov29_02307F4C
+	bl TryTriggerMonsterHouse
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022F4D94: .word 0x00000BB7
@@ -5127,12 +5127,12 @@ ov29_022F4DAC: ; 0x022F4DAC
 	ldr r6, [r8, #0xb4]
 	mov r1, #0
 	mov r2, #5
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r4, r0
 	mov r0, r8
 	mov r1, #1
 	mov r2, #6
-	bl ov29_022EB54C
+	bl GetItemToUse
 	ldrb r1, [r6, #0x4e]
 	mov r7, r0
 	cmp r1, #0x80
@@ -5217,7 +5217,7 @@ _022F4EB4:
 	strb ip, [sp, #7]
 	strb r3, [sp]
 	strb r2, [sp, #6]
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	mov r0, r7
 	bl RemoveEquivItemNoHole
 	ldrb r0, [r7, #1]
@@ -5229,13 +5229,13 @@ _022F4F3C:
 	add r1, sp, #6
 	add r0, r6, #0x50
 	mov r2, #1
-	bl ov29_02345538
+	bl SpawnItem
 	cmp r0, #0
 	bne _022F4F68
 	ldr r1, _022F504C ; =0x00000BBC
 	mov r0, r8
 	bl LogMessageByIdWithPopupCheckUser
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	b _022F5034
 _022F4F68:
 	strb r4, [sp, #1]
@@ -5270,7 +5270,7 @@ _022F4FD0:
 	mov r1, r4
 	bl AddItemToBag
 _022F4FDC:
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	add r1, sp, #6
 	mov r0, #0
 	bl ov29_02344B44
@@ -5287,7 +5287,7 @@ _022F4FDC:
 	ldr r1, [r1]
 	add r1, r1, #0x4000
 	ldrb r1, [r1, #0xc4]
-	bl ov29_02307F4C
+	bl TryTriggerMonsterHouse
 	add r0, sp, #0
 	mov r1, r5
 	bl ov29_02348ECC
@@ -5319,7 +5319,7 @@ ov29_022F505C: ; 0x022F505C
 	mov r0, r7
 	mov r1, #0
 	mov r2, #7
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r6, r0
 	mov r1, r6
 	mov r0, #0
@@ -5367,7 +5367,7 @@ _022F5118:
 	bl LogMessageByIdWithPopupCheckUser
 	b _022F526C
 _022F513C:
-	bl ov29_022E1610
+	bl GetItemInfo
 	mov r4, r0
 	mov r1, r4
 	mov r0, #1
@@ -5392,7 +5392,7 @@ _022F513C:
 	strh r4, [sp, #0xa]
 	strb r3, [sp]
 	strb r2, [sp, #6]
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	mov r0, r6
 	bl RemoveEquivItemNoHole
 	ldrb r0, [r6, #1]
@@ -5404,13 +5404,13 @@ _022F51C0:
 	add r1, sp, #0
 	add r0, r7, #4
 	mov r2, #1
-	bl ov29_02345538
+	bl SpawnItem
 	cmp r0, #0
 	bne _022F51EC
 	ldr r1, _022F527C ; =0x00000BBC
 	mov r0, r7
 	bl LogMessageByIdWithPopupCheckUser
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	b _022F526C
 _022F51EC:
 	add r0, sp, #6
@@ -5431,7 +5431,7 @@ _022F51EC:
 _022F5228:
 	bl AddItemToBagNoHeld
 _022F522C:
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	ldr r0, _022F5280 ; =0x00001317
 	bl ov29_022EACCC
 	ldr r1, _022F5284 ; =0x00000BBD
@@ -5442,7 +5442,7 @@ _022F522C:
 	ldr r1, [r1]
 	add r1, r1, #0x4000
 	ldrb r1, [r1, #0xc4]
-	bl ov29_02307F4C
+	bl TryTriggerMonsterHouse
 	add r0, sp, #6
 	mov r1, r4
 	bl ov29_02348ECC

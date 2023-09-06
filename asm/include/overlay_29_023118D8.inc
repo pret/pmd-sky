@@ -1,5 +1,5 @@
 #pragma once
-.public AbilityIsActive2
+.public AbilityIsActiveVeneer
 .public CalcSpeedStage
 .public CalcSpeedStageWrapper
 .public CalcStatusDuration
@@ -55,14 +55,14 @@
 .public ov29_022E60E4
 .public ov29_0230040C
 .public ov29_023018AC
-.public ov29_02301940
-.public ov29_02301B2C
-.public ov29_02302430
+.public SafeguardIsActive
+.public IsProtectedFromStatDrops
+.public IsProtectedFromNegativeStatus
 .public ov29_02304A48
 .public ov29_02304A84
 .public ov29_0230F654
-.public ov29_0231B364
-.public ov29_0231B4EC
+.public TryActivateSteadfast
+.public ChangeShayminForme
 .public ov29_02344B44
 .public ov29_0234B034
 .public ov29_0234B084

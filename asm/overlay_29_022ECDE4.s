@@ -28,7 +28,7 @@ _022ECE28:
 	beq _022ECE44
 	mov r0, r4
 	mov r1, r5
-	bl ov29_02300164
+	bl GetMonsterName
 	b _022ECE6C
 _022ECE44:
 	ldr r1, _022ECF38 ; =0x0237C974
@@ -36,7 +36,7 @@ _022ECE44:
 	cmp r0, #0
 	beq _022ECE60
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	b _022ECE6C
 _022ECE60:
 	ldr r1, _022ECF3C ; =0x00000A41
@@ -45,14 +45,14 @@ _022ECE60:
 _022ECE6C:
 	mov r1, r6
 	add r0, r4, #0x1e
-	bl ov29_02300164
+	bl GetMonsterName
 	cmp r7, #0
 	moveq r0, #0
 	streqb r0, [r4, #0x3c]
 	beq _022ECE94
 	mov r1, r7
 	add r0, r4, #0x3c
-	bl Strcpy
+	bl strcpy
 _022ECE94:
 	mov r1, r8
 	add r0, r4, #0x70
@@ -92,7 +92,7 @@ _022ECE94:
 	strb r3, [r4, #0x5c]
 	ldrb r3, [r5, #0x749]
 	strb r3, [r4, #0x5d]
-	bl Memset
+	bl memset
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022ECF34: .word 0x02353538
@@ -329,7 +329,7 @@ _022ED1D0:
 	bne _022ED370
 _022ED1E0:
 	add r0, sp, #0x48
-	bl sub_0201E730
+	bl InitRender3dElement
 	ldr r1, _022ED7F4 ; =0x0237C99C
 	ldr r0, _022ED7F8 ; =0x020AFC70
 	ldrh r2, [r1]
@@ -450,7 +450,7 @@ _022ED37C:
 	strh r1, [sp, #6]
 	ldrsh r5, [r2, #0xa]
 	ldrsh r4, [r2, #8]
-	bl sub_0201E730
+	bl InitRender3dElement
 	ldrsh r3, [sp, #2]
 	ldrsh r6, [sp, #4]
 	ldrsh lr, [sp]
@@ -759,29 +759,29 @@ ov29_022ED82C: ; 0x022ED82C
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022ED82C
 
-	arm_func_start ov29_022ED858
-ov29_022ED858: ; 0x022ED858
+	arm_func_start BindTrapToTile
+BindTrapToTile: ; 0x022ED858
 	cmp r1, #0
 	strne r1, [r0, #0x10]
 	strneb r2, [r1, #0x20]
 	bx lr
-	arm_func_end ov29_022ED858
+	arm_func_end BindTrapToTile
 
 	arm_func_start ov29_022ED868
 ov29_022ED868: ; 0x022ED868
 	ldr r0, _022ED880 ; =0x02353538
-	ldr ip, _022ED884 ; =ov29_02344148
+	ldr ip, _022ED884 ; =AreLateGameTrapsEnabled
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
 	bx ip
 	.align 2, 0
 _022ED880: .word 0x02353538
-_022ED884: .word ov29_02344148
+_022ED884: .word AreLateGameTrapsEnabled
 	arm_func_end ov29_022ED868
 
 	arm_func_start ov29_022ED888
@@ -823,22 +823,22 @@ _022ED8FC:
 	bne _022ED92C
 	mov r2, fp
 	mov r3, #0
-	bl ov29_022E2260
+	bl SpawnTrap
 	movs r1, r0
 	beq _022ED94C
 	mov r0, sb
 	mov r2, #1
-	bl ov29_022ED858
+	bl BindTrapToTile
 	b _022ED94C
 _022ED92C:
 	mov r2, #0
 	mov r3, r2
-	bl ov29_022E2260
+	bl SpawnTrap
 	movs r1, r0
 	beq _022ED94C
 	mov r0, sb
 	mov r2, #0
-	bl ov29_022ED858
+	bl BindTrapToTile
 _022ED94C:
 	add r8, r8, #1
 	cmp r8, #0x38
@@ -852,8 +852,8 @@ _022ED94C:
 _022ED96C: .word 0x023526A0
 	arm_func_end ov29_022ED888
 
-	arm_func_start ov29_022ED970
-ov29_022ED970: ; 0x022ED970
+	arm_func_start SpawnEnemyTrapAtPos
+SpawnEnemyTrapAtPos: ; 0x022ED970
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r7, r1
@@ -870,16 +870,16 @@ ov29_022ED970: ; 0x022ED970
 	mov r2, #0
 	strh r7, [sp]
 	strh r6, [sp, #2]
-	bl ov29_022E2260
+	bl SpawnTrap
 	movs r1, r0
 	beq _022ED9C8
 	ldrb r2, [sp, #0x20]
 	mov r0, r4
-	bl ov29_022ED858
+	bl BindTrapToTile
 _022ED9C8:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-	arm_func_end ov29_022ED970
+	arm_func_end SpawnEnemyTrapAtPos
 
 	arm_func_start ov29_022ED9D0
 ov29_022ED9D0: ; 0x022ED9D0
@@ -1021,8 +1021,8 @@ _022EDBCC: .word 0xFFFF000F
 _022EDBD0: .word 0x020AFC4C
 	arm_func_end ov29_022ED9D0
 
-	arm_func_start ov29_022EDBD4
-ov29_022EDBD4: ; 0x022EDBD4
+	arm_func_start PrepareTrapperTrap
+PrepareTrapperTrap: ; 0x022EDBD4
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr lr, _022EDC28 ; =0x02353538
 	ldrsh r5, [r0]
@@ -1047,7 +1047,7 @@ ov29_022EDBD4: ; 0x022EDBD4
 	.align 2, 0
 _022EDC28: .word 0x02353538
 _022EDC2C: .word 0x00012AAA
-	arm_func_end ov29_022EDBD4
+	arm_func_end PrepareTrapperTrap
 
 	arm_func_start ov29_022EDC30
 ov29_022EDC30: ; 0x022EDC30
@@ -1089,8 +1089,8 @@ _022EDCB4:
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022EDC30
 
-	arm_func_start ov29_022EDCBC
-ov29_022EDCBC: ; 0x022EDCBC
+	arm_func_start TrySpawnTrap
+TrySpawnTrap: ; 0x022EDCBC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r0
 	mov r7, r1
@@ -1143,10 +1143,10 @@ _022EDD14:
 	cmp r1, #2
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	bl ov29_022E1608
+	bl GetTrapInfo
 	strb r7, [r0]
 	ldr r0, [r4, #0x10]
-	bl ov29_022E1608
+	bl GetTrapInfo
 	strb r6, [r0, #1]
 	ldr r1, [r4, #0x10]
 	mov r0, #1
@@ -1157,19 +1157,19 @@ _022EDDA0:
 	mov r1, r8
 	mov r2, r6
 	mov r3, #0
-	bl ov29_022E2260
+	bl SpawnTrap
 	movs r1, r0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r4
 	mov r2, r5
-	bl ov29_022ED858
+	bl BindTrapToTile
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov29_022EDCBC
+	arm_func_end TrySpawnTrap
 
-	arm_func_start ov29_022EDDD4
-ov29_022EDDD4: ; 0x022EDDD4
+	arm_func_start TrySpawnTrapperTrap
+TrySpawnTrapperTrap: ; 0x022EDDD4
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _022EDE6C ; =0x02353538
 	mov r5, r0
@@ -1188,7 +1188,7 @@ ov29_022EDDD4: ; 0x022EDDD4
 	ldrb r2, [r2, #0xaaf]
 	add r0, r3, r0
 	mov r3, #1
-	bl ov29_022EDCBC
+	bl TrySpawnTrap
 	movs r4, r0
 	ldr r1, _022EDE70 ; =0x00012AAA
 	beq _022EDE48
@@ -1207,7 +1207,7 @@ _022EDE48:
 	add r1, r3, r1
 	bl LogMessageByIdWithPopupCheckUserUnknown
 _022EDE60:
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -1215,7 +1215,7 @@ _022EDE6C: .word 0x02353538
 _022EDE70: .word 0x00012AAA
 _022EDE74: .word 0x00000E57
 _022EDE78: .word 0x00000E58
-	arm_func_end ov29_022EDDD4
+	arm_func_end TrySpawnTrapperTrap
 
 	arm_func_start ov29_022EDE7C
 ov29_022EDE7C: ; 0x022EDE7C
@@ -1236,7 +1236,7 @@ ov29_022EDE7C: ; 0x022EDE7C
 	str r1, [r0, #0x10]
 	cmp r4, #0
 	beq _022EDEC4
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 _022EDEC4:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
@@ -1271,11 +1271,11 @@ ov29_022EDEDC: ; 0x022EDEDC
 	strb r0, [r1, #0x20]
 	ldrsh r0, [r5]
 	ldrsh r1, [r5, #2]
-	bl ov29_023391EC
+	bl DrawMinimapTile
 _022EDF34:
 	cmp r4, #0
 	beq _022EDF40
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 _022EDF40:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
@@ -1314,8 +1314,8 @@ ov29_022EDF7C: ; 0x022EDF7C
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov29_022EDF7C
 
-	arm_func_start ov29_022EDFA0
-ov29_022EDFA0: ; 0x022EDFA0
+	arm_func_start TryTriggerTrap
+TryTriggerTrap: ; 0x022EDFA0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	mov sb, r1
@@ -1333,7 +1333,7 @@ ov29_022EDFA0: ; 0x022EDFA0
 	cmp r0, #2
 	bne _022EE2F4
 	mov r0, r4
-	bl ov29_022E1608
+	bl GetTrapInfo
 	mov r6, r0
 	ldrb r1, [r6]
 	mov r0, #0
@@ -1383,7 +1383,7 @@ _022EE05C:
 	mov r0, #1
 	mov r2, #0
 	bl SubstitutePlaceholderStringTags
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	ldrne r8, _022EE300 ; =0x00000E5B
 	bne _022EE0C8
@@ -1419,7 +1419,7 @@ _022EE110:
 	bl ov29_022E2CA0
 	cmp r0, #0
 	beq _022EE12C
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 _022EE12C:
 	mov r0, sl
 	mov r1, r5
@@ -1444,7 +1444,7 @@ _022EE148:
 	mov r0, #1
 	mov r2, r7
 	bl SubstitutePlaceholderStringTags
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	ldrne r7, _022EE300 ; =0x00000E5B
 	bne _022EE1A4
@@ -1459,7 +1459,7 @@ _022EE1A4:
 	bl ov29_022E2CA0
 	cmp r0, #0
 	beq _022EE1C0
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 _022EE1C0:
 	mov r0, sl
 	mov r1, r5
@@ -1475,13 +1475,13 @@ _022EE1D8:
 	mov r0, #0
 	mov r1, #0x11c
 	bl ov29_022E56A0
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 	ldrb r2, [r6]
 	mov r0, sl
 	mov r1, sb
 	bl ov29_022E58B0
 	mov r0, r4
-	bl ov29_022E1608
+	bl GetTrapInfo
 	mov r6, r0
 	mov r0, #0
 	ldrb r1, [r6]
@@ -1512,14 +1512,14 @@ _022EE264:
 	bne _022EE288
 	mov r0, r5
 	mov r1, #1
-	bl ov29_0230D47C
+	bl UpdateShopkeeperModeAfterTrap
 	b _022EE29C
 _022EE288:
 	cmp r0, #1
 	bne _022EE29C
 	mov r0, r5
 	mov r1, #0
-	bl ov29_0230D47C
+	bl UpdateShopkeeperModeAfterTrap
 _022EE29C:
 	str sb, [sp]
 	ldrb r6, [r6]
@@ -1530,7 +1530,7 @@ _022EE29C:
 	str r6, [sp, #4]
 	mov r4, #0
 	str r4, [sp, #8]
-	bl ov29_022EF154
+	bl ApplyTrapEffect
 	mov r4, r0
 	mov r0, r5
 	bl EntityIsValid__022EE348
@@ -1555,7 +1555,7 @@ _022EE308: .word 0x02353538
 _022EE30C: .word 0x00000E5C
 _022EE310: .word 0x022C445C
 _022EE314: .word 0x00000E5D
-	arm_func_end ov29_022EDFA0
+	arm_func_end TryTriggerTrap
 
 	arm_func_start ItemIsActive__022EE318
 ItemIsActive__022EE318: ; 0x022EE318
@@ -1563,7 +1563,7 @@ ItemIsActive__022EE318: ; 0x022EE318
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}

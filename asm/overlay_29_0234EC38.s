@@ -873,8 +873,8 @@ _0234F7B8: .word 0x0235342C
 _0234F7BC: .word 0x0235383C
 	arm_func_end ov29_0234F77C
 
-	arm_func_start ov29_0234F7C0
-ov29_0234F7C0: ; 0x0234F7C0
+	arm_func_start OthersMenuLoop
+OthersMenuLoop: ; 0x0234F7C0
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x98
 	ldr r0, _0234F9C8 ; =0x0235383C
@@ -904,7 +904,7 @@ _0234F7F8:
 	ldreq r4, _0234F9CC ; =0x0235343C
 	beq _0234F840
 	ldr r4, _0234F9D0 ; =0x02353474
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	ldrne r0, _0234F9C8 ; =0x0235383C
 	movne r1, #3
@@ -1034,7 +1034,7 @@ _0234F9D8: .word 0x0235341C
 _0234F9DC: .word 0x00001A33
 _0234F9E0: .word ov29_0234F77C
 _0234F9E4: .word 0x02353538
-	arm_func_end ov29_0234F7C0
+	arm_func_end OthersMenuLoop
 
 	arm_func_start ov29_0234F9E8
 ov29_0234F9E8: ; 0x0234F9E8
@@ -1056,8 +1056,8 @@ ov29_0234F9E8: ; 0x0234F9E8
 _0234FA20: .word 0x0235383C
 	arm_func_end ov29_0234F9E8
 
-	arm_func_start ov29_0234FA24
-ov29_0234FA24: ; 0x0234FA24
+	arm_func_start OthersMenu
+OthersMenu: ; 0x0234FA24
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r0, _0234FAE4 ; =0x0235383C
 	mov r1, #9
@@ -1113,7 +1113,7 @@ _0234FADC:
 	.align 2, 0
 _0234FAE4: .word 0x0235383C
 _0234FAE8: .word 0x0238280C
-	arm_func_end ov29_0234FA24
+	arm_func_end OthersMenu
 
 	arm_func_start ov29_0234FAEC
 ov29_0234FAEC: ; 0x0234FAEC

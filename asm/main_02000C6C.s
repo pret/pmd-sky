@@ -1,5 +1,5 @@
 	.include "asm/macros.inc"
-	.include "main.inc"
+	.include "main_02000C6C.inc"
 
 	.text
 
@@ -3491,7 +3491,7 @@ _020036E0:
 	bl Rand16Bit
 	b _020036EC
 _020036E8:
-	bl KeyWaitInit__02006DA4
+	bl KeyWaitInit
 _020036EC:
 	mov r0, fp
 	bl sub_020029B8
@@ -3551,7 +3551,7 @@ sub_02003780: ; 0x02003780
 	ldr r0, _020037A0 ; =0x020AEF7C
 	mov r1, #1
 	strb r1, [r0]
-	bl sub_02065D1C
+	bl MainLoop
 	bl WaitForever
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -3584,16 +3584,16 @@ _020037D8:
 	ldrh r5, [r1]
 	bl EnableAllInterrupts
 	mov r0, r4
-	bl IntToFloat
+	bl __floatsisf
 	mov r4, r0
 	mov r0, r5
-	bl IntToFloat
+	bl __floatsisf
 	mov r1, r0
 	ldr r0, _02003820 ; =0x3B792FB2
-	bl MultiplyFloat
+	bl __mulsf3
 	mov r1, r0
 	mov r0, r4
-	bl AddFloat
+	bl __addsf3
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02003818: .word 0x020AEF7C
@@ -5381,8 +5381,8 @@ sub_02004F80: ; 0x02004F80
 _02004FC8: .word 0xEDB88320
 	arm_func_end sub_02004F80
 
-	arm_func_start sub_02004FCC
-sub_02004FCC: ; 0x02004FCC
+	arm_func_start Rgb8ToBgr5
+Rgb8ToBgr5: ; 0x02004FCC
 	ldrb r2, [r1, #1]
 	ldrb r3, [r1, #2]
 	ldrb ip, [r1]
@@ -5394,7 +5394,7 @@ sub_02004FCC: ; 0x02004FCC
 	orr r1, r1, r3, asr #3
 	strh r1, [r0]
 	bx lr
-	arm_func_end sub_02004FCC
+	arm_func_end Rgb8ToBgr5
 
 	arm_func_start sub_02004FF8
 sub_02004FF8: ; 0x02004FF8
@@ -5427,26 +5427,26 @@ EuclideanNorm__02005050: ; 0x02005050
 	stmdb sp!, {r4, r5, r6, lr}
 	ldmia r0, {r5, r6}
 	mov r0, r5
-	bl IntToFloat
+	bl __floatsisf
 	mov r4, r0
 	mov r0, r5
-	bl IntToFloat
+	bl __floatsisf
 	mov r1, r0
 	mov r0, r4
-	bl MultiplyFloat
+	bl __mulsf3
 	mov r5, r0
 	mov r0, r6
-	bl IntToFloat
+	bl __floatsisf
 	mov r4, r0
 	mov r0, r6
-	bl IntToFloat
+	bl __floatsisf
 	mov r1, r0
 	mov r0, r4
-	bl MultiplyFloat
+	bl __mulsf3
 	mov r1, r0
 	mov r0, r5
-	bl AddFloat
-	bl Sqrtf
+	bl __addsf3
+	bl sqrtf
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end EuclideanNorm__02005050
 
@@ -5455,26 +5455,26 @@ EuclideanNorm__020050B0: ; 0x020050B0
 	stmdb sp!, {r4, r5, r6, lr}
 	ldmia r0, {r5, r6}
 	mov r0, r5
-	bl IntToFloat
+	bl __floatsisf
 	mov r4, r0
 	mov r0, r5
-	bl IntToFloat
+	bl __floatsisf
 	mov r1, r0
 	mov r0, r4
-	bl MultiplyFloat
+	bl __mulsf3
 	mov r5, r0
 	mov r0, r6
-	bl IntToFloat
+	bl __floatsisf
 	mov r4, r0
 	mov r0, r6
-	bl IntToFloat
+	bl __floatsisf
 	mov r1, r0
 	mov r0, r4
-	bl MultiplyFloat
+	bl __mulsf3
 	mov r1, r0
 	mov r0, r5
-	bl AddFloat
-	bl Sqrtf
+	bl __addsf3
+	bl sqrtf
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end EuclideanNorm__020050B0
 
@@ -5511,14 +5511,14 @@ sub_0200514C: ; 0x0200514C
 	mov r8, r0
 	mla r0, r2, r5, r1
 	add r1, r5, r4
-	bl DivideInt
+	bl __divsi3
 	str r0, [r8]
 	ldr r0, [r6, #4]
 	ldr r2, [r7, #4]
 	mul r1, r0, r4
 	mla r0, r2, r5, r1
 	add r1, r5, r4
-	bl DivideInt
+	bl __divsi3
 	str r0, [r8, #4]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0200514C
@@ -5774,11 +5774,11 @@ sub_020054C0: ; 0x020054C0
 	mov r0, r4
 	str r2, [sp]
 	str r1, [sp, #4]
-	bl Abs
+	bl abs
 	ldr r5, [r5, #4]
 	str r0, [sp]
 	mov r0, r5
-	bl Abs
+	bl abs
 	str r0, [sp, #4]
 	cmp r4, #0
 	bge _02005550
@@ -5850,11 +5850,11 @@ sub_020055C8: ; 0x020055C8
 	mov r0, r4
 	str r2, [sp]
 	str r1, [sp, #4]
-	bl Abs
+	bl abs
 	ldr r5, [r5, #4]
 	str r0, [sp]
 	mov r0, r5
-	bl Abs
+	bl abs
 	str r0, [sp, #4]
 	cmp r4, #0
 	bge _02005658
@@ -5926,11 +5926,11 @@ sub_020056D0: ; 0x020056D0
 	mov r0, r4
 	str r2, [sp]
 	str r1, [sp, #4]
-	bl Abs
+	bl abs
 	ldr r5, [r5, #4]
 	str r0, [sp]
 	mov r0, r5
-	bl Abs
+	bl abs
 	str r0, [sp, #4]
 	cmp r4, #0
 	bge _02005748
@@ -7245,11 +7245,11 @@ _020067FC:
 	sub r1, r2, r1
 	str r0, [sp]
 	str r1, [sp, #4]
-	bl Abs
+	bl abs
 	cmp r0, #8
 	bge _02006874
 	ldr r0, [sp, #4]
-	bl Abs
+	bl abs
 	cmp r0, #8
 	ldrlt r0, _02006B44 ; =0x022A35DC
 	ldrlth r1, [r0, #0xe]
@@ -7288,11 +7288,11 @@ _020068B0:
 	str r0, [sp, #8]
 	str r3, [sp, #0xc]
 	str r2, [r1, #0x14]
-	bl Abs
+	bl abs
 	cmp r0, #8
 	bge _02006934
 	ldr r0, [sp, #0xc]
-	bl Abs
+	bl abs
 	cmp r0, #8
 	bge _02006934
 	ldr r0, _02006B44 ; =0x022A35DC
@@ -7350,11 +7350,11 @@ _02006988:
 	sub r1, r2, r1
 	str r0, [sp, #0x10]
 	str r1, [sp, #0x14]
-	bl Abs
+	bl abs
 	cmp r0, #8
 	bge _02006A00
 	ldr r0, [sp, #0x14]
-	bl Abs
+	bl abs
 	cmp r0, #8
 	ldrlt r0, _02006B44 ; =0x022A35DC
 	ldrlth r1, [r0, #0xe]
@@ -7381,11 +7381,11 @@ _02006A1C:
 	str r0, [sp, #0x18]
 	str r3, [sp, #0x1c]
 	str r2, [r1, #0x14]
-	bl Abs
+	bl abs
 	cmp r0, #8
 	bge _02006A74
 	ldr r0, [sp, #0x1c]
-	bl Abs
+	bl abs
 	cmp r0, #8
 	ldrlt r0, _02006B44 ; =0x022A35DC
 	ldrlth r1, [r0, #0xe]
@@ -7642,8 +7642,8 @@ _02006D9C: .word 0x022A3644
 _02006DA0: .word 0x022A3644
 	arm_func_end sub_02006D4C
 
-	arm_func_start KeyWaitInit__02006DA4
-KeyWaitInit__02006DA4: ; 0x02006DA4
+	arm_func_start KeyWaitInit
+KeyWaitInit: ; 0x02006DA4
 	stmdb sp!, {r3, lr}
 	mov r0, #0
 	bl sub_02006220
@@ -7653,7 +7653,7 @@ KeyWaitInit__02006DA4: ; 0x02006DA4
 	bl sub_020063D4
 	bl sub_02006B70
 	ldmia sp!, {r3, pc}
-	arm_func_end KeyWaitInit__02006DA4
+	arm_func_end KeyWaitInit
 
 	arm_func_start sub_02006DC8
 sub_02006DC8: ; 0x02006DC8
@@ -7838,7 +7838,7 @@ sub_02006FB8: ; 0x02006FB8
 	str r2, [sp, #0xc]
 	ldr r2, [r3, #0x18]
 	ldr r3, [r3, #0x14]
-	bl Sprintf
+	bl sprintf
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -7858,7 +7858,7 @@ sub_02007004: ; 0x02007004
 	ldr r0, _02007074 ; =0x020AF2B8
 	mov r1, r6
 	mov r2, r5
-	bl Strncpy
+	bl strncpy
 	ldr r0, _02007074 ; =0x020AF2B8
 	mov r1, #0
 	strb r1, [r0, r5]
@@ -7870,7 +7870,7 @@ _02007044:
 	ldr r0, _02007078 ; =0x020AF2C4
 	ldr r1, _0200707C ; =0x020927B8
 	mov r2, r6
-	bl Sprintf
+	bl sprintf
 _02007060:
 	ldr r0, _02007080 ; =0x020927BC
 	ldr r1, _02007074 ; =0x020AF2B8
@@ -7914,7 +7914,7 @@ sub_0200709C: ; 0x0200709C
 	subne r5, r0, r6
 	bne _020070D8
 	mov r0, r6
-	bl Strlen
+	bl strlen
 	mov r5, r0
 	add r4, r6, r5
 _020070D8:
@@ -7934,7 +7934,7 @@ _02007104:
 	mov r0, r8
 	mov r1, r6
 	mov r2, r5
-	bl Strncpy
+	bl strncpy
 	mov r1, #0
 	mov r0, r4
 	strb r1, [r8, r5]
@@ -7956,11 +7956,11 @@ sub_02007124: ; 0x02007124
 	ldr r1, _0200724C ; =0x020927E4
 	ldr r2, _02007250 ; =0x020AF2B8
 	mov r3, r4
-	bl Sprintf
+	bl sprintf
 	b _02007168
 _02007160:
 	mov r1, r4
-	bl Strcpy
+	bl strcpy
 _02007168:
 	add r0, sp, #0x80
 	mov r1, #0x3a
@@ -7978,7 +7978,7 @@ _02007168:
 	mov r1, r8
 	str r0, [sl]
 	add r0, sl, #0x6c
-	bl Strcpy
+	bl strcpy
 	mov sb, #0
 	strb sb, [sl, #0x5c]
 	add r4, sl, #0x1c
@@ -8001,7 +8001,7 @@ _020071C8:
 	bne _02007204
 	add r1, sp, #0
 	add r0, sl, #0x5c
-	bl Strcat
+	bl strcat
 	b _02007240
 _02007204:
 	cmp r0, #0x2e
@@ -8017,7 +8017,7 @@ _02007220:
 	add r0, r4, sb, lsl #4
 	mov r1, r7
 	add sb, sb, #1
-	bl Strcpy
+	bl strcpy
 _02007238:
 	add r8, r8, #1
 	b _020071C4
@@ -8080,7 +8080,7 @@ sub_020072CC: ; 0x020072CC
 	ble _0200732C
 	mov r0, r7
 	add r1, r8, #0x1c
-	bl Strcpy
+	bl strcpy
 	mov r6, #1
 	add r4, r8, #0x1c
 	ldr r5, _02007338 ; =0x020927EC
@@ -8088,10 +8088,10 @@ sub_020072CC: ; 0x020072CC
 _02007300:
 	mov r0, r7
 	mov r1, r5
-	bl Strcat
+	bl strcat
 	mov r0, r7
 	add r1, r4, r6, lsl #4
-	bl Strcat
+	bl strcat
 	add r6, r6, #1
 _0200731C:
 	ldr r0, [r8, #8]
@@ -8113,7 +8113,7 @@ sub_0200733C: ; 0x0200733C
 	mov r5, r0
 	bl sub_020072CC
 	mov r0, r4
-	bl Strlen
+	bl strlen
 	mov r1, r0
 	cmp r0, #0
 	movgt r1, #0x2f
@@ -8217,7 +8217,7 @@ sub_0200746C: ; 0x0200746C
 _0200747C:
 	ldr r1, [r5, #8]
 	mov r0, r6
-	bl Strcmp
+	bl strcmp
 	cmp r0, #0
 	moveq r0, r5
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -8263,7 +8263,7 @@ sub_020074DC: ; 0x020074DC
 _02007504:
 	ldr r1, [r6, #8]
 	mov r0, r4
-	bl Strcmp
+	bl strcmp
 	cmp r0, #0
 	moveq r0, r6
 	beq _02007534
@@ -9067,7 +9067,7 @@ _02007F64:
 	add r1, r4, #0x5c
 	sub r2, r3, r2
 	str r2, [r5, #0x34]
-	bl Strcpy
+	bl strcpy
 	mov r2, #0
 	str r2, [r5, #0x88]
 	ldr r1, [r5, #0x30]
@@ -9122,7 +9122,7 @@ _02008020:
 	add r1, r4, #0x5c
 	sub r2, r3, r2
 	str r2, [r5, #0x34]
-	bl Strcpy
+	bl strcpy
 	mov r2, #0
 	str r2, [r5, #0x88]
 	ldr r1, [r5, #0x30]
@@ -9861,7 +9861,7 @@ sub_02008980: ; 0x02008980
 	beq _020089AC
 	mov r1, r3
 	add r0, r4, #0x28
-	bl Strcpy
+	bl strcpy
 _020089AC:
 	mov r0, #0
 	strb r0, [r4, #9]
@@ -10070,8 +10070,8 @@ sub_02008C18: ; 0x02008C18
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02008C18
 
-	arm_func_start LoadFileFromRom__02008C3C
-LoadFileFromRom__02008C3C: ; 0x02008C3C
+	arm_func_start LoadFileFromRom
+LoadFileFromRom: ; 0x02008C3C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x28
 	mov lr, r0
@@ -10083,7 +10083,7 @@ LoadFileFromRom__02008C3C: ; 0x02008C3C
 	bl sub_02008D60
 	add sp, sp, #0x28
 	ldmia sp!, {r3, pc}
-	arm_func_end LoadFileFromRom__02008C3C
+	arm_func_end LoadFileFromRom
 
 	arm_func_start sub_02008C68
 sub_02008C68: ; 0x02008C68
@@ -11818,12 +11818,12 @@ _0200A28C:
 	arm_func_start sub_0200A29C
 sub_0200A29C: ; 0x0200A29C
 	ldr r0, [r0, #0x10]
-	ldr ip, _0200A2B0 ; =sub_02004FCC
+	ldr ip, _0200A2B0 ; =Rgb8ToBgr5
 	add r0, r0, r1, lsl #1
 	mov r1, r2
 	bx ip
 	.align 2, 0
-_0200A2B0: .word sub_02004FCC
+_0200A2B0: .word Rgb8ToBgr5
 	arm_func_end sub_0200A29C
 
 	arm_func_start sub_0200A2B4
@@ -12820,17 +12820,17 @@ _0200AF34:
 	mov r1, #0xff
 	mul r0, r2, r8
 	add r5, r5, #2
-	bl DivideInt
+	bl __divsi3
 	ldrb r2, [r4, #2]
 	str r0, [sp, #4]
 	mov r1, #0xff
 	mul r0, r2, r7
-	bl DivideInt
+	bl __divsi3
 	ldrb r2, [r4, #1]
 	str r0, [sp, #8]
 	mov r1, #0xff
 	mul r0, r2, r6
-	bl DivideInt
+	bl __divsi3
 	ldr r1, [sp, #4]
 	mov r0, r0, lsl #0x10
 	mov r1, r1, lsl #0x10
@@ -12879,17 +12879,17 @@ _0200B014:
 	mov r1, #0xff
 	mul r0, r2, r8
 	add r5, r5, #2
-	bl DivideInt
+	bl __divsi3
 	ldrb r2, [r4, #2]
 	str r0, [sp, #0xc]
 	mov r1, #0xff
 	mul r0, r2, r7
-	bl DivideInt
+	bl __divsi3
 	ldrb r2, [r4, #1]
 	str r0, [sp, #0x10]
 	mov r1, #0xff
 	mul r0, r2, r6
-	bl DivideInt
+	bl __divsi3
 	ldr r1, [sp, #0xc]
 	mov r0, r0, lsl #0x10
 	mov r1, r1, lsl #0x10
@@ -12966,17 +12966,17 @@ _0200B14C:
 	mov r1, #0xff
 	mul r0, r2, sb
 	add r6, r6, #2
-	bl DivideInt
+	bl __divsi3
 	ldrb r2, [r4, #2]
 	str r0, [sp, #4]
 	mov r1, #0xff
 	mul r0, r2, r8
-	bl DivideInt
+	bl __divsi3
 	ldrb r2, [r4, #1]
 	str r0, [sp, #8]
 	mov r1, #0xff
 	mul r0, r2, r7
-	bl DivideInt
+	bl __divsi3
 	ldr r1, [sp, #4]
 	mov r0, r0, lsl #0x10
 	mov r1, r1, lsl #0x10
@@ -13025,17 +13025,17 @@ _0200B22C:
 	mov r1, #0xff
 	mul r0, r2, sb
 	add r6, r6, #2
-	bl DivideInt
+	bl __divsi3
 	ldrb r2, [r4, #2]
 	str r0, [sp, #0xc]
 	mov r1, #0xff
 	mul r0, r2, r8
-	bl DivideInt
+	bl __divsi3
 	ldrb r2, [r4, #1]
 	str r0, [sp, #0x10]
 	mov r1, #0xff
 	mul r0, r2, r7
-	bl DivideInt
+	bl __divsi3
 	ldr r1, [sp, #0xc]
 	mov r0, r0, lsl #0x10
 	mov r1, r1, lsl #0x10
@@ -13681,7 +13681,7 @@ _0200BA38:
 	ldrsh r0, [r4, #0x12]
 	ldr r1, [r4, #0xc]
 	mul r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	ldrsh r1, [r4, #0x10]
 	sub r0, r1, r0
 	strh r0, [r4, #0x14]
@@ -13701,7 +13701,7 @@ _0200BA80:
 	ldrsh r0, [r4, #0x12]
 	ldr r1, [r4, #0xc]
 	mul r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	ldrsh r1, [r4, #0x10]
 	add r0, r1, r0
 	strh r0, [r4, #0x14]
@@ -13718,7 +13718,7 @@ _0200BAC8:
 	ldrsh r0, [r4, #0x12]
 	ldr r1, [r4, #0xc]
 	mul r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	ldrsh r1, [r4, #0x10]
 	sub r0, r1, r0
 _0200BAF8:
@@ -13735,7 +13735,7 @@ _0200BB04:
 	ldrsh r0, [r4, #0x12]
 	ldr r1, [r4, #0xc]
 	mul r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	ldrsh r1, [r4, #0x10]
 	add r0, r1, r0
 _0200BB34:
@@ -14210,16 +14210,16 @@ sub_0200C10C: ; 0x0200C10C
 	bx lr
 	arm_func_end sub_0200C10C
 
-	arm_func_start GetDebugFlag1
-GetDebugFlag1: ; 0x0200C110
+	arm_func_start GetDebugFlag
+GetDebugFlag: ; 0x0200C110
 	mov r0, #0
 	bx lr
-	arm_func_end GetDebugFlag1
+	arm_func_end GetDebugFlag
 
-	arm_func_start SetDebugFlag1
-SetDebugFlag1: ; 0x0200C118
+	arm_func_start SetDebugFlag
+SetDebugFlag: ; 0x0200C118
 	bx lr
-	arm_func_end SetDebugFlag1
+	arm_func_end SetDebugFlag
 
 	arm_func_start sub_0200C11C
 sub_0200C11C: ; 0x0200C11C
@@ -14238,11 +14238,11 @@ AppendProgPos: ; 0x0200C120
 	ldr r1, _0200C160 ; =0x02094B00
 	str r3, [sp]
 	ldr r3, [ip]
-	bl Sprintf
+	bl sprintf
 	ldmia sp!, {r3, pc}
 _0200C150:
 	ldr r1, _0200C164 ; =0x02094B1C
-	bl Sprintf
+	bl sprintf
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0200C15C: .word 0x02094AFC
@@ -14275,11 +14275,11 @@ _0200C1A0:
 	cmp r2, #0
 	beq _0200C1B4
 	mov r1, r2
-	bl Strcpy
+	bl strcpy
 	b _0200C1BC
 _0200C1B4:
 	ldr r1, _0200C1C4 ; =0x02094B34
-	bl Strcpy
+	bl strcpy
 _0200C1BC:
 	add sp, sp, #0x100
 	ldmia sp!, {r3, pc}
@@ -14297,7 +14297,7 @@ DebugPrint0__0200C1C8: ; 0x0200C1C8
 	ldr r1, [sp, #0x108]
 	add r0, sp, #0
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	add sp, sp, #0x100
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
@@ -14314,7 +14314,7 @@ DebugPrint0__0200C1FC: ; 0x0200C1FC
 	ldr r1, [sp, #0x108]
 	add r0, sp, #0
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	add sp, sp, #0x100
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
@@ -14326,16 +14326,16 @@ sub_0200C230: ; 0x0200C230
 	bx lr
 	arm_func_end sub_0200C230
 
-	arm_func_start GetDebugFlag2
-GetDebugFlag2: ; 0x0200C234
+	arm_func_start GetDebugLogFlag
+GetDebugLogFlag: ; 0x0200C234
 	mov r0, #0
 	bx lr
-	arm_func_end GetDebugFlag2
+	arm_func_end GetDebugLogFlag
 
-	arm_func_start SetDebugFlag2
-SetDebugFlag2: ; 0x0200C23C
+	arm_func_start SetDebugLogFlag
+SetDebugLogFlag: ; 0x0200C23C
 	bx lr
-	arm_func_end SetDebugFlag2
+	arm_func_end SetDebugLogFlag
 
 	arm_func_start DebugPrint
 DebugPrint: ; 0x0200C240
@@ -14379,14 +14379,14 @@ FatalError: ; 0x0200C25C
 	add r2, sp, #0x10c
 	bic r2, r2, #3
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldr r1, _0200C2D0 ; =0x02094B54
 	add r0, sp, #0
-	bl Strcat
+	bl strcat
 	b _0200C2AC
 _0200C2A4:
 	ldr r1, _0200C2D4 ; =0x02094B58
-	bl Strcpy
+	bl strcpy
 _0200C2AC:
 	ldr r0, _0200C2D8 ; =0x02094B60
 	add r1, sp, #0

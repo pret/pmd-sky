@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_02318E70
-ov29_02318E70: ; 0x02318E70
+	arm_func_start TryInflictSafeguardStatus
+TryInflictSafeguardStatus: ; 0x02318E70
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -48,10 +48,10 @@ _02318EF8:
 _02318F04: .word 0x022C4734
 _02318F08: .word 0x00000CEE
 _02318F0C: .word 0x00000CEF
-	arm_func_end ov29_02318E70
+	arm_func_end TryInflictSafeguardStatus
 
-	arm_func_start ov29_02318F10
-ov29_02318F10: ; 0x02318F10
+	arm_func_start TryInflictMistStatus
+TryInflictMistStatus: ; 0x02318F10
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -94,10 +94,10 @@ _02318F98:
 	.align 2, 0
 _02318FA4: .word 0x022C4738
 _02318FA8: .word 0x00000CF1
-	arm_func_end ov29_02318F10
+	arm_func_end TryInflictMistStatus
 
-	arm_func_start ov29_02318FAC
-ov29_02318FAC: ; 0x02318FAC
+	arm_func_start TryInflictWishStatus
+TryInflictWishStatus: ; 0x02318FAC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -141,10 +141,10 @@ _02319034:
 _02319040: .word 0x022C4794
 _02319044: .word 0x00000CDE
 _02319048: .word 0x00000CDF
-	arm_func_end ov29_02318FAC
+	arm_func_end TryInflictWishStatus
 
-	arm_func_start ov29_0231904C
-ov29_0231904C: ; 0x0231904C
+	arm_func_start TryInflictMagicCoatStatus
+TryInflictMagicCoatStatus: ; 0x0231904C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -188,10 +188,10 @@ _023190D4:
 _023190E0: .word 0x022C4740
 _023190E4: .word 0x00000CE7
 _023190E8: .word 0x00000CE8
-	arm_func_end ov29_0231904C
+	arm_func_end TryInflictMagicCoatStatus
 
-	arm_func_start ov29_023190EC
-ov29_023190EC: ; 0x023190EC
+	arm_func_start TryInflictLightScreenStatus
+TryInflictLightScreenStatus: ; 0x023190EC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -235,10 +235,10 @@ _02319174:
 _02319180: .word 0x022C4730
 _02319184: .word 0x00000CF4
 _02319188: .word 0x00000CF5
-	arm_func_end ov29_023190EC
+	arm_func_end TryInflictLightScreenStatus
 
-	arm_func_start ov29_0231918C
-ov29_0231918C: ; 0x0231918C
+	arm_func_start TryInflictReflectStatus
+TryInflictReflectStatus: ; 0x0231918C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -282,10 +282,10 @@ _02319214:
 _02319220: .word 0x022C472C
 _02319224: .word 0x00000CF6
 _02319228: .word 0x00000CF7
-	arm_func_end ov29_0231918C
+	arm_func_end TryInflictReflectStatus
 
-	arm_func_start ov29_0231922C
-ov29_0231922C: ; 0x0231922C
+	arm_func_start TryInflictProtectStatus
+TryInflictProtectStatus: ; 0x0231922C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -333,10 +333,10 @@ _023192C4:
 _023192D0: .word 0x022C47B8
 _023192D4: .word 0x00000D47
 _023192D8: .word 0x00000D48
-	arm_func_end ov29_0231922C
+	arm_func_end TryInflictProtectStatus
 
-	arm_func_start ov29_023192DC
-ov29_023192DC: ; 0x023192DC
+	arm_func_start TryInflictMirrorCoatStatus
+TryInflictMirrorCoatStatus: ; 0x023192DC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -379,10 +379,10 @@ _02319364:
 	.align 2, 0
 _02319370: .word 0x022C47CC
 _02319374: .word 0x00000D4F
-	arm_func_end ov29_023192DC
+	arm_func_end TryInflictMirrorCoatStatus
 
-	arm_func_start ov29_02319378
-ov29_02319378: ; 0x02319378
+	arm_func_start TryInflictEndureStatus
+TryInflictEndureStatus: ; 0x02319378
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -426,10 +426,10 @@ _02319400:
 _0231940C: .word 0x022C47F4
 _02319410: .word 0x00000D58
 _02319414: .word 0x00000D59
-	arm_func_end ov29_02319378
+	arm_func_end TryInflictEndureStatus
 
-	arm_func_start ov29_02319418
-ov29_02319418: ; 0x02319418
+	arm_func_start TryInflictMirrorMoveStatus
+TryInflictMirrorMoveStatus: ; 0x02319418
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -473,10 +473,10 @@ _023194A0:
 _023194AC: .word 0x022C4840
 _023194B0: .word 0x00000D5A
 _023194B4: .word 0x00000D5B
-	arm_func_end ov29_02319418
+	arm_func_end TryInflictMirrorMoveStatus
 
-	arm_func_start ov29_023194B8
-ov29_023194B8: ; 0x023194B8
+	arm_func_start TryInflictConversion2Status
+TryInflictConversion2Status: ; 0x023194B8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -487,7 +487,7 @@ ov29_023194B8: ; 0x023194B8
 	mov r0, r5
 	mov r1, #0x25
 	ldr r4, [r5, #0xb4]
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02319500
 	ldr r2, _02319574 ; =0x00000DC4
@@ -532,10 +532,10 @@ _02319574: .word 0x00000DC4
 _02319578: .word 0x022C4854
 _0231957C: .word 0x00000D5C
 _02319580: .word 0x00000D5D
-	arm_func_end ov29_023194B8
+	arm_func_end TryInflictConversion2Status
 
-	arm_func_start ov29_02319584
-ov29_02319584: ; 0x02319584
+	arm_func_start TryInflictVitalThrowStatus
+TryInflictVitalThrowStatus: ; 0x02319584
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -579,10 +579,10 @@ _0231960C:
 _02319618: .word 0x022C485C
 _0231961C: .word 0x00000D5E
 _02319620: .word 0x00000D5F
-	arm_func_end ov29_02319584
+	arm_func_end TryInflictVitalThrowStatus
 
-	arm_func_start ov29_02319624
-ov29_02319624: ; 0x02319624
+	arm_func_start TryResetStatChanges
+TryResetStatChanges: ; 0x02319624
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, r1
 	mov r7, r0
@@ -662,10 +662,10 @@ _02319738:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02319744: .word 0x00000D61
-	arm_func_end ov29_02319624
+	arm_func_end TryResetStatChanges
 
-	arm_func_start ov29_02319748
-ov29_02319748: ; 0x02319748
+	arm_func_start MirrorMoveIsActive
+MirrorMoveIsActive: ; 0x02319748
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EntityIsValid__02318E4C
@@ -692,7 +692,7 @@ _0231979C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023197A4: .word 0x022C4648
-	arm_func_end ov29_02319748
+	arm_func_end MirrorMoveIsActive
 
 	arm_func_start ExclusiveItemEffectIsActive__023197A8
 ExclusiveItemEffectIsActive__023197A8: ; 0x023197A8
@@ -707,8 +707,8 @@ ExclusiveItemEffectIsActive__023197A8: ; 0x023197A8
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__023197A8
 
-	arm_func_start ov29_023197CC
-ov29_023197CC: ; 0x023197CC
+	arm_func_start MistIsActive
+MistIsActive: ; 0x023197CC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EntityIsValid__02318E4C
@@ -728,7 +728,7 @@ ov29_023197CC: ; 0x023197CC
 _0231980C:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_023197CC
+	arm_func_end MistIsActive
 
 	arm_func_start Conversion2IsActive
 Conversion2IsActive: ; 0x02319814
@@ -910,7 +910,7 @@ _02319A64:
 	beq _02319AB8
 	mov r0, sl
 	mov r1, r8
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	beq _02319AB8
 	str sb, [sp]
@@ -1029,20 +1029,20 @@ _02319BF0:
 	bne _02319DE8
 	ldr r1, [sp, #0x18]
 	mov r0, sl
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	beq _02319DE8
 	ldr r0, [sp, #0x18]
 	ldrsh r6, [sl, #4]
 	ldrsh fp, [r0, #4]
 	sub r0, r6, fp
-	bl Abs
+	bl abs
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x18]
 	ldrsh r8, [sl, #6]
 	ldrsh r7, [r0, #6]
 	sub r0, r8, r7
-	bl Abs
+	bl abs
 	ldr r1, [sp, #0x10]
 	cmp r1, r0
 	movgt r2, r1

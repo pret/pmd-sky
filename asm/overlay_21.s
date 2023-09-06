@@ -116,14 +116,14 @@ _0238A274:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xc8
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238B08C ; =ov21_0238CF40
 	ldr r1, [r0]
 	add r0, r1, #0xc8
 	ldr r1, [r1, #0x28]
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B08C ; =ov21_0238CF40
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -163,7 +163,7 @@ _0238A378:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -191,7 +191,7 @@ _0238A3E0:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -237,7 +237,7 @@ _0238A478:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -281,7 +281,7 @@ _0238A520:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -308,7 +308,7 @@ _0238A594:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -336,7 +336,7 @@ _0238A5FC:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -366,7 +366,7 @@ _0238A668:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -396,7 +396,7 @@ _0238A6DC:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -429,7 +429,7 @@ _0238A750:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -459,7 +459,7 @@ _0238A7D0:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -497,7 +497,7 @@ _0238A854:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -529,7 +529,7 @@ _0238A8D4:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -655,7 +655,7 @@ _0238AAC0:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -810,7 +810,7 @@ _0238AD04:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -896,7 +896,7 @@ _0238AE54:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B08C ; =ov21_0238CF40
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -921,7 +921,7 @@ _0238AE94:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -1124,7 +1124,7 @@ _0238B188:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B08C ; =ov21_0238CF40
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -1240,7 +1240,7 @@ _0238B344:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -1341,7 +1341,7 @@ _0238B4CC:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -1369,7 +1369,7 @@ _0238B538:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -1410,7 +1410,7 @@ _0238B5D0:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -1459,7 +1459,7 @@ _0238B68C:
 	add r0, r0, #0xc8
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, r4
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
@@ -2634,7 +2634,7 @@ _0238C724:
 	bl ov21_0238A140
 	mvn r0, #0
 	mov r1, #0
-	bl ov11_022E8124
+	bl InitRandomNpcJobs
 	bl ov00_0230D92C
 	ldr r0, _0238C8D0 ; =ov21_0238CF40
 	mov r2, #0

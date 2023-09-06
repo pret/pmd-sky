@@ -672,12 +672,12 @@ _0238AA30:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x5c
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238AF9C ; =ov17_0238BE00
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x5c
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238AF9C ; =ov17_0238BE00
 	ldr r1, [r0]
 	ldrsb r0, [r1, #1]

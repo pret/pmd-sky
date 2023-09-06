@@ -68,8 +68,8 @@ _02305684:
 _02305690: .word 0x02353538
 	arm_func_end ov29_023055B0
 
-	arm_func_start ov29_02305694
-ov29_02305694: ; 0x02305694
+	arm_func_start CheckNonLeaderTile
+CheckNonLeaderTile: ; 0x02305694
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	ldr r8, [sb, #0xb4]
@@ -88,7 +88,7 @@ ov29_02305694: ; 0x02305694
 	beq _02305708
 	mov r0, sb
 	mov r1, #0x6f
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _023056F8
@@ -118,7 +118,7 @@ _02305724: ; jump table
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc} ; case 6
 _02305740:
 	mov r0, r4
-	bl ov29_022E1608
+	bl GetTrapInfo
 	ldrb r1, [r8, #6]
 	mov r6, #0
 	mov r5, r0
@@ -135,7 +135,7 @@ _02305740:
 	bne _02305790
 	mov r0, #1
 	strb r0, [r4, #0x20]
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 	mov r7, #1
 _02305790:
 	ldrb r0, [r5, #1]
@@ -169,13 +169,13 @@ _023057E0:
 	add r1, sb, #4
 	mov r2, #0
 	mov r3, #1
-	bl ov29_022EDFA0
+	bl TryTriggerTrap
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _02305808:
 	mov r0, sb
-	bl ov29_0230F164
+	bl TryNonLeaderItemPickUp
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ov29_02305694
+	arm_func_end CheckNonLeaderTile
 
 	arm_func_start ov29_02305814
 ov29_02305814: ; 0x02305814
@@ -210,7 +210,7 @@ ov29_02305814: ; 0x02305814
 	mov r3, #1
 	mov r1, r4
 	strb r3, [r2, #0x794]
-	bl ov29_02307F4C
+	bl TryTriggerMonsterHouse
 	mov r0, #0
 	bl ov29_022E3A58
 	add r0, r5, #4
@@ -226,8 +226,8 @@ _023058BC: .word 0x02353538
 _023058C0: .word 0x00000C82
 	arm_func_end ov29_02305814
 
-	arm_func_start ov29_023058C4
-ov29_023058C4: ; 0x023058C4
+	arm_func_start EndNegativeStatusCondition
+EndNegativeStatusCondition: ; 0x023058C4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, #0
 	mov sb, r1
@@ -243,12 +243,12 @@ ov29_023058C4: ; 0x023058C4
 	mov r0, sb
 	mov r1, r4
 	ldr r6, [sb, #0xb4]
-	bl ov29_02300634
+	bl MonsterHasNegativeStatus
 	cmp r0, #0
 	beq _02305AD8
 	mov r0, sb
 	mov r4, #1
-	bl ov29_023004B0
+	bl IsMonsterDrowsy
 	cmp r0, #0
 	beq _0230593C
 	mov r2, r5
@@ -257,7 +257,7 @@ ov29_023058C4: ; 0x023058C4
 	mov r1, sb
 	mov r3, r2
 	str fp, [sp]
-	bl ov29_02305FDC
+	bl EndSleepClassStatus
 _0230593C:
 	mov r0, sb
 	bl EntityIsValid__02305C04
@@ -265,18 +265,18 @@ _0230593C:
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, sb
-	bl ov29_023004E4
+	bl MonsterHasNonvolatileNonsleepStatus
 	cmp r0, #0
 	beq _0230596C
 	mov r0, sl
 	mov r1, sb
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 _0230596C:
 	ldrb r0, [sp, #0x28]
 	cmp r0, #0
 	mov r0, sb
 	beq _0230599C
-	bl ov29_02300500
+	bl MonsterHasImmobilizingStatus
 	cmp r0, #0
 	beq _023059C0
 	mov r0, sl
@@ -285,7 +285,7 @@ _0230596C:
 	bl EndFrozenClassStatus
 	b _023059C0
 _0230599C:
-	bl ov29_02300500
+	bl MonsterHasImmobilizingStatus
 	cmp r0, #0
 	ldrneb r0, [r6, #0xc4]
 	cmpne r0, #3
@@ -296,7 +296,7 @@ _0230599C:
 	bl EndFrozenClassStatus
 _023059C0:
 	mov r0, sb
-	bl ov29_02300520
+	bl MonsterHasAttackInterferingStatus
 	cmp r0, #0
 	beq _023059DC
 	mov r0, sl
@@ -304,55 +304,55 @@ _023059C0:
 	bl EndCringeClassStatus
 _023059DC:
 	mov r0, sb
-	bl ov29_0230053C
+	bl MonsterHasSkillInterferingStatus
 	cmp r0, #0
 	beq _02305A00
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0
 	mov r3, #1
-	bl ov29_02306728
+	bl EndCurseClassStatus
 _02305A00:
 	mov r0, sb
-	bl ov29_02300588
+	bl MonsterHasLeechSeedStatus
 	cmp r0, #0
 	beq _02305A1C
 	mov r0, sl
 	mov r1, sb
-	bl ov29_023068C4
+	bl EndLeechSeedClassStatus
 _02305A1C:
 	mov r0, sb
-	bl ov29_023005A4
+	bl MonsterHasWhifferStatus
 	cmp r0, #0
 	beq _02305A38
 	mov r0, sl
 	mov r1, sb
-	bl ov29_02306950
+	bl EndSureShotClassStatus
 _02305A38:
 	mov r0, sb
 	mov r1, #0
-	bl ov29_023005C0
+	bl IsMonsterVisuallyImpaired
 	cmp r0, #0
 	beq _02305A58
 	mov r0, sl
 	mov r1, sb
-	bl ov29_02306B28
+	bl EndBlinkerClassStatus
 _02305A58:
 	mov r0, sb
-	bl ov29_023005FC
+	bl IsMonsterMuzzled
 	cmp r0, #0
 	beq _02305A74
 	mov r0, sl
 	mov r1, sb
-	bl ov29_02306BF8
+	bl EndMuzzledStatus
 _02305A74:
 	mov r0, sb
-	bl ov29_02300618
+	bl MonsterHasMiracleEyeStatus
 	cmp r0, #0
 	beq _02305A90
 	mov r0, sl
 	mov r1, sb
-	bl ov29_02306C64
+	bl EndMiracleEyeStatus
 _02305A90:
 	ldrb r0, [r6, #0x106]
 	cmp r0, #0
@@ -457,4 +457,4 @@ _02305BF4: .word 0x00000C84
 _02305BF8: .word 0x02353318
 _02305BFC: .word 0x00000C85
 _02305C00: .word 0x00000C86
-	arm_func_end ov29_023058C4
+	arm_func_end EndNegativeStatusCondition

@@ -1,6 +1,6 @@
 #pragma once
-.public Abs
-.public DivideInt
+.public abs
+.public __divsi3
 .public EntityIsValid__022E95F4
 .public GetLeader
 .public GetTile
@@ -12,7 +12,7 @@
 .public ov29_022DE134
 .public ov29_022DE638
 .public ov29_022E1854
-.public ov29_022E2EC4
+.public UpdateCamera
 .public ov29_022E335C
 .public ov29_022E886C
 .public ov29_022E8C10
@@ -20,14 +20,14 @@
 .public ov29_02300818
 .public ov29_0230175C
 .public ov29_0230473C
-.public ov29_02335A10
+.public DisplayUi
 .public ov29_02335F40
 .public ov29_02338AC4
 .public ov29_02339A24
-.public ov29_02339CE8
+.public UpdateMinimap
 .public ov29_02339FF4
 .public ov29_0233A248
-.public ov29_0233A290
+.public InitWeirdMinimapMatrix
 .public ov29_0234B1A4
 .public ov29_0234B4F4
 .public ov29_0234B854

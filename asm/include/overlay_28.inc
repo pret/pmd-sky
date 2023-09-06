@@ -1,6 +1,6 @@
 #pragma once
 .public sub_020276C0
-.public Strcpy
+.public strcpy
 .public sub_02028EE8
 .public sub_020348E4
 .public sub_02026214

@@ -26,7 +26,7 @@ _0230F04C:
 	beq _0230F128
 	mov r0, sl
 	mov r1, r7
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	beq _0230F128
 	mov r0, sl
@@ -39,12 +39,12 @@ _0230F04C:
 	ldrsh r1, [r7, #6]
 	ldrsh r0, [sl, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	ldrsh r2, [r7, #4]
 	ldrsh r1, [sl, #4]
 	mov r5, r0
 	sub r0, r2, r1
-	bl Abs
+	bl abs
 	cmp r0, r5
 	movle r0, r5
 	cmp r0, #0xa
@@ -90,22 +90,22 @@ _0230F148: .word ov29_022F52BC
 
 	arm_func_start ov29_0230F14C
 ov29_0230F14C: ; 0x0230F14C
-	ldr ip, _0230F154 ; =ov29_022F54BC
+	ldr ip, _0230F154 ; =UseThrowableItem
 	bx ip
 	.align 2, 0
-_0230F154: .word ov29_022F54BC
+_0230F154: .word UseThrowableItem
 	arm_func_end ov29_0230F14C
 
 	arm_func_start ov29_0230F158
 ov29_0230F158: ; 0x0230F158
-	ldr ip, _0230F160 ; =ov29_0230F164
+	ldr ip, _0230F160 ; =TryNonLeaderItemPickUp
 	bx ip
 	.align 2, 0
-_0230F160: .word ov29_0230F164
+_0230F160: .word TryNonLeaderItemPickUp
 	arm_func_end ov29_0230F158
 
-	arm_func_start ov29_0230F164
-ov29_0230F164: ; 0x0230F164
+	arm_func_start TryNonLeaderItemPickUp
+TryNonLeaderItemPickUp: ; 0x0230F164
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x198
 	mov r8, r0
@@ -138,7 +138,7 @@ ov29_0230F164: ; 0x0230F164
 	ldr r6, [r8, #0xb4]
 	mov r0, r4
 	mov r7, #1
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r1, [r6, #6]
 	mov r4, r0
 	cmp r1, #0
@@ -210,7 +210,7 @@ _0230F2B0:
 	bl ov29_02344B44
 	add r0, r8, #4
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldr r1, _0230F638 ; =0x00000C5F
 	mov r0, r8
 	bl LogMessageByIdWithPopup
@@ -315,7 +315,7 @@ _0230F408:
 	bl ov29_02344B44
 	add r0, r8, #4
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldr r0, _0230F644 ; =0x00001304
 	bl ov29_022EACCC
 	add r0, sp, #0xcc
@@ -401,7 +401,7 @@ _0230F564:
 	bl ov29_02344B44
 	add r0, r8, #4
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	mov r0, r8
 	mov r1, #0xc60
 	bl LogMessageByIdWithPopup
@@ -427,7 +427,7 @@ _0230F5F8:
 	bl ov29_02344B44
 	add r0, r8, #4
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldr r1, _0230F648 ; =0x00000C61
 	mov r0, r8
 	bl LogMessageByIdWithPopup
@@ -448,7 +448,7 @@ _0230F644: .word 0x00001304
 _0230F648: .word 0x00000C61
 _0230F64C: .word 0x00000C62
 _0230F650: .word 0x00000C63
-	arm_func_end ov29_0230F164
+	arm_func_end TryNonLeaderItemPickUp
 
 	arm_func_start ov29_0230F654
 ov29_0230F654: ; 0x0230F654
@@ -490,7 +490,7 @@ AuraBowIsActive: ; 0x0230F6C8
 	mov r5, r0
 	ldr r4, [r5, #0xb4]
 	mov r1, #0x6f
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -554,8 +554,8 @@ ExclusiveItemDefenseBoost: ; 0x0230F788
 	bx lr
 	arm_func_end ExclusiveItemDefenseBoost
 
-	arm_func_start ov29_0230F798
-ov29_0230F798: ; 0x0230F798
+	arm_func_start TeamMemberHasItemActive
+TeamMemberHasItemActive: ; 0x0230F798
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, #0
 	ldr r4, _0230F80C ; =0x02353538
@@ -589,7 +589,7 @@ _0230F7F0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0230F80C: .word 0x02353538
-	arm_func_end ov29_0230F798
+	arm_func_end TeamMemberHasItemActive
 
 	arm_func_start ItemIsActive__0230F810
 ItemIsActive__0230F810: ; 0x0230F810
@@ -597,7 +597,7 @@ ItemIsActive__0230F810: ; 0x0230F810
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -607,8 +607,8 @@ ItemIsActive__0230F810: ; 0x0230F810
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ItemIsActive__0230F810
 
-	arm_func_start ov29_0230F840
-ov29_0230F840: ; 0x0230F840
+	arm_func_start TeamMemberHasExclusiveItemEffectActive
+TeamMemberHasExclusiveItemEffectActive: ; 0x0230F840
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	mov r6, #0
@@ -640,7 +640,7 @@ _0230F898:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0230F8A8: .word 0x02353538
-	arm_func_end ov29_0230F840
+	arm_func_end TeamMemberHasExclusiveItemEffectActive
 
 	arm_func_start ExclusiveItemEffectIsActive__0230F8AC
 ExclusiveItemEffectIsActive__0230F8AC: ; 0x0230F8AC
@@ -737,8 +737,8 @@ ov29_0230F9A4: ; 0x0230F9A4
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_0230F9A4
 
-	arm_func_start ov29_0230F9D8
-ov29_0230F9D8: ; 0x0230F9D8
+	arm_func_start TrySpawnEnemyItemDrop
+TrySpawnEnemyItemDrop: ; 0x0230F9D8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	ldr r2, _0230FB28 ; =0x02353538
@@ -774,19 +774,19 @@ _0230FA54:
 	ldrsh r1, [r4, #2]
 	add r0, sp, #0
 	mov r2, r7
-	bl ov29_02346060
+	bl TryGenerateUnownStoneDrop
 	cmp r0, #0
 	beq _0230FA84
 	add r2, sp, #0
 	mov r0, r5
 	add r1, r5, #4
 	mov r3, #1
-	bl ov29_02345A3C
+	bl SpawnDroppedItemWrapper
 	b _0230FB20
 _0230FA84:
 	mov r0, r6
 	mov r1, #0x75
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	mov r2, r0
 	add r0, sp, #0
 	mov r1, r5
@@ -798,7 +798,7 @@ _0230FA84:
 	mov r0, r5
 	add r1, r5, #4
 	mov r3, #1
-	bl ov29_02345A3C
+	bl SpawnDroppedItemWrapper
 	b _0230FB20
 _0230FAC4:
 	mov r0, r6
@@ -818,19 +818,19 @@ _0230FAC4:
 	add r0, sp, #0
 	mov r1, #0xb7
 	mov r2, #2
-	bl ov29_02344BD0
+	bl GenerateStandardItem
 	add r2, sp, #0
 	mov r0, r5
 	add r1, r5, #4
 	mov r3, #1
-	bl ov29_02345A3C
+	bl SpawnDroppedItemWrapper
 _0230FB20:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0230FB28: .word 0x02353538
 _0230FB2C: .word 0x022C4650
-	arm_func_end ov29_0230F9D8
+	arm_func_end TrySpawnEnemyItemDrop
 
 	arm_func_start ov29_0230FB30
 ov29_0230FB30: ; 0x0230FB30
@@ -866,7 +866,7 @@ TickNoSlipCap: ; 0x0230FB90
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _0230FBB8
@@ -1011,7 +1011,7 @@ _0230FD0C:
 	mov r0, r5
 	mov r1, #0x59
 	add r7, r7, r2
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -1198,7 +1198,7 @@ _0230FFE8:
 	mov r1, #1
 	mov r2, #0xe
 	mov r3, #0x250
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	mov r0, #1
 	strb r0, [r4, #0x150]
 	add r0, r4, #0x100
@@ -1260,12 +1260,12 @@ _0231013C:
 	mov r0, r5
 	bne _023101FC
 	mov r1, #0x77
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _02310360
 	mov r0, r5
 	mov r1, #0x4d
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _02310360
 	mov r0, r5
@@ -1279,7 +1279,7 @@ _0231013C:
 	mov r1, r5
 	mov r2, #1
 	str r6, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	bne _02310360
 	ldr r0, _02310A9C ; =0x022C46EC
@@ -1287,7 +1287,7 @@ _0231013C:
 	ldrsh r1, [r0]
 	mov r0, r5
 	mov r2, #0x12
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	b _02310360
 _023101FC:
 	bl GetApparentWeather
@@ -1295,7 +1295,7 @@ _023101FC:
 	mov r0, r5
 	bne _02310298
 	mov r1, #0x1d
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _02310360
 	mov r0, r5
@@ -1319,7 +1319,7 @@ _023101FC:
 	mov r1, r5
 	mov r2, #1
 	str r6, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	bne _02310360
 	ldr r0, _02310A9C ; =0x022C46EC
@@ -1327,7 +1327,7 @@ _023101FC:
 	ldrsh r1, [r0]
 	mov r0, r5
 	mov r2, #0x12
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	b _02310360
 _02310298:
 	bl GetApparentWeather
@@ -1335,7 +1335,7 @@ _02310298:
 	bne _02310360
 	mov r0, r5
 	mov r1, #0x5a
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02310304
 	ldr r3, _02310A98 ; =0x00000DBD
@@ -1344,7 +1344,7 @@ _02310298:
 	mov r1, r5
 	mov r2, #1
 	str r6, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	bne _02310360
 	mov r0, #2
@@ -1355,12 +1355,12 @@ _02310298:
 	ldrsh r1, [r0]
 	mov r0, r5
 	rsb r3, r2, #0x278
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	b _02310360
 _02310304:
 	mov r0, r5
 	mov r1, #0x55
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02310360
 	ldr r3, _02310A98 ; =0x00000DBD
@@ -1369,7 +1369,7 @@ _02310304:
 	mov r1, r5
 	mov r2, #1
 	str r6, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	bne _02310360
 	mov r0, #2
@@ -1380,7 +1380,7 @@ _02310304:
 	ldrsh r1, [r0]
 	mov r0, r5
 	mov r2, #0x1a
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 _02310360:
 	mov r0, r5
 	bl EntityIsValid__02311010
@@ -1395,7 +1395,7 @@ _0231037C:
 	mov r6, r0
 	mov r0, r5
 	mov r1, #0x21
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023103F8
 	ldr r0, _02310AA4 ; =0x022C46A0
@@ -1404,7 +1404,7 @@ _0231037C:
 	bge _023103F8
 	mov r0, r5
 	mov r1, #0
-	bl ov29_02300634
+	bl MonsterHasNegativeStatus
 	cmp r0, #0
 	beq _023103F8
 	mov r0, #0
@@ -1420,11 +1420,11 @@ _0231037C:
 	mov r1, r5
 	mov r2, #1
 	mov r3, #0
-	bl ov29_02305C28
+	bl EndNegativeStatusConditionWrapper
 _023103F8:
 	mov r0, r5
 	mov r1, #0x51
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02310474
 	mov r0, r5
@@ -1433,7 +1433,7 @@ _023103F8:
 	bne _02310474
 	mov r0, r5
 	mov r1, #0
-	bl ov29_02300634
+	bl MonsterHasNegativeStatus
 	cmp r0, #0
 	ldrneb r0, [r4, #0xc4]
 	cmpne r0, #3
@@ -1452,11 +1452,11 @@ _023103F8:
 	mov r1, r5
 	mov r2, #1
 	str r3, [sp]
-	bl ov29_023058C4
+	bl EndNegativeStatusCondition
 _02310474:
 	mov r0, r5
 	mov r1, #0xb
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023104C0
 	ldrb r1, [r4, #0x11f]
@@ -1519,7 +1519,7 @@ _023104F8:
 	ldrsh r1, [r0]
 	mov r0, r5
 	rsb r3, r2, #0x248
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 _02310574:
 	mov r0, r5
 	bl EntityIsValid__02311010
@@ -1533,14 +1533,14 @@ _02310590:
 	cmp r0, #0
 	beq _023105DC
 	mov r0, r5
-	bl HasConditionalGroundImmunity
+	bl IsFloating
 	cmp r0, #0
 	beq _023105C0
 	mov r0, r5
 	mov r1, r5
-	bl ov29_02306CD0
+	bl EndMagnetRiseStatus
 	mov r0, r5
-	bl ov29_02321104
+	bl EnsureCanStandCurrentTile
 _023105C0:
 	mov r0, r5
 	bl EntityIsValid__02311010
@@ -1552,11 +1552,11 @@ _023105C0:
 _023105DC:
 	mov r0, r5
 	mov r1, #0x69
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02310614
 	mov r0, r5
-	bl ov29_0231B1B8
+	bl TryActivateBadDreams
 	mov r0, r5
 	bl EntityIsValid__02311010
 	cmp r0, #0
@@ -1601,7 +1601,7 @@ _0231067C:
 	mov r0, r5
 	mov r1, r5
 	mov r3, r2
-	bl ov29_02305C28
+	bl EndNegativeStatusConditionWrapper
 _023106A4:
 	mov r0, r5
 	mov r1, #0x5c
@@ -1631,7 +1631,7 @@ _023106C8:
 	bl ov29_022E543C
 	mov r0, r8
 	mov r1, r8
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 	mov sl, r7
 _02310718:
 	add r0, sb, #1
@@ -1679,7 +1679,7 @@ _02310754:
 	bl ov29_02307BDC
 	mov r0, r5
 	mov r1, #0x72
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023107F8
 	ldr r0, _02310AC4 ; =0x022C44D8
@@ -1697,7 +1697,7 @@ _023107F8:
 	ldrsh r1, [r0]
 	mov r0, r5
 	rsb r3, r2, #0x24c
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 _02310810:
 	mov r0, r5
 	bl EntityIsValid__02311010
@@ -1744,7 +1744,7 @@ _02310830:
 	bl ov29_02307BDC
 	mov r0, r5
 	mov r1, #0x72
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023108F4
 	ldr r0, _02310ACC ; =0x022C4C9C
@@ -1764,7 +1764,7 @@ _023108F4:
 	mov r2, #3
 	mov r0, r5
 	rsb r3, r2, #0x24c
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 _02310910:
 	mov r0, r5
 	bl EntityIsValid__02311010
@@ -1807,7 +1807,7 @@ _0231092C:
 	ldrsh r1, [r1]
 	mov r2, #2
 	mov r3, #0x248
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 _023109B4:
 	mov r0, r5
 	bl EntityIsValid__02311010
@@ -1847,7 +1847,7 @@ _023109D4:
 	ldrsh r1, [r0]
 	mov r0, r5
 	mov r2, #5
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 _02310A4C:
 	mov r0, r5
 	bl EntityIsValid__02311010
@@ -1967,7 +1967,7 @@ ov29_02310BDC: ; 0x02310BDC
 	mov r0, r5
 	mov r1, r6
 	add r3, r2, #0x244
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 _02310C0C:
 	mov r0, r5
 	bl EntityIsValid__02311010
@@ -2028,14 +2028,14 @@ _02310CD0:
 	beq _02310CF0
 	mov r0, r7
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r8, #0
 	bne _02310D00
 _02310CF0:
 	mov r0, r5
 	mov r1, #0x3a
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	mov r8, r0
 _02310D00:
 	mov r0, r5
@@ -2063,7 +2063,7 @@ _02310D00:
 	mov r1, r6
 	mov r2, #9
 	mov r3, #0x24c
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	cmp r8, #0
 	beq _02310D94
 	mov r0, r7
@@ -2073,12 +2073,12 @@ _02310D00:
 	mov r0, r7
 	mov r1, r6
 	add r3, r2, #0x22c
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	b _02310DC4
 _02310D94:
 	mov r0, r5
 	mov r1, #0x73
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _02310DC4
 	mov r8, #1
@@ -2137,7 +2137,7 @@ _02310E6C:
 	ldr r1, _02311004 ; =0x0000270F
 	mov r0, r5
 	rsb r3, r2, #0x258
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 _02310E80:
 	mov r0, r5
 	bl EntityIsValid__02311010

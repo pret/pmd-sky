@@ -90,7 +90,7 @@ _0238A274:
 	cmp r0, #0
 	beq _0238A2B4
 	ldrsh r0, [sp, #0xa]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	ldreq r1, [r7]
 	sub r5, r5, #1
@@ -128,7 +128,7 @@ _0238A2FC:
 	cmp r0, #0
 	beq _0238A344
 	ldrsh r0, [sp, #4]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	beq _0238A338
 	mov r0, r6, lsl #0x10
@@ -694,7 +694,7 @@ _0238AA78:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a4
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238B920 ; =0x0238CE84
 	ldr r2, _0238B924 ; =0x000004BE
 	ldr r3, [r0]
@@ -1031,7 +1031,7 @@ _0238AF94:
 	add r0, r1, #0x88
 	str r0, [sp, #0x104]
 	ldrsh r0, [r1, #0x14]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	ldrne r0, _0238B920 ; =0x0238CE84
 	movne r1, #0
@@ -2031,7 +2031,7 @@ _0238BE4C:
 	cmp r1, #0xf
 	bne _0238BEB0
 	ldrsh r0, [r2, #0x14]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	bne _0238BE90
 	ldr r0, _0238C8F8 ; =0x0238CE84

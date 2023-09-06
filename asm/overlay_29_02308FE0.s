@@ -21,7 +21,7 @@ ApplyDamage: ; 0x02308FE0
 	bne _0230902C
 	ldr r0, [r7, #0xb4]
 	ldrb r0, [r0, #0xbc]
-	bl ov29_022EFB04
+	bl IsSecretBazaarNpcBehavior
 	cmp r0, #0
 	beq _0230903C
 _0230902C:
@@ -44,7 +44,7 @@ _0230905C:
 	bl ov29_02307BDC
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0230D440
+	bl UpdateShopkeeperModeAfterAttack
 	ldr r0, [r8]
 	cmp r0, #1
 	ldreq r0, [r8, #0xb4]
@@ -79,11 +79,11 @@ _0230905C:
 	mov r1, r7
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r8
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _02309124
 	mov r0, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _02309124
 	mov r0, r8
@@ -99,7 +99,7 @@ _02309134:
 	bne _023091A4
 	mov r0, r7
 	mov r1, #0x73
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldrne r0, [r6, #4]
 	cmpne r0, #4
@@ -114,7 +114,7 @@ _02309134:
 	mov r0, r7
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _02309194
 	mov r0, r7
@@ -268,7 +268,7 @@ _02309398:
 	cmp r0, #5
 	bne _023093D8
 	mov r0, r7
-	bl ov29_0231B060
+	bl ActivateMotorDrive
 	mov r0, #1
 	strb r0, [r6, #0x10]
 	mov r0, #0
@@ -287,7 +287,7 @@ _023093E0:
 	mov r2, #0
 	mov r1, r7
 	mov r3, r2
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	beq _02309448
 	ldr r0, [sl, #4]
@@ -321,11 +321,11 @@ _0230945C:
 	cmp r0, #1
 	bne _023094AC
 	mov r0, r8
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _023094C8
 	mov r0, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _023094C8
 	mov r0, r8
@@ -334,7 +334,7 @@ _0230945C:
 	b _023094C8
 _023094AC:
 	mov r0, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _023094C8
 	mov r0, r8
@@ -363,7 +363,7 @@ _023094D8:
 	mov r1, r7
 	mov r2, #1
 	mov r3, #0
-	bl ov29_02317E88
+	bl RestoreRandomMovePP
 _02309520:
 	ldrb r0, [r4, #0x15c]
 	cmp r0, #0
@@ -414,11 +414,11 @@ _023095A0:
 	cmp r1, #0
 	bne _02309650
 	mov r0, r8
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _02309618
 	mov r0, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _02309618
 	ldrb r0, [r4, #0x15c]
@@ -458,7 +458,7 @@ _02309650:
 	cmp r0, #0
 	beq _02309718
 	mov r0, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _02309718
 	mov r0, r7
@@ -473,7 +473,7 @@ _02309650:
 	mov fp, r0
 	mov r0, r7
 	mov r3, #3
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	mov r0, r0, lsl #0x10
 	mov sl, r0, asr #0x10
 	mvn r1, #0
@@ -500,7 +500,7 @@ _023096D4:
 	mov r0, r7
 	mov r3, #3
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	ldr r1, _02309FC8 ; =0x023535D4
 	strh r0, [r1]
 _02309718:
@@ -532,7 +532,7 @@ _02309740:
 	cmp r1, r0
 	strgt r0, [r4, #0xb8]
 	mov r0, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _023097E4
 	ldr r0, [r6, #4]
@@ -579,7 +579,7 @@ _02309820:
 	cmp fp, #0
 	bne _0230991C
 	mov r0, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _0230991C
 	ldrsh r1, [r8, #4]
@@ -605,7 +605,7 @@ _02309820:
 	bne _023098A0
 	mov r0, r7
 	mov r1, r8
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	movne sl, #1
 _023098A0:
@@ -779,7 +779,7 @@ _02309B04:
 	beq _02309B18
 	mov r0, r7
 	bl ov29_0230D7D4
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 _02309B18:
 	mov r0, #0
 	b _0230A918
@@ -806,7 +806,7 @@ _02309B5C:
 	mov r0, r8
 	mov r1, r7
 	mov r2, #0
-	bl ov29_02306A00
+	bl EndInvisibleClassStatus
 _02309B78:
 	cmp fp, #0
 	beq _02309BA4
@@ -817,7 +817,7 @@ _02309B78:
 	mov r0, r7
 	strb r1, [r7, #0x22]
 	bl ov29_0230D7D4
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 	b _02309BC0
 _02309BA4:
 	cmp sb, #0
@@ -1032,7 +1032,7 @@ _02309DE4:
 	mov r1, r7
 	mov r2, #3
 	mov r3, #1
-	bl ov29_02306728
+	bl EndCurseClassStatus
 	b _02309EDC
 _02309EC0:
 	cmp r0, #2
@@ -1041,13 +1041,13 @@ _02309EC0:
 	mov r1, r7
 	mov r2, #2
 	mov r3, #1
-	bl ov29_02306728
+	bl EndCurseClassStatus
 _02309EDC:
 	mov r0, r7
 	bl ov29_023159D4
 	mov r0, r4
 	mov r1, #0
-	bl ov29_022FDDC0
+	bl SubInitMonster
 	bl ov10_022BDC68
 	mov r0, r7
 	bl RestorePpAllMovesSetFlags
@@ -1139,19 +1139,19 @@ _0230A024:
 	beq _0230A08C
 	mov r0, r7
 	mov r1, sl
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	beq _0230A08C
 	ldrsh r1, [sl, #4]
 	ldrsh r0, [r7, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	bgt _0230A08C
 	ldrsh r1, [sl, #6]
 	ldrsh r0, [r7, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	ble _0230A098
 _0230A08C:
@@ -1180,10 +1180,10 @@ _0230A098:
 	ldrsh r2, [sp, #0x1a]
 	mov r0, r7
 	mov r3, #1
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	mov r0, r7
 	mov r1, #0
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	mov r0, #0
 	strb r0, [r7, #0x22]
 	ldrsh r2, [r4, #0x12]
@@ -1220,7 +1220,7 @@ _0230A098:
 	mov r1, r7
 	mov r2, #3
 	mov r3, #1
-	bl ov29_02306728
+	bl EndCurseClassStatus
 	b _0230A1AC
 _0230A190:
 	cmp r0, #2
@@ -1229,13 +1229,13 @@ _0230A190:
 	mov r1, r7
 	mov r2, #2
 	mov r3, #1
-	bl ov29_02306728
+	bl EndCurseClassStatus
 _0230A1AC:
 	mov r0, r7
 	bl ov29_023159D4
 	mov r0, r4
 	mov r1, #0
-	bl ov29_022FDDC0
+	bl SubInitMonster
 	bl ov10_022BDC68
 	mov r0, r7
 	bl RestorePpAllMovesSetFlags
@@ -1277,7 +1277,7 @@ _0230A224:
 	beq _0230A29C
 	mov r0, r7
 	mov r1, #0x6f
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _0230A29C
 	ldrb r0, [r4, #0x62]
@@ -1374,7 +1374,7 @@ _0230A330:
 	mov r1, r7
 	mov r2, #3
 	mov r3, #1
-	bl ov29_02306728
+	bl EndCurseClassStatus
 	b _0230A3F4
 _0230A3D8:
 	cmp r0, #2
@@ -1383,13 +1383,13 @@ _0230A3D8:
 	mov r1, r7
 	mov r2, #2
 	mov r3, #1
-	bl ov29_02306728
+	bl EndCurseClassStatus
 _0230A3F4:
 	mov r0, r7
 	bl ov29_023159D4
 	mov r0, r4
 	mov r1, #0
-	bl ov29_022FDDC0
+	bl SubInitMonster
 	bl ov10_022BDC68
 	mov r0, r7
 	bl RestorePpAllMovesSetFlags
@@ -1428,7 +1428,7 @@ _0230A45C:
 	mov r0, r7
 	mov r1, r7
 	mov r3, #0
-	bl ov29_02306728
+	bl EndCurseClassStatus
 _0230A4A0:
 	mov r0, #0
 	mov r1, #0x69
@@ -1504,8 +1504,8 @@ _0230A4A0:
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd6]
-	bl ov29_022EAD00
-	bl ov29_022EAE14
+	bl MusicTableIdxToMusicId
+	bl ChangeDungeonMusic
 	mov r0, r6
 	bl ov29_022EAF34
 	mov r0, r7
@@ -1542,7 +1542,7 @@ _0230A648:
 	add r1, r7, #4
 	add r2, r4, #0x62
 	mov r3, #1
-	bl ov29_02345A3C
+	bl SpawnDroppedItemWrapper
 	cmp r0, #0
 	beq _0230A684
 	ldrb r0, [r4, #0x62]
@@ -1561,7 +1561,7 @@ _0230A684:
 _0230A690:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0230F9D8
+	bl TrySpawnEnemyItemDrop
 _0230A69C:
 	ldrb r0, [r4, #0x100]
 	mov r6, #0
@@ -1676,13 +1676,13 @@ _0230A824:
 	bl ov29_022F9058
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0230DBD0
+	bl RecruitCheck
 	cmp r0, #0
 	beq _0230A8A8
 	add r2, sp, #0x1c
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0230E064
+	bl TryRecruit
 	cmp r0, #0
 	bne _0230A898
 	mov r0, r7
@@ -1692,7 +1692,7 @@ _0230A824:
 	mov r0, r8
 	mov r1, r7
 	mov r2, r5
-	bl ov29_0230AA0C
+	bl AftermathCheck
 	mov r0, r7
 	mov r2, r8
 	mov r1, #0x234
@@ -1707,7 +1707,7 @@ _0230A8A8:
 	mov r0, r8
 	mov r1, r7
 	mov r2, r5
-	bl ov29_0230AA0C
+	bl AftermathCheck
 	mov r0, r7
 	mov r1, r5
 	mov r2, r8
@@ -1717,7 +1717,7 @@ _0230A8CC:
 	mov r0, r8
 	mov r1, r7
 	mov r2, r5
-	bl ov29_0230AA0C
+	bl AftermathCheck
 	mov r0, r8
 	bl ov29_022ECD84
 	mov r0, r7
@@ -1764,14 +1764,14 @@ DefenderAbilityIsActive__0230A940: ; 0x0230A940
 	beq _0230A984
 	mov r0, r7
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 _0230A984:
 	mov r0, r6
 	mov r1, r5
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end DefenderAbilityIsActive__0230A940
 
@@ -1807,7 +1807,7 @@ ItemIsActive__0230A9DC: ; 0x0230A9DC
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -1817,8 +1817,8 @@ ItemIsActive__0230A9DC: ; 0x0230A9DC
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ItemIsActive__0230A9DC
 
-	arm_func_start ov29_0230AA0C
-ov29_0230AA0C: ; 0x0230AA0C
+	arm_func_start AftermathCheck
+AftermathCheck: ; 0x0230AA0C
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r4, r2
@@ -1843,7 +1843,7 @@ ov29_0230AA0C: ; 0x0230AA0C
 	add r2, r5, #4
 	mov r3, #1
 	str ip, [sp, #4]
-	bl ov29_02320788
+	bl TryAftermathExplosion
 	mov r0, #1
 	b _0230AA7C
 _0230AA78:
@@ -1854,10 +1854,10 @@ _0230AA7C:
 	.align 2, 0
 _0230AA84: .word 0x022C4594
 _0230AA88: .word 0x0000026F
-	arm_func_end ov29_0230AA0C
+	arm_func_end AftermathCheck
 
-	arm_func_start ov29_0230AA8C
-ov29_0230AA8C: ; 0x0230AA8C
+	arm_func_start GetTypeMatchupBothTypes
+GetTypeMatchupBothTypes: ; 0x0230AA8C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r3, _0230AB4C ; =0x02352838
 	mov sl, r0
@@ -1867,7 +1867,7 @@ ov29_0230AA8C: ; 0x0230AA8C
 	mov r8, r2
 	strh r4, [sp]
 	strh r3, [sp, #2]
-	bl ov29_0230AB58
+	bl ScrappyShouldActivate
 	ldr fp, _0230AB50 ; =0x02353538
 	mov r7, r0
 	mov r6, #0
@@ -1877,13 +1877,13 @@ _0230AAC8:
 	cmp r7, #0
 	bne _0230AB04
 	mov r0, r8
-	bl ov29_0230ABF0
+	bl IsTypeIneffectiveAgainstGhost
 	cmp r0, #0
 	beq _0230AB04
 	mov r0, sl
 	mov r1, sb
 	mov r2, r6
-	bl ov29_0230AC04
+	bl GhostImmunityIsActive
 	cmp r0, #0
 	ldrne r1, [fp]
 	movne r0, #0
@@ -1913,10 +1913,10 @@ _0230AB18:
 _0230AB4C: .word 0x02352838
 _0230AB50: .word 0x02353538
 _0230AB54: .word 0x022C4D14
-	arm_func_end ov29_0230AA8C
+	arm_func_end GetTypeMatchupBothTypes
 
-	arm_func_start ov29_0230AB58
-ov29_0230AB58: ; 0x0230AB58
+	arm_func_start ScrappyShouldActivate
+ScrappyShouldActivate: ; 0x0230AB58
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, #0
 	mov sl, r0
@@ -1930,7 +1930,7 @@ _0230AB7C:
 	mov r0, sl
 	mov r1, r5
 	ldr r7, [sb, #0xb4]
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230ABB4
 	add r0, r7, r6
@@ -1960,19 +1960,19 @@ _0230ABDC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0230ABEC: .word 0x02353538
-	arm_func_end ov29_0230AB58
+	arm_func_end ScrappyShouldActivate
 
-	arm_func_start ov29_0230ABF0
-ov29_0230ABF0: ; 0x0230ABF0
+	arm_func_start IsTypeIneffectiveAgainstGhost
+IsTypeIneffectiveAgainstGhost: ; 0x0230ABF0
 	cmp r0, #1
 	cmpne r0, #7
 	moveq r0, #1
 	movne r0, #0
 	bx lr
-	arm_func_end ov29_0230ABF0
+	arm_func_end IsTypeIneffectiveAgainstGhost
 
-	arm_func_start ov29_0230AC04
-ov29_0230AC04: ; 0x0230AC04
+	arm_func_start GhostImmunityIsActive
+GhostImmunityIsActive: ; 0x0230AC04
 	stmdb sp!, {r3, lr}
 	ldr r3, [r1, #0xb4]
 	add r1, r3, r2
@@ -1998,7 +1998,7 @@ _0230AC44:
 _0230AC50:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_0230AC04
+	arm_func_end GhostImmunityIsActive
 
 	arm_func_start GetTypeMatchup
 GetTypeMatchup: ; 0x0230AC58
@@ -2035,7 +2035,7 @@ _0230ACA0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0230ACCC:
 	mov r0, r7
-	bl HasConditionalGroundImmunity
+	bl IsFloating
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -2052,8 +2052,8 @@ _0230ACE0:
 _0230AD00: .word 0x022C56B0
 	arm_func_end GetTypeMatchup
 
-	arm_func_start ov29_0230AD04
-ov29_0230AD04: ; 0x0230AD04
+	arm_func_start CalcTypeBasedDamageEffects
+CalcTypeBasedDamageEffects: ; 0x0230AD04
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x64
 	ldr r5, _0230B774 ; =0x02352838
@@ -2083,7 +2083,7 @@ ov29_0230AD04: ; 0x0230AD04
 	moveq r0, #1
 	beq _0230B76C
 	mov r0, r8
-	bl ov29_0230ABF0
+	bl IsTypeIneffectiveAgainstGhost
 	str r0, [sp, #0x2c]
 	mov r0, sl
 	mov r1, sb
@@ -2099,7 +2099,7 @@ ov29_0230AD04: ; 0x0230AD04
 	mov r1, sb
 	mov r2, r8
 	str r3, [r7, #8]
-	bl ov29_0230AB58
+	bl ScrappyShouldActivate
 	ldr r3, _0230B778 ; =0x022C4820
 	str r0, [sp, #0x28]
 	ldr r0, [r3]
@@ -2183,7 +2183,7 @@ _0230AEC0:
 	mov r1, sb
 	mov r2, r4, lsl #0x10
 	mov r2, r2, asr #0x10
-	bl ov29_0230AC04
+	bl GhostImmunityIsActive
 	cmp r0, #0
 	beq _0230AF1C
 	ldr r0, _0230B798 ; =0x02353538
@@ -2253,7 +2253,7 @@ _0230AF94:
 _0230AFEC:
 	mov r0, sl
 	mov r1, #0x50
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230B02C
 	ldr r0, [r7, #8]
@@ -2306,7 +2306,7 @@ _0230B0A4:
 	bne _0230B104
 	mov r0, sl
 	mov r1, #0x64
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230B104
 	ldr r0, _0230B7AC ; =0x022C455C
@@ -2324,7 +2324,7 @@ _0230B0A4:
 	str r1, [sp]
 	mov r1, sb
 	mov r3, #2
-	bl ov29_0234B250
+	bl LogMessageByIdWithPopupCheckParticipants
 _0230B104:
 	cmp r8, #2
 	cmpne r8, #6
@@ -2349,7 +2349,7 @@ _0230B14C:
 	bne _0230B198
 	mov r0, sl
 	mov r1, sb
-	bl ov29_02313C74
+	bl FlashFireShouldActivate
 	cmp r0, #0
 	beq _0230B198
 	ldr r1, _0230B798 ; =0x02353538
@@ -2387,7 +2387,7 @@ _0230B1DC:
 	bne _0230B248
 	mov r0, sl
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _0230B208
 	mov r0, sb
@@ -2396,7 +2396,7 @@ _0230B1DC:
 	bne _0230B218
 _0230B208:
 	mov r0, sb
-	bl HasConditionalGroundImmunity
+	bl IsFloating
 	cmp r0, #0
 	beq _0230B248
 _0230B218:
@@ -2417,7 +2417,7 @@ _0230B248:
 	bne _0230B2F4
 	mov r0, sl
 	mov r1, #0x10
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230B2F4
 	ldrsh r2, [r6, #0x12]
@@ -2436,7 +2436,7 @@ _0230B248:
 	mov r0, r6
 	mov r2, r7
 	mov r1, #0x80
-	bl ov29_023023C0
+	bl UpdateStateFlags
 	mov r5, r0
 	cmp r7, #0
 	beq _0230B2D4
@@ -2452,7 +2452,7 @@ _0230B2D4:
 	cmp r5, #0
 	beq _0230B2F4
 	mov r0, sl
-	bl ov29_022E6214
+	bl PlayEffectAnimation0x1A9__022E6214
 	ldr r2, _0230B7C0 ; =0x00000C4F
 	mov r0, sl
 	mov r1, sb
@@ -2462,7 +2462,7 @@ _0230B2F4:
 	bne _0230B3A0
 	mov r0, sl
 	mov r1, #0x1a
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230B3A0
 	ldrsh r2, [r6, #0x12]
@@ -2481,7 +2481,7 @@ _0230B2F4:
 	mov r0, r6
 	mov r2, r7
 	mov r1, #2
-	bl ov29_023023C0
+	bl UpdateStateFlags
 	mov r5, r0
 	cmp r7, #0
 	beq _0230B380
@@ -2497,7 +2497,7 @@ _0230B380:
 	cmp r5, #0
 	beq _0230B3A0
 	mov r0, sl
-	bl ov29_022E61C8
+	bl PlayEffectAnimation0x1A9__022E61C8
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0xc50
@@ -2507,7 +2507,7 @@ _0230B3A0:
 	bne _0230B44C
 	mov r0, sl
 	mov r1, #0x43
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230B44C
 	ldrsh r2, [r6, #0x12]
@@ -2526,7 +2526,7 @@ _0230B3A0:
 	mov r0, r6
 	mov r2, r7
 	mov r1, #0x10
-	bl ov29_023023C0
+	bl UpdateStateFlags
 	mov r5, r0
 	cmp r7, #0
 	beq _0230B42C
@@ -2542,7 +2542,7 @@ _0230B42C:
 	cmp r5, #0
 	beq _0230B44C
 	mov r0, sl
-	bl ov29_022E64C4
+	bl PlayEffectAnimation0x1A9__022E64C4
 	ldr r2, _0230B7C4 ; =0x00000C51
 	mov r0, sl
 	mov r1, sb
@@ -2552,7 +2552,7 @@ _0230B44C:
 	bne _0230B534
 	mov r0, sl
 	mov r1, #0x46
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230B4F8
 	ldrsh r2, [r6, #0x12]
@@ -2571,7 +2571,7 @@ _0230B44C:
 	mov r0, r6
 	mov r2, r7
 	mov r1, #0x20
-	bl ov29_023023C0
+	bl UpdateStateFlags
 	mov r5, r0
 	cmp r7, #0
 	beq _0230B4D8
@@ -2587,7 +2587,7 @@ _0230B4D8:
 	cmp r5, #0
 	beq _0230B4F8
 	mov r0, sl
-	bl ov29_022E6510
+	bl PlayEffectAnimation0x1A9__022E6510
 	ldr r2, _0230B7C8 ; =0x00000C52
 	mov r0, sl
 	mov r1, sb
@@ -2636,7 +2636,7 @@ _0230B560:
 	mov r3, #1
 	mov r1, #0x63
 	strb r3, [r2, #0x1cf]
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230B5BC
 	ldr r2, _0230B7BC ; =0x0235284C
@@ -2791,7 +2791,7 @@ _0230B7C4: .word 0x00000C51
 _0230B7C8: .word 0x00000C52
 _0230B7CC: .word 0x022C4744
 _0230B7D0: .word 0x0235285C
-	arm_func_end ov29_0230AD04
+	arm_func_end CalcTypeBasedDamageEffects
 
 	arm_func_start ov29_0230B7D4
 ov29_0230B7D4: ; 0x0230B7D4
@@ -2811,7 +2811,7 @@ ov29_0230B7D4: ; 0x0230B7D4
 	mov r1, #0x6b
 	ldr r7, [sl, #0xb4]
 	ldr r6, [sb, #0xb4]
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r8, r4
 	cmp r8, #1
@@ -2821,7 +2821,7 @@ ov29_0230B7D4: ; 0x0230B7D4
 	bne _0230B84C
 	mov r0, sl
 	mov r1, sb
-	bl ov29_02313C74
+	bl FlashFireShouldActivate
 	cmp r0, #0
 	movne r0, #0
 	bne _0230BB98
@@ -2852,7 +2852,7 @@ _0230B89C:
 	bne _0230B8E0
 	mov r0, sl
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _0230B8C8
 	mov r0, sb
@@ -2861,7 +2861,7 @@ _0230B89C:
 	bne _0230B8D8
 _0230B8C8:
 	mov r0, sb
-	bl HasConditionalGroundImmunity
+	bl IsFloating
 	cmp r0, #0
 	beq _0230B8E0
 _0230B8D8:
@@ -2871,7 +2871,7 @@ _0230B8E0:
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov29_0230AB58
+	bl ScrappyShouldActivate
 	ldr r1, _0230BBA0 ; =0x02352884
 	str r0, [sp]
 	add ip, sp, #4
@@ -2939,7 +2939,7 @@ _0230B9D4:
 	bne _0230BA1C
 	mov r0, sl
 	mov r1, #0x10
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230BA1C
 	ldrsh r2, [r7, #0x12]
@@ -2958,7 +2958,7 @@ _0230BA1C:
 	bne _0230BA64
 	mov r0, sl
 	mov r1, #0x1a
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230BA64
 	ldrsh r2, [r7, #0x12]
@@ -2977,7 +2977,7 @@ _0230BA64:
 	bne _0230BAAC
 	mov r0, sl
 	mov r1, #0x43
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230BAAC
 	ldrsh r2, [r7, #0x12]
@@ -2996,7 +2996,7 @@ _0230BAAC:
 	bne _0230BAF4
 	mov r0, sl
 	mov r1, #0x46
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230BAF4
 	ldrsh r2, [r7, #0x12]
@@ -3085,7 +3085,7 @@ CalcDamage: ; 0x0230BBAC
 	add r5, r4, #0x184
 	ldr r7, [sb, #0xb4]
 	str r1, [sp, #0x1c]
-	bl ResetDamageDesc
+	bl ResetDamageData
 	ldrb r0, [r6, #0x221]
 	cmp r0, #0
 	beq _0230BC1C
@@ -3097,7 +3097,7 @@ CalcDamage: ; 0x0230BBAC
 _0230BC1C:
 	mov r0, sl
 	mov r1, #0x5c
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230BC50
 	ldr r0, [sp, #0xf4]
@@ -3111,7 +3111,7 @@ _0230BC1C:
 _0230BC50:
 	mov r0, sl
 	mov r1, #0x65
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230BC84
 	ldr r0, [sp, #0xf4]
@@ -3125,7 +3125,7 @@ _0230BC50:
 _0230BC84:
 	mov r0, sl
 	mov r1, #0x6b
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #1
 	strne r0, [sp, #0xc]
@@ -3137,7 +3137,7 @@ _0230BC84:
 	ldr r0, [sp, #0xf4]
 	bl MoveIsNotPhysical
 	str r0, [sp, #0x18]
-	bl ResetDamageCalcScratchSpace
+	bl ResetDamageCalcDiagnostics
 	ldrb r0, [r6, #7]
 	cmp r0, #0
 	bne _0230BD34
@@ -3216,7 +3216,7 @@ _0230BDA0:
 	ldr r0, [r0, #0x3c]
 	str r0, [sp, #0x38]
 	mov r0, sl
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230BE40
 	ldrb r1, [r7, #0x1c]
@@ -3279,7 +3279,7 @@ _0230BE70:
 	addne r0, r0, #1
 	strneb r0, [r5, #0x34]
 	mov r0, sl
-	bl ov29_02338288
+	bl NearbyAllyIqSkillIsEnabled
 	cmp r0, #0
 	ldr r0, [sp, #0x18]
 	addne r4, r4, #1
@@ -3287,7 +3287,7 @@ _0230BE70:
 	mov r0, sl
 	bne _0230BFA8
 	mov r1, #0x68
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230BF5C
 	ldrsh r0, [r6, #4]
@@ -3317,12 +3317,12 @@ _0230BF5C:
 	bne _0230C040
 	mov r0, sl
 	mov r1, #0x71
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _0230BF94
 	mov r0, sl
 	mov r1, #0x71
-	bl ov29_02301D84
+	bl OtherMonsterAbilityIsActive
 	cmp r0, #0
 	beq _0230C040
 _0230BF94:
@@ -3333,7 +3333,7 @@ _0230BF94:
 	b _0230C040
 _0230BFA8:
 	mov r1, #0x5a
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230BFD4
 	mov r0, sl
@@ -3350,12 +3350,12 @@ _0230BFD4:
 	bne _0230C01C
 	mov r0, sb
 	mov r1, #0x71
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _0230C00C
 	mov r0, sb
 	mov r1, #0x71
-	bl ov29_02301D84
+	bl OtherMonsterAbilityIsActive
 	cmp r0, #0
 	beq _0230C01C
 _0230C00C:
@@ -3398,7 +3398,7 @@ _0230C07C:
 	beq _0230C0AC
 	mov r0, sl
 	mov r1, #0x4f
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0x14
 	strne r0, [sp, #0x44]
@@ -3490,7 +3490,7 @@ _0230C170:
 _0230C1F4:
 	mov r0, sl
 	mov r1, #0x67
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0x100
 	movne r4, #0xa
@@ -3783,26 +3783,26 @@ _0230C5E0:
 	bne _0230C6B8
 	mov r0, sl
 	mov r1, #0x11
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230C6B8
 	ldr r0, [sl, #0xb4]
 	mov r1, r4
 	str r0, [sp, #0x24]
 	mov r0, sl
-	bl ov29_02300634
+	bl MonsterHasNegativeStatus
 	str r0, [sp, #0x48]
 	ldr r0, [sp, #0x24]
 	ldr r2, [sp, #0x48]
 	mov r1, r4
-	bl ov29_023023C0
+	bl UpdateStateFlags
 	ldr r1, [sp, #0x48]
 	cmp r1, #0
 	movne r4, r4, lsl #1
 	cmp r0, #0
 	beq _0230C6B8
 	mov r0, sl
-	bl ov29_022E6130
+	bl PlayEffectAnimation0x1A9__022E6130
 	mov r0, sl
 	mov r1, sb
 	ldr r2, _0230C490 ; =0x00000C53
@@ -3810,12 +3810,12 @@ _0230C5E0:
 _0230C6B8:
 	mov r0, sl
 	mov r1, #0x22
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _0230C6E0
 	mov r0, sl
 	mov r1, #0x4b
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230C748
 _0230C6E0:
@@ -3834,7 +3834,7 @@ _0230C704:
 	str r1, [sp, #0x34]
 	ldr r2, [sp, #0x34]
 	mov r1, #0x100
-	bl ov29_023023C0
+	bl UpdateStateFlags
 	ldr r1, [sp, #0x34]
 	cmp r1, #0
 	addne r4, r4, r4, lsl #1
@@ -3842,7 +3842,7 @@ _0230C704:
 	cmp r0, #0
 	beq _0230C748
 	mov r0, sl
-	bl ov29_022E617C
+	bl PlayEffectAnimation0x1A9__022E617C
 	mov r0, sl
 	mov r1, sb
 	ldr r2, _0230C494 ; =0x00000C54
@@ -3850,7 +3850,7 @@ _0230C704:
 _0230C748:
 	mov r0, sl
 	mov r1, #0x30
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230C76C
 	ldr r0, [sp, #0x30]
@@ -3867,7 +3867,7 @@ _0230C76C:
 	movne r0, #0
 	strne r0, [sp, #0x14]
 	mov r0, sl
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230C7D4
 	ldr r0, [sp, #0x30]
@@ -3887,7 +3887,7 @@ _0230C76C:
 _0230C7D4:
 	mov r0, sl
 	mov r1, #0x3f
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230C820
 	ldr r0, [sp, #0x30]
@@ -3931,12 +3931,12 @@ _0230C84C:
 	mov r1, #1
 	str r0, [sp, #0x20]
 	mov r0, sb
-	bl ov29_02300634
+	bl MonsterHasNegativeStatus
 	str r0, [sp, #0x4c]
 	ldr r0, [sp, #0x20]
 	ldr r2, [sp, #0x4c]
 	mov r1, #8
-	bl ov29_023023C0
+	bl UpdateStateFlags
 	ldr r1, [sp, #0x4c]
 	cmp r1, #0
 	beq _0230C8C0
@@ -3950,7 +3950,7 @@ _0230C8C0:
 	cmp r0, #0
 	beq _0230C8E0
 	mov r0, sb
-	bl ov29_022E63D8
+	bl PlayEffectAnimation0x18E
 	mov r0, sl
 	mov r1, sb
 	ldr r2, _0230C498 ; =0x00000C55
@@ -3969,7 +3969,7 @@ _0230C8E0:
 	str r0, [r1]
 	beq _0230C920
 	mov r1, fp
-	bl DivideInt
+	bl __divsi3
 	add r1, sp, #0x90
 	str r0, [r1]
 _0230C920:
@@ -3979,7 +3979,7 @@ _0230C920:
 	add r4, sp, #0x94
 	mov r1, r0
 	ldr r0, [r4]
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4]
 _0230C940:
 	ldr r0, [sp, #0x90]
@@ -4157,14 +4157,14 @@ _0230CB78:
 	add r0, sp, #0xb8
 	mov r1, sl
 	mov r2, sb
-	bl ov29_0230AD04
+	bl CalcTypeBasedDamageEffects
 	mov fp, r0
 	ldr r0, [sp, #0xc]
 	cmp r0, #2
 	bne _0230CC78
 	mov r0, sl
 	mov r1, sb
-	bl ov29_02313C74
+	bl FlashFireShouldActivate
 	movs r4, r0
 	beq _0230CC78
 	ldrb r0, [r7, #0x15c]
@@ -4216,7 +4216,7 @@ _0230CCBC:
 	beq _0230CCF0
 _0230CCD0:
 	mov r0, sb
-	bl ov29_022E406C
+	bl PlayEffectAnimation0x171
 	add r0, sp, #0xb8
 	ldr r2, _0230D064 ; =0x0235283C
 	mov r1, r0
@@ -4237,7 +4237,7 @@ _0230CCF0:
 	beq _0230CD3C
 _0230CD1C:
 	mov r0, sb
-	bl ov29_022E4018
+	bl PlayEffectAnimation0x171Full
 	add r0, sp, #0xb8
 	ldr r2, _0230D064 ; =0x0235283C
 	mov r1, r0
@@ -4299,7 +4299,7 @@ _0230CDF0:
 _0230CE04:
 	mov r0, sl
 	mov r1, #0x58
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldrne r0, _0230D06C ; =0x022C4510
 	movne r1, #1
@@ -4336,14 +4336,14 @@ _0230CE74:
 	mov r1, sb
 	add r3, r2, #0xdc0
 	str r4, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	bne _0230CEEC
 	mov r2, #1
 	mov r0, sl
 	mov r1, #0x5d
 	strb r2, [r8, #0xe]
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	add r0, sp, #0xb8
 	beq _0230CEE0
@@ -4495,7 +4495,7 @@ ov29_0230D088: ; 0x0230D088
 	str r5, [sp, #4]
 	mov ip, #0
 	str ip, [sp, #8]
-	bl ov29_0230AD04
+	bl CalcTypeBasedDamageEffects
 	add r0, sp, #0xc
 	mov r1, r4
 	bl IntToFixedPoint64
@@ -4514,8 +4514,8 @@ ov29_0230D088: ; 0x0230D088
 _0230D118: .word 0x000003E7
 	arm_func_end ov29_0230D088
 
-	arm_func_start ov29_0230D11C
-ov29_0230D11C: ; 0x0230D11C
+	arm_func_start ApplyDamageAndEffectsWrapper
+ApplyDamageAndEffectsWrapper: ; 0x0230D11C
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0xdc
 	mov r7, r0
@@ -4523,7 +4523,7 @@ ov29_0230D11C: ; 0x0230D11C
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl ResetDamageDesc
+	bl ResetDamageData
 	add r0, sp, #0x24
 	bl ov29_022E2470
 	mov r3, #0
@@ -4541,10 +4541,10 @@ ov29_0230D11C: ; 0x0230D11C
 	add r0, sp, #0x24
 	add r2, sp, #0x10
 	str r3, [sp, #0xc]
-	bl ov29_0230863C
+	bl ApplyDamageAndEffects
 	add sp, sp, #0xdc
 	ldmia sp!, {r4, r5, r6, r7, pc}
-	arm_func_end ov29_0230D11C
+	arm_func_end ApplyDamageAndEffectsWrapper
 
 	arm_func_start CalcRecoilDamageFixed
 CalcRecoilDamageFixed: ; 0x0230D18C
@@ -4566,7 +4566,7 @@ CalcRecoilDamageFixed: ; 0x0230D18C
 	beq _0230D238
 	mov r0, r7
 	mov r1, #0x5c
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230D1F0
 	mov r0, r6, lsl #8
@@ -4611,7 +4611,7 @@ CalcDamageFixed: ; 0x0230D240
 	mov r8, r2
 	mov r7, r3
 	ldr r6, [sp, #0x54]
-	bl ResetDamageDesc
+	bl ResetDamageData
 	mov r5, #0
 	ldrb r0, [sp, #0x58]
 	ldr r1, [sp, #0x60]
@@ -4686,7 +4686,7 @@ _0230D334:
 	mov r1, sb
 	mov r3, #0
 	str r4, [sp, #0xc]
-	bl ov29_0230863C
+	bl ApplyDamageAndEffects
 	ldr r1, [sp, #0x50]
 	cmp r1, #0
 	ldrneb r0, [sp, #0x28]
@@ -4745,8 +4745,8 @@ CalcDamageFixedWrapper: ; 0x0230D3F4
 	ldmia sp!, {pc}
 	arm_func_end CalcDamageFixedWrapper
 
-	arm_func_start ov29_0230D440
-ov29_0230D440: ; 0x0230D440
+	arm_func_start UpdateShopkeeperModeAfterAttack
+UpdateShopkeeperModeAfterAttack: ; 0x0230D440
 	ldr r2, [r1, #0xb4]
 	ldrb r1, [r2, #9]
 	cmp r1, #0
@@ -4762,10 +4762,10 @@ ov29_0230D440: ; 0x0230D440
 	moveq r0, #3
 	streqb r0, [r2, #9]
 	bx lr
-	arm_func_end ov29_0230D440
+	arm_func_end UpdateShopkeeperModeAfterAttack
 
-	arm_func_start ov29_0230D47C
-ov29_0230D47C: ; 0x0230D47C
+	arm_func_start UpdateShopkeeperModeAfterTrap
+UpdateShopkeeperModeAfterTrap: ; 0x0230D47C
 	ldr r2, [r0, #0xb4]
 	ldrb r0, [r2, #9]
 	cmp r0, #0
@@ -4776,7 +4776,7 @@ ov29_0230D47C: ; 0x0230D47C
 	moveq r0, #3
 	streqb r0, [r2, #9]
 	bx lr
-	arm_func_end ov29_0230D47C
+	arm_func_end UpdateShopkeeperModeAfterTrap
 
 	arm_func_start ov29_0230D4A4
 ov29_0230D4A4: ; 0x0230D4A4
@@ -4818,8 +4818,8 @@ _0230D518:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_0230D4A4
 
-	arm_func_start ResetDamageCalcScratchSpace
-ResetDamageCalcScratchSpace: ; 0x0230D528
+	arm_func_start ResetDamageCalcDiagnostics
+ResetDamageCalcDiagnostics: ; 0x0230D528
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _0230D614 ; =0x02353538
 	mov r1, #0x54
@@ -4881,7 +4881,7 @@ ResetDamageCalcScratchSpace: ; 0x0230D528
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0230D614: .word 0x02353538
-	arm_func_end ResetDamageCalcScratchSpace
+	arm_func_end ResetDamageCalcDiagnostics
 
 	arm_func_start ov29_0230D618
 ov29_0230D618: ; 0x0230D618
@@ -4902,7 +4902,7 @@ ov29_0230D628: ; 0x0230D628
 	cmp r1, r0
 	ldmneia sp!, {r3, pc}
 	mov r1, #1
-	bl ov29_022E2E54
+	bl PointCameraToMonster
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230D650: .word 0x02353538
@@ -4940,7 +4940,7 @@ ov29_0230D688: ; 0x0230D688
 	strh r3, [sp, #2]
 	ldrh r3, [r4, #4]
 	strh r3, [sp, #4]
-	bl ov29_02344BD0
+	bl GenerateStandardItem
 	mov r0, r4
 	bl SetItemAcquired
 	ldrb r0, [sp, #1]
@@ -5064,7 +5064,7 @@ _0230D808:
 	rsb r1, r1, #0x2b8
 	mov r3, #3
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	mov r0, r0, lsl #0x10
 	mov r5, r0, asr #0x10
 	mvn r0, #0
@@ -5290,8 +5290,8 @@ ov29_0230DAB8: ; 0x0230DAB8
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_0230DAB8
 
-	arm_func_start ov29_0230DB14
-ov29_0230DB14: ; 0x0230DB14
+	arm_func_start SpecificRecruitCheck
+SpecificRecruitCheck: ; 0x0230DB14
 	stmdb sp!, {r4, lr}
 	ldr r1, _0230DBC8 ; =0x02353538
 	mov r4, r0
@@ -5300,7 +5300,7 @@ ov29_0230DB14: ; 0x0230DB14
 	cmp r1, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov29_022EFA6C
+	bl DebugRecruitingEnabled
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -5340,10 +5340,10 @@ ov29_0230DB14: ; 0x0230DB14
 	.align 2, 0
 _0230DBC8: .word 0x02353538
 _0230DBCC: .word 0x000001A3
-	arm_func_end ov29_0230DB14
+	arm_func_end SpecificRecruitCheck
 
-	arm_func_start ov29_0230DBD0
-ov29_0230DBD0: ; 0x0230DBD0
+	arm_func_start RecruitCheck
+RecruitCheck: ; 0x0230DBD0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r2, _0230E024 ; =0x02353538
 	mov r8, r0
@@ -5355,7 +5355,7 @@ ov29_0230DBD0: ; 0x0230DBD0
 	bl IsRecruitingAllowed
 	cmp r0, #0
 	beq _0230DC28
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	bne _0230DC28
 	bl IsLegendaryChallengeFloor
@@ -5432,20 +5432,20 @@ _0230DD04:
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldrsh r0, [r6, #2]
-	bl ov29_0230DB14
+	bl SpecificRecruitCheck
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldrsh r1, [r8, #4]
 	ldrsh r0, [r7, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	bgt _0230DD5C
 	ldrsh r1, [r8, #6]
 	ldrsh r0, [r7, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	ble _0230DD64
 _0230DD5C:
@@ -5460,7 +5460,7 @@ _0230DD64:
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
 	mov r1, r8
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -5655,10 +5655,10 @@ _0230E054: .word 0x022C4704
 _0230E058: .word 0x022C4700
 _0230E05C: .word 0x022C46FC
 _0230E060: .word 0x022C5064
-	arm_func_end ov29_0230DBD0
+	arm_func_end RecruitCheck
 
-	arm_func_start ov29_0230E064
-ov29_0230E064: ; 0x0230E064
+	arm_func_start TryRecruit
+TryRecruit: ; 0x0230E064
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x114
 	mov sl, r0
@@ -5992,7 +5992,7 @@ _0230E540:
 	cmp r5, #0
 	beq _0230E550
 	mov r0, r5
-	bl ov29_02321104
+	bl EnsureCanStandCurrentTile
 _0230E550:
 	mov r0, r4
 	add sp, sp, #0x114
@@ -6005,7 +6005,7 @@ _0230E568: .word 0x00000C7E
 _0230E56C: .word 0x00000C7F
 _0230E570: .word 0x00000233
 _0230E574: .word 0x00000C78
-	arm_func_end ov29_0230E064
+	arm_func_end TryRecruit
 
 	arm_func_start ItemIsActive__0230E578
 ItemIsActive__0230E578: ; 0x0230E578
@@ -6013,7 +6013,7 @@ ItemIsActive__0230E578: ; 0x0230E578
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}

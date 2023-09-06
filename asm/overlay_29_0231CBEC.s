@@ -3,14 +3,14 @@
 
 	.text
 
-	arm_func_start ov29_0231CBEC
-ov29_0231CBEC: ; 0x0231CBEC
+	arm_func_start ApplyCheriBerryEffect
+ApplyCheriBerryEffect: ; 0x0231CBEC
 	stmdb sp!, {r3, lr}
 	ldr r2, [r1, #0xb4]
 	ldrb r2, [r2, #0xbf]
 	cmp r2, #4
 	bne _0231CC08
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 	ldmia sp!, {r3, pc}
 _0231CC08:
 	ldr r2, _0231CC14 ; =0x00000BE9
@@ -18,10 +18,10 @@ _0231CC08:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0231CC14: .word 0x00000BE9
-	arm_func_end ov29_0231CBEC
+	arm_func_end ApplyCheriBerryEffect
 
-	arm_func_start ov29_0231CC18
-ov29_0231CC18: ; 0x0231CC18
+	arm_func_start ApplyPechaBerryEffect
+ApplyPechaBerryEffect: ; 0x0231CC18
 	stmdb sp!, {r3, lr}
 	ldr r2, [r1, #0xb4]
 	ldrb r2, [r2, #0xbf]
@@ -29,7 +29,7 @@ ov29_0231CC18: ; 0x0231CC18
 	and r2, r2, #0xff
 	cmp r2, #1
 	bhi _0231CC3C
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 	ldmia sp!, {r3, pc}
 _0231CC3C:
 	ldr r2, _0231CC48 ; =0x00000BE9
@@ -37,10 +37,10 @@ _0231CC3C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0231CC48: .word 0x00000BE9
-	arm_func_end ov29_0231CC18
+	arm_func_end ApplyPechaBerryEffect
 
-	arm_func_start ov29_0231CC4C
-ov29_0231CC4C: ; 0x0231CC4C
+	arm_func_start ApplyRawstBerryEffect
+ApplyRawstBerryEffect: ; 0x0231CC4C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	ldr r2, [r4, #0xb4]
@@ -48,7 +48,7 @@ ov29_0231CC4C: ; 0x0231CC4C
 	ldrb r2, [r2, #0xbf]
 	cmp r2, #1
 	bne _0231CC70
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 	ldmia sp!, {r3, r4, r5, pc}
 _0231CC70:
 	mov r0, #0
@@ -61,10 +61,10 @@ _0231CC70:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0231CC90: .word 0x00000BEA
-	arm_func_end ov29_0231CC4C
+	arm_func_end ApplyRawstBerryEffect
 
-	arm_func_start ov29_0231CC94
-ov29_0231CC94: ; 0x0231CC94
+	arm_func_start ApplyHungerSeedEffect
+ApplyHungerSeedEffect: ; 0x0231CC94
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r5, r1
@@ -75,7 +75,7 @@ ov29_0231CC94: ; 0x0231CC94
 	beq _0231CCC4
 	mov r2, #0
 	mov r3, #5
-	bl ov29_023168D8
+	bl TryDecreaseBelly
 	b _0231CD6C
 _0231CCC4:
 	mov r0, #0
@@ -129,10 +129,10 @@ _0231CD6C:
 _0231CD74: .word 0x00000BEB
 _0231CD78: .word 0x00000BEC
 _0231CD7C: .word 0x00000BED
-	arm_func_end ov29_0231CC94
+	arm_func_end ApplyHungerSeedEffect
 
-	arm_func_start ov29_0231CD80
-ov29_0231CD80: ; 0x0231CD80
+	arm_func_start ApplyVileSeedEffect
+ApplyVileSeedEffect: ; 0x0231CD80
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	mov r4, r1
@@ -173,10 +173,10 @@ ov29_0231CD80: ; 0x0231CD80
 _0231CE10: .word 0x023529AC
 _0231CE14: .word 0x02352AEC
 _0231CE18: .word 0x02352AE8
-	arm_func_end ov29_0231CD80
+	arm_func_end ApplyVileSeedEffect
 
-	arm_func_start ViolentSeedBoost
-ViolentSeedBoost: ; 0x0231CE1C
+	arm_func_start ApplyViolentSeedEffect
+ApplyViolentSeedEffect: ; 0x0231CE1C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	ldr r4, [r5, #0xb4]
@@ -197,10 +197,10 @@ ViolentSeedBoost: ; 0x0231CE1C
 	.align 2, 0
 _0231CE60: .word 0x02352AEC
 _0231CE64: .word 0x02352AE8
-	arm_func_end ViolentSeedBoost
+	arm_func_end ApplyViolentSeedEffect
 
-	arm_func_start ov29_0231CE68
-ov29_0231CE68: ; 0x0231CE68
+	arm_func_start ApplyGinsengEffect
+ApplyGinsengEffect: ; 0x0231CE68
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	mov r8, r1
@@ -278,10 +278,10 @@ _0231CF64:
 _0231CF78: .word 0x022C46C0
 _0231CF7C: .word 0x00000BEF
 _0231CF80: .word 0x00000BEE
-	arm_func_end ov29_0231CE68
+	arm_func_end ApplyGinsengEffect
 
-	arm_func_start ov29_0231CF84
-ov29_0231CF84: ; 0x0231CF84
+	arm_func_start ApplyBlastSeedEffect
+ApplyBlastSeedEffect: ; 0x0231CF84
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x1c
 	mov r6, r0
@@ -289,7 +289,7 @@ ov29_0231CF84: ; 0x0231CF84
 	cmp r2, #0
 	beq _0231D00C
 	ldr r7, [r5, #0xb4]
-	bl ov29_022E0880
+	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
 	ldrne r0, _0231D0A8 ; =0x022C45D8
 	ldreq r0, _0231D0AC ; =0x022C45D4
@@ -330,7 +330,7 @@ _0231D00C:
 	b _0231D0A0
 _0231D034:
 	ldr r7, [r4, #0xb4]
-	bl ov29_022E0880
+	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
 	ldrne r0, _0231D0B8 ; =0x022C45DC
 	ldreq r0, _0231D0BC ; =0x022C44E8
@@ -367,7 +367,7 @@ _0231D0B0: .word 0x00000255
 _0231D0B4: .word 0x00000BF2
 _0231D0B8: .word 0x022C45DC
 _0231D0BC: .word 0x022C44E8
-	arm_func_end ov29_0231CF84
+	arm_func_end ApplyBlastSeedEffect
 
 	arm_func_start ApplyGummiBoostsDungeonMode
 ApplyGummiBoostsDungeonMode: ; 0x0231D0C0
@@ -420,7 +420,7 @@ _0231D164:
 	mov r2, r3
 	str r6, [sp]
 	mov r3, #0
-	bl ov29_02316BB0
+	bl TryIncreaseBelly
 	ldrb r0, [r7, #6]
 	cmp r0, #0
 	bne _0231D284
@@ -645,8 +645,8 @@ _0231D49C: .word 0x00000BF9
 _0231D4A0: .word 0x00000BFA
 	arm_func_end ApplyGummiBoostsDungeonMode
 
-	arm_func_start ov29_0231D4A4
-ov29_0231D4A4: ; 0x0231D4A4
+	arm_func_start CanMonsterUseItem
+CanMonsterUseItem: ; 0x0231D4A4
 	stmdb sp!, {r4, lr}
 	ldrb r2, [r1]
 	mov r4, r0
@@ -686,10 +686,10 @@ _0231D524:
 	.align 2, 0
 _0231D52C: .word 0x00000BE7
 _0231D530: .word 0x00000BF6
-	arm_func_end ov29_0231D4A4
+	arm_func_end CanMonsterUseItem
 
-	arm_func_start ov29_0231D534
-ov29_0231D534: ; 0x0231D534
+	arm_func_start ApplyGrimyFoodEffect
+ApplyGrimyFoodEffect: ; 0x0231D534
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov ip, #1
@@ -698,7 +698,7 @@ ov29_0231D534: ; 0x0231D534
 	mov r3, #0
 	mov r5, r0
 	str ip, [sp]
-	bl ov29_02316BB0
+	bl TryIncreaseBelly
 	mov r0, r4
 	mov r1, #0x25
 	bl IqSkillIsEnabled
@@ -706,7 +706,7 @@ ov29_0231D534: ; 0x0231D534
 	bne _0231D580
 	mov r0, r4
 	mov r1, #0x59
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0231D598
 _0231D580:
@@ -783,10 +783,10 @@ _0231D66C:
 _0231D674: .word 0x022C4680
 _0231D678: .word 0x02352AEC
 _0231D67C: .word 0x02352AE8
-	arm_func_end ov29_0231D534
+	arm_func_end ApplyGrimyFoodEffect
 
-	arm_func_start ov29_0231D680
-ov29_0231D680: ; 0x0231D680
+	arm_func_start ApplyMixElixirEffect
+ApplyMixElixirEffect: ; 0x0231D680
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	ldr r2, [r5, #0xb4]
@@ -802,7 +802,7 @@ ov29_0231D680: ; 0x0231D680
 	mov r0, r6
 	mov r1, r5
 	mov r3, #0
-	bl RestoreMovePP
+	bl RestoreAllMovePP
 	ldmia sp!, {r4, r5, r6, pc}
 _0231D6C4:
 	ldr r2, _0231D6DC ; =0x00000C64
@@ -813,10 +813,10 @@ _0231D6C4:
 	.align 2, 0
 _0231D6D8: .word 0x000003E7
 _0231D6DC: .word 0x00000C64
-	arm_func_end ov29_0231D680
+	arm_func_end ApplyMixElixirEffect
 
-	arm_func_start ov29_0231D6E0
-ov29_0231D6E0: ; 0x0231D6E0
+	arm_func_start ApplyDoughSeedEffect
+ApplyDoughSeedEffect: ; 0x0231D6E0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #0
@@ -831,7 +831,7 @@ ov29_0231D6E0: ; 0x0231D6E0
 	cmp r0, #0
 	bne _0231D730
 	mov r0, #1
-	bl ov29_02338548
+	bl SetDoughSeedFlag
 	ldr r2, _0231D744 ; =0x00000C6E
 	mov r0, r5
 	mov r1, r4
@@ -846,10 +846,10 @@ _0231D730:
 	.align 2, 0
 _0231D744: .word 0x00000C6E
 _0231D748: .word 0x00000C6F
-	arm_func_end ov29_0231D6E0
+	arm_func_end ApplyDoughSeedEffect
 
-	arm_func_start ov29_0231D74C
-ov29_0231D74C: ; 0x0231D74C
+	arm_func_start ApplyViaSeedEffect
+ApplyViaSeedEffect: ; 0x0231D74C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #0
@@ -857,7 +857,7 @@ ov29_0231D74C: ; 0x0231D74C
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
 	mov r0, r4
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _0231D788
 	ldr r1, _0231D7B8 ; =0x00000C68
@@ -882,10 +882,10 @@ _0231D7A0:
 	.align 2, 0
 _0231D7B8: .word 0x00000C68
 _0231D7BC: .word 0x00000C69
-	arm_func_end ov29_0231D74C
+	arm_func_end ApplyViaSeedEffect
 
-	arm_func_start ov29_0231D7C0
-ov29_0231D7C0: ; 0x0231D7C0
+	arm_func_start ApplyGravelyrockEffect
+ApplyGravelyrockEffect: ; 0x0231D7C0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r5, r1
@@ -901,7 +901,7 @@ ov29_0231D7C0: ; 0x0231D7C0
 	ldrsh r2, [r0]
 	ldrsh r3, [r0, #2]
 	mov r0, r6
-	bl ov29_02316BB0
+	bl TryIncreaseBelly
 	cmp r4, #0x1e0
 	cmpne r4, #0xb9
 	bne _0231D828
@@ -911,23 +911,23 @@ ov29_0231D7C0: ; 0x0231D7C0
 	mov r2, #0
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl ov29_022FA144
+	bl BoostIQ
 _0231D828:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _0231D830: .word 0x022C47E0
 _0231D834: .word 0x022C47F0
-	arm_func_end ov29_0231D7C0
+	arm_func_end ApplyGravelyrockEffect
 
-	arm_func_start ov29_0231D838
-ov29_0231D838: ; 0x0231D838
+	arm_func_start ApplyGonePebbleEffect
+ApplyGonePebbleEffect: ; 0x0231D838
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0xc
 	mov r5, r1
 	mov r6, r0
 	mov r0, r5
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _0231D978
 	mov r0, #1
@@ -971,21 +971,21 @@ ov29_0231D838: ; 0x0231D838
 	bl ov29_0234BA54
 	mov r0, r6
 	mov r1, r5
-	bl ov29_02319378
+	bl TryInflictEndureStatus
 	ldr r0, _0231D9BC ; =0x02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd6]
-	bl ov29_022EAD00
-	bl ov29_022EAE14
+	bl MusicTableIdxToMusicId
+	bl ChangeDungeonMusic
 	mov r0, r4
 	bl ov29_022EAF34
-	bl ov29_02339CE8
+	bl UpdateMinimap
 	mov r0, #1
 	bl ov29_02339FF4
 	mov r0, #0
 	bl GetApparentWeather
-	bl ov29_022DE620
+	bl GetWeatherColorTable
 	mov r1, #6
 	bl ov29_022F085C
 	mov r0, r5
@@ -1014,7 +1014,7 @@ _0231D978:
 	bl ov29_0234BA54
 	mov r0, r6
 	mov r1, r5
-	bl ov29_02319378
+	bl TryInflictEndureStatus
 _0231D9A8:
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -1023,10 +1023,10 @@ _0231D9B0: .word 0x000003FF
 _0231D9B4: .word 0x00000C65
 _0231D9B8: .word 0x00000C66
 _0231D9BC: .word 0x02353538
-	arm_func_end ov29_0231D838
+	arm_func_end ApplyGonePebbleEffect
 
-	arm_func_start ov29_0231D9C0
-ov29_0231D9C0: ; 0x0231D9C0
+	arm_func_start ApplyGracideaEffect
+ApplyGracideaEffect: ; 0x0231D9C0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r0, #0x1a
 	mov r5, r1
@@ -1035,7 +1035,7 @@ ov29_0231D9C0: ; 0x0231D9C0
 	beq _0231DA50
 	mov r0, r5
 	mov r1, #1
-	bl ov29_0231B4EC
+	bl ChangeShayminForme
 	mov r4, r0
 	mov r0, #0
 	mov r1, r5
@@ -1080,7 +1080,7 @@ _0231DA70: .word 0x00000C71
 _0231DA74: .word 0x00000C72
 _0231DA78: .word 0x00000C74
 _0231DA7C: .word 0x00000C73
-	arm_func_end ov29_0231D9C0
+	arm_func_end ApplyGracideaEffect
 
 	arm_func_start ov29_0231DA80
 ov29_0231DA80: ; 0x0231DA80
@@ -1391,7 +1391,7 @@ _0231DEB0:
 	mov r0, #0
 	mov r2, #1
 	mov r3, r0
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _0231DF1C
 	mov r0, #0
@@ -1403,7 +1403,7 @@ _0231DF00:
 	mov r2, r0
 	mov r3, r0
 	str r0, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	beq _0231DFF4
 _0231DF1C:
@@ -1480,7 +1480,7 @@ _0231E008:
 	mov r0, sl
 	mov r1, #0
 	mov r2, #0x6e
-	bl ov29_022EB60C
+	bl RemoveUsedItem
 	add r0, r4, #0x4a
 	mov r1, #0x2c
 	bl SetMonsterActionFields
@@ -1770,7 +1770,7 @@ _0231E430:
 _0231E448:
 	mov r0, r7
 	mov r1, #1
-	bl ov29_02300634
+	bl MonsterHasNegativeStatus
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #0
@@ -2155,8 +2155,8 @@ _0231E97C:
 _0231E98C: .word 0x0235171C
 	arm_func_end ov29_0231E8F0
 
-	arm_func_start ov29_0231E990
-ov29_0231E990: ; 0x0231E990
+	arm_func_start ShouldTryEatItem
+ShouldTryEatItem: ; 0x0231E990
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	cmp r4, #0x45
@@ -2186,7 +2186,7 @@ _0231E9D8:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0231E9EC: .word 0x022C4B74
-	arm_func_end ov29_0231E990
+	arm_func_end ShouldTryEatItem
 
 	arm_func_start GetMaxPpWrapper
 GetMaxPpWrapper: ; 0x0231E9F0
@@ -2217,19 +2217,19 @@ MoveIsNotPhysical: ; 0x0231EA18
 	ldmia sp!, {r3, pc}
 	arm_func_end MoveIsNotPhysical
 
-	arm_func_start ov29_0231EA30
-ov29_0231EA30: ; 0x0231EA30
+	arm_func_start CategoryIsNotPhysical
+CategoryIsNotPhysical: ; 0x0231EA30
 	cmp r0, #0
 	moveq r0, #0
 	movne r0, #1
 	bx lr
-	arm_func_end ov29_0231EA30
+	arm_func_end CategoryIsNotPhysical
 
 	arm_func_start ov29_0231EA40
 ov29_0231EA40: ; 0x0231EA40
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	bne _0231EA80
 	ldr r0, _0231EDC8 ; =0x02353538
@@ -2399,7 +2399,7 @@ _0231EC88:
 _0231ECA8:
 	mov r0, r5
 	mov r1, r7
-	bl ov29_02336A84
+	bl DetermineTileWalkableNeighbors
 	add r7, r7, #1
 	cmp r7, #0x20
 	blt _0231EC88
@@ -2430,8 +2430,8 @@ _0231ED08:
 	bl ov29_0233785C
 	bl ov29_0233665C
 	bl ov29_02304B64
-	bl ov29_02339CE8
-	bl ov29_02336F4C
+	bl UpdateMinimap
+	bl UpdateTrapsVisibility
 	ldr r1, _0231EDD4 ; =0x00000DFE
 	mov r0, sl
 	bl LogMessageByIdWithPopupCheckUser
@@ -2459,7 +2459,7 @@ _0231ED58:
 	cmp r0, #0
 	beq _0231ED98
 	mov r0, r5
-	bl ov29_02321104
+	bl EnsureCanStandCurrentTile
 _0231ED98:
 	add r6, r6, #1
 	cmp r6, #0x14

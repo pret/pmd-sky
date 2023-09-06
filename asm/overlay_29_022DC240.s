@@ -229,7 +229,7 @@ ov29_022DC544: ; 0x022DC544
 	mov r2, #0x300
 	ldr r1, [r1, r0, lsl #2]
 	add r0, sp, #0
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r4, [sp]
 	ldr r2, [sp, #4]
 	mov r0, r4
@@ -718,7 +718,7 @@ _022DCB24:
 	mov fp, r6, lsl #5
 	mov r0, r2, asr #2
 	mov r6, r3, lsr #0x10
-	bl DivideInt
+	bl __divsi3
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1374,7 +1374,7 @@ ov29_022DD518: ; 0x022DD518
 	mov r0, r0, asr #2
 	smulbb r2, r3, r2
 	mov r6, r2, lsl #5
-	bl DivideInt
+	bl __divsi3
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0xe
@@ -2700,8 +2700,8 @@ ov29_022DE608: ; 0x022DE608
 _022DE61C: .word 0x02353530
 	arm_func_end ov29_022DE608
 
-	arm_func_start ov29_022DE620
-ov29_022DE620: ; 0x022DE620
+	arm_func_start GetWeatherColorTable
+GetWeatherColorTable: ; 0x022DE620
 	ldr r1, _022DE634 ; =0x02353530
 	ldr r1, [r1]
 	ldr r1, [r1, #0x48]
@@ -2709,7 +2709,7 @@ ov29_022DE620: ; 0x022DE620
 	bx lr
 	.align 2, 0
 _022DE634: .word 0x02353530
-	arm_func_end ov29_022DE620
+	arm_func_end GetWeatherColorTable
 
 	arm_func_start ov29_022DE638
 ov29_022DE638: ; 0x022DE638
@@ -2720,7 +2720,7 @@ ov29_022DE638: ; 0x022DE638
 	mov r4, #0
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
-	bl ov10_022C2574
+	bl IsBackgroundTileset
 	cmp r0, #0
 	mov r1, r4
 	bne _022DE754
@@ -2740,7 +2740,7 @@ ov29_022DE638: ; 0x022DE638
 	bl sub_02051EF0
 	mov r0, #1
 	bl sub_02051D68
-	bl ov29_02336450
+	bl GetDefaultTileTextureId
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r7, #0
@@ -2803,7 +2803,7 @@ _022DE754:
 	bl sub_02051EF0
 	mov r0, #1
 	bl sub_02051D68
-	bl ov29_02336450
+	bl GetDefaultTileTextureId
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r7, #0
@@ -3523,7 +3523,7 @@ _022DF0AC:
 	bl ov29_022E6F94
 	bl ov29_022E1640
 	bl ov29_023362EC
-	bl ov29_02344054
+	bl OpenFixedBin
 	bl ov29_022E9F18
 	bl ov29_02338F68
 	mov r0, #0
@@ -3641,7 +3641,7 @@ _022DF238:
 	bl sub_020634F4
 _022DF2C4:
 	ldr r0, [sb, #0x7a0]
-	bl ov29_022EA968
+	bl SetDungeonRngPreseed23Bit
 	b _022DF2D8
 _022DF2D0:
 	ldr r0, [sb, #0x7ac]
@@ -3820,7 +3820,7 @@ _022DF53C:
 	ldr r2, _022DFF5C ; =ov29_022DEBBC
 	mov r0, r5
 	and r1, r1, #0xff
-	bl ov29_022E6FBC
+	bl LoadMappaFileAttributes
 	mov r0, #0
 	bl ov29_0234B4CC
 	bl ov29_0234BB38
@@ -3854,7 +3854,7 @@ _022DF5C4:
 	bl ov29_022FBB1C
 _022DF5CC:
 	bl ov29_022FE2E4
-	bl ov29_022FBF58
+	bl InitEnemySpawnStats
 	cmp r5, #0
 	bne _022DF5E4
 	bl ov29_022EAD68
@@ -3875,7 +3875,7 @@ _022DF5E4:
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_02344178
+	bl IsRoomIlluminated
 	cmp r0, #0
 	addne r0, sb, #0x1a000
 	movne r1, #1
@@ -3886,7 +3886,7 @@ _022DF5E4:
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_022E0864
+	bl IsBossFight
 	cmp r0, #0
 	bne _022DF660
 	mov r0, #0x3c
@@ -3905,17 +3905,17 @@ _022DF660:
 	strb r0, [sb, #0x79a]
 _022DF68C:
 	bl ov29_0233785C
-	bl ov29_02336A4C
+	bl DetermineAllTilesWalkableNeighbors
 	bl ov29_02336460
 	cmp r5, #0
 	bne _022DF6C0
 	ldr r0, [sp, #4]
-	bl InitTeam
+	bl SpawnTeam
 	mov r0, #0
 	str r0, [sp, #4]
-	bl ov29_022FE24C
-	bl ov29_022FCD78
-	bl ov29_0233836C
+	bl SpawnShopkeepers
+	bl SpawnInitialMonsters
+	bl ResetGravity
 	b _022DF6F8
 _022DF6C0:
 	ldr r0, _022DFF40 ; =0x02353538
@@ -3946,21 +3946,21 @@ _022DF6F8:
 	bl ov29_022ED888
 	bl ov29_0233873C
 	bl ov29_02344C4C
-	bl ov29_02338560
+	bl TrySpawnDoughSeedPoke
 	ldr r1, [sb, #0x7bc]
 	mov r0, #0
 	str r1, [sb, #0x7c4]
 	str r0, [sb, #0x7c0]
 	bl ov29_02343980
 	bl ov29_0233781C
-	bl ov29_0233AE94
+	bl ClearHiddenStairs
 	b _022DF750
 _022DF74C:
 	bl ov29_022F9970
 _022DF750:
 	bl ov29_022F7EAC
 	bl ov29_0233665C
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 	cmp r5, #0
 	bne _022DF778
 	mov r1, #0
@@ -3987,7 +3987,7 @@ _022DF798:
 	bl ov29_023350FC
 	bl ov29_022FA750
 _022DF7B4:
-	bl ov29_02336260
+	bl CountItemsOnFloorForAcuteSniffer
 	mov r0, r5
 	bl ov29_0233904C
 	mov r0, #1
@@ -4000,7 +4000,7 @@ _022DF7B4:
 	bne _022DF7EC
 	mov r0, #1
 	bl ov29_0233A1BC
-	bl ov29_02339CE8
+	bl UpdateMinimap
 _022DF7EC:
 	mov r0, #0
 	bl ov29_022E34B0
@@ -4091,7 +4091,7 @@ _022DF90C:
 	bne _022DF944
 	bl GetLeader
 	bl ov29_022E2DFC
-	bl ov29_02339CE8
+	bl UpdateMinimap
 _022DF944:
 	ldr r0, _022DFF40 ; =0x02353538
 	ldr r0, [r0]
@@ -4110,7 +4110,7 @@ _022DF974:
 	bl ov29_022FACBC
 	mov r0, #0
 	bl ov29_022FAA58
-	bl ov29_022EFA74
+	bl TryActivateIqBooster
 	mov r0, #0
 	bl ov29_022FAF08
 	bl TryActivateSlowStart
@@ -4179,7 +4179,7 @@ _022DFA78:
 	bl ov29_02338F48
 	mov r0, #1
 	bl ov29_02339F88
-	bl ov29_02339CE8
+	bl UpdateMinimap
 	cmp r5, #0
 	bne _022DFAA4
 	mov r0, #0
@@ -4196,7 +4196,7 @@ _022DFAA4:
 	bl ov29_02305814
 	mov r0, #1
 	mov r1, r7
-	bl ov29_023354C4
+	bl TryActivateWeather
 _022DFAD4:
 	mov r0, #0x10c00
 	bl ov10_022BFE6C
@@ -4392,9 +4392,9 @@ _022DFD9C:
 	mov r3, #0
 	bl ov29_022ECDE4
 _022DFDB0:
-	bl ov29_023384F0
-	bl ov29_0233861C
-	bl ov29_022F7804
+	bl UpdateShouldBoostKecleonShopSpawnChance
+	bl UpdateShouldBoostHiddenStairsSpawnChance
+	bl DeleteAllMonsterSpriteFiles
 	bl ov29_023365B8
 	bl ov29_022DD7AC
 	ldr r0, _022DFF40 ; =0x02353538
@@ -4771,12 +4771,12 @@ _022E030C:
 	bl ov29_02338D30
 	bl ov29_022ED0B0
 	bl ov29_022DE930
-	bl ov29_022F6F10
+	bl FreeLoadedAttackSpriteAndMore
 	ldr r0, _022DFF40 ; =0x02353538
 	mov r1, #0
 	str r1, [r0]
 	bl ov29_022DE15C
-	bl ov29_02344088
+	bl CloseFixedBin
 	mov r0, #1
 	add sp, sp, #0xd0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}

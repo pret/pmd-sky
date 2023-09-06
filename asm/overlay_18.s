@@ -680,7 +680,7 @@ ov18_0238AAC0: ; 0x0238AAC0
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -703,7 +703,7 @@ ov18_0238AAE8: ; 0x0238AAE8
 _0238AB18:
 	mov r0, r5
 	add r1, sp, #0
-	bl sub_0205384C
+	bl GetEncodedHalfword
 	ldrb r1, [r0]
 	add r5, r0, #1
 	cmp r1, r8
@@ -850,7 +850,7 @@ ov18_0238ACE4: ; 0x0238ACE4
 _0238AD14:
 	mov r0, r5
 	add r1, sp, #0
-	bl sub_0205384C
+	bl GetEncodedHalfword
 	ldrb r1, [r0]
 	add r5, r0, #1
 	cmp r1, r8
@@ -1432,12 +1432,12 @@ _0238B4A4:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x64
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238BD40 ; =ov18_0238D620
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x64
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238BD40 ; =ov18_0238D620
 	ldr r1, [r0]
 	ldrsb r0, [r1, #1]
@@ -3588,7 +3588,7 @@ ov18_0238CF98: ; 0x0238CF98
 	mov r2, #8
 	add r0, r0, #0xa6
 	add r0, r0, #0x300
-	bl Memcpy
+	bl memcpy
 	ldr r0, _0238D030 ; =ov18_0238D620
 	mov r2, #0
 	ldr r1, [r0]

@@ -9,7 +9,7 @@ ItemIsActive__02311034: ; 0x02311034
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -53,7 +53,7 @@ TickStatusAndHealthRegen: ; 0x02311088
 	bhi _023110E0
 	mov r0, sl
 	mov r1, #0x72
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	moveq r4, #1
 _023110E0:
@@ -98,7 +98,7 @@ _0231115C:
 	ldreqsh r0, [r0]
 	addeq r4, r4, r0
 	mov r0, sl
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0231119C
 	mov r0, sl
@@ -110,7 +110,7 @@ _0231115C:
 _0231119C:
 	mov r0, sl
 	mov r1, #0x55
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023111C8
 	mov r0, sl
@@ -122,7 +122,7 @@ _0231119C:
 _023111C8:
 	mov r0, sl
 	mov r1, #0x4d
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023111F4
 	mov r0, sl
@@ -209,7 +209,7 @@ _02311304:
 	mov r1, sl
 	mov r3, r2
 	str r2, [sp]
-	bl ov29_02305FDC
+	bl EndSleepClassStatus
 _0231131C:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -228,7 +228,7 @@ _0231131C:
 	bne _02311364
 	mov r0, sl
 	mov r1, sl
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 _02311364:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -290,14 +290,14 @@ _023113F8:
 	cmp r0, #0
 	bne _02311450
 	mov r0, sl
-	bl ov29_023183E8
+	bl ApplyAquaRingHealing
 _02311450:
 	ldrb r0, [r7, #0xd6]
 	cmp r0, #0
 	bne _02311468
 	mov r0, sl
 	mov r1, sl
-	bl ov29_023064F4
+	bl EndReflectClassStatus
 _02311468:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -318,7 +318,7 @@ _02311468:
 	mov r1, sl
 	mov r2, #0
 	mov r3, #1
-	bl ov29_02306728
+	bl EndCurseClassStatus
 _023114B8:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -337,7 +337,7 @@ _023114B8:
 	bne _02311500
 	mov r0, sl
 	mov r1, sl
-	bl ov29_023068C4
+	bl EndLeechSeedClassStatus
 _02311500:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -356,7 +356,7 @@ _02311500:
 	bne _02311548
 	mov r0, sl
 	mov r1, sl
-	bl ov29_02306950
+	bl EndSureShotClassStatus
 _02311548:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -376,7 +376,7 @@ _02311548:
 	mov r0, sl
 	mov r1, sl
 	mov r2, #0
-	bl ov29_02306A00
+	bl EndInvisibleClassStatus
 _02311594:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -395,7 +395,7 @@ _02311594:
 	bne _023115DC
 	mov r0, sl
 	mov r1, sl
-	bl ov29_02306B28
+	bl EndBlinkerClassStatus
 _023115DC:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -414,7 +414,7 @@ _023115DC:
 	bne _02311624
 	mov r0, sl
 	mov r1, sl
-	bl ov29_02306BF8
+	bl EndMuzzledStatus
 _02311624:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -433,7 +433,7 @@ _02311624:
 	bne _0231166C
 	mov r0, sl
 	mov r1, sl
-	bl ov29_02306C64
+	bl EndMiracleEyeStatus
 _0231166C:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -452,7 +452,7 @@ _0231166C:
 	bne _023116B4
 	mov r0, sl
 	mov r1, sl
-	bl ov29_02306CD0
+	bl EndMagnetRiseStatus
 _023116B4:
 	mov r0, sl
 	bl EntityIsValid__02311010
@@ -577,7 +577,7 @@ InflictSleepStatusSingle: ; 0x02311824
 	beq _02311890
 	mov r0, r7
 	mov r1, #0x2f
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02311890
 	add r0, r6, r6, lsr #31

@@ -42,7 +42,7 @@ ov29_022F62CC: ; 0x022F62CC
 	cmp r0, #0
 	beq _022F6364
 	mov r0, #0
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 _022F6364:
 	ldr r0, _022F66FC ; =0x02353538
 	mov r2, #0
@@ -83,7 +83,7 @@ _022F63D8:
 	mov r1, r0
 	add r0, sp, #0x18
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	cmp fp, #0
 	cmpeq r5, #1
 	bne _022F6448
@@ -149,13 +149,13 @@ _022F648C:
 	ldrsh r0, [sl, #4]
 	mov r7, #1
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	bgt _022F6510
 	ldrsh r1, [r4, #6]
 	ldrsh r0, [sl, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	ble _022F65CC
 _022F6510:
@@ -193,7 +193,7 @@ _022F6548:
 	beq _022F65B4
 	mov r0, sl
 	add r1, sp, #0x14
-	bl ov29_022FF764
+	bl CannotStandOnTile
 	cmp r0, #0
 	bne _022F65B4
 	add r3, sp, #0x14
@@ -332,7 +332,7 @@ ov29_022F6748: ; 0x022F6748
 	mov r1, r0
 	add r0, sp, #0
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r0, #1
 	bl ov29_022F67D0
 	mov r0, #1
@@ -385,7 +385,7 @@ ov29_022F67D0: ; 0x022F67D0
 	mov r1, r0
 	add r0, sp, #0x14
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	ldr r0, _022F69EC ; =0x02353538
 	cmp r4, #0
 	ldr r0, [r0]
@@ -417,7 +417,7 @@ _022F6870:
 	add r0, sp, #0x14
 	mov r3, r2
 	str r2, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _022F69E4
 	ldr r0, _022F6A00 ; =0x00001308
@@ -459,7 +459,7 @@ _022F68FC:
 	ldr r1, [r0]
 	cmp r1, #3
 	bne _022F698C
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r1, [r0]
 	tst r1, #2
 	bne _022F698C
@@ -471,9 +471,9 @@ _022F68FC:
 	ldrh r2, [r0, #4]
 	mov r0, r5
 	strh r2, [sp, #0x10]
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldrsh r0, [sp, #0x10]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	ldrneb r0, [sp, #0xc]
 	mov r1, r6
@@ -481,7 +481,7 @@ _022F68FC:
 	orrne r0, r0, #2
 	strneb r0, [sp, #0xc]
 	mov r0, r5
-	bl ov29_02345538
+	bl SpawnItem
 _022F698C:
 	add r8, r8, #1
 _022F6990:
@@ -535,7 +535,7 @@ ov29_022F6A0C: ; 0x022F6A0C
 	mov r1, r0
 	add r0, sp, #4
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	ldr r0, _022F6C8C ; =0x02353538
 	cmp r4, #0
 	ldr r0, [r0]
@@ -573,7 +573,7 @@ _022F6AAC:
 	add r0, sp, #4
 	mov r3, #1
 	str r2, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	beq _022F6AE8
 	mov r0, #1
@@ -613,10 +613,10 @@ _022F6B28:
 	ldr r1, [r0]
 	cmp r1, #3
 	bne _022F6B78
-	bl ov29_022E1610
+	bl GetItemInfo
 	mov r7, r0
 	ldrsh r0, [r7, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	ldrneb r0, [r7]
 	bicne r0, r0, #2
@@ -645,7 +645,7 @@ _022F6BA4:
 	tst r0, #0xff
 	beq _022F6BE4
 	ldrsh r0, [r7, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	ldrneb r0, [r7]
 	bicne r0, r0, #2
@@ -675,7 +675,7 @@ _022F6C00:
 	tst r0, #0xff
 	beq _022F6C54
 	ldrsh r0, [r6, #0x66]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	ldrneb r0, [r6, #0x62]
 	bicne r0, r0, #2
@@ -733,7 +733,7 @@ _022F6CE0:
 	ldr r1, [r0]
 	cmp r1, #3
 	bne _022F6D14
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r1, [r0]
 	bic r1, r1, #2
 	strb r1, [r0]
@@ -809,8 +809,8 @@ _022F6E10: .word 0x00000E54
 _022F6E14: .word 0x020AF6B8
 	arm_func_end ov29_022F6CAC
 
-	arm_func_start ResetDamageDesc
-ResetDamageDesc: ; 0x022F6E18
+	arm_func_start ResetDamageData
+ResetDamageData: ; 0x022F6E18
 	mov r1, #0
 	str r1, [r0]
 	str r1, [r0, #4]
@@ -821,7 +821,7 @@ ResetDamageDesc: ; 0x022F6E18
 	strb r1, [r0, #0xf]
 	strb r1, [r0, #0x10]
 	bx lr
-	arm_func_end ResetDamageDesc
+	arm_func_end ResetDamageData
 
 	arm_func_start ov29_022F6E40
 ov29_022F6E40: ; 0x022F6E40
@@ -887,10 +887,10 @@ _022F6F08: .word 0x0000FFFF
 _022F6F0C: .word 0x023535AC
 	arm_func_end ov29_022F6EF4
 
-	arm_func_start ov29_022F6F10
-ov29_022F6F10: ; 0x022F6F10
+	arm_func_start FreeLoadedAttackSpriteAndMore
+FreeLoadedAttackSpriteAndMore: ; 0x022F6F10
 	stmdb sp!, {r4, r5, r6, lr}
-	bl ov29_022F7008
+	bl ClearLoadedAttackSprite
 	ldr r0, _022F6F60 ; =0x0237C9AC
 	ldr r0, [r0]
 	bl MemFree
@@ -914,10 +914,10 @@ _022F6F44:
 	.align 2, 0
 _022F6F60: .word 0x0237C9AC
 _022F6F64: .word 0x0237C9B0
-	arm_func_end ov29_022F6F10
+	arm_func_end FreeLoadedAttackSpriteAndMore
 
-	arm_func_start ov29_022F6F68
-ov29_022F6F68: ; 0x022F6F68
+	arm_func_start SetAndLoadCurrentAttackAnimation
+SetAndLoadCurrentAttackAnimation: ; 0x022F6F68
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r2, _022F6FFC ; =0x023535AC
 	mov r5, r0
@@ -933,7 +933,7 @@ ov29_022F6F68: ; 0x022F6F68
 	ldrsh r0, [r0]
 	cmp r0, #0
 	beq _022F6FA8
-	bl ov29_022F7008
+	bl ClearLoadedAttackSprite
 _022F6FA8:
 	mov r1, #1
 	ldr r0, _022F7004 ; =0x020AFC68
@@ -943,7 +943,7 @@ _022F6FA8:
 	ldr r3, [r1]
 	mov r1, r5
 	mov r2, r4
-	bl sub_0201D590
+	bl LoadWanTableEntryFromPackUseProvidedMemory
 	ldr r1, _022F7000 ; =0x0237C9AC
 	ldr r2, _022F6FFC ; =0x023535AC
 	ldr r1, [r1]
@@ -961,10 +961,10 @@ _022F6FE8:
 _022F6FFC: .word 0x023535AC
 _022F7000: .word 0x0237C9AC
 _022F7004: .word 0x020AFC68
-	arm_func_end ov29_022F6F68
+	arm_func_end SetAndLoadCurrentAttackAnimation
 
-	arm_func_start ov29_022F7008
-ov29_022F7008: ; 0x022F7008
+	arm_func_start ClearLoadedAttackSprite
+ClearLoadedAttackSprite: ; 0x022F7008
 	stmdb sp!, {r3, lr}
 	ldr r0, _022F7048 ; =0x0237C9AC
 	ldr r0, [r0]
@@ -984,10 +984,10 @@ ov29_022F7008: ; 0x022F7008
 	.align 2, 0
 _022F7048: .word 0x0237C9AC
 _022F704C: .word 0x020AFC68
-	arm_func_end ov29_022F7008
+	arm_func_end ClearLoadedAttackSprite
 
-	arm_func_start ov29_022F7050
-ov29_022F7050: ; 0x022F7050
+	arm_func_start GetLoadedAttackSpriteId
+GetLoadedAttackSpriteId: ; 0x022F7050
 	ldr r0, _022F7064 ; =0x0237C9AC
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
@@ -995,10 +995,10 @@ ov29_022F7050: ; 0x022F7050
 	bx lr
 	.align 2, 0
 _022F7064: .word 0x0237C9AC
-	arm_func_end ov29_022F7050
+	arm_func_end GetLoadedAttackSpriteId
 
-	arm_func_start ov29_022F7068
-ov29_022F7068: ; 0x022F7068
+	arm_func_start DungeonGetTotalSpriteFileSize
+DungeonGetTotalSpriteFileSize: ; 0x022F7068
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, #0
@@ -1042,7 +1042,7 @@ _022F70F4: .word 0x0000017B
 _022F70F8: .word 0x0000017D
 _022F70FC: .word 0x0000017E
 _022F7100: .word 0x000001CD
-	arm_func_end ov29_022F7068
+	arm_func_end DungeonGetTotalSpriteFileSize
 
 	arm_func_start ov29_022F7104
 ov29_022F7104: ; 0x022F7104
