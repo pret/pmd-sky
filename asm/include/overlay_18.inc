@@ -21,7 +21,7 @@
 .public sub_0203A618
 .public MemFree
 .public sub_0203A9EC
-.public sub_0205384C
+.public GetEncodedHalfword
 .public GetAdvancedMenuResult
 .public GetNormalMenuResult
 .public sub_020407EC
@@ -34,7 +34,7 @@
 .public sub_0204159C
 .public GetMovesetLevelUpPtr
 .public sub_02017CCC
-.public Vsprintf
+.public vsprintf
 .public sub_02041614
 .public sub_0203A5A8
 .public sub_0203088C
@@ -79,7 +79,7 @@
 .public IsNormalMenuActive
 .public sub_0203AA20
 .public sub_020416BC
-.public Memcpy
+.public memcpy
 .public sub_020307EC
 .public sub_020415BC
 .public sub_0203FD14
@@ -88,10 +88,10 @@
 .public sub_02041B7C
 .public sub_02041A18
 .public sub_020564B0
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public CreateNormalMenu
 .public sub_0203F150
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public sub_0204018C
 .public sub_02041860
 .public sub_020420F4

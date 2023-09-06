@@ -61,7 +61,7 @@ ov29_02304830: ; 0x02304830
 	bne _023048E0
 	ldrsh r1, [r5, #0xa8]
 	add r0, r5, #0x2c
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	bl Rand16Bit
 	ldrb r1, [r5, #0xaa]
 	and r0, r0, #3
@@ -75,14 +75,14 @@ ov29_02304830: ; 0x02304830
 	ldrb r2, [r5, #0xb0]
 	add r0, r5, #0x2c
 	mov r3, r3, asr #0x10
-	bl sub_0201C418
+	bl SetAndPlayAnimationForAnimationControl
 	b _0230492C
 _023048E0:
 	ldr r0, _02304950 ; =0x00000229
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	mov r1, r0
 	add r0, r5, #0x2c
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	bl Rand16Bit
 	mov r1, r6, lsl #0x10
 	mov r3, r1, asr #0x10
@@ -96,7 +96,7 @@ _023048E0:
 	add r0, r5, #0x2c
 	ldrb r1, [r5, #0xae]
 	ldrb r2, [r5, #0xb0]
-	bl sub_0201C418
+	bl SetAndPlayAnimationForAnimationControl
 _0230492C:
 	mov r0, #0
 	strb r0, [r5, #0xb2]
@@ -328,7 +328,7 @@ ov29_02304BAC: ; 0x02304BAC
 	ldmeqia sp!, {r4, r5, r6, pc}
 	cmp r6, #1
 	bne _02304BF8
-	bl ov29_02337E94
+	bl IsWaterTileset
 	cmp r0, #0
 	ldrne r0, _02304C30 ; =0x02352808
 	ldrneb r4, [r0, r4]
@@ -370,7 +370,7 @@ ov29_02304C3C: ; 0x02304C3C
 	mov r0, r4
 	ldrb r7, [r1, #0x4c]
 	mov r8, r7
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	mov sb, #0
@@ -483,7 +483,7 @@ ov29_02304D20: ; 0x02304D20
 	ldr r1, [r5]
 	mov r0, #0x18
 	mov r1, r1, lsl #1
-	bl DivideInt
+	bl __divsi3
 	add r1, sb, #0x100
 	strh r0, [r1, #0xb4]
 	ldr r0, [sb, #0x1ac]
@@ -496,7 +496,7 @@ ov29_02304D20: ; 0x02304D20
 	str r2, [sb, #0x1b0]
 	ldr r1, [r1]
 	mov r1, r1, lsl #1
-	bl DivideInt
+	bl __divsi3
 	strh r0, [r7, #0x18]
 	ldr r0, [r7, #0x10]
 	mov r0, r0, lsl #1
@@ -516,7 +516,7 @@ _02304E80:
 	ldr r1, [r5]
 	mov r0, r4
 	add r1, r1, r1, lsl #1
-	bl DivideInt
+	bl __divsi3
 	add r1, r8, #0x100
 	strh r0, [r1, #0xb4]
 	ldr r0, [r8, #0x1ac]
@@ -540,7 +540,7 @@ _02304E80:
 	mov r0, #0x18
 	ldr r1, [r1]
 	add r1, r1, r1, lsl #1
-	bl DivideInt
+	bl __divsi3
 	strh r0, [r7, #0x18]
 	ldr r0, [r7, #0x10]
 	add r0, r0, r0, lsl #1
@@ -561,7 +561,7 @@ _02304F2C:
 	ldr r1, [r5]
 	mov r0, r6
 	mov r1, r1, lsl #2
-	bl DivideInt
+	bl __divsi3
 	add r1, sl, #0x100
 	strh r0, [r1, #0xb4]
 	ldr r0, [sl, #0x1ac]
@@ -572,11 +572,11 @@ _02304F2C:
 	mov r0, r0, lsl #2
 	str r0, [sl, #0x1b0]
 	ldr r0, [sl, #0x1ac]
-	bl DivideInt
+	bl __divsi3
 	str r0, [sl, #0x1ac]
 	ldr r0, [sl, #0x1b0]
 	mov r1, #3
-	bl DivideInt
+	bl __divsi3
 	add r8, r8, #1
 	str r0, [sl, #0x1b0]
 	cmp r8, #3
@@ -585,7 +585,7 @@ _02304F2C:
 	mov r0, #0x18
 	ldr r1, [r1]
 	mov r1, r1, lsl #2
-	bl DivideInt
+	bl __divsi3
 	strh r0, [r7, #0x18]
 	ldr r0, [r7, #0x10]
 	mov r0, r0, lsl #2
@@ -597,7 +597,7 @@ _02304F2C:
 _02304FC0:
 	ldr r1, [r5]
 	mov r0, #0x18
-	bl DivideInt
+	bl __divsi3
 	strh r0, [r7, #0x18]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -695,7 +695,7 @@ _023050EC:
 	add r2, r2, #0x10
 	mov r2, r2, lsl #8
 	str r2, [sp, #0x10]
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	ldr r2, [sb, #0x1a8]
 	mov r0, r8
 	mov r1, #0
@@ -704,7 +704,7 @@ _023050EC:
 	strh fp, [r0, #0xe]
 	mov r0, r8
 	mov r6, #1
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r7, r6
 _02305160:
@@ -807,7 +807,7 @@ _02305258:
 	mov r2, r2, lsl #8
 	add r1, sp, #4
 	str r2, [sp, #8]
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	add r2, sb, #0x200
 	ldrsh r3, [r2, #0xe]
 	mov r2, #0x1c
@@ -825,7 +825,7 @@ _02305314:
 	ldr r1, _02305584 ; =0x0237C9CC
 	mov r0, #0x18
 	ldr r1, [r1]
-	bl DivideInt
+	bl __divsi3
 	cmp r5, r0
 	blt _023051B0
 _0230532C:
@@ -849,7 +849,7 @@ _02305338:
 	beq _0230537C
 	mov r0, r5
 	mov r1, r4
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 _0230537C:
 	add r7, r7, #1
 	cmp r7, #0x14
@@ -907,10 +907,10 @@ _02305430:
 	cmp r0, #0
 	beq _0230545C
 	add r0, sb, #4
-	bl ov29_02337A3C
+	bl DiscoverMinimap
 	mov r0, fp
 	bl ov29_022F62CC
-	bl ov29_022F3634
+	bl CheckLeaderTile
 	b _0230547C
 _0230545C:
 	mov r0, sb
@@ -920,7 +920,7 @@ _0230545C:
 	cmp r0, #0
 	beq _0230552C
 	mov r0, sb
-	bl ov29_02305694
+	bl CheckNonLeaderTile
 _0230547C:
 	mov r0, sb
 	bl EntityIsValid__0230558C
@@ -966,7 +966,7 @@ _023054E4:
 	strneb r7, [r4]
 	bl ov29_022F9C74
 	mov r0, sb
-	bl ov29_02321104
+	bl EnsureCanStandCurrentTile
 _0230552C:
 	add sl, sl, #1
 _02305530:

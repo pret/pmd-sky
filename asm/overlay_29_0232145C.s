@@ -114,7 +114,7 @@ _023215D8:
 	cmpne r0, #0xe3
 	mov r0, sl
 	bne _02321610
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	bne _02321620
 	mov r0, sl
@@ -145,7 +145,7 @@ _02321620:
 	mov r0, sl
 	mov r1, r4
 	str r2, [sp, #0x14]
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	ldrb r1, [r4, #6]
 	mov fp, r0
 	cmp r1, #0
@@ -279,7 +279,7 @@ _0232183C:
 	bl LogMessageByIdWithPopupCheckUser
 _02321848:
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	mov r0, sl
 	bl EntityIsValid__02321438
 	cmp r0, #0
@@ -309,7 +309,7 @@ _0232189C:
 	ldrh r1, [r0, #0x94]
 	add r4, sp, #0x24
 	mov r0, r4
-	bl GetInfoMoveCheckId
+	bl InitMoveCheckId
 	ldrb r0, [sp, #0x24]
 	tst r0, #1
 	movne r0, #1
@@ -366,7 +366,7 @@ _02321978:
 	bl ov29_02322374
 _0232198C:
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 _02321994:
 	add sb, sb, #1
 	cmp sb, #4
@@ -431,8 +431,8 @@ _02321A70: .word 0x00000E77
 _02321A74: .word 0x022C4714
 	arm_func_end ov29_0232145C
 
-	arm_func_start ov29_02321A78
-ov29_02321A78: ; 0x02321A78
+	arm_func_start TryActivateNondamagingDefenderAbility
+TryActivateNondamagingDefenderAbility: ; 0x02321A78
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EntityIsValid__02321438
@@ -584,7 +584,7 @@ _02321C7C:
 	mov r0, r5
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, r5
-	bl ov29_0231B33C
+	bl ActivateStench
 _02321CB0:
 	add r0, r4, #0x100
 	mov r1, #0
@@ -603,10 +603,10 @@ _02321CE0: .word 0x022C4720
 _02321CE4: .word 0x00000E8A
 _02321CE8: .word 0x00000E8B
 _02321CEC: .word 0x00000E8C
-	arm_func_end ov29_02321A78
+	arm_func_end TryActivateNondamagingDefenderAbility
 
-	arm_func_start ov29_02321CF0
-ov29_02321CF0: ; 0x02321CF0
+	arm_func_start TryActivateNondamagingDefenderExclusiveItem
+TryActivateNondamagingDefenderExclusiveItem: ; 0x02321CF0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
@@ -874,7 +874,7 @@ _023220A8:
 	mov r0, r6
 	mov r1, r6
 	mov r3, r2
-	bl ov29_023176CC
+	bl TryInflictBlinkerStatus
 _023220E4:
 	ldr r0, [r4, #0x18c]
 	tst r0, #0x8000
@@ -903,7 +903,7 @@ _0232211C:
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, r5
 	mov r1, r5
-	bl ov29_0231657C
+	bl TryInflictInvisibleStatus
 _02322150:
 	ldr r0, [r4, #0x18c]
 	tst r0, #0x20000
@@ -934,7 +934,7 @@ _0232218C:
 	mov r0, r6
 	mov r1, r6
 	mov r2, #0
-	bl ov29_0231662C
+	bl TryInflictPerishSongStatus
 _023221C4:
 	ldr r0, [r4, #0x18c]
 	tst r0, #0x400000
@@ -996,10 +996,10 @@ _02322294: .word 0x00000E9E
 _02322298: .word 0x00000E9F
 _0232229C: .word 0x00000EA1
 _023222A0: .word 0x00000EA2
-	arm_func_end ov29_02321CF0
+	arm_func_end TryActivateNondamagingDefenderExclusiveItem
 
-	arm_func_start ov29_023222A4
-ov29_023222A4: ; 0x023222A4
+	arm_func_start GetMoveRangeDistance
+GetMoveRangeDistance: ; 0x023222A4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r2
 	mov r2, #1
@@ -1049,13 +1049,13 @@ _02322340:
 	beq _0232236C
 	mov r0, r7
 	mov r1, r6
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	moveq r4, #0
 _0232236C:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_023222A4
+	arm_func_end GetMoveRangeDistance
 
 	arm_func_start ov29_02322374
 ov29_02322374: ; 0x02322374
@@ -1071,10 +1071,10 @@ ov29_02322374: ; 0x02322374
 	mov r8, sl
 	str r7, [sp, #0x38]
 	ldr r4, [sp, #0x160]
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	mov r0, r6
 	mov r1, sl
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	mov r0, r6
 	mov r2, #1
@@ -1117,13 +1117,13 @@ _023223D4:
 	add r3, sp, #0x38
 	bl ov29_02322DDC
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	add r8, sp, #0x28
 	b _023224C4
 _02322460:
 	cmp r1, #0x77
 	bne _023224C4
-	bl ov29_023280D4
+	bl GetNaturePowerVariant
 	ldr r1, _02322D28 ; =0x022C4E40
 	mov r0, r0, lsl #3
 	ldrh r1, [r1, r0]
@@ -1144,13 +1144,13 @@ _02322460:
 	add r3, sp, #0x38
 	bl ov29_02322DDC
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	add r8, sp, #0x30
 _023224C4:
 	mov r0, r6
 	mov r1, r8
 	mov r2, #1
-	bl ov29_023222A4
+	bl GetMoveRangeDistance
 	and fp, r0, #0xff
 	bl ov29_0234B034
 	mov r1, #0
@@ -1165,7 +1165,7 @@ _023224C4:
 	bl FormatMoveStringMore
 	mov r0, r6
 	mov r1, r8
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _02322554
 	ldr r0, _02322D30 ; =0x00000EA6
@@ -1334,7 +1334,7 @@ _02322768:
 	bne _023227B0
 	mov r0, r6
 	mov r1, #0x5b
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	mov r0, r8
 	beq _023227A8
@@ -1380,7 +1380,7 @@ _023227C4:
 	bne _0232284C
 _02322824:
 	mov r0, r6
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	bne _02322860
 	mov r0, r6
@@ -1476,7 +1476,7 @@ _02322928:
 	bne _02322A54
 	mov r0, r6
 	mov r1, sl
-	bl ov29_022FB678
+	bl AreEntitiesAdjacent
 	cmp r0, #0
 	beq _02322A54
 	mov r0, r6
@@ -1665,7 +1665,7 @@ _02322BE8:
 	subne r0, r0, #1
 	strneb r0, [r8, #6]
 	mov r0, r6
-	bl ov29_023222A4
+	bl GetMoveRangeDistance
 	and fp, r0, #0xff
 	b _02322C88
 _02322C68:
@@ -1694,7 +1694,7 @@ _02322C98:
 	bl EndFrozenClassStatus
 	mov r0, r6
 	mov r1, r6
-	bl ov29_023068C4
+	bl EndLeechSeedClassStatus
 _02322CC4:
 	ldr r0, _02322D44 ; =0x0237CA68
 	ldrb r0, [r0, #2]
@@ -1756,14 +1756,14 @@ DefenderAbilityIsActive__02322D64: ; 0x02322D64
 	beq _02322DA8
 	mov r0, r7
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 _02322DA8:
 	mov r0, r6
 	mov r1, r5
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end DefenderAbilityIsActive__02322D64
 
@@ -1790,7 +1790,7 @@ ov29_02322DDC: ; 0x02322DDC
 	mov sb, r1
 	mov fp, r3
 	ldr r7, [sp, #0x28]
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r5, #1
 	cmp r8, #0
@@ -1801,7 +1801,7 @@ _02322E18:
 	ldr r0, [fp, r6, lsl #2]
 	cmp r0, #0
 	beq _02322E40
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r5, #1
 	bne _02322E40
@@ -1884,7 +1884,7 @@ _02322F24:
 	ldrb r1, [r1, #0x4c]
 	bl ov29_02304A48
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 _02322F4C:
 	mov r0, sl
 	mov r1, sb
@@ -2095,7 +2095,7 @@ _0232321C:
 	beq _02323250
 	mov r0, r8
 	mov r1, r7
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	mvneq r0, #0
 	streq r0, [sp, #0xb0]
@@ -2160,7 +2160,7 @@ _023232E4:
 	ldrsh r2, [r2, r4]
 	str r3, [sp, #0x10]
 	str r2, [sp, #0xc]
-	bl DivideInt
+	bl __divsi3
 	ldr r2, [sp, #0x84]
 	str r0, [sp, #0x18]
 	mul r1, r2, r0
@@ -2175,7 +2175,7 @@ _0232335C:
 _02323360:
 	mov r0, #0x80000
 	mov sb, #0
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #0x80]
 	mov r0, #1
 	bl ov29_0234B4CC
@@ -2470,7 +2470,7 @@ _023237A8:
 _023237BC:
 	ldr r0, [sl, #0xc]
 	mov r1, r7
-	bl ov29_02324854
+	bl TwoTurnMoveForcedMiss
 	cmp r0, #0
 	bne _02323818
 	mov r0, r8
@@ -2520,7 +2520,7 @@ _0232385C:
 	cmp r1, r0
 	bne _0232387C
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 _0232387C:
 	ldr r0, [sp, #0x88]
 	cmp r0, #0
@@ -2550,7 +2550,7 @@ _023238B4:
 	mov r0, r8
 	mov r2, r7
 	mov r1, #0
-	bl ov29_023256B4
+	bl PlayMoveAnimation
 _023238EC:
 	add sp, sp, #0xc0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -2623,7 +2623,7 @@ _02323984:
 	mov r4, r0
 	mov r1, r6
 	mov r0, #0x18
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	cmp r0, #2
@@ -2643,7 +2643,7 @@ _02323A18:
 _02323A20:
 	mov r0, #0x80000
 	mov r5, #0
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #0x1c]
 	ldrb r2, [r7, #0x4c]
 	ldr r1, _02323C38 ; =0x02352A8C
@@ -2764,7 +2764,7 @@ _02323BCC:
 	bl ov10_022BDE50
 _02323BE0:
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	mov r0, #0
 	bl ov29_0234B4CC
 	mov r0, #1
@@ -2780,7 +2780,7 @@ _02323BE0:
 	mov r0, sl
 	mov r2, sb
 	mov r1, #0
-	bl ov29_023256B4
+	bl PlayMoveAnimation
 	add sp, sp, #0x38
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -2854,7 +2854,7 @@ _02323D00:
 	bgt _02324008
 	mov r0, r6
 	mov r1, #0x6f
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _02323D4C
@@ -2876,7 +2876,7 @@ _02323D4C:
 	ldrsh sb, [sb, #0x2c]
 	subne r8, r8, r0
 	mov r0, r7
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldrh r0, [fp, #4]
 	addne sl, sl, #2
@@ -2924,7 +2924,7 @@ _02323DDC:
 _02323E30:
 	mov r0, r7
 	mov r1, #0x30
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02323E54
 	ldrh r0, [fp, #4]
@@ -3000,7 +3000,7 @@ _02323F44:
 	mov r0, r7
 	mov r1, #0x6a
 	add sl, sl, r4
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne sb, #0xa
 	mov r0, r7
@@ -3087,7 +3087,7 @@ ov29_02324030: ; 0x02324030
 	bne _023240C0
 	mov r0, sb
 	mov r1, r8
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	ldrh r1, [r8, #4]
 	mov r5, r0
 	cmp r1, #0x97
@@ -3145,7 +3145,7 @@ _02324134:
 	add r0, sp, #0x14
 	add r1, r2, r1
 	strh r1, [sp, #0x16]
-	bl ov29_02337B68
+	bl PositionHasMonster
 	cmp r0, #0
 	beq _02324194
 	stmia sp, {r0, r8}
@@ -3385,7 +3385,7 @@ _023244B8:
 _023244C0:
 	ldr r1, [sp, #0x1c]
 	mov r0, r5
-	bl ov29_02324854
+	bl TwoTurnMoveForcedMiss
 	cmp r0, #0
 	movne r4, #0
 	cmp r4, #0
@@ -3420,8 +3420,8 @@ ov29_02324514: ; 0x02324514
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_02324514
 
-	arm_func_start ov29_02324534
-ov29_02324534: ; 0x02324534
+	arm_func_start IsHyperBeamVariant
+IsHyperBeamVariant: ; 0x02324534
 	ldrh r2, [r0, #4]
 	cmp r2, #0xee
 	moveq r0, #1
@@ -3451,10 +3451,10 @@ ov29_02324534: ; 0x02324534
 	bx lr
 	.align 2, 0
 _023245A0: .word 0x000001C5
-	arm_func_end ov29_02324534
+	arm_func_end IsHyperBeamVariant
 
-	arm_func_start ov29_023245A4
-ov29_023245A4: ; 0x023245A4
+	arm_func_start IsChargingTwoTurnMove
+IsChargingTwoTurnMove: ; 0x023245A4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -3488,7 +3488,7 @@ _02324608:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02324618: .word 0x02352AAC
-	arm_func_end ov29_023245A4
+	arm_func_end IsChargingTwoTurnMove
 
 	arm_func_start ov29_0232461C
 ov29_0232461C: ; 0x0232461C
@@ -3609,8 +3609,8 @@ _02324790:
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_02324748
 
-	arm_func_start ov29_02324798
-ov29_02324798: ; 0x02324798
+	arm_func_start HasMaxGinsengBoost99
+HasMaxGinsengBoost99: ; 0x02324798
 	stmdb sp!, {r3, lr}
 	bl GetMoveMaxGinsengBoost
 	cmp r0, #0x63
@@ -3618,7 +3618,7 @@ ov29_02324798: ; 0x02324798
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02324798
+	arm_func_end HasMaxGinsengBoost99
 
 	arm_func_start ov29_023247B4
 ov29_023247B4: ; 0x023247B4
@@ -3638,7 +3638,7 @@ _023247D4:
 	cmp r0, #0
 	beq _02324814
 	mov r0, sb
-	bl ov29_02324798
+	bl HasMaxGinsengBoost99
 	cmp r0, #0
 	beq _02324814
 	ldrh r2, [sb, #4]
@@ -3667,8 +3667,8 @@ _0232484C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end ov29_023247B4
 
-	arm_func_start ov29_02324854
-ov29_02324854: ; 0x02324854
+	arm_func_start TwoTurnMoveForcedMiss
+TwoTurnMoveForcedMiss: ; 0x02324854
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #0xb4]
 	ldrb r0, [r2, #0x10b]
@@ -3715,7 +3715,7 @@ _023248D8:
 	ldmeqia sp!, {r3, pc}
 	cmp r0, #0x77
 	bne _02324920
-	bl ov29_023280D4
+	bl GetNaturePowerVariant
 	ldr r1, _02324930 ; =0x022C4E40
 	mov r0, r0, lsl #3
 	ldrh r0, [r1, r0]
@@ -3730,7 +3730,7 @@ _02324928:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02324930: .word 0x022C4E40
-	arm_func_end ov29_02324854
+	arm_func_end TwoTurnMoveForcedMiss
 
 	arm_func_start DungeonRandOutcomeUserTargetInteraction
 DungeonRandOutcomeUserTargetInteraction: ; 0x02324934
@@ -3765,7 +3765,7 @@ DungeonRandOutcomeUserTargetInteraction: ; 0x02324934
 	beq _023249DC
 	mov r0, r6
 	mov r1, #0x26
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023249CC
 	mov r0, r4, lsl #1
@@ -3813,7 +3813,7 @@ DungeonRandOutcomeUserAction: ; 0x02324A20
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, #0x26
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02324A68
 	mov r0, r4, lsl #1
@@ -4120,8 +4120,8 @@ _02324E34:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end UpdateMovePp
 
-	arm_func_start ov29_02324E44
-ov29_02324E44: ; 0x02324E44
+	arm_func_start GetDamageSourceWrapper
+GetDamageSourceWrapper: ; 0x02324E44
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
@@ -4130,7 +4130,7 @@ ov29_02324E44: ; 0x02324E44
 	ldrh r0, [r4, #4]
 	bl GetDamageSource
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_02324E44
+	arm_func_end GetDamageSourceWrapper
 
 	arm_func_start LowerSshort
 LowerSshort: ; 0x02324E64
@@ -4586,7 +4586,7 @@ _023254C8:
 	bl GetSpriteIndex__02052708
 	mov r1, r0
 	mov r0, #1
-	bl ov29_022F6F68
+	bl SetAndLoadCurrentAttackAnimation
 	mov r5, r0
 	b _02325530
 _02325500:
@@ -4594,7 +4594,7 @@ _02325500:
 	bl GetSpriteIndex__02052708
 	mov r1, r0
 	mov r0, #1
-	bl ov29_022F6F68
+	bl SetAndLoadCurrentAttackAnimation
 	mov r1, #0xff
 	mov r5, r0
 	strb r1, [sl, #0xaf]
@@ -4610,7 +4610,7 @@ _02325530:
 	bl ov29_023049A8
 	ldrb r1, [sl, #0xae]
 	mov r0, r5
-	bl sub_0201DA80
+	bl WanTableSpriteHasAnimationGroup
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -4659,7 +4659,7 @@ _023255E0:
 	cmp r0, #0
 	beq _02325600
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 _02325600:
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}

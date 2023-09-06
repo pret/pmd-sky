@@ -1,6 +1,6 @@
 #include "overlay_29_0232A3D8.h"
 
-u8 EntityIsValid__0232A3D8(struct entity *entity)
+u8 EntityIsValidMoveEffects__0232A3D8(struct entity *entity)
 {
     if (entity == NULL)
     {

@@ -30,7 +30,7 @@ _022FEDC8:
 	strneb r0, [r8, #0x177]
 	bne _022FEFA4
 	mov r0, r7
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	moveq r0, #0xff
 	streqb r0, [r8, #0x177]
@@ -178,7 +178,7 @@ _022FEFD4:
 	strneb r0, [sl, #0x177]
 	bne _022FF14C
 	mov r0, r8
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	moveq r0, #0xff
 	streqb r0, [sl, #0x178]
@@ -268,8 +268,8 @@ _022FF160: .word 0x02353538
 _022FF164: .word 0x00000DF4
 	arm_func_end ov29_022FEFC8
 
-	arm_func_start ov29_022FF168
-ov29_022FF168: ; 0x022FF168
+	arm_func_start TryActivateFlashFireOnAllMonsters
+TryActivateFlashFireOnAllMonsters: ; 0x022FF168
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
 	ldr r5, _022FF1C4 ; =0x02353538
@@ -289,7 +289,7 @@ _022FF178:
 	mov r0, r7
 	mov r1, r7
 	strb r6, [r2, #0x15c]
-	bl ov29_02313CE4
+	bl ActivateFlashFire
 _022FF1B4:
 	add r4, r4, #1
 	cmp r4, #0x14
@@ -297,7 +297,7 @@ _022FF1B4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022FF1C4: .word 0x02353538
-	arm_func_end ov29_022FF168
+	arm_func_end TryActivateFlashFireOnAllMonsters
 
 	arm_func_start HasStatusThatPreventsActing
 HasStatusThatPreventsActing: ; 0x022FF1C8
@@ -582,7 +582,7 @@ _022FF578:
 	beq _022FF5F0
 	mov r0, r7
 	add r1, r4, r1
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _022FF5F0
 	ldrb r0, [r6, #0xd4]
@@ -603,7 +603,7 @@ _022FF5D4:
 	mov r2, r5, lsl #0x10
 	add r0, r6, #0x4a
 	mov r2, r2, asr #0x10
-	bl ov29_022EBC98
+	bl SetActionUseMovePlayer
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _022FF5F0:
@@ -628,8 +628,8 @@ _022FF624: .word 0x00000C2D
 _022FF628: .word 0x00000C2F
 	arm_func_end ov29_022FF3F4
 
-	arm_func_start ov29_022FF62C
-ov29_022FF62C: ; 0x022FF62C
+	arm_func_start GetMobilityTypeCheckSlip
+GetMobilityTypeCheckSlip: ; 0x022FF62C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetMobilityType
@@ -650,10 +650,10 @@ _022FF660:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022FF670: .word 0x0237C9B8
-	arm_func_end ov29_022FF62C
+	arm_func_end GetMobilityTypeCheckSlip
 
-	arm_func_start ov29_022FF674
-ov29_022FF674: ; 0x022FF674
+	arm_func_start GetMobilityTypeCheckSlipAndFloating
+GetMobilityTypeCheckSlipAndFloating: ; 0x022FF674
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5, #0xb4]
@@ -663,22 +663,22 @@ ov29_022FF674: ; 0x022FF674
 	movne r2, #0
 	mov r0, r1
 	and r1, r2, #0xff
-	bl ov29_022FF62C
+	bl GetMobilityTypeCheckSlip
 	mov r4, r0
 	cmp r4, #3
 	beq _022FF6BC
 	mov r0, r5
-	bl HasConditionalGroundImmunity
+	bl IsFloating
 	cmp r0, #0
 	movne r0, #2
 	ldmneia sp!, {r3, r4, r5, pc}
 _022FF6BC:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022FF674
+	arm_func_end GetMobilityTypeCheckSlipAndFloating
 
-	arm_func_start ov29_022FF6C4
-ov29_022FF6C4: ; 0x022FF6C4
+	arm_func_start IsInvalidSpawnTile
+IsInvalidSpawnTile: ; 0x022FF6C4
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	ldr r1, [r4, #0xc]
@@ -690,7 +690,7 @@ ov29_022FF6C4: ; 0x022FF6C4
 	movne r0, #1
 	ldmneia sp!, {r4, pc}
 	mov r1, #0
-	bl ov29_022FF62C
+	bl GetMobilityTypeCheckSlip
 	ldrh r1, [r4]
 	cmp r0, #3
 	and r1, r1, #3
@@ -725,10 +725,10 @@ _022FF754:
 _022FF75C:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022FF6C4
+	arm_func_end IsInvalidSpawnTile
 
-	arm_func_start ov29_022FF764
-ov29_022FF764: ; 0x022FF764
+	arm_func_start CannotStandOnTile
+CannotStandOnTile: ; 0x022FF764
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r0
@@ -759,7 +759,7 @@ ov29_022FF764: ; 0x022FF764
 	tst r0, #0x10
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov29_02336204
+	bl IsCurrentTilesetBackground
 	cmp r0, #0
 	bne _022FF810
 	ldrb r0, [r5, #0xef]
@@ -775,12 +775,12 @@ ov29_022FF764: ; 0x022FF764
 _022FF810:
 	ldrsh r1, [r5, #2]
 	mov r0, r6
-	bl ov29_022FF674
+	bl GetMobilityTypeCheckSlipAndFloating
 	ldrh r2, [r4]
 	mov r1, r0
 	mov r0, r6
 	and r4, r2, #3
-	bl ov29_022FF8C8
+	bl GetMobilityTypeAfterIqSkills
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	b _022FF888
@@ -813,7 +813,7 @@ _022FF888:
 _022FF890:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_022FF764
+	arm_func_end CannotStandOnTile
 
 	arm_func_start ItemIsActive__022FF898
 ItemIsActive__022FF898: ; 0x022FF898
@@ -831,8 +831,8 @@ ItemIsActive__022FF898: ; 0x022FF898
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ItemIsActive__022FF898
 
-	arm_func_start ov29_022FF8C8
-ov29_022FF8C8: ; 0x022FF8C8
+	arm_func_start GetMobilityTypeAfterIqSkills
+GetMobilityTypeAfterIqSkills: ; 0x022FF8C8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -850,7 +850,7 @@ _022FF8EC:
 	movne r4, #3
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022FF8C8
+	arm_func_end GetMobilityTypeAfterIqSkills
 
 	arm_func_start ov29_022FF908
 ov29_022FF908: ; 0x022FF908
@@ -868,7 +868,7 @@ ov29_022FF908: ; 0x022FF908
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldrsh r1, [r4, #2]
 	mov r0, r5
-	bl ov29_022FF674
+	bl GetMobilityTypeCheckSlipAndFloating
 	cmp r0, #3
 	moveq r0, #1
 	movne r0, #0
@@ -910,7 +910,7 @@ ov29_022FF958: ; 0x022FF958
 	cmpne r0, #1
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov29_02336204
+	bl IsCurrentTilesetBackground
 	cmp r0, #0
 	bne _022FFA0C
 	ldrb r0, [r5, #0xef]
@@ -926,12 +926,12 @@ ov29_022FF958: ; 0x022FF958
 _022FFA0C:
 	ldrsh r1, [r5, #2]
 	mov r0, r6
-	bl ov29_022FF674
+	bl GetMobilityTypeCheckSlipAndFloating
 	ldrh r2, [r4]
 	mov r1, r0
 	mov r0, r6
 	and r4, r2, #3
-	bl ov29_022FF8C8
+	bl GetMobilityTypeAfterIqSkills
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	b _022FFA84
@@ -1002,7 +1002,7 @@ ov29_022FFA94: ; 0x022FFA94
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldrsh r1, [r5, #2]
 	mov r0, r6
-	bl ov29_022FF674
+	bl GetMobilityTypeCheckSlipAndFloating
 	ldrh r1, [r4]
 	cmp r0, #3
 	and r1, r1, #3
@@ -1073,7 +1073,7 @@ ov29_022FFB90: ; 0x022FFB90
 	cmpne r0, #1
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov29_02336204
+	bl IsCurrentTilesetBackground
 	cmp r0, #0
 	bne _022FFC44
 	ldrb r0, [r5, #0xef]
@@ -1089,12 +1089,12 @@ ov29_022FFB90: ; 0x022FFB90
 _022FFC44:
 	ldrsh r1, [r5, #2]
 	mov r0, r6
-	bl ov29_022FF674
+	bl GetMobilityTypeCheckSlipAndFloating
 	ldrh r2, [r4]
 	mov r1, r0
 	mov r0, r6
 	and r4, r2, #3
-	bl ov29_022FF8C8
+	bl GetMobilityTypeAfterIqSkills
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	b _022FFC94
@@ -1157,7 +1157,7 @@ _022FFD30:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022FFD38:
-	bl ov29_02336204
+	bl IsCurrentTilesetBackground
 	cmp r0, #0
 	bne _022FFD6C
 	ldrb r0, [r5, #0xef]
@@ -1173,12 +1173,12 @@ _022FFD38:
 _022FFD6C:
 	ldrsh r1, [r5, #2]
 	mov r0, r6
-	bl ov29_022FF674
+	bl GetMobilityTypeCheckSlipAndFloating
 	ldrh r2, [r4]
 	mov r1, r0
 	mov r0, r6
 	and r4, r2, #3
-	bl ov29_022FF8C8
+	bl GetMobilityTypeAfterIqSkills
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
 	b _022FFDE4
@@ -1385,7 +1385,7 @@ _02300028:
 	ldr r0, [sl, #0xb4]
 	mov r2, r5
 	mov r1, #0x40
-	bl ov29_023023C0
+	bl UpdateStateFlags
 	cmp r0, #0
 	beq _023000C8
 	mov r0, sl
@@ -1400,7 +1400,7 @@ _02300068:
 	ldr r0, [sl, #0xb4]
 	mov r2, r5
 	mov r1, #0x40
-	bl ov29_023023C0
+	bl UpdateStateFlags
 	cmp r0, #0
 	beq _023000C8
 	mov r0, sl

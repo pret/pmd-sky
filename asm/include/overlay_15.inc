@@ -12,7 +12,7 @@
 .public sub_02027B1C
 .public ShowPortraitBox
 .public sub_02017C80
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public sub_020305B4
 .public sub_02026214
 .public MemAlloc
@@ -25,7 +25,7 @@
 .public sub_0202F954
 .public sub_020288DC
 .public MemFree
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public sub_020308A0
 .public ShowMessageInDBox
 .public sub_02027AF0

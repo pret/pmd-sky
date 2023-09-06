@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_02320788
-ov29_02320788: ; 0x02320788
+	arm_func_start TryAftermathExplosion
+TryAftermathExplosion: ; 0x02320788
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov sl, r0
@@ -29,7 +29,7 @@ _023207BC:
 	beq _023207F0
 	mov r0, r6
 	mov r1, r7
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _023207FC
 _023207F0:
@@ -148,7 +148,7 @@ _02320974:
 	bne _023209A0
 	add r0, sp, #0xc
 	mov r1, #0
-	bl ov29_023456BC
+	bl RemoveGroundItem
 _023209A0:
 	mov r6, #1
 _023209A4:
@@ -205,7 +205,7 @@ _02320A54:
 _02320A58:
 	mov r0, r5
 	mov r1, r6
-	bl ov29_02336A84
+	bl DetermineTileWalkableNeighbors
 	add r5, r5, #1
 	cmp r5, #0x38
 	blt _02320A58
@@ -213,8 +213,8 @@ _02320A58:
 	cmp r6, #0x20
 	blt _02320A54
 _02320A7C:
-	bl ov29_02339CE8
-	bl ov29_02336F4C
+	bl UpdateMinimap
+	bl UpdateTrapsVisibility
 _02320A84:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -225,7 +225,7 @@ _02320A94: .word 0x00000BFB
 _02320A98: .word 0x023529B8
 _02320A9C: .word 0x02353700
 _02320AA0: .word 0x0000026F
-	arm_func_end ov29_02320788
+	arm_func_end TryAftermathExplosion
 
 	arm_func_start ov29_02320AA4
 ov29_02320AA4: ; 0x02320AA4
@@ -245,7 +245,7 @@ ov29_02320AA4: ; 0x02320AA4
 	bl InitMove
 	add r1, sp, #0x1a
 	mov r0, r7
-	bl ov29_02324854
+	bl TwoTurnMoveForcedMiss
 	cmp r0, #0
 	bne _02320BC0
 	ldrb r0, [r4, #6]
@@ -277,7 +277,7 @@ _02320B44:
 	mov r2, #1
 	mov r3, #0xdc0
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	movne r4, #1
 	bne _02320B94
@@ -287,7 +287,7 @@ _02320B44:
 	mov r1, r7
 	rsb r3, r2, #0xdc0
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	addne r0, r4, r4, lsr #31
 	movne r4, r0, asr #1
@@ -328,7 +328,7 @@ ov29_02320BCC: ; 0x02320BCC
 	bl InitMove
 	add r1, sp, #0x1a
 	mov r0, r8
-	bl ov29_02324854
+	bl TwoTurnMoveForcedMiss
 	cmp r0, #0
 	bne _02320CFC
 	ldrb r0, [r5, #6]
@@ -360,7 +360,7 @@ _02320C6C:
 	mov r2, #1
 	mov r3, #0xdc0
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	movne r4, #1
 	bne _02320CBC
@@ -370,7 +370,7 @@ _02320C6C:
 	mov r1, r8
 	rsb r3, r2, #0xdc0
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	addne r0, r4, r4, lsr #31
 	movne r4, r0, asr #1
@@ -425,14 +425,14 @@ _02320D58:
 	beq _02320D78
 	mov r0, sb
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _02320D84
 _02320D78:
 	mov r0, r8
 	mov r1, #0xe
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 _02320D84:
 	cmp r0, #0
 	beq _02320DA0
@@ -446,7 +446,7 @@ _02320DA0:
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_023440DC
+	bl AreTileJumpsAllowed
 	cmp r0, #0
 	bne _02320DD0
 	ldr r2, _023210F0 ; =0x00000E72
@@ -487,7 +487,7 @@ _02320E20:
 	mov r1, r8
 	bl ov29_022E5650
 	mov r0, r8
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _02320EA4
 	ldrb sl, [r5, #0x4c]
@@ -541,7 +541,7 @@ _02320EF4:
 	mov r2, #0
 	add r1, r1, #0xe4
 	add r1, r1, #0xcc00
-	bl ov29_022E99F0
+	bl FindClosestUnoccupiedTileWithin2
 	cmp r0, #0
 	bne _02321008
 	ldrh r0, [r8, #4]
@@ -554,7 +554,7 @@ _02320F30:
 	add r0, sp, #0
 	mov r1, r6
 	mov r2, #0
-	bl ov29_022E99F0
+	bl FindClosestUnoccupiedTileWithin2
 	cmp r0, #0
 	bne _02321008
 	ldrh r0, [r8, #4]
@@ -576,7 +576,7 @@ _02320F74:
 	mov r2, #1
 	add r1, r1, #0xe4
 	add r1, r1, #0xcc00
-	bl ov29_022E9A28
+	bl FindUnoccupiedTileWithin3
 	cmp r0, #0
 	bne _02321008
 	ldrh r0, [r8, #4]
@@ -596,7 +596,7 @@ _02320FB0:
 	add r0, sp, #0
 	add r1, r1, #4
 	mov r2, #0
-	bl ov29_022E99F0
+	bl FindClosestUnoccupiedTileWithin2
 	cmp r0, #0
 	bne _02321008
 _02320FE4:
@@ -614,16 +614,16 @@ _02321008:
 	ldrsh r2, [sp, #2]
 	mov r0, r8
 	mov r3, #1
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	mov r0, r8
 	mov r1, #0
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	mov r0, r8
 	bl sub_01FFB62C
 	mov r0, #1
-	bl ov29_022E2EC4
+	bl UpdateCamera
 	mov r0, r8
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _023210A0
 	ldrb sl, [r5, #0x4c]
@@ -681,8 +681,8 @@ _023210FC: .word 0x0237C850
 _02321100: .word 0x00000E75
 	arm_func_end TryWarp
 
-	arm_func_start ov29_02321104
-ov29_02321104: ; 0x02321104
+	arm_func_start EnsureCanStandCurrentTile
+EnsureCanStandCurrentTile: ; 0x02321104
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r1, r4, #4
@@ -695,7 +695,7 @@ ov29_02321104: ; 0x02321104
 	mov r3, #0
 	bl TryWarp
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_02321104
+	arm_func_end EnsureCanStandCurrentTile
 
 	arm_func_start ov29_02321134
 ov29_02321134: ; 0x02321134
@@ -762,7 +762,7 @@ _023211E0:
 	bl ov29_022F42F8
 _02321200:
 	add r0, r4, #4
-	bl ov29_02337A3C
+	bl DiscoverMinimap
 	mov r0, #0
 	bl ov29_022F62CC
 _02321210:

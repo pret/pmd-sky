@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start GetSpriteIndex__022F7388
-GetSpriteIndex__022F7388: ; 0x022F7388
+	arm_func_start DungeonGetSpriteIndex
+DungeonGetSpriteIndex: ; 0x022F7388
 	ldr r2, _022F73A0 ; =0x02353538
 	ldr r1, _022F73A4 ; =0x00019914
 	ldr r2, [r2]
@@ -14,7 +14,7 @@ GetSpriteIndex__022F7388: ; 0x022F7388
 	.align 2, 0
 _022F73A0: .word 0x02353538
 _022F73A4: .word 0x00019914
-	arm_func_end GetSpriteIndex__022F7388
+	arm_func_end DungeonGetSpriteIndex
 
 	arm_func_start JoinedAtRangeCheck2Veneer
 JoinedAtRangeCheck2Veneer: ; 0x022F73A8
@@ -56,8 +56,8 @@ _022F7404: .word 0x000003D7
 _022F7408: .word 0x0000017F
 	arm_func_end GetKecleonIdToSpawnByFloor
 
-	arm_func_start ov29_022F740C
-ov29_022F740C: ; 0x022F740C
+	arm_func_start StoreSpriteFileIndexBothGenders
+StoreSpriteFileIndexBothGenders: ; 0x022F740C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _022F74D0 ; =0x02353538
 	mov r7, r0
@@ -110,10 +110,10 @@ _022F7490:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022F74D0: .word 0x02353538
-	arm_func_end ov29_022F740C
+	arm_func_end StoreSpriteFileIndexBothGenders
 
-	arm_func_start ov29_022F74D4
-ov29_022F74D4: ; 0x022F74D4
+	arm_func_start LoadMonsterSpriteInner
+LoadMonsterSpriteInner: ; 0x022F74D4
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	ldr r1, _022F75C4 ; =0x02353538
@@ -147,10 +147,10 @@ ov29_022F74D4: ; 0x022F74D4
 	ldr r0, [r0]
 	mov r2, r4
 	mov r1, #0
-	bl sub_0201D590
+	bl LoadWanTableEntryFromPackUseProvidedMemory
 	mov r1, r0
 	mov r0, r6
-	bl ov29_022F740C
+	bl StoreSpriteFileIndexBothGenders
 	b _022F7598
 _022F756C:
 	mov r1, #1
@@ -160,10 +160,10 @@ _022F756C:
 	ldr r0, [r0]
 	mov r2, r4
 	mov r3, r1
-	bl sub_0201D484
+	bl LoadWanTableEntryFromPack
 	mov r1, r0
 	mov r0, r6
-	bl ov29_022F740C
+	bl StoreSpriteFileIndexBothGenders
 _022F7598:
 	mov r1, r4
 	mov r0, #0
@@ -182,10 +182,10 @@ _022F75C4: .word 0x02353538
 _022F75C8: .word 0x00019914
 _022F75CC: .word 0x0237C9B0
 _022F75D0: .word 0x020AFC68
-	arm_func_end ov29_022F74D4
+	arm_func_end LoadMonsterSpriteInner
 
-	arm_func_start ov29_022F75D4
-ov29_022F75D4: ; 0x022F75D4
+	arm_func_start SwapMonsterWanFileIndex
+SwapMonsterWanFileIndex: ; 0x022F75D4
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	ldr r2, _022F764C ; =0x02353538
@@ -207,7 +207,7 @@ ov29_022F75D4: ; 0x022F75D4
 	bl ReplaceWanFromBinFile
 	mov r1, r0
 	mov r0, r5
-	bl ov29_022F740C
+	bl StoreSpriteFileIndexBothGenders
 	mov r3, r6, lsl #1
 	ldrsh r2, [r4, r3]
 	mov r1, r5, lsl #1
@@ -219,7 +219,7 @@ ov29_022F75D4: ; 0x022F75D4
 	.align 2, 0
 _022F764C: .word 0x02353538
 _022F7650: .word 0x020AFC68
-	arm_func_end ov29_022F75D4
+	arm_func_end SwapMonsterWanFileIndex
 
 	arm_func_start LoadMonsterSprite
 LoadMonsterSprite: ; 0x022F7654
@@ -239,11 +239,11 @@ LoadMonsterSprite: ; 0x022F7654
 	ldr r0, [r0]
 	add r0, r0, #0x3e00
 	ldrsh r0, [r0, #0x3a]
-	bl ov29_022F74D4
+	bl LoadMonsterSpriteInner
 	ldmia sp!, {r4, pc}
 _022F769C:
 	mov r0, r4
-	bl ov29_022F74D4
+	bl LoadMonsterSpriteInner
 	ldr r1, _022F7750 ; =0x0000017B
 	cmp r4, r1
 	cmpne r4, #0x17c
@@ -262,13 +262,13 @@ _022F769C:
 	bhi _022F7704
 _022F76E4:
 	ldr r0, _022F7750 ; =0x0000017B
-	bl ov29_022F74D4
+	bl LoadMonsterSpriteInner
 	mov r0, #0x17c
-	bl ov29_022F74D4
+	bl LoadMonsterSpriteInner
 	ldr r0, _022F7758 ; =0x0000017D
-	bl ov29_022F74D4
+	bl LoadMonsterSpriteInner
 	ldr r0, _022F775C ; =0x0000017E
-	bl ov29_022F74D4
+	bl LoadMonsterSpriteInner
 _022F7704:
 	cmp r4, #0x1cc
 	ldrne r0, _022F7760 ; =0x000001CD
@@ -284,9 +284,9 @@ _022F7704:
 	ldmhiia sp!, {r4, pc}
 _022F7734:
 	mov r0, #0x1cc
-	bl ov29_022F74D4
+	bl LoadMonsterSpriteInner
 	ldr r0, _022F7760 ; =0x000001CD
-	bl ov29_022F74D4
+	bl LoadMonsterSpriteInner
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022F7748: .word 0xFFFFFE5E
@@ -299,8 +299,8 @@ _022F7760: .word 0x000001CD
 _022F7764: .word 0xFFFFFBDC
 	arm_func_end LoadMonsterSprite
 
-	arm_func_start ov29_022F7768
-ov29_022F7768: ; 0x022F7768
+	arm_func_start DeleteMonsterSpriteFile
+DeleteMonsterSpriteFile: ; 0x022F7768
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _022F77F4 ; =0x02353538
 	mov r5, r0
@@ -341,16 +341,16 @@ _022F77F4: .word 0x02353538
 _022F77F8: .word 0x00019914
 _022F77FC: .word 0x020AFC68
 _022F7800: .word 0x0237C9B0
-	arm_func_end ov29_022F7768
+	arm_func_end DeleteMonsterSpriteFile
 
-	arm_func_start ov29_022F7804
-ov29_022F7804: ; 0x022F7804
+	arm_func_start DeleteAllMonsterSpriteFiles
+DeleteAllMonsterSpriteFiles: ; 0x022F7804
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, _022F7830 ; =0x00000483
 	mov r5, #0
 _022F7810:
 	mov r0, r5
-	bl ov29_022F7768
+	bl DeleteMonsterSpriteFile
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10
 	cmp r4, r0, asr #16
@@ -359,7 +359,7 @@ _022F7810:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F7830: .word 0x00000483
-	arm_func_end ov29_022F7804
+	arm_func_end DeleteAllMonsterSpriteFiles
 
 	arm_func_start ov29_022F7834
 ov29_022F7834: ; 0x022F7834
@@ -517,7 +517,7 @@ _022F7A14:
 	ldr r1, _022F7BD8 ; =0x00000C0E
 	mov r2, r0
 	str r3, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _022F7AA4
 	ldr r1, _022F7BDC ; =0x00000C0F
@@ -811,7 +811,7 @@ _022F7E4C:
 	strneb r5, [sb]
 	bne _022F7E94
 	ldrsh r0, [sb, #8]
-	bl CheckTeamMemberIdx__02056228
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	strneb r4, [sb]
 _022F7E94:
@@ -845,7 +845,7 @@ ov29_022F7EAC: ; 0x022F7EAC
 	and r1, r0, #0xff
 	add r0, r4, #4
 	strb r1, [r5, #0x7c9]
-	bl ov29_02337A3C
+	bl DiscoverMinimap
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F7F04: .word 0x02353538
@@ -888,7 +888,7 @@ _022F7F64:
 	streq r0, [r4, #0xc]
 	ldrsh r0, [sl, #4]
 	ldrsh r1, [sl, #6]
-	bl ov29_023391EC
+	bl DrawMinimapTile
 	mov r5, #0
 	ldr fp, _022F85D0 ; =0x02353538
 	mov r4, r5
@@ -1032,7 +1032,7 @@ _022F80F4:
 	ldr r1, _022F85DC ; =0x00000C13
 	mov r2, r0
 	str r3, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _022F8208
 	ldr r1, _022F85E0 ; =0x00000C14
@@ -1151,7 +1151,7 @@ _022F8330:
 	mov r1, r5
 	bl ov29_022FE048
 	ldrsh r0, [r4, #8]
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	beq _022F83A8
 	ldr r0, _022F85D0 ; =0x02353538
@@ -1253,7 +1253,7 @@ _022F84AC:
 	mov r1, r7
 	bl ov29_022FE048
 	ldrsh r0, [r4, #8]
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	beq _022F856C
 	ldr r0, _022F85D0 ; =0x02353538
@@ -1332,8 +1332,8 @@ _022F85E8: .word 0x0000025E
 _022F85EC: .word 0x00000233
 	arm_func_end HandleFaint
 
-	arm_func_start ov29_022F85F0
-ov29_022F85F0: ; 0x022F85F0
+	arm_func_start MoveMonsterToPos
+MoveMonsterToPos: ; 0x022F85F0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r1
 	mov r7, r2
@@ -1375,7 +1375,7 @@ _022F8658:
 	bl ov29_02337EC0
 	ldrsh r0, [sb, #4]
 	ldrsh r1, [sb, #6]
-	bl ov29_023391EC
+	bl DrawMinimapTile
 _022F8690:
 	ldrsh r2, [sb, #4]
 	mov r0, r8, lsl #0x10
@@ -1408,7 +1408,7 @@ _022F86C8:
 _022F86FC:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_023391EC
+	bl DrawMinimapTile
 	cmp r6, #0
 	beq _022F871C
 	cmp r6, #1
@@ -1459,7 +1459,7 @@ _022F87A8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022F87BC: .word 0x02353538
-	arm_func_end ov29_022F85F0
+	arm_func_end MoveMonsterToPos
 
 	arm_func_start ov29_022F87C0
 ov29_022F87C0: ; 0x022F87C0
@@ -1622,7 +1622,7 @@ ov29_022F89CC: ; 0x022F89CC
 	mov r7, r0
 	mov r1, r5
 	add r0, r7, #2
-	bl ov29_02300164
+	bl GetMonsterName
 	ldrsh r1, [r5, #2]
 	ldr r0, _022F8FF0 ; =0x000003E7
 	mov r3, #0
@@ -1667,7 +1667,7 @@ _022F8A28:
 	strneb r1, [r7, #0x45]
 	mov r0, r6
 	mov r1, #0x6f
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	str r0, [sp]
 	ldrsh r1, [r5, #2]
 	ldrsh r3, [r5, #0xe]
@@ -2094,7 +2094,7 @@ ov29_022F9058: ; 0x022F9058
 	strh r1, [r5, #0xc]
 	ldrsh r1, [r4, #2]
 	ldrb r2, [r4, #0xa]
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldr r0, [sp]
 	add r3, r4, #0x124
 	str r0, [r5, #0x10]
@@ -2161,13 +2161,13 @@ _022F918C: .word 0x0235171C
 _022F9190: .word 0x0235171E
 	arm_func_end UpdateAiTargetPos
 
-	arm_func_start ov29_022F9194
-ov29_022F9194: ; 0x022F9194
+	arm_func_start SetMonsterTypeAndAbility
+SetMonsterTypeAndAbility: ; 0x022F9194
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r1, #0x25
 	ldr r4, [r5, #0xb4]
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _022F91D8
 	mov r0, r5
@@ -2210,7 +2210,7 @@ _022F9200:
 	.align 2, 0
 _022F9234: .word 0x022C4C6C
 _022F9238: .word 0x02353538
-	arm_func_end ov29_022F9194
+	arm_func_end SetMonsterTypeAndAbility
 
 	arm_func_start TryActivateSlowStart
 TryActivateSlowStart: ; 0x022F923C
@@ -2233,7 +2233,7 @@ _022F925C:
 	beq _022F92C0
 	mov r0, sl
 	mov r1, r8
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _022F92C0
 	mov r0, r7
@@ -2290,7 +2290,7 @@ _022F9324:
 	beq _022F93F4
 	mov r0, sl
 	mov r1, #4
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldrne r0, [r4]
 	addne r0, r0, #0xcd00
@@ -2298,7 +2298,7 @@ _022F9324:
 	bne _022F93C0
 	mov r0, sl
 	mov r1, #0x1c
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldrne r0, [r4]
 	addne r0, r0, #0xcd00
@@ -2306,7 +2306,7 @@ _022F9324:
 	bne _022F93C0
 	mov r0, sl
 	mov r1, #0x31
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldrne r0, [r4]
 	addne r0, r0, #0xcd00
@@ -2314,7 +2314,7 @@ _022F9324:
 	bne _022F93C0
 	mov r0, sl
 	mov r1, #0x78
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldrne r0, [r4]
 	addne r0, r0, #0xcd00
@@ -2322,12 +2322,12 @@ _022F9324:
 _022F93C0:
 	mov r0, sl
 	mov r1, #8
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _022F93E8
 	mov r0, sl
 	mov r1, #0x2d
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _022F93F4
 _022F93E8:
@@ -2343,8 +2343,8 @@ _022F93F4:
 _022F9404: .word 0x02353538
 	arm_func_end TryActivateArtificialWeatherAbilities
 
-	arm_func_start ov29_022F9408
-ov29_022F9408: ; 0x022F9408
+	arm_func_start GetMonsterApparentId
+GetMonsterApparentId: ; 0x022F9408
 	stmdb sp!, {r4, lr}
 	movs r4, r0
 	beq _022F94A8
@@ -2355,7 +2355,7 @@ ov29_022F9408: ; 0x022F9408
 	cmp r1, r2
 	bgt _022F945C
 	mov r1, #0x25
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldreq r0, _022F94E0 ; =0x0000017B
 	ldmeqia sp!, {r4, pc}
@@ -2375,7 +2375,7 @@ _022F945C:
 	bgt _022F94D8
 	mov r0, r4
 	mov r1, #0x25
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldreq r0, _022F94E8 ; =0x000003D3
 	ldmeqia sp!, {r4, pc}
@@ -2408,10 +2408,10 @@ _022F94E0: .word 0x0000017B
 _022F94E4: .word 0x022C4C6E
 _022F94E8: .word 0x000003D3
 _022F94EC: .word 0x022C4C70
-	arm_func_end ov29_022F9408
+	arm_func_end GetMonsterApparentId
 
-	arm_func_start ov29_022F94F0
-ov29_022F94F0: ; 0x022F94F0
+	arm_func_start TryActivateTraceAndColorChange
+TryActivateTraceAndColorChange: ; 0x022F94F0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	mov r8, r1
@@ -2427,7 +2427,7 @@ ov29_022F94F0: ; 0x022F94F0
 	ldr r5, [sb, #0xb4]
 	ldr r6, [r8, #0xb4]
 	ldrb r0, [r5, #0xbc]
-	bl ov29_022EFB04
+	bl IsSecretBazaarNpcBehavior
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldrb r0, [r6, #0x60]
@@ -2479,7 +2479,7 @@ _022F95A0:
 	bl ov29_022E6260
 	mov r0, sb
 	mov r1, r8
-	bl ov29_022FA7DC
+	bl TryEndStatusWithAbility
 _022F95FC:
 	ldrb r0, [r6, #0x164]
 	cmp r0, #0
@@ -2535,7 +2535,7 @@ _022F96BC: .word 0x02353538
 _022F96C0: .word 0x00000C18
 _022F96C4: .word 0x022C48DC
 _022F96C8: .word 0x00000C19
-	arm_func_end ov29_022F94F0
+	arm_func_end TryActivateTraceAndColorChange
 
 	arm_func_start DefenderAbilityIsActive__022F96CC
 DefenderAbilityIsActive__022F96CC: ; 0x022F96CC
@@ -2552,14 +2552,14 @@ DefenderAbilityIsActive__022F96CC: ; 0x022F96CC
 	beq _022F9710
 	mov r0, r7
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 _022F9710:
 	mov r0, r6
 	mov r1, r5
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end DefenderAbilityIsActive__022F96CC
 
@@ -2576,8 +2576,8 @@ IsMonster__022F9720: ; 0x022F9720
 	bx lr
 	arm_func_end IsMonster__022F9720
 
-	arm_func_start ov29_022F9744
-ov29_022F9744: ; 0x022F9744
+	arm_func_start TryActivateConversion2
+TryActivateConversion2: ; 0x022F9744
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -2622,7 +2622,7 @@ ov29_022F9744: ; 0x022F9744
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022F97EC: .word 0x00000C16
-	arm_func_end ov29_022F9744
+	arm_func_end TryActivateConversion2
 
 	arm_func_start TryActivateTruant
 TryActivateTruant: ; 0x022F97F0
@@ -2634,7 +2634,7 @@ TryActivateTruant: ; 0x022F97F0
 	beq _022F9838
 	mov r0, r4
 	mov r1, #0x2a
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _022F9838
 	mov r2, #0
@@ -2673,18 +2673,18 @@ _022F987C:
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r1, #1
 	mov r0, r5
 	mov r2, r1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022F9840
 
-	arm_func_start ov29_022F98B4
-ov29_022F98B4: ; 0x022F98B4
+	arm_func_start TryPointCameraToMonster
+TryPointCameraToMonster: ; 0x022F98B4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r5, r1
@@ -2704,7 +2704,7 @@ ov29_022F98B4: ; 0x022F98B4
 	cmp r5, #0
 	beq _022F9928
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	mov r7, #0x34
 	ldr r5, _022F9968 ; =0x02353538
 	b _022F9918
@@ -2722,11 +2722,11 @@ _022F9928:
 	bl ov29_022EA370
 	mov r0, r6
 	mov r1, r4
-	bl ov29_022E2E54
+	bl PointCameraToMonster
 	cmp r4, #0
 	beq _022F9950
 	add r0, r6, #4
-	bl ov29_02337A3C
+	bl DiscoverMinimap
 _022F9950:
 	ldr r0, _022F9968 ; =0x02353538
 	mov r1, #0
@@ -2736,7 +2736,7 @@ _022F9950:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022F9968: .word 0x02353538
-	arm_func_end ov29_022F98B4
+	arm_func_end TryPointCameraToMonster
 
 	arm_func_start ov29_022F996C
 ov29_022F996C: ; 0x022F996C
@@ -2956,10 +2956,10 @@ _022F9C00:
 
 	arm_func_start CheckTeamMemberIdx__022F9C34
 CheckTeamMemberIdx__022F9C34: ; 0x022F9C34
-	ldr ip, _022F9C3C ; =CheckTeamMemberIdx__02056228
+	ldr ip, _022F9C3C ; =CheckTeamMemberIdx
 	bx ip
 	.align 2, 0
-_022F9C3C: .word CheckTeamMemberIdx__02056228
+_022F9C3C: .word CheckTeamMemberIdx
 	arm_func_end CheckTeamMemberIdx__022F9C34
 
 	arm_func_start ov29_022F9C40
@@ -2983,10 +2983,10 @@ ov29_022F9C4C: ; 0x022F9C4C
 
 	arm_func_start IsMonsterIdInNormalRange__022F9C68
 IsMonsterIdInNormalRange__022F9C68: ; 0x022F9C68
-	ldr ip, _022F9C70 ; =IsMonsterIdInNormalRange__02056294
+	ldr ip, _022F9C70 ; =IsMonsterIdInNormalRange
 	bx ip
 	.align 2, 0
-_022F9C70: .word IsMonsterIdInNormalRange__02056294
+_022F9C70: .word IsMonsterIdInNormalRange
 	arm_func_end IsMonsterIdInNormalRange__022F9C68
 
 	arm_func_start ov29_022F9C74
@@ -3046,7 +3046,7 @@ _022F9D34:
 	bne _022F9E78
 	mov r0, r6
 	mov r1, r6
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 	b _022F9E78
 _022F9D50:
 	cmp r0, #0
@@ -3147,7 +3147,7 @@ ov29_022F9EA0: ; 0x022F9EA0
 	mov r5, r0
 	mov r1, #0x6f
 	ldr r4, [r5, #0xb4]
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _022F9FEC
 	ldrb r0, [r4, #7]
@@ -3227,8 +3227,8 @@ _022F9FBC:
 	cmpne r0, #0xe
 	bne _022F9FEC
 	mov r0, #1
-	bl ov29_022E2EC4
-	bl ov29_02339CE8
+	bl UpdateCamera
+	bl UpdateMinimap
 _022F9FEC:
 	ldrsh r1, [r4, #0x68]
 	ldrsh r0, [r4, #0x66]
@@ -3333,8 +3333,8 @@ _022FA12C:
 _022FA140: .word 0x00000C1C
 	arm_func_end ov29_022FA02C
 
-	arm_func_start ov29_022FA144
-ov29_022FA144: ; 0x022FA144
+	arm_func_start BoostIQ
+BoostIQ: ; 0x022FA144
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	ldr r5, [r7, #0xb4]
@@ -3375,7 +3375,7 @@ _022FA1B0:
 _022FA1CC: .word 0x000003E7
 _022FA1D0: .word 0x00000C27
 _022FA1D4: .word 0x00000C26
-	arm_func_end ov29_022FA144
+	arm_func_end BoostIQ
 
 	arm_func_start ov29_022FA1D8
 ov29_022FA1D8: ; 0x022FA1D8
@@ -3554,7 +3554,7 @@ _022FA414: .word 0x02353538
 	arm_func_start ov29_022FA418
 ov29_022FA418: ; 0x022FA418
 	stmdb sp!, {r3, lr}
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl ov29_022EF938
@@ -3776,7 +3776,7 @@ _022FA6C4:
 	movne sb, #1
 	bne _022FA70C
 	ldrsh r0, [r4, #8]
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	movne sb, #1
 _022FA70C:
@@ -3845,8 +3845,8 @@ _022FA7C8:
 _022FA7D8: .word 0x02353538
 	arm_func_end ov29_022FA750
 
-	arm_func_start ov29_022FA7DC
-ov29_022FA7DC: ; 0x022FA7DC
+	arm_func_start TryEndStatusWithAbility
+TryEndStatusWithAbility: ; 0x022FA7DC
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r5, r1
@@ -3862,7 +3862,7 @@ ov29_022FA7DC: ; 0x022FA7DC
 	bne _022FA81C
 	mov r0, r6
 	mov r1, r5
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 _022FA81C:
 	mov r0, r6
 	mov r1, r5
@@ -3890,7 +3890,7 @@ _022FA850:
 	bne _022FA884
 	mov r0, r6
 	mov r1, r5
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 _022FA884:
 	mov r0, r6
 	mov r1, r5
@@ -3922,7 +3922,7 @@ _022FA8B8:
 	beq _022FA924
 _022FA8F0:
 	mov r0, r5
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	bne _022FA90C
 	ldrb r0, [r4, #0xbd]
@@ -3934,7 +3934,7 @@ _022FA90C:
 	mov r1, r5
 	mov r2, #0
 	str r3, [sp]
-	bl ov29_02305FDC
+	bl EndSleepClassStatus
 _022FA924:
 	mov r0, r6
 	mov r1, r5
@@ -3965,11 +3965,11 @@ _022FA95C:
 	bhi _022FA998
 	mov r0, r6
 	mov r1, r5
-	bl ov29_023061A8
+	bl EndBurnClassStatus
 _022FA998:
 	mov r0, r5
 	mov r1, #0x25
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _022FA9CC
 	mov r0, #0
@@ -3979,11 +3979,11 @@ _022FA998:
 	bne _022FA9CC
 	mov r0, r6
 	mov r1, r5
-	bl ov29_023064F4
+	bl EndReflectClassStatus
 _022FA9CC:
 	mov r0, r5
 	mov r1, #0x2b
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _022FA9FC
 	ldrb r0, [r4, #0xc4]
@@ -3996,7 +3996,7 @@ _022FA9CC:
 _022FA9FC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end ov29_022FA7DC
+	arm_func_end TryEndStatusWithAbility
 
 	arm_func_start ov29_022FAA04
 ov29_022FAA04: ; 0x022FAA04
@@ -4099,7 +4099,7 @@ _022FAB58:
 	cmp r0, #0
 	beq _022FAB98
 	mov r0, r5
-	bl ov29_022E4964
+	bl ShowPpRestoreEffect
 	cmp sl, #0
 	bne _022FAB98
 	mov r0, #0
@@ -4172,7 +4172,7 @@ _022FAC60:
 	mov r1, sb
 	mov r2, #1
 	mov r3, sl
-	bl RestoreMovePP
+	bl RestoreAllMovePP
 _022FAC74:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -4305,7 +4305,7 @@ _022FAE14:
 	add r0, sp, #0
 	add r1, sp, #2
 	mov r4, #0
-	bl ov29_023363C0
+	bl GetStairsSpawnPosition
 	ldrsh r1, [sp]
 	ldrsh r3, [r5, #4]
 	ldrsh r2, [sp, #2]
@@ -4380,7 +4380,7 @@ ov29_022FAF08: ; 0x022FAF08
 	mov r5, #0
 	add r0, r0, #0x328
 	add r8, r0, #0x12800
-	bl ov29_022E0880
+	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov sb, r5
@@ -4505,8 +4505,8 @@ TeamLeaderIqSkillIsEnabled: ; 0x022FB080
 	ldmia sp!, {r4, pc}
 	arm_func_end TeamLeaderIqSkillIsEnabled
 
-	arm_func_start ov29_022FB0A8
-ov29_022FB0A8: ; 0x022FB0A8
+	arm_func_start CountMovesOutOfPp
+CountMovesOutOfPp: ; 0x022FB0A8
 	stmdb sp!, {r3, lr}
 	ldr ip, [r0, #0xb4]
 	mov r0, #0
@@ -4534,10 +4534,10 @@ _022FB0F4:
 	cmp lr, #4
 	blt _022FB0C0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022FB0A8
+	arm_func_end CountMovesOutOfPp
 
-	arm_func_start ov29_022FB10C
-ov29_022FB10C: ; 0x022FB10C
+	arm_func_start HasSuperEffectiveMoveAgainstUser
+HasSuperEffectiveMoveAgainstUser: ; 0x022FB10C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sb, r1
 	ldr r6, [sb, #0xb4]
@@ -4559,7 +4559,7 @@ _022FB134:
 	cmp r8, #0
 	beq _022FB168
 	add r0, r4, r7, lsl #3
-	bl ov29_02324798
+	bl HasMaxGinsengBoost99
 	cmp r0, #0
 	beq _022FB18C
 _022FB168:
@@ -4568,7 +4568,7 @@ _022FB168:
 	mov r2, r0
 	mov r0, sb
 	mov r1, sl
-	bl ov29_0230AA8C
+	bl GetTypeMatchupBothTypes
 	cmp r0, #3
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -4581,7 +4581,7 @@ _022FB198:
 	blt _022FB134
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov29_022FB10C
+	arm_func_end HasSuperEffectiveMoveAgainstUser
 
 	arm_func_start ov29_022FB1A8
 ov29_022FB1A8: ; 0x022FB1A8
@@ -4617,8 +4617,8 @@ _022FB204:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_022FB1A8
 
-	arm_func_start ov29_022FB214
-ov29_022FB214: ; 0x022FB214
+	arm_func_start TryEatItem
+TryEatItem: ; 0x022FB214
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x74
 	mov sl, r0
@@ -4643,12 +4643,12 @@ _022FB24C:
 	cmp r0, #0
 	beq _022FB504
 	ldrsh r0, [r4, #0x66]
-	bl ov29_0231E990
+	bl ShouldTryEatItem
 	cmp r0, #0
 	beq _022FB504
 	mov r0, sl
 	add r1, r4, #0x62
-	bl ov29_0231D4A4
+	bl CanMonsterUseItem
 	cmp r0, #0
 	beq _022FB504
 	mov r0, r5
@@ -4688,12 +4688,12 @@ _022FB24C:
 	mov r5, #1
 	b _022FB504
 _022FB31C:
-	bl ov29_0231E990
+	bl ShouldTryEatItem
 	cmp r0, #0
 	beq _022FB3D4
 	mov r0, sl
 	add r1, r4, #0x62
-	bl ov29_0231D4A4
+	bl CanMonsterUseItem
 	cmp r0, #0
 	beq _022FB504
 	mov r0, r5
@@ -4779,12 +4779,12 @@ _022FB430:
 	cmp r0, #0
 	bne _022FB4F8
 	ldrsh r0, [r6, #4]
-	bl ov29_0231E990
+	bl ShouldTryEatItem
 	cmp r0, #0
 	beq _022FB4F8
 	mov r0, sl
 	mov r1, r6
-	bl ov29_0231D4A4
+	bl CanMonsterUseItem
 	cmp r0, #0
 	beq _022FB504
 	mov r0, #0
@@ -4827,12 +4827,12 @@ _022FB508:
 _022FB510: .word 0x00000C24
 _022FB514: .word 0x020AF6B8
 _022FB518: .word 0x00000C25
-	arm_func_end ov29_022FB214
+	arm_func_end TryEatItem
 
 	arm_func_start ov29_022FB51C
 ov29_022FB51C: ; 0x022FB51C
 	stmdb sp!, {r3, lr}
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	cmp r0, #2
 	movhs r0, #1
 	movlo r0, #0
@@ -4873,7 +4873,7 @@ _022FB574:
 	bne _022FB5D8
 	mov r0, r6
 	mov r1, r8
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	beq _022FB5D8
 	ldr r0, [r8, #0xb4]
@@ -4893,18 +4893,18 @@ _022FB5DC:
 _022FB5E8: .word 0x02353538
 	arm_func_end ov29_022FB538
 
-	arm_func_start ov29_022FB5EC
-ov29_022FB5EC: ; 0x022FB5EC
+	arm_func_start CheckSpawnThreshold
+CheckSpawnThreshold: ; 0x022FB5EC
 	stmdb sp!, {r4, lr}
 	bl GetSpawnThreshold
 	mov r4, r0
-	bl GetScenarioBalance__022E095C
+	bl GetScenarioBalanceVeneer
 	cmp r4, r0
 	movls r0, #1
 	movhi r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022FB5EC
+	arm_func_end CheckSpawnThreshold
 
 	arm_func_start HasLowHealth
 HasLowHealth: ; 0x022FB610
@@ -4937,8 +4937,8 @@ HasLowHealth: ; 0x022FB610
 _022FB674: .word 0x000003E7
 	arm_func_end HasLowHealth
 
-	arm_func_start ov29_022FB678
-ov29_022FB678: ; 0x022FB678
+	arm_func_start AreEntitiesAdjacent
+AreEntitiesAdjacent: ; 0x022FB678
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -4969,7 +4969,7 @@ _022FB6D0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022FB6E0: .word 0x0235171C
-	arm_func_end ov29_022FB678
+	arm_func_end AreEntitiesAdjacent
 
 	arm_func_start ov29_022FB6E4
 ov29_022FB6E4: ; 0x022FB6E4
@@ -5194,7 +5194,7 @@ ov29_022FB9BC: ; 0x022FB9BC
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0, #0xb4]
 	ldrb r0, [r0, #0xbc]
-	bl ov29_022EFB04
+	bl IsSecretBazaarNpcBehavior
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -5339,7 +5339,7 @@ _022FBB38:
 	bl sub_0201C0CC
 	ldrsh r1, [r8, #0xa8]
 	add r0, r8, #0x2c
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r0, r8
 	bl GetSleepAnimationId
 	mov r1, r0
@@ -5547,11 +5547,11 @@ _022FBDEC: .word ov29_022EFAE8
 	arm_func_start ov29_022FBDF0
 ov29_022FBDF0: ; 0x022FBDF0
 	ldr r0, [r0, #0xb4]
-	ldr ip, _022FBE00 ; =ov29_022EFB04
+	ldr ip, _022FBE00 ; =IsSecretBazaarNpcBehavior
 	ldrb r0, [r0, #0xbc]
 	bx ip
 	.align 2, 0
-_022FBE00: .word ov29_022EFB04
+_022FBE00: .word IsSecretBazaarNpcBehavior
 	arm_func_end ov29_022FBDF0
 
 	arm_func_start ov29_022FBE04
@@ -5570,7 +5570,7 @@ ov29_022FBE04: ; 0x022FBE04
 	ldrsh r1, [r1, #0x84]
 	cmp r1, r0
 	bne _022FBE4C
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, pc}
@@ -5581,8 +5581,8 @@ _022FBE4C:
 _022FBE54: .word 0x02353538
 	arm_func_end ov29_022FBE04
 
-	arm_func_start ov29_022FBE58
-ov29_022FBE58: ; 0x022FBE58
+	arm_func_start InitOtherMonsterData
+InitOtherMonsterData: ; 0x022FBE58
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	ldr ip, [r4, #0xb4]
@@ -5628,7 +5628,7 @@ ov29_022FBE58: ; 0x022FBE58
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022FBF04: .word 0x022C5938
-	arm_func_end ov29_022FBE58
+	arm_func_end InitOtherMonsterData
 
 	arm_func_start ov29_022FBF08
 ov29_022FBF08: ; 0x022FBF08
@@ -5660,8 +5660,8 @@ ov29_022FBF30: ; 0x022FBF30
 _022FBF54: .word 0x02353538
 	arm_func_end ov29_022FBF30
 
-	arm_func_start ov29_022FBF58
-ov29_022FBF58: ; 0x022FBF58
+	arm_func_start InitEnemySpawnStats
+InitEnemySpawnStats: ; 0x022FBF58
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x218
 	ldr r1, _022FC230 ; =0x02353538
@@ -5689,14 +5689,14 @@ _022FBF94:
 	ldrsh r1, [r5]
 	ldrsh r2, [r5, #2]
 	add r0, r5, #4
-	bl ov29_02303B18
+	bl GetMonsterMoves
 	ldrh r0, [r5, #4]
 	cmp r0, #0
 	moveq r0, #0x170
 	streqh r0, [r5, #4]
 	ldrsh r0, [r5]
 	ldrsh r1, [r5, #2]
-	bl ov29_022FE2FC
+	bl GetMaxHpAtLevel
 	strh r0, [r5, #0xc]
 	mov r7, #0
 _022FBFE8:
@@ -5704,12 +5704,12 @@ _022FBFE8:
 	ldrsh r1, [r5, #2]
 	mov r2, r7
 	add r8, r5, r7
-	bl ov29_022FE350
+	bl GetOffensiveStatAtLevel
 	strb r0, [r8, #0xe]
 	ldrsh r0, [r5]
 	ldrsh r1, [r5, #2]
 	mov r2, r7
-	bl ov29_022FE3B8
+	bl GetDefensiveStatAtLevel
 	add r7, r7, #1
 	strb r0, [r8, #0x10]
 	cmp r7, #2
@@ -5745,7 +5745,7 @@ _022FC040:
 	beq _022FC0A8
 _022FC088:
 	add r0, sp, #8
-	bl ov29_022FE420
+	bl GetOutlawSpawnData
 	add r0, sp, #0x16
 	ldrsh r1, [sp, #0xc]
 	ldrsh r2, [sp, #8]
@@ -5799,7 +5799,7 @@ _022FC128:
 	str r0, [sp, #4]
 	mov r0, fp
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _022FC230 ; =0x02353538
 	mov r1, r1, lsl #0x10
 	ldr r0, [r0]
@@ -5864,10 +5864,10 @@ _022FC1FC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022FC230: .word 0x02353538
-	arm_func_end ov29_022FBF58
+	arm_func_end InitEnemySpawnStats
 
-	arm_func_start ov29_022FC234
-ov29_022FC234: ; 0x022FC234
+	arm_func_start InitEnemyStatsAndMoves
+InitEnemyStatsAndMoves: ; 0x022FC234
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov sl, r0
@@ -5877,7 +5877,7 @@ ov29_022FC234: ; 0x022FC234
 	mov r8, r2
 	mov r7, r3
 	ldr r6, [sp, #0x34]
-	bl DivideInt
+	bl __divsi3
 	mov r0, r1, lsl #0x10
 	ldr r2, _022FC464 ; =0x02353538
 	mov r4, r0, asr #0x10
@@ -5901,13 +5901,13 @@ _022FC284:
 	mov r1, r4
 	mov r2, r6
 	add r0, r5, #4
-	bl ov29_02303B18
+	bl GetMonsterMoves
 	mov r4, #0
 _022FC2BC:
 	add r0, r5, r4, lsl #1
 	ldrh r1, [r0, #4]
 	add r0, sl, r4, lsl #3
-	bl GetInfoMoveCheckId
+	bl InitMoveCheckId
 	add r4, r4, #1
 	cmp r4, #4
 	blt _022FC2BC
@@ -5937,32 +5937,32 @@ _022FC31C:
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, r6
-	bl ov29_02303B18
+	bl GetMonsterMoves
 	mov r5, #0
 	add fp, sp, #0
 _022FC33C:
 	mov r0, r5, lsl #1
 	ldrh r1, [fp, r0]
 	add r0, sl, r5, lsl #3
-	bl GetInfoMoveCheckId
+	bl InitMoveCheckId
 	add r5, r5, #1
 	cmp r5, #4
 	blt _022FC33C
 	mov r0, r4
 	mov r1, r6
-	bl ov29_022FE2FC
+	bl GetMaxHpAtLevel
 	strh r0, [sb]
 	mov r5, #0
 _022FC36C:
 	mov r0, r4
 	mov r1, r6
 	mov r2, r5
-	bl ov29_022FE350
+	bl GetOffensiveStatAtLevel
 	strb r0, [r8, r5]
 	mov r0, r4
 	mov r1, r6
 	mov r2, r5
-	bl ov29_022FE3B8
+	bl GetDefensiveStatAtLevel
 	strb r0, [r7, r5]
 	add r5, r5, #1
 	cmp r5, #2
@@ -5974,10 +5974,10 @@ _022FC3A4:
 	mov r2, r6
 	strh r6, [r5, #2]
 	add r0, r5, #4
-	bl ov29_02303B18
+	bl GetMonsterMoves
 	ldrsh r0, [r5]
 	ldrsh r1, [r5, #2]
-	bl ov29_022FE2FC
+	bl GetMaxHpAtLevel
 	strh r0, [r5, #0xc]
 	mov r6, #0
 _022FC3D0:
@@ -5985,12 +5985,12 @@ _022FC3D0:
 	ldrsh r1, [r5, #2]
 	mov r2, r6
 	add r4, r5, r6
-	bl ov29_022FE350
+	bl GetOffensiveStatAtLevel
 	strb r0, [r4, #0xe]
 	ldrsh r0, [r5]
 	ldrsh r1, [r5, #2]
 	mov r2, r6
-	bl ov29_022FE3B8
+	bl GetDefensiveStatAtLevel
 	add r6, r6, #1
 	strb r0, [r4, #0x10]
 	cmp r6, #2
@@ -6000,7 +6000,7 @@ _022FC40C:
 	add r0, r5, r4, lsl #1
 	ldrh r1, [r0, #4]
 	add r0, sl, r4, lsl #3
-	bl GetInfoMoveCheckId
+	bl InitMoveCheckId
 	add r4, r4, #1
 	cmp r4, #4
 	blt _022FC40C
@@ -6024,7 +6024,7 @@ _022FC45C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022FC464: .word 0x02353538
-	arm_func_end ov29_022FC234
+	arm_func_end InitEnemyStatsAndMoves
 
 	arm_func_start ov29_022FC468
 ov29_022FC468: ; 0x022FC468
@@ -6073,8 +6073,8 @@ _022FC4C4:
 _022FC508: .word 0x020A1C7C
 	arm_func_end ov29_022FC468
 
-	arm_func_start InitTeam
-InitTeam: ; 0x022FC50C
+	arm_func_start SpawnTeam
+SpawnTeam: ; 0x022FC50C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
 	mov sl, r0
@@ -6260,7 +6260,7 @@ _022FC750:
 	cmp r0, fp
 	bne _022FC800
 	ldrsh r0, [r5, #0xc]
-	bl ov29_022FF6C4
+	bl IsInvalidSpawnTile
 	cmp r0, #0
 	bne _022FC800
 	ldr r0, _022FC98C ; =0x02353538
@@ -6309,7 +6309,7 @@ _022FC818:
 	bl GetTile
 	mov r1, r0
 	ldrsh r0, [r5, #0xc]
-	bl ov29_022FF6C4
+	bl IsInvalidSpawnTile
 	cmp r0, #0
 	bne _022FC8B4
 	ldr r0, _022FC98C ; =0x02353538
@@ -6392,4 +6392,4 @@ _022FC98C: .word 0x02353538
 _022FC990: .word 0x0000017B
 _022FC994: .word 0x000003D3
 _022FC998: .word 0x02351E28
-	arm_func_end InitTeam
+	arm_func_end SpawnTeam

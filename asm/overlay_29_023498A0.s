@@ -3,15 +3,15 @@
 
 	.text
 
-	arm_func_start ov29_023498A0
-ov29_023498A0: ; 0x023498A0
+	arm_func_start GenerateMissionEggMonster
+GenerateMissionEggMonster: ; 0x023498A0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	str r0, [sp]
 	ldrb r0, [r0, #0x16]
 	cmp r0, #5
 	bne _02349A54
-	bl ov29_02337F98
+	bl GetRandomSpawnMonsterID
 	mov sb, r0
 	bl IsCastform
 	cmp r0, #0
@@ -131,7 +131,7 @@ _02349A60: .word 0x000003D3
 _02349A64: .word 0x00000424
 _02349A68: .word 0x000001C1
 _02349A6C: .word 0x00000418
-	arm_func_end ov29_023498A0
+	arm_func_end GenerateMissionEggMonster
 
 	arm_func_start ov29_02349A70
 ov29_02349A70: ; 0x02349A70
@@ -281,7 +281,7 @@ _02349C60:
 	ldreqb r1, [r0, #0x16]
 	cmpeq r1, #5
 	bne _02349C78
-	bl ov29_023498A0
+	bl GenerateMissionEggMonster
 _02349C78:
 	bl ov29_022E8244
 	ldmia sp!, {r3, r4, r5, pc}
@@ -293,11 +293,11 @@ _02349C80: .word 0x02353538
 ov29_02349C84: ; 0x02349C84
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0xa0
-	bl ov29_02349208
+	bl IsDestinationFloor
 	cmp r0, #0
 	moveq r0, #0
 	beq _0234A1F8
-	bl ov29_023491A4
+	bl GetMissionDestination
 	ldr r1, _0234A200 ; =0x023537C8
 	mov r2, #0
 	mov r4, r0
@@ -364,7 +364,7 @@ _02349D38:
 	add r0, sp, #0x10
 	mov r2, #0
 	mov r1, r5
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r5
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -393,7 +393,7 @@ _02349DC8:
 	add r0, sp, #0
 	mov r2, #0
 	mov r1, r4
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -438,7 +438,7 @@ _02349E6C:
 	add r0, sp, #0x20
 	mov r2, #0
 	mov r1, r4
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -486,10 +486,10 @@ _02349F1C:
 	add r0, sp, #0x80
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	add r0, sp, #0x80
 	mov r1, #0x12
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -506,10 +506,10 @@ _02349FA4:
 	add r0, sp, #0x70
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	add r0, sp, #0x70
 	mov r1, #0x12
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -526,10 +526,10 @@ _02349FF0:
 	add r0, sp, #0x60
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	add r0, sp, #0x60
 	mov r1, #0x12
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -546,10 +546,10 @@ _0234A03C:
 	add r0, sp, #0x50
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	add r0, sp, #0x50
 	mov r1, #0x12
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -566,10 +566,10 @@ _0234A088:
 	add r0, sp, #0x40
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	add r0, sp, #0x40
 	mov r1, #0x12
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -586,10 +586,10 @@ _0234A0D4:
 	add r0, sp, #0x30
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	add r0, sp, #0x30
 	mov r1, #0x12
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -620,7 +620,7 @@ _0234A148:
 	add r0, sp, #0x90
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -713,7 +713,7 @@ _0234A26C:
 _0234A2A0:
 	mov r0, r5
 	mov r1, r4
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldr r1, _0234A2D0 ; =0x00000E2C
@@ -761,7 +761,7 @@ _0234A32C:
 	ldr r1, _0234A5B4 ; =0x00000E21
 	mov r2, r0
 	str r0, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _0234A5A8
 	mov r7, #0
@@ -849,7 +849,7 @@ _0234A47C:
 	ldr r0, [r0, #0x384]
 	add r0, r0, r4
 	bl ItemZInit
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	ldr r1, _0234A5C4 ; =0x00000E1D
 	mov r0, #0
 	mov r2, #1
@@ -864,7 +864,7 @@ _0234A47C:
 	add r0, sp, #0x14
 	mov r2, #0
 	mov r1, r4
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -882,7 +882,7 @@ _0234A504:
 	mov r2, r0
 	mov r1, #0xe20
 	str r0, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _0234A5A8
 	ldr r1, _0234A5D4 ; =0x00000E1A
@@ -893,7 +893,7 @@ _0234A504:
 	add r0, sp, #4
 	mov r2, #0
 	mov r1, r4
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -990,7 +990,7 @@ _0234A65C:
 _0234A690:
 	mov r0, r7
 	mov r1, r4
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	mov r0, #0
 	mov r2, #1
@@ -1005,7 +1005,7 @@ _0234A6B8:
 	add r0, sp, #0
 	mov r2, #0
 	mov r1, r5
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r5
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -1103,7 +1103,7 @@ _0234A7CC:
 	ldrsh r6, [r1, #2]
 	mov r2, #0
 	mov r1, r6
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r6
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -1219,7 +1219,7 @@ ov29_0234A980: ; 0x0234A980
 	mov r1, r5
 	mov r2, #0
 	mov r3, #1
-	bl ov29_02305C28
+	bl EndNegativeStatusConditionWrapper
 	mov r1, r5
 	mov r0, #1
 	mov r2, #0
@@ -1242,7 +1242,7 @@ _0234A9DC:
 	ldrsh r4, [r1, #4]
 	mov r2, #0
 	mov r1, r4
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -1316,7 +1316,7 @@ _0234AAC4:
 	ldrsh r5, [r1, #4]
 	mov r2, #0
 	mov r1, r5
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r5
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -1330,7 +1330,7 @@ _0234AAC4:
 	bl DisplayMessage
 	add r0, r6, #4
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	bl GetSpecialTargetItem
 	mov r1, r0
 	mov r0, #0
@@ -1391,8 +1391,8 @@ ov29_0234ABB0: ; 0x0234ABB0
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd6]
-	bl ov29_022EAD00
-	bl ov29_022EAE14
+	bl MusicTableIdxToMusicId
+	bl ChangeDungeonMusic
 _0234AC38:
 	mov r0, #0
 	bl ov29_022EAF34
@@ -1491,7 +1491,7 @@ _0234AD44:
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldrsh r0, [r4, #4]
 	ldrsh r1, [r4, #6]
-	bl ov29_023363EC
+	bl PositionIsOnStairs
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r0, [r4, #0xb4]
@@ -1562,7 +1562,7 @@ ov29_0234AE40: ; 0x0234AE40
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
@@ -1617,8 +1617,8 @@ ov29_0234AEE8: ; 0x0234AEE8
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd6]
-	bl ov29_022EAD00
-	bl ov29_022EAE14
+	bl MusicTableIdxToMusicId
+	bl ChangeDungeonMusic
 _0234AF24:
 	mov r0, #0
 	bl ov29_022EAF34
@@ -1654,7 +1654,7 @@ _0234AF64:
 	bl HandleFaint
 _0234AF8C:
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	mov r0, r4
 	bl ov29_02348A18
 	ldmia sp!, {r4, r5, r6, pc}
@@ -1915,8 +1915,8 @@ _0234B1C4:
 _0234B24C: .word 0x023537CC
 	arm_func_end ov29_0234B1A4
 
-	arm_func_start ov29_0234B250
-ov29_0234B250: ; 0x0234B250
+	arm_func_start LogMessageByIdWithPopupCheckParticipants
+LogMessageByIdWithPopupCheckParticipants: ; 0x0234B250
 	stmdb sp!, {r3, lr}
 	ldr ip, _0234B290 ; =0x023537CC
 	cmp r1, #0
@@ -1936,7 +1936,7 @@ _0234B27C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234B290: .word 0x023537CC
-	arm_func_end ov29_0234B250
+	arm_func_end LogMessageByIdWithPopupCheckParticipants
 
 	arm_func_start ov29_0234B294
 ov29_0234B294: ; 0x0234B294
@@ -1953,7 +1953,7 @@ LogMessageByIdWithPopupCheckUser: ; 0x0234B2A4
 	mov r4, #0
 	mov r6, r0
 	mov r5, r1
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r4, #1
 	cmp r4, #0
@@ -1973,7 +1973,7 @@ LogMessageWithPopupCheckUser: ; 0x0234B2E4
 	mov r4, #0
 	mov r6, r0
 	mov r5, r1
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r4, #1
 	cmp r4, #0
@@ -2014,11 +2014,11 @@ LogMessageByIdWithPopupCheckUserTarget: ; 0x0234B350
 	mov r4, #0
 	mov r7, r0
 	mov r5, r2
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r4, #1
 	mov r0, r6
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r4, #1
 	cmp r4, #0
@@ -2039,11 +2039,11 @@ LogMessageWithPopupCheckUserTarget: ; 0x0234B3A4
 	mov r4, #0
 	mov r7, r0
 	mov r5, r2
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r4, #1
 	mov r0, r6
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r4, #1
 	cmp r4, #0
@@ -2062,11 +2062,11 @@ LogMessageByIdQuietCheckUserTarget: ; 0x0234B3F0
 	mov r4, #0
 	mov r7, r0
 	mov r5, r2
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r4, #1
 	mov r0, r6
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r4, #1
 	cmp r4, #0
@@ -2087,7 +2087,7 @@ LogMessageByIdWithPopupCheckUserUnknown: ; 0x0234B444
 	mov r4, #0
 	mov r7, r0
 	mov r5, r2
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r4, #1
 	mov r0, r6
@@ -2237,11 +2237,11 @@ _0234B5D8:
 	ldr r1, _0234B710 ; =0x02353214
 	add r0, r5, r8
 	mov r2, #3
-	bl Strncmp
+	bl strncmp
 	cmp r0, #0
 	bne _0234B654
 	ldr r0, _0234B710 ; =0x02353214
-	bl Strlen
+	bl strlen
 	add r8, r8, r0
 	b _0234B660
 _0234B654:
@@ -2265,7 +2265,7 @@ _0234B660:
 	add r1, sp, #4
 	smlabb r0, r3, r0, sb
 	mov r7, #1
-	bl Strncpy
+	bl strncpy
 	ldr r0, [r4, #4]
 	add r0, r0, #0xc00
 	ldrsh r1, [r0, #0x8c]
@@ -2581,8 +2581,8 @@ _0234BAB8: .word 0x023537CC
 _0234BABC: .word 0x0237C694
 	arm_func_end ov29_0234BA54
 
-	arm_func_start ov29_0234BAC0
-ov29_0234BAC0: ; 0x0234BAC0
+	arm_func_start InitPortraitDungeon
+InitPortraitDungeon: ; 0x0234BAC0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -2601,9 +2601,9 @@ ov29_0234BAC0: ; 0x0234BAC0
 	mov r0, r6
 	mov r1, #1
 	strb r2, [r6, #0xe]
-	bl sub_0204D894
+	bl AllowPortraitDefault
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov29_0234BAC0
+	arm_func_end InitPortraitDungeon
 
 	arm_func_start ov29_0234BB10
 ov29_0234BB10: ; 0x0234BB10
@@ -3216,7 +3216,7 @@ ov29_0234C2F4: ; 0x0234C2F4
 	bl MemZero
 	add r0, r5, #0x48
 	strb r4, [r5, #0x88]
-	bl sub_0201E730
+	bl InitRender3dElement
 	mov r0, #0x100
 	strh r0, [r5, #0x4c]
 	mov r0, #0xc0
@@ -4211,7 +4211,7 @@ _0234CF94:
 	arm_func_start ov29_0234CFA0
 ov29_0234CFA0: ; 0x0234CFA0
 	stmdb sp!, {r3, lr}
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	movne r0, #2
 	ldmneia sp!, {r3, pc}
@@ -4234,8 +4234,8 @@ _0234CFE0:
 _0234CFE8: .word 0x02353538
 	arm_func_end ov29_0234CFA0
 
-	arm_func_start ov29_0234CFEC
-ov29_0234CFEC: ; 0x0234CFEC
+	arm_func_start GetPersonalityIndex
+GetPersonalityIndex: ; 0x0234CFEC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldrb r0, [r5, #0x48]
@@ -4393,7 +4393,7 @@ _0234D224: .word 0x000004CC
 _0234D228: .word 0x023537E8
 _0234D22C: .word 0x000004B8
 _0234D230: .word 0x000004D3
-	arm_func_end ov29_0234CFEC
+	arm_func_end GetPersonalityIndex
 
 	arm_func_start ov29_0234D234
 ov29_0234D234: ; 0x0234D234
@@ -4616,8 +4616,8 @@ ov29_0234D4BC: ; 0x0234D4BC
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_0234D4BC
 
-	arm_func_start ov29_0234D518
-ov29_0234D518: ; 0x0234D518
+	arm_func_start YesNoMenu
+YesNoMenu: ; 0x0234D518
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
@@ -4634,7 +4634,7 @@ ov29_0234D518: ; 0x0234D518
 	bl ov29_0234D4BC
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end ov29_0234D518
+	arm_func_end YesNoMenu
 
 	arm_func_start ov29_0234D558
 ov29_0234D558: ; 0x0234D558

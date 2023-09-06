@@ -366,7 +366,7 @@ _023344C0:
 	b _02334C9C
 _023344D0:
 	mov r0, r6
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	beq _02334C9C
 	mov r0, #0
@@ -377,7 +377,7 @@ _023344E8:
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r6
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	beq _02334C9C
 	mov r0, #0
@@ -985,7 +985,7 @@ GetApparentWeather: ; 0x02334D08
 	movs r4, r0
 	beq _02334D40
 	mov r1, #0x6f
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _02334D34
@@ -1026,7 +1026,7 @@ _02334D8C:
 	bl TryActivateArtificialWeatherAbilities
 	mov r0, #0
 	mov r1, #1
-	bl ov29_023354C4
+	bl TryActivateWeather
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02334DA4: .word 0x02353538
@@ -1095,7 +1095,7 @@ ov29_02334E70: ; 0x02334E70
 	str r0, [sp]
 	mov r0, #0
 	bl GetApparentWeather
-	bl ov29_022DE620
+	bl GetWeatherColorTable
 	mov r5, r0
 	mov r0, #0
 	bl GetApparentWeather
@@ -1104,7 +1104,7 @@ ov29_02334E70: ; 0x02334E70
 	mov r0, #0x25
 	bl AdvanceFrame
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	ldr r0, _0233503C ; =0x02353562
 	mov r1, #1
 	ldrb fp, [r0]
@@ -1123,7 +1123,7 @@ _02334ED0:
 	add r0, sl, r8, lsl #2
 	ldrb sb, [r0, #0x1e0]
 	sub r0, sb, r7
-	bl Abs
+	bl abs
 	cmp r0, #0xa
 	addlt r0, sl, r8, lsl #2
 	strltb r7, [r0, #0x1e0]
@@ -1147,7 +1147,7 @@ _02334F28:
 	add r0, sl, r8, lsl #2
 	ldrb sb, [r0, #0x1e1]
 	sub r0, sb, r7
-	bl Abs
+	bl abs
 	cmp r0, #0xa
 	addlt r0, sl, r8, lsl #2
 	strltb r7, [r0, #0x1e1]
@@ -1171,7 +1171,7 @@ _02334F84:
 	add r0, sl, r8, lsl #2
 	ldrb sb, [r0, #0x1e2]
 	sub r0, sb, r7
-	bl Abs
+	bl abs
 	cmp r0, #0xa
 	addlt r0, sl, r8, lsl #2
 	strltb r7, [r0, #0x1e2]

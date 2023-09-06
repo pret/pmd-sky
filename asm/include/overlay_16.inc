@@ -10,7 +10,7 @@
 .public GetMainCharacter1MemberIdx
 .public sub_020572EC
 .public ov11_02310BDC
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public MemFree
 .public sub_0205A288
 .public IsMonsterOnTeam
@@ -36,7 +36,7 @@
 .public FreeNormalMenu
 .public CreateDBox
 .public sub_02017C50
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public sub_02025314
 .public GetTeamMember
 .public StrncpySimpleNoPadSafe

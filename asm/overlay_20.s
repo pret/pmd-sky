@@ -1011,7 +1011,7 @@ _0238AEE8:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	mov r1, #0x64
-	bl DivideInt
+	bl __divsi3
 	mov r5, r1, lsl #0x10
 	add r0, sb, #0x84
 	bl sub_02011E18
@@ -1024,7 +1024,7 @@ _0238AEE8:
 	str r5, [sp]
 	bl Rand16Bit
 	ldr r1, [r5, #4]
-	bl DivideInt
+	bl __divsi3
 	ldr r2, [r5]
 	mov r0, #0x18
 	mla r0, r1, r0, r2
@@ -1462,10 +1462,10 @@ _0238B4D4:
 	bl InitPortraitBoxWithMonsterId
 	add r0, r4, #0x1c
 	mov r1, #0
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	add r0, r4, #0x1c
 	mov r1, #0
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldrsb r0, [r4, #0x18]
 	add r1, r4, #0x1c
 	bl ShowPortraitBox
@@ -2490,7 +2490,7 @@ ov20_0238C2E0: ; 0x0238C2E0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r1
 	mov r5, r2
-	bl sub_0200CE74
+	bl IsTicketItem
 	bl sub_02012294
 	mov r4, r0
 	mov r0, #0x1cc

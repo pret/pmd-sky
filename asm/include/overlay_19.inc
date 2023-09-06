@@ -24,7 +24,7 @@
 .public RemoveItemNoHole
 .public sub_02065BAC
 .public sub_02011528
-.public GetScenarioBalance__0204CB94
+.public GetScenarioBalance
 .public PreprocessString
 .public sub_02055474
 .public sub_0202E6C8
@@ -65,8 +65,8 @@
 .public ShowPortraitBox
 .public sub_02039C2C
 .public sub_0203D538
-.public Strcat
-.public SetPortraitAttrStruct
+.public strcat
+.public SetPortraitOffset
 .public sub_020417A8
 .public sub_0201170C
 .public ov10_022BCDA8
@@ -88,7 +88,7 @@
 .public InitPortraitBoxWithMonsterId
 .public sub_0203A51C
 .public ov10_022BD394
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public GetItemAtIdx
 .public sub_0203A5F0
 .public GetStringFromFileVeneer
@@ -105,7 +105,7 @@
 .public sub_02011580
 .public sub_02055020
 .public CanMonsterBeUsedForMissionWrapper
-.public Abs
+.public abs
 .public sub_02011784
 .public sub_0203A9EC
 .public GetMaxReachedFloor
@@ -122,13 +122,13 @@
 .public GetDungeonMode
 .public sub_020420F4
 .public sub_02065B70
-.public ov11_022E8124
+.public InitRandomNpcJobs
 .public FemaleToMaleForm
 .public DungeonSwapIdToIdx
 .public sub_02041A00
 .public sub_02057AC4
 .public GetFirstEmptyMemberIdx
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public sub_02056E04
 .public sub_020407C0
 .public sub_02046D20

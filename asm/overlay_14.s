@@ -153,13 +153,13 @@ _0238A2BC:
 	ldr r0, [r0]
 	mov r2, #0x8100000
 	add r0, r0, #0x120
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _0238A508 ; =ov14_0238DB80
 	ldr r2, _0238A50C ; =0x88080000
 	ldr r0, [r0]
 	mov r1, #0xcd
 	add r0, r0, #0x1e4
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _0238A508 ; =ov14_0238DB80
 	ldr r1, [r0]
 	add r0, r1, #0x2a8
@@ -170,7 +170,7 @@ _0238A2BC:
 	ldr r0, [r0]
 	mov r2, #0
 	add r0, r0, #0x2a8
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov sb, #0
 	ldr r5, _0238A510 ; =0xC8100000
 	ldr r4, _0238A508 ; =ov14_0238DB80
@@ -189,7 +189,7 @@ _0238A3E8:
 	add r0, r0, #0x36c
 	mov r2, r6
 	add r0, r0, r8
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r1, [r4]
 	add r0, r1, #0x3ac
 	add r0, r0, #0xc00
@@ -201,7 +201,7 @@ _0238A3E8:
 	add r0, r0, #0x3ac
 	add r0, r0, #0xc00
 	add r0, r0, r8
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	ldr r1, [r4]
 	add r0, r1, #0x3ec
 	add r0, r0, #0x1800
@@ -217,7 +217,7 @@ ov14_0238A468: ; 0x0238A468
 	add r0, r0, #0x3ec
 	add r0, r0, #0x1800
 	add r0, r0, r8
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	add sb, sb, #1
 	cmp sb, #0x10
 	blt _0238A3E8
@@ -238,7 +238,7 @@ _0238A494:
 	add r0, r0, #0x2c
 	add r0, r0, #0x2800
 	add r0, r0, r4
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	add r5, r5, #1
 	cmp r5, #2
 	blt _0238A494
@@ -924,7 +924,7 @@ SentryUpdateDisplay: ; 0x0238ADFC
 	beq _0238AECC
 	ldr r0, [r0, #0x874]
 	mov r1, #0x3c
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	cmp r0, #9
@@ -954,7 +954,7 @@ _0238AE88:
 	mov r2, r8
 	str sl, [sp, #0x14]
 	str r3, [sp, #0x18]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	add r5, r5, #1
 	cmp r5, #4
 	blt _0238AE88
@@ -999,7 +999,7 @@ _0238AF50:
 	mla r0, sl, r6, r0
 	mov r1, sb
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	b _0238AFA0
 _0238AF6C:
 	add r0, r1, #0x188
@@ -1007,7 +1007,7 @@ _0238AF6C:
 	mla r0, sl, r5, r0
 	ldr r1, _0238B6A0 ; =0x00001005
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	b _0238AFA0
 _0238AF88:
 	add r0, r1, #0x188
@@ -1015,7 +1015,7 @@ _0238AF88:
 	mla r0, sl, r4, r0
 	ldr r1, _0238B69C ; =0x00000806
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _0238AFA0:
 	ldr r1, [r7]
 	add r0, r1, sl, lsl #2
@@ -1028,7 +1028,7 @@ _0238AFA0:
 	mla r0, sl, fp, r0
 	add r1, r8, sl, lsl #3
 	mov r2, #0
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _0238AFD0:
 	add sl, sl, #1
 	cmp sl, #4
@@ -1049,14 +1049,14 @@ _0238AFDC:
 	add r0, r0, #0x3000
 	mov r2, #0
 	str r3, [sp, #0x18]
-	bl ov11_022F7064
+	bl AnimRelatedFunction__022F7064
 	ldr r0, _0238B694 ; =ov14_0238DB80
 	add r1, sp, #0x14
 	ldr r0, [r0]
 	mov r2, #0
 	add r0, r0, #0x6c
 	add r0, r0, #0x3400
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _0238B038:
 	ldr r0, _0238B694 ; =ov14_0238DB80
 	ldr r2, [r0]
@@ -1094,7 +1094,7 @@ _0238B098:
 	ldr r1, _0238B6A4 ; =0x00000801
 	add r0, r0, #0x2800
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _0238B0C4:
 	ldr r1, _0238B694 ; =ov14_0238DB80
 	mov r2, #0
@@ -1111,7 +1111,7 @@ _0238B0EC:
 	ldr r1, _0238B6A8 ; =0x00001002
 	add r0, r0, #0x2800
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r1, _0238B694 ; =ov14_0238DB80
 	mov r2, #0
 	ldr r0, [r1]
@@ -1127,7 +1127,7 @@ _0238B128:
 	ldr r1, _0238B6AC ; =0x00000802
 	add r0, r0, #0x2800
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r1, _0238B694 ; =ov14_0238DB80
 	mov r2, #0
 	ldr r0, [r1]
@@ -1146,7 +1146,7 @@ _0238B164:
 	add r0, r0, #0x2800
 	mov r1, #0x800
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _0238B184:
 	ldr r1, _0238B694 ; =ov14_0238DB80
 	mov r2, #0
@@ -1170,7 +1170,7 @@ _0238B1A8:
 	add r0, r0, #0x2800
 	add r1, r2, r1, lsl #3
 	mov r2, #0
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _0238B1DC:
 	mov sl, #0
 	ldr r8, _0238B6B0 ; =0x0238DB84
@@ -1189,7 +1189,7 @@ _0238B1F8:
 	mov r1, r0, lsl #0x10
 	add r0, r3, sb
 	mov r1, r1, asr #0x10
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r0, sl, lsl #1
 	ldrsh r1, [r7, r0]
 	ldr r0, [r5]
@@ -1200,7 +1200,7 @@ _0238B1F8:
 	add r0, r0, sb
 	add r1, sp, #0x14
 	str r6, [sp, #0x18]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	add sl, sl, #1
 	cmp sl, #0x10
 	blt _0238B1F8
@@ -1344,7 +1344,7 @@ _0238B460:
 	mla r0, r8, r7, r0
 	mov r1, r6
 	mov r2, r5
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	add r8, r8, #1
 _0238B47C:
 	ldr r1, [r4]
@@ -1363,7 +1363,7 @@ _0238B4A0:
 	mla r0, r7, r8, r0
 	mov r1, r6
 	mov r2, r5
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	add r7, r7, #1
 _0238B4BC:
 	ldr r1, [r4]
@@ -1396,7 +1396,7 @@ _0238B500:
 	mov r1, r8
 	mov r2, r7
 	str r3, [sp, #0x14]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	add r4, r4, #1
 	cmp r4, #2
 	blt _0238B500
@@ -1422,7 +1422,7 @@ _0238B574:
 	add r0, r0, #0x3000
 	mla r0, r4, r5, r0
 	mov r2, r7
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	add r4, r4, #1
 	cmp r4, #4
 	blt _0238B574
@@ -1470,7 +1470,7 @@ _0238B610:
 	mov r2, r7
 	str r3, [sp, #0x14]
 	str ip, [sp, #0x18]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	b _0238B67C
 _0238B648:
 	add r0, r1, #0x98
@@ -1485,7 +1485,7 @@ _0238B648:
 	mov r2, fp
 	str r3, [sp, #0x14]
 	str ip, [sp, #0x18]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _0238B67C:
 	add sl, sl, #1
 	cmp sl, #4
@@ -1514,8 +1514,8 @@ _0238B6D0: .word 0x00001003
 _0238B6D4: .word 0x00002C05
 	arm_func_end SentryUpdateDisplay
 
-	arm_func_start SentrySetExitingState__0238B6D8
-SentrySetExitingState__0238B6D8: ; 0x0238B6D8
+	arm_func_start SentrySetExitingState
+SentrySetExitingState: ; 0x0238B6D8
 	stmdb sp!, {r3, lr}
 	ldr r0, _0238B704 ; =ov14_0238DB80
 	mov r1, #0
@@ -1529,7 +1529,7 @@ SentrySetExitingState__0238B6D8: ; 0x0238B6D8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238B704: .word ov14_0238DB80
-	arm_func_end SentrySetExitingState__0238B6D8
+	arm_func_end SentrySetExitingState
 
 	arm_func_start ov14_0238B708
 ov14_0238B708: ; 0x0238B708
@@ -2028,12 +2028,12 @@ _0238BDA4:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xf4
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238C12C ; =ov14_0238DB80
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xf4
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C12C ; =ov14_0238DB80
 	ldr r1, [r0]
 	ldrsb r0, [r1, #2]
@@ -2443,7 +2443,7 @@ _0238C390:
 	add r0, r0, #0x3000
 	str r1, [r0, #0x890]
 _0238C3A4:
-	bl SentrySetExitingState__0238B6D8
+	bl SentrySetExitingState
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238C3AC: .word ov14_0238DB80
@@ -2463,13 +2463,13 @@ SentryState4: ; 0x0238C3B0
 _0238C3D0: .word ov14_0238DB80
 	arm_func_end SentryState4
 
-	arm_func_start SentrySetExitingState__0238C3D4
-SentrySetExitingState__0238C3D4: ; 0x0238C3D4
-	ldr ip, _0238C3DC ; =SentrySetExitingState__0238B6D8
+	arm_func_start SentryStateExit
+SentryStateExit: ; 0x0238C3D4
+	ldr ip, _0238C3DC ; =SentrySetExitingState
 	bx ip
 	.align 2, 0
-_0238C3DC: .word SentrySetExitingState__0238B6D8
-	arm_func_end SentrySetExitingState__0238C3D4
+_0238C3DC: .word SentrySetExitingState
+	arm_func_end SentryStateExit
 
 	arm_func_start SentryState6
 SentryState6: ; 0x0238C3E0
@@ -2760,7 +2760,7 @@ _0238C72C:
 	mov r2, #0
 	add r0, r0, #0x3a8
 	add r0, r0, #0x3000
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _0238CA54 ; =ov14_0238DB80
 	ldr r1, [r0]
 	add r0, r1, #0x6c
@@ -2773,7 +2773,7 @@ _0238C72C:
 	mov r2, #0
 	add r0, r0, #0x6c
 	add r0, r0, #0x3400
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r1, _0238CA54 ; =ov14_0238DB80
 	mov r2, #0x60
 	ldr r0, [r1]
@@ -2789,14 +2789,14 @@ _0238C72C:
 	ldr r0, [r0]
 	add r0, r0, #0x1b4
 	add r0, r0, #0x2800
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	ldr r0, _0238CA54 ; =ov14_0238DB80
 	mov r1, #0x800
 	ldr r0, [r0]
 	mov r2, #0
 	add r0, r0, #0x1b4
 	add r0, r0, #0x2800
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r4, _0238CA54 ; =ov14_0238DB80
 	mov sb, #0
 	ldr r0, [r4]
@@ -2830,7 +2830,7 @@ _0238C88C:
 	add r0, r0, #0x2800
 	add r0, r0, r8
 	mov r2, #7
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r1, [r4]
 	add r0, r1, #0x188
 	add r0, r0, #0x2c00
@@ -2842,7 +2842,7 @@ _0238C88C:
 	add r0, r0, #0x188
 	add r0, r0, #0x2c00
 	add r0, r0, r8
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	ldr r0, [r4]
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x3000
@@ -2889,10 +2889,10 @@ _0238C984:
 	bl InitPortraitBox
 	add r0, sp, #0x10
 	mov r1, #3
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	add r0, sp, #0x10
 	add r1, sp, #8
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	mov r0, r7
 	add r1, sp, #0x10
 	bl ShowPortraitBox
@@ -2973,7 +2973,7 @@ SentryStateGetUserChoice: ; 0x0238CA94
 	ldr r0, [r2]
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x874]
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r8, r0, asr #0x10
 	mov r1, r8, lsr #0x1f
@@ -2985,7 +2985,7 @@ SentryStateGetUserChoice: ; 0x0238CA94
 	ldr r4, [r0]
 	add r0, r4, #0x3000
 	ldr r0, [r0, #0x874]
-	bl DivideInt
+	bl __divsi3
 	cmp r0, #0x10
 	bge _0238CDE0
 	mov r4, #0
@@ -3244,13 +3244,13 @@ _0238CE50:
 	bl InitPortraitBoxWithMonsterId
 	ldrb r1, [r6, sb]
 	mov r0, r7
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	mov r0, r7
 	add r1, r5, sb, lsl #3
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	mov r0, r7
 	mov r1, sl
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	cmp sb, #3
 	addls pc, pc, sb, lsl #2
 	b _0238CEFC
@@ -3446,10 +3446,10 @@ _0238D124:
 	bl InitPortraitBox
 	add r0, sp, #0x10
 	mov r1, #3
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	add r0, sp, #0x10
 	add r1, sp, #8
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	mov r0, r8
 	add r1, sp, #0x10
 	bl ShowPortraitBox
@@ -3946,7 +3946,7 @@ _0238D768:
 	subgt r1, r1, #1
 	strgt r1, [r0, #0x8b4]
 	ldmgtia sp!, {r3, pc}
-	bl SentrySetExitingState__0238B6D8
+	bl SentrySetExitingState
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D790: .word ov14_0238DB80
@@ -3995,7 +3995,7 @@ _0238D7FC:
 	subgt r1, r1, #1
 	strgt r1, [r0, #0x8b4]
 	ldmgtia sp!, {r3, pc}
-	bl SentrySetExitingState__0238B6D8
+	bl SentrySetExitingState
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D824: .word ov14_0238DB80
@@ -4010,7 +4010,7 @@ ov14_0238D828: ; 0x0238D828
 	mov r8, r2
 	mov r4, r3
 	ldr r7, [sb]
-	bl Strlen
+	bl strlen
 	ldr r2, [sp, #0x30]
 	mov r6, #0
 	cmp r0, r2
@@ -4042,11 +4042,11 @@ _0238D87C:
 	add r2, r2, #8
 	str r2, [r8]
 	mov r2, r6
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r0, r7
 	mov r1, r5
 	mov r2, r4
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	add r7, r7, #0xc4
 	b _0238D950
 _0238D8DC:
@@ -4058,11 +4058,11 @@ _0238D8DC:
 	str r1, [r8]
 	mov r1, fp
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r0, r7
 	mov r1, r5
 	mov r2, #0
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	add r7, r7, #0xc4
 	b _0238D950
 _0238D918:
@@ -4074,11 +4074,11 @@ _0238D918:
 	str r1, [r8]
 	mov r1, #0x810
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r0, r7
 	mov r1, r5
 	mov r2, #0
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	add r7, r7, #0xc4
 _0238D950:
 	ldrb r0, [sl]

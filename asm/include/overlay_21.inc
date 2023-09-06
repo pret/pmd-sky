@@ -1,6 +1,6 @@
 #pragma once
 .public MemAlloc
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public ov11_0230C910
 .public ShowMessageInDBox
 .public PrintIqSkillsMenu
@@ -21,7 +21,7 @@
 .public sub_02027AF0
 .public ov11_0230B20C
 .public sub_0202E3CC
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public sub_0202F8FC
 .public sub_0200D0A0
 .public sub_02013150
@@ -89,7 +89,7 @@
 .public sub_020407EC
 .public ov11_0230BA64
 .public ov00_0230D220
-.public ov11_022E8124
+.public InitRandomNpcJobs
 .public sub_0203FD38
 .public sub_0202E6C8
 .public ov11_0230C050

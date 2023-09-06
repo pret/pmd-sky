@@ -24,14 +24,14 @@ _0231EE34:
 	beq _0231EE54
 	mov r0, r5
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _0231EE60
 _0231EE54:
 	mov r0, r4
 	mov r1, #0xe
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 _0231EE60:
 	cmp r0, #0
 	beq _0231EE8C
@@ -82,7 +82,7 @@ _0231EEE0:
 	beq _0231F080
 	mov r0, r5
 	mov r1, sb
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	beq _0231F080
 	cmp r8, #0
@@ -117,7 +117,7 @@ _0231EF64:
 	add r1, sp, #0x34
 	add r2, r3, r2
 	strh r2, [sp, #0x36]
-	bl ov29_022FF764
+	bl CannotStandOnTile
 	cmp r0, #0
 	bne _0231EFB8
 	ldrsh r0, [sp, #0x34]
@@ -158,7 +158,7 @@ _0231EFF8:
 	add r1, sp, #0x30
 	add r2, r3, r2
 	strh r2, [sp, #0x32]
-	bl ov29_022FF764
+	bl CannotStandOnTile
 	cmp r0, #0
 	bne _0231F074
 	ldrsh r0, [sp, #0x30]
@@ -225,7 +225,7 @@ _0231F0F4:
 	strh r0, [sp, #0x2e]
 	mov r0, r4
 	mov r1, r6
-	bl ov29_022FF764
+	bl CannotStandOnTile
 	cmp r0, #0
 	bne _0231F150
 	ldrsh r0, [sp, #0x2c]
@@ -261,7 +261,7 @@ _0231F178:
 	mov r1, r4
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r4
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _0231F1B0
 	ldr r0, _0231F55C ; =0x00000212
@@ -292,7 +292,7 @@ _0231F1B0:
 	ldrsh r0, [r0, r1]
 	mov r1, #3
 	mov r0, r0, lsl #8
-	bl DivideInt
+	bl __divsi3
 	ldrsh sl, [sp, #0x40]
 	mov r1, #0x18
 	ldr r2, _0231F560 ; =0x0235171E
@@ -303,7 +303,7 @@ _0231F1B0:
 	ldrsh r2, [r2, r3]
 	mov r1, #3
 	mov r0, r2, lsl #8
-	bl DivideInt
+	bl __divsi3
 	ldrsh r2, [sp, #0x42]
 	mov r1, #0x18
 	ldr sl, [r4, #0xc]
@@ -313,7 +313,7 @@ _0231F1B0:
 	ldr r0, [r4, #0x10]
 	mov r1, sb
 	sub r0, fp, r0
-	bl DivideInt
+	bl __divsi3
 	str sl, [sp, #0x38]
 	ldr r1, [r4, #0x10]
 	str r0, [sp, #0x18]
@@ -321,7 +321,7 @@ _0231F1B0:
 	str r1, [sp, #0x3c]
 	mov r1, sb
 	mov sl, #0
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #0x1c]
 	b _0231F31C
 _0231F294:
@@ -335,9 +335,9 @@ _0231F294:
 	str r0, [sp, #0x3c]
 	mov r0, r4
 	add r1, sp, #0x38
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	mov r0, r4
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _0231F308
 	mov r0, r7
@@ -357,7 +357,7 @@ _0231F294:
 _0231F308:
 	mov r0, #0x800
 	mov r1, sb
-	bl DivideInt
+	bl __divsi3
 	add r7, r7, r0
 	add sl, sl, #1
 _0231F31C:
@@ -369,7 +369,7 @@ _0231F31C:
 	str fp, [sp, #0x3c]
 	mov r2, #0
 	str r2, [r4, #0x1c]
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	mov r0, #0x3b
 	bl AdvanceFrame
 	ldr r0, [r4, #0xb4]
@@ -387,7 +387,7 @@ _0231F31C:
 	ldrsh r2, [sp, #0x42]
 	mov r0, r4
 	mov r3, #1
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	mov r0, r4
 	bl ov29_02321238
 	b _0231F53C
@@ -409,7 +409,7 @@ _0231F3A4:
 	mov r1, sb
 	strh r3, [sp, #0x28]
 	strh r2, [sp, #0x2a]
-	bl ov29_022FF764
+	bl CannotStandOnTile
 	cmp r0, #0
 	bne _0231F408
 	ldrsh r0, [sp, #0x28]
@@ -444,7 +444,7 @@ _0231F434:
 	ldrsh r2, [sp, #0x42]
 	mov r0, r4
 	mov r3, #1
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 _0231F454:
 	ldr r0, [r7]
 	cmp r0, #1
@@ -454,7 +454,7 @@ _0231F454:
 	bl InitMove
 	add r1, sp, #0x20
 	mov r0, r7
-	bl ov29_02324854
+	bl TwoTurnMoveForcedMiss
 	cmp r0, #0
 	bne _0231F4B4
 	mov r3, #0

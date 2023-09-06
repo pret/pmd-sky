@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022E37DC
-ov29_022E37DC: ; 0x022E37DC
+	arm_func_start PlayEffectAnimationPos
+PlayEffectAnimationPos: ; 0x022E37DC
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldrsh ip, [r0]
@@ -19,13 +19,13 @@ ov29_022E37DC: ; 0x022E37DC
 	add r3, r3, #0x10
 	mov r3, r3, lsl #8
 	str r3, [sp, #4]
-	bl ov29_022E3820
+	bl PlayEffectAnimationPixelPos
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022E37DC
+	arm_func_end PlayEffectAnimationPos
 
-	arm_func_start ov29_022E3820
-ov29_022E3820: ; 0x022E3820
+	arm_func_start PlayEffectAnimationPixelPos
+PlayEffectAnimationPixelPos: ; 0x022E3820
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x2c
 	mov r5, r0
@@ -79,10 +79,10 @@ _022E38D4:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _022E38DC: .word 0x0000FFFF
-	arm_func_end ov29_022E3820
+	arm_func_end PlayEffectAnimationPixelPos
 
-	arm_func_start ov29_022E38E0
-ov29_022E38E0: ; 0x022E38E0
+	arm_func_start AnimationDelayOrSomething
+AnimationDelayOrSomething: ; 0x022E38E0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r1, _022E3A38 ; =0x02353538
 	mov r7, #0
@@ -185,7 +185,7 @@ _022E3A30:
 	.align 2, 0
 _022E3A38: .word 0x02353538
 _022E3A3C: .word 0x0235354C
-	arm_func_end ov29_022E38E0
+	arm_func_end AnimationDelayOrSomething
 
 	arm_func_start ov29_022E3A40
 ov29_022E3A40: ; 0x022E3A40
@@ -455,7 +455,7 @@ ov29_022E3DD8: ; 0x022E3DD8
 	mov r1, #0x144
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E3DD8
@@ -478,7 +478,7 @@ ov29_022E3E24: ; 0x022E3E24
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -503,7 +503,7 @@ ov29_022E3E74: ; 0x022E3E74
 	mov r1, #0x25
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	ldr r1, _022E3ECC ; =0x0000030E
 	mov r0, r4
 	bl ov29_022E56A0
@@ -531,7 +531,7 @@ ov29_022E3ED0: ; 0x022E3ED0
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -561,7 +561,7 @@ ov29_022E3F24: ; 0x022E3F24
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -596,7 +596,7 @@ ov29_022E3F7C: ; 0x022E3F7C
 	mov r1, #7
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E3F7C
@@ -623,7 +623,7 @@ ov29_022E3FCC: ; 0x022E3FCC
 	mov r0, r4
 	mov r1, #4
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E3FCC
@@ -633,8 +633,8 @@ ov29_022E4014: ; 0x022E4014
 	bx lr
 	arm_func_end ov29_022E4014
 
-	arm_func_start ov29_022E4018
-ov29_022E4018: ; 0x022E4018
+	arm_func_start PlayEffectAnimation0x171Full
+PlayEffectAnimation0x171Full: ; 0x022E4018
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -651,20 +651,20 @@ ov29_022E4018: ; 0x022E4018
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E4064: .word 0x00000171
-	arm_func_end ov29_022E4018
+	arm_func_end PlayEffectAnimation0x171Full
 
 	arm_func_start ov29_022E4068
 ov29_022E4068: ; 0x022E4068
 	bx lr
 	arm_func_end ov29_022E4068
 
-	arm_func_start ov29_022E406C
-ov29_022E406C: ; 0x022E406C
+	arm_func_start PlayEffectAnimation0x171
+PlayEffectAnimation0x171: ; 0x022E406C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -680,12 +680,12 @@ ov29_022E406C: ; 0x022E406C
 	mov r0, r4
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E40B4: .word 0x00000171
-	arm_func_end ov29_022E406C
+	arm_func_end PlayEffectAnimation0x171
 
 	arm_func_start ov29_022E40B8
 ov29_022E40B8: ; 0x022E40B8
@@ -714,7 +714,7 @@ ov29_022E40C0: ; 0x022E40C0
 	mov r0, r4
 	mov r1, #0x1ac
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E40C0
@@ -747,7 +747,7 @@ ov29_022E4110: ; 0x022E4110
 	mov r1, #4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4110
@@ -775,7 +775,7 @@ ov29_022E4160: ; 0x022E4160
 	mov r1, #0x1a8
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4160
@@ -834,7 +834,7 @@ ov29_022E41F0: ; 0x022E41F0
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -859,7 +859,7 @@ ov29_022E4240: ; 0x022E4240
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -889,7 +889,7 @@ ov29_022E4294: ; 0x022E4294
 	mov r1, #0x4c
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4294
@@ -923,7 +923,7 @@ ov29_022E42E8: ; 0x022E42E8
 	mov r1, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022E42E8
@@ -946,7 +946,7 @@ ov29_022E4338: ; 0x022E4338
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -971,7 +971,7 @@ ov29_022E4388: ; 0x022E4388
 	add r1, r1, #0x138
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -996,7 +996,7 @@ ov29_022E43D8: ; 0x022E43D8
 	add r1, r1, #0x138
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1031,7 +1031,7 @@ ov29_022E4430: ; 0x022E4430
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1056,7 +1056,7 @@ ov29_022E4480: ; 0x022E4480
 	mov r1, #7
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4480
@@ -1079,7 +1079,7 @@ ov29_022E44CC: ; 0x022E44CC
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1104,7 +1104,7 @@ ov29_022E451C: ; 0x022E451C
 	add r1, r1, #0x188
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1129,7 +1129,7 @@ ov29_022E456C: ; 0x022E456C
 	mov r1, #5
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E456C
@@ -1168,7 +1168,7 @@ ov29_022E45D0: ; 0x022E45D0
 	mov r1, #0x2f
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	mov r0, #0x30
 	bl GetEffectAnimationField0x19
 	mov r1, r0
@@ -1183,7 +1183,7 @@ ov29_022E45D0: ; 0x022E45D0
 	mov r0, r5
 	mov r1, #0x30
 	mov r2, #1
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022E45D0
@@ -1236,7 +1236,7 @@ ov29_022E4674: ; 0x022E4674
 	mov r1, #0x21
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4674
@@ -1308,7 +1308,7 @@ ov29_022E471C: ; 0x022E471C
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1333,7 +1333,7 @@ ov29_022E476C: ; 0x022E476C
 	mov r1, #0x30
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E476C
@@ -1386,7 +1386,7 @@ ov29_022E47CC: ; 0x022E47CC
 	mov r1, r5
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E4860
 _022E4828:
 	mov r0, #0xe
@@ -1402,7 +1402,7 @@ _022E4828:
 	mov r1, #0xe
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E4860:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
@@ -1431,7 +1431,7 @@ ov29_022E486C: ; 0x022E486C
 	mov r1, #0x41
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E486C
@@ -1454,7 +1454,7 @@ ov29_022E48B8: ; 0x022E48B8
 	add r1, r1, #0x11c
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	mov r0, r4
 	mov r1, #0x20c
 	bl ov29_022E56A0
@@ -1482,15 +1482,15 @@ ov29_022E4914: ; 0x022E4914
 	add r1, r1, #0x1ac
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E4960: .word 0x000001AE
 	arm_func_end ov29_022E4914
 
-	arm_func_start ov29_022E4964
-ov29_022E4964: ; 0x022E4964
+	arm_func_start ShowPpRestoreEffect
+ShowPpRestoreEffect: ; 0x022E4964
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -1507,12 +1507,12 @@ ov29_022E4964: ; 0x022E4964
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E49B0: .word 0x000001B1
-	arm_func_end ov29_022E4964
+	arm_func_end ShowPpRestoreEffect
 
 	arm_func_start ov29_022E49B4
 ov29_022E49B4: ; 0x022E49B4
@@ -1532,7 +1532,7 @@ ov29_022E49B4: ; 0x022E49B4
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1557,7 +1557,7 @@ ov29_022E4A04: ; 0x022E4A04
 	add r1, r1, #0x190
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1582,7 +1582,7 @@ ov29_022E4A54: ; 0x022E4A54
 	add r1, r1, #0x18c
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1607,7 +1607,7 @@ ov29_022E4AA4: ; 0x022E4AA4
 	mov r1, #0x190
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4AA4
@@ -1630,7 +1630,7 @@ ov29_022E4AF0: ; 0x022E4AF0
 	mov r1, #0x15
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4AF0
@@ -1653,7 +1653,7 @@ ov29_022E4B3C: ; 0x022E4B3C
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1698,7 +1698,7 @@ ov29_022E4BB4: ; 0x022E4BB4
 	mov r1, #0x15
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4BB4
@@ -1721,7 +1721,7 @@ ov29_022E4C00: ; 0x022E4C00
 	mov r1, #0xf
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4C00
@@ -1739,7 +1739,7 @@ ov29_022E4C4C: ; 0x022E4C4C
 	mov r2, #1
 	mov r3, #3
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022E4C4C
@@ -1762,7 +1762,7 @@ ov29_022E4C84: ; 0x022E4C84
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1787,7 +1787,7 @@ ov29_022E4CD4: ; 0x022E4CD4
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1821,7 +1821,7 @@ ov29_022E4D28: ; 0x022E4D28
 	mov r1, #0x194
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E4DB8
 _022E4D80:
 	ldr r0, _022E4DC8 ; =0x00000193
@@ -1837,7 +1837,7 @@ _022E4D80:
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E4DB8:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, lr}
@@ -1869,7 +1869,7 @@ ov29_022E4DCC: ; 0x022E4DCC
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E4E5C
 _022E4E24:
 	ldr r0, _022E4E70 ; =0x00000191
@@ -1885,7 +1885,7 @@ _022E4E24:
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E4E5C:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, lr}
@@ -1918,7 +1918,7 @@ ov29_022E4E74: ; 0x022E4E74
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E4F04
 _022E4ECC:
 	ldr r0, _022E4F18 ; =0x00000192
@@ -1934,7 +1934,7 @@ _022E4ECC:
 	add r1, r1, #0x190
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E4F04:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, lr}
@@ -1967,7 +1967,7 @@ ov29_022E4F1C: ; 0x022E4F1C
 	add r1, r1, #0x18c
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E4FAC
 _022E4F74:
 	mov r0, #0x190
@@ -1983,7 +1983,7 @@ _022E4F74:
 	mov r1, #0x190
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E4FAC:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, lr}
@@ -2015,7 +2015,7 @@ ov29_022E4FC0: ; 0x022E4FC0
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E5050
 _022E5018:
 	ldr r0, _022E5064 ; =0x00000192
@@ -2031,7 +2031,7 @@ _022E5018:
 	add r1, r1, #0x190
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E5050:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, lr}
@@ -2064,7 +2064,7 @@ ov29_022E5068: ; 0x022E5068
 	mov r1, #0x194
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E50F8
 _022E50C0:
 	ldr r0, _022E5108 ; =0x00000193
@@ -2080,7 +2080,7 @@ _022E50C0:
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E50F8:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, lr}
@@ -2112,7 +2112,7 @@ ov29_022E510C: ; 0x022E510C
 	add r1, r1, #0x18c
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E519C
 _022E5164:
 	mov r0, #0x190
@@ -2128,7 +2128,7 @@ _022E5164:
 	mov r1, #0x190
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E519C:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, lr}
@@ -2160,7 +2160,7 @@ ov29_022E51B0: ; 0x022E51B0
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E5240
 _022E5208:
 	ldr r0, _022E5254 ; =0x00000191
@@ -2176,7 +2176,7 @@ _022E5208:
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E5240:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, lr}
@@ -2209,7 +2209,7 @@ ov29_022E5258: ; 0x022E5258
 	mov r1, #0x18c
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E52E8
 _022E52B0:
 	mov r0, #0xd
@@ -2225,7 +2225,7 @@ _022E52B0:
 	mov r1, #0xd
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E52E8:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, lr}
@@ -2255,7 +2255,7 @@ ov29_022E52F8: ; 0x022E52F8
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E5388
 _022E5350:
 	mov r0, #0xe
@@ -2271,7 +2271,7 @@ _022E5350:
 	mov r1, #0xe
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E5388:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, lr}
@@ -2299,7 +2299,7 @@ ov29_022E539C: ; 0x022E539C
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -2329,7 +2329,7 @@ ov29_022E53F0: ; 0x022E53F0
 	mov r1, #0x19
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E53F0
@@ -2347,7 +2347,7 @@ ov29_022E543C: ; 0x022E543C
 	mov r2, #1
 	mov r3, #3
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022E543C
@@ -2399,7 +2399,7 @@ _022E54D8:
 	mov r0, r4
 	mov r3, #3
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -2424,7 +2424,7 @@ ov29_022E550C: ; 0x022E550C
 	add r1, r1, #0x13c
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -2456,7 +2456,7 @@ ov29_022E5560: ; 0x022E5560
 	mov r1, #0xf8
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E55E8
 _022E55B0:
 	mov r0, #0xf9
@@ -2472,7 +2472,7 @@ _022E55B0:
 	mov r1, #0xf9
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E55E8:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
@@ -2496,19 +2496,19 @@ ov29_022E55F0: ; 0x022E55F0
 	mov r1, #0x2a
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E55F0
 
 	arm_func_start ov29_022E563C
 ov29_022E563C: ; 0x022E563C
-	ldr ip, _022E564C ; =ov29_022E3820
+	ldr ip, _022E564C ; =PlayEffectAnimationPixelPos
 	mov r1, #0x90
 	mov r2, #1
 	bx ip
 	.align 2, 0
-_022E564C: .word ov29_022E3820
+_022E564C: .word PlayEffectAnimationPixelPos
 	arm_func_end ov29_022E563C
 
 	arm_func_start ov29_022E5650
@@ -2529,7 +2529,7 @@ ov29_022E5650: ; 0x022E5650
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -2664,7 +2664,7 @@ ov29_022E57D4: ; 0x022E57D4
 	add r1, r1, #0x258
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	ldr r0, _022E5860 ; =0x0000025B
 	bl GetEffectAnimationField0x19
 	mov r1, r0
@@ -2679,7 +2679,7 @@ ov29_022E57D4: ; 0x022E57D4
 	ldr r1, _022E5860 ; =0x0000025B
 	mov r0, r4
 	mov r2, #1
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -2705,7 +2705,7 @@ ov29_022E5864: ; 0x022E5864
 	mov r1, #0x16
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E5864
@@ -2945,7 +2945,7 @@ ov29_022E5BD8: ; 0x022E5BD8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x40
 	mov r5, r0
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _022E5D4C
 	ldr r1, [r5, #0xb4]
@@ -3034,7 +3034,7 @@ _022E5CC0:
 	mov r2, #1
 	str r4, [sp, #4]
 	str r3, [sp, #8]
-	bl ov29_022E3820
+	bl PlayEffectAnimationPixelPos
 	b _022E5D50
 _022E5D4C:
 	mvn r0, #0
@@ -3084,7 +3084,7 @@ ov29_022E5DBC: ; 0x022E5DBC
 	cmp r4, #3
 	bne _022E5DD8
 	mov r0, #0
-	bl ov29_022EAE14
+	bl ChangeDungeonMusic
 _022E5DD8:
 	cmp r5, #4
 	beq _022E5E10
@@ -3183,7 +3183,7 @@ ov29_022E5ED0: ; 0x022E5ED0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 _022E5F14:
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E5F1C: .word 0x02353538
@@ -3223,7 +3223,7 @@ _022E5F44:
 	str r5, [sp, #0xc]
 	mov r0, sb
 	mov r2, r5
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	ldrb r0, [sl, #6]
 	cmp r0, #0
 	bne _022E5FC8
@@ -3275,7 +3275,7 @@ _022E6034:
 	blt _022E60CC
 	cmp r5, #0
 	beq _022E6090
-	bl ov29_022E0880
+	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
 	bne _022E6090
 	mov r0, r7
@@ -3290,7 +3290,7 @@ _022E6034:
 	mov r1, r7
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	b _022E60CC
 _022E6090:
 	ldr r0, _022E60E0 ; =0x0235124C
@@ -3307,7 +3307,7 @@ _022E6090:
 	mov r1, r5
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 _022E60CC:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -3336,13 +3336,13 @@ ov29_022E60E4: ; 0x022E60E4
 	mov r1, #0x29
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E60E4
 
-	arm_func_start ov29_022E6130
-ov29_022E6130: ; 0x022E6130
+	arm_func_start PlayEffectAnimation0x1A9__022E6130
+PlayEffectAnimation0x1A9__022E6130: ; 0x022E6130
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -3358,15 +3358,15 @@ ov29_022E6130: ; 0x022E6130
 	mov r0, r4
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E6178: .word 0x000001A9
-	arm_func_end ov29_022E6130
+	arm_func_end PlayEffectAnimation0x1A9__022E6130
 
-	arm_func_start ov29_022E617C
-ov29_022E617C: ; 0x022E617C
+	arm_func_start PlayEffectAnimation0x1A9__022E617C
+PlayEffectAnimation0x1A9__022E617C: ; 0x022E617C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -3382,15 +3382,15 @@ ov29_022E617C: ; 0x022E617C
 	mov r0, r4
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E61C4: .word 0x000001A9
-	arm_func_end ov29_022E617C
+	arm_func_end PlayEffectAnimation0x1A9__022E617C
 
-	arm_func_start ov29_022E61C8
-ov29_022E61C8: ; 0x022E61C8
+	arm_func_start PlayEffectAnimation0x1A9__022E61C8
+PlayEffectAnimation0x1A9__022E61C8: ; 0x022E61C8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -3406,15 +3406,15 @@ ov29_022E61C8: ; 0x022E61C8
 	mov r0, r4
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E6210: .word 0x000001A9
-	arm_func_end ov29_022E61C8
+	arm_func_end PlayEffectAnimation0x1A9__022E61C8
 
-	arm_func_start ov29_022E6214
-ov29_022E6214: ; 0x022E6214
+	arm_func_start PlayEffectAnimation0x1A9__022E6214
+PlayEffectAnimation0x1A9__022E6214: ; 0x022E6214
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -3430,12 +3430,12 @@ ov29_022E6214: ; 0x022E6214
 	mov r0, r4
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E625C: .word 0x000001A9
-	arm_func_end ov29_022E6214
+	arm_func_end PlayEffectAnimation0x1A9__022E6214
 
 	arm_func_start ov29_022E6260
 ov29_022E6260: ; 0x022E6260
@@ -3454,7 +3454,7 @@ ov29_022E6260: ; 0x022E6260
 	mov r0, r4
 	mov r1, #0x1a8
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E6260
@@ -3476,7 +3476,7 @@ ov29_022E62A8: ; 0x022E62A8
 	mov r0, r4
 	mov r1, #0x29
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E62A8
@@ -3498,7 +3498,7 @@ ov29_022E62F0: ; 0x022E62F0
 	mov r0, r4
 	mov r1, #0x48
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E62F0
@@ -3521,7 +3521,7 @@ ov29_022E6338: ; 0x022E6338
 	add r1, r1, #0x1a4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -3546,15 +3546,15 @@ ov29_022E6388: ; 0x022E6388
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E63D4: .word 0x00000297
 	arm_func_end ov29_022E6388
 
-	arm_func_start ov29_022E63D8
-ov29_022E63D8: ; 0x022E63D8
+	arm_func_start PlayEffectAnimation0x18E
+PlayEffectAnimation0x18E: ; 0x022E63D8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -3570,12 +3570,12 @@ ov29_022E63D8: ; 0x022E63D8
 	add r1, r1, #0x18c
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E6420: .word 0x0000018E
-	arm_func_end ov29_022E63D8
+	arm_func_end PlayEffectAnimation0x18E
 
 	arm_func_start ov29_022E6424
 ov29_022E6424: ; 0x022E6424
@@ -3595,7 +3595,7 @@ ov29_022E6424: ; 0x022E6424
 	mov r1, #0x1b0
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	mov r0, #0xa
 	mov r1, #0x42
 	bl ov29_022EA370
@@ -3620,13 +3620,13 @@ ov29_022E647C: ; 0x022E647C
 	mov r0, r4
 	mov r1, #0x1a8
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E647C
 
-	arm_func_start ov29_022E64C4
-ov29_022E64C4: ; 0x022E64C4
+	arm_func_start PlayEffectAnimation0x1A9__022E64C4
+PlayEffectAnimation0x1A9__022E64C4: ; 0x022E64C4
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -3642,15 +3642,15 @@ ov29_022E64C4: ; 0x022E64C4
 	mov r0, r4
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E650C: .word 0x000001A9
-	arm_func_end ov29_022E64C4
+	arm_func_end PlayEffectAnimation0x1A9__022E64C4
 
-	arm_func_start ov29_022E6510
-ov29_022E6510: ; 0x022E6510
+	arm_func_start PlayEffectAnimation0x1A9__022E6510
+PlayEffectAnimation0x1A9__022E6510: ; 0x022E6510
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -3666,12 +3666,12 @@ ov29_022E6510: ; 0x022E6510
 	mov r0, r4
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E6558: .word 0x000001A9
-	arm_func_end ov29_022E6510
+	arm_func_end PlayEffectAnimation0x1A9__022E6510
 
 	arm_func_start ov29_022E655C
 ov29_022E655C: ; 0x022E655C
@@ -3690,7 +3690,7 @@ ov29_022E655C: ; 0x022E655C
 	mov r0, r4
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -3715,7 +3715,7 @@ ov29_022E65A8: ; 0x022E65A8
 	mov r1, #4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E65A8
@@ -3738,7 +3738,7 @@ ov29_022E65F4: ; 0x022E65F4
 	add r1, r1, #0x11c
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -3763,7 +3763,7 @@ ov29_022E6644: ; 0x022E6644
 	mov r0, r4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -3776,7 +3776,7 @@ ov29_022E6694: ; 0x022E6694
 	mov r4, r1
 	ldr r1, _022E66C0 ; =0x0000019E
 	mov r2, #1
-	bl ov29_022E37DC
+	bl PlayEffectAnimationPos
 	cmp r4, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, #0
@@ -3789,12 +3789,12 @@ _022E66C0: .word 0x0000019E
 
 	arm_func_start ov29_022E66C4
 ov29_022E66C4: ; 0x022E66C4
-	ldr ip, _022E66D4 ; =ov29_022E37DC
+	ldr ip, _022E66D4 ; =PlayEffectAnimationPos
 	mov r1, #0x36
 	mov r2, #1
 	bx ip
 	.align 2, 0
-_022E66D4: .word ov29_022E37DC
+_022E66D4: .word PlayEffectAnimationPos
 	arm_func_end ov29_022E66C4
 
 	arm_func_start ov29_022E66D8
@@ -3815,7 +3815,7 @@ ov29_022E66D8: ; 0x022E66D8
 	mov r1, #0x15
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E66D8
@@ -3838,29 +3838,29 @@ ov29_022E6724: ; 0x022E6724
 	mov r1, #0x1b4
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E6724
 
 	arm_func_start ov29_022E6770
 ov29_022E6770: ; 0x022E6770
-	ldr ip, _022E6780 ; =ov29_022E37DC
+	ldr ip, _022E6780 ; =PlayEffectAnimationPos
 	mov r1, #0x37
 	mov r2, #1
 	bx ip
 	.align 2, 0
-_022E6780: .word ov29_022E37DC
+_022E6780: .word PlayEffectAnimationPos
 	arm_func_end ov29_022E6770
 
 	arm_func_start ov29_022E6784
 ov29_022E6784: ; 0x022E6784
-	ldr ip, _022E6794 ; =ov29_022E37DC
+	ldr ip, _022E6794 ; =PlayEffectAnimationPos
 	mov r1, #0x29
 	mov r2, #1
 	bx ip
 	.align 2, 0
-_022E6794: .word ov29_022E37DC
+_022E6794: .word PlayEffectAnimationPos
 	arm_func_end ov29_022E6784
 
 	arm_func_start ov29_022E6798
@@ -3881,7 +3881,7 @@ ov29_022E6798: ; 0x022E6798
 	mov r1, #0x18
 	mov r2, #1
 	str ip, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E6798
@@ -3910,7 +3910,7 @@ ov29_022E67E4: ; 0x022E67E4
 	mov r1, r7
 	and r3, r3, #0xff
 	str r2, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	mov r0, r4
 	mov r1, #0x42
 	bl ov29_022EA370
@@ -3940,7 +3940,7 @@ _022E6894:
 _022E68A0:
 	mov r0, #0
 	strb r0, [r6, #0x20]
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 _022E68AC:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -4028,7 +4028,7 @@ _022E6944:
 	mov r0, r5
 	and r3, ip, #0xff
 	str r4, [sp, #0xc]
-	bl ov29_022E35E4
+	bl PlayEffectAnimationEntity
 	mov r0, r0, lsl #0x10
 	mov r5, r0, asr #0x10
 	mov r6, #0
@@ -4493,8 +4493,8 @@ ov29_022E6F94: ; 0x022E6F94
 _022E6FB8: .word 0x02353538
 	arm_func_end ov29_022E6F94
 
-	arm_func_start ov29_022E6FBC
-ov29_022E6FBC: ; 0x022E6FBC
+	arm_func_start LoadMappaFileAttributes
+LoadMappaFileAttributes: ; 0x022E6FBC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x50
 	ldr r3, _022E79E4 ; =0x02353538
@@ -4541,18 +4541,18 @@ ov29_022E6FBC: ; 0x022E6FBC
 	bne _022E707C
 	ldr r1, _022E79EC ; =0x02351594
 	add r0, sp, #0x48
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	b _022E709C
 _022E707C:
 	cmp r0, #2
 	add r0, sp, #0x48
 	bne _022E7094
 	ldr r1, _022E79F0 ; =0x023515B0
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	b _022E709C
 _022E7094:
 	ldr r1, _022E79F4 ; =0x023515CC
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 _022E709C:
 	mov r0, #0x65
 	bl AdvanceFrame
@@ -4584,7 +4584,7 @@ _022E709C:
 	movne r0, #0
 	tst r0, #0xff
 	beq _022E7138
-	bl ov29_0234914C
+	bl CheckActiveChallengeRequest
 	cmp r0, #0
 	bne _022E7138
 	ldr r0, _022E79E4 ; =0x02353538
@@ -4713,11 +4713,11 @@ _022E7294:
 	ldr r0, [r0]
 	add r0, r0, #0x28000
 	ldrb r0, [r0, #0x6c4]
-	bl ov29_022E0864
+	bl IsBossFight
 	cmp r0, #0
 	bne _022E7398
 	mov r0, r5
-	bl ov29_022FB5EC
+	bl CheckSpawnThreshold
 	cmp r0, #0
 	beq _022E7398
 	mov r0, r5
@@ -4728,7 +4728,7 @@ _022E7294:
 	mov r1, r5
 	ldr r0, [r0]
 	add r0, r0, #0x7d0
-	bl ov29_0231B3FC
+	bl IsInSpawnList
 	cmp r0, #0
 	ldreq r0, [sp, #0x10]
 	cmpeq r0, #0
@@ -4861,7 +4861,7 @@ _022E74EC:
 	cmp fp, r0
 	movlt fp, r0
 	mov r0, sl
-	bl ov29_022F7068
+	bl DungeonGetTotalSpriteFileSize
 	add r5, r5, r0
 	add r8, r8, #1
 _022E7528:
@@ -4892,7 +4892,7 @@ _022E7574:
 	bne _022E7574
 	add r0, sp, #0x34
 	bl GetMonsterIdFromSpawnEntry
-	bl ov29_022F7068
+	bl DungeonGetTotalSpriteFileSize
 	sub r5, r5, r0
 	ldr r1, _022E79E4 ; =0x02353538
 	ldr r0, _022E7A04 ; =0x0000FFFF
@@ -5055,7 +5055,7 @@ _022E77CC:
 	cmp sl, #0x10
 	blt _022E76D8
 _022E77D4:
-	bl ov29_023361D4
+	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	beq _022E782C
 	ldr r0, _022E79E4 ; =0x02353538
@@ -5068,7 +5068,7 @@ _022E77D4:
 	ldrb r2, [r2, #0xda]
 	ldrsh r3, [r4, r3]
 	add r0, r0, r8, lsl #3
-	bl ov29_02343E20
+	bl LoadFixedRoom
 	ldr r2, _022E79E4 ; =0x02353538
 	ldr r1, [r2]
 	add r1, r1, #0x12000
@@ -5220,7 +5220,7 @@ _022E7A20: .word 0x0002C9E8
 _022E7A24: .word 0xFFFF8AD0
 _022E7A28: .word 0x000286D2
 _022E7A2C: .word 0x000286F2
-	arm_func_end ov29_022E6FBC
+	arm_func_end LoadMappaFileAttributes
 
 	arm_func_start ov29_022E7A30
 ov29_022E7A30: ; 0x022E7A30
@@ -5274,8 +5274,8 @@ _022E7AB8:
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E7A8C
 
-	arm_func_start ov29_022E7AC4
-ov29_022E7AC4: ; 0x022E7AC4
+	arm_func_start GetItemIdToSpawn
+GetItemIdToSpawn: ; 0x022E7AC4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, r0
 	ldr r0, _022E7BA8 ; =0x00002710
@@ -5345,13 +5345,13 @@ _022E7BA8: .word 0x00002710
 _022E7BAC: .word 0x02353538
 _022E7BB0: .word 0x000286D2
 _022E7BB4: .word 0x000286F2
-	arm_func_end ov29_022E7AC4
+	arm_func_end GetItemIdToSpawn
 
 	arm_func_start ov29_022E7BB8
 ov29_022E7BB8: ; 0x022E7BB8
 	stmdb sp!, {r3, lr}
 	mov r0, #4
-	bl ov29_022E7AC4
+	bl GetItemIdToSpawn
 	cmp r0, #0xb7
 	moveq r0, #0x46
 	ldmia sp!, {r3, pc}
@@ -5361,7 +5361,7 @@ ov29_022E7BB8: ; 0x022E7BB8
 ov29_022E7BD0: ; 0x022E7BD0
 	stmdb sp!, {r3, lr}
 	mov r0, #5
-	bl ov29_022E7AC4
+	bl GetItemIdToSpawn
 	cmp r0, #0xb7
 	moveq r0, #0x46
 	ldmia sp!, {r3, pc}
@@ -5406,8 +5406,8 @@ _022E7C54:
 _022E7C5C: .word 0x02353538
 	arm_func_end ov29_022E7BE8
 
-	arm_func_start ov29_022E7C60
-ov29_022E7C60: ; 0x022E7C60
+	arm_func_start MonsterSpawnListPartialCopy
+MonsterSpawnListPartialCopy: ; 0x022E7C60
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -5453,7 +5453,7 @@ _022E7CEC:
 	.align 2, 0
 _022E7CF4: .word 0x02353538
 _022E7CF8: .word 0x0002C966
-	arm_func_end ov29_022E7C60
+	arm_func_end MonsterSpawnListPartialCopy
 
 	arm_func_start ov29_022E7CFC
 ov29_022E7CFC: ; 0x022E7CFC
@@ -5682,7 +5682,7 @@ ov29_022E7F94: ; 0x022E7F94
 	mov r0, #1
 	mov r1, r0
 	bl ov29_02339D7C
-	bl ov29_02339CE8
+	bl UpdateMinimap
 	mov r0, #0
 	bl SetMinimapDataE447
 	ldr r1, _022E8014 ; =0x02353554
@@ -5945,7 +5945,7 @@ ov29_022E82CC: ; 0x022E82CC
 	bne _022E82F0
 _022E82E4:
 	ldr r0, _022E8404 ; =0x00000229
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	str r0, [sp, #0x18]
 _022E82F0:
 	ldrb r0, [r8, #0xc4]
@@ -7058,25 +7058,25 @@ GetChebyshevDistance: ; 0x022E908C
 	ldrsh r1, [r5]
 	ldrsh r0, [r4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	ldrsh r1, [r4, #2]
 	ldrsh r2, [r5, #2]
 	mov r4, r0
 	sub r0, r2, r1
-	bl Abs
+	bl abs
 	cmp r4, r0
 	movle r4, r0
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end GetChebyshevDistance
 
-	arm_func_start ov29_022E90CC
-ov29_022E90CC: ; 0x022E90CC
+	arm_func_start IsPositionActuallyInSight
+IsPositionActuallyInSight: ; 0x022E90CC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r4, r1
 	mov r6, r2
-	bl ov29_022E333C
+	bl GetVisibilityRange
 	mov r5, r0
 	ldrsh r0, [r7]
 	ldrsh r1, [r7, #2]
@@ -7090,13 +7090,13 @@ _022E9104:
 	ldrsh r1, [r7]
 	ldrsh r0, [r4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, r5
 	bgt _022E9198
 	ldrsh r1, [r7, #2]
 	ldrsh r0, [r4, #2]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, r5
 	bgt _022E9198
 	mov r0, #1
@@ -7130,7 +7130,7 @@ _022E9198:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022E91A0: .word 0x02353538
-	arm_func_end ov29_022E90CC
+	arm_func_end IsPositionActuallyInSight
 
 	arm_func_start IsPositionInSight
 IsPositionInSight: ; 0x022E91A4
@@ -7173,12 +7173,12 @@ _022E9230:
 	ldrsh r1, [r5, #2]
 	ldrsh r0, [r4, #2]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	ldrsh r2, [r5]
 	ldrsh r1, [r4]
 	mov r6, r0
 	sub r0, r2, r1
-	bl Abs
+	bl abs
 	cmp r0, r6
 	movle r0, r6
 	cmp r0, #2
@@ -7210,7 +7210,7 @@ ov29_022E9298: ; 0x022E9298
 	mov r7, r2
 	bl GetTile
 	mov r6, r0
-	bl ov29_022E333C
+	bl GetVisibilityRange
 	cmp r7, #0
 	ldrb r2, [r6, #7]
 	bne _022E92D0
@@ -7264,14 +7264,14 @@ ov29_022E935C: ; 0x022E935C
 	ldrsh r4, [r8]
 	ldrsh r0, [r7]
 	sub r0, r4, r0
-	bl Abs
+	bl abs
 	mov r6, r0
 	cmp r6, #1
 	bgt _022E93A0
 	ldrsh r1, [r8, #2]
 	ldrsh r0, [r7, #2]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	movle r0, #1
 	ldmleia sp!, {r4, r5, r6, r7, r8, pc}
@@ -7279,7 +7279,7 @@ _022E93A0:
 	ldrsh r5, [r8, #2]
 	ldrsh r0, [r7, #2]
 	sub r0, r5, r0
-	bl Abs
+	bl abs
 	cmp r6, r0
 	movle r6, r0
 	cmp r6, #2

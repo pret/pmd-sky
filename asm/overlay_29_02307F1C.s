@@ -9,7 +9,7 @@ ItemIsActive__02307F1C: ; 0x02307F1C
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -19,8 +19,8 @@ ItemIsActive__02307F1C: ; 0x02307F1C
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ItemIsActive__02307F1C
 
-	arm_func_start ov29_02307F4C
-ov29_02307F4C: ; 0x02307F4C
+	arm_func_start TryTriggerMonsterHouse
+TryTriggerMonsterHouse: ; 0x02307F4C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x1a0
 	mov r4, r0
@@ -241,7 +241,7 @@ _02308258:
 	blt _0230814C
 _02308260:
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 _02308268:
 	add sp, sp, #0x1a0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -249,4 +249,4 @@ _02308268:
 _02308270: .word 0x02353538
 _02308274: .word 0x022C4560
 _02308278: .word 0x022C4660
-	arm_func_end ov29_02307F4C
+	arm_func_end TryTriggerMonsterHouse

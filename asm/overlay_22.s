@@ -215,7 +215,7 @@ _0238A378:
 	add r1, sp, #0x14
 	add r0, r0, #0xe8
 	add r0, r0, sb
-	bl Strcpy
+	bl strcpy
 	ldr r0, [r4, #4]
 	add r0, r0, sl
 	strb fp, [r0, #0x368]
@@ -228,17 +228,17 @@ _0238A40C:
 	ldr r1, _0238A4C4 ; =0x0238E82C
 	add r0, r0, #0xe8
 	add r0, r0, sb
-	bl Strcpy
+	bl strcpy
 	ldr r0, [r4, #4]
 	add r1, sp, #0x14
 	add r0, r0, #0xe8
 	add r0, r0, sb
-	bl Strcat
+	bl strcat
 	ldr r0, [r4, #4]
 	ldr r1, _0238A4C8 ; =0x0238E834
 	add r0, r0, #0xe8
 	add r0, r0, sb
-	bl Strcat
+	bl strcat
 	ldr r0, [r4, #4]
 	add r1, r0, sl
 	mov r0, #0
@@ -720,7 +720,7 @@ _0238A9C4:
 	add r1, sp, #0x14
 	add r0, r0, #0xc8
 	add r0, r0, sb
-	bl Strcpy
+	bl strcpy
 	ldr r0, [r4, #4]
 	add r0, r0, sl
 	strb fp, [r0, #0x208]
@@ -733,17 +733,17 @@ _0238AA58:
 	ldr r1, _0238AB10 ; =0x0238E84C
 	add r0, r0, #0xc8
 	add r0, r0, sb
-	bl Strcpy
+	bl strcpy
 	ldr r0, [r4, #4]
 	add r1, sp, #0x14
 	add r0, r0, #0xc8
 	add r0, r0, sb
-	bl Strcat
+	bl strcat
 	ldr r0, [r4, #4]
 	ldr r1, _0238AB14 ; =0x0238E854
 	add r0, r0, #0xc8
 	add r0, r0, sb
-	bl Strcat
+	bl strcat
 	ldr r0, [r4, #4]
 	add r1, r0, sl
 	mov r0, #0
@@ -2172,7 +2172,7 @@ _0238BED4:
 	tst r0, #0xff
 	beq _0238BF48
 	ldrsh r0, [sb, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	beq _0238BF48
 	mov r0, r6
@@ -3516,7 +3516,7 @@ _0238D278:
 	tst r0, #0xff
 	beq _0238D2EC
 	ldrsh r0, [sb, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	beq _0238D2EC
 	mov r0, r6
@@ -3729,7 +3729,7 @@ _0238D57C:
 	tst r0, #0xff
 	beq _0238D5E0
 	ldrsh r0, [sb, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	beq _0238D5E0
 	mov r0, sb
@@ -3765,7 +3765,7 @@ _0238D614:
 	cmp r0, #1
 	moveq r1, #3
 	add r0, r3, #0x1e0
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238D63C ; =0x0238EC70
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x49]
@@ -3859,12 +3859,12 @@ _0238D758:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1e0
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238D7A4 ; =0x0238EC70
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1e0
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	mov r0, #0
 	bl ov22_0238ADD8
 	mov r0, #1
@@ -4515,7 +4515,7 @@ _0238E0A0:
 	ldr r0, _0238E794 ; =0x0238EC70
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x30]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	ldreq r0, _0238E794 ; =0x0238EC70
 	moveq r1, #0xe
@@ -4689,7 +4689,7 @@ _0238E2FC:
 	tst r0, #0xff
 	beq _0238E368
 	ldrsh r0, [r7, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	beq _0238E368
 	ldrb r0, [r7, #1]
@@ -4807,7 +4807,7 @@ _0238E4A4:
 	tst r0, #0xff
 	beq _0238E520
 	ldrsh r0, [r7, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	beq _0238E520
 	mov r0, r4

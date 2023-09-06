@@ -75,12 +75,12 @@ _02347C8C:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x10]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	mov r7, r0
 	ldrsh r1, [r4, #0xd2]
 	ldr r0, [sp, #0xc]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	add r1, r7, r0
 	mov r0, #0xc
 	mul fp, r1, r0
@@ -92,7 +92,7 @@ _02347C8C:
 	mov r1, fp
 	mov r0, #0x80000
 	mov r8, #0
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #0x18]
 	ldrsh r0, [r6, #2]
 	mov r1, #0x1800
@@ -103,14 +103,14 @@ _02347C8C:
 	mul r1, r0, r1
 	sub r0, r1, r6
 	mov r1, fp
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0xc]
 	mov r1, #0x1800
 	mul r1, r0, r1
 	sub r0, r1, r7
 	mov r1, fp
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #0x1c]
 	mov r0, r8
 	str r0, [sp, #0x28]
@@ -134,7 +134,7 @@ _02347D84:
 	add r0, r4, #0xcc
 	mov fp, r6, asr #8
 	bl ov29_022E1A84
-	bl ov29_02337E94
+	bl IsWaterTileset
 	cmp r0, #0
 	ldr r1, [sp, #0x34]
 	movne r2, #3
@@ -209,7 +209,7 @@ _02347EC8:
 	bl InitMove
 	ldr r0, [r6, #0xc]
 	add r1, sp, #0x3c
-	bl ov29_02324854
+	bl TwoTurnMoveForcedMiss
 	cmp r0, #0
 	movne r7, #0
 _02347EE8:
@@ -289,7 +289,7 @@ _02347FE8:
 	mov r0, sl
 	add r1, r4, #0xcc
 	str r3, [sp, #4]
-	bl ov29_02345AD8
+	bl SpawnDroppedItem
 _02348004:
 	add sp, sp, #0x44
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -861,7 +861,7 @@ _023487A0:
 	bl IsGoldenChamber
 	cmp r0, #0
 	beq _023487D4
-	bl ov29_02336224
+	bl TrySpawnGoldenChamber
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _023487D4:
 	ldr r1, _02348804 ; =0x02353538
@@ -1003,7 +1003,7 @@ _0234893C:
 	ldreqb r1, [r0, #0x16]
 	cmpeq r1, #5
 	bne _02348980
-	bl ov29_023498A0
+	bl GenerateMissionEggMonster
 _02348980:
 	add r4, r4, #1
 	cmp r4, #8
@@ -1043,7 +1043,7 @@ _023489A8:
 	cmp r0, #5
 	bne _02348A04
 	mov r0, r5
-	bl ov29_023498A0
+	bl GenerateMissionEggMonster
 _02348A04:
 	add r4, r4, #1
 	cmp r4, #8
@@ -1070,7 +1070,7 @@ _02348A3C:
 	mov r2, sb
 	mov r3, r8
 	str sb, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _02348A90
 	mov r0, r7
@@ -1078,7 +1078,7 @@ _02348A3C:
 	mov r2, r5
 	mov r3, r5
 	str r7, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _02348A3C
 	mov r0, #2
@@ -1092,7 +1092,7 @@ _02348A90:
 	mov r3, fp
 	add r1, r6, #1
 	str r4, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _02348A3C
 	mov r0, #0
@@ -1181,7 +1181,7 @@ ov29_02348BA0: ; 0x02348BA0
 	beq _02348BD8
 	mov r0, r5
 	mov r1, r4
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	bne _02348BE0
 _02348BD8:
@@ -1203,7 +1203,7 @@ ov29_02348BE8: ; 0x02348BE8
 	add r0, sp, #0
 	ldrsh r1, [r1, #4]
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
 	mov r2, #0
@@ -1258,7 +1258,7 @@ _02348C84:
 	mov r0, r5
 	bl sub_02024FB8
 	add r1, sp, #0
-	bl Strcpy
+	bl strcpy
 	mov r0, r5
 	bl sub_02024FB8
 	mov r1, r0
@@ -1610,8 +1610,8 @@ _02349140:
 _02349148: .word 0x02353538
 	arm_func_end ov29_0234908C
 
-	arm_func_start ov29_0234914C
-ov29_0234914C: ; 0x0234914C
+	arm_func_start CheckActiveChallengeRequest
+CheckActiveChallengeRequest: ; 0x0234914C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02349184 ; =0x02353538
 	mov r1, #5
@@ -1628,7 +1628,7 @@ ov29_0234914C: ; 0x0234914C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02349184: .word 0x02353538
-	arm_func_end ov29_0234914C
+	arm_func_end CheckActiveChallengeRequest
 
 	arm_func_start ov29_02349188
 ov29_02349188: ; 0x02349188
@@ -1642,15 +1642,15 @@ _0234919C: .word 0x02353538
 _023491A0: .word ov29_023496EC
 	arm_func_end ov29_02349188
 
-	arm_func_start ov29_023491A4
-ov29_023491A4: ; 0x023491A4
+	arm_func_start GetMissionDestination
+GetMissionDestination: ; 0x023491A4
 	ldr r0, _023491B4 ; =0x02353538
 	ldr r0, [r0]
 	add r0, r0, #0x760
 	bx lr
 	.align 2, 0
 _023491B4: .word 0x02353538
-	arm_func_end ov29_023491A4
+	arm_func_end GetMissionDestination
 
 	arm_func_start ov29_023491B8
 ov29_023491B8: ; 0x023491B8
@@ -1683,15 +1683,15 @@ _02349200:
 	ldmia sp!, {r3, pc}
 	arm_func_end IsOutlawOrChallengeRequestFloor
 
-	arm_func_start ov29_02349208
-ov29_02349208: ; 0x02349208
+	arm_func_start IsDestinationFloor
+IsDestinationFloor: ; 0x02349208
 	ldr r0, _02349218 ; =0x02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x760]
 	bx lr
 	.align 2, 0
 _02349218: .word 0x02353538
-	arm_func_end ov29_02349208
+	arm_func_end IsDestinationFloor
 
 	arm_func_start IsCurrentMissionType
 IsCurrentMissionType: ; 0x0234921C

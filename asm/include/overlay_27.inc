@@ -4,7 +4,7 @@
 .public GetGold
 .public sub_02044094
 .public sub_02050CE4
-.public sub_0200CCA8
+.public IsStorableItem
 .public CreateNormalMenu
 .public RemoveItem
 .public sub_0202E3CC
@@ -31,7 +31,7 @@
 .public sub_020434D4
 .public sub_02042AF8
 .public InitPortraitBoxWithMonsterId
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public IsDBoxActive
 .public sub_020103AC
 .public sub_02043320

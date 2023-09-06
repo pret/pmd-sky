@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_0231F594
-ov29_0231F594: ; 0x0231F594
+	arm_func_start TryDrought
+TryDrought: ; 0x0231F594
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r1, _0231F6D4 ; =0x02353538
 	mov r8, r0
@@ -12,7 +12,7 @@ ov29_0231F594: ; 0x0231F594
 	mov r6, #0
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_0234413C
+	bl AreOrbsAllowedVeneer
 	cmp r0, #0
 	bne _0231F5CC
 	ldr r1, _0231F6D8 ; =0x00000C08
@@ -20,7 +20,7 @@ ov29_0231F594: ; 0x0231F594
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _0231F5CC:
-	bl ov29_02337E94
+	bl IsWaterTileset
 	cmp r0, #0
 	beq _0231F5E8
 	ldr r1, _0231F6DC ; =0x00000C09
@@ -65,7 +65,7 @@ _0231F65C:
 _0231F660:
 	mov r0, r7
 	mov r1, r5
-	bl ov29_02336A84
+	bl DetermineTileWalkableNeighbors
 	add r7, r7, #1
 	cmp r7, #0x38
 	blt _0231F660
@@ -91,15 +91,15 @@ _0231F6B4:
 	ldr r0, [r0]
 	strb r1, [r0, #0x78f]
 	bl ov29_02304B64
-	bl ov29_02339CE8
-	bl ov29_02336F4C
+	bl UpdateMinimap
+	bl UpdateTrapsVisibility
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0231F6D4: .word 0x02353538
 _0231F6D8: .word 0x00000C08
 _0231F6DC: .word 0x00000C09
 _0231F6E0: .word 0x00000C07
-	arm_func_end ov29_0231F594
+	arm_func_end TryDrought
 
 	arm_func_start ov29_0231F6E4
 ov29_0231F6E4: ; 0x0231F6E4
@@ -110,7 +110,7 @@ ov29_0231F6E4: ; 0x0231F6E4
 	ldr r0, [r1]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_0234410C
+	bl AreTrawlOrbsAllowed
 	cmp r0, #0
 	bne _0231F71C
 	mov r0, sl
@@ -143,13 +143,13 @@ _0231F74C:
 	ldrsh sb, [r7, #4]
 	ldrsh r0, [sl, #4]
 	sub r0, sb, r0
-	bl Abs
+	bl abs
 	cmp r0, #2
 	bgt _0231F7A0
 	ldrsh r1, [r7, #6]
 	ldrsh r0, [sl, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #2
 	ble _0231F868
 _0231F7A0:
@@ -310,10 +310,10 @@ _0231F9C4:
 	mla r8, sb, r0, r4
 	mov r1, #1
 	add r0, r8, #4
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldrsh r0, [r8, #4]
 	ldrsh r1, [r8, #6]
-	bl ov29_023391EC
+	bl DrawMinimapTile
 	add r0, r4, sb, lsl #2
 	add r0, r0, #0x1200
 	ldrsh r2, [r0, #0x8e]
@@ -322,7 +322,7 @@ _0231F9C4:
 	smulbb r2, r2, fp
 	add r2, r2, #4
 	rsb r0, r0, r2, lsl #8
-	bl DivideInt
+	bl __divsi3
 	add r1, r4, sb, lsl #3
 	add r1, r1, #0x1000
 	str r0, [r1, #0x2f4]
@@ -334,7 +334,7 @@ _0231F9C4:
 	smulbb r0, r0, r5
 	add r0, r0, #4
 	rsb r0, r2, r0, lsl #8
-	bl DivideInt
+	bl __divsi3
 	add r1, r4, sb, lsl #3
 	add r1, r1, #0x1000
 	str r0, [r1, #0x2f8]
@@ -415,16 +415,16 @@ _0231FB54:
 	cmp r0, #0
 	blt _0231FB98
 	mla r0, sb, r5, r4
-	bl ov29_022E1610
+	bl GetItemInfo
 	mov r1, r0
 	mov r2, fp
 	add r0, r8, sb, lsl #2
-	bl ov29_02345538
+	bl SpawnItem
 	add r0, r4, sb, lsl #2
 	add r1, r0, #0x1200
 	ldrsh r0, [r1, #0x8e]
 	ldrsh r1, [r1, #0x90]
-	bl ov29_023391EC
+	bl DrawMinimapTile
 	str r7, [sp, #0xc]
 _0231FB98:
 	add sb, sb, #1

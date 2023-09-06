@@ -136,7 +136,7 @@ _022E04C4:
 	strh r5, [r2, #0x48]
 	ldr r2, [r3]
 	strb r1, [r2, #0x78d]
-	bl ov29_022FDDC0
+	bl SubInitMonster
 	ldrsh r0, [r4, #2]
 	mov r5, #0
 	mov sb, r5
@@ -184,7 +184,7 @@ _022E05BC:
 	cmp r0, #2
 	bne _022E05FC
 	mov r0, r7
-	bl ov29_022E1608
+	bl GetTrapInfo
 	ldrb r1, [r0]
 	cmp r1, #0x20
 	streqb r4, [r0]
@@ -368,8 +368,8 @@ _022E083C:
 _022E0860: .word 0x02353538
 	arm_func_end ov29_022E081C
 
-	arm_func_start ov29_022E0864
-ov29_022E0864: ; 0x022E0864
+	arm_func_start IsBossFight
+IsBossFight: ; 0x022E0864
 	cmp r0, #0
 	beq _022E0878
 	cmp r0, #0x51
@@ -378,23 +378,23 @@ ov29_022E0864: ; 0x022E0864
 _022E0878:
 	mov r0, #0
 	bx lr
-	arm_func_end ov29_022E0864
+	arm_func_end IsBossFight
 
-	arm_func_start ov29_022E0880
-ov29_022E0880: ; 0x022E0880
+	arm_func_start IsCurrentFixedRoomBossFight
+IsCurrentFixedRoomBossFight: ; 0x022E0880
 	ldr r0, _022E0898 ; =0x02353538
-	ldr ip, _022E089C ; =ov29_022E0864
+	ldr ip, _022E089C ; =IsBossFight
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
 	bx ip
 	.align 2, 0
 _022E0898: .word 0x02353538
-_022E089C: .word ov29_022E0864
-	arm_func_end ov29_022E0880
+_022E089C: .word IsBossFight
+	arm_func_end IsCurrentFixedRoomBossFight
 
-	arm_func_start ov29_022E08A0
-ov29_022E08A0: ; 0x022E08A0
+	arm_func_start IsMarowakTrainingMaze
+IsMarowakTrainingMaze: ; 0x022E08A0
 	ldr r0, _022E08C8 ; =0x02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x748]
@@ -408,7 +408,7 @@ _022E08C0:
 	bx lr
 	.align 2, 0
 _022E08C8: .word 0x02353538
-	arm_func_end ov29_022E08A0
+	arm_func_end IsMarowakTrainingMaze
 
 	arm_func_start FixedRoomIsSubstituteRoom
 FixedRoomIsSubstituteRoom: ; 0x022E08CC
@@ -463,13 +463,13 @@ _022E0950:
 _022E0958: .word 0x02353538
 	arm_func_end StoryRestrictionsEnabled
 
-	arm_func_start GetScenarioBalance__022E095C
-GetScenarioBalance__022E095C: ; 0x022E095C
-	ldr ip, _022E0964 ; =GetScenarioBalance__0204CB94
+	arm_func_start GetScenarioBalanceVeneer
+GetScenarioBalanceVeneer: ; 0x022E095C
+	ldr ip, _022E0964 ; =GetScenarioBalance
 	bx ip
 	.align 2, 0
-_022E0964: .word GetScenarioBalance__0204CB94
-	arm_func_end GetScenarioBalance__022E095C
+_022E0964: .word GetScenarioBalance
+	arm_func_end GetScenarioBalanceVeneer
 
 	arm_func_start FadeToBlack
 FadeToBlack: ; 0x022E0968
@@ -534,7 +534,7 @@ _022E0A14: .word 0x02353538
 ov29_022E0A18: ; 0x022E0A18
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	mov r0, #0
 	bl ov29_0234B1A4
 	mov r0, #0
@@ -759,8 +759,8 @@ ov29_022E0C9C: ; 0x022E0C9C
 _022E0CB4: .word 0x0237C6A4
 	arm_func_end ov29_022E0C9C
 
-	arm_func_start ov29_022E0CB8
-ov29_022E0CB8: ; 0x022E0CB8
+	arm_func_start CheckTouchscreenArea
+CheckTouchscreenArea: ; 0x022E0CB8
 	stmdb sp!, {r3, lr}
 	ldr lr, _022E0CF8 ; =0x0237C6B8
 	ldr ip, [lr]
@@ -781,7 +781,7 @@ _022E0CF0:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E0CF8: .word 0x0237C6B8
-	arm_func_end ov29_022E0CB8
+	arm_func_end CheckTouchscreenArea
 
 	arm_func_start ov29_022E0CFC
 ov29_022E0CFC: ; 0x022E0CFC
@@ -1135,7 +1135,7 @@ _022E11A8:
 	blt _022E1180
 	add r0, sp, #0x20
 	bl UnloadWte
-	bl ov29_023356C0
+	bl LoadTextureUi
 	bl ov29_02335774
 	add sp, sp, #0x74
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
@@ -1186,7 +1186,7 @@ _022E1254:
 	ldr r1, [lr, #4]
 	mov r0, #0x120
 	mul r4, r1, r0
-	bl ov29_02336204
+	bl IsCurrentTilesetBackground
 	cmp r0, #0
 	bne _022E1298
 	mov r0, #0x5000
@@ -1461,17 +1461,17 @@ ov29_022E1604: ; 0x022E1604
 	bx lr
 	arm_func_end ov29_022E1604
 
-	arm_func_start ov29_022E1608
-ov29_022E1608: ; 0x022E1608
+	arm_func_start GetTrapInfo
+GetTrapInfo: ; 0x022E1608
 	ldr r0, [r0, #0xb4]
 	bx lr
-	arm_func_end ov29_022E1608
+	arm_func_end GetTrapInfo
 
-	arm_func_start ov29_022E1610
-ov29_022E1610: ; 0x022E1610
+	arm_func_start GetItemInfo
+GetItemInfo: ; 0x022E1610
 	ldr r0, [r0, #0xb4]
 	bx lr
-	arm_func_end ov29_022E1610
+	arm_func_end GetItemInfo
 
 	arm_func_start ov29_022E1618
 ov29_022E1618: ; 0x022E1618

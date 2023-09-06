@@ -124,7 +124,7 @@ sub_01FF8130: ; 0x01FF8130
 	ldr r0, [r5, r6, lsl #2]
 	ldr r2, [r2, lr, lsl #2]
 	ldr r3, [r3, ip, lsl #2]
-	bl sub_0201E494
+	bl GeomSetTexImageParam
 	ldr r0, _01FF81B8 ; =0x020AFC80
 	str r4, [r0, #8]
 _01FF81B0:
@@ -216,7 +216,7 @@ sub_01FF8224: ; 0x01FF8224
 	mov r2, r0
 	mov r3, r0
 	str r0, [sp, #0xc]
-	bl sub_0201E494
+	bl GeomSetTexImageParam
 	ldr r0, _01FF846C ; =0x020AFC80
 	mvn r2, #0
 	str r2, [r0, #8]
@@ -379,7 +379,7 @@ sub_01FF849C: ; 0x01FF849C
 	mov r2, r0
 	mov r3, r0
 	str r0, [sp, #0xc]
-	bl sub_0201E494
+	bl GeomSetTexImageParam
 	ldr r1, _01FF8714 ; =0x020AFC80
 	mvn r3, #0
 	str r3, [r1, #8]
@@ -642,7 +642,7 @@ sub_01FF8728: ; 0x01FF8728
 	str r3, [r2]
 	mov r0, r0, asr #0x10
 	mov r2, #0x1000
-	bl sub_0201E4D4
+	bl GeomSetVertexCoord16
 	ldrb r0, [sl, #0x32]
 	ldr r2, _01FF8A04 ; =0x04000488
 	cmp r0, #0
@@ -661,7 +661,7 @@ sub_01FF8728: ; 0x01FF8728
 	mov r0, r0, asr #0x10
 	mov r1, r1, asr #0x10
 	mov r2, #0x1000
-	bl sub_0201E4D4
+	bl GeomSetVertexCoord16
 	ldrb r0, [sl, #0x32]
 	ldr r3, _01FF8A04 ; =0x04000488
 	orr r4, r4, r6, lsl #16
@@ -676,7 +676,7 @@ sub_01FF8728: ; 0x01FF8728
 	mov r0, r0, asr #0x10
 	mov r1, r1, asr #0x10
 	str r4, [r3]
-	bl sub_0201E4D4
+	bl GeomSetVertexCoord16
 	ldr r1, _01FF8A0C ; =0x04000504
 	mov r0, #0
 	str r0, [r1]
@@ -862,8 +862,8 @@ sub_01FF8C60: ; 0x01FF8C60
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_01FF8C60
 
-	arm_func_start sub_01FF8C78
-sub_01FF8C78: ; 0x01FF8C78
+	arm_func_start AllocateRender3dElement
+AllocateRender3dElement: ; 0x01FF8C78
 	ldr r0, _01FF8CA8 ; =0x020AFC80
 	ldrsh r2, [r0]
 	ldrsh r1, [r0, #2]
@@ -878,13 +878,13 @@ sub_01FF8C78: ; 0x01FF8C78
 	bx lr
 	.align 2, 0
 _01FF8CA8: .word 0x020AFC80
-	arm_func_end sub_01FF8C78
+	arm_func_end AllocateRender3dElement
 
 	arm_func_start sub_01FF8CAC
 sub_01FF8CAC: ; 0x01FF8CAC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_01FF8C78
+	bl AllocateRender3dElement
 	movs r4, r0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -900,7 +900,7 @@ sub_01FF8CAC: ; 0x01FF8CAC
 sub_01FF8CDC: ; 0x01FF8CDC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_01FF8C78
+	bl AllocateRender3dElement
 	movs r4, r0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -915,7 +915,7 @@ sub_01FF8CDC: ; 0x01FF8CDC
 	arm_func_start sub_01FF8D0C
 sub_01FF8D0C: ; 0x01FF8D0C
 	stmdb sp!, {r4, lr}
-	bl sub_01FF8C78
+	bl AllocateRender3dElement
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -931,7 +931,7 @@ sub_01FF8D0C: ; 0x01FF8D0C
 	arm_func_start sub_01FF8D3C
 sub_01FF8D3C: ; 0x01FF8D3C
 	stmdb sp!, {r4, lr}
-	bl sub_01FF8C78
+	bl AllocateRender3dElement
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -947,7 +947,7 @@ sub_01FF8D3C: ; 0x01FF8D3C
 	arm_func_start sub_01FF8D6C
 sub_01FF8D6C: ; 0x01FF8D6C
 	stmdb sp!, {r4, lr}
-	bl sub_01FF8C78
+	bl AllocateRender3dElement
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -963,7 +963,7 @@ sub_01FF8D6C: ; 0x01FF8D6C
 	arm_func_start sub_01FF8D9C
 sub_01FF8D9C: ; 0x01FF8D9C
 	stmdb sp!, {r4, lr}
-	bl sub_01FF8C78
+	bl AllocateRender3dElement
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -976,8 +976,8 @@ sub_01FF8D9C: ; 0x01FF8D9C
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_01FF8D9C
 
-	arm_func_start sub_01FF8DCC
-sub_01FF8DCC: ; 0x01FF8DCC
+	arm_func_start Render3dStack
+Render3dStack: ; 0x01FF8DCC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x200
 	ldr r0, _01FF8EFC ; =0x020AFC80
@@ -1069,7 +1069,7 @@ _01FF8EF4:
 	.align 2, 0
 _01FF8EFC: .word 0x020AFC80
 _01FF8F00: .word 0x01FF8120
-	arm_func_end sub_01FF8DCC
+	arm_func_end Render3dStack
 
 	arm_func_start sub_01FF8F04
 sub_01FF8F04: ; 0x01FF8F04
@@ -2140,7 +2140,7 @@ _01FF9CD8:
 	mov r0, r3
 	ldr r1, [r1]
 	add r1, r1, #0x4c
-	bl sub_02004FCC
+	bl Rgb8ToBgr5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _01FF9CFC:
 	mov r0, #0
@@ -2215,7 +2215,7 @@ _01FF9DF0:
 	mov r0, r3
 	ldr r1, [r1]
 	add r1, r1, #0x4c
-	bl sub_02004FCC
+	bl Rgb8ToBgr5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _01FF9E10: .word 0x02353530
@@ -2775,7 +2775,7 @@ _01FFA5E0:
 	beq _01FFA688
 	mov r0, r4
 	mov r1, r6
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	beq _01FFA688
 	ldr r0, _01FFB2B4 ; =0x02353538
@@ -2912,12 +2912,12 @@ _01FFA7C0:
 	str r1, [sp, #0x38]
 	mov r1, #0
 	str r1, [sp, #0x34]
-	bl Abs
+	bl abs
 	ldrsh fp, [r4, #4]
 	ldrsh r1, [r7, #4]
 	mov r5, r0
 	sub r0, r1, fp
-	bl Abs
+	bl abs
 	str r0, [sp, #8]
 	cmp r0, r5
 	mvn r0, #0
@@ -2932,7 +2932,7 @@ _01FFA834:
 	str r0, [sp, #0x10]
 	sub r0, r1, r0
 	str r1, [sp, #0xc]
-	bl Abs
+	bl abs
 	str r0, [sp, #0x40]
 	mov r0, r5, lsl #2
 	ldrsh r0, [r6, r0]
@@ -2940,7 +2940,7 @@ _01FFA834:
 	str r0, [sp, #0x18]
 	sub r0, r1, r0
 	str r1, [sp, #0x14]
-	bl Abs
+	bl abs
 	ldr r1, [sp, #0x40]
 	str r0, [sp, #4]
 	cmp r0, r1
@@ -2967,13 +2967,13 @@ _01FFA834:
 	add r1, sl, r0
 	ldr r0, [sp, #0xc]
 	sub r0, r0, r1
-	bl Abs
+	bl abs
 	ldr r1, [sp, #0x3c]
 	str r0, [sp, #0x48]
 	ldr r0, [sp, #0x14]
 	add r1, fp, r1
 	sub r0, r0, r1
-	bl Abs
+	bl abs
 	ldr r1, [sp, #0x48]
 	cmp r0, r1
 	movle r0, r1
@@ -3084,13 +3084,13 @@ _01FFAA58:
 	b _01FFAAB8
 _01FFAA84:
 	mov r0, r6
-	bl ov29_022E1610
+	bl GetItemInfo
 	bl ov29_02348D00
 	cmp r0, #0
 	movne r0, #0
 	bne _01FFAAB8
 	mov r0, r6
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldrb r0, [r0]
 	tst r0, #2
 	moveq r0, #1
@@ -3179,13 +3179,13 @@ _01FFABC0:
 	ldrsh r1, [r4, #4]
 	ldrsh r0, [r5, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #5
 	bgt _01FFAC0C
 	ldrsh r1, [r4, #6]
 	ldrsh r0, [r5, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #5
 	ble _01FFAC38
 _01FFAC0C:
@@ -3248,13 +3248,13 @@ _01FFAC6C:
 	ldrsh r1, [r4, #4]
 	ldrsh r0, [r5, #4]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	bgt _01FFAD0C
 	ldrsh r1, [r4, #6]
 	ldrsh r0, [r5, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #1
 	movle r0, #1
 	strleb r0, [sl, #0x7f]
@@ -3292,7 +3292,7 @@ _01FFAD7C:
 	ldrb r0, [sl, #7]
 	cmp r0, #0
 	beq _01FFAE68
-	bl ov29_022E333C
+	bl GetVisibilityRange
 	ldrsh r0, [r4, #4]
 	ldrsh r1, [r4, #6]
 	bl GetTile
@@ -3540,12 +3540,12 @@ _01FFB0DC:
 	ldrsh r1, [r4, #4]
 	ldrsh r0, [sb, #0x8c]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	ldrsh r2, [r4, #6]
 	ldrsh r1, [sb, #0x8e]
 	mov r5, r0
 	sub r0, r2, r1
-	bl Abs
+	bl abs
 	cmp r5, #2
 	cmple r0, #2
 	bgt _01FFB16C
@@ -3928,7 +3928,7 @@ ChooseAiMove: ; 0x01FFB658
 	ldr r7, [sl, #0xb4]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_02344160
+	bl AreMovesEnabled
 	cmp r0, #0
 	beq _01FFBD0C
 	mov r0, sl
@@ -3982,7 +3982,7 @@ _01FFB720:
 	beq _01FFB79C
 	mov r0, sl
 	add r1, r6, r1
-	bl ov29_023245A4
+	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _01FFB79C
 	ldrb r0, [r7, #0xd4]
@@ -4295,7 +4295,7 @@ _01FFBB80:
 	mov r0, sl
 	mov r1, #0x4e
 	mov r6, r4
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _01FFBBD8
 	mov r0, sl
@@ -4432,7 +4432,7 @@ _01FFBD60:
 	add r2, r2, #0xe4
 	add r2, r2, #0x19800
 	add r4, r2, r3, lsl #4
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _01FFBDB0
 	ldr r0, [r4]
@@ -4448,7 +4448,7 @@ _01FFBD60:
 _01FFBDB0:
 	mov r0, r6
 	mov r1, #0x7a
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, [r4, #8]
@@ -4517,7 +4517,7 @@ _01FFBE80:
 	add r1, r1, #0x19800
 	add r6, r1, r5, lsl #4
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	bne _01FFBF5C
 	mov r0, sl
@@ -4591,7 +4591,7 @@ sub_01FFBF78: ; 0x01FFBF78
 	bl ov29_0231985C
 	mov r0, r6
 	mov r1, r5
-	bl ov29_022E274C
+	bl CanSeeTarget
 	cmp r0, #0
 	beq _01FFBFD8
 	add r0, sp, #8

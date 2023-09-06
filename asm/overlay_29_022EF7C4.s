@@ -62,7 +62,7 @@ _022EF874:
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldr r0, _022EF8A0 ; =0x000003E7
-	bl ov29_022EAE14
+	bl ChangeDungeonMusic
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022EF89C: .word 0x02353538
@@ -97,10 +97,10 @@ _022EF8BC:
 	beq _022EF918
 	mov r0, sb
 	mov r3, r7
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	mov r0, sb
 	mov r1, r6
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 _022EF918:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -180,8 +180,8 @@ ov29_022EF9C8: ; 0x022EF9C8
 _022EF9E8: .word 0x02353538
 	arm_func_end ov29_022EF9C8
 
-	arm_func_start ov29_022EF9EC
-ov29_022EF9EC: ; 0x022EF9EC
+	arm_func_start ShouldRunMonsterAi
+ShouldRunMonsterAi: ; 0x022EF9EC
 	ldr r0, [r0, #0xb4]
 	ldrb r0, [r0, #0xbc]
 	cmp r0, #0x14
@@ -218,16 +218,16 @@ _022EFA5C:
 _022EFA64:
 	mov r0, #0
 	bx lr
-	arm_func_end ov29_022EF9EC
+	arm_func_end ShouldRunMonsterAi
 
-	arm_func_start ov29_022EFA6C
-ov29_022EFA6C: ; 0x022EFA6C
+	arm_func_start DebugRecruitingEnabled
+DebugRecruitingEnabled: ; 0x022EFA6C
 	mov r0, #1
 	bx lr
-	arm_func_end ov29_022EFA6C
+	arm_func_end DebugRecruitingEnabled
 
-	arm_func_start ov29_022EFA74
-ov29_022EFA74: ; 0x022EFA74
+	arm_func_start TryActivateIqBooster
+TryActivateIqBooster: ; 0x022EFA74
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
 	ldr r1, _022EFAE0 ; =0x02353538
@@ -238,7 +238,7 @@ ov29_022EFA74: ; 0x022EFA74
 	ble _022EFAD8
 	add r0, sp, #0
 	mov r1, #0x44
-	bl ov29_0230F798
+	bl TeamMemberHasItemActive
 	mov r7, r0
 	cmp r7, #0
 	ble _022EFAD8
@@ -250,7 +250,7 @@ _022EFABC:
 	ldr r0, [r5, r8, lsl #2]
 	mov r1, r6
 	mov r2, r4
-	bl ov29_022FA144
+	bl BoostIQ
 	add r8, r8, #1
 _022EFAD0:
 	cmp r8, r7
@@ -261,7 +261,7 @@ _022EFAD8:
 	.align 2, 0
 _022EFAE0: .word 0x02353538
 _022EFAE4: .word 0x000286D0
-	arm_func_end ov29_022EFA74
+	arm_func_end TryActivateIqBooster
 
 	arm_func_start ov29_022EFAE8
 ov29_022EFAE8: ; 0x022EFAE8
@@ -274,8 +274,8 @@ ov29_022EFAE8: ; 0x022EFAE8
 	bx lr
 	arm_func_end ov29_022EFAE8
 
-	arm_func_start ov29_022EFB04
-ov29_022EFB04: ; 0x022EFB04
+	arm_func_start IsSecretBazaarNpcBehavior
+IsSecretBazaarNpcBehavior: ; 0x022EFB04
 	add r0, r0, #0xf0
 	and r0, r0, #0xff
 	cmp r0, #4
@@ -283,7 +283,7 @@ ov29_022EFB04: ; 0x022EFB04
 	movhi r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end ov29_022EFB04
+	arm_func_end IsSecretBazaarNpcBehavior
 
 	arm_func_start ov29_022EFB20
 ov29_022EFB20: ; 0x022EFB20

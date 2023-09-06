@@ -738,7 +738,7 @@ _022BD414:
 _022BD428:
 	ldr r1, _022BD448 ; =0x022C4404
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 _022BD434:
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, r6, r7, pc}
@@ -757,7 +757,7 @@ SprintfStatic__022BD44C: ; 0x022BD44C
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -1113,7 +1113,7 @@ _022BD888:
 	ldr r0, [r0]
 	mov r1, #3
 	mov r2, #0x124
-	bl sub_0201D484
+	bl LoadWanTableEntryFromPack
 	mov r1, #0
 	mov r2, r1
 	mov r4, r0
@@ -1128,7 +1128,7 @@ _022BD888:
 	ldr r0, [r0]
 	mov r1, #3
 	mov r2, #1
-	bl sub_0201D484
+	bl LoadWanTableEntryFromPack
 	mov r4, r0
 	mov r2, #0
 	str r2, [sp]
@@ -1161,7 +1161,7 @@ _022BD9D0:
 	ldr r0, [r0]
 	mov r1, #3
 	mov r2, #0x124
-	bl sub_0201D484
+	bl LoadWanTableEntryFromPack
 	ldr r1, _022BDA78 ; =ov10_022DC1C0
 	mov r2, #0
 	ldr r1, [r1]
@@ -1186,7 +1186,7 @@ _022BD9D0:
 	mov r1, #3
 	ldr r0, [r0]
 	mov r3, r2
-	bl sub_0201D484
+	bl LoadWanTableEntryFromPack
 	ldr r2, _022BDA78 ; =ov10_022DC1C0
 	mov r3, #0
 	ldr r1, [r2]
@@ -1815,7 +1815,7 @@ _022BE21C:
 	bl sub_0201C0B0
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	add r0, r7, #0x68
 	bl sub_0201C108
 	ldr r0, [r7, #0x48]
@@ -1830,7 +1830,7 @@ _022BE21C:
 	ldr r1, [r7, #0x50]
 	mov r3, r3, lsl #0x10
 	mov r3, r3, asr #0x10
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldrh r0, [r7, #0x6a]
 	orr r0, r0, #0x30
 	orr r0, r0, #0x1000
@@ -1841,7 +1841,7 @@ _022BE280:
 	bl sub_0201C0B0
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	add r0, r7, #0x68
 	bl sub_0201C108
 	ldr r0, [r7, #0x48]
@@ -1856,7 +1856,7 @@ _022BE280:
 	ldr r1, [r7, #0x50]
 	mov r3, r3, lsl #0x10
 	mov r3, r3, asr #0x10
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r0, _022BE448 ; =ov10_022DC1C0
 	ldr r0, [r0]
 	add r0, r0, #0x2700
@@ -1874,7 +1874,7 @@ _022BE300:
 	bl sub_0201C0B0
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	ldr r0, [r7, #0x48]
 	mov r2, #0
 	and r0, r0, #0xff
@@ -1887,7 +1887,7 @@ _022BE300:
 	ldr r1, [r7, #0x50]
 	mov r3, r3, lsl #0x10
 	mov r3, r3, asr #0x10
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldrh r0, [r7, #0x6a]
 	cmp r5, #0
 	orr r0, r0, #0x30
@@ -1902,7 +1902,7 @@ _022BE36C:
 	bl sub_0201C0B0
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	ldr r0, [r7, #0x48]
 	mov r2, #0
 	and r0, r0, #0xff
@@ -1915,7 +1915,7 @@ _022BE36C:
 	ldr r1, [r7, #0x50]
 	mov r3, r3, lsl #0x10
 	mov r3, r3, asr #0x10
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldrh r1, [r7, #0x6a]
 	add r0, r7, #0x68
 	orr r1, r1, #0x10
@@ -2478,13 +2478,13 @@ ov10_022BEB2C: ; 0x022BEB2C
 	ldrsh r1, [r0, #0x2e]
 	ldrsh r0, [r0, #0x2a]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	add r1, r4, #0x100
 	ldrsh r2, [r1, #0x2c]
 	ldrsh r1, [r1, #0x28]
 	mov r6, r0
 	sub r0, r2, r1
-	bl Abs
+	bl abs
 	cmp r0, r6
 	movle r0, r6
 	mov r1, r0, asr #1
@@ -2502,11 +2502,11 @@ ov10_022BEB2C: ; 0x022BEB2C
 	mul r2, r0, r6
 	strh r2, [r4, #0x26]
 	ldrsh r0, [r4, #0x24]
-	bl DivideInt
+	bl __divsi3
 	strh r0, [r4, #0x24]
 	ldrsh r0, [r4, #0x26]
 	add r1, r6, #1
-	bl DivideInt
+	bl __divsi3
 	strh r0, [r4, #0x26]
 	ldrsh r0, [r4, #0x26]
 	sub r0, r0, #9
@@ -2832,7 +2832,7 @@ ov10_022BF01C: ; 0x022BF01C
 	mov r5, r0
 	mov r0, r6
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	mov r1, r1, lsl #0x10
 	ldrsh r3, [r4, #0x14]
 	mov r2, #0
@@ -2865,7 +2865,7 @@ ov10_022BF088: ; 0x022BF088
 	mov r5, r0
 	mov r0, r6
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	mov r1, r1, lsl #0x10
 	ldrsh r3, [r4, #0x14]
 	mov r2, #0
@@ -2898,7 +2898,7 @@ ov10_022BF0F4: ; 0x022BF0F4
 	mov r5, r0
 	mov r0, r6
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	mov r1, r1, lsl #0x10
 	ldrsh r3, [r4, #0x14]
 	mov r2, #0
@@ -3249,7 +3249,7 @@ _022BF580:
 	b _022BF6D4
 _022BF598:
 	add r0, r6, #0x68
-	bl sub_0201C458
+	bl SwitchAnimationControlToNextFrame
 	ldr r1, [r6, #0x10]
 	mov r0, #0
 	mov r2, r1, lsr #0x1f
@@ -3622,7 +3622,7 @@ ov10_022BFA3C: ; 0x022BFA3C
 	mov r5, r0
 	mov r0, r6
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	mov r1, r1, lsl #0x10
 	ldrsh r3, [r4, #0x14]
 	mov r2, #0
@@ -4441,7 +4441,7 @@ _022C042C:
 	ldr r0, [r0]
 	mov r1, #3
 	mov r3, #0xf
-	bl sub_0201D484
+	bl LoadWanTableEntryFromPack
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022C044C: .word 0x020AFC68
@@ -4916,7 +4916,7 @@ ov10_022C09E8: ; 0x022C09E8
 	ldr r0, [r0]
 	add r2, r1, #0x400
 	mov r3, #0xf
-	bl sub_0201D484
+	bl LoadWanTableEntryFromPack
 	ldr r1, _022C0CC0 ; =0x022DC1D0
 	ldr r2, [r1]
 	strh r0, [r2, #4]
@@ -4927,7 +4927,7 @@ ov10_022C09E8: ; 0x022C09E8
 	ldr r0, [r0]
 	ldrsh r1, [r0, #4]
 	add r0, r0, #8
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	ldr r0, _022C0CC0 ; =0x022DC1D0
 	mov r1, #0
 	ldr r3, [r0]
@@ -4949,7 +4949,7 @@ ov10_022C09E8: ; 0x022C09E8
 	ldr r0, [r0]
 	mov r3, #0x71
 	add r0, r0, #8
-	bl sub_0201C418
+	bl SetAndPlayAnimationForAnimationControl
 	mov r3, r4
 	ldr r0, _022C0CC0 ; =0x022DC1D0
 	mov r2, r5
@@ -5063,7 +5063,7 @@ _022C0C30:
 	bl InitPortraitBoxWithMonsterId
 	ldrb r1, [r8, sb]
 	mov r0, fp
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	mov r0, #1
 	ldr r1, [r7, sb, lsl #2]
 	mov r2, r0
@@ -5202,21 +5202,21 @@ _022C0E48:
 _022C0E50:
 	add r0, sp, #0x10
 	add r1, sp, #8
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	ldr r1, _022C0F68 ; =0x022DC1CC
 	add r0, sp, #0x10
 	ldrb r1, [r1, sl]
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldrb r0, [r7]
 	cmp r0, #0
 	add r0, sp, #0x10
 	bne _022C0E88
 	mov r1, r4
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	b _022C0E90
 _022C0E88:
 	mov r1, #0
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 _022C0E90:
 	ldr r0, [fp]
 	add r1, sp, #0x10
@@ -5337,7 +5337,7 @@ _022C1010:
 _022C1030:
 	mov r0, r4
 	mov r1, r7
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	bl Rand16Bit
 	mov r1, r6
 	ldrsh r6, [sp, #0x50]
@@ -5354,7 +5354,7 @@ _022C1030:
 	mov r0, r4
 	mov r2, #7
 	mov r3, r3, asr #0x10
-	bl sub_0201C418
+	bl SetAndPlayAnimationForAnimationControl
 	ldr r0, _022C11CC ; =0x022DC1D0
 	mov r1, #0
 	ldr r0, [r0]
@@ -5417,7 +5417,7 @@ _022C1104:
 	b _022C1178
 _022C1164:
 	mov r0, r4
-	bl sub_0201C458
+	bl SwitchAnimationControlToNextFrame
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10
 	mov r5, r0, asr #0x10
@@ -5508,7 +5508,7 @@ _022C123C:
 	beq _022C12EC
 	ldrsh r1, [r7, #0x52]
 	mov r0, r6
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	bl Rand16Bit
 	mov r3, #0x14
 	and r1, r0, #3
@@ -5521,7 +5521,7 @@ _022C123C:
 	mov r0, r6
 	mov r2, #7
 	mov r3, r3, asr #0x10
-	bl sub_0201C418
+	bl SetAndPlayAnimationForAnimationControl
 _022C12EC:
 	mov r1, r8, lsr #0x1f
 	rsb r0, r1, r8, lsl #31
@@ -5758,7 +5758,7 @@ _022C15F4:
 	ldrsh r8, [r0, #0x48]
 	add r1, r0, #1
 	add r0, sp, #0x54
-	bl Strcpy
+	bl strcpy
 	mov r0, sl
 	mov r1, #0
 	mov r2, sb
@@ -5922,7 +5922,7 @@ SprintfStatic__022C183C: ; 0x022C183C
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -6113,7 +6113,7 @@ _022C1AA4:
 	strneb r1, [r0, r7]
 	add r0, r5, #1
 	add r1, r6, #1
-	bl Strcmp
+	bl strcmp
 	cmp r0, #0
 	addne r0, sp, #8
 	movne r1, #1
@@ -6312,7 +6312,7 @@ ov10_022C1D78: ; 0x022C1D78
 	add r0, r4, #1
 	mov r5, r3
 	strb ip, [r4]
-	bl Strcpy
+	bl strcpy
 	strh r5, [r4, #0x42]
 	ldrsh r1, [sp, #0x10]
 	str r6, [r4, #0x44]
@@ -6342,7 +6342,7 @@ ov10_022C1DE0: ; 0x022C1DE0
 	add r0, r4, #1
 	mov r5, r3
 	strb ip, [r4]
-	bl Strcpy
+	bl strcpy
 	strh r5, [r4, #0x42]
 	ldrsh r1, [sp, #0x10]
 	str r6, [r4, #0x44]
@@ -6907,7 +6907,7 @@ ov10_022C2528: ; 0x022C2528
 	bl MultiplyByFixedPoint
 	mov r4, r0
 	str r0, [r5]
-	bl Abs
+	bl abs
 	ldr r1, [sp, #0x10]
 	cmp r0, r1
 	bgt _022C256C
@@ -6922,14 +6922,14 @@ _022C256C:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov10_022C2528
 
-	arm_func_start ov10_022C2574
-ov10_022C2574: ; 0x022C2574
+	arm_func_start IsBackgroundTileset
+IsBackgroundTileset: ; 0x022C2574
 	cmp r0, #0xaa
 	movge r0, #1
 	movlt r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end ov10_022C2574
+	arm_func_end IsBackgroundTileset
 
 	arm_func_start ov10_022C2588
 ov10_022C2588: ; 0x022C2588
@@ -7066,7 +7066,7 @@ ov10_022C2720: ; 0x022C2720
 	mov r6, r0
 	mov r0, r5
 	mov r4, r2
-	bl ov10_022C2574
+	bl IsBackgroundTileset
 	cmp r0, #0
 	mov r0, r5
 	bne _022C2788
@@ -7170,8 +7170,8 @@ _022C2884: .word 0x022DC224
 _022C2888: .word 0x00000FFF
 	arm_func_end ov10_022C2838
 
-	arm_func_start CheckEndDungeon
-CheckEndDungeon: ; 0x022C288C
+	arm_func_start MainGame
+MainGame: ; 0x022C288C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x29c
 	mov r4, r0
@@ -7250,7 +7250,7 @@ _022C2984:
 	mov r0, #0xd
 	bl LoadOverlay
 	mov r0, #0xf
-	bl ov11_022E8774
+	bl GroundMainLoop
 	mov r0, #0xd
 	bl UnloadOverlay
 _022C29C0:
@@ -7285,7 +7285,7 @@ _022C2A08:
 	tst r0, #0xff
 	beq _022C2A5C
 	mov r0, r7
-	bl sub_0200CC38
+	bl IsLosableItem
 	cmp r0, #0
 	beq _022C2A54
 	ldrb r0, [r7, #1]
@@ -7407,7 +7407,7 @@ _022C2BA0:
 	b _022C2C34
 _022C2BF0:
 	add r0, r1, r8
-	bl sub_0200CC38
+	bl IsLosableItem
 	cmp r0, #0
 	beq _022C2C34
 	mov r0, #0x64
@@ -7441,7 +7441,7 @@ _022C2C64:
 	mov r0, #0xd
 	bl LoadOverlay
 	mov r0, sb
-	bl ov11_022E8774
+	bl GroundMainLoop
 	mov r5, r0
 	mov r0, #0xd
 	bl UnloadOverlay
@@ -7454,7 +7454,7 @@ _022C2C94:
 	mov r0, r8
 	bl LoadOverlay
 	mov r0, r7
-	bl ov11_022E8774
+	bl GroundMainLoop
 	mov r5, r0
 	mov r0, r4
 	bl UnloadOverlay
@@ -7659,7 +7659,7 @@ _022C2F5C:
 	bl UnloadOverlay
 _022C2F84:
 	mov r0, #0xb
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _022C3014
 	mov r0, #0xf
@@ -7787,7 +7787,7 @@ _022C3128: .word 0x000F1207
 _022C312C: .word 0x020B0A5C
 _022C3130: .word 0x022DC0B8
 _022C3134: .word 0x022DC0D4
-	arm_func_end CheckEndDungeon
+	arm_func_end MainGame
 
 	arm_func_start ov10_022C3138
 ov10_022C3138: ; 0x022C3138
@@ -8174,7 +8174,7 @@ _022C3650:
 	cmp r2, #4
 	blt _022C3650
 	add r0, sp, #0x20
-	bl sub_0201E730
+	bl InitRender3dElement
 	mov r0, #5
 	strb r0, [sp, #0x5c]
 	mov r2, #0
@@ -8380,7 +8380,7 @@ ov10_022C3938: ; 0x022C3938
 	ldr sl, [sp, #0x9c]
 	ldr sb, [sp, #0xa0]
 	ldr r8, [sp, #0xa4]
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, [sp, #0x64]
 	add r0, sp, #0x60
 	bl HandleSir0Translation
@@ -8734,7 +8734,7 @@ ov10_022C3E8C: ; 0x022C3E8C
 	mov fp, r3
 	str r4, [sp, #0x10]
 	ldr r5, [sp, #0x50]
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, [sp, #0x20]
 	add r0, sp, #0x10
 	bl HandleSir0Translation
@@ -8765,7 +8765,7 @@ ov10_022C3E8C: ; 0x022C3E8C
 	str r2, [sp, #0x18]
 	mov r2, #0xf
 	str r3, [sp, #0x1c]
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, [sp, #0x18]
 	add r0, sp, #0x14
 	bl HandleSir0Translation

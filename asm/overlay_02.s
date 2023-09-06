@@ -5549,7 +5549,7 @@ ov02_0232DD08: ; 0x0232DD08
 	ldr r0, [r0, #4]
 	sub r0, r0, r4
 	mul r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	add r0, r4, r0
 	ldmia sp!, {r4, pc}
 	arm_func_end ov02_0232DD08
@@ -6097,12 +6097,12 @@ _0232E17A:
 	str r0, [sp, #0x60]
 	ldr r0, [sp, #0xc]
 	lsl r1, r1, #2
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #0x14]
 	mov r1, #0xfa
 	ldr r0, [sp, #0xc]
 	lsl r1, r1, #2
-	bl DivideInt
+	bl __divsi3
 	mov r0, #0xfa
 	lsl r0, r0, #2
 	mul r0, r1
@@ -9345,7 +9345,7 @@ _0232FAF0:
 	ldr r1, [sp]
 	add r0, r7, r0
 	ldr r1, [r1, #0xc]
-	bl DivideUInt
+	bl __udivsi3
 	ldrb r0, [r4, r1]
 	add r6, r6, #1
 	strb r7, [r4, r1]
@@ -9401,14 +9401,14 @@ ov02_0232FB4C: ; 0x0232FB4C
 	ldr r0, [r5]
 	ldr r1, [sp]
 	add r0, r0, #1
-	bl DivideUInt
+	bl __udivsi3
 	lsl r0, r1, #0x18
 	lsr r7, r0, #0x18
 	ldrb r6, [r4, r7]
 	ldr r0, [r5, #4]
 	ldr r1, [sp]
 	add r0, r6, r0
-	bl DivideUInt
+	bl __udivsi3
 	lsl r0, r1, #0x18
 	lsr r1, r0, #0x18
 	ldrb r0, [r4, r1]
@@ -9418,7 +9418,7 @@ ov02_0232FB4C: ; 0x0232FB4C
 	strb r0, [r4, r7]
 	ldr r1, [r5, #0xc]
 	add r0, r6, r0
-	bl DivideUInt
+	bl __udivsi3
 	ldrb r0, [r4, r1]
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -9586,7 +9586,7 @@ ov02_0232FCA0: ; 0x0232FCA0
 	asr r4, r1, #1
 	add r1, r6, #0
 	add r7, r3, #0
-	bl DivideInt
+	bl __divsi3
 	mov r0, #0
 	cmp r4, #0
 	ble _0232FCD2
@@ -13093,7 +13093,7 @@ _02331614:
 	add r0, #2
 	add r1, r6, #4
 	mov r2, #0x20
-	bl Memcpy
+	bl memcpy
 	add r0, sp, #0x48
 	ldr r1, [r6]
 	mov r7, #0
@@ -13124,19 +13124,19 @@ _02331646:
 _0233165C:
 	add r0, sp, #0x48
 	add r0, #2
-	bl Strlen
+	bl strlen
 	add r2, r0, #0
 	add r0, sp, #0x48
 	add r0, #2
 	add r1, r4, #4
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bne _02331696
 	add r1, r4, #0
 	ldr r0, [sp, #0x24]
 	add r1, #0x28
 	mov r2, #6
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bne _02331696
 	ldrh r1, [r6, #0x2e]
@@ -13197,16 +13197,16 @@ _023316E8:
 	add r0, r7, #0
 	add r1, r5, #4
 	mov r2, #0x20
-	bl Memcpy
+	bl memcpy
 	ldr r1, [r5]
 	mov r0, #0
 	strb r0, [r7, r1]
 	ldr r0, _023317B0 ; =0x02353074
-	bl Strlen
+	bl strlen
 	add r2, r0, #0
 	ldr r1, _023317B0 ; =0x02353074
 	add r0, r7, #0
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bne _02331718
 	ldrh r0, [r5, #0x2e]
@@ -13235,23 +13235,23 @@ _02331734:
 	add r0, r5, #0
 	add r1, r4, #4
 	mov r2, #0x20
-	bl Memcpy
+	bl memcpy
 	ldr r1, [r4]
 	mov r0, #0
 	strb r0, [r5, r1]
 	add r0, r5, #0
-	bl Strlen
+	bl strlen
 	add r6, r0, #0
 	add r0, r7, #0
-	bl Strlen
+	bl strlen
 	cmp r6, r0
 	bne _02331776
 	add r0, r7, #0
-	bl Strlen
+	bl strlen
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bne _02331776
 	ldrh r0, [r4, #0x2e]
@@ -13477,7 +13477,7 @@ _0233190A:
 	ldr r0, [sp, #4]
 	add r1, #0xc
 	mov r2, #0x20
-	bl Memcpy
+	bl memcpy
 	ldrh r0, [r5, #0xa]
 	str r0, [r7, #4]
 	ldrh r0, [r5, #0xa]
@@ -13543,7 +13543,7 @@ _02331966:
 	add r1, r4, #4
 	str r2, [r0, #0x18]
 	ldr r0, _02331A40 ; =0x023599E0
-	bl Strcpy
+	bl strcpy
 	add r0, r4, #0
 	add r4, #0x28
 	ldrb r2, [r4]
@@ -13567,7 +13567,7 @@ _023319C0:
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0xc]
 	ldr r2, [sp, #0x10]
-	bl Memcpy
+	bl memcpy
 	ldr r0, _02331A2C ; =0x023594D0
 	mov r1, #2
 	str r1, [r0, #0x38]
@@ -13869,7 +13869,7 @@ ov02_02331B9C: ; 0x02331B9C
 _02331BEC:
 	add r0, r6, #6
 	add r2, r7, #0
-	bl Memcpy
+	bl memcpy
 _02331BF4:
 	mov r0, #0
 	strb r0, [r6]
@@ -13969,11 +13969,11 @@ ov02_02331C60: ; 0x02331C60
 	add r0, r5, #0
 	add r1, r3, #0
 	add r2, r6, #0
-	bl Memset
+	bl memset
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, r4, #0
-	bl Memcpy
+	bl memcpy
 	add r0, r5, r6
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -14159,7 +14159,7 @@ _02331DE4:
 _02331DFE:
 	ldr r2, [sp, #4]
 	add r0, r6, #0
-	bl Memcpy
+	bl memcpy
 _02331E06:
 	ldr r0, [sp, #4]
 	add sp, #0xc
@@ -14305,7 +14305,7 @@ ov02_02331EB4: ; 0x02331EB4
 	add r0, sp, #4
 	add r0, #2
 	mov r2, #6
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bgt _02331F48
 	add r1, sp, #0
@@ -14443,7 +14443,7 @@ _0233201A:
 	ldr r2, [sp, #0xc]
 	add r0, r3, #0
 	add r1, r5, #0
-	bl Memcpy
+	bl memcpy
 	mov r0, #1
 	str r0, [sp]
 	b _0233214A
@@ -14533,7 +14533,7 @@ _023320C6:
 	mov r2, #0x20
 	add r0, r1, r0
 	mov r1, #0
-	bl Memset
+	bl memset
 	ldr r0, _02332170 ; =0x02359850
 	ldr r1, _0233217C ; =0x00000206
 	ldr r0, [r0, #0x30]
@@ -14570,7 +14570,7 @@ _02332110:
 	add r0, r0, r1
 	ldr r2, [sp, #0xc]
 	add r1, r5, #0
-	bl Memcpy
+	bl memcpy
 	b _0233214A
 _02332126:
 	ldr r3, _02332180 ; =0x02359920
@@ -14589,7 +14589,7 @@ _02332126:
 	ldr r2, [sp, #0xc]
 	add r0, r3, #0
 	add r1, r5, #0
-	bl Memcpy
+	bl memcpy
 _0233214A:
 	ldr r2, [sp, #4]
 	ldr r1, [sp, #8]
@@ -14730,7 +14730,7 @@ ov02_02332238: ; 0x02332238
 	str r0, [sp]
 	ldr r0, _023323A0 ; =0x0235963C
 	ldr r1, _023323A4 ; =0x02359824
-	bl Strcpy
+	bl strcpy
 	ldr r1, _023323A8 ; =0x02359850
 	ldr r0, [r1]
 	cmp r0, #3
@@ -14772,12 +14772,12 @@ _02332288:
 	add r0, sp, #4
 	add r1, r6, #0
 	mov r2, #0x20
-	bl Memcpy
+	bl memcpy
 	mov r1, #0
 	add r0, sp, #0x24
 	strb r1, [r0]
 	add r0, sp, #4
-	bl Strlen
+	bl strlen
 	cmp r0, #0x10
 	bhi _023322C0
 	cmp r0, #0xa
@@ -15479,7 +15479,7 @@ _0233280E:
 	add r1, r5, #0
 	add r0, #8
 	add r2, r4, #0
-	bl Memcpy
+	bl memcpy
 	add r3, sp, #0x58
 	add r2, sp, #0x48
 	mov r1, #8
@@ -15722,7 +15722,7 @@ _023329DE:
 	ldr r0, [sp]
 	add r1, r5, #0
 	sub r2, r4, #1
-	bl Memcpy
+	bl memcpy
 	mov r0, #5
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x14]
@@ -15886,7 +15886,7 @@ _02332B2E:
 	add r0, sp, #0x48
 	add r1, sp, #0x58
 	mov r2, #8
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	beq _02332B40
 	mov r0, #0
@@ -18732,7 +18732,7 @@ ov02_0233415C: ; 0x0233415C
 	beq _02334176
 	mov r1, #0
 	add r2, r4, #0
-	bl Memset
+	bl memset
 _02334176:
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
@@ -19041,7 +19041,7 @@ ov02_023343AC: ; 0x023343AC
 	push {r3, lr}
 	ldr r1, _023343BC ; =0x0235963C
 	mov r2, #0xe8
-	bl Memcpy
+	bl memcpy
 	mov r0, #1
 	pop {r3, pc}
 	nop
@@ -19790,7 +19790,7 @@ ov02_02334D48: ; 0x02334D48
 	ldr r0, _02334DA0 ; =0x0235AA10
 	mov r1, r4
 	mov r2, #0x3f
-	bl Strncpy
+	bl strncpy
 	ldrb r0, [r4, #5]
 	cmp r0, #0x78
 	ldreq r0, _02334DA0 ; =0x0235AA10
@@ -32474,7 +32474,7 @@ ov02_0233EFC8: ; 0x0233EFC8
 	ldr r4, [r0]
 	mov r2, #3
 	add r0, r4, #8
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	movne r0, #3
 	strneb r0, [r4, #0x14]
@@ -35129,7 +35129,7 @@ _023413F0:
 	add r0, sp, #0
 	mov r2, r4
 	mov r1, #0x2a
-	bl Memset
+	bl memset
 	add r0, sp, #0
 	mov r1, r5
 	bl ov02_023417DC
@@ -42562,7 +42562,7 @@ _02347250:
 	mov r1, r5
 	mov r2, r4
 	add r0, r8, #0x20
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	add r7, r7, #1
 	addne r6, r6, #1
@@ -42641,7 +42641,7 @@ _02347354:
 	mov r2, r6
 	add r0, r4, #4
 	add r1, r7, #0x20
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	beq _0234737C
 	add r5, r5, #1
@@ -42659,7 +42659,7 @@ _02347394:
 	mov r1, r7
 	mov r2, r6
 	add r0, r8, #0x20
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	beq _023473BC
 	add r5, r5, #1
@@ -42717,7 +42717,7 @@ _02347444:
 	ldr r0, [r1, #8]
 	mov r1, r5
 	mov r2, r4
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	moveq r0, #2
 	streqb r0, [sb, #0x28]
@@ -43155,7 +43155,7 @@ _02347958:
 	strb r0, [r5, #0x4f4]
 	add r0, r4, #0xc0
 	mov r2, #4
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	ldrne r0, _02347A14 ; =0x0235AB48
 	movne r1, #0
@@ -43166,13 +43166,13 @@ _02347958:
 	strb r1, [r0, #0x4f5]
 	ldr r1, _02347A18 ; =0x02352DC4
 	add r0, r4, #0xc8
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bne _023479D8
 	ldr r1, _02347A18 ; =0x02352DC4
 	add r0, r4, #0xcc
 	mov r2, #4
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	beq _023479EC
 _023479D8:
@@ -44871,7 +44871,7 @@ _0234900C:
 	ldr r1, _02349140 ; =0x02352E04
 	add r0, r6, #0xc
 	mov r2, #8
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bne _0234912C
 	ldr r0, _02349144 ; =0x0235AB58
@@ -44883,7 +44883,7 @@ _0234904C:
 	mov r1, r8
 	mov r2, r4
 	add r0, r6, #4
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bne _023490A4
 	rsb r0, r5, r5, lsl #3
@@ -44915,7 +44915,7 @@ _023490C4:
 	mov r0, r8
 	mov r1, r5
 	mov r2, r4
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bne _0234911C
 	rsb r4, sl, sl, lsl #3
@@ -44983,7 +44983,7 @@ _023491A8:
 	ldr r1, _02349254 ; =0x02352E04
 	mov r2, #8
 	add r0, r5, #0xc
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bne _02349240
 	ldrb r0, [r5, #0x15]
@@ -44995,7 +44995,7 @@ _023491DC:
 	mov r1, r8
 	mov r2, r4
 	add r0, r5, #4
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	bne _02349230
 	rsb r0, r7, r7, lsl #3
@@ -45055,7 +45055,7 @@ _023492AC:
 	mov r0, r8
 	mov r1, r4
 	mov r2, fp
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	beq _023492D8
 	add r0, sb, #0x1000
@@ -49688,10 +49688,10 @@ ov02_0234CFAC: ; 0x0234CFAC
 	mov r6, r1
 	mov r7, r0
 	mov r5, r2
-	bl Strlen
+	bl strlen
 	mov r4, r0
 	mov r0, r6
-	bl Strlen
+	bl strlen
 	cmp r4, r5
 	cmpge r0, r5
 	movlt r0, #0
@@ -49701,7 +49701,7 @@ ov02_0234CFAC: ; 0x0234CFAC
 	mov r2, r5
 	add r0, r7, r3
 	add r1, r6, r1
-	bl Memcmp
+	bl memcmp
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0

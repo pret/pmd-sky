@@ -976,12 +976,12 @@ _0238AED8:
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0xc8
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238B0CC ; =ov16_0238CE40
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xc8
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238B0CC ; =ov16_0238CE40
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0xc2]
@@ -2070,12 +2070,12 @@ _0238BED8:
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0xc8
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _0238C0CC ; =ov16_0238CE40
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xc8
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0238C0CC ; =ov16_0238CE40
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0xc2]

@@ -1,5 +1,5 @@
 #pragma once
-.public Abs
+.public abs
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EntityIsValid__0230F008
@@ -10,8 +10,8 @@
 .public IsTargetInRange
 .public SetMonsterActionFields
 .public TestItemAiFlag
-.public ov29_022E1610
-.public ov29_022E274C
+.public GetItemInfo
+.public CanSeeTarget
 .public ov29_02300B40
 .public ov29_0230175C
 .public ov29_02302368

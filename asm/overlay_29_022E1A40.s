@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022E1A40
-ov29_022E1A40: ; 0x022E1A40
+	arm_func_start UpdateEntityPixelPos
+UpdateEntityPixelPos: ; 0x022E1A40
 	cmp r1, #0
 	ldrne r2, [r1]
 	strne r2, [r0, #0xc]
@@ -23,7 +23,7 @@ ov29_022E1A40: ; 0x022E1A40
 _022E1A7C:
 	str r1, [r0, #0x10]
 	bx lr
-	arm_func_end ov29_022E1A40
+	arm_func_end UpdateEntityPixelPos
 
 	arm_func_start ov29_022E1A84
 ov29_022E1A84: ; 0x022E1A84
@@ -260,8 +260,8 @@ ov29_022E1D2C: ; 0x022E1D2C
 	mov r6, r0
 	mov r1, r8
 	mov r0, #0
-	bl ov29_022F9408
-	bl GetSpriteIndex__022F7388
+	bl GetMonsterApparentId
+	bl DungeonGetSpriteIndex
 	mov r4, r0
 	add r0, sp, #8
 	add r1, sp, #4
@@ -297,7 +297,7 @@ _022E1D90:
 	strh r8, [r0, #2]
 	mov r1, r8
 	mov r0, #0
-	bl ov29_022F9408
+	bl GetMonsterApparentId
 	ldr r1, [r7, #0xb4]
 	mov r2, #0
 	strh r0, [r1, #4]
@@ -521,8 +521,8 @@ _022E20A0:
 _022E20BC: .word 0x0237C79C
 	arm_func_end ov29_022E2018
 
-	arm_func_start ov29_022E20C0
-ov29_022E20C0: ; 0x022E20C0
+	arm_func_start CreateEnemyEntity
+CreateEnemyEntity: ; 0x022E20C0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0xc
 	mov r8, r0
@@ -531,9 +531,9 @@ ov29_022E20C0: ; 0x022E20C0
 	mov r6, r0
 	mov r1, r8
 	mov r0, #0
-	bl ov29_022F9408
+	bl GetMonsterApparentId
 	mov r4, r0
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	mov r3, r0
 	add r0, sp, #8
 	add r1, sp, #4
@@ -569,7 +569,7 @@ _022E211C:
 	str r2, [r7, #0xb4]
 	mov r1, r8
 	strh r8, [r2, #2]
-	bl ov29_022F9408
+	bl GetMonsterApparentId
 	ldr r2, [r7, #0xb4]
 	mov r1, #1
 	strh r0, [r2, #4]
@@ -579,7 +579,7 @@ _022E211C:
 	ldr r1, [r7, #0xb4]
 	mov r0, r4
 	strb r2, [r1, #8]
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	strh r0, [r7, #0xa8]
 	strb r6, [r7, #0xaa]
 	ldr r0, [sp, #8]
@@ -632,10 +632,10 @@ _022E2254:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022E225C: .word 0x02353538
-	arm_func_end ov29_022E20C0
+	arm_func_end CreateEnemyEntity
 
-	arm_func_start ov29_022E2260
-ov29_022E2260: ; 0x022E2260
+	arm_func_start SpawnTrap
+SpawnTrap: ; 0x022E2260
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov sl, r0
 	mov sb, r1
@@ -685,10 +685,10 @@ _022E2300:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _022E2310: .word 0x02353538
-	arm_func_end ov29_022E2260
+	arm_func_end SpawnTrap
 
-	arm_func_start ov29_022E2314
-ov29_022E2314: ; 0x022E2314
+	arm_func_start SpawnItemEntity
+SpawnItemEntity: ; 0x022E2314
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r1, _022E2410 ; =0x02353538
 	ldr r2, _022E2414 ; =0x020A1AE8
@@ -759,13 +759,13 @@ _022E2400:
 	.align 2, 0
 _022E2410: .word 0x02353538
 _022E2414: .word 0x020A1AE8
-	arm_func_end ov29_022E2314
+	arm_func_end SpawnItemEntity
 
 	arm_func_start ov29_022E2418
 ov29_022E2418: ; 0x022E2418
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov29_023386D8
+	bl HiddenStairsPresent
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -802,8 +802,8 @@ ov29_022E2470: ; 0x022E2470
 	bx lr
 	arm_func_end ov29_022E2470
 
-	arm_func_start ov29_022E2498
-ov29_022E2498: ; 0x022E2498
+	arm_func_start ShouldMinimapDisplayEntity
+ShouldMinimapDisplayEntity: ; 0x022E2498
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5]
@@ -854,7 +854,7 @@ _022E252C:
 	mov r2, r0
 	mov r0, r4
 	add r1, r5, #4
-	bl ov29_022E90CC
+	bl IsPositionActuallyInSight
 	ldmia sp!, {r3, r4, r5, pc}
 _022E2560:
 	mov r0, #0
@@ -864,10 +864,10 @@ _022E2568:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022E2570: .word 0x02353538
-	arm_func_end ov29_022E2498
+	arm_func_end ShouldMinimapDisplayEntity
 
-	arm_func_start ov29_022E2574
-ov29_022E2574: ; 0x022E2574
+	arm_func_start ShouldDisplayEntity
+ShouldDisplayEntity: ; 0x022E2574
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldrb r5, [r0, #0x20]
 	cmp r5, #0
@@ -989,28 +989,28 @@ _022E271C:
 	.align 2, 0
 _022E2724: .word 0x02353538
 _022E2728: .word 0x0001A224
-	arm_func_end ov29_022E2574
+	arm_func_end ShouldDisplayEntity
 
-	arm_func_start ov29_022E272C
-ov29_022E272C: ; 0x022E272C
-	ldr ip, _022E2738 ; =ov29_022E2574
+	arm_func_start ShouldDisplayEntityWrapper
+ShouldDisplayEntityWrapper: ; 0x022E272C
+	ldr ip, _022E2738 ; =ShouldDisplayEntity
 	mov r1, #0
 	bx ip
 	.align 2, 0
-_022E2738: .word ov29_022E2574
-	arm_func_end ov29_022E272C
+_022E2738: .word ShouldDisplayEntity
+	arm_func_end ShouldDisplayEntityWrapper
 
 	arm_func_start ov29_022E273C
 ov29_022E273C: ; 0x022E273C
-	ldr ip, _022E2748 ; =ov29_022E2574
+	ldr ip, _022E2748 ; =ShouldDisplayEntity
 	mov r1, #1
 	bx ip
 	.align 2, 0
-_022E2748: .word ov29_022E2574
+_022E2748: .word ShouldDisplayEntity
 	arm_func_end ov29_022E273C
 
-	arm_func_start ov29_022E274C
-ov29_022E274C: ; 0x022E274C
+	arm_func_start CanSeeTarget
+CanSeeTarget: ; 0x022E274C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -1060,9 +1060,9 @@ _022E27F4:
 	mov r2, r0
 	add r0, r5, #4
 	add r1, r4, #4
-	bl ov29_022E90CC
+	bl IsPositionActuallyInSight
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022E274C
+	arm_func_end CanSeeTarget
 
 	arm_func_start CanTargetEntity
 CanTargetEntity: ; 0x022E2810
@@ -1142,7 +1142,7 @@ ov29_022E28D4: ; 0x022E28D4
 	mov r2, r0
 	add r0, r5, #4
 	add r1, r4, #4
-	bl ov29_022E90CC
+	bl IsPositionActuallyInSight
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022E28D4
 
@@ -1155,7 +1155,7 @@ ov29_022E2930: ; 0x022E2930
 	mov r2, r0
 	mov r1, r4
 	add r0, r5, #4
-	bl ov29_022E90CC
+	bl IsPositionActuallyInSight
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022E2930
 
@@ -1229,8 +1229,8 @@ _022E2A28:
 _022E2A34: .word 0x02353538
 	arm_func_end ov29_022E2978
 
-	arm_func_start ov29_022E2A38
-ov29_022E2A38: ; 0x022E2A38
+	arm_func_start GetTeamMemberIndex
+GetTeamMemberIndex: ; 0x022E2A38
 	ldr r1, _022E2A74 ; =0x02353538
 	mov r2, #0
 	ldr r3, [r1]
@@ -1250,7 +1250,7 @@ _022E2A64:
 	bx lr
 	.align 2, 0
 _022E2A74: .word 0x02353538
-	arm_func_end ov29_022E2A38
+	arm_func_end GetTeamMemberIndex
 
 	arm_func_start ov29_022E2A78
 ov29_022E2A78: ; 0x022E2A78
@@ -1266,7 +1266,7 @@ ov29_022E2A78: ; 0x022E2A78
 	b _022E2ABC
 _022E2AA0:
 	ldr r1, [r1, #0xb4]
-	bl ov29_02300164
+	bl GetMonsterName
 	ldmia sp!, {r4, pc}
 _022E2AAC:
 	ldr r1, [r1, #0xb4]
@@ -1278,7 +1278,7 @@ _022E2ABC:
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E2AD4: .word 0x00000A42
@@ -1431,13 +1431,13 @@ ov29_022E2CA0: ; 0x022E2CA0
 	add r5, r0, #0x1a000
 	sub r0, r2, r1
 	ldr r6, [r5, #0x10]
-	bl Abs
+	bl abs
 	cmp r0, #6
 	bgt _022E2D2C
 	ldrsh r1, [r5, #2]
 	ldrsh r0, [r4, #2]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #5
 	bgt _022E2D2C
 	mov r0, r5
@@ -1453,7 +1453,7 @@ ov29_022E2CA0: ; 0x022E2CA0
 	mov r2, r0
 	mov r0, r5
 	mov r1, r4
-	bl ov29_022E90CC
+	bl IsPositionActuallyInSight
 	ldmia sp!, {r4, r5, r6, pc}
 _022E2D2C:
 	mov r0, #0
@@ -1476,13 +1476,13 @@ ov29_022E2D3C: ; 0x022E2D3C
 	add r5, r0, #0x1a000
 	sub r0, r2, r1
 	ldr r6, [r5, #0x10]
-	bl Abs
+	bl abs
 	cmp r0, #6
 	bgt _022E2DC8
 	ldrsh r1, [r5, #2]
 	ldrsh r0, [r4, #2]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #6
 	bgt _022E2DC8
 	mov r0, r5
@@ -1498,7 +1498,7 @@ ov29_022E2D3C: ; 0x022E2D3C
 	mov r2, r0
 	mov r0, r5
 	mov r1, r4
-	bl ov29_022E90CC
+	bl IsPositionActuallyInSight
 	ldmia sp!, {r4, r5, r6, pc}
 _022E2DC8:
 	mov r0, #0
@@ -1543,15 +1543,15 @@ ov29_022E2DFC: ; 0x022E2DFC
 	strneb r0, [r1, #0x2f]
 _022E2E40:
 	mov r0, #0
-	bl ov29_022E2EC4
+	bl UpdateCamera
 	bl ov29_022E2C6C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E2E50: .word 0x02353538
 	arm_func_end ov29_022E2DFC
 
-	arm_func_start ov29_022E2E54
-ov29_022E2E54: ; 0x022E2E54
+	arm_func_start PointCameraToMonster
+PointCameraToMonster: ; 0x022E2E54
 	stmdb sp!, {r4, lr}
 	ldr r2, _022E2EC0 ; =0x02353538
 	mov r4, r1
@@ -1572,20 +1572,20 @@ ov29_022E2E54: ; 0x022E2E54
 _022E2E98:
 	str r0, [r2, #0x10]
 	mov r0, #0
-	bl ov29_022E2EC4
+	bl UpdateCamera
 	bl ov29_022E2C6C
 	bl ov29_02304954
 	cmp r4, #0
 	ldmeqia sp!, {r4, pc}
-	bl ov29_02336F4C
-	bl ov29_02339CE8
+	bl UpdateTrapsVisibility
+	bl UpdateMinimap
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E2EC0: .word 0x02353538
-	arm_func_end ov29_022E2E54
+	arm_func_end PointCameraToMonster
 
-	arm_func_start ov29_022E2EC4
-ov29_022E2EC4: ; 0x022E2EC4
+	arm_func_start UpdateCamera
+UpdateCamera: ; 0x022E2EC4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	ldr r1, _022E32DC ; =0x02353538
@@ -1757,8 +1757,8 @@ _022E3108:
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	beq _022E3168
-	bl ov29_02336F4C
-	bl ov29_02339CE8
+	bl UpdateTrapsVisibility
+	bl UpdateMinimap
 _022E3168:
 	cmp r7, #0
 	beq _022E3178
@@ -1774,17 +1774,17 @@ _022E3178:
 	ldrsh r5, [r4, #8]
 	ldrsh r7, [r4, #0xc]
 	sub r0, r7, r5
-	bl Abs
+	bl abs
 	cmp r0, #8
 	bge _022E31C0
 	ldrsh r1, [r4, #0xe]
 	ldrsh r0, [r4, #0xa]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	cmp r0, #8
 	blt _022E31D0
 _022E31C0:
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 	mov r0, #1
 	strb r0, [r4, #0x2c]
 	b _022E3228
@@ -1836,7 +1836,7 @@ _022E3250:
 	beq _022E327C
 	ldrsh r0, [r7, #4]
 	ldrsh r1, [r7, #6]
-	bl ov29_023391EC
+	bl DrawMinimapTile
 _022E327C:
 	add r5, r5, #1
 	cmp r5, #0x14
@@ -1857,7 +1857,7 @@ _022E3298:
 	beq _022E32C4
 	ldrsh r0, [r6, #4]
 	ldrsh r1, [r6, #6]
-	bl ov29_023391EC
+	bl DrawMinimapTile
 _022E32C4:
 	add r5, r5, #1
 	cmp r5, #0x40
@@ -1871,4 +1871,4 @@ _022E32D4:
 _022E32DC: .word 0x02353538
 _022E32E0: .word 0x0237C84C
 _022E32E4: .word 0x0000FFFF
-	arm_func_end ov29_022E2EC4
+	arm_func_end UpdateCamera

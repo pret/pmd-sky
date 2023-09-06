@@ -34,7 +34,7 @@ GetDungeonResultMsg: ; 0x0200C4FC
 	mov r1, r0, lsl #0x10
 	add r0, sp, #4
 	mov r1, r1, lsr #0x10
-	bl GetInfoMoveCheckId
+	bl InitMoveCheckId
 	mov r0, #0
 	bl GetDungeonResultString
 	add r1, sp, #4
@@ -573,8 +573,8 @@ _0200CC2C:
 _0200CC34: .word 0x000001BB
 	arm_func_end IsAuraBow
 
-	arm_func_start sub_0200CC38
-sub_0200CC38: ; 0x0200CC38
+	arm_func_start IsLosableItem
+IsLosableItem: ; 0x0200CC38
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrb r0, [r4]
@@ -596,7 +596,7 @@ _0200CC74:
 _0200CC7C:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0200CC38
+	arm_func_end IsLosableItem
 
 	arm_func_start IsTreasureBox
 IsTreasureBox: ; 0x0200CC84
@@ -611,8 +611,8 @@ IsTreasureBox: ; 0x0200CC84
 	ldmia sp!, {r3, pc}
 	arm_func_end IsTreasureBox
 
-	arm_func_start sub_0200CCA8
-sub_0200CCA8: ; 0x0200CCA8
+	arm_func_start IsStorableItem
+IsStorableItem: ; 0x0200CCA8
 	cmp r0, #0
 	moveq r0, #0
 	bxeq lr
@@ -627,10 +627,10 @@ sub_0200CCA8: ; 0x0200CCA8
 	moveq r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end sub_0200CCA8
+	arm_func_end IsStorableItem
 
-	arm_func_start sub_0200CCE0
-sub_0200CCE0: ; 0x0200CCE0
+	arm_func_start IsShoppableItem
+IsShoppableItem: ; 0x0200CCE0
 	stmdb sp!, {r4, lr}
 	movs r4, r0
 	moveq r0, #0
@@ -682,10 +682,10 @@ sub_0200CCE0: ; 0x0200CCE0
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0200CCE0
+	arm_func_end IsShoppableItem
 
-	arm_func_start sub_0200CDAC
-sub_0200CDAC: ; 0x0200CDAC
+	arm_func_start IsValidTargetItem
+IsValidTargetItem: ; 0x0200CDAC
 	cmp r0, #0x16c
 	movge r0, #1
 	bxge lr
@@ -708,10 +708,10 @@ _0200CDD8:
 	.align 2, 0
 _0200CDF0: .word 0x020A18BC
 _0200CDF4: .word 0x00000578
-	arm_func_end sub_0200CDAC
+	arm_func_end IsValidTargetItem
 
-	arm_func_start sub_0200CDF8
-sub_0200CDF8: ; 0x0200CDF8
+	arm_func_start IsItemUsableNow
+IsItemUsableNow: ; 0x0200CDF8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrb r0, [r4]
@@ -745,10 +745,10 @@ _0200CE64:
 _0200CE6C:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0200CDF8
+	arm_func_end IsItemUsableNow
 
-	arm_func_start sub_0200CE74
-sub_0200CE74: ; 0x0200CE74
+	arm_func_start IsTicketItem
+IsTicketItem: ; 0x0200CE74
 	sub r0, r0, #0xa9
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -759,7 +759,7 @@ sub_0200CE74: ; 0x0200CE74
 	movhi r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end sub_0200CE74
+	arm_func_end IsTicketItem
 
 	arm_func_start InitItem
 InitItem: ; 0x0200CE9C
@@ -991,7 +991,7 @@ GetActualBuyPrice: ; 0x0200D160
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrsh r0, [r4, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -1014,7 +1014,7 @@ GetActualSellPrice: ; 0x0200D1A8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrsh r0, [r4, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -1068,7 +1068,7 @@ sub_0200D214: ; 0x0200D214
 	mov r1, r0
 	add r0, sp, #6
 	mov r2, #0x50
-	bl Strncpy
+	bl strncpy
 	mov r2, #0
 	mov r1, r5
 	add r0, sp, #0
@@ -1218,7 +1218,7 @@ _0200D40C:
 	b _0200D4F8
 _0200D434:
 	mov r1, r2
-	bl Strcpy
+	bl strcpy
 	b _0200D4F8
 _0200D440:
 	ldrsh r0, [sb, #4]
@@ -1262,7 +1262,7 @@ _0200D4AC:
 	b _0200D4F8
 _0200D4CC:
 	mov r1, r2
-	bl Strcpy
+	bl strcpy
 	b _0200D4F8
 _0200D4D8:
 	cmp r7, #0
@@ -1273,7 +1273,7 @@ _0200D4D8:
 _0200D4EC:
 	mov r1, r2
 	mov r2, #0x50
-	bl Strncpy
+	bl strncpy
 _0200D4F8:
 	ldrb r0, [sb]
 	tst r0, #8
@@ -1288,7 +1288,7 @@ _0200D4F8:
 	add r0, sp, #0x50
 	mov r1, sl
 	mov r2, #0x50
-	bl Strncpy
+	bl strncpy
 	mov fp, #1
 	b _0200D564
 _0200D538:
@@ -1302,14 +1302,14 @@ _0200D538:
 	add r0, sp, #0x50
 	mov r1, sl
 	mov r2, #0x50
-	bl Strncpy
+	bl strncpy
 _0200D564:
 	cmp r8, #0
 	bne _0200D580
 	add r1, sp, #0x50
 	mov r0, sl
 	mov r2, #0x50
-	bl Strncpy
+	bl strncpy
 	b _0200D600
 _0200D580:
 	ldrb r0, [r8, #4]
@@ -1340,7 +1340,7 @@ _0200D5AC:
 	b _0200D600
 _0200D5E4:
 	mov r2, #0x50
-	bl Strncpy
+	bl strncpy
 	b _0200D600
 _0200D5F0:
 	mov r0, sl
@@ -1372,7 +1372,7 @@ SprintfStatic__0200D634: ; 0x0200D634
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -1406,7 +1406,7 @@ sub_0200D688: ; 0x0200D688
 	mov r5, r1
 	bne _0200D6AC
 	mov r2, #0x50
-	bl Strncpy
+	bl strncpy
 	b _0200D75C
 _0200D6AC:
 	ldr r0, [r4]
@@ -1435,7 +1435,7 @@ _0200D6EC:
 	mov r0, r6
 	mov r1, r5
 	mov r2, #0x50
-	bl Strncpy
+	bl strncpy
 	b _0200D75C
 _0200D708:
 	ldrsh r1, [r4, #6]
@@ -2600,14 +2600,14 @@ LoadItemPspi2n: ; 0x0200E6D8
 	ldr r1, _0200E748 ; =0x02098038
 	add r0, sp, #0
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, [sp]
 	ldr r0, _0200E74C ; =0x020AF6C4
 	bl HandleSir0Translation
 	ldr r1, _0200E750 ; =0x02098054
 	add r0, sp, #0
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, [sp]
 	ldr r0, _0200E754 ; =0x020AF6C0
 	bl HandleSir0Translation
@@ -2620,7 +2620,7 @@ LoadItemPspi2n: ; 0x0200E6D8
 	ldr r0, _0200E758 ; =0x020AF6C8
 	ldr r1, _0200E75C ; =0x02098070
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 _0200E740:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
@@ -2782,7 +2782,7 @@ _0200E8E8:
 _0200E904:
 	mov r0, r8
 	mov r1, r4
-	bl Strcpy
+	bl strcpy
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0200E914:
 	cmp r1, #0xf
@@ -2830,7 +2830,7 @@ SprintfStatic__0200E990: ; 0x0200E990
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -3200,7 +3200,7 @@ GetCurrentBagCapacity: ; 0x0200ED84
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	bl GetBagCapacity
 	ldmia sp!, {r3, pc}
 _0200EDB8:
@@ -3490,7 +3490,7 @@ _0200F104:
 	tst r0, #0xff
 	beq _0200F130
 	ldrsh r0, [r6, #4]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -7290,7 +7290,7 @@ sub_02011FA0: ; 0x02011FA0
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	str r0, [r1, #0x3ac]
-	bl sub_02050C74
+	bl GetRank
 	ldr r2, _02012214 ; =0x020AF6B8
 	ldr r1, [r2]
 	add r1, r1, #0x1000
@@ -7335,7 +7335,7 @@ _0201207C:
 	ldr r0, [r0, #0x3ac]
 	cmp r0, r1
 	blt _02012104
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	ldr r1, _0201221C ; =0x020988A8
 	mov r2, r4, lsl #3
 	ldrsh r1, [r1, r2]
@@ -7387,7 +7387,7 @@ _0201213C:
 _02012184:
 	bl Rand16Bit
 	ldr r1, [r4, #4]
-	bl DivideInt
+	bl __divsi3
 	mov r0, #0x18
 	mul r0, r1, r0
 	ldr r1, [r4]
@@ -7766,7 +7766,7 @@ sub_02012630: ; 0x02012630
 	mov r4, r0
 	cmp r1, #0
 	beq _02012650
-	bl sub_0200CE74
+	bl IsTicketItem
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r4, pc}
@@ -7896,7 +7896,7 @@ _020127CC:
 	cmp r0, r1
 	bne _02012834
 	ldrsh r0, [r6]
-	bl sub_0200CE74
+	bl IsTicketItem
 	cmp r0, #0
 	beq _02012810
 	mov r0, #1
@@ -8069,7 +8069,7 @@ _020129F0:
 	cmp r0, r4
 	bne _02012A68
 	ldrsh r0, [r1]
-	bl sub_0200CE74
+	bl IsTicketItem
 	cmp r0, #0
 	beq _02012A44
 	mov r0, r6
@@ -8149,7 +8149,7 @@ LoadSynthBin: ; 0x02012AE0
 	ldr r0, _02012B2C ; =0x020AF6D4
 	ldr r1, _02012B30 ; =0x02098CB4
 	mov r2, #0xe
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, _02012B28 ; =0x020AF6D0
 	mov r0, #1
 	ldr r2, [r1, #4]
@@ -8188,7 +8188,7 @@ _02012B78: .word 0x020AF6D4
 sub_02012B7C: ; 0x02012B7C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x160
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	ldr r1, _02013098 ; =0x020AF6D0
 	str r0, [sp, #8]
 	ldr r0, [r1, #4]
@@ -8736,7 +8736,7 @@ sub_020132A4: ; 0x020132A4
 	mov sl, r0
 	mov sb, r1
 	mov r8, r2
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	mov r5, #0
 	str r5, [sb]
 	mov r7, r0
@@ -9084,7 +9084,7 @@ SprintfStatic__02013758: ; 0x02013758
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -9124,8 +9124,8 @@ InitMove: ; 0x020137B8
 	ldmia sp!, {r4, pc}
 	arm_func_end InitMove
 
-	arm_func_start GetInfoMoveCheckId
-GetInfoMoveCheckId: ; 0x020137E8
+	arm_func_start InitMoveCheckId
+InitMoveCheckId: ; 0x020137E8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	cmp r1, #0
@@ -9142,7 +9142,7 @@ GetInfoMoveCheckId: ; 0x020137E8
 	mov r0, #0
 	strb r0, [r4, #7]
 	ldmia sp!, {r4, pc}
-	arm_func_end GetInfoMoveCheckId
+	arm_func_end InitMoveCheckId
 
 	arm_func_start GetInfoMoveGround
 GetInfoMoveGround: ; 0x02013828
@@ -9482,7 +9482,7 @@ GetMoveActualAccuracy: ; 0x02013B90
 	ldmeqia sp!, {r3, pc}
 	mul r0, r2, r0
 	mov r1, #0x64
-	bl DivideInt
+	bl __divsi3
 	ldmia sp!, {r3, pc}
 _02013BDC:
 	mov r0, #0
@@ -9560,8 +9560,8 @@ _02013C7C:
 	ldmia sp!, {r4, pc}
 	arm_func_end GetNbMoves
 
-	arm_func_start GETMOVESETIDX__02013CAC
-GETMOVESETIDX__02013CAC: ; 0x02013CAC
+	arm_func_start GetMovesetIdx__02013CAC
+GetMovesetIdx__02013CAC: ; 0x02013CAC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
 	mov ip, r5
@@ -9588,7 +9588,7 @@ _02013CF8:
 	blt _02013CC4
 	mvn r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end GETMOVESETIDX__02013CAC
+	arm_func_end GetMovesetIdx__02013CAC
 
 	arm_func_start IsReflectedByMagicCoat
 IsReflectedByMagicCoat: ; 0x02013D08
@@ -10451,8 +10451,8 @@ _020147F4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end GetInfoGroundMoveset
 
-	arm_func_start GETMOVESETIDX__02014804
-GETMOVESETIDX__02014804: ; 0x02014804
+	arm_func_start GetMovesetIdx__02014804
+GetMovesetIdx__02014804: ; 0x02014804
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
 	mov ip, r5
@@ -10479,7 +10479,7 @@ _02014850:
 	blt _0201481C
 	mvn r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end GETMOVESETIDX__02014804
+	arm_func_end GetMovesetIdx__02014804
 
 	arm_func_start FindFirstFreeMovesetIdx
 FindFirstFreeMovesetIdx: ; 0x02014860
@@ -10528,7 +10528,7 @@ _020148DC:
 	beq _020149B8
 	mov r0, r8
 	mov r1, r4
-	bl GETMOVESETIDX__02014804
+	bl GetMovesetIdx__02014804
 	mvn r1, #0
 	cmp r0, r1
 	addne r1, sp, #0
@@ -10554,7 +10554,7 @@ _02014934:
 	blt _02014934
 	bl Rand16Bit
 	mov r1, r5
-	bl DivideInt
+	bl __divsi3
 	add r2, sp, #4
 	ldr r5, [r2, r1, lsl #2]
 	mov r0, #6
@@ -10755,7 +10755,7 @@ sub_02014BB0: ; 0x02014BB0
 	mov r0, r4
 	mov r1, #0
 	mov r2, #8
-	bl Memset
+	bl memset
 	mov r0, r5
 	mov r1, r4
 	mov r2, #4
@@ -11170,7 +11170,7 @@ _020150E0:
 	blt _020150B4
 	bl Rand16Bit
 	mov r1, r4
-	bl DivideInt
+	bl __divsi3
 	mov r0, #6
 	mla r0, r1, r0, r6
 	ldrh r0, [r0, #2]
@@ -11305,7 +11305,7 @@ OpenWaza: ; 0x02015294
 	ldr r1, [r1, r4, lsl #2]
 	add r0, r0, r4, lsl #3
 	mov r2, #0
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, _020152F0 ; =0x020AF700
 	add r0, sp, #0
 	ldr r1, [r1, r4, lsl #3]
@@ -11364,7 +11364,7 @@ sub_02015328: ; 0x02015328
 	ldr r1, [r1, r2, lsl #2]
 	add r0, r0, #0x1c
 	mov r2, #0
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, _02015500 ; =0x020AF710
 	ldr r1, [r0]
 	add r0, r1, #0x10
@@ -11388,7 +11388,7 @@ sub_02015328: ; 0x02015328
 	bne _02015454
 	ldr r1, _02015508 ; =0x02098F60
 	add r0, sp, #0
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, _02015500 ; =0x020AF710
 	ldr r1, [sp]
 	ldr r0, [r0]
@@ -11405,7 +11405,7 @@ sub_02015328: ; 0x02015328
 	ldr r1, _0201550C ; =0x02098F78
 	add r0, sp, #0
 	mov r2, #0
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, _02015500 ; =0x020AF710
 	ldr r1, [sp]
 	ldr r0, [r0]
@@ -11425,12 +11425,12 @@ _02015454:
 	bne _02015470
 	ldr r1, _02015510 ; =0x02098F90
 	add r0, r0, #0x24
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	b _0201547C
 _02015470:
 	ldr r1, _02015514 ; =0x02098FA8
 	add r0, r0, #0x24
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 _0201547C:
 	ldr r0, _02015500 ; =0x020AF710
 	ldr r0, [r0]
@@ -11579,11 +11579,11 @@ _02015624:
 	ldr r1, _020156A8 ; =0x02098FBC
 	mov r2, #3
 	add r0, r7, r8
-	bl Strncmp
+	bl strncmp
 	cmp r0, #0
 	bne _02015684
 	ldr r0, _020156A8 ; =0x02098FBC
-	bl Strlen
+	bl strlen
 	add r8, r8, r0
 	b _02015690
 _02015684:
@@ -11706,11 +11706,11 @@ _020157B8:
 	ldr r1, _02015D08 ; =0x02098FBC
 	add r0, r0, r4
 	mov r2, #3
-	bl Strncmp
+	bl strncmp
 	cmp r0, #0
 	bne _02015838
 	ldr r0, _02015D08 ; =0x02098FBC
-	bl Strlen
+	bl strlen
 	add r4, r4, r0
 	b _02015844
 _02015838:
@@ -12098,7 +12098,7 @@ _02015D60:
 	add r0, r3, r0, lsr #29
 	mov r0, r0, asr #3
 	mov sb, r2, asr #3
-	bl DivideInt
+	bl __divsi3
 	ldr fp, _02015E40 ; =0x020AF710
 	mov sl, r1
 	ldr r0, [fp]
@@ -12643,7 +12643,7 @@ sub_02016468: ; 0x02016468
 	bl sub_02015570
 	add r0, sp, #0
 	mov r1, r4
-	bl Strcpy
+	bl strcpy
 	mov r1, r5
 	mov r0, #0
 	add r2, sp, #0
@@ -12724,7 +12724,7 @@ sub_02016548: ; 0x02016548
 	bl sub_020156AC
 	mov r1, r7
 	add r0, sp, #4
-	bl Strcpy
+	bl strcpy
 	mov r0, #0
 	mov r1, #0x52
 	add r2, sp, #4
@@ -12876,7 +12876,7 @@ sub_02016788: ; 0x02016788
 	bl sub_020156AC
 	mov r1, r5
 	add r0, sp, #0
-	bl Strcpy
+	bl strcpy
 	mov r0, #0
 	mov r1, #0x52
 	add r2, sp, #0
@@ -13402,7 +13402,7 @@ sub_02016EAC: ; 0x02016EAC
 	ldr r1, [r0, #8]
 	add r0, r1, #0x98
 	ldrsh r1, [r1, #0x94]
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r0, #1
 	str r0, [sp]
 	mov r2, #0
@@ -13414,7 +13414,7 @@ sub_02016EAC: ; 0x02016EAC
 	mov r1, #0xc
 	mov r3, #0x100
 	add r0, r0, #0x98
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r0, _0201712C ; =0x020AF760
 	mov r4, #0xd0
 	ldr r2, [r0, #8]
@@ -13439,7 +13439,7 @@ _02016FB0:
 	bl sub_0201C0B0
 	ldrsh r1, [r7, #0x94]
 	mov r0, r8
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r0, #0xc
 	mul r4, sb, r0
 	add sl, r5, r4
@@ -13455,7 +13455,7 @@ _02016FB0:
 	mov r0, r8
 	mov r2, #0
 	mov r3, #0x100
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r1, [sl, #4]
 	mov r0, r8
 	strh r1, [r8, #0x1c]
@@ -13481,7 +13481,7 @@ _02017054:
 	bl sub_0201C0B0
 	ldrsh r1, [r7, #0x96]
 	mov r0, r8
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	strh r5, [r8, #0x38]
 	mov r0, #0
 	str r0, [sp]
@@ -13494,7 +13494,7 @@ _02017054:
 	add sl, r4, r0
 	mov r0, r8
 	mov r3, r2
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r0, [sl, #4]
 	cmp sb, #6
 	strh r0, [r8, #0x1c]
@@ -13819,7 +13819,7 @@ _020174EC:
 	mov r2, fp
 	mov r3, fp
 	str fp, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 _02017554:
 	mov r0, sb
 	bl sub_0201CF5C
@@ -13890,15 +13890,15 @@ sub_020175F8: ; 0x020175F8
 	mov r0, sb
 	mov r1, #0x64
 	add r4, sp, #0
-	bl DivideUInt
+	bl __udivsi3
 	and r8, r0, #0xff
 	mov r0, sb
 	mov r1, #0xa
-	bl DivideUInt
+	bl __udivsi3
 	and r7, r0, #0xff
 	mov r0, sb
 	mov r1, #0xa
-	bl DivideUInt
+	bl __udivsi3
 	cmp r8, #0
 	addne r0, r8, #0x30
 	strneb r0, [r4], #1
@@ -13950,7 +13950,7 @@ SprintfStatic__020176E4: ; 0x020176E4
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -14104,11 +14104,11 @@ _020178DC:
 	blo _02017954
 	mov r0, r4
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	mov r6, r0
 	mov r0, r4
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	add r1, r1, #0x30
 	ldr r0, _020179FC ; =0x020AF76C
 	str r1, [sp]
@@ -14202,7 +14202,7 @@ SprintfStatic__02017A40: ; 0x02017A40
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -14314,10 +14314,10 @@ _02017B60: .word sub_02017DF4
 
 	arm_func_start sub_02017B64
 sub_02017B64: ; 0x02017B64
-	ldr ip, _02017B6C ; =sub_02017E70
+	ldr ip, _02017B6C ; =SendAudioCommandWrapper
 	bx ip
 	.align 2, 0
-_02017B6C: .word sub_02017E70
+_02017B6C: .word SendAudioCommandWrapper
 	arm_func_end sub_02017B64
 
 	arm_func_start sub_02017B70
@@ -14375,13 +14375,13 @@ sub_02017BD4: ; 0x02017BD4
 _02017BDC: .word sub_02018024
 	arm_func_end sub_02017BD4
 
-	arm_func_start sub_02017BE0
-sub_02017BE0: ; 0x02017BE0
+	arm_func_start SendAudioCommandWrapperVeneer
+SendAudioCommandWrapperVeneer: ; 0x02017BE0
 	ldr ip, _02017BE8 ; =sub_020180A0
 	bx ip
 	.align 2, 0
 _02017BE8: .word sub_020180A0
-	arm_func_end sub_02017BE0
+	arm_func_end SendAudioCommandWrapperVeneer
 
 	arm_func_start sub_02017BEC
 sub_02017BEC: ; 0x02017BEC
@@ -14632,11 +14632,11 @@ sub_02017DF4: ; 0x02017DF4
 	strh r5, [r1, #2]
 	mov r0, #3
 	strh r2, [r1, #4]
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -14644,15 +14644,15 @@ sub_02017DF4: ; 0x02017DF4
 	mov r1, #0
 	mov r0, r4
 	strh r1, [r4, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02017E68: .word 0x000003E7
 _02017E6C: .word 0x022A4BEC
 	arm_func_end sub_02017DF4
 
-	arm_func_start sub_02017E70
-sub_02017E70: ; 0x02017E70
+	arm_func_start SendAudioCommandWrapper
+SendAudioCommandWrapper: ; 0x02017E70
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r3, _02017EE0 ; =0x000003E7
 	mov r6, r0
@@ -14669,22 +14669,22 @@ sub_02017E70: ; 0x02017E70
 	strh r6, [r1]
 	strh r6, [r1, #2]
 	strh r4, [r1, #4]
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	mov r7, r0
 	mov r0, #3
 	strh r6, [r7, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r4, #0
 	strh r4, [r7, #6]
 	mov r0, r7
 	strh r5, [r7, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02017EE0: .word 0x000003E7
 _02017EE4: .word 0x022A4BEC
-	arm_func_end sub_02017E70
+	arm_func_end SendAudioCommandWrapper
 
 	arm_func_start sub_02017EE8
 sub_02017EE8: ; 0x02017EE8
@@ -14697,10 +14697,10 @@ sub_02017EE8: ; 0x02017EE8
 	strh r0, [r1, #2]
 	mov r0, #5
 	strh r2, [r1, #4]
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	mov r1, #0
 	strh r1, [r0, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02017F20: .word 0x000003E7
@@ -14718,9 +14718,9 @@ sub_02017F28: ; 0x02017F28
 	strh r2, [r0, #2]
 	strh r1, [r0, #4]
 	mov r0, #5
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	strh r4, [r0, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02017F5C: .word 0x000003E7
@@ -14741,10 +14741,10 @@ sub_02017F64: ; 0x02017F64
 	ldr r1, _02017FA8 ; =0x022A4BEC
 	mov r0, #6
 	strh r4, [r1, #4]
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	strh r4, [r0, #6]
 	strh r5, [r0, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02017FA8: .word 0x022A4BEC
@@ -14812,11 +14812,11 @@ sub_02018024: ; 0x02018024
 	strh r5, [r1, #8]
 	mov r0, #7
 	strh r2, [r1, #0xa]
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -14824,7 +14824,7 @@ sub_02018024: ; 0x02018024
 	mov r1, #0
 	mov r0, r4
 	strh r1, [r4, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02018098: .word 0x000003E7
@@ -14849,17 +14849,17 @@ sub_020180A0: ; 0x020180A0
 	strh r6, [r1, #6]
 	strh r6, [r1, #8]
 	strh r4, [r1, #0xa]
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	mov r7, r0
 	mov r0, #3
 	strh r6, [r7, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r4, #0
 	strh r4, [r7, #6]
 	mov r0, r7
 	strh r5, [r7, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02018110: .word 0x000003E7
@@ -14877,10 +14877,10 @@ sub_02018118: ; 0x02018118
 	strh r0, [r1, #8]
 	mov r0, #9
 	strh r2, [r1, #0xa]
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	mov r1, #0
 	strh r1, [r0, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02018150: .word 0x000003E7
@@ -14898,9 +14898,9 @@ sub_02018158: ; 0x02018158
 	strh r2, [r0, #8]
 	strh r1, [r0, #0xa]
 	mov r0, #9
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	strh r4, [r0, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0201818C: .word 0x000003E7
@@ -14921,10 +14921,10 @@ sub_02018194: ; 0x02018194
 	ldr r1, _020181D8 ; =0x022A4BEC
 	mov r0, #0xa
 	strh r4, [r1, #0xa]
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	strh r4, [r0, #6]
 	strh r5, [r0, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020181D8: .word 0x022A4BEC
@@ -14960,11 +14960,11 @@ sub_0201820C: ; 0x0201820C
 	ldr r1, _02018274 ; =0x022A4BEC
 	mov r0, #0xb
 	strh r5, [r1, #0xc]
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -14972,7 +14972,7 @@ sub_0201820C: ; 0x0201820C
 	mov r1, #0
 	mov r0, r4
 	strh r1, [r4, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02018270: .word 0x000003E6
@@ -14987,10 +14987,10 @@ sub_02018278: ; 0x02018278
 	ldr r1, _020182A8 ; =0x022A4BEC
 	mov r0, #0xc
 	strh r2, [r1, #0xc]
-	bl sub_02018B6C
+	bl AllocAudioCommand
 	mov r1, #0
 	strh r1, [r0, #8]
-	bl sub_02018BA8
+	bl SendAudioCommand
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020182A4: .word 0x000003E6
@@ -15024,7 +15024,7 @@ sub_020182B8: ; 0x020182B8
 	mov r4, r0
 	mov r0, #4
 	strh r6, [r4, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r5, #0
 	mov r0, r4
@@ -15060,7 +15060,7 @@ sub_0201831C: ; 0x0201831C
 	strh r8, [r4, #4]
 	mov r0, #4
 	strh r7, [r4, #6]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r6, #0
 	strh r6, [r4, #8]
@@ -15192,7 +15192,7 @@ _020184C8: .word sub_020192D0
 	arm_func_start sub_020184CC
 sub_020184CC: ; 0x020184CC
 	stmdb sp!, {r3, lr}
-	bl sub_02018C28
+	bl InitSoundSystem
 	ldr r0, _020185CC ; =0x020AF7C0
 	bl sub_02002C40
 	ldr r0, _020185D0 ; =0x022A4C00
@@ -15311,7 +15311,7 @@ _02018650:
 	ldreqb r0, [r4, #1]
 	beq _02018650
 	mov r0, r6
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	bne _020187D0
 	ldr r1, [sp]
@@ -15698,8 +15698,8 @@ _02018B64: .word 0x020AF7C0
 _02018B68: .word 0x020AF7E4
 	arm_func_end sub_02018B50
 
-	arm_func_start sub_02018B6C
-sub_02018B6C: ; 0x02018B6C
+	arm_func_start AllocAudioCommand
+AllocAudioCommand: ; 0x02018B6C
 	mov r3, #0
 	ldr r2, _02018BA4 ; =0x022A4C50
 	b _02018B94
@@ -15718,10 +15718,10 @@ _02018B94:
 	bx lr
 	.align 2, 0
 _02018BA4: .word 0x022A4C50
-	arm_func_end sub_02018B6C
+	arm_func_end AllocAudioCommand
 
-	arm_func_start sub_02018BA8
-sub_02018BA8: ; 0x02018BA8
+	arm_func_start SendAudioCommand
+SendAudioCommand: ; 0x02018BA8
 	stmdb sp!, {r4, lr}
 	ldr r1, _02018BF8 ; =0x022A4C00
 	mov r4, r0
@@ -15749,7 +15749,7 @@ _02018BFC: .word 0x022A4C00
 _02018C00: .word 0x02099240
 _02018C04: .word 0x020AF780
 _02018C08: .word 0x020AF7C0
-	arm_func_end sub_02018BA8
+	arm_func_end SendAudioCommand
 
 	arm_func_start sub_02018C0C
 sub_02018C0C: ; 0x02018C0C
@@ -15763,8 +15763,8 @@ _02018C20: .word 0x020AF7C0
 _02018C24: .word 0x020AF7E4
 	arm_func_end sub_02018C0C
 
-	arm_func_start sub_02018C28
-sub_02018C28: ; 0x02018C28
+	arm_func_start InitSoundSystem
+InitSoundSystem: ; 0x02018C28
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x50
 	ldr r0, _02018E44 ; =0x020AFB28
@@ -15926,7 +15926,7 @@ _02018E94: .word 0x022A4ECC
 _02018E98: .word 0x022A4EF4
 _02018E9C: .word 0x022A4EFC
 _02018EA0: .word 0x020AFB4C
-	arm_func_end sub_02018C28
+	arm_func_end InitSoundSystem
 
 	arm_func_start ManipBgmPlayback
 ManipBgmPlayback: ; 0x02018EA4
@@ -16474,7 +16474,7 @@ _020195C8:
 	ldr r2, [r1, r4, lsl #2]
 	ldr r1, _02019768 ; =0x020994B0
 	add r0, sp, #0xc
-	bl Sprintf
+	bl sprintf
 	ldr r1, _0201976C ; =0x020994C0
 	add r3, sp, #0xc
 	mov r2, r6
@@ -16524,7 +16524,7 @@ _02019684:
 	ldr r1, _02019784 ; =0x02099514
 	mov r2, sl
 	add r0, sp, #0xc
-	bl Sprintf
+	bl sprintf
 	ldr r1, _02019788 ; =0x02099528
 	mov r0, #8
 	mov r2, r8
@@ -16744,14 +16744,14 @@ _02019970:
 	ldr r1, _02019B10 ; =0x02099554
 	add r0, sp, #0x18
 	mov r2, r6
-	bl Sprintf
+	bl sprintf
 	ldr r0, _02019B14 ; =0x022A4E8C
 	add r1, sp, #0x18
 	bl sub_02019314
 	ldr r1, _02019B18 ; =0x0209956C
 	add r0, sp, #0x18
 	mov r2, r6
-	bl Sprintf
+	bl sprintf
 	ldr r0, _02019B1C ; =0x022A4E7C
 	add r1, sp, #0x18
 	bl sub_02019314
@@ -16808,7 +16808,7 @@ _02019A5C:
 	str r1, [sp, #4]
 	mul r0, r5, r0
 	mov r1, #0x3c
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	rsb r1, r4, r4, lsl #7
@@ -16876,7 +16876,7 @@ _02019B78:
 	mov r0, #0x3e8
 	mul r0, r4, r0
 	mov r1, #0x3c
-	bl DivideInt
+	bl __divsi3
 	mov r1, r0, lsl #0x10
 	ldr r2, _02019C44 ; =0x022A4E58
 	mov r1, r1, lsr #0x10
@@ -16954,7 +16954,7 @@ ChangeBgm: ; 0x02019C50
 	mov r2, #4
 	mov r1, #0x3c
 	str r2, [sp]
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	mov r2, #4
@@ -17090,14 +17090,14 @@ _02019E3C:
 	ldr r1, _02019FD0 ; =0x02099554
 	add r0, sp, #0x18
 	mov r2, r6
-	bl Sprintf
+	bl sprintf
 	ldr r0, _02019FD4 ; =0x022A4EB4
 	add r1, sp, #0x18
 	bl LoadDseFile
 	ldr r1, _02019FD8 ; =0x0209956C
 	add r0, sp, #0x18
 	mov r2, r6
-	bl Sprintf
+	bl sprintf
 	ldr r0, _02019FDC ; =0x022A4EA4
 	add r1, sp, #0x18
 	bl LoadDseFile
@@ -17154,7 +17154,7 @@ _02019F1C:
 	str r1, [sp, #4]
 	mul r0, r5, r0
 	mov r1, #0x3c
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	rsb r1, r4, r4, lsl #7
@@ -17221,7 +17221,7 @@ _0201A034:
 	mov r0, #0x3e8
 	mul r0, r4, r0
 	mov r1, #0x3c
-	bl DivideInt
+	bl __divsi3
 	mov r1, r0, lsl #0x10
 	ldr r2, _0201A0E0 ; =0x022A4E58
 	mov r1, r1, lsr #0x10
@@ -17290,7 +17290,7 @@ ChangeBgm2: ; 0x0201A0E8
 	mov r2, #4
 	mov r1, #0x3c
 	str r2, [sp]
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	mov r2, #4
@@ -17433,13 +17433,13 @@ _0201A304:
 	ldr r1, _0201A3FC ; =0x02099620
 	add r0, sp, #0x18
 	mov r2, r6
-	bl Sprintf
+	bl sprintf
 	ldr r0, _0201A400 ; =0x022A4ECC
 	add r1, sp, #0x18
 	bl sub_02019314
 	ldr r1, _0201A404 ; =0x02099634
 	add r0, sp, #0x18
-	bl Sprintf
+	bl sprintf
 	ldr r0, _0201A408 ; =0x022A4EC4
 	add r1, sp, #0x18
 	bl sub_02019314
@@ -17461,7 +17461,7 @@ _0201A304:
 	mul r0, r5, r0
 	mov r1, #0x3c
 	str r2, [sp, #4]
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	rsb r1, r4, r4, lsl #7
@@ -17511,7 +17511,7 @@ StopME: ; 0x0201A40C
 	mov r0, #0x3e8
 	mul r0, r4, r0
 	mov r1, #0x3c
-	bl DivideInt
+	bl __divsi3
 	mov r1, r0, lsl #0x10
 	ldr r2, _0201A47C ; =0x022A4E58
 	mov r1, r1, lsr #0x10
@@ -17693,7 +17693,7 @@ PlaySeFullSpec: ; 0x0201A66C
 	mov r0, #0x3e8
 	mul r0, r8, r0
 	mov r1, #0x3c
-	bl DivideInt
+	bl __divsi3
 	rsb r2, r7, r7, lsl #7
 	rsb r1, r6, r6, lsl #6
 	mov r0, r0, lsl #0x10
@@ -17813,7 +17813,7 @@ SeChangeVolume: ; 0x0201A828
 	mov r1, #4
 	str r1, [sp, #4]
 	mov r1, #0x3c
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r1, r0, lsr #0x10
 	mov r0, #4
@@ -17874,7 +17874,7 @@ SeChangePan: ; 0x0201A900
 	mov r1, #4
 	str r1, [sp, #4]
 	mov r1, #0x3c
-	bl DivideInt
+	bl __divsi3
 	rsb r2, r6, r6, lsl #6
 	mov r1, r2, asr #7
 	add r1, r2, r1, lsr #24
@@ -17954,7 +17954,7 @@ _0201AA64:
 	mov r0, #0x3e8
 	mul r0, r5, r0
 	mov r1, #0x3c
-	bl DivideInt
+	bl __divsi3
 	mov r1, r0, lsl #0x10
 	mov r2, r1, lsr #0x10
 	mov r0, r4
@@ -19680,8 +19680,8 @@ sub_0201C028: ; 0x0201C028
 	bx lr
 	arm_func_end sub_0201C028
 
-	arm_func_start sub_0201C050
-sub_0201C050: ; 0x0201C050
+	arm_func_start InitAnimationControl
+InitAnimationControl: ; 0x0201C050
 	stmdb sp!, {r4, lr}
 	mov r1, #0x7c
 	mov r4, r0
@@ -19706,13 +19706,13 @@ sub_0201C050: ; 0x0201C050
 	orr r0, r0, #0x200
 	strh r0, [r4, #2]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201C050
+	arm_func_end InitAnimationControl
 
 	arm_func_start sub_0201C0B0
 sub_0201C0B0: ; 0x0201C0B0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0201C050
+	bl InitAnimationControl
 	ldrh r0, [r4, #2]
 	orr r0, r0, #1
 	strh r0, [r4, #2]
@@ -19723,15 +19723,15 @@ sub_0201C0B0: ; 0x0201C0B0
 sub_0201C0CC: ; 0x0201C0CC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0201C050
+	bl InitAnimationControl
 	ldrh r0, [r4, #2]
 	orr r0, r0, #1
 	strh r0, [r4, #2]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0201C0CC
 
-	arm_func_start sub_0201C0E8
-sub_0201C0E8: ; 0x0201C0E8
+	arm_func_start SetSpriteIdForAnimationControl
+SetSpriteIdForAnimationControl: ; 0x0201C0E8
 	strh r1, [r0, #0x70]
 	ldrsh r2, [r0, #0x70]
 	ldrsh r1, [r0, #0x72]
@@ -19740,7 +19740,7 @@ sub_0201C0E8: ; 0x0201C0E8
 	movne r1, #0xff
 	strneb r1, [r0, #0x43]
 	bx lr
-	arm_func_end sub_0201C0E8
+	arm_func_end SetSpriteIdForAnimationControl
 
 	arm_func_start sub_0201C108
 sub_0201C108: ; 0x0201C108
@@ -19762,10 +19762,10 @@ _0201C134: .word 0x020996E0
 
 	arm_func_start sub_0201C138
 sub_0201C138: ; 0x0201C138
-	ldr ip, _0201C140 ; =sub_0201C050
+	ldr ip, _0201C140 ; =InitAnimationControl
 	bx ip
 	.align 2, 0
-_0201C140: .word sub_0201C050
+_0201C140: .word InitAnimationControl
 	arm_func_end sub_0201C138
 
 	arm_func_start sub_0201C144
@@ -19779,7 +19779,7 @@ sub_0201C144: ; 0x0201C144
 	mov r0, r0, lsl #0x10
 	mov r1, r1, asr #0x10
 	mov r0, r0, asr #0x10
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r3, pc}
@@ -19787,8 +19787,8 @@ sub_0201C144: ; 0x0201C144
 _0201C178: .word 0x020AFC3C
 	arm_func_end sub_0201C144
 
-	arm_func_start sub_0201C17C
-sub_0201C17C: ; 0x0201C17C
+	arm_func_start SetAnimationForAnimationControlInternal
+SetAnimationForAnimationControlInternal: ; 0x0201C17C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, [sp, #0x18]
 	ldmia r1, {ip, lr}
@@ -19875,10 +19875,10 @@ _0201C2C0:
 	ldrh r1, [r1, #6]
 	strh r1, [r0, #0x62]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0201C17C
+	arm_func_end SetAnimationForAnimationControlInternal
 
-	arm_func_start sub_0201C2CC
-sub_0201C2CC: ; 0x0201C2CC
+	arm_func_start SetAnimationForAnimationControl
+SetAnimationForAnimationControl: ; 0x0201C2CC
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x14
 	mov r7, r0
@@ -19886,7 +19886,7 @@ sub_0201C2CC: ; 0x0201C2CC
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_0201DC70
+	bl SpriteTypeInWanTable
 	cmp r0, #0
 	beq _0201C304
 	add r0, r0, #0xfe
@@ -19895,7 +19895,7 @@ sub_0201C2CC: ; 0x0201C2CC
 	bhi _0201C348
 _0201C304:
 	mov r0, r7
-	bl sub_0201C3E8
+	bl GetWanForAnimationControl
 	ldrb r3, [sp, #0x28]
 	str r4, [sp]
 	mov r1, r0
@@ -19909,17 +19909,17 @@ _0201C304:
 	mov r3, r6
 	mov r2, #0
 	str r4, [sp, #0x10]
-	bl sub_0201C17C
+	bl SetAnimationForAnimationControlInternal
 	b _0201C3E0
 _0201C348:
 	ldrsh r0, [r7, #0x70]
 	mov r1, r6, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_0201DA80
+	bl WanTableSpriteHasAnimationGroup
 	cmp r0, #0
 	mov r0, r7
 	beq _0201C3A4
-	bl sub_0201C3E8
+	bl GetWanForAnimationControl
 	str r4, [sp]
 	ldrb r3, [sp, #0x28]
 	mov r1, r0
@@ -19933,10 +19933,10 @@ _0201C348:
 	mov r0, r7
 	mov r3, r5
 	str r4, [sp, #0x10]
-	bl sub_0201C17C
+	bl SetAnimationForAnimationControlInternal
 	b _0201C3E0
 _0201C3A4:
-	bl sub_0201C3E8
+	bl GetWanForAnimationControl
 	str r4, [sp]
 	ldrb r3, [sp, #0x28]
 	mov r1, r0
@@ -19950,14 +19950,14 @@ _0201C3A4:
 	mov r0, r7
 	mov r2, #0
 	str r4, [sp, #0x10]
-	bl sub_0201C17C
+	bl SetAnimationForAnimationControlInternal
 _0201C3E0:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, pc}
-	arm_func_end sub_0201C2CC
+	arm_func_end SetAnimationForAnimationControl
 
-	arm_func_start sub_0201C3E8
-sub_0201C3E8: ; 0x0201C3E8
+	arm_func_start GetWanForAnimationControl
+GetWanForAnimationControl: ; 0x0201C3E8
 	ldr r1, [r0, #0x68]
 	cmp r1, #0
 	ldrne r0, [r1, #4]
@@ -19971,10 +19971,10 @@ sub_0201C3E8: ; 0x0201C3E8
 	bx lr
 	.align 2, 0
 _0201C414: .word 0x020AFC68
-	arm_func_end sub_0201C3E8
+	arm_func_end GetWanForAnimationControl
 
-	arm_func_start sub_0201C418
-sub_0201C418: ; 0x0201C418
+	arm_func_start SetAndPlayAnimationForAnimationControl
+SetAndPlayAnimationForAnimationControl: ; 0x0201C418
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	ldrb r4, [sp, #0x18]
@@ -19985,16 +19985,16 @@ sub_0201C418: ; 0x0201C418
 	str lr, [sp, #8]
 	mov r4, r0
 	str ip, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r1, [r4, #0x4c]
 	mov r0, r4
-	bl sub_0201C560
+	bl LoadAnimationFrameAndIncrementInAnimationControl
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201C418
+	arm_func_end SetAndPlayAnimationForAnimationControl
 
-	arm_func_start sub_0201C458
-sub_0201C458: ; 0x0201C458
+	arm_func_start SwitchAnimationControlToNextFrame
+SwitchAnimationControlToNextFrame: ; 0x0201C458
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_0201D1B0
@@ -20064,12 +20064,12 @@ _0201C544:
 _0201C550:
 	ldr r1, [r4, #0x4c]
 	mov r0, r4
-	bl sub_0201C560
+	bl LoadAnimationFrameAndIncrementInAnimationControl
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201C458
+	arm_func_end SwitchAnimationControlToNextFrame
 
-	arm_func_start sub_0201C560
-sub_0201C560: ; 0x0201C560
+	arm_func_start LoadAnimationFrameAndIncrementInAnimationControl
+LoadAnimationFrameAndIncrementInAnimationControl: ; 0x0201C560
 	ldrh r2, [r0]
 	orr r2, r2, #0x800
 	strh r2, [r0]
@@ -20095,7 +20095,7 @@ sub_0201C560: ; 0x0201C560
 	add r1, r1, #0xc
 	str r1, [r0, #0x4c]
 	bx lr
-	arm_func_end sub_0201C560
+	arm_func_end LoadAnimationFrameAndIncrementInAnimationControl
 
 	arm_func_start sub_0201C5C4
 sub_0201C5C4: ; 0x0201C5C4
@@ -20113,7 +20113,7 @@ sub_0201C5C4: ; 0x0201C5C4
 	cmp r0, #0
 	bge _0201C618
 	mov r0, r8
-	bl sub_0201C458
+	bl SwitchAnimationControlToNextFrame
 	ldrh r0, [r8]
 	tst r0, #0x8000
 	movne r0, #1
@@ -20136,11 +20136,11 @@ _0201C640:
 	cmp r0, #4
 	bhs _0201CEC8
 	ldrsh r0, [r8, #0x70]
-	bl sub_0201DC70
+	bl SpriteTypeInWanTable
 	cmp r0, #3
 	bne _0201C928
 	mov r0, r8
-	bl sub_0201C3E8
+	bl GetWanForAnimationControl
 	ldr r6, [r0]
 	ldr r5, [r0, #4]
 	ldr sl, [r6, #0x10]
@@ -20162,7 +20162,7 @@ _0201C640:
 	ldrh r0, [r8, #0xc]
 	add r1, sl, r1, lsl #3
 	ldr r1, [r1, #4]
-	bl DivideInt
+	bl __divsi3
 	ldr r0, [sp, #0x20]
 	ldr r0, [sl, r0, lsl #3]
 	ldrb r0, [r0, r1]
@@ -20306,14 +20306,14 @@ _0201C860:
 	and r2, r2, #0xf8
 	mov r2, r2, asr #3
 	strb r2, [sp, #0x83]
-	bl sub_02004FCC
+	bl Rgb8ToBgr5
 	ldr r0, [r6, #0x10]
 	mov r1, #0x3f
 	cmp r0, #0
 	ldrne r0, [sp, #0x24]
 	strneb r0, [sp, #0x83]
 	mov r0, r7
-	bl DivideInt
+	bl __divsi3
 	ldrh r0, [r8, #2]
 	and r7, r1, #0xff
 	tst r0, #2
@@ -20333,7 +20333,7 @@ _0201C928:
 	mov r0, r8
 	ldr r1, [r1, r2, lsl #2]
 	str r1, [sp, #0x40]
-	bl sub_0201C3E8
+	bl GetWanForAnimationControl
 	mov r1, #0
 	ldrh r3, [r8, #0x60]
 	str r1, [sp, #0x2c]
@@ -20768,7 +20768,7 @@ sub_0201CF5C: ; 0x0201CF5C
 	tst r0, #0x10
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
-	bl sub_0201C458
+	bl SwitchAnimationControlToNextFrame
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0201CF5C
 
@@ -20934,16 +20934,16 @@ sub_0201D12C: ; 0x0201D12C
 _0201D16C: .word 0x0000F3FF
 	arm_func_end sub_0201D12C
 
-	arm_func_start sub_0201D170
-sub_0201D170: ; 0x0201D170
+	arm_func_start AnimationControlGetAllocForMaxFrame
+AnimationControlGetAllocForMaxFrame: ; 0x0201D170
 	stmdb sp!, {r3, lr}
-	bl sub_0201C3E8
+	bl GetWanForAnimationControl
 	cmp r0, #0
 	ldrne r0, [r0]
 	ldrnesh r0, [r0, #0xe]
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0201D170
+	arm_func_end AnimationControlGetAllocForMaxFrame
 
 	arm_func_start sub_0201D18C
 sub_0201D18C: ; 0x0201D18C
@@ -21012,8 +21012,8 @@ _0201D204:
 	ldmia sp!, {r4, pc}
 	arm_func_end DeleteWanTableEntry
 
-	arm_func_start sub_0201D244
-sub_0201D244: ; 0x0201D244
+	arm_func_start AllocateWanTableEntry
+AllocateWanTableEntry: ; 0x0201D244
 	stmdb sp!, {r3, r4, r5, lr}
 	add r1, r0, #0x1500
 	mov lr, #1
@@ -21053,7 +21053,7 @@ _0201D2C4:
 	blt _0201D264
 	mvn r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0201D244
+	arm_func_end AllocateWanTableEntry
 
 	arm_func_start FindWanTableEntry
 FindWanTableEntry: ; 0x0201D2D4
@@ -21071,7 +21071,7 @@ _0201D2F4:
 	cmp r1, #1
 	bne _0201D318
 	mov r1, r5
-	bl Strcmp
+	bl strcmp
 	cmp r0, #0
 	moveq r0, r8
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
@@ -21131,8 +21131,8 @@ sub_0201D38C: ; 0x0201D38C
 _0201D3B8: .word 0x00001510
 	arm_func_end sub_0201D38C
 
-	arm_func_start sub_0201D3BC
-sub_0201D3BC: ; 0x0201D3BC
+	arm_func_start InitWanTable
+InitWanTable: ; 0x0201D3BC
 	stmdb sp!, {r4, lr}
 	mov r1, #0x1500
 	mov r4, r0
@@ -21141,7 +21141,7 @@ sub_0201D3BC: ; 0x0201D3BC
 	mov r1, #0x60
 	strh r1, [r0, #8]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201D3BC
+	arm_func_end InitWanTable
 
 	arm_func_start LoadWanTableEntry
 LoadWanTableEntry: ; 0x0201D3DC
@@ -21162,7 +21162,7 @@ LoadWanTableEntry: ; 0x0201D3DC
 	b _0201D47C
 _0201D418:
 	mov r0, r5
-	bl sub_0201D244
+	bl AllocateWanTableEntry
 	mov r4, r0
 	mov r0, #0x38
 	smlabb r5, r4, r0, r5
@@ -21171,14 +21171,14 @@ _0201D418:
 	mov r1, r6
 	mov r2, r7
 	strb r3, [r5, #0x21]
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, [sp]
 	mov r0, r5
 	str r1, [r5, #0x34]
 	ldr r2, [sp, #4]
 	mov r1, r6
 	str r2, [r5, #0x28]
-	bl Strcpy
+	bl strcpy
 	ldrsh r1, [r5, #0x2c]
 	add r0, r5, #0x30
 	add r1, r1, #1
@@ -21191,8 +21191,8 @@ _0201D47C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end LoadWanTableEntry
 
-	arm_func_start sub_0201D484
-sub_0201D484: ; 0x0201D484
+	arm_func_start LoadWanTableEntryFromPack
+LoadWanTableEntryFromPack: ; 0x0201D484
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	mov r8, r1
@@ -21210,7 +21210,7 @@ sub_0201D484: ; 0x0201D484
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _0201D4C0:
 	mov r0, sb
-	bl sub_0201D244
+	bl AllocateWanTableEntry
 	mov r5, r0
 	mov r0, #0x38
 	smlabb r4, r5, r0, sb
@@ -21263,10 +21263,10 @@ _0201D56C:
 	bl HandleSir0TranslationVeneer
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_0201D484
+	arm_func_end LoadWanTableEntryFromPack
 
-	arm_func_start sub_0201D590
-sub_0201D590: ; 0x0201D590
+	arm_func_start LoadWanTableEntryFromPackUseProvidedMemory
+LoadWanTableEntryFromPackUseProvidedMemory: ; 0x0201D590
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	mov r8, r1
@@ -21284,7 +21284,7 @@ sub_0201D590: ; 0x0201D590
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _0201D5CC:
 	mov r0, sb
-	bl sub_0201D244
+	bl AllocateWanTableEntry
 	ldrb r1, [sp, #0x20]
 	mov r5, r0
 	mov r0, #0x38
@@ -21331,7 +21331,7 @@ _0201D648:
 	mov r0, r5
 	strb r1, [r4, #0x20]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_0201D590
+	arm_func_end LoadWanTableEntryFromPackUseProvidedMemory
 
 	arm_func_start ReplaceWanFromBinFile
 ReplaceWanFromBinFile: ; 0x0201D684
@@ -21587,7 +21587,7 @@ sub_0201D990: ; 0x0201D990
 	mov r0, r0, lsl #0x10
 	mov r1, r1, asr #0x10
 	mov r0, r0, asr #0x10
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r3, pc}
@@ -21640,8 +21640,8 @@ _0201DA3C: .word 0x020AFC64
 _0201DA40: .word sub_0201DA00
 	arm_func_end sub_0201DA20
 
-	arm_func_start sub_0201DA44
-sub_0201DA44: ; 0x0201DA44
+	arm_func_start WanHasAnimationGroup
+WanHasAnimationGroup: ; 0x0201DA44
 	ldr r2, [r0]
 	ldrsh r0, [r2, #0xc]
 	cmp r1, r0
@@ -21659,21 +21659,21 @@ _0201DA70:
 _0201DA78:
 	mov r0, #1
 	bx lr
-	arm_func_end sub_0201DA44
+	arm_func_end WanHasAnimationGroup
 
-	arm_func_start sub_0201DA80
-sub_0201DA80: ; 0x0201DA80
+	arm_func_start WanTableSpriteHasAnimationGroup
+WanTableSpriteHasAnimationGroup: ; 0x0201DA80
 	ldr r3, _0201DA9C ; =0x020AFC64
 	mov r2, #0x38
 	ldr r3, [r3, #4]
-	ldr ip, _0201DAA0 ; =sub_0201DA44
+	ldr ip, _0201DAA0 ; =WanHasAnimationGroup
 	smlabb r0, r0, r2, r3
 	ldr r0, [r0, #0x30]
 	bx ip
 	.align 2, 0
 _0201DA9C: .word 0x020AFC64
-_0201DAA0: .word sub_0201DA44
-	arm_func_end sub_0201DA80
+_0201DAA0: .word WanHasAnimationGroup
+	arm_func_end WanTableSpriteHasAnimationGroup
 
 	arm_func_start sub_0201DAA4
 sub_0201DAA4: ; 0x0201DAA4
@@ -21816,8 +21816,8 @@ _0201DC68: .word 0x020AFC64
 _0201DC6C: .word sub_0201DBDC
 	arm_func_end sub_0201DC4C
 
-	arm_func_start sub_0201DC70
-sub_0201DC70: ; 0x0201DC70
+	arm_func_start SpriteTypeInWanTable
+SpriteTypeInWanTable: ; 0x0201DC70
 	ldr r2, _0201DC8C ; =0x020AFC64
 	mov r1, #0x38
 	ldr r2, [r2, #4]
@@ -21827,7 +21827,7 @@ sub_0201DC70: ; 0x0201DC70
 	bx lr
 	.align 2, 0
 _0201DC8C: .word 0x020AFC64
-	arm_func_end sub_0201DC70
+	arm_func_end SpriteTypeInWanTable
 
 	arm_func_start sub_0201DC90
 sub_0201DC90: ; 0x0201DC90
@@ -21953,7 +21953,7 @@ _0201DDF8: .word 0x06890000
 sub_0201DDFC: ; 0x0201DDFC
 	stmdb sp!, {r3, lr}
 	bl sub_0201E5B0
-	bl sub_0201E71C
+	bl GeomSwapBuffers
 	bl sub_0201E544
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0201DDFC
@@ -21987,21 +21987,21 @@ LoadWteFromRom: ; 0x0201DE4C
 	ldr r1, _0201DEBC ; =0x02099714
 	add r0, sp, #0xc
 	mov r4, r2
-	bl Strcpy
+	bl strcpy
 	add r0, sp, #0xc
 	mov r1, r5
-	bl Strcat
+	bl strcat
 	add r0, sp, #4
 	add r1, sp, #0xc
 	mov r2, r4
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, [sp, #4]
 	add r0, sp, #0
 	bl HandleSir0Translation
 	ldr r0, [sp]
 	ldr r1, _0201DEC0 ; =0x0209971C
 	mov r2, #4
-	bl Strncmp
+	bl strncmp
 	ldr r0, [sp, #4]
 	str r0, [r6]
 	ldr r0, [sp]
@@ -22028,7 +22028,7 @@ LoadWteFromFileDirectory: ; 0x0201DEC4
 	ldr r0, [sp, #8]
 	ldr r1, _0201DF14 ; =0x0209971C
 	mov r2, #4
-	bl Strncmp
+	bl strncmp
 	ldr r0, [sp]
 	str r0, [r4]
 	ldr r0, [sp, #8]
@@ -22062,20 +22062,20 @@ sub_0201DF38: ; 0x0201DF38
 	mov r4, r0
 	ldr r1, _0201DFAC ; =0x02099714
 	add r0, sp, #8
-	bl Strcpy
+	bl strcpy
 	add r0, sp, #8
 	mov r1, r6
-	bl Strcat
+	bl strcat
 	add r0, sp, #0
 	add r1, sp, #8
 	mov r2, r5
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r5, [sp]
 	ldr r1, _0201DFB0 ; =0x02099720
 	str r5, [r4]
 	mov r0, r5
 	mov r2, #4
-	bl Strncmp
+	bl strncmp
 	ldr r1, [r5, #0xc]
 	mov r0, r4
 	add r1, r5, r1
@@ -22108,7 +22108,7 @@ LoadWtuFromBin: ; 0x0201DFB4
 	str r5, [r4]
 	mov r0, r5
 	mov r2, #4
-	bl Strncmp
+	bl strncmp
 	ldr r1, [r5, #0xc]
 	mov r0, r4
 	add r1, r5, r1
@@ -22406,7 +22406,7 @@ sub_0201E380: ; 0x0201E380
 	ldr r2, [r5, #0x18]
 	add r0, r3, r4, lsl #8
 	add r0, r2, r0, lsl #1
-	bl sub_02004FCC
+	bl Rgb8ToBgr5
 	ldr r0, [r5, #0x1c]
 	mov r1, #1
 	strb r1, [r0, r4]
@@ -22430,7 +22430,7 @@ _0201E3D4:
 	add r0, r5, r6
 	add r0, r1, r0, lsl #1
 	add r1, sb, r5, lsl #2
-	bl sub_02004FCC
+	bl Rgb8ToBgr5
 	add r0, r5, #1
 	ldr r1, [sl, #0x1c]
 	mov r0, r0, lsl #0x10
@@ -22488,8 +22488,8 @@ _0201E480:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0201E424
 
-	arm_func_start sub_0201E494
-sub_0201E494: ; 0x0201E494
+	arm_func_start GeomSetTexImageParam
+GeomSetTexImageParam: ; 0x0201E494
 	ldr ip, [sp, #0xc]
 	mov r0, r0, lsl #0x1a
 	orr r0, r0, ip, lsr #3
@@ -22507,10 +22507,10 @@ sub_0201E494: ; 0x0201E494
 	bx lr
 	.align 2, 0
 _0201E4D0: .word 0x040004A8
-	arm_func_end sub_0201E494
+	arm_func_end GeomSetTexImageParam
 
-	arm_func_start sub_0201E4D4
-sub_0201E4D4: ; 0x0201E4D4
+	arm_func_start GeomSetVertexCoord16
+GeomSetVertexCoord16: ; 0x0201E4D4
 	mov r1, r1, lsl #0x10
 	mov r1, r1, lsr #0x10
 	mov r0, r0, lsl #0x10
@@ -22524,10 +22524,10 @@ sub_0201E4D4: ; 0x0201E4D4
 	bx lr
 	.align 2, 0
 _0201E500: .word 0x0400048C
-	arm_func_end sub_0201E4D4
+	arm_func_end GeomSetVertexCoord16
 
-	arm_func_start sub_0201E504
-sub_0201E504: ; 0x0201E504
+	arm_func_start InitRender3dData
+InitRender3dData: ; 0x0201E504
 	stmdb sp!, {r3, lr}
 	ldr r0, _0201E540 ; =0x020AFC80
 	ldr r0, [r0, #0x40]
@@ -22545,7 +22545,7 @@ sub_0201E504: ; 0x0201E504
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0201E540: .word 0x020AFC80
-	arm_func_end sub_0201E504
+	arm_func_end InitRender3dData
 
 	arm_func_start sub_0201E544
 sub_0201E544: ; 0x0201E544
@@ -22560,7 +22560,7 @@ sub_0201E544: ; 0x0201E544
 	mov r2, r0
 	mov r3, r0
 	str r0, [sp, #0xc]
-	bl sub_0201E494
+	bl GeomSetTexImageParam
 	ldr r0, _0201E5A4 ; =0x020AFC80
 	mvn r1, #0
 	str r1, [r0, #8]
@@ -22583,7 +22583,7 @@ _0201E5AC: .word 0x040004A4
 sub_0201E5B0: ; 0x0201E5B0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
-	bl sub_01FF8DCC
+	bl Render3dStack
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -22593,7 +22593,7 @@ sub_0201E5B0: ; 0x0201E5B0
 	mov r2, r0
 	mov r3, r0
 	str r0, [sp, #0xc]
-	bl sub_0201E494
+	bl GeomSetTexImageParam
 	ldr r0, _0201E608 ; =0x020AFC80
 	mvn r1, #0
 	str r1, [r0, #8]
@@ -22615,7 +22615,7 @@ sub_0201E614: ; 0x0201E614
 	mov r4, r0
 	mov r1, #0xbc
 	bl MemZero
-	bl sub_0201E504
+	bl InitRender3dData
 	mov r0, r4
 	bl sub_0201E634
 	ldmia sp!, {r4, pc}
@@ -22684,18 +22684,18 @@ _0201E714: .word 0x04000580
 _0201E718: .word 0x0400044C
 	arm_func_end sub_0201E634
 
-	arm_func_start sub_0201E71C
-sub_0201E71C: ; 0x0201E71C
+	arm_func_start GeomSwapBuffers
+GeomSwapBuffers: ; 0x0201E71C
 	ldr r0, _0201E72C ; =0x04000540
 	mov r1, #1
 	str r1, [r0]
 	bx lr
 	.align 2, 0
 _0201E72C: .word 0x04000540
-	arm_func_end sub_0201E71C
+	arm_func_end GeomSwapBuffers
 
-	arm_func_start sub_0201E730
-sub_0201E730: ; 0x0201E730
+	arm_func_start InitRender3dElement
+InitRender3dElement: ; 0x0201E730
 	stmdb sp!, {r4, lr}
 	mov r1, #0x40
 	mov r4, r0
@@ -22713,7 +22713,7 @@ sub_0201E730: ; 0x0201E730
 	mov r0, #0
 	strb r0, [r4, #0x3e]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201E730
+	arm_func_end InitRender3dElement
 
 	arm_func_start sub_0201E774
 sub_0201E774: ; 0x0201E774
@@ -22894,8 +22894,8 @@ _0201E9C0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end sub_0201E844
 
-	arm_func_start sub_0201E9EC
-sub_0201E9EC: ; 0x0201E9EC
+	arm_func_start Generate3dCanvasBorder
+Generate3dCanvasBorder: ; 0x0201E9EC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x4c
 	mov sl, r0
@@ -23069,7 +23069,7 @@ _0201EA04:
 	bl sub_0201EC9C
 	add sp, sp, #0x4c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_0201E9EC
+	arm_func_end Generate3dCanvasBorder
 
 	arm_func_start sub_0201EC9C
 sub_0201EC9C: ; 0x0201EC9C
@@ -23524,7 +23524,7 @@ sub_0201F2AC: ; 0x0201F2AC
 	smulbb r4, r0, r1
 	ldr r0, [r2]
 	add r0, r0, r4
-	bl sub_0201E730
+	bl InitRender3dElement
 	ldr r0, _0201F2E0 ; =0x020AFCE4
 	mov r1, #0
 	ldr r0, [r0]
@@ -23641,7 +23641,7 @@ _0201F410:
 	smulbb r5, r4, r0
 	ldr r0, [r1]
 	add r0, r0, r5
-	bl sub_0201E730
+	bl InitRender3dElement
 	ldr r1, _0201F460 ; =0x020AFCE4
 	mov r3, #1
 	ldr r2, [r1]
@@ -25159,10 +25159,10 @@ _02020870:
 
 	arm_func_start sub_02020880
 sub_02020880: ; 0x02020880
-	ldr ip, _02020888 ; =Strstr
+	ldr ip, _02020888 ; =strstr
 	bx ip
 	.align 2, 0
-_02020888: .word Strstr
+_02020888: .word strstr
 	arm_func_end sub_02020880
 
 	arm_func_start sub_0202088C
@@ -25190,8 +25190,8 @@ _020208C0:
 	bx lr
 	arm_func_end sub_02020890
 
-	arm_func_start StrcmpTag__020208C8
-StrcmpTag__020208C8: ; 0x020208C8
+	arm_func_start StrcmpTag
+StrcmpTag: ; 0x020208C8
 	ldrb r2, [r1], #1
 	ldrb r3, [r0], #1
 	cmp r2, #0
@@ -25207,13 +25207,13 @@ _020208F0:
 	moveq r0, #0
 	bxeq lr
 	cmp r3, r2
-	beq StrcmpTag__020208C8
+	beq StrcmpTag
 	mov r0, #0
 	bx lr
-	arm_func_end StrcmpTag__020208C8
+	arm_func_end StrcmpTag
 
-	arm_func_start StoiTag__0202090C
-StoiTag__0202090C: ; 0x0202090C
+	arm_func_start StoiTag
+StoiTag: ; 0x0202090C
 	mov r3, #0
 	mov r1, #0xa
 _02020914:
@@ -25229,7 +25229,7 @@ _02020914:
 	mlals r2, r3, r1, r2
 	subls r3, r2, #0x30
 	b _02020914
-	arm_func_end StoiTag__0202090C
+	arm_func_end StoiTag
 
 	arm_func_start sub_02020944
 sub_02020944: ; 0x02020944
@@ -25245,7 +25245,7 @@ sub_02020948: ; 0x02020948
 	cmp r4, #0x5a
 	bhi _02020A24
 	add r0, r0, #1
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r0, r0, lsl #0x10
 	cmp r4, #0x49
 	mov r0, r0, asr #0x10
@@ -25307,7 +25307,7 @@ _02020A24:
 	blo _02020A44
 	cmp r4, #0x39
 	bhi _02020A44
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r4, pc}
@@ -25327,7 +25327,7 @@ sub_02020A4C: ; 0x02020A4C
 	b _02020A80
 _02020A68:
 	mov r0, r5
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	ldrneh r0, [r4, #4]
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -25504,7 +25504,7 @@ _02020C70:
 	mov r1, #0x44
 	strb r1, [r4, #0x98]
 	str r0, [r4, #0xa0]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r0, #4
 	moveq r0, #1
@@ -25758,7 +25758,7 @@ _02020F7C: ; jump table
 	b _020219AC ; case 21
 _02020FD4:
 	ldr r1, _02021ED0 ; =0x020999AC
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021018
 	ldr r1, [r4, #8]
@@ -25788,7 +25788,7 @@ _02021018:
 _02021040:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021EDC ; =0x020999C8
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021104
 	cmp r6, #2
@@ -25812,7 +25812,7 @@ _02021098:
 	cmp r6, #3
 	bne _020210F0
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	ldrb r2, [r4, #0x9c]
 	cmp r2, #0
 	cmpne r0, #3
@@ -25841,7 +25841,7 @@ _020210F0:
 _02021104:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021EE0 ; =0x020999CC
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020211C4
 	cmp r6, #1
@@ -25864,7 +25864,7 @@ _02021158:
 	cmp r6, #2
 	bne _020211B0
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	ldrb r1, [r4, #0x9c]
 	cmp r1, #0
 	cmpne r0, #3
@@ -25893,7 +25893,7 @@ _020211B0:
 _020211C4:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021EE4 ; =0x020999D0
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021200
 	ldr r0, [r4, #0x88]
@@ -25909,7 +25909,7 @@ _020211C4:
 _02021200:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021EE8 ; =0x020999D4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021278
 	ldr r0, [r4, #0xc]
@@ -25941,21 +25941,21 @@ _02021260:
 _02021278:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021EEC ; =0x020999D8
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _0202129C
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	str r0, [r4, #0x90]
 	b _02021AA0
 _0202129C:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021EF0 ; =0x020999E4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020212C8
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	ldr r1, [r4, #0x90]
 	add r0, r1, r0
 	str r0, [r4, #0x90]
@@ -25974,7 +25974,7 @@ _020212C8:
 _020212F0:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021EF4 ; =0x020999F0
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021324
 	ldr r0, [r4]
@@ -25999,7 +25999,7 @@ _02021324:
 _0202134C:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021EF8 ; =0x020999F4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020213A8
 	ldr r0, [sp, #0x74]
@@ -26023,11 +26023,11 @@ _0202134C:
 _020213A8:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021EFC ; =0x020999F8
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020213CC
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	str r0, [r4, #0x58]
 	b _020213F4
 _020213CC:
@@ -26048,7 +26048,7 @@ _020213F4:
 	b _02021AA0
 _02021404:
 	ldr r1, _02021F00 ; =0x020999FC
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021434
 	ldrh r0, [r4, #0x60]
@@ -26073,11 +26073,11 @@ _02021434:
 _0202145C:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F04 ; =0x02099A00
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020214E8
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	ldr r2, [r4, #0xa4]
 	mov r1, #0x18
 	mul r3, r2, r1
@@ -26109,7 +26109,7 @@ _0202145C:
 _020214E8:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F08 ; =0x02099A04
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021588
 	ldr r3, [r4, #0xa4]
@@ -26151,14 +26151,14 @@ _0202156C:
 _02021588:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F0C ; =0x02099A08
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _0202166C
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r5, r0
 	ldr r0, [sp, #0x78]
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r6, r0
 	ldr r0, _02021F10 ; =0x020997E4
 	mov r1, r5, lsl #1
@@ -26224,7 +26224,7 @@ _0202166C:
 _02021694:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F14 ; =0x02099A10
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020216F8
 	ldr r0, [sp, #0x74]
@@ -26250,11 +26250,11 @@ _02021694:
 _020216F8:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F18 ; =0x02099A14
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021728
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	ldr r2, [r4, #0x90]
 	mov r1, #6
 	mla r1, r0, r1, r2
@@ -26263,7 +26263,7 @@ _020216F8:
 _02021728:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F1C ; =0x02099A18
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021764
 	ldr r0, [r4, #0x54]
@@ -26279,14 +26279,14 @@ _02021728:
 _02021764:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F20 ; =0x02099A1C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _0202179C
 	ldrh r0, [r4, #0x60]
 	tst r0, #1
 	bne _02021AA0
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017C50
@@ -26305,7 +26305,7 @@ _0202179C:
 _020217C4:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F24 ; =0x02099A24
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021840
 	ldr r1, [r4, #0xc]
@@ -26349,7 +26349,7 @@ _02021840:
 _02021868:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F28 ; =0x02099A28
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020218B0
 	ldr r0, [r4]
@@ -26379,11 +26379,11 @@ _020218B0:
 _020218D8:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F2C ; =0x02099A2C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021904
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	ldr r1, [r4, #0x90]
 	add r0, r1, r0
 	str r0, [r4, #0x90]
@@ -26391,14 +26391,14 @@ _020218D8:
 _02021904:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F30 ; =0x02099A30
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	movne r0, #0x400
 	strne r0, [r4, #0x80]
 	bne _02021AA0
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F34 ; =0x02099A34
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _0202194C
 	ldrb r0, [r4, #0x62]
@@ -26410,14 +26410,14 @@ _02021904:
 _0202194C:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F38 ; =0x02099A38
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021984
 	ldrh r0, [r4, #0x60]
 	tst r0, #1
 	bne _02021AA0
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017C80
@@ -26436,14 +26436,14 @@ _02021984:
 _020219AC:
 	ldr r0, [sp, #0x70]
 	ldr r1, _02021F3C ; =0x02099A40
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020219E8
 	ldrh r0, [r4, #0x60]
 	tst r0, #1
 	bne _02021AA0
 	ldr r0, [sp, #0x74]
-	bl StoiTag__0202090C
+	bl StoiTag
 	str r0, [r4, #0x7c]
 	mov r0, #6
 	str r0, [r4, #0x5c]
@@ -26863,12 +26863,12 @@ _02021F8C:
 	bne _02021F8C
 	mov r0, r8
 	mov r1, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _02021FCC
 	mov r0, r8
 	mov r1, r5
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02021FF0
 _02021FCC:
@@ -26884,7 +26884,7 @@ _02021FCC:
 _02021FF0:
 	mov r0, r8
 	mov r1, r4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	ldrne r0, [sb]
 	addne r0, r0, #1
@@ -26929,12 +26929,12 @@ _02022068:
 	bne _02022068
 	ldr r1, _02022110 ; =0x02099A04
 	mov r0, r4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _020220F4
 	ldr r1, _02022114 ; =0x02099A00
 	mov r0, r4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _02022040
 	ldr r2, [sp, #0x10]
@@ -26994,32 +26994,32 @@ _0202212C:
 	mov r0, r6
 	str r2, [sp, #0x18]
 	mov r5, #0
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _020221D8
 	ldr r1, _020223C8 ; =0x020999F4
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _020221D8
 	ldr r1, _020223CC ; =0x02099A2C
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _020221D8
 	ldr r1, _020223D0 ; =0x02099A14
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _020221D8
 	ldr r1, _020223D4 ; =0x02099A18
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _020221D8
 	ldr r1, _020223D8 ; =0x02099A08
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022324
 _020221D8:
@@ -27046,7 +27046,7 @@ _02022214:
 _0202221C:
 	ldr r1, _020223C4 ; =0x02099A10
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022250
 	mov r0, r5
@@ -27060,7 +27060,7 @@ _0202221C:
 _02022250:
 	ldr r1, _020223C8 ; =0x020999F4
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022280
 	mov r0, r5
@@ -27073,28 +27073,28 @@ _02022250:
 _02022280:
 	ldr r1, _020223CC ; =0x02099A2C
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020222A4
 	mov r0, r5
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r4, r4, r0
 	b _0202212C
 _020222A4:
 	ldr r1, _020223D0 ; =0x02099A14
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020222CC
 	mov r0, r5
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r1, #6
 	mla r4, r0, r1, r4
 	b _0202212C
 _020222CC:
 	ldr r1, _020223D4 ; =0x02099A18
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	addne r4, r4, #6
 	bne _0202212C
@@ -27104,10 +27104,10 @@ _020222E8:
 	cmp r0, #0x3a
 	bne _020222E8
 	mov r0, r5
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r5, r0
 	mov r0, r6
-	bl StoiTag__0202090C
+	bl StoiTag
 	ldr r1, _020223DC ; =0x020997E4
 	mov r2, r5, lsl #1
 	mov r5, r0
@@ -27131,22 +27131,22 @@ _02022328:
 	bhi _0202212C
 	ldr r1, _020223E0 ; =0x02099A24
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _020223B4
 	ldr r1, _020223E4 ; =0x020999D4
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _020223B4
 	ldr r1, _020223E8 ; =0x02099A28
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _020223B4
 	ldr r1, _020223EC ; =0x020999F0
 	mov r0, r6
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _020223B4
 	b _0202212C
@@ -27326,11 +27326,11 @@ _020225CC: ; jump table
 	b _0202323C ; case 22
 _02022628:
 	ldr r1, _02023478 ; =0x02099A74
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022658
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -27340,11 +27340,11 @@ _02022628:
 _02022658:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _0202347C ; =0x02099A7C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022694
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r2, r8, r0, lsl #2
 	ldr r1, [r2, #0x10]
 	ldr r2, [r2, #0x24]
@@ -27367,11 +27367,11 @@ _02022694:
 _020226BC:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023488 ; =0x02099A84
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020226F0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -27381,11 +27381,11 @@ _020226BC:
 _020226F0:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _0202348C ; =0x02099A8C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022724
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -27406,7 +27406,7 @@ _02022724:
 _0202274C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023490 ; =0x02099A98
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022774
 	ldr r1, [sp, #0xb8]
@@ -27417,11 +27417,11 @@ _0202274C:
 _02022774:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023494 ; =0x02099AA0
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020227A8
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -27431,7 +27431,7 @@ _02022774:
 _020227A8:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023498 ; =0x02099AA4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020227D0
 	ldr r1, [sp, #0xb8]
@@ -27442,7 +27442,7 @@ _020227A8:
 _020227D0:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _0202349C ; =0x02099AAC
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020227F8
 	ldr r1, [sp, #0xb8]
@@ -27453,7 +27453,7 @@ _020227D0:
 _020227F8:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234A0 ; =0x02099AB8
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	ldrne r7, _020234A4 ; =0x02099AC0
 	bne _020232F0
@@ -27470,11 +27470,11 @@ _020227F8:
 _02022838:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234A8 ; =0x02099AC8
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022870
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r2, [r0, #0x24]
 	ldr r1, _020234AC ; =0x02099AD0
@@ -27485,11 +27485,11 @@ _02022838:
 _02022870:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234B0 ; =0x02099AD4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020228A8
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r2, [r0, #0x24]
 	ldr r1, _020234B4 ; =0x02099AE0
@@ -27500,11 +27500,11 @@ _02022870:
 _020228A8:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234B8 ; =0x02099AF0
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020228E0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	ldr r2, [r0, #0x24]
@@ -27526,7 +27526,7 @@ _020228E0:
 _02022908:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234BC ; =0x02099AF8
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022938
 	ldr r1, [r8, #0x34]
@@ -27539,11 +27539,11 @@ _02022908:
 _02022938:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234C0 ; =0x02099B04
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _0202296C
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -27564,11 +27564,11 @@ _0202296C:
 _02022994:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234C4 ; =0x02099B10
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020229C8
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -27589,21 +27589,21 @@ _020229C8:
 _020229F0:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234C8 ; =0x02099B18
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022A14
 	add r0, sp, #0x1c8
-	bl sub_02024DFC
+	bl GetBagNameString
 	mov r7, r0
 	b _020232F0
 _02022A14:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234CC ; =0x02099B24
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022A48
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -27613,11 +27613,11 @@ _02022A14:
 _02022A48:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234D0 ; =0x02099B2C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022A7C
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -27627,11 +27627,11 @@ _02022A48:
 _02022A7C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234D4 ; =0x02099B34
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022AB0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -27652,7 +27652,7 @@ _02022AB0:
 _02022AD8:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234D8 ; =0x02099B40
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022B00
 	add r0, sp, #0x1c8
@@ -27674,11 +27674,11 @@ _02022B00:
 _02022B28:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234DC ; =0x02099B48
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022B64
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r3, r8, r0, lsl #2
 	ldr r1, [r3, #0x10]
 	ldr r2, [r3, #0x24]
@@ -27701,11 +27701,11 @@ _02022B64:
 _02022B8C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234E0 ; =0x02099B50
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022BBC
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	ldr r1, [r8, r0, lsl #2]
 	add r0, sp, #0x1c8
 	bl sub_02023920
@@ -27725,11 +27725,11 @@ _02022BBC:
 _02022BE4:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234E4 ; =0x02099B58
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022C14
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	ldr r1, [r8, r0, lsl #2]
 	add r0, sp, #0x1c8
 	bl sub_02023B68
@@ -27738,7 +27738,7 @@ _02022BE4:
 _02022C14:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234E8 ; =0x02099B60
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022C3C
 	add r0, sp, #0x1c8
@@ -27760,11 +27760,11 @@ _02022C3C:
 _02022C64:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234EC ; =0x02099B6C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022C9C
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	ldr r2, [r0, #0x24]
@@ -27775,11 +27775,11 @@ _02022C64:
 _02022C9C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234F0 ; =0x02099B74
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022CD4
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r2, [r0, #0x24]
 	ldr r1, _020234F4 ; =0x02099B7C
@@ -27790,7 +27790,7 @@ _02022C9C:
 _02022CD4:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234F8 ; =0x02099B8C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022D04
 	ldr r1, [r8, #0x34]
@@ -27803,7 +27803,7 @@ _02022CD4:
 _02022D04:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234FC ; =0x02099B9C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022D34
 	ldr r1, [r8, #0x34]
@@ -27827,7 +27827,7 @@ _02022D34:
 _02022D5C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023500 ; =0x02099BA8
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022D84
 	add r0, sp, #0x1c8
@@ -27838,7 +27838,7 @@ _02022D5C:
 _02022D84:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023504 ; =0x02099BB0
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022DAC
 	add r0, sp, #0x1c8
@@ -27849,7 +27849,7 @@ _02022D84:
 _02022DAC:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023508 ; =0x02099BBC
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022DD4
 	add r0, sp, #0x1c8
@@ -27860,11 +27860,11 @@ _02022DAC:
 _02022DD4:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _0202350C ; =0x02099BC4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022E08
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -27885,11 +27885,11 @@ _02022E08:
 _02022E30:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023510 ; =0x02099BCC
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022E64
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -27899,11 +27899,11 @@ _02022E30:
 _02022E64:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023514 ; =0x02099BD4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022E98
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -27924,11 +27924,11 @@ _02022E98:
 _02022EC0:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023518 ; =0x02099BDC
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022EF8
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r2, #0
 	orr r1, r0, #0x50000
 	add r0, sp, #0x1c8
@@ -27939,30 +27939,30 @@ _02022EC0:
 _02022EF8:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _0202351C ; =0x02099BE4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	ldrne r7, [r8, #0x38]
 	bne _020232F0
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023520 ; =0x02099BEC
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022F40
 	cmp r6, #2
 	bne _020232F0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r7, [r0, #0x38]
 	b _020232F0
 _02022F40:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023524 ; =0x02099BF4
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022F78
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r2, [r0, #0x24]
 	ldr r1, _02023528 ; =0x02099BFC
@@ -27984,11 +27984,11 @@ _02022F78:
 _02022FA0:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _0202352C ; =0x02099C0C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02022FD4
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -27998,11 +27998,11 @@ _02022FA0:
 _02022FD4:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023530 ; =0x02099C14
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02023008
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28012,11 +28012,11 @@ _02022FD4:
 _02023008:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023534 ; =0x02099C1C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _0202303C
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28026,7 +28026,7 @@ _02023008:
 _0202303C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023538 ; =0x02099C24
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02023094
 	cmp r6, #1
@@ -28040,7 +28040,7 @@ _0202306C:
 	cmp r6, #2
 	bne _020232F0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28050,28 +28050,28 @@ _0202306C:
 _02023094:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _0202353C ; =0x02099C2C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02023114
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r5, [r0, #0x24]
 	mov r1, #0xe10
 	mov r0, r5
-	bl DivideUInt
+	bl __udivsi3
 	mov r6, r0
 	mov r0, r5
 	mov r1, #0xe10
-	bl DivideUInt
+	bl __udivsi3
 	mov r5, r1
 	mov r0, r5
 	mov r1, #0x3c
-	bl DivideUInt
+	bl __udivsi3
 	mov r7, r0
 	mov r0, r5
 	mov r1, #0x3c
-	bl DivideUInt
+	bl __udivsi3
 	str r1, [sp]
 	ldr r1, _02023540 ; =0x02099C34
 	mov r2, r6
@@ -28094,14 +28094,14 @@ _02023114:
 _0202313C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023544 ; =0x02099C44
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02023180
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r5, r0
 	ldr r0, [sp, #0xbc]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r1, r8, r5, lsl #2
 	mov r2, r0
 	ldr r1, [r1, #0x24]
@@ -28112,14 +28112,14 @@ _0202313C:
 _02023180:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023548 ; =0x02099C4C
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020231D8
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	mov r5, r0
 	ldr r0, [sp, #0xbc]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r1, r8, r5, lsl #2
 	ldr r3, [r1, #0x24]
 	mov r2, r0
@@ -28135,11 +28135,11 @@ _02023180:
 _020231D8:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023554 ; =0x02099C68
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02023214
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r2, r8, r0, lsl #2
 	ldr r1, [r2, #0x10]
 	ldr r2, [r2, #0x24]
@@ -28162,11 +28162,11 @@ _02023214:
 _0202323C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023558 ; =0x02099C70
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _0202326C
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	ldr r1, [r8, r0, lsl #2]
 	add r0, sp, #0x1c8
 	bl sub_02024AA8
@@ -28175,11 +28175,11 @@ _0202323C:
 _0202326C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _0202355C ; =0x02099C78
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020232A0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag__0202090C
+	bl StoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28232,12 +28232,12 @@ _0202332C:
 	bhi _0202342C
 	ldr r1, _02023560 ; =0x02099A24
 	add r0, r5, #1
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	bne _02023364
 	ldr r1, _02023564 ; =0x020999D4
 	add r0, r5, #1
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _02023390
 _02023364:
@@ -28255,7 +28255,7 @@ _02023364:
 _02023390:
 	ldr r1, _02023568 ; =0x02099A28
 	add r0, r5, #1
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	beq _020233BC
 	ldr r0, [sp, #8]
@@ -28267,7 +28267,7 @@ _02023390:
 _020233BC:
 	ldr r1, _0202356C ; =0x02099A04
 	add r0, r5, #1
-	bl StrcmpTag__020208C8
+	bl StrcmpTag
 	cmp r0, #0
 	ldrne r0, [sp, #4]
 	cmpne r0, #0
@@ -28399,7 +28399,7 @@ SprintfStatic__02023590: ; 0x02023590
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -28427,18 +28427,18 @@ PreprocessStringFromMessageId: ; 0x020235B8
 
 	arm_func_start StrcmpTag__020235F8
 StrcmpTag__020235F8: ; 0x020235F8
-	ldr ip, _02023600 ; =StrcmpTag__020208C8
+	ldr ip, _02023600 ; =StrcmpTag
 	bx ip
 	.align 2, 0
-_02023600: .word StrcmpTag__020208C8
+_02023600: .word StrcmpTag
 	arm_func_end StrcmpTag__020235F8
 
 	arm_func_start StoiTag__02023604
 StoiTag__02023604: ; 0x02023604
-	ldr ip, _0202360C ; =StoiTag__0202090C
+	ldr ip, _0202360C ; =StoiTag
 	bx ip
 	.align 2, 0
-_0202360C: .word StoiTag__0202090C
+_0202360C: .word StoiTag
 	arm_func_end StoiTag__02023604
 
 	arm_func_start sub_02023610
@@ -28546,7 +28546,7 @@ sub_0202372C: ; 0x0202372C
 	mov r2, r3
 	bl SprintfStatic__0202378C
 	add r0, sp, #0
-	bl Strlen
+	bl strlen
 	mov r2, r0
 	cmp r2, r4
 	movgt r4, r2
@@ -28571,7 +28571,7 @@ SprintfStatic__0202378C: ; 0x0202378C
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -28589,11 +28589,11 @@ sub_020237B4: ; 0x020237B4
 	mov r2, r3
 	bl SprintfStatic__0202378C
 	add r0, sp, #0
-	bl Strlen
+	bl strlen
 	mov r5, r0
 	sub r0, r5, #1
 	mov r1, #3
-	bl DivideInt
+	bl __divsi3
 	mov r4, r0
 	cmp r6, #0
 	ble _02023810
@@ -28601,7 +28601,7 @@ sub_020237B4: ; 0x020237B4
 	movgt r6, r5
 	sub r0, r6, #1
 	mov r1, #3
-	bl DivideInt
+	bl __divsi3
 _02023810:
 	cmp r4, #0
 	ble _02023888
@@ -28650,7 +28650,7 @@ _02023888:
 _020238B0:
 	add r1, sp, #0
 	mov r0, r7
-	bl Strcpy
+	bl strcpy
 _020238BC:
 	mov r0, r7
 	add sp, sp, #0x100
@@ -28776,12 +28776,12 @@ _020239D0:
 _02023A0C:
 	ldr r1, _02023B50 ; =0x022A5048
 	mov r0, r5
-	bl Strcat
+	bl strcat
 	b _02023A28
 _02023A1C:
 	ldr r1, _02023B54 ; =0x022A504C
 	mov r0, r5
-	bl Strcat
+	bl strcat
 _02023A28:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
@@ -28999,7 +28999,7 @@ _02023D14:
 	bl sub_02024FB8
 	mov r1, r0
 	mov r0, r5
-	bl Strcpy
+	bl strcpy
 	mov r0, r5
 	b _02023D44
 _02023D30:
@@ -29165,7 +29165,7 @@ _02023F48:
 	bl GetNameString
 	mov r1, r0
 	add r0, sp, #0x42
-	bl Strcpy
+	bl strcpy
 _02023F5C:
 	ldrsh r0, [sp, #0x94]
 	cmp r0, #0
@@ -29476,7 +29476,7 @@ _02024338:
 	bl GetDungeonResultString
 	mov r1, r0
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 _02024350:
@@ -29530,7 +29530,7 @@ _020243D8:
 _020243E8:
 	mov r0, r4
 	mov r1, r5
-	bl Strcat
+	bl strcat
 	add r7, r7, #1
 _020243F8:
 	cmp r7, r6
@@ -29594,7 +29594,7 @@ _020244A0:
 _020244B4:
 	mov r0, r4
 	mov r1, r6
-	bl Strcat
+	bl strcat
 	add r7, r7, #1
 _020244C4:
 	cmp r7, r5
@@ -29652,7 +29652,7 @@ _02024564:
 	bl sub_02024FC8
 	mov r1, r0
 	mov r0, r5
-	bl Strcpy
+	bl strcpy
 	mov r0, r5
 	b _02024584
 _02024580:
@@ -30066,7 +30066,7 @@ sub_02024AA8: ; 0x02024AA8
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 _02024AE8:
@@ -30118,7 +30118,7 @@ sub_02024B48: ; 0x02024B48
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 _02024B88:
@@ -30141,7 +30141,7 @@ sub_02024B94: ; 0x02024B94
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 _02024BCC:
@@ -30318,7 +30318,7 @@ _02024DD4:
 	ldr r1, _02024DF4 ; =0x022A5048
 	mov r0, r4
 	add r1, r1, r2, lsl #2
-	bl Strcpy
+	bl strcpy
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 _02024DEC:
@@ -30329,8 +30329,8 @@ _02024DF4: .word 0x022A5048
 _02024DF8: .word 0x02099D50
 	arm_func_end sub_02024D7C
 
-	arm_func_start sub_02024DFC
-sub_02024DFC: ; 0x02024DFC
+	arm_func_start GetBagNameString
+GetBagNameString: ; 0x02024DFC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetCurrentBagCapacity
@@ -30346,7 +30346,7 @@ sub_02024DFC: ; 0x02024DFC
 	.align 2, 0
 _02024E2C: .word 0x000008E1
 _02024E30: .word 0x000008E2
-	arm_func_end sub_02024DFC
+	arm_func_end GetBagNameString
 
 	arm_func_start sub_02024E34
 sub_02024E34: ; 0x02024E34
@@ -30382,7 +30382,7 @@ _02024E98:
 	bl GetStringFromFileVeneer
 	ldr r1, _02024FA4 ; =0x02099E18
 	mov r0, sl
-	bl Strcat
+	bl strcat
 	cmp r5, #0
 	beq _02024F78
 	bl GetGameMode
@@ -30400,7 +30400,7 @@ _02024ED0:
 	bne _02024EF4
 	ldr r1, _02024FA4 ; =0x02099E18
 	mov r0, sl
-	bl Strcat
+	bl strcat
 _02024EF4:
 	cmp r7, r4
 	beq _02024F6C
@@ -30432,7 +30432,7 @@ _02024F2C:
 	bl SprintfStatic__0202378C
 	mov r0, sl
 	add r1, sp, #0x44
-	bl Strcat
+	bl strcat
 _02024F6C:
 	ldrsh r0, [sb]
 	cmp r0, r4
@@ -30440,7 +30440,7 @@ _02024F6C:
 _02024F78:
 	ldr r1, _02024FB4 ; =0x02099E40
 	mov r0, sl
-	bl Strcat
+	bl strcat
 	mov r0, sl
 	add sp, sp, #0x44
 	add sp, sp, #0x400
@@ -31251,7 +31251,7 @@ sub_020258E4: ; 0x020258E4
 	bl GetStringFromFile
 	add r1, sp, #0
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	add sp, sp, #0x400
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020258E4
@@ -31267,7 +31267,7 @@ CopyStringFromMessageId: ; 0x0202590C
 	add r1, sp, #0
 	mov r0, r5
 	mov r2, r4
-	bl Strncpy
+	bl strncpy
 	add sp, sp, #0x400
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end CopyStringFromMessageId
@@ -31398,7 +31398,7 @@ sub_02025AD8: ; 0x02025AD8
 	ldr r1, _02025B6C ; =0x0209ABF0
 	add r0, sp, #0
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, [sp]
 	ldr r2, _02025B70 ; =0x022A7A54
 	add r3, r0, #4
@@ -31407,7 +31407,7 @@ sub_02025AD8: ; 0x02025AD8
 	ldr r1, _02025B74 ; =0x0209AC04
 	add r0, sp, #0
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, [sp]
 	ldr r2, _02025B70 ; =0x022A7A54
 	add r3, r0, #4
@@ -31416,7 +31416,7 @@ sub_02025AD8: ; 0x02025AD8
 	ldr r1, _02025B78 ; =0x0209AC18
 	add r0, sp, #0
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, [sp]
 	ldr r1, _02025B7C ; =0x020AFD04
 	mov r2, #0
@@ -31456,7 +31456,7 @@ sub_02025B90: ; 0x02025B90
 	ldr r2, [r1, r4, lsl #2]
 	ldr r1, _02025C04 ; =0x0209AC2C
 	add r0, sp, #0
-	bl Sprintf
+	bl sprintf
 	add r0, sp, #0
 	bl sub_02027274
 	ldr r0, _02025C08 ; =0x020AFD04
@@ -31467,11 +31467,11 @@ sub_02025B90: ; 0x02025B90
 	add r0, sp, #0
 	ldr r2, [r1, r4, lsl #2]
 	ldr r1, _02025C04 ; =0x0209AC2C
-	bl Sprintf
+	bl sprintf
 	ldr r0, _02025C10 ; =0x020AFD14
 	add r1, sp, #0
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, _02025C08 ; =0x020AFD04
 	ldr r1, [r0, #0x10]
 	str r1, [r0, #0xc]
@@ -33000,7 +33000,7 @@ sub_02026E78: ; 0x02026E78
 	mov r1, #0
 	mov r2, #0x1180
 	strb r4, [r3, #2]
-	bl Memset
+	bl memset
 	mov r7, #0
 	ldr r0, _02026FF4 ; =0x022A7A6C
 	mvn r5, #1
@@ -33077,8 +33077,8 @@ _02026EB0:
 	strh r2, [r0, #8]
 	strh r2, [r0, #0xa]
 	strb r1, [r0, #3]
-	bl sub_0202950C
-	bl sub_02029EE8
+	bl LoadCursors
+	bl LoadAlert
 	bl sub_0202A124
 	mov r2, #0
 	ldr r1, _02026FF4 ; =0x022A7A6C
@@ -33273,7 +33273,7 @@ sub_02027228: ; 0x02027228
 	add r0, sp, #0
 	ldr r1, [r1, r2]
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	ldr r0, _02027270 ; =0x0620C000
@@ -33294,7 +33294,7 @@ sub_02027274: ; 0x02027274
 	mov r1, r0
 	add r0, sp, #0xc
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r7, [sp, #0xc]
 	ldr r3, _0202736C ; =0x0209AC50
 	add r2, sp, #0
@@ -33380,7 +33380,7 @@ sub_02027390: ; 0x02027390
 	mov sl, r0
 	add r0, sp, #0x10
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r8, [sp, #0x10]
 	ldr r3, _020275A0 ; =0x0209AC54
 	add r2, sp, #0
@@ -33445,7 +33445,7 @@ _02027428:
 	add r0, sp, #0x10
 	ldr r1, [r1, r2]
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	mov r5, #0
 	ldr r6, [sp, #0x10]
 	ldr r3, _020275B4 ; =0x0209AC4C
@@ -33698,7 +33698,7 @@ _02027704:
 	mvn r1, #0
 	add r0, r5, #0x34
 	str r1, [r5, #0xb8]
-	bl sub_0201E730
+	bl InitRender3dElement
 	mov r1, #2
 	strb r1, [r5, #0x70]
 	mov r0, #9
@@ -33711,7 +33711,7 @@ _02027704:
 	mov r1, #0x90
 	add r0, r5, #0x74
 	strb r1, [r5, #0x63]
-	bl sub_0201E730
+	bl InitRender3dElement
 	ldr r0, _020278A4 ; =0x022A7A6C
 	mov r1, #0
 	ldrh r3, [r0, #0x48]
@@ -33967,7 +33967,7 @@ sub_02027B1C: ; 0x02027B1C
 	ldr r0, [r0, r2]
 	ldr r2, [r1, r2]
 	mov r1, #0
-	bl Memset
+	bl memset
 	mov r0, r4
 	bl sub_02027AF0
 	ldmia sp!, {r4, pc}
@@ -33984,13 +33984,13 @@ sub_02027B58: ; 0x02027B58
 	ldr r1, _02027B80 ; =0x022A88F8
 	ldr r0, [r0, r2]
 	ldr r2, [r1, r2]
-	ldr ip, _02027B84 ; =Memset
+	ldr ip, _02027B84 ; =memset
 	mov r1, #0
 	bx ip
 	.align 2, 0
 _02027B7C: .word 0x022A88F0
 _02027B80: .word 0x022A88F8
-_02027B84: .word Memset
+_02027B84: .word memset
 	arm_func_end sub_02027B58
 
 	arm_func_start sub_02027B88
@@ -35948,7 +35948,7 @@ sub_02029478: ; 0x02029478
 	mov r2, #0
 	mov r3, #0x3f8
 	str r2, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	b _020294FC
 _020294D0:
 	mov r0, #0xe
@@ -35961,7 +35961,7 @@ _020294D0:
 	mov r2, #0
 	mov r3, #0x7c
 	str ip, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 _020294FC:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
@@ -35970,14 +35970,14 @@ _02029504: .word 0x022AAC80
 _02029508: .word 0x022AACFC
 	arm_func_end sub_02029478
 
-	arm_func_start sub_0202950C
-sub_0202950C: ; 0x0202950C
+	arm_func_start LoadCursors
+LoadCursors: ; 0x0202950C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
 	ldr r0, _02029654 ; =0x022AAC68
 	mov r1, #0
 	mov r2, #0x15
-	bl Memset
+	bl memset
 	ldr r0, _02029658 ; =0x020AFC68
 	ldr r1, _0202965C ; =0x0209ADF0
 	ldr r0, [r0]
@@ -36013,7 +36013,7 @@ sub_0202950C: ; 0x0202950C
 	ldr r0, _02029668 ; =0x022AAC80
 	ldr r1, _02029660 ; =0x022AAC64
 	ldrsh r1, [r1, #2]
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r0, #0xf
 	str r0, [sp]
 	mov r0, #4
@@ -36025,7 +36025,7 @@ sub_0202950C: ; 0x0202950C
 	ldr r0, _02029668 ; =0x022AAC80
 	mov r2, r1
 	mov r3, #0x3f8
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	mov r1, #0
 	ldr r0, _02029668 ; =0x022AAC80
 	strh r1, [r0, #0x38]
@@ -36035,7 +36035,7 @@ sub_0202950C: ; 0x0202950C
 	ldr r0, _0202966C ; =0x022AACFC
 	ldr r1, _02029660 ; =0x022AAC64
 	ldrsh r1, [r1]
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #4
@@ -36047,7 +36047,7 @@ sub_0202950C: ; 0x0202950C
 	mov r1, #0
 	mov r2, r1
 	mov r3, #0x7c
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r0, _0202966C ; =0x022AACFC
 	mov r1, #0
 	strh r1, [r0, #0x38]
@@ -36062,7 +36062,7 @@ _02029660: .word 0x022AAC64
 _02029664: .word 0x0209AE08
 _02029668: .word 0x022AAC80
 _0202966C: .word 0x022AACFC
-	arm_func_end sub_0202950C
+	arm_func_end LoadCursors
 
 	arm_func_start sub_02029670
 sub_02029670: ; 0x02029670
@@ -36689,8 +36689,8 @@ Arm9StoreUnkFieldNa0x2029ED8: ; 0x02029ED8
 _02029EE4: .word 0x022AAC68
 	arm_func_end Arm9StoreUnkFieldNa0x2029ED8
 
-	arm_func_start sub_02029EE8
-sub_02029EE8: ; 0x02029EE8
+	arm_func_start LoadAlert
+LoadAlert: ; 0x02029EE8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
 	ldr r0, _02029F74 ; =0x020AFC68
@@ -36705,7 +36705,7 @@ sub_02029EE8: ; 0x02029EE8
 	ldr r1, _02029F7C ; =0x022AAD78
 	ldr r0, _02029F80 ; =0x022AAD7C
 	ldrsh r1, [r1]
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r1, #0
 	mov r0, #0xd
 	stmia sp, {r0, r1}
@@ -36715,7 +36715,7 @@ sub_02029EE8: ; 0x02029EE8
 	mov r2, r1
 	mov r3, #0x3e4
 	str r1, [sp, #0xc]
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r0, _02029F80 ; =0x022AAD7C
 	mov r1, #0
 	strh r1, [r0, #0x38]
@@ -36732,7 +36732,7 @@ _02029F78: .word 0x0209AE20
 _02029F7C: .word 0x022AAD78
 _02029F80: .word 0x022AAD7C
 _02029F84: .word 0x020AFDA0
-	arm_func_end sub_02029EE8
+	arm_func_end LoadAlert
 
 	arm_func_start sub_02029F88
 sub_02029F88: ; 0x02029F88
@@ -36890,7 +36890,7 @@ _0202A160:
 	ldr r0, [r8]
 	add r0, r0, r6
 	add r0, r0, #4
-	bl sub_0201E730
+	bl InitRender3dElement
 	ldr r0, [r8]
 	mov ip, #4
 	strb r4, [r0, r6]
@@ -36949,7 +36949,7 @@ sub_0202A1D4: ; 0x0202A1D4
 	add r4, r3, r1
 	add r0, r4, #4
 	strb r2, [r3, r1]
-	bl sub_0201E730
+	bl InitRender3dElement
 	mov r0, #2
 	mov r3, r5
 	strb r0, [r4, #0x40]
@@ -37076,8 +37076,8 @@ _0202A3C8:
 _0202A3E0: .word 0x020AFDA8
 	arm_func_end sub_0202A388
 
-	arm_func_start sub_0202A3E4
-sub_0202A3E4: ; 0x0202A3E4
+	arm_func_start PrintClearMark
+PrintClearMark: ; 0x0202A3E4
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, r2
@@ -37088,7 +37088,7 @@ sub_0202A3E4: ; 0x0202A3E4
 	mov r0, #0
 	bl sub_0202A45C
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202A3E4
+	arm_func_end PrintClearMark
 
 	arm_func_start sub_0202A40C
 sub_0202A40C: ; 0x0202A40C
@@ -37306,7 +37306,7 @@ _0202A6B8:
 	b _0202A6FC
 _0202A6E4:
 	mov r0, r5
-	bl Strcpy
+	bl strcpy
 	ldr r0, [r6, #4]
 	add r6, r6, #8
 	str r0, [r5, #0x100]
@@ -37536,7 +37536,7 @@ _0202A9D8:
 	b _0202AA10
 _0202A9F8:
 	mov r0, r6
-	bl Strcpy
+	bl strcpy
 	ldr r0, [sb, #4]
 	add sb, sb, #8
 	str r0, [r6, #0x100]
@@ -42202,7 +42202,7 @@ _0202E80C:
 _0202E850:
 	add r0, r3, #0x1400
 	add r1, r6, #0xc
-	bl Strcpy
+	bl strcpy
 _0202E85C:
 	ldr r0, [r5, #0xfc]
 	ldr r1, _0202EE80 ; =0x000001AF
@@ -43344,7 +43344,7 @@ _0202F778:
 	cmp r0, #0
 	bne _0202F86C
 	mov r0, ip
-	bl sub_0204D89C
+	bl IsValidPortrait
 	cmp r0, #0
 	beq _0202F854
 	add r0, r4, #8
@@ -44305,7 +44305,7 @@ _020303C4:
 	add r2, r1, r8
 	mov r1, r8
 	sub r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	add r1, r6, #0x600
 	strh r0, [r1, #0x4a]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -45915,10 +45915,10 @@ sub_020318D0: ; 0x020318D0
 
 	arm_func_start sub_02031908
 sub_02031908: ; 0x02031908
-	ldr ip, _02031910 ; =KeyWaitInit__02006DA4
+	ldr ip, _02031910 ; =KeyWaitInit
 	bx ip
 	.align 2, 0
-_02031910: .word KeyWaitInit__02006DA4
+_02031910: .word KeyWaitInit
 	arm_func_end sub_02031908
 
 	arm_func_start sub_02031914
@@ -46992,11 +46992,11 @@ sub_02032684: ; 0x02032684
 	cmp r4, r0
 	subge r4, r0, #1
 	mov r0, r4
-	bl DivideInt
+	bl __divsi3
 	str r0, [r5, #0xc8]
 	ldr r1, [r5, #0xc4]
 	mov r0, r4
-	bl DivideInt
+	bl __divsi3
 	mov r0, r5
 	str r1, [r5, #0xbc]
 	bl sub_02032754
@@ -47052,7 +47052,7 @@ sub_02032754: ; 0x02032754
 	ldr r0, [r4, #0xd0]
 	add r0, r0, r1
 	sub r0, r0, #1
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0xcc]
 	ldr r1, [r4, #0xc8]
 	sub r0, r0, #1
@@ -47159,7 +47159,7 @@ sub_02032894: ; 0x02032894
 	ble _020328B4
 	mov r0, r1, lsl #8
 	ldr r1, [r4, #0xc4]
-	bl DivideInt
+	bl __divsi3
 	b _020328D0
 _020328B4:
 	ldr r0, [r4, #0xb4]
@@ -47168,7 +47168,7 @@ _020328B4:
 	sub r0, r1, r0
 	ldr r1, [r4, #0xc4]
 	mov r0, r0, lsl #8
-	bl DivideInt
+	bl __divsi3
 _020328D0:
 	str r0, [r4, #0xb8]
 	ldmia sp!, {r4, pc}
@@ -47832,21 +47832,21 @@ _02033140:
 	sub r5, r1, #1
 	ldr r1, [r4, #0xc4]
 	mov r0, r5
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0xc8]
 	ldr r1, [r4, #0xc4]
 	mov r0, r5
-	bl DivideInt
+	bl __divsi3
 	str r1, [r4, #0xbc]
 	b _02033188
 _02033168:
 	ldr r1, [r4, #0xc4]
 	mov r0, r5
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0xc8]
 	ldr r1, [r4, #0xc4]
 	mov r0, r5
-	bl DivideInt
+	bl __divsi3
 	str r1, [r4, #0xbc]
 _02033188:
 	mov r0, r4
@@ -47886,7 +47886,7 @@ sub_020331D4: ; 0x020331D4
 	ldr r0, [r4, #0xd0]
 	add r0, r0, r1
 	sub r0, r0, #1
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0xcc]
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #0
@@ -47985,7 +47985,7 @@ sub_0203330C: ; 0x0203330C
 	ble _0203332C
 	mov r0, r1, lsl #8
 	ldr r1, [r4, #0xc4]
-	bl DivideInt
+	bl __divsi3
 	b _02033348
 _0203332C:
 	ldr r0, [r4, #0xb4]
@@ -47994,7 +47994,7 @@ _0203332C:
 	sub r0, r1, r0
 	ldr r1, [r4, #0xc4]
 	mov r0, r0, lsl #8
-	bl DivideInt
+	bl __divsi3
 _02033348:
 	str r0, [r4, #0xb8]
 	ldmia sp!, {r4, pc}
@@ -50062,7 +50062,7 @@ sub_02034F20: ; 0x02034F20
 	strh r6, [r2, #0x14]
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x68
-	bl Strcpy
+	bl strcpy
 	ldr r0, _02034F90 ; =0x020AFDBC
 	mov r1, r4
 	ldr r0, [r0, #0xc]
@@ -50487,7 +50487,7 @@ _020354F8:
 	beq _0203558C
 	ldr r0, _02035598 ; =0x020AFDBC
 	ldr r0, [r0, #0xc]
-	bl sub_0204D89C
+	bl IsValidPortrait
 	cmp r0, #0
 	beq _02035544
 	ldr r0, _02035598 ; =0x020AFDBC
@@ -51521,7 +51521,7 @@ sub_02036358: ; 0x02036358
 	str r0, [r1, #8]
 _0203638C:
 	and r0, r5, #0xff
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	ldr r1, [r4, #4]
 	add r1, r1, r5
 	add r5, r5, #1
@@ -51636,7 +51636,7 @@ _02036514:
 	and r0, r5, #0xff
 	add r1, r1, r5
 	ldrb r1, [r1, #0xa4]
-	bl SetDebugFlag1
+	bl SetDebugFlag
 	add r5, r5, #1
 	cmp r5, #0xc
 	blt _02036514
@@ -51695,7 +51695,7 @@ sub_020365A0: ; 0x020365A0
 	str r0, [r1, #8]
 _020365D4:
 	and r0, r5, #0xff
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	ldr r1, [r4, #4]
 	add r1, r1, r5
 	add r5, r5, #1
@@ -51810,7 +51810,7 @@ _0203675C:
 	and r0, r5, #0xff
 	add r1, r1, r5
 	ldrb r1, [r1, #0xa4]
-	bl SetDebugFlag2
+	bl SetDebugLogFlag
 	add r5, r5, #1
 	cmp r5, #0x10
 	blt _0203675C
@@ -52244,7 +52244,7 @@ _02036D70:
 	ldrb r5, [r4, #0x1c]
 	mov r1, #0x12
 	mov r0, r5
-	bl DivideInt
+	bl __divsi3
 	mov r1, #0x12
 	mul r1, r0, r1
 	ldr r0, _02037448 ; =0x0209B3B4
@@ -53542,7 +53542,7 @@ SprintfStatic__02037F30: ; 0x02037F30
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -53642,7 +53642,7 @@ _02038090: ; jump table
 _020380A8:
 	mov r0, r6
 	mov r1, #0x12
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #5
 	ble _020380D0
 	cmp r1, #0xc
@@ -53688,7 +53688,7 @@ _02038148:
 	cmp r5, #0x20
 	mov r1, #0x11
 	moveq r5, #0
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #5
 	blt _02038178
 	cmp r1, #0xc
@@ -53744,7 +53744,7 @@ _020381FC:
 	mov r5, r0
 	mov r0, r6
 	mov r1, #0x12
-	bl DivideInt
+	bl __divsi3
 	mov r1, #0x44
 	str r1, [sp]
 	mov r1, #0x12
@@ -53811,7 +53811,7 @@ _02038314:
 	mov r2, r0
 	ldr r1, _020383F8 ; =0x0209B4C0
 	add r0, sp, #0x12
-	bl Sprintf
+	bl sprintf
 _02038328:
 	ldr r1, [fp]
 	ldr r3, _020383EC ; =0x0209B2C4
@@ -54502,7 +54502,7 @@ _02038C5C:
 	movge sb, #0xe9
 	mov r0, sb
 	mov r1, #0xd
-	bl DivideInt
+	bl __divsi3
 	add r1, r5, #0x1e
 	mov r6, r0
 	cmp r8, r1
@@ -54526,7 +54526,7 @@ _02038CA0:
 _02038CCC:
 	mov r0, sb
 	mov r1, #0xd
-	bl DivideInt
+	bl __divsi3
 	add r1, r5, #0x24
 	mov r6, r0
 	cmp r8, r1
@@ -54747,11 +54747,11 @@ _02038FB8:
 	movge r8, #0xb0
 	sub r0, r8, #0x63
 	mov r1, #0xd
-	bl DivideInt
+	bl __divsi3
 	mov r4, r0
 	sub r0, sb, #0x23
 	mov r1, #0xf
-	bl DivideInt
+	bl __divsi3
 	mov r1, #6
 	ldr r2, _02039068 ; =0x020AFDF0
 	mla r0, r1, r0, r4
@@ -55068,7 +55068,7 @@ SprintfStatic__02039438: ; 0x02039438
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -55255,11 +55255,11 @@ sub_02039680: ; 0x02039680
 _020396B0:
 	mov r0, sb
 	mov r1, r5
-	bl DivideInt
+	bl __divsi3
 	str r1, [sl, r7, lsl #2]
 	mov r0, sb
 	mov r1, r4
-	bl DivideInt
+	bl __divsi3
 	mov sb, r0
 	add r7, r7, #1
 _020396D4:
@@ -55560,7 +55560,7 @@ sub_020399FC: ; 0x020399FC
 	subge r5, r8, #1
 	sub r0, r8, r5
 	mov r1, #0xc
-	bl DivideInt
+	bl __divsi3
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02039B08: .word 0x0000FFFF
@@ -56625,7 +56625,7 @@ SprintfStatic__0203A970: ; 0x0203A970
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -59438,13 +59438,13 @@ _0203CD8C:
 	bl InitPortraitBoxWithMonsterId
 	add r0, sp, #0
 	mov r1, #2
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r1, _0203CE18 ; =0x0209C7CC
 	add r0, sp, #0
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	add r0, sp, #0
 	mov r1, #0
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _0203CE04 ; =0x020AFE70
 	add r1, sp, #0
 	ldr r0, [r0]
@@ -59584,7 +59584,7 @@ SprintfStatic__0203CFA4: ; 0x0203CFA4
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -59805,7 +59805,7 @@ _0203D098:
 	ldrsh r0, [sp, #0x42]
 	mov r1, #0xa
 	str r0, [sp, #0xa0]
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	movs r0, r0, asr #0x10
 	movmi r0, #0
@@ -60905,7 +60905,7 @@ _0203E2C4:
 	mov r1, #0
 	strh r0, [sp, #0x20]
 	strb r1, [sp, #0x1c]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	beq _0203E44C
 	ldrsh r0, [sp, #0x20]
@@ -61517,7 +61517,7 @@ _0203EBB4:
 	beq _0203EF9C
 	add r0, sp, #0xcc
 	bl InitPreprocessorArgs
-	bl sub_02050C74
+	bl GetRank
 	ldr r1, _0203E4B0 ; =0x020AFE74
 	ldr r2, [r1]
 	strb r0, [r2, #0xc]
@@ -61545,7 +61545,7 @@ _0203EC28:
 	beq _0203EF9C
 	ldr r0, _0203E4B0 ; =0x020AFE74
 	ldr r4, [r0]
-	bl sub_02050C74
+	bl GetRank
 	ldrb r1, [r4, #0xc]
 	cmp r1, r0
 	movne r0, #0x42
@@ -61562,7 +61562,7 @@ _0203EC5C:
 	ldr r0, [r0]
 	ldrb r0, [r0, #0xc]
 	str r0, [sp, #0x94]
-	bl sub_02050C74
+	bl GetRank
 	str r0, [sp, #0x98]
 	ldr r0, _0203E4B8 ; =0x0000101C
 	ldr r1, _0203EFCC ; =0x000002A2
@@ -61590,7 +61590,7 @@ _0203ECC4:
 	bl GetRankUpEntry
 	ldr r0, [r0, #8]
 	str r0, [sp, #0x50]
-	bl sub_02050C74
+	bl GetRank
 	bl GetRankUpEntry
 	ldr r1, [r0, #8]
 	ldr r0, [sp, #0x50]
@@ -61619,7 +61619,7 @@ _0203ED34:
 	strne r1, [r0]
 	b _0203EF9C
 _0203ED50:
-	bl sub_02050C74
+	bl GetRank
 	bl GetRankUpEntry
 	ldrsh r0, [r0, #0xc]
 	strh r0, [r4, #0x88]
@@ -61632,7 +61632,7 @@ _0203ED50:
 	str r1, [r0]
 	b _0203EF9C
 _0203ED80:
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	beq _0203EDFC
 	ldrsh r0, [r4, #0x88]
@@ -61981,7 +61981,7 @@ _0203F1FC:
 	str ip, [r3, #8]
 	ldr r0, [r0]
 	add r0, r0, #0x64
-	bl Memcpy
+	bl memcpy
 	ldr r0, _0203F340 ; =0x020AFE78
 	ldr r1, _0203F348 ; =0x00000975
 	ldr r3, [r0]
@@ -62540,11 +62540,11 @@ sub_0203F9CC: ; 0x0203F9CC
 	ldr r4, [r5, #0xb4]
 	ldr r0, _0203FA54 ; =0x022AAE00
 	mov r1, r4
-	bl ov29_02300164
+	bl GetMonsterName
 	ldr r0, _0203FA58 ; =0x022AAE2A
 	add r1, r4, #0x124
 	mov r2, #0x22
-	bl Memcpy
+	bl memcpy
 	ldrb r2, [r4, #7]
 	ldr r1, _0203FA50 ; =0x022AADFC
 	mov r0, #0
@@ -62795,7 +62795,7 @@ sub_0203FD44: ; 0x0203FD44
 	ldr r1, _0203FD74 ; =0x022AAE2A
 	add r0, r4, #0x124
 	mov r2, #0x22
-	bl Memcpy
+	bl memcpy
 	ldr r1, _0203FD78 ; =0x022AADFC
 	ldr r0, _0203FD7C ; =0x020AFE7C
 	ldrb r1, [r1, #0x2c]
@@ -63424,7 +63424,7 @@ _020405D8:
 	ldr r0, [r4, #8]
 	add r0, r0, #0xe0
 	add r0, r0, r8, lsl #7
-	bl Strcpy
+	bl strcpy
 	ldr r3, [r4, #8]
 	add r0, r8, #1
 	add r1, r3, #0xe0
@@ -63479,7 +63479,7 @@ _02040634:
 	ldr r0, [r2, #8]
 	add r0, r0, #0xe0
 	add r0, r0, r8, lsl #7
-	bl Strcpy
+	bl strcpy
 	ldr r1, _020407AC ; =0x020AFE7C
 	add r0, r8, #1
 	ldr r4, [r1, #8]
@@ -64777,7 +64777,7 @@ SprintfStatic__0204174C: ; 0x0204174C
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -64821,7 +64821,7 @@ sub_020417A8: ; 0x020417A8
 	ldr r0, [r0]
 	mov r2, #8
 	add r0, r0, #8
-	bl Memcpy
+	bl memcpy
 	add r5, r4, #1
 	mov r4, #1
 	mov sb, #8
@@ -64839,7 +64839,7 @@ _02041808:
 	add r0, r0, #8
 	add r0, r0, r4, lsl #3
 	add r1, r7, r1
-	bl Memcpy
+	bl memcpy
 	add r4, r4, #1
 _0204183C:
 	add r5, r5, #1
@@ -64867,7 +64867,7 @@ sub_02041860: ; 0x02041860
 	ldr r0, [r0]
 	mov r2, #8
 	add r0, r0, #8
-	bl Memcpy
+	bl memcpy
 	ldr r0, _020418A0 ; =0x020AFE8C
 	mov r1, #1
 	ldr r0, [r0]
@@ -65530,17 +65530,17 @@ _020421B4:
 _020421BC:
 	ldr r1, _0204224C ; =0x0209C9CC
 	add r0, sp, #0x44
-	bl Strcpy
+	bl strcpy
 	b _020421E8
 _020421CC:
 	ldr r1, _02042250 ; =0x0209C9D4
 	add r0, sp, #0x44
-	bl Strcpy
+	bl strcpy
 	b _020421E8
 _020421DC:
 	ldr r1, _02042254 ; =0x0209C9DC
 	add r0, sp, #0x44
-	bl Strcpy
+	bl strcpy
 _020421E8:
 	ldr r1, _02042248 ; =0x020AFE90
 	mov r0, r5
@@ -65553,7 +65553,7 @@ _020421E8:
 	bl CopyStringFromMessageId
 	add r0, sp, #0x44
 	add r1, sp, #4
-	bl Strcat
+	bl strcat
 	ldr r1, _02042248 ; =0x020AFE90
 	mov r0, r4
 	ldr r2, [r1, #4]
@@ -65712,7 +65712,7 @@ _0204243C:
 	mov r0, r0, asr #0x10
 	bl GetItemAtIdx
 	ldrsh r0, [r0, #4]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	ldrne r0, [r4, #8]
 	movne r5, r6
@@ -65751,7 +65751,7 @@ _020424CC:
 	mov r0, r0, asr #0x10
 	bl GetItemAtIdx
 	ldrsh r0, [r0, #4]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	beq _02042560
 	ldr r0, _02042618 ; =0x020AFEA8
@@ -65796,7 +65796,7 @@ _02042570:
 	mov r0, r0, asr #0x10
 	bl GetItemAtIdx
 	ldrsh r0, [r0, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	beq _020425CC
 	ldr r0, _02042618 ; =0x020AFEA8
@@ -66020,7 +66020,7 @@ _02042808:
 	mov r0, r0, asr #0x10
 	bl GetItemAtIdx
 	ldrsh r0, [r0, #4]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	beq _02042890
 _0204284C:
@@ -66063,7 +66063,7 @@ _020428C0:
 	b _02042A3C
 _020428D4:
 	ldrsh r0, [sp, #4]
-	bl sub_0200CCE0
+	bl IsShoppableItem
 	cmp r0, #0
 	beq _020429A4
 	mov r7, #3
@@ -66189,7 +66189,7 @@ SprintfStatic__02042A84: ; 0x02042A84
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -68986,7 +68986,7 @@ _02044EC4:
 	bne _02044EE8
 	ldr r1, _020451A8 ; =0x0209CBA8
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	b _020450A8
 _02044EE8:
 	ldr r0, _020451A0 ; =0x02353538
@@ -69011,7 +69011,7 @@ _02044EE8:
 	mov r0, #0x68
 	smlabb r0, r1, r0, r2
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx__02056228
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	ldrsh r1, [r8, #0x12]
 	ldrsh r0, [r8, #0x16]
@@ -69028,7 +69028,7 @@ _02044EE8:
 	bgt _02044F8C
 	ldr r1, _020451B0 ; =0x0209CBB0
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	b _020450A8
 _02044F8C:
 	ldr r2, _020451A4 ; =0x000003E7
@@ -69042,7 +69042,7 @@ _02044F8C:
 	bgt _02044FC0
 	ldr r1, _020451B4 ; =0x0209CBB8
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	b _020450A8
 _02044FC0:
 	ldr r2, _020451A4 ; =0x000003E7
@@ -69056,11 +69056,11 @@ _02044FC0:
 	mov r0, r4
 	bgt _02044FF4
 	ldr r1, _020451B8 ; =0x0209CBC0
-	bl Strcpy
+	bl strcpy
 	b _020450A8
 _02044FF4:
 	ldr r1, _020451BC ; =0x0209CBC8
-	bl Strcpy
+	bl strcpy
 	b _020450A8
 _02045000:
 	add r1, r1, r0
@@ -69075,7 +69075,7 @@ _02045000:
 	bgt _02045038
 	ldr r1, _020451C0 ; =0x0209CBD0
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	b _020450A8
 _02045038:
 	ldr r2, _020451A4 ; =0x000003E7
@@ -69089,7 +69089,7 @@ _02045038:
 	bgt _0204506C
 	ldr r1, _020451C4 ; =0x0209CBD8
 	mov r0, r4
-	bl Strcpy
+	bl strcpy
 	b _020450A8
 _0204506C:
 	ldr r2, _020451A4 ; =0x000003E7
@@ -69103,11 +69103,11 @@ _0204506C:
 	mov r0, r4
 	bgt _020450A0
 	ldr r1, _020451C8 ; =0x0209CBE0
-	bl Strcpy
+	bl strcpy
 	b _020450A8
 _020450A0:
 	ldr r1, _020451A8 ; =0x0209CBA8
-	bl Strcpy
+	bl strcpy
 _020450A8:
 	str r4, [sl, #0x578]
 	ldr r0, [r5]
@@ -72256,7 +72256,7 @@ sub_02047A10: ; 0x02047A10
 	mov r1, r6
 	add r0, r0, r0, lsl #7
 	add r0, r2, r0
-	bl Strcpy
+	bl strcpy
 	str r5, [sp]
 	add r0, r4, #0x1f00
 	ldrsh r1, [r0, #0x70]
@@ -72624,7 +72624,7 @@ sub_02047F38: ; 0x02047F38
 	mov r1, #0x3c
 	mov r8, r2
 	mov r7, r3
-	bl DivideInt
+	bl __divsi3
 	mov r1, r1, lsl #0x10
 	mov r2, #0
 	mov r0, r6
@@ -72653,7 +72653,7 @@ _02047FB4:
 	mov r0, r0, lsl #0x10
 	mov r1, fp
 	mov r0, r0, asr #0x10
-	bl DivideInt
+	bl __divsi3
 	add r0, r5, #1
 	mov r2, r0, lsl #0x10
 	mov r0, r1, lsl #0x10
@@ -72865,7 +72865,7 @@ sub_02048240: ; 0x02048240
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	add r0, r0, #0x31c0
 	mov r8, #0
-	bl Strcpy
+	bl strcpy
 	ldr r4, _02048334 ; =0x020AFEF4
 	mov r7, r8
 	mov r6, #0x400
@@ -72900,11 +72900,11 @@ _02048284:
 	ldr r1, _02048338 ; =0x0209CCE0
 	mov r2, #3
 	add r0, r0, r8
-	bl Strncmp
+	bl strncmp
 	cmp r0, #0
 	bne _02048310
 	ldr r0, _02048338 ; =0x0209CCE0
-	bl Strlen
+	bl strlen
 	add r8, r8, r0
 	b _0204831C
 _02048310:
@@ -73280,7 +73280,7 @@ _02048720:
 	arm_func_start sub_0204872C
 sub_0204872C: ; 0x0204872C
 	stmdb sp!, {r3, lr}
-	bl EventFlagBackup__0204C1E4
+	bl EventFlagBackup
 	mov r0, #2
 	bl SetBothScreensWindowsColor
 	mov r0, #0
@@ -73294,10 +73294,10 @@ sub_0204872C: ; 0x0204872C
 
 	arm_func_start EventFlagBackup__02048758
 EventFlagBackup__02048758: ; 0x02048758
-	ldr ip, _02048760 ; =EventFlagBackup__0204C1E4
+	ldr ip, _02048760 ; =EventFlagBackup
 	bx ip
 	.align 2, 0
-_02048760: .word EventFlagBackup__0204C1E4
+_02048760: .word EventFlagBackup
 	arm_func_end EventFlagBackup__02048758
 
 	arm_func_start sub_02048764
@@ -73641,13 +73641,13 @@ _02048BB0: .word 0x022AAE70
 	arm_func_start ReadStringSave
 ReadStringSave: ; 0x02048BB4
 	ldr r1, _02048BC8 ; =0x020AFF38
-	ldr ip, _02048BCC ; =Strncpy
+	ldr ip, _02048BCC ; =strncpy
 	mov r2, #0x20
 	ldr r1, [r1]
 	bx ip
 	.align 2, 0
 _02048BC8: .word 0x020AFF38
-_02048BCC: .word Strncpy
+_02048BCC: .word strncpy
 	arm_func_end ReadStringSave
 
 	arm_func_start CheckStringSave
@@ -73656,7 +73656,7 @@ CheckStringSave: ; 0x02048BD0
 	ldr r1, _02048BF8 ; =0x020AFF38
 	mov r2, #0x20
 	ldr r1, [r1]
-	bl Strncmp
+	bl strncmp
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -73742,7 +73742,7 @@ _02048CB4: .word 0x000F1206
 sub_02048CB8: ; 0x02048CB8
 	stmdb sp!, {r3, lr}
 	mov r0, #9
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _02048CE4
 	ldr r1, _02048CF0 ; =0x022AAE74
@@ -73915,7 +73915,7 @@ ReadSaveFile: ; 0x02048ED0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, r4
-	bl CheckChecksum
+	bl CheckChecksumInvalid
 	cmp r0, #0
 	movne r0, #2
 	moveq r0, #0
@@ -73938,8 +73938,8 @@ _02048F3C:
 	bx lr
 	arm_func_end CalcChecksum
 
-	arm_func_start CheckChecksum
-CheckChecksum: ; 0x02048F4C
+	arm_func_start CheckChecksumInvalid
+CheckChecksumInvalid: ; 0x02048F4C
 	mov r3, #0
 	mov ip, #1
 	b _02048F64
@@ -73956,7 +73956,7 @@ _02048F64:
 	moveq r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end CheckChecksum
+	arm_func_end CheckChecksumInvalid
 
 	arm_func_start NoteSaveBase
 NoteSaveBase: ; 0x02048F84
@@ -74056,8 +74056,8 @@ _0204900C:
 	bl GetTime
 	mov r1, r7
 	mov r7, r0
-	bl SubtractFloat
-	bl FloatToDouble
+	bl __subsf3
+	bl __extendsfdf2
 	mov r3, r0
 	mov r2, r1
 	ldr r0, _0204923C ; =0x0209CD84
@@ -74114,8 +74114,8 @@ _020491A8:
 _020491C4:
 	bl GetTime
 	mov r1, r7
-	bl SubtractFloat
-	bl FloatToDouble
+	bl __subsf3
+	bl __extendsfdf2
 	mov r3, r0
 	mov r2, r1
 	ldr r0, _02049244 ; =0x0209CD94
@@ -77455,10 +77455,10 @@ _0204BD08:
 	mov r0, r1
 	b _0204BD88
 _0204BD14:
-	bl DivideInt
+	bl __divsi3
 	b _0204BD88
 _0204BD1C:
-	bl DivideInt
+	bl __divsi3
 	mov r0, r1
 	b _0204BD88
 _0204BD28:
@@ -77825,8 +77825,8 @@ sub_0204BFC0: ; 0x0204BFC0
 _0204C1E0: .word 0x0209CF64
 	arm_func_end sub_0204BFC0
 
-	arm_func_start EventFlagBackup__0204C1E4
-EventFlagBackup__0204C1E4: ; 0x0204C1E4
+	arm_func_start EventFlagBackup
+EventFlagBackup: ; 0x0204C1E4
 	stmdb sp!, {r4, lr}
 	bl GetGameMode
 	cmp r0, #1
@@ -77965,13 +77965,13 @@ EventFlagBackup__0204C1E4: ; 0x0204C1E4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0204C404: .word 0x0209CF84
-	arm_func_end EventFlagBackup__0204C1E4
+	arm_func_end EventFlagBackup
 
 	arm_func_start DumpScriptVariableValues
 DumpScriptVariableValues: ; 0x0204C408
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl EventFlagBackup__0204C1E4
+	bl EventFlagBackup
 	ldr r1, _0204C42C ; =0x022AB0AC
 	mov r0, r4
 	mov r2, #0x400
@@ -78578,8 +78578,8 @@ _0204CB70:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0204CB2C
 
-	arm_func_start GetScenarioBalance__0204CB94
-GetScenarioBalance__0204CB94: ; 0x0204CB94
+	arm_func_start GetScenarioBalance
+GetScenarioBalance: ; 0x0204CB94
 	stmdb sp!, {r3, lr}
 	mov r0, #0
 	mov r1, #0x49
@@ -78603,7 +78603,7 @@ _0204CBD8:
 	moveq r0, #1
 	movne r0, #3
 	ldmia sp!, {r3, pc}
-	arm_func_end GetScenarioBalance__0204CB94
+	arm_func_end GetScenarioBalance
 
 	arm_func_start sub_0204CBE8
 sub_0204CBE8: ; 0x0204CBE8
@@ -79524,8 +79524,8 @@ CopyProgressInfoFromScratchFrom: ; 0x0204D748
 	ldmia sp!, {r3, pc}
 	arm_func_end CopyProgressInfoFromScratchFrom
 
-	arm_func_start sub_0204D780
-sub_0204D780: ; 0x0204D780
+	arm_func_start InitKaomadoStream
+InitKaomadoStream: ; 0x0204D780
 	stmdb sp!, {r3, lr}
 	bl DataTransferInit
 	ldr r0, _0204D798 ; =0x022AB4B0
@@ -79534,7 +79534,7 @@ sub_0204D780: ; 0x0204D780
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0204D798: .word 0x022AB4B0
-	arm_func_end sub_0204D780
+	arm_func_end InitKaomadoStream
 
 	arm_func_start InitPortraitBox
 InitPortraitBox: ; 0x0204D79C
@@ -79566,16 +79566,16 @@ InitPortraitBoxWithMonsterId: ; 0x0204D7D4
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end InitPortraitBoxWithMonsterId
 
-	arm_func_start SetPortraitExpressionId
-SetPortraitExpressionId: ; 0x0204D7F4
+	arm_func_start SetPortraitEmotion
+SetPortraitEmotion: ; 0x0204D7F4
 	ldrsh r2, [r0]
 	cmp r2, #0
 	strneb r1, [r0, #2]
 	bx lr
-	arm_func_end SetPortraitExpressionId
+	arm_func_end SetPortraitEmotion
 
-	arm_func_start SetPortraitUnknownAttr
-SetPortraitUnknownAttr: ; 0x0204D804
+	arm_func_start SetPortraitLayout
+SetPortraitLayout: ; 0x0204D804
 	ldrsh r2, [r0]
 	cmp r2, #0
 	cmpne r1, #0x20
@@ -79594,10 +79594,10 @@ SetPortraitUnknownAttr: ; 0x0204D804
 	bx lr
 	.align 2, 0
 _0204D844: .word 0x0209E014
-	arm_func_end SetPortraitUnknownAttr
+	arm_func_end SetPortraitLayout
 
-	arm_func_start SetPortraitAttrStruct
-SetPortraitAttrStruct: ; 0x0204D848
+	arm_func_start SetPortraitOffset
+SetPortraitOffset: ; 0x0204D848
 	stmdb sp!, {r3, lr}
 	ldrsh r2, [r0]
 	cmp r2, #0
@@ -79618,16 +79618,16 @@ SetPortraitAttrStruct: ; 0x0204D848
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0204D890: .word 0x0209E014
-	arm_func_end SetPortraitAttrStruct
+	arm_func_end SetPortraitOffset
 
-	arm_func_start sub_0204D894
-sub_0204D894: ; 0x0204D894
+	arm_func_start AllowPortraitDefault
+AllowPortraitDefault: ; 0x0204D894
 	strb r1, [r0, #0xf]
 	bx lr
-	arm_func_end sub_0204D894
+	arm_func_end AllowPortraitDefault
 
-	arm_func_start sub_0204D89C
-sub_0204D89C: ; 0x0204D89C
+	arm_func_start IsValidPortrait
+IsValidPortrait: ; 0x0204D89C
 	ldrsh r1, [r0]
 	cmp r1, #0
 	ldrnesb r1, [r0, #2]
@@ -79636,7 +79636,7 @@ sub_0204D89C: ; 0x0204D89C
 	movne r0, #1
 	moveq r0, #0
 	bx lr
-	arm_func_end sub_0204D89C
+	arm_func_end IsValidPortrait
 
 	arm_func_start LoadPortrait
 LoadPortrait: ; 0x0204D8BC
@@ -80232,7 +80232,7 @@ _0204E068:
 	mov r1, r6
 	add r2, r3, r2
 	strb r2, [sb, r5]
-	bl DivideInt
+	bl __divsi3
 	add r5, r5, #1
 _0204E090:
 	cmp r5, r8
@@ -80268,7 +80268,7 @@ _0204E0DC:
 	mov r1, r6
 	sub r2, r3, r2
 	strb r2, [sb, r5]
-	bl DivideInt
+	bl __divsi3
 	add r5, r5, #1
 _0204E104:
 	cmp r5, r8
@@ -83726,10 +83726,10 @@ _02050B9C:
 _02050BB4: .word 0x022AB918
 	arm_func_end SetTeamName
 
-	arm_func_start sub_02050BB8
-sub_02050BB8: ; 0x02050BB8
+	arm_func_start GetRankupPoints
+GetRankupPoints: ; 0x02050BB8
 	stmdb sp!, {r4, lr}
-	bl sub_02050C74
+	bl GetRank
 	mov r4, r0
 	mov r0, #0x16
 	bl GetPerformanceFlagWithChecks
@@ -83753,7 +83753,7 @@ _02050BF0:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02050C0C: .word 0x022AB918
-	arm_func_end sub_02050BB8
+	arm_func_end GetRankupPoints
 
 	arm_func_start sub_02050C10
 sub_02050C10: ; 0x02050C10
@@ -83786,8 +83786,8 @@ _02050C6C: .word 0x022AB918
 _02050C70: .word 0x05F5E0FF
 	arm_func_end sub_02050C10
 
-	arm_func_start sub_02050C74
-sub_02050C74: ; 0x02050C74
+	arm_func_start GetRank
+GetRank: ; 0x02050C74
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
 	ldr r4, _02050CCC ; =0x022AB918
@@ -83816,12 +83816,12 @@ _02050CC4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02050CCC: .word 0x022AB918
-	arm_func_end sub_02050C74
+	arm_func_end GetRank
 
 	arm_func_start sub_02050CD0
 sub_02050CD0: ; 0x02050CD0
 	stmdb sp!, {r3, lr}
-	bl sub_02050C74
+	bl GetRank
 	cmp r0, #8
 	movhi r0, #8
 	ldmia sp!, {r3, pc}
@@ -83830,7 +83830,7 @@ sub_02050CD0: ; 0x02050CD0
 	arm_func_start sub_02050CE4
 sub_02050CE4: ; 0x02050CE4
 	stmdb sp!, {r3, lr}
-	bl sub_02050C74
+	bl GetRank
 	bl GetRankUpEntry
 	ldr r0, [r0, #8]
 	ldmia sp!, {r3, pc}
@@ -85419,7 +85419,7 @@ sub_02051FF0: ; 0x02051FF0
 	mov r5, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, [sp]
 	bl GetAtSize
 	mov r4, r0
@@ -85662,7 +85662,7 @@ LoadMonsterMd: ; 0x02052358
 	ldr r0, _02052388 ; =0x020B09C0
 	ldr r1, _0205238C ; =0x020A31B8
 	mov r2, #0
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	bl LoadM2nAndN2m
 	ldr r0, _02052390 ; =0x020B09B4
 	ldr r1, [r0, #0xc]
@@ -85682,7 +85682,7 @@ GetNameRaw: ; 0x02052394
 	mov r4, r0
 	mov r0, r1
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	add r0, r1, #0x1f
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
@@ -85691,7 +85691,7 @@ GetNameRaw: ; 0x02052394
 	mov r1, r0
 	mov r0, r4
 	mov r2, #0x14
-	bl Strncpy
+	bl strncpy
 	ldmia sp!, {r4, pc}
 	arm_func_end GetNameRaw
 
@@ -85702,7 +85702,7 @@ GetName: ; 0x020523D0
 	mov r0, r1
 	mov r1, #0x258
 	mov r4, r2
-	bl DivideInt
+	bl __divsi3
 	add r0, r1, #0x1f
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
@@ -85726,7 +85726,7 @@ SprintfStatic__02052418: ; 0x02052418
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -85741,7 +85741,7 @@ GetNameWithGender: ; 0x02052440
 	mov r0, r5
 	mov r1, #0x258
 	mov r4, r2
-	bl DivideInt
+	bl __divsi3
 	add r0, r1, #0x1f
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
@@ -85891,7 +85891,7 @@ _02052660:
 _02052684:
 	mov r0, r4
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	add r0, r1, #0x1f
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
@@ -85913,7 +85913,7 @@ _020526C4: .word 0x020A31FC
 GetNameString: ; 0x020526C8
 	stmdb sp!, {r3, lr}
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	add r0, r1, #0x1f
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
@@ -85978,7 +85978,7 @@ GetCategoryString: ; 0x0205275C
 	mov r4, r0
 	mov r0, r5
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	add r0, r1, #0x77
 	add r0, r0, #0x2400
 	mov r0, r0, lsl #0x10
@@ -86022,7 +86022,7 @@ _020527DC: .word 0x020B09B4
 GetSpriteSize: ; 0x020527E0
 	stmdb sp!, {r3, lr}
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	mov r0, r1, lsl #0x10
 	ldr r2, _02052818 ; =0x020A2D08
 	mov r0, r0, asr #0x10
@@ -86042,7 +86042,7 @@ _02052818: .word 0x020A2D08
 GetSpriteFileSize: ; 0x0205281C
 	stmdb sp!, {r3, lr}
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _02052838 ; =0x020A2D09
 	ldrb r0, [r0, r1, lsl #1]
 	mov r0, r0, lsl #9
@@ -86296,7 +86296,7 @@ GetExp: ; 0x02052A7C
 	ldrsh r4, [r0, #0x1c]
 	mov r1, #0xa
 	mul r0, r4, r3
-	bl DivideInt
+	bl __divsi3
 	add r0, r4, r0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -86425,7 +86425,7 @@ LoadM2nAndN2m: ; 0x02052BD4
 	ldr r0, _02052C2C ; =0x020B09C8
 	ldr r1, _02052C30 ; =0x020A3210
 	mov r2, #0
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 _02052C00:
 	ldr r0, _02052C34 ; =0x020B09D0
 	bl PointsToZero
@@ -86436,7 +86436,7 @@ _02052C00:
 	ldr r0, _02052C34 ; =0x020B09D0
 	ldr r1, _02052C38 ; =0x020A322C
 	mov r2, #0
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02052C2C: .word 0x020B09C8
@@ -87165,7 +87165,7 @@ _02053598:
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldr r1, _02053620 ; =0x0000013B
 	add r0, r5, #0x22
-	bl GETMOVESETIDX__02013CAC
+	bl GetMovesetIdx__02013CAC
 	mvn r1, #0
 	cmp r0, r1
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -87234,7 +87234,7 @@ _02053688:
 _0205369C:
 	mov r1, r8
 	add r0, r6, #0x22
-	bl GETMOVESETIDX__02013CAC
+	bl GetMovesetIdx__02013CAC
 	mvn r1, #0
 	cmp r0, r1
 	bne _02053758
@@ -87257,7 +87257,7 @@ _020536D4:
 	beq _02053774
 	bl Rand16Bit
 	mov r1, r7
-	bl DivideInt
+	bl __divsi3
 	mov r7, r1
 	mov r0, #6
 	mul ip, r7, r0
@@ -87304,8 +87304,8 @@ _02053780:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end sub_02053660
 
-	arm_func_start GetLvlStats
-GetLvlStats: ; 0x0205379C
+	arm_func_start GetLvlUpEntry
+GetLvlUpEntry: ; 0x0205379C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0xc
 	mov r6, r1
@@ -87313,14 +87313,14 @@ GetLvlStats: ; 0x0205379C
 	mov r0, r6
 	mov r1, #0x258
 	mov r4, r2
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _02053844 ; =0x022AB92C
 	ldrsh r0, [r0]
 	cmp r0, r1
 	beq _02053820
 	mov r0, r6
 	mov r1, #0x258
-	bl DivideInt
+	bl __divsi3
 	sub r0, r1, #1
 	ldr r2, _02053844 ; =0x022AB92C
 	mov r0, r0, lsl #0x10
@@ -87352,10 +87352,10 @@ _02053820:
 	.align 2, 0
 _02053844: .word 0x022AB92C
 _02053848: .word 0x022AB930
-	arm_func_end GetLvlStats
+	arm_func_end GetLvlUpEntry
 
-	arm_func_start sub_0205384C
-sub_0205384C: ; 0x0205384C
+	arm_func_start GetEncodedHalfword
+GetEncodedHalfword: ; 0x0205384C
 	ldrb ip, [r0]
 	add r2, r0, #1
 	mov r0, r2
@@ -87369,7 +87369,7 @@ sub_0205384C: ; 0x0205384C
 	orr r2, r3, r2, lsr #18
 	strh r2, [r1]
 	bx lr
-	arm_func_end sub_0205384C
+	arm_func_end GetEncodedHalfword
 
 	arm_func_start sub_02053880
 sub_02053880: ; 0x02053880
@@ -87443,7 +87443,7 @@ _02053950:
 _02053960:
 	mov r0, r4
 	add r1, sp, #0
-	bl sub_0205384C
+	bl GetEncodedHalfword
 	ldrb r1, [r0]
 	add r4, r0, #1
 	cmp r1, sb
@@ -87541,7 +87541,7 @@ _02053AA4:
 	mov r0, r4
 	add r1, sp, #0
 	mov r6, fp
-	bl sub_0205384C
+	bl GetEncodedHalfword
 	mov r4, r0
 	ldrh r0, [sp]
 	mov r1, r7
@@ -87757,7 +87757,7 @@ sub_02053D1C: ; 0x02053D1C
 	b _02053D80
 _02053D64:
 	mov r1, r5
-	bl sub_0205384C
+	bl GetEncodedHalfword
 	ldrh r1, [sp, #2]
 	add r0, r0, #1
 	cmp r4, r1
@@ -87773,7 +87773,7 @@ _02053D80:
 	b _02053DB4
 _02053D9C:
 	mov r1, r5
-	bl sub_0205384C
+	bl GetEncodedHalfword
 	ldrh r1, [sp]
 	cmp r1, r4
 	moveq r0, #1
@@ -88281,7 +88281,7 @@ GetMonsterIdFromSpawnEntry: ; 0x02054480
 	stmdb sp!, {r3, lr}
 	ldrsh r0, [r0, #6]
 	ldr r1, _0205449C ; =0x00000483
-	bl DivideInt
+	bl __divsi3
 	mov r0, r1, lsl #0x10
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r3, pc}
@@ -88480,7 +88480,7 @@ sub_020546E8: ; 0x020546E8
 	ldrsh r1, [r4, #4]
 	add r0, sp, #0
 	add r2, r2, #1
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldrb r1, [r4, #1]
 	add r0, r4, #0xa
 	add r1, r1, #1
@@ -88750,7 +88750,7 @@ SprintfStatic__02054A60: ; 0x02054A60
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -90658,8 +90658,8 @@ _020561D8:
 _02056224: .word 0x020B0A48
 	arm_func_end sub_020561C0
 
-	arm_func_start CheckTeamMemberIdx__02056228
-CheckTeamMemberIdx__02056228: ; 0x02056228
+	arm_func_start CheckTeamMemberIdx
+CheckTeamMemberIdx: ; 0x02056228
 	ldr r1, _0205625C ; =0x000055AA
 	cmp r0, r1
 	moveq r0, #1
@@ -90676,7 +90676,7 @@ CheckTeamMemberIdx__02056228: ; 0x02056228
 	.align 2, 0
 _0205625C: .word 0x000055AA
 _02056260: .word 0x00005AA5
-	arm_func_end CheckTeamMemberIdx__02056228
+	arm_func_end CheckTeamMemberIdx
 
 	arm_func_start sub_02056264
 sub_02056264: ; 0x02056264
@@ -90695,8 +90695,8 @@ _0205628C: .word 0x000055AA
 _02056290: .word 0x00005AA5
 	arm_func_end sub_02056264
 
-	arm_func_start IsMonsterIdInNormalRange__02056294
-IsMonsterIdInNormalRange__02056294: ; 0x02056294
+	arm_func_start IsMonsterIdInNormalRange
+IsMonsterIdInNormalRange: ; 0x02056294
 	cmp r0, #0
 	blt _020562AC
 	ldr r1, _020562B4 ; =0x0000022B
@@ -90708,7 +90708,7 @@ _020562AC:
 	bx lr
 	.align 2, 0
 _020562B4: .word 0x0000022B
-	arm_func_end IsMonsterIdInNormalRange__02056294
+	arm_func_end IsMonsterIdInNormalRange
 
 	arm_func_start sub_020562B8
 sub_020562B8: ; 0x020562B8
@@ -91604,7 +91604,7 @@ _02056DA0:
 	beq _02056DE4
 	ldrsh r8, [r7, #8]
 	mov r0, r8
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	beq _02056DE4
 	mov r0, r8
@@ -91648,7 +91648,7 @@ _02056E34:
 	beq _02056E98
 	ldrsh r8, [r7, #8]
 	mov r0, r8
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	beq _02056E98
 	mov r0, r8
@@ -91970,7 +91970,7 @@ _0205724C:
 	cmp r1, r4
 	streqb r6, [r8]
 	beq _020572B0
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	ldrnesh r0, [r8, #8]
 	movne r0, r0, lsl #1
@@ -92030,7 +92030,7 @@ _02057338:
 	tst r0, #0xff
 	beq _02057388
 	ldrsh r0, [r7, #8]
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	beq _02057388
 	ldrsh r0, [r7, #8]
@@ -92086,7 +92086,7 @@ _020573E8:
 	tst r0, #0xff
 	beq _0205742C
 	ldrsh r0, [r7, #8]
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	beq _0205742C
 	ldrsh r0, [r7, #8]
@@ -92154,7 +92154,7 @@ _020574C0:
 	tst r0, #0xff
 	beq _02057514
 	ldrsh r0, [sb, #8]
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	beq _02057514
 	ldrsh r0, [sb, #8]
@@ -92629,7 +92629,7 @@ _02057B50:
 	bl GetBaseFormCastformCherrimDeoxys
 	strh r0, [r8, #0xc]
 	ldrsh r0, [r8, #8]
-	bl IsMonsterIdInNormalRange__02056294
+	bl IsMonsterIdInNormalRange
 	cmp r0, #0
 	beq _02057C14
 	ldrb r0, [r8, #1]
@@ -93480,7 +93480,7 @@ sub_02058674: ; 0x02058674
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl CheckTeamMemberIdx__02056228
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -94554,7 +94554,7 @@ ReadMonsterFromSave: ; 0x02059444
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x44
-	bl Memset
+	bl memset
 	mov r0, r5
 	mov r1, r4
 	mov r2, #1
@@ -94861,7 +94861,7 @@ _020598C0:
 	mla r7, sb, fp, r0
 	mov r0, r7
 	mov r2, #0x68
-	bl Memset
+	bl memset
 	mov r0, sl
 	mov r1, r7
 	mov r2, #4
@@ -95297,7 +95297,7 @@ _02059EE4:
 	ldrsh r0, [sp, #0x2c]
 	mov r1, #0x258
 	mov r6, r4
-	bl DivideInt
+	bl __divsi3
 	mov r0, r1, lsl #0x10
 	mov r0, r0, asr #0x10
 	mov r1, r4
@@ -95306,7 +95306,7 @@ _02059EE4:
 	ldrsh r0, [sp, #0x2c]
 	mov r1, #0x258
 	addne r6, r6, #1
-	bl DivideInt
+	bl __divsi3
 	mov r0, r1, lsl #0x10
 	mov r0, r0, asr #0x10
 	add r0, r0, #0x258
@@ -95639,7 +95639,7 @@ _0205A35C:
 	ldrb r2, [sp, #0x4d]
 	mov r1, r5
 	ldrsh r4, [sp, #0x50]
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldrb r0, [sp, #0x52]
 	ldr r1, [sp, #0x40]
 	strh r5, [sp, #0x50]
@@ -95783,7 +95783,7 @@ _0205A4F0:
 	ldrsh r1, [r6]
 	add r0, sp, #0x18
 	add r2, r2, #1
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldr r1, [sp, #0x18]
 	ldr r0, [r6, #0x30]
 	ldr r2, _0205ADA8 ; =0x00000953
@@ -95976,7 +95976,7 @@ _0205A83C:
 	mov r1, #0xa
 	str r0, [sp, #0x90]
 	ldrsh r0, [r6, #0x3e]
-	bl DivideInt
+	bl __divsi3
 	movs r1, r0
 	movmi r1, #0
 	cmp r1, #0x63
@@ -96183,7 +96183,7 @@ _0205AB08:
 	bl sub_02025888
 	ldr r1, _0205ADF8 ; =0x020A3514
 	str r0, [sp, #0x10]
-	bl Strcpy
+	bl strcpy
 	ldr r0, [sp, #0x10]
 	str r0, [sp, #0xa4]
 	b _0205AB98
@@ -96191,7 +96191,7 @@ _0205AB80:
 	bl sub_02025888
 	ldr r1, _0205ADFC ; =0x020A351C
 	str r0, [sp, #0x14]
-	bl Strcpy
+	bl strcpy
 	ldr r0, [sp, #0x14]
 	str r0, [sp, #0xa4]
 _0205AB98:
@@ -96288,7 +96288,7 @@ _0205AC5C:
 	bl GetCategoryString
 	mov r1, r0
 	mov r0, r5
-	bl Strcpy
+	bl strcpy
 	mov r0, #0x44
 	strb r0, [r5, #4]
 	str r5, [sp, #0xa4]
@@ -96790,7 +96790,7 @@ _0205B3CC:
 _0205B3E8:
 	mov r0, r7
 	mov r1, r5
-	bl Strcat
+	bl strcat
 	add r6, r6, #1
 _0205B3F8:
 	ldrsb r1, [r4, #1]
@@ -96801,12 +96801,12 @@ _0205B3F8:
 	beq _0205B42C
 	ldr r1, _0205B438 ; =0x020A3544
 	mov r0, r7
-	bl Strcat
+	bl strcat
 	b _0205B42C
 _0205B420:
 	ldr r1, _0205B43C ; =0x020A354C
 	mov r0, r7
-	bl Strcat
+	bl strcat
 _0205B42C:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -97640,7 +97640,7 @@ _0205BDD8:
 	ldr r4, [r0, #8]
 	mov r2, #0x44
 	mov r0, r4
-	bl Memset
+	bl memset
 	add r0, sp, #0
 	mov r1, r4
 	mov r2, #4
@@ -97710,7 +97710,7 @@ _0205BDD8:
 	ldr r4, [r0, #8]
 	mov r2, #6
 	add r0, r4, #0x44
-	bl Memset
+	bl memset
 	add r0, sp, #0
 	add r1, r4, #0x46
 	mov r2, #0xb
@@ -98743,7 +98743,7 @@ _0205CD54:
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CD78:
 	ldrsh r0, [r4, #0x18]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	bne _0205CE24
 	ldrsh r1, [r4, #0x18]
@@ -99022,7 +99022,7 @@ sub_0205D11C: ; 0x0205D11C
 	ldmia sp!, {r3, r4, r5, pc}
 _0205D140:
 	mov r0, r4
-	bl sub_0200CDAC
+	bl IsValidTargetItem
 	cmp r0, #0
 	beq _0205D164
 	ldr r0, _0205D1E8 ; =0x020A3AD4
@@ -99057,7 +99057,7 @@ _0205D188:
 	ldmia sp!, {r3, r4, r5, pc}
 _0205D1C0:
 	mov r0, r4
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -99867,7 +99867,7 @@ _0205DD04:
 	cmp r0, #0
 	bne _0205DD04
 	ldrsh r0, [r8, #0x14]
-	bl sub_0200CCA8
+	bl IsStorableItem
 	cmp r0, #0
 	beq _0205DD04
 _0205DD34:
@@ -102653,7 +102653,7 @@ _0206009C:
 _020600B8:
 	bl Rand16Bit
 	mov r1, r4
-	bl DivideInt
+	bl __divsi3
 	ldrb r0, [r5, r1]
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_02060084
@@ -102668,7 +102668,7 @@ sub_020600CC: ; 0x020600CC
 	ldr r0, _02060148 ; =0x020B0AFC
 	ldr r1, _0206014C ; =0x020A462C
 	mov r2, #1
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, _02060144 ; =0x020B0AD8
 	ldr r2, [r0, #0x24]
 	ldr r1, [r2]
@@ -103365,7 +103365,7 @@ SprintfStatic__020609E8: ; 0x020609E8
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -103392,7 +103392,7 @@ sub_02060A10: ; 0x02060A10
 	str r2, [sp, #4]
 	ldr r2, [r7, #0x60]
 	ldrh sl, [r2]
-	bl Strcat
+	bl strcat
 	ldr fp, _02060AF0 ; =0x00000FFF
 	ldr sb, _02060AF4 ; =0x020A3EA4
 	add r7, fp, #0xf000
@@ -103419,7 +103419,7 @@ _02060A74:
 	bl PreprocessStringFromMessageId
 	mov r0, r6
 	mov r1, r5
-	bl Strcat
+	bl strcat
 	ldr r1, [r8, #0x14]
 	mov r0, sl, lsl #1
 	ldrh sl, [r1, r0]
@@ -103450,18 +103450,18 @@ sub_02060AFC: ; 0x02060AFC
 	mov r4, r0
 	ldr r1, _02060DF4 ; =0x020A4654
 	mov r0, r6
-	bl Strcpy
+	bl strcpy
 	ldr r1, _02060DF8 ; =0x020A4664
 	mov r0, r6
 	ldrb r7, [r5, #0x47]
-	bl Strcat
+	bl strcat
 	ldr r1, _02060DFC ; =0x020B0A7C
 	mov r0, r4
 	ldr r1, [r1, r7, lsl #2]
 	bl SprintfStatic__020609E8
 	mov r0, r6
 	mov r1, r4
-	bl Strcat
+	bl strcat
 	add r0, sp, #0x30
 	bl InitPreprocessorArgs
 	ldrb r0, [r5, #0x44]
@@ -103527,10 +103527,10 @@ _02060C14:
 	bl PreprocessStringFromMessageId
 	ldr r1, _02060E10 ; =0x020A4644
 	mov r0, r6
-	bl Strcat
+	bl strcat
 	mov r0, r6
 	mov r1, r4
-	bl Strcat
+	bl strcat
 	b _02060D18
 _02060C48:
 	add r2, sp, #0x30
@@ -103586,24 +103586,24 @@ _02060CE4:
 	strb r1, [r0]
 	ldr r1, _02060E10 ; =0x020A4644
 	mov r0, r6
-	bl Strcat
+	bl strcat
 	mov r0, r6
 	mov r1, r4
-	bl Strcat
+	bl strcat
 _02060D18:
 	ldr r1, _02060E14 ; =0x020A4674
 	mov r0, r6
-	bl Strcat
+	bl strcat
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x100
 	bl sub_02061FDC
 	ldr r1, _02060E10 ; =0x020A4644
 	mov r0, r6
-	bl Strcat
+	bl strcat
 	mov r0, r6
 	mov r1, r4
-	bl Strcat
+	bl strcat
 	ldr r1, [r5, #0x5c]
 	cmp r1, #0
 	beq _02060D9C
@@ -103619,10 +103619,10 @@ _02060D18:
 	bl PreprocessStringFromMessageId
 	ldr r1, _02060E1C ; =0x020A4678
 	mov r0, r6
-	bl Strcat
+	bl strcat
 	mov r0, r6
 	mov r1, r4
-	bl Strcat
+	bl strcat
 	b _02060DE4
 _02060D9C:
 	ldrb r0, [r5, #0x46]
@@ -103641,10 +103641,10 @@ _02060DC4:
 	ldr r1, _02060E1C ; =0x020A4678
 	ldr r5, [r2, r0, lsl #2]
 	mov r0, r6
-	bl Strcat
+	bl strcat
 	mov r0, r6
 	mov r1, r5
-	bl Strcat
+	bl strcat
 _02060DE4:
 	mov r0, r4
 	bl MemFree
@@ -103675,26 +103675,26 @@ sub_02060E24: ; 0x02060E24
 	mov r4, r0
 	ldr r1, _02060EA0 ; =0x020A4654
 	mov r0, r5
-	bl Strcpy
+	bl strcpy
 	ldr r1, _02060EA4 ; =0x020A4664
 	mov r0, r5
-	bl Strcat
+	bl strcat
 	ldr r1, _02060EA8 ; =0x020B0A7C
 	mov r0, r4
 	ldr r1, [r1, #8]
 	bl SprintfStatic__020609E8
 	mov r0, r5
 	mov r1, r4
-	bl Strcat
+	bl strcat
 	ldr r1, _02060EAC ; =0x020A4644
 	mov r0, r5
-	bl Strcat
+	bl strcat
 	mov r0, r4
 	ldr r1, _02060EB0 ; =0x00003C4D
 	bl GetStringFromFileVeneer
 	mov r0, r5
 	mov r1, r4
-	bl Strcat
+	bl strcat
 	mov r0, r4
 	bl MemFree
 	ldmia sp!, {r3, r4, r5, pc}
@@ -103767,7 +103767,7 @@ _02060F60:
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x400
-	bl Strncat
+	bl strncat
 	ldr r1, [sb, #0x14]
 	mov r0, sl, lsl #1
 	ldrh r1, [r1, r0]
@@ -104731,7 +104731,7 @@ _02061D60:
 	mov r5, r0
 	mov r0, r7
 	mov r1, #0x11
-	bl DivideInt
+	bl __divsi3
 	mul r2, r1, r4
 	and r0, r8, #0xff
 	str r0, [sp]
@@ -104742,7 +104742,7 @@ _02061D60:
 	bl sub_020264F8
 	add r0, r7, #1
 	mov r1, #0x11
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #0
 	addeq sb, sb, #0xd
 	add r7, r7, #1
@@ -105136,9 +105136,9 @@ _020622B8: ; jump table
 	b _020623F8 ; case 2
 	b _02062490 ; case 3
 _020622C8:
-	bl sub_02050C74
+	bl GetRank
 	mov r8, r0
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	ldr r4, _02062544 ; =0x020B0AD8
 	mov sb, r0
 	mov sl, r6
@@ -105179,9 +105179,9 @@ _02062344:
 	blt _020622E8
 	b _02062524
 _02062360:
-	bl sub_02050C74
+	bl GetRank
 	mov r8, r0
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	ldr r4, _02062544 ; =0x020B0AD8
 	mov sb, r0
 	mov sl, r6
@@ -105222,9 +105222,9 @@ _020623DC:
 	blt _02062380
 	b _02062524
 _020623F8:
-	bl sub_02050C74
+	bl GetRank
 	mov r8, r0
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	ldr r4, _02062544 ; =0x020B0AD8
 	mov sb, r0
 	mov sl, r6
@@ -105265,9 +105265,9 @@ _02062474:
 	blt _02062418
 	b _02062524
 _02062490:
-	bl sub_02050C74
+	bl GetRank
 	mov r8, r0
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	ldr r4, _02062544 ; =0x020B0AD8
 	mov sb, r0
 	mov sl, r6
@@ -105562,7 +105562,7 @@ _02062840:
 	bl GetDungeonMode
 	cmp r0, #0
 	bne _020628E8
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	add r1, r4, r8, lsl #1
 	ldrb r1, [r1, #1]
 	mov r2, r8, lsl #1
@@ -105653,7 +105653,7 @@ sub_02062944: ; 0x02062944
 	mov r0, r0, lsl #1
 	ldrsh r7, [r8, r0]
 _02062984:
-	bl sub_02050C74
+	bl GetRank
 	cmp r0, #3
 	movhs r0, #1
 	movlo r0, #0
@@ -105661,7 +105661,7 @@ _02062984:
 	cmpne r6, #0
 	moveq r0, #0
 	streqh r0, [r4, #2]
-	bl sub_02050C74
+	bl GetRank
 	cmp r0, #4
 	movhs r0, #1
 	movlo r0, #0
@@ -106458,7 +106458,7 @@ _020633B0:
 	ldrb r0, [r1, r4, lsl #1]
 	cmp r6, r0
 	bne _02063408
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	ldr r1, _02063420 ; =0x020A3CAD
 	ldrb r1, [r1, r4, lsl #1]
 	cmp r1, r0
@@ -107756,14 +107756,14 @@ _020642DC:
 	cmp r1, #0
 	ldr r0, _02064660 ; =0x00000C1C
 	ble _02064394
-	bl DivideInt
+	bl __divsi3
 	str r0, [r5, #0x24]
 	str r0, [r5, #0x20]
 	b _020643A4
 _02064394:
 	str r0, [r5, #0x20]
 	ldrsh r1, [sp, #0xe]
-	bl DivideInt
+	bl __divsi3
 	str r0, [r5, #0x24]
 _020643A4:
 	ldrb r0, [r5, #0x1c]
@@ -107774,7 +107774,7 @@ _020643A4:
 	ldr r2, [r1, #0x10]
 	mov r1, #0x64
 	add sb, r2, #0x380
-	bl DivideInt
+	bl __divsi3
 	mov r8, #0
 	mov r7, r0
 	mov r6, r8
@@ -108577,19 +108577,19 @@ _02064DEC:
 	mov r0, #0x100
 	strb r2, [sp, #0x41]
 	ldrsh r7, [sp, #0x22]
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #0
 	movne r5, #1
 	moveq r5, #0
 	mov r1, r6
 	mov r0, #0x100
-	bl DivideInt
+	bl __divsi3
 	add r0, r0, r5
 	mov r2, r0, lsl #0x10
 	mov r1, r7
 	mov r0, #0xc0
 	mov r5, r2, asr #0x10
-	bl DivideInt
+	bl __divsi3
 	add r2, r5, #1
 	cmp r1, #0
 	str r2, [sp]
@@ -108601,7 +108601,7 @@ _02064DEC:
 	ldrsh r5, [sl, #0x12]
 	str r2, [sp, #4]
 	mvn r8, #0
-	bl DivideInt
+	bl __divsi3
 	add r0, r0, sb
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -108669,11 +108669,11 @@ _02064F2C:
 	add r0, r2, r0
 	strh r0, [sl, #0x14]
 	ldrsh r0, [sl, #0x12]
-	bl DivideInt
+	bl __divsi3
 	strh r1, [sl, #0x12]
 	ldrsh r0, [sl, #0x14]
 	mov r1, r7
-	bl DivideInt
+	bl __divsi3
 	strh r1, [sl, #0x14]
 _02064F80:
 	mov r0, #1
@@ -108983,7 +108983,7 @@ _02065330:
 	bne _0206548C
 _0206536C:
 	mov r0, #5
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _02065390
 	ldrsh r0, [r5]
@@ -109014,7 +109014,7 @@ _020653A8:
 	bne _0206548C
 _020653DC:
 	mov r0, #5
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _02065400
 	ldrsh r0, [r5]
@@ -109114,7 +109114,7 @@ sub_0206549C: ; 0x0206549C
 	b _0206595C
 _02065540:
 	mov r0, #5
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _02065580
 	ldrsh r0, [r6]
@@ -109169,7 +109169,7 @@ _020655BC:
 	b _0206595C
 _02065610:
 	mov r0, #5
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _0206566C
 	ldrsh r0, [r6]
@@ -109769,8 +109769,8 @@ ItemAtTableIdx: ; 0x02065CF8
 _02065D18: .word 0x022B7320
 	arm_func_end ItemAtTableIdx
 
-	arm_func_start sub_02065D1C
-sub_02065D1C: ; 0x02065D1C
+	arm_func_start MainLoop
+MainLoop: ; 0x02065D1C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	bl sub_020024A0
@@ -109785,11 +109785,11 @@ sub_02065D1C: ; 0x02065D1C
 	ldr r0, _02066374 ; =0x020AFC68
 	mov r1, #0x80
 	ldr r0, [r0]
-	bl sub_0201D3BC
+	bl InitWanTable
 	bl sub_0201F208
 	bl OpenAllPackFiles
 	bl sub_0204AB18
-	bl sub_0204D780
+	bl InitKaomadoStream
 	bl sub_02025AD8
 	bl sub_02026E78
 	bl sub_020346C0
@@ -109799,7 +109799,7 @@ sub_02065D1C: ; 0x02065D1C
 	bl SetBothScreensWindowsColor
 	bl sub_0204A1A4
 	bl sub_02048420
-	bl KeyWaitInit__02006DA4
+	bl KeyWaitInit
 	add r0, sp, #4
 	bl ReadSaveHeader
 	cmp r0, #1
@@ -109860,7 +109860,7 @@ _02065E54:
 	bl sub_0200CA8C
 	bl sub_0205C73C
 	bl sub_0205B44C
-	bl KeyWaitInit__02006DA4
+	bl KeyWaitInit
 	bl InitScriptVariableValues
 	cmp r4, #0
 	beq _02065EE0
@@ -110089,7 +110089,7 @@ _0206617C:
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #0
-	bl CheckEndDungeon
+	bl MainGame
 	mov r8, r0
 	mov r0, #2
 	bl UnloadOverlay
@@ -110109,7 +110109,7 @@ _020661B0:
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #0
-	bl CheckEndDungeon
+	bl MainGame
 	mov r8, r0
 	mov r0, #2
 	bl UnloadOverlay
@@ -110122,7 +110122,7 @@ _020661FC:
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #1
-	bl CheckEndDungeon
+	bl MainGame
 	mov r8, r0
 	mov r0, #2
 	bl UnloadOverlay
@@ -110135,7 +110135,7 @@ _0206622C:
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #1
-	bl CheckEndDungeon
+	bl MainGame
 	mov r8, r0
 	mov r0, #2
 	bl UnloadOverlay
@@ -110148,7 +110148,7 @@ _0206625C:
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #2
-	bl CheckEndDungeon
+	bl MainGame
 	mov r8, r0
 	mov r0, #2
 	bl UnloadOverlay
@@ -110161,7 +110161,7 @@ _0206628C:
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #3
-	bl CheckEndDungeon
+	bl MainGame
 	mov r8, r0
 	mov r0, #2
 	bl UnloadOverlay
@@ -110179,7 +110179,7 @@ _020662BC:
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #1
-	bl CheckEndDungeon
+	bl MainGame
 	mov r8, r0
 	mov r0, #2
 	bl UnloadOverlay
@@ -110192,7 +110192,7 @@ _02066300:
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #1
-	bl CheckEndDungeon
+	bl MainGame
 	mov r8, r0
 	mov r0, #2
 	bl UnloadOverlay
@@ -110210,7 +110210,7 @@ _02066330:
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #1
-	bl CheckEndDungeon
+	bl MainGame
 	mov r8, r0
 	mov r0, #2
 	bl UnloadOverlay
@@ -110219,7 +110219,7 @@ _02066330:
 	.align 2, 0
 _02066374: .word 0x020AFC68
 _02066378: .word 0x020A9208
-	arm_func_end sub_02065D1C
+	arm_func_end MainLoop
 
 	arm_func_start sub_0206637C
 sub_0206637C: ; 0x0206637C
@@ -112123,11 +112123,11 @@ sub_02067C8C: ; 0x02067C8C
 	ldreqb r0, [r4, #2]
 	cmpeq r0, #1
 	bne _02067E70
-	bl sub_02050C74
+	bl GetRank
 	ldrb r1, [sp, #4]
 	cmp r1, r0
 	bhi _02067D3C
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	ldr r1, [sp, #0xc]
 	cmp r1, r0
 	bgt _02067D3C
@@ -112366,11 +112366,11 @@ _02067FE0:
 	str r2, [r1]
 	b _020682D8
 _02068054:
-	bl sub_02050C74
+	bl GetRank
 	ldrb r1, [sp, #4]
 	cmp r1, r0
 	bhi _02068090
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	ldr r1, [sp, #0xc]
 	cmp r1, r0
 	bgt _02068090
@@ -112443,11 +112443,11 @@ _02068158:
 	ldrb r0, [r4, #4]
 	bl sub_02063394
 	mov r6, r0
-	bl sub_02050C74
+	bl GetRank
 	ldrb r1, [sp, #4]
 	cmp r1, r0
 	bhi _020681BC
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	ldr r1, [sp, #0xc]
 	cmp r1, r0
 	bgt _020681BC
@@ -115781,7 +115781,7 @@ _0206AE48:
 	mov r0, #0xc0
 	ldr fp, [r7, #0x2d8]
 	mov r6, #0
-	bl DivideInt
+	bl __divsi3
 	mov sb, r0, lsl #8
 	mov r0, #0x14000
 	rsb r0, r0, #0
@@ -115796,7 +115796,7 @@ _0206AE70:
 	str r0, [sp, #0x18]
 	ldr r1, [r1, #4]
 	rsb r0, r4, #0
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #0x1c]
 	str r0, [sp]
 	mov r0, #0
@@ -116006,7 +116006,7 @@ _0206B0E8:
 	strh r5, [r4, #0x10]
 	strh r5, [r4, #0x12]
 	str r1, [r3, #0xbd4]
-	bl DivideInt
+	bl __divsi3
 	add r1, sb, #0x1b00
 	strh r0, [r1, #0xcc]
 	ldr r0, [r7, #0xc]
@@ -116043,7 +116043,7 @@ _0206B1D4:
 	bne _0206B278
 	ldr r1, [r6, #0x50]
 	mov r0, #0xc00
-	bl DivideInt
+	bl __divsi3
 	strh r0, [r6, #0x48]
 	add r0, sb, #0x1000
 	mov r1, #1
@@ -116060,7 +116060,7 @@ _0206B278:
 	bne _0206B290
 	ldr r1, [r6, #0x50]
 	mov r0, #0xc00
-	bl DivideInt
+	bl __divsi3
 	strh r0, [r6, #0x48]
 _0206B290:
 	mov r0, #0
@@ -116112,7 +116112,7 @@ _0206B328:
 	bl sub_0201C0B0
 	ldrsh r1, [r4, #0x18]
 	mov r0, r6
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -116128,7 +116128,7 @@ _0206B328:
 	ldr r1, [r0, r1]
 	mov r0, r6
 	mov r3, #0x2c0
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldr r1, [sl, #4]
 	mov r0, r6
 	strh r1, [r6, #0x1c]
@@ -116182,13 +116182,13 @@ _0206B408:
 	ldr r1, [r1]
 	ldr r1, [r1, #4]
 	sub r1, r1, #1
-	bl DivideInt
+	bl __divsi3
 	add r0, r1, #1
 	mov r0, r0, lsl #0x10
 	mov r6, r0, asr #0x10
 	bl Rand16Bit
 	mov r1, #0xd0
-	bl DivideInt
+	bl __divsi3
 	add sl, r1, #0x10
 	bl Rand16Bit
 	str sl, [sp]
@@ -116268,13 +116268,13 @@ _0206B580:
 	ldr r1, [r1]
 	ldr r1, [r1, #4]
 	sub r1, r1, #1
-	bl DivideInt
+	bl __divsi3
 	add r0, r1, #1
 	mov r0, r0, lsl #0x10
 	mov r6, r0, asr #0x10
 	bl Rand16Bit
 	mov r1, #0xd0
-	bl DivideInt
+	bl __divsi3
 	add sl, r1, #0x10
 	bl Rand16Bit
 	str sl, [sp]
@@ -116375,7 +116375,7 @@ _0206B6D8:
 	ldr r1, [r1, #4]
 	moveq sl, #0x14000
 	rsb r0, sl, #0
-	bl DivideInt
+	bl __divsi3
 	str r0, [sp, #0x28]
 	mov r0, #0x58
 	mul r7, r6, r0
@@ -119174,7 +119174,7 @@ sub_0206DB7C: ; 0x0206DB7C
 	mov r0, #0x3e8
 	ldrsh r1, [r1, #0x28]
 	smulbb r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 _0206DBB4:
 	strh r0, [r4, #0x1a]
 	mov r2, #0
@@ -119269,7 +119269,7 @@ _0206DCC8:
 	ldr r0, _0206DD6C ; =0x022B7330
 	ldrsh r1, [r0, #0x28]
 	mov r0, r7
-	bl DivideUInt
+	bl __udivsi3
 	mov r0, r0, lsl #0x10
 	movs r6, r0, lsr #0x10
 	moveq r6, #1
@@ -119285,7 +119285,7 @@ _0206DCF4:
 	moveq r5, #0
 	beq _0206DD28
 	mov r1, r6
-	bl DivideInt
+	bl __divsi3
 	str r0, [sl, #0x6c]
 _0206DD28:
 	strh r5, [sl, #0x74]
@@ -119331,7 +119331,7 @@ sub_0206DD70: ; 0x0206DD70
 	mul r0, r1, r0
 	ldr r1, _0206E05C ; =0x022B7330
 	ldrsh r1, [r1, #0x28]
-	bl DivideUInt
+	bl __udivsi3
 	mov r0, r0, lsl #0x10
 	movs r5, r0, lsr #0x10
 	moveq r5, #1
@@ -119347,7 +119347,7 @@ _0206DDC4:
 	moveq r4, #0
 	beq _0206DDF8
 	mov r1, r5
-	bl DivideInt
+	bl __divsi3
 	str r0, [r7, #0x4c]
 _0206DDF8:
 	strh r4, [r7, #0x54]
@@ -119360,7 +119360,7 @@ _0206DDF8:
 	movs r1, r0, lsr #8
 	ldr r0, _0206E060 ; =0x03938700
 	moveq r1, #1
-	bl DivideUInt
+	bl __udivsi3
 	str r0, [r7, #0x44]
 	b _0206DE38
 _0206DE2C:
@@ -119380,7 +119380,7 @@ _0206DE38:
 	mul r0, r1, r0
 	ldr r1, _0206E05C ; =0x022B7330
 	ldrsh r1, [r1, #0x28]
-	bl DivideUInt
+	bl __udivsi3
 	mov r0, r0, lsl #0x10
 	movs r5, r0, lsr #0x10
 	moveq r5, #1
@@ -119396,7 +119396,7 @@ _0206DE78:
 	moveq r4, #0
 	beq _0206DEAC
 	mov r1, r5
-	bl DivideInt
+	bl __divsi3
 	str r0, [r7, #0x5c]
 _0206DEAC:
 	strh r4, [r7, #0x64]
@@ -119430,7 +119430,7 @@ _0206DEDC:
 	mul r0, r1, r0
 	ldr r1, _0206E05C ; =0x022B7330
 	ldrsh r1, [r1, #0x28]
-	bl DivideUInt
+	bl __udivsi3
 	mov r0, r0, lsl #0x10
 	movs r5, r0, lsr #0x10
 	moveq r5, #1
@@ -119448,7 +119448,7 @@ _0206DF34:
 	moveq r8, #0
 	beq _0206DF70
 	mov r1, r5
-	bl DivideInt
+	bl __divsi3
 	str r0, [r7, #0x6c]
 _0206DF70:
 	strh r8, [r7, #0x74]
@@ -119476,7 +119476,7 @@ _0206DF98:
 	mul r0, r1, r0
 	ldr r1, _0206E05C ; =0x022B7330
 	ldrsh r1, [r1, #0x28]
-	bl DivideUInt
+	bl __udivsi3
 	mov r0, r0, lsl #0x10
 	movs r5, r0, lsr #0x10
 	moveq r5, #1
@@ -119492,7 +119492,7 @@ _0206DFE0:
 	moveq r4, #0
 	beq _0206E014
 	mov r1, r5
-	bl DivideInt
+	bl __divsi3
 	str r0, [r7, #0x7c]
 _0206E014:
 	strh r4, [r7, #0x84]
@@ -119581,7 +119581,7 @@ _0206E114:
 	ldr r2, [r4, #0x34]
 	ldr r1, [r1, #0x30]
 	mul r0, r2, r0
-	bl DivideUInt
+	bl __udivsi3
 	str r0, [r6, #4]
 	ldr r1, [r4, #0x38]
 	mov r0, r4
@@ -119615,7 +119615,7 @@ _0206E1A4:
 	mul r0, r1, r0
 	ldr r1, _0206E214 ; =0x022B7330
 	ldr r1, [r1, #0x30]
-	bl DivideUInt
+	bl __udivsi3
 	str r0, [r6]
 	b _0206E20C
 _0206E1C4:
@@ -119799,7 +119799,7 @@ sub_0206E3C4: ; 0x0206E3C4
 	mul r0, r1, r0
 	ldr r1, _0206E4E0 ; =0x022B7330
 	ldrsh r1, [r1, #0x28]
-	bl DivideUInt
+	bl __udivsi3
 	mov r0, r0, lsl #0x10
 	movs r6, r0, lsr #0x10
 	moveq r6, #1
@@ -119815,7 +119815,7 @@ _0206E43C:
 	moveq r4, r1
 	beq _0206E470
 	mov r1, r6
-	bl DivideInt
+	bl __divsi3
 	str r0, [r5, #0x6c]
 _0206E470:
 	strh r4, [r5, #0x74]
@@ -121501,7 +121501,7 @@ _0206FA30:
 	mul r0, r6, r0
 	ldr r1, _0206FAE4 ; =0x022B7330
 	ldrsh r1, [r1, #0x28]
-	bl DivideUInt
+	bl __udivsi3
 	mov r0, r0, lsl #0x10
 	movs r5, r0, lsr #0x10
 	moveq r5, #1
@@ -121534,7 +121534,7 @@ _0206FAA4:
 	moveq r5, r1
 	beq _0206FAD4
 	mov r1, r5
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0x30]
 _0206FAD4:
 	strh r5, [r4, #0x38]
@@ -121555,7 +121555,7 @@ sub_0206FAE8: ; 0x0206FAE8
 	ldr r2, _0206FBC4 ; =0x022B7330
 	mov r5, r1
 	ldrsh r1, [r2, #0x28]
-	bl DivideInt
+	bl __divsi3
 	ldrsb r1, [r4, #0x13]
 	cmp r1, #1
 	moveq r0, #0
@@ -121590,7 +121590,7 @@ _0206FB58:
 	moveq r5, r1
 	beq _0206FB94
 	mov r1, r5
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0x30]
 _0206FB94:
 	strh r5, [r4, #0x38]
@@ -121841,7 +121841,7 @@ _0206FEB0:
 	strb r0, [r5, #0x2c]
 	ldr r1, [sl, #0x3c]
 	ldr r0, _02070080 ; =0x00FFB0FF
-	bl DivideUInt
+	bl __udivsi3
 	mov r4, r0
 	ldr r1, [r5, #8]
 	ldr r0, _02070084 ; =0x022B9208
@@ -123151,16 +123151,16 @@ _02071030:
 	addlo r1, r1, #0x10000
 	str r0, [r8, #0xec8]
 	mov r0, r1
-	bl UIntToFloat
+	bl __floatunsisf
 	mov sb, r0
 	mov r0, sl
-	bl UIntToFloat
+	bl __floatunsisf
 	mov r1, r0
 	mov r0, sb
-	bl DivideFloat
+	bl __divsf3
 	mov r1, r0
 	ldr r0, _02071158 ; =0x42C80000
-	bl MultiplyFloat
+	bl __mulsf3
 	mov sb, r0
 	ldrsh r0, [r7, #0xc4]
 	mov r1, sb
@@ -123186,9 +123186,9 @@ _020710D0:
 	add r0, r0, #1
 	str r0, [r6, #0x2c]
 	ldr r0, [r6, #0x664]
-	bl sub_020713E8
+	bl UpdateSequencerTracks
 	ldr r0, [r6, #0x668]
-	bl sub_020713E8
+	bl UpdateSequencerTracks
 	bl sub_0206FBC8
 	ldr r0, _0207115C ; =0x022B9584
 	ldr r0, [r0]
@@ -123276,8 +123276,8 @@ _02071200:
 _02071220: .word 0x022B7330
 	arm_func_end sub_02071160
 
-	arm_func_start sub_02071224
-sub_02071224: ; 0x02071224
+	arm_func_start ParseDseEvents
+ParseDseEvents: ; 0x02071224
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r6, r1
@@ -123402,10 +123402,10 @@ _020713C4:
 _020713DC: .word 0x020B0B90
 _020713E0: .word 0x020B0B7C
 _020713E4: .word 0x02040811
-	arm_func_end sub_02071224
+	arm_func_end ParseDseEvents
 
-	arm_func_start sub_020713E8
-sub_020713E8: ; 0x020713E8
+	arm_func_start UpdateSequencerTracks
+UpdateSequencerTracks: ; 0x020713E8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	movs sl, r0
 	cmpne sl, #0
@@ -123582,7 +123582,7 @@ _02071648:
 	bne _02071674
 	mov r0, sl
 	mov r1, r8
-	bl sub_02071224
+	bl ParseDseEvents
 	ldrsb r0, [r8, #2]
 	cmp r0, #1
 	ldreqb r0, [sl, #0xd]
@@ -123663,7 +123663,7 @@ _0207176C:
 	.align 2, 0
 _0207177C: .word 0x04000208
 _02071780: .word 0x82061029
-	arm_func_end sub_020713E8
+	arm_func_end UpdateSequencerTracks
 
 	arm_func_start sub_02071784
 sub_02071784: ; 0x02071784
@@ -123690,7 +123690,7 @@ _020717BC:
 	movs r1, r0, lsr #8
 	ldr r0, _02071918 ; =0x03938700
 	moveq r1, #1
-	bl DivideUInt
+	bl __udivsi3
 	str r0, [r4, #0x44]
 	ldrh r0, [r4, #0x54]
 	cmp r0, #0
@@ -123962,7 +123962,7 @@ sub_02071AE0: ; 0x02071AE0
 	movs r1, r1, lsr #8
 	ldr r0, _02071B1C ; =0x03938700
 	moveq r1, #1
-	bl DivideUInt
+	bl __udivsi3
 	str r0, [r5, #0x44]
 	strb r4, [r5, #0x17]
 	add r0, r6, #1
@@ -123983,7 +123983,7 @@ sub_02071B20: ; 0x02071B20
 	movs r1, r1, lsr #8
 	ldr r0, _02071B5C ; =0x03938700
 	moveq r1, #1
-	bl DivideUInt
+	bl __udivsi3
 	str r0, [r5, #0x44]
 	strb r4, [r5, #0x17]
 	add r0, r6, #1
@@ -124084,7 +124084,7 @@ sub_02071C3C: ; 0x02071C3C
 	mul r0, r1, r0
 	ldr r1, _02071CC4 ; =0x022B7330
 	ldrsh r1, [r1, #0x28]
-	bl DivideUInt
+	bl __udivsi3
 	mov r0, r0, lsl #0x10
 	movs r6, r0, lsr #0x10
 	moveq r6, #1
@@ -124100,7 +124100,7 @@ _02071C84:
 	moveq r6, #0
 	beq _02071CB8
 	mov r1, r6
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0x6c]
 _02071CB8:
 	strh r6, [r4, #0x74]
@@ -124450,7 +124450,7 @@ sub_02072054: ; 0x02072054
 	moveq r5, #0
 	beq _020720D4
 	mov r1, r5
-	bl DivideInt
+	bl __divsi3
 	str r0, [r6, #0x20]
 _020720D4:
 	strh r5, [r6, #0x28]
@@ -124712,7 +124712,7 @@ sub_020723C0: ; 0x020723C0
 	moveq r6, #0
 	beq _02072410
 	mov r1, r6
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0x30]
 _02072410:
 	strh r6, [r4, #0x38]
@@ -124921,7 +124921,7 @@ sub_02072668: ; 0x02072668
 	moveq r6, #0
 	beq _020726B8
 	mov r1, r6
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0x40]
 _020726B8:
 	strh r6, [r4, #0x48]
@@ -127159,11 +127159,11 @@ _020741BC:
 	mov r2, r1, asr #3
 	add r1, r1, r2, lsr #28
 	mov r1, r1, asr #4
-	bl DivideInt
+	bl __divsi3
 	str r0, [r7, #0x13c]
 	b _02074264
 _0207425C:
-	bl DivideInt
+	bl __divsi3
 	str r0, [r7, #0x13c]
 _02074264:
 	tst sl, #0x20
@@ -127561,7 +127561,7 @@ sub_02074780: ; 0x02074780
 	mov r5, r0
 	str r1, [r4, #0x14c]
 	add r0, r4, #0x3c
-	bl sub_02074E0C
+	bl UpdateTrackVolumeEnvelopes
 	ldr r0, [r4, #0x158]
 	cmp r0, r5
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -128016,7 +128016,7 @@ _02074D80:
 	mov r0, #0x3e8
 	mul r0, r2, r0
 	ldrsh r1, [r1, #0x28]
-	bl DivideUInt
+	bl __udivsi3
 	b _02074DD4
 _02074DB0:
 	ldr r0, _02074E08 ; =0x020B0F50
@@ -128027,7 +128027,7 @@ _02074DB0:
 	mul r2, r3, r2
 	mul r0, r2, r0
 	ldrsh r1, [r1, #0x28]
-	bl DivideInt
+	bl __divsi3
 _02074DD4:
 	str r0, [r5, #0x18]
 	ldr r1, [r5, #0x18]
@@ -128037,7 +128037,7 @@ _02074DD4:
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r0, [r5, #0x10]
 	rsb r0, r0, r4, lsl #23
-	bl DivideInt
+	bl __divsi3
 	str r0, [r5, #0x14]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -128046,8 +128046,8 @@ _02074E04: .word 0x022B7330
 _02074E08: .word 0x020B0F50
 	arm_func_end sub_02074D58
 
-	arm_func_start sub_02074E0C
-sub_02074E0C: ; 0x02074E0C
+	arm_func_start UpdateTrackVolumeEnvelopes
+UpdateTrackVolumeEnvelopes: ; 0x02074E0C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrb r1, [r4]
@@ -128104,7 +128104,7 @@ _02074EB8:
 	mov r0, #0x3f800000
 	str r0, [r4, #0x10]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02074E0C
+	arm_func_end UpdateTrackVolumeEnvelopes
 
 	arm_func_start sub_02074ED8
 sub_02074ED8: ; 0x02074ED8
@@ -128314,21 +128314,21 @@ _02075130:
 	ldr r1, _020752A4 ; =0x022B7330
 	mul r0, r2, r0
 	ldrsh r1, [r1, #0x28]
-	bl DivideInt
+	bl __divsi3
 	strh r0, [r5, #0x1a]
 	ldr r1, _020752A4 ; =0x022B7330
 	ldrh r2, [r8, #0xc]
 	mov r0, #0x3e8
 	ldrsh r1, [r1, #0x28]
 	mul r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	movs r1, r0
 	strh r1, [r5, #0x1e]
 	beq _020751C4
 	mov r0, #0
 	str r0, [r5, #0x20]
 	mov r0, #0x1000000
-	bl DivideInt
+	bl __divsi3
 	str r0, [r5, #0x24]
 	b _020751E4
 _020751C4:
@@ -128354,7 +128354,7 @@ _020751E4:
 	mul r0, r1, r0
 	ldr r1, _020752A4 ; =0x022B7330
 	ldrsh r1, [r1, #0x28]
-	bl DivideInt
+	bl __divsi3
 	movs r1, r0
 	addeq r1, r1, #1
 	strh r1, [r5, #4]
@@ -128363,7 +128363,7 @@ _020751E4:
 	ldr r0, [r8, #4]
 	mov r0, r0, lsl #0xa
 	str r0, [r5, #0xc]
-	bl DivideInt
+	bl __divsi3
 	str r0, [r5, #0x14]
 _02075240:
 	ldrb r2, [r8, #3]
@@ -129724,8 +129724,8 @@ _020763A4: .word 0x022B958C
 _020763A8: .word 0x04000240
 	arm_func_end sub_0207634C
 
-	arm_func_start sub_020763AC
-sub_020763AC: ; 0x020763AC
+	arm_func_start EnableVramBanksInSetDontSave
+EnableVramBanksInSetDontSave: ; 0x020763AC
 	tst r0, #1
 	ldrne r1, _02076440 ; =0x04000240
 	movne r2, #0x80
@@ -129773,7 +129773,7 @@ _02076454: .word 0x04000245
 _02076458: .word 0x04000246
 _0207645C: .word 0x04000248
 _02076460: .word 0x04000249
-	arm_func_end sub_020763AC
+	arm_func_end EnableVramBanksInSetDontSave
 
 	arm_func_start sub_02076464
 sub_02076464: ; 0x02076464
@@ -129958,7 +129958,7 @@ _020766B8:
 _020766C4:
 	ldr r0, _020766D4 ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020766D4: .word 0x022B958C
@@ -130064,7 +130064,7 @@ _02076810:
 _0207681C:
 	ldr r0, _0207682C ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207682C: .word 0x022B958C
@@ -130145,7 +130145,7 @@ _02076918:
 _02076928:
 	ldr r0, _02076938 ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02076938: .word 0x022B958C
@@ -130197,7 +130197,7 @@ _020769C4:
 _020769D4:
 	ldr r0, _020769E4 ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020769E4: .word 0x022B958C
@@ -130334,7 +130334,7 @@ _02076B90:
 _02076B9C:
 	ldr r0, _02076BAC ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02076BAC: .word 0x022B958C
@@ -130410,7 +130410,7 @@ _02076C84:
 _02076C90:
 	ldr r0, _02076CA0 ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02076CA0: .word 0x022B958C
@@ -130499,7 +130499,7 @@ _02076DA0:
 _02076DBC:
 	ldr r0, _02076DCC ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02076DCC: .word 0x022B958C
@@ -130554,7 +130554,7 @@ _02076E68:
 _02076E74:
 	ldr r0, _02076E84 ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02076E84: .word 0x022B958C
@@ -130565,14 +130565,14 @@ _02076E8C: .word 0x04000242
 	arm_func_start sub_02076E90
 sub_02076E90: ; 0x02076E90
 	ldr r1, _02076EA8 ; =0x022B958C
-	ldr ip, _02076EAC ; =sub_020763AC
+	ldr ip, _02076EAC ; =EnableVramBanksInSetDontSave
 	ldrh r2, [r1]
 	orr r2, r2, r0
 	strh r2, [r1]
 	bx ip
 	.align 2, 0
 _02076EA8: .word 0x022B958C
-_02076EAC: .word sub_020763AC
+_02076EAC: .word EnableVramBanksInSetDontSave
 	arm_func_end sub_02076E90
 
 	arm_func_start sub_02076EB0
@@ -130618,7 +130618,7 @@ _02076F2C:
 _02076F38:
 	ldr r0, _02076F48 ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02076F48: .word 0x022B958C
@@ -130654,7 +130654,7 @@ _02076FA0:
 _02076FAC:
 	ldr r0, _02076FBC ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02076FBC: .word 0x022B958C
@@ -130693,7 +130693,7 @@ _0207701C:
 _0207702C:
 	ldr r0, _0207703C ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207703C: .word 0x022B958C
@@ -130732,7 +130732,7 @@ _0207709C:
 _020770AC:
 	ldr r0, _020770BC ; =0x022B958C
 	ldrh r0, [r0]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020770BC: .word 0x022B958C
@@ -130740,8 +130740,8 @@ _020770C0: .word 0x04001000
 _020770C4: .word 0x04000249
 	arm_func_end sub_02077048
 
-	arm_func_start sub_020770C8
-sub_020770C8: ; 0x020770C8
+	arm_func_start EnableVramBanksInSet
+EnableVramBanksInSet: ; 0x020770C8
 	stmdb sp!, {r4, lr}
 	ldrh r4, [r0]
 	mov r2, #0
@@ -130751,24 +130751,24 @@ sub_020770C8: ; 0x020770C8
 	mov r0, r4
 	orr r2, r2, r4
 	strh r2, [r1]
-	bl sub_020763AC
+	bl EnableVramBanksInSetDontSave
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020770F8: .word 0x022B958C
-	arm_func_end sub_020770C8
+	arm_func_end EnableVramBanksInSet
 
 	arm_func_start sub_020770FC
 sub_020770FC: ; 0x020770FC
 	mov r2, #0x4000000
 	ldr r1, [r2]
-	ldr ip, _02077118 ; =sub_020770C8
+	ldr ip, _02077118 ; =EnableVramBanksInSet
 	bic r1, r1, #0x40000000
 	ldr r0, _0207711C ; =0x022B959A
 	str r1, [r2]
 	bx ip
 	.align 2, 0
-_02077118: .word sub_020770C8
+_02077118: .word EnableVramBanksInSet
 _0207711C: .word 0x022B959A
 	arm_func_end sub_020770FC
 
@@ -130776,40 +130776,40 @@ _0207711C: .word 0x022B959A
 sub_02077120: ; 0x02077120
 	mov r2, #0x4000000
 	ldr r1, [r2]
-	ldr ip, _0207713C ; =sub_020770C8
+	ldr ip, _0207713C ; =EnableVramBanksInSet
 	bic r1, r1, #0x80000000
 	ldr r0, _02077140 ; =0x022B959C
 	str r1, [r2]
 	bx ip
 	.align 2, 0
-_0207713C: .word sub_020770C8
+_0207713C: .word EnableVramBanksInSet
 _02077140: .word 0x022B959C
 	arm_func_end sub_02077120
 
 	arm_func_start sub_02077144
 sub_02077144: ; 0x02077144
-	ldr ip, _02077150 ; =sub_020770C8
+	ldr ip, _02077150 ; =EnableVramBanksInSet
 	ldr r0, _02077154 ; =0x022B9594
 	bx ip
 	.align 2, 0
-_02077150: .word sub_020770C8
+_02077150: .word EnableVramBanksInSet
 _02077154: .word 0x022B9594
 	arm_func_end sub_02077144
 
 	arm_func_start sub_02077158
 sub_02077158: ; 0x02077158
-	ldr ip, _02077164 ; =sub_020770C8
+	ldr ip, _02077164 ; =EnableVramBanksInSet
 	ldr r0, _02077168 ; =0x022B9596
 	bx ip
 	.align 2, 0
-_02077164: .word sub_020770C8
+_02077164: .word EnableVramBanksInSet
 _02077168: .word 0x022B9596
 	arm_func_end sub_02077158
 
 	arm_func_start sub_0207716C
 sub_0207716C: ; 0x0207716C
 	ldr r2, _02077188 ; =0x04001000
-	ldr ip, _0207718C ; =sub_020770C8
+	ldr ip, _0207718C ; =EnableVramBanksInSet
 	ldr r1, [r2]
 	ldr r0, _02077190 ; =0x022B95A2
 	bic r1, r1, #0x40000000
@@ -130817,14 +130817,14 @@ sub_0207716C: ; 0x0207716C
 	bx ip
 	.align 2, 0
 _02077188: .word 0x04001000
-_0207718C: .word sub_020770C8
+_0207718C: .word EnableVramBanksInSet
 _02077190: .word 0x022B95A2
 	arm_func_end sub_0207716C
 
 	arm_func_start sub_02077194
 sub_02077194: ; 0x02077194
 	ldr r2, _020771B0 ; =0x04001000
-	ldr ip, _020771B4 ; =sub_020770C8
+	ldr ip, _020771B4 ; =EnableVramBanksInSet
 	ldr r1, [r2]
 	ldr r0, _020771B8 ; =0x022B95A4
 	bic r1, r1, #0x80000000
@@ -130832,7 +130832,7 @@ sub_02077194: ; 0x02077194
 	bx ip
 	.align 2, 0
 _020771B0: .word 0x04001000
-_020771B4: .word sub_020770C8
+_020771B4: .word EnableVramBanksInSet
 _020771B8: .word 0x022B95A4
 	arm_func_end sub_02077194
 
@@ -134623,7 +134623,7 @@ _02079E24:
 _02079E3C:
 	ldr r0, [r5, #0x18]
 	add r0, r0, r2
-	bl DivideInt
+	bl __divsi3
 	ldr r2, [r5, #0x10]
 	add r0, r5, #8
 	str r4, [r2, r1, lsl #2]
@@ -134673,7 +134673,7 @@ _02079EE0:
 	ldr r0, [r6, #0x18]
 	ldr r1, [r6, #0x14]
 	add r0, r0, #1
-	bl DivideInt
+	bl __divsi3
 	str r1, [r6, #0x18]
 	ldr r1, [r6, #0x1c]
 	mov r0, r6
@@ -134717,7 +134717,7 @@ _02079F74:
 	ldr r0, [r6, #0x18]
 	add r0, r0, r1
 	sub r0, r0, #1
-	bl DivideInt
+	bl __divsi3
 	str r1, [r6, #0x18]
 	ldr r0, [r6, #0x10]
 	str r5, [r0, r1, lsl #2]
@@ -150177,12 +150177,12 @@ _0208644C: .word 0xCCCCCCCD
 	arm_func_start sub_02086450
 sub_02086450: ; 0x02086450
 	ldr r0, _02086460 ; =0x020B2FBC
-	ldr ip, _02086464 ; =FloatToDouble
+	ldr ip, _02086464 ; =__extendsfdf2
 	ldr r0, [r0]
 	bx ip
 	.align 2, 0
 _02086460: .word 0x020B2FBC
-_02086464: .word FloatToDouble
+_02086464: .word __extendsfdf2
 	arm_func_end sub_02086450
 
 	arm_func_start sub_02086468
@@ -150262,12 +150262,12 @@ _02086548:
 _02086558: .word 0x020B2ED4
 	arm_func_end sub_020864F4
 
-	arm_func_start Abs
-Abs: ; 0x0208655C
+	arm_func_start abs
+abs: ; 0x0208655C
 	cmp r0, #0
 	rsblt r0, r0, #0
 	bx lr
-	arm_func_end Abs
+	arm_func_end abs
 
 	arm_func_start sub_02086568
 sub_02086568: ; 0x02086568
@@ -150623,7 +150623,7 @@ _02086A14:
 	ldr r1, [r7, #0x24]
 	ldr r2, [sp]
 	mov r0, sb
-	bl Memcpy
+	bl memcpy
 	ldr r2, [sp]
 	ldr r0, [r7, #0x24]
 	subs r4, r4, r2
@@ -150678,7 +150678,7 @@ _02086AD4:
 _02086AF4:
 	mov r0, r5
 	mov r1, r8
-	bl DivideUInt
+	bl __udivsi3
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	arm_func_end sub_020867C0
@@ -151179,8 +151179,8 @@ sub_02087198: ; 0x02087198
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02087198
 
-	arm_func_start Mbtowc
-Mbtowc: ; 0x020871BC
+	arm_func_start mbtowc
+mbtowc: ; 0x020871BC
 	cmp r1, #0
 	moveq r0, #0
 	bxeq lr
@@ -151195,7 +151195,7 @@ Mbtowc: ; 0x020871BC
 	moveq r0, #0
 	movne r0, #1
 	bx lr
-	arm_func_end Mbtowc
+	arm_func_end mbtowc
 
 	arm_func_start TryAssignByte
 TryAssignByte: ; 0x020871F4
@@ -151218,8 +151218,8 @@ TryAssignByteWrapper: ; 0x02087208
 _02087220: .word 0x020B301C
 	arm_func_end TryAssignByteWrapper
 
-	arm_func_start Wcstombs
-Wcstombs: ; 0x02087224
+	arm_func_start wcstombs
+wcstombs: ; 0x02087224
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	movs r4, r0
 	mov sb, r1
@@ -151245,17 +151245,17 @@ _02087248:
 	mov r1, r6
 	mov r2, r5
 	add r0, r4, r7
-	bl Strncpy
+	bl strncpy
 	add r7, r7, r5
 	cmp r7, r8
 	bls _02087248
 _02087294:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end Wcstombs
+	arm_func_end wcstombs
 
-	arm_func_start Memcpy
-Memcpy: ; 0x0208729C
+	arm_func_start memcpy
+memcpy: ; 0x0208729C
 	mov ip, r0
 	cmp r2, #0
 	bxeq lr
@@ -151265,10 +151265,10 @@ _020872A8:
 	strb r3, [ip], #1
 	bne _020872A8
 	bx lr
-	arm_func_end Memcpy
+	arm_func_end memcpy
 
-	arm_func_start Memmove
-Memmove: ; 0x020872BC
+	arm_func_start memmove
+memmove: ; 0x020872BC
 	cmp r1, r0
 	blo _020872E4
 	mov ip, r0
@@ -151291,19 +151291,19 @@ _020872F4:
 	strb r1, [ip, #-1]!
 	bne _020872F4
 	bx lr
-	arm_func_end Memmove
+	arm_func_end memmove
 
-	arm_func_start Memset
-Memset: ; 0x02087308
+	arm_func_start memset
+memset: ; 0x02087308
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl MemsetInternal
+	bl memset_internal
 	mov r0, r4
 	ldmia sp!, {r4, pc}
-	arm_func_end Memset
+	arm_func_end memset
 
-	arm_func_start Memchr
-Memchr: ; 0x0208731C
+	arm_func_start memchr
+memchr: ; 0x0208731C
 	cmp r2, #0
 	and r3, r1, #0xff
 	beq _02087340
@@ -151317,10 +151317,10 @@ _02087328:
 _02087340:
 	mov r0, #0
 	bx lr
-	arm_func_end Memchr
+	arm_func_end memchr
 
-	arm_func_start Memcmp
-Memcmp: ; 0x02087348
+	arm_func_start memcmp
+memcmp: ; 0x02087348
 	cmp r2, #0
 	beq _02087380
 _02087350:
@@ -151340,10 +151340,10 @@ _02087378:
 _02087380:
 	mov r0, #0
 	bx lr
-	arm_func_end Memcmp
+	arm_func_end memcmp
 
-	arm_func_start MemsetInternal
-MemsetInternal: ; 0x02087388
+	arm_func_start memset_internal
+memset_internal: ; 0x02087388
 	cmp r2, #0x20
 	and r3, r1, #0xff
 	blo _0208741C
@@ -151397,7 +151397,7 @@ _02087428:
 	subs r2, r2, #1
 	bne _02087428
 	bx lr
-	arm_func_end MemsetInternal
+	arm_func_end memset_internal
 
 	arm_func_start sub_02087438
 sub_02087438: ; 0x02087438
@@ -151891,11 +151891,11 @@ _02087AC4:
 _02087ACC:
 	mov r0, sl
 	mov r1, r4
-	bl DivideUInt
+	bl __udivsi3
 	mov sb, r1
 	mov r0, sl
 	mov r1, r4
-	bl DivideUInt
+	bl __udivsi3
 	cmp sb, #0xa
 	mov sl, r0
 	addlt sb, sb, #0x30
@@ -153147,8 +153147,8 @@ _02088C6C: .word 0x020B3218
 _02088C70: .word 0x66666667
 	arm_func_end sub_02088510
 
-	arm_func_start VsprintfInternalSlice
-VsprintfInternalSlice: ; 0x02088C74
+	arm_func_start __vsprintf_internal_slice
+__vsprintf_internal_slice: ; 0x02088C74
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x22c
@@ -153164,12 +153164,12 @@ VsprintfInternalSlice: ; 0x02088C74
 _02088CA4:
 	mov r0, fp
 	mov r1, #0x25
-	bl Strchr
+	bl strchr
 	str r0, [sp, #0xc]
 	cmp r0, #0
 	bne _02088CF8
 	mov r0, fp
-	bl Strlen
+	bl strlen
 	movs r2, r0
 	add sl, sl, r2
 	beq _0208947C
@@ -153509,7 +153509,7 @@ _02089160:
 	add r0, sp, #0x2c
 	cmp r1, #0
 	ldreq r1, _02089490 ; =0x020B321C
-	bl Wcstombs
+	bl wcstombs
 	cmp r0, #0
 	blt _020892E0
 	add r7, sp, #0x2c
@@ -153541,13 +153541,13 @@ _020891E4:
 	mov r0, r7
 	mov r2, r6
 	mov r1, #0
-	bl Memchr
+	bl memchr
 	cmp r0, #0
 	subne r6, r0, r7
 	b _0208932C
 _02089210:
 	mov r0, r7
-	bl Strlen
+	bl strlen
 	mov r6, r0
 	b _0208932C
 _02089220:
@@ -153611,7 +153611,7 @@ _020892CC:
 	b _0208932C
 _020892E0:
 	ldr r0, [sp, #0xc]
-	bl Strlen
+	bl strlen
 	movs r4, r0
 	beq _02089318
 	ldr r1, [sp, #0xc]
@@ -153731,7 +153731,7 @@ _0208947C:
 	.align 2, 0
 _02089490: .word 0x020B321C
 _02089494: .word 0x020B3220
-	arm_func_end VsprintfInternalSlice
+	arm_func_end __vsprintf_internal_slice
 
 	arm_func_start TryAppendToSlice
 TryAppendToSlice: ; 0x02089498
@@ -153746,7 +153746,7 @@ TryAppendToSlice: ; 0x02089498
 	subhi r5, r2, r3
 	mov r2, r5
 	add r0, r0, r3
-	bl Memcpy
+	bl memcpy
 	ldr r1, [r4, #8]
 	mov r0, #1
 	add r1, r1, r5
@@ -153754,8 +153754,8 @@ TryAppendToSlice: ; 0x02089498
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end TryAppendToSlice
 
-	arm_func_start VsprintfInternal
-VsprintfInternal: ; 0x020894DC
+	arm_func_start __vsprintf_internal
+__vsprintf_internal: ; 0x020894DC
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	mov r5, r0
@@ -153766,7 +153766,7 @@ VsprintfInternal: ; 0x020894DC
 	str r5, [sp]
 	str r4, [sp, #4]
 	str ip, [sp, #8]
-	bl VsprintfInternalSlice
+	bl __vsprintf_internal_slice
 	cmp r5, #0
 	addeq sp, sp, #0xc
 	ldmeqia sp!, {r4, r5, pc}
@@ -153783,35 +153783,35 @@ VsprintfInternal: ; 0x020894DC
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _02089540: .word TryAppendToSlice
-	arm_func_end VsprintfInternal
+	arm_func_end __vsprintf_internal
 
-	arm_func_start Vsprintf
-Vsprintf: ; 0x02089544
-	ldr ip, _02089558 ; =VsprintfInternal
+	arm_func_start vsprintf
+vsprintf: ; 0x02089544
+	ldr ip, _02089558 ; =__vsprintf_internal
 	mov r3, r2
 	mov r2, r1
 	mvn r1, #0
 	bx ip
 	.align 2, 0
-_02089558: .word VsprintfInternal
-	arm_func_end Vsprintf
+_02089558: .word __vsprintf_internal
+	arm_func_end vsprintf
 
-	arm_func_start Snprintf
-Snprintf: ; 0x0208955C
+	arm_func_start snprintf
+snprintf: ; 0x0208955C
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r3, sp, #0x10
 	bic r3, r3, #3
 	ldr r2, [sp, #0x10]
 	add r3, r3, #4
-	bl VsprintfInternal
+	bl __vsprintf_internal
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end Snprintf
+	arm_func_end snprintf
 
-	arm_func_start Sprintf
-Sprintf: ; 0x02089584
+	arm_func_start sprintf
+sprintf: ; 0x02089584
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r1, sp, #0xc
@@ -153819,11 +153819,11 @@ Sprintf: ; 0x02089584
 	add r3, r1, #4
 	ldr r2, [sp, #0xc]
 	mvn r1, #0
-	bl VsprintfInternal
+	bl __vsprintf_internal
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end Sprintf
+	arm_func_end sprintf
 
 	arm_func_start sub_020895B0
 sub_020895B0: ; 0x020895B0
@@ -153895,8 +153895,8 @@ _02089670:
 	bx lr
 	arm_func_end sub_020895F4
 
-	arm_func_start Strlen
-Strlen: ; 0x02089678
+	arm_func_start strlen
+strlen: ; 0x02089678
 	mvn r2, #0
 _0208967C:
 	ldrsb r1, [r0], #1
@@ -153905,10 +153905,10 @@ _0208967C:
 	bne _0208967C
 	mov r0, r2
 	bx lr
-	arm_func_end Strlen
+	arm_func_end strlen
 
-	arm_func_start Strcpy
-Strcpy: ; 0x02089694
+	arm_func_start strcpy
+strcpy: ; 0x02089694
 	stmdb sp!, {r3, r4, r5, lr}
 	and r4, r1, #3
 	and r3, r0, #3
@@ -153966,10 +153966,10 @@ _02089740:
 	.align 2, 0
 _02089754: .word 0xFEFEFEFF
 _02089758: .word 0x80808080
-	arm_func_end Strcpy
+	arm_func_end strcpy
 
-	arm_func_start Strncpy
-Strncpy: ; 0x0208975C
+	arm_func_start strncpy
+strncpy: ; 0x0208975C
 	stmdb sp!, {r3, lr}
 	mov lr, r0
 	cmp r2, #0
@@ -153993,10 +153993,10 @@ _020897A0:
 	subs r2, r2, #1
 	bne _0208976C
 	ldmia sp!, {r3, pc}
-	arm_func_end Strncpy
+	arm_func_end strncpy
 
-	arm_func_start Strcat
-Strcat: ; 0x020897AC
+	arm_func_start strcat
+strcat: ; 0x020897AC
 	mov r3, r0
 _020897B0:
 	ldrsb r2, [r3], #1
@@ -154011,10 +154011,10 @@ _020897C0:
 	cmp r2, #0
 	bne _020897C0
 	bx lr
-	arm_func_end Strcat
+	arm_func_end strcat
 
-	arm_func_start Strncat
-Strncat: ; 0x020897DC
+	arm_func_start strncat
+strncat: ; 0x020897DC
 	stmdb sp!, {r3, lr}
 	mov ip, r0
 _020897E4:
@@ -154038,10 +154038,10 @@ _02089820:
 	mov r1, #0
 	strb r1, [ip]
 	ldmia sp!, {r3, pc}
-	arm_func_end Strncat
+	arm_func_end strncat
 
-	arm_func_start Strcmp
-Strcmp: ; 0x0208982C
+	arm_func_start strcmp
+strcmp: ; 0x0208982C
 	stmdb sp!, {r4, lr}
 	ldrb r2, [r0]
 	ldrb r3, [r1]
@@ -154120,10 +154120,10 @@ _02089914:
 	.align 2, 0
 _02089938: .word 0xFEFEFEFF
 _0208993C: .word 0x80808080
-	arm_func_end Strcmp
+	arm_func_end strcmp
 
-	arm_func_start Strncmp
-Strncmp: ; 0x02089940
+	arm_func_start strncmp
+strncmp: ; 0x02089940
 	cmp r2, #0
 	beq _0208996C
 _02089948:
@@ -154139,10 +154139,10 @@ _02089948:
 _0208996C:
 	mov r0, #0
 	bx lr
-	arm_func_end Strncmp
+	arm_func_end strncmp
 
-	arm_func_start Strchr
-Strchr: ; 0x02089974
+	arm_func_start strchr
+strchr: ; 0x02089974
 	ldrsb r2, [r0], #1
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
@@ -154160,10 +154160,10 @@ _020899A0:
 	movne r0, #0
 	subeq r0, r0, #1
 	bx lr
-	arm_func_end Strchr
+	arm_func_end strchr
 
-	arm_func_start Strcspn
-Strcspn: ; 0x020899B0
+	arm_func_start strcspn
+strcspn: ; 0x020899B0
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x20
 	add ip, sp, #0
@@ -154217,10 +154217,10 @@ _02089A60:
 	sub r0, r0, #1
 	add sp, sp, #0x20
 	ldmia sp!, {r4, pc}
-	arm_func_end Strcspn
+	arm_func_end strcspn
 
-	arm_func_start Strstr
-Strstr: ; 0x02089A70
+	arm_func_start strstr
+strstr: ; 0x02089A70
 	stmdb sp!, {r4, lr}
 	cmp r1, #0
 	ldrneb r2, [r1]
@@ -154253,7 +154253,7 @@ _02089AC8:
 _02089AD4:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end Strstr
+	arm_func_end strstr
 
 	arm_func_start sub_02089ADC
 sub_02089ADC: ; 0x02089ADC
@@ -154521,13 +154521,13 @@ _02089E54:
 	ldr r1, _0208AACC ; =0x020B2FB8
 	mov r0, #0
 	ldr r1, [r1]
-	bl SubtractFloat
-	bl FloatToDouble
+	bl __subsf3
+	bl __extendsfdf2
 	b _02089E90
 _02089E84:
 	ldr r0, _0208AACC ; =0x020B2FB8
 	ldr r0, [r0]
-	bl FloatToDouble
+	bl __extendsfdf2
 _02089E90:
 	ldr r2, [sp, #0x2c]
 	add r3, r2, r5
@@ -155711,7 +155711,7 @@ _0208AEBC:
 	beq _0208AED4
 	mov r1, sb
 	mvn r0, #0
-	bl DivideUInt
+	bl __udivsi3
 	str r0, [sp, #4]
 _0208AED4:
 	mvn fp, #0
@@ -155838,7 +155838,7 @@ _0208B048:
 	bne _0208B06C
 	mov r0, fp
 	mov r1, sb
-	bl DivideUInt
+	bl __udivsi3
 	str r0, [sp, #4]
 _0208B06C:
 	cmp r6, #0
@@ -156114,8 +156114,8 @@ _0208B3E0:
 	bx lr
 	arm_func_end sub_0208B374
 
-	arm_func_start Wcslen
-Wcslen: ; 0x0208B3E8
+	arm_func_start wcslen
+wcslen: ; 0x0208B3E8
 	mvn r2, #0
 _0208B3EC:
 	ldrh r1, [r0], #2
@@ -156124,7 +156124,7 @@ _0208B3EC:
 	bne _0208B3EC
 	mov r0, r2
 	bx lr
-	arm_func_end Wcslen
+	arm_func_end wcslen
 
 	arm_func_start sub_0208B404
 sub_0208B404: ; 0x0208B404
@@ -156367,7 +156367,7 @@ _0208B760:
 	ldr r0, [r0]
 	mov r2, #0x21
 	str r2, [r1]
-	bl FloatToDouble
+	bl __extendsfdf2
 	add sp, sp, #0x80
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	add sp, sp, #0x10
@@ -158621,7 +158621,7 @@ _0208D768:
 	ldr r0, _0208DCEC ; =0x020B2FB8
 	ldrne r4, _0208DCE8 ; =0xBFF00000
 	ldr r0, [r0]
-	bl FloatToDouble
+	bl __extendsfdf2
 	mov r2, r5
 	mov r3, r4
 	bl sub_0208C58C
@@ -158696,7 +158696,7 @@ _0208D840:
 	ldr r0, _0208DCEC ; =0x020B2FB8
 	ldrne r4, _0208DCE8 ; =0xBFF00000
 	ldr r0, [r0]
-	bl FloatToDouble
+	bl __extendsfdf2
 	mov r2, r5
 	mov r3, r4
 	bl sub_0208C58C
@@ -160172,8 +160172,8 @@ _0208ECA4:
 _0208ECB4: .word 0x7FF00000
 	arm_func_end sub_0208E904
 
-	arm_func_start AddFloat
-AddFloat: ; 0x0208ECB8
+	arm_func_start __addsf3
+__addsf3: ; 0x0208ECB8
 	eors r2, r0, r1
 	eormi r1, r1, #0x80000000
 	bmi _0208FA10
@@ -160326,7 +160326,7 @@ _0208EEC0:
 _0208EECC:
 	mvn r0, #0x80000000
 	bx lr
-	arm_func_end AddFloat
+	arm_func_end __addsf3
 
 	arm_func_start sub_0208EED4
 sub_0208EED4: ; 0x0208EED4
@@ -160600,8 +160600,8 @@ _0208F228:
 	.byte 0x01, 0x00, 0x20, 0xE0, 0x01, 0x10, 0x20, 0xE0
 	.byte 0x01, 0x00, 0x20, 0xE0
 
-	arm_func_start DivideFloat
-DivideFloat: ; 0x0208F234
+	arm_func_start __divsf3
+__divsf3: ; 0x0208F234
 	stmdb sp!, {lr}
 	mov ip, #0xff
 	ands r3, ip, r0, lsr #23
@@ -160814,10 +160814,10 @@ _0208F5E0:
 	mov r0, lr
 	ldmia sp!, {lr}
 	bx lr
-	arm_func_end DivideFloat
+	arm_func_end __divsf3
 
-	arm_func_start FloatToDouble
-FloatToDouble: ; 0x0208F5EC
+	arm_func_start __extendsfdf2
+__extendsfdf2: ; 0x0208F5EC
 	and r2, r0, #0x80000000
 	mov ip, r0, lsr #0x17
 	mov r3, r0, lsl #9
@@ -160857,10 +160857,10 @@ _0208F660:
 	bx lr
 	.align 2, 0
 _0208F66C: .word 0x7FF00000
-	arm_func_end FloatToDouble
+	arm_func_end __extendsfdf2
 
-	arm_func_start FloatToInt
-FloatToInt: ; 0x0208F670
+	arm_func_start __fixsfsi
+__fixsfsi: ; 0x0208F670
 	bic r1, r0, #0x80000000
 	mov r2, #0x9e
 	subs r2, r2, r1, lsr #23
@@ -160875,10 +160875,10 @@ _0208F698:
 	mvn r0, r0, asr #31
 	add r0, r0, #0x80000000
 	bx lr
-	arm_func_end FloatToInt
+	arm_func_end __fixsfsi
 
-	arm_func_start IntToFloat
-IntToFloat: ; 0x0208F6A4
+	arm_func_start __floatsisf
+__floatsisf: ; 0x0208F6A4
 	ands r2, r0, #0x80000000
 	rsbmi r0, r0, #0
 	cmp r0, #0
@@ -160897,10 +160897,10 @@ IntToFloat: ; 0x0208F6A4
 	andeqs r3, r0, #1
 	addne r0, r0, #1
 	bx lr
-	arm_func_end IntToFloat
+	arm_func_end __floatsisf
 
-	arm_func_start UIntToFloat
-UIntToFloat: ; 0x0208F6EC
+	arm_func_start __floatunsisf
+__floatunsisf: ; 0x0208F6EC
 	cmp r0, #0
 	bxeq lr
 	mov r3, #0x9e
@@ -160920,10 +160920,10 @@ _0208F708:
 	andeqs r1, r0, #1
 	addne r0, r0, #1
 	bx lr
-	arm_func_end UIntToFloat
+	arm_func_end __floatunsisf
 
-	arm_func_start MultiplyFloat
-MultiplyFloat: ; 0x0208F734
+	arm_func_start __mulsf3
+__mulsf3: ; 0x0208F734
 	eor r2, r0, r1
 	and r2, r2, #0x80000000
 	mov ip, #0xff
@@ -161061,10 +161061,10 @@ _0208F904:
 _0208F90C:
 	mov r0, r2
 	bx lr
-	arm_func_end MultiplyFloat
+	arm_func_end __mulsf3
 
-	arm_func_start Sqrtf
-Sqrtf: ; 0x0208F914
+	arm_func_start sqrtf
+sqrtf: ; 0x0208F914
 	stmdb sp!, {lr}
 	mov r2, #0xff
 	cmp r0, r2, lsl #23
@@ -161129,13 +161129,13 @@ _0208F9D4:
 	.align 2, 0
 _0208F9F0: .word 0x7FC00000
 _0208F9F4: .word 0x022BCA70
-	arm_func_end Sqrtf
+	arm_func_end sqrtf
 _0208F9F8:
 	.byte 0x01, 0x00, 0x20, 0xE0, 0x01, 0x10, 0x20, 0xE0
 	.byte 0x01, 0x00, 0x20, 0xE0
 
-	arm_func_start SubtractFloat
-SubtractFloat: ; 0x0208FA04
+	arm_func_start __subsf3
+__subsf3: ; 0x0208FA04
 	eors r2, r0, r1
 	eormi r1, r1, #0x80000000
 	bmi _0208ECC4
@@ -161315,7 +161315,7 @@ _0208FC6C:
 _0208FC74:
 	mvn r0, #0x80000000
 	bx lr
-	arm_func_end SubtractFloat
+	arm_func_end __subsf3
 
 	arm_func_start sub_0208FC7C
 sub_0208FC7C: ; 0x0208FC7C
@@ -161344,7 +161344,7 @@ _0208FCAC:
 	orrs r6, r5, r6
 	bne _0208FCE0
 	mov r1, r2
-	bl DivideInt
+	bl __divsi3
 	ands r4, r4, #1
 	movne r0, r1
 	mov r1, r0, asr #0x1f
@@ -161476,7 +161476,7 @@ _0208FE60:
 	orrs r5, r1, r3
 	bne _0208FD00
 	mov r1, r2
-	bl DivideUIntNoZeroCheck
+	bl __udivsi3_no_zero_check
 	cmp r4, #0
 	movne r0, r1
 	mov r1, #0
@@ -161496,8 +161496,8 @@ sub_0208FE84: ; 0x0208FE84
 	bx lr
 	arm_func_end sub_0208FE84
 
-	arm_func_start DivideInt
-DivideInt: ; 0x0208FEA4
+	arm_func_start __divsi3
+__divsi3: ; 0x0208FEA4
 	eor ip, r0, r1
 	and ip, ip, #0x80000000
 	cmp r0, #0
@@ -161630,16 +161630,16 @@ _0209009C:
 	ands r3, ip, #1
 	rsbne r1, r1, #0
 	bx lr
-	arm_func_end DivideInt
+	arm_func_end __divsi3
 
-	arm_func_start DivideUInt
-DivideUInt: ; 0x020900B0
+	arm_func_start __udivsi3
+__udivsi3: ; 0x020900B0
 	cmp r1, #0
 	bxeq lr
-	arm_func_end DivideUInt
+	arm_func_end __udivsi3
 
-	arm_func_start DivideUIntNoZeroCheck
-DivideUIntNoZeroCheck: ; 0x020900B8
+	arm_func_start __udivsi3_no_zero_check
+__udivsi3_no_zero_check: ; 0x020900B8
 	cmp r0, r1
 	movlo r1, r0
 	movlo r0, #0
@@ -161759,7 +161759,7 @@ DivideUIntNoZeroCheck: ; 0x020900B8
 	adcs r0, r0, r0
 	mov r1, r3
 	bx lr
-	arm_func_end DivideUIntNoZeroCheck
+	arm_func_end __udivsi3_no_zero_check
 _02090294:
 	.byte 0x03, 0x10, 0x21, 0xE0, 0x03, 0x30, 0x21, 0xE0, 0x03, 0x10, 0x21, 0xE0
 	.byte 0x02, 0x00, 0x20, 0xE0, 0x02, 0x20, 0x20, 0xE0, 0x02, 0x00, 0x20, 0xE0

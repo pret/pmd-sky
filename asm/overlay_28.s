@@ -55,7 +55,7 @@ _0238A1B4:
 	sub r1, r2, r1
 	add r0, r5, #0x1a
 	add r1, r3, r1, lsl #6
-	bl Strcpy
+	bl strcpy
 	ldr r0, [r5, #4]
 	mov r2, #0
 	mov r3, r0, asr #0x10

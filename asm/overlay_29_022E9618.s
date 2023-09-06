@@ -3,13 +3,13 @@
 
 	.text
 
-	arm_func_start ov29_022E9618
-ov29_022E9618: ; 0x022E9618
+	arm_func_start GetLeaderMonster
+GetLeaderMonster: ; 0x022E9618
 	stmdb sp!, {r3, lr}
 	bl GetLeader
 	ldr r0, [r0, #0xb4]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022E9618
+	arm_func_end GetLeaderMonster
 
 	arm_func_start ov29_022E9628
 ov29_022E9628: ; 0x022E9628
@@ -84,11 +84,11 @@ _022E96E8:
 	cmpeq r0, #0
 	bne _022E97A8
 	ldr r0, [sp, #4]
-	bl Abs
+	bl abs
 	cmp r0, #6
 	bge _022E9740
 	sub r0, fp, r7
-	bl Abs
+	bl abs
 	cmp r0, #6
 	blt _022E97A8
 _022E9740:
@@ -171,8 +171,8 @@ _022E983C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end ov29_022E96E4
 
-	arm_func_start ov29_022E9844
-ov29_022E9844: ; 0x022E9844
+	arm_func_start FindNearbyUnoccupiedTile
+FindNearbyUnoccupiedTile: ; 0x022E9844
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	mov r8, r3
@@ -293,43 +293,43 @@ _022E99D8:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022E99EC: .word 0x02353538
-	arm_func_end ov29_022E9844
+	arm_func_end FindNearbyUnoccupiedTile
 
-	arm_func_start ov29_022E99F0
-ov29_022E99F0: ; 0x022E99F0
+	arm_func_start FindClosestUnoccupiedTileWithin2
+FindClosestUnoccupiedTileWithin2: ; 0x022E99F0
 	stmdb sp!, {r3, lr}
 	str r2, [sp]
 	ldr r2, _022E9A08 ; =0x02351844
 	mov r3, #0x19
-	bl ov29_022E9844
+	bl FindNearbyUnoccupiedTile
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E9A08: .word 0x02351844
-	arm_func_end ov29_022E99F0
+	arm_func_end FindClosestUnoccupiedTileWithin2
 
-	arm_func_start ov29_022E9A0C
-ov29_022E9A0C: ; 0x022E9A0C
+	arm_func_start FindFarthestUnoccupiedTileWithin2
+FindFarthestUnoccupiedTileWithin2: ; 0x022E9A0C
 	stmdb sp!, {r3, lr}
 	str r2, [sp]
 	ldr r2, _022E9A24 ; =0x023517DC
 	mov r3, #0x19
-	bl ov29_022E9844
+	bl FindNearbyUnoccupiedTile
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E9A24: .word 0x023517DC
-	arm_func_end ov29_022E9A0C
+	arm_func_end FindFarthestUnoccupiedTileWithin2
 
-	arm_func_start ov29_022E9A28
-ov29_022E9A28: ; 0x022E9A28
+	arm_func_start FindUnoccupiedTileWithin3
+FindUnoccupiedTileWithin3: ; 0x022E9A28
 	stmdb sp!, {r3, lr}
 	str r2, [sp]
 	ldr r2, _022E9A40 ; =0x023518AC
 	mov r3, #0x31
-	bl ov29_022E9844
+	bl FindNearbyUnoccupiedTile
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E9A40: .word 0x023518AC
-	arm_func_end ov29_022E9A28
+	arm_func_end FindUnoccupiedTileWithin3
 
 	arm_func_start TickStatusTurnCounter
 TickStatusTurnCounter: ; 0x022E9A44
@@ -780,7 +780,7 @@ ov29_022EA008: ; 0x022EA008
 	cmp r0, #0
 	beq _022EA0F8
 	mov r0, #1
-	bl ov29_022E2EC4
+	bl UpdateCamera
 	ldr r1, _022EA290 ; =0x02353538
 	ldr r0, _022EA298 ; =0x0001A224
 	ldr ip, [r1]
@@ -853,7 +853,7 @@ _022EA140:
 _022EA154:
 	bl ov29_022EA64C
 	bl ov29_022EA80C
-	bl ov29_02335A10
+	bl DisplayUi
 	ldr r1, _022EA294 ; =0x02353560
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -966,7 +966,7 @@ _022EA2C0:
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	strb r1, [r0, #0x248]
-	bl ov29_0233A290
+	bl InitWeirdMinimapMatrix
 	ldr r0, _022EA31C ; =0x02353560
 	ldrb r0, [r0, #6]
 	cmp r0, #0
@@ -1131,7 +1131,7 @@ _022EA4B4:
 	ldrb r0, [r0, #4]
 	cmp r0, #0
 	bne _022EA614
-	bl ov29_02339CE8
+	bl UpdateMinimap
 	mov r0, #0
 	bl ov29_02339FF4
 	b _022EA614
@@ -1193,7 +1193,7 @@ _022EA594:
 	ldrb r0, [r0, #4]
 	cmp r0, #0
 	bne _022EA5BC
-	bl ov29_02339CE8
+	bl UpdateMinimap
 	mov r0, #1
 	bl ov29_02339FF4
 _022EA5BC:
@@ -1440,7 +1440,7 @@ _022EA848:
 	bge _022EA910
 	rsb r0, r1, r1, lsl #8
 	mov r1, #0x1f
-	bl DivideInt
+	bl __divsi3
 _022EA910:
 	ldr ip, _022EA95C ; =0x0237C850
 	mov r1, r4, lsl #0x10
@@ -1468,8 +1468,8 @@ _022EA960: .word 0x02353538
 _022EA964: .word 0x0001A224
 	arm_func_end ov29_022EA80C
 
-	arm_func_start ov29_022EA968
-ov29_022EA968: ; 0x022EA968
+	arm_func_start SetDungeonRngPreseed23Bit
+SetDungeonRngPreseed23Bit: ; 0x022EA968
 	orr r1, r0, #1
 	ldr r0, _022EA97C ; =0x02353570
 	bic r1, r1, #0xff000000
@@ -1477,7 +1477,7 @@ ov29_022EA968: ; 0x022EA968
 	bx lr
 	.align 2, 0
 _022EA97C: .word 0x02353570
-	arm_func_end ov29_022EA968
+	arm_func_end SetDungeonRngPreseed23Bit
 
 	arm_func_start GenerateDungeonRngSeed
 GenerateDungeonRngSeed: ; 0x022EA980

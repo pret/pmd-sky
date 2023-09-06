@@ -22,7 +22,7 @@
 .public RandInt
 .public sub_0204a1cc
 .public ov00_022C0068
-.public sub_0201C050
+.public InitAnimationControl
 .public ov00_022BD5C8
 .public GetPerformanceFlagWithChecks
 .public sub_020515C4
@@ -59,12 +59,12 @@
 .public sub_0208FE48
 .public ov00_022C0498
 .public GetLanguageType
-.public sub_0201C2CC
+.public SetAnimationForAnimationControl
 .public ov00_022BD0A0
 .public ov00_022BD274
 .public sub_02026214
 .public sub_020062FC
-.public DivideUInt
+.public __udivsi3
 .public ov00_022BE630
 .public ov00_022BFA94
 .public ov00_022BD1A0
@@ -85,7 +85,7 @@
 .public sub_02048480
 .public ov00_022C2FF0
 .public ov00_022C2D3C
-.public Strcpy
+.public strcpy
 .public ov00_022BD170
 .public ov00_022BF640
 .public ov00_022C2F68
@@ -98,7 +98,7 @@
 .public GetReleasedStylus
 .public ov00_022BF660
 .public sub_0204E530
-.public Vsprintf
+.public vsprintf
 .public ov00_022BF9E0
 .public sub_020348E4
 .public ov00_022BD5EC
@@ -207,13 +207,13 @@
 .public sub_02059AF8
 .public sub_0204C918
 .public sub_0202F8C4
-.public sub_0201C0E8
+.public SetSpriteIdForAnimationControl
 .public ov00_022C0430
 .public ov00_022BFAD4
 .public sub_0201D110
 .public ov00_022BDA94
 .public sub_02050990
-.public sub_0201D484
+.public LoadWanTableEntryFromPack
 .public GetSpecialEpisodeType
 .public CreateNormalMenu
 .public FemaleToMaleForm
@@ -224,7 +224,7 @@
 .public sub_02046BB4
 .public sub_0205B554
 .public GetAdventureLogCompleted
-.public Strcmp
+.public strcmp
 .public sub_020308A0
 .public sub_0201D12C
 .public sub_0200DFBC
@@ -237,7 +237,7 @@
 .public sub_0207A2A4
 .public sub_02025D50
 .public sub_02046C78
-.public DivideInt
+.public __divsi3
 .public sub_02008F64
 .public ov00_022BD21C
 .public sub_0202A5CC
@@ -283,7 +283,7 @@
 .public GetSpriteIndex__020526EC
 .public ov00_022BCCC8
 .public sub_0202065C
-.public Sprintf
+.public sprintf
 .public GetNbEvolutions
 .public sub_0204E464
 .public sub_0201C138
@@ -349,7 +349,7 @@
 .public sub_0202B0A4
 .public ov00_022BE6C0
 .public ov00_022BE094
-.public sub_0202A3E4
+.public PrintClearMark
 .public StrncpySimpleNoPadSafe
 .public ShowKeyboard
 .public StrncmpSimple

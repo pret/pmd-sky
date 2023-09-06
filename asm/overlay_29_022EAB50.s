@@ -42,7 +42,7 @@ _022EABBC:
 _022EAC04:
 	mov r0, r4
 	mov r1, #0x14
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	cmpne r5, #0x7f
 	beq _022EAC24
@@ -159,11 +159,11 @@ ov29_022EACE4: ; 0x022EACE4
 _022EACFC: .word 0x000003E6
 	arm_func_end ov29_022EACE4
 
-	arm_func_start ov29_022EAD00
-ov29_022EAD00: ; 0x022EAD00
+	arm_func_start MusicTableIdxToMusicId
+MusicTableIdxToMusicId: ; 0x022EAD00
 	stmdb sp!, {r4, lr}
 	mov r1, #0xaa
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _022EAD5C ; =0x022C555C
 	mov r1, r1, lsl #1
 	ldrh r4, [r0, r1]
@@ -188,12 +188,12 @@ ov29_022EAD00: ; 0x022EAD00
 _022EAD5C: .word 0x022C555C
 _022EAD60: .word 0x00007FFF
 _022EAD64: .word 0x022C51FC
-	arm_func_end ov29_022EAD00
+	arm_func_end MusicTableIdxToMusicId
 
 	arm_func_start ov29_022EAD68
 ov29_022EAD68: ; 0x022EAD68
 	stmdb sp!, {r4, r5, r6, lr}
-	bl ov29_022E0880
+	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
 	beq _022EADAC
 	mov r6, #0
@@ -225,13 +225,13 @@ _022EADAC:
 	strneh r1, [r0, #0xd6]
 	mov r0, r1, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov29_022EAD00
+	bl MusicTableIdxToMusicId
 	mov r4, r0
 	bl sub_02017B18
 	cmp r0, #0
 	mov r0, r4
 	bne _022EAE00
-	bl ov29_022EAE14
+	bl ChangeDungeonMusic
 	ldmia sp!, {r4, r5, r6, pc}
 _022EAE00:
 	bl ov29_022EAE40
@@ -242,8 +242,8 @@ _022EAE0C: .word 0x02353538
 _022EAE10: .word 0x022C6C70
 	arm_func_end ov29_022EAD68
 
-	arm_func_start ov29_022EAE14
-ov29_022EAE14: ; 0x022EAE14
+	arm_func_start ChangeDungeonMusic
+ChangeDungeonMusic: ; 0x022EAE14
 	ldr r3, _022EAE38 ; =0x02353538
 	ldr r1, _022EAE3C ; =0x0002CB06
 	ldr ip, [r3]
@@ -256,7 +256,7 @@ ov29_022EAE14: ; 0x022EAE14
 	.align 2, 0
 _022EAE38: .word 0x02353538
 _022EAE3C: .word 0x0002CB06
-	arm_func_end ov29_022EAE14
+	arm_func_end ChangeDungeonMusic
 
 	arm_func_start ov29_022EAE40
 ov29_022EAE40: ; 0x022EAE40
@@ -408,7 +408,7 @@ ov29_022EAFB0: ; 0x022EAFB0
 	ldr r0, [r0, r1, lsl #2]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov29_022EAD00
+	bl MusicTableIdxToMusicId
 	b _022EB034
 _022EB004:
 	ldrb r0, [r3, #0x791]
@@ -524,7 +524,7 @@ TrySwitchPlace: ; 0x022EB178
 	mov r4, r1
 	mov r1, #0xe
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _022EB1BC
 	mov r0, #0
@@ -552,14 +552,14 @@ _022EB1E4:
 	beq _022EB204
 	mov r0, r5
 	mov r1, #0x53
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	bne _022EB210
 _022EB204:
 	mov r0, r4
 	mov r1, #0xe
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 _022EB210:
 	cmp r0, #0
 	beq _022EB23C
@@ -589,18 +589,18 @@ _022EB23C:
 	ldrsh r2, [sp, #2]
 	mov r0, r5
 	mov r3, #1
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	ldrsh r1, [sp, #4]
 	ldrsh r2, [sp, #6]
 	mov r0, r4
 	mov r3, #1
-	bl ov29_022F85F0
+	bl MoveMonsterToPos
 	mov r0, r5
 	mov r1, #0
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	mov r0, r4
 	mov r1, #0
-	bl ov29_022E1A40
+	bl UpdateEntityPixelPos
 	mov r0, r5
 	bl ov29_02321260
 	mov r0, r4
@@ -634,7 +634,7 @@ _022EB2F8:
 	mov r0, r7
 	bl StringFromMessageId
 	ldr r1, _022EB368 ; =0x02352070
-	bl Strcmp
+	bl strcmp
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -680,7 +680,7 @@ _022EB394: .word 0x02352030
 ov29_022EB398: ; 0x022EB398
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov29_022E9618
+	bl GetLeaderMonster
 	mov r1, #0
 	strh r1, [r0, #0x4a]
 	cmp r4, #0
@@ -692,11 +692,11 @@ ov29_022EB398: ; 0x022EB398
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022EB398
 
-	arm_func_start ov29_022EB3C8
-ov29_022EB3C8: ; 0x022EB3C8
+	arm_func_start SetLeaderActionFields
+SetLeaderActionFields: ; 0x022EB3C8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov29_022E9618
+	bl GetLeaderMonster
 	mov r1, #0
 	strh r4, [r0, #0x4a]
 	strb r1, [r0, #0x4e]
@@ -705,7 +705,7 @@ ov29_022EB3C8: ; 0x022EB3C8
 	strh r1, [r0, #0x5a]
 	strh r1, [r0, #0x5c]
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022EB3C8
+	arm_func_end SetLeaderActionFields
 
 	arm_func_start ClearMonsterActionFields
 ClearMonsterActionFields: ; 0x022EB3F4
@@ -741,8 +741,8 @@ SetActionPassTurnOrWalk: ; 0x022EB41C
 	ldmia sp!, {r4, pc}
 	arm_func_end SetActionPassTurnOrWalk
 
-	arm_func_start ov29_022EB44C
-ov29_022EB44C: ; 0x022EB44C
+	arm_func_start GetItemToUseByIndex
+GetItemToUseByIndex: ; 0x022EB44C
 	stmdb sp!, {r3, lr}
 	ldrb r2, [r1]
 	cmp r2, #1
@@ -761,7 +761,7 @@ _022EB478:
 	ldrsh r1, [r1, #4]
 	bl GetTile
 	ldr r0, [r0, #0x10]
-	bl ov29_022E1610
+	bl GetItemInfo
 	ldmia sp!, {r3, pc}
 _022EB498:
 	cmp r2, #0x81
@@ -786,7 +786,7 @@ _022EB4DC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022EB4E4: .word 0x02353538
-	arm_func_end ov29_022EB44C
+	arm_func_end GetItemToUseByIndex
 
 	arm_func_start ov29_022EB4E8
 ov29_022EB4E8: ; 0x022EB4E8
@@ -803,7 +803,7 @@ ov29_022EB4E8: ; 0x022EB4E8
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl RemoveItem
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 _022EB528:
@@ -813,21 +813,21 @@ _022EB528:
 	add r0, r0, #6
 	add r0, r0, r2
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022EB4E8
 
-	arm_func_start ov29_022EB54C
-ov29_022EB54C: ; 0x022EB54C
+	arm_func_start GetItemToUse
+GetItemToUse: ; 0x022EB54C
 	stmdb sp!, {r3, lr}
 	ldr ip, [r0, #0xb4]
 	mov r3, #6
 	add ip, ip, #0x4e
 	mla r1, r3, r1, ip
-	bl ov29_022EB44C
+	bl GetItemToUseByIndex
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022EB54C
+	arm_func_end GetItemToUse
 
 	arm_func_start ov29_022EB568
 ov29_022EB568: ; 0x022EB568
@@ -872,8 +872,8 @@ _022EB5D0:
 	bx lr
 	arm_func_end ov29_022EB594
 
-	arm_func_start ov29_022EB5D8
-ov29_022EB5D8: ; 0x022EB5D8
+	arm_func_start GetItemAction
+GetItemAction: ; 0x022EB5D8
 	stmdb sp!, {r3, lr}
 	ldrsh r0, [r0, #4]
 	ldr r1, _022EB604 ; =0x0000016B
@@ -888,24 +888,24 @@ ov29_022EB5D8: ; 0x022EB5D8
 	.align 2, 0
 _022EB604: .word 0x0000016B
 _022EB608: .word 0x02352010
-	arm_func_end ov29_022EB5D8
+	arm_func_end GetItemAction
 
-	arm_func_start ov29_022EB60C
-ov29_022EB60C: ; 0x022EB60C
+	arm_func_start RemoveUsedItem
+RemoveUsedItem: ; 0x022EB60C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr ip, [r0, #0xb4]
 	mov r3, #6
 	add ip, ip, #0x4e
 	mla r1, r3, r1, ip
 	ldr r4, [r0, #0xb4]
-	bl ov29_022EB44C
+	bl GetItemToUseByIndex
 	ldrb r1, [r4, #0x4e]
 	mov r5, r0
 	cmp r1, #0x80
 	bne _022EB648
 	add r0, r4, #0x50
 	mov r1, #1
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldmia sp!, {r3, r4, r5, pc}
 _022EB648:
 	ldrb r1, [r5, #1]
@@ -915,9 +915,9 @@ _022EB648:
 _022EB658:
 	mov r0, r5
 	bl ItemZInit
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022EB60C
+	arm_func_end RemoveUsedItem
 
 	arm_func_start ov29_022EB668
 ov29_022EB668: ; 0x022EB668
@@ -931,7 +931,7 @@ ov29_022EB668: ; 0x022EB668
 	mov r7, r2
 	add r1, r1, #0x4e
 	add r1, r1, r6
-	bl ov29_022EB44C
+	bl GetItemToUseByIndex
 	mov r4, r0
 	ldrsh r0, [r4, #4]
 	ldr r5, [sb, #0xb4]
@@ -955,7 +955,7 @@ ov29_022EB668: ; 0x022EB668
 	strh r2, [sp, #2]
 	ldrh r2, [r4, #4]
 	strh r2, [sp, #4]
-	bl ov29_023456BC
+	bl RemoveGroundItem
 	ldrsh r0, [r4, #4]
 	mov r3, #0xbb
 	add r1, sp, #0
@@ -964,7 +964,7 @@ ov29_022EB668: ; 0x022EB668
 	mov r2, #1
 	strh r4, [sp, #2]
 	strh r3, [sp, #4]
-	bl ov29_02345538
+	bl SpawnItem
 	b _022EB7F8
 _022EB71C:
 	ldrb r1, [r4, #1]
@@ -1024,7 +1024,7 @@ _022EB7E8:
 	mov r0, sb
 	mov r1, r8
 	mov r2, r7
-	bl ov29_022EB60C
+	bl RemoveUsedItem
 _022EB7F8:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -1043,8 +1043,8 @@ ov29_022EB804: ; 0x022EB804
 _022EB818: .word 0x0237C920
 	arm_func_end ov29_022EB804
 
-	arm_func_start ov29_022EB81C
-ov29_022EB81C: ; 0x022EB81C
+	arm_func_start AddDungeonSubMenuOption
+AddDungeonSubMenuOption: ; 0x022EB81C
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _022EB89C ; =0x0237C918
 	ldr r2, [r2]
@@ -1085,7 +1085,7 @@ _022EB8A0: .word 0x0237C91C
 _022EB8A4: .word 0x0237C91E
 _022EB8A8: .word 0x0237C920
 _022EB8AC: .word 0x0237C922
-	arm_func_end ov29_022EB81C
+	arm_func_end AddDungeonSubMenuOption
 
 	arm_func_start ov29_022EB8B0
 ov29_022EB8B0: ; 0x022EB8B0
@@ -1111,8 +1111,8 @@ _022EB8EC: .word 0x0237C918
 _022EB8F0: .word 0x0237C91C
 	arm_func_end ov29_022EB8B0
 
-	arm_func_start ov29_022EB8F4
-ov29_022EB8F4: ; 0x022EB8F4
+	arm_func_start DisableDungeonSubMenuOption
+DisableDungeonSubMenuOption: ; 0x022EB8F4
 	stmdb sp!, {r3, lr}
 	ldr r1, _022EB938 ; =0x0237C918
 	mov ip, #0
@@ -1136,7 +1136,7 @@ _022EB92C:
 _022EB938: .word 0x0237C918
 _022EB93C: .word 0x0237C91C
 _022EB940: .word 0x0237C920
-	arm_func_end ov29_022EB8F4
+	arm_func_end DisableDungeonSubMenuOption
 
 	arm_func_start ov29_022EB944
 ov29_022EB944: ; 0x022EB944
@@ -1144,7 +1144,7 @@ ov29_022EB944: ; 0x022EB944
 	cmp r1, #0
 	ldr r4, [r0, #0xb4]
 	beq _022EB964
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, pc}
@@ -1438,8 +1438,8 @@ ov29_022EBC74: ; 0x022EBC74
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022EBC74
 
-	arm_func_start ov29_022EBC98
-ov29_022EBC98: ; 0x022EBC98
+	arm_func_start SetActionUseMovePlayer
+SetActionUseMovePlayer: ; 0x022EBC98
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r1, #0x14
@@ -1449,7 +1449,7 @@ ov29_022EBC98: ; 0x022EBC98
 	strb r5, [r6, #4]
 	strb r4, [r6, #0xa]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov29_022EBC98
+	arm_func_end SetActionUseMovePlayer
 
 	arm_func_start SetActionUseMoveAi
 SetActionUseMoveAi: ; 0x022EBCBC
@@ -1571,7 +1571,7 @@ _022EBD80:
 	bl EnemyEvolution
 	mov r0, r4
 	mov r1, #1
-	bl ov29_02307D54
+	bl TryRestoreRoostTyping
 	mov sb, #0
 	mov r7, sb
 	mov r6, sb
@@ -1642,12 +1642,12 @@ _022EBF18:
 	ldrsh r1, [r8, #6]
 	ldrsh r0, [r7, #6]
 	sub r0, r1, r0
-	bl Abs
+	bl abs
 	ldrsh r2, [r8, #4]
 	ldrsh r1, [r7, #4]
 	mov r5, r0
 	sub r0, r2, r1
-	bl Abs
+	bl abs
 	cmp r0, r5
 	movle r0, r5
 	cmp r0, #3
@@ -1871,7 +1871,7 @@ _022EC2A4:
 _022EC2AC:
 	mov r0, #1
 	mov r1, #0
-	bl ov29_023354C4
+	bl TryActivateWeather
 	bl ov29_022EF9C8
 	mov r0, #0
 	bl TryForcedLoss
@@ -1928,7 +1928,7 @@ RunLeaderTurn: ; 0x022EC308
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, r4
 	mov r1, #1
-	bl ov29_02307D54
+	bl TryRestoreRoostTyping
 _022EC380:
 	bl GetLeader
 	movs sb, r0
@@ -1989,7 +1989,7 @@ _022EC434:
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x11]
-	bl ov29_022F0EDC
+	bl SetLeaderAction
 	ldr r0, _022EC600 ; =0x02353538
 	mov r1, #0
 	ldr r0, [r0]
@@ -2081,7 +2081,7 @@ _022EC59C:
 	ldr r0, [r1, #0xc8]
 	cmp r0, #0
 	beq _022EC5DC
-	bl ov29_022F3934
+	bl ChangeLeader
 	ldr r0, _022EC600 ; =0x02353538
 	mov r1, #0
 	ldr r0, [r0]

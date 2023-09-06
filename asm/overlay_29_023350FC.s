@@ -8,7 +8,7 @@ ov29_023350FC: ; 0x023350FC
 	stmdb sp!, {r3, lr}
 	mov r0, #0
 	bl GetApparentWeather
-	bl ov29_022DE620
+	bl GetWeatherColorTable
 	ldr r2, _0233516C ; =0x02353538
 	mov r1, #0
 _02335114:
@@ -55,7 +55,7 @@ TryWeatherFormChange: ; 0x02335170
 	bl CalcSpeedStageWrapper
 	mov r0, sl
 	mov r1, #0x25
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	mov r0, sl
 	beq _023351E0
@@ -111,12 +111,12 @@ _02335258:
 _02335270:
 	mov r0, sl
 	mov r1, #0x25
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02335298
 	ldrsh r1, [r7, #2]
 	mov r0, sl
-	bl ov29_022F9408
+	bl GetMonsterApparentId
 	strh r0, [r7, #4]
 	b _023352C0
 _02335298:
@@ -136,7 +136,7 @@ _023352C0:
 	cmp r0, r4
 	beq _02335420
 	ldrsh r0, [r7, #4]
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	strh r0, [sl, #0xa8]
 	mov r0, sl
 	bl GetSleepAnimationId
@@ -219,7 +219,7 @@ _023353F0:
 	cmp r0, r4
 	beq _02335420
 	ldrsh r0, [r7, #4]
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	strh r0, [sl, #0xa8]
 	mov r0, sl
 	bl GetSleepAnimationId
@@ -242,8 +242,8 @@ _02335444: .word 0x00000424
 _02335448: .word 0x00000425
 	arm_func_end TryWeatherFormChange
 
-	arm_func_start ov29_0233544C
-ov29_0233544C: ; 0x0233544C
+	arm_func_start ActivateSportCondition
+ActivateSportCondition: ; 0x0233544C
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	mov r0, #0
@@ -276,10 +276,10 @@ _023354B4: .word 0x022C478C
 _023354B8: .word 0x02353538
 _023354BC: .word 0x00000CDA
 _023354C0: .word 0x00000CDB
-	arm_func_end ov29_0233544C
+	arm_func_end ActivateSportCondition
 
-	arm_func_start ov29_023354C4
-ov29_023354C4: ; 0x023354C4
+	arm_func_start TryActivateWeather
+TryActivateWeather: ; 0x023354C4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, #0
 	mov sl, r0
@@ -394,10 +394,10 @@ _0233565C:
 _02335664: .word 0x02353538
 _02335668: .word 0x00000C93
 _0233566C: .word 0x00000C92
-	arm_func_end ov29_023354C4
+	arm_func_end TryActivateWeather
 
-	arm_func_start ov29_02335670
-ov29_02335670: ; 0x02335670
+	arm_func_start DigitCount
+DigitCount: ; 0x02335670
 	stmdb sp!, {r3, r4, r5, lr}
 	cmp r0, #0
 	rsblt r0, r0, #0
@@ -411,7 +411,7 @@ ov29_02335670: ; 0x02335670
 	b _023356B0
 _0233569C:
 	mov r1, r4
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	add r5, r5, #1
@@ -420,10 +420,10 @@ _023356B0:
 	bne _0233569C
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02335670
+	arm_func_end DigitCount
 
-	arm_func_start ov29_023356C0
-ov29_023356C0: ; 0x023356C0
+	arm_func_start LoadTextureUi
+LoadTextureUi: ; 0x023356C0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r0, _02335750 ; =0x02352B4C
@@ -465,7 +465,7 @@ _02335750: .word 0x02352B4C
 _02335754: .word 0x0235371C
 _02335758: .word 0x02353720
 _0233575C: .word 0x0237CA8C
-	arm_func_end ov29_023356C0
+	arm_func_end LoadTextureUi
 
 	arm_func_start ov29_02335760
 ov29_02335760: ; 0x02335760
@@ -529,7 +529,7 @@ ov29_02335808: ; 0x02335808
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
-	bl sub_0201E730
+	bl InitRender3dElement
 	mov r1, #0
 	mov r0, r5, lsl #0x10
 	strb r1, [r4, #0x3c]
@@ -564,8 +564,8 @@ ov29_02335864: ; 0x02335864
 _0233587C: .word 0x020AFC70
 	arm_func_end ov29_02335864
 
-	arm_func_start ov29_02335880
-ov29_02335880: ; 0x02335880
+	arm_func_start DisplayNumberTextureUi
+DisplayNumberTextureUi: ; 0x02335880
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x40
 	ldr r4, _02335984 ; =0x0237CA8C
@@ -579,7 +579,7 @@ ov29_02335880: ; 0x02335880
 	mov r6, r3
 	bl ov29_02335808
 	mov r0, sl
-	bl ov29_02335670
+	bl DigitCount
 	mov r0, r0, lsl #0x10
 	mov r8, r0, asr #0x10
 	cmp r6, #0
@@ -599,7 +599,7 @@ _023358E8:
 	mov r1, #0xa
 	strh r2, [sp]
 	strh fp, [sp, #2]
-	bl DivideInt
+	bl __divsi3
 	add r0, sb, r1
 	mov r0, r0, lsl #0x10
 	mov r7, r0, asr #0x10
@@ -617,7 +617,7 @@ _023358E8:
 	bl sub_0201F2A0
 	mov r0, sl
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov sl, r0, asr #0x10
 	add r0, r4, r7, lsl #3
@@ -635,10 +635,10 @@ _02335968:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02335984: .word 0x0237CA8C
-	arm_func_end ov29_02335880
+	arm_func_end DisplayNumberTextureUi
 
-	arm_func_start ov29_02335988
-ov29_02335988: ; 0x02335988
+	arm_func_start DisplayCharTextureUi
+DisplayCharTextureUi: ; 0x02335988
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r4, _023359F4 ; =0x0237CA8C
 	mov r6, r0
@@ -668,7 +668,7 @@ ov29_02335988: ; 0x02335988
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023359F4: .word 0x0237CA8C
-	arm_func_end ov29_02335988
+	arm_func_end DisplayCharTextureUi
 
 	arm_func_start ov29_023359F8
 ov29_023359F8: ; 0x023359F8
@@ -681,8 +681,8 @@ _02335A08: .word 0x0237CA8C
 _02335A0C: .word SetBothScreensWindowColorToDefault
 	arm_func_end ov29_023359F8
 
-	arm_func_start ov29_02335A10
-ov29_02335A10: ; 0x02335A10
+	arm_func_start DisplayUi
+DisplayUi: ; 0x02335A10
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
 	ldr r0, _02335F2C ; =0x02353538
@@ -776,7 +776,7 @@ _02335B5C:
 	mov r1, #2
 	bl ov29_02335808
 	mov r6, #0
-	bl ov29_022E0880
+	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
 	addne r0, r6, #0x18
 	movne r0, r0, lsl #0x10
@@ -793,7 +793,7 @@ _02335B5C:
 	mov r2, r1
 	mov r3, #0x18
 	str sl, [sp]
-	bl ov29_02335988
+	bl DisplayCharTextureUi
 	add r0, r6, r0
 	mov r0, r0, lsl #0x10
 	mov r6, r0, asr #0x10
@@ -809,7 +809,7 @@ _02335BC0:
 	mov r0, r6
 	and r3, r3, #0xff
 	mov r1, #0
-	bl ov29_02335880
+	bl DisplayNumberTextureUi
 	b _02335C18
 _02335BF4:
 	cmp r0, #0
@@ -820,7 +820,7 @@ _02335BF4:
 	mov r0, r6
 	and r3, r3, #0xff
 	mov r1, #0
-	bl ov29_02335880
+	bl DisplayNumberTextureUi
 _02335C18:
 	add r0, r6, r0
 	mov r0, r0, lsl #0x10
@@ -830,7 +830,7 @@ _02335C18:
 	mov r2, #0
 	mov r3, #0x14
 	str sl, [sp]
-	bl ov29_02335988
+	bl DisplayCharTextureUi
 	add r0, r6, r0
 	mov r0, r0, lsl #0x10
 	mov r6, r0, asr #0x10
@@ -840,7 +840,7 @@ _02335C48:
 	str sl, [sp]
 	mov r2, #0
 	mov r3, #0x15
-	bl ov29_02335988
+	bl DisplayCharTextureUi
 	ldrb r1, [r5, #0x2f]
 	add r0, r6, r0
 	mov r0, r0, lsl #0x10
@@ -853,14 +853,14 @@ _02335C48:
 	mov r0, r6
 	and r3, r3, #0xff
 	mov r1, #0
-	bl ov29_02335880
+	bl DisplayNumberTextureUi
 	mov r6, #0x48
 	add r0, sp, #4
 	mov r1, r6
 	str sl, [sp]
 	mov r2, #0
 	mov r3, #0x16
-	bl ov29_02335988
+	bl DisplayCharTextureUi
 	ldrb r1, [r5, #0x2f]
 	add r0, r0, #0x48
 	mov r0, r0, lsl #0x10
@@ -873,7 +873,7 @@ _02335C48:
 	mov r0, r6
 	and r3, r3, #0xff
 	mov r1, #0
-	bl ov29_02335880
+	bl DisplayNumberTextureUi
 	add r0, r6, r0
 	mov r7, r0, lsl #0x10
 	mov r6, r7, asr #0x10
@@ -882,7 +882,7 @@ _02335C48:
 	str sl, [sp]
 	mov r2, #0
 	mov r3, #0x17
-	bl ov29_02335988
+	bl DisplayCharTextureUi
 	ldrb r1, [r5, #0x2f]
 	add r0, r0, r7, asr #16
 	mov r0, r0, lsl #0x10
@@ -895,7 +895,7 @@ _02335C48:
 	mov r0, r6
 	and r3, r3, #0xff
 	mov r1, #0
-	bl ov29_02335880
+	bl DisplayNumberTextureUi
 	ldr r0, _02335F30 ; =0x0237CA8C
 	cmp r4, #0
 	ldr r0, [r0, #4]
@@ -904,7 +904,7 @@ _02335C48:
 	mov r6, #0x10
 	blt _02335F24
 	add r0, sp, #4
-	bl sub_0201E730
+	bl InitRender3dElement
 	ldr r0, _02335F30 ; =0x0237CA8C
 	mov fp, #5
 	ldrh r3, [r0]
@@ -1028,7 +1028,7 @@ _02335F30: .word 0x0237CA8C
 _02335F34: .word 0x000003E7
 _02335F38: .word 0x0237C850
 _02335F3C: .word 0x020AFC70
-	arm_func_end ov29_02335A10
+	arm_func_end DisplayUi
 
 	arm_func_start ov29_02335F40
 ov29_02335F40: ; 0x02335F40
@@ -1039,7 +1039,7 @@ ov29_02335F40: ; 0x02335F40
 	mov sl, r1
 	mov r4, r3
 	ldr sb, [sp, #0x6c]
-	bl sub_0201E730
+	bl InitRender3dElement
 	mov r0, #0
 	ldrh r1, [sp, #0x68]
 	mov r2, #0x21
@@ -1079,7 +1079,7 @@ ov29_02335F40: ; 0x02335F40
 _02335FF0:
 	mov r0, sb
 	mov r4, #0
-	bl ov29_02335670
+	bl DigitCount
 	mov r7, r0
 	mov r0, r7, lsl #3
 	add r0, r0, r0, lsr #31
@@ -1127,7 +1127,7 @@ _02336094:
 	strh sl, [sp, #2]
 	strh r5, [sp, #8]
 	strh r5, [sp, #0xa]
-	bl DivideInt
+	bl __divsi3
 	mov r0, r1, lsl #3
 	strh r0, [sp, #0x16]
 	add r0, sp, #0
@@ -1137,7 +1137,7 @@ _02336094:
 	bl sub_0201F2A0
 	mov r0, sb
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov sb, r0, asr #0x10
 	add r6, r6, #1
@@ -1217,8 +1217,8 @@ _023361CC: .word 0x0237CAB8
 _023361D0: .word 0x02353538
 	arm_func_end GetTileSafe
 
-	arm_func_start ov29_023361D4
-ov29_023361D4: ; 0x023361D4
+	arm_func_start IsFullFloorFixedRoom
+IsFullFloorFixedRoom: ; 0x023361D4
 	ldr r0, _02336200 ; =0x02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -1233,23 +1233,23 @@ _023361F8:
 	bx lr
 	.align 2, 0
 _02336200: .word 0x02353538
-	arm_func_end ov29_023361D4
+	arm_func_end IsFullFloorFixedRoom
 
-	arm_func_start ov29_02336204
-ov29_02336204: ; 0x02336204
+	arm_func_start IsCurrentTilesetBackground
+IsCurrentTilesetBackground: ; 0x02336204
 	ldr r0, _0233621C ; =0x02353538
-	ldr ip, _02336220 ; =ov10_022C2574
+	ldr ip, _02336220 ; =IsBackgroundTileset
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
 	bx ip
 	.align 2, 0
 _0233621C: .word 0x02353538
-_02336220: .word ov10_022C2574
-	arm_func_end ov29_02336204
+_02336220: .word IsBackgroundTileset
+	arm_func_end IsCurrentTilesetBackground
 
-	arm_func_start ov29_02336224
-ov29_02336224: ; 0x02336224
+	arm_func_start TrySpawnGoldenChamber
+TrySpawnGoldenChamber: ; 0x02336224
 	stmdb sp!, {r3, lr}
 	bl IsGoldenChamber
 	cmp r0, #0
@@ -1266,10 +1266,10 @@ ov29_02336224: ; 0x02336224
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233625C: .word 0x02353538
-	arm_func_end ov29_02336224
+	arm_func_end TrySpawnGoldenChamber
 
-	arm_func_start ov29_02336260
-ov29_02336260: ; 0x02336260
+	arm_func_start CountItemsOnFloorForAcuteSniffer
+CountItemsOnFloorForAcuteSniffer: ; 0x02336260
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, #0
@@ -1282,7 +1282,7 @@ _0233627C:
 	b _023362A8
 _02336284:
 	mov r0, r4
-	bl ov29_02337B2C
+	bl PositionHasItem
 	cmp r0, #0
 	addne r0, r6, #1
 	movne r0, r0, lsl #0x10
@@ -1310,7 +1310,7 @@ _023362C0:
 	.align 2, 0
 _023362E4: .word 0x02353538
 _023362E8: .word 0x00012AF8
-	arm_func_end ov29_02336260
+	arm_func_end CountItemsOnFloorForAcuteSniffer
 
 	arm_func_start ov29_023362EC
 ov29_023362EC: ; 0x023362EC
@@ -1372,8 +1372,8 @@ _02336314:
 _023363BC: .word 0x02353538
 	arm_func_end ov29_023362EC
 
-	arm_func_start ov29_023363C0
-ov29_023363C0: ; 0x023363C0
+	arm_func_start GetStairsSpawnPosition
+GetStairsSpawnPosition: ; 0x023363C0
 	ldr r3, _023363E8 ; =0x02353538
 	ldr r2, [r3]
 	add r2, r2, #0xcc00
@@ -1386,10 +1386,10 @@ ov29_023363C0: ; 0x023363C0
 	bx lr
 	.align 2, 0
 _023363E8: .word 0x02353538
-	arm_func_end ov29_023363C0
+	arm_func_end GetStairsSpawnPosition
 
-	arm_func_start ov29_023363EC
-ov29_023363EC: ; 0x023363EC
+	arm_func_start PositionIsOnStairs
+PositionIsOnStairs: ; 0x023363EC
 	ldr r2, _02336424 ; =0x02353538
 	mov ip, #0
 	ldr r2, [r2]
@@ -1406,7 +1406,7 @@ ov29_023363EC: ; 0x023363EC
 	bx lr
 	.align 2, 0
 _02336424: .word 0x02353538
-	arm_func_end ov29_023363EC
+	arm_func_end PositionIsOnStairs
 
 	arm_func_start GetStairsRoom
 GetStairsRoom: ; 0x02336428
@@ -1423,14 +1423,14 @@ GetStairsRoom: ; 0x02336428
 _0233644C: .word 0x02353538
 	arm_func_end GetStairsRoom
 
-	arm_func_start ov29_02336450
-ov29_02336450: ; 0x02336450
+	arm_func_start GetDefaultTileTextureId
+GetDefaultTileTextureId: ; 0x02336450
 	ldr r0, _0233645C ; =0x02353724
 	ldr r0, [r0, #4]
 	bx lr
 	.align 2, 0
 _0233645C: .word 0x02353724
-	arm_func_end ov29_02336450
+	arm_func_end GetDefaultTileTextureId
 
 	arm_func_start ov29_02336460
 ov29_02336460: ; 0x02336460
@@ -1802,7 +1802,7 @@ _0233699C:
 	mov r4, r0
 	cmp r4, #3
 	moveq r4, #0
-	bl ov29_022E0880
+	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
 	mov r0, sb
 	mov r1, r8
@@ -1851,8 +1851,8 @@ _02336A08:
 _02336A48: .word 0x02353538
 	arm_func_end ov29_023369F8
 
-	arm_func_start ov29_02336A4C
-ov29_02336A4C: ; 0x02336A4C
+	arm_func_start DetermineAllTilesWalkableNeighbors
+DetermineAllTilesWalkableNeighbors: ; 0x02336A4C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, #0
 	mov r4, r6
@@ -1861,7 +1861,7 @@ _02336A58:
 _02336A5C:
 	mov r0, r5
 	mov r1, r6
-	bl ov29_02336A84
+	bl DetermineTileWalkableNeighbors
 	add r5, r5, #1
 	cmp r5, #0x38
 	blt _02336A5C
@@ -1869,10 +1869,10 @@ _02336A5C:
 	cmp r6, #0x20
 	blt _02336A58
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov29_02336A4C
+	arm_func_end DetermineAllTilesWalkableNeighbors
 
-	arm_func_start ov29_02336A84
-ov29_02336A84: ; 0x02336A84
+	arm_func_start DetermineTileWalkableNeighbors
+DetermineTileWalkableNeighbors: ; 0x02336A84
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x28
 	mov r4, r1
@@ -2081,7 +2081,7 @@ _02336C20:
 	strb sb, [r0, #0xb]
 	add sp, sp, #0x28
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov29_02336A84
+	arm_func_end DetermineTileWalkableNeighbors
 
 	arm_func_start ov29_02336DB0
 ov29_02336DB0: ; 0x02336DB0
@@ -2199,8 +2199,8 @@ _02336F2C:
 _02336F48: .word 0x02352F14
 	arm_func_end ov29_02336DB0
 
-	arm_func_start ov29_02336F4C
-ov29_02336F4C: ; 0x02336F4C
+	arm_func_start UpdateTrapsVisibility
+UpdateTrapsVisibility: ; 0x02336F4C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
 	ldr r0, _02337108 ; =0x02353538
@@ -2209,7 +2209,7 @@ ov29_02336F4C: ; 0x02336F4C
 	ldrb r0, [r1, #0x245]
 	str r0, [sp, #0x18]
 	ldrb fp, [r1, #0x244]
-	bl IsSecretBazaar__023385C4
+	bl IsSecretBazaar
 	ldr r1, _0233710C ; =0x0001A224
 	ldr r2, _02337110 ; =0x02352B9C
 	ldrsh r3, [sl, r1]
@@ -2321,7 +2321,7 @@ _0233710C: .word 0x0001A224
 _02337110: .word 0x02352B9C
 _02337114: .word 0x02352D58
 _02337118: .word 0x0001A226
-	arm_func_end ov29_02336F4C
+	arm_func_end UpdateTrapsVisibility
 
 	arm_func_start ov29_0233711C
 ov29_0233711C: ; 0x0233711C
@@ -2335,7 +2335,7 @@ ov29_0233711C: ; 0x0233711C
 	ldrb r0, [r1, #0x245]
 	str r0, [sp, #0x18]
 	ldrb fp, [r1, #0x244]
-	bl IsSecretBazaar__023385C4
+	bl IsSecretBazaar
 	ldr r2, _02337298 ; =0x0001A224
 	ldr r1, _0233729C ; =0x02352B9C
 	add r3, r2, #2
@@ -2440,7 +2440,7 @@ ov29_023372A4: ; 0x023372A4
 	ldrb r0, [r1, #0x245]
 	str r0, [sp, #0x18]
 	ldrb fp, [r1, #0x244]
-	bl IsSecretBazaar__023385C4
+	bl IsSecretBazaar
 	ldr r2, _0233741C ; =0x0001A224
 	ldr r1, _02337420 ; =0x02352B9C
 	add r3, r2, #2
@@ -2532,8 +2532,8 @@ _02337420: .word 0x02352B9C
 _02337424: .word 0x02352D58
 	arm_func_end ov29_023372A4
 
-	arm_func_start ov29_02337428
-ov29_02337428: ; 0x02337428
+	arm_func_start DrawTileGrid
+DrawTileGrid: ; 0x02337428
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
 	ldr r5, _02337780 ; =0x02353538
@@ -2773,10 +2773,10 @@ _0233778C: .word 0x02352B9C
 _02337790: .word 0x02352D58
 _02337794: .word 0x0001A226
 _02337798: .word 0x0001213E
-	arm_func_end ov29_02337428
+	arm_func_end DrawTileGrid
 
-	arm_func_start ov29_0233779C
-ov29_0233779C: ; 0x0233779C
+	arm_func_start HideTileGrid
+HideTileGrid: ; 0x0233779C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r8, #0
@@ -2812,7 +2812,7 @@ _023377BC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02337818: .word 0x02353538
-	arm_func_end ov29_0233779C
+	arm_func_end HideTileGrid
 
 	arm_func_start ov29_0233781C
 ov29_0233781C: ; 0x0233781C
@@ -2967,15 +2967,15 @@ _02337A34: .word 0x0000270F
 _02337A38: .word 0x02353538
 	arm_func_end ov29_0233785C
 
-	arm_func_start ov29_02337A3C
-ov29_02337A3C: ; 0x02337A3C
+	arm_func_start DiscoverMinimap
+DiscoverMinimap: ; 0x02337A3C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r5, r0
 	ldrsh r0, [r5]
 	ldrsh r1, [r5, #2]
 	bl GetTile
 	ldrb r4, [r0, #7]
-	bl ov29_022E333C
+	bl GetVisibilityRange
 	ldr r1, _02337B28 ; =0x02353538
 	ldr r3, [r1]
 	add r1, r3, #0x1a000
@@ -3024,7 +3024,7 @@ _02337AE8:
 	orr r2, r2, #3
 	strh r2, [r0, #2]
 	mov r0, r8
-	bl ov29_023391EC
+	bl DrawMinimapTile
 	add r8, r8, #1
 _02337B10:
 	cmp r8, r5
@@ -3036,15 +3036,15 @@ _02337B1C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02337B28: .word 0x02353538
-	arm_func_end ov29_02337A3C
+	arm_func_end DiscoverMinimap
 
-	arm_func_start ov29_02337B2C
-ov29_02337B2C: ; 0x02337B2C
+	arm_func_start PositionHasItem
+PositionHasItem: ; 0x02337B2C
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	ldrsh r0, [r1]
 	ldrsh r1, [r1, #2]
-	arm_func_end ov29_02337B2C
+	arm_func_end PositionHasItem
 
 	arm_func_start ov29_02337B3C
 ov29_02337B3C: ; 0x02337B3C
@@ -3061,8 +3061,8 @@ ov29_02337B3C: ; 0x02337B3C
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_02337B3C
 
-	arm_func_start ov29_02337B68
-ov29_02337B68: ; 0x02337B68
+	arm_func_start PositionHasMonster
+PositionHasMonster: ; 0x02337B68
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	ldrsh r0, [r1]
@@ -3077,12 +3077,12 @@ ov29_02337B68: ; 0x02337B68
 _02337B94:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02337B68
+	arm_func_end PositionHasMonster
 
-	arm_func_start ov29_02337B9C
-ov29_02337B9C: ; 0x02337B9C
+	arm_func_start TrySmashWall
+TrySmashWall: ; 0x02337B9C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	arm_func_end ov29_02337B9C
+	arm_func_end TrySmashWall
 
 	arm_func_start ov29_02337BA0
 ov29_02337BA0: ; 0x02337BA0
@@ -3119,12 +3119,12 @@ _02337BF8:
 	ldrsh r1, [r8, #2]
 	add r0, r6, r0
 	add r1, r7, r1
-	bl ov29_02336A84
+	bl DetermineTileWalkableNeighbors
 	ldrsh r0, [r8]
 	ldrsh r1, [r8, #2]
 	add r0, r6, r0
 	add r1, r7, r1
-	bl ov29_023391EC
+	bl DrawMinimapTile
 	add r6, r6, #1
 	cmp r6, #1
 	ble _02337BF8
@@ -3155,7 +3155,7 @@ _02337C84:
 	add r6, r6, #1
 	cmp r6, #0x14
 	blt _02337C5C
-	bl ov29_02336F4C
+	bl UpdateTrapsVisibility
 	mov r0, r8
 	bl ov29_022E66C4
 _02337C9C:

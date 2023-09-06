@@ -1,5 +1,5 @@
 #pragma once
-.public AbilityIsActive2
+.public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public AnimationHasMoreFrames
 .public EntityIsValid__022E37B8
@@ -12,11 +12,11 @@
 .public ov10_022BF8E8
 .public ov10_022BFD20
 .public ov29_022E2C6C
-.public ov29_022E2EC4
-.public ov29_022E38E0
+.public UpdateCamera
+.public AnimationDelayOrSomething
 .public ov29_022E5ED0
-.public ov29_02335A10
-.public ov29_02336F4C
-.public ov29_02339CE8
+.public DisplayUi
+.public UpdateTrapsVisibility
+.public UpdateMinimap
 .public sub_0201C000
 .public sub_0201CF90

@@ -13,42 +13,42 @@ _022F52B8: .word ov29_02343D30
 
 	arm_func_start ov29_022F52BC
 ov29_022F52BC: ; 0x022F52BC
-	ldr ip, _022F52C8 ; =ov29_022F52F8
+	ldr ip, _022F52C8 ; =UseSingleUseItem
 	mov r1, r0
 	bx ip
 	.align 2, 0
-_022F52C8: .word ov29_022F52F8
+_022F52C8: .word UseSingleUseItem
 	arm_func_end ov29_022F52BC
 
-	arm_func_start ov29_022F52CC
-ov29_022F52CC: ; 0x022F52CC
+	arm_func_start UseSingleUseItemWrapper
+UseSingleUseItemWrapper: ; 0x022F52CC
 	ldr r2, [r0, #0xb4]
 	ldr r1, _022F52F0 ; =0x02353538
 	ldrb r2, [r2, #0x54]
 	ldr r1, [r1]
-	ldr ip, _022F52F4 ; =ov29_022F52F8
+	ldr ip, _022F52F4 ; =UseSingleUseItem
 	add r1, r1, r2, lsl #2
 	add r1, r1, #0x12000
 	ldr r1, [r1, #0xb28]
 	bx ip
 	.align 2, 0
 _022F52F0: .word 0x02353538
-_022F52F4: .word ov29_022F52F8
-	arm_func_end ov29_022F52CC
+_022F52F4: .word UseSingleUseItem
+	arm_func_end UseSingleUseItemWrapper
 
-	arm_func_start ov29_022F52F8
-ov29_022F52F8: ; 0x022F52F8
+	arm_func_start UseSingleUseItem
+UseSingleUseItem: ; 0x022F52F8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x10
 	mov r8, r1
 	mov sb, r0
 	mov r0, r8
 	ldr r5, [r8, #0xb4]
-	bl ov29_023186CC
+	bl MonsterHasEmbargoStatus
 	cmp r0, #0
 	beq _022F5334
 	mov r0, r8
-	bl ov29_02318700
+	bl LogItemBlockedByEmbargo
 	mov r0, #0x14
 	mov r1, #9
 	bl ov29_022EA370
@@ -59,7 +59,7 @@ _022F5334:
 	mov r0, sb
 	mov r1, #0
 	mov r2, #8
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r4, r0
 	mov r1, r4
 	mov r0, #0
@@ -72,7 +72,7 @@ _022F5334:
 	bl ov29_0230040C
 	mov r0, r8
 	mov r1, r4
-	bl ov29_0231D4A4
+	bl CanMonsterUseItem
 	cmp r0, #0
 	beq _022F54B0
 	mov r0, r4
@@ -89,7 +89,7 @@ _022F5334:
 	strh r3, [sp, #0xa]
 	ldrh r3, [r4, #4]
 	strh r3, [sp, #0xc]
-	bl ov29_022EB60C
+	bl RemoveUsedItem
 	mov r0, #0x1e
 	mov r1, #0x11
 	bl ov29_022EA370
@@ -151,16 +151,16 @@ _022F5498:
 	ldr r1, [r1]
 	add r1, r1, #0x4000
 	ldrb r1, [r1, #0xc4]
-	bl ov29_02307F4C
+	bl TryTriggerMonsterHouse
 _022F54B0:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _022F54B8: .word 0x02353538
-	arm_func_end ov29_022F52F8
+	arm_func_end UseSingleUseItem
 
-	arm_func_start ov29_022F54BC
-ov29_022F54BC: ; 0x022F54BC
+	arm_func_start UseThrowableItem
+UseThrowableItem: ; 0x022F54BC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x14
 	mov sb, r0
@@ -169,14 +169,14 @@ ov29_022F54BC: ; 0x022F54BC
 	mov r0, sb
 	mov r1, #0
 	mov r2, #9
-	bl ov29_022EB54C
+	bl GetItemToUse
 	mov r4, r0
 	mov r0, sb
-	bl ov29_023186CC
+	bl MonsterHasEmbargoStatus
 	cmp r0, #0
 	beq _022F550C
 	mov r0, sb
-	bl ov29_02318700
+	bl LogItemBlockedByEmbargo
 	mov r0, #0x14
 	mov r1, #9
 	bl ov29_022EA370
@@ -261,7 +261,7 @@ _022F55E8:
 	add r0, r8, #0x50
 	mov r1, #1
 	mov r4, #0
-	bl ov29_023456BC
+	bl RemoveGroundItem
 _022F563C:
 	ldrsh r0, [sp, #0x10]
 	mov r5, #1
@@ -291,7 +291,7 @@ _022F566C:
 _022F5698:
 	mov r0, r4
 	bl ItemZInit
-	bl ov29_02347030
+	bl RemoveEmptyItemsInBagWrapper
 	b _022F56F4
 _022F56A8:
 	cmp r0, #0x80
@@ -302,7 +302,7 @@ _022F56A8:
 	sub r3, r2, #1
 	mov r2, #1
 	strh r3, [sp, #0xe]
-	bl ov29_02345538
+	bl SpawnItem
 	b _022F56F4
 _022F56D0:
 	mov r0, r4
@@ -326,7 +326,7 @@ _022F56F4:
 	strb r0, [r8, #0x4c]
 _022F5714:
 	mov r0, sb
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	beq _022F577C
 	ldr r1, _022F5988 ; =0x00000103
@@ -493,7 +493,7 @@ _022F5944:
 	ldr r1, [r1]
 	add r1, r1, #0x4000
 	ldrb r1, [r1, #0xc4]
-	bl ov29_02307F4C
+	bl TryTriggerMonsterHouse
 _022F5978:
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
@@ -503,7 +503,7 @@ _022F5984: .word 0x00000BBE
 _022F5988: .word 0x00000103
 _022F598C: .word 0x00000BBF
 _022F5990: .word 0x02353538
-	arm_func_end ov29_022F54BC
+	arm_func_end UseThrowableItem
 
 	arm_func_start ItemIsActive__022F5994
 ItemIsActive__022F5994: ; 0x022F5994
@@ -511,7 +511,7 @@ ItemIsActive__022F5994: ; 0x022F5994
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -588,7 +588,7 @@ _022F5A70:
 _022F5A90:
 	ldr r0, [sl, #0xb4]
 	ldrb r0, [r0, #0xbc]
-	bl ov29_022EFB04
+	bl IsSecretBazaarNpcBehavior
 	movs r4, r0
 	bne _022F5ADC
 	mov r0, r6
@@ -692,7 +692,7 @@ _022F5BE4:
 	bl DisplayMessage2
 	b _022F5D94
 _022F5C18:
-	bl ov29_023491A4
+	bl GetMissionDestination
 	ldrb r0, [r0, #0x18]
 	cmp r0, #0
 	mov r0, sl
@@ -711,7 +711,7 @@ _022F5C3C:
 	movgt r1, r0
 	mov r0, r1, lsl #3
 	mov r1, #0xa
-	bl DivideInt
+	bl __divsi3
 	ldrsh r1, [sb, #0x10]
 	cmp r1, r0
 	movge r4, #0
@@ -739,7 +739,7 @@ _022F5CA4:
 	sub fp, r0, #0x1b
 _022F5CBC:
 	mov r0, sb
-	bl ov29_0234CFEC
+	bl GetPersonalityIndex
 	mov r7, r0
 	cmp r7, fp
 	ldrne r0, _022F5DB4 ; =0x000004D3
@@ -768,7 +768,7 @@ _022F5CE8:
 	bne _022F5D34
 	ldr r1, _022F5DBC ; =0x02352758
 	mov r0, r5
-	bl Strcpy
+	bl strcpy
 _022F5D34:
 	cmp r6, #0
 	bne _022F5CBC
@@ -786,7 +786,7 @@ _022F5D5C:
 _022F5D60:
 	ldrsh r1, [sb, #4]
 	add r0, sp, #8
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	add r1, sp, #8
 	mov r0, sl
 	mov r2, r5
@@ -865,7 +865,7 @@ _022F5E1C:
 	bl IsMonsterIdInNormalRange__022F9C68
 	cmp r0, #0
 	beq _022F5E84
-	bl ov29_022E08A0
+	bl IsMarowakTrainingMaze
 	cmp r0, #0
 	addne r5, r5, #2
 	ldr r6, _022F5F14 ; =0x00000BCA
@@ -876,7 +876,7 @@ _022F5E84:
 	mov r3, r2
 	mov r0, #0
 	str r2, [sp]
-	bl ov29_0234D518
+	bl YesNoMenu
 	cmp r0, #1
 	bne _022F5F04
 	mov r0, #0
@@ -886,7 +886,7 @@ _022F5E84:
 	mov r1, r0
 	add r0, sp, #4
 	mov r2, #0x40
-	bl Strncpy
+	bl strncpy
 	mov r0, r7
 	bl ov29_022E690C
 	mov r0, r7
@@ -925,7 +925,7 @@ ov29_022F5F18: ; 0x022F5F18
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
-	bl ov29_02344160
+	bl AreMovesEnabled
 	cmp r0, #0
 	bne _022F5F60
 	ldr r1, _022F6054 ; =0x00000DFD
@@ -937,7 +937,7 @@ _022F5F60:
 	mov r1, r7
 	mov r0, sb
 	strb r1, [r4, #0x23f]
-	bl ov29_0231A7A0
+	bl ShouldUsePp
 	cmp r0, #0
 	movne r7, #1
 	strneb r7, [r4, #0x23f]

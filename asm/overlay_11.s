@@ -1198,8 +1198,8 @@ _022DD15C: .word ov11_02324E80
 _022DD160: .word 0x02324F1C
 	arm_func_end ov11_022DD130
 
-	arm_func_start ov11_022DD164
-ov11_022DD164: ; 0x022DD164
+	arm_func_start FuncThatCallsCommandParsing
+FuncThatCallsCommandParsing: ; 0x022DD164
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, r0
 	ldrsh r0, [r6, #0xe]
@@ -1226,7 +1226,7 @@ _022DD1A0: ; jump table
 	b _022DD2A0 ; case 6
 _022DD1BC:
 	mov r0, r6
-	bl ov11_022DDD64
+	bl ScriptCommandParsing
 	strh r0, [r6, #0xe]
 	ldrsh r0, [r6, #0xe]
 	cmp r0, #6
@@ -1304,7 +1304,7 @@ _022DD2B4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022DD2BC: .word ov11_02324E80
-	arm_func_end ov11_022DD164
+	arm_func_end FuncThatCallsCommandParsing
 
 	arm_func_start ov11_022DD2C0
 ov11_022DD2C0: ; 0x022DD2C0
@@ -1444,7 +1444,7 @@ _022DD468:
 	mov r3, r5
 	mov r0, r4
 	and r1, r8, #0xff
-	bl ov11_022E7118
+	bl ScriptSpecialProcessCall
 	mov r2, r8
 	mov r5, r0
 	mov r0, #2
@@ -2006,11 +2006,11 @@ _022DDC6C:
 	mov r2, r0
 	ldr r1, _022DDD5C ; =0x023193D4
 	add r0, sp, #0x20
-	bl Sprintf
+	bl sprintf
 	ldr r2, _022DDD60 ; =0x0000030F
 	add r0, sp, #0x14
 	add r1, sp, #0x20
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, [sp, #0x14]
 	mov r0, #0x400
 	add r6, r1, #2
@@ -2067,8 +2067,8 @@ _022DDD5C: .word 0x023193D4
 _022DDD60: .word 0x0000030F
 	arm_func_end ov11_022DD2C0
 
-	arm_func_start ov11_022DDD64
-ov11_022DDD64: ; 0x022DDD64
+	arm_func_start ScriptCommandParsing
+ScriptCommandParsing: ; 0x022DDD64
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c8
 	mov r4, r0
@@ -2473,7 +2473,7 @@ _022DDDE0: ; jump table
 	b ov11_022E03D0 ; case 368
 	b ov11_022E03D8 ; case 369
 	b ov11_022E03D0 ; case 370
-	arm_func_end ov11_022DDD64
+	arm_func_end ScriptCommandParsing
 
 	arm_func_start ov11_022DE3AC
 ov11_022DE3AC: ; 0x022DE3AC
@@ -2591,7 +2591,7 @@ _022DE500:
 	ldrsh r2, [r1, #8]
 	mov r0, #2
 	strh r2, [r1, #6]
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022DE554
 	ldr r3, _022DED18 ; =ov11_02324E80
@@ -2626,7 +2626,7 @@ _022DE554:
 	mov r0, #0
 	bl ov11_022EAFF8
 	bl ov11_022FEA28
-	bl ov11_022F7D18
+	bl InitPartnerFollowDataAndLiveActorList
 	bl ov11_022FBE04
 	bl ov11_022FD66C
 	bl ov11_022F1244
@@ -2648,7 +2648,7 @@ _022DE5D8:
 	ldrsh r2, [r1, #2]
 	mov r0, #2
 	strh r2, [r1, #4]
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022DE62C
 	ldr r3, _022DED18 ; =ov11_02324E80
@@ -2680,7 +2680,7 @@ _022DE650:
 	ldr r1, _022DED18 ; =ov11_02324E80
 	mov r0, #2
 	strh r4, [r1, #6]
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022DE6A4
 	ldr r3, _022DED18 ; =ov11_02324E80
@@ -3647,7 +3647,7 @@ _022DF348:
 	bl ov11_022E48AC
 	mov r5, r0
 	mov r0, #0xb
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r5, r0
 	ldreqh r0, [r6, #2]
 	ldreq r1, [r4, #0x14]
@@ -3965,10 +3965,10 @@ ov11_022DF760: ; 0x022DF760
 	mov r1, r5, lsl #0x18
 	ldr r0, _022DFE1C ; =0x02324EA4
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _022DFE1C ; =0x02324EA4
 	and r1, r4, #0xff
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	b _022E2474
 	arm_func_end ov11_022DF760
 
@@ -3995,10 +3995,10 @@ ov11_022DF7CC: ; 0x022DF7CC
 	mov r1, r5, lsl #0x18
 	ldr r0, _022DFE1C ; =0x02324EA4
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _022DFE1C ; =0x02324EA4
 	and r1, r4, #0xff
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	b _022E2474
 	arm_func_end ov11_022DF7CC
 
@@ -4025,10 +4025,10 @@ ov11_022DF834: ; 0x022DF834
 	mov r1, r5, lsl #0x18
 	ldr r0, _022DFE1C ; =0x02324EA4
 	mov r1, r1, asr #0x18
-	bl SetPortraitExpressionId
+	bl SetPortraitEmotion
 	ldr r0, _022DFE1C ; =0x02324EA4
 	and r1, r4, #0xff
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	b _022E2474
 	arm_func_end ov11_022DF834
 
@@ -4039,7 +4039,7 @@ ov11_022DF89C: ; 0x022DF89C
 	mov r1, r0
 	ldr r0, _022DFE1C ; =0x02324EA4
 	and r1, r1, #0xff
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	b _022E2474
 	arm_func_end ov11_022DF89C
 
@@ -4058,7 +4058,7 @@ ov11_022DF8B8: ; 0x022DF8B8
 	str r0, [sp, #0xd4]
 	ldr r0, _022DFE1C ; =0x02324EA4
 	add r1, sp, #0xd0
-	bl SetPortraitAttrStruct
+	bl SetPortraitOffset
 	b _022E2474
 	arm_func_end ov11_022DF8B8
 
@@ -4328,7 +4328,7 @@ _022DFC64:
 	mov r0, #0
 	bl ov11_022EAFF8
 	bl ov11_022FEA28
-	bl ov11_022F7D18
+	bl InitPartnerFollowDataAndLiveActorList
 	bl ov11_022FBE04
 	bl ov11_022FD66C
 	bl ov11_022F1244
@@ -6783,7 +6783,7 @@ _022E1E28:
 _022E1E50:
 	ldrh r0, [r5, #2]
 	bl ov11_022E48AC
-	bl ov11_0230F004
+	bl WorldMapSetMode
 	b _022E2464
 _022E1E60:
 	ldrh r0, [r5, #2]
@@ -6847,7 +6847,7 @@ _022E1F2C:
 	bl ov11_022E48AC
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_0230F0C4
+	bl WorldMapSetCamera
 	b _022E2464
 _022E1F44:
 	ldrh r0, [r5, #2]
@@ -7039,7 +7039,7 @@ _022E21A8:
 	mov r2, r3, lsl #0x10
 	mov r1, r1, lsr #0x10
 	mov r2, r2, lsr #0x10
-	bl sub_02017BE0
+	bl SendAudioCommandWrapperVeneer
 	b _022E2464
 _022E21F8:
 	bl sub_02017BEC
@@ -7201,7 +7201,7 @@ _022E242C:
 	mov r0, #0
 	bl ov11_022E9710
 	mov r0, #0
-	bl ov11_022E96F4
+	bl ScriptSpecialProcess0x16
 	b _022E2464
 _022E2440:
 	ldrh r0, [r5, #2]
@@ -7212,7 +7212,7 @@ _022E2440:
 	mov r0, #1
 	bl ov11_022E9710
 	mov r0, #1
-	bl ov11_022E96F4
+	bl ScriptSpecialProcess0x16
 _022E2464:
 	mov r0, #2
 	b _022E2478
@@ -8304,11 +8304,11 @@ _022E33C4:
 	bl EuclideanNorm__02005050
 	mov r4, r0
 	ldr r0, [sb, #0x4c]
-	bl IntToFloat
+	bl __floatsisf
 	mov r1, r0
 	mov r0, r4
-	bl DivideFloat
-	bl FloatToInt
+	bl __divsf3
+	bl __fixsfsi
 	strh r0, [sb, #0x46]
 	ldrsh r0, [sb, #0x46]
 	cmp r0, #0
@@ -9677,24 +9677,24 @@ _022E46D0:
 
 	arm_func_start LoadFileFromRom__022E46DC
 LoadFileFromRom__022E46DC: ; 0x022E46DC
-	ldr ip, _022E46E4 ; =LoadFileFromRom__02008C3C
+	ldr ip, _022E46E4 ; =LoadFileFromRom
 	bx ip
 	.align 2, 0
-_022E46E4: .word LoadFileFromRom__02008C3C
+_022E46E4: .word LoadFileFromRom
 	arm_func_end LoadFileFromRom__022E46DC
 
 	arm_func_start ov11_022E46E8
 ov11_022E46E8: ; 0x022E46E8
-	ldr ip, _022E46F8 ; =ov11_022E46FC
+	ldr ip, _022E46F8 ; =SsbLoad2
 	mov r2, #0
 	str r2, [r0]
 	bx ip
 	.align 2, 0
-_022E46F8: .word ov11_022E46FC
+_022E46F8: .word SsbLoad2
 	arm_func_end ov11_022E46E8
 
-	arm_func_start ov11_022E46FC
-ov11_022E46FC: ; 0x022E46FC
+	arm_func_start SsbLoad2
+SsbLoad2: ; 0x022E46FC
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x54
 	mov r4, r1
@@ -9809,7 +9809,7 @@ _022E488C:
 	.align 2, 0
 _022E48A4: .word 0x02319694
 _022E48A8: .word 0x02324F70
-	arm_func_end ov11_022E46FC
+	arm_func_end SsbLoad2
 
 	arm_func_start ov11_022E48AC
 ov11_022E48AC: ; 0x022E48AC
@@ -10051,8 +10051,8 @@ _022E4BCC: .word 0x02324F82
 _022E4BD0: .word 0x02324F8A
 	arm_func_end ov11_022E4B88
 
-	arm_func_start ov11_022E4BD4
-ov11_022E4BD4: ; 0x022E4BD4
+	arm_func_start StationLoadHanger
+StationLoadHanger: ; 0x022E4BD4
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x8c
 	mov r5, r0
@@ -10068,7 +10068,7 @@ ov11_022E4BD4: ; 0x022E4BD4
 	ldr r1, _022E4CB8 ; =0x023196B0
 	add r0, sp, #9
 	add r3, sp, #0
-	bl Sprintf
+	bl sprintf
 	ldr r4, _022E4CBC ; =0x02324C8C
 	b _022E4C84
 _022E4C1C:
@@ -10083,7 +10083,7 @@ _022E4C1C:
 	ldr r1, _022E4CC0 ; =0x023196C4
 	add r0, sp, #9
 	add r3, sp, #0
-	bl Sprintf
+	bl sprintf
 	ldr r4, _022E4CC4 ; =0x02324C6C
 	b _022E4C84
 _022E4C54:
@@ -10092,7 +10092,7 @@ _022E4C54:
 	mov r2, r0
 	ldr r1, _022E4CC8 ; =0x023196D8
 	add r0, sp, #9
-	bl Sprintf
+	bl sprintf
 	add r0, sp, #9
 	bl sub_02008BA8
 	cmp r0, #0
@@ -10122,7 +10122,7 @@ _022E4CC4: .word 0x02324C6C
 _022E4CC8: .word 0x023196D8
 _022E4CCC: .word 0x02324C94
 _022E4CD0: .word 0x023196EC
-	arm_func_end ov11_022E4BD4
+	arm_func_end StationLoadHanger
 
 	arm_func_start ov11_022E4CD4
 ov11_022E4CD4: ; 0x022E4CD4
@@ -10347,7 +10347,7 @@ ov11_022E4FCC: ; 0x022E4FCC
 	ldr r1, _022E512C ; =0x02319730
 	add r0, sp, #0xd
 	add r3, sp, #4
-	bl Sprintf
+	bl sprintf
 	ldr r0, _022E5130 ; =0x02324C84
 	b _022E511C
 _022E5014:
@@ -10363,7 +10363,7 @@ _022E5014:
 	add r0, sp, #0xd
 	add r3, sp, #4
 	str r4, [sp]
-	bl Sprintf
+	bl sprintf
 	ldr r0, _022E5130 ; =0x02324C84
 	b _022E511C
 _022E5050:
@@ -10375,7 +10375,7 @@ _022E5050:
 	ldr r1, _022E5138 ; =0x0231975C
 	add r0, sp, #0xd
 	mov r3, r4
-	bl Sprintf
+	bl sprintf
 	ldr r0, _022E5130 ; =0x02324C84
 	b _022E511C
 _022E507C:
@@ -10387,7 +10387,7 @@ _022E507C:
 	ldr r1, _022E513C ; =0x02319774
 	add r0, sp, #0xd
 	add r2, sp, #4
-	bl Sprintf
+	bl sprintf
 	ldr r0, _022E5130 ; =0x02324C84
 	b _022E511C
 _022E50A8:
@@ -10404,7 +10404,7 @@ _022E50A8:
 	add r0, sp, #0xd
 	add r3, sp, #4
 	str ip, [sp]
-	bl Sprintf
+	bl sprintf
 	ldr r0, _022E5140 ; =0x02324C7C
 	b _022E511C
 _022E50E8:
@@ -10414,7 +10414,7 @@ _022E50E8:
 	ldr r1, _022E5138 ; =0x0231975C
 	add r0, sp, #0xd
 	mov r3, #0
-	bl Sprintf
+	bl sprintf
 	add r0, sp, #0xd
 	bl sub_02008BA8
 	cmp r0, #0
@@ -10423,7 +10423,7 @@ _022E50E8:
 	ldr r0, _022E5144 ; =0x02324C74
 _022E511C:
 	add r1, sp, #0xd
-	bl ov11_022E5D50
+	bl SsbLoad1
 _022E5124:
 	add sp, sp, #0x90
 	ldmia sp!, {r3, r4, r5, pc}
@@ -10465,7 +10465,7 @@ ov11_022E5188: ; 0x022E5188
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022E51C8
 	add r1, sp, #0
@@ -10525,7 +10525,7 @@ ov11_022E5258: ; 0x022E5258
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022E5298
 	add r1, sp, #0
@@ -10580,7 +10580,7 @@ ov11_022E5314: ; 0x022E5314
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022E5354
 	add r1, sp, #0
@@ -10633,8 +10633,8 @@ _022E53DC: .word 0x02324F74
 _022E53E0: .word 0x02324F8A
 	arm_func_end ov11_022E5314
 
-	arm_func_start ov11_022E53E4
-ov11_022E53E4: ; 0x022E53E4
+	arm_func_start ScriptStationLoadTalk
+ScriptStationLoadTalk: ; 0x022E53E4
 	stmdb sp!, {r3, lr}
 	ldr r1, _022E5444 ; =0x02319828
 	mov r2, r0
@@ -10662,7 +10662,7 @@ ov11_022E53E4: ; 0x022E53E4
 	.align 2, 0
 _022E5444: .word 0x02319828
 _022E5448: .word 0x02324F74
-	arm_func_end ov11_022E53E4
+	arm_func_end ScriptStationLoadTalk
 
 	arm_func_start ov11_022E544C
 ov11_022E544C: ; 0x022E544C
@@ -10698,7 +10698,7 @@ ov11_022E544C: ; 0x022E544C
 	mov r1, r4
 	mov r0, #1
 	mov r2, #0
-	bl ov11_022E4BD4
+	bl StationLoadHanger
 	cmp r0, #0
 	ldrne r0, _022E5510 ; =0x02324F74
 	mov r3, #0
@@ -10731,7 +10731,7 @@ ov11_022E551C: ; 0x022E551C
 	mov r0, #2
 	mov r5, r1
 	mov r4, r2
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022E5564
 	add r1, sp, #4
@@ -10793,7 +10793,7 @@ _022E5610:
 	mov r1, r6
 	mov r2, r5
 	mov r0, #2
-	bl ov11_022E4BD4
+	bl StationLoadHanger
 	cmp r0, #0
 	beq _022E5684
 	ldr r0, _022E56B0 ; =0x02324F74
@@ -10846,7 +10846,7 @@ ov11_022E56B8: ; 0x022E56B8
 	mov r0, #2
 	mov r4, r1
 	mov r6, r2
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022E5700
 	add r1, sp, #0xd
@@ -10904,7 +10904,7 @@ _022E579C:
 	mov r1, r5
 	mov r2, r4
 	mov r0, #3
-	bl ov11_022E4BD4
+	bl StationLoadHanger
 	cmp r0, #0
 	beq _022E5818
 	ldr r0, _022E583C ; =0x02324F74
@@ -10926,10 +10926,10 @@ _022E57C8:
 	ldr r1, _022E5844 ; =0x02319730
 	add r0, sp, #0x16
 	add r3, sp, #4
-	bl Sprintf
+	bl sprintf
 	ldr r0, _022E5848 ; =0x02324C84
 	add r1, sp, #0x16
-	bl ov11_022E5D50
+	bl SsbLoad1
 	cmp r0, #0
 	movne r0, #1
 	bne _022E5830
@@ -10957,7 +10957,7 @@ ov11_022E584C: ; 0x022E584C
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #2
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022E5884
 	add r1, sp, #4
@@ -11126,7 +11126,7 @@ ov11_022E5A68: ; 0x022E5A68
 	mov r0, #0
 	bl ov11_022EAFF8
 	bl ov11_022FEA28
-	bl ov11_022F7D18
+	bl InitPartnerFollowDataAndLiveActorList
 	bl ov11_022FBE04
 	bl ov11_022FD66C
 	ldmia sp!, {r3, pc}
@@ -11348,8 +11348,8 @@ ov11_022E5D14: ; 0x022E5D14
 	ldmia sp!, {r4, pc}
 	arm_func_end ov11_022E5D14
 
-	arm_func_start ov11_022E5D50
-ov11_022E5D50: ; 0x022E5D50
+	arm_func_start SsbLoad1
+SsbLoad1: ; 0x022E5D50
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x54
 	mov r5, r1
@@ -11463,7 +11463,7 @@ _022E5EDC:
 	.align 2, 0
 _022E5EF4: .word 0x02319908
 _022E5EF8: .word 0x02324F74
-	arm_func_end ov11_022E5D50
+	arm_func_end SsbLoad1
 
 	arm_func_start ov11_022E5EFC
 ov11_022E5EFC: ; 0x022E5EFC
@@ -12132,7 +12132,7 @@ _022E67DC:
 	bl ov11_0230CE44
 	b _022E68AC
 _022E67E4:
-	bl sub_02050C74
+	bl GetRank
 	mov r5, r0
 	mov r0, #0
 	mov r1, #0x6e
@@ -12165,7 +12165,7 @@ _022E6844:
 	cmp r0, #0
 	beq _022E6860
 	mov r0, #1
-	bl ov11_022E96F4
+	bl ScriptSpecialProcess0x16
 _022E6860:
 	mov r0, #0
 	str r0, [r4]
@@ -12824,8 +12824,8 @@ ov11_022E7114: ; 0x022E7114
 	bx lr
 	arm_func_end ov11_022E7114
 
-	arm_func_start ov11_022E7118
-ov11_022E7118: ; 0x022E7118
+	arm_func_start ScriptSpecialProcessCall
+ScriptSpecialProcessCall: ; 0x022E7118
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x1b8
 	mov r5, r1
@@ -12904,7 +12904,7 @@ _022E714C: ; jump table
 	b _022E7A94 ; case 61
 	b _022E7AA8 ; case 62
 _022E7248:
-	bl ov11_022E9414
+	bl GroundMainReturnDungeon
 	mov r0, #0
 	b _022E7AC0
 _022E7254:
@@ -12920,7 +12920,7 @@ _022E726C:
 	mov r0, #0
 	b _022E7AC0
 _022E7278:
-	bl ov11_022E9438
+	bl GroundMainNextDay
 	mov r0, #0
 	b _022E7AC0
 _022E7284:
@@ -13017,24 +13017,24 @@ _022E73BC:
 	mov r1, r6, lsl #0x10
 	mov r0, r0, asr #0x10
 	mov r1, r1, asr #0x10
-	bl ov11_022E8124
+	bl InitRandomNpcJobs
 	mov r0, #0
 	b _022E7AC0
 _022E73D8:
-	bl ov11_022E81BC
+	bl GetRandomNpcJobType
 	b _022E7AC0
 _022E73E0:
-	bl ov11_022E81D4
+	bl GetRandomNpcJobSubtype
 	and r1, r0, #0xff
 	strb r0, [sp]
 	mov r0, r1
 	strb r1, [sp, #1]
 	b _022E7AC0
 _022E73F8:
-	bl ov11_022E81F0
+	bl GetRandomNpcJobStillAvailable
 	b _022E7AC0
 _022E7400:
-	bl ov11_022E8258
+	bl AcceptRandomNpcJob
 	b _022E7AC0
 _022E7408:
 	mov r0, #0
@@ -13115,11 +13115,11 @@ _022E7518:
 	movne r0, #1
 	moveq r0, #0
 	and r0, r0, #0xff
-	bl ov11_022E96F4
+	bl ScriptSpecialProcess0x16
 	mov r0, #0
 	b _022E7AC0
 _022E7534:
-	bl KeyWaitInit__02006DA4
+	bl KeyWaitInit
 	ldr r1, _022E7AD4 ; =0x02324CA0
 	mov r0, #0
 	str r7, [r1]
@@ -13170,23 +13170,23 @@ _022E75D0:
 	b _022E7AC0
 _022E75DC:
 	mov r0, r7
-	bl ov11_022E95DC
+	bl JumpToTitleScreen
 	mov r0, #0
 	b _022E7AC0
 _022E75EC:
 	mvn r0, #0
-	bl ov11_022E95DC
+	bl JumpToTitleScreen
 	mov r0, #0
 	b _022E7AC0
 _022E75FC:
 	mov r0, r7
-	bl ov11_022E9694
+	bl ReturnToTitleScreen
 	mov r0, #0
 	b _022E7AC0
 _022E760C:
 	mov r0, r7, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022E803C
+	bl GetSpecialRecruitmentSpecies
 	mov r1, #0
 	bl IsMonsterOnTeam
 	cmp r0, #0
@@ -13196,7 +13196,7 @@ _022E760C:
 _022E7630:
 	mov r0, r7, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022E803C
+	bl GetSpecialRecruitmentSpecies
 	mov r1, #0
 	bl sub_020555D0
 	mvn r1, #0
@@ -13209,7 +13209,7 @@ _022E7630:
 _022E7660:
 	mov r0, r7, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022E803C
+	bl GetSpecialRecruitmentSpecies
 	bl sub_02056EB8
 	cmp r0, #0
 	movne r0, #1
@@ -13218,7 +13218,7 @@ _022E7660:
 _022E7680:
 	mov r0, r7, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022E8080
+	bl PrepareMenuAcceptTeamMember
 	add r0, sp, #0x174
 	bl ov11_022E8090
 	add r0, sp, #0x100
@@ -13369,7 +13369,7 @@ _022E7870:
 _022E7898:
 	mov r0, r7, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022E8080
+	bl PrepareMenuAcceptTeamMember
 	mov r0, #0
 	b _022E7AC0
 _022E78AC:
@@ -13472,7 +13472,7 @@ _022E7A00:
 	mov r0, #0
 	b _022E7AC0
 _022E7A08:
-	bl ov11_02313A98
+	bl StatusUpdate
 	mov r0, #0
 	b _022E7AC0
 _022E7A14:
@@ -13537,7 +13537,7 @@ _022E7ACC: .word 0x02319A68
 _022E7AD0: .word 0x02319A38
 _022E7AD4: .word 0x02324CA0
 _022E7AD8: .word 0x00000F0F
-	arm_func_end ov11_022E7118
+	arm_func_end ScriptSpecialProcessCall
 
 	arm_func_start ov11_022E7ADC
 ov11_022E7ADC: ; 0x022E7ADC
@@ -13974,15 +13974,15 @@ ov11_022E8038: ; 0x022E8038
 	bx lr
 	arm_func_end ov11_022E8038
 
-	arm_func_start ov11_022E803C
-ov11_022E803C: ; 0x022E803C
+	arm_func_start GetSpecialRecruitmentSpecies
+GetSpecialRecruitmentSpecies: ; 0x022E803C
 	ldr r1, _022E804C ; =0x023208D8
 	mov r0, r0, lsl #1
 	ldrsh r0, [r1, r0]
 	bx lr
 	.align 2, 0
 _022E804C: .word 0x023208D8
-	arm_func_end ov11_022E803C
+	arm_func_end GetSpecialRecruitmentSpecies
 
 	arm_func_start ov11_022E8050
 ov11_022E8050: ; 0x022E8050
@@ -14003,14 +14003,14 @@ _022E8068:
 _022E807C: .word 0x02320904
 	arm_func_end ov11_022E8050
 
-	arm_func_start ov11_022E8080
-ov11_022E8080: ; 0x022E8080
+	arm_func_start PrepareMenuAcceptTeamMember
+PrepareMenuAcceptTeamMember: ; 0x022E8080
 	ldr r1, _022E808C ; =0x02324F98
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
 _022E808C: .word 0x02324F98
-	arm_func_end ov11_022E8080
+	arm_func_end PrepareMenuAcceptTeamMember
 
 	arm_func_start ov11_022E8090
 ov11_022E8090: ; 0x022E8090
@@ -14062,8 +14062,8 @@ ov11_022E8120: ; 0x022E8120
 	bx lr
 	arm_func_end ov11_022E8120
 
-	arm_func_start ov11_022E8124
-ov11_022E8124: ; 0x022E8124
+	arm_func_start InitRandomNpcJobs
+InitRandomNpcJobs: ; 0x022E8124
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r2, _022E8164 ; =0x02324F9C
@@ -14083,7 +14083,7 @@ _022E815C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E8164: .word 0x02324F9C
-	arm_func_end ov11_022E8124
+	arm_func_end InitRandomNpcJobs
 
 	arm_func_start ov11_022E8168
 ov11_022E8168: ; 0x022E8168
@@ -14114,18 +14114,18 @@ _022E81B0:
 _022E81B8: .word 0x02324F9C
 	arm_func_end ov11_022E8168
 
-	arm_func_start ov11_022E81BC
-ov11_022E81BC: ; 0x022E81BC
+	arm_func_start GetRandomNpcJobType
+GetRandomNpcJobType: ; 0x022E81BC
 	stmdb sp!, {r3, lr}
 	bl ov11_022E8168
 	cmp r0, #0
 	ldrneb r0, [r0, #1]
 	moveq r0, #0xd
 	ldmia sp!, {r3, pc}
-	arm_func_end ov11_022E81BC
+	arm_func_end GetRandomNpcJobType
 
-	arm_func_start ov11_022E81D4
-ov11_022E81D4: ; 0x022E81D4
+	arm_func_start GetRandomNpcJobSubtype
+GetRandomNpcJobSubtype: ; 0x022E81D4
 	stmdb sp!, {r3, lr}
 	bl ov11_022E8168
 	cmp r0, #0
@@ -14133,10 +14133,10 @@ ov11_022E81D4: ; 0x022E81D4
 	moveq r0, #0
 	streqb r0, [sp]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov11_022E81D4
+	arm_func_end GetRandomNpcJobSubtype
 
-	arm_func_start ov11_022E81F0
-ov11_022E81F0: ; 0x022E81F0
+	arm_func_start GetRandomNpcJobStillAvailable
+GetRandomNpcJobStillAvailable: ; 0x022E81F0
 	stmdb sp!, {r3, lr}
 	ldr r0, _022E8254 ; =0x02324F9C
 	ldrsh r1, [r0, #2]
@@ -14167,10 +14167,10 @@ _022E824C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E8254: .word 0x02324F9C
-	arm_func_end ov11_022E81F0
+	arm_func_end GetRandomNpcJobStillAvailable
 
-	arm_func_start ov11_022E8258
-ov11_022E8258: ; 0x022E8258
+	arm_func_start AcceptRandomNpcJob
+AcceptRandomNpcJob: ; 0x022E8258
 	stmdb sp!, {r3, lr}
 	bl ov11_022E8168
 	bl sub_0205F0B8
@@ -14204,7 +14204,7 @@ _022E82C0:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E82C8: .word 0x02324F9C
-	arm_func_end ov11_022E8258
+	arm_func_end AcceptRandomNpcJob
 
 	arm_func_start ov11_022E82CC
 ov11_022E82CC: ; 0x022E82CC
@@ -14215,7 +14215,7 @@ ov11_022E82CC: ; 0x022E82CC
 	cmp r4, #0xc
 	bne _022E82F0
 	mov r0, #0x11
-	bl ov11_022E8774
+	bl GroundMainLoop
 	mov r4, r0
 _022E82F0:
 	cmp r4, #0xc
@@ -14224,7 +14224,7 @@ _022E82F0:
 	mov r1, #0x5c
 	bl ZinitScriptVariable
 	mov r0, #0x12
-	bl ov11_022E8774
+	bl GroundMainLoop
 	mov r4, r0
 	cmp r4, #0xd
 	bne _022E832C
@@ -14237,7 +14237,7 @@ _022E832C:
 	cmp r4, #0xd
 	ldmneia sp!, {r4, pc}
 	mov r0, #0x14
-	bl ov11_022E8774
+	bl GroundMainLoop
 	ldmia sp!, {r4, pc}
 	arm_func_end ov11_022E82CC
 
@@ -14276,7 +14276,7 @@ ov11_022E8340: ; 0x022E8340
 	mov r1, #0x12
 	ldr r0, [r0]
 	add r0, r0, #8
-	bl SetPortraitUnknownAttr
+	bl SetPortraitLayout
 	ldr r0, _022E83F0 ; =0x02324CAC
 	ldr r0, [r0]
 	add r0, r0, #6
@@ -14562,8 +14562,8 @@ ov11_022E8748: ; 0x022E8748
 _022E8770: .word 0x02324CAC
 	arm_func_end ov11_022E8748
 
-	arm_func_start ov11_022E8774
-ov11_022E8774: ; 0x022E8774
+	arm_func_start GroundMainLoop
+GroundMainLoop: ; 0x022E8774
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x34
 	ldr r2, _022E91E8 ; =0x02324FA0
@@ -14598,7 +14598,7 @@ ov11_022E8774: ; 0x022E8774
 	str r2, [sp, #8]
 	bl CreateMemArena
 	ldr r2, _022E91F0 ; =0x02324CB0
-	ldr r1, _022E91F8 ; =ov11_022E93C0
+	ldr r1, _022E91F8 ; =GetFreeArenaGround
 	str r0, [r2, #4]
 	ldr r0, _022E91FC ; =0x022E935C
 	bl SetMemAllocatorParams
@@ -14665,7 +14665,7 @@ _022E88B0:
 	bl ov11_022F11DC
 	bl ov11_022EA908
 	bl ov11_022FE9E0
-	bl ov11_022F7CBC
+	bl AllocAndInitPartnerFollowDataAndLiveActorList
 	bl ov11_022FBDBC
 	bl ov11_022FD624
 	bl ov11_0230CE78
@@ -14741,7 +14741,7 @@ _022E89FC:
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
-	bl ov11_022E9438
+	bl GroundMainNextDay
 	ldr r0, _022E91E8 ; =0x02324FA0
 	mov r1, #1
 	str r1, [r0, #0x14]
@@ -14805,7 +14805,7 @@ _022E8AE4:
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
-	bl ov11_022E9438
+	bl GroundMainNextDay
 	mov r0, #0
 	mov r1, #0x2a
 	mov r2, #1
@@ -14885,7 +14885,7 @@ _022E8C20:
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
-	bl ov11_022E9438
+	bl GroundMainNextDay
 	ldr r1, _022E91E8 ; =0x02324FA0
 	mov r0, #0
 	ldr r2, [r1, #0x14]
@@ -14993,7 +14993,7 @@ _022E8D78:
 	mov r0, #0
 	bl ov11_022EAFF8
 	bl ov11_022FEA28
-	bl ov11_022F7D18
+	bl InitPartnerFollowDataAndLiveActorList
 	bl ov11_022FBE04
 	bl ov11_022FD66C
 	bl ComputeSpecialCounters
@@ -15135,7 +15135,7 @@ _022E8FB8:
 	mov r0, #0
 	bl ov11_022EAFF8
 	bl ov11_022FEA28
-	bl ov11_022F7D18
+	bl InitPartnerFollowDataAndLiveActorList
 	bl ov11_022FBE04
 	bl ov11_022FD66C
 	bl sub_020039E4
@@ -15289,7 +15289,7 @@ _022E91E8: .word 0x02324FA0
 _022E91EC: .word 0x023209B0
 _022E91F0: .word 0x02324CB0
 _022E91F4: .word 0x02324FC0
-_022E91F8: .word ov11_022E93C0
+_022E91F8: .word GetFreeArenaGround
 _022E91FC: .word 0x022E935C
 _022E9200: .word ov11_022E9258
 _022E9204: .word 0x023209CC
@@ -15313,7 +15313,7 @@ _022E9248: .word 0x02320A94
 _022E924C: .word 0x02320AAC
 _022E9250: .word 0x02320AB8
 _022E9254: .word 0x02320AC8
-	arm_func_end ov11_022E8774
+	arm_func_end GroundMainLoop
 
 	arm_func_start ov11_022E9258
 ov11_022E9258: ; 0x022E9258
@@ -15389,8 +15389,8 @@ _022E930C:
 _022E9358: .word 0x02324CB0
 	arm_func_end ov11_022E9258
 
-	arm_func_start ov11_022E935C
-ov11_022E935C: ; 0x022E935C
+	arm_func_start GetAllocArenaGround
+GetAllocArenaGround: ; 0x022E935C
 	cmp r0, #0
 	bxne lr
 	and r0, r1, #0xff
@@ -15421,10 +15421,10 @@ _022E93B4:
 	bx lr
 	.align 2, 0
 _022E93BC: .word 0x02324CB0
-	arm_func_end ov11_022E935C
+	arm_func_end GetAllocArenaGround
 
-	arm_func_start ov11_022E93C0
-ov11_022E93C0: ; 0x022E93C0
+	arm_func_start GetFreeArenaGround
+GetFreeArenaGround: ; 0x022E93C0
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	cmp r0, #0
@@ -15447,24 +15447,24 @@ ov11_022E93C0: ; 0x022E93C0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E9410: .word 0x02324CB0
-	arm_func_end ov11_022E93C0
+	arm_func_end GetFreeArenaGround
 
-	arm_func_start ov11_022E9414
-ov11_022E9414: ; 0x022E9414
+	arm_func_start GroundMainReturnDungeon
+GroundMainReturnDungeon: ; 0x022E9414
 	stmdb sp!, {r3, lr}
 	ldr r0, _022E9434 ; =0x023209EC
 	bl DebugPrint0__0200C1FC
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
-	bl ov11_022E9438
+	bl GroundMainNextDay
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E9434: .word 0x023209EC
-	arm_func_end ov11_022E9414
+	arm_func_end GroundMainReturnDungeon
 
-	arm_func_start ov11_022E9438
-ov11_022E9438: ; 0x022E9438
+	arm_func_start GroundMainNextDay
+GroundMainNextDay: ; 0x022E9438
 	stmdb sp!, {r4, lr}
 	bl GetGameMode
 	mov r4, r0
@@ -15480,7 +15480,7 @@ ov11_022E9438: ; 0x022E9438
 _022E9468:
 	cmp r4, #2
 	ldmneia sp!, {r4, pc}
-	bl GetScenarioBalance__0204CB94
+	bl GetScenarioBalance
 	cmp r0, #6
 	movhs r4, #3
 	bhs _022E9498
@@ -15506,7 +15506,7 @@ _022E9498:
 	.align 2, 0
 _022E94C8: .word 0x02320AD4
 _022E94CC: .word 0x02320AEC
-	arm_func_end ov11_022E9438
+	arm_func_end GroundMainNextDay
 
 	arm_func_start ov11_022E94D0
 ov11_022E94D0: ; 0x022E94D0
@@ -15591,8 +15591,8 @@ _022E95D4: .word 0x02324FA0
 _022E95D8: .word 0x02320B34
 	arm_func_end ov11_022E958C
 
-	arm_func_start ov11_022E95DC
-ov11_022E95DC: ; 0x022E95DC
+	arm_func_start JumpToTitleScreen
+JumpToTitleScreen: ; 0x022E95DC
 	stmdb sp!, {r4, lr}
 	ldr r1, _022E963C ; =0x02324FA0
 	mov r4, r0
@@ -15621,7 +15621,7 @@ _022E9634:
 	.align 2, 0
 _022E963C: .word 0x02324FA0
 _022E9640: .word 0x02320B58
-	arm_func_end ov11_022E95DC
+	arm_func_end JumpToTitleScreen
 
 	arm_func_start ov11_022E9644
 ov11_022E9644: ; 0x022E9644
@@ -15648,8 +15648,8 @@ _022E968C: .word 0x02324FA0
 _022E9690: .word 0x02320B78
 	arm_func_end ov11_022E9644
 
-	arm_func_start ov11_022E9694
-ov11_022E9694: ; 0x022E9694
+	arm_func_start ReturnToTitleScreen
+ReturnToTitleScreen: ; 0x022E9694
 	stmdb sp!, {r4, lr}
 	ldr r1, _022E96DC ; =0x02324FA0
 	mov r4, r0
@@ -15671,7 +15671,7 @@ ov11_022E9694: ; 0x022E9694
 	.align 2, 0
 _022E96DC: .word 0x02324FA0
 _022E96E0: .word 0x02320B9C
-	arm_func_end ov11_022E9694
+	arm_func_end ReturnToTitleScreen
 
 	arm_func_start ov11_022E96E4
 ov11_022E96E4: ; 0x022E96E4
@@ -15682,8 +15682,8 @@ ov11_022E96E4: ; 0x022E96E4
 _022E96F0: .word 0x02324FA0
 	arm_func_end ov11_022E96E4
 
-	arm_func_start ov11_022E96F4
-ov11_022E96F4: ; 0x022E96F4
+	arm_func_start ScriptSpecialProcess0x16
+ScriptSpecialProcess0x16: ; 0x022E96F4
 	cmp r0, #0
 	moveq r1, #1
 	ldr r0, _022E970C ; =0x02324FA0
@@ -15692,7 +15692,7 @@ ov11_022E96F4: ; 0x022E96F4
 	bx lr
 	.align 2, 0
 _022E970C: .word 0x02324FA0
-	arm_func_end ov11_022E96F4
+	arm_func_end ScriptSpecialProcess0x16
 
 	arm_func_start ov11_022E9710
 ov11_022E9710: ; 0x022E9710
@@ -15756,7 +15756,7 @@ _022E977C:
 	bl ov11_022E98CC
 	bl ov11_022E99E0
 	ldr r0, _022E9844 ; =0x02388FD8
-	bl sub_0201E730
+	bl InitRender3dElement
 	mov r2, #0x100
 	ldr r0, _022E9844 ; =0x02388FD8
 	mov r1, #0xc0
@@ -17055,7 +17055,7 @@ ov11_022EA80C: ; 0x022EA80C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	ldrne r0, _022EA89C ; =0x02388FD8
 	movne r1, #0
@@ -17098,7 +17098,7 @@ ov11_022EA8A0: ; 0x022EA8A0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	mov r0, #0
 	beq _022EA8C8
@@ -17116,7 +17116,7 @@ ov11_022EA8D4: ; 0x022EA8D4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	mov r0, #1
 	beq _022EA8FC
@@ -17208,7 +17208,7 @@ _022EA9BC:
 	str r0, [r4, #8]
 	mov r0, #0
 	str r0, [r4, #0xc]
-	bl KeyWaitInit__02006DA4
+	bl KeyWaitInit
 	ldmia sp!, {r4, pc}
 	arm_func_end ov11_022EA990
 
@@ -17552,7 +17552,7 @@ _022EAE9C:
 	bl ov11_0230114C
 	cmp r0, #0
 	beq _022EAF40
-	bl KeyWaitInit__02006DA4
+	bl KeyWaitInit
 	mov r0, sb
 	bl ov11_022EA978
 	mov r0, #1
@@ -18151,11 +18151,11 @@ _022EB5F4:
 	bl EuclideanNorm__020050B0
 	str r0, [sp, #8]
 	ldr r0, [r8, #0xc]
-	bl IntToFloat
+	bl __floatsisf
 	mov r1, r0
 	ldr r0, [sp, #8]
-	bl DivideFloat
-	bl FloatToInt
+	bl __divsf3
+	bl __fixsfsi
 	str r0, [r8, #0x10]
 	cmp r0, #0
 	movle r0, #1
@@ -18518,8 +18518,8 @@ ov11_022EBB14: ; 0x022EBB14
 _022EBB3C: .word 0x02324CBC
 	arm_func_end ov11_022EBB14
 
-	arm_func_start ov11_022EBB40
-ov11_022EBB40: ; 0x022EBB40
+	arm_func_start LoadBackgroundAttributes
+LoadBackgroundAttributes: ; 0x022EBB40
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x48
 	mov sl, r0
@@ -18576,7 +18576,7 @@ _022EBBD8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022EBC14: .word 0x02320C44
-	arm_func_end ov11_022EBB40
+	arm_func_end LoadBackgroundAttributes
 
 	arm_func_start ov11_022EBC18
 ov11_022EBC18: ; 0x022EBC18
@@ -19044,7 +19044,7 @@ ov11_022EC240: ; 0x022EC240
 	strh r4, [r0, #0xbe]
 	ldrsh r1, [r0, #0xbe]
 	add r0, sp, #0
-	bl ov11_022EBB40
+	bl LoadBackgroundAttributes
 _022EC274:
 	add sp, sp, #0x70
 	ldmia sp!, {r3, r4, r5, pc}
@@ -19078,31 +19078,31 @@ _022EC2BC:
 	strh r4, [r0, #0xbe]
 	ldrsh r1, [r0, #0xbe]
 	add r0, sp, #0xcc
-	bl ov11_022EBB40
+	bl LoadBackgroundAttributes
 	ldr r1, _022ECCFC ; =0x02320C58
 	add r0, sp, #0x4c
 	add r2, sp, #0xcc
-	bl Sprintf
+	bl sprintf
 	ldr r2, [sp]
 	add r1, sp, #0x4c
 	add r0, sl, #0x174
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, _022ECD00 ; =0x02320C6C
 	add r0, sp, #0x4c
 	add r2, sp, #0xd6
-	bl Sprintf
+	bl sprintf
 	ldr r2, _022ECD04 ; =0x0000030F
 	add r0, sl, #0x184
 	add r1, sp, #0x4c
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, _022ECD08 ; =0x02320C80
 	add r0, sp, #0x4c
 	add r2, sp, #0xe0
-	bl Sprintf
+	bl sprintf
 	ldr r2, _022ECD04 ; =0x0000030F
 	add r0, sl, #0x18c
 	add r1, sp, #0x4c
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, [sl, #0x184]
 	ldr r0, [sl, #0x174]
 	ldrh r2, [r1]
@@ -19720,11 +19720,11 @@ _022ECBA8:
 	add r2, r1, r0
 	ldr r1, _022ECD20 ; =0x02320C94
 	add r0, sp, #0x4c
-	bl Sprintf
+	bl sprintf
 	ldr r2, [sp]
 	add r0, r4, #8
 	add r1, sp, #0x4c
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	mov r0, #1
 	strb r0, [r4]
 	strb r0, [r4, #1]
@@ -19807,8 +19807,8 @@ _022ECD1C: .word 0x0000FFFF
 _022ECD20: .word 0x02320C94
 	arm_func_end ov11_022EC27C
 
-	arm_func_start ov11_022ECD24
-ov11_022ECD24: ; 0x022ECD24
+	arm_func_start LoadMapType10
+LoadMapType10: ; 0x022ECD24
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x128
 	mov r6, r1
@@ -19835,31 +19835,31 @@ _022ECD5C:
 	strh r6, [r0, #0xbe]
 	ldrsh r1, [r0, #0xbe]
 	add r0, sp, #0xb8
-	bl ov11_022EBB40
+	bl LoadBackgroundAttributes
 	ldr r1, _022ED21C ; =0x02320C58
 	add r0, sp, #0x38
 	add r2, sp, #0xb8
-	bl Sprintf
+	bl sprintf
 	add r0, sl, #0x174
 	add r1, sp, #0x38
 	mov r2, #6
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, _022ED220 ; =0x02320C6C
 	add r0, sp, #0x38
 	add r2, sp, #0xc2
-	bl Sprintf
+	bl sprintf
 	ldr r2, _022ED224 ; =0x0000030F
 	add r0, sl, #0x184
 	add r1, sp, #0x38
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r1, _022ED228 ; =0x02320C80
 	add r0, sp, #0x38
 	add r2, sp, #0xcc
-	bl Sprintf
+	bl sprintf
 	add r0, sl, #0x18c
 	add r1, sp, #0x38
 	mov r2, #6
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	add r1, sl, #0xea
 	ldr r0, [sl, #0x184]
 	ldr sb, [sl, #0x174]
@@ -20157,10 +20157,10 @@ _022ED234: .word 0x02324CBC
 _022ED238: .word 0x02320BE4
 _022ED23C: .word 0x02320BF4
 _022ED240: .word 0x02320BE8
-	arm_func_end ov11_022ECD24
+	arm_func_end LoadMapType10
 
-	arm_func_start ov11_022ED244
-ov11_022ED244: ; 0x022ED244
+	arm_func_start LoadMapType11
+LoadMapType11: ; 0x022ED244
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x38
 	mov r4, r1
@@ -20458,7 +20458,7 @@ _022ED68C: .word 0x02324CBC
 _022ED690: .word 0x02320BEC
 _022ED694: .word 0x02320BF4
 _022ED698: .word 0x02320BE8
-	arm_func_end ov11_022ED244
+	arm_func_end LoadMapType11
 
 	arm_func_start ov11_022ED69C
 ov11_022ED69C: ; 0x022ED69C
@@ -20490,7 +20490,7 @@ _022ED6CC:
 	ldr r2, [sb, #0x1c4]
 	str r2, [sl, #0x1c4]
 	ldrsh r1, [r1, #0xbe]
-	bl ov11_022EBB40
+	bl LoadBackgroundAttributes
 	add r2, sb, #0x100
 	ldrsh r3, [r2, #0xea]
 	add r1, sb, #0xea
@@ -20938,15 +20938,15 @@ _022EDD48:
 	strh r4, [r0, #0xbe]
 	ldrsh r1, [r0, #0xbe]
 	add r0, sp, #0x80
-	bl ov11_022EBB40
+	bl LoadBackgroundAttributes
 	ldr r1, _022EDE5C ; =0x02320C80
 	add r0, sp, #0
 	add r2, sp, #0x94
-	bl Sprintf
+	bl sprintf
 	ldr r2, _022EDE60 ; =0x0000030F
 	add r1, sp, #0
 	add r0, r5, #0x18c
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr lr, [r5, #0x18c]
 	add r4, r5, #0x1e0
 	ldrb r2, [lr]
@@ -21051,7 +21051,7 @@ _022EDECC:
 	beq _022EE074
 	ldr r2, _022EE0BC ; =0x0000030F
 	add r0, sp, #0x18
-	bl LoadFileFromRom__02008C3C
+	bl LoadFileFromRom
 	ldr r0, [sp, #0x18]
 	bl GetAtSize
 	mov r4, r0
@@ -21917,20 +21917,20 @@ _022EEA00:
 _022EEA18:
 	ldr r0, [r4, #0x3c]
 	mov r1, #3
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0x44]
 	ldr r0, [r4, #0x40]
 	mov r1, #3
-	bl DivideInt
+	bl __divsi3
 	str r0, [r4, #0x48]
 	ldr r0, [r4, #0x34]
 	mov r1, #0x18
-	bl DivideInt
+	bl __divsi3
 	add r0, r1, #0x10
 	str r0, [r4, #0x4c]
 	ldr r0, [r4, #0x38]
 	mov r1, #0x18
-	bl DivideInt
+	bl __divsi3
 	str r1, [r4, #0x50]
 	ldmia sp!, {r4, pc}
 	arm_func_end ov11_022EE9B0
@@ -24916,7 +24916,7 @@ _022F13CC:
 	mov r0, r5
 	add r1, r6, #2
 	and r3, r3, #0xff
-	bl ov11_022F155C
+	bl GetSpecialLayoutBackground
 	b _022F152C
 _022F1410:
 	add r6, r6, #8
@@ -25013,8 +25013,8 @@ _022F1554: .word 0x02320FCC
 _022F1558: .word 0x02320CA8
 	arm_func_end ov11_022F12C0
 
-	arm_func_start ov11_022F155C
-ov11_022F155C: ; 0x022F155C
+	arm_func_start GetSpecialLayoutBackground
+GetSpecialLayoutBackground: ; 0x022F155C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	mov r8, r0
@@ -25090,7 +25090,7 @@ _022F1644:
 	ldr r0, [r0]
 	mov r2, r7
 	mov r3, r6
-	bl ov11_022ED244
+	bl LoadMapType11
 	b _022F16A0
 _022F1688:
 	ldr r0, _022F16F4 ; =0x02324CC0
@@ -25098,7 +25098,7 @@ _022F1688:
 	ldr r0, [r0]
 	mov r2, r7
 	mov r3, r6
-	bl ov11_022ECD24
+	bl LoadMapType10
 _022F16A0:
 	ldr r0, _022F16F4 ; =0x02324CC0
 	ldmia r0, {r1, r2}
@@ -25130,7 +25130,7 @@ _022F1700: .word 0x02320CA8
 _022F1704: .word 0x02321004
 _022F1708: .word 0x02320D10
 _022F170C: .word 0x02320CB8
-	arm_func_end ov11_022F155C
+	arm_func_end GetSpecialLayoutBackground
 
 	arm_func_start ov11_022F1710
 ov11_022F1710: ; 0x022F1710
@@ -26761,14 +26761,14 @@ _022F2B6C:
 	ldr r0, [r5]
 	mov r1, #0x480
 	add sl, sb, r8
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _022F2F10 ; =0x023210D4
 	ldr r0, [r0, r4, lsl #2]
 	sub r0, r0, r1
 	str r0, [sb, r8]
 	ldr r0, [r5, #4]
 	ldr r1, _022F2F08 ; =0x0000049C
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _022F2F10 ; =0x023210D4
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #0x8c]
@@ -26833,7 +26833,7 @@ _022F2C74:
 	mov r0, sl
 	mov r1, #5
 	add sb, r6, r8
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _022F2F14 ; =0x023210AC
 	ldr r3, [r0, r1, lsl #2]
 	ldr r1, [r5]
@@ -26844,11 +26844,11 @@ _022F2C74:
 	sub r1, r3, r1
 	str r1, [r6, r8]
 	mov r1, #5
-	bl DivideInt
+	bl __divsi3
 	mov fp, r0
 	ldr r0, [r5, #4]
 	mov r1, #0x300
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _022F2F14 ; =0x023210AC
 	add r0, r0, fp, lsl #2
 	ldr r0, [r0, #0x14]
@@ -26911,7 +26911,7 @@ _022F2D7C:
 	ldrsh r2, [r7, #2]
 	mov r0, #0xa0
 	smulbb r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	b _022F2DB8
 _022F2DB4:
 	mov r0, #0xa0
@@ -26926,22 +26926,22 @@ _022F2DC8:
 	mov r0, sl
 	mov r1, #5
 	add sb, fp, r8
-	bl DivideInt
+	bl __divsi3
 	mov r7, r1
 	ldr r0, [r5]
 	mov r1, #0xf0
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _022F2F18 ; =0x02321098
 	ldr r2, [r0, r7, lsl #2]
 	mov r0, sl
 	sub r1, r2, r1
 	str r1, [fp, r8]
 	mov r1, #5
-	bl DivideInt
+	bl __divsi3
 	mov r7, r0
 	ldr r0, [r5, #4]
 	mov r1, #0x300
-	bl DivideInt
+	bl __divsi3
 	ldr r0, _022F2F14 ; =0x023210AC
 	add r0, r0, r7, lsl #2
 	ldr r0, [r0, #0x14]
@@ -27025,7 +27025,7 @@ ov11_022F2F1C: ; 0x022F2F1C
 _022F2F2C:
 	mla r7, r6, r4, r5
 	add r0, r7, #8
-	bl sub_0201E730
+	bl InitRender3dElement
 	ldrb r0, [r7, #0x45]
 	add r6, r6, #1
 	cmp r6, #0x30
@@ -27265,7 +27265,7 @@ _022F31A0:
 	mov r1, #0x800
 	mov r2, r4
 	add r0, r0, #0x1a0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r0, r6
 	ldr r3, [r0]
 	mov r2, r4
@@ -27349,13 +27349,13 @@ _022F337C:
 	add r0, r2, #0x1a0
 	mov r1, #0x800
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r0, r6
 	ldr r0, [r0]
 	mov r1, #0x800
 	mov r2, #0
 	add r0, r0, #0x264
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r7, r6
 	ldr r1, [r7]
 	ldr r5, _022F37C8 ; =0x0000F3FF
@@ -27434,7 +27434,7 @@ _022F349C:
 	mov r2, sl
 	add r0, r0, sb
 	mov r1, r1, asr #0x10
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	add r8, r8, #1
 	cmp r8, #0x40
 	blt _022F349C
@@ -27717,7 +27717,7 @@ _022F38AC:
 	ldr r1, _022F3E4C ; =0x0000012D
 	ldr r2, _022F3E50 ; =0x08080000
 	add r0, r3, #0x1a0
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	mov r3, #1
 	ldr r2, [r0]
@@ -27742,7 +27742,7 @@ _022F38DC:
 	ldr r0, [r0]
 	mov r1, #0xbd
 	add r0, r0, #0x1a0
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	mov r3, #1
 	ldr r2, [r0]
@@ -27767,7 +27767,7 @@ _022F393C:
 	ldr r0, [r0]
 	mov r1, #0xbd
 	add r0, r0, #0x1a0
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	mov r3, #1
 	ldr r2, [r0]
@@ -27789,7 +27789,7 @@ _022F399C:
 	ldr r0, [r0]
 	mov r1, #0xb6
 	add r0, r0, #0x1a0
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	mov r3, #1
 	ldr r2, [r0]
@@ -27811,7 +27811,7 @@ _022F39F0:
 	ldr r0, [r0]
 	mov r1, #0xbe
 	add r0, r0, #0x1a0
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	mov r3, #1
 	ldr r2, [r0]
@@ -27833,7 +27833,7 @@ _022F3A44:
 	ldr r0, [r0]
 	mov r2, #0x8000000
 	add r0, r0, #0x1a0
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	mov r3, #1
 	ldr r2, [r0]
@@ -27877,7 +27877,7 @@ _022F3A98:
 	ldr r0, [r0]
 	mov r2, #4
 	add r0, r0, #0x18
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	bl ov14_0238CCA8
 	bl FemaleToMaleForm
 	ldr r1, _022F3E60 ; =0x00000807
@@ -27888,7 +27888,7 @@ _022F3A98:
 	mov r2, #0
 	ldr r0, [r0]
 	add r0, r0, #0xdc
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _022F3E48 ; =0x02324CE0
 	mov r3, #1
 	ldr r2, [r0]
@@ -27975,13 +27975,13 @@ _022F3C64:
 	ldr r0, [r0]
 	mov r1, #0xee
 	add r0, r0, #0x1a0
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	ldr r2, _022F3E68 ; =0x0C080000
 	ldr r0, [r0]
 	mov r1, #0xef
 	add r0, r0, #0x264
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	mov r3, #1
 	ldr r2, [r0]
@@ -28008,13 +28008,13 @@ _022F3CD0:
 	ldr r0, [r0]
 	mov r1, #0xec
 	add r0, r0, #0x1a0
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	ldr r2, _022F3E68 ; =0x0C080000
 	ldr r0, [r0]
 	mov r1, #0xed
 	add r0, r0, #0x264
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	mov r3, #1
 	ldr r2, [r0]
@@ -28041,7 +28041,7 @@ _022F3D50:
 	ldr r0, [r0]
 	ldr r2, _022F3E50 ; =0x08080000
 	add r0, r0, #0x1a0
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =0x02324CE0
 	mov r3, #1
 	ldr r2, [r0]
@@ -28159,7 +28159,7 @@ _022F3F18:
 	ldr r1, _022F4350 ; =0x02324CE8
 	mov r2, #0
 	str r4, [r3, #0xc]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _022F3F38:
 	bl ov11_0231474C
@@ -28200,13 +28200,13 @@ _022F3F60:
 	mov r1, r1, lsl #0x10
 	mov r2, r7
 	mov r1, r1, asr #0x10
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022F3FD0:
 	ldr r0, [r4, #4]
 	mov r1, r6
 	mla r0, r8, sb, r0
 	mov r2, r5
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _022F3FE4:
 	add r8, r8, #1
 	cmp r8, #0x40
@@ -28249,7 +28249,7 @@ _022F4018:
 	add r1, r1, #0x800
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	strh r7, [r8, #0x16]
 _022F4088:
 	ldr r0, [r8, #8]
@@ -28265,7 +28265,7 @@ _022F4088:
 	str r0, [r6, #0xc]
 	ldr r0, [r6, #4]
 	mla r0, sb, r4, r0
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _022F40C0:
 	add sb, sb, #1
 	cmp sb, #0x40
@@ -28302,7 +28302,7 @@ _022F40D0:
 	add r0, r3, #0x18
 	mov r1, r1, asr #0x10
 	mov r2, r2, asr #0x18
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022F414C:
 	ldr r1, [r4, #8]
 	ldr r0, _022F434C ; =0x02324CE0
@@ -28361,7 +28361,7 @@ _022F41D0:
 	ldr r0, [r2]
 	mov r2, #0
 	add r0, r0, #0x1a0
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	mov r0, #1
 	bl ov11_0231598C
 	ldr r1, [r0, #4]
@@ -28377,7 +28377,7 @@ _022F41D0:
 	ldr r0, [r2]
 	mov r2, #0
 	add r0, r0, #0x264
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _022F426C:
 	bl ov11_0231474C
@@ -28406,7 +28406,7 @@ _022F4290:
 	mov r2, r7
 	add r0, r3, sl
 	mov r1, r1, asr #0x10
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r1, r8, lsr #0x1f
 	rsb r0, r1, r8, lsl #29
 	add r0, r1, r0, ror #29
@@ -28431,7 +28431,7 @@ _022F4300:
 	str r0, [r6, #0xc]
 	ldr r0, [r6, #4]
 	mla r0, r8, r4, r0
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _022F4334:
 	add r8, r8, #1
 	cmp r8, #0x40
@@ -28818,8 +28818,8 @@ ov11_022F47F4: ; 0x022F47F4
 _022F4818: .word 0x02324CF0
 	arm_func_end ov11_022F47F4
 
-	arm_func_start ov11_022F481C
-ov11_022F481C: ; 0x022F481C
+	arm_func_start SetAnimDataFields
+SetAnimDataFields: ; 0x022F481C
 	strh r1, [r0, #0x90]
 	ldrh r1, [r0, #0x90]
 	tst r1, #0x2000
@@ -28911,18 +28911,18 @@ _022F494C: .word 0x0238A040
 _022F4950: .word 0x0238A068
 _022F4954: .word 0x0238A05C
 _022F4958: .word 0x0000F3FF
-	arm_func_end ov11_022F481C
+	arm_func_end SetAnimDataFields
 
-	arm_func_start ov11_022F495C
-ov11_022F495C: ; 0x022F495C
+	arm_func_start SetAnimDataFieldsWrapper
+SetAnimDataFieldsWrapper: ; 0x022F495C
 	mov r1, r1, lsr #0x10
 	mov r1, r1, lsl #0x10
-	ldr ip, _022F4970 ; =ov11_022F481C
+	ldr ip, _022F4970 ; =SetAnimDataFields
 	mov r1, r1, lsr #0x10
 	bx ip
 	.align 2, 0
-_022F4970: .word ov11_022F481C
-	arm_func_end ov11_022F495C
+_022F4970: .word SetAnimDataFields
+	arm_func_end SetAnimDataFieldsWrapper
 
 	arm_func_start ov11_022F4974
 ov11_022F4974: ; 0x022F4974
@@ -29037,7 +29037,7 @@ ov11_022F4AB8: ; 0x022F4AB8
 	mov r1, r3, lsr #0x10
 	mov r6, r0
 	mov r4, r2
-	bl ov11_022F481C
+	bl SetAnimDataFields
 	mov r1, #0
 	str r1, [r6, #0xb8]
 	str r1, [r6, #0xbc]
@@ -29075,9 +29075,9 @@ ov11_022F4AB8: ; 0x022F4AB8
 	cmp r1, #0
 	beq _022F4B88
 	add r0, r6, #0xc
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	add r0, r6, #0xc
-	bl sub_0201D170
+	bl AnimationControlGetAllocForMaxFrame
 	strh r0, [r6, #0x8c]
 	add r0, r6, #0xc
 	bl sub_0201D100
@@ -29149,8 +29149,8 @@ _022F4C54:
 _022F4C60: .word 0x020AFC68
 	arm_func_end ov11_022F4BE4
 
-	arm_func_start ov11_022F4C64
-ov11_022F4C64: ; 0x022F4C64
+	arm_func_start InitAnimDataFromOtherAnimData
+InitAnimDataFromOtherAnimData: ; 0x022F4C64
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -29180,7 +29180,7 @@ _022F4C78:
 	strh r1, [r5, #0xa2]
 	strb r0, [r5, #0xa4]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov11_022F4C64
+	arm_func_end InitAnimDataFromOtherAnimData
 
 	arm_func_start ov11_022F4CD4
 ov11_022F4CD4: ; 0x022F4CD4
@@ -29631,8 +29631,8 @@ _022F52E0: .word 0x0238A04C
 _022F52E4: .word 0x0238A020
 	arm_func_end ov11_022F5274
 
-	arm_func_start ov11_022F52E8
-ov11_022F52E8: ; 0x022F52E8
+	arm_func_start SetAnimDataFields2
+SetAnimDataFields2: ; 0x022F52E8
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	mov r6, r0
@@ -29706,14 +29706,14 @@ _022F53A4:
 	ldrsh r3, [r6, #0x92]
 	add r0, r6, #0xc
 	and r2, r4, #7
-	bl sub_0201C2CC
+	bl SetAnimationForAnimationControl
 	ldrh r0, [r6, #0xe]
 	orr r0, r0, #0x10
 	strh r0, [r6, #0xe]
 _022F5400:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov11_022F52E8
+	arm_func_end SetAnimDataFields2
 
 	arm_func_start ov11_022F5408
 ov11_022F5408: ; 0x022F5408
@@ -30076,7 +30076,7 @@ ov11_022F5904: ; 0x022F5904
 	mov r1, #0
 	add r0, r4, #0xc
 	strh r1, [r4, #0xae]
-	bl sub_0201C458
+	bl SwitchAnimationControlToNextFrame
 	ldmia sp!, {r4, pc}
 _022F5928:
 	ldrsh r1, [r4, #0xae]
@@ -30089,7 +30089,7 @@ _022F593C:
 	add r0, r4, #0xc
 	sub r1, r1, #0x100
 	strh r1, [r4, #0xae]
-	bl sub_0201C458
+	bl SwitchAnimationControlToNextFrame
 _022F5950:
 	ldrsh r0, [r4, #0xae]
 	cmp r0, #0x100
@@ -30293,7 +30293,7 @@ ov11_022F5BBC: ; 0x022F5BBC
 	ldr r0, [r1]
 	mov r3, r4
 	mov r1, #2
-	bl sub_0201D484
+	bl LoadWanTableEntryFromPack
 	mov r2, r0
 	mov r0, r6
 	mov r3, r5
@@ -30305,7 +30305,7 @@ ov11_022F5BBC: ; 0x022F5BBC
 	mov r0, r6
 	mov r1, #0x300
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022F5C30:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -31618,8 +31618,8 @@ _022F6E58: .word 0x00000807
 _022F6E5C: .word 0x00000307
 	arm_func_end ov11_022F5D50
 
-	arm_func_start ov11_022F6E60
-ov11_022F6E60: ; 0x022F6E60
+	arm_func_start LoadObjectAnimData
+LoadObjectAnimData: ; 0x022F6E60
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x80
 	mov r6, r2
@@ -31636,7 +31636,7 @@ ov11_022F6E60: ; 0x022F6E60
 	beq _022F6EBC
 	ldr r1, _022F6EF4 ; =0x023213F0
 	add r0, sp, #0
-	bl Sprintf
+	bl sprintf
 	ldr r0, _022F6EF8 ; =0x020AFC68
 	add r1, sp, #0
 	ldr r0, [r0]
@@ -31654,7 +31654,7 @@ _022F6EBC:
 	mov r0, r4
 	mov r1, #0x800
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022F6EE8:
 	add sp, sp, #0x80
 	ldmia sp!, {r4, r5, r6, pc}
@@ -31662,7 +31662,7 @@ _022F6EE8:
 _022F6EF0: .word 0x0231EE54
 _022F6EF4: .word 0x023213F0
 _022F6EF8: .word 0x020AFC68
-	arm_func_end ov11_022F6E60
+	arm_func_end LoadObjectAnimData
 
 	arm_func_start ov11_022F6EFC
 ov11_022F6EFC: ; 0x022F6EFC
@@ -31674,14 +31674,14 @@ _022F6F04: .word ov11_022F4BE4
 
 	arm_func_start ov11_022F6F08
 ov11_022F6F08: ; 0x022F6F08
-	ldr ip, _022F6F10 ; =ov11_022F4C64
+	ldr ip, _022F6F10 ; =InitAnimDataFromOtherAnimData
 	bx ip
 	.align 2, 0
-_022F6F10: .word ov11_022F4C64
+_022F6F10: .word InitAnimDataFromOtherAnimData
 	arm_func_end ov11_022F6F08
 
-	arm_func_start ov11_022F6F14
-ov11_022F6F14: ; 0x022F6F14
+	arm_func_start AnimRelatedFunction__022F6F14
+AnimRelatedFunction__022F6F14: ; 0x022F6F14
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r4, r2
@@ -31696,7 +31696,7 @@ ov11_022F6F14: ; 0x022F6F14
 	mov r2, #0
 	bl ov11_022F5960
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov11_022F6F14
+	arm_func_end AnimRelatedFunction__022F6F14
 
 	arm_func_start ov11_022F6F4C
 ov11_022F6F4C: ; 0x022F6F4C
@@ -31717,7 +31717,7 @@ ov11_022F6F4C: ; 0x022F6F4C
 	mov r0, r4
 	mov r1, #0x800
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022F6F94:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
@@ -31759,7 +31759,7 @@ ov11_022F6FE0: ; 0x022F6FE0
 	ldr r1, _022F7050 ; =0x02321400
 	add r0, sp, #0
 	mov r2, r3
-	bl Sprintf
+	bl sprintf
 	ldr r0, _022F7054 ; =0x020AFC68
 	add r1, sp, #0
 	ldr r0, [r0]
@@ -31776,7 +31776,7 @@ ov11_022F6FE0: ; 0x022F6FE0
 	mov r0, r5
 	mov r1, #0x800
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022F7048:
 	add sp, sp, #0x80
 	ldmia sp!, {r3, r4, r5, pc}
@@ -31793,8 +31793,8 @@ ov11_022F7058: ; 0x022F7058
 _022F7060: .word ov11_022F4BE4
 	arm_func_end ov11_022F7058
 
-	arm_func_start ov11_022F7064
-ov11_022F7064: ; 0x022F7064
+	arm_func_start AnimRelatedFunction__022F7064
+AnimRelatedFunction__022F7064: ; 0x022F7064
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r4, r2
@@ -31809,7 +31809,7 @@ ov11_022F7064: ; 0x022F7064
 	mov r2, #0
 	bl ov11_022F5960
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov11_022F7064
+	arm_func_end AnimRelatedFunction__022F7064
 
 	arm_func_start ov11_022F709C
 ov11_022F709C: ; 0x022F709C
@@ -31985,7 +31985,7 @@ ov11_022F72A0: ; 0x022F72A0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022F72F0
 	add r1, sp, #8
@@ -32038,7 +32038,7 @@ ov11_022F7354: ; 0x022F7354
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022F73A4
 	add r1, sp, #8
@@ -32089,7 +32089,7 @@ ov11_022F7408: ; 0x022F7408
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022F7444
 	add r1, sp, #0
@@ -32164,7 +32164,7 @@ ov11_022F7500: ; 0x022F7500
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	cmp r0, #0
 	beq _022F7540
 	add r1, sp, #0
@@ -32602,7 +32602,7 @@ _022F7ADC:
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsh r0, [r0, #6]
-	bl ov11_022E53E4
+	bl ScriptStationLoadTalk
 	b _022F7B80
 _022F7B2C:
 	mov r1, #0xb
@@ -32618,7 +32618,7 @@ _022F7B2C:
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsh r0, [r0, #6]
-	bl ov11_022E53E4
+	bl ScriptStationLoadTalk
 	b _022F7B80
 _022F7B68:
 	ldrsh r0, [r3, #0xfa]
@@ -32634,7 +32634,7 @@ _022F7B80:
 	ldr r1, [r0, #0xf0]
 	cmp r1, #0
 	bne _022F7B98
-	bl ov11_022DD164
+	bl FuncThatCallsCommandParsing
 _022F7B98:
 	ldr r0, _022F7BB8 ; =0x02324CF4
 	ldr r0, [r0]
@@ -32727,8 +32727,8 @@ _022F7C9C:
 _022F7CB8: .word 0x02324CF4
 	arm_func_end ov11_022F7BC4
 
-	arm_func_start ov11_022F7CBC
-ov11_022F7CBC: ; 0x022F7CBC
+	arm_func_start AllocAndInitPartnerFollowDataAndLiveActorList
+AllocAndInitPartnerFollowDataAndLiveActorList: ; 0x022F7CBC
 	stmdb sp!, {r3, lr}
 	mov r0, #0x330
 	mov r1, #6
@@ -32750,14 +32750,14 @@ _022F7CF0:
 	cmp r3, #0x18
 	add r0, r0, #0x250
 	blt _022F7CF0
-	bl ov11_022F7D18
+	bl InitPartnerFollowDataAndLiveActorList
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022F7D14: .word 0x02324CF8
-	arm_func_end ov11_022F7CBC
+	arm_func_end AllocAndInitPartnerFollowDataAndLiveActorList
 
-	arm_func_start ov11_022F7D18
-ov11_022F7D18: ; 0x022F7D18
+	arm_func_start InitPartnerFollowDataAndLiveActorList
+InitPartnerFollowDataAndLiveActorList: ; 0x022F7D18
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, _022F7DD0 ; =0x02324CF8
 	mov r5, #0
@@ -32768,7 +32768,7 @@ _022F7D2C:
 	cmp r0, r4
 	beq _022F7D40
 	mov r0, r5
-	bl ov11_022F8578
+	bl DeleteLiveActor
 _022F7D40:
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10
@@ -32810,12 +32810,12 @@ _022F7DA4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022F7DD0: .word 0x02324CF8
-	arm_func_end ov11_022F7D18
+	arm_func_end InitPartnerFollowDataAndLiveActorList
 
 	arm_func_start ov11_022F7DD4
 ov11_022F7DD4: ; 0x022F7DD4
 	stmdb sp!, {r3, lr}
-	bl ov11_022F7D18
+	bl InitPartnerFollowDataAndLiveActorList
 	ldr r0, _022F7E0C ; =0x02324CF8
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -33307,7 +33307,7 @@ _022F8464:
 	cmpne sb, r0
 	bne _022F84B4
 	mov r0, r8
-	bl ov11_022F8578
+	bl DeleteLiveActor
 _022F84B4:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -33341,14 +33341,14 @@ _022F84EC:
 	cmpne sb, r0
 	bne _022F8548
 	mov r0, r8
-	bl ov11_022F8578
+	bl DeleteLiveActor
 	b _022F8548
 _022F8534:
 	ldrsh r0, [sl, #6]
 	cmp r0, r4
 	bne _022F8548
 	mov r0, r8
-	bl ov11_022F8578
+	bl DeleteLiveActor
 _022F8548:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -33366,8 +33366,8 @@ _022F8570: .word 0x02321A40
 _022F8574: .word 0x02321A6C
 	arm_func_end ov11_022F8408
 
-	arm_func_start ov11_022F8578
-ov11_022F8578: ; 0x022F8578
+	arm_func_start DeleteLiveActor
+DeleteLiveActor: ; 0x022F8578
 	stmdb sp!, {r4, lr}
 	ldr r1, _022F85B8 ; =0x02324CF8
 	mov r2, r0
@@ -33387,7 +33387,7 @@ ov11_022F8578: ; 0x022F8578
 	.align 2, 0
 _022F85B8: .word 0x02324CF8
 _022F85BC: .word 0x02321A8C
-	arm_func_end ov11_022F8578
+	arm_func_end DeleteLiveActor
 
 	arm_func_start ov11_022F85C0
 ov11_022F85C0: ; 0x022F85C0
@@ -33509,7 +33509,7 @@ ov11_022F872C: ; 0x022F872C
 	bne _022F8774
 	tst r5, #2
 	beq _022F879C
-	bl ov11_022FBA28
+	bl InitPartnerFollowData
 	b _022F879C
 _022F8774:
 	tst r5, #2
@@ -33527,7 +33527,7 @@ _022F879C:
 	add r0, r4, #0x18c
 	orr r1, r1, r5
 	str r1, [r4, #0x128]
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F87B4: .word 0x02324CF8
@@ -33551,14 +33551,14 @@ ov11_022F87B8: ; 0x022F87B8
 	bne _022F87FC
 	tst r5, #2
 	beq _022F87FC
-	bl ov11_022FBA28
+	bl InitPartnerFollowData
 _022F87FC:
 	ldr r1, [r4, #0x128]
 	mvn r0, r5
 	and r1, r1, r0
 	add r0, r4, #0x18c
 	str r1, [r4, #0x128]
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F8818: .word 0x02324CF8
@@ -33813,7 +33813,7 @@ ov11_022F8AF4: ; 0x022F8AF4
 	bl ov11_022F8A20
 	cmp r0, #0
 	beq _022F8B48
-	bl KeyWaitInit__02006DA4
+	bl KeyWaitInit
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _022F8B48:
@@ -33843,7 +33843,7 @@ ov11_022F8B54: ; 0x022F8B54
 	bl ov11_022FC83C
 	cmp r0, #0
 	beq _022F8BA8
-	bl KeyWaitInit__02006DA4
+	bl KeyWaitInit
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _022F8BA8:
@@ -33871,7 +33871,7 @@ ov11_022F8BB4: ; 0x022F8BB4
 	bl ov11_022FED74
 	cmp r0, #0
 	beq _022F8C0C
-	bl KeyWaitInit__02006DA4
+	bl KeyWaitInit
 	ldrsh r0, [r4, #2]
 	mvn r1, #0
 	bl sub_02065B3C
@@ -35951,7 +35951,7 @@ _022FA8D8:
 	bl DebugPrint0__0200C1FC
 	b _022FA93C
 _022FA8F0:
-	bl KeyWaitInit__02006DA4
+	bl KeyWaitInit
 	mov r0, #4
 	bl sub_02017CCC
 	bl sub_020676AC
@@ -35987,7 +35987,7 @@ _022FA93C:
 	strh r7, [r2, #0x80]
 	ldrsh r1, [r2, #0x80]
 	ldrsb r2, [r2, #0x75]
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	b _022FA9BC
 _022FA97C:
 	ldrb r0, [r4, #0x174]
@@ -36005,7 +36005,7 @@ _022FA97C:
 	strb r1, [r4, #0x175]
 	ldrsh r1, [r2, #0x80]
 	ldrsb r2, [r2, #0x75]
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022FA9BC:
 	add sp, sp, #0x58
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -36440,7 +36440,7 @@ _022FAED4:
 	cmpne r0, #0
 	beq _022FB894
 	add r0, r5, #0x38
-	bl ov11_022DD164
+	bl FuncThatCallsCommandParsing
 	cmp r0, #0
 	beq _022FAF24
 	mov r1, #1
@@ -36451,7 +36451,7 @@ _022FAED4:
 	cmp r0, #6
 	bne _022FB864
 	mov r0, r4
-	bl ov11_022F8578
+	bl DeleteLiveActor
 	b _022FB894
 _022FAF24:
 	ldrsh r1, [r5, #6]
@@ -36958,10 +36958,10 @@ _022FB608:
 	str r0, [sp, #0x4c]
 	str ip, [sp, #0x58]
 	add r8, r2, r1
-	bl Abs
+	bl abs
 	str r0, [sp, #0x54]
 	ldr r0, [sp, #0x50]
-	bl Abs
+	bl abs
 	ldr r1, [sp, #0x54]
 	str r0, [sp, #0x58]
 	cmp r1, r0
@@ -37091,7 +37091,7 @@ _022FB818:
 	strh r6, [r2, #0x80]
 	ldrsh r1, [r2, #0x80]
 	ldrsb r2, [r2, #0x75]
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022FB864:
 	ldrb r0, [r5, #0x174]
 	cmp r0, #0
@@ -37104,7 +37104,7 @@ _022FB864:
 	strb r1, [r5, #0x175]
 	ldrsh r1, [r2, #0x80]
 	ldrsb r2, [r2, #0x75]
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022FB894:
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
@@ -37122,7 +37122,7 @@ _022FB894:
 	ldrsh r3, [r1, #2]
 	cmp r3, r0
 	bne _022FB8DC
-	bl ov11_022FBA28
+	bl InitPartnerFollowData
 	b _022FBA10
 _022FB8DC:
 	ldr r0, [r1, #0x128]
@@ -37188,10 +37188,10 @@ _022FB948:
 	str r3, [sp, #0x64]
 	str r0, [sp, #0x6c]
 	str r1, [sp, #0x68]
-	bl Abs
+	bl abs
 	str r0, [sp, #0x64]
 	ldr r0, [sp, #0x70]
-	bl Abs
+	bl abs
 	ldr r1, [sp, #0x64]
 	str r0, [sp, #0x68]
 	cmp r1, r0
@@ -37204,7 +37204,7 @@ _022FB948:
 	strgt r1, [r5]
 	b _022FBA10
 _022FBA0C:
-	bl ov11_022FBA28
+	bl InitPartnerFollowData
 _022FBA10:
 	add sp, sp, #0x9c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -37215,8 +37215,8 @@ _022FBA20: .word 0x023217EC
 _022FBA24: .word 0x00000807
 	arm_func_end ov11_022FAE58
 
-	arm_func_start ov11_022FBA28
-ov11_022FBA28: ; 0x022FBA28
+	arm_func_start InitPartnerFollowData
+InitPartnerFollowData: ; 0x022FBA28
 	ldr r0, _022FBA64 ; =0x02324CF8
 	mvn r2, #0
 	ldr r1, [r0]
@@ -37235,7 +37235,7 @@ _022FBA44:
 	bx lr
 	.align 2, 0
 _022FBA64: .word 0x02324CF8
-	arm_func_end ov11_022FBA28
+	arm_func_end InitPartnerFollowData
 
 	arm_func_start ov11_022FBA68
 ov11_022FBA68: ; 0x022FBA68
@@ -37303,7 +37303,7 @@ _022FBB20:
 	ldrsh r1, [r0, #0x80]
 	ldrsb r2, [r0, #0x75]
 	add r0, sl, #0x18c
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022FBB54:
 	add r3, sl, #0x100
 	ldrsh r1, [r3, #0x82]
@@ -37834,7 +37834,7 @@ _022FC1C8:
 	ldrsh r1, [r6, #6]
 	ldr r2, [r6, #0x12c]
 	add r0, r6, #0x154
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r1, _022FC2D8 ; =0x02321DFC
 	mov r2, r6
 	add r0, r6, #0x3c
@@ -38107,7 +38107,7 @@ ov11_022FC5F8: ; 0x022FC5F8
 	add r0, ip, #0x154
 	orr r1, r2, r1
 	str r1, [ip, #0x12c]
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FC634: .word 0x02324D00
@@ -38129,7 +38129,7 @@ ov11_022FC638: ; 0x022FC638
 	and r1, r2, r0
 	add r0, ip, #0x154
 	str r1, [ip, #0x12c]
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FC678: .word 0x02324D00
@@ -39002,21 +39002,21 @@ ov11_022FD1A0: ; 0x022FD1A0
 	bx lr
 	arm_func_end ov11_022FD1A0
 
-	arm_func_start ov11_022FD1A8
-ov11_022FD1A8: ; 0x022FD1A8
+	arm_func_start GetDirectionLiveActor
+GetDirectionLiveActor: ; 0x022FD1A8
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x30]
 	strb r0, [r1]
 	bx lr
-	arm_func_end ov11_022FD1A8
+	arm_func_end GetDirectionLiveActor
 
-	arm_func_start ov11_022FD1B8
-ov11_022FD1B8: ; 0x022FD1B8
+	arm_func_start SetDirectionLiveActor
+SetDirectionLiveActor: ; 0x022FD1B8
 	mvn r2, #0
 	cmp r1, r2
 	strneb r1, [r0, #0x130]
 	bx lr
-	arm_func_end ov11_022FD1B8
+	arm_func_end SetDirectionLiveActor
 
 	arm_func_start ov11_022FD1C8
 ov11_022FD1C8: ; 0x022FD1C8
@@ -39256,7 +39256,7 @@ _022FD494:
 	cmpne r0, #0
 	beq _022FD4F0
 	add r0, r5, #0x3c
-	bl ov11_022DD164
+	bl FuncThatCallsCommandParsing
 	cmp r0, #0
 	beq _022FD4CC
 	cmp r0, #6
@@ -39273,7 +39273,7 @@ _022FD4CC:
 	ldrsh r1, [r0, #0x4e]
 	mov r2, r7
 	add r0, r5, #0x154
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022FD4F0:
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
@@ -39329,7 +39329,7 @@ _022FD540:
 	ldrsh r1, [r0, #0x4e]
 	mov r2, fp
 	add r0, sl, #0x154
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022FD5B4:
 	add r3, sl, #0x100
 	ldrsh r1, [r3, #0x50]
@@ -39349,7 +39349,7 @@ _022FD5EC:
 	add r1, sp, #0xc
 	add r0, sl, #0x154
 	add r2, r6, r5
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _022FD5FC:
 	add r0, sb, #1
 	mov r0, r0, lsl #0x10
@@ -39934,7 +39934,7 @@ ov11_022FDD98: ; 0x022FDD98
 	add r0, ip, #0x150
 	orr r1, r2, r1
 	str r1, [ip, #0x128]
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FDDD4: .word 0x02324D04
@@ -39956,7 +39956,7 @@ ov11_022FDDD8: ; 0x022FDDD8
 	and r1, r2, r0
 	add r0, ip, #0x150
 	str r1, [ip, #0x128]
-	bl ov11_022F495C
+	bl SetAnimDataFieldsWrapper
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FDE18: .word 0x02324D04
@@ -40795,7 +40795,7 @@ _022FE850:
 	cmpne r0, #0
 	beq _022FE8AC
 	add r0, r5, #0x3c
-	bl ov11_022DD164
+	bl FuncThatCallsCommandParsing
 	cmp r0, #0
 	beq _022FE888
 	cmp r0, #6
@@ -40812,7 +40812,7 @@ _022FE888:
 	ldrsh r1, [r0, #0x4a]
 	mov r2, r7
 	add r0, r5, #0x150
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022FE8AC:
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
@@ -40868,7 +40868,7 @@ _022FE8FC:
 	ldrsh r1, [r0, #0x4a]
 	mov r2, fp
 	add r0, sl, #0x150
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _022FE970:
 	add r3, sl, #0x100
 	ldrsh r1, [r3, #0x4c]
@@ -41399,9 +41399,9 @@ _022FEFFC:
 	bl sub_02027B1C
 	cmp r5, #3
 	beq _022FF118
-	bl sub_02050C74
+	bl GetRank
 	str r0, [sp, #0x14]
-	bl sub_02050BB8
+	bl GetRankupPoints
 	cmp r0, #0
 	ldreq r7, _022FF1C0 ; =0x00000222
 	str r0, [sp, #0x28]
@@ -41457,7 +41457,7 @@ _022FF0AC:
 	mvn r0, #1
 	strb r0, [r6, #4]
 _022FF0F8:
-	bl sub_02050C74
+	bl GetRank
 	mov r1, #3
 	mov r3, r1
 	mov r2, #0x12
@@ -41952,7 +41952,7 @@ _022FF760:
 	add r0, sp, #0x10
 	mov r3, r2
 	mov r5, #0
-	bl Sprintf
+	bl sprintf
 	add r0, sp, #0x10
 	bl sub_02008BA8
 	cmp r0, #0
@@ -42538,7 +42538,7 @@ _022FFF4C:
 	cmp r0, #0
 	bne _02300570
 	mov r0, #2
-	bl ov11_0230F004
+	bl WorldMapSetMode
 	bl ov11_0230E964
 	ldr r0, _0230057C ; =0x02324D1C
 	mov r1, #1
@@ -42584,7 +42584,7 @@ _022FFFD8:
 	ldr r0, _0230057C ; =0x02324D1C
 	ldr r0, [r0, #4]
 	ldrsh r0, [r0, #0xe]
-	bl ov11_0230F0C4
+	bl WorldMapSetCamera
 	ldr r0, _0230057C ; =0x02324D1C
 	mov r1, #2
 	ldr r0, [r0, #4]
@@ -42716,7 +42716,7 @@ _0230018C:
 	ldr r0, _0230057C ; =0x02324D1C
 	ldr r0, [r0, #4]
 	ldrsh r0, [r0, #0xe]
-	bl ov11_0230F0C4
+	bl WorldMapSetCamera
 _023001F4:
 	ldr r0, _0230057C ; =0x02324D1C
 	ldr r0, [r0, #4]
@@ -43111,7 +43111,7 @@ ov11_02300728: ; 0x02300728
 	mov r1, r7
 	ldr r0, [r0, #4]
 	add r0, r0, #0x58
-	bl Strcpy
+	bl strcpy
 	ldr r0, _023007A4 ; =0x02324D24
 	mov r1, r6
 	ldr r0, [r0, #4]
@@ -43390,7 +43390,7 @@ ov11_02300ACC: ; 0x02300ACC
 	mov r1, r7
 	ldr r0, [r0, #4]
 	add r0, r0, #0x58
-	bl Strcpy
+	bl strcpy
 	ldr r0, _02300B48 ; =0x02324D2C
 	mov r1, r6
 	ldr r0, [r0, #4]
@@ -46636,7 +46636,7 @@ ov11_02303750: ; 0x02303750
 	add r2, r2, #0x24
 	add r2, r2, #0x400
 	add r1, r2, r1, lsl #6
-	bl Strcpy
+	bl strcpy
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -51201,12 +51201,12 @@ _02307548:
 	bl StringFromMessageId
 	mov r1, r0
 	add r0, sp, #0x20
-	bl Strcpy
+	bl strcpy
 	b _023075F0
 _023075E4:
 	ldr r1, _023082C0 ; =0x02322DB0
 	add r0, sp, #0x20
-	bl Strcpy
+	bl strcpy
 _023075F0:
 	mov r1, #2
 	add r3, sp, #0x20
@@ -52000,7 +52000,7 @@ _02308124:
 	mov r2, #0x20
 	add r0, r0, #0x56
 	add r0, r0, #0x200
-	bl Memcpy
+	bl memcpy
 	bl sub_02041094
 	ldr r1, _023082B4 ; =0x02324D8C
 	ldr r1, [r1]
@@ -52015,7 +52015,7 @@ _02308168:
 	mov r2, #8
 	add r0, r0, #0x56
 	add r0, r0, #0x200
-	bl Memcpy
+	bl memcpy
 	ldr r0, _023082B4 ; =0x02324D8C
 	mvn r1, #0
 	ldr r0, [r0]
@@ -52133,7 +52133,7 @@ _0230831C:
 	mov r2, #0x20
 	add r0, r0, #0x56
 	add r0, r0, #0x200
-	bl Memcpy
+	bl memcpy
 	bl sub_02041094
 	ldr r1, _023082B4 ; =0x02324D8C
 	ldr r1, [r1]
@@ -52148,7 +52148,7 @@ _02308360:
 	mov r2, #8
 	add r0, r0, #0x56
 	add r0, r0, #0x200
-	bl Memcpy
+	bl memcpy
 	ldr r0, _023082B4 ; =0x02324D8C
 	mvn r1, #0
 	ldr r0, [r0]
@@ -52936,7 +52936,7 @@ ov11_02308EB4: ; 0x02308EB4
 	bic r2, r2, #3
 	ldr r1, [sp, #0xc]
 	add r2, r2, #4
-	bl Vsprintf
+	bl vsprintf
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -55047,11 +55047,11 @@ _0230ABD8:
 	beq _0230AC04
 	ldr r1, _0230AD40 ; =0x02322F80
 	mov r0, r4
-	bl Strcat
+	bl strcat
 _0230AC04:
 	ldr r1, _0230AD44 ; =0x02322F84
 	mov r0, r4
-	bl Strcat
+	bl strcat
 _0230AC10:
 	add r0, sp, #0x24
 	ldr r2, _0230AD48 ; =0x02322F24
@@ -55068,7 +55068,7 @@ _0230AC10:
 	bl PreprocessStringFromMessageId
 	ldr r1, [sp, #0xc]
 	mov r0, r4
-	bl Strcat
+	bl strcat
 	mov r7, #1
 	add r8, r8, #1
 _0230AC58:
@@ -55077,7 +55077,7 @@ _0230AC58:
 	blt _0230ABD8
 	ldr r1, _0230AD44 ; =0x02322F84
 	mov r0, r4
-	bl Strcat
+	bl strcat
 	cmp r7, #0
 	beq _0230AC8C
 	add r2, sp, #0x24
@@ -55303,8 +55303,8 @@ _0230AF30: .word 0x02324DA0
 _0230AF34: .word sub_02047188
 	arm_func_end ov11_0230AF0C
 
-	arm_func_start ov11_0230AF38
-ov11_0230AF38: ; 0x0230AF38
+	arm_func_start GetExclusiveItemRequirements
+GetExclusiveItemRequirements: ; 0x0230AF38
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x15c
 	ldr r1, _0230B1DC ; =0x02324DA0
@@ -55501,7 +55501,7 @@ _0230B1FC: .word 0x000004B5
 _0230B200: .word 0x000004B4
 _0230B204: .word 0x000004B6
 _0230B208: .word 0x000004B7
-	arm_func_end ov11_0230AF38
+	arm_func_end GetExclusiveItemRequirements
 
 	arm_func_start ov11_0230B20C
 ov11_0230B20C: ; 0x0230B20C
@@ -56368,13 +56368,13 @@ ov11_0230BD5C: ; 0x0230BD5C
 	bl sub_0200D65C
 	ldr r1, _0230BE2C ; =0x02323004
 	mov r0, r6
-	bl Strcpy
+	bl strcpy
 	add r1, sp, #6
 	mov r0, r6
-	bl Strcat
+	bl strcat
 	ldr r1, _0230BE30 ; =0x0232300C
 	mov r0, r6
-	bl Strcat
+	bl strcat
 	b _0230BDF4
 _0230BDEC:
 	mov r0, r6
@@ -56454,7 +56454,7 @@ _0230BEE8:
 	mov r1, #0
 _0230BEEC:
 	mov r0, r6
-	bl Strcat
+	bl strcat
 	ldr r1, _0230BF28 ; =0x02324DA4
 	mov r0, #6
 	ldr r1, [r1, #4]
@@ -57890,7 +57890,7 @@ _0230D048:
 	cmp r0, #0
 	beq _0230D064
 	mov r0, #0
-	bl ov11_0230F004
+	bl WorldMapSetMode
 	bl ov11_0230ED28
 	ldmia sp!, {r3, pc}
 _0230D064:
@@ -57933,7 +57933,7 @@ _0230D0C0:
 	cmp r0, #0
 	beq _0230D0DC
 	mov r0, #0
-	bl ov11_0230F004
+	bl WorldMapSetMode
 	bl ov11_0230E964
 	ldmia sp!, {r3, pc}
 _0230D0DC:
@@ -59997,7 +59997,7 @@ _0230EA54:
 	ldr r2, _0230EB5C ; =0xA0080000
 	add r0, r0, #0x1f8
 	add r0, r0, #0x400
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _0230EB54 ; =0x02324DE4
 	mov r1, #8
 	ldr r0, [r0, #8]
@@ -60158,8 +60158,8 @@ ov11_0230ED28: ; 0x0230ED28
 _0230ED44: .word 0x02324DE4
 	arm_func_end ov11_0230ED28
 
-	arm_func_start ov11_0230ED48
-ov11_0230ED48: ; 0x0230ED48
+	arm_func_start GetDungeonMapPos
+GetDungeonMapPos: ; 0x0230ED48
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r2, _0230EDAC ; =0x02324DE4
@@ -60189,7 +60189,7 @@ _0230EDA4:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0230EDAC: .word 0x02324DE4
-	arm_func_end ov11_0230ED48
+	arm_func_end GetDungeonMapPos
 
 	arm_func_start ov11_0230EDB0
 ov11_0230EDB0: ; 0x0230EDB0
@@ -60220,7 +60220,7 @@ ov11_0230EDDC: ; 0x0230EDDC
 	cmp r1, r2
 	beq _0230EE74
 	add r0, sp, #0
-	bl ov11_0230ED48
+	bl GetDungeonMapPos
 	cmp r0, #0
 	beq _0230EE5C
 	mov r0, #1
@@ -60258,7 +60258,7 @@ _0230EE74:
 	cmp r1, r2
 	beq _0230EF3C
 	add r0, sp, #0
-	bl ov11_0230ED48
+	bl GetDungeonMapPos
 	cmp r0, #0
 	beq _0230EF24
 	mov r0, #1
@@ -60354,7 +60354,7 @@ _0230EF9C:
 	ldrsh r1, [r0, r1]
 	add r0, r6, r4
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _0230EFF4:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
@@ -60363,8 +60363,8 @@ _0230EFFC: .word 0x02324DE4
 _0230F000: .word 0x02323310
 	arm_func_end ov11_0230EF48
 
-	arm_func_start ov11_0230F004
-ov11_0230F004: ; 0x0230F004
+	arm_func_start WorldMapSetMode
+WorldMapSetMode: ; 0x0230F004
 	ldr r1, _0230F04C ; =0x02324DE4
 	str r0, [r1]
 	ldr r3, [r1, #8]
@@ -60385,7 +60385,7 @@ ov11_0230F004: ; 0x0230F004
 	bx lr
 	.align 2, 0
 _0230F04C: .word 0x02324DE4
-	arm_func_end ov11_0230F004
+	arm_func_end WorldMapSetMode
 
 	arm_func_start ov11_0230F050
 ov11_0230F050: ; 0x0230F050
@@ -60426,8 +60426,8 @@ ov11_0230F08C: ; 0x0230F08C
 _0230F0C0: .word 0x02324DE4
 	arm_func_end ov11_0230F08C
 
-	arm_func_start ov11_0230F0C4
-ov11_0230F0C4: ; 0x0230F0C4
+	arm_func_start WorldMapSetCamera
+WorldMapSetCamera: ; 0x0230F0C4
 	ldr r2, _0230F0E8 ; =0x02324DE4
 	ldr r1, [r2, #8]
 	cmp r1, #0
@@ -60439,7 +60439,7 @@ ov11_0230F0C4: ; 0x0230F0C4
 	bx lr
 	.align 2, 0
 _0230F0E8: .word 0x02324DE4
-	arm_func_end ov11_0230F0C4
+	arm_func_end WorldMapSetCamera
 
 	arm_func_start ov11_0230F0EC
 ov11_0230F0EC: ; 0x0230F0EC
@@ -60892,7 +60892,7 @@ _0230F6BC:
 	mov r4, r0, asr #0x10
 	add r0, sp, #0x44
 	mov r1, r4
-	bl ov11_0230ED48
+	bl GetDungeonMapPos
 	cmp r0, #0
 	ldreq r0, _02310050 ; =0x02324DE4
 	moveq r1, #0
@@ -60958,7 +60958,7 @@ _0230F7C4:
 _0230F7D0:
 	add r0, sp, #0x3c
 	mov r1, #0x3e8
-	bl ov11_0230ED48
+	bl GetDungeonMapPos
 	cmp r0, #0
 	beq _0230F7F0
 	add r0, sp, #0x3c
@@ -61002,7 +61002,7 @@ _0230F860:
 	add r0, sp, #0x3c
 	bne _0230F890
 	mov r1, #0xc1
-	bl ov11_0230ED48
+	bl GetDungeonMapPos
 	cmp r0, #0
 	beq _0230F8A8
 	add r0, sp, #0x3c
@@ -61010,7 +61010,7 @@ _0230F860:
 	b _0230F8A8
 _0230F890:
 	mov r1, #0xb8
-	bl ov11_0230ED48
+	bl GetDungeonMapPos
 	cmp r0, #0
 	beq _0230F8A8
 	add r0, sp, #0x3c
@@ -61037,7 +61037,7 @@ _0230F8A8:
 	ldrsb r2, [r0, #0x30]
 	add r0, r3, #0x134
 	add r0, r0, #0x400
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _0230F900:
 	ldr r0, _02310050 ; =0x02324DE4
 	ldr r2, [r0, #8]
@@ -61150,7 +61150,7 @@ _0230FA20:
 	add r1, r1, #0xf000
 	ldr r1, [r1, #0x994]
 	ldrsh r1, [r1, #0x14]
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r5, #0
 	mov r4, r5
 	ldr r7, _02310050 ; =0x02324DE4
@@ -61174,7 +61174,7 @@ _0230FABC:
 	add r1, r1, #0xf000
 	ldr r1, [r1, #0x980]
 	ldrsh r1, [r1, #0x14]
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	add r5, r5, #1
 _0230FB08:
 	ldr r0, [r7, #8]
@@ -61308,7 +61308,7 @@ _0230FC7C:
 	ldr r1, _02310070 ; =0x0000080D
 	add r0, r4, #0xf400
 	mov r2, #0
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _0230FCEC:
 	ldr r2, _02310050 ; =0x02324DE4
 	mov r0, #0
@@ -61435,11 +61435,11 @@ _0230FE78:
 	mov r4, r0
 	ldr r5, [r1, #8]
 	ldr r0, [r5, #0x38]
-	bl IntToFloat
+	bl __floatsisf
 	mov r1, r0
 	mov r0, r4
-	bl DivideFloat
-	bl FloatToInt
+	bl __divsf3
+	bl __fixsfsi
 	ldr r1, _02310050 ; =0x02324DE4
 	str r0, [r5, #0x3c]
 	ldr r1, [r1, #8]
@@ -61528,7 +61528,7 @@ _0230FFC4:
 	ldrsb r2, [r0, #0x30]
 	add r0, r3, #0x134
 	add r0, r0, #0x400
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _0231002C:
 	ldr r0, _02310050 ; =0x02324DE4
 	ldr r1, [r0, #8]
@@ -61665,7 +61665,7 @@ _023101EC:
 	ldr r2, _0231033C ; =0xA4080000
 	add r0, r0, #0x6c0
 	mov r1, #0x9a
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _0231031C ; =0x02324DE4
 	mov r1, #8
 	ldr r0, [r0, #8]
@@ -61804,7 +61804,7 @@ ov11_02310344: ; 0x02310344
 	add r1, sp, #8
 	mov r2, #0
 	str r3, [sp, #0xc]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	mov r8, #0
 	add r7, sp, #8
 	mov r6, r8
@@ -61832,7 +61832,7 @@ _02310438:
 	mul r3, sb, r3
 	add r3, r3, sl, lsl #8
 	str r3, [sp, #0xc]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	add r8, r8, #1
 _02310490:
 	ldr r0, [r5, #8]
@@ -61871,7 +61871,7 @@ _023104F8:
 	cmp r1, r2
 	beq _02310540
 	add r0, sp, #0
-	bl ov11_0230ED48
+	bl GetDungeonMapPos
 	cmp r0, #0
 	beq _02310540
 	ldr r0, _02310624 ; =0x02324DE4
@@ -61880,7 +61880,7 @@ _023104F8:
 	mov r2, #0
 	add r0, r0, #0xdc
 	add r0, r0, #0xf400
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _02310540:
 	mov sl, #0
 	add r8, sp, #0
@@ -61900,7 +61900,7 @@ _02310560:
 	mov r1, sl, lsl #0x10
 	mov r0, r8
 	mov r1, r1, asr #0x10
-	bl ov11_0230ED48
+	bl GetDungeonMapPos
 	cmp r0, #0
 	beq _023105B8
 	ldr r0, [r7, #8]
@@ -61909,7 +61909,7 @@ _02310560:
 	add r0, r0, #0x400
 	mla r0, sl, r5, r0
 	mov r2, fp
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	add sb, sb, #1
 	cmp sb, #0x64
 	bgt _023105C4
@@ -62023,7 +62023,7 @@ _023106F8:
 	mov r0, r8
 	mov r1, r7
 	mov r2, r6
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	mov r0, r8
 	mov r1, r5
 	bl ov11_022F4974
@@ -62208,7 +62208,7 @@ _02310958:
 	ldrsh r1, [r6, #8]
 	mov r0, r5
 	mov r2, r4
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	add r7, r7, #1
 	cmp r7, #9
 	add r5, r5, #0xc4
@@ -62338,7 +62338,7 @@ _02310B08:
 	mov r2, r7
 	str ip, [sp]
 	str r3, [sp, #4]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	add r6, r6, #1
 	cmp r6, #9
 	add r4, r4, #0xc4
@@ -64213,7 +64213,7 @@ ov11_02312264: ; 0x02312264
 	ldr r0, [r0, #4]
 	mov r1, #0xa7
 	add r0, r0, #0x30
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _0231233C ; =0x02324E18
 	mov r1, #8
 	ldr r0, [r0, #4]
@@ -64224,13 +64224,13 @@ ov11_02312264: ; 0x02312264
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0x30
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _0231233C ; =0x02324E18
 	ldr r1, _02312344 ; =0x00000179
 	ldr r0, [r0, #4]
 	ldr r2, _02312340 ; =0xA0080000
 	add r0, r0, #0xf4
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _0231233C ; =0x02324E18
 	mov r1, #0xa
 	ldr r0, [r0, #4]
@@ -64241,7 +64241,7 @@ ov11_02312264: ; 0x02312264
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0xf4
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	bl ov11_02312398
 	mov r0, #1
 	ldmia sp!, {r3, pc}
@@ -64565,13 +64565,13 @@ ov11_02312730: ; 0x02312730
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0x30
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	ldr r0, _023127F8 ; =0x02324E18
 	ldr r1, _02312800 ; =0x02323BD8
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0xf4
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	ldr r0, _023127F8 ; =0x02324E18
 	add r1, sp, #0
 	ldr r0, [r0, #4]
@@ -65053,20 +65053,20 @@ _02312DA4:
 	ldr r0, [r2, #4]
 	mov r2, #0
 	add r0, r0, #0x324
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _023130A8 ; =0x02324E28
 	mov r1, #0x800
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0x324
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _023130A8 ; =0x02324E28
 	mov r1, #0x800
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0xac
 	add r0, r0, #0x400
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r4, #0
 	ldr r7, _023130A8 ; =0x02324E28
 	mov sb, #0x800
@@ -65082,7 +65082,7 @@ _02312E14:
 	mov r1, sb
 	mov r2, r8
 	add r0, r0, r5
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	add r4, r4, #1
 	cmp r4, #0x50
 	blt _02312E14
@@ -65114,7 +65114,7 @@ _02312E8C:
 	ldr r0, [r2, #4]
 	mov r2, #0
 	add r0, r0, #0x324
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	mov r4, #0
 	ldr r7, _023130A8 ; =0x02324E28
 	mov sb, #0x800
@@ -65130,7 +65130,7 @@ _02312EC8:
 	mov r1, sb
 	mov r2, r8
 	add r0, r0, r5
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	add r4, r4, #1
 	cmp r4, #0x50
 	blt _02312EC8
@@ -65154,7 +65154,7 @@ _02312F24:
 	ldr r0, [r2, #4]
 	mov r2, #0
 	add r0, r0, #0x324
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r5, _023130A8 ; =0x02324E28
 	mov r6, #0
 	mov r4, #0xc4
@@ -65304,7 +65304,7 @@ _02313150:
 	ldr r2, _02313468 ; =0x88080000
 	add r0, ip, #0x324
 	mov r1, #0xcd
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _02313464 ; =0x02324E28
 	ldr r2, _02313468 ; =0x88080000
 	ldr r0, [r0, #4]
@@ -65317,7 +65317,7 @@ _02313150:
 	mov r1, #0xad
 	add r0, r0, #0xac
 	add r0, r0, #0x400
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _02313464 ; =0x02324E28
 	ldrsh r1, [r5, #4]
 	ldr r0, [r0, #4]
@@ -65347,25 +65347,25 @@ _02313150:
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0x14
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _02313464 ; =0x02324E28
 	ldr r1, _02313470 ; =0x00000807
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0xd8
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _02313464 ; =0x02324E28
 	ldr r1, _02313470 ; =0x00000807
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0x19c
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _02313464 ; =0x02324E28
 	ldr r1, _02313470 ; =0x00000807
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0x260
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _02313464 ; =0x02324E28
 	mov r3, #1
 	ldr r1, [r0, #4]
@@ -65433,25 +65433,25 @@ _023132EC:
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0x14
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _02313464 ; =0x02324E28
 	ldr r1, _02313478 ; =0x00001013
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0xd8
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _02313464 ; =0x02324E28
 	ldr r2, _0231347C ; =0x8C080000
 	ldr r0, [r0, #4]
 	mov r1, #0xd0
 	add r0, r0, #0x324
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _02313464 ; =0x02324E28
 	ldr r1, _02313480 ; =0x00000801
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0x324
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	ldr r0, _02313464 ; =0x02324E28
 	mov r3, #1
 	ldr r2, [r0, #4]
@@ -65468,7 +65468,7 @@ _023133D4:
 	ldr r2, _02313468 ; =0x88080000
 	add r0, ip, #0x324
 	mov r1, #0xb6
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _02313464 ; =0x02324E28
 	mov r3, #1
 	ldr r2, [r0, #4]
@@ -65481,7 +65481,7 @@ _02313404:
 	ldr r2, _02313468 ; =0x88080000
 	add r0, ip, #0x324
 	mov r1, #0xbe
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _02313464 ; =0x02324E28
 	mov r3, #1
 	ldr r2, [r0, #4]
@@ -65494,7 +65494,7 @@ _02313434:
 	ldr r1, _02313484 ; =0x00000223
 	ldr r2, _02313468 ; =0x88080000
 	add r0, ip, #0x324
-	bl ov11_022F6E60
+	bl LoadObjectAnimData
 	ldr r0, _02313464 ; =0x02324E28
 	mov r3, #1
 	ldr r2, [r0, #4]
@@ -65604,7 +65604,7 @@ _0231353C:
 	add r1, sp, #0
 	add r0, r0, #0x324
 	mov r2, #0
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 	b _02313784
 _023135DC:
 	bl ov11_02313DC4
@@ -65634,7 +65634,7 @@ _02313604:
 	mov r1, r1, lsl #0x10
 	mov r2, r8
 	mov r1, r1, asr #0x10
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 _02313648:
 	ldr r0, [sl, #8]
 	ldr r3, [sl, #4]
@@ -65656,7 +65656,7 @@ _02313648:
 	mov r2, #0
 	str sl, [sp]
 	str r3, [sp, #4]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _0231369C:
 	add sb, sb, #1
 	cmp sb, #0x50
@@ -65699,7 +65699,7 @@ _023136D0:
 	mov r1, r1, lsl #0x10
 	add r0, r0, sb
 	mov r1, r1, asr #0x10
-	bl ov11_022F52E8
+	bl SetAnimDataFields2
 	strh r7, [r8, #0x16]
 _02313740:
 	ldr r0, [r8, #8]
@@ -65715,7 +65715,7 @@ _02313740:
 	sub r3, r2, #0x2000
 	mov r2, #0
 	str r3, [sp, #4]
-	bl ov11_022F6F14
+	bl AnimRelatedFunction__022F6F14
 _02313778:
 	add sl, sl, #1
 	cmp sl, #0x50
@@ -65964,8 +65964,8 @@ ov11_02313A48: ; 0x02313A48
 _02313A94: .word 0x02324E30
 	arm_func_end ov11_02313A48
 
-	arm_func_start ov11_02313A98
-ov11_02313A98: ; 0x02313A98
+	arm_func_start StatusUpdate
+StatusUpdate: ; 0x02313A98
 	ldr r0, _02313AB4 ; =0x02324E30
 	ldr r1, [r0]
 	cmp r1, #0
@@ -65975,7 +65975,7 @@ ov11_02313A98: ; 0x02313A98
 	bx lr
 	.align 2, 0
 _02313AB4: .word 0x02324E30
-	arm_func_end ov11_02313A98
+	arm_func_end StatusUpdate
 
 	arm_func_start ov11_02313AB8
 ov11_02313AB8: ; 0x02313AB8
@@ -66427,7 +66427,7 @@ _02314080:
 	add r1, r1, r7
 	str r8, [r1, #0x38]
 	mov r1, #0xf
-	bl DivideInt
+	bl __divsi3
 	ldr r3, [r4]
 	ldr r1, _023145FC ; =0x02323DD0
 	add r3, r3, r7
@@ -66534,7 +66534,7 @@ _02314240:
 	mul sb, sl, r5
 	mov r0, sl
 	mov r1, fp
-	bl DivideInt
+	bl __divsi3
 	mov r0, sl, asr #2
 	add r0, sl, r0, lsr #29
 	mov r2, r0, asr #3
@@ -66646,7 +66646,7 @@ _02314374:
 	ldr r2, [r7, #0x24]
 	rsb r2, r2, #0x64
 	mul r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	mov r1, r5, asr #4
 	add r2, r7, r4
 	strh r0, [r2, #0x40]
@@ -66947,7 +66947,7 @@ _023147F4:
 	ldr r1, [r4, #0x28]
 	ldr r0, [r4, #4]
 	add r1, r1, #8
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #1
 	bne _0231482C
 	ldr r0, [r4, #8]
@@ -66964,7 +66964,7 @@ _0231482C:
 	ldr r1, [r4, #0x28]
 	ldr r0, [r4, #4]
 	add r1, r1, #8
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #0
 	bne _02314D24
 	ldr r1, [r4, #8]
@@ -67003,7 +67003,7 @@ _023148CC:
 	ldr r1, [r4, #0x28]
 	ldr r0, [r4, #4]
 	add r1, r1, #6
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #0
 	bne _02314D24
 	ldr r1, [r4, #8]
@@ -67014,7 +67014,7 @@ _023148CC:
 	mov r1, #3
 	ldr r4, [r0, #8]
 	mov r0, r4
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #0
 	bne _0231493C
 	add r0, r4, r4, lsr #31
@@ -67034,12 +67034,12 @@ _0231493C:
 	ldr r0, [r0]
 	ldr r4, [r0, #8]
 	mov r0, r4
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #0
 	bne _02314988
 	mov r0, r4
 	mov r1, #3
-	bl DivideInt
+	bl __divsi3
 	mov r1, r0, lsr #0x1f
 	rsb r0, r1, r0, lsl #30
 	add r0, r1, r0, ror #30
@@ -67054,12 +67054,12 @@ _02314988:
 	ldr r0, [r0]
 	ldr r4, [r0, #8]
 	mov r0, r4
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #1
 	bne _02314D24
 	mov r0, r4
 	mov r1, #3
-	bl DivideInt
+	bl __divsi3
 	mov r1, r0, lsr #0x1f
 	rsb r0, r1, r0, lsl #30
 	ldr r2, _02314D3C ; =0x02324460
@@ -67117,7 +67117,7 @@ _02314A38:
 	mov r0, #0xb7
 	mul r0, r2, r0
 	mov r1, #0x140
-	bl DivideInt
+	bl __divsi3
 	ldr r0, [sb, #0xc]
 	mov fp, r1
 	add r0, r0, #1
@@ -67127,7 +67127,7 @@ _02314A9C:
 	ldr sb, [r4]
 	mov r1, #3
 	ldr r0, [sb, #4]
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #1
 	bne _02314CA0
 	ldr r0, [sb, #8]
@@ -67144,7 +67144,7 @@ _02314A9C:
 	mov r0, #0x9f
 	mul r0, r2, r0
 	mov r1, #0x140
-	bl DivideInt
+	bl __divsi3
 	ldr r0, [sb, #0x10]
 	mov fp, r1
 	add r0, r0, #1
@@ -67172,7 +67172,7 @@ _02314B04:
 	mov r0, #0x92
 	mul r0, r2, r0
 	mov r1, #0x140
-	bl DivideInt
+	bl __divsi3
 	ldr r0, [sb, #0x14]
 	mov fp, r1
 	add r0, r0, #1
@@ -67182,7 +67182,7 @@ _02314B70:
 	ldr sb, [r4]
 	mov r1, #5
 	ldr r0, [sb, #4]
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #2
 	bne _02314CA0
 	ldr r0, [sb, #8]
@@ -67199,7 +67199,7 @@ _02314B70:
 	mov r0, #0x9b
 	mul r0, r2, r0
 	mov r1, #0x140
-	bl DivideInt
+	bl __divsi3
 	ldr r0, [sb, #0x18]
 	mov fp, r1
 	add r0, r0, #1
@@ -67210,7 +67210,7 @@ _02314BD8:
 	mov r1, #5
 	ldr sb, [r0, #8]
 	mov r0, sb
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #3
 	bne _02314CA0
 	mov r1, sb, lsr #0x1f
@@ -67225,7 +67225,7 @@ _02314BD8:
 	ldr r2, [sb, #0x1c]
 	mov r1, #0x140
 	mul r0, r2, sl
-	bl DivideInt
+	bl __divsi3
 	ldr r0, [sb, #0x1c]
 	mov fp, r1
 	add r0, r0, #1
@@ -67236,7 +67236,7 @@ _02314C3C:
 	mov r1, #6
 	ldr sb, [r0, #8]
 	mov r0, sb
-	bl DivideInt
+	bl __divsi3
 	cmp r1, #3
 	bne _02314CA0
 	mov r1, sb, lsr #0x1f
@@ -67252,7 +67252,7 @@ _02314C3C:
 	ldr r0, _02314D40 ; =0x000001BF
 	mov r1, #0x140
 	mul r0, r2, r0
-	bl DivideInt
+	bl __divsi3
 	ldr r0, [sb, #0x20]
 	mov fp, r1
 	add r0, r0, #1
@@ -67276,7 +67276,7 @@ _02314CA0:
 	mov r0, #0x3c00
 	mul r0, r2, r0
 	mov r1, r1, lsl #5
-	bl DivideInt
+	bl __divsi3
 	ldrh r1, [r6, #0x12]
 	rsb r0, r0, #0x200
 	mul r0, r1, r0
@@ -67831,18 +67831,18 @@ _02315440:
 	mov r1, r4
 	ldrh r4, [r2, r0]
 	mov r0, #0x1000
-	bl DivideInt
+	bl __divsi3
 	mov r1, #0xa
 	mul r7, r0, r1
 	mul r0, r5, r4
 	mov r1, r7
-	bl DivideInt
+	bl __divsi3
 	ldr r2, [r8, #4]
 	mov r1, r7
 	add r2, r2, r0
 	mul r0, r6, r4
 	str r2, [r8, #4]
-	bl DivideInt
+	bl __divsi3
 	ldr r1, [r8, #8]
 	sub r0, r1, r0
 	str r0, [r8, #8]
@@ -68531,7 +68531,7 @@ _02315E68:
 	add r0, r1, r0, lsr #30
 	mov r0, r0, asr #2
 	mov r1, #3
-	bl DivideInt
+	bl __divsi3
 	sub r1, r1, #0xc4
 	ldr r0, _02315ED4 ; =0x02324E34
 	str r1, [r4, #8]

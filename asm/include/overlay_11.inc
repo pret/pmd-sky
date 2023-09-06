@@ -38,7 +38,7 @@
 .public sub_0206351C
 .public ov10_022BF864
 .public sub_02065CB0
-.public SetPortraitAttrStruct
+.public SetPortraitOffset
 .public sub_02027648
 .public sub_02041094
 .public sub_02016468
@@ -88,12 +88,12 @@
 .public ov10_022BF444
 .public ov10_022BCCCC
 .public GetDexNumber
-.public sub_02050C74
+.public GetRank
 .public sub_0203D438
 .public sub_02041484
 .public sub_02011420
-.public KeyWaitInit__02006DA4
-.public sub_02017BE0
+.public KeyWaitInit
+.public SendAudioCommandWrapperVeneer
 .public ov10_022C09E8
 .public sub_02003990
 .public IsNormalMenuActive
@@ -104,8 +104,8 @@
 .public sub_0202A954
 .public sub_02063734
 .public sub_0200CF78
-.public GetDebugFlag2
-.public GetScenarioBalance__0204CB94
+.public GetDebugLogFlag
+.public GetScenarioBalance
 .public sub_0204F158
 .public sub_0204BED8
 .public sub_02055474
@@ -118,7 +118,7 @@
 .public sub_0203F974
 .public sub_02035098
 .public GetMainCharacter2MemberIdx
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public sub_0206C164
 .public sub_0200383C
 .public EuclideanNorm__02005050
@@ -152,10 +152,10 @@
 .public sub_02016300
 .public sub_0200A180
 .public GetKecleonItems1
-.public Strcpy
+.public strcpy
 .public sub_02053A0C
 .public IncrementNbDungeonsCleared
-.public Sprintf
+.public sprintf
 .public sub_02002878
 .public ov10_022BCDBC
 .public GetGameMode
@@ -168,7 +168,7 @@
 .public SetDungeonConquest
 .public sub_0204F024
 .public sub_0204E8EC
-.public GetDebugFlag1
+.public GetDebugFlag
 .public sub_020407EC
 .public ov10_022BF35C
 .public sub_0205F2B8
@@ -226,7 +226,7 @@
 .public sub_020163E4
 .public GetKecleonItems2
 .public sub_0201E7D8
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public sub_0200B330
 .public sub_02041A18
 .public sub_0202C75C
@@ -243,7 +243,7 @@
 .public sub_0204B3D0
 .public sub_02017C74
 .public DungeonRequestsDoneWrapper
-.public DivideInt
+.public __divsi3
 .public sub_020415BC
 .public sub_0203FD80
 .public DecompressAtNormalVeneer
@@ -267,7 +267,7 @@
 .public sub_02063830
 .public StrncpySimple
 .public ov13_0238A468
-.public sub_02050BB8
+.public GetRankupPoints
 .public sub_020055C8
 .public CheckMissionRestrictions
 .public ov10_022BCD88
@@ -319,7 +319,7 @@
 .public sub_0202F8FC
 .public GetActorMatchingStorageId
 .public sub_0203FD2C
-.public sub_0201D484
+.public LoadWanTableEntryFromPack
 .public sub_0204019C
 .public sub_02017BD4
 .public sub_0204C808
@@ -338,7 +338,7 @@
 .public SetTeamSetupHeroOnly
 .public sub_02063628
 .public sub_0201F1D4
-.public sub_0201C0E8
+.public SetSpriteIdForAnimationControl
 .public sub_0204F1B4
 .public MemcpySimple
 .public sub_02048794
@@ -403,7 +403,7 @@
 .public sub_0200B918
 .public ov10_022BD474
 .public GetSpriteIndex__02052724
-.public sub_0201D170
+.public AnimationControlGetAllocForMaxFrame
 .public sub_0202F334
 .public GetKeyboardStringResult
 .public ScriptSpecialProcess0x3
@@ -422,7 +422,7 @@
 .public sub_0200FC24
 .public sub_02055894
 .public sub_0200A4C4
-.public Vsprintf
+.public vsprintf
 .public sub_0205B028
 .public sub_0200B2C4
 .public sub_020039E4
@@ -438,7 +438,7 @@
 .public InitStandardItem
 .public sub_02047150
 .public sub_02034E70
-.public IntToFloat
+.public __floatsisf
 .public LoadScriptVariableValueSum
 .public ov10_022BCCB0
 .public CountItemTypeInStorage
@@ -460,7 +460,7 @@
 .public sub_020236FC
 .public sub_02034DA8
 .public sub_0202FED4
-.public Strcat
+.public strcat
 .public IsGummi
 .public sub_02009120
 .public ov10_022BDE50
@@ -480,7 +480,7 @@
 .public sub_0206AB98
 .public sub_02044688
 .public ScriptSpecialProcess0x3E
-.public sub_0201E730
+.public InitRender3dElement
 .public GetNameRaw
 .public ItemAtTableIdx
 .public CreatePortraitBox
@@ -569,14 +569,14 @@
 .public sub_020586F0
 .public RandInt
 .public sub_0202B1AC
-.public FloatToInt
+.public __fixsfsi
 .public SaveScriptVariableValueAtIndex
 .public sub_0201C108
 .public sub_02017C80
 .public sub_0202836C
 .public sub_02017B64
 .public sub_02015328
-.public sub_0201C458
+.public SwitchAnimationControlToNextFrame
 .public ov10_022C34F0
 .public GetAtSize
 .public sub_0202B030
@@ -584,7 +584,7 @@
 .public sub_0203A638
 .public sub_0200B33C
 .public sub_0204CDE8
-.public DivideFloat
+.public __divsf3
 .public sub_0202C620
 .public sub_02025314
 .public ov10_022BF964
@@ -599,7 +599,7 @@
 .public GetNormalMenuResult
 .public sub_02034F20
 .public MemArenaAlloc
-.public Abs
+.public abs
 .public GetMainCharacter1MemberIdx
 .public sub_0202D07C
 .public GetReleasedStylus
@@ -614,7 +614,7 @@
 .public sub_0201F348
 .public sub_0200A124
 .public AnyDungeonRequestsDone
-.public Memcpy
+.public memcpy
 .public sub_0205F0B8
 .public ov10_022BD374
 .public sub_02006BFC
@@ -681,7 +681,7 @@
 .public GetActiveRosterIndex
 .public sub_0200B8B8
 .public sub_0204F488
-.public sub_0201C2CC
+.public SetAnimationForAnimationControl
 .public sub_02056410
 .public AddItemToStorage
 .public sub_02017BEC
@@ -713,7 +713,7 @@
 .public ClampComponentAbs
 .public sub_020420F4
 .public sub_02003A40
-.public LoadFileFromRom__02008C3C
+.public LoadFileFromRom
 .public ov17_0238A140
 .public ov15_0238AE98
 .public ov16_0238C1CC

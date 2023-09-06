@@ -9,7 +9,7 @@ ItemIsActive__0231513C: ; 0x0231513C
 	mov r4, r1
 	mov r1, #0x6f
 	mov r5, r0
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -34,14 +34,14 @@ TryInflictCoweringStatus: ; 0x0231516C
 	mov r0, r5
 	mov r1, r4
 	mov r2, r7
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r5
 	mov r1, r4
 	mov r2, r7
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -90,8 +90,8 @@ _02315264: .word 0x00000D43
 _02315268: .word 0x00000D44
 	arm_func_end TryInflictCoweringStatus
 
-	arm_func_start ov29_0231526C
-ov29_0231526C: ; 0x0231526C
+	arm_func_start TryRestoreHp
+TryRestoreHp: ; 0x0231526C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r0, r4
@@ -124,7 +124,7 @@ _023152D0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023152E0: .word 0x000003E7
-	arm_func_end ov29_0231526C
+	arm_func_end TryRestoreHp
 
 	arm_func_start TryIncreaseHp
 TryIncreaseHp: ; 0x023152E4
@@ -165,7 +165,7 @@ _02315348:
 	mov r1, r1, lsl #8
 	bl MultiplyByFixedPoint
 	mov r1, #0x64
-	bl DivideInt
+	bl __divsi3
 	add r5, r5, r0, asr #8
 _0231537C:
 	ldrsh r1, [sb, #0x12]
@@ -229,7 +229,7 @@ _02315454:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	bl ov29_0231526C
+	bl TryRestoreHp
 _02315464:
 	ldrsh r2, [sb, #0x12]
 	ldrsh r1, [sb, #0x16]
@@ -292,7 +292,7 @@ _02315534:
 	mov r4, #0
 	beq _02315560
 	mov r0, r6
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	ldr r2, _02315604 ; =0x00000CFC
 	mov r0, r7
@@ -303,7 +303,7 @@ _02315560:
 	cmp sl, #0
 	beq _023155C8
 	mov r0, r6
-	bl ov29_022E272C
+	bl ShouldDisplayEntityWrapper
 	cmp r0, #0
 	movne r4, sl
 	cmp r5, #0
@@ -350,8 +350,8 @@ _02315608: .word 0x00000CF9
 _0231560C: .word 0x00000CF8
 	arm_func_end TryIncreaseHp
 
-	arm_func_start ov29_02315610
-ov29_02315610: ; 0x02315610
+	arm_func_start RevealItems
+RevealItems: ; 0x02315610
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -382,18 +382,18 @@ _02315650:
 	mov r1, r4
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, #0
-	bl ov29_022E2EC4
-	bl ov29_02339CE8
+	bl UpdateCamera
+	bl UpdateMinimap
 	mov r0, r4
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02315698: .word 0x00000CE4
 _0231569C: .word 0x00000CE2
-	arm_func_end ov29_02315610
+	arm_func_end RevealItems
 
-	arm_func_start ov29_023156A0
-ov29_023156A0: ; 0x023156A0
+	arm_func_start RevealStairs
+RevealStairs: ; 0x023156A0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -425,7 +425,7 @@ _02315700:
 	strb r1, [r2, #0xfb]
 	bl ov29_022E4660
 	mov r0, #0
-	bl ov29_02338794
+	bl HiddenStairsTrigger
 	mov r0, #0
 	mov r1, r4
 	mov r2, r0
@@ -435,8 +435,8 @@ _02315700:
 	mov r1, r4
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, #0
-	bl ov29_022E2EC4
-	bl ov29_02339CE8
+	bl UpdateCamera
+	bl UpdateMinimap
 	mov r0, r4
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
@@ -444,10 +444,10 @@ _02315700:
 _02315750: .word 0x00000CE6
 _02315754: .word 0x00000CE5
 _02315758: .word 0x00000CE3
-	arm_func_end ov29_023156A0
+	arm_func_end RevealStairs
 
-	arm_func_start ov29_0231575C
-ov29_0231575C: ; 0x0231575C
+	arm_func_start RevealEnemies
+RevealEnemies: ; 0x0231575C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -478,15 +478,15 @@ _0231579C:
 	mov r1, r4
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, #0
-	bl ov29_022E2EC4
-	bl ov29_02339CE8
+	bl UpdateCamera
+	bl UpdateMinimap
 	mov r0, r4
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023157E4: .word 0x00000CEA
 _023157E8: .word 0x00000CE9
-	arm_func_end ov29_0231575C
+	arm_func_end RevealEnemies
 
 	arm_func_start TryInflictLeechSeedStatus
 TryInflictLeechSeedStatus: ; 0x023157EC
@@ -520,14 +520,14 @@ _02315850:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r8
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r6
 	mov r1, r5
 	mov r2, r8
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	mov r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
@@ -662,8 +662,8 @@ _02315A3C:
 _02315A4C: .word 0x02353538
 	arm_func_end ov29_023159D4
 
-	arm_func_start TryInflictDestinyBond
-TryInflictDestinyBond: ; 0x02315A50
+	arm_func_start TryInflictDestinyBondStatus
+TryInflictDestinyBondStatus: ; 0x02315A50
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -741,10 +741,10 @@ _02315B60: .word 0x022C47D4
 _02315B64: .word 0x00000D54
 _02315B68: .word 0x02353538
 _02315B6C: .word 0x00000D53
-	arm_func_end TryInflictDestinyBond
+	arm_func_end TryInflictDestinyBondStatus
 
-	arm_func_start ov29_02315B70
-ov29_02315B70: ; 0x02315B70
+	arm_func_start TryInflictSureShotStatus
+TryInflictSureShotStatus: ; 0x02315B70
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r7, r0
@@ -784,10 +784,10 @@ _02315BEC:
 	.align 2, 0
 _02315BF8: .word 0x00000D2E
 _02315BFC: .word 0x00000D2F
-	arm_func_end ov29_02315B70
+	arm_func_end TryInflictSureShotStatus
 
-	arm_func_start ov29_02315C00
-ov29_02315C00: ; 0x02315C00
+	arm_func_start TryInflictWhifferStatus
+TryInflictWhifferStatus: ; 0x02315C00
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r1
 	mov r5, r0
@@ -801,14 +801,14 @@ ov29_02315C00: ; 0x02315C00
 	mov r0, r5
 	mov r1, r4
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r5
 	mov r1, r4
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -849,10 +849,10 @@ _02315CD4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02315CE4: .word 0x00000D31
-	arm_func_end ov29_02315C00
+	arm_func_end TryInflictWhifferStatus
 
-	arm_func_start ov29_02315CE8
-ov29_02315CE8: ; 0x02315CE8
+	arm_func_start TryInflictSetDamageStatus
+TryInflictSetDamageStatus: ; 0x02315CE8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -895,10 +895,10 @@ _02315D70:
 	.align 2, 0
 _02315D7C: .word 0x022C47A4
 _02315D80: .word 0x00000D3F
-	arm_func_end ov29_02315CE8
+	arm_func_end TryInflictSetDamageStatus
 
-	arm_func_start ov29_02315D84
-ov29_02315D84: ; 0x02315D84
+	arm_func_start TryInflictFocusEnergyStatus
+TryInflictFocusEnergyStatus: ; 0x02315D84
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -942,10 +942,10 @@ _02315E0C:
 _02315E18: .word 0x022C47AC
 _02315E1C: .word 0x00000D41
 _02315E20: .word 0x00000D42
-	arm_func_end ov29_02315D84
+	arm_func_end TryInflictFocusEnergyStatus
 
-	arm_func_start ov29_02315E24
-ov29_02315E24: ; 0x02315E24
+	arm_func_start TryInflictDecoyStatus
+TryInflictDecoyStatus: ; 0x02315E24
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	mov sb, r1
@@ -960,14 +960,14 @@ ov29_02315E24: ; 0x02315E24
 	mov r0, sl
 	mov r1, sb
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	bne _023160C4
 	mov r0, sl
 	mov r1, sb
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	mov r0, #0
 	bne _023160C4
@@ -1014,7 +1014,7 @@ _02315EDC:
 	mov r1, r5
 	mov r2, #0
 	mov r3, r7
-	bl ov29_02306728
+	bl EndCurseClassStatus
 	mov r0, #0x2a
 	bl AdvanceFrame
 _02315F34:
@@ -1034,11 +1034,11 @@ _02315F34:
 	mov r1, sb
 	mov r3, r7
 	mov r2, #2
-	bl ov29_02306728
+	bl EndCurseClassStatus
 _02315F78:
 	mov r0, sl
 	mov r1, sb
-	bl ov29_023066D8
+	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	mov r0, #2
 	strb r0, [r6, #0xd8]
 	ldr r0, [sl, #0xb4]
@@ -1133,10 +1133,10 @@ _023160CC: .word 0x00000D46
 _023160D0: .word 0x02353538
 _023160D4: .word 0x022C47B4
 _023160D8: .word 0x00000D45
-	arm_func_end ov29_02315E24
+	arm_func_end TryInflictDecoyStatus
 
-	arm_func_start ov29_023160DC
-ov29_023160DC: ; 0x023160DC
+	arm_func_start TryInflictCurseStatus
+TryInflictCurseStatus: ; 0x023160DC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r8, r0
@@ -1161,14 +1161,14 @@ ov29_023160DC: ; 0x023160DC
 	mov r0, r8
 	mov r1, r7
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	bne _0231626C
 	mov r0, r8
 	mov r1, r7
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	bne _0231626C
@@ -1176,7 +1176,7 @@ ov29_023160DC: ; 0x023160DC
 	mov r1, r7
 	mov r3, r6
 	mov r2, #1
-	bl ov29_02306728
+	bl EndCurseClassStatus
 	mov r0, r7
 	bl ov29_022E46C0
 	ldrsh r0, [r4, #0x10]
@@ -1192,7 +1192,7 @@ ov29_023160DC: ; 0x023160DC
 	beq _023161E0
 	mov r0, r8
 	mov r1, r7
-	bl ov29_023066D8
+	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	mov r2, #1
 	ldr r1, _02316274 ; =0x022C4784
 	mov r0, r7
@@ -1248,10 +1248,10 @@ _0231626C:
 _02316274: .word 0x022C4784
 _02316278: .word 0x00000CEC
 _0231627C: .word 0x02352AEC
-	arm_func_end ov29_023160DC
+	arm_func_end TryInflictCurseStatus
 
-	arm_func_start ov29_02316280
-ov29_02316280: ; 0x02316280
+	arm_func_start TryInflictSnatchStatus
+TryInflictSnatchStatus: ; 0x02316280
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r4, r1
 	mov r5, r0
@@ -1263,7 +1263,7 @@ ov29_02316280: ; 0x02316280
 	mov r1, r4
 	mov r2, #3
 	mov r3, #1
-	bl ov29_02306728
+	bl EndCurseClassStatus
 	mov sb, #0
 	ldr r6, _0231639C ; =0x02353538
 	mov r8, sb
@@ -1285,7 +1285,7 @@ _023162C0:
 	mov r1, sl
 	mov r2, r8
 	mov r3, r7
-	bl ov29_02306728
+	bl EndCurseClassStatus
 _02316304:
 	add sb, sb, #1
 	cmp sb, #0x14
@@ -1330,10 +1330,10 @@ _02316350:
 _0231639C: .word 0x02353538
 _023163A0: .word 0x022C4788
 _023163A4: .word 0x00000CED
-	arm_func_end ov29_02316280
+	arm_func_end TryInflictSnatchStatus
 
-	arm_func_start ov29_023163A8
-ov29_023163A8: ; 0x023163A8
+	arm_func_start TryInflictTauntStatus
+TryInflictTauntStatus: ; 0x023163A8
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r4, r1
@@ -1347,14 +1347,14 @@ ov29_023163A8: ; 0x023163A8
 	mov r0, r5
 	mov r1, r4
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	bne _023164C0
 	mov r0, r5
 	mov r1, r4
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	bne _023164C0
@@ -1364,7 +1364,7 @@ ov29_023163A8: ; 0x023163A8
 	mov r1, r4
 	mov r2, #1
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	movne r0, #0
 	bne _023164C0
@@ -1414,10 +1414,10 @@ _023164C8: .word 0x00000C39
 _023164CC: .word 0x022C47BC
 _023164D0: .word 0x00000D49
 _023164D4: .word 0x00000D4A
-	arm_func_end ov29_023163A8
+	arm_func_end TryInflictTauntStatus
 
-	arm_func_start ov29_023164D8
-ov29_023164D8: ; 0x023164D8
+	arm_func_start TryInflictStockpileStatus
+TryInflictStockpileStatus: ; 0x023164D8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r7, r0
@@ -1437,7 +1437,7 @@ ov29_023164D8: ; 0x023164D8
 	add r1, r0, #1
 	mov r0, #1
 	strb r1, [r5, #0x11e]
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	mov r0, r6
 	bl ov29_022E46D4
 	ldrb r1, [r5, #0x11e]
@@ -1462,10 +1462,10 @@ _02316564:
 	.align 2, 0
 _02316574: .word 0x00000D4B
 _02316578: .word 0x00000D4C
-	arm_func_end ov29_023164D8
+	arm_func_end TryInflictStockpileStatus
 
-	arm_func_start ov29_0231657C
-ov29_0231657C: ; 0x0231657C
+	arm_func_start TryInflictInvisibleStatus
+TryInflictInvisibleStatus: ; 0x0231657C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -1484,7 +1484,7 @@ ov29_0231657C: ; 0x0231657C
 	mov r0, r6
 	mov r1, r5
 	mov r2, #0
-	bl ov29_02306A00
+	bl EndInvisibleClassStatus
 	mov r3, #1
 	ldr r1, _02316620 ; =0x022C47C8
 	mov r0, r5
@@ -1513,10 +1513,10 @@ _02316614:
 _02316620: .word 0x022C47C8
 _02316624: .word 0x00000D4D
 _02316628: .word 0x00000D4E
-	arm_func_end ov29_0231657C
+	arm_func_end TryInflictInvisibleStatus
 
-	arm_func_start ov29_0231662C
-ov29_0231662C: ; 0x0231662C
+	arm_func_start TryInflictPerishSongStatus
+TryInflictPerishSongStatus: ; 0x0231662C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -1529,14 +1529,14 @@ ov29_0231662C: ; 0x0231662C
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -1581,10 +1581,10 @@ _02316704:
 _02316714: .word 0x022C47D0
 _02316718: .word 0x00000D51
 _0231671C: .word 0x00000D52
-	arm_func_end ov29_0231662C
+	arm_func_end TryInflictPerishSongStatus
 
-	arm_func_start ov29_02316720
-ov29_02316720: ; 0x02316720
+	arm_func_start TryInflictEncoreStatus
+TryInflictEncoreStatus: ; 0x02316720
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	ldr r4, [r6, #0xb4]
@@ -1598,14 +1598,14 @@ ov29_02316720: ; 0x02316720
 	mov r0, r7
 	mov r1, r6
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
 	mov r1, r6
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1615,7 +1615,7 @@ ov29_02316720: ; 0x02316720
 	mov r1, r6
 	mov r2, #1
 	str ip, [sp]
-	bl ov29_02314D40
+	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1704,10 +1704,10 @@ _023168C8: .word 0x00000D57
 _023168CC: .word 0x022C47D8
 _023168D0: .word 0x00000D55
 _023168D4: .word 0x00000D56
-	arm_func_end ov29_02316720
+	arm_func_end TryInflictEncoreStatus
 
-	arm_func_start ov29_023168D8
-ov29_023168D8: ; 0x023168D8
+	arm_func_start TryDecreaseBelly
+TryDecreaseBelly: ; 0x023168D8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x24
 	mov r5, r1
@@ -1896,10 +1896,10 @@ _02316BA0: .word 0x00000D64
 _02316BA4: .word 0x00000D68
 _02316BA8: .word 0x00000D63
 _02316BAC: .word 0x00000D69
-	arm_func_end ov29_023168D8
+	arm_func_end TryDecreaseBelly
 
-	arm_func_start ov29_02316BB0
-ov29_02316BB0: ; 0x02316BB0
+	arm_func_start TryIncreaseBelly
+TryIncreaseBelly: ; 0x02316BB0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
 	mov sb, r1
@@ -1919,7 +1919,7 @@ ov29_02316BB0: ; 0x02316BB0
 	bne _02316C08
 	mov r0, sb
 	mov r1, #0x59
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _02316C38
 _02316C08:
@@ -1929,7 +1929,7 @@ _02316C08:
 	mov r1, r1, lsl #8
 	bl MultiplyByFixedPoint
 	mov r1, #0x64
-	bl DivideInt
+	bl __divsi3
 	bl sub_02001888
 	ldr r1, _02317108 ; =0x000003E7
 	add r8, r8, r0, asr #8
@@ -2261,10 +2261,10 @@ _02317114: .word 0x00000D66
 _02317118: .word 0x00000D65
 _0231711C: .word 0x00000D67
 _02317120: .word 0x00000D6B
-	arm_func_end ov29_02316BB0
+	arm_func_end TryIncreaseBelly
 
-	arm_func_start ov29_02317124
-ov29_02317124: ; 0x02317124
+	arm_func_start TryInflictMuzzledStatus
+TryInflictMuzzledStatus: ; 0x02317124
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -2277,14 +2277,14 @@ ov29_02317124: ; 0x02317124
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -2330,10 +2330,10 @@ _02317200:
 _02317210: .word 0x022C4848
 _02317214: .word 0x00000D72
 _02317218: .word 0x00000D73
-	arm_func_end ov29_02317124
+	arm_func_end TryInflictMuzzledStatus
 
-	arm_func_start ov29_0231721C
-ov29_0231721C: ; 0x0231721C
+	arm_func_start TryTransform
+TryTransform: ; 0x0231721C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x240
 	mov sb, r1
@@ -2358,7 +2358,7 @@ _02317260:
 	bl SubstitutePlaceholderStringTags
 	add r0, sp, #0x40
 	mov r1, #0
-	bl ov29_022E7C60
+	bl MonsterSpawnListPartialCopy
 	movs r6, r0
 	bne _02317298
 	ldr r2, _02317400 ; =0x00000D6E
@@ -2371,7 +2371,7 @@ _02317298:
 	bl sub_02024FB8
 	mov r1, r0
 	add r0, sp, #0
-	bl Strcpy
+	bl strcpy
 	mov r4, #0
 	mov r7, r4
 	ldrsh r5, [r8, #4]
@@ -2384,7 +2384,7 @@ _023172C0:
 	bl GetMonsterIdFromSpawnEntry
 	mov r1, r0
 	mov r0, sb
-	bl ov29_022F9408
+	bl GetMonsterApparentId
 	ldrsh r1, [r8, #4]
 	mov r5, r0
 	cmp r5, r1
@@ -2394,7 +2394,7 @@ _023172C0:
 	cmp r0, #0
 	beq _0231730C
 	mov r0, r5
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	movs r4, r0
 	bne _02317318
 _0231730C:
@@ -2433,7 +2433,7 @@ _02317350:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0
-	bl ov29_02306A00
+	bl EndInvisibleClassStatus
 	mov r0, #2
 	strb r0, [r8, #0xef]
 	ldr r1, _02317404 ; =0x022C47FC
@@ -2468,10 +2468,10 @@ _023173FC: .word 0x00000D6F
 _02317400: .word 0x00000D6E
 _02317404: .word 0x022C47FC
 _02317408: .word 0x00000D6D
-	arm_func_end ov29_0231721C
+	arm_func_end TryTransform
 
-	arm_func_start ov29_0231740C
-ov29_0231740C: ; 0x0231740C
+	arm_func_start TryInflictMobileStatus
+TryInflictMobileStatus: ; 0x0231740C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -2486,7 +2486,7 @@ ov29_0231740C: ; 0x0231740C
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02306A00
+	bl EndInvisibleClassStatus
 	mov r3, #3
 	ldr r1, _023174C0 ; =0x022C480C
 	mov r0, r5
@@ -2522,10 +2522,10 @@ _023174B4:
 	.align 2, 0
 _023174C0: .word 0x022C480C
 _023174C4: .word 0x00000D71
-	arm_func_end ov29_0231740C
+	arm_func_end TryInflictMobileStatus
 
-	arm_func_start ov29_023174C8
-ov29_023174C8: ; 0x023174C8
+	arm_func_start TryInflictExposedStatus
+TryInflictExposedStatus: ; 0x023174C8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov sb, #0
 	mov r7, r1
@@ -2541,14 +2541,14 @@ ov29_023174C8: ; 0x023174C8
 	mov r0, r8
 	mov r1, r7
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, sb
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	mov r0, r8
 	mov r1, r7
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	mov r0, sb
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -2629,10 +2629,10 @@ _02317638: .word 0x00000D77
 _0231763C: .word 0x00000D75
 _02317640: .word 0x00000D76
 _02317644: .word 0x00000D74
-	arm_func_end ov29_023174C8
+	arm_func_end TryInflictExposedStatus
 
-	arm_func_start ov29_02317648
-ov29_02317648: ; 0x02317648
+	arm_func_start TryActivateIdentifyCondition
+TryActivateIdentifyCondition: ; 0x02317648
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -2668,10 +2668,10 @@ _023176AC:
 _023176C0: .word 0x02353538
 _023176C4: .word 0x00000D78
 _023176C8: .word 0x00000D79
-	arm_func_end ov29_02317648
+	arm_func_end TryActivateIdentifyCondition
 
-	arm_func_start ov29_023176CC
-ov29_023176CC: ; 0x023176CC
+	arm_func_start TryInflictBlinkerStatus
+TryInflictBlinkerStatus: ; 0x023176CC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r1
 	mov r5, r0
@@ -2685,14 +2685,14 @@ ov29_023176CC: ; 0x023176CC
 	mov r0, r5
 	mov r1, r4
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r5
 	mov r1, r4
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -2726,8 +2726,8 @@ _0231777C:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, #0x31
 	bl AdvanceFrame
-	bl ov29_02336F4C
-	bl ov29_02339CE8
+	bl UpdateTrapsVisibility
+	bl UpdateMinimap
 	mov r0, r5
 	mov r1, r4
 	bl TryActivateQuickFeet
@@ -2746,7 +2746,7 @@ _023177C8:
 _023177D8: .word 0x022C4828
 _023177DC: .word 0x00000D34
 _023177E0: .word 0x00000D35
-	arm_func_end ov29_023176CC
+	arm_func_end TryInflictBlinkerStatus
 
 	arm_func_start IsBlinded
 IsBlinded: ; 0x023177E4
@@ -2778,8 +2778,8 @@ _0231783C:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end IsBlinded
 
-	arm_func_start ov29_02317844
-ov29_02317844: ; 0x02317844
+	arm_func_start TryInflictCrossEyedStatus
+TryInflictCrossEyedStatus: ; 0x02317844
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -2792,14 +2792,14 @@ ov29_02317844: ; 0x02317844
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -2830,11 +2830,11 @@ ov29_02317844: ; 0x02317844
 	mov r0, r6
 	mov r1, r5
 	strb r2, [r4, #0xf2]
-	bl ov29_0231B364
+	bl TryActivateSteadfast
 	mov r0, #1
-	bl ov29_022E2EC4
-	bl ov29_02336F4C
-	bl ov29_02339CE8
+	bl UpdateCamera
+	bl UpdateTrapsVisibility
+	bl UpdateMinimap
 	mov r0, r6
 	mov r1, r5
 	bl TryActivateQuickFeet
@@ -2853,10 +2853,10 @@ _02317940:
 _02317950: .word 0x00000D36
 _02317954: .word 0x022C4830
 _02317958: .word 0x00000D37
-	arm_func_end ov29_02317844
+	arm_func_end TryInflictCrossEyedStatus
 
-	arm_func_start ov29_0231795C
-ov29_0231795C: ; 0x0231795C
+	arm_func_start TryInflictEyedropStatus
+TryInflictEyedropStatus: ; 0x0231795C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -2888,8 +2888,8 @@ ov29_0231795C: ; 0x0231795C
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, #0x31
 	bl AdvanceFrame
-	bl ov29_02336F4C
-	bl ov29_02339CE8
+	bl UpdateTrapsVisibility
+	bl UpdateMinimap
 	b _023179F4
 _023179E4:
 	ldr r2, _02317A08 ; =0x00000D39
@@ -2904,10 +2904,10 @@ _023179F4:
 _02317A00: .word 0x022C4838
 _02317A04: .word 0x00000D38
 _02317A08: .word 0x00000D39
-	arm_func_end ov29_0231795C
+	arm_func_end TryInflictEyedropStatus
 
-	arm_func_start ov29_02317A0C
-ov29_02317A0C: ; 0x02317A0C
+	arm_func_start TryInflictSlipStatus
+TryInflictSlipStatus: ; 0x02317A0C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r1
 	mov r5, r0
@@ -2935,7 +2935,7 @@ _02317A54:
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0
-	bl ov29_02306A00
+	bl EndInvisibleClassStatus
 	mov r3, #4
 	ldr r1, _02317AE8 ; =0x022C486C
 	mov r0, r4
@@ -2971,10 +2971,10 @@ _02317AD8:
 _02317AE8: .word 0x022C486C
 _02317AEC: .word 0x00000D3A
 _02317AF0: .word 0x00000D3B
-	arm_func_end ov29_02317A0C
+	arm_func_end TryInflictSlipStatus
 
-	arm_func_start ov29_02317AF4
-ov29_02317AF4: ; 0x02317AF4
+	arm_func_start TryInflictDropeyeStatus
+TryInflictDropeyeStatus: ; 0x02317AF4
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -2985,13 +2985,13 @@ ov29_02317AF4: ; 0x02317AF4
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	bne _02317B40
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	beq _02317B48
 _02317B40:
@@ -3034,8 +3034,8 @@ _02317B70:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, #0x31
 	bl AdvanceFrame
-	bl ov29_02336F4C
-	bl ov29_02339CE8
+	bl UpdateTrapsVisibility
+	bl UpdateMinimap
 	mov r0, r6
 	mov r1, r5
 	bl TryActivateQuickFeet
@@ -3056,10 +3056,10 @@ _02317C10: .word 0x022C487C
 _02317C14: .word 0x00000115
 _02317C18: .word 0x00000D3C
 _02317C1C: .word 0x00000D3D
-	arm_func_end ov29_02317AF4
+	arm_func_end TryInflictDropeyeStatus
 
-	arm_func_start RestoreMovePP
-RestoreMovePP: ; 0x02317C20
+	arm_func_start RestoreAllMovePP
+RestoreAllMovePP: ; 0x02317C20
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov sb, r1
@@ -3112,7 +3112,7 @@ _02317CD0:
 	cmp r6, #0
 	beq _02317D18
 	mov r0, sb
-	bl ov29_022E4964
+	bl ShowPpRestoreEffect
 	cmp r8, #0
 	bne _02317D40
 	mov r0, #0
@@ -3144,10 +3144,10 @@ _02317D48:
 	.align 2, 0
 _02317D50: .word 0x00000DB3
 _02317D54: .word 0x00000DB4
-	arm_func_end RestoreMovePP
+	arm_func_end RestoreAllMovePP
 
-	arm_func_start ov29_02317D58
-ov29_02317D58: ; 0x02317D58
+	arm_func_start RestoreOneMovePP
+RestoreOneMovePP: ; 0x02317D58
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #8
 	mov r7, r1
@@ -3195,7 +3195,7 @@ _02317E04:
 	cmp r4, #0
 	beq _02317E44
 	mov r0, r7
-	bl ov29_022E4964
+	bl ShowPpRestoreEffect
 	ldrb r0, [sp, #0x20]
 	cmp r0, #0
 	beq _02317E70
@@ -3229,10 +3229,10 @@ _02317E78:
 	.align 2, 0
 _02317E80: .word 0x00000DB3
 _02317E84: .word 0x00000DB4
-	arm_func_end ov29_02317D58
+	arm_func_end RestoreOneMovePP
 
-	arm_func_start ov29_02317E88
-ov29_02317E88: ; 0x02317E88
+	arm_func_start RestoreRandomMovePP
+RestoreRandomMovePP: ; 0x02317E88
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	mov sb, r1
@@ -3282,14 +3282,14 @@ _02317F00:
 	mov r1, sb
 	mov r3, r8
 	str r7, [sp]
-	bl ov29_02317D58
+	bl RestoreOneMovePP
 _02317F48:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov29_02317E88
+	arm_func_end RestoreRandomMovePP
 
-	arm_func_start ov29_02317F50
-ov29_02317F50: ; 0x02317F50
+	arm_func_start ApplyProteinEffect
+ApplyProteinEffect: ; 0x02317F50
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -3330,10 +3330,10 @@ _02317FD0:
 	.align 2, 0
 _02317FDC: .word 0x00000D96
 _02317FE0: .word 0x00000D97
-	arm_func_end ov29_02317F50
+	arm_func_end ApplyProteinEffect
 
-	arm_func_start ov29_02317FE4
-ov29_02317FE4: ; 0x02317FE4
+	arm_func_start ApplyCalciumEffect
+ApplyCalciumEffect: ; 0x02317FE4
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -3374,10 +3374,10 @@ _02318064:
 	.align 2, 0
 _02318070: .word 0x00000D98
 _02318074: .word 0x00000D99
-	arm_func_end ov29_02317FE4
+	arm_func_end ApplyCalciumEffect
 
-	arm_func_start ov29_02318078
-ov29_02318078: ; 0x02318078
+	arm_func_start ApplyIronEffect
+ApplyIronEffect: ; 0x02318078
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -3418,10 +3418,10 @@ _023180F8:
 	.align 2, 0
 _02318104: .word 0x00000D9A
 _02318108: .word 0x00000D9B
-	arm_func_end ov29_02318078
+	arm_func_end ApplyIronEffect
 
-	arm_func_start ov29_0231810C
-ov29_0231810C: ; 0x0231810C
+	arm_func_start ApplyZincEffect
+ApplyZincEffect: ; 0x0231810C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -3462,10 +3462,10 @@ _0231818C:
 	.align 2, 0
 _02318198: .word 0x00000D9C
 _0231819C: .word 0x00000D9D
-	arm_func_end ov29_0231810C
+	arm_func_end ApplyZincEffect
 
-	arm_func_start ov29_023181A0
-ov29_023181A0: ; 0x023181A0
+	arm_func_start TryInflictLongTossStatus
+TryInflictLongTossStatus: ; 0x023181A0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	ldr r4, [r5, #0xb4]
@@ -3497,10 +3497,10 @@ _023181FC:
 	.align 2, 0
 _02318208: .word 0x00000DDD
 _0231820C: .word 0x00000DDE
-	arm_func_end ov29_023181A0
+	arm_func_end TryInflictLongTossStatus
 
-	arm_func_start ov29_02318210
-ov29_02318210: ; 0x02318210
+	arm_func_start TryInflictPierceStatus
+TryInflictPierceStatus: ; 0x02318210
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	ldr r4, [r5, #0xb4]
@@ -3531,10 +3531,10 @@ _0231826C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02318278: .word 0x00000DDF
-	arm_func_end ov29_02318210
+	arm_func_end TryInflictPierceStatus
 
-	arm_func_start ov29_0231827C
-ov29_0231827C: ; 0x0231827C
+	arm_func_start TryInflictGastroAcidStatus
+TryInflictGastroAcidStatus: ; 0x0231827C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, r0
 	mov r6, r1
@@ -3556,14 +3556,14 @@ ov29_0231827C: ; 0x0231827C
 	mov r0, r7
 	mov r1, r6
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r7
 	mov r1, r6
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
@@ -3575,7 +3575,7 @@ ov29_0231827C: ; 0x0231827C
 	beq _02318388
 	mov r0, r7
 	mov r1, r6
-	bl ov29_023066D8
+	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	mov r3, #4
 	ldr r1, _023183B0 ; =0x022C476C
 	mov r0, r6
@@ -3620,10 +3620,10 @@ _023183B0: .word 0x022C476C
 _023183B4: .word 0x02353538
 _023183B8: .word 0x00000D7B
 _023183BC: .word 0x00000D7C
-	arm_func_end ov29_0231827C
+	arm_func_end TryInflictGastroAcidStatus
 
-	arm_func_start SetReflectDamageCountdownTo4
-SetReflectDamageCountdownTo4: ; 0x023183C0
+	arm_func_start SetAquaRingHealingCountdownTo4
+SetAquaRingHealingCountdownTo4: ; 0x023183C0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EntityIsValid__02315118
@@ -3635,10 +3635,10 @@ SetReflectDamageCountdownTo4: ; 0x023183C0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023183E4: .word 0x022C4620
-	arm_func_end SetReflectDamageCountdownTo4
+	arm_func_end SetAquaRingHealingCountdownTo4
 
-	arm_func_start ov29_023183E8
-ov29_023183E8: ; 0x023183E8
+	arm_func_start ApplyAquaRingHealing
+ApplyAquaRingHealing: ; 0x023183E8
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r0
@@ -3664,17 +3664,17 @@ ov29_023183E8: ; 0x023183E8
 	bl TryIncreaseHp
 _02318444:
 	mov r0, r4
-	bl SetReflectDamageCountdownTo4
+	bl SetAquaRingHealingCountdownTo4
 _0231844C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _02318454: .word 0x000003E7
 _02318458: .word 0x022C4628
-	arm_func_end ov29_023183E8
+	arm_func_end ApplyAquaRingHealing
 
-	arm_func_start ov29_0231845C
-ov29_0231845C: ; 0x0231845C
+	arm_func_start TryInflictAquaRingStatus
+TryInflictAquaRingStatus: ; 0x0231845C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -3702,7 +3702,7 @@ ov29_0231845C: ; 0x0231845C
 	add r1, r0, #1
 	mov r0, r5
 	strb r1, [r4, #0xd6]
-	bl SetReflectDamageCountdownTo4
+	bl SetAquaRingHealingCountdownTo4
 	ldr r2, _02318500 ; =0x00000D7D
 	mov r0, r6
 	mov r1, r5
@@ -3721,10 +3721,10 @@ _023184F0:
 _023184FC: .word 0x022C4764
 _02318500: .word 0x00000D7D
 _02318504: .word 0x00000D7E
-	arm_func_end ov29_0231845C
+	arm_func_end TryInflictAquaRingStatus
 
-	arm_func_start ov29_02318508
-ov29_02318508: ; 0x02318508
+	arm_func_start TryInflictLuckyChantStatus
+TryInflictLuckyChantStatus: ; 0x02318508
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -3768,10 +3768,10 @@ _02318594:
 	.align 2, 0
 _023185A0: .word 0x022C4768
 _023185A4: .word 0x00000D7F
-	arm_func_end ov29_02318508
+	arm_func_end TryInflictLuckyChantStatus
 
-	arm_func_start ov29_023185A8
-ov29_023185A8: ; 0x023185A8
+	arm_func_start TryInflictHealBlockStatus
+TryInflictHealBlockStatus: ; 0x023185A8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r5, r1
@@ -3789,14 +3789,14 @@ ov29_023185A8: ; 0x023185A8
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -3813,7 +3813,7 @@ ov29_023185A8: ; 0x023185A8
 	beq _02318698
 	mov r0, r6
 	mov r1, r5
-	bl ov29_023066D8
+	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	mov r3, #5
 	ldr r1, _023186C0 ; =0x022C4774
 	mov r0, r5
@@ -3849,10 +3849,10 @@ _023186B0:
 _023186C0: .word 0x022C4774
 _023186C4: .word 0x00000D81
 _023186C8: .word 0x00000D82
-	arm_func_end ov29_023185A8
+	arm_func_end TryInflictHealBlockStatus
 
-	arm_func_start ov29_023186CC
-ov29_023186CC: ; 0x023186CC
+	arm_func_start MonsterHasEmbargoStatus
+MonsterHasEmbargoStatus: ; 0x023186CC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EntityIsValid__02315118
@@ -3866,10 +3866,10 @@ ov29_023186CC: ; 0x023186CC
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_023186CC
+	arm_func_end MonsterHasEmbargoStatus
 
-	arm_func_start ov29_02318700
-ov29_02318700: ; 0x02318700
+	arm_func_start LogItemBlockedByEmbargo
+LogItemBlockedByEmbargo: ; 0x02318700
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #0
@@ -3882,10 +3882,10 @@ ov29_02318700: ; 0x02318700
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02318728: .word 0x00000D86
-	arm_func_end ov29_02318700
+	arm_func_end LogItemBlockedByEmbargo
 
-	arm_func_start ov29_0231872C
-ov29_0231872C: ; 0x0231872C
+	arm_func_start TryInflictEmbargoStatus
+TryInflictEmbargoStatus: ; 0x0231872C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r5, r1
@@ -3903,14 +3903,14 @@ ov29_0231872C: ; 0x0231872C
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
 	mov r1, r5
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -3927,7 +3927,7 @@ ov29_0231872C: ; 0x0231872C
 	beq _0231881C
 	mov r0, r6
 	mov r1, r5
-	bl ov29_023066D8
+	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	mov r3, #6
 	ldr r1, _02318844 ; =0x022C4778
 	mov r0, r5
@@ -3963,10 +3963,10 @@ _02318834:
 _02318844: .word 0x022C4778
 _02318848: .word 0x00000D84
 _0231884C: .word 0x00000D85
-	arm_func_end ov29_0231872C
+	arm_func_end TryInflictEmbargoStatus
 
-	arm_func_start ov29_02318850
-ov29_02318850: ; 0x02318850
+	arm_func_start TryInflictMiracleEyeStatus
+TryInflictMiracleEyeStatus: ; 0x02318850
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -3983,14 +3983,14 @@ ov29_02318850: ; 0x02318850
 	mov r0, r7
 	mov r1, r6
 	mov r2, #1
-	bl ov29_02301940
+	bl SafeguardIsActive
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r7
 	mov r1, r6
 	mov r2, #1
-	bl ov29_02302430
+	bl IsProtectedFromNegativeStatus
 	cmp r0, #0
 	mov r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -4000,7 +4000,7 @@ ov29_02318850: ; 0x02318850
 	bl SubstitutePlaceholderStringTags
 	mov r0, r6
 	mov r1, #0x10
-	bl ov29_02301EAC
+	bl HasTypeAffectedByGravity
 	cmp r0, #0
 	bne _02318900
 	cmp r5, #0
@@ -4049,10 +4049,10 @@ _02318974: .word 0x00000D89
 _02318978: .word 0x022C477C
 _0231897C: .word 0x00000D87
 _02318980: .word 0x00000D88
-	arm_func_end ov29_02318850
+	arm_func_end TryInflictMiracleEyeStatus
 
-	arm_func_start ov29_02318984
-ov29_02318984: ; 0x02318984
+	arm_func_start TryInflictMagnetRiseStatus
+TryInflictMagnetRiseStatus: ; 0x02318984
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -4107,10 +4107,10 @@ _02318A3C: .word 0x00000D8C
 _02318A40: .word 0x022C4780
 _02318A44: .word 0x00000D8A
 _02318A48: .word 0x00000D8B
-	arm_func_end ov29_02318984
+	arm_func_end TryInflictMagnetRiseStatus
 
-	arm_func_start HasConditionalGroundImmunity
-HasConditionalGroundImmunity: ; 0x02318A4C
+	arm_func_start IsFloating
+IsFloating: ; 0x02318A4C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EntityIsValid__02315118
@@ -4128,7 +4128,7 @@ HasConditionalGroundImmunity: ; 0x02318A4C
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r4, pc}
-	arm_func_end HasConditionalGroundImmunity
+	arm_func_end IsFloating
 
 	arm_func_start ov29_02318A90
 ov29_02318A90: ; 0x02318A90

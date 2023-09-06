@@ -10,7 +10,7 @@
 .public sub_02034A38
 .public sub_02042CF0
 .public ShowPortraitBox
-.public SetPortraitUnknownAttr
+.public SetPortraitLayout
 .public RemoveItem
 .public RemoveEmptyItemsInBag
 .public sub_02043218
@@ -18,7 +18,7 @@
 .public CreatePortraitBox
 .public ShowDBox
 .public FreeNormalMenu
-.public SetPortraitExpressionId
+.public SetPortraitEmotion
 .public ShowMessageInDBox
 .public sub_0202F2C4
 .public sub_020440DC
@@ -50,7 +50,7 @@
 .public sub_020582E0
 .public InitPortraitBoxWithMonsterId
 .public sub_020101A0
-.public sub_0200CCA8
+.public IsStorableItem
 .public GetPressedButtons
 .public sub_02042744
 .public sub_02043400

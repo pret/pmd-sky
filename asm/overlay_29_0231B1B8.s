@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_0231B1B8
-ov29_0231B1B8: ; 0x0231B1B8
+	arm_func_start TryActivateBadDreams
+TryActivateBadDreams: ; 0x0231B1B8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x50
 	mov sl, r0
@@ -73,14 +73,14 @@ _0231B27C:
 	cmpne sl, sb
 	beq _0231B2F0
 	mov r0, sb
-	bl ov29_023007A8
+	bl IsMonsterSleeping
 	cmp r0, #0
 	beq _0231B2F0
 	mov r0, sb
 	mov r1, r7
 	mov r2, r4
 	mov r3, fp
-	bl ov29_0230D11C
+	bl ApplyDamageAndEffectsWrapper
 	mov r0, sb
 	bl EntityIsValid__0231B194
 	cmp r0, #0
@@ -101,7 +101,7 @@ _0231B2FC:
 _0231B30C: .word 0x02353538
 _0231B310: .word 0x022C4530
 _0231B314: .word 0x0000026E
-	arm_func_end ov29_0231B1B8
+	arm_func_end TryActivateBadDreams
 
 	arm_func_start IsMonster__0231B318
 IsMonster__0231B318: ; 0x0231B318
@@ -116,8 +116,8 @@ IsMonster__0231B318: ; 0x0231B318
 	bx lr
 	arm_func_end IsMonster__0231B318
 
-	arm_func_start ov29_0231B33C
-ov29_0231B33C: ; 0x0231B33C
+	arm_func_start ActivateStench
+ActivateStench: ; 0x0231B33C
 	stmdb sp!, {r4, lr}
 	ldr r4, [r0, #0xb4]
 	bl ov29_022E60E4
@@ -129,16 +129,16 @@ ov29_0231B33C: ; 0x0231B33C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0231B360: .word 0x022C457C
-	arm_func_end ov29_0231B33C
+	arm_func_end ActivateStench
 
-	arm_func_start ov29_0231B364
-ov29_0231B364: ; 0x0231B364
+	arm_func_start TryActivateSteadfast
+TryActivateSteadfast: ; 0x0231B364
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
 	mov r0, r4
 	mov r1, #0x70
-	bl AbilityIsActive2
+	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -147,7 +147,7 @@ ov29_0231B364: ; 0x0231B364
 	mov r3, #1
 	bl BoostSpeedOneStage
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_0231B364
+	arm_func_end TryActivateSteadfast
 
 	arm_func_start ov29_0231B39C
 ov29_0231B39C: ; 0x0231B39C
@@ -182,8 +182,8 @@ ov29_0231B3CC: ; 0x0231B3CC
 	bx lr
 	arm_func_end ov29_0231B3CC
 
-	arm_func_start ov29_0231B3FC
-ov29_0231B3FC: ; 0x0231B3FC
+	arm_func_start IsInSpawnList
+IsInSpawnList: ; 0x0231B3FC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r0, r1
@@ -212,7 +212,7 @@ _0231B44C:
 	blt _0231B418
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov29_0231B3FC
+	arm_func_end IsInSpawnList
 
 	arm_func_start ov29_0231B460
 ov29_0231B460: ; 0x0231B460
@@ -264,8 +264,8 @@ ov29_0231B4AC: ; 0x0231B4AC
 _0231B4E8: .word 0x02353538
 	arm_func_end ov29_0231B4AC
 
-	arm_func_start ov29_0231B4EC
-ov29_0231B4EC: ; 0x0231B4EC
+	arm_func_start ChangeShayminForme
+ChangeShayminForme: ; 0x0231B4EC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r0
 	ldr r7, [r8, #0xb4]
@@ -318,7 +318,7 @@ _0231B5A0:
 	bl ov29_022E9FD0
 	mov r0, r4
 	mov r1, r5
-	bl ov29_022F75D4
+	bl SwapMonsterWanFileIndex
 	strh r5, [r7, #2]
 	ldrsh r0, [r7, #2]
 	strh r0, [r7, #4]
@@ -328,7 +328,7 @@ _0231B5A0:
 	strh r0, [r7, #4]
 	ldr r4, [r8, #0xb4]
 	ldrsh r0, [r4, #4]
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	strh r0, [r8, #0xa8]
 	ldrb r0, [r4, #0xd8]
 	cmp r0, #2
@@ -344,7 +344,7 @@ _0231B5F4:
 	mov r0, r8
 	bl ov29_02304BAC
 	mov r0, r8
-	bl ov29_022F9194
+	bl SetMonsterTypeAndAbility
 	mov r0, #1
 	bl ov29_022E9FD0
 	ldr r0, _0231B684 ; =0x00000217
@@ -366,7 +366,7 @@ _0231B5F4:
 	mov r0, r8
 	bl ov29_022F04F0
 	mov r0, #1
-	bl ov29_022E38E0
+	bl AnimationDelayOrSomething
 	mov r0, r8
 	bl ov29_022F0518
 _0231B678:
@@ -376,7 +376,7 @@ _0231B678:
 _0231B680: .word 0x00000216
 _0231B684: .word 0x00000217
 _0231B688: .word 0x02353538
-	arm_func_end ov29_0231B4EC
+	arm_func_end ChangeShayminForme
 
 	arm_func_start ApplyItemEffect
 ApplyItemEffect: ; 0x0231B68C
@@ -400,7 +400,7 @@ ApplyItemEffect: ; 0x0231B68C
 	mov r2, r6
 	add r1, r7, #4
 	mov r3, r4
-	bl ov29_02345A3C
+	bl SpawnDroppedItemWrapper
 	b _0231CBA4
 _0231B6E4:
 	ldrb r0, [r5, #6]
@@ -465,7 +465,7 @@ _0231B7B0:
 	mov r2, r6
 	add r1, r7, #4
 	mov r3, #0
-	bl ov29_02345A3C
+	bl SpawnDroppedItemWrapper
 	b _0231CBA4
 _0231B7D4:
 	ldr r0, _0231C6C4 ; =0x00001317
@@ -491,7 +491,7 @@ _0231B7D4:
 	cmp r0, #0
 	bne _0231B834
 	mov r0, r5
-	bl ov29_02346F14
+	bl AddHeldItemToBag
 _0231B834:
 	mov r0, r7
 	bl ov29_022F9EA0
@@ -504,7 +504,7 @@ _0231B840:
 	bl ov29_022E5A00
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0230D440
+	bl UpdateShopkeeperModeAfterAttack
 _0231B860:
 	ldrb r0, [r6]
 	tst r0, #8
@@ -558,7 +558,7 @@ _0231B8F8:
 	mov r1, r7
 	mov r2, #5
 	str r3, [sp]
-	bl ov29_02316BB0
+	bl TryIncreaseBelly
 _0231B92C:
 	ldrsh r0, [r6, #4]
 	bl GetItemCategoryVeneer
@@ -921,7 +921,7 @@ _0231BE50:
 	mov r0, r8
 	mov r1, r7
 	str r4, [sp, #4]
-	bl CalcDamageProjectile
+	bl DealDamageProjectile
 	b _0231CB14
 _0231BE88:
 	ldr r1, _0231C700 ; =0x00000195
@@ -936,7 +936,7 @@ _0231BE88:
 	mov r0, r8
 	mov r1, r7
 	str r4, [sp, #4]
-	bl CalcDamageProjectile
+	bl DealDamageProjectile
 	b _0231CB14
 _0231BEC0:
 	ldr r1, _0231C700 ; =0x00000195
@@ -951,7 +951,7 @@ _0231BEC0:
 	mov r0, r8
 	mov r1, r7
 	str r4, [sp, #4]
-	bl CalcDamageProjectile
+	bl DealDamageProjectile
 	b _0231CB14
 _0231BEF8:
 	ldr r1, _0231C700 ; =0x00000195
@@ -966,7 +966,7 @@ _0231BEF8:
 	mov r0, r8
 	mov r1, r7
 	str r4, [sp, #4]
-	bl CalcDamageProjectile
+	bl DealDamageProjectile
 	b _0231CB14
 _0231BF30:
 	ldr r1, _0231C700 ; =0x00000195
@@ -981,7 +981,7 @@ _0231BF30:
 	mov r0, r8
 	mov r1, r7
 	str r4, [sp, #4]
-	bl CalcDamageProjectile
+	bl DealDamageProjectile
 	b _0231CB14
 _0231BF68:
 	ldr r1, _0231C700 ; =0x00000195
@@ -996,7 +996,7 @@ _0231BF68:
 	mov r0, r8
 	mov r1, r7
 	str r4, [sp, #4]
-	bl CalcDamageProjectile
+	bl DealDamageProjectile
 	b _0231CB14
 _0231BFA0:
 	mov r4, #0
@@ -1043,7 +1043,7 @@ _0231C018:
 	mov r0, r8
 	mov r1, r7
 	str r4, [sp, #4]
-	bl CalcDamageProjectile
+	bl DealDamageProjectile
 	b _0231CB14
 _0231C050:
 	mov r4, #0
@@ -1066,7 +1066,7 @@ _0231C08C:
 	mov r1, r7
 	mov r3, sl
 	mov r2, #1
-	bl ov29_02305C28
+	bl EndNegativeStatusConditionWrapper
 	b _0231CB14
 _0231C0A4:
 	ldr r1, _0231C730 ; =0x022C45EC
@@ -1105,13 +1105,13 @@ _0231C118:
 	mov r0, r8
 	mov r1, r7
 	mov r3, r2
-	bl ov29_023176CC
+	bl TryInflictBlinkerStatus
 	b _0231CB14
 _0231C130:
 	mov r0, r8
 	mov r1, r7
 	mov r2, #0
-	bl ov29_02317844
+	bl TryInflictCrossEyedStatus
 	b _0231CB14
 _0231C144:
 	mov r0, r8
@@ -1123,7 +1123,7 @@ _0231C144:
 _0231C15C:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231795C
+	bl TryInflictEyedropStatus
 	b _0231CB14
 _0231C16C:
 	mov r0, r8
@@ -1135,12 +1135,12 @@ _0231C16C:
 _0231C184:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231CBEC
+	bl ApplyCheriBerryEffect
 	b _0231CB14
 _0231C194:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231CC18
+	bl ApplyPechaBerryEffect
 	b _0231CB14
 _0231C1A4:
 	mov r2, #0
@@ -1171,13 +1171,13 @@ _0231C1F4:
 	mov r1, r7
 	mov r3, r2
 	str r2, [sp]
-	bl ov29_02302A5C
+	bl LevelUpItemEffect
 	b _0231CB14
 _0231C210:
 	mov r0, r8
 	mov r1, r7
 	mov r2, #1
-	bl ov29_02302F88
+	bl TryDecreaseLevel
 	b _0231CB14
 _0231C224:
 	mov r0, r8
@@ -1193,65 +1193,65 @@ _0231C234:
 _0231C248:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231CC4C
+	bl ApplyRawstBerryEffect
 	b _0231CB14
 _0231C258:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231CC94
+	bl ApplyHungerSeedEffect
 	b _0231CB14
 _0231C268:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231CE68
+	bl ApplyGinsengEffect
 	b _0231CB14
 _0231C278:
 	mov r0, r8
 	mov r1, r7
 	mov r2, sb
-	bl ov29_0231CF84
+	bl ApplyBlastSeedEffect
 	b _0231CB14
 _0231C28C:
 	ldr r2, _0231C74C ; =0x000003E7
 	mov r0, r8
 	mov r1, r7
 	mov r3, #0
-	bl RestoreMovePP
+	bl RestoreAllMovePP
 	b _0231CB14
 _0231C2A4:
 	ldr r1, _0231C750 ; =0x022C4420
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
-	bl ov29_02317F50
+	bl ApplyProteinEffect
 	b _0231CB14
 _0231C2BC:
 	ldr r1, _0231C754 ; =0x022C46CC
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
-	bl ov29_02317FE4
+	bl ApplyCalciumEffect
 	b _0231CB14
 _0231C2D4:
 	ldr r1, _0231C758 ; =0x022C46C8
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
-	bl ov29_02318078
+	bl ApplyIronEffect
 	b _0231CB14
 _0231C2EC:
 	ldr r1, _0231C75C ; =0x022C46C4
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
-	bl ov29_0231810C
+	bl ApplyZincEffect
 	b _0231CB14
 _0231C304:
 	mov r0, r8
 	mov r1, r7
 	mov r2, #1
 	mov r3, #0
-	bl ov29_02305C28
+	bl EndNegativeStatusConditionWrapper
 	b _0231CB14
 _0231C31C:
 	mov r3, #1
@@ -1259,12 +1259,12 @@ _0231C31C:
 	mov r1, r7
 	mov r2, #5
 	str r3, [sp]
-	bl ov29_02302A5C
+	bl LevelUpItemEffect
 	b _0231CB14
 _0231C338:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231CD80
+	bl ApplyVileSeedEffect
 	b _0231CB14
 _0231C348:
 	mov r0, r8
@@ -1276,18 +1276,18 @@ _0231C348:
 _0231C360:
 	mov r0, r8
 	mov r1, r7
-	bl ViolentSeedBoost
+	bl ApplyViolentSeedEffect
 	b _0231CB14
 _0231C370:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231657C
+	bl TryInflictInvisibleStatus
 	b _0231CB14
 _0231C380:
 	mov r0, r7
 	mov r1, #0xa
 	mov r2, #0
-	bl ov29_022FA144
+	bl BoostIQ
 	b _0231CB14
 _0231C394:
 	mov r4, #1
@@ -1296,7 +1296,7 @@ _0231C394:
 	mov r2, #0x32
 	mov r3, #5
 	str r4, [sp]
-	bl ov29_02316BB0
+	bl TryIncreaseBelly
 	b _0231CB14
 _0231C3B4:
 	mov r4, #1
@@ -1305,7 +1305,7 @@ _0231C3B4:
 	mov r2, #0x64
 	mov r3, #0xa
 	str r4, [sp]
-	bl ov29_02316BB0
+	bl TryIncreaseBelly
 	b _0231CB14
 _0231C3D4:
 	mov r4, #1
@@ -1314,12 +1314,12 @@ _0231C3D4:
 	rsb r2, r4, #0x3e8
 	mov r3, #0xa
 	str r4, [sp]
-	bl ov29_02316BB0
+	bl TryIncreaseBelly
 	b _0231CB14
 _0231C3F4:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231D534
+	bl ApplyGrimyFoodEffect
 	b _0231CB14
 _0231C404:
 	ldr r1, _0231C760 ; =0x020A1888
@@ -1472,7 +1472,7 @@ _0231C5FC:
 	mov r2, #0x32
 	mov r3, #5
 	str r4, [sp]
-	bl ov29_02316BB0
+	bl TryIncreaseBelly
 	b _0231CB14
 _0231C61C:
 	mov r4, #1
@@ -1481,7 +1481,7 @@ _0231C61C:
 	mov r2, #0xa
 	mov r3, #0
 	str r4, [sp]
-	bl ov29_02316BB0
+	bl TryIncreaseBelly
 	b _0231CB14
 _0231C63C:
 	mov r4, #1
@@ -1490,7 +1490,7 @@ _0231C63C:
 	rsb r2, r4, #0x3e8
 	mov r3, #0x32
 	str r4, [sp]
-	bl ov29_02316BB0
+	bl TryIncreaseBelly
 	b _0231CB14
 _0231C65C:
 	cmp sb, #0
@@ -1513,12 +1513,12 @@ _0231C65C:
 	b _0231CB14
 _0231C6A4:
 	mov r0, r8
-	bl ov29_02343CD8
+	bl ApplyKeyEffect
 	b _0231CB14
 _0231C6B0:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_02317AF4
+	bl TryInflictDropeyeStatus
 	b _0231CB14
 	.align 2, 0
 _0231C6C0: .word 0x000001AB
@@ -1566,7 +1566,7 @@ _0231C764: .word 0x020A18B0
 _0231C768:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_02317A0C
+	bl TryInflictSlipStatus
 	cmp r0, #0
 	bne _0231CB14
 	mov r0, #0
@@ -1581,12 +1581,12 @@ _0231C768:
 _0231C7A0:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231D74C
+	bl ApplyViaSeedEffect
 	b _0231CB14
 _0231C7B0:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231D680
+	bl ApplyMixElixirEffect
 	b _0231CB14
 _0231C7C0:
 	mov r4, #0
@@ -1607,24 +1607,24 @@ _0231C7C0:
 _0231C7FC:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231D6E0
+	bl ApplyDoughSeedEffect
 	b _0231CB14
 _0231C80C:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231D7C0
+	bl ApplyGravelyrockEffect
 	b _0231CB14
 _0231C81C:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231D838
+	bl ApplyGonePebbleEffect
 	b _0231CB14
 _0231C82C:
 	mov r2, #0
 	mov r0, r8
 	mov r1, r7
 	mov r3, r2
-	bl ov29_023176CC
+	bl TryInflictBlinkerStatus
 	b _0231CB14
 _0231C844:
 	cmp sb, #0
@@ -1770,7 +1770,7 @@ _0231CA3C:
 _0231CA50:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_0231D9C0
+	bl ApplyGracideaEffect
 	b _0231CB14
 _0231CA60:
 	cmp sb, #0

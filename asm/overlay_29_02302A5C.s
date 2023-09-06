@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_02302A5C
-ov29_02302A5C: ; 0x02302A5C
+	arm_func_start LevelUpItemEffect
+LevelUpItemEffect: ; 0x02302A5C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x74
 	mov sb, r1
@@ -49,14 +49,14 @@ _02302AA4:
 	beq _02302BA8
 	ldrsh r1, [r5, #2]
 	add r0, sp, #0x18
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldr r1, [sp, #0x18]
 	ldrb r3, [sp, #0x98]
 	str r1, [r5, #0x20]
 	mov r0, sl
 	mov r1, sb
 	mov r2, r8
-	bl ov29_0230303C
+	bl LevelUp
 	orrs r4, r4, r0
 	beq _02302BA8
 	ldrb r0, [r5, #6]
@@ -115,7 +115,7 @@ _02302BF4:
 	.align 2, 0
 _02302BFC: .word 0x000003E7
 _02302C00: .word 0x00000F1D
-	arm_func_end ov29_02302A5C
+	arm_func_end LevelUpItemEffect
 
 	arm_func_start ov29_02302C04
 ov29_02302C04: ; 0x02302C04
@@ -187,10 +187,10 @@ ov29_02302CC8: ; 0x02302CC8
 	mov r0, sb
 	mov r1, r4
 	mov r2, #1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	add r0, sp, #0x18
 	mov r1, r7
-	bl ov29_02300164
+	bl GetMonsterName
 	add r1, sp, #0x18
 	mov r0, sb
 	str r1, [r8, #0x38]
@@ -217,7 +217,7 @@ _02302D58:
 	cmp r6, #0
 	beq _02302DEC
 	mov r0, r7
-	bl ov29_0234CFEC
+	bl GetPersonalityIndex
 	mov r6, r0
 	ldrb r0, [r7, #0x48]
 	bl ov29_0234CFA0
@@ -229,7 +229,7 @@ _02302D58:
 	ldrsh r1, [r7, #4]
 	add r0, sp, #8
 	mov r2, #0
-	bl ov29_0234BAC0
+	bl InitPortraitDungeon
 	mov r1, r6
 	mov r0, r5
 	bl GetStringFromFileVeneer
@@ -244,7 +244,7 @@ _02302DBC:
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r5
-	bl Strcpy
+	bl strcpy
 	mov r2, r4
 	mov r0, r5
 	mov r3, r2
@@ -262,7 +262,7 @@ _02302DEC:
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r5
-	bl Strcat
+	bl strcat
 	add r4, r4, #1
 _02302E18:
 	ldr r0, [r8, #0x28]
@@ -275,13 +275,13 @@ _02302E18:
 	ldr r1, _02302F74 ; =0x023535C8
 	mov r0, r5
 	ldr r1, [r1, r2, lsl #2]
-	bl Strcat
+	bl strcat
 _02302E44:
 	ldr r0, _02302F78 ; =0x00000F19
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r5
-	bl Strcat
+	bl strcat
 	add r4, r4, #1
 _02302E5C:
 	ldr r0, [r8, #0x2c]
@@ -294,13 +294,13 @@ _02302E5C:
 	ldr r1, _02302F74 ; =0x023535C8
 	mov r0, r5
 	ldr r1, [r1, r2, lsl #2]
-	bl Strcat
+	bl strcat
 _02302E88:
 	ldr r0, _02302F7C ; =0x00000F1A
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r5
-	bl Strcat
+	bl strcat
 	add r4, r4, #1
 _02302EA0:
 	ldr r0, [r8, #0x30]
@@ -313,13 +313,13 @@ _02302EA0:
 	ldr r1, _02302F74 ; =0x023535C8
 	mov r0, r5
 	ldr r1, [r1, r2, lsl #2]
-	bl Strcat
+	bl strcat
 _02302ECC:
 	ldr r0, _02302F80 ; =0x00000F1B
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r5
-	bl Strcat
+	bl strcat
 	add r4, r4, #1
 _02302EE4:
 	ldr r0, [r8, #0x34]
@@ -332,13 +332,13 @@ _02302EE4:
 	ldr r1, _02302F74 ; =0x023535C8
 	mov r0, r5
 	ldr r1, [r1, r2, lsl #2]
-	bl Strcat
+	bl strcat
 _02302F10:
 	ldr r0, _02302F84 ; =0x00000F1C
 	bl StringFromMessageId
 	mov r1, r0
 	mov r0, r5
-	bl Strcat
+	bl strcat
 _02302F24:
 	ldrb r0, [r5]
 	cmp r0, #0
@@ -354,7 +354,7 @@ _02302F4C:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	add sp, sp, #0x58
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -369,8 +369,8 @@ _02302F80: .word 0x00000F1B
 _02302F84: .word 0x00000F1C
 	arm_func_end ov29_02302CC8
 
-	arm_func_start ov29_02302F88
-ov29_02302F88: ; 0x02302F88
+	arm_func_start TryDecreaseLevel
+TryDecreaseLevel: ; 0x02302F88
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	mov r7, r1
@@ -394,7 +394,7 @@ ov29_02302F88: ; 0x02302F88
 	beq _02303000
 	ldrsh r1, [r5, #2]
 	add r0, sp, #0
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldr r2, [sp]
 	mov r0, r8
 	mov r1, r7
@@ -419,10 +419,10 @@ _02303030:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02303038: .word 0x00000F1E
-	arm_func_end ov29_02302F88
+	arm_func_end TryDecreaseLevel
 
-	arm_func_start ov29_0230303C
-ov29_0230303C: ; 0x0230303C
+	arm_func_start LevelUp
+LevelUp: ; 0x0230303C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	mov sl, r1
@@ -451,7 +451,7 @@ _0230309C:
 	add r0, sp, #0xc
 	mov r1, fp
 	mov r2, r5
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldr r0, [sp, #0xc]
 	cmp r0, r8
 	bgt _02303264
@@ -465,7 +465,7 @@ _0230309C:
 	mov r0, sl
 	mov r1, #0
 	mov r2, #1
-	bl ov29_022F98B4
+	bl TryPointCameraToMonster
 	cmp r6, #0
 	bne _023030F0
 	bl ov29_022EAC7C
@@ -579,7 +579,7 @@ _02303274: .word 0x000003E7
 _02303278: .word 0x0237C9C8
 _0230327C: .word 0x0237C9C9
 _02303280: .word 0x0237C9C5
-	arm_func_end ov29_0230303C
+	arm_func_end LevelUp
 
 	arm_func_start ov29_02303284
 ov29_02303284: ; 0x02303284
@@ -608,7 +608,7 @@ _023032D8:
 	mov r0, r4
 	mov r1, r5
 	mov r2, sb
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldr r0, [sp, #8]
 	cmp r0, r8
 	bge _02303304
@@ -629,7 +629,7 @@ _02303314:
 	add r0, sp, #8
 	mov r1, r5
 	add r2, sb, #1
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldr r0, [sp, #8]
 	sub r0, r0, #1
 	str r0, [r7, #0x20]
@@ -639,7 +639,7 @@ _0230333C:
 	add r0, sp, #8
 	mov r1, r5
 	add r2, sb, #1
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	strb sb, [r7, #0xa]
 	ldrh r1, [sp, #0xc]
 	add r0, r7, #0x10
@@ -1199,8 +1199,8 @@ _02303B10: .word 0x00000F28
 _02303B14: .word 0x00000F24
 	arm_func_end ov29_023038D4
 
-	arm_func_start ov29_02303B18
-ov29_02303B18: ; 0x02303B18
+	arm_func_start GetMonsterMoves
+GetMonsterMoves: ; 0x02303B18
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #4
 	mov sb, r2
@@ -1223,7 +1223,7 @@ _02303B30:
 _02303B60:
 	mov r0, r7
 	mov r1, r6
-	bl sub_0205384C
+	bl GetEncodedHalfword
 	ldrb r1, [r0]
 	add r7, r0, #1
 	cmp r1, sb
@@ -1262,7 +1262,7 @@ _02303BD8:
 _02303BE4:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end ov29_02303B18
+	arm_func_end GetMonsterMoves
 
 	arm_func_start ov29_02303BEC
 ov29_02303BEC: ; 0x02303BEC
@@ -1326,22 +1326,22 @@ EvolveMonster: ; 0x02303C7C
 	mov r0, #1
 	bl ov29_0234B06C
 	mov r0, r5
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	strh r5, [r6, #4]
 	strh r5, [r6, #2]
 	mov r4, r0
 	ldrb r2, [r6, #0xa]
 	add r0, sp, #0x14
 	mov r1, r5
-	bl GetLvlStats
+	bl GetLvlUpEntry
 	ldr r1, [sp, #0x14]
 	mov r0, r6
 	str r1, [r6, #0x20]
 	mov r1, #0
 	strh r4, [r7, #0xa8]
-	bl ov29_022FDDC0
+	bl SubInitMonster
 	mov r0, r7
-	bl ov29_022F9194
+	bl SetMonsterTypeAndAbility
 	mov r0, r7
 	mov r1, #7
 	bl ov29_02304830
@@ -1373,7 +1373,7 @@ _02303D48:
 	bl GetTile
 	mov r1, r0
 	mov r0, r8
-	bl ov29_022FF6C4
+	bl IsInvalidSpawnTile
 	cmp r0, #0
 	beq _02303D8C
 	add r5, r5, #1
@@ -1601,10 +1601,10 @@ _02304044:
 	bne _0230414C
 	cmp r0, #0
 	beq _023040EC
-	bl ov29_022F7050
+	bl GetLoadedAttackSpriteId
 	mov r1, r0
 	add r0, r7, #0x2c
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	bl Rand16Bit
 	mov r1, r6, lsl #0x10
 	mov r3, r1, asr #0x10
@@ -1616,12 +1616,12 @@ _02304044:
 	ldrb r1, [r7, #0xae]
 	ldrb r2, [r7, #0xb0]
 	add r0, r7, #0x2c
-	bl sub_0201C418
+	bl SetAndPlayAnimationForAnimationControl
 	b _023041E4
 _023040EC:
 	ldrsh r1, [r7, #0xa8]
 	add r0, r7, #0x2c
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	bl Rand16Bit
 	ldrb r1, [r7, #0xaa]
 	and r0, r0, #3
@@ -1635,7 +1635,7 @@ _023040EC:
 	ldrb r2, [r7, #0xb0]
 	add r0, r7, #0x2c
 	mov r3, r3, asr #0x10
-	bl sub_0201C418
+	bl SetAndPlayAnimationForAnimationControl
 	ldrb r0, [r5, #0x171]
 	cmp r0, #0
 	beq _023041E4
@@ -1646,10 +1646,10 @@ _023040EC:
 _0230414C:
 	cmp r0, #0
 	beq _02304198
-	bl ov29_022F7050
+	bl GetLoadedAttackSpriteId
 	mov r1, r0
 	add r0, r7, #0x2c
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	bl Rand16Bit
 	mov r1, r6, lsl #0x10
 	mov r3, r1, asr #0x10
@@ -1661,14 +1661,14 @@ _0230414C:
 	ldrb r1, [r7, #0xae]
 	ldrb r2, [r7, #0xb0]
 	add r0, r7, #0x2c
-	bl sub_0201C418
+	bl SetAndPlayAnimationForAnimationControl
 	b _023041E4
 _02304198:
 	ldr r0, _023046D0 ; =0x00000229
-	bl GetSpriteIndex__022F7388
+	bl DungeonGetSpriteIndex
 	mov r1, r0
 	add r0, r7, #0x2c
-	bl sub_0201C0E8
+	bl SetSpriteIdForAnimationControl
 	bl Rand16Bit
 	mov r1, r6, lsl #0x10
 	mov r3, r1, asr #0x10
@@ -1682,7 +1682,7 @@ _02304198:
 	add r0, r7, #0x2c
 	ldrb r1, [r7, #0xae]
 	ldrb r2, [r7, #0xb0]
-	bl sub_0201C418
+	bl SetAndPlayAnimationForAnimationControl
 _023041E4:
 	ldrb r0, [r7, #0xae]
 	cmp r0, #6
@@ -1997,9 +1997,9 @@ _0230464C:
 	cmp r0, #0
 	bne _02304690
 	add r0, r7, #0x2c
-	bl sub_0201C458
+	bl SwitchAnimationControlToNextFrame
 	add r0, r7, #0x2c
-	bl sub_0201C458
+	bl SwitchAnimationControlToNextFrame
 	b _023046B8
 _02304690:
 	ldrb r0, [r7, #0xaf]
@@ -2011,10 +2011,10 @@ _02304690:
 	cmp r0, #1
 	ble _023046B8
 	add r0, r7, #0x2c
-	bl sub_0201C458
+	bl SwitchAnimationControlToNextFrame
 _023046B8:
 	add r0, r7, #0x2c
-	bl sub_0201C458
+	bl SwitchAnimationControlToNextFrame
 _023046C0:
 	add sp, sp, #0x38
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}

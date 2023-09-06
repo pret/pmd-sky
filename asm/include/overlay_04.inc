@@ -73,7 +73,7 @@
 .public ov01_02337DD0
 .public sub_02043320
 .public ov01_02337D00
-.public LoadFileFromRom__02008C3C
+.public LoadFileFromRom
 .public sub_020434FC
 .public GetLanguageType
 .public RandInt

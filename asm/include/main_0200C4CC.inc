@@ -3,7 +3,7 @@
 .public CanMonsterUseMove
 .public CardBackupError
 .public CardPullOutWithStatus
-.public CheckEndDungeon
+.public MainGame
 .public DataTransferInit
 .public DataTransferStop
 .public DebugPrint
@@ -16,8 +16,8 @@
 .public FileOpen
 .public FileRead
 .public FileSeek
-.public GetDebugFlag1
-.public GetDebugFlag2
+.public GetDebugFlag
+.public GetDebugLogFlag
 .public GetFileLengthInPackWithPackNb
 .public GetHeldButtons
 .public GetKeyM2NSwitch
@@ -26,8 +26,8 @@
 .public GetReleasedStylus
 .public GetRngSeed
 .public GetTime
-.public KeyWaitInit__02006DA4
-.public LoadFileFromRom__02008C3C
+.public KeyWaitInit
+.public LoadFileFromRom
 .public LoadFileInPackWithPackId
 .public LoadOverlay
 .public MIi_UncompressBackward
@@ -53,8 +53,8 @@
 .public RandIntSafe
 .public RandRange
 .public RandRangeSafe
-.public SetDebugFlag1
-.public SetDebugFlag2
+.public SetDebugFlag
+.public SetDebugLogFlag
 .public SetRngSeed
 .public UnloadFile
 .public UnloadOverlay
@@ -99,7 +99,7 @@
 .public ov11_02306C64
 .public ov11_02306C9C
 .public ov11_02310BDC
-.public ov29_02300164
+.public GetMonsterName
 .public sub_01FF8000
 .public sub_01FF80B0
 .public sub_01FF8CAC
@@ -108,7 +108,7 @@
 .public sub_01FF8D3C
 .public sub_01FF8D6C
 .public sub_01FF8D9C
-.public sub_01FF8DCC
+.public Render3dStack
 .public sub_01FF8F04
 .public sub_01FF8F28
 .public sub_01FF905C
@@ -148,7 +148,7 @@
 .public sub_02003BC8
 .public sub_02004F74
 .public sub_02004F80
-.public sub_02004FCC
+.public Rgb8ToBgr5
 .public sub_02006220
 .public sub_020063A0
 .public sub_020063D4
