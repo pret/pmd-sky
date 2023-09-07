@@ -1,8 +1,14 @@
-NOTE: The following license applies only to the files within this directory.
+NOTE: The following license applies only to relevant information in this
+directory copied from the pmdsky-debug project, including, but not limited to:
+- certain symbol names
+- certain docstrings and comments
+- certain struct definitions
+- certain enum definitions
+- certain function prototypes
 
 MIT License
 
-Copyright (c) 2022 UsernameFodder
+Copyright (c) 2022 pmdsky-debug contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
