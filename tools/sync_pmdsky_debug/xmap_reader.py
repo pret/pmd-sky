@@ -3,6 +3,7 @@ import requests
 from typing import Dict
 from symbol_details import SymbolDetails
 
+HEADER_FOLDER = 'include'
 XMAP_PATH = os.path.join('build', 'pmdsky.us', 'main.nef.xMAP')
 MAIN_LSF_PATH = 'main.lsf'
 REMOTE_XMAP_URL = 'https://raw.githubusercontent.com/pret/pmd-sky/xmap/pmdskyus.xMAP'
@@ -45,10 +46,14 @@ def read_xmap_symbols() -> Dict[str, Dict[int, SymbolDetails]]:
             if current_section is not None:
                 xmap_symbols[current_section]: Dict[str, int] = {}
 
-        elif current_section is not None and line.startswith('  ') and len(line) > 28 and line[28] not in NON_FUNCTION_SYMBOLS:
+        elif current_section is not None and line.startswith('  ') and '.text' in line and len(line) > 28 and line[28] not in NON_FUNCTION_SYMBOLS:
             symbol_split = line[28:-1].split('\t')
             symbol_name = symbol_split[0]
             symbol_address = int(line[2:10], 16)
-            xmap_symbols[current_section][symbol_address] = SymbolDetails(symbol_name, symbol_split[1][1:-1])
+            if '00000000' in line:
+                # TODO Handle non-function symbols.
+                pass
+            else:
+                xmap_symbols[current_section][symbol_address] = SymbolDetails(symbol_name, symbol_split[1][1:-1])
 
     return xmap_symbols

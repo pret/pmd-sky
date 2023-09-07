@@ -1,4 +1,5 @@
 from pmdsky_debug_reader import *
+from symbol_details import *
 from xmap_reader import *
 from typing import List
 
@@ -23,7 +24,7 @@ def add_files_with_extensions(folder: str, extensions: List[str]) -> List[str]:
     return found_files
 
 asm_files = add_files_with_extensions('asm', ['.s', '.inc'])
-src_files = add_files_with_extensions('include', ['.h'])
+src_files = add_files_with_extensions(HEADER_FOLDER, ['.h'])
 src_files.extend(add_files_with_extensions('src', ['.c']))
 
 for section_name, pmdsky_debug_section in pmdsky_debug_symbols.items():
@@ -33,7 +34,7 @@ for section_name, pmdsky_debug_section in pmdsky_debug_symbols.items():
         xmap_section = {}
 
     for address, symbol in pmdsky_debug_section.items():
-        if address in xmap_section and xmap_section[address].name != symbol.name:
+        if address in xmap_section and xmap_section[address].name != symbol.name and xmap_section[address].name not in MIXED_CASE_SYMBOLS:
             old_symbol = xmap_section[address]
             print(f'Replacing {old_symbol.name} with {symbol.name}')
             asm_search_string_bases = [
