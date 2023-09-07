@@ -419,10 +419,6 @@ ov29_023061CC: ; 0x023061CC
 	ldrb r0, [r4, #0xbf]
 	cmp r0, #5
 	addls pc, pc, r0, lsl #2
-	arm_func_end ov29_023061CC
-
-	arm_func_start caseD_6
-caseD_6: ; 0x023061E4
 	b _02306238
 _023061E8: ; jump table
 	b _02306238 ; case 0
@@ -448,7 +444,6 @@ _02306228:
 	mov r0, r6
 	mov r1, r5
 	bl LogMessageByIdWithPopupCheckUserTarget
-	arm_func_end caseD_6
 _02306238:
 	mov r1, #0
 	mov r0, r5
@@ -459,6 +454,7 @@ _02306238:
 _0230624C: .word 0x00000C9E
 _02306250: .word 0x00000C9C
 _02306254: .word 0x00000C9D
+	arm_func_end ov29_023061CC
 
 	arm_func_start EndFrozenClassStatus
 EndFrozenClassStatus: ; 0x02306258

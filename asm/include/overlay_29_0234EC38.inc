@@ -2,7 +2,7 @@
 .public AdvanceFrame
 .public Arm9LoadUnkFieldNa0x2029EC8
 .public Arm9StoreUnkFieldNa0x2029ED8
-.public CheckTeamMemberIdx__022F9C34
+.public CheckTeamMemberIdxVeneer
 .public DisplayMessage
 .public DungeonGoesUp
 .public DungeonRequestsDoneWrapper

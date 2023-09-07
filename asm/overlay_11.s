@@ -9675,13 +9675,13 @@ _022E46D0:
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov11_022E469C
 
-	arm_func_start LoadFileFromRom__022E46DC
-LoadFileFromRom__022E46DC: ; 0x022E46DC
+	arm_func_start LoadFileFromRomVeneer
+LoadFileFromRomVeneer: ; 0x022E46DC
 	ldr ip, _022E46E4 ; =LoadFileFromRom
 	bx ip
 	.align 2, 0
 _022E46E4: .word LoadFileFromRom
-	arm_func_end LoadFileFromRom__022E46DC
+	arm_func_end LoadFileFromRomVeneer
 
 	arm_func_start ov11_022E46E8
 ov11_022E46E8: ; 0x022E46E8
@@ -41966,7 +41966,7 @@ _022FF760:
 	ldr r0, [r0, #4]
 	mov r2, #8
 	add r0, r0, #8
-	bl LoadFileFromRom__022E46DC
+	bl LoadFileFromRomVeneer
 	ldr r0, _022FF9E0 ; =0x02324D14
 	ldr r2, [r0, #4]
 	ldr r1, [r2, #8]

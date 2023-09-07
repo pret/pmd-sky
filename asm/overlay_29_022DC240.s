@@ -3881,7 +3881,7 @@ _022DF5E4:
 	movne r1, #1
 	strneb r1, [r0, #0x23f]
 	strneb r1, [r0, #0x240]
-	bl IsSecretBazaar__02344538
+	bl IsSecretBazaarVeneer
 	ldr r0, _022DFF40 ; =0x02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000

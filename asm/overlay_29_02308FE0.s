@@ -943,7 +943,7 @@ _02309D3C:
 	b _02309DC8
 _02309D60:
 	ldrsh r0, [r6, #8]
-	bl IsMonsterIdInNormalRange__022F9C68
+	bl IsMonsterIdInNormalRangeVeneer
 	cmp r0, #0
 	beq _02309DB4
 	ldr r0, _02309FFC ; =0x02353538

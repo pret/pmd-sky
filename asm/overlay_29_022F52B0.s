@@ -862,7 +862,7 @@ _022F5E1C:
 	addne r6, r5, #3
 	bne _022F5E84
 	ldrsh r0, [r4, #8]
-	bl IsMonsterIdInNormalRange__022F9C68
+	bl IsMonsterIdInNormalRangeVeneer
 	cmp r0, #0
 	beq _022F5E84
 	bl IsMarowakTrainingMaze

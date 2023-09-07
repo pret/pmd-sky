@@ -23,7 +23,7 @@
 .public InitMove
 .public IqSkillIsEnabled
 .public IsFloorOver
-.public IsMonsterIdInNormalRange__022F9C68
+.public IsMonsterIdInNormalRangeVeneer
 .public ItemZInit
 .public LogMessageByIdWithPopupCheckUser
 .public RemoveEquivItemNoHole

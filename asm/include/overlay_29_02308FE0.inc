@@ -57,7 +57,7 @@
 .public IsCurrentMissionTypeExact
 .public IsExperienceLocked
 .public IsLegendaryChallengeFloor
-.public IsMonsterIdInNormalRange__022F9C68
+.public IsMonsterIdInNormalRangeVeneer
 .public IsMonsterOnTeam
 .public IsPunchMove
 .public IsRecoilMove

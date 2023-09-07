@@ -5368,7 +5368,7 @@ _02387278:
 	bge _023872FC
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx__022F9C34
+	bl CheckTeamMemberIdxVeneer
 	cmp r0, #0
 	movne r6, #0
 _023872FC:
@@ -5613,14 +5613,14 @@ ov31_02387660: ; 0x02387660
 	ldr r1, _02387680 ; =0x02353538
 	ldrb r0, [r0, #4]
 	ldr r1, [r1]
-	ldr ip, _02387684 ; =ov31_0238948
+	ldr ip, _02387684 ; =ov31_0238948C
 	add r0, r1, r0, lsl #2
 	add r0, r0, #0x12000
 	ldr r0, [r0, #0xb28]
 	bx ip
 	.align 2, 0
 _02387680: .word 0x02353538
-_02387684: .word ov31_0238948
+_02387684: .word ov31_0238948C
 	arm_func_end ov31_02387660
 
 	arm_func_start ov31_02387688
@@ -5862,7 +5862,7 @@ _02387958:
 	ldrsh r0, [r6, #0xc]
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx__022F9C34
+	bl CheckTeamMemberIdxVeneer
 	cmp r0, #0
 	ldrsh r1, [r6, #0x12]
 	ldrsh r0, [r6, #0x16]
@@ -6472,7 +6472,7 @@ _0238826C:
 	ldrsh r0, [r6, #0xc]
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx__022F9C34
+	bl CheckTeamMemberIdxVeneer
 	str r0, [sp, #4]
 	b _023882E8
 _023882A0:
@@ -7798,8 +7798,8 @@ ov31_02389460: ; 0x02389460
 _02389488: .word 0x0238A28C
 	arm_func_end ov31_02389460
 
-	arm_func_start ov31_0238948
-ov31_0238948: ; 0x0238948C
+	arm_func_start ov31_0238948C
+ov31_0238948C: ; 0x0238948C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x134
 	mov r4, r0
@@ -8114,7 +8114,7 @@ _0238990C: .word 0x80000213
 _02389910: .word 0x00003F07
 _02389914: .word 0x00003F04
 _02389918: .word 0x00003F03
-	arm_func_end ov31_0238948
+	arm_func_end ov31_0238948C
 
 	arm_func_start ov31_0238991C
 ov31_0238991C: ; 0x0238991C

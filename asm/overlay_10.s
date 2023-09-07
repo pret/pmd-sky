@@ -1711,11 +1711,7 @@ _022BE0B0: ; jump table
 	b _022BE0CC ; case 3
 	b _022BE0EC ; case 4
 	b _022BE124 ; case 5
-	arm_func_end ov10_022BDFC0
-
-	arm_func_start caseD_6
-caseD_6: ; 0x022BE0C8
-	b _022BE18C
+	b _022BE18C ; case 6
 _022BE0CC:
 	ldr r0, _022BE448 ; =ov10_022DC1C0
 	ldr r0, [r0]
@@ -1768,7 +1764,6 @@ _022BE158:
 	add r0, r0, #0x2000
 	strb r1, [r0, #0x79e]
 	b _022BE1F0
-	arm_func_end caseD_6
 _022BE18C:
 	cmp r6, #0
 	mvneq r0, #0
@@ -1958,6 +1953,7 @@ _022BE440:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022BE448: .word ov10_022DC1C0
+	arm_func_end ov10_022BDFC0
 
 	arm_func_start ov10_022BE44C
 ov10_022BE44C: ; 0x022BE44C

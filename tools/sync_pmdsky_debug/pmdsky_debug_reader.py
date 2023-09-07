@@ -5,22 +5,29 @@ from typing import Dict
 from symbol_details import SymbolDetails
 
 SYMBOLS_FOLDER = 'symbols'
+pmdsky_debug_path = None
+
+def get_pmdsky_debug_location() -> str:
+    global pmdsky_debug_path
+    if not pmdsky_debug_path:
+        debug_location_path = os.path.join('tools', CONTAINING_FOLDER, 'pmdsky_debug_location.txt')
+        if not os.path.exists(debug_location_path):
+            print('Missing file path to pmdsky-debug in pmdsky_debug_location.txt.')
+            exit(1)
+
+        with open(debug_location_path, 'r') as debug_location_file:
+            pmdsky_debug_path = debug_location_file.read().strip()
+
+        if not os.path.exists(pmdsky_debug_path) or not os.path.exists(os.path.join(pmdsky_debug_path, 'check_and_format.sh')):
+            print('pmdsky-debug not found at', pmdsky_debug_path)
+            exit(1)
+    return pmdsky_debug_path
 
 # In the returned dictionary, outer key = region, inner key = symbol address, value = symbol details.
 def read_pmdsky_debug_symbols() -> Dict[str, Dict[int, SymbolDetails]]:
     pmdsky_debug_symbols: Dict[str, Dict[int, SymbolDetails]] = {}
 
-    debug_location_path = os.path.join('tools', CONTAINING_FOLDER, 'pmdsky_debug_location.txt')
-    if not os.path.exists(debug_location_path):
-        print('Missing file path to pmdsky-debug in pmdsky_debug_location.txt.')
-        exit(1)
-
-    with open(debug_location_path, 'r') as debug_location_file:
-        pmdsky_debug_path = debug_location_file.read().strip()
-
-    if not os.path.exists(pmdsky_debug_path) or not os.path.exists(os.path.join(pmdsky_debug_path, 'check_and_format.sh')):
-        print('pmdsky-debug not found at', pmdsky_debug_path)
-        exit(1)
+    pmdsky_debug_path = get_pmdsky_debug_location()
 
     def read_yaml_symbols(file_path: str, symbols: Dict[int, SymbolDetails] = None, address_suffix = '') -> Dict[int, SymbolDetails]:
         if symbols is None:
