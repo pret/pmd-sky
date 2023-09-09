@@ -28,7 +28,7 @@ Autoload DTCM
 }
 Overlay OVY_0
 {
-	Address 0x022BCA80
+	After main
 	Object asm/overlay_00.o
 }
 Overlay OVY_1
