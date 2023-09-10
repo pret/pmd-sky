@@ -1361,7 +1361,7 @@ _02383A1C:
 	bl Arm9LoadUnkFieldNa0x2029EC8
 	mov r1, r0
 	ldr r0, _0238489C ; =0x02389F64
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	bl GetNbItemsInBag
 	ldr r2, _02384898 ; =0x0238A26C
 	cmp r6, #0

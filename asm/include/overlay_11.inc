@@ -430,7 +430,7 @@
 .public sub_02017FB0
 .public sub_02075EC8
 .public sub_0200A184
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public sub_02046BA0
 .public ov10_022C328C
 .public sub_02055CCC

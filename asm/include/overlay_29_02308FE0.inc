@@ -8,7 +8,7 @@
 .public CanEnemyEvolve
 .public CeilFixedPoint
 .public ClampedLn
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public DivideFixedPoint64
 .public __divsi3
 .public DungeonRandInt

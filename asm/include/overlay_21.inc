@@ -27,7 +27,7 @@
 .public sub_02013150
 .public GetTeamMember
 .public sub_02027B1C
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public sub_0203FA64
 .public MemFree
 .public sub_0203F150

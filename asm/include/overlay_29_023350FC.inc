@@ -4,7 +4,7 @@
 .public CalcStatusDuration
 .public CeilFixedPoint
 .public Conversion2IsActive
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public __divsi3
 .public DungeonGoesUp
 .public EntityIsValid__023350D8

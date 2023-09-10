@@ -150,7 +150,7 @@
 .public sub_02027AF0
 .public sub_0204F050
 .public sub_02027648
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public MultiplyByFixedPoint
 .public InitEventFlagScriptVars
 .public sub_02048BFC

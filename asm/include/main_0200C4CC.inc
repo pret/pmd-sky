@@ -9,7 +9,7 @@
 .public DataTransferInit
 .public DataTransferStop
 .public DebugPrint
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public ExplorersOfSkyMain
 .public FatalError
 .public FileClose

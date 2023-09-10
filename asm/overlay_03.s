@@ -2372,7 +2372,7 @@ _0233EA70:
 	mov r7, #0xb
 _0233EA74:
 	ldr r0, _0233EE5C ; =0x02346A64
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r5, _0233EE60 ; =0x02346A68
 	ldr r4, _0233EE08 ; =0x02346BC0
 	mov r6, #0
@@ -2381,12 +2381,12 @@ _0233EA88:
 	mov r0, r5
 	add r1, r1, r6
 	ldrb r1, [r1, #0x10c]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	add r6, r6, #1
 	cmp r6, #0x36
 	blt _0233EA88
 	ldr r0, _0233EE5C ; =0x02346A64
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp r7, #0xa
 	addls pc, pc, r7, lsl #2
 	b _0233F2C4

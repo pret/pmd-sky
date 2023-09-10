@@ -804,7 +804,7 @@ _0233D4A0:
 	cmp r0, #1
 	bne _0233D4D0
 	ldr r0, _0233D5A8 ; =0x0233EA70
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, [r4, #4]
 	ldrb r0, [r0, #0xd14]
 	cmp r0, #0
@@ -848,12 +848,12 @@ _0233D514: ; jump table
 	b _0233D568 ; case 9
 _0233D53C:
 	ldr r0, _0233D5AC ; =0x0233EA94
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	bl ov08_0233E1D8
 	b _0233D574
 _0233D54C:
 	ldr r0, _0233D5B0 ; =0x0233EAA4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	bl ov08_0233E16C
 	b _0233D574
 _0233D55C:
@@ -2356,7 +2356,7 @@ ov08_0233E844: ; 0x0233E844
 	mov r5, r0
 	ldr r0, _0233E870 ; =0x0233EBFC
 	mov r4, r1
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp r4, #0xb
 	str r4, [r5]
 	cmpne r4, #0xe

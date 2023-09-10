@@ -11944,7 +11944,7 @@ _022E652C:
 	ldrb r1, [sp, #0x11]
 	ldr r2, [sp, #0x3c]
 	ldr r0, _022E68D4 ; =0x0231993C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r8, #0
 	ldr r0, [sp, #0x3c]
 	add sb, sp, #0x34
@@ -11982,7 +11982,7 @@ _022E657C:
 	ldr r1, [sp, #0x3c]
 	ldrb r2, [sl, #4]
 	ldrb r3, [sl, #1]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldrb r0, [sp, #0x34]
 	cmp r0, #0
 	beq _022E6630
@@ -12012,7 +12012,7 @@ _022E6644:
 	str r1, [r0]
 	ldr r0, _022E68DC ; =0x023199B4
 	str r1, [r4]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	bl sub_0205F504
 	mov r1, #0
 	mov r2, r1
@@ -12043,7 +12043,7 @@ _022E6678:
 	ldrb r2, [sp, #0x24]
 	ldrsh r3, [sp, #0x26]
 	ldr r1, [sp, #0x2c]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldrb r0, [sp, #0x24]
 	cmp r0, #0
 	beq _022E66F8
@@ -13005,7 +13005,7 @@ _022E737C:
 	ldrsb r1, [sp, #2]
 	ldr r0, _022E7ACC ; =0x02319A68
 	mov r2, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp r4, #0
 	movgt r0, r4
 	bgt _022E7AC0
@@ -13888,7 +13888,7 @@ ov11_022E7F34: ; 0x022E7F34
 	bl ov11_022E46E8
 	ldr r1, [sp, #4]
 	ldr r0, _022E7F78 ; =0x02319AD0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r2, [sp]
 	ldr r0, _022E7F7C ; =0x02324CA4
 	str r2, [r0]
@@ -14581,7 +14581,7 @@ GroundMainLoop: ; 0x022E8774
 	mov r2, r0
 	ldr r0, _022E91EC ; =0x023209B0
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	bl sub_02028E2C
 	mov r0, #0
 	mov r1, #0xb0000
@@ -14704,7 +14704,7 @@ _022E8960:
 	cmpne r0, #2
 	beq _022E8990
 	ldr r0, _022E9204 ; =0x023209CC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022E8FDC
 _022E8990:
 	bl sub_02034D0C
@@ -14737,7 +14737,7 @@ _022E89A8: ; jump table
 	b _022E8CCC ; case 20
 _022E89FC:
 	ldr r0, _022E9208 ; =0x023209EC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
@@ -14769,7 +14769,7 @@ _022E8A3C:
 	ldr r0, _022E920C ; =0x02320A08
 	mov r1, r5
 	mov r2, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp r5, #2
 	ldreq r0, _022E9210 ; =0x0000029D
 	streqh r0, [sp, #2]
@@ -14801,7 +14801,7 @@ _022E8AE4:
 	mov r1, #0x2b
 	bl SaveScriptVariableValue
 	ldr r0, _022E9208 ; =0x023209EC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
@@ -14820,7 +14820,7 @@ _022E8AE4:
 	ldr r0, _022E9224 ; =0x02320A28
 	mov r1, r4
 	mov r2, r5
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp r4, #2
 	cmpne r4, #3
 	beq _022E8B94
@@ -14881,7 +14881,7 @@ _022E8BEC:
 	b _022E8CD4
 _022E8C20:
 	ldr r0, _022E9208 ; =0x023209EC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
@@ -14946,7 +14946,7 @@ _022E8CD4:
 	ldr r1, _022E91E8 ; =0x02324FA0
 	ldr r0, _022E9234 ; =0x02320A44
 	ldr r1, [r1, #0x14]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _022E91E8 ; =0x02324FA0
 	ldr r1, [r0, #0x14]
 	cmp r1, #1
@@ -15198,12 +15198,12 @@ _022E9090:
 	cmp r0, #7
 	bne _022E90C0
 	ldr r0, _022E923C ; =0x02320A60
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0xd
 	b _022E91E0
 _022E90C0:
 	ldr r0, _022E9240 ; =0x02320A70
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0xc
 	b _022E91E0
 _022E90D0:
@@ -15236,7 +15236,7 @@ _022E90E4:
 	mov r1, r5
 	mov r2, r4
 	ldr r0, _022E9244 ; =0x02320A7C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #4
 	b _022E91E0
 _022E914C:
@@ -15246,7 +15246,7 @@ _022E914C:
 	mov r2, r0
 	ldr r0, _022E9248 ; =0x02320A94
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #5
 	b _022E91E0
 _022E9170:
@@ -15259,7 +15259,7 @@ _022E9170:
 	cmp r1, #5
 	bne _022E91A0
 	ldr r0, _022E924C ; =0x02320AAC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #9
 	b _022E91E0
 _022E91A0:
@@ -15269,17 +15269,17 @@ _022E91A0:
 	cmp r0, #0
 	beq _022E91C4
 	ldr r0, _022E924C ; =0x02320AAC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #9
 	b _022E91E0
 _022E91C4:
 	ldr r0, _022E9250 ; =0x02320AB8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0xb
 	b _022E91E0
 _022E91D4:
 	ldr r0, _022E9254 ; =0x02320AC8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0xa
 _022E91E0:
 	add sp, sp, #0x34
@@ -15453,7 +15453,7 @@ _022E9410: .word 0x02324CB0
 GroundMainReturnDungeon: ; 0x022E9414
 	stmdb sp!, {r3, lr}
 	ldr r0, _022E9434 ; =0x023209EC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
@@ -15469,7 +15469,7 @@ GroundMainNextDay: ; 0x022E9438
 	bl GetGameMode
 	mov r4, r0
 	ldr r0, _022E94C8 ; =0x02320AD4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp r4, #3
 	bne _022E9468
 	mov r0, #0
@@ -15493,7 +15493,7 @@ _022E9468:
 _022E9498:
 	ldr r0, _022E94CC ; =0x02320AEC
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, r4
 	bl GetKecleonItems1
 	mov r0, r4
@@ -26608,7 +26608,7 @@ ov11_022F294C: ; 0x022F294C
 	ldr r0, _022F2AA4 ; =0x02321278
 	mov r1, #0xd80
 	strh r3, [r2, #2]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	bl ov11_022F2F1C
 	ldr r0, _022F2AA0 ; =0x02324CD0
 	mov r1, #1
@@ -27938,7 +27938,7 @@ _022F3BEC:
 	cmp r0, #0
 	bne _022F3C10
 	ldr r0, _022F3E64 ; =0x02321340
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022F3DE0
 _022F3C10:
 	ldr r0, _022F3E48 ; =0x02324CE0
@@ -35006,7 +35006,7 @@ ov11_022F9AD4: ; 0x022F9AD4
 	cmp r0, #3
 	bne _022F9B8C
 	ldr r0, _022F9F58 ; =0x02321C54
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #1
 	b _022F9F4C
 _022F9B8C:
@@ -35080,7 +35080,7 @@ _022F9C54:
 _022F9C94:
 	ldr r0, _022F9F68 ; =0x02321C68
 	mov r1, r7
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	b _022F9F4C
 _022F9CA8:
@@ -35094,7 +35094,7 @@ _022F9CA8:
 	bne _022F9CDC
 	ldr r0, _022F9F6C ; =0x02321C88
 	mov r1, r7
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #1
 	b _022F9F4C
 _022F9CDC:
@@ -35123,7 +35123,7 @@ _022F9D28:
 	beq _022F9D44
 	ldr r0, _022F9F70 ; =0x02321CA0
 	mov r1, r7
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	b _022F9F4C
 _022F9D44:
@@ -35150,7 +35150,7 @@ _022F9D50:
 _022F9D90:
 	ldr r0, _022F9F74 ; =0x02321CBC
 	mov r1, r7
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	b _022F9F4C
 _022F9DA4:
@@ -35164,7 +35164,7 @@ _022F9DA4:
 	bne _022F9DD8
 	ldr r0, _022F9F78 ; =0x02321CDC
 	mov r1, r7
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #1
 	b _022F9F4C
 _022F9DD8:
@@ -35193,7 +35193,7 @@ _022F9E24:
 	bne _022F9E40
 	ldr r0, _022F9F7C ; =0x02321CF4
 	mov r1, r7
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	b _022F9F4C
 _022F9E40:
@@ -35222,7 +35222,7 @@ _022F9E54:
 _022F9E94:
 	ldr r0, _022F9F80 ; =0x02321D10
 	mov r1, r8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	b _022F9F4C
 _022F9EA8:
@@ -35236,7 +35236,7 @@ _022F9EA8:
 	bne _022F9EDC
 	ldr r0, _022F9F84 ; =0x02321D30
 	mov r1, r8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #1
 	b _022F9F4C
 _022F9EDC:
@@ -35244,7 +35244,7 @@ _022F9EDC:
 	bne _022F9EF8
 	ldr r0, _022F9F88 ; =0x02321D48
 	mov r1, r8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	b _022F9F4C
 _022F9EF8:
@@ -35268,7 +35268,7 @@ _022F9F34:
 	blt _022F9E54
 	ldr r0, _022F9F8C ; =0x02321D6C
 	mov r1, r8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 _022F9F4C:
 	add sp, sp, #0x34
@@ -35698,7 +35698,7 @@ _022FA4C8:
 	cmp r0, #3
 	bne _022FA55C
 	ldr r0, _022FA9CC ; =0x02321C54
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA55C:
 	ldr r1, [r4, #0xc]
@@ -35772,7 +35772,7 @@ _022FA628:
 _022FA668:
 	ldr r0, _022FA9DC ; =0x02321C68
 	mov r1, r6
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA678:
 	mov r0, r4
@@ -35784,7 +35784,7 @@ _022FA678:
 	bne _022FA6A4
 	ldr r0, _022FA9E0 ; =0x02321C88
 	mov r1, r6
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA6A4:
 	ldr r3, [sp, #0x10]
@@ -35812,7 +35812,7 @@ _022FA6F0:
 	beq _022FA708
 	ldr r0, _022FA9E4 ; =0x02321CA0
 	mov r1, r6
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA708:
 	mov sl, #0x100
@@ -35838,7 +35838,7 @@ _022FA714:
 _022FA754:
 	ldr r0, _022FA9E8 ; =0x02321CBC
 	mov r1, r6
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA764:
 	mov r0, r4
@@ -35850,7 +35850,7 @@ _022FA764:
 	bne _022FA790
 	ldr r0, _022FA9EC ; =0x02321CDC
 	mov r1, r6
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA790:
 	ldr r3, [sp, #0x10]
@@ -35878,7 +35878,7 @@ _022FA7DC:
 	bne _022FA7F4
 	ldr r0, _022FA9F0 ; =0x02321CF4
 	mov r1, r6
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA7F4:
 	mov sl, #0
@@ -35906,7 +35906,7 @@ _022FA808:
 _022FA848:
 	ldr r0, _022FA9F4 ; =0x02321D10
 	mov r1, sl
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA858:
 	mov r0, r4
@@ -35918,14 +35918,14 @@ _022FA858:
 	bne _022FA884
 	ldr r0, _022FA9F8 ; =0x02321D30
 	mov r1, sl
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA884:
 	cmp r0, #6
 	bne _022FA89C
 	ldr r0, _022FA9FC ; =0x02321D48
 	mov r1, sl
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA89C:
 	ldr r2, [sp, #0x10]
@@ -35948,7 +35948,7 @@ _022FA8D8:
 	blt _022FA808
 	ldr r0, _022FAA00 ; =0x02321D6C
 	mov r1, sl
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _022FA93C
 _022FA8F0:
 	bl KeyWaitInit
@@ -46576,7 +46576,7 @@ _0230367C:
 	b _0230371C
 _023036A4:
 	ldr r0, _02303738 ; =0x023227E8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _02303724 ; =0x02324D54
 	mov r1, #2
 	ldr r0, [r0]
@@ -46584,11 +46584,11 @@ _023036A4:
 	b _0230371C
 _023036C0:
 	ldr r0, _0230373C ; =0x02322808
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _0230371C
 _023036CC:
 	ldr r0, _02303740 ; =0x02322828
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _02303724 ; =0x02324D54
 	mov r1, #2
 	ldr r0, [r0]
@@ -46596,15 +46596,15 @@ _023036CC:
 	b _0230371C
 _023036E8:
 	ldr r0, _02303744 ; =0x02322850
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _0230371C
 _023036F4:
 	ldr r0, _02303748 ; =0x0232287C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _0230371C
 _02303700:
 	ldr r0, _0230374C ; =0x02322894
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _02303724 ; =0x02324D54
 	mov r1, #1
 	ldr r0, [r0]
@@ -46705,7 +46705,7 @@ _02303830:
 	b _023038D0
 _02303858:
 	ldr r0, _023038EC ; =0x023227E8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _023038D8 ; =0x02324D54
 	mov r1, #2
 	ldr r0, [r0]
@@ -46713,11 +46713,11 @@ _02303858:
 	b _023038D0
 _02303874:
 	ldr r0, _023038F0 ; =0x02322808
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _023038D0
 _02303880:
 	ldr r0, _023038F4 ; =0x02322828
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _023038D8 ; =0x02324D54
 	mov r1, #2
 	ldr r0, [r0]
@@ -46725,15 +46725,15 @@ _02303880:
 	b _023038D0
 _0230389C:
 	ldr r0, _023038F8 ; =0x02322850
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _023038D0
 _023038A8:
 	ldr r0, _023038FC ; =0x0232287C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _023038D0
 _023038B4:
 	ldr r0, _02303900 ; =0x02322894
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _023038D8 ; =0x02324D54
 	mov r1, #1
 	ldr r0, [r0]

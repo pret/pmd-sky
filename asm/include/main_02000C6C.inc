@@ -1,4 +1,17 @@
 #pragma once
+.public ClearIrqFlag
+.public DEBUG_IS_INITIALIZED
+.public DecompressAtFromMemoryPointer
+.public FatalError
+.public FileInit
+.public MainLoop
+.public STRING_DEBUG_EMPTY
+.public STRING_DEBUG_FORMAT_LINE_FILE
+.public STRING_DEBUG_NO_PROG_POS
+.public STRING_DEBUG_SPACED_PRINT
+.public WaitForInterrupt
+.public _0200A314
+.public _0200A344
 .public __addsf3
 .public __divsi3
 .public __floatsisf

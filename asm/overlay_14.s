@@ -2730,19 +2730,19 @@ _0238C72C:
 	cmp sb, #4
 	blt _0238C670
 	ldr r0, _0238CA68 ; =0x0238DB2C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r1, _0238CA54 ; =ov14_0238DB80
 	ldr r0, _0238CA6C ; =0x0238DB44
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	ldr r1, [r1, #0x880]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r1, _0238CA54 ; =ov14_0238DB80
 	ldr r0, _0238CA70 ; =0x0238DB58
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	ldr r1, [r1, #0x87c]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _0238CA54 ; =ov14_0238DB80
 	ldr r2, _0238CA74 ; =0x880A0000
 	ldr r3, [r0]
