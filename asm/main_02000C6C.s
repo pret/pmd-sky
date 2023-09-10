@@ -85,7 +85,7 @@ _02000D44:
 	bl sub_02002C2C
 	bl sub_02002F0C
 	bl InitMemAllocTableVeneer
-	bl sub_0200C0D4
+	bl InitDebug
 	bl sub_02002FB8
 	ldr r0, _02000DDC ; =_02092460
 	bl sub_020082F4
@@ -14186,8 +14186,8 @@ _0200C0BC:
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end sub_0200C020
 
-	arm_func_start sub_0200C0D4
-sub_0200C0D4: ; 0x0200C0D4
+	arm_func_start InitDebug
+InitDebug: ; 0x0200C0D4
 	stmdb sp!, {r3, lr}
 	bl sub_0200C11C
 	bl sub_0200C168
@@ -14196,14 +14196,14 @@ sub_0200C0D4: ; 0x0200C0D4
 	bl sub_0200C254
 	bl sub_0200C258
 	bl sub_0200C230
-	ldr r0, _0200C108 ; =_020AF698
+	ldr r0, _0200C108 ; =DEBUG_IS_INITIALIZED
 	mov r1, #1
 	str r1, [r0]
 	bl sub_0200C10C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200C108: .word _020AF698
-	arm_func_end sub_0200C0D4
+_0200C108: .word DEBUG_IS_INITIALIZED
+	arm_func_end InitDebug
 
 	arm_func_start sub_0200C10C
 sub_0200C10C: ; 0x0200C10C
@@ -14231,23 +14231,23 @@ AppendProgPos: ; 0x0200C120
 	stmdb sp!, {r3, lr}
 	mov ip, r1
 	cmp r2, #0
-	ldreq r2, _0200C15C ; =_02094AFC
+	ldreq r2, _0200C15C ; =STRING_DEBUG_EMPTY
 	cmp ip, #0
 	beq _0200C150
 	ldr r3, [ip, #4]
-	ldr r1, _0200C160 ; =_02094B00
+	ldr r1, _0200C160 ; =STRING_DEBUG_FORMAT_LINE_FILE
 	str r3, [sp]
 	ldr r3, [ip]
 	bl sprintf
 	ldmia sp!, {r3, pc}
 _0200C150:
-	ldr r1, _0200C164 ; =_02094B1C
+	ldr r1, _0200C164 ; =STRING_DEBUG_NO_PROG_POS
 	bl sprintf
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200C15C: .word _02094AFC
-_0200C160: .word _02094B00
-_0200C164: .word _02094B1C
+_0200C15C: .word STRING_DEBUG_EMPTY
+_0200C160: .word STRING_DEBUG_FORMAT_LINE_FILE
+_0200C164: .word STRING_DEBUG_NO_PROG_POS
 	arm_func_end AppendProgPos
 
 	arm_func_start sub_0200C168
@@ -14268,7 +14268,7 @@ DebugPrintTrace: ; 0x0200C16C
 	bl AppendProgPos
 	b _0200C1BC
 _0200C194:
-	ldr r2, _0200C1C4 ; =_02094B34
+	ldr r2, _0200C1C4 ; =STRING_DEBUG_SPACED_PRINT
 	bl AppendProgPos
 	b _0200C1BC
 _0200C1A0:
@@ -14278,13 +14278,13 @@ _0200C1A0:
 	bl strcpy
 	b _0200C1BC
 _0200C1B4:
-	ldr r1, _0200C1C4 ; =_02094B34
+	ldr r1, _0200C1C4 ; =STRING_DEBUG_SPACED_PRINT
 	bl strcpy
 _0200C1BC:
 	add sp, sp, #0x100
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200C1C4: .word _02094B34
+_0200C1C4: .word STRING_DEBUG_SPACED_PRINT
 	arm_func_end DebugPrintTrace
 
 	arm_func_start DebugPrint0__0200C1C8
@@ -14370,7 +14370,7 @@ FatalError: ; 0x0200C25C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x100
 	mov r1, r0
-	ldr r0, _0200C2CC ; =_02094B40
+	ldr r0, _0200C2CC ; =STRING_DEBUG_FATAL
 	bl DebugPrintTrace
 	ldr r1, [sp, #0x10c]
 	add r0, sp, #0
@@ -14380,15 +14380,15 @@ FatalError: ; 0x0200C25C
 	bic r2, r2, #3
 	add r2, r2, #4
 	bl vsprintf
-	ldr r1, _0200C2D0 ; =_02094B54
+	ldr r1, _0200C2D0 ; =STRING_DEBUG_NEWLINE
 	add r0, sp, #0
 	bl strcat
 	b _0200C2AC
 _0200C2A4:
-	ldr r1, _0200C2D4 ; =_02094B58
+	ldr r1, _0200C2D4 ; =STRING_DEBUG_LOG_NULL
 	bl strcpy
 _0200C2AC:
-	ldr r0, _0200C2D8 ; =_02094B60
+	ldr r0, _0200C2D8 ; =STRING_DEBUG_STRING_NEWLINE
 	add r1, sp, #0
 	bl DebugPrint0__0200C1C8
 	bl WaitForever
@@ -14397,8 +14397,8 @@ _0200C2AC:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_0200C2CC: .word _02094B40
-_0200C2D0: .word _02094B54
-_0200C2D4: .word _02094B58
-_0200C2D8: .word _02094B60
+_0200C2CC: .word STRING_DEBUG_FATAL
+_0200C2D0: .word STRING_DEBUG_NEWLINE
+_0200C2D4: .word STRING_DEBUG_LOG_NULL
+_0200C2D8: .word STRING_DEBUG_STRING_NEWLINE
 	arm_func_end FatalError
