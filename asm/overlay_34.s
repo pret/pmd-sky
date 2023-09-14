@@ -724,7 +724,7 @@ ov34_022DCB64: ; 0x022DCB64
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	mov r0, #0
 	beq _022DCB8C
@@ -742,7 +742,7 @@ ov34_022DCB98: ; 0x022DCB98
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	mov r0, #1
 	beq _022DCBC0

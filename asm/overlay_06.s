@@ -536,7 +536,7 @@ _0233D0D8:
 	movlt r4, #0
 _0233D110:
 	ldr r0, _0233D4DC ; =0x0233EDCC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r6, _0233D4E0 ; =0x0233EDD0
 	ldr r5, _0233D4CC ; =0x0233EEC4
 	mov r7, #0
@@ -545,12 +545,12 @@ _0233D124:
 	mov r0, r6
 	add r1, r1, r7
 	ldrb r1, [r1, #0x44]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	add r7, r7, #1
 	cmp r7, #0x22
 	blt _0233D124
 	ldr r0, _0233D4DC ; =0x0233EDCC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _0233D4CC ; =0x0233EEC4
 	cmp r4, #7
 	ldr r1, [r0]
@@ -1618,7 +1618,7 @@ _0233DFF0:
 	cmp r0, fp
 	beq _0233E018
 	ldr r0, _0233E904 ; =0x0233EDD4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _0233E0F0
 _0233E018:
 	ldr r1, [r7, #4]
@@ -1626,7 +1626,7 @@ _0233E018:
 	cmp r1, r0
 	beq _0233E034
 	ldr r0, _0233E90C ; =0x0233EDFC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _0233E0F0
 _0233E034:
 	bl GetLanguageType
@@ -1634,7 +1634,7 @@ _0233E034:
 	cmp r1, r0
 	beq _0233E050
 	ldr r0, _0233E910 ; =0x0233EE24
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _0233E0F0
 _0233E050:
 	add r0, r7, #0x20
@@ -1646,7 +1646,7 @@ _0233E050:
 	cmp r1, r2
 	beq _0233E07C
 	ldr r0, _0233E914 ; =0x0233EE4C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _0233E0F0
 _0233E07C:
 	ldr r2, [sp, #8]
@@ -1671,7 +1671,7 @@ _0233E07C:
 	cmp r0, #0
 	bne _0233E0EC
 	ldr r0, _0233E918 ; =0x0233EE84
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	strb r6, [r7]
 	strb r5, [r7, #4]
 	strb r6, [r7, #5]

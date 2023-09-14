@@ -9,7 +9,7 @@
 .public DataTransferInit
 .public DataTransferStop
 .public DebugPrint
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public ExplorersOfSkyMain
 .public FatalError
 .public FileClose
@@ -18,8 +18,8 @@
 .public FileOpen
 .public FileRead
 .public FileSeek
-.public GetDebugFlag
-.public GetDebugLogFlag
+.public GetDebugFlag1
+.public GetDebugFlag2
 .public GetFileLengthInPackWithPackNb
 .public GetHeldButtons
 .public GetKeyM2NSwitch
@@ -49,6 +49,8 @@
 .public OpenAllPackFiles
 .public OS_IRQTable
 .public OSi_ReferSymbol
+.public SetDebugFlag1
+.public SetDebugFlag2
 .public ov00_022BDADC
 .public ov00_022BE0C8
 .public ov00_022C2340

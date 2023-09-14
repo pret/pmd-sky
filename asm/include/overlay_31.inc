@@ -22,7 +22,7 @@
 .public ov10_022BCE58
 .public sub_020265A8
 .public ov29_022E87DC
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public FreeDBox
 .public sub_02028284
 .public ov29_022EBA70

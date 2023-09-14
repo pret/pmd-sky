@@ -53,7 +53,7 @@
 .public ShowMessageInDBox
 .public sub_0205B77C
 .public CreatePortraitBox
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public sub_02065974
 .public IncrementNbDungeonsCleared
 .public ov10_022BD718

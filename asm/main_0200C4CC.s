@@ -8215,7 +8215,7 @@ _02012BD0:
 	blt _02012BD0
 	ldr r0, _020130A0 ; =_02098CCC
 	mov r6, r5
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	add r0, sp, #0x24
 	bl GetPartyMembers
 	str r0, [sp, #0xc]
@@ -8265,7 +8265,7 @@ _02012C78:
 	mov r3, r8
 	mov sb, r8
 	str r2, [sp]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	add r0, r4, #0x12c
 	add r0, r0, #0x800
 	str r0, [sp, #0x14]
@@ -8509,7 +8509,7 @@ _02012FE8:
 	bne _02013008
 	ldr r0, _020130B4 ; =_02098D48
 	mov r1, r8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _02013014
 _02013008:
 	add sl, sl, #1
@@ -14636,7 +14636,7 @@ sub_02017DF4: ; 0x02017DF4
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -14673,7 +14673,7 @@ SendAudioCommandWrapper: ; 0x02017E70
 	mov r7, r0
 	mov r0, #3
 	strh r6, [r7, #4]
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	movne r4, #0
 	strh r4, [r7, #6]
@@ -14816,7 +14816,7 @@ sub_02018024: ; 0x02018024
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -14853,7 +14853,7 @@ sub_020180A0: ; 0x020180A0
 	mov r7, r0
 	mov r0, #3
 	strh r6, [r7, #4]
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	movne r4, #0
 	strh r4, [r7, #6]
@@ -14964,7 +14964,7 @@ sub_0201820C: ; 0x0201820C
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -15024,7 +15024,7 @@ sub_020182B8: ; 0x020182B8
 	mov r4, r0
 	mov r0, #4
 	strh r6, [r4, #4]
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	movne r5, #0
 	mov r0, r4
@@ -15060,7 +15060,7 @@ sub_0201831C: ; 0x0201831C
 	strh r8, [r4, #4]
 	mov r0, #4
 	strh r7, [r4, #6]
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	movne r6, #0
 	strh r6, [r4, #8]
@@ -15311,7 +15311,7 @@ _02018650:
 	ldreqb r0, [r4, #1]
 	beq _02018650
 	mov r0, r6
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	bne _020187D0
 	ldr r1, [sp]
@@ -15815,7 +15815,7 @@ InitSoundSystem: ; 0x02018C28
 	ldr r2, _02018E54 ; =_022A4E58
 	ldr r0, _02018E58 ; =_020993B4
 	str r1, [r2, #0x80]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r1, _02018E5C ; =_020993D0
 	add r0, sp, #8
 	bl sub_02019314
@@ -15825,7 +15825,7 @@ InitSoundSystem: ; 0x02018C28
 	ldr r0, _02018E54 ; =_022A4E58
 	str r1, [r0, #0x7c]
 	ldr r0, _02018E60 ; =_020993E8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r1, _02018E64 ; =_02099404
 	add r0, sp, #0
 	bl sub_02019314
@@ -15837,7 +15837,7 @@ InitSoundSystem: ; 0x02018C28
 	ldr r2, _02018E54 ; =_022A4E58
 	ldr r0, _02018E68 ; =_02099418
 	str r1, [r2, #0x8c]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r1, _02018E6C ; =_02099434
 	add r0, sp, #0
 	bl sub_02019314
@@ -15847,7 +15847,7 @@ InitSoundSystem: ; 0x02018C28
 	ldr r2, _02018E54 ; =_022A4E58
 	ldr r0, _02018E70 ; =_02099448
 	str r1, [r2, #0x88]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _02018E54 ; =_022A4E58
 	mov r2, #0
 	str r2, [r0, #0xc4]
@@ -16888,7 +16888,7 @@ _02019B78:
 	ldr r1, [r0, #0x18]
 	ldr r2, [r0, #0x1c]
 	ldr r0, _02019C48 ; =_02099594
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp r4, #0
 	beq _02019BE4
 	ldr r0, _02019C44 ; =_022A4E58
@@ -19750,7 +19750,7 @@ sub_0201C108: ; 0x0201C108
 	cmp r0, #0
 	bne _0201C124
 	ldr r0, _0201C134 ; =_020996E0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 _0201C124:
 	ldrh r0, [r4, #2]
 	orr r0, r0, #0x8000
@@ -25504,7 +25504,7 @@ _02020C70:
 	mov r1, #0x44
 	strb r1, [r4, #0x98]
 	str r0, [r4, #0xa0]
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	movne r0, #4
 	moveq r0, #1
@@ -51521,7 +51521,7 @@ sub_02036358: ; 0x02036358
 	str r0, [r1, #8]
 _0203638C:
 	and r0, r5, #0xff
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	ldr r1, [r4, #4]
 	add r1, r1, r5
 	add r5, r5, #1
@@ -51636,7 +51636,7 @@ _02036514:
 	and r0, r5, #0xff
 	add r1, r1, r5
 	ldrb r1, [r1, #0xa4]
-	bl SetDebugFlag
+	bl SetDebugFlag1
 	add r5, r5, #1
 	cmp r5, #0xc
 	blt _02036514
@@ -51695,7 +51695,7 @@ sub_020365A0: ; 0x020365A0
 	str r0, [r1, #8]
 _020365D4:
 	and r0, r5, #0xff
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	ldr r1, [r4, #4]
 	add r1, r1, r5
 	add r5, r5, #1
@@ -51810,7 +51810,7 @@ _0203675C:
 	and r0, r5, #0xff
 	add r1, r1, r5
 	ldrb r1, [r1, #0xa4]
-	bl SetDebugLogFlag
+	bl SetDebugFlag2
 	add r5, r5, #1
 	cmp r5, #0x10
 	blt _0203675C
@@ -52974,7 +52974,7 @@ sub_02037778: ; 0x02037778
 	cmp r2, r1
 	beq _020377B0
 	ldr r0, _02037C2C ; =_0209B48C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _02037C28 ; =_020AFDF0
 	ldr r3, [r0]
 	ldr r1, [r3, #4]
@@ -55705,7 +55705,7 @@ _02039CA8:
 	mov r3, r4
 	str r6, [sp]
 	ldr r1, [r1, #4]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _0203A4D4 ; =_020AFE5C
 	ldr r1, [r0, #4]
 	cmp r1, r5
@@ -73624,7 +73624,7 @@ sub_02048B74: ; 0x02048B74
 	ldr r0, _02048BAC ; =_0209CD4C
 	ldr r1, [r1, #4]
 	mov r2, #0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r3, #0
 	ldr r1, _02048BA8 ; =_020AFF38
 	ldr r0, _02048BB0 ; =_022AAE70
@@ -73683,7 +73683,7 @@ sub_02048C0C: ; 0x02048C0C
 	ldr r1, [r1, #4]
 	ldr r0, _02048C38 ; =_0209CD4C
 	mov r2, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _02048C34 ; =_020AFF38
 	str r4, [r0, #4]
 	ldmia sp!, {r4, pc}
@@ -73742,7 +73742,7 @@ _02048CB4: .word 0x000F1206
 sub_02048CB8: ; 0x02048CB8
 	stmdb sp!, {r3, lr}
 	mov r0, #9
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	beq _02048CE4
 	ldr r1, _02048CF0 ; =_022AAE74
@@ -73972,7 +73972,7 @@ NoteSaveBase: ; 0x02048F84
 	mov r2, r0
 	ldr r0, _0204921C ; =_0209CD6C
 	mov r1, sb
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	bl SetNotifyNote
 	bl GetTime
@@ -74062,7 +74062,7 @@ _0204900C:
 	mov r2, r1
 	ldr r0, _0204923C ; =_0209CD84
 	mov r1, r3
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp sb, #2
 	moveq r5, #0
 	beq _0204912C
@@ -74120,7 +74120,7 @@ _020491C4:
 	mov r2, r1
 	ldr r0, _02049244 ; =_0209CD94
 	mov r1, r3
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, r4
 	bl MemFree
 	cmp r5, #0
@@ -74261,7 +74261,7 @@ NoteLoadBase: ; 0x02049370
 	bl sub_02048BFC
 	mov r1, r0
 	ldr r0, _02049600 ; =_0209CDA4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	bl SetNotifyNote
 	mov r0, #0
@@ -74308,7 +74308,7 @@ _0204943C:
 	bne _020494A0
 	ldr r1, [r4, #0x2c]
 	ldr r0, _0204960C ; =_0209CDB8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, [r4, #0x2c]
 	bl sub_02048C0C
 	ldr r0, [r4, #0x28]
@@ -76458,14 +76458,14 @@ _0204B024: .word _020AFF70
 	arm_func_start sub_0204B028
 sub_0204B028: ; 0x0204B028
 	ldr r1, _0204B040 ; =_0209DF70
-	ldr ip, _0204B044 ; =DebugPrint0__0200C1FC
+	ldr ip, _0204B044 ; =DebugPrint0
 	ldr r0, _0204B048 ; =_0209CF0C
 	ldrsh r1, [r1, #0x24]
 	mov r2, #0x400
 	bx ip
 	.align 2, 0
 _0204B040: .word _0209DF70
-_0204B044: .word DebugPrint0__0200C1FC
+_0204B044: .word DebugPrint0
 _0204B048: .word _0209CF0C
 	arm_func_end sub_0204B028
 
@@ -77692,7 +77692,7 @@ sub_0204BFC0: ; 0x0204BFC0
 	sub r4, r0, #2
 	ldr r0, _0204C1E0 ; =_0209CF64
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, r4, lsl #0x10
 	mov r2, r0, lsr #0x10
 	mov r0, #0
@@ -77834,7 +77834,7 @@ EventFlagBackup: ; 0x0204C1E4
 	sub r4, r0, #2
 	ldr r0, _0204C404 ; =_0209CF84
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	mov r1, #0x1c
 	bl LoadScriptVariableValue
@@ -78614,7 +78614,7 @@ sub_0204CBE8: ; 0x0204CBE8
 	sub r4, r0, #2
 	ldr r0, _0204CCB4 ; =_0209DFC8
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, r4, lsl #0x10
 	mov r2, r0, lsr #0x10
 	mov r0, #0
@@ -78672,7 +78672,7 @@ ScenarioFlagBackup: ; 0x0204CCB8
 	sub r4, r0, #2
 	ldr r0, _0204CD84 ; =_0209DFE8
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	mov r2, r0
 	mov r1, #2
@@ -80048,7 +80048,7 @@ _0204DDD4:
 	ldrb r2, [sp, #0x54]
 	ldr r0, _0204DE78 ; =_0209E264
 	mov r1, r5
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, [sp, #0x54]
 	cmp r0, r5
 	movne r0, #0
@@ -80103,7 +80103,7 @@ _0204DE98:
 	str r1, [sp, #0x54]
 	ldrb r2, [sp, #0x54]
 	ldr r0, _0204DF4C ; =_0209E264
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldrb r0, [sp, #0x54]
 	add r1, sp, #0x58
 	mov r2, #0x11
@@ -87178,7 +87178,7 @@ _02053598:
 	add r0, r3, r2
 	bl GetInfoMoveGround
 	ldr r0, _02053624 ; =_020A32D4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldmia sp!, {r3, r4, r5, pc}
 _02053604:
 	add r2, r5, #0x22
@@ -88674,7 +88674,7 @@ _0205493C:
 	bl MemAlloc
 	str r0, [sb, #4]
 	ldr r0, _02054A58 ; =_020A32F8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r8, #0
 	mov sl, r8
 	mov r7, #1
@@ -88719,7 +88719,7 @@ _0205498C:
 	ldr r0, _02054A5C ; =_020A3330
 	mov r1, r8
 	add r3, sp, #0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
 	cmp r6, r0, asr #16
@@ -90222,7 +90222,7 @@ _02055CAC:
 _02055CB0:
 	ldr r0, _02055CC8 ; =_020A3350
 	mov r1, r7
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	add sp, sp, #0x58
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -91922,7 +91922,7 @@ _020571B0:
 	mov r0, fp
 	mov r1, r8
 	mov r2, sl
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, [r5]
 	mov r1, sl, lsl #1
 	add r0, r0, r8, lsl #3
@@ -91963,7 +91963,7 @@ _0205724C:
 	mov r1, sb
 	mov r3, r2, lsl #1
 	ldrsh r3, [r7, r3]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldrsh r0, [r8, #8]
 	mov r1, r0, lsl #1
 	ldrsh r1, [r7, r1]
@@ -92178,7 +92178,7 @@ _02057514:
 	ldr r0, _020577B8 ; =_020A33D4
 	ldr r2, [sp, #0xc]
 	mov r1, r5
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0x1a0
 	ldr r1, _020577B4 ; =_020B0A48
 	mov r7, #0
@@ -92362,7 +92362,7 @@ sub_020577BC: ; 0x020577BC
 	sub sp, sp, #0x4c
 	mov sl, r0
 	ldr r0, _02057A24 ; =_020A340C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp sl, #0xff
 	beq _02057904
 	mov r0, sl
@@ -92442,10 +92442,10 @@ _020578E0:
 	ldr r3, [r1, #0x870]
 	mov r1, sb
 	ldrsh r2, [r3, r2]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 _02057904:
 	ldr r0, _02057A34 ; =_020A344C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, sl
 	bl GetMaxMembersAllowed
 	mov r8, #0
@@ -98519,7 +98519,7 @@ IsMissionValid: ; 0x0205CA40
 	cmp r1, #0xe
 	beq _0205CA6C
 	ldr r0, _0205CF10 ; =_020A3728
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CA6C:
@@ -98530,7 +98530,7 @@ _0205CA6C:
 	cmp r0, #0
 	bne _0205CA94
 	ldr r0, _0205CF14 ; =_020A373C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CA94:
@@ -98624,7 +98624,7 @@ _0205CBC0:
 	cmp r0, #0
 	bne _0205CBD8
 	ldr r0, _0205CF18 ; =_020A3764
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CBD8:
@@ -98659,7 +98659,7 @@ _0205CBD8:
 	cmpne r1, r2
 	beq _0205CC60
 	ldr r0, _0205CF1C ; =_020A377C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CC60:
@@ -98686,7 +98686,7 @@ _0205CCA4:
 	cmp r1, #0
 	beq _0205CCC0
 	ldr r0, _0205CF20 ; =_020A37A0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CCC0:
@@ -98701,14 +98701,14 @@ _0205CCC0:
 	cmp r1, #7
 	bne _0205CCF8
 	ldr r0, _0205CF24 ; =_020A37D0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CCF8:
 	cmp r1, #8
 	blo _0205CD10
 	ldr r0, _0205CF24 ; =_020A37D0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CD10:
@@ -98728,7 +98728,7 @@ _0205CD38:
 	cmp r1, #0
 	bne _0205CD54
 	ldr r0, _0205CF28 ; =_020A37E8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CD54:
@@ -98738,7 +98738,7 @@ _0205CD54:
 	bne _0205CD78
 	ldrsh r1, [r4, #0x18]
 	ldr r0, _0205CF28 ; =_020A37E8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CD78:
@@ -98748,7 +98748,7 @@ _0205CD78:
 	bne _0205CE24
 	ldrsh r1, [r4, #0x18]
 	ldr r0, _0205CF2C ; =_020A3808
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CD9C:
@@ -98756,7 +98756,7 @@ _0205CD9C:
 	cmp r1, #0
 	bne _0205CDB8
 	ldr r0, _0205CF30 ; =_020A3830
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CDB8:
@@ -98764,7 +98764,7 @@ _0205CDB8:
 	cmp r1, r0
 	blt _0205CDD4
 	ldr r0, _0205CF38 ; =_020A3854
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CDD4:
@@ -98774,7 +98774,7 @@ _0205CDD4:
 	beq _0205CDF8
 	ldrsh r1, [r4, #0x18]
 	ldr r0, _0205CF3C ; =_020A387C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CDF8:
@@ -98795,7 +98795,7 @@ _0205CE24:
 	cmp r1, #2
 	blo _0205CE40
 	ldr r0, _0205CF40 ; =_020A38B4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CE40:
@@ -98806,7 +98806,7 @@ _0205CE40:
 	blo _0205CE68
 	ldr r0, _0205CF44 ; =_020A38D0
 	mov r1, r2
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CE68:
@@ -98817,7 +98817,7 @@ _0205CE68:
 	cmp r0, r1
 	blt _0205CE90
 	ldr r0, _0205CF48 ; =_020A38F0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CE90:
@@ -98826,7 +98826,7 @@ _0205CE90:
 	beq _0205CEB0
 	ldrsh r1, [r4, #0x1c]
 	ldr r0, _0205CF4C ; =_020A3918
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CEB0:
@@ -98837,7 +98837,7 @@ _0205CEB0:
 	beq _0205CED8
 	ldr r0, _0205CF50 ; =_020A3954
 	mov r1, r5
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CED8:
@@ -98850,7 +98850,7 @@ _0205CED8:
 	bne _0205CF08
 	ldrsh r1, [r4, #0x1c]
 	ldr r0, _0205CF54 ; =_020A3984
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CF08:
@@ -98895,7 +98895,7 @@ sub_0205CF58: ; 0x0205CF58
 	beq _0205CFA4
 	ldrb r1, [r5]
 	ldr r0, _0205CFFC ; =_020A39C0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0205CFA4:
@@ -98908,7 +98908,7 @@ _0205CFA4:
 	ble _0205CFD4
 	ldr r0, _0205D000 ; =_020A39D4
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0205CFD4:
@@ -98917,7 +98917,7 @@ _0205CFD4:
 	cmp r0, #0
 	beq _0205CFF4
 	ldr r0, _0205D004 ; =_020A39F0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0205CFF4:
@@ -98939,7 +98939,7 @@ sub_0205D008: ; 0x0205D008
 	cmp r5, #0
 	bne _0205D034
 	ldr r0, _0205D104 ; =_020A3A08
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 _0205D034:
@@ -98947,7 +98947,7 @@ _0205D034:
 	cmp r5, r0
 	blt _0205D050
 	ldr r0, _0205D10C ; =_020A3A24
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 _0205D050:
@@ -98957,7 +98957,7 @@ _0205D050:
 	beq _0205D074
 	ldr r0, _0205D110 ; =_020A3A44
 	mov r1, r5
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 _0205D074:
@@ -98967,7 +98967,7 @@ _0205D074:
 	beq _0205D098
 	ldr r0, _0205D114 ; =_020A3A6C
 	mov r1, r5
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 _0205D098:
@@ -98994,7 +98994,7 @@ _0205D0C4:
 	bne _0205D0FC
 	ldr r0, _0205D118 ; =_020A3AA0
 	mov r1, r5
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 _0205D0FC:
@@ -99017,7 +99017,7 @@ sub_0205D11C: ; 0x0205D11C
 	bne _0205D140
 	ldr r0, _0205D1E8 ; =_020A3AD4
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205D140:
@@ -99027,7 +99027,7 @@ _0205D140:
 	beq _0205D164
 	ldr r0, _0205D1E8 ; =_020A3AD4
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205D164:
@@ -99037,7 +99037,7 @@ _0205D164:
 	bne _0205D188
 	ldr r0, _0205D1E8 ; =_020A3AD4
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205D188:
@@ -99052,7 +99052,7 @@ _0205D188:
 	beq _0205D1C0
 	ldr r0, _0205D1EC ; =_020A3AF4
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205D1C0:
@@ -99063,7 +99063,7 @@ _0205D1C0:
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldr r0, _0205D1F0 ; =_020A3B18
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -108236,13 +108236,13 @@ _0206499C:
 	ldr r1, [r4, #0x44]
 	ldr r2, [r4, #0x48]
 	ldr r0, _020649EC ; =_020A46B0
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	b _020649DC
 _020649CC:
 	bl MemFree
 	ldr r0, _020649F0 ; =_020A46D0
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 _020649DC:
 	mov r0, r4
 	mov r1, #0x60
@@ -108983,7 +108983,7 @@ _02065330:
 	bne _0206548C
 _0206536C:
 	mov r0, #5
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	beq _02065390
 	ldrsh r0, [r5]
@@ -109014,7 +109014,7 @@ _020653A8:
 	bne _0206548C
 _020653DC:
 	mov r0, #5
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	beq _02065400
 	ldrsh r0, [r5]
@@ -109114,7 +109114,7 @@ sub_0206549C: ; 0x0206549C
 	b _0206595C
 _02065540:
 	mov r0, #5
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	beq _02065580
 	ldrsh r0, [r6]
@@ -109169,7 +109169,7 @@ _020655BC:
 	b _0206595C
 _02065610:
 	mov r0, #5
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	beq _0206566C
 	ldrsh r0, [r6]
@@ -110065,7 +110065,7 @@ _02066134:
 	bl GetSpecialEpisodeType
 	mov r1, r0
 	ldr r0, _02066378 ; =_020A9208
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	sub r0, sb, #4
 	cmp r0, #9
 	addls pc, pc, r0, lsl #2
@@ -116703,7 +116703,7 @@ sub_0206BB94: ; 0x0206BB94
 	cmp r1, #0
 	bne _0206BBBC
 	ldr r0, _0206BBDC ; =_020A9F98
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 _0206BBBC:
 	ldrsh r0, [r4]
 	bl sub_0201F2AC
@@ -163624,34 +163624,48 @@ _02094AE8:
 _02094AF0:
 	.byte 0x03, 0x00, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.global _02094AFC
-_02094AFC:
-	.byte 0x00, 0x00, 0x00, 0x00
-	.global _02094B00
-_02094B00:
-	.byte 0x25, 0x73, 0x66, 0x69
-	.byte 0x6C, 0x65, 0x20, 0x3D, 0x20, 0x27, 0x25, 0x73, 0x27, 0x20, 0x20, 0x6C, 0x69, 0x6E, 0x65, 0x20
-	.byte 0x3D, 0x20, 0x25, 0x35, 0x64, 0x0A, 0x00, 0x00
-	.global _02094B1C
-_02094B1C:
-	.byte 0x25, 0x73, 0x50, 0x72, 0x6F, 0x67, 0x50, 0x6F
-	.byte 0x73, 0x20, 0x69, 0x6E, 0x66, 0x6F, 0x20, 0x4E, 0x55, 0x4C, 0x4C, 0x0A, 0x00, 0x00, 0x00, 0x00
-	.global _02094B34
-_02094B34:
-	.byte 0x20, 0x20, 0x50, 0x72, 0x69, 0x6E, 0x74, 0x20, 0x20, 0x00, 0x00, 0x00
-	.global _02094B40
-_02094B40:
-	.byte 0x21, 0x21, 0x21, 0x21
-	.byte 0x21, 0x20, 0x46, 0x61, 0x74, 0x61, 0x6C, 0x20, 0x21, 0x21, 0x21, 0x21, 0x21, 0x0A, 0x00, 0x00
-	.global _02094B54
-_02094B54:
-	.byte 0x0A, 0x00, 0x00, 0x00
-	.global _02094B58
-_02094B58:
-	.byte 0x28, 0x4E, 0x55, 0x4C, 0x4C, 0x29, 0x0A, 0x00
-	.global _02094B60
-_02094B60:
-	.byte 0x25, 0x73, 0x0A, 0x00
+
+	.global STRING_DEBUG_EMPTY ; 0x02094afc
+	STRING_DEBUG_EMPTY:
+	.string ""
+	.align 4
+
+	.global STRING_DEBUG_FORMAT_LINE_FILE ; 0x02094b00
+	STRING_DEBUG_FORMAT_LINE_FILE:
+	.string "%sfile = '%s'  line = %5d\n"
+	.align 4
+
+	.global STRING_DEBUG_NO_PROG_POS ; 0x02094b1c
+	STRING_DEBUG_NO_PROG_POS:
+	.string "%sProgPos info NULL\n"
+	.align 4
+
+	.global STRING_DEBUG_SPACED_PRINT ; 0x02094b34
+	STRING_DEBUG_SPACED_PRINT:
+	.string "  Print  "
+	.align 4
+
+	.global STRING_DEBUG_FATAL ; 0x02094b40
+	STRING_DEBUG_FATAL:
+	.string "!!!!! Fatal !!!!!\n"
+	.align 4
+
+	.global STRING_DEBUG_NEWLINE ; 0x02094b54
+	STRING_DEBUG_NEWLINE:
+	.string "\n"
+	.align 4
+	
+	.global STRING_DEBUG_LOG_NULL ; 0x02094b58
+	STRING_DEBUG_LOG_NULL:
+	.string "(NULL)\n"
+	.align 4
+
+	.global STRING_DEBUG_STRING_NEWLINE ; 0x02094b60
+	STRING_DEBUG_STRING_NEWLINE:
+	.string "%s\n"
+	.align 4
+
+	; section for pack files
 
 	.global STRING_EFFECT_EFFECT_BIN ; 0x02094b64
 	STRING_EFFECT_EFFECT_BIN:
@@ -177818,9 +177832,15 @@ _020AF5E8:
 	.global _020AF694
 _020AF694:
 	.byte 0xFF, 0x00, 0x00, 0x00
-	.global _020AF698
-_020AF698:
-	.byte 0x00, 0x00, 0x00, 0x00
+
+	; debug related
+	
+	.global DEBUG_IS_INITIALIZED ; 020af698
+	DEBUG_IS_INITIALIZED:
+	.word 0x0
+
+	; pack file related
+
 	.global PACK_FILES_OPENED ; 0x20af69c
 	PACK_FILES_OPENED:
 	; [Runtime] A pointer to the 6 opened Pack files (listed at PACK_FILE_PATHS_TABLE)

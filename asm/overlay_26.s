@@ -760,7 +760,7 @@ _0238AB34:
 	cmp r0, #1
 	bhi _0238AB70
 	ldr r0, _0238AC08 ; =0x0238AEAC
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	bl IncrementNbAdventures
 	bl IncrementNbDungeonsCleared
 	b _0238AB98
@@ -769,13 +769,13 @@ _0238AB70:
 	cmp r0, #1
 	bhi _0238AB90
 	ldr r0, _0238AC0C ; =0x0238AEE4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	bl IncrementNbAdventures
 	bl IncrementNbFainted
 	b _0238AB98
 _0238AB90:
 	ldr r0, _0238AC10 ; =0x0238AF18
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 _0238AB98:
 	mov r0, r4
 	bl sub_020587E0

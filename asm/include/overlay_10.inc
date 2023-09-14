@@ -118,7 +118,7 @@
 .public HidePortraitBox
 .public sub_020639E8
 .public sub_0205BC94
-.public GetDebugFlag
+.public GetDebugFlag1
 .public sub_0202812C
 .public sub_020329E4
 .public sub_0204E790
@@ -150,7 +150,7 @@
 .public sub_02027AF0
 .public sub_0204F050
 .public sub_02027648
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public MultiplyByFixedPoint
 .public InitEventFlagScriptVars
 .public sub_02048BFC

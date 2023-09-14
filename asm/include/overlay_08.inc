@@ -26,7 +26,7 @@
 .public ov00_022BF640
 .public ov01_0232C0CC
 .public ov00_022C4C08
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public ov01_0232C10C
 .public sub_0207BA08
 .public ov00_022C6EFC

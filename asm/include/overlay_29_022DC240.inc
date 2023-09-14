@@ -1,6 +1,6 @@
 #pragma once
 .public ov29_02305814
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public ov29_022EA428
 .public sub_01FF8C60
 .public GetDungeonRngPreseed

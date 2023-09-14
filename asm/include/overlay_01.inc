@@ -1,5 +1,5 @@
 #pragma once
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public ov00_022EF548
 .public GetNbPokemonBattled
 .public sub_0204AE60

@@ -16,7 +16,7 @@
 .public sub_02003990
 .public sub_0207C314
 .public sub_020852F8
-.public GetDebugFlag
+.public GetDebugFlag1
 .public strlen
 .public sub_0201BF4C
 .public sub_02079800

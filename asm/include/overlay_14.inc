@@ -65,5 +65,5 @@
 .public SetSentryDutyGamePoints
 .public StringFromMessageId
 .public HidePortraitBox
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public SetPortraitOffset

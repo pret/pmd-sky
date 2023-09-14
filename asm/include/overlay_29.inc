@@ -263,7 +263,7 @@
 .public GetMoveMaxGinsengBoost
 .public SetPokemonJoined
 .public ov31_023860A4
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public sub_0204AF20
 .public SetMonsterFlag2
 .public ReplaceWanFromBinFile
@@ -646,7 +646,7 @@
 .public GetVictoriesOnOneFloor
 .public GetRegenSpeed
 .public ov30_02382874
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public GetSpriteIndex__020526EC
 .public GetSpriteIndex__02052708
 .public LightningRodStormDrainCheck

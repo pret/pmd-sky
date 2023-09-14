@@ -26,7 +26,7 @@ NitroMain: ; 0x02000C6C
 	mov r2, r4
 	mov r1, r0
 	ldr r0, _02000DD4 ; =_02092448
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, #0
 	bl sub_0207A524
 	mov r4, r0
@@ -85,7 +85,7 @@ _02000D44:
 	bl sub_02002C2C
 	bl sub_02002F0C
 	bl InitMemAllocTableVeneer
-	bl sub_0200C0D4
+	bl InitDebug
 	bl sub_02002FB8
 	ldr r0, _02000DDC ; =_02092460
 	bl sub_020082F4
@@ -113,7 +113,7 @@ InitMemAllocTable: ; 0x02000DE0
 	mov r2, r1
 	str r1, [sp]
 	str r3, [sp, #4]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr ip, _02000E60 ; =_020B3380
 	mov lr, #0
 	ldr r0, _02000E64 ; =_020B3384
@@ -1910,7 +1910,7 @@ sub_02002448: ; 0x02002448
 	mov r1, r4
 	bic r2, r2, #0x10000
 	str r2, [r3]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r0, r4
 	bl sub_0207B930
 	bl sub_02079C14
@@ -3287,7 +3287,7 @@ TaskProcBoot: ; 0x02003328
 	ldr r1, _020035E0 ; =_020AEF7C
 	ldr r0, _02003604 ; =_020924D8
 	strb sl, [r1, #5]
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	mov r8, #1
 	ldr r4, _020035E0 ; =_020AEF7C
 	mov r6, sl
@@ -3944,7 +3944,7 @@ sub_02003BFC: ; 0x02003BFC
 	cmp r0, #0
 	bne _02003C54
 	ldr r0, _02003CB8 ; =_020924E8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _02003CBC ; =_0229B21C
 	ldrh r0, [r0, #2]
 	bl sub_02017DF4
@@ -3962,7 +3962,7 @@ _02003C5C:
 	cmp r0, #0
 	beq _02003CAC
 	ldr r0, _02003CC0 ; =_020924F8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	bl sub_02017DB4
 	ldr r1, _02003CBC ; =_0229B21C
 	strh r0, [r1, #2]
@@ -3999,7 +3999,7 @@ SoundResume: ; 0x02003CC4
 	cmp r0, #0
 	beq _02003D18
 	ldr r0, _02003D24 ; =_020924E8
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _02003D28 ; =_0229B21C
 	ldrh r0, [r0, #2]
 	bl sub_02017DF4
@@ -4030,7 +4030,7 @@ CardPullOutWithStatus: ; 0x02003D2C
 	ldmeqia sp!, {r4, pc}
 	ldr r0, _02003D6C ; =_02092508
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp r4, #0
 	beq _02003D5C
 	bl sub_020081DC
@@ -4047,7 +4047,7 @@ _02003D6C: .word _02092508
 CardPullOut: ; 0x02003D70
 	stmdb sp!, {r3, lr}
 	ldr r0, _02003D8C ; =_0209251C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _02003D90 ; =_020AEF7C
 	mov r1, #1
 	strb r1, [r0, #0xd]
@@ -4061,7 +4061,7 @@ _02003D90: .word _020AEF7C
 CardBackupError: ; 0x02003D94
 	stmdb sp!, {r3, lr}
 	ldr r0, _02003DB0 ; =_0209252C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _02003DB4 ; =_020AEF7C
 	mov r1, #1
 	strb r1, [r0, #0xc]
@@ -4110,7 +4110,7 @@ _02003E28:
 	bl sub_020184A8
 	ldr r0, _02003EC8 ; =_02092540
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp r4, #2
 	bne _02003E9C
 	mov r0, #1
@@ -7774,7 +7774,7 @@ sub_02006EF8: ; 0x02006EF8
 	ldr r0, _02006F38 ; =_0209278C
 	add r2, sp, #0
 	mov r1, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	add sp, sp, #0x3c
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -7875,7 +7875,7 @@ _02007060:
 	ldr r0, _02007080 ; =_020927BC
 	ldr r1, _02007074 ; =_020AF2B8
 	ldr r2, _02007078 ; =_020AF2C4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02007074: .word _020AF2B8
@@ -9434,10 +9434,10 @@ _02008388:
 	bl sub_02007380
 	bl sub_02007384
 	ldr r0, _02008434 ; =_0209297C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	bl sub_020073D8
 	ldr r0, _02008438 ; =_0209299C
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	ldr r0, _0200843C ; =_020AF3D0
 	ldr r1, _02008440 ; =0x0000070D
 	ldr r0, [r0, #8]
@@ -10271,7 +10271,7 @@ sub_02008ED0: ; 0x02008ED0
 	ldmeqia sp!, {r4, pc}
 	ldr r0, _02008F34 ; =_02092AB8
 	mov r2, r4
-	bl DebugPrint0__0200C1FC
+	bl DebugPrint0
 	cmp r4, #0
 	beq _02008F0C
 	cmp r4, #0xff
@@ -14185,220 +14185,3 @@ _0200C0BC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end sub_0200C020
-
-	arm_func_start sub_0200C0D4
-sub_0200C0D4: ; 0x0200C0D4
-	stmdb sp!, {r3, lr}
-	bl sub_0200C11C
-	bl sub_0200C168
-	bl sub_0200C24C
-	bl sub_0200C250
-	bl sub_0200C254
-	bl sub_0200C258
-	bl sub_0200C230
-	ldr r0, _0200C108 ; =_020AF698
-	mov r1, #1
-	str r1, [r0]
-	bl sub_0200C10C
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0200C108: .word _020AF698
-	arm_func_end sub_0200C0D4
-
-	arm_func_start sub_0200C10C
-sub_0200C10C: ; 0x0200C10C
-	bx lr
-	arm_func_end sub_0200C10C
-
-	arm_func_start GetDebugFlag
-GetDebugFlag: ; 0x0200C110
-	mov r0, #0
-	bx lr
-	arm_func_end GetDebugFlag
-
-	arm_func_start SetDebugFlag
-SetDebugFlag: ; 0x0200C118
-	bx lr
-	arm_func_end SetDebugFlag
-
-	arm_func_start sub_0200C11C
-sub_0200C11C: ; 0x0200C11C
-	bx lr
-	arm_func_end sub_0200C11C
-
-	arm_func_start AppendProgPos
-AppendProgPos: ; 0x0200C120
-	stmdb sp!, {r3, lr}
-	mov ip, r1
-	cmp r2, #0
-	ldreq r2, _0200C15C ; =_02094AFC
-	cmp ip, #0
-	beq _0200C150
-	ldr r3, [ip, #4]
-	ldr r1, _0200C160 ; =_02094B00
-	str r3, [sp]
-	ldr r3, [ip]
-	bl sprintf
-	ldmia sp!, {r3, pc}
-_0200C150:
-	ldr r1, _0200C164 ; =_02094B1C
-	bl sprintf
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0200C15C: .word _02094AFC
-_0200C160: .word _02094B00
-_0200C164: .word _02094B1C
-	arm_func_end AppendProgPos
-
-	arm_func_start sub_0200C168
-sub_0200C168: ; 0x0200C168
-	bx lr
-	arm_func_end sub_0200C168
-
-	arm_func_start DebugPrintTrace
-DebugPrintTrace: ; 0x0200C16C
-	stmdb sp!, {r3, lr}
-	sub sp, sp, #0x100
-	mov r2, r0
-	cmp r1, #0
-	add r0, sp, #0
-	beq _0200C1A0
-	cmp r2, #0
-	beq _0200C194
-	bl AppendProgPos
-	b _0200C1BC
-_0200C194:
-	ldr r2, _0200C1C4 ; =_02094B34
-	bl AppendProgPos
-	b _0200C1BC
-_0200C1A0:
-	cmp r2, #0
-	beq _0200C1B4
-	mov r1, r2
-	bl strcpy
-	b _0200C1BC
-_0200C1B4:
-	ldr r1, _0200C1C4 ; =_02094B34
-	bl strcpy
-_0200C1BC:
-	add sp, sp, #0x100
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0200C1C4: .word _02094B34
-	arm_func_end DebugPrintTrace
-
-	arm_func_start DebugPrint0__0200C1C8
-DebugPrint0__0200C1C8: ; 0x0200C1C8
-	stmdb sp!, {r0, r1, r2, r3}
-	stmdb sp!, {r3, lr}
-	sub sp, sp, #0x100
-	add r0, sp, #0x108
-	bic r2, r0, #3
-	ldr r1, [sp, #0x108]
-	add r0, sp, #0
-	add r2, r2, #4
-	bl vsprintf
-	add sp, sp, #0x100
-	ldmia sp!, {r3, lr}
-	add sp, sp, #0x10
-	bx lr
-	arm_func_end DebugPrint0__0200C1C8
-
-	arm_func_start DebugPrint0__0200C1FC
-DebugPrint0__0200C1FC: ; 0x0200C1FC
-	stmdb sp!, {r0, r1, r2, r3}
-	stmdb sp!, {r3, lr}
-	sub sp, sp, #0x100
-	add r0, sp, #0x108
-	bic r2, r0, #3
-	ldr r1, [sp, #0x108]
-	add r0, sp, #0
-	add r2, r2, #4
-	bl vsprintf
-	add sp, sp, #0x100
-	ldmia sp!, {r3, lr}
-	add sp, sp, #0x10
-	bx lr
-	arm_func_end DebugPrint0__0200C1FC
-
-	arm_func_start sub_0200C230
-sub_0200C230: ; 0x0200C230
-	bx lr
-	arm_func_end sub_0200C230
-
-	arm_func_start GetDebugLogFlag
-GetDebugLogFlag: ; 0x0200C234
-	mov r0, #0
-	bx lr
-	arm_func_end GetDebugLogFlag
-
-	arm_func_start SetDebugLogFlag
-SetDebugLogFlag: ; 0x0200C23C
-	bx lr
-	arm_func_end SetDebugLogFlag
-
-	arm_func_start DebugPrint
-DebugPrint: ; 0x0200C240
-	stmdb sp!, {r0, r1, r2, r3}
-	add sp, sp, #0x10
-	bx lr
-	arm_func_end DebugPrint
-
-	arm_func_start sub_0200C24C
-sub_0200C24C: ; 0x0200C24C
-	bx lr
-	arm_func_end sub_0200C24C
-
-	arm_func_start sub_0200C250
-sub_0200C250: ; 0x0200C250
-	bx lr
-	arm_func_end sub_0200C250
-
-	arm_func_start sub_0200C254
-sub_0200C254: ; 0x0200C254
-	bx lr
-	arm_func_end sub_0200C254
-
-	arm_func_start sub_0200C258
-sub_0200C258: ; 0x0200C258
-	bx lr
-	arm_func_end sub_0200C258
-
-	arm_func_start FatalError
-FatalError: ; 0x0200C25C
-	stmdb sp!, {r0, r1, r2, r3}
-	stmdb sp!, {r3, lr}
-	sub sp, sp, #0x100
-	mov r1, r0
-	ldr r0, _0200C2CC ; =_02094B40
-	bl DebugPrintTrace
-	ldr r1, [sp, #0x10c]
-	add r0, sp, #0
-	cmp r1, #0
-	beq _0200C2A4
-	add r2, sp, #0x10c
-	bic r2, r2, #3
-	add r2, r2, #4
-	bl vsprintf
-	ldr r1, _0200C2D0 ; =_02094B54
-	add r0, sp, #0
-	bl strcat
-	b _0200C2AC
-_0200C2A4:
-	ldr r1, _0200C2D4 ; =_02094B58
-	bl strcpy
-_0200C2AC:
-	ldr r0, _0200C2D8 ; =_02094B60
-	add r1, sp, #0
-	bl DebugPrint0__0200C1C8
-	bl WaitForever
-	add sp, sp, #0x100
-	ldmia sp!, {r3, lr}
-	add sp, sp, #0x10
-	bx lr
-	.align 2, 0
-_0200C2CC: .word _02094B40
-_0200C2D0: .word _02094B54
-_0200C2D4: .word _02094B58
-_0200C2D8: .word _02094B60
-	arm_func_end FatalError

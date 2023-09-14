@@ -21,7 +21,7 @@
 .public ov01_0233580C
 .public sub_020433C0
 .public MemFree
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public sub_02046BB4
 .public sub_02010154
 .public ov01_023375B0

@@ -2,7 +2,7 @@
 .public AdvanceFrame
 .public CreateDBox
 .public CreatePortraitBox
-.public DebugPrint0__0200C1FC
+.public DebugPrint0
 .public DungeonAlloc
 .public DungeonFree
 .public DungeonRandInt
