@@ -46,7 +46,7 @@
 .public sub_0204A198
 .public IsDBoxActive
 .public SaveScriptVariableValue
-.public GetDebugFlag
+.public GetDebugFlag1
 .public __divsi3
 .public ov11_022E6EC8
 .public GetMonsterGenderVeneer

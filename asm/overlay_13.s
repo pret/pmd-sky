@@ -520,7 +520,7 @@ _0238A830:
 	ldr r1, [r0]
 	mov r0, #0xb
 	strb r2, [r1, #0x5d]
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	beq _0238BD74
 	ldr r0, _0238B504 ; =0x0238C054

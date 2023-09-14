@@ -11,7 +11,7 @@
 .public sub_0200B8B8
 .public sub_0200BD14
 .public sub_0201DE10
-.public GetDebugFlag
+.public GetDebugFlag1
 .public sub_020519D0
 .public sub_02028E2C
 .public sub_0201BE28

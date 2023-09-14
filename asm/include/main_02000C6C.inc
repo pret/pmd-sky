@@ -1,14 +1,12 @@
 #pragma once
 .public ClearIrqFlag
-.public DEBUG_IS_INITIALIZED
+.public DebugPrint
+.public DebugPrint0
 .public DecompressAtFromMemoryPointer
 .public FatalError
 .public FileInit
+.public InitDebug
 .public MainLoop
-.public STRING_DEBUG_EMPTY
-.public STRING_DEBUG_FORMAT_LINE_FILE
-.public STRING_DEBUG_NO_PROG_POS
-.public STRING_DEBUG_SPACED_PRINT
 .public WaitForInterrupt
 .public _0200A314
 .public _0200A344

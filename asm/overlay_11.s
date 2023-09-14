@@ -2591,7 +2591,7 @@ _022DE500:
 	ldrsh r2, [r1, #8]
 	mov r0, #2
 	strh r2, [r1, #6]
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022DE554
 	ldr r3, _022DED18 ; =ov11_02324E80
@@ -2648,7 +2648,7 @@ _022DE5D8:
 	ldrsh r2, [r1, #2]
 	mov r0, #2
 	strh r2, [r1, #4]
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022DE62C
 	ldr r3, _022DED18 ; =ov11_02324E80
@@ -2680,7 +2680,7 @@ _022DE650:
 	ldr r1, _022DED18 ; =ov11_02324E80
 	mov r0, #2
 	strh r4, [r1, #6]
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022DE6A4
 	ldr r3, _022DED18 ; =ov11_02324E80
@@ -3647,7 +3647,7 @@ _022DF348:
 	bl ov11_022E48AC
 	mov r5, r0
 	mov r0, #0xb
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r5, r0
 	ldreqh r0, [r6, #2]
 	ldreq r1, [r4, #0x14]
@@ -10465,7 +10465,7 @@ ov11_022E5188: ; 0x022E5188
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022E51C8
 	add r1, sp, #0
@@ -10525,7 +10525,7 @@ ov11_022E5258: ; 0x022E5258
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022E5298
 	add r1, sp, #0
@@ -10580,7 +10580,7 @@ ov11_022E5314: ; 0x022E5314
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022E5354
 	add r1, sp, #0
@@ -10731,7 +10731,7 @@ ov11_022E551C: ; 0x022E551C
 	mov r0, #2
 	mov r5, r1
 	mov r4, r2
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022E5564
 	add r1, sp, #4
@@ -10846,7 +10846,7 @@ ov11_022E56B8: ; 0x022E56B8
 	mov r0, #2
 	mov r4, r1
 	mov r6, r2
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022E5700
 	add r1, sp, #0xd
@@ -10957,7 +10957,7 @@ ov11_022E584C: ; 0x022E584C
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #2
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022E5884
 	add r1, sp, #4
@@ -17055,7 +17055,7 @@ ov11_022EA80C: ; 0x022EA80C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	ldrne r0, _022EA89C ; =0x02388FD8
 	movne r1, #0
@@ -17098,7 +17098,7 @@ ov11_022EA8A0: ; 0x022EA8A0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	mov r0, #0
 	beq _022EA8C8
@@ -17116,7 +17116,7 @@ ov11_022EA8D4: ; 0x022EA8D4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag
+	bl GetDebugFlag1
 	cmp r0, #0
 	mov r0, #1
 	beq _022EA8FC
@@ -31985,7 +31985,7 @@ ov11_022F72A0: ; 0x022F72A0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022F72F0
 	add r1, sp, #8
@@ -32038,7 +32038,7 @@ ov11_022F7354: ; 0x022F7354
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022F73A4
 	add r1, sp, #8
@@ -32089,7 +32089,7 @@ ov11_022F7408: ; 0x022F7408
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022F7444
 	add r1, sp, #0
@@ -32164,7 +32164,7 @@ ov11_022F7500: ; 0x022F7500
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugLogFlag
+	bl GetDebugFlag2
 	cmp r0, #0
 	beq _022F7540
 	add r1, sp, #0
