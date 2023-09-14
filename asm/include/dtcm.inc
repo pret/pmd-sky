@@ -1,1 +1,11 @@
 #pragma once
+.public sub_02078974
+.public sub_02078A40
+.public sub_02078A50
+.public sub_02078A60
+.public sub_02078A70
+.public sub_02078974
+.public sub_02078A00
+.public sub_02078A10
+.public sub_02078A20
+.public sub_02078A30
