@@ -26,19 +26,19 @@ void InitDebug(void) {
     InitDebugStripped1();
 
     InitDebugFlag2();
-    
+
     DEBUG_IS_INITIALIZED = TRUE;
-    
+
     InitDebugFlag1();
 }
 
 void InitDebugFlag1(void) {}
 
-u32 GetDebugFlag1(u32 flag_id) {
-    return 0;
+u32 GetDebugFlag1(enum debug_flag_1 flag) {
+    return FALSE;
 }
 
-void SetDebugFlag1(u32 flag_id, u32 val) {}
+void SetDebugFlag1(enum debug_flag_1 flag, u32 val) {}
 
 void InitDebugStripped6(void) {}
 
@@ -58,7 +58,7 @@ void InitDebugStripped5(void) {}
 
 void DebugPrintTrace(const char* msg, struct prog_pos_info* prog_pos) {
     char message_buffer[256];
-    
+
     if (prog_pos != NULL) {
         if (msg != NULL) {
             AppendProgPos(message_buffer, prog_pos, msg);
@@ -93,11 +93,11 @@ void DebugPrint0(const char* fmt, ...) {
 
 void InitDebugFlag2(void) {}
 
-u32 GetDebugFlag2(u32 flag_id) {
-    return 0;
+u32 GetDebugFlag2(enum debug_flag_2 flag) {
+    return FALSE;
 }
 
-void SetDebugFlag2(u32 flag_id, u32 val) {}
+void SetDebugFlag2(enum debug_flag_2 flag, u32 val) {}
 
 void DebugPrint(u8 level, const char* fmt, ...) {}
 

@@ -9,6 +9,45 @@ struct prog_pos_info {
     int line;   // line number
 };
 
+// Flags listed in the debug menu
+enum debug_flag_1 {
+    DEBUG_FLAG_1_TEXT_SPEEDUP = 0,    // Increases text speed (x4)
+    DEBUG_FLAG_1_NO_SCREEN_FADE = 1,  // The screen doesn't fade to black when it's supposed to
+    DEBUG_FLAG_1_SOUND_OFF = 2,       // Disables all sounds?
+    DEBUG_FLAG_1_BGM_OFF = 3,         // Background music won't be played
+    DEBUG_FLAG_1_SE_OFF = 4,          // Sound effects won't be played
+    DEBUG_FLAG_1_STAGE_NPC_DUMMY = 5, // Unknown purpose
+    // Was supposed to throw an error if text overflowed the textbox it was contained in, but it
+    // does nothing in the final game.
+    DEBUG_FLAG_1_TEXT_LIMIT_CHECK = 6,
+    DEBUG_FLAG_1_NO_CHEAT_CHECK = 7,             // Unknown purpose
+    DEBUG_FLAG_1_NO_PLUNGE_CHECK = 8,            // Unknown purpose
+    DEBUG_FLAG_1_DUNGEON_INFINITE_COMEBACK = 10, // Unknown purpose
+    DEBUG_FLAG_1_GENERAL_DEBUG = 11,             // Enables debug menus
+    // Allows manually overriding the results of a dungeon expedition
+    DEBUG_FLAG_1_EDIT_MODE = 12,
+};
+
+// Logging flags listed in the debug menu. They enable certain kinds of debug logging.
+enum debug_flag_2 {
+    DEBUG_FLAG_2_DUNGEON = 0,
+    DEBUG_FLAG_2_GROUND = 1,
+    DEBUG_FLAG_2_SCRIPT = 2,
+    DEBUG_FLAG_2_SCRIPT_DEBUG = 3,
+    DEBUG_FLAG_2_SCRIPT_SUPERVISION = 4,
+    DEBUG_FLAG_2_SCRIPT_COMMAND = 5,
+    DEBUG_FLAG_2_SOUND = 6,
+    DEBUG_FLAG_2_BGM = 7,
+    DEBUG_FLAG_2_SE = 8,
+    DEBUG_FLAG_2_FLAG = 10,
+    DEBUG_FLAG_2_FILE = 11,
+    DEBUG_FLAG_2_MEMORY = 12,
+    DEBUG_FLAG_2_BACKUP = 13,
+    DEBUG_FLAG_2_THREAD = 14,
+    DEBUG_FLAG_2_KERNEL = 15,
+    DEBUG_FLAG_2_PERFORMANCE = 16,
+};
+
 // Would have initialized debugging-related things, if they were not removed.
 // As for the release version, does nothing but set DEBUG_IS_INITIALIZED to true.
 void InitDebug(void);
@@ -18,16 +57,16 @@ void InitDebug(void);
 void InitDebugFlag1(void);
 
 // Just returns 0 in the final binary.
-u32 GetDebugFlag1(u32 flag_id);
+u32 GetDebugFlag1(enum debug_flag_1 flag);
 
 // A no-op in the final binary.
-void SetDebugFlag1(u32 flag_id, u32 val);
+void SetDebugFlag1(enum debug_flag_1 flag, u32 val);
 
 // Does nothing, only called in the debug initialisation function.
 void InitDebugStripped6(void);
 
 // Write a base message into a string and append the file name and line number to the end in the format "file = '%s'  line = %5d\n".
-// If no program position info is given, "ProgPos info NULL\n" is appended instead.     
+// If no program position info is given, "ProgPos info NULL\n" is appended instead.
 int AppendProgPos(char* str, struct prog_pos_info* prog_pos, const char* msg);
 
 // Does nothing, only called in the debug initialisation function.
@@ -53,10 +92,10 @@ void DebugPrint0(const char* fmt, ...);
 void InitDebugFlag2(void);
 
 // Just returns 0 in the final binary.
-u32 GetDebugFlag2(u32 flag_id);
+u32 GetDebugFlag2(enum debug_flag_2 flag);
 
 // A no-op in the final binary.
-void SetDebugFlag2(u32 flag_id, u32 val);
+void SetDebugFlag2(enum debug_flag_2 flag, u32 val);
 
 // Would log a printf format string in the debug binary. A no-op in the final binary.
 void DebugPrint(u8 level, const char* fmt, ...);
@@ -73,7 +112,7 @@ void InitDebugStripped2(void);
 // Does nothing, only called in the debug initialisation function.
 void InitDebugStripped1(void);
 
-// Display some debug messages, then hangs the process.     
+// Display some debug messages, then hangs the process.
 // This function is called in lots of places to bail on a fatal error. Looking at the static data callers use to fill in the program position info is informative, as it tells you the original file name (probably from the standard __FILE__ macro) and line number (probably from the standard __LINE__ macro) in the source code.
 void FatalError(struct prog_pos_info *prog_pos, const char* fmt, ...);
 
