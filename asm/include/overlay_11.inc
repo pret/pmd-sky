@@ -104,7 +104,7 @@
 .public sub_0202A954
 .public sub_02063734
 .public sub_0200CF78
-.public GetDebugFlag2
+.public GetDebugLogFlag
 .public GetScenarioBalance
 .public sub_0204F158
 .public sub_0204BED8
@@ -168,7 +168,7 @@
 .public SetDungeonConquest
 .public sub_0204F024
 .public sub_0204E8EC
-.public GetDebugFlag1
+.public GetDebugFlag
 .public sub_020407EC
 .public ov10_022BF35C
 .public sub_0205F2B8

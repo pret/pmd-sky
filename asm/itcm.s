@@ -97,13 +97,13 @@ _01FF8120:
 sub_01FF8130: ; 0x01FF8130
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
-	ldr r2, _01FF81B8 ; =0x020AFC80
+	ldr r2, _01FF81B8 ; =_020AFC80
 	mov r4, r1
 	ldr r1, [r2, #8]
 	cmp r1, r4
 	beq _01FF81B0
 	ldrh r3, [r0]
-	ldr r2, _01FF81BC ; =0x02099734
+	ldr r2, _01FF81BC ; =_02099734
 	mov r1, #0
 	mov r3, r3, lsl #0x13
 	mov r3, r3, lsr #0x1e
@@ -112,40 +112,40 @@ sub_01FF8130: ; 0x01FF8130
 	str r3, [sp]
 	stmib sp, {r1, r2, r4}
 	ldrh r0, [r0]
-	ldr r5, _01FF81C0 ; =0x02099744
-	ldr r2, _01FF81C4 ; =0x02099764
+	ldr r5, _01FF81C0 ; =_02099744
+	ldr r2, _01FF81C4 ; =_02099764
 	mov r3, r0, lsl #0x1d
 	mov ip, r0, lsl #0x15
 	mov lr, r3, lsr #0x1d
 	mov r0, r0, lsl #0x1a
 	mov r6, ip, lsr #0x1d
 	mov ip, r0, lsr #0x1d
-	ldr r3, _01FF81C8 ; =0x02099784
+	ldr r3, _01FF81C8 ; =_02099784
 	ldr r0, [r5, r6, lsl #2]
 	ldr r2, [r2, lr, lsl #2]
 	ldr r3, [r3, ip, lsl #2]
 	bl GeomSetTexImageParam
-	ldr r0, _01FF81B8 ; =0x020AFC80
+	ldr r0, _01FF81B8 ; =_020AFC80
 	str r4, [r0, #8]
 _01FF81B0:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_01FF81B8: .word 0x020AFC80
-_01FF81BC: .word 0x02099734
-_01FF81C0: .word 0x02099744
-_01FF81C4: .word 0x02099764
-_01FF81C8: .word 0x02099784
+_01FF81B8: .word _020AFC80
+_01FF81BC: .word _02099734
+_01FF81C0: .word _02099744
+_01FF81C4: .word _02099764
+_01FF81C8: .word _02099784
 	arm_func_end sub_01FF8130
 
 	arm_func_start sub_01FF81CC
 sub_01FF81CC: ; 0x01FF81CC
-	ldr r2, _01FF8218 ; =0x020AFC80
+	ldr r2, _01FF8218 ; =_020AFC80
 	ldr r2, [r2, #4]
 	cmp r2, r1
 	bxeq lr
 	ldrh r2, [r0]
-	ldr r0, _01FF821C ; =0x02099744
+	ldr r0, _01FF821C ; =_02099744
 	mov r2, r2, lsl #0x15
 	mov r2, r2, lsr #0x1d
 	ldr r0, [r0, r2, lsl #2]
@@ -155,13 +155,13 @@ sub_01FF81CC: ; 0x01FF81CC
 	movne r0, #0
 	rsb r0, r0, #4
 	mov r3, r1, lsr r0
-	ldr r0, _01FF8218 ; =0x020AFC80
+	ldr r0, _01FF8218 ; =_020AFC80
 	str r3, [r2]
 	str r1, [r0, #4]
 	bx lr
 	.align 2, 0
-_01FF8218: .word 0x020AFC80
-_01FF821C: .word 0x02099744
+_01FF8218: .word _020AFC80
+_01FF821C: .word _02099744
 _01FF8220: .word 0x040004AC
 	arm_func_end sub_01FF81CC
 
@@ -175,7 +175,7 @@ sub_01FF8224: ; 0x01FF8224
 	beq _01FF8460
 	ldrh r0, [r4, #0x18]
 	mov r2, #0
-	ldr r3, _01FF8468 ; =0x020A9FB0
+	ldr r3, _01FF8468 ; =_020A9FB0
 	mov r0, r0, asr #4
 	mov r0, r0, lsl #1
 	add r5, r0, #1
@@ -217,7 +217,7 @@ sub_01FF8224: ; 0x01FF8224
 	mov r3, r0
 	str r0, [sp, #0xc]
 	bl GeomSetTexImageParam
-	ldr r0, _01FF846C ; =0x020AFC80
+	ldr r0, _01FF846C ; =_020AFC80
 	mvn r2, #0
 	str r2, [r0, #8]
 	ldr r1, _01FF8470 ; =0x04000444
@@ -314,8 +314,8 @@ _01FF8460:
 	add sp, sp, #0x40
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_01FF8468: .word 0x020A9FB0
-_01FF846C: .word 0x020AFC80
+_01FF8468: .word _020A9FB0
+_01FF846C: .word _020AFC80
 _01FF8470: .word 0x04000444
 _01FF8474: .word 0x0400046C
 _01FF8478: .word 0x04000500
@@ -342,7 +342,7 @@ sub_01FF849C: ; 0x01FF849C
 	ldrb r0, [r4, #0x23]
 	cmp r0, #0
 	beq _01FF8708
-	ldr r0, _01FF8710 ; =0x02099724
+	ldr r0, _01FF8710 ; =_02099724
 	mov r3, #0x1000
 	ldr ip, [r0, #4]
 	ldr lr, [r0]
@@ -380,7 +380,7 @@ sub_01FF849C: ; 0x01FF849C
 	mov r3, r0
 	str r0, [sp, #0xc]
 	bl GeomSetTexImageParam
-	ldr r1, _01FF8714 ; =0x020AFC80
+	ldr r1, _01FF8714 ; =_020AFC80
 	mvn r3, #0
 	str r3, [r1, #8]
 	ldr r2, _01FF8718 ; =0x04000444
@@ -495,8 +495,8 @@ _01FF8708:
 	add sp, sp, #0x48
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_01FF8710: .word 0x02099724
-_01FF8714: .word 0x020AFC80
+_01FF8710: .word _02099724
+_01FF8714: .word _020AFC80
 _01FF8718: .word 0x04000444
 _01FF871C: .word 0x0400046C
 _01FF8720: .word 0x04000500
@@ -511,7 +511,7 @@ sub_01FF8728: ; 0x01FF8728
 	ldrb r0, [sl, #0x31]
 	cmp r0, #0
 	beq _01FF89EC
-	ldr r0, _01FF89F4 ; =0x02099724
+	ldr r0, _01FF89F4 ; =_02099724
 	ldr r1, [sl, #4]
 	ldr r3, [r0, #8]
 	ldr r2, [r0, #0xc]
@@ -686,7 +686,7 @@ _01FF89EC:
 	add sp, sp, #0x4c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FF89F4: .word 0x02099724
+_01FF89F4: .word _02099724
 _01FF89F8: .word 0x04000444
 _01FF89FC: .word 0x0400046C
 _01FF8A00: .word 0x04000500
@@ -701,7 +701,7 @@ sub_01FF8A10: ; 0x01FF8A10
 	sub sp, sp, #0x30
 	mov r8, r0
 	ldrh r0, [r8, #0x24]
-	ldr r5, _01FF8C1C ; =0x020A9FB0
+	ldr r5, _01FF8C1C ; =_020A9FB0
 	ldrsh r4, [r8, #0xc]
 	mov r0, r0, asr #4
 	mov r0, r0, lsl #1
@@ -829,7 +829,7 @@ sub_01FF8A10: ; 0x01FF8A10
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FF8C1C: .word 0x020A9FB0
+_01FF8C1C: .word _020A9FB0
 _01FF8C20: .word 0x04000444
 _01FF8C24: .word 0x0400046C
 	arm_func_end sub_01FF8A10
@@ -864,7 +864,7 @@ sub_01FF8C60: ; 0x01FF8C60
 
 	arm_func_start AllocateRender3dElement
 AllocateRender3dElement: ; 0x01FF8C78
-	ldr r0, _01FF8CA8 ; =0x020AFC80
+	ldr r0, _01FF8CA8 ; =_020AFC80
 	ldrsh r2, [r0]
 	ldrsh r1, [r0, #2]
 	cmp r2, r1
@@ -877,7 +877,7 @@ AllocateRender3dElement: ; 0x01FF8C78
 	smlabb r0, r2, r0, r1
 	bx lr
 	.align 2, 0
-_01FF8CA8: .word 0x020AFC80
+_01FF8CA8: .word _020AFC80
 	arm_func_end AllocateRender3dElement
 
 	arm_func_start sub_01FF8CAC
@@ -980,7 +980,7 @@ sub_01FF8D9C: ; 0x01FF8D9C
 Render3dStack: ; 0x01FF8DCC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x200
-	ldr r0, _01FF8EFC ; =0x020AFC80
+	ldr r0, _01FF8EFC ; =_020AFC80
 	ldrsh r4, [r0]
 	cmp r4, #0
 	beq _01FF8EF4
@@ -1011,7 +1011,7 @@ _01FF8E24:
 _01FF8E34:
 	cmp r4, #0x80
 	blt _01FF8E24
-	ldr r0, _01FF8EFC ; =0x020AFC80
+	ldr r0, _01FF8EFC ; =_020AFC80
 	mov r5, #0
 	ldrsh r7, [r0]
 	add r4, sp, #0
@@ -1043,7 +1043,7 @@ _01FF8E98:
 	mov r6, #0
 	add r5, sp, #0
 	ldr r4, _01FF8F00 ; =0x01FF8120
-	ldr r7, _01FF8EFC ; =0x020AFC80
+	ldr r7, _01FF8EFC ; =_020AFC80
 	b _01FF8EDC
 _01FF8EB4:
 	ldr r0, [r5, r6, lsl #2]
@@ -1060,14 +1060,14 @@ _01FF8EDC:
 	ldrsh r0, [r7]
 	cmp r6, r0
 	blt _01FF8EB4
-	ldr r0, _01FF8EFC ; =0x020AFC80
+	ldr r0, _01FF8EFC ; =_020AFC80
 	mov r1, #0
 	strh r1, [r0]
 _01FF8EF4:
 	add sp, sp, #0x200
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_01FF8EFC: .word 0x020AFC80
+_01FF8EFC: .word _020AFC80
 _01FF8F00: .word 0x01FF8120
 	arm_func_end Render3dStack
 
@@ -1075,14 +1075,14 @@ _01FF8F00: .word 0x01FF8120
 sub_01FF8F04: ; 0x01FF8F04
 	ldr r1, _01FF8F20 ; =0x040004AC
 	mov r2, #0
-	ldr r0, _01FF8F24 ; =0x020AFC80
+	ldr r0, _01FF8F24 ; =_020AFC80
 	str r2, [r1]
 	sub r1, r2, #1
 	str r1, [r0, #4]
 	bx lr
 	.align 2, 0
 _01FF8F20: .word 0x040004AC
-_01FF8F24: .word 0x020AFC80
+_01FF8F24: .word _020AFC80
 	arm_func_end sub_01FF8F04
 
 	arm_func_start sub_01FF8F28
@@ -1100,7 +1100,7 @@ _01FF8F44:
 	ldrb r5, [r0, r3]
 	add r3, r3, #1
 	str r3, [sp]
-	ldr r3, _01FF9054 ; =0x02099E44
+	ldr r3, _01FF9054 ; =_02099E44
 	mov fp, r5, lsl #1
 	ldrh fp, [r3, fp]
 	mov r4, r4, lsl #1
@@ -1170,7 +1170,7 @@ _01FF904C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FF9054: .word 0x02099E44
+_01FF9054: .word _02099E44
 _01FF9058: .word 0x0000FFFE
 	arm_func_end sub_01FF8F28
 
@@ -1239,15 +1239,15 @@ sub_01FF9128: ; 0x01FF9128
 	sub sp, sp, #0x14
 	mov r1, #0xe0
 	mul r3, r0, r1
-	ldr r1, _01FF9290 ; =0x022A88DC
+	ldr r1, _01FF9290 ; =_022A88DC
 	add r1, r1, r3
 	str r1, [sp]
 	ldrb r1, [r1, #7]
 	str r1, [sp, #0x10]
 	cmp r1, #1
 	blo _01FF9288
-	ldr r1, _01FF9294 ; =0x022A88FC
-	ldr r2, _01FF9298 ; =0x022A88F0
+	ldr r1, _01FF9294 ; =_022A88FC
+	ldr r2, _01FF9298 ; =_022A88F0
 	ldr r1, [r1, r3]
 	ldr r8, [r2, r3]
 	add sl, r1, #8
@@ -1331,9 +1331,9 @@ _01FF9288:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FF9290: .word 0x022A88DC
-_01FF9294: .word 0x022A88FC
-_01FF9298: .word 0x022A88F0
+_01FF9290: .word _022A88DC
+_01FF9294: .word _022A88FC
+_01FF9298: .word _022A88F0
 	arm_func_end sub_01FF9128
 
 	arm_func_start sub_01FF929C
@@ -1342,15 +1342,15 @@ sub_01FF929C: ; 0x01FF929C
 	sub sp, sp, #0x20
 	mov r1, #0xe0
 	mul r4, r0, r1
-	ldr r1, _01FF9428 ; =0x022A88DC
+	ldr r1, _01FF9428 ; =_022A88DC
 	add r1, r1, r4
 	str r1, [sp, #8]
 	ldrb r1, [r1, #7]
 	str r1, [sp, #4]
 	cmp r1, #1
 	blo _01FF9420
-	ldr r1, _01FF942C ; =0x022A88FC
-	ldr r3, _01FF9430 ; =0x022A88F0
+	ldr r1, _01FF942C ; =_022A88FC
+	ldr r3, _01FF9430 ; =_022A88F0
 	ldr r2, [r1, r4]
 	ldr r8, [r3, r4]
 	add r1, r2, #8
@@ -1443,16 +1443,16 @@ _01FF9420:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FF9428: .word 0x022A88DC
-_01FF942C: .word 0x022A88FC
-_01FF9430: .word 0x022A88F0
+_01FF9428: .word _022A88DC
+_01FF942C: .word _022A88FC
+_01FF9430: .word _022A88F0
 	arm_func_end sub_01FF929C
 
 	arm_func_start GetKeyN2MSwitch
 GetKeyN2MSwitch: ; 0x01FF9434
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r2, _01FF9464 ; =0x020A2CF8
+	ldr r2, _01FF9464 ; =_020A2CF8
 	add r3, sp, #0
 	ldr ip, [r2]
 	ldr r2, [r2, #4]
@@ -1463,7 +1463,7 @@ GetKeyN2MSwitch: ; 0x01FF9434
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_01FF9464: .word 0x020A2CF8
+_01FF9464: .word _020A2CF8
 	arm_func_end GetKeyN2MSwitch
 
 	arm_func_start GetKeyN2M
@@ -1481,7 +1481,7 @@ _01FF948C:
 	mov r0, #0
 	bx lr
 _01FF9494:
-	ldr r2, _01FF94D0 ; =0x020B09B4
+	ldr r2, _01FF94D0 ; =_020B09B4
 	mov r3, r0, lsl #0x1f
 	ldr r2, [r2, #0x14]
 	mov r0, r0, asr #1
@@ -1497,7 +1497,7 @@ _01FF9494:
 	bx lr
 	.align 2, 0
 _01FF94CC: .word 0x0000022B
-_01FF94D0: .word 0x020B09B4
+_01FF94D0: .word _020B09B4
 	arm_func_end GetKeyN2M
 
 	arm_func_start GetKeyN2MBaseForm
@@ -1525,7 +1525,7 @@ _01FF9508: .word 0x0000022B
 GetKeyM2NSwitch: ; 0x01FF950C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r2, _01FF953C ; =0x020A2CF8
+	ldr r2, _01FF953C ; =_020A2CF8
 	add r3, sp, #0
 	ldr ip, [r2, #8]
 	ldr r2, [r2, #0xc]
@@ -1536,7 +1536,7 @@ GetKeyM2NSwitch: ; 0x01FF950C
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_01FF953C: .word 0x020A2CF8
+_01FF953C: .word _020A2CF8
 	arm_func_end GetKeyM2NSwitch
 
 	arm_func_start GetKeyM2N
@@ -1553,7 +1553,7 @@ GetKeyM2N: ; 0x01FF9540
 _01FF9564:
 	mov r0, #0
 _01FF9568:
-	ldr r1, _01FF95A4 ; =0x020B09B4
+	ldr r1, _01FF95A4 ; =_020B09B4
 	mov r2, r0, lsl #0x1f
 	ldr r3, [r1, #0x1c]
 	mov r1, r0, asr #1
@@ -1569,7 +1569,7 @@ _01FF9568:
 	bx lr
 	.align 2, 0
 _01FF95A0: .word 0x00000483
-_01FF95A4: .word 0x020B09B4
+_01FF95A4: .word _020B09B4
 _01FF95A8: .word 0x000003FF
 	arm_func_end GetKeyM2N
 
@@ -1651,11 +1651,11 @@ _01FF9668:
 	ldr ip, _01FF97BC ; =0x027E0060
 	str r3, [ip]
 	str r3, [ip, #4]
-	ldr ip, _01FF97C0 ; =0x022B966C
+	ldr ip, _01FF97C0 ; =_022B966C
 	mov r1, #1
 	strh r1, [ip]
 _01FF96A0:
-	ldr ip, _01FF97C0 ; =0x022B966C
+	ldr ip, _01FF97C0 ; =_022B966C
 	ldrh r1, [ip]
 	cmp r1, #0
 	beq _01FF96B4
@@ -1712,7 +1712,7 @@ _01FF9738:
 	stmdb sp!, {r0, r1}
 	add r0, r0, #0
 	add r0, r0, #0x48
-	ldr r1, _01FF97C4 ; =0x02080EF0
+	ldr r1, _01FF97C4 ; =sub_02080EF0
 	blx r1
 	ldmia sp!, {r0, r1}
 	ldmib sp!, {r2, r3}
@@ -1726,7 +1726,7 @@ _01FF9738:
 	stmdb sp!, {r1}
 	add r0, r1, #0
 	add r0, r0, #0x48
-	ldr r1, _01FF97C8 ; =0x02080F30
+	ldr r1, _01FF97C8 ; =sub_02080F30
 	blx r1
 	ldmia sp!, {r1}
 	ldr sp, [r1, #0x44]
@@ -1741,15 +1741,15 @@ _01FF9738:
 	ldmia sp!, {pc}
 	.align 2, 0
 _01FF97BC: .word dtcm_bss
-_01FF97C0: .word 0x022B966C
-_01FF97C4: .word 0x02080EF0
-_01FF97C8: .word 0x02080F30
+_01FF97C0: .word _022B966C
+_01FF97C4: .word sub_02080EF0
+_01FF97C8: .word sub_02080F30
 	arm_func_end sub_01FF9650
 
 	arm_func_start sub_01FF97CC
 sub_01FF97CC: ; 0x01FF97CC
 	stmdb sp!, {r3, lr}
-	ldr r0, _01FF97F8 ; =0x022B99D0
+	ldr r0, _01FF97F8 ; =_022B99D0
 _01FF97D4:
 	ldrh r1, [r0]
 	cmp r1, #0
@@ -1761,7 +1761,7 @@ _01FF97D4:
 	bl sub_01FF9800
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_01FF97F8: .word 0x022B99D0
+_01FF97F8: .word _022B99D0
 _01FF97FC: .word 0x04000208
 	arm_func_end sub_01FF97CC
 

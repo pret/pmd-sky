@@ -118,7 +118,7 @@
 .public HidePortraitBox
 .public sub_020639E8
 .public sub_0205BC94
-.public GetDebugFlag1
+.public GetDebugFlag
 .public sub_0202812C
 .public sub_020329E4
 .public sub_0204E790
