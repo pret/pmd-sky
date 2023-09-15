@@ -25,20 +25,20 @@ void InitDebug(void) {
     InitDebugStripped2();
     InitDebugStripped1();
 
-    InitDebugFlag2();
+    InitDebugLogFlag();
 
     DEBUG_IS_INITIALIZED = TRUE;
 
-    InitDebugFlag1();
+    InitDebugFlag();
 }
 
-void InitDebugFlag1(void) {}
+void InitDebugFlag(void) {}
 
-u32 GetDebugFlag1(enum debug_flag_1 flag) {
+u32 GetDebugFlag(enum debug_flag flag) {
     return FALSE;
 }
 
-void SetDebugFlag1(enum debug_flag_1 flag, u32 val) {}
+void SetDebugFlag(enum debug_flag flag, u32 val) {}
 
 void InitDebugStripped6(void) {}
 
@@ -91,13 +91,13 @@ void DebugPrint0(const char* fmt, ...) {
     vsprintf(message_buffer, fmt, args);
 }
 
-void InitDebugFlag2(void) {}
+void InitDebugLogFlag(void) {}
 
-u32 GetDebugFlag2(enum debug_flag_2 flag) {
+u32 GetDebugLogFlag(enum debug_log_flag flag) {
     return FALSE;
 }
 
-void SetDebugFlag2(enum debug_flag_2 flag, u32 val) {}
+void SetDebugLogFlag(enum debug_log_flag flag, u32 val) {}
 
 void DebugPrint(u8 level, const char* fmt, ...) {}
 

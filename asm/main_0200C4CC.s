@@ -14636,7 +14636,7 @@ sub_02017DF4: ; 0x02017DF4
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -14673,7 +14673,7 @@ SendAudioCommandWrapper: ; 0x02017E70
 	mov r7, r0
 	mov r0, #3
 	strh r6, [r7, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r4, #0
 	strh r4, [r7, #6]
@@ -14816,7 +14816,7 @@ sub_02018024: ; 0x02018024
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -14853,7 +14853,7 @@ sub_020180A0: ; 0x020180A0
 	mov r7, r0
 	mov r0, #3
 	strh r6, [r7, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r4, #0
 	strh r4, [r7, #6]
@@ -14964,7 +14964,7 @@ sub_0201820C: ; 0x0201820C
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -15024,7 +15024,7 @@ sub_020182B8: ; 0x020182B8
 	mov r4, r0
 	mov r0, #4
 	strh r6, [r4, #4]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r5, #0
 	mov r0, r4
@@ -15060,7 +15060,7 @@ sub_0201831C: ; 0x0201831C
 	strh r8, [r4, #4]
 	mov r0, #4
 	strh r7, [r4, #6]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r6, #0
 	strh r6, [r4, #8]
@@ -15311,7 +15311,7 @@ _02018650:
 	ldreqb r0, [r4, #1]
 	beq _02018650
 	mov r0, r6
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	bne _020187D0
 	ldr r1, [sp]
@@ -25504,7 +25504,7 @@ _02020C70:
 	mov r1, #0x44
 	strb r1, [r4, #0x98]
 	str r0, [r4, #0xa0]
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	movne r0, #4
 	moveq r0, #1
@@ -51521,7 +51521,7 @@ sub_02036358: ; 0x02036358
 	str r0, [r1, #8]
 _0203638C:
 	and r0, r5, #0xff
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	ldr r1, [r4, #4]
 	add r1, r1, r5
 	add r5, r5, #1
@@ -51636,7 +51636,7 @@ _02036514:
 	and r0, r5, #0xff
 	add r1, r1, r5
 	ldrb r1, [r1, #0xa4]
-	bl SetDebugFlag1
+	bl SetDebugFlag
 	add r5, r5, #1
 	cmp r5, #0xc
 	blt _02036514
@@ -51695,7 +51695,7 @@ sub_020365A0: ; 0x020365A0
 	str r0, [r1, #8]
 _020365D4:
 	and r0, r5, #0xff
-	bl GetDebugFlag2
+	bl GetDebugLogFlag
 	ldr r1, [r4, #4]
 	add r1, r1, r5
 	add r5, r5, #1
@@ -51810,7 +51810,7 @@ _0203675C:
 	and r0, r5, #0xff
 	add r1, r1, r5
 	ldrb r1, [r1, #0xa4]
-	bl SetDebugFlag2
+	bl SetDebugLogFlag
 	add r5, r5, #1
 	cmp r5, #0x10
 	blt _0203675C
@@ -73742,7 +73742,7 @@ _02048CB4: .word 0x000F1206
 sub_02048CB8: ; 0x02048CB8
 	stmdb sp!, {r3, lr}
 	mov r0, #9
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _02048CE4
 	ldr r1, _02048CF0 ; =_022AAE74
@@ -108983,7 +108983,7 @@ _02065330:
 	bne _0206548C
 _0206536C:
 	mov r0, #5
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _02065390
 	ldrsh r0, [r5]
@@ -109014,7 +109014,7 @@ _020653A8:
 	bne _0206548C
 _020653DC:
 	mov r0, #5
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _02065400
 	ldrsh r0, [r5]
@@ -109114,7 +109114,7 @@ sub_0206549C: ; 0x0206549C
 	b _0206595C
 _02065540:
 	mov r0, #5
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _02065580
 	ldrsh r0, [r6]
@@ -109169,7 +109169,7 @@ _020655BC:
 	b _0206595C
 _02065610:
 	mov r0, #5
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _0206566C
 	ldrsh r0, [r6]
@@ -163654,7 +163654,7 @@ _02094AF0:
 	STRING_DEBUG_NEWLINE:
 	.string "\n"
 	.align 4
-	
+
 	.global STRING_DEBUG_LOG_NULL ; 0x02094b58
 	STRING_DEBUG_LOG_NULL:
 	.string "(NULL)\n"
@@ -177852,7 +177852,7 @@ _020AF694:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
 	; debug related
-	
+
 	.global DEBUG_IS_INITIALIZED ; 020af698
 	DEBUG_IS_INITIALIZED:
 	.word 0x0

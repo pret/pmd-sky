@@ -7655,7 +7655,7 @@ _022C2F5C:
 	bl UnloadOverlay
 _022C2F84:
 	mov r0, #0xb
-	bl GetDebugFlag1
+	bl GetDebugFlag
 	cmp r0, #0
 	beq _022C3014
 	mov r0, #0xf
