@@ -52,7 +52,7 @@ enum debug_log_flag {
 // As for the release version, does nothing but set DEBUG_IS_INITIALIZED to true.
 void InitDebug(void);
 
-// Would have initialised the first set of debug flags.
+// Would have initialized the first set of debug flags.
 // Does nothing in release binary.
 void InitDebugFlag(void);
 
@@ -64,7 +64,7 @@ u32 GetDebugFlag(enum debug_flag flag);
 // Should set the value of a debug flag. A no-op in the final binary.
 void SetDebugFlag(enum debug_flag flag, u32 val);
 
-// Does nothing, only called in the debug initialisation function.
+// Does nothing, only called in the debug initialization function.
 void InitDebugStripped6(void);
 
 // Write a base message into a string and append the file name and line number to the end in the format "file = '%s'  line = %5d\n".
@@ -75,7 +75,7 @@ void InitDebugStripped6(void);
 // return: number of characters printed, excluding the null-terminator
 int AppendProgPos(char* str, struct prog_pos_info* prog_pos, const char* msg);
 
-// Does nothing, only called in the debug initialisation function.
+// Does nothing, only called in the debug initialization function.
 void InitDebugStripped5(void);
 
 // Would log a printf format string tagged with the file name and line number in the debug binary.
@@ -95,7 +95,7 @@ void DebugDisplay(const char* fmt, ...);
 // Identical to DebugDisplay in release builds.
 void DebugPrint0(const char* fmt, ...);
 
-// Would have initialised the second set of debug flags.
+// Would have initialized the second set of debug flags.
 // Does nothing in release binary.
 void InitDebugLogFlag(void);
 
@@ -114,16 +114,16 @@ void SetDebugLogFlag(enum debug_log_flag flag, u32 val);
 // fmt: format
 void DebugPrint(u8 level, const char* fmt, ...);
 
-// Does nothing, only called in the debug initialisation function.
+// Does nothing, only called in the debug initialization function.
 void InitDebugStripped4(void);
 
-// Does nothing, only called in the debug initialisation function.
+// Does nothing, only called in the debug initialization function.
 void InitDebugStripped3(void);
 
-// Does nothing, only called in the debug initialisation function.
+// Does nothing, only called in the debug initialization function.
 void InitDebugStripped2(void);
 
-// Does nothing, only called in the debug initialisation function.
+// Does nothing, only called in the debug initialization function.
 void InitDebugStripped1(void);
 
 // Display some debug messages, then hangs the process.
