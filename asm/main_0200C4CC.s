@@ -162178,6 +162178,7 @@ _020908BC:
 _020908D0: .word _020AEEF0
 	arm_func_end sub_020908A8
 	; 0x020908D4
+
 	.global _020908D4
 _020908D4:
 	.byte 0x20, 0xFF, 0x09, 0x60, 0x00, 0x00, 0x00, 0x00
