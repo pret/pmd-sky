@@ -13,7 +13,7 @@ pmdsky_debug_symbols = read_pmdsky_debug_symbols()
 xmap_symbols = read_xmap_symbols()
 
 pmdsky_debug_location = get_pmdsky_debug_location()
-default_symbol_name = re.compile(r'^(?:ov\d{2}|sub)_[\dA-F]{8}$')
+default_symbol_name = re.compile(r'^(?:ov\d{2}|sub)?_[\dA-F]{8}$')
 multiple_symbol_suffix = re.compile(r'__[\dA-F]{8}$')
 
 for section_name, xmap_section in xmap_symbols.items():
@@ -85,8 +85,33 @@ for section_name, xmap_section in xmap_symbols.items():
                 else:
                     symbol.name = base_symbol_name
 
+            symbol_length = 0
+            string_length = None
+            if symbol.is_data:
+                symbols_start = '  data:\n'
+
+                asm_path = os.path.join('asm', symbol.file_path.replace('.o', '.s'))
+                if os.path.exists(asm_path):
+                    with open(asm_path) as asm_file:
+                        asm_contents = asm_file.readlines()
+                    for i, line in enumerate(asm_contents):
+                        if line.startswith(f'\t.global {symbol.name}'):
+                            target_line = asm_contents[i + 2]
+                            string_index = target_line.find('.string "')
+                            if string_index >= 0:
+                                target_string = target_line[string_index + len('.string "'):-2].replace('\\n', 'n')
+                                string_length = len(target_string)
+                                symbol_length = string_length + 1
+                                if symbol_length % 4 > 0:
+                                    symbol_length += 4 - symbol_length % 4
+                            break
+
+            else:
+                symbols_start = '  functions:\n'
+
             found_symbols = False
             symbol_before = None
+            write_end_list = False
             for i, line in enumerate(symbol_contents):
                 if found_symbols:
                     write_new_symbol = False
@@ -97,42 +122,60 @@ for section_name, xmap_section in xmap_symbols.items():
                             address_line = symbol_contents[i + 1]
                         else:
                             address_line = line
-                        current_symbol_address = int(address_line[-11 : -1], 16)
-                        write_new_symbol = address < current_symbol_address
-                    elif line == '  data:\n':
+                        address_line_string = address_line[-10 : -1]
+                        if ':' not in address_line_string:
+                            current_symbol_address = int(address_line_string, 16)
+                            write_new_symbol = address < current_symbol_address
+                    elif symbol.is_data and i >= len(symbol_contents) - 2 or not symbol.is_data and line == '  data:\n':
                         write_new_symbol = True
+                        write_end_list = True
                         current_symbol_index = i
 
                     if write_new_symbol:
-                        if 'data:' in symbol_contents[current_symbol_index]:
+                        if write_end_list:
                             symbol_before = None
                         else:
                             symbol_before = symbol_contents[current_symbol_index][len('    - name: ') : -1]
-                        symbol_contents[current_symbol_index - 1] += f"""    - name: {symbol.name}
+                        if symbol.is_data:
+                            symbol_contents[current_symbol_index - 1] += f"""    - name: {symbol.name}
+      address:
+        NA: 0x{address:X}
+      length:
+        NA: 0x{symbol_length:X}
+"""
+                        else:
+                            symbol_contents[current_symbol_index - 1] += f"""    - name: {symbol.name}
       address:
         NA: 0x{address:X}
 """
                         break
 
-                elif line == '  functions:\n':
+                elif line == symbols_start:
                     found_symbols = True
                     current_symbol_index = i
 
             with open(symbol_path, 'w') as symbol_file:
                 symbol_file.writelines(symbol_contents)
 
-            header_path = symbol_path.replace(SYMBOLS_FOLDER, os.path.join('headers', 'functions')).replace('.yml', '.h')
+
+            if symbol.is_data:
+                header_file_name = 'data'
+            else:
+                header_file_name = 'functions'
+
+            header_path = symbol_path.replace(SYMBOLS_FOLDER, os.path.join('headers', header_file_name)).replace('.yml', '.h')
             with open(header_path, 'r') as header_file:
                 header_contents = header_file.readlines()
 
             target_line = None
             if symbol_before is not None:
                 for i, line in enumerate(header_contents):
-                    if f' {symbol_before}(' in line:
+                    if symbol.is_data and re.search(fr' {symbol_before}[[;]', line) or symbol.is_data and f' {symbol_before}(' in line:
                         target_line = i
                         break
                 if target_line is None:
                     print(f'Could not find preceding symbol {symbol_before} to {symbol.name} in {header_path}')
+                    continue
 
             if target_line is None:
                 if 'arm9' in header_path:
@@ -144,8 +187,12 @@ for section_name, xmap_section in xmap_symbols.items():
                     target_line = len(header_contents) - 2
 
             symbol_header_path = os.path.join(HEADER_FOLDER, symbol.file_path.replace('.o', '.h'))
-            symbol_header = f'void {symbol.name}(void);\n'
-            if os.path.exists(symbol_header_path):
+            if symbol.is_data:
+                if string_length is not None:
+                    symbol_header = f'extern char {symbol.name}[{string_length}];\n'
+                else:
+                    symbol_header = f'extern undefined {symbol.name};\n'
+            elif os.path.exists(symbol_header_path):
                 with open(symbol_header_path, 'r') as symbol_header_file:
                     symbol_header_contents = symbol_header_file.readlines()
                 for line in symbol_header_contents:
