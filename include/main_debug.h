@@ -52,7 +52,7 @@ enum debug_log_flag {
 // As for the release version, does nothing but set DEBUG_IS_INITIALIZED to true.
 void InitDebug(void);
 
-// Would have initialised the first set of debug flags.
+// Would have initialized the first set of debug flags.
 // Does nothing in release binary.
 void InitDebugFlag(void);
 
@@ -95,7 +95,7 @@ void DebugDisplay(const char* fmt, ...);
 // Identical to DebugDisplay in release builds.
 void DebugPrint0(const char* fmt, ...);
 
-// Would have initialised the second set of debug flags.
+// Would have initialized the second set of debug flags.
 // Does nothing in release binary.
 void InitDebugLogFlag(void);
 
