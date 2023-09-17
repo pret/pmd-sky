@@ -3,7 +3,7 @@
 
 #include <files/pack.h>
 
-// Open the 6 files at PACK_FILE_PATHS_TABLE into PACK_FILE_OPENED. Called during game initialization.
+// Open the 6 files at PACK_FILE_PATHS_TABLE into PACK_FILES_OPENED. Called during game initialization.
 void OpenAllPackFiles(void);
 
 // Call GetFileLengthInPack after looking up the global Pack archive by its number
