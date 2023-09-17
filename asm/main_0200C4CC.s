@@ -18023,7 +18023,7 @@ sub_0201AB0C: ; 0x0201AB0C
 	mov r0, r1
 	ldr r1, [ip, #8]
 	ldr r2, [ip]
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r3, pc}
 _0201AB40:
 	cmp r0, #1
@@ -18046,7 +18046,7 @@ _0201AB7C:
 	ldr r1, [ip, #8]
 	ldr r2, [ip]
 	mov r0, #0
-	bl sub_0207C314
+	bl ArrayFill32
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0201AB0C
 
@@ -20306,7 +20306,7 @@ _0201C860:
 	and r2, r2, #0xf8
 	mov r2, r2, asr #3
 	strb r2, [sp, #0x83]
-	bl Rgb8ToBgr5
+	bl Rgb8ToRgb5
 	ldr r0, [r6, #0x10]
 	mov r1, #0x3f
 	cmp r0, #0
@@ -22406,7 +22406,7 @@ sub_0201E380: ; 0x0201E380
 	ldr r2, [r5, #0x18]
 	add r0, r3, r4, lsl #8
 	add r0, r2, r0, lsl #1
-	bl Rgb8ToBgr5
+	bl Rgb8ToRgb5
 	ldr r0, [r5, #0x1c]
 	mov r1, #1
 	strb r1, [r0, r4]
@@ -22430,7 +22430,7 @@ _0201E3D4:
 	add r0, r5, r6
 	add r0, r1, r0, lsl #1
 	add r1, sb, r5, lsl #2
-	bl Rgb8ToBgr5
+	bl Rgb8ToRgb5
 	add r0, r5, #1
 	ldr r1, [sl, #0x1c]
 	mov r0, r0, lsl #0x10
@@ -22694,8 +22694,8 @@ GeomSwapBuffers: ; 0x0201E71C
 _0201E72C: .word 0x04000540
 	arm_func_end GeomSwapBuffers
 
-	arm_func_start InitRender3dElement
-InitRender3dElement: ; 0x0201E730
+	arm_func_start InitRender3dElement64
+InitRender3dElement64: ; 0x0201E730
 	stmdb sp!, {r4, lr}
 	mov r1, #0x40
 	mov r4, r0
@@ -22713,7 +22713,7 @@ InitRender3dElement: ; 0x0201E730
 	mov r0, #0
 	strb r0, [r4, #0x3e]
 	ldmia sp!, {r4, pc}
-	arm_func_end InitRender3dElement
+	arm_func_end InitRender3dElement64
 
 	arm_func_start sub_0201E774
 sub_0201E774: ; 0x0201E774
@@ -22780,8 +22780,8 @@ sub_0201E7D8: ; 0x0201E7D8
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0201E7D8
 
-	arm_func_start sub_0201E844
-sub_0201E844: ; 0x0201E844
+	arm_func_start Render3d64Texture0x7
+Render3d64Texture0x7: ; 0x0201E844
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, r0
 	bl sub_01FF8D6C
@@ -22892,10 +22892,10 @@ _0201E9C0:
 	cmp r5, #8
 	blt _0201E8F0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_0201E844
+	arm_func_end Render3d64Texture0x7
 
-	arm_func_start Generate3dCanvasBorder
-Generate3dCanvasBorder: ; 0x0201E9EC
+	arm_func_start Render3d64Border
+Render3d64Border: ; 0x0201E9EC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x4c
 	mov sl, r0
@@ -22959,7 +22959,7 @@ _0201EA04:
 	strh r3, [sp, #0x28]
 	mov r1, r2, asr #0x10
 	str r1, [sp, #4]
-	bl sub_0201EC9C
+	bl EnqueueRender3d64Tiling
 	strh r5, [sp, #0xc]
 	strh r8, [sp, #0xe]
 	strh r6, [sp, #0x10]
@@ -22973,7 +22973,7 @@ _0201EA04:
 	strh r2, [sp, #0x24]
 	strh r1, [sp, #0x26]
 	strh r1, [sp, #0x28]
-	bl sub_0201EC9C
+	bl EnqueueRender3d64Tiling
 	strh r6, [sp, #0xc]
 	strh r8, [sp, #0xe]
 	strh fp, [sp, #0x10]
@@ -22987,7 +22987,7 @@ _0201EA04:
 	strh r2, [sp, #0x24]
 	strh r1, [sp, #0x26]
 	strh r1, [sp, #0x28]
-	bl sub_0201EC9C
+	bl EnqueueRender3d64Tiling
 	ldr r0, [sp]
 	strh r4, [sp, #0xe]
 	strh r5, [sp, #0x10]
@@ -23002,7 +23002,7 @@ _0201EA04:
 	add r0, sp, #0xc
 	strh r1, [sp, #0x26]
 	strh r1, [sp, #0x28]
-	bl sub_0201EC9C
+	bl EnqueueRender3d64Tiling
 	strh r6, [sp, #0xc]
 	strh r4, [sp, #0xe]
 	ldr r0, [sp, #8]
@@ -23018,7 +23018,7 @@ _0201EA04:
 	strh r2, [sp, #0x24]
 	strh r1, [sp, #0x26]
 	strh r1, [sp, #0x28]
-	bl sub_0201EC9C
+	bl EnqueueRender3d64Tiling
 	ldr r0, [sp]
 	mov r1, #8
 	strh r0, [sp, #0xc]
@@ -23033,7 +23033,7 @@ _0201EA04:
 	strh r2, [sp, #0x24]
 	strh r1, [sp, #0x26]
 	strh r1, [sp, #0x28]
-	bl sub_0201EC9C
+	bl EnqueueRender3d64Tiling
 	strh r5, [sp, #0xc]
 	strh r7, [sp, #0xe]
 	strh r6, [sp, #0x10]
@@ -23049,7 +23049,7 @@ _0201EA04:
 	strh r2, [sp, #0x24]
 	strh r1, [sp, #0x26]
 	strh r1, [sp, #0x28]
-	bl sub_0201EC9C
+	bl EnqueueRender3d64Tiling
 	strh r6, [sp, #0xc]
 	strh r7, [sp, #0xe]
 	ldr r0, [sp, #8]
@@ -23066,13 +23066,13 @@ _0201EA04:
 	strh r2, [sp, #0x24]
 	strh r1, [sp, #0x26]
 	strh r1, [sp, #0x28]
-	bl sub_0201EC9C
+	bl EnqueueRender3d64Tiling
 	add sp, sp, #0x4c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end Generate3dCanvasBorder
+	arm_func_end Render3d64Border
 
-	arm_func_start sub_0201EC9C
-sub_0201EC9C: ; 0x0201EC9C
+	arm_func_start EnqueueRender3d64Tiling
+EnqueueRender3d64Tiling: ; 0x0201EC9C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_01FF8D9C
@@ -23134,10 +23134,10 @@ _0201ED74:
 	strh r0, [r2], #2
 	bne _0201ED74
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201EC9C
+	arm_func_end EnqueueRender3d64Tiling
 
-	arm_func_start sub_0201ED88
-sub_0201ED88: ; 0x0201ED88
+	arm_func_start Render3d64Tiling
+Render3d64Tiling: ; 0x0201ED88
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	bl sub_01FF8D9C
@@ -23190,10 +23190,10 @@ _0201EE3C:
 	strh r0, [r2], #2
 	bne _0201EE3C
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0201ED88
+	arm_func_end Render3d64Tiling
 
-	arm_func_start sub_0201EE50
-sub_0201EE50: ; 0x0201EE50
+	arm_func_start Render3d64Quadrilateral
+Render3d64Quadrilateral: ; 0x0201EE50
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	bl sub_01FF8D3C
@@ -23235,10 +23235,10 @@ _0201EE60:
 	moveq r1, #0
 	strb r1, [r0, #0x24]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0201EE50
+	arm_func_end Render3d64Quadrilateral
 
-	arm_func_start sub_0201EEF0
-sub_0201EEF0: ; 0x0201EEF0
+	arm_func_start Render3d64RectangleMulticolor
+Render3d64RectangleMulticolor: ; 0x0201EEF0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_01FF8D0C
@@ -23331,10 +23331,10 @@ _0201F034:
 	orr r1, r1, r3, asr #3
 	strh r1, [r0, #0x1a]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201EEF0
+	arm_func_end Render3d64RectangleMulticolor
 
-	arm_func_start sub_0201F05C
-sub_0201F05C: ; 0x0201F05C
+	arm_func_start Render3d64Rectangle
+Render3d64Rectangle: ; 0x0201F05C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_01FF8D0C
@@ -23378,15 +23378,15 @@ sub_0201F05C: ; 0x0201F05C
 	strh r1, [r0, #2]
 	strb r2, [r0, #0x24]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201F05C
+	arm_func_end Render3d64Rectangle
 
-	arm_func_start sub_0201F108
-sub_0201F108: ; 0x0201F108
+	arm_func_start Render3d64Nothing
+Render3d64Nothing: ; 0x0201F108
 	bx lr
-	arm_func_end sub_0201F108
+	arm_func_end Render3d64Nothing
 
-	arm_func_start sub_0201F10C
-sub_0201F10C: ; 0x0201F10C
+	arm_func_start Render3d64Texture
+Render3d64Texture: ; 0x0201F10C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_01FF8D6C
@@ -23438,10 +23438,10 @@ _0201F144:
 	ldrh r1, [r4, #0x14]
 	strh r1, [r0, #0x14]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201F10C
+	arm_func_end Render3d64Texture
 
-	arm_func_start sub_0201F1D4
-sub_0201F1D4: ; 0x0201F1D4
+	arm_func_start Render3dElement64
+Render3dElement64: ; 0x0201F1D4
 	stmdb sp!, {r3, lr}
 	ldrb r1, [r0, #0x3d]
 	tst r1, #2
@@ -23456,7 +23456,7 @@ sub_0201F1D4: ; 0x0201F1D4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0201F204: .word _020AFCC4
-	arm_func_end sub_0201F1D4
+	arm_func_end Render3dElement64
 
 	arm_func_start sub_0201F208
 sub_0201F208: ; 0x0201F208
@@ -23510,10 +23510,10 @@ _0201F29C: .word _020AFCE4
 
 	arm_func_start sub_0201F2A0
 sub_0201F2A0: ; 0x0201F2A0
-	ldr ip, _0201F2A8 ; =sub_0201F1D4
+	ldr ip, _0201F2A8 ; =Render3dElement64
 	bx ip
 	.align 2, 0
-_0201F2A8: .word sub_0201F1D4
+_0201F2A8: .word Render3dElement64
 	arm_func_end sub_0201F2A0
 
 	arm_func_start sub_0201F2AC
@@ -23524,7 +23524,7 @@ sub_0201F2AC: ; 0x0201F2AC
 	smulbb r4, r0, r1
 	ldr r0, [r2]
 	add r0, r0, r4
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	ldr r0, _0201F2E0 ; =_020AFCE4
 	mov r1, #0
 	ldr r0, [r0]
@@ -23641,7 +23641,7 @@ _0201F410:
 	smulbb r5, r4, r0
 	ldr r0, [r1]
 	add r0, r0, r5
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	ldr r1, _0201F460 ; =_020AFCE4
 	mov r3, #1
 	ldr r2, [r1]
@@ -23669,7 +23669,7 @@ _0201F474:
 	cmpne r0, #0
 	beq _0201F490
 	mov r0, r5
-	bl sub_0201F1D4
+	bl Render3dElement64
 _0201F490:
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
@@ -33615,15 +33615,15 @@ _02027678:
 	ldreq r2, _020276BC ; =_022A7A6C
 	moveq r3, #1
 	streqh r3, [r2, #0xa]
-	bl sub_020276C0
+	bl NewDialogBox
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020276B8: .word _022A88DC
 _020276BC: .word _022A7A6C
 	arm_func_end sub_02027648
 
-	arm_func_start sub_020276C0
-sub_020276C0: ; 0x020276C0
+	arm_func_start NewDialogBox
+NewDialogBox: ; 0x020276C0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
@@ -33698,7 +33698,7 @@ _02027704:
 	mvn r1, #0
 	add r0, r5, #0x34
 	str r1, [r5, #0xb8]
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	mov r1, #2
 	strb r1, [r5, #0x70]
 	mov r0, #9
@@ -33711,7 +33711,7 @@ _02027704:
 	mov r1, #0x90
 	add r0, r5, #0x74
 	strb r1, [r5, #0x63]
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	ldr r0, _020278A4 ; =_022A7A6C
 	mov r1, #0
 	ldrh r3, [r0, #0x48]
@@ -33736,7 +33736,7 @@ _02027704:
 	strh r1, [r5, #0x78]
 	add r0, r5, #0xbc
 	strh r1, [r5, #0x7a]
-	bl sub_02029670
+	bl InitDialogBoxTrailer
 	mov r0, #0
 	strb r0, [r6]
 	add r0, r6, #4
@@ -33750,7 +33750,7 @@ _02027898: .word _022A88DC
 _0202789C: .word _022A7B1C
 _020278A0: .word _022A7A74
 _020278A4: .word _022A7A6C
-	arm_func_end sub_020276C0
+	arm_func_end NewDialogBox
 
 	arm_func_start sub_020278A8
 sub_020278A8: ; 0x020278A8
@@ -34205,7 +34205,7 @@ sub_02027E30: ; 0x02027E30
 	mov r0, #0xe0
 	mla r0, r1, r0, r2
 	add r0, r0, #0xbc
-	bl sub_02029670
+	bl InitDialogBoxTrailer
 	ldrsb r0, [r4]
 	cmp r0, #0
 	blt _02027F20
@@ -34318,7 +34318,7 @@ _0202801C:
 	mov r0, #0xe0
 	mla r0, r1, r0, r2
 	add r0, r0, #0xbc
-	bl sub_02029670
+	bl InitDialogBoxTrailer
 	mov r0, #0
 	strh r0, [r7, #0x3a]
 	strh r0, [r7, #0x38]
@@ -35036,12 +35036,12 @@ sub_020288DC: ; 0x020288DC
 	ldr r2, _020288F4 ; =_022A88DC
 	mov r1, #0xe0
 	mla r1, r0, r1, r2
-	ldr ip, _020288F8 ; =sub_02029670
+	ldr ip, _020288F8 ; =InitDialogBoxTrailer
 	add r0, r1, #0xbc
 	bx ip
 	.align 2, 0
 _020288F4: .word _022A88DC
-_020288F8: .word sub_02029670
+_020288F8: .word InitDialogBoxTrailer
 	arm_func_end sub_020288DC
 
 	arm_func_start sub_020288FC
@@ -36064,15 +36064,15 @@ _02029668: .word _022AAC80
 _0202966C: .word _022AACFC
 	arm_func_end LoadCursors
 
-	arm_func_start sub_02029670
-sub_02029670: ; 0x02029670
+	arm_func_start InitDialogBoxTrailer
+InitDialogBoxTrailer: ; 0x02029670
 	mov r1, #0
 	str r1, [r0]
 	strb r1, [r0, #4]
 	strb r1, [r0, #0x19]
 	strb r1, [r0, #0x18]
 	bx lr
-	arm_func_end sub_02029670
+	arm_func_end InitDialogBoxTrailer
 
 	arm_func_start sub_02029688
 sub_02029688: ; 0x02029688
@@ -36890,7 +36890,7 @@ _0202A160:
 	ldr r0, [r8]
 	add r0, r0, r6
 	add r0, r0, #4
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	ldr r0, [r8]
 	mov ip, #4
 	strb r4, [r0, r6]
@@ -36949,7 +36949,7 @@ sub_0202A1D4: ; 0x0202A1D4
 	add r4, r3, r1
 	add r0, r4, #4
 	strb r2, [r3, r1]
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	mov r0, #2
 	mov r3, r5
 	strb r0, [r4, #0x40]
@@ -85161,7 +85161,7 @@ _02051CE4:
 	bne _02051D10
 	ldr r1, [r2, #8]
 	ldr r2, [r2]
-	bl sub_0207C330
+	bl ArrayCopy32
 	b _02051D30
 _02051D10:
 	cmp r1, #1
@@ -85172,7 +85172,7 @@ _02051D20:
 	ldr r1, [r2, #8]
 	ldr r2, [r2]
 	mov r0, r8
-	bl sub_0207C314
+	bl ArrayFill32
 _02051D30:
 	add r0, r6, #1
 	mov r0, r0, lsl #0x10
@@ -117867,7 +117867,7 @@ _0206CA5C:
 	mov r1, r4
 	mov r2, lr
 	strh ip, [r5]
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -117959,7 +117959,7 @@ _0206CB9C:
 	mov r1, r4
 	mov r2, r6
 	strh ip, [r3]
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -121830,7 +121830,7 @@ sub_0206FE5C: ; 0x0206FE5C
 	ldr r1, [r5, #0xc]
 	ldr r2, [r5]
 	mov r0, #0
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5]
 	bl sub_0207A2DC
@@ -129529,13 +129529,13 @@ _02076140:
 	mov r0, r2
 	add r1, r3, #8
 	mov r2, #0x60
-	bl sub_0207C314
+	bl ArrayFill32
 	ldr r3, _020761B0 ; =0x0400006C
 	mov r0, #0
 	ldr r1, _020761B4 ; =0x04001000
 	mov r2, #0x70
 	strh r0, [r3]
-	bl sub_0207C314
+	bl ArrayFill32
 _02076168:
 	ldr r0, _020761B8 ; =0x04000020
 	mov r2, #0x100
@@ -131366,29 +131366,29 @@ _02077784: .word 0x04000400
 _02077788: .word sub_020788E4
 	arm_func_end sub_02077770
 
-	arm_func_start sub_0207778C
-sub_0207778C: ; 0x0207778C
+	arm_func_start GeomMtxLoad4x3
+GeomMtxLoad4x3: ; 0x0207778C
 	ldr r1, _020777A0 ; =0x04000400
 	mov r2, #0x17
-	ldr ip, _020777A4 ; =sub_020788C0
+	ldr ip, _020777A4 ; =GeomGxFifoSendMtx4x3
 	str r2, [r1]
 	bx ip
 	.align 2, 0
 _020777A0: .word 0x04000400
-_020777A4: .word sub_020788C0
-	arm_func_end sub_0207778C
+_020777A4: .word GeomGxFifoSendMtx4x3
+	arm_func_end GeomMtxLoad4x3
 
-	arm_func_start sub_020777A8
-sub_020777A8: ; 0x020777A8
+	arm_func_start GeomMtxMult4x3
+GeomMtxMult4x3: ; 0x020777A8
 	ldr r1, _020777BC ; =0x04000400
 	mov r2, #0x19
-	ldr ip, _020777C0 ; =sub_020788C0
+	ldr ip, _020777C0 ; =GeomGxFifoSendMtx4x3
 	str r2, [r1]
 	bx ip
 	.align 2, 0
 _020777BC: .word 0x04000400
-_020777C0: .word sub_020788C0
-	arm_func_end sub_020777A8
+_020777C0: .word GeomGxFifoSendMtx4x3
+	arm_func_end GeomMtxMult4x3
 
 	arm_func_start sub_020777C4
 sub_020777C4: ; 0x020777C4
@@ -131640,11 +131640,11 @@ sub_02077AB4: ; 0x02077AB4
 _02077B04:
 	mov r0, #0
 	mov r2, #0x10
-	bl sub_0207C314
+	bl ArrayFill32
 	ldr r1, _02077B4C ; =0x04000360
 	mov r0, #0
 	mov r2, #0x60
-	bl sub_0207C314
+	bl ArrayFill32
 _02077B20:
 	mov r2, #0
 	ldr r0, _02077B50 ; =0x040004D0
@@ -131785,7 +131785,7 @@ sub_02077CAC: ; 0x02077CAC
 	mov r2, #2
 	mov r0, r4
 	str r2, [r1]
-	bl sub_0207778C
+	bl GeomMtxLoad4x3
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -131813,7 +131813,7 @@ _02077D34:
 	mov r0, r4
 	mov r2, r3
 	add r1, lr, #0x5000000
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02077D48: .word _020B2B98
@@ -131841,7 +131841,7 @@ _02077D88:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x5000000
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02077DA0: .word _020B2B98
@@ -131869,7 +131869,7 @@ _02077DE0:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x5000000
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02077DF8: .word _020B2B98
@@ -131897,7 +131897,7 @@ _02077E38:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x5000000
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02077E50: .word _020B2B98
@@ -131924,7 +131924,7 @@ _02077E90:
 	mov r0, r4
 	mov r2, r3
 	add r1, lr, #0x7000000
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02077EA4: .word _020B2B98
@@ -131952,7 +131952,7 @@ _02077EE4:
 	mov r0, lr
 	mov r2, r3
 	add r1, r1, #0x7000000
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02077EFC: .word _020B2B98
@@ -131980,7 +131980,7 @@ _02077F40:
 	mov r0, r4
 	mov r2, r3
 	add r1, ip, lr
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02077F54: .word _020B2B98
@@ -132008,7 +132008,7 @@ _02077F98:
 	mov r0, r4
 	mov r2, r3
 	add r1, ip, lr
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02077FAC: .word _020B2B98
@@ -132038,7 +132038,7 @@ _02077FF8:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207800C: .word _020B2B98
@@ -132068,7 +132068,7 @@ _02078058:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207806C: .word _020B2B98
@@ -132098,7 +132098,7 @@ _020780B8:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020780CC: .word _020B2B98
@@ -132128,7 +132128,7 @@ _02078118:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207812C: .word _020B2B98
@@ -132158,7 +132158,7 @@ _02078178:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207818C: .word _020B2B98
@@ -132188,7 +132188,7 @@ _020781D8:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020781EC: .word _020B2B98
@@ -132218,7 +132218,7 @@ _02078238:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207824C: .word _020B2B98
@@ -132248,7 +132248,7 @@ _02078298:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020782AC: .word _020B2B98
@@ -132278,7 +132278,7 @@ _020782F8:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207830C: .word _020B2B98
@@ -132308,7 +132308,7 @@ _02078358:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0207836C: .word _020B2B98
@@ -132338,7 +132338,7 @@ _020783B8:
 	mov r0, r6
 	mov r2, r4
 	add r1, ip, r5
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020783CC: .word _020B2B98
@@ -132600,7 +132600,7 @@ _020786DC:
 	mov r0, r7
 	mov r2, r5
 	add r1, lr, ip
-	bl sub_0207C330
+	bl ArrayCopy32
 _020786EC:
 	ldr r0, _0207878C ; =_020B2B98
 	mvn r1, #0
@@ -132620,7 +132620,7 @@ _02078724:
 	mov r1, r4
 	add r0, r7, r5
 	sub r2, r6, r5
-	bl sub_0207C330
+	bl ArrayCopy32
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0207873C:
@@ -132641,7 +132641,7 @@ _02078770:
 	mov r1, r2
 	mov r0, r7
 	mov r2, r6
-	bl sub_0207C330
+	bl ArrayCopy32
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -132717,7 +132717,7 @@ sub_02078810: ; 0x02078810
 	ldmia sp!, {r4, r5, r6, pc}
 _02078864:
 	add r1, lr, r5
-	bl sub_0207C330
+	bl ArrayCopy32
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -132748,8 +132748,8 @@ _020788B8: .word _020B2B98
 _020788BC: .word _022B95C4
 	arm_func_end sub_0207887C
 
-	arm_func_start sub_020788C0
-sub_020788C0: ; 0x020788C0
+	arm_func_start GeomGxFifoSendMtx4x3
+GeomGxFifoSendMtx4x3: ; 0x020788C0
 	ldmia r0!, {r2, r3, ip}
 	stmia r1, {r2, r3, ip}
 	ldmia r0!, {r2, r3, ip}
@@ -132759,7 +132759,7 @@ sub_020788C0: ; 0x020788C0
 	ldmia r0!, {r2, r3, ip}
 	stmia r1, {r2, r3, ip}
 	bx lr
-	arm_func_end sub_020788C0
+	arm_func_end GeomGxFifoSendMtx4x3
 
 	arm_func_start sub_020788E4
 sub_020788E4: ; 0x020788E4
@@ -133188,7 +133188,7 @@ _02078D80:
 	mov r0, #0
 	mov r2, #0x28
 	str r3, [ip, #4]
-	bl sub_0207C314
+	bl ArrayFill32
 	ldr ip, _02078DF0 ; =0x04000204
 	ldr r1, _02078DE8 ; =0x027FFFF0
 	ldrh r3, [ip]
@@ -133308,7 +133308,7 @@ _02078EF8:
 	mov r5, r0
 	mov r0, sb
 	mov r1, r8
-	bl sub_0207C648
+	bl AtomicExchange
 	movs r4, r0
 	bne _02078F20
 	cmp r7, #0
@@ -133918,7 +133918,7 @@ sub_02079560: ; 0x02079560
 	add r1, r5, #4
 	mov r0, #0
 	sub r2, r2, #8
-	bl sub_0207C314
+	bl ArrayFill32
 	mov r1, #0
 	str r1, [r8, #0x84]
 	str r1, [r8, #0x88]
@@ -133931,7 +133931,7 @@ sub_02079560: ; 0x02079560
 	add r1, r8, #0xa4
 	mov r2, #0xc
 	str r0, [r8, #0x7c]
-	bl sub_0207C314
+	bl ArrayFill32
 	mov r1, #0
 	mov r0, r4
 	str r1, [r8, #0xb0]
@@ -136910,13 +136910,13 @@ _0207B9E8: .word 0x00000800
 
 	arm_func_start sub_0207B9EC
 sub_0207B9EC: ; 0x0207B9EC
-	ldr ip, _0207BA00 ; =sub_0207C4C8
+	ldr ip, _0207BA00 ; =MemcpyFast
 	mov r1, r0
 	ldr r0, _0207BA04 ; =0x027FFCF4
 	mov r2, #6
 	bx ip
 	.align 2, 0
-_0207BA00: .word sub_0207C4C8
+_0207BA00: .word MemcpyFast
 _0207BA04: .word 0x027FFCF4
 	arm_func_end sub_0207B9EC
 
@@ -136944,12 +136944,12 @@ sub_0207BA08: ; 0x0207BA08
 	strh r3, [r4, #0x1a]
 	ldrb r3, [ip, #0x50]
 	strh r3, [r4, #0x52]
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	ldr r0, _0207BA88 ; =0x027FFC80
 	add r1, r4, #0x1c
 	add r0, r0, #0x1c
 	mov r2, #0x34
-	bl sub_0207C2E0
+	bl ArrayCopy16
 	mov r0, #0
 	strh r0, [r4, #0x18]
 	strh r0, [r4, #0x50]
@@ -137598,8 +137598,8 @@ _0207C2B0:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207C264
 
-	arm_func_start sub_0207C2B8
-sub_0207C2B8: ; 0x0207C2B8
+	arm_func_start ArrayFill16
+ArrayFill16: ; 0x0207C2B8
 	mov r3, #0
 _0207C2BC:
 	cmp r3, r2
@@ -137615,10 +137615,10 @@ _0207C2D4:
 _0207C2D8:
 	blt _0207C2BC
 	bx lr
-	arm_func_end sub_0207C2B8
+	arm_func_end ArrayFill16
 
-	arm_func_start sub_0207C2E0
-sub_0207C2E0: ; 0x0207C2E0
+	arm_func_start ArrayCopy16
+ArrayCopy16: ; 0x0207C2E0
 	mov ip, #0
 _0207C2E4:
 	cmp ip, r2
@@ -137639,10 +137639,10 @@ _0207C308:
 _0207C30C:
 	blt _0207C2E4
 	bx lr
-	arm_func_end sub_0207C2E0
+	arm_func_end ArrayCopy16
 
-	arm_func_start sub_0207C314
-sub_0207C314: ; 0x0207C314
+	arm_func_start ArrayFill32
+ArrayFill32: ; 0x0207C314
 	add ip, r1, r2
 _0207C318:
 	cmp r1, ip
@@ -137653,10 +137653,10 @@ _0207C324:
 _0207C328:
 	blt _0207C318
 	bx lr
-	arm_func_end sub_0207C314
+	arm_func_end ArrayFill32
 
-	arm_func_start sub_0207C330
-sub_0207C330: ; 0x0207C330
+	arm_func_start ArrayCopy32
+ArrayCopy32: ; 0x0207C330
 	add ip, r1, r2
 _0207C334:
 	cmp r1, ip
@@ -137672,10 +137672,10 @@ _0207C34C:
 _0207C350:
 	blt _0207C334
 	bx lr
-	arm_func_end sub_0207C330
+	arm_func_end ArrayCopy32
 
-	arm_func_start sub_0207C358
-sub_0207C358: ; 0x0207C358
+	arm_func_start ArrayFill32Fast
+ArrayFill32Fast: ; 0x0207C358
 	stmdb sp!, {r4, r5, r6, r7, r8, sb}
 	add sb, r1, r2
 	mov ip, r2, lsr #5
@@ -137705,10 +137705,10 @@ _0207C3A8:
 	blt _0207C398
 	ldmia sp!, {r4, r5, r6, r7, r8, sb}
 	bx lr
-	arm_func_end sub_0207C358
+	arm_func_end ArrayFill32Fast
 
-	arm_func_start sub_0207C3B4
-sub_0207C3B4: ; 0x0207C3B4
+	arm_func_start ArrayCopy32Fast
+ArrayCopy32Fast: ; 0x0207C3B4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl}
 	add sl, r1, r2
 	mov ip, r2, lsr #5
@@ -137741,10 +137741,10 @@ _0207C400:
 	blt _0207C3E4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl}
 	bx lr
-	arm_func_end sub_0207C3B4
+	arm_func_end ArrayCopy32Fast
 
-	arm_func_start sub_0207C40C
-sub_0207C40C: ; 0x0207C40C
+	arm_func_start MemsetFast
+MemsetFast: ; 0x0207C40C
 	cmp r2, #0
 	beq _0207C418
 	b _0207C41C
@@ -137804,10 +137804,10 @@ _0207C4B0:
 	orr r1, r1, r3
 	strh r1, [r0]
 	bx lr
-	arm_func_end sub_0207C40C
+	arm_func_end MemsetFast
 
-	arm_func_start sub_0207C4C8
-sub_0207C4C8: ; 0x0207C4C8
+	arm_func_start MemcpyFast
+MemcpyFast: ; 0x0207C4C8
 	cmp r2, #0
 	beq _0207C4D4
 	b _0207C4D8
@@ -137931,13 +137931,13 @@ _0207C62C:
 	orr r0, r2, r0
 	strh r0, [r1]
 	bx lr
-	arm_func_end sub_0207C4C8
+	arm_func_end MemcpyFast
 
-	arm_func_start sub_0207C648
-sub_0207C648: ; 0x0207C648
+	arm_func_start AtomicExchange
+AtomicExchange: ; 0x0207C648
 	.word 0xE1010090
 	bx lr
-	arm_func_end sub_0207C648
+	arm_func_end AtomicExchange
 
 	arm_func_start sub_0207C650
 sub_0207C650: ; 0x0207C650
@@ -140481,12 +140481,12 @@ _0207E624:
 	ldr r0, [sp]
 	mov r1, r5
 	mov r2, r8
-	bl sub_0207C4C8
+	bl MemcpyFast
 	add r1, r7, r8
 	ldr r0, _0207E798 ; =_020B2BB0
 	add r1, r5, r1
 	mov r2, #2
-	bl sub_0207C4C8
+	bl MemcpyFast
 	add r0, sp, #4
 	mov r1, sb
 	bl sub_0207DFBC
@@ -140521,7 +140521,7 @@ _0207E6B0:
 	add r0, sp, #0x60
 	mov r2, r6
 	sub r1, r1, r6
-	bl sub_0207C4C8
+	bl MemcpyFast
 	sub r4, r4, r6
 	b _0207E6E4
 _0207E6D4:
@@ -140563,7 +140563,7 @@ _0207E734:
 	add r0, sp, #0x60
 	mov r2, sb
 	sub r1, r1, sb
-	bl sub_0207C4C8
+	bl MemcpyFast
 	sub r4, r4, sb
 	b _0207E780
 _0207E76C:
@@ -140674,7 +140674,7 @@ sub_0207E8A4: ; 0x0207E8A4
 	ldr r0, [r0, #0x28]
 	add r0, r0, r2
 	mov r2, r3
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207E8A4
@@ -140686,7 +140686,7 @@ sub_0207E8C0: ; 0x0207E8C0
 	mov r0, r1
 	add r1, ip, r2
 	mov r2, r3
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207E8C0
@@ -140696,7 +140696,7 @@ sub_0207E8E0: ; 0x0207E8E0
 	stmdb sp!, {r3, lr}
 	mov r0, r2
 	mov r2, r3
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0207E8E0
@@ -141034,7 +141034,7 @@ sub_0207ED88: ; 0x0207ED88
 	mov r1, #0
 	mov r2, #0x5c
 	mov r4, r0
-	bl sub_0207C40C
+	bl MemsetFast
 	mov r0, #0
 	str r0, [r4, #0x10]
 	str r0, [r4, #0xc]
@@ -141285,7 +141285,7 @@ sub_0207F05C: ; 0x0207F05C
 	ldr r2, [r7, #0x30]
 	mov r0, r5
 	mov r1, #0
-	bl sub_0207C40C
+	bl MemsetFast
 _0207F0E8:
 	add r0, sp, #4
 	bl sub_0207F70C
@@ -141312,7 +141312,7 @@ _0207F0F0:
 	ldr r2, [r7, #0x38]
 	mov r0, r5
 	mov r1, #0
-	bl sub_0207C40C
+	bl MemsetFast
 _0207F14C:
 	add r0, sp, #4
 	bl sub_0207F70C
@@ -142118,7 +142118,7 @@ sub_0207FB40: ; 0x0207FB40
 	add r0, r4, r5
 	sub r2, r6, r5
 	mov r1, #0
-	bl sub_0207C40C
+	bl MemsetFast
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_0207FB40
 
@@ -142224,7 +142224,7 @@ sub_0207FC9C: ; 0x0207FC9C
 	mov r1, r5
 	add r0, ip, r3
 	mov r2, #0x20
-	bl sub_0207C4C8
+	bl MemcpyFast
 	add r0, sp, #0x18
 	str r4, [r5, #0x20]
 	bl FileInit
@@ -142324,11 +142324,11 @@ sub_0207FE28: ; 0x0207FE28
 	add r0, sp, #0x44
 	mov r1, #0
 	mov r2, #0x14
-	bl sub_0207C40C
+	bl MemsetFast
 	ldr r2, _0207FEB8 ; =_020B2BB8
 	add r1, sp, #4
 	ldmia r2, {r0, r2}
-	bl sub_0207C4C8
+	bl MemcpyFast
 	ldr r3, _0207FEB8 ; =_020B2BB8
 	mov r1, r6
 	ldr ip, [r3, #4]
@@ -142394,7 +142394,7 @@ _0207FF2C:
 	ldr r0, [r5, #4]
 	mov r2, r4
 	mov r1, #0
-	bl sub_0207C40C
+	bl MemsetFast
 	bl WaitForever2
 	ldmia sp!, {r3, r4, r5, pc}
 _0207FF4C:
@@ -142579,14 +142579,14 @@ sub_0208013C: ; 0x0208013C
 	add r1, r6, #0x18
 	mov r0, r5
 	add r1, r1, ip
-	bl sub_0207C4C8
+	bl MemcpyFast
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02080190:
 	add r1, r6, #0x18
 	mov r0, r5
 	mov r2, r7
 	add r1, r1, ip
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, r6
 	bl sub_020802BC
 	sub r4, r4, r7
@@ -142599,7 +142599,7 @@ _020801C4:
 	mov r0, r7
 	mov r2, r5
 	add r1, r6, #0x18
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, r6
 	add r7, r7, #0x40
 	bl sub_020802BC
@@ -142611,7 +142611,7 @@ _020801EC:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r0, r7
 	add r1, r6, #0x18
-	bl sub_0207C4C8
+	bl MemcpyFast
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0208013C
 
@@ -142637,7 +142637,7 @@ sub_02080204: ; 0x02080204
 	bhs _02080268
 	add r0, r4, #0x18
 	add r0, r0, r3
-	bl sub_0207C40C
+	bl MemsetFast
 	mov r0, r4
 	bl sub_020802BC
 	mov r3, #0
@@ -142649,7 +142649,7 @@ _02080268:
 	add r0, r0, r3
 	sub r2, r2, #8
 	mov r1, #0
-	bl sub_0207C40C
+	bl MemsetFast
 _02080284:
 	str r7, [r4, #0x50]
 	mov r0, r4
@@ -142658,11 +142658,11 @@ _02080284:
 	mov r0, r4
 	mov r1, r5
 	mov r2, #0x10
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, r4
 	mov r1, #0
 	mov r2, #0x58
-	bl sub_0207C40C
+	bl MemsetFast
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020802B8: .word _020B2BC0
@@ -142967,7 +142967,7 @@ sub_020806C0: ; 0x020806C0
 	mov r0, sb
 	mov r2, r4
 	add r1, r6, r1
-	bl sub_0207C4C8
+	bl MemcpyFast
 	ldr r1, _02080810 ; =_020B2D88
 	mov r0, sl
 	ldr r3, [r1]
@@ -142983,7 +142983,7 @@ _02080758:
 	mov r0, sb
 	mov r2, r8
 	add r1, r6, r1
-	bl sub_0207C4C8
+	bl MemcpyFast
 	ldr r0, [sl, #0x1c]
 	add r0, r0, r8
 	str r0, [sl, #0x1c]
@@ -143011,7 +143011,7 @@ _020807BC:
 	mov r0, sb
 	mov r1, r6
 	mov r2, r5
-	bl sub_0207C4C8
+	bl MemcpyFast
 	ldr r3, [r4]
 	mov r0, sl
 	mov r1, r6
@@ -143028,7 +143028,7 @@ _020807F0:
 	mov r0, sb
 	mov r1, r6
 	mov r2, r8
-	bl sub_0207C4C8
+	bl MemcpyFast
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02080810: .word _020B2D88
@@ -143165,7 +143165,7 @@ _020808D4:
 	add r1, sp, #0x10
 	mov r2, #4
 	str r0, [r3, #0x1c]
-	bl sub_0207C314
+	bl ArrayFill32
 	ldmia sp!, {r4, r5, r6, lr}
 	add sp, sp, #0x10
 	bx lr
@@ -146293,7 +146293,7 @@ sub_02083248: ; 0x02083248
 	str r0, [r4, #0xc]
 	str r0, [r4, #0x18]
 	str r1, [r4]
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	ldr r0, _02083340 ; =_022BB780
 	mov r1, #0x60
 	bl sub_0207A2DC
@@ -146310,7 +146310,7 @@ sub_02083248: ; 0x02083248
 	ldr r0, _02083348 ; =0x027FFE00
 	mov r2, #0x160
 	sub r1, r0, #0x380
-	bl sub_0207C4C8
+	bl MemcpyFast
 _020832BC:
 	mov r2, #0
 	mov r0, #4
@@ -146495,7 +146495,7 @@ sub_020834A4: ; 0x020834A4
 	mov r1, #0
 	add r0, r4, #0x18
 	mov r2, #0x48
-	bl sub_0207C40C
+	bl MemsetFast
 	ldr r0, _0208380C ; =0x0000203F
 	str r5, [r4, #4]
 	str r0, [r4, #0x58]
@@ -146797,7 +146797,7 @@ _020838F0:
 	ldr r0, [sb, #0x1c]
 	mov r1, r6
 	mov r2, r8
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, r6
 	mov r1, r8
 	bl sub_0207A2DC
@@ -146837,7 +146837,7 @@ _0208397C:
 	ldr r1, [sb, #0x20]
 	mov r0, r6
 	mov r2, r8
-	bl sub_0207C4C8
+	bl MemcpyFast
 _02083994:
 	ldr r0, [sb, #0x1c]
 	add r0, r0, r8
@@ -147098,7 +147098,7 @@ sub_02083C8C: ; 0x02083C8C
 	ldr r1, [r4, #0x20]
 	mov r2, r5
 	add r0, r0, r3
-	bl sub_0207C4C8
+	bl MemcpyFast
 	ldr r2, [r4, #0x1c]
 	ldr r1, [r4, #0x20]
 	ldr r0, [r4, #0x24]
@@ -148320,7 +148320,7 @@ _02084C60:
 	ldr r0, _02084CEC ; =0xFFFF0020
 	ldr r1, _02084CF0 ; =_022BC084
 	mov r2, #0x9c
-	bl sub_0207C330
+	bl ArrayCopy32
 	bl sub_0207A270
 	ldr r0, _02084CDC ; =_022BC080
 	add r0, r0, #0xfe000000
@@ -148469,12 +148469,12 @@ _02084E2C: .word _022BC650
 
 	arm_func_start sub_02084E30
 sub_02084E30: ; 0x02084E30
-	ldr ip, _02084E40 ; =sub_0207C40C
+	ldr ip, _02084E40 ; =MemsetFast
 	mov r1, #0
 	mov r2, #0x24
 	bx ip
 	.align 2, 0
-_02084E40: .word sub_0207C40C
+_02084E40: .word MemsetFast
 	arm_func_end sub_02084E30
 
 	arm_func_start sub_02084E44
@@ -148492,7 +148492,7 @@ _02084E68:
 	mov r0, r6
 	mov r1, r5
 	mov r2, fp
-	bl sub_0207C40C
+	bl MemsetFast
 	bl EnableIrqFlag
 	ldr r1, [r8, #0xc0]
 	mov r7, r0
@@ -148779,7 +148779,7 @@ sub_020851AC: ; 0x020851AC
 	add r1, sp, #0
 	add r0, r4, #0x50
 	mov r2, #8
-	bl sub_0207C4C8
+	bl MemcpyFast
 	add r0, sp, #0
 	mov r1, #8
 	bl sub_0207A2C0
@@ -149327,7 +149327,7 @@ _020858D0:
 	mov r7, sl
 	mov fp, sl
 	str r3, [sp, #8]
-	bl sub_0207C314
+	bl ArrayFill32
 	ldrsb r0, [r8, #1]!
 	cmp r0, #0x5e
 	moveq r0, sl
@@ -178151,14 +178151,14 @@ _020AFC80:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _020AFCC4
 _020AFCC4:
-	.word sub_0201F10C
-	.word sub_0201F108
-	.word sub_0201F05C
-	.word sub_0201EEF0
-	.word sub_0201EE50
-	.word sub_0201ED88
-	.word Generate3dCanvasBorder
-	.word sub_0201E844
+	.word Render3d64Texture
+	.word Render3d64Nothing
+	.word Render3d64Rectangle
+	.word Render3d64RectangleMulticolor
+	.word Render3d64Quadrilateral
+	.word Render3d64Tiling
+	.word Render3d64Border
+	.word Render3d64Texture0x7
 	.global _020AFCE4
 _020AFCE4:
 	.byte 0x00, 0x00, 0x00, 0x00

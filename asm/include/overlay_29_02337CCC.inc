@@ -123,7 +123,7 @@
 .public sub_0200F940
 .public sub_0201B9F8
 .public sub_0201E13C
-.public InitRender3dElement
+.public InitRender3dElement64
 .public sub_0201F2A0
 .public sub_0204AEA0
 .public sub_0204AEC0

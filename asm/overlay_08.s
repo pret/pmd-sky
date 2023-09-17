@@ -462,7 +462,7 @@ _0233CF8C:
 	strb r3, [r4, #0x15]
 	add r1, r4, #0x16
 	mov r2, r3, lsl #1
-	bl sub_0207C4C8
+	bl MemcpyFast
 	ldrb r1, [r4, #0x14]
 	ldr r0, _0233D0E0 ; =0x0233EC28
 	mov r3, #0
@@ -1090,7 +1090,7 @@ ov08_0233D788: ; 0x0233D788
 	mov r2, #0x16
 	ldr r1, [r1, #4]
 	add r1, r1, #0x34
-	bl sub_0207C4C8
+	bl MemcpyFast
 _0233D7FC:
 	ldr r0, _0233D814 ; =0x0233EC28
 	ldr r1, [r0, #4]
@@ -1762,15 +1762,15 @@ ov08_0233DFF8: ; 0x0233DFF8
 	ldr r0, _0233E0E4 ; =0x0234AE00
 	mov r2, #0x400
 	strh r1, [r3, #4]
-	bl sub_0207C40C
+	bl MemsetFast
 	ldr r0, _0233E0E8 ; =0x0234AD40
 	mov r1, #0
 	mov r2, #0xc0
-	bl sub_0207C40C
+	bl MemsetFast
 	ldr r0, _0233E0EC ; =0x0234ACD4
 	mov r1, #0
 	mov r2, #0x18
-	bl sub_0207C40C
+	bl MemsetFast
 	ldr r1, _0233E0E0 ; =0x0234AC80
 	mov r2, #0
 	mov r0, #3

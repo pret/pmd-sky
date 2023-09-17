@@ -121,7 +121,7 @@
 .public InitPortraitBox
 .public InitPortraitBoxWithMonsterId
 .public InitPreprocessorArgs
-.public InitRender3dElement
+.public InitRender3dElement64
 .public InitStandardItem
 .public IqSkillFlagTest
 .public IsAdvancedMenuActive
@@ -432,7 +432,7 @@
 .public sub_0201E12C
 .public sub_0201E13C
 .public sub_0201E7D8
-.public sub_0201F1D4
+.public Render3dElement64
 .public sub_0201F2A0
 .public sub_0201F2E4
 .public sub_0201F324

@@ -224,7 +224,7 @@ sub_01FF8224: ; 0x01FF8224
 	mov r2, #0
 	add r0, sp, #0x10
 	str r2, [r1]
-	bl sub_020777A8
+	bl GeomMtxMult4x3
 	ldrh r0, [r4, #0x14]
 	ldrh r2, [r4, #0x16]
 	ldr r1, _01FF8474 ; =0x0400046C
@@ -387,7 +387,7 @@ sub_01FF849C: ; 0x01FF849C
 	mov r1, #0
 	add r0, sp, #0x18
 	str r1, [r2]
-	bl sub_020777A8
+	bl GeomMtxMult4x3
 	ldr r1, _01FF871C ; =0x0400046C
 	mov r0, #0x40000
 	str r0, [r1]
@@ -582,7 +582,7 @@ sub_01FF8728: ; 0x01FF8728
 	mov r2, #0
 	add r0, sp, #0x1c
 	str r2, [r1]
-	bl sub_020777A8
+	bl GeomMtxMult4x3
 	ldr r1, _01FF89FC ; =0x0400046C
 	mov r0, #0x40000
 	str r0, [r1]
@@ -748,7 +748,7 @@ sub_01FF8A10: ; 0x01FF8A10
 	mov r2, #0
 	add r0, sp, #0
 	str r2, [r1]
-	bl sub_020777A8
+	bl GeomMtxMult4x3
 	ldrh r0, [r8, #0x1e]
 	ldrh r1, [r8, #0x20]
 	ldr r3, _01FF8C24 ; =0x0400046C
@@ -890,7 +890,7 @@ sub_01FF8CAC: ; 0x01FF8CAC
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x28
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, #3
 	strh r0, [r4]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -906,7 +906,7 @@ sub_01FF8CDC: ; 0x01FF8CDC
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x34
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, #2
 	strh r0, [r4]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -921,7 +921,7 @@ sub_01FF8D0C: ; 0x01FF8D0C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x26
-	bl sub_0207C40C
+	bl MemsetFast
 	mov r1, #0
 	mov r0, r4
 	strh r1, [r4]
@@ -937,7 +937,7 @@ sub_01FF8D3C: ; 0x01FF8D3C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x26
-	bl sub_0207C40C
+	bl MemsetFast
 	mov r1, #1
 	mov r0, r4
 	strh r1, [r4]
@@ -953,7 +953,7 @@ sub_01FF8D6C: ; 0x01FF8D6C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x28
-	bl sub_0207C40C
+	bl MemsetFast
 	mov r1, #3
 	mov r0, r4
 	strh r1, [r4]
@@ -969,7 +969,7 @@ sub_01FF8D9C: ; 0x01FF8D9C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x34
-	bl sub_0207C40C
+	bl MemsetFast
 	mov r1, #2
 	mov r0, r4
 	strh r1, [r4]
@@ -2140,7 +2140,7 @@ _01FF9CD8:
 	mov r0, r3
 	ldr r1, [r1]
 	add r1, r1, #0x4c
-	bl Rgb8ToBgr5
+	bl Rgb8ToRgb5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _01FF9CFC:
 	mov r0, #0
@@ -2215,7 +2215,7 @@ _01FF9DF0:
 	mov r0, r3
 	ldr r1, [r1]
 	add r1, r1, #0x4c
-	bl Rgb8ToBgr5
+	bl Rgb8ToRgb5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _01FF9E10: .word 0x02353530

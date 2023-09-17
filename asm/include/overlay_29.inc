@@ -417,7 +417,7 @@
 .public UnloadCurrentWazaP
 .public GetName
 .public DungeonRequestsDoneWrapper
-.public InitRender3dElement
+.public InitRender3dElement64
 .public sub_020483D8
 .public ov10_022C1E80
 .public LoadFileFromRom

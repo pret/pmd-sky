@@ -42,8 +42,11 @@ def read_pmdsky_debug_symbols() -> Dict[str, Dict[int, SymbolDetails]]:
             addresses = function['address'][f'NA{address_suffix}']
             function_name = function['name']
             if isinstance(addresses, list):
-                for address in addresses:
-                    symbols[address] = SymbolDetails(f'{function_name}__{address:08X}', full_file_path)
+                if len(addresses) > 1:
+                    for address in addresses:
+                        symbols[address] = SymbolDetails(f'{function_name}__{address:08X}', full_file_path)
+                else:
+                    symbols[addresses[0]] = SymbolDetails(function_name, full_file_path)
             else:
                 symbols[addresses] = SymbolDetails(function_name, full_file_path)
 

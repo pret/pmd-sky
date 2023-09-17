@@ -329,7 +329,7 @@ _022ED1D0:
 	bne _022ED370
 _022ED1E0:
 	add r0, sp, #0x48
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	ldr r1, _022ED7F4 ; =0x0237C99C
 	ldr r0, _022ED7F8 ; =0x020AFC70
 	ldrh r2, [r1]
@@ -450,7 +450,7 @@ _022ED37C:
 	strh r1, [sp, #6]
 	ldrsh r5, [r2, #0xa]
 	ldrsh r4, [r2, #8]
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	ldrsh r3, [sp, #2]
 	ldrsh r6, [sp, #4]
 	ldrsh lr, [sp]

@@ -58,8 +58,8 @@
 .public sub_02046D20
 .public sub_0207B9EC
 .public sub_0207BA08
-.public sub_0207C40C
-.public sub_0207C4C8
+.public MemsetFast
+.public MemcpyFast
 .public sub_0207F6C4
 .public sub_0207F70C
 .public WaitForever2

@@ -300,7 +300,7 @@
 .public sub_0207C03C
 .public sub_0207C0DC
 .public sub_0207C164
-.public sub_0207C358
+.public ArrayFill32Fast
 .public sub_0207F3BC
 .public sub_0207F6C4
 .public sub_0207F70C

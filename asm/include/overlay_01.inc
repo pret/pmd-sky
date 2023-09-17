@@ -354,7 +354,7 @@
 .public sub_0205BBA4
 .public sub_02062B64
 .public sub_0207A2A4
-.public sub_0207C330
+.public ArrayCopy32
 .public sub_020851AC
 .public sub_0208FE3C
 .public sub_0208FE48

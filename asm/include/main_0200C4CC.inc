@@ -99,7 +99,7 @@
 .public RandRange
 .public RandRangeSafe
 .public Render3dStack
-.public Rgb8ToBgr5
+.public Rgb8ToRgb5
 .public SetDebugFlag
 .public SetDebugLogFlag
 .public SetRngSeed

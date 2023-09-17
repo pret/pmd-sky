@@ -559,7 +559,7 @@ ov01_02329BC8: ; 0x02329BC8
 	mov r2, #0x40
 	ldr r0, [r1, #0x4c]
 	ldr r1, [r1, #0x20]
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldr r0, _02329C2C ; =ov01_0233C240
 	ldrh r1, [r0, #6]
 	ldr r0, [r0, #0x20]

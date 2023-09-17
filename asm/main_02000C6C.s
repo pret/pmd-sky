@@ -5381,8 +5381,8 @@ sub_02004F80: ; 0x02004F80
 _02004FC8: .word 0xEDB88320
 	arm_func_end sub_02004F80
 
-	arm_func_start Rgb8ToBgr5
-Rgb8ToBgr5: ; 0x02004FCC
+	arm_func_start Rgb8ToRgb5
+Rgb8ToRgb5: ; 0x02004FCC
 	ldrb r2, [r1, #1]
 	ldrb r3, [r1, #2]
 	ldrb ip, [r1]
@@ -5394,7 +5394,7 @@ Rgb8ToBgr5: ; 0x02004FCC
 	orr r1, r1, r3, asr #3
 	strh r1, [r0]
 	bx lr
-	arm_func_end Rgb8ToBgr5
+	arm_func_end Rgb8ToRgb5
 
 	arm_func_start sub_02004FF8
 sub_02004FF8: ; 0x02004FF8
@@ -10212,24 +10212,24 @@ sub_02008DAC: ; 0x02008DAC
 	mov r0, #0
 	mov r1, #0x6800000
 	mov r2, #0xa4000
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	bl sub_0207735C
 	mov r0, #0xc0
 	mov r1, #0x7000000
 	mov r2, #0x400
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	mov r0, #0
 	mov r1, #0x5000000
 	mov r2, #0x400
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	mov r0, #0xc0
 	ldr r1, _02008EC4 ; =0x07000400
 	mov r2, #0x400
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	mov r0, #0
 	ldr r1, _02008EC8 ; =0x05000400
 	mov r2, #0x400
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	mov r1, #0x100
 	ldr r0, _02008ECC ; =_022A37A0
 	str r1, [r0, #4]
@@ -11818,12 +11818,12 @@ _0200A28C:
 	arm_func_start sub_0200A29C
 sub_0200A29C: ; 0x0200A29C
 	ldr r0, [r0, #0x10]
-	ldr ip, _0200A2B0 ; =Rgb8ToBgr5
+	ldr ip, _0200A2B0 ; =Rgb8ToRgb5
 	add r0, r0, r1, lsl #1
 	mov r1, r2
 	bx ip
 	.align 2, 0
-_0200A2B0: .word Rgb8ToBgr5
+_0200A2B0: .word Rgb8ToRgb5
 	arm_func_end sub_0200A29C
 
 	arm_func_start sub_0200A2B4
@@ -13471,23 +13471,23 @@ sub_0200B76C: ; 0x0200B76C
 	mov r0, #0
 	mov r1, #0x6800000
 	mov r2, #0xa4000
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	mov r0, #0xc0
 	mov r1, #0x7000000
 	mov r2, #0x400
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	mov r0, #0
 	mov r1, #0x5000000
 	mov r2, #0x400
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	mov r0, #0xc0
 	ldr r1, _0200B87C ; =0x07000400
 	mov r2, #0x400
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	mov r0, #0
 	ldr r1, _0200B880 ; =0x05000400
 	mov r2, #0x400
-	bl sub_0207C358
+	bl ArrayFill32Fast
 	bl sub_02019304
 	mov r4, r0
 	ldr r1, _0200B884 ; =_02092AE8

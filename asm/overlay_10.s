@@ -8170,7 +8170,7 @@ _022C3650:
 	cmp r2, #4
 	blt _022C3650
 	add r0, sp, #0x20
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	mov r0, #5
 	strb r0, [sp, #0x5c]
 	mov r2, #0

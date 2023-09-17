@@ -39,6 +39,6 @@
 .public ov29_0234B034
 .public sub_0201B9F8
 .public sub_0201E080
-.public InitRender3dElement
+.public InitRender3dElement64
 .public sub_0201F2A0
 .public sub_02024FC8

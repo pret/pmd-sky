@@ -529,7 +529,7 @@ ov29_02335808: ; 0x02335808
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	mov r1, #0
 	mov r0, r5, lsl #0x10
 	strb r1, [r4, #0x3c]
@@ -904,7 +904,7 @@ _02335C48:
 	mov r6, #0x10
 	blt _02335F24
 	add r0, sp, #4
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	ldr r0, _02335F30 ; =0x0237CA8C
 	mov fp, #5
 	ldrh r3, [r0]
@@ -1039,7 +1039,7 @@ ov29_02335F40: ; 0x02335F40
 	mov sl, r1
 	mov r4, r3
 	ldr sb, [sp, #0x6c]
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	mov r0, #0
 	ldrh r1, [sp, #0x68]
 	mov r2, #0x21

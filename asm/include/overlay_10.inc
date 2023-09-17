@@ -39,7 +39,7 @@
 .public InitPortraitBox
 .public InitPortraitBoxWithMonsterId
 .public InitPreprocessorArgs
-.public InitRender3dElement
+.public InitRender3dElement64
 .public IsLosableItem
 .public IsNoLossPenaltyDungeon
 .public ItemZInit

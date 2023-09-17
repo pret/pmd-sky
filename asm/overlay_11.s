@@ -15756,7 +15756,7 @@ _022E977C:
 	bl ov11_022E98CC
 	bl ov11_022E99E0
 	ldr r0, _022E9844 ; =0x02388FD8
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	mov r2, #0x100
 	ldr r0, _022E9844 ; =0x02388FD8
 	mov r1, #0xc0
@@ -27000,7 +27000,7 @@ _022F2ED8:
 	tst r0, #2
 	bne _022F2EF0
 	add r0, r1, #8
-	bl sub_0201F1D4
+	bl Render3dElement64
 _022F2EF0:
 	add r6, r6, #1
 	cmp r6, #0x30
@@ -27025,7 +27025,7 @@ ov11_022F2F1C: ; 0x022F2F1C
 _022F2F2C:
 	mla r7, r6, r4, r5
 	add r0, r7, #8
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	ldrb r0, [r7, #0x45]
 	add r6, r6, #1
 	cmp r6, #0x30

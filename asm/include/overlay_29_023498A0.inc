@@ -191,7 +191,7 @@
 .public sub_0201D804
 .public sub_0201DDFC
 .public sub_0201DE10
-.public InitRender3dElement
+.public InitRender3dElement64
 .public sub_0201F2A0
 .public sub_0201F464
 .public sub_02024FB8

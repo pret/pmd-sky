@@ -144,7 +144,7 @@
 .public ov29_0231B008
 .public ov29_02338350
 .public ov29_02348D00
-.public Rgb8ToBgr5
+.public Rgb8ToRgb5
 .public SetActionPassTurnOrWalk
 .public SetActionRegularAttack
 .public SetActionUseMoveAi
@@ -157,13 +157,13 @@
 .public sub_020275F8
 .public sub_0202760C
 .public sub_02027AF0
-.public sub_020777A8
+.public GeomMtxMult4x3
 .public sub_0207A238
 .public sub_0207A244
 .public sub_0207A300
 .public sub_0207A324
-.public sub_0207C40C
-.public sub_0207C4C8
+.public MemsetFast
+.public MemcpyFast
 .public sub_02080EF0
 .public sub_02080EF0
 .public sub_02080F30
