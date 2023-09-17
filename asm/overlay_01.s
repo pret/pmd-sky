@@ -559,7 +559,7 @@ ov01_02329BC8: ; 0x02329BC8
 	mov r2, #0x40
 	ldr r0, [r1, #0x4c]
 	ldr r1, [r1, #0x20]
-	bl sub_0207C330
+	bl ArrayCopy32
 	ldr r0, _02329C2C ; =ov01_0233C240
 	ldrh r1, [r0, #6]
 	ldr r0, [r0, #0x20]
@@ -3454,7 +3454,7 @@ ov01_0232C0CC: ; 0x0232C0CC
 	ldr r1, _0232C0FC ; =ov01_0233C140
 	mov r2, #0
 	strb r2, [r1, #1]
-	ldr r0, _0232C100 ; =_020AFC68
+	ldr r0, _0232C100 ; =WAN_TABLE
 	strb r2, [r1]
 	ldr r0, [r0]
 	ldr r1, _0232C104 ; =ov01_0233AEF8
@@ -3464,7 +3464,7 @@ ov01_0232C0CC: ; 0x0232C0CC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232C0FC: .word ov01_0233C140
-_0232C100: .word _020AFC68
+_0232C100: .word WAN_TABLE
 _0232C104: .word ov01_0233AEF8
 _0232C108: .word ov01_0233C780
 	arm_func_end ov01_0232C0CC
@@ -3474,7 +3474,7 @@ ov01_0232C10C: ; 0x0232C10C
 	stmdb sp!, {r3, lr}
 	bl ov01_0232C2AC
 	ldr r0, _0232C13C ; =ov01_0233C780
-	ldr r2, _0232C140 ; =_020AFC68
+	ldr r2, _0232C140 ; =WAN_TABLE
 	ldrsh r1, [r0]
 	ldr r0, [r2]
 	bl DeleteWanTableEntryVeneer
@@ -3485,7 +3485,7 @@ ov01_0232C10C: ; 0x0232C10C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232C13C: .word ov01_0233C780
-_0232C140: .word _020AFC68
+_0232C140: .word WAN_TABLE
 _0232C144: .word ov01_0233C140
 	arm_func_end ov01_0232C10C
 
@@ -3628,7 +3628,7 @@ ov01_0232C2E4: ; 0x0232C2E4
 	ldrsh r0, [r0, #4]
 	bl GetSpriteIndex__020526EC
 	mov r3, #0
-	ldr r1, _0232C364 ; =_020AFC68
+	ldr r1, _0232C364 ; =WAN_TABLE
 	str r3, [sp]
 	mov r2, r0
 	ldr r0, [r1]
@@ -3640,7 +3640,7 @@ _0232C330:
 	ldr r0, _0232C36C ; =0x00000229
 	bl GetSpriteIndex__020526EC
 	mov r3, #0
-	ldr r1, _0232C364 ; =_020AFC68
+	ldr r1, _0232C364 ; =WAN_TABLE
 	str r3, [sp]
 	mov r2, r0
 	ldr r0, [r1]
@@ -3652,7 +3652,7 @@ _0232C358:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232C360: .word ov01_0233C144
-_0232C364: .word _020AFC68
+_0232C364: .word WAN_TABLE
 _0232C368: .word ov01_0233C87C
 _0232C36C: .word 0x00000229
 	arm_func_end ov01_0232C2E4
@@ -3662,7 +3662,7 @@ ov01_0232C370: ; 0x0232C370
 	stmdb sp!, {r3, lr}
 	bl ov01_0232C540
 	ldr r0, _0232C3A0 ; =ov01_0233C87C
-	ldr r2, _0232C3A4 ; =_020AFC68
+	ldr r2, _0232C3A4 ; =WAN_TABLE
 	ldrsh r1, [r0]
 	ldr r0, [r2]
 	bl DeleteWanTableEntryVeneer
@@ -3673,7 +3673,7 @@ ov01_0232C370: ; 0x0232C370
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232C3A0: .word ov01_0233C87C
-_0232C3A4: .word _020AFC68
+_0232C3A4: .word WAN_TABLE
 _0232C3A8: .word ov01_0233C144
 	arm_func_end ov01_0232C370
 
@@ -8364,13 +8364,13 @@ ov01_02330224: ; 0x02330224
 	str r3, [r1, #4]
 	bl RandInt
 	mov r4, r0
-	ldr r0, _02330588 ; =_020AFC68
+	ldr r0, _02330588 ; =WAN_TABLE
 	ldr r1, _0233058C ; =ov01_0233B104
 	ldr r0, [r0]
 	mov r2, #0
 	bl LoadWanTableEntry
 	ldr r1, _02330584 ; =ov01_0233C164
-	ldr r2, _02330588 ; =_020AFC68
+	ldr r2, _02330588 ; =WAN_TABLE
 	ldr r3, [r1]
 	ldr r1, _02330590 ; =ov01_0233C168
 	strh r0, [r3, #0x90]
@@ -8557,7 +8557,7 @@ ov01_02330224: ; 0x02330224
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02330584: .word ov01_0233C164
-_02330588: .word _020AFC68
+_02330588: .word WAN_TABLE
 _0233058C: .word ov01_0233B104
 _02330590: .word ov01_0233C168
 	arm_func_end ov01_02330224
@@ -8589,13 +8589,13 @@ _023305C0:
 	bl sub_0202FED4
 _023305EC:
 	ldr r0, _0233063C ; =ov01_0233C164
-	ldr r1, _02330640 ; =_020AFC68
+	ldr r1, _02330640 ; =WAN_TABLE
 	ldr r2, [r0]
 	ldr r0, [r1]
 	ldrsh r1, [r2, #0x90]
 	bl DeleteWanTableEntryVeneer
 	ldr r0, _0233063C ; =ov01_0233C164
-	ldr r1, _02330640 ; =_020AFC68
+	ldr r1, _02330640 ; =WAN_TABLE
 	ldr r2, [r0]
 	ldr r0, [r1]
 	ldrsh r1, [r2, #0x92]
@@ -8610,7 +8610,7 @@ _023305EC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233063C: .word ov01_0233C164
-_02330640: .word _020AFC68
+_02330640: .word WAN_TABLE
 	arm_func_end ov01_02330594
 
 	arm_func_start ov01_02330644
@@ -9244,7 +9244,7 @@ ov01_02330EB8: ; 0x02330EB8
 	strb ip, [r3, #1]
 	bl FemaleToMaleForm
 	mov r3, #0
-	ldr r2, _02330FE8 ; =ov01_0233B314
+	ldr r2, _02330FE8 ; =PRINTS_STRUCT
 	b _02330F04
 _02330EE8:
 	cmp r0, r1
@@ -9271,7 +9271,7 @@ _02330F18:
 	ldr r2, [r1, r3, lsl #3]
 	ldr r1, _02330FF0 ; =ov01_0233B504
 	bl sprintf
-	ldr r0, _02330FF4 ; =_020AFC68
+	ldr r0, _02330FF4 ; =WAN_TABLE
 	add r1, sp, #0x10
 	ldr r0, [r0]
 	mov r2, #0
@@ -9315,10 +9315,10 @@ _02330FDC:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02330FE4: .word ov01_0233C174
-_02330FE8: .word ov01_0233B314
+_02330FE8: .word PRINTS_STRUCT
 _02330FEC: .word ov01_0233B318
 _02330FF0: .word ov01_0233B504
-_02330FF4: .word _020AFC68
+_02330FF4: .word WAN_TABLE
 _02330FF8: .word ov01_0233C978
 	arm_func_end ov01_02330EB8
 
@@ -9329,7 +9329,7 @@ ov01_02330FFC: ; 0x02330FFC
 	ldrsh r1, [r0, #2]
 	cmp r1, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _02331038 ; =_020AFC68
+	ldr r0, _02331038 ; =WAN_TABLE
 	ldr r0, [r0]
 	bl DeleteWanTableEntryVeneer
 	ldr r0, _02331034 ; =ov01_0233C174
@@ -9340,7 +9340,7 @@ ov01_02330FFC: ; 0x02330FFC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02331034: .word ov01_0233C174
-_02331038: .word _020AFC68
+_02331038: .word WAN_TABLE
 	arm_func_end ov01_02330FFC
 
 	arm_func_start ov01_0233103C
@@ -9713,7 +9713,7 @@ _02331554: .word 0x000001EA
 
 	arm_func_start AddMainMenuOption
 AddMainMenuOption: ; 0x02331558
-	ldr r2, _023315EC ; =ov01_0233B5D0
+	ldr r2, _023315EC ; =MAIN_MENU
 	b _023315DC
 _02331560:
 	ldr ip, [r2]
@@ -9754,7 +9754,7 @@ _023315DC:
 	bne _02331560
 	bx lr
 	.align 2, 0
-_023315EC: .word ov01_0233B5D0
+_023315EC: .word MAIN_MENU
 _023315F0: .word ov01_0233C178
 	arm_func_end AddMainMenuOption
 
@@ -9782,7 +9782,7 @@ _0233162C: .word ov01_0233C178
 
 	arm_func_start AddSubMenuOption
 AddSubMenuOption: ; 0x02331630
-	ldr r2, _023316C4 ; =ov01_0233B588
+	ldr r2, _023316C4 ; =SUBMENU
 	b _023316B4
 _02331638:
 	ldr ip, [r2]
@@ -9823,7 +9823,7 @@ _023316B4:
 	bne _02331638
 	bx lr
 	.align 2, 0
-_023316C4: .word ov01_0233B588
+_023316C4: .word SUBMENU
 _023316C8: .word ov01_0233C178
 	arm_func_end AddSubMenuOption
 
@@ -9928,7 +9928,7 @@ _02331810:
 	cmp r0, #0
 	bne _023324F4
 	bl ov01_0232F910
-	ldr r0, _0233250C ; =ov01_0233B538
+	ldr r0, _0233250C ; =OVERLAY1_D_BOX_LAYOUT_3
 	bl CreateDBox
 	ldr r1, _02332508 ; =ov01_0233C178
 	mov r3, #2
@@ -10091,7 +10091,7 @@ _02331A54:
 	mov r4, #1
 	b _023324F4
 _02331A78:
-	ldr r0, _02332510 ; =ov01_0233B518
+	ldr r0, _02332510 ; =OVERLAY1_D_BOX_LAYOUT_1
 	ldr r1, _02332514 ; =0x00400231
 	add r2, sp, #0x26c
 	add r3, r3, #0x1c
@@ -10270,7 +10270,7 @@ _02331CE4:
 	str r2, [sp, #0x1d4]
 	str r1, [r3, #0xc]
 	ldr r3, [r0]
-	ldr r0, _0233251C ; =ov01_0233B528
+	ldr r0, _0233251C ; =OVERLAY1_D_BOX_LAYOUT_2
 	add r5, r3, #0xf0
 	ldr r1, _02332520 ; =0x00400233
 	add r2, sp, #0x1d4
@@ -10360,7 +10360,7 @@ _02331E44:
 	bgt _023324F4
 	ldr r5, [r1, #0x110]
 	ldr r1, _02332524 ; =0x00400033
-	ldr r3, _02332528 ; =ov01_0233B568
+	ldr r3, _02332528 ; =CONTINUE_CHOICE
 	add r2, sp, #0x13c
 	mov r0, #0
 	str r5, [sp, #0x13c]
@@ -10448,7 +10448,7 @@ _02331F78:
 	str r1, [sp, #0xb0]
 	str r0, [sp, #0x104]
 	ldr r5, [r5, #0x114]
-	ldr r0, _02332534 ; =ov01_0233B548
+	ldr r0, _02332534 ; =OVERLAY1_D_BOX_LAYOUT_4
 	str r5, [sp]
 	mov r5, #0xa
 	ldr r1, _02332538 ; =0x00400A33
@@ -10834,17 +10834,17 @@ _02332500:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _02332508: .word ov01_0233C178
-_0233250C: .word ov01_0233B538
-_02332510: .word ov01_0233B518
+_0233250C: .word OVERLAY1_D_BOX_LAYOUT_3
+_02332510: .word OVERLAY1_D_BOX_LAYOUT_1
 _02332514: .word 0x00400231
 _02332518: .word 0x00000404
-_0233251C: .word ov01_0233B528
+_0233251C: .word OVERLAY1_D_BOX_LAYOUT_2
 _02332520: .word 0x00400233
 _02332524: .word 0x00400033
-_02332528: .word ov01_0233B568
+_02332528: .word CONTINUE_CHOICE
 _0233252C: .word 0x000001DF
 _02332530: .word 0x000001E1
-_02332534: .word ov01_0233B548
+_02332534: .word OVERLAY1_D_BOX_LAYOUT_4
 _02332538: .word 0x00400A33
 _0233253C: .word ov01_02332580
 _02332540: .word 0x000001E9
@@ -11062,14 +11062,14 @@ _02332810:
 _0233281C:
 	ldr r1, [r1]
 	str r0, [r1, #4]
-	ldr r0, _023329D0 ; =ov01_0233B71C
+	ldr r0, _023329D0 ; =OVERLAY1_D_BOX_LAYOUT_5
 	ldr r1, _023329D4 ; =ov01_02332EF4
 	bl sub_0202F8C4
 	ldr r2, _023329C8 ; =ov01_0233C184
 	mov r1, #0
 	ldr r2, [r2]
 	strb r0, [r2, #0x60c]
-	ldr r0, _023329D8 ; =ov01_0233B72C
+	ldr r0, _023329D8 ; =OVERLAY1_D_BOX_LAYOUT_6
 	bl sub_0202F8C4
 	ldr r1, _023329C8 ; =ov01_0233C184
 	ldr r2, [r1]
@@ -11164,8 +11164,8 @@ _02332950:
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xd]
 	bl sub_02027AF0
-	ldr r0, _023329F0 ; =ov01_0233B73C
-	ldr r3, _023329F4 ; =ov01_0233B74C
+	ldr r0, _023329F0 ; =OVERLAY1_D_BOX_LAYOUT_7
+	ldr r3, _023329F4 ; =MAIN_MENU_CONFIRM
 	add r2, sp, #0xc
 	mov r1, #0x33
 	bl sub_0202A5CC
@@ -11180,16 +11180,16 @@ _023329BC:
 _023329C4: .word ov01_0233B70C
 _023329C8: .word ov01_0233C184
 _023329CC: .word ov01_0233B798
-_023329D0: .word ov01_0233B71C
+_023329D0: .word OVERLAY1_D_BOX_LAYOUT_5
 _023329D4: .word ov01_02332EF4
-_023329D8: .word ov01_0233B72C
+_023329D8: .word OVERLAY1_D_BOX_LAYOUT_6
 _023329DC: .word 0x00000203
 _023329E0: .word 0x00000201
 _023329E4: .word 0x00000202
 _023329E8: .word 0x00000206
 _023329EC: .word 0x0000020A
-_023329F0: .word ov01_0233B73C
-_023329F4: .word ov01_0233B74C
+_023329F0: .word OVERLAY1_D_BOX_LAYOUT_7
+_023329F4: .word MAIN_MENU_CONFIRM
 	arm_func_end ov01_02332698
 
 	arm_func_start ov01_023329F8
@@ -11536,8 +11536,8 @@ _02332E58:
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xd]
 	bl sub_02027AF0
-	ldr r0, _02332EEC ; =ov01_0233B73C
-	ldr r3, _02332EF0 ; =ov01_0233B74C
+	ldr r0, _02332EEC ; =OVERLAY1_D_BOX_LAYOUT_7
+	ldr r3, _02332EF0 ; =MAIN_MENU_CONFIRM
 	add r2, sp, #0
 	mov r1, #0x33
 	bl sub_0202A5CC
@@ -11554,8 +11554,8 @@ _02332EDC: .word ov01_0233C184
 _02332EE0: .word 0x00000207
 _02332EE4: .word 0x00000205
 _02332EE8: .word 0x0000020A
-_02332EEC: .word ov01_0233B73C
-_02332EF0: .word ov01_0233B74C
+_02332EEC: .word OVERLAY1_D_BOX_LAYOUT_7
+_02332EF0: .word MAIN_MENU_CONFIRM
 	arm_func_end ov01_02332ACC
 
 	arm_func_start ov01_02332EF4
@@ -12118,7 +12118,7 @@ _023336CC:
 	strb r2, [r0]
 	str ip, [sp]
 	mov ip, #8
-	ldr r0, _0233375C ; =ov01_0233B7D0
+	ldr r0, _0233375C ; =OVERLAY1_D_BOX_LAYOUT_8
 	ldr r1, _02333760 ; =0x05001812
 	ldr r3, _02333764 ; =ov01_0233382C
 	add r2, sp, #8
@@ -12133,7 +12133,7 @@ _023336CC:
 	.align 2, 0
 _02333754: .word ov01_0233C188
 _02333758: .word 0x00003FE9
-_0233375C: .word ov01_0233B7D0
+_0233375C: .word OVERLAY1_D_BOX_LAYOUT_8
 _02333760: .word 0x05001812
 _02333764: .word ov01_0233382C
 	arm_func_end ov01_023336A0
@@ -12322,10 +12322,10 @@ ov01_02333994: ; 0x02333994
 	mov r1, r0
 	bl MemAlloc
 	ldr r1, _023339EC ; =ov01_0233C190
-	ldr r3, _023339F0 ; =ov01_0233B810
+	ldr r3, _023339F0 ; =MAIN_DEBUG_MENU_1
 	str r0, [r1, #4]
 	mov ip, #0xb
-	ldr r0, _023339F4 ; =ov01_0233B7F0
+	ldr r0, _023339F4 ; =OVERLAY1_D_BOX_LAYOUT_9
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
@@ -12341,8 +12341,8 @@ ov01_02333994: ; 0x02333994
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023339EC: .word ov01_0233C190
-_023339F0: .word ov01_0233B810
-_023339F4: .word ov01_0233B7F0
+_023339F0: .word MAIN_DEBUG_MENU_1
+_023339F4: .word OVERLAY1_D_BOX_LAYOUT_9
 	arm_func_end ov01_02333994
 
 	arm_func_start ov01_023339F8
@@ -12531,9 +12531,9 @@ ov01_02333C20: ; 0x02333C20
 	mov r1, r0
 	bl MemAlloc
 	ldr r1, _02333C70 ; =ov01_0233C198
-	ldr r3, _02333C74 ; =ov01_0233B890
+	ldr r3, _02333C74 ; =MAIN_DEBUG_MENU_2
 	str r0, [r1, #4]
-	ldr r0, _02333C78 ; =ov01_0233B870
+	ldr r0, _02333C78 ; =OVERLAY1_D_BOX_LAYOUT_10
 	mov r1, #0x13
 	mov r2, #0
 	bl sub_0202A5CC
@@ -12548,8 +12548,8 @@ ov01_02333C20: ; 0x02333C20
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02333C70: .word ov01_0233C198
-_02333C74: .word ov01_0233B890
-_02333C78: .word ov01_0233B870
+_02333C74: .word MAIN_DEBUG_MENU_2
+_02333C78: .word OVERLAY1_D_BOX_LAYOUT_10
 	arm_func_end ov01_02333C20
 
 	arm_func_start ov01_02333C7C
@@ -12734,7 +12734,7 @@ ov01_02333E60: ; 0x02333E60
 	strh r8, [r0, #0x8c]
 	b _023344E4
 _02333ED8:
-	ldr r0, _02334608 ; =_020AF6B8
+	ldr r0, _02334608 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r0]
 	add r0, r1, r8, lsl #1
 	add r0, r0, #0x300
@@ -12798,7 +12798,7 @@ _02333F90:
 	ldrsh r0, [r0, #0x8c]
 	cmp r0, #0
 	bne _02333FFC
-	ldr r0, _02334608 ; =_020AF6B8
+	ldr r0, _02334608 ; =BAG_ITEMS_PTR_MIRROR
 	add r1, r1, #0x100
 	ldr r0, [r0]
 	add r0, r0, r8, lsl #1
@@ -12812,7 +12812,7 @@ _02333F90:
 	strh r1, [r0, #0x8c]
 	b _023344D8
 _02333FFC:
-	ldr r0, _02334608 ; =_020AF6B8
+	ldr r0, _02334608 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, r8, lsl #1
 	add r0, r0, #0x300
@@ -12901,7 +12901,7 @@ _0233414C:
 	add r0, r0, #0x100
 	ldrsh r0, [r0, #0xbc]
 	bl sub_0200EB64
-	ldr r1, _02334608 ; =_020AF6B8
+	ldr r1, _02334608 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, r0, lsl #0x10
 	ldr r1, [r1]
 	add r1, r1, r8, lsl #1
@@ -13127,7 +13127,7 @@ _02334474:
 _02334494:
 	cmp r4, r6
 	bgt _02334474
-	ldr r0, _02334608 ; =_020AF6B8
+	ldr r0, _02334608 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, _02334604 ; =ov01_0233C1A0
 	ldr r0, [r0]
 	ldr r2, [r1, #4]
@@ -13222,7 +13222,7 @@ _023344EC:
 	.align 2, 0
 _02334600: .word 0x00000998
 _02334604: .word ov01_0233C1A0
-_02334608: .word _020AF6B8
+_02334608: .word BAG_ITEMS_PTR_MIRROR
 _0233460C: .word 0x0000016E
 _02334610: .word ov01_0233B8E8
 _02334614: .word 0x00000404
@@ -21229,8 +21229,8 @@ ov01_0233B104:
 ov01_0233B118:
 	.byte 0x42, 0x41, 0x43, 0x4B, 0x2F, 0x73, 0x31, 0x38, 0x70, 0x30, 0x31, 0x61, 0x2E, 0x62, 0x67, 0x70
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov01_0233B12C
-ov01_0233B12C:
+	.global PRINTS_STRINGS
+PRINTS_STRINGS:
 	.byte 0x61, 0x73, 0x31, 0x30, 0x36, 0x00, 0x00, 0x00
 	.global ov01_0233B134
 ov01_0233B134:
@@ -21442,8 +21442,8 @@ ov01_0233B304:
 	.global ov01_0233B30C
 ov01_0233B30C:
 	.byte 0x61, 0x73, 0x31, 0x30, 0x38, 0x00, 0x00, 0x00
-	.global ov01_0233B314
-ov01_0233B314:
+	.global PRINTS_STRUCT
+PRINTS_STRUCT:
 	.byte 0x1B, 0x01, 0x00, 0x00
 	.global ov01_0233B318
 ov01_0233B318:
@@ -21563,7 +21563,7 @@ ov01_0233B318:
 	.byte 0xC4, 0x00, 0x00, 0x00
 	.word ov01_0233B13C
 	.byte 0xC5, 0x00, 0x00, 0x00
-	.word ov01_0233B12C
+	.word PRINTS_STRINGS
 	.byte 0x00, 0x02, 0x00, 0x00
 	.word ov01_0233B144
 	.byte 0x01, 0x02, 0x00, 0x00
@@ -21574,17 +21574,17 @@ ov01_0233B318:
 ov01_0233B504:
 	.byte 0x72, 0x6F, 0x6D, 0x30
 	.byte 0x3A, 0x47, 0x52, 0x4F, 0x55, 0x4E, 0x44, 0x2F, 0x25, 0x73, 0x2E, 0x77, 0x61, 0x6E, 0x00, 0x00
-	.global ov01_0233B518
-ov01_0233B518:
+	.global OVERLAY1_D_BOX_LAYOUT_1
+OVERLAY1_D_BOX_LAYOUT_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov01_0233B528
-ov01_0233B528:
+	.global OVERLAY1_D_BOX_LAYOUT_2
+OVERLAY1_D_BOX_LAYOUT_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov01_0233B538
-ov01_0233B538:
+	.global OVERLAY1_D_BOX_LAYOUT_3
+OVERLAY1_D_BOX_LAYOUT_3:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x12, 0x1C, 0x04, 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov01_0233B548
-ov01_0233B548:
+	.global OVERLAY1_D_BOX_LAYOUT_4
+OVERLAY1_D_BOX_LAYOUT_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov01_0233B558
 ov01_0233B558:
@@ -21592,19 +21592,19 @@ ov01_0233B558:
 	.word CreateMainMenus
 	.word ov01_023316CC
 	.word ov01_02331784
-	.global ov01_0233B568
-ov01_0233B568:
+	.global CONTINUE_CHOICE
+CONTINUE_CHOICE:
 	.byte 0xE0, 0x01, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0xE1, 0x01, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
 	.byte 0xE6, 0x01, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00
-	.global ov01_0233B588
-ov01_0233B588:
+	.global SUBMENU
+SUBMENU:
 	.byte 0x02, 0x00, 0x00, 0x00, 0xB5, 0x01, 0xB6, 0x01, 0x14, 0x00, 0x00, 0x00, 0xD5, 0x01, 0xD6, 0x01
 	.byte 0x08, 0x00, 0x00, 0x00, 0xBF, 0x01, 0xC0, 0x01, 0x09, 0x00, 0x00, 0x00, 0xC1, 0x01, 0xC2, 0x01
 	.byte 0x18, 0x00, 0x00, 0x00, 0xDB, 0x01, 0xDC, 0x01, 0x07, 0x00, 0x00, 0x00, 0xBD, 0x01, 0xBE, 0x01
 	.byte 0x10, 0x00, 0x00, 0x00, 0xCD, 0x01, 0xCE, 0x01, 0x21, 0x00, 0x00, 0x00, 0xDD, 0x01, 0xDE, 0x01
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov01_0233B5D0
-ov01_0233B5D0:
+	.global MAIN_MENU
+MAIN_MENU:
 	.byte 0x02, 0x00, 0x00, 0x00, 0xB5, 0x01, 0xB6, 0x01
 	.byte 0x07, 0x00, 0x00, 0x00, 0xBD, 0x01, 0xBE, 0x01, 0x03, 0x00, 0x00, 0x00, 0xB7, 0x01, 0xB8, 0x01
 	.byte 0x1A, 0x00, 0x00, 0x00, 0xB9, 0x01, 0xBA, 0x01, 0x1B, 0x00, 0x00, 0x00, 0xB9, 0x01, 0xBA, 0x01
@@ -21648,20 +21648,20 @@ ov01_0233B70C:
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word ov01_023329F8
 	.word ov01_02332ACC
-	.global ov01_0233B71C
-ov01_0233B71C:
+	.global OVERLAY1_D_BOX_LAYOUT_5
+OVERLAY1_D_BOX_LAYOUT_5:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x1C, 0x0E, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov01_0233B72C
-ov01_0233B72C:
+	.global OVERLAY1_D_BOX_LAYOUT_6
+OVERLAY1_D_BOX_LAYOUT_6:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x12, 0x14, 0x04, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov01_0233B73C
-ov01_0233B73C:
+	.global OVERLAY1_D_BOX_LAYOUT_7
+OVERLAY1_D_BOX_LAYOUT_7:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x18, 0x12, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov01_0233B74C
-ov01_0233B74C:
+	.global MAIN_MENU_CONFIRM
+MAIN_MENU_CONFIRM:
 	.byte 0xF7, 0x01, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xF8, 0x01, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global ov01_0233B764
@@ -21682,8 +21682,8 @@ ov01_0233B7BC:
 ov01_0233B7C4:
 	.byte 0x5B, 0x74, 0x69, 0x6D
 	.byte 0x65, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00, 0x00
-	.global ov01_0233B7D0
-ov01_0233B7D0:
+	.global OVERLAY1_D_BOX_LAYOUT_8
+OVERLAY1_D_BOX_LAYOUT_8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x1C, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov01_0233B7E0
@@ -21692,8 +21692,8 @@ ov01_0233B7E0:
 	.word ov01_023336A0
 	.word ov01_02333768
 	.word ov01_02333794
-	.global ov01_0233B7F0
-ov01_0233B7F0:
+	.global OVERLAY1_D_BOX_LAYOUT_9
+OVERLAY1_D_BOX_LAYOUT_9:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov01_0233B800
@@ -21702,8 +21702,8 @@ ov01_0233B800:
 	.word ov01_02333994
 	.word ov01_023339F8
 	.word ov01_02333A34
-	.global ov01_0233B810
-ov01_0233B810:
+	.global MAIN_DEBUG_MENU_1
+MAIN_DEBUG_MENU_1:
 	.byte 0xEB, 0x01, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0xEC, 0x01, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xEE, 0x01, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
 	.byte 0xEF, 0x01, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0xF0, 0x01, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
@@ -21711,8 +21711,8 @@ ov01_0233B810:
 	.byte 0xF3, 0x01, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0xF4, 0x01, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
 	.byte 0xF5, 0x01, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0xF6, 0x01, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov01_0233B870
-ov01_0233B870:
+	.global OVERLAY1_D_BOX_LAYOUT_10
+OVERLAY1_D_BOX_LAYOUT_10:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov01_0233B880
@@ -21721,8 +21721,8 @@ ov01_0233B880:
 	.word ov01_02333C20
 	.word ov01_02333C7C
 	.word ov01_02333CB8
-	.global ov01_0233B890
-ov01_0233B890:
+	.global MAIN_DEBUG_MENU_2
+MAIN_DEBUG_MENU_2:
 	.byte 0x86, 0x3C, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x87, 0x3C, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x88, 0x3C, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0x89, 0x3C, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x84, 0x3C, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00

@@ -1408,7 +1408,7 @@ _02338E04:
 	add r7, r8, r6, lsl #6
 	mov r0, r7
 	mov r4, r6, lsl #6
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	strb fp, [r7, #0x3c]
 	strh fp, [r8, r4]
 	strh fp, [r7, #2]

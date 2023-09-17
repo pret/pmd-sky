@@ -1,12 +1,10 @@
 #pragma once
 .public __divsi3
-.public _020AF6B8
 .public _020AFC4C
-.public _020AFC68
-.public _020B0A48
 .public _020B0A5C
 .public abs
 .public AllocAndLoadFileInPack
+.public BAG_ITEMS_PTR_MIRROR
 .public CreatePortraitBox
 .public DebugPrint0
 .public DecompressAtFromMemoryPointerVeneer
@@ -39,7 +37,7 @@
 .public InitPortraitBox
 .public InitPortraitBoxWithMonsterId
 .public InitPreprocessorArgs
-.public InitRender3dElement
+.public InitRender3dElement64
 .public IsLosableItem
 .public IsNoLossPenaltyDungeon
 .public ItemZInit
@@ -199,7 +197,9 @@
 .public sub_0206423C
 .public sub_020642A8
 .public SwitchAnimationControlToNextFrame
+.public TEAM_MEMBER_TABLE_PTR
 .public UnloadFile
 .public UnloadOverlay
 .public UnloadWte
 .public vsprintf
+.public WAN_TABLE

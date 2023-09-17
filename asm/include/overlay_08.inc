@@ -1,13 +1,15 @@
 #pragma once
-.public _020A2C14
 .public _020A2C44
 .public _020A2C64
 .public DebugPrint0
+.public DS_DOWNLOAD_TEAMS
 .public FileInit
 .public GetPressedButtons
 .public InitPreprocessorArgs
 .public MemAlloc
+.public MemcpyFast
 .public MemFree
+.public MemsetFast
 .public MemZero
 .public ov00_022BF2C4
 .public ov00_022BF640
@@ -58,8 +60,6 @@
 .public sub_02046D20
 .public sub_0207B9EC
 .public sub_0207BA08
-.public sub_0207C40C
-.public sub_0207C4C8
 .public sub_0207F6C4
 .public sub_0207F70C
 .public WaitForever2

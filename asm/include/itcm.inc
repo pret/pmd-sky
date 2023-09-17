@@ -6,8 +6,6 @@
 .public _02099784
 .public _02099E44
 .public _020A2CF8
-.public _020A9FB0
-.public _020AFC80
 .public _020B09B4
 .public _0229AFC0
 .public _0229AFCC
@@ -105,6 +103,7 @@
 .public EnableIrqFlag
 .public EntityIsValid__0230827C
 .public EntityIsValid__02319F8C
+.public GeomMtxMult4x3
 .public GeomSetTexImageParam
 .public GeomSetVertexCoord16
 .public GetAllBaseForms
@@ -125,6 +124,8 @@
 .public IsChargingTwoTurnMove
 .public IsMonster__0231A9D4
 .public IsMonsterCornered
+.public MemcpyFast
+.public MemsetFast
 .public ov29_022E935C
 .public ov29_022EBC74
 .public ov29_022FBDF0
@@ -144,7 +145,8 @@
 .public ov29_0231B008
 .public ov29_02338350
 .public ov29_02348D00
-.public Rgb8ToBgr5
+.public RENDER_3D
+.public Rgb8ToRgb5
 .public SetActionPassTurnOrWalk
 .public SetActionRegularAttack
 .public SetActionUseMoveAi
@@ -157,16 +159,14 @@
 .public sub_020275F8
 .public sub_0202760C
 .public sub_02027AF0
-.public sub_020777A8
 .public sub_0207A238
 .public sub_0207A244
 .public sub_0207A300
 .public sub_0207A324
-.public sub_0207C40C
-.public sub_0207C4C8
 .public sub_02080EF0
 .public sub_02080EF0
 .public sub_02080F30
 .public sub_02080F30
+.public TRIG_TABLE
 .public TryAddTargetToAiTargetList
 .public UpdateAiTargetPos

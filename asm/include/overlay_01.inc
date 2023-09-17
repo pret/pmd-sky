@@ -1,9 +1,9 @@
 #pragma once
 .public __divsi3
 .public __udivsi3
-.public _020AF6B8
-.public _020AFC68
 .public _020B0A5C
+.public ArrayCopy32
+.public BAG_ITEMS_PTR_MIRROR
 .public CardBackupError
 .public ComputeSpecialCounters
 .public Copy16BitsFrom
@@ -354,8 +354,8 @@
 .public sub_0205BBA4
 .public sub_02062B64
 .public sub_0207A2A4
-.public sub_0207C330
 .public sub_020851AC
 .public sub_0208FE3C
 .public sub_0208FE48
 .public vsprintf
+.public WAN_TABLE

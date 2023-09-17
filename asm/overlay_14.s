@@ -2167,7 +2167,7 @@ _0238BFE4:
 	bne _0238C030
 	ldr r0, _0238C1B8 ; =ov14_0238D9A8
 	mov r4, #8
-	ldr r3, _0238C1BC ; =ov14_0238DAA0
+	ldr r3, _0238C1BC ; =FOOTPRINT_DEBUG_MENU
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
@@ -2285,7 +2285,7 @@ _0238C1AC: .word ov14_0238D988
 _0238C1B0: .word ov14_0238AD04
 _0238C1B4: .word ov14_0238D998
 _0238C1B8: .word ov14_0238D9A8
-_0238C1BC: .word ov14_0238DAA0
+_0238C1BC: .word FOOTPRINT_DEBUG_MENU
 _0238C1C0: .word ov14_0238D9E8
 _0238C1C4: .word ov14_0238DA08
 	arm_func_end SentryRunState
@@ -2605,7 +2605,7 @@ _0238C564:
 	mov r1, #0x65
 	bl RandRange
 	ldr r2, _0238CA54 ; =ov14_0238DB80
-	ldr r3, _0238CA60 ; =_020A1BB0
+	ldr r3, _0238CA60 ; =SENTRY_DUTY_MONSTER_IDS
 	ldr r1, [r2]
 	add r1, r1, #0x3000
 	str r0, [r1, #0x880]
@@ -2678,7 +2678,7 @@ _0238C670:
 	ldr r0, [r0, #0x87c]
 	cmp sb, r0
 	beq _0238C72C
-	ldr r4, _0238CA60 ; =_020A1BB0
+	ldr r4, _0238CA60 ; =SENTRY_DUTY_MONSTER_IDS
 	ldr fp, _0238CA64 ; =0x00000119
 _0238C690:
 	mov r0, #0
@@ -2939,7 +2939,7 @@ _0238CA10:
 _0238CA54: .word ov14_0238DB80
 _0238CA58: .word 0x000003FA
 _0238CA5C: .word 0x000005DC
-_0238CA60: .word _020A1BB0
+_0238CA60: .word SENTRY_DUTY_MONSTER_IDS
 _0238CA64: .word 0x00000119
 _0238CA68: .word ov14_0238DB2C
 _0238CA6C: .word ov14_0238DB44
@@ -4156,8 +4156,8 @@ ov14_0238DA80:
 	.byte 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00
 	.byte 0x0A, 0x00, 0x00, 0x00
-	.global ov14_0238DAA0
-ov14_0238DAA0:
+	.global FOOTPRINT_DEBUG_MENU
+FOOTPRINT_DEBUG_MENU:
 	.byte 0xCE, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xCF, 0x06, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0xD0, 0x06, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xD1, 0x06, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0xD2, 0x06, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xD3, 0x06, 0x00, 0x00

@@ -823,7 +823,7 @@ _0238AC74:
 _0238AC9C:
 	add r0, sp, #0
 	mov r1, #3
-	bl sub_020276C0
+	bl NewDialogBox
 	ldr r1, _0238ACF8 ; =ov28_0238AD80
 	ldr r2, [r1]
 	add r2, r2, r7

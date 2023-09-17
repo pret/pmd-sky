@@ -1,6 +1,5 @@
 #pragma once
 .public __divsi3
-.public _020A1BB0
 .public AnimRelatedFunction__022F6F14
 .public AnimRelatedFunction__022F7064
 .public CreateAdvancedMenu
@@ -40,6 +39,7 @@
 .public ov11_022F7058
 .public PreprocessString
 .public RandRange
+.public SENTRY_DUTY_MONSTER_IDS
 .public SetAnimDataFields2
 .public SetAnimDataFieldsWrapper
 .public SetPortraitEmotion

@@ -3216,7 +3216,7 @@ ov29_0234C2F4: ; 0x0234C2F4
 	bl MemZero
 	add r0, r5, #0x48
 	strb r4, [r5, #0x88]
-	bl InitRender3dElement
+	bl InitRender3dElement64
 	mov r0, #0x100
 	strh r0, [r5, #0x4c]
 	mov r0, #0xc0

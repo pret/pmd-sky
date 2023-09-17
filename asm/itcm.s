@@ -97,7 +97,7 @@ _01FF8120:
 sub_01FF8130: ; 0x01FF8130
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
-	ldr r2, _01FF81B8 ; =_020AFC80
+	ldr r2, _01FF81B8 ; =RENDER_3D
 	mov r4, r1
 	ldr r1, [r2, #8]
 	cmp r1, r4
@@ -125,13 +125,13 @@ sub_01FF8130: ; 0x01FF8130
 	ldr r2, [r2, lr, lsl #2]
 	ldr r3, [r3, ip, lsl #2]
 	bl GeomSetTexImageParam
-	ldr r0, _01FF81B8 ; =_020AFC80
+	ldr r0, _01FF81B8 ; =RENDER_3D
 	str r4, [r0, #8]
 _01FF81B0:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_01FF81B8: .word _020AFC80
+_01FF81B8: .word RENDER_3D
 _01FF81BC: .word _02099734
 _01FF81C0: .word _02099744
 _01FF81C4: .word _02099764
@@ -140,7 +140,7 @@ _01FF81C8: .word _02099784
 
 	arm_func_start sub_01FF81CC
 sub_01FF81CC: ; 0x01FF81CC
-	ldr r2, _01FF8218 ; =_020AFC80
+	ldr r2, _01FF8218 ; =RENDER_3D
 	ldr r2, [r2, #4]
 	cmp r2, r1
 	bxeq lr
@@ -155,12 +155,12 @@ sub_01FF81CC: ; 0x01FF81CC
 	movne r0, #0
 	rsb r0, r0, #4
 	mov r3, r1, lsr r0
-	ldr r0, _01FF8218 ; =_020AFC80
+	ldr r0, _01FF8218 ; =RENDER_3D
 	str r3, [r2]
 	str r1, [r0, #4]
 	bx lr
 	.align 2, 0
-_01FF8218: .word _020AFC80
+_01FF8218: .word RENDER_3D
 _01FF821C: .word _02099744
 _01FF8220: .word 0x040004AC
 	arm_func_end sub_01FF81CC
@@ -175,7 +175,7 @@ sub_01FF8224: ; 0x01FF8224
 	beq _01FF8460
 	ldrh r0, [r4, #0x18]
 	mov r2, #0
-	ldr r3, _01FF8468 ; =_020A9FB0
+	ldr r3, _01FF8468 ; =TRIG_TABLE
 	mov r0, r0, asr #4
 	mov r0, r0, lsl #1
 	add r5, r0, #1
@@ -217,14 +217,14 @@ sub_01FF8224: ; 0x01FF8224
 	mov r3, r0
 	str r0, [sp, #0xc]
 	bl GeomSetTexImageParam
-	ldr r0, _01FF846C ; =_020AFC80
+	ldr r0, _01FF846C ; =RENDER_3D
 	mvn r2, #0
 	str r2, [r0, #8]
 	ldr r1, _01FF8470 ; =0x04000444
 	mov r2, #0
 	add r0, sp, #0x10
 	str r2, [r1]
-	bl sub_020777A8
+	bl GeomMtxMult4x3
 	ldrh r0, [r4, #0x14]
 	ldrh r2, [r4, #0x16]
 	ldr r1, _01FF8474 ; =0x0400046C
@@ -314,8 +314,8 @@ _01FF8460:
 	add sp, sp, #0x40
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_01FF8468: .word _020A9FB0
-_01FF846C: .word _020AFC80
+_01FF8468: .word TRIG_TABLE
+_01FF846C: .word RENDER_3D
 _01FF8470: .word 0x04000444
 _01FF8474: .word 0x0400046C
 _01FF8478: .word 0x04000500
@@ -380,14 +380,14 @@ sub_01FF849C: ; 0x01FF849C
 	mov r3, r0
 	str r0, [sp, #0xc]
 	bl GeomSetTexImageParam
-	ldr r1, _01FF8714 ; =_020AFC80
+	ldr r1, _01FF8714 ; =RENDER_3D
 	mvn r3, #0
 	str r3, [r1, #8]
 	ldr r2, _01FF8718 ; =0x04000444
 	mov r1, #0
 	add r0, sp, #0x18
 	str r1, [r2]
-	bl sub_020777A8
+	bl GeomMtxMult4x3
 	ldr r1, _01FF871C ; =0x0400046C
 	mov r0, #0x40000
 	str r0, [r1]
@@ -496,7 +496,7 @@ _01FF8708:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _01FF8710: .word _02099724
-_01FF8714: .word _020AFC80
+_01FF8714: .word RENDER_3D
 _01FF8718: .word 0x04000444
 _01FF871C: .word 0x0400046C
 _01FF8720: .word 0x04000500
@@ -582,7 +582,7 @@ sub_01FF8728: ; 0x01FF8728
 	mov r2, #0
 	add r0, sp, #0x1c
 	str r2, [r1]
-	bl sub_020777A8
+	bl GeomMtxMult4x3
 	ldr r1, _01FF89FC ; =0x0400046C
 	mov r0, #0x40000
 	str r0, [r1]
@@ -701,7 +701,7 @@ sub_01FF8A10: ; 0x01FF8A10
 	sub sp, sp, #0x30
 	mov r8, r0
 	ldrh r0, [r8, #0x24]
-	ldr r5, _01FF8C1C ; =_020A9FB0
+	ldr r5, _01FF8C1C ; =TRIG_TABLE
 	ldrsh r4, [r8, #0xc]
 	mov r0, r0, asr #4
 	mov r0, r0, lsl #1
@@ -748,7 +748,7 @@ sub_01FF8A10: ; 0x01FF8A10
 	mov r2, #0
 	add r0, sp, #0
 	str r2, [r1]
-	bl sub_020777A8
+	bl GeomMtxMult4x3
 	ldrh r0, [r8, #0x1e]
 	ldrh r1, [r8, #0x20]
 	ldr r3, _01FF8C24 ; =0x0400046C
@@ -829,7 +829,7 @@ sub_01FF8A10: ; 0x01FF8A10
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FF8C1C: .word _020A9FB0
+_01FF8C1C: .word TRIG_TABLE
 _01FF8C20: .word 0x04000444
 _01FF8C24: .word 0x0400046C
 	arm_func_end sub_01FF8A10
@@ -864,7 +864,7 @@ sub_01FF8C60: ; 0x01FF8C60
 
 	arm_func_start AllocateRender3dElement
 AllocateRender3dElement: ; 0x01FF8C78
-	ldr r0, _01FF8CA8 ; =_020AFC80
+	ldr r0, _01FF8CA8 ; =RENDER_3D
 	ldrsh r2, [r0]
 	ldrsh r1, [r0, #2]
 	cmp r2, r1
@@ -877,7 +877,7 @@ AllocateRender3dElement: ; 0x01FF8C78
 	smlabb r0, r2, r0, r1
 	bx lr
 	.align 2, 0
-_01FF8CA8: .word _020AFC80
+_01FF8CA8: .word RENDER_3D
 	arm_func_end AllocateRender3dElement
 
 	arm_func_start sub_01FF8CAC
@@ -890,7 +890,7 @@ sub_01FF8CAC: ; 0x01FF8CAC
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x28
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, #3
 	strh r0, [r4]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -906,7 +906,7 @@ sub_01FF8CDC: ; 0x01FF8CDC
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x34
-	bl sub_0207C4C8
+	bl MemcpyFast
 	mov r0, #2
 	strh r0, [r4]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -921,7 +921,7 @@ sub_01FF8D0C: ; 0x01FF8D0C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x26
-	bl sub_0207C40C
+	bl MemsetFast
 	mov r1, #0
 	mov r0, r4
 	strh r1, [r4]
@@ -937,7 +937,7 @@ sub_01FF8D3C: ; 0x01FF8D3C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x26
-	bl sub_0207C40C
+	bl MemsetFast
 	mov r1, #1
 	mov r0, r4
 	strh r1, [r4]
@@ -953,7 +953,7 @@ sub_01FF8D6C: ; 0x01FF8D6C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x28
-	bl sub_0207C40C
+	bl MemsetFast
 	mov r1, #3
 	mov r0, r4
 	strh r1, [r4]
@@ -969,7 +969,7 @@ sub_01FF8D9C: ; 0x01FF8D9C
 	ldmeqia sp!, {r4, pc}
 	mov r1, #0
 	mov r2, #0x34
-	bl sub_0207C40C
+	bl MemsetFast
 	mov r1, #2
 	mov r0, r4
 	strh r1, [r4]
@@ -980,7 +980,7 @@ sub_01FF8D9C: ; 0x01FF8D9C
 Render3dStack: ; 0x01FF8DCC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x200
-	ldr r0, _01FF8EFC ; =_020AFC80
+	ldr r0, _01FF8EFC ; =RENDER_3D
 	ldrsh r4, [r0]
 	cmp r4, #0
 	beq _01FF8EF4
@@ -1011,7 +1011,7 @@ _01FF8E24:
 _01FF8E34:
 	cmp r4, #0x80
 	blt _01FF8E24
-	ldr r0, _01FF8EFC ; =_020AFC80
+	ldr r0, _01FF8EFC ; =RENDER_3D
 	mov r5, #0
 	ldrsh r7, [r0]
 	add r4, sp, #0
@@ -1043,7 +1043,7 @@ _01FF8E98:
 	mov r6, #0
 	add r5, sp, #0
 	ldr r4, _01FF8F00 ; =0x01FF8120
-	ldr r7, _01FF8EFC ; =_020AFC80
+	ldr r7, _01FF8EFC ; =RENDER_3D
 	b _01FF8EDC
 _01FF8EB4:
 	ldr r0, [r5, r6, lsl #2]
@@ -1060,14 +1060,14 @@ _01FF8EDC:
 	ldrsh r0, [r7]
 	cmp r6, r0
 	blt _01FF8EB4
-	ldr r0, _01FF8EFC ; =_020AFC80
+	ldr r0, _01FF8EFC ; =RENDER_3D
 	mov r1, #0
 	strh r1, [r0]
 _01FF8EF4:
 	add sp, sp, #0x200
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_01FF8EFC: .word _020AFC80
+_01FF8EFC: .word RENDER_3D
 _01FF8F00: .word 0x01FF8120
 	arm_func_end Render3dStack
 
@@ -1075,14 +1075,14 @@ _01FF8F00: .word 0x01FF8120
 sub_01FF8F04: ; 0x01FF8F04
 	ldr r1, _01FF8F20 ; =0x040004AC
 	mov r2, #0
-	ldr r0, _01FF8F24 ; =_020AFC80
+	ldr r0, _01FF8F24 ; =RENDER_3D
 	str r2, [r1]
 	sub r1, r2, #1
 	str r1, [r0, #4]
 	bx lr
 	.align 2, 0
 _01FF8F20: .word 0x040004AC
-_01FF8F24: .word _020AFC80
+_01FF8F24: .word RENDER_3D
 	arm_func_end sub_01FF8F04
 
 	arm_func_start sub_01FF8F28
@@ -2140,7 +2140,7 @@ _01FF9CD8:
 	mov r0, r3
 	ldr r1, [r1]
 	add r1, r1, #0x4c
-	bl Rgb8ToBgr5
+	bl Rgb8ToRgb5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _01FF9CFC:
 	mov r0, #0
@@ -2215,7 +2215,7 @@ _01FF9DF0:
 	mov r0, r3
 	ldr r1, [r1]
 	add r1, r1, #0x4c
-	bl Rgb8ToBgr5
+	bl Rgb8ToRgb5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _01FF9E10: .word 0x02353530
