@@ -172575,7 +172575,10 @@ _020A547C:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _020A5488
 _020A5488:
-	.byte 0x04, 0x00, 0xB9, 0x00, 0x00, 0x00, 0xFF, 0xFF
+	.byte 0x04, 0x00
+	.global _020A548A
+_020A548A:
+	.byte 0xB9, 0x00, 0x00, 0x00, 0xFF, 0xFF
 	.global _020A5490
 _020A5490:
 	.word _020A5414
@@ -179856,13 +179859,19 @@ _020B4BC0:
 	.space 0x1B64C
 	.global _020D020C
 _020D020C:
-	.space 0x1FFFC
+	.space 0x1FE84
+	.global _020F0090
+_020F0090:
+	.space 0x178
 	.global _020F0208
 _020F0208:
 	.space 0x20008
 	.global _02110210
 _02110210:
-	.space 0x40004
+	.space 0x20004
+	.global _02130214
+_02130214:
+	.space 0x20000
 	.global _02150214
 _02150214:
 	.space 0x40004
