@@ -869,7 +869,7 @@ _022BD5C8: ; jump table
 	b _022BD700 ; case 3
 	b _022BD700 ; case 4
 _022BD5DC:
-	ldr r0, _022BD714 ; =_020B0A48
+	ldr r0, _022BD714 ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, #0x68
 	ldr r0, [r0]
 	ldr r2, _022BD710 ; =ov10_022DC220
@@ -955,7 +955,7 @@ _022BD708:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022BD710: .word ov10_022DC220
-_022BD714: .word _020B0A48
+_022BD714: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end ov10_022BD5AC
 
 	arm_func_start ov10_022BD718
@@ -991,7 +991,7 @@ ov10_022BD75C: ; 0x022BD75C
 	sub sp, sp, #0x18
 	cmp r1, #1
 	bne _022BD7A0
-	ldr r1, _022BD824 ; =_020AFC68
+	ldr r1, _022BD824 ; =WAN_TABLE
 	ldr r3, _022BD828 ; =_020AFC4C
 	ldr r4, [r1]
 	mov r1, #0x38
@@ -1007,7 +1007,7 @@ ov10_022BD75C: ; 0x022BD75C
 _022BD7A0:
 	cmp r1, #0
 	bne _022BD81C
-	ldr r2, _022BD824 ; =_020AFC68
+	ldr r2, _022BD824 ; =WAN_TABLE
 	mov r1, #0x38
 	ldr r2, [r2]
 	ldr r4, _022BD828 ; =_020AFC4C
@@ -1041,7 +1041,7 @@ _022BD81C:
 	add sp, sp, #0x18
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_022BD824: .word _020AFC68
+_022BD824: .word WAN_TABLE
 _022BD828: .word _020AFC4C
 	arm_func_end ov10_022BD75C
 
@@ -1108,7 +1108,7 @@ _022BD888:
 	cmp r0, #1
 	bne _022BDA70
 	mov r3, #0
-	ldr r0, _022BDA80 ; =_020AFC68
+	ldr r0, _022BDA80 ; =WAN_TABLE
 	str r3, [sp]
 	ldr r0, [r0]
 	mov r1, #3
@@ -1118,12 +1118,12 @@ _022BD888:
 	mov r2, r1
 	mov r4, r0
 	bl ov10_022BD75C
-	ldr r0, _022BDA80 ; =_020AFC68
+	ldr r0, _022BDA80 ; =WAN_TABLE
 	mov r1, r4
 	ldr r0, [r0]
 	bl DeleteWanTableEntryVeneer
 	mov r3, #0
-	ldr r0, _022BDA80 ; =_020AFC68
+	ldr r0, _022BDA80 ; =WAN_TABLE
 	str r3, [sp]
 	ldr r0, [r0]
 	mov r1, #3
@@ -1156,7 +1156,7 @@ _022BD888:
 	b _022BDA70
 _022BD9D0:
 	mov r3, #0
-	ldr r0, _022BDA80 ; =_020AFC68
+	ldr r0, _022BDA80 ; =WAN_TABLE
 	str r3, [sp]
 	ldr r0, [r0]
 	mov r1, #3
@@ -1176,13 +1176,13 @@ _022BD9D0:
 	mov r0, r4
 	mov r2, r1
 	bl ov10_022BD75C
-	ldr r0, _022BDA80 ; =_020AFC68
+	ldr r0, _022BDA80 ; =WAN_TABLE
 	mov r1, r4
 	ldr r0, [r0]
 	bl DeleteWanTableEntryVeneer
 	mov r2, #0
 	str r2, [sp]
-	ldr r0, _022BDA80 ; =_020AFC68
+	ldr r0, _022BDA80 ; =WAN_TABLE
 	mov r1, #3
 	ldr r0, [r0]
 	mov r3, r2
@@ -1201,7 +1201,7 @@ _022BDA70:
 	.align 2, 0
 _022BDA78: .word ov10_022DC1C0
 _022BDA7C: .word 0x000027A4
-_022BDA80: .word _020AFC68
+_022BDA80: .word WAN_TABLE
 	arm_func_end ov10_022BD82C
 
 	arm_func_start ov10_022BDA84
@@ -1354,7 +1354,7 @@ ov10_022BDC0C: ; 0x022BDC0C
 	stmdb sp!, {r3, lr}
 	bl ov10_022BDBC8
 	ldr r0, _022BDC60 ; =ov10_022DC1C0
-	ldr r1, _022BDC64 ; =_020AFC68
+	ldr r1, _022BDC64 ; =WAN_TABLE
 	ldr r2, [r0]
 	ldr r0, [r1]
 	add r1, r2, #0x2700
@@ -1375,7 +1375,7 @@ _022BDC58:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022BDC60: .word ov10_022DC1C0
-_022BDC64: .word _020AFC68
+_022BDC64: .word WAN_TABLE
 	arm_func_end ov10_022BDC0C
 
 	arm_func_start ov10_022BDC68
@@ -1585,7 +1585,7 @@ _022BDF00:
 	ldmeqia sp!, {r4, pc}
 	cmp r1, #0
 	beq _022BDF24
-	ldr r0, _022BDF30 ; =_020AFC68
+	ldr r0, _022BDF30 ; =WAN_TABLE
 	mov r1, r2
 	ldr r0, [r0]
 	bl DeleteWanTableEntryVeneer
@@ -1594,7 +1594,7 @@ _022BDF24:
 	strh r0, [r4, #0x64]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022BDF30: .word _020AFC68
+_022BDF30: .word WAN_TABLE
 	arm_func_end ov10_022BDEC4
 
 	arm_func_start ov10_022BDF34
@@ -3970,52 +3970,52 @@ _022BFE9C: .word ov10_022DC1C0
 
 	arm_func_start GetEffectAnimation
 GetEffectAnimation: ; 0x022BFEA0
-	ldr r2, _022BFEB0 ; =ov10_022CC52C
+	ldr r2, _022BFEB0 ; =EFFECT_ANIMATION_INFO
 	mov r1, #0x1c
 	mla r0, r1, r0, r2
 	bx lr
 	.align 2, 0
-_022BFEB0: .word ov10_022CC52C
+_022BFEB0: .word EFFECT_ANIMATION_INFO
 	arm_func_end GetEffectAnimation
 
 	arm_func_start GetMoveAnimation
 GetMoveAnimation: ; 0x022BFEB4
-	ldr r2, _022BFEC4 ; =ov10_022C9064
+	ldr r2, _022BFEC4 ; =MOVE_ANIMATION_INFO
 	mov r1, #0x18
 	mla r0, r1, r0, r2
 	bx lr
 	.align 2, 0
-_022BFEC4: .word ov10_022C9064
+_022BFEC4: .word MOVE_ANIMATION_INFO
 	arm_func_end GetMoveAnimation
 
 	arm_func_start GetSpecialMonsterMoveAnimation
 GetSpecialMonsterMoveAnimation: ; 0x022BFEC8
-	ldr r2, _022BFED8 ; =ov10_022D11BC
+	ldr r2, _022BFED8 ; =SPECIAL_MONSTER_MOVE_ANIMATION_INFO
 	mov r1, #6
 	mla r0, r1, r0, r2
 	bx lr
 	.align 2, 0
-_022BFED8: .word ov10_022D11BC
+_022BFED8: .word SPECIAL_MONSTER_MOVE_ANIMATION_INFO
 	arm_func_end GetSpecialMonsterMoveAnimation
 
 	arm_func_start GetTrapAnimation
 GetTrapAnimation: ; 0x022BFEDC
-	ldr r1, _022BFEEC ; =ov10_022C7A50
+	ldr r1, _022BFEEC ; =TRAP_ANIMATION_INFO
 	mov r0, r0, lsl #1
 	ldrsh r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_022BFEEC: .word ov10_022C7A50
+_022BFEEC: .word TRAP_ANIMATION_INFO
 	arm_func_end GetTrapAnimation
 
 	arm_func_start GetItemAnimation1
 GetItemAnimation1: ; 0x022BFEF0
-	ldr r1, _022BFF00 ; =ov10_022C7A84
+	ldr r1, _022BFF00 ; =ITEM_ANIMATION_INFO
 	mov r0, r0, lsl #2
 	ldrsh r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_022BFF00: .word ov10_022C7A84
+_022BFF00: .word ITEM_ANIMATION_INFO
 	arm_func_end GetItemAnimation1
 
 	arm_func_start GetItemAnimation2
@@ -4432,7 +4432,7 @@ _022C041C:
 	mov r2, r0
 _022C042C:
 	mov r1, #0
-	ldr r0, _022C044C ; =_020AFC68
+	ldr r0, _022C044C ; =WAN_TABLE
 	str r1, [sp]
 	ldr r0, [r0]
 	mov r1, #3
@@ -4440,7 +4440,7 @@ _022C042C:
 	bl LoadWanTableEntryFromPack
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022C044C: .word _020AFC68
+_022C044C: .word WAN_TABLE
 	arm_func_end ov10_022C03F4
 
 	arm_func_start ov10_022C0450
@@ -4906,7 +4906,7 @@ ov10_022C09E8: ; 0x022C09E8
 	moveq r0, #0
 	beq _022C0CB8
 	mov r1, #0
-	ldr r0, _022C0CC4 ; =_020AFC68
+	ldr r0, _022C0CC4 ; =WAN_TABLE
 	str r1, [sp]
 	mov r1, #4
 	ldr r0, [r0]
@@ -5086,7 +5086,7 @@ _022C0CB8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022C0CC0: .word ov10_022DC1D0
-_022C0CC4: .word _020AFC68
+_022C0CC4: .word WAN_TABLE
 _022C0CC8: .word ov10_022DBFEC
 _022C0CCC: .word ov10_022DBFDC
 _022C0CD0: .word ov10_022C1864
@@ -5300,7 +5300,7 @@ ov10_022C0F6C: ; 0x022C0F6C
 	mlane r4, r5, r0, r1
 	cmpne r7, #0
 	beq _022C11C4
-	ldr r1, _022C11D0 ; =_020AFC68
+	ldr r1, _022C11D0 ; =WAN_TABLE
 	mov r0, #0x38
 	ldr r1, [r1]
 	smlabb r0, r7, r0, r1
@@ -5442,7 +5442,7 @@ _022C11C4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022C11CC: .word ov10_022DC1D0
-_022C11D0: .word _020AFC68
+_022C11D0: .word WAN_TABLE
 _022C11D4: .word 0x0000F3FF
 	arm_func_end ov10_022C0F6C
 
@@ -5489,7 +5489,7 @@ _022C123C:
 	ldrnesh r2, [r7, #0x52]
 	cmpne r2, #0
 	beq _022C1378
-	ldr r0, _022C1390 ; =_020AFC68
+	ldr r0, _022C1390 ; =WAN_TABLE
 	ldr r1, [r0]
 	mov r0, #0x38
 	smlabb r0, r2, r0, r1
@@ -5563,7 +5563,7 @@ _022C1384:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022C138C: .word ov10_022DC1D0
-_022C1390: .word _020AFC68
+_022C1390: .word WAN_TABLE
 _022C1394: .word 0x0000F3FF
 	arm_func_end ov10_022C11D8
 
@@ -5587,7 +5587,7 @@ ov10_022C13B4: ; 0x022C13B4
 	add r0, r0, #0x2d8
 	bl ov10_022C2278
 	ldr r0, _022C14C8 ; =ov10_022DC1D0
-	ldr r1, _022C14CC ; =_020AFC68
+	ldr r1, _022C14CC ; =WAN_TABLE
 	ldr r2, [r0]
 	ldr r0, [r1]
 	ldrsh r1, [r2, #4]
@@ -5657,7 +5657,7 @@ _022C14A4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022C14C8: .word ov10_022DC1D0
-_022C14CC: .word _020AFC68
+_022C14CC: .word WAN_TABLE
 	arm_func_end ov10_022C13B4
 
 	arm_func_start ov10_022C14D0
@@ -7265,7 +7265,7 @@ _022C29C8:
 	bl sub_02057CE8
 	bl sub_0200F910
 	mov r8, #0
-	ldr r5, _022C3118 ; =_020AF6B8
+	ldr r5, _022C3118 ; =BAG_ITEMS_PTR_MIRROR
 	mov fp, r8
 	mov sl, #1
 	mov r4, #6
@@ -7299,7 +7299,7 @@ _022C2A5C:
 	bl RemoveEmptyItemsInBag
 	mov r8, #0
 	mov r7, #1
-	ldr r5, _022C311C ; =_020B0A48
+	ldr r5, _022C311C ; =TEAM_MEMBER_TABLE_PTR
 	mov sl, r8
 	mov fp, r7
 	mov r4, #0x68
@@ -7376,7 +7376,7 @@ _022C2B7C:
 	cmp r1, r0
 	beq _022C2C54
 	mov r7, #0
-	ldr r5, _022C3118 ; =_020AF6B8
+	ldr r5, _022C3118 ; =BAG_ITEMS_PTR_MIRROR
 	mov fp, r7
 	mov sl, #1
 	mov r4, #6
@@ -7775,8 +7775,8 @@ _022C310C:
 	add sp, sp, #0x29c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022C3118: .word _020AF6B8
-_022C311C: .word _020B0A48
+_022C3118: .word BAG_ITEMS_PTR_MIRROR
+_022C311C: .word TEAM_MEMBER_TABLE_PTR
 _022C3120: .word 0x00000265
 _022C3124: .word ov10_022DC094
 _022C3128: .word 0x000F1207
@@ -10015,14 +10015,14 @@ ov10_022C7A18:
 	.byte 0x55, 0x52, 0x45, 0x5F, 0x4F, 0x42, 0x4A, 0x5F, 0x45, 0x46, 0x46, 0x45, 0x43, 0x54, 0x20, 0x76
 	.byte 0x72, 0x61, 0x6D, 0x20, 0x72, 0x65, 0x6D, 0x61, 0x69, 0x6E, 0x64, 0x65, 0x72, 0x20, 0x6E, 0x75
 	.byte 0x6D, 0x20, 0x3A, 0x20, 0x25, 0x64, 0x20, 0x0A, 0x00, 0x00, 0x00, 0x00
-	.global ov10_022C7A50
-ov10_022C7A50:
+	.global TRAP_ANIMATION_INFO
+TRAP_ANIMATION_INFO:
 	.byte 0x00, 0x00, 0x82, 0x01
 	.byte 0xB3, 0x01, 0x84, 0x01, 0x83, 0x01, 0x00, 0x00, 0x00, 0x00, 0x85, 0x01, 0x86, 0x01, 0x87, 0x01
 	.byte 0x40, 0x01, 0x9A, 0x00, 0x88, 0x01, 0x00, 0x00, 0x00, 0x00, 0xB0, 0x01, 0x89, 0x01, 0x00, 0x00
 	.byte 0xD2, 0x00, 0x00, 0x00, 0x0C, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x83, 0x01, 0x00, 0x00
-	.global ov10_022C7A84
-ov10_022C7A84:
+	.global ITEM_ANIMATION_INFO
+ITEM_ANIMATION_INFO:
 	.byte 0x00, 0x00
 	.global ov10_022C7A86
 ov10_022C7A86:
@@ -10376,8 +10376,8 @@ ov10_022C7A86:
 	.byte 0x15, 0x00, 0x08, 0x00, 0x15, 0x00, 0x08, 0x00, 0x15, 0x00, 0x08, 0x00, 0x15, 0x00, 0x08, 0x00
 	.byte 0x15, 0x00, 0x08, 0x00, 0x15, 0x00, 0x08, 0x00, 0x15, 0x00, 0x08, 0x00, 0x15, 0x00, 0x08, 0x00
 	.byte 0x15, 0x00, 0x08, 0x00, 0x15, 0x00, 0x08, 0x00, 0x15, 0x00, 0x08, 0x00, 0x15, 0x00, 0x08, 0x00
-	.global ov10_022C9064
-ov10_022C9064:
+	.global MOVE_ANIMATION_INFO
+MOVE_ANIMATION_INFO:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov10_022C9070
 ov10_022C9070:
@@ -11226,8 +11226,8 @@ ov10_022C9070:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x3F, 0x00, 0x00, 0xFE, 0x1C
 	.byte 0x00, 0x00, 0x00, 0x00, 0x2A, 0x02, 0x28, 0x02, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0x0B, 0x03, 0x00, 0x3F, 0x00, 0x00, 0xFE, 0x1C
-	.global ov10_022CC52C
-ov10_022CC52C:
+	.global EFFECT_ANIMATION_INFO
+EFFECT_ANIMATION_INFO:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00
@@ -12454,8 +12454,8 @@ ov10_022CC52C:
 	.byte 0x1C, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0x01, 0x00, 0x05, 0x00, 0x00, 0x00
 	.byte 0x14, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x10, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0x01, 0x00
-	.global ov10_022D11BC
-ov10_022D11BC:
+	.global SPECIAL_MONSTER_MOVE_ANIMATION_INFO
+SPECIAL_MONSTER_MOVE_ANIMATION_INFO:
 	.byte 0x01, 0x00, 0x03, 0x00, 0x00, 0x3F, 0x02, 0x00
 	.byte 0x03, 0x00, 0x00, 0x3F, 0x03, 0x00, 0x03, 0x00, 0x00, 0x3F, 0x61, 0x00, 0x03, 0x00, 0x00, 0x3F
 	.byte 0x8D, 0x01, 0x03, 0x00, 0x00, 0x3F, 0x8C, 0x01, 0x03, 0x00, 0x00, 0x3F, 0x8B, 0x01, 0x03, 0x00

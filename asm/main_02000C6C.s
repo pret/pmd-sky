@@ -153,11 +153,11 @@ SetMemAllocatorParams: ; 0x02000E70
 	bl sub_02002CB4
 	cmp r5, #0
 	ldreq r5, _02000EB4 ; =GetAllocArenaDefault
-	ldr r0, _02000EB8 ; =_020AEF00
+	ldr r0, _02000EB8 ; =MEMORY_ALLOCATION_ARENA_GETTERS
 	cmp r4, #0
 	str r5, [r0]
 	ldreq r4, _02000EBC ; =GetFreeArenaDefault
-	ldr r1, _02000EB8 ; =_020AEF00
+	ldr r1, _02000EB8 ; =MEMORY_ALLOCATION_ARENA_GETTERS
 	ldr r0, _02000EB0 ; =_020AEF08
 	str r4, [r1, #4]
 	bl sub_02002E98
@@ -165,7 +165,7 @@ SetMemAllocatorParams: ; 0x02000E70
 	.align 2, 0
 _02000EB0: .word _020AEF08
 _02000EB4: .word GetAllocArenaDefault
-_02000EB8: .word _020AEF00
+_02000EB8: .word MEMORY_ALLOCATION_ARENA_GETTERS
 _02000EBC: .word GetFreeArenaDefault
 	arm_func_end SetMemAllocatorParams
 
@@ -415,7 +415,7 @@ MemArenaAlloc: ; 0x0200119C
 	mov r7, r2
 	mov r6, r3
 	bl sub_02002CB4
-	ldr r1, _02001270 ; =_020AEF00
+	ldr r1, _02001270 ; =MEMORY_ALLOCATION_ARENA_GETTERS
 	mov r0, r5
 	ldr r2, [r1]
 	mov r1, r6
@@ -463,7 +463,7 @@ _02001264:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _0200126C: .word _020AEF08
-_02001270: .word _020AEF00
+_02001270: .word MEMORY_ALLOCATION_ARENA_GETTERS
 _02001274: .word _020B3384
 _02001278: .word _02090B40
 _0200127C: .word _02090BC8
@@ -561,7 +561,7 @@ MemLocateSet: ; 0x02001390
 	mov r5, r1
 	orr r7, r2, #0x100
 	bl sub_02002CB4
-	ldr r1, _02001620 ; =_020AEF00
+	ldr r1, _02001620 ; =MEMORY_ALLOCATION_ARENA_GETTERS
 	mov r0, r4
 	ldr r2, [r1]
 	mov r1, r7
@@ -738,7 +738,7 @@ _02001610:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0200161C: .word _020AEF08
-_02001620: .word _020AEF00
+_02001620: .word MEMORY_ALLOCATION_ARENA_GETTERS
 _02001624: .word _020B3384
 _02001628: .word 0x001E6401
 _0200162C: .word _02090B40
@@ -753,7 +753,7 @@ MemLocateUnset: ; 0x02001638
 	ldr r0, _020017A8 ; =_020AEF08
 	mov r6, r1
 	bl sub_02002CB4
-	ldr r1, _020017AC ; =_020AEF00
+	ldr r1, _020017AC ; =MEMORY_ALLOCATION_ARENA_GETTERS
 	mov r0, r7
 	ldr r2, [r1, #4]
 	mov r1, r6
@@ -852,7 +852,7 @@ _02001794:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _020017A8: .word _020AEF08
-_020017AC: .word _020AEF00
+_020017AC: .word MEMORY_ALLOCATION_ARENA_GETTERS
 _020017B0: .word _020B3384
 	arm_func_end MemLocateUnset
 
@@ -893,7 +893,7 @@ sub_02001808: ; 0x02001808
 	stmdb sp!, {r4, lr}
 	ldr r0, _0200187C ; =_020AEF08
 	bl sub_02002CB4
-	ldr r0, _02001880 ; =_020AEF00
+	ldr r0, _02001880 ; =MEMORY_ALLOCATION_ARENA_GETTERS
 	mov r4, #0
 	ldr r2, [r0]
 	ldr r0, _02001884 ; =_020B3384
@@ -924,7 +924,7 @@ _02001864:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0200187C: .word _020AEF08
-_02001880: .word _020AEF00
+_02001880: .word MEMORY_ALLOCATION_ARENA_GETTERS
 _02001884: .word _020B3384
 	arm_func_end sub_02001808
 
@@ -1666,7 +1666,7 @@ ClampedLn: ; 0x020021F4
 	movlt r1, #1
 	cmp r1, #0x800
 	ldrge r1, _02002220 ; =0x000007FF
-	ldr r2, _02002224 ; =_02091448
+	ldr r2, _02002224 ; =NATURAL_LOG_VALUE_TABLE
 	mov r1, r1, lsl #1
 	ldrsh r2, [r2, r1]
 	mov r1, #0
@@ -1675,7 +1675,7 @@ ClampedLn: ; 0x020021F4
 	bx lr
 	.align 2, 0
 _02002220: .word 0x000007FF
-_02002224: .word _02091448
+_02002224: .word NATURAL_LOG_VALUE_TABLE
 	arm_func_end ClampedLn
 
 	arm_func_start sub_02002228
@@ -1685,25 +1685,25 @@ sub_02002228: ; 0x02002228
 
 	arm_func_start GetRngSeed
 GetRngSeed: ; 0x0200222C
-	ldr r0, _02002238 ; =_020AEF2C
+	ldr r0, _02002238 ; =PRNG_SEQUENCE_NUM
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
-_02002238: .word _020AEF2C
+_02002238: .word PRNG_SEQUENCE_NUM
 	arm_func_end GetRngSeed
 
 	arm_func_start SetRngSeed
 SetRngSeed: ; 0x0200223C
-	ldr r1, _02002248 ; =_020AEF2C
+	ldr r1, _02002248 ; =PRNG_SEQUENCE_NUM
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_02002248: .word _020AEF2C
+_02002248: .word PRNG_SEQUENCE_NUM
 	arm_func_end SetRngSeed
 
 	arm_func_start Rand16Bit
 Rand16Bit: ; 0x0200224C
-	ldr r1, _02002270 ; =_020AEF2C
+	ldr r1, _02002270 ; =PRNG_SEQUENCE_NUM
 	mov r0, #0x6d
 	ldrh r2, [r1]
 	mul r0, r2, r0
@@ -1713,7 +1713,7 @@ Rand16Bit: ; 0x0200224C
 	ldrh r0, [r1]
 	bx lr
 	.align 2, 0
-_02002270: .word _020AEF2C
+_02002270: .word PRNG_SEQUENCE_NUM
 	arm_func_end Rand16Bit
 
 	arm_func_start RandInt
@@ -4208,7 +4208,7 @@ _02003F78:
 	mov r0, #1
 	b _02004098
 _02003F80:
-	ldr r1, _020040A0 ; =_020AF230
+	ldr r1, _020040A0 ; =LOADED_OVERLAY_GROUP_0
 	ldr r1, [r1, #8]
 	cmp r1, r0
 	moveq r0, #1
@@ -4216,7 +4216,7 @@ _02003F80:
 	and r0, r0, #0xff
 	b _02004098
 _02003F9C:
-	ldr r1, _020040A0 ; =_020AF230
+	ldr r1, _020040A0 ; =LOADED_OVERLAY_GROUP_0
 	ldr r2, [r1, #8]
 	cmp r2, #1
 	movne r0, #0
@@ -4228,7 +4228,7 @@ _02003F9C:
 	and r0, r0, #0xff
 	b _02004098
 _02003FC8:
-	ldr r1, _020040A0 ; =_020AF230
+	ldr r1, _020040A0 ; =LOADED_OVERLAY_GROUP_0
 	ldr r2, [r1, #4]
 	cmp r2, #4
 	movne r0, #0
@@ -4240,7 +4240,7 @@ _02003FC8:
 	and r0, r0, #0xff
 	b _02004098
 _02003FF4:
-	ldr r1, _020040A0 ; =_020AF230
+	ldr r1, _020040A0 ; =LOADED_OVERLAY_GROUP_0
 	ldr r2, [r1, #8]
 	cmp r2, #2
 	movne r0, #0
@@ -4252,7 +4252,7 @@ _02003FF4:
 	and r0, r0, #0xff
 	b _02004098
 _02004020:
-	ldr r1, _020040A0 ; =_020AF230
+	ldr r1, _020040A0 ; =LOADED_OVERLAY_GROUP_0
 	ldr r2, [r1, #4]
 	cmp r2, #0xd
 	movne r0, #0
@@ -4264,7 +4264,7 @@ _02004020:
 	and r0, r0, #0xff
 	b _02004098
 _0200404C:
-	ldr r1, _020040A0 ; =_020AF230
+	ldr r1, _020040A0 ; =LOADED_OVERLAY_GROUP_0
 	ldr r2, [r1, #4]
 	cmp r2, #0xe
 	movne r0, #0
@@ -4288,7 +4288,7 @@ _02004098:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020040A0: .word _020AF230
+_020040A0: .word LOADED_OVERLAY_GROUP_0
 _020040A4: .word _02092558
 _020040A8: .word _0209258C
 	arm_func_end OverlayIsLoaded
@@ -4342,27 +4342,27 @@ _020040C4: ; jump table
 _02004158:
 	b _020047C4
 _0200415C:
-	ldr r0, _020047CC ; =_020AF230
+	ldr r0, _020047CC ; =LOADED_OVERLAY_GROUP_0
 	str r4, [r0, #8]
 	b _020041C4
 _02004168:
-	ldr r0, _020047CC ; =_020AF230
+	ldr r0, _020047CC ; =LOADED_OVERLAY_GROUP_0
 	str r4, [r0, #4]
 	b _020041C4
 _02004174:
-	ldr r0, _020047CC ; =_020AF230
+	ldr r0, _020047CC ; =LOADED_OVERLAY_GROUP_0
 	str r4, [r0]
 	b _020041C4
 _02004180:
-	ldr r0, _020047CC ; =_020AF230
+	ldr r0, _020047CC ; =LOADED_OVERLAY_GROUP_0
 	str r4, [r0, #4]
 	b _020041C4
 _0200418C:
-	ldr r0, _020047CC ; =_020AF230
+	ldr r0, _020047CC ; =LOADED_OVERLAY_GROUP_0
 	str r4, [r0]
 	b _020041C4
 _02004198:
-	ldr r0, _020047CC ; =_020AF230
+	ldr r0, _020047CC ; =LOADED_OVERLAY_GROUP_0
 	str r4, [r0]
 	b _020041C4
 _020041A4:
@@ -4803,7 +4803,7 @@ _020047C4:
 	add sp, sp, #0x3c
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_020047CC: .word _020AF230
+_020047CC: .word LOADED_OVERLAY_GROUP_0
 _020047D0: .word _02092558
 _020047D4: .word _020925A0
 _020047D8: .word 0x00000000
@@ -4893,27 +4893,27 @@ _02004880: ; jump table
 _02004914:
 	b _02004ED0
 _02004918:
-	ldr r0, _02004ED8 ; =_020AF230
+	ldr r0, _02004ED8 ; =LOADED_OVERLAY_GROUP_0
 	mov r1, #0
 	str r1, [r0, #8]
 	b _02004988
 _02004928:
-	ldr r0, _02004ED8 ; =_020AF230
+	ldr r0, _02004ED8 ; =LOADED_OVERLAY_GROUP_0
 	mov r1, #0
 	str r1, [r0, #4]
 	b _02004988
 _02004938:
-	ldr r0, _02004ED8 ; =_020AF230
+	ldr r0, _02004ED8 ; =LOADED_OVERLAY_GROUP_0
 	mov r1, #0
 	str r1, [r0]
 	b _02004988
 _02004948:
-	ldr r0, _02004ED8 ; =_020AF230
+	ldr r0, _02004ED8 ; =LOADED_OVERLAY_GROUP_0
 	mov r1, #0
 	str r1, [r0]
 	b _02004988
 _02004958:
-	ldr r0, _02004ED8 ; =_020AF230
+	ldr r0, _02004ED8 ; =LOADED_OVERLAY_GROUP_0
 	mov r1, #0
 	str r1, [r0]
 	b _02004988
@@ -5308,7 +5308,7 @@ _02004ED0:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02004ED8: .word _020AF230
+_02004ED8: .word LOADED_OVERLAY_GROUP_0
 _02004EDC: .word _02092558
 _02004EE0: .word _020925B4
 _02004EE4: .word 0x00000000
@@ -13490,7 +13490,7 @@ sub_0200B76C: ; 0x0200B76C
 	bl ArrayFill32Fast
 	bl sub_02019304
 	mov r4, r0
-	ldr r1, _0200B884 ; =_02092AE8
+	ldr r1, _0200B884 ; =CART_REMOVED_IMG_DATA
 	mov r2, #0xc000
 	bl MemcpySimple
 	mov r2, r4
@@ -13520,7 +13520,7 @@ _0200B874: .word 0x04001000
 _0200B878: .word 0x000001FF
 _0200B87C: .word 0x07000400
 _0200B880: .word 0x05000400
-_0200B884: .word _02092AE8
+_0200B884: .word CART_REMOVED_IMG_DATA
 _0200B888: .word 0x06806000
 _0200B88C: .word 0x0400006C
 _0200B890: .word 0x0400106C

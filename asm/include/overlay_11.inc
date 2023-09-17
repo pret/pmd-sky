@@ -4,14 +4,8 @@
 .public __fixsfsi
 .public __floatsisf
 .public _020A1870
-.public _020A5488
 .public _020A548A
 .public _020A5490
-.public _020A7FF0
-.public _020A9FB0
-.public _020AF6B8
-.public _020AFC68
-.public _020B0A48
 .public _020D020C
 .public _020F0090
 .public _02130214
@@ -20,6 +14,7 @@
 .public AddItemToStorage
 .public AnimationControlGetAllocForMaxFrame
 .public AnyDungeonRequestsDone
+.public BAG_ITEMS_PTR_MIRROR
 .public CheckMissionRestrictions
 .public ClampComponentAbs
 .public CloseSynthBin
@@ -44,9 +39,11 @@
 .public DungeonRequestsDoneWrapper
 .public DungeonSwapIdxToId
 .public EnableIqSkill
+.public ENTITIES
 .public EntryOverlay13
 .public EuclideanNorm__02005050
 .public EuclideanNorm__020050B0
+.public EVENTS
 .public FatalError
 .public FemaleToMaleForm
 .public FileClose
@@ -242,6 +239,7 @@
 .public RemoveItemNoHole
 .public RemoveItemNoHoleCheck
 .public RemoveItemsTypeInStorage
+.public Render3dElement64
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueAtIndex
 .public SaveScriptVariableValueBytes
@@ -432,7 +430,6 @@
 .public sub_0201E12C
 .public sub_0201E13C
 .public sub_0201E7D8
-.public Render3dElement64
 .public sub_0201F2A0
 .public sub_0201F2E4
 .public sub_0201F324
@@ -761,8 +758,11 @@
 .public sub_02075EC8
 .public sub_020778D0
 .public SwitchAnimationControlToNextFrame
+.public TEAM_MEMBER_TABLE_PTR
+.public TRIG_TABLE
 .public UnloadFile
 .public UnloadOverlay
 .public vsprintf
+.public WAN_TABLE
 .public ZInit8
 .public ZinitScriptVariable

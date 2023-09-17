@@ -36,19 +36,24 @@ def read_pmdsky_debug_symbols() -> Dict[str, Dict[int, SymbolDetails]]:
         with open(full_file_path, 'r') as symbols_file:
             symbols_yaml = yaml.safe_load(symbols_file)
 
-        for function in symbols_yaml[list(symbols_yaml.keys())[0]]['functions']:
-            if 'NA' not in function['address']:
-                continue
-            addresses = function['address'][f'NA{address_suffix}']
-            function_name = function['name']
-            if isinstance(addresses, list):
-                if len(addresses) > 1:
-                    for address in addresses:
-                        symbols[address] = SymbolDetails(f'{function_name}__{address:08X}', full_file_path)
+        def read_symbols_from_array(array_key: str, is_data: bool):
+            for symbol in symbols_yaml[list(symbols_yaml.keys())[0]][array_key]:
+                target_region = f'NA{address_suffix}'
+                if target_region not in symbol['address']:
+                    continue
+                addresses = symbol['address'][target_region]
+                symbol_name = symbol['name']
+                if isinstance(addresses, list):
+                    if len(addresses) > 1:
+                        for address in addresses:
+                            symbols[address] = SymbolDetails(f'{symbol_name}__{address:08X}', full_file_path, is_data)
+                    else:
+                        symbols[addresses[0]] = SymbolDetails(symbol_name, full_file_path, is_data)
                 else:
-                    symbols[addresses[0]] = SymbolDetails(function_name, full_file_path)
-            else:
-                symbols[addresses] = SymbolDetails(function_name, full_file_path)
+                    symbols[addresses] = SymbolDetails(symbol_name, full_file_path, is_data)
+
+        read_symbols_from_array('functions', False)
+        read_symbols_from_array('data', True)
 
         return symbols
 

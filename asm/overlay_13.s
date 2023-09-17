@@ -15,7 +15,7 @@ EntryOverlay13: ; 0x0238A140
 	str r0, [r1]
 	strb r3, [r0]
 	ldr r2, [r1]
-	ldr r0, _0238A18C ; =ov13_0238C024
+	ldr r0, _0238A18C ; =OVERLAY13_UNKNOWN_STRUCT__NA_238C024
 	str r3, [r2, #0x20]
 	ldr r1, [r1]
 	sub r2, r3, #2
@@ -25,7 +25,7 @@ EntryOverlay13: ; 0x0238A140
 	.align 2, 0
 _0238A184: .word 0x00000428
 _0238A188: .word ov13_0238CEA0
-_0238A18C: .word ov13_0238C024
+_0238A18C: .word OVERLAY13_UNKNOWN_STRUCT__NA_238C024
 	arm_func_end EntryOverlay13
 
 	arm_func_start ExitOverlay13
@@ -432,7 +432,7 @@ _0238A6F4:
 	str r0, [r1, #0x20]
 	b _0238BD74
 _0238A73C:
-	ldr r0, _0238B4FC ; =ov13_0238C064
+	ldr r0, _0238B4FC ; =QUIZ_D_BOX_LAYOUT_4
 	bl CreateDBox
 	ldr r1, _0238B4F8 ; =ov13_0238CEA0
 	mov r3, #2
@@ -467,7 +467,7 @@ _0238A79C:
 	ldrsb r0, [r0, #2]
 	bl FreeDBox
 	ldr r1, _0238B4F8 ; =ov13_0238CEA0
-	ldr r0, _0238B500 ; =ov13_0238C034
+	ldr r0, _0238B500 ; =QUIZ_D_BOX_LAYOUT_1
 	ldr r1, [r1]
 	mvn r2, #1
 	strb r2, [r1, #2]
@@ -523,7 +523,7 @@ _0238A830:
 	bl GetDebugFlag
 	cmp r0, #0
 	beq _0238BD74
-	ldr r0, _0238B504 ; =ov13_0238C054
+	ldr r0, _0238B504 ; =QUIZ_D_BOX_LAYOUT_3
 	ldr r1, _0238B508 ; =ov13_0238BE6C
 	bl sub_0202F8C4
 	ldr r1, _0238B4F8 ; =ov13_0238CEA0
@@ -544,7 +544,7 @@ _0238A8B8:
 	ldr r7, [r0]
 	mov r2, #0
 	ldr r4, [r7, #0x24]
-	ldr r1, _0238B510 ; =ov13_0238C1AC
+	ldr r1, _0238B510 ; =QUIZ_QUESTION_STRINGS
 	add r4, r7, r4
 	ldrb r4, [r4, #0x54]
 	mov r4, r4, lsl #1
@@ -572,7 +572,7 @@ _0238A8B8:
 	ldr r5, _0238B514 ; =ov13_0238CECC
 	add r0, r2, #0x6c
 	str r0, [r2, #8]
-	ldr r0, _0238B518 ; =ov13_0238C230
+	ldr r0, _0238B518 ; =QUIZ_ANSWER_STRINGS
 	add r6, r0, r1, lsl #1
 	b _0238A9A4
 _0238A968:
@@ -664,7 +664,7 @@ _0238AA6C:
 	cmp r0, #0
 	bne _0238AAF4
 	mov r4, #0
-	ldr r2, _0238B524 ; =ov13_0238C01C
+	ldr r2, _0238B524 ; =QUIZ_MALE_FEMALE_BOOST_TABLE
 	b _0238AAEC
 _0238AAC0:
 	ldr r1, [r3]
@@ -734,7 +734,7 @@ _0238ABA4:
 	add r1, r2, r1
 	ldrb r2, [r1, #0x54]
 	ldr r1, _0238B50C ; =ov13_0238CF24
-	ldr r5, _0238B528 ; =ov13_0238C390
+	ldr r5, _0238B528 ; =QUIZ_ANSWER_POINTS
 	mov r2, r2, lsl #1
 	ldrh r2, [r1, r2]
 	mov r1, #0
@@ -815,7 +815,7 @@ _0238ACC0:
 	add r0, r0, r0, lsl #1
 	ldr r3, [r1]
 	mov r2, r0, lsl #1
-	ldr r1, _0238B52C ; =ov13_0238C14C
+	ldr r1, _0238B52C ; =STARTERS_STRINGS
 	ldrsb r0, [r3, #2]
 	ldrh r2, [r1, r2]
 	mov r1, #8
@@ -836,7 +836,7 @@ _0238AD00:
 	bl GetPersonality
 	mov r3, r0
 	ldrb r2, [r4, #0x5f]
-	ldr r1, _0238B530 ; =ov13_0238C0B8
+	ldr r1, _0238B530 ; =STARTERS_HERO_IDS
 	add r0, r4, #0x3b4
 	add r2, r2, r3, lsl #1
 	mov r2, r2, lsl #1
@@ -868,7 +868,7 @@ _0238AD00:
 	add r3, r0, #1
 	ldrsb r0, [r4, #2]
 	ldrb r4, [r4, #0x5f]
-	ldr r2, _0238B52C ; =ov13_0238C14C
+	ldr r2, _0238B52C ; =STARTERS_STRINGS
 	mov r1, #0x18
 	add r3, r4, r3
 	mov r3, r3, lsl #1
@@ -1052,10 +1052,10 @@ _0238AFF8:
 	b _0238BD74
 _0238B038:
 	ldrb r1, [r0, #0x5f]
-	ldr r0, _0238B53C ; =ov13_0238C010
+	ldr r0, _0238B53C ; =QUIZ_BORDER_COLOR_TABLE
 	ldrb r0, [r0, r1]
 	bl SetBothScreensWindowsColor
-	ldr r0, _0238B540 ; =ov13_0238C044
+	ldr r0, _0238B540 ; =QUIZ_D_BOX_LAYOUT_2
 	bl CreateDBox
 	ldr r1, _0238B4F8 ; =ov13_0238CEA0
 	ldr r2, [r1]
@@ -1274,7 +1274,7 @@ _0238B360:
 	ldr r4, [r0]
 	bl GetPersonality
 	ldrb r3, [r4, #0x5f]
-	ldr r1, _0238B530 ; =ov13_0238C0B8
+	ldr r1, _0238B530 ; =STARTERS_HERO_IDS
 	add r2, r4, #0x400
 	add r0, r3, r0, lsl #1
 	mov r0, r0, lsl #1
@@ -1374,24 +1374,24 @@ _0238B4C0:
 	b _0238BD74
 	.align 2, 0
 _0238B4F8: .word ov13_0238CEA0
-_0238B4FC: .word ov13_0238C064
-_0238B500: .word ov13_0238C034
-_0238B504: .word ov13_0238C054
+_0238B4FC: .word QUIZ_D_BOX_LAYOUT_4
+_0238B500: .word QUIZ_D_BOX_LAYOUT_1
+_0238B504: .word QUIZ_D_BOX_LAYOUT_3
 _0238B508: .word ov13_0238BE6C
 _0238B50C: .word ov13_0238CF24
-_0238B510: .word ov13_0238C1AC
+_0238B510: .word QUIZ_QUESTION_STRINGS
 _0238B514: .word ov13_0238CECC
-_0238B518: .word ov13_0238C230
+_0238B518: .word QUIZ_ANSWER_STRINGS
 _0238B51C: .word ov13_0238CEAC
 _0238B520: .word 0x00300011
-_0238B524: .word ov13_0238C01C
-_0238B528: .word ov13_0238C390
-_0238B52C: .word ov13_0238C14C
-_0238B530: .word ov13_0238C0B8
+_0238B524: .word QUIZ_MALE_FEMALE_BOOST_TABLE
+_0238B528: .word QUIZ_ANSWER_POINTS
+_0238B52C: .word STARTERS_STRINGS
+_0238B530: .word STARTERS_HERO_IDS
 _0238B534: .word 0x00002208
 _0238B538: .word 0x000005CC
-_0238B53C: .word ov13_0238C010
-_0238B540: .word ov13_0238C044
+_0238B53C: .word QUIZ_BORDER_COLOR_TABLE
+_0238B540: .word QUIZ_D_BOX_LAYOUT_2
 _0238B544: .word 0x000006AD
 _0238B548: .word 0x000006AE
 _0238B54C: .word 0x000006AF
@@ -1548,7 +1548,7 @@ _0238B774:
 	ldr r0, _0238B51C ; =ov13_0238CEAC
 	mov r4, #2
 	ldr r1, _0238BD88 ; =0x00300013
-	ldr r3, _0238BD8C ; =ov13_0238C074
+	ldr r3, _0238BD8C ; =QUIZ_MENU_1
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1614,7 +1614,7 @@ _0238B878:
 	str r0, [r2, #8]
 	bl GetPersonality
 	ldr r1, _0238B4F8 ; =ov13_0238CEA0
-	ldr r2, _0238B530 ; =ov13_0238C0B8
+	ldr r2, _0238B530 ; =STARTERS_HERO_IDS
 	ldr r1, [r1]
 	ldrb r1, [r1, #0x5f]
 	add r0, r1, r0, lsl #1
@@ -1634,18 +1634,18 @@ _0238B8BC:
 	mov r1, #0
 	str r1, [r2, #0x370]
 	bl GetType
-	ldr r2, _0238BD90 ; =ov13_0238C0F8
+	ldr r2, _0238BD90 ; =STARTERS_TYPE_INCOMPATIBILITY_TABLE
 	mov r1, #1
 	ldr sb, [r2, r0, lsl #2]
 	mov r0, r4
 	bl GetType
-	ldr r1, _0238BD90 ; =ov13_0238C0F8
+	ldr r1, _0238BD90 ; =STARTERS_TYPE_INCOMPATIBILITY_TABLE
 	ldr r1, [r1, r0, lsl #2]
 	mov r0, #0x15
 	orr sb, sb, r1
 	bl RandInt
-	ldr fp, _0238BD94 ; =ov13_0238C08C
-	ldr r5, _0238BD90 ; =ov13_0238C0F8
+	ldr fp, _0238BD94 ; =STARTERS_PARTNER_IDS
+	ldr r5, _0238BD90 ; =STARTERS_TYPE_INCOMPATIBILITY_TABLE
 	ldr r4, _0238B4F8 ; =ov13_0238CEA0
 	mov r6, r0
 	mov r7, #0
@@ -1730,7 +1730,7 @@ _0238B9FC:
 	add r0, r0, #0x3b4
 	bl SetPortraitLayout
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
-	ldr r1, _0238BDA4 ; =ov13_0238C014
+	ldr r1, _0238BDA4 ; =PORTRAIT_ATTRIBUTES
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitOffset
@@ -1771,7 +1771,7 @@ _0238BA70:
 	add r0, r0, #0x3b4
 	bl SetPortraitLayout
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
-	ldr r1, _0238BDA4 ; =ov13_0238C014
+	ldr r1, _0238BDA4 ; =PORTRAIT_ATTRIBUTES
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitOffset
@@ -1807,7 +1807,7 @@ _0238BB10:
 	add r0, r0, #0x3b4
 	bl SetPortraitLayout
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
-	ldr r1, _0238BDA4 ; =ov13_0238C014
+	ldr r1, _0238BDA4 ; =PORTRAIT_ATTRIBUTES
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitOffset
@@ -1863,7 +1863,7 @@ _0238BB98:
 	add r0, r0, #0x3b4
 	bl SetPortraitLayout
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
-	ldr r1, _0238BDA4 ; =ov13_0238C014
+	ldr r1, _0238BDA4 ; =PORTRAIT_ATTRIBUTES
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
 	bl SetPortraitOffset
@@ -1948,13 +1948,13 @@ _0238BD7C: .word 0x000006C2
 _0238BD80: .word 0x000006C3
 _0238BD84: .word 0x000006C5
 _0238BD88: .word 0x00300013
-_0238BD8C: .word ov13_0238C074
-_0238BD90: .word ov13_0238C0F8
-_0238BD94: .word ov13_0238C08C
+_0238BD8C: .word QUIZ_MENU_1
+_0238BD90: .word STARTERS_TYPE_INCOMPATIBILITY_TABLE
+_0238BD94: .word STARTERS_PARTNER_IDS
 _0238BD98: .word ov13_0238CEBC
 _0238BD9C: .word 0x00001011
 _0238BDA0: .word GetOptionStringFromID
-_0238BDA4: .word ov13_0238C014
+_0238BDA4: .word PORTRAIT_ATTRIBUTES
 	arm_func_end ov13_0238ADFC
 
 	arm_func_start GetPersonality
@@ -2133,64 +2133,64 @@ _0238C00C: .word 0x000006CD
 	arm_func_end ov13_0238BE6C
 	; 0x0238C010
 
-	.global ov13_0238C010
-ov13_0238C010:
+	.global QUIZ_BORDER_COLOR_TABLE
+QUIZ_BORDER_COLOR_TABLE:
 	.byte 0x00, 0x01, 0x00, 0x00
-	.global ov13_0238C014
-ov13_0238C014:
+	.global PORTRAIT_ATTRIBUTES
+PORTRAIT_ATTRIBUTES:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov13_0238C01C
-ov13_0238C01C:
+	.global QUIZ_MALE_FEMALE_BOOST_TABLE
+QUIZ_MALE_FEMALE_BOOST_TABLE:
 	.byte 0x07, 0x08, 0x0A, 0x10
 	.byte 0x03, 0x0A, 0x10, 0x00
-	.global ov13_0238C024
-ov13_0238C024:
+	.global OVERLAY13_UNKNOWN_STRUCT__NA_238C024
+OVERLAY13_UNKNOWN_STRUCT__NA_238C024:
 	.byte 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word ExitOverlay13
 	.word Overlay13SwitchFunctionNa238A1C8
-	.global ov13_0238C034
-ov13_0238C034:
+	.global QUIZ_D_BOX_LAYOUT_1
+QUIZ_D_BOX_LAYOUT_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFD, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov13_0238C044
-ov13_0238C044:
+	.global QUIZ_D_BOX_LAYOUT_2
+QUIZ_D_BOX_LAYOUT_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05, 0x01, 0xFD, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov13_0238C054
-ov13_0238C054:
+	.global QUIZ_D_BOX_LAYOUT_3
+QUIZ_D_BOX_LAYOUT_3:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x1E, 0x06, 0x01, 0xFD, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov13_0238C064
-ov13_0238C064:
+	.global QUIZ_D_BOX_LAYOUT_4
+QUIZ_D_BOX_LAYOUT_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFA, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov13_0238C074
-ov13_0238C074:
+	.global QUIZ_MENU_1
+QUIZ_MENU_1:
 	.byte 0xC6, 0x06, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xC7, 0x06, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.global ov13_0238C08C
-ov13_0238C08C:
+	.global STARTERS_PARTNER_IDS
+STARTERS_PARTNER_IDS:
 	.byte 0x01, 0x00, 0x04, 0x00
 	.byte 0x07, 0x00, 0x19, 0x00, 0xF0, 0x02, 0x9B, 0x00, 0x9E, 0x00, 0x18, 0x01, 0x73, 0x03, 0x1E, 0x01
 	.byte 0xA6, 0x01, 0xA9, 0x01, 0xAC, 0x01, 0xDD, 0x02, 0xB6, 0x01, 0xE9, 0x01, 0x02, 0x01, 0x7D, 0x02
 	.byte 0xA0, 0x03, 0x34, 0x00, 0xE8, 0x01, 0x00, 0x00
-	.global ov13_0238C0B8
-ov13_0238C0B8:
+	.global STARTERS_HERO_IDS
+STARTERS_HERO_IDS:
 	.byte 0x1B, 0x01, 0x70, 0x03, 0x04, 0x00, 0x59, 0x02
 	.byte 0x19, 0x00, 0x5C, 0x02, 0x9E, 0x00, 0xDD, 0x02, 0xAC, 0x01, 0x01, 0x04, 0xA9, 0x01, 0xA0, 0x03
 	.byte 0x9B, 0x00, 0xFE, 0x03, 0xB6, 0x01, 0x71, 0x02, 0xE9, 0x01, 0xF6, 0x02, 0x98, 0x00, 0xF3, 0x02
 	.byte 0x02, 0x01, 0x7D, 0x02, 0x01, 0x00, 0x76, 0x03, 0x07, 0x00, 0x04, 0x04, 0x18, 0x01, 0xF0, 0x02
 	.byte 0x1E, 0x01, 0x73, 0x03, 0xA6, 0x01, 0x5F, 0x02
-	.global ov13_0238C0F8
-ov13_0238C0F8:
+	.global STARTERS_TYPE_INCOMPATIBILITY_TABLE
+STARTERS_TYPE_INCOMPATIBILITY_TABLE:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
 	.byte 0x20, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00
 	.byte 0x00, 0x02, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
 	.byte 0x00, 0x20, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00
 	.byte 0x10, 0x00, 0x02, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x08, 0x00
-	.global ov13_0238C14C
-ov13_0238C14C:
+	.global STARTERS_STRINGS
+STARTERS_STRINGS:
 	.byte 0x7D, 0x06, 0x7E, 0x06
 	.byte 0x7F, 0x06, 0x80, 0x06, 0x81, 0x06, 0x82, 0x06, 0x83, 0x06, 0x84, 0x06, 0x85, 0x06, 0x86, 0x06
 	.byte 0x87, 0x06, 0x88, 0x06, 0x89, 0x06, 0x8A, 0x06, 0x8B, 0x06, 0x8C, 0x06, 0x8D, 0x06, 0x8E, 0x06
@@ -2198,8 +2198,8 @@ ov13_0238C14C:
 	.byte 0x97, 0x06, 0x98, 0x06, 0x99, 0x06, 0x9A, 0x06, 0x9B, 0x06, 0x9C, 0x06, 0x9D, 0x06, 0x9E, 0x06
 	.byte 0x9F, 0x06, 0xA0, 0x06, 0xA1, 0x06, 0xA2, 0x06, 0xA3, 0x06, 0xA4, 0x06, 0xA5, 0x06, 0xA6, 0x06
 	.byte 0xA7, 0x06, 0xA8, 0x06, 0xA9, 0x06, 0xAA, 0x06, 0xAB, 0x06, 0xAC, 0x06
-	.global ov13_0238C1AC
-ov13_0238C1AC:
+	.global QUIZ_QUESTION_STRINGS
+QUIZ_QUESTION_STRINGS:
 	.byte 0x8B, 0x05, 0x8C, 0x05
 	.byte 0x8D, 0x05, 0x8E, 0x05, 0x8F, 0x05, 0x90, 0x05, 0x91, 0x05, 0x92, 0x05, 0x93, 0x05, 0x94, 0x05
 	.byte 0x95, 0x05, 0x96, 0x05, 0x97, 0x05, 0x98, 0x05, 0x99, 0x05, 0x9A, 0x05, 0x9B, 0x05, 0x9C, 0x05
@@ -2209,8 +2209,8 @@ ov13_0238C1AC:
 	.byte 0xB5, 0x05, 0xB6, 0x05, 0xB7, 0x05, 0xB8, 0x05, 0xB9, 0x05, 0xBA, 0x05, 0xBB, 0x05, 0xBC, 0x05
 	.byte 0xBD, 0x05, 0xBE, 0x05, 0xBF, 0x05, 0xC0, 0x05, 0xC1, 0x05, 0xC2, 0x05, 0xC3, 0x05, 0xC4, 0x05
 	.byte 0xC5, 0x05, 0xC6, 0x05, 0xC7, 0x05, 0xC8, 0x05, 0xC9, 0x05, 0xCA, 0x05, 0xCB, 0x05, 0xCD, 0x05
-	.global ov13_0238C230
-ov13_0238C230:
+	.global QUIZ_ANSWER_STRINGS
+QUIZ_ANSWER_STRINGS:
 	.byte 0xCE, 0x05, 0xCF, 0x05, 0xD0, 0x05, 0xD1, 0x05, 0xD2, 0x05, 0xD3, 0x05, 0xD4, 0x05, 0xD5, 0x05
 	.byte 0xD6, 0x05, 0xD7, 0x05, 0xD8, 0x05, 0xD9, 0x05, 0xDA, 0x05, 0xDB, 0x05, 0xDC, 0x05, 0xDD, 0x05
 	.byte 0xDE, 0x05, 0xDF, 0x05, 0xE0, 0x05, 0xE1, 0x05, 0xE2, 0x05, 0xE3, 0x05, 0xE4, 0x05, 0xE5, 0x05
@@ -2233,8 +2233,8 @@ ov13_0238C230:
 	.byte 0x66, 0x06, 0x67, 0x06, 0x68, 0x06, 0x69, 0x06, 0x6A, 0x06, 0x6B, 0x06, 0x6C, 0x06, 0x6D, 0x06
 	.byte 0x6E, 0x06, 0x6F, 0x06, 0x70, 0x06, 0x71, 0x06, 0x72, 0x06, 0x73, 0x06, 0x74, 0x06, 0x75, 0x06
 	.byte 0x76, 0x06, 0x77, 0x06, 0x78, 0x06, 0x79, 0x06, 0x7A, 0x06, 0x7B, 0x06, 0x7C, 0x06, 0x00, 0x00
-	.global ov13_0238C390
-ov13_0238C390:
+	.global QUIZ_ANSWER_POINTS
+QUIZ_ANSWER_POINTS:
 	.byte 0x04, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x04

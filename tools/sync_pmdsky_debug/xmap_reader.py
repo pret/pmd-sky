@@ -51,9 +51,9 @@ def read_xmap_symbols() -> Dict[str, Dict[int, SymbolDetails]]:
             symbol_name = symbol_split[0]
             symbol_address = int(line[2:10], 16)
             if '00000000' in line:
-                # TODO Handle non-function symbols.
-                pass
+                if not symbol_name.startswith('$'):
+                    xmap_symbols[current_section][symbol_address] = SymbolDetails(symbol_name, symbol_split[1][1:-1], True)
             else:
-                xmap_symbols[current_section][symbol_address] = SymbolDetails(symbol_name, symbol_split[1][1:-1])
+                xmap_symbols[current_section][symbol_address] = SymbolDetails(symbol_name, symbol_split[1][1:-1], False)
 
     return xmap_symbols

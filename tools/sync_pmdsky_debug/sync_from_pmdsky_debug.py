@@ -2,6 +2,7 @@ from pmdsky_debug_reader import *
 from symbol_details import *
 from xmap_reader import *
 from typing import List
+import re
 
 # Syncs symbols from pmdsky-debug (https://github.com/UsernameFodder/pmdsky-debug) to the decomp.
 # To use this script, you will need:
@@ -37,21 +38,30 @@ for section_name, pmdsky_debug_section in pmdsky_debug_symbols.items():
         if address in xmap_section and xmap_section[address].name != symbol.name and xmap_section[address].name not in MIXED_CASE_SYMBOLS:
             old_symbol = xmap_section[address]
             print(f'Replacing {old_symbol.name} with {symbol.name}')
-            asm_search_string_bases = [
-                f'arm_func_start {old_symbol.name}\n',
-                f'arm_func_end {old_symbol.name}\n',
-                f'\n{old_symbol.name}: ',
-                f'thumb_func_start {old_symbol.name}\n',
-                f'thumb_func_end {old_symbol.name}\n',
-                f'.word {old_symbol.name}\n',
-                f'b {old_symbol.name} ; case',
-                f'bl {old_symbol.name}\n',
-                f'blx {old_symbol.name}\n',
-                f'beq {old_symbol.name}\n',
-                f'bne {old_symbol.name}\n',
-                f'; ={old_symbol.name}\n',
-                f'.public {old_symbol.name}\n',
-            ]
+            if symbol.is_data:
+                asm_search_string_bases = [
+                    f'\n{old_symbol.name}:\n',
+                    f'.word {old_symbol.name}\n',
+                    f'; ={old_symbol.name}\n',
+                    f'.global {old_symbol.name}\n',
+                    f'.public {old_symbol.name}\n',
+                ]
+            else:
+                asm_search_string_bases = [
+                    f'arm_func_start {old_symbol.name}\n',
+                    f'arm_func_end {old_symbol.name}\n',
+                    f'\n{old_symbol.name}: ',
+                    f'thumb_func_start {old_symbol.name}\n',
+                    f'thumb_func_end {old_symbol.name}\n',
+                    f'.word {old_symbol.name}\n',
+                    f'b {old_symbol.name} ; case',
+                    f'bl {old_symbol.name}\n',
+                    f'blx {old_symbol.name}\n',
+                    f'beq {old_symbol.name}\n',
+                    f'bne {old_symbol.name}\n',
+                    f'; ={old_symbol.name}\n',
+                    f'.public {old_symbol.name}\n',
+                ]
             asm_search_strings = [(base, base.replace(old_symbol.name, symbol.name)) for base in asm_search_string_bases]
             for file_path in asm_files:
                 with open(file_path, 'r') as asm_file:
@@ -61,15 +71,21 @@ for section_name, pmdsky_debug_section in pmdsky_debug_symbols.items():
                 with open(file_path, 'w') as asm_file:
                     asm_file.write(asm_contents)
 
+            src_search_string_data_regex = re.compile(fr'([ &*(]){old_symbol.name}([,); [])')
+            src_search_string_data_regex_replace = fr'\1{symbol.name}\2'
+
             src_search_string_bases = [
                 f' {old_symbol.name}(',
                 f'({old_symbol.name}(',
             ]
-            src_search_strings = [(base, base.replace(old_symbol.name, symbol.name)) for base in src_search_string_bases]
+            src_search_function_strings = [(base, base.replace(old_symbol.name, symbol.name)) for base in src_search_string_bases]
             for file_path in src_files:
                 with open(file_path, 'r') as src_file:
                     src_contents = src_file.read()
-                for search_string in src_search_strings:
-                    src_contents = src_contents.replace(search_string[0], search_string[1])
+                if symbol.is_data:
+                    src_contents = src_search_string_data_regex.sub(src_search_string_data_regex_replace, src_contents)
+                else:
+                    for search_string in src_search_function_strings:
+                        src_contents = src_contents.replace(search_string[0], search_string[1])
                 with open(file_path, 'w') as src_file:
                     src_file.write(src_contents)

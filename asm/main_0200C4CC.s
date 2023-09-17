@@ -80,13 +80,13 @@ sub_0200C5B4: ; 0x0200C5B4
 	cmp r0, r1
 	movlt r0, #1
 	rsbge r1, r1, #0
-	ldrge r2, _0200C5D8 ; =_0209E7A4
+	ldrge r2, _0200C5D8 ; =DUNGEON_RETURN_STATUS_TABLE
 	addge r0, r0, r1
 	ldrgeb r0, [r2, r0, lsl #2]
 	bx lr
 	.align 2, 0
 _0200C5D4: .word 0x00000233
-_0200C5D8: .word _0209E7A4
+_0200C5D8: .word DUNGEON_RETURN_STATUS_TABLE
 	arm_func_end sub_0200C5B4
 
 	arm_func_start sub_0200C5DC
@@ -416,7 +416,7 @@ _0200CA88: .word 0x00000263
 sub_0200CA8C: ; 0x0200CA8C
 	stmdb sp!, {r3, lr}
 	ldr r1, _0200CAB4 ; =_022A3824
-	ldr r0, _0200CAB8 ; =_020AF6B8
+	ldr r0, _0200CAB8 ; =BAG_ITEMS_PTR_MIRROR
 	str r1, [r0]
 	bl LoadItemPspi2n
 	bl sub_0200EBCC
@@ -426,7 +426,7 @@ sub_0200CA8C: ; 0x0200CA8C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0200CAB4: .word _022A3824
-_0200CAB8: .word _020AF6B8
+_0200CAB8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200CA8C
 
 	arm_func_start sub_0200CABC
@@ -1088,7 +1088,7 @@ sub_0200D214: ; 0x0200D214
 	arm_func_start FindItemInInventory
 FindItemInInventory: ; 0x0200D278
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _0200D30C ; =_020AF6B8
+	ldr r1, _0200D30C ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, #0
 	ldr r6, [r1]
 	mov r3, r5
@@ -1130,7 +1130,7 @@ _0200D2FC:
 	mvn r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0200D30C: .word _020AF6B8
+_0200D30C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end FindItemInInventory
 
 	arm_func_start sub_0200D310
@@ -1471,7 +1471,7 @@ _0200D768: .word _02097FE4
 	arm_func_start sub_0200D76C
 sub_0200D76C: ; 0x0200D76C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r3, _0200D814 ; =_020AF6B8
+	ldr r3, _0200D814 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
 	ldr lr, [r3, #4]
 	ldr r8, _0200D818 ; =_02094D0C
@@ -1517,7 +1517,7 @@ _0200D7F0:
 	strb r2, [r1, #1]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0200D814: .word _020AF6B8
+_0200D814: .word BAG_ITEMS_PTR_MIRROR
 _0200D818: .word _02094D0C
 	arm_func_end sub_0200D76C
 
@@ -1574,7 +1574,7 @@ sub_0200D8AC: ; 0x0200D8AC
 	stmdb sp!, {r3, lr}
 	ldrb r1, [r0]
 	ldrh r2, [r0, #2]
-	ldr r0, _0200D8DC ; =_020A1F20
+	ldr r0, _0200D8DC ; =MONEY_QUANTITY_TABLE
 	tst r1, #0x20
 	ldr r0, [r0, r2, lsl #2]
 	ldmeqia sp!, {r3, pc}
@@ -1584,7 +1584,7 @@ sub_0200D8AC: ; 0x0200D8AC
 	mov r0, r0, asr #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200D8DC: .word _020A1F20
+_0200D8DC: .word MONEY_QUANTITY_TABLE
 _0200D8E0: .word 0x00000133
 	arm_func_end sub_0200D8AC
 
@@ -1637,7 +1637,7 @@ WriteItemsToSave: ; 0x0200D95C
 	mov r1, r3
 	bl sub_02050990
 	mov r8, #0
-	ldr r6, _0200DC40 ; =_020AF6B8
+	ldr r6, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	mov fp, r8
 	mov r4, #6
 	mov r5, #0x12c
@@ -1670,7 +1670,7 @@ _0200D994:
 	add r8, r8, #1
 	cmp r8, #3
 	blt _0200D98C
-	ldr r4, _0200DC40 ; =_020AF6B8
+	ldr r4, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, #0
 	add r6, sp, #0
 	mov r5, #0xb
@@ -1685,7 +1685,7 @@ _0200DA08:
 	add r7, r7, #1
 	cmp r7, #0x3e8
 	blt _0200DA08
-	ldr r4, _0200DC40 ; =_020AF6B8
+	ldr r4, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, #0
 	add r6, sp, #0
 	mov r5, #0xb
@@ -1702,7 +1702,7 @@ _0200DA40:
 	blt _0200DA40
 	mov sb, #0
 	mov r5, #0xb
-	ldr r4, _0200DC40 ; =_020AF6B8
+	ldr r4, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	add r6, sp, #0
 	mov fp, r5
 	mov r7, sb
@@ -1746,7 +1746,7 @@ _0200DAC8:
 	add sb, sb, #1
 	cmp sb, #2
 	blt _0200DA80
-	ldr r4, _0200DC40 ; =_020AF6B8
+	ldr r4, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, #0
 	add r6, sp, #0
 	mov r5, #0x18
@@ -1761,56 +1761,56 @@ _0200DB24:
 	add r7, r7, #1
 	cmp r7, #3
 	blt _0200DB24
-	ldr r1, _0200DC40 ; =_020AF6B8
+	ldr r1, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x18
 	add r1, r1, #0x3a0
 	add r1, r1, #0x1000
 	bl CopyBitsTo
-	ldr r1, _0200DC40 ; =_020AF6B8
+	ldr r1, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0xc
 	add r1, r1, #0x3a4
 	add r1, r1, #0x1000
 	bl CopyBitsTo
-	ldr r1, _0200DC40 ; =_020AF6B8
+	ldr r1, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0xc
 	add r1, r1, #0xa6
 	add r1, r1, #0x1300
 	bl CopyBitsTo
-	ldr r1, _0200DC40 ; =_020AF6B8
+	ldr r1, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #8
 	add r1, r1, #0x3a8
 	add r1, r1, #0x1000
 	bl CopyBitsTo
-	ldr r1, _0200DC40 ; =_020AF6B8
+	ldr r1, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #8
 	add r1, r1, #0xaa
 	add r1, r1, #0x1300
 	bl CopyBitsTo
-	ldr r1, _0200DC40 ; =_020AF6B8
+	ldr r1, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x10
 	add r1, r1, #0x3ac
 	add r1, r1, #0x1000
 	bl CopyBitsTo
-	ldr r1, _0200DC40 ; =_020AF6B8
+	ldr r1, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x10
 	add r1, r1, #0x3b0
 	add r1, r1, #0x1000
 	bl CopyBitsTo
-	ldr r1, _0200DC40 ; =_020AF6B8
+	ldr r1, _0200DC40 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x10
@@ -1823,7 +1823,7 @@ _0200DB24:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0200DC40: .word _020AF6B8
+_0200DC40: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end WriteItemsToSave
 
 	arm_func_start ReadItemsFromSave
@@ -1836,7 +1836,7 @@ ReadItemsFromSave: ; 0x0200DC44
 	mov r1, r3
 	bl sub_02050974
 	mov r8, #0
-	ldr r6, _0200DF28 ; =_020AF6B8
+	ldr r6, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	mov fp, r8
 	mov r4, #6
 	mov r5, #0x12c
@@ -1869,7 +1869,7 @@ _0200DC7C:
 	add r8, r8, #1
 	cmp r8, #3
 	blt _0200DC74
-	ldr r4, _0200DF28 ; =_020AF6B8
+	ldr r4, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, #0
 	add r6, sp, #0
 	mov r5, #0xb
@@ -1884,7 +1884,7 @@ _0200DCF0:
 	add r7, r7, #1
 	cmp r7, #0x3e8
 	blt _0200DCF0
-	ldr r4, _0200DF28 ; =_020AF6B8
+	ldr r4, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, #0
 	add r6, sp, #0
 	mov r5, #0xb
@@ -1901,7 +1901,7 @@ _0200DD28:
 	blt _0200DD28
 	mov sb, #0
 	mov r5, #0xb
-	ldr r4, _0200DF28 ; =_020AF6B8
+	ldr r4, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	add r6, sp, #0
 	mov fp, r5
 	mov r7, sb
@@ -1945,7 +1945,7 @@ _0200DDB0:
 	add sb, sb, #1
 	cmp sb, #2
 	blt _0200DD68
-	ldr r4, _0200DF28 ; =_020AF6B8
+	ldr r4, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, #0
 	add r6, sp, #0
 	mov r5, #0x18
@@ -1960,56 +1960,56 @@ _0200DE0C:
 	add r7, r7, #1
 	cmp r7, #3
 	blt _0200DE0C
-	ldr r1, _0200DF28 ; =_020AF6B8
+	ldr r1, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x18
 	add r1, r1, #0x3a0
 	add r1, r1, #0x1000
 	bl CopyBitsFrom
-	ldr r1, _0200DF28 ; =_020AF6B8
+	ldr r1, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0xc
 	add r1, r1, #0x3a4
 	add r1, r1, #0x1000
 	bl CopyBitsFrom
-	ldr r1, _0200DF28 ; =_020AF6B8
+	ldr r1, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0xc
 	add r1, r1, #0xa6
 	add r1, r1, #0x1300
 	bl CopyBitsFrom
-	ldr r1, _0200DF28 ; =_020AF6B8
+	ldr r1, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #8
 	add r1, r1, #0x3a8
 	add r1, r1, #0x1000
 	bl CopyBitsFrom
-	ldr r1, _0200DF28 ; =_020AF6B8
+	ldr r1, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #8
 	add r1, r1, #0xaa
 	add r1, r1, #0x1300
 	bl CopyBitsFrom
-	ldr r1, _0200DF28 ; =_020AF6B8
+	ldr r1, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x10
 	add r1, r1, #0x3ac
 	add r1, r1, #0x1000
 	bl CopyBitsFrom
-	ldr r1, _0200DF28 ; =_020AF6B8
+	ldr r1, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x10
 	add r1, r1, #0x3b0
 	add r1, r1, #0x1000
 	bl CopyBitsFrom
-	ldr r1, _0200DF28 ; =_020AF6B8
+	ldr r1, _0200DF28 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x10
@@ -2022,7 +2022,7 @@ _0200DE0C:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0200DF28: .word _020AF6B8
+_0200DF28: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end ReadItemsFromSave
 
 	arm_func_start sub_0200DF2C
@@ -2105,7 +2105,7 @@ IsItemAvailableInDungeonGroup: ; 0x0200E00C
 	cmp r0, #0x64
 	movhs r0, #0
 	ldmhsia sp!, {r4, pc}
-	ldr r2, _0200E050 ; =_02094D34
+	ldr r2, _0200E050 ; =AVAILABLE_ITEMS_IN_GROUP_TABLE
 	mov r1, r4, asr #2
 	add r0, r2, r0, lsl #7
 	add r1, r4, r1, lsr #29
@@ -2117,7 +2117,7 @@ IsItemAvailableInDungeonGroup: ; 0x0200E00C
 	and r0, r2, #0xff
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0200E050: .word _02094D34
+_0200E050: .word AVAILABLE_ITEMS_IN_GROUP_TABLE
 	arm_func_end IsItemAvailableInDungeonGroup
 
 	arm_func_start GetItemIdFromList
@@ -2135,10 +2135,10 @@ GetItemIdFromList: ; 0x0200E054
 	bl MemAlloc
 	cmp r6, #0
 	mov r7, r0
-	ldreq r0, _0200E1F0 ; =_020B0948
+	ldreq r0, _0200E1F0 ; =ITEM_TABLES_PTRS_1
 	subne r1, r6, #1
 	ldreq r2, [r0]
-	ldrne r0, _0200E1F0 ; =_020B0948
+	ldrne r0, _0200E1F0 ; =ITEM_TABLES_PTRS_1
 	ldr r3, _0200E1F4 ; =0xFFFF8AD0
 	ldrne r2, [r0, r1, lsl #2]
 	mov r0, #0
@@ -2242,7 +2242,7 @@ _0200E1D8:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0200E1F0: .word _020B0948
+_0200E1F0: .word ITEM_TABLES_PTRS_1
 _0200E1F4: .word 0xFFFF8AD0
 	arm_func_end GetItemIdFromList
 
@@ -2609,7 +2609,7 @@ LoadItemPspi2n: ; 0x0200E6D8
 	mov r2, #1
 	bl LoadFileFromRom
 	ldr r1, [sp]
-	ldr r0, _0200E754 ; =_020AF6C0
+	ldr r0, _0200E754 ; =ITEM_DATA_TABLE_PTRS
 	bl HandleSir0Translation
 	ldr r0, _0200E758 ; =_020AF6C8
 	bl PointsToZero
@@ -2628,7 +2628,7 @@ _0200E740:
 _0200E748: .word _02098038
 _0200E74C: .word _020AF6C4
 _0200E750: .word _02098054
-_0200E754: .word _020AF6C0
+_0200E754: .word ITEM_DATA_TABLE_PTRS
 _0200E758: .word _020AF6C8
 _0200E75C: .word _02098070
 	arm_func_end LoadItemPspi2n
@@ -2637,12 +2637,12 @@ _0200E75C: .word _02098070
 GetExclusiveItemType: ; 0x0200E760
 	stmdb sp!, {r3, lr}
 	bl GetExclusiveItemOffsetEnsureValid
-	ldr r1, _0200E778 ; =_020AF6C0
+	ldr r1, _0200E778 ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1]
 	ldrb r0, [r1, r0, lsl #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200E778: .word _020AF6C0
+_0200E778: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetExclusiveItemType
 
 	arm_func_start GetExclusiveItemOffsetEnsureValid
@@ -2671,7 +2671,7 @@ _0200E7BC: .word 0x00000578
 
 	arm_func_start IsItemValid
 IsItemValid: ; 0x0200E7C0
-	ldr r1, _0200E7E4 ; =_020AF6C0
+	ldr r1, _0200E7E4 ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xe]
@@ -2681,33 +2681,33 @@ IsItemValid: ; 0x0200E7C0
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0200E7E4: .word _020AF6C0
+_0200E7E4: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end IsItemValid
 
 	arm_func_start GetExclusiveItemParameter
 GetExclusiveItemParameter: ; 0x0200E7E8
 	stmdb sp!, {r3, lr}
 	bl GetExclusiveItemOffsetEnsureValid
-	ldr r1, _0200E804 ; =_020AF6C0
+	ldr r1, _0200E804 ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1]
 	add r0, r1, r0, lsl #2
 	ldrsh r0, [r0, #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200E804: .word _020AF6C0
+_0200E804: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetExclusiveItemParameter
 
 	arm_func_start GetItemCategory
 GetItemCategory: ; 0x0200E808
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
-	ldr r1, _0200E824 ; =_020AF6C0
+	ldr r1, _0200E824 ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200E824: .word _020AF6C0
+_0200E824: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetItemCategory
 
 	arm_func_start EnsureValidItem
@@ -2761,7 +2761,7 @@ GetItemNameFormatted: ; 0x0200E884
 	mov r4, r0
 	mov r0, r7
 	bl EnsureValidItem
-	ldr r1, _0200E97C ; =_020AF6C0
+	ldr r1, _0200E97C ; =ITEM_DATA_TABLE_PTRS
 	cmp r5, #0
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
@@ -2815,7 +2815,7 @@ _0200E968:
 	bl SprintfStatic__0200E990
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0200E97C: .word _020AF6C0
+_0200E97C: .word ITEM_DATA_TABLE_PTRS
 _0200E980: .word _0209808C
 _0200E984: .word _0209809C
 _0200E988: .word _020980AC
@@ -2840,65 +2840,65 @@ SprintfStatic__0200E990: ; 0x0200E990
 GetItemBuyPrice: ; 0x0200E9B8
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
-	ldr r1, _0200E9D4 ; =_020AF6C0
+	ldr r1, _0200E9D4 ; =ITEM_DATA_TABLE_PTRS
 	mov r0, r0, lsl #4
 	ldr r1, [r1, #4]
 	ldrh r0, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200E9D4: .word _020AF6C0
+_0200E9D4: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetItemBuyPrice
 
 	arm_func_start GetItemSellPrice
 GetItemSellPrice: ; 0x0200E9D8
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
-	ldr r1, _0200E9F4 ; =_020AF6C0
+	ldr r1, _0200E9F4 ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrh r0, [r0, #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200E9F4: .word _020AF6C0
+_0200E9F4: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetItemSellPrice
 
 	arm_func_start GetItemSpriteId
 GetItemSpriteId: ; 0x0200E9F8
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
-	ldr r1, _0200EA14 ; =_020AF6C0
+	ldr r1, _0200EA14 ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #5]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200EA14: .word _020AF6C0
+_0200EA14: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetItemSpriteId
 
 	arm_func_start GetItemPaletteId
 GetItemPaletteId: ; 0x0200EA18
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
-	ldr r1, _0200EA34 ; =_020AF6C0
+	ldr r1, _0200EA34 ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xc]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200EA34: .word _020AF6C0
+_0200EA34: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetItemPaletteId
 
 	arm_func_start GetItemActionName
 GetItemActionName: ; 0x0200EA38
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
-	ldr r1, _0200EA54 ; =_020AF6C0
+	ldr r1, _0200EA54 ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xd]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200EA54: .word _020AF6C0
+_0200EA54: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetItemActionName
 
 	arm_func_start GetThrownItemQuantityLimit
@@ -2906,27 +2906,27 @@ GetThrownItemQuantityLimit: ; 0x0200EA58
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl EnsureValidItem
-	ldr r1, _0200EA7C ; =_020AF6C0
+	ldr r1, _0200EA7C ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	add r0, r0, r4
 	ldrb r0, [r0, #0xa]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0200EA7C: .word _020AF6C0
+_0200EA7C: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetThrownItemQuantityLimit
 
 	arm_func_start GetItemMoveId
 GetItemMoveId: ; 0x0200EA80
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
-	ldr r1, _0200EA9C ; =_020AF6C0
+	ldr r1, _0200EA9C ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrsh r0, [r0, #8]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200EA9C: .word _020AF6C0
+_0200EA9C: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetItemMoveId
 
 	arm_func_start TestItemAiFlag
@@ -2935,7 +2935,7 @@ TestItemAiFlag: ; 0x0200EAA0
 	cmp r1, #0
 	bne _0200EAD4
 	bl EnsureValidItem
-	ldr r1, _0200EB2C ; =_020AF6C0
+	ldr r1, _0200EB2C ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xe]
@@ -2948,7 +2948,7 @@ _0200EAD4:
 	cmp r1, #1
 	bne _0200EB04
 	bl EnsureValidItem
-	ldr r1, _0200EB2C ; =_020AF6C0
+	ldr r1, _0200EB2C ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xe]
@@ -2959,7 +2959,7 @@ _0200EAD4:
 	ldmia sp!, {r3, pc}
 _0200EB04:
 	bl EnsureValidItem
-	ldr r1, _0200EB2C ; =_020AF6C0
+	ldr r1, _0200EB2C ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xe]
@@ -2969,12 +2969,12 @@ _0200EB04:
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200EB2C: .word _020AF6C0
+_0200EB2C: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end TestItemAiFlag
 
 	arm_func_start IsItemInTimeDarkness
 IsItemInTimeDarkness: ; 0x0200EB30
-	ldr r1, _0200EB54 ; =_020AF6C0
+	ldr r1, _0200EB54 ; =ITEM_DATA_TABLE_PTRS
 	ldr r1, [r1, #4]
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xe]
@@ -2984,7 +2984,7 @@ IsItemInTimeDarkness: ; 0x0200EB30
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0200EB54: .word _020AF6C0
+_0200EB54: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end IsItemInTimeDarkness
 
 	arm_func_start IsItemValidVeneer
@@ -2997,7 +2997,7 @@ _0200EB60: .word IsItemValid
 
 	arm_func_start sub_0200EB64
 sub_0200EB64: ; 0x0200EB64
-	ldr r1, _0200EB88 ; =_020AF6C0
+	ldr r1, _0200EB88 ; =ITEM_DATA_TABLE_PTRS
 	mov r2, r0, lsl #0x1f
 	ldr r1, [r1, #8]
 	mov r0, r0, asr #1
@@ -3007,14 +3007,14 @@ sub_0200EB64: ; 0x0200EB64
 	and r0, r0, r3, asr r1
 	bx lr
 	.align 2, 0
-_0200EB88: .word _020AF6C0
+_0200EB88: .word ITEM_DATA_TABLE_PTRS
 _0200EB8C: .word 0x000007FF
 	arm_func_end sub_0200EB64
 
 	arm_func_start sub_0200EB90
 sub_0200EB90: ; 0x0200EB90
 	mov ip, #0
-	ldr r2, _0200EBC8 ; =_02097FF8
+	ldr r2, _0200EBC8 ; =ARM9_UNKNOWN_TABLE__NA_2097FF8
 	b _0200EBB8
 _0200EB9C:
 	add r1, r2, ip, lsl #2
@@ -3030,7 +3030,7 @@ _0200EBB8:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0200EBC8: .word _02097FF8
+_0200EBC8: .word ARM9_UNKNOWN_TABLE__NA_2097FF8
 	arm_func_end sub_0200EB90
 
 	arm_func_start sub_0200EBCC
@@ -3046,7 +3046,7 @@ _0200EBD8: .word SetGold
 sub_0200EBDC: ; 0x0200EBDC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, #0
-	ldr r6, _0200EC44 ; =_020AF6B8
+	ldr r6, _0200EC44 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, sl
 	mov fp, sl
 	mov r4, #6
@@ -3073,13 +3073,13 @@ _0200EC00:
 	bl SetGold
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0200EC44: .word _020AF6B8
+_0200EC44: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200EBDC
 
 	arm_func_start sub_0200EC48
 sub_0200EC48: ; 0x0200EC48
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r5, _0200EC8C ; =_020AF6B8
+	ldr r5, _0200EC8C ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, #0
 	mov r4, #6
 _0200EC58:
@@ -3090,20 +3090,20 @@ _0200EC58:
 	add r6, r6, #1
 	cmp r6, #0x32
 	blt _0200EC58
-	ldr r0, _0200EC8C ; =_020AF6B8
+	ldr r0, _0200EC8C ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1000
 	str r1, [r0, #0x398]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0200EC8C: .word _020AF6B8
+_0200EC8C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200EC48
 
 	arm_func_start sub_0200EC90
 sub_0200EC90: ; 0x0200EC90
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r5, _0200ECD4 ; =_020AF6B8
+	ldr r5, _0200ECD4 ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, #0
 	mov r4, #6
 _0200ECA0:
@@ -3114,19 +3114,19 @@ _0200ECA0:
 	add r6, r6, #1
 	cmp r6, #0x32
 	blt _0200ECA0
-	ldr r0, _0200ECD4 ; =_020AF6B8
+	ldr r0, _0200ECD4 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1000
 	str r1, [r0, #0x39c]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0200ECD4: .word _020AF6B8
+_0200ECD4: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200EC90
 
 	arm_func_start SetGold
 SetGold: ; 0x0200ECD8
-	ldr r2, _0200ECF8 ; =_020AF6B8
+	ldr r2, _0200ECF8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0x12c
 	ldr r3, [r2]
 	strb r0, [r3, #0x388]
@@ -3135,12 +3135,12 @@ SetGold: ; 0x0200ECD8
 	str r1, [r2, #0x384]
 	bx lr
 	.align 2, 0
-_0200ECF8: .word _020AF6B8
+_0200ECF8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end SetGold
 
 	arm_func_start GetGold
 GetGold: ; 0x0200ECFC
-	ldr r0, _0200ED18 ; =_020AF6B8
+	ldr r0, _0200ED18 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x388]
 	add r0, r1, r0, lsl #2
@@ -3148,7 +3148,7 @@ GetGold: ; 0x0200ECFC
 	ldr r0, [r0, #0x394]
 	bx lr
 	.align 2, 0
-_0200ED18: .word _020AF6B8
+_0200ED18: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end GetGold
 
 	arm_func_start SetMoneyCarried
@@ -3160,7 +3160,7 @@ SetMoneyCarried: ; 0x0200ED1C
 	cmp r0, #0
 	movlt r0, #0
 _0200ED34:
-	ldr r1, _0200ED54 ; =_020AF6B8
+	ldr r1, _0200ED54 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r2, [r1]
 	ldrb r1, [r2, #0x388]
 	add r1, r2, r1, lsl #2
@@ -3169,12 +3169,12 @@ _0200ED34:
 	bx lr
 	.align 2, 0
 _0200ED50: .word 0x0001869F
-_0200ED54: .word _020AF6B8
+_0200ED54: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end SetMoneyCarried
 
 	arm_func_start AddMoneyCarried
 AddMoneyCarried: ; 0x0200ED58
-	ldr r1, _0200ED7C ; =_020AF6B8
+	ldr r1, _0200ED7C ; =BAG_ITEMS_PTR_MIRROR
 	ldr ip, _0200ED80 ; =SetMoneyCarried
 	ldr r2, [r1]
 	ldrb r1, [r2, #0x388]
@@ -3184,7 +3184,7 @@ AddMoneyCarried: ; 0x0200ED58
 	add r0, r0, r1
 	bx ip
 	.align 2, 0
-_0200ED7C: .word _020AF6B8
+_0200ED7C: .word BAG_ITEMS_PTR_MIRROR
 _0200ED80: .word SetMoneyCarried
 	arm_func_end AddMoneyCarried
 
@@ -3214,7 +3214,7 @@ IsBagFull: ; 0x0200EDC0
 	bl GetCurrentBagCapacity
 	sub r2, r0, #1
 	mov r0, #6
-	ldr r1, _0200EDF8 ; =_020AF6B8
+	ldr r1, _0200EDF8 ; =BAG_ITEMS_PTR_MIRROR
 	mul r0, r2, r0
 	ldr r1, [r1]
 	ldr r1, [r1, #0x384]
@@ -3225,13 +3225,13 @@ IsBagFull: ; 0x0200EDC0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200EDF8: .word _020AF6B8
+_0200EDF8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end IsBagFull
 
 	arm_func_start GetNbItemsInBag
 GetNbItemsInBag: ; 0x0200EDFC
 	stmdb sp!, {r3, lr}
-	ldr r1, _0200EE48 ; =_020AF6B8
+	ldr r1, _0200EE48 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
 	ldr r1, [r1]
 	mov lr, r0
@@ -3251,12 +3251,12 @@ _0200EE1C:
 	blt _0200EE1C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200EE48: .word _020AF6B8
+_0200EE48: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end GetNbItemsInBag
 
 	arm_func_start CountNbItemsOfTypeInBag
 CountNbItemsOfTypeInBag: ; 0x0200EE4C
-	ldr r1, _0200EE84 ; =_020AF6B8
+	ldr r1, _0200EE84 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, #0
 	ldr r1, [r1]
 	mov ip, r3
@@ -3272,13 +3272,13 @@ _0200EE60:
 	mov r0, r3
 	bx lr
 	.align 2, 0
-_0200EE84: .word _020AF6B8
+_0200EE84: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end CountNbItemsOfTypeInBag
 
 	arm_func_start CountItemTypeInBag
 CountItemTypeInBag: ; 0x0200EE88
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _0200EEDC ; =_020AF6B8
+	ldr r1, _0200EEDC ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, #0
 	ldr r1, [r1]
 	mov r7, r0
@@ -3301,12 +3301,12 @@ _0200EEC4:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0200EEDC: .word _020AF6B8
+_0200EEDC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end CountItemTypeInBag
 
 	arm_func_start IsItemInBag
 IsItemInBag: ; 0x0200EEE0
-	ldr r1, _0200EF1C ; =_020AF6B8
+	ldr r1, _0200EF1C ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, #0
 	ldr r1, [r1]
 	ldr r2, [r1, #0x384]
@@ -3324,12 +3324,12 @@ _0200EF0C:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0200EF1C: .word _020AF6B8
+_0200EF1C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end IsItemInBag
 
 	arm_func_start IsItemWithFlagsInBag
 IsItemWithFlagsInBag: ; 0x0200EF20
-	ldr r2, _0200EF68 ; =_020AF6B8
+	ldr r2, _0200EF68 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
 	ldr r2, [r2]
 	ldr r3, [r2, #0x384]
@@ -3351,13 +3351,13 @@ _0200EF58:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0200EF68: .word _020AF6B8
+_0200EF68: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end IsItemWithFlagsInBag
 
 	arm_func_start IsItemInTreasureBoxes
 IsItemInTreasureBoxes: ; 0x0200EF6C
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _0200EFC8 ; =_020AF6B8
+	ldr r1, _0200EFC8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, r0
 	ldr r0, [r1]
 	mov r6, #0
@@ -3383,13 +3383,13 @@ _0200EFB8:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0200EFC8: .word _020AF6B8
+_0200EFC8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end IsItemInTreasureBoxes
 
 	arm_func_start IsHeldItemInBag
 IsHeldItemInBag: ; 0x0200EFCC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _0200F04C ; =_020AF6B8
+	ldr r1, _0200F04C ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, r0
 	ldr r0, [r1]
 	mov r5, #0
@@ -3424,13 +3424,13 @@ _0200F03C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0200F04C: .word _020AF6B8
+_0200F04C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end IsHeldItemInBag
 
 	arm_func_start IsItemForSpecialSpawnInBag
 IsItemForSpecialSpawnInBag: ; 0x0200F050
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _0200F0E0 ; =_020AF6B8
+	ldr r0, _0200F0E0 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, #0
 	ldr r0, [r0]
 	mov ip, #1
@@ -3469,13 +3469,13 @@ _0200F0D0:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0200F0E0: .word _020AF6B8
+_0200F0E0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end IsItemForSpecialSpawnInBag
 
 	arm_func_start HasStorableItems
 HasStorableItems: ; 0x0200F0E4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r0, _0200F148 ; =_020AF6B8
+	ldr r0, _0200F148 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, #0
 	ldr r0, [r0]
 	mov r4, r7
@@ -3503,12 +3503,12 @@ _0200F138:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0200F148: .word _020AF6B8
+_0200F148: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end HasStorableItems
 
 	arm_func_start GetItemIndex
 GetItemIndex: ; 0x0200F14C
-	ldr r1, _0200F188 ; =_020AF6B8
+	ldr r1, _0200F188 ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, #0
 	ldr r1, [r1]
 	ldr r1, [r1, #0x384]
@@ -3526,13 +3526,13 @@ _0200F178:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_0200F188: .word _020AF6B8
+_0200F188: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end GetItemIndex
 
 	arm_func_start GetEquivItemIndex
 GetEquivItemIndex: ; 0x0200F18C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _0200F204 ; =_020AF6B8
+	ldr r1, _0200F204 ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, r0
 	ldr r0, [r1]
 	mov r4, #0
@@ -3565,12 +3565,12 @@ _0200F1F4:
 	mvn r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0200F204: .word _020AF6B8
+_0200F204: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end GetEquivItemIndex
 
 	arm_func_start GetEquippedThrowableItem
 GetEquippedThrowableItem: ; 0x0200F208
-	ldr r0, _0200F268 ; =_020AF6B8
+	ldr r0, _0200F268 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
 	ldr r0, [r0]
 	mov r1, ip
@@ -3598,13 +3598,13 @@ _0200F258:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_0200F268: .word _020AF6B8
+_0200F268: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end GetEquippedThrowableItem
 
 	arm_func_start GetFirstUnequippedItemOfType
 GetFirstUnequippedItemOfType: ; 0x0200F26C
 	stmdb sp!, {r3, lr}
-	ldr r1, _0200F2DC ; =_020AF6B8
+	ldr r1, _0200F2DC ; =BAG_ITEMS_PTR_MIRROR
 	mvn ip, #0
 	ldr r1, [r1]
 	cmp r0, #0
@@ -3635,13 +3635,13 @@ _0200F2CC:
 	mov r0, ip
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200F2DC: .word _020AF6B8
+_0200F2DC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end GetFirstUnequippedItemOfType
 
 	arm_func_start CopyItemAtIdx
 CopyItemAtIdx: ; 0x0200F2E0
 	stmdb sp!, {r3, lr}
-	ldr r3, _0200F344 ; =_020AF6B8
+	ldr r3, _0200F344 ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, #6
 	ldr r3, [r3]
 	smulbb r2, r0, r2
@@ -3667,7 +3667,7 @@ _0200F334:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200F344: .word _020AF6B8
+_0200F344: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end CopyItemAtIdx
 
 	arm_func_start GetItemAtIdx
@@ -3675,33 +3675,33 @@ GetItemAtIdx: ; 0x0200F348
 	cmp r0, #0
 	movlt r0, #0
 	bxlt lr
-	ldr r2, _0200F36C ; =_020AF6B8
+	ldr r2, _0200F36C ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #6
 	ldr r2, [r2]
 	ldr r2, [r2, #0x384]
 	smlabb r0, r0, r1, r2
 	bx lr
 	.align 2, 0
-_0200F36C: .word _020AF6B8
+_0200F36C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end GetItemAtIdx
 
 	arm_func_start RemoveEmptyItemsInBag
 RemoveEmptyItemsInBag: ; 0x0200F370
-	ldr r0, _0200F388 ; =_020AF6B8
+	ldr r0, _0200F388 ; =BAG_ITEMS_PTR_MIRROR
 	ldr ip, _0200F38C ; =RemoveEmptyItems
 	ldr r0, [r0]
 	mov r1, #0x32
 	ldr r0, [r0, #0x384]
 	bx ip
 	.align 2, 0
-_0200F388: .word _020AF6B8
+_0200F388: .word BAG_ITEMS_PTR_MIRROR
 _0200F38C: .word RemoveEmptyItems
 	arm_func_end RemoveEmptyItemsInBag
 
 	arm_func_start RemoveItemNoHole
 RemoveItemNoHole: ; 0x0200F390
 	stmdb sp!, {r4, lr}
-	ldr r2, _0200F400 ; =_020AF6B8
+	ldr r2, _0200F400 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #6
 	ldr r2, [r2]
 	smulbb r1, r0, r1
@@ -3720,7 +3720,7 @@ RemoveItemNoHole: ; 0x0200F390
 _0200F3D4:
 	mov r0, r4
 	bl ItemZInit
-	ldr r0, _0200F400 ; =_020AF6B8
+	ldr r0, _0200F400 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0x32
 	ldr r0, [r0]
 	ldr r0, [r0, #0x384]
@@ -3731,13 +3731,13 @@ _0200F3F8:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0200F400: .word _020AF6B8
+_0200F400: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveItemNoHole
 
 	arm_func_start RemoveItem
 RemoveItem: ; 0x0200F404
 	stmdb sp!, {r4, lr}
-	ldr r2, _0200F450 ; =_020AF6B8
+	ldr r2, _0200F450 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #6
 	ldr r2, [r2]
 	smulbb r1, r0, r1
@@ -3757,7 +3757,7 @@ _0200F444:
 	bl ItemZInit
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0200F450: .word _020AF6B8
+_0200F450: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveItem
 
 	arm_func_start RemoveHeldItemNoHole
@@ -3765,7 +3765,7 @@ RemoveHeldItemNoHole: ; 0x0200F454
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	movs r5, r0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
-	ldr r0, _0200F4D0 ; =_020AF6B8
+	ldr r0, _0200F4D0 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, #0
 	ldr r0, [r0]
 	mov r6, r4
@@ -3789,20 +3789,20 @@ _0200F4A8:
 	cmp r4, #0x32
 	add r8, r8, #6
 	blt _0200F478
-	ldr r0, _0200F4D0 ; =_020AF6B8
+	ldr r0, _0200F4D0 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0x32
 	ldr r0, [r0]
 	ldr r0, [r0, #0x384]
 	bl RemoveEmptyItems
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0200F4D0: .word _020AF6B8
+_0200F4D0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveHeldItemNoHole
 
 	arm_func_start RemoveItemByIdAndStackNoHole
 RemoveItemByIdAndStackNoHole: ; 0x0200F4D4
 	stmdb sp!, {r4, lr}
-	ldr r1, _0200F554 ; =_020AF6B8
+	ldr r1, _0200F554 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, #0
 	ldr r1, [r1]
 	ldr r4, [r1, #0x384]
@@ -3822,7 +3822,7 @@ _0200F4EC:
 _0200F518:
 	mov r0, r4
 	bl ItemZInit
-	ldr r0, _0200F554 ; =_020AF6B8
+	ldr r0, _0200F554 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0x32
 	ldr r0, [r0]
 	ldr r0, [r0, #0x384]
@@ -3838,13 +3838,13 @@ _0200F544:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0200F554: .word _020AF6B8
+_0200F554: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveItemByIdAndStackNoHole
 
 	arm_func_start RemoveEquivItem
 RemoveEquivItem: ; 0x0200F558
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _0200F5FC ; =_020AF6B8
+	ldr r1, _0200F5FC ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, r0
 	ldr r0, [r1]
 	mov r4, #0
@@ -3873,7 +3873,7 @@ _0200F580:
 _0200F5C0:
 	mov r0, sb
 	bl ItemZInit
-	ldr r0, _0200F5FC ; =_020AF6B8
+	ldr r0, _0200F5FC ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0x32
 	ldr r0, [r0]
 	ldr r0, [r0, #0x384]
@@ -3889,13 +3889,13 @@ _0200F5EC:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0200F5FC: .word _020AF6B8
+_0200F5FC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveEquivItem
 
 	arm_func_start RemoveEquivItemNoHole
 RemoveEquivItemNoHole: ; 0x0200F600
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _0200F690 ; =_020AF6B8
+	ldr r1, _0200F690 ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, r0
 	ldr r0, [r1]
 	mov r4, #0
@@ -3935,13 +3935,13 @@ _0200F680:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0200F690: .word _020AF6B8
+_0200F690: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveEquivItemNoHole
 
 	arm_func_start DecrementStackItem
 DecrementStackItem: ; 0x0200F694
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _0200F714 ; =_020AF6B8
+	ldr r1, _0200F714 ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, r0
 	ldr r0, [r1]
 	mov r5, #0
@@ -3976,7 +3976,7 @@ _0200F704:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0200F714: .word _020AF6B8
+_0200F714: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end DecrementStackItem
 
 	arm_func_start RemoveItemNoHoleCheck
@@ -3985,7 +3985,7 @@ RemoveItemNoHoleCheck: ; 0x0200F718
 	mvn r1, #0
 	cmp r0, r1
 	beq _0200F78C
-	ldr r2, _0200F794 ; =_020AF6B8
+	ldr r2, _0200F794 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #6
 	ldr r2, [r2]
 	smulbb r1, r0, r1
@@ -4004,7 +4004,7 @@ RemoveItemNoHoleCheck: ; 0x0200F718
 _0200F768:
 	mov r0, r4
 	bl ItemZInit
-	ldr r0, _0200F794 ; =_020AF6B8
+	ldr r0, _0200F794 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0x32
 	ldr r0, [r0]
 	ldr r0, [r0, #0x384]
@@ -4015,7 +4015,7 @@ _0200F78C:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0200F794: .word _020AF6B8
+_0200F794: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveItemNoHoleCheck
 
 	arm_func_start RemoveFirstUnequippedItemOfType
@@ -4029,7 +4029,7 @@ RemoveFirstUnequippedItemOfType: ; 0x0200F798
 	arm_func_start RemoveAllItems
 RemoveAllItems: ; 0x0200F7A8
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _0200F7D8 ; =_020AF6B8
+	ldr r0, _0200F7D8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, #0
 	ldr r0, [r0]
 	ldr r4, [r0, #0x384]
@@ -4042,13 +4042,13 @@ _0200F7BC:
 	blt _0200F7BC
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0200F7D8: .word _020AF6B8
+_0200F7D8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveAllItems
 
 	arm_func_start RemoveAllItemsStartingAt
 RemoveAllItemsStartingAt: ; 0x0200F7DC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r6, _0200F848 ; =_020AF6B8
+	ldr r6, _0200F848 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, r0
 	ldr r1, [r6]
 	mov r0, #6
@@ -4071,14 +4071,14 @@ _0200F810:
 _0200F828:
 	cmp r4, #0x32
 	blt _0200F800
-	ldr r0, _0200F848 ; =_020AF6B8
+	ldr r0, _0200F848 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0x32
 	ldr r0, [r0]
 	ldr r0, [r0, #0x384]
 	bl RemoveEmptyItems
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0200F848: .word _020AF6B8
+_0200F848: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveAllItemsStartingAt
 
 	arm_func_start SpecialProcAddItemToBag
@@ -4107,7 +4107,7 @@ _0200F880: .word AddItemToBag
 	arm_func_start AddItemToBag
 AddItemToBag: ; 0x0200F884
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r2, _0200F90C ; =_020AF6B8
+	ldr r2, _0200F90C ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, r0
 	ldr r0, [r2]
 	mov r5, r1
@@ -4144,12 +4144,12 @@ _0200F8FC:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0200F90C: .word _020AF6B8
+_0200F90C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end AddItemToBag
 
 	arm_func_start sub_0200F910
 sub_0200F910: ; 0x0200F910
-	ldr r0, _0200F93C ; =_020AF6B8
+	ldr r0, _0200F93C ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, #0
 	ldr r0, [r0]
 	ldr r1, [r0, #0x384]
@@ -4162,13 +4162,13 @@ _0200F920:
 	blt _0200F920
 	bx lr
 	.align 2, 0
-_0200F93C: .word _020AF6B8
+_0200F93C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200F910
 
 	arm_func_start sub_0200F940
 sub_0200F940: ; 0x0200F940
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r0, _0200F9B0 ; =_020AF6B8
+	ldr r0, _0200F9B0 ; =BAG_ITEMS_PTR_MIRROR
 	mov lr, #0
 	ldr r0, [r0]
 	mov r3, #1
@@ -4198,13 +4198,13 @@ _0200F994:
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0200F9B0: .word _020AF6B8
+_0200F9B0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200F940
 
 	arm_func_start sub_0200F9B4
 sub_0200F9B4: ; 0x0200F9B4
 	stmdb sp!, {r3, lr}
-	ldr r1, _0200FA08 ; =_020AF6B8
+	ldr r1, _0200FA08 ; =BAG_ITEMS_PTR_MIRROR
 	mov lr, #0
 	ldr r1, [r1]
 	mov r2, lr
@@ -4226,13 +4226,13 @@ _0200F9D0:
 	blt _0200F9D0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200FA08: .word _020AF6B8
+_0200FA08: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200F9B4
 
 	arm_func_start sub_0200FA0C
 sub_0200FA0C: ; 0x0200FA0C
 	stmdb sp!, {r3, lr}
-	ldr r3, _0200FA64 ; =_020AF6B8
+	ldr r3, _0200FA64 ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, #0x12c
 	ldr r3, [r3]
 	mov lr, #0
@@ -4255,13 +4255,13 @@ _0200FA2C:
 	blt _0200FA2C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200FA64: .word _020AF6B8
+_0200FA64: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FA0C
 
 	arm_func_start sub_0200FA68
 sub_0200FA68: ; 0x0200FA68
 	stmdb sp!, {r4, lr}
-	ldr r1, _0200FAE8 ; =_020AF6B8
+	ldr r1, _0200FAE8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, #0
 	ldr r1, [r1]
 	mov r3, r4
@@ -4296,7 +4296,7 @@ _0200FAD8:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0200FAE8: .word _020AF6B8
+_0200FAE8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FA68
 
 	arm_func_start sub_0200FAEC
@@ -4304,7 +4304,7 @@ sub_0200FAEC: ; 0x0200FAEC
 	stmdb sp!, {r4, lr}
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
-	ldr r2, _0200FB50 ; =_020AF6B8
+	ldr r2, _0200FB50 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, #0
 	ldr r2, [r2]
 	mov r3, r4
@@ -4329,13 +4329,13 @@ _0200FB3C:
 	blt _0200FB10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0200FB50: .word _020AF6B8
+_0200FB50: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FAEC
 
 	arm_func_start sub_0200FB54
 sub_0200FB54: ; 0x0200FB54
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _0200FBDC ; =_020AF6B8
+	ldr r1, _0200FBDC ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, r0
 	ldr r0, [r1]
 	mov r5, #0
@@ -4372,13 +4372,13 @@ _0200FBCC:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0200FBDC: .word _020AF6B8
+_0200FBDC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FB54
 
 	arm_func_start sub_0200FBE0
 sub_0200FBE0: ; 0x0200FBE0
 	stmdb sp!, {r4, lr}
-	ldr ip, _0200FC20 ; =_020AF6B8
+	ldr ip, _0200FC20 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, #6
 	ldr lr, [ip]
 	smulbb ip, r0, r3
@@ -4394,14 +4394,14 @@ sub_0200FBE0: ; 0x0200FBE0
 	strb r0, [lr, ip]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0200FC20: .word _020AF6B8
+_0200FC20: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FBE0
 
 	arm_func_start sub_0200FC24
 sub_0200FC24: ; 0x0200FC24
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, #0
-	ldr r7, _0200FCA8 ; =_020AF6B8
+	ldr r7, _0200FCA8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r8, r4
 	mov sb, #1
 	mov r6, #6
@@ -4428,20 +4428,20 @@ _0200FC84:
 	add r4, r4, #1
 	cmp r4, #0x32
 	blt _0200FC3C
-	ldr r0, _0200FCA8 ; =_020AF6B8
+	ldr r0, _0200FCA8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0x32
 	ldr r0, [r0]
 	ldr r0, [r0, #0x384]
 	bl sub_0200E3A0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0200FCA8: .word _020AF6B8
+_0200FCA8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FC24
 
 	arm_func_start sub_0200FCAC
 sub_0200FCAC: ; 0x0200FCAC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r0, _0200FD34 ; =_020AF6B8
+	ldr r0, _0200FD34 ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, #0
 	ldr r0, [r0]
 	mov r6, r5
@@ -4470,14 +4470,14 @@ _0200FD0C:
 	cmp r5, #0x32
 	add r4, r4, #6
 	blt _0200FCC8
-	ldr r0, _0200FD34 ; =_020AF6B8
+	ldr r0, _0200FD34 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0x32
 	ldr r0, [r0]
 	ldr r0, [r0, #0x384]
 	bl RemoveEmptyItems
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0200FD34: .word _020AF6B8
+_0200FD34: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FCAC
 
 	arm_func_start sub_0200FD38
@@ -4516,7 +4516,7 @@ ScriptSpecialProcess0x39: ; 0x0200FD54
 
 	arm_func_start sub_0200FD78
 sub_0200FD78: ; 0x0200FD78
-	ldr r1, _0200FDAC ; =_020AF6B8
+	ldr r1, _0200FDAC ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
 	ldr r3, [r1]
 	mov r2, r0
@@ -4531,14 +4531,14 @@ _0200FD88:
 	blt _0200FD88
 	bx lr
 	.align 2, 0
-_0200FDAC: .word _020AF6B8
+_0200FDAC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FD78
 
 	arm_func_start sub_0200FDB0
 sub_0200FDB0: ; 0x0200FDB0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, #0
-	ldr r4, _0200FDFC ; =_020AF6B8
+	ldr r4, _0200FDFC ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, r5
 _0200FDC0:
 	ldr r0, [r4]
@@ -4558,14 +4558,14 @@ _0200FDE8:
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0200FDFC: .word _020AF6B8
+_0200FDFC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FDB0
 
 	arm_func_start sub_0200FE00
 sub_0200FE00: ; 0x0200FE00
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
-	ldr r6, _0200FEA4 ; =_020AF6B8
+	ldr r6, _0200FEA4 ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, r4
 _0200FE10:
 	ldr r0, [r6]
@@ -4608,12 +4608,12 @@ _0200FE90:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0200FEA4: .word _020AF6B8
+_0200FEA4: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FE00
 
 	arm_func_start CountNbItemsOfTypeInStorage
 CountNbItemsOfTypeInStorage: ; 0x0200FEA8
-	ldr r1, _0200FEE0 ; =_020AF6B8
+	ldr r1, _0200FEE0 ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, #0
 	ldr ip, [r1]
 	mov r3, r2
@@ -4629,14 +4629,14 @@ _0200FEB8:
 	mov r0, r2
 	bx lr
 	.align 2, 0
-_0200FEE0: .word _020AF6B8
+_0200FEE0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end CountNbItemsOfTypeInStorage
 
 	arm_func_start CountItemTypeInStorage
 CountItemTypeInStorage: ; 0x0200FEE4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
-	ldr r7, _0200FF4C ; =_020AF6B8
+	ldr r7, _0200FF4C ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, r0
 	mov r5, r4
 _0200FEF8:
@@ -4663,13 +4663,13 @@ _0200FF38:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0200FF4C: .word _020AF6B8
+_0200FF4C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end CountItemTypeInStorage
 
 	arm_func_start sub_0200FF50
 sub_0200FF50: ; 0x0200FF50
 	stmdb sp!, {r3, lr}
-	ldr r1, _0200FFA8 ; =_020AF6B8
+	ldr r1, _0200FFA8 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
 	ldr lr, [r1]
 	b _0200FF98
@@ -4693,12 +4693,12 @@ _0200FF98:
 	mvn r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200FFA8: .word _020AF6B8
+_0200FFA8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FF50
 
 	arm_func_start sub_0200FFAC
 sub_0200FFAC: ; 0x0200FFAC
-	ldr r3, _0200FFF0 ; =_020AF6B8
+	ldr r3, _0200FFF0 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r2, [r3]
 	add r2, r2, r0, lsl #1
 	add r2, r2, #0x300
@@ -4716,12 +4716,12 @@ sub_0200FFAC: ; 0x0200FFAC
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0200FFF0: .word _020AF6B8
+_0200FFF0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FFAC
 
 	arm_func_start sub_0200FFF4
 sub_0200FFF4: ; 0x0200FFF4
-	ldr r3, _02010040 ; =_020AF6B8
+	ldr r3, _02010040 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
 	ldr r2, [r3]
 	add r2, r2, r0, lsl #1
@@ -4741,37 +4741,37 @@ sub_0200FFF4: ; 0x0200FFF4
 	and r0, ip, #0xff
 	bx lr
 	.align 2, 0
-_02010040: .word _020AF6B8
+_02010040: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FFF4
 
 	arm_func_start sub_02010044
 sub_02010044: ; 0x02010044
-	ldr r1, _0201005C ; =_020AF6B8
+	ldr r1, _0201005C ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r0, r1, r0, lsl #1
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8a]
 	bx lr
 	.align 2, 0
-_0201005C: .word _020AF6B8
+_0201005C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010044
 
 	arm_func_start sub_02010060
 sub_02010060: ; 0x02010060
-	ldr r1, _02010078 ; =_020AF6B8
+	ldr r1, _02010078 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r0, r1, r0, lsl #1
 	add r0, r0, #0xb00
 	ldrh r0, [r0, #0x5a]
 	bx lr
 	.align 2, 0
-_02010078: .word _020AF6B8
+_02010078: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010060
 
 	arm_func_start sub_0201007C
 sub_0201007C: ; 0x0201007C
 	stmdb sp!, {r3, lr}
-	ldr r1, _02010150 ; =_020AF6B8
+	ldr r1, _02010150 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
 	ldr r2, [r1]
 	b _02010144
@@ -4783,7 +4783,7 @@ _02010090:
 	bne _02010140
 	mov r1, r0
 	add r0, r0, #1
-	ldr r3, _02010150 ; =_020AF6B8
+	ldr r3, _02010150 ; =BAG_ITEMS_PTR_MIRROR
 	b _020100FC
 _020100B4:
 	ldr lr, [r3]
@@ -4809,7 +4809,7 @@ _020100FC:
 	cmp r0, #0x3e8
 	blt _020100B4
 	mov r3, #0
-	ldr r2, _02010150 ; =_020AF6B8
+	ldr r2, _02010150 ; =BAG_ITEMS_PTR_MIRROR
 	b _02010134
 _02010110:
 	ldr r0, [r2]
@@ -4832,13 +4832,13 @@ _02010144:
 	blt _02010090
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02010150: .word _020AF6B8
+_02010150: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0201007C
 
 	arm_func_start sub_02010154
 sub_02010154: ; 0x02010154
 	stmdb sp!, {r3, lr}
-	ldr r2, _0201019C ; =_020AF6B8
+	ldr r2, _0201019C ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r2]
 	add r1, r1, r0, lsl #1
 	add r1, r1, #0x300
@@ -4856,12 +4856,12 @@ sub_02010154: ; 0x02010154
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201019C: .word _020AF6B8
+_0201019C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010154
 
 	arm_func_start sub_020101A0
 sub_020101A0: ; 0x020101A0
-	ldr r2, _020101E0 ; =_020AF6B8
+	ldr r2, _020101E0 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r2]
 	add r1, r1, r0, lsl #1
 	add r1, r1, #0x300
@@ -4878,13 +4878,13 @@ sub_020101A0: ; 0x020101A0
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_020101E0: .word _020AF6B8
+_020101E0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020101A0
 
 	arm_func_start RemoveItemsTypeInStorage
 RemoveItemsTypeInStorage: ; 0x020101E4
 	stmdb sp!, {r4, lr}
-	ldr r1, _0201025C ; =_020AF6B8
+	ldr r1, _0201025C ; =BAG_ITEMS_PTR_MIRROR
 	mov lr, #0
 	ldr r4, [r1]
 	b _0201024C
@@ -4900,7 +4900,7 @@ _020101F8:
 	cmpeq r3, r1
 	bne _02010248
 	mov r1, #0
-	ldr r0, _0201025C ; =_020AF6B8
+	ldr r0, _0201025C ; =BAG_ITEMS_PTR_MIRROR
 	strh r1, [r2, #0x8a]
 	ldr r0, [r0]
 	add r0, r0, lr, lsl #1
@@ -4917,13 +4917,13 @@ _0201024C:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0201025C: .word _020AF6B8
+_0201025C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end RemoveItemsTypeInStorage
 
 	arm_func_start sub_02010260
 sub_02010260: ; 0x02010260
 	stmdb sp!, {r4, lr}
-	ldr r1, _020102D8 ; =_020AF6B8
+	ldr r1, _020102D8 ; =BAG_ITEMS_PTR_MIRROR
 	mov lr, #0
 	ldr r4, [r1]
 	b _020102C8
@@ -4939,7 +4939,7 @@ _02010274:
 	cmpeq r3, r1
 	bne _020102C4
 	mov r1, #0
-	ldr r0, _020102D8 ; =_020AF6B8
+	ldr r0, _020102D8 ; =BAG_ITEMS_PTR_MIRROR
 	strh r1, [r2, #0x8a]
 	ldr r0, [r0]
 	add r0, r0, lr, lsl #1
@@ -4956,13 +4956,13 @@ _020102C8:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020102D8: .word _020AF6B8
+_020102D8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010260
 
 	arm_func_start sub_020102DC
 sub_020102DC: ; 0x020102DC
 	mov r3, #0
-	ldr r1, _02010318 ; =_020AF6B8
+	ldr r1, _02010318 ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, r3
 _020102E8:
 	ldr r0, [r1]
@@ -4978,7 +4978,7 @@ _020102E8:
 	blt _020102E8
 	bx lr
 	.align 2, 0
-_02010318: .word _020AF6B8
+_02010318: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020102DC
 
 	arm_func_start AddItemToStorage
@@ -4991,7 +4991,7 @@ AddItemToStorage: ; 0x0201031C
 	add r0, sp, #0
 	mov r1, r4
 	bl sub_0200CFF0
-	ldr r0, _020103A8 ; =_020AF6B8
+	ldr r0, _020103A8 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
 	ldr r2, [r0]
 	b _02010394
@@ -5002,7 +5002,7 @@ _0201034C:
 	cmp r0, #0
 	bne _02010390
 	ldrsh r3, [r4]
-	ldr r2, _020103A8 ; =_020AF6B8
+	ldr r2, _020103A8 ; =BAG_ITEMS_PTR_MIRROR
 	add r0, sp, #0
 	strh r3, [r1, #0x8a]
 	ldr r1, [r2]
@@ -5023,7 +5023,7 @@ _020103A0:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020103A8: .word _020AF6B8
+_020103A8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end AddItemToStorage
 
 	arm_func_start sub_020103AC
@@ -5031,7 +5031,7 @@ sub_020103AC: ; 0x020103AC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_02050CE4
-	ldr r1, _02010420 ; =_020AF6B8
+	ldr r1, _02010420 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
 	ldr r3, [r1]
 	b _02010410
@@ -5042,7 +5042,7 @@ _020103C8:
 	cmp r2, #0
 	bne _0201040C
 	ldrsh r3, [r4, #4]
-	ldr r2, _02010420 ; =_020AF6B8
+	ldr r2, _02010420 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, r4
 	strh r3, [r1, #0x8a]
 	ldr r1, [r2]
@@ -5061,7 +5061,7 @@ _02010410:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02010420: .word _020AF6B8
+_02010420: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020103AC
 
 	arm_func_start sub_02010424
@@ -5077,7 +5077,7 @@ sub_02010424: ; 0x02010424
 	mov r7, r0
 	mov r8, #0
 	mov fp, #0x80
-	ldr r6, _0201058C ; =_020AF6B8
+	ldr r6, _0201058C ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, r5
 	b _020104C8
 _0201045C:
@@ -5119,7 +5119,7 @@ _020104D0:
 	mov r1, r6
 	mov r2, #1
 	mov fp, #6
-	ldr r0, _0201058C ; =_020AF6B8
+	ldr r0, _0201058C ; =BAG_ITEMS_PTR_MIRROR
 	b _0201053C
 _020104F4:
 	mul r4, r6, fp
@@ -5144,7 +5144,7 @@ _0201053C:
 	cmp r6, r8
 	blt _020104F4
 	mov r2, #0
-	ldr r1, _0201058C ; =_020AF6B8
+	ldr r1, _0201058C ; =BAG_ITEMS_PTR_MIRROR
 	b _02010578
 _02010550:
 	ldr r0, [r1]
@@ -5164,7 +5164,7 @@ _02010578:
 	bl MemFree
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0201058C: .word _020AF6B8
+_0201058C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010424
 
 	arm_func_start sub_02010590
@@ -5176,7 +5176,7 @@ sub_02010590: ; 0x02010590
 sub_02010594: ; 0x02010594
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r2, #0
-	ldr ip, _02010650 ; =_020AF6B8
+	ldr ip, _02010650 ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, r2
 	mov r0, r2
 	mov r1, r2
@@ -5210,7 +5210,7 @@ _020105E0:
 	add r2, r2, #1
 	cmp r2, #2
 	blt _020105AC
-	ldr r2, _02010650 ; =_020AF6B8
+	ldr r2, _02010650 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r2]
 	add r1, r1, #0x1000
 	str r0, [r1, #0x3a0]
@@ -5225,14 +5225,14 @@ _020105E0:
 	strh r0, [r1, #0xa8]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02010650: .word _020AF6B8
+_02010650: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010594
 
 	arm_func_start sub_02010654
 sub_02010654: ; 0x02010654
 	stmdb sp!, {r3, lr}
 	mov lr, #0
-	ldr r2, _020106C0 ; =_020AF6B8
+	ldr r2, _020106C0 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, lr
 _02010664:
 	ldr r1, [r2]
@@ -5245,7 +5245,7 @@ _02010664:
 	strh r0, [ip, #2]
 	cmp lr, #8
 	blt _02010664
-	ldr r2, _020106C0 ; =_020AF6B8
+	ldr r2, _020106C0 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, #0
 _02010694:
 	ldr r1, [r2]
@@ -5260,12 +5260,12 @@ _02010694:
 	blt _02010694
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020106C0: .word _020AF6B8
+_020106C0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010654
 
 	arm_func_start sub_020106C4
 sub_020106C4: ; 0x020106C4
-	ldr r2, _02010708 ; =_020AF6B8
+	ldr r2, _02010708 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r2]
 	add r1, r1, #0x1000
 	strb r0, [r1, #0x32a]
@@ -5283,18 +5283,18 @@ sub_020106C4: ; 0x020106C4
 	str r1, [r0, #0x370]
 	bx lr
 	.align 2, 0
-_02010708: .word _020AF6B8
+_02010708: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020106C4
 
 	arm_func_start sub_0201070C
 sub_0201070C: ; 0x0201070C
-	ldr r0, _02010720 ; =_020AF6B8
+	ldr r0, _02010720 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1000
 	ldr r0, [r0, #0x3a0]
 	bx lr
 	.align 2, 0
-_02010720: .word _020AF6B8
+_02010720: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0201070C
 
 	arm_func_start SetMoneyStored
@@ -5306,19 +5306,19 @@ SetMoneyStored: ; 0x02010724
 	cmp r0, #0
 	movlt r0, #0
 _0201073C:
-	ldr r1, _02010754 ; =_020AF6B8
+	ldr r1, _02010754 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	str r0, [r1, #0x3a0]
 	bx lr
 	.align 2, 0
 _02010750: .word 0x0098967F
-_02010754: .word _020AF6B8
+_02010754: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end SetMoneyStored
 
 	arm_func_start sub_02010758
 sub_02010758: ; 0x02010758
-	ldr r1, _02010774 ; =_020AF6B8
+	ldr r1, _02010774 ; =BAG_ITEMS_PTR_MIRROR
 	ldr ip, _02010778 ; =SetMoneyStored
 	ldr r1, [r1]
 	add r1, r1, #0x1000
@@ -5326,79 +5326,79 @@ sub_02010758: ; 0x02010758
 	add r0, r1, r0
 	bx ip
 	.align 2, 0
-_02010774: .word _020AF6B8
+_02010774: .word BAG_ITEMS_PTR_MIRROR
 _02010778: .word SetMoneyStored
 	arm_func_end sub_02010758
 
 	arm_func_start sub_0201077C
 sub_0201077C: ; 0x0201077C
-	ldr r0, _02010790 ; =_020AF6B8
+	ldr r0, _02010790 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
 	ldrsh r0, [r0, #0xa4]
 	bx lr
 	.align 2, 0
-_02010790: .word _020AF6B8
+_02010790: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0201077C
 
 	arm_func_start sub_02010794
 sub_02010794: ; 0x02010794
-	ldr r1, _020107A8 ; =_020AF6B8
+	ldr r1, _020107A8 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1300
 	strh r0, [r1, #0xa4]
 	bx lr
 	.align 2, 0
-_020107A8: .word _020AF6B8
+_020107A8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010794
 
 	arm_func_start sub_020107AC
 sub_020107AC: ; 0x020107AC
-	ldr r0, _020107C0 ; =_020AF6B8
+	ldr r0, _020107C0 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
 	ldrh r0, [r0, #0xa6]
 	bx lr
 	.align 2, 0
-_020107C0: .word _020AF6B8
+_020107C0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020107AC
 
 	arm_func_start sub_020107C4
 sub_020107C4: ; 0x020107C4
-	ldr r1, _020107D8 ; =_020AF6B8
+	ldr r1, _020107D8 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1300
 	strh r0, [r1, #0xa6]
 	bx lr
 	.align 2, 0
-_020107D8: .word _020AF6B8
+_020107D8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020107C4
 
 	arm_func_start sub_020107DC
 sub_020107DC: ; 0x020107DC
-	ldr r0, _020107F0 ; =_020AF6B8
+	ldr r0, _020107F0 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
 	ldrh r0, [r0, #0xa8]
 	bx lr
 	.align 2, 0
-_020107F0: .word _020AF6B8
+_020107F0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020107DC
 
 	arm_func_start sub_020107F4
 sub_020107F4: ; 0x020107F4
-	ldr r1, _02010808 ; =_020AF6B8
+	ldr r1, _02010808 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1300
 	strh r0, [r1, #0xa8]
 	bx lr
 	.align 2, 0
-_02010808: .word _020AF6B8
+_02010808: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020107F4
 
 	arm_func_start sub_0201080C
 sub_0201080C: ; 0x0201080C
-	ldr r0, _0201082C ; =_020AF6B8
+	ldr r0, _0201082C ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
 	ldrh r1, [r0, #0xa8]
@@ -5407,12 +5407,12 @@ sub_0201080C: ; 0x0201080C
 	strneh r1, [r0, #0xa8]
 	bx lr
 	.align 2, 0
-_0201082C: .word _020AF6B8
+_0201082C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0201080C
 
 	arm_func_start sub_02010830
 sub_02010830: ; 0x02010830
-	ldr r1, _02010868 ; =_020AF6B8
+	ldr r1, _02010868 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
 	ldr r1, [r1]
 	mov r2, r0
@@ -5428,12 +5428,12 @@ _02010848:
 	blt _02010848
 	bx lr
 	.align 2, 0
-_02010868: .word _020AF6B8
+_02010868: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010830
 
 	arm_func_start sub_0201086C
 sub_0201086C: ; 0x0201086C
-	ldr r1, _02010894 ; =_020AF6B8
+	ldr r1, _02010894 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, r0, lsl #2
 	ldr r1, [r1]
 	mov r2, #0
@@ -5444,19 +5444,19 @@ sub_0201086C: ; 0x0201086C
 	strh r2, [r0, #2]
 	bx lr
 	.align 2, 0
-_02010894: .word _020AF6B8
+_02010894: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0201086C
 
 	arm_func_start sub_02010898
 sub_02010898: ; 0x02010898
-	ldr r1, _020108B0 ; =_020AF6B8
+	ldr r1, _020108B0 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	ldr r1, [r1, #0x32c]
 	add r0, r1, r0, lsl #2
 	bx lr
 	.align 2, 0
-_020108B0: .word _020AF6B8
+_020108B0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010898
 
 	arm_func_start sub_020108B4
@@ -5464,7 +5464,7 @@ sub_020108B4: ; 0x020108B4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r0, #0
 	mov r4, r0
-	ldr r2, _02010950 ; =_020AF6B8
+	ldr r2, _02010950 ; =BAG_ITEMS_PTR_MIRROR
 	b _020108E8
 _020108C8:
 	ldr r1, [r2]
@@ -5507,7 +5507,7 @@ _02010944:
 	blt _02010938
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02010950: .word _020AF6B8
+_02010950: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020108B4
 
 	arm_func_start sub_02010954
@@ -5518,7 +5518,7 @@ sub_02010954: ; 0x02010954
 _02010960:
 	add r7, r6, #1
 	mov r5, r6, lsl #2
-	ldr r4, _02010A48 ; =_020AF6B8
+	ldr r4, _02010A48 ; =BAG_ITEMS_PTR_MIRROR
 	b _02010A2C
 _02010970:
 	ldr r0, [r4]
@@ -5579,7 +5579,7 @@ _02010A2C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02010A48: .word _020AF6B8
+_02010A48: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010954
 
 	arm_func_start GetKecleonItems1
@@ -5593,7 +5593,7 @@ _02010A58:
 	add r4, r4, #1
 	cmp r4, #8
 	blt _02010A58
-	ldr r0, _02010AC0 ; =_020980C0
+	ldr r0, _02010AC0 ; =KECLEON_SHOP_ITEM_TABLE_LISTS_1
 	ldr r5, _02010AC4 ; =0x0000270F
 	ldr r6, [r0, r8, lsl #2]
 	mov r7, #0
@@ -5616,7 +5616,7 @@ _02010A7C:
 	bl GetKecleonItems2
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02010AC0: .word _020980C0
+_02010AC0: .word KECLEON_SHOP_ITEM_TABLE_LISTS_1
 _02010AC4: .word 0x0000270F
 	arm_func_end GetKecleonItems1
 
@@ -5626,7 +5626,7 @@ sub_02010AC8: ; 0x02010AC8
 	mov r1, r0
 	add r0, sp, #0
 	bl sub_0200CF78
-	ldr r0, _02010B38 ; =_020AF6B8
+	ldr r0, _02010B38 ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, #0
 	ldr r3, [r0]
 	add r0, r3, #0x1000
@@ -5654,12 +5654,12 @@ _02010B28:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02010B38: .word _020AF6B8
+_02010B38: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010AC8
 
 	arm_func_start sub_02010B3C
 sub_02010B3C: ; 0x02010B3C
-	ldr r1, _02010B74 ; =_020AF6B8
+	ldr r1, _02010B74 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
 	ldr r1, [r1]
 	mov r2, r0
@@ -5675,12 +5675,12 @@ _02010B54:
 	blt _02010B54
 	bx lr
 	.align 2, 0
-_02010B74: .word _020AF6B8
+_02010B74: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010B3C
 
 	arm_func_start sub_02010B78
 sub_02010B78: ; 0x02010B78
-	ldr r1, _02010BA0 ; =_020AF6B8
+	ldr r1, _02010BA0 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, r0, lsl #2
 	ldr r1, [r1]
 	mov r2, #0
@@ -5691,19 +5691,19 @@ sub_02010B78: ; 0x02010B78
 	strh r2, [r0, #2]
 	bx lr
 	.align 2, 0
-_02010BA0: .word _020AF6B8
+_02010BA0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010B78
 
 	arm_func_start sub_02010BA4
 sub_02010BA4: ; 0x02010BA4
-	ldr r1, _02010BBC ; =_020AF6B8
+	ldr r1, _02010BBC ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	ldr r1, [r1, #0x370]
 	add r0, r1, r0, lsl #2
 	bx lr
 	.align 2, 0
-_02010BBC: .word _020AF6B8
+_02010BBC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010BA4
 
 	arm_func_start sub_02010BC0
@@ -5711,7 +5711,7 @@ sub_02010BC0: ; 0x02010BC0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r0, #0
 	mov r4, r0
-	ldr r2, _02010C5C ; =_020AF6B8
+	ldr r2, _02010C5C ; =BAG_ITEMS_PTR_MIRROR
 	b _02010BF4
 _02010BD4:
 	ldr r1, [r2]
@@ -5754,7 +5754,7 @@ _02010C50:
 	blt _02010C44
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02010C5C: .word _020AF6B8
+_02010C5C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010BC0
 
 	arm_func_start sub_02010C60
@@ -5765,7 +5765,7 @@ sub_02010C60: ; 0x02010C60
 _02010C6C:
 	add r7, r6, #1
 	mov r5, r6, lsl #2
-	ldr r4, _02010D54 ; =_020AF6B8
+	ldr r4, _02010D54 ; =BAG_ITEMS_PTR_MIRROR
 	b _02010D38
 _02010C7C:
 	ldr r0, [r4]
@@ -5826,7 +5826,7 @@ _02010D38:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02010D54: .word _020AF6B8
+_02010D54: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010C60
 
 	arm_func_start GetKecleonItems2
@@ -5840,7 +5840,7 @@ _02010D64:
 	add r4, r4, #1
 	cmp r4, #4
 	blt _02010D64
-	ldr r0, _02010DC4 ; =_020980D0
+	ldr r0, _02010DC4 ; =KECLEON_SHOP_ITEM_TABLE_LISTS_2
 	mov r7, #0
 	ldr r6, [r0, r5, lsl #2]
 	ldr r5, _02010DC8 ; =0x0000270F
@@ -5861,7 +5861,7 @@ _02010D88:
 	bl sub_02010C60
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02010DC4: .word _020980D0
+_02010DC4: .word KECLEON_SHOP_ITEM_TABLE_LISTS_2
 _02010DC8: .word 0x0000270F
 	arm_func_end GetKecleonItems2
 
@@ -5871,7 +5871,7 @@ sub_02010DCC: ; 0x02010DCC
 	mov r1, r0
 	add r0, sp, #0
 	bl sub_0200CF78
-	ldr r0, _02010E3C ; =_020AF6B8
+	ldr r0, _02010E3C ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, #0
 	ldr r3, [r0]
 	add r0, r3, #0x1000
@@ -5899,7 +5899,7 @@ _02010E2C:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02010E3C: .word _020AF6B8
+_02010E3C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010DCC
 
 	arm_func_start GetExclusiveItemOffset
@@ -5924,7 +5924,7 @@ ApplyExclusiveItemStatBoosts: ; 0x02010E64
 	mov r5, r3
 	ldr r4, [sp, #0x28]
 	bl GetExclusiveItemOffset
-	ldr r1, _02010F6C ; =_02098125
+	ldr r1, _02010F6C ; =EXCLUSIVE_ITEM_STAT_BOOST_DATA_INDEXES
 	ldrb r2, [r7]
 	ldrb r1, [r1, r0, lsl #1]
 	ldrb r0, [r4]
@@ -5932,12 +5932,12 @@ ApplyExclusiveItemStatBoosts: ; 0x02010E64
 	ldrb r2, [r5]
 	strh r0, [sp, #2]
 	ldrb r3, [r6]
-	ldr r0, _02010F70 ; =_020980E8
+	ldr r0, _02010F70 ; =EXCLUSIVE_ITEM_ATTACK_BOOSTS
 	mov r1, r1, lsl #2
 	strh r3, [sp, #6]
 	strh r2, [sp]
 	ldrsb r2, [r0, r1]
-	ldr r0, _02010F74 ; =_020980EA
+	ldr r0, _02010F74 ; =EXCLUSIVE_ITEM_SPECIAL_ATTACK_BOOSTS
 	ldrh sb, [sp, #4]
 	ldrsb r8, [r0, r1]
 	mov r0, r2, lsl #0x10
@@ -5946,10 +5946,10 @@ ApplyExclusiveItemStatBoosts: ; 0x02010E64
 	mov r0, r8, lsl #0x10
 	ldrh lr, [sp, #6]
 	ldrh r2, [sp, #4]
-	ldr ip, _02010F78 ; =_020980E9
+	ldr ip, _02010F78 ; =EXCLUSIVE_ITEM_DEFENSE_BOOSTS
 	add r0, lr, r0, lsr #16
 	ldrsb lr, [ip, r1]
-	ldr r3, _02010F7C ; =_020980EB
+	ldr r3, _02010F7C ; =EXCLUSIVE_ITEM_SPECIAL_DEFENSE_BOOSTS
 	ldrsh ip, [sp, #2]
 	ldrsb r1, [r3, r1]
 	strh r0, [sp, #6]
@@ -5984,11 +5984,11 @@ ApplyExclusiveItemStatBoosts: ; 0x02010E64
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02010F6C: .word _02098125
-_02010F70: .word _020980E8
-_02010F74: .word _020980EA
-_02010F78: .word _020980E9
-_02010F7C: .word _020980EB
+_02010F6C: .word EXCLUSIVE_ITEM_STAT_BOOST_DATA_INDEXES
+_02010F70: .word EXCLUSIVE_ITEM_ATTACK_BOOSTS
+_02010F74: .word EXCLUSIVE_ITEM_SPECIAL_ATTACK_BOOSTS
+_02010F78: .word EXCLUSIVE_ITEM_DEFENSE_BOOSTS
+_02010F7C: .word EXCLUSIVE_ITEM_SPECIAL_DEFENSE_BOOSTS
 	arm_func_end ApplyExclusiveItemStatBoosts
 
 	arm_func_start SetExclusiveItemEffect
@@ -6108,10 +6108,10 @@ BagHasExclusiveItemTypeForMonster: ; 0x020110D8
 	bl GetCurrentBagCapacity
 	mov r4, r0, lsl #0x10
 	mov r5, #0
-	ldr fp, _02011164 ; =_02098124
+	ldr fp, _02011164 ; =EXCLUSIVE_ITEM_EFFECT_DATA
 	b _02011154
 _02011100:
-	ldr r0, _02011168 ; =_020AF6B8
+	ldr r0, _02011168 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, sb
 	ldr r0, [r0]
 	mov r2, r8
@@ -6139,8 +6139,8 @@ _02011154:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02011164: .word _02098124
-_02011168: .word _020AF6B8
+_02011164: .word EXCLUSIVE_ITEM_EFFECT_DATA
+_02011168: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end BagHasExclusiveItemTypeForMonster
 
 	arm_func_start sub_0201116C
@@ -6156,7 +6156,7 @@ sub_0201116C: ; 0x0201116C
 	mov r5, #0
 	b _02011208
 _02011194:
-	ldr r0, _02011218 ; =_020AF6B8
+	ldr r0, _02011218 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, r8
 	ldr r0, [r0]
 	mov r2, fp
@@ -6170,7 +6170,7 @@ _02011194:
 	beq _020111FC
 	ldrsh r0, [r6, #4]
 	bl GetExclusiveItemOffset
-	ldr r1, _0201121C ; =_02098124
+	ldr r1, _0201121C ; =EXCLUSIVE_ITEM_EFFECT_DATA
 	ldrb r0, [r1, r0, lsl #1]
 	cmp sb, r0
 	bne _020111FC
@@ -6192,8 +6192,8 @@ _02011208:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02011218: .word _020AF6B8
-_0201121C: .word _02098124
+_02011218: .word BAG_ITEMS_PTR_MIRROR
+_0201121C: .word EXCLUSIVE_ITEM_EFFECT_DATA
 	arm_func_end sub_0201116C
 
 	arm_func_start sub_02011220
@@ -6213,7 +6213,7 @@ sub_02011220: ; 0x02011220
 	mov r4, r5
 	b _0201130C
 _02011258:
-	ldr r1, _0201138C ; =_020AF6B8
+	ldr r1, _0201138C ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #6
 	ldr r1, [r1]
 	smulbb r6, r4, r0
@@ -6225,7 +6225,7 @@ _02011258:
 	bl IsExclusiveItemForMonster
 	cmp r0, #0
 	beq _02011300
-	ldr r0, _0201138C ; =_020AF6B8
+	ldr r0, _0201138C ; =BAG_ITEMS_PTR_MIRROR
 	mov lr, #0
 	mov ip, lr
 	ldr sl, [r0]
@@ -6268,8 +6268,8 @@ _0201130C:
 	mov sl, #0
 	add r4, r8, #3
 	add r7, sp, #8
-	ldr r6, _02011390 ; =_02098124
-	ldr fp, _0201138C ; =_020AF6B8
+	ldr r6, _02011390 ; =EXCLUSIVE_ITEM_EFFECT_DATA
+	ldr fp, _0201138C ; =BAG_ITEMS_PTR_MIRROR
 	b _0201137C
 _0201132C:
 	mov r0, sl, lsl #1
@@ -6298,8 +6298,8 @@ _0201137C:
 	add sp, sp, #0x68
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0201138C: .word _020AF6B8
-_02011390: .word _02098124
+_0201138C: .word BAG_ITEMS_PTR_MIRROR
+_02011390: .word EXCLUSIVE_ITEM_EFFECT_DATA
 	arm_func_end sub_02011220
 
 	arm_func_start sub_02011394
@@ -6724,15 +6724,15 @@ ApplyGummiBoostsGroundMode: ; 0x0201189C
 	ldrsh r0, [sp, #0x28]
 	cmp r0, #0x88
 	bne _020118FC
-	ldr r1, _02011AA0 ; =_020A1890
-	ldr r0, _02011AA4 ; =_020A18B0
+	ldr r1, _02011AA0 ; =WONDER_GUMMI_IQ_GAIN
+	ldr r0, _02011AA4 ; =WONDER_GUMMI_STAT_BOOST
 	ldrsh r1, [r1]
 	ldrsh r5, [r0]
 	add r4, r4, r1
 	b _02011950
 _020118FC:
 	ldrsh r0, [sl]
-	ldr r2, _02011AA8 ; =_020A1888
+	ldr r2, _02011AA8 ; =GUMMI_STAT_BOOST
 	mov r1, r4
 	ldrsh r5, [r2]
 	bl GetType
@@ -6741,7 +6741,7 @@ _020118FC:
 	mov r1, #1
 	bl GetType
 	add sl, fp, #1
-	ldr fp, _02011AAC ; =_020A22B0
+	ldr fp, _02011AAC ; =IQ_GUMMI_GAIN_TABLE
 	ldr r1, [sp]
 	mov r2, #0x24
 	mla r3, r1, r2, fp
@@ -6844,10 +6844,10 @@ _02011A70:
 	bl sub_02055020
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02011AA0: .word _020A1890
-_02011AA4: .word _020A18B0
-_02011AA8: .word _020A1888
-_02011AAC: .word _020A22B0
+_02011AA0: .word WONDER_GUMMI_IQ_GAIN
+_02011AA4: .word WONDER_GUMMI_STAT_BOOST
+_02011AA8: .word GUMMI_STAT_BOOST
+_02011AAC: .word IQ_GUMMI_GAIN_TABLE
 _02011AB0: .word 0x000003E7
 _02011AB4: .word _0209889C
 	arm_func_end ApplyGummiBoostsGroundMode
@@ -6855,7 +6855,7 @@ _02011AB4: .word _0209889C
 	arm_func_start sub_02011AB8
 sub_02011AB8: ; 0x02011AB8
 	stmdb sp!, {r3, lr}
-	ldr ip, _02011B38 ; =_020AF6B8
+	ldr ip, _02011B38 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
 	ldr r1, [ip]
 	mov r2, r0
@@ -6887,7 +6887,7 @@ sub_02011AB8: ; 0x02011AB8
 	bl SaveScriptVariableValue
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02011B38: .word _020AF6B8
+_02011B38: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02011AB8
 
 	arm_func_start sub_02011B3C
@@ -7022,7 +7022,7 @@ sub_02011CF4: ; 0x02011CF4
 	mov r6, r2
 	cmp r0, #2
 	bne _02011D90
-	ldr r0, _02011D98 ; =_020AF6B8
+	ldr r0, _02011D98 ; =BAG_ITEMS_PTR_MIRROR
 	mvn r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -7060,7 +7060,7 @@ _02011D90:
 	bl sub_02011B3C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02011D98: .word _020AF6B8
+_02011D98: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02011CF4
 
 	arm_func_start sub_02011D9C
@@ -7189,7 +7189,7 @@ _02011EE4: .word 0x00000578
 
 	arm_func_start sub_02011EE8
 sub_02011EE8: ; 0x02011EE8
-	ldr r0, _02011F10 ; =_020AF6B8
+	ldr r0, _02011F10 ; =BAG_ITEMS_PTR_MIRROR
 	mvn r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -7200,41 +7200,41 @@ sub_02011EE8: ; 0x02011EE8
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_02011F10: .word _020AF6B8
+_02011F10: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02011EE8
 
 	arm_func_start sub_02011F14
 sub_02011F14: ; 0x02011F14
-	ldr r0, _02011F2C ; =_020AF6B8
+	ldr r0, _02011F2C ; =BAG_ITEMS_PTR_MIRROR
 	mvn r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1300
 	strh r1, [r0, #0xb2]
 	bx lr
 	.align 2, 0
-_02011F2C: .word _020AF6B8
+_02011F2C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02011F14
 
 	arm_func_start sub_02011F30
 sub_02011F30: ; 0x02011F30
-	ldr r0, _02011F44 ; =_020AF6B8
+	ldr r0, _02011F44 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1000
 	ldr r0, [r0, #0x3ac]
 	bx lr
 	.align 2, 0
-_02011F44: .word _020AF6B8
+_02011F44: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02011F30
 
 	arm_func_start sub_02011F48
 sub_02011F48: ; 0x02011F48
-	ldr r0, _02011F5C ; =_020AF6B8
+	ldr r0, _02011F5C ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1000
 	ldrb r0, [r0, #0x3aa]
 	bx lr
 	.align 2, 0
-_02011F5C: .word _020AF6B8
+_02011F5C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02011F48
 
 	arm_func_start sub_02011F60
@@ -7268,7 +7268,7 @@ sub_02011FA0: ; 0x02011FA0
 	and r0, r0, #0xff
 	cmp r0, #1
 	bne _0201207C
-	ldr r1, _02012214 ; =_020AF6B8
+	ldr r1, _02012214 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #3
 	ldr r1, [r1]
 	add r1, r1, #0x1000
@@ -7286,12 +7286,12 @@ sub_02011FA0: ; 0x02011FA0
 	mov r0, #0
 	mov r1, #0x6c
 	bl LoadScriptVariableValue
-	ldr r1, _02012214 ; =_020AF6B8
+	ldr r1, _02012214 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	str r0, [r1, #0x3ac]
 	bl GetRank
-	ldr r2, _02012214 ; =_020AF6B8
+	ldr r2, _02012214 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r2]
 	add r1, r1, #0x1000
 	strb r0, [r1, #0x3aa]
@@ -7327,7 +7327,7 @@ _0201207C:
 	mov r4, r0
 	cmp r4, #5
 	bge _02012104
-	ldr r0, _02012214 ; =_020AF6B8
+	ldr r0, _02012214 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, _02012218 ; =_020988A4
 	ldr r0, [r0]
 	ldr r1, [r1, r4, lsl #3]
@@ -7351,7 +7351,7 @@ _0201207C:
 	mov r2, #1
 	bl SaveScriptVariableValue
 _02012104:
-	ldr r0, _02012214 ; =_020AF6B8
+	ldr r0, _02012214 ; =BAG_ITEMS_PTR_MIRROR
 	mvn r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -7366,7 +7366,7 @@ _02012104:
 	moveq r2, #0
 	beq _02012200
 _0201213C:
-	ldr r1, _02012214 ; =_020AF6B8
+	ldr r1, _02012214 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #2
 	ldr r1, [r1]
 	add r2, r1, #0x1000
@@ -7378,7 +7378,7 @@ _0201213C:
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	bne _02012184
-	ldr r0, _02012214 ; =_020AF6B8
+	ldr r0, _02012214 ; =BAG_ITEMS_PTR_MIRROR
 	mvn r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1300
@@ -7391,7 +7391,7 @@ _02012184:
 	mov r0, #0x18
 	mul r0, r1, r0
 	ldr r1, [r4]
-	ldr r2, _02012220 ; =_020988CC
+	ldr r2, _02012220 ; =RECYCLE_SHOP_ITEM_LIST
 	ldr r1, [r1, r0]
 	mov r3, #0
 	b _020121C4
@@ -7407,14 +7407,14 @@ _020121C4:
 	blt _020121AC
 	mvn r3, #0
 _020121D0:
-	ldr r0, _02012214 ; =_020AF6B8
+	ldr r0, _02012214 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
 	strh r3, [r0, #0xb2]
 _020121E0:
 	add r0, sp, #0
 	bl sub_02011DB8
-	ldr r0, _02012214 ; =_020AF6B8
+	ldr r0, _02012214 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #2
 	ldr r0, [r0]
 	mov r2, #1
@@ -7428,10 +7428,10 @@ _0201220C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02012214: .word _020AF6B8
+_02012214: .word BAG_ITEMS_PTR_MIRROR
 _02012218: .word _020988A4
 _0201221C: .word _020988A8
-_02012220: .word _020988CC
+_02012220: .word RECYCLE_SHOP_ITEM_LIST
 	arm_func_end sub_02011FA0
 
 	arm_func_start sub_02012224
@@ -7440,7 +7440,7 @@ sub_02012224: ; 0x02012224
 	bl sub_02012254
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02012250 ; =_020AF6B8
+	ldr r0, _02012250 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
 	ldrsh r1, [r0, #0xb0]
@@ -7448,12 +7448,12 @@ sub_02012224: ; 0x02012224
 	strh r1, [r0, #0xb0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02012250: .word _020AF6B8
+_02012250: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02012224
 
 	arm_func_start sub_02012254
 sub_02012254: ; 0x02012254
-	ldr r0, _02012278 ; =_020AF6B8
+	ldr r0, _02012278 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
 	ldrsh r0, [r0, #0xb0]
@@ -7463,18 +7463,18 @@ sub_02012254: ; 0x02012254
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_02012278: .word _020AF6B8
+_02012278: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02012254
 
 	arm_func_start sub_0201227C
 sub_0201227C: ; 0x0201227C
-	ldr r0, _02012290 ; =_020AF6B8
+	ldr r0, _02012290 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1300
 	ldrsh r0, [r0, #0xb0]
 	bx lr
 	.align 2, 0
-_02012290: .word _020AF6B8
+_02012290: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0201227C
 
 	arm_func_start sub_02012294
@@ -7779,7 +7779,7 @@ _02012650:
 	arm_func_start sub_0201265C
 sub_0201265C: ; 0x0201265C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _020126C4 ; =_020AF6B8
+	ldr r1, _020126C4 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, #0
 	ldr r1, [r1]
 	mov r5, r0
@@ -7807,14 +7807,14 @@ _020126AC:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020126C4: .word _020AF6B8
+_020126C4: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0201265C
 
 	arm_func_start sub_020126C8
 sub_020126C8: ; 0x020126C8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, #0
-	ldr r4, _02012718 ; =_020AF6B8
+	ldr r4, _02012718 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, r0
 	mov r6, r5
 _020126DC:
@@ -7835,7 +7835,7 @@ _02012704:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02012718: .word _020AF6B8
+_02012718: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020126C8
 
 	arm_func_start sub_0201271C
@@ -7979,7 +7979,7 @@ sub_020128DC: ; 0x020128DC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, #0
 	mov fp, #0x24
-	ldr r5, _02012950 ; =_020988CC
+	ldr r5, _02012950 ; =RECYCLE_SHOP_ITEM_LIST
 	mov sl, r0
 	mov sb, r1
 	mov r8, r2
@@ -8009,7 +8009,7 @@ _0201293C:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02012950: .word _020988CC
+_02012950: .word RECYCLE_SHOP_ITEM_LIST
 	arm_func_end sub_020128DC
 
 	arm_func_start sub_02012954
@@ -8050,7 +8050,7 @@ sub_0201297C: ; 0x0201297C
 	ldr r1, [r1, r4]
 	cmp r1, r0
 	bgt _02012A9C
-	ldr r0, _02012AB0 ; =_020988CC
+	ldr r0, _02012AB0 ; =RECYCLE_SHOP_ITEM_LIST
 	mov sb, #0
 	add r0, r0, r4
 	mov r6, #1
@@ -8115,7 +8115,7 @@ _02012A9C:
 _02012AA4: .word _020988D0
 _02012AA8: .word _020988D4
 _02012AAC: .word _020988D8
-_02012AB0: .word _020988CC
+_02012AB0: .word RECYCLE_SHOP_ITEM_LIST
 _02012AB4: .word 0x00000578
 	arm_func_end sub_0201297C
 
@@ -8392,7 +8392,7 @@ _02012E50:
 	ldrb r0, [r0, sb]
 	cmp r0, #0
 	beq _02012EB0
-	ldr r0, _020130AC ; =_02098C2C
+	ldr r0, _020130AC ; =TYPE_SPECIFIC_EXCLUSIVE_ITEMS
 	and r5, sb, #0xff
 	mov sl, #0
 	add fp, r0, r5, lsl #3
@@ -8567,7 +8567,7 @@ _0201309C: .word 0x000045E0
 _020130A0: .word _02098CCC
 _020130A4: .word _02098D24
 _020130A8: .word 0x00000229
-_020130AC: .word _02098C2C
+_020130AC: .word TYPE_SPECIFIC_EXCLUSIVE_ITEMS
 _020130B0: .word _022A4BD8
 _020130B4: .word _02098D48
 	arm_func_end sub_02012B7C
@@ -8812,37 +8812,37 @@ _0201338C:
 	arm_func_start LoadWazaP
 LoadWazaP: ; 0x020133C4
 	stmdb sp!, {r3, lr}
-	ldr r1, _020133E8 ; =_020AF6DC
+	ldr r1, _020133E8 ; =DUNGEON_MOVE_TABLES
 	mov r0, #0
 	str r0, [r1, #4]
 	bl OpenWaza
-	ldr r0, _020133E8 ; =_020AF6DC
+	ldr r0, _020133E8 ; =DUNGEON_MOVE_TABLES
 	ldr r0, [r0, #4]
 	bl SelectWaza
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020133E8: .word _020AF6DC
+_020133E8: .word DUNGEON_MOVE_TABLES
 	arm_func_end LoadWazaP
 
 	arm_func_start LoadWazaP2
 LoadWazaP2: ; 0x020133EC
 	stmdb sp!, {r3, lr}
-	ldr r1, _02013410 ; =_020AF6DC
+	ldr r1, _02013410 ; =DUNGEON_MOVE_TABLES
 	mov r0, #1
 	str r0, [r1, #4]
 	bl OpenWaza
-	ldr r0, _02013410 ; =_020AF6DC
+	ldr r0, _02013410 ; =DUNGEON_MOVE_TABLES
 	ldr r0, [r0, #4]
 	bl SelectWaza
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02013410: .word _020AF6DC
+_02013410: .word DUNGEON_MOVE_TABLES
 	arm_func_end LoadWazaP2
 
 	arm_func_start UnloadCurrentWazaP
 UnloadCurrentWazaP: ; 0x02013414
 	stmdb sp!, {r4, lr}
-	ldr r0, _0201344C ; =_020AF6DC
+	ldr r0, _0201344C ; =DUNGEON_MOVE_TABLES
 	ldr r1, _02013450 ; =_020AF700
 	ldr r0, [r0, #4]
 	add r4, r1, r0, lsl #3
@@ -8850,13 +8850,13 @@ UnloadCurrentWazaP: ; 0x02013414
 	bl UnloadFile
 	mov r0, r4
 	bl ZInit8
-	ldr r1, _0201344C ; =_020AF6DC
+	ldr r1, _0201344C ; =DUNGEON_MOVE_TABLES
 	mov r0, #0
 	str r0, [r1, #4]
 	bl SelectWaza
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0201344C: .word _020AF6DC
+_0201344C: .word DUNGEON_MOVE_TABLES
 _02013450: .word _020AF700
 	arm_func_end UnloadCurrentWazaP
 
@@ -9156,7 +9156,7 @@ GetInfoMoveGround: ; 0x02013828
 
 	arm_func_start GetMoveTargetAndRange
 GetMoveTargetAndRange: ; 0x02013840
-	ldr r2, _02013860 ; =_020AF6DC
+	ldr r2, _02013860 ; =DUNGEON_MOVE_TABLES
 	ldrh r3, [r0, #4]
 	ldr r2, [r2, #8]
 	mov r0, #0x1a
@@ -9165,12 +9165,12 @@ GetMoveTargetAndRange: ; 0x02013840
 	ldrsh r0, [r0, #4]
 	bx lr
 	.align 2, 0
-_02013860: .word _020AF6DC
+_02013860: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveTargetAndRange
 
 	arm_func_start GetMoveType
 GetMoveType: ; 0x02013864
-	ldr r1, _02013880 ; =_020AF6DC
+	ldr r1, _02013880 ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9178,7 +9178,7 @@ GetMoveType: ; 0x02013864
 	ldrb r0, [r0, #2]
 	bx lr
 	.align 2, 0
-_02013880: .word _020AF6DC
+_02013880: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveType
 
 	arm_func_start GetMovesetLevelUpPtr
@@ -9193,7 +9193,7 @@ GetMovesetLevelUpPtr: ; 0x02013884
 	bl IsInvalidMoveset
 	cmp r0, #0
 	ldrne r0, _020138C4 ; =_02098D64
-	ldreq r1, _020138C8 ; =_020AF6DC
+	ldreq r1, _020138C8 ; =DUNGEON_MOVE_TABLES
 	moveq r0, #0xc
 	smulbbeq r0, r4, r0
 	ldreq r1, [r1]
@@ -9201,7 +9201,7 @@ GetMovesetLevelUpPtr: ; 0x02013884
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020138C4: .word _02098D64
-_020138C8: .word _020AF6DC
+_020138C8: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMovesetLevelUpPtr
 
 	arm_func_start IsInvalidMoveset
@@ -9234,7 +9234,7 @@ GetMovesetHmTmPtr: ; 0x020138F4
 	cmp r0, #0
 	ldrne r0, _02013938 ; =_02098D64
 	ldmneia sp!, {r4, pc}
-	ldr r1, _0201393C ; =_020AF6DC
+	ldr r1, _0201393C ; =DUNGEON_MOVE_TABLES
 	mov r0, #0xc
 	ldr r1, [r1]
 	smlabb r0, r4, r0, r1
@@ -9242,7 +9242,7 @@ GetMovesetHmTmPtr: ; 0x020138F4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02013938: .word _02098D64
-_0201393C: .word _020AF6DC
+_0201393C: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMovesetHmTmPtr
 
 	arm_func_start GetMovesetEggPtr
@@ -9258,7 +9258,7 @@ GetMovesetEggPtr: ; 0x02013940
 	cmp r0, #0
 	ldrne r0, _02013984 ; =_02098D64
 	ldmneia sp!, {r4, pc}
-	ldr r1, _02013988 ; =_020AF6DC
+	ldr r1, _02013988 ; =DUNGEON_MOVE_TABLES
 	mov r0, #0xc
 	ldr r1, [r1]
 	smlabb r0, r4, r0, r1
@@ -9266,12 +9266,12 @@ GetMovesetEggPtr: ; 0x02013940
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02013984: .word _02098D64
-_02013988: .word _020AF6DC
+_02013988: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMovesetEggPtr
 
 	arm_func_start GetMoveAiWeight
 GetMoveAiWeight: ; 0x0201398C
-	ldr r1, _020139A8 ; =_020AF6DC
+	ldr r1, _020139A8 ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9279,12 +9279,12 @@ GetMoveAiWeight: ; 0x0201398C
 	ldrb r0, [r0, #9]
 	bx lr
 	.align 2, 0
-_020139A8: .word _020AF6DC
+_020139A8: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveAiWeight
 
 	arm_func_start GetMoveNbStrikes
 GetMoveNbStrikes: ; 0x020139AC
-	ldr r1, _020139C8 ; =_020AF6DC
+	ldr r1, _020139C8 ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9292,38 +9292,38 @@ GetMoveNbStrikes: ; 0x020139AC
 	ldrb r0, [r0, #0xd]
 	bx lr
 	.align 2, 0
-_020139C8: .word _020AF6DC
+_020139C8: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveNbStrikes
 
 	arm_func_start GetMoveBasePower
 GetMoveBasePower: ; 0x020139CC
 	ldrh r2, [r0, #4]
 	mov r0, #0x1a
-	ldr r1, _020139E8 ; =_020AF6DC
+	ldr r1, _020139E8 ; =DUNGEON_MOVE_TABLES
 	mul r0, r2, r0
 	ldr r1, [r1, #8]
 	ldrsh r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_020139E8: .word _020AF6DC
+_020139E8: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveBasePower
 
 	arm_func_start GetMoveBasePowerGround
 GetMoveBasePowerGround: ; 0x020139EC
 	ldrh r2, [r0, #2]
 	mov r0, #0x1a
-	ldr r1, _02013A08 ; =_020AF6DC
+	ldr r1, _02013A08 ; =DUNGEON_MOVE_TABLES
 	mul r0, r2, r0
 	ldr r1, [r1, #8]
 	ldrsh r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_02013A08: .word _020AF6DC
+_02013A08: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveBasePowerGround
 
 	arm_func_start GetMoveAccuracyOrAiChance
 GetMoveAccuracyOrAiChance: ; 0x02013A0C
-	ldr r2, _02013A2C ; =_020AF6DC
+	ldr r2, _02013A2C ; =DUNGEON_MOVE_TABLES
 	ldrh r3, [r0, #4]
 	ldr r2, [r2, #8]
 	mov r0, #0x1a
@@ -9332,12 +9332,12 @@ GetMoveAccuracyOrAiChance: ; 0x02013A0C
 	ldrb r0, [r0, #0xa]
 	bx lr
 	.align 2, 0
-_02013A2C: .word _020AF6DC
+_02013A2C: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveAccuracyOrAiChance
 
 	arm_func_start GetMoveBasePp
 GetMoveBasePp: ; 0x02013A30
-	ldr r1, _02013A4C ; =_020AF6DC
+	ldr r1, _02013A4C ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9345,12 +9345,12 @@ GetMoveBasePp: ; 0x02013A30
 	ldrb r0, [r0, #8]
 	bx lr
 	.align 2, 0
-_02013A4C: .word _020AF6DC
+_02013A4C: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveBasePp
 
 	arm_func_start GetMaxPp
 GetMaxPp: ; 0x02013A50
-	ldr r1, _02013AC0 ; =_020AF6DC
+	ldr r1, _02013AC0 ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r3, [r1, #8]
 	mov r1, #0x1a
@@ -9379,7 +9379,7 @@ GetMaxPp: ; 0x02013A50
 	movgt r0, #0x63
 	bx lr
 	.align 2, 0
-_02013AC0: .word _020AF6DC
+_02013AC0: .word DUNGEON_MOVE_TABLES
 _02013AC4: .word _020A18A0
 _02013AC8: .word _020A18C8
 _02013ACC: .word _020A1874
@@ -9387,7 +9387,7 @@ _02013ACC: .word _020A1874
 
 	arm_func_start GetMoveMaxGinsengBoost
 GetMoveMaxGinsengBoost: ; 0x02013AD0
-	ldr r1, _02013AEC ; =_020AF6DC
+	ldr r1, _02013AEC ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9395,12 +9395,12 @@ GetMoveMaxGinsengBoost: ; 0x02013AD0
 	ldrb r0, [r0, #0xe]
 	bx lr
 	.align 2, 0
-_02013AEC: .word _020AF6DC
+_02013AEC: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveMaxGinsengBoost
 
 	arm_func_start GetMoveMaxGinsengBoostGround
 GetMoveMaxGinsengBoostGround: ; 0x02013AF0
-	ldr r1, _02013B0C ; =_020AF6DC
+	ldr r1, _02013B0C ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #2]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9408,12 +9408,12 @@ GetMoveMaxGinsengBoostGround: ; 0x02013AF0
 	ldrb r0, [r0, #0xe]
 	bx lr
 	.align 2, 0
-_02013B0C: .word _020AF6DC
+_02013B0C: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveMaxGinsengBoostGround
 
 	arm_func_start GetMoveCritChance
 GetMoveCritChance: ; 0x02013B10
-	ldr r1, _02013B2C ; =_020AF6DC
+	ldr r1, _02013B2C ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9421,12 +9421,12 @@ GetMoveCritChance: ; 0x02013B10
 	ldrb r0, [r0, #0xf]
 	bx lr
 	.align 2, 0
-_02013B2C: .word _020AF6DC
+_02013B2C: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveCritChance
 
 	arm_func_start IsThawingMove
 IsThawingMove: ; 0x02013B30
-	ldr r1, _02013B4C ; =_020AF6DC
+	ldr r1, _02013B4C ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9434,12 +9434,12 @@ IsThawingMove: ; 0x02013B30
 	ldrb r0, [r0, #0x13]
 	bx lr
 	.align 2, 0
-_02013B4C: .word _020AF6DC
+_02013B4C: .word DUNGEON_MOVE_TABLES
 	arm_func_end IsThawingMove
 
 	arm_func_start IsAffectedByTaunt
 IsAffectedByTaunt: ; 0x02013B50
-	ldr r1, _02013B6C ; =_020AF6DC
+	ldr r1, _02013B6C ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9447,12 +9447,12 @@ IsAffectedByTaunt: ; 0x02013B50
 	ldrb r0, [r0, #0x14]
 	bx lr
 	.align 2, 0
-_02013B6C: .word _020AF6DC
+_02013B6C: .word DUNGEON_MOVE_TABLES
 	arm_func_end IsAffectedByTaunt
 
 	arm_func_start GetMoveRangeId
 GetMoveRangeId: ; 0x02013B70
-	ldr r1, _02013B8C ; =_020AF6DC
+	ldr r1, _02013B8C ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9460,13 +9460,13 @@ GetMoveRangeId: ; 0x02013B70
 	ldrb r0, [r0, #0x15]
 	bx lr
 	.align 2, 0
-_02013B8C: .word _020AF6DC
+_02013B8C: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveRangeId
 
 	arm_func_start GetMoveActualAccuracy
 GetMoveActualAccuracy: ; 0x02013B90
 	stmdb sp!, {r3, lr}
-	ldr r2, _02013BE4 ; =_020AF6DC
+	ldr r2, _02013BE4 ; =DUNGEON_MOVE_TABLES
 	mov r1, #0x1a
 	ldr r2, [r2, #8]
 	mla r1, r0, r1, r2
@@ -9488,24 +9488,24 @@ _02013BDC:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02013BE4: .word _020AF6DC
+_02013BE4: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveActualAccuracy
 
 	arm_func_start GetMoveBasePowerFromId
 GetMoveBasePowerFromId: ; 0x02013BE8
 	mov r1, #0x1a
 	mul r1, r0, r1
-	ldr r0, _02013C00 ; =_020AF6DC
+	ldr r0, _02013C00 ; =DUNGEON_MOVE_TABLES
 	ldr r0, [r0, #8]
 	ldrsh r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_02013C00: .word _020AF6DC
+_02013C00: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveBasePowerFromId
 
 	arm_func_start IsMoveRangeString19
 IsMoveRangeString19: ; 0x02013C04
-	ldr r1, _02013C2C ; =_020AF6DC
+	ldr r1, _02013C2C ; =DUNGEON_MOVE_TABLES
 	ldrh r2, [r0, #4]
 	ldr r1, [r1, #8]
 	mov r0, #0x1a
@@ -9516,12 +9516,12 @@ IsMoveRangeString19: ; 0x02013C04
 	movne r0, #0
 	bx lr
 	.align 2, 0
-_02013C2C: .word _020AF6DC
+_02013C2C: .word DUNGEON_MOVE_TABLES
 	arm_func_end IsMoveRangeString19
 
 	arm_func_start GetMoveMessageFromId
 GetMoveMessageFromId: ; 0x02013C30
-	ldr r2, _02013C5C ; =_020AF6DC
+	ldr r2, _02013C5C ; =DUNGEON_MOVE_TABLES
 	mov r1, #0x1a
 	ldr r2, [r2, #8]
 	ldr ip, _02013C60 ; =StringFromMessageId
@@ -9533,7 +9533,7 @@ GetMoveMessageFromId: ; 0x02013C30
 	mov r0, r0, lsr #0x10
 	bx ip
 	.align 2, 0
-_02013C5C: .word _020AF6DC
+_02013C5C: .word DUNGEON_MOVE_TABLES
 _02013C60: .word StringFromMessageId
 	arm_func_end GetMoveMessageFromId
 
@@ -9592,38 +9592,38 @@ _02013CF8:
 
 	arm_func_start IsReflectedByMagicCoat
 IsReflectedByMagicCoat: ; 0x02013D08
-	ldr r2, _02013D20 ; =_020AF6DC
+	ldr r2, _02013D20 ; =DUNGEON_MOVE_TABLES
 	mov r1, #0x1a
 	ldr r2, [r2, #8]
 	mla r1, r0, r1, r2
 	ldrb r0, [r1, #0x10]
 	bx lr
 	.align 2, 0
-_02013D20: .word _020AF6DC
+_02013D20: .word DUNGEON_MOVE_TABLES
 	arm_func_end IsReflectedByMagicCoat
 
 	arm_func_start CanBeSnatched
 CanBeSnatched: ; 0x02013D24
-	ldr r2, _02013D3C ; =_020AF6DC
+	ldr r2, _02013D3C ; =DUNGEON_MOVE_TABLES
 	mov r1, #0x1a
 	ldr r2, [r2, #8]
 	mla r1, r0, r1, r2
 	ldrb r0, [r1, #0x11]
 	bx lr
 	.align 2, 0
-_02013D3C: .word _020AF6DC
+_02013D3C: .word DUNGEON_MOVE_TABLES
 	arm_func_end CanBeSnatched
 
 	arm_func_start FailsWhileMuzzled
 FailsWhileMuzzled: ; 0x02013D40
-	ldr r2, _02013D58 ; =_020AF6DC
+	ldr r2, _02013D58 ; =DUNGEON_MOVE_TABLES
 	mov r1, #0x1a
 	ldr r2, [r2, #8]
 	mla r1, r0, r1, r2
 	ldrb r0, [r1, #0x12]
 	bx lr
 	.align 2, 0
-_02013D58: .word _020AF6DC
+_02013D58: .word DUNGEON_MOVE_TABLES
 	arm_func_end FailsWhileMuzzled
 
 	arm_func_start IsSoundMove
@@ -9680,7 +9680,7 @@ _02013E10: .word 0x00000125
 	arm_func_start IsRecoilMove
 IsRecoilMove: ; 0x02013E14
 	mov r3, #0
-	ldr r2, _02013E50 ; =_02098D74
+	ldr r2, _02013E50 ; =RECOIL_MOVE_LIST
 	b _02013E38
 _02013E20:
 	cmp r0, r1
@@ -9697,7 +9697,7 @@ _02013E38:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_02013E50: .word _02098D74
+_02013E50: .word RECOIL_MOVE_LIST
 	arm_func_end IsRecoilMove
 
 	arm_func_start sub_02013E54
@@ -10366,7 +10366,7 @@ GroundToDungeonMoveset: ; 0x020146E4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, #0
 	mov r5, #6
-	ldr r8, _02014774 ; =_020AF6DC
+	ldr r8, _02014774 ; =DUNGEON_MOVE_TABLES
 	mov lr, #1
 	mov sb, r4
 	mov r3, r4
@@ -10402,7 +10402,7 @@ _0201475C:
 	strb r1, [r0, #0x20]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02014774: .word _020AF6DC
+_02014774: .word DUNGEON_MOVE_TABLES
 	arm_func_end GroundToDungeonMoveset
 
 	arm_func_start DungeonToGroundMoveset
@@ -10859,7 +10859,7 @@ _02014D14: .word 0x00000163
 	arm_func_start IsPunchMove
 IsPunchMove: ; 0x02014D18
 	mov r3, #0
-	ldr r2, _02014D54 ; =_02098D8A
+	ldr r2, _02014D54 ; =PUNCH_MOVE_LIST
 	b _02014D3C
 _02014D24:
 	cmp r0, r1
@@ -10876,7 +10876,7 @@ _02014D3C:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_02014D54: .word _02098D8A
+_02014D54: .word PUNCH_MOVE_LIST
 	arm_func_end IsPunchMove
 
 	arm_func_start IsHealingWishOrLunarDance
@@ -11237,14 +11237,14 @@ _020151C0:
 
 	arm_func_start GetMoveCategory
 GetMoveCategory: ; 0x020151C8
-	ldr r2, _020151E0 ; =_020AF6DC
+	ldr r2, _020151E0 ; =DUNGEON_MOVE_TABLES
 	mov r1, #0x1a
 	ldr r2, [r2, #8]
 	mla r1, r0, r1, r2
 	ldrb r0, [r1, #3]
 	bx lr
 	.align 2, 0
-_020151E0: .word _020AF6DC
+_020151E0: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveCategory
 
 	arm_func_start GetPpIncrease
@@ -11331,7 +11331,7 @@ SelectWaza: ; 0x020152FC
 	ldr r1, _0201531C ; =_020AF6F8
 	ldr r2, _02015320 ; =_020AF6F0
 	ldr r3, [r1, r0, lsl #2]
-	ldr r1, _02015324 ; =_020AF6DC
+	ldr r1, _02015324 ; =DUNGEON_MOVE_TABLES
 	ldr r0, [r2, r0, lsl #2]
 	str r3, [r1, #8]
 	str r0, [r1]
@@ -11339,7 +11339,7 @@ SelectWaza: ; 0x020152FC
 	.align 2, 0
 _0201531C: .word _020AF6F8
 _02015320: .word _020AF6F0
-_02015324: .word _020AF6DC
+_02015324: .word DUNGEON_MOVE_TABLES
 	arm_func_end SelectWaza
 
 	arm_func_start sub_02015328
@@ -13377,13 +13377,13 @@ sub_02016EAC: ; 0x02016EAC
 	ldr r1, _02017128 ; =0x00000A7C
 	str r0, [r2, #8]
 	bl MemZero
-	ldr r0, _02017130 ; =_020AFC68
+	ldr r0, _02017130 ; =WAN_TABLE
 	ldr r1, _02017134 ; =_02099110
 	ldr r0, [r0]
 	mov r2, #0
 	bl LoadWanTableEntry
 	ldr r1, _0201712C ; =_020AF760
-	ldr r2, _02017130 ; =_020AFC68
+	ldr r2, _02017130 ; =WAN_TABLE
 	ldr r3, [r1, #8]
 	ldr r1, _02017138 ; =_02099124
 	strh r0, [r3, #0x94]
@@ -13533,7 +13533,7 @@ _020170FC:
 	.align 2, 0
 _02017128: .word 0x00000A7C
 _0201712C: .word _020AF760
-_02017130: .word _020AFC68
+_02017130: .word WAN_TABLE
 _02017134: .word _02099110
 _02017138: .word _02099124
 _0201713C: .word _02098FC8
@@ -13849,12 +13849,12 @@ sub_0201758C: ; 0x0201758C
 	ldr r1, [r0, #8]
 	cmp r1, #0
 	beq _020175E4
-	ldr r0, _020175F4 ; =_020AFC68
+	ldr r0, _020175F4 ; =WAN_TABLE
 	ldrsh r1, [r1, #0x94]
 	ldr r0, [r0]
 	bl DeleteWanTableEntryVeneer
 	ldr r0, _020175F0 ; =_020AF760
-	ldr r1, _020175F4 ; =_020AFC68
+	ldr r1, _020175F4 ; =WAN_TABLE
 	ldr r2, [r0, #8]
 	ldr r0, [r1]
 	ldrsh r1, [r2, #0x96]
@@ -13872,7 +13872,7 @@ _020175E4:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020175F0: .word _020AF760
-_020175F4: .word _020AFC68
+_020175F4: .word WAN_TABLE
 	arm_func_end sub_0201758C
 
 	arm_func_start sub_020175F8
@@ -19962,7 +19962,7 @@ GetWanForAnimationControl: ; 0x0201C3E8
 	cmp r1, #0
 	ldrne r0, [r1, #4]
 	bxne lr
-	ldr r1, _0201C414 ; =_020AFC68
+	ldr r1, _0201C414 ; =WAN_TABLE
 	ldrsh r2, [r0, #0x70]
 	ldr r1, [r1]
 	mov r0, #0x38
@@ -19970,7 +19970,7 @@ GetWanForAnimationControl: ; 0x0201C3E8
 	ldr r0, [r0, #0x30]
 	bx lr
 	.align 2, 0
-_0201C414: .word _020AFC68
+_0201C414: .word WAN_TABLE
 	arm_func_end GetWanForAnimationControl
 
 	arm_func_start SetAndPlayAnimationForAnimationControl
@@ -22529,14 +22529,14 @@ _0201E500: .word 0x0400048C
 	arm_func_start InitRender3dData
 InitRender3dData: ; 0x0201E504
 	stmdb sp!, {r3, lr}
-	ldr r0, _0201E540 ; =_020AFC80
+	ldr r0, _0201E540 ; =RENDER_3D
 	ldr r0, [r0, #0x40]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0x1a00
 	mov r1, #0
 	bl MemAlloc
-	ldr r1, _0201E540 ; =_020AFC80
+	ldr r1, _0201E540 ; =RENDER_3D
 	mov r2, #0
 	str r0, [r1, #0x40]
 	strh r2, [r1]
@@ -22544,7 +22544,7 @@ InitRender3dData: ; 0x0201E504
 	strh r0, [r1, #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201E540: .word _020AFC80
+_0201E540: .word RENDER_3D
 	arm_func_end InitRender3dData
 
 	arm_func_start sub_0201E544
@@ -22561,20 +22561,20 @@ sub_0201E544: ; 0x0201E544
 	mov r3, r0
 	str r0, [sp, #0xc]
 	bl GeomSetTexImageParam
-	ldr r0, _0201E5A4 ; =_020AFC80
+	ldr r0, _0201E5A4 ; =RENDER_3D
 	mvn r1, #0
 	str r1, [r0, #8]
 	bl sub_01FF8F04
 	ldr r2, _0201E5A8 ; =0x3F1F00C0
 	ldr r1, _0201E5AC ; =0x040004A4
-	ldr r0, _0201E5A4 ; =_020AFC80
+	ldr r0, _0201E5A4 ; =RENDER_3D
 	str r2, [r1]
 	mov r1, #0
 	strh r1, [r0]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201E5A4: .word _020AFC80
+_0201E5A4: .word RENDER_3D
 _0201E5A8: .word 0x3F1F00C0
 _0201E5AC: .word 0x040004A4
 	arm_func_end sub_0201E544
@@ -22594,7 +22594,7 @@ sub_0201E5B0: ; 0x0201E5B0
 	mov r3, r0
 	str r0, [sp, #0xc]
 	bl GeomSetTexImageParam
-	ldr r0, _0201E608 ; =_020AFC80
+	ldr r0, _0201E608 ; =RENDER_3D
 	mvn r1, #0
 	str r1, [r0, #8]
 	bl sub_01FF8F04
@@ -22604,7 +22604,7 @@ sub_0201E5B0: ; 0x0201E5B0
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201E608: .word _020AFC80
+_0201E608: .word RENDER_3D
 _0201E60C: .word 0x3F1F00C0
 _0201E610: .word 0x040004A4
 	arm_func_end sub_0201E5B0
@@ -23450,12 +23450,12 @@ Render3dElement64: ; 0x0201F1D4
 	cmp r1, #0
 	ldmeqia sp!, {r3, pc}
 	ldrb r2, [r0, #0x3c]
-	ldr r1, _0201F204 ; =_020AFCC4
+	ldr r1, _0201F204 ; =RENDER_3D_FUNCTIONS_64
 	ldr r1, [r1, r2, lsl #2]
 	blx r1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0201F204: .word _020AFCC4
+_0201F204: .word RENDER_3D_FUNCTIONS_64
 	arm_func_end Render3dElement64
 
 	arm_func_start sub_0201F208
@@ -24918,20 +24918,20 @@ sub_0202059C: ; 0x0202059C
 
 	arm_func_start GetLanguageType
 GetLanguageType: ; 0x020205A0
-	ldr r0, _020205AC ; =_020AFCE8
+	ldr r0, _020205AC ; =LANGUAGE_INFO_DATA
 	ldrsb r0, [r0, #1]
 	bx lr
 	.align 2, 0
-_020205AC: .word _020AFCE8
+_020205AC: .word LANGUAGE_INFO_DATA
 	arm_func_end GetLanguageType
 
 	arm_func_start GetLanguage
 GetLanguage: ; 0x020205B0
-	ldr r0, _020205BC ; =_020AFCE8
+	ldr r0, _020205BC ; =LANGUAGE_INFO_DATA
 	ldrsb r0, [r0]
 	bx lr
 	.align 2, 0
-_020205BC: .word _020AFCE8
+_020205BC: .word LANGUAGE_INFO_DATA
 	arm_func_end GetLanguage
 
 	arm_func_start sub_020205C0
@@ -28793,7 +28793,7 @@ _02023A30:
 _02023A40:
 	mov r0, #0x44
 	mul r1, r4, r0
-	ldr r0, _02023B58 ; =_020B0A48
+	ldr r0, _02023B58 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r2, [r0]
 	ldrb r0, [r2, r1]
 	add r1, r2, r1
@@ -28811,7 +28811,7 @@ _02023A40:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 _02023A8C:
-	ldr r1, _02023B58 ; =_020B0A48
+	ldr r1, _02023B58 ; =TEAM_MEMBER_TABLE_PTR
 	mov r0, #0x68
 	ldr r2, [r1]
 	mul r1, r4, r0
@@ -28834,7 +28834,7 @@ _02023A8C:
 	ldmia sp!, {r3, r4, r5, pc}
 _02023AE0:
 	mov r0, #0x44
-	ldr r1, _02023B58 ; =_020B0A48
+	ldr r1, _02023B58 ; =TEAM_MEMBER_TABLE_PTR
 	mul r2, r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x98
@@ -28867,7 +28867,7 @@ _02023B44:
 _02023B4C: .word _02099D1C
 _02023B50: .word _022A5048
 _02023B54: .word _022A504C
-_02023B58: .word _020B0A48
+_02023B58: .word TEAM_MEMBER_TABLE_PTR
 _02023B5C: .word _02099D2C
 _02023B60: .word _02099D3C
 _02023B64: .word _02099D50
@@ -28928,7 +28928,7 @@ _02023C08:
 _02023C18:
 	mov r0, #0x44
 	mul r1, r4, r0
-	ldr r0, _02023D50 ; =_020B0A48
+	ldr r0, _02023D50 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r2, [r0]
 	ldrb r0, [r2, r1]
 	add r1, r2, r1
@@ -28959,7 +28959,7 @@ _02023C88:
 	mov r0, r5
 	b _02023D44
 _02023C90:
-	ldr r1, _02023D50 ; =_020B0A48
+	ldr r1, _02023D50 ; =TEAM_MEMBER_TABLE_PTR
 	mov r0, #0x68
 	ldr r2, [r1]
 	mul r1, r4, r0
@@ -29015,7 +29015,7 @@ _02023D44:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02023D4C: .word _02099D2C
-_02023D50: .word _020B0A48
+_02023D50: .word TEAM_MEMBER_TABLE_PTR
 _02023D54: .word _02099D54
 _02023D58: .word _02099D64
 _02023D5C: .word _02099D3C
@@ -29274,7 +29274,7 @@ sub_020240B0: ; 0x020240B0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
-	ldr r5, _0202410C ; =_020A7FF0
+	ldr r5, _0202410C ; =ENTITIES
 	mov r6, #0
 	ldr r4, _02024110 ; =0x00000182
 	b _020240FC
@@ -29298,7 +29298,7 @@ _020240FC:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0202410C: .word _020A7FF0
+_0202410C: .word ENTITIES
 _02024110: .word 0x00000182
 	arm_func_end sub_020240B0
 
@@ -29307,7 +29307,7 @@ sub_02024114: ; 0x02024114
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
-	ldr r5, _02024170 ; =_020A7FF0
+	ldr r5, _02024170 ; =ENTITIES
 	mov r6, #0
 	ldr r4, _02024174 ; =0x00000182
 	b _02024160
@@ -29331,7 +29331,7 @@ _02024160:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02024170: .word _020A7FF0
+_02024170: .word ENTITIES
 _02024174: .word 0x00000182
 	arm_func_end sub_02024114
 
@@ -29340,7 +29340,7 @@ sub_02024178: ; 0x02024178
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
-	ldr r5, _020241D4 ; =_020A7FF0
+	ldr r5, _020241D4 ; =ENTITIES
 	mov r6, #0
 	ldr r4, _020241D8 ; =0x00000182
 	b _020241C4
@@ -29364,7 +29364,7 @@ _020241C4:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020241D4: .word _020A7FF0
+_020241D4: .word ENTITIES
 _020241D8: .word 0x00000182
 	arm_func_end sub_02024178
 
@@ -29504,7 +29504,7 @@ SetStringAccuracy: ; 0x02024360
 	bl GetMoveActualAccuracy
 	mov r6, #1
 	mov r3, #0
-	ldr r2, _02024418 ; =_02099CEC
+	ldr r2, _02024418 ; =MOVE_ACCURACY_STARS_TABLE
 	b _020243B8
 _020243A4:
 	ldr r1, [r2, r3, lsl #2]
@@ -29544,7 +29544,7 @@ _02024408:
 	.align 2, 0
 _02024410: .word 0x000027A2
 _02024414: .word 0x000029C1
-_02024418: .word _02099CEC
+_02024418: .word MOVE_ACCURACY_STARS_TABLE
 _0202441C: .word 0x000027A0
 _02024420: .word _02099D84
 _02024424: .word _02099D50
@@ -29567,7 +29567,7 @@ SetStringPower: ; 0x02024428
 	bl GetMoveBasePowerFromId
 	mov r3, #0
 	mov r5, r3
-	ldr r2, _020244E4 ; =_02099CD4
+	ldr r2, _020244E4 ; =MOVE_POWER_STARS_TABLE
 	b _02024480
 _0202446C:
 	ldr r1, [r2, r5, lsl #2]
@@ -29608,7 +29608,7 @@ _020244D4:
 	.align 2, 0
 _020244DC: .word 0x000027A2
 _020244E0: .word 0x000029C1
-_020244E4: .word _02099CD4
+_020244E4: .word MOVE_POWER_STARS_TABLE
 _020244E8: .word 0x000027A1
 _020244EC: .word _02099D84
 _020244F0: .word _02099D50
@@ -31370,7 +31370,7 @@ _02025A78:
 	mov r4, r0
 _02025A90:
 	bl DataTransferStop
-	ldr r2, _02025AD4 ; =_020AFCF8
+	ldr r2, _02025AD4 ; =TBL_TALK_GROUP_STRING_ID_START
 	mov r3, r5, lsl #1
 	add r0, sp, #6
 	mov r1, r4, lsl #1
@@ -31388,7 +31388,7 @@ _02025AC4: .word 0x000004B8
 _02025AC8: .word _022A7A08
 _02025ACC: .word _022A7A0C
 _02025AD0: .word 0x00003EFD
-_02025AD4: .word _020AFCF8
+_02025AD4: .word TBL_TALK_GROUP_STRING_ID_START
 	arm_func_end GetTalkLine
 
 	arm_func_start sub_02025AD8
@@ -35978,13 +35978,13 @@ LoadCursors: ; 0x0202950C
 	mov r1, #0
 	mov r2, #0x15
 	bl memset
-	ldr r0, _02029658 ; =_020AFC68
+	ldr r0, _02029658 ; =WAN_TABLE
 	ldr r1, _0202965C ; =_0209ADF0
 	ldr r0, [r0]
 	mov r2, #0
 	bl LoadWanTableEntry
 	ldr r2, _02029660 ; =_022AAC64
-	ldr r1, _02029658 ; =_020AFC68
+	ldr r1, _02029658 ; =WAN_TABLE
 	strh r0, [r2, #2]
 	ldr r0, [r1]
 	ldr r1, _02029664 ; =_0209AE08
@@ -36056,7 +36056,7 @@ LoadCursors: ; 0x0202950C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02029654: .word _022AAC68
-_02029658: .word _020AFC68
+_02029658: .word WAN_TABLE
 _0202965C: .word _0209ADF0
 _02029660: .word _022AAC64
 _02029664: .word _0209AE08
@@ -36693,7 +36693,7 @@ _02029EE4: .word _022AAC68
 LoadAlert: ; 0x02029EE8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
-	ldr r0, _02029F74 ; =_020AFC68
+	ldr r0, _02029F74 ; =WAN_TABLE
 	ldr r1, _02029F78 ; =_0209AE20
 	ldr r0, [r0]
 	mov r2, #0
@@ -36727,7 +36727,7 @@ LoadAlert: ; 0x02029EE8
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02029F74: .word _020AFC68
+_02029F74: .word WAN_TABLE
 _02029F78: .word _0209AE20
 _02029F7C: .word _022AAD78
 _02029F80: .word _022AAD7C
@@ -53416,7 +53416,7 @@ _02037D84:
 	cmp r5, r0
 	bhi _02037EA8
 	mov lr, #0
-	ldr r3, _02037F1C ; =_020AFDFC
+	ldr r3, _02037F1C ; =KEYBOARD_STRING_IDS
 	mov r0, #6
 	b _02037DF4
 _02037DA8:
@@ -53527,7 +53527,7 @@ _02037EF8:
 _02037F10: .word _020AFDF0
 _02037F14: .word 0x00000111
 _02037F18: .word 0x00000109
-_02037F1C: .word _020AFDFC
+_02037F1C: .word KEYBOARD_STRING_IDS
 _02037F20: .word _0209B4A4
 _02037F24: .word _0209B4AC
 _02037F28: .word _0209B4B8
@@ -55907,7 +55907,7 @@ _02039F64:
 _02039FA8:
 	ldr r6, _0203A4D4 ; =_020AFE5C
 	ldr r4, _0203A4DC ; =0x0000022B
-	ldr r7, _0203A4E0 ; =_020B0A48
+	ldr r7, _0203A4E0 ; =TEAM_MEMBER_TABLE_PTR
 	mov sb, #5
 	mov sl, #0
 	mov r8, #1
@@ -55984,7 +55984,7 @@ _0203A094:
 _0203A0C4:
 	ldr r6, _0203A4D4 ; =_020AFE5C
 	ldr r4, _0203A4DC ; =0x0000022B
-	ldr r7, _0203A4E0 ; =_020B0A48
+	ldr r7, _0203A4E0 ; =TEAM_MEMBER_TABLE_PTR
 	mov sb, #5
 	mov sl, #0
 	mov r8, #1
@@ -56267,7 +56267,7 @@ _0203A4CC:
 _0203A4D4: .word _020AFE5C
 _0203A4D8: .word _0209C764
 _0203A4DC: .word 0x0000022B
-_0203A4E0: .word _020B0A48
+_0203A4E0: .word TEAM_MEMBER_TABLE_PTR
 _0203A4E4: .word _0209C604
 _0203A4E8: .word 0x000002B7
 _0203A4EC: .word 0x00000302
@@ -56471,7 +56471,7 @@ sub_0203A75C: ; 0x0203A75C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x28
 	ldr r3, _0203A960 ; =_020AFE5C
-	ldr r2, _0203A964 ; =_020B0A48
+	ldr r2, _0203A964 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r5, [r3, #0x10]
 	mov r8, r1
 	add r1, r5, r8, lsl #1
@@ -56612,7 +56612,7 @@ _0203A954:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0203A960: .word _020AFE5C
-_0203A964: .word _020B0A48
+_0203A964: .word TEAM_MEMBER_TABLE_PTR
 _0203A968: .word _0209C798
 _0203A96C: .word _0209C7B8
 	arm_func_end sub_0203A75C
@@ -56774,7 +56774,7 @@ _0203AB38: .word _020AFE5C
 	arm_func_start sub_0203AB3C
 sub_0203AB3C: ; 0x0203AB3C
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _0203AD60 ; =_020B0A48
+	ldr r1, _0203AD60 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, r0
 	mov r0, #0x44
 	smulbb r2, r5, r0
@@ -56922,7 +56922,7 @@ _0203AD58:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0203AD60: .word _020B0A48
+_0203AD60: .word TEAM_MEMBER_TABLE_PTR
 _0203AD64: .word _020AFE5C
 	arm_func_end sub_0203AB3C
 
@@ -56932,7 +56932,7 @@ sub_0203AD68: ; 0x0203AD68
 	mov sl, r0
 	sub sb, sl, #7
 	mov r6, #0
-	ldr r5, _0203AF04 ; =_020B0A48
+	ldr r5, _0203AF04 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #0x44
 	ldr fp, _0203AF08 ; =0x0000022B
 	b _0203AEF4
@@ -57042,7 +57042,7 @@ _0203AEF4:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0203AF04: .word _020B0A48
+_0203AF04: .word TEAM_MEMBER_TABLE_PTR
 _0203AF08: .word 0x0000022B
 	arm_func_end sub_0203AD68
 
@@ -57093,7 +57093,7 @@ _0203AF64:
 	strb r8, [r0]
 	mov fp, r6
 	mov sl, #0x44
-	ldr r4, _0203B740 ; =_020B0A48
+	ldr r4, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	b _0203B02C
 _0203AFAC:
 	add r0, r1, sb, lsl #1
@@ -57156,7 +57156,7 @@ _0203B050:
 	mov r4, r5
 	str r1, [sb, #8]
 	strh r6, [r0]
-	ldr r8, _0203B740 ; =_020B0A48
+	ldr r8, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	mov r7, #0x44
 	b _0203B0F0
 _0203B094:
@@ -57210,7 +57210,7 @@ _0203B114:
 	str r3, [r6, #8]
 	mov r1, r2
 	strb r4, [r0]
-	ldr r5, _0203B740 ; =_020B0A48
+	ldr r5, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	mov r3, #0x44
 	b _0203B1A8
 _0203B158:
@@ -57262,7 +57262,7 @@ _0203B1CC:
 	str r1, [r6, #8]
 	strh sb, [r0]
 	add sl, sp, #0
-	ldr r5, _0203B740 ; =_020B0A48
+	ldr r5, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #0x44
 	b _0203B27C
 _0203B214:
@@ -57314,7 +57314,7 @@ _0203B29C:
 	strleh r1, [r0, #0xd4]
 	mov r1, r8
 _0203B2C0:
-	ldr r0, _0203B740 ; =_020B0A48
+	ldr r0, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	mov r3, r1, lsl #1
 	ldr r0, [r0]
 	mvn r2, #0
@@ -57400,7 +57400,7 @@ _0203B3D0:
 	b _0203B49C
 _0203B3F0:
 	ldr r0, _0203B738 ; =_020AFE5C
-	ldr r1, _0203B740 ; =_020B0A48
+	ldr r1, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0, #0x10]
 	ldr r3, [r1]
 	add r0, r0, sl, lsl #1
@@ -57413,7 +57413,7 @@ _0203B3F0:
 	mov r1, r8, lsl #0x10
 	mov r6, r0
 	mov r7, r1, asr #0x10
-	ldr r5, _0203B740 ; =_020B0A48
+	ldr r5, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r4, _0203B738 ; =_020AFE5C
 	mov fp, #0x44
 	b _0203B46C
@@ -57520,7 +57520,7 @@ _0203B578:
 	b _0203B63C
 _0203B598:
 	ldr r0, _0203B738 ; =_020AFE5C
-	ldr r1, _0203B740 ; =_020B0A48
+	ldr r1, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0, #0x10]
 	ldr r2, [r1]
 	add r0, r0, sl, lsl #1
@@ -57532,7 +57532,7 @@ _0203B598:
 	mov r1, r8, lsl #0x10
 	mov r7, r0
 	mov r6, r1, asr #0x10
-	ldr r5, _0203B740 ; =_020B0A48
+	ldr r5, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r4, _0203B738 ; =_020AFE5C
 	mov fp, #0x44
 	b _0203B60C
@@ -57578,7 +57578,7 @@ _0203B648:
 	b _0203B70C
 _0203B668:
 	ldr r0, _0203B738 ; =_020AFE5C
-	ldr r1, _0203B740 ; =_020B0A48
+	ldr r1, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0, #0x10]
 	ldr r2, [r1]
 	add r0, r0, sl, lsl #1
@@ -57590,7 +57590,7 @@ _0203B668:
 	mov r1, r8, lsl #0x10
 	mov r6, r0
 	mov r7, r1, asr #0x10
-	ldr r5, _0203B740 ; =_020B0A48
+	ldr r5, _0203B740 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r4, _0203B738 ; =_020AFE5C
 	mov fp, #0x44
 	b _0203B6DC
@@ -57637,7 +57637,7 @@ _0203B714:
 	.align 2, 0
 _0203B738: .word _020AFE5C
 _0203B73C: .word _022AADF8
-_0203B740: .word _020B0A48
+_0203B740: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_0203AF28
 
 	arm_func_start sub_0203B744
@@ -57948,7 +57948,7 @@ sub_0203BAEC: ; 0x0203BAEC
 	mov r7, r8
 	mov fp, #1
 	mov r4, #0x44
-	ldr r6, _0203BB78 ; =_020B0A48
+	ldr r6, _0203BB78 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r5, _0203BB7C ; =_020AFE5C
 	b _0203BB60
 _0203BB10:
@@ -57982,7 +57982,7 @@ _0203BB60:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0203BB78: .word _020B0A48
+_0203BB78: .word TEAM_MEMBER_TABLE_PTR
 _0203BB7C: .word _020AFE5C
 	arm_func_end sub_0203BAEC
 
@@ -57991,7 +57991,7 @@ sub_0203BB80: ; 0x0203BB80
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r5, r0
 	mov r4, #0
-	ldr r8, _0203BBE4 ; =_020B0A48
+	ldr r8, _0203BBE4 ; =TEAM_MEMBER_TABLE_PTR
 	mov r6, #0x44
 	ldr r7, _0203BBE8 ; =_020AFE5C
 	b _0203BBCC
@@ -58016,7 +58016,7 @@ _0203BBCC:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0203BBE4: .word _020B0A48
+_0203BBE4: .word TEAM_MEMBER_TABLE_PTR
 _0203BBE8: .word _020AFE5C
 	arm_func_end sub_0203BB80
 
@@ -58024,7 +58024,7 @@ _0203BBE8: .word _020AFE5C
 sub_0203BBEC: ; 0x0203BBEC
 	stmdb sp!, {r4, lr}
 	ldr r1, _0203BC48 ; =_020AFE5C
-	ldr r2, _0203BC4C ; =_020B0A48
+	ldr r2, _0203BC4C ; =TEAM_MEMBER_TABLE_PTR
 	ldr lr, [r1, #0x10]
 	ldr ip, [r2]
 	ldr r4, [lr, #4]
@@ -58049,7 +58049,7 @@ _0203BC38:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0203BC48: .word _020AFE5C
-_0203BC4C: .word _020B0A48
+_0203BC4C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_0203BBEC
 
 	arm_func_start sub_0203BC50
@@ -58058,7 +58058,7 @@ sub_0203BC50: ; 0x0203BC50
 	mov r6, r0
 	mov r5, #0
 	add r4, sp, #0
-	ldr sb, _0203BCC4 ; =_020B0A48
+	ldr sb, _0203BCC4 ; =TEAM_MEMBER_TABLE_PTR
 	mov r7, #0x44
 	ldr r8, _0203BCC8 ; =_020AFE5C
 	b _0203BCAC
@@ -58086,7 +58086,7 @@ _0203BCAC:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0203BCC4: .word _020B0A48
+_0203BCC4: .word TEAM_MEMBER_TABLE_PTR
 _0203BCC8: .word _020AFE5C
 	arm_func_end sub_0203BC50
 
@@ -59385,7 +59385,7 @@ sub_0203CCD4: ; 0x0203CCD4
 sub_0203CCD8: ; 0x0203CCD8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
-	ldr r1, _0203CE00 ; =_020B0A48
+	ldr r1, _0203CE00 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r2, _0203CE04 ; =_020AFE70
 	ldr r4, [r1]
 	ldr r3, [r2]
@@ -59461,7 +59461,7 @@ _0203CD8C:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0203CE00: .word _020B0A48
+_0203CE00: .word TEAM_MEMBER_TABLE_PTR
 _0203CE04: .word _020AFE70
 _0203CE08: .word _0209C7E4
 _0203CE0C: .word sub_0203CE1C
@@ -59479,7 +59479,7 @@ sub_0203CE1C: ; 0x0203CE1C
 	cmp r5, r1
 	beq _0203CF84
 	ldr r1, _0203CF8C ; =_020AFE70
-	ldr r2, _0203CF90 ; =_020B0A48
+	ldr r2, _0203CF90 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r1]
 	ldr r3, [r2]
 	ldrsh r2, [r1, #6]
@@ -59569,7 +59569,7 @@ _0203CF84:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _0203CF8C: .word _020AFE70
-_0203CF90: .word _020B0A48
+_0203CF90: .word TEAM_MEMBER_TABLE_PTR
 _0203CF94: .word _0209C820
 _0203CF98: .word 0x0000C402
 _0203CF9C: .word _0209C82C
@@ -59606,7 +59606,7 @@ sub_0203CFCC: ; 0x0203CFCC
 	ldrsh r1, [r1, #6]
 	bl sub_0205B028
 	ldr r0, _0203D400 ; =_020AFE70
-	ldr r1, _0203D404 ; =_020B0A48
+	ldr r1, _0203D404 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	ldr r3, [r1]
 	ldrsh r2, [r0, #6]
@@ -59868,7 +59868,7 @@ _0203D3F4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0203D400: .word _020AFE70
-_0203D404: .word _020B0A48
+_0203D404: .word TEAM_MEMBER_TABLE_PTR
 _0203D408: .word 0x00000976
 _0203D40C: .word 0x00000977
 _0203D410: .word 0x00000978
@@ -62405,7 +62405,7 @@ _0203F83C:
 	ldrsh r2, [r4, #0xba]
 	ldrsh r0, [r4, #0x12]
 	ldr r3, _0203F8DC ; =_0209E912
-	ldr r1, _0203F8E0 ; =_0209E910
+	ldr r1, _0203F8E0 ; =STATUSES_FULL_DESCRIPTION_STRING_IDS
 	add r0, r2, r0
 	add r0, r4, r0
 	ldrb r4, [r0, #0xbc]
@@ -62447,7 +62447,7 @@ _0203F8CC:
 _0203F8D4: .word _020AFE78
 _0203F8D8: .word sub_0203F368
 _0203F8DC: .word _0209E912
-_0203F8E0: .word _0209E910
+_0203F8E0: .word STATUSES_FULL_DESCRIPTION_STRING_IDS
 _0203F8E4: .word _0209C8B8
 _0203F8E8: .word 0x00001013
 	arm_func_end sub_0203F398
@@ -62577,7 +62577,7 @@ _0203FA60: .word _022AAE58
 sub_0203FA64: ; 0x0203FA64
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
-	ldr r1, _0203FBBC ; =_020B0A48
+	ldr r1, _0203FBBC ; =TEAM_MEMBER_TABLE_PTR
 	mov sl, r0
 	mov r0, #0x44
 	smulbb r2, sl, r0
@@ -62666,7 +62666,7 @@ _0203FBB4:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0203FBBC: .word _020B0A48
+_0203FBBC: .word TEAM_MEMBER_TABLE_PTR
 _0203FBC0: .word _022AADFC
 _0203FBC4: .word _022AAE00
 _0203FBC8: .word _0209C96C
@@ -62678,7 +62678,7 @@ _0203FBD0: .word _022AAE2A
 sub_0203FBD4: ; 0x0203FBD4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x14
-	ldr r1, _0203FCFC ; =_020B0A48
+	ldr r1, _0203FCFC ; =TEAM_MEMBER_TABLE_PTR
 	mov r2, #0x68
 	ldr r1, [r1]
 	ldr r3, _0203FD00 ; =_022AADFC
@@ -62753,7 +62753,7 @@ _0203FC74:
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0203FCFC: .word _020B0A48
+_0203FCFC: .word TEAM_MEMBER_TABLE_PTR
 _0203FD00: .word _022AADFC
 _0203FD04: .word _022AAE00
 _0203FD08: .word _0209C96C
@@ -62811,7 +62811,7 @@ _0203FD7C: .word _020AFE7C
 	arm_func_start sub_0203FD80
 sub_0203FD80: ; 0x0203FD80
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _0203FDE0 ; =_020B0A48
+	ldr r2, _0203FDE0 ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, #0x44
 	ldr r2, [r2]
 	ldr ip, _0203FDE4 ; =_022AADFC
@@ -62836,7 +62836,7 @@ _0203FDA0:
 	ldrsh r0, [r0, #2]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0203FDE0: .word _020B0A48
+_0203FDE0: .word TEAM_MEMBER_TABLE_PTR
 _0203FDE4: .word _022AADFC
 _0203FDE8: .word _020AFE7C
 	arm_func_end sub_0203FD80
@@ -65861,7 +65861,7 @@ sub_0204262C: ; 0x0204262C
 
 	arm_func_start sub_0204263C
 sub_0204263C: ; 0x0204263C
-	ldr r2, _0204265C ; =_020AF6B8
+	ldr r2, _0204265C ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #6
 	ldr r2, [r2]
 	ldr ip, _02042660 ; =sub_020444B0
@@ -65870,7 +65870,7 @@ sub_0204263C: ; 0x0204263C
 	ldrsh r0, [r1, #4]
 	bx ip
 	.align 2, 0
-_0204265C: .word _020AF6B8
+_0204265C: .word BAG_ITEMS_PTR_MIRROR
 _02042660: .word sub_020444B0
 	arm_func_end sub_0204263C
 
@@ -65964,7 +65964,7 @@ sub_02042760: ; 0x02042760
 	sub sp, sp, #0x64
 	mov r5, r1
 	mov r1, #6
-	ldr r3, _02042A64 ; =_020AF6B8
+	ldr r3, _02042A64 ; =BAG_ITEMS_PTR_MIRROR
 	mul r4, r5, r1
 	ldr r1, [r3]
 	ldr r3, _02042A68 ; =_020AFEA8
@@ -66171,7 +66171,7 @@ _02042A3C:
 	add sp, sp, #0x64
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_02042A64: .word _020AF6B8
+_02042A64: .word BAG_ITEMS_PTR_MIRROR
 _02042A68: .word _020AFEA8
 _02042A6C: .word _0209C9F4
 _02042A70: .word _0209C9FC
@@ -66324,7 +66324,7 @@ sub_02042BE0: ; 0x02042BE0
 	mov r4, r0
 	mov r0, #0
 	ldr ip, _02042CE8 ; =_020AFEA8
-	ldr r3, _02042CEC ; =_020AF6B8
+	ldr r3, _02042CEC ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, r1
 	b _02042C44
 _02042C04:
@@ -66353,7 +66353,7 @@ _02042C44:
 	mov r7, r2
 	mov r0, #1
 	mov r3, #6
-	ldr lr, _02042CEC ; =_020AF6B8
+	ldr lr, _02042CEC ; =BAG_ITEMS_PTR_MIRROR
 	ldr ip, _02042CE8 ; =_020AFEA8
 	b _02042CA4
 _02042C6C:
@@ -66391,7 +66391,7 @@ _02042CA4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02042CE8: .word _020AFEA8
-_02042CEC: .word _020AF6B8
+_02042CEC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02042BE0
 
 	arm_func_start sub_02042CF0
@@ -67641,7 +67641,7 @@ _02043D0C:
 	mov r8, #0
 	b _02043DE4
 _02043D14:
-	ldr r0, _02044090 ; =_020AF6B8
+	ldr r0, _02044090 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, r8, lsl #1
 	add r0, r0, #0x300
@@ -67657,7 +67657,7 @@ _02043D14:
 _02043D48:
 	cmp r6, #7
 	bne _02043DBC
-	ldr r0, _02044090 ; =_020AF6B8
+	ldr r0, _02044090 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r1, r0, r8, lsl #1
 	add r0, r1, #0x300
@@ -67732,7 +67732,7 @@ _02043E14:
 	mov r8, #0
 	mov r7, r8
 	mov fp, #1
-	ldr sl, _02044090 ; =_020AF6B8
+	ldr sl, _02044090 ; =BAG_ITEMS_PTR_MIRROR
 	b _02044070
 _02043E60:
 	ldr r1, [r4, #4]
@@ -67894,7 +67894,7 @@ _02044070:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0204408C: .word _020AFEB4
-_02044090: .word _020AF6B8
+_02044090: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02043BFC
 
 	arm_func_start sub_02044094
@@ -67951,7 +67951,7 @@ sub_020440F8: ; 0x020440F8
 	mov r7, r0
 	mov r8, sb
 	ldr r4, _020441B4 ; =_020AFEB4
-	ldr fp, _020441B8 ; =_020AF6B8
+	ldr fp, _020441B8 ; =BAG_ITEMS_PTR_MIRROR
 	b _02044198
 _02044130:
 	add r0, r1, r8, lsl #1
@@ -67991,7 +67991,7 @@ _02044198:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020441B4: .word _020AFEB4
-_020441B8: .word _020AF6B8
+_020441B8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020440F8
 
 	arm_func_start sub_020441BC
@@ -68999,7 +68999,7 @@ _02044EE8:
 	beq _020450F4
 	ldr r0, _020451A0 ; =0x02353538
 	ldr r2, [r0]
-	ldr r0, _020451AC ; =_020B0A48
+	ldr r0, _020451AC ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r0]
 	add r0, r2, fp, lsl #2
 	add r0, r0, #0x12000
@@ -69179,7 +69179,7 @@ _0204519C: .word 0x00000728
 _020451A0: .word 0x02353538
 _020451A4: .word 0x000003E7
 _020451A8: .word _0209CBA8
-_020451AC: .word _020B0A48
+_020451AC: .word TEAM_MEMBER_TABLE_PTR
 _020451B0: .word _0209CBB0
 _020451B4: .word _0209CBB8
 _020451B8: .word _0209CBC0
@@ -73060,20 +73060,20 @@ sub_02048480: ; 0x02048480
 
 	arm_func_start GetNotifyNote
 GetNotifyNote: ; 0x020484A0
-	ldr r0, _020484AC ; =_020AFEF8
+	ldr r0, _020484AC ; =NOTIFY_NOTE
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_020484AC: .word _020AFEF8
+_020484AC: .word NOTIFY_NOTE
 	arm_func_end GetNotifyNote
 
 	arm_func_start SetNotifyNote
 SetNotifyNote: ; 0x020484B0
-	ldr r1, _020484BC ; =_020AFEF8
+	ldr r1, _020484BC ; =NOTIFY_NOTE
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-_020484BC: .word _020AFEF8
+_020484BC: .word NOTIFY_NOTE
 	arm_func_end SetNotifyNote
 
 	arm_func_start sub_020484C0
@@ -73140,7 +73140,7 @@ _02048578:
 	mov r4, r0
 	mov r0, #2
 	bl GetTeamMember
-	ldr r1, _020485C0 ; =_020A1918
+	ldr r1, _020485C0 ; =FORBIDDEN_FORGOT_MOVE_LIST
 	bl sub_02053628
 	mov r1, r0
 	mov r0, r4
@@ -73154,7 +73154,7 @@ _020485B0: .word _020A2808
 _020485B4: .word _020A2844
 _020485B8: .word _020A2880
 _020485BC: .word _020A2894
-_020485C0: .word _020A1918
+_020485C0: .word FORBIDDEN_FORGOT_MOVE_LIST
 	arm_func_end sub_020484E8
 
 	arm_func_start sub_020485C4
@@ -73303,7 +73303,7 @@ _02048760: .word EventFlagBackup
 	arm_func_start sub_02048764
 sub_02048764: ; 0x02048764
 	stmdb sp!, {r4, lr}
-	ldr lr, _02048790 ; =_020AFEFC
+	ldr lr, _02048790 ; =DEFAULT_HERO_ID
 	mov r4, r0
 	mov ip, #3
 _02048774:
@@ -73315,13 +73315,13 @@ _02048774:
 	stmia r4, {r0, r1, r2}
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02048790: .word _020AFEFC
+_02048790: .word DEFAULT_HERO_ID
 	arm_func_end sub_02048764
 
 	arm_func_start sub_02048794
 sub_02048794: ; 0x02048794
 	stmdb sp!, {r4, lr}
-	ldr lr, _020487C0 ; =_020AFEFC
+	ldr lr, _020487C0 ; =DEFAULT_HERO_ID
 	mov r4, r0
 	mov ip, #3
 _020487A4:
@@ -73333,14 +73333,14 @@ _020487A4:
 	stmia lr, {r0, r1, r2}
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020487C0: .word _020AFEFC
+_020487C0: .word DEFAULT_HERO_ID
 	arm_func_end sub_02048794
 
 	arm_func_start InitMainTeamAfterQuiz
 InitMainTeamAfterQuiz: ; 0x020487C4
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x14
-	ldr r0, _020489F4 ; =_020AFEF8
+	ldr r0, _020489F4 ; =NOTIFY_NOTE
 	mov r4, #0
 	ldrb r0, [r0, #8]
 	cmp r0, #0
@@ -73353,7 +73353,7 @@ InitMainTeamAfterQuiz: ; 0x020487C4
 	mov r2, #0xa
 	bl sub_02025314
 _020487FC:
-	ldr r0, _020489F4 ; =_020AFEF8
+	ldr r0, _020489F4 ; =NOTIFY_NOTE
 	ldrb r0, [r0, #0x1c]
 	cmp r0, #0
 	bne _02048828
@@ -73369,14 +73369,14 @@ _02048828:
 	mvn r1, #0
 	cmp r0, r1
 	bne _02048898
-	ldr r0, _020489F4 ; =_020AFEF8
+	ldr r0, _020489F4 ; =NOTIFY_NOTE
 	ldr r3, _020489FC ; =_020AFF00
 	ldrsh r1, [r0, #4]
 	mov r0, #0
 	mov r2, #0xd6
 	bl sub_02055B78
 	bl GetHero
-	ldr r1, _020489F4 ; =_020AFEF8
+	ldr r1, _020489F4 ; =NOTIFY_NOTE
 	mov r4, r0
 	ldrsh r2, [r1, #4]
 	mov r0, #0
@@ -73398,14 +73398,14 @@ _02048898:
 	mvn r1, #0
 	cmp r0, r1
 	bne _02048908
-	ldr r0, _020489F4 ; =_020AFEF8
+	ldr r0, _020489F4 ; =NOTIFY_NOTE
 	ldr r3, _02048A04 ; =_020AFF14
 	ldrsh r1, [r0, #6]
 	mov r0, #1
 	mov r2, #0xd7
 	bl sub_02055B78
 	bl GetPartner
-	ldr r1, _020489F4 ; =_020AFEF8
+	ldr r1, _020489F4 ; =NOTIFY_NOTE
 	mov r4, r0
 	ldrsh r2, [r1, #6]
 	mov r0, #0
@@ -73427,7 +73427,7 @@ _02048908:
 	beq _02048914
 	bl SetTeamSetupHeroAndPartnerOnly
 _02048914:
-	ldr r0, _020489F4 ; =_020AFEF8
+	ldr r0, _020489F4 ; =NOTIFY_NOTE
 	ldrsh r0, [r0, #4]
 	cmp r0, #0
 	beq _02048940
@@ -73439,11 +73439,11 @@ _02048914:
 	mov r1, #0x42
 	bl SaveScriptVariableValue
 _02048940:
-	ldr r0, _020489F4 ; =_020AFEF8
+	ldr r0, _020489F4 ; =NOTIFY_NOTE
 	ldrsh r1, [r0, #6]
 	cmp r1, #0
 	beq _02048980
-	ldr r0, _02048A08 ; =_0209CCE4
+	ldr r0, _02048A08 ; =PARTNER_TALK_KIND_TABLE
 	b _02048964
 _02048958:
 	cmp r1, r2
@@ -73459,7 +73459,7 @@ _02048970:
 	mov r1, #0x43
 	bl SaveScriptVariableValue
 _02048980:
-	ldr r1, _020489F4 ; =_020AFEF8
+	ldr r1, _020489F4 ; =NOTIFY_NOTE
 	mov r0, #0
 	ldr r2, [r1, #0x30]
 	mov r1, #0x45
@@ -73492,12 +73492,12 @@ _020489EC:
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_020489F4: .word _020AFEF8
+_020489F4: .word NOTIFY_NOTE
 _020489F8: .word 0x00000232
 _020489FC: .word _020AFF00
 _02048A00: .word 0x00000233
 _02048A04: .word _020AFF14
-_02048A08: .word _0209CCE4
+_02048A08: .word PARTNER_TALK_KIND_TABLE
 	arm_func_end InitMainTeamAfterQuiz
 
 	arm_func_start ScriptSpecialProcess0x3
@@ -73554,14 +73554,14 @@ _02048A98: ; jump table
 	b _02048AB8 ; case 3
 	b _02048AAC ; case 4
 _02048AAC:
-	ldr r1, _02048AC0 ; =_020A27F4
+	ldr r1, _02048AC0 ; =SPECIAL_EPISODE_MAIN_CHARACTERS
 	mov r0, #4
 	bl sub_02048AC4
 _02048AB8:
 	bl SetTeamSetupHeroAndPartnerOnly
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02048AC0: .word _020A27F4
+_02048AC0: .word SPECIAL_EPISODE_MAIN_CHARACTERS
 	arm_func_end ScriptSpecialProcess0x4
 
 	arm_func_start sub_02048AC4
@@ -76411,16 +76411,16 @@ _0204AFBC: .word _022AB0A0
 
 	arm_func_start GetGameMode
 GetGameMode: ; 0x0204AFC0
-	ldr r0, _0204AFCC ; =_020AFF70
+	ldr r0, _0204AFCC ; =GAME_MODE
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_0204AFCC: .word _020AFF70
+_0204AFCC: .word GAME_MODE
 	arm_func_end GetGameMode
 
 	arm_func_start sub_0204AFD0
 sub_0204AFD0: ; 0x0204AFD0
-	ldr r0, _0204AFF4 ; =_020AFF70
+	ldr r0, _0204AFF4 ; =GAME_MODE
 	ldrb r0, [r0]
 	add r0, r0, #0xfe
 	and r0, r0, #0xff
@@ -76430,12 +76430,12 @@ sub_0204AFD0: ; 0x0204AFD0
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0204AFF4: .word _020AFF70
+_0204AFF4: .word GAME_MODE
 	arm_func_end sub_0204AFD0
 
 	arm_func_start sub_0204AFF8
 sub_0204AFF8: ; 0x0204AFF8
-	ldr r0, _0204B014 ; =_020AFF70
+	ldr r0, _0204B014 ; =GAME_MODE
 	ldrb r0, [r0]
 	cmp r0, #4
 	moveq r0, #1
@@ -76443,16 +76443,16 @@ sub_0204AFF8: ; 0x0204AFF8
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0204B014: .word _020AFF70
+_0204B014: .word GAME_MODE
 	arm_func_end sub_0204AFF8
 
 	arm_func_start sub_0204B018
 sub_0204B018: ; 0x0204B018
-	ldr r1, _0204B024 ; =_020AFF70
+	ldr r1, _0204B024 ; =GAME_MODE
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-_0204B024: .word _020AFF70
+_0204B024: .word GAME_MODE
 	arm_func_end sub_0204B018
 
 	arm_func_start sub_0204B028
@@ -76481,7 +76481,7 @@ _0204B05C:
 	cmp r1, #0x400
 	blt _0204B05C
 	mov r4, #0
-	ldr r6, _0204B2FC ; =_0209D870
+	ldr r6, _0204B2FC ; =SCRIPT_VARS
 	mov r5, r4
 _0204B078:
 	mov r0, r7, lsl #4
@@ -76650,7 +76650,7 @@ _0204B118:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0204B2F8: .word _022AB0AC
-_0204B2FC: .word _0209D870
+_0204B2FC: .word SCRIPT_VARS
 _0204B300: .word 0x00000137
 	arm_func_end InitScriptVariableValues
 
@@ -76716,8 +76716,8 @@ sub_0204B3D0: ; 0x0204B3D0
 	mov r4, r1
 	cmp r4, #0x400
 	mov r5, r0
-	ldrlt r0, _0204B42C ; =_0209D870
-	ldrge r1, _0204B430 ; =_0209CECC
+	ldrlt r0, _0204B42C ; =SCRIPT_VARS
+	ldrge r1, _0204B430 ; =SCRIPT_VARS_LOCALS
 	addlt r7, r0, r4, lsl #4
 	subge r0, r4, #0x400
 	addge r7, r1, r0, lsl #4
@@ -76738,8 +76738,8 @@ _0204B41C:
 	blt _0204B3FC
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0204B42C: .word _0209D870
-_0204B430: .word _0209CECC
+_0204B42C: .word SCRIPT_VARS
+_0204B430: .word SCRIPT_VARS_LOCALS
 	arm_func_end sub_0204B3D0
 
 	arm_func_start ZinitScriptVariable
@@ -76748,10 +76748,10 @@ ZinitScriptVariable: ; 0x0204B434
 	mov r5, r1
 	cmp r5, #0x400
 	mov r6, r0
-	ldrlt r0, _0204B494 ; =_0209D870
+	ldrlt r0, _0204B494 ; =SCRIPT_VARS
 	mov r8, #0
 	addlt r4, r0, r5, lsl #4
-	ldrge r1, _0204B498 ; =_0209CECC
+	ldrge r1, _0204B498 ; =SCRIPT_VARS_LOCALS
 	subge r0, r5, #0x400
 	addge r4, r1, r0, lsl #4
 	mov r7, r8
@@ -76771,15 +76771,15 @@ _0204B484:
 	blt _0204B464
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0204B494: .word _0209D870
-_0204B498: .word _0209CECC
+_0204B494: .word SCRIPT_VARS
+_0204B498: .word SCRIPT_VARS_LOCALS
 	arm_func_end ZinitScriptVariable
 
 	arm_func_start LoadScriptVariableRaw
 LoadScriptVariableRaw: ; 0x0204B49C
 	cmp r2, #0x400
 	bge _0204B4C0
-	ldr r1, _0204B4E0 ; =_0209D870
+	ldr r1, _0204B4E0 ; =SCRIPT_VARS
 	ldr r3, _0204B4E4 ; =_022AB0AC
 	add r1, r1, r2, lsl #4
 	str r1, [r0]
@@ -76787,7 +76787,7 @@ LoadScriptVariableRaw: ; 0x0204B49C
 	add r1, r3, r1
 	b _0204B4D8
 _0204B4C0:
-	ldr r3, _0204B4E8 ; =_0209CECC
+	ldr r3, _0204B4E8 ; =SCRIPT_VARS_LOCALS
 	sub r2, r2, #0x400
 	add r2, r3, r2, lsl #4
 	str r2, [r0]
@@ -76797,9 +76797,9 @@ _0204B4D8:
 	str r1, [r0, #4]
 	bx lr
 	.align 2, 0
-_0204B4E0: .word _0209D870
+_0204B4E0: .word SCRIPT_VARS
 _0204B4E4: .word _022AB0AC
-_0204B4E8: .word _0209CECC
+_0204B4E8: .word SCRIPT_VARS_LOCALS
 	arm_func_end LoadScriptVariableRaw
 
 	arm_func_start LoadScriptVariableValue
@@ -79013,31 +79013,31 @@ GlobalProgressAlloc: ; 0x0204D108
 	mov r0, #0x20c
 	mov r1, #0
 	bl MemAlloc
-	ldr r2, _0204D12C ; =_020AFF74
+	ldr r2, _0204D12C ; =GLOBAL_PROGRESS_PTR
 	mov r1, #0x20c
 	str r0, [r2]
 	bl MemZero
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204D12C: .word _020AFF74
+_0204D12C: .word GLOBAL_PROGRESS_PTR
 	arm_func_end GlobalProgressAlloc
 
 	arm_func_start ResetGlobalProgress
 ResetGlobalProgress: ; 0x0204D130
-	ldr r0, _0204D144 ; =_020AFF74
+	ldr r0, _0204D144 ; =GLOBAL_PROGRESS_PTR
 	ldr ip, _0204D148 ; =MemZero
 	mov r1, #0x20c
 	ldr r0, [r0]
 	bx ip
 	.align 2, 0
-_0204D144: .word _020AFF74
+_0204D144: .word GLOBAL_PROGRESS_PTR
 _0204D148: .word MemZero
 	arm_func_end ResetGlobalProgress
 
 	arm_func_start SetMonsterFlag1
 SetMonsterFlag1: ; 0x0204D14C
 	stmdb sp!, {r3, lr}
-	ldr r3, _0204D184 ; =_020AFF74
+	ldr r3, _0204D184 ; =GLOBAL_PROGRESS_PTR
 	mov r1, r0, asr #4
 	add r1, r0, r1, lsr #27
 	mov r2, r0, lsr #0x1f
@@ -79051,12 +79051,12 @@ SetMonsterFlag1: ; 0x0204D14C
 	str r0, [lr, ip, lsl #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204D184: .word _020AFF74
+_0204D184: .word GLOBAL_PROGRESS_PTR
 	arm_func_end SetMonsterFlag1
 
 	arm_func_start GetMonsterFlag1
 GetMonsterFlag1: ; 0x0204D188
-	ldr r3, _0204D1C0 ; =_020AFF74
+	ldr r3, _0204D1C0 ; =GLOBAL_PROGRESS_PTR
 	mov r1, r0, asr #4
 	add r2, r0, r1, lsr #27
 	mov r1, r0, lsr #0x1f
@@ -79071,14 +79071,14 @@ GetMonsterFlag1: ; 0x0204D188
 	and r0, r1, #0xff
 	bx lr
 	.align 2, 0
-_0204D1C0: .word _020AFF74
+_0204D1C0: .word GLOBAL_PROGRESS_PTR
 	arm_func_end GetMonsterFlag1
 
 	arm_func_start SetMonsterFlag2
 SetMonsterFlag2: ; 0x0204D1C4
 	stmdb sp!, {r3, lr}
 	bl FemaleToMaleForm
-	ldr r2, _0204D204 ; =_020AFF74
+	ldr r2, _0204D204 ; =GLOBAL_PROGRESS_PTR
 	mov r1, r0, asr #4
 	ldr r3, [r2]
 	add r1, r0, r1, lsr #27
@@ -79093,14 +79093,14 @@ SetMonsterFlag2: ; 0x0204D1C4
 	str r0, [lr, ip, lsl #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204D204: .word _020AFF74
+_0204D204: .word GLOBAL_PROGRESS_PTR
 	arm_func_end SetMonsterFlag2
 
 	arm_func_start HasMonsterBeenAttackedInDungeons
 HasMonsterBeenAttackedInDungeons: ; 0x0204D208
 	stmdb sp!, {r3, lr}
 	bl FemaleToMaleForm
-	ldr r3, _0204D24C ; =_020AFF74
+	ldr r3, _0204D24C ; =GLOBAL_PROGRESS_PTR
 	mov r1, r0, asr #4
 	add r2, r0, r1, lsr #27
 	mov r1, r0, lsr #0x1f
@@ -79116,13 +79116,13 @@ HasMonsterBeenAttackedInDungeons: ; 0x0204D208
 	and r0, r1, #0xff
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204D24C: .word _020AFF74
+_0204D24C: .word GLOBAL_PROGRESS_PTR
 	arm_func_end HasMonsterBeenAttackedInDungeons
 
 	arm_func_start SetDungeonTipShown
 SetDungeonTipShown: ; 0x0204D250
 	stmdb sp!, {r3, lr}
-	ldr r2, _0204D28C ; =_020AFF74
+	ldr r2, _0204D28C ; =GLOBAL_PROGRESS_PTR
 	mov r1, r0, asr #4
 	ldr r3, [r2]
 	add r1, r0, r1, lsr #27
@@ -79137,7 +79137,7 @@ SetDungeonTipShown: ; 0x0204D250
 	str r0, [lr, ip, lsl #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204D28C: .word _020AFF74
+_0204D28C: .word GLOBAL_PROGRESS_PTR
 	arm_func_end SetDungeonTipShown
 
 	arm_func_start GetDungeonTipShown
@@ -79145,7 +79145,7 @@ GetDungeonTipShown: ; 0x0204D290
 	cmp r0, #0x1f
 	movge r0, #0
 	bxge lr
-	ldr r2, _0204D2D8 ; =_020AFF74
+	ldr r2, _0204D2D8 ; =GLOBAL_PROGRESS_PTR
 	mov r1, r0, asr #4
 	add r1, r0, r1, lsr #27
 	ldr r3, [r2]
@@ -79161,37 +79161,37 @@ GetDungeonTipShown: ; 0x0204D290
 	and r0, r1, #0xff
 	bx lr
 	.align 2, 0
-_0204D2D8: .word _020AFF74
+_0204D2D8: .word GLOBAL_PROGRESS_PTR
 	arm_func_end GetDungeonTipShown
 
 	arm_func_start SetMaxReachedFloor
 SetMaxReachedFloor: ; 0x0204D2DC
 	cmp r0, #0xb4
-	ldrlo r2, _0204D2F4 ; =_020AFF74
+	ldrlo r2, _0204D2F4 ; =GLOBAL_PROGRESS_PTR
 	ldrlo r2, [r2]
 	addlo r0, r2, r0
 	strlob r1, [r0, #0x143]
 	bx lr
 	.align 2, 0
-_0204D2F4: .word _020AFF74
+_0204D2F4: .word GLOBAL_PROGRESS_PTR
 	arm_func_end SetMaxReachedFloor
 
 	arm_func_start GetMaxReachedFloor
 GetMaxReachedFloor: ; 0x0204D2F8
 	cmp r0, #0xb4
-	ldrlo r1, _0204D314 ; =_020AFF74
+	ldrlo r1, _0204D314 ; =GLOBAL_PROGRESS_PTR
 	movhs r0, #0
 	ldrlo r1, [r1]
 	addlo r0, r1, r0
 	ldrlob r0, [r0, #0x143]
 	bx lr
 	.align 2, 0
-_0204D314: .word _020AFF74
+_0204D314: .word GLOBAL_PROGRESS_PTR
 	arm_func_end GetMaxReachedFloor
 
 	arm_func_start IncrementNbAdventures
 IncrementNbAdventures: ; 0x0204D318
-	ldr r0, _0204D344 ; =_020AFF74
+	ldr r0, _0204D344 ; =GLOBAL_PROGRESS_PTR
 	ldr r1, _0204D348 ; =0x000F423F
 	ldr r3, [r0]
 	ldr r2, [r3, #0x1f8]
@@ -79203,18 +79203,18 @@ IncrementNbAdventures: ; 0x0204D318
 	strhi r1, [r2, #0x1f8]
 	bx lr
 	.align 2, 0
-_0204D344: .word _020AFF74
+_0204D344: .word GLOBAL_PROGRESS_PTR
 _0204D348: .word 0x000F423F
 	arm_func_end IncrementNbAdventures
 
 	arm_func_start GetNbAdventures
 GetNbAdventures: ; 0x0204D34C
-	ldr r0, _0204D35C ; =_020AFF74
+	ldr r0, _0204D35C ; =GLOBAL_PROGRESS_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1f8]
 	bx lr
 	.align 2, 0
-_0204D35C: .word _020AFF74
+_0204D35C: .word GLOBAL_PROGRESS_PTR
 	arm_func_end GetNbAdventures
 
 	arm_func_start CanMonsterSpawn
@@ -79226,8 +79226,8 @@ CanMonsterSpawn: ; 0x0204D360
 	arm_func_start IncrementExclusiveMonsterCounts
 IncrementExclusiveMonsterCounts: ; 0x0204D368
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r4, _0204D3B8 ; =_020A1A00
-	ldr r7, _0204D3BC ; =_020AFF74
+	ldr r4, _0204D3B8 ; =VERSION_EXCLUSIVE_MONSTERS
+	ldr r7, _0204D3BC ; =GLOBAL_PROGRESS_PTR
 	mov r6, r0
 	mov r5, #0
 	mov r8, #1
@@ -79247,8 +79247,8 @@ _0204D380:
 	blt _0204D380
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0204D3B8: .word _020A1A00
-_0204D3BC: .word _020AFF74
+_0204D3B8: .word VERSION_EXCLUSIVE_MONSTERS
+_0204D3BC: .word GLOBAL_PROGRESS_PTR
 	arm_func_end IncrementExclusiveMonsterCounts
 
 	arm_func_start CopyProgressInfoTo
@@ -79303,7 +79303,7 @@ _0204D448:
 	blt _0204D448
 	ldr r8, _0204D53C ; =_0209E011
 	ldr sb, _0204D540 ; =_0209E010
-	ldr r6, _0204D544 ; =_020AFF74
+	ldr r6, _0204D544 ; =GLOBAL_PROGRESS_PTR
 	mov r4, #0
 	mov r7, #1
 _0204D488:
@@ -79319,7 +79319,7 @@ _0204D488:
 	add r4, r4, #1
 	cmp r4, #0x17
 	blt _0204D488
-	ldr r4, _0204D544 ; =_020AFF74
+	ldr r4, _0204D544 ; =GLOBAL_PROGRESS_PTR
 	mov r7, #0
 	mov r6, #7
 _0204D4C4:
@@ -79333,13 +79333,13 @@ _0204D4C4:
 	add r7, r7, #1
 	cmp r7, #0xb4
 	blt _0204D4C4
-	ldr r1, _0204D544 ; =_020AFF74
+	ldr r1, _0204D544 ; =GLOBAL_PROGRESS_PTR
 	mov r0, r5
 	ldr r1, [r1]
 	mov r2, #0x20
 	add r1, r1, #0x1f8
 	bl CopyBitsTo
-	ldr r4, _0204D544 ; =_020AFF74
+	ldr r4, _0204D544 ; =GLOBAL_PROGRESS_PTR
 	mov r7, #0
 	mov r6, #8
 _0204D510:
@@ -79357,7 +79357,7 @@ _0204D510:
 _0204D538: .word 0x00000483
 _0204D53C: .word _0209E011
 _0204D540: .word _0209E010
-_0204D544: .word _020AFF74
+_0204D544: .word GLOBAL_PROGRESS_PTR
 	arm_func_end CopyProgressInfoTo
 
 	arm_func_start CopyProgressInfoFromScratchTo
@@ -79382,7 +79382,7 @@ CopyProgressInfoFromScratchTo: ; 0x0204D548
 CopyProgressInfoFrom: ; 0x0204D580
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #4
-	ldr r1, _0204D740 ; =_020AFF74
+	ldr r1, _0204D740 ; =GLOBAL_PROGRESS_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	mov r1, #0x20c
@@ -79444,7 +79444,7 @@ _0204D654:
 	blt _0204D62C
 	mov sb, #0
 	mov r6, #1
-	ldr sl, _0204D740 ; =_020AFF74
+	ldr sl, _0204D740 ; =GLOBAL_PROGRESS_PTR
 	mov r5, sb
 	add r8, sp, #1
 	mov r7, r6
@@ -79463,7 +79463,7 @@ _0204D678:
 	strb r1, [r0, #0x12c]
 	cmp sb, #0x17
 	blt _0204D678
-	ldr r8, _0204D740 ; =_020AFF74
+	ldr r8, _0204D740 ; =GLOBAL_PROGRESS_PTR
 	mov r7, #0
 	add r6, sp, #1
 	mov r5, #7
@@ -79480,13 +79480,13 @@ _0204D6C0:
 	strb r1, [r0, #0x143]
 	cmp r7, #0xb4
 	blt _0204D6C0
-	ldr r1, _0204D740 ; =_020AFF74
+	ldr r1, _0204D740 ; =GLOBAL_PROGRESS_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x20
 	add r1, r1, #0x1f8
 	bl CopyBitsFrom
-	ldr r5, _0204D740 ; =_020AFF74
+	ldr r5, _0204D740 ; =GLOBAL_PROGRESS_PTR
 	mov r7, #0
 	mov r6, #8
 _0204D714:
@@ -79502,7 +79502,7 @@ _0204D714:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0204D740: .word _020AFF74
+_0204D740: .word GLOBAL_PROGRESS_PTR
 _0204D744: .word 0x00000483
 	arm_func_end CopyProgressInfoFrom
 
@@ -79582,7 +79582,7 @@ SetPortraitLayout: ; 0x0204D804
 	bxeq lr
 	mov r2, #6
 	mul r2, r1, r2
-	ldr r3, _0204D844 ; =_0209E014
+	ldr r3, _0204D844 ; =PORTRAIT_LAYOUTS
 	strb r1, [r0, #3]
 	ldrsh r1, [r3, r2]
 	add r2, r3, r2
@@ -79593,7 +79593,7 @@ SetPortraitLayout: ; 0x0204D804
 	strb r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0204D844: .word _0209E014
+_0204D844: .word PORTRAIT_LAYOUTS
 	arm_func_end SetPortraitLayout
 
 	arm_func_start SetPortraitOffset
@@ -79604,7 +79604,7 @@ SetPortraitOffset: ; 0x0204D848
 	ldmeqia sp!, {r3, pc}
 	ldrb r3, [r0, #3]
 	mov r2, #6
-	ldr lr, _0204D890 ; =_0209E014
+	ldr lr, _0204D890 ; =PORTRAIT_LAYOUTS
 	smulbb ip, r3, r2
 	ldrsh r3, [lr, ip]
 	ldr r2, [r1]
@@ -79617,7 +79617,7 @@ SetPortraitOffset: ; 0x0204D848
 	str r1, [r0, #8]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204D890: .word _0209E014
+_0204D890: .word PORTRAIT_LAYOUTS
 	arm_func_end SetPortraitOffset
 
 	arm_func_start AllowPortraitDefault
@@ -79648,7 +79648,7 @@ LoadPortrait: ; 0x0204D8BC
 	ldrsb r8, [sl, #2]
 	bl DataTransferInit
 	ldr r0, _0204DA14 ; =_022AB4B0
-	ldr r1, _0204DA18 ; =_0209E0D4
+	ldr r1, _0204DA18 ; =KAOMADO_FILEPATH
 	bl FileOpen
 	mov fp, #0
 	mov r4, fp
@@ -79735,16 +79735,16 @@ _0204DA0C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0204DA14: .word _022AB4B0
-_0204DA18: .word _0209E0D4
+_0204DA18: .word KAOMADO_FILEPATH
 	arm_func_end LoadPortrait
 
 	arm_func_start sub_0204DA1C
 sub_0204DA1C: ; 0x0204DA1C
-	ldr r1, _0204DA28 ; =_0209E164
+	ldr r1, _0204DA28 ; =ARM9_UNKNOWN_TABLE__NA_209E164
 	ldrb r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_0204DA28: .word _0209E164
+_0204DA28: .word ARM9_UNKNOWN_TABLE__NA_209E164
 	arm_func_end sub_0204DA1C
 
 	arm_func_start sub_0204DA2C
@@ -79762,7 +79762,7 @@ _0204DA48:
 	cmp r2, #0x22
 	blt _0204DA48
 	add r3, sp, #0x22
-	ldr r2, _0204DB04 ; =_0209E164
+	ldr r2, _0204DB04 ; =ARM9_UNKNOWN_TABLE__NA_209E164
 	b _0204DA84
 _0204DA64:
 	ldrb r1, [r0]
@@ -79810,7 +79810,7 @@ _0204DAFC:
 	add sp, sp, #0x68
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0204DB04: .word _0209E164
+_0204DB04: .word ARM9_UNKNOWN_TABLE__NA_209E164
 	arm_func_end sub_0204DA2C
 
 	arm_func_start sub_0204DB08
@@ -79844,7 +79844,7 @@ _0204DB5C:
 	bl sub_020509BC
 	mov r3, #0
 	add r2, sp, #0
-	ldr r1, _0204DB9C ; =_0209E0E8
+	ldr r1, _0204DB9C ; =WONDER_MAIL_BITS_MAP
 	b _0204DB8C
 _0204DB7C:
 	ldrb r0, [r2, r3]
@@ -79857,7 +79857,7 @@ _0204DB8C:
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0204DB9C: .word _0209E0E8
+_0204DB9C: .word WONDER_MAIL_BITS_MAP
 	arm_func_end sub_0204DB08
 
 	arm_func_start sub_0204DBA0
@@ -79871,7 +79871,7 @@ sub_0204DBA0: ; 0x0204DBA0
 	mov r2, #0x36
 	mov r4, #0
 	bl MemcpySimple
-	ldr r3, _0204DC9C ; =_0209E12C
+	ldr r3, _0204DC9C ; =ARM9_UNKNOWN_TABLE__NA_209E12C
 	mov r6, r4
 	add r2, sp, #0x10
 	add r0, sp, #0x46
@@ -79932,7 +79932,7 @@ _0204DC94:
 	add sp, sp, #0xa0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0204DC9C: .word _0209E12C
+_0204DC9C: .word ARM9_UNKNOWN_TABLE__NA_209E12C
 	arm_func_end sub_0204DBA0
 
 	arm_func_start sub_0204DCA0
@@ -79979,7 +79979,7 @@ _0204DCFC:
 	add r1, sp, #0x7c
 	mov r2, #0x36
 	bl sub_0204DB08
-	ldr r2, _0204DD7C ; =_0209E12C
+	ldr r2, _0204DD7C ; =ARM9_UNKNOWN_TABLE__NA_209E12C
 	mov ip, #0
 	add r4, sp, #0x46
 	add r1, sp, #0x10
@@ -79996,7 +79996,7 @@ _0204DD50:
 	add sp, sp, #0xa0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0204DD7C: .word _0209E12C
+_0204DD7C: .word ARM9_UNKNOWN_TABLE__NA_209E12C
 	arm_func_end sub_0204DCA0
 
 	arm_func_start sub_0204DD80
@@ -80010,7 +80010,7 @@ sub_0204DD80: ; 0x0204DD80
 	mov r2, #0x22
 	bl MemcpySimple
 	mov lr, #0
-	ldr r3, _0204DE74 ; =_0209E108
+	ldr r3, _0204DE74 ; =WONDER_MAIL_BITS_SWAP
 	add r2, sp, #0x10
 	add r0, sp, #0x32
 	mov r5, lr
@@ -80068,7 +80068,7 @@ _0204DE6C:
 	add sp, sp, #0x6c
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_0204DE74: .word _0209E108
+_0204DE74: .word WONDER_MAIL_BITS_SWAP
 _0204DE78: .word _0209E264
 	arm_func_end sub_0204DD80
 
@@ -80112,7 +80112,7 @@ _0204DE98:
 	add r1, sp, #0x54
 	mov r2, #0x22
 	bl sub_0204DB08
-	ldr r2, _0204DF50 ; =_0209E108
+	ldr r2, _0204DF50 ; =WONDER_MAIL_BITS_SWAP
 	mov lr, #0
 	add ip, sp, #0x32
 	add r1, sp, #0x10
@@ -80130,7 +80130,7 @@ _0204DF20:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _0204DF4C: .word _0209E264
-_0204DF50: .word _0209E108
+_0204DF50: .word WONDER_MAIL_BITS_SWAP
 	arm_func_end sub_0204DE7C
 
 	arm_func_start sub_0204DF54
@@ -80140,7 +80140,7 @@ sub_0204DF54: ; 0x0204DF54
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r5, #0
-	ldr ip, _0204DFAC ; =_0209E280
+	ldr ip, _0204DFAC ; =ARM9_UNKNOWN_TABLE__NA_209E280
 	mov r4, r5
 	b _0204DF9C
 _0204DF74:
@@ -80161,7 +80161,7 @@ _0204DF9C:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0204DFAC: .word _0209E280
+_0204DFAC: .word ARM9_UNKNOWN_TABLE__NA_209E280
 	arm_func_end sub_0204DF54
 
 	arm_func_start sub_0204DFB0
@@ -80172,7 +80172,7 @@ sub_0204DFB0: ; 0x0204DFB0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r5, #0
 	mov lr, r5
-	ldr ip, _0204E028 ; =_0209E280
+	ldr ip, _0204E028 ; =ARM9_UNKNOWN_TABLE__NA_209E280
 	mov r4, r5
 	b _0204E018
 _0204DFD4:
@@ -80203,7 +80203,7 @@ _0204E018:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0204E028: .word _0209E280
+_0204E028: .word ARM9_UNKNOWN_TABLE__NA_209E280
 	arm_func_end sub_0204DFB0
 
 	arm_func_start sub_0204E02C
@@ -80221,7 +80221,7 @@ sub_0204E02C: ; 0x0204E02C
 	and r6, r0, #0xff
 	mvneq r7, #0
 	mov r1, r5
-	ldr r4, _0204E09C ; =_0209E2A0
+	ldr r4, _0204E09C ; =WONDER_MAIL_ENCRYPTION_TABLE
 	b _0204E090
 _0204E068:
 	mla r0, r1, r7, sl
@@ -80239,7 +80239,7 @@ _0204E090:
 	blo _0204E068
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0204E09C: .word _0209E2A0
+_0204E09C: .word WONDER_MAIL_ENCRYPTION_TABLE
 	arm_func_end sub_0204E02C
 
 	arm_func_start sub_0204E0A0
@@ -80257,7 +80257,7 @@ sub_0204E0A0: ; 0x0204E0A0
 	and r6, r0, #0xff
 	mvneq r7, #0
 	mov r1, r5
-	ldr r4, _0204E110 ; =_0209E2A0
+	ldr r4, _0204E110 ; =WONDER_MAIL_ENCRYPTION_TABLE
 	b _0204E104
 _0204E0DC:
 	mla r0, r1, r7, sl
@@ -80275,7 +80275,7 @@ _0204E104:
 	blo _0204E0DC
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0204E110: .word _0209E2A0
+_0204E110: .word WONDER_MAIL_ENCRYPTION_TABLE
 	arm_func_end sub_0204E0A0
 
 	arm_func_start sub_0204E114
@@ -80881,7 +80881,7 @@ _0204E83C:
 	beq _0204E8A0
 	add r0, r0, #4
 	bl sub_0204F7A8
-	ldr r1, _0204E8E8 ; =_020A1978
+	ldr r1, _0204E8E8 ; =CLIENT_LEVEL_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r1, [r1, r0]
 	ldr r3, _0204E8E0 ; =_022AB4FC
@@ -80912,7 +80912,7 @@ _0204E8D4:
 	.align 2, 0
 _0204E8E0: .word _022AB4FC
 _0204E8E4: .word _022AB518
-_0204E8E8: .word _020A1978
+_0204E8E8: .word CLIENT_LEVEL_TABLE
 	arm_func_end sub_0204E7B8
 
 	arm_func_start sub_0204E8EC
@@ -81360,7 +81360,7 @@ _0204EEC4:
 	bl AddGuestMonster
 	b _0204EF34
 _0204EEEC:
-	ldr r2, _0204EFD0 ; =_020A28BC
+	ldr r2, _0204EFD0 ; =GUEST_MONSTER_DATA
 	mov r0, r7
 	mov r1, r4
 	bl AddGuestMonster
@@ -81426,7 +81426,7 @@ _0204EFC0: .word _020A2A90
 _0204EFC4: .word _020A2AFC
 _0204EFC8: .word _020A2B20
 _0204EFCC: .word _020A2928
-_0204EFD0: .word _020A28BC
+_0204EFD0: .word GUEST_MONSTER_DATA
 _0204EFD4: .word _020A28E0
 _0204EFD8: .word _020A29B8
 _0204EFDC: .word _020A2994
@@ -81681,7 +81681,7 @@ _0204F2D8:
 	mov r7, #0
 	mov r8, r7
 	add r5, sp, #0
-	ldr r4, _0204F35C ; =_020B0A48
+	ldr r4, _0204F35C ; =TEAM_MEMBER_TABLE_PTR
 	mov fp, #0x44
 	b _0204F310
 _0204F2F0:
@@ -81716,7 +81716,7 @@ _0204F34C:
 	.align 2, 0
 _0204F354: .word 0x00000301
 _0204F358: .word 0x00000101
-_0204F35C: .word _020B0A48
+_0204F35C: .word TEAM_MEMBER_TABLE_PTR
 _0204F360: .word 0x00002002
 	arm_func_end sub_0204F284
 
@@ -81866,7 +81866,7 @@ _0204F558: .word 0x00004001
 
 	arm_func_start sub_0204F55C
 sub_0204F55C: ; 0x0204F55C
-	ldr r1, _0204F578 ; =_020A1AE8
+	ldr r1, _0204F578 ; =SECONDARY_TERRAIN_TYPES
 	ldrb r0, [r1, r0]
 	cmp r0, #2
 	moveq r0, #1
@@ -81874,7 +81874,7 @@ sub_0204F55C: ; 0x0204F55C
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0204F578: .word _020A1AE8
+_0204F578: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end sub_0204F55C
 
 	arm_func_start GetNbFloors
@@ -81889,12 +81889,12 @@ _0204F590:
 	moveq r0, #1
 	bxeq lr
 	cmp r0, #0xbf
-	ldrlo r1, _0204F5B0 ; =_0209E3A0
+	ldrlo r1, _0204F5B0 ; =DUNGEON_DATA_LIST
 	movhs r0, #0x30
 	ldrlob r0, [r1, r0, lsl #2]
 	bx lr
 	.align 2, 0
-_0204F5B0: .word _0209E3A0
+_0204F5B0: .word DUNGEON_DATA_LIST
 	arm_func_end GetNbFloors
 
 	arm_func_start GetNbFloorsPlusOne
@@ -82091,7 +82091,7 @@ sub_0204F7A8: ; 0x0204F7A8
 	ldrb r2, [sp]
 	cmp r2, #0x64
 	movhs r0, #1
-	ldrlo r1, _0204F810 ; =_020A0AD4
+	ldrlo r1, _0204F810 ; =MISSION_FLOOR_RANKS_PTRS
 	ldrlob r0, [sp, #1]
 	ldrlo r1, [r1, r2, lsl #2]
 	ldrlob r0, [r1, r0]
@@ -82099,7 +82099,7 @@ _0204F808:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_0204F810: .word _020A0AD4
+_0204F810: .word MISSION_FLOOR_RANKS_PTRS
 	arm_func_end sub_0204F7A8
 
 	arm_func_start GetMissionRank
@@ -82126,7 +82126,7 @@ GetMissionRank: ; 0x0204F814
 	movhs r0, #1
 	bhs _0204F880
 	ldrb r1, [sp, #1]
-	ldr r0, _0204F888 ; =_020A0AD4
+	ldr r0, _0204F888 ; =MISSION_FLOOR_RANKS_PTRS
 	cmp r1, #1
 	ldr r0, [r0, r2, lsl #2]
 	movle r1, #2
@@ -82135,43 +82135,43 @@ _0204F880:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_0204F888: .word _020A0AD4
+_0204F888: .word MISSION_FLOOR_RANKS_PTRS
 	arm_func_end GetMissionRank
 
 	arm_func_start GetOutlawLevel
 GetOutlawLevel: ; 0x0204F88C
 	stmdb sp!, {r3, lr}
 	bl GetMissionRank
-	ldr r1, _0204F8A4 ; =_020A1998
+	ldr r1, _0204F8A4 ; =OUTLAW_LEVEL_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r0, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204F8A4: .word _020A1998
+_0204F8A4: .word OUTLAW_LEVEL_TABLE
 	arm_func_end GetOutlawLevel
 
 	arm_func_start GetOutlawLeaderLevel
 GetOutlawLeaderLevel: ; 0x0204F8A8
 	stmdb sp!, {r3, lr}
 	bl GetMissionRank
-	ldr r1, _0204F8C0 ; =_020A1998
+	ldr r1, _0204F8C0 ; =OUTLAW_LEVEL_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r0, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204F8C0: .word _020A1998
+_0204F8C0: .word OUTLAW_LEVEL_TABLE
 	arm_func_end GetOutlawLeaderLevel
 
 	arm_func_start GetOutlawMinionLevel
 GetOutlawMinionLevel: ; 0x0204F8C4
 	stmdb sp!, {r3, lr}
 	bl GetMissionRank
-	ldr r1, _0204F8DC ; =_020A19B8
+	ldr r1, _0204F8DC ; =OUTLAW_MINION_LEVEL_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r0, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204F8DC: .word _020A19B8
+_0204F8DC: .word OUTLAW_MINION_LEVEL_TABLE
 	arm_func_end GetOutlawMinionLevel
 
 	arm_func_start AddGuestMonster
@@ -82295,17 +82295,17 @@ _0204FA20: .word _022AB694
 	arm_func_start SetAdventureLogStructLocation
 SetAdventureLogStructLocation: ; 0x0204FA24
 	ldr r1, _0204FA34 ; =_022AB69C
-	ldr r0, _0204FA38 ; =_020AFF78
+	ldr r0, _0204FA38 ; =ADVENTURE_LOG_PTR
 	str r1, [r0]
 	bx lr
 	.align 2, 0
 _0204FA34: .word _022AB69C
-_0204FA38: .word _020AFF78
+_0204FA38: .word ADVENTURE_LOG_PTR
 	arm_func_end SetAdventureLogStructLocation
 
 	arm_func_start SetAdventureLogDungeonFloor
 SetAdventureLogDungeonFloor: ; 0x0204FA3C
-	ldr r1, _0204FA58 ; =_020AFF78
+	ldr r1, _0204FA58 ; =ADVENTURE_LOG_PTR
 	ldrb r2, [r0]
 	ldr r1, [r1]
 	strb r2, [r1, #0x278]
@@ -82313,23 +82313,23 @@ SetAdventureLogDungeonFloor: ; 0x0204FA3C
 	strb r0, [r1, #0x279]
 	bx lr
 	.align 2, 0
-_0204FA58: .word _020AFF78
+_0204FA58: .word ADVENTURE_LOG_PTR
 	arm_func_end SetAdventureLogDungeonFloor
 
 	arm_func_start GetAdventureLogDungeonFloor
 GetAdventureLogDungeonFloor: ; 0x0204FA5C
-	ldr r0, _0204FA6C ; =_020AFF78
+	ldr r0, _0204FA6C ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x278
 	bx lr
 	.align 2, 0
-_0204FA6C: .word _020AFF78
+_0204FA6C: .word ADVENTURE_LOG_PTR
 	arm_func_end GetAdventureLogDungeonFloor
 
 	arm_func_start ClearAdventureLogStruct
 ClearAdventureLogStruct: ; 0x0204FA70
 	mov r3, #0
-	ldr r1, _0204FB98 ; =_020AFF78
+	ldr r1, _0204FB98 ; =ADVENTURE_LOG_PTR
 	mov r0, r3
 _0204FA7C:
 	ldr r2, [r1]
@@ -82337,7 +82337,7 @@ _0204FA7C:
 	add r3, r3, #1
 	cmp r3, #4
 	blt _0204FA7C
-	ldr r1, _0204FB98 ; =_020AFF78
+	ldr r1, _0204FB98 ; =ADVENTURE_LOG_PTR
 	mov r3, #0
 	ldr r2, [r1]
 	str r0, [r2, #0x2c]
@@ -82375,7 +82375,7 @@ _0204FB00:
 	str r3, [r2, #0xd8]
 	cmp r0, #0x25
 	blt _0204FB00
-	ldr r0, _0204FB98 ; =_020AFF78
+	ldr r0, _0204FB98 ; =ADVENTURE_LOG_PTR
 	mov r2, #0
 _0204FB2C:
 	ldr r1, [r0]
@@ -82384,7 +82384,7 @@ _0204FB2C:
 	str r2, [r1, #0x16c]
 	cmp r3, #0x11
 	blt _0204FB2C
-	ldr r0, _0204FB98 ; =_020AFF78
+	ldr r0, _0204FB98 ; =ADVENTURE_LOG_PTR
 	mov ip, #0
 _0204FB4C:
 	ldr r1, [r0]
@@ -82393,7 +82393,7 @@ _0204FB4C:
 	str ip, [r1, #0x1b0]
 	cmp r2, #0x2c
 	blt _0204FB4C
-	ldr r1, _0204FB98 ; =_020AFF78
+	ldr r1, _0204FB98 ; =ADVENTURE_LOG_PTR
 	ldr r0, [r1]
 	str ip, [r0, #0x260]
 	mov r0, #0x3e8
@@ -82408,12 +82408,12 @@ _0204FB74:
 	blt _0204FB74
 	bx lr
 	.align 2, 0
-_0204FB98: .word _020AFF78
+_0204FB98: .word ADVENTURE_LOG_PTR
 	arm_func_end ClearAdventureLogStruct
 
 	arm_func_start SetAdventureLogCompleted
 SetAdventureLogCompleted: ; 0x0204FB9C
-	ldr r1, _0204FBC0 ; =_020AFF78
+	ldr r1, _0204FBC0 ; =ADVENTURE_LOG_PTR
 	mov r3, r0, asr #5
 	ldr ip, [r1]
 	and r0, r0, #0x1f
@@ -82423,12 +82423,12 @@ SetAdventureLogCompleted: ; 0x0204FB9C
 	str r0, [ip, r3, lsl #2]
 	bx lr
 	.align 2, 0
-_0204FBC0: .word _020AFF78
+_0204FBC0: .word ADVENTURE_LOG_PTR
 	arm_func_end SetAdventureLogCompleted
 
 	arm_func_start IsAdventureLogNotEmpty
 IsAdventureLogNotEmpty: ; 0x0204FBC4
-	ldr r0, _0204FBF8 ; =_020AFF78
+	ldr r0, _0204FBF8 ; =ADVENTURE_LOG_PTR
 	mov r1, #0
 	ldr r2, [r0]
 	b _0204FBE8
@@ -82444,12 +82444,12 @@ _0204FBE8:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0204FBF8: .word _020AFF78
+_0204FBF8: .word ADVENTURE_LOG_PTR
 	arm_func_end IsAdventureLogNotEmpty
 
 	arm_func_start GetAdventureLogCompleted
 GetAdventureLogCompleted: ; 0x0204FBFC
-	ldr r1, _0204FC24 ; =_020AFF78
+	ldr r1, _0204FC24 ; =ADVENTURE_LOG_PTR
 	mov r2, r0, asr #5
 	ldr r1, [r1]
 	and r3, r0, #0x1f
@@ -82460,12 +82460,12 @@ GetAdventureLogCompleted: ; 0x0204FBFC
 	and r0, r1, #0xff
 	bx lr
 	.align 2, 0
-_0204FC24: .word _020AFF78
+_0204FC24: .word ADVENTURE_LOG_PTR
 	arm_func_end GetAdventureLogCompleted
 
 	arm_func_start IncrementNbDungeonsCleared
 IncrementNbDungeonsCleared: ; 0x0204FC28
-	ldr r0, _0204FC64 ; =_020AFF78
+	ldr r0, _0204FC64 ; =ADVENTURE_LOG_PTR
 	ldr r1, _0204FC68 ; =0x000F423F
 	ldr r3, [r0]
 	ldr r2, [r3, #0x10]
@@ -82481,23 +82481,23 @@ IncrementNbDungeonsCleared: ; 0x0204FC28
 	strgt r1, [r2, #0x10]
 	bx lr
 	.align 2, 0
-_0204FC64: .word _020AFF78
+_0204FC64: .word ADVENTURE_LOG_PTR
 _0204FC68: .word 0x000F423F
 	arm_func_end IncrementNbDungeonsCleared
 
 	arm_func_start GetNbDungeonsCleared
 GetNbDungeonsCleared: ; 0x0204FC6C
-	ldr r0, _0204FC7C ; =_020AFF78
+	ldr r0, _0204FC7C ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x10]
 	bx lr
 	.align 2, 0
-_0204FC7C: .word _020AFF78
+_0204FC7C: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbDungeonsCleared
 
 	arm_func_start IncrementNbFriendRescues
 IncrementNbFriendRescues: ; 0x0204FC80
-	ldr r0, _0204FCC0 ; =_020AFF78
+	ldr r0, _0204FCC0 ; =ADVENTURE_LOG_PTR
 	ldr r1, _0204FCC4 ; =0x000F423F
 	ldr r3, [r0]
 	ldr r2, [r3, #0x14]
@@ -82506,7 +82506,7 @@ IncrementNbFriendRescues: ; 0x0204FC80
 	ldr r2, [r0]
 	ldr r0, [r2, #0x14]
 	cmp r0, r1
-	ldr r0, _0204FCC0 ; =_020AFF78
+	ldr r0, _0204FCC0 ; =ADVENTURE_LOG_PTR
 	strgt r1, [r2, #0x14]
 	ldr r1, [r0]
 	ldr r0, [r1]
@@ -82514,23 +82514,23 @@ IncrementNbFriendRescues: ; 0x0204FC80
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0204FCC0: .word _020AFF78
+_0204FCC0: .word ADVENTURE_LOG_PTR
 _0204FCC4: .word 0x000F423F
 	arm_func_end IncrementNbFriendRescues
 
 	arm_func_start GetNbFriendRescues
 GetNbFriendRescues: ; 0x0204FCC8
-	ldr r0, _0204FCD8 ; =_020AFF78
+	ldr r0, _0204FCD8 ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x14]
 	bx lr
 	.align 2, 0
-_0204FCD8: .word _020AFF78
+_0204FCD8: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbFriendRescues
 
 	arm_func_start IncrementNbEvolutions
 IncrementNbEvolutions: ; 0x0204FCDC
-	ldr r0, _0204FD1C ; =_020AFF78
+	ldr r0, _0204FD1C ; =ADVENTURE_LOG_PTR
 	ldr r1, _0204FD20 ; =0x000F423F
 	ldr r3, [r0]
 	ldr r2, [r3, #0x18]
@@ -82539,7 +82539,7 @@ IncrementNbEvolutions: ; 0x0204FCDC
 	ldr r2, [r0]
 	ldr r0, [r2, #0x18]
 	cmp r0, r1
-	ldr r0, _0204FD1C ; =_020AFF78
+	ldr r0, _0204FD1C ; =ADVENTURE_LOG_PTR
 	strgt r1, [r2, #0x18]
 	ldr r1, [r0]
 	ldr r0, [r1]
@@ -82547,18 +82547,18 @@ IncrementNbEvolutions: ; 0x0204FCDC
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0204FD1C: .word _020AFF78
+_0204FD1C: .word ADVENTURE_LOG_PTR
 _0204FD20: .word 0x000F423F
 	arm_func_end IncrementNbEvolutions
 
 	arm_func_start GetNbEvolutions
 GetNbEvolutions: ; 0x0204FD24
-	ldr r0, _0204FD34 ; =_020AFF78
+	ldr r0, _0204FD34 ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x18]
 	bx lr
 	.align 2, 0
-_0204FD34: .word _020AFF78
+_0204FD34: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbEvolutions
 
 	arm_func_start IncrementNbSteals
@@ -82568,52 +82568,52 @@ IncrementNbSteals: ; 0x0204FD38
 
 	arm_func_start IncrementNbEggsHatched
 IncrementNbEggsHatched: ; 0x0204FD3C
-	ldr r1, _0204FD70 ; =_020AFF78
+	ldr r1, _0204FD70 ; =ADVENTURE_LOG_PTR
 	ldr r0, _0204FD74 ; =0x000F423F
 	ldr r2, [r1]
 	ldr r1, [r2, #0x1c]
 	cmp r1, r0
 	addlt r0, r1, #1
 	strlt r0, [r2, #0x1c]
-	ldr r0, _0204FD70 ; =_020AFF78
+	ldr r0, _0204FD70 ; =ADVENTURE_LOG_PTR
 	ldr r1, [r0]
 	ldr r0, [r1]
 	orr r0, r0, #0x100
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0204FD70: .word _020AFF78
+_0204FD70: .word ADVENTURE_LOG_PTR
 _0204FD74: .word 0x000F423F
 	arm_func_end IncrementNbEggsHatched
 
 	arm_func_start GetNbEggsHatched
 GetNbEggsHatched: ; 0x0204FD78
-	ldr r0, _0204FD88 ; =_020AFF78
+	ldr r0, _0204FD88 ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1c]
 	bx lr
 	.align 2, 0
-_0204FD88: .word _020AFF78
+_0204FD88: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbEggsHatched
 
 	arm_func_start GetNbPokemonJoined
 GetNbPokemonJoined: ; 0x0204FD8C
-	ldr r0, _0204FD9C ; =_020AFF78
+	ldr r0, _0204FD9C ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x2c]
 	bx lr
 	.align 2, 0
-_0204FD9C: .word _020AFF78
+_0204FD9C: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbPokemonJoined
 
 	arm_func_start GetNbMovesLearned
 GetNbMovesLearned: ; 0x0204FDA0
-	ldr r0, _0204FDB0 ; =_020AFF78
+	ldr r0, _0204FDB0 ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x34]
 	bx lr
 	.align 2, 0
-_0204FDB0: .word _020AFF78
+_0204FDB0: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbMovesLearned
 
 	arm_func_start SetVictoriesOnOneFloor
@@ -82621,7 +82621,7 @@ SetVictoriesOnOneFloor: ; 0x0204FDB4
 	ldr r1, _0204FDE0 ; =0x000F423F
 	cmp r0, r1
 	movgt r0, r1
-	ldr r1, _0204FDE4 ; =_020AFF78
+	ldr r1, _0204FDE4 ; =ADVENTURE_LOG_PTR
 	ldr r2, [r1]
 	str r0, [r2, #0x28]
 	ldr r1, [r1]
@@ -82631,17 +82631,17 @@ SetVictoriesOnOneFloor: ; 0x0204FDB4
 	bx lr
 	.align 2, 0
 _0204FDE0: .word 0x000F423F
-_0204FDE4: .word _020AFF78
+_0204FDE4: .word ADVENTURE_LOG_PTR
 	arm_func_end SetVictoriesOnOneFloor
 
 	arm_func_start GetVictoriesOnOneFloor
 GetVictoriesOnOneFloor: ; 0x0204FDE8
-	ldr r0, _0204FDF8 ; =_020AFF78
+	ldr r0, _0204FDF8 ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x28]
 	bx lr
 	.align 2, 0
-_0204FDF8: .word _020AFF78
+_0204FDF8: .word ADVENTURE_LOG_PTR
 	arm_func_end GetVictoriesOnOneFloor
 
 	arm_func_start SetPokemonJoined
@@ -82650,7 +82650,7 @@ SetPokemonJoined: ; 0x0204FDFC
 	bl GetDexNumberVeneer
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r3, _0204FE54 ; =_020AFF78
+	ldr r3, _0204FE54 ; =ADVENTURE_LOG_PTR
 	mov r1, r0, asr #4
 	ldr lr, [r3]
 	add r1, r0, r1, lsr #27
@@ -82669,7 +82669,7 @@ SetPokemonJoined: ; 0x0204FDFC
 	str r0, [lr, ip, lsl #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204FE54: .word _020AFF78
+_0204FE54: .word ADVENTURE_LOG_PTR
 	arm_func_end SetPokemonJoined
 
 	arm_func_start SetPokemonBattled
@@ -82678,7 +82678,7 @@ SetPokemonBattled: ; 0x0204FE58
 	bl GetDexNumberVeneer
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r3, _0204FEB0 ; =_020AFF78
+	ldr r3, _0204FEB0 ; =ADVENTURE_LOG_PTR
 	mov r1, r0, asr #4
 	ldr lr, [r3]
 	add r1, r0, r1, lsr #27
@@ -82697,130 +82697,130 @@ SetPokemonBattled: ; 0x0204FE58
 	str r0, [lr, ip, lsl #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204FEB0: .word _020AFF78
+_0204FEB0: .word ADVENTURE_LOG_PTR
 	arm_func_end SetPokemonBattled
 
 	arm_func_start GetNbPokemonBattled
 GetNbPokemonBattled: ; 0x0204FEB4
-	ldr r0, _0204FEC4 ; =_020AFF78
+	ldr r0, _0204FEC4 ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	bx lr
 	.align 2, 0
-_0204FEC4: .word _020AFF78
+_0204FEC4: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbPokemonBattled
 
 	arm_func_start IncrementNbBigTreasureWins
 IncrementNbBigTreasureWins: ; 0x0204FEC8
-	ldr r0, _0204FEE0 ; =_020AFF78
+	ldr r0, _0204FEE0 ; =ADVENTURE_LOG_PTR
 	ldr ip, _0204FEE4 ; =SetNbBigTreasureWins
 	ldr r0, [r0]
 	ldr r0, [r0, #0x38]
 	add r0, r0, #1
 	bx ip
 	.align 2, 0
-_0204FEE0: .word _020AFF78
+_0204FEE0: .word ADVENTURE_LOG_PTR
 _0204FEE4: .word SetNbBigTreasureWins
 	arm_func_end IncrementNbBigTreasureWins
 
 	arm_func_start SetNbBigTreasureWins
 SetNbBigTreasureWins: ; 0x0204FEE8
-	ldr r2, _0204FF18 ; =_020AFF78
+	ldr r2, _0204FF18 ; =ADVENTURE_LOG_PTR
 	ldr r1, _0204FF1C ; =0x000F423F
 	ldr r3, [r2]
 	cmp r0, r1
 	ldr r2, [r3]
 	movgt r0, r1
 	orr r2, r2, #0x400
-	ldr r1, _0204FF18 ; =_020AFF78
+	ldr r1, _0204FF18 ; =ADVENTURE_LOG_PTR
 	str r2, [r3]
 	ldr r1, [r1]
 	str r0, [r1, #0x38]
 	bx lr
 	.align 2, 0
-_0204FF18: .word _020AFF78
+_0204FF18: .word ADVENTURE_LOG_PTR
 _0204FF1C: .word 0x000F423F
 	arm_func_end SetNbBigTreasureWins
 
 	arm_func_start GetNbBigTreasureWins
 GetNbBigTreasureWins: ; 0x0204FF20
-	ldr r0, _0204FF30 ; =_020AFF78
+	ldr r0, _0204FF30 ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x38]
 	bx lr
 	.align 2, 0
-_0204FF30: .word _020AFF78
+_0204FF30: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbBigTreasureWins
 
 	arm_func_start SetNbRecycled
 SetNbRecycled: ; 0x0204FF34
-	ldr r2, _0204FF64 ; =_020AFF78
+	ldr r2, _0204FF64 ; =ADVENTURE_LOG_PTR
 	ldr r1, _0204FF68 ; =0x000F423F
 	ldr r3, [r2]
 	cmp r0, r1
 	ldr r2, [r3]
 	movgt r0, r1
 	orr r2, r2, #0x800
-	ldr r1, _0204FF64 ; =_020AFF78
+	ldr r1, _0204FF64 ; =ADVENTURE_LOG_PTR
 	str r2, [r3]
 	ldr r1, [r1]
 	str r0, [r1, #0x3c]
 	bx lr
 	.align 2, 0
-_0204FF64: .word _020AFF78
+_0204FF64: .word ADVENTURE_LOG_PTR
 _0204FF68: .word 0x000F423F
 	arm_func_end SetNbRecycled
 
 	arm_func_start GetNbRecycled
 GetNbRecycled: ; 0x0204FF6C
-	ldr r0, _0204FF7C ; =_020AFF78
+	ldr r0, _0204FF7C ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
 	bx lr
 	.align 2, 0
-_0204FF7C: .word _020AFF78
+_0204FF7C: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbRecycled
 
 	arm_func_start IncrementNbSkyGiftsSent
 IncrementNbSkyGiftsSent: ; 0x0204FF80
-	ldr r0, _0204FF98 ; =_020AFF78
+	ldr r0, _0204FF98 ; =ADVENTURE_LOG_PTR
 	ldr ip, _0204FF9C ; =SetNbSkyGiftsSent
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
 	add r0, r0, #1
 	bx ip
 	.align 2, 0
-_0204FF98: .word _020AFF78
+_0204FF98: .word ADVENTURE_LOG_PTR
 _0204FF9C: .word SetNbSkyGiftsSent
 	arm_func_end IncrementNbSkyGiftsSent
 
 	arm_func_start SetNbSkyGiftsSent
 SetNbSkyGiftsSent: ; 0x0204FFA0
-	ldr r2, _0204FFD0 ; =_020AFF78
+	ldr r2, _0204FFD0 ; =ADVENTURE_LOG_PTR
 	ldr r1, _0204FFD4 ; =0x000F423F
 	ldr r3, [r2]
 	cmp r0, r1
 	ldr r2, [r3]
 	movgt r0, r1
 	orr r2, r2, #0x1000
-	ldr r1, _0204FFD0 ; =_020AFF78
+	ldr r1, _0204FFD0 ; =ADVENTURE_LOG_PTR
 	str r2, [r3]
 	ldr r1, [r1]
 	str r0, [r1, #0x40]
 	bx lr
 	.align 2, 0
-_0204FFD0: .word _020AFF78
+_0204FFD0: .word ADVENTURE_LOG_PTR
 _0204FFD4: .word 0x000F423F
 	arm_func_end SetNbSkyGiftsSent
 
 	arm_func_start GetNbSkyGiftsSent
 GetNbSkyGiftsSent: ; 0x0204FFD8
-	ldr r0, _0204FFE8 ; =_020AFF78
+	ldr r0, _0204FFE8 ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
 	bx lr
 	.align 2, 0
-_0204FFE8: .word _020AFF78
+_0204FFE8: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbSkyGiftsSent
 
 	arm_func_start ComputeSpecialCounters
@@ -82831,7 +82831,7 @@ ComputeSpecialCounters: ; 0x0204FFEC
 _0204FFF8:
 	mov r0, #0x44
 	mul sl, r8, r0
-	ldr r0, _0205022C ; =_020B0A48
+	ldr r0, _0205022C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, sl]
 	tst r0, #1
@@ -82841,8 +82841,8 @@ _0204FFF8:
 	beq _0205009C
 	mov sb, #0
 	mov r7, #1
-	ldr r3, _02050230 ; =_020AFF78
-	ldr ip, _0205022C ; =_020B0A48
+	ldr r3, _02050230 ; =ADVENTURE_LOG_PTR
+	ldr ip, _0205022C ; =TEAM_MEMBER_TABLE_PTR
 	mov fp, sb
 	mov lr, r7
 	mov r2, #6
@@ -82887,7 +82887,7 @@ _020500B4:
 	cmp r6, r5
 	blt _020500B4
 	mov r7, #0
-	ldr r5, _02050230 ; =_020AFF78
+	ldr r5, _02050230 ; =ADVENTURE_LOG_PTR
 	ldr sb, _02050238 ; =0x0000021F
 	mov r8, r7
 	mov r6, #1
@@ -82914,7 +82914,7 @@ _02050120:
 	blt _020500E0
 	cmp r7, #0
 	ble _02050150
-	ldr r0, _02050230 ; =_020AFF78
+	ldr r0, _02050230 ; =ADVENTURE_LOG_PTR
 	ldr r1, [r0]
 	str r7, [r1, #0x34]
 	ldr r1, [r0]
@@ -82923,7 +82923,7 @@ _02050120:
 	str r0, [r1]
 _02050150:
 	mov sb, #1
-	ldr r5, _02050230 ; =_020AFF78
+	ldr r5, _02050230 ; =ADVENTURE_LOG_PTR
 	ldr sl, _0205023C ; =0x00000483
 	mov r8, #0
 	mov r6, sb
@@ -82952,7 +82952,7 @@ _020501B4:
 	add sb, sb, #1
 	cmp sb, sl
 	blt _02050164
-	ldr r0, _02050230 ; =_020AFF78
+	ldr r0, _02050230 ; =ADVENTURE_LOG_PTR
 	mov r2, #1
 	ldr r1, [r0]
 	ldr r3, _02050240 ; =0x000001ED
@@ -82975,14 +82975,14 @@ _020501D4:
 	addne r4, r4, #1
 	cmp r2, r3
 	blt _020501D4
-	ldr r0, _02050230 ; =_020AFF78
+	ldr r0, _02050230 ; =ADVENTURE_LOG_PTR
 	str r8, [r1, #0x2c]
 	ldr r0, [r0]
 	str r4, [r0, #0x30]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0205022C: .word _020B0A48
-_02050230: .word _020AFF78
+_0205022C: .word TEAM_MEMBER_TABLE_PTR
+_02050230: .word ADVENTURE_LOG_PTR
 _02050234: .word 0x0000022B
 _02050238: .word 0x0000021F
 _0205023C: .word 0x00000483
@@ -82995,7 +82995,7 @@ RecruitSpecialPokemonLog: ; 0x02050244
 	cmp r0, #0x258
 	subge r0, r0, #0x258
 	movge r0, r0, lsl #0x10
-	ldr r2, _020502AC ; =_0209E670
+	ldr r2, _020502AC ; =ADVENTURE_LOG_ENCOUNTERS_MONSTER_IDS
 	mov r3, #0
 	movge r0, r0, asr #0x10
 _02050260:
@@ -83022,37 +83022,37 @@ _0205029C:
 	bl SetAdventureLogCompleted
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020502AC: .word _0209E670
+_020502AC: .word ADVENTURE_LOG_ENCOUNTERS_MONSTER_IDS
 	arm_func_end RecruitSpecialPokemonLog
 
 	arm_func_start IncrementNbFainted
 IncrementNbFainted: ; 0x020502B0
-	ldr r1, _020502E4 ; =_020AFF78
+	ldr r1, _020502E4 ; =ADVENTURE_LOG_PTR
 	ldr r0, _020502E8 ; =0x000F423F
 	ldr r2, [r1]
 	ldr r1, [r2, #0x24]
 	cmp r1, r0
 	addlt r0, r1, #1
 	strlt r0, [r2, #0x24]
-	ldr r0, _020502E4 ; =_020AFF78
+	ldr r0, _020502E4 ; =ADVENTURE_LOG_PTR
 	ldr r1, [r0]
 	ldr r0, [r1]
 	orr r0, r0, #0x20
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_020502E4: .word _020AFF78
+_020502E4: .word ADVENTURE_LOG_PTR
 _020502E8: .word 0x000F423F
 	arm_func_end IncrementNbFainted
 
 	arm_func_start GetNbFainted
 GetNbFainted: ; 0x020502EC
-	ldr r0, _020502FC ; =_020AFF78
+	ldr r0, _020502FC ; =ADVENTURE_LOG_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x24]
 	bx lr
 	.align 2, 0
-_020502FC: .word _020AFF78
+_020502FC: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbFainted
 
 	arm_func_start SetItemAcquired
@@ -83093,7 +83093,7 @@ _0205036C:
 	mov r1, #1
 	bl sub_0204CB2C
 _02050380:
-	ldr r3, _020503C8 ; =_020AFF78
+	ldr r3, _020503C8 ; =ADVENTURE_LOG_PTR
 	mov r0, r4, asr #4
 	ldr ip, [r3]
 	add r0, r4, r0, lsr #27
@@ -83112,13 +83112,13 @@ _02050380:
 	str r0, [r1]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020503C8: .word _020AFF78
+_020503C8: .word ADVENTURE_LOG_PTR
 	arm_func_end SetItemAcquired
 
 	arm_func_start GetNbItemAcquired
 GetNbItemAcquired: ; 0x020503CC
 	stmdb sp!, {r4, lr}
-	ldr r1, _0205041C ; =_020AFF78
+	ldr r1, _0205041C ; =ADVENTURE_LOG_PTR
 	mov r0, #0
 	ldr r4, [r1]
 	mov lr, r0
@@ -83139,13 +83139,13 @@ _020503E4:
 	blt _020503E4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0205041C: .word _020AFF78
+_0205041C: .word ADVENTURE_LOG_PTR
 	arm_func_end GetNbItemAcquired
 
 	arm_func_start SetChallengeLetterCleared
 SetChallengeLetterCleared: ; 0x02050420
 	stmdb sp!, {r4, lr}
-	ldr r3, _020504A0 ; =_020AFF78
+	ldr r3, _020504A0 ; =ADVENTURE_LOG_PTR
 	mov r2, r0, lsr #0x1f
 	ldr ip, [r3]
 	rsb r1, r2, r0, lsl #27
@@ -83179,24 +83179,24 @@ _02050488:
 	str r0, [r4, #4]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020504A0: .word _020AFF78
+_020504A0: .word ADVENTURE_LOG_PTR
 	arm_func_end SetChallengeLetterCleared
 
 	arm_func_start GetSentryDutyGamePoints
 GetSentryDutyGamePoints: ; 0x020504A4
-	ldr r1, _020504B8 ; =_020AFF78
+	ldr r1, _020504B8 ; =ADVENTURE_LOG_PTR
 	ldr r1, [r1]
 	add r0, r1, r0, lsl #2
 	ldr r0, [r0, #0x264]
 	bx lr
 	.align 2, 0
-_020504B8: .word _020AFF78
+_020504B8: .word ADVENTURE_LOG_PTR
 	arm_func_end GetSentryDutyGamePoints
 
 	arm_func_start SetSentryDutyGamePoints
 SetSentryDutyGamePoints: ; 0x020504BC
 	stmdb sp!, {r3, lr}
-	ldr r1, _02050548 ; =_020AFF78
+	ldr r1, _02050548 ; =ADVENTURE_LOG_PTR
 	mov lr, #0
 	ldr r2, [r1]
 	b _020504EC
@@ -83216,7 +83216,7 @@ _020504F4:
 	mvnge r0, #0
 	ldmgeia sp!, {r3, pc}
 	mov ip, #4
-	ldr r2, _02050548 ; =_020AFF78
+	ldr r2, _02050548 ; =ADVENTURE_LOG_PTR
 	b _02050528
 _0205050C:
 	ldr r3, [r2]
@@ -83229,14 +83229,14 @@ _0205050C:
 _02050528:
 	cmp ip, lr
 	bgt _0205050C
-	ldr r1, _02050548 ; =_020AFF78
+	ldr r1, _02050548 ; =ADVENTURE_LOG_PTR
 	ldr r1, [r1]
 	add r1, r1, lr, lsl #2
 	str r0, [r1, #0x264]
 	mov r0, lr
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02050548: .word _020AFF78
+_02050548: .word ADVENTURE_LOG_PTR
 	arm_func_end SetSentryDutyGamePoints
 
 	arm_func_start CopyLogTo
@@ -83244,253 +83244,253 @@ CopyLogTo: ; 0x0205054C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl ComputeSpecialCounters
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x14
 	add r1, r1, #0x10
 	bl CopyBitsTo
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x14
 	add r1, r1, #0x14
 	bl CopyBitsTo
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x14
 	add r1, r1, #0x18
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x80
 	ldr r1, [r1]
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0xe
 	ldr r1, [r1]
 	add r1, r1, #0x2c
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0xe
 	ldr r1, [r1]
 	add r1, r1, #0x30
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #9
 	ldr r1, [r1]
 	add r1, r1, #0x34
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x28
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x24
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x1c
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x38
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x3c
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x40
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x4a0
 	ldr r1, [r1]
 	add r1, r1, #0x44
 	bl CopyBitsTo
 	mov r0, r4
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x4a0
 	ldr r1, [r1]
 	add r1, r1, #0xd8
 	bl CopyBitsTo
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x220
 	add r1, r1, #0x16c
 	bl CopyBitsTo
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x580
 	add r1, r1, #0x1b0
 	bl CopyBitsTo
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x20
 	add r1, r1, #0x260
 	bl CopyBitsTo
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0xa0
 	add r1, r1, #0x264
 	bl CopyBitsTo
-	ldr r1, _02050734 ; =_020AFF78
+	ldr r1, _02050734 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x278
 	bl sub_020515C4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02050734: .word _020AFF78
+_02050734: .word ADVENTURE_LOG_PTR
 	arm_func_end CopyLogTo
 
 	arm_func_start CopyLogFrom
 CopyLogFrom: ; 0x02050738
 	stmdb sp!, {r4, lr}
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	mov r4, r0
 	add r1, r1, #0x10
 	bl CopyBitsFrom
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x14
 	add r1, r1, #0x14
 	bl CopyBitsFrom
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x14
 	add r1, r1, #0x18
 	bl CopyBitsFrom
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x80
 	bl CopyBitsFrom
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0xe
 	add r1, r1, #0x2c
 	bl CopyBitsFrom
 	mov r0, r4
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #0xe
 	ldr r1, [r1]
 	add r1, r1, #0x30
 	bl CopyBitsFrom
 	mov r0, r4
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #9
 	ldr r1, [r1]
 	add r1, r1, #0x34
 	bl CopyBitsFrom
 	mov r0, r4
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x28
 	bl CopyBitsFrom
 	mov r0, r4
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x24
 	bl CopyBitsFrom
 	mov r0, r4
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x1c
 	bl CopyBitsFrom
 	mov r0, r4
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x38
 	bl CopyBitsFrom
 	mov r0, r4
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x3c
 	bl CopyBitsFrom
 	mov r0, r4
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x14
 	ldr r1, [r1]
 	add r1, r1, #0x40
 	bl CopyBitsFrom
 	mov r0, r4
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x4a0
 	ldr r1, [r1]
 	add r1, r1, #0x44
 	bl CopyBitsFrom
 	mov r0, r4
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r2, #0x4a0
 	ldr r1, [r1]
 	add r1, r1, #0xd8
 	bl CopyBitsFrom
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x220
 	add r1, r1, #0x16c
 	bl CopyBitsFrom
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x580
 	add r1, r1, #0x1b0
 	bl CopyBitsFrom
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x20
 	add r1, r1, #0x260
 	bl CopyBitsFrom
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0xa0
 	add r1, r1, #0x264
 	bl CopyBitsFrom
-	ldr r1, _02050918 ; =_020AFF78
+	ldr r1, _02050918 ; =ADVENTURE_LOG_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x278
 	bl Copy16BitsFrom
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02050918: .word _020AFF78
+_02050918: .word ADVENTURE_LOG_PTR
 	arm_func_end CopyLogFrom
 
 	arm_func_start GetAbilityString
@@ -83858,7 +83858,7 @@ sub_02050CF8: ; 0x02050CF8
 	ldr r1, _02050D78 ; =_022AB918
 	tst r0, #0xff
 	strb r0, [r1, #0x10]
-	ldrne r1, _02050D7C ; =_0209E6BC
+	ldrne r1, _02050D7C ; =ARM9_UNKNOWN_DATA__NA_209E6BC
 	add r0, sp, #0
 	ldreq r1, _02050D80 ; =_0209E6BD
 	mov r2, #1
@@ -83872,7 +83872,7 @@ sub_02050CF8: ; 0x02050CF8
 _02050D70: .word _022AB918
 _02050D74: .word _022AB924
 _02050D78: .word _022AB918
-_02050D7C: .word _0209E6BC
+_02050D7C: .word ARM9_UNKNOWN_DATA__NA_209E6BC
 _02050D80: .word _0209E6BD
 	arm_func_end sub_02050CF8
 
@@ -84279,7 +84279,7 @@ _02051284: .word 0xEFC60000
 DungeonGoesUp: ; 0x02051288
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _020512AC ; =_020A0C64
+	ldr r0, _020512AC ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #1
 	movne r0, #1
@@ -84287,7 +84287,7 @@ DungeonGoesUp: ; 0x02051288
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_020512AC: .word _020A0C64
+_020512AC: .word DUNGEON_RESTRICTIONS
 	arm_func_end DungeonGoesUp
 
 	arm_func_start GetTurnLimit
@@ -84305,7 +84305,7 @@ _020512C4: .word _020A0C6C
 DoesNotSaveWhenEntering: ; 0x020512C8
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _020512EC ; =_020A0C64
+	ldr r0, _020512EC ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #0x80
 	movne r0, #1
@@ -84313,14 +84313,14 @@ DoesNotSaveWhenEntering: ; 0x020512C8
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_020512EC: .word _020A0C64
+_020512EC: .word DUNGEON_RESTRICTIONS
 	arm_func_end DoesNotSaveWhenEntering
 
 	arm_func_start TreasureBoxDropsEnabled
 TreasureBoxDropsEnabled: ; 0x020512F0
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _02051314 ; =_020A0C64
+	ldr r0, _02051314 ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #0x400
 	movne r0, #1
@@ -84328,14 +84328,14 @@ TreasureBoxDropsEnabled: ; 0x020512F0
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_02051314: .word _020A0C64
+_02051314: .word DUNGEON_RESTRICTIONS
 	arm_func_end TreasureBoxDropsEnabled
 
 	arm_func_start IsLevelResetDungeon
 IsLevelResetDungeon: ; 0x02051318
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _0205133C ; =_020A0C64
+	ldr r0, _0205133C ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #0x10
 	movne r0, #1
@@ -84343,7 +84343,7 @@ IsLevelResetDungeon: ; 0x02051318
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0205133C: .word _020A0C64
+_0205133C: .word DUNGEON_RESTRICTIONS
 	arm_func_end IsLevelResetDungeon
 
 	arm_func_start GetMaxItemsAllowed
@@ -84361,7 +84361,7 @@ _02051354: .word _020A0C69
 IsMoneyAllowed: ; 0x02051358
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _0205137C ; =_020A0C64
+	ldr r0, _0205137C ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #0x20
 	movne r0, #1
@@ -84369,7 +84369,7 @@ IsMoneyAllowed: ; 0x02051358
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0205137C: .word _020A0C64
+_0205137C: .word DUNGEON_RESTRICTIONS
 	arm_func_end IsMoneyAllowed
 
 	arm_func_start GetMaxRescueAttempts
@@ -84387,7 +84387,7 @@ _02051394: .word _020A0C68
 IsRecruitingAllowed: ; 0x02051398
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _020513BC ; =_020A0C64
+	ldr r0, _020513BC ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #8
 	movne r0, #1
@@ -84395,14 +84395,14 @@ IsRecruitingAllowed: ; 0x02051398
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_020513BC: .word _020A0C64
+_020513BC: .word DUNGEON_RESTRICTIONS
 	arm_func_end IsRecruitingAllowed
 
 	arm_func_start GetLeaderChangeFlag
 GetLeaderChangeFlag: ; 0x020513C0
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _020513E4 ; =_020A0C64
+	ldr r0, _020513E4 ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #0x40
 	movne r0, #1
@@ -84410,7 +84410,7 @@ GetLeaderChangeFlag: ; 0x020513C0
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_020513E4: .word _020A0C64
+_020513E4: .word DUNGEON_RESTRICTIONS
 	arm_func_end GetLeaderChangeFlag
 
 	arm_func_start GetRandomMovementChance
@@ -84428,7 +84428,7 @@ _020513FC: .word _020A0C6E
 CanEnemyEvolve: ; 0x02051400
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _02051424 ; =_020A0C64
+	ldr r0, _02051424 ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #2
 	movne r0, #1
@@ -84436,7 +84436,7 @@ CanEnemyEvolve: ; 0x02051400
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_02051424: .word _020A0C64
+_02051424: .word DUNGEON_RESTRICTIONS
 	arm_func_end CanEnemyEvolve
 
 	arm_func_start GetMaxMembersAllowed
@@ -84454,7 +84454,7 @@ _0205143C: .word _020A0C6A
 IsIqEnabled: ; 0x02051440
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _02051464 ; =_020A0C64
+	ldr r0, _02051464 ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #0x100
 	movne r0, #1
@@ -84462,14 +84462,14 @@ IsIqEnabled: ; 0x02051440
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_02051464: .word _020A0C64
+_02051464: .word DUNGEON_RESTRICTIONS
 	arm_func_end IsIqEnabled
 
 	arm_func_start IsTrapInvisibleWhenAttacking
 IsTrapInvisibleWhenAttacking: ; 0x02051468
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _0205148C ; =_020A0C64
+	ldr r0, _0205148C ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #0x200
 	movne r0, #1
@@ -84477,7 +84477,7 @@ IsTrapInvisibleWhenAttacking: ; 0x02051468
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0205148C: .word _020A0C64
+_0205148C: .word DUNGEON_RESTRICTIONS
 	arm_func_end IsTrapInvisibleWhenAttacking
 
 	arm_func_start JoinedAtRangeCheck
@@ -84568,7 +84568,7 @@ IsForbiddenFloor: ; 0x02051568
 	bl DungeonFloorToGroupFloor
 	ldrb ip, [sp]
 	ldrb lr, [sp, #1]
-	ldr r1, _020515C0 ; =_0209F714
+	ldr r1, _020515C0 ; =MISSION_FLOORS_FORBIDDEN
 	mov r3, #0
 _02051588:
 	ldrb r0, [r1, r3, lsl #1]
@@ -84587,7 +84587,7 @@ _020515B8:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020515C0: .word _0209F714
+_020515C0: .word MISSION_FLOORS_FORBIDDEN
 	arm_func_end IsForbiddenFloor
 
 	arm_func_start sub_020515C4
@@ -84708,7 +84708,7 @@ _02051718: .word _020A1864
 IsExpEnabledInDungeon: ; 0x0205171C
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _02051740 ; =_020A0C64
+	ldr r0, _02051740 ; =DUNGEON_RESTRICTIONS
 	ldr r0, [r0, r1]
 	tst r0, #4
 	movne r0, #1
@@ -84716,7 +84716,7 @@ IsExpEnabledInDungeon: ; 0x0205171C
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_02051740: .word _020A0C64
+_02051740: .word DUNGEON_RESTRICTIONS
 	arm_func_end IsExpEnabledInDungeon
 
 	arm_func_start IsSkyExclusiveDungeon
@@ -84759,7 +84759,7 @@ _02051794: .word _020A20B1
 	arm_func_start sub_02051798
 sub_02051798: ; 0x02051798
 	mov ip, #0
-	ldr r2, _020517D0 ; =_020A20B0
+	ldr r2, _020517D0 ; =ARM9_UNKNOWN_TABLE__NA_20A20B0
 	b _020517C0
 _020517A4:
 	add r1, r2, ip, lsl #1
@@ -84775,34 +84775,34 @@ _020517C0:
 	mov r0, #0xff
 	bx lr
 	.align 2, 0
-_020517D0: .word _020A20B0
+_020517D0: .word ARM9_UNKNOWN_TABLE__NA_20A20B0
 	arm_func_end sub_02051798
 
 	arm_func_start GetBagCapacity
 GetBagCapacity: ; 0x020517D4
-	ldr r1, _020517E0 ; =_020A27D4
+	ldr r1, _020517E0 ; =BAG_CAPACITY_TABLE
 	ldr r0, [r1, r0, lsl #2]
 	bx lr
 	.align 2, 0
-_020517E0: .word _020A27D4
+_020517E0: .word BAG_CAPACITY_TABLE
 	arm_func_end GetBagCapacity
 
 	arm_func_start GetBagCapacitySpecialEpisode
 GetBagCapacitySpecialEpisode: ; 0x020517E4
-	ldr r1, _020517F0 ; =_020A27C0
+	ldr r1, _020517F0 ; =BAG_CAPACITY_TABLE_SPECIAL_EPISODES
 	ldr r0, [r1, r0, lsl #2]
 	bx lr
 	.align 2, 0
-_020517F0: .word _020A27C0
+_020517F0: .word BAG_CAPACITY_TABLE_SPECIAL_EPISODES
 	arm_func_end GetBagCapacitySpecialEpisode
 
 	arm_func_start GetRankUpEntry
 GetRankUpEntry: ; 0x020517F4
-	ldr r1, _02051800 ; =_020A2B44
+	ldr r1, _02051800 ; =RANK_UP_TABLE
 	add r0, r1, r0, lsl #4
 	bx lr
 	.align 2, 0
-_02051800: .word _020A2B44
+_02051800: .word RANK_UP_TABLE
 	arm_func_end GetRankUpEntry
 
 	arm_func_start sub_02051804
@@ -85547,7 +85547,7 @@ _020521CC:
 	mov r1, r7
 	bl sub_02051E60
 	ldr r0, [sp, #0x28]
-	ldr r3, _020522EC ; =_020A2C84
+	ldr r3, _020522EC ; =ARM9_UNKNOWN_PTR__NA_20A2C84
 	ldr r0, [r0]
 	add r2, sp, #0x1c
 	add r5, r4, r0
@@ -85619,7 +85619,7 @@ _020522C8:
 	.align 2, 0
 _020522E4: .word _020B09B0
 _020522E8: .word 0x00000FFF
-_020522EC: .word _020A2C84
+_020522EC: .word ARM9_UNKNOWN_PTR__NA_20A2C84
 	arm_func_end sub_02052060
 
 	arm_func_start sub_020522F0
@@ -85881,7 +85881,7 @@ GetSpeciesString: ; 0x02052500
 _02052660:
 	ldr r0, _020526B8 ; =0x000022E8
 	bl StringFromMessageId
-	ldr r1, _020526BC ; =_020B09D8
+	ldr r1, _020526BC ; =UNOWN_SPECIES_ADDITIONAL_CHAR_PTR_TABLE
 	mov r2, r0
 	ldr r3, [r1, r4, lsl #2]
 	ldr r1, _020526C0 ; =_020A31F4
@@ -85904,7 +85904,7 @@ _02052684:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020526B8: .word 0x000022E8
-_020526BC: .word _020B09D8
+_020526BC: .word UNOWN_SPECIES_ADDITIONAL_CHAR_PTR_TABLE
 _020526C0: .word _020A31F4
 _020526C4: .word _020A31FC
 	arm_func_end GetSpeciesString
@@ -86024,7 +86024,7 @@ GetSpriteSize: ; 0x020527E0
 	mov r1, #0x258
 	bl __divsi3
 	mov r0, r1, lsl #0x10
-	ldr r2, _02052818 ; =_020A2D08
+	ldr r2, _02052818 ; =MONSTER_SPRITE_DATA
 	mov r0, r0, asr #0x10
 	ldrb r0, [r2, r0, lsl #1]
 	cmp r0, #0
@@ -86035,7 +86035,7 @@ GetSpriteSize: ; 0x020527E0
 	ldrhib r0, [r2, r1, lsl #1]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02052818: .word _020A2D08
+_02052818: .word MONSTER_SPRITE_DATA
 	arm_func_end GetSpriteSize
 
 	arm_func_start GetSpriteFileSize
@@ -86449,7 +86449,7 @@ _02052C38: .word _020A322C
 sub_02052C3C: ; 0x02052C3C
 	stmdb sp!, {r3, lr}
 	ldr r1, _02052C68 ; =_022ABDE0
-	ldr r0, _02052C6C ; =_020B0A48
+	ldr r0, _02052C6C ; =TEAM_MEMBER_TABLE_PTR
 	str r1, [r0]
 	bl LoadMonsterMd
 	ldr r0, _02052C70 ; =_022AB92C
@@ -86460,7 +86460,7 @@ sub_02052C3C: ; 0x02052C3C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02052C68: .word _022ABDE0
-_02052C6C: .word _020B0A48
+_02052C6C: .word TEAM_MEMBER_TABLE_PTR
 _02052C70: .word _022AB92C
 	arm_func_end sub_02052C3C
 
@@ -86469,7 +86469,7 @@ sub_02052C74: ; 0x02052C74
 	stmdb sp!, {r3, lr}
 	bl sub_020550E0
 	bl sub_020560C8
-	ldr r2, _02052CD4 ; =_020B0A48
+	ldr r2, _02052CD4 ; =TEAM_MEMBER_TABLE_PTR
 	mov lr, #0
 	ldr r0, [r2]
 	mov r3, lr
@@ -86492,7 +86492,7 @@ _02052CA0:
 	blt _02052CA0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02052CD4: .word _020B0A48
+_02052CD4: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02052C74
 
 	arm_func_start sub_02052CD8
@@ -86736,7 +86736,7 @@ StrcmpMonsterName: ; 0x02052FB0
 	arm_func_start sub_02052FF8
 sub_02052FF8: ; 0x02052FF8
 	stmdb sp!, {r3, lr}
-	ldr r2, _02053034 ; =_020B0A48
+	ldr r2, _02053034 ; =TEAM_MEMBER_TABLE_PTR
 	mov r3, #0x44
 	ldr ip, [r2]
 	mov r2, #0xa
@@ -86751,7 +86751,7 @@ sub_02052FF8: ; 0x02052FF8
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02053034: .word _020B0A48
+_02053034: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02052FF8
 
 	arm_func_start sub_02053038
@@ -86811,7 +86811,7 @@ sub_020530D4: ; 0x020530D4
 	mov r4, r0
 	ldrb r5, [r4]
 	mov r0, #0x44
-	ldr ip, _02053170 ; =_020B0A48
+	ldr ip, _02053170 ; =TEAM_MEMBER_TABLE_PTR
 	tst r5, #1
 	smulbb r6, r1, r0
 	movne r0, #1
@@ -86848,7 +86848,7 @@ _02053168:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02053170: .word _020B0A48
+_02053170: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020530D4
 
 	arm_func_start sub_02053174
@@ -86858,7 +86858,7 @@ sub_02053174: ; 0x02053174
 	mov r5, r0
 	ldrb r6, [r5]
 	mov r0, #0x44
-	ldr r4, _02053220 ; =_020B0A48
+	ldr r4, _02053220 ; =TEAM_MEMBER_TABLE_PTR
 	tst r6, #1
 	smulbb r8, r1, r0
 	movne r0, #1
@@ -86899,13 +86899,13 @@ _02053218:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02053220: .word _020B0A48
+_02053220: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02053174
 
 	arm_func_start sub_02053224
 sub_02053224: ; 0x02053224
 	stmdb sp!, {r3, lr}
-	ldr r3, _0205324C ; =_020B0A48
+	ldr r3, _0205324C ; =TEAM_MEMBER_TABLE_PTR
 	mov ip, r1
 	ldr r3, [r3]
 	mov r1, #0x44
@@ -86915,7 +86915,7 @@ sub_02053224: ; 0x02053224
 	bl sub_02053250
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0205324C: .word _020B0A48
+_0205324C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02053224
 
 	arm_func_start sub_02053250
@@ -87077,14 +87077,14 @@ _020533FC:
 
 	arm_func_start sub_0205349C
 sub_0205349C: ; 0x0205349C
-	ldr r3, _020534B4 ; =_020B0A48
+	ldr r3, _020534B4 ; =TEAM_MEMBER_TABLE_PTR
 	ldr ip, _020534B8 ; =sub_020534BC
 	ldr r3, [r3]
 	mov r2, #0x44
 	smlabb r0, r0, r2, r3
 	bx ip
 	.align 2, 0
-_020534B4: .word _020B0A48
+_020534B4: .word TEAM_MEMBER_TABLE_PTR
 _020534B8: .word sub_020534BC
 	arm_func_end sub_0205349C
 
@@ -87697,7 +87697,7 @@ _02053C98:
 sub_02053CA0: ; 0x02053CA0
 	stmdb sp!, {r4, lr}
 	mov r4, #0
-	ldr lr, _02053D18 ; =_020A1918
+	ldr lr, _02053D18 ; =FORBIDDEN_FORGOT_MOVE_LIST
 	b _02053CFC
 _02053CB0:
 	cmp ip, r2
@@ -87732,7 +87732,7 @@ _02053D08:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02053D18: .word _020A1918
+_02053D18: .word FORBIDDEN_FORGOT_MOVE_LIST
 	arm_func_end sub_02053CA0
 
 	arm_func_start sub_02053D1C
@@ -87948,7 +87948,7 @@ ShuffleHiddenPower: ; 0x02053FC8
 	mov r6, r0
 	mov r0, #0xa
 	bl RandIntSafe
-	ldr r1, _02054020 ; =_020A19D8
+	ldr r1, _02054020 ; =HIDDEN_POWER_BASE_POWER_TABLE
 	mov r5, #0
 	ldr r0, [r1, r0, lsl #2]
 	mov r4, #0x12
@@ -87970,7 +87970,7 @@ _02054010:
 	streqb r0, [r6, #2]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02054020: .word _020A19D8
+_02054020: .word HIDDEN_POWER_BASE_POWER_TABLE
 	arm_func_end ShuffleHiddenPower
 
 	arm_func_start GetBaseForm
@@ -88612,7 +88612,7 @@ _02054860:
 	str r6, [r1, #4]
 	cmp r3, #0xa
 	blt _02054860
-	ldr fp, _02054A50 ; =_020B0A48
+	ldr fp, _02054A50 ; =TEAM_MEMBER_TABLE_PTR
 	mov r7, r6
 	add r5, sp, #0x80
 	mov r4, #1
@@ -88736,7 +88736,7 @@ _02054A48:
 	add sp, sp, #0xd0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02054A50: .word _020B0A48
+_02054A50: .word TEAM_MEMBER_TABLE_PTR
 _02054A54: .word 0x0000022B
 _02054A58: .word _020A32F8
 _02054A5C: .word _020A3330
@@ -89277,7 +89277,7 @@ sub_020550DC: ; 0x020550DC
 
 	arm_func_start sub_020550E0
 sub_020550E0: ; 0x020550E0
-	ldr r0, _0205510C ; =_020B0A48
+	ldr r0, _0205510C ; =TEAM_MEMBER_TABLE_PTR
 	mov r3, #0
 	ldr r2, [r0]
 	ldr r0, _02055110 ; =0x0000022B
@@ -89290,14 +89290,14 @@ _020550F4:
 	ldr ip, _02055114 ; =sub_0205523C
 	bx ip
 	.align 2, 0
-_0205510C: .word _020B0A48
+_0205510C: .word TEAM_MEMBER_TABLE_PTR
 _02055110: .word 0x0000022B
 _02055114: .word sub_0205523C
 	arm_func_end sub_020550E0
 
 	arm_func_start sub_02055118
 sub_02055118: ; 0x02055118
-	ldr r0, _02055140 ; =_020B0A48
+	ldr r0, _02055140 ; =TEAM_MEMBER_TABLE_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	ldr ip, _02055144 ; =sub_0205523C
@@ -89308,7 +89308,7 @@ sub_02055118: ; 0x02055118
 	strb r2, [r0, #0x110]
 	bx ip
 	.align 2, 0
-_02055140: .word _020B0A48
+_02055140: .word TEAM_MEMBER_TABLE_PTR
 _02055144: .word sub_0205523C
 	arm_func_end sub_02055118
 
@@ -89320,7 +89320,7 @@ IsMonsterOnTeam: ; 0x02055148
 	bl GetGameMode
 	cmp r0, #3
 	bne _020551C0
-	ldr r0, _02055230 ; =_020B0A48
+	ldr r0, _02055230 ; =TEAM_MEMBER_TABLE_PTR
 	mov r8, #0
 	ldr r7, [r0]
 	mov r5, r8
@@ -89348,7 +89348,7 @@ _020551B8:
 	cmp r8, #2
 	blt _0205517C
 _020551C0:
-	ldr r0, _02055230 ; =_020B0A48
+	ldr r0, _02055230 ; =TEAM_MEMBER_TABLE_PTR
 	mov r8, #5
 	ldr r0, [r0]
 	mov fp, #0
@@ -89380,7 +89380,7 @@ _02055220:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02055230: .word _020B0A48
+_02055230: .word TEAM_MEMBER_TABLE_PTR
 _02055234: .word _020B0A4C
 _02055238: .word 0x0000022B
 	arm_func_end IsMonsterOnTeam
@@ -89414,7 +89414,7 @@ GetNbRecruited: ; 0x02055274
 	cmp r0, #3
 	mov r3, #1
 	bne _020552E0
-	ldr r0, _02055388 ; =_020B0A48
+	ldr r0, _02055388 ; =TEAM_MEMBER_TABLE_PTR
 	mov lr, #0
 	ldr ip, [r0]
 	mov r2, lr
@@ -89435,7 +89435,7 @@ _020552A4:
 	blt _020552A4
 	b _0205532C
 _020552E0:
-	ldr r0, _02055388 ; =_020B0A48
+	ldr r0, _02055388 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, #2
 	ldr r0, [r0]
 	mov r2, #0
@@ -89456,7 +89456,7 @@ _020552F4:
 	cmp r5, #5
 	blt _020552F4
 _0205532C:
-	ldr r0, _02055388 ; =_020B0A48
+	ldr r0, _02055388 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, #5
 	ldr r0, [r0]
 	mov r3, #0
@@ -89481,14 +89481,14 @@ _02055348:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02055384: .word 0x00000906
-_02055388: .word _020B0A48
+_02055388: .word TEAM_MEMBER_TABLE_PTR
 _0205538C: .word 0x0000022B
 	arm_func_end GetNbRecruited
 
 	arm_func_start IsValidTeamMember
 IsValidTeamMember: ; 0x02055390
 	stmdb sp!, {r4, lr}
-	ldr r1, _0205540C ; =_020B0A48
+	ldr r1, _0205540C ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, r0
 	mov r0, #0x44
 	smulbb r0, r4, r0
@@ -89522,13 +89522,13 @@ _02055404:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0205540C: .word _020B0A48
+_0205540C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end IsValidTeamMember
 
 	arm_func_start sub_02055410
 sub_02055410: ; 0x02055410
 	stmdb sp!, {r4, lr}
-	ldr r1, _02055470 ; =_020B0A48
+	ldr r1, _02055470 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, r0
 	mov r0, #0x44
 	smulbb r0, r4, r0
@@ -89554,13 +89554,13 @@ _02055468:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02055470: .word _020B0A48
+_02055470: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02055410
 
 	arm_func_start sub_02055474
 sub_02055474: ; 0x02055474
 	stmdb sp!, {r4, lr}
-	ldr r1, _020554D4 ; =_020B0A48
+	ldr r1, _020554D4 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, r0
 	mov r0, #0x44
 	smulbb r0, r4, r0
@@ -89586,13 +89586,13 @@ _020554CC:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020554D4: .word _020B0A48
+_020554D4: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02055474
 
 	arm_func_start sub_020554D8
 sub_020554D8: ; 0x020554D8
 	stmdb sp!, {r4, lr}
-	ldr r1, _02055524 ; =_020B0A48
+	ldr r1, _02055524 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, r0
 	mov r0, #0x44
 	smulbb r0, r4, r0
@@ -89612,13 +89612,13 @@ _0205551C:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02055524: .word _020B0A48
+_02055524: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020554D8
 
 	arm_func_start IsMainCharacter
 IsMainCharacter: ; 0x02055528
 	stmdb sp!, {r4, lr}
-	ldr r1, _020555A4 ; =_020B0A48
+	ldr r1, _020555A4 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, r0
 	mov r0, #0x44
 	smulbb r0, r4, r0
@@ -89652,7 +89652,7 @@ _0205559C:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020555A4: .word _020B0A48
+_020555A4: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end IsMainCharacter
 
 	arm_func_start GetTeamMember
@@ -89661,19 +89661,19 @@ GetTeamMember: ; 0x020555A8
 	cmp r0, r1
 	moveq r0, #0
 	bxeq lr
-	ldr r2, _020555CC ; =_020B0A48
+	ldr r2, _020555CC ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, #0x44
 	ldr r2, [r2]
 	smlabb r0, r0, r1, r2
 	bx lr
 	.align 2, 0
-_020555CC: .word _020B0A48
+_020555CC: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetTeamMember
 
 	arm_func_start sub_020555D0
 sub_020555D0: ; 0x020555D0
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r2, _02055648 ; =_020B0A48
+	ldr r2, _02055648 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, #0
 	ldr r2, [r2]
 	mov r6, #5
@@ -89706,13 +89706,13 @@ _02055638:
 	mvn r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02055648: .word _020B0A48
+_02055648: .word TEAM_MEMBER_TABLE_PTR
 _0205564C: .word 0x0000022B
 	arm_func_end sub_020555D0
 
 	arm_func_start GetHeroMemberIdx
 GetHeroMemberIdx: ; 0x02055650
-	ldr r0, _02055678 ; =_020B0A48
+	ldr r0, _02055678 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0]
 	tst r0, #1
@@ -89723,12 +89723,12 @@ GetHeroMemberIdx: ; 0x02055650
 	mvneq r0, #0
 	bx lr
 	.align 2, 0
-_02055678: .word _020B0A48
+_02055678: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetHeroMemberIdx
 
 	arm_func_start GetPartnerMemberIdx
 GetPartnerMemberIdx: ; 0x0205567C
-	ldr r0, _020556A4 ; =_020B0A48
+	ldr r0, _020556A4 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x44]
 	tst r0, #1
@@ -89739,7 +89739,7 @@ GetPartnerMemberIdx: ; 0x0205567C
 	mvneq r0, #0
 	bx lr
 	.align 2, 0
-_020556A4: .word _020B0A48
+_020556A4: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetPartnerMemberIdx
 
 	arm_func_start GetMainCharacter1MemberIdx
@@ -89748,7 +89748,7 @@ GetMainCharacter1MemberIdx: ; 0x020556A8
 	bl GetGameMode
 	cmp r0, #3
 	moveq r0, #2
-	ldr r2, _020556E8 ; =_020B0A48
+	ldr r2, _020556E8 ; =TEAM_MEMBER_TABLE_PTR
 	movne r0, #0
 	mov r1, #0x44
 	smulbb r1, r0, r1
@@ -89761,7 +89761,7 @@ GetMainCharacter1MemberIdx: ; 0x020556A8
 	mvneq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020556E8: .word _020B0A48
+_020556E8: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetMainCharacter1MemberIdx
 
 	arm_func_start GetMainCharacter2MemberIdx
@@ -89770,7 +89770,7 @@ GetMainCharacter2MemberIdx: ; 0x020556EC
 	bl GetGameMode
 	cmp r0, #3
 	moveq r0, #3
-	ldr r2, _0205572C ; =_020B0A48
+	ldr r2, _0205572C ; =TEAM_MEMBER_TABLE_PTR
 	movne r0, #1
 	mov r1, #0x44
 	smulbb r1, r0, r1
@@ -89783,7 +89783,7 @@ GetMainCharacter2MemberIdx: ; 0x020556EC
 	mvneq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0205572C: .word _020B0A48
+_0205572C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetMainCharacter2MemberIdx
 
 	arm_func_start GetMainCharacter3MemberIdx
@@ -89793,7 +89793,7 @@ GetMainCharacter3MemberIdx: ; 0x02055730
 	cmp r0, #3
 	mvnne r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0205576C ; =_020B0A48
+	ldr r0, _0205576C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x110]
 	tst r0, #1
@@ -89804,12 +89804,12 @@ GetMainCharacter3MemberIdx: ; 0x02055730
 	mvneq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0205576C: .word _020B0A48
+_0205576C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetMainCharacter3MemberIdx
 
 	arm_func_start GetHero
 GetHero: ; 0x02055770
-	ldr r0, _02055794 ; =_020B0A48
+	ldr r0, _02055794 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	ldrb r1, [r0]
 	tst r1, #1
@@ -89819,12 +89819,12 @@ GetHero: ; 0x02055770
 	moveq r0, #0
 	bx lr
 	.align 2, 0
-_02055794: .word _020B0A48
+_02055794: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetHero
 
 	arm_func_start GetPartner
 GetPartner: ; 0x02055798
-	ldr r0, _020557C0 ; =_020B0A48
+	ldr r0, _020557C0 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x44]
 	tst r0, #1
@@ -89835,7 +89835,7 @@ GetPartner: ; 0x02055798
 	moveq r0, #0
 	bx lr
 	.align 2, 0
-_020557C0: .word _020B0A48
+_020557C0: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetPartner
 
 	arm_func_start GetMainCharacter1
@@ -89844,7 +89844,7 @@ GetMainCharacter1: ; 0x020557C4
 	bl GetGameMode
 	cmp r0, #3
 	moveq r2, #2
-	ldr r1, _02055808 ; =_020B0A48
+	ldr r1, _02055808 ; =TEAM_MEMBER_TABLE_PTR
 	movne r2, #0
 	mov r0, #0x44
 	smulbb r2, r2, r0
@@ -89858,7 +89858,7 @@ GetMainCharacter1: ; 0x020557C4
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02055808: .word _020B0A48
+_02055808: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetMainCharacter1
 
 	arm_func_start GetMainCharacter2
@@ -89867,7 +89867,7 @@ GetMainCharacter2: ; 0x0205580C
 	bl GetGameMode
 	cmp r0, #3
 	moveq r2, #3
-	ldr r1, _02055850 ; =_020B0A48
+	ldr r1, _02055850 ; =TEAM_MEMBER_TABLE_PTR
 	movne r2, #1
 	mov r0, #0x44
 	smulbb r2, r2, r0
@@ -89881,7 +89881,7 @@ GetMainCharacter2: ; 0x0205580C
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02055850: .word _020B0A48
+_02055850: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetMainCharacter2
 
 	arm_func_start GetMainCharacter3
@@ -89891,7 +89891,7 @@ GetMainCharacter3: ; 0x02055854
 	cmp r0, #3
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02055890 ; =_020B0A48
+	ldr r0, _02055890 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x110]
 	tst r0, #1
@@ -89902,12 +89902,12 @@ GetMainCharacter3: ; 0x02055854
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02055890: .word _020B0A48
+_02055890: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetMainCharacter3
 
 	arm_func_start sub_02055894
 sub_02055894: ; 0x02055894
-	ldr r1, _020558EC ; =_020B0A48
+	ldr r1, _020558EC ; =TEAM_MEMBER_TABLE_PTR
 	mov r3, #0
 	ldr r2, [r1]
 	ldr r1, _020558F0 ; =0x0000022B
@@ -89934,14 +89934,14 @@ _020558E4:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_020558EC: .word _020B0A48
+_020558EC: .word TEAM_MEMBER_TABLE_PTR
 _020558F0: .word 0x0000022B
 	arm_func_end sub_02055894
 
 	arm_func_start sub_020558F4
 sub_020558F4: ; 0x020558F4
 	stmdb sp!, {r4, lr}
-	ldr r1, _0205595C ; =_020B0A48
+	ldr r1, _0205595C ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #5
 	ldr r1, [r1]
 	mov r3, #0
@@ -89970,14 +89970,14 @@ _0205594C:
 	mvn r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0205595C: .word _020B0A48
+_0205595C: .word TEAM_MEMBER_TABLE_PTR
 _02055960: .word 0x0000022B
 	arm_func_end sub_020558F4
 
 	arm_func_start GetFirstEmptyMemberIdx
 GetFirstEmptyMemberIdx: ; 0x02055964
 	stmdb sp!, {r3, lr}
-	ldr r1, _020559CC ; =_020B0A48
+	ldr r1, _020559CC ; =TEAM_MEMBER_TABLE_PTR
 	cmp r0, #0x214
 	ldr r0, [r1]
 	ldreq lr, _020559D0 ; =0x0000022B
@@ -90005,7 +90005,7 @@ _020559BC:
 	mvn r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020559CC: .word _020B0A48
+_020559CC: .word TEAM_MEMBER_TABLE_PTR
 _020559D0: .word 0x0000022B
 _020559D4: .word _022B5788
 	arm_func_end GetFirstEmptyMemberIdx
@@ -90013,7 +90013,7 @@ _020559D4: .word _022B5788
 	arm_func_start sub_020559D8
 sub_020559D8: ; 0x020559D8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r1, _02055B18 ; =_020B0A48
+	ldr r1, _02055B18 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #0
 	ldr lr, [r1]
 	mov r8, r0
@@ -90104,14 +90104,14 @@ _02055B0C:
 	blt _02055A38
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02055B18: .word _020B0A48
+_02055B18: .word TEAM_MEMBER_TABLE_PTR
 _02055B1C: .word 0x0000022B
 	arm_func_end sub_020559D8
 
 	arm_func_start sub_02055B20
 sub_02055B20: ; 0x02055B20
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _02055B74 ; =_020B0A48
+	ldr r2, _02055B74 ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, #0x44
 	smulbb r4, r0, r1
 	cmp r0, #5
@@ -90132,14 +90132,14 @@ sub_02055B20: ; 0x02055B20
 	moveq r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02055B74: .word _020B0A48
+_02055B74: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02055B20
 
 	arm_func_start sub_02055B78
 sub_02055B78: ; 0x02055B78
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x58
-	ldr r4, _02055CC4 ; =_020B0A48
+	ldr r4, _02055CC4 ; =TEAM_MEMBER_TABLE_PTR
 	mov lr, #1
 	mov r6, r1
 	mov r7, r0
@@ -90226,7 +90226,7 @@ _02055CB0:
 	add sp, sp, #0x58
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02055CC4: .word _020B0A48
+_02055CC4: .word TEAM_MEMBER_TABLE_PTR
 _02055CC8: .word _020A3350
 	arm_func_end sub_02055B78
 
@@ -90240,7 +90240,7 @@ sub_02055CCC: ; 0x02055CCC
 	mvn r0, #0
 	cmp r4, r0
 	beq _02055D38
-	ldr r1, _02055D40 ; =_020B0A48
+	ldr r1, _02055D40 ; =TEAM_MEMBER_TABLE_PTR
 	mov r0, #0x44
 	ldr r1, [r1]
 	mov r6, r5
@@ -90264,7 +90264,7 @@ _02055D38:
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02055D40: .word _020B0A48
+_02055D40: .word TEAM_MEMBER_TABLE_PTR
 _02055D44: .word 0x0000022B
 _02055D48: .word _022B5788
 	arm_func_end sub_02055CCC
@@ -90277,13 +90277,13 @@ sub_02055D4C: ; 0x02055D4C
 	cmp r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r2, _02055D78 ; =_020B0A48
+	ldr r2, _02055D78 ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, #0x44
 	ldr r2, [r2]
 	smlabb r0, r0, r1, r2
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02055D78: .word _020B0A48
+_02055D78: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02055D4C
 
 	arm_func_start sub_02055D7C
@@ -90293,7 +90293,7 @@ sub_02055D7C: ; 0x02055D7C
 	mov r5, r1
 	cmp r0, r2
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r2, _02055DCC ; =_020B0A48
+	ldr r2, _02055DCC ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, #0x44
 	ldr r2, [r2]
 	mov r4, r5
@@ -90310,7 +90310,7 @@ _02055DA8:
 	bl SetPokemonJoined
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02055DCC: .word _020B0A48
+_02055DCC: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02055D7C
 
 	arm_func_start sub_02055DD0
@@ -90555,7 +90555,7 @@ _020560C4: .word SetActiveTeam
 sub_020560C8: ; 0x020560C8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov lr, #0
-	ldr r7, _02056154 ; =_020B0A48
+	ldr r7, _02056154 ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, lr
 	mvn r0, #0
 	mov r2, lr
@@ -90591,14 +90591,14 @@ _020560F0:
 	blt _020560E8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02056154: .word _020B0A48
+_02056154: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020560C8
 
 	arm_func_start sub_02056158
 sub_02056158: ; 0x02056158
 	stmdb sp!, {r3, lr}
 	mov lr, #0
-	ldr r3, _020561BC ; =_020B0A48
+	ldr r3, _020561BC ; =TEAM_MEMBER_TABLE_PTR
 	mov r0, lr
 	mvn ip, #0
 	mov r1, #0x68
@@ -90614,7 +90614,7 @@ _02056170:
 	strh ip, [r2, #0x5e]
 	cmp lr, #4
 	blt _02056170
-	ldr r2, _020561BC ; =_020B0A48
+	ldr r2, _020561BC ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x9800
 	strh ip, [r1, #0x52]
@@ -90623,14 +90623,14 @@ _02056170:
 	strb r0, [r1, #0x875]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020561BC: .word _020B0A48
+_020561BC: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056158
 
 	arm_func_start sub_020561C0
 sub_020561C0: ; 0x020561C0
 	stmdb sp!, {r3, lr}
 	mov lr, #0
-	ldr r3, _02056224 ; =_020B0A48
+	ldr r3, _02056224 ; =TEAM_MEMBER_TABLE_PTR
 	mov r0, lr
 	mvn ip, #0
 	mov r1, #0x68
@@ -90646,7 +90646,7 @@ _020561D8:
 	strh ip, [r2, #0x66]
 	cmp lr, #4
 	blt _020561D8
-	ldr r2, _02056224 ; =_020B0A48
+	ldr r2, _02056224 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x9800
 	strh ip, [r1, #0x54]
@@ -90655,7 +90655,7 @@ _020561D8:
 	strb r0, [r1, #0x876]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02056224: .word _020B0A48
+_02056224: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020561C0
 
 	arm_func_start CheckTeamMemberIdx
@@ -90721,7 +90721,7 @@ sub_020562B8: ; 0x020562B8
 
 	arm_func_start SetActiveTeam
 SetActiveTeam: ; 0x020562CC
-	ldr r3, _02056314 ; =_020B0A48
+	ldr r3, _02056314 ; =TEAM_MEMBER_TABLE_PTR
 	mov r2, #0x1a0
 	ldr r1, [r3]
 	add r1, r1, #0x9000
@@ -90740,12 +90740,12 @@ SetActiveTeam: ; 0x020562CC
 	str r1, [r0, #0x870]
 	bx lr
 	.align 2, 0
-_02056314: .word _020B0A48
+_02056314: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end SetActiveTeam
 
 	arm_func_start sub_02056318
 sub_02056318: ; 0x02056318
-	ldr r1, _02056338 ; =_020B0A48
+	ldr r1, _02056338 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r2, [r1]
 	add r1, r2, #0x9000
 	ldrb r1, [r1, #0x877]
@@ -90754,12 +90754,12 @@ sub_02056318: ; 0x02056318
 	strb r0, [r1, #0x874]
 	bx lr
 	.align 2, 0
-_02056338: .word _020B0A48
+_02056338: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056318
 
 	arm_func_start sub_0205633C
 sub_0205633C: ; 0x0205633C
-	ldr r0, _0205635C ; =_020B0A48
+	ldr r0, _0205635C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x9000
 	ldrb r0, [r0, #0x877]
@@ -90768,12 +90768,12 @@ sub_0205633C: ; 0x0205633C
 	ldrb r0, [r0, #0x874]
 	bx lr
 	.align 2, 0
-_0205635C: .word _020B0A48
+_0205635C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_0205633C
 
 	arm_func_start sub_02056360
 sub_02056360: ; 0x02056360
-	ldr r0, _02056388 ; =_020B0A48
+	ldr r0, _02056388 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x9000
 	ldrb r1, [r0, #0x874]
@@ -90784,7 +90784,7 @@ sub_02056360: ; 0x02056360
 	moveq r0, #0
 	bx lr
 	.align 2, 0
-_02056388: .word _020B0A48
+_02056388: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056360
 
 	arm_func_start GetActiveTeamMember
@@ -90793,7 +90793,7 @@ GetActiveTeamMember: ; 0x0205638C
 	cmp r0, r1
 	moveq r0, #0
 	bxeq lr
-	ldr r1, _020563B8 ; =_020B0A48
+	ldr r1, _020563B8 ; =TEAM_MEMBER_TABLE_PTR
 	mov r2, #0x68
 	ldr r1, [r1]
 	add r1, r1, #0x9000
@@ -90801,7 +90801,7 @@ GetActiveTeamMember: ; 0x0205638C
 	smlabb r0, r0, r2, r1
 	bx lr
 	.align 2, 0
-_020563B8: .word _020B0A48
+_020563B8: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetActiveTeamMember
 
 	arm_func_start GetActiveRosterIndex
@@ -90809,7 +90809,7 @@ GetActiveRosterIndex: ; 0x020563BC
 	mvn r1, #0
 	cmp r0, r1
 	beq _02056404
-	ldr r1, _0205640C ; =_020B0A48
+	ldr r1, _0205640C ; =TEAM_MEMBER_TABLE_PTR
 	mov ip, #0
 	ldr r1, [r1]
 	add r1, r1, #0x9000
@@ -90830,7 +90830,7 @@ _02056404:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_0205640C: .word _020B0A48
+_0205640C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetActiveRosterIndex
 
 	arm_func_start sub_02056410
@@ -90838,7 +90838,7 @@ sub_02056410: ; 0x02056410
 	mvn r1, #0
 	cmp r0, r1
 	beq _02056454
-	ldr r1, _0205645C ; =_020B0A48
+	ldr r1, _0205645C ; =TEAM_MEMBER_TABLE_PTR
 	mov ip, #0
 	ldr r1, [r1]
 	add r1, r1, #0x9000
@@ -90858,7 +90858,7 @@ _02056454:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0205645C: .word _020B0A48
+_0205645C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056410
 
 	arm_func_start sub_02056460
@@ -90866,7 +90866,7 @@ sub_02056460: ; 0x02056460
 	mvn r2, #0
 	cmp r0, r2
 	beq _020564A4
-	ldr r2, _020564AC ; =_020B0A48
+	ldr r2, _020564AC ; =TEAM_MEMBER_TABLE_PTR
 	mov r3, #0
 	ldr r2, [r2]
 	add r2, r2, r1, lsl #3
@@ -90886,7 +90886,7 @@ _020564A4:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_020564AC: .word _020B0A48
+_020564AC: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056460
 
 	arm_func_start sub_020564B0
@@ -90894,7 +90894,7 @@ sub_020564B0: ; 0x020564B0
 	mvn r3, #0
 	cmp r0, r3
 	beq _020564F8
-	ldr r1, _02056500 ; =_020B0A48
+	ldr r1, _02056500 ; =TEAM_MEMBER_TABLE_PTR
 	ldr ip, [r1]
 	add r1, ip, #0x9000
 	ldrb r2, [r1, #0x877]
@@ -90913,7 +90913,7 @@ _020564F8:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_02056500: .word _020B0A48
+_02056500: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020564B0
 
 	arm_func_start sub_02056504
@@ -90921,7 +90921,7 @@ sub_02056504: ; 0x02056504
 	mvn r3, #0
 	cmp r0, r3
 	beq _02056548
-	ldr r2, _02056550 ; =_020B0A48
+	ldr r2, _02056550 ; =TEAM_MEMBER_TABLE_PTR
 	ldr ip, [r2]
 	add r2, ip, r1, lsl #1
 	add r2, r2, #0x9800
@@ -90939,7 +90939,7 @@ _02056548:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_02056550: .word _020B0A48
+_02056550: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056504
 
 	arm_func_start sub_02056554
@@ -90948,7 +90948,7 @@ sub_02056554: ; 0x02056554
 	mvn r1, #0
 	cmp r0, r1
 	beq _020565E8
-	ldr r1, _020565F0 ; =_020B0A48
+	ldr r1, _020565F0 ; =TEAM_MEMBER_TABLE_PTR
 	mov ip, #0
 	ldr lr, [r1]
 	add r1, lr, #0x9000
@@ -90990,7 +90990,7 @@ _020565E8:
 	mvn r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020565F0: .word _020B0A48
+_020565F0: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056554
 
 	arm_func_start sub_020565F4
@@ -90999,7 +90999,7 @@ sub_020565F4: ; 0x020565F4
 	mvn r2, #0
 	cmp r0, r2
 	beq _0205668C
-	ldr r2, _02056694 ; =_020B0A48
+	ldr r2, _02056694 ; =TEAM_MEMBER_TABLE_PTR
 	mov ip, #0
 	ldr lr, [r2]
 	add r3, lr, r1, lsl #3
@@ -91042,7 +91042,7 @@ _0205668C:
 	mvn r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02056694: .word _020B0A48
+_02056694: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020565F4
 
 	arm_func_start sub_02056698
@@ -91050,7 +91050,7 @@ sub_02056698: ; 0x02056698
 	mvn r2, #0
 	cmp r1, r2
 	bxeq lr
-	ldr r2, _020566C0 ; =_020B0A48
+	ldr r2, _020566C0 ; =TEAM_MEMBER_TABLE_PTR
 	mov r3, r0, lsl #1
 	ldr r0, [r2]
 	add r0, r0, #0x9000
@@ -91058,7 +91058,7 @@ sub_02056698: ; 0x02056698
 	strh r1, [r0, r3]
 	bx lr
 	.align 2, 0
-_020566C0: .word _020B0A48
+_020566C0: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056698
 
 	arm_func_start sub_020566C4
@@ -91067,7 +91067,7 @@ sub_020566C4: ; 0x020566C4
 	mvn r1, #0
 	cmp r0, r1
 	beq _02056748
-	ldr r2, _02056750 ; =_020B0A48
+	ldr r2, _02056750 ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, #0
 	ldr lr, [r2]
 	add r2, lr, #0x9000
@@ -91081,7 +91081,7 @@ _020566E8:
 	add r0, lr, #0x9000
 	ldr r2, [r0, #0x870]
 	mvn r3, #0
-	ldr r0, _02056750 ; =_020B0A48
+	ldr r0, _02056750 ; =TEAM_MEMBER_TABLE_PTR
 	strh r3, [r2, ip]
 	ldr r2, [r0]
 	add r0, r2, #0x9000
@@ -91103,7 +91103,7 @@ _02056748:
 	mvn r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02056750: .word _020B0A48
+_02056750: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020566C4
 
 	arm_func_start sub_02056754
@@ -91112,7 +91112,7 @@ sub_02056754: ; 0x02056754
 	mvn r1, #0
 	cmp r0, r1
 	beq _02056824
-	ldr r1, _0205682C ; =_020B0A48
+	ldr r1, _0205682C ; =TEAM_MEMBER_TABLE_PTR
 	mov ip, #0
 	ldr lr, [r1]
 	add r1, lr, #0x9000
@@ -91123,7 +91123,7 @@ _02056778:
 	ldrsh r2, [r3, r2]
 	cmp r0, r2
 	bne _020567B4
-	ldr r1, _0205682C ; =_020B0A48
+	ldr r1, _0205682C ; =TEAM_MEMBER_TABLE_PTR
 	mov r0, ip, lsl #0x10
 	ldr r2, [r1]
 	mov r0, r0, asr #0x10
@@ -91150,7 +91150,7 @@ _020567D0:
 	bne _02056818
 	add r1, lr, #0x9000
 	ldr r2, [r1, #0x870]
-	ldr r1, _0205682C ; =_020B0A48
+	ldr r1, _0205682C ; =TEAM_MEMBER_TABLE_PTR
 	strh r0, [r2, ip]
 	ldr r2, [r1]
 	mov r0, r4, lsl #0x10
@@ -91170,7 +91170,7 @@ _02056824:
 	mvn r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0205682C: .word _020B0A48
+_0205682C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056754
 
 	arm_func_start sub_02056830
@@ -91200,7 +91200,7 @@ _02056844:
 
 	arm_func_start sub_02056880
 sub_02056880: ; 0x02056880
-	ldr r0, _020568A0 ; =_020B0A48
+	ldr r0, _020568A0 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x9000
 	ldrb r0, [r0, #0x877]
@@ -91209,12 +91209,12 @@ sub_02056880: ; 0x02056880
 	ldrsh r0, [r0, #0x50]
 	bx lr
 	.align 2, 0
-_020568A0: .word _020B0A48
+_020568A0: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056880
 
 	arm_func_start sub_020568A4
 sub_020568A4: ; 0x020568A4
-	ldr r1, _020568D8 ; =_020B0A48
+	ldr r1, _020568D8 ; =TEAM_MEMBER_TABLE_PTR
 	mvn r0, #0
 	ldr r3, [r1]
 	add r1, r3, #0x9000
@@ -91228,12 +91228,12 @@ sub_020568A4: ; 0x020568A4
 	ldrnesh r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_020568D8: .word _020B0A48
+_020568D8: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020568A4
 
 	arm_func_start sub_020568DC
 sub_020568DC: ; 0x020568DC
-	ldr r1, _02056910 ; =_020B0A48
+	ldr r1, _02056910 ; =TEAM_MEMBER_TABLE_PTR
 	mvn r3, #0
 	ldr r2, [r1]
 	add r1, r2, r0, lsl #1
@@ -91247,12 +91247,12 @@ sub_020568DC: ; 0x020568DC
 	mov r0, r3
 	bx lr
 	.align 2, 0
-_02056910: .word _020B0A48
+_02056910: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020568DC
 
 	arm_func_start sub_02056914
 sub_02056914: ; 0x02056914
-	ldr r0, _0205695C ; =_020B0A48
+	ldr r0, _0205695C ; =TEAM_MEMBER_TABLE_PTR
 	mvn r2, #0
 	ldr ip, [r0]
 	add r0, ip, #0x9000
@@ -91271,14 +91271,14 @@ sub_02056914: ; 0x02056914
 	smlabb r0, r1, r0, ip
 	bx lr
 	.align 2, 0
-_0205695C: .word _020B0A48
+_0205695C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056914
 
 	arm_func_start sub_02056960
 sub_02056960: ; 0x02056960
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r0, #0
-	ldr r2, _020569C8 ; =_020B0A48
+	ldr r2, _020569C8 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, r0
 	mvn ip, #0
 	mov r3, #1
@@ -91294,7 +91294,7 @@ _02056978:
 	strneh ip, [r4, lr]
 	cmp r5, #4
 	blt _02056978
-	ldr r1, _020569C8 ; =_020B0A48
+	ldr r1, _020569C8 ; =TEAM_MEMBER_TABLE_PTR
 	mvn r2, #0
 	ldr r3, [r1]
 	add r1, r3, #0x9000
@@ -91304,7 +91304,7 @@ _02056978:
 	strh r2, [r1, #0x50]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020569C8: .word _020B0A48
+_020569C8: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056960
 
 	arm_func_start SetTeamSetupHeroAndPartnerOnly
@@ -91316,7 +91316,7 @@ SetTeamSetupHeroAndPartnerOnly: ; 0x020569CC
 	mov r6, r0
 	bl GetMainCharacter3MemberIdx
 	mov r8, #0
-	ldr r1, _02056AAC ; =_020B0A48
+	ldr r1, _02056AAC ; =TEAM_MEMBER_TABLE_PTR
 	mov r7, r0
 	ldr r1, [r1]
 	mov sl, r8
@@ -91363,7 +91363,7 @@ _02056A7C:
 	mov r0, r7
 	bl sub_02056554
 _02056A90:
-	ldr r0, _02056AAC ; =_020B0A48
+	ldr r0, _02056AAC ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x9000
 	ldrb r0, [r0, #0x877]
@@ -91371,14 +91371,14 @@ _02056A90:
 	mov r0, r8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02056AAC: .word _020B0A48
+_02056AAC: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end SetTeamSetupHeroAndPartnerOnly
 
 	arm_func_start SetTeamSetupHeroOnly
 SetTeamSetupHeroOnly: ; 0x02056AB0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bl sub_020568A4
-	ldr r1, _02056B54 ; =_020B0A48
+	ldr r1, _02056B54 ; =TEAM_MEMBER_TABLE_PTR
 	mov r7, r0
 	mov r8, #0
 	ldr r1, [r1]
@@ -91413,7 +91413,7 @@ _02056B10:
 	mov r0, r7
 	bl sub_02056754
 _02056B38:
-	ldr r0, _02056B54 ; =_020B0A48
+	ldr r0, _02056B54 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x9000
 	ldrb r0, [r0, #0x877]
@@ -91421,13 +91421,13 @@ _02056B38:
 	mov r0, r8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02056B54: .word _020B0A48
+_02056B54: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end SetTeamSetupHeroOnly
 
 	arm_func_start sub_02056B58
 sub_02056B58: ; 0x02056B58
 	stmdb sp!, {r3, lr}
-	ldr r2, _02056BD0 ; =_020B0A48
+	ldr r2, _02056BD0 ; =TEAM_MEMBER_TABLE_PTR
 	ldr ip, [r2]
 	add r0, ip, #0x9000
 	ldrb r3, [r0, #0x877]
@@ -91451,20 +91451,20 @@ _02056B8C:
 	strh r3, [r0, ip]
 	cmp lr, #4
 	blt _02056B8C
-	ldr r0, _02056BD0 ; =_020B0A48
+	ldr r0, _02056BD0 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x9000
 	ldrb r0, [r0, #0x877]
 	bl sub_02057464
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02056BD0: .word _020B0A48
+_02056BD0: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056B58
 
 	arm_func_start sub_02056BD4
 sub_02056BD4: ; 0x02056BD4
 	stmdb sp!, {r3, lr}
-	ldr r0, _02056C1C ; =_020B0A48
+	ldr r0, _02056C1C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x9000
 	ldrb r0, [r0, #0x877]
@@ -91475,14 +91475,14 @@ sub_02056BD4: ; 0x02056BD4
 	bl sub_02056754
 	bl GetPartnerMemberIdx
 	bl sub_02056554
-	ldr r0, _02056C1C ; =_020B0A48
+	ldr r0, _02056C1C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x9000
 	ldrb r0, [r0, #0x877]
 	bl sub_02057464
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02056C1C: .word _020B0A48
+_02056C1C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056BD4
 
 	arm_func_start GetPartyMembers
@@ -91538,7 +91538,7 @@ _02056CB8:
 	strneh sb, [r5, r0]
 	addne r4, r4, #1
 _02056CE0:
-	ldr r0, _02056D6C ; =_020B0A48
+	ldr r0, _02056D6C ; =TEAM_MEMBER_TABLE_PTR
 	mov r8, #0
 	ldr r0, [r0]
 	mov r6, r8
@@ -91578,7 +91578,7 @@ _02056D60:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02056D6C: .word _020B0A48
+_02056D6C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetPartyMembers
 
 	arm_func_start sub_02056D70
@@ -91586,7 +91586,7 @@ sub_02056D70: ; 0x02056D70
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #8
 	movs sl, r0
-	ldr r0, _02056E00 ; =_020B0A48
+	ldr r0, _02056E00 ; =TEAM_MEMBER_TABLE_PTR
 	mov r6, #0
 	ldr r0, [r0]
 	mov sb, #0
@@ -91622,7 +91622,7 @@ _02056DE4:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02056E00: .word _020B0A48
+_02056E00: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056D70
 
 	arm_func_start sub_02056E04
@@ -91630,7 +91630,7 @@ sub_02056E04: ; 0x02056E04
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #8
 	movs sl, r0
-	ldr r0, _02056EB4 ; =_020B0A48
+	ldr r0, _02056EB4 ; =TEAM_MEMBER_TABLE_PTR
 	mov r6, #0
 	ldr r0, [r0]
 	mov sb, #0
@@ -91674,13 +91674,13 @@ _02056E98:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02056EB4: .word _020B0A48
+_02056EB4: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056E04
 
 	arm_func_start sub_02056EB8
 sub_02056EB8: ; 0x02056EB8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r1, _02056F5C ; =_020B0A48
+	ldr r1, _02056F5C ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, #0
 	ldr r1, [r1]
 	mov r8, r0
@@ -91724,7 +91724,7 @@ _02056F4C:
 	movle r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02056F5C: .word _020B0A48
+_02056F5C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056EB8
 
 	arm_func_start sub_02056F60
@@ -91733,7 +91733,7 @@ sub_02056F60: ; 0x02056F60
 	mvn r1, #0
 	cmp r0, r1
 	beq _02057000
-	ldr r1, _0205700C ; =_020B0A48
+	ldr r1, _0205700C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r3, [r1]
 	add r1, r3, #0x9000
 	ldrb r1, [r1, #0x877]
@@ -91780,19 +91780,19 @@ _02057000:
 	bl sub_02056EB8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0205700C: .word _020B0A48
+_0205700C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056F60
 
 	arm_func_start sub_02057010
 sub_02057010: ; 0x02057010
-	ldr r1, _02057028 ; =_020B0A48
+	ldr r1, _02057028 ; =TEAM_MEMBER_TABLE_PTR
 	ldr ip, _0205702C ; =sub_02057030
 	ldr r1, [r1]
 	add r1, r1, #0x9000
 	ldrb r1, [r1, #0x877]
 	bx ip
 	.align 2, 0
-_02057028: .word _020B0A48
+_02057028: .word TEAM_MEMBER_TABLE_PTR
 _0205702C: .word sub_02057030
 	arm_func_end sub_02057010
 
@@ -91821,7 +91821,7 @@ _0205707C:
 	mov r7, #0
 	mvn fp, #0
 _02057084:
-	ldr r0, _0205717C ; =_020B0A48
+	ldr r0, _0205717C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r2, [r0]
 	add r0, r2, sb, lsl #3
 	add r0, r0, r7, lsl #1
@@ -91856,7 +91856,7 @@ _020570F8:
 	cmp r7, #4
 	blt _02057084
 	mov r0, #0
-	ldr r3, _0205717C ; =_020B0A48
+	ldr r3, _0205717C ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, r0
 	mvn r2, #0
 _02057114:
@@ -91891,7 +91891,7 @@ _02057164:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0205717C: .word _020B0A48
+_0205717C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02057030
 
 	arm_func_start sub_02057180
@@ -91903,7 +91903,7 @@ sub_02057180: ; 0x02057180
 	bl sub_020559D8
 	mov r8, #0
 	ldr fp, _020572E0 ; =_020A3398
-	ldr r5, _020572E4 ; =_020B0A48
+	ldr r5, _020572E4 ; =TEAM_MEMBER_TABLE_PTR
 	add r6, sp, #0
 	mov r7, r8
 	mvn r4, #0
@@ -91939,7 +91939,7 @@ _02057200:
 	blt _020571AC
 	mov sb, #0
 _0205721C:
-	ldr r0, _020572E4 ; =_020B0A48
+	ldr r0, _020572E4 ; =TEAM_MEMBER_TABLE_PTR
 	mov sl, #0
 	ldr r0, [r0]
 	mov r1, #0x1a0
@@ -91992,27 +91992,27 @@ _020572B0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020572E0: .word _020A3398
-_020572E4: .word _020B0A48
+_020572E4: .word TEAM_MEMBER_TABLE_PTR
 _020572E8: .word _020A33B8
 	arm_func_end sub_02057180
 
 	arm_func_start sub_020572EC
 sub_020572EC: ; 0x020572EC
-	ldr r0, _02057304 ; =_020B0A48
+	ldr r0, _02057304 ; =TEAM_MEMBER_TABLE_PTR
 	ldr ip, _02057308 ; =sub_0205730C
 	ldr r0, [r0]
 	add r0, r0, #0x9000
 	ldrb r0, [r0, #0x877]
 	bx ip
 	.align 2, 0
-_02057304: .word _020B0A48
+_02057304: .word TEAM_MEMBER_TABLE_PTR
 _02057308: .word sub_0205730C
 	arm_func_end sub_020572EC
 
 	arm_func_start sub_0205730C
 sub_0205730C: ; 0x0205730C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r1, _0205739C ; =_020B0A48
+	ldr r1, _0205739C ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	mov r8, #0
@@ -92050,26 +92050,26 @@ _02057388:
 	blt _02057338
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0205739C: .word _020B0A48
+_0205739C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_0205730C
 
 	arm_func_start sub_020573A0
 sub_020573A0: ; 0x020573A0
-	ldr r0, _020573B8 ; =_020B0A48
+	ldr r0, _020573B8 ; =TEAM_MEMBER_TABLE_PTR
 	ldr ip, _020573BC ; =sub_020573C0
 	ldr r0, [r0]
 	add r0, r0, #0x9000
 	ldrb r0, [r0, #0x877]
 	bx ip
 	.align 2, 0
-_020573B8: .word _020B0A48
+_020573B8: .word TEAM_MEMBER_TABLE_PTR
 _020573BC: .word sub_020573C0
 	arm_func_end sub_020573A0
 
 	arm_func_start sub_020573C0
 sub_020573C0: ; 0x020573C0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _02057440 ; =_020B0A48
+	ldr r1, _02057440 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #0
 	ldr r1, [r1]
 	mov r2, #0x1a0
@@ -92103,19 +92103,19 @@ _0205742C:
 	blt _020573E8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02057440: .word _020B0A48
+_02057440: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020573C0
 
 	arm_func_start sub_02057444
 sub_02057444: ; 0x02057444
-	ldr r0, _0205745C ; =_020B0A48
+	ldr r0, _0205745C ; =TEAM_MEMBER_TABLE_PTR
 	ldr ip, _02057460 ; =sub_02057464
 	ldr r0, [r0]
 	add r0, r0, #0x9000
 	ldrb r0, [r0, #0x877]
 	bx ip
 	.align 2, 0
-_0205745C: .word _020B0A48
+_0205745C: .word TEAM_MEMBER_TABLE_PTR
 _02057460: .word sub_02057464
 	arm_func_end sub_02057444
 
@@ -92123,7 +92123,7 @@ _02057460: .word sub_02057464
 sub_02057464: ; 0x02057464
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x8c
-	ldr r1, _020577B4 ; =_020B0A48
+	ldr r1, _020577B4 ; =TEAM_MEMBER_TABLE_PTR
 	mov sl, #0
 	ldr r2, [r1]
 	mov r5, r0
@@ -92180,7 +92180,7 @@ _02057514:
 	mov r1, r5
 	bl DebugPrint0
 	mov r0, #0x1a0
-	ldr r1, _020577B4 ; =_020B0A48
+	ldr r1, _020577B4 ; =TEAM_MEMBER_TABLE_PTR
 	mov r7, #0
 	mul r2, r5, r0
 	ldr r1, [r1]
@@ -92283,7 +92283,7 @@ _02057694:
 	mov fp, #1
 	b _0205774C
 _020576B8:
-	ldr r0, _020577B4 ; =_020B0A48
+	ldr r0, _020577B4 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r0]
 	mov r0, sl, lsl #1
 	add r1, r1, r5, lsl #3
@@ -92328,7 +92328,7 @@ _0205774C:
 	blt _020576B8
 	mvn r3, #0
 	mov r2, #0
-	ldr r1, _020577B4 ; =_020B0A48
+	ldr r1, _020577B4 ; =TEAM_MEMBER_TABLE_PTR
 	b _02057784
 _02057768:
 	ldr r0, [r1]
@@ -92341,7 +92341,7 @@ _02057768:
 _02057784:
 	cmp sl, #4
 	blt _02057768
-	ldr r1, _020577B4 ; =_020B0A48
+	ldr r1, _020577B4 ; =TEAM_MEMBER_TABLE_PTR
 	add r0, sp, #0x10
 	ldr r2, [r1]
 	mov r1, r5
@@ -92352,7 +92352,7 @@ _02057784:
 	add sp, sp, #0x8c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020577B4: .word _020B0A48
+_020577B4: .word TEAM_MEMBER_TABLE_PTR
 _020577B8: .word _020A33D4
 	arm_func_end sub_02057464
 
@@ -92369,7 +92369,7 @@ sub_020577BC: ; 0x020577BC
 	bl IsLevelResetDungeon
 	cmp r0, #0
 	beq _020578E0
-	ldr r4, _02057A28 ; =_020B0A48
+	ldr r4, _02057A28 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, _02057A2C ; =_020A336C
 	ldr r3, [r4]
 	ldrb r2, [r0]
@@ -92434,7 +92434,7 @@ _020578D0:
 	add r8, r8, #0x68
 	blt _02057820
 _020578E0:
-	ldr r0, _02057A28 ; =_020B0A48
+	ldr r0, _02057A28 ; =TEAM_MEMBER_TABLE_PTR
 	mov r2, sb, lsl #1
 	ldr r1, [r0]
 	ldr r0, _02057A30 ; =_020A343C
@@ -92449,7 +92449,7 @@ _02057904:
 	mov r0, sl
 	bl GetMaxMembersAllowed
 	mov r8, #0
-	ldr r1, _02057A28 ; =_020B0A48
+	ldr r1, _02057A28 ; =TEAM_MEMBER_TABLE_PTR
 	mov r6, #1
 	ldr r1, [r1]
 	mov r7, r0
@@ -92524,7 +92524,7 @@ _02057A08:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02057A24: .word _020A340C
-_02057A28: .word _020B0A48
+_02057A28: .word TEAM_MEMBER_TABLE_PTR
 _02057A2C: .word _020A336C
 _02057A30: .word _020A343C
 _02057A34: .word _020A344C
@@ -92538,7 +92538,7 @@ sub_02057A38: ; 0x02057A38
 	cmp r6, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	bl sub_020568A4
-	ldr r1, _02057AC0 ; =_020B0A48
+	ldr r1, _02057AC0 ; =TEAM_MEMBER_TABLE_PTR
 	mov r2, #0x68
 	ldr r1, [r1]
 	mov r4, r6, lsl #1
@@ -92568,7 +92568,7 @@ _02057AB4:
 	strb r0, [r5]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02057AC0: .word _020B0A48
+_02057AC0: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02057A38
 
 	arm_func_start sub_02057AC4
@@ -92606,7 +92606,7 @@ _02057B10:
 	bl sub_02057C40
 	bl sub_02056960
 	mov sb, #0
-	ldr r0, _02057C3C ; =_020B0A48
+	ldr r0, _02057C3C ; =TEAM_MEMBER_TABLE_PTR
 	mov r6, #1
 	ldr r0, [r0]
 	mov r5, sb
@@ -92673,20 +92673,20 @@ _02057C14:
 	cmp sb, #4
 	add r8, r8, #0x68
 	blt _02057B50
-	ldr r0, _02057C3C ; =_020B0A48
+	ldr r0, _02057C3C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x9000
 	ldrb r0, [r0, #0x877]
 	bl sub_02057464
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02057C3C: .word _020B0A48
+_02057C3C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02057AEC
 
 	arm_func_start sub_02057C40
 sub_02057C40: ; 0x02057C40
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r0, _02057CE4 ; =_020B0A48
+	ldr r0, _02057CE4 ; =TEAM_MEMBER_TABLE_PTR
 	mov sb, #0
 	ldr r0, [r0]
 	mov r7, #1
@@ -92729,7 +92729,7 @@ _02057CC8:
 	bl sub_0200FCAC
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02057CE4: .word _020B0A48
+_02057CE4: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02057C40
 
 	arm_func_start sub_02057CE8
@@ -92769,7 +92769,7 @@ _02057D40:
 	arm_func_start RefillTeam
 RefillTeam: ; 0x02057D58
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r0, _02057DF8 ; =_020B0A48
+	ldr r0, _02057DF8 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, #0
 	ldr r0, [r0]
 	add r0, r0, #0x9000
@@ -92813,13 +92813,13 @@ _02057DE4:
 	blt _02057D70
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02057DF8: .word _020B0A48
+_02057DF8: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end RefillTeam
 
 	arm_func_start sub_02057DFC
 sub_02057DFC: ; 0x02057DFC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _02057E8C ; =_020B0A48
+	ldr r1, _02057E8C ; =TEAM_MEMBER_TABLE_PTR
 	mov r0, #0
 	ldr r1, [r1]
 	mov ip, #1
@@ -92858,13 +92858,13 @@ _02057E78:
 	blt _02057E28
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02057E8C: .word _020B0A48
+_02057E8C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02057DFC
 
 	arm_func_start sub_02057E90
 sub_02057E90: ; 0x02057E90
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r0, _02057EF0 ; =_020B0A48
+	ldr r0, _02057EF0 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #0
 	ldr r0, [r0]
 	mov r6, r4
@@ -92890,13 +92890,13 @@ _02057EDC:
 	blt _02057EB4
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02057EF0: .word _020B0A48
+_02057EF0: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02057E90
 
 	arm_func_start sub_02057EF4
 sub_02057EF4: ; 0x02057EF4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r0, _02058060 ; =_020B0A48
+	ldr r0, _02058060 ; =TEAM_MEMBER_TABLE_PTR
 	mov r8, #0
 	ldr r0, [r0]
 	add r0, r0, #0x9000
@@ -92996,13 +92996,13 @@ _0205804C:
 	blt _02057F0C
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02058060: .word _020B0A48
+_02058060: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02057EF4
 
 	arm_func_start sub_02058064
 sub_02058064: ; 0x02058064
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r0, _020580C0 ; =_020B0A48
+	ldr r0, _020580C0 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #0
 	ldr r0, [r0]
 	mov r5, r4
@@ -93027,13 +93027,13 @@ _020580A4:
 	blt _02058084
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020580C0: .word _020B0A48
+_020580C0: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02058064
 
 	arm_func_start sub_020580C4
 sub_020580C4: ; 0x020580C4
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _02058134 ; =_020B0A48
+	ldr r1, _02058134 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, #0
 	ldr r1, [r1]
 	add r2, r5, #1
@@ -93062,14 +93062,14 @@ _020580F4:
 	blt _020580F4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02058134: .word _020B0A48
+_02058134: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020580C4
 
 	arm_func_start sub_02058138
 sub_02058138: ; 0x02058138
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r2, _020581EC ; =_020B0A48
+	ldr r2, _020581EC ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, #0x68
 	ldr r2, [r2]
 	smulbb r1, r0, r1
@@ -93115,14 +93115,14 @@ _020581E4:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020581EC: .word _020B0A48
+_020581EC: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02058138
 
 	arm_func_start ClearItem
 ClearItem: ; 0x020581F0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #8
-	ldr r2, _020582DC ; =_020B0A48
+	ldr r2, _020582DC ; =TEAM_MEMBER_TABLE_PTR
 	cmp r0, #0
 	ldr r2, [r2]
 	add r2, r2, #0x9000
@@ -93186,7 +93186,7 @@ _020582D4:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020582DC: .word _020B0A48
+_020582DC: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end ClearItem
 
 	arm_func_start sub_020582E0
@@ -93202,7 +93202,7 @@ _020582EC: .word ClearItem
 sub_020582F0: ; 0x020582F0
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
-	ldr r3, _0205845C ; =_020B0A48
+	ldr r3, _0205845C ; =TEAM_MEMBER_TABLE_PTR
 	mov r2, #0x68
 	ldr r3, [r3]
 	smulbb r2, r0, r2
@@ -93297,7 +93297,7 @@ _02058454:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_0205845C: .word _020B0A48
+_0205845C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020582F0
 
 	arm_func_start sub_02058460
@@ -93307,7 +93307,7 @@ sub_02058460: ; 0x02058460
 	cmp r1, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	ldr r0, _020584F4 ; =_020B0A48
+	ldr r0, _020584F4 ; =TEAM_MEMBER_TABLE_PTR
 	sub r1, r1, #1
 	mov ip, r1, lsl #0x10
 	ldr r1, [r0]
@@ -93343,7 +93343,7 @@ _020584E4:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020584F4: .word _020B0A48
+_020584F4: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02058460
 
 	arm_func_start sub_020584F8
@@ -93917,7 +93917,7 @@ _02058C48: .word _020A190C
 sub_02058C4C: ; 0x02058C4C
 	stmdb sp!, {r3, lr}
 	mov lr, #0
-	ldr r3, _02058C98 ; =_020A1940
+	ldr r3, _02058C98 ; =TACTICS_UNLOCK_LEVEL_TABLE
 	mov ip, lr
 _02058C5C:
 	mov r2, ip, lsl #1
@@ -93938,14 +93938,14 @@ _02058C8C:
 	blt _02058C84
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02058C98: .word _020A1940
+_02058C98: .word TACTICS_UNLOCK_LEVEL_TABLE
 	arm_func_end sub_02058C4C
 
 	arm_func_start sub_02058C9C
 sub_02058C9C: ; 0x02058C9C
 	stmdb sp!, {r4, lr}
 	mov r4, #0
-	ldr lr, _02058CD4 ; =_020A1940
+	ldr lr, _02058CD4 ; =TACTICS_UNLOCK_LEVEL_TABLE
 	mov r2, r4
 	mov r3, #1
 _02058CB0:
@@ -93959,7 +93959,7 @@ _02058CB0:
 	blt _02058CB0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02058CD4: .word _020A1940
+_02058CD4: .word TACTICS_UNLOCK_LEVEL_TABLE
 	arm_func_end sub_02058C9C
 
 	arm_func_start CanLearnIqSkill
@@ -93967,7 +93967,7 @@ CanLearnIqSkill: ; 0x02058CD8
 	cmp r1, #0
 	moveq r0, #0
 	bxeq lr
-	ldr r2, _02058D00 ; =_020A1C7C
+	ldr r2, _02058D00 ; =IQ_SKILLS
 	ldr r1, [r2, r1, lsl #2]
 	cmp r1, r0
 	movle r0, #1
@@ -93975,7 +93975,7 @@ CanLearnIqSkill: ; 0x02058CD8
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_02058D00: .word _020A1C7C
+_02058D00: .word IQ_SKILLS
 	arm_func_end CanLearnIqSkill
 
 	arm_func_start GetLearnableIqSkills
@@ -93986,7 +93986,7 @@ GetLearnableIqSkills: ; 0x02058D04
 	mov sb, r1
 	mov r8, r2
 	mov r5, r6
-	ldr r4, _02058DA0 ; =_020A1D90
+	ldr r4, _02058DA0 ; =IQ_GROUP_SKILLS
 	mov fp, #0x19
 	b _02058D74
 _02058D28:
@@ -94027,7 +94027,7 @@ _02058D90:
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02058DA0: .word _020A1D90
+_02058DA0: .word IQ_GROUP_SKILLS
 	arm_func_end GetLearnableIqSkills
 
 	arm_func_start DisableIqSkill
@@ -94058,7 +94058,7 @@ _02058DE4:
 	arm_func_start EnableIqSkill
 EnableIqSkill: ; 0x02058DF4
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r2, _02058E64 ; =_020A1A5C
+	ldr r2, _02058E64 ; =IQ_SKILL_RESTRICTIONS
 	mov r3, r1, lsl #1
 	ldrsh ip, [r2, r3]
 	mov r3, #0
@@ -94088,7 +94088,7 @@ _02058E3C:
 	str r1, [r0, ip, lsl #2]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02058E64: .word _020A1A5C
+_02058E64: .word IQ_SKILL_RESTRICTIONS
 	arm_func_end EnableIqSkill
 
 	arm_func_start GetSpeciesIqSkill
@@ -94096,13 +94096,13 @@ GetSpeciesIqSkill: ; 0x02058E68
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetIqGroup
-	ldr r2, _02058E88 ; =_020A1D90
+	ldr r2, _02058E88 ; =IQ_GROUP_SKILLS
 	mov r1, #0x19
 	mla r1, r0, r1, r2
 	ldrb r0, [r4, r1]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02058E88: .word _020A1D90
+_02058E88: .word IQ_GROUP_SKILLS
 	arm_func_end GetSpeciesIqSkill
 
 	arm_func_start sub_02058E8C
@@ -94164,13 +94164,13 @@ GetNextIqSkill: ; 0x02058F24
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	bl GetIqGroup
-	ldr r2, _02058F9C ; =_020A1D90
+	ldr r2, _02058F9C ; =IQ_GROUP_SKILLS
 	mov r1, #0x19
 	mla lr, r0, r1, r2
 	mov r0, #0
 	mov r1, r0
 	mov r3, r0
-	ldr r2, _02058FA0 ; =_020A1C7C
+	ldr r2, _02058FA0 ; =IQ_SKILLS
 	b _02058F90
 _02058F50:
 	ldrb ip, [lr], #1
@@ -94196,13 +94196,13 @@ _02058F90:
 	blt _02058F50
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02058F9C: .word _020A1D90
-_02058FA0: .word _020A1C7C
+_02058F9C: .word IQ_GROUP_SKILLS
+_02058FA0: .word IQ_SKILLS
 	arm_func_end GetNextIqSkill
 
 	arm_func_start sub_02058FA4
 sub_02058FA4: ; 0x02058FA4
-	ldr r0, _02058FC8 ; =_020B0A48
+	ldr r0, _02058FC8 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x9800
 	ldrsh r0, [r0, #0x9c]
@@ -94212,7 +94212,7 @@ sub_02058FA4: ; 0x02058FA4
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_02058FC8: .word _020B0A48
+_02058FC8: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02058FA4
 
 	arm_func_start sub_02058FCC
@@ -94220,7 +94220,7 @@ sub_02058FCC: ; 0x02058FCC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	movs r5, r0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
-	ldr r3, _0205905C ; =_020B0A48
+	ldr r3, _0205905C ; =TEAM_MEMBER_TABLE_PTR
 	ldrsb r2, [r5]
 	ldr r0, [r3]
 	add r1, r5, #2
@@ -94236,7 +94236,7 @@ sub_02058FCC: ; 0x02058FCC
 	add r0, r0, #0x9800
 	bl StrncpySimple
 	add r8, r5, #0x18
-	ldr r7, _0205905C ; =_020B0A48
+	ldr r7, _0205905C ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #0
 	mov r5, #0x44
 	mov r6, #0x4c
@@ -94255,13 +94255,13 @@ _02059028:
 	bl sub_0204D018
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0205905C: .word _020B0A48
+_0205905C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02058FCC
 
 	arm_func_start sub_02059060
 sub_02059060: ; 0x02059060
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _020590B8 ; =_020B0A48
+	ldr r1, _020590B8 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, r0
 	ldr r0, [r1]
 	add r0, r0, #0x1880
@@ -94284,37 +94284,37 @@ _020590A8:
 	bl GetStringFromFileVeneer
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020590B8: .word _020B0A48
+_020590B8: .word TEAM_MEMBER_TABLE_PTR
 _020590BC: .word 0x00000235
 	arm_func_end sub_02059060
 
 	arm_func_start sub_020590C0
 sub_020590C0: ; 0x020590C0
-	ldr r0, _020590D8 ; =_020B0A48
+	ldr r0, _020590D8 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
 	add r1, r0, #0x9000
 	ldr r0, [r1, #0x878]
 	ldr r1, [r1, #0x87c]
 	bx lr
 	.align 2, 0
-_020590D8: .word _020B0A48
+_020590D8: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020590C0
 
 	arm_func_start sub_020590DC
 sub_020590DC: ; 0x020590DC
-	ldr r2, _020590F4 ; =_020B0A48
+	ldr r2, _020590F4 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r2, [r2]
 	add r2, r2, #0x9000
 	str r0, [r2, #0x878]
 	str r1, [r2, #0x87c]
 	bx lr
 	.align 2, 0
-_020590F4: .word _020B0A48
+_020590F4: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020590DC
 
 	arm_func_start GetExplorerMazeMonster
 GetExplorerMazeMonster: ; 0x020590F8
-	ldr r1, _02059114 ; =_020B0A48
+	ldr r1, _02059114 ; =TEAM_MEMBER_TABLE_PTR
 	mov r2, #0x44
 	ldr r1, [r1]
 	add r1, r1, #0x98
@@ -94322,7 +94322,7 @@ GetExplorerMazeMonster: ; 0x020590F8
 	smlabb r0, r0, r2, r1
 	bx lr
 	.align 2, 0
-_02059114: .word _020B0A48
+_02059114: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end GetExplorerMazeMonster
 
 	arm_func_start WriteMonsterInfoToSave
@@ -94334,7 +94334,7 @@ WriteMonsterInfoToSave: ; 0x02059118
 	add r0, sp, #0
 	mov r1, r3
 	bl sub_02050990
-	ldr r6, _0205921C ; =_020B0A48
+	ldr r6, _0205921C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r5, _02059220 ; =0x0000022B
 	mov r8, #0
 	add r7, sp, #0
@@ -94347,35 +94347,35 @@ _02059148:
 	add r8, r8, #1
 	cmp r8, r5
 	blt _02059148
-	ldr r1, _0205921C ; =_020B0A48
+	ldr r1, _0205921C ; =TEAM_MEMBER_TABLE_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x40
 	add r1, r1, #0x78
 	add r1, r1, #0x9800
 	bl CopyBitsTo
-	ldr r1, _0205921C ; =_020B0A48
+	ldr r1, _0205921C ; =TEAM_MEMBER_TABLE_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #4
 	add r1, r1, #0x1880
 	add r1, r1, #0x8000
 	bl CopyBitsTo
-	ldr r1, _0205921C ; =_020B0A48
+	ldr r1, _0205921C ; =TEAM_MEMBER_TABLE_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #4
 	add r1, r1, #0x81
 	add r1, r1, #0x9800
 	bl CopyBitsTo
-	ldr r1, _0205921C ; =_020B0A48
+	ldr r1, _0205921C ; =TEAM_MEMBER_TABLE_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x50
 	add r1, r1, #0x82
 	add r1, r1, #0x9800
 	bl CopyBitsTo
-	ldr r5, _0205921C ; =_020B0A48
+	ldr r5, _0205921C ; =TEAM_MEMBER_TABLE_PTR
 	mov r7, #0
 	add r6, sp, #0
 	mov r4, #0x44
@@ -94395,7 +94395,7 @@ _020591E4:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0205921C: .word _020B0A48
+_0205921C: .word TEAM_MEMBER_TABLE_PTR
 _02059220: .word 0x0000022B
 	arm_func_end WriteMonsterInfoToSave
 
@@ -94408,7 +94408,7 @@ ReadMonsterInfoFromSave: ; 0x02059224
 	add r0, sp, #0
 	mov r1, r3
 	bl sub_02050974
-	ldr r6, _0205932C ; =_020B0A48
+	ldr r6, _0205932C ; =TEAM_MEMBER_TABLE_PTR
 	ldr r5, _02059330 ; =0x0000022B
 	mov r8, #0
 	add r7, sp, #0
@@ -94421,35 +94421,35 @@ _02059254:
 	add r8, r8, #1
 	cmp r8, r5
 	blt _02059254
-	ldr r1, _0205932C ; =_020B0A48
+	ldr r1, _0205932C ; =TEAM_MEMBER_TABLE_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x40
 	add r1, r1, #0x78
 	add r1, r1, #0x9800
 	bl CopyBitsFrom
-	ldr r1, _0205932C ; =_020B0A48
+	ldr r1, _0205932C ; =TEAM_MEMBER_TABLE_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #4
 	add r1, r1, #0x1880
 	add r1, r1, #0x8000
 	bl CopyBitsFrom
-	ldr r1, _0205932C ; =_020B0A48
+	ldr r1, _0205932C ; =TEAM_MEMBER_TABLE_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #4
 	add r1, r1, #0x81
 	add r1, r1, #0x9800
 	bl CopyBitsFrom
-	ldr r1, _0205932C ; =_020B0A48
+	ldr r1, _0205932C ; =TEAM_MEMBER_TABLE_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0x50
 	add r1, r1, #0x82
 	add r1, r1, #0x9800
 	bl CopyBitsFrom
-	ldr r5, _0205932C ; =_020B0A48
+	ldr r5, _0205932C ; =TEAM_MEMBER_TABLE_PTR
 	mov r7, #0
 	add r6, sp, #0
 	mov r4, #0x44
@@ -94470,7 +94470,7 @@ _020592F0:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0205932C: .word _020B0A48
+_0205932C: .word TEAM_MEMBER_TABLE_PTR
 _02059330: .word 0x0000022B
 	arm_func_end ReadMonsterInfoFromSave
 
@@ -94627,7 +94627,7 @@ ReadMonsterFromSave: ; 0x02059444
 	arm_func_start sub_0205956C
 sub_0205956C: ; 0x0205956C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r2, _020597A4 ; =_020B0A48
+	ldr r2, _020597A4 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, r1
 	ldr r1, [r2]
 	mov r2, #1
@@ -94636,7 +94636,7 @@ sub_0205956C: ; 0x0205956C
 	add r1, r1, r5
 	mov sl, r0
 	bl CopyBitsTo
-	ldr r1, _020597A4 ; =_020B0A48
+	ldr r1, _020597A4 ; =TEAM_MEMBER_TABLE_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	mov r2, #0x10
@@ -94644,7 +94644,7 @@ sub_0205956C: ; 0x0205956C
 	add r1, r1, #0x9000
 	add r1, r1, r5, lsl #1
 	bl CopyBitsTo
-	ldr r6, _020597A4 ; =_020B0A48
+	ldr r6, _020597A4 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #0
 	mov r7, #0x10
 _020595C0:
@@ -94662,7 +94662,7 @@ _020595C0:
 	mov r0, #0x1a0
 	mul r8, r5, r0
 	ldr fp, _020597A8 ; =_020A3498
-	ldr r5, _020597A4 ; =_020B0A48
+	ldr r5, _020597A4 ; =TEAM_MEMBER_TABLE_PTR
 	mov sb, #0
 	mov r6, #4
 	mov r4, #0x68
@@ -94771,7 +94771,7 @@ _02059608:
 	blt _02059608
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020597A4: .word _020B0A48
+_020597A4: .word TEAM_MEMBER_TABLE_PTR
 _020597A8: .word _020A3498
 _020597AC: .word _020A3499
 	arm_func_end sub_0205956C
@@ -94813,7 +94813,7 @@ _02059820: .word _020A3498
 	arm_func_start sub_02059824
 sub_02059824: ; 0x02059824
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r2, _02059A70 ; =_020B0A48
+	ldr r2, _02059A70 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, r1
 	ldr r1, [r2]
 	mov r2, #1
@@ -94822,7 +94822,7 @@ sub_02059824: ; 0x02059824
 	add r1, r1, r5
 	mov sl, r0
 	bl CopyBitsFrom
-	ldr r1, _02059A70 ; =_020B0A48
+	ldr r1, _02059A70 ; =TEAM_MEMBER_TABLE_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	mov r2, #0x10
@@ -94830,7 +94830,7 @@ sub_02059824: ; 0x02059824
 	add r1, r1, #0x9000
 	add r1, r1, r5, lsl #1
 	bl CopyBitsFrom
-	ldr r6, _02059A70 ; =_020B0A48
+	ldr r6, _02059A70 ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #0
 	mov r7, #0x10
 _02059878:
@@ -94848,7 +94848,7 @@ _02059878:
 	mov r0, #0x1a0
 	mul r8, r5, r0
 	mov sb, #0
-	ldr r4, _02059A70 ; =_020B0A48
+	ldr r4, _02059A70 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, sb
 	mov r6, #1
 	mov fp, #0x68
@@ -94962,7 +94962,7 @@ _020598C0:
 	blt _020598C0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02059A70: .word _020B0A48
+_02059A70: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02059824
 
 	arm_func_start sub_02059A74
@@ -95690,14 +95690,14 @@ _0205A424:
 
 	arm_func_start sub_0205A430
 sub_0205A430: ; 0x0205A430
-	ldr r2, _0205A448 ; =_0209E6C0
+	ldr r2, _0205A448 ; =TACTIC_NAME_STRING_IDS
 	mov r1, r1, lsl #1
 	ldrh r1, [r2, r1]
 	ldr ip, _0205A44C ; =CopyStringFromMessageId
 	mov r2, #0x40
 	bx ip
 	.align 2, 0
-_0205A448: .word _0209E6C0
+_0205A448: .word TACTIC_NAME_STRING_IDS
 _0205A44C: .word CopyStringFromMessageId
 	arm_func_end sub_0205A430
 
@@ -96101,7 +96101,7 @@ _0205AA04:
 	str r0, [sp, #8]
 	mov r2, #0x50
 	mov r3, r1, lsl #1
-	ldr r1, _0205ADEC ; =_0209E6D8
+	ldr r1, _0205ADEC ; =STATUS_NAME_STRING_IDS
 	ldrh r1, [r1, r3]
 	bl CopyStringFromMessageId
 	ldr r0, [sp, #8]
@@ -96354,7 +96354,7 @@ _0205ADDC: .word 0x00000961
 _0205ADE0: .word 0x00000962
 _0205ADE4: .word 0x00000972
 _0205ADE8: .word 0x00000973
-_0205ADEC: .word _0209E6D8
+_0205ADEC: .word STATUS_NAME_STRING_IDS
 _0205ADF0: .word _020A34FC
 _0205ADF4: .word 0x00000968
 _0205ADF8: .word _020A3514
@@ -96659,42 +96659,42 @@ sub_0205B120: ; 0x0205B120
 	bne _0205B30C
 	ldrsh r0, [r4, #4]
 	cmp r0, #0x1a
-	ldreq r0, _0205B338 ; =_020A18AC
+	ldreq r0, _0205B338 ; =POWER_BAND_STAT_BOOST
 	ldreqsh r1, [r5, #2]
 	ldreqsh r0, [r0]
 	addeq r0, r1, r0
 	streqh r0, [r5, #2]
 	ldrsh r0, [r4, #4]
 	cmp r0, #0x32
-	ldreq r0, _0205B33C ; =_020A187C
+	ldreq r0, _0205B33C ; =MUNCH_BELT_STAT_BOOST
 	ldreqsh r1, [r5, #2]
 	ldreqsh r0, [r0]
 	addeq r0, r1, r0
 	streqh r0, [r5, #2]
 	ldrsh r0, [r4, #4]
 	cmp r0, #0x28
-	ldreq r0, _0205B340 ; =_020A186C
+	ldreq r0, _0205B340 ; =SPECIAL_BAND_STAT_BOOST
 	ldreqsh r1, [r5, #4]
 	ldreqsh r0, [r0]
 	addeq r0, r1, r0
 	streqh r0, [r5, #4]
 	ldrsh r0, [r4, #4]
 	cmp r0, #0x32
-	ldreq r0, _0205B33C ; =_020A187C
+	ldreq r0, _0205B33C ; =MUNCH_BELT_STAT_BOOST
 	ldreqsh r1, [r5, #4]
 	ldreqsh r0, [r0]
 	addeq r0, r1, r0
 	streqh r0, [r5, #4]
 	ldrsh r0, [r4, #4]
 	cmp r0, #0x25
-	ldreq r0, _0205B344 ; =_020A18A8
+	ldreq r0, _0205B344 ; =DEF_SCARF_STAT_BOOST
 	ldreqsh r1, [r5, #6]
 	ldreqsh r0, [r0]
 	addeq r0, r1, r0
 	streqh r0, [r5, #6]
 	ldrsh r0, [r4, #4]
 	cmp r0, #0x29
-	ldreq r0, _0205B348 ; =_020A18B4
+	ldreq r0, _0205B348 ; =ZINC_BAND_STAT_BOOST
 	ldreqsh r1, [r5, #8]
 	ldreqsh r0, [r0]
 	addeq r0, r1, r0
@@ -96703,7 +96703,7 @@ sub_0205B120: ; 0x0205B120
 	bl IsAuraBow
 	cmp r0, #0
 	beq _0205B30C
-	ldr r0, _0205B34C ; =_020A1898
+	ldr r0, _0205B34C ; =AURA_BOW_STAT_BOOST
 	ldrsh r1, [r5, #2]
 	ldrsh r2, [r0]
 	add r0, r1, r2
@@ -96730,12 +96730,12 @@ _0205B30C:
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_0205B338: .word _020A18AC
-_0205B33C: .word _020A187C
-_0205B340: .word _020A186C
-_0205B344: .word _020A18A8
-_0205B348: .word _020A18B4
-_0205B34C: .word _020A1898
+_0205B338: .word POWER_BAND_STAT_BOOST
+_0205B33C: .word MUNCH_BELT_STAT_BOOST
+_0205B340: .word SPECIAL_BAND_STAT_BOOST
+_0205B344: .word DEF_SCARF_STAT_BOOST
+_0205B348: .word ZINC_BAND_STAT_BOOST
+_0205B34C: .word AURA_BOW_STAT_BOOST
 _0205B350: .word _020A1870
 	arm_func_end sub_0205B120
 
@@ -101288,7 +101288,7 @@ _0205EEA4:
 _0205EEF4:
 	mov r0, r6, lsl #1
 	ldrsh r2, [fp, r0]
-	ldr r0, _0205F008 ; =_020B0A48
+	ldr r0, _0205F008 ; =TEAM_MEMBER_TABLE_PTR
 	mov r1, #0
 	ldr r3, [r0]
 	mov r0, #0x44
@@ -101334,7 +101334,7 @@ _0205EF90:
 	mov r1, r8, lsl #1
 	add r0, sp, #4
 	ldrsh r1, [r0, r1]
-	ldr r0, _0205F008 ; =_020B0A48
+	ldr r0, _0205F008 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r2, [r0]
 	mov r0, #0x44
 	smlabb r0, r1, r0, r2
@@ -101366,7 +101366,7 @@ _0205EFFC:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0205F004: .word _020B0A60
-_0205F008: .word _020B0A48
+_0205F008: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_0205EE40
 
 	arm_func_start sub_0205F00C
@@ -103322,7 +103322,7 @@ _02060964:
 	arm_func_start sub_0206096C
 sub_0206096C: ; 0x0206096C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r2, _020609E0 ; =_020A3CF4
+	ldr r2, _020609E0 ; =ARM9_UNKNOWN_FUNCTION_TABLE__NA_20A3CF4
 	mov r8, r0
 	mov r7, r1
 	ldr r5, [r2, r8, lsl #2]
@@ -103353,7 +103353,7 @@ _020609BC:
 	bl sub_0206096C
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_020609E0: .word _020A3CF4
+_020609E0: .word ARM9_UNKNOWN_FUNCTION_TABLE__NA_20A3CF4
 _020609E4: .word _020B0AD8
 	arm_func_end sub_0206096C
 
@@ -103394,7 +103394,7 @@ sub_02060A10: ; 0x02060A10
 	ldrh sl, [r2]
 	bl strcat
 	ldr fp, _02060AF0 ; =0x00000FFF
-	ldr sb, _02060AF4 ; =_020A3EA4
+	ldr sb, _02060AF4 ; =MISSION_STRING_IDS
 	add r7, fp, #0xf000
 	ldr r8, _02060AF8 ; =_020B0AD8
 	b _02060AD4
@@ -103434,7 +103434,7 @@ _02060AE4:
 	.align 2, 0
 _02060AEC: .word _020A4644
 _02060AF0: .word 0x00000FFF
-_02060AF4: .word _020A3EA4
+_02060AF4: .word MISSION_STRING_IDS
 _02060AF8: .word _020B0AD8
 	arm_func_end sub_02060A10
 
@@ -103455,7 +103455,7 @@ sub_02060AFC: ; 0x02060AFC
 	mov r0, r6
 	ldrb r7, [r5, #0x47]
 	bl strcat
-	ldr r1, _02060DFC ; =_020B0A7C
+	ldr r1, _02060DFC ; =REMOTE_STRING_PTR_TABLE
 	mov r0, r4
 	ldr r1, [r1, r7, lsl #2]
 	bl SprintfStatic__020609E8
@@ -103637,7 +103637,7 @@ _02060DB8:
 	ldr r0, [r5, #8]
 	bl sub_02062D9C
 _02060DC4:
-	ldr r2, _02060E20 ; =_020B0A98
+	ldr r2, _02060E20 ; =RANK_STRING_PTR_TABLE
 	ldr r1, _02060E1C ; =_020A4678
 	ldr r5, [r2, r0, lsl #2]
 	mov r0, r6
@@ -103653,7 +103653,7 @@ _02060DE4:
 	.align 2, 0
 _02060DF4: .word _020A4654
 _02060DF8: .word _020A4664
-_02060DFC: .word _020B0A7C
+_02060DFC: .word REMOTE_STRING_PTR_TABLE
 _02060E00: .word 0x000038C9
 _02060E04: .word 0x000038CB
 _02060E08: .word 0x000038CC
@@ -103662,7 +103662,7 @@ _02060E10: .word _020A4644
 _02060E14: .word _020A4674
 _02060E18: .word 0x00003C2A
 _02060E1C: .word _020A4678
-_02060E20: .word _020B0A98
+_02060E20: .word RANK_STRING_PTR_TABLE
 	arm_func_end sub_02060AFC
 
 	arm_func_start sub_02060E24
@@ -103679,7 +103679,7 @@ sub_02060E24: ; 0x02060E24
 	ldr r1, _02060EA4 ; =_020A4664
 	mov r0, r5
 	bl strcat
-	ldr r1, _02060EA8 ; =_020B0A7C
+	ldr r1, _02060EA8 ; =REMOTE_STRING_PTR_TABLE
 	mov r0, r4
 	ldr r1, [r1, #8]
 	bl SprintfStatic__020609E8
@@ -103701,7 +103701,7 @@ sub_02060E24: ; 0x02060E24
 	.align 2, 0
 _02060EA0: .word _020A4654
 _02060EA4: .word _020A4664
-_02060EA8: .word _020B0A7C
+_02060EA8: .word REMOTE_STRING_PTR_TABLE
 _02060EAC: .word _020A4644
 _02060EB0: .word 0x00003C4D
 	arm_func_end sub_02060E24
@@ -103758,7 +103758,7 @@ _02060F60:
 	mov r1, #0x12c
 	mov r3, #0
 	add sl, r2, r0
-	ldr r2, _02060FD4 ; =_020A3EA4
+	ldr r2, _02060FD4 ; =MISSION_STRING_IDS
 	mov ip, sl, lsl #1
 	ldrh r2, [r2, ip]
 	mov r0, r6
@@ -103784,7 +103784,7 @@ _02060FA8:
 	.align 2, 0
 _02060FCC: .word _020B0AD8
 _02060FD0: .word 0x00000FFF
-_02060FD4: .word _020A3EA4
+_02060FD4: .word MISSION_STRING_IDS
 	arm_func_end sub_02060EB4
 
 	arm_func_start sub_02060FD8
@@ -104161,7 +104161,7 @@ _020614EC:
 	bl sub_02026214
 _02061518:
 	ldrb r2, [sb, #0x48]
-	ldr r1, _02061C08 ; =_020A3B9C
+	ldr r1, _02061C08 ; =MISSION_MENU_STRING_IDS_1
 	mov r0, r5
 	mov r2, r2, lsl #1
 	ldrh r1, [r1, r2]
@@ -104302,7 +104302,7 @@ _02061710:
 	ldr r0, [sb, #8]
 	mov r1, #0
 	bl sub_02062D5C
-	ldr r1, _02061C30 ; =_020A3D6C
+	ldr r1, _02061C30 ; =MISSION_RANK_POINTS
 	b _02061764
 _02061740:
 	ldrb r1, [r1, #1]
@@ -104313,7 +104313,7 @@ _02061740:
 	ldrb r1, [r1, #1]
 	ldr r0, [sb, #8]
 	bl sub_02062D5C
-	ldr r1, _02061C30 ; =_020A3D6C
+	ldr r1, _02061C30 ; =MISSION_RANK_POINTS
 _02061764:
 	add r7, r7, #0xd
 	ldr r6, [r1, r0, lsl #2]
@@ -104322,7 +104322,7 @@ _02061764:
 	mov r2, r7
 	mov r1, #4
 	bl sub_02026268
-	ldr r1, _02061C34 ; =_020B0A98
+	ldr r1, _02061C34 ; =RANK_STRING_PTR_TABLE
 	mov r0, r8
 	ldr r3, [r1, sl, lsl #2]
 	mov r2, r7
@@ -104380,7 +104380,7 @@ _02061830: ; jump table
 	b _02061A5C ; case 7
 _02061850:
 	ldr r1, [sb, #0x20]
-	ldr r0, _02061C44 ; =_020A3BDC
+	ldr r0, _02061C44 ; =MISSION_MENU_STRING_IDS_2
 	str r1, [sp, #0xd0]
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
@@ -104401,7 +104401,7 @@ _02061850:
 	b _02061BA4
 _020618A0:
 	ldr r1, [sb, #0x20]
-	ldr r0, _02061C44 ; =_020A3BDC
+	ldr r0, _02061C44 ; =MISSION_MENU_STRING_IDS_2
 	str r1, [sp, #0xd0]
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
@@ -104422,7 +104422,7 @@ _020618A0:
 	b _02061BA4
 _020618F0:
 	ldrsh r1, [sb, #0x2c]
-	ldr r0, _02061C44 ; =_020A3BDC
+	ldr r0, _02061C44 ; =MISSION_MENU_STRING_IDS_2
 	str r1, [sp, #0xbc]
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
@@ -104443,7 +104443,7 @@ _020618F0:
 	b _02061BA4
 _02061940:
 	ldrsh r1, [sb, #0x2c]
-	ldr r0, _02061C44 ; =_020A3BDC
+	ldr r0, _02061C44 ; =MISSION_MENU_STRING_IDS_2
 	str r1, [sp, #0xbc]
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
@@ -104464,7 +104464,7 @@ _02061940:
 	b _02061BA4
 _02061990:
 	ldrsh r1, [sb, #0x2c]
-	ldr r0, _02061C44 ; =_020A3BDC
+	ldr r0, _02061C44 ; =MISSION_MENU_STRING_IDS_2
 	str r1, [sp, #0xbc]
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
@@ -104484,7 +104484,7 @@ _02061990:
 	bl sub_02026214
 	b _02061BA4
 _020619E0:
-	ldr r0, _02061C44 ; =_020A3BDC
+	ldr r0, _02061C44 ; =MISSION_MENU_STRING_IDS_2
 	mov r1, r1, lsl #1
 	ldrh r1, [r0, r1]
 	mov r0, r5
@@ -104497,7 +104497,7 @@ _020619E0:
 	b _02061BA4
 _02061A0C:
 	ldrsh r1, [sb, #0x3c]
-	ldr r0, _02061C44 ; =_020A3BDC
+	ldr r0, _02061C44 ; =MISSION_MENU_STRING_IDS_2
 	str r1, [sp, #0xac]
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
@@ -104517,7 +104517,7 @@ _02061A0C:
 	bl sub_02026214
 	b _02061BA4
 _02061A5C:
-	ldr r0, _02061C44 ; =_020A3BDC
+	ldr r0, _02061C44 ; =MISSION_MENU_STRING_IDS_2
 	mov r1, r1, lsl #1
 	ldrh r1, [r0, r1]
 	mov r0, r5
@@ -104629,7 +104629,7 @@ _02061BF8: .word 0x00003C1F
 _02061BFC: .word _020A4688
 _02061C00: .word 0x00003C37
 _02061C04: .word _020A4698
-_02061C08: .word _020A3B9C
+_02061C08: .word MISSION_MENU_STRING_IDS_1
 _02061C0C: .word _020A46A8
 _02061C10: .word 0x00003C22
 _02061C14: .word 0x00003C23
@@ -104639,12 +104639,12 @@ _02061C20: .word 0x00003C25
 _02061C24: .word 0x00003C27
 _02061C28: .word 0x00003C28
 _02061C2C: .word 0x00003C2A
-_02061C30: .word _020A3D6C
-_02061C34: .word _020B0A98
+_02061C30: .word MISSION_RANK_POINTS
+_02061C34: .word RANK_STRING_PTR_TABLE
 _02061C38: .word 0x00003C29
 _02061C3C: .word 0x00003C2C
 _02061C40: .word 0x00003C2B
-_02061C44: .word _020A3BDC
+_02061C44: .word MISSION_MENU_STRING_IDS_2
 _02061C48: .word 0x000038DF
 _02061C4C: .word 0x00003C2D
 _02061C50: .word _020A3CBC
@@ -105541,19 +105541,19 @@ _02062810: .word _020B0AD8
 	arm_func_start sub_02062814
 sub_02062814: ; 0x02062814
 	cmp r0, #0
-	ldrne r1, _02062828 ; =_020A3CAC
+	ldrne r1, _02062828 ; =MISSION_DUNGEON_UNLOCK_TABLE
 	strne r1, [r0]
 	mov r0, #3
 	bx lr
 	.align 2, 0
-_02062828: .word _020A3CAC
+_02062828: .word MISSION_DUNGEON_UNLOCK_TABLE
 	arm_func_end sub_02062814
 
 	arm_func_start sub_0206282C
 sub_0206282C: ; 0x0206282C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r5, #0
-	ldr r4, _020628FC ; =_020A3CAC
+	ldr r4, _020628FC ; =MISSION_DUNGEON_UNLOCK_TABLE
 	mov sb, r0
 	mov r8, r5
 _02062840:
@@ -105609,7 +105609,7 @@ _020628E8:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_020628FC: .word _020A3CAC
+_020628FC: .word MISSION_DUNGEON_UNLOCK_TABLE
 	arm_func_end sub_0206282C
 
 	arm_func_start sub_02062900
@@ -105699,7 +105699,7 @@ IsMonsterMissionAllowed: ; 0x02062A14
 	mov r4, #0
 	bl GetBaseForm
 	bl FemaleToMaleForm
-	ldr r1, _02062A54 ; =_020A3DAC
+	ldr r1, _02062A54 ; =MISSION_BANNED_MONSTERS
 	b _02062A3C
 _02062A2C:
 	cmp r0, r2
@@ -105714,7 +105714,7 @@ _02062A3C:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02062A54: .word _020A3DAC
+_02062A54: .word MISSION_BANNED_MONSTERS
 	arm_func_end IsMonsterMissionAllowed
 
 	arm_func_start CanMonsterBeUsedForMissionWrapper
@@ -105775,7 +105775,7 @@ IsMonsterMissionAllowedStory: ; 0x02062AE4
 	cmp r0, #0
 	bne _02062B58
 	mov r2, #0
-	ldr r0, _02062B60 ; =_020A3D14
+	ldr r0, _02062B60 ; =MISSION_BANNED_STORY_MONSTERS
 	b _02062B18
 _02062B08:
 	cmp r4, r1
@@ -105803,7 +105803,7 @@ _02062B58:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02062B60: .word _020A3D14
+_02062B60: .word MISSION_BANNED_STORY_MONSTERS
 	arm_func_end IsMonsterMissionAllowedStory
 
 	arm_func_start sub_02062B64
@@ -105992,22 +105992,22 @@ sub_02062D9C: ; 0x02062D9C
 
 	arm_func_start sub_02062DB4
 sub_02062DB4: ; 0x02062DB4
-	ldr r1, _02062DC0 ; =_020B0A98
+	ldr r1, _02062DC0 ; =RANK_STRING_PTR_TABLE
 	ldr r0, [r1, r0, lsl #2]
 	bx lr
 	.align 2, 0
-_02062DC0: .word _020B0A98
+_02062DC0: .word RANK_STRING_PTR_TABLE
 	arm_func_end sub_02062DB4
 
 	arm_func_start sub_02062DC4
 sub_02062DC4: ; 0x02062DC4
 	stmdb sp!, {r3, lr}
 	bl sub_02062D5C
-	ldr r1, _02062DD8 ; =_020A3D6C
+	ldr r1, _02062DD8 ; =MISSION_RANK_POINTS
 	ldr r0, [r1, r0, lsl #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02062DD8: .word _020A3D6C
+_02062DD8: .word MISSION_RANK_POINTS
 	arm_func_end sub_02062DC4
 
 	arm_func_start CanSendItem
@@ -106022,7 +106022,7 @@ CanSendItem: ; 0x02062DDC
 	ldmeqia sp!, {r4, pc}
 _02062DFC:
 	mov r2, #0
-	ldr r0, _02062E30 ; =_020A3CB2
+	ldr r0, _02062E30 ; =NO_SEND_ITEM_TABLE
 	b _02062E18
 _02062E08:
 	cmp r4, r1
@@ -106037,7 +106037,7 @@ _02062E18:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02062E30: .word _020A3CB2
+_02062E30: .word NO_SEND_ITEM_TABLE
 	arm_func_end CanSendItem
 
 	arm_func_start sub_02062E34
@@ -106209,12 +106209,12 @@ _02063074:
 	strh r1, [r4]
 	ldrb r1, [r5, #1]
 	bl sub_02062D5C
-	ldr r1, _02063098 ; =_020A3D6C
+	ldr r1, _02063098 ; =MISSION_RANK_POINTS
 	ldr r0, [r1, r0, lsl #2]
 	str r0, [r4, #0x28]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02063098: .word _020A3D6C
+_02063098: .word MISSION_RANK_POINTS
 	arm_func_end sub_02062E5C
 
 	arm_func_start sub_0206309C
@@ -106328,11 +106328,11 @@ _020631F4:
 	add r0, sp, #0
 	mov r2, #0xe
 	beq _02063210
-	ldr r1, _02063238 ; =_020A3CE4
+	ldr r1, _02063238 ; =ARM9_UNKNOWN_TABLE__NA_20A3CE4
 	bl MemcpySimple
 	b _02063218
 _02063210:
-	ldr r1, _0206323C ; =_020A3CC8
+	ldr r1, _0206323C ; =ARM9_UNKNOWN_TABLE__NA_20A3CC8
 	bl MemcpySimple
 _02063218:
 	ldrsh r2, [r4, #0xe]
@@ -106345,8 +106345,8 @@ _02063228:
 	.align 2, 0
 _02063230: .word _020A3CD6
 _02063234: .word 0x0000031E
-_02063238: .word _020A3CE4
-_0206323C: .word _020A3CC8
+_02063238: .word ARM9_UNKNOWN_TABLE__NA_20A3CE4
+_0206323C: .word ARM9_UNKNOWN_TABLE__NA_20A3CC8
 	arm_func_end sub_0206315C
 
 	arm_func_start sub_02063240
@@ -106452,7 +106452,7 @@ sub_02063394: ; 0x02063394
 	bl DungeonSwapIdToIdx
 	mov r5, r0
 	mov r4, #0
-	ldr r1, _0206341C ; =_020A3CAC
+	ldr r1, _0206341C ; =MISSION_DUNGEON_UNLOCK_TABLE
 	b _0206340C
 _020633B0:
 	ldrb r0, [r1, r4, lsl #1]
@@ -106468,7 +106468,7 @@ _020633B0:
 	bl GetDungeonMode
 	cmp r0, #0
 	bne _020633F8
-	ldr r0, _0206341C ; =_020A3CAC
+	ldr r0, _0206341C ; =MISSION_DUNGEON_UNLOCK_TABLE
 	ldrb r0, [r0, r4, lsl #1]
 	bl GetMaxReachedFloor
 	cmp r0, #0
@@ -106487,7 +106487,7 @@ _0206340C:
 	mov r0, #3
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0206341C: .word _020A3CAC
+_0206341C: .word MISSION_DUNGEON_UNLOCK_TABLE
 _02063420: .word _020A3CAD
 	arm_func_end sub_02063394
 
@@ -106540,7 +106540,7 @@ _02063498:
 GetAvailableItemDeliveryList: ; 0x020634A8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, #0
-	ldr r4, _020634F0 ; =_020A3D3E
+	ldr r4, _020634F0 ; =ITEM_DELIVERY_TABLE
 	mov r8, r0
 	mov r5, r6
 _020634BC:
@@ -106558,7 +106558,7 @@ _020634BC:
 	mov r0, r6
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_020634F0: .word _020A3D3E
+_020634F0: .word ITEM_DELIVERY_TABLE
 	arm_func_end GetAvailableItemDeliveryList
 
 	arm_func_start sub_020634F4
@@ -108741,7 +108741,7 @@ sub_02065014: ; 0x02065014
 	beq _02065044
 	mov r1, #0xc
 	smulbb r1, r0, r1
-	ldr r0, _0206504C ; =_020A5488
+	ldr r0, _0206504C ; =EVENTS
 	ldrsh r0, [r0, r1]
 	cmp r0, #5
 	cmpne r0, #6
@@ -108752,7 +108752,7 @@ _02065044:
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_0206504C: .word _020A5488
+_0206504C: .word EVENTS
 	arm_func_end sub_02065014
 
 	arm_func_start sub_02065050
@@ -108788,7 +108788,7 @@ _020650B0:
 	beq _0206548C
 	mov r0, #0xc
 	smulbb r1, r2, r0
-	ldr r0, _02065498 ; =_020A7FF0
+	ldr r0, _02065498 ; =ENTITIES
 	ldrsh r0, [r0, r1]
 	cmp r0, #1
 	bne _020651AC
@@ -109066,7 +109066,7 @@ _0206548C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02065494: .word _020B0B08
-_02065498: .word _020A7FF0
+_02065498: .word ENTITIES
 	arm_func_end sub_02065050
 
 	arm_func_start sub_0206549C
@@ -109086,7 +109086,7 @@ sub_0206549C: ; 0x0206549C
 	beq _0206595C
 	mov r1, #0xc
 	smulbb r3, lr, r1
-	ldr ip, _02065964 ; =_020A7FF0
+	ldr ip, _02065964 ; =ENTITIES
 	ldrsh r2, [ip, r3]
 	add r3, ip, r3
 	cmp r2, #3
@@ -109103,7 +109103,7 @@ sub_0206549C: ; 0x0206549C
 	bl ov00_022E96E4
 	cmp r0, #0
 	beq _02065540
-	ldr r0, _02065968 ; =_020A68BC
+	ldr r0, _02065968 ; =ARM9_UNKNOWN_TABLE__NA_20A68BC
 	mov r1, r4, lsl #1
 	ldrsh r0, [r0, r1]
 	strh r0, [r5]
@@ -109134,7 +109134,7 @@ _02065580:
 	bl sub_02056E04
 	cmp r4, r0
 	bge _020656A8
-	ldr r0, _0206596C ; =_020B0A48
+	ldr r0, _0206596C ; =TEAM_MEMBER_TABLE_PTR
 	add r1, sp, #8
 	mov r2, r4, lsl #1
 	ldrsh r2, [r1, r2]
@@ -109158,7 +109158,7 @@ _020655BC:
 	bl ov00_022E96E4
 	cmp r0, #0
 	beq _02065610
-	ldr r0, _02065968 ; =_020A68BC
+	ldr r0, _02065968 ; =ARM9_UNKNOWN_TABLE__NA_20A68BC
 	mov r1, r4, lsl #1
 	ldrsh r0, [r0, r1]
 	strh r0, [r5]
@@ -109197,7 +109197,7 @@ _0206566C:
 	bl sub_02056D70
 	cmp r4, r0
 	bge _020656A8
-	ldr r0, _0206596C ; =_020B0A48
+	ldr r0, _0206596C ; =TEAM_MEMBER_TABLE_PTR
 	add r1, sp, #0
 	mov r2, r4, lsl #1
 	ldrsh r2, [r1, r2]
@@ -109414,9 +109414,9 @@ _0206595C:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02065964: .word _020A7FF0
-_02065968: .word _020A68BC
-_0206596C: .word _020B0A48
+_02065964: .word ENTITIES
+_02065968: .word ARM9_UNKNOWN_TABLE__NA_20A68BC
+_0206596C: .word TEAM_MEMBER_TABLE_PTR
 _02065970: .word _020B0B08
 	arm_func_end sub_0206549C
 
@@ -109551,13 +109551,13 @@ sub_02065B14: ; 0x02065B14
 	cmp r0, r1
 	moveq r0, #0
 	bxeq lr
-	ldr r2, _02065B38 ; =_020A7FF0
+	ldr r2, _02065B38 ; =ENTITIES
 	mov r1, #0xc
 	smlabb r0, r0, r1, r2
 	ldrh r0, [r0, #8]
 	bx lr
 	.align 2, 0
-_02065B38: .word _020A7FF0
+_02065B38: .word ENTITIES
 	arm_func_end sub_02065B14
 
 	arm_func_start sub_02065B3C
@@ -109691,7 +109691,7 @@ ScriptSpecialProcess0x17: ; 0x02065C48
 	stmdb sp!, {r3, lr}
 	mov r0, #0x12
 	bl RandInt
-	ldr r2, _02065C78 ; =_020A68C8
+	ldr r2, _02065C78 ; =DEMO_TEAMS
 	mov r3, r0, lsl #2
 	ldr r1, _02065C7C ; =_020A68CA
 	ldrsh r2, [r2, r3]
@@ -109701,7 +109701,7 @@ ScriptSpecialProcess0x17: ; 0x02065C48
 	strh r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02065C78: .word _020A68C8
+_02065C78: .word DEMO_TEAMS
 _02065C7C: .word _020A68CA
 _02065C80: .word _020B0B08
 	arm_func_end ScriptSpecialProcess0x17
@@ -109782,7 +109782,7 @@ MainLoop: ; 0x02065D1C
 	bl sub_0201DD90
 	bl sub_0201BB3C
 	bl sub_0201D7A8
-	ldr r0, _02066374 ; =_020AFC68
+	ldr r0, _02066374 ; =WAN_TABLE
 	mov r1, #0x80
 	ldr r0, [r0]
 	bl InitWanTable
@@ -110217,7 +110217,7 @@ _02066330:
 	bl sub_0204872C
 	b _02065F20
 	.align 2, 0
-_02066374: .word _020AFC68
+_02066374: .word WAN_TABLE
 _02066378: .word _020A9208
 	arm_func_end MainLoop
 
@@ -110415,7 +110415,7 @@ _02066550:
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	bne _020665B4
-	ldr r4, _02066878 ; =_020A9228
+	ldr r4, _02066878 ; =JOB_MENU_1
 	bl sub_0205E954
 	cmp r0, #0
 	ldreq r0, _02066874 ; =_020B0B24
@@ -110426,7 +110426,7 @@ _02066550:
 _020665B4:
 	cmp r0, #1
 	bne _020665D8
-	ldr r4, _0206687C ; =_020A9248
+	ldr r4, _0206687C ; =JOB_MENU_2
 	bl sub_0205EAC8
 	cmp r0, #0
 	ldreq r0, _02066874 ; =_020B0B24
@@ -110446,7 +110446,7 @@ _020665D8:
 	mov r1, #0
 	add r2, r4, r2, lsl #3
 	ldr lr, [r2, #4]
-	ldr r0, _02066880 ; =_020A9218
+	ldr r0, _02066880 ; =JOB_D_BOX_LAYOUT_1
 	str lr, [ip, #0xc]
 	str r4, [sp]
 	str r1, [sp, #4]
@@ -110636,9 +110636,9 @@ _0206686C:
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _02066874: .word _020B0B24
-_02066878: .word _020A9228
-_0206687C: .word _020A9248
-_02066880: .word _020A9218
+_02066878: .word JOB_MENU_1
+_0206687C: .word JOB_MENU_2
+_02066880: .word JOB_D_BOX_LAYOUT_1
 _02066884: .word 0x00000233
 	arm_func_end sub_02066510
 
@@ -111232,7 +111232,7 @@ _020670A0:
 	ldr r1, _020674B0 ; =_020A937C
 	ldrsb r3, [r0, #0xd]
 	ldr r0, _020674B4 ; =_020B0B39
-	ldr r2, _020674B8 ; =_020A9378
+	ldr r2, _020674B8 ; =JOB_MENU_11
 	ldr r1, [r1, r3, lsl #3]
 	add r3, r6, #0x248
 	str r1, [r6, #0xe48]
@@ -111310,7 +111310,7 @@ _020671BC:
 	ldr r1, _020674B0 ; =_020A937C
 	ldrsb r3, [r0, #0xd]
 	ldr r0, _020674B4 ; =_020B0B39
-	ldr r2, _020674B8 ; =_020A9378
+	ldr r2, _020674B8 ; =JOB_MENU_11
 	ldr r1, [r1, r3, lsl #3]
 	add r3, r6, #0x248
 	str r1, [r6, #0xe48]
@@ -111412,7 +111412,7 @@ _020672F4:
 	streq r0, [r6, #0xe48]
 	moveq r0, #0
 	streq r0, [r6, #0xef4]
-	ldreq r4, _020674C8 ; =_020A92D0
+	ldreq r4, _020674C8 ; =JOB_MENU_4
 	mov r0, r5
 	str r4, [sp]
 	str r1, [sp, #4]
@@ -111513,11 +111513,11 @@ _020674A8: .word sub_020696E8
 _020674AC: .word sub_02069750
 _020674B0: .word _020A937C
 _020674B4: .word _020B0B39
-_020674B8: .word _020A9378
+_020674B8: .word JOB_MENU_11
 _020674BC: .word 0x00003878
 _020674C0: .word 0x00000233
 _020674C4: .word _020A9268
-_020674C8: .word _020A92D0
+_020674C8: .word JOB_MENU_4
 	arm_func_end sub_02066A44
 
 	arm_func_start sub_020674CC
@@ -111762,7 +111762,7 @@ _020677CC:
 	ldr r1, _02067C0C ; =_020A9364
 	ldrsb r2, [r0, #0x10]
 	ldr r0, _02067C10 ; =_020B0B3C
-	ldr r5, _02067C14 ; =_020A9360
+	ldr r5, _02067C14 ; =JOB_MENU_10
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -111788,7 +111788,7 @@ _02067828:
 	ldr r1, _02067C0C ; =_020A9364
 	ldrsb r2, [r0, #0xe]
 	ldr r0, _02067C18 ; =_020B0B3A
-	ldr r5, _02067C14 ; =_020A9360
+	ldr r5, _02067C14 ; =JOB_MENU_10
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -111814,7 +111814,7 @@ _02067884:
 	ldr r1, _02067C0C ; =_020A9364
 	ldrsb r2, [r0, #9]
 	ldr r0, _02067C1C ; =_020B0B35
-	ldr r5, _02067C14 ; =_020A9360
+	ldr r5, _02067C14 ; =JOB_MENU_10
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -111840,7 +111840,7 @@ _020678E0:
 	ldr r1, _02067C0C ; =_020A9364
 	ldrsb r2, [r0, #8]
 	ldr r0, _02067C20 ; =_020B0B34
-	ldr r5, _02067C14 ; =_020A9360
+	ldr r5, _02067C14 ; =JOB_MENU_10
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -111877,7 +111877,7 @@ _02067954:
 	ldr r1, _02067C24 ; =_020A9394
 	ldrsb r2, [r0, #6]
 	ldr r0, _02067C28 ; =_020B0B32
-	ldr r5, _02067C2C ; =_020A9390
+	ldr r5, _02067C2C ; =JOB_MENU_12
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -111900,7 +111900,7 @@ _020679BC:
 	ldr r1, _02067C30 ; =_020A93B4
 	ldrsb r2, [r0, #6]
 	ldr r0, _02067C28 ; =_020B0B32
-	ldr r5, _02067C34 ; =_020A93B0
+	ldr r5, _02067C34 ; =JOB_MENU_13
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -111930,13 +111930,13 @@ _02067A2C:
 	ldr r1, _02067C38 ; =_020A92EC
 	ldrsb r2, [r0, #0xb]
 	ldr r0, _02067C3C ; =_020B0B37
-	ldr r5, _02067C40 ; =_020A92E8
+	ldr r5, _02067C40 ; =JOB_MENU_5
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
 	b _02067BC4
 _02067A50:
-	ldr r5, _02067C44 ; =_020A9318
+	ldr r5, _02067C44 ; =JOB_MENU_7
 	ldr r6, _02067C48 ; =0x000037B0
 	mov r7, sb
 	bl sub_020692B4
@@ -111955,7 +111955,7 @@ _02067A80:
 	mov r7, r6
 	ldrsb r2, [r1, #0x85]
 	sub r1, r7, #2
-	ldr r5, _02067C54 ; =_020A92B8
+	ldr r5, _02067C54 ; =JOB_MENU_3
 	cmp r2, r1
 	ldreq r0, [r0, #4]
 	ldr r6, _02067C58 ; =0x0000380C
@@ -111985,7 +111985,7 @@ _02067AF8:
 	ldr r1, _02067C60 ; =_020A9304
 	ldr r0, _02067C64 ; =_020B0B38
 	ldr r1, [r1, r2, lsl #3]
-	ldr r5, _02067C68 ; =_020A9300
+	ldr r5, _02067C68 ; =JOB_MENU_6
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
 	rsb r6, r8, #0x3a40
@@ -111996,12 +111996,12 @@ _02067B20:
 	mov r7, r6
 	str r0, [r4, #0xe48]
 	str r7, [r4, #0xef4]
-	ldr r5, _02067C6C ; =_020A9348
+	ldr r5, _02067C6C ; =JOB_MENU_9
 	ldr r6, _02067C70 ; =0x000038BF
 	b _02067BC4
 _02067B3C:
 	ldr r1, [r4, #0x6c]
-	ldr r5, _02067C74 ; =_020A9378
+	ldr r5, _02067C74 ; =JOB_MENU_11
 	ldr r6, _02067C78 ; =0x00003878
 	mov r2, sb
 	b _02067B68
@@ -112033,7 +112033,7 @@ _02067BA0:
 	ldr r1, _02067C80 ; =_020A9334
 	ldr r0, _02067C84 ; =_020B0B33
 	ldr r1, [r1, r2, lsl #3]
-	ldr r5, _02067C88 ; =_020A9330
+	ldr r5, _02067C88 ; =JOB_MENU_8
 	str r1, [r4, #0xe48]
 	add r6, r8, #0x3580
 	str r0, [r4, #0xef4]
@@ -112060,36 +112060,36 @@ _02067C04: .word _020A9298
 _02067C08: .word 0x00000233
 _02067C0C: .word _020A9364
 _02067C10: .word _020B0B3C
-_02067C14: .word _020A9360
+_02067C14: .word JOB_MENU_10
 _02067C18: .word _020B0B3A
 _02067C1C: .word _020B0B35
 _02067C20: .word _020B0B34
 _02067C24: .word _020A9394
 _02067C28: .word _020B0B32
-_02067C2C: .word _020A9390
+_02067C2C: .word JOB_MENU_12
 _02067C30: .word _020A93B4
-_02067C34: .word _020A93B0
+_02067C34: .word JOB_MENU_13
 _02067C38: .word _020A92EC
 _02067C3C: .word _020B0B37
-_02067C40: .word _020A92E8
-_02067C44: .word _020A9318
+_02067C40: .word JOB_MENU_5
+_02067C44: .word JOB_MENU_7
 _02067C48: .word 0x000037B0
 _02067C4C: .word _020A931C
 _02067C50: .word _020B0B30
-_02067C54: .word _020A92B8
+_02067C54: .word JOB_MENU_3
 _02067C58: .word 0x0000380C
 _02067C5C: .word _020A9278
 _02067C60: .word _020A9304
 _02067C64: .word _020B0B38
-_02067C68: .word _020A9300
-_02067C6C: .word _020A9348
+_02067C68: .word JOB_MENU_6
+_02067C6C: .word JOB_MENU_9
 _02067C70: .word 0x000038BF
-_02067C74: .word _020A9378
+_02067C74: .word JOB_MENU_11
 _02067C78: .word 0x00003878
 _02067C7C: .word _020B0B39
 _02067C80: .word _020A9334
 _02067C84: .word _020B0B33
-_02067C88: .word _020A9330
+_02067C88: .word JOB_MENU_8
 	arm_func_end sub_02067708
 
 	arm_func_start sub_02067C8C
@@ -114096,7 +114096,7 @@ sub_02069790: ; 0x02069790
 	ldr r0, _020697F4 ; =_020B0B44
 	mov ip, #0
 	ldr r2, [r0]
-	ldr r1, _020697F8 ; =_020A93D0
+	ldr r1, _020697F8 ; =JOB_D_BOX_LAYOUT_2
 	str r4, [r2]
 	ldr r3, [r0]
 	ldr r2, _020697FC ; =sub_02069AEC
@@ -114111,7 +114111,7 @@ sub_02069790: ; 0x02069790
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020697F4: .word _020B0B44
-_020697F8: .word _020A93D0
+_020697F8: .word JOB_D_BOX_LAYOUT_2
 _020697FC: .word sub_02069AEC
 	arm_func_end sub_02069790
 
@@ -114130,7 +114130,7 @@ sub_02069800: ; 0x02069800
 	ldr r0, _02069864 ; =_020B0B44
 	mov ip, #0
 	ldr r2, [r0]
-	ldr r1, _02069868 ; =_020A93D0
+	ldr r1, _02069868 ; =JOB_D_BOX_LAYOUT_2
 	str r5, [r2, #4]
 	ldr r3, [r0]
 	ldr r2, _0206986C ; =sub_02069CC0
@@ -114144,7 +114144,7 @@ sub_02069800: ; 0x02069800
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02069864: .word _020B0B44
-_02069868: .word _020A93D0
+_02069868: .word JOB_D_BOX_LAYOUT_2
 _0206986C: .word sub_02069CC0
 	arm_func_end sub_02069800
 
@@ -115216,7 +115216,7 @@ _0206A70C:
 	arm_func_start DungeonSwapIdToIdx
 DungeonSwapIdToIdx: ; 0x0206A714
 	mov ip, #0
-	ldr r3, _0206A74C ; =_020A93E0
+	ldr r3, _0206A74C ; =DUNGEON_SWAP_ID_TABLE
 	b _0206A73C
 _0206A720:
 	mov r1, ip, lsl #0x10
@@ -115232,19 +115232,19 @@ _0206A73C:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_0206A74C: .word _020A93E0
+_0206A74C: .word DUNGEON_SWAP_ID_TABLE
 	arm_func_end DungeonSwapIdToIdx
 
 	arm_func_start DungeonSwapIdxToId
 DungeonSwapIdxToId: ; 0x0206A750
 	mvn r1, #0
 	cmp r0, r1
-	ldrne r1, _0206A768 ; =_020A93E0
+	ldrne r1, _0206A768 ; =DUNGEON_SWAP_ID_TABLE
 	moveq r0, #0xff
 	ldrneb r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_0206A768: .word _020A93E0
+_0206A768: .word DUNGEON_SWAP_ID_TABLE
 	arm_func_end DungeonSwapIdxToId
 
 	arm_func_start GetDungeonModeSpecial
@@ -115340,13 +115340,13 @@ sub_0206A878: ; 0x0206A878
 	bl sub_0206A7CC
 	mvn r1, #0
 	cmp r0, r1
-	ldrne r1, _0206A89C ; =_020A94D0
+	ldrne r1, _0206A89C ; =MAP_MARKER_PLACEMENTS
 	movne r0, r0, lsl #3
 	ldrnesh r1, [r1, r0]
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0206A89C: .word _020A94D0
+_0206A89C: .word MAP_MARKER_PLACEMENTS
 	arm_func_end sub_0206A878
 
 	arm_func_start sub_0206A8A0
@@ -115421,7 +115421,7 @@ sub_0206A96C: ; 0x0206A96C
 	cmp r0, r2
 	moveq r0, r2
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r1, _0206A9D8 ; =_020A94D0
+	ldr r1, _0206A9D8 ; =MAP_MARKER_PLACEMENTS
 	cmp r5, r2
 	add r3, r1, r0, lsl #3
 	ldrnesh r1, [r3]
@@ -115432,7 +115432,7 @@ sub_0206A96C: ; 0x0206A96C
 	cmp r2, r0
 	mvnne r1, #0
 	cmpne r2, r1
-	ldrne r1, _0206A9D8 ; =_020A94D0
+	ldrne r1, _0206A9D8 ; =MAP_MARKER_PLACEMENTS
 	movne r0, r2
 	addne r3, r1, r2, lsl #3
 	ldrsh r1, [r3, #4]
@@ -115441,7 +115441,7 @@ sub_0206A96C: ; 0x0206A96C
 	str r1, [r4, #4]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0206A9D8: .word _020A94D0
+_0206A9D8: .word MAP_MARKER_PLACEMENTS
 	arm_func_end sub_0206A96C
 
 	arm_func_start sub_0206A9DC
@@ -115453,7 +115453,7 @@ sub_0206A9DC: ; 0x0206A9DC
 	bne _0206AA24
 	mov r0, #0x3e8
 	bl sub_0206A7CC
-	ldr r1, _0206AA34 ; =_020A94D0
+	ldr r1, _0206AA34 ; =MAP_MARKER_PLACEMENTS
 	mov r0, r0, lsl #3
 	ldrsh r0, [r1, r0]
 	ldr r1, _0206AA38 ; =0xFFFFFED2
@@ -115470,7 +115470,7 @@ _0206AA24:
 	ldrsh r0, [r0, r1]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0206AA34: .word _020A94D0
+_0206AA34: .word MAP_MARKER_PLACEMENTS
 _0206AA38: .word 0xFFFFFED2
 _0206AA3C: .word _020A94C6
 	arm_func_end sub_0206A9DC
@@ -115660,7 +115660,7 @@ sub_0206ABB0: ; 0x0206ABB0
 	mov r2, #0
 	str r0, [r4, #0x10]
 	ldr r1, [r4, #0x20]
-	ldr r0, _0206AD44 ; =_020AFC68
+	ldr r0, _0206AD44 ; =WAN_TABLE
 	add r1, r1, #0x4000
 	str r1, [r4, #0x20]
 	ldr r0, [r0]
@@ -115690,7 +115690,7 @@ _0206AD34: .word _020A9F34
 _0206AD38: .word _020A9F48
 _0206AD3C: .word _020A9F5C
 _0206AD40: .word _020A9F70
-_0206AD44: .word _020AFC68
+_0206AD44: .word WAN_TABLE
 _0206AD48: .word _020A9F84
 	arm_func_end sub_0206ABB0
 
@@ -116675,7 +116675,7 @@ _0206BB3C:
 	bl sub_0201E020
 	add r0, r4, #0xc
 	bl sub_0201E020
-	ldr r0, _0206BB90 ; =_020AFC68
+	ldr r0, _0206BB90 ; =WAN_TABLE
 	ldrsh r1, [r4, #0x1c]
 	ldr r0, [r0]
 	bl DeleteWanTableEntryVeneer
@@ -116689,7 +116689,7 @@ _0206BB3C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0206BB8C: .word _020B0B4C
-_0206BB90: .word _020AFC68
+_0206BB90: .word WAN_TABLE
 	arm_func_end sub_0206BA5C
 
 	arm_func_start sub_0206BB94
@@ -123295,7 +123295,7 @@ _02071248:
 	blo _020712A0
 	cmp r3, #0x90
 	blo _02071288
-	ldr r2, _020713DC ; =_020B0B90
+	ldr r2, _020713DC ; =SMD_EVENTS_FUN_TABLE
 	mov r1, r7
 	add r2, r2, r3, lsl #2
 	ldr r5, [r2, #-0x240]
@@ -123399,7 +123399,7 @@ _020713C4:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020713DC: .word _020B0B90
+_020713DC: .word SMD_EVENTS_FUN_TABLE
 _020713E0: .word _020B0B7C
 _020713E4: .word 0x02040811
 	arm_func_end ParseDseEvents
@@ -128010,7 +128010,7 @@ _02074D80:
 	ldrb r3, [r5, #1]
 	cmp r3, #0
 	bne _02074DB0
-	ldr r0, _02074E00 ; =_020B1050
+	ldr r0, _02074E00 ; =MUSIC_DURATION_LOOKUP_TABLE_2
 	ldr r1, _02074E04 ; =_022B7330
 	ldr r2, [r0, r2, lsl #2]
 	mov r0, #0x3e8
@@ -128019,7 +128019,7 @@ _02074D80:
 	bl __udivsi3
 	b _02074DD4
 _02074DB0:
-	ldr r0, _02074E08 ; =_020B0F50
+	ldr r0, _02074E08 ; =MUSIC_DURATION_LOOKUP_TABLE_1
 	mov r1, r2, lsl #1
 	ldrh r2, [r0, r1]
 	ldr r1, _02074E04 ; =_022B7330
@@ -128041,9 +128041,9 @@ _02074DD4:
 	str r0, [r5, #0x14]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02074E00: .word _020B1050
+_02074E00: .word MUSIC_DURATION_LOOKUP_TABLE_2
 _02074E04: .word _022B7330
-_02074E08: .word _020B0F50
+_02074E08: .word MUSIC_DURATION_LOOKUP_TABLE_1
 	arm_func_end sub_02074D58
 
 	arm_func_start UpdateTrackVolumeEnvelopes
@@ -129443,7 +129443,7 @@ _0207600C:
 	beq _02076048
 	bl sub_02075B38
 	mov r1, r0, asr #5
-	ldr r0, _0207606C ; =_020ADFB0
+	ldr r0, _0207606C ; =ARM9_UNKNOWN_TABLE__NA_20ADFB0
 	mov r1, r1, lsl #1
 	ldrsh r0, [r0, r1]
 	add r0, r4, r0
@@ -129453,7 +129453,7 @@ _0207600C:
 _02076048:
 	bl sub_02075B38
 	mov r1, r0, asr #5
-	ldr r0, _0207606C ; =_020ADFB0
+	ldr r0, _0207606C ; =ARM9_UNKNOWN_TABLE__NA_20ADFB0
 	mov r1, r1, lsl #1
 	ldrsh r0, [r0, r1]
 	sub r0, r4, r0
@@ -129461,7 +129461,7 @@ _02076048:
 	mov r0, r0, lsr #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0207606C: .word _020ADFB0
+_0207606C: .word ARM9_UNKNOWN_TABLE__NA_20ADFB0
 	arm_func_end sub_02075EC8
 
 	arm_func_start sub_02076070
@@ -139206,7 +139206,7 @@ _0207D558:
 	add r1, r0, #0xd3
 	mvn r2, #0xef
 	cmp r0, r2
-	ldr r3, _0207D5AC ; =_020AE924
+	ldr r3, _0207D5AC ; =ARM9_UNKNOWN_TABLE__NA_20AE924
 	add r1, r1, #0x200
 	ldrb r3, [r3, r1]
 	movlt r0, #3
@@ -139226,7 +139226,7 @@ _0207D598:
 	bx lr
 	.align 2, 0
 _0207D5A8: .word 0xFFFFFD2D
-_0207D5AC: .word _020AE924
+_0207D5AC: .word ARM9_UNKNOWN_TABLE__NA_20AE924
 	arm_func_end sub_0207D540
 
 	arm_func_start sub_0207D5B0
@@ -162475,8 +162475,8 @@ _02090C48:
 	.byte 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00
 	.byte 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00
 	.byte 0xFF, 0x00, 0xFF, 0x00
-	.global _02091448
-_02091448:
+	.global NATURAL_LOG_VALUE_TABLE
+NATURAL_LOG_VALUE_TABLE:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x17, 0x0B, 0x93, 0x11, 0x2E, 0x16, 0xC0, 0x19
 	.byte 0xAB, 0x1C, 0x22, 0x1F, 0x45, 0x21, 0x27, 0x23, 0xD7, 0x24, 0x5D, 0x26, 0xC2, 0x27, 0x0A, 0x29
 	.byte 0x39, 0x2A, 0x54, 0x2B, 0x5C, 0x2C, 0x54, 0x2D, 0x3E, 0x2E, 0x1C, 0x2F, 0xEE, 0x2F, 0xB6, 0x30
@@ -163101,8 +163101,8 @@ _02092AB8:
 _02092AD8:
 	.byte 0x00, 0x08, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
 	.byte 0x00, 0x20, 0x00, 0x00
-	.global _02092AE8
-_02092AE8:
+	.global CART_REMOVED_IMG_DATA
+CART_REMOVED_IMG_DATA:
 	.byte 0x41, 0x54, 0x34, 0x50
 	.word _02196A58
 	.byte 0x04, 0x06, 0x08, 0x0A
@@ -163737,8 +163737,8 @@ _02094D0C:
 _02094D20:
 	.byte 0x01, 0x00, 0x03, 0x00
 	.byte 0x05, 0x00, 0x07, 0x00, 0x02, 0x00, 0x03, 0x00, 0x06, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _02094D34
-_02094D34:
+	.global AVAILABLE_ITEMS_IN_GROUP_TABLE
+AVAILABLE_ITEMS_IN_GROUP_TABLE:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x00, 0x0F, 0x70, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x80, 0x01, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -164586,8 +164586,8 @@ _02097FC4:
 _02097FE4:
 	.byte 0x25, 0x73, 0x5B, 0x43, 0x53, 0x3A, 0x31, 0x3A, 0x52, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x3A
 	.byte 0x31, 0x5D, 0x00, 0x00
-	.global _02097FF8
-_02097FF8:
+	.global ARM9_UNKNOWN_TABLE__NA_2097FF8
+ARM9_UNKNOWN_TABLE__NA_2097FF8:
 	.byte 0xC8, 0x01, 0xAC, 0x00, 0xC9, 0x01, 0xAD, 0x00, 0xCA, 0x01, 0xAE, 0x00
 	.byte 0xCB, 0x01, 0xAF, 0x00, 0xCC, 0x01, 0x07, 0x01, 0xCD, 0x01, 0x09, 0x01, 0xCE, 0x01, 0x0A, 0x01
 	.byte 0xCF, 0x01, 0x0B, 0x01, 0xD0, 0x01, 0x46, 0x01, 0xD1, 0x01, 0x88, 0x01, 0xD2, 0x01, 0xE0, 0x01
@@ -164621,35 +164621,35 @@ _020980AC:
 _020980B0:
 	.byte 0x5B, 0x43, 0x53, 0x3A
 	.byte 0x49, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
-	.global _020980C0
-_020980C0:
+	.global KECLEON_SHOP_ITEM_TABLE_LISTS_1
+KECLEON_SHOP_ITEM_TABLE_LISTS_1:
 	.byte 0x10, 0x00, 0x00, 0x00
 	.byte 0x12, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00
-	.global _020980D0
-_020980D0:
+	.global KECLEON_SHOP_ITEM_TABLE_LISTS_2
+KECLEON_SHOP_ITEM_TABLE_LISTS_2:
 	.byte 0x11, 0x00, 0x00, 0x00
 	.byte 0x13, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020980E8
-_020980E8:
+	.global EXCLUSIVE_ITEM_ATTACK_BOOSTS
+EXCLUSIVE_ITEM_ATTACK_BOOSTS:
 	.byte 0x00
-	.global _020980E9
-_020980E9:
+	.global EXCLUSIVE_ITEM_DEFENSE_BOOSTS
+EXCLUSIVE_ITEM_DEFENSE_BOOSTS:
 	.byte 0x00
-	.global _020980EA
-_020980EA:
+	.global EXCLUSIVE_ITEM_SPECIAL_ATTACK_BOOSTS
+EXCLUSIVE_ITEM_SPECIAL_ATTACK_BOOSTS:
 	.byte 0x00
-	.global _020980EB
-_020980EB:
+	.global EXCLUSIVE_ITEM_SPECIAL_DEFENSE_BOOSTS
+EXCLUSIVE_ITEM_SPECIAL_DEFENSE_BOOSTS:
 	.byte 0x00, 0x0A, 0x07, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x07
 	.byte 0x0A, 0x00, 0x0A, 0x00, 0x00, 0x07, 0x00, 0x07, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00
 	.byte 0x05, 0x00, 0x05, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x03, 0x00, 0x03
 	.byte 0x05, 0x00, 0x00, 0x03, 0x00, 0x03, 0x05, 0x00, 0x00, 0x00, 0x05, 0x03, 0x05, 0x03, 0x00, 0x00
-	.global _02098124
-_02098124:
+	.global EXCLUSIVE_ITEM_EFFECT_DATA
+EXCLUSIVE_ITEM_EFFECT_DATA:
 	.byte 0x09
-	.global _02098125
-_02098125:
+	.global EXCLUSIVE_ITEM_STAT_BOOST_DATA_INDEXES
+EXCLUSIVE_ITEM_STAT_BOOST_DATA_INDEXES:
 	.byte 0x00, 0x16, 0x00, 0x10, 0x00, 0x0F, 0x00, 0x11, 0x00, 0x17, 0x00, 0x0B, 0x00, 0x13, 0x00
 	.byte 0x50, 0x00, 0x20, 0x00, 0x18, 0x00, 0x44, 0x00, 0x52, 0x00, 0x56, 0x00, 0x56, 0x00, 0x54, 0x00
 	.byte 0x45, 0x00, 0x46, 0x00, 0x4C, 0x00, 0x4C, 0x00, 0x4C, 0x00, 0x56, 0x00, 0x4C, 0x00, 0x46, 0x00
@@ -164781,8 +164781,8 @@ _020988A8:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0x3C, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
 	.byte 0x96, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
-	.global _020988CC
-_020988CC:
+	.global RECYCLE_SHOP_ITEM_LIST
+RECYCLE_SHOP_ITEM_LIST:
 	.byte 0x46, 0x00, 0x00, 0x00
 	.global _020988D0
 _020988D0:
@@ -164846,8 +164846,8 @@ _020988D8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0xAC, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x14, 0x00, 0x14, 0x00, 0x78, 0x05, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _02098C2C
-_02098C2C:
+	.global TYPE_SPECIFIC_EXCLUSIVE_ITEMS
+TYPE_SPECIFIC_EXCLUSIVE_ITEMS:
 	.byte 0xFA, 0x01, 0xFB, 0x01, 0xFC, 0x01, 0xFD, 0x01
 	.byte 0xFE, 0x01, 0xFF, 0x01, 0x00, 0x02, 0x01, 0x02, 0x02, 0x02, 0x03, 0x02, 0x04, 0x02, 0x05, 0x02
 	.byte 0x06, 0x02, 0x07, 0x02, 0x08, 0x02, 0x09, 0x02, 0x0A, 0x02, 0x0B, 0x02
@@ -164896,12 +164896,12 @@ _02098D64:
 	.global _02098D68
 _02098D68:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _02098D74
-_02098D74:
+	.global RECOIL_MOVE_LIST
+RECOIL_MOVE_LIST:
 	.byte 0x74, 0x00, 0x8C, 0x00, 0xCB, 0x00, 0xCC, 0x00, 0xCE, 0x00, 0x62, 0x01, 0xB9, 0x01, 0x05, 0x02
 	.byte 0x06, 0x02, 0x15, 0x02,  0x00, 0x00
-	.global _02098D8A
-_02098D8A:
+	.global PUNCH_MOVE_LIST
+PUNCH_MOVE_LIST:
 	.byte 0x41, 0x00, 0x4B, 0x00, 0x67, 0x00, 0x7E, 0x00, 0x88, 0x00
 	.byte 0xF6, 0x00, 0x08, 0x01, 0x24, 0x01, 0x2C, 0x01, 0x42, 0x01, 0x58, 0x01, 0x5B, 0x01, 0xAE, 0x01
 	.byte 0xF4, 0x01, 0xFE, 0x01, 0x00, 0x00, 0x00, 0x00
@@ -165887,12 +165887,12 @@ _02099CB8:
 	.global _02099CC4
 _02099CC4:
 	.byte 0x3C, 0x00, 0x3D, 0x00, 0x3E, 0x00, 0x16, 0x00, 0x17, 0x00, 0x18, 0x00, 0x19, 0x00, 0xFF, 0xFF
-	.global _02099CD4
-_02099CD4:
+	.global MOVE_POWER_STARS_TABLE
+MOVE_POWER_STARS_TABLE:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00
 	.byte 0x12, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00
-	.global _02099CEC
-_02099CEC:
+	.global MOVE_ACCURACY_STARS_TABLE
+MOVE_ACCURACY_STARS_TABLE:
 	.byte 0x1E, 0x00, 0x00, 0x00, 0x32, 0x00, 0x00, 0x00
 	.byte 0x46, 0x00, 0x00, 0x00, 0x50, 0x00, 0x00, 0x00, 0x55, 0x00, 0x00, 0x00, 0x5A, 0x00, 0x00, 0x00
 	.byte 0x5F, 0x00, 0x00, 0x00, 0x65, 0x00, 0x00, 0x00
@@ -167488,8 +167488,8 @@ _0209CCD0:
 	.global _0209CCE0
 _0209CCE0:
 	.byte 0x5B, 0x52, 0x5D, 0x00
-	.global _0209CCE4
-_0209CCE4:
+	.global PARTNER_TALK_KIND_TABLE
+PARTNER_TALK_KIND_TABLE:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x9E, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0xA9, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0xE8, 0x01, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x73, 0x03, 0x00, 0x00
@@ -167602,8 +167602,8 @@ _0209CEAC:
 _0209CEBC:
 	.byte 0x65, 0x76, 0x65, 0x6E, 0x74, 0x5F, 0x66, 0x6C
 	.byte 0x61, 0x67, 0x2E, 0x63, 0x00, 0x00, 0x00, 0x00
-	.global _0209CECC
-_0209CECC:
+	.global SCRIPT_VARS_LOCALS
+SCRIPT_VARS_LOCALS:
 	.byte 0x06, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
 	.word _0209CE9C
@@ -168110,8 +168110,8 @@ _0209D850:
 	.byte 0x52, 0x45, 0x51, 0x55
 	.byte 0x45, 0x53, 0x54, 0x5F, 0x54, 0x48, 0x41, 0x4E, 0x4B, 0x53, 0x5F, 0x52, 0x45, 0x53, 0x55, 0x4C
 	.byte 0x54, 0x5F, 0x56, 0x41, 0x52, 0x49, 0x41, 0x54, 0x49, 0x4F, 0x4E, 0x00
-	.global _0209D870
-_0209D870:
+	.global SCRIPT_VARS
+SCRIPT_VARS:
 	.byte 0x08, 0x00, 0x02, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.word _0209CFA8
@@ -168484,8 +168484,8 @@ _0209E010:
 	.global _0209E011
 _0209E011:
 	.byte 0x00, 0x00, 0x00
-	.global _0209E014
-_0209E014:
+	.global PORTRAIT_LAYOUTS
+PORTRAIT_LAYOUTS:
 	.byte 0x02, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x0E, 0x00, 0x05, 0x00, 0x00, 0x00, 0x02, 0x00
 	.byte 0x09, 0x00, 0x00, 0x00, 0x19, 0x00, 0x09, 0x00, 0x01, 0x00, 0x08, 0x00, 0x09, 0x00, 0x00, 0x00
@@ -168498,28 +168498,28 @@ _0209E014:
 	.byte 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x11, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x0D, 0x00
 	.byte 0x00, 0x00, 0x11, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x11, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x11, 0x00, 0x0D, 0x00, 0x00, 0x00
-	.global _0209E0D4
-_0209E0D4:
+	.global KAOMADO_FILEPATH
+KAOMADO_FILEPATH:
 	.byte 0x46, 0x4F, 0x4E, 0x54, 0x2F, 0x6B, 0x61, 0x6F, 0x6D, 0x61, 0x64, 0x6F, 0x2E, 0x6B, 0x61, 0x6F
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _0209E0E8
-_0209E0E8:
+	.global WONDER_MAIL_BITS_MAP
+WONDER_MAIL_BITS_MAP:
 	.byte 0x26, 0x36, 0x37, 0x4E, 0x50, 0x52, 0x38, 0x39, 0x46, 0x30, 0x2B, 0x23
 	.byte 0x53, 0x54, 0x58, 0x59, 0x34, 0x35, 0x4D, 0x43, 0x48, 0x4A, 0x2D, 0x4B, 0x31, 0x32, 0x3D, 0x25
 	.byte 0x33, 0x51, 0x40, 0x57
-	.global _0209E108
-_0209E108:
+	.global WONDER_MAIL_BITS_SWAP
+WONDER_MAIL_BITS_SWAP:
 	.byte 0x07, 0x1B, 0x0D, 0x1F, 0x15, 0x1A, 0x06, 0x01, 0x17, 0x1C, 0x09, 0x1E
 	.byte 0x0A, 0x20, 0x10, 0x21, 0x0F, 0x08, 0x1D, 0x11, 0x14, 0x00, 0x13, 0x16, 0x05, 0x12, 0x0E, 0x04
 	.byte 0x03, 0x18, 0x02, 0x0B, 0x0C, 0x19, 0x00, 0x00
-	.global _0209E12C
-_0209E12C:
+	.global ARM9_UNKNOWN_TABLE__NA_209E12C
+ARM9_UNKNOWN_TABLE__NA_209E12C:
 	.byte 0x0D, 0x07, 0x19, 0x0F, 0x04, 0x1D, 0x2A, 0x31
 	.byte 0x08, 0x13, 0x2D, 0x18, 0x0E, 0x1A, 0x1B, 0x29, 0x01, 0x20, 0x21, 0x22, 0x11, 0x33, 0x26, 0x00
 	.byte 0x35, 0x0A, 0x2B, 0x1F, 0x12, 0x23, 0x2C, 0x17, 0x27, 0x10, 0x1C, 0x30, 0x0B, 0x02, 0x24, 0x09
 	.byte 0x32, 0x05, 0x28, 0x34, 0x2E, 0x03, 0x1E, 0x0C, 0x25, 0x14, 0x2F, 0x16, 0x06, 0x15, 0x00, 0x00
-	.global _0209E164
-_0209E164:
+	.global ARM9_UNKNOWN_TABLE__NA_209E164
+ARM9_UNKNOWN_TABLE__NA_209E164:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0x0B, 0xFF, 0x1B, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x0A, 0xFF, 0x16, 0xFF, 0xFF
@@ -168540,13 +168540,13 @@ _0209E164:
 _0209E264:
 	.byte 0x63, 0x68, 0x65, 0x63, 0x6B, 0x73, 0x75, 0x6D, 0x3A, 0x20, 0x30, 0x78, 0x25, 0x30, 0x38, 0x78
 	.byte 0x20, 0x30, 0x78, 0x25, 0x30, 0x32, 0x78, 0x0A, 0x00, 0x00, 0x00, 0x00
-	.global _0209E280
-_0209E280:
+	.global ARM9_UNKNOWN_TABLE__NA_209E280
+ARM9_UNKNOWN_TABLE__NA_209E280:
 	.byte 0x1B, 0x0E, 0x16, 0x1E
 	.byte 0x13, 0x19, 0x03, 0x0F, 0x00, 0x05, 0x18, 0x06, 0x1C, 0x15, 0x04, 0x1D, 0x17, 0x1F, 0x11, 0x02
 	.byte 0x10, 0x12, 0x14, 0x08, 0x0B, 0x0D, 0x01, 0x09, 0x1A, 0x0A, 0x07, 0x0C
-	.global _0209E2A0
-_0209E2A0:
+	.global WONDER_MAIL_ENCRYPTION_TABLE
+WONDER_MAIL_ENCRYPTION_TABLE:
 	.byte 0x2E, 0x75, 0x3F, 0x99
 	.byte 0x09, 0x6C, 0xBC, 0x61, 0x7C, 0x2A, 0x96, 0x4A, 0xF4, 0x6D, 0x29, 0xFA, 0x90, 0x14, 0x9D, 0x33
 	.byte 0x6F, 0xCB, 0x49, 0x3C, 0x48, 0x80, 0x7B, 0x46, 0x67, 0x01, 0x17, 0x59, 0xB8, 0xFA, 0x70, 0xC0
@@ -168564,8 +168564,8 @@ _0209E2A0:
 	.byte 0xF3, 0x2E, 0x5C, 0x43, 0xFF, 0xC3, 0xB3, 0x32, 0x7A, 0x3E, 0x9C, 0xA3, 0xC2, 0xAB, 0x10, 0x60
 	.byte 0x99, 0xFB, 0x08, 0x8A, 0x90, 0x57, 0x8A, 0x7F, 0x61, 0x90, 0x21, 0x88, 0x55, 0xE8, 0xFC, 0x4B
 	.byte 0x0D, 0x4A, 0x7A, 0x48, 0xC9, 0xB0, 0xC7, 0xA6, 0xD0, 0x04, 0x7E, 0x05
-	.global _0209E3A0
-_0209E3A0:
+	.global DUNGEON_DATA_LIST
+DUNGEON_DATA_LIST:
 	.byte 0x03
 	.global _0209E3A1
 _0209E3A1:
@@ -168621,27 +168621,27 @@ _0209E3A3:
 	.byte 0x05, 0x60, 0x00, 0x05, 0x05, 0x61, 0x00, 0x05, 0x05, 0x62, 0x00, 0x05, 0x05, 0x63, 0x00, 0x05
 	.byte 0x05, 0x63, 0x05, 0x05, 0x10, 0x5B, 0x00, 0x10, 0x03, 0x4F, 0x00, 0x14, 0x03, 0x4F, 0x03, 0x14
 	.byte 0x03, 0x4F, 0x06, 0x14, 0x06, 0x4F, 0x09, 0x14, 0x01, 0x3F, 0x00, 0x01
-	.global _0209E670
-_0209E670:
+	.global ADVENTURE_LOG_ENCOUNTERS_MONSTER_IDS
+ADVENTURE_LOG_ENCOUNTERS_MONSTER_IDS:
 	.byte 0x90, 0x00, 0x91, 0x00
 	.byte 0x92, 0x00, 0x96, 0x00, 0x97, 0x00, 0xC9, 0x00, 0x0E, 0x01, 0x0F, 0x01, 0x10, 0x01, 0x14, 0x01
 	.byte 0x15, 0x01, 0x16, 0x01, 0x99, 0x01, 0x9A, 0x01, 0x9B, 0x01, 0x9C, 0x01, 0x9D, 0x01, 0x9E, 0x01
 	.byte 0x9F, 0x01, 0xA0, 0x01, 0xA1, 0x01, 0xA2, 0x01, 0x09, 0x02, 0x0A, 0x02, 0x0B, 0x02, 0x0C, 0x02
 	.byte 0x0D, 0x02, 0x0E, 0x02, 0x0F, 0x02, 0x10, 0x02, 0x11, 0x02, 0x12, 0x02, 0x13, 0x02, 0x14, 0x02
 	.byte 0x15, 0x02, 0x16, 0x02, 0x00, 0x00, 0x00, 0x00
-	.global _0209E6BC
-_0209E6BC:
+	.global ARM9_UNKNOWN_DATA__NA_209E6BC
+ARM9_UNKNOWN_DATA__NA_209E6BC:
 	.byte 0xFF
 	.global _0209E6BD
 _0209E6BD:
 	.byte 0x00, 0x00, 0x00
-	.global _0209E6C0
-_0209E6C0:
+	.global TACTIC_NAME_STRING_IDS
+TACTIC_NAME_STRING_IDS:
 	.byte 0xCF, 0x26, 0xD0, 0x26
 	.byte 0xD1, 0x26, 0xD2, 0x26, 0xD3, 0x26, 0xD4, 0x26, 0xD5, 0x26, 0xD6, 0x26, 0xD7, 0x26, 0xD8, 0x26
 	.byte 0xD9, 0x26, 0x00, 0x00
-	.global _0209E6D8
-_0209E6D8:
+	.global STATUS_NAME_STRING_IDS
+STATUS_NAME_STRING_IDS:
 	.byte 0xE9, 0x08, 0xEA, 0x08, 0xEB, 0x08, 0xEC, 0x08, 0xED, 0x08, 0xEE, 0x08
 	.byte 0xEF, 0x08, 0xF0, 0x08, 0xF1, 0x08, 0xF2, 0x08, 0xF3, 0x08, 0xF4, 0x08, 0xF5, 0x08, 0xF6, 0x08
 	.byte 0xF7, 0x08, 0xF8, 0x08, 0xF9, 0x08, 0xFA, 0x08, 0xFB, 0x08, 0xFC, 0x08, 0xFD, 0x08, 0xFE, 0x08
@@ -168655,8 +168655,8 @@ _0209E6D8:
 	.byte 0x37, 0x09, 0x38, 0x09, 0x39, 0x09, 0x3A, 0x09, 0x3B, 0x09, 0x3C, 0x09, 0x3D, 0x09, 0x3E, 0x09
 	.byte 0x3F, 0x09, 0x40, 0x09, 0x41, 0x09, 0x42, 0x09, 0x43, 0x09, 0x44, 0x09, 0x45, 0x09, 0x46, 0x09
 	.byte 0x47, 0x09, 0x48, 0x09, 0x49, 0x09, 0x4A, 0x09, 0x4B, 0x09, 0x4C, 0x09, 0x4D, 0x09, 0x4E, 0x09
-	.global _0209E7A4
-_0209E7A4:
+	.global DUNGEON_RETURN_STATUS_TABLE
+DUNGEON_RETURN_STATUS_TABLE:
 	.byte 0x00, 0x00
 	.global _0209E7A6
 _0209E7A6:
@@ -168683,8 +168683,8 @@ _0209E7A6:
 	.byte 0x00, 0x00, 0x2B, 0x0A, 0x00, 0x00, 0x2C, 0x0A, 0x00, 0x00, 0x2D, 0x0A, 0x00, 0x00, 0x2E, 0x0A
 	.byte 0x00, 0x00, 0x2F, 0x0A, 0x00, 0x00, 0x30, 0x0A, 0x00, 0x00, 0x31, 0x0A, 0x00, 0x00, 0x32, 0x0A
 	.byte 0x00, 0x00, 0x33, 0x0A, 0x00, 0x00, 0x34, 0x0A, 0x00, 0x00, 0x35, 0x0A
-	.global _0209E910
-_0209E910:
+	.global STATUSES_FULL_DESCRIPTION_STRING_IDS
+STATUSES_FULL_DESCRIPTION_STRING_IDS:
 	.byte 0xF3, 0x34
 	.global _0209E912
 _0209E912:
@@ -168715,11 +168715,11 @@ _0209E912:
 	.byte 0xAF, 0x35, 0xB0, 0x35, 0xB1, 0x35, 0xB2, 0x35, 0xB3, 0x35, 0xB4, 0x35, 0xB5, 0x35, 0xB6, 0x35
 	.byte 0xB7, 0x35, 0xB8, 0x35, 0xB9, 0x35, 0xBA, 0x35, 0xBB, 0x35, 0xBC, 0x35, 0xBD, 0x35, 0xBE, 0x35
 	.byte 0xBF, 0x35, 0xC0, 0x35, 0x00, 0x00, 0x00, 0x00
-	.global _0209EAAC
-_0209EAAC:
+	.global ARM9_UNKNOWN_DATA__NA_209EAAC
+ARM9_UNKNOWN_DATA__NA_209EAAC:
 	.byte 0x00, 0x07, 0x00, 0x00
-	.global _0209EAB0
-_0209EAB0:
+	.global MISSION_FLOOR_RANKS_AND_ITEM_LISTS_1
+MISSION_FLOOR_RANKS_AND_ITEM_LISTS_1:
 	.byte 0x00, 0x01, 0x01, 0x01
 	.global _0209EAB4
 _0209EAB4:
@@ -169206,8 +169206,8 @@ _0209F658:
 	.byte 0x05, 0x0D, 0x78, 0x0E, 0x5C, 0x11, 0x33, 0x75, 0x41, 0x14, 0x26, 0x17, 0x0B, 0x1A, 0x31, 0x75
 	.byte 0x7D, 0x1B, 0x31, 0x75, 0xEF, 0x1C, 0x62, 0x1E, 0x34, 0x75, 0xD4, 0x1F, 0x32, 0x75, 0x47, 0x21
 	.byte 0x36, 0x75, 0x2B, 0x24, 0x32, 0x75, 0x10, 0x27, 0x3B, 0x75, 0x10, 0x27, 0x31, 0x75, 0x00, 0x00
-	.global _0209F714
-_0209F714:
+	.global MISSION_FLOORS_FORBIDDEN
+MISSION_FLOORS_FORBIDDEN:
 	.byte 0x01, 0x05, 0x03, 0x0A, 0x0C, 0x10, 0x0D, 0x14, 0x0F, 0x15, 0x11, 0x0E, 0x14, 0x0F, 0x18, 0x0F
 	.byte 0x19, 0x18, 0x1A, 0x18, 0x1B, 0x0E, 0x1C, 0x0F, 0x1C, 0x19, 0x1D, 0x0F, 0x1D, 0x19, 0x1E, 0x0F
 	.byte 0x1E, 0x14, 0x1F, 0x0F, 0x1F, 0x12, 0x20, 0x32, 0x21, 0x14, 0x22, 0x15, 0x22, 0x17, 0x23, 0x1D
@@ -169221,8 +169221,8 @@ _0209F714:
 	.byte 0x40, 0x32, 0x44, 0x0F, 0x45, 0x14, 0x46, 0x19, 0x47, 0x1E, 0x48, 0x27, 0x48, 0x28, 0x49, 0x0C
 	.byte 0x49, 0x11, 0x4C, 0x0F, 0x4D, 0x0B, 0x50, 0x08, 0x52, 0x0F, 0x54, 0x12, 0x56, 0x0B, 0x59, 0x0B
 	.byte 0x5A, 0x05, 0x5A, 0x0A, 0x5A, 0x13, 0x64, 0xFF
-	.global _0209F7DC
-_0209F7DC:
+	.global MISSION_FLOOR_RANKS_AND_ITEM_LISTS_2
+MISSION_FLOOR_RANKS_AND_ITEM_LISTS_2:
 	.byte 0x35, 0x75, 0xC4, 0x09, 0x33, 0x75, 0x10, 0x27
 	.byte 0xF2, 0x75, 0x06, 0x01, 0x31, 0x75, 0x0B, 0x02, 0x8E, 0x02, 0x11, 0x03, 0x73, 0x03, 0x32, 0x75
 	.byte 0x94, 0x03, 0x16, 0x04, 0x31, 0x75, 0x37, 0x04, 0xBA, 0x04, 0x3D, 0x05, 0x9F, 0x05, 0xA4, 0x06
@@ -169570,9 +169570,9 @@ _020A0964:
 	.byte 0x47, 0x19, 0x0B, 0x1A, 0xCF, 0x1A, 0x93, 0x1B, 0x57, 0x1C, 0x1B, 0x1D, 0x31, 0x75, 0xDF, 0x1D
 	.byte 0x32, 0x75, 0xA3, 0x1E, 0x67, 0x1F, 0x2B, 0x20, 0xEF, 0x20, 0xB3, 0x21, 0x32, 0x75, 0x3C, 0x23
 	.byte 0x00, 0x24, 0x31, 0x75, 0x88, 0x25, 0x4C, 0x26, 0x10, 0x27, 0x39, 0x75, 0x10, 0x27, 0x31, 0x75
-	.global _020A0AD4
-_020A0AD4:
-	.word _0209EAB0
+	.global MISSION_FLOOR_RANKS_PTRS
+MISSION_FLOOR_RANKS_PTRS:
+	.word MISSION_FLOOR_RANKS_AND_ITEM_LISTS_1
 	.word _0209EAB4
 	.word _0209EB24
 	.word _0209EBF0
@@ -169635,7 +169635,7 @@ _020A0AD4:
 	.word _0209F0A0
 	.word _0209F0CC
 	.word _0209F394
-	.word _0209EAAC
+	.word ARM9_UNKNOWN_DATA__NA_209EAAC
 	.word _0209F12C
 	.word _0209F3F8
 	.word _0209EBCC
@@ -169672,8 +169672,8 @@ _020A0AD4:
 	.word _0209EAC4
 	.word _0209EAF4
 	.word _0209EB0C
-	.global _020A0C64
-_020A0C64:
+	.global DUNGEON_RESTRICTIONS
+DUNGEON_RESTRICTIONS:
 	.byte 0xE0, 0x07, 0x00, 0x00
 	.global _020A0C68
 _020A0C68:
@@ -169884,8 +169884,8 @@ _020A0C6E:
 	.global _020A1864
 _020A1864:
 	.byte 0xB4, 0x00, 0x00, 0x00, 0x32, 0x00, 0x00, 0x00
-	.global _020A186C
-_020A186C:
+	.global SPECIAL_BAND_STAT_BOOST
+SPECIAL_BAND_STAT_BOOST:
 	.byte 0x0C, 0x00, 0x00, 0x00
 	.global _020A1870
 _020A1870:
@@ -169896,8 +169896,8 @@ _020A1874:
 	.global _020A1878
 _020A1878:
 	.byte 0x0A, 0x00, 0x00, 0x00
-	.global _020A187C
-_020A187C:
+	.global MUNCH_BELT_STAT_BOOST
+MUNCH_BELT_STAT_BOOST:
 	.byte 0x08, 0x00, 0x00, 0x00
 	.global _020A1880
 _020A1880:
@@ -169905,15 +169905,15 @@ _020A1880:
 	.global _020A1884
 _020A1884:
 	.byte 0x2C, 0x01, 0x00, 0x00
-	.global _020A1888
-_020A1888:
+	.global GUMMI_STAT_BOOST
+GUMMI_STAT_BOOST:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x4B, 0x01, 0x00, 0x00
-	.global _020A1890
-_020A1890:
+	.global WONDER_GUMMI_IQ_GAIN
+WONDER_GUMMI_IQ_GAIN:
 	.byte 0x0F, 0x00, 0x00, 0x00
 	.byte 0x32, 0x00, 0x00, 0x00
-	.global _020A1898
-_020A1898:
+	.global AURA_BOW_STAT_BOOST
+AURA_BOW_STAT_BOOST:
 	.byte 0x01, 0x00, 0x00, 0x00
 	.global _020A189C
 _020A189C:
@@ -169922,17 +169922,17 @@ _020A189C:
 _020A18A0:
 	.byte 0x05, 0x00, 0x00, 0x00
 	.byte 0x96, 0x00, 0x00, 0x00
-	.global _020A18A8
-_020A18A8:
+	.global DEF_SCARF_STAT_BOOST
+DEF_SCARF_STAT_BOOST:
 	.byte 0x08, 0x00, 0x00, 0x00
-	.global _020A18AC
-_020A18AC:
+	.global POWER_BAND_STAT_BOOST
+POWER_BAND_STAT_BOOST:
 	.byte 0x0C, 0x00, 0x00, 0x00
-	.global _020A18B0
-_020A18B0:
+	.global WONDER_GUMMI_STAT_BOOST
+WONDER_GUMMI_STAT_BOOST:
 	.byte 0x03, 0x00, 0x00, 0x00
-	.global _020A18B4
-_020A18B4:
+	.global ZINC_BAND_STAT_BOOST
+ZINC_BAND_STAT_BOOST:
 	.byte 0x08, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
 	.global _020A18BC
 _020A18BC:
@@ -169957,16 +169957,16 @@ _020A1904:
 _020A190C:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x01, 0x01, 0x01
 	.byte 0x01, 0x00, 0x01, 0x00
-	.global _020A1918
-_020A1918:
+	.global FORBIDDEN_FORGOT_MOVE_LIST
+FORBIDDEN_FORGOT_MOVE_LIST:
 	.byte 0x18, 0x03, 0xD6, 0x00, 0xFB, 0x00, 0x19, 0x01, 0xD6, 0x00, 0x08, 0x00
 	.byte 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _020A192C
 _020A192C:
 	.byte 0x00, 0x0E, 0x03, 0x04, 0x0C, 0x09, 0x02, 0x0E
 	.byte 0x11, 0x0A, 0x0D, 0x10, 0x08, 0x07, 0x01, 0x11, 0x10, 0x05, 0x00, 0x00
-	.global _020A1940
-_020A1940:
+	.global TACTICS_UNLOCK_LEVEL_TABLE
+TACTICS_UNLOCK_LEVEL_TABLE:
 	.byte 0x01, 0x00, 0x14, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xE7, 0x03, 0xE7, 0x03, 0x23, 0x00, 0x1E, 0x00, 0xE7, 0x03, 0x0A, 0x00
 	.byte 0x0F, 0x00, 0xE7, 0x03
@@ -169975,28 +169975,28 @@ _020A1958:
 	.byte 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A, 0x7B, 0x7C, 0x7D, 0x7E
 	.byte 0x7F, 0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E
 	.byte 0x8F, 0x90, 0x00, 0x00
-	.global _020A1978
-_020A1978:
+	.global CLIENT_LEVEL_TABLE
+CLIENT_LEVEL_TABLE:
 	.byte 0x00, 0x00, 0x07, 0x00, 0x08, 0x00, 0x09, 0x00, 0x0A, 0x00, 0x0B, 0x00
 	.byte 0x0B, 0x00, 0x0C, 0x00, 0x0C, 0x00, 0x0D, 0x00, 0x0F, 0x00, 0x0F, 0x00, 0x0F, 0x00, 0x0F, 0x00
 	.byte 0x0F, 0x00, 0x0F, 0x00
-	.global _020A1998
-_020A1998:
+	.global OUTLAW_LEVEL_TABLE
+OUTLAW_LEVEL_TABLE:
 	.byte 0x00, 0x00, 0x11, 0x00, 0x14, 0x00, 0x19, 0x00, 0x20, 0x00, 0x25, 0x00
 	.byte 0x2A, 0x00, 0x2F, 0x00, 0x34, 0x00, 0x39, 0x00, 0x3C, 0x00, 0x41, 0x00, 0x46, 0x00, 0x4B, 0x00
 	.byte 0x50, 0x00, 0x5A, 0x00
-	.global _020A19B8
-_020A19B8:
+	.global OUTLAW_MINION_LEVEL_TABLE
+OUTLAW_MINION_LEVEL_TABLE:
 	.byte 0x00, 0x00, 0x11, 0x00, 0x14, 0x00, 0x19, 0x00, 0x20, 0x00, 0x25, 0x00
 	.byte 0x2A, 0x00, 0x2F, 0x00, 0x34, 0x00, 0x39, 0x00, 0x3C, 0x00, 0x41, 0x00, 0x46, 0x00, 0x4B, 0x00
 	.byte 0x50, 0x00, 0x5A, 0x00
-	.global _020A19D8
-_020A19D8:
+	.global HIDDEN_POWER_BASE_POWER_TABLE
+HIDDEN_POWER_BASE_POWER_TABLE:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
 	.byte 0x0D, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00
-	.global _020A1A00
-_020A1A00:
+	.global VERSION_EXCLUSIVE_MONSTERS
+VERSION_EXCLUSIVE_MONSTERS:
 	.byte 0xC8, 0x01, 0x01, 0x00
 	.byte 0x20, 0x04, 0x01, 0x00, 0xC6, 0x01, 0x01, 0x00, 0x1E, 0x04, 0x01, 0x00, 0x0C, 0x00, 0x01, 0x00
 	.byte 0x64, 0x02, 0x01, 0x00, 0xD5, 0x01, 0x00, 0x01, 0x2D, 0x04, 0x00, 0x01, 0xBF, 0x01, 0x00, 0x01
@@ -170004,8 +170004,8 @@ _020A1A00:
 	.byte 0x19, 0x04, 0x00, 0x01, 0x0F, 0x00, 0x00, 0x01, 0x67, 0x02, 0x00, 0x01, 0xE9, 0x01, 0x01, 0x00
 	.byte 0x41, 0x04, 0x01, 0x00, 0xEA, 0x01, 0x01, 0x00, 0x42, 0x04, 0x01, 0x00, 0x16, 0x01, 0x01, 0x00
 	.byte 0x09, 0x02, 0x00, 0x01, 0x96, 0x00, 0x00, 0x01
-	.global _020A1A5C
-_020A1A5C:
+	.global IQ_SKILL_RESTRICTIONS
+IQ_SKILL_RESTRICTIONS:
 	.byte 0x0F, 0x27, 0x04, 0x00, 0x01, 0x00, 0x02, 0x00
 	.byte 0x04, 0x00, 0x04, 0x00, 0x06, 0x00, 0x07, 0x00, 0x08, 0x00, 0x09, 0x00, 0x09, 0x00, 0x09, 0x00
 	.byte 0x0A, 0x00, 0x0A, 0x00, 0x0B, 0x00, 0x0B, 0x00, 0x0E, 0x00, 0x0E, 0x00, 0x0E, 0x00, 0x10, 0x00
@@ -170016,8 +170016,8 @@ _020A1A5C:
 	.byte 0x34, 0x00, 0x35, 0x00, 0x36, 0x00, 0x37, 0x00, 0x38, 0x00, 0x39, 0x00, 0x3A, 0x00, 0x3B, 0x00
 	.byte 0x3C, 0x00, 0x3D, 0x00, 0x3E, 0x00, 0x3F, 0x00, 0x40, 0x00, 0x41, 0x00, 0x42, 0x00, 0x43, 0x00
 	.byte 0x44, 0x00, 0x00, 0x00
-	.global _020A1AE8
-_020A1AE8:
+	.global SECONDARY_TERRAIN_TYPES
+SECONDARY_TERRAIN_TYPES:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x02
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x02
@@ -170031,8 +170031,8 @@ _020A1AE8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x01, 0x02, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020A1BB0
-_020A1BB0:
+	.global SENTRY_DUTY_MONSTER_IDS
+SENTRY_DUTY_MONSTER_IDS:
 	.byte 0x1B, 0x01, 0x9F, 0x00
 	.byte 0x85, 0x00, 0xFE, 0x00, 0x48, 0x01, 0x49, 0x01, 0xAE, 0x01, 0xA0, 0x00, 0xFB, 0x00, 0x7F, 0x00
 	.byte 0xEC, 0x01, 0x8F, 0x00, 0x08, 0x00, 0x09, 0x00, 0x18, 0x01, 0x80, 0x00, 0xAB, 0x01, 0x41, 0x01
@@ -170047,8 +170047,8 @@ _020A1BB0:
 	.byte 0x6F, 0x00, 0x65, 0x01, 0x64, 0x01, 0x51, 0x01, 0x3F, 0x01, 0x03, 0x01, 0x63, 0x01, 0x3A, 0x01
 	.byte 0x24, 0x01, 0x08, 0x01, 0x38, 0x00, 0xE9, 0x01, 0xEA, 0x01, 0xB7, 0x01, 0xB8, 0x01, 0x25, 0x00
 	.byte 0x05, 0x02, 0x88, 0x01, 0x22, 0x00, 0x00, 0x00
-	.global _020A1C7C
-_020A1C7C:
+	.global IQ_SKILLS
+IQ_SKILLS:
 	.byte 0x0F, 0x27, 0x00, 0x00, 0x69, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xF4, 0x01, 0x00, 0x00, 0x1C, 0x02, 0x00, 0x00
 	.byte 0x0F, 0x27, 0x00, 0x00, 0x28, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00, 0xC8, 0x00, 0x00, 0x00
@@ -170067,8 +170067,8 @@ _020A1C7C:
 	.byte 0xB6, 0x03, 0x00, 0x00, 0x54, 0x01, 0x00, 0x00, 0xC3, 0x00, 0x00, 0x00, 0x0F, 0x27, 0x00, 0x00
 	.byte 0x5E, 0x01, 0x00, 0x00, 0x68, 0x01, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x44, 0x02, 0x00, 0x00
 	.byte 0x52, 0x03, 0x00, 0x00, 0x72, 0x01, 0x00, 0x00, 0x0F, 0x27, 0x00, 0x00
-	.global _020A1D90
-_020A1D90:
+	.global IQ_GROUP_SKILLS
+IQ_GROUP_SKILLS:
 	.byte 0x18, 0x1A, 0x1B, 0x1F
 	.byte 0x25, 0x26, 0x36, 0x39, 0x3E, 0x41, 0x42, 0x43, 0x16, 0x03, 0x07, 0x08, 0x01, 0x17, 0x15, 0x0C
 	.byte 0x0F, 0x14, 0x02, 0x11, 0xFF, 0x18, 0x1B, 0x1E, 0x20, 0x26, 0x2E, 0x32, 0x33, 0x34, 0x37, 0x3E
@@ -170095,8 +170095,8 @@ _020A1D90:
 	.byte 0x02, 0x14, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0x18, 0x16, 0x03, 0x07, 0x08, 0x17, 0x02, 0x14, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A1F20
-_020A1F20:
+	.global MONEY_QUANTITY_TABLE
+MONEY_QUANTITY_TABLE:
 	.byte 0x02, 0x00, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
 	.byte 0x0D, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00
@@ -170123,8 +170123,8 @@ _020A1F20:
 	.byte 0xD0, 0x01, 0x00, 0x00, 0xD3, 0x01, 0x00, 0x00, 0xDF, 0x01, 0x00, 0x00, 0xE8, 0x01, 0x00, 0x00
 	.byte 0xEB, 0x01, 0x00, 0x00, 0xF3, 0x01, 0x00, 0x00, 0xF4, 0x01, 0x00, 0x00, 0x26, 0x02, 0x00, 0x00
 	.byte 0x8A, 0x02, 0x00, 0x00, 0xEE, 0x02, 0x00, 0x00, 0x10, 0x27, 0x00, 0x00
-	.global _020A20B0
-_020A20B0:
+	.global ARM9_UNKNOWN_TABLE__NA_20A20B0
+ARM9_UNKNOWN_TABLE__NA_20A20B0:
 	.byte 0x00
 	.global _020A20B1
 _020A20B1:
@@ -170161,8 +170161,8 @@ _020A20B1:
 	.byte 0xEA, 0xFF, 0xEB, 0xFF, 0xEC, 0xFF, 0xED, 0xFF, 0xEE, 0xFF, 0xEF, 0xFF, 0xF0, 0xFF, 0xF1, 0xFF
 	.byte 0xF2, 0xFF, 0xF3, 0xFF, 0xF4, 0xFF, 0xF5, 0xFF, 0xF6, 0xFF, 0xF7, 0xFF, 0xF8, 0xFF, 0xF9, 0xFF
 	.byte 0xFA, 0xFF, 0xFB, 0xFF, 0xFC, 0xFF, 0xFD, 0xFF, 0xFE, 0xFE, 0xFF, 0xFF
-	.global _020A22B0
-_020A22B0:
+	.global IQ_GUMMI_GAIN_TABLE
+IQ_GUMMI_GAIN_TABLE:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -170245,16 +170245,16 @@ _020A22B0:
 	.byte 0x0A, 0x00, 0x0F, 0x00, 0x1E, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x14, 0x00, 0x0F, 0x00
 	.byte 0x0A, 0x00, 0x0F, 0x00, 0x0A, 0x00, 0x14, 0x00, 0x05, 0x00, 0x14, 0x00, 0x0A, 0x00, 0x0A, 0x00
 	.byte 0x0A, 0x00, 0x0A, 0x00, 0x0A, 0x00, 0x0A, 0x00, 0x0A, 0x00, 0x1E, 0x00
-	.global _020A27C0
-_020A27C0:
+	.global BAG_CAPACITY_TABLE_SPECIAL_EPISODES
+BAG_CAPACITY_TABLE_SPECIAL_EPISODES:
 	.byte 0x18, 0x00, 0x00, 0x00
 	.byte 0x30, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00
-	.global _020A27D4
-_020A27D4:
+	.global BAG_CAPACITY_TABLE
+BAG_CAPACITY_TABLE:
 	.byte 0x10, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00, 0x00
 	.byte 0x28, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00
-	.global _020A27F4
-_020A27F4:
+	.global SPECIAL_EPISODE_MAIN_CHARACTERS
+SPECIAL_EPISODE_MAIN_CHARACTERS:
 	.byte 0x17, 0x01, 0xEE, 0x00, 0x1A, 0x00, 0x75, 0x00, 0x29, 0x01, 0x5D, 0x00, 0x00, 0x00, 0x2D, 0x00
 	.byte 0x6E, 0x00, 0x00, 0x00
 	.global _020A2808
@@ -170293,8 +170293,8 @@ _020A2894:
 _020A28A8:
 	.byte 0x78, 0x01, 0xEC, 0x00, 0x34, 0x01, 0x45, 0x01, 0x3A, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x1C, 0x00, 0x6E, 0x00, 0x00, 0x00
-	.global _020A28BC
-_020A28BC:
+	.global GUEST_MONSTER_DATA
+GUEST_MONSTER_DATA:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x82, 0x01, 0xDF, 0x00
 	.byte 0x1B, 0x00, 0x18, 0x00, 0xF9, 0x00, 0x48, 0x01, 0x39, 0x00, 0x0F, 0x00, 0x6E, 0x00, 0x14, 0x00
 	.byte 0x14, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0x00, 0x7D, 0x34, 0x00, 0x00
@@ -170383,8 +170383,8 @@ _020A2B20:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0xF5, 0x01, 0xDE, 0x00, 0x65, 0x00, 0x61, 0x00, 0x54, 0x00, 0x18, 0x00, 0x40, 0x00, 0x16, 0x00
 	.byte 0x6E, 0x00, 0x1E, 0x00, 0x1E, 0x00, 0x15, 0x00, 0x17, 0x00, 0x00, 0x00, 0xFE, 0xD6, 0x00, 0x00
-	.global _020A2B44
-_020A2B44:
+	.global RANK_UP_TABLE
+RANK_UP_TABLE:
 	.byte 0x77, 0x01, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x78, 0x01, 0x00, 0x00, 0x2C, 0x01, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x47, 0x00, 0x00, 0x00
 	.byte 0x79, 0x01, 0x00, 0x00, 0x40, 0x06, 0x00, 0x00, 0xC8, 0x00, 0x00, 0x00, 0x6C, 0x00, 0x00, 0x00
@@ -170398,8 +170398,8 @@ _020A2B44:
 	.byte 0x81, 0x01, 0x00, 0x00, 0xA8, 0x61, 0x00, 0x00, 0xE8, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x82, 0x01, 0x00, 0x00, 0xA0, 0x86, 0x01, 0x00, 0xE8, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x83, 0x01, 0x00, 0x00, 0x00, 0xE1, 0xF5, 0x05, 0xE8, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020A2C14
-_020A2C14:
+	.global DS_DOWNLOAD_TEAMS
+DS_DOWNLOAD_TEAMS:
 	.byte 0xFF, 0x00, 0xE9, 0x01, 0x0E, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00
 	.byte 0xFF, 0x00, 0x1E, 0x01, 0x14, 0x00, 0x00, 0x00, 0xAC, 0x01, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00
 	.byte 0xFF, 0x00, 0xA6, 0x01, 0x18, 0x00, 0x00, 0x00, 0x35, 0x01, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00
@@ -170411,11 +170411,11 @@ _020A2C44:
 _020A2C64:
 	.byte 0xFF, 0x00, 0x36, 0x00, 0x11, 0x00, 0x00, 0x00, 0x34, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00
 	.byte 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020A2C84
-_020A2C84:
+	.global ARM9_UNKNOWN_PTR__NA_20A2C84
+ARM9_UNKNOWN_PTR__NA_20A2C84:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020A2C88
-_020A2C88:
+	.global UNOWN_SPECIES_ADDITIONAL_CHARS
+UNOWN_SPECIES_ADDITIONAL_CHARS:
 	.byte 0x42, 0x00, 0x00, 0x00
 	.global _020A2C8C
 _020A2C8C:
@@ -170502,8 +170502,8 @@ _020A2CF4:
 _020A2CF8:
 	.byte 0x68, 0x94, 0xFF, 0x01, 0xD4, 0x94, 0xFF, 0x01, 0x40, 0x95, 0xFF, 0x01
 	.byte 0xAC, 0x95, 0xFF, 0x01
-	.global _020A2D08
-_020A2D08:
+	.global MONSTER_SPRITE_DATA
+MONSTER_SPRITE_DATA:
 	.byte 0x00
 	.global _020A2D09
 _020A2D09:
@@ -170949,8 +170949,8 @@ _020A3B18:
 	.byte 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x20, 0x69, 0x74, 0x65, 0x6D, 0x20
 	.byte 0x69, 0x6E, 0x64, 0x65, 0x78, 0x20, 0x77, 0x61, 0x72, 0x65, 0x68, 0x6F, 0x75, 0x73, 0x65, 0x20
 	.byte 0x65, 0x72, 0x72, 0x6F, 0x72, 0x3A, 0x20, 0x25, 0x64, 0x0A, 0x00, 0x00
-	.global _020A3B40
-_020A3B40:
+	.global REMOTE_STRINGS
+REMOTE_STRINGS:
 	.byte 0x20, 0x00, 0x00, 0x00
 	.global _020A3B44
 _020A3B44:
@@ -170967,8 +170967,8 @@ _020A3B5C:
 	.global _020A3B64
 _020A3B64:
 	.byte 0x5B, 0x4D, 0x3A, 0x52, 0x36, 0x5D, 0x00, 0x00
-	.global _020A3B6C
-_020A3B6C:
+	.global RANK_STRINGS_1
+RANK_STRINGS_1:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x50, 0x5D, 0x42, 0x5B
 	.byte 0x43, 0x52, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00
 	.global _020A3B7C
@@ -170979,12 +170979,12 @@ _020A3B7C:
 _020A3B8C:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x42, 0x5D, 0x53, 0x5B
 	.byte 0x43, 0x52, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00
-	.global _020A3B9C
-_020A3B9C:
+	.global MISSION_MENU_STRING_IDS_1
+MISSION_MENU_STRING_IDS_1:
 	.byte 0xD0, 0x38, 0xD1, 0x38, 0xD2, 0x38, 0xD3, 0x38
 	.byte 0xD4, 0x38, 0xD5, 0x38, 0xD6, 0x38, 0x00, 0x00
-	.global _020A3BAC
-_020A3BAC:
+	.global RANK_STRINGS_2
+RANK_STRINGS_2:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x44, 0x5D, 0x45, 0x5B
 	.byte 0x43, 0x52, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00
 	.global _020A3BBC
@@ -170995,12 +170995,12 @@ _020A3BBC:
 _020A3BCC:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x4B, 0x5D, 0x43, 0x5B
 	.byte 0x43, 0x52, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00
-	.global _020A3BDC
-_020A3BDC:
+	.global MISSION_MENU_STRING_IDS_2
+MISSION_MENU_STRING_IDS_2:
 	.byte 0xD7, 0x38, 0xD8, 0x38, 0xDB, 0x38, 0xD9, 0x38
 	.byte 0xDC, 0x38, 0xDA, 0x38, 0xDD, 0x38, 0xDE, 0x38
-	.global _020A3BEC
-_020A3BEC:
+	.global RANK_STRINGS_3
+RANK_STRINGS_3:
 	.byte 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x5B, 0x43
 	.byte 0x53, 0x3A, 0x43, 0x5D, 0x35, 0x5B, 0x43, 0x52, 0x3A, 0x30, 0x5D, 0x00
 	.global _020A3C00
@@ -171039,32 +171039,32 @@ _020A3C8C:
 _020A3CA0:
 	.byte 0x64, 0x00, 0x05, 0x00
 	.byte 0x05, 0x00, 0x64, 0x00, 0x05, 0x00, 0x05, 0x00
-	.global _020A3CAC
-_020A3CAC:
+	.global MISSION_DUNGEON_UNLOCK_TABLE
+MISSION_DUNGEON_UNLOCK_TABLE:
 	.byte 0x5B
 	.global _020A3CAD
 _020A3CAD:
 	.byte 0x02, 0x60, 0x06,  0x62, 0x06
-	.global _020A3CB2
-_020A3CB2:
+	.global NO_SEND_ITEM_TABLE
+NO_SEND_ITEM_TABLE:
 	.byte 0xB2, 0x00
 	.byte 0xB7, 0x00, 0xBB, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _020A3CBC
 _020A3CBC:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
-	.global _020A3CC8
-_020A3CC8:
+	.global ARM9_UNKNOWN_TABLE__NA_20A3CC8
+ARM9_UNKNOWN_TABLE__NA_20A3CC8:
 	.byte 0x32, 0x00, 0x50, 0x00, 0x3C, 0x00, 0x28, 0x00, 0x19, 0x00, 0x14, 0x00
 	.byte 0x19, 0x00
 	.global _020A3CD6
 _020A3CD6:
 	.byte 0x1E, 0x00, 0x50, 0x00, 0x28, 0x00, 0x3C, 0x00, 0x17, 0x00, 0x0A, 0x00, 0x00, 0x00
-	.global _020A3CE4
-_020A3CE4:
+	.global ARM9_UNKNOWN_TABLE__NA_20A3CE4
+ARM9_UNKNOWN_TABLE__NA_20A3CE4:
 	.byte 0x32, 0x00, 0x50, 0x00, 0x3C, 0x00, 0x28, 0x00, 0x19, 0x00, 0x14, 0x00, 0x19, 0x00, 0x00, 0x00
-	.global _020A3CF4
-_020A3CF4:
+	.global ARM9_UNKNOWN_FUNCTION_TABLE__NA_20A3CF4
+ARM9_UNKNOWN_FUNCTION_TABLE__NA_20A3CF4:
 	.word sub_0206063C
 	.word sub_02060658
 	.word sub_02060680
@@ -171073,26 +171073,26 @@ _020A3CF4:
 	.word sub_0206074C
 	.word sub_02060804
 	.word sub_02060904
-	.global _020A3D14
-_020A3D14:
+	.global MISSION_BANNED_STORY_MONSTERS
+MISSION_BANNED_STORY_MONSTERS:
 	.byte 0x6D, 0x00, 0x29, 0x00, 0xDD, 0x01, 0x83, 0x01, 0x69, 0x00, 0x71, 0x00, 0x73, 0x00, 0xB2, 0x00
 	.byte 0xFC, 0x01, 0x33, 0x01, 0x3C, 0x01, 0x60, 0x01, 0x61, 0x01, 0x8B, 0x00, 0x8D, 0x00, 0xB7, 0x01
 	.byte 0xB8, 0x01, 0xE4, 0x01, 0x51, 0x01, 0x52, 0x01,  0x00, 0x00
-	.global _020A3D3E
-_020A3D3E:
+	.global ITEM_DELIVERY_TABLE
+ITEM_DELIVERY_TABLE:
 	.byte 0x49, 0x00, 0x48, 0x00, 0x57, 0x00
 	.byte 0x56, 0x00, 0x54, 0x00, 0x4D, 0x00, 0x59, 0x00, 0x46, 0x00, 0x52, 0x00, 0x5A, 0x00, 0x4E, 0x00
 	.byte 0x51, 0x00, 0x47, 0x00, 0x63, 0x00, 0x6E, 0x00, 0x45, 0x01, 0x46, 0x01, 0x47, 0x01, 0x49, 0x01
 	.byte 0x4A, 0x01, 0x4B, 0x01, 0x4C, 0x01, 0x00, 0x00
-	.global _020A3D6C
-_020A3D6C:
+	.global MISSION_RANK_POINTS
+MISSION_RANK_POINTS:
 	.byte 0x05, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
 	.byte 0x0F, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x00, 0x00, 0x3C, 0x00, 0x00, 0x00
 	.byte 0x5A, 0x00, 0x00, 0x00, 0x96, 0x00, 0x00, 0x00, 0xFA, 0x00, 0x00, 0x00, 0x90, 0x01, 0x00, 0x00
 	.byte 0x58, 0x02, 0x00, 0x00, 0x20, 0x03, 0x00, 0x00, 0xE8, 0x03, 0x00, 0x00, 0xB0, 0x04, 0x00, 0x00
 	.byte 0x78, 0x05, 0x00, 0x00, 0x40, 0x06, 0x00, 0x00
-	.global _020A3DAC
-_020A3DAC:
+	.global MISSION_BANNED_MONSTERS
+MISSION_BANNED_MONSTERS:
 	.byte 0x7B, 0x01, 0x7C, 0x01, 0x7D, 0x01, 0x7E, 0x01
 	.byte 0x26, 0x01, 0x28, 0x01, 0x0E, 0x00, 0x7F, 0x01, 0x80, 0x01, 0xC9, 0x00, 0xCA, 0x00, 0xCB, 0x00
 	.byte 0xCC, 0x00, 0xCD, 0x00, 0xCE, 0x00, 0xCF, 0x00, 0xD0, 0x00, 0xD1, 0x00, 0xD2, 0x00, 0xD3, 0x00
@@ -171114,8 +171114,8 @@ _020A3DAC:
 	.word _020F0208
 	.byte 0x05, 0x02, 0xBA, 0x01, 0xFA, 0x01, 0x78, 0x01, 0x88, 0x01, 0xE5, 0x00, 0x63, 0x01, 0xFB, 0x00
 	.byte 0xF2, 0x00, 0x23, 0x01, 0xC8, 0x01, 0xF1, 0x00, 0x4B, 0x01, 0x3A, 0x01, 0x43, 0x00, 0x00, 0x00
-	.global _020A3EA4
-_020A3EA4:
+	.global MISSION_STRING_IDS
+MISSION_STRING_IDS:
 	.byte 0x41, 0x3B, 0x42, 0x3B, 0x43, 0x3B, 0x3D, 0x39, 0x3E, 0x39, 0x3F, 0x39, 0x40, 0x39, 0x41, 0x39
 	.byte 0x42, 0x39, 0x43, 0x39, 0x44, 0x39, 0x45, 0x39, 0x46, 0x39, 0x47, 0x39, 0x1D, 0x3B, 0x1E, 0x3B
 	.byte 0x1F, 0x3B, 0x20, 0x3B, 0x21, 0x3B, 0x22, 0x3B, 0x23, 0x3B, 0x24, 0x3B, 0x48, 0x39, 0x49, 0x39
@@ -171278,8 +171278,8 @@ _020A46D0:
 	.byte 0x5F, 0x52, 0x65, 0x6C
 	.byte 0x65, 0x61, 0x73, 0x65, 0x41, 0x6E, 0x69, 0x6D, 0x65, 0x46, 0x69, 0x6C, 0x65, 0x42, 0x75, 0x66
 	.byte 0x66, 0x20, 0x3A, 0x20, 0x25, 0x73, 0x00, 0x00
-	.global _020A46EC
-_020A46EC:
+	.global LEVEL_LIST
+LEVEL_LIST:
 	.byte 0x44, 0x30, 0x30, 0x50, 0x30, 0x31, 0x00, 0x00
 	.global _020A46F4
 _020A46F4:
@@ -172576,8 +172576,8 @@ _020A5470:
 _020A547C:
 	.byte 0x50, 0x31, 0x34, 0x50, 0x30, 0x31, 0x41, 0x32
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020A5488
-_020A5488:
+	.global EVENTS
+EVENTS:
 	.byte 0x04, 0x00
 	.global _020A548A
 _020A548A:
@@ -172598,7 +172598,7 @@ _020A5490:
 	.word _020A5464
 	.byte 0x0B, 0x00, 0x01, 0x00
 	.byte 0x06, 0x00, 0xFF, 0xFF
-	.word _020A46EC
+	.word LEVEL_LIST
 	.byte 0x0A, 0x00, 0x01, 0x00, 0x07, 0x00, 0xFF, 0xFF
 	.word _020A46F4
 	.byte 0x06, 0x00, 0xBA, 0x00, 0x08, 0x00, 0xFF, 0xFF
@@ -173553,12 +173553,12 @@ _020A5490:
 	.byte 0x06, 0x00, 0xBA, 0x00
 	.byte 0xAF, 0x01, 0xFF, 0xFF
 	.word _020A477C
-	.global _020A68BC
-_020A68BC:
+	.global ARM9_UNKNOWN_TABLE__NA_20A68BC
+ARM9_UNKNOWN_TABLE__NA_20A68BC:
 	.byte 0x5F, 0x00, 0x22, 0x00, 0x10, 0x00, 0x13, 0x00
 	.byte 0x1B, 0x00, 0x29, 0x00
-	.global _020A68C8
-_020A68C8:
+	.global DEMO_TEAMS
+DEMO_TEAMS:
 	.byte 0x01, 0x00
 	.global _020A68CA
 _020A68CA:
@@ -173567,8 +173567,8 @@ _020A68CA:
 	.byte 0xA9, 0x01, 0xA6, 0x01, 0x07, 0x00, 0x01, 0x00, 0x9E, 0x00, 0x18, 0x01, 0x1E, 0x01, 0x9B, 0x00
 	.byte 0xAC, 0x01, 0xA9, 0x01, 0x19, 0x00, 0xA9, 0x01, 0x48, 0x01, 0xA6, 0x01, 0xE9, 0x01, 0xAC, 0x01
 	.byte 0x25, 0x00, 0x19, 0x00, 0x02, 0x01, 0xE8, 0x01, 0x85, 0x00, 0x34, 0x00
-	.global _020A6910
-_020A6910:
+	.global ACTOR_LIST
+ACTOR_LIST:
 	.byte 0x50, 0x4C, 0x41, 0x59
 	.byte 0x45, 0x52, 0x00, 0x00
 	.global _020A6918
@@ -175052,10 +175052,10 @@ _020A7FC0:
 _020A7FD8:
 	.byte 0x4E, 0x50, 0x43, 0x5F, 0x4D, 0x45, 0x54, 0x41, 0x4D, 0x4F, 0x4E, 0x5F
 	.byte 0x4B, 0x49, 0x52, 0x45, 0x49, 0x48, 0x41, 0x4E, 0x41, 0x00, 0x00, 0x00
-	.global _020A7FF0
-_020A7FF0:
+	.global ENTITIES
+ENTITIES:
 	.byte 0x01, 0x00, 0x00, 0x00
-	.word _020A6910
+	.word ACTOR_LIST
 	.byte 0x00, 0x00, 0x02, 0x01, 0x01, 0x00, 0x00, 0x00
 	.word _020A6EAC
 	.byte 0x00, 0x00, 0x02, 0x01, 0x01, 0x00, 0x00, 0x00
@@ -175927,17 +175927,17 @@ _020A7FF0:
 _020A9208:
 	.byte 0x53, 0x50, 0x45, 0x50, 0x20, 0x54, 0x59, 0x50, 0x45, 0x20, 0x25, 0x64
 	.byte 0x0A, 0x00, 0x00, 0x00
-	.global _020A9218
-_020A9218:
+	.global JOB_D_BOX_LAYOUT_1
+JOB_D_BOX_LAYOUT_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020A9228
-_020A9228:
+	.global JOB_MENU_1
+JOB_MENU_1:
 	.byte 0x09, 0x38, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0B, 0x38, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x08, 0x38, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A9248
-_020A9248:
+	.global JOB_MENU_2
+JOB_MENU_2:
 	.byte 0x0A, 0x38, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0B, 0x38, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x08, 0x38, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
@@ -175961,81 +175961,81 @@ _020A9298:
 _020A92A8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x14, 0x1A, 0x02, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020A92B8
-_020A92B8:
+	.global JOB_MENU_3
+JOB_MENU_3:
 	.byte 0x29, 0x38, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x2A, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A92D0
-_020A92D0:
+	.global JOB_MENU_4
+JOB_MENU_4:
 	.byte 0x29, 0x38, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00, 0x2A, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A92E8
-_020A92E8:
+	.global JOB_MENU_5
+JOB_MENU_5:
 	.byte 0x91, 0x37, 0x00, 0x00
 	.global _020A92EC
 _020A92EC:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x92, 0x37, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A9300
-_020A9300:
+	.global JOB_MENU_6
+JOB_MENU_6:
 	.byte 0x29, 0x38, 0x00, 0x00
 	.global _020A9304
 _020A9304:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x2A, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A9318
-_020A9318:
+	.global JOB_MENU_7
+JOB_MENU_7:
 	.byte 0xB1, 0x37, 0x00, 0x00
 	.global _020A931C
 _020A931C:
 	.byte 0x05, 0x00, 0x00, 0x00, 0xB2, 0x37, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A9330
-_020A9330:
+	.global JOB_MENU_8
+JOB_MENU_8:
 	.byte 0xB4, 0x37, 0x00, 0x00
 	.global _020A9334
 _020A9334:
 	.byte 0x02, 0x00, 0x00, 0x00, 0xB5, 0x37, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A9348
-_020A9348:
+	.global JOB_MENU_9
+JOB_MENU_9:
 	.byte 0x29, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x2A, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A9360
-_020A9360:
+	.global JOB_MENU_10
+JOB_MENU_10:
 	.byte 0x0E, 0x38, 0x00, 0x00
 	.global _020A9364
 _020A9364:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x08, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A9378
-_020A9378:
+	.global JOB_MENU_11
+JOB_MENU_11:
 	.byte 0x29, 0x38, 0x00, 0x00
 	.global _020A937C
 _020A937C:
 	.byte 0x06, 0x00, 0x00, 0x00, 0x2A, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A9390
-_020A9390:
+	.global JOB_MENU_12
+JOB_MENU_12:
 	.byte 0x0F, 0x38, 0x00, 0x00
 	.global _020A9394
 _020A9394:
 	.byte 0x03, 0x00, 0x00, 0x00, 0x11, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x08, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A93B0
-_020A93B0:
+	.global JOB_MENU_13
+JOB_MENU_13:
 	.byte 0x10, 0x38, 0x00, 0x00
 	.global _020A93B4
 _020A93B4:
 	.byte 0x04, 0x00, 0x00, 0x00, 0x11, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x08, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global _020A93D0
-_020A93D0:
+	.global JOB_D_BOX_LAYOUT_2
+JOB_D_BOX_LAYOUT_2:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x1C, 0x14, 0x01, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020A93E0
-_020A93E0:
+	.global DUNGEON_SWAP_ID_TABLE
+DUNGEON_SWAP_ID_TABLE:
 	.byte 0x00, 0x01, 0x02, 0x03
 	.byte 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13
 	.byte 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x21, 0x22, 0x23
@@ -176058,8 +176058,8 @@ _020A94BC:
 	.global _020A94C6
 _020A94C6:
 	.byte 0x2B, 0x01, 0x2A, 0x01, 0x2C, 0x01, 0x2D, 0x01,  0x2E, 0x01
-	.global _020A94D0
-_020A94D0:
+	.global MAP_MARKER_PLACEMENTS
+MAP_MARKER_PLACEMENTS:
 	.byte  0x0C, 0x01
 	.global _020A94D2
 _020A94D2:
@@ -176274,8 +176274,8 @@ _020A9F98:
 _020A9FA0:
 	.byte 0x00, 0x00, 0x10, 0x00
 	.byte 0x20, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020A9FB0
-_020A9FB0:
+	.global TRIG_TABLE
+TRIG_TABLE:
 	.byte 0x00, 0x00, 0x00, 0x10
 	.byte 0x06, 0x00, 0x00, 0x10, 0x0D, 0x00, 0x00, 0x10, 0x13, 0x00, 0x00, 0x10, 0x19, 0x00, 0x00, 0x10
 	.byte 0x1F, 0x00, 0x00, 0x10, 0x26, 0x00, 0x00, 0x10, 0x2C, 0x00, 0x00, 0x10, 0x32, 0x00, 0x00, 0x10
@@ -177306,8 +177306,8 @@ _020A9FB0:
 	.byte 0xBB, 0xFF, 0xFF, 0x0F, 0xC1, 0xFF, 0x00, 0x10, 0xC7, 0xFF, 0x00, 0x10, 0xCE, 0xFF, 0x00, 0x10
 	.byte 0xD4, 0xFF, 0x00, 0x10, 0xDA, 0xFF, 0x00, 0x10, 0xE1, 0xFF, 0x00, 0x10, 0xE7, 0xFF, 0x00, 0x10
 	.byte 0xED, 0xFF, 0x00, 0x10, 0xF3, 0xFF, 0x00, 0x10, 0xFA, 0xFF, 0x00, 0x10
-	.global _020ADFB0
-_020ADFB0:
+	.global ARM9_UNKNOWN_TABLE__NA_20ADFB0
+ARM9_UNKNOWN_TABLE__NA_20ADFB0:
 	.byte 0x00, 0x00, 0x51, 0x00
 	.byte 0xA3, 0x00, 0xF4, 0x00, 0x46, 0x01, 0x97, 0x01, 0xE9, 0x01, 0x3A, 0x02, 0x8B, 0x02, 0xDC, 0x02
 	.byte 0x2D, 0x03, 0x7E, 0x03, 0xCF, 0x03, 0x20, 0x04, 0x70, 0x04, 0xC1, 0x04, 0x11, 0x05, 0x61, 0x05
@@ -177472,8 +177472,8 @@ _020AE224:
 	.byte 0x07, 0xF5, 0x7B, 0xF5, 0xEF, 0xF5, 0x63, 0xF6, 0xD7, 0xF6, 0x4C, 0xF7, 0xC0, 0xF7, 0x34, 0xF8
 	.byte 0xA9, 0xF8, 0x1E, 0xF9, 0x92, 0xF9, 0x07, 0xFA, 0x7C, 0xFA, 0xF1, 0xFA, 0x66, 0xFB, 0xDC, 0xFB
 	.byte 0x51, 0xFC, 0xC7, 0xFC, 0x3C, 0xFD, 0xB2, 0xFD, 0x28, 0xFE, 0x9E, 0xFE, 0x14, 0xFF, 0x8A, 0xFF
-	.global _020AE924
-_020AE924:
+	.global ARM9_UNKNOWN_TABLE__NA_20AE924
+ARM9_UNKNOWN_TABLE__NA_20AE924:
 	.byte 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01
 	.byte 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01
 	.byte 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01
@@ -177610,8 +177610,8 @@ _020AEEE0:
 _020AEEF0:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020AEF00
-_020AEF00:
+	.global MEMORY_ALLOCATION_ARENA_GETTERS
+MEMORY_ALLOCATION_ARENA_GETTERS:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _020AEF08
@@ -177619,8 +177619,8 @@ _020AEF08:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020AEF2C
-_020AEF2C:
+	.global PRNG_SEQUENCE_NUM
+PRNG_SEQUENCE_NUM:
 	.byte 0x8C, 0x34, 0x00, 0x00
 	.global _020AEF30
 _020AEF30:
@@ -177709,8 +177709,8 @@ _020AF154:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020AF230
-_020AF230:
+	.global LOADED_OVERLAY_GROUP_0
+LOADED_OVERLAY_GROUP_0:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _020AF23C
@@ -177891,12 +177891,12 @@ _020AF694:
 	.word STRING_BALANCE_M_LEVEL_BIN
 
 	; 0x020af6b8
-	.global _020AF6B8
-_020AF6B8:
+	.global BAG_ITEMS_PTR_MIRROR
+BAG_ITEMS_PTR_MIRROR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.word _02094D00
-	.global _020AF6C0
-_020AF6C0:
+	.global ITEM_DATA_TABLE_PTRS
+ITEM_DATA_TABLE_PTRS:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _020AF6C4
 _020AF6C4:
@@ -177910,8 +177910,8 @@ _020AF6D0:
 	.global _020AF6D4
 _020AF6D4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020AF6DC
-_020AF6DC:
+	.global DUNGEON_MOVE_TABLES
+DUNGEON_MOVE_TABLES:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _020AF6E8
@@ -178132,8 +178132,8 @@ _020AFC50:
 	.global _020AFC64
 _020AFC64:
 	.byte 0x20, 0x00, 0x10, 0x00
-	.global _020AFC68
-_020AFC68:
+	.global WAN_TABLE
+WAN_TABLE:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _020AFC6C
 _020AFC6C:
@@ -178142,15 +178142,15 @@ _020AFC6C:
 _020AFC70:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020AFC80
-_020AFC80:
+	.global RENDER_3D
+RENDER_3D:
 	.byte 0x00, 0x00, 0x80, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020AFCC4
-_020AFCC4:
+	.global RENDER_3D_FUNCTIONS_64
+RENDER_3D_FUNCTIONS_64:
 	.word Render3d64Texture
 	.word Render3d64Nothing
 	.word Render3d64Rectangle
@@ -178162,8 +178162,8 @@ _020AFCC4:
 	.global _020AFCE4
 _020AFCE4:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020AFCE8
-_020AFCE8:
+	.global LANGUAGE_INFO_DATA
+LANGUAGE_INFO_DATA:
 	.byte 0x00, 0x08, 0x00, 0x00
 	.global _020AFCEC
 _020AFCEC:
@@ -178172,8 +178172,8 @@ _020AFCEC:
 _020AFCF0:
 	.word _0209AAB0
 	.word _0209AAC4
-	.global _020AFCF8
-_020AFCF8:
+	.global TBL_TALK_GROUP_STRING_ID_START
+TBL_TALK_GROUP_STRING_ID_START:
 	.byte 0x15, 0x12, 0x6B, 0x16, 0xC4, 0x17, 0x63, 0x0F, 0xBC, 0x10, 0x1D, 0x19
 	.global _020AFD04
 _020AFD04:
@@ -178269,8 +178269,8 @@ _020AFDF0:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.word _020AFE44
-	.global _020AFDFC
-_020AFDFC:
+	.global KEYBOARD_STRING_IDS
+KEYBOARD_STRING_IDS:
 	.byte 0x00, 0x01, 0x28, 0x01, 0x28, 0x01, 0x01, 0x01
 	.byte 0x2A, 0x01, 0x2A, 0x01, 0x02, 0x01, 0x2C, 0x01, 0x2D, 0x01, 0x03, 0x01, 0x2E, 0x01, 0x2F, 0x01
 	.byte 0x04, 0x01, 0x30, 0x01, 0x31, 0x01, 0x05, 0x01, 0x32, 0x01, 0x33, 0x01, 0x06, 0x01, 0x34, 0x01
@@ -178357,11 +178357,11 @@ _020AFEEC:
 	.global _020AFEF4
 _020AFEF4:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020AFEF8
-_020AFEF8:
+	.global NOTIFY_NOTE
+NOTIFY_NOTE:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020AFEFC
-_020AFEFC:
+	.global DEFAULT_HERO_ID
+DEFAULT_HERO_ID:
 	.byte 0x04, 0x00, 0x01, 0x00
 	.global _020AFF00
 _020AFF00:
@@ -178398,14 +178398,14 @@ _020AFF68:
 	.global _020AFF6C
 _020AFF6C:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020AFF70
-_020AFF70:
+	.global GAME_MODE
+GAME_MODE:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020AFF74
-_020AFF74:
+	.global GLOBAL_PROGRESS_PTR
+GLOBAL_PROGRESS_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020AFF78
-_020AFF78:
+	.global ADVENTURE_LOG_PTR
+ADVENTURE_LOG_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _020AFF7C
 _020AFF7C:
@@ -178573,8 +178573,8 @@ _020AFF88:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020B0948
-_020B0948:
+	.global ITEM_TABLES_PTRS_1
+ITEM_TABLES_PTRS_1:
 	.word _0209F194
 	.word _0209F220
 	.word _0209FB58
@@ -178591,7 +178591,7 @@ _020B0948:
 	.word _020A02F0
 	.word _020A0080
 	.word _0209F2D0
-	.word _0209F7DC
+	.word MISSION_FLOOR_RANKS_AND_ITEM_LISTS_2
 	.word _0209F45C
 	.word _0209F8B4
 	.word _0209F4CC
@@ -178618,10 +178618,10 @@ _020B09C8:
 _020B09D0:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020B09D8
-_020B09D8:
+	.global UNOWN_SPECIES_ADDITIONAL_CHAR_PTR_TABLE
+UNOWN_SPECIES_ADDITIONAL_CHAR_PTR_TABLE:
 	.word _020A2C90
-	.word _020A2C88
+	.word UNOWN_SPECIES_ADDITIONAL_CHARS
 	.word _020A2CF4
 	.word _020A2CF0
 	.word _020A2CEC
@@ -178648,8 +178648,8 @@ _020B09D8:
 	.word _020A2C98
 	.word _020A2C94
 	.word _020A2CC4
-	.global _020B0A48
-_020B0A48:
+	.global TEAM_MEMBER_TABLE_PTR
+TEAM_MEMBER_TABLE_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _020B0A4C
 _020B0A4C:
@@ -178666,29 +178666,29 @@ _020B0A60:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _020B0A7C
-_020B0A7C:
-	.word _020A3B40
+	.global REMOTE_STRING_PTR_TABLE
+REMOTE_STRING_PTR_TABLE:
+	.word REMOTE_STRINGS
 	.word _020A3B4C
 	.word _020A3B64
 	.word _020A3B44
 	.word _020A3B5C
 	.word _020A3B54
 	.word _020A3B64
-	.global _020B0A98
-_020B0A98:
-	.word _020A3BAC
-	.word _020A3BAC
+	.global RANK_STRING_PTR_TABLE
+RANK_STRING_PTR_TABLE:
+	.word RANK_STRINGS_2
+	.word RANK_STRINGS_2
 	.word _020A3BBC
 	.word _020A3BCC
-	.word _020A3B6C
+	.word RANK_STRINGS_1
 	.word _020A3B7C
 	.word _020A3B8C
 	.word _020A3C28
 	.word _020A3C3C
 	.word _020A3C64
 	.word _020A3C8C
-	.word _020A3BEC
+	.word RANK_STRINGS_3
 	.word _020A3C00
 	.word _020A3C50
 	.word _020A3C78
@@ -178802,8 +178802,8 @@ _020B0B74:
 _020B0B7C:
 	.byte 0x60, 0x48, 0x40, 0x30, 0x24, 0x20, 0x18, 0x12
 	.byte 0x10, 0x0C, 0x09, 0x08, 0x06, 0x04, 0x03, 0x02, 0x00, 0x00, 0x00, 0x00
-	.global _020B0B90
-_020B0B90:
+	.global SMD_EVENTS_FUN_TABLE
+SMD_EVENTS_FUN_TABLE:
 	.word sub_02071928
 	.word sub_02071934
 	.word sub_0207194C
@@ -178993,8 +178993,8 @@ _020B0D50:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.word sub_0207307C
 	.word sub_02073088
-	.global _020B0F50
-_020B0F50:
+	.global MUSIC_DURATION_LOOKUP_TABLE_1
+MUSIC_DURATION_LOOKUP_TABLE_1:
 	.byte 0x00, 0x00, 0x01, 0x00
 	.byte 0x02, 0x00, 0x03, 0x00, 0x04, 0x00, 0x05, 0x00, 0x06, 0x00, 0x07, 0x00, 0x08, 0x00, 0x09, 0x00
 	.byte 0x0A, 0x00, 0x0B, 0x00, 0x0C, 0x00, 0x0D, 0x00, 0x0E, 0x00, 0x0F, 0x00, 0x10, 0x00, 0x11, 0x00
@@ -179012,8 +179012,8 @@ _020B0F50:
 	.byte 0x3E, 0x12, 0xF2, 0x12, 0xB0, 0x13, 0x6E, 0x14, 0x36, 0x15, 0xFE, 0x15, 0xD0, 0x16, 0xA2, 0x17
 	.byte 0x7E, 0x18, 0x5A, 0x19, 0x40, 0x1A, 0x30, 0x1B, 0x20, 0x1C, 0x1A, 0x1D, 0x1E, 0x1E, 0x22, 0x1F
 	.byte 0x30, 0x20, 0x48, 0x21, 0x60, 0x22, 0x82, 0x23, 0x10, 0x27, 0xFF, 0x7F
-	.global _020B1050
-_020B1050:
+	.global MUSIC_DURATION_LOOKUP_TABLE_2
+MUSIC_DURATION_LOOKUP_TABLE_2:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00
 	.byte 0x15, 0x00, 0x00, 0x00, 0x1C, 0x00, 0x00, 0x00, 0x24, 0x00, 0x00, 0x00, 0x2E, 0x00, 0x00, 0x00
