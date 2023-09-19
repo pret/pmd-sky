@@ -88,7 +88,7 @@
 .public ov11_0230B874
 .public sub_020407EC
 .public ov11_0230BA64
-.public ov00_0230D220
+.public ov11_0230D220
 .public InitRandomNpcJobs
 .public sub_0203FD38
 .public sub_0202E6C8

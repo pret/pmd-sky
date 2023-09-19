@@ -375,7 +375,7 @@ _0238A5CC:
 	str r0, [r8, #4]
 	b _0238C598
 _0238A5E8:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r1, [r8, #8]
 	mvneq r0, #0
@@ -595,7 +595,7 @@ _0238A8B0:
 	b _0238C598
 _0238A910:
 	ldrsb r0, [r8, #0x20]
-	bl ov00_022BCD10
+	bl ov10_022BCD10
 	bl ov19_0238D4E4
 	add r0, r8, #0x100
 	mov r1, #0xa
@@ -2425,7 +2425,7 @@ _0238C348:
 	str r0, [r8]
 	b _0238C598
 _0238C380:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	bne _0238C598
 	bl ov11_02311D6C
@@ -2475,7 +2475,7 @@ _0238C410:
 	str r0, [r8]
 	b _0238C598
 _0238C43C:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	bne _0238C598
 	bl ov11_02311D6C
@@ -3737,7 +3737,7 @@ ov19_0238D4E4: ; 0x0238D4E4
 	ldrsb r0, [r0, #0x20]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov00_022BCCF4
+	bl ov10_022BCCF4
 	ldr r0, _0238D518 ; =ov11_02324DB0
 	mvn r1, #1
 	ldr r0, [r0]

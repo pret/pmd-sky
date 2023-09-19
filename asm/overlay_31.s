@@ -1164,7 +1164,7 @@ ov31_02383768: ; 0x02383768
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov00_022BCD10
+	bl ov10_022BCD10
 	cmp r0, #0
 	beq _023837B4
 	mvn r4, #3
@@ -1180,7 +1180,7 @@ _02383798:
 	bne _02383798
 _023837B4:
 	ldrsb r0, [r7]
-	bl ov00_022BCCF4
+	bl ov10_022BCCF4
 	mvn r0, #1
 	strb r0, [r7]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}

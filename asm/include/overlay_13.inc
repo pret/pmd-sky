@@ -31,12 +31,12 @@
 .public MemAlloc
 .public MemFree
 .public ov11_022E6E68
-.public ov00_0230D71C
 .public ov11_022E6E8C
 .public ov11_022E6EC8
 .public ov11_022EB3C8
 .public ov11_023039D4
 .public ov11_02303D80
+.public ov11_0230D71C
 .public PreprocessString
 .public PreprocessStringFromMessageId
 .public RandInt

@@ -29,9 +29,9 @@
 .public MemcpySimple
 .public MemFree
 .public MemZero
-.public ov00_022BCCF4
-.public ov00_022BCD10
-.public ov00_0230D220
+.public ov10_022BCCF4
+.public ov10_022BCD10
+.public ov11_0230D220
 .public ov10_022BCC60
 .public ov10_022BCC7C
 .public ov10_022BCCB0

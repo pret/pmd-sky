@@ -925,7 +925,7 @@ _0238AE20:
 _0238AE68:
 	mov r1, #0x13
 	strb r1, [r0]
-	bl ov00_0230D71C
+	bl ov11_0230D71C
 	b _0238BD74
 _0238AE78:
 	mov r1, #4

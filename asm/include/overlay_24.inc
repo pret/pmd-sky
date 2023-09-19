@@ -36,7 +36,7 @@
 .public sub_0203909C
 .public ov11_02306C64
 .public sub_0203D438
-.public ov00_0230D220
+.public ov11_0230D220
 .public CreatePortraitBox
 .public InitPortraitBoxWithMonsterId
 .public sub_02053B60
