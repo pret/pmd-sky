@@ -69,3 +69,4 @@
 .public ov29_0234B0B4
 .public sub_02025888
 .public sub_020258E4
+.public SECONDARY_TERRAIN_TYPES

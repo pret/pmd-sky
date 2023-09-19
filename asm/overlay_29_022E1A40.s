@@ -71,7 +71,7 @@ ov29_022E1AD4: ; 0x022E1AD4
 
 	arm_func_start ov29_022E1AF4
 ov29_022E1AF4: ; 0x022E1AF4
-	ldr r2, _022E1B24 ; =0x0237C754
+	ldr r2, _022E1B24 ; =ov29_0237C754
 	mov r3, #0
 	add ip, r2, r0
 	mov r2, #1
@@ -86,7 +86,7 @@ _022E1B18:
 	blo _022E1B08
 	bx lr
 	.align 2, 0
-_022E1B24: .word 0x0237C754
+_022E1B24: .word ov29_0237C754
 	arm_func_end ov29_022E1AF4
 
 	arm_func_start ov29_022E1B28
@@ -96,7 +96,7 @@ ov29_022E1B28: ; 0x022E1B28
 	mov r8, r0
 	mov r5, r4
 _022E1B38:
-	ldr r0, _022E1C04 ; =0x02353538
+	ldr r0, _022E1C04 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -121,7 +121,7 @@ _022E1B38:
 	mov r2, #0
 	strb r6, [r0, #0x17b]
 	mov r1, #1
-	ldr r0, _022E1C08 ; =0x0237C754
+	ldr r0, _022E1C08 ; =ov29_0237C754
 	b _022E1BB4
 _022E1BA4:
 	cmp r4, #0x48
@@ -143,7 +143,7 @@ _022E1BD8:
 	cmp r5, #4
 	blt _022E1B38
 	mov r1, #0
-	ldr r0, _022E1C08 ; =0x0237C754
+	ldr r0, _022E1C08 ; =ov29_0237C754
 	b _022E1BF8
 _022E1BF0:
 	strb r1, [r0, r4]
@@ -153,8 +153,8 @@ _022E1BF8:
 	blt _022E1BF0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022E1C04: .word 0x02353538
-_022E1C08: .word 0x0237C754
+_022E1C04: .word ov29_02353538
+_022E1C08: .word ov29_0237C754
 	arm_func_end ov29_022E1B28
 
 	arm_func_start ov29_022E1C0C
@@ -168,8 +168,8 @@ ov29_022E1C0C: ; 0x022E1C0C
 	ldr r4, [r7, #0xb4]
 	ldrb r0, [r4, #6]
 	cmp r0, #0
-	ldrne r5, _022E1C7C ; =0x0237C79C
-	ldreq r5, _022E1C80 ; =0x0237C754
+	ldrne r5, _022E1C7C ; =ov29_0237C79C
+	ldreq r5, _022E1C80 ; =ov29_0237C754
 	cmp r6, #0
 	beq _022E1C48
 	ldrb r0, [r7, #0xaa]
@@ -191,8 +191,8 @@ _022E1C6C:
 	blt _022E1C54
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022E1C7C: .word 0x0237C79C
-_022E1C80: .word 0x0237C754
+_022E1C7C: .word ov29_0237C79C
+_022E1C80: .word ov29_0237C754
 	arm_func_end ov29_022E1C0C
 
 	arm_func_start ov29_022E1C84
@@ -214,7 +214,7 @@ ov29_022E1C84: ; 0x022E1C84
 	mov r3, #0
 	rsb ip, r5, #0x48
 	mov r2, r3
-	ldr r1, _022E1D28 ; =0x0237C754
+	ldr r1, _022E1D28 ; =ov29_0237C754
 	b _022E1D04
 _022E1CD0:
 	mov r8, r2
@@ -245,7 +245,7 @@ _022E1D0C:
 	movne r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022E1D28: .word 0x0237C754
+_022E1D28: .word ov29_0237C754
 	arm_func_end ov29_022E1C84
 
 	arm_func_start ov29_022E1D2C
@@ -273,7 +273,7 @@ ov29_022E1D2C: ; 0x022E1D2C
 	moveq r0, #0
 	beq _022E1EB8
 	mov r5, #0
-	ldr sb, _022E1EC0 ; =0x02353538
+	ldr sb, _022E1EC0 ; =ov29_02353538
 	b _022E1EAC
 _022E1D90:
 	ldr r0, [sb]
@@ -286,7 +286,7 @@ _022E1D90:
 	bne _022E1EA8
 	mov r0, #1
 	str r0, [r7]
-	ldr r0, _022E1EC0 ; =0x02353538
+	ldr r0, _022E1EC0 ; =ov29_02353538
 	strb r5, [r7, #0x24]
 	ldr r0, [r0]
 	add r1, r5, r5, lsl #3
@@ -337,7 +337,7 @@ _022E1D90:
 	mov r0, r0, lsr #0x10
 	mov r1, r1, lsr #0x10
 	bl ov29_022E1AF4
-	ldr r1, _022E1EC0 ; =0x02353538
+	ldr r1, _022E1EC0 ; =ov29_02353538
 	mov r0, r7
 	ldr r1, [r1]
 	add r1, r1, #0x700
@@ -356,12 +356,12 @@ _022E1EB8:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_022E1EC0: .word 0x02353538
+_022E1EC0: .word ov29_02353538
 	arm_func_end ov29_022E1D2C
 
 	arm_func_start ov29_022E1EC4
 ov29_022E1EC4: ; 0x022E1EC4
-	ldr r2, _022E1EF4 ; =0x0237C79C
+	ldr r2, _022E1EF4 ; =ov29_0237C79C
 	mov r3, #0
 	add ip, r2, r0
 	mov r2, #1
@@ -376,13 +376,13 @@ _022E1EE8:
 	blo _022E1ED8
 	bx lr
 	.align 2, 0
-_022E1EF4: .word 0x0237C79C
+_022E1EF4: .word ov29_0237C79C
 	arm_func_end ov29_022E1EC4
 
 	arm_func_start ov29_022E1EF8
 ov29_022E1EF8: ; 0x022E1EF8
 	mov r0, #0
-	ldr r2, _022E1F30 ; =0x0237C79C
+	ldr r2, _022E1F30 ; =ov29_0237C79C
 	mov r3, r0
 _022E1F04:
 	ldrb r1, [r2, r3]
@@ -397,7 +397,7 @@ _022E1F04:
 	blo _022E1F04
 	bx lr
 	.align 2, 0
-_022E1F30: .word 0x0237C79C
+_022E1F30: .word ov29_0237C79C
 	arm_func_end ov29_022E1EF8
 
 	arm_func_start ov29_022E1F34
@@ -407,7 +407,7 @@ ov29_022E1F34: ; 0x022E1F34
 	mov r8, r0
 	mov r5, r4
 _022E1F44:
-	ldr r0, _022E2010 ; =0x02353538
+	ldr r0, _022E2010 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -432,7 +432,7 @@ _022E1F44:
 	mov r2, #0
 	strb r6, [r0, #0x17b]
 	mov r1, #1
-	ldr r0, _022E2014 ; =0x0237C79C
+	ldr r0, _022E2014 ; =ov29_0237C79C
 	b _022E1FC0
 _022E1FB0:
 	cmp r4, #0xae
@@ -454,7 +454,7 @@ _022E1FE4:
 	cmp r5, #0x10
 	blt _022E1F44
 	mov r1, #0
-	ldr r0, _022E2014 ; =0x0237C79C
+	ldr r0, _022E2014 ; =ov29_0237C79C
 	b _022E2004
 _022E1FFC:
 	strb r1, [r0, r4]
@@ -464,8 +464,8 @@ _022E2004:
 	blt _022E1FFC
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022E2010: .word 0x02353538
-_022E2014: .word 0x0237C79C
+_022E2010: .word ov29_02353538
+_022E2014: .word ov29_0237C79C
 	arm_func_end ov29_022E1F34
 
 	arm_func_start ov29_022E2018
@@ -487,7 +487,7 @@ ov29_022E2018: ; 0x022E2018
 	mov r3, #0
 	rsb ip, r5, #0xae
 	mov r2, r3
-	ldr r1, _022E20BC ; =0x0237C79C
+	ldr r1, _022E20BC ; =ov29_0237C79C
 	b _022E2098
 _022E2064:
 	mov r8, r2
@@ -518,7 +518,7 @@ _022E20A0:
 	movne r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022E20BC: .word 0x0237C79C
+_022E20BC: .word ov29_0237C79C
 	arm_func_end ov29_022E2018
 
 	arm_func_start CreateEnemyEntity
@@ -544,7 +544,7 @@ CreateEnemyEntity: ; 0x022E20C0
 	moveq r0, #0
 	beq _022E2254
 	mov r5, #0
-	ldr sb, _022E225C ; =0x02353538
+	ldr sb, _022E225C ; =ov29_02353538
 	b _022E2248
 _022E211C:
 	ldr r0, [sb]
@@ -559,7 +559,7 @@ _022E211C:
 	str r0, [r7]
 	strb r5, [r7, #0x24]
 	mov r0, #0
-	ldr r1, _022E225C ; =0x02353538
+	ldr r1, _022E225C ; =ov29_02353538
 	strb r0, [r7, #0x22]
 	ldr r1, [r1]
 	add r2, r5, r5, lsl #3
@@ -612,7 +612,7 @@ _022E211C:
 	mov r1, r1, lsr #0x10
 	bl ov29_022E1EC4
 	bl ov29_022E2978
-	ldr r1, _022E225C ; =0x02353538
+	ldr r1, _022E225C ; =ov29_02353538
 	mov r0, r7
 	ldr r1, [r1]
 	add r1, r1, #0x700
@@ -631,7 +631,7 @@ _022E2254:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_022E225C: .word 0x02353538
+_022E225C: .word ov29_02353538
 	arm_func_end CreateEnemyEntity
 
 	arm_func_start SpawnTrap
@@ -642,7 +642,7 @@ SpawnTrap: ; 0x022E2260
 	mov r8, r2
 	mov r7, r3
 	mov r5, #0
-	ldr r4, _022E2310 ; =0x02353538
+	ldr r4, _022E2310 ; =ov29_02353538
 	b _022E2300
 _022E2280:
 	ldr r0, [r4]
@@ -654,7 +654,7 @@ _022E2280:
 	cmp r0, #0
 	bne _022E22FC
 	mov r1, #2
-	ldr r0, _022E2310 ; =0x02353538
+	ldr r0, _022E2310 ; =ov29_02353538
 	str r1, [r6]
 	ldr r0, [r0]
 	mov r2, #0
@@ -684,14 +684,14 @@ _022E2300:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_022E2310: .word 0x02353538
+_022E2310: .word ov29_02353538
 	arm_func_end SpawnTrap
 
 	arm_func_start SpawnItemEntity
 SpawnItemEntity: ; 0x022E2314
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _022E2410 ; =0x02353538
-	ldr r2, _022E2414 ; =0x020A1AE8
+	ldr r1, _022E2410 ; =ov29_02353538
+	ldr r2, _022E2414 ; =SECONDARY_TERRAIN_TYPES
 	ldr r1, [r1]
 	mov r6, r0
 	add r0, r1, #0x4000
@@ -709,7 +709,7 @@ SpawnItemEntity: ; 0x022E2314
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 _022E235C:
 	mov r4, #0
-	ldr r7, _022E2410 ; =0x02353538
+	ldr r7, _022E2410 ; =ov29_02353538
 	b _022E2400
 _022E2368:
 	ldr r0, [r7]
@@ -720,7 +720,7 @@ _022E2368:
 	bl EntityIsValid__022E1A1C
 	cmp r0, #0
 	bne _022E23FC
-	ldr r0, _022E2410 ; =0x02353538
+	ldr r0, _022E2410 ; =ov29_02353538
 	mov r1, #3
 	str r1, [r5]
 	ldr r1, [r0]
@@ -757,8 +757,8 @@ _022E2400:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022E2410: .word 0x02353538
-_022E2414: .word 0x020A1AE8
+_022E2410: .word ov29_02353538
+_022E2414: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end SpawnItemEntity
 
 	arm_func_start ov29_022E2418
@@ -769,7 +769,7 @@ ov29_022E2418: ; 0x022E2418
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	ldr r0, _022E246C ; =0x02353538
+	ldr r0, _022E246C ; =ov29_02353538
 	mov r1, #5
 	ldr r0, [r0]
 	mov r2, #0
@@ -785,7 +785,7 @@ ov29_022E2418: ; 0x022E2418
 	strh r2, [r0, #0x26]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022E246C: .word 0x02353538
+_022E246C: .word ov29_02353538
 	arm_func_end ov29_022E2418
 
 	arm_func_start ov29_022E2470
@@ -819,7 +819,7 @@ _022E24C0:
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r0, _022E2570 ; =0x02353538
+	ldr r0, _022E2570 ; =ov29_02353538
 	ldr r2, [r5, #0xb4]
 	ldr r0, [r0]
 	ldrb r1, [r2, #6]
@@ -863,7 +863,7 @@ _022E2568:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022E2570: .word 0x02353538
+_022E2570: .word ov29_02353538
 	arm_func_end ShouldMinimapDisplayEntity
 
 	arm_func_start ShouldDisplayEntity
@@ -879,7 +879,7 @@ ShouldDisplayEntity: ; 0x022E2574
 	moveq r6, #0x20
 	cmp lr, #2
 	bne _022E25D8
-	ldr r2, _022E2724 ; =0x02353538
+	ldr r2, _022E2724 ; =ov29_02353538
 	ldr r3, _022E2728 ; =0x0001A224
 	ldr r4, [r2]
 	add r8, r3, #2
@@ -894,7 +894,7 @@ ShouldDisplayEntity: ; 0x022E2574
 	sub r7, r7, r8
 	b _022E2600
 _022E25D8:
-	ldr r3, _022E2724 ; =0x02353538
+	ldr r3, _022E2724 ; =ov29_02353538
 	ldr r2, _022E2728 ; =0x0001A224
 	ldr r4, [r3]
 	add r3, r2, #2
@@ -987,7 +987,7 @@ _022E271C:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022E2724: .word 0x02353538
+_022E2724: .word ov29_02353538
 _022E2728: .word 0x0001A224
 	arm_func_end ShouldDisplayEntity
 
@@ -1176,7 +1176,7 @@ CanTargetPosition: ; 0x022E2954
 ov29_022E2978: ; 0x022E2978
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, #0
-	ldr r6, _022E2A34 ; =0x02353538
+	ldr r6, _022E2A34 ; =ov29_02353538
 	mov r4, r5
 _022E2988:
 	ldr r0, [r6]
@@ -1194,7 +1194,7 @@ _022E2988:
 	addne r5, r5, #1
 	cmp r4, #4
 	blt _022E2988
-	ldr r6, _022E2A34 ; =0x02353538
+	ldr r6, _022E2A34 ; =ov29_02353538
 	mov r4, #0
 _022E29CC:
 	ldr r0, [r6]
@@ -1213,7 +1213,7 @@ _022E29CC:
 	cmp r4, #0x10
 	blt _022E29CC
 	mov r2, #0
-	ldr r1, _022E2A34 ; =0x02353538
+	ldr r1, _022E2A34 ; =ov29_02353538
 	b _022E2A28
 _022E2A14:
 	ldr r0, [r1]
@@ -1226,12 +1226,12 @@ _022E2A28:
 	blt _022E2A14
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022E2A34: .word 0x02353538
+_022E2A34: .word ov29_02353538
 	arm_func_end ov29_022E2978
 
 	arm_func_start GetTeamMemberIndex
 GetTeamMemberIndex: ; 0x022E2A38
-	ldr r1, _022E2A74 ; =0x02353538
+	ldr r1, _022E2A74 ; =ov29_02353538
 	mov r2, #0
 	ldr r3, [r1]
 	b _022E2A64
@@ -1249,7 +1249,7 @@ _022E2A64:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_022E2A74: .word 0x02353538
+_022E2A74: .word ov29_02353538
 	arm_func_end GetTeamMemberIndex
 
 	arm_func_start ov29_022E2A78
@@ -1332,7 +1332,7 @@ _022E2B64: .word 0x00000A42
 	arm_func_start ov29_022E2B68
 ov29_022E2B68: ; 0x022E2B68
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _022E2C5C ; =0x02353538
+	ldr r1, _022E2C5C ; =ov29_02353538
 	movs r5, r0
 	ldr r2, [r1]
 	mov r1, #0
@@ -1380,11 +1380,11 @@ _022E2BF4:
 	strb r0, [r4, #0x2e]
 	bl ov29_022E2C6C
 	ldr r1, _022E2C64 ; =0x0000FFFF
-	ldr r0, _022E2C68 ; =0x0237C84C
+	ldr r0, _022E2C68 ; =ov29_0237C84C
 	cmp r5, #0
 	str r1, [r0]
 	ldmneia sp!, {r3, r4, r5, pc}
-	ldr r0, _022E2C5C ; =0x02353538
+	ldr r0, _022E2C5C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x28000
 	ldrb r0, [r0, #0x6c8]
@@ -1394,15 +1394,15 @@ _022E2BF4:
 	streqb r0, [r4, #0x24]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022E2C5C: .word 0x02353538
+_022E2C5C: .word ov29_02353538
 _022E2C60: .word 0x0001A21C
 _022E2C64: .word 0x0000FFFF
-_022E2C68: .word 0x0237C84C
+_022E2C68: .word ov29_0237C84C
 	arm_func_end ov29_022E2B68
 
 	arm_func_start ov29_022E2C6C
 ov29_022E2C6C: ; 0x022E2C6C
-	ldr r0, _022E2C9C ; =0x02353538
+	ldr r0, _022E2C9C ; =ov29_02353538
 	mvn r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x21c
@@ -1415,13 +1415,13 @@ ov29_022E2C6C: ; 0x022E2C6C
 	strh r1, [r0, #0x3a]
 	bx lr
 	.align 2, 0
-_022E2C9C: .word 0x02353538
+_022E2C9C: .word ov29_02353538
 	arm_func_end ov29_022E2C6C
 
 	arm_func_start ov29_022E2CA0
 ov29_022E2CA0: ; 0x022E2CA0
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _022E2D34 ; =0x02353538
+	ldr r1, _022E2D34 ; =ov29_02353538
 	mov r4, r0
 	ldr r3, [r1]
 	ldr r0, _022E2D38 ; =0x0001A21C
@@ -1459,14 +1459,14 @@ _022E2D2C:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022E2D34: .word 0x02353538
+_022E2D34: .word ov29_02353538
 _022E2D38: .word 0x0001A21C
 	arm_func_end ov29_022E2CA0
 
 	arm_func_start ov29_022E2D3C
 ov29_022E2D3C: ; 0x022E2D3C
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _022E2DD0 ; =0x02353538
+	ldr r1, _022E2DD0 ; =ov29_02353538
 	mov r4, r0
 	ldr r3, [r1]
 	ldr r0, _022E2DD4 ; =0x0001A21C
@@ -1504,7 +1504,7 @@ _022E2DC8:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022E2DD0: .word 0x02353538
+_022E2DD0: .word ov29_02353538
 _022E2DD4: .word 0x0001A21C
 	arm_func_end ov29_022E2D3C
 
@@ -1513,19 +1513,19 @@ UpdateMapSurveyorFlag: ; 0x022E2DD8
 	stmdb sp!, {r3, lr}
 	mov r0, #0x41
 	bl TeamMemberHasEnabledIqSkill
-	ldr r1, _022E2DF8 ; =0x02353538
+	ldr r1, _022E2DF8 ; =ov29_02353538
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
 	strb r0, [r1, #0x241]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022E2DF8: .word 0x02353538
+_022E2DF8: .word ov29_02353538
 	arm_func_end UpdateMapSurveyorFlag
 
 	arm_func_start ov29_022E2DFC
 ov29_022E2DFC: ; 0x022E2DFC
 	stmdb sp!, {r3, lr}
-	ldr r1, _022E2E50 ; =0x02353538
+	ldr r1, _022E2E50 ; =ov29_02353538
 	cmp r0, #0
 	ldr r1, [r1]
 	add r1, r1, #0x21c
@@ -1547,13 +1547,13 @@ _022E2E40:
 	bl ov29_022E2C6C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022E2E50: .word 0x02353538
+_022E2E50: .word ov29_02353538
 	arm_func_end ov29_022E2DFC
 
 	arm_func_start PointCameraToMonster
 PointCameraToMonster: ; 0x022E2E54
 	stmdb sp!, {r4, lr}
-	ldr r2, _022E2EC0 ; =0x02353538
+	ldr r2, _022E2EC0 ; =ov29_02353538
 	mov r4, r1
 	ldr r1, [r2]
 	cmp r0, #0
@@ -1581,14 +1581,14 @@ _022E2E98:
 	bl UpdateMinimap
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022E2EC0: .word 0x02353538
+_022E2EC0: .word ov29_02353538
 	arm_func_end PointCameraToMonster
 
 	arm_func_start UpdateCamera
 UpdateCamera: ; 0x022E2EC4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
-	ldr r1, _022E32DC ; =0x02353538
+	ldr r1, _022E32DC ; =ov29_02353538
 	str r0, [sp]
 	ldr r0, [r1]
 	cmp r0, #0
@@ -1684,7 +1684,7 @@ UpdateCamera: ; 0x022E2EC4
 	movne r2, #0xe
 	strneb r0, [r4, #0x22]
 	moveq r2, #0
-	ldr r0, _022E32E0 ; =0x0237C84C
+	ldr r0, _022E32E0 ; =ov29_0237C84C
 	streqb r2, [r4, #0x22]
 	ldr r1, [r0]
 	cmp r1, r2
@@ -1707,7 +1707,7 @@ _022E3088:
 	b _022E30A8
 _022E309C:
 	ldr r1, _022E32E4 ; =0x0000FFFF
-	ldr r0, _022E32E0 ; =0x0237C84C
+	ldr r0, _022E32E0 ; =ov29_0237C84C
 	str r1, [r0]
 _022E30A8:
 	ldrb r0, [r4, #0x22]
@@ -1721,14 +1721,14 @@ _022E30A8:
 	strb r0, [r4, #0x29]
 	ldrb r0, [r4, #0x29]
 	cmp r1, r0
-	ldreq r0, _022E32DC ; =0x02353538
+	ldreq r0, _022E32DC ; =ov29_02353538
 	ldreq r0, [r0]
 	addeq r0, r0, #0x2c000
 	ldreqb r0, [r0, #0xb10]
 	cmpeq r0, #0
 	beq _022E3108
 	bl ov29_023047DC
-	ldr r0, _022E32DC ; =0x02353538
+	ldr r0, _022E32DC ; =ov29_02353538
 	mov r1, #0
 	ldr r0, [r0]
 	mov r7, #1
@@ -1823,7 +1823,7 @@ _022E3228:
 	ldreqsh r0, [r4, #6]
 	cmpeq r1, r0
 	beq _022E3288
-	ldr r4, _022E32DC ; =0x02353538
+	ldr r4, _022E32DC ; =ov29_02353538
 	mov r5, #0
 _022E3250:
 	ldr r0, [r4]
@@ -1844,7 +1844,7 @@ _022E327C:
 _022E3288:
 	cmp r6, #0
 	beq _022E32D0
-	ldr r4, _022E32DC ; =0x02353538
+	ldr r4, _022E32DC ; =ov29_02353538
 	mov r5, #0
 _022E3298:
 	ldr r0, [r4]
@@ -1868,7 +1868,7 @@ _022E32D4:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022E32DC: .word 0x02353538
-_022E32E0: .word 0x0237C84C
+_022E32DC: .word ov29_02353538
+_022E32E0: .word ov29_0237C84C
 _022E32E4: .word 0x0000FFFF
 	arm_func_end UpdateCamera

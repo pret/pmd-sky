@@ -3008,7 +3008,7 @@ ov29_022F9C74: ; 0x022F9C74
 	cmp r0, #2
 	bne _022F9D50
 	ldr r0, _022F9E88 ; =0x02353538
-	ldr r1, _022F9E8C ; =0x020A1AE8
+	ldr r1, _022F9E8C ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
@@ -3133,7 +3133,7 @@ _022F9E80:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _022F9E88: .word 0x02353538
-_022F9E8C: .word 0x020A1AE8
+_022F9E8C: .word SECONDARY_TERRAIN_TYPES
 _022F9E90: .word 0x00000115
 _022F9E94: .word 0x02352768
 _022F9E98: .word 0x00000C1A

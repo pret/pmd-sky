@@ -1427,7 +1427,7 @@ _023013E4:
 	cmp r0, #2
 	bne _0230142C
 	ldr r0, _0230148C ; =0x02353538
-	ldr r1, _02301490 ; =0x020A1AE8
+	ldr r1, _02301490 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
@@ -1467,7 +1467,7 @@ _0230142C:
 _02301484: .word 0x0235171C
 _02301488: .word 0x0235171E
 _0230148C: .word 0x02353538
-_02301490: .word 0x020A1AE8
+_02301490: .word SECONDARY_TERRAIN_TYPES
 _02301494: .word 0x02352770
 	arm_func_end CanAiMonsterMoveInDirection
 
@@ -1500,7 +1500,7 @@ ov29_02301498: ; 0x02301498
 	ldmia sp!, {r3, r4, r5, pc}
 _023014FC:
 	ldr r0, _0230158C ; =0x02353538
-	ldr r1, _02301590 ; =0x020A1AE8
+	ldr r1, _02301590 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
@@ -1538,7 +1538,7 @@ _02301534:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0230158C: .word 0x02353538
-_02301590: .word 0x020A1AE8
+_02301590: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end ov29_02301498
 
 	arm_func_start ov29_02301594

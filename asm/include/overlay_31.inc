@@ -14,7 +14,7 @@
 .public GetItemInfo
 .public ov29_0234EBCC
 .public UpdateMapSurveyorFlag
-.public ov00_022BCCF4
+.public ov10_022BCCF4
 .public Arm9LoadUnkFieldNa0x2029EC8
 .public GetMaxPp
 .public SpecificRecruitCheck
@@ -73,7 +73,7 @@
 .public ov29_022EB9A0
 .public ov29_022E1620
 .public sub_0203F9CC
-.public ov00_022BCD10
+.public ov10_022BCD10
 .public ov00_022E2A78
 .public ItemZInit
 .public CanAiUseMove

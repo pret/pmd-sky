@@ -1,7 +1,9 @@
 #pragma once
 .public AbilityIsActiveVeneer
 .public AdvanceFrame
+.public AnimationDelayOrSomething
 .public AnimationHasMoreFrames
+.public DisplayUi
 .public EntityIsValid__022E37B8
 .public GetEffectAnimationField0x19
 .public GetTileSafe
@@ -12,11 +14,12 @@
 .public ov10_022BF8E8
 .public ov10_022BFD20
 .public ov29_022E2C6C
-.public UpdateCamera
-.public AnimationDelayOrSomething
 .public ov29_022E5ED0
-.public DisplayUi
-.public UpdateTrapsVisibility
-.public UpdateMinimap
+.public ov29_0235110C
+.public ov29_02353538
+.public ov29_0235354C
 .public sub_0201C000
 .public sub_0201CF90
+.public UpdateCamera
+.public UpdateMinimap
+.public UpdateTrapsVisibility

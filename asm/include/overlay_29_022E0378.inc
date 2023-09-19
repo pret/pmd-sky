@@ -73,3 +73,4 @@
 .public sub_0201E380
 .public sub_0201F598
 .public sub_0204AE80
+.public SECONDARY_TERRAIN_TYPES

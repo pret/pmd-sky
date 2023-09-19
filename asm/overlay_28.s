@@ -16,13 +16,13 @@ ov28_0238A140: ; 0x0238A140
 	ldr r2, [r1]
 	mov r1, #0xc
 	mul r3, r2, r1
-	ldr r1, _0238A180 ; =0x0238AD28
+	ldr r1, _0238A180 ; =ov28_0238AD28
 	ldr r1, [r1, r3]
 	strh r1, [r0, #0x18]
 	bx lr
 	.align 2, 0
 _0238A17C: .word ov28_0238ADA0
-_0238A180: .word 0x0238AD28
+_0238A180: .word ov28_0238AD28
 	arm_func_end ov28_0238A140
 
 	arm_func_start ov28_0238A184
@@ -46,7 +46,7 @@ _0238A1B4:
 	ldr r2, [r0]
 	mov r0, #0xc
 	mul r3, r2, r0
-	ldr r0, _0238A45C ; =0x0238AD24
+	ldr r0, _0238A45C ; =ov28_0238AD24
 	ldr r4, [r1]
 	ldr r1, [r0, r3]
 	ldrh r2, [r5, #0x18]
@@ -116,7 +116,7 @@ _0238A2A4:
 	and r0, r0, #0xff
 	bl sub_02028F88
 	ldr r2, _0238A454 ; =ov28_0238ADA0
-	ldr r0, _0238A460 ; =0x0238AD0C
+	ldr r0, _0238A460 ; =ov28_0238AD0C
 	ldr r1, [r2]
 	ldr r3, [r5, #4]
 	ldr r0, [r0, r1, lsl #2]
@@ -133,7 +133,7 @@ _0238A2A4:
 	ldr r1, [r2]
 	mov r0, #0xc
 	mul r2, r1, r0
-	ldr r0, _0238A464 ; =0x0238AD2C
+	ldr r0, _0238A464 ; =ov28_0238AD2C
 	ldrh r1, [r5, #0x18]
 	ldr r0, [r0, r2]
 	cmp r1, r0
@@ -179,7 +179,7 @@ _0238A398:
 	and r0, r0, #0xff
 	bl sub_02028F88
 	ldr r0, _0238A454 ; =ov28_0238ADA0
-	ldr r1, _0238A460 ; =0x0238AD0C
+	ldr r1, _0238A460 ; =ov28_0238AD0C
 	ldr r0, [r0]
 	ldr r2, [r5, #4]
 	ldr r0, [r1, r0, lsl #2]
@@ -222,23 +222,23 @@ _0238A44C:
 	.align 2, 0
 _0238A454: .word ov28_0238ADA0
 _0238A458: .word ov28_0238AD80
-_0238A45C: .word 0x0238AD24
-_0238A460: .word 0x0238AD0C
-_0238A464: .word 0x0238AD2C
+_0238A45C: .word ov28_0238AD24
+_0238A460: .word ov28_0238AD0C
+_0238A464: .word ov28_0238AD2C
 	arm_func_end ov28_0238A184
 
 	arm_func_start ov28_0238A468
 ov28_0238A468: ; 0x0238A468
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	ldr r0, _0238A488 ; =0x0238ACFC
+	ldr r0, _0238A488 ; =ov28_0238ACFC
 	bl sub_020348E4
 	cmp r0, #0
 	ldrne r0, _0238A48C ; =ov28_0238ADA0
 	strne r4, [r0]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238A488: .word 0x0238ACFC
+_0238A488: .word ov28_0238ACFC
 _0238A48C: .word ov28_0238ADA0
 	arm_func_end ov28_0238A468
 
@@ -275,10 +275,10 @@ _0238A4E4:
 	ldr r1, _0238A580 ; =ov28_0238ADA0
 	mov r0, #0xc
 	ldr r2, [r1]
-	ldr r1, _0238A584 ; =0x0238AD24
+	ldr r1, _0238A584 ; =ov28_0238AD24
 	mul r3, r2, r0
 	ldr r6, [r1, r3]
-	ldr r0, _0238A588 ; =0x0238AD2C
+	ldr r0, _0238A588 ; =ov28_0238AD2C
 	mov r4, r6
 	ldr r5, [r0, r3]
 	ldr r7, _0238A57C ; =ov28_0238AD80
@@ -309,8 +309,8 @@ _0238A54C:
 _0238A578: .word 0x00003618
 _0238A57C: .word ov28_0238AD80
 _0238A580: .word ov28_0238ADA0
-_0238A584: .word 0x0238AD24
-_0238A588: .word 0x0238AD2C
+_0238A584: .word ov28_0238AD24
+_0238A588: .word ov28_0238AD2C
 	arm_func_end ov28_0238A490
 
 	arm_func_start ov28_0238A58C
@@ -471,7 +471,7 @@ _0238A790:
 	and r0, r0, #0xff
 	bl sub_02028F88
 	ldr r0, _0238AB54 ; =ov28_0238ADA0
-	ldr r1, _0238AB58 ; =0x0238AD0C
+	ldr r1, _0238AB58 ; =ov28_0238AD0C
 	ldr r0, [r0]
 	ldr r2, [r4, #0x404]
 	ldr r0, [r1, r0, lsl #2]
@@ -527,7 +527,7 @@ _0238A87C:
 	cmp r0, #0
 	beq _0238A8A4
 	cmp r0, #1
-	ldreq r0, _0238AB58 ; =0x0238AD0C
+	ldreq r0, _0238AB58 ; =ov28_0238AD0C
 	ldreq r1, [r4, #0x24]
 	ldreq r0, [r0, r2, lsl #2]
 	addeq r0, r1, r0
@@ -544,7 +544,7 @@ _0238A8A4:
 	and r0, r0, #0xff
 	bl sub_02028F88
 	ldr r0, _0238AB54 ; =ov28_0238ADA0
-	ldr r1, _0238AB58 ; =0x0238AD0C
+	ldr r1, _0238AB58 ; =ov28_0238AD0C
 	ldr r0, [r0]
 	ldr r2, [r4, #0x24]
 	ldr r0, [r1, r0, lsl #2]
@@ -613,7 +613,7 @@ _0238A9A8:
 	and r0, r0, #0xff
 	bl sub_02028F88
 	ldr r0, _0238AB54 ; =ov28_0238ADA0
-	ldr r1, _0238AB58 ; =0x0238AD0C
+	ldr r1, _0238AB58 ; =ov28_0238AD0C
 	ldr r0, [r0]
 	ldr r2, [r4, #0x440]
 	ldr r0, [r1, r0, lsl #2]
@@ -638,7 +638,7 @@ _0238A9A8:
 	b _0238AA48
 _0238AA2C:
 	ldr r0, _0238AB54 ; =ov28_0238ADA0
-	ldr r1, _0238AB58 ; =0x0238AD0C
+	ldr r1, _0238AB58 ; =ov28_0238AD0C
 	ldr r0, [r0]
 	ldr r2, [r4, #0x440]
 	ldr r0, [r1, r0, lsl #2]
@@ -728,7 +728,7 @@ _0238AB48:
 	.align 2, 0
 _0238AB50: .word ov28_0238AD80
 _0238AB54: .word ov28_0238ADA0
-_0238AB58: .word 0x0238AD0C
+_0238AB58: .word ov28_0238AD0C
 	arm_func_end ov28_0238A5CC
 
 	arm_func_start ov28_0238AB5C
@@ -849,9 +849,24 @@ _0238ACF8: .word ov28_0238AD80
 	arm_func_end ov28_0238ABD4
 	; 0x0238ACFC
 
-	.byte 0x0D, 0x00, 0x00, 0x00, 0x90, 0xA4, 0x38, 0x02, 0x8C, 0xA5, 0x38, 0x02, 0xCC, 0xA5, 0x38, 0x02
+	.global ov28_0238ACFC
+ov28_0238ACFC:
+	.byte 0x0D, 0x00, 0x00, 0x00
+	.word ov28_0238A490
+	.word ov28_0238A58C
+	.word ov28_0238A5CC
+	.global ov28_0238AD0C
+ov28_0238AD0C:
 	.byte 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00
-	.byte 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0xBF, 0x44, 0x00, 0x00, 0xC0, 0x44, 0x00, 0x00
+	.byte 0x00, 0x40, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00
+	.global ov28_0238AD24
+ov28_0238AD24:
+	.byte 0xBF, 0x44, 0x00, 0x00
+	.global ov28_0238AD28
+ov28_0238AD28:
+	.byte 0xC0, 0x44, 0x00, 0x00
+	.global ov28_0238AD2C
+ov28_0238AD2C:
 	.byte 0x75, 0x45, 0x00, 0x00, 0x29, 0x46, 0x00, 0x00, 0x2A, 0x46, 0x00, 0x00, 0x84, 0x46, 0x00, 0x00
 	.byte 0x99, 0x47, 0x00, 0x00, 0x9A, 0x47, 0x00, 0x00, 0x13, 0x48, 0x00, 0x00, 0x3D, 0x47, 0x00, 0x00
 	.byte 0x3E, 0x47, 0x00, 0x00, 0x98, 0x47, 0x00, 0x00, 0x85, 0x46, 0x00, 0x00, 0x86, 0x46, 0x00, 0x00

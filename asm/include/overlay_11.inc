@@ -149,8 +149,8 @@
 .public MemFree
 .public MemsetSimple
 .public MemZero
-.public ov00_022BCCF4
-.public ov00_022BCD10
+.public ov10_022BCCF4
+.public ov10_022BCD10
 .public ov00_022E0378
 .public ov00_022E03F0
 .public ov00_022E0434

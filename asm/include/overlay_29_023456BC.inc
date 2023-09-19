@@ -92,3 +92,4 @@
 .public sub_0204F7A8
 .public sub_02053D1C
 .public sub_02057CE8
+.public SECONDARY_TERRAIN_TYPES
