@@ -130,10 +130,10 @@ _0238A2D8:
 	bl ShowMessageInDBox
 	b _0238B0C4
 _0238A318:
-	ldr r0, _0238B0D8 ; =0x0238CDE4
+	ldr r0, _0238B0D8 ; =ov16_0238CDE4
 	mov r4, #3
 	ldr r1, _0238B0DC ; =0x00300011
-	ldr r3, _0238B0E0 ; =0x0238CD40
+	ldr r3, _0238B0E0 ; =ov16_0238CD40
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -282,9 +282,9 @@ _0238A50C:
 	mov r4, #2
 	str r1, [r0, #0x74]
 	ldr r0, _0238B0CC ; =ov16_0238CE40
-	ldr r3, _0238B0EC ; =0x0238CD08
+	ldr r3, _0238B0EC ; =ov16_0238CD08
 	ldr r1, [r0]
-	ldr r0, _0238B0D8 ; =0x0238CDE4
+	ldr r0, _0238B0D8 ; =ov16_0238CDE4
 	str r4, [r1, #0x78]
 	ldr r1, _0238B0F0 ; =0x00300013
 	mov r2, #0
@@ -326,9 +326,9 @@ _0238A5D8:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238B0D8 ; =0x0238CDE4
+	ldr r0, _0238B0D8 ; =ov16_0238CDE4
 	ldr r1, _0238B0F0 ; =0x00300013
-	ldr r3, _0238B0EC ; =0x0238CD08
+	ldr r3, _0238B0EC ; =ov16_0238CD08
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -337,9 +337,9 @@ _0238A5D8:
 	strb r0, [r1, #0xc3]
 	b _0238B0C4
 _0238A614:
-	ldr r0, _0238B0F8 ; =0x0238CDD4
+	ldr r0, _0238B0F8 ; =ov16_0238CDD4
 	mov r4, #3
-	ldr r3, _0238B0FC ; =0x0238CD20
+	ldr r3, _0238B0FC ; =ov16_0238CD20
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
@@ -401,9 +401,9 @@ _0238A6F4:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238B0D8 ; =0x0238CDE4
+	ldr r0, _0238B0D8 ; =ov16_0238CDE4
 	ldr r1, _0238B0F0 ; =0x00300013
-	ldr r3, _0238B0EC ; =0x0238CD08
+	ldr r3, _0238B0EC ; =ov16_0238CD08
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -579,9 +579,9 @@ _0238A95C:
 	mov r4, #2
 	str r1, [r0, #0x74]
 	ldr r0, _0238B0CC ; =ov16_0238CE40
-	ldr r3, _0238B0EC ; =0x0238CD08
+	ldr r3, _0238B0EC ; =ov16_0238CD08
 	ldr r1, [r0]
-	ldr r0, _0238B0D8 ; =0x0238CDE4
+	ldr r0, _0238B0D8 ; =ov16_0238CDE4
 	str r4, [r1, #0x78]
 	ldr r1, _0238B0F0 ; =0x00300013
 	mov r2, #0
@@ -740,7 +740,7 @@ _0238AB9C:
 	strh r1, [r0, #8]
 _0238ABF4:
 	ldr r1, _0238B0CC ; =ov16_0238CE40
-	ldr r0, _0238B114 ; =0x020A18C4
+	ldr r0, _0238B114 ; =_020A18C4
 	ldr r3, [r1]
 	ldrsh r2, [r0]
 	ldr r4, [r3, #0x3c]
@@ -749,13 +749,13 @@ _0238ABF4:
 	add r2, r3, r2
 	strh r2, [r4, #0xa]
 	ldr r1, [r1]
-	ldr r3, _0238B11C ; =0x020A18D0
+	ldr r3, _0238B11C ; =_020A18D0
 	ldr r2, [r1, #0x3c]
 	ldrsh r1, [r2, #0xa]
 	cmp r1, r0
 	strgth r0, [r2, #0xa]
 	ldr r1, _0238B0CC ; =ov16_0238CE40
-	ldr r0, _0238B120 ; =0x020A18E4
+	ldr r0, _0238B120 ; =_020A18E4
 	ldr r1, [r1]
 	ldrsh r5, [r0]
 	ldr r1, [r1, #0x3c]
@@ -1020,9 +1020,9 @@ _0238AFF8:
 	str r2, [r0, #0x74]
 	ldr r2, [r1]
 	mov ip, #4
-	ldr r0, _0238B0D8 ; =0x0238CDE4
+	ldr r0, _0238B0D8 ; =ov16_0238CDE4
 	ldr r1, _0238B0DC ; =0x00300011
-	ldr r3, _0238B0EC ; =0x0238CD08
+	ldr r3, _0238B0EC ; =ov16_0238CD08
 	str ip, [r2, #0x78]
 	mov ip, #2
 	mov r2, #0
@@ -1061,7 +1061,7 @@ _0238B088:
 	str r0, [sp, #0x9c]
 	str ip, [sp]
 	mov ip, #4
-	ldr r0, _0238B13C ; =0x0238CDC4
+	ldr r0, _0238B13C ; =ov16_0238CDC4
 	ldr r1, _0238B140 ; =0x00009813
 	ldr r3, _0238B144 ; =ov16_0238CB30
 	add r2, sp, #0x90
@@ -1077,32 +1077,32 @@ _0238B0C4:
 _0238B0CC: .word ov16_0238CE40
 _0238B0D0: .word 0x00000431
 _0238B0D4: .word 0x00000432
-_0238B0D8: .word 0x0238CDE4
+_0238B0D8: .word ov16_0238CDE4
 _0238B0DC: .word 0x00300011
-_0238B0E0: .word 0x0238CD40
+_0238B0E0: .word ov16_0238CD40
 _0238B0E4: .word 0x00000442
 _0238B0E8: .word 0x00000449
-_0238B0EC: .word 0x0238CD08
+_0238B0EC: .word ov16_0238CD08
 _0238B0F0: .word 0x00300013
 _0238B0F4: .word 0x00000434
-_0238B0F8: .word 0x0238CDD4
-_0238B0FC: .word 0x0238CD20
+_0238B0F8: .word ov16_0238CDD4
+_0238B0FC: .word ov16_0238CD20
 _0238B100: .word 0x00000125
 _0238B104: .word 0x0000043E
 _0238B108: .word 0x0000043A
 _0238B10C: .word 0x0000043C
 _0238B110: .word 0x0000140F
-_0238B114: .word 0x020A18C4
+_0238B114: .word _020A18C4
 _0238B118: .word 0x000003E7
-_0238B11C: .word 0x020A18D0
-_0238B120: .word 0x020A18E4
+_0238B11C: .word _020A18D0
+_0238B120: .word _020A18E4
 _0238B124: .word 0x00003F01
 _0238B128: .word 0x0000043F
 _0238B12C: .word 0x0000042D
 _0238B130: .word 0x00000433
 _0238B134: .word 0x00000447
 _0238B138: .word 0x00000446
-_0238B13C: .word 0x0238CDC4
+_0238B13C: .word ov16_0238CDC4
 _0238B140: .word 0x00009813
 _0238B144: .word ov16_0238CB30
 	arm_func_end ov16_0238ADFC
@@ -1232,10 +1232,10 @@ _0238B2D8:
 	bl ShowMessageInDBox
 	b _0238C0C4
 _0238B318:
-	ldr r0, _0238C0D8 ; =0x0238CDE4
+	ldr r0, _0238C0D8 ; =ov16_0238CDE4
 	mov r4, #3
 	ldr r1, _0238C0DC ; =0x00300011
-	ldr r3, _0238C0E0 ; =0x0238CD40
+	ldr r3, _0238C0E0 ; =ov16_0238CD40
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1380,9 +1380,9 @@ _0238B50C:
 	mov r4, #2
 	str r1, [r0, #0x74]
 	ldr r0, _0238C0CC ; =ov16_0238CE40
-	ldr r3, _0238C0EC ; =0x0238CD08
+	ldr r3, _0238C0EC ; =ov16_0238CD08
 	ldr r1, [r0]
-	ldr r0, _0238C0D8 ; =0x0238CDE4
+	ldr r0, _0238C0D8 ; =ov16_0238CDE4
 	str r4, [r1, #0x78]
 	ldr r1, _0238C0F0 ; =0x00300013
 	mov r2, #0
@@ -1424,9 +1424,9 @@ _0238B5D8:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238C0D8 ; =0x0238CDE4
+	ldr r0, _0238C0D8 ; =ov16_0238CDE4
 	ldr r1, _0238C0F0 ; =0x00300013
-	ldr r3, _0238C0EC ; =0x0238CD08
+	ldr r3, _0238C0EC ; =ov16_0238CD08
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1435,9 +1435,9 @@ _0238B5D8:
 	strb r0, [r1, #0xc3]
 	b _0238C0C4
 _0238B614:
-	ldr r0, _0238C0F8 ; =0x0238CDD4
+	ldr r0, _0238C0F8 ; =ov16_0238CDD4
 	mov r4, #3
-	ldr r3, _0238C0FC ; =0x0238CD20
+	ldr r3, _0238C0FC ; =ov16_0238CD20
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
@@ -1499,9 +1499,9 @@ _0238B6F4:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238C0D8 ; =0x0238CDE4
+	ldr r0, _0238C0D8 ; =ov16_0238CDE4
 	ldr r1, _0238C0F0 ; =0x00300013
-	ldr r3, _0238C0EC ; =0x0238CD08
+	ldr r3, _0238C0EC ; =ov16_0238CD08
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1677,9 +1677,9 @@ _0238B95C:
 	mov r4, #2
 	str r1, [r0, #0x74]
 	ldr r0, _0238C0CC ; =ov16_0238CE40
-	ldr r3, _0238C0EC ; =0x0238CD08
+	ldr r3, _0238C0EC ; =ov16_0238CD08
 	ldr r1, [r0]
-	ldr r0, _0238C0D8 ; =0x0238CDE4
+	ldr r0, _0238C0D8 ; =ov16_0238CDE4
 	str r4, [r1, #0x78]
 	ldr r1, _0238C0F0 ; =0x00300013
 	mov r2, #0
@@ -1838,7 +1838,7 @@ _0238BB9C:
 	strh r1, [r0, #8]
 _0238BBF4:
 	ldr r1, _0238C0CC ; =ov16_0238CE40
-	ldr r0, _0238C114 ; =0x020A18C4
+	ldr r0, _0238C114 ; =_020A18C4
 	ldr r3, [r1]
 	ldrsh r2, [r0]
 	ldr r4, [r3, #0x3c]
@@ -1847,13 +1847,13 @@ _0238BBF4:
 	add r2, r3, r2
 	strh r2, [r4, #0xa]
 	ldr r1, [r1]
-	ldr r3, _0238C11C ; =0x020A18D0
+	ldr r3, _0238C11C ; =_020A18D0
 	ldr r2, [r1, #0x3c]
 	ldrsh r1, [r2, #0xa]
 	cmp r1, r0
 	strgth r0, [r2, #0xa]
 	ldr r1, _0238C0CC ; =ov16_0238CE40
-	ldr r0, _0238C120 ; =0x020A18E4
+	ldr r0, _0238C120 ; =_020A18E4
 	ldr r1, [r1]
 	ldrsh r5, [r0]
 	ldr r1, [r1, #0x3c]
@@ -2114,9 +2114,9 @@ _0238BFF8:
 	str r2, [r0, #0x74]
 	ldr r2, [r1]
 	mov ip, #4
-	ldr r0, _0238C0D8 ; =0x0238CDE4
+	ldr r0, _0238C0D8 ; =ov16_0238CDE4
 	ldr r1, _0238C0DC ; =0x00300011
-	ldr r3, _0238C0EC ; =0x0238CD08
+	ldr r3, _0238C0EC ; =ov16_0238CD08
 	str ip, [r2, #0x78]
 	mov ip, #2
 	mov r2, #0
@@ -2155,7 +2155,7 @@ _0238C088:
 	str r0, [sp, #0x24]
 	str ip, [sp]
 	mov ip, #4
-	ldr r0, _0238C13C ; =0x0238CDC4
+	ldr r0, _0238C13C ; =ov16_0238CDC4
 	ldr r1, _0238C140 ; =0x00009813
 	ldr r3, _0238C144 ; =ov16_0238CB30
 	add r2, sp, #0x18
@@ -2171,32 +2171,32 @@ _0238C0C4:
 _0238C0CC: .word ov16_0238CE40
 _0238C0D0: .word 0x00000431
 _0238C0D4: .word 0x00000432
-_0238C0D8: .word 0x0238CDE4
+_0238C0D8: .word ov16_0238CDE4
 _0238C0DC: .word 0x00300011
-_0238C0E0: .word 0x0238CD40
+_0238C0E0: .word ov16_0238CD40
 _0238C0E4: .word 0x00000442
 _0238C0E8: .word 0x00000449
-_0238C0EC: .word 0x0238CD08
+_0238C0EC: .word ov16_0238CD08
 _0238C0F0: .word 0x00300013
 _0238C0F4: .word 0x00000434
-_0238C0F8: .word 0x0238CDD4
-_0238C0FC: .word 0x0238CD20
+_0238C0F8: .word ov16_0238CDD4
+_0238C0FC: .word ov16_0238CD20
 _0238C100: .word 0x00000125
 _0238C104: .word 0x0000043E
 _0238C108: .word 0x0000043A
 _0238C10C: .word 0x0000043C
 _0238C110: .word 0x0000140F
-_0238C114: .word 0x020A18C4
+_0238C114: .word _020A18C4
 _0238C118: .word 0x000003E7
-_0238C11C: .word 0x020A18D0
-_0238C120: .word 0x020A18E4
+_0238C11C: .word _020A18D0
+_0238C120: .word _020A18E4
 _0238C124: .word 0x00003F01
 _0238C128: .word 0x0000043F
 _0238C12C: .word 0x0000042D
 _0238C130: .word 0x00000433
 _0238C134: .word 0x00000447
 _0238C138: .word 0x00000446
-_0238C13C: .word 0x0238CDC4
+_0238C13C: .word ov16_0238CDC4
 _0238C140: .word 0x00009813
 _0238C144: .word ov16_0238CB30
 	arm_func_end ov16_0238B148
@@ -2431,7 +2431,7 @@ ov16_0238CB30: ; 0x0238CB30
 	ldr r2, _0238CB8C ; =ov16_0238CE40
 	ldr r3, _0238CB90 ; =0x0000C402
 	ldr r6, [r2]
-	ldr r2, _0238CB94 ; =0x0238CE28
+	ldr r2, _0238CB94 ; =ov16_0238CE28
 	add r5, r6, r1, lsl #2
 	ldr r1, [r5, #0x50]
 	add ip, sp, #4
@@ -2452,7 +2452,7 @@ ov16_0238CB30: ; 0x0238CB30
 	.align 2, 0
 _0238CB8C: .word ov16_0238CE40
 _0238CB90: .word 0x0000C402
-_0238CB94: .word 0x0238CE28
+_0238CB94: .word ov16_0238CE28
 	arm_func_end ov16_0238CB30
 
 	arm_func_start ov16_0238CB98
@@ -2479,7 +2479,7 @@ ov16_0238CBD0: ; 0x0238CBD0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x3c
 	bl sub_02059B08
-	ldr r1, _0238CC5C ; =0x020B0A48
+	ldr r1, _0238CC5C ; =TEAM_MEMBER_TABLE_PTR
 	mov r6, #0
 	ldr r8, [r1]
 	ldr sb, _0238CC60 ; =0x0000022B
@@ -2515,7 +2515,7 @@ _0238CC40:
 	add sp, sp, #0x3c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0238CC5C: .word 0x020B0A48
+_0238CC5C: .word TEAM_MEMBER_TABLE_PTR
 _0238CC60: .word 0x0000022B
 	arm_func_end ov16_0238CBD0
 
@@ -2591,10 +2591,18 @@ _0238CD04: .word ov16_0238CE40
 	arm_func_end ov16_0238CCF0
 	; 0x0238CD08
 
+	.global ov16_0238CD08
+ov16_0238CD08:
 	.byte 0x2B, 0x04, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x2C, 0x04, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x35, 0x04, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.global ov16_0238CD20
+ov16_0238CD20:
+	.byte 0x35, 0x04, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0x36, 0x04, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x37, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x2E, 0x04, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.global ov16_0238CD40
+ov16_0238CD40:
+	.byte 0x2E, 0x04, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0x2F, 0x04, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x30, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x2D, 0x04, 0x2E, 0x04, 0x2F, 0x04, 0x30, 0x04
 	.byte 0x31, 0x04, 0x32, 0x04, 0x33, 0x04, 0x34, 0x04, 0x38, 0x04, 0x39, 0x04, 0x3A, 0x04, 0x3C, 0x04
@@ -2602,13 +2610,24 @@ _0238CD04: .word ov16_0238CE40
 	.byte 0x45, 0x04, 0x46, 0x04, 0x47, 0x04, 0x48, 0x04, 0x49, 0x04, 0x3B, 0x04, 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x12, 0x10, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x0A, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x02, 0x02, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x13, 0x02, 0x0B, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.global ov16_0238CDC4
+ov16_0238CDC4:
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x02, 0x02, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.global ov16_0238CDD4
+ov16_0238CDD4:
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x13, 0x02, 0x0B, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.global ov16_0238CDE4
+ov16_0238CDE4:
+	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x14, 0x10, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6D, 0x65, 0x6E, 0x75
 	.byte 0x4D, 0x6F, 0x6E, 0x73, 0x74, 0x65, 0x72, 0x50, 0x69, 0x63, 0x74, 0x75, 0x72, 0x65, 0x42, 0x6F
 	.byte 0x6F, 0x6B, 0x5F, 0x49, 0x73, 0x42, 0x75, 0x73, 0x79, 0x20, 0x62, 0x75, 0x73, 0x79, 0x0A, 0x00
+	.global ov16_0238CE28
+ov16_0238CE28:
 	.byte 0x5B, 0x6B, 0x69, 0x6E, 0x64, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00, 0x00
 
 	.data
