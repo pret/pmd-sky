@@ -37,3 +37,4 @@
 .public SetAndPlayAnimationForAnimationControl
 .public sub_0204AEE0
 .public sub_02053038
+.public SECONDARY_TERRAIN_TYPES

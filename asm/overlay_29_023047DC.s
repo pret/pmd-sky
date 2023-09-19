@@ -337,7 +337,7 @@ _02304BF8:
 	cmp r6, #2
 	bne _02304C24
 	ldr r0, _02304C34 ; =0x02353538
-	ldr r1, _02304C38 ; =0x020A1AE8
+	ldr r1, _02304C38 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
@@ -352,7 +352,7 @@ _02304C24:
 	.align 2, 0
 _02304C30: .word 0x02352808
 _02304C34: .word 0x02353538
-_02304C38: .word 0x020A1AE8
+_02304C38: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end ov29_02304BAC
 
 	arm_func_start ov29_02304C3C

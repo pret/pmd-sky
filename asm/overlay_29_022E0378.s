@@ -10,7 +10,7 @@ ov29_022E0378: ; 0x022E0378
 	cmp r1, #0
 	movne r0, #1
 	bxne lr
-	ldr r1, _022E03AC ; =0x020A1AE8
+	ldr r1, _022E03AC ; =SECONDARY_TERRAIN_TYPES
 	ldrb r0, [r1, r0]
 	cmp r0, #2
 	moveq r0, #1
@@ -19,7 +19,7 @@ ov29_022E0378: ; 0x022E0378
 	bx lr
 	.align 2, 0
 _022E03A8: .word 0x0237CFC0
-_022E03AC: .word 0x020A1AE8
+_022E03AC: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end ov29_022E0378
 
 	arm_func_start GetFloorType

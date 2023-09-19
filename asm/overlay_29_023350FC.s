@@ -1489,7 +1489,7 @@ ov29_02336460: ; 0x02336460
 	mov r0, #3
 	strb r0, [r1, #3]
 	ldr r0, _02336598 ; =0x02353538
-	ldr r2, _023365B4 ; =0x020A1AE8
+	ldr r2, _023365B4 ; =SECONDARY_TERRAIN_TYPES
 	ldr ip, [r0]
 	add r0, ip, #0x4000
 	ldrsh r0, [r0, #0xd4]
@@ -1520,7 +1520,7 @@ _023365A4: .word 0x02353724
 _023365A8: .word 0x00012162
 _023365AC: .word 0x0237CAA0
 _023365B0: .word 0x0237C9B8
-_023365B4: .word 0x020A1AE8
+_023365B4: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end ov29_02336460
 
 	arm_func_start ov29_023365B8

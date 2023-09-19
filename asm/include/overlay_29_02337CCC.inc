@@ -129,3 +129,4 @@
 .public sub_0204AEC0
 .public sub_0204AF30
 .public sub_02056880
+.public SECONDARY_TERRAIN_TYPES

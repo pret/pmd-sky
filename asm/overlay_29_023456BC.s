@@ -490,7 +490,7 @@ ov29_02345D84: ; 0x02345D84
 	ldr r0, _02346048 ; =0x02353538
 	mov r4, #0
 	ldr r0, [r0]
-	ldr r1, _0234604C ; =0x020A1AE8
+	ldr r1, _0234604C ; =SECONDARY_TERRAIN_TYPES
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
 	mov r7, r4
@@ -669,7 +669,7 @@ _02346040:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02346048: .word 0x02353538
-_0234604C: .word 0x020A1AE8
+_0234604C: .word SECONDARY_TERRAIN_TYPES
 _02346050: .word 0x023518AC
 _02346054: .word 0x023531BC
 _02346058: .word 0x00000B74

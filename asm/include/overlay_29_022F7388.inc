@@ -208,3 +208,4 @@
 .public sub_02058674
 .public sub_02058EB0
 .public sub_0205A450
+.public SECONDARY_TERRAIN_TYPES

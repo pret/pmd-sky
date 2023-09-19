@@ -21,7 +21,7 @@ ItemIsActive__022E330C: ; 0x022E330C
 
 	arm_func_start GetVisibilityRange
 GetVisibilityRange: ; 0x022E333C
-	ldr r0, _022E3358 ; =0x02353538
+	ldr r0, _022E3358 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrb r0, [r0, #0x23d]
@@ -29,13 +29,13 @@ GetVisibilityRange: ; 0x022E333C
 	moveq r0, #2
 	bx lr
 	.align 2, 0
-_022E3358: .word 0x02353538
+_022E3358: .word ov29_02353538
 	arm_func_end GetVisibilityRange
 
 	arm_func_start ov29_022E335C
 ov29_022E335C: ; 0x022E335C
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _022E3428 ; =0x02353538
+	ldr r0, _022E3428 ; =ov29_02353538
 	mov r5, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
@@ -57,14 +57,14 @@ _022E33A0:
 	bl ov29_022E2C6C
 	ldmia sp!, {r3, r4, r5, pc}
 _022E33B0:
-	ldr r0, _022E3428 ; =0x02353538
+	ldr r0, _022E3428 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x21c
 	add r4, r0, #0x1a000
 	ldr r0, [r4, #0x10]
 	ldr r5, [r0, #0xb4]
 	bl DisplayUi
-	ldr r1, _022E3428 ; =0x02353538
+	ldr r1, _022E3428 ; =ov29_02353538
 	ldr r0, _022E342C ; =0x000003E7
 	ldr r1, [r1]
 	ldrb r2, [r1, #0x749]
@@ -88,14 +88,14 @@ _022E33B0:
 	strh r0, [r4, #0x44]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022E3428: .word 0x02353538
+_022E3428: .word ov29_02353538
 _022E342C: .word 0x000003E7
 	arm_func_end ov29_022E335C
 
 	arm_func_start ov29_022E3430
 ov29_022E3430: ; 0x022E3430
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _022E34A8 ; =0x02353538
+	ldr r1, _022E34A8 ; =ov29_02353538
 	mov r7, #0
 	ldr r1, [r1]
 	mov r4, r0
@@ -127,35 +127,35 @@ _022E3458:
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022E34A8: .word 0x02353538
+_022E34A8: .word ov29_02353538
 _022E34AC: .word 0x00000B77
 	arm_func_end ov29_022E3430
 
 	arm_func_start ov29_022E34B0
 ov29_022E34B0: ; 0x022E34B0
-	ldr r1, _022E34C4 ; =0x02353538
+	ldr r1, _022E34C4 ; =ov29_02353538
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
 	strb r0, [r1, #0x24c]
 	bx lr
 	.align 2, 0
-_022E34C4: .word 0x02353538
+_022E34C4: .word ov29_02353538
 	arm_func_end ov29_022E34B0
 
 	arm_func_start ov29_022E34C8
 ov29_022E34C8: ; 0x022E34C8
-	ldr r0, _022E352C ; =0x02353538
+	ldr r0, _022E352C ; =ov29_02353538
 	ldr r3, [r0]
 	add r0, r3, #0x1a000
 	ldr r2, [r0, #0x234]
 	cmp r2, #0
 	bxeq lr
-	ldr r1, _022E3530 ; =0x0235110C
+	ldr r1, _022E3530 ; =ov29_0235110C
 	cmp r2, #0x1f
 	movge r2, #0x1f
 	ldr r2, [r1, r2, lsl #2]
 	add r0, r3, #0x1a000
-	ldr r1, _022E352C ; =0x02353538
+	ldr r1, _022E352C ; =ov29_02353538
 	str r2, [r0, #0x230]
 	ldr r0, [r1]
 	add r0, r0, #0x1a000
@@ -170,8 +170,8 @@ ov29_022E34C8: ; 0x022E34C8
 	streq r1, [r0, #0x234]
 	bx lr
 	.align 2, 0
-_022E352C: .word 0x02353538
-_022E3530: .word 0x0235110C
+_022E352C: .word ov29_02353538
+_022E3530: .word ov29_0235110C
 	arm_func_end ov29_022E34C8
 
 	arm_func_start ov29_022E3534
@@ -192,20 +192,20 @@ _022E3558:
 
 	arm_func_start ov29_022E3560
 ov29_022E3560: ; 0x022E3560
-	ldr r1, _022E356C ; =0x0235354C
+	ldr r1, _022E356C ; =ov29_0235354C
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-_022E356C: .word 0x0235354C
+_022E356C: .word ov29_0235354C
 	arm_func_end ov29_022E3560
 
 	arm_func_start ov29_022E3570
 ov29_022E3570: ; 0x022E3570
-	ldr r0, _022E357C ; =0x0235354C
+	ldr r0, _022E357C ; =ov29_0235354C
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_022E357C: .word 0x0235354C
+_022E357C: .word ov29_0235354C
 	arm_func_end ov29_022E3570
 
 	arm_func_start ov29_022E3580
@@ -295,7 +295,7 @@ _022E365C:
 	add r7, r3, r7, lsl #8
 	sub r8, r2, r0
 _022E36A8:
-	ldr r0, _022E37B0 ; =0x02353538
+	ldr r0, _022E37B0 ; =ov29_02353538
 	ldr r2, _022E37B4 ; =0x0001A226
 	ldr r3, [r0]
 	add r0, sp, #4
@@ -372,6 +372,6 @@ _022E37A8:
 	add sp, sp, #0x30
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022E37B0: .word 0x02353538
+_022E37B0: .word ov29_02353538
 _022E37B4: .word 0x0001A226
 	arm_func_end PlayEffectAnimationEntity

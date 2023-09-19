@@ -124,7 +124,7 @@ _02337E54:
 	cmp r0, #2
 	bne _02337E80
 	ldr r0, _02337E8C ; =0x02353538
-	ldr r1, _02337E90 ; =0x020A1AE8
+	ldr r1, _02337E90 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
@@ -138,7 +138,7 @@ _02337E84:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02337E8C: .word 0x02353538
-_02337E90: .word 0x020A1AE8
+_02337E90: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end ov29_02337E2C
 
 	arm_func_start IsWaterTileset
@@ -3322,7 +3322,7 @@ GenerateFloor: ; 0x0233A6D8
 	str r0, [r2, #0x2c]
 	add r0, r1, #0x4000
 	ldrsh r1, [r0, #0xd4]
-	ldr r0, _0233AE70 ; =0x020A1AE8
+	ldr r0, _0233AE70 ; =SECONDARY_TERRAIN_TYPES
 	ldrb r0, [r0, r1]
 	mov r1, #0xff
 	cmp r0, #2
@@ -3812,7 +3812,7 @@ _0233AE58:
 _0233AE64: .word 0x02353538
 _0233AE68: .word 0x000286B2
 _0233AE6C: .word 0x0237CFBC
-_0233AE70: .word 0x020A1AE8
+_0233AE70: .word SECONDARY_TERRAIN_TYPES
 _0233AE74: .word 0x00012AFA
 	arm_func_end GenerateFloor
 
