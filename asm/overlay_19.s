@@ -7,7 +7,7 @@
 GetBarItem: ; 0x0238A140
 	stmdb sp!, {r3, lr}
 	mov lr, #0
-	ldr r3, _0238A17C ; =ov19_0238DBCC
+	ldr r3, _0238A17C ; =BAR_AVAILABLE_ITEMS
 	mov r1, #0x16
 	b _0238A16C
 _0238A154:
@@ -23,7 +23,7 @@ _0238A16C:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238A17C: .word ov19_0238DBCC
+_0238A17C: .word BAR_AVAILABLE_ITEMS
 	arm_func_end GetBarItem
 
 	arm_func_start ov19_0238A180
@@ -54,10 +54,10 @@ ov19_0238A1A8: ; 0x0238A1A8
 
 	arm_func_start ov19_0238A1B8
 ov19_0238A1B8: ; 0x0238A1B8
-	ldr r0, _0238A1C0 ; =ov19_0238DAE0
+	ldr r0, _0238A1C0 ; =OVERLAY19_UNKNOWN_TABLE__NA_238DAE0
 	bx lr
 	.align 2, 0
-_0238A1C0: .word ov19_0238DAE0
+_0238A1C0: .word OVERLAY19_UNKNOWN_TABLE__NA_238DAE0
 	arm_func_end ov19_0238A1B8
 
 	arm_func_start GetRecruitableMonsterAll
@@ -120,7 +120,7 @@ GetRecruitableMonsterList: ; 0x0238A274
 	mov r1, #0xf
 	bl MemAlloc
 	mov r6, #0
-	ldr r4, _0238A318 ; =ov19_0238DAF4
+	ldr r4, _0238A318 ; =BAR_RECRUITABLE_MONSTER_TABLE
 	mov r5, r0
 	mov r7, r6
 _0238A294:
@@ -161,7 +161,7 @@ _0238A308:
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0238A318: .word ov19_0238DAF4
+_0238A318: .word BAR_RECRUITABLE_MONSTER_TABLE
 	arm_func_end GetRecruitableMonsterList
 
 	arm_func_start GetRecruitableMonsterListRestricted
@@ -171,7 +171,7 @@ GetRecruitableMonsterListRestricted: ; 0x0238A31C
 	mov r1, #0xf
 	bl MemAlloc
 	mov r6, #0
-	ldr r4, _0238A3D0 ; =ov19_0238DAF4
+	ldr r4, _0238A3D0 ; =BAR_RECRUITABLE_MONSTER_TABLE
 	mov r5, r0
 	mov r7, r6
 _0238A33C:
@@ -217,18 +217,18 @@ _0238A3C0:
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0238A3D0: .word ov19_0238DAF4
+_0238A3D0: .word BAR_RECRUITABLE_MONSTER_TABLE
 	arm_func_end GetRecruitableMonsterListRestricted
 
 	arm_func_start ov19_0238A3D4
 ov19_0238A3D4: ; 0x0238A3D4
 	cmp r0, #0
-	ldrne r1, _0238A3E8 ; =ov19_0238DAE8
+	ldrne r1, _0238A3E8 ; =BAR_UNLOCKABLE_DUNGEONS_TABLE
 	strne r1, [r0]
 	mov r0, #6
 	bx lr
 	.align 2, 0
-_0238A3E8: .word ov19_0238DAE8
+_0238A3E8: .word BAR_UNLOCKABLE_DUNGEONS_TABLE
 	arm_func_end ov19_0238A3D4
 
 	arm_func_start ov19_0238A3EC
@@ -237,7 +237,7 @@ ov19_0238A3EC: ; 0x0238A3EC
 	mov r8, r0
 	bl GetScenarioBalance
 	mov r6, #0
-	ldr r5, _0238A464 ; =ov19_0238DAE8
+	ldr r5, _0238A464 ; =BAR_UNLOCKABLE_DUNGEONS_TABLE
 	mov r4, r0
 	mov r7, r6
 _0238A408:
@@ -266,7 +266,7 @@ _0238A450:
 	mov r0, r6
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0238A464: .word ov19_0238DAE8
+_0238A464: .word BAR_UNLOCKABLE_DUNGEONS_TABLE
 	arm_func_end ov19_0238A3EC
 
 	arm_func_start ov19_0238A468
@@ -397,7 +397,7 @@ _0238A624:
 	ldr r4, _0238B428 ; =0x0001012E
 	cmp r0, #2
 	ldreq r0, _0238B42C ; =0x0000458B
-	ldr r2, _0238B430 ; =ov19_0238E250
+	ldr r2, _0238B430 ; =BAR_MAIN_MENU
 	ldrne r0, _0238B434 ; =0x0000458C
 	mov r1, r0, lsl #0x10
 	mov r0, #0
@@ -581,10 +581,10 @@ _0238A8B0:
 	str r0, [r8, #0x58]
 	ldrsh r2, [r1, #2]
 	mov r1, #0
-	ldr r0, _0238B454 ; =ov19_0238E1D8
+	ldr r0, _0238B454 ; =BAR_D_BOX_LAYOUT_1
 	mov r2, r2, lsl #0x18
 	mov r4, r2, asr #0x18
-	ldr r2, _0238B458 ; =ov19_0238E270
+	ldr r2, _0238B458 ; =BAR_SUBMENU_1
 	mov r3, r1
 	str r4, [sp]
 	mov r4, #0x70000
@@ -692,7 +692,7 @@ _0238AA08:
 	str r4, [sp]
 	mov r0, r0, lsr #0x10
 	str r0, [sp, #4]
-	ldr r0, _0238B464 ; =ov19_0238E1E8
+	ldr r0, _0238B464 ; =BAR_D_BOX_LAYOUT_2
 	ldr r1, _0238B468 ; =0x00001013
 	ldr r3, _0238B46C ; =0x000008E4
 	str r4, [sp, #8]
@@ -757,10 +757,10 @@ _0238AB54:
 	str r0, [r8, #0xd4]
 	ldrsh r2, [r1, #4]
 	mov r1, #0
-	ldr r0, _0238B470 ; =ov19_0238E1F8
+	ldr r0, _0238B470 ; =BAR_D_BOX_LAYOUT_3
 	mov r2, r2, lsl #0x18
 	mov r4, r2, asr #0x18
-	ldr r2, _0238B474 ; =ov19_0238E290
+	ldr r2, _0238B474 ; =BAR_SUBMENU_2
 	mov r3, r1
 	str r4, [sp]
 	mov r4, #0x70000
@@ -813,7 +813,7 @@ _0238ABF0:
 	str r0, [sp, #0x974]
 	bl sub_0203A51C
 	bl ov19_0238D450
-	ldr r1, _0238B478 ; =ov19_0238E208
+	ldr r1, _0238B478 ; =BAR_MENU_CONFIRM_1
 	ldr r0, _0238B47C ; =0x0000459A
 	str r1, [sp]
 	add r1, sp, #0x900
@@ -1370,7 +1370,7 @@ _0238B3B4:
 _0238B424: .word ov11_02324DB0
 _0238B428: .word 0x0001012E
 _0238B42C: .word 0x0000458B
-_0238B430: .word ov19_0238E250
+_0238B430: .word BAR_MAIN_MENU
 _0238B434: .word 0x0000458C
 _0238B438: .word 0x00004590
 _0238B43C: .word 0x0000458F
@@ -1379,16 +1379,16 @@ _0238B444: .word 0x0000458D
 _0238B448: .word 0x0000458E
 _0238B44C: .word ov19_0238D4A4
 _0238B450: .word ov19_0238E360
-_0238B454: .word ov19_0238E1D8
-_0238B458: .word ov19_0238E270
+_0238B454: .word BAR_D_BOX_LAYOUT_1
+_0238B458: .word BAR_SUBMENU_1
 _0238B45C: .word 0x00003F02
 _0238B460: .word 0x00004594
-_0238B464: .word ov19_0238E1E8
+_0238B464: .word BAR_D_BOX_LAYOUT_2
 _0238B468: .word 0x00001013
 _0238B46C: .word 0x000008E4
-_0238B470: .word ov19_0238E1F8
-_0238B474: .word ov19_0238E290
-_0238B478: .word ov19_0238E208
+_0238B470: .word BAR_D_BOX_LAYOUT_3
+_0238B474: .word BAR_SUBMENU_2
+_0238B478: .word BAR_MENU_CONFIRM_1
 _0238B47C: .word 0x0000459A
 _0238B480: .word 0x0000459D
 _0238B484: .word 0x0000101C
@@ -1451,7 +1451,7 @@ _0238B528:
 	ldr r0, _0238B424 ; =ov11_02324DB0
 	add r3, sp, #0x230
 	ldr r6, [r0]
-	ldr r2, _0238C48C ; =ov19_0238E238
+	ldr r2, _0238C48C ; =OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238
 	ldrsh r5, [r6, #0xd0]
 	mov r0, r4
 	mov r1, #0x100
@@ -1918,7 +1918,7 @@ _0238BC0C:
 	add r0, sp, #0x128
 	bl InitPreprocessorArgs
 	ldr r0, [sb, #0xd4]
-	ldr r4, _0238C4C8 ; =ov19_0238E1CC
+	ldr r4, _0238C4C8 ; =OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
 	orr r0, r0, #0x20000
 	str r0, [sp, #0x128]
 	ldr r0, [sp, #0x10]
@@ -2281,7 +2281,7 @@ _0238C0FC:
 	bl IsMainCharacter
 	cmp r0, #0
 	beq _0238C174
-	ldr r1, _0238C4EC ; =ov19_0238E1A4
+	ldr r1, _0238C4EC ; =OVERLAY19_UNKNOWN_STRUCT__NA_238E1A4
 	add r0, r8, #0x10
 	bl SetPortraitOffset
 	b _0238C180
@@ -2291,7 +2291,7 @@ _0238C174:
 	bl SetPortraitOffset
 _0238C180:
 	bl ov19_0238D450
-	ldr r1, _0238C4F4 ; =ov19_0238E220
+	ldr r1, _0238C4F4 ; =BAR_MENU_CONFIRM_2
 	ldr r0, _0238C4F8 ; =0x000045DC
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -2498,7 +2498,7 @@ _0238C480:
 	b _0238C598
 	.align 2, 0
 _0238C488: .word 0x000045C0
-_0238C48C: .word ov19_0238E238
+_0238C48C: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238
 _0238C490: .word 0x000045B2
 _0238C494: .word ov19_0238E18A
 _0238C498: .word ov19_0238E17E
@@ -2513,7 +2513,7 @@ _0238C4B8: .word 0x000045E3
 _0238C4BC: .word 0x000045E4
 _0238C4C0: .word 0x000045E5
 _0238C4C4: .word 0x000045E6
-_0238C4C8: .word ov19_0238E1CC
+_0238C4C8: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
 _0238C4CC: .word ov19_0238E2C0
 _0238C4D0: .word 0x000045E7
 _0238C4D4: .word 0x000045C1
@@ -2522,9 +2522,9 @@ _0238C4DC: .word 0x000045DA
 _0238C4E0: .word ov19_0238E1BC
 _0238C4E4: .word ov19_0238E1C4
 _0238C4E8: .word 0x000045DB
-_0238C4EC: .word ov19_0238E1A4
+_0238C4EC: .word OVERLAY19_UNKNOWN_STRUCT__NA_238E1A4
 _0238C4F0: .word ov19_0238E1AC
-_0238C4F4: .word ov19_0238E220
+_0238C4F4: .word BAR_MENU_CONFIRM_2
 _0238C4F8: .word 0x000045DC
 _0238C4FC: .word ov19_0238E1B4
 _0238C500: .word 0x00000163
@@ -2858,7 +2858,7 @@ ov19_0238C900: ; 0x0238C900
 	mov r4, r0
 	add r0, sp, #4
 	bl InitPreprocessorArgs
-	ldr r0, _0238C9E4 ; =ov19_0238E1CC
+	ldr r0, _0238C9E4 ; =OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
 	mov r1, r6, lsl #1
 	ldrh r1, [r0, r1]
 	mov r0, r4
@@ -2899,7 +2899,7 @@ ov19_0238C900: ; 0x0238C900
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0238C9E0: .word ov11_02324DB0
-_0238C9E4: .word ov19_0238E1CC
+_0238C9E4: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
 _0238C9E8: .word 0x000045EB
 _0238C9EC: .word 0x000045EA
 	arm_func_end ov19_0238C900
@@ -3321,7 +3321,7 @@ _0238CF3C:
 	ldr r2, [sl, #0x20]
 	add r0, fp, #0x400
 	mov r7, r2, lsl #1
-	ldr r2, _0238D0C4 ; =ov19_0238E178
+	ldr r2, _0238D0C4 ; =OVERLAY19_UNKNOWN_STRING_IDS__NA_238E178
 	mov r1, #0x100
 	ldrh r2, [r2, r7]
 	mov r3, #0
@@ -3330,7 +3330,7 @@ _0238CF84:
 	add r0, fp, #0x400
 	bl sub_02020868
 	mov r7, r0
-	ldr r1, _0238D0C8 ; =ov19_0238E1CC
+	ldr r1, _0238D0C8 ; =OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
 	mov r2, r8, lsl #1
 	ldrh r1, [r1, r2]
 	ldr r0, [sp, #0xc]
@@ -3411,8 +3411,8 @@ _0238D0A0:
 	.align 2, 0
 _0238D0BC: .word ov11_02324DB0
 _0238D0C0: .word 0x0000068A
-_0238D0C4: .word ov19_0238E178
-_0238D0C8: .word ov19_0238E1CC
+_0238D0C4: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E178
+_0238D0C8: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
 _0238D0CC: .word ov19_0238E196
 _0238D0D0: .word ov19_0238E19C
 _0238D0D4: .word ov19_0238E184
@@ -3931,15 +3931,15 @@ _0238D688: .word 0x00000163
 	.word ov19_0238E2E8
 	.word ov19_0238E304
 	.word ov19_0238E324
-	.global ov19_0238DAE0
-ov19_0238DAE0:
+	.global OVERLAY19_UNKNOWN_TABLE__NA_238DAE0
+OVERLAY19_UNKNOWN_TABLE__NA_238DAE0:
 	.byte 0x0A, 0x00, 0x0A, 0x00, 0x0A, 0x00, 0x0A, 0x00
-	.global ov19_0238DAE8
-ov19_0238DAE8:
+	.global BAR_UNLOCKABLE_DUNGEONS_TABLE
+BAR_UNLOCKABLE_DUNGEONS_TABLE:
 	.byte 0x57, 0x02, 0x59, 0x02
 	.byte 0x5E, 0x06, 0x61, 0x06, 0x5F, 0x06, 0x68, 0x06
-	.global ov19_0238DAF4
-ov19_0238DAF4:
+	.global BAR_RECRUITABLE_MONSTER_TABLE
+BAR_RECRUITABLE_MONSTER_TABLE:
 	.byte 0x0A, 0x00, 0x0D, 0x00, 0x1B, 0x00, 0x29, 0x00
 	.byte 0x2B, 0x00, 0x2E, 0x00, 0x36, 0x00, 0x3C, 0x00, 0x42, 0x00, 0x48, 0x00, 0x4A, 0x00, 0x51, 0x00
 	.byte 0x53, 0x00, 0x54, 0x00, 0x56, 0x00, 0x58, 0x00, 0x5A, 0x00, 0x5C, 0x00, 0x5F, 0x00, 0x60, 0x00
@@ -3954,8 +3954,8 @@ ov19_0238DAF4:
 	.byte 0x87, 0x01, 0x8B, 0x01, 0x93, 0x01, 0x96, 0x01, 0xAF, 0x01, 0xB4, 0x01, 0xB9, 0x01, 0xBB, 0x01
 	.byte 0xBD, 0x01, 0xBF, 0x01, 0xC6, 0x01, 0xC8, 0x01, 0xCB, 0x01, 0xCE, 0x01, 0xCF, 0x01, 0xD3, 0x01
 	.byte 0xD5, 0x01, 0xD9, 0x01, 0xDB, 0x01, 0xDE, 0x01, 0xE0, 0x01, 0xEB, 0x01, 0xED, 0x01, 0xF1, 0x01
-	.global ov19_0238DBCC
-ov19_0238DBCC:
+	.global BAR_AVAILABLE_ITEMS
+BAR_AVAILABLE_ITEMS:
 	.byte 0x45, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC8, 0x00
 	.byte 0x19, 0x00, 0x04, 0x00, 0x00, 0x00, 0x46, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xC8, 0x00, 0x19, 0x00, 0x04, 0x00, 0x00, 0x00, 0x47, 0x00, 0x01, 0x00
@@ -4047,8 +4047,8 @@ ov19_0238DBCC:
 	.byte 0x88, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x8C, 0x00
 	.byte 0x28, 0x00, 0x14, 0x00, 0x00, 0x00, 0x89, 0x00, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x64, 0x00, 0x64, 0x00, 0x14, 0x00, 0x32, 0x00
-	.global ov19_0238E178
-ov19_0238E178:
+	.global OVERLAY19_UNKNOWN_STRING_IDS__NA_238E178
+OVERLAY19_UNKNOWN_STRING_IDS__NA_238E178:
 	.byte 0xCA, 0x45, 0xC6, 0x45
 	.byte 0xC2, 0x45
 	.global ov19_0238E17E
@@ -4070,8 +4070,8 @@ ov19_0238E196:
 	.global ov19_0238E19C
 ov19_0238E19C:
 	.byte 0xCC, 0x45, 0xC8, 0x45, 0xC4, 0x45, 0x00, 0x00
-	.global ov19_0238E1A4
-ov19_0238E1A4:
+	.global OVERLAY19_UNKNOWN_STRUCT__NA_238E1A4
+OVERLAY19_UNKNOWN_STRUCT__NA_238E1A4:
 	.byte 0x07, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.global ov19_0238E1AC
 ov19_0238E1AC:
@@ -4085,47 +4085,47 @@ ov19_0238E1BC:
 	.global ov19_0238E1C4
 ov19_0238E1C4:
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.global ov19_0238E1CC
-ov19_0238E1CC:
+	.global OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
+OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC:
 	.byte 0xCE, 0x45, 0xCF, 0x45, 0xD0, 0x45, 0xD1, 0x45, 0xD2, 0x45, 0xD3, 0x45
-	.global ov19_0238E1D8
-ov19_0238E1D8:
+	.global BAR_D_BOX_LAYOUT_1
+BAR_D_BOX_LAYOUT_1:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x02, 0x08, 0x05, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov19_0238E1E8
-ov19_0238E1E8:
+	.global BAR_D_BOX_LAYOUT_2
+BAR_D_BOX_LAYOUT_2:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov19_0238E1F8
-ov19_0238E1F8:
+	.global BAR_D_BOX_LAYOUT_3
+BAR_D_BOX_LAYOUT_3:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x14, 0x02, 0x0A, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov19_0238E208
-ov19_0238E208:
+	.global BAR_MENU_CONFIRM_1
+BAR_MENU_CONFIRM_1:
 	.byte 0x9B, 0x45, 0x00, 0x00
 	.byte 0x08, 0x00, 0x00, 0x00, 0x9C, 0x45, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov19_0238E220
-ov19_0238E220:
+	.global BAR_MENU_CONFIRM_2
+BAR_MENU_CONFIRM_2:
 	.byte 0xDD, 0x45, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0xDE, 0x45, 0x00, 0x00
 	.byte 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov19_0238E238
-ov19_0238E238:
+	.global OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238
+OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238:
 	.byte 0xA0, 0x45, 0xA2, 0x45
 	.byte 0xA5, 0x45, 0xA6, 0x45, 0xA7, 0x45, 0xA9, 0x45, 0xAA, 0x45, 0xAB, 0x45, 0xAC, 0x45, 0xAE, 0x45
 	.byte 0xAF, 0x45, 0xB0, 0x45
-	.global ov19_0238E250
-ov19_0238E250:
+	.global BAR_MAIN_MENU
+BAR_MAIN_MENU:
 	.byte 0x88, 0x45, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x89, 0x45, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x8A, 0x45, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov19_0238E270
-ov19_0238E270:
+	.global BAR_SUBMENU_1
+BAR_SUBMENU_1:
 	.byte 0x91, 0x45, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x92, 0x45, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x93, 0x45, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov19_0238E290
-ov19_0238E290:
+	.global BAR_SUBMENU_2
+BAR_SUBMENU_2:
 	.byte 0x95, 0x45, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x96, 0x45, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00, 0x97, 0x45, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x98, 0x45, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x99, 0x45, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

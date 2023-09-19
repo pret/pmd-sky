@@ -133,7 +133,7 @@ _0238A274:
 _0238A32C:
 	ldr r0, _0238B0A0 ; =ov21_0238CBD4
 	bl DebugPrint0
-	ldr r0, _0238B0A4 ; =ov21_0238CA28
+	ldr r0, _0238B0A4 ; =SWAP_SHOP_D_BOX_LAYOUT_1
 	ldr r1, _0238B0A8 ; =ov21_0238C9A4
 	bl sub_0202F8C4
 	mov r2, r4
@@ -141,8 +141,8 @@ _0238A32C:
 	ldr r1, _0238B0AC ; =0x00300013
 	strb r0, [r2, #0x84]
 	mov r4, #4
-	ldr r3, _0238B0B0 ; =ov21_0238CAA8
-	ldr r0, _0238B0B4 ; =ov21_0238CB68
+	ldr r3, _0238B0B0 ; =SWAP_SHOP_MAIN_MENU_2
+	ldr r0, _0238B0B4 ; =SWAP_SHOP_D_BOX_LAYOUT_5
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -206,10 +206,10 @@ _0238A3E0:
 	bl ShowMessageInDBox
 	b _0238B7B8
 _0238A44C:
-	ldr r0, _0238B0C0 ; =ov21_0238CB88
+	ldr r0, _0238B0C0 ; =SWAP_SHOP_D_BOX_LAYOUT_7
 	mov r4, #3
 	ldr r1, _0238B0AC ; =0x00300013
-	ldr r3, _0238B0C4 ; =ov21_0238CA68
+	ldr r3, _0238B0C4 ; =SWAP_SHOP_SUBMENU_2
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -588,9 +588,9 @@ _0238A9E8:
 	ldr r0, _0238B114 ; =ov21_0238CDB4
 	bl DebugPrint0
 	mov r4, #3
-	ldr r0, _0238B118 ; =ov21_0238CB78
+	ldr r0, _0238B118 ; =SWAP_SHOP_D_BOX_LAYOUT_6
 	ldr r1, _0238B11C ; =0x00400013
-	ldr r3, _0238B120 ; =ov21_0238CA88
+	ldr r3, _0238B120 ; =SWAP_SHOP_MAIN_MENU_1
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -621,7 +621,7 @@ _0238AA1C:
 	ldr r0, _0238B08C ; =ov21_0238CF40
 	add r1, sp, #0x18
 	ldr r3, [r0]
-	ldr r0, _0238B130 ; =ov21_0238CB98
+	ldr r0, _0238B130 ; =SWAP_SHOP_D_BOX_LAYOUT_8
 	add r2, r3, #0x86
 	str r2, [sp, #0x50]
 	str r1, [sp]
@@ -720,7 +720,7 @@ _0238ABDC:
 	mov r1, r4
 	ldr r2, [r1]
 	mov r3, #0x96
-	ldr r0, _0238B0A4 ; =ov21_0238CA28
+	ldr r0, _0238B0A4 ; =SWAP_SHOP_D_BOX_LAYOUT_1
 	ldr r1, _0238B0A8 ; =ov21_0238C9A4
 	str r3, [r2, #0x54]
 	bl sub_0202F8C4
@@ -729,8 +729,8 @@ _0238ABDC:
 	ldr r1, _0238B0AC ; =0x00300013
 	strb r0, [r2, #0x84]
 	mov r4, #2
-	ldr r3, _0238B14C ; =ov21_0238CA38
-	ldr r0, _0238B0C0 ; =ov21_0238CB88
+	ldr r3, _0238B14C ; =SWAP_SHOP_MENU_CONFIRM
+	ldr r0, _0238B0C0 ; =SWAP_SHOP_D_BOX_LAYOUT_7
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1048,15 +1048,15 @@ _0238B094: .word 0x00003008
 _0238B098: .word 0x000003B2
 _0238B09C: .word 0x000001EF
 _0238B0A0: .word ov21_0238CBD4
-_0238B0A4: .word ov21_0238CA28
+_0238B0A4: .word SWAP_SHOP_D_BOX_LAYOUT_1
 _0238B0A8: .word ov21_0238C9A4
 _0238B0AC: .word 0x00300013
-_0238B0B0: .word ov21_0238CAA8
-_0238B0B4: .word ov21_0238CB68
+_0238B0B0: .word SWAP_SHOP_MAIN_MENU_2
+_0238B0B4: .word SWAP_SHOP_D_BOX_LAYOUT_5
 _0238B0B8: .word ov21_0238CBF8
 _0238B0BC: .word 0x000003B3
-_0238B0C0: .word ov21_0238CB88
-_0238B0C4: .word ov21_0238CA68
+_0238B0C0: .word SWAP_SHOP_D_BOX_LAYOUT_7
+_0238B0C4: .word SWAP_SHOP_SUBMENU_2
 _0238B0C8: .word ov21_0238CC18
 _0238B0CC: .word 0x00003018
 _0238B0D0: .word 0x000003C5
@@ -1077,20 +1077,20 @@ _0238B108: .word ov21_0238CD44
 _0238B10C: .word ov21_0238CD68
 _0238B110: .word ov21_0238CD8C
 _0238B114: .word ov21_0238CDB4
-_0238B118: .word ov21_0238CB78
+_0238B118: .word SWAP_SHOP_D_BOX_LAYOUT_6
 _0238B11C: .word 0x00400013
-_0238B120: .word ov21_0238CA88
+_0238B120: .word SWAP_SHOP_MAIN_MENU_1
 _0238B124: .word ov21_0238CDDC
 _0238B128: .word ov21_0238CE00
 _0238B12C: .word 0x0000C402
-_0238B130: .word ov21_0238CB98
+_0238B130: .word SWAP_SHOP_D_BOX_LAYOUT_8
 _0238B134: .word 0x00001013
 _0238B138: .word 0x0000033E
 _0238B13C: .word ov21_0238CE0C
 _0238B140: .word 0x000003BD
 _0238B144: .word 0x000003BB
 _0238B148: .word ov21_0238CE34
-_0238B14C: .word ov21_0238CA38
+_0238B14C: .word SWAP_SHOP_MENU_CONFIRM
 _0238B150: .word ov21_0238CE4C
 _0238B154: .word ov21_0238CE78
 _0238B158: .word ov21_0238CEA4
@@ -1164,9 +1164,9 @@ _0238B228:
 	bl sub_02039C2C
 	b _0238B7B8
 _0238B260:
-	ldr r0, _0238B7C8 ; =ov21_0238CBA8
+	ldr r0, _0238B7C8 ; =SWAP_SHOP_D_BOX_LAYOUT_9
 	mov r4, #5
-	ldr r3, _0238B7CC ; =ov21_0238CAD0
+	ldr r3, _0238B7CC ; =SWAP_SHOP_SUBMENU_3
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
@@ -1277,9 +1277,9 @@ _0238B3B8:
 	bl ov11_0230B20C
 	b _0238B7B8
 _0238B408:
-	ldr r0, _0238B118 ; =ov21_0238CB78
+	ldr r0, _0238B118 ; =SWAP_SHOP_D_BOX_LAYOUT_6
 	mov r4, #2
-	ldr r3, _0238B7D4 ; =ov21_0238CA50
+	ldr r3, _0238B7D4 ; =SWAP_SHOP_SUBMENU_1
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
@@ -1307,7 +1307,7 @@ _0238B434:
 	ldr r0, _0238B08C ; =ov21_0238CF40
 	add r1, sp, #0xe0
 	ldr r4, [r0]
-	ldr r0, _0238B130 ; =ov21_0238CB98
+	ldr r0, _0238B130 ; =SWAP_SHOP_D_BOX_LAYOUT_8
 	add r2, r4, #0x86
 	str r2, [sp, #0x118]
 	str r1, [sp]
@@ -1384,10 +1384,10 @@ _0238B538:
 	bl ShowMessageInDBox
 	b _0238B7B8
 _0238B5A4:
-	ldr r0, _0238B0C0 ; =ov21_0238CB88
+	ldr r0, _0238B0C0 ; =SWAP_SHOP_D_BOX_LAYOUT_7
 	mov r4, #2
 	ldr r1, _0238B0AC ; =0x00300013
-	ldr r3, _0238B14C ; =ov21_0238CA38
+	ldr r3, _0238B14C ; =SWAP_SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1474,9 +1474,9 @@ _0238B68C:
 	bl ShowMessageInDBox
 	b _0238B7B8
 _0238B6F8:
-	ldr r0, _0238B118 ; =ov21_0238CB78
+	ldr r0, _0238B118 ; =SWAP_SHOP_D_BOX_LAYOUT_6
 	mov r4, #2
-	ldr r3, _0238B7D4 ; =ov21_0238CA50
+	ldr r3, _0238B7D4 ; =SWAP_SHOP_SUBMENU_1
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
@@ -1504,7 +1504,7 @@ _0238B724:
 	ldr r0, _0238B08C ; =ov21_0238CF40
 	add r1, sp, #0x130
 	ldr r4, [r0]
-	ldr r0, _0238B130 ; =ov21_0238CB98
+	ldr r0, _0238B130 ; =SWAP_SHOP_D_BOX_LAYOUT_8
 	add r2, r4, #0x86
 	str r2, [sp, #0x168]
 	str r1, [sp]
@@ -1529,10 +1529,10 @@ _0238B7B8:
 	.align 2, 0
 _0238B7C0: .word 0x000003BE
 _0238B7C4: .word 0x000003CA
-_0238B7C8: .word ov21_0238CBA8
-_0238B7CC: .word ov21_0238CAD0
+_0238B7C8: .word SWAP_SHOP_D_BOX_LAYOUT_9
+_0238B7CC: .word SWAP_SHOP_SUBMENU_3
 _0238B7D0: .word 0x000003CB
-_0238B7D4: .word ov21_0238CA50
+_0238B7D4: .word SWAP_SHOP_SUBMENU_1
 _0238B7D8: .word 0x000003B9
 _0238B7DC: .word 0x000003C9
 	arm_func_end ov21_0238ADFC
@@ -2016,7 +2016,7 @@ _0238BE84: ; jump table
 	b _0238BEA8 ; case 7
 	b _0238BED8 ; case 8
 _0238BEA8:
-	ldr r0, _0238C8E4 ; =ov21_0238CF1C
+	ldr r0, _0238C8E4 ; =OVERLAY21_JP_STRING
 	bl DebugPrint0
 	bl ov21_0238C920
 	bl ov11_0230B694
@@ -2740,7 +2740,7 @@ _0238C8D4: .word 0x00003F02
 _0238C8D8: .word 0x00001308
 _0238C8DC: .word 0x00003018
 _0238C8E0: .word 0x000003B9
-_0238C8E4: .word ov21_0238CF1C
+_0238C8E4: .word OVERLAY21_JP_STRING
 _0238C8E8:
 	bl ov11_022E6EC8
 	cmp r0, #0
@@ -2839,32 +2839,32 @@ _0238CA24: .word 0x00000225
 	arm_func_end ov21_0238C9A4
 	; 0x0238CA28
 
-	.global ov21_0238CA28
-ov21_0238CA28:
+	.global SWAP_SHOP_D_BOX_LAYOUT_1
+SWAP_SHOP_D_BOX_LAYOUT_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x04, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CA38
-ov21_0238CA38:
+	.global SWAP_SHOP_MENU_CONFIRM
+SWAP_SHOP_MENU_CONFIRM:
 	.byte 0xAB, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xAC, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov21_0238CA50
-ov21_0238CA50:
+	.global SWAP_SHOP_SUBMENU_1
+SWAP_SHOP_SUBMENU_1:
 	.byte 0xB0, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
 	.byte 0xAD, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov21_0238CA68
-ov21_0238CA68:
+	.global SWAP_SHOP_SUBMENU_2
+SWAP_SHOP_SUBMENU_2:
 	.byte 0xCD, 0x03, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0xCE, 0x03, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00
 	.byte 0xCF, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov21_0238CA88
-ov21_0238CA88:
+	.global SWAP_SHOP_MAIN_MENU_1
+SWAP_SHOP_MAIN_MENU_1:
 	.byte 0xAE, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0xB0, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
 	.byte 0xB1, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov21_0238CAA8
-ov21_0238CAA8:
+	.global SWAP_SHOP_MAIN_MENU_2
+SWAP_SHOP_MAIN_MENU_2:
 	.byte 0xAE, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0xAF, 0x03, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
 	.byte 0xB0, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0xAD, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov21_0238CAD0
-ov21_0238CAD0:
+	.global SWAP_SHOP_SUBMENU_3
+SWAP_SHOP_SUBMENU_3:
 	.byte 0xAF, 0x03, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
 	.byte 0xED, 0x02, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0xEE, 0x02, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
 	.byte 0xEF, 0x02, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0xB1, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
@@ -2875,20 +2875,20 @@ ov21_0238CAD0:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x12, 0x10, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x0A, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x0F, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CB68
-ov21_0238CB68:
+	.global SWAP_SHOP_D_BOX_LAYOUT_5
+SWAP_SHOP_D_BOX_LAYOUT_5:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CB78
-ov21_0238CB78:
+	.global SWAP_SHOP_D_BOX_LAYOUT_6
+SWAP_SHOP_D_BOX_LAYOUT_6:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CB88
-ov21_0238CB88:
+	.global SWAP_SHOP_D_BOX_LAYOUT_7
+SWAP_SHOP_D_BOX_LAYOUT_7:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CB98
-ov21_0238CB98:
+	.global SWAP_SHOP_D_BOX_LAYOUT_8
+SWAP_SHOP_D_BOX_LAYOUT_8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CBA8
-ov21_0238CBA8:
+	.global SWAP_SHOP_D_BOX_LAYOUT_9
+SWAP_SHOP_D_BOX_LAYOUT_9:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x14, 0x02, 0x0A, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov21_0238CBB8
 ov21_0238CBB8:
@@ -3014,8 +3014,8 @@ ov21_0238CEF8:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D
 	.byte 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x54, 0x48, 0x41, 0x4E, 0x4B
 	.byte 0x53, 0x3A, 0x0A, 0x00
-	.global ov21_0238CF1C
-ov21_0238CF1C:
+	.global OVERLAY21_JP_STRING
+OVERLAY21_JP_STRING:
 	.byte 0x8D, 0x87, 0x90, 0xAC, 0x81, 0x46, 0x00, 0x00
 	.global ov21_0238CF24
 ov21_0238CF24:

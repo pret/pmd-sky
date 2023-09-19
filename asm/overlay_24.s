@@ -484,10 +484,10 @@ _0238A7E4:
 	bl ShowMessageInDBox
 	b _0238B37C
 _0238A800:
-	ldr r0, _0238B3A0 ; =ov24_0238C5C0
+	ldr r0, _0238B3A0 ; =DAYCARE_D_BOX_LAYOUT_4
 	mov r4, #4
 	ldr r1, _0238B3A4 ; =0x00300013
-	ldr r3, _0238B3A8 ; =ov24_0238C538
+	ldr r3, _0238B3A8 ; =DAYCARE_MAIN_MENU
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -855,7 +855,7 @@ _0238ACE0:
 	b _0238B37C
 _0238AD90:
 	mov r0, #0
-	ldr r3, _0238B3CC ; =ov24_0238C520
+	ldr r3, _0238B3CC ; =DAYCARE_MENU_CONFIRM
 	mov r2, r0
 	mov r1, #0x11
 	str r0, [sp]
@@ -900,7 +900,7 @@ ov24_0238ADFC: ; 0x0238ADFC
 	str r2, [sp]
 	str r0, [sp, #4]
 	ldr r0, _0238B384 ; =ov24_0238C600
-	ldr r3, _0238B3D0 ; =ov24_0238C508
+	ldr r3, _0238B3D0 ; =OVERLAY24_UNKNOWN_STRUCT__NA_238C508
 	ldr r2, [r0]
 	add r0, r2, #0x248
 	add r2, r2, #0x42
@@ -1047,7 +1047,7 @@ _0238AFC0:
 	strh r2, [sp, #0x18]
 	add r0, r0, #0x7a
 	strh r1, [sp, #0x16]
-	ldr r2, _0238B3E0 ; =ov24_0238C514
+	ldr r2, _0238B3E0 ; =OVERLAY24_UNKNOWN_STRUCT__NA_238C514
 	add r1, sp, #0x14
 	add r0, r0, #0x100
 	bl sub_0200D670
@@ -1103,7 +1103,7 @@ _0238B114:
 	mov r2, #1
 	str r2, [sp]
 	ldr r1, _0238B384 ; =ov24_0238C600
-	ldr r2, _0238B3D0 ; =ov24_0238C508
+	ldr r2, _0238B3D0 ; =OVERLAY24_UNKNOWN_STRUCT__NA_238C508
 	ldr r1, [r1]
 	add r3, sp, #8
 	add r1, r1, #0x42
@@ -1123,11 +1123,11 @@ _0238B170:
 	mov r2, #0xa
 	bl StrncpySimple
 	ldr r2, _0238B384 ; =ov24_0238C600
-	ldr r0, _0238B3E4 ; =_020A18B8
+	ldr r0, _0238B3E4 ; =EGG_HP_BONUS
 	ldr r1, [r2]
 	ldrsh r3, [r0]
 	ldr lr, [r1, #0x1e8]
-	ldr r1, _0238B3E8 ; =_020A18DC
+	ldr r1, _0238B3E8 ; =EGG_STAT_BONUSES
 	ldrsh r4, [lr, #0xa]
 	ldr r0, _0238B3EC ; =_020A18E0
 	ldrsh ip, [r1]
@@ -1265,9 +1265,9 @@ _0238B390: .word 0x0000038A
 _0238B394: .word 0x0000038B
 _0238B398: .word 0x00003008
 _0238B39C: .word 0x0000038F
-_0238B3A0: .word ov24_0238C5C0
+_0238B3A0: .word DAYCARE_D_BOX_LAYOUT_4
 _0238B3A4: .word 0x00300013
-_0238B3A8: .word ov24_0238C538
+_0238B3A8: .word DAYCARE_MAIN_MENU
 _0238B3AC: .word 0x00000391
 _0238B3B0: .word 0x0000220F
 _0238B3B4: .word 0x00000392
@@ -1276,14 +1276,14 @@ _0238B3BC: .word 0x00000397
 _0238B3C0: .word 0x00000396
 _0238B3C4: .word 0x00000715
 _0238B3C8: .word 0x00000395
-_0238B3CC: .word ov24_0238C520
-_0238B3D0: .word ov24_0238C508
+_0238B3CC: .word DAYCARE_MENU_CONFIRM
+_0238B3D0: .word OVERLAY24_UNKNOWN_STRUCT__NA_238C508
 _0238B3D4: .word 0x000003A2
 _0238B3D8: .word _020A1868
 _0238B3DC: .word 0x000003A1
-_0238B3E0: .word ov24_0238C514
-_0238B3E4: .word _020A18B8
-_0238B3E8: .word _020A18DC
+_0238B3E0: .word OVERLAY24_UNKNOWN_STRUCT__NA_238C514
+_0238B3E4: .word EGG_HP_BONUS
+_0238B3E8: .word EGG_STAT_BONUSES
 _0238B3EC: .word _020A18E0
 _0238B3F0: .word 0x00000399
 _0238B3F4: .word 0x000003A3
@@ -1419,10 +1419,10 @@ _0238B5C0:
 	bl ShowMessageInDBox
 	b _0238C158
 _0238B5DC:
-	ldr r0, _0238C17C ; =ov24_0238C5C0
+	ldr r0, _0238C17C ; =DAYCARE_D_BOX_LAYOUT_4
 	mov r4, #4
 	ldr r1, _0238C180 ; =0x00300013
-	ldr r3, _0238C184 ; =ov24_0238C538
+	ldr r3, _0238C184 ; =DAYCARE_MAIN_MENU
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1790,7 +1790,7 @@ _0238BABC:
 	b _0238C158
 _0238BB6C:
 	mov r0, #0
-	ldr r3, _0238C1A8 ; =ov24_0238C520
+	ldr r3, _0238C1A8 ; =DAYCARE_MENU_CONFIRM
 	mov r2, r0
 	mov r1, #0x11
 	str r0, [sp]
@@ -1831,7 +1831,7 @@ _0238BB94:
 	str r2, [sp]
 	str r0, [sp, #4]
 	ldr r0, _0238C164 ; =ov24_0238C600
-	ldr r3, _0238C1AC ; =ov24_0238C508
+	ldr r3, _0238C1AC ; =OVERLAY24_UNKNOWN_STRUCT__NA_238C508
 	ldr r2, [r0]
 	add r0, r2, #0x248
 	add r2, r2, #0x42
@@ -1978,7 +1978,7 @@ _0238BD9C:
 	strh r2, [sp, #0xc]
 	add r0, r0, #0x7a
 	strh r1, [sp, #0xa]
-	ldr r2, _0238C1BC ; =ov24_0238C514
+	ldr r2, _0238C1BC ; =OVERLAY24_UNKNOWN_STRUCT__NA_238C514
 	add r1, sp, #8
 	add r0, r0, #0x100
 	bl sub_0200D670
@@ -2034,7 +2034,7 @@ _0238BEF0:
 	mov r2, #1
 	str r2, [sp]
 	ldr r1, _0238C164 ; =ov24_0238C600
-	ldr r2, _0238C1AC ; =ov24_0238C508
+	ldr r2, _0238C1AC ; =OVERLAY24_UNKNOWN_STRUCT__NA_238C508
 	ldr r1, [r1]
 	add r3, sp, #0x12
 	add r1, r1, #0x42
@@ -2054,11 +2054,11 @@ _0238BF4C:
 	mov r2, #0xa
 	bl StrncpySimple
 	ldr r2, _0238C164 ; =ov24_0238C600
-	ldr r0, _0238C1C0 ; =_020A18B8
+	ldr r0, _0238C1C0 ; =EGG_HP_BONUS
 	ldr r1, [r2]
 	ldrsh r3, [r0]
 	ldr lr, [r1, #0x1e8]
-	ldr r1, _0238C1C4 ; =_020A18DC
+	ldr r1, _0238C1C4 ; =EGG_STAT_BONUSES
 	ldrsh r4, [lr, #0xa]
 	ldr r0, _0238C1C8 ; =_020A18E0
 	ldrsh ip, [r1]
@@ -2196,9 +2196,9 @@ _0238C16C: .word 0x0000038A
 _0238C170: .word 0x0000038B
 _0238C174: .word 0x00003008
 _0238C178: .word 0x0000038F
-_0238C17C: .word ov24_0238C5C0
+_0238C17C: .word DAYCARE_D_BOX_LAYOUT_4
 _0238C180: .word 0x00300013
-_0238C184: .word ov24_0238C538
+_0238C184: .word DAYCARE_MAIN_MENU
 _0238C188: .word 0x00000391
 _0238C18C: .word 0x0000220F
 _0238C190: .word 0x00000392
@@ -2207,14 +2207,14 @@ _0238C198: .word 0x00000397
 _0238C19C: .word 0x00000396
 _0238C1A0: .word 0x00000715
 _0238C1A4: .word 0x00000395
-_0238C1A8: .word ov24_0238C520
-_0238C1AC: .word ov24_0238C508
+_0238C1A8: .word DAYCARE_MENU_CONFIRM
+_0238C1AC: .word OVERLAY24_UNKNOWN_STRUCT__NA_238C508
 _0238C1B0: .word 0x000003A2
 _0238C1B4: .word _020A1868
 _0238C1B8: .word 0x000003A1
-_0238C1BC: .word ov24_0238C514
-_0238C1C0: .word _020A18B8
-_0238C1C4: .word _020A18DC
+_0238C1BC: .word OVERLAY24_UNKNOWN_STRUCT__NA_238C514
+_0238C1C0: .word EGG_HP_BONUS
+_0238C1C4: .word EGG_STAT_BONUSES
 _0238C1C8: .word _020A18E0
 _0238C1CC: .word 0x00000399
 _0238C1D0: .word 0x000003A3
@@ -2461,22 +2461,22 @@ _0238C504: .word ov24_0238C600
 	arm_func_end ov24_0238C4CC
 	; 0x0238C508
 
-	.global ov24_0238C508
-ov24_0238C508:
+	.global OVERLAY24_UNKNOWN_STRUCT__NA_238C508
+OVERLAY24_UNKNOWN_STRUCT__NA_238C508:
 	.byte 0xF8, 0x00
 	.global ov24_0238C50A
 ov24_0238C50A:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov24_0238C514
-ov24_0238C514:
+	.global OVERLAY24_UNKNOWN_STRUCT__NA_238C514
+OVERLAY24_UNKNOWN_STRUCT__NA_238C514:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov24_0238C520
-ov24_0238C520:
+	.global DAYCARE_MENU_CONFIRM
+DAYCARE_MENU_CONFIRM:
 	.byte 0x86, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x87, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov24_0238C538
-ov24_0238C538:
+	.global DAYCARE_MAIN_MENU
+DAYCARE_MAIN_MENU:
 	.byte 0x8C, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x8D, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
 	.byte 0x8E, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x8A, 0x03, 0x8B, 0x03, 0x8C, 0x03, 0x8D, 0x03, 0x8E, 0x03, 0x8F, 0x03, 0x90, 0x03, 0x91, 0x03
@@ -2486,8 +2486,8 @@ ov24_0238C538:
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x0A, 0x08, 0x03
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x0F, 0x08, 0x03
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov24_0238C5C0
-ov24_0238C5C0:
+	.global DAYCARE_D_BOX_LAYOUT_4
+DAYCARE_D_BOX_LAYOUT_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x04
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

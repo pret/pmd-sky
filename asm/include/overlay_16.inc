@@ -1,12 +1,11 @@
 #pragma once
-.public _020A18C4
-.public _020A18D0
-.public _020A18E4
-.public TEAM_MEMBER_TABLE_PTR
 .public CreateAdvancedMenu
 .public CreateDBox
 .public CreateNormalMenu
 .public CreatePortraitBox
+.public EVOLUTION_HP_BONUS
+.public EVOLUTION_PHYSICAL_STAT_BONUSES
+.public EVOLUTION_SPECIAL_STAT_BONUSES
 .public FreeDBox
 .public FreeNormalMenu
 .public GetActiveTeamMember
@@ -58,3 +57,4 @@
 .public sub_02059B08
 .public sub_0205A288
 .public sub_0205B008
+.public TEAM_MEMBER_TABLE_PTR

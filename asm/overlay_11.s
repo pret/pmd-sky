@@ -787,7 +787,7 @@ _022DCBE4:
 	add r0, sp, #0x10
 	ldr r2, [r1, #0x68]
 	ldr r3, [r1, #0x64]
-	ldr r1, _022DCCE0 ; =ov11_02319208
+	ldr r1, _022DCCE0 ; =OVERLAY11_DEBUG_STRINGS
 	str r3, [sp, #0x10]
 	str r2, [sp, #0x14]
 	bl FatalError
@@ -850,7 +850,7 @@ _022DCC8C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022DCCDC: .word ov11_02316A44
-_022DCCE0: .word ov11_02319208
+_022DCCE0: .word OVERLAY11_DEBUG_STRINGS
 _022DCCE4: .word ov11_02319224
 _022DCCE8: .word ov11_02319240
 	arm_func_end ov11_022DCB48
@@ -920,7 +920,7 @@ _022DCDA4:
 	add r0, sp, #0x10
 	ldr r2, [r1, #0x70]
 	ldr r3, [r1, #0x6c]
-	ldr r1, _022DCEE0 ; =ov11_02319208
+	ldr r1, _022DCEE0 ; =OVERLAY11_DEBUG_STRINGS
 	str r3, [sp, #0x10]
 	str r2, [sp, #0x14]
 	bl FatalError
@@ -998,7 +998,7 @@ _022DCED4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022DCEDC: .word ov11_02316A44
-_022DCEE0: .word ov11_02319208
+_022DCEE0: .word OVERLAY11_DEBUG_STRINGS
 _022DCEE4: .word ov11_02319224
 _022DCEE8: .word ov11_02319240
 	arm_func_end ov11_022DCCEC
@@ -2073,7 +2073,7 @@ ScriptCommandParsing: ; 0x022DDD64
 	sub sp, sp, #0x2c8
 	mov r4, r0
 	ldr r1, [r4, #0x1c]
-	ldr r0, _022DED08 ; =ov11_02318610
+	ldr r0, _022DED08 ; =SCRIPT_OP_CODES
 	add r6, r1, #2
 	str r1, [r4, #0x34]
 	str r6, [r4, #0x38]
@@ -2478,7 +2478,7 @@ _022DDDE0: ; jump table
 	arm_func_start ov11_022DE3AC
 ov11_022DE3AC: ; 0x022DE3AC
 	ldr r2, [r4, #0x1c]
-	ldr r0, _022DED08 ; =ov11_02318610
+	ldr r0, _022DED08 ; =SCRIPT_OP_CODES
 	ldrh r1, [r2]
 	mov r1, r1, lsl #3
 	ldrsb r0, [r0, r1]
@@ -3172,7 +3172,7 @@ ov11_022DECDC: ; 0x022DECDC
 	mov r0, #4
 	b _022E2478
 	.align 2, 0
-_022DED08: .word ov11_02318610
+_022DED08: .word SCRIPT_OP_CODES
 _022DED0C: .word 0x00000172
 _022DED10: .word ov11_023193EC
 _022DED14: .word ov11_02319410
@@ -6172,7 +6172,7 @@ _022E155C:
 _022E159C:
 	ldrsh r3, [r4, #8]
 	ldr r1, [r4]
-	ldr r2, _022E2278 ; =ov11_02316AD8
+	ldr r2, _022E2278 ; =SCRIPT_COMMAND_PARSING_DATA
 	cmp r7, #0x4b
 	moveq r5, #0
 	ldr r0, [r4, #4]
@@ -6231,7 +6231,7 @@ _022E164C:
 _022E1674:
 	ldr r1, [r4]
 	ldrsh r3, [r4, #8]
-	ldr r2, _022E2278 ; =ov11_02316AD8
+	ldr r2, _022E2278 ; =SCRIPT_COMMAND_PARSING_DATA
 	cmp r7, #0x45
 	moveq r5, #0
 	ldr r0, [r4, #4]
@@ -6294,7 +6294,7 @@ _022E1734:
 _022E1760:
 	ldr r1, [r4]
 	ldrsh r3, [r4, #8]
-	ldr r2, _022E2278 ; =ov11_02316AD8
+	ldr r2, _022E2278 ; =SCRIPT_COMMAND_PARSING_DATA
 	cmp r7, #0x3b
 	moveq r5, #0
 	ldr r0, [r4, #4]
@@ -6360,7 +6360,7 @@ _022E1820:
 _022E1858:
 	ldr r1, [r4]
 	ldrsh r3, [r4, #8]
-	ldr r2, _022E2278 ; =ov11_02316AD8
+	ldr r2, _022E2278 ; =SCRIPT_COMMAND_PARSING_DATA
 	cmp r7, #0x40
 	moveq r5, #0
 	ldr r0, [r4, #4]
@@ -7080,7 +7080,7 @@ _022E226C:
 	b _022E2464
 	.align 2, 0
 _022E2274: .word ov11_02316A60
-_022E2278: .word ov11_02316AD8
+_022E2278: .word SCRIPT_COMMAND_PARSING_DATA
 _022E227C: .word 0x00000127
 _022E2280: .word 0x00000179
 _022E2284: .word ov11_0231958C
@@ -13920,11 +13920,11 @@ _022E7FA4: .word ov11_02324CA4
 
 	arm_func_start ov11_022E7FA8
 ov11_022E7FA8: ; 0x022E7FA8
-	ldr r1, _022E7FB4 ; =ov11_0231C828
+	ldr r1, _022E7FB4 ; =C_ROUTINES
 	add r0, r1, r0, lsl #3
 	bx lr
 	.align 2, 0
-_022E7FB4: .word ov11_0231C828
+_022E7FB4: .word C_ROUTINES
 	arm_func_end ov11_022E7FA8
 
 	arm_func_start ov11_022E7FB8
@@ -13976,12 +13976,12 @@ ov11_022E8038: ; 0x022E8038
 
 	arm_func_start GetSpecialRecruitmentSpecies
 GetSpecialRecruitmentSpecies: ; 0x022E803C
-	ldr r1, _022E804C ; =ov11_023208D8
+	ldr r1, _022E804C ; =RECRUITMENT_TABLE_SPECIES
 	mov r0, r0, lsl #1
 	ldrsh r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_022E804C: .word ov11_023208D8
+_022E804C: .word RECRUITMENT_TABLE_SPECIES
 	arm_func_end GetSpecialRecruitmentSpecies
 
 	arm_func_start ov11_022E8050
@@ -14020,7 +14020,7 @@ ov11_022E8090: ; 0x022E8090
 	mov r1, #1
 	strb r1, [r4]
 	ldr r0, _022E810C ; =ov11_02324F98
-	ldr r1, _022E8110 ; =ov11_023208D8
+	ldr r1, _022E8110 ; =RECRUITMENT_TABLE_SPECIES
 	ldrsh r2, [r0]
 	add r0, sp, #0
 	mov r2, r2, lsl #1
@@ -14034,9 +14034,9 @@ ov11_022E8090: ; 0x022E8090
 	mov r0, r4
 	bl sub_02052EFC
 	ldr r0, _022E810C ; =ov11_02324F98
-	ldr r2, _022E8114 ; =ov11_023208AC
+	ldr r2, _022E8114 ; =RECRUITMENT_TABLE_LEVELS
 	ldrsh r3, [r0]
-	ldr r1, _022E8118 ; =ov11_02320894
+	ldr r1, _022E8118 ; =RECRUITMENT_TABLE_LOCATIONS
 	mov r3, r3, lsl #1
 	ldrsh r2, [r2, r3]
 	strb r2, [r4, #1]
@@ -14047,9 +14047,9 @@ ov11_022E8090: ; 0x022E8090
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _022E810C: .word ov11_02324F98
-_022E8110: .word ov11_023208D8
-_022E8114: .word ov11_023208AC
-_022E8118: .word ov11_02320894
+_022E8110: .word RECRUITMENT_TABLE_SPECIES
+_022E8114: .word RECRUITMENT_TABLE_LEVELS
+_022E8118: .word RECRUITMENT_TABLE_LOCATIONS
 	arm_func_end ov11_022E8090
 
 	arm_func_start ov11_022E811C
@@ -24898,7 +24898,7 @@ _022F13A4:
 	bl ov11_022F22F4
 	b _022F148C
 _022F13C4:
-	ldr r6, _022F1548 ; =ov11_02320D2C
+	ldr r6, _022F1548 ; =LEVEL_TILEMAP_LIST
 	b _022F1414
 _022F13CC:
 	cmp r0, r5
@@ -25006,7 +25006,7 @@ _022F1538: .word ov11_02324CC0
 _022F153C: .word ov11_02320CD8
 _022F1540: .word EVENTS
 _022F1544: .word ov11_02320CF4
-_022F1548: .word ov11_02320D2C
+_022F1548: .word LEVEL_TILEMAP_LIST
 _022F154C: .word ov11_02320D10
 _022F1550: .word ov11_02320CA8
 _022F1554: .word ov11_02320FCC
@@ -26338,7 +26338,7 @@ ov11_022F25A4: ; 0x022F25A4
 	bl ov11_022EFD5C
 	b _022F26BC
 _022F2628:
-	ldr r1, _022F26D8 ; =ov11_0231DE10
+	ldr r1, _022F26D8 ; =GROUND_WEATHER_TABLE
 	mov r0, r4, lsl #2
 	ldrsh r0, [r1, r0]
 	add r4, r1, r4, lsl #2
@@ -26386,7 +26386,7 @@ _022F26BC:
 	.align 2, 0
 _022F26D0: .word ov11_02324CC8
 _022F26D4: .word ov11_02321078
-_022F26D8: .word ov11_0231DE10
+_022F26D8: .word GROUND_WEATHER_TABLE
 	arm_func_end ov11_022F25A4
 
 	arm_func_start ov11_022F26DC
@@ -26538,7 +26538,7 @@ _022F283C:
 	cmp r0, #0
 	beq _022F28F0
 	ldr r0, _022F2914 ; =ov11_02324CC8
-	ldr r1, _022F2918 ; =ov11_0231DE10
+	ldr r1, _022F2918 ; =GROUND_WEATHER_TABLE
 	ldr r2, [r0]
 	ldrsh r2, [r2]
 	mov r2, r2, lsl #2
@@ -26577,7 +26577,7 @@ _022F290C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022F2914: .word ov11_02324CC8
-_022F2918: .word ov11_0231DE10
+_022F2918: .word GROUND_WEATHER_TABLE
 _022F291C: .word ov11_02321038
 _022F2920: .word ov11_02321030
 	arm_func_end ov11_022F27F4
@@ -31626,7 +31626,7 @@ LoadObjectAnimData: ; 0x022F6E60
 	mov r4, r0
 	tst r6, #0x80000000
 	movne r5, #0xf
-	ldr r2, _022F6EF0 ; =ov11_0231EE54
+	ldr r2, _022F6EF0 ; =OBJECTS
 	mov r0, #0xc
 	moveq r5, #0xe
 	smlabb r0, r1, r0, r2
@@ -31659,7 +31659,7 @@ _022F6EE8:
 	add sp, sp, #0x80
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022F6EF0: .word ov11_0231EE54
+_022F6EF0: .word OBJECTS
 _022F6EF4: .word ov11_023213F0
 _022F6EF8: .word WAN_TABLE
 	arm_func_end LoadObjectAnimData
@@ -37576,7 +37576,7 @@ ov11_022FBEC4: ; 0x022FBEC4
 	sub sp, sp, #0x10
 	mov r8, r1
 	ldrsh r4, [r8]
-	ldr r5, _022FC2C0 ; =ov11_0231EE54
+	ldr r5, _022FC2C0 ; =OBJECTS
 	mov r1, #0xc
 	mov sb, r0
 	smlabb r5, r4, r1, r5
@@ -37856,7 +37856,7 @@ _022FC2B8:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022FC2C0: .word ov11_0231EE54
+_022FC2C0: .word OBJECTS
 _022FC2C4: .word ov11_02324D00
 _022FC2C8: .word ov11_02321E4C
 _022FC2CC: .word 0x02006100
@@ -41563,7 +41563,7 @@ ov11_022FF21C: ; 0x022FF21C
 	str r0, [ip, #8]
 	ldrsh r2, [r2]
 	ldr r0, [r3, #4]
-	ldr lr, _022FF30C ; =ov11_0231C828
+	ldr lr, _022FF30C ; =C_ROUTINES
 	strh r2, [r0, #0xa4]
 	ldr r0, _022FF310 ; =0x000002BD
 	mov r5, r1
@@ -41609,7 +41609,7 @@ _022FF29C:
 	.align 2, 0
 _022FF304: .word ov11_02324D0C
 _022FF308: .word ov11_0238A074
-_022FF30C: .word ov11_0231C828
+_022FF30C: .word C_ROUTINES
 _022FF310: .word 0x000002BD
 _022FF314: .word ov11_0232248C
 _022FF318: .word ov11_022FF438
@@ -41704,7 +41704,7 @@ _022FF434: .word ov11_02324D0C
 	arm_func_start ov11_022FF438
 ov11_022FF438: ; 0x022FF438
 	ldr r0, _022FF458 ; =ov11_02324D0C
-	ldr r2, _022FF45C ; =ov11_0231C828
+	ldr r2, _022FF45C ; =C_ROUTINES
 	ldr r0, [r0, #4]
 	add r0, r0, r1, lsl #1
 	ldrsh r0, [r0, #0xa6]
@@ -41713,7 +41713,7 @@ ov11_022FF438: ; 0x022FF438
 	bx lr
 	.align 2, 0
 _022FF458: .word ov11_02324D0C
-_022FF45C: .word ov11_0231C828
+_022FF45C: .word C_ROUTINES
 	arm_func_end ov11_022FF438
 
 	arm_func_start ov11_022FF460
@@ -57427,7 +57427,7 @@ _0230CB84: .word ov11_02324DA4
 ov11_0230CB88: ; 0x0230CB88
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	ldr r0, _0230CBAC ; =ov11_0232306C
+	ldr r0, _0230CBAC ; =OVERLAY11_OVERLAY_LOAD_TABLE
 	bl sub_020348E4
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -57435,7 +57435,7 @@ ov11_0230CB88: ; 0x0230CB88
 	bl EntryOverlay13
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0230CBAC: .word ov11_0232306C
+_0230CBAC: .word OVERLAY11_OVERLAY_LOAD_TABLE
 	arm_func_end ov11_0230CB88
 
 	arm_func_start ov11_0230CBB0
@@ -64755,7 +64755,7 @@ ov11_0231297C: ; 0x0231297C
 	bl ov11_022EFD5C
 	b _02312A54
 _023129FC:
-	ldr r5, _02312A70 ; =ov11_0231DE10
+	ldr r5, _02312A70 ; =GROUND_WEATHER_TABLE
 	ldr r0, [r1]
 	add r1, r5, r4, lsl #2
 	ldrsh r1, [r1, #2]
@@ -64786,7 +64786,7 @@ _02312A54:
 	.align 2, 0
 _02312A68: .word ov11_02324E20
 _02312A6C: .word ov11_02323CEC
-_02312A70: .word ov11_0231DE10
+_02312A70: .word GROUND_WEATHER_TABLE
 	arm_func_end ov11_0231297C
 
 	arm_func_start ov11_02312A74
@@ -64802,7 +64802,7 @@ ov11_02312A74: ; 0x02312A74
 	mvn r0, #0
 	cmp r1, r0
 	beq _02312AD4
-	ldr r0, _02312B10 ; =ov11_0231DE10
+	ldr r0, _02312B10 ; =GROUND_WEATHER_TABLE
 	mov r1, r1, lsl #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -64834,7 +64834,7 @@ _02312B04:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02312B0C: .word ov11_02324E20
-_02312B10: .word ov11_0231DE10
+_02312B10: .word GROUND_WEATHER_TABLE
 _02312B14: .word ov11_02323CC8
 	arm_func_end ov11_02312A74
 
@@ -69300,8 +69300,8 @@ ov11_02316A60:
 	.byte 0x86, 0x01, 0x00, 0x00
 	.word ov11_02316C04
 	.byte 0x92, 0x03, 0x00, 0x00
-	.global ov11_02316AD8
-ov11_02316AD8:
+	.global SCRIPT_COMMAND_PARSING_DATA
+SCRIPT_COMMAND_PARSING_DATA:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -70670,8 +70670,8 @@ ov11_023185EC:
 	.byte 0x73, 0x75, 0x70, 0x65, 0x72, 0x76, 0x69, 0x73, 0x69, 0x6F, 0x6E, 0x5F, 0x45, 0x78, 0x65, 0x63
 	.byte 0x75, 0x74, 0x65, 0x53, 0x74, 0x61, 0x74, 0x69, 0x6F, 0x6E, 0x43, 0x6F, 0x6D, 0x6D, 0x6F, 0x6E
 	.byte 0x53, 0x75, 0x62, 0x00
-	.global ov11_02318610
-ov11_02318610:
+	.global SCRIPT_OP_CODES
+SCRIPT_OP_CODES:
 	.byte 0x00, 0xFF, 0x00, 0x00
 	.global ov11_02318614
 ov11_02318614:
@@ -71440,8 +71440,8 @@ ov11_02318614:
 	.word ov11_02318278
 	.byte 0x01, 0xFF, 0x00, 0x00
 	.word ov11_02317370
-	.global ov11_02319208
-ov11_02319208:
+	.global OVERLAY11_DEBUG_STRINGS
+OVERLAY11_DEBUG_STRINGS:
 	.byte 0x65, 0x78, 0x65, 0x63
 	.byte 0x75, 0x74, 0x65, 0x20, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x20, 0x74, 0x79, 0x70, 0x65, 0x20
 	.byte 0x65, 0x72, 0x72, 0x6F, 0x72, 0x20, 0x42, 0x00
@@ -74603,8 +74603,8 @@ ov11_0231C808:
 	.byte 0x4C, 0x4F, 0x4F, 0x4B
 	.byte 0x5F, 0x41, 0x52, 0x4F, 0x55, 0x4E, 0x44, 0x5F, 0x52, 0x49, 0x47, 0x48, 0x54, 0x5F, 0x46, 0x55
 	.byte 0x4E, 0x43, 0x5F, 0x53, 0x45, 0x52, 0x49, 0x45, 0x53, 0x00, 0x00, 0x00
-	.global ov11_0231C828
-ov11_0231C828:
+	.global C_ROUTINES
+C_ROUTINES:
 	.byte 0x00, 0x00, 0x04, 0x00
 	.word ov11_02319B28
 	.byte 0x01, 0x00, 0x04, 0x00
@@ -76007,8 +76007,8 @@ ov11_0231C828:
 	.word ov11_02319CFC
 	.byte 0xBC, 0x02, 0x0A, 0x00
 	.word ov11_02319B1C
-	.global ov11_0231DE10
-ov11_0231DE10:
+	.global GROUND_WEATHER_TABLE
+GROUND_WEATHER_TABLE:
 	.byte 0x00, 0x00, 0x13, 0x01, 0x01, 0x00, 0xB0, 0x01, 0x01, 0x00, 0xB1, 0x01
 	.byte 0x02, 0x00, 0xB2, 0x01, 0x01, 0x00, 0xB3, 0x01, 0x02, 0x00, 0xB4, 0x01, 0x01, 0x00, 0xB5, 0x01
 	.byte 0x02, 0x00, 0xB6, 0x01, 0x01, 0x00, 0xB7, 0x01, 0x02, 0x00, 0xB8, 0x01, 0x01, 0x00, 0xB9, 0x01
@@ -77213,8 +77213,8 @@ ov11_0231EE3C:
 ov11_0231EE48:
 	.byte 0x64, 0x30, 0x31, 0x70
 	.byte 0x31, 0x31, 0x62, 0x31, 0x00, 0x00, 0x00, 0x00
-	.global ov11_0231EE54
-ov11_0231EE54:
+	.global OBJECTS
+OBJECTS:
 	.byte 0x0E, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
@@ -78455,17 +78455,17 @@ ov11_02320858:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x01, 0x02, 0x00, 0x00, 0x01, 0x02, 0x00, 0x00, 0x01
 	.byte 0x02, 0x00, 0x00, 0x01, 0x02, 0x00, 0x00, 0x01
-	.global ov11_02320894
-ov11_02320894:
+	.global RECRUITMENT_TABLE_LOCATIONS
+RECRUITMENT_TABLE_LOCATIONS:
 	.byte 0x39, 0x37, 0x3B, 0x4C, 0x10, 0x17, 0x1A, 0x2B
 	.byte 0x42, 0x3D, 0x52, 0x45, 0x4E, 0x50, 0x50, 0x56, 0xF1, 0x35, 0xF2, 0x54, 0x4A, 0xF3, 0x00, 0x00
-	.global ov11_023208AC
-ov11_023208AC:
+	.global RECRUITMENT_TABLE_LEVELS
+RECRUITMENT_TABLE_LEVELS:
 	.byte 0x2E, 0x00, 0x2E, 0x00, 0x2E, 0x00, 0x31, 0x00, 0x2A, 0x00, 0x2A, 0x00, 0x2A, 0x00, 0x30, 0x00
 	.byte 0x30, 0x00, 0x31, 0x00, 0x30, 0x00, 0x35, 0x00, 0x2B, 0x00, 0x31, 0x00, 0x31, 0x00, 0x2E, 0x00
 	.byte 0x28, 0x00, 0x28, 0x00, 0x2F, 0x00, 0x31, 0x00, 0x31, 0x00, 0x37, 0x00
-	.global ov11_023208D8
-ov11_023208D8:
+	.global RECRUITMENT_TABLE_SPECIES
+RECRUITMENT_TABLE_SPECIES:
 	.byte 0x99, 0x01, 0x9A, 0x01
 	.byte 0x9B, 0x01, 0x9F, 0x01, 0x0A, 0x02, 0x0B, 0x02
 	.word _020D020C
@@ -78661,8 +78661,8 @@ ov11_02320D10:
 	.byte 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00
 	.byte 0x00, 0x04, 0x00, 0x04, 0x00, 0x00, 0xBA, 0x00, 0x3E, 0x00, 0x00, 0x00
 	.word ov11_022F1800
-	.global ov11_02320D2C
-ov11_02320D2C:
+	.global LEVEL_TILEMAP_LIST
+LEVEL_TILEMAP_LIST:
 	.byte 0x06, 0x00, 0x02, 0x64, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x01, 0x64, 0x00, 0x00, 0x00, 0x00
 	.byte 0x07, 0x00, 0x01, 0x64, 0x00, 0x00, 0x00, 0x00, 0x1B, 0x00, 0x0E, 0x64, 0x00, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x00, 0x11, 0x64, 0x00, 0x00, 0x00, 0x00, 0x23, 0x00, 0x15, 0x64, 0x00, 0x00, 0x00, 0x00
@@ -79971,8 +79971,8 @@ ov11_02323048:
 	.byte 0x5B, 0x43, 0x4C, 0x55
 	.byte 0x4D, 0x5F, 0x53, 0x45, 0x54, 0x3A, 0x31, 0x31, 0x34, 0x5D, 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D
 	.byte 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x00, 0x00, 0x00, 0x00
-	.global ov11_0232306C
-ov11_0232306C:
+	.global OVERLAY11_OVERLAY_LOAD_TABLE
+OVERLAY11_OVERLAY_LOAD_TABLE:
 	.byte 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0xB7, 0x38, 0x02, 0xFC, 0xB7, 0x38, 0x02
 	.global ov11_0232307C
 ov11_0232307C:

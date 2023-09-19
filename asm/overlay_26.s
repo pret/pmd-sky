@@ -189,7 +189,7 @@ _0238A3A0:
 	streq r0, [r2, #0x94]
 	beq _0238A50C
 	ldr r4, [r2, #0x88]
-	ldr r1, _0238A55C ; =ov26_0238AE20
+	ldr r1, _0238A55C ; =OVERLAY26_UNKNOWN_TABLE__NA_238AE20
 	str r1, [r2, #0x94]
 	ldr r0, [r0]
 	add r0, r0, #0x60
@@ -261,7 +261,7 @@ _0238A4C4:
 	mov r3, #0
 	strh r2, [r1, #0x60]
 	ldr r2, [r0]
-	ldr r1, _0238A55C ; =ov26_0238AE20
+	ldr r1, _0238A55C ; =OVERLAY26_UNKNOWN_TABLE__NA_238AE20
 	strb r3, [r2, #0x62]
 	ldr r2, [r0]
 	str r4, [r2, #0x88]
@@ -294,7 +294,7 @@ _0238A54C: .word ov26_0238AE4A
 _0238A550: .word ov26_0238AE3E
 _0238A554: .word ov26_0238AE32
 _0238A558: .word ov26_0238AE9E
-_0238A55C: .word ov26_0238AE20
+_0238A55C: .word OVERLAY26_UNKNOWN_TABLE__NA_238AE20
 _0238A560: .word 0x000001E3
 _0238A564: .word ov26_0238AE26
 	arm_func_end ov26_0238A468
@@ -989,8 +989,8 @@ _0238AE1C: .word ov26_0238AF70
 	arm_func_end ov26_0238AD3C
 	; 0x0238AE20
 
-	.global ov26_0238AE20
-ov26_0238AE20:
+	.global OVERLAY26_UNKNOWN_TABLE__NA_238AE20
+OVERLAY26_UNKNOWN_TABLE__NA_238AE20:
 	.byte 0xFF, 0x00, 0x18, 0x02,  0x00, 0x00
 	.global ov26_0238AE26
 ov26_0238AE26:

@@ -34,7 +34,7 @@ ov22_0238A150: ; 0x0238A150
 	str r0, [ip]
 	str r1, [sp]
 	ldr r1, [r2, #4]
-	ldr r0, _0238A21C ; =ov22_0238E81C
+	ldr r0, _0238A21C ; =SHOP_D_BOX_LAYOUT_1
 	ldr ip, [r1, #0x9c]
 	ldr r1, _0238A220 ; =0x00401C33
 	str ip, [sp, #4]
@@ -65,7 +65,7 @@ ov22_0238A150: ; 0x0238A150
 _0238A210: .word ov22_0238EC60
 _0238A214: .word 0x0000032D
 _0238A218: .word ov22_0238A67C
-_0238A21C: .word ov22_0238E81C
+_0238A21C: .word SHOP_D_BOX_LAYOUT_1
 _0238A220: .word 0x00401C33
 _0238A224: .word ov22_0238A640
 _0238A228: .word ov22_0238A774
@@ -539,7 +539,7 @@ ov22_0238A79C: ; 0x0238A79C
 	str r0, [ip]
 	str r1, [sp]
 	ldr r1, [r2, #4]
-	ldr r0, _0238A868 ; =ov22_0238E83C
+	ldr r0, _0238A868 ; =SHOP_D_BOX_LAYOUT_2
 	ldr ip, [r1, #0x9c]
 	ldr r1, _0238A86C ; =0x00401C33
 	str ip, [sp, #4]
@@ -570,7 +570,7 @@ ov22_0238A79C: ; 0x0238A79C
 _0238A85C: .word ov22_0238EC68
 _0238A860: .word 0x0000032E
 _0238A864: .word ov22_0238ACC8
-_0238A868: .word ov22_0238E83C
+_0238A868: .word SHOP_D_BOX_LAYOUT_2
 _0238A86C: .word 0x00401C33
 _0238A870: .word ov22_0238AC8C
 _0238A874: .word ov22_0238ADC0
@@ -1093,7 +1093,7 @@ _0238AEC4:
 	ldrsb r0, [r3, #0x48]
 	ldr r4, [r3], #0x50
 	mul r5, r4, r2
-	ldr r2, _0238BD6C ; =ov22_0238E8F0
+	ldr r2, _0238BD6C ; =OVERLAY22_UNKNOWN_STRING_IDS
 	ldrh r2, [r2, r5]
 	bl ShowMessageInDBox
 	b _0238C16C
@@ -1124,9 +1124,9 @@ _0238AF70:
 	ldr r0, _0238BD7C ; =ov22_0238E9E4
 	bl DebugPrint0
 	mov r4, #5
-	ldr r0, _0238BD80 ; =ov22_0238E980
+	ldr r0, _0238BD80 ; =SHOP_D_BOX_LAYOUT_6
 	ldr r1, _0238BD84 ; =0x00300013
-	ldr r3, _0238BD88 ; =ov22_0238E8C0
+	ldr r3, _0238BD88 ; =SHOP_MAIN_MENU_3
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1542,16 +1542,16 @@ _0238B594:
 	ldr r0, _0238BE0C ; =ov22_0238EAD8
 	bl DebugPrint0
 	ldr r0, _0238BD60 ; =ov22_0238EC70
-	ldr r3, _0238BE10 ; =ov22_0238E8A0
+	ldr r3, _0238BE10 ; =SHOP_MAIN_MENU_2
 	ldr r0, [r0]
 	mov r4, #3
 	ldrb r0, [r0, #8]
 	mov r1, #0x13
 	mov r2, #0
 	cmp r0, #0
-	ldrne r0, _0238BE14 ; =ov22_0238E990
+	ldrne r0, _0238BE14 ; =SHOP_D_BOX_LAYOUT_7
 	str r4, [sp]
-	ldreq r0, _0238BE18 ; =ov22_0238E9C0
+	ldreq r0, _0238BE18 ; =SHOP_D_BOX_LAYOUT_10
 	bl CreateNormalMenu
 	ldr r1, _0238BD60 ; =ov22_0238EC70
 	ldr r1, [r1]
@@ -1561,7 +1561,7 @@ _0238B5DC:
 	ldr r0, _0238BE1C ; =ov22_0238EAE8
 	bl DebugPrint0
 	ldr r0, _0238BD60 ; =ov22_0238EC70
-	ldr r2, _0238BE20 ; =ov22_0238E85C
+	ldr r2, _0238BE20 ; =OVERLAY22_UNKNOWN_STRUCT__NA_238E85C
 	ldr r1, [r0]
 	add r0, r1, #0xe0
 	add r1, r1, #0x2c
@@ -1631,7 +1631,7 @@ _0238B680:
 	ldr r0, _0238BD60 ; =ov22_0238EC70
 	add r1, sp, #0xc
 	ldr r3, [r0]
-	ldr r0, _0238BE34 ; =ov22_0238E9B0
+	ldr r0, _0238BE34 ; =SHOP_D_BOX_LAYOUT_9
 	add r2, r3, #0xa0
 	str r2, [sp, #0x44]
 	str r1, [sp]
@@ -1795,8 +1795,8 @@ _0238B958:
 	ldr r0, _0238BE60 ; =ov22_0238EB70
 	bl DebugPrint0
 	mov r4, #3
-	ldr r0, _0238BE14 ; =ov22_0238E990
-	ldr r3, _0238BE64 ; =ov22_0238E880
+	ldr r0, _0238BE14 ; =SHOP_D_BOX_LAYOUT_7
+	ldr r3, _0238BE64 ; =SHOP_MAIN_MENU_1
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
@@ -1809,7 +1809,7 @@ _0238B98C:
 	ldr r0, _0238BE68 ; =ov22_0238EB80
 	bl DebugPrint0
 	ldr r0, _0238BD60 ; =ov22_0238EC70
-	ldr r2, _0238BE20 ; =ov22_0238E85C
+	ldr r2, _0238BE20 ; =OVERLAY22_UNKNOWN_STRUCT__NA_238E85C
 	ldr r1, [r0]
 	add r0, r1, #0xe0
 	add r1, r1, #0x2c
@@ -1844,9 +1844,9 @@ _0238BA14:
 	ldr r0, _0238BE70 ; =ov22_0238EB90
 	bl DebugPrint0
 	mov r4, #2
-	ldr r0, _0238BE74 ; =ov22_0238E9A0
+	ldr r0, _0238BE74 ; =SHOP_D_BOX_LAYOUT_8
 	ldr r1, _0238BD84 ; =0x00300013
-	ldr r3, _0238BE78 ; =ov22_0238E868
+	ldr r3, _0238BE78 ; =SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1858,9 +1858,9 @@ _0238BA48:
 	ldr r0, _0238BE7C ; =ov22_0238EBA4
 	bl DebugPrint0
 	mov r4, #2
-	ldr r0, _0238BE74 ; =ov22_0238E9A0
+	ldr r0, _0238BE74 ; =SHOP_D_BOX_LAYOUT_8
 	ldr r1, _0238BD84 ; =0x00300013
-	ldr r3, _0238BE78 ; =ov22_0238E868
+	ldr r3, _0238BE78 ; =SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1905,7 +1905,7 @@ _0238BA7C:
 	ldr r0, _0238BD60 ; =ov22_0238EC70
 	add r1, sp, #0x5c
 	ldr r3, [r0]
-	ldr r0, _0238BE34 ; =ov22_0238E9B0
+	ldr r0, _0238BE34 ; =SHOP_D_BOX_LAYOUT_9
 	add r2, r3, #0xa0
 	str r2, [sp, #0x94]
 	str r1, [sp]
@@ -2068,14 +2068,14 @@ _0238BD04:
 _0238BD60: .word ov22_0238EC70
 _0238BD64: .word ov22_0238E9D0
 _0238BD68: .word 0x00003008
-_0238BD6C: .word ov22_0238E8F0
+_0238BD6C: .word OVERLAY22_UNKNOWN_STRING_IDS
 _0238BD70: .word ov22_0238E9D8
 _0238BD74: .word 0x0000017F
 _0238BD78: .word ov22_0238E8F2
 _0238BD7C: .word ov22_0238E9E4
-_0238BD80: .word ov22_0238E980
+_0238BD80: .word SHOP_D_BOX_LAYOUT_6
 _0238BD84: .word 0x00300013
-_0238BD88: .word ov22_0238E8C0
+_0238BD88: .word SHOP_MAIN_MENU_3
 _0238BD8C: .word ov22_0238E9F4
 _0238BD90: .word 0x00003018
 _0238BD94: .word ov22_0238E91E
@@ -2109,16 +2109,16 @@ _0238BE00: .word ov22_0238E8F8
 _0238BE04: .word ov22_0238EAB8
 _0238BE08: .word ov22_0238EAC8
 _0238BE0C: .word ov22_0238EAD8
-_0238BE10: .word ov22_0238E8A0
-_0238BE14: .word ov22_0238E990
-_0238BE18: .word ov22_0238E9C0
+_0238BE10: .word SHOP_MAIN_MENU_2
+_0238BE14: .word SHOP_D_BOX_LAYOUT_7
+_0238BE18: .word SHOP_D_BOX_LAYOUT_10
 _0238BE1C: .word ov22_0238EAE8
-_0238BE20: .word ov22_0238E85C
+_0238BE20: .word OVERLAY22_UNKNOWN_STRUCT__NA_238E85C
 _0238BE24: .word ov22_0238E8FA
 _0238BE28: .word ov22_0238EAF8
 _0238BE2C: .word ov22_0238EB14
 _0238BE30: .word 0x0000C402
-_0238BE34: .word ov22_0238E9B0
+_0238BE34: .word SHOP_D_BOX_LAYOUT_9
 _0238BE38: .word 0x00001013
 _0238BE3C: .word 0x0000033E
 _0238BE40: .word ov22_0238EB20
@@ -2130,12 +2130,12 @@ _0238BE54: .word ov22_0238E902
 _0238BE58: .word ov22_0238EB50
 _0238BE5C: .word ov22_0238EB60
 _0238BE60: .word ov22_0238EB70
-_0238BE64: .word ov22_0238E880
+_0238BE64: .word SHOP_MAIN_MENU_1
 _0238BE68: .word ov22_0238EB80
 _0238BE6C: .word ov22_0238E904
 _0238BE70: .word ov22_0238EB90
-_0238BE74: .word ov22_0238E9A0
-_0238BE78: .word ov22_0238E868
+_0238BE74: .word SHOP_D_BOX_LAYOUT_8
+_0238BE78: .word SHOP_MENU_CONFIRM
 _0238BE7C: .word ov22_0238EBA4
 _0238BE80: .word ov22_0238EBB8
 _0238BE84: .word ov22_0238EBC8
@@ -2221,9 +2221,9 @@ _0238BFB4:
 	ldr r0, _0238C174 ; =ov22_0238EC00
 	bl DebugPrint0
 	mov r4, #2
-	ldr r0, _0238BE74 ; =ov22_0238E9A0
+	ldr r0, _0238BE74 ; =SHOP_D_BOX_LAYOUT_8
 	ldr r1, _0238BD84 ; =0x00300013
-	ldr r3, _0238BE78 ; =ov22_0238E868
+	ldr r3, _0238BE78 ; =SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -2256,9 +2256,9 @@ _0238C038:
 	ldr r0, _0238C174 ; =ov22_0238EC00
 	bl DebugPrint0
 	mov r4, #2
-	ldr r0, _0238BE74 ; =ov22_0238E9A0
+	ldr r0, _0238BE74 ; =SHOP_D_BOX_LAYOUT_8
 	ldr r1, _0238BD84 ; =0x00300013
-	ldr r3, _0238BE78 ; =ov22_0238E868
+	ldr r3, _0238BE78 ; =SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -2270,9 +2270,9 @@ _0238C06C:
 	ldr r0, _0238C174 ; =ov22_0238EC00
 	bl DebugPrint0
 	mov r4, #2
-	ldr r0, _0238BE74 ; =ov22_0238E9A0
+	ldr r0, _0238BE74 ; =SHOP_D_BOX_LAYOUT_8
 	ldr r1, _0238BD84 ; =0x00300013
-	ldr r3, _0238BE78 ; =ov22_0238E868
+	ldr r3, _0238BE78 ; =SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -2421,7 +2421,7 @@ _0238C268:
 	ldrsb r0, [r3, #0x48]
 	ldr r4, [r3], #0x50
 	mul r5, r4, r2
-	ldr r2, _0238D110 ; =ov22_0238E8F0
+	ldr r2, _0238D110 ; =OVERLAY22_UNKNOWN_STRING_IDS
 	ldrh r2, [r2, r5]
 	bl ShowMessageInDBox
 	b _0238D510
@@ -2452,9 +2452,9 @@ _0238C314:
 	ldr r0, _0238D120 ; =ov22_0238E9E4
 	bl DebugPrint0
 	mov r4, #5
-	ldr r0, _0238D124 ; =ov22_0238E980
+	ldr r0, _0238D124 ; =SHOP_D_BOX_LAYOUT_6
 	ldr r1, _0238D128 ; =0x00300013
-	ldr r3, _0238D12C ; =ov22_0238E8C0
+	ldr r3, _0238D12C ; =SHOP_MAIN_MENU_3
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -2870,16 +2870,16 @@ _0238C938:
 	ldr r0, _0238D1B0 ; =ov22_0238EAD8
 	bl DebugPrint0
 	ldr r0, _0238D104 ; =ov22_0238EC70
-	ldr r3, _0238D1B4 ; =ov22_0238E8A0
+	ldr r3, _0238D1B4 ; =SHOP_MAIN_MENU_2
 	ldr r0, [r0]
 	mov r4, #3
 	ldrb r0, [r0, #8]
 	mov r1, #0x13
 	mov r2, #0
 	cmp r0, #0
-	ldrne r0, _0238D1B8 ; =ov22_0238E990
+	ldrne r0, _0238D1B8 ; =SHOP_D_BOX_LAYOUT_7
 	str r4, [sp]
-	ldreq r0, _0238D1BC ; =ov22_0238E9C0
+	ldreq r0, _0238D1BC ; =SHOP_D_BOX_LAYOUT_10
 	bl CreateNormalMenu
 	ldr r1, _0238D104 ; =ov22_0238EC70
 	ldr r1, [r1]
@@ -2889,7 +2889,7 @@ _0238C980:
 	ldr r0, _0238D1C0 ; =ov22_0238EAE8
 	bl DebugPrint0
 	ldr r0, _0238D104 ; =ov22_0238EC70
-	ldr r2, _0238D1C4 ; =ov22_0238E85C
+	ldr r2, _0238D1C4 ; =OVERLAY22_UNKNOWN_STRUCT__NA_238E85C
 	ldr r1, [r0]
 	add r0, r1, #0xe0
 	add r1, r1, #0x2c
@@ -2959,7 +2959,7 @@ _0238CA24:
 	ldr r0, _0238D104 ; =ov22_0238EC70
 	add r1, sp, #0x5c
 	ldr r3, [r0]
-	ldr r0, _0238D1D8 ; =ov22_0238E9B0
+	ldr r0, _0238D1D8 ; =SHOP_D_BOX_LAYOUT_9
 	add r2, r3, #0xa0
 	str r2, [sp, #0x94]
 	str r1, [sp]
@@ -3139,8 +3139,8 @@ _0238CCFC:
 	ldr r0, _0238D204 ; =ov22_0238EB70
 	bl DebugPrint0
 	mov r4, #3
-	ldr r0, _0238D1B8 ; =ov22_0238E990
-	ldr r3, _0238D208 ; =ov22_0238E880
+	ldr r0, _0238D1B8 ; =SHOP_D_BOX_LAYOUT_7
+	ldr r3, _0238D208 ; =SHOP_MAIN_MENU_1
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
@@ -3153,7 +3153,7 @@ _0238CD30:
 	ldr r0, _0238D20C ; =ov22_0238EB80
 	bl DebugPrint0
 	ldr r0, _0238D104 ; =ov22_0238EC70
-	ldr r2, _0238D1C4 ; =ov22_0238E85C
+	ldr r2, _0238D1C4 ; =OVERLAY22_UNKNOWN_STRUCT__NA_238E85C
 	ldr r1, [r0]
 	add r0, r1, #0xe0
 	add r1, r1, #0x2c
@@ -3188,9 +3188,9 @@ _0238CDB8:
 	ldr r0, _0238D214 ; =ov22_0238EB90
 	bl DebugPrint0
 	mov r4, #2
-	ldr r0, _0238D218 ; =ov22_0238E9A0
+	ldr r0, _0238D218 ; =SHOP_D_BOX_LAYOUT_8
 	ldr r1, _0238D128 ; =0x00300013
-	ldr r3, _0238D21C ; =ov22_0238E868
+	ldr r3, _0238D21C ; =SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -3202,9 +3202,9 @@ _0238CDEC:
 	ldr r0, _0238D220 ; =ov22_0238EBA4
 	bl DebugPrint0
 	mov r4, #2
-	ldr r0, _0238D218 ; =ov22_0238E9A0
+	ldr r0, _0238D218 ; =SHOP_D_BOX_LAYOUT_8
 	ldr r1, _0238D128 ; =0x00300013
-	ldr r3, _0238D21C ; =ov22_0238E868
+	ldr r3, _0238D21C ; =SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -3249,7 +3249,7 @@ _0238CE20:
 	ldr r0, _0238D104 ; =ov22_0238EC70
 	add r1, sp, #0xc
 	ldr r3, [r0]
-	ldr r0, _0238D1D8 ; =ov22_0238E9B0
+	ldr r0, _0238D1D8 ; =SHOP_D_BOX_LAYOUT_9
 	add r2, r3, #0xa0
 	str r2, [sp, #0x44]
 	str r1, [sp]
@@ -3412,14 +3412,14 @@ _0238D0A8:
 _0238D104: .word ov22_0238EC70
 _0238D108: .word ov22_0238E9D0
 _0238D10C: .word 0x00003008
-_0238D110: .word ov22_0238E8F0
+_0238D110: .word OVERLAY22_UNKNOWN_STRING_IDS
 _0238D114: .word ov22_0238E9D8
 _0238D118: .word 0x0000017F
 _0238D11C: .word ov22_0238E8F2
 _0238D120: .word ov22_0238E9E4
-_0238D124: .word ov22_0238E980
+_0238D124: .word SHOP_D_BOX_LAYOUT_6
 _0238D128: .word 0x00300013
-_0238D12C: .word ov22_0238E8C0
+_0238D12C: .word SHOP_MAIN_MENU_3
 _0238D130: .word ov22_0238E9F4
 _0238D134: .word 0x00003018
 _0238D138: .word ov22_0238E91E
@@ -3453,16 +3453,16 @@ _0238D1A4: .word ov22_0238E8F8
 _0238D1A8: .word ov22_0238EAB8
 _0238D1AC: .word ov22_0238EAC8
 _0238D1B0: .word ov22_0238EAD8
-_0238D1B4: .word ov22_0238E8A0
-_0238D1B8: .word ov22_0238E990
-_0238D1BC: .word ov22_0238E9C0
+_0238D1B4: .word SHOP_MAIN_MENU_2
+_0238D1B8: .word SHOP_D_BOX_LAYOUT_7
+_0238D1BC: .word SHOP_D_BOX_LAYOUT_10
 _0238D1C0: .word ov22_0238EAE8
-_0238D1C4: .word ov22_0238E85C
+_0238D1C4: .word OVERLAY22_UNKNOWN_STRUCT__NA_238E85C
 _0238D1C8: .word ov22_0238E8FA
 _0238D1CC: .word ov22_0238EAF8
 _0238D1D0: .word ov22_0238EB14
 _0238D1D4: .word 0x0000C402
-_0238D1D8: .word ov22_0238E9B0
+_0238D1D8: .word SHOP_D_BOX_LAYOUT_9
 _0238D1DC: .word 0x00001013
 _0238D1E0: .word 0x0000033E
 _0238D1E4: .word ov22_0238EB20
@@ -3474,12 +3474,12 @@ _0238D1F8: .word ov22_0238E902
 _0238D1FC: .word ov22_0238EB50
 _0238D200: .word ov22_0238EB60
 _0238D204: .word ov22_0238EB70
-_0238D208: .word ov22_0238E880
+_0238D208: .word SHOP_MAIN_MENU_1
 _0238D20C: .word ov22_0238EB80
 _0238D210: .word ov22_0238E904
 _0238D214: .word ov22_0238EB90
-_0238D218: .word ov22_0238E9A0
-_0238D21C: .word ov22_0238E868
+_0238D218: .word SHOP_D_BOX_LAYOUT_8
+_0238D21C: .word SHOP_MENU_CONFIRM
 _0238D220: .word ov22_0238EBA4
 _0238D224: .word ov22_0238EBB8
 _0238D228: .word ov22_0238EBC8
@@ -3565,9 +3565,9 @@ _0238D358:
 	ldr r0, _0238D518 ; =ov22_0238EC00
 	bl DebugPrint0
 	mov r4, #2
-	ldr r0, _0238D218 ; =ov22_0238E9A0
+	ldr r0, _0238D218 ; =SHOP_D_BOX_LAYOUT_8
 	ldr r1, _0238D128 ; =0x00300013
-	ldr r3, _0238D21C ; =ov22_0238E868
+	ldr r3, _0238D21C ; =SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -3600,9 +3600,9 @@ _0238D3DC:
 	ldr r0, _0238D518 ; =ov22_0238EC00
 	bl DebugPrint0
 	mov r4, #2
-	ldr r0, _0238D218 ; =ov22_0238E9A0
+	ldr r0, _0238D218 ; =SHOP_D_BOX_LAYOUT_8
 	ldr r1, _0238D128 ; =0x00300013
-	ldr r3, _0238D21C ; =ov22_0238E868
+	ldr r3, _0238D21C ; =SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -3614,9 +3614,9 @@ _0238D410:
 	ldr r0, _0238D518 ; =ov22_0238EC00
 	bl DebugPrint0
 	mov r4, #2
-	ldr r0, _0238D218 ; =ov22_0238E9A0
+	ldr r0, _0238D218 ; =SHOP_D_BOX_LAYOUT_8
 	ldr r1, _0238D128 ; =0x00300013
-	ldr r3, _0238D21C ; =ov22_0238E868
+	ldr r3, _0238D21C ; =SHOP_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -5047,8 +5047,8 @@ _0238E818: .word ov22_0238EC70
 	arm_func_end ov22_0238E7E4
 	; 0x0238E81C
 
-	.global ov22_0238E81C
-ov22_0238E81C:
+	.global SHOP_D_BOX_LAYOUT_1
+SHOP_D_BOX_LAYOUT_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x12, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov22_0238E82C
 ov22_0238E82C:
@@ -5056,8 +5056,8 @@ ov22_0238E82C:
 	.global ov22_0238E834
 ov22_0238E834:
 	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
-	.global ov22_0238E83C
-ov22_0238E83C:
+	.global SHOP_D_BOX_LAYOUT_2
+SHOP_D_BOX_LAYOUT_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x12, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov22_0238E84C
 ov22_0238E84C:
@@ -5065,32 +5065,32 @@ ov22_0238E84C:
 	.global ov22_0238E854
 ov22_0238E854:
 	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
-	.global ov22_0238E85C
-ov22_0238E85C:
+	.global OVERLAY22_UNKNOWN_STRUCT__NA_238E85C
+OVERLAY22_UNKNOWN_STRUCT__NA_238E85C:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov22_0238E868
-ov22_0238E868:
+	.global SHOP_MENU_CONFIRM
+SHOP_MENU_CONFIRM:
 	.byte 0x36, 0x03, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00, 0x37, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
-	.global ov22_0238E880
-ov22_0238E880:
+	.global SHOP_MAIN_MENU_1
+SHOP_MAIN_MENU_1:
 	.byte 0x38, 0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x3B, 0x03, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x3D, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
-	.global ov22_0238E8A0
-ov22_0238E8A0:
+	.global SHOP_MAIN_MENU_2
+SHOP_MAIN_MENU_2:
 	.byte 0x39, 0x03, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x3B, 0x03, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x3D, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
-	.global ov22_0238E8C0
-ov22_0238E8C0:
+	.global SHOP_MAIN_MENU_3
+SHOP_MAIN_MENU_3:
 	.byte 0x39, 0x03, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x38, 0x03, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x3A, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x3B, 0x03, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x3C, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
-	.global ov22_0238E8F0
-ov22_0238E8F0:
+	.global OVERLAY22_UNKNOWN_STRING_IDS
+OVERLAY22_UNKNOWN_STRING_IDS:
 	.byte 0x3F, 0x03
 	.global ov22_0238E8F2
 ov22_0238E8F2:
@@ -5167,24 +5167,24 @@ ov22_0238E91E:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x14, 0x12, 0x02, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x0F, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov22_0238E980
-ov22_0238E980:
+	.global SHOP_D_BOX_LAYOUT_6
+SHOP_D_BOX_LAYOUT_6:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov22_0238E990
-ov22_0238E990:
+	.global SHOP_D_BOX_LAYOUT_7
+SHOP_D_BOX_LAYOUT_7:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov22_0238E9A0
-ov22_0238E9A0:
+	.global SHOP_D_BOX_LAYOUT_8
+SHOP_D_BOX_LAYOUT_8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov22_0238E9B0
-ov22_0238E9B0:
+	.global SHOP_D_BOX_LAYOUT_9
+SHOP_D_BOX_LAYOUT_9:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov22_0238E9C0
-ov22_0238E9C0:
+	.global SHOP_D_BOX_LAYOUT_10
+SHOP_D_BOX_LAYOUT_10:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov22_0238E9D0

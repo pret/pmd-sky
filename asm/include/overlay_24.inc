@@ -1,12 +1,12 @@
 #pragma once
 .public __divsi3
 .public _020A1868
-.public _020A18B8
-.public _020A18DC
 .public _020A18E0
 .public CreateDBox
 .public CreateNormalMenu
 .public CreatePortraitBox
+.public EGG_HP_BONUS
+.public EGG_STAT_BONUSES
 .public FreeDBox
 .public FreeNormalMenu
 .public FreePortraitBox

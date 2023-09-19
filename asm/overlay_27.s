@@ -724,7 +724,7 @@ _0238AAE0:
 	ldrne r0, _0238B920 ; =ov27_0238CE84
 	movne r1, #3
 	ldrne r0, [r0]
-	ldr r3, _0238B92C ; =ov27_0238C9B4
+	ldr r3, _0238B92C ; =DISCARD_ITEMS_MAIN_MENU
 	strneb r1, [r0, #0x89]
 	mov r4, #4
 	ldr r1, _0238B930 ; =0x00000211
@@ -895,7 +895,7 @@ _0238AD8C:
 	mov r3, #0x73
 	strb r2, [r1, #0x80]
 	ldr r1, [r0]
-	ldr r2, _0238B960 ; =ov27_0238C950
+	ldr r2, _0238B960 ; =OVERLAY27_UNKNOWN_STRUCT__NA_238C950
 	str r3, [r1, #0x94]
 	ldr r1, [r0]
 	add r0, r1, #0x124
@@ -1043,10 +1043,10 @@ _0238AF94:
 	ldr r0, _0238B920 ; =ov27_0238CE84
 	mov r4, #3
 	ldr r1, [r0]
-	ldr r3, _0238B984 ; =ov27_0238C994
+	ldr r3, _0238B984 ; =DISCARD_ITEMS_SUBMENU_2
 	strb r2, [r1, #0x89]
 	ldr r1, [r0]
-	ldr r0, _0238B988 ; =ov27_0238CA4C
+	ldr r0, _0238B988 ; =DISCARD_D_BOX_LAYOUT_5
 	strb r2, [r1, #0x8a]
 	add r2, sp, #0xa4
 	add r1, r4, #0x210
@@ -1059,11 +1059,11 @@ _0238AF94:
 _0238B014:
 	ldr r0, _0238B98C ; =ov27_0238CC0C
 	bl DebugPrint0
-	ldr r0, _0238B990 ; =ov27_0238C94C
+	ldr r0, _0238B990 ; =OVERLAY27_UNKNOWN_VALUE__NA_238C94C
 	mov r4, #3
 	str r0, [sp, #0x19c]
-	ldr r0, _0238B988 ; =ov27_0238CA4C
-	ldr r3, _0238B984 ; =ov27_0238C994
+	ldr r0, _0238B988 ; =DISCARD_D_BOX_LAYOUT_5
+	ldr r3, _0238B984 ; =DISCARD_ITEMS_SUBMENU_2
 	add r2, sp, #0x13c
 	add r1, r4, #0x210
 	str r4, [sp]
@@ -1111,7 +1111,7 @@ _0238B050:
 	ldr r0, _0238B920 ; =ov27_0238CE84
 	add r1, sp, #0x1d4
 	ldr r3, [r0]
-	ldr r0, _0238B9A4 ; =ov27_0238CA6C
+	ldr r0, _0238B9A4 ; =DISCARD_D_BOX_LAYOUT_7
 	add r2, r3, #0xe4
 	str r2, [sp, #0x20c]
 	str r1, [sp]
@@ -1142,7 +1142,7 @@ _0238B134:
 	mov r3, #0x27
 	str r2, [r1]
 	ldr r1, [r0]
-	ldr r2, _0238B960 ; =ov27_0238C950
+	ldr r2, _0238B960 ; =OVERLAY27_UNKNOWN_STRUCT__NA_238C950
 	str r3, [r1, #4]
 	ldr r1, [r0]
 	add r0, r1, #0x124
@@ -1174,7 +1174,7 @@ _0238B1B0:
 	mov r3, #0x26
 	str r2, [r1]
 	ldr r1, [r0]
-	ldr r2, _0238B960 ; =ov27_0238C950
+	ldr r2, _0238B960 ; =OVERLAY27_UNKNOWN_STRUCT__NA_238C950
 	str r3, [r1, #4]
 	ldr r1, [r0]
 	add r0, r1, #0x124
@@ -1198,9 +1198,9 @@ _0238B22C:
 	ldr r0, _0238B9BC ; =ov27_0238CC94
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B9C0 ; =ov27_0238CA5C
+	ldr r0, _0238B9C0 ; =DISCARD_D_BOX_LAYOUT_6
 	ldr r1, _0238B9C4 ; =0x00300013
-	ldr r3, _0238B9C8 ; =ov27_0238C95C
+	ldr r3, _0238B9C8 ; =DISCARD_ITEMS_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -1212,9 +1212,9 @@ _0238B260:
 	ldr r0, _0238B9CC ; =ov27_0238CCAC
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B9C0 ; =ov27_0238CA5C
+	ldr r0, _0238B9C0 ; =DISCARD_D_BOX_LAYOUT_6
 	ldr r1, _0238B9C4 ; =0x00300013
-	ldr r3, _0238B9C8 ; =ov27_0238C95C
+	ldr r3, _0238B9C8 ; =DISCARD_ITEMS_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -1250,7 +1250,7 @@ _0238B2E8:
 	ldr r0, _0238B920 ; =ov27_0238CE84
 	mov r3, #1
 	ldr r1, [r0]
-	ldr r2, _0238B960 ; =ov27_0238C950
+	ldr r2, _0238B960 ; =OVERLAY27_UNKNOWN_STRUCT__NA_238C950
 	strb r3, [r1, #0x80]
 	ldr r1, [r0]
 	add r0, r1, #0x124
@@ -1392,8 +1392,8 @@ _0238B508:
 	ldr r0, _0238B9F0 ; =ov27_0238CD5C
 	bl DebugPrint0
 	mov ip, #3
-	ldr r0, _0238B988 ; =ov27_0238CA4C
-	ldr r3, _0238B9F4 ; =ov27_0238C974
+	ldr r0, _0238B988 ; =DISCARD_D_BOX_LAYOUT_5
+	ldr r3, _0238B9F4 ; =DISCARD_ITEMS_SUBMENU_1
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
@@ -1405,11 +1405,11 @@ _0238B508:
 _0238B53C:
 	ldr r0, _0238B9F0 ; =ov27_0238CD5C
 	bl DebugPrint0
-	ldr r0, _0238B9F8 ; =ov27_0238C948
+	ldr r0, _0238B9F8 ; =OVERLAY27_UNKNOWN_VALUE__NA_238C948
 	mov ip, #3
 	str r0, [sp, #0x284]
-	ldr r0, _0238B988 ; =ov27_0238CA4C
-	ldr r3, _0238B9F4 ; =ov27_0238C974
+	ldr r0, _0238B988 ; =DISCARD_D_BOX_LAYOUT_5
+	ldr r3, _0238B9F4 ; =DISCARD_ITEMS_SUBMENU_1
 	add r2, sp, #0x224
 	add r1, ip, #0x210
 	str ip, [sp]
@@ -1444,7 +1444,7 @@ _0238B578:
 	ldr r0, _0238B920 ; =ov27_0238CE84
 	add r1, sp, #0x2bc
 	ldr r3, [r0]
-	ldr r0, _0238B9A4 ; =ov27_0238CA6C
+	ldr r0, _0238B9A4 ; =DISCARD_D_BOX_LAYOUT_7
 	add r2, r3, #0xe4
 	str r2, [sp, #0x2f4]
 	str r1, [sp]
@@ -1469,7 +1469,7 @@ _0238B628:
 	ldr r0, _0238B920 ; =ov27_0238CE84
 	mov r3, #0
 	ldr r1, [r0]
-	ldr r2, _0238B960 ; =ov27_0238C950
+	ldr r2, _0238B960 ; =OVERLAY27_UNKNOWN_STRUCT__NA_238C950
 	strb r3, [r1, #0x80]
 	ldr r1, [r0]
 	add r0, r1, #0x124
@@ -1500,9 +1500,9 @@ _0238B6A8:
 	ldr r0, _0238BA04 ; =ov27_0238CDAC
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B9C0 ; =ov27_0238CA5C
+	ldr r0, _0238B9C0 ; =DISCARD_D_BOX_LAYOUT_6
 	ldr r1, _0238B9C4 ; =0x00300013
-	ldr r3, _0238B9C8 ; =ov27_0238C95C
+	ldr r3, _0238B9C8 ; =DISCARD_ITEMS_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -1522,7 +1522,7 @@ _0238B6DC:
 	mov r3, #0x24
 	str r2, [r1]
 	ldr r1, [r0]
-	ldr r2, _0238B960 ; =ov27_0238C950
+	ldr r2, _0238B960 ; =OVERLAY27_UNKNOWN_STRUCT__NA_238C950
 	str r3, [r1, #4]
 	ldr r1, [r0]
 	add r0, r1, #0x124
@@ -1546,9 +1546,9 @@ _0238B758:
 	ldr r0, _0238BA10 ; =ov27_0238CDE0
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B9C0 ; =ov27_0238CA5C
+	ldr r0, _0238B9C0 ; =DISCARD_D_BOX_LAYOUT_6
 	ldr r1, _0238B9C4 ; =0x00300013
-	ldr r3, _0238B9C8 ; =ov27_0238C95C
+	ldr r3, _0238B9C8 ; =DISCARD_ITEMS_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -1574,7 +1574,7 @@ _0238B78C:
 	ldr r0, _0238B920 ; =ov27_0238CE84
 	mov r3, #1
 	ldr r1, [r0]
-	ldr r2, _0238B960 ; =ov27_0238C950
+	ldr r2, _0238B960 ; =OVERLAY27_UNKNOWN_STRUCT__NA_238C950
 	strb r3, [r1, #0x80]
 	ldr r1, [r0]
 	add r0, r1, #0x124
@@ -1651,9 +1651,9 @@ _0238B8EC:
 	ldr r0, _0238BA24 ; =ov27_0238CE44
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B9C0 ; =ov27_0238CA5C
+	ldr r0, _0238B9C0 ; =DISCARD_D_BOX_LAYOUT_6
 	ldr r1, _0238B9C4 ; =0x00300013
-	ldr r3, _0238B9C8 ; =ov27_0238C95C
+	ldr r3, _0238B9C8 ; =DISCARD_ITEMS_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -1665,7 +1665,7 @@ _0238B8EC:
 _0238B920: .word ov27_0238CE84
 _0238B924: .word 0x000004BE
 _0238B928: .word ov27_0238CA8C
-_0238B92C: .word ov27_0238C9B4
+_0238B92C: .word DISCARD_ITEMS_MAIN_MENU
 _0238B930: .word 0x00000211
 _0238B934: .word ov27_0238CAA4
 _0238B938: .word ov27_0238CAB8
@@ -1678,7 +1678,7 @@ _0238B950: .word ov27_0238CB14
 _0238B954: .word 0x000004D7
 _0238B958: .word ov27_0238CB30
 _0238B95C: .word ov27_0238CB4C
-_0238B960: .word ov27_0238C950
+_0238B960: .word OVERLAY27_UNKNOWN_STRUCT__NA_238C950
 _0238B964: .word 0x000004CA
 _0238B968: .word ov27_0238CB64
 _0238B96C: .word ov27_0238CB7C
@@ -1687,24 +1687,24 @@ _0238B974: .word ov27_0238CBA4
 _0238B978: .word ov27_0238CBBC
 _0238B97C: .word ov27_0238CBD4
 _0238B980: .word ov27_0238CBF0
-_0238B984: .word ov27_0238C994
-_0238B988: .word ov27_0238CA4C
+_0238B984: .word DISCARD_ITEMS_SUBMENU_2
+_0238B988: .word DISCARD_D_BOX_LAYOUT_5
 _0238B98C: .word ov27_0238CC0C
-_0238B990: .word ov27_0238C94C
+_0238B990: .word OVERLAY27_UNKNOWN_VALUE__NA_238C94C
 _0238B994: .word ov27_0238CC28
 _0238B998: .word ov27_0238CC40
 _0238B99C: .word ov27_0238CC50
 _0238B9A0: .word 0x0000C402
-_0238B9A4: .word ov27_0238CA6C
+_0238B9A4: .word DISCARD_D_BOX_LAYOUT_7
 _0238B9A8: .word 0x00001013
 _0238B9AC: .word 0x00000315
 _0238B9B0: .word ov27_0238CC5C
 _0238B9B4: .word 0x000004C9
 _0238B9B8: .word ov27_0238CC78
 _0238B9BC: .word ov27_0238CC94
-_0238B9C0: .word ov27_0238CA5C
+_0238B9C0: .word DISCARD_D_BOX_LAYOUT_6
 _0238B9C4: .word 0x00300013
-_0238B9C8: .word ov27_0238C95C
+_0238B9C8: .word DISCARD_ITEMS_MENU_CONFIRM
 _0238B9CC: .word ov27_0238CCAC
 _0238B9D0: .word ov27_0238CCC0
 _0238B9D4: .word ov27_0238CCDC
@@ -1715,8 +1715,8 @@ _0238B9E4: .word 0x000004D6
 _0238B9E8: .word ov27_0238CD28
 _0238B9EC: .word ov27_0238CD40
 _0238B9F0: .word ov27_0238CD5C
-_0238B9F4: .word ov27_0238C974
-_0238B9F8: .word ov27_0238C948
+_0238B9F4: .word DISCARD_ITEMS_SUBMENU_1
+_0238B9F8: .word OVERLAY27_UNKNOWN_VALUE__NA_238C948
 _0238B9FC: .word ov27_0238CD78
 _0238BA00: .word ov27_0238CD90
 _0238BA04: .word ov27_0238CDAC
@@ -2803,32 +2803,32 @@ _0238C944: .word ov27_0238CE84
 	arm_func_end ov27_0238C900
 	; 0x0238C948
 
-	.global ov27_0238C948
-ov27_0238C948:
+	.global OVERLAY27_UNKNOWN_VALUE__NA_238C948
+OVERLAY27_UNKNOWN_VALUE__NA_238C948:
 	.byte 0x00, 0x03, 0x00, 0x00
-	.global ov27_0238C94C
-ov27_0238C94C:
+	.global OVERLAY27_UNKNOWN_VALUE__NA_238C94C
+OVERLAY27_UNKNOWN_VALUE__NA_238C94C:
 	.byte 0x00, 0x03, 0x00, 0x00
-	.global ov27_0238C950
-ov27_0238C950:
+	.global OVERLAY27_UNKNOWN_STRUCT__NA_238C950
+OVERLAY27_UNKNOWN_STRUCT__NA_238C950:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
-	.global ov27_0238C95C
-ov27_0238C95C:
+	.global DISCARD_ITEMS_MENU_CONFIRM
+DISCARD_ITEMS_MENU_CONFIRM:
 	.byte 0xDA, 0x04, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xDB, 0x04, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov27_0238C974
-ov27_0238C974:
+	.global DISCARD_ITEMS_SUBMENU_1
+DISCARD_ITEMS_SUBMENU_1:
 	.byte 0xCF, 0x04, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0xD0, 0x04, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0xD1, 0x04, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov27_0238C994
-ov27_0238C994:
+	.global DISCARD_ITEMS_SUBMENU_2
+DISCARD_ITEMS_SUBMENU_2:
 	.byte 0xC5, 0x04, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0xC6, 0x04, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0xC7, 0x04, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov27_0238C9B4
-ov27_0238C9B4:
+	.global DISCARD_ITEMS_MAIN_MENU
+DISCARD_ITEMS_MAIN_MENU:
 	.byte 0xBF, 0x04, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0xC0, 0x04, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xC1, 0x04, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0xC2, 0x04, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -2840,16 +2840,16 @@ ov27_0238C9B4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x0F, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov27_0238CA4C
-ov27_0238CA4C:
+	.global DISCARD_D_BOX_LAYOUT_5
+DISCARD_D_BOX_LAYOUT_5:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov27_0238CA5C
-ov27_0238CA5C:
+	.global DISCARD_D_BOX_LAYOUT_6
+DISCARD_D_BOX_LAYOUT_6:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov27_0238CA6C
-ov27_0238CA6C:
+	.global DISCARD_D_BOX_LAYOUT_7
+DISCARD_D_BOX_LAYOUT_7:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00

@@ -141,13 +141,13 @@ _0238A2D4:
 	cmp r4, #0
 	beq _0238A300
 	ldr r1, _0238B148 ; =0x000045EE
-	ldr r2, _0238B14C ; =ov20_0238CFEC
+	ldr r2, _0238B14C ; =RECYCLE_MAIN_MENU_1
 	mov r0, sb
 	bl ov20_0238B39C
 	b _0238A310
 _0238A300:
 	ldr r1, _0238B150 ; =0x000045ED
-	ldr r2, _0238B14C ; =ov20_0238CFEC
+	ldr r2, _0238B14C ; =RECYCLE_MAIN_MENU_1
 	mov r0, sb
 	bl ov20_0238B39C
 _0238A310:
@@ -158,13 +158,13 @@ _0238A31C:
 	cmp r4, #0
 	beq _0238A338
 	ldr r1, _0238B148 ; =0x000045EE
-	ldr r2, _0238B14C ; =ov20_0238CFEC
+	ldr r2, _0238B14C ; =RECYCLE_MAIN_MENU_1
 	mov r0, sb
 	bl ov20_0238B39C
 	b _0238A348
 _0238A338:
 	ldr r1, _0238B150 ; =0x000045ED
-	ldr r2, _0238B14C ; =ov20_0238CFEC
+	ldr r2, _0238B14C ; =RECYCLE_MAIN_MENU_1
 	mov r0, sb
 	bl ov20_0238B39C
 _0238A348:
@@ -285,7 +285,7 @@ _0238A4EC:
 	ldrb r0, [sb, #0xb0]
 	cmp r0, #0
 	beq _0238A520
-	ldr r2, _0238B158 ; =ov20_0238CF84
+	ldr r2, _0238B158 ; =RECYCLE_MENU_CONFIRM_1
 	mov r0, sb
 	add r1, r6, #2
 	bl ov20_0238B39C
@@ -303,14 +303,14 @@ _0238A538:
 	ldr r0, [sb, #0xc]
 	cmp r0, #0
 	bne _0238A558
-	ldr r2, _0238B15C ; =ov20_0238CFCC
+	ldr r2, _0238B15C ; =RECYCLE_SUBMENU_2
 	mov r0, sb
 	mov r1, fp
 	bl ov20_0238B39C
 	b _0238A57C
 _0238A558:
 	ldrb r0, [sb, #0xb0]
-	ldr r2, _0238B15C ; =ov20_0238CFCC
+	ldr r2, _0238B15C ; =RECYCLE_SUBMENU_2
 	cmp r0, #0
 	addne r0, r6, #1
 	moveq r0, r6
@@ -448,7 +448,7 @@ _0238A730:
 	beq _0238A834
 	b _0238A83C
 _0238A73C:
-	ldr r0, _0238B160 ; =ov20_0238CF7C
+	ldr r0, _0238B160 ; =OVERLAY20_UNKNOWN_POINTER__NA_238CF7C
 	bl ov11_0230DB58
 	ldr r0, [sb, #0x14]
 	add r0, r0, #1
@@ -548,7 +548,7 @@ _0238A890:
 	add r0, sb, #0x30
 	bl InitPreprocessorArgs
 	ldr r1, [sb, #0x84]
-	ldr r2, _0238B164 ; =ov20_0238CF9C
+	ldr r2, _0238B164 ; =RECYCLE_MENU_CONFIRM_2
 	ldrsh r3, [r1]
 	mov r0, sb
 	add r1, r6, #0xa
@@ -712,7 +712,7 @@ _0238AAB4:
 	str r1, [sb, #0x40]
 	bl sub_02011E24
 	str r0, [sb, #0x58]
-	ldr r2, _0238B164 ; =ov20_0238CF9C
+	ldr r2, _0238B164 ; =RECYCLE_MENU_CONFIRM_2
 	mov r0, sb
 	add r1, r6, #0xf
 	bl ov20_0238B39C
@@ -966,7 +966,7 @@ _0238AE44:
 	strne r0, [sb, #0xc]
 	b _0238B05C
 _0238AE58:
-	ldr r2, _0238B168 ; =ov20_0238CFB4
+	ldr r2, _0238B168 ; =RECYCLE_SUBMENU_1
 	mov r0, sb
 	add r1, r6, #0x12
 	bl ov20_0238B39C
@@ -1051,7 +1051,7 @@ _0238AF80:
 	bl sub_02046C78
 	cmp r0, #0
 	beq _0238B05C
-	ldr r2, _0238B168 ; =ov20_0238CFB4
+	ldr r2, _0238B168 ; =RECYCLE_SUBMENU_1
 	mov r0, sb
 	add r1, r6, #0x1c
 	bl ov20_0238B39C
@@ -1070,7 +1070,7 @@ _0238AFAC:
 	strne r0, [sb, #0xc]
 	b _0238B05C
 _0238AFD0:
-	ldr r2, _0238B168 ; =ov20_0238CFB4
+	ldr r2, _0238B168 ; =RECYCLE_SUBMENU_1
 	mov r0, sb
 	add r1, r6, #0x1d
 	bl ov20_0238B39C
@@ -1181,14 +1181,14 @@ _0238B130:
 	.align 2, 0
 _0238B144: .word ov20_0238D120
 _0238B148: .word 0x000045EE
-_0238B14C: .word ov20_0238CFEC
+_0238B14C: .word RECYCLE_MAIN_MENU_1
 _0238B150: .word 0x000045ED
 _0238B154: .word 0x000045F4
-_0238B158: .word ov20_0238CF84
-_0238B15C: .word ov20_0238CFCC
-_0238B160: .word ov20_0238CF7C
-_0238B164: .word ov20_0238CF9C
-_0238B168: .word ov20_0238CFB4
+_0238B158: .word RECYCLE_MENU_CONFIRM_1
+_0238B15C: .word RECYCLE_SUBMENU_2
+_0238B160: .word OVERLAY20_UNKNOWN_POINTER__NA_238CF7C
+_0238B164: .word RECYCLE_MENU_CONFIRM_2
+_0238B168: .word RECYCLE_SUBMENU_1
 _0238B16C: .word 0x00004613
 _0238B170: .word 0x00004614
 _0238B174:
@@ -1618,7 +1618,7 @@ _0238B6E0:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238B70C
-	ldr r0, _0238B7E8 ; =ov20_0238D038
+	ldr r0, _0238B7E8 ; =RECYCLE_D_BOX_LAYOUT_2
 	ldr r1, _0238B7EC ; =ov20_0238B8CC
 	mov r2, r4
 	bl sub_0202F8DC
@@ -1632,7 +1632,7 @@ _0238B70C:
 	ldrsb r1, [r1, #0x15]
 	cmp r1, r0
 	bne _0238B740
-	ldr r0, _0238B7F0 ; =ov20_0238D028
+	ldr r0, _0238B7F0 ; =RECYCLE_D_BOX_LAYOUT_1
 	ldr r1, _0238B7F4 ; =ov20_0238BA40
 	mov r2, r4
 	bl sub_0202F8DC
@@ -1646,7 +1646,7 @@ _0238B740:
 	ldrsb r1, [r1, #0x16]
 	cmp r1, r0
 	bne _0238B774
-	ldr r0, _0238B7F8 ; =ov20_0238D048
+	ldr r0, _0238B7F8 ; =RECYCLE_D_BOX_LAYOUT_3
 	ldr r1, _0238B7FC ; =ov20_0238BAB4
 	mov r2, r4
 	bl sub_0202F8DC
@@ -1694,11 +1694,11 @@ _0238B7DC:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238B7E4: .word ov20_0238D124
-_0238B7E8: .word ov20_0238D038
+_0238B7E8: .word RECYCLE_D_BOX_LAYOUT_2
 _0238B7EC: .word ov20_0238B8CC
-_0238B7F0: .word ov20_0238D028
+_0238B7F0: .word RECYCLE_D_BOX_LAYOUT_1
 _0238B7F4: .word ov20_0238BA40
-_0238B7F8: .word ov20_0238D048
+_0238B7F8: .word RECYCLE_D_BOX_LAYOUT_3
 _0238B7FC: .word ov20_0238BAB4
 	arm_func_end ov20_0238B65C
 
@@ -2131,7 +2131,7 @@ _0238BDE0:
 	mov r2, #8
 	str r0, [r4, #0x1c]
 	ldr r4, [r1]
-	ldr r0, _0238C1D4 ; =ov20_0238D068
+	ldr r0, _0238C1D4 ; =RECYCLE_D_BOX_LAYOUT_5
 	str r2, [sp]
 	ldr r3, [r4, #0x33c]
 	ldr r1, _0238C1D8 ; =0x00441C33
@@ -2243,9 +2243,9 @@ _0238BF68:
 	str r1, [r0]
 	b _0238C1C0
 _0238BFA8:
-	ldr r0, _0238C1DC ; =ov20_0238D078
+	ldr r0, _0238C1DC ; =RECYCLE_D_BOX_LAYOUT_6
 	mov ip, #3
-	ldr r3, _0238C1E0 ; =ov20_0238D088
+	ldr r3, _0238C1E0 ; =RECYCLE_MAIN_MENU_2
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
@@ -2323,7 +2323,7 @@ _0238C07C:
 	add r3, sp, #0xc
 	str r3, [sp]
 	stmib sp, {r1, r3}
-	ldr r0, _0238C1E4 ; =ov20_0238D058
+	ldr r0, _0238C1E4 ; =RECYCLE_D_BOX_LAYOUT_4
 	ldr r1, _0238C1E8 ; =0x00001013
 	ldr r3, _0238C1EC ; =0x000008E4
 	bl sub_0202E3CC
@@ -2393,11 +2393,11 @@ _0238C1C8:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _0238C1D0: .word ov20_0238D128
-_0238C1D4: .word ov20_0238D068
+_0238C1D4: .word RECYCLE_D_BOX_LAYOUT_5
 _0238C1D8: .word 0x00441C33
-_0238C1DC: .word ov20_0238D078
-_0238C1E0: .word ov20_0238D088
-_0238C1E4: .word ov20_0238D058
+_0238C1DC: .word RECYCLE_D_BOX_LAYOUT_6
+_0238C1E0: .word RECYCLE_MAIN_MENU_2
+_0238C1E4: .word RECYCLE_D_BOX_LAYOUT_4
 _0238C1E8: .word 0x00001013
 _0238C1EC: .word 0x000008E4
 	arm_func_end ov20_0238BD90
@@ -2677,7 +2677,7 @@ _0238C560:
 	ldr r0, [r4, #0x188]
 	mov r2, #8
 	str r0, [sp, #4]
-	ldr r0, _0238C9D0 ; =ov20_0238D0E8
+	ldr r0, _0238C9D0 ; =RECYCLE_D_BOX_LAYOUT1_1
 	ldr r1, _0238C9D4 ; =0x00441E37
 	ldr r3, _0238C9D8 ; =ov20_0238CC14
 	str r2, [sp, #8]
@@ -2698,7 +2698,7 @@ _0238C5CC:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238C5F0
-	ldr r0, _0238C9E4 ; =ov20_0238D0B8
+	ldr r0, _0238C9E4 ; =RECYCLE_D_BOX_LAYOUT_8
 	ldr r1, _0238C9E8 ; =ov20_0238CE9C
 	mov r2, r4
 	bl sub_0202F8DC
@@ -2708,7 +2708,7 @@ _0238C5F0:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238C614
-	ldr r0, _0238C9EC ; =ov20_0238D0A8
+	ldr r0, _0238C9EC ; =RECYCLE_D_BOX_LAYOUT_7
 	ldr r1, _0238C9F0 ; =ov20_0238CF20
 	mov r2, r4
 	bl sub_0202F8DC
@@ -2826,9 +2826,9 @@ _0238C798:
 	str r1, [r0]
 	b _0238C9BC
 _0238C7B0:
-	ldr r0, _0238C9F4 ; =ov20_0238D0D8
+	ldr r0, _0238C9F4 ; =RECYCLE_D_BOX_LAYOUT1_0
 	mov r5, #3
-	ldr r3, _0238C9F8 ; =ov20_0238D0F8
+	ldr r3, _0238C9F8 ; =RECYCLE_MAIN_MENU_3
 	mov r1, #0x13
 	mov r2, #0
 	str r5, [sp]
@@ -2911,7 +2911,7 @@ _0238C860:
 	str r4, [sp]
 	mov r0, r0, lsr #0x10
 	str r0, [sp, #4]
-	ldr r0, _0238CA00 ; =ov20_0238D0C8
+	ldr r0, _0238CA00 ; =RECYCLE_D_BOX_LAYOUT_9
 	ldr r1, _0238CA04 ; =0x00001013
 	ldr r3, _0238CA08 ; =0x000008E4
 	str r4, [sp, #8]
@@ -2973,19 +2973,19 @@ _0238C9C0:
 	.align 2, 0
 _0238C9C8: .word ov20_0238D12C
 _0238C9CC: .word ov20_0238CD20
-_0238C9D0: .word ov20_0238D0E8
+_0238C9D0: .word RECYCLE_D_BOX_LAYOUT1_1
 _0238C9D4: .word 0x00441E37
 _0238C9D8: .word ov20_0238CC14
 _0238C9DC: .word ov20_0238CE3C
 _0238C9E0: .word ov20_0238CCC0
-_0238C9E4: .word ov20_0238D0B8
+_0238C9E4: .word RECYCLE_D_BOX_LAYOUT_8
 _0238C9E8: .word ov20_0238CE9C
-_0238C9EC: .word ov20_0238D0A8
+_0238C9EC: .word RECYCLE_D_BOX_LAYOUT_7
 _0238C9F0: .word ov20_0238CF20
-_0238C9F4: .word ov20_0238D0D8
-_0238C9F8: .word ov20_0238D0F8
+_0238C9F4: .word RECYCLE_D_BOX_LAYOUT1_0
+_0238C9F8: .word RECYCLE_MAIN_MENU_3
 _0238C9FC: .word 0x0000FFFF
-_0238CA00: .word ov20_0238D0C8
+_0238CA00: .word RECYCLE_D_BOX_LAYOUT_9
 _0238CA04: .word 0x00001013
 _0238CA08: .word 0x000008E4
 	arm_func_end ov20_0238C50C
@@ -3436,86 +3436,86 @@ _0238CF78: .word 0x00004628
 	arm_func_end ov20_0238CF20
 	; 0x0238CF7C
 
-	.global ov20_0238CF7C
-ov20_0238CF7C:
-	.word ov20_0238D014
+	.global OVERLAY20_UNKNOWN_POINTER__NA_238CF7C
+OVERLAY20_UNKNOWN_POINTER__NA_238CF7C:
+	.word OVERLAY20_UNKNOWN_TABLE__NA_238D014
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238CF84
-ov20_0238CF84:
+	.global RECYCLE_MENU_CONFIRM_1
+RECYCLE_MENU_CONFIRM_1:
 	.byte 0x15, 0x46, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
 	.byte 0x16, 0x46, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov20_0238CF9C
-ov20_0238CF9C:
+	.global RECYCLE_MENU_CONFIRM_2
+RECYCLE_MENU_CONFIRM_2:
 	.byte 0x15, 0x46, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x16, 0x46, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov20_0238CFB4
-ov20_0238CFB4:
+	.global RECYCLE_SUBMENU_1
+RECYCLE_SUBMENU_1:
 	.byte 0x07, 0x46, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
 	.byte 0x08, 0x46, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov20_0238CFCC
-ov20_0238CFCC:
+	.global RECYCLE_SUBMENU_2
+RECYCLE_SUBMENU_2:
 	.byte 0xF7, 0x45, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xF9, 0x45, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
 	.byte 0xFA, 0x45, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov20_0238CFEC
-ov20_0238CFEC:
+	.global RECYCLE_MAIN_MENU_1
+RECYCLE_MAIN_MENU_1:
 	.byte 0xEF, 0x45, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x45, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0xF1, 0x45, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xF2, 0x45, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov20_0238D014
-ov20_0238D014:
+	.global OVERLAY20_UNKNOWN_TABLE__NA_238D014
+OVERLAY20_UNKNOWN_TABLE__NA_238D014:
 	.byte 0x42, 0x41, 0x43, 0x4B, 0x2F, 0x73, 0x31, 0x34
 	.byte 0x70, 0x30, 0x32, 0x61, 0x2E, 0x62, 0x67, 0x70, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D028
-ov20_0238D028:
+	.global RECYCLE_D_BOX_LAYOUT_1
+RECYCLE_D_BOX_LAYOUT_1:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x01, 0x0C, 0x02, 0x01, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D038
-ov20_0238D038:
+	.global RECYCLE_D_BOX_LAYOUT_2
+RECYCLE_D_BOX_LAYOUT_2:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x05, 0x1C, 0x09, 0x01, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D048
-ov20_0238D048:
+	.global RECYCLE_D_BOX_LAYOUT_3
+RECYCLE_D_BOX_LAYOUT_3:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x10, 0x1C, 0x07, 0x01, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D058
-ov20_0238D058:
+	.global RECYCLE_D_BOX_LAYOUT_4
+RECYCLE_D_BOX_LAYOUT_4:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D068
-ov20_0238D068:
+	.global RECYCLE_D_BOX_LAYOUT_5
+RECYCLE_D_BOX_LAYOUT_5:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x12, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D078
-ov20_0238D078:
+	.global RECYCLE_D_BOX_LAYOUT_6
+RECYCLE_D_BOX_LAYOUT_6:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x02, 0x08, 0x05, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D088
-ov20_0238D088:
+	.global RECYCLE_MAIN_MENU_2
+RECYCLE_MAIN_MENU_2:
 	.byte 0x24, 0x46, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x25, 0x46, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x26, 0x46, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.global ov20_0238D0A8
-ov20_0238D0A8:
+	.global RECYCLE_D_BOX_LAYOUT_7
+RECYCLE_D_BOX_LAYOUT_7:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x14, 0x12, 0x02, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D0B8
-ov20_0238D0B8:
+	.global RECYCLE_D_BOX_LAYOUT_8
+RECYCLE_D_BOX_LAYOUT_8:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x11, 0x08, 0x02, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D0C8
-ov20_0238D0C8:
+	.global RECYCLE_D_BOX_LAYOUT_9
+RECYCLE_D_BOX_LAYOUT_9:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D0D8
-ov20_0238D0D8:
+	.global RECYCLE_D_BOX_LAYOUT1_0
+RECYCLE_D_BOX_LAYOUT1_0:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x02, 0x08, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D0E8
-ov20_0238D0E8:
+	.global RECYCLE_D_BOX_LAYOUT1_1
+RECYCLE_D_BOX_LAYOUT1_1:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x12, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D0F8
-ov20_0238D0F8:
+	.global RECYCLE_MAIN_MENU_3
+RECYCLE_MAIN_MENU_3:
 	.byte 0x25, 0x46, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x26, 0x46, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00

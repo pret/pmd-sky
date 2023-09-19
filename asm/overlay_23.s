@@ -147,8 +147,8 @@ _0238A34C:
 	cmp r0, #1
 	bne _0238A38C
 	mov r4, #3
-	ldr r0, _0238B0E8 ; =ov23_0238D438
-	ldr r3, _0238B0EC ; =ov23_0238D334
+	ldr r0, _0238B0E8 ; =STORAGE_D_BOX_LAYOUT_8
+	ldr r3, _0238B0EC ; =STORAGE_MAIN_MENU_2
 	add r2, sp, #0xc
 	add r1, r4, #0x210
 	str r4, [sp]
@@ -158,10 +158,10 @@ _0238A34C:
 	strb r0, [r1, #0x99]
 	b _0238B230
 _0238A38C:
-	ldr r0, _0238B0F0 ; =ov23_0238D3F8
+	ldr r0, _0238B0F0 ; =STORAGE_D_BOX_LAYOUT_4
 	mov r4, #4
 	ldr r1, _0238B0F4 ; =0x00300013
-	ldr r3, _0238B0F8 ; =ov23_0238D374
+	ldr r3, _0238B0F8 ; =STORAGE_MAIN_MENU_4
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -349,7 +349,7 @@ _0238A634:
 	mov r3, #0x73
 	strb r2, [r1, #0x88]
 	ldr r1, [r0]
-	ldr r2, _0238B130 ; =ov23_0238D2F0
+	ldr r2, _0238B130 ; =OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 	str r3, [r1, #0x9c]
 	ldr r1, [r0]
 	add r0, r1, #0x12c
@@ -513,9 +513,9 @@ _0238A8B8:
 	mov r4, #3
 	strb r2, [r1, #0x91]
 	ldr r1, [r0]
-	ldr r0, _0238B150 ; =ov23_0238D408
+	ldr r0, _0238B150 ; =STORAGE_D_BOX_LAYOUT_5
 	strb r2, [r1, #0x92]
-	ldr r3, _0238B154 ; =ov23_0238D354
+	ldr r3, _0238B154 ; =STORAGE_MAIN_MENU_3
 	add r2, sp, #0xa4
 	add r1, r4, #0x210
 	str r4, [sp]
@@ -527,11 +527,11 @@ _0238A8B8:
 _0238A8FC:
 	ldr r0, _0238B158 ; =ov23_0238D64C
 	bl DebugPrint0
-	ldr r0, _0238B15C ; =ov23_0238D2EC
+	ldr r0, _0238B15C ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
 	mov r4, #3
 	str r0, [sp, #0x19c]
-	ldr r0, _0238B150 ; =ov23_0238D408
-	ldr r3, _0238B154 ; =ov23_0238D354
+	ldr r0, _0238B150 ; =STORAGE_D_BOX_LAYOUT_5
+	ldr r3, _0238B154 ; =STORAGE_MAIN_MENU_3
 	add r2, sp, #0x13c
 	add r1, r4, #0x210
 	str r4, [sp]
@@ -579,7 +579,7 @@ _0238A938:
 	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	add r1, sp, #0x1d4
 	ldr r3, [r0]
-	ldr r0, _0238B170 ; =ov23_0238D428
+	ldr r0, _0238B170 ; =STORAGE_D_BOX_LAYOUT_7
 	add r2, r3, #0xec
 	str r2, [sp, #0x20c]
 	str r1, [sp]
@@ -623,7 +623,7 @@ _0238AA54:
 	mov r2, #0x27
 	str r2, [r1, #0xc]
 	ldr r1, [r0]
-	ldr r2, _0238B130 ; =ov23_0238D2F0
+	ldr r2, _0238B130 ; =OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
@@ -666,7 +666,7 @@ _0238AAF8:
 	mov r2, #0x28
 	str r2, [r1, #0xc]
 	ldr r1, [r0]
-	ldr r2, _0238B130 ; =ov23_0238D2F0
+	ldr r2, _0238B130 ; =OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
@@ -688,9 +688,9 @@ _0238AB64:
 	ldr r0, _0238B188 ; =ov23_0238D6F0
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B18C ; =ov23_0238D418
+	ldr r0, _0238B18C ; =STORAGE_D_BOX_LAYOUT_6
 	ldr r1, _0238B0F4 ; =0x00300013
-	ldr r3, _0238B190 ; =ov23_0238D2FC
+	ldr r3, _0238B190 ; =STORAGE_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -702,9 +702,9 @@ _0238AB98:
 	ldr r0, _0238B194 ; =ov23_0238D708
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B18C ; =ov23_0238D418
+	ldr r0, _0238B18C ; =STORAGE_D_BOX_LAYOUT_6
 	ldr r1, _0238B0F4 ; =0x00300013
-	ldr r3, _0238B190 ; =ov23_0238D2FC
+	ldr r3, _0238B190 ; =STORAGE_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -853,8 +853,8 @@ _0238ADCC:
 	ldr r0, _0238B1AC ; =ov23_0238D7BC
 	bl DebugPrint0
 	mov ip, #3
-	ldr r0, _0238B150 ; =ov23_0238D408
-	ldr r3, _0238B1B0 ; =ov23_0238D314
+	ldr r0, _0238B150 ; =STORAGE_D_BOX_LAYOUT_5
+	ldr r3, _0238B1B0 ; =STORAGE_MAIN_MENU_1
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
@@ -866,11 +866,11 @@ _0238ADCC:
 _0238AE00:
 	ldr r0, _0238B1AC ; =ov23_0238D7BC
 	bl DebugPrint0
-	ldr r0, _0238B1B4 ; =ov23_0238D2E8
+	ldr r0, _0238B1B4 ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
 	mov ip, #3
 	str r0, [sp, #0x284]
-	ldr r0, _0238B150 ; =ov23_0238D408
-	ldr r3, _0238B1B0 ; =ov23_0238D314
+	ldr r0, _0238B150 ; =STORAGE_D_BOX_LAYOUT_5
+	ldr r3, _0238B1B0 ; =STORAGE_MAIN_MENU_1
 	add r2, sp, #0x224
 	add r1, ip, #0x210
 	str ip, [sp]
@@ -905,7 +905,7 @@ _0238AE3C:
 	ldr r0, _0238B0DC ; =ov23_0238D8A0
 	add r1, sp, #0x2bc
 	ldr r3, [r0]
-	ldr r0, _0238B170 ; =ov23_0238D428
+	ldr r0, _0238B170 ; =STORAGE_D_BOX_LAYOUT_7
 	add r2, r3, #0xec
 	str r2, [sp, #0x2f4]
 	str r1, [sp]
@@ -943,7 +943,7 @@ _0238AF24:
 	mov r1, #0
 	strb r1, [r2, #0x88]
 	ldr r1, [r0]
-	ldr r2, _0238B130 ; =ov23_0238D2F0
+	ldr r2, _0238B130 ; =OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
@@ -972,9 +972,9 @@ _0238AF94:
 	ldr r0, _0238B1C4 ; =ov23_0238D81C
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B18C ; =ov23_0238D418
+	ldr r0, _0238B18C ; =STORAGE_D_BOX_LAYOUT_6
 	ldr r1, _0238B0F4 ; =0x00300013
-	ldr r3, _0238B190 ; =ov23_0238D2FC
+	ldr r3, _0238B190 ; =STORAGE_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -1007,7 +1007,7 @@ _0238B000:
 	mov r2, #0x26
 	str r2, [r1, #0xc]
 	ldr r1, [r0]
-	ldr r2, _0238B130 ; =ov23_0238D2F0
+	ldr r2, _0238B130 ; =OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
@@ -1029,9 +1029,9 @@ _0238B06C:
 	ldr r0, _0238B1CC ; =ov23_0238D854
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B18C ; =ov23_0238D418
+	ldr r0, _0238B18C ; =STORAGE_D_BOX_LAYOUT_6
 	ldr r1, _0238B0F4 ; =0x00300013
-	ldr r3, _0238B190 ; =ov23_0238D2FC
+	ldr r3, _0238B190 ; =STORAGE_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -1060,11 +1060,11 @@ _0238B0C8:
 _0238B0DC: .word ov23_0238D8A0
 _0238B0E0: .word 0x00003008
 _0238B0E4: .word ov23_0238D448
-_0238B0E8: .word ov23_0238D438
-_0238B0EC: .word ov23_0238D334
-_0238B0F0: .word ov23_0238D3F8
+_0238B0E8: .word STORAGE_D_BOX_LAYOUT_8
+_0238B0EC: .word STORAGE_MAIN_MENU_2
+_0238B0F0: .word STORAGE_D_BOX_LAYOUT_4
 _0238B0F4: .word 0x00300013
-_0238B0F8: .word ov23_0238D374
+_0238B0F8: .word STORAGE_MAIN_MENU_4
 _0238B0FC: .word ov23_0238D468
 _0238B100: .word ov23_0238D484
 _0238B104: .word 0x00003018
@@ -1078,7 +1078,7 @@ _0238B120: .word ov23_0238D51C
 _0238B124: .word 0x0000032A
 _0238B128: .word ov23_0238D540
 _0238B12C: .word ov23_0238D55C
-_0238B130: .word ov23_0238D2F0
+_0238B130: .word OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 _0238B134: .word ov23_0238D578
 _0238B138: .word ov23_0238D594
 _0238B13C: .word ov23_0238D5AC
@@ -1086,23 +1086,23 @@ _0238B140: .word ov23_0238D5CC
 _0238B144: .word ov23_0238D5E8
 _0238B148: .word ov23_0238D608
 _0238B14C: .word ov23_0238D628
-_0238B150: .word ov23_0238D408
-_0238B154: .word ov23_0238D354
+_0238B150: .word STORAGE_D_BOX_LAYOUT_5
+_0238B154: .word STORAGE_MAIN_MENU_3
 _0238B158: .word ov23_0238D64C
-_0238B15C: .word ov23_0238D2EC
+_0238B15C: .word OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
 _0238B160: .word ov23_0238D670
 _0238B164: .word ov23_0238D68C
 _0238B168: .word ov23_0238D69C
 _0238B16C: .word 0x0000C402
-_0238B170: .word ov23_0238D428
+_0238B170: .word STORAGE_D_BOX_LAYOUT_7
 _0238B174: .word 0x00001013
 _0238B178: .word 0x00000315
 _0238B17C: .word ov23_0238D6A8
 _0238B180: .word ov23_0238D6CC
 _0238B184: .word 0x0000031E
 _0238B188: .word ov23_0238D6F0
-_0238B18C: .word ov23_0238D418
-_0238B190: .word ov23_0238D2FC
+_0238B18C: .word STORAGE_D_BOX_LAYOUT_6
+_0238B190: .word STORAGE_MENU_CONFIRM
 _0238B194: .word ov23_0238D708
 _0238B198: .word ov23_0238D71C
 _0238B19C: .word ov23_0238D73C
@@ -1110,8 +1110,8 @@ _0238B1A0: .word ov23_0238D75C
 _0238B1A4: .word ov23_0238D77C
 _0238B1A8: .word ov23_0238D79C
 _0238B1AC: .word ov23_0238D7BC
-_0238B1B0: .word ov23_0238D314
-_0238B1B4: .word ov23_0238D2E8
+_0238B1B0: .word STORAGE_MAIN_MENU_1
+_0238B1B4: .word OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
 _0238B1B8: .word ov23_0238D7E0
 _0238B1BC: .word ov23_0238D7FC
 _0238B1C0: .word 0x00000322
@@ -1291,8 +1291,8 @@ _0238B43C:
 	cmp r0, #1
 	bne _0238B47C
 	mov r4, #3
-	ldr r0, _0238C1D8 ; =ov23_0238D438
-	ldr r3, _0238C1DC ; =ov23_0238D334
+	ldr r0, _0238C1D8 ; =STORAGE_D_BOX_LAYOUT_8
+	ldr r3, _0238C1DC ; =STORAGE_MAIN_MENU_2
 	add r2, sp, #0x274
 	add r1, r4, #0x210
 	str r4, [sp]
@@ -1302,10 +1302,10 @@ _0238B43C:
 	strb r0, [r1, #0x99]
 	b _0238C320
 _0238B47C:
-	ldr r0, _0238C1E0 ; =ov23_0238D3F8
+	ldr r0, _0238C1E0 ; =STORAGE_D_BOX_LAYOUT_4
 	mov r4, #4
 	ldr r1, _0238C1E4 ; =0x00300013
-	ldr r3, _0238C1E8 ; =ov23_0238D374
+	ldr r3, _0238C1E8 ; =STORAGE_MAIN_MENU_4
 	mov r2, #0
 	str r4, [sp]
 	bl CreateNormalMenu
@@ -1493,7 +1493,7 @@ _0238B724:
 	mov r3, #0x73
 	strb r2, [r1, #0x88]
 	ldr r1, [r0]
-	ldr r2, _0238C220 ; =ov23_0238D2F0
+	ldr r2, _0238C220 ; =OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 	str r3, [r1, #0x9c]
 	ldr r1, [r0]
 	add r0, r1, #0x12c
@@ -1657,9 +1657,9 @@ _0238B9A8:
 	mov r4, #3
 	strb r2, [r1, #0x91]
 	ldr r1, [r0]
-	ldr r0, _0238C240 ; =ov23_0238D408
+	ldr r0, _0238C240 ; =STORAGE_D_BOX_LAYOUT_5
 	strb r2, [r1, #0x92]
-	ldr r3, _0238C244 ; =ov23_0238D354
+	ldr r3, _0238C244 ; =STORAGE_MAIN_MENU_3
 	add r2, sp, #0x1dc
 	add r1, r4, #0x210
 	str r4, [sp]
@@ -1671,11 +1671,11 @@ _0238B9A8:
 _0238B9EC:
 	ldr r0, _0238C248 ; =ov23_0238D64C
 	bl DebugPrint0
-	ldr r0, _0238C24C ; =ov23_0238D2EC
+	ldr r0, _0238C24C ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
 	mov r4, #3
 	str r0, [sp, #0x1a4]
-	ldr r0, _0238C240 ; =ov23_0238D408
-	ldr r3, _0238C244 ; =ov23_0238D354
+	ldr r0, _0238C240 ; =STORAGE_D_BOX_LAYOUT_5
+	ldr r3, _0238C244 ; =STORAGE_MAIN_MENU_3
 	add r2, sp, #0x144
 	add r1, r4, #0x210
 	str r4, [sp]
@@ -1723,7 +1723,7 @@ _0238BA28:
 	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	add r1, sp, #0xf4
 	ldr r3, [r0]
-	ldr r0, _0238C260 ; =ov23_0238D428
+	ldr r0, _0238C260 ; =STORAGE_D_BOX_LAYOUT_7
 	add r2, r3, #0xec
 	str r2, [sp, #0x12c]
 	str r1, [sp]
@@ -1767,7 +1767,7 @@ _0238BB44:
 	mov r2, #0x27
 	str r2, [r1, #0xc]
 	ldr r1, [r0]
-	ldr r2, _0238C220 ; =ov23_0238D2F0
+	ldr r2, _0238C220 ; =OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
@@ -1810,7 +1810,7 @@ _0238BBE8:
 	mov r2, #0x28
 	str r2, [r1, #0xc]
 	ldr r1, [r0]
-	ldr r2, _0238C220 ; =ov23_0238D2F0
+	ldr r2, _0238C220 ; =OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
@@ -1832,9 +1832,9 @@ _0238BC54:
 	ldr r0, _0238C278 ; =ov23_0238D6F0
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238C27C ; =ov23_0238D418
+	ldr r0, _0238C27C ; =STORAGE_D_BOX_LAYOUT_6
 	ldr r1, _0238C1E4 ; =0x00300013
-	ldr r3, _0238C280 ; =ov23_0238D2FC
+	ldr r3, _0238C280 ; =STORAGE_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -1846,9 +1846,9 @@ _0238BC88:
 	ldr r0, _0238C284 ; =ov23_0238D708
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238C27C ; =ov23_0238D418
+	ldr r0, _0238C27C ; =STORAGE_D_BOX_LAYOUT_6
 	ldr r1, _0238C1E4 ; =0x00300013
-	ldr r3, _0238C280 ; =ov23_0238D2FC
+	ldr r3, _0238C280 ; =STORAGE_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -1997,8 +1997,8 @@ _0238BEBC:
 	ldr r0, _0238C29C ; =ov23_0238D7BC
 	bl DebugPrint0
 	mov ip, #3
-	ldr r0, _0238C240 ; =ov23_0238D408
-	ldr r3, _0238C2A0 ; =ov23_0238D314
+	ldr r0, _0238C240 ; =STORAGE_D_BOX_LAYOUT_5
+	ldr r3, _0238C2A0 ; =STORAGE_MAIN_MENU_1
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
@@ -2010,11 +2010,11 @@ _0238BEBC:
 _0238BEF0:
 	ldr r0, _0238C29C ; =ov23_0238D7BC
 	bl DebugPrint0
-	ldr r0, _0238C2A4 ; =ov23_0238D2E8
+	ldr r0, _0238C2A4 ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
 	mov ip, #3
 	str r0, [sp, #0xbc]
-	ldr r0, _0238C240 ; =ov23_0238D408
-	ldr r3, _0238C2A0 ; =ov23_0238D314
+	ldr r0, _0238C240 ; =STORAGE_D_BOX_LAYOUT_5
+	ldr r3, _0238C2A0 ; =STORAGE_MAIN_MENU_1
 	add r2, sp, #0x5c
 	add r1, ip, #0x210
 	str ip, [sp]
@@ -2049,7 +2049,7 @@ _0238BF2C:
 	ldr r0, _0238C1CC ; =ov23_0238D8A0
 	add r1, sp, #0xc
 	ldr r3, [r0]
-	ldr r0, _0238C260 ; =ov23_0238D428
+	ldr r0, _0238C260 ; =STORAGE_D_BOX_LAYOUT_7
 	add r2, r3, #0xec
 	str r2, [sp, #0x44]
 	str r1, [sp]
@@ -2087,7 +2087,7 @@ _0238C014:
 	mov r1, #0
 	strb r1, [r2, #0x88]
 	ldr r1, [r0]
-	ldr r2, _0238C220 ; =ov23_0238D2F0
+	ldr r2, _0238C220 ; =OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
@@ -2116,9 +2116,9 @@ _0238C084:
 	ldr r0, _0238C2B4 ; =ov23_0238D81C
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238C27C ; =ov23_0238D418
+	ldr r0, _0238C27C ; =STORAGE_D_BOX_LAYOUT_6
 	ldr r1, _0238C1E4 ; =0x00300013
-	ldr r3, _0238C280 ; =ov23_0238D2FC
+	ldr r3, _0238C280 ; =STORAGE_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -2151,7 +2151,7 @@ _0238C0F0:
 	mov r2, #0x26
 	str r2, [r1, #0xc]
 	ldr r1, [r0]
-	ldr r2, _0238C220 ; =ov23_0238D2F0
+	ldr r2, _0238C220 ; =OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 	add r0, r1, #0x12c
 	add r1, r1, #0x18
 	bl sub_0200D670
@@ -2173,9 +2173,9 @@ _0238C15C:
 	ldr r0, _0238C2BC ; =ov23_0238D854
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238C27C ; =ov23_0238D418
+	ldr r0, _0238C27C ; =STORAGE_D_BOX_LAYOUT_6
 	ldr r1, _0238C1E4 ; =0x00300013
-	ldr r3, _0238C280 ; =ov23_0238D2FC
+	ldr r3, _0238C280 ; =STORAGE_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
 	bl CreateNormalMenu
@@ -2204,11 +2204,11 @@ _0238C1B8:
 _0238C1CC: .word ov23_0238D8A0
 _0238C1D0: .word 0x00003008
 _0238C1D4: .word ov23_0238D448
-_0238C1D8: .word ov23_0238D438
-_0238C1DC: .word ov23_0238D334
-_0238C1E0: .word ov23_0238D3F8
+_0238C1D8: .word STORAGE_D_BOX_LAYOUT_8
+_0238C1DC: .word STORAGE_MAIN_MENU_2
+_0238C1E0: .word STORAGE_D_BOX_LAYOUT_4
 _0238C1E4: .word 0x00300013
-_0238C1E8: .word ov23_0238D374
+_0238C1E8: .word STORAGE_MAIN_MENU_4
 _0238C1EC: .word ov23_0238D468
 _0238C1F0: .word ov23_0238D484
 _0238C1F4: .word 0x00003018
@@ -2222,7 +2222,7 @@ _0238C210: .word ov23_0238D51C
 _0238C214: .word 0x0000032A
 _0238C218: .word ov23_0238D540
 _0238C21C: .word ov23_0238D55C
-_0238C220: .word ov23_0238D2F0
+_0238C220: .word OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
 _0238C224: .word ov23_0238D578
 _0238C228: .word ov23_0238D594
 _0238C22C: .word ov23_0238D5AC
@@ -2230,23 +2230,23 @@ _0238C230: .word ov23_0238D5CC
 _0238C234: .word ov23_0238D5E8
 _0238C238: .word ov23_0238D608
 _0238C23C: .word ov23_0238D628
-_0238C240: .word ov23_0238D408
-_0238C244: .word ov23_0238D354
+_0238C240: .word STORAGE_D_BOX_LAYOUT_5
+_0238C244: .word STORAGE_MAIN_MENU_3
 _0238C248: .word ov23_0238D64C
-_0238C24C: .word ov23_0238D2EC
+_0238C24C: .word OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
 _0238C250: .word ov23_0238D670
 _0238C254: .word ov23_0238D68C
 _0238C258: .word ov23_0238D69C
 _0238C25C: .word 0x0000C402
-_0238C260: .word ov23_0238D428
+_0238C260: .word STORAGE_D_BOX_LAYOUT_7
 _0238C264: .word 0x00001013
 _0238C268: .word 0x00000315
 _0238C26C: .word ov23_0238D6A8
 _0238C270: .word ov23_0238D6CC
 _0238C274: .word 0x0000031E
 _0238C278: .word ov23_0238D6F0
-_0238C27C: .word ov23_0238D418
-_0238C280: .word ov23_0238D2FC
+_0238C27C: .word STORAGE_D_BOX_LAYOUT_6
+_0238C280: .word STORAGE_MENU_CONFIRM
 _0238C284: .word ov23_0238D708
 _0238C288: .word ov23_0238D71C
 _0238C28C: .word ov23_0238D73C
@@ -2254,8 +2254,8 @@ _0238C290: .word ov23_0238D75C
 _0238C294: .word ov23_0238D77C
 _0238C298: .word ov23_0238D79C
 _0238C29C: .word ov23_0238D7BC
-_0238C2A0: .word ov23_0238D314
-_0238C2A4: .word ov23_0238D2E8
+_0238C2A0: .word STORAGE_MAIN_MENU_1
+_0238C2A4: .word OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
 _0238C2A8: .word ov23_0238D7E0
 _0238C2AC: .word ov23_0238D7FC
 _0238C2B0: .word 0x00000322
@@ -3445,37 +3445,37 @@ _0238D2E4: .word ov23_0238D8A0
 	arm_func_end ov23_0238D278
 	; 0x0238D2E8
 
-	.global ov23_0238D2E8
-ov23_0238D2E8:
+	.global OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
+OVERLAY23_UNKNOWN_VALUE__NA_238D2E8:
 	.byte 0x00, 0x03, 0x00, 0x00
-	.global ov23_0238D2EC
-ov23_0238D2EC:
+	.global OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
+OVERLAY23_UNKNOWN_VALUE__NA_238D2EC:
 	.byte 0x00, 0x03, 0x00, 0x00
-	.global ov23_0238D2F0
-ov23_0238D2F0:
+	.global OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0
+OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
-	.global ov23_0238D2FC
-ov23_0238D2FC:
+	.global STORAGE_MENU_CONFIRM
+STORAGE_MENU_CONFIRM:
 	.byte 0x0E, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x0F, 0x03, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov23_0238D314
-ov23_0238D314:
+	.global STORAGE_MAIN_MENU_1
+STORAGE_MAIN_MENU_1:
 	.byte 0x11, 0x03, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x12, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x14, 0x03, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov23_0238D334
-ov23_0238D334:
+	.global STORAGE_MAIN_MENU_2
+STORAGE_MAIN_MENU_2:
 	.byte 0x10, 0x03, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x11, 0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x13, 0x03, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov23_0238D354
-ov23_0238D354:
+	.global STORAGE_MAIN_MENU_3
+STORAGE_MAIN_MENU_3:
 	.byte 0x10, 0x03, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x12, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x14, 0x03, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov23_0238D374
-ov23_0238D374:
+	.global STORAGE_MAIN_MENU_4
+STORAGE_MAIN_MENU_4:
 	.byte 0x10, 0x03, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x11, 0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x12, 0x03, 0x00, 0x00
 	.byte 0x06, 0x00, 0x00, 0x00, 0x13, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -3485,20 +3485,20 @@ ov23_0238D374:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x12, 0x10, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x14, 0x12, 0x02, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x0F, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov23_0238D3F8
-ov23_0238D3F8:
+	.global STORAGE_D_BOX_LAYOUT_4
+STORAGE_D_BOX_LAYOUT_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov23_0238D408
-ov23_0238D408:
+	.global STORAGE_D_BOX_LAYOUT_5
+STORAGE_D_BOX_LAYOUT_5:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov23_0238D418
-ov23_0238D418:
+	.global STORAGE_D_BOX_LAYOUT_6
+STORAGE_D_BOX_LAYOUT_6:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov23_0238D428
-ov23_0238D428:
+	.global STORAGE_D_BOX_LAYOUT_7
+STORAGE_D_BOX_LAYOUT_7:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov23_0238D438
-ov23_0238D438:
+	.global STORAGE_D_BOX_LAYOUT_8
+STORAGE_D_BOX_LAYOUT_8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov23_0238D448
 ov23_0238D448:
