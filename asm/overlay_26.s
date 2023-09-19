@@ -732,7 +732,7 @@ _0238AAF0:
 	bl sub_0205633C
 	cmp r0, #0
 	bne _0238AB08
-	bl ov00_022E6E68
+	bl ov11_022E6E68
 	mov r0, #4
 	b _0238ABFC
 _0238AB08:
@@ -801,7 +801,7 @@ _0238ABC8:
 	str r1, [r0, #4]
 	b _0238ABF8
 _0238ABEC:
-	bl ov00_022E6E68
+	bl ov11_022E6E68
 	mov r0, #4
 	b _0238ABFC
 _0238ABF8:
@@ -874,7 +874,7 @@ _0238ACA8:
 	str r1, [r0, #4]
 	b _0238ACCC
 _0238ACC0:
-	bl ov00_022E6E68
+	bl ov11_022E6E68
 	mov r0, #4
 	ldmia sp!, {r3, pc}
 _0238ACCC:
@@ -976,7 +976,7 @@ _0238ADE4:
 	b _0238AE10
 _0238AE00:
 	bl sub_0204665C
-	bl ov00_022E6E68
+	bl ov11_022E6E68
 	mov r0, #4
 	b _0238AE14
 _0238AE10:

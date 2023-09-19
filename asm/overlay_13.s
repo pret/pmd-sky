@@ -78,7 +78,7 @@ _0238A1E4: ; jump table
 	b _0238A350 ; case 18
 	b _0238A558 ; case 19
 _0238A234:
-	bl ov00_022E6E68
+	bl ov11_022E6E68
 	ldr r0, _0238A570 ; =ov13_0238CEA0
 	mov r1, #0xd
 	ldr r0, [r0]

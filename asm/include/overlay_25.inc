@@ -51,5 +51,5 @@
 .public FreePortraitBox
 .public FreeDBox
 .public ov11_022E6E8C
-.public ov00_022E6E68
+.public ov11_022E6E68
 .public ov11_022E6EC8

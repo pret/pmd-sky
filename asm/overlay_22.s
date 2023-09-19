@@ -5019,7 +5019,7 @@ _0238E7A8:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
 	bl FreeDBox
-	bl ov00_022E6E68
+	bl ov11_022E6E68
 	mov r0, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0238E7DC:

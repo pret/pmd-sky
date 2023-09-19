@@ -26,7 +26,7 @@
 .public sub_0204E770
 .public SaveScriptVariableValue
 .public GetMaxItemsAllowed
-.public ov00_022E6E68
+.public ov11_022E6E68
 .public GetAcceptedMission
 .public sub_020577BC
 .public MemFree

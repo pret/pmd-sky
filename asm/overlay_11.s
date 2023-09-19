@@ -79648,4 +79648,7 @@ ov11_02324E78:
 	.bss
 	.global ov11_02324E80
 ov11_02324E80:
-	.space 0x652C0
+	.space 0x6520C
+	.global ov11_0238A08C
+ov11_0238A08C:
+	.space 0xB4

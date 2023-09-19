@@ -1659,7 +1659,7 @@ _0238B948: ; jump table
 _0238B96C:
 	mov r0, #4
 	str r0, [r3, #0x2c]
-	bl ov00_022E6E68
+	bl ov11_022E6E68
 	b _0238C914
 _0238B97C:
 	ldr r2, [r3]

@@ -81,5 +81,5 @@
 .public sub_02043434
 .public GetPressedButtons
 .public sub_020440B8
-.public ov00_022E6E68
+.public ov11_022E6E68
 .public GetItemAtIdx

@@ -93,7 +93,7 @@
 .public SetPortraitLayout
 .public sub_020037A4
 .public ov11_022E6E8C
-.public ov00_022E6E68
+.public ov11_022E6E68
 .public ov11_0230CCE0
 .public ov11_022E6EC8
 .public ov11_0230CCF0

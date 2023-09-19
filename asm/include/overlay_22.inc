@@ -65,7 +65,7 @@
 .public InitStandardItem
 .public sub_0202E6E4
 .public sub_02042AAC
-.public ov00_022E6E68
+.public ov11_022E6E68
 .public sub_02044474
 .public FreeDBox
 .public sub_020445C8

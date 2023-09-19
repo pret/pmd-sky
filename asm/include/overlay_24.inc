@@ -65,4 +65,4 @@
 .public GetKeyboardStringResult
 .public sub_02010794
 .public FreePortraitBox
-.public ov00_022E6E68
+.public ov11_022E6E68

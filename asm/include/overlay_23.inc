@@ -56,7 +56,7 @@
 .public sub_02043400
 .public sub_0204352C
 .public sub_0200FFF4
-.public ov00_022E6E68
+.public ov11_022E6E68
 .public sub_02042B50
 .public HasStorableItems
 .public sub_02042BBC

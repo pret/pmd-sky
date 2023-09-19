@@ -62,7 +62,7 @@
 .public ov11_0230B9BC
 .public sub_020420F4
 .public ov00_0230D92C
-.public ov00_022E6E68
+.public ov11_022E6E68
 .public sub_02017CCC
 .public ov11_0230B958
 .public sub_0203AAB0

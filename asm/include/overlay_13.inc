@@ -30,7 +30,7 @@
 .public IsNormalMenuActive
 .public MemAlloc
 .public MemFree
-.public ov00_022E6E68
+.public ov11_022E6E68
 .public ov00_0230D71C
 .public ov11_022E6E8C
 .public ov11_022E6EC8

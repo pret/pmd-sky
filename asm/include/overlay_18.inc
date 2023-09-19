@@ -103,7 +103,7 @@
 .public StrncpySimpleNoPadSafe
 .public ShowDBox
 .public ShowPortraitBox
-.public ov00_022E6E68
+.public ov11_022E6E68
 .public CreateAdvancedMenu
 .public sub_02039C2C
 .public sub_020417A8
