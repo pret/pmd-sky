@@ -33,8 +33,8 @@ ov29_0230E914: ; 0x0230E914
 	mov r3, #1
 	bl ov29_0230EDB0
 	mov r4, #0
-	ldr r6, _0230EDA0 ; =0x0237C9D8
-	ldr r5, _0230EDA4 ; =0x023536FC
+	ldr r6, _0230EDA0 ; =ov29_0237C9D8
+	ldr r5, _0230EDA4 ; =ov29_023536FC
 	b _0230E9DC
 _0230E990:
 	ldr r0, [r6, r4, lsl #2]
@@ -47,7 +47,7 @@ _0230E990:
 	mov r0, #0x81
 	strb r0, [r7, #0x4e]
 	ldrsh r1, [sl, #4]
-	ldr r0, _0230EDA8 ; =0x0237C9F8
+	ldr r0, _0230EDA8 ; =ov29_0237C9F8
 	strh r1, [r7, #0x50]
 	ldrsh r1, [sl, #6]
 	strh r1, [r7, #0x52]
@@ -62,7 +62,7 @@ _0230E9DC:
 	cmp r4, r0
 	blt _0230E990
 _0230E9E8:
-	ldr r0, _0230EDA4 ; =0x023536FC
+	ldr r0, _0230EDA4 ; =ov29_023536FC
 	ldr r0, [r0]
 	cmp r4, r0
 	bne _0230ED98
@@ -78,7 +78,7 @@ _0230EA08:
 	add r1, r7, #0x62
 	mov r3, #1
 	bl ov29_0230F02C
-	ldr r0, _0230EDA4 ; =0x023536FC
+	ldr r0, _0230EDA4 ; =ov29_023536FC
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0230EA9C
@@ -164,7 +164,7 @@ _0230EB58:
 	ldrb r0, [r7, #7]
 	cmp r0, #0
 	beq _0230ED98
-	ldr r0, _0230EDAC ; =0x020AF6B8
+	ldr r0, _0230EDAC ; =BAG_ITEMS_PTR_MIRROR
 	sub r1, r5, #1
 	ldr r0, [r0]
 	sub r2, r5, #2
@@ -231,7 +231,7 @@ _0230EC4C:
 	cmp r0, #0
 	beq _0230ED8C
 	mov r4, #1
-	ldr fp, _0230EDA4 ; =0x023536FC
+	ldr fp, _0230EDA4 ; =ov29_023536FC
 	b _0230ED84
 _0230EC68:
 	ldrsh r0, [r8, #4]
@@ -251,7 +251,7 @@ _0230EC68:
 	ldr r0, [fp]
 	cmp r0, #0
 	beq _0230ED80
-	ldr r0, _0230EDA4 ; =0x023536FC
+	ldr r0, _0230EDA4 ; =ov29_023536FC
 	ldr r0, [r0]
 	bl DungeonRandInt
 	mov r4, r0
@@ -284,7 +284,7 @@ _0230ED14:
 	mov sb, #0
 	b _0230ED74
 _0230ED28:
-	ldr r0, _0230EDA0 ; =0x0237C9D8
+	ldr r0, _0230EDA0 ; =ov29_0237C9D8
 	ldr r0, [r0, sb, lsl #2]
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
@@ -294,7 +294,7 @@ _0230ED28:
 	bl SetMonsterActionFields
 	strb r6, [r7, #0x4e]
 	ldrsh r1, [sl, #4]
-	ldr r0, _0230EDA8 ; =0x0237C9F8
+	ldr r0, _0230EDA8 ; =ov29_0237C9F8
 	strh r1, [r7, #0x50]
 	ldrsh r1, [sl, #6]
 	strh r1, [r7, #0x52]
@@ -322,21 +322,21 @@ _0230ED98:
 	add sp, sp, #0x50
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0230EDA0: .word 0x0237C9D8
-_0230EDA4: .word 0x023536FC
-_0230EDA8: .word 0x0237C9F8
-_0230EDAC: .word 0x020AF6B8
+_0230EDA0: .word ov29_0237C9D8
+_0230EDA4: .word ov29_023536FC
+_0230EDA8: .word ov29_0237C9F8
+_0230EDAC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end ov29_0230E914
 
 	arm_func_start ov29_0230EDB0
 ov29_0230EDB0: ; 0x0230EDB0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
-	ldr r4, _0230EFF4 ; =0x023536FC
+	ldr r4, _0230EFF4 ; =ov29_023536FC
 	mov r5, #0
 	mov sl, r0
 	str r3, [sp, #8]
-	ldr r0, _0230EFF8 ; =0x0237C9D0
+	ldr r0, _0230EFF8 ; =ov29_0237C9D0
 	str r1, [sp]
 	str r2, [sp, #4]
 	str r5, [r4]
@@ -349,7 +349,7 @@ _0230EDDC:
 	mvn r0, #0
 	str r0, [sp, #0x10]
 _0230EDF4:
-	ldr r0, _0230EFFC ; =0x02353538
+	ldr r0, _0230EFFC ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, fp, lsl #2
 	add r0, r0, #0x12000
@@ -448,7 +448,7 @@ _0230EF44:
 _0230EF54:
 	cmp r5, #0
 	blt _0230EFE0
-	ldr r0, _0230EFF8 ; =0x0237C9D0
+	ldr r0, _0230EFF8 ; =ov29_0237C9D0
 	ldrb r0, [r0, r5]
 	cmp r0, #0
 	bne _0230EFE0
@@ -459,14 +459,14 @@ _0230EF54:
 	bl IsTargetInRange
 	cmp r0, #0
 	beq _0230EFE0
-	ldr r0, _0230EFF8 ; =0x0237C9D0
+	ldr r0, _0230EFF8 ; =ov29_0237C9D0
 	mov r1, #1
 	strb r1, [r0, r5]
 	ldr r0, [sp, #8]
 	cmp r0, #0
-	ldr r0, _0230EFF4 ; =0x023536FC
+	ldr r0, _0230EFF4 ; =ov29_023536FC
 	ldr r1, [r0]
-	ldr r0, _0230F000 ; =0x0237C9F8
+	ldr r0, _0230F000 ; =ov29_0237C9F8
 	str r5, [r0, r1, lsl #2]
 	movne r0, #0x64
 	bne _0230EFC4
@@ -475,11 +475,11 @@ _0230EF54:
 	mov r0, r4
 	bl ov29_0231E05C
 _0230EFC4:
-	ldr r1, _0230EFF4 ; =0x023536FC
+	ldr r1, _0230EFF4 ; =ov29_023536FC
 	ldr r2, [r1]
-	ldr r1, _0230F004 ; =0x0237C9D8
+	ldr r1, _0230F004 ; =ov29_0237C9D8
 	str r0, [r1, r2, lsl #2]
-	ldr r0, _0230EFF4 ; =0x023536FC
+	ldr r0, _0230EFF4 ; =ov29_023536FC
 	add r1, r2, #1
 	str r1, [r0]
 _0230EFE0:
@@ -489,9 +489,9 @@ _0230EFE0:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0230EFF4: .word 0x023536FC
-_0230EFF8: .word 0x0237C9D0
-_0230EFFC: .word 0x02353538
-_0230F000: .word 0x0237C9F8
-_0230F004: .word 0x0237C9D8
+_0230EFF4: .word ov29_023536FC
+_0230EFF8: .word ov29_0237C9D0
+_0230EFFC: .word ov29_02353538
+_0230F000: .word ov29_0237C9F8
+_0230F004: .word ov29_0237C9D8
 	arm_func_end ov29_0230EDB0

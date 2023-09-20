@@ -12,14 +12,14 @@ ov29_022F62CC: ; 0x022F62CC
 	cmp r0, #0
 	bne _022F66F4
 	bl GetLeader
-	ldr r1, _022F66FC ; =0x02353538
+	ldr r1, _022F66FC ; =ov29_02353538
 	mov r4, r0
 	ldr r1, [r1]
 	ldr r6, [r4, #0xb4]
 	ldrb fp, [r1, #0x7c8]
 	bl GetTileAtEntity
 	ldrh r0, [r0]
-	ldr r7, _022F66FC ; =0x02353538
+	ldr r7, _022F66FC ; =ov29_02353538
 	tst r0, #0x20
 	movne r0, #1
 	moveq r0, #0
@@ -44,7 +44,7 @@ ov29_022F62CC: ; 0x022F62CC
 	mov r0, #0
 	bl AnimationDelayOrSomething
 _022F6364:
-	ldr r0, _022F66FC ; =0x02353538
+	ldr r0, _022F66FC ; =ov29_02353538
 	mov r2, #0
 	ldr r1, [r0]
 	strb r2, [r1, #0x7c8]
@@ -122,7 +122,7 @@ _022F6464:
 	mov r0, #1
 	str r0, [sp]
 	mov r8, r7
-	ldr sb, _022F66FC ; =0x02353538
+	ldr sb, _022F66FC ; =ov29_02353538
 	b _022F6618
 _022F648C:
 	ldr r0, [sb]
@@ -159,7 +159,7 @@ _022F648C:
 	cmp r0, #1
 	ble _022F65CC
 _022F6510:
-	ldr r0, _022F6704 ; =0x02352760
+	ldr r0, _022F6704 ; =ov29_02352760
 	mvn r8, #0
 	ldrh r1, [r0]
 	ldrh r0, [r0, #2]
@@ -242,7 +242,7 @@ _022F6620:
 	beq _022F6654
 	cmp r7, #0
 	bne _022F6654
-	ldr r0, _022F66FC ; =0x02353538
+	ldr r0, _022F66FC ; =ov29_02353538
 	ldr r0, [r0]
 	ldr r1, [r0, #0x7c4]
 	ldr r0, [r0, #0x7bc]
@@ -256,7 +256,7 @@ _022F6654:
 	beq _022F6688
 	cmp r6, #0
 	bne _022F6688
-	ldr r0, _022F66FC ; =0x02353538
+	ldr r0, _022F66FC ; =ov29_02353538
 	ldr r0, [r0]
 	ldr r1, [r0, #0x7c4]
 	ldr r0, [r0, #0x7bc]
@@ -298,15 +298,15 @@ _022F66F4:
 	add sp, sp, #0x28
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022F66FC: .word 0x02353538
+_022F66FC: .word ov29_02353538
 _022F6700: .word 0x00000E53
-_022F6704: .word 0x02352760
+_022F6704: .word ov29_02352760
 _022F6708: .word 0x00000E52
 	arm_func_end ov29_022F62CC
 
 	arm_func_start ov29_022F670C
 ov29_022F670C: ; 0x022F670C
-	ldr r0, _022F6744 ; =0x02353538
+	ldr r0, _022F6744 ; =ov29_02353538
 	ldr r2, [r0]
 	ldr r1, [r2, #0x7c4]
 	ldr r0, [r2, #0x7bc]
@@ -321,7 +321,7 @@ ov29_022F670C: ; 0x022F670C
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_022F6744: .word 0x02353538
+_022F6744: .word ov29_02353538
 	arm_func_end ov29_022F670C
 
 	arm_func_start ov29_022F6748
@@ -370,7 +370,7 @@ _022F67CC: .word 0x00000E51
 ov29_022F67D0: ; 0x022F67D0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x24
-	ldr r1, _022F69EC ; =0x02353538
+	ldr r1, _022F69EC ; =ov29_02353538
 	mov r4, r0
 	ldr r0, [r1]
 	mov r5, #0
@@ -386,16 +386,16 @@ ov29_022F67D0: ; 0x022F67D0
 	add r0, sp, #0x14
 	mov r2, #0
 	bl InitPortraitDungeon
-	ldr r0, _022F69EC ; =0x02353538
+	ldr r0, _022F69EC ; =ov29_02353538
 	cmp r4, #0
 	ldr r0, [r0]
 	ldr r4, [r0, #0x7c0]
 	beq _022F69E4
-	ldr r0, _022F69F0 ; =0x023535A8
+	ldr r0, _022F69F0 ; =ov29_023535A8
 	cmp r5, #0
 	str r4, [r0]
 	beq _022F6870
-	ldr r0, _022F69F4 ; =0x022C4800
+	ldr r0, _022F69F4 ; =ov10_022C4800
 	mov r1, r4, lsl #8
 	ldr r3, [r0]
 	mov r2, #0x64
@@ -424,8 +424,8 @@ _022F6870:
 	bl ov29_022EACCC
 	mov r0, r4
 	bl AddMoneyCarried
-	ldr r1, _022F6A04 ; =0x02352760
-	ldr r0, _022F69EC ; =0x02353538
+	ldr r1, _022F6A04 ; =ov29_02352760
+	ldr r0, _022F69EC ; =ov29_02353538
 	ldrh r3, [r1, #4]
 	ldr r0, [r0]
 	ldrh r2, [r1, #6]
@@ -443,7 +443,7 @@ _022F68D8:
 	add r6, sp, #0xc
 	add r5, sp, #8
 	mov fp, #1
-	ldr r4, _022F69EC ; =0x02353538
+	ldr r4, _022F69EC ; =ov29_02353538
 	b _022F6990
 _022F68FC:
 	mov r0, sb
@@ -496,7 +496,7 @@ _022F69A8:
 	ldr r1, [r1, #0xd1c]
 	cmp sb, r1
 	ble _022F68D8
-	ldr r1, _022F69EC ; =0x02353538
+	ldr r1, _022F69EC ; =ov29_02353538
 	add r0, sp, #0x14
 	ldr r4, [r1]
 	ldr r1, _022F6A08 ; =0x00000E4A
@@ -511,13 +511,13 @@ _022F69E4:
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022F69EC: .word 0x02353538
-_022F69F0: .word 0x023535A8
-_022F69F4: .word 0x022C4800
+_022F69EC: .word ov29_02353538
+_022F69F0: .word ov29_023535A8
+_022F69F4: .word ov10_022C4800
 _022F69F8: .word 0x00000E4F
 _022F69FC: .word 0x00000E4D
 _022F6A00: .word 0x00001308
-_022F6A04: .word 0x02352760
+_022F6A04: .word ov29_02352760
 _022F6A08: .word 0x00000E4A
 	arm_func_end ov29_022F67D0
 
@@ -536,14 +536,14 @@ ov29_022F6A0C: ; 0x022F6A0C
 	add r0, sp, #4
 	mov r2, #0
 	bl InitPortraitDungeon
-	ldr r0, _022F6C8C ; =0x02353538
+	ldr r0, _022F6C8C ; =ov29_02353538
 	cmp r4, #0
 	ldr r0, [r0]
 	ldr r1, [r0, #0x7c4]
 	ldr r0, [r0, #0x7bc]
 	sub r6, r1, r0
 	beq _022F6A80
-	ldr r0, _022F6C90 ; =0x022C473C
+	ldr r0, _022F6C90 ; =ov10_022C473C
 	mov r3, r6, lsl #8
 	ldr r0, [r0]
 	mov r2, #0x64
@@ -629,7 +629,7 @@ _022F6B78:
 	cmp r6, #0x38
 	blt _022F6B24
 	mov r6, #0
-	ldr sb, _022F6CA4 ; =0x020AF6B8
+	ldr sb, _022F6CA4 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, r6
 	mov r5, #1
 	mov r8, #6
@@ -655,7 +655,7 @@ _022F6BE4:
 	cmp r6, #0x32
 	blt _022F6BA4
 	mov r7, #0
-	ldr r8, _022F6C8C ; =0x02353538
+	ldr r8, _022F6C8C ; =ov29_02353538
 	mov r4, r7
 	mov r5, #1
 _022F6C00:
@@ -684,7 +684,7 @@ _022F6C54:
 	add r7, r7, #1
 	cmp r7, #0x14
 	blt _022F6C00
-	ldr r1, _022F6C8C ; =0x02353538
+	ldr r1, _022F6C8C ; =ov29_02353538
 	add r0, sp, #4
 	ldr r4, [r1]
 	ldr r1, _022F6CA8 ; =0x00000E49
@@ -697,20 +697,20 @@ _022F6C84:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_022F6C8C: .word 0x02353538
-_022F6C90: .word 0x022C473C
+_022F6C8C: .word ov29_02353538
+_022F6C90: .word ov10_022C473C
 _022F6C94: .word 0x00000E4E
 _022F6C98: .word 0x00000E4C
 _022F6C9C: .word 0x00000E4B
 _022F6CA0: .word 0x00001308
-_022F6CA4: .word 0x020AF6B8
+_022F6CA4: .word BAG_ITEMS_PTR_MIRROR
 _022F6CA8: .word 0x00000E49
 	arm_func_end ov29_022F6A0C
 
 	arm_func_start ov29_022F6CAC
 ov29_022F6CAC: ; 0x022F6CAC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r0, _022F6E0C ; =0x02353538
+	ldr r0, _022F6E0C ; =ov29_02353538
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0x790]
@@ -745,7 +745,7 @@ _022F6D14:
 	cmp r6, #0x38
 	blt _022F6CDC
 	mov r7, #0
-	ldr r1, _022F6E14 ; =0x020AF6B8
+	ldr r1, _022F6E14 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, r7
 	mov r4, #1
 	mov r0, #6
@@ -765,7 +765,7 @@ _022F6D40:
 	cmp r7, #0x32
 	blt _022F6D40
 	mov r8, #0
-	ldr sb, _022F6E0C ; =0x02353538
+	ldr sb, _022F6E0C ; =ov29_02353538
 	mov r6, r8
 	mov r4, r8
 	mov r5, #1
@@ -794,7 +794,7 @@ _022F6DDC:
 	add r8, r8, #1
 	cmp r8, #0x14
 	blt _022F6D8C
-	ldr r0, _022F6E0C ; =0x02353538
+	ldr r0, _022F6E0C ; =ov29_02353538
 	mov r2, #0
 	ldr r1, [r0]
 	str r2, [r1, #0x7c4]
@@ -804,9 +804,9 @@ _022F6DDC:
 	str r2, [r0, #0x7c0]
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_022F6E0C: .word 0x02353538
+_022F6E0C: .word ov29_02353538
 _022F6E10: .word 0x00000E54
-_022F6E14: .word 0x020AF6B8
+_022F6E14: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end ov29_022F6CAC
 
 	arm_func_start ResetDamageData
@@ -829,18 +829,18 @@ ov29_022F6E40: ; 0x022F6E40
 	ldr r0, _022F6ED8 ; =0x0001A002
 	mov r1, #0
 	bl MemAlloc
-	ldr r2, _022F6EDC ; =0x0237C9AC
+	ldr r2, _022F6EDC ; =ov29_0237C9AC
 	ldr r1, _022F6ED8 ; =0x0001A002
 	str r0, [r2]
 	bl MemZero
-	ldr r0, _022F6EDC ; =0x0237C9AC
+	ldr r0, _022F6EDC ; =ov29_0237C9AC
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	strh r1, [r0]
 	bl ov29_0231B490
 	mov r2, #0
-	ldr r0, _022F6EE0 ; =0x0237C9B0
+	ldr r0, _022F6EE0 ; =ov29_0237C9B0
 	mov r1, r2
 _022F6E84:
 	str r1, [r0, r2, lsl #2]
@@ -859,7 +859,7 @@ _022F6E84:
 	ldr r0, _022F6EEC ; =0x00000211
 	bl GetSpriteFileSize
 _022F6EC0:
-	ldr r0, _022F6EF0 ; =0x02353538
+	ldr r0, _022F6EF0 ; =ov29_02353538
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -867,35 +867,35 @@ _022F6EC0:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022F6ED8: .word 0x0001A002
-_022F6EDC: .word 0x0237C9AC
-_022F6EE0: .word 0x0237C9B0
+_022F6EDC: .word ov29_0237C9AC
+_022F6EE0: .word ov29_0237C9B0
 _022F6EE4: .word 0x00000216
 _022F6EE8: .word 0x00000217
 _022F6EEC: .word 0x00000211
-_022F6EF0: .word 0x02353538
+_022F6EF0: .word ov29_02353538
 	arm_func_end ov29_022F6E40
 
 	arm_func_start ov29_022F6EF4
 ov29_022F6EF4: ; 0x022F6EF4
 	ldr r1, _022F6F08 ; =0x0000FFFF
-	ldr r0, _022F6F0C ; =0x023535AC
+	ldr r0, _022F6F0C ; =ov29_023535AC
 	strh r1, [r0, #2]
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
 _022F6F08: .word 0x0000FFFF
-_022F6F0C: .word 0x023535AC
+_022F6F0C: .word ov29_023535AC
 	arm_func_end ov29_022F6EF4
 
 	arm_func_start FreeLoadedAttackSpriteAndMore
 FreeLoadedAttackSpriteAndMore: ; 0x022F6F10
 	stmdb sp!, {r4, r5, r6, lr}
 	bl ClearLoadedAttackSprite
-	ldr r0, _022F6F60 ; =0x0237C9AC
+	ldr r0, _022F6F60 ; =ov29_0237C9AC
 	ldr r0, [r0]
 	bl MemFree
 	mov r6, #0
-	ldr r5, _022F6F64 ; =0x0237C9B0
+	ldr r5, _022F6F64 ; =ov29_0237C9B0
 	mov r4, r6
 _022F6F30:
 	ldr r0, [r5, r6, lsl #2]
@@ -907,19 +907,19 @@ _022F6F44:
 	add r6, r6, #1
 	cmp r6, #2
 	blt _022F6F30
-	ldr r0, _022F6F60 ; =0x0237C9AC
+	ldr r0, _022F6F60 ; =ov29_0237C9AC
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022F6F60: .word 0x0237C9AC
-_022F6F64: .word 0x0237C9B0
+_022F6F60: .word ov29_0237C9AC
+_022F6F64: .word ov29_0237C9B0
 	arm_func_end FreeLoadedAttackSpriteAndMore
 
 	arm_func_start SetAndLoadCurrentAttackAnimation
 SetAndLoadCurrentAttackAnimation: ; 0x022F6F68
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _022F6FFC ; =0x023535AC
+	ldr r2, _022F6FFC ; =ov29_023535AC
 	mov r5, r0
 	ldrh r0, [r2, #2]
 	mov r4, r1
@@ -927,7 +927,7 @@ SetAndLoadCurrentAttackAnimation: ; 0x022F6F68
 	ldreqh r0, [r2]
 	cmpeq r0, r4
 	beq _022F6FE8
-	ldr r0, _022F7000 ; =0x0237C9AC
+	ldr r0, _022F7000 ; =ov29_0237C9AC
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrsh r0, [r0]
@@ -936,65 +936,65 @@ SetAndLoadCurrentAttackAnimation: ; 0x022F6F68
 	bl ClearLoadedAttackSprite
 _022F6FA8:
 	mov r1, #1
-	ldr r0, _022F7004 ; =0x020AFC68
+	ldr r0, _022F7004 ; =WAN_TABLE
 	str r1, [sp]
-	ldr r1, _022F7000 ; =0x0237C9AC
+	ldr r1, _022F7000 ; =ov29_0237C9AC
 	ldr r0, [r0]
 	ldr r3, [r1]
 	mov r1, r5
 	mov r2, r4
 	bl LoadWanTableEntryFromPackUseProvidedMemory
-	ldr r1, _022F7000 ; =0x0237C9AC
-	ldr r2, _022F6FFC ; =0x023535AC
+	ldr r1, _022F7000 ; =ov29_0237C9AC
+	ldr r2, _022F6FFC ; =ov29_023535AC
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
 	strh r0, [r1]
 	strh r5, [r2, #2]
 	strh r4, [r2]
 _022F6FE8:
-	ldr r0, _022F7000 ; =0x0237C9AC
+	ldr r0, _022F7000 ; =ov29_0237C9AC
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrsh r0, [r0]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022F6FFC: .word 0x023535AC
-_022F7000: .word 0x0237C9AC
-_022F7004: .word 0x020AFC68
+_022F6FFC: .word ov29_023535AC
+_022F7000: .word ov29_0237C9AC
+_022F7004: .word WAN_TABLE
 	arm_func_end SetAndLoadCurrentAttackAnimation
 
 	arm_func_start ClearLoadedAttackSprite
 ClearLoadedAttackSprite: ; 0x022F7008
 	stmdb sp!, {r3, lr}
-	ldr r0, _022F7048 ; =0x0237C9AC
+	ldr r0, _022F7048 ; =ov29_0237C9AC
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrsh r1, [r0]
 	cmp r1, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _022F704C ; =0x020AFC68
+	ldr r0, _022F704C ; =WAN_TABLE
 	ldr r0, [r0]
 	bl DeleteWanTableEntryVeneer
-	ldr r0, _022F7048 ; =0x0237C9AC
+	ldr r0, _022F7048 ; =ov29_0237C9AC
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	strh r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F7048: .word 0x0237C9AC
-_022F704C: .word 0x020AFC68
+_022F7048: .word ov29_0237C9AC
+_022F704C: .word WAN_TABLE
 	arm_func_end ClearLoadedAttackSprite
 
 	arm_func_start GetLoadedAttackSpriteId
 GetLoadedAttackSpriteId: ; 0x022F7050
-	ldr r0, _022F7064 ; =0x0237C9AC
+	ldr r0, _022F7064 ; =ov29_0237C9AC
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrsh r0, [r0]
 	bx lr
 	.align 2, 0
-_022F7064: .word 0x0237C9AC
+_022F7064: .word ov29_0237C9AC
 	arm_func_end GetLoadedAttackSpriteId
 
 	arm_func_start DungeonGetTotalSpriteFileSize
@@ -1046,7 +1046,7 @@ _022F7100: .word 0x000001CD
 
 	arm_func_start ov29_022F7104
 ov29_022F7104: ; 0x022F7104
-	ldr r1, _022F712C ; =0x02353538
+	ldr r1, _022F712C ; =ov29_02353538
 	mov r3, #0x400
 	ldr r0, [r1]
 	mov r2, #0xa
@@ -1057,13 +1057,13 @@ ov29_022F7104: ; 0x022F7104
 	str r2, [r0, #0xe30]
 	bx lr
 	.align 2, 0
-_022F712C: .word 0x02353538
+_022F712C: .word ov29_02353538
 	arm_func_end ov29_022F7104
 
 	arm_func_start ov29_022F7130
 ov29_022F7130: ; 0x022F7130
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r0, _022F72F8 ; =0x02353538
+	ldr r0, _022F72F8 ; =ov29_02353538
 	mov r2, #0
 	ldr r0, [r0]
 	mov r3, r2
@@ -1076,7 +1076,7 @@ _022F7150:
 	strh r3, [r4, r1]
 	cmp r2, r0
 	blt _022F7150
-	ldr r1, _022F72F8 ; =0x02353538
+	ldr r1, _022F72F8 ; =ov29_02353538
 	ldr r0, _022F7300 ; =0x00000229
 	ldr r2, [r1]
 	mov r1, #1
@@ -1085,7 +1085,7 @@ _022F7150:
 	bl LoadMonsterSprite
 	mov r6, #0
 	mov r5, #1
-	ldr r4, _022F72F8 ; =0x02353538
+	ldr r4, _022F72F8 ; =ov29_02353538
 	b _022F71AC
 _022F7190:
 	add r0, r1, #0x174
@@ -1102,7 +1102,7 @@ _022F71AC:
 	cmp r6, r0
 	blt _022F7190
 	bl LoadMissionMonsterSprites
-	ldr r0, _022F72F8 ; =0x02353538
+	ldr r0, _022F72F8 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x700
 	ldrsh r1, [r0, #0xa8]
@@ -1156,7 +1156,7 @@ _022F7278:
 	mov sb, r0, asr #0x10
 	cmp sb, #4
 	blt _022F7204
-	ldr r0, _022F72F8 ; =0x02353538
+	ldr r0, _022F72F8 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -1186,7 +1186,7 @@ _022F72E0:
 	blt _022F72B4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022F72F8: .word 0x02353538
+_022F72F8: .word ov29_02353538
 _022F72FC: .word 0x00000483
 _022F7300: .word 0x00000229
 _022F7304: .word 0x00000217
@@ -1196,7 +1196,7 @@ _022F7304: .word 0x00000217
 ov29_022F7308: ; 0x022F7308
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, #0
-	ldr r4, _022F7360 ; =0x02353538
+	ldr r4, _022F7360 ; =ov29_02353538
 	mov r5, r6
 _022F7318:
 	ldr r0, [r4]
@@ -1219,5 +1219,5 @@ _022F7350:
 	blt _022F7318
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022F7360: .word 0x02353538
+_022F7360: .word ov29_02353538
 	arm_func_end ov29_022F7308

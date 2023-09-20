@@ -93,3 +93,5 @@
 .public sub_02053D1C
 .public sub_02057CE8
 .public SECONDARY_TERRAIN_TYPES
+.public DIRECTIONS_XY
+.public BAG_ITEMS_PTR_MIRROR

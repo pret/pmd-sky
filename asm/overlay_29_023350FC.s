@@ -2547,7 +2547,7 @@ DrawTileGrid: ; 0x02337428
 	ldr r2, _02337780 ; =0x02353538
 	ldrsh r8, [r5, r1]
 	ldr r1, [r2]
-	ldr r2, _02337788 ; =0x0235171C
+	ldr r2, _02337788 ; =DIRECTIONS_XY
 	add r1, r1, #0x1a000
 	strb r6, [r1, #0x251]
 	mov r3, r7, lsl #2
@@ -2768,7 +2768,7 @@ _02337730:
 	.align 2, 0
 _02337780: .word 0x02353538
 _02337784: .word 0x0001A224
-_02337788: .word 0x0235171C
+_02337788: .word DIRECTIONS_XY
 _0233778C: .word 0x02352B9C
 _02337790: .word 0x02352D58
 _02337794: .word 0x0001A226

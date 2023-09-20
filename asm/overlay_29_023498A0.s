@@ -767,7 +767,7 @@ _0234A32C:
 	mov r7, #0
 	mov fp, r7
 	mov r6, #1
-	ldr r5, _0234A5B8 ; =0x020AF6B8
+	ldr r5, _0234A5B8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, #6
 	b _0234A3D8
 _0234A374:
@@ -815,7 +815,7 @@ _0234A3E0:
 	b _0234A5A8
 _0234A40C:
 	mov r0, #6
-	ldr r1, _0234A5B8 ; =0x020AF6B8
+	ldr r1, _0234A5B8 ; =BAG_ITEMS_PTR_MIRROR
 	mul r4, r7, r0
 	ldr r0, [r1]
 	ldr r0, [r0, #0x384]
@@ -844,7 +844,7 @@ _0234A468:
 	add r0, r0, #0x62
 	bl ItemZInit
 _0234A47C:
-	ldr r0, _0234A5B8 ; =0x020AF6B8
+	ldr r0, _0234A5B8 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x384]
 	add r0, r0, r4
@@ -854,7 +854,7 @@ _0234A47C:
 	mov r0, #0
 	mov r2, #1
 	bl DisplayMessage
-	ldr r1, _0234A5B8 ; =0x020AF6B8
+	ldr r1, _0234A5B8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
 	ldr r1, [r1]
 	ldr r1, [r1, #0x384]
@@ -927,7 +927,7 @@ _0234A5A8:
 	.align 2, 0
 _0234A5B0: .word 0x00000E27
 _0234A5B4: .word 0x00000E21
-_0234A5B8: .word 0x020AF6B8
+_0234A5B8: .word BAG_ITEMS_PTR_MIRROR
 _0234A5BC: .word 0x00000E26
 _0234A5C0: .word 0x02353538
 _0234A5C4: .word 0x00000E1D

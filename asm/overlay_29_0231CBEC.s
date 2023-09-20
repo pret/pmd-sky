@@ -136,7 +136,7 @@ ApplyVileSeedEffect: ; 0x0231CD80
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	mov r4, r1
-	ldr r1, _0231CE10 ; =0x023529AC
+	ldr r1, _0231CE10 ; =ov29_023529AC
 	ldr ip, [r4, #0xb4]
 	ldrh r3, [r1]
 	ldrh r2, [r1, #2]
@@ -151,14 +151,14 @@ ApplyVileSeedEffect: ; 0x0231CD80
 	strh r2, [sp, #0xa]
 	cmp r0, #0
 	strgth r0, [sp, #0xa]
-	ldr r0, _0231CE14 ; =0x02352AEC
+	ldr r0, _0231CE14 ; =ATK_STAT_IDX
 	ldrsh r3, [sp, #8]
 	ldr r2, [r0]
 	mov r0, r5
 	mov r1, r4
 	str ip, [sp, #4]
 	bl LowerDefensiveStat
-	ldr r0, _0231CE18 ; =0x02352AE8
+	ldr r0, _0231CE18 ; =SPATK_STAT_IDX
 	mov ip, #1
 	ldr r2, [r0]
 	str ip, [sp]
@@ -170,9 +170,9 @@ ApplyVileSeedEffect: ; 0x0231CD80
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_0231CE10: .word 0x023529AC
-_0231CE14: .word 0x02352AEC
-_0231CE18: .word 0x02352AE8
+_0231CE10: .word ov29_023529AC
+_0231CE14: .word ATK_STAT_IDX
+_0231CE18: .word SPATK_STAT_IDX
 	arm_func_end ApplyVileSeedEffect
 
 	arm_func_start ApplyViolentSeedEffect
@@ -180,14 +180,14 @@ ApplyViolentSeedEffect: ; 0x0231CE1C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	ldr r4, [r5, #0xb4]
-	ldr r2, _0231CE60 ; =0x02352AEC
+	ldr r2, _0231CE60 ; =ATK_STAT_IDX
 	ldrsh r3, [r4, #0x24]
 	ldr r2, [r2]
 	mov r6, r0
 	rsb r3, r3, #0x14
 	bl BoostOffensiveStat
 	ldrsh r3, [r4, #0x26]
-	ldr r1, _0231CE64 ; =0x02352AE8
+	ldr r1, _0231CE64 ; =SPATK_STAT_IDX
 	mov r0, r6
 	ldr r2, [r1]
 	mov r1, r5
@@ -195,8 +195,8 @@ ApplyViolentSeedEffect: ; 0x0231CE1C
 	bl BoostOffensiveStat
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0231CE60: .word 0x02352AEC
-_0231CE64: .word 0x02352AE8
+_0231CE60: .word ATK_STAT_IDX
+_0231CE64: .word SPATK_STAT_IDX
 	arm_func_end ApplyViolentSeedEffect
 
 	arm_func_start ApplyGinsengEffect
@@ -209,7 +209,7 @@ ApplyGinsengEffect: ; 0x0231CE68
 	mov r4, #0
 	mov r5, #1
 	bl DungeonRandInt
-	ldr r1, _0231CF78 ; =0x022C46C0
+	ldr r1, _0231CF78 ; =GINSENG_CHANCE_3
 	mov ip, #0
 	ldrsh r1, [r1]
 	add r3, r6, #0x124
@@ -275,7 +275,7 @@ _0231CF64:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0231CF78: .word 0x022C46C0
+_0231CF78: .word GINSENG_CHANCE_3
 _0231CF7C: .word 0x00000BEF
 _0231CF80: .word 0x00000BEE
 	arm_func_end ApplyGinsengEffect
@@ -291,8 +291,8 @@ ApplyBlastSeedEffect: ; 0x0231CF84
 	ldr r7, [r5, #0xb4]
 	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
-	ldrne r0, _0231D0A8 ; =0x022C45D8
-	ldreq r0, _0231D0AC ; =0x022C45D4
+	ldrne r0, _0231D0A8 ; =ov10_022C45D8
+	ldreq r0, _0231D0AC ; =ov10_022C45D4
 	ldrsh r4, [r0]
 	ldrb r0, [r7, #0xc4]
 	cmp r0, #1
@@ -332,8 +332,8 @@ _0231D034:
 	ldr r7, [r4, #0xb4]
 	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
-	ldrne r0, _0231D0B8 ; =0x022C45DC
-	ldreq r0, _0231D0BC ; =0x022C44E8
+	ldrne r0, _0231D0B8 ; =ov10_022C45DC
+	ldreq r0, _0231D0BC ; =ov10_022C44E8
 	ldrsh r5, [r0]
 	ldrb r0, [r7, #0xc4]
 	cmp r0, #1
@@ -361,12 +361,12 @@ _0231D0A0:
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_0231D0A8: .word 0x022C45D8
-_0231D0AC: .word 0x022C45D4
+_0231D0A8: .word ov10_022C45D8
+_0231D0AC: .word ov10_022C45D4
 _0231D0B0: .word 0x00000255
 _0231D0B4: .word 0x00000BF2
-_0231D0B8: .word 0x022C45DC
-_0231D0BC: .word 0x022C44E8
+_0231D0B8: .word ov10_022C45DC
+_0231D0BC: .word ov10_022C44E8
 	arm_func_end ApplyBlastSeedEffect
 
 	arm_func_start ApplyGummiBoostsDungeonMode
@@ -382,8 +382,8 @@ ApplyGummiBoostsDungeonMode: ; 0x0231D0C0
 	cmp r2, #0xff
 	ldr r7, [sb, #0xb4]
 	bne _0231D108
-	ldr r1, _0231D468 ; =0x020A1890
-	ldr r0, _0231D46C ; =0x020A1894
+	ldr r1, _0231D468 ; =WONDER_GUMMI_IQ_GAIN
+	ldr r0, _0231D46C ; =_020A1894
 	ldrsh r1, [r1]
 	ldrsh r0, [r0]
 	add fp, r4, r1
@@ -394,7 +394,7 @@ _0231D108:
 	ldrb r6, [r7, #0x5f]
 	mov r0, #0x24
 	smulbb r1, r1, r0
-	ldr fp, _0231D470 ; =0x020A22B0
+	ldr fp, _0231D470 ; =IQ_GUMMI_GAIN_TABLE
 	smulbb r6, r6, r0
 	add ip, fp, r1
 	mov r0, r2, lsl #1
@@ -404,7 +404,7 @@ _0231D108:
 	cmp ip, r0
 	addgt fp, r4, ip
 	addle fp, r4, r0
-	ldr ip, _0231D474 ; =0x020A2538
+	ldr ip, _0231D474 ; =GUMMI_BELLY_RESTORE_TABLE
 	mov r0, r2, lsl #1
 	add r2, ip, r1
 	add r1, ip, r6
@@ -471,13 +471,13 @@ _0231D214:
 	movge fp, #2
 	movlt fp, #3
 _0231D23C:
-	ldr r0, _0231D480 ; =0x023532D0
+	ldr r0, _0231D480 ; =GUMMI_IQ_STRING_IDS
 	mov r1, r5, lsl #1
 	ldrh r2, [r0, r1]
 	mov r0, sl
 	mov r1, sb
 	bl LogMessageByIdWithPopupCheckUserTarget
-	ldr r0, _0231D484 ; =0x02353324
+	ldr r0, _0231D484 ; =ov29_02353324
 	mov r1, fp, lsl #1
 	ldrh r2, [r0, r1]
 	mov r0, sl
@@ -492,13 +492,13 @@ _0231D23C:
 _0231D284:
 	cmp r5, #3
 	beq _0231D460
-	ldr r0, _0231D488 ; =0x022C44CC
+	ldr r0, _0231D488 ; =ov10_022C44CC
 	ldrsh r0, [r0]
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
 	beq _0231D460
 	ldr r5, [sb, #0xb4]
-	ldr r0, _0231D48C ; =0x022C45E4
+	ldr r0, _0231D48C ; =ov10_022C45E4
 	ldrb r1, [r5, #0x1a]
 	ldrsh r0, [r0]
 	str r1, [sp, #4]
@@ -515,7 +515,7 @@ _0231D284:
 	mov r0, #4
 	bl DungeonRandInt
 	mov r0, r0, lsl #0x10
-	ldr r1, _0231D490 ; =0x023529B0
+	ldr r1, _0231D490 ; =ov29_023529B0
 	mov r0, r0, lsr #0xf
 	ldrh r0, [r1, r0]
 _0231D2F4:
@@ -628,17 +628,17 @@ _0231D460:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0231D468: .word 0x020A1890
-_0231D46C: .word 0x020A1894
-_0231D470: .word 0x020A22B0
-_0231D474: .word 0x020A2538
+_0231D468: .word WONDER_GUMMI_IQ_GAIN
+_0231D46C: .word _020A1894
+_0231D470: .word IQ_GUMMI_GAIN_TABLE
+_0231D474: .word GUMMI_BELLY_RESTORE_TABLE
 _0231D478: .word 0x000003E7
 _0231D47C: .word 0x00000BF3
-_0231D480: .word 0x023532D0
-_0231D484: .word 0x02353324
-_0231D488: .word 0x022C44CC
-_0231D48C: .word 0x022C45E4
-_0231D490: .word 0x023529B0
+_0231D480: .word GUMMI_IQ_STRING_IDS
+_0231D484: .word ov29_02353324
+_0231D488: .word ov10_022C44CC
+_0231D48C: .word ov10_022C45E4
+_0231D490: .word ov29_023529B0
 _0231D494: .word 0x00000BF7
 _0231D498: .word 0x00000BF8
 _0231D49C: .word 0x00000BF9
@@ -712,7 +712,7 @@ ApplyGrimyFoodEffect: ; 0x0231D534
 _0231D580:
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _0231D674 ; =0x022C4680
+	ldr r1, _0231D674 ; =ov10_022C4680
 	ldrsh r1, [r1]
 	cmp r0, r1
 	blt _0231D66C
@@ -758,7 +758,7 @@ _0231D60C:
 	bl TryInflictParalysisStatus
 	b _0231D66C
 _0231D624:
-	ldr r0, _0231D678 ; =0x02352AEC
+	ldr r0, _0231D678 ; =ATK_STAT_IDX
 	mov ip, #1
 	ldr r2, [r0]
 	str ip, [sp]
@@ -767,7 +767,7 @@ _0231D624:
 	mov r3, #3
 	str ip, [sp, #4]
 	bl LowerOffensiveStat
-	ldr r0, _0231D67C ; =0x02352AE8
+	ldr r0, _0231D67C ; =SPATK_STAT_IDX
 	mov ip, #1
 	str ip, [sp]
 	ldr r2, [r0]
@@ -780,9 +780,9 @@ _0231D66C:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0231D674: .word 0x022C4680
-_0231D678: .word 0x02352AEC
-_0231D67C: .word 0x02352AE8
+_0231D674: .word ov10_022C4680
+_0231D678: .word ATK_STAT_IDX
+_0231D67C: .word SPATK_STAT_IDX
 	arm_func_end ApplyGrimyFoodEffect
 
 	arm_func_start ApplyMixElixirEffect
@@ -896,7 +896,7 @@ ApplyGravelyrockEffect: ; 0x0231D7C0
 	mov r1, #1
 	mov r4, r0
 	str r1, [sp]
-	ldr r0, _0231D830 ; =0x022C47E0
+	ldr r0, _0231D830 ; =ov10_022C47E0
 	mov r1, r5
 	ldrsh r2, [r0]
 	ldrsh r3, [r0, #2]
@@ -905,7 +905,7 @@ ApplyGravelyrockEffect: ; 0x0231D7C0
 	cmp r4, #0x1e0
 	cmpne r4, #0xb9
 	bne _0231D828
-	ldr r1, _0231D834 ; =0x022C47F0
+	ldr r1, _0231D834 ; =ov10_022C47F0
 	mov r0, r5
 	ldr r1, [r1]
 	mov r2, #0
@@ -916,8 +916,8 @@ _0231D828:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_0231D830: .word 0x022C47E0
-_0231D834: .word 0x022C47F0
+_0231D830: .word ov10_022C47E0
+_0231D834: .word ov10_022C47F0
 	arm_func_end ApplyGravelyrockEffect
 
 	arm_func_start ApplyGonePebbleEffect
@@ -972,7 +972,7 @@ ApplyGonePebbleEffect: ; 0x0231D838
 	mov r0, r6
 	mov r1, r5
 	bl TryInflictEndureStatus
-	ldr r0, _0231D9BC ; =0x02353538
+	ldr r0, _0231D9BC ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd6]
@@ -1022,7 +1022,7 @@ _0231D9A8:
 _0231D9B0: .word 0x000003FF
 _0231D9B4: .word 0x00000C65
 _0231D9B8: .word 0x00000C66
-_0231D9BC: .word 0x02353538
+_0231D9BC: .word ov29_02353538
 	arm_func_end ApplyGonePebbleEffect
 
 	arm_func_start ApplyGracideaEffect
@@ -1114,7 +1114,7 @@ _0231DAC8:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0231DAF0:
-	ldr fp, _0231DBE8 ; =0x02353538
+	ldr fp, _0231DBE8 ; =ov29_02353538
 	mov r4, #0
 _0231DAF8:
 	ldr r0, [fp]
@@ -1179,7 +1179,7 @@ _0231DB70:
 	.align 2, 0
 _0231DBE0: .word 0x00000BE7
 _0231DBE4: .word 0x00000BF4
-_0231DBE8: .word 0x02353538
+_0231DBE8: .word ov29_02353538
 _0231DBEC: .word 0x00000141
 	arm_func_end ov29_0231DA80
 
@@ -1201,7 +1201,7 @@ ov29_0231DBF0: ; 0x0231DBF0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0231DC2C:
-	ldr r4, _0231DD54 ; =0x02353538
+	ldr r4, _0231DD54 ; =ov29_02353538
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x75c]
 	cmp r0, #0
@@ -1269,7 +1269,7 @@ _0231DCEC:
 	mov r0, sl
 	mov r1, sb
 	bl ov29_022E5AE4
-	ldr r0, _0231DD54 ; =0x02353538
+	ldr r0, _0231DD54 ; =ov29_02353538
 	ldr r2, _0231DD5C ; =0x00000142
 	ldr r3, [r0]
 	mov r0, sl
@@ -1280,7 +1280,7 @@ _0231DCEC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0231DD50: .word 0x00000BE7
-_0231DD54: .word 0x02353538
+_0231DD54: .word ov29_02353538
 _0231DD58: .word 0x00000BA4
 _0231DD5C: .word 0x00000142
 	arm_func_end ov29_0231DBF0
@@ -1306,7 +1306,7 @@ ov29_0231DD60: ; 0x0231DD60
 	mov r0, #0
 	b _0231E044
 _0231DDA8:
-	ldr fp, _0231E050 ; =0x02353538
+	ldr fp, _0231E050 ; =ov29_02353538
 	mov r5, #0
 _0231DDB0:
 	ldr r0, [fp]
@@ -1495,7 +1495,7 @@ _0231E044:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0231E04C: .word 0x00000BE7
-_0231E050: .word 0x02353538
+_0231E050: .word ov29_02353538
 _0231E054: .word 0x0000016A
 _0231E058: .word 0x00000BF5
 	arm_func_end ov29_0231DD60
@@ -2116,7 +2116,7 @@ ov29_0231E8F0: ; 0x0231E8F0
 	mov sb, r5
 	mov r8, r5
 	mov r7, sl
-	ldr r4, _0231E98C ; =0x0235171C
+	ldr r4, _0231E98C ; =DIRECTIONS_XY
 	b _0231E97C
 _0231E914:
 	mov r1, r5, lsl #2
@@ -2152,7 +2152,7 @@ _0231E97C:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0231E98C: .word 0x0235171C
+_0231E98C: .word DIRECTIONS_XY
 	arm_func_end ov29_0231E8F0
 
 	arm_func_start ShouldTryEatItem
@@ -2171,7 +2171,7 @@ _0231E9B0:
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	ldr r0, _0231E9EC ; =0x022C4B74
+	ldr r0, _0231E9EC ; =EAT_ITEM_EFFECT_IGNORE_LIST
 	b _0231E9D8
 _0231E9C8:
 	cmp r4, r1
@@ -2185,7 +2185,7 @@ _0231E9D8:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0231E9EC: .word 0x022C4B74
+_0231E9EC: .word EAT_ITEM_EFFECT_IGNORE_LIST
 	arm_func_end ShouldTryEatItem
 
 	arm_func_start GetMaxPpWrapper
@@ -2232,7 +2232,7 @@ ov29_0231EA40: ; 0x0231EA40
 	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	bne _0231EA80
-	ldr r0, _0231EDC8 ; =0x02353538
+	ldr r0, _0231EDC8 ; =ov29_02353538
 	ldr r0, [r0]
 	add r1, r0, #0x4000
 	ldrsh r0, [r1, #0xd4]
@@ -2272,7 +2272,7 @@ _0231EAC8:
 	mov r6, #0
 	mov sb, #1
 _0231EAE0:
-	ldr fp, _0231EDC8 ; =0x02353538
+	ldr fp, _0231EDC8 ; =ov29_02353538
 	mov r5, #1
 	mov r4, #0
 _0231EAEC:
@@ -2341,7 +2341,7 @@ _0231EBCC:
 	add sb, sb, #1
 	cmp sb, #0x37
 	blt _0231EAE0
-	ldr r0, _0231EDC8 ; =0x02353538
+	ldr r0, _0231EDC8 ; =ov29_02353538
 	mov r2, #1
 	ldr r0, [r0]
 	add r1, r0, #0xcc00
@@ -2378,7 +2378,7 @@ _0231EC4C:
 	blt _0231EC10
 _0231EC64:
 	cmp r6, #0
-	ldrne r0, _0231EDC8 ; =0x02353538
+	ldrne r0, _0231EDC8 ; =ov29_02353538
 	mov r5, #0
 	ldrne r0, [r0]
 	movne r1, #0
@@ -2406,7 +2406,7 @@ _0231ECA8:
 	add r5, r5, #1
 	cmp r5, #0x38
 	blt _0231EC84
-	ldr r4, _0231EDC8 ; =0x02353538
+	ldr r4, _0231EDC8 ; =ov29_02353538
 	mov r5, #0
 _0231ECD4:
 	ldr r0, [r4]
@@ -2441,7 +2441,7 @@ _0231ED08:
 	mov r0, sl
 	mov r1, #1
 	bl ov29_02305814
-	ldr r4, _0231EDC8 ; =0x02353538
+	ldr r4, _0231EDC8 ; =ov29_02353538
 	mov r6, #0
 _0231ED58:
 	ldr r0, [r4]
@@ -2464,7 +2464,7 @@ _0231ED98:
 	add r6, r6, #1
 	cmp r6, #0x14
 	blt _0231ED58
-	ldr r0, _0231EDC8 ; =0x02353538
+	ldr r0, _0231EDC8 ; =ov29_02353538
 	mov r3, #1
 	ldr r1, [r0]
 	mov r0, #0x14
@@ -2474,7 +2474,7 @@ _0231ED98:
 	bl ov29_022EA370
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0231EDC8: .word 0x02353538
+_0231EDC8: .word ov29_02353538
 _0231EDCC: .word 0x00000E01
 _0231EDD0: .word 0x00000DFF
 _0231EDD4: .word 0x00000DFE

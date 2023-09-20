@@ -57,34 +57,34 @@ _022EAC24:
 
 	arm_func_start DungeonRngUnsetSecondary
 DungeonRngUnsetSecondary: ; 0x022EAC34
-	ldr r0, _022EAC48 ; =0x02353570
+	ldr r0, _022EAC48 ; =ov29_02353570
 	mov r1, #0
 	strb r1, [r0]
 	str r1, [r0, #0x10]
 	bx lr
 	.align 2, 0
-_022EAC48: .word 0x02353570
+_022EAC48: .word ov29_02353570
 	arm_func_end DungeonRngUnsetSecondary
 
 	arm_func_start DungeonRngSetSecondary
 DungeonRngSetSecondary: ; 0x022EAC4C
-	ldr r1, _022EAC60 ; =0x02353570
+	ldr r1, _022EAC60 ; =ov29_02353570
 	mov r2, #1
 	strb r2, [r1]
 	str r0, [r1, #0x10]
 	bx lr
 	.align 2, 0
-_022EAC60: .word 0x02353570
+_022EAC60: .word ov29_02353570
 	arm_func_end DungeonRngSetSecondary
 
 	arm_func_start DungeonRngSetPrimary
 DungeonRngSetPrimary: ; 0x022EAC64
-	ldr r0, _022EAC74 ; =0x02353570
+	ldr r0, _022EAC74 ; =ov29_02353570
 	mov r1, #0
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_022EAC74: .word 0x02353570
+_022EAC74: .word ov29_02353570
 	arm_func_end DungeonRngSetPrimary
 
 	arm_func_start ov29_022EAC78
@@ -164,7 +164,7 @@ MusicTableIdxToMusicId: ; 0x022EAD00
 	stmdb sp!, {r4, lr}
 	mov r1, #0xaa
 	bl __divsi3
-	ldr r0, _022EAD5C ; =0x022C555C
+	ldr r0, _022EAD5C ; =MUSIC_ID_TABLE
 	mov r1, r1, lsl #1
 	ldrh r4, [r0, r1]
 	tst r4, #0x8000
@@ -178,16 +178,16 @@ MusicTableIdxToMusicId: ; 0x022EAD00
 	ldr r1, _022EAD60 ; =0x00007FFF
 	mov r0, r0, lsl #0x10
 	and r1, r4, r1
-	ldr r3, _022EAD64 ; =0x022C51FC
+	ldr r3, _022EAD64 ; =RANDOM_MUSIC_ID_TABLE
 	mov r1, r1, lsl #0x10
 	mov r2, r0, asr #0xf
 	add r0, r3, r1, lsr #13
 	ldrh r0, [r2, r0]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EAD5C: .word 0x022C555C
+_022EAD5C: .word MUSIC_ID_TABLE
 _022EAD60: .word 0x00007FFF
-_022EAD64: .word 0x022C51FC
+_022EAD64: .word RANDOM_MUSIC_ID_TABLE
 	arm_func_end MusicTableIdxToMusicId
 
 	arm_func_start ov29_022EAD68
@@ -212,10 +212,10 @@ _022EADA4:
 	cmp r6, #0x1f4
 	blt _022EAD88
 _022EADAC:
-	ldr r0, _022EAE0C ; =0x02353538
+	ldr r0, _022EAE0C ; =ov29_02353538
 	mov r1, #0xc
 	ldr r0, [r0]
-	ldr r2, _022EAE10 ; =0x022C6C70
+	ldr r2, _022EAE10 ; =FIXED_ROOM_PROPERTIES_TABLE
 	add r0, r0, #0x4000
 	ldrb r3, [r0, #0xda]
 	smulbb r1, r3, r1
@@ -238,13 +238,13 @@ _022EAE00:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022EAE08: .word 0x00001410
-_022EAE0C: .word 0x02353538
-_022EAE10: .word 0x022C6C70
+_022EAE0C: .word ov29_02353538
+_022EAE10: .word FIXED_ROOM_PROPERTIES_TABLE
 	arm_func_end ov29_022EAD68
 
 	arm_func_start ChangeDungeonMusic
 ChangeDungeonMusic: ; 0x022EAE14
-	ldr r3, _022EAE38 ; =0x02353538
+	ldr r3, _022EAE38 ; =ov29_02353538
 	ldr r1, _022EAE3C ; =0x0002CB06
 	ldr ip, [r3]
 	sub r2, r1, #6
@@ -254,14 +254,14 @@ ChangeDungeonMusic: ; 0x022EAE14
 	strh r1, [r0, r2]
 	bx lr
 	.align 2, 0
-_022EAE38: .word 0x02353538
+_022EAE38: .word ov29_02353538
 _022EAE3C: .word 0x0002CB06
 	arm_func_end ChangeDungeonMusic
 
 	arm_func_start ov29_022EAE40
 ov29_022EAE40: ; 0x022EAE40
 	stmdb sp!, {r4, lr}
-	ldr lr, _022EAEA0 ; =0x02353538
+	ldr lr, _022EAEA0 ; =ov29_02353538
 	ldr r2, _022EAEA4 ; =0x0002CB02
 	ldr r4, [lr]
 	ldr r1, _022EAEA8 ; =0x000003E7
@@ -285,7 +285,7 @@ ov29_022EAE40: ; 0x022EAE40
 	strh r1, [r0, #0x96]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EAEA0: .word 0x02353538
+_022EAEA0: .word ov29_02353538
 _022EAEA4: .word 0x0002CB02
 _022EAEA8: .word 0x000003E7
 	arm_func_end ov29_022EAE40
@@ -295,7 +295,7 @@ ov29_022EAEAC: ; 0x022EAEAC
 	stmdb sp!, {r3, lr}
 	bl sub_02017ACC
 	ldr r0, _022EAEE4 ; =0x0002CB02
-	ldr r2, _022EAEE8 ; =0x02353538
+	ldr r2, _022EAEE8 ; =ov29_02353538
 	ldr ip, _022EAEEC ; =0x000003E7
 	ldr r3, [r2]
 	add r1, r0, #2
@@ -308,7 +308,7 @@ ov29_022EAEAC: ; 0x022EAEAC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022EAEE4: .word 0x0002CB02
-_022EAEE8: .word 0x02353538
+_022EAEE8: .word ov29_02353538
 _022EAEEC: .word 0x000003E7
 	arm_func_end ov29_022EAEAC
 
@@ -322,7 +322,7 @@ _022EAEF8: .word sub_02017D80
 
 	arm_func_start ov29_022EAEFC
 ov29_022EAEFC: ; 0x022EAEFC
-	ldr r0, _022EAF1C ; =0x02353538
+	ldr r0, _022EAF1C ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x792]
 	cmp r0, #0
@@ -331,33 +331,33 @@ ov29_022EAEFC: ; 0x022EAEFC
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_022EAF1C: .word 0x02353538
+_022EAF1C: .word ov29_02353538
 	arm_func_end ov29_022EAEFC
 
 	arm_func_start ov29_022EAF20
 ov29_022EAF20: ; 0x022EAF20
-	ldr r0, _022EAF30 ; =0x02353538
+	ldr r0, _022EAF30 ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x792]
 	bx lr
 	.align 2, 0
-_022EAF30: .word 0x02353538
+_022EAF30: .word ov29_02353538
 	arm_func_end ov29_022EAF20
 
 	arm_func_start ov29_022EAF34
 ov29_022EAF34: ; 0x022EAF34
-	ldr r1, _022EAF44 ; =0x02353538
+	ldr r1, _022EAF44 ; =ov29_02353538
 	ldr r1, [r1]
 	strb r0, [r1, #0x792]
 	bx lr
 	.align 2, 0
-_022EAF44: .word 0x02353538
+_022EAF44: .word ov29_02353538
 	arm_func_end ov29_022EAF34
 
 	arm_func_start ov29_022EAF48
 ov29_022EAF48: ; 0x022EAF48
 	stmdb sp!, {r4, lr}
-	ldr ip, _022EAFA8 ; =0x02353538
+	ldr ip, _022EAFA8 ; =ov29_02353538
 	mov r4, #0
 	ldr r3, [ip]
 	ldr lr, _022EAFAC ; =0x000003E7
@@ -383,14 +383,14 @@ _022EAFA0:
 	bl ov29_022EAE40
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EAFA8: .word 0x02353538
+_022EAFA8: .word ov29_02353538
 _022EAFAC: .word 0x000003E7
 	arm_func_end ov29_022EAF48
 
 	arm_func_start ov29_022EAFB0
 ov29_022EAFB0: ; 0x022EAFB0
 	stmdb sp!, {r4, lr}
-	ldr r0, _022EB168 ; =0x02353538
+	ldr r0, _022EB168 ; =ov29_02353538
 	ldr r3, [r0]
 	cmp r3, #0
 	ldmeqia sp!, {r4, pc}
@@ -404,7 +404,7 @@ ov29_022EAFB0: ; 0x022EAFB0
 	ldrb r1, [r3, #0x792]
 	cmp r1, #0
 	beq _022EB004
-	ldr r0, _022EB170 ; =0x023516E8
+	ldr r0, _022EB170 ; =ov29_023516E8
 	ldr r0, [r0, r1, lsl #2]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -511,9 +511,9 @@ _022EB124:
 	str r0, [r4]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EB168: .word 0x02353538
+_022EB168: .word ov29_02353538
 _022EB16C: .word 0x000003E7
-_022EB170: .word 0x023516E8
+_022EB170: .word ov29_023516E8
 _022EB174: .word 0x00007FFF
 	arm_func_end ov29_022EAFB0
 
@@ -616,7 +616,7 @@ _022EB2C4: .word 0x00000B76
 ov29_022EB2C8: ; 0x022EB2C8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
-	ldr r0, _022EB360 ; =0x0237C91C
+	ldr r0, _022EB360 ; =ov29_0237C91C
 	mov r2, r5, lsl #3
 	ldrh r6, [r0, r2]
 	mov r4, r1
@@ -633,18 +633,18 @@ _022EB2F8:
 	mov r7, r0, lsr #0x10
 	mov r0, r7
 	bl StringFromMessageId
-	ldr r1, _022EB368 ; =0x02352070
+	ldr r1, _022EB368 ; =ov29_02352070
 	bl strcmp
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
 	tst r0, #0xff
 	beq _022EB34C
-	ldr r0, _022EB36C ; =0x0237C91E
+	ldr r0, _022EB36C ; =ov29_0237C91E
 	mov r1, r5, lsl #3
 	ldrsh r0, [r0, r1]
 	bl sub_0200D208
-	ldr r1, _022EB370 ; =0x02352032
+	ldr r1, _022EB370 ; =ov29_02352032
 	mov r0, r0, lsl #2
 	ldrh r0, [r1, r0]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -655,11 +655,11 @@ _022EB34C:
 	movne r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022EB360: .word 0x0237C91C
+_022EB360: .word ov29_0237C91C
 _022EB364: .word 0x000009C9
-_022EB368: .word 0x02352070
-_022EB36C: .word 0x0237C91E
-_022EB370: .word 0x02352032
+_022EB368: .word ov29_02352070
+_022EB36C: .word ov29_0237C91E
+_022EB370: .word ov29_02352032
 _022EB374: .word 0x000009CA
 	arm_func_end ov29_022EB2C8
 
@@ -668,12 +668,12 @@ ov29_022EB378: ; 0x022EB378
 	stmdb sp!, {r3, lr}
 	ldrsh r0, [r0, #4]
 	bl sub_0200D208
-	ldr r1, _022EB394 ; =0x02352030
+	ldr r1, _022EB394 ; =ov29_02352030
 	mov r0, r0, lsl #2
 	ldrh r0, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022EB394: .word 0x02352030
+_022EB394: .word ov29_02352030
 	arm_func_end ov29_022EB378
 
 	arm_func_start ov29_022EB398
@@ -772,7 +772,7 @@ _022EB498:
 	blo _022EB4DC
 	cmp r2, #0x94
 	bhs _022EB4DC
-	ldr r0, _022EB4E4 ; =0x02353538
+	ldr r0, _022EB4E4 ; =ov29_02353538
 	sub r1, r2, #0x90
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
@@ -785,7 +785,7 @@ _022EB4DC:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022EB4E4: .word 0x02353538
+_022EB4E4: .word ov29_02353538
 	arm_func_end GetItemToUseByIndex
 
 	arm_func_start ov29_022EB4E8
@@ -834,7 +834,7 @@ ov29_022EB568: ; 0x022EB568
 	ldr r2, [r0, #0xb4]
 	mov r0, #6
 	mla r2, r1, r0, r2
-	ldr r0, _022EB590 ; =0x02353538
+	ldr r0, _022EB590 ; =ov29_02353538
 	ldrb r1, [r2, #0x4e]
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
@@ -842,7 +842,7 @@ ov29_022EB568: ; 0x022EB568
 	ldr r0, [r0, #0xb28]
 	bx lr
 	.align 2, 0
-_022EB590: .word 0x02353538
+_022EB590: .word ov29_02353538
 	arm_func_end ov29_022EB568
 
 	arm_func_start ov29_022EB594
@@ -881,13 +881,13 @@ GetItemAction: ; 0x022EB5D8
 	moveq r0, #0x35
 	ldmeqia sp!, {r3, pc}
 	bl GetItemCategoryVeneer
-	ldr r1, _022EB608 ; =0x02352010
+	ldr r1, _022EB608 ; =ITEM_CATEGORY_ACTIONS
 	mov r0, r0, lsl #1
 	ldrh r0, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022EB604: .word 0x0000016B
-_022EB608: .word 0x02352010
+_022EB608: .word ITEM_CATEGORY_ACTIONS
 	arm_func_end GetItemAction
 
 	arm_func_start RemoveUsedItem
@@ -970,7 +970,7 @@ _022EB71C:
 	ldrb r1, [r4, #1]
 	cmp r1, #0
 	beq _022EB7C8
-	ldr r0, _022EB800 ; =0x02353538
+	ldr r0, _022EB800 ; =ov29_02353538
 	sub r1, r1, #1
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
@@ -1029,29 +1029,29 @@ _022EB7F8:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_022EB800: .word 0x02353538
+_022EB800: .word ov29_02353538
 	arm_func_end ov29_022EB668
 
 	arm_func_start ov29_022EB804
 ov29_022EB804: ; 0x022EB804
 	cmp r0, #0
-	ldrge r1, _022EB818 ; =0x0237C920
+	ldrge r1, _022EB818 ; =ov29_0237C920
 	movlt r0, #0
 	ldrgeb r0, [r1, r0, lsl #3]
 	bx lr
 	.align 2, 0
-_022EB818: .word 0x0237C920
+_022EB818: .word ov29_0237C920
 	arm_func_end ov29_022EB804
 
 	arm_func_start AddDungeonSubMenuOption
 AddDungeonSubMenuOption: ; 0x022EB81C
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r2, _022EB89C ; =0x0237C918
+	ldr r2, _022EB89C ; =ov29_0237C918
 	ldr r2, [r2]
 	cmp r2, #0xa
 	ldmgeia sp!, {r4, r5, r6, pc}
 	mov r5, #0
-	ldr r4, _022EB8A0 ; =0x0237C91C
+	ldr r4, _022EB8A0 ; =ov29_0237C91C
 	b _022EB850
 _022EB83C:
 	mov r3, r5, lsl #3
@@ -1062,37 +1062,37 @@ _022EB83C:
 _022EB850:
 	cmp r5, r2
 	blt _022EB83C
-	ldr ip, _022EB89C ; =0x0237C918
-	ldr r4, _022EB8A0 ; =0x0237C91C
+	ldr ip, _022EB89C ; =ov29_0237C918
+	ldr r4, _022EB8A0 ; =ov29_0237C91C
 	mov r6, r2, lsl #3
 	ldr lr, [ip]
 	add r3, r0, #0x87
 	add lr, lr, #1
-	ldr r5, _022EB8A4 ; =0x0237C91E
+	ldr r5, _022EB8A4 ; =ov29_0237C91E
 	strh r0, [r4, r6]
-	ldr r4, _022EB8A8 ; =0x0237C920
+	ldr r4, _022EB8A8 ; =ov29_0237C920
 	strh r1, [r5, r6]
 	mov r1, #1
-	ldr r0, _022EB8AC ; =0x0237C922
+	ldr r0, _022EB8AC ; =ov29_0237C922
 	strb r1, [r4, r2, lsl #3]
 	add r1, r3, #0x900
 	strh r1, [r0, r6]
 	str lr, [ip]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022EB89C: .word 0x0237C918
-_022EB8A0: .word 0x0237C91C
-_022EB8A4: .word 0x0237C91E
-_022EB8A8: .word 0x0237C920
-_022EB8AC: .word 0x0237C922
+_022EB89C: .word ov29_0237C918
+_022EB8A0: .word ov29_0237C91C
+_022EB8A4: .word ov29_0237C91E
+_022EB8A8: .word ov29_0237C920
+_022EB8AC: .word ov29_0237C922
 	arm_func_end AddDungeonSubMenuOption
 
 	arm_func_start ov29_022EB8B0
 ov29_022EB8B0: ; 0x022EB8B0
-	ldr r1, _022EB8EC ; =0x0237C918
+	ldr r1, _022EB8EC ; =ov29_0237C918
 	mov r3, #0
 	ldr ip, [r1]
-	ldr r2, _022EB8F0 ; =0x0237C91C
+	ldr r2, _022EB8F0 ; =ov29_0237C91C
 	b _022EB8DC
 _022EB8C4:
 	mov r1, r3, lsl #3
@@ -1107,23 +1107,23 @@ _022EB8DC:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_022EB8EC: .word 0x0237C918
-_022EB8F0: .word 0x0237C91C
+_022EB8EC: .word ov29_0237C918
+_022EB8F0: .word ov29_0237C91C
 	arm_func_end ov29_022EB8B0
 
 	arm_func_start DisableDungeonSubMenuOption
 DisableDungeonSubMenuOption: ; 0x022EB8F4
 	stmdb sp!, {r3, lr}
-	ldr r1, _022EB938 ; =0x0237C918
+	ldr r1, _022EB938 ; =ov29_0237C918
 	mov ip, #0
 	ldr lr, [r1]
-	ldr r2, _022EB93C ; =0x0237C91C
+	ldr r2, _022EB93C ; =ov29_0237C91C
 	b _022EB92C
 _022EB90C:
 	mov r3, ip, lsl #3
 	ldrh r1, [r2, r3]
 	cmp r0, r1
-	ldreq r0, _022EB940 ; =0x0237C920
+	ldreq r0, _022EB940 ; =ov29_0237C920
 	moveq r1, #0
 	streqb r1, [r0, r3]
 	ldmeqia sp!, {r3, pc}
@@ -1133,9 +1133,9 @@ _022EB92C:
 	blt _022EB90C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022EB938: .word 0x0237C918
-_022EB93C: .word 0x0237C91C
-_022EB940: .word 0x0237C920
+_022EB938: .word ov29_0237C918
+_022EB93C: .word ov29_0237C91C
+_022EB940: .word ov29_0237C920
 	arm_func_end DisableDungeonSubMenuOption
 
 	arm_func_start ov29_022EB944
@@ -1170,15 +1170,15 @@ _022EB964:
 ov29_022EB9A0: ; 0x022EB9A0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
-	ldr r0, _022EBA64 ; =0x0237C918
+	ldr r0, _022EBA64 ; =ov29_0237C918
 	mov r3, #0
 	ldr ip, [r0]
 	b _022EBA54
 _022EB9B8:
 	add lr, r3, #1
 	mov r2, r3, lsl #3
-	ldr r1, _022EBA68 ; =0x0237C91C
-	ldr r0, _022EBA6C ; =0x02352074
+	ldr r1, _022EBA68 ; =ov29_0237C91C
+	ldr r0, _022EBA6C ; =ov29_02352074
 	b _022EBA48
 _022EB9CC:
 	mov r4, lr, lsl #3
@@ -1226,28 +1226,28 @@ _022EBA54:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022EBA64: .word 0x0237C918
-_022EBA68: .word 0x0237C91C
-_022EBA6C: .word 0x02352074
+_022EBA64: .word ov29_0237C918
+_022EBA68: .word ov29_0237C91C
+_022EBA6C: .word ov29_02352074
 	arm_func_end ov29_022EB9A0
 
 	arm_func_start ov29_022EBA70
 ov29_022EBA70: ; 0x022EBA70
-	ldr r0, _022EBA80 ; =0x0237C918
+	ldr r0, _022EBA80 ; =ov29_0237C918
 	mov r1, #0
 	str r1, [r0]
 	bx lr
 	.align 2, 0
-_022EBA80: .word 0x0237C918
+_022EBA80: .word ov29_0237C918
 	arm_func_end ov29_022EBA70
 
 	arm_func_start ov29_022EBA84
 ov29_022EBA84: ; 0x022EBA84
-	ldr r0, _022EBA90 ; =0x0237C918
+	ldr r0, _022EBA90 ; =ov29_0237C918
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
-_022EBA90: .word 0x0237C918
+_022EBA90: .word ov29_0237C918
 	arm_func_end ov29_022EBA84
 
 	arm_func_start ov29_022EBA94
@@ -1266,12 +1266,12 @@ ov29_022EBAB0: ; 0x022EBAB0
 	ldrb ip, [sp]
 	cmp ip, #0
 	cmpeq r3, #0
-	ldrne r0, _022EBB48 ; =0x0237C96C
+	ldrne r0, _022EBB48 ; =ov29_0237C96C
 	movne r2, #0x80
 	strneb r2, [r0]
 	bne _022EBB30
 	cmp r2, #0
-	ldreq r2, _022EBB48 ; =0x0237C96C
+	ldreq r2, _022EBB48 ; =ov29_0237C96C
 	addeq r0, r0, #1
 	streqb r0, [r2]
 	beq _022EBB30
@@ -1299,35 +1299,35 @@ _022EBB18:
 _022EBB20:
 	mov r2, #0
 _022EBB24:
-	ldr r0, _022EBB48 ; =0x0237C96C
+	ldr r0, _022EBB48 ; =ov29_0237C96C
 	add r2, r2, #0x90
 	strb r2, [r0]
 _022EBB30:
 	ldrsh r2, [r1]
-	ldr r0, _022EBB48 ; =0x0237C96C
+	ldr r0, _022EBB48 ; =ov29_0237C96C
 	strh r2, [r0, #2]
 	ldrsh r1, [r1, #2]
 	strh r1, [r0, #4]
 	bx lr
 	.align 2, 0
-_022EBB48: .word 0x0237C96C
+_022EBB48: .word ov29_0237C96C
 	arm_func_end ov29_022EBAB0
 
 	arm_func_start ov29_022EBB4C
 ov29_022EBB4C: ; 0x022EBB4C
-	ldr r0, _022EBB64 ; =0x0237C96C
+	ldr r0, _022EBB64 ; =ov29_0237C96C
 	mov r1, #0
 	strb r1, [r0]
 	strh r1, [r0, #2]
 	strh r1, [r0, #4]
 	bx lr
 	.align 2, 0
-_022EBB64: .word 0x0237C96C
+_022EBB64: .word ov29_0237C96C
 	arm_func_end ov29_022EBB4C
 
 	arm_func_start ov29_022EBB68
 ov29_022EBB68: ; 0x022EBB68
-	ldr r1, _022EBB88 ; =0x0237C96C
+	ldr r1, _022EBB88 ; =ov29_0237C96C
 	ldrh r2, [r1]
 	strh r2, [r0]
 	ldrh r2, [r1, #2]
@@ -1336,24 +1336,24 @@ ov29_022EBB68: ; 0x022EBB68
 	strh r1, [r0, #4]
 	bx lr
 	.align 2, 0
-_022EBB88: .word 0x0237C96C
+_022EBB88: .word ov29_0237C96C
 	arm_func_end ov29_022EBB68
 
 	arm_func_start ov29_022EBB8C
 ov29_022EBB8C: ; 0x022EBB8C
-	ldr r0, _022EBB94 ; =0x0237C96C
+	ldr r0, _022EBB94 ; =ov29_0237C96C
 	bx lr
 	.align 2, 0
-_022EBB94: .word 0x0237C96C
+_022EBB94: .word ov29_0237C96C
 	arm_func_end ov29_022EBB8C
 
 	arm_func_start ov29_022EBB98
 ov29_022EBB98: ; 0x022EBB98
-	ldr r0, _022EBBA4 ; =0x0237C96C
+	ldr r0, _022EBBA4 ; =ov29_0237C96C
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_022EBBA4: .word 0x0237C96C
+_022EBBA4: .word ov29_0237C96C
 	arm_func_end ov29_022EBB98
 
 	arm_func_start ov29_022EBBA8
@@ -1361,7 +1361,7 @@ ov29_022EBBA8: ; 0x022EBBA8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl SetMonsterActionFields
-	ldr r0, _022EBBE4 ; =0x0237C96C
+	ldr r0, _022EBBE4 ; =ov29_0237C96C
 	mov r1, #0
 	ldrh r2, [r0]
 	strh r2, [r4, #4]
@@ -1374,7 +1374,7 @@ ov29_022EBBA8: ; 0x022EBBA8
 	strh r1, [r4, #0xe]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EBBE4: .word 0x0237C96C
+_022EBBE4: .word ov29_0237C96C
 	arm_func_end ov29_022EBBA8
 
 	arm_func_start ov29_022EBBE8
@@ -1383,7 +1383,7 @@ ov29_022EBBE8: ; 0x022EBBE8
 	mov r1, #0xc
 	mov r4, r0
 	bl SetMonsterActionFields
-	ldr r0, _022EBC28 ; =0x0237C96C
+	ldr r0, _022EBC28 ; =ov29_0237C96C
 	mov r1, #0
 	ldrh r2, [r0]
 	strh r2, [r4, #4]
@@ -1396,7 +1396,7 @@ ov29_022EBBE8: ; 0x022EBBE8
 	strh r1, [r4, #0xe]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EBC28: .word 0x0237C96C
+_022EBC28: .word ov29_0237C96C
 	arm_func_end ov29_022EBBE8
 
 	arm_func_start ov29_022EBC2C
@@ -1512,7 +1512,7 @@ _022EBD60:
 	mov r5, #0
 	b _022EBECC
 _022EBD80:
-	ldr r0, _022EC2FC ; =0x02353538
+	ldr r0, _022EC2FC ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -1528,7 +1528,7 @@ _022EBD80:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _022EBED4
-	ldr r1, _022EC2FC ; =0x02353538
+	ldr r1, _022EC2FC ; =ov29_02353538
 	mov r0, r4
 	ldr r1, [r1]
 	str r4, [r1, #0xc4]
@@ -1538,8 +1538,8 @@ _022EBD80:
 	mov r0, r4
 	strb r1, [r6, #0x14e]
 	bl CalcSpeedStageWrapper
-	ldr r1, _022EC2FC ; =0x02353538
-	ldr r3, _022EC300 ; =0x02352284
+	ldr r1, _022EC2FC ; =ov29_02353538
+	ldr r3, _022EC300 ; =FRACTIONAL_TURN_SEQUENCE
 	ldr r2, [r1]
 	mov r1, #0x32
 	add r2, r2, #0x700
@@ -1622,7 +1622,7 @@ _022EBEE4:
 	add fp, sp, #0
 	mov r6, #0
 _022EBF18:
-	ldr r0, _022EC2FC ; =0x02353538
+	ldr r0, _022EC2FC ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, sl, lsl #2
 	add r0, r0, #0x12000
@@ -1696,7 +1696,7 @@ _022EC00C:
 	cmp r0, #0
 	bne _022EC094
 	mov r4, #0
-	ldr r5, _022EC2FC ; =0x02353538
+	ldr r5, _022EC2FC ; =ov29_02353538
 	mov r6, r4
 _022EC038:
 	ldr r0, [r5]
@@ -1730,9 +1730,9 @@ _022EC094:
 	mov sb, #0
 	mov r5, sb
 	mov r7, sb
-	ldr r6, _022EC300 ; =0x02352284
+	ldr r6, _022EC300 ; =FRACTIONAL_TURN_SEQUENCE
 	mov fp, #0x32
-	ldr r4, _022EC2FC ; =0x02353538
+	ldr r4, _022EC2FC ; =ov29_02353538
 	b _022EC1C0
 _022EC0BC:
 	ldr r0, [r4]
@@ -1809,7 +1809,7 @@ _022EC1C8:
 	cmp r0, #0
 	bne _022EC23C
 	mov r4, #0
-	ldr r5, _022EC2FC ; =0x02353538
+	ldr r5, _022EC2FC ; =ov29_02353538
 	mov r6, r4
 _022EC1E0:
 	ldr r0, [r5]
@@ -1840,8 +1840,8 @@ _022EC23C:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _022EC2F4
-	ldr r4, _022EC2FC ; =0x02353538
-	ldr r1, _022EC304 ; =0x023522B6
+	ldr r4, _022EC2FC ; =ov29_02353538
+	ldr r1, _022EC304 ; =ov29_023522B6
 	ldr r0, [r4]
 	add r0, r0, #0x700
 	ldrsh r0, [r0, #0x80]
@@ -1876,7 +1876,7 @@ _022EC2AC:
 	mov r0, #0
 	bl TryForcedLoss
 _022EC2C4:
-	ldr r1, _022EC2FC ; =0x02353538
+	ldr r1, _022EC2FC ; =ov29_02353538
 	ldr r0, [r1]
 	add r0, r0, #0x700
 	ldrsh r2, [r0, #0x80]
@@ -1892,9 +1892,9 @@ _022EC2F4:
 	add sp, sp, #0x40
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EC2FC: .word 0x02353538
-_022EC300: .word 0x02352284
-_022EC304: .word 0x023522B6
+_022EC2FC: .word ov29_02353538
+_022EC300: .word FRACTIONAL_TURN_SEQUENCE
+_022EC304: .word ov29_023522B6
 	arm_func_end RunFractionalTurn
 
 	arm_func_start RunLeaderTurn
@@ -1909,8 +1909,8 @@ RunLeaderTurn: ; 0x022EC308
 	bl TryActivateArtificialWeatherAbilities
 	mov r0, r4
 	bl CalcSpeedStageWrapper
-	ldr r1, _022EC600 ; =0x02353538
-	ldr r3, _022EC604 ; =0x02352284
+	ldr r1, _022EC600 ; =ov29_02353538
+	ldr r3, _022EC604 ; =FRACTIONAL_TURN_SEQUENCE
 	ldr r2, [r1]
 	mov r1, #0x32
 	add r2, r2, #0x700
@@ -1939,7 +1939,7 @@ _022EC380:
 	bl DisplayActions
 	cmp r0, #0
 	bne _022EC3C8
-	ldr r0, _022EC600 ; =0x02353538
+	ldr r0, _022EC600 ; =ov29_02353538
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x78b]
 	cmp r0, #0
@@ -1966,7 +1966,7 @@ _022EC3E8:
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r0, _022EC600 ; =0x02353538
+	ldr r0, _022EC600 ; =ov29_02353538
 	mov r1, #0
 	ldr r2, [r0]
 	cmp sl, #0
@@ -1985,12 +1985,12 @@ _022EC434:
 	bl ov29_022E81F8
 	mov r0, sb
 	bl EnemyEvolution
-	ldr r0, _022EC600 ; =0x02353538
+	ldr r0, _022EC600 ; =ov29_02353538
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x11]
 	bl SetLeaderAction
-	ldr r0, _022EC600 ; =0x02353538
+	ldr r0, _022EC600 ; =ov29_02353538
 	mov r1, #0
 	ldr r0, [r0]
 	strb r1, [r0, #0x11]
@@ -2019,7 +2019,7 @@ _022EC434:
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r4, _022EC600 ; =0x02353538
+	ldr r4, _022EC600 ; =ov29_02353538
 	ldr r1, [r4]
 	ldrb r0, [r1, #0x10]
 	cmp r0, #0
@@ -2076,13 +2076,13 @@ _022EC59C:
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r0, _022EC600 ; =0x02353538
+	ldr r0, _022EC600 ; =ov29_02353538
 	ldr r1, [r0]
 	ldr r0, [r1, #0xc8]
 	cmp r0, #0
 	beq _022EC5DC
 	bl ChangeLeader
-	ldr r0, _022EC600 ; =0x02353538
+	ldr r0, _022EC600 ; =ov29_02353538
 	mov r1, #0
 	ldr r0, [r0]
 	mov sl, #1
@@ -2099,6 +2099,6 @@ _022EC5DC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EC600: .word 0x02353538
-_022EC604: .word 0x02352284
+_022EC600: .word ov29_02353538
+_022EC604: .word FRACTIONAL_TURN_SEQUENCE
 	arm_func_end RunLeaderTurn

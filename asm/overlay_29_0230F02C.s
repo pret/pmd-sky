@@ -6,7 +6,7 @@
 	arm_func_start ov29_0230F02C
 ov29_0230F02C: ; 0x0230F02C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r4, _0230F138 ; =0x023536FC
+	ldr r4, _0230F138 ; =ov29_023536FC
 	mov r6, #0
 	mov sl, r0
 	mov fp, r1
@@ -14,7 +14,7 @@ ov29_0230F02C: ; 0x0230F02C
 	mov r8, r3
 	str r6, [r4]
 _0230F04C:
-	ldr r0, _0230F13C ; =0x02353538
+	ldr r0, _0230F13C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
@@ -76,8 +76,8 @@ _0230F128:
 	blt _0230F04C
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0230F138: .word 0x023536FC
-_0230F13C: .word 0x02353538
+_0230F138: .word ov29_023536FC
+_0230F13C: .word ov29_02353538
 	arm_func_end ov29_0230F02C
 
 	arm_func_start ov29_0230F140
@@ -216,7 +216,7 @@ _0230F2B0:
 	bl LogMessageByIdWithPopup
 	b _0230F624
 _0230F300:
-	ldr r0, _0230F63C ; =0x02353538
+	ldr r0, _0230F63C ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb sb, [r0, #0x75b]
 	cmp sb, #0
@@ -224,7 +224,7 @@ _0230F300:
 	ldrb r0, [r6, #6]
 	cmp r0, #0
 	bne _0230F36C
-	ldr r0, _0230F640 ; =0x020AF6B8
+	ldr r0, _0230F640 ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, #0
 	ldr r0, [r0]
 	add r2, sp, #0
@@ -442,8 +442,8 @@ _0230F62C: .word 0x00000C5E
 _0230F630: .word 0x00001305
 _0230F634: .word 0x00001308
 _0230F638: .word 0x00000C5F
-_0230F63C: .word 0x02353538
-_0230F640: .word 0x020AF6B8
+_0230F63C: .word ov29_02353538
+_0230F640: .word BAG_ITEMS_PTR_MIRROR
 _0230F644: .word 0x00001304
 _0230F648: .word 0x00000C61
 _0230F64C: .word 0x00000C62
@@ -558,7 +558,7 @@ ExclusiveItemDefenseBoost: ; 0x0230F788
 TeamMemberHasItemActive: ; 0x0230F798
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, #0
-	ldr r4, _0230F80C ; =0x02353538
+	ldr r4, _0230F80C ; =ov29_02353538
 	mov sb, r0
 	mov r8, r1
 	mov r5, r6
@@ -588,7 +588,7 @@ _0230F7F0:
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0230F80C: .word 0x02353538
+_0230F80C: .word ov29_02353538
 	arm_func_end TeamMemberHasItemActive
 
 	arm_func_start ItemIsActive__0230F810
@@ -612,7 +612,7 @@ TeamMemberHasExclusiveItemEffectActive: ; 0x0230F840
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	mov r6, #0
-	ldr r5, _0230F8A8 ; =0x02353538
+	ldr r5, _0230F8A8 ; =ov29_02353538
 	b _0230F898
 _0230F854:
 	ldr r0, [r5]
@@ -639,7 +639,7 @@ _0230F898:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0230F8A8: .word 0x02353538
+_0230F8A8: .word ov29_02353538
 	arm_func_end TeamMemberHasExclusiveItemEffectActive
 
 	arm_func_start ExclusiveItemEffectIsActive__0230F8AC
@@ -667,7 +667,7 @@ ov29_0230F8D0: ; 0x0230F8D0
 	ldr r0, [r8, #0xb4]
 	mov r5, #0
 	ldrb r6, [r0, #0x4c]
-	ldr r4, _0230F97C ; =0x0235171C
+	ldr r4, _0230F97C ; =DIRECTIONS_XY
 	b _0230F96C
 _0230F900:
 	mov r1, r6, lsl #2
@@ -704,7 +704,7 @@ _0230F96C:
 	mov r0, #0xff
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0230F97C: .word 0x0235171C
+_0230F97C: .word DIRECTIONS_XY
 	arm_func_end ov29_0230F8D0
 
 	arm_func_start IsMonster__0230F980
@@ -741,7 +741,7 @@ ov29_0230F9A4: ; 0x0230F9A4
 TrySpawnEnemyItemDrop: ; 0x0230F9D8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
-	ldr r2, _0230FB28 ; =0x02353538
+	ldr r2, _0230FB28 ; =ov29_02353538
 	mov r6, r0
 	ldr r0, [r2]
 	mov r5, r1
@@ -810,7 +810,7 @@ _0230FAC4:
 	bl ExclusiveItemEffectIsActive__0230F8AC
 	cmp r0, #0
 	beq _0230FB20
-	ldr r0, _0230FB2C ; =0x022C4650
+	ldr r0, _0230FB2C ; =ov10_022C4650
 	ldrsh r0, [r0]
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
@@ -828,14 +828,14 @@ _0230FB20:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0230FB28: .word 0x02353538
-_0230FB2C: .word 0x022C4650
+_0230FB28: .word ov29_02353538
+_0230FB2C: .word ov10_022C4650
 	arm_func_end TrySpawnEnemyItemDrop
 
 	arm_func_start ov29_0230FB30
 ov29_0230FB30: ; 0x0230FB30
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _0230FB88 ; =0x023529A8
+	ldr r1, _0230FB88 ; =ov29_023529A8
 	mov r5, r0
 	ldrh r2, [r1]
 	add r0, sp, #0
@@ -857,7 +857,7 @@ ov29_0230FB30: ; 0x0230FB30
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0230FB88: .word 0x023529A8
+_0230FB88: .word ov29_023529A8
 _0230FB8C: .word 0x00000F62
 	arm_func_end ov29_0230FB30
 
@@ -890,7 +890,7 @@ _0230FBB8:
 	mov r0, #0x64
 	bl DungeonRandInt
 	ldrb r2, [r4, #0x107]
-	ldr r1, _0230FC20 ; =0x022C4BE4
+	ldr r1, _0230FC20 ; =ov10_022C4BE4
 	mov r2, r2, lsl #1
 	ldrsh r1, [r1, r2]
 	cmp r0, r1
@@ -901,7 +901,7 @@ _0230FBB8:
 	strb r0, [r4, #0x107]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0230FC20: .word 0x022C4BE4
+_0230FC20: .word ov10_022C4BE4
 	arm_func_end TickNoSlipCap
 
 	arm_func_start ov29_0230FC24
@@ -939,7 +939,7 @@ ov29_0230FC24: ; 0x0230FC24
 	mov r0, #0x64
 	bl DungeonRandInt
 	ldrb r2, [r4, #0x17c]
-	ldr r1, _02310A6C ; =0x022C4BBC
+	ldr r1, _02310A6C ; =ov10_022C4BBC
 	mov r2, r2, lsl #1
 	ldrsh r1, [r1, r2]
 	cmp r0, r1
@@ -1020,7 +1020,7 @@ _0230FD0C:
 	ldr r3, _02310A70 ; =0x0000199A
 	cmp r7, #0x13
 	mov r6, #0
-	ldr r2, _02310A74 ; =0x022C4FC4
+	ldr r2, _02310A74 ; =ov10_022C4FC4
 	movgt r7, #0x13
 	add r0, sp, #0x2c
 	add r1, sp, #0x24
@@ -1030,7 +1030,7 @@ _0230FD0C:
 	bl MultiplyFixedPoint64
 	ldrb r2, [r4, #0x15d]
 	cmp r2, #1
-	ldrhi r0, _02310A78 ; =0x022C4A5C
+	ldrhi r0, _02310A78 ; =ov10_022C4A5C
 	ldrhi r1, [sp, #0x30]
 	ldrhi r0, [r0, r2, lsl #2]
 	addhi r0, r1, r0, lsl #16
@@ -1174,13 +1174,13 @@ _0230FFE8:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r0, _02310A84 ; =0x02353538
+	ldr r0, _02310A84 ; =ov29_02353538
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x799]
 	cmp r0, #0xa
 	addlo r0, r0, #1
 	strlob r0, [r1, #0x799]
-	ldr r0, _02310A84 ; =0x02353538
+	ldr r0, _02310A84 ; =ov29_02353538
 	mov r1, r5
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x799]
@@ -1213,7 +1213,7 @@ _0230FFE8:
 	movne r6, #0
 	b _023100E8
 _023100D8:
-	ldr r0, _02310A84 ; =0x02353538
+	ldr r0, _02310A84 ; =ov29_02353538
 	mov r1, #0
 	ldr r0, [r0]
 	strb r1, [r0, #0x799]
@@ -1222,7 +1222,7 @@ _023100E8:
 	beq _0231013C
 	cmp r7, #0
 	beq _02310124
-	ldr r0, _02310A84 ; =0x02353538
+	ldr r0, _02310A84 ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	cmp r0, #0
@@ -1248,7 +1248,7 @@ _0231013C:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r0, _02310A84 ; =0x02353538
+	ldr r0, _02310A84 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd5a]
@@ -1282,7 +1282,7 @@ _0231013C:
 	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	bne _02310360
-	ldr r0, _02310A9C ; =0x022C46EC
+	ldr r0, _02310A9C ; =ov10_022C46EC
 	ldr r3, _02310AA0 ; =0x0000025F
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1322,7 +1322,7 @@ _023101FC:
 	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	bne _02310360
-	ldr r0, _02310A9C ; =0x022C46EC
+	ldr r0, _02310A9C ; =ov10_022C46EC
 	ldr r3, _02310AA0 ; =0x0000025F
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1350,7 +1350,7 @@ _02310298:
 	mov r0, #2
 	mov r1, #0x5a
 	bl ov29_0234B084
-	ldr r0, _02310A9C ; =0x022C46EC
+	ldr r0, _02310A9C ; =ov10_022C46EC
 	mov r2, #0x19
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1375,7 +1375,7 @@ _02310304:
 	mov r0, #2
 	mov r1, #0x55
 	bl ov29_0234B084
-	ldr r0, _02310A9C ; =0x022C46EC
+	ldr r0, _02310A9C ; =ov10_022C46EC
 	ldr r3, _02310AA0 ; =0x0000025F
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1398,7 +1398,7 @@ _0231037C:
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023103F8
-	ldr r0, _02310AA4 ; =0x022C46A0
+	ldr r0, _02310AA4 ; =ov10_022C46A0
 	ldrsh r0, [r0]
 	cmp r6, r0
 	bge _023103F8
@@ -1460,7 +1460,7 @@ _02310474:
 	cmp r0, #0
 	beq _023104C0
 	ldrb r1, [r4, #0x11f]
-	ldr r0, _02310AA8 ; =0x022C466C
+	ldr r0, _02310AA8 ; =SPEED_BOOST_TURNS
 	add r2, r1, #1
 	ldrsh r0, [r0]
 	and r1, r2, #0xff
@@ -1508,13 +1508,13 @@ _023104F8:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r1, _02310AAC ; =0x022C4610
+	ldr r1, _02310AAC ; =BURN_DAMAGE_COOLDOWN
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r5
 	strb r2, [r4, #0xc1]
 	bl ov29_02307BDC
-	ldr r0, _02310AB0 ; =0x022C44D4
+	ldr r0, _02310AB0 ; =BURN_DAMAGE
 	mov r2, #1
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1584,7 +1584,7 @@ _02310614:
 	bl ExclusiveItemEffectIsActive__02311064
 	cmp r0, #0
 	beq _0231067C
-	ldr r0, _02310AB8 ; =0x022C4664
+	ldr r0, _02310AB8 ; =ov10_022C4664
 	mov r3, #0
 	ldrsh r2, [r0]
 	mov r0, r5
@@ -1609,7 +1609,7 @@ _023106A4:
 	cmp r0, #0
 	beq _02310754
 	mov sl, #0
-	ldr r6, _02310A84 ; =0x02353538
+	ldr r6, _02310A84 ; =ov29_02353538
 	mov sb, sl
 	mov r7, #1
 _023106C8:
@@ -1641,7 +1641,7 @@ _02310718:
 	blt _023106C8
 	cmp sl, #0
 	beq _02310754
-	ldr r0, _02310ABC ; =0x022C464C
+	ldr r0, _02310ABC ; =ov10_022C464C
 	mov r6, #1
 	ldrsh r2, [r0]
 	mov r0, r5
@@ -1671,7 +1671,7 @@ _02310754:
 	ldreqb r0, [r4, #0xbf]
 	cmpeq r0, #2
 	bne _02310FF4
-	ldr r1, _02310AC0 ; =0x022C46A8
+	ldr r1, _02310AC0 ; =POISON_DAMAGE_COOLDOWN
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -1682,7 +1682,7 @@ _02310754:
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023107F8
-	ldr r0, _02310AC4 ; =0x022C44D8
+	ldr r0, _02310AC4 ; =POISON_DAMAGE
 	mov r6, #1
 	ldrsh r2, [r0]
 	mov r0, r5
@@ -1692,7 +1692,7 @@ _02310754:
 	bl TryIncreaseHp
 	b _02310810
 _023107F8:
-	ldr r0, _02310AC4 ; =0x022C44D8
+	ldr r0, _02310AC4 ; =POISON_DAMAGE
 	mov r2, #3
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1721,7 +1721,7 @@ _02310830:
 	cmp r6, #0x1d
 	addlo r0, r6, #1
 	strlob r0, [r4, #0xc2]
-	ldr r0, _02310AC8 ; =0x022C4414
+	ldr r0, _02310AC8 ; =BAD_POISON_DAMAGE_COOLDOWN
 	cmp r6, #0x1d
 	ldrsh r0, [r0]
 	movge r6, #0x1d
@@ -1747,7 +1747,7 @@ _02310830:
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023108F4
-	ldr r0, _02310ACC ; =0x022C4C9C
+	ldr r0, _02310ACC ; =BAD_POISON_DAMAGE_TABLE
 	mov r1, r6, lsl #1
 	ldrsh r2, [r0, r1]
 	mov r6, #1
@@ -1758,7 +1758,7 @@ _02310830:
 	bl TryIncreaseHp
 	b _02310910
 _023108F4:
-	ldr r0, _02310ACC ; =0x022C4C9C
+	ldr r0, _02310ACC ; =BAD_POISON_DAMAGE_TABLE
 	mov r1, r6, lsl #1
 	ldrsh r1, [r0, r1]
 	mov r2, #3
@@ -1793,7 +1793,7 @@ _0231092C:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r1, _02310AD0 ; =0x022C4454
+	ldr r1, _02310AD0 ; =ov10_022C4454
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -1802,7 +1802,7 @@ _0231092C:
 	ldr r1, [r4, #0xc8]
 	mov r0, r5
 	bl ov29_022E42E8
-	ldr r1, _02310AD4 ; =0x022C446C
+	ldr r1, _02310AD4 ; =ov10_022C446C
 	mov r0, r5
 	ldrsh r1, [r1]
 	mov r2, #2
@@ -1836,13 +1836,13 @@ _023109D4:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r1, _02310AD8 ; =0x022C45F0
+	ldr r1, _02310AD8 ; =ov10_022C45F0
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r5
 	strb r2, [r4, #0xcd]
 	bl ov29_02307BDC
-	ldr r0, _02310ADC ; =0x022C45D0
+	ldr r0, _02310ADC ; =ov10_022C45D0
 	ldr r3, _02310AE0 ; =0x0000024A
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1858,41 +1858,41 @@ _02310A4C:
 	beq _02310B6C
 	b _02310FF4
 	.align 2, 0
-_02310A6C: .word 0x022C4BBC
+_02310A6C: .word ov10_022C4BBC
 _02310A70: .word 0x0000199A
-_02310A74: .word 0x022C4FC4
-_02310A78: .word 0x022C4A5C
+_02310A74: .word ov10_022C4FC4
+_02310A78: .word ov10_022C4A5C
 _02310A7C: .word 0x00000DE6
 _02310A80: .word 0x00000DE7
-_02310A84: .word 0x02353538
+_02310A84: .word ov29_02353538
 _02310A88: .word 0x00000DE8
 _02310A8C: .word 0x00000DE9
 _02310A90: .word 0x00000DEA
 _02310A94: .word 0x00001303
 _02310A98: .word 0x00000DBD
-_02310A9C: .word 0x022C46EC
+_02310A9C: .word ov10_022C46EC
 _02310AA0: .word 0x0000025F
-_02310AA4: .word 0x022C46A0
-_02310AA8: .word 0x022C466C
-_02310AAC: .word 0x022C4610
-_02310AB0: .word 0x022C44D4
+_02310AA4: .word ov10_022C46A0
+_02310AA8: .word SPEED_BOOST_TURNS
+_02310AAC: .word BURN_DAMAGE_COOLDOWN
+_02310AB0: .word BURN_DAMAGE
 _02310AB4: .word 0x000003E7
-_02310AB8: .word 0x022C4664
-_02310ABC: .word 0x022C464C
-_02310AC0: .word 0x022C46A8
-_02310AC4: .word 0x022C44D8
-_02310AC8: .word 0x022C4414
-_02310ACC: .word 0x022C4C9C
-_02310AD0: .word 0x022C4454
-_02310AD4: .word 0x022C446C
-_02310AD8: .word 0x022C45F0
-_02310ADC: .word 0x022C45D0
+_02310AB8: .word ov10_022C4664
+_02310ABC: .word ov10_022C464C
+_02310AC0: .word POISON_DAMAGE_COOLDOWN
+_02310AC4: .word POISON_DAMAGE
+_02310AC8: .word BAD_POISON_DAMAGE_COOLDOWN
+_02310ACC: .word BAD_POISON_DAMAGE_TABLE
+_02310AD0: .word ov10_022C4454
+_02310AD4: .word ov10_022C446C
+_02310AD8: .word ov10_022C45F0
+_02310ADC: .word ov10_022C45D0
 _02310AE0: .word 0x0000024A
-_02310AE4: .word 0x022C45E8
-_02310AE8: .word 0x022C4590
-_02310AEC: .word 0x022C44BC
-_02310AF0: .word 0x022C46AC
-_02310AF4: .word 0x022C4588
+_02310AE4: .word ov10_022C45E8
+_02310AE8: .word ov10_022C4590
+_02310AEC: .word ov10_022C44BC
+_02310AF0: .word LEECH_SEED_DAMAGE_COOLDOWN
+_02310AF4: .word LEECH_SEED_HP_DRAIN
 _02310AF8:
 	cmp r0, #5
 	bne _02310B6C
@@ -1912,8 +1912,8 @@ _02310AF8:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r1, _02310AE4 ; =0x022C45E8
-	ldr r0, _02310AE8 ; =0x022C4590
+	ldr r1, _02310AE4 ; =ov10_022C45E8
+	ldr r0, _02310AE8 ; =ov10_022C4590
 	ldrsh r3, [r1]
 	ldrsh r2, [r0]
 	mov r0, r5
@@ -1942,7 +1942,7 @@ _02310B6C:
 	movgt r1, r0
 	mov r0, r1, asr #1
 	add r0, r1, r0, lsr #30
-	ldr r1, _02310AEC ; =0x022C44BC
+	ldr r1, _02310AEC ; =ov10_022C44BC
 	movs r6, r0, asr #2
 	ldrsh r1, [r1]
 	mov r0, #0
@@ -1991,15 +1991,15 @@ _02310C28:
 	ldrb r0, [r4, #0xea]
 	cmp r0, #0
 	bne _02310DC4
-	ldr r0, _02310A84 ; =0x02353538
+	ldr r0, _02310A84 ; =ov29_02353538
 	ldrb r2, [r4, #0xe8]
 	ldr r0, [r0]
-	ldr r1, _02310AF0 ; =0x022C46AC
+	ldr r1, _02310AF0 ; =LEECH_SEED_DAMAGE_COOLDOWN
 	add r0, r0, r2, lsl #2
 	add r0, r0, #0x12000
 	ldr r7, [r0, #0xb78]
 	ldrsh r1, [r1]
-	ldr r0, _02310AF4 ; =0x022C4588
+	ldr r0, _02310AF4 ; =LEECH_SEED_HP_DRAIN
 	cmp r7, #0
 	ldrsh r6, [r0]
 	strb r1, [r4, #0xea]

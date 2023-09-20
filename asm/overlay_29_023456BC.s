@@ -1366,7 +1366,7 @@ _023469DC: .word 0x02353538
 ov29_023469E0: ; 0x023469E0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r8, #0
-	ldr r5, _02346A60 ; =0x020AF6B8
+	ldr r5, _02346A60 ; =BAG_ITEMS_PTR_MIRROR
 	mov sl, r0
 	mov r6, r8
 	mov r7, #1
@@ -1399,7 +1399,7 @@ _02346A48:
 	bl ov29_022FB920
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02346A60: .word 0x020AF6B8
+_02346A60: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end ov29_023469E0
 
 	arm_func_start ov29_02346A64
@@ -1474,7 +1474,7 @@ _02346B5C:
 	cmp sb, #4
 	blt _02346AE8
 	mov r4, #0
-	ldr r6, _02346BD4 ; =0x020AF6B8
+	ldr r6, _02346BD4 ; =BAG_ITEMS_PTR_MIRROR
 	mov r8, #0x55
 	mov r7, r4
 	mov r5, #6
@@ -1503,13 +1503,13 @@ _02346BB8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02346BD0: .word 0x02353538
-_02346BD4: .word 0x020AF6B8
+_02346BD4: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end ov29_02346A64
 
 	arm_func_start CheckTeamItemsFlags
 CheckTeamItemsFlags: ; 0x02346BD8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _02346CB4 ; =0x020AF6B8
+	ldr r1, _02346CB4 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, #0
 	mov r5, r0
 	ldr r8, [r1]
@@ -1570,7 +1570,7 @@ _02346CA4:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02346CB4: .word 0x020AF6B8
+_02346CB4: .word BAG_ITEMS_PTR_MIRROR
 _02346CB8: .word 0x02353538
 	arm_func_end CheckTeamItemsFlags
 
@@ -1579,7 +1579,7 @@ ov29_02346CBC: ; 0x02346CBC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sb, #0
 	mov r8, #1
-	ldr r5, _02346DA0 ; =0x020AF6B8
+	ldr r5, _02346DA0 ; =BAG_ITEMS_PTR_MIRROR
 	mov r7, sb
 	mov fp, sb
 	mov r6, r8
@@ -1638,7 +1638,7 @@ _02346D8C:
 	bl RemoveEmptyItemsInBag
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02346DA0: .word 0x020AF6B8
+_02346DA0: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end ov29_02346CBC
 
 	arm_func_start ov29_02346DA4
@@ -1701,7 +1701,7 @@ ov29_02346E48: ; 0x02346E48
 ov29_02346E5C: ; 0x02346E5C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
-	ldr r1, _02346EB8 ; =0x020AF6B8
+	ldr r1, _02346EB8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, r5
 	mov ip, #1
 	mov r0, #6
@@ -1725,7 +1725,7 @@ _02346EA8:
 	blt _02346E74
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02346EB8: .word 0x020AF6B8
+_02346EB8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end ov29_02346E5C
 
 	arm_func_start ov29_02346EBC
@@ -1763,7 +1763,7 @@ AddHeldItemToBag: ; 0x02346F14
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	bl GetCurrentBagCapacity
-	ldr r1, _02346FB4 ; =0x020AF6B8
+	ldr r1, _02346FB4 ; =BAG_ITEMS_PTR_MIRROR
 	mov lr, #0
 	ldr r6, [r1]
 	mov r2, lr
@@ -1782,7 +1782,7 @@ _02346F3C:
 	mov r0, r5
 	bl ov29_02346EBC
 	strb r0, [r5, #0x63]
-	ldr r0, _02346FB4 ; =0x020AF6B8
+	ldr r0, _02346FB4 ; =BAG_ITEMS_PTR_MIRROR
 	ldrh r1, [r5, #0x62]
 	ldr r2, [r0]
 	add r0, r5, #0x62
@@ -1804,7 +1804,7 @@ _02346FA4:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02346FB4: .word 0x020AF6B8
+_02346FB4: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end AddHeldItemToBag
 
 	arm_func_start ov29_02346FB8
@@ -1865,7 +1865,7 @@ ov29_02347040: ; 0x02347040
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r8, #0
 	ldr r5, _023470F8 ; =0x02353538
-	ldr r6, _023470FC ; =0x020AF6B8
+	ldr r6, _023470FC ; =BAG_ITEMS_PTR_MIRROR
 	mov fp, r8
 	mov r7, #1
 	mov r4, #6
@@ -1913,7 +1913,7 @@ _023470E8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _023470F8: .word 0x02353538
-_023470FC: .word 0x020AF6B8
+_023470FC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end ov29_02347040
 
 	arm_func_start ov29_02347100
@@ -2282,7 +2282,7 @@ _023475E8:
 	ldrb r0, [r8]
 	cmp r0, #0
 	bne _023476BC
-	ldr r1, _02347B40 ; =0x0235171C
+	ldr r1, _02347B40 ; =DIRECTIONS_XY
 	mov r2, sb, lsl #2
 	add r0, r1, sb, lsl #2
 	ldrsh r7, [r4, #0xd0]
@@ -2309,7 +2309,7 @@ _02347668:
 	ldrb fp, [r7, r0]
 	cmp fp, #8
 	bge _023476B0
-	ldr r0, _02347B40 ; =0x0235171C
+	ldr r0, _02347B40 ; =DIRECTIONS_XY
 	mov r1, fp, lsl #2
 	ldrsh r1, [r0, r1]
 	add r0, r0, fp, lsl #2
@@ -2331,7 +2331,7 @@ _023476B4:
 _023476BC:
 	mov r0, sb, lsl #0x10
 	mov r1, r0, lsr #0x10
-	ldr r0, _02347B40 ; =0x0235171C
+	ldr r0, _02347B40 ; =DIRECTIONS_XY
 	mov r2, r1, lsl #2
 	ldrh r2, [r0, r2]
 	add r1, r0, r1, lsl #2
@@ -2598,7 +2598,7 @@ _02347A94:
 _02347A9C:
 	mov r0, sb, lsl #0x10
 	mov r0, r0, lsr #0x10
-	ldr r1, _02347B40 ; =0x0235171C
+	ldr r1, _02347B40 ; =DIRECTIONS_XY
 	mov r2, r0, lsl #2
 	add r0, r1, r0, lsl #2
 	ldrh r1, [r1, r2]
@@ -2641,7 +2641,7 @@ _02347B34:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02347B3C: .word 0x02353538
-_02347B40: .word 0x0235171C
+_02347B40: .word DIRECTIONS_XY
 _02347B44: .word 0x023516FC
 _02347B48: .word 0x00000BE1
 _02347B4C: .word 0x00000BE5

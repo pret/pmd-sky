@@ -11,7 +11,7 @@ TryActivateBadDreams: ; 0x0231B1B8
 	ldr r0, [sl, #0xb4]
 	mov r6, #0
 	ldrb r0, [r0, #6]
-	ldr r4, _0231B30C ; =0x02353538
+	ldr r4, _0231B30C ; =ov29_02353538
 	mov r7, #0
 	cmp r0, #0
 	moveq r0, #1
@@ -51,7 +51,7 @@ _0231B240:
 	mov r0, #2
 	mov r1, #0x69
 	bl ov29_0234B084
-	ldr r0, _0231B310 ; =0x022C4530
+	ldr r0, _0231B310 ; =ov10_022C4530
 	mov r8, #0
 	ldrsh r7, [r0]
 	mov r4, #0x18
@@ -98,8 +98,8 @@ _0231B2FC:
 	add sp, sp, #0x50
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0231B30C: .word 0x02353538
-_0231B310: .word 0x022C4530
+_0231B30C: .word ov29_02353538
+_0231B310: .word ov10_022C4530
 _0231B314: .word 0x0000026E
 	arm_func_end TryActivateBadDreams
 
@@ -121,14 +121,14 @@ ActivateStench: ; 0x0231B33C
 	stmdb sp!, {r4, lr}
 	ldr r4, [r0, #0xb4]
 	bl ov29_022E60E4
-	ldr r0, _0231B360 ; =0x022C457C
+	ldr r0, _0231B360 ; =ov10_022C457C
 	mov r1, #2
 	ldrsh r0, [r0]
 	strb r1, [r4, #0x104]
 	strb r0, [r4, #0x105]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0231B360: .word 0x022C457C
+_0231B360: .word ov10_022C457C
 	arm_func_end ActivateStench
 
 	arm_func_start TryActivateSteadfast
@@ -217,7 +217,7 @@ _0231B44C:
 	arm_func_start ov29_0231B460
 ov29_0231B460: ; 0x0231B460
 	stmdb sp!, {r3, lr}
-	ldr r0, _0231B48C ; =0x02353538
+	ldr r0, _0231B48C ; =ov29_02353538
 	ldr r2, [r0]
 	add r0, r2, #0x700
 	ldrsh r1, [r0, #0xa8]
@@ -228,26 +228,26 @@ ov29_0231B460: ; 0x0231B460
 	bl ov29_0231B3CC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0231B48C: .word 0x02353538
+_0231B48C: .word ov29_02353538
 	arm_func_end ov29_0231B460
 
 	arm_func_start ov29_0231B490
 ov29_0231B490: ; 0x0231B490
-	ldr r0, _0231B4A8 ; =0x02353538
+	ldr r0, _0231B4A8 ; =ov29_02353538
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	strb r1, [r0, #0xe3c]
 	bx lr
 	.align 2, 0
-_0231B4A8: .word 0x02353538
+_0231B4A8: .word ov29_02353538
 	arm_func_end ov29_0231B490
 
 	arm_func_start ov29_0231B4AC
 ov29_0231B4AC: ; 0x0231B4AC
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
-	ldreq r0, _0231B4E8 ; =0x02353538
+	ldreq r0, _0231B4E8 ; =ov29_02353538
 	ldreq r0, [r0]
 	addeq r0, r0, #0x3000
 	ldreqb r0, [r0, #0xe3c]
@@ -255,13 +255,13 @@ ov29_0231B4AC: ; 0x0231B4AC
 	cmp r0, #1
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0231B4E8 ; =0x02353538
+	ldr r0, _0231B4E8 ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x748]
 	bl IsSkyExclusiveDungeon
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0231B4E8: .word 0x02353538
+_0231B4E8: .word ov29_02353538
 	arm_func_end ov29_0231B4AC
 
 	arm_func_start ChangeShayminForme
@@ -349,9 +349,9 @@ _0231B5F4:
 	bl ov29_022E9FD0
 	ldr r0, _0231B684 ; =0x00000217
 	cmp r5, r0
-	ldreq r0, _0231B688 ; =0x02353538
+	ldreq r0, _0231B688 ; =ov29_02353538
 	moveq r1, #1
-	ldrne r0, _0231B688 ; =0x02353538
+	ldrne r0, _0231B688 ; =ov29_02353538
 	movne r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -375,7 +375,7 @@ _0231B678:
 	.align 2, 0
 _0231B680: .word 0x00000216
 _0231B684: .word 0x00000217
-_0231B688: .word 0x02353538
+_0231B688: .word ov29_02353538
 	arm_func_end ChangeShayminForme
 
 	arm_func_start ApplyItemEffect
@@ -522,7 +522,7 @@ _0231B860:
 	cmp sb, #0
 	beq _0231B8E4
 	add r1, sp, #0x21
-	ldr r0, _0231C6D0 ; =0x022C4574
+	ldr r0, _0231C6D0 ; =ov10_022C4574
 	str r1, [sp]
 	mov r4, #0
 	ldrsh r2, [r0]
@@ -572,7 +572,7 @@ _0231B94C:
 	cmp sb, #0
 	beq _0231B994
 	add r1, sp, #0x20
-	ldr r0, _0231C6D8 ; =0x022C4558
+	ldr r0, _0231C6D8 ; =ov10_022C4558
 	str r1, [sp]
 	mov r4, #0
 	ldrsh r2, [r0]
@@ -912,7 +912,7 @@ _0231BE50:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x52
 	bl InitMove
-	ldr r0, _0231C704 ; =0x022C4624
+	ldr r0, _0231C704 ; =STICK_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -927,7 +927,7 @@ _0231BE88:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x4a
 	bl InitMove
-	ldr r0, _0231C708 ; =0x022C46E8
+	ldr r0, _0231C708 ; =IRON_THORN_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -942,7 +942,7 @@ _0231BEC0:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x42
 	bl InitMove
-	ldr r0, _0231C70C ; =0x022C46E4
+	ldr r0, _0231C70C ; =SILVER_SPIKE_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -957,7 +957,7 @@ _0231BEF8:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x3a
 	bl InitMove
-	ldr r0, _0231C710 ; =0x022C46E0
+	ldr r0, _0231C710 ; =GOLD_FANG_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -972,7 +972,7 @@ _0231BF30:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x32
 	bl InitMove
-	ldr r0, _0231C714 ; =0x022C46DC
+	ldr r0, _0231C714 ; =CACNEA_SPIKE_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -987,7 +987,7 @@ _0231BF68:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x2a
 	bl InitMove
-	ldr r0, _0231C718 ; =0x022C46D8
+	ldr r0, _0231C718 ; =CORSOLA_TWIG_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -1001,7 +1001,7 @@ _0231BF68:
 _0231BFA0:
 	mov r4, #0
 	str r4, [sp]
-	ldr r0, _0231C71C ; =0x022C46B4
+	ldr r0, _0231C71C ; =GEO_PEBBLE_DAMAGE
 	ldr r1, _0231C720 ; =0x0000024F
 	str r4, [sp, #4]
 	str r1, [sp, #8]
@@ -1017,7 +1017,7 @@ _0231BFA0:
 _0231BFDC:
 	mov r4, #0
 	str r4, [sp]
-	ldr r0, _0231C724 ; =0x022C46B8
+	ldr r0, _0231C724 ; =GRAVELEROCK_DAMAGE
 	ldr r1, _0231C720 ; =0x0000024F
 	str r4, [sp, #4]
 	str r1, [sp, #8]
@@ -1034,7 +1034,7 @@ _0231C018:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x22
 	bl InitMove
-	ldr r0, _0231C728 ; =0x022C44D0
+	ldr r0, _0231C728 ; =GOLD_THORN_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -1048,7 +1048,7 @@ _0231C018:
 _0231C050:
 	mov r4, #0
 	str r4, [sp]
-	ldr r0, _0231C72C ; =0x022C46BC
+	ldr r0, _0231C72C ; =RARE_FOSSIL_DAMAGE
 	ldr r1, _0231C720 ; =0x0000024F
 	str r4, [sp, #4]
 	str r1, [sp, #8]
@@ -1069,8 +1069,8 @@ _0231C08C:
 	bl EndNegativeStatusConditionWrapper
 	b _0231CB14
 _0231C0A4:
-	ldr r1, _0231C730 ; =0x022C45EC
-	ldr r0, _0231C734 ; =0x022C44F4
+	ldr r1, _0231C730 ; =ORAN_BERRY_HP_RESTORATION
+	ldr r0, _0231C734 ; =ORAN_BERRY_FULL_HP_BOOST
 	ldrsh r2, [r1]
 	ldrsh r3, [r0]
 	mov r4, #1
@@ -1080,8 +1080,8 @@ _0231C0A4:
 	bl TryIncreaseHp
 	b _0231CB14
 _0231C0CC:
-	ldr r1, _0231C738 ; =0x022C4478
-	ldr r0, _0231C73C ; =0x022C45F4
+	ldr r1, _0231C738 ; =SITRUS_BERRY_HP_RESTORATION
+	ldr r0, _0231C73C ; =SITRUS_BERRY_FULL_HP_BOOST
 	ldrsh r2, [r1]
 	ldrsh r3, [r0]
 	mov r4, #1
@@ -1091,7 +1091,7 @@ _0231C0CC:
 	bl TryIncreaseHp
 	b _0231CB14
 _0231C0F4:
-	ldr r0, _0231C740 ; =0x022C44F8
+	ldr r0, _0231C740 ; =LIFE_SEED_HP_BOOST
 	mov r4, #1
 	ldrsh r3, [r0]
 	mov r0, r8
@@ -1150,7 +1150,7 @@ _0231C1A4:
 	bl TryWarp
 	b _0231CB14
 _0231C1BC:
-	ldr r1, _0231C744 ; =0x022C4720
+	ldr r1, _0231C744 ; =SLEEP_TURN_RANGE
 	mov r0, r7
 	mov r2, #1
 	bl CalcStatusDuration
@@ -1219,28 +1219,28 @@ _0231C28C:
 	bl RestoreAllMovePP
 	b _0231CB14
 _0231C2A4:
-	ldr r1, _0231C750 ; =0x022C4420
+	ldr r1, _0231C750 ; =PROTEIN_STAT_BOOST
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
 	bl ApplyProteinEffect
 	b _0231CB14
 _0231C2BC:
-	ldr r1, _0231C754 ; =0x022C46CC
+	ldr r1, _0231C754 ; =CALCIUM_STAT_BOOST
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
 	bl ApplyCalciumEffect
 	b _0231CB14
 _0231C2D4:
-	ldr r1, _0231C758 ; =0x022C46C8
+	ldr r1, _0231C758 ; =IRON_STAT_BOOST
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
 	bl ApplyIronEffect
 	b _0231CB14
 _0231C2EC:
-	ldr r1, _0231C75C ; =0x022C46C4
+	ldr r1, _0231C75C ; =ZINC_STAT_BOOST
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
@@ -1322,7 +1322,7 @@ _0231C3F4:
 	bl ApplyGrimyFoodEffect
 	b _0231CB14
 _0231C404:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1330,7 +1330,7 @@ _0231C404:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C420:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1338,7 +1338,7 @@ _0231C420:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C43C:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1346,7 +1346,7 @@ _0231C43C:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C458:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1354,7 +1354,7 @@ _0231C458:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C474:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1362,7 +1362,7 @@ _0231C474:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C490:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1370,7 +1370,7 @@ _0231C490:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C4AC:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1378,7 +1378,7 @@ _0231C4AC:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C4C8:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1386,7 +1386,7 @@ _0231C4C8:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C4E4:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1394,7 +1394,7 @@ _0231C4E4:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C500:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1402,7 +1402,7 @@ _0231C500:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C51C:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1410,7 +1410,7 @@ _0231C51C:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C538:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1418,7 +1418,7 @@ _0231C538:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C554:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1426,7 +1426,7 @@ _0231C554:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C570:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1434,7 +1434,7 @@ _0231C570:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C58C:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1442,7 +1442,7 @@ _0231C58C:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C5A8:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1450,7 +1450,7 @@ _0231C5A8:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C5C4:
-	ldr r1, _0231C760 ; =0x020A1888
+	ldr r1, _0231C760 ; =GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1458,7 +1458,7 @@ _0231C5C4:
 	bl ApplyGummiBoostsDungeonMode
 	b _0231CB14
 _0231C5E0:
-	ldr r1, _0231C764 ; =0x020A18B0
+	ldr r1, _0231C764 ; =WONDER_GUMMI_STAT_BOOST
 	mov r0, r8
 	ldrsh r3, [r1]
 	mov r1, r7
@@ -1496,7 +1496,7 @@ _0231C65C:
 	cmp sb, #0
 	beq _0231C6A4
 	add r1, sp, #0x1f
-	ldr r0, _0231C6D8 ; =0x022C4558
+	ldr r0, _0231C6D8 ; =ov10_022C4558
 	str r1, [sp]
 	mov r4, #0
 	ldrsh r2, [r0]
@@ -1525,9 +1525,9 @@ _0231C6C0: .word 0x000001AB
 _0231C6C4: .word 0x00001317
 _0231C6C8: .word 0x00000BE6
 _0231C6CC: .word 0x00000BE7
-_0231C6D0: .word 0x022C4574
+_0231C6D0: .word ov10_022C4574
 _0231C6D4: .word 0x00000256
-_0231C6D8: .word 0x022C4558
+_0231C6D8: .word ov10_022C4558
 _0231C6DC: .word 0x00000BE8
 _0231C6E0: .word 0x0000016B
 _0231C6E4: .word 0x00000192
@@ -1538,31 +1538,31 @@ _0231C6F4: .word 0x000001A2
 _0231C6F8: .word 0x000001A6
 _0231C6FC: .word 0x000001AA
 _0231C700: .word 0x00000195
-_0231C704: .word 0x022C4624
-_0231C708: .word 0x022C46E8
-_0231C70C: .word 0x022C46E4
-_0231C710: .word 0x022C46E0
-_0231C714: .word 0x022C46DC
-_0231C718: .word 0x022C46D8
-_0231C71C: .word 0x022C46B4
+_0231C704: .word STICK_POWER
+_0231C708: .word IRON_THORN_POWER
+_0231C70C: .word SILVER_SPIKE_POWER
+_0231C710: .word GOLD_FANG_POWER
+_0231C714: .word CACNEA_SPIKE_POWER
+_0231C718: .word CORSOLA_TWIG_POWER
+_0231C71C: .word GEO_PEBBLE_DAMAGE
 _0231C720: .word 0x0000024F
-_0231C724: .word 0x022C46B8
-_0231C728: .word 0x022C44D0
-_0231C72C: .word 0x022C46BC
-_0231C730: .word 0x022C45EC
-_0231C734: .word 0x022C44F4
-_0231C738: .word 0x022C4478
-_0231C73C: .word 0x022C45F4
-_0231C740: .word 0x022C44F8
-_0231C744: .word 0x022C4720
+_0231C724: .word GRAVELEROCK_DAMAGE
+_0231C728: .word GOLD_THORN_POWER
+_0231C72C: .word RARE_FOSSIL_DAMAGE
+_0231C730: .word ORAN_BERRY_HP_RESTORATION
+_0231C734: .word ORAN_BERRY_FULL_HP_BOOST
+_0231C738: .word SITRUS_BERRY_HP_RESTORATION
+_0231C73C: .word SITRUS_BERRY_FULL_HP_BOOST
+_0231C740: .word LIFE_SEED_HP_BOOST
+_0231C744: .word SLEEP_TURN_RANGE
 _0231C748: .word 0x00000BE9
 _0231C74C: .word 0x000003E7
-_0231C750: .word 0x022C4420
-_0231C754: .word 0x022C46CC
-_0231C758: .word 0x022C46C8
-_0231C75C: .word 0x022C46C4
-_0231C760: .word 0x020A1888
-_0231C764: .word 0x020A18B0
+_0231C750: .word PROTEIN_STAT_BOOST
+_0231C754: .word CALCIUM_STAT_BOOST
+_0231C758: .word IRON_STAT_BOOST
+_0231C75C: .word ZINC_STAT_BOOST
+_0231C760: .word GUMMI_STAT_BOOST
+_0231C764: .word WONDER_GUMMI_STAT_BOOST
 _0231C768:
 	mov r0, r8
 	mov r1, r7
@@ -1591,7 +1591,7 @@ _0231C7B0:
 _0231C7C0:
 	mov r4, #0
 	str r4, [sp]
-	ldr r0, _0231CBB0 ; =0x022C4438
+	ldr r0, _0231CBB0 ; =OREN_BERRY_DAMAGE
 	str r4, [sp, #4]
 	mov r1, #0x270
 	str r1, [sp, #8]
@@ -1630,7 +1630,7 @@ _0231C844:
 	cmp sb, #0
 	beq _0231C88C
 	add r1, sp, #0x1e
-	ldr r0, _0231C6D8 ; =0x022C4558
+	ldr r0, _0231C6D8 ; =ov10_022C4558
 	str r1, [sp]
 	mov r4, #0
 	ldrsh r2, [r0]
@@ -1659,7 +1659,7 @@ _0231C8B0:
 	cmp sb, #0
 	beq _0231C8F8
 	add r1, sp, #0x1d
-	ldr r0, _0231C6D8 ; =0x022C4558
+	ldr r0, _0231C6D8 ; =ov10_022C4558
 	str r1, [sp]
 	mov r4, #0
 	ldrsh r2, [r0]
@@ -1688,7 +1688,7 @@ _0231C91C:
 	cmp sb, #0
 	beq _0231C964
 	add r1, sp, #0x1c
-	ldr r0, _0231C6D8 ; =0x022C4558
+	ldr r0, _0231C6D8 ; =ov10_022C4558
 	str r1, [sp]
 	mov r4, #0
 	ldrsh r2, [r0]
@@ -1717,7 +1717,7 @@ _0231C988:
 	cmp sb, #0
 	beq _0231C9D0
 	add r1, sp, #0x1b
-	ldr r0, _0231C6D8 ; =0x022C4558
+	ldr r0, _0231C6D8 ; =ov10_022C4558
 	str r1, [sp]
 	mov r4, #0
 	ldrsh r2, [r0]
@@ -1746,7 +1746,7 @@ _0231C9F4:
 	cmp sb, #0
 	beq _0231CA3C
 	add r1, sp, #0x1a
-	ldr r0, _0231C6D8 ; =0x022C4558
+	ldr r0, _0231C6D8 ; =ov10_022C4558
 	str r1, [sp]
 	mov r4, #0
 	ldrsh r2, [r0]
@@ -1776,7 +1776,7 @@ _0231CA60:
 	cmp sb, #0
 	beq _0231CAA8
 	add r1, sp, #0x19
-	ldr r0, _0231CBBC ; =0x022C44EC
+	ldr r0, _0231CBBC ; =ov10_022C44EC
 	str r1, [sp]
 	mov r4, #0
 	ldrsh r2, [r0]
@@ -1801,7 +1801,7 @@ _0231CABC:
 	cmp sb, #0
 	beq _0231CB04
 	add r1, sp, #0x18
-	ldr r0, _0231C6D8 ; =0x022C4558
+	ldr r0, _0231C6D8 ; =ov10_022C4558
 	str r1, [sp]
 	mov r4, #0
 	ldrsh r2, [r0]
@@ -1838,14 +1838,14 @@ _0231CB14:
 _0231CB48:
 	cmp r0, #0
 	beq _0231CB9C
-	ldr r0, _0231CBC0 ; =0x022C4EB8
+	ldr r0, _0231CBC0 ; =APPLES_AND_BERRIES_ITEM_IDS
 	b _0231CB90
 _0231CB58:
 	cmp r4, r1
 	bne _0231CB8C
 	mov r0, #0xa
 	bl ov29_0234BA54
-	ldr r0, _0231CBC4 ; =0x022C4864
+	ldr r0, _0231CBC4 ; =ov10_022C4864
 	mov r4, #1
 	ldr r2, [r0]
 	mov r0, r8
@@ -1868,10 +1868,10 @@ _0231CBA4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0231CBAC: .word 0x00000C75
-_0231CBB0: .word 0x022C4438
+_0231CBB0: .word OREN_BERRY_DAMAGE
 _0231CBB4: .word 0x00000C67
 _0231CBB8: .word 0x00000C76
-_0231CBBC: .word 0x022C44EC
-_0231CBC0: .word 0x022C4EB8
-_0231CBC4: .word 0x022C4864
+_0231CBBC: .word ov10_022C44EC
+_0231CBC0: .word APPLES_AND_BERRIES_ITEM_IDS
+_0231CBC4: .word ov10_022C4864
 	arm_func_end ApplyItemEffect

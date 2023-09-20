@@ -10,7 +10,7 @@ OpenMenu: ; 0x0234DDF4
 	mov r0, #0x22
 	mov sl, r2
 	bl LoadOverlay
-	ldr r0, _0234E8E8 ; =0x02353538
+	ldr r0, _0234E8E8 ; =ov29_02353538
 	mov r6, #0
 	ldr r1, [r0]
 	mov r4, #0xa
@@ -50,7 +50,7 @@ _0234DE78:
 	bl ov29_022EA428
 	mov r0, #1
 	bl ov29_022EB398
-	ldr r0, _0234E8EC ; =0x02382804
+	ldr r0, _0234E8EC ; =ov29_02382804
 	mvn r1, #0
 	str r1, [r0, #4]
 	bl GetLeader
@@ -294,7 +294,7 @@ _0234E200:
 	mov r8, r7
 	b _0234E27C
 _0234E214:
-	ldr r0, _0234E8E8 ; =0x02353538
+	ldr r0, _0234E8E8 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r8, lsl #2
 	add r0, r0, #0x12000
@@ -307,7 +307,7 @@ _0234E214:
 	ldrb r0, [r0, #4]
 	cmp r8, r0
 	bne _0234E274
-	ldr r0, _0234E8EC ; =0x02382804
+	ldr r0, _0234E8EC ; =ov29_02382804
 	str r7, [r0, #4]
 	bl ov29_022F0B9C
 	cmp r0, #0
@@ -329,11 +329,11 @@ _0234E27C:
 _0234E288:
 	mov sb, #0
 _0234E28C:
-	ldr r0, _0234E8F0 ; =0x0235352C
+	ldr r0, _0234E8F0 ; =ov29_0235352C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x24]
 	bl sub_0200B3D4
-	ldr r0, _0234E8F0 ; =0x0235352C
+	ldr r0, _0234E8F0 ; =ov29_0235352C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x24]
 	bl sub_0200B330
@@ -353,7 +353,7 @@ _0234E2C4:
 	mov r7, r8
 	b _0234E318
 _0234E2E0:
-	ldr r0, _0234E8E8 ; =0x02353538
+	ldr r0, _0234E8E8 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
@@ -377,7 +377,7 @@ _0234E320:
 	mov sb, r7
 	str r0, [sp, #0x24]
 _0234E334:
-	ldr r0, _0234E8E8 ; =0x02353538
+	ldr r0, _0234E8E8 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x12000
@@ -415,7 +415,7 @@ _0234E38C:
 	strb r8, [r0, #0x4e]
 	mov r0, #0
 	bl ov29_022EB398
-	ldr sb, _0234E8E8 ; =0x02353538
+	ldr sb, _0234E8E8 ; =ov29_02353538
 	mvn r8, #0
 _0234E3CC:
 	mov r0, #0
@@ -724,7 +724,7 @@ _0234E834:
 	cmp r4, #5
 	bne _0234E86C
 	bl RestMenu
-	ldr r0, _0234E8E8 ; =0x02353538
+	ldr r0, _0234E8E8 ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	cmp r0, #0
@@ -772,9 +772,9 @@ _0234E8E0:
 	add sp, sp, #0x38
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0234E8E8: .word 0x02353538
-_0234E8EC: .word 0x02382804
-_0234E8F0: .word 0x0235352C
+_0234E8E8: .word ov29_02353538
+_0234E8EC: .word ov29_02382804
+_0234E8F0: .word ov29_0235352C
 _0234E8F4: .word 0x00000B6A
 	arm_func_end OpenMenu
 
@@ -887,7 +887,7 @@ ov29_0234EA18: ; 0x0234EA18
 	bne _0234EB1C
 _0234EA50:
 	mov r4, #0
-	ldr fp, _0234EB24 ; =0x02353538
+	ldr fp, _0234EB24 ; =ov29_02353538
 	b _0234EAE4
 _0234EA5C:
 	cmp sb, #1
@@ -949,7 +949,7 @@ _0234EB1C:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0234EB24: .word 0x02353538
+_0234EB24: .word ov29_02353538
 	arm_func_end ov29_0234EA18
 
 	arm_func_start ov29_0234EB28
@@ -1007,7 +1007,7 @@ ov29_0234EBAC: ; 0x0234EBAC
 	arm_func_start ov29_0234EBCC
 ov29_0234EBCC: ; 0x0234EBCC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r4, _0234EC10 ; =0x02353538
+	ldr r4, _0234EC10 ; =ov29_02353538
 	mov r6, #0
 	mov r5, #1
 _0234EBDC:
@@ -1025,5 +1025,5 @@ _0234EBDC:
 	blt _0234EBDC
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0234EC10: .word 0x02353538
+_0234EC10: .word ov29_02353538
 	arm_func_end ov29_0234EBCC

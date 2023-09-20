@@ -235,3 +235,4 @@
 .public sub_02051E60
 .public sub_0205BAB0
 .public sub_020778D0
+.public BAG_ITEMS_PTR_MIRROR

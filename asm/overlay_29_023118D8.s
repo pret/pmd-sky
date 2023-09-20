@@ -904,7 +904,7 @@ _02312504:
 	cmp r5, #0
 	bne _023125E8
 	mov r5, #0
-	ldr fp, _02312610 ; =0x0235171C
+	ldr fp, _02312610 ; =DIRECTIONS_XY
 	mov r4, r5
 _02312534:
 	mov r1, r4, lsl #2
@@ -966,7 +966,7 @@ _02312600: .word 0x00000DB9
 _02312604: .word 0x022C4874
 _02312608: .word 0x00000D1C
 _0231260C: .word 0x00000D1D
-_02312610: .word 0x0235171C
+_02312610: .word DIRECTIONS_XY
 _02312614: .word 0x00000DC5
 	arm_func_end TryInflictBurnStatus
 
@@ -1134,7 +1134,7 @@ _02312840:
 	cmp r4, #0
 	bne _02312914
 	mov r5, #0
-	ldr fp, _02312934 ; =0x0235171C
+	ldr fp, _02312934 ; =DIRECTIONS_XY
 	mov r4, r5
 _02312868:
 	mov r1, r4, lsl #2
@@ -1192,7 +1192,7 @@ _02312924: .word 0x00000DAD
 _02312928: .word 0x00000DAE
 _0231292C: .word 0x022C4878
 _02312930: .word 0x00000D1E
-_02312934: .word 0x0235171C
+_02312934: .word DIRECTIONS_XY
 _02312938: .word 0x00000DC5
 	arm_func_end TryInflictPoisonedStatus
 
@@ -1327,7 +1327,7 @@ _02312AFC:
 	cmp r4, #0
 	bne _02312BD0
 	mov r5, #0
-	ldr fp, _02312BF0 ; =0x0235171C
+	ldr fp, _02312BF0 ; =DIRECTIONS_XY
 	mov r4, r5
 _02312B24:
 	mov r1, r4, lsl #2
@@ -1385,7 +1385,7 @@ _02312BE0: .word 0x00000DAD
 _02312BE4: .word 0x00000DAE
 _02312BE8: .word 0x022C4880
 _02312BEC: .word 0x00000D1F
-_02312BF0: .word 0x0235171C
+_02312BF0: .word DIRECTIONS_XY
 _02312BF4: .word 0x00000DC5
 	arm_func_end TryInflictBadlyPoisonedStatus
 
@@ -3321,7 +3321,7 @@ _023146F0:
 	cmp r4, #0
 	bne _023147C4
 	mov r5, #0
-	ldr fp, _023147E4 ; =0x0235171C
+	ldr fp, _023147E4 ; =DIRECTIONS_XY
 	mov r4, r5
 _02314718:
 	mov r1, r4, lsl #2
@@ -3380,7 +3380,7 @@ _023147D0:
 _023147D8: .word 0x00000DA1
 _023147DC: .word 0x022C4894
 _023147E0: .word 0x00000D01
-_023147E4: .word 0x0235171C
+_023147E4: .word DIRECTIONS_XY
 _023147E8: .word 0x00000DC5
 	arm_func_end TryInflictParalysisStatus
 

@@ -1040,7 +1040,7 @@ ov29_02300E78: ; 0x02300E78
 	mov r5, r1
 	ldrsh r1, [r2, #2]
 	bl GetMobilityTypeCheckSlipAndFloating
-	ldr r2, _02300F24 ; =0x0235171C
+	ldr r2, _02300F24 ; =DIRECTIONS_XY
 	mov ip, r5, lsl #2
 	ldr r1, _02300F28 ; =0x0235171E
 	ldrsh r3, [r2, ip]
@@ -1078,7 +1078,7 @@ ov29_02300E78: ; 0x02300E78
 	and r0, r0, #0xff
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02300F24: .word 0x0235171C
+_02300F24: .word DIRECTIONS_XY
 _02300F28: .word 0x0235171E
 _02300F2C: .word 0x02352798
 	arm_func_end ov29_02300E78
@@ -1133,7 +1133,7 @@ ov29_02300FCC: ; 0x02300FCC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	ldr r1, _02301050 ; =0x0235171C
+	ldr r1, _02301050 ; =DIRECTIONS_XY
 	mov ip, r4, lsl #2
 	ldr r0, _02301054 ; =0x0235171E
 	ldrsh r3, [r1, ip]
@@ -1164,7 +1164,7 @@ ov29_02300FCC: ; 0x02300FCC
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02301050: .word 0x0235171C
+_02301050: .word DIRECTIONS_XY
 _02301054: .word 0x0235171E
 _02301058: .word 0x02352790
 	arm_func_end ov29_02300FCC
@@ -1177,7 +1177,7 @@ CanMonsterMoveInDirection: ; 0x0230105C
 	mov r5, r1
 	ldrsh r1, [r2, #2]
 	bl GetMobilityTypeCheckSlipAndFloating
-	ldr r2, _0230110C ; =0x0235171C
+	ldr r2, _0230110C ; =DIRECTIONS_XY
 	mov ip, r5, lsl #2
 	ldr r1, _02301110 ; =0x0235171E
 	ldrsh r3, [r2, ip]
@@ -1216,7 +1216,7 @@ CanMonsterMoveInDirection: ; 0x0230105C
 	movne r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0230110C: .word 0x0235171C
+_0230110C: .word DIRECTIONS_XY
 _02301110: .word 0x0235171E
 _02301114: .word 0x02352788
 	arm_func_end CanMonsterMoveInDirection
@@ -1251,7 +1251,7 @@ ov29_02301158: ; 0x02301158
 	mov r5, r1
 	ldrsh r1, [r2, #2]
 	bl GetMobilityTypeCheckSlipAndFloating
-	ldr r2, _02301228 ; =0x0235171C
+	ldr r2, _02301228 ; =DIRECTIONS_XY
 	mov ip, r5, lsl #2
 	ldr r1, _0230122C ; =0x0235171E
 	ldrsh r3, [r2, ip]
@@ -1299,7 +1299,7 @@ _023011E0:
 	and r0, r0, #0xff
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02301228: .word 0x0235171C
+_02301228: .word DIRECTIONS_XY
 _0230122C: .word 0x0235171E
 _02301230: .word 0x02352780
 	arm_func_end ov29_02301158
@@ -1313,7 +1313,7 @@ CanAttackInDirection: ; 0x02301234
 	ldrsh r1, [r2, #2]
 	bl GetMobilityTypeCheckSlipAndFloating
 	mov r4, r0
-	ldr r1, _023012EC ; =0x0235171C
+	ldr r1, _023012EC ; =DIRECTIONS_XY
 	mov ip, r5, lsl #2
 	cmp r4, #1
 	ldr r0, _023012F0 ; =0x0235171E
@@ -1353,7 +1353,7 @@ CanAttackInDirection: ; 0x02301234
 	movne r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023012EC: .word 0x0235171C
+_023012EC: .word DIRECTIONS_XY
 _023012F0: .word 0x0235171E
 _023012F4: .word 0x02352778
 	arm_func_end CanAttackInDirection
@@ -1369,7 +1369,7 @@ CanAiMonsterMoveInDirection: ; 0x023012F8
 	bl GetMobilityTypeCheckSlipAndFloating
 	mov r1, #0
 	strb r1, [r6]
-	ldr r2, _02301484 ; =0x0235171C
+	ldr r2, _02301484 ; =DIRECTIONS_XY
 	mov r4, r7, lsl #2
 	ldr r1, _02301488 ; =0x0235171E
 	ldrsh r3, [r2, r4]
@@ -1464,7 +1464,7 @@ _0230142C:
 	movne r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02301484: .word 0x0235171C
+_02301484: .word DIRECTIONS_XY
 _02301488: .word 0x0235171E
 _0230148C: .word 0x02353538
 _02301490: .word SECONDARY_TERRAIN_TYPES

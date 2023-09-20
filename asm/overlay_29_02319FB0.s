@@ -30,7 +30,7 @@ TryAddTargetToAiTargetList: ; 0x02319FB0
 	bl GetDirectionTowardsPosition
 	mov r5, r0
 _0231A010:
-	ldr r4, _0231A094 ; =0x0237CA18
+	ldr r4, _0231A094 ; =ov29_0237CA18
 	ldrb r0, [r4, r5]
 	cmp r0, #0
 	movne r0, sb
@@ -44,7 +44,7 @@ _0231A010:
 	bl IsAiTargetEligible
 	cmp r0, #0
 	beq _0231A08C
-	ldr r2, _0231A098 ; =0x0237CA20
+	ldr r2, _0231A098 ; =ov29_0237CA20
 	mov r3, #1
 	ldr r1, [sp, #0x20]
 	mov r0, r7
@@ -56,8 +56,8 @@ _0231A010:
 	mov r1, r8
 	mov r2, r6
 	bl ov29_0231A364
-	ldr r2, _0231A09C ; =0x0237CA28
-	ldr r1, _0231A0A0 ; =0x0237CA48
+	ldr r2, _0231A09C ; =ov29_0237CA28
+	ldr r1, _0231A0A0 ; =ov29_0237CA48
 	str r0, [r2, sb, lsl #2]
 	str r6, [r1, sb, lsl #2]
 	add sb, sb, #1
@@ -65,10 +65,10 @@ _0231A08C:
 	mov r0, sb
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0231A094: .word 0x0237CA18
-_0231A098: .word 0x0237CA20
-_0231A09C: .word 0x0237CA28
-_0231A0A0: .word 0x0237CA48
+_0231A094: .word ov29_0237CA18
+_0231A098: .word ov29_0237CA20
+_0231A09C: .word ov29_0237CA28
+_0231A0A0: .word ov29_0237CA48
 	arm_func_end TryAddTargetToAiTargetList
 
 	arm_func_start IsAiTargetEligible
@@ -303,7 +303,7 @@ _0231A3A4:
 	ldrsh r0, [r5, #2]
 	mov r1, #0x258
 	bl __divsi3
-	ldr r0, _0231A45C ; =0x02353538
+	ldr r0, _0231A45C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r1
 	add r0, r0, #0x3000
@@ -335,7 +335,7 @@ _0231A454:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0231A45C: .word 0x02353538
+_0231A45C: .word ov29_02353538
 	arm_func_end ov29_0231A364
 
 	arm_func_start ov29_0231A460
@@ -385,7 +385,7 @@ _0231A4E0:
 	b _0231A5CC
 _0231A4FC:
 	and r6, r6, #7
-	ldr r1, _0231A690 ; =0x0235171C
+	ldr r1, _0231A690 ; =DIRECTIONS_XY
 	mov r2, r6, lsl #2
 	ldrsh r3, [r1, r2]
 	add r1, r1, r6, lsl #2
@@ -499,7 +499,7 @@ _0231A688:
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0231A690: .word 0x0235171C
+_0231A690: .word DIRECTIONS_XY
 	arm_func_end ov29_0231A460
 
 	arm_func_start IsTargetInRange
@@ -534,9 +534,9 @@ IsTargetInRange: ; 0x0231A694
 	and r0, r0, #0xff
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _0231A708:
-	ldr r1, _0231A798 ; =0x0235171C
+	ldr r1, _0231A798 ; =DIRECTIONS_XY
 	mov r2, r8, lsl #2
-	ldr r0, _0231A79C ; =0x0235171E
+	ldr r0, _0231A79C ; =ov29_0235171E
 	ldrsh r7, [sb, #4]
 	ldrsh r8, [sb, #6]
 	ldrsh sb, [r1, r2]
@@ -574,8 +574,8 @@ _0231A790:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0231A798: .word 0x0235171C
-_0231A79C: .word 0x0235171E
+_0231A798: .word DIRECTIONS_XY
+_0231A79C: .word ov29_0235171E
 	arm_func_end IsTargetInRange
 
 	arm_func_start ShouldUsePp
@@ -596,7 +596,7 @@ ShouldUsePp: ; 0x0231A7A0
 	movne r5, #1
 	cmp r5, #0
 	beq _0231A81C
-	ldr r0, _0231A870 ; =0x022C459C
+	ldr r0, _0231A870 ; =ov10_022C459C
 	ldrsh r0, [r0]
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
@@ -616,7 +616,7 @@ _0231A81C:
 	bne _0231A868
 	cmp r4, #0
 	beq _0231A868
-	ldr r0, _0231A870 ; =0x022C459C
+	ldr r0, _0231A870 ; =ov10_022C459C
 	ldrsh r0, [r0]
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
@@ -635,7 +635,7 @@ _0231A868:
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0231A870: .word 0x022C459C
+_0231A870: .word ov10_022C459C
 _0231A874: .word 0x00000DF5
 _0231A878: .word 0x00000DF7
 	arm_func_end ShouldUsePp
@@ -662,7 +662,7 @@ ov29_0231A8A0: ; 0x0231A8A0
 	bl IsMonster__0231A9D4
 	cmp r0, #0
 	beq _0231A910
-	ldr r0, _0231A9CC ; =0x02353538
+	ldr r0, _0231A9CC ; =ov29_02353538
 	ldr r4, [sb, #0xb4]
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -738,7 +738,7 @@ _0231A9C4:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0231A9CC: .word 0x02353538
+_0231A9CC: .word ov29_02353538
 _0231A9D0: .word 0x00000DFD
 	arm_func_end ov29_0231A8A0
 
@@ -794,7 +794,7 @@ _0231AA74:
 	subs r1, r1, #1
 	strh r0, [r2], #2
 	bne _0231AA74
-	ldr r0, _0231AC94 ; =0x02353538
+	ldr r0, _0231AC94 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -939,7 +939,7 @@ _0231AC88:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _0231AC90: .word 0x00000DF8
-_0231AC94: .word 0x02353538
+_0231AC94: .word ov29_02353538
 _0231AC98: .word 0x00000DF9
 _0231AC9C: .word 0x00000DFA
 _0231ACA0: .word 0x00000DFB
@@ -1103,7 +1103,7 @@ GetEntityNaturalGiftInfo: ; 0x0231AE90
 	cmpne r0, #0
 	beq _0231AF00
 	mov ip, #0
-	ldr r3, _0231AF08 ; =0x022C5130
+	ldr r3, _0231AF08 ; =NATURAL_GIFT_ITEM_TABLE
 	mov lr, ip
 	mov r1, #6
 _0231AEC0:
@@ -1121,25 +1121,25 @@ _0231AEC0:
 	b _0231AEC0
 _0231AEF0:
 	cmp ip, #0
-	ldrne r0, _0231AF08 ; =0x022C5130
+	ldrne r0, _0231AF08 ; =NATURAL_GIFT_ITEM_TABLE
 	addne r0, r0, r5
 	ldmneia sp!, {r3, r4, r5, pc}
 _0231AF00:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0231AF08: .word 0x022C5130
+_0231AF08: .word NATURAL_GIFT_ITEM_TABLE
 	arm_func_end GetEntityNaturalGiftInfo
 
 	arm_func_start GetEntityWeatherBallType
 GetEntityWeatherBallType: ; 0x0231AF0C
 	stmdb sp!, {r3, lr}
 	bl GetApparentWeather
-	ldr r1, _0231AF20 ; =0x022C48DC
+	ldr r1, _0231AF20 ; =WEATHER_BALL_TYPE_TABLE
 	ldrb r0, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0231AF20: .word 0x022C48DC
+_0231AF20: .word WEATHER_BALL_TYPE_TABLE
 	arm_func_end GetEntityWeatherBallType
 
 	arm_func_start ov29_0231AF24
@@ -1188,7 +1188,7 @@ _0231AFAC:
 ov29_0231AFB4: ; 0x0231AFB4
 	stmdb sp!, {r4, lr}
 	mov ip, #0
-	ldr r1, _0231B004 ; =0x02353538
+	ldr r1, _0231B004 ; =ov29_02353538
 	mov r2, ip
 	mov r3, ip
 _0231AFC8:
@@ -1209,14 +1209,14 @@ _0231AFDC:
 	blt _0231AFC8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0231B004: .word 0x02353538
+_0231B004: .word ov29_02353538
 	arm_func_end ov29_0231AFB4
 
 	arm_func_start ov29_0231B008
 ov29_0231B008: ; 0x0231B008
 	stmdb sp!, {r3, r4, r5, lr}
 	mov lr, #0
-	ldr r1, _0231B05C ; =0x02353538
+	ldr r1, _0231B05C ; =ov29_02353538
 	mov r3, lr
 	mov r2, #2
 	mov ip, lr
@@ -1238,7 +1238,7 @@ _0231B034:
 	blt _0231B020
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0231B05C: .word 0x02353538
+_0231B05C: .word ov29_02353538
 	arm_func_end ov29_0231B008
 
 	arm_func_start ActivateMotorDrive

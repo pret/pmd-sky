@@ -6,7 +6,7 @@
 	arm_func_start TryDrought
 TryDrought: ; 0x0231F594
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r1, _0231F6D4 ; =0x02353538
+	ldr r1, _0231F6D4 ; =ov29_02353538
 	mov r8, r0
 	ldr r0, [r1]
 	mov r6, #0
@@ -86,7 +86,7 @@ _0231F6A8:
 	mov r0, r8
 	bl LogMessageByIdWithPopupCheckUser
 _0231F6B4:
-	ldr r0, _0231F6D4 ; =0x02353538
+	ldr r0, _0231F6D4 ; =ov29_02353538
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x78f]
@@ -95,7 +95,7 @@ _0231F6B4:
 	bl UpdateTrapsVisibility
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0231F6D4: .word 0x02353538
+_0231F6D4: .word ov29_02353538
 _0231F6D8: .word 0x00000C08
 _0231F6DC: .word 0x00000C09
 _0231F6E0: .word 0x00000C07
@@ -105,7 +105,7 @@ _0231F6E0: .word 0x00000C07
 ov29_0231F6E4: ; 0x0231F6E4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x38
-	ldr r1, _0231FBE4 ; =0x02353538
+	ldr r1, _0231FBE4 ; =ov29_02353538
 	mov sl, r0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
@@ -188,7 +188,7 @@ _0231F7A0:
 	mov r1, #0
 	strb r1, [r5, #0x22]
 	str r1, [r5, #0x1c]
-	ldr r1, _0231FBE4 ; =0x02353538
+	ldr r1, _0231FBE4 ; =ov29_02353538
 	add r0, r4, sb
 	ldr r2, [r1]
 	mov r1, #6
@@ -206,7 +206,7 @@ _0231F7A0:
 _0231F868:
 	add r8, r8, #1
 _0231F86C:
-	ldr r0, _0231FBE4 ; =0x02353538
+	ldr r0, _0231FBE4 ; =ov29_02353538
 	ldr r1, [r0]
 	add r0, r1, #0x3f00
 	ldrsh r0, [r0, #0xc0]
@@ -233,7 +233,7 @@ _0231F8BC:
 	ldrsh r1, [sl, #4]
 	ldrsh r0, [sl, #6]
 	mov r7, #0
-	ldr r5, _0231FBF0 ; =0x02351844
+	ldr r5, _0231FBF0 ; =DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 	mov r8, r7
 	strh r1, [sp, #0x14]
 	strh r0, [sp, #0x16]
@@ -346,7 +346,7 @@ _0231FA58:
 	ldr r1, _0231FBF4 ; =0x00000222
 	mov r0, sl
 	bl ov29_022E56A0
-	ldr r0, _0231FBE4 ; =0x02353538
+	ldr r0, _0231FBE4 ; =ov29_02353538
 	mov r7, #0
 	ldr r0, [r0]
 	mov r8, r7
@@ -452,10 +452,10 @@ _0231FBDC:
 	add sp, sp, #0x38
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0231FBE4: .word 0x02353538
+_0231FBE4: .word ov29_02353538
 _0231FBE8: .word 0x000013BC
 _0231FBEC: .word 0x00000BCF
-_0231FBF0: .word 0x02351844
+_0231FBF0: .word DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 _0231FBF4: .word 0x00000222
 _0231FBF8: .word 0x00000BD1
 	arm_func_end ov29_0231F6E4

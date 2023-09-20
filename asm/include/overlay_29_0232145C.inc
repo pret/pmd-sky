@@ -137,3 +137,4 @@
 .public sub_0201D1B0
 .public sub_0201D1D4
 .public WanTableSpriteHasAnimationGroup
+.public DIRECTIONS_XY
