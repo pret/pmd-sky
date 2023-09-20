@@ -1,6 +1,7 @@
 #pragma once
 .public AbilityIsActiveVeneer
 .public AdvanceFrame
+.public AnimationDelayOrSomething
 .public DungeonRandInt
 .public DungeonRandRange
 .public EntityIsValid__02307EF8
@@ -10,5 +11,7 @@
 .public HasHeldItem
 .public MewSpawnCheck
 .public MultiplyByFixedPoint
+.public ov10_022C4560
+.public ov10_022C4660
+.public ov29_02353538
 .public SpawnMonster
-.public AnimationDelayOrSomething

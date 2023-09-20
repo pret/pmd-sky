@@ -10,7 +10,7 @@ ov29_022EF7C4: ; 0x022EF7C4
 	mov r7, r2
 	cmp r1, #5
 	ldmlsia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	ldr r4, _022EF89C ; =0x02353538
+	ldr r4, _022EF89C ; =ov29_02353538
 	ldr r0, [r4]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xca]
@@ -49,14 +49,14 @@ _022EF854:
 	beq _022EF874
 	mov r0, #0x64
 	bl ov29_0234BA54
-	ldr r0, _022EF89C ; =0x02353538
+	ldr r0, _022EF89C ; =ov29_02353538
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #6]
 _022EF874:
 	cmp r7, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	ldr r0, _022EF89C ; =0x02353538
+	ldr r0, _022EF89C ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	cmp r0, #0
@@ -65,7 +65,7 @@ _022EF874:
 	bl ChangeDungeonMusic
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_022EF89C: .word 0x02353538
+_022EF89C: .word ov29_02353538
 _022EF8A0: .word 0x000003E7
 	arm_func_end ov29_022EF7C4
 
@@ -73,7 +73,7 @@ _022EF8A0: .word 0x000003E7
 ov29_022EF8A4: ; 0x022EF8A4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, #1
-	ldr r5, _022EF934 ; =0x02353538
+	ldr r5, _022EF934 ; =ov29_02353538
 	mov r7, r8
 	mov r6, #0
 	mvn r4, #0
@@ -110,13 +110,13 @@ _022EF918:
 	bl ov29_023444D4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_022EF934: .word 0x02353538
+_022EF934: .word ov29_02353538
 	arm_func_end ov29_022EF8A4
 
 	arm_func_start ov29_022EF938
 ov29_022EF938: ; 0x022EF938
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r5, _022EF9B4 ; =0x02353538
+	ldr r5, _022EF9B4 ; =ov29_02353538
 	mov r4, #0
 	mov r6, #4
 _022EF948:
@@ -150,7 +150,7 @@ _022EF99C:
 	blt _022EF948
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022EF9B4: .word 0x02353538
+_022EF9B4: .word ov29_02353538
 	arm_func_end ov29_022EF938
 
 	arm_func_start ov29_022EF9B8
@@ -171,13 +171,13 @@ ov29_022EF9C8: ; 0x022EF9C8
 	stmdb sp!, {r3, lr}
 	bl IsFloorOver
 	cmp r0, #0
-	ldreq r0, _022EF9E8 ; =0x02353538
+	ldreq r0, _022EF9E8 ; =ov29_02353538
 	ldreq r0, [r0]
 	ldreqb r0, [r0, #6]
 	cmpeq r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022EF9E8: .word 0x02353538
+_022EF9E8: .word ov29_02353538
 	arm_func_end ov29_022EF9C8
 
 	arm_func_start ShouldRunMonsterAi
@@ -230,7 +230,7 @@ DebugRecruitingEnabled: ; 0x022EFA6C
 TryActivateIqBooster: ; 0x022EFA74
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
-	ldr r1, _022EFAE0 ; =0x02353538
+	ldr r1, _022EFAE0 ; =ov29_02353538
 	ldr r0, _022EFAE4 ; =0x000286D0
 	ldr r1, [r1]
 	ldrsh r6, [r1, r0]
@@ -259,7 +259,7 @@ _022EFAD8:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022EFAE0: .word 0x02353538
+_022EFAE0: .word ov29_02353538
 _022EFAE4: .word 0x000286D0
 	arm_func_end TryActivateIqBooster
 
@@ -299,21 +299,21 @@ ov29_022EFB20: ; 0x022EFB20
 	bl ov29_022EA370
 _022EFB48:
 	bl ov29_0234D630
-	ldr r1, _022EFB7C ; =0x023535A4
+	ldr r1, _022EFB7C ; =ov29_023535A4
 	mvn r2, #1
 	mov r0, #1
 	strb r2, [r1]
 	bl ov29_022DE5F0
-	ldr r1, _022EFB80 ; =0x0237C9A0
+	ldr r1, _022EFB80 ; =ov29_0237C9A0
 	strh r0, [r1, #2]
 	mov r0, #0
 	bl ov29_022DE5F0
-	ldr r1, _022EFB80 ; =0x0237C9A0
+	ldr r1, _022EFB80 ; =ov29_0237C9A0
 	strh r0, [r1]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022EFB7C: .word 0x023535A4
-_022EFB80: .word 0x0237C9A0
+_022EFB7C: .word ov29_023535A4
+_022EFB80: .word ov29_0237C9A0
 	arm_func_end ov29_022EFB20
 
 	arm_func_start ov29_022EFB84
@@ -997,7 +997,7 @@ _022F0530: .word sub_0201D198
 	arm_func_start ov29_022F0534
 ov29_022F0534: ; 0x022F0534
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r4, _022F058C ; =0x02353538
+	ldr r4, _022F058C ; =ov29_02353538
 	mov r7, r0
 	mov r5, #0
 _022F0544:
@@ -1022,5 +1022,5 @@ _022F057C:
 	blt _022F0544
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022F058C: .word 0x02353538
+_022F058C: .word ov29_02353538
 	arm_func_end ov29_022F0534

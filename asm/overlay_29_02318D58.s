@@ -54,7 +54,7 @@ _02318DEC:
 	cmpne r0, #0xa
 	cmpne r0, #0xf
 	beq _02318E20
-	ldr r1, _02318E44 ; =0x022C4750
+	ldr r1, _02318E44 ; =ov10_022C4750
 	mov r0, r6
 	mov r2, #0
 	bl CalcStatusDuration
@@ -71,6 +71,6 @@ _02318E20:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02318E40: .word 0x00000CF3
-_02318E44: .word 0x022C4750
+_02318E44: .word ov10_022C4750
 _02318E48: .word 0x00000CF2
 	arm_func_end ov29_02318D98

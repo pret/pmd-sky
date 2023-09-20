@@ -7,42 +7,42 @@
 ExecuteMoveEffect: ; 0x0232E864
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xf0
-	ldr fp, _0232F7AC ; =0x022C45F8
+	ldr fp, _0232F7AC ; =ov10_022C45F8
 	str r0, [sp, #0x14]
 	ldrsh r0, [fp]
-	ldr r5, _0232F7B0 ; =0x02352AE8
-	ldr sl, _0232F7B4 ; =0x022C483C
+	ldr r5, _0232F7B0 ; =ov29_02352AE8
+	ldr sl, _0232F7B4 ; =ov10_022C483C
 	ldr r7, [r5]
 	str r0, [sp, #0x34]
 	ldr r0, [sl]
-	ldr r4, _0232F7B8 ; =0x02352AEC
+	ldr r4, _0232F7B8 ; =ov29_02352AEC
 	mov r8, r2
 	ldr r6, [r4]
 	mov r2, #0
 	str r2, [sp, #0x78]
 	str r6, [sp, #0xa0]
-	ldr r5, _0232F7BC ; =0x022C4468
+	ldr r5, _0232F7BC ; =ov10_022C4468
 	str r0, [sp, #0x30]
 	ldrsh r0, [r5]
-	ldr r4, _0232F7C0 ; =0x022C460C
+	ldr r4, _0232F7C0 ; =ov10_022C460C
 	ldrh r6, [r8, #4]
 	str r0, [sp, #0x2c]
 	ldrsh r0, [r4]
-	ldr r2, _0232F7C4 ; =0x022C4480
-	ldr ip, _0232F7C8 ; =0x022C4614
+	ldr r2, _0232F7C4 ; =ov10_022C4480
+	ldr ip, _0232F7C8 ; =ov10_022C4614
 	str r0, [sp, #0x28]
 	ldrsh r0, [r2]
-	ldr lr, _0232F7CC ; =0x022C4508
+	ldr lr, _0232F7CC ; =ov10_022C4508
 	mov sb, r1
 	str r0, [sp, #0x24]
 	ldrsh r0, [ip]
 	str r7, [sp, #0x9c]
-	ldr r1, _0232F7D0 ; =0x02353718
+	ldr r1, _0232F7D0 ; =ov29_02353718
 	str r0, [sp, #0x20]
 	ldrsh r0, [lr]
 	mov r7, r3
 	str r0, [sp, #0x1c]
-	ldr r0, _0232F7D4 ; =0x022C4504
+	ldr r0, _0232F7D4 ; =ov10_022C4504
 	ldrsh r0, [r0]
 	str r0, [sp, #0x18]
 	mov r0, #1
@@ -97,7 +97,7 @@ _0232E9B0:
 	mov r0, r6
 	bl CanBeSnatched
 	cmp r0, #0
-	ldrne r0, _0232F7D8 ; =0x02353538
+	ldrne r0, _0232F7D8 ; =ov29_02353538
 	ldrne r0, [r0]
 	addne r0, r0, #0x19000
 	ldrne r5, [r0, #0x904]
@@ -220,8 +220,8 @@ _0232EB84:
 	and r0, r0, #7
 	str r0, [sp, #0x50]
 	mov r2, r0, lsl #2
-	ldr r0, _0232F7E8 ; =0x0235171C
-	ldr r3, _0232F7E8 ; =0x0235171C
+	ldr r0, _0232F7E8 ; =DIRECTIONS_XY
+	ldr r3, _0232F7E8 ; =DIRECTIONS_XY
 	ldrsh r0, [r0, r2]
 	ldr r2, [sp, #0x50]
 	ldrsh ip, [r4, #6]
@@ -407,8 +407,8 @@ _0232ED9C:
 	mov r2, #0xec0
 	bl LogMessageByIdWithPopupCheckUserTarget
 _0232EE54:
-	ldr r1, _0232F800 ; =0x0237CA80
-	ldr r0, _0232F804 ; =0x0237CA74
+	ldr r1, _0232F800 ; =ov29_0237CA80
+	ldr r0, _0232F804 ; =ov29_0237CA74
 	ldr r3, [r1]
 	ldr r2, [r0]
 	add r3, r3, #1
@@ -839,7 +839,7 @@ _0232F498:
 	ldr r2, [sb, #0xb4]
 	cmp r0, #2
 	cmpne r0, #0x69
-	ldreq r0, _0232F838 ; =0x0237CA69
+	ldreq r0, _0232F838 ; =ov29_0237CA69
 	moveq r1, #1
 	streqb r1, [r0]
 	ldrh r1, [r8, #4]
@@ -1049,29 +1049,29 @@ _0232F79C:
 	strh r0, [r8, #2]
 	b _0232F87C
 	.align 2, 0
-_0232F7AC: .word 0x022C45F8
-_0232F7B0: .word 0x02352AE8
-_0232F7B4: .word 0x022C483C
-_0232F7B8: .word 0x02352AEC
-_0232F7BC: .word 0x022C4468
-_0232F7C0: .word 0x022C460C
-_0232F7C4: .word 0x022C4480
-_0232F7C8: .word 0x022C4614
-_0232F7CC: .word 0x022C4508
-_0232F7D0: .word 0x02353718
-_0232F7D4: .word 0x022C4504
-_0232F7D8: .word 0x02353538
+_0232F7AC: .word ov10_022C45F8
+_0232F7B0: .word ov29_02352AE8
+_0232F7B4: .word ov10_022C483C
+_0232F7B8: .word ov29_02352AEC
+_0232F7BC: .word ov10_022C4468
+_0232F7C0: .word ov10_022C460C
+_0232F7C4: .word ov10_022C4480
+_0232F7C8: .word ov10_022C4614
+_0232F7CC: .word ov10_022C4508
+_0232F7D0: .word ov29_02353718
+_0232F7D4: .word ov10_022C4504
+_0232F7D8: .word ov29_02353538
 _0232F7DC: .word 0x00000EAB
 _0232F7E0: .word 0x00000EAC
 _0232F7E4: .word 0x00000EAD
-_0232F7E8: .word 0x0235171C
+_0232F7E8: .word DIRECTIONS_XY
 _0232F7EC: .word 0x00000163
 _0232F7F0: .word 0x00000EB1
 _0232F7F4: .word 0x00000EAE
 _0232F7F8: .word 0x00000EB2
 _0232F7FC: .word 0x00000EAF
-_0232F800: .word 0x0237CA80
-_0232F804: .word 0x0237CA74
+_0232F800: .word ov29_0237CA80
+_0232F804: .word ov29_0237CA74
 _0232F808: .word 0x00000EB3
 _0232F80C: .word 0x00000EB5
 _0232F810: .word 0x00000EB4
@@ -1084,7 +1084,7 @@ _0232F828: .word 0x00000131
 _0232F82C: .word 0x00000EBA
 _0232F830: .word 0x000001F6
 _0232F834: .word 0x00000232
-_0232F838: .word 0x0237CA69
+_0232F838: .word ov29_0237CA69
 _0232F83C: .word 0x00001307
 _0232F840: .word 0x00001306
 _0232F844: .word 0x00000EBC
@@ -5203,7 +5203,7 @@ _023326CC:
 	streq r0, [sp, #0x74]
 	beq _02332704
 	ldr r0, [sp, #0x78]
-	ldr r1, _023329D4 ; =0x02353718
+	ldr r1, _023329D4 ; =ov29_02353718
 	add r0, r0, #1
 	mov r0, r0, lsl #0x10
 	str r4, [r1]
@@ -5259,7 +5259,7 @@ _02332790:
 	mov r1, #0
 	bl DungeonRandOutcomeUserAction
 	cmp r0, #0
-	ldrne r0, _023329DC ; =0x0237CA68
+	ldrne r0, _023329DC ; =ov29_0237CA68
 	movne r1, #1
 	strneb r1, [r0]
 _023327C8:
@@ -5404,9 +5404,9 @@ _023329CC:
 	add sp, sp, #0xf0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023329D4: .word 0x02353718
+_023329D4: .word ov29_02353718
 _023329D8: .word 0x000001F6
-_023329DC: .word 0x0237CA68
+_023329DC: .word ov29_0237CA68
 _023329E0: .word 0x0000023A
 _023329E4: .word 0x00000EC2
 	arm_func_end ov29_023326AC
@@ -5692,7 +5692,7 @@ PerformDamageSequence: ; 0x02332D6C
 	bl DefenderAbilityIsActive__02332A0C
 	cmp r0, #0
 	beq _02332DFC
-	ldr r1, _02332F08 ; =0x02353538
+	ldr r1, _02332F08 ; =ov29_02353538
 	ldr r2, _02332F0C ; =0x000003E7
 	ldr r0, [r1]
 	add r0, r0, #0x700
@@ -5778,7 +5778,7 @@ _02332EFC:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02332F04: .word 0x0000013A
-_02332F08: .word 0x02353538
+_02332F08: .word ov29_02353538
 _02332F0C: .word 0x000003E7
 _02332F10: .word 0x0000270F
 _02332F14: .word 0x00000EC3
@@ -6474,10 +6474,10 @@ _02333834:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333850:
-	ldr r1, _02333FA4 ; =0x02353538
+	ldr r1, _02333FA4 ; =ov29_02353538
 	mov r2, #0xc
 	ldr r1, [r1]
-	ldr r3, _02333FA8 ; =0x022C6322
+	ldr r3, _02333FA8 ; =ov10_022C6322
 	add r1, r1, #0x4000
 	ldrsh r1, [r1, #0xd4]
 	smulbb r1, r1, r2
@@ -6619,7 +6619,7 @@ _02333A1C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333A44:
-	ldr r0, _02333FA4 ; =0x02353538
+	ldr r0, _02333FA4 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd5b]
@@ -6628,7 +6628,7 @@ _02333A44:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333A64:
-	ldr r0, _02333FA4 ; =0x02353538
+	ldr r0, _02333FA4 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd5c]
@@ -6643,7 +6643,7 @@ _02333A84:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333A98:
-	ldr r0, _02333FA4 ; =0x02353538
+	ldr r0, _02333FA4 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldrb r0, [r0, #0xe38]
@@ -6747,7 +6747,7 @@ _02333BF4:
 	mov r5, #0
 	cmp r0, #0
 	beq _02333C78
-	ldr r6, _02333FA4 ; =0x02353538
+	ldr r6, _02333FA4 ; =ov29_02353538
 	b _02333C60
 _02333C0C:
 	ldr r0, [r6]
@@ -6781,7 +6781,7 @@ _02333C68:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333C78:
-	ldr r6, _02333FA4 ; =0x02353538
+	ldr r6, _02333FA4 ; =ov29_02353538
 	b _02333CD4
 _02333C80:
 	ldr r0, [r6]
@@ -6825,7 +6825,7 @@ _02333D00:
 	mov r5, #0
 	cmp r0, #0
 	beq _02333D78
-	ldr r6, _02333FA4 ; =0x02353538
+	ldr r6, _02333FA4 ; =ov29_02353538
 	b _02333D60
 _02333D18:
 	ldr r0, [r6]
@@ -6856,7 +6856,7 @@ _02333D68:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333D78:
-	ldr r6, _02333FA4 ; =0x02353538
+	ldr r6, _02333FA4 ; =ov29_02353538
 	b _02333DC8
 _02333D80:
 	ldr r0, [r6]
@@ -6898,7 +6898,7 @@ _02333DF8:
 	mov r5, #0
 	cmp r0, #0
 	beq _02333E8C
-	ldr r6, _02333FA4 ; =0x02353538
+	ldr r6, _02333FA4 ; =ov29_02353538
 	b _02333E74
 _02333E10:
 	ldr r0, [r6]
@@ -6936,7 +6936,7 @@ _02333E7C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333E8C:
-	ldr r6, _02333FA4 ; =0x02353538
+	ldr r6, _02333FA4 ; =ov29_02353538
 	b _02333EF8
 _02333E94:
 	ldr r0, [r6]
@@ -7020,6 +7020,6 @@ _02333F90:
 _02333F98: .word 0x00000109
 _02333F9C: .word 0x00000127
 _02333FA0: .word 0x0000021E
-_02333FA4: .word 0x02353538
-_02333FA8: .word 0x022C6322
+_02333FA4: .word ov29_02353538
+_02333FA8: .word ov10_022C6322
 	arm_func_end StatusCheckerCheck

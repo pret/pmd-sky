@@ -60,3 +60,4 @@
 .public sub_02051D8C
 .public sub_02051E60
 .public SECONDARY_TERRAIN_TYPES
+.public DIRECTIONS_XY

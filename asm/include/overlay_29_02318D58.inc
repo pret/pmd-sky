@@ -3,6 +3,7 @@
 .public EntityIsValid__02318D34
 .public EntityIsValid__02318E4C
 .public LogMessageByIdWithPopupCheckUserTarget
+.public ov10_022C4750
+.public ov29_022E3F20
 .public SubstitutePlaceholderStringTags
 .public UpdateStatusIconFlags
-.public ov29_022E3F20

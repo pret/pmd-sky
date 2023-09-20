@@ -66,10 +66,10 @@ _0231EEB8:
 	b _0231F098
 _0231EED4:
 	mov sl, #0
-	ldr fp, _0231F54C ; =0x0235171C
+	ldr fp, _0231F54C ; =DIRECTIONS_XY
 	mov r6, sl
 _0231EEE0:
-	ldr r0, _0231F550 ; =0x02353538
+	ldr r0, _0231F550 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
@@ -287,7 +287,7 @@ _0231F1B0:
 	movlt sb, #0xa
 	bl GetDirectionTowardsPosition
 	mov r6, r0
-	ldr r0, _0231F54C ; =0x0235171C
+	ldr r0, _0231F54C ; =DIRECTIONS_XY
 	mov r1, r6, lsl #2
 	ldrsh r0, [r0, r1]
 	mov r1, #3
@@ -295,7 +295,7 @@ _0231F1B0:
 	bl __divsi3
 	ldrsh sl, [sp, #0x40]
 	mov r1, #0x18
-	ldr r2, _0231F560 ; =0x0235171E
+	ldr r2, _0231F560 ; =ov29_0235171E
 	mov r3, r6, lsl #2
 	smulbb r1, sl, r1
 	add r1, r1, #0xc
@@ -393,7 +393,7 @@ _0231F31C:
 	b _0231F53C
 _0231F394:
 	mov r8, #0
-	ldr r6, _0231F54C ; =0x0235171C
+	ldr r6, _0231F54C ; =DIRECTIONS_XY
 	add sb, sp, #0x28
 	b _0231F40C
 _0231F3A4:
@@ -459,7 +459,7 @@ _0231F454:
 	bne _0231F4B4
 	mov r3, #0
 	str r3, [sp]
-	ldr r0, _0231F568 ; =0x022C4458
+	ldr r0, _0231F568 ; =ov10_022C4458
 	ldr r1, _0231F56C ; =0x00000259
 	str r3, [sp, #4]
 	str r1, [sp, #8]
@@ -482,7 +482,7 @@ _0231F4B4:
 _0231F4D4:
 	mov r3, #0
 	str r3, [sp]
-	ldr r0, _0231F568 ; =0x022C4458
+	ldr r0, _0231F568 ; =ov10_022C4458
 	str r3, [sp, #4]
 	mov r1, #0x258
 	str r1, [sp, #8]
@@ -513,13 +513,13 @@ _0231F53C:
 	.align 2, 0
 _0231F544: .word 0x00000E45
 _0231F548: .word 0x00000E46
-_0231F54C: .word 0x0235171C
-_0231F550: .word 0x02353538
+_0231F54C: .word DIRECTIONS_XY
+_0231F550: .word ov29_02353538
 _0231F554: .word 0x00000E48
 _0231F558: .word 0x00000E47
 _0231F55C: .word 0x00000212
-_0231F560: .word 0x0235171E
+_0231F560: .word ov29_0235171E
 _0231F564: .word 0x00000163
-_0231F568: .word 0x022C4458
+_0231F568: .word ov10_022C4458
 _0231F56C: .word 0x00000259
 	arm_func_end ov29_0231EDFC

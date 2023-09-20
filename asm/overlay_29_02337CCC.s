@@ -82,7 +82,7 @@ _02337D9C:
 	add r6, r6, #1
 	cmp r6, #1
 	ble _02337D98
-	ldr r4, _02337E28 ; =0x02353538
+	ldr r4, _02337E28 ; =ov29_02353538
 	mov r5, #0
 _02337DE4:
 	ldr r0, [r4]
@@ -105,7 +105,7 @@ _02337E0C:
 	bl ov29_022E66C4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02337E28: .word 0x02353538
+_02337E28: .word ov29_02353538
 
 	arm_func_start ov29_02337E2C
 ov29_02337E2C: ; 0x02337E2C
@@ -123,7 +123,7 @@ _02337E54:
 	and r0, r0, #3
 	cmp r0, #2
 	bne _02337E80
-	ldr r0, _02337E8C ; =0x02353538
+	ldr r0, _02337E8C ; =ov29_02353538
 	ldr r1, _02337E90 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -137,24 +137,24 @@ _02337E84:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02337E8C: .word 0x02353538
+_02337E8C: .word ov29_02353538
 _02337E90: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end ov29_02337E2C
 
 	arm_func_start IsWaterTileset
 IsWaterTileset: ; 0x02337E94
-	ldr r0, _02337EB8 ; =0x02353538
+	ldr r0, _02337EB8 ; =ov29_02353538
 	mov r1, #0xc
 	ldr r0, [r0]
-	ldr r2, _02337EBC ; =0x022C6327
+	ldr r2, _02337EBC ; =ov10_022C6327
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
 	smulbb r0, r0, r1
 	ldrb r0, [r2, r0]
 	bx lr
 	.align 2, 0
-_02337EB8: .word 0x02353538
-_02337EBC: .word 0x022C6327
+_02337EB8: .word ov29_02353538
+_02337EBC: .word ov10_022C6327
 	arm_func_end IsWaterTileset
 
 	arm_func_start ov29_02337EC0
@@ -175,7 +175,7 @@ ov29_02337EC0: ; 0x02337EC0
 ov29_02337EE8: ; 0x02337EE8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x20
-	ldr r0, _02337F8C ; =0x02353538
+	ldr r0, _02337F8C ; =ov29_02353538
 	ldr r4, _02337F90 ; =0x0000022A
 	ldr r0, [r0]
 	ldr r6, _02337F94 ; =0x000003D7
@@ -218,7 +218,7 @@ _02337F70:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02337F8C: .word 0x02353538
+_02337F8C: .word ov29_02353538
 _02337F90: .word 0x0000022A
 _02337F94: .word 0x000003D7
 	arm_func_end ov29_02337EE8
@@ -227,7 +227,7 @@ _02337F94: .word 0x000003D7
 GetRandomSpawnMonsterID: ; 0x02337F98
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x20
-	ldr r0, _02338040 ; =0x02353538
+	ldr r0, _02338040 ; =ov29_02353538
 	ldr r4, _02338044 ; =0x0000022A
 	ldr r0, [r0]
 	ldr r6, _02338048 ; =0x000003D7
@@ -271,7 +271,7 @@ _02338024:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02338040: .word 0x02353538
+_02338040: .word ov29_02353538
 _02338044: .word 0x0000022A
 _02338048: .word 0x000003D7
 	arm_func_end GetRandomSpawnMonsterID
@@ -289,7 +289,7 @@ ov29_0233804C: ; 0x0233804C
 	mov r1, r0, lsl #0x10
 	mov r0, #0
 	mov r3, r1, asr #0x10
-	ldr r5, _023380F4 ; =0x02353538
+	ldr r5, _023380F4 ; =ov29_02353538
 	ldr lr, _023380F8 ; =0x000286F2
 	mov r2, r0
 	mov r1, r0
@@ -322,7 +322,7 @@ _02338088:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023380F4: .word 0x02353538
+_023380F4: .word ov29_02353538
 _023380F8: .word 0x000286F2
 	arm_func_end ov29_0233804C
 
@@ -333,7 +333,7 @@ ov29_023380FC: ; 0x023380FC
 	ldr r0, [sb, #0xb4]
 	mov r6, #0
 	ldrb r0, [r0, #6]
-	ldr r4, _023381BC ; =0x0235171C
+	ldr r4, _023381BC ; =DIRECTIONS_XY
 	mov r8, r1
 	mov r7, r6
 	cmp r0, #0
@@ -380,7 +380,7 @@ _023381A0:
 	mov r0, r7
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_023381BC: .word 0x0235171C
+_023381BC: .word DIRECTIONS_XY
 	arm_func_end ov29_023380FC
 
 	arm_func_start ov29_023381C0
@@ -390,7 +390,7 @@ ov29_023381C0: ; 0x023381C0
 	mov r7, r1
 	mov r6, r2
 	mov r5, #0
-	ldr r4, _02338284 ; =0x0235171C
+	ldr r4, _02338284 ; =DIRECTIONS_XY
 	b _02338274
 _023381DC:
 	mov r1, r5, lsl #2
@@ -439,7 +439,7 @@ _02338274:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02338284: .word 0x0235171C
+_02338284: .word DIRECTIONS_XY
 	arm_func_end ov29_023381C0
 
 	arm_func_start NearbyAllyIqSkillIsEnabled
@@ -462,7 +462,7 @@ ov29_023382A8: ; 0x023382A8
 	mov r6, #0
 	ldrb r0, [r0, #6]
 	mov r5, #0
-	ldr r4, _0233834C ; =0x0235171C
+	ldr r4, _0233834C ; =DIRECTIONS_XY
 	cmp r0, #0
 	movne r6, #1
 	b _0233833C
@@ -502,7 +502,7 @@ _0233833C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0233834C: .word 0x0235171C
+_0233834C: .word DIRECTIONS_XY
 	arm_func_end ov29_023382A8
 
 	arm_func_start ov29_02338350
@@ -518,7 +518,7 @@ ov29_02338350: ; 0x02338350
 
 	arm_func_start ResetGravity
 ResetGravity: ; 0x0233836C
-	ldr r0, _02338388 ; =0x02353538
+	ldr r0, _02338388 ; =ov29_02353538
 	ldr ip, _0233838C ; =MemZero
 	ldr r0, [r0]
 	mov r1, #2
@@ -526,19 +526,19 @@ ResetGravity: ; 0x0233836C
 	add r0, r0, #0x12800
 	bx ip
 	.align 2, 0
-_02338388: .word 0x02353538
+_02338388: .word ov29_02353538
 _0233838C: .word MemZero
 	arm_func_end ResetGravity
 
 	arm_func_start GravityIsActive
 GravityIsActive: ; 0x02338390
-	ldr r0, _023383A4 ; =0x02353538
+	ldr r0, _023383A4 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x12000
 	ldrb r0, [r0, #0xafc]
 	bx lr
 	.align 2, 0
-_023383A4: .word 0x02353538
+_023383A4: .word ov29_02353538
 	arm_func_end GravityIsActive
 
 	arm_func_start ov29_023383A8
@@ -559,7 +559,7 @@ ov29_023383BC: ; 0x023383BC
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	ldr r0, _02338424 ; =0x02353538
+	ldr r0, _02338424 ; =ov29_02353538
 	ldr r0, [r0]
 	add r2, r0, #0x12000
 	ldrb r0, [r2, #0xafc]
@@ -581,7 +581,7 @@ _02338400:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02338424: .word 0x02353538
+_02338424: .word ov29_02353538
 _02338428: .word 0x00000C06
 _0233842C: .word 0x00000C05
 	arm_func_end ov29_023383BC
@@ -603,21 +603,21 @@ ov29_02338430: ; 0x02338430
 
 	arm_func_start ov29_0233845C
 ov29_0233845C: ; 0x0233845C
-	ldr r1, _02338474 ; =0x02353538
+	ldr r1, _02338474 ; =ov29_02353538
 	ldr r0, _02338478 ; =0x00012AFE
 	ldr r1, [r1]
 	mov r2, #0
 	strh r2, [r1, r0]
 	bx lr
 	.align 2, 0
-_02338474: .word 0x02353538
+_02338474: .word ov29_02353538
 _02338478: .word 0x00012AFE
 	arm_func_end ov29_0233845C
 
 	arm_func_start ov29_0233847C
 ov29_0233847C: ; 0x0233847C
 	stmdb sp!, {r4, lr}
-	ldr r1, _023384B8 ; =0x02353538
+	ldr r1, _023384B8 ; =ov29_02353538
 	ldr r0, _023384BC ; =0x00012AFE
 	ldr r3, [r1]
 	ldrsh r2, [r3, r0]
@@ -632,36 +632,36 @@ ov29_0233847C: ; 0x0233847C
 	bl SetVictoriesOnOneFloor
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_023384B8: .word 0x02353538
+_023384B8: .word ov29_02353538
 _023384BC: .word 0x00012AFE
 	arm_func_end ov29_0233847C
 
 	arm_func_start ShouldBoostKecleonShopSpawnChance
 ShouldBoostKecleonShopSpawnChance: ; 0x023384C0
-	ldr r0, _023384D4 ; =0x02353538
+	ldr r0, _023384D4 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x12000
 	ldrb r0, [r0, #0xb24]
 	bx lr
 	.align 2, 0
-_023384D4: .word 0x02353538
+_023384D4: .word ov29_02353538
 	arm_func_end ShouldBoostKecleonShopSpawnChance
 
 	arm_func_start SetShouldBoostKecleonShopSpawnChance
 SetShouldBoostKecleonShopSpawnChance: ; 0x023384D8
-	ldr r1, _023384EC ; =0x02353538
+	ldr r1, _023384EC ; =ov29_02353538
 	ldr r1, [r1]
 	add r1, r1, #0x12000
 	strb r0, [r1, #0xb24]
 	bx lr
 	.align 2, 0
-_023384EC: .word 0x02353538
+_023384EC: .word ov29_02353538
 	arm_func_end SetShouldBoostKecleonShopSpawnChance
 
 	arm_func_start UpdateShouldBoostKecleonShopSpawnChance
 UpdateShouldBoostKecleonShopSpawnChance: ; 0x023384F0
 	stmdb sp!, {r3, lr}
-	ldr r0, _0233852C ; =0x02353538
+	ldr r0, _0233852C ; =ov29_02353538
 	mov r2, #0
 	ldr r1, [r0]
 	mov r0, #0x5e
@@ -669,42 +669,42 @@ UpdateShouldBoostKecleonShopSpawnChance: ; 0x023384F0
 	strb r2, [r1, #0xb24]
 	bl TeamMemberHasExclusiveItemEffectActive
 	cmp r0, #0
-	ldrne r0, _0233852C ; =0x02353538
+	ldrne r0, _0233852C ; =ov29_02353538
 	movne r1, #1
 	ldrne r0, [r0]
 	addne r0, r0, #0x12000
 	strneb r1, [r0, #0xb24]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233852C: .word 0x02353538
+_0233852C: .word ov29_02353538
 	arm_func_end UpdateShouldBoostKecleonShopSpawnChance
 
 	arm_func_start ov29_02338530
 ov29_02338530: ; 0x02338530
-	ldr r0, _02338544 ; =0x02353538
+	ldr r0, _02338544 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xc8]
 	bx lr
 	.align 2, 0
-_02338544: .word 0x02353538
+_02338544: .word ov29_02353538
 	arm_func_end ov29_02338530
 
 	arm_func_start SetDoughSeedFlag
 SetDoughSeedFlag: ; 0x02338548
-	ldr r1, _0233855C ; =0x02353538
+	ldr r1, _0233855C ; =ov29_02353538
 	ldr r1, [r1]
 	add r1, r1, #0x4000
 	strb r0, [r1, #0xc8]
 	bx lr
 	.align 2, 0
-_0233855C: .word 0x02353538
+_0233855C: .word ov29_02353538
 	arm_func_end SetDoughSeedFlag
 
 	arm_func_start TrySpawnDoughSeedPoke
 TrySpawnDoughSeedPoke: ; 0x02338560
 	stmdb sp!, {r3, lr}
-	ldr r0, _023385BC ; =0x02353538
+	ldr r0, _023385BC ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xc8]
@@ -713,7 +713,7 @@ TrySpawnDoughSeedPoke: ; 0x02338560
 	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	bne _023385A4
-	ldr r1, _023385C0 ; =0x02352B5C
+	ldr r1, _023385C0 ; =ov29_02352B5C
 	add r0, sp, #0
 	ldrh r2, [r1]
 	strh r2, [sp]
@@ -721,20 +721,20 @@ TrySpawnDoughSeedPoke: ; 0x02338560
 	strh r1, [sp, #2]
 	bl ov29_02344E88
 _023385A4:
-	ldr r0, _023385BC ; =0x02353538
+	ldr r0, _023385BC ; =ov29_02353538
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	strb r1, [r0, #0xc8]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023385BC: .word 0x02353538
-_023385C0: .word 0x02352B5C
+_023385BC: .word ov29_02353538
+_023385C0: .word ov29_02352B5C
 	arm_func_end TrySpawnDoughSeedPoke
 
 	arm_func_start IsSecretBazaar
 IsSecretBazaar: ; 0x023385C4
-	ldr r0, _023385E8 ; =0x02353538
+	ldr r0, _023385E8 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -744,35 +744,35 @@ IsSecretBazaar: ; 0x023385C4
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_023385E8: .word 0x02353538
+_023385E8: .word ov29_02353538
 	arm_func_end IsSecretBazaar
 
 	arm_func_start ShouldBoostHiddenStairsSpawnChance
 ShouldBoostHiddenStairsSpawnChance: ; 0x023385EC
-	ldr r0, _02338600 ; =0x02353538
+	ldr r0, _02338600 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x12000
 	ldrb r0, [r0, #0xb25]
 	bx lr
 	.align 2, 0
-_02338600: .word 0x02353538
+_02338600: .word ov29_02353538
 	arm_func_end ShouldBoostHiddenStairsSpawnChance
 
 	arm_func_start SetShouldBoostHiddenStairsSpawnChance
 SetShouldBoostHiddenStairsSpawnChance: ; 0x02338604
-	ldr r1, _02338618 ; =0x02353538
+	ldr r1, _02338618 ; =ov29_02353538
 	ldr r1, [r1]
 	add r1, r1, #0x12000
 	strb r0, [r1, #0xb25]
 	bx lr
 	.align 2, 0
-_02338618: .word 0x02353538
+_02338618: .word ov29_02353538
 	arm_func_end SetShouldBoostHiddenStairsSpawnChance
 
 	arm_func_start UpdateShouldBoostHiddenStairsSpawnChance
 UpdateShouldBoostHiddenStairsSpawnChance: ; 0x0233861C
 	stmdb sp!, {r3, lr}
-	ldr r0, _02338658 ; =0x02353538
+	ldr r0, _02338658 ; =ov29_02353538
 	mov r2, #0
 	ldr r1, [r0]
 	mov r0, #0x5f
@@ -780,19 +780,19 @@ UpdateShouldBoostHiddenStairsSpawnChance: ; 0x0233861C
 	strb r2, [r1, #0xb25]
 	bl TeamMemberHasExclusiveItemEffectActive
 	cmp r0, #0
-	ldrne r0, _02338658 ; =0x02353538
+	ldrne r0, _02338658 ; =ov29_02353538
 	movne r1, #1
 	ldrne r0, [r0]
 	addne r0, r0, #0x12000
 	strneb r1, [r0, #0xb25]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02338658: .word 0x02353538
+_02338658: .word ov29_02353538
 	arm_func_end UpdateShouldBoostHiddenStairsSpawnChance
 
 	arm_func_start IsSecretRoom
 IsSecretRoom: ; 0x0233865C
-	ldr r0, _02338680 ; =0x02353538
+	ldr r0, _02338680 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -802,7 +802,7 @@ IsSecretRoom: ; 0x0233865C
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_02338680: .word 0x02353538
+_02338680: .word ov29_02353538
 	arm_func_end IsSecretRoom
 
 	arm_func_start IsSecretFloor
@@ -838,7 +838,7 @@ ov29_023386B0: ; 0x023386B0
 
 	arm_func_start HiddenStairsPresent
 HiddenStairsPresent: ; 0x023386D8
-	ldr r0, _02338704 ; =0x02353538
+	ldr r0, _02338704 ; =ov29_02353538
 	mvn r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xcc00
@@ -850,12 +850,12 @@ HiddenStairsPresent: ; 0x023386D8
 	movne r0, #1
 	bx lr
 	.align 2, 0
-_02338704: .word 0x02353538
+_02338704: .word ov29_02353538
 	arm_func_end HiddenStairsPresent
 
 	arm_func_start ov29_02338708
 ov29_02338708: ; 0x02338708
-	ldr r1, _02338738 ; =0x02353538
+	ldr r1, _02338738 ; =ov29_02353538
 	ldrsh r2, [r0]
 	ldr r1, [r1]
 	add r1, r1, #0xcc00
@@ -868,7 +868,7 @@ ov29_02338708: ; 0x02338708
 	movne r0, #0
 	bx lr
 	.align 2, 0
-_02338738: .word 0x02353538
+_02338738: .word ov29_02353538
 	arm_func_end ov29_02338708
 
 	arm_func_start ov29_0233873C
@@ -877,14 +877,14 @@ ov29_0233873C: ; 0x0233873C
 	bl HiddenStairsPresent
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _02338764 ; =0x02353538
+	ldr r0, _02338764 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0xe8
 	add r0, r0, #0xcc00
 	bl ov29_02338768
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02338764: .word 0x02353538
+_02338764: .word ov29_02353538
 	arm_func_end ov29_0233873C
 
 	arm_func_start ov29_02338768
@@ -909,7 +909,7 @@ HiddenStairsTrigger: ; 0x02338794
 	bl HiddenStairsPresent
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r0, _02338848 ; =0x02353538
+	ldr r0, _02338848 ; =ov29_02353538
 	ldr r0, [r0]
 	add r1, r0, #0xcc00
 	ldrsh r0, [r1, #0xe8]
@@ -920,7 +920,7 @@ HiddenStairsTrigger: ; 0x02338794
 	ldrb r0, [r0, #0x20]
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
-	ldr r0, _02338848 ; =0x02353538
+	ldr r0, _02338848 ; =ov29_02353538
 	ldr r2, [r0]
 	add r0, r2, #0x1a000
 	ldrb r1, [r0, #0x246]
@@ -941,7 +941,7 @@ HiddenStairsTrigger: ; 0x02338794
 _0233881C:
 	ldr r1, [r4, #0x10]
 	mov r2, #1
-	ldr r0, _02338848 ; =0x02353538
+	ldr r0, _02338848 ; =ov29_02353538
 	strb r2, [r1, #0x20]
 	ldr r0, [r0]
 	add r1, r0, #0xcc00
@@ -951,63 +951,63 @@ _0233881C:
 	bl UpdateTrapsVisibility
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02338848: .word 0x02353538
+_02338848: .word ov29_02353538
 _0233884C: .word 0x00000F31
 	arm_func_end HiddenStairsTrigger
 
 	arm_func_start ov29_02338850
 ov29_02338850: ; 0x02338850
-	ldr r0, _02338864 ; =0x02353538
+	ldr r0, _02338864 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldr r0, [r0, #0xcc]
 	bx lr
 	.align 2, 0
-_02338864: .word 0x02353538
+_02338864: .word ov29_02353538
 	arm_func_end ov29_02338850
 
 	arm_func_start ov29_02338868
 ov29_02338868: ; 0x02338868
-	ldr r1, _0233887C ; =0x02353538
+	ldr r1, _0233887C ; =ov29_02353538
 	ldr r1, [r1]
 	add r1, r1, #0x4000
 	str r0, [r1, #0xcc]
 	bx lr
 	.align 2, 0
-_0233887C: .word 0x02353538
+_0233887C: .word ov29_02353538
 	arm_func_end ov29_02338868
 
 	arm_func_start GetDungeonGenInfoUnk0C
 GetDungeonGenInfoUnk0C: ; 0x02338880
-	ldr r0, _02338894 ; =0x02353538
+	ldr r0, _02338894 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldr r0, [r0, #0xd0]
 	bx lr
 	.align 2, 0
-_02338894: .word 0x02353538
+_02338894: .word ov29_02353538
 	arm_func_end GetDungeonGenInfoUnk0C
 
 	arm_func_start ov29_02338898
 ov29_02338898: ; 0x02338898
-	ldr r1, _023388AC ; =0x02353538
+	ldr r1, _023388AC ; =ov29_02353538
 	ldr r1, [r1]
 	add r1, r1, #0x4000
 	str r0, [r1, #0xd0]
 	bx lr
 	.align 2, 0
-_023388AC: .word 0x02353538
+_023388AC: .word ov29_02353538
 	arm_func_end ov29_02338898
 
 	arm_func_start ov29_023388B0
 ov29_023388B0: ; 0x023388B0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
-	ldr r0, _02338974 ; =0x02352F1C
+	ldr r0, _02338974 ; =ov29_02352F1C
 	mov sl, #0
 	ldr r1, [r0, #4]
 	ldr r0, [r0]
-	ldr r7, _02338978 ; =0x02352F40
+	ldr r7, _02338978 ; =ov29_02352F40
 	add r8, sp, #0
 	str r1, [sp, #4]
 	str r0, [sp]
@@ -1033,40 +1033,40 @@ _023388E8:
 	add sl, sl, #1
 	cmp sl, #3
 	blt _023388E8
-	ldr r0, _0233897C ; =0x0237CACC
+	ldr r0, _0233897C ; =ov29_0237CACC
 	mov r1, #0
 	bl ov29_02338D94
-	ldr r0, _02338980 ; =0x0237CD40
+	ldr r0, _02338980 ; =ov29_0237CD40
 	mov r1, #1
 	bl ov29_02338D94
-	ldr r0, _02338984 ; =0x02352F7C
-	ldr r2, _0233897C ; =0x0237CACC
+	ldr r0, _02338984 ; =ov29_02352F7C
+	ldr r2, _0233897C ; =ov29_0237CACC
 	mov r1, #0
 	ldr r4, [r0]
 	strb r1, [r2, #0x240]
 	ldr r3, [r0, #4]
 	str r4, [r2, #0x254]
-	ldr r0, _02338980 ; =0x0237CD40
+	ldr r0, _02338980 ; =ov29_0237CD40
 	str r3, [r2, #0x258]
 	bl ov29_02338D34
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02338974: .word 0x02352F1C
-_02338978: .word 0x02352F40
-_0233897C: .word 0x0237CACC
-_02338980: .word 0x0237CD40
-_02338984: .word 0x02352F7C
+_02338974: .word ov29_02352F1C
+_02338978: .word ov29_02352F40
+_0233897C: .word ov29_0237CACC
+_02338980: .word ov29_0237CD40
+_02338984: .word ov29_02352F7C
 	arm_func_end ov29_023388B0
 
 	arm_func_start ov29_02338988
 ov29_02338988: ; 0x02338988
 	stmdb sp!, {r3, lr}
-	ldr r0, _023389BC ; =0x0237CACC
+	ldr r0, _023389BC ; =ov29_0237CACC
 	bl ov29_02338D58
 	cmp r0, #0
 	bne _023389AC
-	ldr r0, _023389C0 ; =0x0237CD40
+	ldr r0, _023389C0 ; =ov29_0237CD40
 	bl ov29_02338D58
 	cmp r0, #0
 	beq _023389B4
@@ -1077,8 +1077,8 @@ _023389B4:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023389BC: .word 0x0237CACC
-_023389C0: .word 0x0237CD40
+_023389BC: .word ov29_0237CACC
+_023389C0: .word ov29_0237CD40
 	arm_func_end ov29_02338988
 
 	arm_func_start ov29_023389C4
@@ -1088,13 +1088,13 @@ ov29_023389C4: ; 0x023389C4
 	mov r4, r0
 	mov r0, #0xc
 	mul r2, r4, r0
-	ldr r1, _02338A3C ; =0x022C6326
-	ldr r0, _02338A40 ; =0x0237CACC
+	ldr r1, _02338A3C ; =ov10_022C6326
+	ldr r0, _02338A40 ; =ov29_0237CACC
 	ldrb r1, [r1, r2]
 	bl ov29_02338D34
 	cmp r4, #0xc3
 	bne _02338A34
-	ldr r1, _02338A44 ; =0x02352F1C
+	ldr r1, _02338A44 ; =ov29_02352F1C
 	ldr r2, _02338A48 ; =0x000003EB
 	ldr r3, [r1, #0xc]
 	ldr ip, [r1, #8]
@@ -1115,25 +1115,25 @@ _02338A34:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02338A3C: .word 0x022C6326
-_02338A40: .word 0x0237CACC
-_02338A44: .word 0x02352F1C
+_02338A3C: .word ov10_022C6326
+_02338A40: .word ov29_0237CACC
+_02338A44: .word ov29_02352F1C
 _02338A48: .word 0x000003EB
 	arm_func_end ov29_023389C4
 
 	arm_func_start ov29_02338A4C
 ov29_02338A4C: ; 0x02338A4C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r1, _02338AB4 ; =0x02353730
+	ldr r1, _02338AB4 ; =ov29_02353730
 	mov r4, r0
 	ldrb r1, [r1, r4, lsl #3]
-	ldr r0, _02338AB8 ; =0x0237CD40
+	ldr r0, _02338AB8 ; =ov29_0237CD40
 	bl ov29_02338D34
-	ldr r1, _02338ABC ; =0x0235372C
+	ldr r1, _02338ABC ; =ov29_0235372C
 	mov sb, #0
 	ldr r7, [r1, r4, lsl #3]
-	ldr r0, _02338AC0 ; =0x0237CACC
-	ldr r5, _02338AB8 ; =0x0237CD40
+	ldr r0, _02338AC0 ; =ov29_0237CACC
+	ldr r5, _02338AB8 ; =ov29_0237CD40
 	str r7, [r0, #0x4e4]
 	mov r6, sb
 	mov r4, #0xc0
@@ -1152,10 +1152,10 @@ _02338A8C:
 	blt _02338A84
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02338AB4: .word 0x02353730
-_02338AB8: .word 0x0237CD40
-_02338ABC: .word 0x0235372C
-_02338AC0: .word 0x0237CACC
+_02338AB4: .word ov29_02353730
+_02338AB8: .word ov29_0237CD40
+_02338ABC: .word ov29_0235372C
+_02338AC0: .word ov29_0237CACC
 	arm_func_end ov29_02338A4C
 
 	arm_func_start ov29_02338AC4
@@ -1163,7 +1163,7 @@ ov29_02338AC4: ; 0x02338AC4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r5, #0
 _02338ACC:
-	ldr r1, _02338D28 ; =0x0237CACC
+	ldr r1, _02338D28 ; =ov29_0237CACC
 	mov r0, #0x274
 	mla r6, r5, r0, r1
 	ldrb r0, [r6, #0x240]
@@ -1326,7 +1326,7 @@ _02338D18:
 	blt _02338ACC
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02338D28: .word 0x0237CACC
+_02338D28: .word ov29_0237CACC
 _02338D2C: .word 0x00000FFF
 	arm_func_end ov29_02338AC4
 
@@ -1337,7 +1337,7 @@ ov29_02338D30: ; 0x02338D30
 
 	arm_func_start ov29_02338D34
 ov29_02338D34: ; 0x02338D34
-	ldr r3, _02338D54 ; =0x02352F7C
+	ldr r3, _02338D54 ; =ov29_02352F7C
 	strb r1, [r0, #0x240]
 	add r2, r3, r1, lsl #3
 	ldr r3, [r3, r1, lsl #3]
@@ -1346,7 +1346,7 @@ ov29_02338D34: ; 0x02338D34
 	str r1, [r0, #0x258]
 	bx lr
 	.align 2, 0
-_02338D54: .word 0x02352F7C
+_02338D54: .word ov29_02352F7C
 	arm_func_end ov29_02338D34
 
 	arm_func_start ov29_02338D58
@@ -1428,7 +1428,7 @@ _02338E04:
 
 	arm_func_start ov29_02338E50
 ov29_02338E50: ; 0x02338E50
-	ldr r3, _02338F08 ; =0x02352F40
+	ldr r3, _02338F08 ; =ov29_02352F40
 	mov r2, #0x14
 	mla r2, r1, r2, r3
 	ldr r3, [r2, #4]
@@ -1440,7 +1440,7 @@ ov29_02338E50: ; 0x02338E50
 	strh r1, [r0, #0x1a]
 	strh r1, [r0, #0x1c]
 	ldrh r3, [r0, #0x14]
-	ldr r1, _02338F0C ; =0x020AFC70
+	ldr r1, _02338F0C ; =_020AFC70
 	bic r3, r3, #7
 	orr r3, r3, #4
 	strh r3, [r0, #0x14]
@@ -1475,128 +1475,128 @@ ov29_02338E50: ; 0x02338E50
 	strb r1, [r0, #0x3e]
 	bx lr
 	.align 2, 0
-_02338F08: .word 0x02352F40
-_02338F0C: .word 0x020AFC70
+_02338F08: .word ov29_02352F40
+_02338F0C: .word _020AFC70
 	arm_func_end ov29_02338E50
 
 	arm_func_start ov29_02338F10
 ov29_02338F10: ; 0x02338F10
-	ldr r0, _02338F20 ; =0x0235376C
+	ldr r0, _02338F20 ; =ov29_0235376C
 	mov r1, #0x64
 	strh r1, [r0, #2]
 	bx lr
 	.align 2, 0
-_02338F20: .word 0x0235376C
+_02338F20: .word ov29_0235376C
 	arm_func_end ov29_02338F10
 
 	arm_func_start ov29_02338F24
 ov29_02338F24: ; 0x02338F24
-	ldr r2, _02338F34 ; =0x0235376C
+	ldr r2, _02338F34 ; =ov29_0235376C
 	strh r0, [r2, #2]
 	strh r1, [r2, #4]
 	bx lr
 	.align 2, 0
-_02338F34: .word 0x0235376C
+_02338F34: .word ov29_0235376C
 	arm_func_end ov29_02338F24
 
 	arm_func_start ov29_02338F38
 ov29_02338F38: ; 0x02338F38
-	ldr r1, _02338F44 ; =0x0237CFB8
+	ldr r1, _02338F44 ; =ov29_0237CFB8
 	strb r0, [r1, #2]
 	bx lr
 	.align 2, 0
-_02338F44: .word 0x0237CFB8
+_02338F44: .word ov29_0237CFB8
 	arm_func_end ov29_02338F38
 
 	arm_func_start ov29_02338F48
 ov29_02338F48: ; 0x02338F48
-	ldr r1, _02338F54 ; =0x0237CFB8
+	ldr r1, _02338F54 ; =ov29_0237CFB8
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-_02338F54: .word 0x0237CFB8
+_02338F54: .word ov29_0237CFB8
 	arm_func_end ov29_02338F48
 
 	arm_func_start ov29_02338F58
 ov29_02338F58: ; 0x02338F58
-	ldr r1, _02338F64 ; =0x0235376C
+	ldr r1, _02338F64 ; =ov29_0235376C
 	strb r0, [r1, #1]
 	bx lr
 	.align 2, 0
-_02338F64: .word 0x0235376C
+_02338F64: .word ov29_0235376C
 	arm_func_end ov29_02338F58
 
 	arm_func_start ov29_02338F68
 ov29_02338F68: ; 0x02338F68
 	stmdb sp!, {r3, lr}
 	ldr r1, _02338FBC ; =0x0000040B
-	ldr r2, _02338FC0 ; =0x02353784
+	ldr r2, _02338FC0 ; =ov29_02353784
 	mov r0, #4
 	mov r3, #0
 	bl AllocAndLoadFileInPack
-	ldr r1, _02338FC4 ; =0x0235376C
+	ldr r1, _02338FC4 ; =ov29_0235376C
 	add r0, sp, #0
 	ldr r1, [r1, #0x18]
 	bl HandleSir0Translation
 	ldr r1, [sp]
-	ldr r0, _02338FC4 ; =0x0235376C
+	ldr r0, _02338FC4 ; =ov29_0235376C
 	str r1, [r0, #8]
 	bl GetMinimapData
 	add r0, r0, #0xe000
 	mov r2, #0
-	ldr r1, _02338FC4 ; =0x0235376C
+	ldr r1, _02338FC4 ; =ov29_0235376C
 	strb r2, [r0, #0x447]
 	str r2, [r1, #0xc]
 	strb r2, [r1]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02338FBC: .word 0x0000040B
-_02338FC0: .word 0x02353784
-_02338FC4: .word 0x0235376C
+_02338FC0: .word ov29_02353784
+_02338FC4: .word ov29_0235376C
 	arm_func_end ov29_02338F68
 
 	arm_func_start ov29_02338FC8
 ov29_02338FC8: ; 0x02338FC8
 	stmdb sp!, {r3, lr}
-	ldr r0, _02339000 ; =0x0235376C
+	ldr r0, _02339000 ; =ov29_0235376C
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	beq _02338FF0
-	ldr r0, _02339004 ; =0x02353784
+	ldr r0, _02339004 ; =ov29_02353784
 	bl UnloadFile
-	ldr r0, _02339000 ; =0x0235376C
+	ldr r0, _02339000 ; =ov29_0235376C
 	mov r1, #0
 	str r1, [r0, #8]
 _02338FF0:
-	ldr r0, _02339008 ; =0x0237CFB8
+	ldr r0, _02339008 ; =ov29_0237CFB8
 	mov r1, #0
 	strb r1, [r0, #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339000: .word 0x0235376C
-_02339004: .word 0x02353784
-_02339008: .word 0x0237CFB8
+_02339000: .word ov29_0235376C
+_02339004: .word ov29_02353784
+_02339008: .word ov29_0237CFB8
 	arm_func_end ov29_02338FC8
 
 	arm_func_start ov29_0233900C
 ov29_0233900C: ; 0x0233900C
 	stmdb sp!, {r3, lr}
-	ldr r0, _02339044 ; =0x0235352C
+	ldr r0, _02339044 ; =ov29_0235352C
 	ldr r0, [r0]
 	add r0, r0, #0x20
 	bl ov29_022DE288
-	ldr r1, _02339044 ; =0x0235352C
-	ldr r2, _02339048 ; =0x0235376C
+	ldr r1, _02339044 ; =ov29_0235352C
+	ldr r2, _02339048 ; =ov29_0235376C
 	ldr r1, [r1]
 	str r0, [r2, #0x10]
 	add r0, r1, #0x2c
 	bl ov29_022DE288
-	ldr r1, _02339048 ; =0x0235376C
+	ldr r1, _02339048 ; =ov29_0235376C
 	str r0, [r1, #0x14]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339044: .word 0x0235352C
-_02339048: .word 0x0235376C
+_02339044: .word ov29_0235352C
+_02339048: .word ov29_0235376C
 	arm_func_end ov29_0233900C
 
 	arm_func_start ov29_0233904C
@@ -1633,7 +1633,7 @@ _02339080:
 	cmp r6, #0x10
 	blt _02339064
 	cmp fp, #0
-	ldreq r0, _02339110 ; =0x0235376C
+	ldreq r0, _02339110 ; =ov29_0235376C
 	moveq r1, #0x64
 	streqh r1, [r0, #2]
 	streqh r1, [r0, #4]
@@ -1642,24 +1642,24 @@ _02339080:
 	str r3, [r0, #0x440]
 	mov r2, #1
 	strb r2, [r0, #0x444]
-	ldr r1, _02339114 ; =0x0237CFB8
+	ldr r1, _02339114 ; =ov29_0237CFB8
 	strb r3, [r0, #0x446]
 	strb r2, [r1, #3]
 	bl ov29_0233900C
 	bl ov29_022E7F7C
-	ldr r0, _02339114 ; =0x0237CFB8
+	ldr r0, _02339114 ; =ov29_0237CFB8
 	mov r1, #1
 	strb r1, [r0, #2]
 	bl ov29_02339148
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02339110: .word 0x0235376C
-_02339114: .word 0x0237CFB8
+_02339110: .word ov29_0235376C
+_02339114: .word ov29_0237CFB8
 	arm_func_end ov29_0233904C
 
 	arm_func_start GetMinimapData
 GetMinimapData: ; 0x02339118
-	ldr r0, _02339134 ; =0x02353538
+	ldr r0, _02339134 ; =ov29_02353538
 	ldr r0, [r0]
 	cmp r0, #0
 	addne r0, r0, #0x264
@@ -1667,7 +1667,7 @@ GetMinimapData: ; 0x02339118
 	moveq r0, #0
 	bx lr
 	.align 2, 0
-_02339134: .word 0x02353538
+_02339134: .word ov29_02353538
 	arm_func_end GetMinimapData
 
 	arm_func_start ov29_02339138
@@ -1681,10 +1681,10 @@ ov29_02339138: ; 0x02339138
 	arm_func_start ov29_02339148
 ov29_02339148: ; 0x02339148
 	stmdb sp!, {r4, lr}
-	ldr r0, _02339188 ; =0x02353538
+	ldr r0, _02339188 ; =ov29_02353538
 	mov r2, #0xc
 	ldr r0, [r0]
-	ldr r3, _0233918C ; =0x022C631C
+	ldr r3, _0233918C ; =ov10_022C631C
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
 	mov r1, #0
@@ -1697,41 +1697,41 @@ ov29_02339148: ; 0x02339148
 	bl ov29_0233A548
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02339188: .word 0x02353538
-_0233918C: .word 0x022C631C
+_02339188: .word ov29_02353538
+_0233918C: .word ov10_022C631C
 	arm_func_end ov29_02339148
 
 	arm_func_start ov29_02339190
 ov29_02339190: ; 0x02339190
 	stmdb sp!, {r3, lr}
-	ldr r2, _023391B8 ; =0x0235376C
+	ldr r2, _023391B8 ; =ov29_0235376C
 	ldr r2, [r2, #8]
 	cmp r2, #0
-	ldrne r2, _023391BC ; =0x0237CFB8
+	ldrne r2, _023391BC ; =ov29_0237CFB8
 	ldrneb r2, [r2, #2]
 	cmpne r2, #0
 	ldmeqia sp!, {r3, pc}
 	bl ov29_0233A548
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023391B8: .word 0x0235376C
-_023391BC: .word 0x0237CFB8
+_023391B8: .word ov29_0235376C
+_023391BC: .word ov29_0237CFB8
 	arm_func_end ov29_02339190
 
 	arm_func_start ov29_023391C0
 ov29_023391C0: ; 0x023391C0
-	ldr r0, _023391E4 ; =0x02353538
+	ldr r0, _023391E4 ; =ov29_02353538
 	mov r1, #0xc
 	ldr r0, [r0]
-	ldr r2, _023391E8 ; =0x022C631C
+	ldr r2, _023391E8 ; =ov10_022C631C
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
 	smulbb r0, r0, r1
 	ldr r0, [r2, r0]
 	bx lr
 	.align 2, 0
-_023391E4: .word 0x02353538
-_023391E8: .word 0x022C631C
+_023391E4: .word ov29_02353538
+_023391E8: .word ov10_022C631C
 	arm_func_end ov29_023391C0
 
 	arm_func_start DrawMinimapTile
@@ -1741,17 +1741,17 @@ DrawMinimapTile: ; 0x023391EC
 	mov sl, r0
 	mov sb, r1
 	bl GetMinimapData
-	ldr r2, _023398C4 ; =0x02352FCC
-	ldr r3, _023398C8 ; =0x02353538
+	ldr r2, _023398C4 ; =ov29_02352FCC
+	ldr r3, _023398C8 ; =ov29_02353538
 	ldrh r4, [r2]
 	ldr r5, [r3]
 	ldrh r3, [r2, #2]
-	ldr r1, _023398CC ; =0x0235376C
+	ldr r1, _023398CC ; =ov29_0235376C
 	mov r7, #1
 	ldr r2, [r1, #8]
 	mov fp, r0
 	cmp r2, #0
-	ldrne r0, _023398D0 ; =0x0237CFB8
+	ldrne r0, _023398D0 ; =ov29_0237CFB8
 	str r7, [sp, #0x14]
 	ldrneb r0, [r0, #2]
 	add r1, r5, #0x21c
@@ -1792,7 +1792,7 @@ DrawMinimapTile: ; 0x023391EC
 	ldrb r1, [r4, #0x33]
 	cmp r1, #0
 	movne r1, #0
-	ldreq r1, _023398D0 ; =0x0237CFB8
+	ldreq r1, _023398D0 ; =ov29_0237CFB8
 	ldreqb r1, [r1, #3]
 	and r1, r1, #0xff
 	str r1, [sp, #8]
@@ -1827,7 +1827,7 @@ _02339318:
 _02339344:
 	bl sub_0204AF30
 	cmp r0, #0
-	ldreq r0, _023398CC ; =0x0235376C
+	ldreq r0, _023398CC ; =ov29_0235376C
 	ldreqb r1, [r0, #1]
 	cmpeq r1, #0
 	beq _02339788
@@ -1838,7 +1838,7 @@ _02339344:
 	ldr r0, [r6, #0xc]
 	str r0, [sp, #4]
 	cmp r0, #0
-	ldrne r0, _023398D0 ; =0x0237CFB8
+	ldrne r0, _023398D0 ; =ov29_0237CFB8
 	ldrneb r0, [r0, #3]
 	cmpne r0, #0
 	beq _0233946C
@@ -1896,7 +1896,7 @@ _0233943C:
 	ldrb r0, [r0, #7]
 	cmp r0, #0
 	beq _02339468
-	ldr r0, _023398CC ; =0x0235376C
+	ldr r0, _023398CC ; =ov29_0235376C
 	strh sl, [r0, #2]
 	strh sb, [r0, #4]
 	ldrb r0, [r4, #0x2d]
@@ -1958,7 +1958,7 @@ _023394F4:
 	beq _0233953C
 	bl GetTrapInfo
 	ldrb r1, [r0]
-	ldr r0, _023398D4 ; =0x02352FF4
+	ldr r0, _023398D4 ; =ov29_02352FF4
 	mov r7, #0
 	ldrb r5, [r0, r1]
 	b _0233963C
@@ -2109,7 +2109,7 @@ _02339734:
 	bl sub_0204AEC0
 	cmp r0, #0
 	bne _02339770
-	ldr r0, _023398CC ; =0x0235376C
+	ldr r0, _023398CC ; =ov29_0235376C
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	addne r0, r5, #0x40
@@ -2136,7 +2136,7 @@ _0233979C:
 	mov r5, r0, asr #1
 	mov r0, #0x700
 	mul r7, r5, r0
-	ldr r0, _023398CC ; =0x0235376C
+	ldr r0, _023398CC ; =ov29_0235376C
 	mov r2, sl, lsr #0x1f
 	mov r4, r3, lsr #0x1f
 	rsb r1, r2, sl, lsl #31
@@ -2155,7 +2155,7 @@ _0233979C:
 	ldr r1, [r2, r1, lsl #2]
 	mov r0, r6
 	bl InitMinimapDisplayTile
-	ldr r0, _023398CC ; =0x0235376C
+	ldr r0, _023398CC ; =ov29_0235376C
 	ldrsh r1, [sp, #0x2e]
 	ldr r0, [r0, #8]
 	add r2, fp, #0x7000
@@ -2207,11 +2207,11 @@ _023398BC:
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023398C4: .word 0x02352FCC
-_023398C8: .word 0x02353538
-_023398CC: .word 0x0235376C
-_023398D0: .word 0x0237CFB8
-_023398D4: .word 0x02352FF4
+_023398C4: .word ov29_02352FCC
+_023398C8: .word ov29_02353538
+_023398CC: .word ov29_0235376C
+_023398D0: .word ov29_0237CFB8
+_023398D4: .word ov29_02352FF4
 	arm_func_end DrawMinimapTile
 
 	arm_func_start ov29_023398D8
@@ -2221,7 +2221,7 @@ ov29_023398D8: ; 0x023398D8
 	mla r6, r1, r2, r0
 	add r0, r0, #0xe000
 	mov r5, #0
-	ldr r2, _02339928 ; =0x0235377C
+	ldr r2, _02339928 ; =ov29_0235377C
 	strb r5, [r0, #0x445]
 	ldr r7, [r2, r1, lsl #2]
 	mov r4, #0x200
@@ -2239,20 +2239,20 @@ _0233991C:
 	blo _02339900
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02339928: .word 0x0235377C
+_02339928: .word ov29_0235377C
 	arm_func_end ov29_023398D8
 
 	arm_func_start ov29_0233992C
 ov29_0233992C: ; 0x0233992C
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r0, _02339A1C ; =0x02353538
+	ldr r0, _02339A1C ; =ov29_02353538
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r4, #0
 	mov r5, r4
 	bl ov29_022EA408
-	ldr r1, _02339A20 ; =0x0237CFB8
+	ldr r1, _02339A20 ; =ov29_0237CFB8
 	ldrb r1, [r1]
 	cmp r1, #0
 	beq _0233996C
@@ -2311,26 +2311,26 @@ _02339A0C:
 	str r1, [r0, #0x440]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02339A1C: .word 0x02353538
-_02339A20: .word 0x0237CFB8
+_02339A1C: .word ov29_02353538
+_02339A20: .word ov29_0237CFB8
 	arm_func_end ov29_0233992C
 
 	arm_func_start ov29_02339A24
 ov29_02339A24: ; 0x02339A24
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
-	ldr r1, _02339CB8 ; =0x02353538
+	ldr r1, _02339CB8 ; =ov29_02353538
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x1a000
 	ldrb r0, [r0, #0x249]
 	cmp r0, #0
 	bne _02339CB0
-	ldr r0, _02339CBC ; =0x0235376C
+	ldr r0, _02339CBC ; =ov29_0235376C
 	ldrsh r0, [r0, #2]
 	cmp r0, #0x64
 	bge _02339CB0
-	ldr r0, _02339CC0 ; =0x0237CFB8
+	ldr r0, _02339CC0 ; =ov29_0237CFB8
 	ldrb r1, [r0, #1]
 	add r2, r1, #1
 	and r1, r2, #0xff
@@ -2384,7 +2384,7 @@ ov29_02339A24: ; 0x02339A24
 	and r0, r0, r2
 	strh r0, [sp, #4]
 	ldrh r0, [sp, #4]
-	ldr ip, _02339CBC ; =0x0235376C
+	ldr ip, _02339CBC ; =ov29_0235376C
 	ldrh r3, [sp, #2]
 	orr r5, r0, #0x70
 	add r0, r2, #0x200
@@ -2402,7 +2402,7 @@ ov29_02339A24: ; 0x02339A24
 	bic r1, r1, #0x2000
 	orr r6, r6, r2
 	orr r0, r3, #0xc000
-	ldr r3, _02339CC4 ; =0x020AFC4C
+	ldr r3, _02339CC4 ; =_020AFC4C
 	ldrh r5, [sp, #6]
 	ldr r2, _02339CC8 ; =0xFFFF000F
 	strh r1, [sp]
@@ -2423,7 +2423,7 @@ ov29_02339A24: ; 0x02339A24
 _02339BC0:
 	cmp r4, #0
 	bne _02339CB0
-	ldr r0, _02339CC0 ; =0x0237CFB8
+	ldr r0, _02339CC0 ; =ov29_0237CFB8
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _02339CB0
@@ -2445,7 +2445,7 @@ _02339BC0:
 	ldrh r6, [sp, #2]
 	add r2, r2, #0x200
 	orr r1, r0, #0xdd
-	ldr ip, _02339CBC ; =0x0235376C
+	ldr ip, _02339CBC ; =ov29_0235376C
 	and r2, r6, r2
 	strh r2, [sp, #2]
 	ldrsh r0, [ip, #2]
@@ -2472,7 +2472,7 @@ _02339BC0:
 	strh r0, [sp, #4]
 	strh r1, [sp]
 	ldrsh r1, [ip, #4]
-	ldr r4, _02339CC4 ; =0x020AFC4C
+	ldr r4, _02339CC4 ; =_020AFC4C
 	ldrh r2, [sp, #6]
 	ldr r0, [r4]
 	mov r1, r1, lsl #0x16
@@ -2485,10 +2485,10 @@ _02339CB0:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02339CB8: .word 0x02353538
-_02339CBC: .word 0x0235376C
-_02339CC0: .word 0x0237CFB8
-_02339CC4: .word 0x020AFC4C
+_02339CB8: .word ov29_02353538
+_02339CBC: .word ov29_0235376C
+_02339CC0: .word ov29_0237CFB8
+_02339CC4: .word _020AFC4C
 _02339CC8: .word 0xFFFF000F
 _02339CCC: .word 0x0000013F
 _02339CD0: .word 0x000001DD
@@ -2496,12 +2496,12 @@ _02339CD0: .word 0x000001DD
 
 	arm_func_start ov29_02339CD4
 ov29_02339CD4: ; 0x02339CD4
-	ldr r0, _02339CE4 ; =0x0237CFB8
+	ldr r0, _02339CE4 ; =ov29_0237CFB8
 	mov r1, #0
 	strb r1, [r0, #1]
 	bx lr
 	.align 2, 0
-_02339CE4: .word 0x0237CFB8
+_02339CE4: .word ov29_0237CFB8
 	arm_func_end ov29_02339CD4
 
 	arm_func_start UpdateMinimap
@@ -2536,7 +2536,7 @@ _02339D10:
 	strb r1, [r0, #0x447]
 	ldmia sp!, {r4, r5, r6, pc}
 _02339D54:
-	ldr r0, _02339D78 ; =0x0235376C
+	ldr r0, _02339D78 ; =ov29_0235376C
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -2546,7 +2546,7 @@ _02339D54:
 	strb r1, [r0, #0x447]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02339D78: .word 0x0235376C
+_02339D78: .word ov29_0235376C
 	arm_func_end UpdateMinimap
 
 	arm_func_start ov29_02339D7C
@@ -2679,7 +2679,7 @@ _02339F18:
 ov29_02339F2C: ; 0x02339F2C
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr ip, _02339F60 ; =0x0235352C
+	ldr ip, _02339F60 ; =ov29_0235352C
 	str r1, [sp, #4]
 	ldr ip, [ip]
 	mov r1, #0xc
@@ -2691,12 +2691,12 @@ ov29_02339F2C: ; 0x02339F2C
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02339F60: .word 0x0235352C
+_02339F60: .word ov29_0235352C
 	arm_func_end ov29_02339F2C
 
 	arm_func_start ov29_02339F64
 ov29_02339F64: ; 0x02339F64
-	ldr r2, _02339F80 ; =0x0235352C
+	ldr r2, _02339F80 ; =ov29_0235352C
 	mov r1, #0xc
 	ldr r2, [r2]
 	ldr ip, _02339F84 ; =sub_0200B330
@@ -2704,7 +2704,7 @@ ov29_02339F64: ; 0x02339F64
 	ldr r0, [r1, #0x24]
 	bx ip
 	.align 2, 0
-_02339F80: .word 0x0235352C
+_02339F80: .word ov29_0235352C
 _02339F84: .word sub_0200B330
 	arm_func_end ov29_02339F64
 
@@ -2720,7 +2720,7 @@ ov29_02339F88: ; 0x02339F88
 	bl ov29_02339D7C
 	ldmia sp!, {r4, pc}
 _02339FAC:
-	ldr r0, _02339FCC ; =0x0235376C
+	ldr r0, _02339FCC ; =ov29_0235376C
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -2729,7 +2729,7 @@ _02339FAC:
 	bl ov29_02339D7C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02339FCC: .word 0x0235376C
+_02339FCC: .word ov29_0235376C
 	arm_func_end ov29_02339F88
 
 	arm_func_start ov29_02339FD0
@@ -2844,7 +2844,7 @@ _0233A114:
 	bl ov29_0233A01C
 	ldmia sp!, {r4, pc}
 _0233A138:
-	ldr r0, _0233A158 ; =0x0235376C
+	ldr r0, _0233A158 ; =ov29_0235376C
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -2853,7 +2853,7 @@ _0233A138:
 	bl ov29_0233A01C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0233A158: .word 0x0235376C
+_0233A158: .word ov29_0235376C
 	arm_func_end ov29_0233A0E8
 
 	arm_func_start ov29_0233A15C
@@ -2875,7 +2875,7 @@ _0233A17C:
 	bl ov29_0233A01C
 	ldmia sp!, {r4, pc}
 _0233A198:
-	ldr r0, _0233A1B8 ; =0x0235376C
+	ldr r0, _0233A1B8 ; =ov29_0235376C
 	ldrb r0, [r0, #1]
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -2884,7 +2884,7 @@ _0233A198:
 	bl ov29_0233A01C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0233A1B8: .word 0x0235376C
+_0233A1B8: .word ov29_0235376C
 	arm_func_end ov29_0233A15C
 
 	arm_func_start ov29_0233A1BC
@@ -3096,7 +3096,7 @@ ov29_0233A470: ; 0x0233A470
 	add r2, r0, #0x21c0
 	add r5, r0, #0xe000
 	add ip, r2, #0xc000
-	ldr r0, _0233A544 ; =0x0235377C
+	ldr r0, _0233A544 ; =ov29_0235377C
 	mov r6, r4
 	b _0233A534
 _0233A490:
@@ -3147,14 +3147,14 @@ _0233A534:
 	blt _0233A490
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0233A544: .word 0x0235377C
+_0233A544: .word ov29_0235377C
 	arm_func_end ov29_0233A470
 
 	arm_func_start ov29_0233A548
 ov29_0233A548: ; 0x0233A548
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r2, _0233A5E0 ; =0x02352FD0
-	ldr r7, _0233A5E4 ; =0x0235376C
+	ldr r2, _0233A5E0 ; =ov29_02352FD0
+	ldr r7, _0233A5E4 ; =ov29_0235376C
 	mov r6, r1
 	add r5, r2, r0, lsl #2
 	mov r4, #0
@@ -3195,14 +3195,14 @@ _0233A5D0:
 	blt _0233A560
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0233A5E0: .word 0x02352FD0
-_0233A5E4: .word 0x0235376C
+_0233A5E0: .word ov29_02352FD0
+_0233A5E4: .word ov29_0235376C
 	arm_func_end ov29_0233A548
 
 	arm_func_start ov29_0233A5E8
 ov29_0233A5E8: ; 0x0233A5E8
 	stmdb sp!, {r4, lr}
-	ldr ip, _0233A620 ; =0x0235352C
+	ldr ip, _0233A620 ; =ov29_0235352C
 	mov r3, #0xc
 	ldr ip, [ip]
 	mov lr, r0
@@ -3216,7 +3216,7 @@ ov29_0233A5E8: ; 0x0233A5E8
 	bl sub_0200A174
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0233A620: .word 0x0235352C
+_0233A620: .word ov29_0235352C
 	arm_func_end ov29_0233A5E8
 
 	arm_func_start LoadFixedRoomDataVeneer
@@ -3231,14 +3231,14 @@ _0233A62C: .word LoadFixedRoomData
 ov29_0233A630: ; 0x0233A630
 	stmdb sp!, {r3, lr}
 	bl ov29_02343DD8
-	ldr r0, _0233A650 ; =0x02353538
+	ldr r0, _0233A650 ; =ov29_02353538
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x12000
 	str r1, [r0, #0xaa4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A650: .word 0x02353538
+_0233A650: .word ov29_02353538
 	arm_func_end ov29_0233A630
 
 	arm_func_start IsNormalFloor
@@ -3263,7 +3263,7 @@ IsNormalFloor: ; 0x0233A654
 	bl IsCurrentMissionType
 	cmp r0, #0
 	bne _0233A6C4
-	ldr r0, _0233A6D4 ; =0x02353538
+	ldr r0, _0233A6D4 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -3278,14 +3278,14 @@ _0233A6CC:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233A6D4: .word 0x02353538
+_0233A6D4: .word ov29_02353538
 	arm_func_end IsNormalFloor
 
 	arm_func_start GenerateFloor
 GenerateFloor: ; 0x0233A6D8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x54
-	ldr r2, _0233AE64 ; =0x02353538
+	ldr r2, _0233AE64 ; =ov29_02353538
 	mov r8, #0
 	ldr r3, [r2]
 	ldr r0, _0233AE68 ; =0x000286B2
@@ -3297,8 +3297,8 @@ GenerateFloor: ; 0x0233A6D8
 	strh r8, [r0, #0xc2]
 	bl LoadFixedRoomDataVeneer
 	bl ov29_02343DC4
-	ldr r1, _0233AE64 ; =0x02353538
-	ldr r2, _0233AE6C ; =0x0237CFBC
+	ldr r1, _0233AE64 ; =ov29_02353538
+	ldr r2, _0233AE6C ; =ov29_0237CFBC
 	ldr r1, [r1]
 	mov r3, r8
 	add r1, r1, #0x12000
@@ -3308,16 +3308,16 @@ GenerateFloor: ; 0x0233A6D8
 	strb r3, [r2, #7]
 	bl ResetHiddenStairsSpawn
 	bl IsOutlawMonsterHouseFloor
-	ldr r1, _0233AE64 ; =0x02353538
-	ldr r3, _0233AE6C ; =0x0237CFBC
+	ldr r1, _0233AE64 ; =ov29_02353538
+	ldr r3, _0233AE6C ; =ov29_0237CFBC
 	ldr r2, [r1]
 	mov r1, sb
 	add r2, r2, #0xc4
 	strb r0, [r3, #8]
 	add r0, r2, #0x4000
 	bl GetHiddenStairsType
-	ldr r1, _0233AE64 ; =0x02353538
-	ldr r2, _0233AE6C ; =0x0237CFBC
+	ldr r1, _0233AE64 ; =ov29_02353538
+	ldr r2, _0233AE6C ; =ov29_0237CFBC
 	ldr r1, [r1]
 	str r0, [r2, #0x2c]
 	add r0, r1, #0x4000
@@ -3327,7 +3327,7 @@ GenerateFloor: ; 0x0233A6D8
 	mov r1, #0xff
 	cmp r0, #2
 	moveq r2, #1
-	ldr r0, _0233AE6C ; =0x0237CFBC
+	ldr r0, _0233AE6C ; =ov29_0237CFBC
 	movne r2, r8
 	strb r2, [r0, #4]
 	strb r1, [r0, #2]
@@ -3335,7 +3335,7 @@ GenerateFloor: ; 0x0233A6D8
 	strb r1, [r0, #6]
 	ldrb r0, [sb, #7]
 	bl GetFinalKecleonShopSpawnChance
-	ldr r1, _0233AE6C ; =0x0237CFBC
+	ldr r1, _0233AE6C ; =ov29_0237CFBC
 	strh r0, [r1, #0xc]
 	ldrb r0, [sb, #8]
 	strh r0, [r1, #0x10]
@@ -3343,7 +3343,7 @@ GenerateFloor: ; 0x0233A6D8
 	cmp r0, #0
 	movne r0, #0x64
 	strneh r0, [r1, #0x10]
-	ldr r0, _0233AE6C ; =0x0237CFBC
+	ldr r0, _0233AE6C ; =ov29_0237CFBC
 	mov r1, #1
 	strb r1, [r0]
 	sub r1, r1, #2
@@ -3355,7 +3355,7 @@ GenerateFloor: ; 0x0233A6D8
 	bl IsNormalFloor
 	cmp r0, #0
 	bne _0233A810
-	ldr r0, _0233AE64 ; =0x02353538
+	ldr r0, _0233AE64 ; =ov29_02353538
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x700
@@ -3364,19 +3364,19 @@ GenerateFloor: ; 0x0233A6D8
 _0233A810:
 	ldrb r0, [sb, #6]
 	bl abs
-	ldr r1, _0233AE64 ; =0x02353538
+	ldr r1, _0233AE64 ; =ov29_02353538
 	ldr r1, [r1]
 	add r1, r1, #0x700
 	strh r0, [r1, #0x86]
 _0233A828:
-	ldr r3, _0233AE64 ; =0x02353538
+	ldr r3, _0233AE64 ; =ov29_02353538
 	mov r7, #0
 	ldr r0, [r3]
 	ldr r1, _0233AE74 ; =0x00012AFA
 	add r0, r0, #0x4000
 	strb r7, [r0, #0xc5]
 	ldr r0, [r3]
-	ldr r2, _0233AE6C ; =0x0237CFBC
+	ldr r2, _0233AE6C ; =ov29_0237CFBC
 	add r0, r0, #0x4000
 	strb r7, [r0, #0xc6]
 	ldr r0, [r3]
@@ -3388,7 +3388,7 @@ _0233A828:
 	str r0, [r2, #0x18]
 	b _0233AD3C
 _0233A870:
-	ldr r1, _0233AE64 ; =0x02353538
+	ldr r1, _0233AE64 ; =ov29_02353538
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r1]
@@ -3397,7 +3397,7 @@ _0233A870:
 	bl ResetImportantSpawnPositions
 	mov r6, #0
 	mvn r5, #0
-	ldr r4, _0233AE64 ; =0x02353538
+	ldr r4, _0233AE64 ; =ov29_02353538
 	b _0233AC50
 _0233A89C:
 	ldr r0, [sp]
@@ -3416,10 +3416,10 @@ _0233A8C8:
 	cmp r6, #1
 	add r0, r0, #0x4000
 	strh r6, [r0, #0xde]
-	ldrge r0, _0233AE6C ; =0x0237CFBC
+	ldrge r0, _0233AE6C ; =ov29_0237CFBC
 	movge r1, #0
 	strge r1, [r0, #0x18]
-	ldr r0, _0233AE6C ; =0x0237CFBC
+	ldr r0, _0233AE6C ; =ov29_0237CFBC
 	mov r1, #0
 	strb r1, [r0, #5]
 	strh r5, [r0, #0x20]
@@ -3508,7 +3508,7 @@ _0233A9E4:
 	add r2, r1, #0x4000
 	mov r1, #0xff
 	strb r1, [r2, #0xc9]
-	ldr r1, _0233AE6C ; =0x0237CFBC
+	ldr r1, _0233AE6C ; =ov29_0237CFBC
 	strle r0, [sp, #4]
 	and r0, sl, #0xf
 	cmp r0, #0xb
@@ -3531,7 +3531,7 @@ _0233AA4C: ; jump table
 _0233AA7C:
 	mov r0, #2
 	bl DungeonRandInt
-	ldr r1, _0233AE6C ; =0x0237CFBC
+	ldr r1, _0233AE6C ; =ov29_0237CFBC
 	mov r2, #1
 	strb r2, [r1, #6]
 	add r1, r0, #2
@@ -3543,7 +3543,7 @@ _0233AA7C:
 _0233AAA8:
 	mov r0, #2
 	bl DungeonRandInt
-	ldr r1, _0233AE6C ; =0x0237CFBC
+	ldr r1, _0233AE6C ; =ov29_0237CFBC
 	mov r2, #2
 	strb r2, [r1, #6]
 	add r1, r0, #2
@@ -3605,7 +3605,7 @@ _0233AB64:
 _0233AB78:
 	bl ResetInnerBoundaryTileRows
 	bl EnsureImpassableTilesAreWalls
-	ldr r0, _0233AE6C ; =0x0237CFBC
+	ldr r0, _0233AE6C ; =ov29_0237CFBC
 	ldrb r0, [r0, #5]
 	cmp r0, #0
 	bne _0233AC4C
@@ -3669,12 +3669,12 @@ _0233AC50:
 _0233AC58:
 	cmp r6, #0xa
 	bne _0233AC88
-	ldr r0, _0233AE6C ; =0x0237CFBC
+	ldr r0, _0233AE6C ; =ov29_0237CFBC
 	mvn r1, #0
 	strh r1, [r0, #0x20]
 	strh r1, [r0, #0x22]
 	bl GenerateOneRoomMonsterHouseFloor
-	ldr r0, _0233AE64 ; =0x02353538
+	ldr r0, _0233AE64 ; =ov29_02353538
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -3700,7 +3700,7 @@ _0233ACA0:
 	mov r1, r4
 	bl MarkEnemySpawns
 	bl ResolveInvalidSpawns
-	ldr r0, _0233AE64 ; =0x02353538
+	ldr r0, _0233AE64 ; =ov29_02353538
 	mvn r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xcc00
@@ -3712,7 +3712,7 @@ _0233ACA0:
 	bl GetFloorType
 	cmp r0, #1
 	beq _0233AD44
-	ldr r0, _0233AE64 ; =0x02353538
+	ldr r0, _0233AE64 ; =ov29_02353538
 	mvn r2, #0
 	ldr r0, [r0]
 	add r1, r0, #0xcc00
@@ -3733,13 +3733,13 @@ _0233AD3C:
 _0233AD44:
 	cmp r7, #0xa
 	bne _0233AD98
-	ldr r0, _0233AE6C ; =0x0237CFBC
+	ldr r0, _0233AE6C ; =ov29_0237CFBC
 	mvn r1, #0
 	strh r1, [r0, #0x20]
 	strh r1, [r0, #0x22]
 	bl ResetFloor
 	bl GenerateOneRoomMonsterHouseFloor
-	ldr r0, _0233AE64 ; =0x02353538
+	ldr r0, _0233AE64 ; =ov29_02353538
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -3753,29 +3753,29 @@ _0233AD44:
 	bl MarkEnemySpawns
 	bl ResolveInvalidSpawns
 _0233AD98:
-	ldr r0, _0233AE6C ; =0x0237CFBC
+	ldr r0, _0233AE6C ; =ov29_0237CFBC
 	ldrsh r1, [r0, #0x20]
 	cmp r1, #0
 	ldrgesh r0, [r0, #0x22]
 	cmpge r0, #0
 	blt _0233ADCC
 	bl GetKecleonIdToSpawnByFloor
-	ldr r1, _0233AE6C ; =0x0237CFBC
+	ldr r1, _0233AE6C ; =ov29_0237CFBC
 	mov r2, r0
 	ldrsh r0, [r1, #0x20]
 	ldrsh r1, [r1, #0x22]
 	mov r3, #0
 	bl MarkShopkeeperSpawn
 _0233ADCC:
-	ldr r0, _0233AE6C ; =0x0237CFBC
+	ldr r0, _0233AE6C ; =ov29_0237CFBC
 	ldr r0, [r0, #0x30]
 	cmp r0, #0
-	ldrlt r0, _0233AE64 ; =0x02353538
+	ldrlt r0, _0233AE64 ; =ov29_02353538
 	movlt r1, #0
 	blt _0233ADF4
 	mov r0, sb
 	bl ov29_023427E4
-	ldr r0, _0233AE64 ; =0x02353538
+	ldr r0, _0233AE64 ; =ov29_02353538
 	mov r1, #1
 _0233ADF4:
 	ldr r0, [r0]
@@ -3786,13 +3786,13 @@ _0233ADF4:
 	mov r1, r0
 	mov r3, #0x20
 	bl FlagHallwayJunctions
-	ldr r0, _0233AE6C ; =0x0237CFBC
+	ldr r0, _0233AE6C ; =ov29_0237CFBC
 	ldrb r0, [r0, #4]
 	cmp r0, #0
 	beq _0233AE28
 	bl ConvertSecondaryTerrainToChasms
 _0233AE28:
-	ldr r0, _0233AE64 ; =0x02353538
+	ldr r0, _0233AE64 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
@@ -3809,9 +3809,9 @@ _0233AE58:
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0233AE64: .word 0x02353538
+_0233AE64: .word ov29_02353538
 _0233AE68: .word 0x000286B2
-_0233AE6C: .word 0x0237CFBC
+_0233AE6C: .word ov29_0237CFBC
 _0233AE70: .word SECONDARY_TERRAIN_TYPES
 _0233AE74: .word 0x00012AFA
 	arm_func_end GenerateFloor
@@ -3835,11 +3835,11 @@ _0233AE90: .word DungeonRandInt
 	arm_func_start ClearHiddenStairs
 ClearHiddenStairs: ; 0x0233AE94
 	stmdb sp!, {r3, lr}
-	ldr r0, _0233AF04 ; =0x0235378C
+	ldr r0, _0233AF04 ; =ov29_0235378C
 	ldrb r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r1, _0233AF08 ; =0x0237CFBC
+	ldr r1, _0233AF08 ; =ov29_0237CFBC
 	mvn r2, #0
 	ldrsh r0, [r1, #0x1c]
 	cmp r0, r2
@@ -3849,7 +3849,7 @@ ClearHiddenStairs: ; 0x0233AE94
 	bl GetTileSafe
 	mov r2, #0
 	strh r2, [r0]
-	ldr r1, _0233AF08 ; =0x0237CFBC
+	ldr r1, _0233AF08 ; =ov29_0237CFBC
 	strh r2, [r0, #2]
 	ldrsh r0, [r1, #0x1c]
 	ldrsh r1, [r1, #0x1e]
@@ -3864,8 +3864,8 @@ _0233AEFC:
 	bl ResetHiddenStairsSpawn
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233AF04: .word 0x0235378C
-_0233AF08: .word 0x0237CFBC
+_0233AF04: .word ov29_0235378C
+_0233AF08: .word ov29_0237CFBC
 	arm_func_end ClearHiddenStairs
 
 	arm_func_start FlagHallwayJunctions
@@ -4015,13 +4015,13 @@ GenerateStandardFloor: ; 0x0233B028
 	mov r1, r6
 	mov r2, r5
 	bl GenerateMazeRoom
-	ldr r3, _0233B18C ; =0x0237CFBC
+	ldr r3, _0233B18C ; =ov29_0237CFBC
 	add r0, sp, #0x80
 	ldrsh r3, [r3, #0xc]
 	mov r1, r6
 	mov r2, r5
 	bl GenerateKecleonShop
-	ldr r3, _0233B18C ; =0x0237CFBC
+	ldr r3, _0233B18C ; =ov29_0237CFBC
 	add r0, sp, #0x80
 	ldrsh r3, [r3, #0x10]
 	mov r1, r6
@@ -4044,7 +4044,7 @@ GenerateStandardFloor: ; 0x0233B028
 	add sp, sp, #0x1000
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0233B18C: .word 0x0237CFBC
+_0233B18C: .word ov29_0237CFBC
 	arm_func_end GenerateStandardFloor
 
 	arm_func_start GenerateOuterRingFloor
@@ -4325,13 +4325,13 @@ _0233B4A0:
 	mov r2, #4
 	add r3, sp, #0x58
 	bl EnsureConnectedGrid
-	ldr r1, _0233B618 ; =0x0237CFBC
+	ldr r1, _0233B618 ; =ov29_0237CFBC
 	add r0, sp, #0x94
 	ldrsh r3, [r1, #0xc]
 	mov r1, #6
 	mov r2, #4
 	bl GenerateKecleonShop
-	ldr r1, _0233B618 ; =0x0237CFBC
+	ldr r1, _0233B618 ; =ov29_0237CFBC
 	add r0, sp, #0x94
 	ldrsh r3, [r1, #0x10]
 	mov r1, #6
@@ -4352,7 +4352,7 @@ _0233B4A0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233B614: .word 0x000001C2
-_0233B618: .word 0x0237CFBC
+_0233B618: .word ov29_0237CFBC
 	arm_func_end GenerateOuterRingFloor
 
 	arm_func_start GenerateCrossroadsFloor
@@ -4626,13 +4626,13 @@ _0233B9B0:
 	mov r2, #4
 	str r4, [sp]
 	bl EnsureConnectedGrid
-	ldr r1, _0233BA78 ; =0x0237CFBC
+	ldr r1, _0233BA78 ; =ov29_0237CFBC
 	add r0, sp, #0x98
 	ldrsh r3, [r1, #0xc]
 	mov r1, #5
 	mov r2, #4
 	bl GenerateKecleonShop
-	ldr r1, _0233BA78 ; =0x0237CFBC
+	ldr r1, _0233BA78 ; =ov29_0237CFBC
 	add r0, sp, #0x98
 	ldrsh r3, [r1, #0x10]
 	mov r1, #5
@@ -4653,7 +4653,7 @@ _0233B9B0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233BA74: .word 0x000001C2
-_0233BA78: .word 0x0237CFBC
+_0233BA78: .word ov29_0237CFBC
 	arm_func_end GenerateCrossroadsFloor
 
 	arm_func_start GenerateLineFloor
@@ -4721,13 +4721,13 @@ GenerateLineFloor: ; 0x0233BA7C
 	mov r2, #1
 	add r3, sp, #0x44
 	bl EnsureConnectedGrid
-	ldr r3, _0233BBD8 ; =0x0237CFBC
+	ldr r3, _0233BBD8 ; =ov29_0237CFBC
 	add r0, sp, #0x80
 	ldrsh r3, [r3, #0xc]
 	mov r1, #5
 	mov r2, #1
 	bl GenerateKecleonShop
-	ldr r1, _0233BBD8 ; =0x0237CFBC
+	ldr r1, _0233BBD8 ; =ov29_0237CFBC
 	add r0, sp, #0x80
 	ldrsh r3, [r1, #0x10]
 	mov r1, #5
@@ -4746,7 +4746,7 @@ GenerateLineFloor: ; 0x0233BA7C
 	add sp, sp, #0x1000
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0233BBD8: .word 0x0237CFBC
+_0233BBD8: .word ov29_0237CFBC
 	arm_func_end GenerateLineFloor
 
 	arm_func_start GenerateCrossFloor
@@ -4829,13 +4829,13 @@ _0233BC58:
 	mov r2, r1
 	str ip, [sp]
 	bl EnsureConnectedGrid
-	ldr r1, _0233BD70 ; =0x0237CFBC
+	ldr r1, _0233BD70 ; =ov29_0237CFBC
 	add r0, sp, #0x80
 	ldrsh r3, [r1, #0xc]
 	mov r1, #3
 	mov r2, r1
 	bl GenerateKecleonShop
-	ldr r3, _0233BD70 ; =0x0237CFBC
+	ldr r3, _0233BD70 ; =ov29_0237CFBC
 	mov r1, #3
 	ldrsh r3, [r3, #0x10]
 	add r0, sp, #0x80
@@ -4855,7 +4855,7 @@ _0233BC58:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0233BD6C: .word 0x000001C2
-_0233BD70: .word 0x0237CFBC
+_0233BD70: .word ov29_0237CFBC
 	arm_func_end GenerateCrossFloor
 
 	arm_func_start GenerateBeetleFloor
@@ -4948,13 +4948,13 @@ _0233BE48:
 	mov r2, r1
 	add r3, sp, #0x44
 	bl EnsureConnectedGrid
-	ldr r3, _0233BF2C ; =0x0237CFBC
+	ldr r3, _0233BF2C ; =ov29_0237CFBC
 	mov r1, #3
 	ldrsh r3, [r3, #0xc]
 	add r0, sp, #0x80
 	mov r2, r1
 	bl GenerateKecleonShop
-	ldr r3, _0233BF2C ; =0x0237CFBC
+	ldr r3, _0233BF2C ; =ov29_0237CFBC
 	mov r1, #3
 	ldrsh r3, [r3, #0x10]
 	add r0, sp, #0x80
@@ -4974,7 +4974,7 @@ _0233BE48:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0233BF28: .word 0x000001C2
-_0233BF2C: .word 0x0237CFBC
+_0233BF2C: .word ov29_0237CFBC
 	arm_func_end GenerateBeetleFloor
 
 	arm_func_start MergeRoomsVertically
@@ -5217,13 +5217,13 @@ _0233C23C:
 	mov r1, r6
 	mov r2, r5
 	bl GenerateMazeRoom
-	ldr r3, _0233C30C ; =0x0237CFBC
+	ldr r3, _0233C30C ; =ov29_0237CFBC
 	add r0, sp, #0x80
 	ldrsh r3, [r3, #0xc]
 	mov r1, r6
 	mov r2, r5
 	bl GenerateKecleonShop
-	ldr r3, _0233C30C ; =0x0237CFBC
+	ldr r3, _0233C30C ; =ov29_0237CFBC
 	add r0, sp, #0x80
 	ldrsh r3, [r3, #0x10]
 	mov r1, r6
@@ -5247,7 +5247,7 @@ _0233C23C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233C308: .word 0x000001C2
-_0233C30C: .word 0x0237CFBC
+_0233C30C: .word ov29_0237CFBC
 	arm_func_end GenerateOuterRoomsFloor
 
 	arm_func_start IsNotFullFloorFixedRoom
@@ -5267,7 +5267,7 @@ GenerateFixedRoom: ; 0x0233C32C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2f8
 	sub sp, sp, #0x1800
-	ldr r2, _0233C764 ; =0x02353538
+	ldr r2, _0233C764 ; =ov29_02353538
 	str r1, [sp, #0x10]
 	ldr r2, [r2]
 	mov sl, r0
@@ -5286,10 +5286,10 @@ _0233C374:
 	bl IsNotFullFloorFixedRoom
 	cmp r0, #0
 	bne _0233C590
-	ldr r0, _0233C764 ; =0x02353538
-	ldr r4, _0233C768 ; =0x0235378C
+	ldr r0, _0233C764 ; =ov29_02353538
+	ldr r4, _0233C768 ; =ov29_0235378C
 	ldr r0, [r0]
-	ldr r3, _0233C76C ; =0x0237CFBC
+	ldr r3, _0233C76C ; =ov29_0237CFBC
 	add r2, r0, #0x12000
 	ldr r5, [r2, #0xaa4]
 	add r1, r0, #0xcd00
@@ -5346,7 +5346,7 @@ _0233C450:
 	blt _0233C3E0
 	mov r8, #0
 	add r4, r6, #5
-	ldr sb, _0233C76C ; =0x0237CFBC
+	ldr sb, _0233C76C ; =ov29_0237CFBC
 	add r5, r7, #5
 	mov r6, r8
 _0233C46C:
@@ -5560,9 +5560,9 @@ _0233C758:
 	add sp, sp, #0x1800
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0233C764: .word 0x02353538
-_0233C768: .word 0x0235378C
-_0233C76C: .word 0x0237CFBC
+_0233C764: .word ov29_02353538
+_0233C768: .word ov29_0235378C
+_0233C76C: .word ov29_0237CFBC
 _0233C770: .word 0x000001C2
 	arm_func_end GenerateFixedRoom
 
@@ -5830,7 +5830,7 @@ _0233CAF0:
 	mov r1, r7
 	bl GetTile
 	ldrb sb, [r0, #7]
-	ldr r0, _0233CF7C ; =0x0235171C
+	ldr r0, _0233CF7C ; =DIRECTIONS_XY
 	arm_func_end ov29_0233CAD8
 
 	arm_func_start ov29_0233CB10
@@ -5843,7 +5843,7 @@ _0233CB18:
 	bl GetTile
 	ldrb r0, [r0, #7]
 	cmp sb, r0
-	ldreq r0, _0233CF7C ; =0x0235171C
+	ldreq r0, _0233CF7C ; =DIRECTIONS_XY
 	ldreqsh r1, [r0, r4]
 	ldreqsh r0, [fp, #2]
 	addeq r8, r8, r1
@@ -5853,7 +5853,7 @@ _0233CB18:
 ov29_0233CB3C: ; 0x0233CB3C
 	addeq r7, r7, r0
 	beq _0233CB18
-	ldr fp, _0233CF7C ; =0x0235171C
+	ldr fp, _0233CF7C ; =DIRECTIONS_XY
 	mov sb, r6, lsl #2
 	add r4, fp, r6, lsl #2
 _0233CB50:
@@ -5914,7 +5914,7 @@ _0233CC04:
 	bne _0233CF64
 	add r0, r6, #2
 	and r0, r0, #6
-	ldr r1, _0233CF7C ; =0x0235171C
+	ldr r1, _0233CF7C ; =DIRECTIONS_XY
 	mov r2, r0, lsl #2
 	add r0, r1, r0, lsl #2
 	ldrsh r2, [r1, r2]
@@ -5928,7 +5928,7 @@ _0233CC04:
 	beq _0233CF64
 	sub r0, r6, #2
 	and r0, r0, #6
-	ldr r1, _0233CF7C ; =0x0235171C
+	ldr r1, _0233CF7C ; =DIRECTIONS_XY
 	mov r2, r0, lsl #2
 	add r0, r1, r0, lsl #2
 	ldrsh r2, [r1, r2]
@@ -5942,7 +5942,7 @@ _0233CC04:
 	beq _0233CF64
 	mov r0, #3
 	bl DungeonRandInt
-	ldr r4, _0233CF7C ; =0x0235171C
+	ldr r4, _0233CF7C ; =DIRECTIONS_XY
 	add sb, r0, #3
 _0233CC8C:
 	cmp r8, #1
@@ -6125,7 +6125,7 @@ _0233CE7C:
 	cmp r8, #0x20
 	and r6, r6, #6
 	blt _0233CF2C
-	ldr r0, _0233CF80 ; =0x0237CFBC
+	ldr r0, _0233CF80 ; =ov29_0237CFBC
 	ldrb r0, [r0, #6]
 	cmp r0, #1
 	cmpeq r6, #2
@@ -6133,7 +6133,7 @@ _0233CE7C:
 _0233CF2C:
 	cmp r8, #0x30
 	blt _0233CF48
-	ldr r0, _0233CF80 ; =0x0237CFBC
+	ldr r0, _0233CF80 ; =ov29_0237CFBC
 	ldrb r0, [r0, #6]
 	cmp r0, #2
 	cmpeq r6, #2
@@ -6156,8 +6156,8 @@ _0233CF70:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233CF78: .word 0x000001C2
-_0233CF7C: .word 0x0235171C
-_0233CF80: .word 0x0237CFBC
+_0233CF7C: .word DIRECTIONS_XY
+_0233CF80: .word ov29_0237CFBC
 	arm_func_end ov29_0233CDE4
 
 	arm_func_start GetGridPositions
@@ -6219,7 +6219,7 @@ _0233D020:
 	mov lr, r8
 	b _0233D0E4
 _0233D040:
-	ldr sl, _0233D100 ; =0x0237CFBC
+	ldr sl, _0233D100 ; =ov29_0237CFBC
 	ldrb sl, [sl, #6]
 	cmp sl, #1
 	bne _0233D064
@@ -6273,7 +6273,7 @@ _0233D0F0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233D0FC: .word 0x000001C2
-_0233D100: .word 0x0237CFBC
+_0233D100: .word ov29_0237CFBC
 	arm_func_end InitDungeonGrid
 
 	arm_func_start AssignRooms
@@ -6324,7 +6324,7 @@ _0233D178:
 	strb r1, [r4, r5]
 	strb r2, [r4, r0]
 	blt _0233D178
-	ldr r0, _0233D310 ; =0x0237CFBC
+	ldr r0, _0233D310 ; =ov29_0237CFBC
 	mov fp, #0
 	sub r1, sb, #1
 	str fp, [r0, #0x14]
@@ -6338,7 +6338,7 @@ _0233D1D0:
 	ldr r1, _0233D314 ; =0x000001C2
 	mov r4, #0
 	mla r6, r3, r1, sl
-	ldr r1, _0233D310 ; =0x0237CFBC
+	ldr r1, _0233D310 ; =ov29_0237CFBC
 	b _0233D250
 _0233D1E4:
 	mov r7, #0x1e
@@ -6378,7 +6378,7 @@ _0233D250:
 _0233D25C:
 	cmp r3, sb
 	blt _0233D1D0
-	ldr r0, _0233D310 ; =0x0237CFBC
+	ldr r0, _0233D310 ; =ov29_0237CFBC
 	ldr r0, [r0, #0x14]
 	cmp r0, #2
 	bge _0233D308
@@ -6425,14 +6425,14 @@ _0233D2F4:
 	cmp r4, #0xc8
 	blt _0233D27C
 _0233D2FC:
-	ldr r0, _0233D310 ; =0x0237CFBC
+	ldr r0, _0233D310 ; =ov29_0237CFBC
 	mov r1, #0
 	strb r1, [r0]
 _0233D308:
 	add sp, sp, #0x104
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0233D310: .word 0x0237CFBC
+_0233D310: .word ov29_0237CFBC
 _0233D314: .word 0x000001C2
 	arm_func_end AssignRooms
 
@@ -6571,7 +6571,7 @@ _0233D4F0:
 	movlt r0, r5
 	movge r0, #0
 	and r6, r0, #0xff
-	ldr r0, _0233D670 ; =0x0237CFBC
+	ldr r0, _0233D670 ; =ov29_0237CFBC
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	ldr r0, [sp, #0x14]
@@ -6664,7 +6664,7 @@ _0233D658:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233D66C: .word 0x000001C2
-_0233D670: .word 0x0237CFBC
+_0233D670: .word ov29_0237CFBC
 	arm_func_end CreateRoomsAndAnchors
 
 	arm_func_start GenerateSecondaryStructures
@@ -6719,12 +6719,12 @@ _0233D714: ; jump table
 	b _0233D938 ; case 4
 	b _0233D72C ; case 5
 _0233D72C:
-	ldr r0, _0233E058 ; =0x0237CFBC
+	ldr r0, _0233E058 ; =ov29_0237CFBC
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	beq _0233E014
 	sub r1, r0, #1
-	ldr r0, _0233E058 ; =0x0237CFBC
+	ldr r0, _0233E058 ; =ov29_0237CFBC
 	str r1, [r0, #0x18]
 	add r0, sl, sb
 	add r0, r0, r7
@@ -6883,7 +6883,7 @@ _0233D938:
 	add r0, r4, r3
 	add r0, r0, r0, lsr #31
 	mov r5, r0, asr #1
-	ldr r0, _0233E058 ; =0x0237CFBC
+	ldr r0, _0233E058 ; =ov29_0237CFBC
 	add r1, r2, r1
 	ldr r0, [r0, #0x18]
 	add r1, r1, r1, lsr #31
@@ -6891,7 +6891,7 @@ _0233D938:
 	cmp r0, #0
 	beq _0233E014
 	sub r1, r0, #1
-	ldr r0, _0233E058 ; =0x0237CFBC
+	ldr r0, _0233E058 ; =ov29_0237CFBC
 	str r1, [r0, #0x18]
 	add r0, sl, sb
 	add r0, r0, r7
@@ -7121,12 +7121,12 @@ _0233DC9C:
 	sub r1, r1, #3
 	bl DungeonRandRange
 	mov fp, r0
-	ldr r0, _0233E058 ; =0x0237CFBC
+	ldr r0, _0233E058 ; =ov29_0237CFBC
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	beq _0233E014
 	sub r1, r0, #1
-	ldr r0, _0233E058 ; =0x0237CFBC
+	ldr r0, _0233E058 ; =ov29_0237CFBC
 	str r1, [r0, #0x18]
 	add r0, sl, sb
 	add r0, r0, r7
@@ -7178,12 +7178,12 @@ _0233DDC8:
 	ldrsh r0, [r2, #2]
 	sub r0, r1, r0
 	tst r0, #1
-	ldrne r0, _0233E058 ; =0x0237CFBC
+	ldrne r0, _0233E058 ; =ov29_0237CFBC
 	ldrne r0, [r0, #0x18]
 	cmpne r0, #0
 	beq _0233E014
 	sub r1, r0, #1
-	ldr r0, _0233E058 ; =0x0237CFBC
+	ldr r0, _0233E058 ; =ov29_0237CFBC
 	str r1, [r0, #0x18]
 	add r0, sl, sb
 	add r0, r0, r7
@@ -7222,12 +7222,12 @@ _0233DE7C:
 	strb r0, [r8, #9]
 	b _0233E014
 _0233DE94:
-	ldr r0, _0233E058 ; =0x0237CFBC
+	ldr r0, _0233E058 ; =ov29_0237CFBC
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	beq _0233E014
 	sub r1, r0, #1
-	ldr r0, _0233E058 ; =0x0237CFBC
+	ldr r0, _0233E058 ; =ov29_0237CFBC
 	str r1, [r0, #0x18]
 	mov r0, r8
 	ldrsh r2, [r0, #4]
@@ -7343,7 +7343,7 @@ _0233E03C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233E054: .word 0x000001C2
-_0233E058: .word 0x0237CFBC
+_0233E058: .word ov29_0237CFBC
 	arm_func_end GenerateSecondaryStructures
 
 	arm_func_start AssignGridCellConnections
@@ -8416,7 +8416,7 @@ _0233EEFC:
 	mov r5, #0
 	b _0233F014
 _0233EF50:
-	ldr r0, _0233F118 ; =0x0235171C
+	ldr r0, _0233F118 ; =DIRECTIONS_XY
 	mov r1, r5, lsl #2
 	ldrsh r2, [r0, r1]
 	add r0, r0, r5, lsl #2
@@ -8478,13 +8478,13 @@ _0233F014:
 _0233F01C:
 	cmp r5, #8
 	bne _0233F0C4
-	ldr r1, _0233F11C ; =0x02353010
+	ldr r1, _0233F11C ; =ov29_02353010
 	ldr r0, [sp, #0x20]
 	mov r5, #0
 	add r6, r1, r0, lsl #3
 	b _0233F080
 _0233F038:
-	ldr r0, _0233F118 ; =0x0235171C
+	ldr r0, _0233F118 ; =DIRECTIONS_XY
 	mov r1, r5, lsl #2
 	ldrsh r2, [r0, r1]
 	add r0, r0, r5, lsl #2
@@ -8550,8 +8550,8 @@ _0233F100:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233F114: .word 0x000001C2
-_0233F118: .word 0x0235171C
-_0233F11C: .word 0x02353010
+_0233F118: .word DIRECTIONS_XY
+_0233F11C: .word ov29_02353010
 	arm_func_end GenerateRoomImperfections
 
 	arm_func_start CreateHallway
@@ -9266,7 +9266,7 @@ _0233FAFC:
 	arm_func_start ov29_0233FB1C
 ov29_0233FB1C: ; 0x0233FB1C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r0, _0233FBE4 ; =0x02353538
+	ldr r0, _0233FBE4 ; =ov29_02353538
 	mov r1, #0
 	ldr r6, [r0]
 	mov r7, r1
@@ -9320,15 +9320,15 @@ _0233FBC8:
 	blt _0233FB48
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0233FBE4: .word 0x02353538
+_0233FBE4: .word ov29_02353538
 	arm_func_end ov29_0233FB1C
 
 	arm_func_start GenerateKecleonShop
 GenerateKecleonShop: ; 0x0233FBE8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
-	ldr r5, _0233FF8C ; =0x02353538
-	ldr r4, _0233FF90 ; =0x0237CFBC
+	ldr r5, _0233FF8C ; =ov29_02353538
+	ldr r4, _0233FF90 ; =ov29_0237CFBC
 	mvn r7, #0
 	ldr r6, [r5]
 	strh r7, [r4, #0x20]
@@ -9453,7 +9453,7 @@ _0233FD34:
 	bl abs
 	cmp r0, #4
 	blt _0233FF6C
-	ldr r0, _0233FF90 ; =0x0237CFBC
+	ldr r0, _0233FF90 ; =ov29_0237CFBC
 	add r1, sl, fp
 	mov r3, #1
 	strb r3, [r0, #3]
@@ -9481,12 +9481,12 @@ _0233FD34:
 	str r1, [r0, #0xd18]
 	rsb r2, r1, #0
 	str r2, [r0, #0xd1c]
-	ldr r1, _0233FF90 ; =0x0237CFBC
+	ldr r1, _0233FF90 ; =ov29_0237CFBC
 	str r2, [r0, #0xd20]
 	ldr r4, [r1, #0x30]
 	b _0233FED8
 _0233FE54:
-	ldr sl, _0233FF90 ; =0x0237CFBC
+	ldr sl, _0233FF90 ; =ov29_0237CFBC
 	add r8, r6, #0xc000
 	ldr r5, [sl, #0x34]
 	b _0233FEC8
@@ -9522,7 +9522,7 @@ _0233FEC8:
 	blt _0233FE64
 	add r4, r4, #1
 _0233FED8:
-	ldr r0, _0233FF90 ; =0x0237CFBC
+	ldr r0, _0233FF90 ; =ov29_0237CFBC
 	ldr r0, [r0, #0x38]
 	cmp r4, r0
 	blt _0233FE54
@@ -9549,7 +9549,7 @@ _0233FF28:
 	ldrsh r0, [r4, #4]
 	cmp r5, r0
 	blt _0233FEF4
-	ldr r1, _0233FF90 ; =0x0237CFBC
+	ldr r1, _0233FF90 ; =ov29_0237CFBC
 	ldr r2, [r1, #0x30]
 	ldr r0, [r1, #0x38]
 	add r0, r2, r0
@@ -9577,8 +9577,8 @@ _0233FF84:
 	add sp, sp, #0x44
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0233FF8C: .word 0x02353538
-_0233FF90: .word 0x0237CFBC
+_0233FF8C: .word ov29_02353538
+_0233FF90: .word ov29_0237CFBC
 _0233FF94: .word 0x000001C2
 _0233FF98: .word 0x0000270F
 	arm_func_end GenerateKecleonShop
@@ -9587,7 +9587,7 @@ _0233FF98: .word 0x0000270F
 GenerateMonsterHouse: ; 0x0233FF9C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x100
-	ldr r4, _02340218 ; =0x02353538
+	ldr r4, _02340218 ; =ov29_02353538
 	movs r5, r3
 	mov sl, r0
 	mov sb, r1
@@ -9598,7 +9598,7 @@ GenerateMonsterHouse: ; 0x0233FF9C
 	bl DungeonRandInt
 	cmp r5, r0
 	ble _02340210
-	ldr r0, _0234021C ; =0x0237CFBC
+	ldr r0, _0234021C ; =ov29_0237CFBC
 	ldrb r0, [r0, #3]
 	cmp r0, #0
 	bne _02340210
@@ -9714,7 +9714,7 @@ _02340118:
 	ldrb r0, [fp, r7]
 	cmp r0, #0
 	beq _023401F4
-	ldr r0, _0234021C ; =0x0237CFBC
+	ldr r0, _0234021C ; =ov29_0237CFBC
 	add r2, sl, r3
 	mov r3, #1
 	strb r3, [r0, #1]
@@ -9764,8 +9764,8 @@ _02340210:
 	add sp, sp, #0x100
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02340218: .word 0x02353538
-_0234021C: .word 0x0237CFBC
+_02340218: .word ov29_02353538
+_0234021C: .word ov29_0237CFBC
 _02340220: .word 0x000001C2
 	arm_func_end GenerateMonsterHouse
 
@@ -9773,7 +9773,7 @@ _02340220: .word 0x000001C2
 GenerateMazeRoom: ; 0x02340224
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x100
-	ldr r7, _02340450 ; =0x02353538
+	ldr r7, _02340450 ; =ov29_02353538
 	movs r8, r3
 	mov r6, r0
 	mov r5, r1
@@ -9925,7 +9925,7 @@ _02340448:
 	add sp, sp, #0x100
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02340450: .word 0x02353538
+_02340450: .word ov29_02353538
 _02340454: .word 0x000001C2
 	arm_func_end GenerateMazeRoom
 
@@ -9933,7 +9933,7 @@ _02340454: .word 0x000001C2
 GenerateMaze: ; 0x02340458
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x10
-	ldr r2, _023406D0 ; =0x0237CFBC
+	ldr r2, _023406D0 ; =ov29_0237CFBC
 	mov r3, #1
 	mov r5, r0
 	strb r3, [r2, #7]
@@ -10109,7 +10109,7 @@ _023406B8:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_023406D0: .word 0x0237CFBC
+_023406D0: .word ov29_0237CFBC
 	arm_func_end GenerateMaze
 
 	arm_func_start GenerateMazeLine
@@ -10515,7 +10515,7 @@ _02340BEC:
 	add r6, r6, #1
 	cmp r6, #0x38
 	blt _02340B18
-	ldr r6, _02340CA8 ; =0x02353538
+	ldr r6, _02340CA8 ; =ov29_02353538
 	mov sb, #0
 	ldr r0, [r6]
 	mvn r1, #0
@@ -10543,7 +10543,7 @@ _02340C3C:
 	add sb, sb, #1
 	cmp sb, #8
 	blt _02340C34
-	ldr r1, _02340CA8 ; =0x02353538
+	ldr r1, _02340CA8 ; =ov29_02353538
 	mov r3, #0
 	ldr r0, [r1]
 	mov r2, r3
@@ -10560,7 +10560,7 @@ _02340C84:
 	blt _02340C84
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02340CA8: .word 0x02353538
+_02340CA8: .word ov29_02353538
 	arm_func_end ResetFloor
 
 	arm_func_start PosIsOutOfBounds
@@ -10617,7 +10617,7 @@ _02340D40:
 MarkNonEnemySpawns: ; 0x02340D4C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xe00
-	ldr r3, _02341458 ; =0x02353538
+	ldr r3, _02341458 ; =ov29_02353538
 	mov sl, r0
 	ldr r5, [r3]
 	mvn r2, #0
@@ -10677,7 +10677,7 @@ _02340DF4:
 	add r1, r1, #0x4000
 	mov r2, #0
 	bl SpawnStairs
-	ldr r0, _0234145C ; =0x0237CFBC
+	ldr r0, _0234145C ; =ov29_0237CFBC
 	ldr r0, [r0, #0x2c]
 	cmp r0, #0
 	beq _02340EC8
@@ -10694,8 +10694,8 @@ _02340E54:
 _02340E6C:
 	cmp r4, r0
 	blt _02340E54
-	ldr r0, _02341458 ; =0x02353538
-	ldr r1, _0234145C ; =0x0237CFBC
+	ldr r0, _02341458 ; =ov29_02353538
+	ldr r1, _0234145C ; =ov29_0237CFBC
 	ldr r2, [r0]
 	ldr r4, [r1, #0x2c]
 	add r0, r2, #0x2c000
@@ -10763,7 +10763,7 @@ _02340F30:
 	cmp r4, #1
 	movlt r4, #1
 _02340F74:
-	ldr r1, _02341458 ; =0x02353538
+	ldr r1, _02341458 ; =ov29_02353538
 	ldr r0, _02341460 ; =0x0002C9E8
 	ldr r2, [r1]
 	ldrsh r0, [r2, r0]
@@ -10903,7 +10903,7 @@ _0234113C:
 	mov r0, r4
 	bl DungeonRandRange
 	mov r8, r0
-	ldr r0, _02341468 ; =0x022C44AC
+	ldr r0, _02341468 ; =ov10_022C44AC
 	cmp r8, #6
 	ldrsh r0, [r0]
 	movlt r8, #6
@@ -10914,7 +10914,7 @@ _0234113C:
 	bl ShuffleSpawnPositions
 	mov r0, r6
 	bl DungeonRandInt
-	ldr r1, _0234146C ; =0x022C440C
+	ldr r1, _0234146C ; =ov10_022C440C
 	mov r7, r0
 	ldrb fp, [r1]
 	mov sb, #0
@@ -10933,7 +10933,7 @@ _023411B0:
 	orrne r0, r0, #2
 	strneh r0, [r4, #2]
 	bne _02341210
-	ldr r0, _02341458 ; =0x02353538
+	ldr r0, _02341458 ; =ov29_02353538
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x75c]
 	cmp r0, #0
@@ -11075,7 +11075,7 @@ _0234137C:
 	tst r0, #1
 	bne _0234140C
 _023413E8:
-	ldr r0, _0234145C ; =0x0237CFBC
+	ldr r0, _0234145C ; =ov29_0237CFBC
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	ldrneb r0, [r4, #0xc9]
@@ -11106,12 +11106,12 @@ _02341450:
 	add sp, sp, #0xe00
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02341458: .word 0x02353538
-_0234145C: .word 0x0237CFBC
+_02341458: .word ov29_02353538
+_0234145C: .word ov29_0237CFBC
 _02341460: .word 0x0002C9E8
 _02341464: .word 0x00012AFA
-_02341468: .word 0x022C44AC
-_0234146C: .word 0x022C440C
+_02341468: .word ov10_022C44AC
+_0234146C: .word ov10_022C440C
 	arm_func_end MarkNonEnemySpawns
 
 	arm_func_start MarkEnemySpawns
@@ -11121,7 +11121,7 @@ MarkEnemySpawns: ; 0x02341470
 	sub sp, sp, #0xc00
 	str r1, [sp]
 	ldrb r1, [r0, #6]
-	ldr r0, _02341760 ; =0x02353538
+	ldr r0, _02341760 ; =ov29_02353538
 	cmp r1, #1
 	ldr sb, [r0]
 	blt _023414B0
@@ -11171,7 +11171,7 @@ _023414D4:
 	ldreqsh r0, [r4, #0xe2]
 	cmpeq r7, r0
 	beq _0234156C
-	ldr r0, _02341764 ; =0x0237CFBC
+	ldr r0, _02341764 ; =ov29_0237CFBC
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	beq _02341558
@@ -11226,7 +11226,7 @@ _023415F4:
 	ldrb r2, [r0, #0xc4]
 	cmp r2, #0
 	beq _02341754
-	ldr r1, _02341768 ; =0x022C4660
+	ldr r1, _02341768 ; =ov10_022C4660
 	ldr r0, [sp]
 	ldrsh r6, [r1]
 	cmp r0, #0
@@ -11320,9 +11320,9 @@ _02341754:
 	add sp, sp, #0xc00
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02341760: .word 0x02353538
-_02341764: .word 0x0237CFBC
-_02341768: .word 0x022C4660
+_02341760: .word ov29_02353538
+_02341764: .word ov29_0237CFBC
+_02341768: .word ov10_022C4660
 	arm_func_end MarkEnemySpawns
 
 	arm_func_start SetSecondaryTerrainOnWall
@@ -11355,7 +11355,7 @@ GenerateSecondaryTerrainFormations: ; 0x023417AC
 	beq _02341E60
 	mov r0, #8
 	bl DungeonRandInt
-	ldr r1, _02341E68 ; =0x02353030
+	ldr r1, _02341E68 ; =ov29_02353030
 	ldr r0, [r1, r0, lsl #2]
 	str r0, [sp, #0x28]
 	b _02341C20
@@ -11816,7 +11816,7 @@ _02341E60:
 	add sp, sp, #0x90
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02341E68: .word 0x02353030
+_02341E68: .word ov29_02353030
 	arm_func_end GenerateSecondaryTerrainFormations
 
 	arm_func_start StairsAlwaysReachable
@@ -11866,7 +11866,7 @@ _02341EF4:
 	cmp r4, #0x38
 	blt _02341E84
 	add r1, sp, #0
-	ldr r0, _02342174 ; =0x02353538
+	ldr r0, _02342174 ; =ov29_02353538
 	add r2, r1, r7, lsl #5
 	ldrb r1, [r2, r6]
 	ldr r0, [r0]
@@ -11879,7 +11879,7 @@ _02341EF4:
 	cmpeq r0, r6
 	movne r0, #0
 	bne _0234216C
-	ldr r0, _02342178 ; =0x0237CFBC
+	ldr r0, _02342178 ; =ov29_0237CFBC
 	mov r4, #0
 	str r4, [r0, #0x24]
 _02341F50:
@@ -11997,7 +11997,7 @@ _023420D0:
 	blt _02341F64
 	cmp r3, #0
 	bne _02341F50
-	ldr r0, _02342178 ; =0x0237CFBC
+	ldr r0, _02342178 ; =ov29_0237CFBC
 	mov r8, #0
 	str r4, [r0, #0x24]
 	add r6, sp, #0
@@ -12037,8 +12037,8 @@ _0234216C:
 	add sp, sp, #0x700
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02342174: .word 0x02353538
-_02342178: .word 0x0237CFBC
+_02342174: .word ov29_02353538
+_02342178: .word ov29_0237CFBC
 	arm_func_end StairsAlwaysReachable
 
 	arm_func_start ov29_0234217C
@@ -12273,12 +12273,12 @@ _023424CC: .word 0x000001C2
 
 	arm_func_start GetNextFixedRoomAction
 GetNextFixedRoomAction: ; 0x023424D0
-	ldr r1, _02342510 ; =0x0237CFBC
+	ldr r1, _02342510 ; =ov29_0237CFBC
 	ldrh r0, [r1, #0xa]
 	cmp r0, #0
 	subne r0, r0, #1
 	bne _02342504
-	ldr r0, _02342514 ; =0x0235378C
+	ldr r0, _02342514 ; =ov29_0235378C
 	ldr ip, [r0, #4]
 	ldrh r3, [ip]
 	add r2, ip, #2
@@ -12291,8 +12291,8 @@ _02342504:
 	ldrh r0, [r1, #0xe]
 	bx lr
 	.align 2, 0
-_02342510: .word 0x0237CFBC
-_02342514: .word 0x0235378C
+_02342510: .word ov29_0237CFBC
+_02342514: .word ov29_0235378C
 	arm_func_end GetNextFixedRoomAction
 
 	arm_func_start ov29_02342518
@@ -12340,10 +12340,10 @@ _02342558:
 ov29_02342594: ; 0x02342594
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
-	ldr r2, _023427D8 ; =0x02353538
-	ldr r4, _023427DC ; =0x0235378C
+	ldr r2, _023427D8 ; =ov29_02353538
+	ldr r4, _023427DC ; =ov29_0235378C
 	ldr sb, [r2]
-	ldr r3, _023427E0 ; =0x0237CFBC
+	ldr r3, _023427E0 ; =ov29_0237CFBC
 	add r2, sb, #0x12000
 	ldr r5, [r2, #0xaa4]
 	mov r6, #0
@@ -12495,9 +12495,9 @@ _023427D0:
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023427D8: .word 0x02353538
-_023427DC: .word 0x0235378C
-_023427E0: .word 0x0237CFBC
+_023427D8: .word ov29_02353538
+_023427DC: .word ov29_0235378C
+_023427E0: .word ov29_0237CFBC
 	arm_func_end ov29_02342594
 
 	arm_func_start ov29_023427E4
@@ -12510,7 +12510,7 @@ ov29_023427E4: ; 0x023427E4
 	mov r5, #0
 	mov sb, r6
 	mov r4, r6
-	ldr r8, _02342B74 ; =0x0237CFBC
+	ldr r8, _02342B74 ; =ov29_0237CFBC
 	b _0234283C
 _0234280C:
 	ldr r2, [r8, #0x38]
@@ -12532,7 +12532,7 @@ _02342844:
 	mov sb, #3
 	mov r5, #0
 	mov r4, sb
-	ldr r8, _02342B74 ; =0x0237CFBC
+	ldr r8, _02342B74 ; =ov29_0237CFBC
 	b _02342888
 _02342858:
 	ldr r2, [r8, #0x3c]
@@ -12558,7 +12558,7 @@ _02342890:
 	mov r4, #0
 	b _0234295C
 _023428A8:
-	ldr r0, _02342B74 ; =0x0237CFBC
+	ldr r0, _02342B74 ; =ov29_0237CFBC
 	ldr r1, [r0, #0x38]
 	ldr r0, [r0, #0x30]
 	sub r0, r1, r0
@@ -12568,7 +12568,7 @@ _023428A8:
 	bl DungeonRandInt
 	cmp r0, #0x32
 	bge _02342918
-	ldr sb, _02342B74 ; =0x0237CFBC
+	ldr sb, _02342B74 ; =ov29_0237CFBC
 	ldr r8, [sb, #0x34]
 	b _023428F8
 _023428DC:
@@ -12583,13 +12583,13 @@ _023428F8:
 	ldr r0, [sb, #0x3c]
 	cmp r8, r0
 	blt _023428DC
-	ldr r0, _02342B74 ; =0x0237CFBC
+	ldr r0, _02342B74 ; =ov29_0237CFBC
 	ldr r1, [r0, #0x30]
 	add r1, r1, #1
 	str r1, [r0, #0x30]
 	b _02342958
 _02342918:
-	ldr sb, _02342B74 ; =0x0237CFBC
+	ldr sb, _02342B74 ; =ov29_0237CFBC
 	ldr r0, [sb, #0x38]
 	sub r0, r0, #1
 	str r0, [sb, #0x38]
@@ -12616,7 +12616,7 @@ _02342964:
 	mov r6, #0
 	b _02342A20
 _0234296C:
-	ldr r0, _02342B74 ; =0x0237CFBC
+	ldr r0, _02342B74 ; =ov29_0237CFBC
 	ldr r1, [r0, #0x3c]
 	ldr r0, [r0, #0x34]
 	sub r0, r1, r0
@@ -12626,7 +12626,7 @@ _0234296C:
 	bl DungeonRandInt
 	cmp r0, #0x32
 	bge _023429DC
-	ldr r8, _02342B74 ; =0x0237CFBC
+	ldr r8, _02342B74 ; =ov29_0237CFBC
 	ldr r4, [r8, #0x30]
 	b _023429BC
 _023429A0:
@@ -12641,13 +12641,13 @@ _023429BC:
 	ldr r0, [r8, #0x38]
 	cmp r4, r0
 	blt _023429A0
-	ldr r0, _02342B74 ; =0x0237CFBC
+	ldr r0, _02342B74 ; =ov29_0237CFBC
 	ldr r1, [r0, #0x34]
 	add r1, r1, #1
 	str r1, [r0, #0x34]
 	b _02342A1C
 _023429DC:
-	ldr r8, _02342B74 ; =0x0237CFBC
+	ldr r8, _02342B74 ; =ov29_0237CFBC
 	ldr r0, [r8, #0x3c]
 	sub r0, r0, #1
 	str r0, [r8, #0x3c]
@@ -12671,7 +12671,7 @@ _02342A20:
 	cmp r6, r5
 	blt _0234296C
 _02342A28:
-	ldr r4, _02342B74 ; =0x0237CFBC
+	ldr r4, _02342B74 ; =ov29_0237CFBC
 	ldr r6, [r4, #0x30]
 	b _02342A74
 _02342A34:
@@ -12698,7 +12698,7 @@ _02342A74:
 	ldr r3, [r4, #0x38]
 	cmp r6, r3
 	blt _02342A34
-	ldr r0, _02342B74 ; =0x0237CFBC
+	ldr r0, _02342B74 ; =ov29_0237CFBC
 	mov r7, #0
 	ldr r1, [r0, #0x30]
 	ldr r2, [r0, #0x34]
@@ -12723,7 +12723,7 @@ _02342AC8:
 	mov sl, r0
 	cmp r0, r5
 	bge _02342B58
-	ldr r0, _02342B78 ; =0x022C52EC
+	ldr r0, _02342B78 ; =ov10_022C52EC
 	add fp, r0, r7, lsl #1
 _02342AE8:
 	mov r0, sb
@@ -12765,8 +12765,8 @@ _02342B6C:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02342B74: .word 0x0237CFBC
-_02342B78: .word 0x022C52EC
+_02342B74: .word ov29_0237CFBC
+_02342B78: .word ov10_022C52EC
 	arm_func_end ov29_023427E4
 
 	arm_func_start ResetInnerBoundaryTileRows
@@ -12810,8 +12810,8 @@ ov29_02342BEC: ; 0x02342BEC
 	add r4, r0, #6
 	mov r0, r5, lsl #1
 	mul r0, r6, r0
-	ldr r3, _02342C60 ; =0x0235378C
-	ldr r2, _02342C64 ; =0x0237CFBC
+	ldr r3, _02342C60 ; =ov29_0235378C
+	ldr r2, _02342C64 ; =ov29_0237CFBC
 	mov r1, #0
 	str r4, [r3, #4]
 	strh r1, [r2, #0xa]
@@ -12838,8 +12838,8 @@ _02342C50:
 	mov r0, r7
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02342C60: .word 0x0235378C
-_02342C64: .word 0x0237CFBC
+_02342C60: .word ov29_0235378C
+_02342C64: .word ov29_0237CFBC
 	arm_func_end ov29_02342BEC
 
 	arm_func_start ResetImportantSpawnPositions
@@ -12871,11 +12871,11 @@ SpawnStairs: ; 0x02342C8C
 	bic r0, r0, #2
 	strh r0, [r4, #2]
 	beq _02342D00
-	ldr r0, _02342D94 ; =0x0235378C
+	ldr r0, _02342D94 ; =ov29_0235378C
 	ldrb r1, [r6]
 	ldrb r0, [r0]
 	cmp r0, #0
-	ldrne r0, _02342D98 ; =0x0237CFBC
+	ldrne r0, _02342D98 ; =ov29_0237CFBC
 	strneh r1, [r0, #0x1c]
 	ldrneb r1, [r6, #1]
 	strneh r1, [r0, #0x1e]
@@ -12889,7 +12889,7 @@ SpawnStairs: ; 0x02342C8C
 _02342D00:
 	ldrb r2, [r6]
 	add r0, r8, #0x8c00
-	ldr r1, _02342D98 ; =0x0237CFBC
+	ldr r1, _02342D98 ; =ov29_0237CFBC
 	strh r2, [r0, #0x20]
 	ldrb r2, [r6, #1]
 	strh r2, [r0, #0x22]
@@ -12928,14 +12928,14 @@ _02342D44:
 	blt _02342D40
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02342D94: .word 0x0235378C
-_02342D98: .word 0x0237CFBC
+_02342D94: .word ov29_0235378C
+_02342D98: .word ov29_0237CFBC
 	arm_func_end SpawnStairs
 
 	arm_func_start GetHiddenStairsType
 GetHiddenStairsType: ; 0x02342D9C
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r2, _02342EB0 ; =0x02353538
+	ldr r2, _02342EB0 ; =ov29_02353538
 	mov r5, r0
 	ldr r0, [r2]
 	mov r6, r1
@@ -12961,7 +12961,7 @@ GetHiddenStairsType: ; 0x02342D9C
 _02342DFC:
 	add r4, r0, #1
 _02342E00:
-	ldr r0, _02342EB0 ; =0x02353538
+	ldr r0, _02342EB0 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0x98]
@@ -12977,7 +12977,7 @@ _02342E2C:
 	mov r0, #0
 _02342E30:
 	tst r0, #0xff
-	ldrne r0, _02342EB4 ; =0x0235378C
+	ldrne r0, _02342EB4 ; =ov29_0235378C
 	movne r1, #1
 	strneb r1, [r0]
 	bne _02342EA4
@@ -12991,7 +12991,7 @@ _02342E30:
 	bl ShouldBoostHiddenStairsSpawnChance
 	cmp r0, #0
 	beq _02342E94
-	ldr r1, _02342EB8 ; =0x022C4850
+	ldr r1, _02342EB8 ; =ov10_022C4850
 	mov r0, r6, lsl #8
 	ldr r1, [r1]
 	bl MultiplyByFixedPoint
@@ -13003,7 +13003,7 @@ _02342E30:
 	mov r6, r0, asr #8
 _02342E94:
 	cmp r5, r6
-	ldrhs r0, _02342EB4 ; =0x0235378C
+	ldrhs r0, _02342EB4 ; =ov29_0235378C
 	movhs r1, #1
 	strhsb r1, [r0]
 _02342EA4:
@@ -13012,9 +13012,9 @@ _02342EA8:
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02342EB0: .word 0x02353538
-_02342EB4: .word 0x0235378C
-_02342EB8: .word 0x022C4850
+_02342EB0: .word ov29_02353538
+_02342EB4: .word ov29_0235378C
+_02342EB8: .word ov10_022C4850
 	arm_func_end GetHiddenStairsType
 
 	arm_func_start GetFinalKecleonShopSpawnChance
@@ -13025,7 +13025,7 @@ GetFinalKecleonShopSpawnChance: ; 0x02342EBC
 	cmp r0, #0
 	moveq r0, r4
 	ldmeqia sp!, {r4, pc}
-	ldr r1, _02342F04 ; =0x022C484C
+	ldr r1, _02342F04 ; =ov10_022C484C
 	mov r0, r4, lsl #8
 	ldr r1, [r1]
 	bl MultiplyByFixedPoint
@@ -13038,22 +13038,22 @@ GetFinalKecleonShopSpawnChance: ; 0x02342EBC
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02342F04: .word 0x022C484C
+_02342F04: .word ov10_022C484C
 	arm_func_end GetFinalKecleonShopSpawnChance
 
 	arm_func_start ResetHiddenStairsSpawn
 ResetHiddenStairsSpawn: ; 0x02342F08
-	ldr r1, _02342F28 ; =0x0237CFBC
+	ldr r1, _02342F28 ; =ov29_0237CFBC
 	mvn r2, #0
 	strh r2, [r1, #0x1c]
-	ldr r0, _02342F2C ; =0x0235378C
+	ldr r0, _02342F2C ; =ov29_0235378C
 	strh r2, [r1, #0x1e]
 	mov r1, #0
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_02342F28: .word 0x0237CFBC
-_02342F2C: .word 0x0235378C
+_02342F28: .word ov29_0237CFBC
+_02342F2C: .word ov29_0235378C
 	arm_func_end ResetHiddenStairsSpawn
 
 	arm_func_start PlaceFixedRoomTile
@@ -13122,7 +13122,7 @@ _02343000:
 _02343010:
 	cmp r1, #0x6d
 	bne _023433B8
-	ldr r3, _0234392C ; =0x02353538
+	ldr r3, _0234392C ; =ov29_02353538
 	mov r1, r5
 	ldr r0, [r3]
 	mov r2, r4
@@ -13173,7 +13173,7 @@ _023430B8:
 	strh r2, [r6]
 	ldrh r4, [r6]
 	mov r3, sb, asr #0xc
-	ldr r2, _0234392C ; =0x02353538
+	ldr r2, _0234392C ; =ov29_02353538
 	orr r4, r4, #1
 	strh r4, [r6]
 	ldr r4, [r2]
@@ -13192,7 +13192,7 @@ _023430B8:
 	add r1, r1, #0xcc00
 	strh r4, [r1, #0xee]
 	bl FixedRoomActionParamToDirection
-	ldr r1, _0234392C ; =0x02353538
+	ldr r1, _0234392C ; =ov29_02353538
 	mov r2, #0
 	ldr r1, [r1]
 	add r1, r1, #0xc000
@@ -13220,7 +13220,7 @@ _02343160:
 	strb r0, [r6, #7]
 	b _0234391C
 _02343184:
-	ldr r0, _02343930 ; =0x0237CFC0
+	ldr r0, _02343930 ; =ov29_0237CFC0
 	mov r1, #1
 	strb r1, [r0]
 	bl ov29_023365E8
@@ -13236,7 +13236,7 @@ _02343194:
 	b _0234391C
 _023431B8:
 	ldrh r2, [r6]
-	ldr r1, _0234392C ; =0x02353538
+	ldr r1, _0234392C ; =ov29_02353538
 	mov r0, #0
 	bic r2, r2, #3
 	strh r2, [r6]
@@ -13343,7 +13343,7 @@ _02343328:
 	strb r0, [r6, #7]
 	b _0234391C
 _0234334C:
-	ldr r2, _0234392C ; =0x02353538
+	ldr r2, _0234392C ; =ov29_02353538
 	mov r3, sb, asr #0xc
 	ldr r0, [r2]
 	sub r7, r1, #0x5f
@@ -13356,7 +13356,7 @@ _0234334C:
 	add r1, r1, #0xcc00
 	strh r4, [r1, #0xee]
 	bl FixedRoomActionParamToDirection
-	ldr r1, _0234392C ; =0x02353538
+	ldr r1, _0234392C ; =ov29_02353538
 	mov r2, #0
 	ldr r1, [r1]
 	add r1, r1, r7
@@ -13379,12 +13379,12 @@ _023433B8:
 	sub r1, r1, #0x10
 	mov r0, #0xc
 	smulbb r2, r1, r0
-	ldr r0, _02343938 ; =0x023502F4
-	ldr r1, _0234393C ; =0x023502EC
+	ldr r0, _02343938 ; =ov29_023502F4
+	ldr r1, _0234393C ; =ov29_023502EC
 	ldr r8, [r0, r2]
 	ldr sl, [r1, r2]
 	ldrb r0, [r8, #2]
-	ldr r1, _02343940 ; =0x023502F0
+	ldr r1, _02343940 ; =ov29_023502F0
 	strb r0, [r6, #7]
 	ldrsh r0, [sl]
 	ldr r7, [r1, r2]
@@ -13394,7 +13394,7 @@ _023433B8:
 	beq _02343678
 	cmp r0, #0xb2
 	bne _02343468
-	ldr r0, _0234392C ; =0x02353538
+	ldr r0, _0234392C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0x98]
@@ -13435,13 +13435,13 @@ _02343468:
 	bl GenerateAndSpawnItem
 	b _02343678
 _023434B0:
-	ldr r0, _0234392C ; =0x02353538
+	ldr r0, _0234392C ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb fp, [r0, #0x748]
 	bl IsGoldenChamber
 	cmp r0, #0
 	beq _023434D8
-	ldr r0, _02343944 ; =0x022C4B34
+	ldr r0, _02343944 ; =ov10_022C4B34
 	bl ov29_023442B8
 	mov r3, r0
 	b _02343528
@@ -13453,7 +13453,7 @@ _023434D8:
 	mov r3, r0
 	b _02343528
 _023434F0:
-	ldr r0, _02343948 ; =0x02353050
+	ldr r0, _02343948 ; =ov29_02353050
 	b _02343504
 _023434F8:
 	cmp fp, r1
@@ -13541,8 +13541,8 @@ _023435BC:
 	mov r0, #1
 	mov r3, r1
 	str r0, [sp, #4]
-	ldr fp, _02343958 ; =0x023534F0
-	ldr r0, _0234395C ; =0x0234FDFC
+	ldr fp, _02343958 ; =ov29_023534F0
+	ldr r0, _0234395C ; =ov29_0234FDFC
 	ldr r3, [fp, r3, lsl #2]
 	ldrsh r0, [r0, r2]
 	ldrsh r3, [r3, sl]
@@ -13656,7 +13656,7 @@ _023437C8:
 	cmpne sb, #0xa
 	str r1, [sp, #0x28]
 	strb r1, [sp, #0x32]
-	ldreq r1, _02343964 ; =0x022C5938
+	ldreq r1, _02343964 ; =ov10_022C5938
 	ldreq r0, [sp, #0x1c]
 	strh fp, [sp, #0x24]
 	ldreqsh r0, [r1, r0]
@@ -13667,7 +13667,7 @@ _023437C8:
 	beq _02343898
 	cmp sb, #1
 	bne _0234382C
-	ldr r0, _0234392C ; =0x02353538
+	ldr r0, _0234392C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x348
 	add r0, r0, #0x400
@@ -13677,7 +13677,7 @@ _023437C8:
 _0234382C:
 	cmp sb, #4
 	bne _02343850
-	ldr r0, _0234392C ; =0x02353538
+	ldr r0, _0234392C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x348
 	add r0, r0, #0x400
@@ -13687,7 +13687,7 @@ _0234382C:
 _02343850:
 	cmp sb, #5
 	bne _02343874
-	ldr r0, _0234392C ; =0x02353538
+	ldr r0, _0234392C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x348
 	add r0, r0, #0x400
@@ -13699,7 +13699,7 @@ _02343874:
 	cmp r7, r0
 	strneh r1, [sp, #0x2c]
 	bne _02343898
-	ldr r1, _0234392C ; =0x02353538
+	ldr r1, _0234392C ; =ov29_02353538
 	ldr r0, _02343968 ; =0x0002C9E6
 	ldr r1, [r1]
 	ldrsh r0, [r1, r0]
@@ -13746,21 +13746,21 @@ _0234391C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02343928: .word 0x00000FFF
-_0234392C: .word 0x02353538
-_02343930: .word 0x0237CFC0
+_0234392C: .word ov29_02353538
+_02343930: .word ov29_0237CFC0
 _02343934: .word 0x000001FF
-_02343938: .word 0x023502F4
-_0234393C: .word 0x023502EC
-_02343940: .word 0x023502F0
-_02343944: .word 0x022C4B34
-_02343948: .word 0x02353050
+_02343938: .word ov29_023502F4
+_0234393C: .word ov29_023502EC
+_02343940: .word ov29_023502F0
+_02343944: .word ov10_022C4B34
+_02343948: .word ov29_02353050
 _0234394C: .word 0x00000578
 _02343950: .word 0x00000181
 _02343954: .word 0xFFFFFA7E
-_02343958: .word 0x023534F0
-_0234395C: .word 0x0234FDFC
+_02343958: .word ov29_023534F0
+_0234395C: .word ov29_0234FDFC
 _02343960: .word 0x00000229
-_02343964: .word 0x022C5938
+_02343964: .word ov10_022C5938
 _02343968: .word 0x0002C9E6
 	arm_func_end PlaceFixedRoomTile
 
@@ -13806,7 +13806,7 @@ _023439BC:
 ov29_023439D8: ; 0x023439D8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
-	ldr r4, _02343CD0 ; =0x02353538
+	ldr r4, _02343CD0 ; =ov29_02353538
 	mov sb, r1
 	ldr r4, [r4]
 	mov sl, r0
@@ -13833,7 +13833,7 @@ _02343A38:
 	sub r4, r0, #0x14
 	b _02343B54
 _02343A44:
-	ldr r0, _02343CD0 ; =0x02353538
+	ldr r0, _02343CD0 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldr r1, [r0, #0xd24]
@@ -13868,7 +13868,7 @@ _02343A44:
 	mov r0, #0xa0
 	mul r1, r5, r0
 	mov r0, #0x14
-	ldr r2, _02343CD0 ; =0x02353538
+	ldr r2, _02343CD0 ; =ov29_02353538
 	mul r0, r6, r0
 	ldr r2, [r2]
 	add r2, r2, r1
@@ -13876,7 +13876,7 @@ _02343A44:
 	add r2, r2, #0xcd00
 	ldrh r2, [r2, #0x60]
 	strh r2, [r7]
-	ldr r2, _02343CD0 ; =0x02353538
+	ldr r2, _02343CD0 ; =ov29_02353538
 	ldr r2, [r2]
 	add r1, r2, r1
 	add r0, r0, r1
@@ -13886,7 +13886,7 @@ _02343A44:
 _02343B0C:
 	mov r0, #1
 	str r0, [sp]
-	ldr r1, _02343CD0 ; =0x02353538
+	ldr r1, _02343CD0 ; =ov29_02353538
 	mov r0, r7
 	ldr r1, [r1]
 	mov r2, r4
@@ -13918,7 +13918,7 @@ _02343B68:
 	b _02343C14
 _02343B80:
 	ldrsh r0, [sl, #4]
-	ldr r6, _02343CD0 ; =0x02353538
+	ldr r6, _02343CD0 ; =ov29_02353538
 	sub r5, r0, #0x14
 	b _02343C00
 _02343B90:
@@ -13963,7 +13963,7 @@ _02343C14:
 	cmp r4, r0
 	ble _02343B80
 _02343C24:
-	ldr r0, _02343CD0 ; =0x02353538
+	ldr r0, _02343CD0 ; =ov29_02353538
 	mov r2, #1
 	ldr r0, [r0]
 	ldr r1, _02343CD4 ; =0xFFFFCFEF
@@ -14010,7 +14010,7 @@ _02343CC8:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02343CD0: .word 0x02353538
+_02343CD0: .word ov29_02353538
 _02343CD4: .word 0xFFFFCFEF
 	arm_func_end ov29_023439D8
 
@@ -14075,52 +14075,52 @@ _02343D8C: .word 0x00000B93
 	arm_func_start LoadFixedRoomData
 LoadFixedRoomData: ; 0x02343D90
 	stmdb sp!, {r3, lr}
-	ldr r0, _02343DBC ; =0x02353794
-	ldr r1, _02343DC0 ; =0x02353110
+	ldr r0, _02343DBC ; =ov29_02353794
+	ldr r1, _02343DC0 ; =ov29_02353110
 	ldr r0, [r0]
 	mov r2, #0
 	bl LoadFileFromRom
-	ldr r0, _02343DBC ; =0x02353794
+	ldr r0, _02343DBC ; =ov29_02353794
 	ldr r0, [r0]
 	ldr r1, [r0], #8
 	bl HandleSir0Translation
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343DBC: .word 0x02353794
-_02343DC0: .word 0x02353110
+_02343DBC: .word ov29_02353794
+_02343DC0: .word ov29_02353110
 	arm_func_end LoadFixedRoomData
 
 	arm_func_start ov29_02343DC4
 ov29_02343DC4: ; 0x02343DC4
-	ldr r0, _02343DD4 ; =0x02353794
+	ldr r0, _02343DD4 ; =ov29_02353794
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
 	bx lr
 	.align 2, 0
-_02343DD4: .word 0x02353794
+_02343DD4: .word ov29_02353794
 	arm_func_end ov29_02343DC4
 
 	arm_func_start ov29_02343DD8
 ov29_02343DD8: ; 0x02343DD8
 	stmdb sp!, {r3, lr}
-	ldr r0, _02343E1C ; =0x02353794
+	ldr r0, _02343E1C ; =ov29_02353794
 	ldr r0, [r0]
 	bl PointsToZero
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02343E1C ; =0x02353794
+	ldr r0, _02343E1C ; =ov29_02353794
 	ldr r0, [r0]
 	bl UnloadFile
-	ldr r0, _02343E1C ; =0x02353794
+	ldr r0, _02343E1C ; =ov29_02353794
 	ldr r0, [r0]
 	bl ZInit8
-	ldr r0, _02343E1C ; =0x02353794
+	ldr r0, _02343E1C ; =ov29_02353794
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #8]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02343E1C: .word 0x02353794
+_02343E1C: .word ov29_02353794
 	arm_func_end ov29_02343DD8
 
 	arm_func_start LoadFixedRoom
@@ -14134,7 +14134,7 @@ LoadFixedRoom: ; 0x02343E20
 	moveq r0, #0
 	beq _0234402C
 	bl LoadFixedRoomData
-	ldr r0, _02344034 ; =0x02353794
+	ldr r0, _02344034 ; =ov29_02353794
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
 	ldr r0, [r0, r4, lsl #2]
@@ -14159,7 +14159,7 @@ _02343E78:
 	sub r0, r1, #0xe00
 	cmp r2, r0
 	bgt _0234400C
-	ldr r1, _0234403C ; =0x023502EC
+	ldr r1, _0234403C ; =ov29_023502EC
 	sub r2, r2, #0x10
 	mov r0, #0xc
 	smlabb r0, r2, r0, r1
@@ -14191,7 +14191,7 @@ _02343F04:
 	ldrb r0, [r6, #3]
 	cmp r0, #1
 	bne _02343F40
-	ldr r0, _02344048 ; =0x02353538
+	ldr r0, _02344048 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x348
 	add r0, r0, #0x400
@@ -14204,7 +14204,7 @@ _02343F04:
 _02343F40:
 	cmp r0, #4
 	bne _02343F70
-	ldr r0, _02344048 ; =0x02353538
+	ldr r0, _02344048 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x348
 	add r0, r0, #0x400
@@ -14217,7 +14217,7 @@ _02343F40:
 _02343F70:
 	cmp r0, #5
 	bne _02343FA0
-	ldr r0, _02344048 ; =0x02353538
+	ldr r0, _02344048 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x348
 	add r0, r0, #0x400
@@ -14242,7 +14242,7 @@ _02343FA0:
 _02343FCC:
 	mov r0, #0xc
 	mul r2, r3, r0
-	ldr r1, _02344050 ; =0x022C5938
+	ldr r1, _02344050 ; =ov10_022C5938
 	add r0, sp, #0xc
 	ldrsh r1, [r1, r2]
 	mov r2, r8
@@ -14273,14 +14273,14 @@ _0234402C:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02344034: .word 0x02353794
+_02344034: .word ov29_02353794
 _02344038: .word 0x00000FFF
-_0234403C: .word 0x023502EC
+_0234403C: .word ov29_023502EC
 _02344040: .word 0x00000229
 _02344044: .word 0x00000483
-_02344048: .word 0x02353538
+_02344048: .word ov29_02353538
 _0234404C: .word 0x00000485
-_02344050: .word 0x022C5938
+_02344050: .word ov10_022C5938
 	arm_func_end LoadFixedRoom
 
 	arm_func_start OpenFixedBin
@@ -14289,30 +14289,30 @@ OpenFixedBin: ; 0x02344054
 	mov r0, #0xc
 	mov r1, #0
 	bl MemAlloc
-	ldr r2, _02344084 ; =0x02353794
+	ldr r2, _02344084 ; =ov29_02353794
 	mov r1, #0xc
 	str r0, [r2]
 	bl MemZero
-	ldr r0, _02344084 ; =0x02353794
+	ldr r0, _02344084 ; =ov29_02353794
 	ldr r0, [r0]
 	bl ZInit8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02344084: .word 0x02353794
+_02344084: .word ov29_02353794
 	arm_func_end OpenFixedBin
 
 	arm_func_start CloseFixedBin
 CloseFixedBin: ; 0x02344088
 	stmdb sp!, {r3, lr}
-	ldr r0, _023440A8 ; =0x02353794
+	ldr r0, _023440A8 ; =ov29_02353794
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _023440A8 ; =0x02353794
+	ldr r0, _023440A8 ; =ov29_02353794
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023440A8: .word 0x02353794
+_023440A8: .word ov29_02353794
 	arm_func_end CloseFixedBin
 
 	arm_func_start AreOrbsAllowed
@@ -14327,11 +14327,11 @@ _023440BC:
 _023440C4:
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _023440D8 ; =0x022C6C77
+	ldr r0, _023440D8 ; =ov10_022C6C77
 	ldrb r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_023440D8: .word 0x022C6C77
+_023440D8: .word ov10_022C6C77
 	arm_func_end AreOrbsAllowed
 
 	arm_func_start AreTileJumpsAllowed
@@ -14346,11 +14346,11 @@ _023440EC:
 _023440F4:
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _02344108 ; =0x022C6C78
+	ldr r0, _02344108 ; =ov10_022C6C78
 	ldrb r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_02344108: .word 0x022C6C78
+_02344108: .word ov10_022C6C78
 	arm_func_end AreTileJumpsAllowed
 
 	arm_func_start AreTrawlOrbsAllowed
@@ -14365,11 +14365,11 @@ _0234411C:
 _02344124:
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _02344138 ; =0x022C6C79
+	ldr r0, _02344138 ; =ov10_022C6C79
 	ldrb r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_02344138: .word 0x022C6C79
+_02344138: .word ov10_022C6C79
 	arm_func_end AreTrawlOrbsAllowed
 
 	arm_func_start AreOrbsAllowedVeneer
@@ -14384,33 +14384,33 @@ _02344144: .word AreOrbsAllowed
 AreLateGameTrapsEnabled: ; 0x02344148
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _0234415C ; =0x022C6C75
+	ldr r0, _0234415C ; =ov10_022C6C75
 	ldrb r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_0234415C: .word 0x022C6C75
+_0234415C: .word ov10_022C6C75
 	arm_func_end AreLateGameTrapsEnabled
 
 	arm_func_start AreMovesEnabled
 AreMovesEnabled: ; 0x02344160
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _02344174 ; =0x022C6C76
+	ldr r0, _02344174 ; =ov10_022C6C76
 	ldrb r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_02344174: .word 0x022C6C76
+_02344174: .word ov10_022C6C76
 	arm_func_end AreMovesEnabled
 
 	arm_func_start IsRoomIlluminated
 IsRoomIlluminated: ; 0x02344178
 	mov r1, #0xc
 	mul r1, r0, r1
-	ldr r0, _0234418C ; =0x022C6C74
+	ldr r0, _0234418C ; =ov10_022C6C74
 	ldrb r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_0234418C: .word 0x022C6C74
+_0234418C: .word ov10_022C6C74
 	arm_func_end IsRoomIlluminated
 
 	arm_func_start GetMatchingMonsterId
@@ -14473,7 +14473,7 @@ _02344254:
 	rsb r1, r2, #0x690
 	cmp r0, r1
 	bne _02344298
-	ldr r0, _023442B0 ; =0x02353538
+	ldr r0, _023442B0 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x700
 	ldrsb r1, [r0, #0x98]
@@ -14497,7 +14497,7 @@ _0234429C:
 _023442A4: .word 0x00000483
 _023442A8: .word 0x00000467
 _023442AC: .word 0x0000020F
-_023442B0: .word 0x02353538
+_023442B0: .word ov29_02353538
 _023442B4: .word 0x0000020D
 	arm_func_end GetMatchingMonsterId
 
@@ -14650,7 +14650,7 @@ _023444A0:
 	add r1, sp, #4
 	mov r2, #1
 	bl SpawnItem
-	ldr r0, _023444D0 ; =0x02353538
+	ldr r0, _023444D0 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x3f00
 	ldrsh r1, [r0, #0xc2]
@@ -14659,13 +14659,13 @@ _023444A0:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_023444D0: .word 0x02353538
+_023444D0: .word ov29_02353538
 	arm_func_end GenerateAndSpawnItem
 
 	arm_func_start ov29_023444D4
 ov29_023444D4: ; 0x023444D4
 	stmdb sp!, {r3, lr}
-	ldr r0, _02344508 ; =0x02353538
+	ldr r0, _02344508 ; =ov29_02353538
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x7e
@@ -14678,7 +14678,7 @@ ov29_023444D4: ; 0x023444D4
 	bl ov29_022F07D8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02344508: .word 0x02353538
+_02344508: .word ov29_02353538
 	arm_func_end ov29_023444D4
 
 	arm_func_start IsHiddenStairsFloor
@@ -14738,7 +14738,7 @@ _023445A0: ; jump table
 	b _0234485C ; case 3
 	b _02344950 ; case 4
 _023445B4:
-	ldr r2, _02344A60 ; =0x0237CFFC
+	ldr r2, _02344A60 ; =ov29_0237CFFC
 	mov r3, #0
 	mov r0, r4
 	mov r1, r5
@@ -14750,13 +14750,13 @@ _023445B4:
 	bl ov29_022F0604
 	b _02344A34
 _023445E0:
-	ldr r2, _02344A60 ; =0x0237CFFC
+	ldr r2, _02344A60 ; =ov29_0237CFFC
 	mov r3, #1
 	mov r0, r4
 	mov r1, r5
 	str r3, [r2]
 	bl ov29_022F0654
-	ldr r0, _02344A68 ; =0x02353538
+	ldr r0, _02344A68 ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x77e]
 	cmp r0, #0
@@ -14774,7 +14774,7 @@ _02344620:
 	mov r1, r4
 	mov r2, #0
 	bl ov29_022F0604
-	ldr r1, _02344A74 ; =0x02353798
+	ldr r1, _02344A74 ; =ov29_02353798
 	ldr r0, _02344A78 ; =0x00000F4B
 	ldr r3, [r1, #4]
 	mov r1, r4
@@ -14824,7 +14824,7 @@ _02344690:
 	ldr r0, _02344A8C ; =0x00000F51
 	bl ov29_022F0780
 	mov r3, #1
-	ldr r1, _02344A68 ; =0x02353538
+	ldr r1, _02344A68 ; =ov29_02353538
 	mov r0, #0xf50
 	ldr r2, [r1]
 	mov r1, r4
@@ -14833,7 +14833,7 @@ _02344690:
 	bl ov29_022F0604
 	b _02344A34
 _0234471C:
-	ldr r2, _02344A60 ; =0x0237CFFC
+	ldr r2, _02344A60 ; =ov29_0237CFFC
 	mov r3, #2
 	mov r0, r4
 	mov r1, r5
@@ -14849,7 +14849,7 @@ _0234471C:
 	ldr r0, _02344A94 ; =0x00000F34
 	mov r1, r4
 	mov r2, #0
-	ldr r3, _02344A74 ; =0x02353798
+	ldr r3, _02344A74 ; =ov29_02353798
 	ldr r3, [r3, #8]
 	bl ov29_022F062C
 	cmp r0, #0
@@ -14918,7 +14918,7 @@ _023447FC:
 	bl ov29_022F0604
 	b _02344A34
 _0234485C:
-	ldr r2, _02344A60 ; =0x0237CFFC
+	ldr r2, _02344A60 ; =ov29_0237CFFC
 	mov r3, #3
 	mov r0, r4
 	mov r1, r5
@@ -14934,7 +14934,7 @@ _0234485C:
 	ldr r0, _02344ABC ; =0x00000F55
 	mov r1, r4
 	mov r2, #0
-	ldr r3, _02344A74 ; =0x02353798
+	ldr r3, _02344A74 ; =ov29_02353798
 	ldr r3, [r3, #0xc]
 	bl ov29_022F062C
 	cmp r0, #0
@@ -14983,7 +14983,7 @@ _02344904:
 	bl ov29_022F0604
 	b _02344A34
 _02344950:
-	ldr r2, _02344A60 ; =0x0237CFFC
+	ldr r2, _02344A60 ; =ov29_0237CFFC
 	mov r3, #4
 	mov r0, r4
 	mov r1, r5
@@ -14999,7 +14999,7 @@ _02344950:
 	mov r0, #0xf40
 	mov r1, r4
 	mov r2, #0
-	ldr r3, _02344A74 ; =0x02353798
+	ldr r3, _02344A74 ; =ov29_02353798
 	ldr r3, [r3, #0x10]
 	bl ov29_022F062C
 	cmp r0, #0
@@ -15019,7 +15019,7 @@ _023449B8:
 	bl ov29_022F0604
 	b _02344A34
 _023449D8:
-	ldr r1, _02344A74 ; =0x02353798
+	ldr r1, _02344A74 ; =ov29_02353798
 	ldr r0, _02344AE8 ; =0x00000F43
 	ldr r3, [r1, #0x14]
 	mov r1, r4
@@ -15057,12 +15057,12 @@ _02344A58:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02344A60: .word 0x0237CFFC
+_02344A60: .word ov29_0237CFFC
 _02344A64: .word 0x00000F32
-_02344A68: .word 0x02353538
+_02344A68: .word ov29_02353538
 _02344A6C: .word 0x00000F4C
 _02344A70: .word 0x00000F4A
-_02344A74: .word 0x02353798
+_02344A74: .word ov29_02353798
 _02344A78: .word 0x00000F4B
 _02344A7C: .word 0x00000F4D
 _02344A80: .word 0x00000F4E

@@ -20,7 +20,7 @@ TryInflictSafeguardStatus: ; 0x02318E70
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #2
 	beq _02318EE8
-	ldr r1, _02318F04 ; =0x022C4734
+	ldr r1, _02318F04 ; =ov10_022C4734
 	mov r3, #2
 	mov r0, r5
 	mov r2, #0
@@ -45,7 +45,7 @@ _02318EF8:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02318F04: .word 0x022C4734
+_02318F04: .word ov10_022C4734
 _02318F08: .word 0x00000CEE
 _02318F0C: .word 0x00000CEF
 	arm_func_end TryInflictSafeguardStatus
@@ -67,7 +67,7 @@ TryInflictMistStatus: ; 0x02318F10
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #0xe
 	beq _02318F88
-	ldr r1, _02318FA4 ; =0x022C4738
+	ldr r1, _02318FA4 ; =ov10_022C4738
 	mov r3, #0xe
 	mov r0, r5
 	mov r2, #0
@@ -92,7 +92,7 @@ _02318F98:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02318FA4: .word 0x022C4738
+_02318FA4: .word ov10_022C4738
 _02318FA8: .word 0x00000CF1
 	arm_func_end TryInflictMistStatus
 
@@ -113,7 +113,7 @@ TryInflictWishStatus: ; 0x02318FAC
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #6
 	beq _02319024
-	ldr r1, _02319040 ; =0x022C4794
+	ldr r1, _02319040 ; =ov10_022C4794
 	mov r3, #6
 	mov r0, r5
 	mov r2, #0
@@ -138,7 +138,7 @@ _02319034:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319040: .word 0x022C4794
+_02319040: .word ov10_022C4794
 _02319044: .word 0x00000CDE
 _02319048: .word 0x00000CDF
 	arm_func_end TryInflictWishStatus
@@ -160,7 +160,7 @@ TryInflictMagicCoatStatus: ; 0x0231904C
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #5
 	beq _023190C4
-	ldr r1, _023190E0 ; =0x022C4740
+	ldr r1, _023190E0 ; =ov10_022C4740
 	mov r3, #5
 	mov r0, r5
 	mov r2, #0
@@ -185,7 +185,7 @@ _023190D4:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023190E0: .word 0x022C4740
+_023190E0: .word ov10_022C4740
 _023190E4: .word 0x00000CE7
 _023190E8: .word 0x00000CE8
 	arm_func_end TryInflictMagicCoatStatus
@@ -207,7 +207,7 @@ TryInflictLightScreenStatus: ; 0x023190EC
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #3
 	beq _02319164
-	ldr r1, _02319180 ; =0x022C4730
+	ldr r1, _02319180 ; =ov10_022C4730
 	mov r3, #3
 	mov r0, r5
 	mov r2, #0
@@ -232,7 +232,7 @@ _02319174:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319180: .word 0x022C4730
+_02319180: .word ov10_022C4730
 _02319184: .word 0x00000CF4
 _02319188: .word 0x00000CF5
 	arm_func_end TryInflictLightScreenStatus
@@ -254,7 +254,7 @@ TryInflictReflectStatus: ; 0x0231918C
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #1
 	beq _02319204
-	ldr r1, _02319220 ; =0x022C472C
+	ldr r1, _02319220 ; =ov10_022C472C
 	mov r3, #1
 	mov r0, r5
 	mov r2, #0
@@ -279,7 +279,7 @@ _02319214:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319220: .word 0x022C472C
+_02319220: .word ov10_022C472C
 _02319224: .word 0x00000CF6
 _02319228: .word 0x00000CF7
 	arm_func_end TryInflictReflectStatus
@@ -299,7 +299,7 @@ TryInflictProtectStatus: ; 0x0231922C
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #7
 	beq _023192A4
-	ldr r1, _023192D0 ; =0x022C47B8
+	ldr r1, _023192D0 ; =ov10_022C47B8
 	mov r3, #7
 	mov r0, r5
 	mov r2, #0
@@ -330,7 +330,7 @@ _023192C4:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023192D0: .word 0x022C47B8
+_023192D0: .word ov10_022C47B8
 _023192D4: .word 0x00000D47
 _023192D8: .word 0x00000D48
 	arm_func_end TryInflictProtectStatus
@@ -352,7 +352,7 @@ TryInflictMirrorCoatStatus: ; 0x023192DC
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #8
 	beq _02319354
-	ldr r1, _02319370 ; =0x022C47CC
+	ldr r1, _02319370 ; =ov10_022C47CC
 	mov r3, #8
 	mov r0, r5
 	mov r2, #0
@@ -377,7 +377,7 @@ _02319364:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319370: .word 0x022C47CC
+_02319370: .word ov10_022C47CC
 _02319374: .word 0x00000D4F
 	arm_func_end TryInflictMirrorCoatStatus
 
@@ -398,7 +398,7 @@ TryInflictEndureStatus: ; 0x02319378
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #9
 	beq _023193F0
-	ldr r1, _0231940C ; =0x022C47F4
+	ldr r1, _0231940C ; =ov10_022C47F4
 	mov r3, #9
 	mov r0, r5
 	mov r2, #0
@@ -423,7 +423,7 @@ _02319400:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0231940C: .word 0x022C47F4
+_0231940C: .word ov10_022C47F4
 _02319410: .word 0x00000D58
 _02319414: .word 0x00000D59
 	arm_func_end TryInflictEndureStatus
@@ -445,7 +445,7 @@ TryInflictMirrorMoveStatus: ; 0x02319418
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #0xb
 	beq _02319490
-	ldr r1, _023194AC ; =0x022C4840
+	ldr r1, _023194AC ; =ov10_022C4840
 	mov r3, #0xb
 	mov r0, r5
 	mov r2, #0
@@ -470,7 +470,7 @@ _023194A0:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023194AC: .word 0x022C4840
+_023194AC: .word ov10_022C4840
 _023194B0: .word 0x00000D5A
 _023194B4: .word 0x00000D5B
 	arm_func_end TryInflictMirrorMoveStatus
@@ -503,7 +503,7 @@ _02319500:
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #0xc
 	beq _02319558
-	ldr r1, _02319578 ; =0x022C4854
+	ldr r1, _02319578 ; =ov10_022C4854
 	mov r3, #0xc
 	mov r0, r5
 	mov r2, #0
@@ -529,7 +529,7 @@ _02319568:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02319574: .word 0x00000DC4
-_02319578: .word 0x022C4854
+_02319578: .word ov10_022C4854
 _0231957C: .word 0x00000D5C
 _02319580: .word 0x00000D5D
 	arm_func_end TryInflictConversion2Status
@@ -551,7 +551,7 @@ TryInflictVitalThrowStatus: ; 0x02319584
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #0xd
 	beq _023195FC
-	ldr r1, _02319618 ; =0x022C485C
+	ldr r1, _02319618 ; =ov10_022C485C
 	mov r3, #0xd
 	mov r0, r5
 	mov r2, #0
@@ -576,7 +576,7 @@ _0231960C:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319618: .word 0x022C485C
+_02319618: .word ov10_022C485C
 _0231961C: .word 0x00000D5E
 _02319620: .word 0x00000D5F
 	arm_func_end TryInflictVitalThrowStatus
@@ -681,7 +681,7 @@ MirrorMoveIsActive: ; 0x02319748
 	bl ExclusiveItemEffectIsActive__023197A8
 	cmp r0, #0
 	beq _0231979C
-	ldr r0, _023197A4 ; =0x022C4648
+	ldr r0, _023197A4 ; =ov10_022C4648
 	ldrsh r0, [r0]
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
@@ -691,7 +691,7 @@ _0231979C:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_023197A4: .word 0x022C4648
+_023197A4: .word ov10_022C4648
 	arm_func_end MirrorMoveIsActive
 
 	arm_func_start ExclusiveItemEffectIsActive__023197A8
@@ -756,7 +756,7 @@ _02319854:
 	arm_func_start ov29_0231985C
 ov29_0231985C: ; 0x0231985C
 	mov r2, #0
-	ldr r0, _0231987C ; =0x0237CA18
+	ldr r0, _0231987C ; =ov29_0237CA18
 	mov r1, r2
 _02319868:
 	strb r1, [r0, r2]
@@ -765,7 +765,7 @@ _02319868:
 	blt _02319868
 	bx lr
 	.align 2, 0
-_0231987C: .word 0x0237CA18
+_0231987C: .word ov29_0237CA18
 	arm_func_end ov29_0231985C
 
 	arm_func_start AiConsiderMove
@@ -838,13 +838,13 @@ _02319958:
 	cmp r0, #0
 	beq _023199C0
 	ldrb r6, [r6, #0x4c]
-	ldr r4, _02319F70 ; =0x0237CA18
+	ldr r4, _02319F70 ; =ov29_0237CA18
 	ldrb r0, [r4, r6]
 	cmp r0, #0
 	bne _02319E88
-	ldr r1, _02319F74 ; =0x0237CA20
+	ldr r1, _02319F74 ; =ov29_0237CA20
 	mov r3, #1
-	ldr r0, _02319F78 ; =0x0237CA28
+	ldr r0, _02319F78 ; =ov29_0237CA28
 	mov r2, #0x63
 	strb r3, [r4, r6]
 	strb r6, [r1]
@@ -854,7 +854,7 @@ _02319958:
 	add r5, r5, #1
 	b _02319E88
 _023199C0:
-	ldr fp, _02319F7C ; =0x0235171C
+	ldr fp, _02319F7C ; =DIRECTIONS_XY
 	mov r8, #0
 _023199C8:
 	mov r1, r8, lsl #2
@@ -897,7 +897,7 @@ _02319A44:
 _02319A54:
 	cmp r7, #0x30
 	bne _02319AC8
-	ldr r7, _02319F80 ; =0x02353538
+	ldr r7, _02319F80 ; =ov29_02353538
 	mov r6, #0
 _02319A64:
 	ldr r0, [r7]
@@ -931,11 +931,11 @@ _02319AC8:
 	bne _02319BB0
 	mov r8, #0
 _02319AD4:
-	ldr r0, _02319F7C ; =0x0235171C
+	ldr r0, _02319F7C ; =DIRECTIONS_XY
 	mov r2, r8, lsl #2
 	add r0, r0, r8, lsl #2
 	ldrsh r6, [r0, #2]
-	ldr r0, _02319F7C ; =0x0235171C
+	ldr r0, _02319F7C ; =DIRECTIONS_XY
 	ldrsh r1, [sl, #6]
 	ldrsh r7, [r0, r2]
 	ldrsh r0, [sl, #4]
@@ -1006,7 +1006,7 @@ _02319BB0:
 	mvn r0, #0
 	str r0, [sp, #0x28]
 _02319BF0:
-	ldr r0, _02319F80 ; =0x02353538
+	ldr r0, _02319F80 ; =ov29_02353538
 	ldr r1, [r0]
 	ldr r0, [sp, #0x20]
 	add r0, r1, r0, lsl #2
@@ -1022,7 +1022,7 @@ _02319BF0:
 	add r0, sl, #4
 	add r1, r1, #4
 	bl GetDirectionTowardsPosition
-	ldr r1, _02319F70 ; =0x0237CA18
+	ldr r1, _02319F70 ; =ov29_0237CA18
 	str r0, [sp, #0x1c]
 	ldrb r0, [r1, r0]
 	cmp r0, #0
@@ -1118,12 +1118,12 @@ _02319D50:
 	bl IsTargetInRange
 	cmp r0, #0
 	beq _02319DE8
-	ldr r1, _02319F70 ; =0x0237CA18
+	ldr r1, _02319F70 ; =ov29_0237CA18
 	ldr r0, [sp, #0x1c]
 	mov r2, #1
 	strb r2, [r1, r0]
 	mov r1, r0
-	ldr r0, _02319F74 ; =0x0237CA20
+	ldr r0, _02319F74 ; =ov29_0237CA20
 	strb r1, [r0, r5]
 	mov r0, sl
 	mov r1, sb
@@ -1133,10 +1133,10 @@ _02319D50:
 	ldr r2, [sp, #0x18]
 	mov r0, sl
 	bl ov29_0231A364
-	ldr r1, _02319F84 ; =0x0237CA28
+	ldr r1, _02319F84 ; =ov29_0237CA28
 	str r0, [r1, r5, lsl #2]
 	ldr r1, [sp, #0x18]
-	ldr r0, _02319F88 ; =0x0237CA48
+	ldr r0, _02319F88 ; =ov29_0237CA48
 	str r1, [r0, r5, lsl #2]
 	add r5, r5, #1
 _02319DE8:
@@ -1149,7 +1149,7 @@ _02319DE8:
 _02319E00:
 	cmp r7, #0x60
 	bne _02319E60
-	ldr r7, _02319F80 ; =0x02353538
+	ldr r7, _02319F80 ; =ov29_02353538
 	mov r6, #0
 _02319E10:
 	ldr r0, [r7]
@@ -1193,7 +1193,7 @@ _02319E88:
 	mov r0, #0
 	str r0, [sp, #0x14]
 	mov r4, r0
-	ldr r3, _02319F84 ; =0x0237CA28
+	ldr r3, _02319F84 ; =ov29_0237CA28
 	b _02319EC4
 _02319EB0:
 	ldr r2, [r3, r4, lsl #2]
@@ -1206,7 +1206,7 @@ _02319EC4:
 	blt _02319EB0
 	mov r6, #0
 	mov r2, r6
-	ldr r4, _02319F84 ; =0x0237CA28
+	ldr r4, _02319F84 ; =ov29_0237CA28
 	b _02319EF0
 _02319EDC:
 	ldr r3, [r4, r6, lsl #2]
@@ -1218,7 +1218,7 @@ _02319EF0:
 	cmp r6, r5
 	blt _02319EDC
 	mov r3, #0
-	ldr r2, _02319F84 ; =0x0237CA28
+	ldr r2, _02319F84 ; =ov29_0237CA28
 	b _02319F10
 _02319F04:
 	ldr r1, [r2, r3, lsl #2]
@@ -1229,7 +1229,7 @@ _02319F10:
 	blt _02319F04
 	bl DungeonRandInt
 	mov r3, #0
-	ldr r2, _02319F84 ; =0x0237CA28
+	ldr r2, _02319F84 ; =ov29_0237CA28
 	b _02319F38
 _02319F28:
 	ldr r1, [r2, r3, lsl #2]
@@ -1240,7 +1240,7 @@ _02319F38:
 	cmp r3, r5
 	blt _02319F28
 _02319F40:
-	ldr r1, _02319F74 ; =0x0237CA20
+	ldr r1, _02319F74 ; =ov29_0237CA20
 	ldr r0, [sp, #8]
 	mov r2, #1
 	strb r2, [r0]
@@ -1255,11 +1255,11 @@ _02319F64:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02319F6C: .word 0x00000273
-_02319F70: .word 0x0237CA18
-_02319F74: .word 0x0237CA20
-_02319F78: .word 0x0237CA28
-_02319F7C: .word 0x0235171C
-_02319F80: .word 0x02353538
-_02319F84: .word 0x0237CA28
-_02319F88: .word 0x0237CA48
+_02319F70: .word ov29_0237CA18
+_02319F74: .word ov29_0237CA20
+_02319F78: .word ov29_0237CA28
+_02319F7C: .word DIRECTIONS_XY
+_02319F80: .word ov29_02353538
+_02319F84: .word ov29_0237CA28
+_02319F88: .word ov29_0237CA48
 	arm_func_end AiConsiderMove

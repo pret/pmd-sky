@@ -16,7 +16,7 @@ ApplyMudTrapEffect: ; 0x022EE36C
 	mov ip, #1
 	mov r3, #3
 	bge _022EE3B8
-	ldr r0, _022EE42C ; =0x02352AEC
+	ldr r0, _022EE42C ; =ov29_02352AEC
 	str ip, [sp]
 	ldr r2, [r0]
 	mov r0, r5
@@ -27,7 +27,7 @@ ApplyMudTrapEffect: ; 0x022EE36C
 _022EE3B8:
 	cmp r0, #0x32
 	bge _022EE3E0
-	ldr r0, _022EE430 ; =0x02352AE8
+	ldr r0, _022EE430 ; =ov29_02352AE8
 	str ip, [sp]
 	ldr r2, [r0]
 	mov r0, r5
@@ -38,7 +38,7 @@ _022EE3B8:
 _022EE3E0:
 	cmp r0, #0x4b
 	bge _022EE408
-	ldr r0, _022EE42C ; =0x02352AEC
+	ldr r0, _022EE42C ; =ov29_02352AEC
 	str ip, [sp]
 	ldr r2, [r0]
 	mov r0, r5
@@ -47,7 +47,7 @@ _022EE3E0:
 	bl LowerDefensiveStat
 	b _022EE424
 _022EE408:
-	ldr r0, _022EE430 ; =0x02352AE8
+	ldr r0, _022EE430 ; =ov29_02352AE8
 	str ip, [sp]
 	ldr r2, [r0]
 	mov r0, r5
@@ -58,8 +58,8 @@ _022EE424:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022EE42C: .word 0x02352AEC
-_022EE430: .word 0x02352AE8
+_022EE42C: .word ov29_02352AEC
+_022EE430: .word ov29_02352AE8
 	arm_func_end ApplyMudTrapEffect
 
 	arm_func_start ApplyStickyTrapEffect
@@ -85,7 +85,7 @@ _022EE470:
 	mov r5, #0
 	cmp r0, #0
 	beq _022EE508
-	ldr fp, _022EE618 ; =0x020AF6B8
+	ldr fp, _022EE618 ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, r5
 _022EE48C:
 	mov r0, #6
@@ -171,7 +171,7 @@ _022EE574:
 	bl sub_0200FAEC
 	b _022EE5E8
 _022EE5C4:
-	ldr r1, _022EE620 ; =0x02353538
+	ldr r1, _022EE620 ; =ov29_02353538
 	sub r0, r0, #1
 	ldr r2, [r1]
 	add r1, r0, r0, lsl #3
@@ -195,9 +195,9 @@ _022EE610:
 	add sp, sp, #0xcc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EE618: .word 0x020AF6B8
+_022EE618: .word BAG_ITEMS_PTR_MIRROR
 _022EE61C: .word 0x00000E5F
-_022EE620: .word 0x02353538
+_022EE620: .word ov29_02353538
 _022EE624: .word 0x00000309
 _022EE628: .word 0x00000E5E
 	arm_func_end ApplyStickyTrapEffect
@@ -217,7 +217,7 @@ ApplyGrimyTrapEffect: ; 0x022EE62C
 	str r0, [sp, #4]
 	cmp r1, #0
 	beq _022EE6C0
-	ldr r0, _022EE808 ; =0x020AF6B8
+	ldr r0, _022EE808 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, r5
 	ldr r6, [r0]
 	mov lr, r5
@@ -253,7 +253,7 @@ _022EE6C0:
 	addne r0, sp, #8
 	addne r1, r2, #0x62
 	strne r1, [r0, r4, lsl #2]
-	ldr r0, _022EE80C ; =0x022C4434
+	ldr r0, _022EE80C ; =ov10_022C4434
 	strne r4, [sp, #4]
 	ldrsh r0, [r0]
 	addne r4, r4, #1
@@ -293,7 +293,7 @@ _022EE6FC:
 	bl sub_0200FA68
 	b _022EE7AC
 _022EE77C:
-	ldr r0, _022EE810 ; =0x02353538
+	ldr r0, _022EE810 ; =ov29_02353538
 	ldrb r2, [r8, #1]
 	ldr r3, [r0]
 	ldrh r1, [r8]
@@ -334,9 +334,9 @@ _022EE800:
 	add sp, sp, #0xd8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EE808: .word 0x020AF6B8
-_022EE80C: .word 0x022C4434
-_022EE810: .word 0x02353538
+_022EE808: .word BAG_ITEMS_PTR_MIRROR
+_022EE80C: .word ov10_022C4434
+_022EE810: .word ov29_02353538
 _022EE814: .word 0x00000E63
 _022EE818: .word 0x00000E61
 _022EE81C: .word 0x00000E62
@@ -351,7 +351,7 @@ ApplyPitfallTrapEffect: ; 0x022EE820
 	mov r5, r3
 	mov r4, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
-	ldr r0, _022EE980 ; =0x02353538
+	ldr r0, _022EE980 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -393,13 +393,13 @@ _022EE8AC:
 	mov r1, #0x4b
 	strb r2, [r5, #0x174]
 	bl ov29_022EA370
-	ldr r1, _022EE988 ; =0x022C44E4
+	ldr r1, _022EE988 ; =ov10_022C44E4
 	mov r0, r7
 	ldrsh r1, [r1]
 	mov r2, #0x11
 	mov r3, #0x254
 	bl ApplyDamageAndEffectsWrapper
-	ldr r0, _022EE980 ; =0x02353538
+	ldr r0, _022EE980 ; =ov29_02353538
 	mov r1, #2
 	ldr r0, [r0]
 	mov r4, #0
@@ -440,9 +440,9 @@ _022EE968:
 	bl ov29_022EF478
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022EE980: .word 0x02353538
+_022EE980: .word ov29_02353538
 _022EE984: .word 0x00000E64
-_022EE988: .word 0x022C44E4
+_022EE988: .word ov10_022C44E4
 _022EE98C: .word 0x00000E66
 _022EE990: .word 0x00000E65
 	arm_func_end ApplyPitfallTrapEffect
@@ -454,7 +454,7 @@ ApplySummonTrapEffect: ; 0x022EE994
 	mov r0, #3
 	mov r5, r1
 	bl DungeonRandInt
-	ldr r1, _022EEA20 ; =0x02353538
+	ldr r1, _022EEA20 ; =ov29_02353538
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
@@ -487,7 +487,7 @@ _022EEA10:
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022EEA20: .word 0x02353538
+_022EEA20: .word ov29_02353538
 _022EEA24: .word 0x00000E68
 _022EEA28: .word 0x0000030F
 _022EEA2C: .word 0x00000E67
@@ -568,7 +568,7 @@ ApplyPokemonTrapEffect: ; 0x022EEB18
 	mov r4, r1
 	mov r7, #0
 	bl GetVisibilityRange
-	ldr r1, _022EED1C ; =0x02353538
+	ldr r1, _022EED1C ; =ov29_02353538
 	mov r5, r0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
@@ -595,7 +595,7 @@ _022EEB60:
 	add r5, r0, r5
 	b _022EECE8
 _022EEB94:
-	ldr r0, _022EED1C ; =0x02353538
+	ldr r0, _022EED1C ; =ov29_02353538
 	mov r1, #0x1c
 	ldr r0, [r0]
 	add r0, r0, #0x2e8
@@ -635,7 +635,7 @@ _022EEBE4:
 	mov r8, #0
 	b _022EEC68
 _022EEC28:
-	ldr r0, _022EED1C ; =0x02353538
+	ldr r0, _022EED1C ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x790]
 	cmp r0, #0
@@ -707,7 +707,7 @@ _022EED14:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EED1C: .word 0x02353538
+_022EED1C: .word ov29_02353538
 _022EED20: .word 0x00000E6B
 _022EED24: .word 0x00000E6C
 _022EED28: .word 0x00000E6D
@@ -761,19 +761,19 @@ _022EEDC4:
 	mov r0, r5
 	bl ov29_022E56A0
 	ldrb r1, [r4, #0x4c]
-	ldr r0, _022EEE44 ; =0x0235171C
+	ldr r0, _022EEE44 ; =DIRECTIONS_XY
 	ldrsh r3, [r5, #4]
 	mov r1, r1, lsl #0x1d
 	mov r4, r1, lsr #0x1b
 	ldrsh r2, [r0, r4]
-	ldr r1, _022EEE48 ; =0x0235171E
+	ldr r1, _022EEE48 ; =ov29_0235171E
 	mov r0, r6
 	add r2, r3, r2
 	strh r2, [sp, #0xc]
 	ldrsh r2, [r1, r4]
 	ldrsh r3, [r5, #6]
 	mov r4, #1
-	ldr r1, _022EEE4C ; =0x02351844
+	ldr r1, _022EEE4C ; =ov29_02351844
 	add r2, r3, r2
 	strh r2, [sp, #0xe]
 	str r4, [sp]
@@ -788,9 +788,9 @@ _022EEE38:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022EEE40: .word 0x0000130F
-_022EEE44: .word 0x0235171C
-_022EEE48: .word 0x0235171E
-_022EEE4C: .word 0x02351844
+_022EEE44: .word DIRECTIONS_XY
+_022EEE48: .word ov29_0235171E
+_022EEE4C: .word ov29_02351844
 	arm_func_end ApplyTripTrapEffect
 
 	arm_func_start ApplyStealthRockTrapEffect
@@ -808,7 +808,7 @@ ApplyStealthRockTrapEffect: ; 0x022EEE50
 	ldrsh r1, [r5, #0x16]
 	ldr r0, _022EEEDC ; =0x000003E7
 	add r2, r2, r1
-	ldr r1, _022EEEE0 ; =0x022C4770
+	ldr r1, _022EEEE0 ; =ov10_022C4770
 	cmp r2, r0
 	movgt r2, r0
 	ldr r1, [r1]
@@ -833,7 +833,7 @@ _022EEEBC:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022EEEDC: .word 0x000003E7
-_022EEEE0: .word 0x022C4770
+_022EEEE0: .word ov10_022C4770
 _022EEEE4: .word 0x0000026D
 _022EEEE8: .word 0x00000E6E
 	arm_func_end ApplyStealthRockTrapEffect
@@ -844,7 +844,7 @@ ApplyToxicSpikesTrapEffect: ; 0x022EEEEC
 	movs r4, r1
 	mov r5, r0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r1, _022EEF3C ; =0x022C45CC
+	ldr r1, _022EEF3C ; =ov10_022C45CC
 	mov r0, r4
 	ldrsh r1, [r1]
 	mov r2, #0x15
@@ -861,7 +861,7 @@ ApplyToxicSpikesTrapEffect: ; 0x022EEEEC
 	bl TryInflictPoisonedStatus
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022EEF3C: .word 0x022C45CC
+_022EEF3C: .word ov10_022C45CC
 	arm_func_end ApplyToxicSpikesTrapEffect
 
 	arm_func_start ApplyRandomTrapEffect
@@ -875,7 +875,7 @@ ApplyRandomTrapEffect: ; 0x022EEF40
 	ldr r8, [sp, #0x88]
 	beq _022EF064
 	bl ov29_022E7A8C
-	ldr r1, _022EF06C ; =0x022C4B18
+	ldr r1, _022EF06C ; =ov10_022C4B18
 	mov r4, r0
 	ldrb r0, [r1, r4]
 	cmp r0, #0
@@ -901,7 +901,7 @@ _022EEFB0:
 	str sb, [sp, #0x14]
 	add r7, r5, #1
 _022EEFC4:
-	ldr r0, _022EF070 ; =0x02353538
+	ldr r0, _022EF070 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -948,8 +948,8 @@ _022EF064:
 	add sp, sp, #0x64
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EF06C: .word 0x022C4B18
-_022EF070: .word 0x02353538
+_022EF06C: .word ov10_022C4B18
+_022EF070: .word ov29_02353538
 	arm_func_end ApplyRandomTrapEffect
 
 	arm_func_start ApplyGrudgeTrapEffect
@@ -971,7 +971,7 @@ ApplyGrudgeTrapEffect: ; 0x022EF074
 	bl ov29_022E56D4
 _022EF0B0:
 	mov r7, #0
-	ldr r4, _022EF14C ; =0x02353538
+	ldr r4, _022EF14C ; =ov29_02353538
 	mov r8, r7
 	mov r5, #1
 	mov r6, r7
@@ -1012,7 +1012,7 @@ _022EF11C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _022EF148: .word 0x0000030F
-_022EF14C: .word 0x02353538
+_022EF14C: .word ov29_02353538
 _022EF150: .word 0x00000E6F
 	arm_func_end ApplyGrudgeTrapEffect
 
@@ -1122,7 +1122,7 @@ _022EF2A4:
 _022EF2C4:
 	cmp r5, #0
 	beq _022EF454
-	ldr r1, _022EF460 ; =0x022C4720
+	ldr r1, _022EF460 ; =ov10_022C4720
 	mov r0, r5
 	mov r2, #1
 	bl CalcStatusDuration
@@ -1182,7 +1182,7 @@ _022EF388:
 _022EF398:
 	cmp r5, #0
 	beq _022EF454
-	ldr r0, _022EF468 ; =0x022C45C8
+	ldr r0, _022EF468 ; =ov10_022C45C8
 	ldr r3, _022EF46C ; =0x00000252
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1204,7 +1204,7 @@ _022EF3D0:
 _022EF3E4:
 	cmp r5, #0
 	beq _022EF454
-	ldr r0, _022EF470 ; =0x022C4418
+	ldr r0, _022EF470 ; =ov10_022C4418
 	ldr r3, _022EF474 ; =0x00000245
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1240,11 +1240,11 @@ _022EF454:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022EF460: .word 0x022C4720
+_022EF460: .word ov10_022C4720
 _022EF464: .word 0x00000251
-_022EF468: .word 0x022C45C8
+_022EF468: .word ov10_022C45C8
 _022EF46C: .word 0x00000252
-_022EF470: .word 0x022C4418
+_022EF470: .word ov10_022C4418
 _022EF474: .word 0x00000245
 	arm_func_end ApplyTrapEffect
 
@@ -1316,7 +1316,7 @@ _022EF538:
 	bl MewSpawnCheck
 	cmp r0, #0
 	beq _022EF5B4
-	ldr r1, _022EF5D4 ; =0x0235171C
+	ldr r1, _022EF5D4 ; =DIRECTIONS_XY
 	mov r0, #0
 	mov r2, r8, lsl #2
 	ldrsh r3, [r1, r2]
@@ -1350,7 +1350,7 @@ _022EF5BC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022EF5D0: .word 0x0000017B
-_022EF5D4: .word 0x0235171C
+_022EF5D4: .word DIRECTIONS_XY
 	arm_func_end ov29_022EF4B4
 
 	arm_func_start RevealTrapsNearby
@@ -1394,7 +1394,7 @@ _022EF648:
 	ble _022EF614
 	b _022EF6C4
 _022EF65C:
-	ldr r0, _022EF6F4 ; =0x02353538
+	ldr r0, _022EF6F4 ; =ov29_02353538
 	mov r1, #0x1c
 	ldr r0, [r0]
 	add r0, r0, #0x2e8
@@ -1439,7 +1439,7 @@ _022EF6E4:
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022EF6F4: .word 0x02353538
+_022EF6F4: .word ov29_02353538
 _022EF6F8: .word 0x00000E02
 _022EF6FC: .word 0x00000E03
 	arm_func_end RevealTrapsNearby
@@ -1469,10 +1469,10 @@ ov29_022EF738: ; 0x022EF738
 	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	beq _022EF780
-	ldr r0, _022EF798 ; =0x02353538
+	ldr r0, _022EF798 ; =ov29_02353538
 	mov r1, #0xc
 	ldr r0, [r0]
-	ldr r2, _022EF79C ; =0x022C6C7A
+	ldr r2, _022EF79C ; =ov10_022C6C7A
 	add r0, r0, #0x4000
 	ldrb r3, [r0, #0xda]
 	smulbb r1, r3, r1
@@ -1484,13 +1484,13 @@ ov29_022EF738: ; 0x022EF738
 	streqb r1, [r0, #0xca]
 	ldmia sp!, {r3, pc}
 _022EF780:
-	ldr r0, _022EF798 ; =0x02353538
+	ldr r0, _022EF798 ; =ov29_02353538
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	strb r1, [r0, #0xca]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022EF798: .word 0x02353538
-_022EF79C: .word 0x022C6C7A
+_022EF798: .word ov29_02353538
+_022EF79C: .word ov10_022C6C7A
 	arm_func_end ov29_022EF738

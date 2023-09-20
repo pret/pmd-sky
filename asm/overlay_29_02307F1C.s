@@ -37,7 +37,7 @@ TryTriggerMonsterHouse: ; 0x02307F4C
 	ldrh r0, [r0]
 	tst r0, #0x40
 	beq _02308268
-	ldr r0, _02308270 ; =0x02353538
+	ldr r0, _02308270 ; =ov29_02353538
 	ldr r2, [r0]
 	ldrb r1, [r2, #0x793]
 	cmp r1, #0
@@ -151,8 +151,8 @@ _0230811C:
 	cmp sb, sl
 	blt _023080B4
 _02308124:
-	ldr r0, _02308274 ; =0x022C4560
-	ldr r1, _02308278 ; =0x022C4660
+	ldr r0, _02308274 ; =ov10_022C4560
+	ldr r1, _02308278 ; =ov10_022C4660
 	ldrsh r0, [r0]
 	ldrsh r1, [r1]
 	bl DungeonRandRange
@@ -246,7 +246,7 @@ _02308268:
 	add sp, sp, #0x1a0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02308270: .word 0x02353538
-_02308274: .word 0x022C4560
-_02308278: .word 0x022C4660
+_02308270: .word ov29_02353538
+_02308274: .word ov10_022C4560
+_02308278: .word ov10_022C4660
 	arm_func_end TryTriggerMonsterHouse

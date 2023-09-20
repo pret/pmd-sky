@@ -30,3 +30,4 @@
 .public UpdateMinimap
 .public RemoveGroundItem
 .public sub_020018D0
+.public DIRECTIONS_XY

@@ -33,7 +33,7 @@ ov29_023201D0: ; 0x023201D0
 	mov r5, #1
 	bl SubstitutePlaceholderStringTags
 	ldrh r0, [sl, #4]
-	ldr r1, _02320330 ; =0x0235171C
+	ldr r1, _02320330 ; =DIRECTIONS_XY
 	mov r2, r4, lsl #2
 	strh r0, [sp]
 	ldrh r3, [sl, #6]
@@ -116,7 +116,7 @@ _02320328:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02320330: .word 0x0235171C
+_02320330: .word DIRECTIONS_XY
 _02320334: .word 0x0235171E
 _02320338: .word 0x00000212
 	arm_func_end ov29_023201D0

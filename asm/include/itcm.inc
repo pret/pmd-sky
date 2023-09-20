@@ -170,3 +170,4 @@
 .public TRIG_TABLE
 .public TryAddTargetToAiTargetList
 .public UpdateAiTargetPos
+.public DIRECTIONS_XY

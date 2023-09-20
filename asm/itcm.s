@@ -2836,7 +2836,7 @@ _01FFA68C:
 	strh r1, [sp, #0x52]
 	strh r0, [sp, #0x54]
 	add sl, sp, #0x51
-	ldr r6, _01FFB2B8 ; =0x0235171C
+	ldr r6, _01FFB2B8 ; =DIRECTIONS_XY
 	b _01FFA74C
 _01FFA6F0:
 	mov r1, r7, lsl #2
@@ -2874,7 +2874,7 @@ _01FFA754:
 	mov r1, #6
 	strb r1, [sb, #0x7c]
 	mov r3, r0, lsl #2
-	ldr r0, _01FFB2B8 ; =0x0235171C
+	ldr r0, _01FFB2B8 ; =DIRECTIONS_XY
 	ldrsh r5, [r4, #4]
 	ldrsh r2, [r0, r3]
 	ldr r1, _01FFB2BC ; =0x0235171E
@@ -3501,7 +3501,7 @@ _01FFB040:
 	strb r0, [sb, #0x151]
 	b _01FFB2A4
 _01FFB080:
-	ldr r0, _01FFB2B8 ; =0x0235171C
+	ldr r0, _01FFB2B8 ; =DIRECTIONS_XY
 	mov r2, r7, lsl #2
 	ldrsh r1, [r4, #4]
 	ldrsh r0, [r0, r2]
@@ -3654,7 +3654,7 @@ _01FFB2A4:
 _01FFB2AC: .word 0x000003E7
 _01FFB2B0: .word 0x000F423F
 _01FFB2B4: .word 0x02353538
-_01FFB2B8: .word 0x0235171C
+_01FFB2B8: .word DIRECTIONS_XY
 _01FFB2BC: .word 0x0235171E
 _01FFB2C0: .word 0xFFF0BDC1
 _01FFB2C4: .word 0x0235177C
@@ -3725,7 +3725,7 @@ _01FFB38C:
 	beq _01FFB3E0
 	mov r0, #3
 	strb r0, [sb, #0x7c]
-	ldr r0, _01FFB624 ; =0x0235171C
+	ldr r0, _01FFB624 ; =DIRECTIONS_XY
 	mov r3, r8, lsl #2
 	ldrsh r2, [r0, r3]
 	ldrsh r4, [sl, #4]
@@ -3761,7 +3761,7 @@ _01FFB3F0:
 	mov r1, #6
 	strb r1, [sb, #0x7c]
 	mov r3, r0, lsl #2
-	ldr r0, _01FFB624 ; =0x0235171C
+	ldr r0, _01FFB624 ; =DIRECTIONS_XY
 	ldrsh r4, [sl, #4]
 	ldrsh r2, [r0, r3]
 	ldr r1, _01FFB628 ; =0x0235171E
@@ -3784,7 +3784,7 @@ _01FFB460:
 	mov r1, #6
 	strb r1, [sb, #0x7c]
 	mov r3, r0, lsl #2
-	ldr r0, _01FFB624 ; =0x0235171C
+	ldr r0, _01FFB624 ; =DIRECTIONS_XY
 	ldrsh r4, [sl, #4]
 	ldrsh r2, [r0, r3]
 	ldr r1, _01FFB628 ; =0x0235171E
@@ -3838,7 +3838,7 @@ _01FFB520:
 	mov r8, r0
 	mov r5, #0
 	add fp, sp, #0
-	ldr r4, _01FFB624 ; =0x0235171C
+	ldr r4, _01FFB624 ; =DIRECTIONS_XY
 	b _01FFB5C8
 _01FFB554:
 	and r8, r8, #7
@@ -3883,7 +3883,7 @@ _01FFB5D8:
 	mov r1, #6
 	strb r1, [sb, #0x7c]
 	mov r3, r0, lsl #2
-	ldr r0, _01FFB624 ; =0x0235171C
+	ldr r0, _01FFB624 ; =DIRECTIONS_XY
 	ldrsh r4, [sl, #4]
 	ldrsh r2, [r0, r3]
 	ldr r1, _01FFB628 ; =0x0235171E
@@ -3898,7 +3898,7 @@ _01FFB5D8:
 	.align 2, 0
 _01FFB61C: .word 0x02353538
 _01FFB620: .word 0x0235177C
-_01FFB624: .word 0x0235171C
+_01FFB624: .word DIRECTIONS_XY
 _01FFB628: .word 0x0235171E
 	arm_func_end CalculateAiTargetPos
 

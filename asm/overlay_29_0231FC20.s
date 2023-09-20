@@ -46,7 +46,7 @@ _0231FC88:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0231FCB4:
-	ldr r0, _0231FDD4 ; =0x02353538
+	ldr r0, _0231FDD4 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -65,7 +65,7 @@ _0231FCE4:
 	mov r1, #6
 	mov r2, r5
 	bl ov29_023049A8
-	ldr r1, _0231FDDC ; =0x0235171C
+	ldr r1, _0231FDDC ; =DIRECTIONS_XY
 	mov r2, r5, lsl #2
 	add r0, r1, r5, lsl #2
 	mov r5, #0
@@ -122,16 +122,16 @@ _0231FDB4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0231FDD0: .word 0x00000E56
-_0231FDD4: .word 0x02353538
+_0231FDD4: .word ov29_02353538
 _0231FDD8: .word 0x00000E55
-_0231FDDC: .word 0x0235171C
+_0231FDDC: .word DIRECTIONS_XY
 	arm_func_end TryPounce
 
 	arm_func_start TryBlowAway
 TryBlowAway: ; 0x0231FDE0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
-	ldr r3, _02320154 ; =0x02353538
+	ldr r3, _02320154 ; =ov29_02353538
 	mov sl, r0
 	ldr r0, [r3]
 	mov sb, r1
@@ -210,7 +210,7 @@ _0231FED4:
 	mov r0, sl
 	mov r1, sb
 	bl LogMessageByIdWithPopupCheckUserTarget
-	ldr r1, _0232016C ; =0x0235171C
+	ldr r1, _0232016C ; =DIRECTIONS_XY
 	mov r2, r4, lsl #2
 	add r0, r1, r4, lsl #2
 	ldrsh r8, [r1, r2]
@@ -298,7 +298,7 @@ _0232003C:
 	bl ov29_0232033C
 	mov r3, #0
 	str r3, [sp]
-	ldr r0, _02320170 ; =0x022C4570
+	ldr r0, _02320170 ; =ov10_022C4570
 	str r3, [sp, #4]
 	mov r1, #0x258
 	str r1, [sp, #8]
@@ -337,7 +337,7 @@ _0232009C:
 	bl ov29_02307BDC
 	mov r3, #0
 	str r3, [sp]
-	ldr r0, _02320170 ; =0x022C4570
+	ldr r0, _02320170 ; =ov10_022C4570
 	ldr r1, _02320178 ; =0x00000259
 	str r3, [sp, #4]
 	str r1, [sp, #8]
@@ -366,14 +366,14 @@ _0232014C:
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02320154: .word 0x02353538
+_02320154: .word ov29_02353538
 _02320158: .word 0x00000B97
 _0232015C: .word 0x00000B98
 _02320160: .word 0x00000B99
 _02320164: .word 0x00000212
 _02320168: .word 0x00000B96
-_0232016C: .word 0x0235171C
-_02320170: .word 0x022C4570
+_0232016C: .word DIRECTIONS_XY
+_02320170: .word ov10_022C4570
 _02320174: .word 0x00000163
 _02320178: .word 0x00000259
 	arm_func_end TryBlowAway
