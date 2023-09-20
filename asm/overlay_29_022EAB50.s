@@ -164,7 +164,7 @@ MusicTableIdxToMusicId: ; 0x022EAD00
 	stmdb sp!, {r4, lr}
 	mov r1, #0xaa
 	bl __divsi3
-	ldr r0, _022EAD5C ; =ov10_022C555C
+	ldr r0, _022EAD5C ; =MUSIC_ID_TABLE
 	mov r1, r1, lsl #1
 	ldrh r4, [r0, r1]
 	tst r4, #0x8000
@@ -178,16 +178,16 @@ MusicTableIdxToMusicId: ; 0x022EAD00
 	ldr r1, _022EAD60 ; =0x00007FFF
 	mov r0, r0, lsl #0x10
 	and r1, r4, r1
-	ldr r3, _022EAD64 ; =ov10_022C51FC
+	ldr r3, _022EAD64 ; =RANDOM_MUSIC_ID_TABLE
 	mov r1, r1, lsl #0x10
 	mov r2, r0, asr #0xf
 	add r0, r3, r1, lsr #13
 	ldrh r0, [r2, r0]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EAD5C: .word ov10_022C555C
+_022EAD5C: .word MUSIC_ID_TABLE
 _022EAD60: .word 0x00007FFF
-_022EAD64: .word ov10_022C51FC
+_022EAD64: .word RANDOM_MUSIC_ID_TABLE
 	arm_func_end MusicTableIdxToMusicId
 
 	arm_func_start ov29_022EAD68
@@ -215,7 +215,7 @@ _022EADAC:
 	ldr r0, _022EAE0C ; =ov29_02353538
 	mov r1, #0xc
 	ldr r0, [r0]
-	ldr r2, _022EAE10 ; =ov10_022C6C70
+	ldr r2, _022EAE10 ; =FIXED_ROOM_PROPERTIES_TABLE
 	add r0, r0, #0x4000
 	ldrb r3, [r0, #0xda]
 	smulbb r1, r3, r1
@@ -239,7 +239,7 @@ _022EAE00:
 	.align 2, 0
 _022EAE08: .word 0x00001410
 _022EAE0C: .word ov29_02353538
-_022EAE10: .word ov10_022C6C70
+_022EAE10: .word FIXED_ROOM_PROPERTIES_TABLE
 	arm_func_end ov29_022EAD68
 
 	arm_func_start ChangeDungeonMusic
@@ -881,13 +881,13 @@ GetItemAction: ; 0x022EB5D8
 	moveq r0, #0x35
 	ldmeqia sp!, {r3, pc}
 	bl GetItemCategoryVeneer
-	ldr r1, _022EB608 ; =ov29_02352010
+	ldr r1, _022EB608 ; =ITEM_CATEGORY_ACTIONS
 	mov r0, r0, lsl #1
 	ldrh r0, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022EB604: .word 0x0000016B
-_022EB608: .word ov29_02352010
+_022EB608: .word ITEM_CATEGORY_ACTIONS
 	arm_func_end GetItemAction
 
 	arm_func_start RemoveUsedItem
@@ -1539,7 +1539,7 @@ _022EBD80:
 	strb r1, [r6, #0x14e]
 	bl CalcSpeedStageWrapper
 	ldr r1, _022EC2FC ; =ov29_02353538
-	ldr r3, _022EC300 ; =ov29_02352284
+	ldr r3, _022EC300 ; =FRACTIONAL_TURN_SEQUENCE
 	ldr r2, [r1]
 	mov r1, #0x32
 	add r2, r2, #0x700
@@ -1730,7 +1730,7 @@ _022EC094:
 	mov sb, #0
 	mov r5, sb
 	mov r7, sb
-	ldr r6, _022EC300 ; =ov29_02352284
+	ldr r6, _022EC300 ; =FRACTIONAL_TURN_SEQUENCE
 	mov fp, #0x32
 	ldr r4, _022EC2FC ; =ov29_02353538
 	b _022EC1C0
@@ -1893,7 +1893,7 @@ _022EC2F4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022EC2FC: .word ov29_02353538
-_022EC300: .word ov29_02352284
+_022EC300: .word FRACTIONAL_TURN_SEQUENCE
 _022EC304: .word ov29_023522B6
 	arm_func_end RunFractionalTurn
 
@@ -1910,7 +1910,7 @@ RunLeaderTurn: ; 0x022EC308
 	mov r0, r4
 	bl CalcSpeedStageWrapper
 	ldr r1, _022EC600 ; =ov29_02353538
-	ldr r3, _022EC604 ; =ov29_02352284
+	ldr r3, _022EC604 ; =FRACTIONAL_TURN_SEQUENCE
 	ldr r2, [r1]
 	mov r1, #0x32
 	add r2, r2, #0x700
@@ -2100,5 +2100,5 @@ _022EC5DC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022EC600: .word ov29_02353538
-_022EC604: .word ov29_02352284
+_022EC604: .word FRACTIONAL_TURN_SEQUENCE
 	arm_func_end RunLeaderTurn

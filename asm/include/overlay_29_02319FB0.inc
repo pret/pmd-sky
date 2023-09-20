@@ -36,9 +36,8 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MonsterHasNegativeStatus
 .public MonsterIsType
+.public NATURAL_GIFT_ITEM_TABLE
 .public ov10_022C459C
-.public ov10_022C48DC
-.public ov10_022C5130
 .public ov29_022E3ED0
 .public ov29_022E4110
 .public ov29_022EB4E8
@@ -67,3 +66,4 @@
 .public TryActivateTruant
 .public UpdateAiTargetPos
 .public UpdateMovePp
+.public WEATHER_BALL_TYPE_TABLE

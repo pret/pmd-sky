@@ -233,7 +233,7 @@ _0231F8BC:
 	ldrsh r1, [sl, #4]
 	ldrsh r0, [sl, #6]
 	mov r7, #0
-	ldr r5, _0231FBF0 ; =ov29_02351844
+	ldr r5, _0231FBF0 ; =DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 	mov r8, r7
 	strh r1, [sp, #0x14]
 	strh r0, [sp, #0x16]
@@ -455,7 +455,7 @@ _0231FBDC:
 _0231FBE4: .word ov29_02353538
 _0231FBE8: .word 0x000013BC
 _0231FBEC: .word 0x00000BCF
-_0231FBF0: .word ov29_02351844
+_0231FBF0: .word DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 _0231FBF4: .word 0x00000222
 _0231FBF8: .word 0x00000BD1
 	arm_func_end ov29_0231F6E4

@@ -16,7 +16,7 @@ ApplyMudTrapEffect: ; 0x022EE36C
 	mov ip, #1
 	mov r3, #3
 	bge _022EE3B8
-	ldr r0, _022EE42C ; =ov29_02352AEC
+	ldr r0, _022EE42C ; =ATK_STAT_IDX
 	str ip, [sp]
 	ldr r2, [r0]
 	mov r0, r5
@@ -27,7 +27,7 @@ ApplyMudTrapEffect: ; 0x022EE36C
 _022EE3B8:
 	cmp r0, #0x32
 	bge _022EE3E0
-	ldr r0, _022EE430 ; =ov29_02352AE8
+	ldr r0, _022EE430 ; =SPATK_STAT_IDX
 	str ip, [sp]
 	ldr r2, [r0]
 	mov r0, r5
@@ -38,7 +38,7 @@ _022EE3B8:
 _022EE3E0:
 	cmp r0, #0x4b
 	bge _022EE408
-	ldr r0, _022EE42C ; =ov29_02352AEC
+	ldr r0, _022EE42C ; =ATK_STAT_IDX
 	str ip, [sp]
 	ldr r2, [r0]
 	mov r0, r5
@@ -47,7 +47,7 @@ _022EE3E0:
 	bl LowerDefensiveStat
 	b _022EE424
 _022EE408:
-	ldr r0, _022EE430 ; =ov29_02352AE8
+	ldr r0, _022EE430 ; =SPATK_STAT_IDX
 	str ip, [sp]
 	ldr r2, [r0]
 	mov r0, r5
@@ -58,8 +58,8 @@ _022EE424:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022EE42C: .word ov29_02352AEC
-_022EE430: .word ov29_02352AE8
+_022EE42C: .word ATK_STAT_IDX
+_022EE430: .word SPATK_STAT_IDX
 	arm_func_end ApplyMudTrapEffect
 
 	arm_func_start ApplyStickyTrapEffect
@@ -773,7 +773,7 @@ _022EEDC4:
 	ldrsh r2, [r1, r4]
 	ldrsh r3, [r5, #6]
 	mov r4, #1
-	ldr r1, _022EEE4C ; =ov29_02351844
+	ldr r1, _022EEE4C ; =DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 	add r2, r3, r2
 	strh r2, [sp, #0xe]
 	str r4, [sp]
@@ -790,7 +790,7 @@ _022EEE38:
 _022EEE40: .word 0x0000130F
 _022EEE44: .word DIRECTIONS_XY
 _022EEE48: .word ov29_0235171E
-_022EEE4C: .word ov29_02351844
+_022EEE4C: .word DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 	arm_func_end ApplyTripTrapEffect
 
 	arm_func_start ApplyStealthRockTrapEffect
@@ -1122,7 +1122,7 @@ _022EF2A4:
 _022EF2C4:
 	cmp r5, #0
 	beq _022EF454
-	ldr r1, _022EF460 ; =ov10_022C4720
+	ldr r1, _022EF460 ; =SLEEP_TURN_RANGE
 	mov r0, r5
 	mov r2, #1
 	bl CalcStatusDuration
@@ -1240,7 +1240,7 @@ _022EF454:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022EF460: .word ov10_022C4720
+_022EF460: .word SLEEP_TURN_RANGE
 _022EF464: .word 0x00000251
 _022EF468: .word ov10_022C45C8
 _022EF46C: .word 0x00000252

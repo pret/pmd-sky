@@ -1103,7 +1103,7 @@ GetEntityNaturalGiftInfo: ; 0x0231AE90
 	cmpne r0, #0
 	beq _0231AF00
 	mov ip, #0
-	ldr r3, _0231AF08 ; =ov10_022C5130
+	ldr r3, _0231AF08 ; =NATURAL_GIFT_ITEM_TABLE
 	mov lr, ip
 	mov r1, #6
 _0231AEC0:
@@ -1121,25 +1121,25 @@ _0231AEC0:
 	b _0231AEC0
 _0231AEF0:
 	cmp ip, #0
-	ldrne r0, _0231AF08 ; =ov10_022C5130
+	ldrne r0, _0231AF08 ; =NATURAL_GIFT_ITEM_TABLE
 	addne r0, r0, r5
 	ldmneia sp!, {r3, r4, r5, pc}
 _0231AF00:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0231AF08: .word ov10_022C5130
+_0231AF08: .word NATURAL_GIFT_ITEM_TABLE
 	arm_func_end GetEntityNaturalGiftInfo
 
 	arm_func_start GetEntityWeatherBallType
 GetEntityWeatherBallType: ; 0x0231AF0C
 	stmdb sp!, {r3, lr}
 	bl GetApparentWeather
-	ldr r1, _0231AF20 ; =ov10_022C48DC
+	ldr r1, _0231AF20 ; =WEATHER_BALL_TYPE_TABLE
 	ldrb r0, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0231AF20: .word ov10_022C48DC
+_0231AF20: .word WEATHER_BALL_TYPE_TABLE
 	arm_func_end GetEntityWeatherBallType
 
 	arm_func_start ov29_0231AF24

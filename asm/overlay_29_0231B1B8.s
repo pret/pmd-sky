@@ -912,7 +912,7 @@ _0231BE50:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x52
 	bl InitMove
-	ldr r0, _0231C704 ; =ov10_022C4624
+	ldr r0, _0231C704 ; =STICK_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -927,7 +927,7 @@ _0231BE88:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x4a
 	bl InitMove
-	ldr r0, _0231C708 ; =ov10_022C46E8
+	ldr r0, _0231C708 ; =IRON_THORN_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -942,7 +942,7 @@ _0231BEC0:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x42
 	bl InitMove
-	ldr r0, _0231C70C ; =ov10_022C46E4
+	ldr r0, _0231C70C ; =SILVER_SPIKE_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -957,7 +957,7 @@ _0231BEF8:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x3a
 	bl InitMove
-	ldr r0, _0231C710 ; =ov10_022C46E0
+	ldr r0, _0231C710 ; =GOLD_FANG_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -972,7 +972,7 @@ _0231BF30:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x32
 	bl InitMove
-	ldr r0, _0231C714 ; =ov10_022C46DC
+	ldr r0, _0231C714 ; =CACNEA_SPIKE_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -987,7 +987,7 @@ _0231BF68:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x2a
 	bl InitMove
-	ldr r0, _0231C718 ; =ov10_022C46D8
+	ldr r0, _0231C718 ; =CORSOLA_TWIG_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -1001,7 +1001,7 @@ _0231BF68:
 _0231BFA0:
 	mov r4, #0
 	str r4, [sp]
-	ldr r0, _0231C71C ; =ov10_022C46B4
+	ldr r0, _0231C71C ; =GEO_PEBBLE_DAMAGE
 	ldr r1, _0231C720 ; =0x0000024F
 	str r4, [sp, #4]
 	str r1, [sp, #8]
@@ -1017,7 +1017,7 @@ _0231BFA0:
 _0231BFDC:
 	mov r4, #0
 	str r4, [sp]
-	ldr r0, _0231C724 ; =ov10_022C46B8
+	ldr r0, _0231C724 ; =GRAVELEROCK_DAMAGE
 	ldr r1, _0231C720 ; =0x0000024F
 	str r4, [sp, #4]
 	str r1, [sp, #8]
@@ -1034,7 +1034,7 @@ _0231C018:
 	ldr r1, _0231C700 ; =0x00000195
 	add r0, sp, #0x22
 	bl InitMove
-	ldr r0, _0231C728 ; =ov10_022C44D0
+	ldr r0, _0231C728 ; =GOLD_THORN_POWER
 	mov r4, #0x100
 	ldrsh r3, [r0]
 	str r4, [sp]
@@ -1048,7 +1048,7 @@ _0231C018:
 _0231C050:
 	mov r4, #0
 	str r4, [sp]
-	ldr r0, _0231C72C ; =ov10_022C46BC
+	ldr r0, _0231C72C ; =RARE_FOSSIL_DAMAGE
 	ldr r1, _0231C720 ; =0x0000024F
 	str r4, [sp, #4]
 	str r1, [sp, #8]
@@ -1069,8 +1069,8 @@ _0231C08C:
 	bl EndNegativeStatusConditionWrapper
 	b _0231CB14
 _0231C0A4:
-	ldr r1, _0231C730 ; =ov10_022C45EC
-	ldr r0, _0231C734 ; =ov10_022C44F4
+	ldr r1, _0231C730 ; =ORAN_BERRY_HP_RESTORATION
+	ldr r0, _0231C734 ; =ORAN_BERRY_FULL_HP_BOOST
 	ldrsh r2, [r1]
 	ldrsh r3, [r0]
 	mov r4, #1
@@ -1080,8 +1080,8 @@ _0231C0A4:
 	bl TryIncreaseHp
 	b _0231CB14
 _0231C0CC:
-	ldr r1, _0231C738 ; =ov10_022C4478
-	ldr r0, _0231C73C ; =ov10_022C45F4
+	ldr r1, _0231C738 ; =SITRUS_BERRY_HP_RESTORATION
+	ldr r0, _0231C73C ; =SITRUS_BERRY_FULL_HP_BOOST
 	ldrsh r2, [r1]
 	ldrsh r3, [r0]
 	mov r4, #1
@@ -1091,7 +1091,7 @@ _0231C0CC:
 	bl TryIncreaseHp
 	b _0231CB14
 _0231C0F4:
-	ldr r0, _0231C740 ; =ov10_022C44F8
+	ldr r0, _0231C740 ; =LIFE_SEED_HP_BOOST
 	mov r4, #1
 	ldrsh r3, [r0]
 	mov r0, r8
@@ -1150,7 +1150,7 @@ _0231C1A4:
 	bl TryWarp
 	b _0231CB14
 _0231C1BC:
-	ldr r1, _0231C744 ; =ov10_022C4720
+	ldr r1, _0231C744 ; =SLEEP_TURN_RANGE
 	mov r0, r7
 	mov r2, #1
 	bl CalcStatusDuration
@@ -1219,28 +1219,28 @@ _0231C28C:
 	bl RestoreAllMovePP
 	b _0231CB14
 _0231C2A4:
-	ldr r1, _0231C750 ; =ov10_022C4420
+	ldr r1, _0231C750 ; =PROTEIN_STAT_BOOST
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
 	bl ApplyProteinEffect
 	b _0231CB14
 _0231C2BC:
-	ldr r1, _0231C754 ; =ov10_022C46CC
+	ldr r1, _0231C754 ; =CALCIUM_STAT_BOOST
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
 	bl ApplyCalciumEffect
 	b _0231CB14
 _0231C2D4:
-	ldr r1, _0231C758 ; =ov10_022C46C8
+	ldr r1, _0231C758 ; =IRON_STAT_BOOST
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
 	bl ApplyIronEffect
 	b _0231CB14
 _0231C2EC:
-	ldr r1, _0231C75C ; =ov10_022C46C4
+	ldr r1, _0231C75C ; =ZINC_STAT_BOOST
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
@@ -1538,29 +1538,29 @@ _0231C6F4: .word 0x000001A2
 _0231C6F8: .word 0x000001A6
 _0231C6FC: .word 0x000001AA
 _0231C700: .word 0x00000195
-_0231C704: .word ov10_022C4624
-_0231C708: .word ov10_022C46E8
-_0231C70C: .word ov10_022C46E4
-_0231C710: .word ov10_022C46E0
-_0231C714: .word ov10_022C46DC
-_0231C718: .word ov10_022C46D8
-_0231C71C: .word ov10_022C46B4
+_0231C704: .word STICK_POWER
+_0231C708: .word IRON_THORN_POWER
+_0231C70C: .word SILVER_SPIKE_POWER
+_0231C710: .word GOLD_FANG_POWER
+_0231C714: .word CACNEA_SPIKE_POWER
+_0231C718: .word CORSOLA_TWIG_POWER
+_0231C71C: .word GEO_PEBBLE_DAMAGE
 _0231C720: .word 0x0000024F
-_0231C724: .word ov10_022C46B8
-_0231C728: .word ov10_022C44D0
-_0231C72C: .word ov10_022C46BC
-_0231C730: .word ov10_022C45EC
-_0231C734: .word ov10_022C44F4
-_0231C738: .word ov10_022C4478
-_0231C73C: .word ov10_022C45F4
-_0231C740: .word ov10_022C44F8
-_0231C744: .word ov10_022C4720
+_0231C724: .word GRAVELEROCK_DAMAGE
+_0231C728: .word GOLD_THORN_POWER
+_0231C72C: .word RARE_FOSSIL_DAMAGE
+_0231C730: .word ORAN_BERRY_HP_RESTORATION
+_0231C734: .word ORAN_BERRY_FULL_HP_BOOST
+_0231C738: .word SITRUS_BERRY_HP_RESTORATION
+_0231C73C: .word SITRUS_BERRY_FULL_HP_BOOST
+_0231C740: .word LIFE_SEED_HP_BOOST
+_0231C744: .word SLEEP_TURN_RANGE
 _0231C748: .word 0x00000BE9
 _0231C74C: .word 0x000003E7
-_0231C750: .word ov10_022C4420
-_0231C754: .word ov10_022C46CC
-_0231C758: .word ov10_022C46C8
-_0231C75C: .word ov10_022C46C4
+_0231C750: .word PROTEIN_STAT_BOOST
+_0231C754: .word CALCIUM_STAT_BOOST
+_0231C758: .word IRON_STAT_BOOST
+_0231C75C: .word ZINC_STAT_BOOST
 _0231C760: .word GUMMI_STAT_BOOST
 _0231C764: .word WONDER_GUMMI_STAT_BOOST
 _0231C768:
@@ -1591,7 +1591,7 @@ _0231C7B0:
 _0231C7C0:
 	mov r4, #0
 	str r4, [sp]
-	ldr r0, _0231CBB0 ; =ov10_022C4438
+	ldr r0, _0231CBB0 ; =OREN_BERRY_DAMAGE
 	str r4, [sp, #4]
 	mov r1, #0x270
 	str r1, [sp, #8]
@@ -1838,7 +1838,7 @@ _0231CB14:
 _0231CB48:
 	cmp r0, #0
 	beq _0231CB9C
-	ldr r0, _0231CBC0 ; =ov10_022C4EB8
+	ldr r0, _0231CBC0 ; =APPLES_AND_BERRIES_ITEM_IDS
 	b _0231CB90
 _0231CB58:
 	cmp r4, r1
@@ -1868,10 +1868,10 @@ _0231CBA4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0231CBAC: .word 0x00000C75
-_0231CBB0: .word ov10_022C4438
+_0231CBB0: .word OREN_BERRY_DAMAGE
 _0231CBB4: .word 0x00000C67
 _0231CBB8: .word 0x00000C76
 _0231CBBC: .word ov10_022C44EC
-_0231CBC0: .word ov10_022C4EB8
+_0231CBC0: .word APPLES_AND_BERRIES_ITEM_IDS
 _0231CBC4: .word ov10_022C4864
 	arm_func_end ApplyItemEffect

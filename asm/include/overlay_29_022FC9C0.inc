@@ -1,10 +1,10 @@
 #pragma once
-.public OUTLAW_LEVEL_TABLE
 .public AbilityIsActiveVeneer
 .public AddHeldItemToBag
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public CalcSpeedStageWrapper
+.public CASTFORM_WEATHER_ATTRIBUTE_TABLE
 .public CreateEnemyEntity
 .public DIRECTIONS_XY
 .public DisplayActions
@@ -63,11 +63,11 @@
 .public MewSpawnCheck
 .public MoveMonsterToPos
 .public MultiplyByFixedPoint
+.public OUTLAW_LEVEL_TABLE
 .public ov10_022C4520
 .public ov10_022C45A4
 .public ov10_022C4858
 .public ov10_022C489C
-.public ov10_022C4C6C
 .public ov10_022C4F3C
 .public ov10_022C4F3D
 .public ov29_022DDA54

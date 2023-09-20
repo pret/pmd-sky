@@ -299,36 +299,36 @@ _022E99EC: .word ov29_02353538
 FindClosestUnoccupiedTileWithin2: ; 0x022E99F0
 	stmdb sp!, {r3, lr}
 	str r2, [sp]
-	ldr r2, _022E9A08 ; =ov29_02351844
+	ldr r2, _022E9A08 ; =DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 	mov r3, #0x19
 	bl FindNearbyUnoccupiedTile
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022E9A08: .word ov29_02351844
+_022E9A08: .word DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 	arm_func_end FindClosestUnoccupiedTileWithin2
 
 	arm_func_start FindFarthestUnoccupiedTileWithin2
 FindFarthestUnoccupiedTileWithin2: ; 0x022E9A0C
 	stmdb sp!, {r3, lr}
 	str r2, [sp]
-	ldr r2, _022E9A24 ; =ov29_023517DC
+	ldr r2, _022E9A24 ; =DISPLACEMENTS_WITHIN_2_LARGEST_FIRST
 	mov r3, #0x19
 	bl FindNearbyUnoccupiedTile
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022E9A24: .word ov29_023517DC
+_022E9A24: .word DISPLACEMENTS_WITHIN_2_LARGEST_FIRST
 	arm_func_end FindFarthestUnoccupiedTileWithin2
 
 	arm_func_start FindUnoccupiedTileWithin3
 FindUnoccupiedTileWithin3: ; 0x022E9A28
 	stmdb sp!, {r3, lr}
 	str r2, [sp]
-	ldr r2, _022E9A40 ; =ov29_023518AC
+	ldr r2, _022E9A40 ; =DISPLACEMENTS_WITHIN_3
 	mov r3, #0x31
 	bl FindNearbyUnoccupiedTile
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022E9A40: .word ov29_023518AC
+_022E9A40: .word DISPLACEMENTS_WITHIN_3
 	arm_func_end FindUnoccupiedTileWithin3
 
 	arm_func_start TickStatusTurnCounter

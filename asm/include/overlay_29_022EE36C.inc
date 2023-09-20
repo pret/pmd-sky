@@ -3,9 +3,11 @@
 .public AnimationDelayOrSomething
 .public ApplyDamageAndEffectsWrapper
 .public AreLateGameTrapsEnabled
+.public ATK_STAT_IDX
 .public BAG_ITEMS_PTR_MIRROR
 .public CalcStatusDuration
 .public DIRECTIONS_XY
+.public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DrawMinimapTile
 .public DungeonRandInt
 .public EntityIsValid__022EE348
@@ -39,7 +41,6 @@
 .public ov10_022C44E4
 .public ov10_022C45C8
 .public ov10_022C45CC
-.public ov10_022C4720
 .public ov10_022C4770
 .public ov10_022C4B18
 .public ov10_022C6C7A
@@ -59,14 +60,13 @@
 .public ov29_02346344
 .public ov29_0234B084
 .public ov29_0235171E
-.public ov29_02351844
-.public ov29_02352AE8
-.public ov29_02352AEC
 .public ov29_02353538
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveGroundItem
 .public RemoveHeldItemNoHole
 .public ShouldDisplayEntityWrapper
+.public SLEEP_TURN_RANGE
+.public SPATK_STAT_IDX
 .public SpawnMonster
 .public sub_02001888
 .public sub_0200FA68

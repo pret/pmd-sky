@@ -1684,7 +1684,7 @@ ov29_02339148: ; 0x02339148
 	ldr r0, _02339188 ; =ov29_02353538
 	mov r2, #0xc
 	ldr r0, [r0]
-	ldr r3, _0233918C ; =ov10_022C631C
+	ldr r3, _0233918C ; =TILESET_PROPERTIES
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
 	mov r1, #0
@@ -1698,7 +1698,7 @@ ov29_02339148: ; 0x02339148
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02339188: .word ov29_02353538
-_0233918C: .word ov10_022C631C
+_0233918C: .word TILESET_PROPERTIES
 	arm_func_end ov29_02339148
 
 	arm_func_start ov29_02339190
@@ -1723,7 +1723,7 @@ ov29_023391C0: ; 0x023391C0
 	ldr r0, _023391E4 ; =ov29_02353538
 	mov r1, #0xc
 	ldr r0, [r0]
-	ldr r2, _023391E8 ; =ov10_022C631C
+	ldr r2, _023391E8 ; =TILESET_PROPERTIES
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
 	smulbb r0, r0, r1
@@ -1731,7 +1731,7 @@ ov29_023391C0: ; 0x023391C0
 	bx lr
 	.align 2, 0
 _023391E4: .word ov29_02353538
-_023391E8: .word ov10_022C631C
+_023391E8: .word TILESET_PROPERTIES
 	arm_func_end ov29_023391C0
 
 	arm_func_start DrawMinimapTile
@@ -3153,7 +3153,7 @@ _0233A544: .word ov29_0235377C
 	arm_func_start ov29_0233A548
 ov29_0233A548: ; 0x0233A548
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r2, _0233A5E0 ; =ov29_02352FD0
+	ldr r2, _0233A5E0 ; =MAP_COLOR_TABLE
 	ldr r7, _0233A5E4 ; =ov29_0235376C
 	mov r6, r1
 	add r5, r2, r0, lsl #2
@@ -3195,7 +3195,7 @@ _0233A5D0:
 	blt _0233A560
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0233A5E0: .word ov29_02352FD0
+_0233A5E0: .word MAP_COLOR_TABLE
 _0233A5E4: .word ov29_0235376C
 	arm_func_end ov29_0233A548
 
@@ -8478,7 +8478,7 @@ _0233F014:
 _0233F01C:
 	cmp r5, #8
 	bne _0233F0C4
-	ldr r1, _0233F11C ; =ov29_02353010
+	ldr r1, _0233F11C ; =CORNER_CARDINAL_NEIGHBOR_IS_OPEN
 	ldr r0, [sp, #0x20]
 	mov r5, #0
 	add r6, r1, r0, lsl #3
@@ -8551,7 +8551,7 @@ _0233F100:
 	.align 2, 0
 _0233F114: .word 0x000001C2
 _0233F118: .word DIRECTIONS_XY
-_0233F11C: .word ov29_02353010
+_0233F11C: .word CORNER_CARDINAL_NEIGHBOR_IS_OPEN
 	arm_func_end GenerateRoomImperfections
 
 	arm_func_start CreateHallway
@@ -10903,7 +10903,7 @@ _0234113C:
 	mov r0, r4
 	bl DungeonRandRange
 	mov r8, r0
-	ldr r0, _02341468 ; =ov10_022C44AC
+	ldr r0, _02341468 ; =MONSTER_HOUSE_MAX_NON_MONSTER_SPAWNS
 	cmp r8, #6
 	ldrsh r0, [r0]
 	movlt r8, #6
@@ -10914,7 +10914,7 @@ _0234113C:
 	bl ShuffleSpawnPositions
 	mov r0, r6
 	bl DungeonRandInt
-	ldr r1, _0234146C ; =ov10_022C440C
+	ldr r1, _0234146C ; =FIRST_DUNGEON_WITH_MONSTER_HOUSE_TRAPS
 	mov r7, r0
 	ldrb fp, [r1]
 	mov sb, #0
@@ -11110,8 +11110,8 @@ _02341458: .word ov29_02353538
 _0234145C: .word ov29_0237CFBC
 _02341460: .word 0x0002C9E8
 _02341464: .word 0x00012AFA
-_02341468: .word ov10_022C44AC
-_0234146C: .word ov10_022C440C
+_02341468: .word MONSTER_HOUSE_MAX_NON_MONSTER_SPAWNS
+_0234146C: .word FIRST_DUNGEON_WITH_MONSTER_HOUSE_TRAPS
 	arm_func_end MarkNonEnemySpawns
 
 	arm_func_start MarkEnemySpawns
@@ -11226,7 +11226,7 @@ _023415F4:
 	ldrb r2, [r0, #0xc4]
 	cmp r2, #0
 	beq _02341754
-	ldr r1, _02341768 ; =ov10_022C4660
+	ldr r1, _02341768 ; =MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 	ldr r0, [sp]
 	ldrsh r6, [r1]
 	cmp r0, #0
@@ -11322,7 +11322,7 @@ _02341754:
 	.align 2, 0
 _02341760: .word ov29_02353538
 _02341764: .word ov29_0237CFBC
-_02341768: .word ov10_022C4660
+_02341768: .word MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 	arm_func_end MarkEnemySpawns
 
 	arm_func_start SetSecondaryTerrainOnWall
@@ -12723,7 +12723,7 @@ _02342AC8:
 	mov sl, r0
 	cmp r0, r5
 	bge _02342B58
-	ldr r0, _02342B78 ; =ov10_022C52EC
+	ldr r0, _02342B78 ; =SHOP_ITEM_CHANCES
 	add fp, r0, r7, lsl #1
 _02342AE8:
 	mov r0, sb
@@ -12766,7 +12766,7 @@ _02342B6C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02342B74: .word ov29_0237CFBC
-_02342B78: .word ov10_022C52EC
+_02342B78: .word SHOP_ITEM_CHANCES
 	arm_func_end ov29_023427E4
 
 	arm_func_start ResetInnerBoundaryTileRows
@@ -12991,7 +12991,7 @@ _02342E30:
 	bl ShouldBoostHiddenStairsSpawnChance
 	cmp r0, #0
 	beq _02342E94
-	ldr r1, _02342EB8 ; =ov10_022C4850
+	ldr r1, _02342EB8 ; =HIDDEN_STAIRS_SPAWN_CHANCE_MULTIPLIER
 	mov r0, r6, lsl #8
 	ldr r1, [r1]
 	bl MultiplyByFixedPoint
@@ -13014,7 +13014,7 @@ _02342EA8:
 	.align 2, 0
 _02342EB0: .word ov29_02353538
 _02342EB4: .word ov29_0235378C
-_02342EB8: .word ov10_022C4850
+_02342EB8: .word HIDDEN_STAIRS_SPAWN_CHANCE_MULTIPLIER
 	arm_func_end GetHiddenStairsType
 
 	arm_func_start GetFinalKecleonShopSpawnChance
@@ -13025,7 +13025,7 @@ GetFinalKecleonShopSpawnChance: ; 0x02342EBC
 	cmp r0, #0
 	moveq r0, r4
 	ldmeqia sp!, {r4, pc}
-	ldr r1, _02342F04 ; =ov10_022C484C
+	ldr r1, _02342F04 ; =KECLEON_SHOP_BOOST_CHANCE_MULTIPLIER
 	mov r0, r4, lsl #8
 	ldr r1, [r1]
 	bl MultiplyByFixedPoint
@@ -13038,7 +13038,7 @@ GetFinalKecleonShopSpawnChance: ; 0x02342EBC
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02342F04: .word ov10_022C484C
+_02342F04: .word KECLEON_SHOP_BOOST_CHANCE_MULTIPLIER
 	arm_func_end GetFinalKecleonShopSpawnChance
 
 	arm_func_start ResetHiddenStairsSpawn
@@ -13380,7 +13380,7 @@ _023433B8:
 	mov r0, #0xc
 	smulbb r2, r1, r0
 	ldr r0, _02343938 ; =ov29_023502F4
-	ldr r1, _0234393C ; =ov29_023502EC
+	ldr r1, _0234393C ; =FIXED_ROOM_ENTITY_SPAWN_TABLE
 	ldr r8, [r0, r2]
 	ldr sl, [r1, r2]
 	ldrb r0, [r8, #2]
@@ -13542,7 +13542,7 @@ _023435BC:
 	mov r3, r1
 	str r0, [sp, #4]
 	ldr fp, _02343958 ; =ov29_023534F0
-	ldr r0, _0234395C ; =ov29_0234FDFC
+	ldr r0, _0234395C ; =TREASURE_BOX_1_ITEM_IDS
 	ldr r3, [fp, r3, lsl #2]
 	ldrsh r0, [r0, r2]
 	ldrsh r3, [r3, sl]
@@ -13656,7 +13656,7 @@ _023437C8:
 	cmpne sb, #0xa
 	str r1, [sp, #0x28]
 	strb r1, [sp, #0x32]
-	ldreq r1, _02343964 ; =ov10_022C5938
+	ldreq r1, _02343964 ; =FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
 	ldreq r0, [sp, #0x1c]
 	strh fp, [sp, #0x24]
 	ldreqsh r0, [r1, r0]
@@ -13750,7 +13750,7 @@ _0234392C: .word ov29_02353538
 _02343930: .word ov29_0237CFC0
 _02343934: .word 0x000001FF
 _02343938: .word ov29_023502F4
-_0234393C: .word ov29_023502EC
+_0234393C: .word FIXED_ROOM_ENTITY_SPAWN_TABLE
 _02343940: .word ov29_023502F0
 _02343944: .word ov10_022C4B34
 _02343948: .word ov29_02353050
@@ -13758,9 +13758,9 @@ _0234394C: .word 0x00000578
 _02343950: .word 0x00000181
 _02343954: .word 0xFFFFFA7E
 _02343958: .word ov29_023534F0
-_0234395C: .word ov29_0234FDFC
+_0234395C: .word TREASURE_BOX_1_ITEM_IDS
 _02343960: .word 0x00000229
-_02343964: .word ov10_022C5938
+_02343964: .word FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
 _02343968: .word 0x0002C9E6
 	arm_func_end PlaceFixedRoomTile
 
@@ -14159,7 +14159,7 @@ _02343E78:
 	sub r0, r1, #0xe00
 	cmp r2, r0
 	bgt _0234400C
-	ldr r1, _0234403C ; =ov29_023502EC
+	ldr r1, _0234403C ; =FIXED_ROOM_ENTITY_SPAWN_TABLE
 	sub r2, r2, #0x10
 	mov r0, #0xc
 	smlabb r0, r2, r0, r1
@@ -14242,7 +14242,7 @@ _02343FA0:
 _02343FCC:
 	mov r0, #0xc
 	mul r2, r3, r0
-	ldr r1, _02344050 ; =ov10_022C5938
+	ldr r1, _02344050 ; =FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
 	add r0, sp, #0xc
 	ldrsh r1, [r1, r2]
 	mov r2, r8
@@ -14275,12 +14275,12 @@ _0234402C:
 	.align 2, 0
 _02344034: .word ov29_02353794
 _02344038: .word 0x00000FFF
-_0234403C: .word ov29_023502EC
+_0234403C: .word FIXED_ROOM_ENTITY_SPAWN_TABLE
 _02344040: .word 0x00000229
 _02344044: .word 0x00000483
 _02344048: .word ov29_02353538
 _0234404C: .word 0x00000485
-_02344050: .word ov10_022C5938
+_02344050: .word FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
 	arm_func_end LoadFixedRoom
 
 	arm_func_start OpenFixedBin

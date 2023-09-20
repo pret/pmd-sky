@@ -10,8 +10,8 @@
 .public GetTileSafe
 .public HasHeldItem
 .public MewSpawnCheck
+.public MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 .public MultiplyByFixedPoint
 .public ov10_022C4560
-.public ov10_022C4660
 .public ov29_02353538
 .public SpawnMonster

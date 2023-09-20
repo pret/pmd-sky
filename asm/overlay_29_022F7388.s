@@ -2174,7 +2174,7 @@ SetMonsterTypeAndAbility: ; 0x022F9194
 	bl GetApparentWeather
 	mov r1, #6
 	mul r2, r0, r1
-	ldr r1, _022F9234 ; =ov10_022C4C6C
+	ldr r1, _022F9234 ; =CASTFORM_WEATHER_ATTRIBUTE_TABLE
 	mov r0, #0
 	ldrb r1, [r1, r2]
 	strb r1, [r4, #0x5e]
@@ -2208,7 +2208,7 @@ _022F9200:
 	strb r1, [r0, #0xe]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022F9234: .word ov10_022C4C6C
+_022F9234: .word CASTFORM_WEATHER_ATTRIBUTE_TABLE
 _022F9238: .word ov29_02353538
 	arm_func_end SetMonsterTypeAndAbility
 
@@ -2502,7 +2502,7 @@ _022F95FC:
 	bne _022F9658
 	mov r0, sb
 	bl GetApparentWeather
-	ldr r1, _022F96C4 ; =ov10_022C48DC
+	ldr r1, _022F96C4 ; =WEATHER_BALL_TYPE_TABLE
 	ldrb r4, [r1, r0]
 _022F9658:
 	cmp r4, #0
@@ -2533,7 +2533,7 @@ _022F9658:
 	.align 2, 0
 _022F96BC: .word ov29_02353538
 _022F96C0: .word 0x00000C18
-_022F96C4: .word ov10_022C48DC
+_022F96C4: .word WEATHER_BALL_TYPE_TABLE
 _022F96C8: .word 0x00000C19
 	arm_func_end TryActivateTraceAndColorChange
 
@@ -3062,7 +3062,7 @@ _022F9D50:
 	mov r0, r1
 	strh r4, [r3]
 	strh r0, [r3, #2]
-	ldr r1, _022F9E94 ; =ov29_02352768
+	ldr r1, _022F9E94 ; =BELLY_DRAIN_IN_WALLS_INT
 	ldr r0, [r3]
 	ldrh r2, [r1]
 	strh r4, [sp, #8]
@@ -3135,7 +3135,7 @@ _022F9E80:
 _022F9E88: .word ov29_02353538
 _022F9E8C: .word SECONDARY_TERRAIN_TYPES
 _022F9E90: .word 0x00000115
-_022F9E94: .word ov29_02352768
+_022F9E94: .word BELLY_DRAIN_IN_WALLS_INT
 _022F9E98: .word 0x00000C1A
 _022F9E9C: .word 0x00000C1B
 	arm_func_end ov29_022F9C74
@@ -5590,7 +5590,7 @@ InitOtherMonsterData: ; 0x022FBE58
 	strb r6, [ip, #0x100]
 	ldrsh r5, [ip, #0x12]
 	ldrsh r3, [ip, #0x16]
-	ldr r7, _022FBF04 ; =ov10_022C5938
+	ldr r7, _022FBF04 ; =FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
 	mov r0, #0xc
 	add r5, r5, r3
 	smlabb r3, r1, r0, r7
@@ -5627,7 +5627,7 @@ InitOtherMonsterData: ; 0x022FBE58
 	bl ov29_022FB83C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022FBF04: .word ov10_022C5938
+_022FBF04: .word FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
 	arm_func_end InitOtherMonsterData
 
 	arm_func_start ov29_022FBF08

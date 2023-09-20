@@ -10,18 +10,18 @@ ExecuteMoveEffect: ; 0x0232E864
 	ldr fp, _0232F7AC ; =ov10_022C45F8
 	str r0, [sp, #0x14]
 	ldrsh r0, [fp]
-	ldr r5, _0232F7B0 ; =ov29_02352AE8
+	ldr r5, _0232F7B0 ; =SPATK_STAT_IDX
 	ldr sl, _0232F7B4 ; =ov10_022C483C
 	ldr r7, [r5]
 	str r0, [sp, #0x34]
 	ldr r0, [sl]
-	ldr r4, _0232F7B8 ; =ov29_02352AEC
+	ldr r4, _0232F7B8 ; =ATK_STAT_IDX
 	mov r8, r2
 	ldr r6, [r4]
 	mov r2, #0
 	str r2, [sp, #0x78]
 	str r6, [sp, #0xa0]
-	ldr r5, _0232F7BC ; =ov10_022C4468
+	ldr r5, _0232F7BC ; =FOREWARN_FORCED_MISS_CHANCE
 	str r0, [sp, #0x30]
 	ldrsh r0, [r5]
 	ldr r4, _0232F7C0 ; =ov10_022C460C
@@ -1050,10 +1050,10 @@ _0232F79C:
 	b _0232F87C
 	.align 2, 0
 _0232F7AC: .word ov10_022C45F8
-_0232F7B0: .word ov29_02352AE8
+_0232F7B0: .word SPATK_STAT_IDX
 _0232F7B4: .word ov10_022C483C
-_0232F7B8: .word ov29_02352AEC
-_0232F7BC: .word ov10_022C4468
+_0232F7B8: .word ATK_STAT_IDX
+_0232F7BC: .word FOREWARN_FORCED_MISS_CHANCE
 _0232F7C0: .word ov10_022C460C
 _0232F7C4: .word ov10_022C4480
 _0232F7C8: .word ov10_022C4614

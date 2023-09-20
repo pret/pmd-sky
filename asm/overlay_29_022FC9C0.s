@@ -1472,7 +1472,7 @@ _022FDEA0:
 	bl GetApparentWeather
 	mov r1, #6
 	mul r2, r0, r1
-	ldr r1, _022FDF9C ; =ov10_022C4C6C
+	ldr r1, _022FDF9C ; =CASTFORM_WEATHER_ATTRIBUTE_TABLE
 	mov r0, #0
 	ldrb r1, [r1, r2]
 	strb r1, [sl, #0x5e]
@@ -1512,7 +1512,7 @@ _022FDF48:
 	bl ov29_02307DC0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022FDF9C: .word ov10_022C4C6C
+_022FDF9C: .word CASTFORM_WEATHER_ATTRIBUTE_TABLE
 _022FDFA0: .word ov29_02353538
 	arm_func_end SubInitMonster
 

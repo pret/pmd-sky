@@ -52,7 +52,7 @@ _0230905C:
 	cmpeq r0, #3
 	ldreqb r0, [r6, #0xf]
 	cmpeq r0, #0
-	ldreq r0, _02309F98 ; =ov10_022C4598
+	ldreq r0, _02309F98 ; =SET_DAMAGE_STATUS_DAMAGE
 	ldreqsh r0, [r0]
 	streq r0, [r6]
 	ldr r0, [r8]
@@ -274,7 +274,7 @@ _02309398:
 	mov r0, #0
 	b _0230A918
 _023093D8:
-	ldr sl, _02309FAC ; =ov29_023528A4
+	ldr sl, _02309FAC ; =TYPE_DAMAGE_NEGATING_EXCLUSIVE_ITEM_EFFECTS
 	b _0230944C
 _023093E0:
 	ldrb r0, [r6, #0xc]
@@ -521,7 +521,7 @@ _02309740:
 	ldr r1, [r6, #4]
 	ldr r2, [r4, #0xb8]
 	cmp r1, #0x1b
-	ldrlt r0, _02309FD8 ; =ov29_02353330
+	ldrlt r0, _02309FD8 ; =DAMAGE_STRING_IDS
 	movge sl, #0
 	movlt r1, r1, lsl #1
 	ldrlth sl, [r0, r1]
@@ -1092,12 +1092,12 @@ _02309F44:
 	ldr r6, _02309FFC ; =ov29_02353538
 	b _0230A090
 	.align 2, 0
-_02309F98: .word ov10_022C4598
+_02309F98: .word SET_DAMAGE_STATUS_DAMAGE
 _02309F9C: .word 0x00000C46
 _02309FA0: .word 0x0000024D
 _02309FA4: .word 0x0000270F
 _02309FA8: .word 0x00000C41
-_02309FAC: .word ov29_023528A4
+_02309FAC: .word TYPE_DAMAGE_NEGATING_EXCLUSIVE_ITEM_EFFECTS
 _02309FB0: .word ov10_022C45C4
 _02309FB4: .word 0x00000C42
 _02309FB8: .word 0x00000C43
@@ -1108,7 +1108,7 @@ _02309FC8: .word ov29_023535D4
 _02309FCC: .word 0x000002B6
 _02309FD0: .word 0x00000C48
 _02309FD4: .word 0x000003E7
-_02309FD8: .word ov29_02353330
+_02309FD8: .word DAMAGE_STRING_IDS
 _02309FDC: .word 0x0000025F
 _02309FE0: .word 0x00000C49
 _02309FE4: .word 0x00000C4A
@@ -1829,7 +1829,7 @@ AftermathCheck: ; 0x0230AA0C
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _0230AA78
-	ldr r0, _0230AA84 ; =ov10_022C4594
+	ldr r0, _0230AA84 ; =AFTERMATH_CHANCE
 	ldrsh r0, [r0]
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
@@ -1852,7 +1852,7 @@ _0230AA7C:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0230AA84: .word ov10_022C4594
+_0230AA84: .word AFTERMATH_CHANCE
 _0230AA88: .word 0x0000026F
 	arm_func_end AftermathCheck
 
@@ -1904,7 +1904,7 @@ _0230AB18:
 	cmp r6, #2
 	blt _0230AAC8
 	ldrsh r2, [sp]
-	ldr r0, _0230AB54 ; =ov10_022C4D14
+	ldr r0, _0230AB54 ; =TYPE_MATCHUP_COMBINATOR_TABLE
 	ldrsh r1, [sp, #2]
 	add r0, r0, r2, lsl #4
 	ldr r0, [r0, r1, lsl #2]
@@ -1912,7 +1912,7 @@ _0230AB18:
 	.align 2, 0
 _0230AB4C: .word ov29_02352838
 _0230AB50: .word ov29_02353538
-_0230AB54: .word ov10_022C4D14
+_0230AB54: .word TYPE_MATCHUP_COMBINATOR_TABLE
 	arm_func_end GetTypeMatchupBothTypes
 
 	arm_func_start ScrappyShouldActivate
@@ -2040,7 +2040,7 @@ _0230ACCC:
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 _0230ACE0:
-	ldr r1, _0230AD00 ; =ov10_022C56B0
+	ldr r1, _0230AD00 ; =TYPE_MATCHUP_TABLE
 	mov r0, #0x24
 	mla r0, r5, r0, r1
 	add r1, r4, r6
@@ -2049,7 +2049,7 @@ _0230ACE0:
 	ldrsh r0, [r1, r0]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0230AD00: .word ov10_022C56B0
+_0230AD00: .word TYPE_MATCHUP_TABLE
 	arm_func_end GetTypeMatchup
 
 	arm_func_start CalcTypeBasedDamageEffects
@@ -2100,30 +2100,30 @@ CalcTypeBasedDamageEffects: ; 0x0230AD04
 	mov r2, r8
 	str r3, [r7, #8]
 	bl ScrappyShouldActivate
-	ldr r3, _0230B778 ; =ov10_022C4820
+	ldr r3, _0230B778 ; =MATCHUP_IMMUNE_MULTIPLIER_ERRATIC_PLAYER
 	str r0, [sp, #0x28]
 	ldr r0, [r3]
-	ldr r2, _0230B77C ; =ov10_022C4824
+	ldr r2, _0230B77C ; =MATCHUP_NOT_VERY_EFFECTIVE_MULTIPLIER_ERRATIC_PLAYER
 	str r0, [sp, #0x24]
 	ldr r0, [r2]
-	ldr r1, _0230B780 ; =ov10_022C482C
+	ldr r1, _0230B780 ; =MATCHUP_NEUTRAL_MULTIPLIER_ERRATIC_PLAYER
 	str r0, [sp, #0x20]
 	ldr r0, [r1]
-	ldr r1, _0230B784 ; =ov10_022C4758
+	ldr r1, _0230B784 ; =MATCHUP_IMMUNE_MULTIPLIER
 	str r0, [sp, #0x1c]
-	ldr r0, _0230B788 ; =ov10_022C474C
+	ldr r0, _0230B788 ; =MATCHUP_SUPER_EFFECTIVE_MULTIPLIER_ERRATIC_PLAYER
 	mov r4, #0
 	ldr r0, [r0]
 	str r0, [sp, #0x18]
 	ldr r0, [r1]
-	ldr r1, _0230B78C ; =ov10_022C481C
+	ldr r1, _0230B78C ; =MATCHUP_NEUTRAL_MULTIPLIER
 	str r0, [sp, #0x14]
-	ldr r0, _0230B790 ; =ov10_022C4810
+	ldr r0, _0230B790 ; =MATCHUP_NOT_VERY_EFFECTIVE_MULTIPLIER
 	ldr r0, [r0]
 	str r0, [sp, #0x10]
 	ldr r0, [r1]
 	str r0, [sp, #0xc]
-	ldr r0, _0230B794 ; =ov10_022C4818
+	ldr r0, _0230B794 ; =MATCHUP_SUPER_EFFECTIVE_MULTIPLIER
 	ldr r0, [r0]
 	str r0, [sp, #8]
 	b _0230AF8C
@@ -2231,7 +2231,7 @@ _0230AF94:
 	ldr r0, _0230B798 ; =ov29_02353538
 	ldr r4, [sp, #0x34]
 	ldr r2, [r0]
-	ldr r1, _0230B79C ; =ov10_022C4D14
+	ldr r1, _0230B79C ; =TYPE_MATCHUP_COMBINATOR_TABLE
 	strb r4, [r2, #0x18c]
 	ldr r3, [sp, #0x38]
 	ldr r2, [r0]
@@ -2259,7 +2259,7 @@ _0230AFEC:
 	ldr r0, [r7, #8]
 	cmp r0, #1
 	bne _0230B02C
-	ldr r1, _0230B7A0 ; =ov10_022C47C0
+	ldr r1, _0230B7A0 ; =TINTED_LENS_MULTIPLIER
 	add r0, sp, #0x3c
 	ldr r1, [r1]
 	bl FixedPoint32To64
@@ -2286,7 +2286,7 @@ _0230B064:
 	ldr r0, [r7, #8]
 	cmp r0, #3
 	bne _0230B080
-	ldr r2, _0230B7A4 ; =ov29_02352864
+	ldr r2, _0230B7A4 ; =SOLID_ROCK_MULTIPLIER
 	mov r0, fp
 	mov r1, fp
 	bl MultiplyFixedPoint64
@@ -2296,7 +2296,7 @@ _0230B080:
 	bl ExclusiveItemEffectIsActive__0230A9B8
 	cmp r0, #0
 	beq _0230B0A4
-	ldr r2, _0230B7A8 ; =ov29_0235283C
+	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	mov r0, fp
 	mov r1, fp
 	bl MultiplyFixedPoint64
@@ -2309,12 +2309,12 @@ _0230B0A4:
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230B104
-	ldr r0, _0230B7AC ; =ov10_022C455C
+	ldr r0, _0230B7AC ; =TECHNICIAN_MOVE_POWER_THRESHOLD
 	ldrsh r1, [r0]
 	ldr r0, [sp, #4]
 	cmp r0, r1
 	bgt _0230B104
-	ldr r2, _0230B7B0 ; =ov29_02352844
+	ldr r2, _0230B7B0 ; =DAMAGE_MULTIPLIER_1_5
 	mov r0, fp
 	mov r1, fp
 	bl MultiplyFixedPoint64
@@ -2337,7 +2337,7 @@ _0230B104:
 	cmp r0, #0
 	beq _0230B14C
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7A8 ; =ov29_0235283C
+	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	ldr r3, [r0]
 	mov r5, #1
 	mov r0, fp
@@ -2375,7 +2375,7 @@ _0230B198:
 	cmp r0, #0
 	beq _0230B1DC
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7A8 ; =ov29_0235283C
+	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	ldr r3, [r0]
 	mov r5, #1
 	mov r0, fp
@@ -2441,7 +2441,7 @@ _0230B248:
 	cmp r7, #0
 	beq _0230B2D4
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7BC ; =ov29_0235284C
+	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	ldr r3, [r0]
 	mov r7, #1
 	mov r0, fp
@@ -2486,7 +2486,7 @@ _0230B2F4:
 	cmp r7, #0
 	beq _0230B380
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7BC ; =ov29_0235284C
+	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	ldr r3, [r0]
 	mov r7, #1
 	mov r0, fp
@@ -2531,7 +2531,7 @@ _0230B3A0:
 	cmp r7, #0
 	beq _0230B42C
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7BC ; =ov29_0235284C
+	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	ldr r3, [r0]
 	mov r7, #1
 	mov r0, fp
@@ -2576,7 +2576,7 @@ _0230B44C:
 	cmp r7, #0
 	beq _0230B4D8
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7BC ; =ov29_0235284C
+	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	ldr r3, [r0]
 	mov r7, #1
 	mov r0, fp
@@ -2601,7 +2601,7 @@ _0230B4F8:
 	cmp r0, #0
 	beq _0230B534
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7B0 ; =ov29_02352844
+	ldr r2, _0230B7B0 ; =DAMAGE_MULTIPLIER_1_5
 	ldr r3, [r0]
 	mov r5, #1
 	mov r0, fp
@@ -2612,7 +2612,7 @@ _0230B534:
 	ldrb r0, [r6, #0xbf]
 	cmp r0, #1
 	bne _0230B560
-	ldr r1, _0230B7CC ; =ov10_022C4744
+	ldr r1, _0230B7CC ; =BURN_DAMAGE_MULTIPLIER
 	add r0, sp, #0x3c
 	ldr r1, [r1]
 	bl FixedPoint32To64
@@ -2639,13 +2639,13 @@ _0230B560:
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _0230B5BC
-	ldr r2, _0230B7BC ; =ov29_0235284C
+	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	mov r0, fp
 	mov r1, fp
 	bl MultiplyFixedPoint64
 	b _0230B5CC
 _0230B5BC:
-	ldr r2, _0230B7B0 ; =ov29_02352844
+	ldr r2, _0230B7B0 ; =DAMAGE_MULTIPLIER_1_5
 	mov r0, fp
 	mov r1, fp
 	bl MultiplyFixedPoint64
@@ -2658,7 +2658,7 @@ _0230B5CC:
 	cmp r8, #2
 	bne _0230B60C
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7B0 ; =ov29_02352844
+	ldr r2, _0230B7B0 ; =DAMAGE_MULTIPLIER_1_5
 	ldr r3, [r0]
 	mov r7, #1
 	mov r0, fp
@@ -2670,7 +2670,7 @@ _0230B60C:
 	cmp r8, #3
 	bne _0230B634
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7A8 ; =ov29_0235283C
+	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	ldr r3, [r0]
 	mov r7, #1
 	mov r0, fp
@@ -2683,7 +2683,7 @@ _0230B634:
 	cmp r8, #2
 	bne _0230B668
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7A8 ; =ov29_0235283C
+	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	ldr r3, [r0]
 	mov r7, #1
 	mov r0, fp
@@ -2695,7 +2695,7 @@ _0230B668:
 	cmp r8, #3
 	bne _0230B690
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7B0 ; =ov29_02352844
+	ldr r2, _0230B7B0 ; =DAMAGE_MULTIPLIER_1_5
 	ldr r3, [r0]
 	mov r7, #1
 	mov r0, fp
@@ -2707,7 +2707,7 @@ _0230B690:
 	bne _0230B6C0
 	cmp r8, #1
 	beq _0230B6C0
-	ldr r2, _0230B7D0 ; =ov29_0235285C
+	ldr r2, _0230B7D0 ; =CLOUDY_DAMAGE_MULTIPLIER
 	mov r0, fp
 	mov r1, fp
 	bl MultiplyFixedPoint64
@@ -2727,7 +2727,7 @@ _0230B6C0:
 _0230B6E0:
 	cmp r8, #5
 	bne _0230B700
-	ldr r2, _0230B7A8 ; =ov29_0235283C
+	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	mov r3, #1
 	mov r0, fp
 	mov r1, fp
@@ -2742,7 +2742,7 @@ _0230B700:
 	beq _0230B738
 	cmp r8, #2
 	bne _0230B738
-	ldr r2, _0230B7A8 ; =ov29_0235283C
+	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	mov r3, #1
 	mov r0, fp
 	mov r1, fp
@@ -2754,7 +2754,7 @@ _0230B738:
 	cmpeq r0, #0xb
 	bne _0230B768
 	ldr r0, _0230B798 ; =ov29_02353538
-	ldr r2, _0230B7BC ; =ov29_0235284C
+	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	ldr r3, [r0]
 	mov r5, #1
 	mov r0, fp
@@ -2768,29 +2768,29 @@ _0230B76C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0230B774: .word ov29_02352838
-_0230B778: .word ov10_022C4820
-_0230B77C: .word ov10_022C4824
-_0230B780: .word ov10_022C482C
-_0230B784: .word ov10_022C4758
-_0230B788: .word ov10_022C474C
-_0230B78C: .word ov10_022C481C
-_0230B790: .word ov10_022C4810
-_0230B794: .word ov10_022C4818
+_0230B778: .word MATCHUP_IMMUNE_MULTIPLIER_ERRATIC_PLAYER
+_0230B77C: .word MATCHUP_NOT_VERY_EFFECTIVE_MULTIPLIER_ERRATIC_PLAYER
+_0230B780: .word MATCHUP_NEUTRAL_MULTIPLIER_ERRATIC_PLAYER
+_0230B784: .word MATCHUP_IMMUNE_MULTIPLIER
+_0230B788: .word MATCHUP_SUPER_EFFECTIVE_MULTIPLIER_ERRATIC_PLAYER
+_0230B78C: .word MATCHUP_NEUTRAL_MULTIPLIER
+_0230B790: .word MATCHUP_NOT_VERY_EFFECTIVE_MULTIPLIER
+_0230B794: .word MATCHUP_SUPER_EFFECTIVE_MULTIPLIER
 _0230B798: .word ov29_02353538
-_0230B79C: .word ov10_022C4D14
-_0230B7A0: .word ov10_022C47C0
-_0230B7A4: .word ov29_02352864
-_0230B7A8: .word ov29_0235283C
-_0230B7AC: .word ov10_022C455C
-_0230B7B0: .word ov29_02352844
+_0230B79C: .word TYPE_MATCHUP_COMBINATOR_TABLE
+_0230B7A0: .word TINTED_LENS_MULTIPLIER
+_0230B7A4: .word SOLID_ROCK_MULTIPLIER
+_0230B7A8: .word DAMAGE_MULTIPLIER_0_5
+_0230B7AC: .word TECHNICIAN_MOVE_POWER_THRESHOLD
+_0230B7B0: .word DAMAGE_MULTIPLIER_1_5
 _0230B7B4: .word 0x00000C3E
 _0230B7B8: .word 0x000003E7
-_0230B7BC: .word ov29_0235284C
+_0230B7BC: .word DAMAGE_MULTIPLIER_2
 _0230B7C0: .word 0x00000C4F
 _0230B7C4: .word 0x00000C51
 _0230B7C8: .word 0x00000C52
-_0230B7CC: .word ov10_022C4744
-_0230B7D0: .word ov29_0235285C
+_0230B7CC: .word BURN_DAMAGE_MULTIPLIER
+_0230B7D0: .word CLOUDY_DAMAGE_MULTIPLIER
 	arm_func_end CalcTypeBasedDamageEffects
 
 	arm_func_start ov29_0230B7D4
@@ -3089,7 +3089,7 @@ CalcDamage: ; 0x0230BBAC
 	ldrb r0, [r6, #0x221]
 	cmp r0, #0
 	beq _0230BC1C
-	ldr r1, _0230C454 ; =ov10_022C4710
+	ldr r1, _0230C454 ; =ME_FIRST_MULTIPLIER
 	ldr r0, [sp, #0x1c]
 	ldr r1, [r1]
 	bl MultiplyByFixedPoint
@@ -3513,7 +3513,7 @@ _0230C23C:
 	movlt r0, #0
 	strlt r0, [sp, #0x44]
 	ldr r0, [sp, #0x44]
-	ldr r2, _0230C470 ; =ov10_022C4D98
+	ldr r2, _0230C470 ; =OFFENSIVE_STAT_STAGE_MULTIPLIERS
 	cmp r0, #0x14
 	movgt r0, #0x14
 	strgt r0, [sp, #0x44]
@@ -3541,7 +3541,7 @@ _0230C23C:
 	strb r4, [r5, #0xb]
 	add r0, r7, #0x1c
 	ldrb r2, [r0, r1]
-	ldr r1, _0230C474 ; =ov10_022C4DEC
+	ldr r1, _0230C474 ; =DEFENSIVE_STAT_STAGE_MULTIPLIERS
 	strh r2, [r5, #0xe]
 	ldr r2, [sp, #0x18]
 	ldr r1, [r1, r4, lsl #2]
@@ -3648,15 +3648,15 @@ _0230C41C:
 	b _0230C5E0
 	.align 2, 0
 _0230C450: .word ov29_02353538
-_0230C454: .word ov10_022C4710
+_0230C454: .word ME_FIRST_MULTIPLIER
 _0230C458: .word 0x000001D3
 _0230C45C: .word 0x00000163
 _0230C460: .word 0x000001A3
 _0230C464: .word 0x000001A5
 _0230C468: .word 0x00000211
 _0230C46C: .word 0x000001BD
-_0230C470: .word ov10_022C4D98
-_0230C474: .word ov10_022C4DEC
+_0230C470: .word OFFENSIVE_STAT_STAGE_MULTIPLIERS
+_0230C474: .word DEFENSIVE_STAT_STAGE_MULTIPLIERS
 _0230C478: .word POWER_BAND_STAT_BOOST
 _0230C47C: .word MUNCH_BELT_STAT_BOOST
 _0230C480: .word AURA_BOW_STAT_BOOST
@@ -3667,20 +3667,20 @@ _0230C490: .word 0x00000C53
 _0230C494: .word 0x00000C54
 _0230C498: .word 0x00000C55
 _0230C49C: .word 0x000003E7
-_0230C4A0: .word _020A18D8
+_0230C4A0: .word DAMAGE_FORMULA_FLV_DEFICIT_DIVISOR
 _0230C4A4: .word ov29_02352984
 _0230C4A8: .word ov29_02352990
 _0230C4AC: .word ov29_0235299C
-_0230C4B0: .word _020A18F4
-_0230C4B4: .word _020A18F0
-_0230C4B8: .word _020A18CC
-_0230C4BC: .word _020A18F8
-_0230C4C0: .word _020A18EC
-_0230C4C4: .word _020A18D4
-_0230C4C8: .word _020A18E8
-_0230C4CC: .word ov29_0235286C
+_0230C4B0: .word DAMAGE_FORMULA_AT_PREFACTOR
+_0230C4B4: .word DAMAGE_FORMULA_DEF_PREFACTOR
+_0230C4B8: .word DAMAGE_FORMULA_FLV_SHIFT
+_0230C4BC: .word DAMAGE_FORMULA_LN_ARG_PREFACTOR
+_0230C4C0: .word DAMAGE_FORMULA_LN_PREFACTOR
+_0230C4C4: .word DAMAGE_FORMULA_CONSTANT_SHIFT
+_0230C4C8: .word DAMAGE_FORMULA_NON_TEAM_MEMBER_MODIFIER
+_0230C4CC: .word DAMAGE_FORMULA_MAX_BASE
 _0230C4D0: .word ov29_02352838
-_0230C4D4: .word ov29_0235287C
+_0230C4D4: .word DAMAGE_FORMULA_MIN_BASE
 _0230C4D8:
 	ldr r0, [sp, #0xf8]
 	cmp r0, #0
@@ -4004,7 +4004,7 @@ _0230C940:
 	add r0, sp, #0x88
 	sub r1, r2, r1
 	bl IntToFixedPoint64
-	ldr r1, _0230C4A0 ; =_020A18D8
+	ldr r1, _0230C4A0 ; =DAMAGE_FORMULA_FLV_DEFICIT_DIVISOR
 	add r0, sp, #0x80
 	ldr r1, [r1]
 	bl FixedPoint32To64
@@ -4049,7 +4049,7 @@ _0230C940:
 	mov r1, r0
 	ldr r0, _0230C4AC ; =ov29_0235299C
 	bl DebugPrint0
-	ldr r1, _0230C4B0 ; =_020A18F4
+	ldr r1, _0230C4B0 ; =DAMAGE_FORMULA_AT_PREFACTOR
 	add r0, sp, #0x70
 	ldr r1, [r1]
 	bl FixedPoint32To64
@@ -4057,7 +4057,7 @@ _0230C940:
 	add r1, sp, #0xa0
 	mov r2, r0
 	bl MultiplyFixedPoint64
-	ldr r1, _0230C4B4 ; =_020A18F0
+	ldr r1, _0230C4B4 ; =DAMAGE_FORMULA_DEF_PREFACTOR
 	add r0, sp, #0x68
 	ldr r1, [r1]
 	bl FixedPoint32To64
@@ -4065,7 +4065,7 @@ _0230C940:
 	add r1, sp, #0x98
 	mov r2, r0
 	bl MultiplyFixedPoint64
-	ldr r1, _0230C4B8 ; =_020A18CC
+	ldr r1, _0230C4B8 ; =DAMAGE_FORMULA_FLV_SHIFT
 	add r0, sp, #0x78
 	ldr r1, [r1]
 	bl FixedPoint32To64
@@ -4073,7 +4073,7 @@ _0230C940:
 	add r1, sp, #0xa8
 	add r2, sp, #0x78
 	bl AddFixedPoint64
-	ldr r1, _0230C4BC ; =_020A18F8
+	ldr r1, _0230C4BC ; =DAMAGE_FORMULA_LN_ARG_PREFACTOR
 	add r0, sp, #0x78
 	ldr r1, [r1]
 	bl FixedPoint32To64
@@ -4086,7 +4086,7 @@ _0230C940:
 	mov r1, r0
 	add r0, sp, #0x60
 	bl ClampedLn
-	ldr r1, _0230C4C0 ; =_020A18EC
+	ldr r1, _0230C4C0 ; =DAMAGE_FORMULA_LN_PREFACTOR
 	add r0, sp, #0x78
 	ldr r1, [r1]
 	bl FixedPoint32To64
@@ -4102,7 +4102,7 @@ _0230C940:
 	add r2, sp, #0x60
 	mov r1, r0
 	bl AddFixedPoint64
-	ldr r1, _0230C4C4 ; =_020A18D4
+	ldr r1, _0230C4C4 ; =DAMAGE_FORMULA_CONSTANT_SHIFT
 	add r0, sp, #0x78
 	ldr r1, [r1]
 	bl FixedPoint32To64
@@ -4116,7 +4116,7 @@ _0230C940:
 	ldrb r0, [r6, #6]
 	cmp r0, #0
 	beq _0230CB78
-	ldr r1, _0230C4C8 ; =_020A18E8
+	ldr r1, _0230C4C8 ; =DAMAGE_FORMULA_NON_TEAM_MEMBER_MODIFIER
 	add r0, sp, #0x78
 	ldr r1, [r1]
 	bl FixedPoint32To64
@@ -4125,7 +4125,7 @@ _0230C940:
 	mov r1, r0
 	bl DivideFixedPoint64
 _0230CB78:
-	ldr r0, _0230C4CC ; =ov29_0235286C
+	ldr r0, _0230C4CC ; =DAMAGE_FORMULA_MAX_BASE
 	add r1, sp, #0xb0
 	bl FixedPoint64CmpLt
 	cmp r0, #0
@@ -4134,7 +4134,7 @@ _0230CB78:
 	ldrne r0, [r0, #0x34]
 	strne r1, [sp, #0xb4]
 	strne r0, [sp, #0xb0]
-	ldr r1, _0230C4D4 ; =ov29_0235287C
+	ldr r1, _0230C4D4 ; =DAMAGE_FORMULA_MIN_BASE
 	add r0, sp, #0xb0
 	bl FixedPoint64CmpLt
 	cmp r0, #0
@@ -4218,7 +4218,7 @@ _0230CCD0:
 	mov r0, sb
 	bl PlayEffectAnimation0x171
 	add r0, sp, #0xb8
-	ldr r2, _0230D064 ; =ov29_0235283C
+	ldr r2, _0230D064 ; =DAMAGE_MULTIPLIER_0_5
 	mov r1, r0
 	bl MultiplyFixedPoint64
 	mov r0, #1
@@ -4239,7 +4239,7 @@ _0230CD1C:
 	mov r0, sb
 	bl PlayEffectAnimation0x171Full
 	add r0, sp, #0xb8
-	ldr r2, _0230D064 ; =ov29_0235283C
+	ldr r2, _0230D064 ; =DAMAGE_MULTIPLIER_0_5
 	mov r1, r0
 	bl MultiplyFixedPoint64
 	mov r0, #1
@@ -4291,7 +4291,7 @@ _0230CD3C:
 	cmp r0, #0
 	beq _0230CE04
 _0230CDF0:
-	ldr r0, _0230D068 ; =ov10_022C46F0
+	ldr r0, _0230D068 ; =SCOPE_LENS_CRIT_RATE_BOOST
 	mov r1, #1
 	ldrsh r0, [r0]
 	strb r1, [r5, #0x38]
@@ -4301,7 +4301,7 @@ _0230CE04:
 	mov r1, #0x58
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
-	ldrne r0, _0230D06C ; =ov10_022C4510
+	ldrne r0, _0230D06C ; =SUPER_LUCK_CRIT_RATE_BOOST
 	movne r1, #1
 	ldrnesh r0, [r0]
 	strneb r1, [r5, #0x49]
@@ -4310,7 +4310,7 @@ _0230CE04:
 	mov r0, sb
 	bl ItemIsActive__0230A9DC
 	cmp r0, #0
-	ldrne r0, _0230D068 ; =ov10_022C46F0
+	ldrne r0, _0230D068 ; =SCOPE_LENS_CRIT_RATE_BOOST
 	movne r1, #1
 	ldrnesh r0, [r0]
 	strneb r1, [r5, #0x39]
@@ -4321,7 +4321,7 @@ _0230CE04:
 	mov r1, #1
 	bl IqSkillIsEnabled
 	cmp r0, #0
-	ldrne r0, _0230D070 ; =ov10_022C45E0
+	ldrne r0, _0230D070 ; =TYPE_ADVANTAGE_MASTER_CRIT_RATE
 	movne r1, #1
 	ldrnesh r4, [r0]
 	strneb r1, [r5, #0x3d]
@@ -4347,14 +4347,14 @@ _0230CE74:
 	cmp r0, #0
 	add r0, sp, #0xb8
 	beq _0230CEE0
-	ldr r2, _0230D074 ; =ov29_0235284C
+	ldr r2, _0230D074 ; =DAMAGE_MULTIPLIER_2
 	mov r1, r0
 	bl MultiplyFixedPoint64
 	mov r0, #1
 	strb r0, [r5, #0x4a]
 	b _0230CEEC
 _0230CEE0:
-	ldr r2, _0230D078 ; =ov29_02352844
+	ldr r2, _0230D078 ; =DAMAGE_MULTIPLIER_1_5
 	mov r1, r0
 	bl MultiplyFixedPoint64
 _0230CEEC:
@@ -4420,7 +4420,7 @@ _0230CFBC:
 	bl IqSkillIsEnabled
 	cmp r0, #0
 	beq _0230CFFC
-	ldr r0, _0230D080 ; =ov10_022C47F8
+	ldr r0, _0230D080 ; =POWER_PITCHER_DAMAGE_MULTIPLIER
 	ldr r2, [r8]
 	ldr r1, [r0]
 	mov r0, r2, lsl #8
@@ -4440,7 +4440,7 @@ ov29_0230D000: ; 0x0230D000
 	bl ExclusiveItemEffectIsActive__0230A9B8
 	cmp r0, #0
 	beq _0230D038
-	ldr r0, _0230D084 ; =ov10_022C4844
+	ldr r0, _0230D084 ; =AIR_BLADE_DAMAGE_MULTIPLIER
 	ldr r2, [r8]
 	ldr r1, [r0]
 	mov r0, r2, lsl #8
@@ -4461,15 +4461,15 @@ _0230D054:
 	.align 2, 0
 _0230D05C: .word 0x00000C58
 _0230D060: .word 0x00000C57
-_0230D064: .word ov29_0235283C
-_0230D068: .word ov10_022C46F0
-_0230D06C: .word ov10_022C4510
-_0230D070: .word ov10_022C45E0
-_0230D074: .word ov29_0235284C
-_0230D078: .word ov29_02352844
+_0230D064: .word DAMAGE_MULTIPLIER_0_5
+_0230D068: .word SCOPE_LENS_CRIT_RATE_BOOST
+_0230D06C: .word SUPER_LUCK_CRIT_RATE_BOOST
+_0230D070: .word TYPE_ADVANTAGE_MASTER_CRIT_RATE
+_0230D074: .word DAMAGE_MULTIPLIER_2
+_0230D078: .word DAMAGE_MULTIPLIER_1_5
 _0230D07C: .word 0x00000195
-_0230D080: .word ov10_022C47F8
-_0230D084: .word ov10_022C4844
+_0230D080: .word POWER_PITCHER_DAMAGE_MULTIPLIER
+_0230D084: .word AIR_BLADE_DAMAGE_MULTIPLIER
 	arm_func_end ov29_0230D000
 
 	arm_func_start ov29_0230D088
@@ -4644,7 +4644,7 @@ _0230D298:
 	cmp r0, #0
 	beq _0230D2F8
 	ldr r2, [sp, #0x10]
-	ldr r0, _0230D39C ; =ov10_022C4D14
+	ldr r0, _0230D39C ; =TYPE_MATCHUP_COMBINATOR_TABLE
 	ldr r1, [sp, #0x14]
 	add r0, r0, r2, lsl #4
 	ldr r0, [r0, r1, lsl #2]
@@ -4661,7 +4661,7 @@ _0230D2F8:
 	bl IqSkillIsEnabled
 	cmp r0, #0
 	beq _0230D334
-	ldr r1, _0230D3A4 ; =ov10_022C47F8
+	ldr r1, _0230D3A4 ; =POWER_PITCHER_DAMAGE_MULTIPLIER
 	mov r0, r8
 	ldr r1, [r1]
 	bl MultiplyByFixedPoint
@@ -4694,9 +4694,9 @@ _0230D334:
 	add sp, sp, #0x2c
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0230D39C: .word ov10_022C4D14
+_0230D39C: .word TYPE_MATCHUP_COMBINATOR_TABLE
 _0230D3A0: .word 0x00000256
-_0230D3A4: .word ov10_022C47F8
+_0230D3A4: .word POWER_PITCHER_DAMAGE_MULTIPLIER
 	arm_func_end CalcDamageFixed
 
 	arm_func_start CalcDamageFixedNoCategory
@@ -5627,7 +5627,7 @@ _0230DFD4:
 	ldrnesh r0, [r0]
 	mov r1, r1, lsl #1
 	addne r6, r6, r0
-	ldr r0, _0230E060 ; =ov10_022C5064
+	ldr r0, _0230E060 ; =RECRUITMENT_LEVEL_BOOST_TABLE
 	ldrsh r0, [r0, r1]
 	add r0, r6, r0
 	cmp r4, r0
@@ -5654,7 +5654,7 @@ _0230E050: .word ov10_022C4708
 _0230E054: .word ov10_022C4704
 _0230E058: .word ov10_022C4700
 _0230E05C: .word ov10_022C46FC
-_0230E060: .word ov10_022C5064
+_0230E060: .word RECRUITMENT_LEVEL_BOOST_TABLE
 	arm_func_end RecruitCheck
 
 	arm_func_start TryRecruit
@@ -6123,14 +6123,14 @@ TrySpawnMonsterAndTickSpawnCounter: ; 0x0230E6BC
 	ldrb r1, [r7, #0x790]
 	cmp r1, #0
 	bne _0230E710
-	ldr r1, _0230E8DC ; =ov10_022C44DC
+	ldr r1, _0230E8DC ; =SPAWN_COOLDOWN
 	ldrsh r2, [r0, #0x82]
 	ldrsh r0, [r1]
 	cmp r2, r0
 	bge _0230E724
 	b _0230E8D0
 _0230E710:
-	ldr r1, _0230E8E0 ; =ov10_022C4640
+	ldr r1, _0230E8E0 ; =SPAWN_COOLDOWN_THIEF_ALERT
 	ldrsh r2, [r0, #0x82]
 	ldrsh r0, [r1]
 	cmp r2, r0
@@ -6188,13 +6188,13 @@ _0230E7B8:
 	ldrb r0, [r0, #0xc9]
 	cmp r0, #0xff
 	bne _0230E7FC
-	ldr r0, _0230E8E4 ; =ov10_022C4430
+	ldr r0, _0230E8E4 ; =SPAWN_CAP_NO_MONSTER_HOUSE
 	ldrsh r0, [r0]
 	cmp r5, r0
 	blt _0230E80C
 	b _0230E8D0
 _0230E7FC:
-	ldr r0, _0230E8E8 ; =ov10_022C46A4
+	ldr r0, _0230E8E8 ; =SPAWN_CAP_WITH_MONSTER_HOUSE
 	ldrsh r0, [r0]
 	cmp r5, r0
 	bge _0230E8D0
@@ -6256,9 +6256,9 @@ _0230E8D0:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0230E8D8: .word ov29_02353538
-_0230E8DC: .word ov10_022C44DC
-_0230E8E0: .word ov10_022C4640
-_0230E8E4: .word ov10_022C4430
-_0230E8E8: .word ov10_022C46A4
+_0230E8DC: .word SPAWN_COOLDOWN
+_0230E8E0: .word SPAWN_COOLDOWN_THIEF_ALERT
+_0230E8E4: .word SPAWN_CAP_NO_MONSTER_HOUSE
+_0230E8E8: .word SPAWN_CAP_WITH_MONSTER_HOUSE
 _0230E8EC: .word 0x00000C5D
 	arm_func_end TrySpawnMonsterAndTickSpawnCounter

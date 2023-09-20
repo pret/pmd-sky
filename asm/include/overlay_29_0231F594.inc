@@ -5,6 +5,7 @@
 .public AreOrbsAllowedVeneer
 .public AreTrawlOrbsAllowed
 .public DetermineTileWalkableNeighbors
+.public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DrawMinimapTile
 .public EntityIsValid__0231FBFC
 .public GetItemInfo
@@ -21,7 +22,6 @@
 .public ov29_02304B64
 .public ov29_02336694
 .public ov29_023457C8
-.public ov29_02351844
 .public ov29_02353538
 .public RemoveGroundItem
 .public SpawnItem

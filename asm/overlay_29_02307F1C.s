@@ -152,7 +152,7 @@ _0230811C:
 	blt _023080B4
 _02308124:
 	ldr r0, _02308274 ; =ov10_022C4560
-	ldr r1, _02308278 ; =ov10_022C4660
+	ldr r1, _02308278 ; =MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 	ldrsh r0, [r0]
 	ldrsh r1, [r1]
 	bl DungeonRandRange
@@ -248,5 +248,5 @@ _02308268:
 	.align 2, 0
 _02308270: .word ov29_02353538
 _02308274: .word ov10_022C4560
-_02308278: .word ov10_022C4660
+_02308278: .word MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 	arm_func_end TryTriggerMonsterHouse

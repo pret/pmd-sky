@@ -1460,7 +1460,7 @@ _02310474:
 	cmp r0, #0
 	beq _023104C0
 	ldrb r1, [r4, #0x11f]
-	ldr r0, _02310AA8 ; =ov10_022C466C
+	ldr r0, _02310AA8 ; =SPEED_BOOST_TURNS
 	add r2, r1, #1
 	ldrsh r0, [r0]
 	and r1, r2, #0xff
@@ -1508,13 +1508,13 @@ _023104F8:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r1, _02310AAC ; =ov10_022C4610
+	ldr r1, _02310AAC ; =BURN_DAMAGE_COOLDOWN
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r5
 	strb r2, [r4, #0xc1]
 	bl ov29_02307BDC
-	ldr r0, _02310AB0 ; =ov10_022C44D4
+	ldr r0, _02310AB0 ; =BURN_DAMAGE
 	mov r2, #1
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1671,7 +1671,7 @@ _02310754:
 	ldreqb r0, [r4, #0xbf]
 	cmpeq r0, #2
 	bne _02310FF4
-	ldr r1, _02310AC0 ; =ov10_022C46A8
+	ldr r1, _02310AC0 ; =POISON_DAMAGE_COOLDOWN
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -1682,7 +1682,7 @@ _02310754:
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023107F8
-	ldr r0, _02310AC4 ; =ov10_022C44D8
+	ldr r0, _02310AC4 ; =POISON_DAMAGE
 	mov r6, #1
 	ldrsh r2, [r0]
 	mov r0, r5
@@ -1692,7 +1692,7 @@ _02310754:
 	bl TryIncreaseHp
 	b _02310810
 _023107F8:
-	ldr r0, _02310AC4 ; =ov10_022C44D8
+	ldr r0, _02310AC4 ; =POISON_DAMAGE
 	mov r2, #3
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1721,7 +1721,7 @@ _02310830:
 	cmp r6, #0x1d
 	addlo r0, r6, #1
 	strlob r0, [r4, #0xc2]
-	ldr r0, _02310AC8 ; =ov10_022C4414
+	ldr r0, _02310AC8 ; =BAD_POISON_DAMAGE_COOLDOWN
 	cmp r6, #0x1d
 	ldrsh r0, [r0]
 	movge r6, #0x1d
@@ -1747,7 +1747,7 @@ _02310830:
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023108F4
-	ldr r0, _02310ACC ; =ov10_022C4C9C
+	ldr r0, _02310ACC ; =BAD_POISON_DAMAGE_TABLE
 	mov r1, r6, lsl #1
 	ldrsh r2, [r0, r1]
 	mov r6, #1
@@ -1758,7 +1758,7 @@ _02310830:
 	bl TryIncreaseHp
 	b _02310910
 _023108F4:
-	ldr r0, _02310ACC ; =ov10_022C4C9C
+	ldr r0, _02310ACC ; =BAD_POISON_DAMAGE_TABLE
 	mov r1, r6, lsl #1
 	ldrsh r1, [r0, r1]
 	mov r2, #3
@@ -1873,16 +1873,16 @@ _02310A98: .word 0x00000DBD
 _02310A9C: .word ov10_022C46EC
 _02310AA0: .word 0x0000025F
 _02310AA4: .word ov10_022C46A0
-_02310AA8: .word ov10_022C466C
-_02310AAC: .word ov10_022C4610
-_02310AB0: .word ov10_022C44D4
+_02310AA8: .word SPEED_BOOST_TURNS
+_02310AAC: .word BURN_DAMAGE_COOLDOWN
+_02310AB0: .word BURN_DAMAGE
 _02310AB4: .word 0x000003E7
 _02310AB8: .word ov10_022C4664
 _02310ABC: .word ov10_022C464C
-_02310AC0: .word ov10_022C46A8
-_02310AC4: .word ov10_022C44D8
-_02310AC8: .word ov10_022C4414
-_02310ACC: .word ov10_022C4C9C
+_02310AC0: .word POISON_DAMAGE_COOLDOWN
+_02310AC4: .word POISON_DAMAGE
+_02310AC8: .word BAD_POISON_DAMAGE_COOLDOWN
+_02310ACC: .word BAD_POISON_DAMAGE_TABLE
 _02310AD0: .word ov10_022C4454
 _02310AD4: .word ov10_022C446C
 _02310AD8: .word ov10_022C45F0
@@ -1891,8 +1891,8 @@ _02310AE0: .word 0x0000024A
 _02310AE4: .word ov10_022C45E8
 _02310AE8: .word ov10_022C4590
 _02310AEC: .word ov10_022C44BC
-_02310AF0: .word ov10_022C46AC
-_02310AF4: .word ov10_022C4588
+_02310AF0: .word LEECH_SEED_DAMAGE_COOLDOWN
+_02310AF4: .word LEECH_SEED_HP_DRAIN
 _02310AF8:
 	cmp r0, #5
 	bne _02310B6C
@@ -1994,12 +1994,12 @@ _02310C28:
 	ldr r0, _02310A84 ; =ov29_02353538
 	ldrb r2, [r4, #0xe8]
 	ldr r0, [r0]
-	ldr r1, _02310AF0 ; =ov10_022C46AC
+	ldr r1, _02310AF0 ; =LEECH_SEED_DAMAGE_COOLDOWN
 	add r0, r0, r2, lsl #2
 	add r0, r0, #0x12000
 	ldr r7, [r0, #0xb78]
 	ldrsh r1, [r1]
-	ldr r0, _02310AF4 ; =ov10_022C4588
+	ldr r0, _02310AF4 ; =LEECH_SEED_HP_DRAIN
 	cmp r7, #0
 	ldrsh r6, [r0]
 	strb r1, [r4, #0xea]

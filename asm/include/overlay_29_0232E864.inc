@@ -5,6 +5,7 @@
 .public ApplyDamageAndEffects
 .public ApplyDamageAndEffectsWrapper
 .public AreEntitiesAdjacent
+.public ATK_STAT_IDX
 .public CalcDamage
 .public CanAttackInDirection
 .public CanBeSnatched
@@ -335,6 +336,7 @@
 .public EntityIsValid__0232E840
 .public EntityIsValid__02333FAC
 .public ExclusiveItemEffectFlagTest
+.public FOREWARN_FORCED_MISS_CHANCE
 .public GetApparentWeather
 .public GetDamageSourceWrapper
 .public GetDirectionTowardsPosition
@@ -369,7 +371,6 @@
 .public ov01_0233103C
 .public ov01_023315F4
 .public ov10_022BFD6C
-.public ov10_022C4468
 .public ov10_022C4480
 .public ov10_022C4504
 .public ov10_022C4508
@@ -414,8 +415,6 @@
 .public ov29_023381C0
 .public ov29_02344B44
 .public ov29_0234B034
-.public ov29_02352AE8
-.public ov29_02352AEC
 .public ov29_02353538
 .public ov29_02353718
 .public ov29_0237CA68
@@ -424,6 +423,7 @@
 .public ov29_0237CA80
 .public PlayMoveAnimation
 .public ShouldDisplayEntityWrapper
+.public SPATK_STAT_IDX
 .public sub_02050FF8
 .public SubFixedPoint
 .public SubstitutePlaceholderStringTags

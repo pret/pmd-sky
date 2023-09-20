@@ -12,6 +12,8 @@
 .public EnemyEvolution
 .public EntityIsValid__022EC608
 .public ExecuteMonsterAction
+.public FIXED_ROOM_PROPERTIES_TABLE
+.public FRACTIONAL_TURN_SEQUENCE
 .public GetCanMoveFlag
 .public GetEquivItemIndex
 .public GetFloorType
@@ -25,12 +27,11 @@
 .public IsCurrentFixedRoomBossFight
 .public IsFloorOver
 .public IsHM
+.public ITEM_CATEGORY_ACTIONS
 .public ItemZInit
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MoveMonsterToPos
-.public ov10_022C51FC
-.public ov10_022C555C
-.public ov10_022C6C70
+.public MUSIC_ID_TABLE
 .public ov29_022E555C
 .public ov29_022E81F8
 .public ov29_022EF9C8
@@ -39,12 +40,10 @@
 .public ov29_02347040
 .public ov29_02348FD8
 .public ov29_023516E8
-.public ov29_02352010
 .public ov29_02352030
 .public ov29_02352032
 .public ov29_02352070
 .public ov29_02352074
-.public ov29_02352284
 .public ov29_023522B6
 .public ov29_02353538
 .public ov29_02353570
@@ -54,6 +53,7 @@
 .public ov29_0237C920
 .public ov29_0237C922
 .public ov29_0237C96C
+.public RANDOM_MUSIC_ID_TABLE
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveEquivItemNoHole
 .public RemoveGroundItem

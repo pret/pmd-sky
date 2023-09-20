@@ -151,14 +151,14 @@ ApplyVileSeedEffect: ; 0x0231CD80
 	strh r2, [sp, #0xa]
 	cmp r0, #0
 	strgth r0, [sp, #0xa]
-	ldr r0, _0231CE14 ; =ov29_02352AEC
+	ldr r0, _0231CE14 ; =ATK_STAT_IDX
 	ldrsh r3, [sp, #8]
 	ldr r2, [r0]
 	mov r0, r5
 	mov r1, r4
 	str ip, [sp, #4]
 	bl LowerDefensiveStat
-	ldr r0, _0231CE18 ; =ov29_02352AE8
+	ldr r0, _0231CE18 ; =SPATK_STAT_IDX
 	mov ip, #1
 	ldr r2, [r0]
 	str ip, [sp]
@@ -171,8 +171,8 @@ ApplyVileSeedEffect: ; 0x0231CD80
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _0231CE10: .word ov29_023529AC
-_0231CE14: .word ov29_02352AEC
-_0231CE18: .word ov29_02352AE8
+_0231CE14: .word ATK_STAT_IDX
+_0231CE18: .word SPATK_STAT_IDX
 	arm_func_end ApplyVileSeedEffect
 
 	arm_func_start ApplyViolentSeedEffect
@@ -180,14 +180,14 @@ ApplyViolentSeedEffect: ; 0x0231CE1C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	ldr r4, [r5, #0xb4]
-	ldr r2, _0231CE60 ; =ov29_02352AEC
+	ldr r2, _0231CE60 ; =ATK_STAT_IDX
 	ldrsh r3, [r4, #0x24]
 	ldr r2, [r2]
 	mov r6, r0
 	rsb r3, r3, #0x14
 	bl BoostOffensiveStat
 	ldrsh r3, [r4, #0x26]
-	ldr r1, _0231CE64 ; =ov29_02352AE8
+	ldr r1, _0231CE64 ; =SPATK_STAT_IDX
 	mov r0, r6
 	ldr r2, [r1]
 	mov r1, r5
@@ -195,8 +195,8 @@ ApplyViolentSeedEffect: ; 0x0231CE1C
 	bl BoostOffensiveStat
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0231CE60: .word ov29_02352AEC
-_0231CE64: .word ov29_02352AE8
+_0231CE60: .word ATK_STAT_IDX
+_0231CE64: .word SPATK_STAT_IDX
 	arm_func_end ApplyViolentSeedEffect
 
 	arm_func_start ApplyGinsengEffect
@@ -209,7 +209,7 @@ ApplyGinsengEffect: ; 0x0231CE68
 	mov r4, #0
 	mov r5, #1
 	bl DungeonRandInt
-	ldr r1, _0231CF78 ; =ov10_022C46C0
+	ldr r1, _0231CF78 ; =GINSENG_CHANCE_3
 	mov ip, #0
 	ldrsh r1, [r1]
 	add r3, r6, #0x124
@@ -275,7 +275,7 @@ _0231CF64:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0231CF78: .word ov10_022C46C0
+_0231CF78: .word GINSENG_CHANCE_3
 _0231CF7C: .word 0x00000BEF
 _0231CF80: .word 0x00000BEE
 	arm_func_end ApplyGinsengEffect
@@ -404,7 +404,7 @@ _0231D108:
 	cmp ip, r0
 	addgt fp, r4, ip
 	addle fp, r4, r0
-	ldr ip, _0231D474 ; =_020A2538
+	ldr ip, _0231D474 ; =GUMMI_BELLY_RESTORE_TABLE
 	mov r0, r2, lsl #1
 	add r2, ip, r1
 	add r1, ip, r6
@@ -471,7 +471,7 @@ _0231D214:
 	movge fp, #2
 	movlt fp, #3
 _0231D23C:
-	ldr r0, _0231D480 ; =ov29_023532D0
+	ldr r0, _0231D480 ; =GUMMI_IQ_STRING_IDS
 	mov r1, r5, lsl #1
 	ldrh r2, [r0, r1]
 	mov r0, sl
@@ -631,10 +631,10 @@ _0231D460:
 _0231D468: .word WONDER_GUMMI_IQ_GAIN
 _0231D46C: .word _020A1894
 _0231D470: .word IQ_GUMMI_GAIN_TABLE
-_0231D474: .word _020A2538
+_0231D474: .word GUMMI_BELLY_RESTORE_TABLE
 _0231D478: .word 0x000003E7
 _0231D47C: .word 0x00000BF3
-_0231D480: .word ov29_023532D0
+_0231D480: .word GUMMI_IQ_STRING_IDS
 _0231D484: .word ov29_02353324
 _0231D488: .word ov10_022C44CC
 _0231D48C: .word ov10_022C45E4
@@ -758,7 +758,7 @@ _0231D60C:
 	bl TryInflictParalysisStatus
 	b _0231D66C
 _0231D624:
-	ldr r0, _0231D678 ; =ov29_02352AEC
+	ldr r0, _0231D678 ; =ATK_STAT_IDX
 	mov ip, #1
 	ldr r2, [r0]
 	str ip, [sp]
@@ -767,7 +767,7 @@ _0231D624:
 	mov r3, #3
 	str ip, [sp, #4]
 	bl LowerOffensiveStat
-	ldr r0, _0231D67C ; =ov29_02352AE8
+	ldr r0, _0231D67C ; =SPATK_STAT_IDX
 	mov ip, #1
 	str ip, [sp]
 	ldr r2, [r0]
@@ -781,8 +781,8 @@ _0231D66C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0231D674: .word ov10_022C4680
-_0231D678: .word ov29_02352AEC
-_0231D67C: .word ov29_02352AE8
+_0231D678: .word ATK_STAT_IDX
+_0231D67C: .word SPATK_STAT_IDX
 	arm_func_end ApplyGrimyFoodEffect
 
 	arm_func_start ApplyMixElixirEffect
@@ -2171,7 +2171,7 @@ _0231E9B0:
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	ldr r0, _0231E9EC ; =ov10_022C4B74
+	ldr r0, _0231E9EC ; =EAT_ITEM_EFFECT_IGNORE_LIST
 	b _0231E9D8
 _0231E9C8:
 	cmp r4, r1
@@ -2185,7 +2185,7 @@ _0231E9D8:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0231E9EC: .word ov10_022C4B74
+_0231E9EC: .word EAT_ITEM_EFFECT_IGNORE_LIST
 	arm_func_end ShouldTryEatItem
 
 	arm_func_start GetMaxPpWrapper

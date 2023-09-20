@@ -6,13 +6,13 @@
 	arm_func_start DoMoveDefendOrder
 DoMoveDefendOrder: ; 0x0232E274
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _0232E2B0 ; =ov29_02352AEC
+	ldr r2, _0232E2B0 ; =ATK_STAT_IDX
 	mov r3, #1
 	ldr r2, [r2]
 	mov r5, r0
 	mov r4, r1
 	bl BoostDefensiveStat
-	ldr r1, _0232E2B4 ; =ov29_02352AE8
+	ldr r1, _0232E2B4 ; =SPATK_STAT_IDX
 	mov r0, r5
 	ldr r2, [r1]
 	mov r1, r4
@@ -21,8 +21,8 @@ DoMoveDefendOrder: ; 0x0232E274
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0232E2B0: .word ov29_02352AEC
-_0232E2B4: .word ov29_02352AE8
+_0232E2B0: .word ATK_STAT_IDX
+_0232E2B4: .word SPATK_STAT_IDX
 	arm_func_end DoMoveDefendOrder
 
 	arm_func_start DoMoveFireFang
@@ -42,7 +42,7 @@ DoMoveFireFang: ; 0x0232E2B8
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	ldr r1, _0232E360 ; =ov10_022C4684
+	ldr r1, _0232E360 ; =FLARE_BLITZ_BURN_CHANCE
 	mov r0, r7
 	ldrsh r2, [r1]
 	mov r1, r6
@@ -56,7 +56,7 @@ DoMoveFireFang: ; 0x0232E2B8
 	str r2, [sp]
 	bl TryInflictBurnStatus
 _0232E328:
-	ldr r1, _0232E364 ; =ov10_022C449C
+	ldr r1, _0232E364 ; =FIRE_FANG_CRINGE_CHANCE
 	mov r0, r7
 	ldrsh r2, [r1]
 	mov r1, r6
@@ -72,8 +72,8 @@ _0232E358:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0232E360: .word ov10_022C4684
-_0232E364: .word ov10_022C449C
+_0232E360: .word FLARE_BLITZ_BURN_CHANCE
+_0232E364: .word FIRE_FANG_CRINGE_CHANCE
 	arm_func_end DoMoveFireFang
 
 	arm_func_start DoMoveLunarDance
@@ -84,7 +84,7 @@ DoMoveLunarDance: ; 0x0232E368
 	cmp r5, r4
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r2, _0232E3C8 ; =ov10_022C46F4
+	ldr r2, _0232E3C8 ; =HEALING_WISH_HP_RESTORATION
 	mov ip, #1
 	ldrsh r2, [r2]
 	mov r3, #0
@@ -103,7 +103,7 @@ DoMoveLunarDance: ; 0x0232E368
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0232E3C8: .word ov10_022C46F4
+_0232E3C8: .word HEALING_WISH_HP_RESTORATION
 _0232E3CC: .word 0x000003E7
 	arm_func_end DoMoveLunarDance
 
@@ -249,7 +249,7 @@ DoMoveCaptivate: ; 0x0232E560
 	bl DefenderAbilityIsActiveMoveEffects__0232DE20
 	cmp r0, #0
 	bne _0232E5D4
-	ldr r0, _0232E61C ; =ov29_02352AE8
+	ldr r0, _0232E61C ; =SPATK_STAT_IDX
 	mov ip, #1
 	ldr r2, [r0]
 	str ip, [sp]
@@ -281,7 +281,7 @@ _0232E614:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0232E61C: .word ov29_02352AE8
+_0232E61C: .word SPATK_STAT_IDX
 _0232E620: .word 0x00000F0F
 	arm_func_end DoMoveCaptivate
 
@@ -296,7 +296,7 @@ DoMoveLeafStorm: ; 0x0232E624
 	cmp r0, #0
 	moveq r0, #0
 	beq _0232E670
-	ldr r0, _0232E678 ; =ov29_02352AE8
+	ldr r0, _0232E678 ; =SPATK_STAT_IDX
 	mov ip, #0
 	ldr r2, [r0]
 	str ip, [sp]
@@ -310,7 +310,7 @@ _0232E670:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0232E678: .word ov29_02352AE8
+_0232E678: .word SPATK_STAT_IDX
 	arm_func_end DoMoveLeafStorm
 
 	arm_func_start DoMoveDracoMeteor
@@ -327,7 +327,7 @@ DoMoveDracoMeteor: ; 0x0232E67C
 	ldrsh r0, [sp, #0x10]
 	cmp r0, #0
 	bne _0232E6D0
-	ldr r0, _0232E6DC ; =ov29_02352AE8
+	ldr r0, _0232E6DC ; =SPATK_STAT_IDX
 	mov ip, #0
 	ldr r2, [r0]
 	str ip, [sp]
@@ -342,7 +342,7 @@ _0232E6D4:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0232E6DC: .word ov29_02352AE8
+_0232E6DC: .word SPATK_STAT_IDX
 	arm_func_end DoMoveDracoMeteor
 
 	arm_func_start DoMoveRockPolish
@@ -365,14 +365,14 @@ DoMoveRockPolish: ; 0x0232E6E0
 	arm_func_start DoMoveNastyPlot
 DoMoveNastyPlot: ; 0x0232E714
 	stmdb sp!, {r3, lr}
-	ldr r2, _0232E730 ; =ov29_02352AE8
+	ldr r2, _0232E730 ; =SPATK_STAT_IDX
 	mov r3, #2
 	ldr r2, [r2]
 	bl BoostOffensiveStat
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0232E730: .word ov29_02352AE8
+_0232E730: .word SPATK_STAT_IDX
 	arm_func_end DoMoveNastyPlot
 
 	arm_func_start DoMoveTag0x1AB

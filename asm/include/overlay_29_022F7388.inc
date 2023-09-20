@@ -7,10 +7,12 @@
 .public AnimationDelayOrSomething
 .public ApplyItemEffect
 .public BAG_ITEMS_PTR_MIRROR
+.public BELLY_DRAIN_IN_WALLS_INT
 .public CanAttackInDirection
 .public CanMonsterSpawn
 .public CanMonsterUseItem
 .public CanSeeTarget
+.public CASTFORM_WEATHER_ATTRIBUTE_TABLE
 .public CeilFixedPoint
 .public CheckTeamMemberIdx
 .public Conversion2IsActive
@@ -32,6 +34,7 @@
 .public EntityIsValid__022F7364
 .public EntityIsValid__022FC99C
 .public ExclusiveItemEffectFlagTest
+.public FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
 .public FreeOtherWrappedMonsters
 .public GendersEqualNotGenderless
 .public GetAbility
@@ -116,11 +119,8 @@
 .public MemFree
 .public MonsterIsType
 .public OpenMessageLog
-.public ov10_022C48DC
-.public ov10_022C4C6C
 .public ov10_022C4C6E
 .public ov10_022C4C70
-.public ov10_022C5938
 .public ov29_022DDA54
 .public ov29_022DDB68
 .public ov29_022E0A04
@@ -177,7 +177,6 @@
 .public ov29_0234EF24
 .public ov29_0235171E
 .public ov29_02351E28
-.public ov29_02352768
 .public ov29_02353538
 .public ov29_0235355C
 .public ov29_0237C9B0
@@ -225,4 +224,5 @@
 .public UpdateMinimap
 .public UpdateStatusIconFlags
 .public WAN_TABLE
+.public WEATHER_BALL_TYPE_TABLE
 .public YesNoMenu

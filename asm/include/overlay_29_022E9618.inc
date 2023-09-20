@@ -2,6 +2,10 @@
 .public __divsi3
 .public _020AFC4C
 .public abs
+.public DIRECTIONS_XY
+.public DISPLACEMENTS_WITHIN_2_LARGEST_FIRST
+.public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
+.public DISPLACEMENTS_WITHIN_3
 .public DisplayUi
 .public EntityIsValid__022E95F4
 .public GetLeader
@@ -32,14 +36,10 @@
 .public ov29_0234B854
 .public ov29_02351628
 .public ov29_02351658
-.public DIRECTIONS_XY
 .public ov29_0235171E
 .public ov29_0235179C
 .public ov29_023517A0
 .public ov29_023517A2
-.public ov29_023517DC
-.public ov29_02351844
-.public ov29_023518AC
 .public ov29_02353538
 .public ov29_02353540
 .public ov29_02353560
@@ -54,4 +54,3 @@
 .public sub_02051E20
 .public UpdateCamera
 .public UpdateMinimap
-

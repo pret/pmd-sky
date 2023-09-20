@@ -132,7 +132,7 @@ DoMoveSiesta: ; 0x0232C6B4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
-	ldr r1, _0232C6EC ; =ov10_022C4720
+	ldr r1, _0232C6EC ; =SLEEP_TURN_RANGE
 	mov r0, r4
 	mov r2, #1
 	bl CalcStatusDuration
@@ -144,7 +144,7 @@ DoMoveSiesta: ; 0x0232C6B4
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0232C6EC: .word ov10_022C4720
+_0232C6EC: .word SLEEP_TURN_RANGE
 	arm_func_end DoMoveSiesta
 
 	arm_func_start DoMoveTwoEdge
@@ -1091,7 +1091,7 @@ DoMoveHealingWish: ; 0x0232D298
 	cmp r5, r4
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r2, _0232D2E4 ; =ov10_022C46F4
+	ldr r2, _0232D2E4 ; =HEALING_WISH_HP_RESTORATION
 	mov ip, #1
 	ldrsh r2, [r2]
 	mov r3, #0
@@ -1105,7 +1105,7 @@ DoMoveHealingWish: ; 0x0232D298
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0232D2E4: .word ov10_022C46F4
+_0232D2E4: .word HEALING_WISH_HP_RESTORATION
 	arm_func_end DoMoveHealingWish
 
 	arm_func_start DoMoveCloseCombat
@@ -1119,7 +1119,7 @@ DoMoveCloseCombat: ; 0x0232D2E8
 	cmp r0, #0
 	moveq r0, #0
 	beq _0232D358
-	ldr r0, _0232D360 ; =ov29_02352AEC
+	ldr r0, _0232D360 ; =ATK_STAT_IDX
 	mov r3, #1
 	ldr r2, [r0]
 	mov r0, r4
@@ -1128,7 +1128,7 @@ DoMoveCloseCombat: ; 0x0232D2E8
 	mov ip, #0
 	str ip, [sp, #4]
 	bl LowerDefensiveStat
-	ldr r0, _0232D364 ; =ov29_02352AE8
+	ldr r0, _0232D364 ; =SPATK_STAT_IDX
 	mov r3, #1
 	ldr r2, [r0]
 	mov r0, r4
@@ -1142,8 +1142,8 @@ _0232D358:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0232D360: .word ov29_02352AEC
-_0232D364: .word ov29_02352AE8
+_0232D360: .word ATK_STAT_IDX
+_0232D364: .word SPATK_STAT_IDX
 	arm_func_end DoMoveCloseCombat
 
 	arm_func_start DoMoveLuckyChant
@@ -1186,7 +1186,7 @@ _0232D3D4: .word 0x00000F2E
 	arm_func_start DoMoveHealOrder
 DoMoveHealOrder: ; 0x0232D3D8
 	stmdb sp!, {r3, lr}
-	ldr r2, _0232D3FC ; =ov10_022C44B8
+	ldr r2, _0232D3FC ; =HEAL_ORDER_HP_RESTORATION
 	mov ip, #1
 	ldrsh r2, [r2]
 	mov r3, #0
@@ -1195,7 +1195,7 @@ DoMoveHealOrder: ; 0x0232D3D8
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0232D3FC: .word ov10_022C44B8
+_0232D3FC: .word HEAL_ORDER_HP_RESTORATION
 	arm_func_end DoMoveHealOrder
 
 	arm_func_start DoMoveHealBlock
@@ -1219,7 +1219,7 @@ DoMoveThunderFang: ; 0x0232D418
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r1, _0232D4A4 ; =ov10_022C452C
+	ldr r1, _0232D4A4 ; =THUNDER_FANG_PARALYZE_CHANCE
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r4
@@ -1232,7 +1232,7 @@ DoMoveThunderFang: ; 0x0232D418
 	mov r3, r2
 	bl TryInflictParalysisStatus
 _0232D46C:
-	ldr r1, _0232D4A8 ; =ov10_022C4678
+	ldr r1, _0232D4A8 ; =THUNDER_FANG_CRINGE_CHANCE
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r4
@@ -1248,8 +1248,8 @@ _0232D49C:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0232D4A4: .word ov10_022C452C
-_0232D4A8: .word ov10_022C4678
+_0232D4A4: .word THUNDER_FANG_PARALYZE_CHANCE
+_0232D4A8: .word THUNDER_FANG_CRINGE_CHANCE
 	arm_func_end DoMoveThunderFang
 
 	arm_func_start DoMoveDefog
@@ -1276,7 +1276,7 @@ _0232D4E0:
 	mov r1, r5
 	bl EndReflectClassStatus
 _0232D4FC:
-	ldr r1, _0232D554 ; =ov29_02352AE8
+	ldr r1, _0232D554 ; =SPATK_STAT_IDX
 	mov r0, r6
 	ldr r2, [r1]
 	mov r1, r5
@@ -1286,7 +1286,7 @@ _0232D4FC:
 	bl GetApparentWeather
 	cmp r0, #6
 	bne _0232D548
-	ldr r1, _0232D558 ; =ov10_022C4654
+	ldr r1, _0232D558 ; =WEATHER_MOVE_TURN_COUNT
 	ldr r0, _0232D55C ; =ov29_02353538
 	ldrsh r3, [r1]
 	ldr r1, [r0]
@@ -1300,8 +1300,8 @@ _0232D548:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0232D550: .word 0x00000ED2
-_0232D554: .word ov29_02352AE8
-_0232D558: .word ov10_022C4654
+_0232D554: .word SPATK_STAT_IDX
+_0232D558: .word WEATHER_MOVE_TURN_COUNT
 _0232D55C: .word ov29_02353538
 	arm_func_end DoMoveDefog
 
@@ -1372,7 +1372,7 @@ DoMoveIceFang: ; 0x0232D620
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r1, _0232D6A8 ; =ov10_022C4518
+	ldr r1, _0232D6A8 ; =ICE_FANG_FREEZE_CHANCE
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r4
@@ -1384,7 +1384,7 @@ DoMoveIceFang: ; 0x0232D620
 	mov r2, #0
 	bl TryInflictFrozenStatus
 _0232D670:
-	ldr r1, _0232D6AC ; =ov10_022C453C
+	ldr r1, _0232D6AC ; =ICE_FANG_CRINGE_CHANCE
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r4
@@ -1400,8 +1400,8 @@ _0232D6A0:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0232D6A8: .word ov10_022C4518
-_0232D6AC: .word ov10_022C453C
+_0232D6A8: .word ICE_FANG_FREEZE_CHANCE
+_0232D6AC: .word ICE_FANG_CRINGE_CHANCE
 	arm_func_end DoMoveIceFang
 
 	arm_func_start DoMovePsychoShift
@@ -1550,7 +1550,7 @@ DoMoveShadowForce: ; 0x0232D860
 	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _0232D8CC
-	ldr r1, _0232D8F4 ; =ov10_022C47DC
+	ldr r1, _0232D8F4 ; =SHADOW_FORCE_DAMAGE_MULTIPLIER
 	mov r0, r7
 	ldr r3, [r1]
 	mov r1, r6
@@ -1581,7 +1581,7 @@ _0232D8EC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0232D8F4: .word ov10_022C47DC
+_0232D8F4: .word SHADOW_FORCE_DAMAGE_MULTIPLIER
 _0232D8F8: .word 0x00000CD7
 	arm_func_end DoMoveShadowForce
 
@@ -1639,14 +1639,14 @@ DoMoveChargeBeam: ; 0x0232D97C
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r1, _0232D9DC ; =ov10_022C44F0
+	ldr r1, _0232D9DC ; =CHARGE_BEAM_BOOST_SPECIAL_ATTACK_CHANCE
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r4
 	bl DungeonRandOutcomeUserTargetInteraction
 	cmp r0, #0
 	beq _0232D9D4
-	ldr r1, _0232D9E0 ; =ov29_02352AE8
+	ldr r1, _0232D9E0 ; =SPATK_STAT_IDX
 	mov r0, r5
 	ldr r2, [r1]
 	mov r1, r5
@@ -1656,8 +1656,8 @@ _0232D9D4:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0232D9DC: .word ov10_022C44F0
-_0232D9E0: .word ov29_02352AE8
+_0232D9DC: .word CHARGE_BEAM_BOOST_SPECIAL_ATTACK_CHANCE
+_0232D9E0: .word SPATK_STAT_IDX
 	arm_func_end DoMoveChargeBeam
 
 	arm_func_start DoMoveDamageEatItem
@@ -1780,7 +1780,7 @@ _0232DB7C:
 	ldr r0, [r1, r0, lsl #2]
 	cmp r0, #0
 	bne _0232DBAC
-	ldr r1, _0232DC4C ; =ov29_02352AEC
+	ldr r1, _0232DC4C ; =ATK_STAT_IDX
 	mov r0, r5
 	ldr r2, [r1]
 	mov r1, r4
@@ -1790,7 +1790,7 @@ _0232DB7C:
 _0232DBAC:
 	cmp r0, #2
 	bne _0232DBD0
-	ldr r1, _0232DC4C ; =ov29_02352AEC
+	ldr r1, _0232DC4C ; =ATK_STAT_IDX
 	mov r0, r5
 	ldr r2, [r1]
 	mov r1, r4
@@ -1800,7 +1800,7 @@ _0232DBAC:
 _0232DBD0:
 	cmp r0, #1
 	bne _0232DBF4
-	ldr r1, _0232DC50 ; =ov29_02352AE8
+	ldr r1, _0232DC50 ; =SPATK_STAT_IDX
 	mov r0, r5
 	ldr r2, [r1]
 	mov r1, r4
@@ -1810,7 +1810,7 @@ _0232DBD0:
 _0232DBF4:
 	cmp r0, #3
 	bne _0232DC18
-	ldr r1, _0232DC50 ; =ov29_02352AE8
+	ldr r1, _0232DC50 ; =SPATK_STAT_IDX
 	mov r0, r5
 	ldr r2, [r1]
 	mov r1, r4
@@ -1833,8 +1833,8 @@ _0232DC38:
 	.align 2, 0
 _0232DC44: .word ov29_02352B3C
 _0232DC48: .word 0x00000F0E
-_0232DC4C: .word ov29_02352AEC
-_0232DC50: .word ov29_02352AE8
+_0232DC4C: .word ATK_STAT_IDX
+_0232DC50: .word SPATK_STAT_IDX
 	arm_func_end DoMoveAcupressure
 
 	arm_func_start DoMoveMagnetRise
@@ -1900,7 +1900,7 @@ DoMoveLastResort: ; 0x0232DCD4
 _0232DD10:
 	cmp r0, #0
 	ble _0232DD44
-	ldr r1, _0232DD70 ; =ov10_022C4944
+	ldr r1, _0232DD70 ; =LAST_RESORT_DAMAGE_MULT_TABLE
 	sub r0, r0, #1
 	ldr r3, [r1, r0, lsl #2]
 	mov r0, r8
@@ -1925,7 +1925,7 @@ _0232DD64:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0232DD70: .word ov10_022C4944
+_0232DD70: .word LAST_RESORT_DAMAGE_MULT_TABLE
 _0232DD74: .word 0x00000EBC
 	arm_func_end DoMoveLastResort
 
@@ -2053,7 +2053,7 @@ DoMoveDamageHpDependent: ; 0x0232DE84
 	movle r5, #2
 	movgt r5, #3
 _0232DF08:
-	ldr r4, _0232DF34 ; =ov10_022C49B4
+	ldr r4, _0232DF34 ; =WRING_OUT_DAMAGE_MULT_TABLE
 	str r3, [sp]
 	ldr r3, [r4, r5, lsl #2]
 	bl DealDamage
@@ -2065,7 +2065,7 @@ _0232DF08:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _0232DF30: .word 0x000003E7
-_0232DF34: .word ov10_022C49B4
+_0232DF34: .word WRING_OUT_DAMAGE_MULT_TABLE
 	arm_func_end DoMoveDamageHpDependent
 
 	arm_func_start DoMoveHeartSwap
@@ -2119,7 +2119,7 @@ DoMoveRoost: ; 0x0232DFC8
 	bl GetApparentWeather
 	mov r3, #1
 	str r3, [sp]
-	ldr r1, _0232E07C ; =ov10_022C4964
+	ldr r1, _0232E07C ; =ROOST_HP_RESTORATION_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r2, [r1, r0]
 	mov r0, r5
@@ -2159,7 +2159,7 @@ _0232E070:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_0232E07C: .word ov10_022C4964
+_0232E07C: .word ROOST_HP_RESTORATION_TABLE
 _0232E080: .word 0x00000CC9
 	arm_func_end DoMoveRoost
 
@@ -2241,7 +2241,7 @@ DoMoveFlareBlitz: ; 0x0232E130
 	bl EntityIsValidMoveEffects__0232E250
 	cmp r0, #0
 	beq _0232E1B4
-	ldr r1, _0232E248 ; =ov10_022C4684
+	ldr r1, _0232E248 ; =FLARE_BLITZ_BURN_CHANCE
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r7
@@ -2295,6 +2295,6 @@ _0232E240:
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0232E248: .word ov10_022C4684
+_0232E248: .word FLARE_BLITZ_BURN_CHANCE
 _0232E24C: .word 0x000003E7
 	arm_func_end DoMoveFlareBlitz
