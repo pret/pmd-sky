@@ -352,7 +352,7 @@ WriteQuicksaveData: ; 0x02382C6C
 	mov r2, #4
 	str r3, [sp]
 	bl ov30_02385C54
-	ldr r1, _02382D6C ; =ov30_02386080
+	ldr r1, _02382D6C ; =OVERLAY30_JP_STRING_1
 	add r0, sp, #4
 	bl ov30_02385CE0
 	ldr r1, _02382D70 ; =ov29_02353538
@@ -362,7 +362,7 @@ WriteQuicksaveData: ; 0x02382C6C
 	add r1, r1, #0x348
 	add r1, r1, #0x400
 	bl ov30_02385C54
-	ldr r1, _02382D6C ; =ov30_02386080
+	ldr r1, _02382D6C ; =OVERLAY30_JP_STRING_1
 	add r0, sp, #4
 	bl ov30_02385CE0
 	ldr r2, _02382D70 ; =ov29_02353538
@@ -398,7 +398,7 @@ _02382CF8:
 	bl ov30_02382FB8
 	add r0, sp, #4
 	bl ov30_02383084
-	ldr r1, _02382D7C ; =ov30_0238608C
+	ldr r1, _02382D7C ; =OVERLAY30_JP_STRING_2
 	add r0, sp, #4
 	bl ov30_02385CE0
 	add r0, sp, #4
@@ -406,11 +406,11 @@ _02382CF8:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02382D6C: .word ov30_02386080
+_02382D6C: .word OVERLAY30_JP_STRING_1
 _02382D70: .word ov29_02353538
 _02382D74: .word 0x0002C9E6
 _02382D78: .word 0x0002C9EA
-_02382D7C: .word ov30_0238608C
+_02382D7C: .word OVERLAY30_JP_STRING_2
 	arm_func_end WriteQuicksaveData
 
 	arm_func_start ov31_02382D80
@@ -426,7 +426,7 @@ _02382D98:
 	add r2, r2, #1
 	cmp r2, #5
 	blt _02382D98
-	ldr r1, _02382E8C ; =ov30_02386080
+	ldr r1, _02382E8C ; =OVERLAY30_JP_STRING_1
 	mov r0, sl
 	bl ov30_02385CE0
 	mov sb, #0
@@ -495,7 +495,7 @@ _02382E78:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02382E8C: .word ov30_02386080
+_02382E8C: .word OVERLAY30_JP_STRING_1
 _02382E90: .word ov29_02353538
 	arm_func_end ov30_02382E18
 
@@ -512,7 +512,7 @@ _02382EAC:
 	add r2, r2, #1
 	cmp r2, #7
 	blt _02382EAC
-	ldr r1, _02382FB0 ; =ov30_02386080
+	ldr r1, _02382FB0 ; =OVERLAY30_JP_STRING_1
 	mov r0, sl
 	bl ov30_02385CE0
 	mov sb, #0
@@ -577,7 +577,7 @@ _02382F9C:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02382FB0: .word ov30_02386080
+_02382FB0: .word OVERLAY30_JP_STRING_1
 _02382FB4: .word ov29_02353538
 	arm_func_end ov30_02382E94
 
@@ -585,7 +585,7 @@ _02382FB4: .word ov29_02353538
 ov30_02382FB8: ; 0x02382FB8
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r2, _0238307C ; =ov29_02353538
-	ldr r1, _02383080 ; =ov30_02386080
+	ldr r1, _02383080 ; =OVERLAY30_JP_STRING_1
 	ldr r2, [r2]
 	mov r5, r0
 	add r2, r2, #0x2c
@@ -635,13 +635,13 @@ _02383034:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238307C: .word ov29_02353538
-_02383080: .word ov30_02386080
+_02383080: .word OVERLAY30_JP_STRING_1
 	arm_func_end ov30_02382FB8
 
 	arm_func_start ov30_02383084
 ov30_02383084: ; 0x02383084
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _023831E0 ; =ov30_02386080
+	ldr r1, _023831E0 ; =OVERLAY30_JP_STRING_1
 	mov r4, r0
 	bl ov30_02385CE0
 	ldr r1, _023831E4 ; =ov29_02353538
@@ -730,7 +730,7 @@ _023831B8:
 	blt _023831B8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023831E0: .word ov30_02386080
+_023831E0: .word OVERLAY30_JP_STRING_1
 _023831E4: .word ov29_02353538
 	arm_func_end ov30_02383084
 
@@ -1437,7 +1437,7 @@ _02383C4C:
 	arm_func_start ov30_02383C70
 ov30_02383C70: ; 0x02383C70
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r1, _02384090 ; =ov30_02386080
+	ldr r1, _02384090 ; =OVERLAY30_JP_STRING_1
 	mov sl, r0
 	bl ov30_02385CE0
 	ldr r1, _02384094 ; =ov29_02353538
@@ -1708,7 +1708,7 @@ _02383FE8:
 	bl ov30_02385D34
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02384090: .word ov30_02386080
+_02384090: .word OVERLAY30_JP_STRING_1
 _02384094: .word ov29_02353538
 _02384098: .word 0x00012AFE
 	arm_func_end ov30_02383C70
@@ -1716,7 +1716,7 @@ _02384098: .word 0x00012AFE
 	arm_func_start ov30_0238409C
 ov30_0238409C: ; 0x0238409C
 	stmdb sp!, {r4, lr}
-	ldr r1, _02384200 ; =ov30_02386080
+	ldr r1, _02384200 ; =OVERLAY30_JP_STRING_1
 	mov r4, r0
 	bl ov30_02385CE0
 	ldr r1, _02384204 ; =ov29_02353538
@@ -1805,7 +1805,7 @@ ov30_0238409C: ; 0x0238409C
 	bl ov30_02385DD4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02384200: .word ov30_02386080
+_02384200: .word OVERLAY30_JP_STRING_1
 _02384204: .word ov29_02353538
 	arm_func_end ov30_0238409C
 
@@ -1894,7 +1894,7 @@ ov30_023842F4: ; 0x023842F4
 	add r1, sp, #0
 	mov r2, #4
 	bl ov30_02385CA4
-	ldr r1, _023843F0 ; =ov30_02386080
+	ldr r1, _023843F0 ; =OVERLAY30_JP_STRING_1
 	add r0, sp, #4
 	bl ov30_02385CF0
 	ldr r1, _023843F4 ; =ov29_02353538
@@ -1904,7 +1904,7 @@ ov30_023842F4: ; 0x023842F4
 	add r1, r1, #0x348
 	add r1, r1, #0x400
 	bl ov30_02385CA4
-	ldr r1, _023843F0 ; =ov30_02386080
+	ldr r1, _023843F0 ; =OVERLAY30_JP_STRING_1
 	add r0, sp, #4
 	bl ov30_02385CF0
 	add r0, sp, #4
@@ -1939,7 +1939,7 @@ _02384378:
 	bl ov30_02384C6C
 	add r0, sp, #4
 	bl ov30_02384CD4
-	ldr r1, _023843FC ; =ov30_0238608C
+	ldr r1, _023843FC ; =OVERLAY30_JP_STRING_2
 	add r0, sp, #4
 	bl ov30_02385CF0
 	add r0, sp, #4
@@ -1948,16 +1948,16 @@ _02384378:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_023843F0: .word ov30_02386080
+_023843F0: .word OVERLAY30_JP_STRING_1
 _023843F4: .word ov29_02353538
 _023843F8: .word 0x0002C9E6
-_023843FC: .word ov30_0238608C
+_023843FC: .word OVERLAY30_JP_STRING_2
 	arm_func_end ov30_023842F4
 
 	arm_func_start ov30_02384400
 ov30_02384400: ; 0x02384400
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r1, _02384830 ; =ov30_02386080
+	ldr r1, _02384830 ; =OVERLAY30_JP_STRING_1
 	mov sl, r0
 	bl ov30_02385CF0
 	mov r0, sl
@@ -2232,7 +2232,7 @@ _0238477C:
 	strh r0, [r2, r1]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02384830: .word ov30_02386080
+_02384830: .word OVERLAY30_JP_STRING_1
 _02384834: .word ov29_02353538
 _02384838: .word 0x00012AFE
 	arm_func_end ov30_02384400
@@ -2269,7 +2269,7 @@ ov30_0238483C: ; 0x0238483C
 	arm_func_start ov30_023848A0
 ov30_023848A0: ; 0x023848A0
 	stmdb sp!, {r4, lr}
-	ldr r1, _02384A18 ; =ov30_02386080
+	ldr r1, _02384A18 ; =OVERLAY30_JP_STRING_1
 	mov r4, r0
 	bl ov30_02385CF0
 	ldr r1, _02384A1C ; =ov29_02353538
@@ -2363,7 +2363,7 @@ ov30_023848A0: ; 0x023848A0
 	strb r0, [r1, #0x248]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02384A18: .word ov30_02386080
+_02384A18: .word OVERLAY30_JP_STRING_1
 _02384A1C: .word ov29_02353538
 	arm_func_end ov30_023848A0
 
@@ -2407,7 +2407,7 @@ ov30_02384A94: ; 0x02384A94
 	sub sp, sp, #0xc
 	mov r7, r0
 	bl ov29_02344B1C
-	ldr r1, _02384B20 ; =ov30_02386080
+	ldr r1, _02384B20 ; =OVERLAY30_JP_STRING_1
 	mov r0, r7
 	bl ov30_02385CF0
 	mov r6, #0
@@ -2441,7 +2441,7 @@ _02384B08:
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02384B20: .word ov30_02386080
+_02384B20: .word OVERLAY30_JP_STRING_1
 	arm_func_end ov30_02384A94
 
 	arm_func_start ov30_02384B24
@@ -2476,7 +2476,7 @@ ov30_02384B24: ; 0x02384B24
 ov30_02384B84: ; 0x02384B84
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
-	ldr r1, _02384C68 ; =ov30_02386080
+	ldr r1, _02384C68 ; =OVERLAY30_JP_STRING_1
 	mov sl, r0
 	bl ov30_02385CF0
 	mov sb, #0
@@ -2534,14 +2534,14 @@ _02384C54:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02384C68: .word ov30_02386080
+_02384C68: .word OVERLAY30_JP_STRING_1
 	arm_func_end ov30_02384B84
 
 	arm_func_start ov30_02384C6C
 ov30_02384C6C: ; 0x02384C6C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
-	ldr r1, _02384CCC ; =ov30_02386080
+	ldr r1, _02384CCC ; =OVERLAY30_JP_STRING_1
 	mov r6, r0
 	bl ov30_02385CF0
 	mov r0, r6
@@ -2565,14 +2565,14 @@ _02384CC4:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02384CCC: .word ov30_02386080
+_02384CCC: .word OVERLAY30_JP_STRING_1
 _02384CD0: .word ov29_02353538
 	arm_func_end ov30_02384C6C
 
 	arm_func_start ov30_02384CD4
 ov30_02384CD4: ; 0x02384CD4
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _02384E20 ; =ov30_02386080
+	ldr r1, _02384E20 ; =OVERLAY30_JP_STRING_1
 	mov r4, r0
 	bl ov30_02385CF0
 	mov r0, r4
@@ -2657,7 +2657,7 @@ _02384E00:
 	blt _02384E00
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02384E20: .word ov30_02386080
+_02384E20: .word OVERLAY30_JP_STRING_1
 _02384E24: .word ov29_02353538
 	arm_func_end ov30_02384CD4
 
@@ -4008,11 +4008,11 @@ _0238607C: .word ov30_02385CA4
 	arm_func_end ov30_02386074
 	; 0x02386080
 
-	.global ov30_02386080
-ov30_02386080:
+	.global OVERLAY30_JP_STRING_1
+OVERLAY30_JP_STRING_1:
 	.byte 0x82, 0xDD, 0x82, 0xB3, 0x82, 0xAB, 0x97, 0x6C, 0x00, 0x00, 0x00, 0x00
-	.global ov30_0238608C
-ov30_0238608C:
+	.global OVERLAY30_JP_STRING_2
+OVERLAY30_JP_STRING_2:
 	.byte 0x82, 0xE2, 0x82, 0xE6
 	.byte 0x82, 0xA2, 0x97, 0x6C, 0x00, 0x00, 0x00, 0x00
 

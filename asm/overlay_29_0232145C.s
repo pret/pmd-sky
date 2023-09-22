@@ -670,7 +670,7 @@ _02321DB8:
 	ldr r1, _02322258 ; =0x00000EA3
 	mov r0, r6
 	bl LogMessageByIdWithPopupCheckUser
-	ldr r1, _0232225C ; =ov10_022C4724
+	ldr r1, _0232225C ; =NIGHTMARE_TURN_RANGE
 	mov r0, r5
 	mov r2, #1
 	bl CalcStatusDuration
@@ -978,7 +978,7 @@ _0232224C: .word 0x00000E8D
 _02322250: .word 0x00000E8E
 _02322254: .word 0x00000E8F
 _02322258: .word 0x00000EA3
-_0232225C: .word ov10_022C4724
+_0232225C: .word NIGHTMARE_TURN_RANGE
 _02322260: .word 0x00000E91
 _02322264: .word 0x00000E92
 _02322268: .word 0x00000E93
@@ -1124,7 +1124,7 @@ _02322460:
 	cmp r1, #0x77
 	bne _023224C4
 	bl GetNaturePowerVariant
-	ldr r1, _02322D28 ; =ov10_022C4E40
+	ldr r1, _02322D28 ; =NATURE_POWER_TABLE
 	mov r0, r0, lsl #3
 	ldrh r1, [r1, r0]
 	add r0, sp, #0x30
@@ -1348,7 +1348,7 @@ _023227A8:
 	bl ov29_02324514
 	str r0, [sp, #0x24]
 _023227B0:
-	ldr r0, _02322D50 ; =ov10_022C45B8
+	ldr r0, _02322D50 ; =INTIMIDATOR_ACTIVATION_CHANCE
 	mov r7, #0
 	ldrsh r0, [r0]
 	str r0, [sp, #0x14]
@@ -1724,7 +1724,7 @@ _02322D18: .word 0x0000014A
 _02322D1C: .word ov29_0237CA88
 _02322D20: .word METRONOME_TABLE
 _02322D24: .word 0x00000EA4
-_02322D28: .word ov10_022C4E40
+_02322D28: .word NATURE_POWER_TABLE
 _02322D2C: .word 0x00000EA5
 _02322D30: .word 0x00000EA6
 _02322D34: .word 0x00000EA7
@@ -1734,7 +1734,7 @@ _02322D40: .word 0x00000E7A
 _02322D44: .word ov29_0237CA68
 _02322D48: .word 0x00000163
 _02322D4C: .word ov10_022C4584
-_02322D50: .word ov10_022C45B8
+_02322D50: .word INTIMIDATOR_ACTIVATION_CHANCE
 _02322D54: .word 0x000001ED
 _02322D58: .word ov29_0235370C
 _02322D5C: .word 0x00000EA9
@@ -2863,14 +2863,14 @@ _02323D00:
 	bl HasHeldItem
 _02323D4C:
 	cmp r0, #0
-	ldrne r0, _02324014 ; =ov10_022C47A8
+	ldrne r0, _02324014 ; =DETECT_BAND_MOVE_ACCURACY_DROP
 	mov r1, #5
 	ldrne r0, [r0]
 	subne r8, r8, r0
 	mov r0, r6
 	bl IqSkillIsEnabled
 	cmp r0, #0
-	ldrne r0, _02324018 ; =ov10_022C4808
+	ldrne r0, _02324018 ; =QUICK_DODGER_MOVE_ACCURACY_DROP
 	mov r1, #0x33
 	ldrne r0, [r0]
 	ldrsh sb, [sb, #0x2c]
@@ -3018,7 +3018,7 @@ _02323F44:
 	cmp sb, #0x14
 	movgt sb, #0x14
 _02323F94:
-	ldr r2, _02324028 ; =ov10_022C540C
+	ldr r2, _02324028 ; =MALE_ACCURACY_STAGE_MULTIPLIERS
 	ldr r0, [sp, #4]
 	mov r1, #0xa8
 	mla r1, r0, r1, r2
@@ -3030,7 +3030,7 @@ _02323F94:
 	cmp r3, #0
 	movlt r3, #0
 	cmp r3, #0x6400
-	ldr r2, _0232402C ; =ov10_022C5460
+	ldr r2, _0232402C ; =MALE_EVASION_STAGE_MULTIPLIERS
 	ldr r0, [sp]
 	mov r1, #0xa8
 	mla r1, r0, r1, r2
@@ -3052,13 +3052,13 @@ _02324008:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02324010: .word 0x00000163
-_02324014: .word ov10_022C47A8
-_02324018: .word ov10_022C4808
+_02324014: .word DETECT_BAND_MOVE_ACCURACY_DROP
+_02324018: .word QUICK_DODGER_MOVE_ACCURACY_DROP
 _0232401C: .word 0x0000010E
 _02324020: .word 0x000003E7
 _02324024: .word ov29_02353710
-_02324028: .word ov10_022C540C
-_0232402C: .word ov10_022C5460
+_02324028: .word MALE_ACCURACY_STAGE_MULTIPLIERS
+_0232402C: .word MALE_EVASION_STAGE_MULTIPLIERS
 	arm_func_end MoveHitCheck
 
 	arm_func_start ov29_02324030
@@ -3464,7 +3464,7 @@ IsChargingTwoTurnMove: ; 0x023245A4
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr ip, [r5, #0xb4]
 	mov lr, #0
-	ldr r2, _02324618 ; =ov29_02352AAC
+	ldr r2, _02324618 ; =TWO_TURN_MOVES_AND_STATUSES
 	b _02324608
 _023245D0:
 	mov r3, lr, lsl #2
@@ -3487,7 +3487,7 @@ _02324608:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02324618: .word ov29_02352AAC
+_02324618: .word TWO_TURN_MOVES_AND_STATUSES
 	arm_func_end IsChargingTwoTurnMove
 
 	arm_func_start ov29_0232461C
@@ -3716,7 +3716,7 @@ _023248D8:
 	cmp r0, #0x77
 	bne _02324920
 	bl GetNaturePowerVariant
-	ldr r1, _02324930 ; =ov10_022C4E40
+	ldr r1, _02324930 ; =NATURE_POWER_TABLE
 	mov r0, r0, lsl #3
 	ldrh r0, [r1, r0]
 	cmp r0, #0x76
@@ -3729,7 +3729,7 @@ _02324928:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02324930: .word ov10_022C4E40
+_02324930: .word NATURE_POWER_TABLE
 	arm_func_end TwoTurnMoveForcedMiss
 
 	arm_func_start DungeonRandOutcomeUserTargetInteraction

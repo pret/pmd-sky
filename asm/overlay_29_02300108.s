@@ -2374,7 +2374,7 @@ _0230202C:
 	cmp r6, #0x19
 	blt _02301FE4
 _02302034:
-	ldr r0, _023021E8 ; =_020A188C
+	ldr r0, _023021E8 ; =MIN_IQ_EXCLUSIVE_MOVE_USER
 	ldrsh r1, [r4, #0xe]
 	ldrsh r0, [r0]
 	cmp r1, r0
@@ -2392,7 +2392,7 @@ _02302068:
 	bl ov29_022FBDE0
 	cmp r0, #0
 	bne _0230208C
-	ldr r0, _023021EC ; =_020A18A4
+	ldr r0, _023021EC ; =MIN_IQ_ITEM_MASTER
 	ldrsh r1, [r4, #0xe]
 	ldrsh r0, [r0]
 	cmp r1, r0
@@ -2497,8 +2497,8 @@ _023021C4:
 	bl EnableIqSkill
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023021E8: .word _020A188C
-_023021EC: .word _020A18A4
+_023021E8: .word MIN_IQ_EXCLUSIVE_MOVE_USER
+_023021EC: .word MIN_IQ_ITEM_MASTER
 	arm_func_end UpdateIqSkills
 
 	arm_func_start ov29_023021F0
@@ -2793,7 +2793,7 @@ _02302580:
 	bl IqSkillIsEnabled
 	cmp r0, #0
 	beq _023025C0
-	ldr r0, _023026B8 ; =ov10_022C44A8
+	ldr r0, _023026B8 ; =EXP_ELITE_EXP_BOOST
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
@@ -2808,7 +2808,7 @@ _023025C0:
 	bl ItemIsActive__023026CC
 	cmp r0, #0
 	beq _023025F8
-	ldr r0, _023026BC ; =ov10_022C469C
+	ldr r0, _023026BC ; =WONDER_CHEST_EXP_BOOST
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
@@ -2823,7 +2823,7 @@ _023025F8:
 	bl ItemIsActive__023026CC
 	cmp r0, #0
 	beq _02302630
-	ldr r0, _023026C0 ; =ov10_022C4698
+	ldr r0, _023026C0 ; =MIRACLE_CHEST_EXP_BOOST
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
@@ -2844,7 +2844,7 @@ _02302630:
 _02302650:
 	cmp r0, #0
 	beq _0230267C
-	ldr r0, _023026C4 ; =ov10_022C458C
+	ldr r0, _023026C4 ; =EXCLUSIVE_ITEM_EXP_BOOST
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
@@ -2870,10 +2870,10 @@ _0230267C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _023026B4: .word ov29_02353538
-_023026B8: .word ov10_022C44A8
-_023026BC: .word ov10_022C469C
-_023026C0: .word ov10_022C4698
-_023026C4: .word ov10_022C458C
+_023026B8: .word EXP_ELITE_EXP_BOOST
+_023026BC: .word WONDER_CHEST_EXP_BOOST
+_023026C0: .word MIRACLE_CHEST_EXP_BOOST
+_023026C4: .word EXCLUSIVE_ITEM_EXP_BOOST
 _023026C8: .word 0x0098967F
 	arm_func_end AddExpSpecial
 

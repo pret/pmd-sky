@@ -1,7 +1,5 @@
 #pragma once
 .public __divsi3
-.public _020A188C
-.public _020A18A4
 .public CanLearnIqSkill
 .public CanSeeTarget
 .public CanThrowItems
@@ -13,8 +11,10 @@
 .public EntityIsValid__023000E4
 .public EntityIsValid__02302A38
 .public EvolveMonster
+.public EXCLUSIVE_ITEM_EXP_BOOST
 .public ExclusiveItemEffectFlagTest
 .public ExclusiveItemEffectIsActive__022FFF28
+.public EXP_ELITE_EXP_BOOST
 .public GetActiveTeamMember
 .public GetApparentWeather
 .public GetEntityNaturalGiftInfo
@@ -44,12 +44,11 @@
 .public LevelUp
 .public LogMessageByIdWithPopup
 .public LogMessageByIdWithPopupCheckUserTarget
+.public MIN_IQ_EXCLUSIVE_MOVE_USER
+.public MIN_IQ_ITEM_MASTER
+.public MIRACLE_CHEST_EXP_BOOST
 .public MistIsActive
 .public MultiplyByFixedPoint
-.public ov10_022C44A8
-.public ov10_022C458C
-.public ov10_022C4698
-.public ov10_022C469C
 .public ov29_022E2470
 .public ov29_022E62A8
 .public ov29_022FAFD4
@@ -90,3 +89,4 @@
 .public sub_02058C9C
 .public SubstitutePlaceholderStringTags
 .public vsprintf
+.public WONDER_CHEST_EXP_BOOST

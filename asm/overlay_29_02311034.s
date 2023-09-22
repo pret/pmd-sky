@@ -94,7 +94,7 @@ _0231115C:
 	ldrb r0, [r7, #0xd5]
 	mov r1, #3
 	cmp r0, #6
-	ldreq r0, _02311804 ; =ov10_022C46D0
+	ldreq r0, _02311804 ; =WISH_BONUS_REGEN
 	ldreqsh r0, [r0]
 	addeq r4, r4, r0
 	mov r0, sl
@@ -104,7 +104,7 @@ _0231115C:
 	mov r0, sl
 	bl GetApparentWeather
 	cmp r0, #4
-	ldreq r0, _02311808 ; =ov10_022C4578
+	ldreq r0, _02311808 ; =RAIN_ABILITY_BONUS_REGEN
 	ldreqsh r0, [r0]
 	addeq r4, r4, r0
 _0231119C:
@@ -116,7 +116,7 @@ _0231119C:
 	mov r0, sl
 	bl GetApparentWeather
 	cmp r0, #4
-	ldreq r0, _02311808 ; =ov10_022C4578
+	ldreq r0, _02311808 ; =RAIN_ABILITY_BONUS_REGEN
 	ldreqsh r0, [r0]
 	addeq r4, r4, r0
 _023111C8:
@@ -128,7 +128,7 @@ _023111C8:
 	mov r0, sl
 	bl GetApparentWeather
 	cmp r0, #5
-	ldreq r0, _0231180C ; =ov10_022C4630
+	ldreq r0, _0231180C ; =ICE_BODY_BONUS_REGEN
 	ldreqsh r0, [r0]
 	addeq r4, r4, r0
 _023111F4:
@@ -545,9 +545,9 @@ _023117A8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02311800: .word ov10_022C46F8
-_02311804: .word ov10_022C46D0
-_02311808: .word ov10_022C4578
-_0231180C: .word ov10_022C4630
+_02311804: .word WISH_BONUS_REGEN
+_02311808: .word RAIN_ABILITY_BONUS_REGEN
+_0231180C: .word ICE_BODY_BONUS_REGEN
 _02311810: .word ov10_022C4674
 _02311814: .word 0x000003E7
 _02311818: .word 0x00000CC6

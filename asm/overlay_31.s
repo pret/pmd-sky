@@ -6,7 +6,7 @@
 	arm_func_start EntryOverlay31
 EntryOverlay31: ; 0x02382820
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238285C ; =ov31_02389DB4
+	ldr r0, _0238285C ; =DUNGEON_D_BOX_LAYOUT_3
 	bl sub_020348E4
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
@@ -21,7 +21,7 @@ EntryOverlay31: ; 0x02382820
 	str r0, [r1, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238285C: .word ov31_02389DB4
+_0238285C: .word DUNGEON_D_BOX_LAYOUT_3
 _02382860: .word ov31_0238A260
 	arm_func_end EntryOverlay31
 
@@ -300,22 +300,22 @@ _02382BEC:
 	str r1, [sp, #0x64]
 	bl Arm9LoadUnkFieldNa0x2029EC8
 	str r0, [sp, #4]
-	ldr r0, _02382D90 ; =ov31_02389D94
+	ldr r0, _02382D90 ; =DUNGEON_D_BOX_LAYOUT_1
 	ldr r1, _02382D94 ; =0x00000233
-	ldr r3, _02382D98 ; =ov31_02389DD4
+	ldr r3, _02382D98 ; =DUNGEON_MAIN_MENU
 	add r2, sp, #4
 	bl sub_0202A5CC
 	ldr r2, _02382D8C ; =ov31_0238A260
 	ldr r1, _02382D9C ; =ov31_02382864
 	ldr r2, [r2]
 	strb r0, [r2]
-	ldr r0, _02382DA0 ; =ov31_02389DC4
+	ldr r0, _02382DA0 ; =DUNGEON_D_BOX_LAYOUT_4
 	bl sub_0202F8C4
 	ldr r2, _02382D8C ; =ov31_0238A260
 	ldr r1, _02382DA4 ; =DungeonMenuSwitch
 	ldr r2, [r2]
 	strb r0, [r2, #2]
-	ldr r0, _02382DA8 ; =ov31_02389DA4
+	ldr r0, _02382DA8 ; =DUNGEON_D_BOX_LAYOUT_2
 	bl sub_0202F8C4
 	ldr r1, _02382D8C ; =ov31_0238A260
 	ldr r2, [r1]
@@ -404,13 +404,13 @@ _02382D84:
 	ldmia sp!, {pc}
 	.align 2, 0
 _02382D8C: .word ov31_0238A260
-_02382D90: .word ov31_02389D94
+_02382D90: .word DUNGEON_D_BOX_LAYOUT_1
 _02382D94: .word 0x00000233
-_02382D98: .word ov31_02389DD4
+_02382D98: .word DUNGEON_MAIN_MENU
 _02382D9C: .word ov31_02382864
-_02382DA0: .word ov31_02389DC4
+_02382DA0: .word DUNGEON_D_BOX_LAYOUT_4
 _02382DA4: .word DungeonMenuSwitch
-_02382DA8: .word ov31_02389DA4
+_02382DA8: .word DUNGEON_D_BOX_LAYOUT_2
 	arm_func_end ov31_02382B54
 
 	arm_func_start ov31_02382DAC
@@ -511,7 +511,7 @@ _02382ED0: .word ov31_0238A2A0
 ov31_02382ED4: ; 0x02382ED4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	ldr r0, _02382F60 ; =ov31_02389E30
+	ldr r0, _02382F60 ; =OVERLAY31_UNKNOWN_STRUCT__NA_2389E30
 	bl sub_020348E4
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -546,7 +546,7 @@ _02382F50:
 	str r4, [r0, #0x14]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02382F60: .word ov31_02389E30
+_02382F60: .word OVERLAY31_UNKNOWN_STRUCT__NA_2389E30
 _02382F64: .word ov31_0238A2A0
 	arm_func_end ov31_02382ED4
 
@@ -595,8 +595,8 @@ _02382FDC: ; jump table
 	b _0238320C ; case 5
 _02382FF4:
 	ldr r2, [r1, #0x14]
-	ldr r3, _0238321C ; =ov31_02389E70
-	ldr r0, _02383220 ; =ov31_02389E60
+	ldr r3, _0238321C ; =DUNGEON_SUBMENU_1
+	ldr r0, _02383220 ; =DUNGEON_D_BOX_LAYOUT_7
 	add r3, r3, r2, lsl #5
 	ldr r1, _02383224 ; =0x00400013
 	mov r2, #0
@@ -609,7 +609,7 @@ _02382FF4:
 	ldr r0, [r1, #4]
 	mov r4, #0
 	ldr r1, [r0, #0x14]
-	ldr r0, _0238322C ; =ov31_02389E50
+	ldr r0, _0238322C ; =DUNGEON_D_BOX_LAYOUT_6
 	mov r1, r1, lsl #2
 	ldrh r3, [r3, r1]
 	str r2, [sp, #0xac]
@@ -707,7 +707,7 @@ _02383170:
 	mov r1, r1, lsl #2
 	ldrh r1, [r0, r1]
 	mov ip, #1
-	ldr r0, _0238323C ; =ov31_02389E40
+	ldr r0, _0238323C ; =DUNGEON_D_BOX_LAYOUT_5
 	strh r1, [sp, #0x10]
 	str ip, [sp]
 	ldr r1, _02383240 ; =0x00001812
@@ -742,15 +742,15 @@ _02383210:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02383218: .word ov31_0238A2A0
-_0238321C: .word ov31_02389E70
-_02383220: .word ov31_02389E60
+_0238321C: .word DUNGEON_SUBMENU_1
+_02383220: .word DUNGEON_D_BOX_LAYOUT_7
 _02383224: .word 0x00400013
 _02383228: .word ov31_02389E22
-_0238322C: .word ov31_02389E50
+_0238322C: .word DUNGEON_D_BOX_LAYOUT_6
 _02383230: .word 0x80000813
 _02383234: .word ov31_02382F68
 _02383238: .word ov29_0237C91C
-_0238323C: .word ov31_02389E40
+_0238323C: .word DUNGEON_D_BOX_LAYOUT_5
 _02383240: .word 0x00001812
 _02383244: .word ov31_02383248
 	arm_func_end ov31_02382FBC
@@ -759,7 +759,7 @@ _02383244: .word ov31_02383248
 ov31_02383248: ; 0x02383248
 	stmdb sp!, {r4, lr}
 	ldr r1, _02383284 ; =ov31_0238A2A0
-	ldr r2, _02383288 ; =ov31_02389E20
+	ldr r2, _02383288 ; =OVERLAY31_UNKNOWN_STRING_IDS
 	ldr r1, [r1, #4]
 	mov r4, r0
 	ldr r0, [r1, #0x14]
@@ -774,7 +774,7 @@ ov31_02383248: ; 0x02383248
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02383284: .word ov31_0238A2A0
-_02383288: .word ov31_02389E20
+_02383288: .word OVERLAY31_UNKNOWN_STRING_IDS
 	arm_func_end ov31_02383248
 
 	arm_func_start ov31_0238328C
@@ -1003,7 +1003,7 @@ _02383528:
 	moveq r0, #0
 	tst r0, #0xff
 	beq _02383590
-	ldr r2, _0238364C ; =ov31_02389EF0
+	ldr r2, _0238364C ; =OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0
 	mov r5, #1
 	mov r0, r8
 	mov r3, r4
@@ -1067,7 +1067,7 @@ _02383638:
 	.align 2, 0
 _02383644: .word ov31_0238A26C
 _02383648: .word BAG_ITEMS_PTR_MIRROR
-_0238364C: .word ov31_02389EF0
+_0238364C: .word OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0
 _02383650: .word ov31_02389F5C
 _02383654: .word ov29_02353538
 	arm_func_end ov31_02383478
@@ -1107,7 +1107,7 @@ ov31_0238367C: ; 0x0238367C
 	str r2, [sp, #0x38]
 	str lr, [sp]
 	ldrsh r4, [r0, #4]
-	ldr r0, _02383728 ; =ov31_02389EFC
+	ldr r0, _02383728 ; =DUNGEON_D_BOX_LAYOUT_8
 	add ip, r4, #0xd1
 	add r4, ip, #0x2900
 	mov ip, r4, lsl #0x10
@@ -1132,7 +1132,7 @@ _023836F0:
 	.align 2, 0
 _02383720: .word 0x00001013
 _02383724: .word 0x000008E4
-_02383728: .word ov31_02389EFC
+_02383728: .word DUNGEON_D_BOX_LAYOUT_8
 	arm_func_end ov31_0238367C
 
 	arm_func_start ov31_0238372C
@@ -1360,7 +1360,7 @@ _02383A1C:
 	mov r0, #3
 	bl Arm9LoadUnkFieldNa0x2029EC8
 	mov r1, r0
-	ldr r0, _0238489C ; =ov31_02389F64
+	ldr r0, _0238489C ; =OVERLAY31_JP_STRING
 	bl DebugPrint0
 	bl GetNbItemsInBag
 	ldr r2, _02384898 ; =ov31_0238A26C
@@ -1538,7 +1538,7 @@ _02383C44:
 	add r1, r1, #0x1000
 	strb r0, [r1, #0x193]
 	beq _02383CEC
-	ldr r0, _023848B0 ; =ov31_02389F1C
+	ldr r0, _023848B0 ; =DUNGEON_D_BOX_LAYOUT_10
 	ldr r1, _023848B4 ; =ov31_02383854
 	bl sub_0202F8C4
 	ldr r1, _02384898 ; =ov31_0238A26C
@@ -1547,7 +1547,7 @@ _02383C44:
 	strb r0, [r1, #0x194]
 	b _02383D78
 _02383CEC:
-	ldr r0, _023848B8 ; =ov31_02389F2C
+	ldr r0, _023848B8 ; =DUNGEON_D_BOX_LAYOUT_11
 	mov r1, #0
 	bl sub_0202F8C4
 	ldr r2, _02384898 ; =ov31_0238A26C
@@ -1573,7 +1573,7 @@ _02383D1C:
 	add r2, sp, #0x500
 	str r4, [sp, #8]
 	mov r4, #0
-	ldr r0, _023848C0 ; =ov31_02389F3C
+	ldr r0, _023848C0 ; =DUNGEON_D_BOX_LAYOUT_12
 	ldr r1, _023848C4 ; =0x00400813
 	ldr r3, _023848AC ; =ov31_02383478
 	add r2, r2, #0x9c
@@ -2347,16 +2347,16 @@ _02384860:
 	b _02384908
 	.align 2, 0
 _02384898: .word ov31_0238A26C
-_0238489C: .word ov31_02389F64
+_0238489C: .word OVERLAY31_JP_STRING
 _023848A0: .word 0x000008E5
 _023848A4: .word BAG_ITEMS_PTR_MIRROR
 _023848A8: .word ov29_02353538
 _023848AC: .word ov31_02383478
-_023848B0: .word ov31_02389F1C
+_023848B0: .word DUNGEON_D_BOX_LAYOUT_10
 _023848B4: .word ov31_02383854
-_023848B8: .word ov31_02389F2C
+_023848B8: .word DUNGEON_D_BOX_LAYOUT_11
 _023848BC: .word 0x000008E3
-_023848C0: .word ov31_02389F3C
+_023848C0: .word DUNGEON_D_BOX_LAYOUT_12
 _023848C4: .word 0x00400813
 _023848C8: .word 0x000008E7
 _023848CC: .word ov31_02389F5C
@@ -2677,8 +2677,8 @@ _02384C9C:
 	ldr r1, _02385130 ; =0x00000213
 	add r3, r3, #0x1000
 	cmp r0, #0
-	ldrne r0, _02385134 ; =ov31_02389F4C
-	ldreq r0, _02385138 ; =ov31_02389F0C
+	ldrne r0, _02385134 ; =DUNGEON_D_BOX_LAYOUT_13
+	ldreq r0, _02385138 ; =DUNGEON_D_BOX_LAYOUT_9
 	bl sub_0202A5CC
 	ldr r4, _02384898 ; =ov31_0238A26C
 	mov r8, #0x14
@@ -2943,8 +2943,8 @@ _0238511C:
 _02385128: .word ov29_0237C91C
 _0238512C: .word 0x000008E8
 _02385130: .word 0x00000213
-_02385134: .word ov31_02389F4C
-_02385138: .word ov31_02389F0C
+_02385134: .word DUNGEON_D_BOX_LAYOUT_13
+_02385138: .word DUNGEON_D_BOX_LAYOUT_9
 	arm_func_end ov31_023838E4
 
 	arm_func_start ov31_0238513C
@@ -3174,7 +3174,7 @@ HandleMovesMenu: ; 0x02385404
 	ldr r0, [sp, #0x154]
 	cmp r0, #1
 	bne _0238547C
-	ldr r0, _02385F74 ; =ov31_02389F88
+	ldr r0, _02385F74 ; =DUNGEON_D_BOX_LAYOUT_14
 	bl CreateDBox
 	mov r1, #0
 	str r0, [sp, #0x14]
@@ -3188,7 +3188,7 @@ HandleMovesMenu: ; 0x02385404
 	bl sub_0202F23C
 	b _023854AC
 _0238547C:
-	ldr r0, _02385F80 ; =ov31_02389FA8
+	ldr r0, _02385F80 ; =DUNGEON_D_BOX_LAYOUT_16
 	bl CreateDBox
 	mov r1, #0
 	str r0, [sp, #0x14]
@@ -3750,7 +3750,7 @@ _02385C60:
 	cmp r3, #0
 	moveq r1, #3
 	streqb r1, [r0]
-	ldr r0, _02385F90 ; =ov31_02389F98
+	ldr r0, _02385F90 ; =DUNGEON_D_BOX_LAYOUT_15
 	ldr r1, _02385F94 ; =0x80000213
 	add r2, sp, #0x3c
 	add r3, sp, #0xd4
@@ -3964,14 +3964,14 @@ _02385F50:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02385F70: .word ov31_0238A270
-_02385F74: .word ov31_02389F88
+_02385F74: .word DUNGEON_D_BOX_LAYOUT_14
 _02385F78: .word 0x00003FCD
 _02385F7C: .word 0x00000404
-_02385F80: .word ov31_02389FA8
+_02385F80: .word DUNGEON_D_BOX_LAYOUT_16
 _02385F84: .word 0x00003FCC
 _02385F88: .word ov29_02353538
 _02385F8C: .word 0x000008DC
-_02385F90: .word ov31_02389F98
+_02385F90: .word DUNGEON_D_BOX_LAYOUT_15
 _02385F94: .word 0x80000213
 _02385F98: .word 0x0000099B
 _02385F9C: .word 0x000009A8
@@ -4564,7 +4564,7 @@ _0238674C:
 	strh r0, [fp, r1]
 	add r0, fp, r2, lsl #3
 	str r8, [r0, #4]
-	ldr r0, _02386B18 ; =ov31_02389F98
+	ldr r0, _02386B18 ; =DUNGEON_D_BOX_LAYOUT_15
 	ldr r1, _02386B1C ; =0x00000213
 	add r2, sp, #0x24
 	mov r3, fp
@@ -4817,7 +4817,7 @@ _02386AE8:
 _02386B0C: .word ov31_0238A270
 _02386B10: .word ov29_0235352C
 _02386B14: .word 0x000008DC
-_02386B18: .word ov31_02389F98
+_02386B18: .word DUNGEON_D_BOX_LAYOUT_15
 _02386B1C: .word 0x00000213
 _02386B20: .word 0x000008D6
 _02386B24: .word 0x000008D7
@@ -4929,7 +4929,7 @@ ov31_02386C6C: ; 0x02386C6C
 	str r5, [r0, #0x64]
 _02386C90:
 	bl ov00_022EA62C
-	ldr r0, _02386F10 ; =ov31_02389FC8
+	ldr r0, _02386F10 ; =DUNGEON_D_BOX_LAYOUT_18
 	ldr r1, _02386F14 ; =ov31_02386B28
 	bl sub_0202F8C4
 	ldr r1, _02386F0C ; =ov31_0238A27C
@@ -4975,7 +4975,7 @@ _02386CF0:
 	add r1, r0, #0x58
 	bl ov31_0238513C
 	ldr r1, _02386F0C ; =ov31_0238A27C
-	ldr r0, _02386F18 ; =ov31_02389FB8
+	ldr r0, _02386F18 ; =DUNGEON_D_BOX_LAYOUT_17
 	ldr r3, [r1]
 	ldr r1, _02386F1C ; =0x00000213
 	add r4, r3, #0x58
@@ -5026,7 +5026,7 @@ _02386D70:
 	str r3, [sp, #0x1c]
 	str r2, [sp]
 	ldrb r2, [r0]
-	ldr r0, _02386F24 ; =ov31_02389FD8
+	ldr r0, _02386F24 ; =DUNGEON_D_BOX_LAYOUT_19
 	sub r3, r1, #0x740
 	add r2, r2, #0xda
 	add r2, r2, #0x3400
@@ -5097,12 +5097,12 @@ _02386EF8:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02386F0C: .word ov31_0238A27C
-_02386F10: .word ov31_02389FC8
+_02386F10: .word DUNGEON_D_BOX_LAYOUT_18
 _02386F14: .word ov31_02386B28
-_02386F18: .word ov31_02389FB8
+_02386F18: .word DUNGEON_D_BOX_LAYOUT_17
 _02386F1C: .word 0x00000213
 _02386F20: .word 0x00001013
-_02386F24: .word ov31_02389FD8
+_02386F24: .word DUNGEON_D_BOX_LAYOUT_19
 _02386F28: .word ov29_0237C91C
 	arm_func_end ov31_02386C6C
 
@@ -5220,7 +5220,7 @@ TeamMenu: ; 0x0238704C
 	mov r3, r7
 	bl ov31_02388114
 	ldr r2, _02387618 ; =ov31_0238A280
-	ldr r1, _02387620 ; =ov31_0238A014
+	ldr r1, _02387620 ; =DUNGEON_D_BOX_LAYOUT_22
 	ldr r3, [r2]
 	str r0, [r3, #0x7a8]
 	ldr r0, [r2]
@@ -5475,7 +5475,7 @@ _02387410:
 	bl Arm9LoadUnkFieldNa0x2029EC8
 	add r4, r0, #1
 	ldr r1, _02387618 ; =ov31_0238A280
-	ldr r0, _02387630 ; =ov31_0238A024
+	ldr r0, _02387630 ; =DUNGEON_D_BOX_LAYOUT_23
 	ldr r3, [r1]
 	ldr r1, _02387634 ; =0x00000233
 	add r2, sp, #0x18
@@ -5586,11 +5586,11 @@ _023875F0:
 _02387614: .word 0x000007AC
 _02387618: .word ov31_0238A280
 _0238761C: .word ov31_02387014
-_02387620: .word ov31_0238A014
+_02387620: .word DUNGEON_D_BOX_LAYOUT_22
 _02387624: .word ov29_02353538
 _02387628: .word 0x00005AA5
 _0238762C: .word 0x00000A3C
-_02387630: .word ov31_0238A024
+_02387630: .word DUNGEON_D_BOX_LAYOUT_23
 _02387634: .word 0x00000233
 _02387638: .word ov29_0237C91C
 	arm_func_end TeamMenu
@@ -6015,7 +6015,7 @@ _02387B80:
 	orr r1, r1, #0x33
 	ldr r3, [r0]
 	str r2, [sp, #0x148]
-	ldr r0, _023880B8 ; =ov31_0238A004
+	ldr r0, _023880B8 ; =DUNGEON_D_BOX_LAYOUT_21
 	add r2, sp, #0xe8
 	orr r1, r1, #0x1200
 	bl sub_0202A690
@@ -6023,7 +6023,7 @@ _02387B80:
 	ldr r1, _023880BC ; =ov31_0238778C
 	ldr r2, [r2]
 	strb r0, [r2, #0x695]
-	ldr r0, _023880C0 ; =ov31_0238A034
+	ldr r0, _023880C0 ; =DUNGEON_D_BOX_LAYOUT_24
 	bl sub_0202F8C4
 	ldr r1, _02388084 ; =ov31_0238A280
 	ldr r3, _023880C4 ; =0x00000A36
@@ -6044,7 +6044,7 @@ _02387B80:
 	strh r1, [r0, #0x92]
 	mov r5, #0
 	str r5, [sp]
-	ldr r0, _023880C8 ; =ov31_02389FF4
+	ldr r0, _023880C8 ; =DUNGEON_D_BOX_LAYOUT_20
 	ldr r3, _023880CC ; =ov31_023877C4
 	add r2, sp, #0x180
 	mov r1, #0x800
@@ -6065,7 +6065,7 @@ _02387CA8:
 	strh r1, [r0, #0x92]
 	mov r5, #0
 	str r5, [sp]
-	ldr r0, _023880C8 ; =ov31_02389FF4
+	ldr r0, _023880C8 ; =DUNGEON_D_BOX_LAYOUT_20
 	ldr r3, _023880CC ; =ov31_023877C4
 	add r2, sp, #0x180
 	mov r1, #0x800
@@ -6179,7 +6179,7 @@ _02387E6C:
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, [r5]
-	ldr r2, _023880D4 ; =ov31_02389FE8
+	ldr r2, _023880D4 ; =OVERLAY31_UNKNOWN_STRUCT__NA_2389FE8
 	add r0, r0, #0x12
 	add r1, r7, #0x62
 	add r0, r0, #0x600
@@ -6335,14 +6335,14 @@ _023880A8: .word ov31_0238A074
 _023880AC: .word ov31_0238A07C
 _023880B0: .word ov31_0238A084
 _023880B4: .word 0x00000A3A
-_023880B8: .word ov31_0238A004
+_023880B8: .word DUNGEON_D_BOX_LAYOUT_21
 _023880BC: .word ov31_0238778C
-_023880C0: .word ov31_0238A034
+_023880C0: .word DUNGEON_D_BOX_LAYOUT_24
 _023880C4: .word 0x00000A36
-_023880C8: .word ov31_02389FF4
+_023880C8: .word DUNGEON_D_BOX_LAYOUT_20
 _023880CC: .word ov31_023877C4
 _023880D0: .word 0x00000A3D
-_023880D4: .word ov31_02389FE8
+_023880D4: .word OVERLAY31_UNKNOWN_STRUCT__NA_2389FE8
 	arm_func_end ov31_023877EC
 
 	arm_func_start ov31_023880D8
@@ -6889,10 +6889,10 @@ _023887D8:
 	ldr r0, _023889B8 ; =ov31_0238A284
 	mov r5, #0x10
 	ldr r1, [r0]
-	ldr r0, _023889C0 ; =ov31_0238A10C
+	ldr r0, _023889C0 ; =DUNGEON_D_BOX_LAYOUT_25
 	add r4, r1, #0xc
 	ldr r1, _023889C4 ; =0x00001A13
-	ldr r3, _023889C8 ; =ov31_0238A11C
+	ldr r3, _023889C8 ; =DUNGEON_SUBMENU_5
 	add r2, sp, #4
 	strh ip, [sp, #0xc]
 	str r5, [sp, #0x10]
@@ -7004,9 +7004,9 @@ _023889B0:
 	.align 2, 0
 _023889B8: .word ov31_0238A284
 _023889BC: .word 0x000008C2
-_023889C0: .word ov31_0238A10C
+_023889C0: .word DUNGEON_D_BOX_LAYOUT_25
 _023889C4: .word 0x00001A13
-_023889C8: .word ov31_0238A11C
+_023889C8: .word DUNGEON_SUBMENU_5
 _023889CC: .word 0x000008C5
 _023889D0: .word 0x000008C6
 _023889D4: .word 0x0000025A
@@ -7206,7 +7206,7 @@ _02388C34:
 	str r0, [sp, #0x14]
 	mov ip, #0
 	str ip, [sp]
-	ldr r0, _02388D48 ; =ov31_0238A134
+	ldr r0, _02388D48 ; =DUNGEON_D_BOX_LAYOUT_26
 	ldr r1, _02388D4C ; =0x00001813
 	ldr r3, _02388D50 ; =ov31_02388D54
 	add r2, sp, #8
@@ -7256,7 +7256,7 @@ _02388D38: .word 0x00000B44
 _02388D3C: .word ov29_0238280C
 _02388D40: .word 0x00000B45
 _02388D44: .word 0x00000B46
-_02388D48: .word ov31_0238A134
+_02388D48: .word DUNGEON_D_BOX_LAYOUT_26
 _02388D4C: .word 0x00001813
 _02388D50: .word ov31_02388D54
 	arm_func_end RecruitmentSearchMenuLoop
@@ -7357,7 +7357,7 @@ ov31_02388E88: ; 0x02388E88
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x84
 	sub sp, sp, #0x400
-	ldr r0, _02389164 ; =ov31_0238A144
+	ldr r0, _02389164 ; =OVERLAY31_UNKNOWN_STRUCT__NA_238A144
 	bl sub_020348E4
 	cmp r0, #0
 	beq _02389158
@@ -7557,7 +7557,7 @@ _02389158:
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02389164: .word ov31_0238A144
+_02389164: .word OVERLAY31_UNKNOWN_STRUCT__NA_238A144
 _02389168: .word 0x00000D98
 _0238916C: .word ov31_0238A288
 _02389170: .word 0x00000483
@@ -7587,7 +7587,7 @@ ov31_023891A8: ; 0x023891A8
 	mov r5, r0
 	bl sub_02030A18
 	mov r4, r0
-	ldr r0, _023891F8 ; =ov31_0238A1A0
+	ldr r0, _023891F8 ; =DUNGEON_SUBMENU_6
 	mov r1, r4, lsl #3
 	ldrh r1, [r0, r1]
 	mov r0, r5
@@ -7604,7 +7604,7 @@ ov31_023891A8: ; 0x023891A8
 	bl sub_02026214
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023891F8: .word ov31_0238A1A0
+_023891F8: .word DUNGEON_SUBMENU_6
 	arm_func_end ov31_023891A8
 
 	arm_func_start HelpMenuLoop
@@ -7628,9 +7628,9 @@ _0238921C: ; jump table
 _02389238:
 	ldr ip, _02389400 ; =0x00003FA7
 	mov r4, #0x10
-	ldr r0, _02389404 ; =ov31_0238A170
+	ldr r0, _02389404 ; =DUNGEON_D_BOX_LAYOUT_27
 	ldr r1, _02389408 ; =0x00401813
-	ldr r3, _0238940C ; =ov31_0238A1A0
+	ldr r3, _0238940C ; =DUNGEON_SUBMENU_6
 	add r2, sp, #8
 	strh ip, [sp, #0x10]
 	str r4, [sp, #0x14]
@@ -7702,11 +7702,11 @@ _02389344:
 	mov r0, #0x10
 	str r0, [sp, #0x14]
 	ldr r1, [r2, #4]
-	ldr r0, _0238940C ; =ov31_0238A1A0
+	ldr r0, _0238940C ; =DUNGEON_SUBMENU_6
 	mov r1, r1, lsl #3
 	ldrh r1, [r0, r1]
 	mov ip, #8
-	ldr r0, _02389410 ; =ov31_0238A180
+	ldr r0, _02389410 ; =DUNGEON_D_BOX_LAYOUT_28
 	strh r1, [sp, #0x10]
 	ldr r2, [r2, #4]
 	ldr r1, _02389414 ; =0x00009833
@@ -7752,10 +7752,10 @@ _023893F4:
 	.align 2, 0
 _023893FC: .word ov31_0238A28C
 _02389400: .word 0x00003FA7
-_02389404: .word ov31_0238A170
+_02389404: .word DUNGEON_D_BOX_LAYOUT_27
 _02389408: .word 0x00401813
-_0238940C: .word ov31_0238A1A0
-_02389410: .word ov31_0238A180
+_0238940C: .word DUNGEON_SUBMENU_6
+_02389410: .word DUNGEON_D_BOX_LAYOUT_28
 _02389414: .word 0x00009833
 _02389418: .word ov31_023891A8
 	arm_func_end HelpMenuLoop
@@ -7763,7 +7763,7 @@ _02389418: .word ov31_023891A8
 	arm_func_start ov31_0238941C
 ov31_0238941C: ; 0x0238941C
 	stmdb sp!, {r3, lr}
-	ldr r0, _02389458 ; =ov31_0238A190
+	ldr r0, _02389458 ; =OVERLAY31_UNKNOWN_STRUCT__NA_238A190
 	bl sub_020348E4
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
@@ -7778,7 +7778,7 @@ ov31_0238941C: ; 0x0238941C
 	str r2, [r0, #8]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02389458: .word ov31_0238A190
+_02389458: .word OVERLAY31_UNKNOWN_STRUCT__NA_238A190
 _0238945C: .word ov31_0238A28C
 	arm_func_end ov31_0238941C
 
@@ -7854,7 +7854,7 @@ ov31_0238948C: ; 0x0238948C
 	add r0, r5, #0x78
 	str r0, [sp, #0xe4]
 _02389560:
-	ldr r0, _023898F8 ; =ov31_0238A208
+	ldr r0, _023898F8 ; =DUNGEON_D_BOX_LAYOUT_31
 	ldr r1, _023898FC ; =0x80401813
 	add r2, sp, #0x9c
 	add r3, r5, #0xc4
@@ -7927,7 +7927,7 @@ _02389640:
 	add r0, r5, #1
 	str r1, [r2, #0x10]
 	bl ov29_0234E988
-	ldr r0, _02389908 ; =ov31_0238A1F8
+	ldr r0, _02389908 ; =DUNGEON_D_BOX_LAYOUT_30
 	ldr r1, _0238990C ; =0x80000213
 	add r2, sp, #4
 	add r3, r5, #4
@@ -8105,11 +8105,11 @@ _023898B0:
 	.align 2, 0
 _023898F0: .word 0x00000F5F
 _023898F4: .word 0x00000F5E
-_023898F8: .word ov31_0238A208
+_023898F8: .word DUNGEON_D_BOX_LAYOUT_31
 _023898FC: .word 0x80401813
 _02389900: .word 0x00003F02
 _02389904: .word 0x00000A3C
-_02389908: .word ov31_0238A1F8
+_02389908: .word DUNGEON_D_BOX_LAYOUT_30
 _0238990C: .word 0x80000213
 _02389910: .word 0x00003F07
 _02389914: .word 0x00003F04
@@ -8141,7 +8141,7 @@ ov31_0238994C: ; 0x0238994C
 	mov r0, r1, asr #2
 	add r2, r2, r3, lsr #29
 	add ip, r1, r0, lsr #29
-	ldr r6, _023899B0 ; =ov31_0238A218
+	ldr r6, _023899B0 ; =DUNGEON_D_BOX_LAYOUT_32
 	mov lr, r2, asr #3
 	add r5, sp, #0
 	ldmia r6, {r0, r1, r2, r3}
@@ -8160,7 +8160,7 @@ ov31_0238994C: ; 0x0238994C
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023899B0: .word ov31_0238A218
+_023899B0: .word DUNGEON_D_BOX_LAYOUT_32
 _023899B4: .word ov31_02389A04
 	arm_func_end ov31_0238994C
 
@@ -8416,7 +8416,7 @@ ov31_02389CC0: ; 0x02389CC0
 	str r1, [sp]
 	str r2, [sp, #4]
 	mov r2, #0
-	ldr r0, _02389D74 ; =ov31_0238A1E8
+	ldr r0, _02389D74 ; =DUNGEON_D_BOX_LAYOUT_29
 	ldr r1, _02389D78 ; =0x00001013
 	ldr r3, _02389D7C ; =0x00000A3B
 	str r2, [sp, #8]
@@ -8448,7 +8448,7 @@ _02389D6C:
 	add sp, sp, #0x5c
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_02389D74: .word ov31_0238A1E8
+_02389D74: .word DUNGEON_D_BOX_LAYOUT_29
 _02389D78: .word 0x00001013
 _02389D7C: .word 0x00000A3B
 	arm_func_end ov31_02389CC0
@@ -8463,20 +8463,20 @@ ov31_02389D80: ; 0x02389D80
 	arm_func_end ov31_02389D80
 	; 0x02389D94
 
-	.global ov31_02389D94
-ov31_02389D94:
+	.global DUNGEON_D_BOX_LAYOUT_1
+DUNGEON_D_BOX_LAYOUT_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x0C, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389DA4
-ov31_02389DA4:
+	.global DUNGEON_D_BOX_LAYOUT_2
+DUNGEON_D_BOX_LAYOUT_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0B, 0x04, 0x13, 0x02, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389DB4
-ov31_02389DB4:
+	.global DUNGEON_D_BOX_LAYOUT_3
+DUNGEON_D_BOX_LAYOUT_3:
 	.byte 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xAC, 0x2D, 0x38, 0x02, 0x54, 0x2B, 0x38, 0x02
-	.global ov31_02389DC4
-ov31_02389DC4:
+	.global DUNGEON_D_BOX_LAYOUT_4
+DUNGEON_D_BOX_LAYOUT_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x10, 0x1C, 0x06, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389DD4
-ov31_02389DD4:
+	.global DUNGEON_MAIN_MENU
+DUNGEON_MAIN_MENU:
 	.byte 0xAD, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xAE, 0x08, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0xAF, 0x08, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xB0, 0x08, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0xB1, 0x08, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xB3, 0x08, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
@@ -8484,31 +8484,31 @@ ov31_02389DD4:
 	.global ov31_02389E14
 ov31_02389E14:
 	.byte 0x5B, 0x64, 0x75, 0x6E, 0x67, 0x65, 0x6F, 0x6E, 0x3A, 0x30, 0x5D, 0x00
-	.global ov31_02389E20
-ov31_02389E20:
+	.global OVERLAY31_UNKNOWN_STRING_IDS
+OVERLAY31_UNKNOWN_STRING_IDS:
 	.byte 0xC7, 0x08
 	.global ov31_02389E22
 ov31_02389E22:
 	.byte 0xCB, 0x08
 	.byte 0xC8, 0x08, 0xCC, 0x08, 0xC9, 0x08, 0xCD, 0x08, 0xCA, 0x08, 0xCE, 0x08
-	.global ov31_02389E30
-ov31_02389E30:
+	.global OVERLAY31_UNKNOWN_STRUCT__NA_2389E30
+OVERLAY31_UNKNOWN_STRUCT__NA_2389E30:
 	.byte 0x0E, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xF0, 0x32, 0x38, 0x02, 0xBC, 0x2F, 0x38, 0x02
-	.global ov31_02389E40
-ov31_02389E40:
+	.global DUNGEON_D_BOX_LAYOUT_5
+DUNGEON_D_BOX_LAYOUT_5:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x1C, 0x0D, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389E50
-ov31_02389E50:
+	.global DUNGEON_D_BOX_LAYOUT_6
+DUNGEON_D_BOX_LAYOUT_6:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x13, 0x04, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389E60
-ov31_02389E60:
+	.global DUNGEON_D_BOX_LAYOUT_7
+DUNGEON_D_BOX_LAYOUT_7:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x17, 0x02, 0x07, 0x06, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389E70
-ov31_02389E70:
+	.global DUNGEON_SUBMENU_1
+DUNGEON_SUBMENU_1:
 	.byte 0xAD, 0x09, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0xCF, 0x08, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0xD0, 0x08, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xAD, 0x09, 0x00, 0x00
@@ -8518,83 +8518,83 @@ ov31_02389E70:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xAD, 0x09, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0xCF, 0x08, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0xD0, 0x08, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov31_02389EF0
-ov31_02389EF0:
+	.global OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0
+OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0:
 	.byte 0x01, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x6A, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov31_02389EFC
-ov31_02389EFC:
+	.global DUNGEON_D_BOX_LAYOUT_8
+DUNGEON_D_BOX_LAYOUT_8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389F0C
-ov31_02389F0C:
+	.global DUNGEON_D_BOX_LAYOUT_9
+DUNGEON_D_BOX_LAYOUT_9:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x07, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389F1C
-ov31_02389F1C:
+	.global DUNGEON_D_BOX_LAYOUT_10
+DUNGEON_D_BOX_LAYOUT_10:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x08, 0x02
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389F2C
-ov31_02389F2C:
+	.global DUNGEON_D_BOX_LAYOUT_11
+DUNGEON_D_BOX_LAYOUT_11:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x14, 0x12, 0x02
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389F3C
-ov31_02389F3C:
+	.global DUNGEON_D_BOX_LAYOUT_12
+DUNGEON_D_BOX_LAYOUT_12:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x13, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389F4C
-ov31_02389F4C:
+	.global DUNGEON_D_BOX_LAYOUT_13
+DUNGEON_D_BOX_LAYOUT_13:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x17, 0x02, 0x07, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov31_02389F5C
 ov31_02389F5C:
 	.byte 0x20, 0x20, 0x3F, 0x3F, 0x3F, 0x00, 0x00, 0x00
-	.global ov31_02389F64
-ov31_02389F64:
+	.global OVERLAY31_JP_STRING
+OVERLAY31_JP_STRING:
 	.byte 0x0A, 0x0A, 0x2D, 0x2D, 0x2D, 0x2D, 0x81, 0x40, 0x20, 0x8F, 0x89, 0x8A, 0xFA, 0x83, 0x7C, 0x83
 	.byte 0x57, 0x83, 0x56, 0x83, 0x87, 0x83, 0x93, 0x3D, 0x25, 0x64, 0x81, 0x40, 0x2D, 0x2D, 0x2D, 0x2D
 	.byte 0x2D, 0x20, 0x0A, 0x00
-	.global ov31_02389F88
-ov31_02389F88:
+	.global DUNGEON_D_BOX_LAYOUT_14
+DUNGEON_D_BOX_LAYOUT_14:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389F98
-ov31_02389F98:
+	.global DUNGEON_D_BOX_LAYOUT_15
+DUNGEON_D_BOX_LAYOUT_15:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389FA8
-ov31_02389FA8:
+	.global DUNGEON_D_BOX_LAYOUT_16
+DUNGEON_D_BOX_LAYOUT_16:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x10, 0x1C, 0x04, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389FB8
-ov31_02389FB8:
+	.global DUNGEON_D_BOX_LAYOUT_17
+DUNGEON_D_BOX_LAYOUT_17:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x17, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389FC8
-ov31_02389FC8:
+	.global DUNGEON_D_BOX_LAYOUT_18
+DUNGEON_D_BOX_LAYOUT_18:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x13, 0x04, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389FD8
-ov31_02389FD8:
+	.global DUNGEON_D_BOX_LAYOUT_19
+DUNGEON_D_BOX_LAYOUT_19:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_02389FE8
-ov31_02389FE8:
+	.global OVERLAY31_UNKNOWN_STRUCT__NA_2389FE8
+OVERLAY31_UNKNOWN_STRUCT__NA_2389FE8:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x6A, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov31_02389FF4
-ov31_02389FF4:
+	.global DUNGEON_D_BOX_LAYOUT_20
+DUNGEON_D_BOX_LAYOUT_20:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x0E, 0x12, 0x04, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A004
-ov31_0238A004:
+	.global DUNGEON_D_BOX_LAYOUT_21
+DUNGEON_D_BOX_LAYOUT_21:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0E, 0x02, 0x10, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A014
-ov31_0238A014:
+	.global DUNGEON_D_BOX_LAYOUT_22
+DUNGEON_D_BOX_LAYOUT_22:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x0F, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A024
-ov31_0238A024:
+	.global DUNGEON_D_BOX_LAYOUT_23
+DUNGEON_D_BOX_LAYOUT_23:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x13, 0x02, 0x0B, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A034
-ov31_0238A034:
+	.global DUNGEON_D_BOX_LAYOUT_24
+DUNGEON_D_BOX_LAYOUT_24:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x0A, 0x02, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov31_0238A044
 ov31_0238A044:
@@ -8658,58 +8658,58 @@ ov31_0238A0E8:
 	.byte 0x5B, 0x73, 0x74, 0x72, 0x69, 0x6E, 0x67, 0x3A, 0x30, 0x5D, 0x5B, 0x43
 	.byte 0x4C, 0x55, 0x4D, 0x5F, 0x53, 0x45, 0x54, 0x3A, 0x38, 0x30, 0x5D, 0x5B, 0x73, 0x74, 0x72, 0x69
 	.byte 0x6E, 0x67, 0x3A, 0x31, 0x5D, 0x00, 0x00, 0x00
-	.global ov31_0238A10C
-ov31_0238A10C:
+	.global DUNGEON_D_BOX_LAYOUT_25
+DUNGEON_D_BOX_LAYOUT_25:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x0C, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A11C
-ov31_0238A11C:
+	.global DUNGEON_SUBMENU_5
+DUNGEON_SUBMENU_5:
 	.byte 0xC3, 0x08, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0xC4, 0x08, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov31_0238A134
-ov31_0238A134:
+	.global DUNGEON_D_BOX_LAYOUT_26
+DUNGEON_D_BOX_LAYOUT_26:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x1C, 0x12, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A144
-ov31_0238A144:
+	.global OVERLAY31_UNKNOWN_STRUCT__NA_238A144
+OVERLAY31_UNKNOWN_STRUCT__NA_238A144:
 	.byte 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7C, 0x91, 0x38, 0x02, 0x04, 0x8C, 0x38, 0x02
 	.global ov31_0238A154
 ov31_0238A154:
 	.byte 0x5B, 0x76, 0x61, 0x6C, 0x75, 0x65, 0x3A, 0x30, 0x3A, 0x33, 0x5D, 0x20, 0x5B, 0x43, 0x53, 0x3A
 	.byte 0x25, 0x63, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00
-	.global ov31_0238A170
-ov31_0238A170:
+	.global DUNGEON_D_BOX_LAYOUT_27
+DUNGEON_D_BOX_LAYOUT_27:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x0F, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A180
-ov31_0238A180:
+	.global DUNGEON_D_BOX_LAYOUT_28
+DUNGEON_D_BOX_LAYOUT_28:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x1C, 0x14, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A190
-ov31_0238A190:
+	.global OVERLAY31_UNKNOWN_STRUCT__NA_238A190
+OVERLAY31_UNKNOWN_STRUCT__NA_238A190:
 	.byte 0x0E, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x60, 0x94, 0x38, 0x02, 0xFC, 0x91, 0x38, 0x02
-	.global ov31_0238A1A0
-ov31_0238A1A0:
+	.global DUNGEON_SUBMENU_6
+DUNGEON_SUBMENU_6:
 	.byte 0xA8, 0x3F, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xA9, 0x3F, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xAA, 0x3F, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0xAB, 0x3F, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xAC, 0x3F, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0xAD, 0x3F, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0xAE, 0x3F, 0x00, 0x00
 	.byte 0x06, 0x00, 0x00, 0x00, 0xAF, 0x3F, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov31_0238A1E8
-ov31_0238A1E8:
+	.global DUNGEON_D_BOX_LAYOUT_29
+DUNGEON_D_BOX_LAYOUT_29:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A1F8
-ov31_0238A1F8:
+	.global DUNGEON_D_BOX_LAYOUT_30
+DUNGEON_D_BOX_LAYOUT_30:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A208
-ov31_0238A208:
+	.global DUNGEON_D_BOX_LAYOUT_31
+DUNGEON_D_BOX_LAYOUT_31:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x12, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A218
-ov31_0238A218:
+	.global DUNGEON_D_BOX_LAYOUT_32
+DUNGEON_D_BOX_LAYOUT_32:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x14, 0x0F, 0x02, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov31_0238A228

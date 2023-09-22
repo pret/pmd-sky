@@ -3410,7 +3410,7 @@ BoostSpeed: ; 0x02314810
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	cmp r6, #0
 	bne _02314850
-	ldr r1, _0231492C ; =ov10_022C4888
+	ldr r1, _0231492C ; =SPEED_BOOST_TURN_RANGE
 	mov r0, r8
 	mov r2, #0
 	bl CalcStatusDuration
@@ -3478,7 +3478,7 @@ _02314920:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0231492C: .word ov10_022C4888
+_0231492C: .word SPEED_BOOST_TURN_RANGE
 _02314930: .word 0x00000DDB
 _02314934: .word 0x00000DDA
 _02314938: .word ov29_02353318

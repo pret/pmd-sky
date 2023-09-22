@@ -144,7 +144,7 @@
 .public ov29_02353538
 .public ov29_0237C91C
 .public ov29_0238280C
-.public ov31_02389E20
+.public OVERLAY31_UNKNOWN_STRING_IDS
 .public PositionHasItem
 .public PreprocessString
 .public PreprocessStringFromMessageId

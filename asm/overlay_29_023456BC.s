@@ -690,7 +690,7 @@ TryGenerateUnownStoneDrop: ; 0x02346060
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r0, _023460D8 ; =ov10_022C4474
+	ldr r0, _023460D8 ; =UNOWN_STONE_DROP_CHANCE
 	ldrsh r0, [r0]
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
@@ -709,7 +709,7 @@ TryGenerateUnownStoneDrop: ; 0x02346060
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023460D8: .word ov10_022C4474
+_023460D8: .word UNOWN_STONE_DROP_CHANCE
 	arm_func_end TryGenerateUnownStoneDrop
 
 	arm_func_start ov29_023460DC

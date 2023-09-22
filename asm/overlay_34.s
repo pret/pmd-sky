@@ -758,7 +758,7 @@ _022DCBC0:
 	arm_func_start ov34_022DCBCC
 ov34_022DCBCC: ; 0x022DCBCC
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCBEC ; =ov34_022DD014
+	ldr r0, _022DCBEC ; =OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
 	bl sub_020348E4
 	cmp r0, #0
 	ldrne r0, _022DCBF0 ; =ov34_022DD084
@@ -766,7 +766,7 @@ ov34_022DCBCC: ; 0x022DCBCC
 	strne r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCBEC: .word ov34_022DD014
+_022DCBEC: .word OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
 _022DCBF0: .word ov34_022DD084
 	arm_func_end ov34_022DCBCC
 
@@ -780,7 +780,7 @@ ov34_022DCBF4: ; 0x022DCBF4
 	ldr r1, _022DCC84 ; =ov34_022DD084
 	mov ip, #1
 	str r0, [r1]
-	ldr r3, _022DCC88 ; =ov34_022DD024
+	ldr r3, _022DCC88 ; =START_MENU_CONFIRM
 	add r2, sp, #0
 	mov r0, #0
 	mov r1, #0x31
@@ -810,7 +810,7 @@ ov34_022DCBF4: ; 0x022DCBF4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022DCC84: .word ov34_022DD084
-_022DCC88: .word ov34_022DD024
+_022DCC88: .word START_MENU_CONFIRM
 _022DCC8C: .word 0x00000408
 _022DCC90: .word 0x00000255
 	arm_func_end ov34_022DCBF4
@@ -913,7 +913,7 @@ _022DCDC8: .word ov34_022DD084
 	arm_func_start ov34_022DCDCC
 ov34_022DCDCC: ; 0x022DCDCC
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCDEC ; =ov34_022DD03C
+	ldr r0, _022DCDEC ; =OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
 	bl sub_020348E4
 	cmp r0, #0
 	ldrne r0, _022DCDF0 ; =ov34_022DD08C
@@ -921,7 +921,7 @@ ov34_022DCDCC: ; 0x022DCDCC
 	strne r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCDEC: .word ov34_022DD03C
+_022DCDEC: .word OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
 _022DCDF0: .word ov34_022DD08C
 	arm_func_end ov34_022DCDCC
 
@@ -933,7 +933,7 @@ ov34_022DCDF4: ; 0x022DCDF4
 	mov r1, r0
 	bl MemAlloc
 	ldr r1, _022DCE7C ; =ov34_022DD08C
-	ldr r3, _022DCE80 ; =ov34_022DD04C
+	ldr r3, _022DCE80 ; =DUNGEON_DEBUG_MENU
 	str r0, [r1]
 	add r2, sp, #0
 	mov r0, #0
@@ -963,7 +963,7 @@ ov34_022DCDF4: ; 0x022DCDF4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022DCE7C: .word ov34_022DD08C
-_022DCE80: .word ov34_022DD04C
+_022DCE80: .word DUNGEON_DEBUG_MENU
 _022DCE84: .word 0x00000408
 _022DCE88: .word 0x00003D1C
 	arm_func_end ov34_022DCDF4
@@ -1086,19 +1086,19 @@ ov34_022DCFF4:
 	.global ov34_022DD004
 ov34_022DD004:
 	.byte 0x42, 0x41, 0x43, 0x4B, 0x2F, 0x77, 0x5F, 0x65, 0x73, 0x72, 0x62, 0x2E, 0x62, 0x67, 0x70, 0x00
-	.global ov34_022DD014
-ov34_022DD014:
+	.global OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
+OVERLAY34_UNKNOWN_STRUCT__NA_22DD014:
 	.byte 0x0F, 0x00, 0x00, 0x00, 0xF4, 0xCB, 0x2D, 0x02, 0x94, 0xCC, 0x2D, 0x02, 0xE0, 0xCC, 0x2D, 0x02
-	.global ov34_022DD024
-ov34_022DD024:
+	.global START_MENU_CONFIRM
+START_MENU_CONFIRM:
 	.byte 0x56, 0x02, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x57, 0x02, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ov34_022DD03C
-ov34_022DD03C:
+	.global OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
+OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C:
 	.byte 0x0F, 0x00, 0x00, 0x00, 0xF4, 0xCD, 0x2D, 0x02
 	.byte 0x8C, 0xCE, 0x2D, 0x02, 0xD8, 0xCE, 0x2D, 0x02
-	.global ov34_022DD04C
-ov34_022DD04C:
+	.global DUNGEON_DEBUG_MENU
+DUNGEON_DEBUG_MENU:
 	.byte 0x1D, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x3D, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x1F, 0x3D, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x20, 0x3D, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00

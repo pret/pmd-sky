@@ -39,7 +39,6 @@
 .public ov10_022C26A0
 .public ov10_022C26BC
 .public ov10_022C2720
-.public ov10_022C478C
 .public ov29_022DE0EC
 .public ov29_022DE608
 .public ov29_022E0378
@@ -76,6 +75,7 @@
 .public SECONDARY_TERRAIN_TYPES
 .public SetBothScreensWindowColorToDefault
 .public SetScreenWindowsColor
+.public SPORT_CONDITION_TURN_RANGE
 .public sub_0201E020
 .public sub_0201E080
 .public sub_0201F2A0

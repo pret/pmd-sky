@@ -8,6 +8,7 @@
 .public AreEntitiesAdjacent
 .public BoostSpeedOneStage
 .public CalcStatusDuration
+.public DETECT_BAND_MOVE_ACCURACY_DROP
 .public DIRECTIONS_XY
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB50
@@ -40,6 +41,7 @@
 .public HasHeldItem
 .public InitMove
 .public InitMoveCheckId
+.public INTIMIDATOR_ACTIVATION_CHANCE
 .public IqSkillIsEnabled
 .public Is2TurnsMove
 .public IsAffectedByTaunt
@@ -52,8 +54,12 @@
 .public LogMessageWithPopup
 .public LogMessageWithPopupCheckUser
 .public LowerSpeed
+.public MALE_ACCURACY_STAGE_MULTIPLIERS
+.public MALE_EVASION_STAGE_MULTIPLIERS
 .public METRONOME_TABLE
 .public MoveIsNotPhysical
+.public NATURE_POWER_TABLE
+.public NIGHTMARE_TURN_RANGE
 .public ov00_022BFDAC
 .public ov00_022BFDEC
 .public ov10_022BDE50
@@ -69,14 +75,7 @@
 .public ov10_022BFD8C
 .public ov10_022BFDCC
 .public ov10_022C4584
-.public ov10_022C45B8
 .public ov10_022C4714
-.public ov10_022C4724
-.public ov10_022C47A8
-.public ov10_022C4808
-.public ov10_022C4E40
-.public ov10_022C540C
-.public ov10_022C5460
 .public ov29_022DE5D8
 .public ov29_022DE5F0
 .public ov29_022E28D4
@@ -123,7 +122,6 @@
 .public ov29_02352A60
 .public ov29_02352A6C
 .public ov29_02352A8C
-.public ov29_02352AAC
 .public ov29_02352AD8
 .public ov29_02352B1C
 .public ov29_02353538
@@ -134,6 +132,7 @@
 .public ov29_0237CA88
 .public PlayMoveAnimation
 .public PositionHasMonster
+.public QUICK_DODGER_MOVE_ACCURACY_DROP
 .public SetAndLoadCurrentAttackAnimation
 .public ShouldDisplayEntityWrapper
 .public ShouldMovePlayAlternativeAnimation
@@ -162,5 +161,6 @@
 .public TryInflictSleepStatus
 .public TrySealMove
 .public TryWarp
+.public TWO_TURN_MOVES_AND_STATUSES
 .public UpdateAiTargetPos
 .public WanTableSpriteHasAnimationGroup

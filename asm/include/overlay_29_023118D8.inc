@@ -31,7 +31,6 @@
 .public ov10_022C4878
 .public ov10_022C4880
 .public ov10_022C4884
-.public ov10_022C4888
 .public ov10_022C488C
 .public ov10_022C4890
 .public ov10_022C4894
@@ -86,6 +85,7 @@
 .public ov29_02353538
 .public SafeguardIsActive
 .public SECONDARY_TERRAIN_TYPES
+.public SPEED_BOOST_TURN_RANGE
 .public sub_02025888
 .public sub_020258E4
 .public SubstitutePlaceholderStringTags

@@ -55,7 +55,6 @@
 .public LogMessageByIdWithPopupCheckUserUnknown
 .public MONEY_QUANTITY_TABLE
 .public MonsterHasEmbargoStatus
-.public ov10_022C4474
 .public ov10_022C44C8
 .public ov10_022C48EC
 .public ov10_022C4CD8
@@ -108,5 +107,6 @@
 .public SubstitutePlaceholderStringTags
 .public TestItemAiFlag
 .public TwoTurnMoveForcedMiss
+.public UNOWN_STONE_DROP_CHANCE
 .public UpdateEntityPixelPos
 .public YesNoMenu

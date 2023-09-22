@@ -248,7 +248,7 @@ ActivateSportCondition: ; 0x0233544C
 	cmp r0, #0
 	mov r0, #0
 	bne _02335488
-	ldr r1, _023354B4 ; =ov10_022C478C
+	ldr r1, _023354B4 ; =SPORT_CONDITION_TURN_RANGE
 	mov r2, r0
 	bl CalcStatusDuration
 	ldr r1, _023354B8 ; =ov29_02353538
@@ -260,7 +260,7 @@ ActivateSportCondition: ; 0x0233544C
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r3, pc}
 _02335488:
-	ldr r1, _023354B4 ; =ov10_022C478C
+	ldr r1, _023354B4 ; =SPORT_CONDITION_TURN_RANGE
 	mov r2, r0
 	bl CalcStatusDuration
 	ldr r1, _023354B8 ; =ov29_02353538
@@ -272,7 +272,7 @@ _02335488:
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023354B4: .word ov10_022C478C
+_023354B4: .word SPORT_CONDITION_TURN_RANGE
 _023354B8: .word ov29_02353538
 _023354BC: .word 0x00000CDA
 _023354C0: .word 0x00000CDB
