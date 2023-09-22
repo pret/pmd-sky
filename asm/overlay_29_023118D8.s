@@ -524,7 +524,7 @@ TryInflictSleeplessStatus: ; 0x02311F80
 	ldrb r0, [r5, #0xbd]
 	cmp r0, #2
 	beq _02312040
-	ldr r1, _0231205C ; =0x022C4728
+	ldr r1, _0231205C ; =ov10_022C4728
 	mov r3, #2
 	mov r0, r6
 	mov r2, #0
@@ -562,7 +562,7 @@ _02312050:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0231205C: .word 0x022C4728
+_0231205C: .word ov10_022C4728
 _02312060: .word 0x00000D13
 _02312064: .word 0x00000D15
 _02312068: .word 0x00000D14
@@ -730,7 +730,7 @@ _02312260:
 	ldrb r0, [r6, #0xd0]
 	cmp r0, #7
 	beq _02312300
-	ldr r1, _0231232C ; =0x022C4804
+	ldr r1, _0231232C ; =ov10_022C4804
 	mov r3, #7
 	mov r0, r4
 	mov r2, #1
@@ -763,7 +763,7 @@ _0231231C:
 	.align 2, 0
 _02312324: .word 0x00000DA3
 _02312328: .word 0x00000DBB
-_0231232C: .word 0x022C4804
+_0231232C: .word ov10_022C4804
 _02312330: .word 0x00000D1A
 _02312334: .word 0x00000D1B
 	arm_func_end TryInflictInfatuatedStatus
@@ -839,7 +839,7 @@ _02312424:
 	and r0, r0, #3
 	cmp r0, #2
 	bne _0231247C
-	ldr r0, _023125F8 ; =0x02353538
+	ldr r0, _023125F8 ; =ov29_02353538
 	ldr r1, _023125FC ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -865,7 +865,7 @@ _0231247C:
 	mov r5, #1
 	cmp r0, #1
 	beq _023124F4
-	ldr r1, _02312604 ; =0x022C4874
+	ldr r1, _02312604 ; =ov10_022C4874
 	mov r0, sb
 	mov r2, r5
 	strb r5, [r7, #0xbf]
@@ -960,10 +960,10 @@ _023125E8:
 	.align 2, 0
 _023125F0: .word 0x00000DAB
 _023125F4: .word 0x00000DAC
-_023125F8: .word 0x02353538
+_023125F8: .word ov29_02353538
 _023125FC: .word SECONDARY_TERRAIN_TYPES
 _02312600: .word 0x00000DB9
-_02312604: .word 0x022C4874
+_02312604: .word ov10_022C4874
 _02312608: .word 0x00000D1C
 _0231260C: .word 0x00000D1D
 _02312610: .word DIRECTIONS_XY
@@ -974,7 +974,7 @@ _02312614: .word 0x00000DC5
 TryInflictBurnStatusWholeTeam: ; 0x02312618
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, #0
-	ldr r4, _02312660 ; =0x02353538
+	ldr r4, _02312660 ; =ov29_02353538
 	mov r6, r7
 	mov r5, #1
 _0231262C:
@@ -992,7 +992,7 @@ _0231262C:
 	blt _0231262C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02312660: .word 0x02353538
+_02312660: .word ov29_02353538
 	arm_func_end TryInflictBurnStatusWholeTeam
 
 	arm_func_start TryInflictPoisonedStatus
@@ -1090,7 +1090,7 @@ _02312798:
 	beq _02312830
 	cmp r0, #2
 	beq _0231281C
-	ldr r1, _0231292C ; =0x022C4878
+	ldr r1, _0231292C ; =ov10_022C4878
 	mov r3, #2
 	mov r0, sb
 	mov r2, r4
@@ -1190,7 +1190,7 @@ _02312914:
 	.align 2, 0
 _02312924: .word 0x00000DAD
 _02312928: .word 0x00000DAE
-_0231292C: .word 0x022C4878
+_0231292C: .word ov10_022C4878
 _02312930: .word 0x00000D1E
 _02312934: .word DIRECTIONS_XY
 _02312938: .word 0x00000DC5
@@ -1289,7 +1289,7 @@ _02312A70:
 	mov r4, #1
 	cmp r0, #3
 	beq _02312AEC
-	ldr r1, _02312BE8 ; =0x022C4880
+	ldr r1, _02312BE8 ; =ov10_022C4880
 	mov r3, #3
 	mov r0, sb
 	mov r2, r4
@@ -1383,7 +1383,7 @@ _02312BD0:
 	.align 2, 0
 _02312BE0: .word 0x00000DAD
 _02312BE4: .word 0x00000DAE
-_02312BE8: .word 0x022C4880
+_02312BE8: .word ov10_022C4880
 _02312BEC: .word 0x00000D1F
 _02312BF0: .word DIRECTIONS_XY
 _02312BF4: .word 0x00000DC5
@@ -1462,7 +1462,7 @@ _02312CF4:
 	and r0, r0, #3
 	cmp r0, #2
 	bne _02312D48
-	ldr r0, _02312E08 ; =0x02353538
+	ldr r0, _02312E08 ; =ov29_02353538
 	ldr r1, _02312E0C ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -1498,7 +1498,7 @@ _02312D88:
 	mov r0, r6
 	bl ov29_022E4C4C
 	mov r2, #1
-	ldr r1, _02312E14 ; =0x022C4870
+	ldr r1, _02312E14 ; =ov10_022C4870
 	mov r0, r6
 	strb r2, [r4, #0xc4]
 	bl CalcStatusDuration
@@ -1528,10 +1528,10 @@ _02312D88:
 	.align 2, 0
 _02312E00: .word 0x00000DA8
 _02312E04: .word 0x00000DA9
-_02312E08: .word 0x02353538
+_02312E08: .word ov29_02353538
 _02312E0C: .word SECONDARY_TERRAIN_TYPES
 _02312E10: .word 0x00000DAA
-_02312E14: .word 0x022C4870
+_02312E14: .word ov10_022C4870
 _02312E18: .word 0x00000D22
 _02312E1C: .word 0x00000D23
 	arm_func_end TryInflictFrozenStatus
@@ -1590,7 +1590,7 @@ _02312ECC:
 	ldrb r0, [r4, #0xc4]
 	cmp r0, #7
 	beq _02312F48
-	ldr r1, _02312F6C ; =0x022C48A0
+	ldr r1, _02312F6C ; =ov10_022C48A0
 	mov r3, #7
 	mov r0, r6
 	mov r2, #1
@@ -1626,7 +1626,7 @@ _02312F58:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02312F68: .word 0x00000C9B
-_02312F6C: .word 0x022C48A0
+_02312F6C: .word ov10_022C48A0
 _02312F70: .word 0x00000D24
 _02312F74: .word 0x00000D25
 	arm_func_end TryInflictConstrictionStatus
@@ -1711,7 +1711,7 @@ _02313084:
 	ldrb r0, [r4, #0xc4]
 	cmp r0, #2
 	beq _023130FC
-	ldr r1, _02313124 ; =0x022C4898
+	ldr r1, _02313124 ; =ov10_022C4898
 	mov r3, #2
 	mov r0, r5
 	mov r2, #1
@@ -1747,7 +1747,7 @@ _0231310C:
 	.align 2, 0
 _0231311C: .word 0x00000D28
 _02313120: .word 0x00000C9B
-_02313124: .word 0x022C4898
+_02313124: .word ov10_022C4898
 _02313128: .word 0x00000D26
 _0231312C: .word 0x00000D27
 	arm_func_end TryInflictShadowHoldStatus
@@ -1777,7 +1777,7 @@ _0231316C:
 	ldrb r0, [r4, #0xc4]
 	cmp r0, #5
 	beq _023131CC
-	ldr r1, _023131E8 ; =0x022C48B8
+	ldr r1, _023131E8 ; =ov10_022C48B8
 	mov r3, #5
 	mov r0, r5
 	mov r2, #0
@@ -1804,7 +1804,7 @@ _023131DC:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023131E8: .word 0x022C48B8
+_023131E8: .word ov10_022C48B8
 _023131EC: .word 0x00000D29
 _023131F0: .word 0x00000D2A
 	arm_func_end TryInflictIngrainStatus
@@ -1844,7 +1844,7 @@ TryInflictWrappedStatus: ; 0x023131F4
 	mov r0, #0x7f
 	strb r0, [r4, #0xcc]
 	mov r2, #0
-	ldr r1, _023133DC ; =0x022C48AC
+	ldr r1, _023133DC ; =ov10_022C48AC
 	mov r0, r6
 	strb r2, [r4, #0xcd]
 	mov r3, #4
@@ -1854,7 +1854,7 @@ TryInflictWrappedStatus: ; 0x023131F4
 	add r0, r0, #1
 	strb r0, [r5, #0xcc]
 	mov r0, #0
-	ldr r3, _023133E0 ; =0x02353538
+	ldr r3, _023133E0 ; =ov29_02353538
 	strb r0, [r5, #0xcd]
 	ldr r1, [r3]
 	mov r0, r7
@@ -1939,8 +1939,8 @@ _023133D0:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_023133DC: .word 0x022C48AC
-_023133E0: .word 0x02353538
+_023133DC: .word ov10_022C48AC
+_023133E0: .word ov29_02353538
 _023133E4: .word 0x00000D2B
 _023133E8: .word 0x00000D2C
 _023133EC: .word 0x00000D2D
@@ -1950,7 +1950,7 @@ _023133EC: .word 0x00000D2D
 FreeOtherWrappedMonsters: ; 0x023133F0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, #0
-	ldr r7, _02313468 ; =0x02353538
+	ldr r7, _02313468 ; =ov29_02353538
 	mov r6, r0
 	mov sb, r4
 	mov r8, r4
@@ -1982,7 +1982,7 @@ _02313458:
 	blt _02313408
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02313468: .word 0x02353538
+_02313468: .word ov29_02353538
 	arm_func_end FreeOtherWrappedMonsters
 
 	arm_func_start TryInflictPetrifiedStatus
@@ -2030,12 +2030,12 @@ _023134E0:
 	mov r2, #1
 	cmp r0, #0
 	beq _02313524
-	ldr r1, _023135E8 ; =0x022C479C
+	ldr r1, _023135E8 ; =ov10_022C479C
 	mov r0, r5
 	bl CalcStatusDuration
 	b _02313530
 _02313524:
-	ldr r1, _023135EC ; =0x022C47A0
+	ldr r1, _023135EC ; =ov10_022C47A0
 	mov r0, r5
 	bl CalcStatusDuration
 _02313530:
@@ -2061,7 +2061,7 @@ _02313570:
 	cmp r0, #0
 	beq _023135DC
 	mov r4, #0
-	ldr r6, _023135F8 ; =0x02353538
+	ldr r6, _023135F8 ; =ov29_02353538
 	mov r8, #6
 	mov r7, r4
 _0231358C:
@@ -2091,11 +2091,11 @@ _023135DC:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_023135E8: .word 0x022C479C
-_023135EC: .word 0x022C47A0
+_023135E8: .word ov10_022C479C
+_023135EC: .word ov10_022C47A0
 _023135F0: .word 0x00000D32
 _023135F4: .word 0x00000D33
-_023135F8: .word 0x02353538
+_023135F8: .word ov29_02353538
 	arm_func_end TryInflictPetrifiedStatus
 
 	arm_func_start LowerOffensiveStat
@@ -3161,7 +3161,7 @@ _02314498:
 	ldrb r0, [r4, #0xd0]
 	cmp r0, #1
 	beq _02314514
-	ldr r1, _02314538 ; =0x022C4884
+	ldr r1, _02314538 ; =ov10_022C4884
 	mov r2, #1
 	mov r0, r6
 	strb r2, [r4, #0xd0]
@@ -3193,7 +3193,7 @@ _02314524:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02314534: .word 0x00000DA2
-_02314538: .word 0x022C4884
+_02314538: .word ov10_022C4884
 _0231453C: .word 0x00000D02
 _02314540: .word 0x00000D03
 	arm_func_end TryInflictCringeStatus
@@ -3284,7 +3284,7 @@ _02314654:
 	ldrb r0, [r7, #0xbf]
 	cmp r0, #4
 	beq _023146E0
-	ldr r1, _023147DC ; =0x022C4894
+	ldr r1, _023147DC ; =ov10_022C4894
 	mov r3, #4
 	mov r0, sb
 	mov r2, r4
@@ -3378,7 +3378,7 @@ _023147D0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _023147D8: .word 0x00000DA1
-_023147DC: .word 0x022C4894
+_023147DC: .word ov10_022C4894
 _023147E0: .word 0x00000D01
 _023147E4: .word DIRECTIONS_XY
 _023147E8: .word 0x00000DC5
@@ -3410,7 +3410,7 @@ BoostSpeed: ; 0x02314810
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	cmp r6, #0
 	bne _02314850
-	ldr r1, _0231492C ; =0x022C4888
+	ldr r1, _0231492C ; =ov10_022C4888
 	mov r0, r8
 	mov r2, #0
 	bl CalcStatusDuration
@@ -3463,7 +3463,7 @@ _023148C4:
 _023148F0:
 	mov r0, r8
 	bl ov29_022E44CC
-	ldr r0, _02314938 ; =0x02353318
+	ldr r0, _02314938 ; =ov29_02353318
 	mov r1, r6, lsl #1
 	ldrh r2, [r0, r1]
 	mov r0, sb
@@ -3478,10 +3478,10 @@ _02314920:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0231492C: .word 0x022C4888
+_0231492C: .word ov10_022C4888
 _02314930: .word 0x00000DDB
 _02314934: .word 0x00000DDA
-_02314938: .word 0x02353318
+_02314938: .word ov29_02353318
 	arm_func_end BoostSpeed
 
 	arm_func_start BoostSpeedOneStage
@@ -3544,7 +3544,7 @@ _023149F8:
 	ldrb r0, [r6, #0x119]
 	cmp r0, #0
 	bne _02314A24
-	ldr r1, _02314AB0 ; =0x022C488C
+	ldr r1, _02314AB0 ; =ov10_022C488C
 	mov r0, sb
 	mov r2, #1
 	bl CalcStatusDuration
@@ -3576,7 +3576,7 @@ _02314A34:
 _02314A6C:
 	mov r0, sb
 	bl ov29_022E451C
-	ldr r0, _02314AB8 ; =0x02353318
+	ldr r0, _02314AB8 ; =ov29_02353318
 	mov r1, r4, lsl #1
 	ldrh r2, [r0, r1]
 	mov r0, sl
@@ -3593,9 +3593,9 @@ _02314AA0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02314AAC: .word 0x00000DDC
-_02314AB0: .word 0x022C488C
+_02314AB0: .word ov10_022C488C
 _02314AB4: .word 0x00000DDA
-_02314AB8: .word 0x02353318
+_02314AB8: .word ov29_02353318
 	arm_func_end LowerSpeed
 
 	arm_func_start TrySealMove
@@ -3876,7 +3876,7 @@ TryActivateQuickFeet: ; 0x02314E1C
 	arm_func_start TryInflictTerrifiedStatus
 TryInflictTerrifiedStatus: ; 0x02314E60
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _02314EB0 ; =0x022C4618
+	ldr r2, _02314EB0 ; =ov10_022C4618
 	mov r4, r1
 	ldr ip, [r4, #0xb4]
 	mov r3, #1
@@ -3896,7 +3896,7 @@ TryInflictTerrifiedStatus: ; 0x02314E60
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02314EB0: .word 0x022C4618
+_02314EB0: .word ov10_022C4618
 _02314EB4: .word 0x00000DE5
 	arm_func_end TryInflictTerrifiedStatus
 
@@ -4038,7 +4038,7 @@ _0231507C:
 	ldrb r0, [r4, #0xd0]
 	cmp r0, #2
 	beq _023150E0
-	ldr r1, _0231510C ; =0x022C4890
+	ldr r1, _0231510C ; =ov10_022C4890
 	mov r3, #2
 	mov r0, r6
 	mov r2, #1
@@ -4068,7 +4068,7 @@ _023150F0:
 _02315100: .word 0x00000DAF
 _02315104: .word 0x00000DBA
 _02315108: .word 0x00000DA7
-_0231510C: .word 0x022C4890
+_0231510C: .word ov10_022C4890
 _02315110: .word 0x00000CFE
 _02315114: .word 0x00000CFF
 	arm_func_end TryInflictConfusedStatus

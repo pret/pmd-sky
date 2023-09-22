@@ -87,14 +87,14 @@ _02311120:
 	cmp r0, #0
 	beq _0231115C
 _02311150:
-	ldr r0, _02311800 ; =0x022C46F8
+	ldr r0, _02311800 ; =ov10_022C46F8
 	ldrsh r0, [r0]
 	add r4, r4, r0
 _0231115C:
 	ldrb r0, [r7, #0xd5]
 	mov r1, #3
 	cmp r0, #6
-	ldreq r0, _02311804 ; =0x022C46D0
+	ldreq r0, _02311804 ; =ov10_022C46D0
 	ldreqsh r0, [r0]
 	addeq r4, r4, r0
 	mov r0, sl
@@ -104,7 +104,7 @@ _0231115C:
 	mov r0, sl
 	bl GetApparentWeather
 	cmp r0, #4
-	ldreq r0, _02311808 ; =0x022C4578
+	ldreq r0, _02311808 ; =ov10_022C4578
 	ldreqsh r0, [r0]
 	addeq r4, r4, r0
 _0231119C:
@@ -116,7 +116,7 @@ _0231119C:
 	mov r0, sl
 	bl GetApparentWeather
 	cmp r0, #4
-	ldreq r0, _02311808 ; =0x022C4578
+	ldreq r0, _02311808 ; =ov10_022C4578
 	ldreqsh r0, [r0]
 	addeq r4, r4, r0
 _023111C8:
@@ -128,7 +128,7 @@ _023111C8:
 	mov r0, sl
 	bl GetApparentWeather
 	cmp r0, #5
-	ldreq r0, _0231180C ; =0x022C4630
+	ldreq r0, _0231180C ; =ov10_022C4630
 	ldreqsh r0, [r0]
 	addeq r4, r4, r0
 _023111F4:
@@ -136,7 +136,7 @@ _023111F4:
 	mov r1, #0x49
 	bl ExclusiveItemEffectIsActive__02311064
 	cmp r0, #0
-	ldrne r0, _02311810 ; =0x022C4674
+	ldrne r0, _02311810 ; =ov10_022C4674
 	ldrsh r2, [r7, #0x12]
 	ldrnesh r0, [r0]
 	ldrsh r1, [r7, #0x16]
@@ -537,22 +537,22 @@ _023117A8:
 	mov r1, sl
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
-	ldr r0, _02311820 ; =0x02353318
+	ldr r0, _02311820 ; =ov29_02353318
 	mov r1, r4, lsl #1
 	ldrh r1, [r0, r1]
 	mov r0, sl
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02311800: .word 0x022C46F8
-_02311804: .word 0x022C46D0
-_02311808: .word 0x022C4578
-_0231180C: .word 0x022C4630
-_02311810: .word 0x022C4674
+_02311800: .word ov10_022C46F8
+_02311804: .word ov10_022C46D0
+_02311808: .word ov10_022C4578
+_0231180C: .word ov10_022C4630
+_02311810: .word ov10_022C4674
 _02311814: .word 0x000003E7
 _02311818: .word 0x00000CC6
 _0231181C: .word 0x00000CC7
-_02311820: .word 0x02353318
+_02311820: .word ov29_02353318
 	arm_func_end TickStatusAndHealthRegen
 
 	arm_func_start InflictSleepStatusSingle

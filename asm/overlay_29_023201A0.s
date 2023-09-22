@@ -38,7 +38,7 @@ ov29_023201D0: ; 0x023201D0
 	strh r0, [sp]
 	ldrh r3, [sl, #6]
 	ldrsh r6, [r1, r2]
-	ldr r0, _02320334 ; =0x0235171E
+	ldr r0, _02320334 ; =ov29_0235171E
 	ldrsh r1, [sp]
 	ldrsh r7, [r0, r2]
 	strh r3, [sp, #2]
@@ -117,7 +117,7 @@ _02320328:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _02320330: .word DIRECTIONS_XY
-_02320334: .word 0x0235171E
+_02320334: .word ov29_0235171E
 _02320338: .word 0x00000212
 	arm_func_end ov29_023201D0
 
@@ -209,7 +209,7 @@ TryExplosion: ; 0x02320448
 	ldr fp, [sp, #0x3c]
 	mov r5, #0
 	mov r7, #0x15
-	ldr r4, _0232074C ; =0x02353538
+	ldr r4, _0232074C ; =ov29_02353538
 	b _023204B4
 _0232047C:
 	ldr r0, [r4]
@@ -268,7 +268,7 @@ _02320518:
 	mov r0, sl
 	mov r1, sb
 	bl LogMessageByIdWithPopupCheckUserTarget
-	ldr r0, _02320758 ; =0x023529B8
+	ldr r0, _02320758 ; =ov29_023529B8
 	mov r6, #0
 	ldr r4, [r0, r8, lsl #2]
 	mov r7, r6
@@ -352,7 +352,7 @@ _02320664:
 	ldr r0, [r1]
 	cmp r0, #1
 	bne _023206A8
-	ldr r2, _0232075C ; =0x02353700
+	ldr r2, _0232075C ; =ov29_02353700
 	mov r0, sl
 	ldr r5, [r2, r8, lsl #2]
 	ldr r2, [sp, #0x38]
@@ -378,7 +378,7 @@ _023206B8:
 	ldr r0, _02320760 ; =0x0000026F
 	cmp fp, r0
 	beq _023206FC
-	ldr r1, _0232075C ; =0x02353700
+	ldr r1, _0232075C ; =ov29_02353700
 	ldr r2, [sp, #0x38]
 	ldr r4, [r1, r8, lsl #2]
 	mov r0, sl
@@ -412,10 +412,10 @@ _02320744:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0232074C: .word 0x02353538
+_0232074C: .word ov29_02353538
 _02320750: .word 0x00000BFC
 _02320754: .word 0x00000BFB
-_02320758: .word 0x023529B8
-_0232075C: .word 0x02353700
+_02320758: .word ov29_023529B8
+_0232075C: .word ov29_02353700
 _02320760: .word 0x0000026F
 	arm_func_end TryExplosion

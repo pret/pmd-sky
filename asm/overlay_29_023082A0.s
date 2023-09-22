@@ -297,7 +297,7 @@ ApplyDamageAndEffects: ; 0x0230863C
 	ldrb r0, [r0, #0xd2]
 	cmp r0, #0xc
 	bne _023086D4
-	ldr r1, _02308F70 ; =0x02352AEC
+	ldr r1, _02308F70 ; =ATK_STAT_IDX
 	mov r0, sl
 	ldr r2, [r1]
 	mov r1, sb
@@ -322,7 +322,7 @@ _023086D4:
 	beq _02308730
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308F74 ; =0x022C442C
+	ldr r1, _02308F74 ; =ov10_022C442C
 	ldrsh r1, [r1]
 	cmp r0, r1
 	movlt r0, #0
@@ -427,7 +427,7 @@ _02308858:
 	beq _023088B0
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308F78 ; =0x022C44C0
+	ldr r1, _02308F78 ; =ov10_022C44C0
 	mov r0, r0, lsl #0x10
 	ldrsh r1, [r1]
 	cmp r1, r0, asr #16
@@ -440,7 +440,7 @@ _023088B0:
 	beq _023088F8
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308F7C ; =0x022C4464
+	ldr r1, _02308F7C ; =ov10_022C4464
 	mov r0, r0, lsl #0x10
 	ldrsh r1, [r1]
 	cmp r1, r0, asr #16
@@ -569,7 +569,7 @@ _02308A74:
 	bne _02308B04
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308F84 ; =0x022C45B4
+	ldr r1, _02308F84 ; =ov10_022C45B4
 	ldrsh r1, [r1]
 	cmp r0, r1
 	bge _02308B04
@@ -595,7 +595,7 @@ _02308AFC:
 	mov r3, #0x80
 	bl ov29_0230F728
 _02308B04:
-	ldr r5, _02308F88 ; =0x023535DC
+	ldr r5, _02308F88 ; =ov29_023535DC
 	b _02308B54
 _02308B0C:
 	ldrb r1, [r5]
@@ -628,7 +628,7 @@ _02308B54:
 	beq _02308BB0
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308F8C ; =0x022C45B0
+	ldr r1, _02308F8C ; =ov10_022C45B0
 	ldrsh r1, [r1]
 	cmp r0, r1
 	bge _02308BB0
@@ -671,7 +671,7 @@ _02308C0C:
 	bne _02308C38
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308F90 ; =0x022C4564
+	ldr r1, _02308F90 ; =ov10_022C4564
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
@@ -688,13 +688,13 @@ _02308C38:
 	beq _02308C88
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308F94 ; =0x022C468C
+	ldr r1, _02308F94 ; =ov10_022C468C
 	ldrsh r1, [r1]
 	cmp r0, r1
 	bge _02308C88
 	add r0, r6, #0x100
 	ldrh r3, [r0, #0x92]
-	ldr r1, _02308F98 ; =0x0237CA6D
+	ldr r1, _02308F98 ; =ov29_0237CA6D
 	mov r2, #0
 	orr r3, r3, #2
 	strh r3, [r0, #0x92]
@@ -714,7 +714,7 @@ _02308C88:
 	beq _02308CDC
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308F9C ; =0x022C4460
+	ldr r1, _02308F9C ; =ov10_022C4460
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
@@ -733,7 +733,7 @@ _02308CDC:
 	bne _02308D24
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308FA0 ; =0x022C4550
+	ldr r1, _02308FA0 ; =ov10_022C4550
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
@@ -750,7 +750,7 @@ _02308D24:
 	beq _02308D64
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308FA4 ; =0x022C45C0
+	ldr r1, _02308FA4 ; =ov10_022C45C0
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
@@ -769,7 +769,7 @@ _02308D64:
 	bne _02308DE0
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308FA8 ; =0x022C45AC
+	ldr r1, _02308FA8 ; =ov10_022C45AC
 	ldrsh r1, [r1]
 	cmp r0, r1
 	bge _02308DE0
@@ -799,7 +799,7 @@ _02308DE0:
 	beq _02308E20
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308FAC ; =0x022C467C
+	ldr r1, _02308FAC ; =ov10_022C467C
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
@@ -824,7 +824,7 @@ _02308E20:
 	bne _02308E80
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308FB0 ; =0x022C4524
+	ldr r1, _02308FB0 ; =ov10_022C4524
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
@@ -841,7 +841,7 @@ _02308E80:
 	beq _02308EC0
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308FB4 ; =0x022C4638
+	ldr r1, _02308FB4 ; =ov10_022C4638
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
@@ -860,7 +860,7 @@ _02308ECC:
 	ldrb r1, [r0, #0xe0]
 	cmp r1, #2
 	bne _02308F4C
-	ldr r1, _02308FB8 ; =0x02353538
+	ldr r1, _02308FB8 ; =ov29_02353538
 	ldrb r2, [r0, #0xe8]
 	ldr r1, [r1]
 	add r1, r1, r2, lsl #2
@@ -898,23 +898,23 @@ _02308F68:
 	add sp, sp, #0x40
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02308F70: .word 0x02352AEC
-_02308F74: .word 0x022C442C
-_02308F78: .word 0x022C44C0
-_02308F7C: .word 0x022C4464
+_02308F70: .word ATK_STAT_IDX
+_02308F74: .word ov10_022C442C
+_02308F78: .word ov10_022C44C0
+_02308F7C: .word ov10_022C4464
 _02308F80: .word 0x00000C3F
-_02308F84: .word 0x022C45B4
-_02308F88: .word 0x023535DC
-_02308F8C: .word 0x022C45B0
-_02308F90: .word 0x022C4564
-_02308F94: .word 0x022C468C
-_02308F98: .word 0x0237CA6D
-_02308F9C: .word 0x022C4460
-_02308FA0: .word 0x022C4550
-_02308FA4: .word 0x022C45C0
-_02308FA8: .word 0x022C45AC
-_02308FAC: .word 0x022C467C
-_02308FB0: .word 0x022C4524
-_02308FB4: .word 0x022C4638
-_02308FB8: .word 0x02353538
+_02308F84: .word ov10_022C45B4
+_02308F88: .word ov29_023535DC
+_02308F8C: .word ov10_022C45B0
+_02308F90: .word ov10_022C4564
+_02308F94: .word ov10_022C468C
+_02308F98: .word ov29_0237CA6D
+_02308F9C: .word ov10_022C4460
+_02308FA0: .word ov10_022C4550
+_02308FA4: .word ov10_022C45C0
+_02308FA8: .word ov10_022C45AC
+_02308FAC: .word ov10_022C467C
+_02308FB0: .word ov10_022C4524
+_02308FB4: .word ov10_022C4638
+_02308FB8: .word ov29_02353538
 	arm_func_end ApplyDamageAndEffects
