@@ -5,7 +5,7 @@
 
 	arm_func_start GetMonsterDisplayNameType
 GetMonsterDisplayNameType: ; 0x02300108
-	ldr r1, _02300160 ; =0x02353538
+	ldr r1, _02300160 ; =ov29_02353538
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
 	ldrb r2, [r1, #0x23e]
@@ -30,7 +30,7 @@ _0230014C:
 	movne r0, #0
 	bx lr
 	.align 2, 0
-_02300160: .word 0x02353538
+_02300160: .word ov29_02353538
 	arm_func_end GetMonsterDisplayNameType
 
 	arm_func_start GetMonsterName
@@ -126,7 +126,7 @@ ov29_0230027C: ; 0x0230027C
 	ldr r1, _023002C0 ; =0x00000C32
 	add r0, sp, #0
 	bl sub_020258E4
-	ldr r1, _023002C4 ; =0x023527C0
+	ldr r1, _023002C4 ; =ov29_023527C0
 	add r2, sp, #0
 	mov r0, r4
 	bl SprintfStatic
@@ -138,7 +138,7 @@ _023002B8:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023002C0: .word 0x00000C32
-_023002C4: .word 0x023527C0
+_023002C4: .word ov29_023527C0
 	arm_func_end ov29_0230027C
 
 	arm_func_start SprintfStatic
@@ -166,7 +166,7 @@ ov29_023002F0: ; 0x023002F0
 	ldr r0, _02300350 ; =0x00000C33
 	bl StringFromMessageId
 	mov r3, r0
-	ldr r1, _02300354 ; =0x023527D0
+	ldr r1, _02300354 ; =ov29_023527D0
 	mov r0, r5
 	mov r2, r4
 	bl SprintfStatic
@@ -185,13 +185,13 @@ _02300344:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02300350: .word 0x00000C33
-_02300354: .word 0x023527D0
+_02300354: .word ov29_023527D0
 	arm_func_end ov29_023002F0
 
 	arm_func_start ov29_02300358
 ov29_02300358: ; 0x02300358
 	stmdb sp!, {r4, lr}
-	ldr r2, _02300400 ; =0x02353538
+	ldr r2, _02300400 ; =ov29_02353538
 	mov r4, r0
 	ldr r0, [r2]
 	add r0, r0, #0x1a000
@@ -237,7 +237,7 @@ _023003F0:
 	bl sub_0205858C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02300400: .word 0x02353538
+_02300400: .word ov29_02353538
 _02300404: .word 0x00000C35
 _02300408: .word 0x00000C33
 	arm_func_end ov29_02300358
@@ -1042,7 +1042,7 @@ ov29_02300E78: ; 0x02300E78
 	bl GetMobilityTypeCheckSlipAndFloating
 	ldr r2, _02300F24 ; =DIRECTIONS_XY
 	mov ip, r5, lsl #2
-	ldr r1, _02300F28 ; =0x0235171E
+	ldr r1, _02300F28 ; =ov29_0235171E
 	ldrsh r3, [r2, ip]
 	ldrsh lr, [r6, #4]
 	mov r4, r0
@@ -1068,7 +1068,7 @@ ov29_02300E78: ; 0x02300E78
 	ldrsh r1, [r6, #6]
 	bl GetTile
 	add r0, r0, r4
-	ldr r1, _02300F2C ; =0x02352798
+	ldr r1, _02300F2C ; =ov29_02352798
 	and r2, r5, #7
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
@@ -1079,8 +1079,8 @@ ov29_02300E78: ; 0x02300E78
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02300F24: .word DIRECTIONS_XY
-_02300F28: .word 0x0235171E
-_02300F2C: .word 0x02352798
+_02300F28: .word ov29_0235171E
+_02300F2C: .word ov29_02352798
 	arm_func_end ov29_02300E78
 
 	arm_func_start GetDirectionalMobilityType
@@ -1135,7 +1135,7 @@ ov29_02300FCC: ; 0x02300FCC
 	mov r4, r1
 	ldr r1, _02301050 ; =DIRECTIONS_XY
 	mov ip, r4, lsl #2
-	ldr r0, _02301054 ; =0x0235171E
+	ldr r0, _02301054 ; =ov29_0235171E
 	ldrsh r3, [r1, ip]
 	ldrsh lr, [r5, #4]
 	ldrsh r1, [r0, ip]
@@ -1154,7 +1154,7 @@ ov29_02300FCC: ; 0x02300FCC
 	ldrsh r0, [r5, #4]
 	ldrsh r1, [r5, #6]
 	bl GetTile
-	ldr r1, _02301058 ; =0x02352790
+	ldr r1, _02301058 ; =ov29_02352790
 	and r2, r4, #7
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
@@ -1165,8 +1165,8 @@ ov29_02300FCC: ; 0x02300FCC
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02301050: .word DIRECTIONS_XY
-_02301054: .word 0x0235171E
-_02301058: .word 0x02352790
+_02301054: .word ov29_0235171E
+_02301058: .word ov29_02352790
 	arm_func_end ov29_02300FCC
 
 	arm_func_start CanMonsterMoveInDirection
@@ -1179,7 +1179,7 @@ CanMonsterMoveInDirection: ; 0x0230105C
 	bl GetMobilityTypeCheckSlipAndFloating
 	ldr r2, _0230110C ; =DIRECTIONS_XY
 	mov ip, r5, lsl #2
-	ldr r1, _02301110 ; =0x0235171E
+	ldr r1, _02301110 ; =ov29_0235171E
 	ldrsh r3, [r2, ip]
 	ldrsh lr, [r6, #4]
 	mov r4, r0
@@ -1207,7 +1207,7 @@ CanMonsterMoveInDirection: ; 0x0230105C
 	ldrsh r1, [r6, #6]
 	bl GetTile
 	add r0, r0, r4
-	ldr r1, _02301114 ; =0x02352788
+	ldr r1, _02301114 ; =ov29_02352788
 	and r2, r5, #7
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
@@ -1217,8 +1217,8 @@ CanMonsterMoveInDirection: ; 0x0230105C
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0230110C: .word DIRECTIONS_XY
-_02301110: .word 0x0235171E
-_02301114: .word 0x02352788
+_02301110: .word ov29_0235171E
+_02301114: .word ov29_02352788
 	arm_func_end CanMonsterMoveInDirection
 
 	arm_func_start IsMonsterCornered
@@ -1253,7 +1253,7 @@ ov29_02301158: ; 0x02301158
 	bl GetMobilityTypeCheckSlipAndFloating
 	ldr r2, _02301228 ; =DIRECTIONS_XY
 	mov ip, r5, lsl #2
-	ldr r1, _0230122C ; =0x0235171E
+	ldr r1, _0230122C ; =ov29_0235171E
 	ldrsh r3, [r2, ip]
 	ldrsh lr, [r6, #4]
 	mov r4, r0
@@ -1289,7 +1289,7 @@ _023011E0:
 	ldrsh r1, [r6, #6]
 	bl GetTile
 	add r0, r0, r4
-	ldr r1, _02301230 ; =0x02352780
+	ldr r1, _02301230 ; =ov29_02352780
 	and r2, r5, #7
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
@@ -1300,8 +1300,8 @@ _023011E0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02301228: .word DIRECTIONS_XY
-_0230122C: .word 0x0235171E
-_02301230: .word 0x02352780
+_0230122C: .word ov29_0235171E
+_02301230: .word ov29_02352780
 	arm_func_end ov29_02301158
 
 	arm_func_start CanAttackInDirection
@@ -1316,7 +1316,7 @@ CanAttackInDirection: ; 0x02301234
 	ldr r1, _023012EC ; =DIRECTIONS_XY
 	mov ip, r5, lsl #2
 	cmp r4, #1
-	ldr r0, _023012F0 ; =0x0235171E
+	ldr r0, _023012F0 ; =ov29_0235171E
 	ldrsh r3, [r1, ip]
 	ldrsh lr, [r6, #4]
 	ldrsh r1, [r0, ip]
@@ -1344,7 +1344,7 @@ CanAttackInDirection: ; 0x02301234
 	ldrsh r1, [r6, #6]
 	bl GetTile
 	add r0, r0, r4
-	ldr r1, _023012F4 ; =0x02352778
+	ldr r1, _023012F4 ; =ov29_02352778
 	and r2, r5, #7
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
@@ -1354,8 +1354,8 @@ CanAttackInDirection: ; 0x02301234
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023012EC: .word DIRECTIONS_XY
-_023012F0: .word 0x0235171E
-_023012F4: .word 0x02352778
+_023012F0: .word ov29_0235171E
+_023012F4: .word ov29_02352778
 	arm_func_end CanAttackInDirection
 
 	arm_func_start CanAiMonsterMoveInDirection
@@ -1371,7 +1371,7 @@ CanAiMonsterMoveInDirection: ; 0x023012F8
 	strb r1, [r6]
 	ldr r2, _02301484 ; =DIRECTIONS_XY
 	mov r4, r7, lsl #2
-	ldr r1, _02301488 ; =0x0235171E
+	ldr r1, _02301488 ; =ov29_0235171E
 	ldrsh r3, [r2, r4]
 	ldrsh ip, [r8, #4]
 	mov r5, r0
@@ -1387,7 +1387,7 @@ CanAiMonsterMoveInDirection: ; 0x023012F8
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 	tst r0, #0x40
 	beq _02301390
-	ldr r0, _0230148C ; =0x02353538
+	ldr r0, _0230148C ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x793]
 	cmp r0, #0
@@ -1426,7 +1426,7 @@ _023013E4:
 	and r0, r0, #3
 	cmp r0, #2
 	bne _0230142C
-	ldr r0, _0230148C ; =0x02353538
+	ldr r0, _0230148C ; =ov29_02353538
 	ldr r1, _02301490 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -1450,7 +1450,7 @@ _0230142C:
 	ldrsh r1, [r8, #6]
 	bl GetTile
 	add r0, r0, r5
-	ldr r1, _02301494 ; =0x02352770
+	ldr r1, _02301494 ; =ov29_02352770
 	and r2, r7, #7
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
@@ -1465,10 +1465,10 @@ _0230142C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02301484: .word DIRECTIONS_XY
-_02301488: .word 0x0235171E
-_0230148C: .word 0x02353538
+_02301488: .word ov29_0235171E
+_0230148C: .word ov29_02353538
 _02301490: .word SECONDARY_TERRAIN_TYPES
-_02301494: .word 0x02352770
+_02301494: .word ov29_02352770
 	arm_func_end CanAiMonsterMoveInDirection
 
 	arm_func_start ov29_02301498
@@ -1499,7 +1499,7 @@ ov29_02301498: ; 0x02301498
 	movge r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 _023014FC:
-	ldr r0, _0230158C ; =0x02353538
+	ldr r0, _0230158C ; =ov29_02353538
 	ldr r1, _02301590 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -1537,7 +1537,7 @@ _02301534:
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0230158C: .word 0x02353538
+_0230158C: .word ov29_02353538
 _02301590: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end ov29_02301498
 
@@ -1760,7 +1760,7 @@ _0230187C:
 	ldrb r0, [r5, #0xd8]
 	movne r3, #0
 	cmp r0, #2
-	ldr r0, _023018A8 ; =0x023527A0
+	ldr r0, _023018A8 ; =ov29_023527A0
 	moveq r4, #1
 	add r0, r0, r1, lsl #3
 	add r0, r0, r2, lsl #2
@@ -1769,7 +1769,7 @@ _0230187C:
 	ldrb r0, [r4, r0]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023018A8: .word 0x023527A0
+_023018A8: .word ov29_023527A0
 	arm_func_end ov29_0230175C
 
 	arm_func_start ov29_023018AC
@@ -1926,7 +1926,7 @@ ov29_02301A84: ; 0x02301A84
 	mov r0, r4
 	mov sb, r2
 	bl GetApparentWeather
-	ldr r6, _02301B24 ; =0x023535C0
+	ldr r6, _02301B24 ; =ov29_023535C0
 	mov r7, r0
 	ldrb r0, [r6, r7]
 	mov r8, #0
@@ -1962,7 +1962,7 @@ _02301B18:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02301B24: .word 0x023535C0
+_02301B24: .word ov29_023535C0
 _02301B28: .word 0x00000C39
 	arm_func_end ov29_02301A84
 
@@ -2156,7 +2156,7 @@ OtherMonsterAbilityIsActive: ; 0x02301D84
 	mov r6, r1
 	mov r5, #0
 	mov r4, #1
-	ldr r8, _02301E14 ; =0x02353538
+	ldr r8, _02301E14 ; =ov29_02353538
 	b _02301E04
 _02301DA0:
 	ldr r0, [r8]
@@ -2191,7 +2191,7 @@ _02301E04:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02301E14: .word 0x02353538
+_02301E14: .word ov29_02353538
 	arm_func_end OtherMonsterAbilityIsActive
 
 	arm_func_start LevitateIsActive
@@ -2324,7 +2324,7 @@ IqSkillIsEnabled: ; 0x02301F80
 	ldrb r0, [r2, #6]
 	cmp r0, #0
 	bne _02301FAC
-	ldr r0, _02301FB8 ; =0x02353538
+	ldr r0, _02301FB8 ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x12]
 	cmp r0, #0
@@ -2335,7 +2335,7 @@ _02301FAC:
 	bl IqSkillFlagTest
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02301FB8: .word 0x02353538
+_02301FB8: .word ov29_02353538
 	arm_func_end IqSkillIsEnabled
 
 	arm_func_start UpdateIqSkills
@@ -2374,7 +2374,7 @@ _0230202C:
 	cmp r6, #0x19
 	blt _02301FE4
 _02302034:
-	ldr r0, _023021E8 ; =0x020A188C
+	ldr r0, _023021E8 ; =MIN_IQ_EXCLUSIVE_MOVE_USER
 	ldrsh r1, [r4, #0xe]
 	ldrsh r0, [r0]
 	cmp r1, r0
@@ -2392,7 +2392,7 @@ _02302068:
 	bl ov29_022FBDE0
 	cmp r0, #0
 	bne _0230208C
-	ldr r0, _023021EC ; =0x020A18A4
+	ldr r0, _023021EC ; =MIN_IQ_ITEM_MASTER
 	ldrsh r1, [r4, #0xe]
 	ldrsh r0, [r0]
 	cmp r1, r0
@@ -2497,8 +2497,8 @@ _023021C4:
 	bl EnableIqSkill
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023021E8: .word 0x020A188C
-_023021EC: .word 0x020A18A4
+_023021E8: .word MIN_IQ_EXCLUSIVE_MOVE_USER
+_023021EC: .word MIN_IQ_ITEM_MASTER
 	arm_func_end UpdateIqSkills
 
 	arm_func_start ov29_023021F0
@@ -2520,7 +2520,7 @@ ov29_02302200: ; 0x02302200
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r6, #0
-	ldr r5, _02302278 ; =0x02353538
+	ldr r5, _02302278 ; =ov29_02353538
 	b _02302268
 _02302228:
 	ldr r1, [r5]
@@ -2546,7 +2546,7 @@ _02302268:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02302278: .word 0x02353538
+_02302278: .word ov29_02353538
 	arm_func_end ov29_02302200
 
 	arm_func_start GetMoveTypeForMonster
@@ -2780,7 +2780,7 @@ AddExpSpecial: ; 0x0230253C
 	cmp r0, #0x64
 	bne _02302580
 	cmp r6, #0
-	ldrgt r0, _023026B4 ; =0x02353538
+	ldrgt r0, _023026B4 ; =ov29_02353538
 	movgt r1, #1
 	ldrgt r0, [r0]
 	strgtb r1, [r0, #0xf]
@@ -2793,7 +2793,7 @@ _02302580:
 	bl IqSkillIsEnabled
 	cmp r0, #0
 	beq _023025C0
-	ldr r0, _023026B8 ; =0x022C44A8
+	ldr r0, _023026B8 ; =EXP_ELITE_EXP_BOOST
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
@@ -2808,7 +2808,7 @@ _023025C0:
 	bl ItemIsActive__023026CC
 	cmp r0, #0
 	beq _023025F8
-	ldr r0, _023026BC ; =0x022C469C
+	ldr r0, _023026BC ; =WONDER_CHEST_EXP_BOOST
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
@@ -2823,7 +2823,7 @@ _023025F8:
 	bl ItemIsActive__023026CC
 	cmp r0, #0
 	beq _02302630
-	ldr r0, _023026C0 ; =0x022C4698
+	ldr r0, _023026C0 ; =MIRACLE_CHEST_EXP_BOOST
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
@@ -2844,7 +2844,7 @@ _02302630:
 _02302650:
 	cmp r0, #0
 	beq _0230267C
-	ldr r0, _023026C4 ; =0x022C458C
+	ldr r0, _023026C4 ; =EXCLUSIVE_ITEM_EXP_BOOST
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
@@ -2861,7 +2861,7 @@ _0230267C:
 	subs r2, r4, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r1, [r5, #0x214]
-	ldr r0, _023026B4 ; =0x02353538
+	ldr r0, _023026B4 ; =ov29_02353538
 	add r1, r1, r2
 	str r1, [r5, #0x214]
 	ldr r0, [r0]
@@ -2869,11 +2869,11 @@ _0230267C:
 	strb r1, [r0, #0xf]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_023026B4: .word 0x02353538
-_023026B8: .word 0x022C44A8
-_023026BC: .word 0x022C469C
-_023026C0: .word 0x022C4698
-_023026C4: .word 0x022C458C
+_023026B4: .word ov29_02353538
+_023026B8: .word EXP_ELITE_EXP_BOOST
+_023026BC: .word WONDER_CHEST_EXP_BOOST
+_023026C0: .word MIRACLE_CHEST_EXP_BOOST
+_023026C4: .word EXCLUSIVE_ITEM_EXP_BOOST
 _023026C8: .word 0x0098967F
 	arm_func_end AddExpSpecial
 
@@ -2899,7 +2899,7 @@ EnemyEvolution: ; 0x023026FC
 	sub sp, sp, #0x168
 	mov sl, r0
 	bl sub_02025888
-	ldr r0, _02302A28 ; =0x02353538
+	ldr r0, _02302A28 ; =ov29_02353538
 	ldr r2, [r0]
 	ldrb r1, [r2, #0xf]
 	ldrb r0, [r2, #0x748]
@@ -2919,7 +2919,7 @@ EnemyEvolution: ; 0x023026FC
 	bl ov29_022E2470
 	add sl, sp, #0xb0
 _02302758:
-	ldr r0, _02302A2C ; =0x023527F8
+	ldr r0, _02302A2C ; =ov29_023527F8
 	mov r4, #0
 	ldr r3, [r0]
 	ldr r2, [r0, #4]
@@ -2930,7 +2930,7 @@ _02302758:
 	str r1, [sp, #0xc]
 	str r0, [sp, #0x10]
 _02302780:
-	ldr r0, _02302A28 ; =0x02353538
+	ldr r0, _02302A28 ; =ov29_02353538
 	ldr r3, [sp, #0x14]
 	ldr r0, [r0]
 	ldr r2, [sp, #0x18]
@@ -3113,8 +3113,8 @@ _02302A20:
 	add sp, sp, #0x168
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02302A28: .word 0x02353538
-_02302A2C: .word 0x023527F8
+_02302A28: .word ov29_02353538
+_02302A2C: .word ov29_023527F8
 _02302A30: .word 0x000003E7
 _02302A34: .word 0x00000F1F
 	arm_func_end EnemyEvolution

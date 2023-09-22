@@ -84,7 +84,7 @@ _02325740:
 	bne _023258E0
 	cmp r5, #0
 	beq _023258E0
-	ldr r1, _023258E8 ; =0x02352AD8
+	ldr r1, _023258E8 ; =ov29_02352AD8
 	mov r0, r5
 	ldrh r2, [r1]
 	ldrh r1, [r1, #2]
@@ -189,7 +189,7 @@ _023258E0:
 	add sp, sp, #0x18
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_023258E8: .word 0x02352AD8
+_023258E8: .word ov29_02352AD8
 	arm_func_end PlayMoveAnimation
 
 	arm_func_start ov29_023258EC
@@ -242,7 +242,7 @@ _02325958:
 	beq _02325B04
 	cmp r7, #0
 	beq _02325B04
-	ldr r1, _02325B0C ; =0x02352AD8
+	ldr r1, _02325B0C ; =ov29_02352AD8
 	mov r0, r7
 	ldrh r2, [r1, #0xc]
 	ldrh r1, [r1, #0xe]
@@ -338,7 +338,7 @@ _02325B04:
 	add sp, sp, #0x2c
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02325B0C: .word 0x02352AD8
+_02325B0C: .word ov29_02352AD8
 	arm_func_end ov29_023258EC
 
 	arm_func_start GetMoveAnimationId
@@ -580,7 +580,7 @@ DoMoveIronTail: ; 0x02325DE4
 	bl DealDamage
 	cmp r0, #0
 	beq _02325E50
-	ldr r1, _02325E5C ; =0x022C4440
+	ldr r1, _02325E5C ; =IRON_TAIL_LOWER_DEFENSE_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -588,7 +588,7 @@ DoMoveIronTail: ; 0x02325DE4
 	bl DungeonRandOutcomeUserTargetInteraction
 	cmp r0, #0
 	beq _02325E50
-	ldr r0, _02325E60 ; =0x02352AEC
+	ldr r0, _02325E60 ; =ATK_STAT_IDX
 	mov r3, r4
 	ldr r2, [r0]
 	mov r0, r6
@@ -602,26 +602,26 @@ _02325E50:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02325E5C: .word 0x022C4440
-_02325E60: .word 0x02352AEC
+_02325E5C: .word IRON_TAIL_LOWER_DEFENSE_CHANCE
+_02325E60: .word ATK_STAT_IDX
 	arm_func_end DoMoveIronTail
 
 	arm_func_start DoMoveDamageMultihitUntilMiss
 DoMoveDamageMultihitUntilMiss: ; 0x02325E64
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr ip, _02325EB8 ; =0x0237CA70
+	ldr ip, _02325EB8 ; =ov29_0237CA70
 	str r3, [sp]
 	ldr ip, [ip]
-	ldr r3, _02325EBC ; =0x02352AF0
+	ldr r3, _02325EBC ; =ROLLOUT_DAMAGE_MULT_TABLE
 	mov r4, #0
 	ldr r3, [r3, ip, lsl #2]
 	bl DealDamage
 	cmp r0, #0
-	ldreq r0, _02325EC0 ; =0x0237CA69
+	ldreq r0, _02325EC0 ; =ov29_0237CA69
 	moveq r1, #1
 	streqb r1, [r0]
-	ldr r1, _02325EB8 ; =0x0237CA70
+	ldr r1, _02325EB8 ; =ov29_0237CA70
 	movne r4, #1
 	ldr r2, [r1]
 	mov r0, r4
@@ -630,9 +630,9 @@ DoMoveDamageMultihitUntilMiss: ; 0x02325E64
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_02325EB8: .word 0x0237CA70
-_02325EBC: .word 0x02352AF0
-_02325EC0: .word 0x0237CA69
+_02325EB8: .word ov29_0237CA70
+_02325EBC: .word ROLLOUT_DAMAGE_MULT_TABLE
+_02325EC0: .word ov29_0237CA69
 	arm_func_end DoMoveDamageMultihitUntilMiss
 
 	arm_func_start DoMoveYawn
@@ -640,7 +640,7 @@ DoMoveYawn: ; 0x02325EC4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
-	ldr r1, _02325EFC ; =0x022C4860
+	ldr r1, _02325EFC ; =YAWN_TURN_RANGE
 	mov r0, r4
 	mov r2, #1
 	bl CalcStatusDuration
@@ -652,7 +652,7 @@ DoMoveYawn: ; 0x02325EC4
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02325EFC: .word 0x022C4860
+_02325EFC: .word YAWN_TURN_RANGE
 	arm_func_end DoMoveYawn
 
 	arm_func_start DoMoveSleep
@@ -660,7 +660,7 @@ DoMoveSleep: ; 0x02325F00
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
-	ldr r1, _02325F38 ; =0x022C4720
+	ldr r1, _02325F38 ; =SLEEP_TURN_RANGE
 	mov r0, r4
 	mov r2, #1
 	bl CalcStatusDuration
@@ -672,7 +672,7 @@ DoMoveSleep: ; 0x02325F00
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02325F38: .word 0x022C4720
+_02325F38: .word SLEEP_TURN_RANGE
 	arm_func_end DoMoveSleep
 
 	arm_func_start DoMoveNightmare
@@ -680,7 +680,7 @@ DoMoveNightmare: ; 0x02325F3C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
-	ldr r1, _02325F70 ; =0x022C4724
+	ldr r1, _02325F70 ; =NIGHTMARE_TURN_RANGE
 	mov r0, r4
 	mov r2, #1
 	bl CalcStatusDuration
@@ -691,7 +691,7 @@ DoMoveNightmare: ; 0x02325F3C
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02325F70: .word 0x022C4724
+_02325F70: .word NIGHTMARE_TURN_RANGE
 	arm_func_end DoMoveNightmare
 
 	arm_func_start DoMoveMorningSun
@@ -701,7 +701,7 @@ DoMoveMorningSun: ; 0x02325F74
 	mov r4, r1
 	bl GetApparentWeather
 	mov ip, #1
-	ldr r1, _02325FB0 ; =0x022C4984
+	ldr r1, _02325FB0 ; =MORNING_SUN_HP_RESTORATION_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r2, [r1, r0]
 	mov r0, r5
@@ -712,7 +712,7 @@ DoMoveMorningSun: ; 0x02325F74
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02325FB0: .word 0x022C4984
+_02325FB0: .word MORNING_SUN_HP_RESTORATION_TABLE
 	arm_func_end DoMoveMorningSun
 
 	arm_func_start DoMoveVitalThrow
@@ -752,7 +752,7 @@ _02326014:
 	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _02326050
-	ldr r1, _02326080 ; =0x022C47E4
+	ldr r1, _02326080 ; =DIG_DAMAGE_MULTIPLIER
 	mov r0, r8
 	ldr r3, [r1]
 	mov r1, r7
@@ -778,27 +778,27 @@ _02326074:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0232607C: .word 0x00000EC4
-_02326080: .word 0x022C47E4
+_02326080: .word DIG_DAMAGE_MULTIPLIER
 _02326084: .word 0x00000CD6
 	arm_func_end DoMoveDig
 
 	arm_func_start DoMoveSweetScent
 DoMoveSweetScent: ; 0x02326088
 	stmdb sp!, {r3, lr}
-	ldr r2, _023260A4 ; =0x02352AE8
+	ldr r2, _023260A4 ; =SPATK_STAT_IDX
 	mov r3, #1
 	ldr r2, [r2]
 	bl LowerHitChanceStat
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023260A4: .word 0x02352AE8
+_023260A4: .word SPATK_STAT_IDX
 	arm_func_end DoMoveSweetScent
 
 	arm_func_start DoMoveCharm
 DoMoveCharm: ; 0x023260A8
 	stmdb sp!, {r3, lr}
-	ldr r2, _023260CC ; =0x02352AEC
+	ldr r2, _023260CC ; =ATK_STAT_IDX
 	mov ip, #1
 	ldr r2, [r2]
 	mov r3, #0x80
@@ -807,14 +807,14 @@ DoMoveCharm: ; 0x023260A8
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023260CC: .word 0x02352AEC
+_023260CC: .word ATK_STAT_IDX
 	arm_func_end DoMoveCharm
 
 	arm_func_start DoMoveRainDance
 DoMoveRainDance: ; 0x023260D0
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r3, _02326120 ; =0x022C4654
-	ldr r2, _02326124 ; =0x02353538
+	ldr r3, _02326120 ; =WEATHER_MOVE_TURN_COUNT
+	ldr r2, _02326124 ; =ov29_02353538
 	ldrsh r3, [r3]
 	ldr r2, [r2]
 	mov r5, r0
@@ -834,16 +834,16 @@ _02326118:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02326120: .word 0x022C4654
-_02326124: .word 0x02353538
+_02326120: .word WEATHER_MOVE_TURN_COUNT
+_02326124: .word ov29_02353538
 _02326128: .word 0x00000EC5
 	arm_func_end DoMoveRainDance
 
 	arm_func_start DoMoveHail
 DoMoveHail: ; 0x0232612C
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r3, _0232617C ; =0x022C4654
-	ldr r2, _02326180 ; =0x02353538
+	ldr r3, _0232617C ; =WEATHER_MOVE_TURN_COUNT
+	ldr r2, _02326180 ; =ov29_02353538
 	ldrsh r3, [r3]
 	ldr r2, [r2]
 	mov r5, r0
@@ -863,8 +863,8 @@ _02326174:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0232617C: .word 0x022C4654
-_02326180: .word 0x02353538
+_0232617C: .word WEATHER_MOVE_TURN_COUNT
+_02326180: .word ov29_02353538
 _02326184: .word 0x00000EC8
 	arm_func_end DoMoveHail
 
@@ -890,7 +890,7 @@ DoMoveBubble: ; 0x023261A0
 	bl DealDamage
 	cmp r0, #0
 	beq _023261FC
-	ldr r1, _02326208 ; =0x022C462C
+	ldr r1, _02326208 ; =BUBBLE_LOWER_SPEED_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -908,7 +908,7 @@ _023261FC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02326208: .word 0x022C462C
+_02326208: .word BUBBLE_LOWER_SPEED_CHANCE
 	arm_func_end DoMoveBubble
 
 	arm_func_start DoMoveEncore
@@ -1173,7 +1173,7 @@ DoMoveSwagger: ; 0x02326568
 	mov r5, r0
 	mov r4, r1
 	bl TryInflictConfusedStatus
-	ldr r1, _023265A0 ; =0x02352AEC
+	ldr r1, _023265A0 ; =ATK_STAT_IDX
 	mov r0, r5
 	ldr r2, [r1]
 	mov r1, r4
@@ -1182,7 +1182,7 @@ DoMoveSwagger: ; 0x02326568
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023265A0: .word 0x02352AEC
+_023265A0: .word ATK_STAT_IDX
 	arm_func_end DoMoveSwagger
 
 	arm_func_start DoMoveSnore
@@ -1205,7 +1205,7 @@ DoMoveSnore: ; 0x023265A4
 	bl DealDamage
 	cmp r0, #0
 	beq _02326634
-	ldr r1, _02326640 ; =0x022C4600
+	ldr r1, _02326640 ; =SNORE_CRINGE_CHANCE
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
@@ -1229,14 +1229,14 @@ _02326634:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02326640: .word 0x022C4600
+_02326640: .word SNORE_CRINGE_CHANCE
 _02326644: .word 0x00000ECD
 	arm_func_end DoMoveSnore
 
 	arm_func_start DoMoveScreech
 DoMoveScreech: ; 0x02326648
 	stmdb sp!, {r3, lr}
-	ldr r2, _0232666C ; =0x02352AEC
+	ldr r2, _0232666C ; =ATK_STAT_IDX
 	mov ip, #1
 	ldr r2, [r2]
 	mov r3, #0x40
@@ -1245,7 +1245,7 @@ DoMoveScreech: ; 0x02326648
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0232666C: .word 0x02352AEC
+_0232666C: .word ATK_STAT_IDX
 	arm_func_end DoMoveScreech
 
 	arm_func_start DoMoveDamageCringe30
@@ -1260,7 +1260,7 @@ DoMoveDamageCringe30: ; 0x02326670
 	bl DealDamage
 	cmp r0, #0
 	beq _023266CC
-	ldr r1, _023266D8 ; =0x022C444C
+	ldr r1, _023266D8 ; =ROCK_SLIDE_CRINGE_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -1278,7 +1278,7 @@ _023266CC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_023266D8: .word 0x022C444C
+_023266D8: .word ROCK_SLIDE_CRINGE_CHANCE
 	arm_func_end DoMoveDamageCringe30
 
 	arm_func_start DoMoveWeatherBall
@@ -1294,8 +1294,8 @@ DoMoveWeatherBall: ; 0x023266DC
 	mov r0, r8
 	mov r1, r7
 	bl EndFrozenStatus
-	ldr ip, _02326748 ; =0x022C4B54
-	ldr r2, _0232674C ; =0x022C48DC
+	ldr ip, _02326748 ; =WEATHER_BALL_DAMAGE_MULT_TABLE
+	ldr r2, _0232674C ; =WEATHER_BALL_TYPE_TABLE
 	ldr ip, [ip, r4, lsl #2]
 	ldrb r2, [r2, r4]
 	str ip, [sp]
@@ -1311,8 +1311,8 @@ DoMoveWeatherBall: ; 0x023266DC
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02326748: .word 0x022C4B54
-_0232674C: .word 0x022C48DC
+_02326748: .word WEATHER_BALL_DAMAGE_MULT_TABLE
+_0232674C: .word WEATHER_BALL_TYPE_TABLE
 	arm_func_end DoMoveWeatherBall
 
 	arm_func_start DoMoveWhirlpool
@@ -1334,7 +1334,7 @@ DoMoveWhirlpool: ; 0x02326750
 	bl DealDamage
 	cmp r0, #0
 	beq _023267C8
-	ldr r1, _023267D4 ; =0x022C44A4
+	ldr r1, _023267D4 ; =WHIRLPOOL_CONSTRICTION_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -1352,14 +1352,14 @@ _023267C8:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_023267D4: .word 0x022C44A4
+_023267D4: .word WHIRLPOOL_CONSTRICTION_CHANCE
 	arm_func_end DoMoveWhirlpool
 
 	arm_func_start DoMoveFakeTears
 DoMoveFakeTears: ; 0x023267D8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r2, _02326808 ; =0x02352AE8
+	ldr r2, _02326808 ; =SPATK_STAT_IDX
 	mov ip, #1
 	ldr r2, [r2]
 	str ip, [sp]
@@ -1370,7 +1370,7 @@ DoMoveFakeTears: ; 0x023267D8
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02326808: .word 0x02352AE8
+_02326808: .word SPATK_STAT_IDX
 	arm_func_end DoMoveFakeTears
 
 	arm_func_start DoMoveSpite
@@ -1439,7 +1439,7 @@ DoMoveSmokescreen: ; 0x023268CC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
-	ldr r1, _02326904 ; =0x022C47C4
+	ldr r1, _02326904 ; =SMOKESCREEN_TURN_RANGE
 	mov r0, r4
 	mov r2, #1
 	bl CalcStatusDuration
@@ -1451,7 +1451,7 @@ DoMoveSmokescreen: ; 0x023268CC
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02326904: .word 0x022C47C4
+_02326904: .word SMOKESCREEN_TURN_RANGE
 	arm_func_end DoMoveSmokescreen
 
 	arm_func_start DoMoveMirrorMove
@@ -1509,7 +1509,7 @@ DoMoveAuroraBeam: ; 0x02326990
 	bl DealDamage
 	cmp r0, #0
 	beq _023269F8
-	ldr r1, _02326A04 ; =0x022C4428
+	ldr r1, _02326A04 ; =AURORA_BEAM_LOWER_ATTACK_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -1517,7 +1517,7 @@ DoMoveAuroraBeam: ; 0x02326990
 	bl DungeonRandOutcomeUserTargetInteraction
 	cmp r0, #0
 	beq _023269F8
-	ldr r0, _02326A08 ; =0x02352AEC
+	ldr r0, _02326A08 ; =ATK_STAT_IDX
 	mov ip, #0
 	ldr r2, [r0]
 	mov r0, r6
@@ -1530,8 +1530,8 @@ _023269F8:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02326A04: .word 0x022C4428
-_02326A08: .word 0x02352AEC
+_02326A04: .word AURORA_BEAM_LOWER_ATTACK_CHANCE
+_02326A08: .word ATK_STAT_IDX
 	arm_func_end DoMoveAuroraBeam
 
 	arm_func_start DoMoveMemento
@@ -1539,7 +1539,7 @@ DoMoveMemento: ; 0x02326A0C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
-	ldr r2, _02326A6C ; =0x02352AEC
+	ldr r2, _02326A6C ; =ATK_STAT_IDX
 	ldr r4, [r6, #0xb4]
 	mov ip, #1
 	strh ip, [r4, #0x10]
@@ -1548,7 +1548,7 @@ DoMoveMemento: ; 0x02326A0C
 	mov r5, r1
 	str ip, [sp]
 	bl ApplyOffensiveStatMultiplier
-	ldr r0, _02326A70 ; =0x02352AE8
+	ldr r0, _02326A70 ; =SPATK_STAT_IDX
 	mov ip, #1
 	ldr r2, [r0]
 	mov r0, r6
@@ -1561,8 +1561,8 @@ DoMoveMemento: ; 0x02326A0C
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02326A6C: .word 0x02352AEC
-_02326A70: .word 0x02352AE8
+_02326A6C: .word ATK_STAT_IDX
+_02326A70: .word SPATK_STAT_IDX
 	arm_func_end DoMoveMemento
 
 	arm_func_start DoMoveOctazooka
@@ -1577,7 +1577,7 @@ DoMoveOctazooka: ; 0x02326A74
 	bl DealDamage
 	cmp r0, #0
 	beq _02326AD4
-	ldr r1, _02326AE0 ; =0x022C4500
+	ldr r1, _02326AE0 ; =OCTAZOOKA_LOWER_ACCURACY_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -1585,7 +1585,7 @@ DoMoveOctazooka: ; 0x02326A74
 	bl DungeonRandOutcomeUserTargetInteraction
 	cmp r0, #0
 	beq _02326AD4
-	ldr r1, _02326AE4 ; =0x02352AEC
+	ldr r1, _02326AE4 ; =ATK_STAT_IDX
 	mov r0, r6
 	ldr r2, [r1]
 	mov r1, r5
@@ -1596,8 +1596,8 @@ _02326AD4:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02326AE0: .word 0x022C4500
-_02326AE4: .word 0x02352AEC
+_02326AE0: .word OCTAZOOKA_LOWER_ACCURACY_CHANCE
+_02326AE4: .word ATK_STAT_IDX
 	arm_func_end DoMoveOctazooka
 
 	arm_func_start DoMoveFlatter
@@ -1608,7 +1608,7 @@ DoMoveFlatter: ; 0x02326AE8
 	mov r5, r0
 	mov r4, r1
 	bl TryInflictConfusedStatus
-	ldr r1, _02326B20 ; =0x02352AE8
+	ldr r1, _02326B20 ; =SPATK_STAT_IDX
 	mov r0, r5
 	ldr r2, [r1]
 	mov r1, r4
@@ -1617,7 +1617,7 @@ DoMoveFlatter: ; 0x02326AE8
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02326B20: .word 0x02352AE8
+_02326B20: .word SPATK_STAT_IDX
 	arm_func_end DoMoveFlatter
 
 	arm_func_start DoMoveWillOWisp
@@ -1678,7 +1678,7 @@ DoMoveReturn: ; 0x02326BC0
 	ldr lr, [sb, #0xb4]
 	mov r6, #1
 	mov ip, #0
-	ldr r3, _02326C98 ; =0x022C4C0C
+	ldr r3, _02326C98 ; =ov10_022C4C0C
 	ldr r0, _02326C9C ; =0x000003E7
 	b _02326C18
 _02326BF0:
@@ -1688,7 +1688,7 @@ _02326BF0:
 	blt _02326C20
 	ldrsh r1, [lr, #0xe]
 	cmp r1, r2
-	ldrlt r0, _02326CA0 ; =0x022C4C0E
+	ldrlt r0, _02326CA0 ; =ov10_022C4C0E
 	ldrltsh r6, [r0, r5]
 	blt _02326C20
 	add ip, ip, #1
@@ -1727,9 +1727,9 @@ _02326C20:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02326C98: .word 0x022C4C0C
+_02326C98: .word ov10_022C4C0C
 _02326C9C: .word 0x000003E7
-_02326CA0: .word 0x022C4C0E
+_02326CA0: .word ov10_022C4C0E
 	arm_func_end DoMoveReturn
 
 	arm_func_start DoMoveGrudge
@@ -1768,7 +1768,7 @@ DoMoveDamageBurn10FlameWheel: ; 0x02326CC8
 	bl DealDamage
 	cmp r0, #0
 	beq _02326D40
-	ldr r1, _02326D4C ; =0x022C4688
+	ldr r1, _02326D4C ; =FLAME_WHEEL_BURN_CHANCE
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
@@ -1787,7 +1787,7 @@ _02326D40:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02326D4C: .word 0x022C4688
+_02326D4C: .word FLAME_WHEEL_BURN_CHANCE
 	arm_func_end DoMoveDamageBurn10FlameWheel
 
 	arm_func_start DoMoveDamageBurn10
@@ -1808,7 +1808,7 @@ DoMoveDamageBurn10: ; 0x02326D50
 	bl DealDamage
 	cmp r0, #0
 	beq _02326DC8
-	ldr r1, _02326DD4 ; =0x022C4544
+	ldr r1, _02326DD4 ; =FLAMETHROWER_BURN_CHANCE
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
@@ -1827,7 +1827,7 @@ _02326DC8:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02326DD4: .word 0x022C4544
+_02326DD4: .word FLAMETHROWER_BURN_CHANCE
 	arm_func_end DoMoveDamageBurn10
 
 	arm_func_start DoMoveExpose
@@ -1849,13 +1849,13 @@ _02326E00: .word 0x0000013B
 	arm_func_start DoMoveDoubleTeam
 DoMoveDoubleTeam: ; 0x02326E04
 	stmdb sp!, {r3, lr}
-	ldr r2, _02326E1C ; =0x02352AE8
+	ldr r2, _02326E1C ; =SPATK_STAT_IDX
 	ldr r2, [r2]
 	bl BoostHitChanceStat
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02326E1C: .word 0x02352AE8
+_02326E1C: .word SPATK_STAT_IDX
 	arm_func_end DoMoveDoubleTeam
 
 	arm_func_start DoMoveGust
@@ -1881,14 +1881,14 @@ DoMoveGust: ; 0x02326E20
 	arm_func_start DoMoveBoostDefense1
 DoMoveBoostDefense1: ; 0x02326E60
 	stmdb sp!, {r3, lr}
-	ldr r2, _02326E7C ; =0x02352AEC
+	ldr r2, _02326E7C ; =ATK_STAT_IDX
 	mov r3, #1
 	ldr r2, [r2]
 	bl BoostDefensiveStat
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02326E7C: .word 0x02352AEC
+_02326E7C: .word ATK_STAT_IDX
 	arm_func_end DoMoveBoostDefense1
 
 	arm_func_start DoMoveParalyze__02326E80
@@ -1904,14 +1904,14 @@ DoMoveParalyze__02326E80: ; 0x02326E80
 	arm_func_start DoMoveBoostAttack1
 DoMoveBoostAttack1: ; 0x02326E98
 	stmdb sp!, {r3, lr}
-	ldr r2, _02326EB4 ; =0x02352AEC
+	ldr r2, _02326EB4 ; =ATK_STAT_IDX
 	mov r3, #1
 	ldr r2, [r2]
 	bl BoostOffensiveStat
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02326EB4: .word 0x02352AEC
+_02326EB4: .word ATK_STAT_IDX
 	arm_func_end DoMoveBoostAttack1
 
 	arm_func_start DoMoveRazorWind
@@ -1925,7 +1925,7 @@ DoMoveRazorWind: ; 0x02326EB8
 	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _02326F14
-	ldr r1, _02326F40 ; =0x022C48B0
+	ldr r1, _02326F40 ; =RAZOR_WIND_DAMAGE_MULTIPLIER
 	mov r0, r7
 	ldr r3, [r1]
 	mov r1, r6
@@ -1953,7 +1953,7 @@ _02326F38:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02326F40: .word 0x022C48B0
+_02326F40: .word RAZOR_WIND_DAMAGE_MULTIPLIER
 _02326F44: .word 0x00000CCD
 	arm_func_end DoMoveRazorWind
 
@@ -2038,7 +2038,7 @@ DoMoveCrunch: ; 0x02327034
 	bl DealDamage
 	cmp r0, #0
 	beq _023270A0
-	ldr r1, _023270AC ; =0x022C4450
+	ldr r1, _023270AC ; =CRUNCH_LOWER_DEFENSE_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -2046,7 +2046,7 @@ DoMoveCrunch: ; 0x02327034
 	bl DungeonRandOutcomeUserTargetInteraction
 	cmp r0, #0
 	beq _023270A0
-	ldr r0, _023270B0 ; =0x02352AEC
+	ldr r0, _023270B0 ; =ATK_STAT_IDX
 	mov r3, r4
 	ldr r2, [r0]
 	mov r0, r6
@@ -2060,8 +2060,8 @@ _023270A0:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023270AC: .word 0x022C4450
-_023270B0: .word 0x02352AEC
+_023270AC: .word CRUNCH_LOWER_DEFENSE_CHANCE
+_023270B0: .word ATK_STAT_IDX
 	arm_func_end DoMoveCrunch
 
 	arm_func_start DoMoveDamageCringe20
@@ -2076,7 +2076,7 @@ DoMoveDamageCringe20: ; 0x023270B4
 	bl DealDamage
 	cmp r0, #0
 	beq _02327110
-	ldr r1, _0232711C ; =0x022C4534
+	ldr r1, _0232711C ; =BITE_CRINGE_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -2094,7 +2094,7 @@ _02327110:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_0232711C: .word 0x022C4534
+_0232711C: .word BITE_CRINGE_CHANCE
 	arm_func_end DoMoveDamageCringe20
 
 	arm_func_start DoMoveDamageParalyze20
@@ -2109,7 +2109,7 @@ DoMoveDamageParalyze20: ; 0x02327120
 	bl DealDamage
 	cmp r0, #0
 	beq _0232717C
-	ldr r1, _02327188 ; =0x022C4658
+	ldr r1, _02327188 ; =THUNDER_PARALYZE_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -2127,7 +2127,7 @@ _0232717C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02327188: .word 0x022C4658
+_02327188: .word THUNDER_PARALYZE_CHANCE
 	arm_func_end DoMoveDamageParalyze20
 
 	arm_func_start DoMoveEndeavor
@@ -2189,7 +2189,7 @@ DoMoveFacade: ; 0x0232724C
 	mov lr, #0x100
 	ldrb ip, [ip, #0xbf]
 	cmp ip, #0
-	ldrne ip, _02327288 ; =0x022C4718
+	ldrne ip, _02327288 ; =FACADE_DAMAGE_MULTIPLIER
 	str r3, [sp]
 	ldrne lr, [ip]
 	mov r3, lr
@@ -2200,7 +2200,7 @@ DoMoveFacade: ; 0x0232724C
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02327288: .word 0x022C4718
+_02327288: .word FACADE_DAMAGE_MULTIPLIER
 	arm_func_end DoMoveFacade
 
 	arm_func_start DoMoveDamageLowerSpeed20
@@ -2215,7 +2215,7 @@ DoMoveDamageLowerSpeed20: ; 0x0232728C
 	bl DealDamage
 	cmp r0, #0
 	beq _023272E8
-	ldr r1, _023272F4 ; =0x022C4514
+	ldr r1, _023272F4 ; =CONSTRICT_LOWER_SPEED_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -2233,7 +2233,7 @@ _023272E8:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_023272F4: .word 0x022C4514
+_023272F4: .word CONSTRICT_LOWER_SPEED_CHANCE
 	arm_func_end DoMoveDamageLowerSpeed20
 
 	arm_func_start DoMoveBrickBreak
@@ -2311,7 +2311,7 @@ DoMoveFocusPunch: ; 0x023273CC
 	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _02327428
-	ldr r1, _02327454 ; =0x022C48B4
+	ldr r1, _02327454 ; =FOCUS_PUNCH_DAMAGE_MULTIPLIER
 	mov r0, r7
 	ldr r3, [r1]
 	mov r1, r6
@@ -2339,7 +2339,7 @@ _0232744C:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02327454: .word 0x022C48B4
+_02327454: .word FOCUS_PUNCH_DAMAGE_MULTIPLIER
 	arm_func_end DoMoveFocusPunch
 
 	arm_func_start DoMoveDamageDrain
@@ -2468,7 +2468,7 @@ DoMoveReversal: ; 0x02327598
 	movle r5, #2
 	movgt r5, #3
 _0232761C:
-	ldr r4, _02327648 ; =0x022C4994
+	ldr r4, _02327648 ; =REVERSAL_DAMAGE_MULT_TABLE
 	str r3, [sp]
 	ldr r3, [r4, r5, lsl #2]
 	bl DealDamage
@@ -2480,7 +2480,7 @@ _0232761C:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02327644: .word 0x000003E7
-_02327648: .word 0x022C4994
+_02327648: .word REVERSAL_DAMAGE_MULT_TABLE
 	arm_func_end DoMoveReversal
 
 	arm_func_start DoMoveSmellingSalt
@@ -2519,7 +2519,7 @@ _023276AC:
 DoMoveMetalSound: ; 0x023276B4
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r2, _023276E4 ; =0x02352AE8
+	ldr r2, _023276E4 ; =SPATK_STAT_IDX
 	mov ip, #1
 	ldr r2, [r2]
 	str ip, [sp]
@@ -2530,14 +2530,14 @@ DoMoveMetalSound: ; 0x023276B4
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023276E4: .word 0x02352AE8
+_023276E4: .word SPATK_STAT_IDX
 	arm_func_end DoMoveMetalSound
 
 	arm_func_start DoMoveTickle
 DoMoveTickle: ; 0x023276E8
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
-	ldr r2, _02327740 ; =0x02352AE8
+	ldr r2, _02327740 ; =SPATK_STAT_IDX
 	mov r3, #1
 	ldr r2, [r2, #4]
 	str r3, [sp]
@@ -2558,7 +2558,7 @@ DoMoveTickle: ; 0x023276E8
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_02327740: .word 0x02352AE8
+_02327740: .word SPATK_STAT_IDX
 	arm_func_end DoMoveTickle
 
 	arm_func_start DoMoveShadowHold
@@ -2594,14 +2594,14 @@ DoMoveDamageMultihitFatigue: ; 0x0232776C
 	mov r4, #1
 	bl DungeonRandOutcomeUserAction
 	cmp r0, #0
-	ldrne r0, _023277B4 ; =0x0237CA6A
+	ldrne r0, _023277B4 ; =ov29_0237CA6A
 	movne r1, r4
 	strneb r1, [r0]
 _023277AC:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023277B4: .word 0x0237CA6A
+_023277B4: .word ov29_0237CA6A
 	arm_func_end DoMoveDamageMultihitFatigue
 
 	arm_func_start DoMoveDamageWeightDependent
@@ -2638,7 +2638,7 @@ DoMoveDamageBoostAllStats: ; 0x02327804
 	bl DealDamage
 	cmp r0, #0
 	beq _023278D4
-	ldr r1, _023278E0 ; =0x022C4488
+	ldr r1, _023278E0 ; =SILVER_WIND_BOOST_CHANCE
 	mov r0, r6
 	ldrsh r1, [r1]
 	mov r4, #1
@@ -2651,14 +2651,14 @@ DoMoveDamageBoostAllStats: ; 0x02327804
 	mov r3, r4
 	ldr r5, [r6, #0xb4]
 	bl BoostSpeedOneStage
-	ldr r1, _023278E4 ; =0x02352AE8
+	ldr r1, _023278E4 ; =SPATK_STAT_IDX
 	mov r0, r6
 	ldr r2, [r1, #4]
 	mov r1, r6
 	mov r3, r4
 	str r2, [sp, #8]
 	bl BoostOffensiveStat
-	ldr r1, _023278E4 ; =0x02352AE8
+	ldr r1, _023278E4 ; =SPATK_STAT_IDX
 	mov r0, r6
 	ldr r2, [r1]
 	mov r1, r6
@@ -2686,8 +2686,8 @@ _023278D4:
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_023278E0: .word 0x022C4488
-_023278E4: .word 0x02352AE8
+_023278E0: .word SILVER_WIND_BOOST_CHANCE
+_023278E4: .word SPATK_STAT_IDX
 	arm_func_end DoMoveDamageBoostAllStats
 
 	arm_func_start DoMoveSynthesis
@@ -2697,7 +2697,7 @@ DoMoveSynthesis: ; 0x023278E8
 	mov r4, r1
 	bl GetApparentWeather
 	mov ip, #1
-	ldr r1, _02327924 ; =0x022C4954
+	ldr r1, _02327924 ; =SYNTHESIS_HP_RESTORATION_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r2, [r1, r0]
 	mov r0, r5
@@ -2708,7 +2708,7 @@ DoMoveSynthesis: ; 0x023278E8
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02327924: .word 0x022C4954
+_02327924: .word SYNTHESIS_HP_RESTORATION_TABLE
 	arm_func_end DoMoveSynthesis
 
 	arm_func_start DoMoveBoostSpeed1
@@ -2741,17 +2741,17 @@ DoMoveRapidSpin: ; 0x02327940
 	add r0, r0, #0x100
 	ldrh r0, [r0, #0x92]
 	tst r0, #2
-	ldrne r0, _023279A8 ; =0x0237CA6D
+	ldrne r0, _023279A8 ; =ov29_0237CA6D
 	movne r1, #0
 	strneb r1, [r0]
-	ldreq r0, _023279A8 ; =0x0237CA6D
+	ldreq r0, _023279A8 ; =ov29_0237CA6D
 	moveq r1, r4
 	streqb r1, [r0]
 _023279A0:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023279A8: .word 0x0237CA6D
+_023279A8: .word ov29_0237CA6D
 	arm_func_end DoMoveRapidSpin
 
 	arm_func_start DoMoveSureShot
@@ -2759,7 +2759,7 @@ DoMoveSureShot: ; 0x023279AC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
-	ldr r1, _023279E0 ; =0x022C4798
+	ldr r1, _023279E0 ; =SURE_SHOT_TURN_RANGE
 	mov r0, r4
 	mov r2, #0
 	bl CalcStatusDuration
@@ -2770,19 +2770,19 @@ DoMoveSureShot: ; 0x023279AC
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023279E0: .word 0x022C4798
+_023279E0: .word SURE_SHOT_TURN_RANGE
 	arm_func_end DoMoveSureShot
 
 	arm_func_start DoMoveCosmicPower
 DoMoveCosmicPower: ; 0x023279E4
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _02327A20 ; =0x02352AEC
+	ldr r2, _02327A20 ; =ATK_STAT_IDX
 	mov r3, #1
 	ldr r2, [r2]
 	mov r5, r0
 	mov r4, r1
 	bl BoostDefensiveStat
-	ldr r1, _02327A24 ; =0x02352AE8
+	ldr r1, _02327A24 ; =SPATK_STAT_IDX
 	mov r0, r5
 	ldr r2, [r1]
 	mov r1, r4
@@ -2791,8 +2791,8 @@ DoMoveCosmicPower: ; 0x023279E4
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02327A20: .word 0x02352AEC
-_02327A24: .word 0x02352AE8
+_02327A20: .word ATK_STAT_IDX
+_02327A24: .word SPATK_STAT_IDX
 	arm_func_end DoMoveCosmicPower
 
 	arm_func_start DoMoveSkyAttack
@@ -2808,7 +2808,7 @@ DoMoveSkyAttack: ; 0x02327A28
 	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _02327AB8
-	ldr r1, _02327AE8 ; =0x022C48A8
+	ldr r1, _02327AE8 ; =ov10_022C48A8
 	mov r0, r8
 	ldr r3, [r1]
 	mov r1, r7
@@ -2817,7 +2817,7 @@ DoMoveSkyAttack: ; 0x02327A28
 	bl DealDamage
 	cmp r0, #0
 	beq _02327AAC
-	ldr r1, _02327AEC ; =0x022C4538
+	ldr r1, _02327AEC ; =SKY_ATTACK_CRINGE_CHANCE
 	mov r0, r8
 	ldrsh r2, [r1]
 	mov r1, r7
@@ -2849,8 +2849,8 @@ _02327ADC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02327AE8: .word 0x022C48A8
-_02327AEC: .word 0x022C4538
+_02327AE8: .word ov10_022C48A8
+_02327AEC: .word SKY_ATTACK_CRINGE_CHANCE
 _02327AF0: .word 0x00000CD1
 	arm_func_end DoMoveSkyAttack
 
@@ -2866,7 +2866,7 @@ DoMoveDamageFreeze15: ; 0x02327AF4
 	bl DealDamage
 	cmp r0, #0
 	beq _02327B4C
-	ldr r1, _02327B58 ; =0x022C4634
+	ldr r1, _02327B58 ; =POWDER_SNOW_FREEZE_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -2883,7 +2883,7 @@ _02327B4C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02327B58: .word 0x022C4634
+_02327B58: .word POWDER_SNOW_FREEZE_CHANCE
 	arm_func_end DoMoveDamageFreeze15
 
 	arm_func_start DoMoveMeteorMash
@@ -2897,7 +2897,7 @@ DoMoveMeteorMash: ; 0x02327B5C
 	bl DealDamage
 	cmp r0, #0
 	beq _02327BCC
-	ldr r1, _02327BD8 ; =0x022C4604
+	ldr r1, _02327BD8 ; =METEOR_MASH_BOOST_ATTACK_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r6
@@ -2905,7 +2905,7 @@ DoMoveMeteorMash: ; 0x02327B5C
 	bl DungeonRandOutcomeUserTargetInteraction
 	cmp r0, #0
 	beq _02327BCC
-	ldr r0, _02327BDC ; =0x02352AEC
+	ldr r0, _02327BDC ; =ATK_STAT_IDX
 	ldr r5, [r6, #0xb4]
 	ldr r2, [r0]
 	mov r0, r6
@@ -2921,8 +2921,8 @@ _02327BCC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02327BD8: .word 0x022C4604
-_02327BDC: .word 0x02352AEC
+_02327BD8: .word METEOR_MASH_BOOST_ATTACK_CHANCE
+_02327BDC: .word ATK_STAT_IDX
 	arm_func_end DoMoveMeteorMash
 
 	arm_func_start DoMoveEndure
@@ -2955,7 +2955,7 @@ DoMoveDamageConfuse10: ; 0x02327C08
 	bl DealDamage
 	cmp r0, #0
 	beq _02327C64
-	ldr r1, _02327C70 ; =0x022C4690
+	ldr r1, _02327C70 ; =PSYBEAM_CONFUSE_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
 	mov r1, r5
@@ -2973,7 +2973,7 @@ _02327C64:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02327C70: .word 0x022C4690
+_02327C70: .word PSYBEAM_CONFUSE_CHANCE
 	arm_func_end DoMoveDamageConfuse10
 
 	arm_func_start DoMovePsywave
@@ -3061,7 +3061,7 @@ DoMovePsychoBoost: ; 0x02327D60
 	bl DungeonRandOutcomeUserAction
 	cmp r0, #0
 	beq _02327DC0
-	ldr r0, _02327DCC ; =0x02352AE8
+	ldr r0, _02327DCC ; =SPATK_STAT_IDX
 	mov ip, #0
 	ldr r2, [r0]
 	str ip, [sp]
@@ -3075,7 +3075,7 @@ _02327DC0:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02327DCC: .word 0x02352AE8
+_02327DCC: .word SPATK_STAT_IDX
 	arm_func_end DoMovePsychoBoost
 
 	arm_func_start DoMoveUproar
@@ -3122,7 +3122,7 @@ DoMoveWaterSpout: ; 0x02327DE0
 	movle r5, #2
 	movgt r5, #3
 _02327E64:
-	ldr r4, _02327E90 ; =0x022C49A4
+	ldr r4, _02327E90 ; =WATER_SPOUT_DAMAGE_MULT_TABLE
 	str r3, [sp]
 	ldr r3, [r4, r5, lsl #2]
 	bl DealDamage
@@ -3134,7 +3134,7 @@ _02327E64:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02327E8C: .word 0x000003E7
-_02327E90: .word 0x022C49A4
+_02327E90: .word WATER_SPOUT_DAMAGE_MULT_TABLE
 	arm_func_end DoMoveWaterSpout
 
 	arm_func_start DoMovePsychUp

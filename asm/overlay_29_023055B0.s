@@ -8,7 +8,7 @@ ov29_023055B0: ; 0x023055B0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, #0
 	mov r5, #1
-	ldr r4, _02305690 ; =0x02353538
+	ldr r4, _02305690 ; =ov29_02353538
 	b _02305684
 _023055C4:
 	ldr r0, [r4]
@@ -65,7 +65,7 @@ _02305684:
 	blt _023055C4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02305690: .word 0x02353538
+_02305690: .word ov29_02353538
 	arm_func_end ov29_023055B0
 
 	arm_func_start CheckNonLeaderTile
@@ -191,7 +191,7 @@ ov29_02305814: ; 0x02305814
 	ldmneia sp!, {r3, r4, r5, pc}
 	bl IsFloorOver
 	cmp r0, #0
-	ldreq r0, _023058BC ; =0x02353538
+	ldreq r0, _023058BC ; =ov29_02353538
 	ldreq r0, [r0]
 	ldreqb r0, [r0, #0x793]
 	cmpeq r0, #0
@@ -204,7 +204,7 @@ ov29_02305814: ; 0x02305814
 	bl GetLeader
 	ldr r1, _023058C0 ; =0x00000C82
 	bl LogMessageByIdWithPopupCheckUser
-	ldr r1, _023058BC ; =0x02353538
+	ldr r1, _023058BC ; =ov29_02353538
 	mov r0, r5
 	ldr r2, [r1]
 	mov r3, #1
@@ -222,7 +222,7 @@ ov29_02305814: ; 0x02305814
 	bl ov29_022EA370
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023058BC: .word 0x02353538
+_023058BC: .word ov29_02353538
 _023058C0: .word 0x00000C82
 	arm_func_end ov29_02305814
 
@@ -395,7 +395,7 @@ _02305AEC:
 	mov r4, #1
 	bl SubstitutePlaceholderStringTags
 	ldr r1, [r6, #0x110]
-	ldr r0, _02305BF8 ; =0x02353318
+	ldr r0, _02305BF8 ; =ov29_02353318
 	mov r1, r1, lsl #1
 	ldrh r2, [r0, r1]
 	mov r0, sl
@@ -454,7 +454,7 @@ _02305BE0:
 	.align 2, 0
 _02305BF0: .word 0x00000C83
 _02305BF4: .word 0x00000C84
-_02305BF8: .word 0x02353318
+_02305BF8: .word ov29_02353318
 _02305BFC: .word 0x00000C85
 _02305C00: .word 0x00000C86
 	arm_func_end EndNegativeStatusCondition

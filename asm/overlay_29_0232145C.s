@@ -55,7 +55,7 @@ _023214EC:
 	mov r0, #0
 	b _02321A40
 _02321518:
-	ldr r1, _02321A54 ; =0x0237CA68
+	ldr r1, _02321A54 ; =ov29_0237CA68
 	mov r2, r0
 	strb r0, [r1]
 	str r0, [r1, #0x18]
@@ -129,7 +129,7 @@ _02321610:
 	cmp r0, #0
 	bne _02321888
 _02321620:
-	ldr r0, _02321A54 ; =0x0237CA68
+	ldr r0, _02321A54 ; =ov29_0237CA68
 	ldrb r0, [r0, #4]
 	cmp r0, #0
 	bne _02321888
@@ -169,7 +169,7 @@ _023216AC:
 	ldr r0, [sp, #0x18]
 	cmp r0, #0
 	beq _02321848
-	ldr r1, _02321A54 ; =0x0237CA68
+	ldr r1, _02321A54 ; =ov29_0237CA68
 	mov r0, #0
 	str r0, [sp, #0x10]
 	ldr r0, [r1, #0x18]
@@ -262,7 +262,7 @@ _023217E4:
 	orreq r0, r0, #8
 	streqh r0, [r4, #2]
 _02321810:
-	ldr r0, _02321A54 ; =0x0237CA68
+	ldr r0, _02321A54 ; =ov29_0237CA68
 	ldr r1, [r0, #0x18]
 	ldr r0, [sp, #0xc]
 	cmp r0, r1
@@ -384,7 +384,7 @@ _023219A0:
 	cmp r0, #0
 	moveq r0, #1
 	beq _02321A40
-	ldr r1, _02321A54 ; =0x0237CA68
+	ldr r1, _02321A54 ; =ov29_0237CA68
 	ldrb r0, [r1]
 	cmp r0, #0
 	beq _02321A3C
@@ -394,7 +394,7 @@ _023219A0:
 	bl EntityIsValid__02321438
 	cmp r0, #0
 	beq _02321A3C
-	ldr r1, _02321A74 ; =0x022C4714
+	ldr r1, _02321A74 ; =ov10_022C4714
 	mov r0, sl
 	ldr r4, [sl, #0xb4]
 	mov r2, #1
@@ -420,7 +420,7 @@ _02321A40:
 _02321A48: .word 0x00000E7C
 _02321A4C: .word 0x00000E7D
 _02321A50: .word 0x00000E78
-_02321A54: .word 0x0237CA68
+_02321A54: .word ov29_0237CA68
 _02321A58: .word 0x00000E7E
 _02321A5C: .word 0x00000E7F
 _02321A60: .word 0x00000E81
@@ -428,7 +428,7 @@ _02321A64: .word 0x00000E79
 _02321A68: .word 0x000001D1
 _02321A6C: .word 0x00000E76
 _02321A70: .word 0x00000E77
-_02321A74: .word 0x022C4714
+_02321A74: .word ov10_022C4714
 	arm_func_end ov29_0232145C
 
 	arm_func_start TryActivateNondamagingDefenderAbility
@@ -534,7 +534,7 @@ _02321BD4:
 	ldr r1, _02321CDC ; =0x00000E89
 	mov r0, r5
 	bl LogMessageByIdWithPopupCheckUser
-	ldr r1, _02321CE0 ; =0x022C4720
+	ldr r1, _02321CE0 ; =SLEEP_TURN_RANGE
 	mov r0, r5
 	mov r2, #1
 	bl CalcStatusDuration
@@ -599,7 +599,7 @@ _02321CD0: .word 0x00000E86
 _02321CD4: .word 0x00000E87
 _02321CD8: .word 0x00000E88
 _02321CDC: .word 0x00000E89
-_02321CE0: .word 0x022C4720
+_02321CE0: .word SLEEP_TURN_RANGE
 _02321CE4: .word 0x00000E8A
 _02321CE8: .word 0x00000E8B
 _02321CEC: .word 0x00000E8C
@@ -670,7 +670,7 @@ _02321DB8:
 	ldr r1, _02322258 ; =0x00000EA3
 	mov r0, r6
 	bl LogMessageByIdWithPopupCheckUser
-	ldr r1, _0232225C ; =0x022C4724
+	ldr r1, _0232225C ; =NIGHTMARE_TURN_RANGE
 	mov r0, r5
 	mov r2, #1
 	bl CalcStatusDuration
@@ -753,7 +753,7 @@ _02321EF0:
 	ldr r1, _0232226C ; =0x00000E94
 	mov r0, r6
 	bl LogMessageByIdWithPopupCheckUser
-	ldr r1, _02322270 ; =0x022C4720
+	ldr r1, _02322270 ; =SLEEP_TURN_RANGE
 	mov r0, r6
 	mov r2, #1
 	bl CalcStatusDuration
@@ -978,12 +978,12 @@ _0232224C: .word 0x00000E8D
 _02322250: .word 0x00000E8E
 _02322254: .word 0x00000E8F
 _02322258: .word 0x00000EA3
-_0232225C: .word 0x022C4724
+_0232225C: .word NIGHTMARE_TURN_RANGE
 _02322260: .word 0x00000E91
 _02322264: .word 0x00000E92
 _02322268: .word 0x00000E93
 _0232226C: .word 0x00000E94
-_02322270: .word 0x022C4720
+_02322270: .word SLEEP_TURN_RANGE
 _02322274: .word 0x00000E95
 _02322278: .word 0x00000E96
 _0232227C: .word 0x00000E98
@@ -1095,10 +1095,10 @@ _023223D4:
 	mov r0, #0xa8
 	bl DungeonRandInt
 	mov r2, r0
-	ldr r1, _02322D1C ; =0x0237CA88
+	ldr r1, _02322D1C ; =ov29_0237CA88
 	add r0, sp, #0x28
 	str r2, [r1]
-	ldr r1, _02322D20 ; =0x022C5DDC
+	ldr r1, _02322D20 ; =METRONOME_TABLE
 	mov r2, r2, lsl #3
 	ldrh r1, [r1, r2]
 	bl InitMove
@@ -1124,7 +1124,7 @@ _02322460:
 	cmp r1, #0x77
 	bne _023224C4
 	bl GetNaturePowerVariant
-	ldr r1, _02322D28 ; =0x022C4E40
+	ldr r1, _02322D28 ; =NATURE_POWER_TABLE
 	mov r0, r0, lsl #3
 	ldrh r1, [r1, r0]
 	add r0, sp, #0x30
@@ -1288,7 +1288,7 @@ _023226C8:
 	mov r0, #0
 	b _02322D10
 _023226D0:
-	ldr r0, _02322D44 ; =0x0237CA68
+	ldr r0, _02322D44 ; =ov29_0237CA68
 	mov r1, #0
 	str r1, [r0, #0x10]
 	str r1, [r0, #0xc]
@@ -1323,7 +1323,7 @@ _02322714:
 	beq _02322768
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02322D4C ; =0x022C4584
+	ldr r1, _02322D4C ; =ov10_022C4584
 	ldrsh r1, [r1]
 	cmp r0, r1
 	movlt r7, #1
@@ -1348,13 +1348,13 @@ _023227A8:
 	bl ov29_02324514
 	str r0, [sp, #0x24]
 _023227B0:
-	ldr r0, _02322D50 ; =0x022C45B8
+	ldr r0, _02322D50 ; =INTIMIDATOR_ACTIVATION_CHANCE
 	mov r7, #0
 	ldrsh r0, [r0]
 	str r0, [sp, #0x14]
 	b _02322C8C
 _023227C4:
-	ldr r0, _02322D44 ; =0x0237CA68
+	ldr r0, _02322D44 ; =ov29_0237CA68
 	mov sb, #1
 	ldrb r1, [r0, #1]
 	cmp r1, #0
@@ -1425,7 +1425,7 @@ _023228A4:
 	bl UpdateAiTargetPos
 	mov sb, #0
 _023228CC:
-	ldr r0, _02322D58 ; =0x0235370C
+	ldr r0, _02322D58 ; =ov29_0235370C
 	mov r1, #0
 	str r1, [r0]
 	str r1, [sp, #0x38]
@@ -1547,7 +1547,7 @@ _02322A68:
 	mov r0, r6
 	mov r1, r8
 	bl ov29_02322DDC
-	ldr r1, _02322D58 ; =0x0235370C
+	ldr r1, _02322D58 ; =ov29_0235370C
 	mov sb, r0
 	ldr r0, [r1]
 	mov r1, #0
@@ -1564,7 +1564,7 @@ _02322AC0:
 	movne r1, #0
 	strneh r1, [r0, #0x7e]
 	strneh r1, [r0, #0x80]
-	ldr r0, _02322D44 ; =0x0237CA68
+	ldr r0, _02322D44 ; =ov29_0237CA68
 	cmp fp, #0
 	ldr r1, [r0, #0x10]
 	add r1, r1, #1
@@ -1650,7 +1650,7 @@ _02322BE8:
 	mov r2, #0
 	strb r2, [r1, #0xd3]
 	ldr r1, [r6, #0xb4]
-	ldr r0, _02322D44 ; =0x0237CA68
+	ldr r0, _02322D44 ; =ov29_0237CA68
 	strb r2, [r1, #0x154]
 	ldr r1, [r6, #0xb4]
 	sub r7, r7, #1
@@ -1684,7 +1684,7 @@ _02322C8C:
 	cmp r7, r0
 	blt _023227C4
 _02322C98:
-	ldr r0, _02322D44 ; =0x0237CA68
+	ldr r0, _02322D44 ; =ov29_0237CA68
 	ldrb r0, [r0, #5]
 	cmp r0, #0
 	beq _02322CC4
@@ -1696,7 +1696,7 @@ _02322C98:
 	mov r1, r6
 	bl EndLeechSeedClassStatus
 _02322CC4:
-	ldr r0, _02322D44 ; =0x0237CA68
+	ldr r0, _02322D44 ; =ov29_0237CA68
 	ldrb r0, [r0, #2]
 	cmp r0, #0
 	beq _02322D0C
@@ -1721,22 +1721,22 @@ _02322D10:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02322D18: .word 0x0000014A
-_02322D1C: .word 0x0237CA88
-_02322D20: .word 0x022C5DDC
+_02322D1C: .word ov29_0237CA88
+_02322D20: .word METRONOME_TABLE
 _02322D24: .word 0x00000EA4
-_02322D28: .word 0x022C4E40
+_02322D28: .word NATURE_POWER_TABLE
 _02322D2C: .word 0x00000EA5
 _02322D30: .word 0x00000EA6
 _02322D34: .word 0x00000EA7
 _02322D38: .word 0x00000E7B
 _02322D3C: .word 0x00000E79
 _02322D40: .word 0x00000E7A
-_02322D44: .word 0x0237CA68
+_02322D44: .word ov29_0237CA68
 _02322D48: .word 0x00000163
-_02322D4C: .word 0x022C4584
-_02322D50: .word 0x022C45B8
+_02322D4C: .word ov10_022C4584
+_02322D50: .word INTIMIDATOR_ACTIVATION_CHANCE
 _02322D54: .word 0x000001ED
-_02322D58: .word 0x0235370C
+_02322D58: .word ov29_0235370C
 _02322D5C: .word 0x00000EA9
 _02322D60: .word 0x000001F6
 	arm_func_end ov29_02322374
@@ -1906,7 +1906,7 @@ _02322F74: .word 0x00000163
 ov29_02322F78: ; 0x02322F78
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x18
-	ldr r4, _023230F4 ; =0x02353538
+	ldr r4, _023230F4 ; =ov29_02353538
 	mov r7, r0
 	ldr r0, [r4]
 	mov r6, r1
@@ -1962,7 +1962,7 @@ _02322FC8:
 	mov r2, r0
 	mvn r0, #0
 	cmp r2, r0
-	ldreq r0, _023230F8 ; =0x02352A54
+	ldreq r0, _023230F8 ; =ov29_02352A54
 	ldreqh r1, [r0]
 	streqh r1, [sp, #0xc]
 	ldreqh r0, [r0, #2]
@@ -2005,15 +2005,15 @@ _023230EC:
 	add sp, sp, #0x18
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_023230F4: .word 0x02353538
-_023230F8: .word 0x02352A54
+_023230F4: .word ov29_02353538
+_023230F8: .word ov29_02352A54
 	arm_func_end ov29_02322F78
 
 	arm_func_start ov29_023230FC
 ov29_023230FC: ; 0x023230FC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc0
-	ldr r4, _023238F4 ; =0x02352A54
+	ldr r4, _023238F4 ; =ov29_02352A54
 	mov r8, r0
 	mov r0, #0
 	str r0, [sp, #0x88]
@@ -2039,7 +2039,7 @@ ov29_023230FC: ; 0x023230FC
 _02323160:
 	ldrsh r2, [r8, #4]
 	ldr r0, _023238F8 ; =DIRECTIONS_XY
-	ldr r1, _023238FC ; =0x0235171E
+	ldr r1, _023238FC ; =ov29_0235171E
 	strh r2, [sp, #0xbc]
 	ldrsh r2, [r8, #6]
 	mov r4, #0
@@ -2129,7 +2129,7 @@ _02323250:
 	ldr r0, _023238F8 ; =DIRECTIONS_XY
 	strh r2, [sp, #0xb8]
 	ldrsh r2, [r5, #6]
-	ldr r1, _023238FC ; =0x0235171E
+	ldr r1, _023238FC ; =ov29_0235171E
 	strh r2, [sp, #0xba]
 	ldrb r2, [sb, #0x4c]
 	add r2, r2, #4
@@ -2141,11 +2141,11 @@ _02323250:
 	str r0, [sp, #0x60]
 _023232E4:
 	ldrsh r0, [r8, #4]
-	ldr r5, _02323900 ; =0x0235175C
+	ldr r5, _02323900 ; =ov29_0235175C
 	ldr r3, _023238F8 ; =DIRECTIONS_XY
 	strh r0, [sp, #0xbc]
 	ldrsh r1, [r8, #6]
-	ldr r2, _023238FC ; =0x0235171E
+	ldr r2, _023238FC ; =ov29_0235171E
 	mov r0, #0x18
 	strh r1, [sp, #0xbe]
 	ldrb r1, [sb, #0x4c]
@@ -2206,7 +2206,7 @@ _02323360:
 	str r0, [sp, #0x30]
 	rsb r0, r4, #0
 	str r0, [sp, #0x34]
-	ldr r1, _02323908 ; =0x02352A6C
+	ldr r1, _02323908 ; =ov29_02352A6C
 	ldr r0, [sp, #0x1c]
 	ldr r5, [sp, #0xb4]
 	ldr r0, [r1, r0, lsl #2]
@@ -2250,7 +2250,7 @@ _0232347C:
 	bl ov29_022E2CA0
 	cmp r0, #0
 	beq _02323740
-	ldr r0, _0232390C ; =0x02353538
+	ldr r0, _0232390C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrb r0, [r0, #0x23e]
@@ -2334,7 +2334,7 @@ _023235B4:
 	mov r0, r0, asr #8
 	strh r0, [sp, #0x9c]
 	ldr r0, [sp, #0x50]
-	ldr r2, _0232390C ; =0x02353538
+	ldr r2, _0232390C ; =ov29_02353538
 	sub r0, sl, r0
 	mov r0, r0, asr #8
 	ldr r3, [r2]
@@ -2387,7 +2387,7 @@ _0232367C:
 	mov r0, r0, asr #8
 	strh r0, [sp, #0x98]
 	ldr r0, [sp, #0x4c]
-	ldr r2, _0232390C ; =0x02353538
+	ldr r2, _0232390C ; =ov29_02353538
 	sub r0, r1, r0
 	mov r0, r0, asr #8
 	ldr r3, [r2]
@@ -2555,13 +2555,13 @@ _023238EC:
 	add sp, sp, #0xc0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023238F4: .word 0x02352A54
+_023238F4: .word ov29_02352A54
 _023238F8: .word DIRECTIONS_XY
-_023238FC: .word 0x0235171E
-_02323900: .word 0x0235175C
+_023238FC: .word ov29_0235171E
+_02323900: .word ov29_0235175C
 _02323904: .word 0x00000FFF
-_02323908: .word 0x02352A6C
-_0232390C: .word 0x02353538
+_02323908: .word ov29_02352A6C
+_0232390C: .word ov29_02353538
 _02323910: .word 0x0001A226
 _02323914: .word 0x000001E5
 	arm_func_end ov29_023230FC
@@ -2604,7 +2604,7 @@ _02323984:
 	ldr r4, _02323C30 ; =DIRECTIONS_XY
 	ldrb r1, [r0, #0x4c]
 	ldrsh r0, [sl, #4]
-	ldr r5, _02323C34 ; =0x0235171E
+	ldr r5, _02323C34 ; =ov29_0235171E
 	add r1, r1, #4
 	strh r0, [sp, #0x34]
 	and r0, r1, #7
@@ -2646,7 +2646,7 @@ _02323A20:
 	bl __divsi3
 	str r0, [sp, #0x1c]
 	ldrb r2, [r7, #0x4c]
-	ldr r1, _02323C38 ; =0x02352A8C
+	ldr r1, _02323C38 ; =ov29_02352A8C
 	mov r0, #1
 	ldr r1, [r1, r2, lsl #2]
 	str r1, [sp, #0x10]
@@ -2683,7 +2683,7 @@ _02323A6C:
 	bl ov29_022E2CA0
 	cmp r0, #0
 	beq _02323BB0
-	ldr r0, _02323C3C ; =0x02353538
+	ldr r0, _02323C3C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrb r0, [r0, #0x23e]
@@ -2716,7 +2716,7 @@ _02323B14:
 	mul r0, r1, r0
 _02323B3C:
 	sub r0, r8, r0
-	ldr r2, _02323C3C ; =0x02353538
+	ldr r2, _02323C3C ; =ov29_02353538
 	mov r0, r0, asr #8
 	strh r0, [sp, #0x2e]
 	mov r0, r7, asr #8
@@ -2785,9 +2785,9 @@ _02323BE0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02323C30: .word DIRECTIONS_XY
-_02323C34: .word 0x0235171E
-_02323C38: .word 0x02352A8C
-_02323C3C: .word 0x02353538
+_02323C34: .word ov29_0235171E
+_02323C38: .word ov29_02352A8C
+_02323C3C: .word ov29_02353538
 _02323C40: .word 0x0001A226
 _02323C44: .word 0x00000232
 	arm_func_end ov29_0232393C
@@ -2863,14 +2863,14 @@ _02323D00:
 	bl HasHeldItem
 _02323D4C:
 	cmp r0, #0
-	ldrne r0, _02324014 ; =0x022C47A8
+	ldrne r0, _02324014 ; =DETECT_BAND_MOVE_ACCURACY_DROP
 	mov r1, #5
 	ldrne r0, [r0]
 	subne r8, r8, r0
 	mov r0, r6
 	bl IqSkillIsEnabled
 	cmp r0, #0
-	ldrne r0, _02324018 ; =0x022C4808
+	ldrne r0, _02324018 ; =QUICK_DODGER_MOVE_ACCURACY_DROP
 	mov r1, #0x33
 	ldrne r0, [r0]
 	ldrsh sb, [sb, #0x2c]
@@ -2987,7 +2987,7 @@ _02323F14:
 _02323F18:
 	mov r0, r6
 	bl GetApparentWeather
-	ldr r2, _02324024 ; =0x02353710
+	ldr r2, _02324024 ; =ov29_02353710
 	ldrb r1, [r2, r0]
 	cmp r1, #0
 	beq _02323F44
@@ -3018,7 +3018,7 @@ _02323F44:
 	cmp sb, #0x14
 	movgt sb, #0x14
 _02323F94:
-	ldr r2, _02324028 ; =0x022C540C
+	ldr r2, _02324028 ; =MALE_ACCURACY_STAGE_MULTIPLIERS
 	ldr r0, [sp, #4]
 	mov r1, #0xa8
 	mla r1, r0, r1, r2
@@ -3030,7 +3030,7 @@ _02323F94:
 	cmp r3, #0
 	movlt r3, #0
 	cmp r3, #0x6400
-	ldr r2, _0232402C ; =0x022C5460
+	ldr r2, _0232402C ; =MALE_EVASION_STAGE_MULTIPLIERS
 	ldr r0, [sp]
 	mov r1, #0xa8
 	mla r1, r0, r1, r2
@@ -3052,13 +3052,13 @@ _02324008:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02324010: .word 0x00000163
-_02324014: .word 0x022C47A8
-_02324018: .word 0x022C4808
+_02324014: .word DETECT_BAND_MOVE_ACCURACY_DROP
+_02324018: .word QUICK_DODGER_MOVE_ACCURACY_DROP
 _0232401C: .word 0x0000010E
 _02324020: .word 0x000003E7
-_02324024: .word 0x02353710
-_02324028: .word 0x022C540C
-_0232402C: .word 0x022C5460
+_02324024: .word ov29_02353710
+_02324028: .word MALE_ACCURACY_STAGE_MULTIPLIERS
+_0232402C: .word MALE_EVASION_STAGE_MULTIPLIERS
 	arm_func_end MoveHitCheck
 
 	arm_func_start ov29_02324030
@@ -3169,7 +3169,7 @@ _023241AC:
 	bne _02324248
 	mov fp, #0
 _023241B8:
-	ldr r0, _023243B0 ; =0x02353538
+	ldr r0, _023243B0 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, fp, lsl #2
 	add r0, r0, #0x12000
@@ -3264,7 +3264,7 @@ _0232430C:
 	bne _02324370
 	mov r7, #0
 _02324318:
-	ldr r0, _023243B0 ; =0x02353538
+	ldr r0, _023243B0 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
@@ -3306,7 +3306,7 @@ _0232439C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _023243AC: .word DIRECTIONS_XY
-_023243B0: .word 0x02353538
+_023243B0: .word ov29_02353538
 	arm_func_end ov29_02324030
 
 	arm_func_start ov29_023243B4
@@ -3397,7 +3397,7 @@ _023244C0:
 	add r8, r8, #1
 	ldrb r0, [r0, #6]
 	cmp r0, #0
-	ldreq r0, _02324510 ; =0x0235370C
+	ldreq r0, _02324510 ; =ov29_0235370C
 	ldreq r1, [r0]
 	cmpeq r1, #0
 	streq r5, [r0]
@@ -3405,7 +3405,7 @@ _02324508:
 	mov r0, r8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02324510: .word 0x0235370C
+_02324510: .word ov29_0235370C
 	arm_func_end ov29_023243B4
 
 	arm_func_start ov29_02324514
@@ -3464,7 +3464,7 @@ IsChargingTwoTurnMove: ; 0x023245A4
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr ip, [r5, #0xb4]
 	mov lr, #0
-	ldr r2, _02324618 ; =0x02352AAC
+	ldr r2, _02324618 ; =TWO_TURN_MOVES_AND_STATUSES
 	b _02324608
 _023245D0:
 	mov r3, lr, lsl #2
@@ -3487,7 +3487,7 @@ _02324608:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02324618: .word 0x02352AAC
+_02324618: .word TWO_TURN_MOVES_AND_STATUSES
 	arm_func_end IsChargingTwoTurnMove
 
 	arm_func_start ov29_0232461C
@@ -3501,7 +3501,7 @@ ov29_0232461C: ; 0x0232461C
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr ip, [r5, #0xb4]
 	mov r3, #0
-	ldr r2, _02324694 ; =0x02352A60
+	ldr r2, _02324694 ; =ov29_02352A60
 	b _0232466C
 _02324648:
 	ldrb r1, [r2, r3]
@@ -3526,7 +3526,7 @@ _0232468C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02324694: .word 0x02352A60
+_02324694: .word ov29_02352A60
 	arm_func_end ov29_0232461C
 
 	arm_func_start ov29_02324698
@@ -3534,7 +3534,7 @@ ov29_02324698: ; 0x02324698
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x140
 	mov r6, #0
-	ldr fp, _02324740 ; =0x02353538
+	ldr fp, _02324740 ; =ov29_02353538
 	mov r7, r6
 	add r4, sp, #0
 _023246B0:
@@ -3579,7 +3579,7 @@ _02324738:
 	add sp, sp, #0x140
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02324740: .word 0x02353538
+_02324740: .word ov29_02353538
 _02324744: .word 0x00000163
 	arm_func_end ov29_02324698
 
@@ -3716,7 +3716,7 @@ _023248D8:
 	cmp r0, #0x77
 	bne _02324920
 	bl GetNaturePowerVariant
-	ldr r1, _02324930 ; =0x022C4E40
+	ldr r1, _02324930 ; =NATURE_POWER_TABLE
 	mov r0, r0, lsl #3
 	ldrh r0, [r1, r0]
 	cmp r0, #0x76
@@ -3729,7 +3729,7 @@ _02324928:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02324930: .word 0x022C4E40
+_02324930: .word NATURE_POWER_TABLE
 	arm_func_end TwoTurnMoveForcedMiss
 
 	arm_func_start DungeonRandOutcomeUserTargetInteraction
@@ -4205,7 +4205,7 @@ ov29_02324E78: ; 0x02324E78
 	mov r2, r0
 	mvn r0, #0
 	cmp r2, r0
-	ldreq r0, _023250D0 ; =0x02352AD8
+	ldreq r0, _023250D0 ; =ov29_02352AD8
 	ldreqh r1, [r0, #8]
 	streqh r1, [sp, #8]
 	ldreqh r0, [r0, #0xa]
@@ -4303,7 +4303,7 @@ _023250C8:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023250D0: .word 0x02352AD8
+_023250D0: .word ov29_02352AD8
 	arm_func_end ov29_02324E78
 
 	arm_func_start ov29_023250D4
@@ -4351,7 +4351,7 @@ ov29_023250D4: ; 0x023250D4
 	mov r2, r0
 	mvn r0, #0
 	cmp r2, r0
-	ldreq r0, _02325608 ; =0x02352AD8
+	ldreq r0, _02325608 ; =ov29_02352AD8
 	ldreqh r1, [r0, #4]
 	streqh r1, [sp, #0xc]
 	ldreqh r0, [r0, #6]
@@ -4384,14 +4384,14 @@ _023251E8:
 	mov r1, #1
 	bl ov10_022BF1FC
 	cmp r0, #0
-	ldrne r0, _0232560C ; =0x02353538
+	ldrne r0, _0232560C ; =ov29_02353538
 	ldrne r0, [r0]
 	addne r0, r0, #0x1a000
 	ldrne r5, [r0, #0x22c]
 	bne _02325228
 	ldrh r0, [sb, #4]
 	cmp r0, #0x52
-	ldreq r0, _0232560C ; =0x02353538
+	ldreq r0, _0232560C ; =ov29_02353538
 	ldreq r0, [r0]
 	addeq r0, r0, #0x1a000
 	ldreq r5, [r0, #0x22c]
@@ -4421,10 +4421,10 @@ _02325228:
 	bne _023252E4
 	mov r0, #7
 	bl DungeonRandInt
-	ldr r1, _0232560C ; =0x02353538
-	ldr r6, _02325610 ; =0x02352B1C
+	ldr r1, _0232560C ; =ov29_02353538
+	ldr r6, _02325610 ; =ov29_02352B1C
 	ldr r3, [r1]
-	ldr r2, _02325614 ; =0x0237CA84
+	ldr r2, _02325614 ; =ov29_0237CA84
 	ldr r6, [r6, r0, lsl #2]
 	str r0, [r2]
 	add r0, r3, #0x1a000
@@ -4447,7 +4447,7 @@ _02325228:
 _023252E4:
 	cmp r0, #0x76
 	bne _0232531C
-	ldr r2, _0232560C ; =0x02353538
+	ldr r2, _0232560C ; =ov29_02353538
 	mov r3, #0xc
 	ldr r1, [r2]
 	mov r0, r5
@@ -4542,7 +4542,7 @@ _0232543C:
 	cmp r0, #2
 	moveq fp, #1
 	beq _02325470
-	ldr r0, _0232560C ; =0x02353538
+	ldr r0, _0232560C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldr r1, [r0, #0x22c]
@@ -4556,7 +4556,7 @@ _02325470:
 	bne _02325524
 	mov r5, #0
 _02325480:
-	ldr r0, _0232560C ; =0x02353538
+	ldr r0, _0232560C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -4664,10 +4664,10 @@ _02325600:
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02325608: .word 0x02352AD8
-_0232560C: .word 0x02353538
-_02325610: .word 0x02352B1C
-_02325614: .word 0x0237CA84
+_02325608: .word ov29_02352AD8
+_0232560C: .word ov29_02353538
+_02325610: .word ov29_02352B1C
+_02325614: .word ov29_0237CA84
 _02325618: .word 0x00000EAA
 _0232561C: .word 0x00000229
 	arm_func_end ov29_023250D4

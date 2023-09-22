@@ -16,7 +16,7 @@ TryAftermathExplosion: ; 0x02320788
 	ldr fp, [sp, #0x3c]
 	mov r5, #0
 	mov r7, #0x15
-	ldr r4, _02320A8C ; =0x02353538
+	ldr r4, _02320A8C ; =ov29_02353538
 	b _023207F4
 _023207BC:
 	ldr r0, [r4]
@@ -75,7 +75,7 @@ _02320858:
 	mov r0, sl
 	mov r1, sb
 	bl LogMessageByIdWithPopupCheckUserTarget
-	ldr r0, _02320A98 ; =0x023529B8
+	ldr r0, _02320A98 ; =ov29_023529B8
 	mov r6, #0
 	ldr r4, [r0, r8, lsl #2]
 	mov r7, r6
@@ -159,7 +159,7 @@ _023209A4:
 	ldr r0, [r1]
 	cmp r0, #1
 	bne _023209E8
-	ldr r2, _02320A9C ; =0x02353700
+	ldr r2, _02320A9C ; =ov29_02353700
 	mov r0, sl
 	ldr r5, [r2, r8, lsl #2]
 	ldr r2, [sp, #0x38]
@@ -185,7 +185,7 @@ _023209F8:
 	ldr r0, _02320AA0 ; =0x0000026F
 	cmp fp, r0
 	beq _02320A3C
-	ldr r1, _02320A9C ; =0x02353700
+	ldr r1, _02320A9C ; =ov29_02353700
 	ldr r2, [sp, #0x38]
 	ldr r4, [r1, r8, lsl #2]
 	mov r0, sl
@@ -219,11 +219,11 @@ _02320A84:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02320A8C: .word 0x02353538
+_02320A8C: .word ov29_02353538
 _02320A90: .word 0x00000BFC
 _02320A94: .word 0x00000BFB
-_02320A98: .word 0x023529B8
-_02320A9C: .word 0x02353700
+_02320A98: .word ov29_023529B8
+_02320A9C: .word ov29_02353700
 _02320AA0: .word 0x0000026F
 	arm_func_end TryAftermathExplosion
 
@@ -442,7 +442,7 @@ _02320D84:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02320DA0:
-	ldr r0, _023210EC ; =0x02353538
+	ldr r0, _023210EC ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -457,7 +457,7 @@ _02320DA0:
 _02320DD0:
 	cmp r7, #1
 	bne _02320E20
-	ldr r0, _023210EC ; =0x02353538
+	ldr r0, _023210EC ; =ov29_02353538
 	ldrsh r1, [r8, #4]
 	ldr r0, [r0]
 	add r0, r0, #0xcc00
@@ -491,7 +491,7 @@ _02320E20:
 	cmp r0, #0
 	beq _02320EA4
 	ldrb sl, [r5, #0x4c]
-	ldr fp, _023210FC ; =0x0237C850
+	ldr fp, _023210FC ; =ov29_0237C850
 _02320E60:
 	ldr r0, [r8, #0x1c]
 	add r0, r0, #0x800
@@ -535,7 +535,7 @@ _02320EC8:
 	strh r0, [sp, #2]
 	b _02321008
 _02320EF4:
-	ldr r1, _023210EC ; =0x02353538
+	ldr r1, _023210EC ; =ov29_02353538
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0
@@ -570,7 +570,7 @@ _02320F60:
 	strh r0, [sp, #2]
 	b _02321008
 _02320F74:
-	ldr r1, _023210EC ; =0x02353538
+	ldr r1, _023210EC ; =ov29_02353538
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #1
@@ -628,7 +628,7 @@ _02321008:
 	beq _023210A0
 	ldrb sl, [r5, #0x4c]
 	mov r0, #0xa000
-	ldr r6, _023210FC ; =0x0237C850
+	ldr r6, _023210FC ; =ov29_0237C850
 	str r0, [r8, #0x1c]
 	mov fp, #0x22
 _0232105C:
@@ -673,11 +673,11 @@ _023210DC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _023210E8: .word 0x00000E74
-_023210EC: .word 0x02353538
+_023210EC: .word ov29_02353538
 _023210F0: .word 0x00000E72
 _023210F4: .word 0x00000E73
 _023210F8: .word 0x00000E71
-_023210FC: .word 0x0237C850
+_023210FC: .word ov29_0237C850
 _02321100: .word 0x00000E75
 	arm_func_end TryWarp
 
@@ -768,7 +768,7 @@ _02321200:
 _02321210:
 	mov r0, r4
 	bl ov29_022F9C74
-	ldr r1, _02321234 ; =0x02353538
+	ldr r1, _02321234 ; =ov29_02353538
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x4000
@@ -776,7 +776,7 @@ _02321210:
 	bl ov29_02305814
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02321234: .word 0x02353538
+_02321234: .word ov29_02353538
 	arm_func_end ov29_0232119C
 
 	arm_func_start ov29_02321238

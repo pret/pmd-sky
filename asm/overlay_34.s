@@ -182,7 +182,7 @@ _022DC4A0:
 	bne _022DC54C
 	mov r1, #0
 	str r8, [sp]
-	ldr r0, _022DC5A8 ; =0x022DCFF4
+	ldr r0, _022DC5A8 ; =ov34_022DCFF4
 	str r8, [sp, #4]
 	mov r2, r1
 	mov r3, r1
@@ -191,7 +191,7 @@ _022DC4A0:
 	str r7, [sp]
 	mov r0, #0
 	str r0, [sp, #4]
-	ldr r0, _022DC5AC ; =0x022DD004
+	ldr r0, _022DC5AC ; =ov34_022DD004
 	mov r2, r1
 	mov r3, r1
 	bl sub_02052060
@@ -247,8 +247,8 @@ _022DC598: .word ov34_022DC738
 _022DC59C: .word ov34_022DD0A0
 _022DC5A0: .word ov34_022DD080
 _022DC5A4: .word ov34_022DC5B0
-_022DC5A8: .word 0x022DCFF4
-_022DC5AC: .word 0x022DD004
+_022DC5A8: .word ov34_022DCFF4
+_022DC5AC: .word ov34_022DD004
 	arm_func_end ExplorersOfSkyMain
 
 	arm_func_start ov34_022DC5B0
@@ -377,37 +377,37 @@ _022DC744: .word ov34_022DC718
 	arm_func_start ov34_022DC748
 ov34_022DC748: ; 0x022DC748
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DC770 ; =0x022DD104
+	ldr r0, _022DC770 ; =ov34_022DD104
 	mov r1, #1
 	bl sub_0200B894
-	ldr r0, _022DC774 ; =0x022DD0C0
+	ldr r0, _022DC774 ; =ov34_022DD0C0
 	mov r1, #1
 	bl sub_0200B894
 	bl ov34_022DC798
 	bl ov34_022DC810
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DC770: .word 0x022DD104
-_022DC774: .word 0x022DD0C0
+_022DC770: .word ov34_022DD104
+_022DC774: .word ov34_022DD0C0
 	arm_func_end ov34_022DC748
 
 	arm_func_start ov34_022DC778
 ov34_022DC778: ; 0x022DC778
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DC790 ; =0x022DD104
+	ldr r0, _022DC790 ; =ov34_022DD104
 	bl sub_0200B8B8
-	ldr r0, _022DC794 ; =0x022DD0C0
+	ldr r0, _022DC794 ; =ov34_022DD0C0
 	bl sub_0200B8B8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DC790: .word 0x022DD104
-_022DC794: .word 0x022DD0C0
+_022DC790: .word ov34_022DD104
+_022DC794: .word ov34_022DD0C0
 	arm_func_end ov34_022DC778
 
 	arm_func_start ov34_022DC798
 ov34_022DC798: ; 0x022DC798
 	stmdb sp!, {r3, lr}
-	ldr r1, _022DC808 ; =0x022DD0B0
+	ldr r1, _022DC808 ; =ov34_022DD0B0
 	mov r0, #0
 	strb r0, [r1]
 	str r0, [r1, #0xc]
@@ -417,7 +417,7 @@ ov34_022DC798: ; 0x022DC798
 	bl sub_02008F4C
 	cmp r0, #0x100
 	bne _022DC7D4
-	ldr r0, _022DC80C ; =0x022DD104
+	ldr r0, _022DC80C ; =ov34_022DD104
 	mov r1, #2
 	bl sub_0200B8D4
 	ldmia sp!, {r3, pc}
@@ -427,18 +427,18 @@ _022DC7D4:
 	mvn r1, #0xff
 	cmp r0, r1
 	bne _022DC7F8
-	ldr r0, _022DC80C ; =0x022DD104
+	ldr r0, _022DC80C ; =ov34_022DD104
 	mov r1, #1
 	bl sub_0200B8D4
 	ldmia sp!, {r3, pc}
 _022DC7F8:
-	ldr r0, _022DC80C ; =0x022DD104
+	ldr r0, _022DC80C ; =ov34_022DD104
 	mov r1, #0
 	bl sub_0200B8D4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DC808: .word 0x022DD0B0
-_022DC80C: .word 0x022DD104
+_022DC808: .word ov34_022DD0B0
+_022DC80C: .word ov34_022DD104
 	arm_func_end ov34_022DC798
 
 	arm_func_start ov34_022DC810
@@ -448,7 +448,7 @@ ov34_022DC810: ; 0x022DC810
 	bl sub_02008F4C
 	cmp r0, #0x100
 	bne _022DC834
-	ldr r0, _022DC868 ; =0x022DD0C0
+	ldr r0, _022DC868 ; =ov34_022DD0C0
 	mov r1, #2
 	bl sub_0200B8D4
 	ldmia sp!, {r3, pc}
@@ -458,17 +458,17 @@ _022DC834:
 	mvn r1, #0xff
 	cmp r0, r1
 	bne _022DC858
-	ldr r0, _022DC868 ; =0x022DD0C0
+	ldr r0, _022DC868 ; =ov34_022DD0C0
 	mov r1, #1
 	bl sub_0200B8D4
 	ldmia sp!, {r3, pc}
 _022DC858:
-	ldr r0, _022DC868 ; =0x022DD0C0
+	ldr r0, _022DC868 ; =ov34_022DD0C0
 	mov r1, #0
 	bl sub_0200B8D4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DC868: .word 0x022DD0C0
+_022DC868: .word ov34_022DD0C0
 	arm_func_end ov34_022DC810
 
 	arm_func_start ov34_022DC86C
@@ -478,22 +478,22 @@ ov34_022DC86C: ; 0x022DC86C
 	mov r0, #2
 	bl sub_02002878
 	cmp r0, #0
-	ldreq r0, _022DC8B0 ; =0x022DD0B0
+	ldreq r0, _022DC8B0 ; =ov34_022DD0B0
 	moveq r1, #1
 	streq r1, [r0, #8]
 	streq r4, [r0, #4]
 	beq _022DC8A8
-	ldr r0, _022DC8B4 ; =0x022DD104
+	ldr r0, _022DC8B4 ; =ov34_022DD104
 	mov r1, r4
 	bl sub_0200BB60
-	ldr r0, _022DC8B0 ; =0x022DD0B0
+	ldr r0, _022DC8B0 ; =ov34_022DD0B0
 	mov r1, #1
 _022DC8A8:
 	strb r1, [r0, #1]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022DC8B0: .word 0x022DD0B0
-_022DC8B4: .word 0x022DD104
+_022DC8B0: .word ov34_022DD0B0
+_022DC8B4: .word ov34_022DD104
 	arm_func_end ov34_022DC86C
 
 	arm_func_start ov34_022DC8B8
@@ -503,23 +503,23 @@ ov34_022DC8B8: ; 0x022DC8B8
 	mov r0, #2
 	bl sub_02002878
 	cmp r0, #0
-	ldreq r0, _022DC900 ; =0x022DD0B0
+	ldreq r0, _022DC900 ; =ov34_022DD0B0
 	moveq r1, #2
 	streq r1, [r0, #8]
 	streq r4, [r0, #4]
 	beq _022DC8F4
-	ldr r0, _022DC904 ; =0x022DD104
+	ldr r0, _022DC904 ; =ov34_022DD104
 	mov r2, r4
 	mov r1, #1
 	bl sub_0200BB74
-	ldr r0, _022DC900 ; =0x022DD0B0
+	ldr r0, _022DC900 ; =ov34_022DD0B0
 _022DC8F4:
 	mov r1, #1
 	strb r1, [r0, #1]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022DC900: .word 0x022DD0B0
-_022DC904: .word 0x022DD104
+_022DC900: .word ov34_022DD0B0
+_022DC904: .word ov34_022DD104
 	arm_func_end ov34_022DC8B8
 
 	arm_func_start ov34_022DC908
@@ -529,78 +529,78 @@ ov34_022DC908: ; 0x022DC908
 	mov r0, #2
 	bl sub_02002878
 	cmp r0, #0
-	ldreq r0, _022DC950 ; =0x022DD0B0
+	ldreq r0, _022DC950 ; =ov34_022DD0B0
 	moveq r1, #3
 	streq r1, [r0, #8]
 	streq r4, [r0, #4]
 	beq _022DC944
-	ldr r0, _022DC954 ; =0x022DD104
+	ldr r0, _022DC954 ; =ov34_022DD104
 	mov r2, r4
 	mov r1, #2
 	bl sub_0200BB74
-	ldr r0, _022DC950 ; =0x022DD0B0
+	ldr r0, _022DC950 ; =ov34_022DD0B0
 _022DC944:
 	mov r1, #1
 	strb r1, [r0, #1]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022DC950: .word 0x022DD0B0
-_022DC954: .word 0x022DD104
+_022DC950: .word ov34_022DD0B0
+_022DC954: .word ov34_022DD104
 	arm_func_end ov34_022DC908
 
 	arm_func_start ov34_022DC958
 ov34_022DC958: ; 0x022DC958
 	ldr ip, _022DC968 ; =sub_0200BB60
 	mov r1, r0
-	ldr r0, _022DC96C ; =0x022DD0C0
+	ldr r0, _022DC96C ; =ov34_022DD0C0
 	bx ip
 	.align 2, 0
 _022DC968: .word sub_0200BB60
-_022DC96C: .word 0x022DD0C0
+_022DC96C: .word ov34_022DD0C0
 	arm_func_end ov34_022DC958
 
 	arm_func_start ov34_022DC970
 ov34_022DC970: ; 0x022DC970
 	ldr ip, _022DC984 ; =sub_0200BB74
 	mov r2, r0
-	ldr r0, _022DC988 ; =0x022DD0C0
+	ldr r0, _022DC988 ; =ov34_022DD0C0
 	mov r1, #2
 	bx ip
 	.align 2, 0
 _022DC984: .word sub_0200BB74
-_022DC988: .word 0x022DD0C0
+_022DC988: .word ov34_022DD0C0
 	arm_func_end ov34_022DC970
 
 	arm_func_start ov34_022DC98C
 ov34_022DC98C: ; 0x022DC98C
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DC9B0 ; =0x022DD0B0
+	ldr r0, _022DC9B0 ; =ov34_022DD0B0
 	ldrb r0, [r0]
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!,  {r3, pc}
-	ldr r0, _022DC9B4 ; =0x022DD104
+	ldr r0, _022DC9B4 ; =ov34_022DD104
 	bl sub_0200BD14
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DC9B0: .word 0x022DD0B0
-_022DC9B4: .word 0x022DD104
+_022DC9B0: .word ov34_022DD0B0
+_022DC9B4: .word ov34_022DD104
 	arm_func_end ov34_022DC98C
 
 	arm_func_start ov34_022DC9B8
 ov34_022DC9B8: ; 0x022DC9B8
 	ldr ip, _022DC9C4 ; =sub_0200BD14
-	ldr r0, _022DC9C8 ; =0x022DD0C0
+	ldr r0, _022DC9C8 ; =ov34_022DD0C0
 	bx ip
 	.align 2, 0
 _022DC9C4: .word sub_0200BD14
-_022DC9C8: .word 0x022DD0C0
+_022DC9C8: .word ov34_022DD0C0
 	arm_func_end ov34_022DC9B8
 
 	arm_func_start ov34_022DC9CC
 ov34_022DC9CC: ; 0x022DC9CC
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCA68 ; =0x022DD0B0
+	ldr r0, _022DCA68 ; =ov34_022DD0B0
 	ldr r1, [r0, #8]
 	cmp r1, #0
 	beq _022DCA48
@@ -613,110 +613,110 @@ ov34_022DC9CC: ; 0x022DC9CC
 	b _022DCA30
 _022DC9FC:
 	ldr r1, [r0, #4]
-	ldr r0, _022DCA6C ; =0x022DD104
+	ldr r0, _022DCA6C ; =ov34_022DD104
 	bl sub_0200BB60
 	b _022DCA30
 _022DCA0C:
 	ldr r2, [r0, #4]
-	ldr r0, _022DCA6C ; =0x022DD104
+	ldr r0, _022DCA6C ; =ov34_022DD104
 	mov r1, #1
 	bl sub_0200BB74
 	b _022DCA30
 _022DCA20:
 	ldr r2, [r0, #4]
-	ldr r0, _022DCA6C ; =0x022DD104
+	ldr r0, _022DCA6C ; =ov34_022DD104
 	mov r1, #2
 	bl sub_0200BB74
 _022DCA30:
-	ldr r0, _022DCA68 ; =0x022DD0B0
+	ldr r0, _022DCA68 ; =ov34_022DD0B0
 	mov r1, #0
 	str r1, [r0, #8]
 	mov r1, #1
 	strb r1, [r0, #1]
 	ldmia sp!, {r3, pc}
 _022DCA48:
-	ldr r0, _022DCA6C ; =0x022DD104
+	ldr r0, _022DCA6C ; =ov34_022DD104
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	movne r1, #1
-	ldr r0, _022DCA68 ; =0x022DD0B0
+	ldr r0, _022DCA68 ; =ov34_022DD0B0
 	moveq r1, #0
 	strb r1, [r0, #1]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCA68: .word 0x022DD0B0
-_022DCA6C: .word 0x022DD104
+_022DCA68: .word ov34_022DD0B0
+_022DCA6C: .word ov34_022DD104
 	arm_func_end ov34_022DC9CC
 
 	arm_func_start ov34_022DCA70
 ov34_022DCA70: ; 0x022DCA70
 	stmdb sp!, {r4, lr}
-	ldr r0, _022DCB58 ; =0x022DD0B0
+	ldr r0, _022DCB58 ; =ov34_022DD0B0
 	mov r4, #1
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _022DCB2C
-	ldr r0, _022DCB5C ; =0x022DD104
+	ldr r0, _022DCB5C ; =ov34_022DD104
 	bl sub_0200BD2C
 	cmp r0, #0
 	bne _022DCAB4
-	ldr r1, _022DCB58 ; =0x022DD0B0
-	ldr r0, _022DCB5C ; =0x022DD104
+	ldr r1, _022DCB58 ; =ov34_022DD0B0
+	ldr r0, _022DCB5C ; =ov34_022DD104
 	ldr r2, [r1, #0xc]
 	mov r1, r4
 	bl sub_0200BB74
 	mov r4, #0
 	b _022DCAC4
 _022DCAB4:
-	ldr r0, _022DCB5C ; =0x022DD104
+	ldr r0, _022DCB5C ; =ov34_022DD104
 	bl sub_0200BC54
 	cmp r0, #0
 	movne r4, #0
 _022DCAC4:
-	ldr r0, _022DCB5C ; =0x022DD104
+	ldr r0, _022DCB5C ; =ov34_022DD104
 	ldrsh r0, [r0, #0x14]
 	bl ov34_022DCB64
-	ldr r0, _022DCB60 ; =0x022DD0C0
+	ldr r0, _022DCB60 ; =ov34_022DD0C0
 	bl sub_0200BD2C
 	cmp r0, #0
 	bne _022DCAFC
-	ldr r1, _022DCB58 ; =0x022DD0B0
-	ldr r0, _022DCB60 ; =0x022DD0C0
+	ldr r1, _022DCB58 ; =ov34_022DD0B0
+	ldr r0, _022DCB60 ; =ov34_022DD0C0
 	ldr r2, [r1, #0xc]
 	mov r1, #1
 	bl sub_0200BB74
 	mov r4, #0
 	b _022DCB0C
 _022DCAFC:
-	ldr r0, _022DCB60 ; =0x022DD0C0
+	ldr r0, _022DCB60 ; =ov34_022DD0C0
 	bl sub_0200BC54
 	cmp r0, #0
 	movne r4, #0
 _022DCB0C:
-	ldr r0, _022DCB60 ; =0x022DD0C0
+	ldr r0, _022DCB60 ; =ov34_022DD0C0
 	ldrsh r0, [r0, #0x14]
 	bl ov34_022DCB98
 	cmp r4, #0
-	ldrne r0, _022DCB58 ; =0x022DD0B0
+	ldrne r0, _022DCB58 ; =ov34_022DD0B0
 	movne r1, #0
 	strneb r1, [r0]
 	ldmia sp!, {r4, pc}
 _022DCB2C:
-	ldr r0, _022DCB5C ; =0x022DD104
+	ldr r0, _022DCB5C ; =ov34_022DD104
 	bl sub_0200BC54
-	ldr r0, _022DCB5C ; =0x022DD104
+	ldr r0, _022DCB5C ; =ov34_022DD104
 	ldrsh r0, [r0, #0x14]
 	bl ov34_022DCB64
-	ldr r0, _022DCB60 ; =0x022DD0C0
+	ldr r0, _022DCB60 ; =ov34_022DD0C0
 	bl sub_0200BC54
-	ldr r0, _022DCB60 ; =0x022DD0C0
+	ldr r0, _022DCB60 ; =ov34_022DD0C0
 	ldrsh r0, [r0, #0x14]
 	bl ov34_022DCB98
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022DCB58: .word 0x022DD0B0
-_022DCB5C: .word 0x022DD104
-_022DCB60: .word 0x022DD0C0
+_022DCB58: .word ov34_022DD0B0
+_022DCB5C: .word ov34_022DD104
+_022DCB60: .word ov34_022DD0C0
 	arm_func_end ov34_022DCA70
 
 	arm_func_start ov34_022DCB64
@@ -758,16 +758,16 @@ _022DCBC0:
 	arm_func_start ov34_022DCBCC
 ov34_022DCBCC: ; 0x022DCBCC
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCBEC ; =0x022DD014
+	ldr r0, _022DCBEC ; =OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
 	bl sub_020348E4
 	cmp r0, #0
-	ldrne r0, _022DCBF0 ; =0x022DD084
+	ldrne r0, _022DCBF0 ; =ov34_022DD084
 	movne r1, #0
 	strne r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCBEC: .word 0x022DD014
-_022DCBF0: .word 0x022DD084
+_022DCBEC: .word OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
+_022DCBF0: .word ov34_022DD084
 	arm_func_end ov34_022DCBCC
 
 	arm_func_start ov34_022DCBF4
@@ -777,21 +777,21 @@ ov34_022DCBF4: ; 0x022DCBF4
 	mov r0, #8
 	mov r1, r0
 	bl MemAlloc
-	ldr r1, _022DCC84 ; =0x022DD084
+	ldr r1, _022DCC84 ; =ov34_022DD084
 	mov ip, #1
 	str r0, [r1]
-	ldr r3, _022DCC88 ; =0x022DD024
+	ldr r3, _022DCC88 ; =START_MENU_CONFIRM
 	add r2, sp, #0
 	mov r0, #0
 	mov r1, #0x31
 	str ip, [sp]
 	bl sub_0202A5CC
-	ldr r1, _022DCC84 ; =0x022DD084
+	ldr r1, _022DCC84 ; =ov34_022DD084
 	ldr r1, [r1]
 	strb r0, [r1]
 	mov r0, #0
 	bl CreateDBox
-	ldr r3, _022DCC84 ; =0x022DD084
+	ldr r3, _022DCC84 ; =ov34_022DD084
 	ldr r1, _022DCC8C ; =0x00000408
 	ldr ip, [r3]
 	ldr r2, _022DCC90 ; =0x00000255
@@ -800,7 +800,7 @@ ov34_022DCBF4: ; 0x022DCBF4
 	mov r3, #0
 	ldrsb r0, [r0, #1]
 	bl ShowMessageInDBox
-	ldr r1, _022DCC84 ; =0x022DD084
+	ldr r1, _022DCC84 ; =ov34_022DD084
 	mov r3, #0
 	ldr r2, [r1]
 	mov r0, #1
@@ -809,8 +809,8 @@ ov34_022DCBF4: ; 0x022DCBF4
 	add sp, sp, #0x98
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCC84: .word 0x022DD084
-_022DCC88: .word 0x022DD024
+_022DCC84: .word ov34_022DD084
+_022DCC88: .word START_MENU_CONFIRM
 _022DCC8C: .word 0x00000408
 _022DCC90: .word 0x00000255
 	arm_func_end ov34_022DCBF4
@@ -818,31 +818,31 @@ _022DCC90: .word 0x00000255
 	arm_func_start ov34_022DCC94
 ov34_022DCC94: ; 0x022DCC94
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCCDC ; =0x022DD084
+	ldr r0, _022DCCDC ; =ov34_022DD084
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
 	bl sub_0202AABC
-	ldr r0, _022DCCDC ; =0x022DD084
+	ldr r0, _022DCCDC ; =ov34_022DD084
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
 	bl FreeDBox
-	ldr r0, _022DCCDC ; =0x022DD084
+	ldr r0, _022DCCDC ; =ov34_022DD084
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022DCCDC ; =0x022DD084
+	ldr r0, _022DCCDC ; =ov34_022DD084
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCCDC: .word 0x022DD084
+_022DCCDC: .word ov34_022DD084
 	arm_func_end ov34_022DCC94
 
 	arm_func_start ov34_022DCCE0
 ov34_022DCCE0: ; 0x022DCCE0
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCDC8 ; =0x022DD084
+	ldr r0, _022DCDC8 ; =ov34_022DD084
 	ldr r2, [r0]
 	ldr r1, [r2, #4]
 	cmp r1, #0
@@ -857,16 +857,16 @@ _022DCD0C:
 	bl sub_0202AB60
 	cmp r0, #0
 	bne _022DCDC0
-	ldr r0, _022DCDC8 ; =0x022DD084
+	ldr r0, _022DCDC8 ; =ov34_022DD084
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202ABB0
-	ldr r1, _022DCDC8 ; =0x022DD084
+	ldr r1, _022DCDC8 ; =ov34_022DD084
 	str r0, [r1, #4]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #1]
 	bl sub_0202F334
-	ldr r0, _022DCDC8 ; =0x022DD084
+	ldr r0, _022DCDC8 ; =ov34_022DD084
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #4]
@@ -876,12 +876,12 @@ _022DCD54:
 	bl sub_0202AB40
 	cmp r0, #0
 	bne _022DCDC0
-	ldr r0, _022DCDC8 ; =0x022DD084
+	ldr r0, _022DCDC8 ; =ov34_022DD084
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
 	bl IsDBoxActive
 	cmp r0, #0
-	ldreq r0, _022DCDC8 ; =0x022DD084
+	ldreq r0, _022DCDC8 ; =ov34_022DD084
 	moveq r1, #2
 	ldreq r0, [r0]
 	streq r1, [r0, #4]
@@ -907,22 +907,22 @@ _022DCDC0:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCDC8: .word 0x022DD084
+_022DCDC8: .word ov34_022DD084
 	arm_func_end ov34_022DCCE0
 
 	arm_func_start ov34_022DCDCC
 ov34_022DCDCC: ; 0x022DCDCC
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCDEC ; =0x022DD03C
+	ldr r0, _022DCDEC ; =OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
 	bl sub_020348E4
 	cmp r0, #0
-	ldrne r0, _022DCDF0 ; =0x022DD08C
+	ldrne r0, _022DCDF0 ; =ov34_022DD08C
 	movne r1, #0
 	strne r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCDEC: .word 0x022DD03C
-_022DCDF0: .word 0x022DD08C
+_022DCDEC: .word OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
+_022DCDF0: .word ov34_022DD08C
 	arm_func_end ov34_022DCDCC
 
 	arm_func_start ov34_022DCDF4
@@ -932,19 +932,19 @@ ov34_022DCDF4: ; 0x022DCDF4
 	mov r0, #8
 	mov r1, r0
 	bl MemAlloc
-	ldr r1, _022DCE7C ; =0x022DD08C
-	ldr r3, _022DCE80 ; =0x022DD04C
+	ldr r1, _022DCE7C ; =ov34_022DD08C
+	ldr r3, _022DCE80 ; =DUNGEON_DEBUG_MENU
 	str r0, [r1]
 	add r2, sp, #0
 	mov r0, #0
 	mov r1, #0x11
 	bl sub_0202A5CC
-	ldr r1, _022DCE7C ; =0x022DD08C
+	ldr r1, _022DCE7C ; =ov34_022DD08C
 	ldr r1, [r1]
 	strb r0, [r1]
 	mov r0, #0
 	bl CreateDBox
-	ldr r3, _022DCE7C ; =0x022DD08C
+	ldr r3, _022DCE7C ; =ov34_022DD08C
 	ldr r1, _022DCE84 ; =0x00000408
 	ldr ip, [r3]
 	ldr r2, _022DCE88 ; =0x00003D1C
@@ -953,7 +953,7 @@ ov34_022DCDF4: ; 0x022DCDF4
 	mov r3, #0
 	ldrsb r0, [r0, #1]
 	bl ShowMessageInDBox
-	ldr r1, _022DCE7C ; =0x022DD08C
+	ldr r1, _022DCE7C ; =ov34_022DD08C
 	mov r3, #0
 	ldr r2, [r1]
 	mov r0, #1
@@ -962,8 +962,8 @@ ov34_022DCDF4: ; 0x022DCDF4
 	add sp, sp, #0x98
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCE7C: .word 0x022DD08C
-_022DCE80: .word 0x022DD04C
+_022DCE7C: .word ov34_022DD08C
+_022DCE80: .word DUNGEON_DEBUG_MENU
 _022DCE84: .word 0x00000408
 _022DCE88: .word 0x00003D1C
 	arm_func_end ov34_022DCDF4
@@ -971,31 +971,31 @@ _022DCE88: .word 0x00003D1C
 	arm_func_start ov34_022DCE8C
 ov34_022DCE8C: ; 0x022DCE8C
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCED4 ; =0x022DD08C
+	ldr r0, _022DCED4 ; =ov34_022DD08C
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
 	bl sub_0202AABC
-	ldr r0, _022DCED4 ; =0x022DD08C
+	ldr r0, _022DCED4 ; =ov34_022DD08C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
 	bl FreeDBox
-	ldr r0, _022DCED4 ; =0x022DD08C
+	ldr r0, _022DCED4 ; =ov34_022DD08C
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022DCED4 ; =0x022DD08C
+	ldr r0, _022DCED4 ; =ov34_022DD08C
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCED4: .word 0x022DD08C
+_022DCED4: .word ov34_022DD08C
 	arm_func_end ov34_022DCE8C
 
 	arm_func_start ov34_022DCED8
 ov34_022DCED8: ; 0x022DCED8
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCFF0 ; =0x022DD08C
+	ldr r0, _022DCFF0 ; =ov34_022DD08C
 	ldr r3, [r0]
 	ldr r1, [r3, #4]
 	cmp r1, #0
@@ -1010,16 +1010,16 @@ _022DCF04:
 	bl sub_0202AB60
 	cmp r0, #0
 	bne _022DCFE8
-	ldr r0, _022DCFF0 ; =0x022DD08C
+	ldr r0, _022DCFF0 ; =ov34_022DD08C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202ABB0
-	ldr r1, _022DCFF0 ; =0x022DD08C
+	ldr r1, _022DCFF0 ; =ov34_022DD08C
 	str r0, [r1, #4]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #1]
 	bl sub_0202F334
-	ldr r0, _022DCFF0 ; =0x022DD08C
+	ldr r0, _022DCFF0 ; =ov34_022DD08C
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #4]
@@ -1029,12 +1029,12 @@ _022DCF4C:
 	bl sub_0202AB40
 	cmp r0, #0
 	bne _022DCFE8
-	ldr r0, _022DCFF0 ; =0x022DD08C
+	ldr r0, _022DCFF0 ; =ov34_022DD08C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
 	bl IsDBoxActive
 	cmp r0, #0
-	ldreq r0, _022DCFF0 ; =0x022DD08C
+	ldreq r0, _022DCFF0 ; =ov34_022DD08C
 	moveq r1, #2
 	ldreq r0, [r0]
 	streq r1, [r0, #4]
@@ -1076,16 +1076,30 @@ _022DCFE8:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCFF0: .word 0x022DD08C
+_022DCFF0: .word ov34_022DD08C
 	arm_func_end ov34_022DCED8
 	; 0x022DCFF4
 
+	.global ov34_022DCFF4
+ov34_022DCFF4:
 	.byte 0x42, 0x41, 0x43, 0x4B, 0x2F, 0x6E, 0x5F, 0x6C, 0x6F, 0x67, 0x6F, 0x2E, 0x62, 0x67, 0x70, 0x00
+	.global ov34_022DD004
+ov34_022DD004:
 	.byte 0x42, 0x41, 0x43, 0x4B, 0x2F, 0x77, 0x5F, 0x65, 0x73, 0x72, 0x62, 0x2E, 0x62, 0x67, 0x70, 0x00
+	.global OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
+OVERLAY34_UNKNOWN_STRUCT__NA_22DD014:
 	.byte 0x0F, 0x00, 0x00, 0x00, 0xF4, 0xCB, 0x2D, 0x02, 0x94, 0xCC, 0x2D, 0x02, 0xE0, 0xCC, 0x2D, 0x02
+	.global START_MENU_CONFIRM
+START_MENU_CONFIRM:
 	.byte 0x56, 0x02, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x57, 0x02, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0xF4, 0xCD, 0x2D, 0x02
-	.byte 0x8C, 0xCE, 0x2D, 0x02, 0xD8, 0xCE, 0x2D, 0x02, 0x1D, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.global OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
+OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C:
+	.byte 0x0F, 0x00, 0x00, 0x00, 0xF4, 0xCD, 0x2D, 0x02
+	.byte 0x8C, 0xCE, 0x2D, 0x02, 0xD8, 0xCE, 0x2D, 0x02
+	.global DUNGEON_DEBUG_MENU
+DUNGEON_DEBUG_MENU:
+	.byte 0x1D, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x3D, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x1F, 0x3D, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x20, 0x3D, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 
@@ -1093,8 +1107,22 @@ _022DCFF0: .word 0x022DD08C
 	.global ov34_022DD080
 ov34_022DD080:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.global ov34_022DD084
+ov34_022DD084:
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.global ov34_022DD08C
+ov34_022DD08C:
+	.byte 0x00, 0x00, 0x00, 0x00
 
 	.bss
 ov34_022DD0A0:
-	.space 0xC0
+	.space 0x10
+	.global ov34_022DD0B0
+ov34_022DD0B0:
+	.space 0x10
+	.global ov34_022DD0C0
+ov34_022DD0C0:
+	.space 0x44
+	.global ov34_022DD104
+ov34_022DD104:
+	.space 0x5C
