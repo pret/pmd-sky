@@ -1622,18 +1622,18 @@ _01FF9620:
 	mov r1, r3, lsr r0
 	str r1, [ip, #4]
 	rsbs r0, r0, #0x1f
-	ldr r1, _01FF9648 ; =0x027E0000
+	ldr r1, _01FF9648 ; =OS_IRQTable
 	ldr r0, [r1, r0, lsl #2]
 	ldr lr, _01FF964C ; =sub_01FF9650
 	bx r0
 	.align 2, 0
-_01FF9648: .word 0x027E0000
+_01FF9648: .word OS_IRQTable
 _01FF964C: .word sub_01FF9650
 	arm_func_end sub_01FF95E8
 
 	arm_func_start sub_01FF9650
 sub_01FF9650: ; 0x01FF9650
-	ldr ip, _01FF97BC ; =0x027E0060
+	ldr ip, _01FF97BC ; =DTCM_BSS
 	mov r3, #0
 	ldr ip, [ip]
 	mov r2, #1
@@ -1648,7 +1648,7 @@ _01FF9668:
 	mov ip, r0
 	cmp ip, #0
 	bne _01FF9668
-	ldr ip, _01FF97BC ; =0x027E0060
+	ldr ip, _01FF97BC ; =DTCM_BSS
 	str r3, [ip]
 	str r3, [ip, #4]
 	ldr ip, _01FF97C0 ; =_022B966C
@@ -1740,7 +1740,7 @@ _01FF9738:
 	stmda sp!, {r0, r1, r2, r3, ip, lr}
 	ldmia sp!, {pc}
 	.align 2, 0
-_01FF97BC: .word dtcm_bss
+_01FF97BC: .word DTCM_BSS
 _01FF97C0: .word _022B966C
 _01FF97C4: .word sub_02080EF0
 _01FF97C8: .word sub_02080F30
@@ -1769,7 +1769,7 @@ _01FF97FC: .word 0x04000208
 sub_01FF9800: ; 0x01FF9800
 	mov ip, #0x4000000
 	str ip, [ip, #0x208]
-	ldr r1, _01FF98AC ; =0x027E0000
+	ldr r1, _01FF98AC ; =OS_IRQTable
 	add r1, r1, #0x3fc0
 	add r1, r1, #0x3c
 	mov r0, #0
@@ -1813,7 +1813,7 @@ _01FF9878:
 	mov fp, #0
 	bx ip
 	.align 2, 0
-_01FF98AC: .word 0x027E0000
+_01FF98AC: .word OS_IRQTable
 _01FF98B0: .word 0x04000180
 _01FF98B4: .word 0x027FFD9C
 _01FF98B8: .word 0x027FFD80

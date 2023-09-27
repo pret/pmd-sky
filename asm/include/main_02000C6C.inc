@@ -181,18 +181,14 @@
 .public ArrayFill32Fast
 .public CART_REMOVED_IMG_DATA
 .public ClearIrqFlag
-.public ClearIrqFlag
 .public DEBUG_IS_INITIALIZED
 .public DebugPrint
 .public DebugPrint0
 .public DecompressAtFromMemoryPointer
-.public DecompressAtFromMemoryPointer
 .public FatalError
-.public FileInit
 .public FileInit
 .public InitDebug
 .public LOADED_OVERLAY_GROUP_0
-.public MainLoop
 .public MainLoop
 .public MEMORY_ALLOCATION_ARENA_GETTERS
 .public NATURAL_LOG_VALUE_TABLE
@@ -339,4 +335,4 @@
 .public sub_02085180
 .public vsprintf
 .public WaitForInterrupt
-.public WaitForInterrupt
+.public OS_IRQTable

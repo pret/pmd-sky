@@ -3505,7 +3505,7 @@ _02003700: .word _020AEF7C
 	arm_func_start sub_02003704
 sub_02003704: ; 0x02003704
 	stmdb sp!, {r3, lr}
-	ldr r0, _0200374C ; =0x027E0000
+	ldr r0, _0200374C ; =OS_IRQTable
 	ldr r1, _02003750 ; =_020AEF7C
 	add r0, r0, #0x3000
 	ldr r2, [r0, #0xff8]
@@ -3524,7 +3524,7 @@ _02003744:
 	bl sub_020082E0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200374C: .word 0x027E0000
+_0200374C: .word OS_IRQTable
 _02003750: .word _020AEF7C
 	arm_func_end sub_02003704
 
