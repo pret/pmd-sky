@@ -68861,7 +68861,7 @@ _02044CDC:
 	beq _02044D18
 	mov r0, r6
 	ldr r8, [r6, #0xb4]
-	bl ov02_02347100
+	bl ov29_02347100
 	strb r0, [r8, #0x161]
 _02044D18:
 	add r0, r7, r4, lsl #2
@@ -68977,7 +68977,7 @@ _02044E8C:
 	and r2, r0, #0xff
 	ldr r0, [sp, #0x14]
 	ldr r1, [r1, #0xb4]
-	bl ov00_023002F0
+	bl ov29_023002F0
 _02044EC4:
 	ldr r0, [sp, #0x14]
 	str r0, [sl, #0x574]
@@ -69170,7 +69170,7 @@ _020450F8:
 	strb r0, [sl, #8]
 	cmp r1, #1
 	bne _02045194
-	bl ov00_022EA62C
+	bl ov29_022EA62C
 _02045194:
 	add sp, sp, #0xbc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -115150,12 +115150,12 @@ _0206A624: .word 0x000037A0
 sub_0206A628: ; 0x0206A628
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov02_0233CAA8
+	bl ov29_0233CAA8
 	cmp r0, #1
 	bne _0206A70C
 	add r0, r4, #4
 	mov r1, #0x34
-	bl ov01_02337B3C
+	bl ov29_02337B3C
 	ldrb r1, [r4, #3]
 	cmp r0, r1
 	movne r0, #3

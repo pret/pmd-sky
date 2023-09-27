@@ -101,7 +101,6 @@
 .public ov00_02318158
 .public ov00_02318160
 .public ov00_023250C8
-.public ov02_0233C114
 .public SetIrqFlag
 .public strcpy
 .public strlen
