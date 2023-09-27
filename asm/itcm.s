@@ -1042,7 +1042,7 @@ _01FF8E98:
 	blt _01FF8E54
 	mov r6, #0
 	add r5, sp, #0
-	ldr r4, _01FF8F00 ; =0x01FF8120
+	ldr r4, _01FF8F00 ; =_01FF8120
 	ldr r7, _01FF8EFC ; =RENDER_3D
 	b _01FF8EDC
 _01FF8EB4:
@@ -1068,7 +1068,7 @@ _01FF8EF4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _01FF8EFC: .word RENDER_3D
-_01FF8F00: .word 0x01FF8120
+_01FF8F00: .word _01FF8120
 	arm_func_end Render3dStack
 
 	arm_func_start sub_01FF8F04
@@ -1622,18 +1622,18 @@ _01FF9620:
 	mov r1, r3, lsr r0
 	str r1, [ip, #4]
 	rsbs r0, r0, #0x1f
-	ldr r1, _01FF9648 ; =0x027E0000
+	ldr r1, _01FF9648 ; =OS_IRQTable
 	ldr r0, [r1, r0, lsl #2]
 	ldr lr, _01FF964C ; =sub_01FF9650
 	bx r0
 	.align 2, 0
-_01FF9648: .word 0x027E0000
+_01FF9648: .word OS_IRQTable
 _01FF964C: .word sub_01FF9650
 	arm_func_end sub_01FF95E8
 
 	arm_func_start sub_01FF9650
 sub_01FF9650: ; 0x01FF9650
-	ldr ip, _01FF97BC ; =0x027E0060
+	ldr ip, _01FF97BC ; =DTCM_BSS
 	mov r3, #0
 	ldr ip, [ip]
 	mov r2, #1
@@ -1648,7 +1648,7 @@ _01FF9668:
 	mov ip, r0
 	cmp ip, #0
 	bne _01FF9668
-	ldr ip, _01FF97BC ; =0x027E0060
+	ldr ip, _01FF97BC ; =DTCM_BSS
 	str r3, [ip]
 	str r3, [ip, #4]
 	ldr ip, _01FF97C0 ; =_022B966C
@@ -1740,7 +1740,7 @@ _01FF9738:
 	stmda sp!, {r0, r1, r2, r3, ip, lr}
 	ldmia sp!, {pc}
 	.align 2, 0
-_01FF97BC: .word dtcm_bss
+_01FF97BC: .word DTCM_BSS
 _01FF97C0: .word _022B966C
 _01FF97C4: .word sub_02080EF0
 _01FF97C8: .word sub_02080F30
@@ -1769,7 +1769,7 @@ _01FF97FC: .word 0x04000208
 sub_01FF9800: ; 0x01FF9800
 	mov ip, #0x4000000
 	str ip, [ip, #0x208]
-	ldr r1, _01FF98AC ; =0x027E0000
+	ldr r1, _01FF98AC ; =OS_IRQTable
 	add r1, r1, #0x3fc0
 	add r1, r1, #0x3c
 	mov r0, #0
@@ -1813,7 +1813,7 @@ _01FF9878:
 	mov fp, #0
 	bx ip
 	.align 2, 0
-_01FF98AC: .word 0x027E0000
+_01FF98AC: .word OS_IRQTable
 _01FF98B0: .word 0x04000180
 _01FF98B4: .word 0x027FFD9C
 _01FF98B8: .word 0x027FFD80
@@ -2136,7 +2136,7 @@ _01FF9CD8:
 	ldr r4, [r0, #4]
 	cmp ip, r4
 	blt _01FF9C70
-	ldr r1, _01FF9E10 ; =0x02353530
+	ldr r1, _01FF9E10 ; =ov29_02353530
 	mov r0, r3
 	ldr r1, [r1]
 	add r1, r1, #0x4c
@@ -2211,20 +2211,20 @@ _01FF9D9C:
 _01FF9DF0:
 	cmp r0, #0xf0
 	blt _01FF9D9C
-	ldr r1, _01FF9E10 ; =0x02353530
+	ldr r1, _01FF9E10 ; =ov29_02353530
 	mov r0, r3
 	ldr r1, [r1]
 	add r1, r1, #0x4c
 	bl Rgb8ToRgb5
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_01FF9E10: .word 0x02353530
+_01FF9E10: .word ov29_02353530
 	arm_func_end sub_01FF9BA0
 
 	arm_func_start sub_01FF9E14
 sub_01FF9E14: ; 0x01FF9E14
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r1, _01FF9F7C ; =0x02353530
+	ldr r1, _01FF9F7C ; =ov29_02353530
 	ldr r4, [r0, #0x10]
 	ldr r1, [r1]
 	cmp r4, #0
@@ -2321,13 +2321,13 @@ _01FF9F70:
 	blt _01FF9EF4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FF9F7C: .word 0x02353530
+_01FF9F7C: .word ov29_02353530
 	arm_func_end sub_01FF9E14
 
 	arm_func_start sub_01FF9F80
 sub_01FF9F80: ; 0x01FF9F80
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r1, _01FFA38C ; =0x02353530
+	ldr r1, _01FFA38C ; =ov29_02353530
 	ldr r4, [r0, #0x10]
 	ldr r1, [r1]
 	cmp r4, #0
@@ -2599,7 +2599,7 @@ _01FFA37C:
 	blt _01FFA294
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FFA38C: .word 0x02353530
+_01FFA38C: .word ov29_02353530
 	arm_func_end sub_01FF9F80
 
 	arm_func_start ShouldMonsterRunAwayVariationOutlawCheck
@@ -2710,7 +2710,7 @@ _01FFA4D4:
 	bl ShouldMonsterHeadToStairs
 	cmp r0, #0
 	beq _01FFA550
-	ldr r3, _01FFB2B4 ; =0x02353538
+	ldr r3, _01FFB2B4 ; =ov29_02353538
 	add r2, sb, #0x100
 	ldr r1, [r3]
 	mov r0, #1
@@ -2727,7 +2727,7 @@ _01FFA4D4:
 	strh r1, [r2, #0x80]
 	b _01FFAF28
 _01FFA550:
-	ldr r0, _01FFB2B4 ; =0x02353538
+	ldr r0, _01FFB2B4 ; =ov29_02353538
 	ldr r1, [r0]
 	add r0, r1, #0x3000
 	ldrb r0, [r0, #0xe38]
@@ -2778,7 +2778,7 @@ _01FFA5E0:
 	bl CanSeeTarget
 	cmp r0, #0
 	beq _01FFA688
-	ldr r0, _01FFB2B4 ; =0x02353538
+	ldr r0, _01FFB2B4 ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldrb r0, [r0, #0xe38]
@@ -2877,7 +2877,7 @@ _01FFA754:
 	ldr r0, _01FFB2B8 ; =DIRECTIONS_XY
 	ldrsh r5, [r4, #4]
 	ldrsh r2, [r0, r3]
-	ldr r1, _01FFB2BC ; =0x0235171E
+	ldr r1, _01FFB2BC ; =ov29_0235171E
 	mov r0, #1
 	add r2, r5, r2
 	strh r2, [sb, #0x8c]
@@ -2896,7 +2896,7 @@ _01FFA7A0:
 	strh r1, [sb, #0x8e]
 	b _01FFAF28
 _01FFA7C0:
-	ldr r0, _01FFB2B4 ; =0x02353538
+	ldr r0, _01FFB2B4 ; =ov29_02353538
 	ldrsh sl, [r4, #6]
 	ldr r1, [r0]
 	ldrsh r2, [r7, #6]
@@ -3107,7 +3107,7 @@ _01FFAAB8:
 	bl ov29_023082A0
 	cmp r0, #0
 	bne _01FFAD14
-	ldr r0, _01FFB2B4 ; =0x02353538
+	ldr r0, _01FFB2B4 ; =ov29_02353538
 	ldr r1, [r0]
 	add r0, r1, #0x3000
 	ldrb r0, [r0, #0xe38]
@@ -3148,7 +3148,7 @@ _01FFAB50:
 	ldrb r1, [r0, #0xbc]
 	cmp r1, #6
 	bhi _01FFAC60
-	ldr r1, _01FFB2B4 ; =0x02353538
+	ldr r1, _01FFB2B4 ; =ov29_02353538
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	ldrb r1, [r1, #0xe38]
@@ -3307,7 +3307,7 @@ _01FFAD7C:
 	add r5, r0, #2
 	b _01FFAE60
 _01FFADC0:
-	ldr r0, _01FFB2B4 ; =0x02353538
+	ldr r0, _01FFB2B4 ; =ov29_02353538
 	mov r1, #0x1c
 	ldr r0, [r0]
 	add r0, r0, #0x2e8
@@ -3509,7 +3509,7 @@ _01FFB080:
 	add r0, r1, r0
 	cmp r3, r0
 	bne _01FFB0D4
-	ldr r0, _01FFB2BC ; =0x0235171E
+	ldr r0, _01FFB2BC ; =ov29_0235171E
 	ldrsh r1, [r4, #6]
 	ldrsh r0, [r0, r2]
 	ldrsh r2, [sb, #0x8e]
@@ -3580,7 +3580,7 @@ _01FFB16C:
 	mov fp, r8
 	cmpeq r0, #0
 	movne sl, #5
-	ldr r6, _01FFB2C4 ; =0x0235177C
+	ldr r6, _01FFB2C4 ; =ov29_0235177C
 	add r5, sp, #0x58
 	b _01FFB1FC
 _01FFB1B8:
@@ -3653,17 +3653,17 @@ _01FFB2A4:
 	.align 2, 0
 _01FFB2AC: .word 0x000003E7
 _01FFB2B0: .word 0x000F423F
-_01FFB2B4: .word 0x02353538
+_01FFB2B4: .word ov29_02353538
 _01FFB2B8: .word DIRECTIONS_XY
-_01FFB2BC: .word 0x0235171E
+_01FFB2BC: .word ov29_0235171E
 _01FFB2C0: .word 0xFFF0BDC1
-_01FFB2C4: .word 0x0235177C
+_01FFB2C4: .word ov29_0235177C
 	arm_func_end AiMovement
 
 	arm_func_start CalculateAiTargetPos
 CalculateAiTargetPos: ; 0x01FFB2C8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r1, _01FFB61C ; =0x02353538
+	ldr r1, _01FFB61C ; =ov29_02353538
 	mov sl, r0
 	ldr r0, [r1]
 	ldr sb, [sl, #0xb4]
@@ -3704,7 +3704,7 @@ _01FFB32C:
 	mov r7, #1
 _01FFB35C:
 	mov r5, #0
-	ldr r4, _01FFB620 ; =0x0235177C
+	ldr r4, _01FFB620 ; =ov29_0235177C
 	add fp, sp, #1
 	b _01FFB3E4
 _01FFB36C:
@@ -3729,7 +3729,7 @@ _01FFB38C:
 	mov r3, r8, lsl #2
 	ldrsh r2, [r0, r3]
 	ldrsh r4, [sl, #4]
-	ldr r1, _01FFB628 ; =0x0235171E
+	ldr r1, _01FFB628 ; =ov29_0235171E
 	mov r0, #1
 	add r2, r4, r2
 	strh r2, [sb, #0x8c]
@@ -3745,7 +3745,7 @@ _01FFB3E4:
 	blt _01FFB36C
 	b _01FFB5D8
 _01FFB3F0:
-	ldr r0, _01FFB61C ; =0x02353538
+	ldr r0, _01FFB61C ; =ov29_02353538
 	ldr r1, [sb, #0x120]
 	ldr r2, [r0]
 	cmp r1, #0
@@ -3764,7 +3764,7 @@ _01FFB3F0:
 	ldr r0, _01FFB624 ; =DIRECTIONS_XY
 	ldrsh r4, [sl, #4]
 	ldrsh r2, [r0, r3]
-	ldr r1, _01FFB628 ; =0x0235171E
+	ldr r1, _01FFB628 ; =ov29_0235171E
 	mov r0, #1
 	add r2, r4, r2
 	strh r2, [sb, #0x8c]
@@ -3787,7 +3787,7 @@ _01FFB460:
 	ldr r0, _01FFB624 ; =DIRECTIONS_XY
 	ldrsh r4, [sl, #4]
 	ldrsh r2, [r0, r3]
-	ldr r1, _01FFB628 ; =0x0235171E
+	ldr r1, _01FFB628 ; =ov29_0235171E
 	mov r0, #1
 	add r2, r4, r2
 	strh r2, [sb, #0x8c]
@@ -3886,7 +3886,7 @@ _01FFB5D8:
 	ldr r0, _01FFB624 ; =DIRECTIONS_XY
 	ldrsh r4, [sl, #4]
 	ldrsh r2, [r0, r3]
-	ldr r1, _01FFB628 ; =0x0235171E
+	ldr r1, _01FFB628 ; =ov29_0235171E
 	mov r0, #1
 	add r2, r4, r2
 	strh r2, [sb, #0x8c]
@@ -3896,10 +3896,10 @@ _01FFB5D8:
 	strh r1, [sb, #0x8e]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FFB61C: .word 0x02353538
-_01FFB620: .word 0x0235177C
+_01FFB61C: .word ov29_02353538
+_01FFB620: .word ov29_0235177C
 _01FFB624: .word DIRECTIONS_XY
-_01FFB628: .word 0x0235171E
+_01FFB628: .word ov29_0235171E
 	arm_func_end CalculateAiTargetPos
 
 	arm_func_start sub_01FFB62C
@@ -3922,7 +3922,7 @@ _01FFB654:
 ChooseAiMove: ; 0x01FFB658
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
-	ldr r1, _01FFBD14 ; =0x02353538
+	ldr r1, _01FFBD14 ; =ov29_02353538
 	mov sl, r0
 	ldr r0, [r1]
 	ldr r7, [sl, #0xb4]
@@ -3958,7 +3958,7 @@ _01FFB6CC:
 	ldrb r0, [r7, #0xd0]
 	cmp r0, #2
 	bne _01FFB700
-	ldr r0, _01FFBD18 ; =0x022C4580
+	ldr r0, _01FFBD18 ; =ov10_022C4580
 	ldrsh r0, [r0]
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
@@ -4237,7 +4237,7 @@ _01FFBA7C:
 	movne r0, #2
 	strne r0, [sp, #0x40]
 	ldreq r0, [sp]
-	ldreq r1, _01FFBD1C ; =0x022C4900
+	ldreq r1, _01FFBD1C ; =ov10_022C4900
 	moveq r0, r0, lsl #1
 	ldreqsh r0, [r1, r0]
 	streq r0, [sp, #0x40]
@@ -4400,9 +4400,9 @@ _01FFBD0C:
 	add sp, sp, #0x44
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FFBD14: .word 0x02353538
-_01FFBD18: .word 0x022C4580
-_01FFBD1C: .word 0x022C4900
+_01FFBD14: .word ov29_02353538
+_01FFBD18: .word ov10_022C4580
+_01FFBD1C: .word ov10_022C4900
 	arm_func_end ChooseAiMove
 
 	arm_func_start sub_01FFBD20
@@ -4425,7 +4425,7 @@ sub_01FFBD20: ; 0x01FFBD20
 _01FFBD5C:
 	mov r3, #0
 _01FFBD60:
-	ldr r1, _01FFBDF0 ; =0x02353538
+	ldr r1, _01FFBDF0 ; =ov29_02353538
 	mov r0, r6
 	ldr r2, [r1]
 	mov r1, #0x32
@@ -4463,7 +4463,7 @@ _01FFBDB0:
 	strne r0, [r4, #0xc]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_01FFBDF0: .word 0x02353538
+_01FFBDF0: .word ov29_02353538
 	arm_func_end sub_01FFBD20
 
 	arm_func_start sub_01FFBDF4
@@ -4475,7 +4475,7 @@ sub_01FFBDF4: ; 0x01FFBDF4
 	bl EntityIsValid__02319F8C
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	ldr r4, _01FFBE58 ; =0x02353538
+	ldr r4, _01FFBE58 ; =ov29_02353538
 	mov r5, #0
 _01FFBE18:
 	ldr r0, [r4]
@@ -4496,7 +4496,7 @@ _01FFBE48:
 	blt _01FFBE18
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_01FFBE58: .word 0x02353538
+_01FFBE58: .word ov29_02353538
 	arm_func_end sub_01FFBDF4
 
 	arm_func_start LightningRodStormDrainCheck
@@ -4507,8 +4507,8 @@ LightningRodStormDrainCheck: ; 0x01FFBE5C
 	mov r8, r2
 	mov r7, r3
 	mov r5, #0
-	ldr r4, _01FFBF70 ; =0x01FFB654
-	ldr fp, _01FFBF74 ; =0x02353538
+	ldr r4, _01FFBF70 ; =_01FFB654
+	ldr fp, _01FFBF74 ; =ov29_02353538
 	b _01FFBF60
 _01FFBE80:
 	ldr r1, [fp]
@@ -4577,8 +4577,8 @@ _01FFBF60:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FFBF70: .word 0x01FFB654
-_01FFBF74: .word 0x02353538
+_01FFBF70: .word _01FFB654
+_01FFBF74: .word ov29_02353538
 	arm_func_end LightningRodStormDrainCheck
 
 	arm_func_start sub_01FFBF78

@@ -8,7 +8,8 @@
 .public _027F77B0
 .public _027F8878
 .public _027F8DA0
-.public _027F91E0
+.public SDK_SUBPRIV_ARENA_LO
+.public SDK_WRAM_ARENA_LO
 .public sub_027E0000
 .public sub_027E8D44
 .public sub_027E9CB4

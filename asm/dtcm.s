@@ -2,8 +2,8 @@
 	.include "dtcm.inc"
 
 	.bss
-	.global dtcm_bss
-dtcm_bss:
+	.global DTCM_BSS
+DTCM_BSS:
 	.space 0x2020
 
 	.section .dtcm,4,1,4

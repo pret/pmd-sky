@@ -97,7 +97,8 @@
 .public CanTargetEntity
 .public CanTargetPosition
 .public CeilFixedPoint
-.public dtcm_bss
+.public DIRECTIONS_XY
+.public DTCM_BSS
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EnableIrqFlag
@@ -126,6 +127,9 @@
 .public IsMonsterCornered
 .public MemcpyFast
 .public MemsetFast
+.public OS_IRQTable
+.public ov10_022C4580
+.public ov10_022C4900
 .public ov29_022E935C
 .public ov29_022EBC74
 .public ov29_022FBDF0
@@ -145,6 +149,10 @@
 .public ov29_0231B008
 .public ov29_02338350
 .public ov29_02348D00
+.public ov29_0235171E
+.public ov29_0235177C
+.public ov29_02353530
+.public ov29_02353538
 .public RENDER_3D
 .public Rgb8ToRgb5
 .public SetActionPassTurnOrWalk
@@ -170,4 +178,3 @@
 .public TRIG_TABLE
 .public TryAddTargetToAiTargetList
 .public UpdateAiTargetPos
-.public DIRECTIONS_XY

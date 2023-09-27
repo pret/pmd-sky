@@ -2194,7 +2194,7 @@ _022BE320:
 	bl LoadOverlay
 	bl sub_020184B4
 	bl sub_020024B0
-	bl ov01_02329520
+	bl ov02_02329520
 	ldr r2, _022BE3C8 ; =0x04000208
 	mov r0, #1
 	ldrh r1, [r2]

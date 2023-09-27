@@ -52235,14 +52235,14 @@ ov02_0234F098: ; 0x0234F098
 	stmdb sp!, {r3, lr}
 	mov r0, #1
 	bl ov02_0234F9E8
-	ldr r0, _0234F0BC ; =0x027E0000
+	ldr r0, _0234F0BC ; =OS_IRQTable
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0xff8]
 	orr r1, r1, #1
 	str r1, [r0, #0xff8]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234F0BC: .word 0x027E0000
+_0234F0BC: .word OS_IRQTable
 	arm_func_end ov02_0234F098
 
 	arm_func_start ov02_0234F0C0

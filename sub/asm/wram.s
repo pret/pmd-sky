@@ -5775,7 +5775,7 @@ _037FCAE0:
 _037FCAE8:
 	ldr r2, _037FCB28 ; =0x00000400
 	ldr r0, _037FCB2C ; =0x0380FF80
-	ldr r1, _037FCB30 ; =_0380B488
+	ldr r1, _037FCB30 ; =SDK_WRAM_ARENA_LO
 	sub r2, r0, r2
 	mov r0, #0x3800000
 	cmp r1, #0x3800000
@@ -5793,7 +5793,7 @@ _037FCB1C:
 _037FCB24: .word 0x027FF000
 _037FCB28: .word 0x00000400
 _037FCB2C: .word 0x0380FF80
-_037FCB30: .word _0380B488
+_037FCB30: .word SDK_WRAM_ARENA_LO
 _037FCB34: .word 0x00000400
 	arm_func_end sub_037FCABC
 
@@ -5807,15 +5807,15 @@ sub_037FCB38: ; 0x037FCB38
 	beq _037FCB6C
 	b _037FCB80
 _037FCB54:
-	ldr r0, _037FCB88 ; =_027F91E0
+	ldr r0, _037FCB88 ; =SDK_SUBPRIV_ARENA_LO
 	bx lr
 _037FCB5C:
-	ldr r0, _037FCB8C ; =_0380B488
+	ldr r0, _037FCB8C ; =SDK_WRAM_ARENA_LO
 	cmp r0, #0x3800000
 	movhi r0, #0x3800000
 	bx lr
 _037FCB6C:
-	ldr r1, _037FCB8C ; =_0380B488
+	ldr r1, _037FCB8C ; =SDK_WRAM_ARENA_LO
 	mov r0, #0x3800000
 	cmp r1, #0x3800000
 	movhi r0, r1
@@ -5824,8 +5824,8 @@ _037FCB80:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_037FCB88: .word _027F91E0
-_037FCB8C: .word _0380B488
+_037FCB88: .word SDK_SUBPRIV_ARENA_LO
+_037FCB8C: .word SDK_WRAM_ARENA_LO
 	arm_func_end sub_037FCB38
 
 	arm_func_start sub_037FCB90
@@ -19331,7 +19331,7 @@ _0380B264:
 	.space 0x30
 	.global _0380B294
 _0380B294:
-	.space 0x14
+	.space 0x2C
 	.global _0380B2C0
 _0380B2C0:
 	.space 0xA4
@@ -19346,7 +19346,4 @@ _0380B434:
 	.space 0x2C
 	.global _0380B460
 _0380B460:
-	.space 0x40
-	.global _0380B488
-_0380B488:
-	.space 0x0
+	.space 0x28

@@ -92,11 +92,13 @@ _02337DE4:
 	mov r0, r6
 	bl EntityIsValid__02337CA8
 	cmp r0, #0
-	beq _02337E0C
+	beq ov29_02337E0C
 	mov r0, r6
 	bl ov29_02304BAC
 	arm_func_end ov29_02337D68
-_02337E0C:
+
+	arm_func_start ov29_02337E0C
+ov29_02337E0C: ; 0x02337E0C
 	add r5, r5, #1
 	cmp r5, #0x14
 	blt _02337DE4
@@ -106,6 +108,7 @@ _02337E0C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02337E28: .word ov29_02353538
+	arm_func_end ov29_02337E0C
 
 	arm_func_start ov29_02337E2C
 ov29_02337E2C: ; 0x02337E2C
