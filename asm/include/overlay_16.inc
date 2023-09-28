@@ -37,10 +37,10 @@
 .public IsValidTeamMember
 .public MemAlloc
 .public MemFree
-.public ov00_0230D220
 .public ov11_022E6E68
 .public ov11_022E6E8C
 .public ov11_022E6EC8
+.public ov11_0230D220
 .public ov11_02310BDC
 .public PreprocessString
 .public Rand16Bit

@@ -18,6 +18,7 @@
 .public DebugPrint0
 .public DisableDungeonSubMenuOption
 .public DisplayMessage
+.public DrawTileGrid
 .public FormatMoveString
 .public FormatMoveStringMore
 .public FreeDBox
@@ -53,6 +54,7 @@
 .public IqSkillFlagTest
 .public IsBagFull
 .public IsBlinded
+.public IsExperienceLocked
 .public IsHeldItemInBag
 .public IsItemUsableNow
 .public IsMonsterOnTeam
@@ -67,14 +69,7 @@
 .public memset
 .public MemZero
 .public MonsterHasEmbargoStatus
-.public ov00_022BCA80
-.public ov00_022E2A78
-.public ov00_022EA62C
-.public ov00_022EBB98
-.public ov00_022F98B4
-.public ov00_022FBAF0
-.public ov00_023002F0
-.public ov01_02337428
+.public ov10_022BCA80
 .public ov10_022BCC60
 .public ov10_022BCC7C
 .public ov10_022BCCB0
@@ -93,10 +88,12 @@
 .public ov29_022E0C2C
 .public ov29_022E1618
 .public ov29_022E1620
+.public ov29_022E2A78
 .public ov29_022E8708
 .public ov29_022E87DC
 .public ov29_022EA370
 .public ov29_022EA428
+.public ov29_022EA62C
 .public ov29_022EAC78
 .public ov29_022EACCC
 .public ov29_022EB2C8
@@ -111,6 +108,7 @@
 .public ov29_022EBB4C
 .public ov29_022EBB68
 .public ov29_022EBB8C
+.public ov29_022EBB98
 .public ov29_022EBBA8
 .public ov29_022EBBE8
 .public ov29_022EBC2C
@@ -118,6 +116,7 @@
 .public ov29_022F0B9C
 .public ov29_022F89CC
 .public ov29_022F9C40
+.public ov29_023002F0
 .public ov29_02300818
 .public ov29_02300B40
 .public ov29_02300BF8
@@ -243,6 +242,7 @@
 .public sub_02054F44
 .public sub_020585B4
 .public sub_02058C4C
+.public TryPointCameraToMonster
 .public UpdateMapSurveyorFlag
 .public vsprintf
 .public YesNoMenu

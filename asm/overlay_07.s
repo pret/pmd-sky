@@ -3312,7 +3312,7 @@ ov07_0233F758: ; 0x0233F758
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0xc
 	ldr ip, _0233FC9C ; =ov07_02341B74
-	ldr r3, ov05_0233FCA0 ; =0x00003001
+	ldr r3, _0233FCA0 ; =0x00003001
 	ldr r0, [ip]
 	ldr r0, [r0]
 	cmp r0, r3
@@ -3523,7 +3523,7 @@ _0233FA58:
 	bne _0233FC90
 	bl ov07_0233CD30
 	ldr r0, _0233FC9C ; =ov07_02341B74
-	ldr r1, ov05_0233FCC0 ; =0x00002001
+	ldr r1, _0233FCC0 ; =0x00002001
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0233FC90
@@ -3550,7 +3550,7 @@ _0233FAB8:
 	bne _0233FC90
 	bl ov07_0233CF90
 	ldr r0, _0233FC9C ; =ov07_02341B74
-	ldr r1, ov05_0233FCA0 ; =0x00003001
+	ldr r1, _0233FCA0 ; =0x00003001
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0233FC90
@@ -3681,7 +3681,7 @@ _0233FC94:
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _0233FC9C: .word ov07_02341B74
-ov05_0233FCA0: .word 0x00003001
+_0233FCA0: .word 0x00003001
 _0233FCA4: .word 0x00001002
 _0233FCA8: .word 0x00005002
 _0233FCAC: .word ov07_02341A78
@@ -3689,7 +3689,7 @@ _0233FCB0: .word ov07_02341A74
 _0233FCB4: .word 0x000036E9
 _0233FCB8: .word 0x00000233
 _0233FCBC: .word 0x00001001
-ov05_0233FCC0: .word 0x00002001
+_0233FCC0: .word 0x00002001
 _0233FCC4: .word 0x00004001
 _0233FCC8: .word 0x00006001
 _0233FCCC: .word ov07_023419AC

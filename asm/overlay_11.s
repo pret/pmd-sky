@@ -2238,7 +2238,7 @@ _022DDDE0: ; jump table
 	b _022E04DC ; case 133
 	b _022E04DC ; case 134
 	b ov11_022E0410 ; case 135
-	b ov00_022E0434 ; case 136
+	b ov11_022E0434 ; case 136
 	b ov11_022DE3AC ; case 137
 	b _022E04DC ; case 138
 	b ov11_022DECDC ; case 139
@@ -2445,7 +2445,7 @@ _022DDDE0: ; jump table
 	b _022E04DC ; case 340
 	b _022E04DC ; case 341
 	b ov11_022DED48 ; case 342
-	b ov00_022E0378 ; case 343
+	b ov11_022E0378 ; case 343
 	b ov11_022E03B8 ; case 344
 	b ov11_022E03C8 ; case 345
 	b ov11_022E03C8 ; case 346
@@ -2458,10 +2458,10 @@ _022DDDE0: ; jump table
 	b ov11_022E03E8 ; case 353
 	b ov11_022E03E8 ; case 354
 	b ov11_022E03E0 ; case 355
-	b ov00_022E03F0 ; case 356
-	b ov00_022E03F0 ; case 357
-	b ov00_022E03F0 ; case 358
-	b ov00_022E03F0 ; case 359
+	b ov11_022E03F0 ; case 356
+	b ov11_022E03F0 ; case 357
+	b ov11_022E03F0 ; case 358
+	b ov11_022E03F0 ; case 359
 	b ov11_022E03E0 ; case 360
 	b ov11_022E03F8 ; case 361
 	b ov11_022E03F8 ; case 362
@@ -4949,6 +4949,10 @@ _022E0424:
 	add r5, r4, #0x24
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r5, {r0, r1, r2, r3}
+	arm_func_end ov11_022E0410
+
+	arm_func_start ov11_022E0434
+ov11_022E0434: ; 0x022E0434
 	ldrh r0, [r6]
 	bl ov11_022E48AC
 	mov r5, r0
@@ -4972,7 +4976,7 @@ _022E0424:
 _022E0484:
 	mov r0, #6
 	b _022E2478
-	arm_func_end ov11_022E0410
+	arm_func_end ov11_022E0434
 
 	arm_func_start ov11_022E048C
 ov11_022E048C: ; 0x022E048C
@@ -55656,7 +55660,7 @@ _0230B428:
 	add r1, sp, #0xc
 	add r2, sp, #0xe
 	mov r0, #1
-	bl ov00_0230C1D0
+	bl ov11_0230C1D0
 	mov r3, sb
 	ldr r1, [r3, #4]
 	ldr r7, _0230B67C ; =0x0000032F
@@ -55713,7 +55717,7 @@ _0230B4E8:
 	add r2, sp, #0x10
 	mov r0, #0
 	strh r8, [r3, #0xd0]
-	bl ov00_0230C1D0
+	bl ov11_0230C1D0
 	ldr fp, _0230B664 ; =ov11_02324DA4
 	ldrh r2, [sp, #0x12]
 	ldr r0, [fp, #4]
@@ -56562,13 +56566,13 @@ _0230C04C: .word 0x0000042C
 
 	arm_func_start ov11_0230C050
 ov11_0230C050: ; 0x0230C050
-	ldr ip, _0230C064 ; =ov00_0230C1D0
+	ldr ip, _0230C064 ; =ov11_0230C1D0
 	mov r2, r1
 	mov r1, r0
 	mov r0, #0
 	bx ip
 	.align 2, 0
-_0230C064: .word ov00_0230C1D0
+_0230C064: .word ov11_0230C1D0
 	arm_func_end ov11_0230C050
 
 	arm_func_start ov11_0230C068
@@ -56681,8 +56685,8 @@ _0230C1AC:
 _0230C1CC: .word ov11_02324DA4
 	arm_func_end ov11_0230C118
 
-	arm_func_start ov00_0230C1D0
-ov00_0230C1D0: ; 0x0230C1D0
+	arm_func_start ov11_0230C1D0
+ov11_0230C1D0: ; 0x0230C1D0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, r0
 	mov r5, r1
@@ -56828,7 +56832,7 @@ _0230C3BC:
 	.align 2, 0
 _0230C3C4: .word BAG_ITEMS_PTR_MIRROR
 _0230C3C8: .word 0x00000547
-	arm_func_end ov00_0230C1D0
+	arm_func_end ov11_0230C1D0
 
 	arm_func_start ov11_0230C3CC
 ov11_0230C3CC: ; 0x0230C3CC
@@ -62434,11 +62438,11 @@ _02310C28: .word ov11_02323894
 
 	arm_func_start ov11_02310C2C
 ov11_02310C2C: ; 0x02310C2C
-	ldr ip, _02310C38 ; =ov00_0230DB58
+	ldr ip, _02310C38 ; =ov11_0230DB58
 	ldr r0, _02310C3C ; =ov11_023238B0
 	bx ip
 	.align 2, 0
-_02310C38: .word ov00_0230DB58
+_02310C38: .word ov11_0230DB58
 _02310C3C: .word ov11_023238B0
 	arm_func_end ov11_02310C2C
 

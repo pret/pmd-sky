@@ -11,6 +11,7 @@
 .public DataTransferStop
 .public DebugPrint
 .public DebugPrint0
+.public DrawTileGrid
 .public DTCM_BSS
 .public ExplorersOfSkyMain
 .public FatalError
@@ -33,6 +34,7 @@
 .public GetTime
 .public GINSENG_CHANCE_3
 .public IRON_STAT_BOOST
+.public IsExperienceLocked
 .public KeyWaitInit
 .public LIFE_SEED_HP_BOOST
 .public LoadFileFromRom
@@ -54,7 +56,6 @@
 .public OpenAllPackFiles
 .public OS_IRQTable
 .public OSi_ReferSymbol
-.public ov00_022BDADC
 .public ov00_022BE0C8
 .public ov00_022C2340
 .public ov00_022C23B0
@@ -64,22 +65,14 @@
 .public ov00_022C2528
 .public ov00_022E2A78
 .public ov00_022E6E68
-.public ov00_022E96E4
-.public ov00_022EA62C
-.public ov00_022F98B4
-.public ov00_022FBAF0
-.public ov00_023002F0
 .public ov00_0230D000
 .public ov00_0230D220
 .public ov00_0230D71C
 .public ov00_0230D92C
 .public ov00_02310C18
-.public ov01_02337428
-.public ov01_02337B3C
-.public ov01_02337BA0
-.public ov01_02337C54
-.public ov01_02337E0C
+.public ov10_022BDADC
 .public ov11_022E82CC
+.public ov11_022E96E4
 .public ov11_023061CC
 .public ov11_023061E4
 .public ov11_02306C64
@@ -233,6 +226,7 @@
 .public sub_0200C020
 .public SVC_CpuSet
 .public SVC_WaitByLoop
+.public TryPointCameraToMonster
 .public UnloadFile
 .public UnloadOverlay
 .public ZINC_STAT_BOOST

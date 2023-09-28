@@ -13865,7 +13865,7 @@ sub_0201758C: ; 0x0201758C
 	ldr r0, _020175F0 ; =_020AF760
 	mov r1, #0
 	str r1, [r0, #8]
-	bl ov00_022BDADC
+	bl ov10_022BDADC
 _020175E4:
 	bl sub_0206BA5C
 	bl sub_02016BB8
@@ -68646,7 +68646,7 @@ _020449E8:
 	cmp r0, #7
 	beq _02044A2C
 	mov r0, r7
-	bl ov00_022FBAF0
+	bl IsExperienceLocked
 	cmp r0, #0
 	beq _02044A30
 _02044A2C:
@@ -68770,12 +68770,12 @@ _02044BC8:
 	mov r0, r6
 	mov r1, #0
 	mov r2, #1
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 	mov r2, #1
 	mov r3, r2
 	add r0, r6, #4
 	mov r1, #0
-	bl ov01_02337428
+	bl DrawTileGrid
 _02044BEC:
 	str r4, [r7, #0x930]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -108977,7 +108977,7 @@ _02065330:
 	bl OverlayIsLoaded
 	cmp r0, #0
 	beq _0206536C
-	bl ov00_022E96E4
+	bl ov11_022E96E4
 	cmp r0, #0
 	mvnne r0, #0
 	bne _0206548C
@@ -109008,7 +109008,7 @@ _020653A8:
 	bl OverlayIsLoaded
 	cmp r0, #0
 	beq _020653DC
-	bl ov00_022E96E4
+	bl ov11_022E96E4
 	cmp r0, #0
 	mvnne r0, #0
 	bne _0206548C
@@ -109100,7 +109100,7 @@ sub_0206549C: ; 0x0206549C
 	bl OverlayIsLoaded
 	cmp r0, #0
 	beq _02065540
-	bl ov00_022E96E4
+	bl ov11_022E96E4
 	cmp r0, #0
 	beq _02065540
 	ldr r0, _02065968 ; =ARM9_UNKNOWN_TABLE__NA_20A68BC
@@ -109155,7 +109155,7 @@ _020655BC:
 	bl OverlayIsLoaded
 	cmp r0, #0
 	beq _02065610
-	bl ov00_022E96E4
+	bl ov11_022E96E4
 	cmp r0, #0
 	beq _02065610
 	ldr r0, _02065968 ; =ARM9_UNKNOWN_TABLE__NA_20A68BC
@@ -109488,7 +109488,7 @@ _02065A30:
 	bl OverlayIsLoaded
 	cmp r0, #0
 	beq _02065A64
-	bl ov00_022E96E4
+	bl ov11_022E96E4
 	cmp r0, #0
 	mvnne r0, #0
 	bne _02065B04
@@ -109511,7 +109511,7 @@ _02065A84:
 	bl OverlayIsLoaded
 	cmp r0, #0
 	beq _02065AB8
-	bl ov00_022E96E4
+	bl ov11_022E96E4
 	cmp r0, #0
 	mvnne r0, #0
 	bne _02065B04

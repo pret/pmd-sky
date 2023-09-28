@@ -1215,7 +1215,7 @@ _0232F8B8: ; jump table
 	b ov29_02330ED0 ; case 91
 	b ov29_023319D0 ; case 92
 	b ov29_0233069C ; case 93
-	b ov01_0233103C ; case 94
+	b ov29_0233103C ; case 94
 	b ov29_0233111C ; case 95
 	b ov29_02331B3C ; case 96
 	b ov29_02330AA8 ; case 97
@@ -1452,7 +1452,7 @@ _0232F8B8: ; jump table
 	b ov29_02331FA4 ; case 328
 	b ov29_0233138C ; case 329
 	b ov29_02332030 ; case 330
-	b ov01_023315F4 ; case 331
+	b ov29_023315F4 ; case 331
 	b ov29_023305A4 ; case 332
 	b _02330BA4 ; case 333
 	b ov29_02331F6C ; case 334
