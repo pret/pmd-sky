@@ -311,5 +311,5 @@ Overlay OVY_34
 }
 Overlay OVY_35
 {
-	Address 0x022BCA80
+	After main
 }
