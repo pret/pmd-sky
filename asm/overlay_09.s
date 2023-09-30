@@ -23,7 +23,7 @@ ov09_0233CAA8: ; 0x0233CAA8
 	sub r3, r1, #2
 	strb r3, [r0]
 	ldr r0, [r2]
-	ldr r7, _0233CBBC ; =0x0233F61C
+	ldr r7, _0233CBBC ; =ov09_0233F61C
 	strb r3, [r0, #1]
 	ldr r0, [r2]
 	strb r3, [r0, #2]
@@ -36,7 +36,7 @@ ov09_0233CAA8: ; 0x0233CAA8
 	arm_func_start ov09_0233CAD8
 ov09_0233CAD8: ; 0x0233CAD8
 	ldr r0, [r2]
-	ldr r3, _0233CBC0 ; =0x0233F664
+	ldr r3, _0233CBC0 ; =ov09_0233F664
 	add r6, r0, #0x4c
 	add r8, r0, #0x284
 	mov r2, r1
@@ -107,8 +107,8 @@ _0233CB90:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0233CBB8: .word ov09_0233F7E0
-_0233CBBC: .word 0x0233F61C
-_0233CBC0: .word 0x0233F664
+_0233CBBC: .word ov09_0233F61C
+_0233CBC0: .word ov09_0233F664
 _0233CBC4: .word 0x000004FD
 	arm_func_end ov09_0233CB3C
 
@@ -184,7 +184,7 @@ _0233CC98:
 	mov r1, #0
 	mov r0, #1
 	str r0, [sp]
-	ldr r0, _0233D92C ; =0x0233F780
+	ldr r0, _0233D92C ; =ov09_0233F780
 	mov r2, r1
 	mov r3, r1
 	str r1, [sp, #4]
@@ -265,7 +265,7 @@ _0233CDB4:
 	add ip, r5, #0x284
 	mov lr, #0x10
 	str ip, [sp, #0xfe0]
-	ldr r0, _0233D934 ; =0x0233F58C
+	ldr r0, _0233D934 ; =ov09_0233F58C
 	ldr r1, _0233D938 ; =0x00401A13
 	add r2, sp, #0xf80
 	str lr, [sp, #0xf8c]
@@ -281,7 +281,7 @@ _0233CDB4:
 	cmp r0, #0
 	mvneq r0, #0
 	streq r0, [r1, #0x14]
-	ldr r0, _0233D93C ; =0x0233F59C
+	ldr r0, _0233D93C ; =ov09_0233F59C
 	bl CreateDBox
 	ldr r3, _0233D928 ; =ov09_0233F7E0
 	ldr r1, _0233D940 ; =0x00000404
@@ -390,7 +390,7 @@ _0233CFA8:
 	bgt _0233D918
 	ldr ip, _0233D944 ; =0x000004FC
 	add r2, sp, #0xe00
-	ldr r0, _0233D948 ; =0x0233F56C
+	ldr r0, _0233D948 ; =ov09_0233F56C
 	add r2, r2, #0xe8
 	add r3, r3, #8
 	mov r1, #0x13
@@ -501,10 +501,10 @@ _0233D148:
 	strgt r0, [r3, #0x48]
 	bgt _0233D918
 	mov r0, #0
-	ldr r1, _0233D94C ; =0x0233F5AC
+	ldr r1, _0233D94C ; =ov09_0233F5AC
 	str r0, [sp, #0xe50]
 	str r1, [sp]
-	ldr ip, _0233D950 ; =0x0233F5E4
+	ldr ip, _0233D950 ; =ov09_0233F5E4
 	ldr r1, _0233D954 ; =0x00400033
 	add r2, sp, #0xe50
 	add r3, r3, #8
@@ -786,7 +786,7 @@ _0233D56C:
 	bgt _0233D918
 	ldr ip, _0233D944 ; =0x000004FC
 	add r2, sp, #0x500
-	ldr r0, _0233D960 ; =0x0233F57C
+	ldr r0, _0233D960 ; =ov09_0233F57C
 	add r2, r2, #0x18
 	add r3, r3, #8
 	mov r1, #0x13
@@ -1037,20 +1037,20 @@ _0233D91C:
 	.align 2, 0
 _0233D928: .word ov09_0233F7E0
 	arm_func_end ov09_0233CBF8
-_0233D92C: .word 0x0233F780
+_0233D92C: .word ov09_0233F780
 _0233D930: .word 0x000004EF
-_0233D934: .word 0x0233F58C
+_0233D934: .word ov09_0233F58C
 _0233D938: .word 0x00401A13
-_0233D93C: .word 0x0233F59C
+_0233D93C: .word ov09_0233F59C
 _0233D940: .word 0x00000404
 _0233D944: .word 0x000004FC
-_0233D948: .word 0x0233F56C
-_0233D94C: .word 0x0233F5AC
-_0233D950: .word 0x0233F5E4
+_0233D948: .word ov09_0233F56C
+_0233D94C: .word ov09_0233F5AC
+_0233D950: .word ov09_0233F5E4
 _0233D954: .word 0x00400033
 _0233D958: .word 0x000004FA
 _0233D95C: .word 0x0000C402
-_0233D960: .word 0x0233F57C
+_0233D960: .word ov09_0233F57C
 
 	arm_func_start ov09_0233D964
 ov09_0233D964: ; 0x0233D964
@@ -1630,7 +1630,7 @@ _0233E0B8:
 	orr sl, sl, #0x8000
 	strne r0, [sp, #0x14]
 	bne _0233E144
-	ldr r0, _0233E2D0 ; =0x0233F794
+	ldr r0, _0233E2D0 ; =ov09_0233F794
 	add sb, sp, #0x14
 	ldmia r0, {r0, r1, r2, r3}
 	stmia sb, {r0, r1, r2, r3}
@@ -1745,7 +1745,7 @@ _0233E264:
 	.align 2, 0
 _0233E2C8: .word 0x0000C402
 _0233E2CC: .word ov09_0233E3DC
-_0233E2D0: .word 0x0233F794
+_0233E2D0: .word ov09_0233F794
 	arm_func_end ov09_0233E030
 
 	arm_func_start ov09_0233E2D4
@@ -2285,7 +2285,7 @@ _0233E9C4:
 	ldr r0, [sp, #8]
 	add r4, sp, #0x1c
 	cmp r0, #0
-	ldreq r0, _0233EC18 ; =0x0233F7A4
+	ldreq r0, _0233EC18 ; =ov09_0233F7A4
 	orreq sl, sl, #0x300000
 	ldmeqia r0, {r0, r1, r2, r3}
 	stmeqia r4, {r0, r1, r2, r3}
@@ -2418,7 +2418,7 @@ _0233EBA4:
 	add sp, sp, #0x3c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0233EC18: .word 0x0233F7A4
+_0233EC18: .word ov09_0233F7A4
 _0233EC1C: .word ov09_0233ED84
 	arm_func_end ov09_0233E918
 
@@ -2886,7 +2886,7 @@ ov09_0233F210: ; 0x0233F210
 	bl sub_020265A8
 	cmp r7, #0
 	mov ip, r0
-	ldreq r0, _0233F3B8 ; =0x0233F7B4
+	ldreq r0, _0233F3B8 ; =ov09_0233F7B4
 	str ip, [r4, #0x1a4]
 	addeq r7, sp, #0x18
 	ldmeqia r0, {r0, r1, r2, r3}
@@ -2970,7 +2970,7 @@ _0233F368:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0233F3B4: .word 0x0000C402
-_0233F3B8: .word 0x0233F7B4
+_0233F3B8: .word ov09_0233F7B4
 _0233F3BC: .word ov09_0233F3FC
 	arm_func_end ov09_0233F210
 
