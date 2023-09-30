@@ -1,4 +1,5 @@
 #pragma once
+.public NitroMain
 .public OS_IRQTable
 .public SDK_AUTOLOAD_LIST
 .public SDK_AUTOLOAD_LIST_END

@@ -81,7 +81,7 @@ _020008D4:
 	bl sub_020907F0
 	bl sub_02000B98
 	bl sub_020908A8
-	ldr r1, _0200094C ; =0x02000C6C
+	ldr r1, _0200094C ; =NitroMain
 	ldr lr, _02000950 ; =0xFFFF0000
 	tst sp, #4
 	bne _02000928
@@ -98,7 +98,7 @@ _0200093C: .word 0x07000000
 _02000940: .word _start_ModuleParams
 _02000944: .word 0x027FFF9C
 _02000948: .word sub_01FF95E8
-_0200094C: .word 0x02000C6C
+_0200094C: .word NitroMain
 _02000950: .word 0xFFFF0000
 	arm_func_end _start
 

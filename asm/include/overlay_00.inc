@@ -55,7 +55,11 @@
 .public ov01_0233AE64
 .public ov02_02329520
 .public ov08_0233E230
+.public ov08_0233E2BC
+.public ov08_0233E7D8
 .public ov09_0233CA80
+.public ov09_0233CBC8
+.public ov09_0233CBF8
 .public RandInt
 .public SetIrqFlag
 .public snprintf
