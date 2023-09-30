@@ -7,6 +7,7 @@
 .public DungeonGoesUp
 .public DungeonRequestsDoneWrapper
 .public EntityIsValid__0234EC14
+.public EntryOverlay31
 .public GetAcceptedMission
 .public GetActiveTeamMember
 .public GetDungeonMode
@@ -69,9 +70,8 @@
 .public ov29_0234EB28
 .public ov29_0234EBAC
 .public ov29_0234EBCC
-.public ov30_02382820
-.public ov30_023833D8
-.public ov30_02383434
+.public ov31_023833D8
+.public ov31_02383434
 .public ov31_0238647C
 .public ov31_02388114
 .public ov31_02388444

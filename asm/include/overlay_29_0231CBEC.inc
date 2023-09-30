@@ -110,9 +110,9 @@
 .public ov29_023529B0
 .public ov29_02353324
 .public ov29_02353538
-.public ov30_023853BC
-.public ov30_023853E0
-.public ov30_02385FE0
+.public ov31_023853BC
+.public ov31_023853E0
+.public ov31_02385FE0
 .public ov31_023860A4
 .public ov31_0238619C
 .public ov31_02386204

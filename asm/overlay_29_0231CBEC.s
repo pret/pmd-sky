@@ -1369,14 +1369,14 @@ _0231DE6C:
 	mov r1, r8
 	mov r3, r2
 	str r8, [sp]
-	bl ov30_023853BC
+	bl ov31_023853BC
 	b _0231DEB0
 _0231DE9C:
 	mov r0, r7
 	mov r1, fp
 	mov r3, r2
 	str fp, [sp]
-	bl ov30_023853E0
+	bl ov31_023853E0
 _0231DEB0:
 	cmp r0, #0
 	beq _0231DF1C
@@ -1411,7 +1411,7 @@ _0231DF1C:
 	cmp r0, #0x1d
 	bne _0231DF34
 	add r0, r4, #0x4a
-	bl ov30_02385FE0
+	bl ov31_02385FE0
 	b _0231DE6C
 _0231DF34:
 	cmp r0, #0x20

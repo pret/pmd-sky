@@ -60,12 +60,12 @@ _0234DE78:
 	cmp sl, #0
 	mvnne r4, #0
 	bne _0234DEE8
-	bl ov30_02382820
+	bl EntryOverlay31
 	mov r5, #0x1d
 _0234DED0:
 	mov r0, r5
 	bl AdvanceFrame
-	bl ov30_02382E08
+	bl ov31_02382E08
 	mov r4, r0
 	cmp r4, #0xa
 	beq _0234DED0
@@ -86,7 +86,7 @@ _0234DEF8:
 	str r8, [sp, #0x18]
 	bl GetLeader
 	add r1, sp, #0x14
-	bl ov30_023838E4
+	bl ov31_023838E4
 	cmp r0, #0
 	add r0, sp, #0x14
 	movne r5, r7
@@ -95,7 +95,7 @@ _0234DEF8:
 	beq _0234DF5C
 	bl GetLeader
 	add r1, sp, #0x14
-	bl ov30_023838E4
+	bl ov31_023838E4
 	cmp r0, #0
 	beq _0234DF5C
 	mov r0, #1
@@ -112,7 +112,7 @@ _0234DF5C:
 	orr r1, r1, #4
 	strb r1, [r0]
 	bl GetLeaderAction
-	bl ov30_0238367C
+	bl ov31_0238367C
 	mov r0, #1
 	bl ov29_022EB398
 	mov r4, #1
@@ -289,7 +289,7 @@ _0234E1F0:
 	b _0234E28C
 _0234E200:
 	bl GetLeaderAction
-	bl ov30_023851C0
+	bl MovesMenu
 	mov r7, #0
 	mov r8, r7
 	b _0234E27C
@@ -425,14 +425,14 @@ _0234E3CC:
 	mov r1, #0
 	mov r2, #1
 	str r7, [sp]
-	bl ov30_023853BC
+	bl ov31_023853BC
 	cmp r0, #0
 	movne r5, r8
 	bl ov29_022F0B9C
 	cmp r0, #0x1d
 	bne _0234E40C
 	bl GetLeaderAction
-	bl ov30_02385FE0
+	bl ov31_02385FE0
 	b _0234E3CC
 _0234E40C:
 	bl ov29_022F0B9C
@@ -529,7 +529,7 @@ _0234E4F0:
 	str r0, [sp, #0x2c]
 	bl GetLeader
 	add r1, sp, #0x28
-	bl ov30_023838E4
+	bl ov31_023838E4
 	cmp r0, #0
 	add r0, sp, #0x28
 	movne r5, r7
@@ -538,7 +538,7 @@ _0234E4F0:
 	beq _0234E5A4
 	bl GetLeader
 	add r1, sp, #0x28
-	bl ov30_023838E4
+	bl ov31_023838E4
 	cmp r0, #0
 	beq _0234E5A4
 	mov r0, #1
@@ -555,7 +555,7 @@ _0234E5A4:
 	orr r1, r1, #4
 	strb r1, [r0]
 	bl GetLeaderAction
-	bl ov30_0238367C
+	bl ov31_0238367C
 	mov r0, #1
 	bl ov29_022EB398
 	mov r4, #4
@@ -668,7 +668,7 @@ _0234E75C:
 	bl ov29_022EB398
 	bl GetLeader
 	mov r1, #1
-	bl ov30_02382E18
+	bl ov31_02382E18
 	bl ov29_022F0B9C
 	cmp r0, #0
 	beq _0234E7F8
@@ -682,7 +682,7 @@ _0234E78C:
 	bl ov29_022EB398
 	bl GetLeader
 	mov r1, #1
-	bl ov30_02382E18
+	bl ov31_02382E18
 	bl ov29_022F0B9C
 	cmp r0, #0
 	beq _0234E7F8
@@ -787,7 +787,7 @@ ov29_0234E8F8: ; 0x0234E8F8
 	bl LoadOverlay
 	mov r0, r5
 	mov r1, r4
-	bl ov30_02382E18
+	bl ov31_02382E18
 	mov r0, #0x22
 	bl OverlayIsLoaded
 	cmp r0, #0
