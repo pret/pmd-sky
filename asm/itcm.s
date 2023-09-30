@@ -91,7 +91,10 @@ _01FF811C:
 	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_01FF80B0
 _01FF8120:
-	.byte 0x24, 0x82, 0xFF, 0x01, 0x9C, 0x84, 0xFF, 0x01, 0x28, 0x87, 0xFF, 0x01, 0x28, 0x8C, 0xFF, 0x01
+	.word sub_01FF8224
+	.word sub_01FF849C
+	.word sub_01FF8728
+	.word sub_01FF8C28
 
 	arm_func_start sub_01FF8130
 sub_01FF8130: ; 0x01FF8130

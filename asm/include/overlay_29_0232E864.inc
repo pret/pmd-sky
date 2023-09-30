@@ -368,8 +368,6 @@
 .public MonsterHasNegativeStatus
 .public MonsterIsType
 .public MoveHitCheck
-.public ov01_0233103C
-.public ov01_023315F4
 .public ov10_022BFD6C
 .public ov10_022C4480
 .public ov10_022C4504
@@ -411,6 +409,8 @@
 .public ov29_02324D60
 .public ov29_023258EC
 .public ov29_0232E744
+.public ov29_0233103C
+.public ov29_023315F4
 .public ov29_02337E2C
 .public ov29_023381C0
 .public ov29_02344B44

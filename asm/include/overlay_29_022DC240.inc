@@ -280,6 +280,9 @@
 .public sub_01FF8130
 .public sub_01FF81CC
 .public sub_01FF8C60
+.public sub_01FF9BA0
+.public sub_01FF9E14
+.public sub_01FF9F80
 .public sub_02001808
 .public sub_02008BF4
 .public sub_02009194

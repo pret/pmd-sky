@@ -60,8 +60,6 @@
 .public MoveIsNotPhysical
 .public NATURE_POWER_TABLE
 .public NIGHTMARE_TURN_RANGE
-.public ov00_022BFDAC
-.public ov00_022BFDEC
 .public ov10_022BDE50
 .public ov10_022BE9E8
 .public ov10_022BEB2C
@@ -73,7 +71,9 @@
 .public ov10_022BFD58
 .public ov10_022BFD6C
 .public ov10_022BFD8C
+.public ov10_022BFDAC
 .public ov10_022BFDCC
+.public ov10_022BFDEC
 .public ov10_022C4584
 .public ov10_022C4714
 .public ov29_022DE5D8

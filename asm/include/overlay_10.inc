@@ -150,6 +150,7 @@
 .public DoMoveWillOWisp
 .public DoMoveWrap
 .public DoMoveYawn
+.public ExplorersOfSkyMain
 .public FreePortraitBox
 .public GendersEqual
 .public GetBgRegionArea
@@ -191,7 +192,6 @@
 .public MemsetSimple
 .public MemZero
 .public MultiplyByFixedPoint
-.public ov11_022DC240
 .public ov11_022EA428
 .public ov11_023061CC
 .public ov11_02306C64

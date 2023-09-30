@@ -8,6 +8,7 @@
 .public GetKeyboardStringResult
 .public GetLanguageType
 .public GetReleasedStylus
+.public GetTeamNameCheck
 .public MemAlloc
 .public MemcpySimple
 .public MemFree
@@ -26,6 +27,12 @@
 .public ov01_0233769C
 .public ov01_023376DC
 .public ov01_02337718
+.public ov01_02337B3C
+.public ov01_02337B68
+.public ov01_02337BA0
+.public ov01_02337C54
+.public ov01_02337D18
+.public ov01_02337E0C
 .public ov01_02338A24
 .public ov01_02338B08
 .public ov01_02338BEC

@@ -1,11 +1,8 @@
 #pragma once
-.public NitroMain
-.public OS_IRQTable
 .public SDK_AUTOLOAD_LIST
 .public SDK_AUTOLOAD_LIST_END
 .public SDK_AUTOLOAD_START
 .public SDK_STATIC_BSS_END
 .public SDK_STATIC_BSS_START
-.public sub_01FF95E8
-.public sub_020907F0
-.public sub_020908A8
+.public sub_037F8000
+.public sub_037FB488

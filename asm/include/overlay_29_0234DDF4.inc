@@ -4,6 +4,7 @@
 .public DrawTileGrid
 .public EntityIsValid__0234DDD0
 .public EntityIsValid__0234EC14
+.public EntryOverlay31
 .public GetActiveTeamMember
 .public GetItemMoveId16
 .public GetItemToUse
@@ -14,6 +15,7 @@
 .public HideTileGrid
 .public InitMove
 .public LoadOverlay
+.public MovesMenu
 .public OthersMenu
 .public ov29_022E0B44
 .public ov29_022E2A78
@@ -39,14 +41,12 @@
 .public ov29_0235352C
 .public ov29_02353538
 .public ov29_02382804
-.public ov30_02382820
-.public ov30_02382E08
-.public ov30_02382E18
-.public ov30_0238367C
-.public ov30_023838E4
-.public ov30_023851C0
-.public ov30_023853BC
-.public ov30_02385FE0
+.public ov31_02382E08
+.public ov31_02382E18
+.public ov31_0238367C
+.public ov31_023838E4
+.public ov31_023853BC
+.public ov31_02385FE0
 .public ov31_023860A4
 .public ov31_0238619C
 .public ov31_02386C6C

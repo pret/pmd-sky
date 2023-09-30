@@ -1876,7 +1876,7 @@ _02322F00:
 	strneb r0, [sl, #0xaf]
 _02322F24:
 	ldrh r0, [sb, #4]
-	bl ov00_022BFDAC
+	bl ov10_022BFDAC
 	cmp r0, #0
 	beq _02322F4C
 	ldr r1, [sl, #0xb4]
@@ -4246,7 +4246,7 @@ _02324F98:
 	cmp sb, #0
 	bne _0232506C
 	ldrh r0, [r6, #4]
-	bl ov00_022BFDEC
+	bl ov10_022BFDEC
 	cmp r0, #0
 	beq _0232506C
 	mov r6, #0

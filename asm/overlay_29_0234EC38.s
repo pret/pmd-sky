@@ -978,11 +978,11 @@ _0234F910: ; jump table
 	b _0234F9A4 ; case 8
 _0234F934:
 	ldr r0, _0234F9E0 ; =ov29_0234F77C
-	bl ov30_023833D8
+	bl ov31_023833D8
 	b _0234F9B4
 _0234F940:
 	ldr r0, _0234F9E0 ; =ov29_0234F77C
-	bl ov30_02383434
+	bl ov31_02383434
 	b _0234F9B4
 _0234F94C:
 	mov r0, #2
@@ -1013,7 +1013,7 @@ _0234F998:
 	str r0, [r1]
 	b _0234F9B4
 _0234F9A4:
-	bl ov30_02382820
+	bl EntryOverlay31
 	ldr r0, _0234F9C8 ; =ov29_0235383C
 	mov r1, #8
 	str r1, [r0]

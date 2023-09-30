@@ -79,7 +79,7 @@ Overlay OVY_9
 }
 Overlay OVY_10
 {
-	Address 0x022BCA80
+	After main
 	Object asm/overlay_10.o
 }
 Overlay OVY_11
@@ -311,5 +311,5 @@ Overlay OVY_34
 }
 Overlay OVY_35
 {
-	Address 0x022BCA80
+	After main
 }

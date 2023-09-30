@@ -155,7 +155,7 @@ _02382A08:
 	ldr sb, [r1, #0xb4]
 	mov r0, r6
 	mov r2, #0
-	bl ov00_022E2A78
+	bl ov29_022E2A78
 	str r6, [sp, #0x23c]
 	ldrsh r0, [sb, #0x10]
 	str r0, [sp, #0x228]
@@ -1578,7 +1578,7 @@ _02383D1C:
 	ldr r3, _023848AC ; =ov31_02383478
 	add r2, r2, #0x9c
 	str r4, [sp, #0xc]
-	bl ov00_022BCA80
+	bl ov10_022BCA80
 	ldr r1, _02384898 ; =ov31_0238A26C
 	ldr r1, [r1]
 	add r1, r1, #0x1000
@@ -1663,7 +1663,7 @@ _02383D8C:
 	add r1, r1, #0x12000
 	ldr r1, [r1, #0xb24]
 	mov r2, #0
-	bl ov00_022E2A78
+	bl ov29_022E2A78
 	add r0, sp, #0x400
 	add r0, r0, #0x4c
 	str r0, [sp, #0x584]
@@ -1709,13 +1709,13 @@ _02383F34:
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #1
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 	ldr r0, [sp, #0x28]
 	mov r2, #1
 	add r0, r0, #4
 	mov r1, #0
 	mov r3, r2
-	bl ov01_02337428
+	bl DrawTileGrid
 	b _02384054
 _02383F7C:
 	add r0, r0, #0x1000
@@ -1768,12 +1768,12 @@ _02383FF0:
 	add r0, r0, #0x1000
 	ldr r8, [r0, #0x19c]
 	mov r0, r8
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 	mov r2, #1
 	add r0, r8, #4
 	mov r1, #0
 	mov r3, r2
-	bl ov01_02337428
+	bl DrawTileGrid
 _02384054:
 	ldr r0, [r4]
 	add r0, r0, #0x1100
@@ -2101,10 +2101,10 @@ _023844FC:
 	ldr r0, [sl, #0xb4]
 	str r0, [sp, #0x14]
 	bl ov29_022EBA70
-	bl ov00_022EBB98
+	bl ov29_022EBB98
 	cmp r0, #0x90
 	bhs _023849F4
-	bl ov00_022EBB98
+	bl ov29_022EBB98
 	cmp r0, #0x80
 	bne _02384598
 	ldrsh r1, [r8, #4]
@@ -2134,7 +2134,7 @@ _02384588:
 	mov r0, #9
 	bl DisableDungeonSubMenuOption
 _02384598:
-	bl ov00_022EBB98
+	bl ov29_022EBB98
 	cmp r0, #0x80
 	bne _023845C4
 	ldr r0, _023848A8 ; =ov29_02353538
@@ -2187,7 +2187,7 @@ _0238463C:
 	mov r0, r4
 	bl DisableDungeonSubMenuOption
 _02384654:
-	bl ov00_022EBB98
+	bl ov29_022EBB98
 	cmp r0, #0x33
 	bhs _02384728
 	ldrb r0, [r8, #1]
@@ -2247,10 +2247,10 @@ _02384720:
 	cmp r3, #0x32
 	blt _023846C8
 _02384728:
-	bl ov00_022EBB98
+	bl ov29_022EBB98
 	cmp r0, #0x81
 	beq _02384804
-	bl ov00_022EBB98
+	bl ov29_022EBB98
 	cmp r0, #0x80
 	beq _02384860
 	ldrsh r1, [r8, #4]
@@ -2331,7 +2331,7 @@ _02384840:
 	mov r0, #0x3e
 	bl DisableDungeonSubMenuOption
 _02384860:
-	bl ov00_022EBB98
+	bl ov29_022EBB98
 	cmp r0, #0x33
 	bhs _02384908
 	ldrsh r0, [sl, #4]
@@ -2442,7 +2442,7 @@ _023849D8:
 	bl DisableDungeonSubMenuOption
 	b _02384C48
 _023849F4:
-	bl ov00_022EBB98
+	bl ov29_022EBB98
 	ldr r1, _023848A8 ; =ov29_02353538
 	sub r2, r0, #0x90
 	ldr r0, [r1]
@@ -2765,7 +2765,7 @@ _02384E90:
 	cmpne r0, #0x37
 	cmpne r0, #0x3e
 	bne _02384EC4
-	bl ov00_022EBB98
+	bl ov29_022EBB98
 	sub r2, r0, #0x90
 	mov r0, #0xb
 	mov r1, #0
@@ -2896,7 +2896,7 @@ _02385028:
 	add r0, r0, #0x12000
 	ldr r0, [r0, #0xb28]
 	mov r2, #1
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 	mov r0, #0
 	mov r2, #1
 	mov r1, r0
@@ -3021,13 +3021,13 @@ _0238521C:
 	ldr r0, [sp, #8]
 	mov r1, #0
 	mov r2, #1
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 	ldr r0, [sp, #8]
 	mov r2, #1
 	mov r3, r2
 	add r0, r0, #4
 	mov r1, #0
-	bl ov01_02337428
+	bl DrawTileGrid
 	mov r0, #1
 	bl ov29_022EB398
 	str r7, [sp]
@@ -3116,12 +3116,12 @@ _02385380:
 	mov r0, r5
 	mov r1, #0
 	mov r2, #1
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 	mov r2, #1
 	mov r3, r2
 	add r0, r5, #4
 	mov r1, #0
-	bl ov01_02337428
+	bl DrawTileGrid
 _023853B0:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
@@ -3246,7 +3246,7 @@ _02385548:
 	mov r4, #0
 	str r4, [sp, #0xc]
 	mov sb, r4
-	bl ov00_022EA62C
+	bl ov29_022EA62C
 	ldr fp, _02385F70 ; =ov31_0238A270
 _0238555C:
 	bl sub_020407EC
@@ -3292,12 +3292,12 @@ _023855A8:
 	mov r0, r6
 	mov r1, #0
 	mov r2, #1
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 	mov r2, #1
 	add r0, r6, #4
 	mov r1, #0
 	mov r3, r2
-	bl ov01_02337428
+	bl DrawTileGrid
 	mov r0, #0
 	bl ov29_022EB398
 	mov r0, r6
@@ -4858,7 +4858,7 @@ _02386B98:
 	beq _02386C00
 	add r0, sp, #0x54
 	mov r2, #0
-	bl ov00_022E2A78
+	bl ov29_022E2A78
 	ldr r0, [r4, #0x10]
 	bl ov29_022E1618
 	ldrb r1, [r0]
@@ -4928,7 +4928,7 @@ ov31_02386C6C: ; 0x02386C6C
 	str r0, [r1]
 	str r5, [r0, #0x64]
 _02386C90:
-	bl ov00_022EA62C
+	bl ov29_022EA62C
 	ldr r0, _02386F10 ; =DUNGEON_D_BOX_LAYOUT_18
 	ldr r1, _02386F14 ; =ov31_02386B28
 	bl sub_0202F8C4
@@ -5383,7 +5383,7 @@ _023872FC:
 	bl DisableDungeonSubMenuOption
 _02387320:
 	mov r0, r5
-	bl ov00_022FBAF0
+	bl IsExperienceLocked
 	cmp r0, #0
 	beq _0238735C
 	mov r0, #0x19
@@ -5571,7 +5571,7 @@ _023875D8:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #1
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 _023875F0:
 	mov r0, #0xb
 	mov r1, #0
@@ -5634,7 +5634,7 @@ ov31_02387688: ; 0x02387688
 	add r0, r2, r0, lsl #2
 	add r0, r0, #0x12000
 	ldr sb, [r0, #0xb28]
-	bl ov00_022EA62C
+	bl ov29_022EA62C
 	cmp r4, #0
 	beq _023876C4
 	mov r0, sb
@@ -5642,7 +5642,7 @@ ov31_02387688: ; 0x02387688
 	b _0238776C
 _023876C4:
 	ldr r0, [sb, #0xb4]
-	bl ov00_022FBAF0
+	bl IsExperienceLocked
 	cmp r0, #0
 	movne r4, #1
 	bne _023876E4
@@ -5667,7 +5667,7 @@ _023876E4:
 	mov r8, #0
 _02387720:
 	mov sl, r8
-	bl ov00_022EA62C
+	bl ov29_022EA62C
 _02387728:
 	mov r0, r7
 	bl AdvanceFrame
@@ -5817,7 +5817,7 @@ _023878D0:
 	str r2, [r0, #0x754]
 	ldr r0, [r1]
 	str r2, [r0, #0x758]
-	bl ov00_022EA62C
+	bl ov29_022EA62C
 	ldr r0, _02388084 ; =ov31_0238A280
 	ldr r0, [r0]
 	add r0, r0, #0x95
@@ -5856,7 +5856,7 @@ _02387958:
 	and r2, r0, #0xff
 	add r0, sp, #0x68
 	mov r1, r6
-	bl ov00_023002F0
+	bl ov29_023002F0
 	add r0, sp, #0x68
 	str r0, [sp, #0x50]
 	ldrsh r0, [r6, #0xc]
@@ -6147,12 +6147,12 @@ _02387DCC:
 	add r0, r0, #0x500
 	mov r1, r8
 	mov r2, #0
-	bl ov00_022E2A78
+	bl ov29_022E2A78
 	ldrb r0, [r7, #0xbc]
 	cmp r0, #7
 	beq _02387E24
 	mov r0, r7
-	bl ov00_022FBAF0
+	bl IsExperienceLocked
 	cmp r0, #0
 	beq _02387E3C
 _02387E24:
@@ -6193,12 +6193,12 @@ _02387E98:
 	mov r1, #0
 	mov r2, #1
 	mov r7, r6
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 	mov r2, #1
 	add r0, r8, #4
 	mov r1, #0
 	mov r3, r2
-	bl ov01_02337428
+	bl DrawTileGrid
 _02387EC0:
 	mov r0, #0x1b
 	bl AdvanceFrame
@@ -6277,7 +6277,7 @@ _02387F8C:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #1
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 	b _0238800C
 _02387FEC:
 	bl HideTileGrid
@@ -6287,7 +6287,7 @@ _02387FEC:
 	bl GetLeader
 	mov r1, #0
 	mov r2, #1
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 _0238800C:
 	mov r0, #0xb
 	mov r1, #0
@@ -6460,7 +6460,7 @@ _02388218:
 	b _0238826C
 _02388264:
 	mov r1, r6
-	bl ov00_023002F0
+	bl ov29_023002F0
 _0238826C:
 	ldrsh r1, [r6, #0x12]
 	ldrsh r0, [r6, #0x16]
@@ -6614,7 +6614,7 @@ ov31_02388444: ; 0x02388444
 	str r0, [r6, #0x68c]
 	str r0, [r6, #0x670]
 	str r0, [r6, #0x674]
-	bl ov00_022EA62C
+	bl ov29_022EA62C
 	ldr r0, _02388528 ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r4, [r0, #0x75b]
@@ -6841,12 +6841,12 @@ ov31_02388744: ; 0x02388744
 	mov r0, r4
 	mov r1, #0
 	mov r2, #1
-	bl ov00_022F98B4
+	bl TryPointCameraToMonster
 	mov r2, #1
 	mov r3, r2
 	add r0, r4, #4
 	mov r1, #0
-	bl ov01_02337428
+	bl DrawTileGrid
 	ldmia sp!, {r4, pc}
 	arm_func_end ov31_02388744
 
@@ -7818,7 +7818,7 @@ ov31_0238948C: ; 0x0238948C
 	mov r0, #0
 	str r0, [r5, #0x52c]
 	strb r0, [r5, #0x528]
-	bl ov00_022EA62C
+	bl ov29_022EA62C
 	mov r0, r5
 	mov r1, r4
 	bl ov31_02389A78
@@ -8471,7 +8471,9 @@ DUNGEON_D_BOX_LAYOUT_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0B, 0x04, 0x13, 0x02, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global DUNGEON_D_BOX_LAYOUT_3
 DUNGEON_D_BOX_LAYOUT_3:
-	.byte 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xAC, 0x2D, 0x38, 0x02, 0x54, 0x2B, 0x38, 0x02
+	.byte 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word ov31_02382DAC
+	.word ov31_02382B54
 	.global DUNGEON_D_BOX_LAYOUT_4
 DUNGEON_D_BOX_LAYOUT_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x10, 0x1C, 0x06, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -8494,7 +8496,9 @@ ov31_02389E22:
 	.global OVERLAY31_UNKNOWN_STRUCT__NA_2389E30
 OVERLAY31_UNKNOWN_STRUCT__NA_2389E30:
 	.byte 0x0E, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0xF0, 0x32, 0x38, 0x02, 0xBC, 0x2F, 0x38, 0x02
+	.byte 0x00, 0x00, 0x00, 0x00
+	.word ov31_023832F0
+	.word ov31_02382FBC
 	.global DUNGEON_D_BOX_LAYOUT_5
 DUNGEON_D_BOX_LAYOUT_5:
 	.byte 0x00, 0x00, 0x00, 0x00
@@ -8671,7 +8675,9 @@ DUNGEON_D_BOX_LAYOUT_26:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x1C, 0x12, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global OVERLAY31_UNKNOWN_STRUCT__NA_238A144
 OVERLAY31_UNKNOWN_STRUCT__NA_238A144:
-	.byte 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7C, 0x91, 0x38, 0x02, 0x04, 0x8C, 0x38, 0x02
+	.byte 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word ov31_0238917C
+	.word RecruitmentSearchMenuLoop
 	.global ov31_0238A154
 ov31_0238A154:
 	.byte 0x5B, 0x76, 0x61, 0x6C, 0x75, 0x65, 0x3A, 0x30, 0x3A, 0x33, 0x5D, 0x20, 0x5B, 0x43, 0x53, 0x3A
@@ -8687,7 +8693,9 @@ DUNGEON_D_BOX_LAYOUT_28:
 	.global OVERLAY31_UNKNOWN_STRUCT__NA_238A190
 OVERLAY31_UNKNOWN_STRUCT__NA_238A190:
 	.byte 0x0E, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x60, 0x94, 0x38, 0x02, 0xFC, 0x91, 0x38, 0x02
+	.byte 0x00, 0x00, 0x00, 0x00
+	.word ov31_02389460
+	.word HelpMenuLoop
 	.global DUNGEON_SUBMENU_6
 DUNGEON_SUBMENU_6:
 	.byte 0xA8, 0x3F, 0x00, 0x00

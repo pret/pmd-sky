@@ -7203,7 +7203,7 @@ _022C28D0:
 	mov r0, #0xf
 	bl LoadOverlay
 	mov r0, #9
-	bl ov11_022DC240
+	bl ExplorersOfSkyMain
 	mov r0, #0xf
 	bl UnloadOverlay
 	mov r2, #6
@@ -7225,7 +7225,7 @@ _022C2938:
 	mov r0, #0xf
 	bl LoadOverlay
 	mov r0, sb
-	bl ov11_022DC240
+	bl ExplorersOfSkyMain
 	mov r0, #0xf
 	bl UnloadOverlay
 	b _022C2984
@@ -7638,7 +7638,7 @@ _022C2F08:
 	mov r0, #0xf
 	bl LoadOverlay
 	mov r0, #8
-	bl ov11_022DC240
+	bl ExplorersOfSkyMain
 	mov r0, #0xf
 	bl UnloadOverlay
 	b _022C2F84
@@ -7650,7 +7650,7 @@ _022C2F5C:
 	mov r0, #0xf
 	bl LoadOverlay
 	mov r0, #7
-	bl ov11_022DC240
+	bl ExplorersOfSkyMain
 	mov r0, #0xf
 	bl UnloadOverlay
 _022C2F84:
@@ -7661,7 +7661,7 @@ _022C2F84:
 	mov r0, #0xf
 	bl LoadOverlay
 	mov r0, #0xd
-	bl ov11_022DC240
+	bl ExplorersOfSkyMain
 	mov r5, r0
 	mov r0, #0xf
 	bl UnloadOverlay
