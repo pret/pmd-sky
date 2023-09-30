@@ -2608,29 +2608,29 @@ ov29_022DE4FC: ; 0x022DE4FC
 	ldr r1, [r1]
 	ldrh r4, [r1, #4]
 	bl sub_02051ED4
-	ldr r2, _022DE560 ; =0x01FF9BA0
+	ldr r2, _022DE560 ; =sub_01FF9BA0
 	mov r1, r4
 	bl ov29_022DE2C8
 	mov r0, #0
 	bl sub_0201BCCC
 	ldr r1, _022DE55C ; =ov29_02353530
-	ldr r2, _022DE564 ; =0x01FF9E14
+	ldr r2, _022DE564 ; =sub_01FF9E14
 	ldr r1, [r1]
 	ldrh r1, [r1, #2]
 	bl ov29_022DE2C8
 	mov r0, #0
 	bl sub_0201BCF4
 	ldr r1, _022DE55C ; =ov29_02353530
-	ldr r2, _022DE568 ; =0x01FF9F80
+	ldr r2, _022DE568 ; =sub_01FF9F80
 	ldr r1, [r1]
 	ldrh r1, [r1, #2]
 	bl ov29_022DE2C8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022DE55C: .word ov29_02353530
-_022DE560: .word 0x01FF9BA0
-_022DE564: .word 0x01FF9E14
-_022DE568: .word 0x01FF9F80
+_022DE560: .word sub_01FF9BA0
+_022DE564: .word sub_01FF9E14
+_022DE568: .word sub_01FF9F80
 	arm_func_end ov29_022DE4FC
 
 	arm_func_start ov29_022DE56C

@@ -25,7 +25,11 @@
 .public GetDebugLogFlag
 .public GetFileLengthInPackWithPackNb
 .public GetHeldButtons
+.public GetKeyM2N
+.public GetKeyM2NBaseForm
 .public GetKeyM2NSwitch
+.public GetKeyN2M
+.public GetKeyN2MBaseForm
 .public GetKeyN2MSwitch
 .public GetMonsterName
 .public GetPressedButtons
