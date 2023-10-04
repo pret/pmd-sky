@@ -49,7 +49,7 @@
 .public ShowKeyboard
 .public ShowMessageInDBox
 .public ShowPortraitBox
-.public SpecialStrcpy
+.public StrcpyName
 .public StrcpySimple
 .public StrncpySimpleNoPadSafe
 .public sub_02004F74

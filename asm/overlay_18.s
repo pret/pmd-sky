@@ -1019,7 +1019,7 @@ ov18_0238AF3C: ; 0x0238AF3C
 	sub sp, sp, #0x400
 	mov r4, r0
 	bl sub_02027B1C
-	bl GetGold
+	bl GetMoneyCarried
 	str r0, [sp, #0x428]
 	bl sub_02041414
 	cmp r0, #0
@@ -1328,7 +1328,7 @@ _0238B398:
 	ldr r4, _0238BD58 ; =0x00003018
 	b _0238B468
 _0238B3A4:
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0x1f4
 	ldrlt r0, _0238BD70 ; =0x00003FCC
 	ldr r4, _0238BD74 ; =0x00000408
@@ -1593,7 +1593,7 @@ _0238B744:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238B7AC
-	bl GetGold
+	bl GetMoneyCarried
 	mov r1, #0
 	cmp r0, #0x1f4
 	mov r2, r1
@@ -2734,7 +2734,7 @@ _0238C5AC:
 	b _0238C6E4
 _0238C5C8:
 	mov r4, #1
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0x1f4
 	bge _0238C5EC
 	mov r0, #0

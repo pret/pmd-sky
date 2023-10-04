@@ -2575,7 +2575,7 @@ _0233ECB0:
 	ldrsb r1, [r7, #2]
 	add r0, r7, #4
 	strb r1, [r5, #2]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	add r0, r5, #4
 	bl ov00_022BCD4C
 	add r0, r7, #4

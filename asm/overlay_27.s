@@ -37,18 +37,18 @@ ov27_0238A140: ; 0x0238A140
 	ldr r0, [r1]
 	strb r2, [r0, #9]
 	bl ov27_0238A8EC
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, _0238A380 ; =ov27_0238CE80
 	ldr r1, [r1]
 	str r0, [r1, #0xc]
-	bl sub_0201070C
+	bl GetMoneyStored
 	ldr r1, _0238A380 ; =ov27_0238CE80
 	ldr r2, [r1]
 	str r0, [r2, #0x10]
 	ldr r0, [r1]
 	ldr r0, [r0, #0xc]
-	bl sub_02010758
-	bl sub_0201070C
+	bl AddMoneyStored
+	bl GetMoneyStored
 	ldr r1, _0238A380 ; =ov27_0238CE80
 	ldr r2, [r1]
 	str r0, [r2, #0x14]

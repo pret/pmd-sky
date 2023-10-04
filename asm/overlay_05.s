@@ -495,7 +495,7 @@ _0233D034:
 	add r0, sp, #0xec
 	bl InitPreprocessorArgs
 	add r0, sp, #0x14
-	bl sub_02059060
+	bl GetExplorerMazeTeamName
 	add r2, sp, #0x14
 	add r0, sp, #0x54
 	mov r1, #0x98
@@ -851,7 +851,7 @@ _0233D4E8:
 	str r0, [r4, #0x1b4]
 	add r0, r4, #0x1c0
 	strb r1, [r4, #0x1d4]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	mov r0, #0x1000
 	str r0, [r4]
 	b _0233D9F0
@@ -884,7 +884,7 @@ _0233D56C:
 	str r0, [r4, #0x1b4]
 	add r0, r4, #0x5a
 	strb r1, [r4, #0x1d4]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	add r0, sp, #0
 	mov r1, #0
 	bl sub_02057030

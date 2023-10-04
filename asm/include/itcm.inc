@@ -142,7 +142,7 @@
 .public ov29_0230175C
 .public ov29_02301F20
 .public ov29_02302200
-.public ov29_023082A0
+.public ShouldMonsterFollowLeader
 .public ov29_023082C4
 .public ov29_0231985C
 .public ov29_0231A460

@@ -7,7 +7,7 @@
 .public FreeDBox
 .public FreeNormalMenu
 .public FreePortraitBox
-.public GetGold
+.public GetMoneyCarried
 .public GetNbItemsInBag
 .public GetNormalMenuResult
 .public GetPressedButtons
@@ -37,7 +37,7 @@
 .public ShowDBox
 .public ShowMessageInDBox
 .public ShowPortraitBox
-.public sub_0200D0A0
+.public ItemToBulkItem
 .public sub_0200D670
 .public sub_02017C74
 .public sub_02017C80

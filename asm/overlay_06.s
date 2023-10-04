@@ -2422,7 +2422,7 @@ _0233EAE0:
 	ldrsb r1, [r5, #2]
 	add r0, r4, #4
 	strb r1, [r4, #2]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	add r0, r4, #4
 	mov r1, #0x34
 	bl ov01_02337B3C

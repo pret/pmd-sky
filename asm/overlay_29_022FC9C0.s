@@ -1219,7 +1219,7 @@ _022FDB18:
 	strh r2, [r4, #0xe]
 	ldrsh r1, [r4, #2]
 	add r0, r4, #0x90
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 	add r0, r4, #0x44
 	bl ShuffleHiddenPower
 	mov r1, #1

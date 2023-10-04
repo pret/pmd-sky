@@ -1588,7 +1588,7 @@ _0232D8F8: .word 0x00000CD7
 	arm_func_start DoMoveGravity
 DoMoveGravity: ; 0x0232D8FC
 	stmdb sp!, {r3, lr}
-	bl ov29_023383BC
+	bl TryActivateGravity
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end DoMoveGravity

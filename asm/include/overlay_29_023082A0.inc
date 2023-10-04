@@ -60,6 +60,6 @@
 .public SetActionPassTurnOrWalk
 .public ShouldRunMonsterAi
 .public sub_02054EC8
-.public sub_02058C3C
+.public DoesTacticFollowLeader
 .public SubstitutePlaceholderStringTags
 .public UpdateAiTargetPos

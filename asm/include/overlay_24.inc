@@ -41,7 +41,7 @@
 .public ShowMessageInDBox
 .public ShowPortraitBox
 .public SpecialProcAddItemToBag
-.public SpecialStrcpy
+.public StrcpyName
 .public strcpy
 .public StrcpySimple
 .public StrncpySimple

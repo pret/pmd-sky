@@ -199,7 +199,7 @@ _0238A378:
 	ldr r1, [r4, #4]
 	add r1, r1, sl, lsl #2
 	str r0, [r1, #0x370]
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, [r4, #4]
 	add r2, sp, #8
 	add r1, r1, sl, lsl #2
@@ -704,7 +704,7 @@ _0238A9C4:
 	ldr r1, [r4, #4]
 	add r1, r1, sl, lsl #2
 	str r0, [r1, #0x210]
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, [r4, #4]
 	add r2, sp, #8
 	add r1, r1, sl, lsl #2
@@ -1930,7 +1930,7 @@ _0238BB58:
 	bl GetNbItemsInBag
 	cmp r0, #0
 	beq _0238BB7C
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, _0238BE88 ; =0x0001869F
 	cmp r0, r1
 	blt _0238BB90
@@ -2013,7 +2013,7 @@ _0238BC7C:
 _0238BC94:
 	ldr r1, [r1]
 	str r0, [r1, #0x28]
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0
 	bne _0238BCCC
 	ldr r0, _0238BD60 ; =ov22_0238EC70
@@ -2029,7 +2029,7 @@ _0238BCCC:
 	ldr r0, _0238BD60 ; =ov22_0238EC70
 	ldr r5, [r0]
 	ldr r4, [r5, #0x28]
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r4, r0
 	ble _0238BD04
 	mov r1, #0xd
@@ -3274,7 +3274,7 @@ _0238CEFC:
 	bl GetNbItemsInBag
 	cmp r0, #0
 	beq _0238CF20
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, _0238D22C ; =0x0001869F
 	cmp r0, r1
 	blt _0238CF34
@@ -3357,7 +3357,7 @@ _0238D020:
 _0238D038:
 	ldr r1, [r1]
 	str r0, [r1, #0x28]
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0
 	bne _0238D070
 	ldr r0, _0238D104 ; =ov22_0238EC70
@@ -3373,7 +3373,7 @@ _0238D070:
 	ldr r0, _0238D104 ; =ov22_0238EC70
 	ldr r5, [r0]
 	ldr r4, [r5, #0x28]
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r4, r0
 	ble _0238D0A8
 	mov r1, #0xd
@@ -4043,7 +4043,7 @@ _0238D9D8:
 	bl ov22_0238ADD8
 	b _0238E734
 _0238D9F8:
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, _0238E798 ; =0x0001869F
 	cmp r0, r1
 	blt _0238DA14
@@ -4075,7 +4075,7 @@ _0238DA48:
 	bl ov22_0238ADD8
 	b _0238E734
 _0238DA68:
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, _0238E798 ; =0x0001869F
 	cmp r0, r1
 	ble _0238DA84
@@ -4453,7 +4453,7 @@ _0238DFA0:
 	b _0238E734
 _0238DFC4:
 	bl ov22_0238E7E4
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0
 	ldreq r0, _0238E794 ; =ov22_0238EC70
 	moveq r1, #6
@@ -4462,7 +4462,7 @@ _0238DFC4:
 	beq _0238E02C
 	ldr r0, _0238E794 ; =ov22_0238EC70
 	ldr r4, [r0]
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, [r4, #0x1c]
 	cmp r1, r0
 	movgt r0, #0xd
@@ -4524,7 +4524,7 @@ _0238E0A0:
 	beq _0238E0F4
 	ldr r0, _0238E794 ; =ov22_0238EC70
 	ldr r4, [r0]
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r2, [r4, #0x1c]
 	ldr r1, _0238E798 ; =0x0001869F
 	add r0, r2, r0
@@ -4656,7 +4656,7 @@ _0238E280:
 _0238E2A4:
 	ldr r0, _0238E794 ; =ov22_0238EC70
 	ldr r4, [r0]
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r2, [r4, #0x28]
 	ldr r1, _0238E798 ; =0x0001869F
 	add r0, r2, r0
@@ -4768,7 +4768,7 @@ _0238E418:
 	beq _0238E544
 	b _0238E734
 _0238E43C:
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r2, _0238E794 ; =ov22_0238EC70
 	ldr r1, _0238E798 ; =0x0001869F
 	ldr r2, [r2]

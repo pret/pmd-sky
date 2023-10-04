@@ -582,7 +582,7 @@ _022F6AE0:
 	mov r0, #1
 	b _022F6C84
 _022F6AE8:
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, r6
 	bge _022F6B0C
 	ldr r1, _022F6C9C ; =0x00000E4B

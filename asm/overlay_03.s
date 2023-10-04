@@ -1738,7 +1738,7 @@ _0233E114:
 	strb r0, [r2, #0x3c]
 	ldr r0, [r1]
 	add r0, r0, #0x3d
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	ldr r1, _0233EE18 ; =0x00003869
 	mov r0, #0x1c
 	bl sub_02066468
@@ -1780,7 +1780,7 @@ _0233E1C0:
 	strb r0, [r2, #0x3c]
 	ldr r0, [r1]
 	add r0, r0, #0x3d
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	mov r0, r4
 	ldr r0, [r0]
 	mov r1, #0x1000
@@ -1819,7 +1819,7 @@ _0233E254:
 	strb r0, [r2, #0x3c]
 	ldr r0, [r1]
 	add r0, r0, #0x3d
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	mov r0, r4
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x148]
@@ -3214,7 +3214,7 @@ _0233F5C4:
 	strb r2, [r1, #0x20]
 	ldr r0, [r0]
 	add r0, r0, #0x184
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	bl ov03_0233CAB8
 	cmp r0, #1
 	ldr r0, _02340318 ; =ov03_02346BC4
@@ -3265,7 +3265,7 @@ _0233F684:
 	strb r3, [r1, #0x20]
 	ldr r0, [r0]
 	add r0, r0, #0x6c
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	ldr r0, _02340318 ; =ov03_02346BC4
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x6c]
@@ -3405,7 +3405,7 @@ _0233F8B0:
 	strb r3, [r1, #0x20]
 	ldr r0, [r0]
 	add r0, r0, #0x6c
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	ldr r0, _02340318 ; =ov03_02346BC4
 	ldr r0, [r0]
 	ldrsb r1, [r0, #4]
@@ -5982,7 +5982,7 @@ _02341DC4:
 	mov r0, r4
 	ldr r0, [r0]
 	add r0, r0, #0x2d
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	mov r0, r4
 	ldr r0, [r0]
 	ldrb r0, [r0, #0xbe]
@@ -6063,7 +6063,7 @@ _02341EFC:
 	mov r0, r4
 	ldr r0, [r0]
 	add r0, r0, #0x2d
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	mov r0, r4
 	ldr r0, [r0]
 	ldrb r0, [r0, #0xbe]

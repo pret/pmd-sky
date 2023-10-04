@@ -24,7 +24,7 @@
 .public GetDirectionTowardsPosition
 .public GetEntityMoveTargetAndRange
 .public GetEquippedThrowableItem
-.public GetGold
+.public GetMoneyCarried
 .public GetHero
 .public GetItemCategoryVeneer
 .public GetItemIndex

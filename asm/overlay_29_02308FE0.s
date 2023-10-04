@@ -5788,11 +5788,11 @@ _0230E218:
 	add r0, sp, #0x100
 	add r0, r0, #0xa
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 	ldrsh r1, [sp, #0xb8]
 	ldrsh r2, [sp, #0xb2]
 	add r0, sp, #0xf8
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 	add r1, sp, #0x100
 	add r0, sp, #0x98
 	add r1, r1, #0xa

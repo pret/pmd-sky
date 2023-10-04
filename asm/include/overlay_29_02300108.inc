@@ -81,12 +81,12 @@
 .public StringFromMessageId
 .public sub_02024FB8
 .public sub_02025888
-.public sub_020258E4
+.public CopyStringFromMessageId
 .public sub_02056084
 .public sub_02058534
 .public sub_0205858C
 .public sub_020585B4
-.public sub_02058C9C
+.public GetUnlockedTacticFlags
 .public SubstitutePlaceholderStringTags
 .public vsprintf
 .public WONDER_CHEST_EXP_BOOST

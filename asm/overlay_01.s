@@ -3894,7 +3894,7 @@ ov01_0232C5C8: ; 0x0232C5C8
 	mov r1, #0x14
 	bl MemZero
 	add r0, sp, #4
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	cmp r6, #0
 	add r1, sp, #4
 	add r0, sl, #0x48
@@ -6229,7 +6229,7 @@ _0232E748:
 	mov r1, r0
 	add r0, r5, #0x42
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 _0232E760:
 	add sp, sp, #0x2c
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -16540,7 +16540,7 @@ _023372B4:
 	ldr r0, _02337550 ; =ov01_0233C1AC
 	ldr r0, [r0]
 	add r0, r0, #9
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	ldr r0, _02337550 ; =ov01_0233C1AC
 	ldr r1, [r0]
 	add r0, r1, #0x39
@@ -16594,11 +16594,11 @@ _02337358:
 	cmp r0, #0
 	beq _023373BC
 	bl GetKeyboardStringResult
-	bl SetTeamName
+	bl SetMainTeamName
 	ldr r0, _02337550 ; =ov01_0233C1AC
 	ldr r0, [r0]
 	add r0, r0, #9
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 _023373BC:
 	ldr r0, _02337550 ; =ov01_0233C1AC
 	mov r2, #0xa
@@ -18423,7 +18423,7 @@ ov01_02338A24: ; 0x02338A24
 	ldr r2, [r2, #4]
 	add r2, r2, #0x4000
 	str r1, [r2, #0xb5c]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	ldr r0, _02338B04 ; =ov01_0233C21C
 	add r1, sp, #0
 	ldr r0, [r0, #4]

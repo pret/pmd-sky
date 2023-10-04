@@ -8,7 +8,7 @@
 .public GetKeyboardStringResult
 .public GetLanguageType
 .public GetReleasedStylus
-.public GetTeamNameCheck
+.public GetMainTeamNameWithCheck
 .public MemAlloc
 .public MemcpySimple
 .public MemFree

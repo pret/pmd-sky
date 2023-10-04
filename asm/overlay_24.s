@@ -2248,7 +2248,7 @@ ov24_0238C1D4: ; 0x0238C1D4
 	add r0, r1, #0x66
 	add r0, r0, #0x100
 	add r1, r1, #0x52
-	bl SpecialStrcpy
+	bl StrcpyName
 	ldr r0, _0238C33C ; =ov24_0238C600
 	ldr r1, [r0]
 	add r0, r1, #0x22

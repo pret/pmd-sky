@@ -8,7 +8,7 @@
 .public FreeDBox
 .public FreeNormalMenu
 .public FreePortraitBox
-.public GetGold
+.public GetMoneyCarried
 .public GetNormalMenuResult
 .public GetPressedButtons
 .public GetTeamMember
@@ -57,7 +57,7 @@
 .public ShowMessageInDBox
 .public ShowPortraitBox
 .public SpecialProcAddItemToBag
-.public sub_0200D0A0
+.public ItemToBulkItem
 .public sub_0201007C
 .public sub_020101A0
 .public sub_02013150

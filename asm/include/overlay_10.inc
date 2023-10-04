@@ -163,7 +163,7 @@
 .public GetDungeonModeSpecial
 .public GetFileLengthInPackWithPackNb
 .public GetGameMode
-.public GetGold
+.public GetMoneyCarried
 .public GetItemAtIdx
 .public GetMonsterGenderVeneer
 .public GetNbFloors

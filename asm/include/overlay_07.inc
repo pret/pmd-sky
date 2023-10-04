@@ -4,7 +4,7 @@
 .public GetKeyboardStringResult
 .public GetLanguageType
 .public GetStringFromFileVeneer
-.public GetTeamNameCheck
+.public GetMainTeamNameWithCheck
 .public InitPreprocessorArgs
 .public MemAlloc
 .public MemcpySimple

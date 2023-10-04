@@ -13,7 +13,7 @@
 .public GetActualBuyPrice
 .public GetActualSellPrice
 .public GetCurrentBagCapacity
-.public GetGold
+.public GetMoneyCarried
 .public GetItemAtIdx
 .public GetNbItemsInBag
 .public GetNormalMenuResult

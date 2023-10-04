@@ -68,7 +68,7 @@ ov31_02382874: ; 0x02382874
 	mov r2, #0
 	add r3, sp, #0x104
 	bl sub_02026214
-	bl GetGold
+	bl GetMoneyCarried
 	str r0, [sp, #0x228]
 	ldr r0, _02382AA4 ; =0x000008B5
 	bl StringFromMessageId
@@ -8237,7 +8237,7 @@ ov31_02389A78: ; 0x02389A78
 	bl GetLeaderMonster
 	ldrb r1, [r0, #0xa]
 	add r0, sp, #0x14
-	bl sub_02058C4C
+	bl GetUnlockedTactics
 	ldrb r0, [sl, #0x528]
 	cmp r0, #0
 	beq _02389B64
@@ -8245,7 +8245,7 @@ ov31_02389A78: ; 0x02389A78
 	bl GetLeaderMonster
 	ldrb r1, [r0, #0xa]
 	add r0, sp, #8
-	bl sub_02058C4C
+	bl GetUnlockedTactics
 	ldr r4, _02389C20 ; =ov29_02353538
 	mov r7, r6
 	add r5, sp, #4

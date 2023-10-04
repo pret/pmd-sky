@@ -93,7 +93,7 @@
 .public sub_02054FB8
 .public sub_02054FEC
 .public sub_02055020
-.public sub_02058C9C
+.public GetUnlockedTacticFlags
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags
 .public SwitchAnimationControlToNextFrame

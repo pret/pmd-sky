@@ -57,7 +57,7 @@
 .public GetSpriteIndex__020526EC
 .public GetStringFromFileVeneer
 .public GetTeamMember
-.public GetTeamNameCheck
+.public GetMainTeamNameWithCheck
 .public GetVictoriesOnOneFloor
 .public InitAnimationControl
 .public InitPreprocessorArgs
@@ -215,7 +215,7 @@
 .public SetIrqFlag
 .public SetScenarioScriptVar
 .public SetSpriteIdForAnimationControl
-.public SetTeamName
+.public SetMainTeamName
 .public ShowKeyboard
 .public ShowMessageInDBox
 .public sprintf
@@ -249,7 +249,7 @@
 .public sub_0201D12C
 .public sub_0202065C
 .public sub_020245D0
-.public sub_02025314
+.public StrncpyName
 .public sub_02025404
 .public sub_0202544C
 .public sub_02025480

@@ -27,7 +27,7 @@
 .public GetCurrentBagCapacity
 .public GetDexNumber
 .public GetFloorType
-.public GetGold
+.public GetMoneyCarried
 .public GetItemAction
 .public GetItemCategoryVeneer
 .public GetItemInfo
@@ -241,7 +241,7 @@
 .public sub_02053CA0
 .public sub_02054F44
 .public sub_020585B4
-.public sub_02058C4C
+.public GetUnlockedTactics
 .public TryPointCameraToMonster
 .public UpdateMapSurveyorFlag
 .public vsprintf

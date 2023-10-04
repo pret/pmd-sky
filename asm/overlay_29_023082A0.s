@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_023082A0
-ov29_023082A0: ; 0x023082A0
+	arm_func_start ShouldMonsterFollowLeader
+ShouldMonsterFollowLeader: ; 0x023082A0
 	stmdb sp!, {r3, lr}
 	ldr r1, [r0, #0xb4]
 	ldrb r0, [r1, #6]
@@ -12,9 +12,9 @@ ov29_023082A0: ; 0x023082A0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
 	ldrb r0, [r1, #0xa8]
-	bl sub_02058C3C
+	bl DoesTacticFollowLeader
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_023082A0
+	arm_func_end ShouldMonsterFollowLeader
 
 	arm_func_start ov29_023082C4
 ov29_023082C4: ; 0x023082C4

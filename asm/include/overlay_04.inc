@@ -4,7 +4,7 @@
 .public GetLanguageType
 .public GetPressedButtons
 .public GetStringFromFileVeneer
-.public GetTeamNameCheck
+.public GetMainTeamNameWithCheck
 .public IncrementNbSkyGiftsSent
 .public InitPreprocessorArgs
 .public InitStandardItem

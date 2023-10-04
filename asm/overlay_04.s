@@ -870,7 +870,7 @@ _0233D4FC:
 	add r2, r4, #0x7f0
 	add r0, r2, #0x1000
 	strb r3, [r1, #0x851]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	ldr r1, _0233E274 ; =0x000037C1
 	mov r0, #0x1c
 	bl ov04_0233CB84
@@ -910,7 +910,7 @@ _0233D5AC:
 	strb r2, [r1, #0x850]
 	add r0, r4, #0x5c
 	strb r2, [r1, #0x851]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	ldr r1, _0233E27C ; =0x000037C2
 	mov r0, #0x1c
 	bl ov04_0233CB84
@@ -962,7 +962,7 @@ _0233D648:
 	strb r5, [r2, #0x850]
 	add r0, r0, #0x1000
 	strb r3, [r2, #0x851]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	add r0, sp, #0xec
 	bl InitPreprocessorArgs
 	bl sub_0200FD48
@@ -1018,7 +1018,7 @@ _0233D734:
 	strb r1, [r2, #0x850]
 	add r0, r0, #0x1800
 	strb r1, [r2, #0x851]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	ldr r1, _0233E27C ; =0x000037C2
 	mov r0, #0x1c
 	bl ov04_0233CB84

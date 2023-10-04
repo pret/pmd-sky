@@ -7424,7 +7424,7 @@ _022C2C34:
 	cmp r7, #0x32
 	blt _022C2BA0
 	bl RemoveEmptyItemsInBag
-	bl GetGold
+	bl GetMoneyCarried
 	add r0, r0, r0, lsr #31
 	mov r0, r0, asr #1
 	bl SetMoneyCarried

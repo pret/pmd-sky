@@ -22,7 +22,7 @@ LevelUpItemEffect: ; 0x02302A5C
 	beq _02302AA4
 	ldrb r1, [r5, #0xa]
 	add r0, sp, #0xc
-	bl sub_02058C9C
+	bl GetUnlockedTacticFlags
 _02302AA4:
 	ldrsh r2, [r5, #0x12]
 	ldrsh r1, [r5, #0x16]
@@ -131,7 +131,7 @@ ov29_02302C04: ; 0x02302C04
 	beq _02302CB8
 	ldrb r1, [r1, #0xa]
 	add r0, sp, #0
-	bl sub_02058C9C
+	bl GetUnlockedTacticFlags
 	ldr r0, _02302CC0 ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x748]
