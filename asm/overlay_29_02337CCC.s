@@ -554,8 +554,8 @@ _023383B4: .word LogMessageByIdWithPopupCheckUser
 _023383B8: .word 0x00000D8D
 	arm_func_end ov29_023383A8
 
-	arm_func_start ov29_023383BC
-ov29_023383BC: ; 0x023383BC
+	arm_func_start TryActivateGravity
+TryActivateGravity: ; 0x023383BC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EntityIsValid__02337CA8
@@ -587,7 +587,7 @@ _02338400:
 _02338424: .word ov29_02353538
 _02338428: .word 0x00000C06
 _0233842C: .word 0x00000C05
-	arm_func_end ov29_023383BC
+	arm_func_end TryActivateGravity
 
 	arm_func_start ov29_02338430
 ov29_02338430: ; 0x02338430
@@ -14791,7 +14791,7 @@ _02344620:
 	bl ov29_022F0604
 	b _02344A34
 _02344670:
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0x64
 	bge _02344690
 	ldr r0, _02344A80 ; =0x00000F4E
@@ -14872,7 +14872,7 @@ _02344784:
 	bl ov29_022F0604
 	b _02344A34
 _023447A4:
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0x64
 	bge _023447C4
 	ldr r0, _02344AA0 ; =0x00000F36
@@ -14957,7 +14957,7 @@ _023448C4:
 	bl ov29_022F0604
 	b _02344A34
 _023448E4:
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0x64
 	bge _02344904
 	ldr r0, _02344AC8 ; =0x00000F57
@@ -15013,7 +15013,7 @@ _02344950:
 	bl ov29_022F0604
 	b _02344A34
 _023449B8:
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0x64
 	mov r2, #0
 	bge _023449D8

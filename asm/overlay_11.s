@@ -269,7 +269,7 @@ _022DC558:
 	ldrsh r2, [r8, #6]
 	add r0, sp, #0x10
 	mov sb, #0
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 	add r0, sp, #0x10
 	mov r1, #0x38
 	bl IqSkillFlagTest
@@ -2029,7 +2029,7 @@ _022DDCCC:
 _022DDCD4:
 	ldrsh r1, [r6, #2]
 	add r0, sp, #0x1c
-	bl sub_0200CF78
+	bl InitBulkItem
 	mov r0, r7, lsl #0x10
 	add r1, sp, #0x1c
 	mov r0, r0, asr #0x10
@@ -11746,7 +11746,7 @@ _022E6294:
 	bl PreprocessStringFromMessageId
 	add r0, sp, #0xa0
 	add r1, sp, #0x60
-	bl SpecialStrcpy
+	bl StrcpyName
 	add r1, sp, #0xa0
 	mov r0, #1
 	mov r2, r1
@@ -14034,7 +14034,7 @@ ov11_022E8090: ; 0x022E8090
 	add r1, sp, #0
 	add r0, r4, #0x3a
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 	mov r0, r4
 	bl sub_02052EFC
 	ldr r0, _022E810C ; =ov11_02324F98
@@ -15477,9 +15477,9 @@ GroundMainNextDay: ; 0x022E9438
 	cmp r4, #3
 	bne _022E9468
 	mov r0, #0
-	bl GetKecleonItems1
+	bl GenerateKecleonItems1
 	mov r0, #0
-	bl GetKecleonItems2
+	bl GenerateKecleonItems2
 	ldmia sp!, {r4, pc}
 _022E9468:
 	cmp r4, #2
@@ -15499,9 +15499,9 @@ _022E9498:
 	mov r1, r4
 	bl DebugPrint0
 	mov r0, r4
-	bl GetKecleonItems1
+	bl GenerateKecleonItems1
 	mov r0, r4
-	bl GetKecleonItems2
+	bl GenerateKecleonItems2
 	bl GenerateDailyMissions
 	bl sub_02012B7C
 	bl sub_0201080C
@@ -41470,7 +41470,7 @@ _022FF0F8:
 	ldrsb r0, [r8, #0x10]
 	bl sub_02027AF0
 _022FF118:
-	bl GetGold
+	bl GetMoneyCarried
 	str r0, [sp, #0x28]
 	add r6, sp, #4
 	ldr r3, _022FF1C8 ; =0x0000C402
@@ -44386,7 +44386,7 @@ _0230180C:
 	add r0, r1, #0x6e
 	add r0, r0, #0x100
 	add r1, r1, #0x5a
-	bl SpecialStrcpy
+	bl StrcpyName
 	ldr r0, _02301A10 ; =ov11_02324D48
 	mov r2, #0
 	ldr r0, [r0]
@@ -44427,7 +44427,7 @@ _0230187C:
 	add r0, r1, #0x6e
 	add r0, r0, #0x100
 	add r1, r1, #0x5a
-	bl SpecialStrcpy
+	bl StrcpyName
 	ldr r0, _02301A10 ; =ov11_02324D48
 	mov r2, #0
 	ldr r0, [r0]
@@ -44766,7 +44766,7 @@ _02301D88:
 	add r0, r1, #0x6e
 	add r0, r0, #0x100
 	add r1, r1, #0x5a
-	bl SpecialStrcpy
+	bl StrcpyName
 	ldr r0, _02301F8C ; =ov11_02324D48
 	mov r2, #0
 	ldr r0, [r0]
@@ -44807,7 +44807,7 @@ _02301DF8:
 	add r0, r1, #0x6e
 	add r0, r0, #0x100
 	add r1, r1, #0x5a
-	bl SpecialStrcpy
+	bl StrcpyName
 	ldr r0, _02301F8C ; =ov11_02324D48
 	mov r2, #0
 	ldr r0, [r0]
@@ -45093,7 +45093,7 @@ _0230221C:
 	add r0, r1, #0x6e
 	add r0, r0, #0x100
 	add r1, r1, #0x5a
-	bl SpecialStrcpy
+	bl StrcpyName
 	ldr r0, _023025E4 ; =ov11_02324D48
 	mov r2, #0
 	ldr r0, [r0]
@@ -47196,7 +47196,7 @@ _02303E90:
 	add r1, sp, #6
 	add r0, r4, #0x3a
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 	ldrsh r2, [r4, #4]
 	mov r0, #0
 	mov r1, #0x3e
@@ -47238,7 +47238,7 @@ _02303F30:
 	add r1, sp, #6
 	add r0, r4, #0x3a
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 	ldrsh r2, [r4, #4]
 	mov r0, #0
 	mov r1, #0x40
@@ -47275,7 +47275,7 @@ _02303FD0:
 	bl GetNameRaw
 	add r0, sp, #0x94
 	mov r1, r0
-	bl SpecialStrcpy
+	bl StrcpyName
 	mov r3, #0
 	ldr r0, _02304298 ; =ov11_02324D58
 	str r3, [sp]
@@ -51547,7 +51547,7 @@ _02307A30:
 	mov r1, r4
 	add r3, r6, #0x250
 	mov r2, #1
-	bl sub_02011528
+	bl ApplyGummiBoostsToGroundMonster
 	b _02307B08
 _02307AE8:
 	cmp r1, #1
@@ -51557,7 +51557,7 @@ _02307AE8:
 	mov r1, r4
 	add r3, r6, #0x250
 	mov r2, #1
-	bl sub_02011554
+	bl ApplyGummiBoostsToTeamMember
 _02307B08:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r1, [r5, #0x10]

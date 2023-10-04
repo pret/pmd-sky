@@ -8,7 +8,7 @@
 .public FreeDBox
 .public FreeNormalMenu
 .public FreePortraitBox
-.public GetGold
+.public GetMoneyCarried
 .public GetItemAtIdx
 .public GetNbItemsInBag
 .public GetNormalMenuResult
@@ -42,8 +42,8 @@
 .public sub_02010154
 .public sub_020101A0
 .public sub_020103AC
-.public sub_0201070C
-.public sub_02010758
+.public GetMoneyStored
+.public AddMoneyStored
 .public sub_02017CCC
 .public sub_0202836C
 .public sub_0202A66C

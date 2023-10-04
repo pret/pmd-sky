@@ -20,7 +20,7 @@
 .public GetSosMailCount
 .public GetStringFromFileVeneer
 .public GetTeamMember
-.public GetTeamNameCheck
+.public GetMainTeamNameWithCheck
 .public IncrementNbSkyGiftsSent
 .public InitPreprocessorArgs
 .public InitStandardItem

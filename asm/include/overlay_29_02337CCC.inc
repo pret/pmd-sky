@@ -25,7 +25,7 @@
 .public GetExclusiveItem
 .public GetExplorerMazeMonster
 .public GetFloorType
-.public GetGold
+.public GetMoneyCarried
 .public GetItemCategoryVeneer
 .public GetKecleonIdToSpawnByFloor
 .public GetLeader

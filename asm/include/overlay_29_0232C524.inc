@@ -90,7 +90,7 @@
 .public ov29_0231F6E4
 .public ov29_02332F18
 .public ov29_02336694
-.public ov29_023383BC
+.public TryActivateGravity
 .public ov29_0234B084
 .public ov29_0234B0B4
 .public ov29_0234BA54

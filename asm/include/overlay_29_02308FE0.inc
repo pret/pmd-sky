@@ -259,7 +259,7 @@
 .public StringFromMessageId
 .public StrncpySimpleNoPad
 .public sub_0200FB54
-.public sub_02025314
+.public StrncpyName
 .public sub_02025888
 .public sub_0204AF00
 .public sub_020534BC
@@ -270,7 +270,7 @@
 .public sub_02056830
 .public sub_020584FC
 .public sub_020585B4
-.public sub_02058EB0
+.public EnableAllLearnableIqSkills
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags
 .public SUPER_LUCK_CRIT_RATE_BOOST

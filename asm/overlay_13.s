@@ -1193,13 +1193,13 @@ _0238B230:
 	add r1, sp, #0x70
 	ldr r0, [r0]
 	add r0, r0, #0x3e4
-	bl SpecialStrcpy
+	bl StrcpyName
 	ldr r0, _0238B4F8 ; =ov13_0238CEA0
 	add r1, sp, #0x70
 	ldr r0, [r0]
 	add r0, r0, #4
 	add r0, r0, #0x400
-	bl SpecialStrcpy
+	bl StrcpyName
 	ldr r1, _0238B4F8 ; =ov13_0238CEA0
 	mov r0, #3
 	ldr r3, [r1]

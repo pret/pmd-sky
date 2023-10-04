@@ -585,7 +585,7 @@ _022F7AE8:
 	ldrsh r1, [r5, #0xc]
 	ldrsh r2, [r5, #6]
 	add r0, r5, #0x4c
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 _022F7B70:
 	ldrb r1, [r5]
 	add r0, r5, #0x3e
@@ -727,7 +727,7 @@ _022F7CE4:
 	ldrsh r1, [r5, #0xc]
 	ldrsh r2, [r5, #6]
 	add r0, r5, #0x4c
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 _022F7D6C:
 	ldrb r1, [r5]
 	add r0, r5, #0x3e
@@ -2598,7 +2598,7 @@ TryActivateConversion2: ; 0x022F9744
 	mov r0, r7
 	mov r1, r4
 	bl GetMoveTypeForMonster
-	bl sub_02050964
+	bl GetConversion2ConvertToType
 	movs r4, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
@@ -5619,7 +5619,7 @@ InitOtherMonsterData: ; 0x022FBE58
 	strb r2, [ip, #0x16a]
 	ldrsh r1, [ip, #2]
 	ldrsh r2, [ip, #0xe]
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 	mov r0, r4
 	bl ov29_023021F0
 	mov r0, r4

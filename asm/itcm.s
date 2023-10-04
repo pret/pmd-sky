@@ -3107,7 +3107,7 @@ _01FFAAB8:
 	bne _01FFB2A4
 	mov r0, r4
 	ldr sl, [r4, #0xb4]
-	bl ov29_023082A0
+	bl ShouldMonsterFollowLeader
 	cmp r0, #0
 	bne _01FFAD14
 	ldr r0, _01FFB2B4 ; =ov29_02353538

@@ -75,15 +75,15 @@
 .public GetFirstEmptyMemberIdx
 .public GetFirstUnequippedItemOfType
 .public GetGameMode
-.public GetGold
+.public GetMoneyCarried
 .public GetHeldButtons
 .public GetHero
 .public GetInfoMoveGround
 .public GetItemAtIdx
 .public GetItemCategoryVeneer
 .public GetItemMoveId16
-.public GetKecleonItems1
-.public GetKecleonItems2
+.public GenerateKecleonItems1
+.public GenerateKecleonItems2
 .public GetKeyboardStatus
 .public GetKeyboardStringResult
 .public GetLanguage
@@ -313,7 +313,7 @@
 .public ShowMessageInDBox
 .public ShowPortraitBox
 .public SpecialProcAddItemToBag
-.public SpecialStrcpy
+.public StrcpyName
 .public sprintf
 .public strcat
 .public StrcmpMonsterName
@@ -400,7 +400,7 @@
 .public sub_0200BD2C
 .public sub_0200BD50
 .public sub_0200CF6C
-.public sub_0200CF78
+.public InitBulkItem
 .public sub_0200D310
 .public sub_0200D65C
 .public sub_0200D670
@@ -412,8 +412,8 @@
 .public sub_02011394
 .public sub_02011420
 .public sub_020114F8
-.public sub_02011528
-.public sub_02011554
+.public ApplyGummiBoostsToGroundMonster
+.public ApplyGummiBoostsToTeamMember
 .public sub_02011FA0
 .public sub_02012B7C
 .public sub_020130B8
@@ -482,7 +482,7 @@
 .public sub_0201F36C
 .public sub_0201F464
 .public sub_020236FC
-.public sub_02025314
+.public StrncpyName
 .public sub_02026214
 .public sub_02026268
 .public sub_020262E0
@@ -723,7 +723,7 @@
 .public sub_02058794
 .public sub_0205882C
 .public sub_02058AFC
-.public sub_02058EB0
+.public EnableAllLearnableIqSkills
 .public sub_0205AE28
 .public sub_0205B028
 .public sub_0205B584

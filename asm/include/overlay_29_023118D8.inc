@@ -87,7 +87,7 @@
 .public SECONDARY_TERRAIN_TYPES
 .public SPEED_BOOST_TURN_RANGE
 .public sub_02025888
-.public sub_020258E4
+.public CopyStringFromMessageId
 .public SubstitutePlaceholderStringTags
 .public TryActivateSteadfast
 .public UpdateStatusIconFlags

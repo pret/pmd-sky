@@ -12,7 +12,7 @@
 .public GetAdvancedMenuResult
 .public GetEncodedHalfword
 .public GetEvoFamily
-.public GetGold
+.public GetMoneyCarried
 .public GetMoveName
 .public GetMovesetLevelUpPtr
 .public GetNormalMenuResult

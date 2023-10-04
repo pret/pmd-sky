@@ -833,8 +833,8 @@ sub_0200CF6C: ; 0x0200CF6C
 _0200CF74: .word InitItem
 	arm_func_end sub_0200CF6C
 
-	arm_func_start sub_0200CF78
-sub_0200CF78: ; 0x0200CF78
+	arm_func_start InitBulkItem
+InitBulkItem: ; 0x0200CF78
 	stmdb sp!, {r4, r5, r6, lr}
 	movs r5, r1
 	mov r6, r0
@@ -867,10 +867,10 @@ _0200CFE4:
 	mov r0, #0
 	strh r0, [r6, #2]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0200CF78
+	arm_func_end InitBulkItem
 
-	arm_func_start sub_0200CFF0
-sub_0200CFF0: ; 0x0200CFF0
+	arm_func_start BulkItemToItem
+BulkItemToItem: ; 0x0200CFF0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	ldrsh r1, [r4]
@@ -920,10 +920,10 @@ _0200D08C:
 _0200D098:
 	bl ItemZInit
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0200CFF0
+	arm_func_end BulkItemToItem
 
-	arm_func_start sub_0200D0A0
-sub_0200D0A0: ; 0x0200D0A0
+	arm_func_start ItemToBulkItem
+ItemToBulkItem: ; 0x0200D0A0
 	ldrb r2, [r1]
 	tst r2, #1
 	movne r2, #1
@@ -936,7 +936,7 @@ sub_0200D0A0: ; 0x0200D0A0
 	streqh r1, [r0]
 	strh r1, [r0, #2]
 	bx lr
-	arm_func_end sub_0200D0A0
+	arm_func_end ItemToBulkItem
 
 	arm_func_start GetDisplayedBuyPrice
 GetDisplayedBuyPrice: ; 0x0200D0D0
@@ -3035,11 +3035,11 @@ _0200EBC8: .word ARM9_UNKNOWN_TABLE__NA_2097FF8
 
 	arm_func_start sub_0200EBCC
 sub_0200EBCC: ; 0x0200EBCC
-	ldr ip, _0200EBD8 ; =SetGold
+	ldr ip, _0200EBD8 ; =SetActiveInventory
 	mov r0, #0
 	bx ip
 	.align 2, 0
-_0200EBD8: .word SetGold
+_0200EBD8: .word SetActiveInventory
 	arm_func_end sub_0200EBCC
 
 	arm_func_start sub_0200EBDC
@@ -3070,7 +3070,7 @@ _0200EC00:
 	cmp sl, #3
 	blt _0200EBF8
 	mov r0, r7
-	bl SetGold
+	bl SetActiveInventory
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0200EC44: .word BAG_ITEMS_PTR_MIRROR
@@ -3124,8 +3124,8 @@ _0200ECA0:
 _0200ECD4: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200EC90
 
-	arm_func_start SetGold
-SetGold: ; 0x0200ECD8
+	arm_func_start SetActiveInventory
+SetActiveInventory: ; 0x0200ECD8
 	ldr r2, _0200ECF8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r1, #0x12c
 	ldr r3, [r2]
@@ -3136,10 +3136,10 @@ SetGold: ; 0x0200ECD8
 	bx lr
 	.align 2, 0
 _0200ECF8: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end SetGold
+	arm_func_end SetActiveInventory
 
-	arm_func_start GetGold
-GetGold: ; 0x0200ECFC
+	arm_func_start GetMoneyCarried
+GetMoneyCarried: ; 0x0200ECFC
 	ldr r0, _0200ED18 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x388]
@@ -3149,7 +3149,7 @@ GetGold: ; 0x0200ECFC
 	bx lr
 	.align 2, 0
 _0200ED18: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end GetGold
+	arm_func_end GetMoneyCarried
 
 	arm_func_start SetMoneyCarried
 SetMoneyCarried: ; 0x0200ED1C
@@ -4087,7 +4087,7 @@ SpecialProcAddItemToBag: ; 0x0200F84C
 	sub sp, sp, #8
 	mov r1, r0
 	add r0, sp, #0
-	bl sub_0200CFF0
+	bl BulkItemToItem
 	add r0, sp, #0
 	mov r1, #0
 	bl AddItemToBag
@@ -4990,7 +4990,7 @@ AddItemToStorage: ; 0x0201031C
 	mov r5, r0
 	add r0, sp, #0
 	mov r1, r4
-	bl sub_0200CFF0
+	bl BulkItemToItem
 	ldr r0, _020103A8 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
 	ldr r2, [r0]
@@ -5286,8 +5286,8 @@ sub_020106C4: ; 0x020106C4
 _02010708: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020106C4
 
-	arm_func_start sub_0201070C
-sub_0201070C: ; 0x0201070C
+	arm_func_start GetMoneyStored
+GetMoneyStored: ; 0x0201070C
 	ldr r0, _02010720 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	add r0, r0, #0x1000
@@ -5295,7 +5295,7 @@ sub_0201070C: ; 0x0201070C
 	bx lr
 	.align 2, 0
 _02010720: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0201070C
+	arm_func_end GetMoneyStored
 
 	arm_func_start SetMoneyStored
 SetMoneyStored: ; 0x02010724
@@ -5316,8 +5316,8 @@ _02010750: .word 0x0098967F
 _02010754: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end SetMoneyStored
 
-	arm_func_start sub_02010758
-sub_02010758: ; 0x02010758
+	arm_func_start AddMoneyStored
+AddMoneyStored: ; 0x02010758
 	ldr r1, _02010774 ; =BAG_ITEMS_PTR_MIRROR
 	ldr ip, _02010778 ; =SetMoneyStored
 	ldr r1, [r1]
@@ -5328,7 +5328,7 @@ sub_02010758: ; 0x02010758
 	.align 2, 0
 _02010774: .word BAG_ITEMS_PTR_MIRROR
 _02010778: .word SetMoneyStored
-	arm_func_end sub_02010758
+	arm_func_end AddMoneyStored
 
 	arm_func_start sub_0201077C
 sub_0201077C: ; 0x0201077C
@@ -5510,8 +5510,8 @@ _02010944:
 _02010950: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_020108B4
 
-	arm_func_start sub_02010954
-sub_02010954: ; 0x02010954
+	arm_func_start SortKecleonItems1
+SortKecleonItems1: ; 0x02010954
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r6, #0
@@ -5580,10 +5580,10 @@ _02010A2C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02010A48: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010954
+	arm_func_end SortKecleonItems1
 
-	arm_func_start GetKecleonItems1
-GetKecleonItems1: ; 0x02010A4C
+	arm_func_start GenerateKecleonItems1
+GenerateKecleonItems1: ; 0x02010A4C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r4, #0
@@ -5611,21 +5611,21 @@ _02010A7C:
 	add r7, r7, #1
 	cmp r7, #8
 	blt _02010A7C
-	bl sub_02010954
+	bl SortKecleonItems1
 	mov r0, r8
-	bl GetKecleonItems2
+	bl GenerateKecleonItems2
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02010AC0: .word KECLEON_SHOP_ITEM_TABLE_LISTS_1
 _02010AC4: .word 0x0000270F
-	arm_func_end GetKecleonItems1
+	arm_func_end GenerateKecleonItems1
 
 	arm_func_start sub_02010AC8
 sub_02010AC8: ; 0x02010AC8
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	add r0, sp, #0
-	bl sub_0200CF78
+	bl InitBulkItem
 	ldr r0, _02010B38 ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, #0
 	ldr r3, [r0]
@@ -5757,8 +5757,8 @@ _02010C50:
 _02010C5C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010BC0
 
-	arm_func_start sub_02010C60
-sub_02010C60: ; 0x02010C60
+	arm_func_start SortKecleonItems2
+SortKecleonItems2: ; 0x02010C60
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #4
 	mov r6, #0
@@ -5827,10 +5827,10 @@ _02010D38:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02010D54: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010C60
+	arm_func_end SortKecleonItems2
 
-	arm_func_start GetKecleonItems2
-GetKecleonItems2: ; 0x02010D58
+	arm_func_start GenerateKecleonItems2
+GenerateKecleonItems2: ; 0x02010D58
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	mov r4, #0
@@ -5858,19 +5858,19 @@ _02010D88:
 	add r7, r7, #1
 	cmp r7, #4
 	blt _02010D88
-	bl sub_02010C60
+	bl SortKecleonItems2
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02010DC4: .word KECLEON_SHOP_ITEM_TABLE_LISTS_2
 _02010DC8: .word 0x0000270F
-	arm_func_end GetKecleonItems2
+	arm_func_end GenerateKecleonItems2
 
 	arm_func_start sub_02010DCC
 sub_02010DCC: ; 0x02010DCC
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	add r0, sp, #0
-	bl sub_0200CF78
+	bl InitBulkItem
 	ldr r0, _02010E3C ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, #0
 	ldr r3, [r0]
@@ -6421,8 +6421,8 @@ sub_020114F8: ; 0x020114F8
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020114F8
 
-	arm_func_start sub_02011528
-sub_02011528: ; 0x02011528
+	arm_func_start ApplyGummiBoostsToGroundMonster
+ApplyGummiBoostsToGroundMonster: ; 0x02011528
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	mov ip, r0
@@ -6434,10 +6434,10 @@ sub_02011528: ; 0x02011528
 	bl ApplyGummiBoostsGroundMode
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
-	arm_func_end sub_02011528
+	arm_func_end ApplyGummiBoostsToGroundMonster
 
-	arm_func_start sub_02011554
-sub_02011554: ; 0x02011554
+	arm_func_start ApplyGummiBoostsToTeamMember
+ApplyGummiBoostsToTeamMember: ; 0x02011554
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	mov ip, r0
@@ -6449,10 +6449,10 @@ sub_02011554: ; 0x02011554
 	bl ApplyGummiBoostsGroundMode
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
-	arm_func_end sub_02011554
+	arm_func_end ApplyGummiBoostsToTeamMember
 
-	arm_func_start sub_02011580
-sub_02011580: ; 0x02011580
+	arm_func_start ApplySitrusBerryBoostToGroundMonster
+ApplySitrusBerryBoostToGroundMonster: ; 0x02011580
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _020115B8 ; =SITRUS_BERRY_FULL_HP_BOOST
 	mov r7, r0
@@ -6469,10 +6469,10 @@ sub_02011580: ; 0x02011580
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020115B8: .word SITRUS_BERRY_FULL_HP_BOOST
-	arm_func_end sub_02011580
+	arm_func_end ApplySitrusBerryBoostToGroundMonster
 
-	arm_func_start sub_020115BC
-sub_020115BC: ; 0x020115BC
+	arm_func_start ApplyLifeSeedBoostToGroundMonster
+ApplyLifeSeedBoostToGroundMonster: ; 0x020115BC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _020115F4 ; =LIFE_SEED_HP_BOOST
 	mov r7, r0
@@ -6489,10 +6489,10 @@ sub_020115BC: ; 0x020115BC
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020115F4: .word LIFE_SEED_HP_BOOST
-	arm_func_end sub_020115BC
+	arm_func_end ApplyLifeSeedBoostToGroundMonster
 
-	arm_func_start ProcessGinsengOverworld
-ProcessGinsengOverworld: ; 0x020115F8
+	arm_func_start ApplyGinsengToGroundMonster
+ApplyGinsengToGroundMonster: ; 0x020115F8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r5, r0
 	mov r0, #0x64
@@ -6568,10 +6568,10 @@ _020116E4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02011708: .word GINSENG_CHANCE_3
-	arm_func_end ProcessGinsengOverworld
+	arm_func_end ApplyGinsengToGroundMonster
 
-	arm_func_start sub_0201170C
-sub_0201170C: ; 0x0201170C
+	arm_func_start ApplyProteinBoostToGroundMonster
+ApplyProteinBoostToGroundMonster: ; 0x0201170C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _02011744 ; =PROTEIN_STAT_BOOST
 	mov r7, r0
@@ -6588,10 +6588,10 @@ sub_0201170C: ; 0x0201170C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02011744: .word PROTEIN_STAT_BOOST
-	arm_func_end sub_0201170C
+	arm_func_end ApplyProteinBoostToGroundMonster
 
-	arm_func_start sub_02011748
-sub_02011748: ; 0x02011748
+	arm_func_start ApplyCalciumBoostToGroundMonster
+ApplyCalciumBoostToGroundMonster: ; 0x02011748
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _02011780 ; =CALCIUM_STAT_BOOST
 	mov r7, r0
@@ -6608,10 +6608,10 @@ sub_02011748: ; 0x02011748
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02011780: .word CALCIUM_STAT_BOOST
-	arm_func_end sub_02011748
+	arm_func_end ApplyCalciumBoostToGroundMonster
 
-	arm_func_start sub_02011784
-sub_02011784: ; 0x02011784
+	arm_func_start ApplyIronBoostToGroundMonster
+ApplyIronBoostToGroundMonster: ; 0x02011784
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _020117BC ; =IRON_STAT_BOOST
 	mov r7, r0
@@ -6628,10 +6628,10 @@ sub_02011784: ; 0x02011784
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020117BC: .word IRON_STAT_BOOST
-	arm_func_end sub_02011784
+	arm_func_end ApplyIronBoostToGroundMonster
 
-	arm_func_start sub_020117C0
-sub_020117C0: ; 0x020117C0
+	arm_func_start ApplyZincBoostToGroundMonster
+ApplyZincBoostToGroundMonster: ; 0x020117C0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _020117F8 ; =ZINC_STAT_BOOST
 	mov r7, r0
@@ -6648,10 +6648,10 @@ sub_020117C0: ; 0x020117C0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020117F8: .word ZINC_STAT_BOOST
-	arm_func_end sub_020117C0
+	arm_func_end ApplyZincBoostToGroundMonster
 
-	arm_func_start sub_020117FC
-sub_020117FC: ; 0x020117FC
+	arm_func_start ApplyNectarBoostToGroundMonster
+ApplyNectarBoostToGroundMonster: ; 0x020117FC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldrsh r4, [r6, #8]
@@ -6665,10 +6665,10 @@ sub_020117FC: ; 0x020117FC
 	ldrsh r0, [r6, #8]
 	sub r0, r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_020117FC
+	arm_func_end ApplyNectarBoostToGroundMonster
 
-	arm_func_start sub_02011830
-sub_02011830: ; 0x02011830
+	arm_func_start IsMonsterAffectedByGravelyrockGroundMode
+IsMonsterAffectedByGravelyrockGroundMode: ; 0x02011830
 	stmdb sp!, {r3, lr}
 	ldrsh r0, [r0, #4]
 	bl FemaleToMaleForm
@@ -6677,15 +6677,15 @@ sub_02011830: ; 0x02011830
 	moveq r0, #1
 	movne r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_02011830
+	arm_func_end IsMonsterAffectedByGravelyrockGroundMode
 
-	arm_func_start sub_02011850
-sub_02011850: ; 0x02011850
+	arm_func_start ApplyGravelyrockBoostToGroundMonster
+ApplyGravelyrockBoostToGroundMonster: ; 0x02011850
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
 	ldrsh r4, [r6, #8]
-	bl sub_02011830
+	bl IsMonsterAffectedByGravelyrockGroundMode
 	cmp r0, #0
 	beq _02011884
 	add r0, r6, #8
@@ -6702,7 +6702,7 @@ _0201188C:
 	ldrsh r0, [r6, #8]
 	sub r0, r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_02011850
+	arm_func_end ApplyGravelyrockBoostToGroundMonster
 
 	arm_func_start ApplyGummiBoostsGroundMode
 ApplyGummiBoostsGroundMode: ; 0x0201189C
@@ -7853,7 +7853,7 @@ _0201273C:
 	mov r4, r8, lsl #2
 	ldrsh r1, [r5, r4]
 	add r0, sp, #4
-	bl sub_0200CF78
+	bl InitBulkItem
 	add r1, r6, r8, lsl #2
 	add r0, sl, r8, lsl #1
 	ldrsh r7, [r1, #0x16]
@@ -27743,7 +27743,7 @@ _02022C14:
 	beq _02022C3C
 	add r0, sp, #0x1c8
 	mov r1, #2
-	bl sub_02024C6C
+	bl GetCurrentTeamNameString
 	mov r7, r0
 	b _020232F0
 _02022C3C:
@@ -28033,7 +28033,7 @@ _0202303C:
 	bne _0202306C
 	add r0, sp, #0x1c8
 	mov r1, #0
-	bl sub_02024C6C
+	bl GetCurrentTeamNameString
 	mov r7, r0
 	b _020232F0
 _0202306C:
@@ -28044,7 +28044,7 @@ _0202306C:
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
-	bl sub_02024C6C
+	bl GetCurrentTeamNameString
 	mov r7, r0
 	b _020232F0
 _02023094:
@@ -29632,7 +29632,7 @@ _0202451C:
 	mov r1, r0, lsl #0x10
 	add r0, sp, #0
 	mov r1, r1, lsr #0x10
-	bl sub_020258E4
+	bl CopyStringFromMessageId
 	cmp r4, #0x11
 	add r2, sp, #0
 	bne _02024550
@@ -30160,7 +30160,7 @@ sub_02024BD8: ; 0x02024BD8
 	mov r0, r2, lsr #0x10
 	bne _02024C0C
 	and r0, r0, #0xff
-	bl sub_02058C1C
+	bl GetIqSkillStringId
 	mov r1, r0
 	mov r0, r4
 	bl GetStringFromFileVeneer
@@ -30201,8 +30201,8 @@ _02024C64: .word _02099D8C
 _02024C68: .word _02099D50
 	arm_func_end sub_02024C18
 
-	arm_func_start sub_02024C6C
-sub_02024C6C: ; 0x02024C6C
+	arm_func_start GetCurrentTeamNameString
+GetCurrentTeamNameString: ; 0x02024C6C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x40
 	mov r4, r1
@@ -30230,7 +30230,7 @@ _02024CAC:
 	beq _02024CE8
 _02024CC8:
 	add r0, sp, #0
-	bl GetTeamName
+	bl GetMainTeamName
 	ldr r1, _02024D38 ; =_02099E08
 	add r2, sp, #0
 	mov r0, r5
@@ -30266,7 +30266,7 @@ _02024D38: .word _02099E08
 _02024D3C: .word 0x00000237
 _02024D40: .word _02099D50
 _02024D44: .word 0x00000236
-	arm_func_end sub_02024C6C
+	arm_func_end GetCurrentTeamNameString
 
 	arm_func_start sub_02024D48
 sub_02024D48: ; 0x02024D48
@@ -30684,8 +30684,8 @@ _02025224:
 	bx lr
 	arm_func_end StrncpySimpleNoPadSafe
 
-	arm_func_start SpecialStrcpy
-SpecialStrcpy: ; 0x02025230
+	arm_func_start StrcpyName
+StrcpyName: ; 0x02025230
 	stmdb sp!, {r4, lr}
 	mov ip, #0
 	mov r3, ip
@@ -30754,10 +30754,10 @@ _020252FC:
 	mov r1, #0
 	strb r1, [r0]
 	ldmia sp!, {r4, pc}
-	arm_func_end SpecialStrcpy
+	arm_func_end StrcpyName
 
-	arm_func_start sub_02025314
-sub_02025314: ; 0x02025314
+	arm_func_start StrncpyName
+StrncpyName: ; 0x02025314
 	stmdb sp!, {r3, r4, r5, lr}
 	mov lr, #0
 	mov ip, lr
@@ -30829,7 +30829,7 @@ _020253F4:
 	sub r2, r2, #1
 	bgt _02025324
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02025314
+	arm_func_end StrncpyName
 
 	arm_func_start sub_02025404
 sub_02025404: ; 0x02025404
@@ -30868,7 +30868,7 @@ sub_0202544C: ; 0x0202544C
 	add r1, sp, #0
 	mov r0, r5
 	mov r2, r4
-	bl sub_02025314
+	bl StrncpyName
 	add sp, sp, #0x40
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202544C
@@ -31242,8 +31242,8 @@ StringFromMessageId: ; 0x020258C4
 	ldmia sp!, {r4, pc}
 	arm_func_end StringFromMessageId
 
-	arm_func_start sub_020258E4
-sub_020258E4: ; 0x020258E4
+	arm_func_start CopyStringFromMessageId
+CopyStringFromMessageId: ; 0x020258E4
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x400
 	mov r4, r0
@@ -31254,10 +31254,10 @@ sub_020258E4: ; 0x020258E4
 	bl strcpy
 	add sp, sp, #0x400
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020258E4
+	arm_func_end CopyStringFromMessageId
 
-	arm_func_start CopyStringFromMessageId
-CopyStringFromMessageId: ; 0x0202590C
+	arm_func_start CopyNStringFromMessageId
+CopyNStringFromMessageId: ; 0x0202590C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x400
 	mov r5, r0
@@ -31270,7 +31270,7 @@ CopyStringFromMessageId: ; 0x0202590C
 	bl strncpy
 	add sp, sp, #0x400
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end CopyStringFromMessageId
+	arm_func_end CopyNStringFromMessageId
 
 	arm_func_start LoadTblTalk
 LoadTblTalk: ; 0x0202593C
@@ -31703,8 +31703,8 @@ _02025EA0:
 _02025EE4: .word _0209AB9C
 	arm_func_end sub_02025E84
 
-	arm_func_start sub_02025EE8
-sub_02025EE8: ; 0x02025EE8
+	arm_func_start IsAOrBPressed
+IsAOrBPressed: ; 0x02025EE8
 	stmdb sp!, {r3, lr}
 	add r1, sp, #0
 	mov r0, #0
@@ -31715,7 +31715,7 @@ sub_02025EE8: ; 0x02025EE8
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_02025EE8
+	arm_func_end IsAOrBPressed
 
 	arm_func_start sub_02025F10
 sub_02025F10: ; 0x02025F10
@@ -53168,7 +53168,7 @@ _02037A40:
 	ldr r0, _02037C28 ; =_020AFDF0
 	ldr r0, [r0]
 	add r0, r0, #0xfc
-	bl SetTeamName
+	bl SetMainTeamName
 _02037A54:
 	mov r0, #4
 	b _02037C20
@@ -65546,11 +65546,11 @@ _020421E8:
 	mov r0, r5
 	ldr r1, [r1, #4]
 	str r5, [r1, #0x24]
-	bl sub_02058C1C
+	bl GetIqSkillStringId
 	mov r1, r0
 	add r0, sp, #4
 	mov r2, #0x40
-	bl CopyStringFromMessageId
+	bl CopyNStringFromMessageId
 	add r0, sp, #0x44
 	add r1, sp, #4
 	bl strcat
@@ -66078,7 +66078,7 @@ _020428D4:
 	strb r7, [sp]
 	bl GetActualSellPrice
 	mov r7, r0
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, _02042A7C ; =0x0001869F
 	add r0, r7, r0
 	cmp r0, r1
@@ -68350,7 +68350,7 @@ sub_02044604: ; 0x02044604
 	mov r2, #0
 	mov r3, #0x334
 	bl sub_02026268
-	bl GetGold
+	bl GetMoneyCarried
 	mov r1, #0x18
 	str r1, [sp, #0x2c]
 	str r0, [sp, #0x28]
@@ -73201,7 +73201,7 @@ sub_02048614: ; 0x02048614
 sub_02048624: ; 0x02048624
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl SetGold
+	bl SetActiveInventory
 	mov r0, #0
 	bl sub_020106C4
 	mov r0, #0
@@ -73214,11 +73214,11 @@ sub_02048644: ; 0x02048644
 	stmdb sp!, {r4, lr}
 	bl GetGameMode
 	mov r4, r0
-	bl sub_0204BFC0
+	bl EventFlagResume
 	cmp r4, #4
 	bne _02048678
 	mov r0, #2
-	bl SetGold
+	bl SetActiveInventory
 	mov r0, #0
 	bl sub_020106C4
 	mov r0, #2
@@ -73228,7 +73228,7 @@ _02048678:
 	cmp r4, #5
 	bne _0204869C
 	mov r0, #2
-	bl SetGold
+	bl SetActiveInventory
 	mov r0, #0
 	bl sub_020106C4
 	mov r0, #2
@@ -73238,7 +73238,7 @@ _0204869C:
 	cmp r4, #3
 	bne _020486C0
 	mov r0, #1
-	bl SetGold
+	bl SetActiveInventory
 	mov r0, #1
 	bl sub_020106C4
 	mov r0, #1
@@ -73246,7 +73246,7 @@ _0204869C:
 	b _020486D8
 _020486C0:
 	mov r0, #0
-	bl SetGold
+	bl SetActiveInventory
 	mov r0, #0
 	bl sub_020106C4
 	mov r0, #0
@@ -73284,7 +73284,7 @@ sub_0204872C: ; 0x0204872C
 	mov r0, #2
 	bl SetBothScreensWindowsColor
 	mov r0, #0
-	bl SetGold
+	bl SetActiveInventory
 	mov r0, #0
 	bl sub_020106C4
 	mov r0, #0
@@ -73351,7 +73351,7 @@ InitMainTeamAfterQuiz: ; 0x020487C4
 	ldr r0, _020489FC ; =_020AFF00
 	add r1, sp, #0
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 _020487FC:
 	ldr r0, _020489F4 ; =NOTIFY_NOTE
 	ldrb r0, [r0, #0x1c]
@@ -73363,7 +73363,7 @@ _020487FC:
 	ldr r0, _02048A04 ; =_020AFF14
 	add r1, sp, #0
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 _02048828:
 	bl GetHeroMemberIdx
 	mvn r1, #0
@@ -73586,7 +73586,7 @@ sub_02048AC4: ; 0x02048AC4
 	add r0, r4, #0x14
 	strh r2, [r4, #8]
 	ldrsh r1, [r4, #4]
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 	ldrh r0, [r5, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -73609,7 +73609,7 @@ sub_02048B48: ; 0x02048B48
 	bl InitScriptVariableValues
 	bl sub_02052C74
 	bl sub_0200CABC
-	bl StoreDefaultTeamName
+	bl StoreDefaultTeamData
 	bl ResetGlobalProgress
 	bl sub_0205B478
 	bl sub_0205C75C
@@ -76893,10 +76893,10 @@ _0204B608:
 	bl GetPartyMembers
 	b _0204B670
 _0204B614:
-	bl GetGold
+	bl GetMoneyCarried
 	b _0204B670
 _0204B61C:
-	bl sub_0201070C
+	bl GetMoneyStored
 	b _0204B670
 _0204B624:
 	bl GetLanguageType
@@ -77028,10 +77028,10 @@ _0204B7B0:
 	bl GetPartyMembers
 	b _0204B818
 _0204B7BC:
-	bl GetGold
+	bl GetMoneyCarried
 	b _0204B818
 _0204B7C4:
-	bl sub_0201070C
+	bl GetMoneyStored
 	b _0204B818
 _0204B7CC:
 	bl GetLanguageType
@@ -77683,8 +77683,8 @@ sub_0204BF88: ; 0x0204BF88
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_0204BF88
 
-	arm_func_start sub_0204BFC0
-sub_0204BFC0: ; 0x0204BFC0
+	arm_func_start EventFlagResume
+EventFlagResume: ; 0x0204BFC0
 	stmdb sp!, {r4, lr}
 	bl GetGameMode
 	cmp r0, #1
@@ -77823,7 +77823,7 @@ sub_0204BFC0: ; 0x0204BFC0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0204C1E0: .word _0209CF64
-	arm_func_end sub_0204BFC0
+	arm_func_end EventFlagResume
 
 	arm_func_start EventFlagBackup
 EventFlagBackup: ; 0x0204C1E4
@@ -81741,7 +81741,7 @@ _0204F39C:
 	bl IsMoneyAllowed
 	cmp r0, #0
 	bne _0204F3BC
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0
 	orrgt r5, r5, #2
 	orrgt r5, r5, #0x1000
@@ -82197,7 +82197,7 @@ _0204F8FC:
 	mov r1, r0
 	add r0, sp, #0
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 	add r2, sp, #0
 	add r1, r5, #0x1c
 	mov r0, #0x44
@@ -83498,12 +83498,12 @@ GetAbilityString: ; 0x0205091C
 	add r1, r1, #0xde
 	add r1, r1, #0x3500
 	mov r1, r1, lsl #0x10
-	ldr ip, _02050938 ; =CopyStringFromMessageId
+	ldr ip, _02050938 ; =CopyNStringFromMessageId
 	mov r1, r1, lsr #0x10
 	mov r2, #0x50
 	bx ip
 	.align 2, 0
-_02050938: .word CopyStringFromMessageId
+_02050938: .word CopyNStringFromMessageId
 	arm_func_end GetAbilityString
 
 	arm_func_start GetAbilityDescStringId
@@ -83524,14 +83524,14 @@ GetTypeStringId: ; 0x02050950
 	bx lr
 	arm_func_end GetTypeStringId
 
-	arm_func_start sub_02050964
-sub_02050964: ; 0x02050964
+	arm_func_start GetConversion2ConvertToType
+GetConversion2ConvertToType: ; 0x02050964
 	ldr r1, _02050970 ; =_020A192C
 	ldrb r0, [r1, r0]
 	bx lr
 	.align 2, 0
 _02050970: .word _020A192C
-	arm_func_end sub_02050964
+	arm_func_end GetConversion2ConvertToType
 
 	arm_func_start sub_02050974
 sub_02050974: ; 0x02050974
@@ -83644,8 +83644,8 @@ _02050AC0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end CopyBitsFrom
 
-	arm_func_start StoreDefaultTeamName
-StoreDefaultTeamName: ; 0x02050ACC
+	arm_func_start StoreDefaultTeamData
+StoreDefaultTeamData: ; 0x02050ACC
 	stmdb sp!, {lr}
 	sub sp, sp, #0x14
 	add r0, sp, #0
@@ -83654,7 +83654,7 @@ StoreDefaultTeamName: ; 0x02050ACC
 	ldr r0, _02050B08 ; =_022AB918
 	add r1, sp, #0
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 	ldr r0, _02050B0C ; =_022AB918
 	mov r1, #0
 	str r1, [r0, #0xc]
@@ -83664,10 +83664,10 @@ StoreDefaultTeamName: ; 0x02050ACC
 	.align 2, 0
 _02050B08: .word _022AB918
 _02050B0C: .word _022AB918
-	arm_func_end StoreDefaultTeamName
+	arm_func_end StoreDefaultTeamData
 
-	arm_func_start GetTeamNameCheck
-GetTeamNameCheck: ; 0x02050B10
+	arm_func_start GetMainTeamNameWithCheck
+GetMainTeamNameWithCheck: ; 0x02050B10
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x40
 	mov r4, r0
@@ -83690,7 +83690,7 @@ _02050B4C:
 	add r1, sp, #0
 	mov r0, r4
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 _02050B68:
 	add sp, sp, #0x40
 	ldmia sp!, {r4, pc}
@@ -83698,10 +83698,10 @@ _02050B68:
 _02050B70: .word _022AB918
 _02050B74: .word _022AB918
 _02050B78: .word 0x00000237
-	arm_func_end GetTeamNameCheck
+	arm_func_end GetMainTeamNameWithCheck
 
-	arm_func_start GetTeamName
-GetTeamName: ; 0x02050B7C
+	arm_func_start GetMainTeamName
+GetMainTeamName: ; 0x02050B7C
 	ldr ip, _02050B8C ; =StrncpySimpleNoPadSafe
 	ldr r1, _02050B90 ; =_022AB918
 	mov r2, #0xa
@@ -83709,10 +83709,10 @@ GetTeamName: ; 0x02050B7C
 	.align 2, 0
 _02050B8C: .word StrncpySimpleNoPadSafe
 _02050B90: .word _022AB918
-	arm_func_end GetTeamName
+	arm_func_end GetMainTeamName
 
-	arm_func_start SetTeamName
-SetTeamName: ; 0x02050B94
+	arm_func_start SetMainTeamName
+SetMainTeamName: ; 0x02050B94
 	ldr r1, _02050BB4 ; =_022AB918
 	mov r3, #0
 _02050B9C:
@@ -83724,7 +83724,7 @@ _02050B9C:
 	bx lr
 	.align 2, 0
 _02050BB4: .word _022AB918
-	arm_func_end SetTeamName
+	arm_func_end SetMainTeamName
 
 	arm_func_start GetRankupPoints
 GetRankupPoints: ; 0x02050BB8
@@ -86468,7 +86468,7 @@ _02052C70: .word _022AB92C
 sub_02052C74: ; 0x02052C74
 	stmdb sp!, {r3, lr}
 	bl sub_020550E0
-	bl sub_020560C8
+	bl RemoveActiveMembersFromAllTeams
 	ldr r2, _02052CD4 ; =TEAM_MEMBER_TABLE_PTR
 	mov lr, #0
 	ldr r0, [r2]
@@ -86499,16 +86499,16 @@ _02052CD4: .word TEAM_MEMBER_TABLE_PTR
 sub_02052CD8: ; 0x02052CD8
 	stmdb sp!, {r3, lr}
 	bl sub_02055118
-	bl sub_02056158
+	bl RemoveActiveMembersFromSpecialEpisodeTeam
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02052CD8
 
 	arm_func_start sub_02052CE8
 sub_02052CE8: ; 0x02052CE8
-	ldr ip, _02052CF0 ; =sub_020561C0
+	ldr ip, _02052CF0 ; =RemoveActiveMembersFromRescueTeam
 	bx ip
 	.align 2, 0
-_02052CF0: .word sub_020561C0
+_02052CF0: .word RemoveActiveMembersFromRescueTeam
 	arm_func_end sub_02052CE8
 
 	arm_func_start sub_02052CF4
@@ -86557,7 +86557,7 @@ sub_02052CF4: ; 0x02052CF4
 	strb r3, [r8, #6]
 	strb r3, [r8, #7]
 	ldrsh r2, [r8, #8]
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 	cmp r4, #0
 	beq _02052DDC
 	mov r3, #0
@@ -86586,7 +86586,7 @@ _02052DEC:
 	add r1, sp, #8
 	add r0, r8, #0x3a
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 	b _02052E24
 _02052E14:
 	mov r1, r6
@@ -86647,7 +86647,7 @@ GuestMonsterToGroundMonster: ; 0x02052E50
 	strb r2, [r5, #7]
 	ldrsh r1, [r5, #4]
 	ldrsh r2, [r5, #8]
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 	add r0, r5, #0x22
 	add r1, r4, #8
 	bl GetInfoGroundMoveset
@@ -86690,7 +86690,7 @@ sub_02052EFC: ; 0x02052EFC
 	strh r2, [r4, #8]
 	ldrsh r1, [r4, #4]
 	add r0, r4, #0x14
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 	ldrsh r1, [r4, #4]
 	add r0, r4, #0x22
 	mov r2, #0
@@ -86720,7 +86720,7 @@ StrcmpMonsterName: ; 0x02052FB0
 	bl GetNameString
 	mov r1, r0
 	add r0, sp, #0
-	bl SpecialStrcpy
+	bl StrcpyName
 	add r1, sp, #0
 	mov r0, r4
 	mov r2, #0xa
@@ -90178,7 +90178,7 @@ sub_02055B78: ; 0x02055B78
 	add r0, sp, #0x28
 	mov r1, r6
 	strh r2, [sp, #0x1c]
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 	mov r2, #0
 	add r0, sp, #0x36
 	mov r1, r6
@@ -90200,7 +90200,7 @@ _02055C58:
 	add r0, sp, #0x4e
 	add r1, sp, #0
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 _02055C74:
 	add r6, sp, #0x14
 	mov r5, #4
@@ -90551,8 +90551,8 @@ sub_020560B8: ; 0x020560B8
 _020560C4: .word SetActiveTeam
 	arm_func_end sub_020560B8
 
-	arm_func_start sub_020560C8
-sub_020560C8: ; 0x020560C8
+	arm_func_start RemoveActiveMembersFromAllTeams
+RemoveActiveMembersFromAllTeams: ; 0x020560C8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov lr, #0
 	ldr r7, _02056154 ; =TEAM_MEMBER_TABLE_PTR
@@ -90592,10 +90592,10 @@ _020560F0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02056154: .word TEAM_MEMBER_TABLE_PTR
-	arm_func_end sub_020560C8
+	arm_func_end RemoveActiveMembersFromAllTeams
 
-	arm_func_start sub_02056158
-sub_02056158: ; 0x02056158
+	arm_func_start RemoveActiveMembersFromSpecialEpisodeTeam
+RemoveActiveMembersFromSpecialEpisodeTeam: ; 0x02056158
 	stmdb sp!, {r3, lr}
 	mov lr, #0
 	ldr r3, _020561BC ; =TEAM_MEMBER_TABLE_PTR
@@ -90624,10 +90624,10 @@ _02056170:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020561BC: .word TEAM_MEMBER_TABLE_PTR
-	arm_func_end sub_02056158
+	arm_func_end RemoveActiveMembersFromSpecialEpisodeTeam
 
-	arm_func_start sub_020561C0
-sub_020561C0: ; 0x020561C0
+	arm_func_start RemoveActiveMembersFromRescueTeam
+RemoveActiveMembersFromRescueTeam: ; 0x020561C0
 	stmdb sp!, {r3, lr}
 	mov lr, #0
 	ldr r3, _02056224 ; =TEAM_MEMBER_TABLE_PTR
@@ -90656,7 +90656,7 @@ _020561D8:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02056224: .word TEAM_MEMBER_TABLE_PTR
-	arm_func_end sub_020561C0
+	arm_func_end RemoveActiveMembersFromRescueTeam
 
 	arm_func_start CheckTeamMemberIdx
 CheckTeamMemberIdx: ; 0x02056228
@@ -93887,34 +93887,34 @@ _02058C14: .word 0xFFFF000F
 _02058C18: .word _020AFC4C
 	arm_func_end sub_02058AFC
 
-	arm_func_start sub_02058C1C
-sub_02058C1C: ; 0x02058C1C
+	arm_func_start GetIqSkillStringId
+GetIqSkillStringId: ; 0x02058C1C
 	add r0, r0, #0xe5
 	add r0, r0, #0x2600
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bx lr
-	arm_func_end sub_02058C1C
+	arm_func_end GetIqSkillStringId
 
 	arm_func_start sub_02058C30
 sub_02058C30: ; 0x02058C30
-	ldr ip, _02058C38 ; =sub_0205A430
+	ldr ip, _02058C38 ; =CopyTacticString
 	bx ip
 	.align 2, 0
-_02058C38: .word sub_0205A430
+_02058C38: .word CopyTacticString
 	arm_func_end sub_02058C30
 
-	arm_func_start sub_02058C3C
-sub_02058C3C: ; 0x02058C3C
+	arm_func_start DoesTacticFollowLeader
+DoesTacticFollowLeader: ; 0x02058C3C
 	ldr r1, _02058C48 ; =_020A190C
 	ldrb r0, [r1, r0]
 	bx lr
 	.align 2, 0
 _02058C48: .word _020A190C
-	arm_func_end sub_02058C3C
+	arm_func_end DoesTacticFollowLeader
 
-	arm_func_start sub_02058C4C
-sub_02058C4C: ; 0x02058C4C
+	arm_func_start GetUnlockedTactics
+GetUnlockedTactics: ; 0x02058C4C
 	stmdb sp!, {r3, lr}
 	mov lr, #0
 	ldr r3, _02058C98 ; =TACTICS_UNLOCK_LEVEL_TABLE
@@ -93939,10 +93939,10 @@ _02058C8C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02058C98: .word TACTICS_UNLOCK_LEVEL_TABLE
-	arm_func_end sub_02058C4C
+	arm_func_end GetUnlockedTactics
 
-	arm_func_start sub_02058C9C
-sub_02058C9C: ; 0x02058C9C
+	arm_func_start GetUnlockedTacticFlags
+GetUnlockedTacticFlags: ; 0x02058C9C
 	stmdb sp!, {r4, lr}
 	mov r4, #0
 	ldr lr, _02058CD4 ; =TACTICS_UNLOCK_LEVEL_TABLE
@@ -93960,7 +93960,7 @@ _02058CB0:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02058CD4: .word TACTICS_UNLOCK_LEVEL_TABLE
-	arm_func_end sub_02058C9C
+	arm_func_end GetUnlockedTacticFlags
 
 	arm_func_start CanLearnIqSkill
 CanLearnIqSkill: ; 0x02058CD8
@@ -94105,8 +94105,8 @@ GetSpeciesIqSkill: ; 0x02058E68
 _02058E88: .word IQ_GROUP_SKILLS
 	arm_func_end GetSpeciesIqSkill
 
-	arm_func_start sub_02058E8C
-sub_02058E8C: ; 0x02058E8C
+	arm_func_start DisableAllIqSkills
+DisableAllIqSkills: ; 0x02058E8C
 	mov r3, #0
 	mov r2, r3
 _02058E94:
@@ -94117,17 +94117,17 @@ _02058E94:
 	cmp r3, #3
 	blt _02058E94
 	bx lr
-	arm_func_end sub_02058E8C
+	arm_func_end DisableAllIqSkills
 
-	arm_func_start sub_02058EB0
-sub_02058EB0: ; 0x02058EB0
+	arm_func_start EnableAllLearnableIqSkills
+EnableAllLearnableIqSkills: ; 0x02058EB0
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x48
 	mov r6, r0
 	add r0, sp, #0
 	bl GetLearnableIqSkills
 	mov r0, r6
-	bl sub_02058E8C
+	bl DisableAllIqSkills
 	mov r5, #0
 	add r4, sp, #0
 	b _02058EF4
@@ -94145,7 +94145,7 @@ _02058EF4:
 _02058EFC:
 	add sp, sp, #0x48
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_02058EB0
+	arm_func_end EnableAllLearnableIqSkills
 
 	arm_func_start IqSkillFlagTest
 IqSkillFlagTest: ; 0x02058F04
@@ -94258,8 +94258,8 @@ _02059028:
 _0205905C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02058FCC
 
-	arm_func_start sub_02059060
-sub_02059060: ; 0x02059060
+	arm_func_start GetExplorerMazeTeamName
+GetExplorerMazeTeamName: ; 0x02059060
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _020590B8 ; =TEAM_MEMBER_TABLE_PTR
 	mov r5, r0
@@ -94286,7 +94286,7 @@ _020590A8:
 	.align 2, 0
 _020590B8: .word TEAM_MEMBER_TABLE_PTR
 _020590BC: .word 0x00000235
-	arm_func_end sub_02059060
+	arm_func_end GetExplorerMazeTeamName
 
 	arm_func_start sub_020590C0
 sub_020590C0: ; 0x020590C0
@@ -95600,7 +95600,7 @@ _0205A2B4:
 	mov r1, r0
 	add r0, sp, #0x3e
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 	add r0, sp, #0
 	add r1, sp, #4
 	mov r2, #0x140
@@ -95657,7 +95657,7 @@ _0205A3B8:
 	bl GetNameString
 	mov r1, r0
 	add r0, sp, #0
-	bl SpecialStrcpy
+	bl StrcpyName
 	add r0, sp, #0
 	add r1, sp, #0x86
 	mov r2, #0xa
@@ -95669,7 +95669,7 @@ _0205A3B8:
 	mov r1, r0
 	add r0, sp, #0x86
 	mov r2, #0xa
-	bl sub_02025314
+	bl StrncpyName
 _0205A3FC:
 	ldrsh r0, [r6]
 	mvn r1, #0
@@ -95688,18 +95688,18 @@ _0205A424:
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_0205A340
 
-	arm_func_start sub_0205A430
-sub_0205A430: ; 0x0205A430
+	arm_func_start CopyTacticString
+CopyTacticString: ; 0x0205A430
 	ldr r2, _0205A448 ; =TACTIC_NAME_STRING_IDS
 	mov r1, r1, lsl #1
 	ldrh r1, [r2, r1]
-	ldr ip, _0205A44C ; =CopyStringFromMessageId
+	ldr ip, _0205A44C ; =CopyNStringFromMessageId
 	mov r2, #0x40
 	bx ip
 	.align 2, 0
 _0205A448: .word TACTIC_NAME_STRING_IDS
-_0205A44C: .word CopyStringFromMessageId
-	arm_func_end sub_0205A430
+_0205A44C: .word CopyNStringFromMessageId
+	arm_func_end CopyTacticString
 
 	arm_func_start sub_0205A450
 sub_0205A450: ; 0x0205A450
@@ -96103,7 +96103,7 @@ _0205AA04:
 	mov r3, r1, lsl #1
 	ldr r1, _0205ADEC ; =STATUS_NAME_STRING_IDS
 	ldrh r1, [r1, r3]
-	bl CopyStringFromMessageId
+	bl CopyNStringFromMessageId
 	ldr r0, [sp, #8]
 	ldr r2, _0205ADF0 ; =_020A34FC
 	str r0, [sp, #0xa8]
@@ -96168,11 +96168,11 @@ _0205AB08:
 	bl sub_02025888
 	str r0, [sp, #0xc]
 	ldrb r0, [fp, r8]
-	bl sub_02058C1C
+	bl GetIqSkillStringId
 	mov r1, r0
 	ldr r0, [sp, #0xc]
 	mov r2, #0x50
-	bl CopyStringFromMessageId
+	bl CopyNStringFromMessageId
 	ldr r0, [sp, #0xc]
 	ldrb r1, [fp, r8]
 	str r0, [sp, #0xa8]
@@ -96607,7 +96607,7 @@ sub_0205B120: ; 0x0205B120
 	mov r7, r1
 	mov r2, r3
 	strh r6, [r5, #8]
-	bl sub_02058EB0
+	bl EnableAllLearnableIqSkills
 	mov r0, r7
 	mov r1, r6
 	bl GetType
@@ -96982,7 +96982,7 @@ _0205B5CC:
 	bl GetStringFromFileVeneer
 	add r0, sp, #0x31
 	add r1, sp, #0
-	bl SpecialStrcpy
+	bl StrcpyName
 	cmp r4, #1
 	bne _0205B668
 	add r0, sp, #0x18
@@ -97399,7 +97399,7 @@ sub_0205BAB0: ; 0x0205BAB0
 	strb r0, [r2, #0x1c]
 	ldr r0, [r1]
 	add r0, r0, #0x1d
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	ldr r0, _0205BB74 ; =_020B0A54
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
@@ -109747,12 +109747,12 @@ sub_02065CD8: ; 0x02065CD8
 	ldr r2, _02065CF0 ; =_022B7320
 	mov r3, r0
 	mov r0, r1
-	ldr ip, _02065CF4 ; =sub_0200CFF0
+	ldr ip, _02065CF4 ; =BulkItemToItem
 	add r1, r2, r3, lsl #2
 	bx ip
 	.align 2, 0
 _02065CF0: .word _022B7320
-_02065CF4: .word sub_0200CFF0
+_02065CF4: .word BulkItemToItem
 	arm_func_end sub_02065CD8
 
 	arm_func_start ItemAtTableIdx
@@ -114671,7 +114671,7 @@ _02069E84:
 	ldrsb r1, [r5, #2]
 	add r0, r5, #4
 	strb r1, [r4, #2]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	ldrb r0, [r5, #4]
 	cmp r0, #0
 	bne _02069F6C
@@ -114749,7 +114749,7 @@ _02069F90:
 	ldrsb r1, [r5, #2]
 	add r0, r4, #4
 	strb r1, [r4, #2]
-	bl GetTeamNameCheck
+	bl GetMainTeamNameWithCheck
 	add r0, r4, #4
 	mov r1, #0x34
 	bl ov29_02337B3C
@@ -166221,7 +166221,7 @@ _0209AB8C:
 _0209AB9C:
 	.byte 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0xF0, 0x00, 0x00, 0x00, 0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00
-	.word sub_02025EE8
+	.word IsAOrBPressed
 	.word sub_02025F10
 	.word sub_02025FE0
 	.word sub_02026010

@@ -438,7 +438,7 @@ ov29_022F0B10: ; 0x022F0B10
 	bl sub_02027B1C
 	add r0, sp, #4
 	bl InitPreprocessorArgs
-	bl GetGold
+	bl GetMoneyCarried
 	str r0, [sp, #0x28]
 	add r1, sp, #4
 	str r1, [sp]

@@ -177,7 +177,7 @@ _0238A394:
 	b _0238A674
 _0238A3BC:
 	bl ov25_0238B380
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0x96
 	bge _0238A3D8
 	mov r0, #9
@@ -990,7 +990,7 @@ _0238AF64:
 	ldrh r3, [ip, #0xe]
 	strh r3, [sp, #0xe]
 	strb r2, [sp, #0xc]
-	bl sub_0200D0A0
+	bl ItemToBulkItem
 	add r0, sp, #0x12
 	bl RemoveItemByIdAndStackNoHole
 	ldr r0, _0238B0D0 ; =ov25_0238B5E0
@@ -1322,7 +1322,7 @@ ov25_0238B414: ; 0x0238B414
 	sub sp, sp, #0x400
 	mov r4, r0
 	bl sub_02027B1C
-	bl GetGold
+	bl GetMoneyCarried
 	add ip, sp, #0x400
 	str r0, [sp, #0x428]
 	add ip, ip, #4

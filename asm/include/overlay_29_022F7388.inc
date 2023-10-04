@@ -202,7 +202,7 @@
 .public sub_02017C50
 .public sub_0201C0CC
 .public sub_0204AEF0
-.public sub_02050964
+.public GetConversion2ConvertToType
 .public sub_02050FF8
 .public sub_02052E2C
 .public sub_02053250
@@ -211,7 +211,7 @@
 .public sub_020566C4
 .public sub_020585B4
 .public sub_02058674
-.public sub_02058EB0
+.public EnableAllLearnableIqSkills
 .public sub_0205A450
 .public SubFixedPoint
 .public SubstitutePlaceholderStringTags

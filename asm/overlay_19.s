@@ -1031,7 +1031,7 @@ _0238AF0C:
 	bl RemoveItemNoHole
 	add r0, sp, #0x2c
 	add r1, r8, #0xcc
-	bl sub_0200D0A0
+	bl ItemToBulkItem
 	add r1, sp, #0x2c
 	mov r0, #0
 	bl sub_02065CB4
@@ -1621,7 +1621,7 @@ _0238B7B8:
 _0238B7C4:
 	add r1, sp, #0x24
 	mov r0, r4
-	bl sub_02011580
+	bl ApplySitrusBerryBoostToGroundMonster
 	ldr r1, [sp, #0x24]
 	bl ov19_0238C80C
 	mov r5, r0
@@ -1629,7 +1629,7 @@ _0238B7C4:
 _0238B7E0:
 	add r1, sp, #0x24
 	mov r0, r4
-	bl sub_020115BC
+	bl ApplyLifeSeedBoostToGroundMonster
 	ldr r1, [sp, #0x24]
 	bl ov19_0238C80C
 	mov r5, r0
@@ -1638,7 +1638,7 @@ _0238B7FC:
 	add r1, sp, #0x14
 	add r2, sp, #0x24
 	mov r0, r4
-	bl ProcessGinsengOverworld
+	bl ApplyGinsengToGroundMonster
 	ldr r2, _0238B424 ; =ov11_02324DB0
 	mov r7, r0
 	ldrh sb, [sp, #0x14]
@@ -1737,7 +1737,7 @@ _0238B96C:
 	ldr r5, [sp, #0x24]
 	add r1, sp, #0x24
 	mov r0, r4
-	bl sub_0201170C
+	bl ApplyProteinBoostToGroundMonster
 	mov r1, r5
 	mov r2, #2
 	bl ov19_0238C900
@@ -1747,7 +1747,7 @@ _0238B990:
 	ldr r5, [sp, #0x24]
 	add r1, sp, #0x24
 	mov r0, r4
-	bl sub_02011748
+	bl ApplyCalciumBoostToGroundMonster
 	mov r1, r5
 	mov r2, #3
 	bl ov19_0238C900
@@ -1757,7 +1757,7 @@ _0238B9B4:
 	ldr r5, [sp, #0x24]
 	add r1, sp, #0x24
 	mov r0, r4
-	bl sub_02011784
+	bl ApplyIronBoostToGroundMonster
 	mov r1, r5
 	mov r2, #4
 	bl ov19_0238C900
@@ -1766,7 +1766,7 @@ _0238B9B4:
 _0238B9D8:
 	add r1, sp, #0x24
 	mov r0, r4
-	bl sub_020117FC
+	bl ApplyNectarBoostToGroundMonster
 	bl ov19_0238C9F0
 	mov r5, r0
 	b _0238BCE8
@@ -1774,7 +1774,7 @@ _0238B9F0:
 	ldr r5, [sp, #0x24]
 	add r1, sp, #0x24
 	mov r0, r4
-	bl sub_020117C0
+	bl ApplyZincBoostToGroundMonster
 	mov r1, r5
 	mov r2, #5
 	bl ov19_0238C900
@@ -1782,12 +1782,12 @@ _0238B9F0:
 	b _0238BCE8
 _0238BA14:
 	mov r0, r4
-	bl sub_02011830
+	bl IsMonsterAffectedByGravelyrockGroundMode
 	cmp r0, #0
 	beq _0238BA3C
 	add r1, sp, #0x24
 	mov r0, r4
-	bl sub_02011850
+	bl ApplyGravelyrockBoostToGroundMonster
 	bl ov19_0238C9F0
 	mov r5, r0
 	b _0238BCE8
@@ -1833,7 +1833,7 @@ _0238BA3C:
 	mov r0, r4
 	mov r2, #0
 	add r3, sp, #0x28
-	bl sub_02011528
+	bl ApplyGummiBoostsToGroundMonster
 	add r0, sp, #0x114
 	ldrsh fp, [r4, #0xa]
 	ldrsh r3, [r0, #0x64]

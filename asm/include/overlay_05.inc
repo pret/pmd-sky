@@ -10,7 +10,7 @@
 .public GetReleasedStylus
 .public GetStringFromFileVeneer
 .public GetTeamMember
-.public GetTeamNameCheck
+.public GetMainTeamNameWithCheck
 .public InitPreprocessorArgs
 .public IsMovesetValid
 .public MemAlloc
@@ -101,7 +101,7 @@
 .public sub_02057030
 .public sub_02058FA4
 .public sub_02058FCC
-.public sub_02059060
+.public GetExplorerMazeTeamName
 .public sub_020590C0
 .public sub_020590DC
 .public sub_0205BD78

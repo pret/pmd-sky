@@ -12,7 +12,7 @@
 .public GetActiveTeamMember
 .public GetDirectionTowardsPosition
 .public GetExplorerMazeMonster
-.public GetGold
+.public GetMoneyCarried
 .public GetItemInfo
 .public GetKecleonIdToSpawnByFloor
 .public GetLeader

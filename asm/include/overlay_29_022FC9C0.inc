@@ -157,7 +157,7 @@
 .public sub_02050FF8
 .public sub_02054FEC
 .public sub_02055020
-.public sub_02058EB0
+.public EnableAllLearnableIqSkills
 .public SubstitutePlaceholderStringTags
 .public TryActivateFlashFireOnAllMonsters
 .public TrySpawnTrapperTrap

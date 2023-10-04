@@ -882,7 +882,7 @@ ov16_0238ADFC: ; 0x0238ADFC
 	mov r2, #0xa
 	ldr r0, [r0, #0x3c]
 	add r0, r0, #0x3a
-	bl sub_02025314
+	bl StrncpyName
 	ldr r0, _0238B0CC ; =ov16_0238CE40
 	mov r1, #0x21
 	ldr r0, [r0]
@@ -1976,7 +1976,7 @@ _0238BDA0:
 	mov r2, #0xa
 	ldr r0, [r0, #0x3c]
 	add r0, r0, #0x3a
-	bl sub_02025314
+	bl StrncpyName
 	ldr r0, _0238C0CC ; =ov16_0238CE40
 	mov r1, #0x21
 	ldr r0, [r0]

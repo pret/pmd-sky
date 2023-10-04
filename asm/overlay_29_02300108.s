@@ -44,14 +44,14 @@ GetMonsterName: ; 0x02300164
 	bne _02300190
 	ldr r1, _02300274 ; =0x00000C34
 	mov r0, r5
-	bl sub_020258E4
+	bl CopyStringFromMessageId
 	ldmia sp!, {r3, r4, r5, pc}
 _02300190:
 	cmp r0, #2
 	bne _023001A8
 	ldr r1, _02300278 ; =0x00000C32
 	mov r0, r5
-	bl sub_020258E4
+	bl CopyStringFromMessageId
 	ldmia sp!, {r3, r4, r5, pc}
 _023001A8:
 	ldrb r0, [r4, #6]
@@ -125,7 +125,7 @@ ov29_0230027C: ; 0x0230027C
 	bne _023002B4
 	ldr r1, _023002C0 ; =0x00000C32
 	add r0, sp, #0
-	bl sub_020258E4
+	bl CopyStringFromMessageId
 	ldr r1, _023002C4 ; =ov29_023527C0
 	add r2, sp, #0
 	mov r0, r4
@@ -2967,7 +2967,7 @@ _02302780:
 	beq _02302818
 	ldrb r1, [sb, #0xa]
 	add r0, sp, #0x54
-	bl sub_02058C9C
+	bl GetUnlockedTacticFlags
 _02302818:
 	ldrsh r2, [sb, #0x12]
 	ldrsh r0, [sb, #0x16]

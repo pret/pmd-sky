@@ -180,7 +180,7 @@ _0238A3A0:
 	str r1, [r2, #0xc]
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02010758
+	bl AddMoneyStored
 	ldr r0, _0238A4DC ; =ov15_0238B180
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
@@ -227,7 +227,7 @@ _0238A444:
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	rsb r0, r0, #0
-	bl sub_02010758
+	bl AddMoneyStored
 	ldr r0, _0238A4DC ; =ov15_0238B180
 	arm_func_end ov15_0238A234
 
@@ -339,7 +339,7 @@ _0238A5CC:
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0, #8]
-	bl sub_0201070C
+	bl GetMoneyStored
 	cmp r0, #0
 	bne _0238A608
 	ldr r0, _0238AD10 ; =ov15_0238B180
@@ -351,7 +351,7 @@ _0238A5CC:
 	bl ShowMessageInDBox
 	b _0238AD08
 _0238A608:
-	bl sub_0201070C
+	bl GetMoneyStored
 	ldr r3, _0238AD10 ; =ov15_0238B180
 	ldr r1, _0238AD14 ; =0x00003008
 	ldr ip, [r3]
@@ -441,7 +441,7 @@ _0238A708:
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x82]
-	bl sub_0201070C
+	bl GetMoneyStored
 	cmp r0, #0
 	ldr r1, _0238AD40 ; =0x00003018
 	bne _0238A790
@@ -511,7 +511,7 @@ _0238A820:
 	strb r2, [r1, #0x82]
 	ldr r0, [r0]
 	strb r2, [r0, #0x83]
-	bl GetGold
+	bl GetMoneyCarried
 	cmp r0, #0
 	bne _0238A8AC
 	ldr r0, _0238AD10 ; =ov15_0238B180
@@ -527,7 +527,7 @@ _0238A820:
 	str r1, [r0, #8]
 	b _0238AD08
 _0238A8AC:
-	bl sub_0201070C
+	bl GetMoneyStored
 	ldr r1, _0238AD54 ; =0x0098967F
 	cmp r0, r1
 	blt _0238A8E8
@@ -557,19 +557,19 @@ _0238A8E8:
 _0238A914:
 	ldrsb r0, [r3, #0x80]
 	bl ShowDBox
-	bl sub_0201070C
+	bl GetMoneyStored
 	ldr r2, _0238AD10 ; =ov15_0238B180
 	ldr r1, _0238AD54 ; =0x0098967F
 	ldr r2, [r2]
 	sub r0, r1, r0
 	str r0, [r2, #0x60]
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, _0238AD10 ; =ov15_0238B180
 	ldr r1, [r1]
 	ldr r1, [r1, #0x60]
 	cmp r1, r0
 	ble _0238A95C
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, _0238AD10 ; =ov15_0238B180
 	ldr r1, [r1]
 	str r0, [r1, #0x60]
@@ -674,7 +674,7 @@ _0238AA88:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
 	bl ShowDBox
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r1, _0238AD6C ; =0x0001869F
 	cmp r0, r1
 	blt _0238AB20
@@ -690,7 +690,7 @@ _0238AA88:
 	bl ShowMessageInDBox
 	b _0238AD08
 _0238AB20:
-	bl sub_0201070C
+	bl GetMoneyStored
 	cmp r0, #0
 	bne _0238AB58
 	ldr r0, _0238AD10 ; =ov15_0238B180
@@ -709,7 +709,7 @@ _0238AB58:
 	mov r1, #0xb
 	ldr r0, [r0]
 	str r1, [r0, #8]
-	bl sub_0201070C
+	bl GetMoneyStored
 	ldr r3, _0238AD10 ; =ov15_0238B180
 	ldr r1, _0238AD14 ; =0x00003008
 	ldr ip, [r3]
@@ -721,19 +721,19 @@ _0238AB58:
 	bl ShowMessageInDBox
 	b _0238AD08
 _0238AB94:
-	bl GetGold
+	bl GetMoneyCarried
 	ldr r2, _0238AD10 ; =ov15_0238B180
 	ldr r1, _0238AD6C ; =0x0001869F
 	ldr r2, [r2]
 	sub r0, r1, r0
 	str r0, [r2, #0x60]
-	bl sub_0201070C
+	bl GetMoneyStored
 	ldr r1, _0238AD10 ; =ov15_0238B180
 	ldr r1, [r1]
 	ldr r1, [r1, #0x60]
 	cmp r1, r0
 	ble _0238ABD4
-	bl sub_0201070C
+	bl GetMoneyStored
 	ldr r1, _0238AD10 ; =ov15_0238B180
 	ldr r1, [r1]
 	str r0, [r1, #0x60]
@@ -880,7 +880,7 @@ ov15_0238ADC4: ; 0x0238ADC4
 	sub sp, sp, #0x400
 	mov r4, r0
 	bl sub_02027B1C
-	bl GetGold
+	bl GetMoneyCarried
 	add ip, sp, #0x400
 	str r0, [sp, #0x428]
 	add ip, ip, #4
@@ -899,7 +899,7 @@ ov15_0238ADFC: ; 0x0238ADFC
 	mov r1, #8
 	mov r2, #6
 	bl sub_02026214
-	bl sub_0201070C
+	bl GetMoneyStored
 	add r1, sp, #0x400
 	str r0, [sp, #0x428]
 	add r1, r1, #4

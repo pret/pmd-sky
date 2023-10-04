@@ -7,7 +7,7 @@
 .public FreeDBox
 .public FreeNormalMenu
 .public FreePortraitBox
-.public GetGold
+.public GetMoneyCarried
 .public GetNormalMenuResult
 .public HidePortraitBox
 .public InitPortraitBoxWithMonsterId
@@ -22,8 +22,8 @@
 .public ShowDBox
 .public ShowMessageInDBox
 .public ShowPortraitBox
-.public sub_0201070C
-.public sub_02010758
+.public GetMoneyStored
+.public AddMoneyStored
 .public sub_02017C80
 .public sub_02026214
 .public sub_02026268
