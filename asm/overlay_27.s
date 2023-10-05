@@ -69,7 +69,7 @@ ov27_0238A140: ; 0x0238A140
 	ldr r1, _0238A380 ; =ov27_0238CE80
 	ldr r1, [r1]
 	str r0, [r1, #0x20]
-	bl sub_0200FD78
+	bl CountNbOfItemsInStorage
 	ldr r7, _0238A380 ; =ov27_0238CE80
 	mov r6, #0
 	ldr r1, [r7]
@@ -135,7 +135,7 @@ _0238A2FC:
 	mov r0, r0, asr #0x10
 	bl RemoveItem
 	mov r0, r5
-	bl sub_020103AC
+	bl AddItemToStorage
 _0238A338:
 	sub r4, r4, #1
 	cmp r4, #0
@@ -2151,7 +2151,7 @@ _0238BFFC:
 	ldr r0, _0238C8F8 ; =ov27_0238CE84
 	ldr r0, [r0]
 	add r0, r0, #0x10
-	bl sub_020103AC
+	bl AddItemToStorage
 	bl sub_02042AF8
 _0238C028:
 	bl ov27_0238C900
@@ -2210,7 +2210,7 @@ _0238C0E4:
 	mov r0, r0, asr #0x10
 	bl RemoveItem
 	mov r0, r4
-	bl sub_020103AC
+	bl AddItemToStorage
 _0238C0F8:
 	add r5, r5, #1
 	cmp r5, #0x32
@@ -2292,7 +2292,7 @@ _0238C214:
 	ldr r1, [r0]
 	ldrsh r0, [r1, #0x1c]
 	add r1, r1, #0x10
-	bl sub_0200FFF4
+	bl ConvertStorageItemAtIdxToItem
 	mov r0, #0x1a
 	bl ov27_0238A998
 	b _0238C860
@@ -2485,12 +2485,12 @@ _0238C4D8:
 	mov r0, r5, lsl #0x10
 	mov r1, r4
 	mov r0, r0, asr #0x10
-	bl sub_0200FFAC
+	bl ConvertStorageItemAtIdxToBulkItem
 	cmp r0, #0
 	beq _0238C510
 	mov r0, r5, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl sub_020101A0
+	bl RemoveItemAtIdxInStorage
 _0238C510:
 	add r5, r5, #1
 	cmp r5, #0x3e8

@@ -66,7 +66,7 @@
 .public ShowPortraitBox
 .public strcat
 .public ItemToBulkItem
-.public sub_0200FC24
+.public SortItemsInBag
 .public sub_0201077C
 .public ApplyGummiBoostsToGroundMonster
 .public ApplySitrusBerryBoostToGroundMonster

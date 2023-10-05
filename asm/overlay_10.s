@@ -7263,7 +7263,7 @@ _022C29C8:
 	bne _022C2B0C
 	bl sub_020587C8
 	bl sub_02057CE8
-	bl sub_0200F910
+	bl CleanStickyItemsInBag
 	mov r8, #0
 	ldr r5, _022C3118 ; =BAG_ITEMS_PTR_MIRROR
 	mov fp, r8
@@ -7291,7 +7291,7 @@ _022C2A08:
 	b _022C2A5C
 _022C2A54:
 	mov r0, r7
-	bl sub_0200FB54
+	bl RemoveHolderForItemInBag
 _022C2A5C:
 	add r8, r8, #1
 	cmp r8, #0x32

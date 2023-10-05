@@ -468,7 +468,7 @@ ov29_0230F654: ; 0x0230F654
 	str r2, [sp]
 	ldrsh r2, [r3, #4]
 	ldrb r3, [r3, #0x5e]
-	bl sub_0201116C
+	bl GetExclusiveItemForMonsterFromBag
 	cmp r0, #0
 	moveq r0, #0
 	beq _0230F6C0
@@ -527,7 +527,7 @@ ov29_0230F728: ; 0x0230F728
 	ldrsh r2, [ip, #4]
 	ldrb r3, [ip, #0x5e]
 	add r0, sp, #4
-	bl sub_0201116C
+	bl GetExclusiveItemForMonsterFromBag
 	ldr r1, [r4, #0x18c]
 	add r0, r4, #0x100
 	orr r1, r1, r5

@@ -35,13 +35,13 @@
 .public ShowMessageInDBox
 .public sub_0200D670
 .public sub_0200FD48
-.public sub_0200FD78
-.public sub_0200FFAC
-.public sub_0200FFF4
+.public CountNbOfItemsInStorage
+.public ConvertStorageItemAtIdxToBulkItem
+.public ConvertStorageItemAtIdxToItem
 .public sub_0201007C
 .public sub_02010154
-.public sub_020101A0
-.public sub_020103AC
+.public RemoveItemAtIdxInStorage
+.public AddItemToStorage
 .public GetMoneyStored
 .public AddMoneyStored
 .public sub_02017CCC
@@ -83,5 +83,5 @@
 .public sub_02044094
 .public sub_020440B8
 .public sub_020440DC
-.public sub_02050CE4
+.public GetRankStorageSize
 .public sub_020582E0

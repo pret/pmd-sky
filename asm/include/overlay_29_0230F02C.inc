@@ -107,7 +107,7 @@
 .public SpawnDroppedItemWrapper
 .public SPEED_BOOST_TURNS
 .public sub_0200D8AC
-.public sub_0201116C
+.public GetExclusiveItemForMonsterFromBag
 .public sub_02050FF8
 .public SubFixedPoint
 .public SubstitutePlaceholderStringTags

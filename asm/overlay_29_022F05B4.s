@@ -4659,7 +4659,7 @@ _022F46C0:
 	b _022F4734
 _022F472C:
 	mov r0, r1
-	bl sub_0200FB54
+	bl RemoveHolderForItemInBag
 _022F4734:
 	ldrh r0, [sp, #6]
 	cmp r7, #0
@@ -4674,7 +4674,7 @@ _022F4734:
 	mov r2, r0
 	add r1, sp, #6
 	mov r0, r7
-	bl sub_0200FBE0
+	bl SetHolderForItemInBag
 	b _022F4778
 _022F4770:
 	mov r0, sb
@@ -4724,7 +4724,7 @@ _022F47CC:
 	mov r2, r0
 	mov r0, r7
 	add r1, sb, #0x62
-	bl sub_0200FBE0
+	bl SetHolderForItemInBag
 	b _022F4834
 _022F482C:
 	mov r0, sb
@@ -4817,7 +4817,7 @@ _022F4928:
 	add r0, r5, #0x62
 	bl ItemZInit
 	add r0, sp, #0
-	bl sub_0200FB54
+	bl RemoveHolderForItemInBag
 	ldr r0, _022F49D4 ; =0x00001317
 	bl ov29_022EACCC
 	ldr r1, _022F49D8 ; =0x00000BB5

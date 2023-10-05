@@ -2783,7 +2783,7 @@ _0238CA0C:
 	ldr r1, [r0]
 	ldrsh r0, [r1, #0x24]
 	add r1, r1, #0x18
-	bl sub_0200FFF4
+	bl ConvertStorageItemAtIdxToItem
 	mov r0, #0x1b
 	bl ov23_0238A140
 	b _0238CFD0
@@ -3330,7 +3330,7 @@ _0238D154:
 	mov r0, r5, lsl #0x10
 	mov r1, r4
 	mov r0, r0, asr #0x10
-	bl sub_0200FFAC
+	bl ConvertStorageItemAtIdxToBulkItem
 	cmp r0, #0
 	beq _0238D19C
 	mov r0, r4
@@ -3339,7 +3339,7 @@ _0238D154:
 	beq _0238D19C
 	mov r0, r5, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl sub_020101A0
+	bl RemoveItemAtIdxInStorage
 _0238D19C:
 	add r5, r5, #1
 	cmp r5, #0x3e8
@@ -3378,7 +3378,7 @@ _0238D208:
 	mov r0, r0, asr #0x10
 	bl RemoveItem
 	mov r0, r4
-	bl sub_020103AC
+	bl AddItemToStorage
 _0238D21C:
 	add r5, r5, #1
 	cmp r5, #0x32
@@ -3437,7 +3437,7 @@ _0238D2B4:
 	ldr r0, _0238D2E4 ; =ov23_0238D8A0
 	ldr r0, [r0]
 	add r0, r0, #0x18
-	bl sub_020103AC
+	bl AddItemToStorage
 	bl sub_02042AF8
 	ldmia sp!, {r3, pc}
 	.align 2, 0

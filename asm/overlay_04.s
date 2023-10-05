@@ -967,7 +967,7 @@ _0233D648:
 	bl InitPreprocessorArgs
 	bl sub_0200FD48
 	mov r5, r0
-	bl sub_0200FD78
+	bl CountNbOfItemsInStorage
 	sub r0, r5, r0
 	str r0, [sp, #0x110]
 	mov r0, #0x1c
@@ -1270,12 +1270,12 @@ _0233DB40:
 	mov r0, sb, lsl #0x10
 	mov r0, r0, asr #0x10
 	add r1, r7, sl
-	bl sub_0200FFF4
+	bl ConvertStorageItemAtIdxToItem
 	cmp r0, #0
 	beq _0233DBB0
 	mov r0, sb, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl sub_020101A0
+	bl RemoveItemAtIdxInStorage
 	add r0, r4, sl
 	ldrsh r0, [r0, #0x80]
 	cmp r0, #0xb4
@@ -1307,7 +1307,7 @@ _0233DBD4:
 	mov r0, r0, asr #0x10
 	bne _0233DC20
 	add r1, r4, #0x70
-	bl sub_0200FFF4
+	bl ConvertStorageItemAtIdxToItem
 	ldrsh r0, [r4, #0x74]
 	cmp r0, #0xb4
 	bne _0233DC64
@@ -1322,7 +1322,7 @@ _0233DBD4:
 	b _0233DC64
 _0233DC20:
 	add r1, r4, #0x7c
-	bl sub_0200FFF4
+	bl ConvertStorageItemAtIdxToItem
 	mov r1, #1
 	strh r1, [r4, #0x7a]
 	add r0, r4, #0x1800
@@ -1377,7 +1377,7 @@ _0233DCCC:
 	add r1, sp, #0x12
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl sub_0200FFAC
+	bl ConvertStorageItemAtIdxToBulkItem
 	add r0, sp, #0x9c
 	bl InitPreprocessorArgs
 	ldrsh r2, [sp, #0x12]
@@ -2037,7 +2037,7 @@ _0233E670:
 	bne _0233E6D4
 	bl sub_0200FD48
 	mov r5, r0
-	bl sub_0200FD78
+	bl CountNbOfItemsInStorage
 	add r1, r4, #0x1800
 	ldrh r1, [r1, #0x1c]
 	sub r0, r5, r0
@@ -2364,7 +2364,7 @@ _0233EB20:
 	cmp r0, #0
 	bne _0233EB50
 	add r0, r4, #0x70
-	bl sub_020103AC
+	bl AddItemToStorage
 	mov r0, #0
 	strh r0, [r4, #0x74]
 	strh r0, [r4, #0x72]
@@ -2378,7 +2378,7 @@ _0233EB50:
 _0233EB64:
 	mul sb, r8, r5
 	add r0, r7, sb
-	bl sub_020103AC
+	bl AddItemToStorage
 	add r0, r4, sb
 	strh r6, [r0, #0x80]
 	strh r6, [r0, #0x7e]
@@ -2456,7 +2456,7 @@ _0233EC44:
 	b _0233EC88
 _0233EC7C:
 	mla r0, r7, r5, r6
-	bl sub_020103AC
+	bl AddItemToStorage
 	add r7, r7, #1
 _0233EC88:
 	ldrh r0, [r4, #0x7a]
@@ -2531,7 +2531,7 @@ _0233ED70:
 	b _0233EEB4
 _0233ED90:
 	add r0, r4, #0x70
-	bl sub_020103AC
+	bl AddItemToStorage
 	add r0, r4, #0x1900
 	ldrh r2, [r0, #0x2a]
 	ldr r1, _0233EF18 ; =0x00005006

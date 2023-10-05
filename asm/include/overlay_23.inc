@@ -35,12 +35,12 @@
 .public ShowPortraitBox
 .public SpecialProcAddItemToBag
 .public sub_0200D670
-.public sub_0200FFAC
-.public sub_0200FFF4
+.public ConvertStorageItemAtIdxToBulkItem
+.public ConvertStorageItemAtIdxToItem
 .public sub_0201007C
 .public sub_02010154
-.public sub_020101A0
-.public sub_020103AC
+.public RemoveItemAtIdxInStorage
+.public AddItemToStorage
 .public sub_02017CCC
 .public sub_0202836C
 .public sub_0202E3CC

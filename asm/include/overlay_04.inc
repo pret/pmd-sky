@@ -43,14 +43,14 @@
 .public sub_0200D310
 .public sub_0200D8E4
 .public sub_0200FD48
-.public sub_0200FD78
-.public sub_0200FFAC
-.public sub_0200FFF4
+.public CountNbOfItemsInStorage
+.public ConvertStorageItemAtIdxToBulkItem
+.public ConvertStorageItemAtIdxToItem
 .public sub_02010044
 .public sub_0201007C
 .public sub_02010154
-.public sub_020101A0
-.public sub_020103AC
+.public RemoveItemAtIdxInStorage
+.public AddItemToStorage
 .public sub_02017CCC
 .public sub_02029F88
 .public sub_02029FBC
@@ -86,6 +86,6 @@
 .public sub_02046C78
 .public sub_02046D20
 .public sub_0204A018
-.public sub_02050CE4
+.public GetRankStorageSize
 .public sub_0206351C
 .public UnloadFile

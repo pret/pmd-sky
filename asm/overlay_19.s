@@ -558,7 +558,7 @@ _0238A878:
 	mov r0, #5
 	bl sub_02017CCC
 _0238A888:
-	bl sub_0200FC24
+	bl SortItemsInBag
 	mov r0, #0
 	str r0, [r8, #0x58]
 	bl ov19_0238C5A8

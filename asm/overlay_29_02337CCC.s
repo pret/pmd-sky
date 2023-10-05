@@ -14948,7 +14948,7 @@ _0234485C:
 	bl ov29_022F0604
 	b _02344A34
 _023448C4:
-	bl sub_0200F940
+	bl CountStickyItemsInBag
 	cmp r0, #0
 	bne _023448E4
 	ldr r0, _02344AC4 ; =0x00000F58

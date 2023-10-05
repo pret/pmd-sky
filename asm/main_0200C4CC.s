@@ -1531,8 +1531,8 @@ ItemZInit: ; 0x0200D81C
 	bx lr
 	arm_func_end ItemZInit
 
-	arm_func_start sub_0200D834
-sub_0200D834: ; 0x0200D834
+	arm_func_start AreItemsEquivalent
+AreItemsEquivalent: ; 0x0200D834
 	ldrb ip, [r0]
 	ldrb r3, [r1]
 	and ip, ip, r2
@@ -1557,7 +1557,7 @@ sub_0200D834: ; 0x0200D834
 	movne r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end sub_0200D834
+	arm_func_end AreItemsEquivalent
 
 	arm_func_start sub_0200D894
 sub_0200D894: ; 0x0200D894
@@ -2357,8 +2357,8 @@ NormalizeTreasureBox: ; 0x0200E1F8
 _0200E39C: .word 0xFFFFFE91
 	arm_func_end NormalizeTreasureBox
 
-	arm_func_start sub_0200E3A0
-sub_0200E3A0: ; 0x0200E3A0
+	arm_func_start SortItemList
+SortItemList: ; 0x0200E3A0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov sl, r0
@@ -2529,7 +2529,7 @@ _0200E5F4:
 	bl RemoveEmptyItems
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_0200E3A0
+	arm_func_end SortItemList
 
 	arm_func_start RemoveEmptyItems
 RemoveEmptyItems: ; 0x0200E610
@@ -3411,7 +3411,7 @@ _0200EFF4:
 	mov r0, r4
 	mov r1, r6
 	mov r2, r7
-	bl sub_0200D834
+	bl AreItemsEquivalent
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -3551,7 +3551,7 @@ _0200F1B4:
 	mov r0, sb
 	mov r1, r5
 	mov r2, r6
-	bl sub_0200D834
+	bl AreItemsEquivalent
 	cmp r0, #0
 	movne r0, r4, lsl #0x10
 	movne r0, r0, asr #0x10
@@ -3863,7 +3863,7 @@ _0200F580:
 	mov r0, sb
 	mov r1, r5
 	mov r2, r6
-	bl sub_0200D834
+	bl AreItemsEquivalent
 	cmp r0, #0
 	beq _0200F5E4
 	ldrb r0, [sb, #1]
@@ -3914,7 +3914,7 @@ _0200F628:
 	mov r0, sb
 	mov r1, r5
 	mov r2, r6
-	bl sub_0200D834
+	bl AreItemsEquivalent
 	cmp r0, #0
 	beq _0200F678
 	ldrb r0, [sb, #1]
@@ -3960,7 +3960,7 @@ _0200F6BC:
 	mov r0, r4
 	mov r1, r6
 	mov r2, r7
-	bl sub_0200D834
+	bl AreItemsEquivalent
 	cmp r0, #0
 	ldrneh r1, [r4, #2]
 	movne r0, #1
@@ -4147,8 +4147,8 @@ _0200F8FC:
 _0200F90C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end AddItemToBag
 
-	arm_func_start sub_0200F910
-sub_0200F910: ; 0x0200F910
+	arm_func_start CleanStickyItemsInBag
+CleanStickyItemsInBag: ; 0x0200F910
 	ldr r0, _0200F93C ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, #0
 	ldr r0, [r0]
@@ -4163,10 +4163,10 @@ _0200F920:
 	bx lr
 	.align 2, 0
 _0200F93C: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200F910
+	arm_func_end CleanStickyItemsInBag
 
-	arm_func_start sub_0200F940
-sub_0200F940: ; 0x0200F940
+	arm_func_start CountStickyItemsInBag
+CountStickyItemsInBag: ; 0x0200F940
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, _0200F9B0 ; =BAG_ITEMS_PTR_MIRROR
 	mov lr, #0
@@ -4199,7 +4199,7 @@ _0200F994:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0200F9B0: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200F940
+	arm_func_end CountStickyItemsInBag
 
 	arm_func_start sub_0200F9B4
 sub_0200F9B4: ; 0x0200F9B4
@@ -4258,8 +4258,8 @@ _0200FA2C:
 _0200FA64: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200FA0C
 
-	arm_func_start sub_0200FA68
-sub_0200FA68: ; 0x0200FA68
+	arm_func_start TransmuteHeldItemInBag
+TransmuteHeldItemInBag: ; 0x0200FA68
 	stmdb sp!, {r4, lr}
 	ldr r1, _0200FAE8 ; =BAG_ITEMS_PTR_MIRROR
 	mov r4, #0
@@ -4297,10 +4297,10 @@ _0200FAD8:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0200FAE8: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FA68
+	arm_func_end TransmuteHeldItemInBag
 
-	arm_func_start sub_0200FAEC
-sub_0200FAEC: ; 0x0200FAEC
+	arm_func_start SetFlagsForHeldItemInBag
+SetFlagsForHeldItemInBag: ; 0x0200FAEC
 	stmdb sp!, {r4, lr}
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -4330,10 +4330,10 @@ _0200FB3C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0200FB50: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FAEC
+	arm_func_end SetFlagsForHeldItemInBag
 
-	arm_func_start sub_0200FB54
-sub_0200FB54: ; 0x0200FB54
+	arm_func_start RemoveHolderForItemInBag
+RemoveHolderForItemInBag: ; 0x0200FB54
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r1, _0200FBDC ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, r0
@@ -4354,7 +4354,7 @@ _0200FB7C:
 	mov r0, r4
 	mov r1, r6
 	mov r2, r7
-	bl sub_0200D834
+	bl AreItemsEquivalent
 	cmp r0, #0
 	beq _0200FBC4
 	mov r0, #0
@@ -4373,10 +4373,10 @@ _0200FBCC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0200FBDC: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FB54
+	arm_func_end RemoveHolderForItemInBag
 
-	arm_func_start sub_0200FBE0
-sub_0200FBE0: ; 0x0200FBE0
+	arm_func_start SetHolderForItemInBag
+SetHolderForItemInBag: ; 0x0200FBE0
 	stmdb sp!, {r4, lr}
 	ldr ip, _0200FC20 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, #6
@@ -4395,10 +4395,10 @@ sub_0200FBE0: ; 0x0200FBE0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0200FC20: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FBE0
+	arm_func_end SetHolderForItemInBag
 
-	arm_func_start sub_0200FC24
-sub_0200FC24: ; 0x0200FC24
+	arm_func_start SortItemsInBag
+SortItemsInBag: ; 0x0200FC24
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, #0
 	ldr r7, _0200FCA8 ; =BAG_ITEMS_PTR_MIRROR
@@ -4432,14 +4432,14 @@ _0200FC84:
 	mov r1, #0x32
 	ldr r0, [r0]
 	ldr r0, [r0, #0x384]
-	bl sub_0200E3A0
+	bl SortItemList
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0200FCA8: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FC24
+	arm_func_end SortItemsInBag
 
-	arm_func_start sub_0200FCAC
-sub_0200FCAC: ; 0x0200FCAC
+	arm_func_start RemovePokeItemsInBag
+RemovePokeItemsInBag: ; 0x0200FCAC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r0, _0200FD34 ; =BAG_ITEMS_PTR_MIRROR
 	mov r5, #0
@@ -4478,7 +4478,7 @@ _0200FD0C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0200FD34: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FCAC
+	arm_func_end RemovePokeItemsInBag
 
 	arm_func_start sub_0200FD38
 sub_0200FD38: ; 0x0200FD38
@@ -4487,35 +4487,35 @@ sub_0200FD38: ; 0x0200FD38
 
 	arm_func_start sub_0200FD3C
 sub_0200FD3C: ; 0x0200FD3C
-	ldr ip, _0200FD44 ; =sub_020102DC
+	ldr ip, _0200FD44 ; =StorageZInit
 	bx ip
 	.align 2, 0
-_0200FD44: .word sub_020102DC
+_0200FD44: .word StorageZInit
 	arm_func_end sub_0200FD3C
 
 	arm_func_start sub_0200FD48
 sub_0200FD48: ; 0x0200FD48
-	ldr ip, _0200FD50 ; =sub_02050CE4
+	ldr ip, _0200FD50 ; =GetRankStorageSize
 	bx ip
 	.align 2, 0
-_0200FD50: .word sub_02050CE4
+_0200FD50: .word GetRankStorageSize
 	arm_func_end sub_0200FD48
 
-	arm_func_start ScriptSpecialProcess0x39
-ScriptSpecialProcess0x39: ; 0x0200FD54
+	arm_func_start IsStorageFull
+IsStorageFull: ; 0x0200FD54
 	stmdb sp!, {r4, lr}
-	bl sub_02050CE4
+	bl GetRankStorageSize
 	mov r4, r0
-	bl sub_0200FD78
+	bl CountNbOfItemsInStorage
 	cmp r0, r4
 	movge r0, #1
 	movlt r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r4, pc}
-	arm_func_end ScriptSpecialProcess0x39
+	arm_func_end IsStorageFull
 
-	arm_func_start sub_0200FD78
-sub_0200FD78: ; 0x0200FD78
+	arm_func_start CountNbOfItemsInStorage
+CountNbOfItemsInStorage: ; 0x0200FD78
 	ldr r1, _0200FDAC ; =BAG_ITEMS_PTR_MIRROR
 	mov r0, #0
 	ldr r3, [r1]
@@ -4532,10 +4532,10 @@ _0200FD88:
 	bx lr
 	.align 2, 0
 _0200FDAC: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FD78
+	arm_func_end CountNbOfItemsInStorage
 
-	arm_func_start sub_0200FDB0
-sub_0200FDB0: ; 0x0200FDB0
+	arm_func_start CountNbOfValidItemsInStorage
+CountNbOfValidItemsInStorage: ; 0x0200FDB0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, #0
 	ldr r4, _0200FDFC ; =BAG_ITEMS_PTR_MIRROR
@@ -4559,10 +4559,10 @@ _0200FDE8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0200FDFC: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FDB0
+	arm_func_end CountNbOfValidItemsInStorage
 
-	arm_func_start sub_0200FE00
-sub_0200FE00: ; 0x0200FE00
+	arm_func_start CountNbOfValidItemsInTimeDarknessInStorage
+CountNbOfValidItemsInTimeDarknessInStorage: ; 0x0200FE00
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
 	ldr r6, _0200FEA4 ; =BAG_ITEMS_PTR_MIRROR
@@ -4609,7 +4609,7 @@ _0200FE90:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0200FEA4: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FE00
+	arm_func_end CountNbOfValidItemsInTimeDarknessInStorage
 
 	arm_func_start CountNbItemsOfTypeInStorage
 CountNbItemsOfTypeInStorage: ; 0x0200FEA8
@@ -4666,8 +4666,8 @@ _0200FF38:
 _0200FF4C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end CountItemTypeInStorage
 
-	arm_func_start sub_0200FF50
-sub_0200FF50: ; 0x0200FF50
+	arm_func_start GetEquivBulkItemIdxInStorage
+GetEquivBulkItemIdxInStorage: ; 0x0200FF50
 	stmdb sp!, {r3, lr}
 	ldr r1, _0200FFA8 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
@@ -4694,10 +4694,10 @@ _0200FF98:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0200FFA8: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FF50
+	arm_func_end GetEquivBulkItemIdxInStorage
 
-	arm_func_start sub_0200FFAC
-sub_0200FFAC: ; 0x0200FFAC
+	arm_func_start ConvertStorageItemAtIdxToBulkItem
+ConvertStorageItemAtIdxToBulkItem: ; 0x0200FFAC
 	ldr r3, _0200FFF0 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r2, [r3]
 	add r2, r2, r0, lsl #1
@@ -4717,10 +4717,10 @@ sub_0200FFAC: ; 0x0200FFAC
 	bx lr
 	.align 2, 0
 _0200FFF0: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FFAC
+	arm_func_end ConvertStorageItemAtIdxToBulkItem
 
-	arm_func_start sub_0200FFF4
-sub_0200FFF4: ; 0x0200FFF4
+	arm_func_start ConvertStorageItemAtIdxToItem
+ConvertStorageItemAtIdxToItem: ; 0x0200FFF4
 	ldr r3, _02010040 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
 	ldr r2, [r3]
@@ -4742,7 +4742,7 @@ sub_0200FFF4: ; 0x0200FFF4
 	bx lr
 	.align 2, 0
 _02010040: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200FFF4
+	arm_func_end ConvertStorageItemAtIdxToItem
 
 	arm_func_start sub_02010044
 sub_02010044: ; 0x02010044
@@ -4859,8 +4859,8 @@ sub_02010154: ; 0x02010154
 _0201019C: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010154
 
-	arm_func_start sub_020101A0
-sub_020101A0: ; 0x020101A0
+	arm_func_start RemoveItemAtIdxInStorage
+RemoveItemAtIdxInStorage: ; 0x020101A0
 	ldr r2, _020101E0 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r2]
 	add r1, r1, r0, lsl #1
@@ -4879,10 +4879,10 @@ sub_020101A0: ; 0x020101A0
 	bx lr
 	.align 2, 0
 _020101E0: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_020101A0
+	arm_func_end RemoveItemAtIdxInStorage
 
-	arm_func_start RemoveItemsTypeInStorage
-RemoveItemsTypeInStorage: ; 0x020101E4
+	arm_func_start RemoveBulkItemInStorage
+RemoveBulkItemInStorage: ; 0x020101E4
 	stmdb sp!, {r4, lr}
 	ldr r1, _0201025C ; =BAG_ITEMS_PTR_MIRROR
 	mov lr, #0
@@ -4918,10 +4918,10 @@ _0201024C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0201025C: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end RemoveItemsTypeInStorage
+	arm_func_end RemoveBulkItemInStorage
 
-	arm_func_start sub_02010260
-sub_02010260: ; 0x02010260
+	arm_func_start RemoveItemInStorage
+RemoveItemInStorage: ; 0x02010260
 	stmdb sp!, {r4, lr}
 	ldr r1, _020102D8 ; =BAG_ITEMS_PTR_MIRROR
 	mov lr, #0
@@ -4957,10 +4957,10 @@ _020102C8:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020102D8: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010260
+	arm_func_end RemoveItemInStorage
 
-	arm_func_start sub_020102DC
-sub_020102DC: ; 0x020102DC
+	arm_func_start StorageZInit
+StorageZInit: ; 0x020102DC
 	mov r3, #0
 	ldr r1, _02010318 ; =BAG_ITEMS_PTR_MIRROR
 	mov r2, r3
@@ -4979,14 +4979,14 @@ _020102E8:
 	bx lr
 	.align 2, 0
 _02010318: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_020102DC
+	arm_func_end StorageZInit
 
-	arm_func_start AddItemToStorage
-AddItemToStorage: ; 0x0201031C
+	arm_func_start AddBulkItemToStorage
+AddBulkItemToStorage: ; 0x0201031C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r4, r0
-	bl sub_02050CE4
+	bl GetRankStorageSize
 	mov r5, r0
 	add r0, sp, #0
 	mov r1, r4
@@ -5024,13 +5024,13 @@ _020103A0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020103A8: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end AddItemToStorage
+	arm_func_end AddBulkItemToStorage
 
-	arm_func_start sub_020103AC
-sub_020103AC: ; 0x020103AC
+	arm_func_start AddItemToStorage
+AddItemToStorage: ; 0x020103AC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_02050CE4
+	bl GetRankStorageSize
 	ldr r1, _02010420 ; =BAG_ITEMS_PTR_MIRROR
 	mov ip, #0
 	ldr r3, [r1]
@@ -5062,10 +5062,10 @@ _02010410:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02010420: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_020103AC
+	arm_func_end AddItemToStorage
 
-	arm_func_start sub_02010424
-sub_02010424: ; 0x02010424
+	arm_func_start SortItemsInStorage
+SortItemsInStorage: ; 0x02010424
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sb, r1
 	mov r1, #6
@@ -5114,7 +5114,7 @@ _020104C8:
 _020104D0:
 	mov r0, r7
 	mov r1, r8
-	bl sub_0200E3A0
+	bl SortItemList
 	mov r6, #0
 	mov r1, r6
 	mov r2, #1
@@ -5165,7 +5165,7 @@ _02010578:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0201058C: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010424
+	arm_func_end SortItemsInStorage
 
 	arm_func_start sub_02010590
 sub_02010590: ; 0x02010590
@@ -6143,8 +6143,8 @@ _02011164: .word EXCLUSIVE_ITEM_EFFECT_DATA
 _02011168: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end BagHasExclusiveItemTypeForMonster
 
-	arm_func_start sub_0201116C
-sub_0201116C: ; 0x0201116C
+	arm_func_start GetExclusiveItemForMonsterFromBag
+GetExclusiveItemForMonsterFromBag: ; 0x0201116C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	mov sb, r1
@@ -6194,7 +6194,7 @@ _02011208:
 	.align 2, 0
 _02011218: .word BAG_ITEMS_PTR_MIRROR
 _0201121C: .word EXCLUSIVE_ITEM_EFFECT_DATA
-	arm_func_end sub_0201116C
+	arm_func_end GetExclusiveItemForMonsterFromBag
 
 	arm_func_start sub_02011220
 sub_02011220: ; 0x02011220
@@ -6302,8 +6302,8 @@ _0201138C: .word BAG_ITEMS_PTR_MIRROR
 _02011390: .word EXCLUSIVE_ITEM_EFFECT_DATA
 	arm_func_end sub_02011220
 
-	arm_func_start sub_02011394
-sub_02011394: ; 0x02011394
+	arm_func_start GetHpBoostFromExclusiveItems
+GetHpBoostFromExclusiveItems: ; 0x02011394
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	add r0, r5, #4
@@ -6341,7 +6341,7 @@ _02011414:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0201141C: .word _020A1878
-	arm_func_end sub_02011394
+	arm_func_end GetHpBoostFromExclusiveItems
 
 	arm_func_start sub_02011420
 sub_02011420: ; 0x02011420
@@ -7488,7 +7488,7 @@ sub_02012294: ; 0x02012294
 	mov r4, r0
 	mov r7, r8
 	mov r6, r8
-	bl sub_0200FD78
+	bl CountNbOfItemsInStorage
 	mov r0, r0, lsl #0x10
 	mov r5, r0, asr #0x10
 	cmp r5, #0
@@ -7663,7 +7663,7 @@ _020124F8:
 	ldmneia sp!, {r3, pc}
 	ldrsh r0, [r0, #4]
 	add r1, sp, #0
-	bl sub_0200FFAC
+	bl ConvertStorageItemAtIdxToBulkItem
 	ldrsh r0, [sp]
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020124D8
@@ -7684,7 +7684,7 @@ _02012538:
 	ldmneia sp!, {r3, pc}
 	ldrsh r0, [r0, #4]
 	add r1, sp, #0
-	bl sub_0200FFAC
+	bl ConvertStorageItemAtIdxToBulkItem
 	ldrh r0, [sp, #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -7862,8 +7862,8 @@ _0201273C:
 	b _02012780
 _02012768:
 	add r0, sp, #4
-	bl sub_0200FF50
-	bl sub_020101A0
+	bl GetEquivBulkItemIdxInStorage
+	bl RemoveItemAtIdxInStorage
 	cmp r0, #0
 	subne r7, r7, #1
 	add sb, sb, #1
@@ -7962,7 +7962,7 @@ _020128B0:
 	cmp r0, #1
 	bne _020128C0
 	ldrsh r0, [r1, #4]
-	bl sub_020101A0
+	bl RemoveItemAtIdxInStorage
 _020128C0:
 	add r4, r4, #1
 _020128C4:
@@ -61058,7 +61058,7 @@ _0203E518:
 	add r2, r4, #0x24
 	mov r0, #6
 	mla r0, r1, r0, r2
-	bl sub_020103AC
+	bl AddItemToStorage
 	cmp r0, #0
 	beq _0203E5A0
 	ldr r0, _0203E4B0 ; =_020AFE74
@@ -61179,7 +61179,7 @@ _0203E6D8:
 	add r2, r4, #0x24
 	mov r0, #6
 	mla r0, r1, r0, r2
-	bl sub_020103AC
+	bl AddItemToStorage
 	cmp r0, #0
 	beq _0203E7D8
 	ldr r0, _0203E4B0 ; =_020AFE74
@@ -61260,7 +61260,7 @@ _0203E80C:
 	add r2, r4, #0x24
 	mov r0, #6
 	mla r0, r1, r0, r2
-	bl sub_020103AC
+	bl AddItemToStorage
 	cmp r0, #0
 	beq _0203E8D4
 	ldr r0, _0203E4B0 ; =_020AFE74
@@ -61680,7 +61680,7 @@ _0203EE14:
 	b _0203EF9C
 _0203EE30:
 	add r0, r4, #0x84
-	bl sub_020103AC
+	bl AddItemToStorage
 	cmp r0, #0
 	ldreq r0, _0203E4B0 ; =_020AFE74
 	moveq r1, #0x49
@@ -65699,7 +65699,7 @@ sub_020423D8: ; 0x020423D8
 _0204241C:
 	bl sub_0200FD48
 	mov r4, r0
-	bl sub_0200FD78
+	bl CountNbOfItemsInStorage
 	sub r7, r4, r0
 	mov r8, r5
 	mov r6, #1
@@ -65766,7 +65766,7 @@ _020424CC:
 	mov r5, #1
 	b _020425D8
 _02042514:
-	bl sub_0200FD78
+	bl CountNbOfItemsInStorage
 	mov r6, r0
 	bl sub_02042B20
 	mov r5, r0
@@ -66348,7 +66348,7 @@ _02042C3C:
 _02042C44:
 	cmp r0, r4
 	blt _02042C04
-	bl sub_0200FC24
+	bl SortItemsInBag
 	mov r2, #0
 	mov r7, r2
 	mov r0, #1
@@ -66850,7 +66850,7 @@ sub_020432B4: ; 0x020432B4
 	ldrsh r6, [r0, #4]
 	add r1, sp, #0
 	mov r0, r6
-	bl sub_0200FFF4
+	bl ConvertStorageItemAtIdxToItem
 	ldr r2, _0204331C ; =_0209CA3C
 	add r1, sp, #0
 	mov r0, r5
@@ -66875,7 +66875,7 @@ sub_02043320: ; 0x02043320
 	stmdb sp!, {r3, lr}
 	cmp r0, #7
 	bne _02043344
-	bl sub_0200FE00
+	bl CountNbOfValidItemsInTimeDarknessInStorage
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -66885,14 +66885,14 @@ _02043344:
 	sub r0, r0, #5
 	cmp r0, #1
 	bhi _02043368
-	bl sub_0200FDB0
+	bl CountNbOfValidItemsInStorage
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 _02043368:
-	bl sub_0200FD78
+	bl CountNbOfItemsInStorage
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -66906,7 +66906,7 @@ sub_02043380: ; 0x02043380
 	cmp r0, #8
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ScriptSpecialProcess0x39
+	bl IsStorageFull
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02043380
 
@@ -67603,7 +67603,7 @@ _02043C5C:
 	bl sub_0200FD48
 	mov r1, r0
 	mov r0, r8
-	bl sub_02010424
+	bl SortItemsInStorage
 	mov sl, #0
 	ldr r0, _0204408C ; =_020AFEB4
 	mov r2, sl
@@ -68153,7 +68153,7 @@ _020443B0:
 	sub r0, r0, #1
 	cmp r0, #1
 	bhi _020443F4
-	bl sub_0200FD78
+	bl CountNbOfItemsInStorage
 	str r0, [sp, #0x28]
 	bl sub_0200FD48
 	str r0, [sp, #0x2c]
@@ -70400,7 +70400,7 @@ _02046234:
 	str r2, [r1, #8]
 	bl sub_020454E0
 _020462F4:
-	bl sub_0200FD78
+	bl CountNbOfItemsInStorage
 	mov r4, r0
 	bl sub_0200FD48
 	cmp r4, r0
@@ -83827,14 +83827,14 @@ sub_02050CD0: ; 0x02050CD0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02050CD0
 
-	arm_func_start sub_02050CE4
-sub_02050CE4: ; 0x02050CE4
+	arm_func_start GetRankStorageSize
+GetRankStorageSize: ; 0x02050CE4
 	stmdb sp!, {r3, lr}
 	bl GetRank
 	bl GetRankUpEntry
 	ldr r0, [r0, #8]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_02050CE4
+	arm_func_end GetRankStorageSize
 
 	arm_func_start sub_02050CF8
 sub_02050CF8: ; 0x02050CF8
@@ -92725,8 +92725,8 @@ _02057CC8:
 	cmp sb, #4
 	add r8, r8, #0x68
 	blt _02057C68
-	bl sub_0200F910
-	bl sub_0200FCAC
+	bl CleanStickyItemsInBag
+	bl RemovePokeItemsInBag
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02057CE4: .word TEAM_MEMBER_TABLE_PTR
@@ -93107,7 +93107,7 @@ sub_02058138: ; 0x02058138
 	strb r1, [sp]
 	bl ItemZInit
 	add r0, sp, #0
-	bl sub_0200FB54
+	bl RemoveHolderForItemInBag
 	b _020581E4
 _020581E0:
 	mov r0, #0
@@ -93172,7 +93172,7 @@ _02058288:
 	strb r1, [sp]
 	bl ItemZInit
 	add r0, sp, #0
-	bl sub_0200FB54
+	bl RemoveHolderForItemInBag
 	b _020582D4
 _020582C0:
 	add r8, r8, #1
@@ -93256,7 +93256,7 @@ _02058374:
 	strb r2, [sp, #1]
 	strb r1, [sp]
 	strb r3, [sp, #6]
-	bl sub_0200FB54
+	bl RemoveHolderForItemInBag
 	ldrh r2, [sp]
 	add r1, sp, #0
 	mov r0, r5
@@ -93268,7 +93268,7 @@ _02058374:
 	ldrsh r2, [r4, #0xa]
 	add r2, r2, #1
 	and r2, r2, #0xff
-	bl sub_0200FBE0
+	bl SetHolderForItemInBag
 	b _02058448
 _02058404:
 	ldrh r2, [r1]
@@ -93287,7 +93287,7 @@ _02058404:
 	ldrsh r2, [r4, #0xa]
 	add r2, r2, #1
 	and r2, r2, #0xff
-	bl sub_0200FBE0
+	bl SetHolderForItemInBag
 _02058448:
 	mov r0, #1
 	b _02058454
@@ -95701,8 +95701,8 @@ _0205A448: .word TACTIC_NAME_STRING_IDS
 _0205A44C: .word CopyNStringFromMessageId
 	arm_func_end CopyTacticString
 
-	arm_func_start sub_0205A450
-sub_0205A450: ; 0x0205A450
+	arm_func_start GetStatBoostsForMonsterSummary
+GetStatBoostsForMonsterSummary: ; 0x0205A450
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	ldrb ip, [sp, #0x18]
@@ -95728,7 +95728,7 @@ sub_0205A450: ; 0x0205A450
 	strb r0, [r4, #0x3c]
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0205A450
+	arm_func_end GetStatBoostsForMonsterSummary
 
 	arm_func_start sub_0205A4B4
 sub_0205A4B4: ; 0x0205A4B4
@@ -96371,8 +96371,8 @@ _0205AE20: .word _020A34C4
 _0205AE24: .word 0x0000096A
 	arm_func_end sub_0205A4B4
 
-	arm_func_start sub_0205AE28
-sub_0205AE28: ; 0x0205AE28
+	arm_func_start CreateMonsterSummaryFromTeamMember
+CreateMonsterSummaryFromTeamMember: ; 0x0205AE28
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x10
 	mov r8, r1
@@ -96497,7 +96497,7 @@ _0205AFE8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0205B004: .word 0x000003E7
-	arm_func_end sub_0205AE28
+	arm_func_end CreateMonsterSummaryFromTeamMember
 
 	arm_func_start sub_0205B008
 sub_0205B008: ; 0x0205B008
@@ -96531,7 +96531,7 @@ sub_0205B028: ; 0x0205B028
 	mov r2, r0
 	add r1, sp, #0
 	mov r0, r6
-	bl sub_0205AE28
+	bl CreateMonsterSummaryFromTeamMember
 	b _0205B098
 _0205B078:
 	bl GetActiveTeamMember
@@ -96541,7 +96541,7 @@ _0205B078:
 	mov r2, r0
 	mov r0, r6
 	mov r1, r4
-	bl sub_0205AE28
+	bl CreateMonsterSummaryFromTeamMember
 _0205B098:
 	add sp, sp, #0x68
 	ldmia sp!, {r4, r5, r6, pc}
@@ -96621,7 +96621,7 @@ sub_0205B120: ; 0x0205B120
 	add r0, sp, #0xc
 	bl sub_02011220
 	add r0, sp, #0xc
-	bl sub_02011394
+	bl GetHpBoostFromExclusiveItems
 	ldrsh r2, [r5]
 	ldrb r1, [sp, #0x38]
 	add r0, r2, r0

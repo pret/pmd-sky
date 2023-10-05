@@ -980,7 +980,7 @@ _0238AFA4:
 	add r0, r1, r5, lsl #1
 	add r0, r0, #0x100
 	ldrsh r0, [r0, #0x42]
-	bl sub_020101A0
+	bl RemoveItemAtIdxInStorage
 	add r5, r5, #1
 _0238AFB8:
 	ldr r1, [r4]
@@ -1024,7 +1024,7 @@ _0238B018:
 	cmp r0, #0
 	bne _0238B058
 	mov r0, r8
-	bl RemoveItemsTypeInStorage
+	bl RemoveBulkItemInStorage
 _0238B058:
 	add r4, r4, #1
 _0238B05C:
@@ -1037,7 +1037,7 @@ _0238B064:
 	ldr r0, _0238B08C ; =ov21_0238CF40
 	ldr r0, [r0]
 	add r0, r0, #0xe
-	bl AddItemToStorage
+	bl AddBulkItemToStorage
 	ldr r0, _0238B08C ; =ov21_0238CF40
 	mov r1, #1
 	b _0238B188

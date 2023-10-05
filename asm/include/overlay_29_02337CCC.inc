@@ -167,7 +167,7 @@
 .public sub_0200B330
 .public sub_0200B3FC
 .public sub_0200C008
-.public sub_0200F940
+.public CountStickyItemsInBag
 .public sub_0201B9F8
 .public sub_0201E13C
 .public sub_0201F2A0

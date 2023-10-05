@@ -1,5 +1,5 @@
 #pragma once
-.public AddItemToStorage
+.public AddBulkItemToStorage
 .public AddMoneyCarried
 .public CreateDBox
 .public CreateNormalMenu
@@ -50,7 +50,7 @@
 .public RemoveEmptyItemsInBag
 .public RemoveItem
 .public RemoveItemByIdAndStackNoHole
-.public RemoveItemsTypeInStorage
+.public RemoveBulkItemInStorage
 .public SetPortraitEmotion
 .public SetPortraitLayout
 .public ShowDBox
@@ -59,7 +59,7 @@
 .public SpecialProcAddItemToBag
 .public ItemToBulkItem
 .public sub_0201007C
-.public sub_020101A0
+.public RemoveItemAtIdxInStorage
 .public sub_02013150
 .public sub_02017C74
 .public sub_02017C80

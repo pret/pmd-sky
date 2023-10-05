@@ -114,7 +114,7 @@
 .public ov29_022EBC2C
 .public ov29_022ECDE4
 .public ov29_022F0B9C
-.public ov29_022F89CC
+.public CreateMonsterSummaryFromMonster
 .public ov29_022F9C40
 .public ov29_023002F0
 .public ov29_02300818
@@ -157,7 +157,7 @@
 .public sub_0200B3D4
 .public sub_0200D310
 .public sub_0200D894
-.public sub_0200FC24
+.public SortItemsInBag
 .public sub_02017C74
 .public sub_02017C80
 .public sub_02017CCC

@@ -1301,7 +1301,7 @@ _022F856C:
 	strneb r0, [r4]
 	bne _022F8594
 	add r0, r7, #0x62
-	bl sub_0200FB54
+	bl RemoveHolderForItemInBag
 	mov r0, #0
 	strb r0, [r4]
 _022F8594:
@@ -1614,8 +1614,8 @@ ov29_022F89AC: ; 0x022F89AC
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022F89AC
 
-	arm_func_start ov29_022F89CC
-ov29_022F89CC: ; 0x022F89CC
+	arm_func_start CreateMonsterSummaryFromMonster
+CreateMonsterSummaryFromMonster: ; 0x022F89CC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	ldr r5, [r6, #0xb4]
@@ -1673,7 +1673,7 @@ _022F8A28:
 	ldrsh r3, [r5, #0xe]
 	mov r0, r7
 	add r2, r5, #0x62
-	bl sub_0205A450
+	bl GetStatBoostsForMonsterSummary
 	ldrb r2, [r5, #0xa8]
 	mov r1, #0
 	add r0, r5, #0x90
@@ -2041,7 +2041,7 @@ _022F8FD8:
 	.align 2, 0
 _022F8FF0: .word 0x000003E7
 _022F8FF4: .word ov29_02353538
-	arm_func_end ov29_022F89CC
+	arm_func_end CreateMonsterSummaryFromMonster
 
 	arm_func_start ov29_022F8FF8
 ov29_022F8FF8: ; 0x022F8FF8
