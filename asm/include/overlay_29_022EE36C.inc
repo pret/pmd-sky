@@ -69,8 +69,8 @@
 .public SPATK_STAT_IDX
 .public SpawnMonster
 .public sub_02001888
-.public sub_0200FA68
-.public sub_0200FAEC
+.public TransmuteHeldItemInBag
+.public SetFlagsForHeldItemInBag
 .public SubstitutePlaceholderStringTags
 .public TryBlowAway
 .public TryExplosion

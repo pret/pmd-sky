@@ -31,7 +31,7 @@
 .public ov29_022E56A0
 .public ov29_022E58B0
 .public ov29_022E7A30
-.public ov29_022F89CC
+.public CreateMonsterSummaryFromMonster
 .public ov29_022F9840
 .public ov29_0234B034
 .public ov29_02352690

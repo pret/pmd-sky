@@ -56,7 +56,7 @@
 .public StrcpySimple
 .public StrncpySimple
 .public StrncpySimpleNoPadSafe
-.public sub_02010260
+.public RemoveItemInStorage
 .public sub_02017C50
 .public sub_02017C74
 .public sub_02017CB4

@@ -98,7 +98,7 @@
 .public sub_0200D1FC
 .public sub_0200D894
 .public sub_0200D8AC
-.public sub_0200F910
+.public CleanStickyItemsInBag
 .public sub_0201B9F8
 .public sub_02024FE8
 .public sub_0204F7A8

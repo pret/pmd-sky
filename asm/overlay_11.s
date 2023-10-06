@@ -288,7 +288,7 @@ _022DC558:
 	add r0, sp, #0x5c
 	bl sub_02011220
 	add r0, sp, #0x5c
-	bl sub_02011394
+	bl GetHpBoostFromExclusiveItems
 	add r0, sb, r0
 	ldrsh r1, [r8, #0xe]
 	mov r0, r0, lsl #0x10
@@ -13289,7 +13289,7 @@ _022E776C:
 	add r0, sp, #0x30
 	strh r7, [sp, #0x30]
 	strh r6, [sp, #0x32]
-	bl AddItemToStorage
+	bl AddBulkItemToStorage
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -13300,7 +13300,7 @@ _022E778C:
 	mov r0, r0, asr #0x10
 	bl ItemAtTableIdx
 	add r0, sp, #0x2c
-	bl AddItemToStorage
+	bl AddBulkItemToStorage
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -13354,7 +13354,7 @@ _022E7850:
 	add r0, sp, #0x24
 	strh r7, [sp, #0x24]
 	strh r6, [sp, #0x26]
-	bl RemoveItemsTypeInStorage
+	bl RemoveBulkItemInStorage
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -13365,7 +13365,7 @@ _022E7870:
 	mov r0, r0, asr #0x10
 	bl ItemAtTableIdx
 	add r0, sp, #0x20
-	bl RemoveItemsTypeInStorage
+	bl RemoveBulkItemInStorage
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -13501,7 +13501,7 @@ _022E7A48:
 	moveq r0, #0
 	b _022E7AC0
 _022E7A5C:
-	bl ScriptSpecialProcess0x39
+	bl IsStorageFull
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -49489,7 +49489,7 @@ _02305D9C:
 	mov r0, #5
 	bl sub_02017CCC
 _02305DE4:
-	bl sub_0200FC24
+	bl SortItemsInBag
 	bl GetNbItemsInBag
 	ldr r2, _02306148 ; =ov11_02324D84
 	mov r1, r0
@@ -51148,7 +51148,7 @@ _023074EC:
 	mov r0, #5
 	bl sub_02017CCC
 _023074FC:
-	bl sub_0200FC24
+	bl SortItemsInBag
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0
 	ldr r0, [r0]
@@ -53627,7 +53627,7 @@ _023097EC:
 	mov r1, r0
 	add r0, sp, #0xac
 	and r2, r5, #0xff
-	bl sub_0205AE28
+	bl CreateMonsterSummaryFromTeamMember
 	add r0, sp, #0xac
 	mov r1, #3
 	bl sub_0203F150

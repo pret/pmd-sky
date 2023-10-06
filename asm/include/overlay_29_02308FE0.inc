@@ -258,7 +258,7 @@
 .public SPECIAL_BAND_STAT_BOOST
 .public StringFromMessageId
 .public StrncpySimpleNoPad
-.public sub_0200FB54
+.public RemoveHolderForItemInBag
 .public StrncpyName
 .public sub_02025888
 .public sub_0204AF00

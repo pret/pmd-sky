@@ -4076,7 +4076,7 @@ _023402D8:
 	ldr r0, [r0]
 	add r4, r0, #0x80
 	add r0, r4, #0x9e
-	bl sub_020103AC
+	bl AddItemToStorage
 	mov r1, #0
 	strh r1, [r4, #0xa2]
 	strh r1, [r4, #0xa0]
@@ -5693,7 +5693,7 @@ _023419AC:
 	cmp r0, #0x1f
 	bne _02344184
 	add r0, r5, #0xae
-	bl sub_020103AC
+	bl AddItemToStorage
 	mov r1, #0
 	strh r1, [r5, #0xb2]
 	strh r1, [r5, #0xb0]
@@ -6587,7 +6587,7 @@ _02342668:
 	bl InitStandardItem
 _023426A8:
 	add r0, r5, #0xae
-	bl sub_020103AC
+	bl AddItemToStorage
 	mov r2, #0
 	strh r2, [r5, #0xb2]
 	ldr r1, _02341D00 ; =ov03_02346BC8
@@ -10221,7 +10221,7 @@ _023459F8:
 	ldr r0, [r0, #0x10]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl sub_0200FFF4
+	bl ConvertStorageItemAtIdxToItem
 	bl sub_0204317C
 	ldr r0, _02345A5C ; =ov03_02346BDC
 	mvn r3, #1
@@ -10316,7 +10316,7 @@ _02345B80:
 	add r1, sp, #0x18
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl sub_0200FFAC
+	bl ConvertStorageItemAtIdxToBulkItem
 	add r0, sp, #0x94
 	bl InitPreprocessorArgs
 	ldrsh r2, [sp, #0x18]
@@ -10561,7 +10561,7 @@ _02345F00:
 	cmp r0, #3
 	bne _02345F34
 	add r0, r7, #0x9e
-	bl sub_020103AC
+	bl AddItemToStorage
 	mov r1, #0
 	strh r1, [r7, #0xa2]
 	ldr r0, _02345A5C ; =ov03_02346BDC
@@ -10575,7 +10575,7 @@ _02345F34:
 	cmp r0, #2
 	bne _02346640
 	add r0, r7, #0x9e
-	bl sub_020103AC
+	bl AddItemToStorage
 	mov r1, #0
 	strh r1, [r7, #0xa2]
 	ldr r0, _02345A5C ; =ov03_02346BDC

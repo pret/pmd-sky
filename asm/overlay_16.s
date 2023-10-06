@@ -823,7 +823,7 @@ _0238AD2C:
 	cmp r0, #0
 	beq _0238AD40
 	add r0, sp, #8
-	bl sub_02010260
+	bl RemoveItemInStorage
 _0238AD40:
 	ldr r0, _0238B0CC ; =ov16_0238CE40
 	ldr r1, [r0]
@@ -850,7 +850,7 @@ _0238AD8C:
 	cmp r0, #0
 	beq _0238ADA0
 	add r0, sp, #8
-	bl sub_02010260
+	bl RemoveItemInStorage
 _0238ADA0:
 	ldr r0, _0238B124 ; =0x00003F01
 	bl sub_02017CB4
@@ -1921,7 +1921,7 @@ _0238BD2C:
 	cmp r0, #0
 	beq _0238BD40
 	add r0, sp, #8
-	bl sub_02010260
+	bl RemoveItemInStorage
 _0238BD40:
 	ldr r0, _0238C0CC ; =ov16_0238CE40
 	ldr r1, [r0]
@@ -1948,7 +1948,7 @@ _0238BD8C:
 	cmp r0, #0
 	beq _0238BDA0
 	add r0, sp, #8
-	bl sub_02010260
+	bl RemoveItemInStorage
 _0238BDA0:
 	ldr r0, _0238C124 ; =0x00003F01
 	bl sub_02017CB4

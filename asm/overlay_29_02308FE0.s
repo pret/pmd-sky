@@ -1553,7 +1553,7 @@ _0230A648:
 	b _0230A684
 _0230A67C:
 	add r0, r4, #0x62
-	bl sub_0200FB54
+	bl RemoveHolderForItemInBag
 _0230A684:
 	add r0, r4, #0x62
 	bl ItemZInit

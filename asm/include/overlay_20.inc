@@ -36,7 +36,7 @@
 .public sub_020037A4
 .public sub_0200D670
 .public sub_02010044
-.public sub_020103AC
+.public AddItemToStorage
 .public sub_02011CF4
 .public sub_02011D9C
 .public sub_02011DB8

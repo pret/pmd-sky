@@ -197,7 +197,7 @@
 .public ShowPpRestoreEffect
 .public StoryRestrictionsEnabled
 .public sub_0200F9B4
-.public sub_0200FB54
+.public RemoveHolderForItemInBag
 .public sub_0201405C
 .public sub_02017C50
 .public sub_0201C0CC
@@ -212,7 +212,7 @@
 .public sub_020585B4
 .public sub_02058674
 .public EnableAllLearnableIqSkills
-.public sub_0205A450
+.public GetStatBoostsForMonsterSummary
 .public SubFixedPoint
 .public SubstitutePlaceholderStringTags
 .public TEAM_MEMBER_TABLE_PTR

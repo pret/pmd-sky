@@ -168,7 +168,7 @@ _022EE574:
 	cmp r5, r4
 	bne _022EE5C4
 	mov r1, #8
-	bl sub_0200FAEC
+	bl SetFlagsForHeldItemInBag
 	b _022EE5E8
 _022EE5C4:
 	ldr r1, _022EE620 ; =ov29_02353538
@@ -290,7 +290,7 @@ _022EE6FC:
 	bne _022EE77C
 	add r0, sp, #8
 	ldr r0, [r0, sb, lsl #2]
-	bl sub_0200FA68
+	bl TransmuteHeldItemInBag
 	b _022EE7AC
 _022EE77C:
 	ldr r0, _022EE810 ; =ov29_02353538

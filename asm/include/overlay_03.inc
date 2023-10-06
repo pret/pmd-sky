@@ -112,11 +112,11 @@
 .public sub_02006BFC
 .public sub_02006C8C
 .public sub_0200D310
-.public sub_0200FFAC
-.public sub_0200FFF4
+.public ConvertStorageItemAtIdxToBulkItem
+.public ConvertStorageItemAtIdxToItem
 .public sub_02010044
 .public sub_02010154
-.public sub_020103AC
+.public AddItemToStorage
 .public sub_02017CCC
 .public sub_02025404
 .public sub_0202561C

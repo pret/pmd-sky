@@ -1962,7 +1962,7 @@ _023842F4:
 	bl sub_02017CCC
 _02384314:
 	bl ov29_02346E5C
-	bl sub_0200FC24
+	bl SortItemsInBag
 	mov r8, #0
 _02384320:
 	ldr r0, _023848A8 ; =ov29_02353538
@@ -5652,7 +5652,7 @@ _023876C4:
 _023876E4:
 	add r0, sp, #0
 	mov r1, sb
-	bl ov29_022F89CC
+	bl CreateMonsterSummaryFromMonster
 	mov r2, #0
 	add r0, sp, #0
 	mov r1, r4

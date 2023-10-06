@@ -176,8 +176,8 @@
 .public SpawnItem
 .public sub_02001AB0
 .public sub_02006B70
-.public sub_0200FB54
-.public sub_0200FBE0
+.public RemoveHolderForItemInBag
+.public SetHolderForItemInBag
 .public sub_02017C80
 .public sub_02017CCC
 .public sub_0201B9F8

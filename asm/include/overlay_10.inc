@@ -225,8 +225,8 @@
 .public sub_0200B3FC
 .public sub_0200C4CC
 .public sub_0200D310
-.public sub_0200F910
-.public sub_0200FB54
+.public CleanStickyItemsInBag
+.public RemoveHolderForItemInBag
 .public sub_02017A68
 .public sub_02017ACC
 .public sub_02017C80

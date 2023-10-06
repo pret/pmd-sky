@@ -56,7 +56,7 @@ _022ECE6C:
 _022ECE94:
 	mov r1, r8
 	add r0, r4, #0x70
-	bl ov29_022F89CC
+	bl CreateMonsterSummaryFromMonster
 	strh sb, [r4, #0x5a]
 	ldrh r1, [r6, #0x62]
 	ldr r0, _022ECF40 ; =0x000003E7

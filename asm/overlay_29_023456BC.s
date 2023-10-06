@@ -1693,7 +1693,7 @@ ov29_02346E48: ; 0x02346E48
 	stmdb sp!, {r3, lr}
 	bl ov29_02346CBC
 	bl sub_02057CE8
-	bl sub_0200F910
+	bl CleanStickyItemsInBag
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_02346E48
 

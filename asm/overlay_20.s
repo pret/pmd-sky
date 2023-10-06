@@ -860,7 +860,7 @@ _0238ACC0:
 	mov r2, #0
 	bl InitStandardItem
 	add r0, sp, #0xa
-	bl sub_020103AC
+	bl AddItemToStorage
 	mov r0, #0x2b
 	str r0, [sb, #0xc]
 	bl sub_02046D20
@@ -887,7 +887,7 @@ _0238AD24:
 	mov r2, #0
 	bl InitStandardItem
 	add r0, sp, #4
-	bl sub_020103AC
+	bl AddItemToStorage
 	mov r0, #0x2b
 	str r0, [sb, #0xc]
 	bl sub_02046D20
