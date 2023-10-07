@@ -187,6 +187,7 @@
 .public DecompressAtFromMemoryPointer
 .public FatalError
 .public FileInit
+.public GetLanguage
 .public GetOverlayInfo
 .public InitDebug
 .public InitOverlay

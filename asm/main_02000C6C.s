@@ -13444,7 +13444,47 @@ _0200B71C:
 
 	arm_func_start sub_0200B768
 sub_0200B768: ; 0x0200B768
+#ifdef EUROPE
+	stmdb sp!, {r4, lr}
+	sub sp, sp, #8
+	bl GetLanguage
+	ldr r1, _0200B7E4 ; =0x020AFF38
+	mov r4, r0
+	ldrsb r0, [r1]
+	cmp r0, r4
+	beq _0200B7DC
+	ldr r1, _0200B7E8 ; =0x020AFF3C
+	add r0, sp, #0
+	ldr r1, [r1, r4, lsl #2]
+	mov r2, #1
+	bl LoadFileFromRom
+	ldr r2, _0200B7EC ; =0x04000208
+	mov r1, #0
+	ldrh r0, [r2]
+	strh r1, [r2]
+	ldr r0, _0200B7F0 ; =0x02092EE4
+	ldr r1, [sp]
+	ldr r2, [sp, #4]
+	bl MemcpySimple
+	ldr r2, _0200B7EC ; =0x04000208
+	add r0, sp, #0
+	ldrh r1, [r2]
+	mov r1, #1
+	strh r1, [r2]
+	bl UnloadFile
+	ldr r0, _0200B7E4 ; =0x020AFF38
+	strb r4, [r0]
+_0200B7DC:
+	add sp, sp, #8
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_0200B7E4: .word 0x020AFF38
+_0200B7E8: .word 0x020AFF3C
+_0200B7EC: .word 0x04000208
+_0200B7F0: .word 0x02092EE4
+#else
 	bx lr
+#endif
 	arm_func_end sub_0200B768
 
 	arm_func_start sub_0200B76C

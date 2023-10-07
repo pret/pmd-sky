@@ -2595,8 +2595,13 @@ _0200E6CC:
 
 	arm_func_start LoadItemPspi2n
 LoadItemPspi2n: ; 0x0200E6D8
+#ifdef EUROPE
+#define LOAD_ITEM_PSPI_2N_STACK_SIZE #0x108
+#else
+#define LOAD_ITEM_PSPI_2N_STACK_SIZE #8
+#endif
 	stmdb sp!, {r3, lr}
-	sub sp, sp, #8
+	sub sp, sp, LOAD_ITEM_PSPI_2N_STACK_SIZE
 	ldr r1, _0200E748 ; =_02098038
 	add r0, sp, #0
 	mov r2, #1
@@ -2617,12 +2622,24 @@ LoadItemPspi2n: ; 0x0200E6D8
 	beq _0200E740
 	ldr r0, _0200E758 ; =_020AF6C8
 	bl ZInit8
+#ifdef EUROPE
+	bl GetLanguage
+	mov r2, r0
+	ldr r1, _0200E800 ; =0x020AFF88
+	add r0, sp, #8
+	ldr r2, [r1, r2, lsl #2]
+	ldr r1, _0200E75C ; =_02098070
+	bl SprintfStatic__0200E808_EU
+	ldr r0, _0200E758 ; =_020AF6C8
+	add r1, sp, #8
+#else
 	ldr r0, _0200E758 ; =_020AF6C8
 	ldr r1, _0200E75C ; =_02098070
+#endif
 	mov r2, #1
 	bl LoadFileFromRom
 _0200E740:
-	add sp, sp, #8
+	add sp, sp, LOAD_ITEM_PSPI_2N_STACK_SIZE
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0200E748: .word _02098038
@@ -2630,8 +2647,27 @@ _0200E74C: .word _020AF6C4
 _0200E750: .word _02098054
 _0200E754: .word ITEM_DATA_TABLE_PTRS
 _0200E758: .word _020AF6C8
+#ifdef EUROPE
+_0200E800: .word 0x020AFF88
+#endif
 _0200E75C: .word _02098070
 	arm_func_end LoadItemPspi2n
+
+#ifdef EUROPE
+	arm_func_start SprintfStatic__0200E808_EU
+SprintfStatic__0200E808_EU: ; 0x0200E808
+	stmdb sp!, {r0, r1, r2, r3}
+	stmdb sp!, {r3, lr}
+	add r2, sp, #0xc
+	bic r2, r2, #3
+	ldr r1, [sp, #0xc]
+	add r2, r2, #4
+	bl vsprintf
+	ldmia sp!, {r3, lr}
+	add sp, sp, #0x10
+	bx lr
+	arm_func_end SprintfStatic__0200E808_EU
+#endif
 
 	arm_func_start GetExclusiveItemType
 GetExclusiveItemType: ; 0x0200E760
@@ -2746,6 +2782,11 @@ GetItemName: ; 0x0200E864
 
 	arm_func_start GetItemNameFormatted
 GetItemNameFormatted: ; 0x0200E884
+#ifdef EUROPE
+#define GET_ITEM_NAME_FORMATTED_SPRINTF SprintfStatic__0200E808_EU
+#else
+#define GET_ITEM_NAME_FORMATTED_SPRINTF SprintfStatic__0200E990
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, r1
 	mov r8, r0
@@ -2777,7 +2818,7 @@ _0200E8E8:
 	ldr r1, _0200E980 ; =_0209808C
 	mov r0, r8
 	mov r2, r4
-	bl SprintfStatic__0200E990
+	bl GET_ITEM_NAME_FORMATTED_SPRINTF
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0200E904:
 	mov r0, r8
@@ -2792,13 +2833,13 @@ _0200E914:
 	ldr r1, _0200E984 ; =_0209809C
 	mov r0, r8
 	mov r2, r4
-	bl SprintfStatic__0200E990
+	bl GET_ITEM_NAME_FORMATTED_SPRINTF
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0200E938:
 	ldr r1, _0200E988 ; =_020980AC
 	mov r0, r8
 	mov r2, r4
-	bl SprintfStatic__0200E990
+	bl GET_ITEM_NAME_FORMATTED_SPRINTF
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0200E94C:
 	cmp r6, #0
@@ -2806,13 +2847,13 @@ _0200E94C:
 	ldr r1, _0200E98C ; =_020980B0
 	mov r0, r8
 	mov r2, r4
-	bl SprintfStatic__0200E990
+	bl GET_ITEM_NAME_FORMATTED_SPRINTF
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0200E968:
 	ldr r1, _0200E988 ; =_020980AC
 	mov r0, r8
 	mov r2, r4
-	bl SprintfStatic__0200E990
+	bl GET_ITEM_NAME_FORMATTED_SPRINTF
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0200E97C: .word ITEM_DATA_TABLE_PTRS
@@ -2822,6 +2863,7 @@ _0200E988: .word _020980AC
 _0200E98C: .word _020980B0
 	arm_func_end GetItemNameFormatted
 
+#ifndef EUROPE
 	arm_func_start SprintfStatic__0200E990
 SprintfStatic__0200E990: ; 0x0200E990
 	stmdb sp!, {r0, r1, r2, r3}
@@ -2835,6 +2877,7 @@ SprintfStatic__0200E990: ; 0x0200E990
 	add sp, sp, #0x10
 	bx lr
 	arm_func_end SprintfStatic__0200E990
+#endif
 
 	arm_func_start GetItemBuyPrice
 GetItemBuyPrice: ; 0x0200E9B8
@@ -11669,6 +11712,11 @@ _02015788: .word _020AF710
 
 	arm_func_start sub_0201578C
 sub_0201578C: ; 0x0201578C
+#ifdef EUROPE
+#define SUB_0201578C_STACK_OFFSET 4
+#else
+#define SUB_0201578C_STACK_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2f8
 	sub sp, sp, #0x400
@@ -11679,7 +11727,7 @@ sub_0201578C: ; 0x0201578C
 	str r1, [sp, #8]
 	mov r7, r2
 	str r3, [sp, #0xc]
-	str r4, [sp, #0x2c]
+	str r4, [sp, #0x2c + SUB_0201578C_STACK_OFFSET]
 _020157B8:
 	ldr r0, [sp, #0xc]
 	ldrb r0, [r0, r4]
@@ -11748,17 +11796,301 @@ _02015888:
 	mov r0, r7, lsr #0x1f
 	rsb r3, r0, r7, lsl #29
 	add r0, r0, r3, ror #29
-	str r0, [sp, #0x3c]
+	str r0, [sp, #0x3c + SUB_0201578C_STACK_OFFSET]
 	mov r0, r2, asr #3
 	mov r6, r7, asr #2
-	str r1, [sp, #0x34]
+	str r1, [sp, #0x34 + SUB_0201578C_STACK_OFFSET]
 	add r1, r7, r6, lsr #29
-	str r0, [sp, #0x30]
+	str r0, [sp, #0x30 + SUB_0201578C_STACK_OFFSET]
 	mov r0, r1, asr #3
 	add r6, sp, #0x500
-	str r0, [sp, #0x38]
+	str r0, [sp, #0x38 + SUB_0201578C_STACK_OFFSET]
 	add r6, r6, #0xf8
 	b _02015CD8
+#ifdef EUROPE
+_020158E0:
+	ldrb r0, [r6], #1
+	cmp r0, #0x23
+	str r0, [sp, #0x18]
+	addeq r5, r5, #8
+	beq _02015CD8
+	cmp r0, #0x20
+	addeq r5, r5, #6
+	beq _02015CD8
+	cmp r0, #0x5b
+	bne _02015B14
+	mov r0, #1
+	str r6, [sp, #0x44]
+	str r0, [sp, #0x1c]
+	mov r1, r0
+_020159C0:
+	ldrb r0, [r6], #1
+	cmp r0, #0x5d
+	beq _020159E0
+	cmp r0, #0x3a
+	addeq r0, sp, #0x44
+	streq r6, [r0, r1, lsl #2]
+	addeq r1, r1, #1
+	b _020159C0
+_020159E0:
+	ldr r0, [sp, #0x44]
+	ldr r1, _02015D0C ; =_02098FC0
+	bl StrcmpTag
+	cmp r0, #0
+	beq _02015A0C
+	ldr r0, [sp, #0x48]
+	bl sub_0202380C_EU
+	str r0, [sp, #0x18]
+	mov r0, #0
+	str r0, [sp, #0x1c]
+	b _02015B08
+_02015A0C:
+	ldr r0, [sp, #0x44]
+	ldr r1, _02015DEC ; =_02098FC0
+	bl StrcmpTag
+	cmp r0, #0
+	beq _02015B08
+	ldr r0, [sp, #0x48]
+	bl StoiTag
+	ldr r0, [sp, #0x4c]
+	bl StoiTag
+	ldr r1, _02015DF0 ; =_020AF710
+	add ip, r5, #2
+	ldr r1, [r1]
+	ldr r8, [sp, #0x10]
+	ldrsh r3, [r1, #0x32]
+	mov r1, ip, asr #2
+	add r1, ip, r1, lsr #29
+	mov r2, r1, asr #3
+	ldr r1, [sp, #0x34]
+	mov r0, r0, lsl #0x10
+	add r1, r2, r1, lsl #5
+	add r2, r3, r1
+	ldr r1, [sp, #4]
+	add r2, r1, r2, lsl #5
+	ldr r1, [sp, #0x38]
+	add sb, r2, r1, lsl #2
+	mov r1, #0
+	str r1, [sp, #0x20]
+_02015A78:
+	mov sl, sb
+	mov lr, #0
+	b _02015AD0
+_02015A84:
+	add r1, ip, lr
+	mov r2, r1, lsr #0x1f
+	rsb r1, r2, r1, lsl #29
+	add r1, r2, r1, ror #29
+	ldr r2, _02015D14 ; =_02098EE0
+	add lr, lr, #8
+	add r3, r2, r1, lsl #4
+	ldr r1, [r2, r1, lsl #4]
+	ldr r2, [sl]
+	ldr fp, [r3, #8]
+	bic r1, r1, #0
+	orr r1, r2, r1, lsl fp
+	str r1, [sl]
+	ldr r1, [r3, #4]
+	ldr r2, [sl, #0x20]!
+	ldr r3, [r3, #0xc]
+	bic r1, r1, #0
+	orr r1, r2, r1, lsr r3
+	str r1, [sl]
+_02015AD0:
+	cmp lr, r0, asr #16
+	blt _02015A84
+	add r8, r8, #1
+	mov r2, r8, lsr #0x1f
+	rsb r1, r2, r8, lsl #29
+	adds r1, r2, r1, ror #29
+	ldr r1, [sp, #0x20]
+	add sb, sb, #4
+	add r1, r1, #1
+	addeq sb, sb, #0x3e0
+	str r1, [sp, #0x20]
+	cmp r1, #2
+	blt _02015A78
+	add r5, r5, r0, asr #16
+_02015B08:
+	ldr r0, [sp, #0x1c]
+	cmp r0, #0
+	bne _02015CD8
+_02015B14:
+	ldr r0, [sp, #0x18]
+	bl sub_02025480
+	bl sub_0201628C
+	mov sl, #0
+	add r1, sp, #0x400
+	add r1, r1, #0xd8
+	ldr r3, [r0]
+	str r1, [sp, #0x24]
+	mov r8, sl
+	mov sb, sl
+_02015B3C:
+	ldrb r2, [r3], #1
+	add r1, sp, #0x58
+	add r1, r1, sb
+	mov fp, r2, asr #4
+	and ip, fp, #0xf
+	add fp, sp, #0x58
+	strb ip, [fp, sb]
+	and r2, r2, #0xf
+	add sb, sb, #2
+	strb r2, [r1, #1]
+	cmp sb, #0x240
+	blt _02015B3C
+_02015B6C:
+	cmp r8, #0x240
+	bge _02015BFC
+	add r1, sp, #0x58
+	ldrb r1, [r1, sl]
+	add r3, sl, #1
+	mov sl, r3
+	tst r1, #8
+	and r1, r1, #7
+	mov sb, #0
+	beq _02015BF0
+	add r2, sp, #0x58
+	ldrb r2, [r2, r3]
+	add sl, r3, #1
+	and r3, r2, #0xff
+	b _02015BC0
+_02015BA8:
+	add r2, sp, #0x298
+	strb r3, [r2, r8]
+	add r8, r8, #1
+	cmp r8, #0x240
+	bge _02015B6C
+	add sb, sb, #1
+_02015BC0:
+	cmp sb, r1
+	blt _02015BA8
+	b _02015B6C
+_02015BCC:
+	add r2, sp, #0x58
+	ldrb r3, [r2, sl]
+	add r2, sp, #0x298
+	add sl, sl, #1
+	strb r3, [r2, r8]
+	add r8, r8, #1
+	cmp r8, #0x240
+	bge _02015B6C
+	add sb, sb, #1
+_02015BF0:
+	cmp sb, r1
+	blt _02015BCC
+	b _02015B6C
+_02015BFC:
+	mov fp, #0
+_02015C00:
+	ldr r1, [sp, #0x24]
+	str r1, [sp, #0x14]
+	add r1, r1, #4
+	str r1, [sp, #0x24]
+	add r1, sp, #0x298
+	add ip, r1, fp
+	ldrb r3, [r1, fp]
+	ldrb r1, [ip, #2]
+	ldrb r2, [ip, #1]
+	and sl, r3, #0xf
+	mov r1, r1, lsl #8
+	and r8, r1, #0xf00
+	ldrb r1, [ip, #5]
+	mov r2, r2, lsl #4
+	and sb, r2, #0xf0
+	mov r1, r1, lsl #0x14
+	ldrb r3, [ip, #3]
+	ldrb r2, [ip, #4]
+	and lr, r1, #0xf00000
+	ldrb r1, [ip, #7]
+	ldrb ip, [ip, #6]
+	mov r2, r2, lsl #0x10
+	mov r1, r1, lsl #0x1c
+	mov ip, ip, lsl #0x18
+	mov r3, r3, lsl #0xc
+	add fp, fp, #8
+	and r1, r1, #0xf0000000
+	and ip, ip, #0xf000000
+	orr r1, r1, ip
+	and r2, r2, #0xf0000
+	orr r1, lr, r1
+	and r3, r3, #0xf000
+	orr r1, r2, r1
+	orr r1, r3, r1
+	orr r1, r8, r1
+	orr r1, sb, r1
+	orr r2, sl, r1
+	ldr r1, [sp, #0x14]
+	cmp fp, #0x240
+	str r2, [r1]
+	blt _02015C00
+	ldrb lr, [r0, #6]
+	ldr r0, _02015D10 ; =_020AF710
+	add r8, sp, #0x400
+	ldr r1, [r0]
+	mov r0, r5, asr #2
+	add r0, r5, r0, lsr #29
+	ldrsh r3, [r1, #0x32]
+	mov r1, r0, asr #3
+	ldr r0, [sp, #0x3c]
+	mov r2, r7
+	add r0, r1, r0, lsl #5
+	add r1, r3, r0
+	ldr r0, [sp, #4]
+	add r8, r8, #0xd8
+	add r1, r0, r1, lsl #5
+	ldr r0, [sp, #0x40]
+	add r3, r1, r0, lsl #2
+	mov r1, r5, lsr #0x1f
+	rsb r0, r1, r5, lsl #29
+	add r1, r1, r0, ror #29
+	ldr r0, _02015D14 ; =_02098EE0
+	add sb, r0, r1, lsl #4
+	mov r0, #0
+	str r0, [sp, #0x28]
+_02015D04:
+	mov r0, #0
+	mov sl, r3
+	str r0, [sp, #0x2c]
+_02015D10_EU:
+	ldr r1, [r8]
+	cmp r1, #0
+	beq _02015D4C
+	ldr r0, [sl]
+	ldr ip, [sb]
+	ldr fp, [sb, #8]
+	and ip, r1, ip
+	orr r0, r0, ip, lsl fp
+	str r0, [sl]
+	ldr ip, [sl, #0x20]
+	ldr fp, [sb, #4]
+	ldr r0, [sb, #0xc]
+	and r1, r1, fp
+	orr r0, ip, r1, lsr r0
+	str r0, [sl, #0x20]
+_02015D4C:
+	ldr r0, [sp, #0x2c]
+	add r8, r8, #4
+	add r0, r0, #1
+	add sl, sl, #0x20
+	str r0, [sp, #0x2c]
+	cmp r0, #3
+	blt _02015D10_EU
+	add r2, r2, #1
+	mov r1, r2, lsr #0x1f
+	rsb r0, r1, r2, lsl #29
+	adds r0, r1, r0, ror #29
+	ldr r0, [sp, #0x28]
+	add r3, r3, #4
+	add r0, r0, #1
+	addeq r3, r3, #0x3e0
+	str r0, [sp, #0x28]
+	cmp r0, #0x18
+	blt _02015D04
+	ldr r0, [sp, #0x18]
+	add r5, r5, lr
+	cmp r0, #0x7e
+#else
 _020158E0:
 	ldrb r8, [r6], #1
 	cmp r8, #0x23
@@ -12026,6 +12358,7 @@ _02015C70:
 	ldr r0, [sp, #0x20]
 	cmp r8, #0x7e
 	add r5, r5, r0
+#endif
 	ldreqb r0, [r6]
 	cmpeq r0, #0x32
 	ldreqb r0, [r6, #1]
@@ -12048,6 +12381,9 @@ _02015CF8:
 	.align 2, 0
 _02015D08: .word _02098FBC
 _02015D0C: .word _02098FC0
+#ifdef EUROPE
+_02015DEC: .word 0x02099408
+#endif
 _02015D10: .word _020AF710
 _02015D14: .word _02098EE0
 	arm_func_end sub_0201578C
@@ -14075,6 +14411,77 @@ _02017868:
 	arm_func_start sub_020178A8
 sub_020178A8: ; 0x020178A8
 	stmdb sp!, {r4, r5, r6, r7, lr}
+#ifdef EUROPE
+	sub sp, sp, #0x254
+	mov r4, r1
+	and r1, r4, #0xff
+	mov r7, r0
+	bl sub_0204F77C
+	mov r5, r0
+	cmp r5, r7
+	and r6, r4, #0xff
+	beq _020179BC
+	bl GetNbFloors
+	cmp r0, #1
+	moveq r6, #0
+_020179BC:
+	mov r1, r7
+	and r2, r4, #0xff
+	mov r0, #2
+	bl sub_0204F6F8
+	mov r4, r0
+	add r0, sp, #4
+	bl InitPreprocessorArgs
+	mov r0, r5
+	bl DungeonGoesUp
+	cmp r0, #0
+	movne r2, r6
+	rsbeq r2, r6, #0
+	ldr r1, _020179FC ; =_020AF76C
+	add r0, sp, #0x54
+	str r2, [sp, #0x28]
+	bl SprintfStatic__02017A40
+	add r5, sp, #4
+	add r0, sp, #0x154
+	add r2, sp, #0x54
+	mov r1, #0x100
+	mov r3, #0
+	str r5, [sp]
+	bl PreprocessString
+	bl sub_02015570
+	cmp r6, #0
+	mov r0, r4
+	beq _02017A70
+	bl sub_020155FC
+	mov r1, #0x18
+	mul r1, r0, r1
+	add r0, r1, #0x38
+	rsb r5, r0, #0xc0
+	mov r0, r5, asr #1
+	mov r1, r4
+	bl sub_02015E44
+	sub r1, r0, #1
+	mov r0, #0x18
+	mul r0, r1, r0
+	add r0, r0, r5, asr #1
+	add r1, r0, #0x20
+	add r2, sp, #0x154
+	mov r0, #0
+	mov r3, #2
+	bl sub_02015D18
+	b _02017A8C
+_02017A70:
+	bl sub_020155FC
+	mov r1, #0x18
+	mul r1, r0, r1
+	rsb r0, r1, #0xc0
+	mov r1, r4
+	mov r0, r0, asr #1
+	bl sub_02015E44
+_02017A8C:
+	bl sub_02015E6C
+	add sp, sp, #0x254
+#else
 	sub sp, sp, #0x104
 	mov r5, r1
 	and r1, r5, #0xff
@@ -14163,6 +14570,7 @@ _020179D4:
 _020179F0:
 	bl sub_02015E6C
 	add sp, sp, #0x104
+#endif
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _020179FC: .word _020AF76C
@@ -24907,13 +25315,39 @@ sub_0202057C: ; 0x0202057C
 	bl sub_02004F74
 	ldrsb r0, [sp]
 	bl sub_020205C0
+#ifdef EUROPE
+	bl sub_0202059C
+#endif
 	add sp, sp, #0x54
 	ldmia sp!, {pc}
 	arm_func_end sub_0202057C
 
 	arm_func_start sub_0202059C
 sub_0202059C: ; 0x0202059C
+#ifdef EUROPE
+	stmdb sp!, {r4, lr}
+	mov r4, r0
+	mvn r0, #0
+	cmp r4, r0
+	ldmeqia sp!, {r4, pc}
+	ldr r1, _02020680 ; =0x020B05A8
+	ldr r0, _02020684 ; =0x02099C04
+	ldrsb r1, [r1]
+	mov r2, r4
+	bl DebugPrint0
+	ldr r1, _02020680 ; =0x020B05A8
+	mov r0, r4
+	strb r4, [r1]
+	bl sub_020206C0_EU
+	ldr r1, _02020680 ; =0x020B05A8
+	strb r0, [r1, #1]
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_02020680: .word 0x020B05A8
+_02020684: .word 0x02099C04
+#else
 	bx lr
+#endif
 	arm_func_end sub_0202059C
 
 	arm_func_start GetLanguageType
@@ -24925,6 +25359,18 @@ GetLanguageType: ; 0x020205A0
 _020205AC: .word LANGUAGE_INFO_DATA
 	arm_func_end GetLanguageType
 
+#ifdef EUROPE
+	arm_func_start sub_02020698_EU
+sub_02020698_EU: ; 0x02020698
+	and r0, r0, #0xff
+	cmp r0, #4
+	movls r0, #1
+	movhi r0, #0
+	and r0, r0, #0xff
+	bx lr
+	arm_func_end sub_02020698_EU
+#endif
+
 	arm_func_start GetLanguage
 GetLanguage: ; 0x020205B0
 	ldr r0, _020205BC ; =LANGUAGE_INFO_DATA
@@ -24933,6 +25379,23 @@ GetLanguage: ; 0x020205B0
 	.align 2, 0
 _020205BC: .word LANGUAGE_INFO_DATA
 	arm_func_end GetLanguage
+
+#ifdef EUROPE
+	arm_func_start sub_020206C0_EU
+sub_020206C0_EU: ; 0x020206C0
+	cmp r0, #0
+	blt _020206D8_EU
+	cmp r0, #5
+	ldrlt r1, _020206E0_EU ; =0x02099BF0
+	ldrltsb r0, [r1, r0]
+	bxlt lr
+_020206D8_EU:
+	mvn r0, #0
+	bx lr
+	.align 2, 0
+_020206E0_EU: .word 0x02099BF0
+	arm_func_end sub_020206C0_EU
+#endif
 
 	arm_func_start sub_020205C0
 sub_020205C0: ; 0x020205C0
@@ -25167,7 +25630,25 @@ _02020888: .word strstr
 
 	arm_func_start sub_0202088C
 sub_0202088C: ; 0x0202088C
+#ifdef EUROPE
+	stmdb sp!, {r3, lr}
+	bl GetLanguage
+	ldr r1, _020209E0 ; =0x020B05B0
+	mov r2, r0, lsl #1
+	ldrh r2, [r1, r2]
+	ldr r1, _020209E4 ; =0x020B05AC
+	cmp r0, #2
+	strh r2, [r1]
+	strh r2, [r1, #2]
+	moveq r0, #0x2e
+	streqh r0, [r1]
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_020209E0: .word 0x020B05B0
+_020209E4: .word 0x020B05AC
+#else
 	bx lr
+#endif
 	arm_func_end sub_0202088C
 
 	arm_func_start sub_02020890
@@ -25614,8 +26095,15 @@ _02020DB8:
 
 	arm_func_start AnalyzeText
 AnalyzeText: ; 0x02020DC8
+#ifdef EUROPE
+#define ANALYZE_TEXT_STACK_OFFSET 8
+#define ANALYZE_TEXT_LOAD_OFFSET -10
+#else
+#define ANALYZE_TEXT_STACK_OFFSET 0
+#define ANALYZE_TEXT_LOAD_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
-	sub sp, sp, #0x84
+	sub sp, sp, #0x84 + ANALYZE_TEXT_STACK_OFFSET
 	mov r4, r0
 	ldr r0, [r4, #0x78]
 	add r0, r0, #1
@@ -25707,8 +26195,8 @@ _02020EE4:
 	mov r6, #1
 	add r0, r0, #1
 	str r0, [r4, #0x88]
-	str r0, [sp, #0x70]
-	add r0, sp, #0x70
+	str r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	add r0, sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET
 _02020F24:
 	ldr r1, [r4, #0x88]
 	mov r2, r1
@@ -25723,7 +26211,7 @@ _02020F24:
 	addeq r6, r6, #1
 	b _02020F24
 _02020F54:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldrb r7, [r0]
 	cmp r7, #0x41
 	blo _02021A38
@@ -25739,7 +26227,11 @@ _02020F7C: ; jump table
 	b _02021A10 ; case 2
 	b _02021A10 ; case 3
 	b _0202134C ; case 4
+#ifdef EUROPE
+	b _0202155C ; case 5
+#else
 	b _02021A10 ; case 5
+#endif
 	b _020212F0 ; case 6
 	b _02021A10 ; case 7
 	b _02021A10 ; case 8
@@ -25776,17 +26268,17 @@ _02020FD4:
 	b _02021AA0
 _02021018:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, [r0, #0xe8]
 	ldr r0, [r0, #0xe4]
-	str r1, [sp, #0x6c]
-	str r0, [sp, #0x68]
+	str r1, [sp, #0x6c + ANALYZE_TEXT_STACK_OFFSET]
+	str r0, [sp, #0x68 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
-	add r0, sp, #0x68
+	add r0, sp, #0x68 + ANALYZE_TEXT_STACK_OFFSET
 	bl FatalError
 _02021040:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EDC ; =_020999C8
 	bl StrcmpTag
 	cmp r0, #0
@@ -25795,7 +26287,7 @@ _02021040:
 	bne _02021098
 	ldrb r1, [r4, #0x9c]
 	cmp r1, #0
-	ldrne r0, [sp, #0x74]
+	ldrne r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	strneb r1, [r4, #0x99]
 	ldrneb r0, [r0]
 	strneb r0, [r4, #0x9c]
@@ -25804,21 +26296,21 @@ _02021040:
 	strb r0, [r4, #0x99]
 	ldrb r0, [r4, #0xa8]
 	cmp r0, #0
-	ldreq r0, [sp, #0x74]
+	ldreq r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	ldreqb r0, [r0]
 	streqb r0, [r4, #0x98]
 	b _020210F0
 _02021098:
 	cmp r6, #3
 	bne _020210F0
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldrb r2, [r4, #0x9c]
 	cmp r2, #0
 	cmpne r0, #3
 	beq _020210D0
 	add r1, r4, r0
-	ldr r0, [sp, #0x78]
+	ldr r0, [sp, #0x78 + ANALYZE_TEXT_STACK_OFFSET]
 	strb r2, [r1, #0x99]
 	ldrb r0, [r0]
 	strb r0, [r4, #0x9c]
@@ -25829,7 +26321,7 @@ _020210D0:
 	strb r1, [r0, #0x99]
 	ldrb r0, [r4, #0xa8]
 	cmp r0, #0
-	ldreq r0, [sp, #0x78]
+	ldreq r0, [sp, #0x78 + ANALYZE_TEXT_STACK_OFFSET]
 	ldreqb r0, [r0]
 	streqb r0, [r4, #0x98]
 _020210F0:
@@ -25839,7 +26331,7 @@ _020210F0:
 	blx r2
 	b _02021AA0
 _02021104:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EE0 ; =_020999CC
 	bl StrcmpTag
 	cmp r0, #0
@@ -25863,7 +26355,7 @@ _02021104:
 _02021158:
 	cmp r6, #2
 	bne _020211B0
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldrb r1, [r4, #0x9c]
 	cmp r1, #0
@@ -25891,7 +26383,7 @@ _020211B0:
 	blx r2
 	b _02021AA0
 _020211C4:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EE4 ; =_020999D0
 	bl StrcmpTag
 	cmp r0, #0
@@ -25907,7 +26399,7 @@ _020211C4:
 	str r0, [r4, #0x90]
 	b _02021AA0
 _02021200:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EE8 ; =_020999D4
 	bl StrcmpTag
 	cmp r0, #0
@@ -25939,22 +26431,22 @@ _02021260:
 	mov r0, #1
 	b _02021AA4
 _02021278:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EEC ; =_020999D8
 	bl StrcmpTag
 	cmp r0, #0
 	beq _0202129C
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	str r0, [r4, #0x90]
 	b _02021AA0
 _0202129C:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EF0 ; =_020999E4
 	bl StrcmpTag
 	cmp r0, #0
 	beq _020212C8
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldr r1, [r4, #0x90]
 	add r0, r1, r0
@@ -25962,17 +26454,17 @@ _0202129C:
 	b _02021AA0
 _020212C8:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0xf8]
-	ldr r0, [r0, #0xf4]
-	str r1, [sp, #0x64]
-	str r0, [sp, #0x60]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0xf8 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r0, [r0, #0xf4 + ANALYZE_TEXT_STACK_OFFSET]
+	str r1, [sp, #0x64 + ANALYZE_TEXT_STACK_OFFSET]
+	str r0, [sp, #0x60 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
-	add r0, sp, #0x60
+	add r0, sp, #0x60 + ANALYZE_TEXT_STACK_OFFSET
 	bl FatalError
 _020212F0:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EF4 ; =_020999F0
 	bl StrcmpTag
 	cmp r0, #0
@@ -25987,22 +26479,22 @@ _020212F0:
 	b _02021AA0
 _02021324:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, [r0, #0x100]
 	ldr r0, [r0, #0xfc]
-	str r1, [sp, #0x5c]
-	str r0, [sp, #0x58]
+	str r1, [sp, #0x5c + ANALYZE_TEXT_STACK_OFFSET]
+	str r0, [sp, #0x58 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
-	add r0, sp, #0x58
+	add r0, sp, #0x58 + ANALYZE_TEXT_STACK_OFFSET
 	bl FatalError
 _0202134C:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EF8 ; =_020999F4
 	bl StrcmpTag
 	cmp r0, #0
 	beq _020213A8
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl sub_02020A4C
 	movs r3, r0
 	beq _020213F4
@@ -26021,18 +26513,62 @@ _0202134C:
 	str r0, [r4, #0x80]
 	b _020213F4
 _020213A8:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EFC ; =_020999F8
 	bl StrcmpTag
 	cmp r0, #0
 	beq _020213CC
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	str r0, [r4, #0x58]
 	b _020213F4
 _020213CC:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+#ifdef EUROPE
+	ldr r1, [r0, #0x108]
+	ldr r0, [r0, #0x104]
+	str r1, [sp, #0x5c]
+	str r0, [sp, #0x58]
+	ldr r3, [r4, #0x84]
+	ldr r1, _02021ED8 ; =_020999B0
+	add r0, sp, #0x58
+	bl FatalError
+_020213F4:
+	ldr r0, [r4, #0x58]
+	ldr r1, [r4, #0x34]
+	blx r1
+	b _02021AA0
+_0202155C:
+	ldr r1, _020220C4 ; =0x02099E64
+	bl StrcmpTag
+	cmp r0, #0
+	beq _02021598
+	ldr r1, _020220C8 ; =0x020B05AC
+	ldr r0, [r4, #0x54]
+	ldrh r3, [r1]
+	ldr r1, [r4, #0x90]
+	ldr r2, [r4, #0x94]
+	ldr r5, [r4, #0x40]
+	blx r5
+	ldr r0, [r4, #0x90]
+	add r0, r0, #6
+	str r0, [r4, #0x90]
+	b _02021AA0
+_02021598:
+	ldr r0, _02021ED4 ; =_020997E4
+	ldr r2, [sp, #0x78]
+	ldr r1, [r0, #0x90]
+	ldr r0, [r0, #0x8c]
+	str r1, [sp, #0x54]
+	str r0, [sp, #0x50]
+	ldr r3, [r4, #0x84]
+	ldr r1, _02021ED8 ; =_020999B0
+	add r0, sp, #0x50
+	bl FatalError
+_020215C0:
+	ldr r0, [sp, #0x78]
+#else
 	ldr r1, [r0, #0xa0]
 	ldr r0, [r0, #0x9c]
 	str r1, [sp, #0x54]
@@ -26046,6 +26582,7 @@ _020213F4:
 	ldr r1, [r4, #0x34]
 	blx r1
 	b _02021AA0
+#endif
 _02021404:
 	ldr r1, _02021F00 ; =_020999FC
 	bl StrcmpTag
@@ -26061,9 +26598,9 @@ _02021404:
 	b _02021AA4
 _02021434:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x98]
-	ldr r0, [r0, #0x94]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x98 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x94 + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x4c]
 	str r0, [sp, #0x48]
 	ldr r3, [r4, #0x84]
@@ -26071,12 +26608,12 @@ _02021434:
 	add r0, sp, #0x48
 	bl FatalError
 _0202145C:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F04 ; =_02099A00
 	bl StrcmpTag
 	cmp r0, #0
 	beq _020214E8
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldr r2, [r4, #0xa4]
 	mov r1, #0x18
@@ -26086,7 +26623,7 @@ _0202145C:
 	strb r1, [r2, r3]
 	add r3, r2, r3
 	strh r0, [r3, #2]
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r2, [r4, #0x94]
 	ldr r1, [r4, #0x90]
 	sub r0, r0, #1
@@ -26107,7 +26644,7 @@ _0202145C:
 	blx r2
 	b _02021AA0
 _020214E8:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F08 ; =_02099A04
 	bl StrcmpTag
 	cmp r0, #0
@@ -26149,15 +26686,15 @@ _0202156C:
 	mov r0, #1
 	b _02021AA4
 _02021588:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F0C ; =_02099A08
 	bl StrcmpTag
 	cmp r0, #0
 	beq _0202166C
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	mov r5, r0
-	ldr r0, [sp, #0x78]
+	ldr r0, [sp, #0x78 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	mov r6, r0
 	ldr r0, _02021F10 ; =_020997E4
@@ -26212,9 +26749,9 @@ _02021654:
 	b _02021AA0
 _0202166C:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x90]
-	ldr r0, [r0, #0x8c]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x90 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x8c + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x44]
 	str r0, [sp, #0x40]
 	ldr r3, [r4, #0x84]
@@ -26222,12 +26759,12 @@ _0202166C:
 	add r0, sp, #0x40
 	bl FatalError
 _02021694:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F14 ; =_02099A10
 	bl StrcmpTag
 	cmp r0, #0
 	beq _020216F8
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl sub_02020948
 	mov r3, r0
 	mvn r0, #0
@@ -26248,12 +26785,12 @@ _02021694:
 	str r0, [r4, #0x80]
 	b _02021AA0
 _020216F8:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F18 ; =_02099A14
 	bl StrcmpTag
 	cmp r0, #0
 	beq _02021728
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldr r2, [r4, #0x90]
 	mov r1, #6
@@ -26261,23 +26798,31 @@ _020216F8:
 	str r1, [r4, #0x90]
 	b _02021AA0
 _02021728:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F1C ; =_02099A18
 	bl StrcmpTag
 	cmp r0, #0
 	beq _02021764
+#ifdef EUROPE
+	ldr r1, _020220C8 ; =0x020B05AC
 	ldr r0, [r4, #0x54]
+	ldrh r3, [r1, #2]
+#else
+	ldr r0, [r4, #0x54]
+#endif
 	ldr r1, [r4, #0x90]
 	ldr r2, [r4, #0x94]
 	ldr r5, [r4, #0x40]
+#ifndef EUROPE
 	mov r3, #0x2c
+#endif
 	blx r5
 	ldr r0, [r4, #0x90]
 	add r0, r0, #6
 	str r0, [r4, #0x90]
 	b _02021AA0
 _02021764:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F20 ; =_02099A1C
 	bl StrcmpTag
 	cmp r0, #0
@@ -26285,7 +26830,7 @@ _02021764:
 	ldrh r0, [r4, #0x60]
 	tst r0, #1
 	bne _02021AA0
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -26293,9 +26838,9 @@ _02021764:
 	b _02021AA0
 _0202179C:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x88]
-	ldr r0, [r0, #0x84]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x88 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x84 + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x3c]
 	str r0, [sp, #0x38]
 	ldr r3, [r4, #0x84]
@@ -26303,7 +26848,7 @@ _0202179C:
 	add r0, sp, #0x38
 	bl FatalError
 _020217C4:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F24 ; =_02099A24
 	bl StrcmpTag
 	cmp r0, #0
@@ -26337,9 +26882,9 @@ _02021828:
 	b _02021AA4
 _02021840:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x80]
-	ldr r0, [r0, #0x7c]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x80 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x7c + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x34]
 	str r0, [sp, #0x30]
 	ldr r3, [r4, #0x84]
@@ -26347,7 +26892,7 @@ _02021840:
 	add r0, sp, #0x30
 	bl FatalError
 _02021868:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F28 ; =_02099A28
 	bl StrcmpTag
 	cmp r0, #0
@@ -26367,9 +26912,9 @@ _02021868:
 	b _02021AA4
 _020218B0:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x78]
-	ldr r0, [r0, #0x74]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x78 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x74 + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x2c]
 	str r0, [sp, #0x28]
 	ldr r3, [r4, #0x84]
@@ -26377,26 +26922,26 @@ _020218B0:
 	add r0, sp, #0x28
 	bl FatalError
 _020218D8:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F2C ; =_02099A2C
 	bl StrcmpTag
 	cmp r0, #0
 	beq _02021904
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldr r1, [r4, #0x90]
 	add r0, r1, r0
 	str r0, [r4, #0x90]
 	b _02021AA0
 _02021904:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F30 ; =_02099A30
 	bl StrcmpTag
 	cmp r0, #0
 	movne r0, #0x400
 	strne r0, [r4, #0x80]
 	bne _02021AA0
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F34 ; =_02099A34
 	bl StrcmpTag
 	cmp r0, #0
@@ -26408,7 +26953,7 @@ _02021904:
 	str r0, [r4, #0x80]
 	b _02021AA0
 _0202194C:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F38 ; =_02099A38
 	bl StrcmpTag
 	cmp r0, #0
@@ -26416,7 +26961,7 @@ _0202194C:
 	ldrh r0, [r4, #0x60]
 	tst r0, #1
 	bne _02021AA0
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -26424,9 +26969,9 @@ _0202194C:
 	b _02021AA0
 _02021984:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x70]
-	ldr r0, [r0, #0x6c]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x70 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x6c + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x24]
 	str r0, [sp, #0x20]
 	ldr r3, [r4, #0x84]
@@ -26434,7 +26979,7 @@ _02021984:
 	add r0, sp, #0x20
 	bl FatalError
 _020219AC:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F3C ; =_02099A40
 	bl StrcmpTag
 	cmp r0, #0
@@ -26442,7 +26987,7 @@ _020219AC:
 	ldrh r0, [r4, #0x60]
 	tst r0, #1
 	bne _02021AA0
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	str r0, [r4, #0x7c]
 	mov r0, #6
@@ -26451,9 +26996,9 @@ _020219AC:
 	b _02021AA4
 _020219E8:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x68]
-	ldr r0, [r0, #0x64]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x68 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x64 + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x1c]
 	str r0, [sp, #0x18]
 	ldr r3, [r4, #0x84]
@@ -26462,9 +27007,14 @@ _020219E8:
 	bl FatalError
 _02021A10:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+#ifdef EUROPE
+	ldr r1, [r0, #0x40]
+	ldr r0, [r0, #0x3c]
+#else
 	ldr r1, [r0, #0x60]
 	ldr r0, [r0, #0x5c]
+#endif
 	str r1, [sp, #0x14]
 	str r0, [sp, #0x10]
 	ldr r3, [r4, #0x84]
@@ -26478,9 +27028,9 @@ _02021A38:
 	bls _02021AA0
 _02021A48:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x58]
-	ldr r0, [r0, #0x54]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x58 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x54 + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0xc]
 	str r0, [sp, #8]
 	ldr r3, [r4, #0x84]
@@ -26492,8 +27042,13 @@ _02021A70:
 	beq _02021AA0
 	ldr r1, _02021ED4 ; =_020997E4
 	add r0, sp, #0
+#ifdef EUROPE
+	ldr r2, [r1, #0x98]
+	ldr r1, [r1, #0x94]
+#else
 	ldr r2, [r1, #0x48]
 	ldr r1, [r1, #0x44]
+#endif
 	str r2, [sp, #4]
 	str r1, [sp]
 	ldr r2, [r4, #0x88]
@@ -26814,6 +27369,10 @@ _02021EF0: .word _020999E4
 _02021EF4: .word _020999F0
 _02021EF8: .word _020999F4
 _02021EFC: .word _020999F8
+#ifdef EUROPE
+_020220C4: .word 0x02099E64
+_020220C8: .word 0x020B05AC
+#endif
 _02021F00: .word _020999FC
 _02021F04: .word _02099A00
 _02021F08: .word _02099A04
@@ -27020,6 +27579,13 @@ _0202212C:
 	ldr r1, _020223D8 ; =_02099A08
 	mov r0, r6
 	bl StrcmpTag
+#ifdef EUROPE
+	cmp r0, #0
+	bne _020221D8
+	ldr r1, _020225D4 ; =0x02099E74
+	mov r0, r6
+	bl StrcmpTag
+#endif
 	cmp r0, #0
 	beq _02022324
 _020221D8:
@@ -27093,6 +27659,14 @@ _020222A4:
 	b _0202212C
 _020222CC:
 	ldr r1, _020223D4 ; =_02099A18
+#ifdef EUROPE
+	mov r0, r6
+	bl StrcmpTag
+	cmp r0, #0
+	addne r4, r4, #6
+	bne _0202212C
+	ldr r1, _020223D8 ; =_02099A08
+#endif
 	mov r0, r6
 	bl StrcmpTag
 	cmp r0, #0
@@ -27166,6 +27740,9 @@ _020223CC: .word _02099A2C
 _020223D0: .word _02099A14
 _020223D4: .word _02099A18
 _020223D8: .word _02099A08
+#ifdef EUROPE
+_020225D4: .word 0x02099E74
+#endif
 _020223DC: .word _020997E4
 _020223E0: .word _02099A24
 _020223E4: .word _020999D4
@@ -27356,8 +27933,13 @@ _02022658:
 _02022694:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0xd8]
+	ldr ip, [r1, #0xd4]
+#else
 	ldr r2, [r1, #0x50]
 	ldr ip, [r1, #0x4c]
+#endif
 	str r2, [sp, #0xb0]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0xac
@@ -27515,8 +28097,13 @@ _020228A8:
 _020228E0:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0xf8]
+	ldr ip, [r1, #0xf4]
+#else
 	ldr r2, [r1, #0xe0]
 	ldr ip, [r1, #0xdc]
+#endif
 	str r2, [sp, #0x98]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x94
@@ -27553,8 +28140,13 @@ _02022938:
 _0202296C:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x110]
+	ldr ip, [r1, #0x10c]
+#else
 	ldr r2, [r1, #0x108]
 	ldr ip, [r1, #0x104]
+#endif
 	str r2, [sp, #0x90]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x8c
@@ -27578,8 +28170,13 @@ _02022994:
 _020229C8:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #8]
+	ldr ip, [r1, #4]
+#else
 	ldr r2, [r1, #0x20]
 	ldr ip, [r1, #0x1c]
+#endif
 	str r2, [sp, #0x88]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x84
@@ -27641,8 +28238,13 @@ _02022A7C:
 _02022AB0:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x10]
+	ldr ip, [r1, #0xc]
+#else
 	ldr r2, [r1, #0x18]
 	ldr ip, [r1, #0x14]
+#endif
 	str r2, [sp, #0x80]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x7c
@@ -27663,8 +28265,13 @@ _02022AD8:
 _02022B00:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x20]
+	ldr ip, [r1, #0x1c]
+#else
 	ldr r2, [r1, #0x10]
 	ldr ip, [r1, #0xc]
+#endif
 	str r2, [sp, #0x78]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x74
@@ -27714,8 +28321,13 @@ _02022B8C:
 _02022BBC:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x50]
+	ldr ip, [r1, #0x4c]
+#else
 	ldr r2, [r1, #0x40]
 	ldr ip, [r1, #0x3c]
+#endif
 	str r2, [sp, #0x68]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x64
@@ -27749,8 +28361,13 @@ _02022C14:
 _02022C3C:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0xe0]
+	ldr ip, [r1, #0xdc]
+#else
 	ldr r2, [r1, #0xa8]
 	ldr ip, [r1, #0xa4]
+#endif
 	str r2, [sp, #0x60]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x5c
@@ -27816,8 +28433,13 @@ _02022D04:
 _02022D34:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0xd0]
+	ldr ip, [r1, #0xcc]
+#else
 	ldr r2, [r1, #0xc0]
 	ldr ip, [r1, #0xbc]
+#endif
 	str r2, [sp, #0x58]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x54
@@ -27874,8 +28496,13 @@ _02022DD4:
 _02022E08:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x118]
+	ldr ip, [r1, #0x114]
+#else
 	ldr r2, [r1, #0xf0]
 	ldr ip, [r1, #0xec]
+#endif
 	str r2, [sp, #0x50]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x4c
@@ -27913,8 +28540,13 @@ _02022E64:
 _02022E98:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x18]
+	ldr ip, [r1, #0x14]
+#else
 	ldr r2, [r1, #8]
 	ldr ip, [r1, #4]
+#endif
 	str r2, [sp, #0x48]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x44
@@ -28083,8 +28715,13 @@ _02023094:
 _02023114:
 	ldr r0, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r1, [r0, #0xa0]
+	ldr r2, [r0, #0x9c]
+#else
 	ldr r1, [r0, #0xb0]
 	ldr r2, [r0, #0xac]
+#endif
 	str r1, [sp, #0x38]
 	str r2, [sp, #0x34]
 	ldr r1, _02023484 ; =_020999B0
@@ -28151,8 +28788,13 @@ _020231D8:
 _02023214:
 	ldr r0, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r1, [r0, #0xc0]
+	ldr r2, [r0, #0xbc]
+#else
 	ldr r1, [r0, #0xd0]
 	ldr r2, [r0, #0xcc]
+#endif
 	str r1, [sp, #0x30]
 	str r2, [sp, #0x2c]
 	ldr r1, _02023484 ; =_020999B0
@@ -28200,8 +28842,13 @@ _020232A0:
 _020232C8:
 	ldr r0, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r1, [r0, #0xa8]
+	ldr r2, [r0, #0xa4]
+#else
 	ldr r1, [r0, #0xd8]
 	ldr r2, [r0, #0xd4]
+#endif
 	str r1, [sp, #0x20]
 	str r2, [sp, #0x1c]
 	ldr r1, _02023484 ; =_020999B0
@@ -28298,8 +28945,13 @@ _020233EC:
 _0202342C:
 	ldr r1, _02023480 ; =_020997E4
 	add r0, sp, #0x14
+#ifdef EUROPE
+	ldr r3, [r1, #0xb0]
+	ldr r1, [r1, #0xac]
+#else
 	ldr r3, [r1, #0x110]
 	ldr r1, [r1, #0x10c]
+#endif
 	str r3, [sp, #0x18]
 	str r1, [sp, #0x14]
 	ldr r1, _02023570 ; =_02099C84
@@ -28441,12 +29093,32 @@ StoiTagVeneer: ; 0x02023604
 _0202360C: .word StoiTag
 	arm_func_end StoiTagVeneer
 
+#ifdef EUROPE
+	arm_func_start sub_0202380C_EU
+sub_0202380C_EU: ; 0x0202380C
+	ldr ip, _02023814 ; =sub_02020A4C
+	bx ip
+	.align 2, 0
+_02023814: .word sub_02020A4C
+	arm_func_end sub_0202380C_EU
+#endif
+
 	arm_func_start sub_02023610
 sub_02023610: ; 0x02023610
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+#ifdef EUROPE
+	bl GetLanguageType
+	cmp r0, #5
+	moveq r1, #1
+	ldr r0, _02023864 ; =0x020B05BC
+	movne r1, #0
+#endif
 	ldr r6, _02023644 ; =_022A5048
 	ldr r5, _02023648 ; =_02099CA0
 	mov r7, #0
+#ifdef EUROPE
+	strb r1, [r0]
+#endif
 	mov r4, #1
 _02023624:
 	mov r2, r4
@@ -28458,10 +29130,15 @@ _02023624:
 	blt _02023624
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02023864: .word 0x020B05BC
+#endif
 _02023644: .word _022A5048
 _02023648: .word _02099CA0
 	arm_func_end sub_02023610
-_0202364C:
+
+	arm_func_start sub_0202364C
+sub_0202364C: ; 0x02023610
 	ldrb r2, [r1], #1
 	ldrb r3, [r0], #1
 	cmp r2, #0
@@ -28477,9 +29154,10 @@ _02023674:
 	moveq r0, #0
 	bxeq lr
 	cmp r3, r2
-	beq _0202364C
+	beq sub_0202364C
 	mov r0, #0
 	bx lr
+	arm_func_end sub_0202364C
 
 	arm_func_start InitPreprocessorArgs
 InitPreprocessorArgs: ; 0x02023690
@@ -28581,6 +29259,90 @@ SprintfStatic__0202378C: ; 0x0202378C
 sub_020237B4: ; 0x020237B4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x100
+#ifdef EUROPE
+	mov r4, r1
+	mov r8, r0
+	mov r7, r2
+	ldr r1, _020238C8 ; =_02099D0C
+	add r0, sp, #0
+	mov r2, r4
+	mov r6, r3
+	bl SprintfStatic__0202378C
+	add r0, sp, #0
+	bl strlen
+	mov r5, r0
+	sub r0, r5, #1
+	mov r1, #3
+	bl __divsi3
+	mov r4, r0
+	cmp r7, #0
+	ble _02023A38
+	cmp r5, r7
+	movgt r7, r5
+	sub r0, r7, #1
+	mov r1, #3
+	bl __divsi3
+_02023A38:
+	ldr r1, _02023B14 ; =0x020B05BC
+	ldrb r1, [r1]
+	cmp r1, #0
+	beq _02023A50
+	cmp r5, #4
+	movle r4, #0
+_02023A50:
+	cmp r4, #0
+	ble _02023AD0
+	add r2, sp, #0
+	sub r1, r5, #1
+	add sb, r2, r1
+	mov lr, #0
+	add sl, sb, r4, lsl #2
+	mov ip, lr
+	strb lr, [sl, #1]
+	mov r3, #0x5d
+	mov r2, #0x50
+	mov fp, #0x5b
+	b _02023AC8
+_02023A84:
+	cmp lr, #3
+	blt _02023AB8
+	strb r3, [sl]
+	cmp r6, #0
+	movne r1, #0x47
+	strb r2, [sl, #-1]
+	moveq r1, #0x4d
+	strb r1, [sl, #-2]
+	strb fp, [sl, #-3]
+	sub sl, sl, #4
+	cmp sl, sb
+	beq _02023AD0
+	mov lr, #0
+_02023AB8:
+	ldrb r1, [sb], #-1
+	add lr, lr, #1
+	add ip, ip, #1
+	strb r1, [sl], #-1
+_02023AC8:
+	cmp ip, r5
+	blt _02023A84
+_02023AD0:
+	cmp r7, #0
+	ble _02023AF8
+	sub r1, r7, r5
+	add r2, r0, r1
+	ldr r1, _020238CC ; =_02099D10
+	add r3, sp, #0
+	mov r0, r8
+	sub r2, r2, r4
+	bl SprintfStatic__0202378C
+	b _02023B04
+_02023AF8:
+	add r1, sp, #0
+	mov r0, r8
+	bl strcpy
+_02023B04:
+	mov r0, r8
+#else
 	mov r3, r1
 	mov r7, r0
 	mov r6, r2
@@ -28653,10 +29415,14 @@ _020238B0:
 	bl strcpy
 _020238BC:
 	mov r0, r7
+#endif
 	add sp, sp, #0x100
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020238C8: .word _02099D0C
+#ifdef EUROPE
+_02023B14: .word 0x020B05BC
+#endif
 _020238CC: .word _02099D10
 	arm_func_end sub_020237B4
 
@@ -28664,6 +29430,9 @@ _020238CC: .word _02099D10
 sub_020238D0: ; 0x020238D0
 	ldr ip, _020238DC ; =sub_020237B4
 	mov r2, #5
+#ifdef EUROPE
+	mov r3, #1
+#endif
 	bx ip
 	.align 2, 0
 _020238DC: .word sub_020237B4
@@ -28673,6 +29442,9 @@ _020238DC: .word sub_020237B4
 sub_020238E0: ; 0x020238E0
 	ldr ip, _020238EC ; =sub_020237B4
 	mov r2, #0
+#ifdef EUROPE
+	mov r3, #1
+#endif
 	bx ip
 	.align 2, 0
 _020238EC: .word sub_020237B4
@@ -28682,6 +29454,9 @@ _020238EC: .word sub_020237B4
 sub_020238F0: ; 0x020238F0
 	ldr ip, _020238FC ; =sub_020237B4
 	mov r2, #7
+#ifdef EUROPE
+	mov r3, #1
+#endif
 	bx ip
 	.align 2, 0
 _020238FC: .word sub_020237B4
@@ -28691,6 +29466,9 @@ _020238FC: .word sub_020237B4
 sub_02023900: ; 0x02023900
 	ldr ip, _0202390C ; =sub_020237B4
 	mov r2, #0
+#ifdef EUROPE
+	mov r3, #1
+#endif
 	bx ip
 	.align 2, 0
 _0202390C: .word sub_020237B4
@@ -28700,6 +29478,9 @@ _0202390C: .word sub_020237B4
 sub_02023910: ; 0x02023910
 	ldr ip, _0202391C ; =sub_020237B4
 	mov r2, #0
+#ifdef EUROPE
+	mov r3, r2
+#endif
 	bx ip
 	.align 2, 0
 _0202391C: .word sub_020237B4
@@ -29281,7 +30062,7 @@ sub_020240B0: ; 0x020240B0
 _020240CC:
 	ldr r1, [r5, #4]
 	mov r0, r7
-	bl _0202364C
+	bl sub_0202364C
 	cmp r0, #0
 	beq _020240F4
 	mov r1, r6, lsl #0x10
@@ -29314,7 +30095,7 @@ sub_02024114: ; 0x02024114
 _02024130:
 	ldr r1, [r5, #4]
 	mov r0, r7
-	bl _0202364C
+	bl sub_0202364C
 	cmp r0, #0
 	beq _02024158
 	mov r1, r6, lsl #0x10
@@ -29347,7 +30128,7 @@ sub_02024178: ; 0x02024178
 _02024194:
 	ldr r1, [r5, #4]
 	mov r0, r7
-	bl _0202364C
+	bl sub_0202364C
 	cmp r0, #0
 	beq _020241BC
 	mov r1, r6, lsl #0x10
@@ -29627,7 +30408,11 @@ sub_020244F4: ; 0x020244F4
 	beq _02024564
 	b _02024580
 _0202451C:
+#ifdef EUROPE
+	add r0, r1, #0xc3
+#else
 	add r0, r1, #0xc1
+#endif
 	add r0, r0, #0x3400
 	mov r1, r0, lsl #0x10
 	add r0, sp, #0
@@ -29668,6 +30453,31 @@ _02024594: .word _02099D50
 
 	arm_func_start sub_02024598
 sub_02024598: ; 0x02024598
+#ifdef EUROPE
+	stmdb sp!, {r3, r4, r5, lr}
+	movs r4, r1
+	mov r5, r0
+	bmi _02024828
+	bl GetLanguage
+	mov r2, r0
+	ldr r1, _020245C8 ; =_02099DA0
+	mov r0, r5
+	ldr r1, [r1, r2, lsl #3]
+	mov r2, r4
+	bl SprintfStatic__0202378C
+	b _02024844
+_02024828:
+	bl GetLanguage
+	mov r2, r0
+	ldr r1, _020245CC ; =_02099DB0
+	mov r0, r5
+	ldr r1, [r1, r2, lsl #3]
+	rsb r2, r4, #0
+	bl SprintfStatic__0202378C
+_02024844:
+	mov r0, r5
+	ldmia sp!, {r3, r4, r5, pc}
+#else
 	stmdb sp!, {r4, lr}
 	movs r2, r1
 	mov r4, r0
@@ -29682,15 +30492,71 @@ _020245B4:
 _020245C0:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
+#endif
 	.align 2, 0
 _020245C8: .word _02099DA0
 _020245CC: .word _02099DB0
 	arm_func_end sub_02024598
 
+#ifdef EUROPE
+	arm_func_start sub_02024854_EU
+sub_02024854_EU: ; 0x02024854
+	stmdb sp!, {r4, r5, r6, lr}
+	sub sp, sp, #0x40
+	ldr ip, [sp, #0x50]
+	mov r6, r0
+	mov r5, r1
+	mov r4, r3
+	cmp ip, #2
+	bgt _02024884
+	ldr r1, _020248DC ; =0x0209A2C4
+	mov r2, r5
+	bl SprintfStatic__0202378C
+	b _020248D4
+_02024884:
+	and r0, r2, #0xff
+	bl DungeonGoesUp
+	cmp r0, #0
+	add r0, sp, #0
+	beq _020248B8
+	mov r1, r4
+	bl sub_02024598
+	ldr r1, _020248E0 ; =0x0209A2D4
+	add r3, sp, #0
+	mov r0, r6
+	mov r2, r5
+	bl SprintfStatic__0202378C
+	b _020248D4
+_020248B8:
+	rsb r1, r4, #0
+	bl sub_02024598
+	ldr r1, _020248E0 ; =0x0209A2D4
+	add r3, sp, #0
+	mov r0, r6
+	mov r2, r5
+	bl SprintfStatic__0202378C
+_020248D4:
+	add sp, sp, #0x40
+	ldmia sp!, {r4, r5, r6, pc}
+	.align 2, 0
+_020248DC: .word 0x0209A2C4
+_020248E0: .word 0x0209A2D4
+	arm_func_end sub_02024854_EU
+#endif
+
 	arm_func_start sub_020245D0
 sub_020245D0: ; 0x020245D0
+#ifdef EUROPE
+#define SUB_020245D0_STACK_OFFSET 4
+#else
+#define SUB_020245D0_STACK_OFFSET 0
+#endif
+#ifdef EUROPE
+	stmdb sp!, {r4, r5, r6, r7, lr}
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	sub sp, sp, #0x80
+#endif
+	sub sp, sp, #0x80 + SUB_020245D0_STACK_OFFSET
 	mov r3, r1, lsl #0x10
 	and r1, r1, #0xf0000
 	mov r7, r0
@@ -29723,10 +30589,10 @@ _02024634:
 	and r1, r4, #0xff
 	bl sub_0204F6F8
 	mov r1, r0
-	add r0, sp, #0x40
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	bl GetStringFromFileVeneer
 	ldr r1, _02024924 ; =_02099DC0
-	add r2, sp, #0x40
+	add r2, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	mov r0, r7
 	bl SprintfStatic__0202378C
 	mov r0, r7
@@ -29740,10 +30606,10 @@ _02024668:
 	mov r2, r0
 	bl sub_0204F6F8
 	mov r1, r0
-	add r0, sp, #0x40
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	bl GetStringFromFileVeneer
 	ldr r1, _02024924 ; =_02099DC0
-	add r2, sp, #0x40
+	add r2, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	mov r0, r7
 	bl SprintfStatic__0202378C
 	mov r0, r7
@@ -29759,12 +30625,20 @@ _020246A8:
 	and r1, r4, #0xff
 	bl sub_0204F6F8
 	mov r1, r0
-	add r0, sp, #0x40
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	bl GetStringFromFileVeneer
 	cmp r6, #0
 	mvnlt r0, #0
 	mullt r0, r6, r0
 	movlt r6, r0
+#ifdef EUROPE
+	add r1, sp, #0x44
+	mov r0, r7
+	mov r2, r4
+	mov r3, r6
+	str r5, [sp]
+	bl sub_02024854_EU
+#else
 	cmp r5, #2
 	bhi _02024704
 	ldr r1, _02024924 ; =_02099DC0
@@ -29789,6 +30663,7 @@ _0202472C:
 	mov r3, r6
 	bl SprintfStatic__0202378C
 _0202473C:
+#endif
 	mov r0, r7
 	b _0202491C
 _02024744:
@@ -29802,11 +30677,11 @@ _02024744:
 	mov r0, #1
 	bl sub_0204F6F8
 	mov r1, r0
-	add r0, sp, #0x40
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	bl GetStringFromFileVeneer
 	mov r1, #0
-	add r0, sp, #0
-	add r3, sp, #0x40
+	add r0, sp, #0 + SUB_020245D0_STACK_OFFSET
+	add r3, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 _02024780:
 	ldrb r2, [r3, r1]
 	cmp r2, #0
@@ -29854,8 +30729,8 @@ _02024780:
 	mov r3, #0x5d
 	strb r3, [r0, r2]
 	add ip, r1, #0xd
-	add r3, sp, #0x40
-	add r0, sp, #0
+	add r3, sp, #0x40 + SUB_020245D0_STACK_OFFSET
+	add r0, sp, #0 + SUB_020245D0_STACK_OFFSET
 _02024840:
 	ldrb r2, [r3, r1]
 	add r1, r1, #1
@@ -29864,8 +30739,8 @@ _02024840:
 	add ip, ip, #1
 	bne _02024840
 	mov r3, #0
-	add r2, sp, #0
-	add r0, sp, #0x40
+	add r2, sp, #0 + SUB_020245D0_STACK_OFFSET
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	b _02024874
 _02024868:
 	ldrb r1, [r2, r3]
@@ -29879,6 +30754,14 @@ _02024880:
 	add r1, r1, #1
 	b _02024780
 _02024888:
+#ifdef EUROPE
+	add r1, sp, #0x44
+	mov r0, r7
+	mov r2, r4
+	mov r3, r6
+	str r5, [sp]
+	bl sub_02024854_EU
+#else
 	cmp r5, #2
 	bhi _020248A4
 	ldr r1, _02024924 ; =_02099DC0
@@ -29903,6 +30786,7 @@ _020248CC:
 	mov r3, r6
 	bl SprintfStatic__0202378C
 _020248DC:
+#endif
 	mov r0, r7
 	b _0202491C
 _020248E4:
@@ -29911,10 +30795,10 @@ _020248E4:
 	mov r0, #0
 	bl sub_0204F6F8
 	mov r1, r0
-	add r0, sp, #0x40
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	bl GetStringFromFileVeneer
 	ldr r1, _02024924 ; =_02099DC0
-	add r2, sp, #0x40
+	add r2, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	mov r0, r7
 	bl SprintfStatic__0202378C
 	mov r0, r7
@@ -29922,12 +30806,18 @@ _020248E4:
 _02024918:
 	ldr r0, _02024930 ; =_02099D50
 _0202491C:
-	add sp, sp, #0x80
+	add sp, sp, #0x80 + SUB_020245D0_STACK_OFFSET
+#ifdef EUROPE
+	ldmia sp!, {r4, r5, r6, r7, pc}
+#else
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+#endif
 	.align 2, 0
 _02024924: .word _02099DC0
+#ifndef EUROPE
 _02024928: .word _02099DD0
 _0202492C: .word _02099DEC
+#endif
 _02024930: .word _02099D50
 	arm_func_end sub_020245D0
 
@@ -30111,7 +31001,11 @@ sub_02024B48: ; 0x02024B48
 	tst r1, #0xf0000
 	mov r0, r2, lsr #0x10
 	bne _02024B88
+#ifdef EUROPE
+	add r0, r0, #0x71
+#else
 	add r0, r0, #0x6f
+#endif
 	add r0, r0, #0x2700
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -30286,6 +31180,27 @@ _02024D70:
 	.align 2, 0
 _02024D78: .word _02099D50
 	arm_func_end sub_02024D48
+
+#ifdef EUROPE
+	arm_func_start sub_02025010_EU
+sub_02025010_EU: ; 0x02025010
+	stmdb sp!, {r3, r4, r5, lr}
+	mov r5, r0
+	mov r4, r1
+	bl GetLanguage
+	ldr r2, _02025040 ; =0x020B05C0
+	ldr r1, _02025044 ; =0x0209A2F4
+	ldr r2, [r2, r0, lsl #2]
+	mov r0, r5
+	mov r3, r4
+	bl SprintfStatic__0202378C
+	mov r0, r5
+	ldmia sp!, {r3, r4, r5, pc}
+	.align 2, 0
+_02025040: .word 0x020B05C0
+_02025044: .word 0x0209A2F4
+	arm_func_end sub_02025010_EU
+#endif
 
 	arm_func_start sub_02024D7C
 sub_02024D7C: ; 0x02024D7C
@@ -31402,7 +32317,11 @@ sub_02025AD8: ; 0x02025AD8
 	ldr r0, [sp]
 	ldr r2, _02025B70 ; =_022A7A54
 	add r3, r0, #4
+#ifdef EUROPE
+	str r0, [r2, #8]
+#else
 	str r0, [r2, #0x10]
+#endif
 	str r3, [r2]
 	ldr r1, _02025B74 ; =_0209AC04
 	add r0, sp, #0
@@ -31411,7 +32330,11 @@ sub_02025AD8: ; 0x02025AD8
 	ldr r0, [sp]
 	ldr r2, _02025B70 ; =_022A7A54
 	add r3, r0, #4
+#ifdef EUROPE
+	str r0, [r2, #0xc]
+#else
 	str r0, [r2, #0x14]
+#endif
 	str r3, [r2, #4]
 	ldr r1, _02025B78 ; =_0209AC18
 	add r0, sp, #0
@@ -31420,12 +32343,22 @@ sub_02025AD8: ; 0x02025AD8
 	ldr r0, [sp]
 	ldr r1, _02025B7C ; =_020AFD04
 	mov r2, #0
+#ifdef EUROPE
+	str r0, [r1, #8]
+	str r2, [r1, #4]
+#else
 	str r0, [r1, #0xc]
 	str r2, [r1, #8]
+#endif
 	ldr r0, _02025B70 ; =_022A7A54
 	mov r2, #0xb
+#ifdef EUROPE
+	str r2, [r0, #0x10]
+	str r2, [r0, #0x14]
+#else
 	str r2, [r0, #8]
 	str r2, [r0, #0xc]
+#endif
 	mov r0, #1
 	strb r0, [r1]
 	add sp, sp, #8
@@ -31441,7 +32374,11 @@ _02025B7C: .word _020AFD04
 	arm_func_start sub_02025B80
 sub_02025B80: ; 0x02025B80
 	ldr r1, _02025B8C ; =_020AFD04
+#ifdef EUROPE
+	str r0, [r1, #4]
+#else
 	str r0, [r1, #8]
+#endif
 	bx lr
 	.align 2, 0
 _02025B8C: .word _020AFD04
@@ -31462,7 +32399,11 @@ sub_02025B90: ; 0x02025B90
 	ldr r0, _02025C08 ; =_020AFD04
 	ldr r1, [r0, #0xc]
 	cmp r1, #0
+#ifdef EUROPE
+	strne r1, [r0, #0xc]
+#else
 	strne r1, [r0, #4]
+#endif
 	ldr r1, _02025C0C ; =_020AFD1C
 	add r0, sp, #0
 	ldr r2, [r1, r4, lsl #2]
@@ -31474,7 +32415,11 @@ sub_02025B90: ; 0x02025B90
 	bl LoadFileFromRom
 	ldr r0, _02025C08 ; =_020AFD04
 	ldr r1, [r0, #0x10]
+#ifdef EUROPE
+	str r1, [r0, #8]
+#else
 	str r1, [r0, #0xc]
+#endif
 	add sp, sp, #0x40
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -31502,9 +32447,17 @@ _02025C30:
 	str r2, [r1, #0x14]
 	bl sub_02027274
 	ldr r0, _02025C70 ; =_020AFD04
+#ifdef EUROPE
+	ldr r1, [r0, #0xc]
+#else
 	ldr r1, [r0, #4]
+#endif
 	cmp r1, #0
+#ifdef EUROPE
+	strne r1, [r0, #4]
+#else
 	strne r1, [r0, #0xc]
+#endif
 	ldr r0, _02025C70 ; =_020AFD04
 	mov r1, #0
 	str r1, [r0, #4]
@@ -31520,11 +32473,23 @@ _02025C78: .word _0209AC38
 	arm_func_start sub_02025C7C
 sub_02025C7C: ; 0x02025C7C
 	stmdb sp!, {r4, lr}
+#ifdef EUROPE
+	ldr r2, _02025D3C ; =_020AFD04
+	ldr r1, _02025D40 ; =_022A7A54
+	ldr r4, [r2, #4]
+	ldr r2, _02026020 ; =0x022A8394
+	cmp r0, r1
+	ldr r1, [r2, r4, lsl #2]
+	ldreq r0, _02026024 ; =0x0209B09C
+	ldmeqia sp!, {r4, pc}
+	cmp r0, #0xf800
+#else
 	ldr r1, _02025D3C ; =_020AFD04
 	ldr r2, _02025D40 ; =_022A7A54
 	ldr r4, [r1, #8]
 	cmp r0, #0xf800
 	ldr r1, [r2, r4, lsl #2]
+#endif
 	blo _02025CCC
 	ldr r2, _02025D44 ; =0x0000FFFF
 	cmp r0, r2
@@ -31575,6 +32540,10 @@ _02025D34:
 	.align 2, 0
 _02025D3C: .word _020AFD04
 _02025D40: .word _022A7A54
+#ifdef EUROPE
+_02026020: .word 0x022A8394
+_02026024: .word 0x0209B09C
+#endif
 _02025D44: .word 0x0000FFFF
 _02025D48: .word _022A7A64
 _02025D4C: .word _0209AB60
@@ -31827,7 +32796,11 @@ sub_02026020: ; 0x02026020
 	arm_func_start sub_02026038
 sub_02026038: ; 0x02026038
 	ldr r1, _02026044 ; =_020AFD04
+#ifdef EUROPE
+	str r0, [r1, #4]
+#else
 	str r0, [r1, #8]
+#endif
 	bx lr
 	.align 2, 0
 _02026044: .word _020AFD04
@@ -32281,7 +33254,11 @@ sub_0202654C: ; 0x0202654C
 	stmdb sp!, {r3, lr}
 	ldr r1, _02026590 ; =_020AFD04
 	mov r3, r0
+#ifdef EUROPE
+	ldr r1, [r1, #4]
+#else
 	ldr r1, [r1, #8]
+#endif
 	cmp r1, #2
 	blt _0202657C
 	mov r1, #0
@@ -32303,7 +33280,11 @@ _02026590: .word _020AFD04
 	arm_func_start sub_02026594
 sub_02026594: ; 0x02026594
 	ldr r1, _020265A4 ; =_020AFD04
+#ifdef EUROPE
+	ldr r1, [r1, #8]
+#else
 	ldr r1, [r1, #0xc]
+#endif
 	ldrb r0, [r1, r0, lsl #2]
 	bx lr
 	.align 2, 0
@@ -32471,7 +33452,11 @@ sub_0202676C: ; 0x0202676C
 	bl sub_020275F8
 	ldr r1, _02026B14 ; =_020AFD04
 	str r0, [sp, #0x18]
+#ifdef EUROPE
+	ldr r0, [r1, #4]
+#else
 	ldr r0, [r1, #8]
+#endif
 	cmp r0, #2
 	blt _020267C0
 	ldr r0, [sp, #4]
@@ -32505,7 +33490,11 @@ _02026804:
 _02026808:
 	ldr r0, _02026B14 ; =_020AFD04
 	ldr r3, [sp, #0x24]
+#ifdef EUROPE
+	ldr r2, [r0, #4]
+#else
 	ldr r2, [r0, #8]
+#endif
 	ldr r1, _02026B18 ; =_022A7A5C
 	sub r0, r3, #8
 	cmp r6, #0
@@ -32733,7 +33722,11 @@ sub_02026B1C: ; 0x02026B1C
 	sub sp, sp, #8
 	ldr r5, _02026C64 ; =_020AFD04
 	mov r4, r0
+#ifdef EUROPE
+	ldr r5, [r5, #8]
+#else
 	ldr r5, [r5, #0xc]
+#endif
 	mov r6, r1
 	add r7, r5, r3, lsl #2
 	mov r5, r2
@@ -32745,7 +33738,11 @@ sub_02026B1C: ; 0x02026B1C
 	blt _02026C5C
 	ldr r0, _02026C64 ; =_020AFD04
 	add r1, sp, #0
+#ifdef EUROPE
+	ldr r2, [r0, #8]
+#else
 	ldr r2, [r0, #0xc]
+#endif
 	mov r0, r4
 	add r4, r2, r3
 	bl sub_020282C8
@@ -32831,7 +33828,11 @@ sub_02026C68: ; 0x02026C68
 	bhi _02026CA4
 	ldr ip, _02026E38 ; =_020AFD04
 	sub r3, r3, #0x40
+#ifdef EUROPE
+	ldr ip, [ip, #4]
+#else
 	ldr ip, [ip, #8]
+#endif
 	mov r3, r3, lsl #0x10
 	mov r3, r3, asr #0x10
 	cmp ip, #3
@@ -32841,7 +33842,11 @@ sub_02026C68: ; 0x02026C68
 	b _02026E18
 _02026CA4:
 	ldr ip, _02026E38 ; =_020AFD04
+#ifdef EUROPE
+	ldr ip, [ip, #4]
+#else
 	ldr ip, [ip, #8]
+#endif
 	cmp ip, #3
 	bne _02026D40
 	cmp r3, #0x40
@@ -32899,6 +33904,41 @@ _02026D40:
 	movls r3, r3, asr #0x10
 	bls _02026E18
 _02026D5C:
+#ifdef EUROPE
+	cmp r3, #0xe1
+	bgt _02027090
+	bge _020270F4
+	cmp r3, #0x2e
+	bgt _02027084
+	subs ip, r3, #0x26
+	addpl pc, pc, ip, lsl #2
+	b _02026E10
+_02027060: ; jump table
+	b _02026DE8 ; case 0
+	b _02026DE0 ; case 1
+	b _02026E10 ; case 2
+	b _02026E10 ; case 3
+	b _02026E10 ; case 4
+	b _02026E10 ; case 5
+	b _02026DD0 ; case 6
+	b _02026E18 ; case 7
+	b _02026DC8 ; case 8
+_02027084:
+	cmp r3, #0xc1
+	beq _02026E00
+	b _02026E10
+_02027090:
+	cmp r3, #0xeb
+	bgt _020270A8
+	bge _02026DF8
+	cmp r3, #0xe9
+	beq _02026DF0
+	b _02026E10
+_020270A8:
+	cmp r3, #0xed
+	beq _020270FC
+	b _02026E10
+#else
 	cmp r3, #0xc1
 	bgt _02026DAC
 	bge _02026E00
@@ -32929,6 +33969,7 @@ _02026DBC:
 	cmp r3, #0xeb
 	beq _02026DF8
 	b _02026E10
+#endif
 _02026DC8:
 	mov r3, #0x1b
 	b _02026E18
@@ -32953,9 +33994,18 @@ _02026DF8:
 _02026E00:
 	mov r3, #0x3d
 	b _02026E18
+#ifdef EUROPE
+_020270F4:
+	mov r3, #0x4c
+	b _02026E18
+_020270FC:
+	mov r3, #0x4d
+	b _02026E18
+#else
 _02026E08:
 	mov r3, #0x3e
 	b _02026E18
+#endif
 _02026E10:
 	mov r0, #6
 	ldmia sp!, {r3, pc}
@@ -32963,7 +34013,11 @@ _02026E18:
 	ldrb ip, [sp, #8]
 	cmp ip, #0
 	ldreq r0, _02026E38 ; =_020AFD04
+#ifdef EUROPE
+	ldreq r0, [r0, #8]
+#else
 	ldreq r0, [r0, #0xc]
+#endif
 	ldreqb r0, [r0, r3, lsl #2]
 	ldmeqia sp!, {r3, pc}
 	bl sub_02026B1C
@@ -51902,6 +52956,110 @@ _02036850:
 	strb r2, [r1, #0x1d]
 	ldr r1, [r0]
 	strb r2, [r1, #0x1e]
+#ifdef EUROPE
+	ldr r2, [r0]
+	ldr r1, [r2, #0xc]
+	cmp r1, #0xa
+	addne r1, r1, #0x118
+	addne r0, r2, #0x100
+	bne _02036BC4
+	mov r1, #1
+	str r1, [r2, #0xc]
+	ldr r0, [r0]
+	mov r1, #0x120
+	add r0, r0, #0x100
+_02036BC4:
+	strh r1, [r0, #0xa6]
+	ldr r0, _02036CB0 ; =_020AFDF0
+	mov r2, #0
+	ldr r1, [r0]
+	strb r2, [r1, #0x16]
+	ldr r1, [r0]
+	strb r2, [r1, #0x15]
+	ldr r1, [r0]
+	strh r2, [r1, #8]
+	ldr r1, [r0]
+	strb r2, [r1, #0x10]
+	ldr r3, [r0]
+	ldr r1, [r3, #0xc]
+	cmp r1, #9
+	addls pc, pc, r1, lsl #2
+	b _02036A40
+_02036C04: ; jump table
+	b _02036A40 ; case 0
+	b _02036CEC ; case 1
+	b _02036A40 ; case 2
+	b _02036A40 ; case 3
+	b _02036A20 ; case 4
+	b _02036C2C ; case 5
+	b _02036C9C ; case 6
+	b _02036CCC_EU ; case 7
+	b _02036C5C ; case 8
+	b _02036D04 ; case 9
+_02036C2C:
+	mov r1, #9
+	strb r1, [r3, #0x18]
+	ldr r1, [r0]
+	mov r2, #1
+	strb r2, [r1, #0x10]
+	ldr r1, [r0]
+	mov r2, #0x36
+	strb r2, [r1, #0x1b]
+	ldr r0, [r0]
+	mov r1, #2
+	strb r1, [r0, #0x16]
+	b _02036A58
+_02036C5C:
+	mov r1, #6
+	strb r1, [r3, #0x18]
+	ldr r1, [r0]
+	mov r2, #3
+	strb r2, [r1, #0x16]
+	ldr r1, [r0]
+	mov r2, #1
+	strb r2, [r1, #0x10]
+	ldr r1, [r0]
+	mov r2, #0x36
+	strb r2, [r1, #0x1b]
+	ldr r0, [r0]
+	add r1, r2, #0xe9
+	add r0, r0, #0x100
+	strh r1, [r0, #0xa6]
+	b _02036A58
+_02036C9C:
+	mov r1, #9
+	strb r1, [r3, #0x18]
+	ldr r1, [r0]
+	mov r2, #1
+	strb r2, [r1, #0x10]
+	ldr r1, [r0]
+	mov r2, #0x22
+	strb r2, [r1, #0x1b]
+	ldr r0, [r0]
+	mov r1, #2
+	strb r1, [r0, #0x16]
+	b _02036A58
+_02036CCC_EU:
+	strb r2, [r3, #0x16]
+	ldr r1, [r0]
+	mov r2, #6
+	strb r2, [r1, #0x18]
+	ldr r0, [r0]
+	mov r1, #0x36
+	strb r1, [r0, #0x1b]
+	b _02036A58
+_02036CEC:
+	mov r1, #6
+	strb r1, [r3, #0x18]
+	ldr r0, [r0]
+	mov r1, #0xa
+	strb r1, [r0, #0x1b]
+	b _02036A58
+_02036D04:
+	mov r1, #4
+	strb r1, [r3, #0x16]
+	ldr r0, [r0]
+#else
 	ldr r1, [r0]
 	mov r2, #0
 	ldr r0, [r1, #0xc]
@@ -52001,6 +53159,7 @@ _02036A08:
 	mov r0, #4
 	strb r0, [r3, #0x16]
 	ldr r0, [r1]
+#endif
 	mov r1, #0x11c
 	add r0, r0, #0x100
 	strh r1, [r0, #0xa6]
@@ -64896,11 +66055,19 @@ _020418C0:
 	add r1, r1, #0x200
 	strh r6, [r1, #0xac]
 	ldr r2, [r5]
+#ifdef EUROPE
+	add r1, r0, #0x3a4
+#else
 	add r1, r0, #0xa2
+#endif
 	add r2, r2, r8
 	str r0, [r2, #0x3c]
 	ldr r2, [r5]
+#ifdef EUROPE
+	add r3, r1, #0x2400
+#else
 	add r3, r1, #0x2700
+#endif
 	add r1, r2, r7, lsl #1
 	add r1, r1, #0x200
 	strh r3, [r1, #0xb4]
@@ -65360,8 +66527,13 @@ _02041F30:
 	str lr, [sp, #0xb8]
 	str ip, [sp]
 	ldr ip, [sp, #0xb8]
+#ifdef EUROPE
+	add ip, ip, #0x32c
+	add ip, ip, #0x2400
+#else
 	add ip, ip, #0x2a
 	add ip, ip, #0x2700
+#endif
 	mov ip, ip, lsl #0x10
 	mov ip, ip, lsr #0x10
 	str ip, [sp, #4]
@@ -65644,6 +66816,11 @@ sub_02042258: ; 0x02042258
 	beq _0204237C
 	b _020423A0
 _02042368:
+#ifdef EUROPE
+	ldrsb r0, [r1, #4]
+	mov r1, #9
+	bl sub_0202C5E0
+#endif
 	mov r0, #0
 	bl sub_0204440C
 	mov r0, #2
@@ -65651,7 +66828,16 @@ _02042368:
 	b _020423A0
 _0204237C:
 	ldrsb r0, [r1, #4]
+#ifdef EUROPE
+	mov r1, #9
+	bl sub_0202C5E0
+	ldr r0, _020423B4 ; =_020AFEA8
+#endif
 	mov r1, #0x76
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+	ldrsb r0, [r0, #4]
+#endif
 	bl sub_0202C5F4
 	mov r0, #0
 	bl sub_0204440C
@@ -68267,7 +69453,11 @@ sub_020444F0: ; 0x020444F0
 	ldrsh r0, [r0, #8]
 	cmp r0, #0
 	beq _02044558
+#ifdef EUROPE
+	add r0, r0, #0x4b
+#else
 	add r0, r0, #0x49
+#endif
 	add r0, r0, #0x2f00
 	mov r3, r0, lsl #0x10
 	mov r1, #2
@@ -69649,7 +70839,11 @@ _02045798:
 	add r4, r4, #0x300
 	str ip, [sp]
 	ldrsh r4, [r4, #0x88]
+#ifdef EUROPE
+	add r4, r4, #0xd3
+#else
 	add r4, r4, #0xd1
+#endif
 	add r4, r4, #0x2900
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
@@ -70019,7 +71213,11 @@ _02045D0C:
 	add r4, r4, #0x300
 	str ip, [sp]
 	ldrsh r4, [r4, #0x88]
+#ifdef EUROPE
+	add r4, r4, #0xd3
+#else
 	add r4, r4, #0xd1
+#endif
 	add r4, r4, #0x2900
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
@@ -74200,11 +75398,26 @@ _020492B4:
 	ldrne r0, _02049330 ; =_020AFF40
 	movne r1, #4
 	strne r1, [r0, #4]
+#ifdef EUROPE
+	bne _02049310
+	ldr r1, [r4, #0x2c]
+	ldr r0, _02049330 ; =_020AFF40
+	mov r2, #0
+	stmia r0, {r1, r2}
+	ldr r1, [r4, #0x28]
+	sub r0, r2, #1
+	cmp r1, r0
+	beq _02049310
+	ldrsb r0, [r4, #0x34]
+	bl sub_020205C0
+	bl sub_0202059C
+#else
 	ldreq r2, [r4, #0x2c]
 	ldreq r0, _02049330 ; =_020AFF40
 	moveq r1, #0
 	streq r2, [r0]
 	streq r1, [r0, #4]
+#endif
 _02049310:
 	mov r0, r4
 	bl MemFree
@@ -76522,7 +77735,11 @@ _0204B0C4:
 	mov sl, #0
 	ldr r7, _0204B300 ; =0x00000137
 	mov sb, sl
+#ifdef EUROPE
+	sub r4, r7, #0x144
+#else
 	sub r4, r7, #0x138
+#endif
 	mov r8, #0x21
 	mov r6, sl
 	mov r5, #0x22
@@ -76651,7 +77868,11 @@ _0204B118:
 	.align 2, 0
 _0204B2F8: .word _022AB0AC
 _0204B2FC: .word SCRIPT_VARS
+#ifdef EUROPE
+_0204B300: .word 0x00000143
+#else
 _0204B300: .word 0x00000137
+#endif
 	arm_func_end InitScriptVariableValues
 
 	arm_func_start InitEventFlagScriptVars
@@ -76707,7 +77928,11 @@ InitEventFlagScriptVars: ; 0x0204B304
 	bl SaveScriptVariableValue
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef EUROPE
+_0204B3CC: .word 0x00000143
+#else
 _0204B3CC: .word 0x00000137
+#endif
 	arm_func_end InitEventFlagScriptVars
 
 	arm_func_start sub_0204B3D0
@@ -82036,13 +83261,22 @@ _0204F734:
 	mov r4, r0, lsr #0x10
 	b _0204F770
 _0204F74C:
+#ifdef EUROPE
+	add r0, r0, #0xbe
+	add r0, r0, #0x4300
+#else
 	add r0, r0, #0x3bc
 	add r0, r0, #0x4000
+#endif
 	mov r0, r0, lsl #0x10
 	mov r4, r0, lsr #0x10
 	b _0204F770
 _0204F760:
+#ifdef EUROPE
+	add r0, r0, #0xbd
+#else
 	add r0, r0, #0xbb
+#endif
 	add r0, r0, #0x4200
 	mov r0, r0, lsl #0x10
 	mov r4, r0, lsr #0x10
@@ -82230,14 +83464,24 @@ _0204F980:
 	ldreq r0, _0204F9B4 ; =0x000042BA
 	ldmeqia sp!, {r4, pc}
 _0204F99C:
+#ifdef EUROPE
+	add r0, r4, #0xba
+	add r0, r0, #0x4100
+#else
 	add r0, r4, #0x1b8
 	add r0, r0, #0x4000
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef EUROPE
+_0204F9B0: .word 0x000042BB
+_0204F9B4: .word 0x000042BC
+#else
 _0204F9B0: .word 0x000042B9
 _0204F9B4: .word 0x000042BA
+#endif
 	arm_func_end GetGroundNameId
 
 	arm_func_start sub_0204F9B8
@@ -83495,8 +84739,13 @@ _02050918: .word ADVENTURE_LOG_PTR
 
 	arm_func_start GetAbilityString
 GetAbilityString: ; 0x0205091C
+#ifdef EUROPE
+	add r1, r1, #0x5e0
+	add r1, r1, #0x3000
+#else
 	add r1, r1, #0xde
 	add r1, r1, #0x3500
+#endif
 	mov r1, r1, lsl #0x10
 	ldr ip, _02050938 ; =CopyNStringFromMessageId
 	mov r1, r1, lsr #0x10
@@ -83508,8 +84757,13 @@ _02050938: .word CopyNStringFromMessageId
 
 	arm_func_start GetAbilityDescStringId
 GetAbilityDescStringId: ; 0x0205093C
+#ifdef EUROPE
+	add r0, r0, #0x25c
+	add r0, r0, #0x3400
+#else
 	add r0, r0, #0x5a
 	add r0, r0, #0x3600
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bx lr
@@ -83517,7 +84771,11 @@ GetAbilityDescStringId: ; 0x0205093C
 
 	arm_func_start GetTypeStringId
 GetTypeStringId: ; 0x02050950
+#ifdef EUROPE
+	add r0, r0, #0xcd
+#else
 	add r0, r0, #0xcb
+#endif
 	add r0, r0, #0x3500
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85666,7 +86924,11 @@ LoadMonsterMd: ; 0x02052358
 	bl LoadM2nAndN2m
 	ldr r0, _02052390 ; =_020B09B4
 	ldr r1, [r0, #0xc]
+#ifdef EUROPE
+	str r1, [r0, #8]
+#else
 	str r1, [r0, #4]
+#endif
 	add r1, r1, #8
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
@@ -85683,7 +86945,11 @@ GetNameRaw: ; 0x02052394
 	mov r0, r1
 	mov r1, #0x258
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x21
+#else
 	add r0, r1, #0x1f
+#endif
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85703,7 +86969,11 @@ GetName: ; 0x020523D0
 	mov r1, #0x258
 	mov r4, r2
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x21
+#else
 	add r0, r1, #0x1f
+#endif
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85742,7 +87012,11 @@ GetNameWithGender: ; 0x02052440
 	mov r1, #0x258
 	mov r4, r2
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x21
+#else
 	add r0, r1, #0x1f
+#endif
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85892,7 +87166,11 @@ _02052684:
 	mov r0, r4
 	mov r1, #0x258
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x21
+#else
 	add r0, r1, #0x1f
+#endif
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85914,7 +87192,11 @@ GetNameString: ; 0x020526C8
 	stmdb sp!, {r3, lr}
 	mov r1, #0x258
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x21
+#else
 	add r0, r1, #0x1f
+#endif
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85979,7 +87261,11 @@ GetCategoryString: ; 0x0205275C
 	mov r0, r5
 	mov r1, #0x258
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x79
+#else
 	add r0, r1, #0x77
+#endif
 	add r0, r0, #0x2400
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -86416,33 +87702,77 @@ _02052BD0: .word _020B09B4
 	arm_func_start LoadM2nAndN2m
 LoadM2nAndN2m: ; 0x02052BD4
 	stmdb sp!, {r3, lr}
+#ifdef EUROPE
+	sub sp, sp, #0x100
+#endif
 	ldr r0, _02052C2C ; =_020B09C8
 	bl PointsToZero
 	cmp r0, #0
 	beq _02052C00
+#ifdef EUROPE
+	bl GetLanguage
+	mov r2, r0
+	ldr r1, _02052FA8 ; =0x020B12F4
+	add r0, sp, #0
+	ldr r2, [r1, r2, lsl #2]
+	ldr r1, _02052FAC ; =0x020A3834
+	bl SprintfStatic__02052418
+#endif
 	ldr r0, _02052C2C ; =_020B09C8
 	bl ZInit8
 	ldr r0, _02052C2C ; =_020B09C8
+#ifdef EUROPE
+	add r1, sp, #0
+#else
 	ldr r1, _02052C30 ; =_020A3210
+#endif
 	mov r2, #0
 	bl LoadFileFromRom
 _02052C00:
 	ldr r0, _02052C34 ; =_020B09D0
 	bl PointsToZero
 	cmp r0, #0
+#ifdef EUROPE
+	beq _02052F9C
+	bl GetLanguage
+	mov r2, r0
+	ldr r1, _02052FB4 ; =0x020B1308
+	add r0, sp, #0
+	ldr r2, [r1, r2, lsl #2]
+	ldr r1, _02052FAC ; =0x020A3834
+	bl SprintfStatic__02052418
+#else
 	ldmeqia sp!, {r3, pc}
+#endif
 	ldr r0, _02052C34 ; =_020B09D0
 	bl ZInit8
 	ldr r0, _02052C34 ; =_020B09D0
+#ifdef EUROPE
+	add r1, sp, #0
+#else
 	ldr r1, _02052C38 ; =_020A322C
+#endif
 	mov r2, #0
 	bl LoadFileFromRom
+#ifdef EUROPE
+_02052F9C:
+	add sp, sp, #0x100
+#endif
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02052C2C: .word _020B09C8
+#ifdef EUROPE
+_02052FA8: .word 0x020B12F4
+_02052FAC: .word 0x020A3834
+#else
 _02052C30: .word _020A3210
+#endif
 _02052C34: .word _020B09D0
+#ifdef EUROPE
+_02052FB4: .word 0x020B1308
+#else
 _02052C38: .word _020A322C
+#endif
 	arm_func_end LoadM2nAndN2m
 
 	arm_func_start sub_02052C3C
@@ -93889,7 +95219,11 @@ _02058C18: .word _020AFC4C
 
 	arm_func_start GetIqSkillStringId
 GetIqSkillStringId: ; 0x02058C1C
+#ifdef EUROPE
+	add r0, r0, #0xe7
+#else
 	add r0, r0, #0xe5
+#endif
 	add r0, r0, #0x2600
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -104759,6 +106093,11 @@ _02061DC4: .word 0x00003C31
 
 	arm_func_start sub_02061DC8
 sub_02061DC8: ; 0x02061DC8
+#ifdef EUROPE
+#define SUB_02061DC8_WORD_OFFSET 2
+#else
+#define SUB_02061DC8_WORD_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x54
 	mov r5, r0
@@ -104806,7 +106145,11 @@ _02061E5C:
 	b _02061EE8
 _02061E68:
 	str r6, [sp, #4]
+#ifdef EUROPE
+	mov r2, #0x3c40
+#else
 	ldr r2, _02061F18 ; =0x00003C3E
+#endif
 	b _02061EE8
 _02061E74:
 	str r6, [sp, #4]
@@ -104814,7 +106157,11 @@ _02061E74:
 	b _02061EE8
 _02061E80:
 	str r6, [sp, #4]
+#ifdef EUROPE
+	ldr r2, _02062298 ; =0x00003C42
+#else
 	mov r2, #0x3c40
+#endif
 	b _02061EE8
 _02061E8C:
 	str r6, [sp, #4]
@@ -104858,21 +106205,26 @@ _02061EE8:
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_02061F08: .word 0x00003C38
-_02061F0C: .word 0x00003C3A
-_02061F10: .word 0x00003C39
-_02061F14: .word 0x00003C3B
+_02061F08: .word 0x00003C38 + SUB_02061DC8_WORD_OFFSET
+_02061F0C: .word 0x00003C3A + SUB_02061DC8_WORD_OFFSET
+_02061F10: .word 0x00003C39 + SUB_02061DC8_WORD_OFFSET
+_02061F14: .word 0x00003C3B + SUB_02061DC8_WORD_OFFSET
+#ifndef EUROPE
 _02061F18: .word 0x00003C3E
-_02061F1C: .word 0x00003C3F
-_02061F20: .word 0x00003C3D
-_02061F24: .word 0x00003C42
-_02061F28: .word 0x00003C43
-_02061F2C: .word 0x00003C3C
-_02061F30: .word 0x00003C41
-_02061F34: .word 0x00003C44
-_02061F38: .word 0x00003C45
-_02061F3C: .word 0x00003C47
-_02061F40: .word 0x00003C46
+#endif
+_02061F1C: .word 0x00003C3F + SUB_02061DC8_WORD_OFFSET
+#ifdef EUROPE
+_02062298: .word 0x00003C42
+#endif
+_02061F20: .word 0x00003C3D + SUB_02061DC8_WORD_OFFSET
+_02061F24: .word 0x00003C42 + SUB_02061DC8_WORD_OFFSET
+_02061F28: .word 0x00003C43 + SUB_02061DC8_WORD_OFFSET
+_02061F2C: .word 0x00003C3C + SUB_02061DC8_WORD_OFFSET
+_02061F30: .word 0x00003C41 + SUB_02061DC8_WORD_OFFSET
+_02061F34: .word 0x00003C44 + SUB_02061DC8_WORD_OFFSET
+_02061F38: .word 0x00003C45 + SUB_02061DC8_WORD_OFFSET
+_02061F3C: .word 0x00003C47 + SUB_02061DC8_WORD_OFFSET
+_02061F40: .word 0x00003C46 + SUB_02061DC8_WORD_OFFSET
 	arm_func_end sub_02061DC8
 
 	arm_func_start sub_02061F44
@@ -109802,7 +111154,13 @@ MainLoop: ; 0x02065D1C
 	bl KeyWaitInit
 	add r0, sp, #4
 	bl ReadSaveHeader
+#ifdef EUROPE
+	mov r4, r0
+	bl sub_020205F8
+	cmp r4, #1
+#else
 	cmp r0, #1
+#endif
 	bne _02065DF0
 	mov r0, #2
 	bl LoadOverlay
@@ -111705,6 +113063,11 @@ _02067704: .word _020B0B2C
 
 	arm_func_start sub_02067708
 sub_02067708: ; 0x02067708
+#ifdef EUROPE
+#define SUB_02067708_WORD_OFFSET 2
+#else
+#define SUB_02067708_WORD_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x5c
 	ldr r1, _02067C00 ; =_020B0B2C
@@ -111988,7 +113351,11 @@ _02067AF8:
 	ldr r5, _02067C68 ; =JOB_MENU_6
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
+#ifdef EUROPE
+	ldr r6, _02067FF0 ; =0x0000380F
+#else
 	rsb r6, r8, #0x3a40
+#endif
 	mov r7, sb
 	b _02067BC4
 _02067B20:
@@ -112035,7 +113402,11 @@ _02067BA0:
 	ldr r1, [r1, r2, lsl #3]
 	ldr r5, _02067C88 ; =JOB_MENU_8
 	str r1, [r4, #0xe48]
+#ifdef EUROPE
+	ldr r6, _02068014 ; =0x000037B5
+#else
 	add r6, r8, #0x3580
+#endif
 	str r0, [r4, #0xef4]
 	mov r7, sb
 _02067BC4:
@@ -112073,27 +113444,38 @@ _02067C38: .word _020A92EC
 _02067C3C: .word _020B0B37
 _02067C40: .word JOB_MENU_5
 _02067C44: .word JOB_MENU_7
-_02067C48: .word 0x000037B0
+_02067C48: .word 0x000037B0 + SUB_02067708_WORD_OFFSET
 _02067C4C: .word _020A931C
 _02067C50: .word _020B0B30
 _02067C54: .word JOB_MENU_3
-_02067C58: .word 0x0000380C
+_02067C58: .word 0x0000380C + SUB_02067708_WORD_OFFSET
 _02067C5C: .word _020A9278
 _02067C60: .word _020A9304
 _02067C64: .word _020B0B38
 _02067C68: .word JOB_MENU_6
+#ifdef EUROPE
+_02067FF0: .word 0x0000380F
+#endif
 _02067C6C: .word JOB_MENU_9
-_02067C70: .word 0x000038BF
+_02067C70: .word 0x000038BF + SUB_02067708_WORD_OFFSET
 _02067C74: .word JOB_MENU_11
-_02067C78: .word 0x00003878
+_02067C78: .word 0x00003878 + SUB_02067708_WORD_OFFSET
 _02067C7C: .word _020B0B39
 _02067C80: .word _020A9334
 _02067C84: .word _020B0B33
 _02067C88: .word JOB_MENU_8
+#ifdef EUROPE
+_02068014: .word 0x000037B5
+#endif
 	arm_func_end sub_02067708
 
 	arm_func_start sub_02067C8C
 sub_02067C8C: ; 0x02067C8C
+#ifdef EUROPE
+#define SUB_02067C8C_WORD_OFFSET 2
+#else
+#define SUB_02067C8C_WORD_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x60
 	ldr r0, _020682E0 ; =_020B0B2C
@@ -112242,8 +113624,13 @@ _02067E70:
 	add r0, r0, #0x2e4
 	add r0, r0, #0xc00
 	bl sub_02047150
+#ifdef EUROPE
+	ldr r1, _02068678 ; =0x00003826
+	mov r0, #0x1c
+#else
 	mov r0, #0x1c
 	rsb r1, r0, #0x3840
+#endif
 	mov r2, #0
 	bl sub_02046BE8
 	ldr r0, _020682E0 ; =_020B0B2C
@@ -112388,8 +113775,13 @@ _02068090:
 	add r0, r0, #0x2e4
 	add r0, r0, #0xc00
 	bl sub_02047150
+#ifdef EUROPE
+	mov r0, #0x1c
+	rsb r1, r0, #0x3840
+#else
 	ldr r1, _020682F4 ; =0x00003822
 	mov r0, #0x1c
+#endif
 	mov r2, #0
 	bl sub_02046BE8
 	ldr r0, _020682E0 ; =_020B0B2C
@@ -112542,15 +113934,20 @@ _020682D8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020682E0: .word _020B0B2C
-_020682E4: .word 0x0000381F
-_020682E8: .word 0x00003820
-_020682EC: .word 0x00003825
-_020682F0: .word 0x00003821
+_020682E4: .word 0x0000381F + SUB_02067C8C_WORD_OFFSET
+_020682E8: .word 0x00003820 + SUB_02067C8C_WORD_OFFSET
+#ifdef EUROPE
+_02068678: .word 0x00003826
+#endif
+_020682EC: .word 0x00003825 + SUB_02067C8C_WORD_OFFSET
+_020682F0: .word 0x00003821 + SUB_02067C8C_WORD_OFFSET
+#ifndef EUROPE
 _020682F4: .word 0x00003822
-_020682F8: .word 0x00003823
-_020682FC: .word 0x00003826
-_02068300: .word 0x00003827
-_02068304: .word 0x00003828
+#endif
+_020682F8: .word 0x00003823 + SUB_02067C8C_WORD_OFFSET
+_020682FC: .word 0x00003826 + SUB_02067C8C_WORD_OFFSET
+_02068300: .word 0x00003827 + SUB_02067C8C_WORD_OFFSET
+_02068304: .word 0x00003828 + SUB_02067C8C_WORD_OFFSET
 	arm_func_end sub_02067C8C
 
 	arm_func_start sub_02068308
@@ -112850,6 +114247,11 @@ _020686F0: .word _020B0A54
 
 	arm_func_start sub_020686F4
 sub_020686F4: ; 0x020686F4
+#ifdef EUROPE
+#define SUB_020686F4_WORD_OFFSET 2
+#else
+#define SUB_020686F4_WORD_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x68
 	ldr r0, _02068E14 ; =_020B0B2C
@@ -113197,6 +114599,20 @@ _02068BA0:
 	str r1, [r7, #0xef0]
 	b _02068C18
 _02068BF4:
+#ifdef EUROPE
+	sub r0, r1, #0xf
+	cmp r0, #2
+	bhi _02068C18
+	cmp r1, #0x11
+	ldreq r1, _02068E64 ; =0x0000381F
+	ldr r0, _02068E14 ; =_020B0B2C
+	ldrne r1, _02068E6C ; =0x00003820
+	strh r1, [r8, #8]
+	ldrsb r1, [r0, #0x13]
+	ldr r0, _02068E70 ; =0x020B1483
+	str r1, [r7, #8]
+	str r0, [r7, #0xef0]
+#else
 	sub r1, r1, #0xf
 	cmp r1, #2
 	bhi _02068C18
@@ -113206,6 +114622,7 @@ _02068BF4:
 	ldrsb r0, [r0, #0x13]
 	str r0, [r7, #8]
 	str r1, [r7, #0xef0]
+#endif
 _02068C18:
 	ldr r1, [r7, #0x6c]
 	ldr r0, [r7, #8]
@@ -113351,26 +114768,26 @@ _02068E08:
 _02068E14: .word _020B0B2C
 _02068E18: .word sub_02069660
 _02068E1C: .word _020B0B2E
-_02068E20: .word 0x00003815
-_02068E24: .word 0x00003817
-_02068E28: .word 0x00003816
+_02068E20: .word 0x00003815 + SUB_020686F4_WORD_OFFSET
+_02068E24: .word 0x00003817 + SUB_020686F4_WORD_OFFSET
+_02068E28: .word 0x00003816 + SUB_020686F4_WORD_OFFSET
 _02068E2C: .word _020B0B31
-_02068E30: .word 0x00003818
+_02068E30: .word 0x00003818 + SUB_020686F4_WORD_OFFSET
 _02068E34: .word sub_02069598
 _02068E38: .word _020B0B2D
-_02068E3C: .word 0x00003F1E
+_02068E3C: .word 0x00003F1E + SUB_020686F4_WORD_OFFSET
 _02068E40: .word sub_02069074
-_02068E44: .word 0x00003819
+_02068E44: .word 0x00003819 + SUB_020686F4_WORD_OFFSET
 _02068E48: .word _020B0B3E
-_02068E4C: .word 0x0000381A
+_02068E4C: .word 0x0000381A + SUB_020686F4_WORD_OFFSET
 _02068E50: .word _020B0B3D
-_02068E54: .word 0x0000381B
+_02068E54: .word 0x0000381B + SUB_020686F4_WORD_OFFSET
 _02068E58: .word _020B0B36
-_02068E5C: .word 0x0000381C
+_02068E5C: .word 0x0000381C + SUB_020686F4_WORD_OFFSET
 _02068E60: .word _020B0B3B
-_02068E64: .word 0x0000381D
+_02068E64: .word 0x0000381D + SUB_020686F4_WORD_OFFSET
 _02068E68: .word _020B0B2C
-_02068E6C: .word 0x0000381E
+_02068E6C: .word 0x0000381E + SUB_020686F4_WORD_OFFSET
 _02068E70: .word _020B0B3F
 _02068E74: .word sub_020690A4
 _02068E78: .word _020B0B2F
@@ -115383,6 +116800,11 @@ _0206A908: .word _020A94D2
 
 	arm_func_start sub_0206A90C
 sub_0206A90C: ; 0x0206A90C
+#ifdef EUROPE
+#define SUB_0206A90C_WORD_OFFSET 2
+#else
+#define SUB_0206A90C_WORD_OFFSET 0
+#endif
 	stmdb sp!, {r3, lr}
 	bl sub_0206A7CC
 	mvn r1, #0
@@ -115401,14 +116823,14 @@ sub_0206A90C: ; 0x0206A90C
 	bl sub_02024934
 	ldmia sp!, {r3, pc}
 _0206A950:
-	add r0, r0, #0x7f
+	add r0, r0, #0x7f + SUB_0206A90C_WORD_OFFSET
 	add r0, r0, #0x3f00
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0206A964: .word 0x0000403A
-_0206A968: .word 0x00004033
+_0206A964: .word 0x0000403A + SUB_0206A90C_WORD_OFFSET
+_0206A968: .word 0x00004033 + SUB_0206A90C_WORD_OFFSET
 	arm_func_end sub_0206A90C
 
 	arm_func_start sub_0206A96C
