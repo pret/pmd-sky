@@ -62,6 +62,7 @@ def read_pmdsky_debug_symbols() -> Dict[str, Dict[int, SymbolDetails]]:
     pmdsky_debug_symbols['main'] = read_yaml_symbols('arm9.yml')
     pmdsky_debug_symbols['main'] = read_yaml_symbols(itcm_file, pmdsky_debug_symbols['main'])
     pmdsky_debug_symbols['ITCM'] = read_yaml_symbols(itcm_file, address_suffix='-ITCM')
+    pmdsky_debug_symbols['arm7'] = read_yaml_symbols('arm7.yml')
     for i in range(0, 36):
         overlay_name = f'overlay{i:02d}'
         pmdsky_debug_symbols[str(i)] = read_yaml_symbols(f'{overlay_name}.yml')
