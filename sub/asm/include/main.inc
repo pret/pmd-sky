@@ -4,7 +4,9 @@
 .public _0380B408
 .public _0380B434
 .public _0380B460
+.public EnableIrqFlag
 .public SDK_SUBPRIV_ARENA_LO
+.public SetIrqFlag
 .public sub_037F84E0
 .public sub_037F8598
 .public sub_037F8650
@@ -59,8 +61,6 @@
 .public sub_037FD884
 .public sub_037FD898
 .public sub_037FDA38
-.public sub_037FDD00
-.public sub_037FDD14
 .public sub_037FDE70
 .public sub_037FDE88
 .public sub_037FDF74

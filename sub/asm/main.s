@@ -478,7 +478,7 @@ _027E063C: .word _027F8878
 	arm_func_start sub_027E0640
 sub_027E0640: ; 0x027E0640
 	stmdb sp!, {r4, lr}
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	mov r4, r0
 	bl sub_037FC558
 	ldr r1, _027E0694 ; =_027F8878
@@ -495,7 +495,7 @@ sub_027E0640: ; 0x027E0640
 	bl sub_037FC3C0
 	bl sub_037FC590
 	mov r0, r4
-	bl sub_037FDD14
+	bl SetIrqFlag
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
@@ -507,7 +507,7 @@ _027E069C: .word _0380B364
 	arm_func_start sub_027E06A0
 sub_027E06A0: ; 0x027E06A0
 	stmdb sp!, {r4, lr}
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	mov r4, r0
 	bl sub_037FC558
 	ldr r1, _027E06F4 ; =_027F8878
@@ -524,7 +524,7 @@ sub_027E06A0: ; 0x027E06A0
 	bl sub_037FC3C0
 	bl sub_037FC590
 	mov r0, r4
-	bl sub_037FDD14
+	bl SetIrqFlag
 	ldmia sp!, {r4, lr}
 	bx lr
 	.align 2, 0
@@ -537,7 +537,7 @@ _027E06FC: .word _0380B2C0
 sub_027E0700: ; 0x027E0700
 	stmdb sp!, {r4, lr}
 	mov r4, #0
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldr r1, _027E0768 ; =_027F8878
 	ldr r2, [r1, #0x54c]
 	cmp r2, #0
@@ -561,7 +561,7 @@ _027E0750:
 	cmp r3, #0x20
 	blt _027E0724
 _027E0758:
-	bl sub_037FDD14
+	bl SetIrqFlag
 	mov r0, r4
 	ldmia sp!, {r4, lr}
 	bx lr
@@ -763,7 +763,7 @@ _027E09B4:
 	mov sl, #1
 	b _027E0AB4
 _027E09E4:
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldrh r2, [r4, #0x82]
 	add r1, r5, #1
 	mov r7, r0
@@ -810,11 +810,11 @@ _027E09E4:
 	str r1, [r3, #0x73c]
 	bl sub_037FE070
 	mov r0, r7
-	bl sub_037FDD14
+	bl SetIrqFlag
 	b _027E0ABC
 _027E0AA8:
 	mov r0, r7
-	bl sub_037FDD14
+	bl SetIrqFlag
 	add r5, r5, #1
 _027E0AB4:
 	cmp r5, #0xf
@@ -854,13 +854,13 @@ _027E0ABC:
 	b _027E19CC
 _027E0B3C:
 	mov r5, #0
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	add r1, r8, #0x100
 	ldrh r1, [r1, #0x82]
 	mov r4, r0
 	cmp r1, #0
 	bne _027E0B60
-	bl sub_037FDD14
+	bl SetIrqFlag
 	b _027E19CC
 _027E0B60:
 	ldr r0, [r8, #0xc]
@@ -890,7 +890,7 @@ _027E0B80:
 	mov r1, #3
 	mov r0, r4
 	strh r1, [r8]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	bl sub_03807380
 	mov r4, r0
 	mov r0, #0xc
@@ -958,7 +958,7 @@ _027E0C98:
 	bl sub_03807334
 	b _027E19CC
 _027E0CCC:
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	add r1, r8, #0x100
 	mov r4, #1
 	ldrh r3, [r1, #0x82]
@@ -982,7 +982,7 @@ _027E0CCC:
 	add r0, sb, #0x10
 	bl sub_037FE12C
 	mov r0, r4
-	bl sub_037FDD14
+	bl SetIrqFlag
 	mov r0, #1
 	add r1, r8, #0x1f8
 	add r1, r1, r5, lsl #4
@@ -1207,7 +1207,7 @@ _027E101C:
 	mov r1, r4
 	add r0, sb, #0x10
 	bl sub_037FE12C
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldrh r1, [r8, #0x84]
 	mov fp, r0
 	cmp r1, #1
@@ -1286,7 +1286,7 @@ _027E10AC:
 	bl sub_027E086C
 _027E11B8:
 	mov r0, fp
-	bl sub_037FDD14
+	bl SetIrqFlag
 	cmp r5, #0
 	beq _027E1204
 	cmp sl, #1
@@ -1567,7 +1567,7 @@ _027E1588:
 	ldrh r0, [r8, #0x70]
 	eor r0, r0, #1
 	strh r0, [r8, #0x70]
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	cmp fp, #0
 	ldreqsh r1, [r8, #0x62]
 	subeq r1, r1, #1
@@ -1582,7 +1582,7 @@ _027E1588:
 	cmpgt r1, #0
 	movgt r4, #1
 	movle r4, #0
-	bl sub_037FDD14
+	bl SetIrqFlag
 	cmp r4, #0
 	beq _027E19CC
 	cmp fp, #1
@@ -1632,12 +1632,12 @@ _027E1670:
 _027E16D0:
 	mov r4, r5
 _027E16D4:
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldrh r1, [r8, #0x84]
 	mov r7, r0
 	cmp r1, #0
 	bne _027E172C
-	bl sub_037FDD14
+	bl SetIrqFlag
 	b _027E19CC
 	.align 2, 0
 _027E16F0: .word _027F7878
@@ -1662,7 +1662,7 @@ _027E172C:
 	ldrh r6, [r8, #0x90]
 	bl sub_037FD5C0
 	mov r0, r7
-	bl sub_037FDD14
+	bl SetIrqFlag
 	ldrh r3, [r8, #0x8c]
 	mov r2, #1
 	cmp r3, #0
@@ -1776,14 +1776,14 @@ _027E18D4:
 	ldreqh r0, [sb, #0x10]
 	cmpeq r0, #0x20
 	bne _027E1948
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	mov r4, r0
 	ldr r0, _027E170C ; =_0380B408
 	bl sub_037FD5C0
 	mov r1, #0
 	mov r0, r4
 	strh r1, [r8, #0x84]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	mov r1, #0
 	strh r1, [r8, #0x8a]
 	mov r0, #1
@@ -1860,7 +1860,7 @@ _027E1A04: .word 0x00007FFE
 sub_027E1A08: ; 0x027E1A08
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldr r1, _027E1A3C ; =_027F8878
 	mov r4, r0
 	ldr r0, [r1, #0x544]
@@ -1868,7 +1868,7 @@ sub_027E1A08: ; 0x027E1A08
 	mov r2, r5
 	bl sub_037FCD84
 	mov r0, r4
-	bl sub_037FDD14
+	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
 	.align 2, 0
@@ -3165,7 +3165,7 @@ sub_027E2A90: ; 0x027E2A90
 	ldr r0, _027E2E5C ; =_027F8878
 	mov r4, #0
 	ldr r8, [r0, #0x550]
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldr r1, [r8, #0xc]
 	mov r5, r0
 	cmp r1, #1
@@ -3209,7 +3209,7 @@ _027E2B24:
 	str r1, [r8, #0x1c]
 	mov r0, r5
 	strh r1, [r8, #0xc2]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	cmp r4, #0
 	beq _027E2B5C
 	ldr r0, _027E2E60 ; =0x0000FFFF
@@ -3609,12 +3609,12 @@ _027E30A4:
 	strh r3, [r4, #0xe6]
 	mov r0, #0
 	strh r0, [r1, #0x88]
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	add r1, r4, #0x100
 	mov r2, #0
 	strh r2, [r1, #0x82]
 	strh r2, [r4, #0x86]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	mov r1, r5
 	add r2, r4, #0x100
 	mov r3, #1
@@ -3811,7 +3811,7 @@ _027E3388:
 	cmp sb, #2
 	blt _027E335C
 _027E3390:
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	add r1, sl, #0x100
 	ldrh r2, [r1, #0x82]
 	tst r2, r7, lsl r8
@@ -3826,7 +3826,7 @@ _027E3390:
 	mov r2, #0
 	str r2, [r1, #0x738]
 	str r2, [r1, #0x73c]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	mov r0, r8, lsl #0x10
 	mov r1, r0, lsr #0x10
 	add r2, sp, #0
@@ -3834,7 +3834,7 @@ _027E3390:
 	bl sub_027E4A88
 	b _027E33EC
 _027E33E8:
-	bl sub_037FDD14
+	bl SetIrqFlag
 _027E33EC:
 	add r8, r8, #1
 	cmp r8, #0x10
@@ -4879,14 +4879,14 @@ _027E4260:
 	mov r3, #0x7d0
 	bl sub_027E2044
 	mov r4, r0
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldrh r2, [r4, #4]
 	mov r6, r0
 	cmp r2, #0xc
 	ldreqh r1, [r4, #6]
 	cmpeq r1, #0x13
 	bne _027E42CC
-	bl sub_037FDD14
+	bl SetIrqFlag
 	bl sub_03807380
 	mov r1, #0xc
 	strh r1, [r0]
@@ -4901,7 +4901,7 @@ _027E42CC:
 	cmpeq r0, #0
 	beq _027E42F8
 	mov r0, r6
-	bl sub_037FDD14
+	bl SetIrqFlag
 	ldrh r1, [r4, #4]
 	ldrh r2, [r4, #6]
 	mov r0, #6
@@ -4928,7 +4928,7 @@ _027E42F8:
 	strh r0, [r7, #0xbc]
 	mov r0, r4
 	bl sub_027E0564
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	add r1, r7, #0x100
 	mov r2, #1
 	strh r2, [r1, #0x82]
@@ -4966,7 +4966,7 @@ _027E4388:
 	mov r0, r0, lsr #0x10
 	bl sub_027E07F0
 	mov r0, r4
-	bl sub_037FDD14
+	bl SetIrqFlag
 	mov r0, #1
 	strh r0, [r7, #0xc2]
 	bl sub_03807380
@@ -4992,7 +4992,7 @@ _027E4388:
 	strh r1, [r4, #0x18]
 	bl sub_03807334
 	mov r0, r6
-	bl sub_037FDD14
+	bl SetIrqFlag
 _027E4448:
 	add sp, sp, #0x250
 	ldmia sp!, {r4, r5, r6, r7, r8, lr}
@@ -5081,13 +5081,13 @@ _027E455C:
 	cmp r1, #0xa
 	cmpne r1, #8
 	bne _027E4618
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	add r1, r7, #0x100
 	ldrh r1, [r1, #0x82]
 	mov r4, r0
 	cmp r1, #0
 	bne _027E45C0
-	bl sub_037FDD14
+	bl SetIrqFlag
 	cmp sl, #0
 	bne _027E45B8
 	bl sub_03807380
@@ -5126,7 +5126,7 @@ _027E45F0:
 	str r1, [r7, #0x10]
 	mov r0, r4
 	str r1, [r7, #0x1c]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	b _027E4654
 _027E4618:
 	cmp sl, #0
@@ -5365,7 +5365,7 @@ _027E4948:
 	cmp r4, #2
 	blt _027E48E0
 _027E4950:
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	mov r4, r0
 	add r1, r7, #0x100
 	ldrh r3, [r1, #0x82]
@@ -5393,7 +5393,7 @@ _027E4950:
 	mov r2, #6
 	bl sub_037FE070
 	mov r0, r4
-	bl sub_037FDD14
+	bl SetIrqFlag
 	cmp sl, #1
 	bne _027E4A28
 	bl sub_03807380
@@ -5433,7 +5433,7 @@ _027E4A3C:
 	bl sub_027E781C
 	b _027E4A58
 _027E4A54:
-	bl sub_037FDD14
+	bl SetIrqFlag
 _027E4A58:
 	add r6, r6, #1
 _027E4A5C:
@@ -5623,7 +5623,7 @@ _027E4CB0:
 	bl sub_027E781C
 _027E4CD4:
 	bl sub_027E6370
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	str r0, [sp]
 	add r0, sl, #0x14
 	mov r1, #0
@@ -5635,7 +5635,7 @@ _027E4CD4:
 	cmp r0, #9
 	cmpne r0, #0xa
 	beq _027E4DC8
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	tst r7, #4
 	ldrneh r2, [sl, #0x38]
 	add r1, sb, #0x700
@@ -5682,7 +5682,7 @@ _027E4CD4:
 	add r1, sb, #0x700
 	ldreqh r2, [sb, #0x9a]
 	strh r2, [r1, #0xcc]
-	bl sub_037FDD14
+	bl SetIrqFlag
 _027E4DC8:
 	ldrh r0, [r8]
 	add r0, r0, #0xf9
@@ -5755,7 +5755,7 @@ _027E4EB0:
 	mov r1, #1
 	ldr r0, [sp]
 	str r1, [r8, #0xc]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	add r0, sp, #4
 	mov r1, #1
 	bl sub_027E2700
@@ -5776,7 +5776,7 @@ _027E4EB0:
 	b _027E4F50
 _027E4F28:
 	ldr r0, [sp]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	bl sub_03807380
 	mov r1, #0xe
 	strh r1, [r0]
@@ -5900,7 +5900,7 @@ sub_027E50A4: ; 0x027E50A4
 	bl sub_03807334
 	b _027E51A8
 _027E50E4:
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldr r1, [r6, #0xc]
 	mov r5, r0
 	mov r0, #0
@@ -5919,7 +5919,7 @@ _027E50E4:
 	streqh r0, [r6]
 _027E5128:
 	mov r0, r5
-	bl sub_037FDD14
+	bl SetIrqFlag
 	add r0, sp, #0
 	mov r1, #0
 	bl sub_027E2700
@@ -5989,7 +5989,7 @@ sub_027E51F4: ; 0x027E51F4
 	mov r5, r2, lsl #0x10
 	ldr r6, [r0, #4]
 	mov r7, r5, lsr #0x10
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	str r6, [r4, #0xb0]
 	strh r7, [r4, #0xb8]
 	add r1, r6, r5, lsr #16
@@ -6013,7 +6013,7 @@ sub_027E51F4: ; 0x027E51F4
 	mov r1, #1
 	mov r0, r5
 	str r1, [r4, #0x10]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, r6, r7, lr}
 	bx lr
 	.align 2, 0
@@ -6093,11 +6093,11 @@ sub_027E5378: ; 0x027E5378
 	sub sp, sp, #0x200
 	ldr r0, _027E5430 ; =_027F8878
 	ldr r4, [r0, #0x550]
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldrh r1, [r4]
 	cmp r1, #0xb
 	beq _027E53B8
-	bl sub_037FDD14
+	bl SetIrqFlag
 	bl sub_03807380
 	mov r1, #0x13
 	strh r1, [r0]
@@ -6110,7 +6110,7 @@ _027E53B8:
 	str r1, [r4, #0x10]
 	mov r1, #8
 	strh r1, [r4]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	add r0, sp, #0
 	mov r1, #7
 	bl sub_027E23AC
@@ -7083,16 +7083,16 @@ sub_027E6090: ; 0x027E6090
 	ldr r0, _027E6138 ; =_027F8878
 	ldr r4, _027E613C ; =_027F7878
 	ldr r5, [r0, #0x550]
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldrh r1, [r5, #0xce]
 	cmp r1, #1
 	bne _027E60B8
-	bl sub_037FDD14
+	bl SetIrqFlag
 	b _027E6130
 _027E60B8:
 	mov r1, #1
 	strh r1, [r5, #0xce]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	bl sub_027E0700
 	movs r1, r0
 	moveq r0, #0
@@ -7162,14 +7162,14 @@ _027E61AC:
 	ldrh r0, [r4]
 	cmp r0, #9
 	bne _027E629C
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	add r1, r4, #0x100
 	ldrh r1, [r1, #0x82]
 	cmp r1, #0
 	bne _027E61DC
 	mov r1, #0
 	strh r1, [r4, #0x62]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	b _027E62D0
 _027E61DC:
 	ldrsh r2, [r4, #0x62]
@@ -7204,7 +7204,7 @@ _027E61DC:
 _027E6250:
 	mov r5, #0
 _027E6254:
-	bl sub_037FDD14
+	bl SetIrqFlag
 	cmp r5, #0
 	beq _027E6268
 	ldr r0, _027E62DC ; =0x0000FFFF
@@ -7227,13 +7227,13 @@ _027E629C:
 	cmp r0, #0xa
 	bne _027E62D0
 	mov r5, #0
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldr r1, [r4, #0x734]
 	cmp r1, #1
 	movne r1, r5
 	movne r5, #1
 	strneh r1, [r4, #0x60]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	cmp r5, #1
 	bne _027E62D0
 	bl sub_027E6428
@@ -7699,12 +7699,12 @@ sub_027E6920: ; 0x027E6920
 	ldr r1, _027E72B8 ; =_027F8878
 	str r0, [sp, #0x18]
 	ldr r7, [r1, #0x550]
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	add r1, r7, #0x100
 	ldrh r1, [r1, #0x82]
 	ldrh r4, [r7, #0x86]
 	str r1, [sp, #0x74]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	mov r1, #0
 	strh r1, [sp, #0xc4]
 	ldrh r0, [r7, #0x88]
@@ -8089,11 +8089,11 @@ _027E6EF4:
 	moveq r0, #1
 	streq r0, [sp, #0x3c]
 	beq _027E6F18
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	add r1, sb, #0x100
 	ldrh r1, [r1, #0x82]
 	str r1, [sp, #0x3c]
-	bl sub_037FDD14
+	bl SetIrqFlag
 _027E6F18:
 	mov r0, r5, lsl #0x10
 	mvn r0, r0, lsr #16
@@ -8300,14 +8300,14 @@ _027E7208:
 	strh r0, [sp, #0xc4]
 	mov sl, r6
 	ldr r4, _027E72C0 ; =0x000080D6
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldrsh r1, [r7, #0x62]
 	add r1, r1, #1
 	strh r1, [r7, #0x62]
 	ldrsh r1, [r7, #0x64]
 	add r1, r1, #1
 	strh r1, [r7, #0x64]
-	bl sub_037FDD14
+	bl SetIrqFlag
 _027E7248:
 	mov r0, r5, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -8352,8 +8352,8 @@ sub_027E72C8: ; 0x027E72C8
 	ldr r1, _027E73AC ; =_027F8878
 	mov r4, r0
 	ldr r7, [r1, #0x550]
-	bl sub_037FDD00
-	bl sub_037FDD14
+	bl EnableIrqFlag
+	bl SetIrqFlag
 	add r0, r7, #0x100
 	ldrh r0, [r0, #0x82]
 	ldr r1, _027E73B0 ; =0x048080F8
@@ -8532,11 +8532,11 @@ _027E7558:
 	moveq r0, #1
 	streq r0, [sp, #0x10]
 	beq _027E757C
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	add r1, r8, #0x100
 	ldrh r1, [r1, #0x82]
 	str r1, [sp, #0x10]
-	bl sub_037FDD14
+	bl SetIrqFlag
 _027E757C:
 	mvn r0, r5
 	str r0, [sp, #4]
@@ -9166,7 +9166,7 @@ sub_027E7E48: ; 0x027E7E48
 	ldr r7, [r1, #0x550]
 	ldr r4, [r1, #0x54c]
 	mov r5, #0
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldr r1, [r7, #0xc]
 	mov r6, r0
 	cmp r1, #1
@@ -9236,7 +9236,7 @@ _027E7E88:
 	strh r1, [r0, #0xee]
 	mov r0, r6
 	str r8, [r7, #0xc8]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	cmp r5, #0
 	beq _027E7F88
 	ldr r0, _027E7FF0 ; =0x0000FFFF
@@ -9598,7 +9598,7 @@ sub_027E841C: ; 0x027E841C
 	bicne r7, r7, #0x2c00
 	movne r6, #3
 _027E8460:
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	mov r5, r0
 	cmp sb, #0
 	beq _027E84E8
@@ -9787,7 +9787,7 @@ _027E86C8:
 	ldrneb r0, [r4, #0x1b]
 	strneh r0, [r8, #0x9c]
 	mov r0, r5
-	bl sub_037FDD14
+	bl SetIrqFlag
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bx lr
@@ -18980,7 +18980,7 @@ _027EFCA8:
 	add r0, r0, #0x32
 	bl sub_03806DD4
 	mov r4, r0
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldr r1, _027EFE04 ; =0x00003FFF
 	ldr r2, _027EFE08 ; =0x04808118
 	and r1, r5, r1
@@ -18989,10 +18989,10 @@ _027EFCA8:
 	strh r4, [r2]
 	orr r1, r1, r7
 	strh r1, [r2, #-0x88]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	b _027EFDD8
 _027EFD40:
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldr r1, _027EFE0C ; =0x048080F8
 	mov r8, r0
 	ldrh r0, [r1]
@@ -19016,11 +19016,11 @@ _027EFD40:
 	orr r1, r0, r7
 	mov r0, r8
 	strh r1, [r2, #-0x88]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	b _027EFDD8
 _027EFDA8:
 	mov r0, r8
-	bl sub_037FDD14
+	bl SetIrqFlag
 	ldr r1, [r6, #0x90]
 	add r0, r4, #0x188
 	bl sub_037F8908
@@ -22446,7 +22446,7 @@ _027F2BCC:
 	sbc r0, r0, r5
 	str r1, [sp, #0x10]
 	str r0, [sp, #0x14]
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	ldr r1, _027F2E84 ; =0x048080F8
 	ldrh ip, [r1]
 	ldrh fp, [r1, #2]
@@ -22464,7 +22464,7 @@ _027F2BCC:
 	strh r3, [sp, #2]
 	strh r2, [sp, #4]
 	strh r1, [sp, #6]
-	bl sub_037FDD14
+	bl SetIrqFlag
 	ldrh r1, [sp, #8]
 	ldrh r0, [sp]
 	cmp r1, r0
@@ -25108,14 +25108,14 @@ _027F5178: .word _027F8E08
 sub_027F517C: ; 0x027F517C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	mov r5, r0
 	mov r0, #1
 	bl sub_03803B0C
 	cmp r0, #0
 	bne _027F51BC
 	mov r0, r5
-	bl sub_037FDD14
+	bl SetIrqFlag
 	ldr r0, [r4, #4]
 	mov r1, #4
 	mov r0, r0, lsl #0x10
@@ -25126,7 +25126,7 @@ _027F51BC:
 	mov r0, #1
 	bl sub_03803B28
 	mov r0, r5
-	bl sub_037FDD14
+	bl SetIrqFlag
 	ldr r0, [r4, #4]
 	sub r0, r0, #0x20
 	cmp r0, #0xd
@@ -26135,7 +26135,7 @@ _027F5E58:
 	mov r0, #0x100
 	mov r1, r0
 	bl sub_037FE588
-	bl sub_037FDD00
+	bl EnableIrqFlag
 	mov r4, r0
 	ldr r1, _027F5F20 ; =sub_027F652C
 	mov r0, #0x80
@@ -26143,7 +26143,7 @@ _027F5E58:
 	mov r0, #0x80
 	bl sub_037FB8F0
 	mov r0, r4
-	bl sub_037FDD14
+	bl SetIrqFlag
 _027F5EF4:
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, lr}

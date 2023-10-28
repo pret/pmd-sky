@@ -25,6 +25,7 @@ def add_files_with_extensions(folder: str, extensions: List[str]) -> List[str]:
     return found_files
 
 asm_files = add_files_with_extensions('asm', ['.s', '.inc'])
+asm_arm7_files = add_files_with_extensions(os.path.join('sub', 'asm'), ['.s', '.inc'])
 src_files = add_files_with_extensions(HEADER_FOLDER, ['.h'])
 src_files.extend(add_files_with_extensions('src', ['.c']))
 
@@ -35,6 +36,9 @@ for section_name, pmdsky_debug_section in pmdsky_debug_symbols.items():
         xmap_section = {}
 
     for address, symbol in pmdsky_debug_section.items():
+        if section_name == 'arm7' and address > 0x2380000:
+            # TODO Figure out exact boundary of WRAM.
+            address += 0x1477E18
         if address in xmap_section and xmap_section[address].name != symbol.name and xmap_section[address].name not in MIXED_CASE_SYMBOLS:
             old_symbol = xmap_section[address]
             print(f'Replacing {old_symbol.name} with {symbol.name}')
@@ -63,7 +67,10 @@ for section_name, pmdsky_debug_section in pmdsky_debug_symbols.items():
                     f'.public {old_symbol.name}\n',
                 ]
             asm_search_strings = [(base, base.replace(old_symbol.name, symbol.name)) for base in asm_search_string_bases]
-            for file_path in asm_files:
+            candidate_asm_files = asm_files
+            if section_name == 'arm7':
+                candidate_asm_files = asm_arm7_files
+            for file_path in candidate_asm_files:
                 with open(file_path, 'r') as asm_file:
                     asm_contents = asm_file.read()
                 for search_string in asm_search_strings:
