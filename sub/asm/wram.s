@@ -4780,7 +4780,7 @@ sub_037FBE90: ; 0x037FBE90
 	ldr r4, _037FBF60 ; =_038076A4
 	cmp r0, #0
 	bne _037FBEC0
-	bl sub_037FDD58
+	bl GetProcessorMode
 	cmp r0, #0x12
 	bne _037FBECC
 _037FBEC0:
@@ -7235,12 +7235,12 @@ SetIrqFiqFlags: ; 0x037FDD40
 	bx lr
 	arm_func_end SetIrqFiqFlags
 
-	arm_func_start sub_037FDD58
-sub_037FDD58: ; 0x037FDD58
+	arm_func_start GetProcessorMode
+GetProcessorMode: ; 0x037FDD58
 	mrs r0, cpsr
 	and r0, r0, #0x1f
 	bx lr
-	arm_func_end sub_037FDD58
+	arm_func_end GetProcessorMode
 
 	arm_func_start sub_037FDD64
 sub_037FDD64: ; 0x037FDD64
