@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 MIXED_CASE_SYMBOLS = {
     '_secure': 'SECURE',
+    '_start': 'Start',
     '_start_AutoloadDoneCallback': 'StartAutoloadDoneCallback',
     '_start_ModuleParams': 'START_MODULE_PARAMS',
     'MIi_UncompressBackward': 'MIiUncompressBackward',
