@@ -187,11 +187,15 @@
 .public DecompressAtFromMemoryPointer
 .public FatalError
 .public FileInit
+.public GetOverlayInfo
 .public InitDebug
+.public InitOverlay
 .public LOADED_OVERLAY_GROUP_0
+.public LoadOverlayInternal
 .public MainLoop
 .public MEMORY_ALLOCATION_ARENA_GETTERS
 .public NATURAL_LOG_VALUE_TABLE
+.public OS_IRQTable
 .public PRNG_SEQUENCE_NUM
 .public sprintf
 .public sqrtf
@@ -310,9 +314,6 @@
 .public sub_0207F70C
 .public sub_0207F818
 .public sub_0207F828
-.public sub_0207FC9C
-.public sub_0207FD98
-.public sub_0207FEBC
 .public sub_020800B0
 .public sub_020811EC
 .public sub_02081264
@@ -335,4 +336,3 @@
 .public sub_02085180
 .public vsprintf
 .public WaitForInterrupt
-.public OS_IRQTable

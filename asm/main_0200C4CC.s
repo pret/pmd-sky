@@ -90215,7 +90215,7 @@ _02055C7C:
 	cmpne r7, #2
 	mov r0, r7
 	bne _02055CAC
-	bl sub_02056754
+	bl TryAddMonsterToActiveTeam
 	b _02055CB0
 _02055CAC:
 	bl sub_02056554
@@ -91106,8 +91106,8 @@ _02056748:
 _02056750: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_020566C4
 
-	arm_func_start sub_02056754
-sub_02056754: ; 0x02056754
+	arm_func_start TryAddMonsterToActiveTeam
+TryAddMonsterToActiveTeam: ; 0x02056754
 	stmdb sp!, {r4, lr}
 	mvn r1, #0
 	cmp r0, r1
@@ -91171,7 +91171,7 @@ _02056824:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0205682C: .word TEAM_MEMBER_TABLE_PTR
-	arm_func_end sub_02056754
+	arm_func_end TryAddMonsterToActiveTeam
 
 	arm_func_start sub_02056830
 sub_02056830: ; 0x02056830
@@ -91274,8 +91274,8 @@ sub_02056914: ; 0x02056914
 _0205695C: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_02056914
 
-	arm_func_start sub_02056960
-sub_02056960: ; 0x02056960
+	arm_func_start RemoveActiveMembersFromMainTeam
+RemoveActiveMembersFromMainTeam: ; 0x02056960
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r0, #0
 	ldr r2, _020569C8 ; =TEAM_MEMBER_TABLE_PTR
@@ -91305,7 +91305,7 @@ _02056978:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020569C8: .word TEAM_MEMBER_TABLE_PTR
-	arm_func_end sub_02056960
+	arm_func_end RemoveActiveMembersFromMainTeam
 
 	arm_func_start SetTeamSetupHeroAndPartnerOnly
 SetTeamSetupHeroAndPartnerOnly: ; 0x020569CC
@@ -91344,12 +91344,12 @@ _02056A40:
 	cmp sl, #4
 	add sb, sb, #0x68
 	blt _02056A08
-	bl sub_02056960
+	bl RemoveActiveMembersFromMainTeam
 	mvn r0, #0
 	cmp r5, r0
 	beq _02056A68
 	mov r0, r5
-	bl sub_02056754
+	bl TryAddMonsterToActiveTeam
 _02056A68:
 	mvn r0, #0
 	cmp r6, r0
@@ -91406,12 +91406,12 @@ _02056B10:
 	cmp sl, #4
 	add sb, sb, #0x68
 	blt _02056AE0
-	bl sub_02056960
+	bl RemoveActiveMembersFromMainTeam
 	mvn r0, #0
 	cmp r7, r0
 	beq _02056B38
 	mov r0, r7
-	bl sub_02056754
+	bl TryAddMonsterToActiveTeam
 _02056B38:
 	ldr r0, _02056B54 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r0, [r0]
@@ -91470,9 +91470,9 @@ sub_02056BD4: ; 0x02056BD4
 	ldrb r0, [r0, #0x877]
 	cmp r0, #2
 	ldmneia sp!, {r3, pc}
-	bl sub_02056960
+	bl RemoveActiveMembersFromMainTeam
 	bl GetHeroMemberIdx
-	bl sub_02056754
+	bl TryAddMonsterToActiveTeam
 	bl GetPartnerMemberIdx
 	bl sub_02056554
 	ldr r0, _02056C1C ; =TEAM_MEMBER_TABLE_PTR
@@ -92604,7 +92604,7 @@ _02057B10:
 	moveq r0, #0
 	and r7, r0, #0xff
 	bl sub_02057C40
-	bl sub_02056960
+	bl RemoveActiveMembersFromMainTeam
 	mov sb, #0
 	ldr r0, _02057C3C ; =TEAM_MEMBER_TABLE_PTR
 	mov r6, #1
@@ -92639,7 +92639,7 @@ _02057B50:
 	tst r0, #0xff
 	ldrsh r0, [r8, #8]
 	beq _02057BB8
-	bl sub_02056754
+	bl TryAddMonsterToActiveTeam
 	b _02057BBC
 _02057BB8:
 	bl sub_02056554
@@ -142204,8 +142204,8 @@ _0207FC3C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end sub_0207FBA4
 
-	arm_func_start sub_0207FC9C
-sub_0207FC9C: ; 0x0207FC9C
+	arm_func_start GetOverlayInfo
+GetOverlayInfo: ; 0x0207FC9C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x60
 	movs r4, r1
@@ -142271,10 +142271,10 @@ _0207FD88: .word _022BB604
 _0207FD8C: .word _022BB60C
 _0207FD90: .word 0x027FFE50
 _0207FD94: .word _022BB614
-	arm_func_end sub_0207FC9C
+	arm_func_end GetOverlayInfo
 
-	arm_func_start sub_0207FD98
-sub_0207FD98: ; 0x0207FD98
+	arm_func_start LoadOverlayInternal
+LoadOverlayInternal: ; 0x0207FD98
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x50
 	mov r5, r0
@@ -142312,7 +142312,7 @@ _0207FE18:
 	mov r0, #1
 	add sp, sp, #0x50
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0207FD98
+	arm_func_end LoadOverlayInternal
 
 	arm_func_start sub_0207FE28
 sub_0207FE28: ; 0x0207FE28
@@ -142358,8 +142358,8 @@ _0207FEA4:
 _0207FEB8: .word _020B2BB8
 	arm_func_end sub_0207FE28
 
-	arm_func_start sub_0207FEBC
-sub_0207FEBC: ; 0x0207FEBC
+	arm_func_start InitOverlay
+InitOverlay: ; 0x0207FEBC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl sub_0207FB24
@@ -142427,7 +142427,7 @@ _0207FFA0: .word 0x027FFC40
 _0207FFA4: .word _020B3364
 _0207FFA8: .word _020B3364
 _0207FFAC: .word 0x66666667
-	arm_func_end sub_0207FEBC
+	arm_func_end InitOverlay
 
 	arm_func_start sub_0207FFB0
 sub_0207FFB0: ; 0x0207FFB0
@@ -142520,7 +142520,7 @@ sub_020800B0: ; 0x020800B0
 	mov r2, r1
 	add r0, sp, #0
 	mov r1, r3
-	bl sub_0207FC9C
+	bl GetOverlayInfo
 	cmp r0, #0
 	beq _020800E4
 	add r0, sp, #0

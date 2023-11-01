@@ -21,8 +21,8 @@
 .public IsNormalMenuActive
 .public MemAlloc
 .public MemFree
-.public ov11_022E6E68
 .public ov11_022DC504
+.public ov11_022E6E68
 .public ov11_0238A08C
 .public PrintIqSkillsMenu
 .public SetPortraitEmotion
@@ -81,7 +81,6 @@
 .public sub_020564B0
 .public sub_02056554
 .public sub_020566C4
-.public sub_02056754
 .public sub_02056F60
 .public sub_02057180
 .public sub_020572EC
@@ -89,3 +88,4 @@
 .public sub_02058138
 .public sub_0205B028
 .public TEAM_MEMBER_TABLE_PTR
+.public TryAddMonsterToActiveTeam

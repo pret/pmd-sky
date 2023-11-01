@@ -1,6 +1,5 @@
 #pragma once
 .public __divsi3
-.public BAG_ITEMS_PTR_MIRROR
 .public _020AFC4C
 .public abs
 .public AddHeldItemToBag
@@ -9,6 +8,7 @@
 .public AddMoneyCarried
 .public AdvanceFrame
 .public AnimationDelayOrSomething
+.public BAG_ITEMS_PTR_MIRROR
 .public CanMonsterMoveInDirection
 .public CanSeeTarget
 .public CeilFixedPoint
@@ -24,7 +24,6 @@
 .public GetDirectionTowardsPosition
 .public GetEntityMoveTargetAndRange
 .public GetEquippedThrowableItem
-.public GetMoneyCarried
 .public GetHero
 .public GetItemCategoryVeneer
 .public GetItemIndex
@@ -32,6 +31,7 @@
 .public GetItemToUse
 .public GetLeader
 .public GetLeaderMonster
+.public GetMoneyCarried
 .public GetMonsterGenderVeneer
 .public GetPressedButtons
 .public GetSleepAnimationId
@@ -168,7 +168,9 @@
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveEquivItemNoHole
 .public RemoveGroundItem
+.public RemoveHolderForItemInBag
 .public SetActionUseMovePlayer
+.public SetHolderForItemInBag
 .public SetLeaderActionFields
 .public SetMonsterActionFields
 .public ShouldMonsterRunAway
@@ -176,8 +178,6 @@
 .public SpawnItem
 .public sub_02001AB0
 .public sub_02006B70
-.public RemoveHolderForItemInBag
-.public SetHolderForItemInBag
 .public sub_02017C80
 .public sub_02017CCC
 .public sub_0201B9F8
@@ -194,8 +194,8 @@
 .public sub_0204AF10
 .public sub_0204AF20
 .public sub_0204AF78
-.public sub_02056754
 .public SubstitutePlaceholderStringTags
+.public TryAddMonsterToActiveTeam
 .public TryLeaderItemPickUp
 .public TryPointCameraToMonster
 .public TryTriggerMonsterHouse
