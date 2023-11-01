@@ -8989,8 +8989,13 @@ _02013450: .word _020AF700
 GetMoveName: ; 0x02013454
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	ldr ip, _02013474 ; =StringFromMessageId
 	mov r0, r0, lsr #0x10
@@ -9056,8 +9061,13 @@ _0201351C: ; jump table
 	b _020136F4 ; case 5
 _02013534:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -9069,8 +9079,13 @@ _02013534:
 	b _02013730
 _02013564:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -9095,8 +9110,13 @@ _02013564:
 	b _02013730
 _020135C8:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -9121,8 +9141,13 @@ _020135C8:
 	b _02013730
 _0201362C:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -9147,8 +9172,13 @@ _0201362C:
 	b _02013730
 _02013690:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -9173,8 +9203,13 @@ _02013690:
 	b _02013730
 _020136F4:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -11916,8 +11951,8 @@ _020159C0:
 	b _020159C0
 _020159E0:
 	ldr r0, [sp, #0x44]
-	ldr r1, _02015D0C ; =_02098FC0
-	bl StrcmpTag
+	ldr r1, _02015DEC ; =_02099404_EU
+	bl StrcmpTagVeneer
 	cmp r0, #0
 	beq _02015A0C
 	ldr r0, [sp, #0x48]
@@ -11928,15 +11963,15 @@ _020159E0:
 	b _02015B08
 _02015A0C:
 	ldr r0, [sp, #0x44]
-	ldr r1, _02015DEC ; =_02098FC0
-	bl StrcmpTag
+	ldr r1, _02015D0C ; =_02098FC0
+	bl StrcmpTagVeneer
 	cmp r0, #0
 	beq _02015B08
 	ldr r0, [sp, #0x48]
-	bl StoiTag
+	bl StoiTagVeneer
 	ldr r0, [sp, #0x4c]
-	bl StoiTag
-	ldr r1, _02015DF0 ; =_020AF710
+	bl StoiTagVeneer
+	ldr r1, _02015D10 ; =_020AF710
 	add ip, r5, #2
 	ldr r1, [r1]
 	ldr r8, [sp, #0x10]
@@ -12450,22 +12485,22 @@ _02015CD8:
 	ldrb r0, [r6]
 	cmp r0, #0
 	bne _020158E0
-	ldr r0, [sp, #0x2c]
+	ldr r0, [sp, #0x2c + SUB_0201578C_STACK_OFFSET]
 	add r7, r7, #0x18
 	add r0, r0, #1
-	str r0, [sp, #0x2c]
+	str r0, [sp, #0x2c + SUB_0201578C_STACK_OFFSET]
 	b _020157B8
 _02015CF8:
-	ldr r0, [sp, #0x2c]
+	ldr r0, [sp, #0x2c + SUB_0201578C_STACK_OFFSET]
 	add sp, sp, #0x2f8
 	add sp, sp, #0x400
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02015D08: .word _02098FBC
-_02015D0C: .word _02098FC0
 #ifdef EUROPE
-_02015DEC: .word 0x02099408
+_02015DEC: .word _02099404_EU
 #endif
+_02015D0C: .word _02098FC0
 _02015D10: .word _020AF710
 _02015D14: .word _02098EE0
 	arm_func_end sub_0201578C
@@ -166553,6 +166588,8 @@ _02098FA8:
 _02098FBC:
 	.byte 0x5B, 0x52, 0x5D, 0x00
 #ifdef EUROPE
+	.global _02099404_EU
+_02099404_EU:
 	.byte 0x46, 0x00, 0x00, 0x00
 #endif
 	.global _02098FC0
