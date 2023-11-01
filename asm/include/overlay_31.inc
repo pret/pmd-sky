@@ -15,6 +15,7 @@
 .public CheckTeamMemberIdx
 .public CheckTeamMemberIdxVeneer
 .public CreateDBox
+.public CreateMonsterSummaryFromMonster
 .public DebugPrint0
 .public DisableDungeonSubMenuOption
 .public DisplayMessage
@@ -27,7 +28,6 @@
 .public GetCurrentBagCapacity
 .public GetDexNumber
 .public GetFloorType
-.public GetMoneyCarried
 .public GetItemAction
 .public GetItemCategoryVeneer
 .public GetItemInfo
@@ -39,6 +39,7 @@
 .public GetLeaderChangeFlag
 .public GetLeaderMonster
 .public GetMaxPp
+.public GetMoneyCarried
 .public GetMonsterIdFromSpawnEntry
 .public GetMonsterName
 .public GetNbItemsInBag
@@ -49,6 +50,7 @@
 .public GetTeamMemberIndex
 .public GetTile
 .public GetTrapInfo
+.public GetUnlockedTactics
 .public HideTileGrid
 .public InitPreprocessorArgs
 .public IqSkillFlagTest
@@ -114,7 +116,6 @@
 .public ov29_022EBC2C
 .public ov29_022ECDE4
 .public ov29_022F0B9C
-.public CreateMonsterSummaryFromMonster
 .public ov29_022F9C40
 .public ov29_023002F0
 .public ov29_02300818
@@ -150,6 +151,8 @@
 .public PrintIqSkillsMenu
 .public SetMonsterActionFields
 .public ShouldMonsterRunAwayVariation
+.public ShowStringInDBox
+.public SortItemsInBag
 .public SpecificRecruitCheck
 .public strcpy
 .public StringFromMessageId
@@ -157,7 +160,6 @@
 .public sub_0200B3D4
 .public sub_0200D310
 .public sub_0200D894
-.public SortItemsInBag
 .public sub_02017C74
 .public sub_02017C80
 .public sub_02017CCC
@@ -186,7 +188,6 @@
 .public sub_0202E3CC
 .public sub_0202E6C8
 .public sub_0202E6E4
-.public sub_0202F23C
 .public sub_0202F334
 .public sub_0202F474
 .public sub_0202F8C4
@@ -241,7 +242,6 @@
 .public sub_02053CA0
 .public sub_02054F44
 .public sub_020585B4
-.public GetUnlockedTactics
 .public TryPointCameraToMonster
 .public UpdateMapSurveyorFlag
 .public vsprintf

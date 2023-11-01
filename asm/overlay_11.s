@@ -12916,11 +12916,11 @@ _022E7254:
 	mov r0, #0
 	b _022E7AC0
 _022E7260:
-	bl ScriptSpecialProcess0x3
+	bl InitSpecialEpisodePartners
 	mov r0, #0
 	b _022E7AC0
 _022E726C:
-	bl ScriptSpecialProcess0x4
+	bl InitSpecialEpisodeExtraPartner
 	mov r0, #0
 	b _022E7AC0
 _022E7278:
@@ -13169,7 +13169,7 @@ _022E75C0:
 	movne r0, #0
 	b _022E7AC0
 _022E75D0:
-	bl ScriptSpecialProcess0x17
+	bl RandomizeDemoActors
 	mov r0, #0
 	b _022E7AC0
 _022E75DC:
@@ -13521,13 +13521,13 @@ _022E7A88:
 _022E7A94:
 	mov r0, r7, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ScriptSpecialProcess0x3D
+	bl SetActorTalkMain
 	mov r0, #0
 	b _022E7AC0
 _022E7AA8:
 	mov r0, r7, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ScriptSpecialProcess0x3E
+	bl SetActorTalkSub
 	mov r0, #0
 	b _022E7AC0
 _022E7ABC:
@@ -33759,7 +33759,7 @@ ov11_022F8A20: ; 0x022F8A20
 	cmpne r1, r2
 	moveq r0, #0
 	beq _022F8A98
-	bl ScriptSpecialProcess0x3E
+	bl SetActorTalkSub
 	add r1, r4, #0x100
 	ldrsh r0, [r4, #6]
 	ldrsh r1, [r1, #0x24]
@@ -33812,7 +33812,7 @@ ov11_022F8AF4: ; 0x022F8AF4
 	ldrsh r0, [r0, #2]
 	cmp r0, r2
 	beq _022F8B48
-	bl ScriptSpecialProcess0x3D
+	bl SetActorTalkMain
 	mov r0, r4
 	bl ov11_022F8A20
 	cmp r0, #0
@@ -33842,7 +33842,7 @@ ov11_022F8B54: ; 0x022F8B54
 	ldrsh r0, [r0, #2]
 	cmp r0, r2
 	beq _022F8BA8
-	bl ScriptSpecialProcess0x3D
+	bl SetActorTalkMain
 	mov r0, r4
 	bl ov11_022FC83C
 	cmp r0, #0
@@ -33878,7 +33878,7 @@ ov11_022F8BB4: ; 0x022F8BB4
 	bl KeyWaitInit
 	ldrsh r0, [r4, #2]
 	mvn r1, #0
-	bl sub_02065B3C
+	bl SetActorTalkMainAndActorTalkSub
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _022F8C0C:
@@ -35648,7 +35648,7 @@ _022FA450:
 _022FA47C:
 	ldrsh r0, [r4, #2]
 	mov r1, #0xa
-	bl sub_02065B3C
+	bl SetActorTalkMainAndActorTalkSub
 	mov r0, r4
 	mov r1, #0xa
 	bl ov11_022F8AA8
@@ -38310,7 +38310,7 @@ ov11_022FC83C: ; 0x022FC83C
 	cmpne r1, r0
 	moveq r0, #0
 	beq _022FC8B4
-	bl ScriptSpecialProcess0x3E
+	bl SetActorTalkSub
 	add r1, r4, #0x100
 	ldrsh r0, [r4, #0xa]
 	ldrsh r1, [r1, #0x28]
@@ -43244,7 +43244,7 @@ _023008EC:
 	ldr r3, [r2, #4]
 	add r2, r3, #0x58
 	add r3, r3, #8
-	bl sub_0202F23C
+	bl ShowStringInDBox
 _02300904:
 	ldr r0, _02300A20 ; =ov11_02324D24
 	ldmia r0, {r1, r2}
@@ -43514,7 +43514,7 @@ _02300C74:
 	ldr r3, [r2, #4]
 	add r2, r3, #0x58
 	add r3, r3, #8
-	bl sub_0202F23C
+	bl ShowStringInDBox
 _02300C8C:
 	ldr r0, _02300D58 ; =ov11_02324D2C
 	ldr r2, [r0, #4]

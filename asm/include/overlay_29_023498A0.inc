@@ -195,6 +195,7 @@
 .public ShouldDisplayEntityWrapper
 .public ShouldMonsterHeadToStairs
 .public ShowPortraitBox
+.public ShowStringInDBox
 .public StringFromMessageId
 .public strlen
 .public strncmp
@@ -252,7 +253,6 @@
 .public sub_0202AABC
 .public sub_0202AB94
 .public sub_0202ABB0
-.public sub_0202F23C
 .public sub_0202F334
 .public sub_0202F474
 .public sub_0202FFB0

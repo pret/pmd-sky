@@ -419,7 +419,7 @@ sub_0200CA8C: ; 0x0200CA8C
 	ldr r0, _0200CAB8 ; =BAG_ITEMS_PTR_MIRROR
 	str r1, [r0]
 	bl LoadItemPspi2n
-	bl sub_0200EBCC
+	bl SetActiveInventoryToMain
 	bl sub_0200FD38
 	bl sub_02010590
 	bl sub_02011AB8
@@ -432,9 +432,9 @@ _0200CAB8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_start sub_0200CABC
 sub_0200CABC: ; 0x0200CABC
 	stmdb sp!, {r3, lr}
-	bl sub_0200EBDC
+	bl AllInventoriesZInit
 	bl sub_0200FD3C
-	bl sub_02010594
+	bl AllKecleonShopsZInit
 	bl sub_02011AB8
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0200CABC
@@ -442,17 +442,17 @@ sub_0200CABC: ; 0x0200CABC
 	arm_func_start sub_0200CAD4
 sub_0200CAD4: ; 0x0200CAD4
 	stmdb sp!, {r3, lr}
-	bl sub_0200EC48
-	bl sub_02010654
+	bl SpecialEpisodeInventoryZInit
+	bl SpecialEpisodeKecleonShopZInit
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0200CAD4
 
 	arm_func_start sub_0200CAE4
 sub_0200CAE4: ; 0x0200CAE4
-	ldr ip, _0200CAEC ; =sub_0200EC90
+	ldr ip, _0200CAEC ; =RescueInventoryZInit
 	bx ip
 	.align 2, 0
-_0200CAEC: .word sub_0200EC90
+_0200CAEC: .word RescueInventoryZInit
 	arm_func_end sub_0200CAE4
 
 	arm_func_start GetItemCategoryVeneer
@@ -3033,17 +3033,17 @@ _0200EBB8:
 _0200EBC8: .word ARM9_UNKNOWN_TABLE__NA_2097FF8
 	arm_func_end sub_0200EB90
 
-	arm_func_start sub_0200EBCC
-sub_0200EBCC: ; 0x0200EBCC
+	arm_func_start SetActiveInventoryToMain
+SetActiveInventoryToMain: ; 0x0200EBCC
 	ldr ip, _0200EBD8 ; =SetActiveInventory
 	mov r0, #0
 	bx ip
 	.align 2, 0
 _0200EBD8: .word SetActiveInventory
-	arm_func_end sub_0200EBCC
+	arm_func_end SetActiveInventoryToMain
 
-	arm_func_start sub_0200EBDC
-sub_0200EBDC: ; 0x0200EBDC
+	arm_func_start AllInventoriesZInit
+AllInventoriesZInit: ; 0x0200EBDC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, #0
 	ldr r6, _0200EC44 ; =BAG_ITEMS_PTR_MIRROR
@@ -3074,10 +3074,10 @@ _0200EC00:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0200EC44: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200EBDC
+	arm_func_end AllInventoriesZInit
 
-	arm_func_start sub_0200EC48
-sub_0200EC48: ; 0x0200EC48
+	arm_func_start SpecialEpisodeInventoryZInit
+SpecialEpisodeInventoryZInit: ; 0x0200EC48
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r5, _0200EC8C ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, #0
@@ -3098,10 +3098,10 @@ _0200EC58:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0200EC8C: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200EC48
+	arm_func_end SpecialEpisodeInventoryZInit
 
-	arm_func_start sub_0200EC90
-sub_0200EC90: ; 0x0200EC90
+	arm_func_start RescueInventoryZInit
+RescueInventoryZInit: ; 0x0200EC90
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r5, _0200ECD4 ; =BAG_ITEMS_PTR_MIRROR
 	mov r6, #0
@@ -3122,7 +3122,7 @@ _0200ECA0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0200ECD4: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0200EC90
+	arm_func_end RescueInventoryZInit
 
 	arm_func_start SetActiveInventory
 SetActiveInventory: ; 0x0200ECD8
@@ -5172,8 +5172,8 @@ sub_02010590: ; 0x02010590
 	bx lr
 	arm_func_end sub_02010590
 
-	arm_func_start sub_02010594
-sub_02010594: ; 0x02010594
+	arm_func_start AllKecleonShopsZInit
+AllKecleonShopsZInit: ; 0x02010594
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r2, #0
 	ldr ip, _02010650 ; =BAG_ITEMS_PTR_MIRROR
@@ -5226,10 +5226,10 @@ _020105E0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02010650: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010594
+	arm_func_end AllKecleonShopsZInit
 
-	arm_func_start sub_02010654
-sub_02010654: ; 0x02010654
+	arm_func_start SpecialEpisodeKecleonShopZInit
+SpecialEpisodeKecleonShopZInit: ; 0x02010654
 	stmdb sp!, {r3, lr}
 	mov lr, #0
 	ldr r2, _020106C0 ; =BAG_ITEMS_PTR_MIRROR
@@ -5261,10 +5261,10 @@ _02010694:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020106C0: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010654
+	arm_func_end SpecialEpisodeKecleonShopZInit
 
-	arm_func_start sub_020106C4
-sub_020106C4: ; 0x020106C4
+	arm_func_start SetActiveKecleonShop
+SetActiveKecleonShop: ; 0x020106C4
 	ldr r2, _02010708 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r1, [r2]
 	add r1, r1, #0x1000
@@ -5284,7 +5284,7 @@ sub_020106C4: ; 0x020106C4
 	bx lr
 	.align 2, 0
 _02010708: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_020106C4
+	arm_func_end SetActiveKecleonShop
 
 	arm_func_start GetMoneyStored
 GetMoneyStored: ; 0x0201070C
@@ -42917,8 +42917,8 @@ _0202F200:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ShowMessageInDBox
 
-	arm_func_start sub_0202F23C
-sub_0202F23C: ; 0x0202F23C
+	arm_func_start ShowStringInDBox
+ShowStringInDBox: ; 0x0202F23C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r2
@@ -42955,7 +42955,7 @@ _0202F288:
 	add r2, r4, #0x128
 	bl sub_02026194
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_0202F23C
+	arm_func_end ShowStringInDBox
 
 	arm_func_start sub_0202F2C4
 sub_0202F2C4: ; 0x0202F2C4
@@ -50299,7 +50299,7 @@ _0203525C:
 	ldrh r1, [r3, #0x14]
 	add r2, r3, #0x68
 	add r3, r3, #0x18
-	bl sub_0202F23C
+	bl ShowStringInDBox
 	ldr r0, _02035598 ; =_020AFDBC
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -71702,7 +71702,7 @@ sub_020472F0: ; 0x020472F0
 	mov r3, r4
 	ldrsb r0, [r1]
 	ldrh r1, [r1, #0x68]
-	bl sub_0202F23C
+	bl ShowStringInDBox
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -73090,8 +73090,8 @@ sub_020484C0: ; 0x020484C0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020484C0
 
-	arm_func_start sub_020484E8
-sub_020484E8: ; 0x020484E8
+	arm_func_start InitSpecialEpisodeHero
+InitSpecialEpisodeHero: ; 0x020484E8
 	stmdb sp!, {r4, lr}
 	bl GetSpecialEpisodeType
 	mov r4, r0
@@ -73155,7 +73155,7 @@ _020485B4: .word _020A2844
 _020485B8: .word _020A2880
 _020485BC: .word _020A2894
 _020485C0: .word FORBIDDEN_FORGOT_MOVE_LIST
-	arm_func_end sub_020484E8
+	arm_func_end InitSpecialEpisodeHero
 
 	arm_func_start sub_020485C4
 sub_020485C4: ; 0x020485C4
@@ -73203,7 +73203,7 @@ sub_02048624: ; 0x02048624
 	mov r0, #0
 	bl SetActiveInventory
 	mov r0, #0
-	bl sub_020106C4
+	bl SetActiveKecleonShop
 	mov r0, #0
 	bl SetActiveTeam
 	ldmia sp!, {r3, pc}
@@ -73220,7 +73220,7 @@ sub_02048644: ; 0x02048644
 	mov r0, #2
 	bl SetActiveInventory
 	mov r0, #0
-	bl sub_020106C4
+	bl SetActiveKecleonShop
 	mov r0, #2
 	bl SetActiveTeam
 	b _020486D8
@@ -73230,7 +73230,7 @@ _02048678:
 	mov r0, #2
 	bl SetActiveInventory
 	mov r0, #0
-	bl sub_020106C4
+	bl SetActiveKecleonShop
 	mov r0, #2
 	bl SetActiveTeam
 	b _020486D8
@@ -73240,7 +73240,7 @@ _0204869C:
 	mov r0, #1
 	bl SetActiveInventory
 	mov r0, #1
-	bl sub_020106C4
+	bl SetActiveKecleonShop
 	mov r0, #1
 	bl SetActiveTeam
 	b _020486D8
@@ -73248,7 +73248,7 @@ _020486C0:
 	mov r0, #0
 	bl SetActiveInventory
 	mov r0, #0
-	bl sub_020106C4
+	bl SetActiveKecleonShop
 	mov r0, #0
 	bl SetActiveTeam
 _020486D8:
@@ -73286,7 +73286,7 @@ sub_0204872C: ; 0x0204872C
 	mov r0, #0
 	bl SetActiveInventory
 	mov r0, #0
-	bl sub_020106C4
+	bl SetActiveKecleonShop
 	mov r0, #0
 	bl SetActiveTeam
 	ldmia sp!, {r3, pc}
@@ -73500,8 +73500,8 @@ _02048A04: .word _020AFF14
 _02048A08: .word PARTNER_TALK_KIND_TABLE
 	arm_func_end InitMainTeamAfterQuiz
 
-	arm_func_start ScriptSpecialProcess0x3
-ScriptSpecialProcess0x3: ; 0x02048A0C
+	arm_func_start InitSpecialEpisodePartners
+InitSpecialEpisodePartners: ; 0x02048A0C
 	stmdb sp!, {r3, lr}
 	bl GetExecuteSpecialEpisodeType
 	cmp r0, #4
@@ -73538,10 +73538,10 @@ _02048A74: .word _020A28A8
 _02048A78: .word _020A2858
 _02048A7C: .word _020A281C
 _02048A80: .word _020A286C
-	arm_func_end ScriptSpecialProcess0x3
+	arm_func_end InitSpecialEpisodePartners
 
-	arm_func_start ScriptSpecialProcess0x4
-ScriptSpecialProcess0x4: ; 0x02048A84
+	arm_func_start InitSpecialEpisodeExtraPartner
+InitSpecialEpisodeExtraPartner: ; 0x02048A84
 	stmdb sp!, {r3, lr}
 	bl GetExecuteSpecialEpisodeType
 	cmp r0, #4
@@ -73562,7 +73562,7 @@ _02048AB8:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02048AC0: .word SPECIAL_EPISODE_MAIN_CHARACTERS
-	arm_func_end ScriptSpecialProcess0x4
+	arm_func_end InitSpecialEpisodeExtraPartner
 
 	arm_func_start sub_02048AC4
 sub_02048AC4: ; 0x02048AC4
@@ -109560,33 +109560,33 @@ sub_02065B14: ; 0x02065B14
 _02065B38: .word ENTITIES
 	arm_func_end sub_02065B14
 
-	arm_func_start sub_02065B3C
-sub_02065B3C: ; 0x02065B3C
+	arm_func_start SetActorTalkMainAndActorTalkSub
+SetActorTalkMainAndActorTalkSub: ; 0x02065B3C
 	ldr r2, _02065B4C ; =_020B0B08
 	strh r0, [r2, #0x18]
 	strh r1, [r2, #0x16]
 	bx lr
 	.align 2, 0
 _02065B4C: .word _020B0B08
-	arm_func_end sub_02065B3C
+	arm_func_end SetActorTalkMainAndActorTalkSub
 
-	arm_func_start ScriptSpecialProcess0x3D
-ScriptSpecialProcess0x3D: ; 0x02065B50
+	arm_func_start SetActorTalkMain
+SetActorTalkMain: ; 0x02065B50
 	ldr r1, _02065B5C ; =_020B0B08
 	strh r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
 _02065B5C: .word _020B0B08
-	arm_func_end ScriptSpecialProcess0x3D
+	arm_func_end SetActorTalkMain
 
-	arm_func_start ScriptSpecialProcess0x3E
-ScriptSpecialProcess0x3E: ; 0x02065B60
+	arm_func_start SetActorTalkSub
+SetActorTalkSub: ; 0x02065B60
 	ldr r1, _02065B6C ; =_020B0B08
 	strh r0, [r1, #0x16]
 	bx lr
 	.align 2, 0
 _02065B6C: .word _020B0B08
-	arm_func_end ScriptSpecialProcess0x3E
+	arm_func_end SetActorTalkSub
 
 	arm_func_start sub_02065B70
 sub_02065B70: ; 0x02065B70
@@ -109686,8 +109686,8 @@ _02065C38:
 _02065C44: .word _022B7310
 	arm_func_end sub_02065C08
 
-	arm_func_start ScriptSpecialProcess0x17
-ScriptSpecialProcess0x17: ; 0x02065C48
+	arm_func_start RandomizeDemoActors
+RandomizeDemoActors: ; 0x02065C48
 	stmdb sp!, {r3, lr}
 	mov r0, #0x12
 	bl RandInt
@@ -109704,7 +109704,7 @@ ScriptSpecialProcess0x17: ; 0x02065C48
 _02065C78: .word DEMO_TEAMS
 _02065C7C: .word _020A68CA
 _02065C80: .word _020B0B08
-	arm_func_end ScriptSpecialProcess0x17
+	arm_func_end RandomizeDemoActors
 
 	arm_func_start sub_02065C84
 sub_02065C84: ; 0x02065C84
@@ -110101,7 +110101,7 @@ _020661B0:
 	mov r0, #3
 	bl sub_0204B018
 	bl sub_02048644
-	bl sub_020484E8
+	bl InitSpecialEpisodeHero
 	mov r0, #2
 	mov r1, #0x36
 	mov r2, #0

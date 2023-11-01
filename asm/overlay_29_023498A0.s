@@ -5276,7 +5276,7 @@ _0234DD64:
 	add r1, r0, #0x400
 	ldrsb r0, [r0, #0x10]
 	ldrh r1, [r1, #0x64]
-	bl sub_0202F23C
+	bl ShowStringInDBox
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0234DD88: .word ov29_02382800

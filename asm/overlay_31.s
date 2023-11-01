@@ -3185,7 +3185,7 @@ HandleMovesMenu: ; 0x02385404
 	ldr r0, [sp, #0x14]
 	ldr r1, _02385F7C ; =0x00000404
 	mov r3, #0
-	bl sub_0202F23C
+	bl ShowStringInDBox
 	b _023854AC
 _0238547C:
 	ldr r0, _02385F80 ; =DUNGEON_D_BOX_LAYOUT_16
@@ -3199,7 +3199,7 @@ _0238547C:
 	ldr r0, [sp, #0x14]
 	ldr r1, _02385F7C ; =0x00000404
 	mov r3, #0
-	bl sub_0202F23C
+	bl ShowStringInDBox
 _023854AC:
 	ldr r0, [sp]
 	ldr r6, [r0]
