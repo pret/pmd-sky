@@ -238,3 +238,4 @@
 .public UnloadOverlay
 .public WaitForever2
 .public wcslen
+.public GetLanguage
