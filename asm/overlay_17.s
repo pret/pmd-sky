@@ -1521,7 +1521,7 @@ ov17_0238B534: ; 0x0238B534
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsh r0, [r0, #0x58]
-	bl sub_02056754
+	bl TryAddMonsterToActiveTeam
 	bl sub_02057444
 	bl ov11_022DC504
 	ldr r0, _0238B578 ; =ov17_0238BE00

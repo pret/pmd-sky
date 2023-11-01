@@ -3712,7 +3712,7 @@ _022F39D8:
 	cmp r8, r4
 	beq _022F3A40
 	mov r0, r8
-	bl sub_02056754
+	bl TryAddMonsterToActiveTeam
 	b _022F3A40
 _022F3A38:
 	mov r0, #0
