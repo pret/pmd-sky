@@ -5720,8 +5720,13 @@ _022C1598: .word ov10_022DBFCC
 
 	arm_func_start ov10_022C159C
 ov10_022C159C: ; 0x022C159C
+#ifdef EUROPE
+#define OV10_022C159C_STACK_OFFSET #0x154
+#else
+#define OV10_022C159C_STACK_OFFSET #0x154
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	sub sp, sp, #0x54
+	sub sp, sp, OV10_022C159C_STACK_OFFSET
 	sub sp, sp, #0x400
 	ldr r0, _022C16CC ; =ov10_022DC1D0
 	mov r2, #0
@@ -5749,32 +5754,46 @@ _022C15F4:
 	cmp r0, #0
 	beq _022C169C
 	add r0, r4, r1
+#ifdef EUROPE
+	ldrsh r8, [r0, #0x48]
+	ldrsh r6, [r0, #0x4a]
+	ldrsh r7, [r0, #0x4c]
+#else
 	ldrsh r6, [r0, #0x4a]
 	ldrsh r7, [r0, #0x4c]
 	ldrsh r8, [r0, #0x48]
+#endif
 	add r1, r0, #1
-	add r0, sp, #0x54
+	add r0, sp, OV10_022C159C_STACK_OFFSET
 	bl strcpy
 	mov r0, sl
 	mov r1, #0
 	mov r2, sb
-	add r3, sp, #0x54
+	add r3, sp, OV10_022C159C_STACK_OFFSET
 	bl sub_02026214
+#ifdef EUROPE
+	mov r1, r8
+	add r0, sp, #0x54
+	bl sub_02025010_EU
+	ldr r1, _022C16D0 ; =ov10_022DC00C
+	add r0, sp, #0x154
+#else
 	ldr r1, _022C16D0 ; =ov10_022DC00C
 	mov r2, r8
-	add r0, sp, #0x54
+	add r2, sp, #0x54
+#endif
 	bl SprintfStatic__022C183C
 	mov r0, sl
 	mov r1, #0x44
 	mov r2, sb
-	add r3, sp, #0x54
+	add r3, sp, OV10_022C159C_STACK_OFFSET
 	bl sub_02026214
 	mov r0, fp
 	bl InitPreprocessorArgs
 	ldr r2, _022C16D4 ; =ov10_022DC014
 	str r6, [sp, #0x28]
 	str r7, [sp, #0x2c]
-	add r0, sp, #0x54
+	add r0, sp, OV10_022C159C_STACK_OFFSET
 	mov r1, #0x400
 	mov r3, #0
 	str fp, [sp]
@@ -5782,7 +5801,7 @@ _022C15F4:
 	mov r0, sl
 	mov r1, #0x80
 	mov r2, sb
-	add r3, sp, #0x54
+	add r3, sp, OV10_022C159C_STACK_OFFSET
 	bl sub_02026214
 	add sb, sb, #0xc
 _022C169C:
@@ -5796,7 +5815,7 @@ _022C169C:
 	add r0, r0, #0x2d8
 	bl ov10_022C21D8
 _022C16C0:
-	add sp, sp, #0x54
+	add sp, sp, OV10_022C159C_STACK_OFFSET
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -5841,8 +5860,13 @@ _022C1744: .word ov10_022DC1D0
 
 	arm_func_start ov10_022C1748
 ov10_022C1748: ; 0x022C1748
+#ifdef EUROPE
+#define OV10_022C1748_STACK_OFFSET 0x40
+#else
+#define OV10_022C1748_STACK_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, lr}
-	sub sp, sp, #0x254
+	sub sp, sp, #0x254 + OV10_022C1748_STACK_OFFSET
 	mov r4, r0
 	mvn r0, #1
 	cmp r4, r0
@@ -5878,32 +5902,44 @@ _022C1794:
 	b _022C182C
 _022C17C8:
 	bl sub_02027B58
-	add r0, sp, #0x104
+	add r0, sp, #0x104 + OV10_022C1748_STACK_OFFSET
 	bl InitPreprocessorArgs
 	ldrsh r2, [r5, #0x4a]
+#ifdef EUROPE
+	add r0, sp, #4
+	str r1, [sp, #0x168]
+	ldrsh r1, [r5, #0x4c]
+	str r1, [sp, #0x16c]
+	ldrsh r1, [r5, #0x48]
+	bl sub_02025010_EU
+	ldr r1, _022C1838 ; =ov10_022DC02C
+	add r0, sp, #0x44
+	add r2, sp, #4
+#else
 	ldr r1, _022C1838 ; =ov10_022DC02C
 	add r0, sp, #4
 	str r2, [sp, #0x128]
 	ldrsh r2, [r5, #0x4c]
 	str r2, [sp, #0x12c]
 	ldrsh r2, [r5, #0x48]
+#endif
 	bl SprintfStatic__022C183C
-	add r1, sp, #0x104
+	add r1, sp, #0x104 + OV10_022C1748_STACK_OFFSET
 	str r1, [sp]
-	add r0, sp, #0x154
+	add r0, sp, #0x154 + OV10_022C1748_STACK_OFFSET
 	mov r1, #0x100
-	add r2, sp, #4
+	add r2, sp, #4 + OV10_022C1748_STACK_OFFSET
 	mov r3, #0
 	bl PreprocessString
 	mov r1, #0
 	mov r0, r4
 	mov r2, r1
-	add r3, sp, #0x154
+	add r3, sp, #0x154 + OV10_022C1748_STACK_OFFSET
 	bl sub_02026214
 	mov r0, r4
 	bl sub_02027AF0
 _022C182C:
-	add sp, sp, #0x254
+	add sp, sp, #0x254 + OV10_022C1748_STACK_OFFSET
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _022C1834: .word ov10_022DC1D0

@@ -5,6 +5,7 @@
 .public abs
 .public AllocAndLoadFileInPack
 .public BAG_ITEMS_PTR_MIRROR
+.public CleanStickyItemsInBag
 .public CreatePortraitBox
 .public DebugPrint0
 .public DecompressAtFromMemoryPointerVeneer
@@ -163,8 +164,8 @@
 .public GetDungeonModeSpecial
 .public GetFileLengthInPackWithPackNb
 .public GetGameMode
-.public GetMoneyCarried
 .public GetItemAtIdx
+.public GetMoneyCarried
 .public GetMonsterGenderVeneer
 .public GetNbFloors
 .public GetNbFloorsDungeonGroup
@@ -205,6 +206,7 @@
 .public Rand16Bit
 .public RandInt
 .public RemoveEmptyItemsInBag
+.public RemoveHolderForItemInBag
 .public RunDungeonMode
 .public SaveScriptVariableValue
 .public SetAndPlayAnimationForAnimationControl
@@ -225,8 +227,6 @@
 .public sub_0200B3FC
 .public sub_0200C4CC
 .public sub_0200D310
-.public CleanStickyItemsInBag
-.public RemoveHolderForItemInBag
 .public sub_02017A68
 .public sub_02017ACC
 .public sub_02017C80
@@ -249,6 +249,7 @@
 .public sub_0201E774
 .public sub_0201F2A0
 .public sub_0201F598
+.public sub_02025010_EU
 .public sub_02026214
 .public sub_020263C8
 .public sub_020265A8
