@@ -476,7 +476,7 @@ _0238A78C:
 	ldrsb r0, [r2, #8]
 	ldrh r1, [r2, #0x34]
 	add r2, r2, #0x38
-	bl sub_0202F23C
+	bl ShowStringInDBox
 	mov r4, #1
 _0238A7D4:
 	cmp r4, #0
@@ -523,7 +523,7 @@ _0238A830:
 	ldrsb r0, [r1, #8]
 	ldrh r1, [r1, #0x36]
 	add r2, r2, #0x400
-	bl sub_0202F23C
+	bl ShowStringInDBox
 	mov r4, #1
 _0238A880:
 	cmp r4, #0

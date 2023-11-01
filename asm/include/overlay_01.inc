@@ -31,6 +31,7 @@
 .public GetKeyboardStringResult
 .public GetLanguage
 .public GetLanguageType
+.public GetMainTeamNameWithCheck
 .public GetMaxReachedFloor
 .public GetNameRaw
 .public GetNameString
@@ -57,7 +58,6 @@
 .public GetSpriteIndex__020526EC
 .public GetStringFromFileVeneer
 .public GetTeamMember
-.public GetMainTeamNameWithCheck
 .public GetVictoriesOnOneFloor
 .public InitAnimationControl
 .public InitPreprocessorArgs
@@ -213,17 +213,19 @@
 .public RandInt
 .public SetAnimationForAnimationControl
 .public SetIrqFlag
+.public SetMainTeamName
 .public SetScenarioScriptVar
 .public SetSpriteIdForAnimationControl
-.public SetMainTeamName
 .public ShowKeyboard
 .public ShowMessageInDBox
+.public ShowStringInDBox
 .public sprintf
 .public strcmp
 .public strcpy
 .public StrcpySimple
 .public StringFromMessageId
 .public StrncmpSimple
+.public StrncpyName
 .public StrncpySimpleNoPadSafe
 .public sub_02002448
 .public sub_02003B5C
@@ -249,7 +251,6 @@
 .public sub_0201D12C
 .public sub_0202065C
 .public sub_020245D0
-.public StrncpyName
 .public sub_02025404
 .public sub_0202544C
 .public sub_02025480
@@ -281,7 +282,6 @@
 .public sub_0202BCBC
 .public sub_0202BD48
 .public sub_0202C38C
-.public sub_0202F23C
 .public sub_0202F334
 .public sub_0202F8C4
 .public sub_0202F8FC

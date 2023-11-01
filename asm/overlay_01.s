@@ -13165,7 +13165,7 @@ _023344EC:
 	mov r3, #0
 	ldrsb r0, [r2, #1]
 	add r2, r2, #0xac
-	bl sub_0202F23C
+	bl ShowStringInDBox
 	ldr r0, _02334618 ; =ov01_0233B8C8
 	ldr r1, _0233461C ; =ov01_02334F2C
 	bl sub_0202F8C4
@@ -14976,7 +14976,7 @@ _02335D2C:
 	add r2, sp, #8
 	ldrsb r0, [r0]
 	mov r3, r4
-	bl sub_0202F23C
+	bl ShowStringInDBox
 	ldr r0, _02335F58 ; =ov01_0233C1A8
 	ldr r0, [r0]
 	ldr r0, [r0, #0xd8]
@@ -15089,7 +15089,7 @@ _02335F0C:
 	add r2, sp, #8
 	ldrsb r0, [r0, #3]
 	mov r3, #0
-	bl sub_0202F23C
+	bl ShowStringInDBox
 	ldr r1, _02335F58 ; =ov01_0233C1A8
 	mov r4, #0
 	ldr r0, [r1]
