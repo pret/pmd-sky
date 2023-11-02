@@ -1007,7 +1007,11 @@ ov00_022BD600: ; 0x022BD600
 	ldr r1, _022BD62C ; =0x00002710
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x100
+#ifdef EUROPE
+	ldrh r0, [r0, #0xe8]
+#else
 	ldrh r0, [r0, #0xe6]
+#endif
 	cmp r0, r1
 	movlo r0, #1
 	movhs r0, #0
@@ -1023,12 +1027,17 @@ ov00_022BD630: ; 0x022BD630
 	ldr r0, _022BD644 ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x100
+#ifdef EUROPE
+	ldrh r0, [r0, #0xe8]
+#else
 	ldrh r0, [r0, #0xe6]
+#endif
 	bx lr
 	.align 2, 0
 _022BD644: .word ov00_023187A0
 	arm_func_end ov00_022BD630
 
+#ifndef EUROPE
 	arm_func_start ov00_022BD648
 ov00_022BD648: ; 0x022BD648
 	ldr r1, _022BD65C ; =ov00_023187A0
@@ -1091,6 +1100,7 @@ ov00_022BD6C0: ; 0x022BD6C0
 _022BD6D8: .word ov00_023187A0
 _022BD6DC: .word 0x00003FFF
 	arm_func_end ov00_022BD6C0
+#endif
 
 	arm_func_start ov00_022BD6E0
 ov00_022BD6E0: ; 0x022BD6E0
@@ -1132,6 +1142,7 @@ ov00_022BD71C: ; 0x022BD71C
 _022BD72C: .word ov00_023187A0
 	arm_func_end ov00_022BD71C
 
+#ifndef EUROPE
 	arm_func_start ov00_022BD730
 ov00_022BD730: ; 0x022BD730
 	ldr r1, _022BD740 ; =ov00_023187A0
@@ -1171,6 +1182,7 @@ ov00_022BD76C: ; 0x022BD76C
 	.align 2, 0
 _022BD77C: .word ov00_023187A0
 	arm_func_end ov00_022BD76C
+#endif
 
 	arm_func_start ov00_022BD780
 ov00_022BD780: ; 0x022BD780
