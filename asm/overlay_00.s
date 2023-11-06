@@ -1001,17 +1001,14 @@ ov00_022BD5EC: ; 0x022BD5EC
 _022BD5FC: .word ov00_023187A0
 	arm_func_end ov00_022BD5EC
 
+#ifndef EUROPE
 	arm_func_start ov00_022BD600
 ov00_022BD600: ; 0x022BD600
 	ldr r0, _022BD628 ; =ov00_023187A0
 	ldr r1, _022BD62C ; =0x00002710
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x100
-#ifdef EUROPE
-	ldrh r0, [r0, #0xe8]
-#else
 	ldrh r0, [r0, #0xe6]
-#endif
 	cmp r0, r1
 	movlo r0, #1
 	movhs r0, #0
@@ -1027,17 +1024,12 @@ ov00_022BD630: ; 0x022BD630
 	ldr r0, _022BD644 ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x100
-#ifdef EUROPE
-	ldrh r0, [r0, #0xe8]
-#else
 	ldrh r0, [r0, #0xe6]
-#endif
 	bx lr
 	.align 2, 0
 _022BD644: .word ov00_023187A0
 	arm_func_end ov00_022BD630
 
-#ifndef EUROPE
 	arm_func_start ov00_022BD648
 ov00_022BD648: ; 0x022BD648
 	ldr r1, _022BD65C ; =ov00_023187A0
@@ -1048,6 +1040,7 @@ ov00_022BD648: ; 0x022BD648
 	.align 2, 0
 _022BD65C: .word ov00_023187A0
 	arm_func_end ov00_022BD648
+#endif
 
 	arm_func_start ov00_022BD660
 ov00_022BD660: ; 0x022BD660
@@ -1077,6 +1070,7 @@ ov00_022BD690: ; 0x022BD690
 _022BD6A4: .word ov00_023187A0
 	arm_func_end ov00_022BD690
 
+#ifndef EUROPE
 	arm_func_start ov00_022BD6A8
 ov00_022BD6A8: ; 0x022BD6A8
 	ldr r1, _022BD6BC ; =ov00_023187A0
@@ -7128,10 +7122,6 @@ ov00_022C251C: ; 0x022C251C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r4, r1
 	mov r1, #0x24
-	arm_func_end ov00_022C251C
-
-	arm_func_start ov00_022C2528
-ov00_022C2528: ; 0x022C2528
 	mul r1, r4, r1
 	mov r5, r0
 	mov r6, #1
@@ -7409,7 +7399,7 @@ _022C2914:
 	.align 2, 0
 _022C2940: .word ov00_02318064
 _022C2944: .word ov00_02318060
-	arm_func_end ov00_022C2528
+	arm_func_end ov00_022C251C
 
 	arm_func_start ov00_022C2948
 ov00_022C2948: ; 0x022C2948

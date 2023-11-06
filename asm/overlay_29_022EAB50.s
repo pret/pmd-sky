@@ -474,7 +474,7 @@ _022EB0D4:
 	ldrh r1, [r4, #8]
 	mov r0, r0, lsr #0x10
 	mov r2, #0x100
-	bl sub_02017B64
+	bl SendAudioCommandWrapperVeneer
 _022EB0EC:
 	ldrh r1, [r4, #0xa]
 	mov r0, #4

@@ -14479,7 +14479,7 @@ _020177E8:
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #0xc]
 	add r0, r6, #0x14
-	bl ov00_022C2528
+	bl ov10_022C2528
 	cmp r0, #0
 	ldrneb r0, [r6, #0x28]
 	addne r0, r0, #1
@@ -14490,7 +14490,7 @@ _02017820:
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #0xc]
 	add r0, r6, #0x14
-	bl ov00_022C2528
+	bl ov10_022C2528
 	cmp r0, #0
 	ldrneb r0, [r6, #0x28]
 	addne r0, r0, #1
@@ -14690,7 +14690,11 @@ _020179F0:
 #endif
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef EUROPE
+_020179FC: .word _0209958C
+#else
 _020179FC: .word _020AF76C
+#endif
 	arm_func_end sub_020178A8
 
 	arm_func_start sub_02017A00
@@ -14703,7 +14707,11 @@ sub_02017A00: ; 0x02017A00
 	bl sub_02015E6C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02017A1C: .word 0x000044BF
+#else
 _02017A1C: .word 0x000044BD
+#endif
 	arm_func_end sub_02017A00
 
 	arm_func_start sub_02017A20
@@ -14716,7 +14724,11 @@ sub_02017A20: ; 0x02017A20
 	bl sub_02015E6C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02017A3C: .word 0x000044C0
+#else
 _02017A3C: .word 0x000044BE
+#endif
 	arm_func_end sub_02017A20
 
 	arm_func_start SprintfStatic__02017A40
@@ -14837,13 +14849,13 @@ sub_02017B58: ; 0x02017B58
 _02017B60: .word sub_02017DF4
 	arm_func_end sub_02017B58
 
-	arm_func_start sub_02017B64
-sub_02017B64: ; 0x02017B64
+	arm_func_start SendAudioCommandWrapperVeneer
+SendAudioCommandWrapperVeneer: ; 0x02017B64
 	ldr ip, _02017B6C ; =SendAudioCommandWrapper
 	bx ip
 	.align 2, 0
 _02017B6C: .word SendAudioCommandWrapper
-	arm_func_end sub_02017B64
+	arm_func_end SendAudioCommandWrapperVeneer
 
 	arm_func_start sub_02017B70
 sub_02017B70: ; 0x02017B70
@@ -14900,13 +14912,13 @@ sub_02017BD4: ; 0x02017BD4
 _02017BDC: .word sub_02018024
 	arm_func_end sub_02017BD4
 
-	arm_func_start SendAudioCommandWrapperVeneer
-SendAudioCommandWrapperVeneer: ; 0x02017BE0
+	arm_func_start sub_02017BE0
+sub_02017BE0: ; 0x02017BE0
 	ldr ip, _02017BE8 ; =sub_020180A0
 	bx ip
 	.align 2, 0
 _02017BE8: .word sub_020180A0
-	arm_func_end SendAudioCommandWrapperVeneer
+	arm_func_end sub_02017BE0
 
 	arm_func_start sub_02017BEC
 sub_02017BEC: ; 0x02017BEC
@@ -26214,7 +26226,7 @@ _02020DB8:
 AnalyzeText: ; 0x02020DC8
 #ifdef EUROPE
 #define ANALYZE_TEXT_STACK_OFFSET 8
-#define ANALYZE_TEXT_LOAD_OFFSET -10
+#define ANALYZE_TEXT_LOAD_OFFSET -0x10
 #else
 #define ANALYZE_TEXT_STACK_OFFSET 0
 #define ANALYZE_TEXT_LOAD_OFFSET 0
@@ -26572,8 +26584,8 @@ _0202129C:
 _020212C8:
 	ldr r0, _02021ED4 ; =_020997E4
 	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
-	ldr r1, [r0, #0xf8 + ANALYZE_TEXT_STACK_OFFSET]
-	ldr r0, [r0, #0xf4 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0xf8 - ANALYZE_TEXT_STACK_OFFSET]
+	ldr r0, [r0, #0xf4 - ANALYZE_TEXT_STACK_OFFSET]
 	str r1, [sp, #0x64 + ANALYZE_TEXT_STACK_OFFSET]
 	str r0, [sp, #0x60 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r3, [r4, #0x84]
@@ -26683,7 +26695,7 @@ _02021598:
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x50
 	bl FatalError
-_020215C0:
+_02021404:
 	ldr r0, [sp, #0x78]
 #else
 	ldr r1, [r0, #0xa0]
@@ -26699,8 +26711,8 @@ _020213F4:
 	ldr r1, [r4, #0x34]
 	blx r1
 	b _02021AA0
-#endif
 _02021404:
+#endif
 	ldr r1, _02021F00 ; =_020999FC
 	bl StrcmpTag
 	cmp r0, #0
@@ -27471,7 +27483,7 @@ _02021E9C:
 _02021EC4:
 	ldr r0, [r4, #0x5c]
 _02021EC8:
-	add sp, sp, #0x84
+	add sp, sp, #0x84 + ANALYZE_TEXT_STACK_OFFSET
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02021ED0: .word _020999AC
@@ -27691,18 +27703,18 @@ _0202212C:
 	ldr r1, _020223D4 ; =_02099A18
 	mov r0, r6
 	bl StrcmpTag
+#ifdef EUROPE
+	cmp r0, #0
+	bne _020221D8
+	ldr r1, _020225D0 ; =0x02099E64
+	mov r0, r6
+	bl StrcmpTag
+#endif
 	cmp r0, #0
 	bne _020221D8
 	ldr r1, _020223D8 ; =_02099A08
 	mov r0, r6
 	bl StrcmpTag
-#ifdef EUROPE
-	cmp r0, #0
-	bne _020221D8
-	ldr r1, _020225D4 ; =0x02099E74
-	mov r0, r6
-	bl StrcmpTag
-#endif
 	cmp r0, #0
 	beq _02022324
 _020221D8:
@@ -27782,7 +27794,7 @@ _020222CC:
 	cmp r0, #0
 	addne r4, r4, #6
 	bne _0202212C
-	ldr r1, _020223D8 ; =_02099A08
+	ldr r1, _020225D0 ; =_02099A08
 #endif
 	mov r0, r6
 	bl StrcmpTag
@@ -27856,10 +27868,10 @@ _020223C8: .word _020999F4
 _020223CC: .word _02099A2C
 _020223D0: .word _02099A14
 _020223D4: .word _02099A18
-_020223D8: .word _02099A08
 #ifdef EUROPE
-_020225D4: .word 0x02099E74
+_020225D0: .word 0x02099E64
 #endif
+_020223D8: .word _02099A08
 _020223DC: .word _020997E4
 _020223E0: .word _02099A24
 _020223E4: .word _020999D4
@@ -29354,7 +29366,11 @@ sub_0202372C: ; 0x0202372C
 	add sp, sp, #0x100
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02023784: .word 0x0209A230
+#else
 _02023784: .word _02099D0C
+#endif
 _02023788: .word _02099D10
 	arm_func_end sub_0202372C
 
@@ -29536,9 +29552,11 @@ _020238BC:
 	add sp, sp, #0x100
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020238C8: .word _02099D0C
 #ifdef EUROPE
+_020238C8: .word 0x0209A230
 _02023B14: .word 0x020B05BC
+#else
+_020238C8: .word _02099D0C
 #endif
 _020238CC: .word _02099D10
 	arm_func_end sub_020237B4
@@ -30387,6 +30405,11 @@ _0202435C: .word _02099D50
 
 	arm_func_start SetStringAccuracy
 SetStringAccuracy: ; 0x02024360
+#ifdef EUROPE
+#define SET_STRING_ACCURACY_OFFSET 2
+#else
+#define SET_STRING_ACCURACY_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _02024410 ; =0x000027A2
 	mov r4, r0
@@ -30440,10 +30463,10 @@ _02024408:
 	ldr r0, _02024424 ; =_02099D50
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02024410: .word 0x000027A2
-_02024414: .word 0x000029C1
+_02024410: .word 0x000027A2 + SET_STRING_ACCURACY_OFFSET
+_02024414: .word 0x000029C1 + SET_STRING_ACCURACY_OFFSET
 _02024418: .word MOVE_ACCURACY_STARS_TABLE
-_0202441C: .word 0x000027A0
+_0202441C: .word 0x000027A0 + SET_STRING_ACCURACY_OFFSET
 _02024420: .word _02099D84
 _02024424: .word _02099D50
 	arm_func_end SetStringAccuracy
@@ -31492,8 +31515,13 @@ _02024F78:
 	.align 2, 0
 _02024F94: .word 0x000001B1
 _02024F98: .word 0x000001B2
+#ifdef EUROPE
+_02024F9C: .word 0x000029D3
+_02024FA0: .word 0x00002F4B
+#else
 _02024F9C: .word 0x000029D1
 _02024FA0: .word 0x00002F49
+#endif
 _02024FA4: .word _02099E18
 _02024FA8: .word _02099CA4
 _02024FAC: .word _02099CC4
@@ -32431,7 +32459,11 @@ _02025ABC:
 _02025AC4: .word 0x000004B8
 _02025AC8: .word _022A7A08
 _02025ACC: .word _022A7A0C
+#ifdef EUROPE
+_02025AD0: .word 0x00003EFF
+#else
 _02025AD0: .word 0x00003EFD
+#endif
 _02025AD4: .word TBL_TALK_GROUP_STRING_ID_START
 	arm_func_end GetTalkLine
 
@@ -32526,11 +32558,13 @@ sub_02025B90: ; 0x02025B90
 	add r0, sp, #0
 	bl sub_02027274
 	ldr r0, _02025C08 ; =_020AFD04
-	ldr r1, [r0, #0xc]
-	cmp r1, #0
 #ifdef EUROPE
+	ldr r1, [r0, #0x8]
+	cmp r1, #0
 	strne r1, [r0, #0xc]
 #else
+	ldr r1, [r0, #0xc]
+	cmp r1, #0
 	strne r1, [r0, #4]
 #endif
 	ldr r1, _02025C0C ; =_020AFD1C
@@ -32578,18 +32612,20 @@ _02025C30:
 	ldr r0, _02025C70 ; =_020AFD04
 #ifdef EUROPE
 	ldr r1, [r0, #0xc]
+	cmp r1, #0
+	strne r1, [r0, #8]
 #else
 	ldr r1, [r0, #4]
-#endif
 	cmp r1, #0
-#ifdef EUROPE
-	strne r1, [r0, #4]
-#else
 	strne r1, [r0, #0xc]
 #endif
 	ldr r0, _02025C70 ; =_020AFD04
 	mov r1, #0
+#ifdef EUROPE
+	str r1, [r0, #0xc]
+#else
 	str r1, [r0, #4]
+#endif
 	bl sub_02027170
 	bl sub_02027390
 	ldmia sp!, {r3, pc}
@@ -32604,9 +32640,9 @@ sub_02025C7C: ; 0x02025C7C
 	stmdb sp!, {r4, lr}
 #ifdef EUROPE
 	ldr r2, _02025D3C ; =_020AFD04
-	ldr r1, _02025D40 ; =_022A7A54
+	ldr r1, _0202601C_EU ; =0x000082BD
 	ldr r4, [r2, #4]
-	ldr r2, _02026020 ; =0x022A8394
+	ldr r2, _02025D40 ; =_022A7A54
 	cmp r0, r1
 	ldr r1, [r2, r4, lsl #2]
 	ldreq r0, _02026024 ; =0x0209B09C
@@ -32668,9 +32704,11 @@ _02025D34:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02025D3C: .word _020AFD04
+#ifdef EUROPE
+_0202601C_EU: .word 0x000082BD
+#endif
 _02025D40: .word _022A7A54
 #ifdef EUROPE
-_02026020: .word 0x022A8394
 _02026024: .word 0x0209B09C
 #endif
 _02025D44: .word 0x0000FFFF
@@ -34050,7 +34088,7 @@ _02027060: ; jump table
 	b _02026E10 ; case 4
 	b _02026E10 ; case 5
 	b _02026DD0 ; case 6
-	b _02026E18 ; case 7
+	b _02026DD8 ; case 7
 	b _02026DC8 ; case 8
 _02027084:
 	cmp r3, #0xc1
@@ -42684,8 +42722,13 @@ _0202DE54:
 	.align 2, 0
 _0202DEE8: .word sub_0202DF98
 _0202DEEC: .word _0209AF0C
+#ifdef EUROPE
+_0202DEF0: .word 0x00003C67
+_0202DEF4: .word 0x00003C68
+#else
 _0202DEF0: .word 0x00003C65
 _0202DEF4: .word 0x00003C66
+#endif
 	arm_func_end sub_0202DC50
 
 	arm_func_start sub_0202DEF8
@@ -52745,7 +52788,11 @@ _0203638C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0203642C: .word _020AFDE0
+#ifdef EUROPE
+_02036430: .word 0x00003C66
+#else
 _02036430: .word 0x00003C64
+#endif
 _02036434: .word _0209B208
 _02036438: .word _0209B228
 	arm_func_end sub_02036358
@@ -52919,7 +52966,11 @@ _020365D4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02036674: .word _020AFDE8
+#ifdef EUROPE
+_02036678: .word 0x00003C75
+#else
 _02036678: .word 0x00003C73
+#endif
 _0203667C: .word _0209B244
 _02036680: .word _0209B264
 	arm_func_end sub_020365A0
@@ -54452,7 +54503,7 @@ _020379D4:
 	bl StrncpySimple
 	b _02037A54
 _02037A40:
-	bl ov00_0230D71C
+	bl ov11_0230D71C
 	ldr r0, _02037C28 ; =_020AFDF0
 	ldr r0, [r0]
 	add r0, r0, #0xfc
@@ -54510,7 +54561,7 @@ _02037AEC:
 	ldrb r0, [r0, #0x11]
 	cmp r0, #0
 	bne _02037B10
-	bl ov00_022E6E68
+	bl ov11_022E6E68
 _02037B10:
 	ldr r0, _02037C28 ; =_020AFDF0
 	mov r1, #3
@@ -166665,14 +166716,8 @@ _02099138:
 _02099140:
 	.byte 0x25, 0x73, 0x00, 0x00
 #ifdef EUROPE
-	.global _02099144
-_02099144:
-	.global _02099148
-_02099148:
-	.global _0209914C
-_0209914C:
-	.global _02099154
-_02099154:
+	.global _0209958C
+_0209958C:
 	.byte 0x5B, 0x66, 0x6C, 0x6F, 0x6F, 0x72, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00
 #else
 	.global _02099144
@@ -167713,11 +167758,12 @@ _02099D8C:
 	.byte 0x25, 0x73, 0x00, 0x00
 	.global _02099D90
 _02099D90:
-	.byte 0x5B, 0x43, 0x53, 0x3A, 0x48, 0x5D, 0x25,0x73
-	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00, 0x5B, 0x43, 0x53, 0x3A, 0x50, 0x5D, 0x25, 0x73
+	.byte 0x5B, 0x43, 0x53, 0x3A, 0x48, 0x5D, 0x25, 0x73
 	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
 	.global _02099DC0
 _02099DC0:
+	.byte 0x5B, 0x43, 0x53, 0x3A, 0x50, 0x5D, 0x25, 0x73
+	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x50, 0x5D, 0x25, 0x73
 	.byte 0x5B, 0x43, 0x52, 0x5D, 0x20, 0x25, 0x73, 0x00
 	.global _02099E08
@@ -182687,9 +182733,9 @@ _020AF722:
 _020AF760:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifndef EUROPE
 	.global _020AF76C
 _020AF76C:
-#ifndef EUROPE
 	.word _02099144
 	.word _02099148
 	.word _02099154
@@ -185025,12 +185071,21 @@ _022A7A0C:
 	.global _022A7A54
 _022A7A54:
 	.space 0x8
+#ifdef EUROPE
+	.global _022A7A64
+_022A7A64:
+	.space 0x8
+	.global _022A7A5C
+_022A7A5C:
+	.space 0x8
+#else
 	.global _022A7A5C
 _022A7A5C:
 	.space 0x8
 	.global _022A7A64
 _022A7A64:
 	.space 0x8
+#endif
 	.global _022A7A6C
 _022A7A6C:
 	.space 0x8

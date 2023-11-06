@@ -60,6 +60,7 @@
 .public RemoveItem
 .public RoundUpDiv256
 .public RunMonsterAi
+.public SendAudioCommandWrapperVeneer
 .public SetItemAcquired
 .public SetLeaderAction
 .public ShouldDisplayEntityWrapper
@@ -71,7 +72,6 @@
 .public sub_02017ACC
 .public sub_02017B18
 .public sub_02017B58
-.public sub_02017B64
 .public sub_02017B70
 .public sub_02017B7C
 .public sub_02017C50
