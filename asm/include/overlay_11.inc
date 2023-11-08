@@ -737,12 +737,17 @@
 .public sub_0205EC50
 .public sub_0205EC78
 .public sub_0205F0B8
+.public sub_0205F0F0
 .public sub_0205F118
 .public sub_0205F2B8
 .public sub_0205F464
 .public sub_0205F504
 .public sub_0205F5A8
 .public sub_0205F710
+.public sub_02061F44
+.public sub_02061F90
+.public sub_02062D9C
+.public sub_02062DB4
 .public sub_02062DC4
 .public sub_0206309C
 .public sub_020630A4
