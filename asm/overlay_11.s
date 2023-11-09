@@ -42843,7 +42843,7 @@ _02300178:
 _0230018C:
 	ldrb r0, [r2, #0xc]
 	cmp r0, #0
-	beq _023001F4
+	beq ov11_023001F4
 	bl ov11_0230D220
 	cmp r0, #0
 	bne _02300570
@@ -42867,7 +42867,10 @@ _0230018C:
 	ldr r0, [r0, #4]
 	ldrsh r0, [r0, #0xe]
 	bl WorldMapSetCamera
-_023001F4:
+	arm_func_end ov11_022FFF00
+
+	arm_func_start ov11_023001F4
+ov11_023001F4:
 	ldr r0, _0230057C ; =ov11_02324D1C
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
@@ -43123,7 +43126,7 @@ _02300590: .word 0x00000408
 _02300594: .word 0x0000022F
 _02300598: .word 0x00400013
 _0230059C: .word ov11_02322530
-	arm_func_end ov11_022FFF00
+	arm_func_end ov11_023001F4
 
 	arm_func_start ov11_023005A0
 ov11_023005A0: ; 0x023005A0

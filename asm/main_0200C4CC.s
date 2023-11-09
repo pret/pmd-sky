@@ -60500,10 +60500,10 @@ _0203CA3C: .word _0209C7F4
 	arm_func_start sub_0203CA40
 sub_0203CA40: ; 0x0203CA40
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov00_0230D92C
+	bl ov11_0230D92C
 	ldr r0, _0203CA68 ; =_020AFE70
 	mov r1, #1
 	ldr r0, [r0]
@@ -60516,7 +60516,7 @@ _0203CA68: .word _020AFE70
 	arm_func_start sub_0203CA6C
 sub_0203CA6C: ; 0x0203CA6C
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203CA8C ; =_020AFE70
 	moveq r1, #2
@@ -60530,14 +60530,14 @@ _0203CA8C: .word _020AFE70
 	arm_func_start sub_0203CA90
 sub_0203CA90: ; 0x0203CA90
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0203CAC8 ; =_020AFE70
 	ldr r0, [r0]
 	ldrsh r0, [r0, #4]
 	bl sub_0203CCD8
-	bl ov00_02310C18
+	bl ov11_02310C18
 	ldr r0, _0203CAC8 ; =_020AFE70
 	mov r1, #3
 	ldr r0, [r0]
@@ -60550,7 +60550,7 @@ _0203CAC8: .word _020AFE70
 	arm_func_start sub_0203CACC
 sub_0203CACC: ; 0x0203CACC
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203CAEC ; =_020AFE70
 	moveq r1, #4
@@ -60595,10 +60595,10 @@ _0203CB54: .word _020AFE70
 	arm_func_start sub_0203CB58
 sub_0203CB58: ; 0x0203CB58
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov00_0230D92C
+	bl ov11_0230D92C
 	ldr r0, _0203CB80 ; =_020AFE70
 	mov r1, #6
 	ldr r0, [r0]
@@ -60611,7 +60611,7 @@ _0203CB80: .word _020AFE70
 	arm_func_start sub_0203CB84
 sub_0203CB84: ; 0x0203CB84
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0203CC5C ; =_020AFE70
@@ -60674,7 +60674,7 @@ _0203CC5C: .word _020AFE70
 	arm_func_start sub_0203CC60
 sub_0203CC60: ; 0x0203CC60
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203CC80 ; =_020AFE70
 	moveq r1, #0xa
@@ -60688,10 +60688,10 @@ _0203CC80: .word _020AFE70
 	arm_func_start sub_0203CC84
 sub_0203CC84: ; 0x0203CC84
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov00_0230D000
+	bl ov11_0230D000
 	ldr r0, _0203CCAC ; =_020AFE70
 	mov r1, #9
 	ldr r0, [r0]
@@ -60704,7 +60704,7 @@ _0203CCAC: .word _020AFE70
 	arm_func_start sub_0203CCB0
 sub_0203CCB0: ; 0x0203CCB0
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203CCD0 ; =_020AFE70
 	moveq r1, #0xa
@@ -61914,14 +61914,14 @@ _0203DE24:
 	str r1, [r0]
 	b _0203EF9C
 _0203DE38:
-	bl ov00_0230D92C
+	bl ov11_0230D92C
 	ldr r0, _0203E4B0 ; =_020AFE74
 	mov r1, #0x13
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203DE50:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203E4B0 ; =_020AFE74
 	moveq r1, #0x14
@@ -61943,7 +61943,7 @@ _0203DE6C:
 	str r1, [r0]
 	b _0203EF9C
 _0203DEA0:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203E4B0 ; =_020AFE74
 	moveq r1, #0x16
@@ -61979,14 +61979,14 @@ _0203DF1C:
 	bl sub_02037468
 	cmp r0, #0
 	beq _0203EF9C
-	bl ov00_0230D92C
+	bl ov11_0230D92C
 	ldr r0, _0203E4B0 ; =_020AFE74
 	mov r1, #0x18
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203DF40:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203E4B0 ; =_020AFE74
 	moveq r1, #0x19
@@ -61994,14 +61994,14 @@ _0203DF40:
 	streq r1, [r0]
 	b _0203EF9C
 _0203DF5C:
-	bl ov00_0230D92C
+	bl ov11_0230D92C
 	ldr r0, _0203E4B0 ; =_020AFE74
 	mov r1, #0x1a
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203DF74:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203E4B0 ; =_020AFE74
 	moveq r1, #0x1b
@@ -63879,7 +63879,7 @@ sub_0203F9CC: ; 0x0203F9CC
 	ldr r4, [r5, #0xb4]
 	ldr r0, _0203FA54 ; =_022AAE00
 	mov r1, r4
-	bl GetMonsterName
+	bl ov11_023001F4
 	ldr r0, _0203FA58 ; =_022AAE2A
 	add r1, r4, #0x124
 	mov r2, #0x22
