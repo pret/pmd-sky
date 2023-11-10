@@ -4388,10 +4388,6 @@ _022E6E50:
 	str r3, [r0, ip, lsl #4]
 	add r0, r0, ip, lsl #4
 	str r2, [r0, #4]
-	arm_func_end ov29_022E6E40
-
-	arm_func_start ov29_022E6E68
-ov29_022E6E68: ; 0x022E6E68
 	add ip, ip, #1
 	str r2, [r0, #0xc]
 	cmp ip, #3
@@ -4399,7 +4395,7 @@ ov29_022E6E68: ; 0x022E6E68
 	bx lr
 	.align 2, 0
 _022E6E7C: .word ov29_02353538
-	arm_func_end ov29_022E6E68
+	arm_func_end ov29_022E6E40
 
 	arm_func_start ov29_022E6E80
 ov29_022E6E80: ; 0x022E6E80
@@ -5933,10 +5929,6 @@ ov29_022E8270: ; 0x022E8270
 	mov r7, r5
 	str r0, [sp, #0x18]
 	moveq r0, r5
-	arm_func_end ov29_022E8270
-
-	arm_func_start ov29_022E82CC
-ov29_022E82CC: ; 0x022E82CC
 	ldrneb r0, [r1, #0x245]
 	cmp r0, #0
 	bne _022E82E4
@@ -6026,7 +6018,7 @@ _022E83FC: .word ov29_02353554
 _022E8400: .word ov29_02353538
 _022E8404: .word 0x00000229
 _022E8408: .word ov29_0237C850
-	arm_func_end ov29_022E82CC
+	arm_func_end ov29_022E8270
 
 	arm_func_start ov29_022E840C
 ov29_022E840C: ; 0x022E840C

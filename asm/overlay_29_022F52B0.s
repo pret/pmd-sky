@@ -893,7 +893,9 @@ _022F5E84:
 	mov r1, #0x25c
 	mov r2, #0
 	bl HandleFaint
+#ifndef EUROPE
 	bl UpdateMapSurveyorFlag
+#endif
 	bl ov29_022E8104
 	bl ov29_022E81F8
 	mov r0, #0

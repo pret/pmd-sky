@@ -80,6 +80,7 @@
 .public ov29_022F04F0
 .public ov29_022F0518
 .public ov29_022F9EA0
+.public ov29_022FB920
 .public ov29_022FB9BC
 .public ov29_02300B40
 .public ov29_02304830

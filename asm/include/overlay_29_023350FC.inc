@@ -9,6 +9,7 @@
 .public Conversion2IsActive
 .public DebugPrint0
 .public DIRECTIONS_XY
+.public DisplayCharTextureUi
 .public DrawMinimapTile
 .public DungeonGetSpriteIndex
 .public DungeonGoesUp

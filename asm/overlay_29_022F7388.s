@@ -866,17 +866,54 @@ _022F7F28:
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022F7F08
 
+#ifdef EUROPE
+	arm_func_start ov29_022F88E8_EU
+ov29_022F88E8_EU: ; 0x022F88E8
+	stmdb sp!, {r4, lr}
+	mov r4, r0
+	cmp r1, #0
+	beq _022F8900
+	mov r0, #1
+	bl ov29_0234B010
+_022F8900:
+	cmp r4, #0
+	bne _022F892C
+	bl UpdateMapSurveyorFlag
+	cmp r0, #0
+	beq _022F892C
+	bl ov29_0233AE00_EU
+	cmp r0, #0
+	beq _022F892C
+	mov r0, #1
+	bl ov29_02339F88
+	bl GetMinimapData
+_022F892C:
+	bl ov29_022E8104
+	bl ov29_022E81F8
+	ldmia sp!, {r4, pc}
+	arm_func_end ov29_022F88E8_EU
+#endif
+
 	arm_func_start HandleFaint
 HandleFaint: ; 0x022F7F30
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xbc
 	mov sl, r0
+#ifdef EUROPE
+	ldr r7, [sl, #0xb4]
+	mov r8, r2
+	mov sb, r1
+#else
 	mov r8, r2
 	mov sb, r1
 	ldr r7, [sl, #0xb4]
+#endif
 	bl GetTileAtEntity
 	mov r4, r0
 	cmp r8, #0
+#ifdef EUROPE
+	ldrb r5, [r7, #6]
+#endif
 	bne _022F7F64
 	add r0, sp, #4
 	bl ov29_022E2470
@@ -890,11 +927,19 @@ _022F7F64:
 	ldrsh r1, [sl, #6]
 	bl DrawMinimapTile
 	mov r5, #0
+#ifdef EUROPE
+	mov r4, #0
+	mov fp, r4
+_022F7F8C:
+	ldr r0, _022F85D0 ; =ov29_02353538
+	ldr r0, [r0]
+#else
 	ldr fp, _022F85D0 ; =ov29_02353538
 	mov r4, r5
 _022F7F8C:
 	ldr r0, [fp]
 	add r0, r0, r5, lsl #2
+#endif
 	add r0, r0, #0x12000
 	ldr r6, [r0, #0xb78]
 	cmp r6, #0
@@ -906,10 +951,17 @@ _022F7F8C:
 	ldr r1, [r6, #0xb4]
 	ldr r0, [r1, #0x84]
 	cmp r0, sl
+#ifdef EUROPE
+	streq fp, [r1, #0x84]
+_022F7FC4:
+	add r4, r4, #1
+	cmp r4, #0x14
+#else
 	streq r4, [r1, #0x84]
 _022F7FC4:
 	add r5, r5, #1
 	cmp r5, #0x14
+#endif
 	blt _022F7F8C
 	ldrb r0, [r7, #0xd8]
 	cmp r0, #2
@@ -954,13 +1006,21 @@ _022F8008:
 	add r0, r0, #0x400
 	bl ov29_022E2A78
 	ldr r0, _022F85D0 ; =ov29_02353538
+#ifdef EUROPE
+	mov r1, #0
+#endif
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75f]
 	cmp r0, #0
 	moveq r0, #1
 	streqb r0, [r7, #0x165]
+#ifdef EUROPE
+	mov r0, r5
+	bl ov29_022F88E8_EU
+#else
 	bl ov29_022E8104
 	bl ov29_022E81F8
+#endif
 	b _022F85C8
 _022F8098:
 	ldrb r0, [r7, #7]
@@ -987,9 +1047,15 @@ _022F8098:
 	mov r1, r0
 	bl OpenMessageLog
 _022F80F4:
+#ifdef EUROPE
+	ldr r2, _022F85D0 ; =ov29_0235353
+	ldr r3, [r2]
+	ldrb r0, [r3, #0xa]
+#else
 	ldr r1, _022F85D0 ; =ov29_02353538
 	ldr r2, [r1]
 	ldrb r0, [r2, #0xa]
+#endif
 	cmp r0, #0
 	bne _022F825C
 	mov r4, #0
@@ -1000,6 +1066,28 @@ _022F80F4:
 	cmp r0, #4
 	beq _022F8234
 	ldr r0, _022F85D0 ; =ov29_02353538
+#ifdef EUROPE
+	ldr r0, [r0]
+	ldrb r1, [r0, #0x790]
+	cmp r1, #0
+	bne _022F8234
+	ldr r2, _022F85D8 ; =0x0000025B
+	cmp sb, r2
+	addne r1, r2, #6
+	cmpne sb, r1
+	addne r1, r2, #0xb
+	cmpne sb, r1
+	addne r1, r2, #2
+	cmpne sb, r1
+	beq _022F8234
+	add r1, r0, #0x4000
+	ldrb r1, [r1, #0xca]
+	cmp r1, #0
+	bne _022F8234
+	add r0, r0, #0x700
+	ldrsb r1, [r0, #0x9b]
+	cmp r1, #0
+#else
 	ldr r2, [r0]
 	ldrb r0, [r2, #0x790]
 	cmp r0, #0
@@ -1020,12 +1108,17 @@ _022F80F4:
 	add r0, r2, #0x700
 	ldrsb r2, [r0, #0x9b]
 	cmp r2, #0
+#endif
 	blt _022F8234
 	ldrsb r0, [r0, #0x98]
 	cmp r0, #3
 	cmpne r0, #2
 	beq _022F8234
+#ifdef EUROPE
+	cmp r1, #0
+#else
 	cmp r2, #0
+#endif
 	ble _022F8220
 	mov r0, r4
 	mov r3, #1
@@ -1039,6 +1132,23 @@ _022F80F4:
 	mov r0, r4
 	mov r2, #1
 	bl DisplayMessage
+#ifdef EUROPE
+	ldr r2, _022F85D0 ; =ov29_02353538
+	mov r1, #1
+	ldr r3, [r2]
+	mov r0, r5
+	strb r1, [r3, #8]
+	ldr r3, [r2]
+	strb r1, [r3, #0xa]
+	ldr r3, [r2]
+	strb r1, [r3, #0x758]
+	ldr r3, [r2]
+	add r2, r3, #0x700
+	ldrsb r2, [r2, #0x9b]
+	sub r2, r2, #1
+	strb r2, [r3, #0x79b]
+	bl ov29_022F88E8_EU
+#else
 	ldr r1, _022F85D0 ; =ov29_02353538
 	mov r0, #1
 	ldr r2, [r1]
@@ -1055,6 +1165,7 @@ _022F80F4:
 	bl ov29_0234B010
 	bl ov29_022E8104
 	bl ov29_022E81F8
+#endif
 	b _022F85C8
 _022F8208:
 	cmp r0, #2
@@ -1064,7 +1175,11 @@ _022F8208:
 	mov r4, r0
 	b _022F8240
 _022F8220:
+#ifdef EUROPE
+	rsb r1, r2, #0xe70
+#else
 	rsb r1, r1, #0xe70
+#endif
 	mov r0, r4
 	mov r2, #1
 	bl DisplayMessage2
@@ -1082,6 +1197,16 @@ _022F8240:
 	bl ov29_022E68BC
 	b _022F8284
 _022F825C:
+#ifdef EUROPE
+	mov r1, #1
+	strb r1, [r3, #8]
+	ldr r3, [r2]
+	mov r0, r5
+	strb r1, [r3, #0xa]
+	ldr r2, [r2]
+	strb r1, [r2, #0x758]
+	bl ov29_022F88E8_EU
+#else
 	mov r0, #1
 	strb r0, [r2, #8]
 	ldr r2, [r1]
@@ -1091,6 +1216,7 @@ _022F825C:
 	bl ov29_0234B010
 	bl ov29_022E8104
 	bl ov29_022E81F8
+#endif
 	b _022F85C8
 _022F8284:
 	ldr r0, _022F85E4 ; =0x00000266
@@ -1115,12 +1241,21 @@ _022F82C8:
 	ldr r0, _022F85E8 ; =0x0000025E
 	cmp sb, r0
 	bne _022F83B4
+#ifdef EUROPE
+	mov r6, #0
+	mov r4, r6
+	ldr fp, _022F85D0 ; =ov29_02353538
+	b _022F8328
+_022F82E4:
+	ldr r0, [fp]
+#else
 	mov r5, #0
 	mov r4, r5
 	ldr r6, _022F85D0 ; =ov29_02353538
 	b _022F8328
 _022F82E4:
 	ldr r0, [r6]
+#endif
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
 	ldr r8, [r0, #0xb28]
@@ -1128,11 +1263,19 @@ _022F82E4:
 	bl EntityIsValid__022F7364
 	cmp r0, #0
 	beq _022F8324
+#ifdef EUROPE
+	ldr r6, [r8, #0xb4]
+	ldrsh r0, [r6, #0x10]
+	cmp r0, #0
+	bne _022F8324
+	ldrb r0, [r6, #0x48]
+#else
 	ldr r5, [r8, #0xb4]
 	ldrsh r0, [r5, #0x10]
 	cmp r0, #0
 	bne _022F8324
 	ldrb r0, [r5, #0x48]
+#endif
 	bl JoinedAtRangeCheck2
 	cmp r0, #0
 	bne _022F8330
@@ -1142,6 +1285,15 @@ _022F8328:
 	cmp r4, #4
 	blt _022F82E4
 _022F8330:
+#ifdef EUROPE
+	cmp r6, #0
+	beq _022F83B4
+	ldrsh r0, [r6, #0xc]
+	bl GetActiveTeamMember
+	mov r4, r0
+	ldrsh r0, [r6, #0xc]
+	mov r1, r6
+#else
 	cmp r5, #0
 	beq _022F83B4
 	ldrsh r0, [r5, #0xc]
@@ -1149,6 +1301,7 @@ _022F8330:
 	mov r4, r0
 	ldrsh r0, [r5, #0xc]
 	mov r1, r5
+#endif
 	bl ov29_022FE048
 	ldrsh r0, [r4, #8]
 	bl IsMonsterIdInNormalRange
@@ -1166,7 +1319,11 @@ _022F8330:
 	ldrsb r0, [r0, #0x98]
 	cmp r0, #3
 	beq _022F83A8
+#ifdef EUROPE
+	ldrsh r0, [r6, #0xc]
+#else
 	ldrsh r0, [r5, #0xc]
+#endif
 	mvn r1, #0
 	bl sub_02058674
 	ldrsh r0, [r4, #8]
@@ -1276,10 +1433,17 @@ _022F84AC:
 	bl sub_0205349C
 _022F8528:
 	ldrb r0, [r7, #7]
+#ifdef EUROPE
+	mov r6, #0
+	cmp r0, #0
+	ldr r0, _022F85D0 ; =ov29_02353538
+	movne r6, #1
+#else
 	mov r5, #0
 	cmp r0, #0
 	ldr r0, _022F85D0 ; =ov29_02353538
 	movne r5, #1
+#endif
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75c]
 	cmp r0, #0
@@ -1287,9 +1451,15 @@ _022F8528:
 	ldrb r0, [r7, #0x48]
 	bl JoinedAtRangeCheck2
 	cmp r0, #0
+#ifdef EUROPE
+	movne r6, #1
+_022F855C:
+	cmp r6, #0
+#else
 	movne r5, #1
 _022F855C:
 	cmp r5, #0
+#endif
 	bne _022F856C
 	ldrsh r0, [r4, #8]
 	bl sub_020566C4
@@ -1316,8 +1486,14 @@ _022F8594:
 	strb r1, [r0, #0xe]
 	str r2, [sl]
 	bl ov29_022E2978
+#ifdef EUROPE
+	mov r0, r5
+	mov r1, #0
+	bl ov29_022F88E8_EU
+#else
 	bl ov29_022E8104
 	bl ov29_022E81F8
+#endif
 _022F85C8:
 	add sp, sp, #0xbc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -5137,6 +5313,29 @@ _022FB91C: .word 0x000003E7
 
 	arm_func_start ov29_022FB920
 ov29_022FB920: ; 0x022FB920
+#ifdef EUROPE
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr r5, _022FB980 ; =ov29_02353538
+	mov r4, r0
+	mov r6, #0
+_022FC33C_EU:
+	ldr r0, [r5]
+	add r0, r0, r6, lsl #2
+	add r0, r0, #0x12000
+	ldr r0, [r0, #0xb28]
+	bl ov29_022FB718
+	add r0, r6, #1
+	mov r0, r0, lsl #0x10
+	mov r6, r0, asr #0x10
+	cmp r6, #4
+	blt _022FC33C_EU
+	bl TeamMemberHasEnabledIqSkill
+	cmp r0, #0
+	cmpne r4, #0
+	ldmeqia sp!, {r4, r5, r6, pc}
+	bl GetMinimapData
+	ldmia sp!, {r4, r5, r6, pc}
+#else
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, _022FB980 ; =ov29_02353538
 	mov r5, #0
@@ -5162,6 +5361,7 @@ _022FB92C:
 	add r0, r0, #0x1a000
 	strb r1, [r0, #0x241]
 	ldmia sp!, {r3, r4, r5, pc}
+#endif
 	.align 2, 0
 _022FB980: .word ov29_02353538
 	arm_func_end ov29_022FB920

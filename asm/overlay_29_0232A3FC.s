@@ -1657,6 +1657,9 @@ DoMoveMetalClaw: ; 0x0232B940
 	ldr ip, [sp, #0x28]
 	mov r3, #0x100
 	mov r6, r0
+#ifdef EUROPE
+	mov r5, r1
+#endif
 	str ip, [sp]
 	mov r4, #0
 	bl DealDamage
@@ -1665,7 +1668,11 @@ DoMoveMetalClaw: ; 0x0232B940
 	ldr r1, _0232B9CC ; =METAL_CLAW_BOOST_ATTACK_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
+#ifdef EUROPE
+	mov r1, r5
+#else
 	mov r1, r6
+#endif
 	mov r4, #1
 	bl DungeonRandOutcomeUserTargetInteraction
 	cmp r0, #0

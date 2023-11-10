@@ -6,6 +6,7 @@
 .public DungeonGetSpriteIndex
 .public EntityIsValid__022E1A1C
 .public EntityIsValid__022E32E8
+.public GetForcedLossReason
 .public GetMonsterApparentId
 .public GetMonsterName
 .public GetSleepAnimationId

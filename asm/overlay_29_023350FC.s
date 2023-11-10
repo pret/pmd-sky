@@ -427,8 +427,13 @@ LoadTextureUi: ; 0x023356C0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r0, _02335750 ; =ov29_02352B4C
+#ifdef EUROPE
+	ldr r1, [r0, #0xc]
+	ldr r0, [r0, #8]
+#else
 	ldr r1, [r0, #4]
 	ldr r0, [r0]
+#endif
 	str r1, [sp, #4]
 	str r0, [sp]
 	bl GetLanguage
@@ -481,15 +486,29 @@ _02335770: .word ov29_0237CA90
 ov29_02335774: ; 0x02335774
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
+#ifdef EUROPE
+	ldr r0, _023357F4 ; =ov29_02352B4C
+	ldr r1, [r0, #4]
+	ldr r0, [r0]
+	str r1, [sp, #4]
+	str r0, [sp]
+	bl GetLanguage
+	ldr r1, _02336244 ; =0x0235431C
+	mov r0, r0, lsl #1
+	ldrh r2, [r1, r0]
+#else
 	ldr r1, _023357F4 ; =ov29_02352B4C
 	ldr r2, _023357F8 ; =0x000003EF
 	ldr r3, [r1, #0xc]
 	ldr ip, [r1, #8]
 	str r3, [sp, #4]
+#endif
 	add r0, sp, #0
 	mov r1, #4
 	mov r3, #0x300
+#ifndef EUROPE
 	str ip, [sp]
+#endif
 	bl LoadWteFromFileDirectory
 	mov r1, #0
 	ldr r0, [sp, #4]
@@ -514,7 +533,11 @@ _023357C8:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023357F4: .word ov29_02352B4C
+#ifdef EUROPE
+_02336244: .word 0x0235431C
+#else
 _023357F8: .word 0x000003EF
+#endif
 _023357FC: .word ov29_0237CA96
 _02335800: .word ov29_0237CA8C
 	arm_func_end ov29_02335774
@@ -688,6 +711,443 @@ DisplayUi: ; 0x02335A10
 	ldr r0, _02335F2C ; =ov29_02353538
 	ldr r0, [r0]
 	add r0, r0, #0x21c
+#ifdef EUROPE
+	add r4, r0, #0x1a000
+	ldr r0, [r4, #0x10]
+	cmp r0, #0
+	moveq r1, #0
+	beq _02336498
+	ldr r1, [r0]
+	cmp r1, #0
+	movne r1, #1
+	moveq r1, #0
+	and r1, r1, #0xff
+_02336498:
+	cmp r1, #0
+	beq _02335F24
+	ldr r1, _02335F30 ; =ov29_0237CA8C
+	ldrb r1, [r1, #0x12]
+	cmp r1, #0
+	bne _02335F24
+	ldr r8, [r0, #0xb4]
+	mov r7, #0
+	ldrsh r3, [r8, #0x12]
+	ldrsh r2, [r8, #0x16]
+	ldr r1, _02335F34 ; =0x000003E7
+	mov sb, r7
+	add sl, r3, r2
+	cmp sl, r1
+	movgt sl, r1
+	ldr r1, _02335F2C ; =ov29_02353538
+	ldrsh r6, [r8, #0x10]
+	ldr r1, [r1]
+	ldrb fp, [r8, #0xa]
+	ldrb r2, [r1, #0x749]
+	ldrsh r1, [r1, #0x1e]
+	add r5, r2, r1
+	bl HasLowHealth
+	cmp r0, #0
+	add r0, r8, #0x100
+	ldrh r1, [r0, #0x46]
+	sub r2, sp, #4
+	movne r7, #1
+	strh r1, [r2]
+	ldrh r0, [r0, #0x48]
+	strh r0, [r2, #2]
+	ldr r0, [r2]
+	bl CeilFixedPoint
+	cmp r0, #0
+	moveq sb, #1
+	cmp r7, #0
+	beq _02336564
+	ldr r0, _02335F38 ; =ov29_0237C850
+	ldr r0, [r0]
+	tst r0, #0x10
+	beq _02336550
+	mov r0, #0
+	mov r1, r0
+	mov r8, #0x20
+	bl SetScreenWindowsColor
+	b _0233656C
+_02336550:
+	mov r0, #1
+	mov r1, #0
+	mov r8, #0x10
+	bl SetScreenWindowsColor
+	b _0233656C
+_02336564:
+	mov r8, #0x10
+	bl SetBothScreensWindowColorToDefault
+_0233656C:
+	cmp sb, #0
+	beq _023365A8_EU
+	ldr r0, _02335F38 ; =ov29_0237C850
+	ldr r0, [r0]
+	ands r0, r0, #0x10
+	movne r8, #0x30
+	cmp r7, #0
+	bne _023365A8_EU
+	cmp r0, #0
+	beq _023365A4_EU
+	mov r0, #3
+	mov r1, #0
+	bl SetScreenWindowsColor
+	b _023365A8_EU
+_023365A4_EU:
+	bl SetBothScreensWindowColorToDefault
+_023365A8_EU:
+	add r0, sp, #4
+	mov r1, #2
+	bl ov29_02335808
+	bl GetLanguage
+	cmp fp, #0x64
+	bne _023365D4
+	cmp r0, #0
+	cmpne r0, #2
+	cmpne r0, #4
+	moveq r7, #0
+	beq _023365D8
+_023365D4:
+	mov r7, #8
+_023365D8:
+	bl IsCurrentFixedRoomBossFight
+	cmp r0, #0
+	addne r0, r7, #0x18
+	movne r0, r0, lsl #0x10
+	movne r7, r0, asr #0x10
+	bne _02336818
+	bl GetLanguage
+	sub r1, r0, #1
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
+	and r1, r1, #0xff
+	cmp r1, #3
+	bhi _02336754
+	cmp r0, #2
+	mov sb, #0
+	bne _02336678
+	ldr r0, _02335F2C ; =ov29_02353538
+	mov sb, #1
+	ldr r0, [r0]
+	ldrb r0, [r0, #0x748]
+	bl DungeonGoesUp
+	cmp r0, #0
+	add r0, sp, #4
+	mov r2, #0
+	mov r1, r7
+	bne _0233665C
+	mov r3, #0x18
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+	b _023366DC
+_0233665C:
+	mov r3, #0x14
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+	b _023366DC
+_02336678:
+	add r0, sp, #4
+	mov r1, r7
+	mov r2, sb
+	mov r3, #0x14
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	ldr r1, _02335F2C ; =ov29_02353538
+	add r2, r7, r0
+	ldr r0, [r1]
+	mov r1, r2, lsl #0x10
+	ldrb r0, [r0, #0x748]
+	mov r7, r1, asr #0x10
+	bl DungeonGoesUp
+	cmp r0, #0
+	movne sb, #1
+	bne _023366DC
+	add r0, sp, #4
+	mov r1, r7
+	mov r2, sb
+	mov r3, #0x18
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+_023366DC:
+	cmp r5, #0xa
+	ldrb r0, [r4, #0x2f]
+	bge _02336710
+	cmp r0, #0
+	moveq r3, #1
+	movne r3, #0
+	mov r1, r5, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r7
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+	b _02336734
+_02336710:
+	cmp r0, #0
+	moveq r3, #1
+	movne r3, #0
+	mov r1, r5, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r7
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+_02336734:
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+	cmp sb, #0
+	addne r0, r7, #8
+	movne r0, r0, lsl #0x10
+	movne r7, r0, asr #0x10
+	b _02336818
+_02336754:
+	ldr r0, _02335F2C ; =ov29_02353538
+	ldr r0, [r0]
+	ldrb r0, [r0, #0x748]
+	bl DungeonGoesUp
+	cmp r0, #0
+	bne _02336790
+	add r0, sp, #4
+	mov r1, r7
+	mov r2, #0
+	mov r3, #0x18
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+_02336790:
+	cmp r5, #0xa
+	ldrb r0, [r4, #0x2f]
+	bge _023367C4
+	cmp r0, #0
+	moveq r3, #1
+	movne r3, #0
+	mov r1, r5, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r7
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+	b _023367E8
+_023367C4:
+	cmp r0, #0
+	moveq r3, #1
+	movne r3, #0
+	mov r1, r5, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r7
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+_023367E8:
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+	add r0, sp, #4
+	mov r1, r7
+	mov r2, #0
+	mov r3, #0x14
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+_02336818:
+	add r0, sp, #4
+	mov r1, r7
+	str r8, [sp]
+	mov r2, #0
+	mov r3, #0x15
+	bl DisplayCharTextureUi
+	ldrb r1, [r4, #0x2f]
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	cmp r1, #0
+	moveq r3, #1
+	mov r7, r0, asr #0x10
+	movne r3, #0
+	mov r1, fp, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r7
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+	mov r5, #0x48
+	add r0, sp, #4
+	mov r1, r5
+	str r8, [sp]
+	mov r2, #0
+	mov r3, #0x16
+	bl DisplayCharTextureUi
+	ldrb r1, [r4, #0x2f]
+	add r0, r0, #0x48
+	mov r0, r0, lsl #0x10
+	cmp r1, #0
+	moveq r3, #1
+	mov r5, r0, asr #0x10
+	movne r3, #0
+	mov r1, r6, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r5
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+	add r0, r5, r0
+	mov r7, r0, lsl #0x10
+	mov r5, r7, asr #0x10
+	add r0, sp, #4
+	mov r1, r5
+	str r8, [sp]
+	mov r2, #0
+	mov r3, #0x17
+	bl DisplayCharTextureUi
+	ldrb r1, [r4, #0x2f]
+	add r0, r0, r7, asr #16
+	mov r0, r0, lsl #0x10
+	cmp r1, #0
+	moveq r3, #1
+	mov r5, r0, asr #0x10
+	movne r3, #0
+	mov r1, sl, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r5
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+	ldr r0, _02335F30 ; =ov29_0237CA8C
+	cmp sl, #0
+	ldr r0, [r0, #4]
+	mov r4, #0x90
+	ldr r8, [r0, #4]
+	mov r5, #0x10
+	blt _02335F24
+	add r0, sp, #4
+	bl InitRender3dElement64
+	ldr r0, _02335F30 ; =ov29_0237CA8C
+	mov fp, #5
+	ldrh r3, [r0]
+	mov r0, r6, lsl #0x10
+	mov sb, #0x28
+	mov r2, #0x1000
+	mov r7, r0, asr #0x10
+	ldr r1, _02335F3C ; =_020AFC70
+	str r2, [sp, #0x24]
+	ldr r0, [r1]
+	cmp r7, #0x70
+	strb fp, [sp, #0x40]
+	strb sb, [sp, #0x42]
+	strh r3, [sp, #0x18]
+	ldr r0, [r0, #0xe0]
+	mov r1, #0
+	mov r2, #0x90
+	add r0, r0, #0x400
+	str r0, [sp, #0x28]
+	mov r0, sl, lsl #0x10
+	mov sb, r0, asr #0x10
+	movgt r7, #0x70
+	cmp sb, #0x70
+	movgt sb, #0x70
+	add r0, sb, #0x90
+	mov r0, r0, lsl #0x10
+	mov r3, r0, asr #0x10
+	strh r1, [sp, #6]
+	strh r3, [sp, #8]
+	strh r1, [sp, #0xa]
+	add r0, r5, #1
+	mov r1, r0, lsl #0x10
+	strh r2, [sp, #4]
+	strh r2, [sp, #0xc]
+	ldrsh r2, [r8, #0xce]
+	mov r5, r1, asr #0x10
+	add r0, sp, #4
+	strh r2, [sp, #0xe]
+	strh r3, [sp, #0x10]
+	ldrsh r3, [r8, #0xce]
+	mov r2, #0x10
+	strh r3, [sp, #0x12]
+	ldrsh r3, [r8, #0xc8]
+	strh r3, [sp, #0x1a]
+	ldrsh r1, [r8, #0xca]
+	strh r1, [sp, #0x1c]
+	ldrsh r1, [r8, #0xcc]
+	strh r1, [sp, #0x1e]
+	ldrsh r1, [r8, #0xce]
+	strh r1, [sp, #0x20]
+	strh r2, [sp, #0x2e]
+	bl sub_0201F2A0
+	cmp r6, #0
+	ble _02336A70
+	add r0, r7, #0x90
+	mov r0, r0, lsl #0x10
+	mov r3, #0x90
+	mov r2, r0, asr #0x10
+	mov r1, #0
+	strh r3, [sp, #4]
+	strh r2, [sp, #8]
+	strh r3, [sp, #0xc]
+	strh r1, [sp, #6]
+	strh r1, [sp, #0xa]
+	ldrsh r1, [r8, #0xe6]
+	add r0, sp, #4
+	strh r2, [sp, #0x10]
+	strh r1, [sp, #0xe]
+	ldrsh r1, [r8, #0xe6]
+	strh r1, [sp, #0x12]
+	ldrsh r1, [r8, #0xe0]
+	strh r1, [sp, #0x1a]
+	ldrsh r1, [r8, #0xe2]
+	strh r1, [sp, #0x1c]
+	ldrsh r1, [r8, #0xe4]
+	strh r1, [sp, #0x1e]
+	ldrsh r1, [r8, #0xe6]
+	strh r1, [sp, #0x20]
+	strh r5, [sp, #0x2e]
+	bl sub_0201F2A0
+_02336A70:
+	sub r0, sb, r7
+	mov r0, r0, lsl #0x10
+	mov r1, r0, asr #0x10
+	cmp r1, #0
+	ble _02335F24
+	add r0, r4, r7
+	mov r0, r0, lsl #0x10
+	add r1, r1, r0, asr #16
+	mov r1, r1, lsl #0x10
+	mov r3, r0, asr #0x10
+	mov r0, #0
+	mov r2, r1, asr #0x10
+	strh r3, [sp, #4]
+	strh r0, [sp, #6]
+	strh r0, [sp, #0xa]
+	strh r2, [sp, #8]
+	strh r3, [sp, #0xc]
+	ldrsh r1, [r8, #0xde]
+	add r0, sp, #4
+	strh r2, [sp, #0x10]
+	strh r1, [sp, #0xe]
+	ldrsh r1, [r8, #0xde]
+	strh r1, [sp, #0x12]
+	ldrsh r1, [r8, #0xd8]
+	strh r1, [sp, #0x1a]
+	ldrsh r1, [r8, #0xda]
+	strh r1, [sp, #0x1c]
+	ldrsh r1, [r8, #0xdc]
+	strh r1, [sp, #0x1e]
+	ldrsh r1, [r8, #0xde]
+	strh r1, [sp, #0x20]
+	strh r5, [sp, #0x2e]
+#else
 	add r5, r0, #0x1a000
 	ldr r0, [r5, #0x10]
 	cmp r0, #0
@@ -1018,6 +1478,7 @@ _02335EA0:
 	ldrsh r1, [sb, #0xde]
 	strh r1, [sp, #0x20]
 	strh r6, [sp, #0x2e]
+#endif
 	bl sub_0201F2A0
 _02335F24:
 	add sp, sp, #0x44
@@ -3044,10 +3505,6 @@ PositionHasItem: ; 0x02337B2C
 	mov r1, r0
 	ldrsh r0, [r1]
 	ldrsh r1, [r1, #2]
-	arm_func_end PositionHasItem
-
-	arm_func_start ov29_02337B3C
-ov29_02337B3C: ; 0x02337B3C
 	bl GetTile
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
@@ -3059,7 +3516,7 @@ ov29_02337B3C: ; 0x02337B3C
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02337B3C
+	arm_func_end PositionHasItem
 
 	arm_func_start PositionHasMonster
 PositionHasMonster: ; 0x02337B68
@@ -3082,10 +3539,6 @@ _02337B94:
 	arm_func_start TrySmashWall
 TrySmashWall: ; 0x02337B9C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	arm_func_end TrySmashWall
-
-	arm_func_start ov29_02337BA0
-ov29_02337BA0: ; 0x02337BA0
 	mov r8, r0
 	ldrsh r0, [r8]
 	ldrsh r1, [r8, #2]
@@ -3134,10 +3587,6 @@ _02337BF8:
 _02337C4C:
 	cmp r5, #0
 	beq _02337C9C
-	arm_func_end ov29_02337BA0
-
-	arm_func_start ov29_02337C54
-ov29_02337C54: ; 0x02337C54
 	ldr r4, _02337CA4 ; =ov29_02353538
 	mov r6, #0
 _02337C5C:
@@ -3163,4 +3612,4 @@ _02337C9C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02337CA4: .word ov29_02353538
-	arm_func_end ov29_02337C54
+	arm_func_end TrySmashWall

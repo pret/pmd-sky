@@ -63,10 +63,6 @@ _022E96B4:
 	beq _022E96E8
 	ldrh r1, [r0]
 	tst r1, #0x800
-	arm_func_end ov29_022E9628
-
-	arm_func_start ov29_022E96E4
-ov29_022E96E4: ; 0x022E96E4
 	bne _022E97D8
 _022E96E8:
 	cmp r8, #0
@@ -169,7 +165,7 @@ _022E9830:
 _022E983C:
 	add sp, sp, #0xe20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov29_022E96E4
+	arm_func_end ov29_022E9628
 
 	arm_func_start FindNearbyUnoccupiedTile
 FindNearbyUnoccupiedTile: ; 0x022E9844

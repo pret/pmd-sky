@@ -92,13 +92,10 @@ _02337DE4:
 	mov r0, r6
 	bl EntityIsValid__02337CA8
 	cmp r0, #0
-	beq ov29_02337E0C
+	beq _02337E0C
 	mov r0, r6
 	bl ov29_02304BAC
-	arm_func_end ov29_02337D68
-
-	arm_func_start ov29_02337E0C
-ov29_02337E0C: ; 0x02337E0C
+_02337E0C:
 	add r5, r5, #1
 	cmp r5, #0x14
 	blt _02337DE4
@@ -108,7 +105,7 @@ ov29_02337E0C: ; 0x02337E0C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02337E28: .word ov29_02353538
-	arm_func_end ov29_02337E0C
+	arm_func_end ov29_02337D68
 
 	arm_func_start ov29_02337E2C
 ov29_02337E2C: ; 0x02337E2C
@@ -2928,6 +2925,17 @@ SetMinimapDataE447: ; 0x0233A218
 	strb r4, [r0, #0x447]
 	ldmia sp!, {r4, pc}
 	arm_func_end SetMinimapDataE447
+
+#ifdef EUROPE
+	arm_func_start ov29_0233AE00_EU
+ov29_0233AE00_EU: ; 0x0233AE00
+	stmdb sp!, {r3, lr}
+	bl GetMinimapData
+	add r0, r0, #0xe000
+	ldrb r0, [r0, #0x447]
+	ldmia sp!, {r3, pc}
+	arm_func_end ov29_0233AE00_EU
+#endif
 
 	arm_func_start SetMinimapDataE448
 SetMinimapDataE448: ; 0x0233A230
@@ -5795,10 +5803,6 @@ _0233CA0C:
 	mov r3, #2
 	sub r2, r0, #1
 	mov r1, #4
-	arm_func_end GenerateExtraHallways
-
-	arm_func_start ov29_0233CAA8
-ov29_0233CAA8: ; 0x0233CAA8
 	mov r0, #6
 	mov lr, ip
 _0233CAB0:
@@ -5814,10 +5818,6 @@ _0233CAC0:
 _0233CAD0:
 	cmp r6, #4
 	bne _0233CAE0
-	arm_func_end ov29_0233CAA8
-
-	arm_func_start ov29_0233CAD8
-ov29_0233CAD8: ; 0x0233CAD8
 	cmp sb, #0
 	movle r6, r0
 _0233CAE0:
@@ -5834,10 +5834,6 @@ _0233CAF0:
 	bl GetTile
 	ldrb sb, [r0, #7]
 	ldr r0, _0233CF7C ; =DIRECTIONS_XY
-	arm_func_end ov29_0233CAD8
-
-	arm_func_start ov29_0233CB10
-ov29_0233CB10: ; 0x0233CB10
 	mov r4, r6, lsl #2
 	add fp, r0, r6, lsl #2
 _0233CB18:
@@ -5850,10 +5846,6 @@ _0233CB18:
 	ldreqsh r1, [r0, r4]
 	ldreqsh r0, [fp, #2]
 	addeq r8, r8, r1
-	arm_func_end ov29_0233CB10
-
-	arm_func_start ov29_0233CB3C
-ov29_0233CB3C: ; 0x0233CB3C
 	addeq r7, r7, r0
 	beq _0233CB18
 	ldr fp, _0233CF7C ; =DIRECTIONS_XY
@@ -6029,25 +6021,13 @@ _0233CD94:
 	bl GetTile
 	ldrh r0, [r0]
 	and r0, r0, #3
-	arm_func_end ov29_0233CB3C
-
-	arm_func_start ov29_0233CDC8
-ov29_0233CDC8: ; 0x0233CDC8
 	cmp r0, #1
 	bne _0233CDF0
 	mov r0, r8
 	add r1, r7, #1
-	arm_func_end ov29_0233CDC8
-
-	arm_func_start ov29_0233CDD8
-ov29_0233CDD8: ; 0x0233CDD8
 	bl GetTile
 	ldrh r0, [r0]
 	and r0, r0, #3
-	arm_func_end ov29_0233CDD8
-
-	arm_func_start ov29_0233CDE4
-ov29_0233CDE4: ; 0x0233CDE4
 	cmp r0, #1
 	moveq r0, #0
 	streq r0, [sp, #0xc]
@@ -6161,7 +6141,7 @@ _0233CF70:
 _0233CF78: .word 0x000001C2
 _0233CF7C: .word DIRECTIONS_XY
 _0233CF80: .word ov29_0237CFBC
-	arm_func_end ov29_0233CDE4
+	arm_func_end GenerateExtraHallways
 
 	arm_func_start GetGridPositions
 GetGridPositions: ; 0x0233CF84

@@ -1396,6 +1396,9 @@ _02346A48:
 	cmp r8, #0x32
 	blt _02346A00
 	bl RemoveEmptyItemsInBag
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -1499,6 +1502,9 @@ _02346BB8:
 	cmp r4, #0x32
 	blt _02346B7C
 	bl RemoveEmptyItemsInBag
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -1536,6 +1542,9 @@ _02346C30:
 	cmp r7, #0x32
 	blt _02346BFC
 	bl RemoveEmptyItemsInBag
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	mov r4, #0
 	mov r7, r4
@@ -1646,6 +1655,9 @@ ov29_02346DA4: ; 0x02346DA4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bl ov29_02346CBC
 	bl RemoveEmptyItemsInBag
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	mov r8, #0
 	mov r7, #1
@@ -1856,6 +1868,9 @@ _0234702C: .word ov10_022C4CD8
 RemoveEmptyItemsInBagWrapper: ; 0x02347030
 	stmdb sp!, {r3, lr}
 	bl RemoveEmptyItemsInBag
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	ldmia sp!, {r3, pc}
 	arm_func_end RemoveEmptyItemsInBagWrapper

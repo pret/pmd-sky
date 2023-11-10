@@ -1,6 +1,6 @@
 #include "overlay_29_022FED98.h"
 
-#ifndef EUROPE
+#ifdef EUROPE
 u8 EntityIsValid__022FED98(struct entity *entity)
 {
     if (entity == NULL)

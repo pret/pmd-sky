@@ -38,6 +38,9 @@ OpenMenu: ; 0x0234DDF4
 	mov r1, #0x1d
 	bl ov29_022EA370
 _0234DE74:
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 _0234DE78:
 	mvn r0, #0
@@ -645,6 +648,9 @@ _0234E6CC:
 	cmp r0, #0
 	beq _0234DE78
 _0234E720:
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	bl ov29_022F0B9C
 	cmp r0, #0
@@ -760,6 +766,9 @@ _0234E8B0:
 	mov r1, r0
 	bl ov29_022EA428
 _0234E8C0:
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	bl ov29_022E0B44
 	mov r0, #0x22

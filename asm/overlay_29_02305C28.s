@@ -409,10 +409,6 @@ EndBurnClassStatus: ; 0x023061A8
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, #0
 	ldr r4, [r5, #0xb4]
-	arm_func_end EndBurnClassStatus
-
-	arm_func_start ov29_023061CC
-ov29_023061CC: ; 0x023061CC
 	mov r1, r5
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
@@ -454,7 +450,7 @@ _02306238:
 _0230624C: .word 0x00000C9E
 _02306250: .word 0x00000C9C
 _02306254: .word 0x00000C9D
-	arm_func_end ov29_023061CC
+	arm_func_end EndBurnClassStatus
 
 	arm_func_start EndFrozenClassStatus
 EndFrozenClassStatus: ; 0x02306258
@@ -1240,10 +1236,6 @@ EndMiracleEyeStatus: ; 0x02306C64
 	ldrb r0, [r4, #0xf5]
 	cmp r0, #0
 	beq _02306CB8
-	arm_func_end EndMiracleEyeStatus
-
-	arm_func_start ov29_02306C9C
-ov29_02306C9C: ; 0x02306C9C
 	cmp r0, #1
 	beq _02306CAC
 	cmp r0, #2
@@ -1260,7 +1252,7 @@ _02306CB8:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02306CCC: .word 0x00000CC4
-	arm_func_end ov29_02306C9C
+	arm_func_end EndMiracleEyeStatus
 
 	arm_func_start EndMagnetRiseStatus
 EndMagnetRiseStatus: ; 0x02306CD0

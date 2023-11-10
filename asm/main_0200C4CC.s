@@ -63879,7 +63879,7 @@ sub_0203F9CC: ; 0x0203F9CC
 	ldr r4, [r5, #0xb4]
 	ldr r0, _0203FA54 ; =_022AAE00
 	mov r1, r4
-	bl ov11_023001F4
+	bl GetMonsterName
 	ldr r0, _0203FA58 ; =_022AAE2A
 	add r1, r4, #0x124
 	mov r2, #0x22
@@ -116218,7 +116218,7 @@ _02069E78:
 _02069E84:
 	add r4, r5, #0x58
 	add r5, r5, #0x90
-	bl ov29_0233CAA8
+	bl ov03_0233CAA8
 	cmp r0, #1
 	bne _02069F90
 	ldr r0, _0206A5E0 ; =_020B0B48
@@ -116277,7 +116277,7 @@ _02069E84:
 _02069F6C:
 	add r0, r5, #4
 	mov r1, #0x14
-	bl ov29_02337B3C
+	bl ov01_02337B3C
 	ldr r1, _0206A5E0 ; =_020B0B48
 	strb r0, [r5, #3]
 	ldr r0, [r1]
@@ -116285,7 +116285,7 @@ _02069F6C:
 	str r1, [r0]
 	b _0206A5D4
 _02069F90:
-	bl ov29_0233CAA8
+	bl ov03_0233CAA8
 	cmp r0, #0
 	bne _0206A5D4
 	ldr r0, _0206A5E0 ; =_020B0B48
@@ -116349,7 +116349,7 @@ _02069F90:
 	bl GetMainTeamNameWithCheck
 	add r0, r4, #4
 	mov r1, #0x34
-	bl ov29_02337B3C
+	bl ov01_02337B3C
 	strb r0, [r4, #3]
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0x1000
@@ -116373,17 +116373,17 @@ _0206A0AC:
 	strh r2, [sp, #0xc4]
 	strb r1, [sp, #0xc6]
 	str r4, [sp, #0xc8]
-	bl ov29_02337BA0
+	bl ov01_02337BA0
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A5E4 ; =0x00001001
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0206A5D4
 _0206A104:
-	bl ov29_02337E0C
+	bl ov01_02337E0C
 	movs r4, r0
 	beq _0206A5D4
-	bl ov29_02337C54
+	bl ov01_02337C54
 	cmp r4, #0xe
 	addls pc, pc, r4, lsl #2
 	b _0206A5D4
@@ -116404,7 +116404,7 @@ _0206A120: ; jump table
 	b _0206A380 ; case 13
 	b _0206A380 ; case 14
 _0206A15C:
-	bl ov29_0233CAA8
+	bl ov03_0233CAA8
 	cmp r0, #1
 	bne _0206A300
 	ldr r0, _0206A5E0 ; =_020B0B48
@@ -116419,7 +116419,7 @@ _0206A15C:
 	beq _0206A1B0
 	ldr r1, _0206A5F8 ; =0x000037A8
 	mov r0, #0x1c
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A5FC ; =0x00002001
 	ldr r0, [r0]
@@ -116454,7 +116454,7 @@ _0206A204:
 	add r2, sp, #0x1bc
 	mov r0, #0x1c
 	str r3, [sp, #0x1f4]
-	bl ov29_0233CDD8
+	bl ov03_0233CDD8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0
 	ldr r0, [r0]
@@ -116499,7 +116499,7 @@ _0206A2AC:
 	add r2, sp, #0x16c
 	mov r0, #0x1c
 	str r3, [sp, #0x1a4]
-	bl ov29_0233CDD8
+	bl ov03_0233CDD8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0
 	ldr r0, [r0]
@@ -116517,7 +116517,7 @@ _0206A2EC:
 	str r1, [r0]
 	b _0206A5D4
 _0206A300:
-	bl ov29_0233CAA8
+	bl ov03_0233CAA8
 	cmp r0, #0
 	bne _0206A5D4
 	add r0, sp, #0x11c
@@ -116545,7 +116545,7 @@ _0206A354:
 	add r2, sp, #0x11c
 	mov r0, #0x1c
 	str r3, [sp, #0x154]
-	bl ov29_0233CDD8
+	bl ov03_0233CDD8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0x8000
 	ldr r0, [r0]
@@ -116555,17 +116555,17 @@ _0206A380:
 	mov r0, #1
 	b _0206A5D8
 _0206A388:
-	bl ov29_0233CAD8
+	bl ov03_0233CAD8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A5E8 ; =0x00003001
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0206A5D4
 _0206A3A0:
-	bl ov29_0233CB3C
+	bl ov03_0233CB3C
 	cmp r0, #2
 	bne _0206A450
-	bl ov29_0233CB10
+	bl ov03_0233CB10
 	add r0, sp, #0xcc
 	bl InitPreprocessorArgs
 	ldr r0, _0206A5E0 ; =_020B0B48
@@ -116597,7 +116597,7 @@ _0206A410:
 	add r2, sp, #0xcc
 	mov r0, #0x1c
 	str r3, [sp, #0x104]
-	bl ov29_0233CDD8
+	bl ov03_0233CDD8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0
 	ldr r0, [r0]
@@ -116611,11 +116611,11 @@ _0206A410:
 _0206A450:
 	cmp r0, #1
 	bne _0206A5D4
-	bl ov29_0233CB10
+	bl ov03_0233CB10
 	mov r0, #1
 	b _0206A5D8
 _0206A464:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	mov r4, r0
 	bl sub_020698B8
 	cmp r4, #0x12
@@ -116627,7 +116627,7 @@ _0206A464:
 	str r1, [r0]
 	b _0206A5D4
 _0206A490:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	cmp r0, #0x12
 	bne _0206A5D4
 	mov r0, #1
@@ -116635,14 +116635,14 @@ _0206A490:
 _0206A4A4:
 	ldr r1, _0206A60C ; =0x0000023B
 	mov r0, #0
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A610 ; =0x00004002
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0206A5D4
 _0206A4C4:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	cmp r0, #0x12
 	bne _0206A5D4
 	mov r0, #0xe0
@@ -116671,11 +116671,11 @@ _0206A4F8:
 	mov r0, #0x1c
 	beq _0206A53C
 	ldr r1, _0206A618 ; =0x0000379E
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 	b _0206A544
 _0206A53C:
 	mov r1, #0x23c
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 _0206A544:
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A61C ; =0x00004003
@@ -116688,32 +116688,32 @@ _0206A558:
 	beq _0206A5D8
 	ldr r1, _0206A620 ; =0x00000239
 	mov r0, #0x1c
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A5EC ; =0x00004004
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0206A5D4
 _0206A584:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	cmp r0, #0x12
 	bne _0206A5D4
 	ldr r1, _0206A624 ; =0x000037A0
 	mov r0, #0x1c
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0x8000
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0206A5D4
 _0206A5B0:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	cmp r0, #0x12
 	bne _0206A5D4
 	mov r0, #1
 	b _0206A5D8
 _0206A5C4:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	cmp r0, #0x12
 	moveq r0, #2
 	beq _0206A5D8
@@ -116747,12 +116747,12 @@ _0206A624: .word 0x000037A0
 sub_0206A628: ; 0x0206A628
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov29_0233CAA8
+	bl ov03_0233CAA8
 	cmp r0, #1
 	bne _0206A70C
 	add r0, r4, #4
 	mov r1, #0x34
-	bl ov29_02337B3C
+	bl ov01_02337B3C
 	ldrb r1, [r4, #3]
 	cmp r0, r1
 	movne r0, #3

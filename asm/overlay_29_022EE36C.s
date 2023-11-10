@@ -181,6 +181,9 @@ _022EE5C4:
 	orr r0, r0, #8
 	strb r0, [r2, r1, lsl #6]
 _022EE5E8:
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	ldr r1, _022EE624 ; =0x00000309
 	mov r0, sb

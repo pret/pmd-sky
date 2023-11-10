@@ -1329,6 +1329,32 @@ _022E2B50:
 _022E2B64: .word 0x00000A42
 	arm_func_end SubstitutePlaceholderStringTags
 
+#ifdef EUROPE
+	arm_func_start ov29_022E34A8_EU
+ov29_022E34A8_EU: ; 0x022E34A8
+	stmdb sp!, {r3, lr}
+	bl EntityIsValid__022E1A1C
+	cmp r0, #0
+	beq _022E34DC
+	ldr r0, _022E34E8 ; =0x02354138
+	ldr r0, [r0]
+	ldrb r0, [r0, #8]
+	cmp r0, #0
+	bne _022E34DC
+	bl GetForcedLossReason
+	cmp r0, #1
+	movne r0, #1
+	bne _022E34E0
+_022E34DC:
+	mov r0, #0
+_022E34E0:
+	and r0, r0, #0xff
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_022E34E8: .word 0x02354138
+	arm_func_end ov29_022E34A8_EU
+#endif
+
 	arm_func_start ov29_022E2B68
 ov29_022E2B68: ; 0x022E2B68
 	stmdb sp!, {r3, r4, r5, lr}
@@ -1510,6 +1536,27 @@ _022E2DD4: .word 0x0001A21C
 
 	arm_func_start UpdateMapSurveyorFlag
 UpdateMapSurveyorFlag: ; 0x022E2DD8
+#ifdef EUROPE
+	stmdb sp!, {r4, lr}
+	ldr r1, _022E2DF8 ; =ov29_02353538
+	mov r0, #0x41
+	ldr r1, [r1]
+	add r1, r1, #0x1a000
+	ldrb r4, [r1, #0x241]
+	bl TeamMemberHasEnabledIqSkill
+	ldr r2, _022E2DF8 ; =ov29_02353538
+	ldr r1, [r2]
+	add r1, r1, #0x1a000
+	strb r0, [r1, #0x241]
+	ldr r0, [r2]
+	add r0, r0, #0x1a000
+	ldrb r0, [r0, #0x241]
+	cmp r4, r0
+	movne r0, #1
+	moveq r0, #0
+	and r0, r0, #0xff
+	ldmia sp!, {r4, pc}
+#else
 	stmdb sp!, {r3, lr}
 	mov r0, #0x41
 	bl TeamMemberHasEnabledIqSkill
@@ -1518,6 +1565,7 @@ UpdateMapSurveyorFlag: ; 0x022E2DD8
 	add r1, r1, #0x1a000
 	strb r0, [r1, #0x241]
 	ldmia sp!, {r3, pc}
+#endif
 	.align 2, 0
 _022E2DF8: .word ov29_02353538
 	arm_func_end UpdateMapSurveyorFlag

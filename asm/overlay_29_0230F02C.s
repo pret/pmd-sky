@@ -1222,11 +1222,13 @@ _023100E8:
 	beq _0231013C
 	cmp r7, #0
 	beq _02310124
+#ifndef EUROPE
 	ldr r0, _02310A84 ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	bne _02310124
+#endif
 	mov r0, r5
 	bl EntityIsValid__02311010
 	cmp r0, #0
@@ -1952,10 +1954,6 @@ _02310B6C:
 	mov r0, r5
 	bl EntityIsValid__02311010
 	cmp r0, #0
-	arm_func_end ov29_0230FC24
-
-	arm_func_start ov29_02310BDC
-ov29_02310BDC: ; 0x02310BDC
 	beq _02310FF4
 	bl IsFloorOver
 	cmp r0, #0
@@ -1972,10 +1970,6 @@ _02310C0C:
 	mov r0, r5
 	bl EntityIsValid__02311010
 	cmp r0, #0
-	arm_func_end ov29_02310BDC
-
-	arm_func_start ov29_02310C18
-ov29_02310C18: ; 0x02310C18
 	beq _02310FF4
 	bl IsFloorOver
 	cmp r0, #0
@@ -2244,4 +2238,4 @@ _02311000: .word 0x00000DEC
 _02311004: .word 0x0000270F
 _02311008: .word 0x00000165
 _0231100C: .word 0x00000CBA
-	arm_func_end ov29_02310C18
+	arm_func_end ov29_0230FC24

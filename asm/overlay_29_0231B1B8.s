@@ -1861,6 +1861,10 @@ _0231CB90:
 	cmp r1, #0
 	bne _0231CB58
 _0231CB9C:
+#ifdef EUROPE
+	mov r0, #1
+	bl ov29_022FB920
+#endif
 	mov r0, r8
 	bl EnemyEvolution
 _0231CBA4:

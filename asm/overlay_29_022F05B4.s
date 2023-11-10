@@ -2624,6 +2624,9 @@ _022F2A70:
 	bl sub_02006B70
 _022F2A9C:
 	bl ov29_022E0B44
+#ifdef EUROPE
+	bl ov29_022F2FE4
+#endif
 	ldr r0, _022F1DE4 ; =ov29_0237C9A4
 	mov r1, #0
 	strb r1, [r0, #2]
@@ -3519,6 +3522,9 @@ _022F3778:
 	add r0, r4, #4
 	mov r1, #1
 	bl TryLeaderItemPickUp
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _022F37A0:

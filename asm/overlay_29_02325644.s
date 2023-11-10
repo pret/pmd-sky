@@ -2893,6 +2893,9 @@ DoMoveMeteorMash: ; 0x02327B5C
 	str r3, [sp]
 	mov r3, #0x100
 	mov r6, r0
+#ifdef EUROPE
+	mov r5, r1
+#endif
 	mov r4, #0
 	bl DealDamage
 	cmp r0, #0
@@ -2900,7 +2903,11 @@ DoMoveMeteorMash: ; 0x02327B5C
 	ldr r1, _02327BD8 ; =METEOR_MASH_BOOST_ATTACK_CHANCE
 	mov r0, r6
 	ldrsh r2, [r1]
+#ifdef EUROPE
+	mov r1, r5
+#else
 	mov r1, r6
+#endif
 	mov r4, #1
 	bl DungeonRandOutcomeUserTargetInteraction
 	cmp r0, #0

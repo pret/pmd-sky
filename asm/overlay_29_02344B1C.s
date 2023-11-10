@@ -405,6 +405,9 @@ ov29_02345004: ; 0x02345004
 	ldrneb r0, [r5]
 	orrne r0, r0, #0x80
 	strneb r0, [r5]
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -839,6 +842,9 @@ _02345648:
 	add r0, r0, #0x3f00
 	strh r4, [r0, #0xc0]
 	bl RemoveEmptyItemsInBag
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}

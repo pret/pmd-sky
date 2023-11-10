@@ -2159,8 +2159,13 @@ _0234B504: .word ov29_023537CC
 
 	arm_func_start LogMessage
 LogMessage: ; 0x0234B508
+#ifdef EUROPE
+#define LOG_MESSAGE_STACK_OFFSET 0x60
+#else
+#define LOG_MESSAGE_STACK_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	sub sp, sp, #0x284
+	sub sp, sp, #0x284 + LOG_MESSAGE_STACK_OFFSET
 	ldr r4, _0234B708 ; =ov29_023537CC
 	mov fp, r2
 	ldr r3, [r4, #4]
@@ -2223,7 +2228,7 @@ _0234B5D8:
 	add r1, r1, #0x9c
 	add r1, r1, #0xc00
 	str r1, [sp]
-	mov r1, #0x140
+	mov r1, #0x140 + LOG_MESSAGE_STACK_OFFSET
 	add r2, r5, r8
 	mov r3, #0x440
 	bl PreprocessString
@@ -2291,7 +2296,7 @@ _0234B6D4:
 	streq r0, [r1, #0xc98]
 	bl ov29_022F2FE4
 _0234B700:
-	add sp, sp, #0x284
+	add sp, sp, #0x284 + LOG_MESSAGE_STACK_OFFSET
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0234B708: .word ov29_023537CC

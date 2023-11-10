@@ -1671,6 +1671,10 @@ DoMoveDamageEatItem: ; 0x0232D9E4
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
+#ifdef EUROPE
+	mov r0, r5
+	bl ov29_022E34A8_EU
+#else
 	ldr r0, _0232DACC ; =ov29_02353538
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
@@ -1685,6 +1689,7 @@ DoMoveDamageEatItem: ; 0x0232D9E4
 	moveq r0, #0
 	and r0, r0, #0xff
 _0232DA3C:
+#endif
 	cmp r0, #0
 	beq _0232DAC4
 	cmp r5, r4
@@ -1726,7 +1731,9 @@ _0232DAC4:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifndef EUROPE
 _0232DACC: .word ov29_02353538
+#endif
 	arm_func_end DoMoveDamageEatItem
 
 	arm_func_start DoMoveAcupressure
