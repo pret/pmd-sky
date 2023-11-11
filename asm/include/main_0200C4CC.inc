@@ -13,6 +13,7 @@
 .public DebugPrint0
 .public DrawTileGrid
 .public DTCM_BSS
+.public DUNGEON_PTR
 .public ExplorersOfSkyMain
 .public FatalError
 .public FileClose
@@ -98,7 +99,6 @@
 .public ov29_022EA62C
 .public ov29_023002F0
 .public ov29_02347100
-.public ov29_02353538
 .public OverlayIsLoaded
 .public PointsToZero
 .public PROTEIN_STAT_BOOST

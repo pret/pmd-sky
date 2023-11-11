@@ -6,6 +6,7 @@
 .public CannotStandOnTile
 .public CanSeeTarget
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandRange
 .public EntityIsValid__0231F570
@@ -25,7 +26,6 @@
 .public ov29_0232033C
 .public ov29_02321238
 .public ov29_0235171E
-.public ov29_02353538
 .public ShouldDisplayEntityWrapper
 .public sub_020018D0
 .public SubstitutePlaceholderStringTags

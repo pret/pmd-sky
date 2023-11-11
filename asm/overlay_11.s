@@ -13695,7 +13695,7 @@ ov11_022E7F34: ; 0x022E7F34
 	ldr r0, _022E7F78 ; =ov11_02319AD0
 	bl DebugPrint0
 	ldr r2, [sp]
-	ldr r0, _022E7F7C ; =ov11_02324CA4
+	ldr r0, _022E7F7C ; =UNIONALL_RAM_ADDRESS
 	str r2, [r0]
 	ldrh r1, [r2]
 	add r1, r2, r1, lsl #1
@@ -13705,22 +13705,22 @@ ov11_022E7F34: ; 0x022E7F34
 	.align 2, 0
 _022E7F74: .word ov11_02319AB4
 _022E7F78: .word ov11_02319AD0
-_022E7F7C: .word ov11_02324CA4
+_022E7F7C: .word UNIONALL_RAM_ADDRESS
 	arm_func_end ov11_022E7F34
 
 	arm_func_start ov11_022E7F80
 ov11_022E7F80: ; 0x022E7F80
 	stmdb sp!, {r3, lr}
-	ldr r0, _022E7FA4 ; =ov11_02324CA4
+	ldr r0, _022E7FA4 ; =UNIONALL_RAM_ADDRESS
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022E7FA4 ; =ov11_02324CA4
+	ldr r0, _022E7FA4 ; =UNIONALL_RAM_ADDRESS
 	mov r1, #0
 	str r1, [r0]
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022E7FA4: .word ov11_02324CA4
+_022E7FA4: .word UNIONALL_RAM_ADDRESS
 	arm_func_end ov11_022E7F80
 
 	arm_func_start ov11_022E7FA8
@@ -13738,7 +13738,7 @@ GetCoroutineInfo: ; 0x022E7FB8
 	mov r4, r0
 	mov r5, r1
 	bl ov11_022DC89C
-	ldr r0, _022E8020 ; =ov11_02324CA4
+	ldr r0, _022E8020 ; =UNIONALL_RAM_ADDRESS
 	add r1, r5, r5, lsl #1
 	ldr r2, [r0]
 	add r3, r2, r1, lsl #1
@@ -13761,7 +13761,7 @@ GetCoroutineInfo: ; 0x022E7FB8
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022E8020: .word ov11_02324CA4
+_022E8020: .word UNIONALL_RAM_ADDRESS
 	arm_func_end GetCoroutineInfo
 
 	arm_func_start ov11_022E8024
@@ -24890,7 +24890,7 @@ ov11_022F11DC: ; 0x022F11DC
 	mov r0, #0x3c
 	mov r1, #6
 	bl MemAlloc
-	ldr r1, _022F1210 ; =ov11_02324CC0
+	ldr r1, _022F1210 ; =GROUND_STATE_MAP
 	mvn r2, #0
 	str r0, [r1, #4]
 	strh r2, [r0]
@@ -24900,7 +24900,7 @@ ov11_022F11DC: ; 0x022F11DC
 	bl ov11_022F1244
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F1210: .word ov11_02324CC0
+_022F1210: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F11DC
 
 	arm_func_start ov11_022F1214
@@ -24909,15 +24909,15 @@ ov11_022F1214: ; 0x022F1214
 	bl ov11_022F1244
 	bl ov11_022F2FE8
 	bl ov11_022F22C8
-	ldr r0, _022F1240 ; =ov11_02324CC0
+	ldr r0, _022F1240 ; =GROUND_STATE_MAP
 	ldr r0, [r0, #4]
 	bl MemFree
-	ldr r0, _022F1240 ; =ov11_02324CC0
+	ldr r0, _022F1240 ; =GROUND_STATE_MAP
 	mov r1, #0
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F1240: .word ov11_02324CC0
+_022F1240: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1214
 
 	arm_func_start ov11_022F1244
@@ -24933,7 +24933,7 @@ _022F1258:
 	beq _022F1268
 	bl ov11_023118E8
 _022F1268:
-	ldr r0, _022F12BC ; =ov11_02324CC0
+	ldr r0, _022F12BC ; =GROUND_STATE_MAP
 	mov r2, #0
 	ldr r1, [r0, #4]
 	strb r2, [r1, #3]
@@ -24942,20 +24942,20 @@ _022F1268:
 	bl ov11_022F3010
 	mov r0, #0
 	bl ov11_022F22F4
-	ldr r0, _022F12BC ; =ov11_02324CC0
+	ldr r0, _022F12BC ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl ov11_022EBEAC
-	ldr r0, _022F12BC ; =ov11_02324CC0
+	ldr r0, _022F12BC ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022F12BC ; =ov11_02324CC0
+	ldr r0, _022F12BC ; =GROUND_STATE_MAP
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F12BC: .word ov11_02324CC0
+_022F12BC: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1244
 
 	arm_func_start ov11_022F12C0
@@ -24971,7 +24971,7 @@ ov11_022F12C0: ; 0x022F12C0
 	mov r0, #0x2f4
 	mov r1, #6
 	bl MemAlloc
-	ldr r2, _022F1538 ; =ov11_02324CC0
+	ldr r2, _022F1538 ; =GROUND_STATE_MAP
 	mvn r1, #0
 	str r0, [r2]
 	ldr r0, [r2, #4]
@@ -24981,15 +24981,15 @@ ov11_022F12C0: ; 0x022F12C0
 	ldr r0, [r2]
 	ldr r1, _022F153C ; =ov11_02320CD8
 	bl ov11_022EBC18
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	mvn r1, #0
 	ldr r0, [r0]
 	bl ov11_022EC27C
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldmia r0, {r1, r2}
 	add r0, r2, #4
 	bl ov11_022EFD5C
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	add r0, r1, #0x20
 	add r1, r1, #4
@@ -25034,11 +25034,11 @@ _022F13C4:
 _022F13CC:
 	cmp r0, r5
 	bne _022F1410
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	bl MemFree
 	ldrsh r1, [r4]
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	mov r3, #0
 	str r3, [r0]
 	cmp r1, #0xb
@@ -25055,7 +25055,7 @@ _022F1414:
 	ldrsh r0, [r6]
 	cmp r0, r1
 	bne _022F13CC
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, _022F154C ; =ov11_02320D10
 	ldr r0, [r0]
 	bl ov11_022EBC18
@@ -25076,7 +25076,7 @@ _022F1444:
 	str ip, [sp, #4]
 	bl FatalError
 _022F146C:
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, _022F153C ; =ov11_02320CD8
 	ldr r0, [r0]
 	bl ov11_022EBC18
@@ -25085,15 +25085,15 @@ _022F146C:
 	mov r0, #1
 	bl ov11_022F22F4
 _022F148C:
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldrsh r1, [r4, #4]
 	ldr r0, [r0]
 	bl ov11_022EC27C
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldmia r0, {r1, r2}
 	add r0, r2, #4
 	bl ov11_022EFD5C
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	add r0, r1, #0x20
 	add r1, r1, #4
@@ -25104,13 +25104,13 @@ _022F148C:
 	beq _022F14D4
 	bl ov11_022F25A4
 _022F14D4:
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r2, _022F1558 ; =ov11_02320CA8
 	ldr r0, [r0]
 	mov r1, #0
 	bl ov11_022EF2D4
 _022F14E8:
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0, #4]
 	strb r1, [r0, #2]
@@ -25133,7 +25133,7 @@ _022F152C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022F1534: .word ov11_02320FB4
-_022F1538: .word ov11_02324CC0
+_022F1538: .word GROUND_STATE_MAP
 _022F153C: .word ov11_02320CD8
 _022F1540: .word EVENTS
 _022F1544: .word ov11_02320CF4
@@ -25160,7 +25160,7 @@ GetSpecialLayoutBackground: ; 0x022F155C
 	mov r0, #0x2f4
 	mov r1, #6
 	bl MemAlloc
-	ldr r2, _022F16F4 ; =ov11_02324CC0
+	ldr r2, _022F16F4 ; =GROUND_STATE_MAP
 	mvn r1, #0
 	str r0, [r2]
 	ldr r0, [r2, #4]
@@ -25169,19 +25169,19 @@ GetSpecialLayoutBackground: ; 0x022F155C
 	ldrneb r0, [r7]
 	cmpne r0, #0xff
 	bne _022F1600
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, _022F16F8 ; =ov11_02320CD8
 	ldr r0, [r0]
 	bl ov11_022EBC18
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	mvn r1, #0
 	ldr r0, [r0]
 	bl ov11_022EC27C
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldmia r0, {r1, r2}
 	add r0, r2, #4
 	bl ov11_022EFD5C
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	add r0, r1, #0x20
 	add r1, r1, #4
@@ -25206,7 +25206,7 @@ _022F1600:
 	str r3, [sp, #4]
 	bl FatalError
 _022F1644:
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, _022F1708 ; =ov11_02320D10
 	ldr r0, [r0]
 	bl ov11_022EBC18
@@ -25216,7 +25216,7 @@ _022F1644:
 	bl ov11_022F22F4
 	cmp r5, #0
 	beq _022F1688
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldrsh r1, [r4, #4]
 	ldr r0, [r0]
 	mov r2, r7
@@ -25224,29 +25224,29 @@ _022F1644:
 	bl LoadMapType11
 	b _022F16A0
 _022F1688:
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldrsh r1, [r4, #4]
 	ldr r0, [r0]
 	mov r2, r7
 	mov r3, r6
 	bl LoadMapType10
 _022F16A0:
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldmia r0, {r1, r2}
 	add r0, r2, #4
 	bl ov11_022EFD5C
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	add r0, r1, #0x20
 	add r1, r1, #4
 	bl ov11_022F03C4
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r2, _022F170C ; =ov11_02320CB8
 	ldr r0, [r0]
 	mov r1, #0
 	bl ov11_022EF2D4
 _022F16D8:
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0, #4]
 	strb r1, [r0, #2]
@@ -25254,7 +25254,7 @@ _022F16D8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022F16F0: .word ov11_02320FE8
-_022F16F4: .word ov11_02324CC0
+_022F16F4: .word GROUND_STATE_MAP
 _022F16F8: .word ov11_02320CD8
 _022F16FC: .word EVENTS
 _022F1700: .word ov11_02320CA8
@@ -25265,7 +25265,7 @@ _022F170C: .word ov11_02320CB8
 
 	arm_func_start ov11_022F1710
 ov11_022F1710: ; 0x022F1710
-	ldr r0, _022F1734 ; =ov11_02324CC0
+	ldr r0, _022F1734 ; =GROUND_STATE_MAP
 	mov r2, #0
 	ldr r1, [r0, #4]
 	ldr ip, _022F1738 ; =ov11_022EDD14
@@ -25275,7 +25275,7 @@ ov11_022F1710: ; 0x022F1710
 	ldr r0, [r0]
 	bx ip
 	.align 2, 0
-_022F1734: .word ov11_02324CC0
+_022F1734: .word GROUND_STATE_MAP
 _022F1738: .word ov11_022EDD14
 	arm_func_end ov11_022F1710
 
@@ -25287,7 +25287,7 @@ ov11_022F173C: ; 0x022F173C
 	mov r2, r4
 	mov r0, #1
 	bl DebugPrint
-	ldr r2, _022F1790 ; =ov11_02324CC0
+	ldr r2, _022F1790 ; =GROUND_STATE_MAP
 	ldr r1, _022F1794 ; =EVENTS
 	ldr r3, [r2, #4]
 	mov r0, #0xc
@@ -25296,32 +25296,32 @@ ov11_022F173C: ; 0x022F173C
 	ldrsh r1, [r0, #4]
 	ldr r0, [r2]
 	bl ov11_022EDD20
-	ldr r0, _022F1790 ; =ov11_02324CC0
+	ldr r0, _022F1790 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0, #4]
 	strb r1, [r0, #2]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022F178C: .word ov11_02321018
-_022F1790: .word ov11_02324CC0
+_022F1790: .word GROUND_STATE_MAP
 _022F1794: .word EVENTS
 	arm_func_end ov11_022F173C
 
 	arm_func_start ov11_022F1798
 ov11_022F1798: ; 0x022F1798
-	ldr r0, _022F17B0 ; =ov11_02324CC0
+	ldr r0, _022F17B0 ; =GROUND_STATE_MAP
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldrnesh r0, [r0]
 	mvneq r0, #0
 	bx lr
 	.align 2, 0
-_022F17B0: .word ov11_02324CC0
+_022F17B0: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1798
 
 	arm_func_start ov11_022F17B4
 ov11_022F17B4: ; 0x022F17B4
-	ldr r0, _022F17E0 ; =ov11_02324CC0
+	ldr r0, _022F17E0 ; =GROUND_STATE_MAP
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	mvneq r0, #0
@@ -25333,18 +25333,18 @@ ov11_022F17B4: ; 0x022F17B4
 	ldrsh r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_022F17E0: .word ov11_02324CC0
+_022F17E0: .word GROUND_STATE_MAP
 _022F17E4: .word EVENTS
 	arm_func_end ov11_022F17B4
 
 	arm_func_start ov11_022F17E8
 ov11_022F17E8: ; 0x022F17E8
-	ldr r1, _022F17F8 ; =ov11_02324CC0
+	ldr r1, _022F17F8 ; =GROUND_STATE_MAP
 	ldr ip, _022F17FC ; =ov11_022ED69C
 	ldr r1, [r1]
 	bx ip
 	.align 2, 0
-_022F17F8: .word ov11_02324CC0
+_022F17F8: .word GROUND_STATE_MAP
 _022F17FC: .word ov11_022ED69C
 	arm_func_end ov11_022F17E8
 
@@ -25810,40 +25810,40 @@ _022F1DB8: ; jump table
 	b _022F1E18 ; case 4
 	b _022F1E2C ; case 5
 _022F1DD0:
-	ldr r0, _022F1E40 ; =ov11_02324CC0
+	ldr r0, _022F1E40 ; =GROUND_STATE_MAP
 	mov r1, #0
 	ldr r0, [r0]
 	mov r2, r1
 	bl ov11_022EE5EC
 	ldmia sp!, {r3, pc}
 _022F1DE8:
-	ldr r0, _022F1E40 ; =ov11_02324CC0
+	ldr r0, _022F1E40 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0]
 	mov r2, r1
 	bl ov11_022EE5EC
 	ldmia sp!, {r3, pc}
 _022F1E00:
-	ldr r0, _022F1E40 ; =ov11_02324CC0
+	ldr r0, _022F1E40 ; =GROUND_STATE_MAP
 	mov r1, #0
 	ldr r0, [r0]
 	mov r2, #1
 	bl ov11_022EE5EC
 	ldmia sp!, {r3, pc}
 _022F1E18:
-	ldr r0, _022F1E40 ; =ov11_02324CC0
+	ldr r0, _022F1E40 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0]
 	bl ov11_022EE5E4
 	ldmia sp!, {r3, pc}
 _022F1E2C:
-	ldr r0, _022F1E40 ; =ov11_02324CC0
+	ldr r0, _022F1E40 ; =GROUND_STATE_MAP
 	mov r1, #0
 	ldr r0, [r0]
 	bl ov11_022EE5E4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F1E40: .word ov11_02324CC0
+_022F1E40: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1DA8
 
 	arm_func_start ov11_022F1E44
@@ -25852,7 +25852,7 @@ ov11_022F1E44: ; 0x022F1E44
 	cmp r0, #1
 	cmpne r0, #3
 	bne _022F1E64
-	ldr r0, _022F1E6C ; =ov11_02324CC0
+	ldr r0, _022F1E6C ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	bl ov11_022EE60C
 	ldmia sp!, {r3, pc}
@@ -25860,76 +25860,76 @@ _022F1E64:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F1E6C: .word ov11_02324CC0
+_022F1E6C: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1E44
 
 	arm_func_start ov11_022F1E70
 ov11_022F1E70: ; 0x022F1E70
-	ldr r1, _022F1E88 ; =ov11_02324CC0
+	ldr r1, _022F1E88 ; =GROUND_STATE_MAP
 	ldr ip, _022F1E8C ; =ov11_022EF2BC
 	mov r2, r0
 	ldr r0, [r1]
 	mov r1, #0
 	bx ip
 	.align 2, 0
-_022F1E88: .word ov11_02324CC0
+_022F1E88: .word GROUND_STATE_MAP
 _022F1E8C: .word ov11_022EF2BC
 	arm_func_end ov11_022F1E70
 
 	arm_func_start ov11_022F1E90
 ov11_022F1E90: ; 0x022F1E90
-	ldr r3, _022F1EA4 ; =ov11_02324CC0
+	ldr r3, _022F1EA4 ; =GROUND_STATE_MAP
 	ldr ip, _022F1EA8 ; =ov11_022EF40C
 	mov r2, r1
 	ldr r1, [r3]
 	bx ip
 	.align 2, 0
-_022F1EA4: .word ov11_02324CC0
+_022F1EA4: .word GROUND_STATE_MAP
 _022F1EA8: .word ov11_022EF40C
 	arm_func_end ov11_022F1E90
 
 	arm_func_start ov11_022F1EAC
 ov11_022F1EAC: ; 0x022F1EAC
-	ldr r2, _022F1EC4 ; =ov11_02324CC0
+	ldr r2, _022F1EC4 ; =GROUND_STATE_MAP
 	mov r1, r0
 	ldr r0, [r2, #4]
 	ldr ip, _022F1EC8 ; =ov11_022F03F8
 	add r0, r0, #4
 	bx ip
 	.align 2, 0
-_022F1EC4: .word ov11_02324CC0
+_022F1EC4: .word GROUND_STATE_MAP
 _022F1EC8: .word ov11_022F03F8
 	arm_func_end ov11_022F1EAC
 
 	arm_func_start ov11_022F1ECC
 ov11_022F1ECC: ; 0x022F1ECC
-	ldr r2, _022F1EE4 ; =ov11_02324CC0
+	ldr r2, _022F1EE4 ; =GROUND_STATE_MAP
 	mov r1, r0
 	ldr r0, [r2, #4]
 	ldr ip, _022F1EE8 ; =ov11_022F040C
 	add r0, r0, #4
 	bx ip
 	.align 2, 0
-_022F1EE4: .word ov11_02324CC0
+_022F1EE4: .word GROUND_STATE_MAP
 _022F1EE8: .word ov11_022F040C
 	arm_func_end ov11_022F1ECC
 
 	arm_func_start ov11_022F1EEC
 ov11_022F1EEC: ; 0x022F1EEC
-	ldr r1, _022F1F00 ; =ov11_02324CC0
+	ldr r1, _022F1F00 ; =GROUND_STATE_MAP
 	ldr ip, _022F1F04 ; =ov11_022F03C4
 	ldr r1, [r1, #4]
 	add r1, r1, #0x20
 	bx ip
 	.align 2, 0
-_022F1F00: .word ov11_02324CC0
+_022F1F00: .word GROUND_STATE_MAP
 _022F1F04: .word ov11_022F03C4
 	arm_func_end ov11_022F1EEC
 
 	arm_func_start ov11_022F1F08
 ov11_022F1F08: ; 0x022F1F08
 	stmdb sp!, {r3, lr}
-	ldr r2, _022F1F38 ; =ov11_02324CC0
+	ldr r2, _022F1F38 ; =GROUND_STATE_MAP
 	mov r3, r0
 	ldr r0, [r2]
 	mov r2, r1
@@ -25941,13 +25941,13 @@ ov11_022F1F08: ; 0x022F1F08
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F1F38: .word ov11_02324CC0
+_022F1F38: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1F08
 
 	arm_func_start ov11_022F1F3C
 ov11_022F1F3C: ; 0x022F1F3C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r2, _022F2044 ; =ov11_02324CC0
+	ldr r2, _022F2044 ; =GROUND_STATE_MAP
 	mov r7, r0
 	ldr r0, [r2]
 	mov r6, r1
@@ -26016,14 +26016,14 @@ _022F203C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022F2044: .word ov11_02324CC0
+_022F2044: .word GROUND_STATE_MAP
 _022F2048: .word EVENTS
 	arm_func_end ov11_022F1F3C
 
 	arm_func_start ov11_022F204C
 ov11_022F204C: ; 0x022F204C
 	stmdb sp!, {r3, lr}
-	ldr r2, _022F20C8 ; =ov11_02324CC0
+	ldr r2, _022F20C8 ; =GROUND_STATE_MAP
 	ldr r3, [r0]
 	ldr r0, [r0, #4]
 	ldr r2, [r2]
@@ -26058,13 +26058,13 @@ _022F20B8:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F20C8: .word ov11_02324CC0
+_022F20C8: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F204C
 
 	arm_func_start ov11_022F20CC
 ov11_022F20CC: ; 0x022F20CC
 	stmdb sp!, {r3, lr}
-	ldr r2, _022F2148 ; =ov11_02324CC0
+	ldr r2, _022F2148 ; =GROUND_STATE_MAP
 	ldr r3, [r0]
 	ldr r0, [r0, #4]
 	ldr r2, [r2]
@@ -26099,13 +26099,13 @@ _022F2138:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F2148: .word ov11_02324CC0
+_022F2148: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F20CC
 
 	arm_func_start ov11_022F214C
 ov11_022F214C: ; 0x022F214C
 	stmdb sp!, {r4, lr}
-	ldr ip, _022F2174 ; =ov11_02324CC0
+	ldr ip, _022F2174 ; =GROUND_STATE_MAP
 	mov r4, r0
 	mov lr, r1
 	mov r3, r2
@@ -26115,7 +26115,7 @@ ov11_022F214C: ; 0x022F214C
 	bl ov11_022EF4C0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022F2174: .word ov11_02324CC0
+_022F2174: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F214C
 
 	arm_func_start ov11_022F2178
@@ -26138,7 +26138,7 @@ _022F2190: .word ov11_022F37D0
 ov11_022F2194: ; 0x022F2194
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	ldr r0, [r0, #4]
 	ldrb r0, [r0, #2]
 	cmp r0, #0
@@ -26150,12 +26150,12 @@ ov11_022F2194: ; 0x022F2194
 	moveq r0, #0
 	streq r0, [sp]
 	streq r0, [sp, #4]
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	add r0, r1, #0x20
 	add r1, r1, #4
 	bl ov11_022F03C4
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	add r1, sp, #0
 	ldr r0, [r0, #4]
 	mov r2, #0
@@ -26163,16 +26163,16 @@ ov11_022F2194: ; 0x022F2194
 	bl ov11_022F042C
 	cmp r0, #0
 	beq _022F2214
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	add r2, sp, #0
 	ldr r0, [r0]
 	mov r1, #0
 	bl ov11_022EF2D4
 _022F2214:
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	bl ov11_022EF70C
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0, #4]
 	strb r1, [r0, #3]
@@ -26182,13 +26182,13 @@ _022F2230:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F2240: .word ov11_02324CC0
+_022F2240: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F2194
 
 	arm_func_start ov11_022F2244
 ov11_022F2244: ; 0x022F2244
 	stmdb sp!, {r3, lr}
-	ldr r0, _022F2274 ; =ov11_02324CC0
+	ldr r0, _022F2274 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	ldrb r1, [r1, #3]
 	cmp r1, #0
@@ -26201,7 +26201,7 @@ _022F2268:
 	bl ov11_022F4358
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F2274: .word ov11_02324CC0
+_022F2274: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F2244
 
 	arm_func_start ov11_022F2278
@@ -31959,7 +31959,7 @@ ov11_022F709C: ; 0x022F709C
 	mov r0, #0x124
 	mov r1, #6
 	bl MemAlloc
-	ldr r3, _022F70C8 ; =ov11_02324CF4
+	ldr r3, _022F70C8 ; =GROUND_STATE_PTRS
 	ldr r1, _022F70CC ; =ov11_02321414
 	mov r2, #0
 	str r0, [r3]
@@ -31967,7 +31967,7 @@ ov11_022F709C: ; 0x022F709C
 	bl ov11_022F7104
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F70C8: .word ov11_02324CF4
+_022F70C8: .word GROUND_STATE_PTRS
 _022F70CC: .word ov11_02321414
 	arm_func_end ov11_022F709C
 
@@ -31975,24 +31975,24 @@ _022F70CC: .word ov11_02321414
 ov11_022F70D0: ; 0x022F70D0
 	stmdb sp!, {r3, lr}
 	bl ov11_022F7104
-	ldr r0, _022F7100 ; =ov11_02324CF4
+	ldr r0, _022F7100 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	bl ov11_022DC934
-	ldr r0, _022F7100 ; =ov11_02324CF4
+	ldr r0, _022F7100 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022F7100 ; =ov11_02324CF4
+	ldr r0, _022F7100 ; =GROUND_STATE_PTRS
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F7100: .word ov11_02324CF4
+_022F7100: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F70D0
 
 	arm_func_start ov11_022F7104
 ov11_022F7104: ; 0x022F7104
 	stmdb sp!, {r3, lr}
-	ldr r0, _022F713C ; =ov11_02324CF4
+	ldr r0, _022F713C ; =GROUND_STATE_PTRS
 	mov r2, #0
 	ldr r1, [r0]
 	str r2, [r1, #0xf0]
@@ -32000,13 +32000,13 @@ ov11_022F7104: ; 0x022F7104
 	str r2, [r1, #0x10c]
 	ldr r0, [r0]
 	bl ov11_022DCAE0
-	ldr r0, _022F713C ; =ov11_02324CF4
+	ldr r0, _022F713C ; =GROUND_STATE_PTRS
 	mov r1, #0
 	ldr r0, [r0]
 	strb r1, [r0, #0xec]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F713C: .word ov11_02324CF4
+_022F713C: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7104
 
 	arm_func_start ov11_022F7140
@@ -32015,7 +32015,7 @@ ov11_022F7140: ; 0x022F7140
 	ldr r1, _022F7180 ; =ov11_02321464
 	mov r0, #2
 	bl DebugPrint
-	ldr r1, _022F7184 ; =ov11_02324CF4
+	ldr r1, _022F7184 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r0, [r1]
 	mov r3, #0x48
@@ -32029,7 +32029,7 @@ ov11_022F7140: ; 0x022F7140
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022F7180: .word ov11_02321464
-_022F7184: .word ov11_02324CF4
+_022F7184: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7140
 
 	arm_func_start ov11_022F7188
@@ -32042,7 +32042,7 @@ ov11_022F7188: ; 0x022F7188
 	mov r3, r4
 	mov r0, #2
 	bl DebugPrint
-	ldr r1, _022F71E0 ; =ov11_02324CF4
+	ldr r1, _022F71E0 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32057,7 +32057,7 @@ ov11_022F7188: ; 0x022F7188
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F71DC: .word ov11_023214A0
-_022F71E0: .word ov11_02324CF4
+_022F71E0: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7188
 
 	arm_func_start ov11_022F71E4
@@ -32068,7 +32068,7 @@ ov11_022F71E4: ; 0x022F71E4
 	mov r2, r4
 	mov r0, #2
 	bl DebugPrint
-	ldr r0, _022F7228 ; =ov11_02324CF4
+	ldr r0, _022F7228 ; =GROUND_STATE_PTRS
 	ldr r2, [r0]
 	ldr r1, [r2, #0x10c]
 	cmp r1, #1
@@ -32080,7 +32080,7 @@ ov11_022F71E4: ; 0x022F71E4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022F7224: .word ov11_023214E4
-_022F7228: .word ov11_02324CF4
+_022F7228: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F71E4
 
 	arm_func_start ov11_022F722C
@@ -32096,7 +32096,7 @@ ov11_022F722C: ; 0x022F722C
 	mov r0, #2
 	str r4, [sp]
 	bl DebugPrint
-	ldr r1, _022F729C ; =ov11_02324CF4
+	ldr r1, _022F729C ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32115,7 +32115,7 @@ _022F7290:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _022F7298: .word ov11_0232150C
-_022F729C: .word ov11_02324CF4
+_022F729C: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F722C
 
 	arm_func_start ov11_022F72A0
@@ -32141,7 +32141,7 @@ ov11_022F72A0: ; 0x022F72A0
 	str r4, [sp, #4]
 	bl DebugPrint
 _022F72F0:
-	ldr r1, _022F7350 ; =ov11_02324CF4
+	ldr r1, _022F7350 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32159,7 +32159,7 @@ _022F7324:
 	subs r2, r2, #1
 	strb r0, [r1], #1
 	bne _022F7324
-	ldr r0, _022F7350 ; =ov11_02324CF4
+	ldr r0, _022F7350 ; =GROUND_STATE_PTRS
 	strb r5, [r3, #0x11c]
 	ldr r0, [r0]
 	strb r4, [r0, #0x11d]
@@ -32168,7 +32168,7 @@ _022F7344:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _022F734C: .word ov11_02321548
-_022F7350: .word ov11_02324CF4
+_022F7350: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F72A0
 
 	arm_func_start ov11_022F7354
@@ -32194,7 +32194,7 @@ ov11_022F7354: ; 0x022F7354
 	str r4, [sp, #4]
 	bl DebugPrint
 _022F73A4:
-	ldr r1, _022F7404 ; =ov11_02324CF4
+	ldr r1, _022F7404 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32212,7 +32212,7 @@ _022F73D8:
 	subs r2, r2, #1
 	strb r0, [r1], #1
 	bne _022F73D8
-	ldr r0, _022F7404 ; =ov11_02324CF4
+	ldr r0, _022F7404 ; =GROUND_STATE_PTRS
 	strb r5, [r3, #0x11c]
 	ldr r0, [r0]
 	strb r4, [r0, #0x11d]
@@ -32221,7 +32221,7 @@ _022F73F8:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _022F7400: .word ov11_02321580
-_022F7404: .word ov11_02324CF4
+_022F7404: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7354
 
 	arm_func_start ov11_022F7408
@@ -32242,7 +32242,7 @@ ov11_022F7408: ; 0x022F7408
 	mov r0, #2
 	bl DebugPrint
 _022F7444:
-	ldr r1, _022F749C ; =ov11_02324CF4
+	ldr r1, _022F749C ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32267,7 +32267,7 @@ _022F7490:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _022F7498: .word ov11_023215B8
-_022F749C: .word ov11_02324CF4
+_022F749C: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7408
 
 	arm_func_start ov11_022F74A0
@@ -32280,7 +32280,7 @@ ov11_022F74A0: ; 0x022F74A0
 	mov r3, r4
 	mov r0, #2
 	bl DebugPrint
-	ldr r1, _022F74FC ; =ov11_02324CF4
+	ldr r1, _022F74FC ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32296,7 +32296,7 @@ ov11_022F74A0: ; 0x022F74A0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F74F8: .word ov11_023215E4
-_022F74FC: .word ov11_02324CF4
+_022F74FC: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F74A0
 
 	arm_func_start ov11_022F7500
@@ -32318,7 +32318,7 @@ ov11_022F7500: ; 0x022F7500
 	mov r0, #2
 	bl DebugPrint
 _022F7540:
-	ldr r1, _022F7590 ; =ov11_02324CF4
+	ldr r1, _022F7590 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32341,13 +32341,13 @@ _022F7584:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _022F758C: .word ov11_02321614
-_022F7590: .word ov11_02324CF4
+_022F7590: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7500
 
 	arm_func_start ov11_022F7594
 ov11_022F7594: ; 0x022F7594
 	stmdb sp!, {r3, lr}
-	ldr r1, _022F75BC ; =ov11_02324CF4
+	ldr r1, _022F75BC ; =GROUND_STATE_PTRS
 	mov ip, #1
 	ldr r3, [r1]
 	mov r2, r0
@@ -32357,12 +32357,12 @@ ov11_022F7594: ; 0x022F7594
 	bl ov11_022DCCEC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F75BC: .word ov11_02324CF4
+_022F75BC: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7594
 
 	arm_func_start ov11_022F75C0
 ov11_022F75C0: ; 0x022F75C0
-	ldr r0, _022F75EC ; =ov11_02324CF4
+	ldr r0, _022F75EC ; =GROUND_STATE_PTRS
 	ldr r1, [r0]
 	ldr r0, [r1, #0x10c]
 	cmp r0, #0
@@ -32374,32 +32374,32 @@ ov11_022F75C0: ; 0x022F75C0
 	ldreqb r0, [r1, #0xec]
 	bx lr
 	.align 2, 0
-_022F75EC: .word ov11_02324CF4
+_022F75EC: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F75C0
 
 	arm_func_start ov11_022F75F0
 ov11_022F75F0: ; 0x022F75F0
 	stmdb sp!, {r4, lr}
-	ldr r1, _022F7624 ; =ov11_02324CF4
+	ldr r1, _022F7624 ; =GROUND_STATE_PTRS
 	mov r4, r0
 	ldr r0, [r1]
 	bl ov11_022DC958
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, pc}
-	ldr r0, _022F7624 ; =ov11_02324CF4
+	ldr r0, _022F7624 ; =GROUND_STATE_PTRS
 	mov r1, r4
 	ldr r0, [r0]
 	bl ov11_022DCA58
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022F7624: .word ov11_02324CF4
+_022F7624: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F75F0
 
 	arm_func_start ov11_022F7628
 ov11_022F7628: ; 0x022F7628
 	stmdb sp!, {r3, lr}
-	ldr r0, _022F764C ; =ov11_02324CF4
+	ldr r0, _022F764C ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	ldr r1, [r0, #0x10c]
 	cmp r1, #0
@@ -32408,18 +32408,18 @@ ov11_022F7628: ; 0x022F7628
 	bl ov11_022DCA70
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F764C: .word ov11_02324CF4
+_022F764C: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7628
 
 	arm_func_start ov11_022F7650
 ov11_022F7650: ; 0x022F7650
-	ldr r2, _022F7664 ; =ov11_02324CF4
+	ldr r2, _022F7664 ; =GROUND_STATE_PTRS
 	ldr ip, _022F7668 ; =ov11_022DD0EC
 	mov r1, r0
 	ldr r0, [r2]
 	bx ip
 	.align 2, 0
-_022F7664: .word ov11_02324CF4
+_022F7664: .word GROUND_STATE_PTRS
 _022F7668: .word ov11_022DD0EC
 	arm_func_end ov11_022F7650
 
@@ -32427,7 +32427,7 @@ _022F7668: .word ov11_022DD0EC
 ov11_022F766C: ; 0x022F766C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x20
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r1, [r0]
 	ldr r0, [r1, #0xf0]
 	cmp r0, #2
@@ -32436,7 +32436,7 @@ ov11_022F766C: ; 0x022F766C
 	ldr r1, _022F7BBC ; =ov11_02321644
 	mov r0, #2
 	bl DebugPrint
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r4, #0
 	ldr r1, [r0]
 	str r4, [r1, #0xf0]
@@ -32464,14 +32464,14 @@ _022F76E0:
 	bl ov11_022E5EFC
 	cmp r0, #0
 	beq _022F7B80
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r3, #1
 	ldr r0, [r0]
 	add r2, sp, #4
 	mov r1, r4
 	strh r3, [sp, #0x1c]
 	bl ov11_022DCCEC
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r3, #1
 	ldr r2, [r0]
 	mov r0, r4
@@ -32490,7 +32490,7 @@ _022F773C:
 	bl ov11_022E5EFC
 	cmp r0, #0
 	beq _022F7B80
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	add r2, sp, #4
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
@@ -32500,7 +32500,7 @@ _022F773C:
 	mov r1, #0
 	strh r3, [sp, #0x1c]
 	bl ov11_022DCCEC
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32523,7 +32523,7 @@ _022F77BC:
 	bl ov11_022E5EFC
 	cmp r0, #0
 	beq _022F7B80
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	add r2, sp, #4
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
@@ -32533,7 +32533,7 @@ _022F77BC:
 	mov r1, #0
 	strh r3, [sp, #0x1c]
 	bl ov11_022DCCEC
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32556,7 +32556,7 @@ _022F783C:
 	bl ov11_022E5EFC
 	cmp r0, #0
 	beq _022F78A0
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	add r2, sp, #4
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
@@ -32566,7 +32566,7 @@ _022F783C:
 	mov r1, #0
 	strh r3, [sp, #0x1c]
 	bl ov11_022DCCEC
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xec]
@@ -32584,14 +32584,14 @@ _022F78B0:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022E5BF4
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xec]
 	b _022F7B80
 _022F78E0:
 	bl ov11_022E5C84
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xec]
@@ -32605,7 +32605,7 @@ _022F78F8:
 	ldr r1, _022F7BC0 ; =ov11_02321664
 	mov r0, #2
 	bl DebugPrint
-	ldr ip, _022F7BB8 ; =ov11_02324CF4
+	ldr ip, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r5, [ip]
 	add r4, r5, #0x10c
 	add lr, r5, #0xf4
@@ -32640,7 +32640,7 @@ _022F7988:
 	bl GetCoroutineInfo
 	cmp r0, #0
 	beq _022F79D4
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	add r2, sp, #4
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
@@ -32650,12 +32650,12 @@ _022F7988:
 	mov r1, #0
 	strh r3, [sp, #0x1c]
 	bl ov11_022DCCEC
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xec]
 _022F79D4:
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #0xf0]
@@ -32663,7 +32663,7 @@ _022F79D4:
 _022F79E8:
 	mov r0, r3
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32679,7 +32679,7 @@ _022F7A10:
 	mov r0, r3
 	mov r1, r1, asr #0x10
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32695,7 +32695,7 @@ _022F7A4C:
 	mov r0, r3
 	mov r1, r1, asr #0x10
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32707,7 +32707,7 @@ _022F7A4C:
 _022F7A8C:
 	mov r1, #0xb
 	bl ov11_022F881C
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
 	cmp r1, #0
@@ -32716,7 +32716,7 @@ _022F7A8C:
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32728,7 +32728,7 @@ _022F7A8C:
 _022F7ADC:
 	mov r1, #0xb
 	bl ov11_022F881C
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
 	cmp r1, #0
@@ -32737,7 +32737,7 @@ _022F7ADC:
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32749,11 +32749,11 @@ _022F7ADC:
 _022F7B2C:
 	mov r1, #0xb
 	bl ov11_022F881C
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #1
 	ldr r0, [r0]
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32771,23 +32771,23 @@ _022F7B78:
 	mov r0, #0
 	str r0, [r3, #0xf0]
 _022F7B80:
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	ldr r1, [r0, #0xf0]
 	cmp r1, #0
 	bne _022F7B98
 	bl FuncThatCallsRunNextOpcode
 _022F7B98:
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	bl ov11_022DC940
-	ldr r1, _022F7BB8 ; =ov11_02324CF4
+	ldr r1, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r1, [r1]
 	strb r0, [r1, #0xec]
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022F7BB8: .word ov11_02324CF4
+_022F7BB8: .word GROUND_STATE_PTRS
 _022F7BBC: .word ov11_02321644
 _022F7BC0: .word ov11_02321664
 	arm_func_end ov11_022F766C
@@ -32795,7 +32795,7 @@ _022F7BC0: .word ov11_02321664
 	arm_func_start ov11_022F7BC4
 ov11_022F7BC4: ; 0x022F7BC4
 	stmdb sp!, {r3, lr}
-	ldr r0, _022F7CB8 ; =ov11_02324CF4
+	ldr r0, _022F7CB8 ; =GROUND_STATE_PTRS
 	ldr r3, [r0]
 	ldr r0, [r3, #0xf0]
 	cmp r0, #1
@@ -32853,12 +32853,12 @@ _022F7C7C:
 	mov r2, #0
 	bl ov11_022E551C
 _022F7C8C:
-	ldr r0, _022F7CB8 ; =ov11_02324CF4
+	ldr r0, _022F7CB8 ; =GROUND_STATE_PTRS
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0, #0xf0]
 _022F7C9C:
-	ldr r0, _022F7CB8 ; =ov11_02324CF4
+	ldr r0, _022F7CB8 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	ldr r1, [r0, #0xf0]
 	cmp r1, #0
@@ -32866,7 +32866,7 @@ _022F7C9C:
 	bl ov11_022DD2C0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F7CB8: .word ov11_02324CF4
+_022F7CB8: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7BC4
 
 	arm_func_start AllocAndInitPartnerFollowDataAndLiveActorList
@@ -60063,12 +60063,12 @@ ov11_0230E978: ; 0x0230E978
 	ldr r0, _0230EB50 ; =0x0000FF94
 	mov r1, #0xf
 	bl MemAlloc
-	ldr r1, _0230EB54 ; =ov11_02324DE4
+	ldr r1, _0230EB54 ; =WORLD_MAP_MODE
 	str r0, [r1, #8]
 	bl GetExecuteSpecialEpisodeType
 	mvn r1, #0
 	cmp r0, r1
-	ldr r0, _0230EB54 ; =ov11_02324DE4
+	ldr r0, _0230EB54 ; =WORLD_MAP_MODE
 	movne r2, #1
 	mov ip, #1
 	ldr r1, [r0, #8]
@@ -60091,12 +60091,12 @@ ov11_0230E978: ; 0x0230E978
 	strneb r2, [r0, #0x999]
 	bne _0230EA08
 	bl sub_0204CDCC
-	ldr r1, _0230EB54 ; =ov11_02324DE4
+	ldr r1, _0230EB54 ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf000
 	strb r0, [r1, #0x999]
 _0230EA08:
-	ldr ip, _0230EB54 ; =ov11_02324DE4
+	ldr ip, _0230EB54 ; =WORLD_MAP_MODE
 	mvn r0, #0
 	ldr r2, [ip, #8]
 	mov r1, #0
@@ -60123,7 +60123,7 @@ _0230EA54:
 	str r0, [r2, #0x9b0]
 	cmp r1, r3
 	blt _0230EA54
-	ldr r2, _0230EB54 ; =ov11_02324DE4
+	ldr r2, _0230EB54 ; =WORLD_MAP_MODE
 	mov ip, #0
 	ldr r1, [r2, #8]
 	sub r3, ip, #2
@@ -60139,7 +60139,7 @@ _0230EA54:
 	bl ov11_02312844
 	bl ov11_0230EC00
 	bl GetMainCharacter1
-	ldr r1, _0230EB54 ; =ov11_02324DE4
+	ldr r1, _0230EB54 ; =WORLD_MAP_MODE
 	ldrsh r2, [r0, #4]
 	ldr r0, [r1, #8]
 	mov r3, #0
@@ -60154,34 +60154,34 @@ _0230EA54:
 	add r1, r1, #0x500
 	ldrsh r1, [r1, #0x2e]
 	bl ov11_022F5BBC
-	ldr r0, _0230EB54 ; =ov11_02324DE4
+	ldr r0, _0230EB54 ; =WORLD_MAP_MODE
 	mov r1, #0xa
 	ldr r0, [r0, #8]
 	add r0, r0, #0x134
 	add r0, r0, #0x400
 	bl ov11_022F4974
-	ldr r0, _0230EB54 ; =ov11_02324DE4
+	ldr r0, _0230EB54 ; =WORLD_MAP_MODE
 	mov r1, #0x9b
 	ldr r0, [r0, #8]
 	ldr r2, _0230EB5C ; =0xA0080000
 	add r0, r0, #0x1f8
 	add r0, r0, #0x400
 	bl LoadObjectAnimData
-	ldr r0, _0230EB54 ; =ov11_02324DE4
+	ldr r0, _0230EB54 ; =WORLD_MAP_MODE
 	mov r1, #8
 	ldr r0, [r0, #8]
 	add r0, r0, #0x1f8
 	add r0, r0, #0x400
 	bl ov11_022F4974
 	mov r2, #0
-	ldr r1, _0230EB54 ; =ov11_02324DE4
+	ldr r1, _0230EB54 ; =WORLD_MAP_MODE
 	mov r0, #1
 	ldr r1, [r1, #8]
 	strb r2, [r1, #0x6bc]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230EB50: .word 0x0000FF94
-_0230EB54: .word ov11_02324DE4
+_0230EB54: .word WORLD_MAP_MODE
 _0230EB58: .word 0x00000136
 _0230EB5C: .word 0xA0080000
 	arm_func_end ov11_0230E978
@@ -60191,7 +60191,7 @@ ov11_0230EB60: ; 0x0230EB60
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	bne _0230EB90
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldr r0, [r1, #8]
 	cmp r0, #9
@@ -60203,17 +60203,17 @@ ov11_0230EB60: ; 0x0230EB60
 _0230EB90:
 	bl ov11_0230EC00
 	bl ov11_02312894
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	add r0, r0, #0x134
 	add r0, r0, #0x400
 	bl ov11_022F5C3C
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	add r0, r0, #0x1f8
 	add r0, r0, #0x400
 	bl ov11_022F6EFC
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldrb r0, [r1, #0x6bc]
 	cmp r0, #0
@@ -60221,22 +60221,22 @@ _0230EB90:
 	add r0, r1, #0x6c0
 	bl ov11_022F6EFC
 _0230EBDC:
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	bl MemFree
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	mov r1, #0
 	str r1, [r0, #8]
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0230EBFC: .word ov11_02324DE4
+_0230EBFC: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230EB60
 
 	arm_func_start ov11_0230EC00
 ov11_0230EC00: ; 0x0230EC00
 	stmdb sp!, {r3, lr}
-	ldr r0, _0230ED20 ; =ov11_02324DE4
+	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	mov r3, #1
 	ldr r1, [r0, #8]
 	mov r2, #0
@@ -60252,14 +60252,14 @@ ov11_0230EC00: ; 0x0230EC00
 	cmp r0, r1
 	beq _0230EC58
 	bl sub_0202FD50
-	ldr r0, _0230ED20 ; =ov11_02324DE4
+	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf000
 	strb r1, [r0, #0x998]
 _0230EC58:
 	mov ip, #0
-	ldr r2, _0230ED20 ; =ov11_02324DE4
+	ldr r2, _0230ED20 ; =WORLD_MAP_MODE
 	ldr r1, _0230ED24 ; =0x00000136
 	mov r0, ip
 _0230EC68:
@@ -60269,13 +60269,13 @@ _0230EC68:
 	str r0, [r3, #0x54]
 	cmp ip, r1
 	blt _0230EC68
-	ldr r1, _0230ED20 ; =ov11_02324DE4
+	ldr r1, _0230ED20 ; =WORLD_MAP_MODE
 	mvn r2, #0
 	ldr r1, [r1, #8]
 	add r1, r1, #0x500
 	strh r2, [r1, #0x2c]
 	bl ov11_023128C0
-	ldr r1, _0230ED20 ; =ov11_02324DE4
+	ldr r1, _0230ED20 ; =WORLD_MAP_MODE
 	mvn ip, #0
 	ldr r0, [r1, #8]
 	mov r3, #0
@@ -60297,26 +60297,26 @@ _0230EC68:
 	mov r0, #1
 	mov r1, #6
 	bl ov11_022EB0C0
-	ldr r0, _0230ED20 ; =ov11_02324DE4
+	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl ov11_022EBEAC
-	ldr r0, _0230ED20 ; =ov11_02324DE4
+	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #4]
 	bl MemFree
-	ldr r0, _0230ED20 ; =ov11_02324DE4
+	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	mov r1, #0
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0230ED20: .word ov11_02324DE4
+_0230ED20: .word WORLD_MAP_MODE
 _0230ED24: .word 0x00000136
 	arm_func_end ov11_0230EC00
 
 	arm_func_start ov11_0230ED28
 ov11_0230ED28: ; 0x0230ED28
-	ldr r0, _0230ED44 ; =ov11_02324DE4
+	ldr r0, _0230ED44 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	movne r0, #1
@@ -60324,14 +60324,14 @@ ov11_0230ED28: ; 0x0230ED28
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0230ED44: .word ov11_02324DE4
+_0230ED44: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230ED28
 
 	arm_func_start GetDungeonMapPos
 GetDungeonMapPos: ; 0x0230ED48
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
-	ldr r2, _0230EDAC ; =ov11_02324DE4
+	ldr r2, _0230EDAC ; =WORLD_MAP_MODE
 	mov r4, r0
 	ldr r2, [r2, #8]
 	mov r0, r1
@@ -60357,12 +60357,12 @@ _0230EDA4:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0230EDAC: .word ov11_02324DE4
+_0230EDAC: .word WORLD_MAP_MODE
 	arm_func_end GetDungeonMapPos
 
 	arm_func_start ov11_0230EDB0
 ov11_0230EDB0: ; 0x0230EDB0
-	ldr r1, _0230EDD8 ; =ov11_02324DE4
+	ldr r1, _0230EDD8 ; =WORLD_MAP_MODE
 	mov r3, #0
 	ldr r2, [r1, #8]
 	str r3, [r2, #0x34]
@@ -60373,14 +60373,14 @@ ov11_0230EDB0: ; 0x0230EDB0
 	str r0, [r2, #0x4c]
 	bx lr
 	.align 2, 0
-_0230EDD8: .word ov11_02324DE4
+_0230EDD8: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230EDB0
 
 	arm_func_start ov11_0230EDDC
 ov11_0230EDDC: ; 0x0230EDDC
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r1, _0230EF44 ; =ov11_02324DE4
+	ldr r1, _0230EF44 ; =WORLD_MAP_MODE
 	mov r0, #0
 	ldr r1, [r1, #8]
 	sub r2, r0, #1
@@ -60395,7 +60395,7 @@ ov11_0230EDDC: ; 0x0230EDDC
 	mov r0, #1
 	mov r1, #6
 	bl ov11_022EB0C0
-	ldr r1, _0230EF44 ; =ov11_02324DE4
+	ldr r1, _0230EF44 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	add r0, r2, #0xf900
 	ldrsh r0, [r0, #0x9c]
@@ -60412,14 +60412,14 @@ _0230EE54:
 	add r0, sp, #0
 	bl ov11_0230EDB0
 _0230EE5C:
-	ldr r0, _0230EF44 ; =ov11_02324DE4
+	ldr r0, _0230EF44 ; =WORLD_MAP_MODE
 	mvn r2, #0
 	ldr r1, [r0, #8]
 	mov r0, #1
 	add r1, r1, #0xf900
 	strh r2, [r1, #0x9c]
 _0230EE74:
-	ldr r1, _0230EF44 ; =ov11_02324DE4
+	ldr r1, _0230EF44 ; =WORLD_MAP_MODE
 	mvn r2, #0
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf900
@@ -60433,7 +60433,7 @@ _0230EE74:
 	mov r0, #1
 	mov r1, #6
 	bl ov11_022EB0C0
-	ldr r1, _0230EF44 ; =ov11_02324DE4
+	ldr r1, _0230EF44 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	add r0, r2, #0xf900
 	ldrsh r0, [r0, #0x9e]
@@ -60447,7 +60447,7 @@ _0230EE74:
 	mov r0, #1
 	bl ov11_022EB2F4
 _0230EEE0:
-	ldr r1, _0230EF44 ; =ov11_02324DE4
+	ldr r1, _0230EF44 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	add r0, r2, #0xf000
 	ldr r0, [r0, #0x9a0]
@@ -60465,7 +60465,7 @@ _0230EEE0:
 	ldr r0, [r0, #0x9a8]
 	str r0, [r1, #0x3c]
 _0230EF24:
-	ldr r0, _0230EF44 ; =ov11_02324DE4
+	ldr r0, _0230EF44 ; =WORLD_MAP_MODE
 	mvn r2, #0
 	ldr r1, [r0, #8]
 	mov r0, #1
@@ -60475,14 +60475,14 @@ _0230EF3C:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0230EF44: .word ov11_02324DE4
+_0230EF44: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230EDDC
 
 	arm_func_start ov11_0230EF48
 ov11_0230EF48: ; 0x0230EF48
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
-	ldr r3, _0230EFFC ; =ov11_02324DE4
+	ldr r3, _0230EFFC ; =WORLD_MAP_MODE
 	mov r4, r2
 	ldr r2, [r3, #8]
 	mov r5, r1
@@ -60493,7 +60493,7 @@ ov11_0230EF48: ; 0x0230EF48
 	cmp r0, r1
 	cmpne r5, #0
 	beq _0230EFF4
-	ldr r1, _0230EFFC ; =ov11_02324DE4
+	ldr r1, _0230EFFC ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, r0, lsl #2
 	ldr r1, [r1, #0x54]
@@ -60502,7 +60502,7 @@ ov11_0230EF48: ; 0x0230EF48
 	cmp r4, #0
 	beq _0230EFF4
 _0230EF9C:
-	ldr r2, _0230EFFC ; =ov11_02324DE4
+	ldr r2, _0230EFFC ; =WORLD_MAP_MODE
 	mov r1, #0xc4
 	ldr r3, [r2, #8]
 	mul r4, r0, r1
@@ -60528,13 +60528,13 @@ _0230EFF4:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0230EFFC: .word ov11_02324DE4
+_0230EFFC: .word WORLD_MAP_MODE
 _0230F000: .word ov11_02323310
 	arm_func_end ov11_0230EF48
 
 	arm_func_start WorldMapSetMode
 WorldMapSetMode: ; 0x0230F004
-	ldr r1, _0230F04C ; =ov11_02324DE4
+	ldr r1, _0230F04C ; =WORLD_MAP_MODE
 	str r0, [r1]
 	ldr r3, [r1, #8]
 	cmp r3, #0
@@ -60553,12 +60553,12 @@ WorldMapSetMode: ; 0x0230F004
 	strb r2, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F04C: .word ov11_02324DE4
+_0230F04C: .word WORLD_MAP_MODE
 	arm_func_end WorldMapSetMode
 
 	arm_func_start ov11_0230F050
 ov11_0230F050: ; 0x0230F050
-	ldr r2, _0230F088 ; =ov11_02324DE4
+	ldr r2, _0230F088 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	bxeq lr
@@ -60573,12 +60573,12 @@ ov11_0230F050: ; 0x0230F050
 	strb r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F088: .word ov11_02324DE4
+_0230F088: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F050
 
 	arm_func_start ov11_0230F08C
 ov11_0230F08C: ; 0x0230F08C
-	ldr r2, _0230F0C0 ; =ov11_02324DE4
+	ldr r2, _0230F0C0 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	bxeq lr
@@ -60592,12 +60592,12 @@ ov11_0230F08C: ; 0x0230F08C
 	strb r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F0C0: .word ov11_02324DE4
+_0230F0C0: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F08C
 
 	arm_func_start WorldMapSetCamera
 WorldMapSetCamera: ; 0x0230F0C4
-	ldr r2, _0230F0E8 ; =ov11_02324DE4
+	ldr r2, _0230F0E8 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	addne r1, r1, #0xf900
@@ -60607,12 +60607,12 @@ WorldMapSetCamera: ; 0x0230F0C4
 	strneb r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F0E8: .word ov11_02324DE4
+_0230F0E8: .word WORLD_MAP_MODE
 	arm_func_end WorldMapSetCamera
 
 	arm_func_start ov11_0230F0EC
 ov11_0230F0EC: ; 0x0230F0EC
-	ldr r2, _0230F134 ; =ov11_02324DE4
+	ldr r2, _0230F134 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	bxeq lr
@@ -60631,12 +60631,12 @@ ov11_0230F0EC: ; 0x0230F0EC
 	strb r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F134: .word ov11_02324DE4
+_0230F134: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F0EC
 
 	arm_func_start ov11_0230F138
 ov11_0230F138: ; 0x0230F138
-	ldr r3, _0230F17C ; =ov11_02324DE4
+	ldr r3, _0230F17C ; =WORLD_MAP_MODE
 	ldr r2, [r3, #8]
 	cmp r2, #0
 	bxeq lr
@@ -60654,12 +60654,12 @@ ov11_0230F138: ; 0x0230F138
 	strb r2, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F17C: .word ov11_02324DE4
+_0230F17C: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F138
 
 	arm_func_start ov11_0230F180
 ov11_0230F180: ; 0x0230F180
-	ldr r1, _0230F1B0 ; =ov11_02324DE4
+	ldr r1, _0230F1B0 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	cmp r2, #0
 	bxeq lr
@@ -60672,12 +60672,12 @@ ov11_0230F180: ; 0x0230F180
 	strb r2, [r0, #0x9ac]
 	bx lr
 	.align 2, 0
-_0230F1B0: .word ov11_02324DE4
+_0230F1B0: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F180
 
 	arm_func_start ov11_0230F1B4
 ov11_0230F1B4: ; 0x0230F1B4
-	ldr r1, _0230F1E8 ; =ov11_02324DE4
+	ldr r1, _0230F1E8 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	cmp r2, #0
 	bxeq lr
@@ -60691,12 +60691,12 @@ ov11_0230F1B4: ; 0x0230F1B4
 	strb r1, [r0, #0x9ac]
 	bx lr
 	.align 2, 0
-_0230F1E8: .word ov11_02324DE4
+_0230F1E8: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F1B4
 
 	arm_func_start ov11_0230F1EC
 ov11_0230F1EC: ; 0x0230F1EC
-	ldr r2, _0230F218 ; =ov11_02324DE4
+	ldr r2, _0230F218 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	bxeq lr
@@ -60708,12 +60708,12 @@ ov11_0230F1EC: ; 0x0230F1EC
 	strb r1, [r0, #0xe88]
 	bx lr
 	.align 2, 0
-_0230F218: .word ov11_02324DE4
+_0230F218: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F1EC
 
 	arm_func_start ov11_0230F21C
 ov11_0230F21C: ; 0x0230F21C
-	ldr r2, _0230F258 ; =ov11_02324DE4
+	ldr r2, _0230F258 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	bxeq lr
@@ -60729,12 +60729,12 @@ ov11_0230F21C: ; 0x0230F21C
 	strb r3, [r0, #0xe90]
 	bx lr
 	.align 2, 0
-_0230F258: .word ov11_02324DE4
+_0230F258: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F21C
 
 	arm_func_start ov11_0230F25C
 ov11_0230F25C: ; 0x0230F25C
-	ldr r1, _0230F288 ; =ov11_02324DE4
+	ldr r1, _0230F288 ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	cmp r1, #0
 	moveq r0, #0
@@ -60746,13 +60746,13 @@ ov11_0230F25C: ; 0x0230F25C
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_0230F288: .word ov11_02324DE4
+_0230F288: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F25C
 
 	arm_func_start ov11_0230F28C
 ov11_0230F28C: ; 0x0230F28C
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _0230F358 ; =ov11_02324DE4
+	ldr r2, _0230F358 ; =WORLD_MAP_MODE
 	mov r5, r0
 	ldr r0, [r2, #4]
 	mov r4, r1
@@ -60805,19 +60805,19 @@ _0230F350:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0230F358: .word ov11_02324DE4
+_0230F358: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F28C
 
 	arm_func_start ov11_0230F35C
 ov11_0230F35C: ; 0x0230F35C
-	ldr r0, _0230F374 ; =ov11_02324DE4
+	ldr r0, _0230F374 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	ldrneb r0, [r0, #0xc]
 	moveq r0, #0
 	bx lr
 	.align 2, 0
-_0230F374: .word ov11_02324DE4
+_0230F374: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F35C
 
 	arm_func_start ov11_0230F378
@@ -60829,7 +60829,7 @@ ov11_0230F378: ; 0x0230F378
 ov11_0230F37C: ; 0x0230F37C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x4c
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #8]
 	cmp r0, #9
@@ -60849,35 +60849,35 @@ _0230F39C: ; jump table
 _0230F3C4:
 	bl ov11_022E9F78
 	cmp r0, #0
-	ldrne r0, _02310050 ; =ov11_02324DE4
+	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #1
 	ldrne r0, [r0, #8]
 	strneb r1, [r0, #0xc]
 	bne _0230FDB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 _0230F3EC:
 	bl ov11_022E9F78
 	cmp r0, #0
-	ldrne r0, _02310050 ; =ov11_02324DE4
+	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	movne r1, #1
 	ldrne r0, [r0, #8]
 	strneb r1, [r0, #0xc]
 	bne _0230FDB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldrb r0, [r1, #0x6bc]
 	cmp r0, #0
 	beq _0230F434
 	add r0, r1, #0x6c0
 	bl ov11_022F6EFC
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	strb r1, [r0, #0x6bc]
 _0230F434:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0]
 	cmp r1, #0
 	bne _0230F4D4
@@ -60893,7 +60893,7 @@ _0230F434:
 	ldr r1, _02310054 ; =0x0000010D
 	cmp r0, r1
 	bne _0230F48C
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf000
@@ -60901,12 +60901,12 @@ _0230F434:
 	b _0230F4A0
 _0230F48C:
 	bl sub_0204CDCC
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf000
 	strb r0, [r1, #0x999]
 _0230F4A0:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf900
@@ -60914,13 +60914,13 @@ _0230F4A0:
 	cmp r0, r1
 	beq _0230F4D4
 	bl sub_0202FD50
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf000
 	strb r1, [r0, #0x998]
 _0230F4D4:
-	ldr r3, _02310050 ; =ov11_02324DE4
+	ldr r3, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r3, #8]
 	add r1, r0, #0xf000
 	ldrb r1, [r1, #0xf90]
@@ -60928,7 +60928,7 @@ _0230F4D4:
 	beq _0230F514
 	mov r0, #0x10
 	bl ov11_022E9CB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r3, #1
 	ldr r2, [r0, #8]
 	mov r1, #8
@@ -60959,7 +60959,7 @@ _0230F514:
 	cmp r0, #0
 	beq _0230F588
 	bl sub_0206A9DC
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	mov r2, #2
 	ldr r3, [r1, #8]
 	strh r0, [r3, #2]
@@ -60981,7 +60981,7 @@ _0230F588:
 	mov r1, #2
 	str r1, [r0, #8]
 _0230F5BC:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r2, #0
 	ldr r1, [r0, #8]
 	strb r2, [r1, #5]
@@ -60995,7 +60995,7 @@ _0230F5BC:
 	ldrgtb r0, [r0, #0x99a]
 	strgtb r0, [r1, #5]
 _0230F5F0:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #1
 	ldr r0, [r0, #8]
 	strb r1, [r0, #0xc]
@@ -61009,7 +61009,7 @@ _0230F604:
 	moveq r1, #0
 	streqb r1, [r0, #0xc]
 	beq _0230FDB0
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	mov r2, #5
 	str r2, [r0, #8]
 	ldr r0, [r1, #8]
@@ -61019,17 +61019,17 @@ _0230F604:
 _0230F640:
 	bl ov11_022E9F78
 	cmp r0, #0
-	ldrne r0, _02310050 ; =ov11_02324DE4
+	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	movne r1, #1
 	ldrne r0, [r0, #8]
 	strneb r1, [r0, #0xc]
 	bne _0230FDB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #7
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 _0230F66C:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	add r0, r1, #0xf000
 	ldrb r0, [r0, #0xf90]
@@ -61042,7 +61042,7 @@ _0230F66C:
 _0230F694:
 	mov r0, #0x10
 	bl ov11_022E9CB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r3, #0
 	ldr r2, [r0, #8]
 	mov r1, #1
@@ -61063,12 +61063,12 @@ _0230F6BC:
 	mov r1, r4
 	bl GetDungeonMapPos
 	cmp r0, #0
-	ldreq r0, _02310050 ; =ov11_02324DE4
+	ldreq r0, _02310050 ; =WORLD_MAP_MODE
 	moveq r1, #0
 	ldreq r0, [r0, #8]
 	streqb r1, [r0, #0xc]
 	beq _0230FDB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldrsh r0, [r1, #0x30]
 	cmp r0, r4
@@ -61076,13 +61076,13 @@ _0230F6BC:
 	mov r1, r4
 	bl sub_0206A8A0
 	cmp r0, #0
-	ldrne r0, _02310050 ; =ov11_02324DE4
+	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	ldrne r0, [r0, #8]
 	strneh r4, [r0, #0x30]
 	bne _0230FDB0
 	mov r0, #0x10
 	bl ov11_022E9CB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r3, #0
 	ldr r2, [r0, #8]
 	mov r1, #1
@@ -61096,7 +61096,7 @@ _0230F758:
 	b _0230FDB0
 _0230F764:
 	bl ov11_0230EDDC
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r2, [r0, #8]
 	add r0, r2, #0xf000
 	ldrb r1, [r0, #0x9ac]
@@ -61105,7 +61105,7 @@ _0230F764:
 	cmpeq r1, #0
 	beq _0230F7A4
 	mov r1, #5
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	str r1, [r2, #8]
 	ldr r0, [r0, #8]
 	mov r1, #1
@@ -61134,7 +61134,7 @@ _0230F7D0:
 	bl ov11_0230EDB0
 	b _0230F8A8
 _0230F7F0:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -61185,7 +61185,7 @@ _0230F890:
 	add r0, sp, #0x3c
 	bl ov11_0230EDB0
 _0230F8A8:
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	add r0, r2, #0x500
 	ldrsh r0, [r0, #0x2e]
@@ -61194,7 +61194,7 @@ _0230F8A8:
 	mov r0, #0
 	strb r0, [r2, #0x530]
 	ldr r0, [r1, #8]
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #0x2c]
 	ldr r3, [r1, #8]
 	cmp r0, #0
@@ -61208,7 +61208,7 @@ _0230F8A8:
 	add r0, r0, #0x400
 	bl SetAnimDataFields2
 _0230F900:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r2, [r0, #8]
 	ldrsb r0, [r2, #4]
 	cmp r0, #0
@@ -61224,7 +61224,7 @@ _0230F900:
 	rsb r0, r1, r0, lsl #31
 	add r0, r1, r0, ror #31
 	cmp r0, #1
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	moveq r1, #0
 	movne r1, #0x1f8
 	str r1, [sp, #0x34]
@@ -61239,7 +61239,7 @@ _0230F900:
 	str r3, [sp, #0x38]
 	bl ov11_022F040C
 _0230F978:
-	ldr r2, _02310050 ; =ov11_02324DE4
+	ldr r2, _02310050 ; =WORLD_MAP_MODE
 	ldr r4, [r2, #8]
 	ldrb r0, [r4, #5]
 	cmp r0, #0
@@ -61276,7 +61276,7 @@ _0230F9F4:
 	mov r7, #0
 	ldr r5, _02310068 ; =ov11_02323490
 	mov r2, #0x18
-	ldr r3, _02310050 ; =ov11_02324DE4
+	ldr r3, _02310050 ; =WORLD_MAP_MODE
 	b _0230FA20
 _0230FA08:
 	add r1, r7, r0
@@ -61292,7 +61292,7 @@ _0230FA20:
 	cmp r7, r4
 	bne _0230FA08
 	ldr r0, [r1, #0x994]
-	ldr r2, _02310050 ; =ov11_02324DE4
+	ldr r2, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #0x10]
 	mov r3, #0
 	str r0, [r1, #0x990]
@@ -61312,7 +61312,7 @@ _0230FA20:
 	add r0, r4, #0xf400
 	mov r1, #0xe
 	bl ov11_022F4974
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	add r0, r4, #0xf400
 	ldr r1, [r1, #8]
 	mov r2, #0
@@ -61322,7 +61322,7 @@ _0230FA20:
 	bl SetAnimDataFields2
 	mov r5, #0
 	mov r4, r5
-	ldr r7, _02310050 ; =ov11_02324DE4
+	ldr r7, _02310050 ; =WORLD_MAP_MODE
 	mov r6, #0xc4
 	b _0230FB08
 _0230FABC:
@@ -61354,7 +61354,7 @@ _0230FB08:
 	mov r1, #1
 	strb r1, [r0, #0x5a0]
 _0230FB24:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	strb r1, [r0, #5]
@@ -61364,7 +61364,7 @@ _0230FB38:
 	mov r1, #0
 	str r1, [r0, #0x990]
 _0230FB44:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0x2c]
 	cmp r0, #4
@@ -61391,7 +61391,7 @@ _0230FB90:
 _0230FB9C:
 	mov sb, #0
 	mov r6, #1
-	ldr r4, _02310050 ; =ov11_02324DE4
+	ldr r4, _02310050 ; =WORLD_MAP_MODE
 	ldr sl, _0231006C ; =0x00000136
 	mov r5, sb
 	mov r8, r6
@@ -61430,7 +61430,7 @@ _0230FC28:
 	add sb, sb, #1
 	cmp sb, sl
 	blt _0230FBB8
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldr r0, [r1, #0x2c]
 	cmp r0, #4
@@ -61450,7 +61450,7 @@ _0230FC6C:
 	mov r2, #0
 	bl ov11_0230EF48
 _0230FC7C:
-	ldr r2, _02310050 ; =ov11_02324DE4
+	ldr r2, _02310050 ; =WORLD_MAP_MODE
 	ldr r4, [r2, #8]
 	add r0, r4, #0xf000
 	ldrb r0, [r0, #0xe88]
@@ -61479,7 +61479,7 @@ _0230FC7C:
 	mov r2, #0
 	bl SetAnimDataFields2
 _0230FCEC:
-	ldr r2, _02310050 ; =ov11_02324DE4
+	ldr r2, _02310050 ; =WORLD_MAP_MODE
 	mov r0, #0
 	ldr r1, [r2, #8]
 	add r1, r1, #0xf000
@@ -61493,7 +61493,7 @@ _0230FCEC:
 	bne _0230FD34
 	mov r1, #0x20
 	bl LoadScriptVariableValue
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf900
 	strh r0, [r1, #0x9c]
@@ -61503,13 +61503,13 @@ _0230FD34:
 	beq _0230FD5C
 	mov r0, #0x10
 	bl ov11_022E9C98
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #6
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 	b _0230FDB0
 _0230FD5C:
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	mvn r0, #0
 	ldr r2, [r1, #8]
 	ldrsh r1, [r2, #0x30]
@@ -61523,17 +61523,17 @@ _0230FD84:
 	bl ov11_022E9F78
 	cmp r0, #0
 	bne _0230FDB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #9
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 _0230FDA0:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	strb r1, [r0, #0xc]
 _0230FDB0:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldr r3, [r1, #0x40]
 	ldr r2, [r1, #0x44]
@@ -61568,12 +61568,12 @@ _0230FDE8:
 	cmp r3, #0
 	ldreq r0, [sp, #0x20]
 	cmpeq r0, #0
-	ldreq r0, _02310050 ; =ov11_02324DE4
+	ldreq r0, _02310050 ; =WORLD_MAP_MODE
 	moveq r1, #0
 	ldreq r0, [r0, #8]
 	streq r1, [r0, #0x34]
 	beq _0230FF74
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r2, [r0, #8]
 	ldr r1, [r2, #0x40]
 	add r1, r1, r3
@@ -61600,7 +61600,7 @@ _0230FE78:
 	sub r1, r2, r1
 	str r1, [sp, #0x18]
 	bl EuclideanNorm__020050B0
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	mov r4, r0
 	ldr r5, [r1, #8]
 	ldr r0, [r5, #0x38]
@@ -61609,19 +61609,19 @@ _0230FE78:
 	mov r0, r4
 	bl __divsf3
 	bl __fixsfsi
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	str r0, [r5, #0x3c]
 	ldr r1, [r1, #8]
 	ldr r0, [r1, #0x3c]
 	cmp r0, #0
 	movle r0, #1
 	strle r0, [r1, #0x3c]
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #3
 	ldr r0, [r0, #8]
 	str r1, [r0, #0x34]
 _0230FF04:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #1
 	ldr r2, [r0, #8]
 	add r0, sp, #0xc
@@ -61630,7 +61630,7 @@ _0230FF04:
 	add r1, r2, #0x40
 	add r2, r2, #0x48
 	bl sub_0200514C
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r2, [sp, #0xc]
 	ldr r3, [r0, #8]
 	ldr r1, [sp, #0x10]
@@ -61651,7 +61651,7 @@ _0230FF64:
 	str r2, [r1, #0x40]
 	str r0, [r1, #0x44]
 _0230FF74:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r3, [r0, #8]
 	ldr r0, [r3, #0x34]
 	cmp r0, #0
@@ -61668,11 +61668,11 @@ _0230FF74:
 	sub r1, r2, r1
 	str r1, [sp, #0x28]
 	bl sub_020055C8
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	strb r0, [r1, #0x50]
 _0230FFC4:
-	ldr r2, _02310050 ; =ov11_02324DE4
+	ldr r2, _02310050 ; =WORLD_MAP_MODE
 	ldr r4, [r2, #8]
 	add r1, r4, #0x500
 	ldrsh r0, [r1, #0x2e]
@@ -61685,7 +61685,7 @@ _0230FFC4:
 	beq _0231002C
 	strb r3, [r4, #0x530]
 	ldr r0, [r2, #8]
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #0x2c]
 	ldr r3, [r1, #8]
 	cmp r0, #0
@@ -61699,7 +61699,7 @@ _0230FFC4:
 	add r0, r0, #0x400
 	bl SetAnimDataFields2
 _0231002C:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldr r0, [r1, #0x34]
 	cmp r0, #0
@@ -61709,7 +61709,7 @@ _0231002C:
 	add sp, sp, #0x4c
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02310050: .word ov11_02324DE4
+_02310050: .word WORLD_MAP_MODE
 _02310054: .word 0x0000010D
 _02310058: .word 0x00000807
 _0231005C: .word ov11_02323310
@@ -61724,7 +61724,7 @@ _02310070: .word 0x0000080D
 ov11_02310074: ; 0x02310074
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
-	ldr r1, _0231031C ; =ov11_02324DE4
+	ldr r1, _0231031C ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	ldr r0, [r2, #8]
 	cmp r0, #2
@@ -61740,7 +61740,7 @@ ov11_02310074: ; 0x02310074
 	mov r0, #0x2f4
 	mov r1, #0xf
 	bl MemAlloc
-	ldr r2, _0231031C ; =ov11_02324DE4
+	ldr r2, _0231031C ; =WORLD_MAP_MODE
 	mvn r1, #0
 	str r0, [r2, #4]
 	ldr r0, [r2, #8]
@@ -61750,11 +61750,11 @@ ov11_02310074: ; 0x02310074
 	ldr r0, [r2, #4]
 	ldr r1, _02310324 ; =ov11_02323394
 	bl ov11_022EBC18
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mvn r1, #0
 	ldr r0, [r0, #4]
 	bl ov11_022EC27C
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldmib r0, {r1, r2}
 	add r0, r2, #0x10
 	bl ov11_022EFD5C
@@ -61802,28 +61802,28 @@ _02310178:
 	str ip, [sp, #4]
 	bl FatalError
 _023101A0:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r1, _02310324 ; =ov11_02323394
 	ldr r0, [r0, #4]
 	bl ov11_022EBC18
 	mov r0, #1
 	bl ov11_023128C0
 _023101B8:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldrsh r1, [r4, #4]
 	ldr r0, [r0, #4]
 	bl ov11_022EC27C
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldmib r0, {r1, r2}
 	add r0, r2, #0x10
 	bl ov11_022EFD5C
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r2, _02310338 ; =ov11_02323330
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bl ov11_022EF2D4
 _023101EC:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r2, [r0, #8]
 	ldrb r1, [r2, #5]
 	cmp r1, #0
@@ -61835,22 +61835,22 @@ _023101EC:
 	add r0, r0, #0x6c0
 	mov r1, #0x9a
 	bl LoadObjectAnimData
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mov r1, #8
 	ldr r0, [r0, #8]
 	add r0, r0, #0x6c0
 	bl ov11_022F4974
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mov r1, #1
 	ldr r0, [r0, #8]
 	strb r1, [r0, #0x6bc]
 _02310240:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mov r1, #4
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 _02310250:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	add r0, r1, #0xf000
 	ldrb r0, [r0, #0xe8c]
@@ -61864,18 +61864,18 @@ _02310250:
 	bl sub_0202FD6C
 	cmp r0, #0
 	bne _023102B0
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf900
 	ldrsb r0, [r0, #0x98]
 	bl sub_0202FD50
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf000
 	strb r1, [r0, #0x998]
 _023102B0:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r2, [r0, #8]
 	add r0, r2, #0xf900
@@ -61891,12 +61891,12 @@ _023102B0:
 	mov r1, #0x13
 	mov r2, #0
 	bl sub_0202FBBC
-	ldr r1, _0231031C ; =ov11_02324DE4
+	ldr r1, _0231031C ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf000
 	strb r0, [r1, #0x998]
 _02310300:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf000
@@ -61905,7 +61905,7 @@ _02310314:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0231031C: .word ov11_02324DE4
+_0231031C: .word WORLD_MAP_MODE
 _02310320: .word ov11_02323730
 _02310324: .word ov11_02323394
 _02310328: .word EVENTS
@@ -61921,7 +61921,7 @@ _02310340: .word ov11_02323340
 ov11_02310344: ; 0x02310344
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #8]
 	cmp r0, #7
@@ -61936,7 +61936,7 @@ ov11_02310344: ; 0x02310344
 	moveq r0, #0
 	streq r0, [sp, #0x10]
 	streq r0, [sp, #0x14]
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	ldr r1, [r0, #0x2c]
 	cmp r1, #3
@@ -61951,7 +61951,7 @@ ov11_02310344: ; 0x02310344
 	sub r1, r1, r2
 	subs sb, r1, #0x1e
 	ldr r2, [r0, #0x990]
-	ldr r1, _02310624 ; =ov11_02324DE4
+	ldr r1, _02310624 ; =WORLD_MAP_MODE
 	sub r2, r2, #1
 	str r2, [r0, #0x990]
 	ldr r2, [r1, #8]
@@ -61977,7 +61977,7 @@ ov11_02310344: ; 0x02310344
 	mov r8, #0
 	add r7, sp, #8
 	mov r6, r8
-	ldr r5, _02310624 ; =ov11_02324DE4
+	ldr r5, _02310624 ; =WORLD_MAP_MODE
 	mov r4, #0xc4
 	b _02310490
 _02310438:
@@ -62018,7 +62018,7 @@ _023104A4:
 	ldrsh r0, [r0, #0x2e]
 	cmp r0, #0
 	beq _023104F8
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	add r2, sp, #0
 	ldr r5, [r0, #8]
 	mov r3, sb
@@ -62032,7 +62032,7 @@ _023104A4:
 	add r0, r0, #0x400
 	bl ov11_022F5C94
 _023104F8:
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	mvn r2, #0
 	ldr r0, [r0, #8]
 	add r0, r0, #0x500
@@ -62043,7 +62043,7 @@ _023104F8:
 	bl GetDungeonMapPos
 	cmp r0, #0
 	beq _02310540
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	add r1, sp, #0
 	ldr r0, [r0, #8]
 	mov r2, #0
@@ -62054,7 +62054,7 @@ _02310540:
 	mov sl, #0
 	add r8, sp, #0
 	mov fp, sl
-	ldr r7, _02310624 ; =ov11_02324DE4
+	ldr r7, _02310624 ; =WORLD_MAP_MODE
 	mov r5, #0xc4
 	mvn r6, #0
 	ldr r4, _02310628 ; =0x00000136
@@ -62088,7 +62088,7 @@ _023105BC:
 	cmp sl, r4
 	blt _02310560
 _023105C4:
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	add r1, sp, #0x10
 	ldr r0, [r0, #8]
 	mov r2, #0
@@ -62096,16 +62096,16 @@ _023105C4:
 	bl ov11_022F042C
 	cmp r0, #0
 	beq _023105F8
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	add r2, sp, #0x10
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bl ov11_022EF2D4
 _023105F8:
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #4]
 	bl ov11_022EF70C
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	mov r1, #1
 	ldr r0, [r0, #8]
 	strb r1, [r0, #6]
@@ -62115,14 +62115,14 @@ _02310614:
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02310624: .word ov11_02324DE4
+_02310624: .word WORLD_MAP_MODE
 _02310628: .word 0x00000136
 	arm_func_end ov11_02310344
 
 	arm_func_start ov11_0231062C
 ov11_0231062C: ; 0x0231062C
 	stmdb sp!, {r3, lr}
-	ldr r0, _02310668 ; =ov11_02324DE4
+	ldr r0, _02310668 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldrb r1, [r1, #6]
 	cmp r1, #0
@@ -62130,7 +62130,7 @@ ov11_0231062C: ; 0x0231062C
 	cmpne r0, #0
 	beq _02310660
 	bl ov11_022EFB70
-	ldr r0, _02310668 ; =ov11_02324DE4
+	ldr r0, _02310668 ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	strb r1, [r0, #6]
@@ -62138,7 +62138,7 @@ _02310660:
 	bl ov11_02312B18
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02310668: .word ov11_02324DE4
+_02310668: .word WORLD_MAP_MODE
 	arm_func_end ov11_0231062C
 
 	arm_func_start ov11_0231066C
@@ -81565,8 +81565,8 @@ ov11_02324C9C:
 	.global ov11_02324CA0
 ov11_02324CA0:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324CA4
-ov11_02324CA4:
+	.global UNIONALL_RAM_ADDRESS
+UNIONALL_RAM_ADDRESS:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324CAC
 ov11_02324CAC:
@@ -81577,8 +81577,8 @@ ov11_02324CB0:
 	.global ov11_02324CBC
 ov11_02324CBC:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324CC0
-ov11_02324CC0:
+	.global GROUND_STATE_MAP
+GROUND_STATE_MAP:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324CC8
 ov11_02324CC8:
@@ -81604,8 +81604,8 @@ ov11_02324CE8:
 	.global ov11_02324CF0
 ov11_02324CF0:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324CF4
-ov11_02324CF4:
+	.global GROUND_STATE_PTRS
+GROUND_STATE_PTRS:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324CF8
 ov11_02324CF8:
@@ -81739,8 +81739,8 @@ ov11_02324DD4:
 	.global ov11_02324DDC
 ov11_02324DDC:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324DE4
-ov11_02324DE4:
+	.global WORLD_MAP_MODE
+WORLD_MAP_MODE:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324DF0

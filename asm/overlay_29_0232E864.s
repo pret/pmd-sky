@@ -97,7 +97,7 @@ _0232E9B0:
 	mov r0, r6
 	bl CanBeSnatched
 	cmp r0, #0
-	ldrne r0, _0232F7D8 ; =ov29_02353538
+	ldrne r0, _0232F7D8 ; =DUNGEON_PTR
 	ldrne r0, [r0]
 	addne r0, r0, #0x19000
 	ldrne r5, [r0, #0x904]
@@ -1060,7 +1060,7 @@ _0232F7C8: .word ov10_022C4614
 _0232F7CC: .word ov10_022C4508
 _0232F7D0: .word ov29_02353718
 _0232F7D4: .word ov10_022C4504
-_0232F7D8: .word ov29_02353538
+_0232F7D8: .word DUNGEON_PTR
 _0232F7DC: .word 0x00000EAB
 _0232F7E0: .word 0x00000EAC
 _0232F7E4: .word 0x00000EAD
@@ -5692,7 +5692,7 @@ PerformDamageSequence: ; 0x02332D6C
 	bl DefenderAbilityIsActive__02332A0C
 	cmp r0, #0
 	beq _02332DFC
-	ldr r1, _02332F08 ; =ov29_02353538
+	ldr r1, _02332F08 ; =DUNGEON_PTR
 	ldr r2, _02332F0C ; =0x000003E7
 	ldr r0, [r1]
 	add r0, r0, #0x700
@@ -5778,7 +5778,7 @@ _02332EFC:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02332F04: .word 0x0000013A
-_02332F08: .word ov29_02353538
+_02332F08: .word DUNGEON_PTR
 _02332F0C: .word 0x000003E7
 _02332F10: .word 0x0000270F
 _02332F14: .word 0x00000EC3
@@ -6474,7 +6474,7 @@ _02333834:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333850:
-	ldr r1, _02333FA4 ; =ov29_02353538
+	ldr r1, _02333FA4 ; =DUNGEON_PTR
 	mov r2, #0xc
 	ldr r1, [r1]
 	ldr r3, _02333FA8 ; =ov10_022C6322
@@ -6619,7 +6619,7 @@ _02333A1C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333A44:
-	ldr r0, _02333FA4 ; =ov29_02353538
+	ldr r0, _02333FA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd5b]
@@ -6628,7 +6628,7 @@ _02333A44:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333A64:
-	ldr r0, _02333FA4 ; =ov29_02353538
+	ldr r0, _02333FA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd5c]
@@ -6643,7 +6643,7 @@ _02333A84:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333A98:
-	ldr r0, _02333FA4 ; =ov29_02353538
+	ldr r0, _02333FA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldrb r0, [r0, #0xe38]
@@ -6747,7 +6747,7 @@ _02333BF4:
 	mov r5, #0
 	cmp r0, #0
 	beq _02333C78
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333C60
 _02333C0C:
 	ldr r0, [r6]
@@ -6781,7 +6781,7 @@ _02333C68:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333C78:
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333CD4
 _02333C80:
 	ldr r0, [r6]
@@ -6825,7 +6825,7 @@ _02333D00:
 	mov r5, #0
 	cmp r0, #0
 	beq _02333D78
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333D60
 _02333D18:
 	ldr r0, [r6]
@@ -6856,7 +6856,7 @@ _02333D68:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333D78:
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333DC8
 _02333D80:
 	ldr r0, [r6]
@@ -6898,7 +6898,7 @@ _02333DF8:
 	mov r5, #0
 	cmp r0, #0
 	beq _02333E8C
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333E74
 _02333E10:
 	ldr r0, [r6]
@@ -6936,7 +6936,7 @@ _02333E7C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333E8C:
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333EF8
 _02333E94:
 	ldr r0, [r6]
@@ -7020,6 +7020,6 @@ _02333F90:
 _02333F98: .word 0x00000109
 _02333F9C: .word 0x00000127
 _02333FA0: .word 0x0000021E
-_02333FA4: .word ov29_02353538
+_02333FA4: .word DUNGEON_PTR
 _02333FA8: .word ov10_022C6322
 	arm_func_end StatusCheckerCheck

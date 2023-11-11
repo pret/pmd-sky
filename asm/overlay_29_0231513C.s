@@ -588,7 +588,7 @@ _02315948:
 	mov r0, r5
 	bl ov29_022E4668
 	mov r0, #0xff
-	ldr r1, _023159D0 ; =ov29_02353538
+	ldr r1, _023159D0 ; =DUNGEON_PTR
 	strb r0, [r4, #0xe8]
 	mov r2, #0
 _02315960:
@@ -621,7 +621,7 @@ _023159C0: .word 0x00000DE2
 _023159C4: .word 0x00000CAF
 _023159C8: .word ov10_022C4790
 _023159CC: .word 0x00000CE1
-_023159D0: .word ov29_02353538
+_023159D0: .word DUNGEON_PTR
 	arm_func_end TryInflictLeechSeedStatus
 
 	arm_func_start ov29_023159D4
@@ -629,7 +629,7 @@ ov29_023159D4: ; 0x023159D4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r4, #0
 	ldr r5, [r0, #0xb4]
-	ldr r7, _02315A4C ; =ov29_02353538
+	ldr r7, _02315A4C ; =DUNGEON_PTR
 	mov r8, r4
 _023159E8:
 	ldr r0, [r7]
@@ -659,7 +659,7 @@ _02315A3C:
 	blt _023159E8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02315A4C: .word ov29_02353538
+_02315A4C: .word DUNGEON_PTR
 	arm_func_end ov29_023159D4
 
 	arm_func_start TryInflictDestinyBondStatus
@@ -712,7 +712,7 @@ _02315AF8:
 	mov r0, r5
 	bl ov29_022E45CC
 	mov r0, #0xff
-	ldr r1, _02315B68 ; =ov29_02353538
+	ldr r1, _02315B68 ; =DUNGEON_PTR
 	strb r0, [r4, #0xe8]
 	mov r2, #0
 _02315B10:
@@ -739,7 +739,7 @@ _02315B10:
 _02315B5C: .word 0x00000C94
 _02315B60: .word ov10_022C47D4
 _02315B64: .word 0x00000D54
-_02315B68: .word ov29_02353538
+_02315B68: .word DUNGEON_PTR
 _02315B6C: .word 0x00000D53
 	arm_func_end TryInflictDestinyBondStatus
 
@@ -992,7 +992,7 @@ _02315EC4:
 	cmp r0, #0
 	movne r0, #1
 	bne _023160C4
-	ldr fp, _023160D0 ; =ov29_02353538
+	ldr fp, _023160D0 ; =DUNGEON_PTR
 	mov r4, #0
 _02315EDC:
 	ldr r0, [fp]
@@ -1063,7 +1063,7 @@ _02315FCC:
 	mov r1, r0
 	mov r0, sb
 	bl ov29_02304830
-	ldr r0, _023160D0 ; =ov29_02353538
+	ldr r0, _023160D0 ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	cmp r7, #0
@@ -1083,7 +1083,7 @@ _0231600C:
 	mov r6, #6
 	mov r5, sl
 _02316028:
-	ldr r0, _023160D0 ; =ov29_02353538
+	ldr r0, _023160D0 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, sl, lsl #2
 	add r0, r0, #0x12000
@@ -1130,7 +1130,7 @@ _023160C4:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _023160CC: .word 0x00000D46
-_023160D0: .word ov29_02353538
+_023160D0: .word DUNGEON_PTR
 _023160D4: .word ov10_022C47B4
 _023160D8: .word 0x00000D45
 	arm_func_end TryInflictDecoyStatus
@@ -1265,7 +1265,7 @@ TryInflictSnatchStatus: ; 0x02316280
 	mov r3, #1
 	bl EndCurseClassStatus
 	mov sb, #0
-	ldr r6, _0231639C ; =ov29_02353538
+	ldr r6, _0231639C ; =DUNGEON_PTR
 	mov r8, sb
 	mov r7, #1
 _023162C0:
@@ -1307,7 +1307,7 @@ _02316304:
 	mov r0, #0
 	strb r0, [r6, #0xdc]
 _02316350:
-	ldr r3, _0231639C ; =ov29_02353538
+	ldr r3, _0231639C ; =DUNGEON_PTR
 	mov r0, #0
 	ldr r2, [r3]
 	mov r1, r4
@@ -1327,7 +1327,7 @@ _02316350:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0231639C: .word ov29_02353538
+_0231639C: .word DUNGEON_PTR
 _023163A0: .word ov10_022C4788
 _023163A4: .word 0x00000CED
 	arm_func_end TryInflictSnatchStatus
@@ -2640,14 +2640,14 @@ TryActivateIdentifyCondition: ; 0x02317648
 	bl EntityIsValid__02315118
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r0, _023176C0 ; =ov29_02353538
+	ldr r0, _023176C0 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x78d]
 	cmp r0, #0
 	bne _023176AC
 	mov r0, r4
 	bl ov29_022E4868
-	ldr r1, _023176C0 ; =ov29_02353538
+	ldr r1, _023176C0 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #1
@@ -2665,7 +2665,7 @@ _023176AC:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023176C0: .word ov29_02353538
+_023176C0: .word DUNGEON_PTR
 _023176C4: .word 0x00000D78
 _023176C8: .word 0x00000D79
 	arm_func_end TryActivateIdentifyCondition
@@ -3585,7 +3585,7 @@ TryInflictGastroAcidStatus: ; 0x0231827C
 	add r0, r0, #1
 	strb r0, [r4, #0xdb]
 	mov r1, #0
-	ldr r0, _023183B4 ; =ov29_02353538
+	ldr r0, _023183B4 ; =DUNGEON_PTR
 	strb r1, [r4, #0xdc]
 	ldr r0, [r0]
 	mov r1, #1
@@ -3617,7 +3617,7 @@ _023183A0:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _023183B0: .word ov10_022C476C
-_023183B4: .word ov29_02353538
+_023183B4: .word DUNGEON_PTR
 _023183B8: .word 0x00000D7B
 _023183BC: .word 0x00000D7C
 	arm_func_end TryInflictGastroAcidStatus

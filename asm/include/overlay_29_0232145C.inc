@@ -10,6 +10,7 @@
 .public CalcStatusDuration
 .public DETECT_BAND_MOVE_ACCURACY_DROP
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB50
 .public DungeonRandRange
@@ -18,6 +19,7 @@
 .public EnemyEvolution
 .public EntityIsValid__02321438
 .public EntityIsValid__02325620
+.public EXCL_ITEM_EFFECTS_EVASION_BOOST
 .public ExclusiveItemEffectFlagTest
 .public ExecuteMoveEffect
 .public FailsWhileMuzzled
@@ -124,9 +126,7 @@
 .public ov29_02352A8C
 .public ov29_02352AD8
 .public ov29_02352B1C
-.public ov29_02353538
 .public ov29_0235370C
-.public ov29_02353710
 .public ov29_0237CA68
 .public ov29_0237CA84
 .public ov29_0237CA88

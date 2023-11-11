@@ -711,7 +711,7 @@ DoMoveSecretPower: ; 0x0232AD18
 	bl DungeonRandOutcomeUserTargetInteraction
 	cmp r0, #0
 	beq _0232AED0
-	ldr r0, _0232AEE0 ; =ov29_02353538
+	ldr r0, _0232AEE0 ; =DUNGEON_PTR
 	mov r1, #0xc
 	ldr r0, [r0]
 	ldr r2, _0232AEE4 ; =ov10_022C6321
@@ -820,7 +820,7 @@ _0232AED0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0232AEDC: .word SECRET_POWER_EFFECT_CHANCE
-_0232AEE0: .word ov29_02353538
+_0232AEE0: .word DUNGEON_PTR
 _0232AEE4: .word ov10_022C6321
 _0232AEE8: .word SLEEP_TURN_RANGE
 _0232AEEC: .word ATK_STAT_IDX
@@ -934,12 +934,12 @@ DoMoveBeatUp: ; 0x0232B024
 	mov r4, #0
 	mov r5, #0
 	cmp r0, #0
-	ldrne r0, _0232B110 ; =ov29_02353538
+	ldrne r0, _0232B110 ; =DUNGEON_PTR
 	movne r6, #0x10
 	ldrne r0, [r0]
 	moveq r6, #4
 	addne r0, r0, #0x338
-	ldreq r0, _0232B110 ; =ov29_02353538
+	ldreq r0, _0232B110 ; =DUNGEON_PTR
 	ldreq r0, [r0]
 	addeq r0, r0, #0x328
 	add r7, r0, #0x12800
@@ -990,7 +990,7 @@ _0232B108:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0232B110: .word ov29_02353538
+_0232B110: .word DUNGEON_PTR
 _0232B114: .word 0x00000EEC
 	arm_func_end DoMoveBeatUp
 
@@ -1306,7 +1306,7 @@ DoMoveCamouflage: ; 0x0232B518
 	mov r5, r0
 	mov r4, r1
 	bl sub_02025888
-	ldr r0, _0232B5B8 ; =ov29_02353538
+	ldr r0, _0232B5B8 ; =DUNGEON_PTR
 	mov r2, #0xc
 	ldr r0, [r0]
 	ldr r3, _0232B5BC ; =ov10_022C6322
@@ -1344,7 +1344,7 @@ _0232B578:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0232B5B8: .word ov29_02353538
+_0232B5B8: .word DUNGEON_PTR
 _0232B5BC: .word ov10_022C6322
 _0232B5C0: .word 0x00000DC3
 _0232B5C4: .word 0x00000EEE
@@ -1475,7 +1475,7 @@ DoMoveMagnitude: ; 0x0232B738
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	ldr r4, _0232B7B0 ; =ov29_0237CA84
-	ldr r5, _0232B7B4 ; =ov29_02353538
+	ldr r5, _0232B7B4 ; =DUNGEON_PTR
 	ldr ip, [r4]
 	ldr r6, _0232B7B8 ; =ov29_02352B1C
 	ldr r4, [r5]
@@ -1504,7 +1504,7 @@ DoMoveMagnitude: ; 0x0232B738
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _0232B7B0: .word ov29_0237CA84
-_0232B7B4: .word ov29_02353538
+_0232B7B4: .word DUNGEON_PTR
 _0232B7B8: .word ov29_02352B1C
 _0232B7BC: .word ov10_022C4924
 	arm_func_end DoMoveMagnitude
@@ -2043,7 +2043,7 @@ DoMoveRecycle: ; 0x0232BE44
 	mov sb, #0
 	cmp r0, #0
 	bne _0232BF34
-	ldr r7, _0232BF68 ; =ov29_02353538
+	ldr r7, _0232BF68 ; =DUNGEON_PTR
 	ldr r8, _0232BF6C ; =BAG_ITEMS_PTR_MIRROR
 	mov sl, sb
 	mov fp, #6
@@ -2115,7 +2115,7 @@ _0232BF60:
 	mov r0, sb
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0232BF68: .word ov29_02353538
+_0232BF68: .word DUNGEON_PTR
 _0232BF6C: .word BAG_ITEMS_PTR_MIRROR
 _0232BF70: .word 0x00000EF3
 _0232BF74: .word 0x00000EF4

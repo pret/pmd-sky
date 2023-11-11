@@ -7,15 +7,16 @@
 .public CannotStandOnTile
 .public DeleteWanTableEntryVeneer
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public EntityIsValid__022F62A8
 .public EntityIsValid__022F7364
 .public GetActiveTeamMember
 .public GetDirectionTowardsPosition
 .public GetExplorerMazeMonster
-.public GetMoneyCarried
 .public GetItemInfo
 .public GetKecleonIdToSpawnByFloor
 .public GetLeader
+.public GetMoneyCarried
 .public GetMonsterIdFromSpawnEntry
 .public GetSpriteFileSize
 .public GetTile
@@ -44,7 +45,6 @@
 .public ov29_0231B4AC
 .public ov29_0234B09C
 .public ov29_02352760
-.public ov29_02353538
 .public ov29_023535A8
 .public ov29_023535AC
 .public ov29_0237C9AC

@@ -17,6 +17,7 @@
 .public CheckTouchscreenArea
 .public DIRECTIONS_XY
 .public DrawTileGrid
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__022F0590
 .public ExecuteMoveEffect
@@ -52,6 +53,7 @@
 .public IsFloorOver
 .public IsGoldenChamber
 .public ItemZInit
+.public LEADER_PTR
 .public LogItemBlockedByEmbargo
 .public LogMessageByIdWithPopup
 .public LogMessageByIdWithPopupCheckUser
@@ -155,8 +157,6 @@
 .public ov29_023526F0
 .public ov29_023526F2
 .public ov29_023526F4
-.public ov29_02353538
-.public ov29_0235355C
 .public ov29_023535A4
 .public ov29_0237C694
 .public ov29_0237C6A4

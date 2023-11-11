@@ -15,6 +15,7 @@
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EAT_ITEM_EFFECT_IGNORE_LIST
@@ -109,7 +110,6 @@
 .public ov29_023529AC
 .public ov29_023529B0
 .public ov29_02353324
-.public ov29_02353538
 .public ov31_023853BC
 .public ov31_023853E0
 .public ov31_02385FE0

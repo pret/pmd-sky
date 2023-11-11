@@ -1,7 +1,8 @@
 #pragma once
-.public BAG_ITEMS_PTR_MIRROR
 .public abs
+.public BAG_ITEMS_PTR_MIRROR
 .public CanSeeTarget
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EntityIsValid__0230F008
@@ -16,7 +17,6 @@
 .public ov29_02302368
 .public ov29_0230F02C
 .public ov29_0231E05C
-.public ov29_02353538
 .public ov29_023536FC
 .public ov29_0237C9D0
 .public ov29_0237C9D8

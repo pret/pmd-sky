@@ -8,9 +8,11 @@
 .public CeilFixedPoint
 .public Conversion2IsActive
 .public DebugPrint0
+.public DEFAULT_TILE
 .public DIRECTIONS_XY
 .public DisplayCharTextureUi
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonGoesUp
 .public EntityIsValid__023350D8
@@ -59,10 +61,8 @@
 .public ov29_02352B9C
 .public ov29_02352D58
 .public ov29_02352F14
-.public ov29_02353538
 .public ov29_0235371C
 .public ov29_02353720
-.public ov29_02353724
 .public ov29_0237C850
 .public ov29_0237C9B8
 .public ov29_0237CA8C

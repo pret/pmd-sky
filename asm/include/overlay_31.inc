@@ -20,6 +20,7 @@
 .public DisableDungeonSubMenuOption
 .public DisplayMessage
 .public DrawTileGrid
+.public DUNGEON_PTR
 .public FormatMoveString
 .public FormatMoveStringMore
 .public FreeDBox
@@ -141,7 +142,6 @@
 .public ov29_0234FB6C
 .public ov29_0234FBD4
 .public ov29_0235352C
-.public ov29_02353538
 .public ov29_0237C91C
 .public ov29_0238280C
 .public OVERLAY31_UNKNOWN_STRING_IDS

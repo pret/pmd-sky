@@ -22,6 +22,7 @@
 .public DisplayMessage
 .public DisplayMessage2
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRngSetPrimary
 .public DungeonRngSetSecondary
@@ -112,6 +113,7 @@
 .public ItemZInit
 .public JoinedAtRangeCheck
 .public JoinedAtRangeCheck2
+.public LEADER_PTR
 .public LoadWanTableEntryFromPack
 .public LoadWanTableEntryFromPackUseProvidedMemory
 .public LoadWazaP2
@@ -183,8 +185,6 @@
 .public ov29_0234EF24
 .public ov29_0235171E
 .public ov29_02351E28
-.public ov29_02353538
-.public ov29_0235355C
 .public ov29_0237C9B0
 .public PointCameraToMonster
 .public RandInt

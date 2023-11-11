@@ -209,7 +209,7 @@ TryExplosion: ; 0x02320448
 	ldr fp, [sp, #0x3c]
 	mov r5, #0
 	mov r7, #0x15
-	ldr r4, _0232074C ; =ov29_02353538
+	ldr r4, _0232074C ; =DUNGEON_PTR
 	b _023204B4
 _0232047C:
 	ldr r0, [r4]
@@ -412,7 +412,7 @@ _02320744:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0232074C: .word ov29_02353538
+_0232074C: .word DUNGEON_PTR
 _02320750: .word 0x00000BFC
 _02320754: .word 0x00000BFB
 _02320758: .word ov29_023529B8

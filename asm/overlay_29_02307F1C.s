@@ -37,7 +37,7 @@ TryTriggerMonsterHouse: ; 0x02307F4C
 	ldrh r0, [r0]
 	tst r0, #0x40
 	beq _02308268
-	ldr r0, _02308270 ; =ov29_02353538
+	ldr r0, _02308270 ; =DUNGEON_PTR
 	ldr r2, [r0]
 	ldrb r1, [r2, #0x793]
 	cmp r1, #0
@@ -246,7 +246,7 @@ _02308268:
 	add sp, sp, #0x1a0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02308270: .word ov29_02353538
+_02308270: .word DUNGEON_PTR
 _02308274: .word ov10_022C4560
 _02308278: .word MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 	arm_func_end TryTriggerMonsterHouse

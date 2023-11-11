@@ -14,7 +14,7 @@ ov29_0230F02C: ; 0x0230F02C
 	mov r8, r3
 	str r6, [r4]
 _0230F04C:
-	ldr r0, _0230F13C ; =ov29_02353538
+	ldr r0, _0230F13C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
@@ -77,7 +77,7 @@ _0230F128:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0230F138: .word ov29_023536FC
-_0230F13C: .word ov29_02353538
+_0230F13C: .word DUNGEON_PTR
 	arm_func_end ov29_0230F02C
 
 	arm_func_start ov29_0230F140
@@ -216,7 +216,7 @@ _0230F2B0:
 	bl LogMessageByIdWithPopup
 	b _0230F624
 _0230F300:
-	ldr r0, _0230F63C ; =ov29_02353538
+	ldr r0, _0230F63C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb sb, [r0, #0x75b]
 	cmp sb, #0
@@ -442,7 +442,7 @@ _0230F62C: .word 0x00000C5E
 _0230F630: .word 0x00001305
 _0230F634: .word 0x00001308
 _0230F638: .word 0x00000C5F
-_0230F63C: .word ov29_02353538
+_0230F63C: .word DUNGEON_PTR
 _0230F640: .word BAG_ITEMS_PTR_MIRROR
 _0230F644: .word 0x00001304
 _0230F648: .word 0x00000C61
@@ -558,7 +558,7 @@ ExclusiveItemDefenseBoost: ; 0x0230F788
 TeamMemberHasItemActive: ; 0x0230F798
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, #0
-	ldr r4, _0230F80C ; =ov29_02353538
+	ldr r4, _0230F80C ; =DUNGEON_PTR
 	mov sb, r0
 	mov r8, r1
 	mov r5, r6
@@ -588,7 +588,7 @@ _0230F7F0:
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0230F80C: .word ov29_02353538
+_0230F80C: .word DUNGEON_PTR
 	arm_func_end TeamMemberHasItemActive
 
 	arm_func_start ItemIsActive__0230F810
@@ -612,7 +612,7 @@ TeamMemberHasExclusiveItemEffectActive: ; 0x0230F840
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	mov r6, #0
-	ldr r5, _0230F8A8 ; =ov29_02353538
+	ldr r5, _0230F8A8 ; =DUNGEON_PTR
 	b _0230F898
 _0230F854:
 	ldr r0, [r5]
@@ -639,7 +639,7 @@ _0230F898:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0230F8A8: .word ov29_02353538
+_0230F8A8: .word DUNGEON_PTR
 	arm_func_end TeamMemberHasExclusiveItemEffectActive
 
 	arm_func_start ExclusiveItemEffectIsActive__0230F8AC
@@ -741,7 +741,7 @@ ov29_0230F9A4: ; 0x0230F9A4
 TrySpawnEnemyItemDrop: ; 0x0230F9D8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
-	ldr r2, _0230FB28 ; =ov29_02353538
+	ldr r2, _0230FB28 ; =DUNGEON_PTR
 	mov r6, r0
 	ldr r0, [r2]
 	mov r5, r1
@@ -828,7 +828,7 @@ _0230FB20:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0230FB28: .word ov29_02353538
+_0230FB28: .word DUNGEON_PTR
 _0230FB2C: .word ov10_022C4650
 	arm_func_end TrySpawnEnemyItemDrop
 
@@ -1174,13 +1174,13 @@ _0230FFE8:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r0, _02310A84 ; =ov29_02353538
+	ldr r0, _02310A84 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x799]
 	cmp r0, #0xa
 	addlo r0, r0, #1
 	strlob r0, [r1, #0x799]
-	ldr r0, _02310A84 ; =ov29_02353538
+	ldr r0, _02310A84 ; =DUNGEON_PTR
 	mov r1, r5
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x799]
@@ -1213,7 +1213,7 @@ _0230FFE8:
 	movne r6, #0
 	b _023100E8
 _023100D8:
-	ldr r0, _02310A84 ; =ov29_02353538
+	ldr r0, _02310A84 ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	strb r1, [r0, #0x799]
@@ -1223,7 +1223,7 @@ _023100E8:
 	cmp r7, #0
 	beq _02310124
 #ifndef EUROPE
-	ldr r0, _02310A84 ; =ov29_02353538
+	ldr r0, _02310A84 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	cmp r0, #0
@@ -1250,7 +1250,7 @@ _0231013C:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r0, _02310A84 ; =ov29_02353538
+	ldr r0, _02310A84 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd5a]
@@ -1611,7 +1611,7 @@ _023106A4:
 	cmp r0, #0
 	beq _02310754
 	mov sl, #0
-	ldr r6, _02310A84 ; =ov29_02353538
+	ldr r6, _02310A84 ; =DUNGEON_PTR
 	mov sb, sl
 	mov r7, #1
 _023106C8:
@@ -1866,7 +1866,7 @@ _02310A74: .word ov10_022C4FC4
 _02310A78: .word ov10_022C4A5C
 _02310A7C: .word 0x00000DE6
 _02310A80: .word 0x00000DE7
-_02310A84: .word ov29_02353538
+_02310A84: .word DUNGEON_PTR
 _02310A88: .word 0x00000DE8
 _02310A8C: .word 0x00000DE9
 _02310A90: .word 0x00000DEA
@@ -1985,7 +1985,7 @@ _02310C28:
 	ldrb r0, [r4, #0xea]
 	cmp r0, #0
 	bne _02310DC4
-	ldr r0, _02310A84 ; =ov29_02353538
+	ldr r0, _02310A84 ; =DUNGEON_PTR
 	ldrb r2, [r4, #0xe8]
 	ldr r0, [r0]
 	ldr r1, _02310AF0 ; =LEECH_SEED_DAMAGE_COOLDOWN

@@ -8,6 +8,7 @@
 .public CheckAcceptedMissionByTypeAndDungeon
 .public DisplayMessage
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__0234987C
 .public ExclusiveItemEffectFlagTest
@@ -65,7 +66,6 @@
 .public ov29_0234B4CC
 .public ov29_0234C668
 .public ov29_0234C738
-.public ov29_02353538
 .public ov29_023537C4
 .public ov29_0237C694
 .public SpawnDroppedItem

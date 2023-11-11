@@ -839,7 +839,7 @@ _02312424:
 	and r0, r0, #3
 	cmp r0, #2
 	bne _0231247C
-	ldr r0, _023125F8 ; =ov29_02353538
+	ldr r0, _023125F8 ; =DUNGEON_PTR
 	ldr r1, _023125FC ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -960,7 +960,7 @@ _023125E8:
 	.align 2, 0
 _023125F0: .word 0x00000DAB
 _023125F4: .word 0x00000DAC
-_023125F8: .word ov29_02353538
+_023125F8: .word DUNGEON_PTR
 _023125FC: .word SECONDARY_TERRAIN_TYPES
 _02312600: .word 0x00000DB9
 _02312604: .word ov10_022C4874
@@ -974,7 +974,7 @@ _02312614: .word 0x00000DC5
 TryInflictBurnStatusWholeTeam: ; 0x02312618
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, #0
-	ldr r4, _02312660 ; =ov29_02353538
+	ldr r4, _02312660 ; =DUNGEON_PTR
 	mov r6, r7
 	mov r5, #1
 _0231262C:
@@ -992,7 +992,7 @@ _0231262C:
 	blt _0231262C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02312660: .word ov29_02353538
+_02312660: .word DUNGEON_PTR
 	arm_func_end TryInflictBurnStatusWholeTeam
 
 	arm_func_start TryInflictPoisonedStatus
@@ -1462,7 +1462,7 @@ _02312CF4:
 	and r0, r0, #3
 	cmp r0, #2
 	bne _02312D48
-	ldr r0, _02312E08 ; =ov29_02353538
+	ldr r0, _02312E08 ; =DUNGEON_PTR
 	ldr r1, _02312E0C ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -1528,7 +1528,7 @@ _02312D88:
 	.align 2, 0
 _02312E00: .word 0x00000DA8
 _02312E04: .word 0x00000DA9
-_02312E08: .word ov29_02353538
+_02312E08: .word DUNGEON_PTR
 _02312E0C: .word SECONDARY_TERRAIN_TYPES
 _02312E10: .word 0x00000DAA
 _02312E14: .word ov10_022C4870
@@ -1854,7 +1854,7 @@ TryInflictWrappedStatus: ; 0x023131F4
 	add r0, r0, #1
 	strb r0, [r5, #0xcc]
 	mov r0, #0
-	ldr r3, _023133E0 ; =ov29_02353538
+	ldr r3, _023133E0 ; =DUNGEON_PTR
 	strb r0, [r5, #0xcd]
 	ldr r1, [r3]
 	mov r0, r7
@@ -1940,7 +1940,7 @@ _023133D0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _023133DC: .word ov10_022C48AC
-_023133E0: .word ov29_02353538
+_023133E0: .word DUNGEON_PTR
 _023133E4: .word 0x00000D2B
 _023133E8: .word 0x00000D2C
 _023133EC: .word 0x00000D2D
@@ -1950,7 +1950,7 @@ _023133EC: .word 0x00000D2D
 FreeOtherWrappedMonsters: ; 0x023133F0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r4, #0
-	ldr r7, _02313468 ; =ov29_02353538
+	ldr r7, _02313468 ; =DUNGEON_PTR
 	mov r6, r0
 	mov sb, r4
 	mov r8, r4
@@ -1982,7 +1982,7 @@ _02313458:
 	blt _02313408
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02313468: .word ov29_02353538
+_02313468: .word DUNGEON_PTR
 	arm_func_end FreeOtherWrappedMonsters
 
 	arm_func_start TryInflictPetrifiedStatus
@@ -2061,7 +2061,7 @@ _02313570:
 	cmp r0, #0
 	beq _023135DC
 	mov r4, #0
-	ldr r6, _023135F8 ; =ov29_02353538
+	ldr r6, _023135F8 ; =DUNGEON_PTR
 	mov r8, #6
 	mov r7, r4
 _0231358C:
@@ -2095,7 +2095,7 @@ _023135E8: .word ov10_022C479C
 _023135EC: .word ov10_022C47A0
 _023135F0: .word 0x00000D32
 _023135F4: .word 0x00000D33
-_023135F8: .word ov29_02353538
+_023135F8: .word DUNGEON_PTR
 	arm_func_end TryInflictPetrifiedStatus
 
 	arm_func_start LowerOffensiveStat

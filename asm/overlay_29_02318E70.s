@@ -897,7 +897,7 @@ _02319A44:
 _02319A54:
 	cmp r7, #0x30
 	bne _02319AC8
-	ldr r7, _02319F80 ; =ov29_02353538
+	ldr r7, _02319F80 ; =DUNGEON_PTR
 	mov r6, #0
 _02319A64:
 	ldr r0, [r7]
@@ -1006,7 +1006,7 @@ _02319BB0:
 	mvn r0, #0
 	str r0, [sp, #0x28]
 _02319BF0:
-	ldr r0, _02319F80 ; =ov29_02353538
+	ldr r0, _02319F80 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldr r0, [sp, #0x20]
 	add r0, r1, r0, lsl #2
@@ -1149,7 +1149,7 @@ _02319DE8:
 _02319E00:
 	cmp r7, #0x60
 	bne _02319E60
-	ldr r7, _02319F80 ; =ov29_02353538
+	ldr r7, _02319F80 ; =DUNGEON_PTR
 	mov r6, #0
 _02319E10:
 	ldr r0, [r7]
@@ -1259,7 +1259,7 @@ _02319F70: .word ov29_0237CA18
 _02319F74: .word ov29_0237CA20
 _02319F78: .word ov29_0237CA28
 _02319F7C: .word DIRECTIONS_XY
-_02319F80: .word ov29_02353538
+_02319F80: .word DUNGEON_PTR
 _02319F84: .word ov29_0237CA28
 _02319F88: .word ov29_0237CA48
 	arm_func_end AiConsiderMove

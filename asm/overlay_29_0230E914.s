@@ -349,7 +349,7 @@ _0230EDDC:
 	mvn r0, #0
 	str r0, [sp, #0x10]
 _0230EDF4:
-	ldr r0, _0230EFFC ; =ov29_02353538
+	ldr r0, _0230EFFC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, fp, lsl #2
 	add r0, r0, #0x12000
@@ -491,7 +491,7 @@ _0230EFE0:
 	.align 2, 0
 _0230EFF4: .word ov29_023536FC
 _0230EFF8: .word ov29_0237C9D0
-_0230EFFC: .word ov29_02353538
+_0230EFFC: .word DUNGEON_PTR
 _0230F000: .word ov29_0237C9F8
 _0230F004: .word ov29_0237C9D8
 	arm_func_end ov29_0230EDB0

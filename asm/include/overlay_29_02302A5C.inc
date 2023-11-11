@@ -3,6 +3,7 @@
 .public DIRECTIONS_XY
 .public DisplayMessage
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonRandInt
 .public EntityIsValid__02302A38
@@ -19,6 +20,7 @@
 .public GetStringFromFileVeneer
 .public GetTalkLine
 .public GetTile
+.public GetUnlockedTacticFlags
 .public InitPortraitDungeon
 .public IsExperienceLocked
 .public IsInvalidSpawnTile
@@ -64,7 +66,6 @@
 .public ov29_023527F0
 .public ov29_0235280C
 .public ov29_02352810
-.public ov29_02353538
 .public ov29_023535C8
 .public ov29_0237C850
 .public ov29_0237C888
@@ -93,7 +94,6 @@
 .public sub_02054FB8
 .public sub_02054FEC
 .public sub_02055020
-.public GetUnlockedTacticFlags
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags
 .public SwitchAnimationControlToNextFrame

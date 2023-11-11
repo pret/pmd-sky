@@ -689,7 +689,7 @@ _0234F508:
 	blo _0234F578
 	cmp r0, #0x56
 	bhi _0234F578
-	ldr r0, _0234F76C ; =ov29_02353538
+	ldr r0, _0234F76C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x700
 	ldrsh r0, [r0, #0x4c]
@@ -845,7 +845,7 @@ _0234F75C:
 	.align 2, 0
 _0234F764: .word ov29_023533F0
 _0234F768: .word ov29_023533F8
-_0234F76C: .word ov29_02353538
+_0234F76C: .word DUNGEON_PTR
 _0234F770: .word 0x000008DE
 _0234F774: .word ov29_02353404
 _0234F778: .word ov29_0235340C
@@ -995,7 +995,7 @@ _0234F95C:
 	mov r0, #4
 	b _0234F9C0
 _0234F96C:
-	ldr r0, _0234F9E4 ; =ov29_02353538
+	ldr r0, _0234F9E4 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x700
 	ldrsb r0, [r0, #0x98]
@@ -1033,7 +1033,7 @@ _0234F9D4: .word 0x000008B9
 _0234F9D8: .word ov29_0235341C
 _0234F9DC: .word 0x00001A33
 _0234F9E0: .word ov29_0234F77C
-_0234F9E4: .word ov29_02353538
+_0234F9E4: .word DUNGEON_PTR
 	arm_func_end OthersMenuLoop
 
 	arm_func_start ov29_0234F9E8
@@ -1195,7 +1195,7 @@ _0234FBCC:
 ov29_0234FBD4: ; 0x0234FBD4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
-	ldr r4, _0234FC18 ; =ov29_02353538
+	ldr r4, _0234FC18 ; =DUNGEON_PTR
 	b _0234FC08
 _0234FBE4:
 	ldr r0, [r4]
@@ -1213,7 +1213,7 @@ _0234FC08:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0234FC18: .word ov29_02353538
+_0234FC18: .word DUNGEON_PTR
 	arm_func_end ov29_0234FBD4
 
 	arm_func_start ov29_0234FC1C
@@ -4207,8 +4207,8 @@ ov29_02353530:
 	.global ov29_02353534
 ov29_02353534:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov29_02353538
-ov29_02353538:
+	.global DUNGEON_PTR
+DUNGEON_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov29_02353540
@@ -4226,8 +4226,8 @@ ov29_02353554:
 	.global ov29_02353558
 ov29_02353558:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov29_0235355C
-ov29_0235355C:
+	.global LEADER_PTR
+LEADER_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov29_02353560
 ov29_02353560:
@@ -4239,12 +4239,12 @@ ov29_02353562:
 ov29_02353563:
 	.byte 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov29_02353570
-ov29_02353570:
+	.global DUNGEON_PRNG_STATE
+DUNGEON_PRNG_STATE:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov29_02353584
-ov29_02353584:
+	.global DUNGEON_PRNG_STATE_SECONDARY_VALUES
+DUNGEON_PRNG_STATE_SECONDARY_VALUES:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global ov29_02353598
@@ -4262,15 +4262,15 @@ ov29_023535A8:
 	.global ov29_023535AC
 ov29_023535AC:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov29_023535B0
-ov29_023535B0:
+	.global EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST
+EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST:
 	.byte 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3C, 0x00
-	.global ov29_023535B8
-ov29_023535B8:
+	.global EXCL_ITEM_EFFECTS_WEATHER_MOVE_SPEED_BOOST
+EXCL_ITEM_EFFECTS_WEATHER_MOVE_SPEED_BOOST:
 	.byte 0x2F, 0x30, 0x31, 0x32
 	.byte 0x33, 0x34, 0x35, 0x00
-	.global ov29_023535C0
-ov29_023535C0:
+	.global EXCL_ITEM_EFFECTS_WEATHER_NO_STATUS
+EXCL_ITEM_EFFECTS_WEATHER_NO_STATUS:
 	.byte 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x2D, 0x2E, 0x00
 	.global ov29_023535C8
 ov29_023535C8:
@@ -4345,8 +4345,8 @@ ov29_02353700:
 	.global ov29_0235370C
 ov29_0235370C:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov29_02353710
-ov29_02353710:
+	.global EXCL_ITEM_EFFECTS_EVASION_BOOST
+EXCL_ITEM_EFFECTS_EVASION_BOOST:
 	.byte 0x3D, 0x3E, 0x3F, 0x40, 0x41, 0x42, 0x43, 0x00
 	.global ov29_02353718
 ov29_02353718:
@@ -4357,8 +4357,8 @@ ov29_0235371C:
 	.global ov29_02353720
 ov29_02353720:
 	.byte 0xF5, 0x03, 0xF5, 0x03
-	.global ov29_02353724
-ov29_02353724:
+	.global DEFAULT_TILE
+DEFAULT_TILE:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov29_0235372C
 ov29_0235372C:
@@ -4378,11 +4378,11 @@ ov29_0235377C:
 	.global ov29_02353784
 ov29_02353784:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov29_0235378C
-ov29_0235378C:
+	.global HIDDEN_STAIRS_SPAWN_BLOCKED
+HIDDEN_STAIRS_SPAWN_BLOCKED:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov29_02353794
-ov29_02353794:
+	.global FIXED_ROOM_DATA_PTR
+FIXED_ROOM_DATA_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov29_02353798
 ov29_02353798:

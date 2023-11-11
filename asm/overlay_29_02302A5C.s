@@ -132,7 +132,7 @@ ov29_02302C04: ; 0x02302C04
 	ldrb r1, [r1, #0xa]
 	add r0, sp, #0
 	bl GetUnlockedTacticFlags
-	ldr r0, _02302CC0 ; =ov29_02353538
+	ldr r0, _02302CC0 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x748]
 	bl sub_0204F610
@@ -170,7 +170,7 @@ _02302CB8:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02302CC0: .word ov29_02353538
+_02302CC0: .word DUNGEON_PTR
 _02302CC4: .word 0x00000F2A
 	arm_func_end ov29_02302C04
 
@@ -207,7 +207,7 @@ ov29_02302CC8: ; 0x02302CC8
 	moveq r6, #1
 	b _02302D58
 _02302D40:
-	ldr r0, _02302F64 ; =ov29_02353538
+	ldr r0, _02302F64 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x748]
 	bl IsSpecialEpisodeDungeon
@@ -358,7 +358,7 @@ _02302F4C:
 	add sp, sp, #0x58
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02302F64: .word ov29_02353538
+_02302F64: .word DUNGEON_PTR
 _02302F68: .word 0x00000F27
 _02302F6C: .word 0x00000F18
 _02302F70: .word ov29_023527F0
@@ -1499,7 +1499,7 @@ _02303F14: .word _020AFC4C
 ov29_02303F18: ; 0x02303F18
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x38
-	ldr r1, _023046C8 ; =ov29_02353538
+	ldr r1, _023046C8 ; =DUNGEON_PTR
 	mov r7, r0
 	ldr r0, [r1]
 	ldr r5, [r7, #0xb4]
@@ -1709,7 +1709,7 @@ _0230422C:
 	ldr r0, _023046D4 ; =0x0001A224
 	str r1, [r7, #0x14]
 	ldr r2, [r7, #0x10]
-	ldr r1, _023046C8 ; =ov29_02353538
+	ldr r1, _023046C8 ; =DUNGEON_PTR
 	str r2, [r7, #0x18]
 	ldr r8, [r1]
 	add r1, r0, #2
@@ -1785,7 +1785,7 @@ _02304310:
 	mov r3, r3, asr #8
 	strh r3, [sp, #0x1a]
 	bl sub_0201D034
-	ldr r1, _023046C8 ; =ov29_02353538
+	ldr r1, _023046C8 ; =DUNGEON_PTR
 	ldr r0, [r5, #0xb0]
 	ldr r2, [r1]
 	add r1, sp, #0x18
@@ -1816,7 +1816,7 @@ _02304310:
 	cmp r4, #0
 	beq _0230464C
 	ldr r0, [r7, #0xb4]
-	ldr r1, _023046C8 ; =ov29_02353538
+	ldr r1, _023046C8 ; =DUNGEON_PTR
 	ldr r3, _023046E0 ; =0x0000F3FF
 	ldrb r6, [r0, #0x220]
 	mov r0, #0
@@ -1940,7 +1940,7 @@ _02304590:
 	ldr r0, _023046D4 ; =0x0001A224
 	strh r2, [r1, #0x82]
 	ldrsh r8, [r7, #0x52]
-	ldr r3, _023046C8 ; =ov29_02353538
+	ldr r3, _023046C8 ; =DUNGEON_PTR
 	add r2, r0, #2
 	strh r8, [r1, #0x84]
 	ldrsh sb, [r1, #0x82]
@@ -1988,7 +1988,7 @@ _0230464C:
 	cmp r0, #1
 	cmpne r0, #6
 	beq _023046C0
-	ldr r0, _023046C8 ; =ov29_02353538
+	ldr r0, _023046C8 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x78b]
 	cmp r0, #0
@@ -2019,7 +2019,7 @@ _023046C0:
 	add sp, sp, #0x38
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_023046C8: .word ov29_02353538
+_023046C8: .word DUNGEON_PTR
 _023046CC: .word ov29_02352810
 _023046D0: .word 0x00000229
 _023046D4: .word 0x0001A224
@@ -2059,7 +2059,7 @@ _02304728:
 ov29_0230473C: ; 0x0230473C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, #0
-	ldr r6, _023047B4 ; =ov29_02353538
+	ldr r6, _023047B4 ; =DUNGEON_PTR
 	mov r7, r5
 _0230474C:
 	ldr r0, [r6]
@@ -2090,5 +2090,5 @@ _023047A4:
 	blt _0230474C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_023047B4: .word ov29_02353538
+_023047B4: .word DUNGEON_PTR
 	arm_func_end ov29_0230473C

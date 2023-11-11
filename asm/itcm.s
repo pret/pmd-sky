@@ -2723,7 +2723,7 @@ _01FFA4D4:
 	bl ShouldMonsterHeadToStairs
 	cmp r0, #0
 	beq _01FFA550
-	ldr r3, _01FFB2B4 ; =ov29_02353538
+	ldr r3, _01FFB2B4 ; =DUNGEON_PTR
 	add r2, sb, #0x100
 	ldr r1, [r3]
 	mov r0, #1
@@ -2740,7 +2740,7 @@ _01FFA4D4:
 	strh r1, [r2, #0x80]
 	b _01FFAF28
 _01FFA550:
-	ldr r0, _01FFB2B4 ; =ov29_02353538
+	ldr r0, _01FFB2B4 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x3000
 	ldrb r0, [r0, #0xe38]
@@ -2791,7 +2791,7 @@ _01FFA5E0:
 	bl CanSeeTarget
 	cmp r0, #0
 	beq _01FFA688
-	ldr r0, _01FFB2B4 ; =ov29_02353538
+	ldr r0, _01FFB2B4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldrb r0, [r0, #0xe38]
@@ -2909,7 +2909,7 @@ _01FFA7A0:
 	strh r1, [sb, #0x8e]
 	b _01FFAF28
 _01FFA7C0:
-	ldr r0, _01FFB2B4 ; =ov29_02353538
+	ldr r0, _01FFB2B4 ; =DUNGEON_PTR
 	ldrsh sl, [r4, #6]
 	ldr r1, [r0]
 	ldrsh r2, [r7, #6]
@@ -3120,7 +3120,7 @@ _01FFAAB8:
 	bl ShouldMonsterFollowLeader
 	cmp r0, #0
 	bne _01FFAD14
-	ldr r0, _01FFB2B4 ; =ov29_02353538
+	ldr r0, _01FFB2B4 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x3000
 	ldrb r0, [r0, #0xe38]
@@ -3161,7 +3161,7 @@ _01FFAB50:
 	ldrb r1, [r0, #0xbc]
 	cmp r1, #6
 	bhi _01FFAC60
-	ldr r1, _01FFB2B4 ; =ov29_02353538
+	ldr r1, _01FFB2B4 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	ldrb r1, [r1, #0xe38]
@@ -3320,7 +3320,7 @@ _01FFAD7C:
 	add r5, r0, #2
 	b _01FFAE60
 _01FFADC0:
-	ldr r0, _01FFB2B4 ; =ov29_02353538
+	ldr r0, _01FFB2B4 ; =DUNGEON_PTR
 	mov r1, #0x1c
 	ldr r0, [r0]
 	add r0, r0, #0x2e8
@@ -3666,7 +3666,7 @@ _01FFB2A4:
 	.align 2, 0
 _01FFB2AC: .word 0x000003E7
 _01FFB2B0: .word 0x000F423F
-_01FFB2B4: .word ov29_02353538
+_01FFB2B4: .word DUNGEON_PTR
 _01FFB2B8: .word DIRECTIONS_XY
 _01FFB2BC: .word ov29_0235171E
 _01FFB2C0: .word 0xFFF0BDC1
@@ -3676,7 +3676,7 @@ _01FFB2C4: .word ov29_0235177C
 	arm_func_start CalculateAiTargetPos
 CalculateAiTargetPos: ; 0x01FFB2C8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r1, _01FFB61C ; =ov29_02353538
+	ldr r1, _01FFB61C ; =DUNGEON_PTR
 	mov sl, r0
 	ldr r0, [r1]
 	ldr sb, [sl, #0xb4]
@@ -3758,7 +3758,7 @@ _01FFB3E4:
 	blt _01FFB36C
 	b _01FFB5D8
 _01FFB3F0:
-	ldr r0, _01FFB61C ; =ov29_02353538
+	ldr r0, _01FFB61C ; =DUNGEON_PTR
 	ldr r1, [sb, #0x120]
 	ldr r2, [r0]
 	cmp r1, #0
@@ -3909,7 +3909,7 @@ _01FFB5D8:
 	strh r1, [sb, #0x8e]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FFB61C: .word ov29_02353538
+_01FFB61C: .word DUNGEON_PTR
 _01FFB620: .word ov29_0235177C
 _01FFB624: .word DIRECTIONS_XY
 _01FFB628: .word ov29_0235171E
@@ -3935,7 +3935,7 @@ _01FFB654:
 ChooseAiMove: ; 0x01FFB658
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
-	ldr r1, _01FFBD14 ; =ov29_02353538
+	ldr r1, _01FFBD14 ; =DUNGEON_PTR
 	mov sl, r0
 	ldr r0, [r1]
 	ldr r7, [sl, #0xb4]
@@ -4413,7 +4413,7 @@ _01FFBD0C:
 	add sp, sp, #0x44
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FFBD14: .word ov29_02353538
+_01FFBD14: .word DUNGEON_PTR
 _01FFBD18: .word ov10_022C4580
 _01FFBD1C: .word ov10_022C4900
 	arm_func_end ChooseAiMove
@@ -4438,7 +4438,7 @@ sub_01FFBD20: ; 0x01FFBD20
 _01FFBD5C:
 	mov r3, #0
 _01FFBD60:
-	ldr r1, _01FFBDF0 ; =ov29_02353538
+	ldr r1, _01FFBDF0 ; =DUNGEON_PTR
 	mov r0, r6
 	ldr r2, [r1]
 	mov r1, #0x32
@@ -4476,7 +4476,7 @@ _01FFBDB0:
 	strne r0, [r4, #0xc]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_01FFBDF0: .word ov29_02353538
+_01FFBDF0: .word DUNGEON_PTR
 	arm_func_end sub_01FFBD20
 
 	arm_func_start sub_01FFBDF4
@@ -4488,7 +4488,7 @@ sub_01FFBDF4: ; 0x01FFBDF4
 	bl EntityIsValid__02319F8C
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	ldr r4, _01FFBE58 ; =ov29_02353538
+	ldr r4, _01FFBE58 ; =DUNGEON_PTR
 	mov r5, #0
 _01FFBE18:
 	ldr r0, [r4]
@@ -4509,7 +4509,7 @@ _01FFBE48:
 	blt _01FFBE18
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_01FFBE58: .word ov29_02353538
+_01FFBE58: .word DUNGEON_PTR
 	arm_func_end sub_01FFBDF4
 
 	arm_func_start LightningRodStormDrainCheck
@@ -4521,7 +4521,7 @@ LightningRodStormDrainCheck: ; 0x01FFBE5C
 	mov r7, r3
 	mov r5, #0
 	ldr r4, _01FFBF70 ; =_01FFB654
-	ldr fp, _01FFBF74 ; =ov29_02353538
+	ldr fp, _01FFBF74 ; =DUNGEON_PTR
 	b _01FFBF60
 _01FFBE80:
 	ldr r1, [fp]
@@ -4591,7 +4591,7 @@ _01FFBF60:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FFBF70: .word _01FFB654
-_01FFBF74: .word ov29_02353538
+_01FFBF74: .word DUNGEON_PTR
 	arm_func_end LightningRodStormDrainCheck
 
 	arm_func_start sub_01FFBF78

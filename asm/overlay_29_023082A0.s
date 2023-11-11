@@ -860,7 +860,7 @@ _02308ECC:
 	ldrb r1, [r0, #0xe0]
 	cmp r1, #2
 	bne _02308F4C
-	ldr r1, _02308FB8 ; =ov29_02353538
+	ldr r1, _02308FB8 ; =DUNGEON_PTR
 	ldrb r2, [r0, #0xe8]
 	ldr r1, [r1]
 	add r1, r1, r2, lsl #2
@@ -916,5 +916,5 @@ _02308FA8: .word ov10_022C45AC
 _02308FAC: .word ov10_022C467C
 _02308FB0: .word ov10_022C4524
 _02308FB4: .word ov10_022C4638
-_02308FB8: .word ov29_02353538
+_02308FB8: .word DUNGEON_PTR
 	arm_func_end ApplyDamageAndEffects

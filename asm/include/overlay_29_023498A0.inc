@@ -8,6 +8,7 @@
 .public CreateDBox
 .public CreatePortraitBox
 .public DebugPrint0
+.public DUNGEON_PTR
 .public DungeonAlloc
 .public DungeonFree
 .public DungeonRandInt
@@ -162,7 +163,6 @@
 .public ov29_02353380
 .public ov29_02353398
 .public ov29_0235352C
-.public ov29_02353538
 .public ov29_02353563
 .public ov29_023537C8
 .public ov29_023537CC

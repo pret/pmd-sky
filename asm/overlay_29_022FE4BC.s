@@ -648,7 +648,7 @@ _022FF7B4:
 	ldr r6, [sb, #0xb4]
 	mov r1, #0
 	strb r1, [r6, #0x109]
-	ldr r0, _022FED70 ; =ov29_02353538
+	ldr r0, _022FED70 ; =DUNGEON_PTR
 	strb r1, [r6, #0xfc]
 	ldr r1, [r0]
 	ldr r0, _022FED74 ; =ov10_022C4F3C
@@ -847,7 +847,7 @@ _022FE7B8:
 	ldrb r0, [r6, #7]
 	cmp r0, #0
 	beq _022FEBB4
-	ldr r0, _022FED70 ; =ov29_02353538
+	ldr r0, _022FED70 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsh r0, [r0, #0xd8]
@@ -856,7 +856,7 @@ _022FE7B8:
 	mov r0, #0x56
 	bl AdvanceFrame
 _022FE7F4:
-	ldr r1, _022FED70 ; =ov29_02353538
+	ldr r1, _022FED70 ; =DUNGEON_PTR
 	mvn r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x100
@@ -898,7 +898,7 @@ _022FE870:
 	ldrb r0, [r6, #7]
 	cmp r0, #0
 	beq _022FEBB4
-	ldr r0, _022FED70 ; =ov29_02353538
+	ldr r0, _022FED70 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsh r0, [r0, #0xd8]
@@ -907,7 +907,7 @@ _022FE870:
 	mov r0, #0x56
 	bl AdvanceFrame
 _022FE8B4:
-	ldr r1, _022FED70 ; =ov29_02353538
+	ldr r1, _022FED70 ; =DUNGEON_PTR
 	mvn r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x100
@@ -959,7 +959,7 @@ _022FE95C:
 	ldrb r0, [r6, #0xd0]
 	cmp r0, #2
 	bne _022FEBB4
-	ldr r1, _022FED70 ; =ov29_02353538
+	ldr r1, _022FED70 ; =DUNGEON_PTR
 	sub r2, r4, #2
 	ldr r0, [r1]
 	add r0, r0, #0x100
@@ -974,7 +974,7 @@ _022FE99C:
 	b _022FEBB4
 _022FE9A8:
 	bl ov29_022E5D68
-	ldr r0, _022FED70 ; =ov29_02353538
+	ldr r0, _022FED70 ; =DUNGEON_PTR
 	mov r2, #1
 	ldr r0, [r0]
 	ldr r1, _022FED7C ; =ov29_0237C9C0
@@ -1041,7 +1041,7 @@ _022FEA78:
 	bl ov29_022F44F0
 	b _022FEBB4
 _022FEA84:
-	ldr r0, _022FED70 ; =ov29_02353538
+	ldr r0, _022FED70 ; =DUNGEON_PTR
 	ldrb r1, [r6, #0x4e]
 	ldr r2, [r0]
 	add r0, r2, r1, lsl #2
@@ -1257,7 +1257,7 @@ _022FED68:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 #endif
 	.align 2, 0
-_022FED70: .word ov29_02353538
+_022FED70: .word DUNGEON_PTR
 _022FED74: .word ov10_022C4F3C
 _022FED78: .word ov10_022C4F3D
 _022FED7C: .word ov29_0237C9C0

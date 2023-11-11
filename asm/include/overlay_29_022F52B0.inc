@@ -8,6 +8,7 @@
 .public DIRECTIONS_XY
 .public DisplayMessage
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EnemyEvolution
 .public EntityIsValid__022F528C
@@ -82,7 +83,6 @@
 .public ov29_0235171E
 .public ov29_02352750
 .public ov29_02352758
-.public ov29_02353538
 .public ov29_0237CA80
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveEquivItemNoHole

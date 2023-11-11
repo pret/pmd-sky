@@ -7,6 +7,9 @@
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DISPLACEMENTS_WITHIN_3
 .public DisplayUi
+.public DUNGEON_PRNG_STATE
+.public DUNGEON_PRNG_STATE_SECONDARY_VALUES
+.public DUNGEON_PTR
 .public EntityIsValid__022E95F4
 .public GetLeader
 .public GetTile
@@ -40,11 +43,8 @@
 .public ov29_0235179C
 .public ov29_023517A0
 .public ov29_023517A2
-.public ov29_02353538
 .public ov29_02353540
 .public ov29_02353560
-.public ov29_02353570
-.public ov29_02353584
 .public ov29_0237C694
 .public ov29_0237C850
 .public ov29_0237C888

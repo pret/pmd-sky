@@ -1,9 +1,11 @@
 #pragma once
 .public BindTrapToTile
+.public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public GetItemInfo
 .public GetTileSafe
 .public GetTrapInfo
+.public LEADER_PTR
 .public MemAlloc
 .public MemFree
 .public memset
@@ -22,8 +24,6 @@
 .public ov29_02338F24
 .public ov29_02344B1C
 .public ov29_02344B30
-.public ov29_02353538
-.public ov29_0235355C
 .public ReadQuickSaveInfo
 .public SpawnItem
 .public SpawnTrap

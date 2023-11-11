@@ -7,6 +7,8 @@
 .public ChangeLeader
 .public DecrementWindCounter
 .public DisplayActions
+.public DUNGEON_PRNG_STATE
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandRange
 .public EnemyEvolution
@@ -45,8 +47,6 @@
 .public ov29_02352070
 .public ov29_02352074
 .public ov29_023522B6
-.public ov29_02353538
-.public ov29_02353570
 .public ov29_0237C918
 .public ov29_0237C91C
 .public ov29_0237C91E

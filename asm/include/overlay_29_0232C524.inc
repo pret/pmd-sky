@@ -15,6 +15,7 @@
 .public DealDamageWithTypeAndPowerBoost
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcomeUserTargetInteraction
 .public EndFrozenStatus
@@ -97,7 +98,6 @@
 .public ov29_0235171E
 .public ov29_02352B38
 .public ov29_02352B3C
-.public ov29_02353538
 .public PrepareTrapperTrap
 .public RevealEnemies
 .public RevealItems

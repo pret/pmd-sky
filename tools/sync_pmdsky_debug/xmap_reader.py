@@ -49,7 +49,7 @@ def read_xmap_symbols() -> Dict[str, Dict[int, SymbolDetails]]:
                 if current_section is not None and current_section not in xmap_symbols:
                     xmap_symbols[current_section]: Dict[str, int] = {}
 
-            elif current_section is not None and line.startswith('  ') and '.text' in line and len(line) > 28 and line[28] not in NON_FUNCTION_SYMBOLS:
+            elif current_section is not None and line.startswith('  ') and ('.text' in line or '.data' in line) and len(line) > 28 and line[28] not in NON_FUNCTION_SYMBOLS:
                 symbol_split = line[28:-1].split('\t')
                 symbol_name = symbol_split[0]
                 symbol_address = int(line[2:10], 16)

@@ -2,6 +2,7 @@
 .public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public AnimationDelayOrSomething
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandRange
 .public EntityIsValid__02307EF8
@@ -13,5 +14,4 @@
 .public MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 .public MultiplyByFixedPoint
 .public ov10_022C4560
-.public ov29_02353538
 .public SpawnMonster

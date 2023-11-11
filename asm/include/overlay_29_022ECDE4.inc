@@ -5,7 +5,9 @@
 .public AdvanceFrame
 .public ApplyTrapEffect
 .public AreLateGameTrapsEnabled
+.public CreateMonsterSummaryFromMonster
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EnemyEvolution
@@ -31,13 +33,11 @@
 .public ov29_022E56A0
 .public ov29_022E58B0
 .public ov29_022E7A30
-.public CreateMonsterSummaryFromMonster
 .public ov29_022F9840
 .public ov29_0234B034
 .public ov29_02352690
 .public ov29_02352698
 .public ov29_023526A0
-.public ov29_02353538
 .public ov29_0235359C
 .public ov29_0237C864
 .public ov29_0237C974

@@ -11,7 +11,7 @@ TryActivateBadDreams: ; 0x0231B1B8
 	ldr r0, [sl, #0xb4]
 	mov r6, #0
 	ldrb r0, [r0, #6]
-	ldr r4, _0231B30C ; =ov29_02353538
+	ldr r4, _0231B30C ; =DUNGEON_PTR
 	mov r7, #0
 	cmp r0, #0
 	moveq r0, #1
@@ -98,7 +98,7 @@ _0231B2FC:
 	add sp, sp, #0x50
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0231B30C: .word ov29_02353538
+_0231B30C: .word DUNGEON_PTR
 _0231B310: .word ov10_022C4530
 _0231B314: .word 0x0000026E
 	arm_func_end TryActivateBadDreams
@@ -217,7 +217,7 @@ _0231B44C:
 	arm_func_start ov29_0231B460
 ov29_0231B460: ; 0x0231B460
 	stmdb sp!, {r3, lr}
-	ldr r0, _0231B48C ; =ov29_02353538
+	ldr r0, _0231B48C ; =DUNGEON_PTR
 	ldr r2, [r0]
 	add r0, r2, #0x700
 	ldrsh r1, [r0, #0xa8]
@@ -228,26 +228,26 @@ ov29_0231B460: ; 0x0231B460
 	bl ov29_0231B3CC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0231B48C: .word ov29_02353538
+_0231B48C: .word DUNGEON_PTR
 	arm_func_end ov29_0231B460
 
 	arm_func_start ov29_0231B490
 ov29_0231B490: ; 0x0231B490
-	ldr r0, _0231B4A8 ; =ov29_02353538
+	ldr r0, _0231B4A8 ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	strb r1, [r0, #0xe3c]
 	bx lr
 	.align 2, 0
-_0231B4A8: .word ov29_02353538
+_0231B4A8: .word DUNGEON_PTR
 	arm_func_end ov29_0231B490
 
 	arm_func_start ov29_0231B4AC
 ov29_0231B4AC: ; 0x0231B4AC
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
-	ldreq r0, _0231B4E8 ; =ov29_02353538
+	ldreq r0, _0231B4E8 ; =DUNGEON_PTR
 	ldreq r0, [r0]
 	addeq r0, r0, #0x3000
 	ldreqb r0, [r0, #0xe3c]
@@ -255,13 +255,13 @@ ov29_0231B4AC: ; 0x0231B4AC
 	cmp r0, #1
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0231B4E8 ; =ov29_02353538
+	ldr r0, _0231B4E8 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x748]
 	bl IsSkyExclusiveDungeon
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0231B4E8: .word ov29_02353538
+_0231B4E8: .word DUNGEON_PTR
 	arm_func_end ov29_0231B4AC
 
 	arm_func_start ChangeShayminForme
@@ -349,9 +349,9 @@ _0231B5F4:
 	bl ov29_022E9FD0
 	ldr r0, _0231B684 ; =0x00000217
 	cmp r5, r0
-	ldreq r0, _0231B688 ; =ov29_02353538
+	ldreq r0, _0231B688 ; =DUNGEON_PTR
 	moveq r1, #1
-	ldrne r0, _0231B688 ; =ov29_02353538
+	ldrne r0, _0231B688 ; =DUNGEON_PTR
 	movne r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -375,7 +375,7 @@ _0231B678:
 	.align 2, 0
 _0231B680: .word 0x00000216
 _0231B684: .word 0x00000217
-_0231B688: .word ov29_02353538
+_0231B688: .word DUNGEON_PTR
 	arm_func_end ChangeShayminForme
 
 	arm_func_start ApplyItemEffect

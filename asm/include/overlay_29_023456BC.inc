@@ -7,12 +7,14 @@
 .public AdvanceFrame
 .public ApplyItemEffect
 .public BAG_ITEMS_PTR_MIRROR
+.public CleanStickyItemsInBag
 .public ClearItem
 .public DIRECTIONS_XY
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DISPLACEMENTS_WITHIN_3
 .public DisplayMessage2
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public DungeonRand16Bit
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
@@ -83,7 +85,6 @@
 .public ov29_023516FC
 .public ov29_023531BC
 .public ov29_023531C8
-.public ov29_02353538
 .public ov29_023537B4
 .public ov29_023537BC
 .public ov29_0237C864
@@ -98,7 +99,6 @@
 .public sub_0200D1FC
 .public sub_0200D894
 .public sub_0200D8AC
-.public CleanStickyItemsInBag
 .public sub_0201B9F8
 .public sub_02024FE8
 .public sub_0204F7A8

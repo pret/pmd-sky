@@ -330,6 +330,7 @@
 .public DoMoveWrap
 .public DoMoveYawn
 .public DoMoveZapCannon
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public DungeonRandOutcomeUserAction
@@ -415,7 +416,6 @@
 .public ov29_023381C0
 .public ov29_02344B44
 .public ov29_0234B034
-.public ov29_02353538
 .public ov29_02353718
 .public ov29_0237CA68
 .public ov29_0237CA69

@@ -4,6 +4,7 @@
 .public AreTileJumpsAllowed
 .public CalcDamageFixedNoCategory
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public EnsureCanStandCurrentTile
 .public EntityIsValid__0232017C
 .public GetTile
@@ -21,7 +22,6 @@
 .public ov29_0232033C
 .public ov29_02321238
 .public ov29_0232124C
-.public ov29_02353538
 .public ShouldDisplayEntityWrapper
 .public SubstitutePlaceholderStringTags
 .public TwoTurnMoveForcedMiss

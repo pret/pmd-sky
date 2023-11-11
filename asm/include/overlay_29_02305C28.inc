@@ -4,6 +4,7 @@
 .public ApplyDamageAndEffectsWrapper
 .public CalcSpeedStageWrapper
 .public CalcStatusDuration
+.public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public EndNegativeStatusCondition
 .public EnsureCanStandCurrentTile
@@ -31,7 +32,6 @@
 .public ov29_02304A48
 .public ov29_02311C28
 .public ov29_02321134
-.public ov29_02353538
 .public SafeguardIsActive
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags

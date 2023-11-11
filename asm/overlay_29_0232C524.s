@@ -72,7 +72,7 @@ _0232C5E8:
 	cmp r2, #0x32
 	blt _0232C5B0
 	mov r8, #0
-	ldr r4, _0232C6AC ; =ov29_02353538
+	ldr r4, _0232C6AC ; =DUNGEON_PTR
 	mov fp, r8
 	mov r5, #1
 _0232C604:
@@ -123,7 +123,7 @@ _0232C698:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0232C6A8: .word BAG_ITEMS_PTR_MIRROR
-_0232C6AC: .word ov29_02353538
+_0232C6AC: .word DUNGEON_PTR
 _0232C6B0: .word 0x00000EFF
 	arm_func_end DoMoveCleanse
 
@@ -433,7 +433,7 @@ DoMoveEscape: ; 0x0232CA70
 	mov r1, r5
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
-	ldr r0, _0232CAFC ; =ov29_02353538
+	ldr r0, _0232CAFC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x790]
 	cmp r0, #0
@@ -465,7 +465,7 @@ _0232CAF4:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0232CAFC: .word ov29_02353538
+_0232CAFC: .word DUNGEON_PTR
 _0232CB00: .word 0x00000F04
 _0232CB04: .word 0x00000F03
 	arm_func_end DoMoveEscape
@@ -514,7 +514,7 @@ _0232CB74:
 	add r5, r1, r0
 	b _0232CBD0
 _0232CB94:
-	ldr r0, _0232CCB4 ; =ov29_02353538
+	ldr r0, _0232CCB4 ; =DUNGEON_PTR
 	ldrb r2, [r4, #7]
 	ldr r0, [r0]
 	mov r1, #0x1c
@@ -596,7 +596,7 @@ _0232CCA8:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0232CCB0: .word 0x00000F07
-_0232CCB4: .word ov29_02353538
+_0232CCB4: .word DUNGEON_PTR
 _0232CCB8: .word ov29_02352B38
 _0232CCBC: .word 0x00000F05
 _0232CCC0: .word 0x00000F06
@@ -612,12 +612,12 @@ DoMoveWildCall: ; 0x0232CCC4
 	mov r6, #0
 	mov r4, #0
 	cmp r0, #0
-	ldrne r0, _0232CD88 ; =ov29_02353538
+	ldrne r0, _0232CD88 ; =DUNGEON_PTR
 	movne r5, #0x10
 	ldrne r0, [r0]
 	moveq r5, #4
 	addne r0, r0, #0x338
-	ldreq r0, _0232CD88 ; =ov29_02353538
+	ldreq r0, _0232CD88 ; =DUNGEON_PTR
 	mov fp, #1
 	ldreq r0, [r0]
 	addeq r0, r0, #0x328
@@ -658,7 +658,7 @@ _0232CD80:
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0232CD88: .word ov29_02353538
+_0232CD88: .word DUNGEON_PTR
 _0232CD8C: .word 0x00000F08
 	arm_func_end DoMoveWildCall
 
@@ -1287,7 +1287,7 @@ _0232D4FC:
 	cmp r0, #6
 	bne _0232D548
 	ldr r1, _0232D558 ; =WEATHER_MOVE_TURN_COUNT
-	ldr r0, _0232D55C ; =ov29_02353538
+	ldr r0, _0232D55C ; =DUNGEON_PTR
 	ldrsh r3, [r1]
 	ldr r1, [r0]
 	mov r0, #1
@@ -1302,7 +1302,7 @@ _0232D548:
 _0232D550: .word 0x00000ED2
 _0232D554: .word SPATK_STAT_IDX
 _0232D558: .word WEATHER_MOVE_TURN_COUNT
-_0232D55C: .word ov29_02353538
+_0232D55C: .word DUNGEON_PTR
 	arm_func_end DoMoveDefog
 
 	arm_func_start DoMoveTrumpCard
@@ -1675,7 +1675,7 @@ DoMoveDamageEatItem: ; 0x0232D9E4
 	mov r0, r5
 	bl ov29_022E34A8_EU
 #else
-	ldr r0, _0232DACC ; =ov29_02353538
+	ldr r0, _0232DACC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	cmp r0, #0
@@ -1732,7 +1732,7 @@ _0232DAC4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 #ifndef EUROPE
-_0232DACC: .word ov29_02353538
+_0232DACC: .word DUNGEON_PTR
 #endif
 	arm_func_end DoMoveDamageEatItem
 

@@ -13,6 +13,7 @@
 .public DIRECTIONS_XY
 .public DisplayMessage
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonGoesUp
 .public DungeonRandInt
 .public DungeonRngUnsetSecondary
@@ -47,6 +48,7 @@
 .public IsRoomIlluminated
 .public IsSecretBazaarVeneer
 .public IsTrapInvisibleWhenAttacking
+.public LEADER_PTR
 .public LoadFileFromRom
 .public LoadMappaFileAttributes
 .public LoadScriptVariableValue
@@ -247,8 +249,6 @@
 .public ov29_0235352C
 .public ov29_02353530
 .public ov29_02353534
-.public ov29_02353538
-.public ov29_0235355C
 .public ov29_02353563
 .public ov29_02353860
 .public ov29_023538B4

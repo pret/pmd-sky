@@ -4,6 +4,7 @@
 .public AnimationDelayOrSomething
 .public DIRECTIONS_XY
 .public DisplayActions
+.public DUNGEON_PTR
 .public EnemyEvolution
 .public EnsureCanStandCurrentTile
 .public EntityIsValid__022FED98
@@ -12,12 +13,6 @@
 .public IsFloorOver
 .public LogMessageByIdWithPopupCheckUser
 .public MoveMonsterToPos
-.public SubstitutePlaceholderStringTags
-.public TryActivateFlashFireOnAllMonsters
-.public TrySpawnTrapperTrap
-.public TryTriggerTrap
-.public UseSingleUseItemWrapper
-.public UseThrowableItem
 .public ov10_022C4F3C
 .public ov10_022C4F3D
 .public ov29_022E3A58
@@ -68,7 +63,12 @@
 .public ov29_0234B024
 .public ov29_0234BA54
 .public ov29_0235171E
-.public ov29_02353538
 .public ov29_0237C9C0
 .public ov29_0237CA68
 .public ov29_0237CA6C
+.public SubstitutePlaceholderStringTags
+.public TryActivateFlashFireOnAllMonsters
+.public TrySpawnTrapperTrap
+.public TryTriggerTrap
+.public UseSingleUseItemWrapper
+.public UseThrowableItem

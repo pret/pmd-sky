@@ -5,9 +5,11 @@
 .public abs
 .public AllocAndLoadFileInPack
 .public CORNER_CARDINAL_NEIGHBOR_IS_OPEN
+.public CountStickyItemsInBag
 .public DetermineAllTilesWalkableNeighbors
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public DungeonRand16Bit
 .public DungeonRandInt
 .public DungeonRandRange
@@ -16,6 +18,7 @@
 .public EntityIsValid__02337CA8
 .public EntityIsValid__02344AF8
 .public FIRST_DUNGEON_WITH_MONSTER_HOUSE_TRAPS
+.public FIXED_ROOM_DATA_PTR
 .public FIXED_ROOM_ENTITY_SPAWN_TABLE
 .public FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
 .public GenerateCleanItem
@@ -25,12 +28,12 @@
 .public GetExclusiveItem
 .public GetExplorerMazeMonster
 .public GetFloorType
-.public GetMoneyCarried
 .public GetItemCategoryVeneer
 .public GetKecleonIdToSpawnByFloor
 .public GetLeader
 .public GetMissionEnemyMinionGroup
 .public GetMissionTargetEnemy
+.public GetMoneyCarried
 .public GetMonsterIdFromSpawnEntry
 .public GetMonsterLevelToSpawn
 .public GetOutlawLeaderLevel
@@ -43,6 +46,7 @@
 .public GetTrapInfo
 .public GetVictoriesOnOneFloor
 .public HandleSir0Translation
+.public HIDDEN_STAIRS_SPAWN_BLOCKED
 .public HIDDEN_STAIRS_SPAWN_CHANCE_MULTIPLIER
 .public InitOtherMonsterData
 .public InitRender3dElement64
@@ -135,14 +139,11 @@
 .public ov29_02353110
 .public ov29_023534F0
 .public ov29_0235352C
-.public ov29_02353538
 .public ov29_0235372C
 .public ov29_02353730
 .public ov29_0235376C
 .public ov29_0235377C
 .public ov29_02353784
-.public ov29_0235378C
-.public ov29_02353794
 .public ov29_02353798
 .public ov29_0237CACC
 .public ov29_0237CD40
@@ -167,7 +168,6 @@
 .public sub_0200B330
 .public sub_0200B3FC
 .public sub_0200C008
-.public CountStickyItemsInBag
 .public sub_0201B9F8
 .public sub_0201E13C
 .public sub_0201F2A0

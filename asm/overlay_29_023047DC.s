@@ -6,7 +6,7 @@
 	arm_func_start ov29_023047DC
 ov29_023047DC: ; 0x023047DC
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r4, _0230482C ; =ov29_02353538
+	ldr r4, _0230482C ; =DUNGEON_PTR
 	mov r5, #0
 _023047E8:
 	ldr r0, [r4]
@@ -28,14 +28,14 @@ _0230481C:
 	blt _023047E8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0230482C: .word ov29_02353538
+_0230482C: .word DUNGEON_PTR
 	arm_func_end ov29_023047DC
 
 	arm_func_start ov29_02304830
 ov29_02304830: ; 0x02304830
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
-	ldr r2, _0230494C ; =ov29_02353538
+	ldr r2, _0230494C ; =DUNGEON_PTR
 	mov r5, r0
 	ldr r0, [r2]
 	ldr r4, [r5, #0xb4]
@@ -108,14 +108,14 @@ _02304944:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0230494C: .word ov29_02353538
+_0230494C: .word DUNGEON_PTR
 _02304950: .word 0x00000229
 	arm_func_end ov29_02304830
 
 	arm_func_start ov29_02304954
 ov29_02304954: ; 0x02304954
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r4, _023049A4 ; =ov29_02353538
+	ldr r4, _023049A4 ; =DUNGEON_PTR
 	mov r5, #0
 _02304960:
 	ldr r0, [r4]
@@ -137,7 +137,7 @@ _02304994:
 	blt _02304960
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023049A4: .word ov29_02353538
+_023049A4: .word DUNGEON_PTR
 	arm_func_end ov29_02304954
 
 	arm_func_start ov29_023049A8
@@ -290,7 +290,7 @@ _02304B58:
 	arm_func_start ov29_02304B64
 ov29_02304B64: ; 0x02304B64
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r4, _02304BA8 ; =ov29_02353538
+	ldr r4, _02304BA8 ; =DUNGEON_PTR
 	mov r5, #0
 _02304B70:
 	ldr r0, [r4]
@@ -309,7 +309,7 @@ _02304B98:
 	blt _02304B70
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02304BA8: .word ov29_02353538
+_02304BA8: .word DUNGEON_PTR
 	arm_func_end ov29_02304B64
 
 	arm_func_start ov29_02304BAC
@@ -336,7 +336,7 @@ ov29_02304BAC: ; 0x02304BAC
 _02304BF8:
 	cmp r6, #2
 	bne _02304C24
-	ldr r0, _02304C34 ; =ov29_02353538
+	ldr r0, _02304C34 ; =DUNGEON_PTR
 	ldr r1, _02304C38 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -351,7 +351,7 @@ _02304C24:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02304C30: .word ov29_02352808
-_02304C34: .word ov29_02353538
+_02304C34: .word DUNGEON_PTR
 _02304C38: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end ov29_02304BAC
 
@@ -625,7 +625,7 @@ DisplayActions: ; 0x02304FE0
 	mov r4, r5
 	mov fp, r5
 _02305020:
-	ldr r0, _02305588 ; =ov29_02353538
+	ldr r0, _02305588 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -714,7 +714,7 @@ _02305160:
 	cmp r6, #0
 	moveq r0, #0
 	beq _02305578
-	ldr r0, _02305588 ; =ov29_02353538
+	ldr r0, _02305588 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldr r6, [r1, #0xc4]
 	str sl, [r1, #0xc4]
@@ -732,7 +732,7 @@ _023051B0:
 	mov r0, #7
 	bl AdvanceFrame
 	mov sl, #0
-	ldr r4, _02305588 ; =ov29_02353538
+	ldr r4, _02305588 ; =DUNGEON_PTR
 	mov fp, sl
 _023051C4:
 	ldr r0, [r4]
@@ -830,7 +830,7 @@ _02305314:
 	blt _023051B0
 _0230532C:
 	mov r7, #0
-	ldr r8, _02305588 ; =ov29_02353538
+	ldr r8, _02305588 ; =DUNGEON_PTR
 	mov r4, r7
 _02305338:
 	ldr r0, [r8]
@@ -860,7 +860,7 @@ _02305390:
 	mov sl, #0
 	mov fp, sl
 	mov r7, #1
-	ldr r5, _02305588 ; =ov29_02353538
+	ldr r5, _02305588 ; =DUNGEON_PTR
 	ldr r4, _02305580 ; =ov29_0237C9C1
 	b _02305530
 _023053A8:
@@ -979,13 +979,13 @@ _02305538:
 	bl ov29_022EF9C8
 	bl IsFloorOver
 	cmp r0, #0
-	ldrne r1, _02305588 ; =ov29_02353538
+	ldrne r1, _02305588 ; =DUNGEON_PTR
 	movne r0, #1
 	ldrne r1, [r1]
 	strne r6, [r1, #0xc4]
 	bne _02305578
 	bl ov29_022EF9BC
-	ldr r1, _02305588 ; =ov29_02353538
+	ldr r1, _02305588 ; =DUNGEON_PTR
 	mov r0, #1
 	ldr r1, [r1]
 	str r6, [r1, #0xc4]
@@ -995,5 +995,5 @@ _02305578:
 	.align 2, 0
 _02305580: .word ov29_0237C9C1
 _02305584: .word ov29_0237C9CC
-_02305588: .word ov29_02353538
+_02305588: .word DUNGEON_PTR
 	arm_func_end DisplayActions

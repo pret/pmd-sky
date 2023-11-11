@@ -4,6 +4,7 @@
 .public AdvanceFrame
 .public ChangeDungeonMusic
 .public DisplayActions
+.public DUNGEON_PTR
 .public EntityIsValid__022EC608
 .public EntityIsValid__022ECDC0
 .public ExecuteMonsterAction
@@ -20,7 +21,6 @@
 .public ov29_023522B6
 .public ov29_02352380
 .public ov29_02352390
-.public ov29_02353538
 .public ov29_02353598
 .public ov29_0237C974
 .public RunMonsterAi

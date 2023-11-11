@@ -28,7 +28,7 @@ _02328070: .word 0x000003E7
 	arm_func_start DoMoveEarthquake
 DoMoveEarthquake: ; 0x02328074
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr lr, _023280D0 ; =ov29_02353538
+	ldr lr, _023280D0 ; =DUNGEON_PTR
 	ldr r5, [r1, #0xb4]
 	ldr ip, [lr]
 	mov r4, #0xc
@@ -51,12 +51,12 @@ DoMoveEarthquake: ; 0x02328074
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023280D0: .word ov29_02353538
+_023280D0: .word DUNGEON_PTR
 	arm_func_end DoMoveEarthquake
 
 	arm_func_start GetNaturePowerVariant
 GetNaturePowerVariant: ; 0x023280D4
-	ldr r0, _02328108 ; =ov29_02353538
+	ldr r0, _02328108 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r2, [r0, #0xd4]
@@ -70,7 +70,7 @@ GetNaturePowerVariant: ; 0x023280D4
 	ldrsh r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_02328108: .word ov29_02353538
+_02328108: .word DUNGEON_PTR
 _0232810C: .word ov10_022C6324
 	arm_func_end GetNaturePowerVariant
 
@@ -538,7 +538,7 @@ _02328714:
 	ldrb r8, [r5, #0x60]
 	ldrb lr, [r5, #0x61]
 	ldrb r0, [r4, #0x60]
-	ldr r1, _0232878C ; =ov29_02353538
+	ldr r1, _0232878C ; =DUNGEON_PTR
 	mov ip, #1
 	strb r0, [r5, #0x60]
 	ldrb r3, [r4, #0x61]
@@ -566,7 +566,7 @@ _02328714:
 	.align 2, 0
 _02328784: .word 0x00000ED5
 _02328788: .word 0x00000ED6
-_0232878C: .word ov29_02353538
+_0232878C: .word DUNGEON_PTR
 _02328790: .word 0x00000ED4
 	arm_func_end DoMoveSkillSwap
 
@@ -752,7 +752,7 @@ _023289F4: .word 0x000003E7
 DoMoveSandstorm: ; 0x023289F8
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _02328A48 ; =WEATHER_MOVE_TURN_COUNT
-	ldr r2, _02328A4C ; =ov29_02353538
+	ldr r2, _02328A4C ; =DUNGEON_PTR
 	ldrsh r3, [r3]
 	ldr r2, [r2]
 	mov r5, r0
@@ -773,7 +773,7 @@ _02328A40:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02328A48: .word WEATHER_MOVE_TURN_COUNT
-_02328A4C: .word ov29_02353538
+_02328A4C: .word DUNGEON_PTR
 _02328A50: .word 0x00000EC6
 	arm_func_end DoMoveSandstorm
 
@@ -2575,7 +2575,7 @@ DoMoveRolePlay: ; 0x0232A188
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0232A1C8:
 	ldrb r2, [r7, #0x60]
-	ldr r0, _0232A21C ; =ov29_02353538
+	ldr r0, _0232A21C ; =DUNGEON_PTR
 	mov r1, #1
 	strb r2, [r4, #0x60]
 	ldrb r2, [r7, #0x61]
@@ -2596,14 +2596,14 @@ _0232A1C8:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0232A218: .word 0x00000EE1
-_0232A21C: .word ov29_02353538
+_0232A21C: .word DUNGEON_PTR
 	arm_func_end DoMoveRolePlay
 
 	arm_func_start DoMoveSunnyDay
 DoMoveSunnyDay: ; 0x0232A220
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _0232A270 ; =WEATHER_MOVE_TURN_COUNT
-	ldr r2, _0232A274 ; =ov29_02353538
+	ldr r2, _0232A274 ; =DUNGEON_PTR
 	ldrsh r3, [r3]
 	ldr r2, [r2]
 	mov r5, r0
@@ -2624,7 +2624,7 @@ _0232A268:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232A270: .word WEATHER_MOVE_TURN_COUNT
-_0232A274: .word ov29_02353538
+_0232A274: .word DUNGEON_PTR
 _0232A278: .word 0x00000EC7
 	arm_func_end DoMoveSunnyDay
 

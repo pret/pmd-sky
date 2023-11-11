@@ -814,7 +814,7 @@ _023260CC: .word ATK_STAT_IDX
 DoMoveRainDance: ; 0x023260D0
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _02326120 ; =WEATHER_MOVE_TURN_COUNT
-	ldr r2, _02326124 ; =ov29_02353538
+	ldr r2, _02326124 ; =DUNGEON_PTR
 	ldrsh r3, [r3]
 	ldr r2, [r2]
 	mov r5, r0
@@ -835,7 +835,7 @@ _02326118:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02326120: .word WEATHER_MOVE_TURN_COUNT
-_02326124: .word ov29_02353538
+_02326124: .word DUNGEON_PTR
 _02326128: .word 0x00000EC5
 	arm_func_end DoMoveRainDance
 
@@ -843,7 +843,7 @@ _02326128: .word 0x00000EC5
 DoMoveHail: ; 0x0232612C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _0232617C ; =WEATHER_MOVE_TURN_COUNT
-	ldr r2, _02326180 ; =ov29_02353538
+	ldr r2, _02326180 ; =DUNGEON_PTR
 	ldrsh r3, [r3]
 	ldr r2, [r2]
 	mov r5, r0
@@ -864,7 +864,7 @@ _02326174:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232617C: .word WEATHER_MOVE_TURN_COUNT
-_02326180: .word ov29_02353538
+_02326180: .word DUNGEON_PTR
 _02326184: .word 0x00000EC8
 	arm_func_end DoMoveHail
 

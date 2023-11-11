@@ -6,6 +6,7 @@
 .public AnimationDelayOrSomething
 .public CalcSpeedStageWrapper
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonGoesUp
 .public EntityIsValid__022E0354
 .public EntityIsValid__022E1A1C
@@ -56,7 +57,6 @@
 .public ov29_0234C668
 .public ov29_0234C738
 .public ov29_023510E0
-.public ov29_02353538
 .public ov29_02353540
 .public ov29_02353544
 .public ov29_0237C694

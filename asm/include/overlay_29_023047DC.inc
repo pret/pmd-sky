@@ -4,6 +4,7 @@
 .public CheckLeaderTile
 .public CheckNonLeaderTile
 .public DiscoverMinimap
+.public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public EnemyEvolution
 .public EnsureCanStandCurrentTile
@@ -32,7 +33,6 @@
 .public ov29_0235173C
 .public ov29_0235173E
 .public ov29_02352808
-.public ov29_02353538
 .public ov29_0237C9C1
 .public ov29_0237C9CC
 .public Rand16Bit

@@ -13,7 +13,7 @@ EntryOverlay31: ; 0x02382820
 	mov r0, #0x10
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _02382860 ; =ov31_0238A260
+	ldr r1, _02382860 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	mov r2, #0
 	str r0, [r1]
 	str r2, [r0, #4]
@@ -22,7 +22,7 @@ EntryOverlay31: ; 0x02382820
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238285C: .word DUNGEON_D_BOX_LAYOUT_3
-_02382860: .word ov31_0238A260
+_02382860: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	arm_func_end EntryOverlay31
 
 	arm_func_start ov31_02382864
@@ -134,7 +134,7 @@ ov31_023829A0: ; 0x023829A0
 	arm_func_start ov31_023829CC
 ov31_023829CC: ; 0x023829CC
 	add r4, sp, #0x204
-	ldr fp, _02382AB8 ; =ov29_02353538
+	ldr fp, _02382AB8 ; =DUNGEON_PTR
 	b _02382A88
 _023829D8:
 	ldr r0, [fp]
@@ -202,7 +202,7 @@ _02382AA8: .word 0x000008B6
 _02382AAC: .word 0x000008B7
 _02382AB0: .word 0x0000C402
 _02382AB4: .word 0x000003E7
-_02382AB8: .word ov29_02353538
+_02382AB8: .word DUNGEON_PTR
 _02382ABC: .word 0x000008B8
 	arm_func_end ov31_02382A34
 
@@ -210,7 +210,7 @@ _02382ABC: .word 0x000008B8
 DungeonMenuSwitch: ; 0x02382AC0
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x54
-	ldr r1, _02382B4C ; =ov29_02353538
+	ldr r1, _02382B4C ; =DUNGEON_PTR
 	mov r4, r0
 	ldr r1, [r1]
 	ldrb r0, [r1, #0x748]
@@ -244,7 +244,7 @@ DungeonMenuSwitch: ; 0x02382AC0
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02382B4C: .word ov29_02353538
+_02382B4C: .word DUNGEON_PTR
 _02382B50: .word ov31_02389E14
 	arm_func_end DungeonMenuSwitch
 
@@ -252,7 +252,7 @@ _02382B50: .word ov31_02389E14
 ov31_02382B54: ; 0x02382B54
 	stmdb sp!, {lr}
 	sub sp, sp, #0x9c
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r2, [r0]
 	ldr r1, [r2, #4]
 	cmp r1, #3
@@ -282,7 +282,7 @@ _02382B98:
 	bl ShouldMonsterRunAwayVariation
 	cmp r0, #0
 	beq _02382BEC
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	mov r2, #3
 	ldr r1, [r0]
 	strb r2, [r1, #8]
@@ -293,7 +293,7 @@ _02382B98:
 	ldr r0, [r0]
 	strb r2, [r0, #0xc]
 _02382BEC:
-	ldr r1, _02382D8C ; =ov31_0238A260
+	ldr r1, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	mov r0, #5
 	ldr r1, [r1]
 	add r1, r1, #8
@@ -305,19 +305,19 @@ _02382BEC:
 	ldr r3, _02382D98 ; =DUNGEON_MAIN_MENU
 	add r2, sp, #4
 	bl sub_0202A5CC
-	ldr r2, _02382D8C ; =ov31_0238A260
+	ldr r2, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r1, _02382D9C ; =ov31_02382864
 	ldr r2, [r2]
 	strb r0, [r2]
 	ldr r0, _02382DA0 ; =DUNGEON_D_BOX_LAYOUT_4
 	bl sub_0202F8C4
-	ldr r2, _02382D8C ; =ov31_0238A260
+	ldr r2, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r1, _02382DA4 ; =DungeonMenuSwitch
 	ldr r2, [r2]
 	strb r0, [r2, #2]
 	ldr r0, _02382DA8 ; =DUNGEON_D_BOX_LAYOUT_2
 	bl sub_0202F8C4
-	ldr r1, _02382D8C ; =ov31_0238A260
+	ldr r1, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r2, [r1]
 	strb r0, [r2, #1]
 	ldr r1, [r1]
@@ -330,7 +330,7 @@ _02382C6C:
 	bl sub_0202AB40
 	cmp r0, #0
 	beq _02382D20
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202AB80
@@ -348,39 +348,39 @@ _02382C6C:
 	bl ShouldMonsterRunAwayVariation
 	cmp r0, #0
 	bne _02382D80
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	mov r1, #0
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202AB94
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202B030
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
 	bl sub_0202F954
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl sub_0202F954
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r1, [r0]
 	ldr r0, [r1, #4]
 	add r0, r0, #1
 	str r0, [r1, #4]
 	b _02382D80
 _02382D20:
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
 	bl sub_0202F954
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl sub_0202F954
-	ldr r0, _02382D8C ; =ov31_0238A260
+	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r1, [r0]
 	ldr r0, [r1, #4]
 	add r0, r0, #1
@@ -389,7 +389,7 @@ _02382D20:
 _02382D58:
 	ldrsb r0, [r2]
 	bl sub_0202ABB0
-	ldr r1, _02382D8C ; =ov31_0238A260
+	ldr r1, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	str r0, [r1, #4]
 	ldr r2, [r1]
 	mov r0, #4
@@ -403,7 +403,7 @@ _02382D84:
 	add sp, sp, #0x9c
 	ldmia sp!, {pc}
 	.align 2, 0
-_02382D8C: .word ov31_0238A260
+_02382D8C: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
 _02382D90: .word DUNGEON_D_BOX_LAYOUT_1
 _02382D94: .word 0x00000233
 _02382D98: .word DUNGEON_MAIN_MENU
@@ -416,38 +416,38 @@ _02382DA8: .word DUNGEON_D_BOX_LAYOUT_2
 	arm_func_start ov31_02382DAC
 ov31_02382DAC: ; 0x02382DAC
 	stmdb sp!, {r3, lr}
-	ldr r0, _02382E04 ; =ov31_0238A260
+	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0, #1]
 	bl sub_0202F8FC
-	ldr r0, _02382E04 ; =ov31_0238A260
+	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl sub_0202F8FC
-	ldr r0, _02382E04 ; =ov31_0238A260
+	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202AABC
-	ldr r0, _02382E04 ; =ov31_0238A260
+	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _02382E04 ; =ov31_0238A260
+	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02382E04: .word ov31_0238A260
+_02382E04: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	arm_func_end ov31_02382DAC
 
 	arm_func_start ov31_02382E08
 ov31_02382E08: ; 0x02382E08
-	ldr r0, _02382E14 ; =ov31_0238A260
+	ldr r0, _02382E14 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0, #4]
 	bx lr
 	.align 2, 0
-_02382E14: .word ov31_0238A260
+_02382E14: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	arm_func_end ov31_02382E08
 
 	arm_func_start ov31_02382E18
@@ -836,19 +836,19 @@ ov31_02383328: ; 0x02383328
 	cmp r1, r0
 	ldmeqia sp!, {r3, pc}
 	bl ov29_022E8708
-	ldr r0, _02383358 ; =ov31_0238A268
+	ldr r0, _02383358 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	mov r1, #1
 	strb r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02383354: .word ov31_0238A2A8
-_02383358: .word ov31_0238A268
+_02383358: .word OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	arm_func_end ov31_02383328
 
 	arm_func_start ov31_0238335C
 ov31_0238335C: ; 0x0238335C
 	stmdb sp!, {r4, lr}
-	ldr r1, _023833B0 ; =ov31_0238A268
+	ldr r1, _023833B0 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	mov r4, r0
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -857,7 +857,7 @@ ov31_0238335C: ; 0x0238335C
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	ldr r0, _023833B0 ; =ov31_0238A268
+	ldr r0, _023833B0 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	mov r1, #0
 	strb r1, [r0]
 _02383390:
@@ -865,13 +865,13 @@ _02383390:
 	beq _0238339C
 	blx r4
 _0238339C:
-	ldr r0, _023833B0 ; =ov31_0238A268
+	ldr r0, _023833B0 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	mov r1, #0
 	strb r1, [r0, #1]
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_023833B0: .word ov31_0238A268
+_023833B0: .word OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	arm_func_end ov31_0238335C
 
 	arm_func_start ov31_023833B4
@@ -881,12 +881,12 @@ ov31_023833B4: ; 0x023833B4
 	beq _023833C4
 	blx r0
 _023833C4:
-	ldr r0, _023833D4 ; =ov31_0238A268
+	ldr r0, _023833D4 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	mov r1, #0
 	strb r1, [r0, #1]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023833D4: .word ov31_0238A268
+_023833D4: .word OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	arm_func_end ov31_023833B4
 
 	arm_func_start ov31_023833D8
@@ -894,7 +894,7 @@ ov31_023833D8: ; 0x023833D8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x98
 	ldr lr, _02383424 ; =ov31_02383328
-	ldr r3, _02383428 ; =ov31_0238A268
+	ldr r3, _02383428 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	mov ip, #1
 	str r0, [sp, #0x88]
 	strb ip, [r3, #1]
@@ -912,7 +912,7 @@ ov31_023833D8: ; 0x023833D8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02383424: .word ov31_02383328
-_02383428: .word ov31_0238A268
+_02383428: .word OVERLAY31_UNKNOWN_POINTER__NA_238A268
 _0238342C: .word ov31_0238335C
 _02383430: .word ov31_0238A2A8
 	arm_func_end ov31_023833D8
@@ -922,7 +922,7 @@ ov31_02383434: ; 0x02383434
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x98
 	ldr ip, _02383470 ; =ov31_023833B4
-	ldr r3, _02383474 ; =ov31_0238A268
+	ldr r3, _02383474 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	mov r1, #1
 	str r0, [sp, #0x88]
 	strb r1, [r3, #1]
@@ -936,7 +936,7 @@ ov31_02383434: ; 0x02383434
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02383470: .word ov31_023833B4
-_02383474: .word ov31_0238A268
+_02383474: .word OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	arm_func_end ov31_02383434
 
 	arm_func_start ov31_02383478
@@ -948,14 +948,14 @@ ov31_02383478: ; 0x02383478
 	mov r6, r2
 	mov r4, #1
 	bmi _023834AC
-	ldr r0, _02383644 ; =ov31_0238A26C
+	ldr r0, _02383644 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, r7
 	add r0, r0, #0x1000
 	strb r1, [r0, #0x1f8]
 _023834AC:
-	ldr r0, _02383644 ; =ov31_0238A26C
+	ldr r0, _02383644 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r3, [r0]
 	add r0, r3, #0x1000
 	ldr r2, [r0, #0x1b4]
@@ -980,7 +980,7 @@ _023834F4:
 	strb r1, [r0, #0x1f8]
 	mov r4, #0
 _02383508:
-	ldr r0, _02383644 ; =ov31_0238A26C
+	ldr r0, _02383644 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r0]
 	add r0, r1, #0x1000
 	ldrb r0, [r0, #0x1b2]
@@ -1009,7 +1009,7 @@ _02383528:
 	mov r3, r4
 	str r5, [sp]
 	bl sub_0200D310
-	ldr r0, _02383644 ; =ov31_0238A26C
+	ldr r0, _02383644 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1000
@@ -1019,7 +1019,7 @@ _02383590:
 	ldr r1, _02383650 ; =ov31_02389F5C
 	mov r0, r8
 	bl strcpy
-	ldr r0, _02383644 ; =ov31_0238A26C
+	ldr r0, _02383644 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mov r1, #3
 	ldr r0, [r0]
 	add r0, r0, #0x1000
@@ -1040,7 +1040,7 @@ _023835B4:
 	ldrneb r1, [r0, #1]
 	cmpne r1, #0
 	beq _02383624
-	ldr r0, _02383654 ; =ov29_02353538
+	ldr r0, _02383654 ; =DUNGEON_PTR
 	sub r1, r1, #1
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
@@ -1065,11 +1065,11 @@ _02383638:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02383644: .word ov31_0238A26C
+_02383644: .word OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 _02383648: .word BAG_ITEMS_PTR_MIRROR
 _0238364C: .word OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0
 _02383650: .word ov31_02389F5C
-_02383654: .word ov29_02353538
+_02383654: .word DUNGEON_PTR
 	arm_func_end ov31_02383478
 
 	arm_func_start ov31_02383658
@@ -1138,7 +1138,7 @@ _02383728: .word DUNGEON_D_BOX_LAYOUT_8
 	arm_func_start ov31_0238372C
 ov31_0238372C: ; 0x0238372C
 	stmdb sp!, {r3, lr}
-	ldr r1, _02383764 ; =ov31_0238A26C
+	ldr r1, _02383764 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	ldrb r1, [r1, #0x1b1]
@@ -1153,7 +1153,7 @@ _0238375C:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02383764: .word ov31_0238A26C
+_02383764: .word OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	arm_func_end ov31_0238372C
 
 	arm_func_start ov31_02383768
@@ -1189,12 +1189,12 @@ _023837B4:
 	arm_func_start ov31_023837C8
 ov31_023837C8: ; 0x023837C8
 	stmdb sp!, {r3, lr}
-	ldr r0, _02383850 ; =ov31_0238A26C
+	ldr r0, _02383850 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x92
 	add r0, r0, #0x1100
 	bl ov29_0234E988
-	ldr r0, _02383850 ; =ov31_0238A26C
+	ldr r0, _02383850 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1100
@@ -1203,7 +1203,7 @@ ov31_023837C8: ; 0x023837C8
 	beq _02383800
 	bl sub_0202F918
 _02383800:
-	ldr r0, _02383850 ; =ov31_0238A26C
+	ldr r0, _02383850 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1100
@@ -1212,20 +1212,20 @@ _02383800:
 	beq _02383820
 	bl sub_0202F918
 _02383820:
-	ldr r0, _02383850 ; =ov31_0238A26C
+	ldr r0, _02383850 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x93
 	add r0, r0, #0x1100
 	bl ov31_02383768
-	ldr r0, _02383850 ; =ov31_0238A26C
+	ldr r0, _02383850 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _02383850 ; =ov31_0238A26C
+	ldr r0, _02383850 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02383850: .word ov31_0238A26C
+_02383850: .word OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	arm_func_end ov31_023837C8
 
 	arm_func_start ov31_02383854
@@ -1250,7 +1250,7 @@ ov31_02383880: ; 0x02383880
 	mov r5, #0
 	mov r7, r0
 	add r0, r5, #1
-	ldr r8, _023838E0 ; =ov29_02353538
+	ldr r8, _023838E0 ; =DUNGEON_PTR
 	strb r5, [r7]
 	and r6, r0, #0xff
 	mov r4, r5
@@ -1272,7 +1272,7 @@ _023838A0:
 	blt _023838A0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_023838E0: .word ov29_02353538
+_023838E0: .word DUNGEON_PTR
 	arm_func_end ov31_02383880
 
 	arm_func_start ov31_023838E4
@@ -1291,7 +1291,7 @@ ov31_023838E4: ; 0x023838E4
 	mov r0, #0x1280
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _02384898 ; =ov31_0238A26C
+	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r4, #1
 	str r0, [r1]
 	add r0, r0, #0x1000
@@ -1335,7 +1335,7 @@ ov31_023838E4: ; 0x023838E4
 	ldrb r0, [sb]
 	cmp r0, #0
 	beq _023839E4
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [sb, #4]
 	ldr r0, [r0]
 	mov r6, #1
@@ -1344,14 +1344,14 @@ ov31_023838E4: ; 0x023838E4
 _023839E4:
 	ldrb r0, [sb, #1]
 	cmp r0, #0
-	ldreq r0, _02384898 ; =ov31_0238A26C
+	ldreq r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	moveq r1, #0
 	ldreq r0, [r0]
 	addeq r0, r0, #0x1000
 	streqb r1, [r0, #0x1b1]
 	ldrb r0, [sb, #2]
 	cmp r0, #0
-	ldrne r0, _02384898 ; =ov31_0238A26C
+	ldrne r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	movne r1, #1
 	ldrne r0, [r0]
 	addne r0, r0, #0x1000
@@ -1363,7 +1363,7 @@ _02383A1C:
 	ldr r0, _0238489C ; =OVERLAY31_JP_STRING
 	bl DebugPrint0
 	bl GetNbItemsInBag
-	ldr r2, _02384898 ; =ov31_0238A26C
+	ldr r2, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	cmp r6, #0
 	ldr r1, [r2]
 	add r1, r1, #0x1000
@@ -1375,12 +1375,12 @@ _02383A1C:
 	bne _02383A74
 	mov r0, sl
 	bl ov31_0238372C
-	ldr r1, _02384898 ; =ov31_0238A26C
+	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	strb r0, [r1, #0x1b3]
 _02383A74:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r2, [r0]
 	add r0, r2, #0x1000
 	ldrb r1, [r0, #0x1b2]
@@ -1407,7 +1407,7 @@ _02383AC4:
 	bne _02383B08
 	mov r0, sl
 	bl ov31_0238372C
-	ldr r2, _02384898 ; =ov31_0238A26C
+	ldr r2, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mov r3, #1
 	ldr r1, [r2]
 	add r1, r1, #0x1000
@@ -1419,7 +1419,7 @@ _02383AC4:
 	add r0, r0, #0x1000
 	strb r3, [r0, #0x1b1]
 _02383B08:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1100
@@ -1429,7 +1429,7 @@ _02383B08:
 	bl ov10_022BCD68
 	cmp r0, #0
 	bne _02383D78
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x1100
 	ldrsb r0, [r0, #0x93]
@@ -1437,7 +1437,7 @@ _02383B08:
 	b _02383D78
 _02383B48:
 	bl GetNbItemsInBag
-	ldr r4, _02384898 ; =ov31_0238A26C
+	ldr r4, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r4]
 	add r1, r1, #0x1000
 	str r0, [r1, #0x1a8]
@@ -1477,7 +1477,7 @@ _02383BD8:
 	add r8, r8, #1
 	cmp r8, #0x32
 	blt _02383B78
-	ldr fp, _023848A8 ; =ov29_02353538
+	ldr fp, _023848A8 ; =DUNGEON_PTR
 	mov r4, #0
 _02383BEC:
 	ldr r0, [fp]
@@ -1504,7 +1504,7 @@ _02383C38:
 	cmp r4, #4
 	blt _02383BEC
 _02383C44:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r4, [r0]
 	add r0, r4, #0x1000
 	ldrb r1, [r0, #0x1b2]
@@ -1522,7 +1522,7 @@ _02383C44:
 	str r1, [sp, #4]
 	add r1, r4, #0x1000
 	ldrb r2, [r1, #0x1b3]
-	ldr r1, _02384898 ; =ov31_0238A26C
+	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	add r3, r4, #0x1f8
 	str r2, [sp, #8]
 	ldr r1, [r1]
@@ -1532,7 +1532,7 @@ _02383C44:
 	mov r1, r6
 	add r3, r3, #0x1000
 	bl ov10_022BD474
-	ldr r1, _02384898 ; =ov31_0238A26C
+	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	cmp r6, #0
 	ldr r1, [r1]
 	add r1, r1, #0x1000
@@ -1541,7 +1541,7 @@ _02383C44:
 	ldr r0, _023848B0 ; =DUNGEON_D_BOX_LAYOUT_10
 	ldr r1, _023848B4 ; =ov31_02383854
 	bl sub_0202F8C4
-	ldr r1, _02384898 ; =ov31_0238A26C
+	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	strb r0, [r1, #0x194]
@@ -1550,7 +1550,7 @@ _02383CEC:
 	ldr r0, _023848B8 ; =DUNGEON_D_BOX_LAYOUT_11
 	mov r1, #0
 	bl sub_0202F8C4
-	ldr r2, _02384898 ; =ov31_0238A26C
+	ldr r2, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r3, #0
 	ldr r1, [r2]
 	add r1, r1, #0x1000
@@ -1579,7 +1579,7 @@ _02383D1C:
 	add r2, r2, #0x9c
 	str r4, [sp, #0xc]
 	bl ov10_022BCA80
-	ldr r1, _02384898 ; =ov31_0238A26C
+	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	strb r0, [r1, #0x193]
@@ -1587,7 +1587,7 @@ _02383D78:
 	mvn r0, #0
 	str r0, [sp, #0x38]
 	sub r0, r0, #1
-	ldr r4, _02384898 ; =ov31_0238A26C
+	ldr r4, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	str r0, [sp, #0x3c]
 _02383D8C:
 	mov r0, #0x14
@@ -1654,7 +1654,7 @@ _02383D8C:
 	str r0, [sp, #0x10]
 	cmp r0, #0
 	beq _02383F00
-	ldr r1, _023848A8 ; =ov29_02353538
+	ldr r1, _023848A8 ; =DUNGEON_PTR
 	add r0, sp, #0x400
 	ldr r3, [r1]
 	ldr r1, [sp, #0x10]
@@ -1675,7 +1675,7 @@ _02383D8C:
 	mov r1, #0x400
 	mov r3, #0
 	bl PreprocessStringFromMessageId
-	ldr r0, _023848A8 ; =ov29_02353538
+	ldr r0, _023848A8 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldr r0, [sp, #0x10]
 	add r0, r1, r0, lsl #2
@@ -1795,14 +1795,14 @@ _02384088:
 	bl ov10_022BCD68
 	cmp r0, #0
 	bne _023841A4
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x1100
 	ldrsb r0, [r0, #0x93]
 	bl ov10_022BCDBC
 	movs r4, r0
 	bmi _0238419C
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	and r1, r4, #0xff
 	ldr r2, [r0]
 	mov r0, #3
@@ -1811,7 +1811,7 @@ _02384088:
 	bl Arm9StoreUnkFieldNa0x2029ED8
 	cmp fp, #0
 	bne _02384138
-	ldr r1, _02384898 ; =ov31_0238A26C
+	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mov r0, #6
 	ldr r1, [r1]
 	mul r8, r4, r0
@@ -1834,7 +1834,7 @@ _02384088:
 	str r0, [sb, #4]
 	b _02384194
 _02384138:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	add r1, sl, #4
 	ldr r0, [r0]
 	mov r2, #0
@@ -1869,17 +1869,17 @@ _023841A4:
 	beq _023842DC
 	ldr r0, _023848D0 ; =0x00003F04
 	bl sub_02017C80
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x1100
 	ldrsb r0, [r0, #0x93]
 	bl ov10_022BCDF4
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x1100
 	ldrsb r0, [r0, #0x93]
 	bl ov10_022BCDBC
-	ldr r2, _02384898 ; =ov31_0238A26C
+	ldr r2, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r2]
 	add r1, r1, #0x1000
 	str r0, [r1, #0x1ac]
@@ -1891,7 +1891,7 @@ _023841A4:
 	bl Arm9StoreUnkFieldNa0x2029ED8
 	cmp fp, #0
 	bne _02384278
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r3, _023848A4 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	mov r2, #6
@@ -1906,7 +1906,7 @@ _023841A4:
 	mla r2, r0, r2, r4
 	ldrb r2, [r2, #1]
 	bl ov29_022EBAB0
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, _023848A4 ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r0]
 	ldr r1, [r1]
@@ -1918,7 +1918,7 @@ _023841A4:
 	str r0, [sb, #4]
 	b _023842D4
 _02384278:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	add r1, sl, #4
 	ldr r0, [r0]
 	mov r2, #0
@@ -1965,7 +1965,7 @@ _02384314:
 	bl SortItemsInBag
 	mov r8, #0
 _02384320:
-	ldr r0, _023848A8 ; =ov29_02353538
+	ldr r0, _023848A8 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r8, lsl #2
 	add r0, r0, #0x12000
@@ -2015,7 +2015,7 @@ _023843D0:
 	add r0, r1, #0x1100
 	ldrsb r0, [r0, #0x93]
 	bl ov10_022BCDF4
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	add r1, sl, #4
 	ldr r0, [r0]
 	mov r2, #0
@@ -2041,7 +2041,7 @@ _023843D0:
 _02384438:
 	mov r0, #0x14
 	bl AdvanceFrame
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r0]
 	add r0, r1, #0x1000
 	ldrb r0, [r0, #0x1b2]
@@ -2114,7 +2114,7 @@ _023844FC:
 	bl GetItemCategoryVeneer
 	cmp r0, #6
 	beq _02384598
-	ldr r0, _023848A8 ; =ov29_02353538
+	ldr r0, _023848A8 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75b]
 	cmp r0, #0
@@ -2137,7 +2137,7 @@ _02384598:
 	bl ov29_022EBB98
 	cmp r0, #0x80
 	bne _023845C4
-	ldr r0, _023848A8 ; =ov29_02353538
+	ldr r0, _023848A8 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75b]
 	cmp r0, #0
@@ -2260,7 +2260,7 @@ _02384728:
 	bl AddDungeonSubMenuOption
 	mov r4, #0
 _02384758:
-	ldr r0, _023848A8 ; =ov29_02353538
+	ldr r0, _023848A8 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
@@ -2306,7 +2306,7 @@ _023847EC:
 	bl DisableDungeonSubMenuOption
 	b _02384860
 _02384804:
-	ldr r0, _023848A8 ; =ov29_02353538
+	ldr r0, _023848A8 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75b]
 	cmp r0, #0
@@ -2346,11 +2346,11 @@ _02384860:
 	bl AddDungeonSubMenuOption
 	b _02384908
 	.align 2, 0
-_02384898: .word ov31_0238A26C
+_02384898: .word OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 _0238489C: .word OVERLAY31_JP_STRING
 _023848A0: .word 0x000008E5
 _023848A4: .word BAG_ITEMS_PTR_MIRROR
-_023848A8: .word ov29_02353538
+_023848A8: .word DUNGEON_PTR
 _023848AC: .word ov31_02383478
 _023848B0: .word DUNGEON_D_BOX_LAYOUT_10
 _023848B4: .word ov31_02383854
@@ -2443,7 +2443,7 @@ _023849D8:
 	b _02384C48
 _023849F4:
 	bl ov29_022EBB98
-	ldr r1, _023848A8 ; =ov29_02353538
+	ldr r1, _023848A8 ; =DUNGEON_PTR
 	sub r2, r0, #0x90
 	ldr r0, [r1]
 	add r0, r0, r2, lsl #2
@@ -2470,7 +2470,7 @@ _023849F4:
 	moveq r4, #1
 	bl GetItemCategoryVeneer
 	cmp r0, #9
-	ldr r0, _023848A8 ; =ov29_02353538
+	ldr r0, _023848A8 ; =DUNGEON_PTR
 	moveq r4, #1
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75b]
@@ -2614,7 +2614,7 @@ _02384C48:
 	bl ov29_022EBA84
 	mov r2, #0
 	ldr r1, _02385128 ; =ov29_0237C91C
-	ldr r4, _02384898 ; =ov31_0238A26C
+	ldr r4, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	b _02384C9C
 _02384C6C:
 	add r8, r1, r2, lsl #3
@@ -2632,7 +2632,7 @@ _02384C6C:
 _02384C9C:
 	cmp r2, r0
 	blt _02384C6C
-	ldr r3, _02384898 ; =ov31_0238A26C
+	ldr r3, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r4, _0238512C ; =0x000008E8
 	ldr r1, [r3]
 	mvn r0, #0
@@ -2656,7 +2656,7 @@ _02384C9C:
 	add r0, r0, #0x92
 	add r0, r0, #0x1100
 	bl ov29_0234E988
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mov r2, r4
 	ldr r1, [r0]
 	add r0, r1, #0x138
@@ -2664,7 +2664,7 @@ _02384C9C:
 	add r0, r0, #0x1000
 	add r1, r1, #0x1000
 	bl ov31_0238513C
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	add r2, sp, #0x500
 	ldr r1, [r0]
 	add r2, r2, #0x9c
@@ -2680,7 +2680,7 @@ _02384C9C:
 	ldrne r0, _02385134 ; =DUNGEON_D_BOX_LAYOUT_13
 	ldreq r0, _02385138 ; =DUNGEON_D_BOX_LAYOUT_9
 	bl sub_0202A5CC
-	ldr r4, _02384898 ; =ov31_0238A26C
+	ldr r4, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mov r8, #0x14
 	ldr r1, [r4]
 	add r1, r1, #0x1000
@@ -2692,14 +2692,14 @@ _02384D78:
 	bl sub_0202AB40
 	cmp r0, #0
 	bne _02384E24
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x1100
 	ldrsb r0, [r0, #0x92]
 	bl sub_0202ABB0
 	cmp r0, #0
 	blt _02384E04
-	ldr r1, _02384898 ; =ov31_0238A26C
+	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	sub r2, r0, #1
 	ldr r0, [r1]
 	add r0, r0, #0x1000
@@ -2711,7 +2711,7 @@ _02384D78:
 	cmp r0, #0
 	mov r4, #0
 	beq _02384E30
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r2, _02385128 ; =ov29_0237C91C
 	ldr r1, [r0]
 	add r0, r7, #0x4a
@@ -2722,7 +2722,7 @@ _02384D78:
 	bl ov29_022EBBA8
 	b _02384E30
 _02384E04:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mov r4, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1000
@@ -2735,18 +2735,18 @@ _02384E24:
 	bl AdvanceFrame
 	b _02384D78
 _02384E30:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x92
 	add r0, r0, #0x1100
 	bl ov29_0234E988
-	ldr r0, _023848A8 ; =ov29_02353538
+	ldr r0, _023848A8 ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	cmp r4, #1
 	add r0, r0, #0x1a000
 	strb r1, [r0, #0x247]
-	ldreq r0, _02384898 ; =ov31_0238A26C
+	ldreq r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldreq r0, [r0]
 	addeq r0, r0, #0x1000
 	ldreqb r0, [r0, #0x1b2]
@@ -2776,7 +2776,7 @@ _02384E90:
 _02384EC4:
 	cmp r0, #0x36
 	bne _02384FA0
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1100
@@ -2784,13 +2784,13 @@ _02384EC4:
 	cmp r0, r1
 	beq _02384F00
 	bl sub_0202F918
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1000
 	strb r1, [r0, #0x194]
 _02384F00:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1100
@@ -2798,13 +2798,13 @@ _02384F00:
 	cmp r0, r1
 	beq _02384F34
 	bl sub_0202F918
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1000
 	strb r1, [r0, #0x195]
 _02384F34:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x93
 	add r0, r0, #0x1100
@@ -2842,7 +2842,7 @@ _02384FA0:
 	cmp r0, #1
 	bhi _023850C8
 _02384FC0:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1100
@@ -2850,13 +2850,13 @@ _02384FC0:
 	cmp r0, r1
 	beq _02384FF4
 	bl sub_0202F918
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1000
 	strb r1, [r0, #0x194]
 _02384FF4:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1100
@@ -2864,13 +2864,13 @@ _02384FF4:
 	cmp r0, r1
 	beq _02385028
 	bl sub_0202F918
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x1000
 	strb r1, [r0, #0x195]
 _02385028:
-	ldr r0, _02384898 ; =ov31_0238A26C
+	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x93
 	add r0, r0, #0x1100
@@ -2887,7 +2887,7 @@ _02385028:
 	cmp r0, #0
 	beq _023850B0
 	ldr r1, [sp, #0x44]
-	ldr r0, _023848A8 ; =ov29_02353538
+	ldr r0, _023848A8 ; =DUNGEON_PTR
 	strb r1, [r7, #0x54]
 	ldr r2, [r0]
 	ldr r0, [sp, #0x44]
@@ -2917,7 +2917,7 @@ _023850C8:
 	bl ov29_022EA428
 	mov r5, #0
 _023850D8:
-	ldr r0, _023848A8 ; =ov29_02353538
+	ldr r0, _023848A8 ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
@@ -2991,7 +2991,7 @@ _023851BC: .word 0x000008E8
 MovesMenu: ; 0x023851C0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0xc
-	ldr r1, _023853B8 ; =ov29_02353538
+	ldr r1, _023853B8 ; =DUNGEON_PTR
 	ldrb r4, [r0, #4]
 	ldr r0, [r1]
 	add r0, r0, r4, lsl #2
@@ -3000,7 +3000,7 @@ MovesMenu: ; 0x023851C0
 	str r5, [sp, #8]
 _023851E4:
 	mov r6, #0
-	ldr sb, _023853B8 ; =ov29_02353538
+	ldr sb, _023853B8 ; =DUNGEON_PTR
 	mov r7, r6
 	mov r8, r6
 _023851F4:
@@ -3126,7 +3126,7 @@ _023853B0:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_023853B8: .word ov29_02353538
+_023853B8: .word DUNGEON_PTR
 	arm_func_end MovesMenu
 
 	arm_func_start ov31_023853BC
@@ -3165,7 +3165,7 @@ HandleMovesMenu: ; 0x02385404
 	mov r1, #8
 	str r2, [sp, #8]
 	bl MemAlloc
-	ldr r1, _02385F70 ; =ov31_0238A270
+	ldr r1, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	mov r2, #0
 	str r0, [r1, #8]
 	str r2, [r0, #0x10]
@@ -3209,7 +3209,7 @@ _023854AC:
 	mov r0, r6
 	bl sub_0203F9CC
 	mov r8, #0
-	ldr sb, _02385F88 ; =ov29_02353538
+	ldr sb, _02385F88 ; =DUNGEON_PTR
 	mov r4, r8
 	add fp, sp, #0x2c
 _023854D8:
@@ -3238,7 +3238,7 @@ _02385514:
 	bl sub_0204018C
 	str r0, [sp, #0x18]
 	bl sub_02041094
-	ldr r1, _02385F70 ; =ov31_0238A270
+	ldr r1, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	str r0, [r1]
 	mov r0, #0x1e
 	bl AdvanceFrame
@@ -3247,7 +3247,7 @@ _02385548:
 	str r4, [sp, #0xc]
 	mov sb, r4
 	bl ov29_022EA62C
-	ldr fp, _02385F70 ; =ov31_0238A270
+	ldr fp, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 _0238555C:
 	bl sub_020407EC
 	mov r8, r0
@@ -3279,7 +3279,7 @@ _023855A8:
 	add r1, sp, #0x2c
 	str r0, [sp, #0x10]
 	ldr sb, [r1, r0, lsl #2]
-	ldr r0, _02385F88 ; =ov29_02353538
+	ldr r0, _02385F88 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x12000
@@ -3367,7 +3367,7 @@ _023856D0:
 	ldr r0, [sp, #0xc]
 	cmp r0, #1
 	bne _02385738
-	ldr r0, _02385F70 ; =ov31_0238A270
+	ldr r0, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldrb r1, [r6, #0x24]
 	ldr r2, [r0]
 	add r0, r7, #0x4a
@@ -3384,7 +3384,7 @@ _023856D0:
 	b _02385EFC
 _02385738:
 	ldr r8, [r6, #0xb4]
-	ldr r0, _02385F70 ; =ov31_0238A270
+	ldr r0, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	add sb, r8, #0x124
 	ldr fp, [r0]
 	bl ov29_022EBA70
@@ -3440,7 +3440,7 @@ _023857E0:
 	bl DisableDungeonSubMenuOption
 	b _0238595C
 _02385804:
-	ldr r0, _02385F70 ; =ov31_0238A270
+	ldr r0, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldr fp, [r0]
 	add r0, r8, fp, lsl #3
 	add r0, r0, #0x100
@@ -3531,7 +3531,7 @@ _0238592C:
 	mov r0, #0x20
 	bl DisableDungeonSubMenuOption
 _0238593C:
-	ldr r1, _02385F70 ; =ov31_0238A270
+	ldr r1, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	mov r0, r8
 	ldr r1, [r1]
 	bl ov31_023863F8
@@ -3540,7 +3540,7 @@ _0238593C:
 	mov r0, #0x21
 	bl DisableDungeonSubMenuOption
 _0238595C:
-	ldr r1, _02385F70 ; =ov31_0238A270
+	ldr r1, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	mov r0, r8
 	ldr r1, [r1]
 	bl ov31_023863F8
@@ -3552,7 +3552,7 @@ _0238597C:
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _023859C0
-	ldr r0, _02385F70 ; =ov31_0238A270
+	ldr r0, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	mov r8, #0
 	ldr r1, [r0]
 	cmp r1, #4
@@ -3690,7 +3690,7 @@ _02385B30:
 	str r4, [sb, #0x1c]
 	ldrh r4, [sl, fp]
 	ldrb sl, [r0, #1]
-	ldr fp, _02385F70 ; =ov31_0238A270
+	ldr fp, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	strh r4, [sb, #0x10]
 	strb sl, [r0, #3]
 	ldrb r4, [r3, r1]
@@ -3863,19 +3863,19 @@ _02385DEC:
 	bne _02385E4C
 	mov r0, r6
 	bl sub_0203F9CC
-	ldr r0, _02385F70 ; =ov31_0238A270
+	ldr r0, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldr r0, [r0]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_020416BC
-	ldr r2, _02385F70 ; =ov31_0238A270
+	ldr r2, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	mov r1, r0, lsl #0x10
 	str r0, [r2]
 	mov r0, r1, asr #0x10
 	bl sub_020410A4
 	mov r0, r6
 	bl sub_0203FD44
-	ldr r1, _02385F70 ; =ov31_0238A270
+	ldr r1, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	str r0, [r1]
 	ldr r0, [sp, #0x18]
 	bl sub_020307EC
@@ -3888,19 +3888,19 @@ _02385E4C:
 	bne _02385EAC
 	mov r0, r6
 	bl sub_0203F9CC
-	ldr r0, _02385F70 ; =ov31_0238A270
+	ldr r0, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldr r0, [r0]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_020416DC
-	ldr r2, _02385F70 ; =ov31_0238A270
+	ldr r2, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	mov r1, r0, lsl #0x10
 	str r0, [r2]
 	mov r0, r1, asr #0x10
 	bl sub_020410A4
 	mov r0, r6
 	bl sub_0203FD44
-	ldr r1, _02385F70 ; =ov31_0238A270
+	ldr r1, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	str r0, [r1]
 	ldr r0, [sp, #0x18]
 	bl sub_020307EC
@@ -3945,12 +3945,12 @@ _02385EFC:
 	mov r0, #0x1b
 	bl AdvanceFrame
 	bl sub_020407C0
-	ldr r0, _02385F70 ; =ov31_0238A270
+	ldr r0, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	beq _02385F50
 	bl MemFree
-	ldr r0, _02385F70 ; =ov31_0238A270
+	ldr r0, _02385F70 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	mov r1, #0
 	str r1, [r0, #8]
 _02385F50:
@@ -3963,13 +3963,13 @@ _02385F50:
 	add sp, sp, #0x12c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02385F70: .word ov31_0238A270
+_02385F70: .word OVERLAY31_UNKNOWN_POINTER__NA_238A270
 _02385F74: .word DUNGEON_D_BOX_LAYOUT_14
 _02385F78: .word 0x00003FCD
 _02385F7C: .word 0x00000404
 _02385F80: .word DUNGEON_D_BOX_LAYOUT_16
 _02385F84: .word 0x00003FCC
-_02385F88: .word ov29_02353538
+_02385F88: .word DUNGEON_PTR
 _02385F8C: .word 0x000008DC
 _02385F90: .word DUNGEON_D_BOX_LAYOUT_15
 _02385F94: .word 0x80000213
@@ -3988,20 +3988,20 @@ ov31_02385FA8: ; 0x02385FA8
 	mov r5, r0
 	mov r4, r2
 	bl SetMonsterActionFields
-	ldr r0, _02385FDC ; =ov31_0238A270
+	ldr r0, _02385FDC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	strb r4, [r5, #4]
 	ldr r0, [r0]
 	strb r0, [r5, #0xa]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02385FD8: .word ov29_0237C91C
-_02385FDC: .word ov31_0238A270
+_02385FDC: .word OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	arm_func_end ov31_02385FA8
 
 	arm_func_start ov31_02385FE0
 ov31_02385FE0: ; 0x02385FE0
 	stmdb sp!, {r3, lr}
-	ldr r1, _0238604C ; =ov29_02353538
+	ldr r1, _0238604C ; =DUNGEON_PTR
 	ldrb r3, [r0, #4]
 	ldr r1, [r1]
 	ldrb r2, [r0, #0xa]
@@ -4029,7 +4029,7 @@ _02386038:
 	bl ov31_02386050
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238604C: .word ov29_02353538
+_0238604C: .word DUNGEON_PTR
 	arm_func_end ov31_02385FE0
 
 	arm_func_start ov31_02386050
@@ -4063,7 +4063,7 @@ _02386098:
 	arm_func_start ov31_023860A4
 ov31_023860A4: ; 0x023860A4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r2, _02386190 ; =ov29_02353538
+	ldr r2, _02386190 ; =DUNGEON_PTR
 	ldrb r3, [r0, #4]
 	ldr r4, [r2]
 	ldrb r2, [r0, #0xa]
@@ -4125,7 +4125,7 @@ _02386180:
 	bl ov29_022EA370
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02386190: .word ov29_02353538
+_02386190: .word DUNGEON_PTR
 _02386194: .word 0x000008D8
 _02386198: .word 0x000008D9
 	arm_func_end ov31_023860A4
@@ -4133,7 +4133,7 @@ _02386198: .word 0x000008D9
 	arm_func_start ov31_0238619C
 ov31_0238619C: ; 0x0238619C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _02386200 ; =ov29_02353538
+	ldr r1, _02386200 ; =DUNGEON_PTR
 	ldrb r2, [r0, #4]
 	ldr r1, [r1]
 	ldrb r4, [r0, #0xa]
@@ -4158,14 +4158,14 @@ ov31_0238619C: ; 0x0238619C
 	strh r0, [r6, #2]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02386200: .word ov29_02353538
+_02386200: .word DUNGEON_PTR
 	arm_func_end ov31_0238619C
 
 	arm_func_start ov31_02386204
 ov31_02386204: ; 0x02386204
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0xa0
-	ldr r1, _02386304 ; =ov29_02353538
+	ldr r1, _02386304 ; =DUNGEON_PTR
 	ldrb r2, [r0, #4]
 	ldr r1, [r1]
 	ldrb r5, [r0, #0xa]
@@ -4232,13 +4232,13 @@ _023862F4:
 	add sp, sp, #0xa0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02386304: .word ov29_02353538
+_02386304: .word DUNGEON_PTR
 	arm_func_end ov31_02386204
 
 	arm_func_start ov31_02386308
 ov31_02386308: ; 0x02386308
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r2, _023863EC ; =ov29_02353538
+	ldr r2, _023863EC ; =DUNGEON_PTR
 	ldrb r3, [r0, #4]
 	ldr r2, [r2]
 	ldrb r7, [r0, #0xa]
@@ -4300,7 +4300,7 @@ _023863DC:
 	bl ov29_022EA370
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_023863EC: .word ov29_02353538
+_023863EC: .word DUNGEON_PTR
 _023863F0: .word 0x000008DA
 _023863F4: .word 0x000008DB
 	arm_func_end ov31_02386308
@@ -4337,17 +4337,17 @@ _0238643C:
 	arm_func_start ov31_02386450
 ov31_02386450: ; 0x02386450
 	stmdb sp!, {r3, lr}
-	ldr r0, _02386478 ; =ov31_0238A270
+	ldr r0, _02386478 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _02386478 ; =ov31_0238A270
+	ldr r0, _02386478 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	mov r1, #0
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02386478: .word ov31_0238A270
+_02386478: .word OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	arm_func_end ov31_02386450
 
 	arm_func_start ov31_0238647C
@@ -4362,7 +4362,7 @@ ov31_0238647C: ; 0x0238647C
 	str r3, [sp, #8]
 	mvn r4, #1
 	bl MemAlloc
-	ldr r1, _02386B0C ; =ov31_0238A270
+	ldr r1, _02386B0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	mov r2, #0
 	str r0, [r1, #4]
 	str r2, [r1]
@@ -4375,7 +4375,7 @@ _023864B4:
 	ldr r0, [r0, #0x24]
 	bl sub_0200B3D4
 	mvn sb, #1
-	ldr r7, _02386B0C ; =ov31_0238A270
+	ldr r7, _02386B0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	add r8, sb, #1
 	add fp, sp, #0xbc
 _023864E0:
@@ -4441,7 +4441,7 @@ _023865B4:
 	mov r0, #0x1e
 	bl AdvanceFrame
 	cmp sl, #1
-	ldreq r0, _02386B0C ; =ov31_0238A270
+	ldreq r0, _02386B0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	mvneq r1, #0
 	streq r1, [r0]
 	beq _02386924
@@ -4688,7 +4688,7 @@ _02386924:
 	mvn r4, #1
 	bl sub_020407C0
 _02386950:
-	ldr r0, _02386B0C ; =ov31_0238A270
+	ldr r0, _02386B0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldr r1, [r0]
 	cmp r1, #0
 	blt _02386AE8
@@ -4701,7 +4701,7 @@ _02386950:
 	mov r1, r0
 	mov r0, #0
 	bl ov29_0234B084
-	ldr r0, _02386B0C ; =ov31_0238A270
+	ldr r0, _02386B0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldr r0, [r0]
 	cmp r0, #4
 	bge _023869D8
@@ -4741,7 +4741,7 @@ _02386A04:
 _02386A08:
 	cmp r7, #1
 	bne _023864B4
-	ldr r0, _02386B0C ; =ov31_0238A270
+	ldr r0, _02386B0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldr r0, [r0]
 	cmp r0, #4
 	movge r1, #0
@@ -4805,7 +4805,7 @@ _02386AE0:
 	blt _02386AD0
 _02386AE8:
 	bl ov31_02386450
-	ldr r0, _02386B0C ; =ov31_0238A270
+	ldr r0, _02386B0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldr r0, [r0]
 	cmp r0, #0
 	movge r0, #1
@@ -4814,7 +4814,7 @@ _02386AE8:
 	add sp, sp, #0x114
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02386B0C: .word ov31_0238A270
+_02386B0C: .word OVERLAY31_UNKNOWN_POINTER__NA_238A270
 _02386B10: .word ov29_0235352C
 _02386B14: .word 0x000008DC
 _02386B18: .word DUNGEON_D_BOX_LAYOUT_15
@@ -4827,7 +4827,7 @@ _02386B24: .word 0x000008D7
 ov31_02386B28: ; 0x02386B28
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0xa4
-	ldr r0, _02386C08 ; =ov31_0238A27C
+	ldr r0, _02386C08 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r0, [r0]
 	ldr r1, [r0, #0x64]
 	ldrsh r0, [r1, #4]
@@ -4836,7 +4836,7 @@ ov31_02386B28: ; 0x02386B28
 	mov r4, r0
 	ldr r0, _02386C0C ; =0x000008D1
 	bl StringFromMessageId
-	ldr r1, _02386C08 ; =ov31_0238A27C
+	ldr r1, _02386C08 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	mov r3, r0
 	ldr r0, [r1]
 	mov r1, #8
@@ -4872,7 +4872,7 @@ _02386B98:
 	mov r1, #0x50
 	mov r3, #0
 	bl PreprocessString
-	ldr r0, _02386C08 ; =ov31_0238A27C
+	ldr r0, _02386C08 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	mov r1, #0x10
 	ldr r0, [r0]
 	mov r2, #0x12
@@ -4884,7 +4884,7 @@ _02386C00:
 	add sp, sp, #0xa4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_02386C08: .word ov31_0238A27C
+_02386C08: .word OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 _02386C0C: .word 0x000008D1
 _02386C10: .word 0x000008D2
 	arm_func_end ov31_02386B28
@@ -4892,12 +4892,12 @@ _02386C10: .word 0x000008D2
 	arm_func_start ov31_02386C14
 ov31_02386C14: ; 0x02386C14
 	stmdb sp!, {r3, lr}
-	ldr r0, _02386C68 ; =ov31_0238A27C
+	ldr r0, _02386C68 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r0, [r0]
 	add r0, r0, #0x61
 	add r0, r0, #0x100
 	bl ov29_0234E988
-	ldr r0, _02386C68 ; =ov31_0238A27C
+	ldr r0, _02386C68 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x60]
@@ -4906,14 +4906,14 @@ ov31_02386C14: ; 0x02386C14
 	bl AdvanceFrame
 	mov r0, #0x62
 	bl AdvanceFrame
-	ldr r0, _02386C68 ; =ov31_0238A27C
+	ldr r0, _02386C68 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x60]
 	bl sub_0202F8FC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02386C68: .word ov31_0238A27C
+_02386C68: .word OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	arm_func_end ov31_02386C14
 
 	arm_func_start ov31_02386C6C
@@ -4924,7 +4924,7 @@ ov31_02386C6C: ; 0x02386C6C
 	mov r0, #0x164
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _02386F0C ; =ov31_0238A27C
+	ldr r1, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	str r0, [r1]
 	str r5, [r0, #0x64]
 _02386C90:
@@ -4932,7 +4932,7 @@ _02386C90:
 	ldr r0, _02386F10 ; =DUNGEON_D_BOX_LAYOUT_18
 	ldr r1, _02386F14 ; =ov31_02386B28
 	bl sub_0202F8C4
-	ldr r1, _02386F0C ; =ov31_0238A27C
+	ldr r1, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r1, [r1]
 	strb r0, [r1, #0x160]
 	bl ov29_022EBA70
@@ -4945,7 +4945,7 @@ _02386C90:
 	bl ov29_022EB9A0
 	bl ov29_022EBA84
 	mov r1, #0
-	ldr r2, _02386F0C ; =ov31_0238A27C
+	ldr r2, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	b _02386CF0
 _02386CDC:
 	ldr r3, [r2]
@@ -4956,7 +4956,7 @@ _02386CDC:
 _02386CF0:
 	cmp r1, r0
 	blt _02386CDC
-	ldr r0, _02386F0C ; =ov31_0238A27C
+	ldr r0, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	mov r2, #0
 	ldr r4, [r0]
 	mov r3, r1, lsl #3
@@ -4974,7 +4974,7 @@ _02386CF0:
 	ldr r0, [r0]
 	add r1, r0, #0x58
 	bl ov31_0238513C
-	ldr r1, _02386F0C ; =ov31_0238A27C
+	ldr r1, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r0, _02386F18 ; =DUNGEON_D_BOX_LAYOUT_17
 	ldr r3, [r1]
 	ldr r1, _02386F1C ; =0x00000213
@@ -4982,7 +4982,7 @@ _02386CF0:
 	add r2, sp, #0x5c
 	str r4, [sp, #0xbc]
 	bl sub_0202A5CC
-	ldr r6, _02386F0C ; =ov31_0238A27C
+	ldr r6, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	mov r4, #0x2d
 	ldr r1, [r6]
 	strb r0, [r1, #0x161]
@@ -5057,7 +5057,7 @@ _02386E70:
 	bl ov29_022EB804
 	cmp r0, #0
 	beq _02386D70
-	ldr r0, _02386F0C ; =ov31_0238A27C
+	ldr r0, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r4, [r5, #0xb4]
 	ldr r0, [r0]
 	ldr r1, _02386F28 ; =ov29_0237C91C
@@ -5078,15 +5078,15 @@ _02386EBC:
 	bl AdvanceFrame
 	cmp r6, #2
 	beq _02386C90
-	ldr r0, _02386F0C ; =ov31_0238A27C
+	ldr r0, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02386EF8
 	bl ov31_02386C14
-	ldr r0, _02386F0C ; =ov31_0238A27C
+	ldr r0, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _02386F0C ; =ov31_0238A27C
+	ldr r0, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	mov r1, #0
 	str r1, [r0]
 _02386EF8:
@@ -5096,7 +5096,7 @@ _02386EF8:
 	add sp, sp, #0xf4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02386F0C: .word ov31_0238A27C
+_02386F0C: .word OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 _02386F10: .word DUNGEON_D_BOX_LAYOUT_18
 _02386F14: .word ov31_02386B28
 _02386F18: .word DUNGEON_D_BOX_LAYOUT_17
@@ -5109,12 +5109,12 @@ _02386F28: .word ov29_0237C91C
 	arm_func_start ov31_02386F2C
 ov31_02386F2C: ; 0x02386F2C
 	stmdb sp!, {r3, lr}
-	ldr r0, _02387010 ; =ov31_0238A280
+	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x294
 	add r0, r0, #0x400
 	bl ov29_0234E988
-	ldr r0, _02387010 ; =ov31_0238A280
+	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x600
@@ -5123,7 +5123,7 @@ ov31_02386F2C: ; 0x02386F2C
 	beq _02386F64
 	bl sub_020308A0
 _02386F64:
-	ldr r0, _02387010 ; =ov31_0238A280
+	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x600
@@ -5132,12 +5132,12 @@ _02386F64:
 	beq _02386F98
 	bl sub_020308A0
 	bl sub_020407C0
-	ldr r0, _02387010 ; =ov31_0238A280
+	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x698]
 _02386F98:
-	ldr r0, _02387010 ; =ov31_0238A280
+	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x600
@@ -5146,30 +5146,30 @@ _02386F98:
 	beq _02386FB8
 	bl sub_0202F8FC
 _02386FB8:
-	ldr r0, _02387010 ; =ov31_0238A280
+	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x3a4
 	add r0, r0, #0x400
 	bl ov31_023899D4
-	ldr r0, _02387010 ; =ov31_0238A280
+	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x3a8
 	add r0, r0, #0x400
 	bl ov31_02388714
-	ldr r0, _02387010 ; =ov31_0238A280
+	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x95
 	add r0, r0, #0x600
 	bl ov29_0234E988
-	ldr r0, _02387010 ; =ov31_0238A280
+	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _02387010 ; =ov31_0238A280
+	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02387010: .word ov31_0238A280
+_02387010: .word OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	arm_func_end ov31_02386F2C
 
 	arm_func_start ov31_02387014
@@ -5180,7 +5180,7 @@ ov31_02387014: ; 0x02387014
 	mov r2, #1
 	cmp r0, #0
 	movne r1, #0xb
-	ldr r0, _02387048 ; =ov31_0238A280
+	ldr r0, _02387048 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldreqb r1, [r1, #0xa8]
 	ldr r0, [r0]
 	and r1, r1, #0xff
@@ -5188,7 +5188,7 @@ ov31_02387014: ; 0x02387014
 	bx ip
 	.align 2, 0
 _02387044: .word ov31_023899B8
-_02387048: .word ov31_0238A280
+_02387048: .word OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	arm_func_end ov31_02387014
 
 	arm_func_start TeamMenu
@@ -5199,10 +5199,10 @@ TeamMenu: ; 0x0238704C
 	ldr r0, _02387614 ; =0x000007AC
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _02387618 ; =ov31_0238A280
+	ldr r1, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	str r0, [r1]
 	bl ov31_023880D8
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	str sl, [r0, #0x69c]
 	bl ov29_0234EBCC
@@ -5219,14 +5219,14 @@ TeamMenu: ; 0x0238704C
 	mov r1, #0xe
 	mov r3, r7
 	bl ov31_02388114
-	ldr r2, _02387618 ; =ov31_0238A280
+	ldr r2, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r1, _02387620 ; =DUNGEON_D_BOX_LAYOUT_22
 	ldr r3, [r2]
 	str r0, [r3, #0x7a8]
 	ldr r0, [r2]
 	ldr r0, [r0, #0x7a8]
 	bl ov31_02388444
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	add r1, sp, #8
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7a8]
@@ -5239,7 +5239,7 @@ TeamMenu: ; 0x0238704C
 	mov r0, r0, asr #0x10
 	mov r1, r1, asr #0x10
 	bl ov31_0238991C
-	ldr r3, _02387618 ; =ov31_0238A280
+	ldr r3, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mov r1, #0xb
 	ldr r4, [r3]
 	mov r2, r7
@@ -5248,11 +5248,11 @@ TeamMenu: ; 0x0238704C
 	ldr r0, [r0, #0x7a4]
 	bl ov31_023899B8
 _02387124:
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7a8]
 	bl ov31_02388534
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7a8]
 	bl ov31_023886D4
@@ -5261,12 +5261,12 @@ _02387124:
 	beq _023875D8
 	cmp r0, #2
 	bne _02387184
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mov r8, #1
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7a8]
 	bl ov31_023886DC
-	ldr r1, _02387618 ; =ov31_0238A280
+	ldr r1, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r2, [r1]
 	str r0, [r2, #0x760]
 	ldr r0, [r1]
@@ -5275,21 +5275,21 @@ _02387124:
 _02387184:
 	cmp r0, #3
 	bne _023871B0
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7a8]
 	bl ov31_023886DC
-	ldr r1, _02387618 ; =ov31_0238A280
+	ldr r1, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r2, [r1]
 	str r0, [r2, #0x760]
 	ldr r0, [r1]
 	ldr sb, [r0, #0x760]
 _023871B0:
 	bl ov29_022EBA70
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	add r1, sp, #0xb0
 	ldr r2, [r0]
-	ldr r0, _02387624 ; =ov29_02353538
+	ldr r0, _02387624 ; =DUNGEON_PTR
 	ldr r2, [r2, #0x760]
 	ldr r3, [r0]
 	add r0, r1, r2, lsl #5
@@ -5307,7 +5307,7 @@ _023871B0:
 	ldrb r0, [r5, #7]
 	cmp r0, #0
 	bne _02387278
-	ldr r0, _02387624 ; =ov29_02353538
+	ldr r0, _02387624 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x75d]
 	cmp r0, #0
@@ -5324,7 +5324,7 @@ _023871B0:
 	bl JoinedAtRangeCheck2Veneer
 	cmp r0, #0
 	beq _02387260
-	ldr r0, _02387624 ; =ov29_02353538
+	ldr r0, _02387624 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75c]
 	cmp r0, #0
@@ -5346,7 +5346,7 @@ _02387278:
 	bl AddDungeonSubMenuOption
 	ldrb r0, [r5, #7]
 	cmp r0, #0
-	ldreq r0, _02387624 ; =ov29_02353538
+	ldreq r0, _02387624 ; =DUNGEON_PTR
 	ldreq r1, [r0]
 	ldreqb r0, [r1, #0x75e]
 	cmpeq r0, #0
@@ -5411,7 +5411,7 @@ _02387380:
 	bl ov29_022EB9A0
 	cmp r8, #0
 	beq _023873C8
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r3, [sl, #0xb4]
 	ldr r0, [r0]
 	add r1, sp, #0xb4
@@ -5419,7 +5419,7 @@ _02387380:
 	add r0, r3, #0x4a
 	ldr r1, [r1, r2, lsl #5]
 	bl ov29_022EBA94
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mov r7, #0
 	ldr r0, [r0]
 	add r0, r0, #0x294
@@ -5427,7 +5427,7 @@ _02387380:
 	bl ov29_0234E988
 	b _023875D8
 _023873C8:
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	cmp sb, #0
 	ldr r0, [r0]
 	moveq r2, #1
@@ -5438,7 +5438,7 @@ _023873C8:
 	bl ov31_0238513C
 	bl ov29_022EBA84
 	mov r2, #0
-	ldr r1, _02387618 ; =ov31_0238A280
+	ldr r1, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	b _02387410
 _023873FC:
 	ldr r3, [r1]
@@ -5449,7 +5449,7 @@ _023873FC:
 _02387410:
 	cmp r2, r0
 	blt _023873FC
-	ldr r4, _02387618 ; =ov31_0238A280
+	ldr r4, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r3, _0238762C ; =0x00000A3C
 	ldr r0, [r4]
 	mvn r1, #0
@@ -5474,7 +5474,7 @@ _02387410:
 	str r1, [sp, #0x78]
 	bl Arm9LoadUnkFieldNa0x2029EC8
 	add r4, r0, #1
-	ldr r1, _02387618 ; =ov31_0238A280
+	ldr r1, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, _02387630 ; =DUNGEON_D_BOX_LAYOUT_23
 	ldr r3, [r1]
 	ldr r1, _02387634 ; =0x00000233
@@ -5482,7 +5482,7 @@ _02387410:
 	add r3, r3, #0x530
 	str r4, [sp, #0x18]
 	bl sub_0202A5CC
-	ldr r4, _02387618 ; =ov31_0238A280
+	ldr r4, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mov r6, #0x1b
 	ldr r1, [r4]
 	add fp, sp, #4
@@ -5512,7 +5512,7 @@ _023874B0:
 	bl ov29_022EB804
 	cmp r0, #0
 	beq _023874B0
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r1, _02387638 ; =ov29_0237C91C
 	ldr r0, [r0]
 	ldr r5, [sl, #0xb4]
@@ -5528,12 +5528,12 @@ _023874B0:
 	strb r0, [r5, #0x4e]
 	b _02387594
 _0238754C:
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x294
 	add r0, r0, #0x400
 	bl ov29_0234E988
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7a8]
 	bl ov31_023886F4
@@ -5548,19 +5548,19 @@ _02387578:
 	bl Arm9StoreUnkFieldNa0x2029ED8
 	b _023874B0
 _02387594:
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x294
 	add r0, r0, #0x400
 	bl ov29_0234E988
 	cmp r4, #1
 	beq _02387124
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x95
 	add r0, r0, #0x600
 	bl ov29_0234E988
-	ldr r0, _02387618 ; =ov31_0238A280
+	ldr r0, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x3a4
 	add r0, r0, #0x400
@@ -5584,10 +5584,10 @@ _023875F0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02387614: .word 0x000007AC
-_02387618: .word ov31_0238A280
+_02387618: .word OVERLAY31_UNKNOWN_POINTER__NA_238A280
 _0238761C: .word ov31_02387014
 _02387620: .word DUNGEON_D_BOX_LAYOUT_22
-_02387624: .word ov29_02353538
+_02387624: .word DUNGEON_PTR
 _02387628: .word 0x00005AA5
 _0238762C: .word 0x00000A3C
 _02387630: .word DUNGEON_D_BOX_LAYOUT_23
@@ -5610,7 +5610,7 @@ ov31_0238763C: ; 0x0238763C
 
 	arm_func_start ov31_02387660
 ov31_02387660: ; 0x02387660
-	ldr r1, _02387680 ; =ov29_02353538
+	ldr r1, _02387680 ; =DUNGEON_PTR
 	ldrb r0, [r0, #4]
 	ldr r1, [r1]
 	ldr ip, _02387684 ; =ov31_0238948C
@@ -5619,7 +5619,7 @@ ov31_02387660: ; 0x02387660
 	ldr r0, [r0, #0xb28]
 	bx ip
 	.align 2, 0
-_02387680: .word ov29_02353538
+_02387680: .word DUNGEON_PTR
 _02387684: .word ov31_0238948C
 	arm_func_end ov31_02387660
 
@@ -5627,7 +5627,7 @@ _02387684: .word ov31_0238948C
 ov31_02387688: ; 0x02387688
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x78
-	ldr r2, _02387788 ; =ov29_02353538
+	ldr r2, _02387788 ; =DUNGEON_PTR
 	ldrb r0, [r0, #4]
 	ldr r2, [r2]
 	mov r4, r1
@@ -5696,13 +5696,13 @@ _0238776C:
 	add sp, sp, #0x78
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02387788: .word ov29_02353538
+_02387788: .word DUNGEON_PTR
 	arm_func_end ov31_02387688
 
 	arm_func_start ov31_0238778C
 ov31_0238778C: ; 0x0238778C
 	stmdb sp!, {r4, lr}
-	ldr r1, _023877C0 ; =ov31_0238A280
+	ldr r1, _023877C0 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x600
@@ -5715,12 +5715,12 @@ ov31_0238778C: ; 0x0238778C
 	bl sub_02026214
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_023877C0: .word ov31_0238A280
+_023877C0: .word OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	arm_func_end ov31_0238778C
 
 	arm_func_start ov31_023877C4
 ov31_023877C4: ; 0x023877C4
-	ldr r2, _023877E4 ; =ov31_0238A280
+	ldr r2, _023877E4 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr ip, _023877E8 ; =sub_02026214
 	ldr r3, [r2]
 	mov r1, #2
@@ -5729,7 +5729,7 @@ ov31_023877C4: ; 0x023877C4
 	add r3, r3, #0x600
 	bx ip
 	.align 2, 0
-_023877E4: .word ov31_0238A280
+_023877E4: .word OVERLAY31_UNKNOWN_POINTER__NA_238A280
 _023877E8: .word sub_02026214
 	arm_func_end ov31_023877C4
 
@@ -5747,13 +5747,13 @@ ov31_023877EC: ; 0x023877EC
 	mov r1, #8
 	mov fp, r2
 	bl MemAlloc
-	ldr r1, _02388084 ; =ov31_0238A280
+	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	str r0, [r1]
 	bl ov31_023880D8
 	mov r7, #0
 	mov r6, r7
 _02387830:
-	ldr r0, _02388088 ; =ov29_02353538
+	ldr r0, _02388088 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
@@ -5801,7 +5801,7 @@ _023878D0:
 	blt _023878BC
 	mov r0, #0xb
 	bl Arm9LoadUnkFieldNa0x2029EC8
-	ldr r1, _02388084 ; =ov31_0238A280
+	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mov r2, #0
 	ldr r3, [r1]
 	str r0, [r3, #0x760]
@@ -5818,7 +5818,7 @@ _023878D0:
 	ldr r0, [r1]
 	str r2, [r0, #0x758]
 	bl ov29_022EA62C
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x95
 	add r0, r0, #0x600
@@ -5837,7 +5837,7 @@ _02387958:
 	ldr r1, [r0, #4]
 	cmp r1, #0
 	blt _02387B7C
-	ldr r0, _02388088 ; =ov29_02353538
+	ldr r0, _02388088 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
 	add r0, r0, #0x12000
@@ -5958,7 +5958,7 @@ _02387B20:
 	str r0, [sp, #0x54]
 	add r0, sp, #0x18
 	str r0, [sp]
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r2, _023880B0 ; =ov31_0238A084
 	ldr r0, [r0]
 	mov r1, #0x100
@@ -5966,13 +5966,13 @@ _02387B20:
 	add r0, r0, r5, lsl #8
 	mov r3, #0
 	bl PreprocessString
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mov r1, r5, lsl #3
 	ldr r2, [r0]
 	add r0, r2, #0x30
 	add r0, r0, r5, lsl #8
 	str r0, [r2, r5, lsl #3]
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	add r5, r5, #1
 	ldr r0, [r0]
 	add r0, r0, r1
@@ -5982,13 +5982,13 @@ _02387B7C:
 _02387B80:
 	cmp r8, r7
 	blt _02387958
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mov r3, #0
 	ldr r1, [r0]
 	sub r2, r3, #1
 	str r3, [r1, r5, lsl #3]
 	ldr r1, [r0]
-	ldr r0, _02388088 ; =ov29_02353538
+	ldr r0, _02388088 ; =DUNGEON_PTR
 	add r1, r1, r5, lsl #3
 	str r2, [r1, #4]
 	ldr r0, [r0]
@@ -6000,7 +6000,7 @@ _02387B80:
 	mov r0, #0xb
 	strneh r1, [sp, #0xf0]
 	bl Arm9LoadUnkFieldNa0x2029EC8
-	ldr r1, _02388084 ; =ov31_0238A280
+	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	cmp r5, #0
 	ldr r3, [r1]
 	add r2, sp, #0x29c
@@ -6011,7 +6011,7 @@ _02387B80:
 	moveq r1, #0
 	add r0, r0, #1
 	str r0, [sp, #0xe8]
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	orr r1, r1, #0x33
 	ldr r3, [r0]
 	str r2, [sp, #0x148]
@@ -6019,13 +6019,13 @@ _02387B80:
 	add r2, sp, #0xe8
 	orr r1, r1, #0x1200
 	bl sub_0202A690
-	ldr r2, _02388084 ; =ov31_0238A280
+	ldr r2, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r1, _023880BC ; =ov31_0238778C
 	ldr r2, [r2]
 	strb r0, [r2, #0x695]
 	ldr r0, _023880C0 ; =DUNGEON_D_BOX_LAYOUT_24
 	bl sub_0202F8C4
-	ldr r1, _02388084 ; =ov31_0238A280
+	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r3, _023880C4 ; =0x00000A36
 	ldr r2, [r1]
 	mov r5, #0x10
@@ -6050,7 +6050,7 @@ _02387B80:
 	mov r1, #0x800
 	str r5, [sp, #4]
 	bl sub_020305B4
-	ldr r1, _02388084 ; =ov31_0238A280
+	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r1, [r1]
 	strb r0, [r1, #0x697]
 	b _02387CF4
@@ -6071,7 +6071,7 @@ _02387CA8:
 	mov r1, #0x800
 	str r5, [sp, #4]
 	bl sub_020305B4
-	ldr r1, _02388084 ; =ov31_0238A280
+	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r1, [r1]
 	strb r0, [r1, #0x697]
 _02387CF4:
@@ -6079,7 +6079,7 @@ _02387CF4:
 	mvn r7, #0x3d8
 	str r0, [sp, #0x10]
 	add r0, r7, #0xe10
-	ldr r5, _02388084 ; =ov31_0238A280
+	ldr r5, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	str r0, [sp, #0x14]
 	mov fp, r7, asr #9
 _02387D10:
@@ -6101,7 +6101,7 @@ _02387D10:
 	ldr r6, [r0, #4]
 	cmp r6, #0
 	blt _02387EC0
-	ldr r0, _02388088 ; =ov29_02353538
+	ldr r0, _02388088 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
@@ -6208,14 +6208,14 @@ _02387EC0:
 	bl sub_0202AB40
 	cmp r0, #0
 	bne _02387D10
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202ABB0
 	subs r3, r0, #1
 	bmi _02387F24
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	add r1, sp, #0x29c
 	ldr r2, [r0]
 	str r3, [r2, #0x760]
@@ -6228,7 +6228,7 @@ _02387EC0:
 _02387F24:
 	mov r4, #1
 _02387F28:
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x600
@@ -6236,12 +6236,12 @@ _02387F28:
 	cmp r0, r1
 	beq _02387F58
 	bl sub_020308A0
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x697]
 _02387F58:
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x600
@@ -6250,17 +6250,17 @@ _02387F58:
 	beq _02387F8C
 	bl sub_020308A0
 	bl sub_020407C0
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x698]
 _02387F8C:
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0x96]
 	bl sub_0202F8FC
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r0, #0x1b
@@ -6301,7 +6301,7 @@ _0238800C:
 	mov r0, #0
 	b _02388078
 _02388038:
-	ldr r0, _02388084 ; =ov31_0238A280
+	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	add r1, sp, #0x21c
 	ldr r0, [r0]
 	cmp sl, #0
@@ -6312,7 +6312,7 @@ _02388038:
 	cmp r4, #0
 	movlt r0, #0
 	blt _02388078
-	ldr r0, _02388088 ; =ov29_02353538
+	ldr r0, _02388088 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
@@ -6322,8 +6322,8 @@ _02388078:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02388080: .word 0x000007AC
-_02388084: .word ov31_0238A280
-_02388088: .word ov29_02353538
+_02388084: .word OVERLAY31_UNKNOWN_POINTER__NA_238A280
+_02388088: .word DUNGEON_PTR
 _0238808C: .word 0x000003E7
 _02388090: .word ov31_0238A044
 _02388094: .word ov31_0238A04C
@@ -6615,7 +6615,7 @@ ov31_02388444: ; 0x02388444
 	str r0, [r6, #0x670]
 	str r0, [r6, #0x674]
 	bl ov29_022EA62C
-	ldr r0, _02388528 ; =ov29_02353538
+	ldr r0, _02388528 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r4, [r0, #0x75b]
 	cmp r4, #0
@@ -6657,7 +6657,7 @@ _0238851C:
 	add sp, sp, #0x98
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02388528: .word ov29_02353538
+_02388528: .word DUNGEON_PTR
 _0238852C: .word 0x00000A3A
 _02388530: .word 0x00401233
 	arm_func_end ov31_02388444
@@ -6854,14 +6854,14 @@ ov31_02388744: ; 0x02388744
 RestMenu: ; 0x0238878C
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x9c
-	ldr r0, _023889B8 ; =ov31_0238A284
+	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _023887CC
 	mov r0, #0x10
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _023889B8 ; =ov31_0238A284
+	ldr r1, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	mov r2, #0
 	str r0, [r1]
 	str r2, [r0]
@@ -6870,7 +6870,7 @@ RestMenu: ; 0x0238878C
 	strb r1, [r0, #4]
 _023887CC:
 	mov r3, #0
-	ldr r0, _023889B8 ; =ov31_0238A284
+	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	mov r2, r3
 _023887D8:
 	ldr r1, [r0]
@@ -6881,12 +6881,12 @@ _023887D8:
 	blt _023887D8
 	bl ov29_022E08F4
 	cmp r0, #0
-	ldreq r0, _023889B8 ; =ov31_0238A284
+	ldreq r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	moveq r1, #3
 	ldreq r0, [r0]
 	ldr ip, _023889BC ; =0x000008C2
 	streqb r1, [r0, #0xc]
-	ldr r0, _023889B8 ; =ov31_0238A284
+	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	mov r5, #0x10
 	ldr r1, [r0]
 	ldr r0, _023889C0 ; =DUNGEON_D_BOX_LAYOUT_25
@@ -6898,7 +6898,7 @@ _023887D8:
 	str r5, [sp, #0x10]
 	str r4, [sp, #0x64]
 	bl sub_0202A5CC
-	ldr r4, _023889B8 ; =ov31_0238A284
+	ldr r4, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	mov r5, #0x62
 	ldr r1, [r4]
 	strb r0, [r1, #4]
@@ -6910,20 +6910,20 @@ _0238884C:
 	bl sub_0202AB40
 	cmp r0, #0
 	bne _0238884C
-	ldr r0, _023889B8 ; =ov31_0238A284
+	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202ABB0
-	ldr r1, _023889B8 ; =ov31_0238A284
+	ldr r1, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	ldr r1, [r1]
 	str r0, [r1, #8]
 	mov r0, #0x62
 	bl AdvanceFrame
-	ldr r0, _023889B8 ; =ov31_0238A284
+	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202AABC
-	ldr r0, _023889B8 ; =ov31_0238A284
+	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	ldr r1, [r0]
 	ldr r0, [r1, #8]
 	cmp r0, #1
@@ -6947,7 +6947,7 @@ _023888BC:
 	mov r0, #0
 _023888F0:
 	cmp r0, #0
-	ldreq r0, _023889B8 ; =ov31_0238A284
+	ldreq r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	mvneq r1, #0
 	ldreq r0, [r0]
 	streq r1, [r0, #8]
@@ -6971,14 +6971,14 @@ _02388908:
 	ldr r0, _023889D4 ; =0x0000025A
 	mov r3, r1
 	bl ov29_022ECDE4
-	ldr r0, _023889D8 ; =ov29_02353538
+	ldr r0, _023889D8 ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	mov r2, #0
 	strb r1, [r0, #0x758]
 _02388964:
 	cmp r2, #0
-	ldreq r0, _023889B8 ; =ov31_0238A284
+	ldreq r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	mvneq r1, #0
 	ldreq r0, [r0]
 	streq r1, [r0, #8]
@@ -6987,7 +6987,7 @@ _0238897C:
 	mvn r0, #0
 	str r0, [r1, #8]
 _02388984:
-	ldr r0, _023889B8 ; =ov31_0238A284
+	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	ldr r0, [r0]
 	ldr r1, [r0, #8]
 	cmp r1, #0
@@ -6995,14 +6995,14 @@ _02388984:
 	cmp r0, #0
 	beq _023889B0
 	bl MemFree
-	ldr r0, _023889B8 ; =ov31_0238A284
+	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	mov r1, #0
 	str r1, [r0]
 _023889B0:
 	add sp, sp, #0x9c
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_023889B8: .word ov31_0238A284
+_023889B8: .word OVERLAY31_UNKNOWN_POINTER__NA_238A284
 _023889BC: .word 0x000008C2
 _023889C0: .word DUNGEON_D_BOX_LAYOUT_25
 _023889C4: .word 0x00001A13
@@ -7010,7 +7010,7 @@ _023889C8: .word DUNGEON_SUBMENU_5
 _023889CC: .word 0x000008C5
 _023889D0: .word 0x000008C6
 _023889D4: .word 0x0000025A
-_023889D8: .word ov29_02353538
+_023889D8: .word DUNGEON_PTR
 	arm_func_end RestMenu
 
 	arm_func_start ov31_023889DC
@@ -7169,7 +7169,7 @@ _02388C00: .word 0x000003E7
 RecruitmentSearchMenuLoop: ; 0x02388C04
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0xa0
-	ldr r0, _02388D30 ; =ov31_0238A288
+	ldr r0, _02388D30 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	ldr r1, [r0]
 	ldr r0, [r1, #0xd94]
 	cmp r0, #3
@@ -7181,7 +7181,7 @@ _02388C24: ; jump table
 	b _02388CF8 ; case 2
 	b _02388D18 ; case 3
 _02388C34:
-	ldr r0, _02388D34 ; =ov29_02353538
+	ldr r0, _02388D34 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x748]
 	bl IsRecruitingAllowed
@@ -7191,7 +7191,7 @@ _02388C34:
 	moveq r0, #4
 	streqh r2, [r1]
 	beq _02388D28
-	ldr r0, _02388D34 ; =ov29_02353538
+	ldr r0, _02388D34 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75d]
 	cmp r0, #0
@@ -7212,7 +7212,7 @@ _02388C34:
 	add r2, sp, #8
 	str ip, [sp, #4]
 	bl sub_020305B4
-	ldr r1, _02388D30 ; =ov31_0238A288
+	ldr r1, _02388D30 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	ldr r2, [r1]
 	strb r0, [r2]
 	ldr r1, [r1]
@@ -7225,7 +7225,7 @@ _02388CD0:
 	bl sub_020308C4
 	cmp r0, #0
 	bne _02388D24
-	ldr r0, _02388D30 ; =ov31_0238A288
+	ldr r0, _02388D30 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	ldr r1, [r0]
 	ldr r0, [r1, #0xd94]
 	add r0, r0, #1
@@ -7234,7 +7234,7 @@ _02388CD0:
 _02388CF8:
 	ldrsb r0, [r1]
 	bl sub_020308A0
-	ldr r0, _02388D30 ; =ov31_0238A288
+	ldr r0, _02388D30 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	ldr r1, [r0]
 	ldr r0, [r1, #0xd94]
 	add r0, r0, #1
@@ -7250,8 +7250,8 @@ _02388D28:
 	add sp, sp, #0xa0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02388D30: .word ov31_0238A288
-_02388D34: .word ov29_02353538
+_02388D30: .word OVERLAY31_UNKNOWN_POINTER__NA_238A288
+_02388D34: .word DUNGEON_PTR
 _02388D38: .word 0x00000B44
 _02388D3C: .word ov29_0238280C
 _02388D40: .word 0x00000B45
@@ -7265,7 +7265,7 @@ _02388D50: .word ov31_02388D54
 ov31_02388D54: ; 0x02388D54
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xd4
-	ldr r4, _02388E54 ; =ov31_0238A288
+	ldr r4, _02388E54 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	mov sl, r0
 	ldr r0, [r4]
 	mov r8, #4
@@ -7333,7 +7333,7 @@ _02388E4C:
 	add sp, sp, #0xd4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02388E54: .word ov31_0238A288
+_02388E54: .word OVERLAY31_UNKNOWN_POINTER__NA_238A288
 _02388E58: .word ov31_0238A154
 _02388E5C: .word 0x00000B47
 	arm_func_end ov31_02388D54
@@ -7364,7 +7364,7 @@ ov31_02388E88: ; 0x02388E88
 	ldr r0, _02389168 ; =0x00000D98
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _0238916C ; =ov31_0238A288
+	ldr r1, _0238916C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	mov r3, #0
 	str r0, [r1]
 	add r5, r0, #4
@@ -7381,7 +7381,7 @@ _02388ECC:
 	mov sb, #1
 	mov r8, #2
 	add r7, sp, #0
-	ldr r6, _02389174 ; =ov29_02353538
+	ldr r6, _02389174 ; =DUNGEON_PTR
 	b _02388F3C
 _02388EF8:
 	ldr r1, [r6]
@@ -7416,7 +7416,7 @@ _02388F3C:
 	mov r2, #1
 	strb r2, [r1, r0]
 _02388F6C:
-	ldr r0, _02389174 ; =ov29_02353538
+	ldr r0, _02389174 ; =DUNGEON_PTR
 	mov sl, #0
 	ldr r0, [r0]
 	mov sb, #1
@@ -7548,7 +7548,7 @@ _02389134:
 _02389140:
 	cmp r8, sl
 	blt _023890D8
-	ldr r0, _0238916C ; =ov31_0238A288
+	ldr r0, _0238916C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #0xd94]
@@ -7559,26 +7559,26 @@ _02389158:
 	.align 2, 0
 _02389164: .word OVERLAY31_UNKNOWN_STRUCT__NA_238A144
 _02389168: .word 0x00000D98
-_0238916C: .word ov31_0238A288
+_0238916C: .word OVERLAY31_UNKNOWN_POINTER__NA_238A288
 _02389170: .word 0x00000483
-_02389174: .word ov29_02353538
+_02389174: .word DUNGEON_PTR
 _02389178: .word 0xFFFFFC19
 	arm_func_end ov31_02388E88
 
 	arm_func_start ov31_0238917C
 ov31_0238917C: ; 0x0238917C
 	stmdb sp!, {r3, lr}
-	ldr r0, _023891A4 ; =ov31_0238A288
+	ldr r0, _023891A4 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _023891A4 ; =ov31_0238A288
+	ldr r0, _023891A4 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_023891A4: .word ov31_0238A288
+_023891A4: .word OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	arm_func_end ov31_0238917C
 
 	arm_func_start ov31_023891A8
@@ -7611,7 +7611,7 @@ _023891F8: .word DUNGEON_SUBMENU_6
 HelpMenuLoop: ; 0x023891FC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0xa0
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r2, [r0]
 	ldr r0, [r2, #8]
 	cmp r0, #6
@@ -7635,7 +7635,7 @@ _02389238:
 	strh ip, [sp, #0x10]
 	str r4, [sp, #0x14]
 	bl sub_0202A5CC
-	ldr r1, _023893FC ; =ov31_0238A28C
+	ldr r1, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r2, #1
 	ldr r3, [r1]
 	strb r0, [r3]
@@ -7647,27 +7647,27 @@ _02389278:
 	bl sub_02028354
 	cmp r0, #3
 	bne _02389298
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202810C
 _02389298:
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202A954
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #8]
 _023892B8:
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202AB40
 	cmp r0, #0
 	bne _023893F0
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202ABB0
@@ -7675,12 +7675,12 @@ _023892B8:
 	bmi _02389320
 	bl sub_02001808
 	cmp r0, #0xa000
-	ldrlt r0, _023893FC ; =ov31_0238A28C
+	ldrlt r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	movlt r1, #2
 	ldrlt r0, [r0]
 	strlt r1, [r0, #8]
 	blt _023893F0
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r1, #3
 	ldr r2, [r0]
 	str r4, [r2, #4]
@@ -7688,12 +7688,12 @@ _023892B8:
 	str r1, [r0, #8]
 	b _02389330
 _02389320:
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r1, #6
 	ldr r0, [r0]
 	str r1, [r0, #8]
 _02389330:
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202812C
@@ -7717,7 +7717,7 @@ _02389344:
 	add r2, sp, #8
 	str ip, [sp, #4]
 	bl sub_020305B4
-	ldr r1, _023893FC ; =ov31_0238A28C
+	ldr r1, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r2, #4
 	ldr r3, [r1]
 	strb r0, [r3, #1]
@@ -7729,11 +7729,11 @@ _023893A8:
 	bl sub_020308C4
 	cmp r0, #0
 	bne _023893F0
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
 	bl sub_020308A0
-	ldr r0, _023893FC ; =ov31_0238A28C
+	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -7750,7 +7750,7 @@ _023893F4:
 	add sp, sp, #0xa0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_023893FC: .word ov31_0238A28C
+_023893FC: .word OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 _02389400: .word 0x00003FA7
 _02389404: .word DUNGEON_D_BOX_LAYOUT_27
 _02389408: .word 0x00401813
@@ -7770,7 +7770,7 @@ ov31_0238941C: ; 0x0238941C
 	mov r0, #0xc
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _0238945C ; =ov31_0238A28C
+	ldr r1, _0238945C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r2, #0
 	str r0, [r1]
 	str r2, [r0, #4]
@@ -7779,23 +7779,23 @@ ov31_0238941C: ; 0x0238941C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02389458: .word OVERLAY31_UNKNOWN_STRUCT__NA_238A190
-_0238945C: .word ov31_0238A28C
+_0238945C: .word OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	arm_func_end ov31_0238941C
 
 	arm_func_start ov31_02389460
 ov31_02389460: ; 0x02389460
 	stmdb sp!, {r3, lr}
-	ldr r0, _02389488 ; =ov31_0238A28C
+	ldr r0, _02389488 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _02389488 ; =ov31_0238A28C
+	ldr r0, _02389488 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02389488: .word ov31_0238A28C
+_02389488: .word OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	arm_func_end ov31_02389460
 
 	arm_func_start ov31_0238948C
@@ -8246,7 +8246,7 @@ ov31_02389A78: ; 0x02389A78
 	ldrb r1, [r0, #0xa]
 	add r0, sp, #8
 	bl GetUnlockedTactics
-	ldr r4, _02389C20 ; =ov29_02353538
+	ldr r4, _02389C20 ; =DUNGEON_PTR
 	mov r7, r6
 	add r5, sp, #4
 _02389AD0:
@@ -8345,7 +8345,7 @@ _02389BFC:
 	add sp, sp, #0x70
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02389C20: .word ov29_02353538
+_02389C20: .word DUNGEON_PTR
 _02389C24: .word ov31_0238A228
 _02389C28: .word ov31_0238A23C
 	arm_func_end ov31_02389A78
@@ -8372,7 +8372,7 @@ ov31_02389C2C: ; 0x02389C2C
 	arm_func_start ov31_02389C68
 ov31_02389C68: ; 0x02389C68
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r5, _02389CBC ; =ov29_02353538
+	ldr r5, _02389CBC ; =DUNGEON_PTR
 	mov r4, r0
 	mov r6, #0
 _02389C78:
@@ -8395,7 +8395,7 @@ _02389CA4:
 	blt _02389C78
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02389CBC: .word ov29_02353538
+_02389CBC: .word DUNGEON_PTR
 	arm_func_end ov31_02389C68
 
 	arm_func_start ov31_02389CC0
@@ -8730,34 +8730,34 @@ ov31_0238A23C:
 	.byte 0x61, 0x63, 0x74, 0x69, 0x63, 0x73, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00
 
 	.data
-	.global ov31_0238A260
-ov31_0238A260:
+	.global OVERLAY31_UNKNOWN_POINTER__NA_238A260
+OVERLAY31_UNKNOWN_POINTER__NA_238A260:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x0A, 0x00, 0x00, 0x00
-	.global ov31_0238A268
-ov31_0238A268:
+	.global OVERLAY31_UNKNOWN_POINTER__NA_238A268
+OVERLAY31_UNKNOWN_POINTER__NA_238A268:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A26C
-ov31_0238A26C:
+	.global OVERLAY31_UNKNOWN_POINTER__NA_238A26C
+OVERLAY31_UNKNOWN_POINTER__NA_238A26C:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A270
-ov31_0238A270:
+	.global OVERLAY31_UNKNOWN_POINTER__NA_238A270
+OVERLAY31_UNKNOWN_POINTER__NA_238A270:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A27C
-ov31_0238A27C:
+	.global OVERLAY31_UNKNOWN_POINTER__NA_238A27C
+OVERLAY31_UNKNOWN_POINTER__NA_238A27C:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A280
-ov31_0238A280:
+	.global OVERLAY31_UNKNOWN_POINTER__NA_238A280
+OVERLAY31_UNKNOWN_POINTER__NA_238A280:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A284
-ov31_0238A284:
+	.global OVERLAY31_UNKNOWN_POINTER__NA_238A284
+OVERLAY31_UNKNOWN_POINTER__NA_238A284:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A288
-ov31_0238A288:
+	.global OVERLAY31_UNKNOWN_POINTER__NA_238A288
+OVERLAY31_UNKNOWN_POINTER__NA_238A288:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov31_0238A28C
-ov31_0238A28C:
+	.global OVERLAY31_UNKNOWN_POINTER__NA_238A28C
+OVERLAY31_UNKNOWN_POINTER__NA_238A28C:
 	.byte 0x00, 0x00, 0x00, 0x00
 
 	.bss

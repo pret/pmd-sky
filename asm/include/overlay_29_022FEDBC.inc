@@ -3,9 +3,12 @@
 .public ActivateFlashFire
 .public CanMonsterUseMove
 .public ChooseAiMove
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__022FED98
 .public EntityIsValid__023000E4
+.public EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST
+.public EXCL_ITEM_EFFECTS_WEATHER_MOVE_SPEED_BOOST
 .public ExclusiveItemEffectFlagTest
 .public GetApparentWeather
 .public GetMobilityType
@@ -29,9 +32,6 @@
 .public ov29_02318D58
 .public ov29_02322374
 .public ov29_02344B44
-.public ov29_02353538
-.public ov29_023535B0
-.public ov29_023535B8
 .public ov29_0237C9B8
 .public SetActionPassTurnOrWalk
 .public SetActionUseMovePlayer

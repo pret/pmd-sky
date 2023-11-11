@@ -70002,7 +70002,7 @@ sub_020449AC: ; 0x020449AC
 	bl sub_020584FC
 	b _02044A30
 _020449E8:
-	ldr r1, _02044ADC ; =ov29_02353538
+	ldr r1, _02044ADC ; =DUNGEON_PTR
 	add r0, r6, #0x2e
 	ldr r1, [r1]
 	add r0, r0, #0x700
@@ -70040,7 +70040,7 @@ _02044A4C:
 	add r1, r0, #0x3e
 	b _02044A8C
 _02044A70:
-	ldr r0, _02044ADC ; =ov29_02353538
+	ldr r0, _02044ADC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -70071,7 +70071,7 @@ _02044ACC:
 	bl sub_0203083C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02044ADC: .word ov29_02353538
+_02044ADC: .word DUNGEON_PTR
 _02044AE0: .word 0x00000A3D
 _02044AE4: .word 0x00000A37
 _02044AE8: .word _0209CB6C
@@ -70108,7 +70108,7 @@ sub_02044AEC: ; 0x02044AEC
 	bl sub_020449AC
 	b _02044BEC
 _02044B5C:
-	ldr r0, _02044BF4 ; =ov29_02353538
+	ldr r0, _02044BF4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
@@ -70150,7 +70150,7 @@ _02044BEC:
 	str r4, [r7, #0x930]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02044BF4: .word ov29_02353538
+_02044BF4: .word DUNGEON_PTR
 	arm_func_end sub_02044AEC
 
 	arm_func_start sub_02044BF8
@@ -70218,7 +70218,7 @@ _02044CCC:
 _02044CD8:
 	mov r5, r4
 _02044CDC:
-	ldr r0, _020451A0 ; =ov29_02353538
+	ldr r0, _020451A0 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -70334,7 +70334,7 @@ _02044E28:
 	bl sub_020584FC
 	b _02044EC4
 _02044E8C:
-	ldr r3, _020451A0 ; =ov29_02353538
+	ldr r3, _020451A0 ; =DUNGEON_PTR
 	add r0, r5, r6
 	ldr r3, [r3]
 	ldrb r0, [r0, #0x18]
@@ -70359,7 +70359,7 @@ _02044EC4:
 	bl strcpy
 	b _020450A8
 _02044EE8:
-	ldr r0, _020451A0 ; =ov29_02353538
+	ldr r0, _020451A0 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, fp, lsl #2
 	add r0, r0, #0x12000
@@ -70367,7 +70367,7 @@ _02044EE8:
 	bl sub_0204533C
 	cmp r0, #0
 	beq _020450F4
-	ldr r0, _020451A0 ; =ov29_02353538
+	ldr r0, _020451A0 ; =DUNGEON_PTR
 	ldr r2, [r0]
 	ldr r0, _020451AC ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r0]
@@ -70546,7 +70546,7 @@ _02045194:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0204519C: .word 0x00000728
-_020451A0: .word ov29_02353538
+_020451A0: .word DUNGEON_PTR
 _020451A4: .word 0x000003E7
 _020451A8: .word _0209CBA8
 _020451AC: .word TEAM_MEMBER_TABLE_PTR
@@ -70723,7 +70723,7 @@ _020453C0:
 	mvn r0, #0
 	ldmia sp!, {r4, pc}
 _020453C8:
-	ldr r0, _020453F4 ; =ov29_02353538
+	ldr r0, _020453F4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
@@ -70736,7 +70736,7 @@ _020453EC:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020453F4: .word ov29_02353538
+_020453F4: .word DUNGEON_PTR
 	arm_func_end sub_02045360
 
 	arm_func_start sub_020453F8
@@ -167403,13 +167403,13 @@ _0209995C:
 	.byte 0x91, 0x00, 0x00, 0x00
 	.word _020997D4
 #else
-	.word _020997D8
+	.word _020997CC
 	.byte 0x96, 0x00, 0x00, 0x00
-	.word _020997DC
+	.word _020997D0
 	.byte 0x97, 0x00, 0x00, 0x00
 	.word _020997C4
 	.byte 0xBA, 0x00, 0x00, 0x00
-	.word _020997D0
+	.word _020997C0
 	.byte 0x8D, 0x00, 0x00, 0x00
 	.word _020997D4
 	.byte 0xBF, 0x00, 0x00, 0x00
@@ -182709,9 +182709,10 @@ _020AF5E8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _020AF694
 _020AF694:
-	.byte 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0xFF, 0x00, 0x00, 0x00
 
 #ifdef EUROPE
+	.byte 0x00, 0x00, 0x00, 0x00
 	.word _02092EBC
 	.word _02092EA8
 	.word _02092ED0

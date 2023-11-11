@@ -1,6 +1,7 @@
 #pragma once
 .public BoostIQ
 .public ChangeDungeonMusic
+.public DUNGEON_PTR
 .public EntityIsValid__022EF7A0
 .public EntityIsValid__022F0590
 .public IsFloorOver
@@ -14,7 +15,6 @@
 .public ov29_0234BA54
 .public ov29_0234D630
 .public ov29_0234D8A0
-.public ov29_02353538
 .public ov29_023535A4
 .public ov29_0237C9A0
 .public sub_0201D198

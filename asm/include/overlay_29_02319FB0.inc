@@ -8,6 +8,7 @@
 .public BoostSpeedOneStage
 .public CanAttackInDirection
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EnemyEvolution
@@ -55,7 +56,6 @@
 .public ov29_02333FD0
 .public ov29_02344B44
 .public ov29_0235171E
-.public ov29_02353538
 .public ov29_0237CA18
 .public ov29_0237CA20
 .public ov29_0237CA28

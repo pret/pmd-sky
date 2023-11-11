@@ -6,6 +6,7 @@
 .public CanMonsterUseMove
 .public DetermineTileWalkableNeighbors
 .public DiscoverMinimap
+.public DUNGEON_PTR
 .public EntityIsValid__02320764
 .public EntityIsValid__02321438
 .public ExclusiveItemEffectIsActiveWithLogging
@@ -39,7 +40,6 @@
 .public ov29_023247B4
 .public ov29_02336694
 .public ov29_023529B8
-.public ov29_02353538
 .public ov29_02353700
 .public ov29_0237C850
 .public RemoveGroundItem

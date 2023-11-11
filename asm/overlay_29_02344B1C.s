@@ -134,7 +134,7 @@ ov29_02344C4C: ; 0x02344C4C
 	mov r8, sb
 	bl IsDestinationFloorWithItem
 	cmp r0, #0
-	ldr r1, _02344E7C ; =ov29_02353538
+	ldr r1, _02344E7C ; =DUNGEON_PTR
 	ldr r0, _02344E80 ; =0x0002C9E8
 	ldr r1, [r1]
 	movne sb, #1
@@ -147,7 +147,7 @@ ov29_02344C4C: ; 0x02344C4C
 	mov r6, r0
 	mov r0, #0x20
 	bl DungeonRandInt
-	ldr r1, _02344E7C ; =ov29_02353538
+	ldr r1, _02344E7C ; =DUNGEON_PTR
 	mov r5, #0
 	ldr r1, [r1]
 	ldr r2, _02344E84 ; =ov29_023531A0
@@ -225,7 +225,7 @@ _02344DB0:
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _02344DE0
-	ldr r0, _02344E7C ; =ov29_02353538
+	ldr r0, _02344E7C ; =DUNGEON_PTR
 	ldr r1, [r0]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -265,7 +265,7 @@ _02344E40:
 	add r5, r5, #1
 	cmp r5, #0x20
 	blt _02344CC8
-	ldr r0, _02344E7C ; =ov29_02353538
+	ldr r0, _02344E7C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3f00
 	ldrsh r2, [r0, #0xc0]
@@ -275,7 +275,7 @@ _02344E40:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02344E7C: .word ov29_02353538
+_02344E7C: .word DUNGEON_PTR
 _02344E80: .word 0x0002C9E8
 _02344E84: .word ov29_023531A0
 	arm_func_end ov29_02344C4C
@@ -522,7 +522,7 @@ _0234515C:
 	bl ov29_0234CCB4
 	b _02345508
 _023451EC:
-	ldr r0, _02345524 ; =ov29_02353538
+	ldr r0, _02345524 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75b]
 	cmp r0, #0
@@ -746,7 +746,7 @@ _02345514: .word 0x00000BD2
 _02345518: .word 0x00000BD3
 _0234551C: .word 0x00001308
 _02345520: .word 0x00000BD6
-_02345524: .word ov29_02353538
+_02345524: .word DUNGEON_PTR
 _02345528: .word 0x00001304
 _0234552C: .word 0x00000BD4
 _02345530: .word 0x00000BD5
@@ -808,7 +808,7 @@ _023455A8:
 	beq _0234563C
 	mov r0, r6
 	bl GetActualBuyPrice
-	ldr r1, _02345694 ; =ov29_02353538
+	ldr r1, _02345694 ; =DUNGEON_PTR
 	ldr r2, [r1]
 	ldr r1, [r2, #0x7bc]
 	add r0, r1, r0
@@ -817,14 +817,14 @@ _023455A8:
 _02345620:
 	mov r0, r6
 	bl GetActualSellPrice
-	ldr r1, _02345694 ; =ov29_02353538
+	ldr r1, _02345694 ; =DUNGEON_PTR
 	ldr r2, [r1]
 	ldr r1, [r2, #0x7c0]
 	add r0, r1, r0
 	str r0, [r2, #0x7c0]
 _0234563C:
 	mov r4, #0
-	ldr r5, _02345694 ; =ov29_02353538
+	ldr r5, _02345694 ; =DUNGEON_PTR
 	mov r6, r4
 _02345648:
 	ldr r0, [r5]
@@ -837,7 +837,7 @@ _02345648:
 	add r6, r6, #1
 	cmp r6, #0x40
 	blt _02345648
-	ldr r0, _02345694 ; =ov29_02353538
+	ldr r0, _02345694 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3f00
 	strh r4, [r0, #0xc0]
@@ -850,5 +850,5 @@ _02345648:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02345690: .word ov29_023537B0
-_02345694: .word ov29_02353538
+_02345694: .word DUNGEON_PTR
 	arm_func_end SpawnItem

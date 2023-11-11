@@ -57,34 +57,34 @@ _022EAC24:
 
 	arm_func_start DungeonRngUnsetSecondary
 DungeonRngUnsetSecondary: ; 0x022EAC34
-	ldr r0, _022EAC48 ; =ov29_02353570
+	ldr r0, _022EAC48 ; =DUNGEON_PRNG_STATE
 	mov r1, #0
 	strb r1, [r0]
 	str r1, [r0, #0x10]
 	bx lr
 	.align 2, 0
-_022EAC48: .word ov29_02353570
+_022EAC48: .word DUNGEON_PRNG_STATE
 	arm_func_end DungeonRngUnsetSecondary
 
 	arm_func_start DungeonRngSetSecondary
 DungeonRngSetSecondary: ; 0x022EAC4C
-	ldr r1, _022EAC60 ; =ov29_02353570
+	ldr r1, _022EAC60 ; =DUNGEON_PRNG_STATE
 	mov r2, #1
 	strb r2, [r1]
 	str r0, [r1, #0x10]
 	bx lr
 	.align 2, 0
-_022EAC60: .word ov29_02353570
+_022EAC60: .word DUNGEON_PRNG_STATE
 	arm_func_end DungeonRngSetSecondary
 
 	arm_func_start DungeonRngSetPrimary
 DungeonRngSetPrimary: ; 0x022EAC64
-	ldr r0, _022EAC74 ; =ov29_02353570
+	ldr r0, _022EAC74 ; =DUNGEON_PRNG_STATE
 	mov r1, #0
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_022EAC74: .word ov29_02353570
+_022EAC74: .word DUNGEON_PRNG_STATE
 	arm_func_end DungeonRngSetPrimary
 
 	arm_func_start ov29_022EAC78
@@ -212,7 +212,7 @@ _022EADA4:
 	cmp r6, #0x1f4
 	blt _022EAD88
 _022EADAC:
-	ldr r0, _022EAE0C ; =ov29_02353538
+	ldr r0, _022EAE0C ; =DUNGEON_PTR
 	mov r1, #0xc
 	ldr r0, [r0]
 	ldr r2, _022EAE10 ; =FIXED_ROOM_PROPERTIES_TABLE
@@ -238,13 +238,13 @@ _022EAE00:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022EAE08: .word 0x00001410
-_022EAE0C: .word ov29_02353538
+_022EAE0C: .word DUNGEON_PTR
 _022EAE10: .word FIXED_ROOM_PROPERTIES_TABLE
 	arm_func_end ov29_022EAD68
 
 	arm_func_start ChangeDungeonMusic
 ChangeDungeonMusic: ; 0x022EAE14
-	ldr r3, _022EAE38 ; =ov29_02353538
+	ldr r3, _022EAE38 ; =DUNGEON_PTR
 	ldr r1, _022EAE3C ; =0x0002CB06
 	ldr ip, [r3]
 	sub r2, r1, #6
@@ -254,14 +254,14 @@ ChangeDungeonMusic: ; 0x022EAE14
 	strh r1, [r0, r2]
 	bx lr
 	.align 2, 0
-_022EAE38: .word ov29_02353538
+_022EAE38: .word DUNGEON_PTR
 _022EAE3C: .word 0x0002CB06
 	arm_func_end ChangeDungeonMusic
 
 	arm_func_start ov29_022EAE40
 ov29_022EAE40: ; 0x022EAE40
 	stmdb sp!, {r4, lr}
-	ldr lr, _022EAEA0 ; =ov29_02353538
+	ldr lr, _022EAEA0 ; =DUNGEON_PTR
 	ldr r2, _022EAEA4 ; =0x0002CB02
 	ldr r4, [lr]
 	ldr r1, _022EAEA8 ; =0x000003E7
@@ -285,7 +285,7 @@ ov29_022EAE40: ; 0x022EAE40
 	strh r1, [r0, #0x96]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EAEA0: .word ov29_02353538
+_022EAEA0: .word DUNGEON_PTR
 _022EAEA4: .word 0x0002CB02
 _022EAEA8: .word 0x000003E7
 	arm_func_end ov29_022EAE40
@@ -295,7 +295,7 @@ ov29_022EAEAC: ; 0x022EAEAC
 	stmdb sp!, {r3, lr}
 	bl sub_02017ACC
 	ldr r0, _022EAEE4 ; =0x0002CB02
-	ldr r2, _022EAEE8 ; =ov29_02353538
+	ldr r2, _022EAEE8 ; =DUNGEON_PTR
 	ldr ip, _022EAEEC ; =0x000003E7
 	ldr r3, [r2]
 	add r1, r0, #2
@@ -308,7 +308,7 @@ ov29_022EAEAC: ; 0x022EAEAC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022EAEE4: .word 0x0002CB02
-_022EAEE8: .word ov29_02353538
+_022EAEE8: .word DUNGEON_PTR
 _022EAEEC: .word 0x000003E7
 	arm_func_end ov29_022EAEAC
 
@@ -322,7 +322,7 @@ _022EAEF8: .word sub_02017D80
 
 	arm_func_start ov29_022EAEFC
 ov29_022EAEFC: ; 0x022EAEFC
-	ldr r0, _022EAF1C ; =ov29_02353538
+	ldr r0, _022EAF1C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x792]
 	cmp r0, #0
@@ -331,33 +331,33 @@ ov29_022EAEFC: ; 0x022EAEFC
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_022EAF1C: .word ov29_02353538
+_022EAF1C: .word DUNGEON_PTR
 	arm_func_end ov29_022EAEFC
 
 	arm_func_start ov29_022EAF20
 ov29_022EAF20: ; 0x022EAF20
-	ldr r0, _022EAF30 ; =ov29_02353538
+	ldr r0, _022EAF30 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x792]
 	bx lr
 	.align 2, 0
-_022EAF30: .word ov29_02353538
+_022EAF30: .word DUNGEON_PTR
 	arm_func_end ov29_022EAF20
 
 	arm_func_start ov29_022EAF34
 ov29_022EAF34: ; 0x022EAF34
-	ldr r1, _022EAF44 ; =ov29_02353538
+	ldr r1, _022EAF44 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x792]
 	bx lr
 	.align 2, 0
-_022EAF44: .word ov29_02353538
+_022EAF44: .word DUNGEON_PTR
 	arm_func_end ov29_022EAF34
 
 	arm_func_start ov29_022EAF48
 ov29_022EAF48: ; 0x022EAF48
 	stmdb sp!, {r4, lr}
-	ldr ip, _022EAFA8 ; =ov29_02353538
+	ldr ip, _022EAFA8 ; =DUNGEON_PTR
 	mov r4, #0
 	ldr r3, [ip]
 	ldr lr, _022EAFAC ; =0x000003E7
@@ -383,14 +383,14 @@ _022EAFA0:
 	bl ov29_022EAE40
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EAFA8: .word ov29_02353538
+_022EAFA8: .word DUNGEON_PTR
 _022EAFAC: .word 0x000003E7
 	arm_func_end ov29_022EAF48
 
 	arm_func_start ov29_022EAFB0
 ov29_022EAFB0: ; 0x022EAFB0
 	stmdb sp!, {r4, lr}
-	ldr r0, _022EB168 ; =ov29_02353538
+	ldr r0, _022EB168 ; =DUNGEON_PTR
 	ldr r3, [r0]
 	cmp r3, #0
 	ldmeqia sp!, {r4, pc}
@@ -511,7 +511,7 @@ _022EB124:
 	str r0, [r4]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022EB168: .word ov29_02353538
+_022EB168: .word DUNGEON_PTR
 _022EB16C: .word 0x000003E7
 _022EB170: .word ov29_023516E8
 _022EB174: .word 0x00007FFF
@@ -772,7 +772,7 @@ _022EB498:
 	blo _022EB4DC
 	cmp r2, #0x94
 	bhs _022EB4DC
-	ldr r0, _022EB4E4 ; =ov29_02353538
+	ldr r0, _022EB4E4 ; =DUNGEON_PTR
 	sub r1, r2, #0x90
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
@@ -785,7 +785,7 @@ _022EB4DC:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022EB4E4: .word ov29_02353538
+_022EB4E4: .word DUNGEON_PTR
 	arm_func_end GetItemToUseByIndex
 
 	arm_func_start ov29_022EB4E8
@@ -834,7 +834,7 @@ ov29_022EB568: ; 0x022EB568
 	ldr r2, [r0, #0xb4]
 	mov r0, #6
 	mla r2, r1, r0, r2
-	ldr r0, _022EB590 ; =ov29_02353538
+	ldr r0, _022EB590 ; =DUNGEON_PTR
 	ldrb r1, [r2, #0x4e]
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
@@ -842,7 +842,7 @@ ov29_022EB568: ; 0x022EB568
 	ldr r0, [r0, #0xb28]
 	bx lr
 	.align 2, 0
-_022EB590: .word ov29_02353538
+_022EB590: .word DUNGEON_PTR
 	arm_func_end ov29_022EB568
 
 	arm_func_start ov29_022EB594
@@ -970,7 +970,7 @@ _022EB71C:
 	ldrb r1, [r4, #1]
 	cmp r1, #0
 	beq _022EB7C8
-	ldr r0, _022EB800 ; =ov29_02353538
+	ldr r0, _022EB800 ; =DUNGEON_PTR
 	sub r1, r1, #1
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
@@ -1029,7 +1029,7 @@ _022EB7F8:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_022EB800: .word ov29_02353538
+_022EB800: .word DUNGEON_PTR
 	arm_func_end ov29_022EB668
 
 	arm_func_start ov29_022EB804
@@ -1512,7 +1512,7 @@ _022EBD60:
 	mov r5, #0
 	b _022EBECC
 _022EBD80:
-	ldr r0, _022EC2FC ; =ov29_02353538
+	ldr r0, _022EC2FC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -1528,7 +1528,7 @@ _022EBD80:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _022EBED4
-	ldr r1, _022EC2FC ; =ov29_02353538
+	ldr r1, _022EC2FC ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	str r4, [r1, #0xc4]
@@ -1538,7 +1538,7 @@ _022EBD80:
 	mov r0, r4
 	strb r1, [r6, #0x14e]
 	bl CalcSpeedStageWrapper
-	ldr r1, _022EC2FC ; =ov29_02353538
+	ldr r1, _022EC2FC ; =DUNGEON_PTR
 	ldr r3, _022EC300 ; =FRACTIONAL_TURN_SEQUENCE
 	ldr r2, [r1]
 	mov r1, #0x32
@@ -1622,7 +1622,7 @@ _022EBEE4:
 	add fp, sp, #0
 	mov r6, #0
 _022EBF18:
-	ldr r0, _022EC2FC ; =ov29_02353538
+	ldr r0, _022EC2FC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, sl, lsl #2
 	add r0, r0, #0x12000
@@ -1696,7 +1696,7 @@ _022EC00C:
 	cmp r0, #0
 	bne _022EC094
 	mov r4, #0
-	ldr r5, _022EC2FC ; =ov29_02353538
+	ldr r5, _022EC2FC ; =DUNGEON_PTR
 	mov r6, r4
 _022EC038:
 	ldr r0, [r5]
@@ -1732,7 +1732,7 @@ _022EC094:
 	mov r7, sb
 	ldr r6, _022EC300 ; =FRACTIONAL_TURN_SEQUENCE
 	mov fp, #0x32
-	ldr r4, _022EC2FC ; =ov29_02353538
+	ldr r4, _022EC2FC ; =DUNGEON_PTR
 	b _022EC1C0
 _022EC0BC:
 	ldr r0, [r4]
@@ -1809,7 +1809,7 @@ _022EC1C8:
 	cmp r0, #0
 	bne _022EC23C
 	mov r4, #0
-	ldr r5, _022EC2FC ; =ov29_02353538
+	ldr r5, _022EC2FC ; =DUNGEON_PTR
 	mov r6, r4
 _022EC1E0:
 	ldr r0, [r5]
@@ -1840,7 +1840,7 @@ _022EC23C:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _022EC2F4
-	ldr r4, _022EC2FC ; =ov29_02353538
+	ldr r4, _022EC2FC ; =DUNGEON_PTR
 	ldr r1, _022EC304 ; =ov29_023522B6
 	ldr r0, [r4]
 	add r0, r0, #0x700
@@ -1876,7 +1876,7 @@ _022EC2AC:
 	mov r0, #0
 	bl TryForcedLoss
 _022EC2C4:
-	ldr r1, _022EC2FC ; =ov29_02353538
+	ldr r1, _022EC2FC ; =DUNGEON_PTR
 	ldr r0, [r1]
 	add r0, r0, #0x700
 	ldrsh r2, [r0, #0x80]
@@ -1892,7 +1892,7 @@ _022EC2F4:
 	add sp, sp, #0x40
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EC2FC: .word ov29_02353538
+_022EC2FC: .word DUNGEON_PTR
 _022EC300: .word FRACTIONAL_TURN_SEQUENCE
 _022EC304: .word ov29_023522B6
 	arm_func_end RunFractionalTurn
@@ -1909,7 +1909,7 @@ RunLeaderTurn: ; 0x022EC308
 	bl TryActivateArtificialWeatherAbilities
 	mov r0, r4
 	bl CalcSpeedStageWrapper
-	ldr r1, _022EC600 ; =ov29_02353538
+	ldr r1, _022EC600 ; =DUNGEON_PTR
 	ldr r3, _022EC604 ; =FRACTIONAL_TURN_SEQUENCE
 	ldr r2, [r1]
 	mov r1, #0x32
@@ -1939,7 +1939,7 @@ _022EC380:
 	bl DisplayActions
 	cmp r0, #0
 	bne _022EC3C8
-	ldr r0, _022EC600 ; =ov29_02353538
+	ldr r0, _022EC600 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x78b]
 	cmp r0, #0
@@ -1966,7 +1966,7 @@ _022EC3E8:
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r0, _022EC600 ; =ov29_02353538
+	ldr r0, _022EC600 ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r2, [r0]
 	cmp sl, #0
@@ -1985,12 +1985,12 @@ _022EC434:
 	bl ov29_022E81F8
 	mov r0, sb
 	bl EnemyEvolution
-	ldr r0, _022EC600 ; =ov29_02353538
+	ldr r0, _022EC600 ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x11]
 	bl SetLeaderAction
-	ldr r0, _022EC600 ; =ov29_02353538
+	ldr r0, _022EC600 ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	strb r1, [r0, #0x11]
@@ -2019,7 +2019,7 @@ _022EC434:
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r4, _022EC600 ; =ov29_02353538
+	ldr r4, _022EC600 ; =DUNGEON_PTR
 	ldr r1, [r4]
 	ldrb r0, [r1, #0x10]
 	cmp r0, #0
@@ -2076,13 +2076,13 @@ _022EC59C:
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldr r0, _022EC600 ; =ov29_02353538
+	ldr r0, _022EC600 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0xc8]
 	cmp r0, #0
 	beq _022EC5DC
 	bl ChangeLeader
-	ldr r0, _022EC600 ; =ov29_02353538
+	ldr r0, _022EC600 ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	mov sl, #1
@@ -2099,6 +2099,6 @@ _022EC5DC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EC600: .word ov29_02353538
+_022EC600: .word DUNGEON_PTR
 _022EC604: .word FRACTIONAL_TURN_SEQUENCE
 	arm_func_end RunLeaderTurn
