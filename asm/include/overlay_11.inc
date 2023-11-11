@@ -6,9 +6,6 @@
 .public _020A1870
 .public _020A548A
 .public _020A5490
-.public _020D020C
-.public _020F0090
-.public _02130214
 .public abs
 .public AddBulkItemToStorage
 .public AddItemToBagNoHeld

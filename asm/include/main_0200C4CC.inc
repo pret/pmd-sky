@@ -66,7 +66,6 @@
 .public ov00_022C23EC
 .public ov00_022C2450
 .public ov00_022C24DC
-.public ov00_022E2A78
 .public ov01_02337B3C
 .public ov01_02337BA0
 .public ov01_02337C54
@@ -94,6 +93,7 @@
 .public ov11_0230D92C
 .public ov11_02310BDC
 .public ov11_02310C18
+.public ov29_022E2A78
 .public ov29_022EA62C
 .public ov29_023002F0
 .public ov29_02347100

@@ -18167,7 +18167,7 @@ _02333CA0:
 	eor r5, r2
 	ldr r2, [sp, #0x40]
 	add r5, r2, r5
-	ldr r2, _0233401C ; =_021AC7F4
+	ldr r2, _0233401C ; =0x021AC7F4
 	sub r2, r5, r2
 	add r1, r1, r2
 	lsl r2, r1, #0x17
@@ -18559,7 +18559,7 @@ _02333CA0:
 _02334010: .word 0x0005C6BE
 _02334014: .word 0x788E097F
 _02334018: .word 0x6D9D6122
-_0233401C: .word _021AC7F4
+_0233401C: .word 0x021AC7F4
 _02334020: .word 0x5B4115BC
 _02334024: .word 0x4BDECFA9
 _02334028: .word 0x0944B4A0
