@@ -15,10 +15,6 @@ ov08_0233CA80: ; 0x0233CA80
 	mov r3, #0
 	str r0, [r1]
 	str r3, [r0]
-	arm_func_end ov08_0233CA80
-
-	arm_func_start ov08_0233CAA8
-ov08_0233CAA8: ; 0x0233CAA8
 	ldr r0, [r1]
 	mov r2, #1
 	str r3, [r0, #4]
@@ -31,10 +27,6 @@ ov08_0233CAA8: ; 0x0233CAA8
 	ldr r0, [r1]
 	strb r2, [r0, #0xd]
 	bl ov08_02003B94
-	arm_func_end ov08_0233CAA8
-
-	arm_func_start ov08_0233CAD8
-ov08_0233CAD8: ; 0x0233CAD8
 	ldr r0, _0233CAFC ; =ov08_0233EC20
 	ldr r1, [r0]
 	ldrh r0, [r1, #8]
@@ -46,7 +38,7 @@ ov08_0233CAD8: ; 0x0233CAD8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0233CAFC: .word ov08_0233EC20
-	arm_func_end ov08_0233CAD8
+	arm_func_end ov08_0233CA80
 
 	arm_func_start ov08_0233CB00
 ov08_0233CB00: ; 0x0233CB00

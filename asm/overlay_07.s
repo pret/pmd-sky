@@ -15,10 +15,6 @@ ov07_0233CA80: ; 0x0233CA80
 	str r2, [r0]
 	ldr r0, [r1]
 	str r2, [r0, #4]
-	arm_func_end ov07_0233CA80
-
-	arm_func_start ov07_0233CAA8
-ov07_0233CAA8: ; 0x0233CAA8
 	ldr r0, [r1]
 	strb r2, [r0, #8]
 	ldr r0, [r1]
@@ -28,7 +24,7 @@ ov07_0233CAA8: ; 0x0233CAA8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233CAC4: .word ov07_02341B80
-	arm_func_end ov07_0233CAA8
+	arm_func_end ov07_0233CA80
 
 #ifndef EUROPE
 	arm_func_start ov07_0233CAC8

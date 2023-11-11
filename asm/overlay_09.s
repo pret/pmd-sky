@@ -15,10 +15,6 @@ ov09_0233CA80: ; 0x0233CA80
 	mov r1, #0
 	str r0, [r2]
 	str r1, [r0, #0x3c]
-	arm_func_end ov09_0233CA80
-
-	arm_func_start ov09_0233CAA8
-ov09_0233CAA8: ; 0x0233CAA8
 	ldr r0, [r2]
 	sub r3, r1, #2
 	strb r3, [r0]
@@ -31,10 +27,6 @@ ov09_0233CAA8: ; 0x0233CAA8
 	strb r3, [r0, #3]
 	ldr r0, [r2]
 	strb r3, [r0, #4]
-	arm_func_end ov09_0233CAA8
-
-	arm_func_start ov09_0233CAD8
-ov09_0233CAD8: ; 0x0233CAD8
 	ldr r0, [r2]
 	ldr r3, _0233CBC0 ; =ov09_0233F664
 	add r6, r0, #0x4c
@@ -50,10 +42,6 @@ _0233CAEC:
 	strh r0, [r6, #2]
 	cmp r1, #0x8d
 	strb r2, [r8], #1
-	arm_func_end ov09_0233CAD8
-
-	arm_func_start ov09_0233CB10
-ov09_0233CB10: ; 0x0233CB10
 	add r6, r6, #4
 	blt _0233CAEC
 	strh r2, [r6]
@@ -66,10 +54,6 @@ ov09_0233CB10: ; 0x0233CB10
 	b _0233CB90
 _0233CB38:
 	ldr r0, [r7]
-	arm_func_end ov09_0233CB10
-
-	arm_func_start ov09_0233CB3C
-ov09_0233CB3C: ; 0x0233CB3C
 	bl sub_0204CA1C
 	cmp r0, #0
 	bne _0233CB8C
@@ -110,7 +94,7 @@ _0233CBB8: .word ov09_0233F7E0
 _0233CBBC: .word ov09_0233F61C
 _0233CBC0: .word ov09_0233F664
 _0233CBC4: .word 0x000004FD
-	arm_func_end ov09_0233CB3C
+	arm_func_end ov09_0233CA80
 
 	arm_func_start ov09_0233CBC8
 ov09_0233CBC8: ; 0x0233CBC8

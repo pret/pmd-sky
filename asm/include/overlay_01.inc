@@ -250,6 +250,7 @@
 .public sub_0201D110
 .public sub_0201D12C
 .public sub_0202065C
+.public sub_0202380C_EU
 .public sub_020245D0
 .public sub_02025404
 .public sub_0202544C

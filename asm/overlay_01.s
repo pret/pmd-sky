@@ -1969,6 +1969,11 @@ _0232ADBC: .word ov01_0233C240
 
 	arm_func_start ov01_0232ADC0
 ov01_0232ADC0: ; 0x0232ADC0
+#ifdef EUROPE
+#define OV01_0232ADC0_LOAD_OFFSET #4
+#else
+#define OV01_0232ADC0_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #0x160
@@ -1976,7 +1981,7 @@ ov01_0232ADC0: ; 0x0232ADC0
 	bl MemAlloc
 	ldr r2, _0232AEC0 ; =ov01_0233C0D8
 	mov r1, #0x160
-	str r0, [r2]
+	str r0, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	bl MemZero
 	ldr r0, _0232AEC4 ; =ov01_0233C580
 	mov r1, #0x200
@@ -1986,37 +1991,37 @@ ov01_0232ADC0: ; 0x0232ADC0
 	bl MemZero
 	ldr r2, _0232AEC0 ; =ov01_0233C0D8
 	mov r3, #1
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	mov r0, #0
 	add r1, r1, #0x100
 	strh r3, [r1, #0x10]
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	mov lr, #0x10
 	str r0, [r1, #0x50]
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	mov ip, #0x1e0
 	str r0, [r1, #0x90]
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	ldr r3, _0232AECC ; =0x00000708
 	str r0, [r1, #0xd0]
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	str r0, [r1, #0x14c]
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	str lr, [r1, #0x150]
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	str r0, [r1, #0x138]
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	str r0, [r1, #0x148]
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	str ip, [r1, #0x13c]
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	str r3, [r1, #0x140]
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	mov r3, r0
 	str r0, [r1, #0x158]
 	b _0232AE88
 _0232AE78:
-	ldr r1, [r2]
+	ldr r1, [r2, OV01_0232ADC0_LOAD_OFFSET]
 	add r1, r1, r0, lsl #2
 	str r3, [r1, #0x114]
 	add r0, r0, #1
@@ -2048,7 +2053,11 @@ ov01_0232AED4: ; 0x0232AED4
 	stmdb sp!, {r4, lr}
 	ldr r1, _0232AF38 ; =ov01_0233C0D8
 	mov r4, r0
+#ifdef EUROPE
+	ldr r1, [r1, #4]
+#else
 	ldr r1, [r1]
+#endif
 	ldr r0, _0232AF3C ; =ov01_0232B600
 	str r4, [r1, #0x18]
 	bl ov01_02329BB8
@@ -2069,7 +2078,11 @@ _0232AF14:
 _0232AF24:
 	ldr r0, _0232AF38 ; =ov01_0233C0D8
 	mov r1, #1
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	strb r1, [r0, #0x15e]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -2120,7 +2133,11 @@ _0232AFA8:
 	arm_func_start ov01_0232AFB0
 ov01_0232AFB0: ; 0x0232AFB0
 	ldr r0, _0232AFC0 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	ldrb r0, [r0, #0xf]
 	bx lr
 	.align 2, 0
@@ -2129,9 +2146,14 @@ _0232AFC0: .word ov01_0233C0D8
 
 	arm_func_start ov01_0232AFC4
 ov01_0232AFC4: ; 0x0232AFC4
+#ifdef EUROPE
+#define OV01_0232AFC4_LOAD_OFFSET #4
+#else
+#define OV01_0232AFC4_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232B008 ; =ov01_0233C0D8
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232AFC4_LOAD_OFFSET]
 	ldr r0, [r0, #0x18]
 	cmp r0, #1
 	bne _0232AFF8
@@ -2139,12 +2161,12 @@ ov01_0232AFC4: ; 0x0232AFC4
 	cmp r0, #0
 	ldrne r1, _0232B008 ; =ov01_0233C0D8
 	movne r0, #1
-	ldrne r1, [r1]
+	ldrne r1, [r1, OV01_0232AFC4_LOAD_OFFSET]
 	strneb r0, [r1, #0x11]
 	ldmneia sp!, {r3, pc}
 _0232AFF8:
 	ldr r0, _0232B008 ; =ov01_0233C0D8
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232AFC4_LOAD_OFFSET]
 	ldrb r0, [r0, #0x11]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -2154,7 +2176,11 @@ _0232B008: .word ov01_0233C0D8
 	arm_func_start ov01_0232B00C
 ov01_0232B00C: ; 0x0232B00C
 	ldr r0, _0232B01C ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	ldrb r0, [r0, #0x13]
 	bx lr
 	.align 2, 0
@@ -2165,9 +2191,15 @@ _0232B01C: .word ov01_0233C0D8
 ov01_0232B020: ; 0x0232B020
 	ldr r1, _0232B03C ; =ov01_0233C0D8
 	mov r3, #0
+#ifdef EUROPE
+	ldr r2, [r1, #4]
+	strb r3, [r2, #0xe]
+	ldr r1, [r1, #4]
+#else
 	ldr r2, [r1]
 	strb r3, [r2, #0xe]
 	ldr r1, [r1]
+#endif
 	str r0, [r1, #0x13c]
 	bx lr
 	.align 2, 0
@@ -2179,7 +2211,11 @@ ov01_0232B040: ; 0x0232B040
 	stmdb sp!, {r3, lr}
 	ldr r1, _0232B064 ; =ov01_0233C0D8
 	mov r2, #0
+#ifdef EUROPE
+	ldr r1, [r1, #4]
+#else
 	ldr r1, [r1]
+#endif
 	cmp r0, #0
 	strb r2, [r1, #0x11]
 	ldmeqia sp!, {r3, pc}
@@ -2193,7 +2229,11 @@ _0232B064: .word ov01_0233C0D8
 ov01_0232B068: ; 0x0232B068
 	ldr r0, _0232B07C ; =ov01_0233C0D8
 	mov r1, #0
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	strb r1, [r0, #0x13]
 	bx lr
 	.align 2, 0
@@ -2202,44 +2242,49 @@ _0232B07C: .word ov01_0233C0D8
 
 	arm_func_start ov01_0232B080
 ov01_0232B080: ; 0x0232B080
+#ifdef EUROPE
+#define OV01_0232B080_LOAD_OFFSET #4
+#else
+#define OV01_0232B080_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232B120 ; =ov01_0233C0D8
 	mov r2, #0
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #8]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #9]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #0xa]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #0xb]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #0xc]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #0xd]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #0xe]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #0xf]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #0x10]
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r0, #0x11]
 	bl ov01_02329530
 	ldr r0, _0232B120 ; =ov01_0233C0D8
 	mov r2, #0
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #0x12]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #0x13]
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r0, #0x14]
 	bl ov01_0232957C
 	ldr r0, _0232B120 ; =ov01_0233C0D8
 	mov r2, #0
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r1, #0x15]
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B080_LOAD_OFFSET]
 	strb r2, [r0, #0x16]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -2248,6 +2293,11 @@ _0232B120: .word ov01_0233C0D8
 
 	arm_func_start ov01_0232B124
 ov01_0232B124: ; 0x0232B124
+#ifdef EUROPE
+#define OV01_0232B124_LOAD_OFFSET #4
+#else
+#define OV01_0232B124_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r0, #2
@@ -2255,7 +2305,7 @@ ov01_0232B124: ; 0x0232B124
 	mov r4, r2
 	bl ov01_0232C1D8
 	ldr r0, _0232B188 ; =ov01_0233C0D8
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B124_LOAD_OFFSET]
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	bne _0232B160
@@ -2269,10 +2319,10 @@ _0232B160:
 _0232B168:
 	ldr r0, _0232B188 ; =ov01_0233C0D8
 	mov r3, #1
-	ldr r2, [r0]
+	ldr r2, [r0, OV01_0232B124_LOAD_OFFSET]
 	mov r1, #0x3c
 	strb r3, [r2, #0x10]
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B124_LOAD_OFFSET]
 	str r1, [r0, #0x144]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -2283,7 +2333,11 @@ _0232B188: .word ov01_0233C0D8
 ov01_0232B18C: ; 0x0232B18C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232B200 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r1, [r0, #4]
+#else
 	ldr r1, [r0]
+#endif
 	ldrb r0, [r1, #0x15e]
 	cmp r0, #0
 	beq _0232B1E8
@@ -2309,7 +2363,11 @@ _0232B1DC:
 _0232B1E8:
 	ldr r0, _0232B200 ; =ov01_0233C0D8
 	mov r1, #0
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	strb r1, [r0, #0x15e]
 	bl ov01_02329AA8
 	ldmia sp!, {r3, pc}
@@ -2325,7 +2383,11 @@ ov01_0232B210: ; 0x0232B210
 	stmdb sp!, {r4, lr}
 	ldr r1, _0232B264 ; =ov01_0233C0D8
 	mov r4, r0
+#ifdef EUROPE
+	ldr r1, [r1, #4]
+#else
 	ldr r1, [r1]
+#endif
 	ldrb r0, [r1, #0x15e]
 	cmp r0, #0
 	beq _0232B24C
@@ -2358,14 +2420,22 @@ ov01_0232B26C: ; 0x0232B26C
 	add r0, sp, #0
 	bl ov00_022BF3E0
 	ldr r0, _0232B2C8 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	ldreqh r0, [sp]
 	cmpeq r0, #9
 	beq _0232B2B4
 	ldr r0, _0232B2C8 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	ldr r0, [r0, #0x18]
 	cmp r0, #1
 	ldreqh r0, [sp]
@@ -2385,9 +2455,14 @@ _0232B2C8: .word ov01_0233C0D8
 
 	arm_func_start ov01_0232B2CC
 ov01_0232B2CC: ; 0x0232B2CC
+#ifdef EUROPE
+#define OV01_0232B2CC_LOAD_OFFSET #4
+#else
+#define OV01_0232B2CC_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232B370 ; =ov01_0233C0D8
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B2CC_LOAD_OFFSET]
 	ldrb r0, [r1, #0x15e]
 	cmp r0, #0
 	beq _0232B30C
@@ -2405,7 +2480,7 @@ _0232B300:
 _0232B30C:
 	bl ov01_02329544
 	ldr r0, _0232B370 ; =ov01_0233C0D8
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B2CC_LOAD_OFFSET]
 	ldrb r0, [r0, #0x15e]
 	cmp r0, #0
 	beq _0232B338
@@ -2417,17 +2492,17 @@ _0232B30C:
 _0232B338:
 	ldr r0, _0232B370 ; =ov01_0233C0D8
 	mov r1, #0
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B2CC_LOAD_OFFSET]
 	strb r1, [r0, #0x15e]
 	bl ov01_02329830
 	bl ov01_0232C370
 	bl ov01_0232C10C
 	ldr r0, _0232B370 ; =ov01_0233C0D8
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B2CC_LOAD_OFFSET]
 	bl MemFree
 	ldr r0, _0232B370 ; =ov01_0233C0D8
 	mov r1, #0
-	str r1, [r0]
+	str r1, [r0, OV01_0232B2CC_LOAD_OFFSET]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232B370: .word ov01_0233C0D8
@@ -2467,17 +2542,22 @@ _0232B3C4:
 
 	arm_func_start ov01_0232B3CC
 ov01_0232B3CC: ; 0x0232B3CC
+#ifdef EUROPE
+#define OV01_0232B3CC_LOAD_OFFSET #4
+#else
+#define OV01_0232B3CC_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232B41C ; =ov01_0233C0D8
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B3CC_LOAD_OFFSET]
 	ldrb r0, [r0, #0x10]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl ov01_0232B380
 	ldr r1, _0232B41C ; =ov01_0233C0D8
-	ldr r2, [r1]
+	ldr r2, [r1, OV01_0232B3CC_LOAD_OFFSET]
 	str r0, [r2, #0x14c]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B3CC_LOAD_OFFSET]
 	ldr r0, [r0, #0x14c]
 	add r0, r0, #2
 	mov r0, r0, lsl #0x10
@@ -2493,6 +2573,11 @@ _0232B41C: .word ov01_0233C0D8
 
 	arm_func_start ov01_0232B420
 ov01_0232B420: ; 0x0232B420
+#ifdef EUROPE
+#define OV01_0232B420_LOAD_OFFSET #4
+#else
+#define OV01_0232B420_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	movs r5, r2
@@ -2508,15 +2593,15 @@ ov01_0232B420: ; 0x0232B420
 	ble _0232B498
 	ldr ip, _0232B530 ; =ov01_0233C0D8
 	mov lr, #0
-	ldr r3, [ip]
+	ldr r3, [ip, OV01_0232B420_LOAD_OFFSET]
 	ldr r2, _0232B534 ; =ov01_0233AE78
 	str r0, [r3]
-	ldr r6, [ip]
+	ldr r6, [ip, OV01_0232B420_LOAD_OFFSET]
 	mov r3, r0
 	add r0, r6, #0x100
 	strh r1, [r0, #0x30]
 	stmia sp, {r1, lr}
-	ldr r0, [ip]
+	ldr r0, [ip, OV01_0232B420_LOAD_OFFSET]
 	ldr r1, _0232B538 ; =0x0000044C
 	add r0, r0, #0x1c
 	bl ov00_022C2FAC
@@ -2527,14 +2612,14 @@ _0232B498:
 	cmp r4, #0
 	ble _0232B4B8
 	ldr r0, _0232B530 ; =ov01_0233C0D8
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B420_LOAD_OFFSET]
 	str r5, [r1, #4]
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B420_LOAD_OFFSET]
 	add r0, r0, #0x100
 	strh r4, [r0, #0x32]
 _0232B4B8:
 	ldr r0, _0232B530 ; =ov01_0233C0D8
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B420_LOAD_OFFSET]
 	ldr r0, [r1, #0x18]
 	cmp r0, #0
 	moveq r0, #1
@@ -2544,7 +2629,7 @@ _0232B4B8:
 	bl ov00_022C2EF0
 	ldr r0, _0232B530 ; =ov01_0233C0D8
 	ldr r1, _0232B53C ; =ov01_0232B9E8
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B420_LOAD_OFFSET]
 	add r0, r0, #0x100
 	ldrh r0, [r0, #0x10]
 	bl ov00_022C3008
@@ -2552,7 +2637,7 @@ _0232B4B8:
 	beq _0232B518
 	ldr r0, _0232B530 ; =ov01_0233C0D8
 	mov r1, #1
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B420_LOAD_OFFSET]
 	strb r1, [r0, #0xb]
 	bl ov01_0232BD98
 	mov r0, #1
@@ -2582,7 +2667,11 @@ ov01_0232B540: ; 0x0232B540
 	mov r0, #0
 	bhs _0232B5C0
 	ldr r1, _0232B5C8 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r3, [r1, #4]
+#else
 	ldr r3, [r1]
+#endif
 	ldrb r1, [r3, #0xb]
 	cmp r1, #0
 	beq _0232B5C0
@@ -2597,7 +2686,11 @@ ov01_0232B540: ; 0x0232B540
 	bl MemcpySimple
 	ldr r0, _0232B5C8 ; =ov01_0233C0D8
 	add r1, r5, #1
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	strb r1, [sp]
 	add r0, r0, #0x100
 	ldrh r0, [r0, #0x10]
@@ -2617,7 +2710,11 @@ _0232B5CC: .word ov01_0232B8A8
 	arm_func_start ov01_0232B5D0
 ov01_0232B5D0: ; 0x0232B5D0
 	ldr r2, _0232B5FC ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r2, [r2, #4]
+#else
 	ldr r2, [r2]
+#endif
 	cmp r2, #0
 	beq _0232B5F4
 	cmp r0, #4
@@ -2634,11 +2731,16 @@ _0232B5FC: .word ov01_0233C0D8
 
 	arm_func_start ov01_0232B600
 ov01_0232B600: ; 0x0232B600
+#ifdef EUROPE
+#define OV01_0232B600_LOAD_OFFSET #4
+#else
+#define OV01_0232B600_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl ov01_02329B18
 	ldr r1, _0232B8A0 ; =ov01_0233C0D8
-	ldr r3, [r1]
+	ldr r3, [r1, OV01_0232B600_LOAD_OFFSET]
 	cmp r3, #0
 	ldmeqia sp!, {r4, pc}
 	ldrh r2, [r4]
@@ -2667,16 +2769,16 @@ _0232B658:
 	bne _0232B884
 	ldr r0, _0232B8A0 ; =ov01_0233C0D8
 	mov r3, #1
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B600_LOAD_OFFSET]
 	mov r2, #0
 	strb r3, [r1, #8]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B600_LOAD_OFFSET]
 	strb r3, [r1, #9]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B600_LOAD_OFFSET]
 	strb r3, [r1, #0xf]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B600_LOAD_OFFSET]
 	strb r2, [r1, #0x15c]
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B600_LOAD_OFFSET]
 	strb r2, [r0, #0x15d]
 	b _0232B884
 _0232B6A8:
@@ -2691,12 +2793,12 @@ _0232B6A8:
 _0232B6C8:
 	mov r2, #1
 	strb r2, [r3, #0x15]
-	ldr r2, [r1]
+	ldr r2, [r1, OV01_0232B600_LOAD_OFFSET]
 	mov r3, #0
 	strb r3, [r2, #0xd]
-	ldr r2, [r1]
+	ldr r2, [r1, OV01_0232B600_LOAD_OFFSET]
 	strb r3, [r2, #0x15c]
-	ldr r2, [r1]
+	ldr r2, [r1, OV01_0232B600_LOAD_OFFSET]
 	ldrb r1, [r2, #0xb]
 	cmp r1, #1
 	bne _0232B884
@@ -2714,7 +2816,7 @@ _0232B710:
 _0232B71C:
 	ldr r0, _0232B8A0 ; =ov01_0233C0D8
 	mov r1, #0
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B600_LOAD_OFFSET]
 	strb r1, [r0, #0x15d]
 	b _0232B884
 _0232B730:
@@ -2745,13 +2847,13 @@ _0232B77C:
 	b _0232B884
 _0232B788:
 	str r2, [r3, #0x154]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B600_LOAD_OFFSET]
 	mov r1, #1
 	strb r1, [r0, #0x14]
 	b _0232B884
 _0232B79C:
 	str r2, [r3, #0x154]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B600_LOAD_OFFSET]
 	mov r1, #1
 	strb r1, [r0, #0x14]
 	b _0232B884
@@ -2770,20 +2872,20 @@ _0232B7D0:
 	cmp r0, #0
 	ldreq r0, _0232B8A0 ; =ov01_0233C0D8
 	moveq r1, #0xc
-	ldreq r0, [r0]
+	ldreq r0, [r0, OV01_0232B600_LOAD_OFFSET]
 	streq r1, [r0, #0x158]
 	b _0232B884
 _0232B7F0:
 	mov ip, #1
 	strb ip, [r3, #0x11]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B600_LOAD_OFFSET]
 	ldrh r2, [r4, #0x10]
 	add r0, r0, #0x100
 	ldrh r3, [r0, #0x24]
 	mvn r2, ip, lsl r2
 	and r2, r3, r2
 	strh r2, [r0, #0x24]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B600_LOAD_OFFSET]
 	add r0, r0, #0x100
 	ldrh r1, [r0, #0x24]
 	strh r1, [r0, #0x10]
@@ -2793,31 +2895,31 @@ _0232B828:
 	bne _0232B884
 	mov lr, #1
 	strb lr, [r3, #8]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B600_LOAD_OFFSET]
 	mov r2, #0
 	strb lr, [r0, #9]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B600_LOAD_OFFSET]
 	strb lr, [r0, #0xf]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B600_LOAD_OFFSET]
 	ldrh r3, [r4, #0x10]
 	add r0, r0, #0x100
 	ldrh ip, [r0, #0x24]
 	orr r3, ip, lr, lsl r3
 	strh r3, [r0, #0x24]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B600_LOAD_OFFSET]
 	add r0, r0, #0x100
 	ldrh r3, [r0, #0x24]
 	strh r3, [r0, #0x10]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B600_LOAD_OFFSET]
 	strb r2, [r0, #0x15c]
-	ldr r0, [r1]
+	ldr r0, [r1, OV01_0232B600_LOAD_OFFSET]
 	strb r2, [r0, #0x15d]
 _0232B884:
 	ldrh r0, [r4, #8]
 	cmp r0, #9
 	ldreq r0, _0232B8A0 ; =ov01_0233C0D8
 	moveq r1, #1
-	ldreq r0, [r0]
+	ldreq r0, [r0, OV01_0232B600_LOAD_OFFSET]
 	streqb r1, [r0, #0x11]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -2828,11 +2930,19 @@ _0232B8A4: .word ov01_0233C380
 	arm_func_start ov01_0232B8A8
 ov01_0232B8A8: ; 0x0232B8A8
 	ldr r0, _0232B8CC ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r2, [r0, #4]
+#else
 	ldr r2, [r0]
+#endif
 	cmp r2, #0
 	movne r1, #1
 	strneb r1, [r2, #0x15]
+#ifdef EUROPE
+	ldrne r0, [r0, #4]
+#else
 	ldrne r0, [r0]
+#endif
 	movne r1, #0
 	strneb r1, [r0, #0xd]
 	bx lr
@@ -2842,10 +2952,15 @@ _0232B8CC: .word ov01_0233C0D8
 
 	arm_func_start ov01_0232B8D0
 ov01_0232B8D0: ; 0x0232B8D0
+#ifdef EUROPE
+#define OV01_0232B8D0_LOAD_OFFSET #4
+#else
+#define OV01_0232B8D0_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r3, lr}
 	ldr r3, _0232B958 ; =ov01_0233C0D8
 	mov ip, r0
-	ldr r3, [r3]
+	ldr r3, [r3, OV01_0232B8D0_LOAD_OFFSET]
 	cmp r3, #0
 	cmpne r1, #0
 	ldmeqia sp!, {r3, pc}
@@ -2857,7 +2972,7 @@ ov01_0232B8D0: ; 0x0232B8D0
 	mov r2, ip
 	bl ov00_022C2F68
 	ldr r0, _0232B958 ; =ov01_0233C0D8
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B8D0_LOAD_OFFSET]
 	ldrb r0, [r1, #0x15c]
 	cmp r0, #0
 	movne r0, #1
@@ -2870,7 +2985,7 @@ _0232B92C:
 	strb r0, [r3, #0x12]
 	ldr r3, _0232B958 ; =ov01_0233C0D8
 	cmp r2, #0x200
-	ldr r3, [r3]
+	ldr r3, [r3, OV01_0232B8D0_LOAD_OFFSET]
 	ldr r0, _0232B95C ; =ov01_0233C580
 	movhi r2, #0x200
 	add r3, r3, #0x100
@@ -2884,9 +2999,14 @@ _0232B95C: .word ov01_0233C580
 
 	arm_func_start ov01_0232B960
 ov01_0232B960: ; 0x0232B960
+#ifdef EUROPE
+#define OV01_0232B960_LOAD_OFFSET #4
+#else
+#define OV01_0232B960_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232B9E0 ; =ov01_0233C0D8
-	ldr r3, [r0]
+	ldr r3, [r0, OV01_0232B960_LOAD_OFFSET]
 	cmp r3, #0
 	cmpne r1, #0
 	ldmeqia sp!, {r3, pc}
@@ -2897,7 +3017,7 @@ ov01_0232B960: ; 0x0232B960
 	mov r1, r2
 	bl ov00_022C2F8C
 	ldr r0, _0232B9E0 ; =ov01_0233C0D8
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B960_LOAD_OFFSET]
 	ldrb r0, [r1, #0x15c]
 	cmp r0, #0
 	movne r0, #1
@@ -2910,7 +3030,7 @@ _0232B9B4:
 	strb r0, [r3, #0x12]
 	ldr r3, _0232B9E0 ; =ov01_0233C0D8
 	cmp r2, #0x200
-	ldr r3, [r3]
+	ldr r3, [r3, OV01_0232B960_LOAD_OFFSET]
 	ldr r0, _0232B9E4 ; =ov01_0233C580
 	movhi r2, #0x200
 	add r3, r3, #0x100
@@ -2924,6 +3044,11 @@ _0232B9E4: .word ov01_0233C580
 
 	arm_func_start ov01_0232B9E8
 ov01_0232B9E8: ; 0x0232B9E8
+#ifdef EUROPE
+#define OV01_0232B9E8_LOAD_OFFSET #4
+#else
+#define OV01_0232B9E8_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	mov r5, r0
@@ -2931,7 +3056,7 @@ ov01_0232B9E8: ; 0x0232B9E8
 	mov r4, #0
 	bl ov00_022C2D3C
 	ldr r0, _0232BD3C ; =ov01_0233C0D8
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	cmp r0, #0
 	beq _0232BD34
 	mov r3, r4
@@ -2967,7 +3092,7 @@ _0232BA4C: ; jump table
 	b _0232BD34 ; case 11
 _0232BA7C:
 	ldr r0, _0232BD3C ; =ov01_0233C0D8
-	ldr r3, [r0]
+	ldr r3, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	ldr r1, [r3, #0x18]
 	cmp r1, #1
 	bne _0232BB28
@@ -2977,7 +3102,7 @@ _0232BA7C:
 	ldr r2, _0232BD40 ; =ov01_0233C2C0
 	add r1, r3, r4, lsl #2
 	str r2, [r1, #0x50]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	ldr r3, _0232BD44 ; =ov01_0232B9E8
 	add r0, r1, #0x100
 	ldrh r0, [r0, #0x10]
@@ -2987,7 +3112,7 @@ _0232BA7C:
 	cmp r0, #0
 	ldreq r0, _0232BD3C ; =ov01_0233C0D8
 	moveq r1, #1
-	ldreq r0, [r0]
+	ldreq r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	streqb r1, [r0, #0x14]
 	b _0232BD34
 _0232BADC:
@@ -3007,14 +3132,14 @@ _0232BADC:
 	cmp r0, #0
 	ldreq r0, _0232BD3C ; =ov01_0233C0D8
 	moveq r1, #1
-	ldreq r0, [r0]
+	ldreq r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	streqb r1, [r0, #0x14]
 	b _0232BD34
 _0232BB28:
 	ldr r2, _0232BD40 ; =ov01_0233C2C0
 	add r1, r3, r4, lsl #2
 	str r2, [r1, #0x50]
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	ldr r3, _0232BD44 ; =ov01_0232B9E8
 	add r0, r1, #0x100
 	ldrh r0, [r0, #0x10]
@@ -3024,25 +3149,25 @@ _0232BB28:
 	cmp r0, #0
 	ldreq r0, _0232BD3C ; =ov01_0233C0D8
 	moveq r1, #1
-	ldreq r0, [r0]
+	ldreq r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	streqb r1, [r0, #0x14]
 	b _0232BD34
 _0232BB68:
 	ldr r0, _0232BD3C ; =ov01_0233C0D8
 	ldr r3, _0232BD4C ; =ov01_0233C300
-	ldr r2, [r0]
+	ldr r2, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	ldr r1, _0232BD44 ; =ov01_0232B9E8
 	ldr r5, [r2, #4]
 	add r2, r2, r4, lsl #2
 	str r5, [r2, #0x90]
-	ldr r2, [r0]
+	ldr r2, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	add r2, r2, r4, lsl #2
 	str r3, [r2, #0xd0]
-	ldr r2, [r0]
+	ldr r2, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	add r2, r2, #0xd0
 	str r2, [sp]
 	str r1, [sp, #4]
-	ldr r5, [r0]
+	ldr r5, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	add r0, r5, r4, lsl #2
 	ldr r2, [r0, #0x50]
 	add r0, r5, #0x100
@@ -3054,20 +3179,20 @@ _0232BB68:
 	bne _0232BD34
 	ldr r1, _0232BD3C ; =ov01_0233C0D8
 	ldr r0, _0232BD50 ; =0x0000044C
-	ldr r1, [r1]
+	ldr r1, [r1, OV01_0232B9E8_LOAD_OFFSET]
 	mov r2, #1
 	strb r2, [r1, #0x14]
 	bl ov00_022C2FF0
 	b _0232BD34
 _0232BBE4:
 	ldr r1, _0232BD3C ; =ov01_0233C0D8
-	ldr r3, [r1]
+	ldr r3, [r1, OV01_0232B9E8_LOAD_OFFSET]
 	add r0, r3, r4, lsl #2
 	ldr r2, [r0, #0x50]
 	add r0, r3, #0x100
 	ldr r2, [r2, #4]
 	strh r2, [r0, #0x34]
-	ldr r1, [r1]
+	ldr r1, [r1, OV01_0232B9E8_LOAD_OFFSET]
 	ldr r0, [r1, #0x18]
 	cmp r0, #1
 	bne _0232BC80
@@ -3080,7 +3205,7 @@ _0232BBE4:
 	cmp r0, #0
 	ldr r0, _0232BD3C ; =ov01_0233C0D8
 	movne r2, #1
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	strb r2, [sp, #9]
 	add r0, r0, #0x100
 	ldrh r0, [r0, #0x10]
@@ -3089,10 +3214,10 @@ _0232BBE4:
 	cmp r0, #0
 	ldreq r0, _0232BD3C ; =ov01_0233C0D8
 	moveq r1, #1
-	ldreq r0, [r0]
+	ldreq r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	streqb r1, [r0, #0x14]
 	ldr r0, _0232BD3C ; =ov01_0233C0D8
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	add r0, r1, #0x100
 	ldrh r0, [r0, #0x30]
 	cmp r0, #0
@@ -3107,7 +3232,7 @@ _0232BC8C:
 	ldr r0, [r5, #0x14]
 	bl ov00_022C2FF0
 	ldr r0, _0232BD3C ; =ov01_0233C0D8
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	ldr r0, [r1, #0x18]
 	cmp r0, #1
 	moveq r0, #1
@@ -3121,12 +3246,12 @@ _0232BCB0:
 	cmp r0, #0
 	ldreq r0, _0232BD3C ; =ov01_0233C0D8
 	moveq r1, #1
-	ldreq r0, [r0]
+	ldreq r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	streqb r1, [r0, #0x13]
 	beq _0232BD34
 	ldr r0, _0232BD3C ; =ov01_0233C0D8
 	ldr r1, _0232BD44 ; =ov01_0232B9E8
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	add r0, r0, #0x100
 	ldrh r0, [r0, #0x10]
 	bl ov00_022C3008
@@ -3138,7 +3263,7 @@ _0232BCF4:
 	bhs _0232BD34
 	ldr r0, _0232BD3C ; =ov01_0233C0D8
 	sub r1, r1, #1
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232B9E8_LOAD_OFFSET]
 	add r0, r0, r1, lsl #2
 	ldr r2, [r0, #0x114]
 	cmp r2, #0
@@ -3164,7 +3289,11 @@ _0232BD50: .word 0x0000044C
 ov01_0232BD54: ; 0x0232BD54
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232BD90 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r3, [r0, #4]
+#else
 	ldr r3, [r0]
+#endif
 	cmp r3, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _0232BD94 ; =ov01_0233C380
@@ -3186,7 +3315,11 @@ _0232BD94: .word ov01_0233C380
 ov01_0232BD98: ; 0x0232BD98
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232BDD4 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r3, [r0, #4]
+#else
 	ldr r3, [r0]
+#endif
 	cmp r3, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _0232BDD8 ; =ov01_0233C380
@@ -3207,7 +3340,11 @@ _0232BDD8: .word ov01_0233C380
 	arm_func_start ov01_0232BDDC
 ov01_0232BDDC: ; 0x0232BDDC
 	ldr r0, _0232BDEC ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	ldrb r0, [r0, #0xc]
 	bx lr
 	.align 2, 0
@@ -3218,7 +3355,11 @@ _0232BDEC: .word ov01_0233C0D8
 ov01_0232BDF0: ; 0x0232BDF0
 	ldr r0, _0232BE04 ; =ov01_0233C0D8
 	mov r1, #0
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	strb r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
@@ -3229,7 +3370,11 @@ _0232BE04: .word ov01_0233C0D8
 ov01_0232BE08: ; 0x0232BE08
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232BE48 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r1, [r0, #4]
+#else
 	ldr r1, [r0]
+#endif
 	ldrb r0, [r1, #0xc]
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
@@ -3240,7 +3385,11 @@ ov01_0232BE08: ; 0x0232BE08
 	cmp r0, #0
 	ldrne r0, _0232BE48 ; =ov01_0233C0D8
 	movne r1, #0x1e
+#ifdef EUROPE
+	ldrne r0, [r0, #4]
+#else
 	ldrne r0, [r0]
+#endif
 	strne r1, [r0, #0x148]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -3251,7 +3400,11 @@ _0232BE48: .word ov01_0233C0D8
 ov01_0232BE4C: ; 0x0232BE4C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232BE94 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r1, [r0, #4]
+#else
 	ldr r1, [r0]
+#endif
 	ldrb r0, [r1, #0xc]
 	cmp r0, #0
 	movne r0, #1
@@ -3274,9 +3427,14 @@ _0232BE94: .word ov01_0233C0D8
 
 	arm_func_start ov01_0232BE98
 ov01_0232BE98: ; 0x0232BE98
+#ifdef EUROPE
+#define OV01_0232BE98_LOAD_OFFSET #4
+#else
+#define OV01_0232BE98_LOAD_OFFSET #0
+#endif
 	stmdb sp!, {r3, lr}
 	ldr r0, _0232C004 ; =ov01_0233C0D8
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232BE98_LOAD_OFFSET]
 	cmp r1, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [r1, #0x158]
@@ -3287,7 +3445,7 @@ ov01_0232BE98: ; 0x0232BE98
 	subgt r0, r0, #1
 	strgt r0, [r1, #0x144]
 	ldr r0, _0232C004 ; =ov01_0233C0D8
-	ldr r3, [r0]
+	ldr r3, [r0, OV01_0232BE98_LOAD_OFFSET]
 	ldr r2, [r3, #0x148]
 	cmp r2, #0
 	ble _0232BF24
@@ -3296,7 +3454,7 @@ ov01_0232BE98: ; 0x0232BE98
 	bne _0232BF24
 	sub r1, r2, #1
 	str r1, [r3, #0x148]
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232BE98_LOAD_OFFSET]
 	ldr r0, [r0, #0x148]
 	cmp r0, #0
 	bgt _0232BF24
@@ -3305,13 +3463,13 @@ ov01_0232BE98: ; 0x0232BE98
 	beq _0232BF24
 	ldr r0, _0232C004 ; =ov01_0233C0D8
 	mov r2, #1
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232BE98_LOAD_OFFSET]
 	strb r2, [r1, #0xc]
-	ldr r0, [r0]
+	ldr r0, [r0, OV01_0232BE98_LOAD_OFFSET]
 	str r2, [r0, #0x158]
 _0232BF24:
 	ldr r0, _0232C004 ; =ov01_0233C0D8
-	ldr r3, [r0]
+	ldr r3, [r0, OV01_0232BE98_LOAD_OFFSET]
 	ldr r1, [r3, #0x158]
 	cmp r1, #2
 	beq _0232BFF8
@@ -3321,7 +3479,7 @@ _0232BF24:
 	ldr r1, [r3, #0x138]
 	add r1, r1, #1
 	str r1, [r3, #0x138]
-	ldr r3, [r0]
+	ldr r3, [r0, OV01_0232BE98_LOAD_OFFSET]
 	ldrb r1, [r3, #0xe]
 	cmp r1, #0
 	bne _0232BFA8
@@ -3329,7 +3487,7 @@ _0232BF24:
 	sub r1, r2, #1
 	str r1, [r3, #0x13c]
 	cmp r2, #0
-	ldrlt r0, [r0]
+	ldrlt r0, [r0, OV01_0232BE98_LOAD_OFFSET]
 	movlt r1, #0xa
 	strlt r1, [r0, #0x158]
 	b _0232BFA8
@@ -3341,7 +3499,7 @@ _0232BF80:
 	sub r1, r2, #1
 	str r1, [r3, #0x140]
 	cmp r2, #0
-	ldrlt r0, [r0]
+	ldrlt r0, [r0, OV01_0232BE98_LOAD_OFFSET]
 	movlt r1, #5
 	strlt r1, [r0, #0x158]
 _0232BFA8:
@@ -3349,11 +3507,11 @@ _0232BFA8:
 	cmp r0, #0
 	ldrne r0, _0232C004 ; =ov01_0233C0D8
 	movne r1, #0xc
-	ldrne r0, [r0]
+	ldrne r0, [r0, OV01_0232BE98_LOAD_OFFSET]
 	strne r1, [r0, #0x158]
 	bne _0232BFF8
 	ldr r0, _0232C004 ; =ov01_0233C0D8
-	ldr r1, [r0]
+	ldr r1, [r0, OV01_0232BE98_LOAD_OFFSET]
 	ldrb r0, [r1, #0x14]
 	cmp r0, #0
 	movne r0, #0xc
@@ -3363,7 +3521,7 @@ _0232BFA8:
 	cmp r0, #0
 	ldrne r0, _0232C004 ; =ov01_0233C0D8
 	movne r1, #0xc
-	ldrne r0, [r0]
+	ldrne r0, [r0, OV01_0232BE98_LOAD_OFFSET]
 	strne r1, [r0, #0x158]
 _0232BFF8:
 	bl ov01_0232B3CC
@@ -3376,7 +3534,11 @@ _0232C004: .word ov01_0233C0D8
 	arm_func_start ov01_0232C008
 ov01_0232C008: ; 0x0232C008
 	ldr r0, _0232C020 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	cmp r0, #0
 	moveq r0, #0
 	ldrne r0, [r0, #0x158]
@@ -3388,7 +3550,11 @@ _0232C020: .word ov01_0233C0D8
 	arm_func_start ov01_0232C024
 ov01_0232C024: ; 0x0232C024
 	ldr r0, _0232C03C ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r1, [r0, #4]
+#else
 	ldr r1, [r0]
+#endif
 	cmp r1, #0
 	movne r0, #0
 	strne r0, [r1, #0x158]
@@ -3400,7 +3566,11 @@ _0232C03C: .word ov01_0233C0D8
 	arm_func_start ov01_0232C040
 ov01_0232C040: ; 0x0232C040
 	ldr r1, _0232C078 ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r1, [r1, #4]
+#else
 	ldr r1, [r1]
+#endif
 	cmp r1, #0
 	bxeq lr
 	cmp r0, #0
@@ -3411,7 +3581,11 @@ ov01_0232C040: ; 0x0232C040
 _0232C064:
 	ldr r0, _0232C078 ; =ov01_0233C0D8
 	mov r1, #2
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+#else
 	ldr r0, [r0]
+#endif
 	str r1, [r0, #0x158]
 	bx lr
 	.align 2, 0
@@ -3421,7 +3595,11 @@ _0232C078: .word ov01_0233C0D8
 	arm_func_start ov01_0232C07C
 ov01_0232C07C: ; 0x0232C07C
 	ldr r0, _0232C09C ; =ov01_0233C0D8
+#ifdef EUROPE
+	ldr r1, [r0, #4]
+#else
 	ldr r1, [r0]
+#endif
 	cmp r1, #0
 	bxeq lr
 	ldr r1, [r1, #0x158]
@@ -3437,11 +3615,17 @@ ov01_0232C0A0: ; 0x0232C0A0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetLanguage
+#ifdef EUROPE
+	ldr r2, _0232C0C8 ; =ov01_0233C0E0
+	mov r1, #0x14
+	mla r1, r4, r1, r2
+#else
 	mvn r1, #0
 	cmp r0, r1
 	ldr r1, _0232C0C8 ; =ov01_0233C0E0
 	movne r0, #0
 	add r1, r1, r4, lsl #3
+#endif
 	ldr r0, [r1, r0, lsl #2]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -4044,6 +4228,7 @@ _0232C850:
 _0232C8B0: .word 0x0000FFFF
 	arm_func_end ov01_0232C5C8
 
+#ifndef EUROPE
 	arm_func_start ov01_0232C8B4
 ov01_0232C8B4: ; 0x0232C8B4
 	ldr r3, [r0, #4]
@@ -4060,6 +4245,7 @@ ov01_0232C8B4: ; 0x0232C8B4
 	orr r0, r1, r0
 	bx lr
 	arm_func_end ov01_0232C8B4
+#endif
 
 	arm_func_start ov01_0232C8E8
 ov01_0232C8E8: ; 0x0232C8E8
@@ -12211,7 +12397,11 @@ ov01_0233382C: ; 0x0233382C
 	str r1, [sp, #0x28]
 	bl GetAdventureLogCompleted
 	cmp r0, #0
+#ifdef EUROPE
+	addne r0, r4, #0xed
+#else
 	addne r0, r4, #0xeb
+#endif
 	addne r0, r0, #0x3f00
 	movne r0, r0, lsl #0x10
 	movne r6, r0, lsr #0x10
@@ -13644,6 +13834,36 @@ ov01_02334B94: ; 0x02334B94
 
 	arm_func_start ov01_02334BD8
 ov01_02334BD8: ; 0x02334BD8
+#ifdef EUROPE
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	mov r6, #0
+	mov r8, r0
+	mov r7, r1
+	mov r5, r6
+	mov r4, r6
+	b _023353F0
+_023353D8:
+	ldr r1, [r8, #4]
+	mov r0, r4
+	ldr r1, [r1, r5, lsl #2]
+	bl ov01_02335654
+	add r6, r6, r0
+	add r5, r5, #1
+_023353F0:
+	ldr r0, [r8, #0xc]
+	cmp r5, r0
+	blt _023353D8
+	mov r1, r7
+	mov r0, #0
+	bl ov01_02335654
+	ldr r1, [r8, #0x1c]
+	add r0, r6, r0
+	cmp r0, r1
+	movle r0, #1
+	movgt r0, #0
+	and r0, r0, #0xff
+	ldmia sp!, {r4, r5, r6, r7, r8, pc}
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, #0
 	mov r7, r0
@@ -13669,6 +13889,7 @@ _02334C04:
 	movgt r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+#endif
 	arm_func_end ov01_02334BD8
 
 	arm_func_start ov01_02334C34
@@ -13705,8 +13926,16 @@ _02334C94:
 _02334C9C:
 	mov r5, #0
 _02334CA0:
+#ifdef EUROPE
+	mov r3, #0
+	mov r0, r5
+	mov r2, r6
+	str r3, [sp]
+	mov r1, #0x100
+#else
 	mov r0, r5
 	mov r1, r6
+#endif
 	bl strcpy
 	ldr r2, [r7, #0xc]
 	cmp r2, r4
@@ -13874,6 +14103,24 @@ _02334E9C:
 
 	arm_func_start ov01_02334EB4
 ov01_02334EB4: ; 0x02334EB4
+#ifdef EUROPE
+	stmdb sp!, {r4, lr}
+	sub sp, sp, #0x100
+	ldr r2, [r1, #0xc]
+	mov r4, r0
+	cmp r2, #0
+	movle r0, #0
+	strleb r0, [sp]
+	ble _023356D8_EU
+	add r0, sp, #0
+	bl ov01_02334E50
+_023356D8_EU:
+	add r1, sp, #0
+	mov r0, r4
+	bl ov01_02335654
+	add sp, sp, #0x100
+	ldmia sp!, {r4, pc}
+#else
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x104
 	ldr r2, [r1, #0xc]
@@ -13907,6 +14154,7 @@ _02334F04:
 	strh r2, [r5, r1]
 	add sp, sp, #0x104
 	ldmia sp!, {r3, r4, r5, r6, pc}
+#endif
 	arm_func_end ov01_02334EB4
 
 	arm_func_start ov01_02334F2C
@@ -14074,7 +14322,11 @@ _02335150: .word ov01_0233C1A0
 
 	arm_func_start ov01_02335154
 ov01_02335154: ; 0x02335154
+#ifdef EUROPE
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+#endif
 	ldr r1, _02335204 ; =ov01_0233C1A0
 	ldr r2, [r1, #4]
 	ldr r1, [r2, #8]
@@ -14082,7 +14334,11 @@ ov01_02335154: ; 0x02335154
 	beq _02335178
 	cmp r1, #1
 	beq _02335184
+#ifdef EUROPE
+	ldmia sp!, {r4, r5, r6, r7, r8, pc}
+#else
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+#endif
 _02335178:
 	ldr r4, [r2, #0x990]
 	ldr r2, [r4, #0xc]
@@ -14100,6 +14356,31 @@ _0233518C:
 	cmp r0, r2
 	strgt r2, [r4, #0x14]
 _023351AC:
+#ifdef EUROPE
+	ldr r7, [r4, #0x14]
+	ldr r0, [r4, #0xc]
+	mov r8, #0
+	cmp r7, r0
+	mov r5, #0
+	movgt r7, r0
+	mov r6, r8
+	b _023359AC
+_0233598C:
+	ldr r0, [r4, #4]
+	ldr r1, [r0, r8, lsl #2]
+	cmp r1, #0
+	beq _023359B4
+	mov r0, r6
+	bl ov01_02335654
+	add r5, r5, r0
+	add r8, r8, #1
+_023359AC:
+	cmp r8, r7
+	blt _0233598C
+_023359B4:
+	ldr r0, _02335204 ; =ov01_0233C1A0
+	str r5, [r4, #0x18]
+#else
 	ldr r5, [r4, #0x14]
 	ldr r0, [r4, #0xc]
 	mov r7, #0
@@ -14121,10 +14402,15 @@ _023351E4:
 _023351EC:
 	ldr r0, _02335204 ; =ov01_0233C1A0
 	str r7, [r4, #0x18]
+#endif
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
 	bl ov01_02335088
+#ifdef EUROPE
+	ldmia sp!, {r4, r5, r6, r7, r8, pc}
+#else
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+#endif
 	.align 2, 0
 _02335204: .word ov01_0233C1A0
 	arm_func_end ov01_02335154
@@ -14458,13 +14744,24 @@ ov01_0233562C: ; 0x0233562C
 
 	arm_func_start ov01_02335654
 ov01_02335654: ; 0x02335654
+#ifdef EUROPE
+	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+	mov r4, r1
+#else
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
+#endif
 	str r4, [sp]
 	ldrb r1, [r4]
+#ifdef EUROPE
+	mov r6, r0
+#endif
 	mov r5, #0
 	cmp r1, #0x5b
 	bne _0233569C
+#ifdef EUROPE
+	mov r0, r4
+#endif
 	ldr r1, _02335720 ; =ov01_0233BB04
 	bl strcmp
 	cmp r0, #0
@@ -14476,7 +14773,11 @@ ov01_02335654: ; 0x02335654
 	bne _0233569C
 _02335694:
 	mov r0, #1
+#ifdef EUROPE
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+#else
 	ldmia sp!, {r3, r4, r5, pc}
+#endif
 _0233569C:
 	add r4, sp, #0
 	b _02335708
@@ -14491,6 +14792,21 @@ _023356A4:
 	ldreqb r0, [r1, #1]
 	cmpeq r0, #0x3a
 	bne _023356E8
+#ifdef EUROPE
+	add r7, r1, #2
+	mov r0, r7
+	b _023356D8
+_023356D4:
+	add r7, r7, #1
+_023356D8:
+	ldrb r1, [r7]
+	cmp r1, #0x5d
+	bne _023356D4
+	bl sub_0202380C_EU
+	add r1, r7, #1
+	str r1, [sp]
+	b _02335704
+#else
 	add r1, r1, #3
 	b _023356D8
 _023356D4:
@@ -14500,6 +14816,7 @@ _023356D8:
 	cmp r0, #0x5d
 	bne _023356D4
 	b _02335704
+#endif
 _023356E8:
 	mov r0, r4
 	bl sub_0202065C
@@ -14509,14 +14826,29 @@ _023356E8:
 	bne _023356E8
 	b _02335708
 _02335704:
+#ifdef EUROPE
+	cmp r6, #0
+	movne r1, r5, lsl #1
+	strneh r0, [r6, r1]
+#endif
 	add r5, r5, #1
 _02335708:
 	ldr r0, [sp]
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _023356A4
+#ifdef EUROPE
+	cmp r6, #0
+	movne r0, r5, lsl #1
+	movne r1, #0
+	strneh r1, [r6, r0]
+#endif
 	mov r0, r5
+#ifdef EUROPE
+	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+#else
 	ldmia sp!, {r3, r4, r5, pc}
+#endif
 	.align 2, 0
 _02335720: .word ov01_0233BB04
 _02335724: .word ov01_0233BB0C
@@ -14609,6 +14941,7 @@ ov01_0233580C: ; 0x0233580C
 _02335844: .word ov01_0233C1A8
 	arm_func_end ov01_0233580C
 
+#ifndef EUROPE
 	arm_func_start ov01_02335848
 ov01_02335848: ; 0x02335848
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -14673,6 +15006,7 @@ _0233590C:
 	.align 2, 0
 _0233592C: .word ov01_0233C1A8
 	arm_func_end ov01_02335848
+#endif
 
 	arm_func_start ov01_02335930
 ov01_02335930: ; 0x02335930
@@ -16628,10 +16962,6 @@ _023373F8:
 	mov r1, r4
 	ldr r0, [r0]
 	add r0, r0, #0x19
-	arm_func_end ov01_0233723C
-
-	arm_func_start ov01_02337428
-ov01_02337428: ; 0x02337428
 	bl StrcpySimple
 	ldr r0, _02337550 ; =ov01_0233C1AC
 	mov r1, #3
@@ -16719,9 +17049,9 @@ _02337548:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02337550: .word ov01_0233C1AC
-	arm_func_end ov01_02337428
 _02337554: .word ov01_0233CA78
 _02337558: .word ov01_0233755C
+	arm_func_end ov01_0233723C
 
 	arm_func_start ov01_0233755C
 ov01_0233755C: ; 0x0233755C
@@ -18749,12 +19079,14 @@ ov01_02338EB0: ; 0x02338EB0
 _02338EC0: .word ov01_0233C21C
 	arm_func_end ov01_02338EB0
 
-
-
 	arm_func_start ov01_02338EC4
 ov01_02338EC4: ; 0x02338EC4
 	stmdb sp!, {r4, r5, lr}
+#ifdef EUROPE
+	sub sp, sp, #0x274
+#else
 	sub sp, sp, #0x1dc
+#endif
 	ldr r0, _02339804 ; =ov01_0233C21C
 	ldr r4, [r0, #4]
 	bl ov01_023399D8
@@ -18875,13 +19207,21 @@ _02339080:
 	cmp r0, #0
 	bne _023390C8
 	mov r0, #1
+#ifdef EUROPE
+	str r0, [sp, #0x13c]
+#else
 	str r0, [sp, #0xa4]
+#endif
 	ldr r1, _02339808 ; =ov01_0233BE70
 	ldr r0, _02339810 ; =0x0000375E
 	str r1, [sp]
 	str r0, [sp, #4]
 	mov r0, #0
+#ifdef EUROPE
+	add r3, sp, #0x13c
+#else
 	add r3, sp, #0xa4
+#endif
 	mov r1, #8
 	mov r2, #0x33
 	str r0, [sp, #8]
@@ -18936,13 +19276,21 @@ _0233915C:
 	cmp r0, #2
 	bne _023391A8
 	mov r0, #1
+#ifdef EUROPE
+	str r0, [sp, #0xa4]
+#else
 	str r0, [sp, #0xc]
+#endif
 	ldr r1, _02339808 ; =ov01_0233BE70
 	ldr r0, _02339818 ; =0x0000375F
 	str r1, [sp]
 	str r0, [sp, #4]
 	mov r0, #0
+#ifdef EUROPE
+	add r3, sp, #0xa4
+#else
 	add r3, sp, #0xc
+#endif
 	mov r1, #8
 	mov r2, #0x33
 	str r0, [sp, #8]
@@ -18967,8 +19315,26 @@ _023391BC:
 	beq _023397F8
 	cmp r0, #3
 	cmpne r0, #1
+#ifdef EUROPE
+	bne _023397F8
+	mov r0, #1
+	str r0, [sp, #0xc]
+	ldr r1, _02339808 ; =ov01_0233BE70
+	ldr r0, _02339810 ; =0x00003760
+	str r1, [sp]
+	str r0, [sp, #4]
+	mov r0, #0
+	add r3, sp, #0xc
+	mov r1, #8
+	mov r2, #0x33
+	str r0, [sp, #8]
+	bl sub_02046A20
+	mov r0, #3
+	str r0, [r4]
+#else
 	moveq r0, #0x20
 	streq r0, [r4]
+#endif
 	b _023397F8
 _023391F0:
 	mov r0, #0
@@ -19068,8 +19434,13 @@ _0233933C:
 	ldrb r0, [r4, #0x28]
 	cmp r0, #0
 	bne _023397F8
+#ifdef EUROPE
+	ldr r1, _02339F74 ; =0x00003766
+	mov r0, #0x1c
+#else
 	mov r0, #0x1c
 	rsb r1, r0, #0x3780
+#endif
 	mov r2, #0
 	bl sub_02046BE8
 	bl sub_02003BC8
@@ -19266,11 +19637,19 @@ _02339608:
 _02339618:
 	b _02339618
 _0233961C:
+#ifdef EUROPE
+	add r0, sp, #0x224
+#else
 	add r0, sp, #0x18c
+#endif
 	bl InitPreprocessorArgs
 	ldr r0, [r4, #0x38]
 	rsb r0, r0, #0
+#ifdef EUROPE
+	str r0, [sp, #0x248]
+#else
 	str r0, [sp, #0x1b0]
+#endif
 	bl sub_02046BB4
 	ldr r0, [r4, #0x3c]
 	cmp r0, #7
@@ -19295,7 +19674,11 @@ _02339670:
 	mov r1, #0
 	bl ov01_0233A8B4
 	mov r1, r0
+#ifdef EUROPE
+	add r2, sp, #0x224
+#else
 	add r2, sp, #0x18c
+#endif
 	mov r0, #0x1c
 	bl sub_02046BE8
 	mov r0, #0x1b
@@ -19317,7 +19700,11 @@ _023396C0:
 	mov r1, #1
 	bl ov01_0233A8B4
 	mov r1, r0
+#ifdef EUROPE
+	add r2, sp, #0x224
+#else
 	add r2, sp, #0x18c
+#endif
 	mov r0, #0x1c
 	bl sub_02046BE8
 	mov r0, #0x1c
@@ -19332,7 +19719,11 @@ _023396EC:
 	bl ov01_0233A8B4
 	mov r3, r5, lsl #0x10
 	mov r1, r0
+#ifdef EUROPE
+	add r2, sp, #0x224
+#else
 	add r2, sp, #0x18c
+#endif
 	mov r0, r3, lsr #0x10
 	bl sub_02046BE8
 	bl ov01_0232C540
@@ -19373,14 +19764,24 @@ _02339778:
 _02339794:
 	b _02339794
 _02339798:
+#ifdef EUROPE
+	add r0, sp, #0x1d4
+#else
 	add r0, sp, #0x13c
+#endif
 	bl InitPreprocessorArgs
 	ldr r0, [r4, #0x38]
 	ldr r1, _02339834 ; =0x00003785
 	rsb r3, r0, #0
+#ifdef EUROPE
+	add r2, sp, #0x1d4
+	mov r0, #0
+	str r3, [sp, #0x1f8]
+#else
 	add r2, sp, #0x13c
 	mov r0, #0
 	str r3, [sp, #0x160]
+#endif
 	bl sub_02046BE8
 	mov r0, #0x1f
 	str r0, [r4]
@@ -19404,22 +19805,34 @@ _023397E8:
 _023397F8:
 	mov r0, #0
 _023397FC:
+#ifdef EUROPE
+	add sp, sp, #0x274
+#else
 	add sp, sp, #0x1dc
+#endif
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
+#ifdef EUROPE
+#define OV01_02338EC4_OFFSET 2
+#else
+#define OV01_02338EC4_OFFSET 0
+#endif
 _02339804: .word ov01_0233C21C
 _02339808: .word ov01_0233BE70
-_0233980C: .word 0x0000375D
-_02339810: .word 0x0000375E
-_02339814: .word 0x0000375C
-_02339818: .word 0x0000375F
-_0233981C: .word 0x00003761
-_02339820: .word 0x00003765
-_02339824: .word 0x00003762
-_02339828: .word 0x00003763
+_0233980C: .word 0x0000375D + OV01_02338EC4_OFFSET
+_02339810: .word 0x0000375E + OV01_02338EC4_OFFSET
+_02339814: .word 0x0000375C + OV01_02338EC4_OFFSET
+_02339818: .word 0x0000375F + OV01_02338EC4_OFFSET
+_0233981C: .word 0x00003761 + OV01_02338EC4_OFFSET
+_02339820: .word 0x00003765 + OV01_02338EC4_OFFSET
+_02339824: .word 0x00003762 + OV01_02338EC4_OFFSET
+_02339828: .word 0x00003763 + OV01_02338EC4_OFFSET
+#ifdef EUROPE
+_02339F74: .word 0x00003766
+#endif
 _0233982C: .word 0x0000023B
 _02339830: .word 0x00000239
-_02339834: .word 0x00003785
+_02339834: .word 0x00003785 + OV01_02338EC4_OFFSET
 	arm_func_end ov01_02338EC4
 
 	arm_func_start ov01_02339838
@@ -20865,7 +21278,11 @@ _0233AB6C:
 	bgt _0233AB98
 	sub r0, r0, #0x63
 	cmp r5, r0
+#ifdef EUROPE
+	movge r0, #0x3780
+#else
 	ldrge r0, _0233AD9C ; =0x0000377E
+#endif
 	ldmgeia sp!, {r3, r4, r5, pc}
 _0233AB98:
 	ldr r0, _0233ADA0 ; =0xFFFFB17B
@@ -20887,7 +21304,11 @@ _0233ABC4:
 	bgt _0233ABE4
 	sub r0, r0, #0x63
 	cmp r5, r0
+#ifdef EUROPE
+	ldrge r0, _0233B4F8 ; =0x00003782
+#else
 	movge r0, #0x3780
+#endif
 	ldmgeia sp!, {r3, r4, r5, pc}
 _0233ABE4:
 	ldr r0, _0233ADB0 ; =0xFFFEC5D2
@@ -20966,25 +21387,30 @@ _0233ACE4:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0233ACEC: .word 0x00003766
-_0233ACF0: .word 0x00003767
-_0233ACF4: .word 0x00003768
-_0233ACF8: .word 0x00003769
-_0233ACFC: .word 0x0000376A
-_0233AD00: .word 0x0000376B
-_0233AD04: .word 0x0000376C
-_0233AD08: .word 0x0000376D
-_0233AD0C: .word 0x0000376E
-_0233AD10: .word 0x0000376F
-_0233AD14: .word 0x00003770
-_0233AD18: .word 0x00003771
-_0233AD1C: .word 0x00003772
-_0233AD20: .word 0x00003773
+#ifdef EUROPE
+#define OV01_0233A8B4_OFFSET 2
+#else
+#define OV01_0233A8B4_OFFSET 0
+#endif
+_0233ACEC: .word 0x00003766 + OV01_0233A8B4_OFFSET
+_0233ACF0: .word 0x00003767 + OV01_0233A8B4_OFFSET
+_0233ACF4: .word 0x00003768 + OV01_0233A8B4_OFFSET
+_0233ACF8: .word 0x00003769 + OV01_0233A8B4_OFFSET
+_0233ACFC: .word 0x0000376A + OV01_0233A8B4_OFFSET
+_0233AD00: .word 0x0000376B + OV01_0233A8B4_OFFSET
+_0233AD04: .word 0x0000376C + OV01_0233A8B4_OFFSET
+_0233AD08: .word 0x0000376D + OV01_0233A8B4_OFFSET
+_0233AD0C: .word 0x0000376E + OV01_0233A8B4_OFFSET
+_0233AD10: .word 0x0000376F + OV01_0233A8B4_OFFSET
+_0233AD14: .word 0x00003770 + OV01_0233A8B4_OFFSET
+_0233AD18: .word 0x00003771 + OV01_0233A8B4_OFFSET
+_0233AD1C: .word 0x00003772 + OV01_0233A8B4_OFFSET
+_0233AD20: .word 0x00003773 + OV01_0233A8B4_OFFSET
 _0233AD24: .word 0x00000239
-_0233AD28: .word 0x00003774
-_0233AD2C: .word 0x00003775
-_0233AD30: .word 0x00003776
-_0233AD34: .word 0x00003777
+_0233AD28: .word 0x00003774 + OV01_0233A8B4_OFFSET
+_0233AD2C: .word 0x00003775 + OV01_0233A8B4_OFFSET
+_0233AD30: .word 0x00003776 + OV01_0233A8B4_OFFSET
+_0233AD34: .word 0x00003777 + OV01_0233A8B4_OFFSET
 _0233AD38: .word 0xFFFFB1E0
 _0233AD3C: .word 0xFFFFB17C
 _0233AD40: .word 0xFFFFB173
@@ -20995,28 +21421,33 @@ _0233AD50: .word 0xFFFF3414
 _0233AD54: .word 0xFFFF33B4
 _0233AD58: .word 0xFFFF30F8
 _0233AD5C: .word 0xFFFF2FCD
-_0233AD60: .word 0x00003778
+_0233AD60: .word 0x00003778 + OV01_0233A8B4_OFFSET
 _0233AD64: .word 0xFFFFB174
-_0233AD68: .word 0x00003779
-_0233AD6C: .word 0x0000377A
+_0233AD68: .word 0x00003779 + OV01_0233A8B4_OFFSET
+_0233AD6C: .word 0x0000377A + OV01_0233A8B4_OFFSET
 _0233AD70: .word 0xFFFF38C8
 _0233AD74: .word 0xFFFF3860
 _0233AD78: .word 0xFFFF379C
-_0233AD7C: .word 0x0000377B
+_0233AD7C: .word 0x0000377B + OV01_0233A8B4_OFFSET
 _0233AD80: .word 0xFFFF34E0
 _0233AD84: .word 0xFFFF347C
 _0233AD88: .word 0xFFFF3418
-_0233AD8C: .word 0x0000377C
+_0233AD8C: .word 0x0000377C + OV01_0233A8B4_OFFSET
 _0233AD90: .word 0xFFFF3861
-_0233AD94: .word 0x0000377D
+_0233AD94: .word 0x0000377D + OV01_0233A8B4_OFFSET
 _0233AD98: .word 0xFFFF3CB0
+#ifndef EUROPE
 _0233AD9C: .word 0x0000377E
+#endif
 _0233ADA0: .word 0xFFFFB17B
 _0233ADA4: .word 0xFFFFA628
 _0233ADA8: .word 0xFFFFA241
-_0233ADAC: .word 0x0000377F
+_0233ADAC: .word 0x0000377F + OV01_0233A8B4_OFFSET
+#ifdef EUROPE
+_0233B4F8: .word 0x00003782
+#endif
 _0233ADB0: .word 0xFFFEC5D2
-_0233ADB4: .word 0x00003784
+_0233ADB4: .word 0x00003784 + OV01_0233A8B4_OFFSET
 _0233ADB8: .word 0xFFFFA240
 _0233ADBC: .word 0xFFFF9E59
 _0233ADC0: .word 0xFFFF9E58
@@ -21026,9 +21457,9 @@ _0233ADCC: .word 0xFFFF8301
 _0233ADD0: .word 0xFFFF2D10
 _0233ADD4: .word 0xFFFF15A0
 _0233ADD8: .word 0xFFFE7961
-_0233ADDC: .word 0x00003781
-_0233ADE0: .word 0x00003783
-_0233ADE4: .word 0x00003782
+_0233ADDC: .word 0x00003781 + OV01_0233A8B4_OFFSET
+_0233ADE0: .word 0x00003783 + OV01_0233A8B4_OFFSET
+_0233ADE4: .word 0x00003782 + OV01_0233A8B4_OFFSET
 _0233ADE8: .word ov01_0233C088
 	arm_func_end ov01_0233A8B4
 
