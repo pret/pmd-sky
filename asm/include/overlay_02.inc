@@ -11,6 +11,7 @@
 .public ClearIrqFlag
 .public EnableIrqFlag
 .public FileInit
+.public GetLanguage
 .public MemAlloc
 .public memcmp
 .public memcpy
