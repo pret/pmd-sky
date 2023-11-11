@@ -2625,7 +2625,7 @@ LoadItemPspi2n: ; 0x0200E6D8
 #ifdef EUROPE
 	bl GetLanguage
 	mov r2, r0
-	ldr r1, _0200E800 ; =0x020AFF88
+	ldr r1, _0200E800 ; =_020AFF88_EU
 	add r0, sp, #8
 	ldr r2, [r1, r2, lsl #2]
 	ldr r1, _0200E75C ; =_02098070
@@ -2656,7 +2656,7 @@ _0200E754: .word ITEM_DATA_TABLE_PTRS
 #endif
 _0200E758: .word _020AF6C8
 #ifdef EUROPE
-_0200E800: .word 0x020AFF88
+_0200E800: .word _020AFF88_EU
 #endif
 _0200E75C: .word _02098070
 	arm_func_end LoadItemPspi2n
@@ -25459,21 +25459,21 @@ sub_0202059C: ; 0x0202059C
 	mvn r0, #0
 	cmp r4, r0
 	ldmeqia sp!, {r4, pc}
-	ldr r1, _02020680 ; =0x020B05A8
-	ldr r0, _02020684 ; =0x02099C04
+	ldr r1, _02020680 ; =LANGUAGE_INFO_DATA
+	ldr r0, _02020684 ; =_02099C04_EU
 	ldrsb r1, [r1]
 	mov r2, r4
 	bl DebugPrint0
-	ldr r1, _02020680 ; =0x020B05A8
+	ldr r1, _02020680 ; =LANGUAGE_INFO_DATA
 	mov r0, r4
 	strb r4, [r1]
 	bl sub_020206C0_EU
-	ldr r1, _02020680 ; =0x020B05A8
+	ldr r1, _02020680 ; =LANGUAGE_INFO_DATA
 	strb r0, [r1, #1]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02020680: .word 0x020B05A8
-_02020684: .word 0x02099C04
+_02020680: .word LANGUAGE_INFO_DATA
+_02020684: .word _02099C04_EU
 #else
 	bx lr
 #endif
@@ -25515,14 +25515,14 @@ sub_020206C0_EU: ; 0x020206C0
 	cmp r0, #0
 	blt _020206D8_EU
 	cmp r0, #5
-	ldrlt r1, _020206E0_EU ; =0x02099BF0
+	ldrlt r1, _020206E0_EU ; =_02099BF0_EU
 	ldrltsb r0, [r1, r0]
 	bxlt lr
 _020206D8_EU:
 	mvn r0, #0
 	bx lr
 	.align 2, 0
-_020206E0_EU: .word 0x02099BF0
+_020206E0_EU: .word _02099BF0_EU
 	arm_func_end sub_020206C0_EU
 #endif
 
@@ -25762,10 +25762,10 @@ sub_0202088C: ; 0x0202088C
 #ifdef EUROPE
 	stmdb sp!, {r3, lr}
 	bl GetLanguage
-	ldr r1, _020209E0 ; =0x020B05B0
+	ldr r1, _020209E0 ; =_020B05B0_EU
 	mov r2, r0, lsl #1
 	ldrh r2, [r1, r2]
-	ldr r1, _020209E4 ; =0x020B05AC
+	ldr r1, _020209E4 ; =_020B05AC_EU
 	cmp r0, #2
 	strh r2, [r1]
 	strh r2, [r1, #2]
@@ -25773,8 +25773,8 @@ sub_0202088C: ; 0x0202088C
 	streqh r0, [r1]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020209E0: .word 0x020B05B0
-_020209E4: .word 0x020B05AC
+_020209E0: .word _020B05B0_EU
+_020209E4: .word _020B05AC_EU
 #else
 	bx lr
 #endif
@@ -26669,11 +26669,11 @@ _020213F4:
 	blx r1
 	b _02021AA0
 _0202155C:
-	ldr r1, _020220C4 ; =0x02099E64
+	ldr r1, _020220C4 ; =_02099E64_EU
 	bl StrcmpTag
 	cmp r0, #0
 	beq _02021598
-	ldr r1, _020220C8 ; =0x020B05AC
+	ldr r1, _020220C8 ; =_020B05AC_EU
 	ldr r0, [r4, #0x54]
 	ldrh r3, [r1]
 	ldr r1, [r4, #0x90]
@@ -26933,7 +26933,7 @@ _02021728:
 	cmp r0, #0
 	beq _02021764
 #ifdef EUROPE
-	ldr r1, _020220C8 ; =0x020B05AC
+	ldr r1, _020220C8 ; =_020B05AC_EU
 	ldr r0, [r4, #0x54]
 	ldrh r3, [r1, #2]
 #else
@@ -27499,8 +27499,8 @@ _02021EF4: .word _020999F0
 _02021EF8: .word _020999F4
 _02021EFC: .word _020999F8
 #ifdef EUROPE
-_020220C4: .word 0x02099E64
-_020220C8: .word 0x020B05AC
+_020220C4: .word _02099E64_EU
+_020220C8: .word _020B05AC_EU
 #endif
 _02021F00: .word _020999FC
 _02021F04: .word _02099A00
@@ -27706,7 +27706,7 @@ _0202212C:
 #ifdef EUROPE
 	cmp r0, #0
 	bne _020221D8
-	ldr r1, _020225D0 ; =0x02099E64
+	ldr r1, _020225D0 ; =_02099E64_EU
 	mov r0, r6
 	bl StrcmpTag
 #endif
@@ -27869,7 +27869,7 @@ _020223CC: .word _02099A2C
 _020223D0: .word _02099A14
 _020223D4: .word _02099A18
 #ifdef EUROPE
-_020225D0: .word 0x02099E64
+_020225D0: .word _02099E64_EU
 #endif
 _020223D8: .word _02099A08
 _020223DC: .word _020997E4
@@ -29239,7 +29239,7 @@ sub_02023610: ; 0x02023610
 	bl GetLanguageType
 	cmp r0, #5
 	moveq r1, #1
-	ldr r0, _02023864 ; =0x020B05BC
+	ldr r0, _02023864 ; =_020B05BC_EU
 	movne r1, #0
 #endif
 	ldr r6, _02023644 ; =_022A5048
@@ -29260,7 +29260,7 @@ _02023624:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 #ifdef EUROPE
-_02023864: .word 0x020B05BC
+_02023864: .word _020B05BC_EU
 #endif
 _02023644: .word _022A5048
 _02023648: .word _02099CA0
@@ -29367,7 +29367,7 @@ sub_0202372C: ; 0x0202372C
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 #ifdef EUROPE
-_02023784: .word 0x0209A230
+_02023784: .word _0209A230_EU
 #else
 _02023784: .word _02099D0C
 #endif
@@ -29416,7 +29416,7 @@ sub_020237B4: ; 0x020237B4
 	mov r1, #3
 	bl __divsi3
 _02023A38:
-	ldr r1, _02023B14 ; =0x020B05BC
+	ldr r1, _02023B14 ; =_020B05BC_EU
 	ldrb r1, [r1]
 	cmp r1, #0
 	beq _02023A50
@@ -29553,8 +29553,8 @@ _020238BC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 #ifdef EUROPE
-_020238C8: .word 0x0209A230
-_02023B14: .word 0x020B05BC
+_020238C8: .word _0209A230_EU
+_02023B14: .word _020B05BC_EU
 #else
 _020238C8: .word _02099D0C
 #endif
@@ -30609,7 +30609,7 @@ sub_02024598: ; 0x02024598
 	bmi _02024828
 	bl GetLanguage
 	mov r2, r0
-	ldr r1, _0202484C ; =0x020B05D4
+	ldr r1, _0202484C ; =_020B05D4_EU
 	mov r0, r5
 	ldr r1, [r1, r2, lsl #3]
 	mov r2, r4
@@ -30618,7 +30618,7 @@ sub_02024598: ; 0x02024598
 _02024828:
 	bl GetLanguage
 	mov r2, r0
-	ldr r1, _02024850 ; =0x020B05D8
+	ldr r1, _02024850 ; =_020B05D8_EU
 	mov r0, r5
 	ldr r1, [r1, r2, lsl #3]
 	rsb r2, r4, #0
@@ -30627,8 +30627,8 @@ _02024844:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0202484C: .word 0x020B05D4
-_02024850: .word 0x020B05D8
+_0202484C: .word _020B05D4_EU
+_02024850: .word _020B05D8_EU
 #else
 	stmdb sp!, {r4, lr}
 	movs r2, r1
@@ -30661,7 +30661,7 @@ sub_02024854_EU: ; 0x02024854
 	mov r4, r3
 	cmp ip, #2
 	bgt _02024884
-	ldr r1, _020248DC ; =0x0209A2C4
+	ldr r1, _020248DC ; =_02099DC0
 	mov r2, r5
 	bl SprintfStatic__0202378C
 	b _020248D4
@@ -30673,7 +30673,7 @@ _02024884:
 	beq _020248B8
 	mov r1, r4
 	bl sub_02024598
-	ldr r1, _020248E0 ; =0x0209A2D4
+	ldr r1, _020248E0 ; =_0209A2D4_EU
 	add r3, sp, #0
 	mov r0, r6
 	mov r2, r5
@@ -30682,7 +30682,7 @@ _02024884:
 _020248B8:
 	rsb r1, r4, #0
 	bl sub_02024598
-	ldr r1, _020248E0 ; =0x0209A2D4
+	ldr r1, _020248E0 ; =_0209A2D4_EU
 	add r3, sp, #0
 	mov r0, r6
 	mov r2, r5
@@ -30691,8 +30691,8 @@ _020248D4:
 	add sp, sp, #0x40
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020248DC: .word 0x0209A2C4
-_020248E0: .word 0x0209A2D4
+_020248DC: .word _02099DC0
+_020248E0: .word _0209A2D4_EU
 	arm_func_end sub_02024854_EU
 #endif
 
@@ -31340,8 +31340,8 @@ sub_02025010_EU: ; 0x02025010
 	mov r5, r0
 	mov r4, r1
 	bl GetLanguage
-	ldr r2, _02025040 ; =0x020B05C0
-	ldr r1, _02025044 ; =0x0209A2F4
+	ldr r2, _02025040 ; =_020B05C0_EU
+	ldr r1, _02025044 ; =_0209A2F4_EU
 	ldr r2, [r2, r0, lsl #2]
 	mov r0, r5
 	mov r3, r4
@@ -31349,8 +31349,8 @@ sub_02025010_EU: ; 0x02025010
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02025040: .word 0x020B05C0
-_02025044: .word 0x0209A2F4
+_02025040: .word _020B05C0_EU
+_02025044: .word _0209A2F4_EU
 	arm_func_end sub_02025010_EU
 #endif
 
@@ -32645,7 +32645,7 @@ sub_02025C7C: ; 0x02025C7C
 	ldr r2, _02025D40 ; =_022A7A54
 	cmp r0, r1
 	ldr r1, [r2, r4, lsl #2]
-	ldreq r0, _02026024 ; =0x0209B09C
+	ldreq r0, _02026024 ; =_0209B09C_EU
 	ldmeqia sp!, {r4, pc}
 	cmp r0, #0xf800
 #else
@@ -32709,7 +32709,7 @@ _0202601C_EU: .word 0x000082BD
 #endif
 _02025D40: .word _022A7A54
 #ifdef EUROPE
-_02026024: .word 0x0209B09C
+_02026024: .word _0209B09C_EU
 #endif
 _02025D44: .word 0x0000FFFF
 _02025D48: .word _022A7A64
@@ -87896,10 +87896,10 @@ LoadM2nAndN2m: ; 0x02052BD4
 #ifdef EUROPE
 	bl GetLanguage
 	mov r2, r0
-	ldr r1, _02052FA8 ; =0x020B12F4
+	ldr r1, _02052FA8 ; =_020B12F4_EU
 	add r0, sp, #0
 	ldr r2, [r1, r2, lsl #2]
-	ldr r1, _02052FAC ; =0x020A3834
+	ldr r1, _02052FAC ; =_020A3210
 	bl SprintfStatic__02052418
 #endif
 	ldr r0, _02052C2C ; =_020B09C8
@@ -87920,10 +87920,10 @@ _02052C00:
 	beq _02052F9C
 	bl GetLanguage
 	mov r2, r0
-	ldr r1, _02052FB4 ; =0x020B1308
+	ldr r1, _02052FB4 ; =_020B1308_EU
 	add r0, sp, #0
 	ldr r2, [r1, r2, lsl #2]
-	ldr r1, _02052FAC ; =0x020A3834
+	ldr r1, _02052FAC ; =_020A3210
 	bl SprintfStatic__02052418
 #else
 	ldmeqia sp!, {r3, pc}
@@ -87946,14 +87946,14 @@ _02052F9C:
 	.align 2, 0
 _02052C2C: .word _020B09C8
 #ifdef EUROPE
-_02052FA8: .word 0x020B12F4
-_02052FAC: .word 0x020A3834
+_02052FA8: .word _020B12F4_EU
+_02052FAC: .word _020A3210
 #else
 _02052C30: .word _020A3210
 #endif
 _02052C34: .word _020B09D0
 #ifdef EUROPE
-_02052FB4: .word 0x020B1308
+_02052FB4: .word _020B1308_EU
 #else
 _02052C38: .word _020A322C
 #endif
@@ -114838,7 +114838,7 @@ _02068BF4:
 	ldrne r1, _02068E6C ; =0x00003820
 	strh r1, [r8, #8]
 	ldrsb r1, [r0, #0x13]
-	ldr r0, _02068E70 ; =0x020B1483
+	ldr r0, _02068E70 ; =_020B0B3F
 	str r1, [r7, #8]
 	str r0, [r7, #0xef0]
 #else
@@ -167158,11 +167158,16 @@ _02099784:
 _020997A4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00
 #ifdef EUROPE
+	.global _02099BF0_EU
+_02099BF0_EU:
 	.byte 0x01, 0x02, 0x03, 0x04, 0x05, 0x00, 0x00, 0x00
 	.global _020997B4
 _020997B4:
 	.byte 0xFF, 0x00, 0x01, 0x02
-	.byte 0x03, 0x04, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x73, 0x65, 0x74, 0x20, 0x6C, 0x61, 0x6E, 0x67
+	.byte 0x03, 0x04, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00
+	.global _02099C04_EU
+_02099C04_EU:
+	.byte 0x73, 0x65, 0x74, 0x20, 0x6C, 0x61, 0x6E, 0x67
 	.byte 0x20, 0x6D, 0x6F, 0x64, 0x65, 0x20, 0x28, 0x25, 0x64, 0x29, 0x2D, 0x3E, 0x28, 0x25, 0x64, 0x29
 	.byte 0x0A, 0x00, 0x00, 0x00
 #else
@@ -167480,6 +167485,8 @@ _020999F4:
 _020999F8:
 	.byte 0x46, 0x54, 0x00, 0x00
 #ifdef EUROPE
+	.global _02099E64_EU
+_02099E64_EU:
 	.byte 0x47, 0x50, 0x00, 0x00
 #endif
 	.global _020999FC
@@ -167809,7 +167816,10 @@ _0209A208:
 	.global _0209A21C
 _0209A21C:
 	.byte 0x45, 0x2E, 0x20, 0x2D, 0x5B, 0x43, 0x53, 0x3A, 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D
-	.byte 0x00, 0x00, 0x00, 0x00, 0x25, 0x64, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _0209A230_EU
+_0209A230_EU:
+	.byte 0x25, 0x64, 0x00, 0x00
 	.global _02099D10
 _02099D10:
 	.byte 0x5B, 0x4D, 0x53, 0x3A, 0x25, 0x64, 0x5D, 0x25
@@ -167856,12 +167866,17 @@ _02099D90:
 _02099DC0:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x50, 0x5D, 0x25, 0x73
 	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+	.global _0209A2D4_EU
+_0209A2D4_EU:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x50, 0x5D, 0x25, 0x73
 	.byte 0x5B, 0x43, 0x52, 0x5D, 0x20, 0x25, 0x73, 0x00
 	.global _02099E08
 _02099E08:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x58, 0x5D, 0x25, 0x73
-	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00, 0x25, 0x73, 0x20, 0x25, 0x64, 0x00, 0x00, 0x00
+	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+	.global _0209A2F4_EU
+_0209A2F4_EU:
+	.byte 0x25, 0x73, 0x20, 0x25, 0x64, 0x00, 0x00, 0x00
 #else
 	.byte 0x25, 0x64, 0x00, 0x00
 	.global _02099D10
@@ -168211,6 +168226,8 @@ _0209AB60:
 	.byte 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03
 	.byte 0xFF, 0x03, 0xFF, 0x03, 0x00, 0x00, 0x00, 0x00
 #ifdef EUROPE
+	.global _0209B09C_EU
+_0209B09C_EU:
 	.byte 0xBD, 0x82, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 #endif
@@ -182712,7 +182729,11 @@ _020AF694:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
 #ifdef EUROPE
+	.global _020AFF38_EU
+_020AFF38_EU:
 	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020AFF3C_EU
+_020AFF3C_EU:
 	.word _02092EBC
 	.word _02092EA8
 	.word _02092ED0
@@ -182759,6 +182780,8 @@ _020AF6C4:
 _020AF6C8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 #ifdef EUROPE
+	.global _020AFF88_EU
+_020AFF88_EU:
 	.word _02098404
 	.word _02098434
 	.word _02098424
@@ -183032,17 +183055,29 @@ _020AFCE4:
 LANGUAGE_INFO_DATA:
 #ifdef EUROPE
 	.byte 0x00, 0x01, 0x00, 0x00
+	.global _020B05AC_EU
+_020B05AC_EU:
 	.byte 0x2C, 0x00, 0x2C, 0x00
+	.global _020B05B0_EU
+_020B05B0_EU:
 	.byte 0x2C, 0x00, 0x20, 0x00
 	.byte 0x20, 0x00, 0x2E, 0x00
 	.byte 0x20, 0x00, 0x00, 0x00
+	.global _020B05BC_EU
+_020B05BC_EU:
 	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020B05C0_EU
+_020B05C0_EU:
 	.word _0209A118_EU
 	.word _0209A110_EU
 	.word _0209A118_EU
 	.word _0209A10C_EU
 	.word _0209A11C_EU
+	.global _020B05D4_EU
+_020B05D4_EU:
 	.word _0209A1A8
+	.global _020B05D8_EU
+_020B05D8_EU:
 	.word _0209A1C8
 	.word _0209A1F8
 	.word _0209A21C
@@ -183519,11 +183554,15 @@ _020B09D0:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 #ifdef EUROPE
+	.global _020B12F4_EU
+_020B12F4_EU:
 	.word _020A32DC
 	.word _020A328C_EU
 	.word _020A329C
 	.word _020A32AC
 	.word _020A32BC
+	.global _020B1308_EU
+_020B1308_EU:
 	.word _020A32CC
 	.word _020A32EC
 	.word _020A32FC

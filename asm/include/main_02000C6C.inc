@@ -337,3 +337,5 @@
 .public sub_02085180
 .public vsprintf
 .public WaitForInterrupt
+.public _020AFF38_EU
+.public _020AFF3C_EU
