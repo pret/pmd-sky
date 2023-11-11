@@ -61,12 +61,8 @@
 .public OS_IRQTable
 .public OSi_ReferSymbol
 .public ov00_022BE0C8
-.public ov00_022C2340
-.public ov00_022C23B0
-.public ov00_022C23EC
-.public ov00_022C2450
-.public ov00_022C24DC
 .public ov01_02337B3C
+.public ov01_02337B68
 .public ov01_02337BA0
 .public ov01_02337C54
 .public ov01_02337E0C
@@ -78,6 +74,11 @@
 .public ov03_0233CDD8
 .public ov03_0233CDE4
 .public ov10_022BDADC
+.public ov10_022C2340
+.public ov10_022C23B0
+.public ov10_022C23EC
+.public ov10_022C2450
+.public ov10_022C24DC
 .public ov10_022C2528
 .public ov11_022E6E68
 .public ov11_022E82CC
@@ -100,7 +101,6 @@
 .public ov29_02353538
 .public OverlayIsLoaded
 .public PointsToZero
-.public PositionHasMonster
 .public PROTEIN_STAT_BOOST
 .public Rand16Bit
 .public Rand32Bit

@@ -1457,8 +1457,13 @@ GetKeyN2MSwitch: ; 0x01FF9434
 	sub sp, sp, #8
 	ldr r2, _01FF9464 ; =_020A2CF8
 	add r3, sp, #0
+#ifdef EUROPE
+	ldr ip, [r2, #8]
+	ldr r2, [r2, #0xc]
+#else
 	ldr ip, [r2]
 	ldr r2, [r2, #4]
+#endif
 	str ip, [sp]
 	str r2, [sp, #4]
 	ldr r1, [r3, r1, lsl #2]
@@ -1530,8 +1535,13 @@ GetKeyM2NSwitch: ; 0x01FF950C
 	sub sp, sp, #8
 	ldr r2, _01FF953C ; =_020A2CF8
 	add r3, sp, #0
+#ifdef EUROPE
+	ldr ip, [r2]
+	ldr r2, [r2, #4]
+#else
 	ldr ip, [r2, #8]
 	ldr r2, [r2, #0xc]
+#endif
 	str ip, [sp]
 	str r2, [sp, #4]
 	ldr r1, [r3, r1, lsl #2]
