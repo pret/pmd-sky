@@ -3025,10 +3025,20 @@ _0233F444:
 _0233F48C:
 	bl sub_02003B5C
 	cmp r0, #0
+#ifdef EUROPE
+	add r0, sp, #8
+	beq _0233FC28
+	mov r5, #0
+	bl sub_02006BFC
+	b _0233F4AC
+_0233FC28:
+	ldr r1, [r4, #0x100]
+#else
 	movne r5, #0
 	bne _0233F4AC
 	ldr r1, [r4, #0x100]
 	add r0, sp, #8
+#endif
 	bl sub_02031914
 	mov r5, r0
 _0233F4AC:

@@ -24,6 +24,7 @@
 .public sub_02003B5C
 .public sub_02003BAC
 .public sub_02003BC8
+.public sub_02006BFC
 .public sub_02006C8C
 .public sub_02017B0C
 .public sub_02017B18
