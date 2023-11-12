@@ -193,11 +193,11 @@
 .public MemsetSimple
 .public MemZero
 .public MultiplyByFixedPoint
-.public ov11_022EA428
 .public ov11_023061CC
 .public ov11_02306C64
 .public ov11_02306C9C
 .public ov29_022DD83C
+.public ov29_022EA428
 .public ov29_0234C584
 .public ov29_0234C5EC
 .public ov29_0234C668

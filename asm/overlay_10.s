@@ -1439,7 +1439,7 @@ ov10_022BDCBC: ; 0x022BDCBC
 	cmp r1, #0
 	bne _022BDD30
 	mov r1, r0
-	bl ov11_022EA428
+	bl ov29_022EA428
 _022BDD30:
 	add r0, r4, #0xe8
 	bl sub_0206423C
@@ -1621,7 +1621,7 @@ ov10_022BDF34: ; 0x022BDF34
 	cmp r0, #0
 	bne _022BDF90
 	mov r0, #0xd
-	bl ov11_022EA428
+	bl ov29_022EA428
 _022BDF90:
 	ldr r1, [r4]
 	mov r0, #2
@@ -4364,7 +4364,7 @@ _022C034C:
 	bne _022C0364
 	mov r0, #5
 	mov r1, #0
-	bl ov11_022EA428
+	bl ov29_022EA428
 _022C0364:
 	ldr r0, [r4]
 	cmp r0, #0
@@ -5905,8 +5905,8 @@ _022C17C8:
 	bl sub_02027B58
 	add r0, sp, #0x104 + OV10_022C1748_STACK_OFFSET
 	bl InitPreprocessorArgs
-	ldrsh r2, [r5, #0x4a]
 #ifdef EUROPE
+	ldrsh r1, [r5, #0x4a]
 	add r0, sp, #4
 	str r1, [sp, #0x168]
 	ldrsh r1, [r5, #0x4c]
@@ -5917,6 +5917,7 @@ _022C17C8:
 	add r0, sp, #0x44
 	add r2, sp, #4
 #else
+	ldrsh r2, [r5, #0x4a]
 	ldr r1, _022C1838 ; =ov10_022DC02C
 	add r0, sp, #4
 	str r2, [sp, #0x128]

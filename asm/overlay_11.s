@@ -16574,10 +16574,6 @@ _022EA3EC:
 	add r0, r0, #0x100
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	arm_func_end ov11_022EA0BC
-
-	arm_func_start ov11_022EA428
-ov11_022EA428: ; 0x022EA428
 	cmp r0, #0xff
 	movgt r7, #0x80
 	bgt _022EA444
@@ -16849,7 +16845,7 @@ _022EA7FC: .word ov11_02389128
 _022EA800: .word ov11_02389018
 _022EA804: .word ov11_0238916C
 _022EA808: .word ov11_02388FD4
-	arm_func_end ov11_022EA428
+	arm_func_end ov11_022EA0BC
 
 	arm_func_start ov11_022EA80C
 ov11_022EA80C: ; 0x022EA80C
