@@ -3604,7 +3604,11 @@ ov01_0232C07C: ; 0x0232C07C
 	bxeq lr
 	ldr r1, [r1, #0x158]
 	cmp r1, #0xa
+#ifdef EUROPE
+	strge r1, [r0]
+#else
 	strge r1, [r0, #4]
+#endif
 	bx lr
 	.align 2, 0
 _0232C09C: .word ov01_0233C0D8
@@ -8105,7 +8109,11 @@ _0232FCEC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0232FCF4: .word ov01_0233C15C
+#ifdef EUROPE
+_0232FCF8: .word 0x00003FCB
+#else
 _0232FCF8: .word 0x00003FC9
+#endif
 _0232FCFC: .word ov01_0233B058
 	arm_func_end ov01_0232FC28
 
@@ -12318,7 +12326,11 @@ _023336CC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02333754: .word ov01_0233C188
+#ifdef EUROPE
+_02333758: .word 0x00003FEB
+#else
 _02333758: .word 0x00003FE9
+#endif
 _0233375C: .word OVERLAY1_D_BOX_LAYOUT_8
 _02333760: .word 0x05001812
 _02333764: .word ov01_0233382C
@@ -12486,7 +12498,11 @@ _0233393C:
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02333964: .word 0x00003FEC
+#else
 _02333964: .word 0x00003FEA
+#endif
 _02333968: .word 0x0000C402
 	arm_func_end ov01_0233382C
 
@@ -13936,7 +13952,11 @@ _02334CA0:
 	mov r0, r5
 	mov r1, r6
 #endif
+#ifdef EUROPE
+	bl PreprocessString
+#else
 	bl strcpy
+#endif
 	ldr r2, [r7, #0xc]
 	cmp r2, r4
 	beq _02334CD8
@@ -14759,10 +14779,10 @@ ov01_02335654: ; 0x02335654
 	mov r5, #0
 	cmp r1, #0x5b
 	bne _0233569C
+	ldr r1, _02335720 ; =ov01_0233BB04
 #ifdef EUROPE
 	mov r0, r4
 #endif
-	ldr r1, _02335720 ; =ov01_0233BB04
 	bl strcmp
 	cmp r0, #0
 	beq _02335694
@@ -17392,7 +17412,11 @@ _023378E0:
 	.align 2, 0
 _023378E8: .word ov01_0233C1F4
 _023378EC: .word 0x00001001
+#ifdef EUROPE
+_023378F0: .word 0x00003762
+#else
 _023378F0: .word 0x00003760
+#endif
 _023378F4: .word 0x0000023B
 _023378F8: .word 0x00000239
 	arm_func_end ov01_02337718
@@ -17562,28 +17586,33 @@ _02337ADC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef EUROPE
+#define OV01_02337998_OFFSET 2
+#else
+#define OV01_02337998_OFFSET 0
+#endif
 _02337AE4: .word ov01_0233BD34
-_02337AE8: .word 0x000036DA
+_02337AE8: .word 0x000036DA + OV01_02337998_OFFSET
 _02337AEC: .word ov01_0233BD48
 _02337AF0: .word ov01_0233BD5C
-_02337AF4: .word 0x000036DB
+_02337AF4: .word 0x000036DB + OV01_02337998_OFFSET
 _02337AF8: .word ov01_0233BD70
-_02337AFC: .word 0x000036E2
+_02337AFC: .word 0x000036E2 + OV01_02337998_OFFSET
 _02337B00: .word ov01_0233BD90
-_02337B04: .word 0x000036DC
+_02337B04: .word 0x000036DC + OV01_02337998_OFFSET
 _02337B08: .word ov01_0233BDAC
-_02337B0C: .word 0x000036E3
+_02337B0C: .word 0x000036E3 + OV01_02337998_OFFSET
 _02337B10: .word ov01_0233BDC8
-_02337B14: .word 0x000036DD
-_02337B18: .word 0x000036DE
+_02337B14: .word 0x000036DD + OV01_02337998_OFFSET
+_02337B18: .word 0x000036DE + OV01_02337998_OFFSET
 _02337B1C: .word ov01_0233BDDC
-_02337B20: .word 0x000036DF
-_02337B24: .word 0x000036E0
-_02337B28: .word 0x000036E1
+_02337B20: .word 0x000036DF + OV01_02337998_OFFSET
+_02337B24: .word 0x000036E0 + OV01_02337998_OFFSET
+_02337B28: .word 0x000036E1 + OV01_02337998_OFFSET
 _02337B2C: .word ov01_0233BDF4
-_02337B30: .word 0x000036E4
+_02337B30: .word 0x000036E4 + OV01_02337998_OFFSET
 _02337B34: .word ov01_0233BE0C
-_02337B38: .word 0x000036E5
+_02337B38: .word 0x000036E5 + OV01_02337998_OFFSET
 	arm_func_end ov01_02337998
 
 	arm_func_start ov01_02337B3C
@@ -18561,8 +18590,13 @@ _0233883C:
 	.align 2, 0
 _02338844: .word ov01_0233C210
 _02338848: .word ov01_0233BD1C
+#ifdef EUROPE
+_0233884C: .word 0x000036DA
+_02338850: .word 0x000036DB
+#else
 _0233884C: .word 0x000036D8
 _02338850: .word 0x000036D9
+#endif
 _02338854: .word ov01_02338864
 _02338858: .word ov01_023389D4
 _0233885C: .word ov01_0233BE24
@@ -19874,7 +19908,11 @@ ov01_02339888: ; 0x02339888
 	bx ip
 	.align 2, 0
 _0233989C: .word sub_02046BE8
+#ifdef EUROPE
+_023398A0: .word 0x00003775
+#else
 _023398A0: .word 0x00003773
+#endif
 	arm_func_end ov01_02339888
 
 	arm_func_start ov01_023398A4
