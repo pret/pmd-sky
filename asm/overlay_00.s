@@ -149,7 +149,7 @@ _022BCC64:
 	bl GetLanguage
 	ldr r1, _022BCC88 ; =ov00_023187A0
 	mov r3, r0
-	ldr r2, _022BD5D8 ; =0x02318758
+	ldr r2, _022BD5D8 ; =ov00_02318758_EU
 	ldr r0, [r1, #0xc]
 	ldr r1, [r2, r3, lsl #2]
 #else
@@ -166,7 +166,7 @@ _022BCC64:
 	.align 2, 0
 _022BCC88: .word ov00_023187A0
 #ifdef EUROPE
-_022BD5D8: .word 0x02318758
+_022BD5D8: .word ov00_02318758_EU
 #else
 _022BCC8C: .word 0x59465945
 #endif
@@ -108398,6 +108398,8 @@ _02317F3C:
 	; 0x02317F44
 
 #ifdef EUROPE
+	.global ov00_02318758_EU
+ov00_02318758_EU:
 	.byte 0x55, 0x59, 0x46, 0x59, 0x46, 0x59, 0x46, 0x59, 0x44, 0x59, 0x46, 0x59, 0x49, 0x59, 0x46, 0x59
 	.byte 0x53, 0x59, 0x46, 0x59
 #endif
