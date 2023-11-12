@@ -2386,7 +2386,7 @@ _0238C1A4: ; jump table
 	b _0238CBD8 ; case 29
 	b _0238CEFC ; case 30
 	b _0238CC34 ; case 31
-	b ov22_0238CC94 ; case 32
+	b _0238CC94 ; case 32
 	b _0238CCFC ; case 33
 	b _0238CE20 ; case 34
 	b _0238CD30 ; case 35
@@ -3092,25 +3092,17 @@ _0238CC34:
 	ldr r1, [r1]
 	strb r0, [r1, #0x4b]
 	b _0238D510
-	arm_func_end ov22_0238C184
-ov22_0238CC94:
+_0238CC94:
 	ldr r0, _0238D200 ; =ov22_0238EB60
 	bl DebugPrint0
 	ldr r0, _0238D104 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC70
 	ldr r2, _0238D118 ; =0x0000017F
 	ldr r1, [r0]
-
-	arm_func_start ov22_0238CCA8
-ov22_0238CCA8: ; 0x0238CCA8
 	str r2, [r1, #0x9c]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
 	bl ShowDBox
 	ldr r0, _0238D104 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC70
-	arm_func_end ov22_0238CCA8
-
-	arm_func_start ov22_0238CCBC
-ov22_0238CCBC: ; 0x0238CCBC
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
 	bl sub_0202F2C4
@@ -3118,20 +3110,12 @@ ov22_0238CCBC: ; 0x0238CCBC
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x49]
 	bl HidePortraitBox
-	arm_func_end ov22_0238CCBC
-
-	arm_func_start ov22_0238CCD8
-ov22_0238CCD8: ; 0x0238CCD8
 	mov r0, #4
 	mov r1, #0
 	mov r2, #8
 	mov r3, #1
 	bl sub_02042258
 	ldr r1, _0238D104 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC70
-	arm_func_end ov22_0238CCD8
-
-	arm_func_start ov22_0238CCF0
-ov22_0238CCF0: ; 0x0238CCF0
 	ldr r1, [r1]
 	strb r0, [r1, #0x4b]
 	b _0238D510
@@ -3685,7 +3669,7 @@ _0238D518: .word ov22_0238EC00
 _0238D51C: .word ov22_0238EC10
 _0238D520: .word ov22_0238EC24
 _0238D524: .word ov22_0238EC38
-	arm_func_end ov22_0238CCF0
+	arm_func_end ov22_0238C184
 
 	arm_func_start ov22_0238D528
 ov22_0238D528: ; 0x0238D528

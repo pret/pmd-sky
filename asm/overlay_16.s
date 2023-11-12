@@ -3004,8 +3004,14 @@ ov16_0238CC64: ; 0x0238CC64
 	stmdb sp!, {r3, lr}
 	bl GetTeamMember
 	ldr r1, _0238CC90 ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
+#ifdef EUROPE
+	mov r2, #0xa
+	ldr r3, [r1]
+	str r0, [r3, #0x3c]
+#else
 	ldr r2, [r1]
 	str r0, [r2, #0x3c]
+#endif
 	ldr r0, [r1]
 	ldr r1, [r0, #0x3c]
 	add r0, r0, #0xb1

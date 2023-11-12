@@ -192,6 +192,10 @@ _0238A3A0:
 	bl ov15_0238A4E8
 	b _0238A4D4
 _0238A3E4:
+#ifdef EUROPE
+	mov r0, #1
+	bl sub_02017CCC
+#endif
 	ldr r0, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
@@ -229,10 +233,6 @@ _0238A444:
 	rsb r0, r0, #0
 	bl AddMoneyStored
 	ldr r0, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	arm_func_end ov15_0238A234
-
-	arm_func_start ov15_0238A468
-ov15_0238A468: ; 0x0238A468
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl AddMoneyCarried
@@ -242,8 +242,13 @@ ov15_0238A468: ; 0x0238A468
 	bl ov15_0238A4E8
 	b _0238A4D4
 _0238A488:
+#ifdef EUROPE
+	mov r0, #1
+	bl sub_02017CCC
+#else
 	ldr r0, _0238A4E4 ; =ov15_0238B0CC
 	bl DebugPrint0
+#endif
 	ldr r0, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
@@ -269,8 +274,10 @@ _0238A4D4:
 	.align 2, 0
 _0238A4DC: .word OVERLAY15_UNKNOWN_POINTER__NA_238B180
 _0238A4E0: .word 0x00001308
+#ifndef EUROPE
 _0238A4E4: .word ov15_0238B0CC
-	arm_func_end ov15_0238A468
+#endif
+	arm_func_end ov15_0238A234
 
 	arm_func_start ov15_0238A4E8
 ov15_0238A4E8: ; 0x0238A4E8
@@ -605,10 +612,22 @@ _0238A95C:
 	ldr r3, _0238AD68 ; =ov15_0238AE6C
 	str r2, [sp, #4]
 	bl sub_020305B4
+#ifdef EUROPE
+	ldr r2, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
+	mov r1, #0
+	ldr r3, [r2]
+	strb r0, [r3, #0x68]
+	ldr r0, [r2]
+	ldrsb r0, [r0, #0x68]
+	bl sub_020307A4
+	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
+	ldr r0, [r0]
+#else
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r2, [r1]
 	strb r0, [r2, #0x68]
 	ldr r0, [r1]
+#endif
 	add r0, r0, #0x54
 	bl sub_020395CC
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -769,10 +788,22 @@ _0238ABD4:
 	ldr r3, _0238AD68 ; =ov15_0238AE6C
 	str r2, [sp, #4]
 	bl sub_020305B4
+#ifdef EUROPE
+	ldr r2, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
+	mov r1, #0
+	ldr r3, [r2]
+	strb r0, [r3, #0x68]
+	ldr r0, [r2]
+	ldrsb r0, [r0, #0x68]
+	bl sub_020307A4
+	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
+	ldr r0, [r0]
+#else
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r2, [r1]
 	strb r0, [r2, #0x68]
 	ldr r0, [r1]
+#endif
 	add r0, r0, #0x54
 	bl sub_020395CC
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -1096,9 +1127,11 @@ BANK_D_BOX_LAYOUT_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x0A, 0x05
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifndef EUROPE
 	.global ov15_0238B0CC
 ov15_0238B0CC:
 	.byte 0x43, 0x61, 0x6E, 0x63, 0x65, 0x6C, 0x0A, 0x00
+#endif
 	.global ov15_0238B0D4
 ov15_0238B0D4:
 	.byte 0x52, 0x2D, 0x43, 0x6C, 0x6F, 0x73, 0x65, 0x0A, 0x00, 0x00, 0x00, 0x00

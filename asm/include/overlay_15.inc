@@ -1,5 +1,6 @@
 #pragma once
 .public AddMoneyCarried
+.public AddMoneyStored
 .public CreateDBox
 .public CreateNormalMenu
 .public CreatePortraitBox
@@ -8,6 +9,7 @@
 .public FreeNormalMenu
 .public FreePortraitBox
 .public GetMoneyCarried
+.public GetMoneyStored
 .public GetNormalMenuResult
 .public HidePortraitBox
 .public InitPortraitBoxWithMonsterId
@@ -22,9 +24,8 @@
 .public ShowDBox
 .public ShowMessageInDBox
 .public ShowPortraitBox
-.public GetMoneyStored
-.public AddMoneyStored
 .public sub_02017C80
+.public sub_02017CCC
 .public sub_02026214
 .public sub_02026268
 .public sub_02027AF0
@@ -36,6 +37,7 @@
 .public sub_0202F8FC
 .public sub_0202F954
 .public sub_020305B4
+.public sub_020307A4
 .public sub_0203083C
 .public sub_0203088C
 .public sub_020308A0

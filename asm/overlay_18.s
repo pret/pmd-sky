@@ -3290,7 +3290,7 @@ ov18_0238CC00: ; 0x0238CC00
 	addls pc, pc, r0, lsl #2
 	b _0238CD5C
 _0238CC50: ; jump table
-	b ov18_0238CCF0 ; case 0
+	b _0238CCF0 ; case 0
 	b _0238CD5C ; case 1
 	b _0238CD5C ; case 2
 	b _0238CD5C ; case 3
@@ -3308,28 +3308,16 @@ _0238CC78:
 	add r0, r2, #0x300
 	ldrsh r0, [r0, #0x8c]
 	bl ov18_0238ADA8
-	arm_func_end ov18_0238CC00
-
-	arm_func_start ov18_0238CC94
-ov18_0238CC94: ; 0x0238CC94
 	ldr r1, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mov r4, r0
 	ldr r0, [r1]
 	str r4, [r0, #0x24]
 	bl sub_020415BC
-	arm_func_end ov18_0238CC94
-
-	arm_func_start ov18_0238CCA8
-ov18_0238CCA8: ; 0x0238CCA8
 	cmp r0, #0
 	mov r0, r4
 	beq _0238CCCC
 	bl sub_0203FD14
 	ldr r0, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
-	arm_func_end ov18_0238CCA8
-
-	arm_func_start ov18_0238CCBC
-ov18_0238CCBC: ; 0x0238CCBC
 	mov r1, #0x3c
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
@@ -3338,18 +3326,13 @@ _0238CCCC:
 	bl sub_02041614
 	ldr r0, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
-	arm_func_end ov18_0238CCBC
-
-	arm_func_start ov18_0238CCD8
-ov18_0238CCD8: ; 0x0238CCD8
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
 	bl sub_0203FD80
 	mov r0, #0x3a
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
-	arm_func_end ov18_0238CCD8
-ov18_0238CCF0:
+_0238CCF0:
 	ldr r1, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mov r0, r4, lsl #0x10
 	ldr r2, [r1]
@@ -3391,6 +3374,7 @@ _0238CD78:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238CD84: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	arm_func_end ov18_0238CC00
 
 	arm_func_start ov18_0238CD88
 ov18_0238CD88: ; 0x0238CD88

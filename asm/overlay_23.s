@@ -2443,14 +2443,14 @@ _0238C4BC: ; jump table
 	b _0238CAE8 ; case 28
 	b _0238CBE8 ; case 29
 	b _0238CC24 ; case 30
-	b ov23_0238CCBC ; case 31
+	b _0238CCBC ; case 31
 	b _0238CFA0 ; case 32
 	b _0238CFA0 ; case 33
 	b _0238CD7C ; case 34
 	b _0238CDCC ; case 35
 	b _0238CFA0 ; case 36
 	b _0238CC24 ; case 37
-	b ov23_0238CCBC ; case 38
+	b _0238CCBC ; case 38
 	b _0238C864 ; case 39
 	b _0238C8DC ; case 40
 	b _0238CEE0 ; case 41
@@ -2951,28 +2951,17 @@ _0238CC7C:
 	ldrsb r0, [r0, #0x95]
 	bl sub_0202F2C4
 	ldr r0, _0238D090 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
-	arm_func_end ov23_0238C474
-
-	arm_func_start ov23_0238CC94
-ov23_0238CC94: ; 0x0238CC94
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0x19
 	str r2, [r1, #0x14]
 	ldr r2, [r0]
-	arm_func_end ov23_0238CC94
-
-	arm_func_start ov23_0238CCA8
-ov23_0238CCA8: ; 0x0238CCA8
 	mov r1, #0x2c
 	str r3, [r2, #0xc]
 	ldr r0, [r0]
 	str r1, [r0, #8]
 	b _0238CFD0
-	arm_func_end ov23_0238CCA8
-
-	arm_func_start ov23_0238CCBC
-ov23_0238CCBC: ; 0x0238CCBC
+_0238CCBC:
 	ldrsb r0, [r1, #0x95]
 	bl IsDBoxActive
 	cmp r0, #0
@@ -2980,20 +2969,12 @@ ov23_0238CCBC: ; 0x0238CCBC
 	ldr r0, _0238D090 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x99]
-	arm_func_end ov23_0238CCBC
-
-	arm_func_start ov23_0238CCD8
-ov23_0238CCD8: ; 0x0238CCD8
 	bl GetNormalMenuResult
 	cmp r0, #1
 	beq _0238CD30
 	cmp r0, #4
 	beq _0238CCF8
 	cmp r0, #5
-	arm_func_end ov23_0238CCD8
-
-	arm_func_start ov23_0238CCF0
-ov23_0238CCF0: ; 0x0238CCF0
 	beq _0238CD30
 	b _0238CFD0
 _0238CCF8:
@@ -3259,8 +3240,8 @@ _0238D088:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238D090: .word OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
-	arm_func_end ov23_0238CCF0
 _0238D094: .word BAG_ITEMS_PTR_MIRROR
+	arm_func_end ov23_0238C474
 
 	arm_func_start ov23_0238D098
 ov23_0238D098: ; 0x0238D098

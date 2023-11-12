@@ -35,10 +35,6 @@ sub_027E0000: ; 0x027E0000
 	ldr r1, _027E01AC ; =_027F7920
 	mov r2, #0x20
 	bl sub_037FC6AC
-	arm_func_end sub_027E0000
-
-	arm_func_start sub_027E0078
-sub_027E0078: ; 0x027E0078
 	ldr r1, _027E0190 ; =_027F7878
 	ldr r0, _027E0198 ; =_027F78A0
 	str r1, [r5, #0x10]
@@ -98,10 +94,6 @@ _027E0128:
 	bl sub_037FD74C
 _027E0158:
 	bl sub_037FE2B4
-	arm_func_end sub_027E0078
-
-	arm_func_start sub_027E015C
-sub_027E015C: ; 0x027E015C
 	ldr r1, _027E01C8 ; =sub_027E0244
 	mov r0, #0xa
 	bl sub_037FE39C
@@ -131,7 +123,7 @@ _027E01BC: .word _0380B2C0
 _027E01C0: .word sub_027E1CC0
 _027E01C4: .word _027F89A0
 _027E01C8: .word sub_027E0244
-	arm_func_end sub_027E015C
+	arm_func_end sub_027E0000
 
 	arm_func_start sub_027E01CC
 sub_027E01CC: ; 0x027E01CC

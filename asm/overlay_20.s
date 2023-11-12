@@ -3198,7 +3198,6 @@ _0238CC60:
 	mov r2, #0
 	bl sub_0200D670
 	b _0238CC9C
-	arm_func_end ov20_0238CC14
 _0238CC94:
 	mov r0, #0
 	b _0238CCB4
@@ -3206,9 +3205,6 @@ _0238CC9C:
 	ldrb r0, [r6, #6]
 	cmp r0, #0
 	movne r0, #1
-
-	arm_func_start ov20_0238CCA8
-ov20_0238CCA8: ; 0x0238CCA8
 	moveq r0, #0
 	str r0, [r4]
 	mov r0, r5
@@ -3216,8 +3212,8 @@ _0238CCB4:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-	arm_func_end ov20_0238CCA8
 _0238CCBC: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
+	arm_func_end ov20_0238CC14
 
 	arm_func_start ov20_0238CCC0
 ov20_0238CCC0: ; 0x0238CCC0
@@ -3227,20 +3223,12 @@ ov20_0238CCC0: ; 0x0238CCC0
 	ldr r0, [r1]
 	bl ov20_0238CAE0
 	cmp r0, #0
-	arm_func_end ov20_0238CCC0
-
-	arm_func_start ov20_0238CCD8
-ov20_0238CCD8: ; 0x0238CCD8
 	movle r0, #0
 	ldmleia sp!,  {r4, pc}
 	ldr r0, _0238CD1C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	bl ov20_0238CB28
 	ldr r0, _0238CD1C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
-	arm_func_end ov20_0238CCD8
-
-	arm_func_start ov20_0238CCF0
-ov20_0238CCF0: ; 0x0238CCF0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #7]
 	bl sub_0202F9B8
@@ -3254,7 +3242,7 @@ ov20_0238CCF0: ; 0x0238CCF0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238CD1C: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
-	arm_func_end ov20_0238CCF0
+	arm_func_end ov20_0238CCC0
 
 	arm_func_start ov20_0238CD20
 ov20_0238CD20: ; 0x0238CD20

@@ -3091,29 +3091,17 @@ _0238CC7C:
 	mov r0, #4
 	str r0, [r1, #0x538]
 	ldr r3, [r2]
-	arm_func_end SentryStateGetUserChoice
-
-	arm_func_start ov14_0238CC94
-ov14_0238CC94: ; 0x0238CC94
 	mov r2, #3
 	add r0, r3, #0x3000
 	ldr r1, [r0, #0x878]
 	mov r0, #0x10
 	add r1, r3, r1, lsl #2
-	arm_func_end ov14_0238CC94
-
-	arm_func_start ov14_0238CCA8
-ov14_0238CCA8: ; 0x0238CCA8
 	add r1, r1, #0x3000
 	str r2, [r1, #0x554]
 	bl SentrySetStateIntermediate
 	b _0238CCE0
 _0238CCB8:
 	mov r2, #5
-	arm_func_end ov14_0238CCA8
-
-	arm_func_start ov14_0238CCBC
-ov14_0238CCBC: ; 0x0238CCBC
 	mov r0, #0x14
 	str r2, [r1, #0x538]
 	bl SentrySetStateIntermediate
@@ -3122,10 +3110,6 @@ _0238CCCC:
 	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #3
 	ldr r0, [r0]
-	arm_func_end ov14_0238CCBC
-
-	arm_func_start ov14_0238CCD8
-ov14_0238CCD8: ; 0x0238CCD8
 	add r0, r0, #0x3000
 	str r1, [r0, #0x538]
 _0238CCE0:
@@ -3133,10 +3117,6 @@ _0238CCE0:
 	tst r0, #0xf0
 	beq _0238CCF4
 	ldr r0, _0238CFB4 ; =0x00003F01
-	arm_func_end ov14_0238CCD8
-
-	arm_func_start ov14_0238CCF0
-ov14_0238CCF0: ; 0x0238CCF0
 	bl sub_02017C80
 _0238CCF4:
 	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
@@ -3338,7 +3318,7 @@ _0238CFB4: .word 0x00003F01
 _0238CFB8: .word ov14_0238D96C
 _0238CFBC: .word ov14_0238DA80
 _0238CFC0: .word 0x00002C06
-	arm_func_end ov14_0238CCF0
+	arm_func_end SentryStateGetUserChoice
 
 	arm_func_start SentryStateFinalizeRound
 SentryStateFinalizeRound: ; 0x0238CFC4
