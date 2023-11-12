@@ -14,7 +14,7 @@ ov02_02329520: ; 0x02329520
 	mov r4, r0
 #ifdef EUROPE
 	bl GetLanguage
-	ldr r1, _02329D88 ; =0x023503F4
+	ldr r1, _02329D88 ; =ov02_023503F4_EU
 	mov r2, #0
 	ldr r1, [r1, r0, lsl #2]
 #endif
@@ -31,7 +31,7 @@ ov02_02329520: ; 0x02329520
 	.align 2, 0
 _0232955C: .word 0x00040020
 #ifdef EUROPE
-_02329D88: .word 0x023503F4
+_02329D88: .word ov02_023503F4_EU
 #endif
 	arm_func_end ov02_02329520
 
@@ -53079,6 +53079,8 @@ _0234FBC4: .word ov02_0235ABE8
 	; 0x0234FBC8
 
 #ifdef EUROPE
+	.global ov02_023503F4_EU
+ov02_023503F4_EU:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00
 #endif
