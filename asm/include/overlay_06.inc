@@ -7,8 +7,8 @@
 .public GetKeyboardStatus
 .public GetKeyboardStringResult
 .public GetLanguageType
-.public GetReleasedStylus
 .public GetMainTeamNameWithCheck
+.public GetReleasedStylus
 .public MemAlloc
 .public MemcpySimple
 .public MemFree
@@ -49,6 +49,7 @@
 .public sub_02003BFC
 .public sub_02004F80
 .public sub_02006C8C
+.public sub_02020698_EU
 .public sub_02029F88
 .public sub_02029FBC
 .public sub_02037468
