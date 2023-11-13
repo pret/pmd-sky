@@ -67,13 +67,16 @@
 .public sub_0203F398
 .public sub_0203F990
 .public sub_0203FA64
+.public sub_0203FD38
 .public sub_0203FD80
 .public sub_0204018C
 .public sub_020407C0
 .public sub_020407EC
+.public sub_02041094
 .public sub_02041178
 .public sub_020417A8
 .public sub_02041A00
+.public sub_02041A18
 .public sub_02041B7C
 .public sub_020420F4
 .public sub_02055B20

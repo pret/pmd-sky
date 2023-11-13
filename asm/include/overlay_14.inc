@@ -14,6 +14,7 @@
 .public FreePortraitBox
 .public GetHero
 .public GetHeroMemberIdx
+.public GetLanguage
 .public GetNameRaw
 .public GetNormalMenuResult
 .public GetPartner

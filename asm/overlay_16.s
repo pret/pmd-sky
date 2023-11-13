@@ -3016,7 +3016,11 @@ ov16_0238CC64: ; 0x0238CC64
 	ldr r1, [r0, #0x3c]
 	add r0, r0, #0xb1
 	add r1, r1, #0x3a
+#ifdef EUROPE
+	bl StrncpySimple
+#else
 	bl StrcpySimple
+#endif
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238CC90: .word OVERLAY16_UNKNOWN_POINTER__NA_238CE40

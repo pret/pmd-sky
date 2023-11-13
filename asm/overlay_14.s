@@ -149,7 +149,11 @@ _0238A2BC:
 	strb r1, [r2, #0xb]
 	bl ov14_0238AC04
 	ldr r0, _0238A508 ; =SENTRY_DUTY_PTR
+#ifdef EUROPE
+	mov r1, #0xbd
+#else
 	mov r1, #0xad
+#endif
 	ldr r0, [r0]
 	mov r2, #0x8100000
 	add r0, r0, #0x120
@@ -157,7 +161,11 @@ _0238A2BC:
 	ldr r0, _0238A508 ; =SENTRY_DUTY_PTR
 	ldr r2, _0238A50C ; =0x88080000
 	ldr r0, [r0]
+#ifdef EUROPE
+	mov r1, #0xdd
+#else
 	mov r1, #0xcd
+#endif
 	add r0, r0, #0x1e4
 	bl LoadObjectAnimData
 	ldr r0, _0238A508 ; =SENTRY_DUTY_PTR
@@ -3992,7 +4000,11 @@ ov14_0238D828: ; 0x0238D828
 	ldr r7, [sb]
 	bl strlen
 	ldr r2, [sp, #0x30]
+#ifdef EUROPE
+	add fp, sp, #0
+#else
 	mov r6, #0
+#endif
 	cmp r0, r2
 	ldrlt r1, [r8]
 	sublt r0, r2, r0
@@ -4000,9 +4012,16 @@ ov14_0238D828: ; 0x0238D828
 	strlt r0, [r8]
 	mov r0, r4, lsl #8
 	str r0, [sp, #4]
+#ifdef EUROPE
+	ldr r0, _0238D968 ; =0x0000080F
+	mov r6, #0
+	sub r4, r0, #1
+	sub r5, r0, #3
+#else
 	add r5, sp, #0
 	ldr fp, _0238D968 ; =0x0000080F
 	mov r4, r6
+#endif
 	b _0238D950
 _0238D87C:
 	ldrb r1, [sl], #1
@@ -4014,6 +4033,15 @@ _0238D87C:
 	cmp r1, #0x39
 	bhi _0238D8DC
 	sub r0, r1, #0x2b
+#ifdef EUROPE
+	ldr r2, [r8]
+	orr r0, r0, #0x800
+	mov r0, r0, lsl #0x10
+	add r2, r2, #8
+	mov r1, r0, asr #0x10
+	str r2, [r8]
+	mov r0, r7
+#else
 	orr r0, r0, #0x800
 	mov r0, r0, lsl #0x10
 	mov r1, r0, asr #0x10
@@ -4021,11 +4049,17 @@ _0238D87C:
 	mov r0, r7
 	add r2, r2, #8
 	str r2, [r8]
+#endif
 	mov r2, r6
 	bl SetAnimDataFields2
 	mov r0, r7
+#ifdef EUROPE
+	mov r1, fp
+	mov r2, #0
+#else
 	mov r1, r5
 	mov r2, r4
+#endif
 	bl AnimRelatedFunction__022F6F14
 	add r7, r7, #0xc4
 	b _0238D950
@@ -4036,11 +4070,19 @@ _0238D8DC:
 	mov r0, r7
 	add r1, r1, #8
 	str r1, [r8]
+#ifdef EUROPE
+	mov r1, r5
+#else
 	mov r1, fp
+#endif
 	mov r2, #0
 	bl SetAnimDataFields2
 	mov r0, r7
+#ifdef EUROPE
+	mov r1, fp
+#else
 	mov r1, r5
+#endif
 	mov r2, #0
 	bl AnimRelatedFunction__022F6F14
 	add r7, r7, #0xc4
@@ -4048,6 +4090,43 @@ _0238D8DC:
 _0238D918:
 	cmp r1, #0x50
 	bne _0238D950
+#ifdef EUROPE
+	ldr r0, [r8]
+	add r0, r0, #8
+	str r0, [r8]
+	bl GetLanguage
+	sub r1, r0, #2
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
+	and r1, r1, #0xff
+	cmp r1, #1
+	mov r2, #0
+	bhi _0238E4AC
+	ldr r1, [sp]
+	mov r0, r7
+	add r1, r1, #0x400
+	str r1, [sp]
+	mov r1, r4
+	bl SetAnimDataFields2
+	b _0238E4DC
+_0238E4AC:
+	cmp r0, #4
+	bne _0238E4D0
+	ldr r1, [sp]
+	mov r0, r7
+	add r1, r1, #0x400
+	str r1, [sp]
+	ldr r1, _0238D968 ; =0x00000812
+	bl SetAnimDataFields2
+	b _0238E4DC
+_0238E4D0:
+	mov r0, r7
+	mov r1, #0x810
+	bl SetAnimDataFields2
+_0238E4DC:
+	mov r0, r7
+	mov r1, fp
+#else
 	ldr r1, [r8]
 	mov r0, r7
 	add r1, r1, #8
@@ -4057,6 +4136,7 @@ _0238D918:
 	bl SetAnimDataFields2
 	mov r0, r7
 	mov r1, r5
+#endif
 	mov r2, #0
 	bl AnimRelatedFunction__022F6F14
 	add r7, r7, #0xc4
@@ -4068,7 +4148,11 @@ _0238D950:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef EUROPE
+_0238D968: .word 0x00000812
+#else
 _0238D968: .word 0x0000080F
+#endif
 	arm_func_end ov14_0238D828
 	; 0x0238D96C
 
