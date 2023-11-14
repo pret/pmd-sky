@@ -895,7 +895,11 @@ ov25_0238ADFC: ; 0x0238ADFC
 	ldrsh r2, [ip, #0xc]
 	ldr r1, _0238B118 ; =0x00001013
 	ldr r3, _0238B11C ; =0x0000033E
+#ifdef EUROPE
+	add r2, r2, #0xd3
+#else
 	add r2, r2, #0xd1
+#endif
 	add r2, r2, #0x2900
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
