@@ -628,7 +628,11 @@ _0238AA1C:
 	ldrsh r2, [r3, #0xe]
 	add r3, r3, #0x30
 	ldr r1, _0238B134 ; =0x00001013
+#ifdef EUROPE
+	add r2, r2, #0xd3
+#else
 	add r2, r2, #0xd1
+#endif
 	add r2, r2, #0x2900
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
@@ -1314,7 +1318,11 @@ _0238B434:
 	ldrsh r2, [r4, #0xe]
 	ldr r1, _0238B134 ; =0x00001013
 	ldr r3, _0238B138 ; =0x0000033E
+#ifdef EUROPE
+	add r2, r2, #0xd3
+#else
 	add r2, r2, #0xd1
+#endif
 	add r2, r2, #0x2900
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
@@ -1511,7 +1519,11 @@ _0238B724:
 	ldrsh r2, [r4, #0x18]
 	ldr r1, _0238B134 ; =0x00001013
 	ldr r3, _0238B138 ; =0x0000033E
+#ifdef EUROPE
+	add r2, r2, #0xd3
+#else
 	add r2, r2, #0xd1
+#endif
 	add r2, r2, #0x2900
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
