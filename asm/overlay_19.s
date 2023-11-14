@@ -1325,10 +1325,10 @@ _0238B34C:
 	bl SetPortraitEmotion
 	bl ov19_0238D450
 	mov r0, #6
-	ldr r1, _0238B484 ; =0x0000101C
+#ifdef EUROPE
+	ldr r3, _0238B484 ; =0x0000101C
 	str r0, [r8, #0x1c4]
 	add r0, r8, #0x100
-#ifdef EUROPE
 	strh r3, [r0, #0xc8]
 	add r1, sp, #0x700
 	str r1, [sp]
@@ -1337,6 +1337,9 @@ _0238B34C:
 	mov r1, #0x400
 	add r3, r3, #0x2000
 #else
+	ldr r1, _0238B484 ; =0x0000101C
+	str r0, [r8, #0x1c4]
+	add r0, r8, #0x100
 	strh r1, [r0, #0xc8]
 	add r3, r1, #0x2000
 	add r1, sp, #0x700
@@ -2870,8 +2873,13 @@ _0238C8E8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0238C8F4: .word ov11_02324DB0
+#ifdef EUROPE
+_0238C8F8: .word 0x00004608
+_0238C8FC: .word 0x00004607
+#else
 _0238C8F8: .word 0x000045E9
 _0238C8FC: .word 0x000045E8
+#endif
 	arm_func_end ov19_0238C80C
 
 	arm_func_start ov19_0238C900
@@ -2935,8 +2943,13 @@ ov19_0238C900: ; 0x0238C900
 	.align 2, 0
 _0238C9E0: .word ov11_02324DB0
 _0238C9E4: .word OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
+#ifdef EUROPE
+_0238C9E8: .word 0x0000460A
+_0238C9EC: .word 0x00004609
+#else
 _0238C9E8: .word 0x000045EB
 _0238C9EC: .word 0x000045EA
+#endif
 	arm_func_end ov19_0238C900
 
 	arm_func_start ov19_0238C9F0
@@ -3021,7 +3034,11 @@ _0238CABC:
 	.align 2, 0
 _0238CB20: .word ov11_02324DB0
 _0238CB24: .word 0x0000068A
+#ifdef EUROPE
+_0238CB28: .word 0x000045F7
+#else
 _0238CB28: .word 0x000045D8
+#endif
 	arm_func_end ov19_0238C9F0
 
 	arm_func_start ov19_0238CB2C
@@ -3063,7 +3080,11 @@ ov19_0238CB2C: ; 0x0238CB2C
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _0238CBB8: .word ov11_02324DB0
+#ifdef EUROPE
+_0238CBBC: .word 0x0000460B
+#else
 _0238CBBC: .word 0x000045EC
+#endif
 	arm_func_end ov19_0238CB2C
 
 	arm_func_start ov19_0238CBC0
@@ -3151,7 +3172,11 @@ _0238CCC4:
 _0238CCDC: .word ov11_02324DB0
 _0238CCE0: .word ov19_0238E2C0
 _0238CCE4: .word ov19_0238E2C4
+#ifdef EUROPE
+_0238CCE8: .word 0x00004601
+#else
 _0238CCE8: .word 0x000045E2
+#endif
 	arm_func_end ov19_0238CBC0
 
 	arm_func_start ov19_0238CCEC
@@ -3589,7 +3614,11 @@ _0238D300:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0238D308: .word ov11_02324DB0
+#ifdef EUROPE
+_0238D30C: .word 0x000045FF
+#else
 _0238D30C: .word 0x000045E0
+#endif
 	arm_func_end ov19_0238D0D8
 
 	arm_func_start ov19_0238D310
