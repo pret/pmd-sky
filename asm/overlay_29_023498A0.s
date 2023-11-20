@@ -2160,7 +2160,7 @@ _0234B504: .word ov29_023537CC
 	arm_func_start LogMessage
 LogMessage: ; 0x0234B508
 #ifdef EUROPE
-#define LOG_MESSAGE_STACK_OFFSET 0x60
+#define LOG_MESSAGE_STACK_OFFSET 0xC0
 #else
 #define LOG_MESSAGE_STACK_OFFSET 0
 #endif
@@ -2198,7 +2198,7 @@ LogMessage: ; 0x0234B508
 	add r2, r2, #0x9c
 	add r4, r2, #0xc00
 	mov r2, r1
-	mov r1, #0x140
+	mov r1, #0x140 + LOG_MESSAGE_STACK_OFFSET
 	str r4, [sp]
 	bl PreprocessString
 	ldr r4, _0234B708 ; =ov29_023537CC
@@ -2228,7 +2228,7 @@ _0234B5D8:
 	add r1, r1, #0x9c
 	add r1, r1, #0xc00
 	str r1, [sp]
-	mov r1, #0x140 + LOG_MESSAGE_STACK_OFFSET
+	mov r1, #0x140
 	add r2, r5, r8
 	mov r3, #0x440
 	bl PreprocessString

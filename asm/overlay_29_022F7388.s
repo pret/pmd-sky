@@ -886,7 +886,7 @@ _022F8900:
 	beq _022F892C
 	mov r0, #1
 	bl ov29_02339F88
-	bl GetMinimapData
+	bl UpdateMinimap
 _022F892C:
 	bl ov29_022E8104
 	bl ov29_022E81F8
@@ -926,14 +926,15 @@ _022F7F64:
 	ldrsh r0, [sl, #4]
 	ldrsh r1, [sl, #6]
 	bl DrawMinimapTile
-	mov r5, #0
 #ifdef EUROPE
 	mov r4, #0
 	mov fp, r4
 _022F7F8C:
 	ldr r0, _022F85D0 ; =DUNGEON_PTR
 	ldr r0, [r0]
+	add r0, r0, r4, lsl #2
 #else
+	mov r5, #0
 	ldr fp, _022F85D0 ; =DUNGEON_PTR
 	mov r4, r5
 _022F7F8C:
@@ -5329,11 +5330,11 @@ _022FC33C_EU:
 	mov r6, r0, asr #0x10
 	cmp r6, #4
 	blt _022FC33C_EU
-	bl TeamMemberHasEnabledIqSkill
+	bl UpdateMapSurveyorFlag
 	cmp r0, #0
 	cmpne r4, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
-	bl GetMinimapData
+	bl UpdateMinimap
 	ldmia sp!, {r4, r5, r6, pc}
 #else
 	stmdb sp!, {r3, r4, r5, lr}

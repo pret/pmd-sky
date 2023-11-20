@@ -6874,7 +6874,11 @@ ov29_022E8E60: ; 0x022E8E60
 	bl sub_02027AF0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef EUROPE
+_022E8E90: .word 0x00003FCD
+#else
 _022E8E90: .word 0x00003FCB
+#endif
 	arm_func_end ov29_022E8E60
 
 	arm_func_start ov29_022E8E94
@@ -6968,7 +6972,11 @@ ov29_022E8F78: ; 0x022E8F78
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E8FC4: .word ov29_02353558
+#ifdef EUROPE
+_022E8FC8: .word 0x00003FCD
+#else
 _022E8FC8: .word 0x00003FCB
+#endif
 	arm_func_end ov29_022E8F78
 
 	arm_func_start ov29_022E8FCC

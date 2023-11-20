@@ -1222,15 +1222,18 @@ _023100E8:
 	beq _0231013C
 	cmp r7, #0
 	beq _02310124
-#ifndef EUROPE
+#ifdef EUROPE
+	mov r0, r5
+	bl ov29_022E34A8_EU
+#else
 	ldr r0, _02310A84 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	bne _02310124
-#endif
 	mov r0, r5
 	bl EntityIsValid__02311010
+#endif
 	cmp r0, #0
 	beq _02310124
 	ldr r0, _02310A94 ; =0x00001303

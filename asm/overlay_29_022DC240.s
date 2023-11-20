@@ -214,7 +214,7 @@ _022DC518:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022DC52C: .word 0x00019628
-_022DC530: .word ov29_02353860 + 0x20
+_022DC530: .word ov29_02353880
 _022DC534: .word _020AFC70
 _022DC538: .word 0x00007FFF
 _022DC53C: .word 0x00018304

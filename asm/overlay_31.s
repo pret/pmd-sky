@@ -1108,7 +1108,11 @@ ov31_0238367C: ; 0x0238367C
 	str lr, [sp]
 	ldrsh r4, [r0, #4]
 	ldr r0, _02383728 ; =DUNGEON_D_BOX_LAYOUT_8
+#ifdef EUROPE
+	add ip, r4, #0xd3
+#else
 	add ip, r4, #0xd1
+#endif
 	add r4, ip, #0x2900
 	mov ip, r4, lsl #0x10
 	mov r4, ip, lsr #0x10
@@ -1685,7 +1689,11 @@ _02383D8C:
 	b _02383F34
 _02383F00:
 	ldrsh r0, [r1, #4]
+#ifdef EUROPE
+	add r0, r0, #0x4b
+#else
 	add r0, r0, #0x49
+#endif
 	add r0, r0, #0x2f00
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -1735,7 +1743,11 @@ _02383F7C:
 	tst r1, #0xff
 	beq _02383FE4
 	ldrsh r0, [r0, #4]
+#ifdef EUROPE
+	add r0, r0, #0x4b
+#else
 	add r0, r0, #0x49
+#endif
 	add r0, r0, #0x2f00
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -3564,11 +3576,28 @@ _0238597C:
 	movne r8, #1
 _023859B0:
 	cmp r8, #0
+#ifdef EUROPE
 	bne _023859C0
 	mov r0, #0x14
 	bl DisableDungeonSubMenuOption
 _023859C0:
 	bl ov29_022EB9A0
+	mov r0, #0x14
+	bl ov29_022EB8B0
+	mvn r1, #0
+	cmp r0, r1
+	moveq r8, #0
+	beq _023865E4
+	bl ov29_022EB804
+	mov r8, r0
+_023865E4:
+#else
+	bne _023859C0
+	mov r0, #0x14
+	bl DisableDungeonSubMenuOption
+_023859C0:
+	bl ov29_022EB9A0
+#endif
 	ldr r0, [sp, #0xc]
 	cmp r0, #3
 	bne _02385A40
@@ -3669,6 +3698,23 @@ _02385B24:
 _02385B30:
 	cmp r1, r0
 	blt _02385B24
+#ifdef EUROPE
+	ldr r0, _02385F8C ; =0x000008DC
+	add sl, sp, #0xd4
+	mov fp, r1, lsl #3
+	strh r0, [sl, fp]
+	mvn r0, #0
+	add sb, sl, r1, lsl #3
+	str r0, [sb, #4]
+	mov ip, #0
+	add r2, r0, #0xa40
+	strh ip, [sb, #8]
+	sub r0, ip, #2
+	str r0, [sb, #0xc]
+	ldrh r0, [sb, #8]
+	add r3, sp, #0x20
+	mov lr, #0x14
+#else
 	ldr r2, _02385F8C ; =0x000008DC
 	add sl, sp, #0xd4
 	mov fp, r1, lsl #3
@@ -3684,6 +3730,7 @@ _02385B30:
 	ldrh r0, [sb, #8]
 	add r3, sp, #0x20
 	mov ip, #0x14
+#endif
 	strh r0, [sb, #0x18]
 	ldr r4, [sb, #0xc]
 	add r0, r3, r1
@@ -3704,6 +3751,25 @@ _02385B30:
 	cmp r3, #0
 	strb r4, [r0, #1]
 	ldr r4, [sb, #-4]
+#ifdef EUROPE
+	strb ip, [r0, #-1]
+	str r4, [sb, #0xc]
+	strh r2, [sb, #-8]
+	movle r2, #3
+	strleb r2, [r0, #-1]
+	add r2, r3, #1
+	mov r2, r2, lsl #0x10
+	str lr, [sb, #-4]
+	mov r4, r2, asr #0x10
+	add sb, sp, #0xd4
+	mov r2, r1, lsl #3
+	mov r3, #0xa40
+	strh r3, [sb, r2]
+	mov r3, #0
+	add r1, sb, r1, lsl #3
+	mov r2, #0x15
+	str r2, [r1, #4]
+#else
 	strb r8, [r0, #-1]
 	str r4, [sb, #0xc]
 	strh r2, [sb, #-8]
@@ -3721,12 +3787,25 @@ _02385B30:
 	mov r1, #0x15
 	mov r3, #0
 	str r1, [r2, #4]
+#endif
 	strb r3, [r0]
 	ldr sl, [r6, #0xb4]
 	mov r1, r3
 	mov r2, #1
 	b _02385C58
 _02385C1C:
+#ifdef EUROPE
+	add sb, sl, r4, lsl #3
+	ldrb sb, [sb, #0x124]
+	tst sb, #1
+	movne sb, r2
+	moveq sb, r1
+	tst sb, #0xff
+	beq _02385C4C
+	add sb, sl, r4, lsl #3
+	ldrb sb, [sb, #0x124]
+	tst sb, #2
+#else
 	add r8, sl, r4, lsl #3
 	ldrb r8, [r8, #0x124]
 	tst r8, #1
@@ -3737,6 +3816,7 @@ _02385C1C:
 	add r8, sl, r4, lsl #3
 	ldrb r8, [r8, #0x124]
 	tst r8, #2
+#endif
 	moveq r3, #1
 	beq _02385C60
 _02385C4C:
@@ -3758,6 +3838,16 @@ _02385C60:
 	strb r0, [sp, #0x1c]
 	mov r0, #0x1b
 	bl AdvanceFrame
+#ifdef EUROPE
+	add r4, sp, #0xd4
+	mov fp, #0x1b
+	ldr sb, _02385F98 ; =0x0000099B
+	b _02385D0C
+_02385CA0:
+	mov r0, fp
+	bl AdvanceFrame
+	mov r0, #0
+#else
 	add r8, sp, #0xd4
 	mov sb, #0x1b
 	mov fp, #0
@@ -3767,6 +3857,7 @@ _02385CA0:
 	mov r0, sb
 	bl AdvanceFrame
 	mov r0, fp
+#endif
 	add r1, sp, #0x1e
 	bl GetPressedButtons
 	ldrh r0, [sp, #0x1e]
@@ -3776,6 +3867,18 @@ _02385CA0:
 	b _02385CEC
 _02385CC8:
 	mov r1, r5, lsl #3
+#ifdef EUROPE
+	add r0, r4, r5, lsl #3
+	ldr r0, [r0, #4]
+	cmp r0, #0
+	blt _02385CF4
+	cmp r8, #0
+	beq _0238690C
+	ldrh r0, [r4, r1]
+	cmp r0, sb
+	beq _02385CF4
+_0238690C:
+#else
 	add r0, r8, r5, lsl #3
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -3783,12 +3886,17 @@ _02385CC8:
 	ldrh r0, [r8, r1]
 	cmp r0, r4
 	beq _02385CF4
+#endif
 	add r5, r5, #1
 _02385CEC:
 	cmp r5, #0xa
 	blt _02385CC8
 _02385CF4:
+#ifdef EUROPE
+	add r0, r4, r5, lsl #3
+#else
 	add r0, r8, r5, lsl #3
+#endif
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	blt _02385D0C
@@ -3965,10 +4073,18 @@ _02385F50:
 	.align 2, 0
 _02385F70: .word OVERLAY31_UNKNOWN_POINTER__NA_238A270
 _02385F74: .word DUNGEON_D_BOX_LAYOUT_14
+#ifdef EUROPE
+_02385F78: .word 0x00003FCF
+#else
 _02385F78: .word 0x00003FCD
+#endif
 _02385F7C: .word 0x00000404
 _02385F80: .word DUNGEON_D_BOX_LAYOUT_16
+#ifdef EUROPE
+_02385F84: .word 0x00003FCE
+#else
 _02385F84: .word 0x00003FCC
+#endif
 _02385F88: .word DUNGEON_PTR
 _02385F8C: .word 0x000008DC
 _02385F90: .word DUNGEON_D_BOX_LAYOUT_15
@@ -5028,7 +5144,11 @@ _02386D70:
 	ldrb r2, [r0]
 	ldr r0, _02386F24 ; =DUNGEON_D_BOX_LAYOUT_19
 	sub r3, r1, #0x740
+#ifdef EUROPE
+	add r2, r2, #0xdc
+#else
 	add r2, r2, #0xda
+#endif
 	add r2, r2, #0x3400
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
@@ -7592,8 +7712,13 @@ ov31_023891A8: ; 0x023891A8
 	ldrh r1, [r0, r1]
 	mov r0, r5
 	bl sub_02030A2C
+#ifdef EUROPE
+	add r0, r4, #0xb2
+	add r0, r0, #0x3f00
+#else
 	add r0, r4, #0xfb0
 	add r0, r0, #0x3000
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -8407,8 +8532,13 @@ ov31_02389CC0: ; 0x02389CC0
 	mov r0, r5
 	mov r4, r2
 	bl sub_0202812C
+#ifdef EUROPE
+	add r0, r6, #0x2dc
+	add r0, r0, #0x2400
+#else
 	add r0, r6, #0xda
 	add r0, r0, #0x2600
+#endif
 	mov r0, r0, lsl #0x10
 	mov r2, r0, lsr #0x10
 	add r1, sp, #0xc
@@ -8465,7 +8595,13 @@ ov31_02389D80: ; 0x02389D80
 
 	.global DUNGEON_D_BOX_LAYOUT_1
 DUNGEON_D_BOX_LAYOUT_1:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x0C, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+	.byte 0x02, 0x02, 0x07, 0x0C
+#else
+	.byte 0x02, 0x02, 0x00, 0x0C
+#endif
+	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global DUNGEON_D_BOX_LAYOUT_2
 DUNGEON_D_BOX_LAYOUT_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0B, 0x04, 0x13, 0x02, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -8698,11 +8834,16 @@ OVERLAY31_UNKNOWN_STRUCT__NA_238A190:
 	.word HelpMenuLoop
 	.global DUNGEON_SUBMENU_6
 DUNGEON_SUBMENU_6:
-	.byte 0xA8, 0x3F, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0xA9, 0x3F, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xAA, 0x3F, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0xAB, 0x3F, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xAC, 0x3F, 0x00, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00, 0xAD, 0x3F, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0xAE, 0x3F, 0x00, 0x00
-	.byte 0x06, 0x00, 0x00, 0x00, 0xAF, 0x3F, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+#define DUNGEON_SUBMENU_6_OFFSET 2
+#else
+#define DUNGEON_SUBMENU_6_OFFSET 0
+#endif
+	.byte 0xA8 + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0xA9 + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xAA + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00
+	.byte 0x02, 0x00, 0x00, 0x00, 0xAB + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xAC + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00
+	.byte 0x04, 0x00, 0x00, 0x00, 0xAD + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0xAE + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00
+	.byte 0x06, 0x00, 0x00, 0x00, 0xAF + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 	.global DUNGEON_D_BOX_LAYOUT_29
 DUNGEON_D_BOX_LAYOUT_29:

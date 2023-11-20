@@ -67,6 +67,7 @@
 .public ov10_022C4BBC
 .public ov10_022C4BE4
 .public ov10_022C4FC4
+.public ov29_022E34A8_EU
 .public ov29_022E42E8
 .public ov29_022E53F0
 .public ov29_022E543C
