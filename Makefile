@@ -64,7 +64,7 @@ endif
 $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 	$(WINE) $(MAKEBNR) $< $@
 
-na: ; @$(MAKE) GAME_LANGUAGE=NORTH_AMERICA
+us: ; @$(MAKE) GAME_LANGUAGE=NORTH_AMERICA
 eu: ; @$(MAKE) GAME_LANGUAGE=EUROPE
 
 compare: @$(MAKE) COMPARE=1
