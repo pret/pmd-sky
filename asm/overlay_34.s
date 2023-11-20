@@ -133,12 +133,21 @@ _022DC3F8:
 	bl ov34_022DC86C
 	bl ov34_022DCDCC
 _022DC404:
+#ifdef EUROPE
+	mov fp, #2
+	mov r8, #1
+	ldr r5, _022DC59C ; =ov34_022DD0A0
+	ldr r4, _022DC5A0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
+	mov r6, fp
+	mov r7, r8
+#else
 	mov r8, #1
 	mov fp, #2
 	ldr r5, _022DC59C ; =ov34_022DD0A0
 	ldr r4, _022DC5A0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 	mov r7, r8
 	mov r6, r8
+#endif
 	mov sb, fp
 	mov sl, #0
 _022DC424:
@@ -183,6 +192,15 @@ _022DC4A0:
 	mov r1, #0
 	str r8, [sp]
 	ldr r0, _022DC5A8 ; =ov34_022DCFF4
+#ifdef EUROPE
+	mov r2, r1
+	mov r3, r1
+	str r8, [sp, #4]
+	bl sub_02052060
+	mov r0, #0x1e
+	bl ov34_022DC958
+	str r7, [r5, #0xc]
+#else
 	str r8, [sp, #4]
 	mov r2, r1
 	mov r3, r1
@@ -200,6 +218,7 @@ _022DC4A0:
 	mov r0, #0x1e
 	bl ov34_022DC86C
 	str r6, [r5, #0xc]
+#endif
 	b _022DC54C
 _022DC508:
 	cmp r0, #3
@@ -211,6 +230,14 @@ _022DC508:
 	bgt _022DC54C
 	mov r0, #0x1e
 	bl ov34_022DC970
+#ifdef EUROPE
+	str r6, [r5, #0xc]
+	b _022DC54C
+_022DC53C:
+	mov r0, #0
+	bl ov34_022DC8B8
+	str fp, [r5, #0xc]
+#else
 	mov r0, #0x1e
 	bl ov34_022DC908
 	str fp, [r5, #0xc]
@@ -220,6 +247,7 @@ _022DC53C:
 	bl ov34_022DC8B8
 	mov r0, #2
 	str r0, [r5, #0xc]
+#endif
 _022DC54C:
 	bl sub_02006E14
 	bl sub_020039E4
@@ -248,7 +276,9 @@ _022DC59C: .word ov34_022DD0A0
 _022DC5A0: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 _022DC5A4: .word ov34_022DC5B0
 _022DC5A8: .word ov34_022DCFF4
+#ifndef EUROPE
 _022DC5AC: .word ov34_022DD004
+#endif
 	arm_func_end ExplorersOfSkyMain
 
 	arm_func_start ov34_022DC5B0
@@ -298,7 +328,11 @@ _022DC64C:
 	cmp r0, #3
 	mov r0, #0
 	bne _022DC678
+#ifdef EUROPE
+	mov r1, #0x100
+#else
 	mov r1, r0
+#endif
 	bl sub_02008F3C
 	mov r0, #1
 	mov r1, #0
@@ -307,7 +341,11 @@ _022DC64C:
 	bl sub_02008ED0
 	b _022DC6C4
 _022DC678:
+#ifdef EUROPE
+	mov r1, r0
+#else
 	sub r1, r0, #0x100
+#endif
 	bl sub_02008F3C
 	mov r0, #1
 	mvn r1, #0xff
@@ -522,6 +560,7 @@ _022DC900: .word ov34_022DD0B0
 _022DC904: .word ov34_022DD104
 	arm_func_end ov34_022DC8B8
 
+#ifndef EUROPE
 	arm_func_start ov34_022DC908
 ov34_022DC908: ; 0x022DC908
 	stmdb sp!, {r4, lr}
@@ -547,6 +586,7 @@ _022DC944:
 _022DC950: .word ov34_022DD0B0
 _022DC954: .word ov34_022DD104
 	arm_func_end ov34_022DC908
+#endif
 
 	arm_func_start ov34_022DC958
 ov34_022DC958: ; 0x022DC958
@@ -965,7 +1005,11 @@ ov34_022DCDF4: ; 0x022DCDF4
 _022DCE7C: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 _022DCE80: .word DUNGEON_DEBUG_MENU
 _022DCE84: .word 0x00000408
+#ifdef EUROPE
+_022DCE88: .word 0x00003D1E
+#else
 _022DCE88: .word 0x00003D1C
+#endif
 	arm_func_end ov34_022DCDF4
 
 	arm_func_start ov34_022DCE8C
@@ -1083,9 +1127,11 @@ _022DCFF0: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	.global ov34_022DCFF4
 ov34_022DCFF4:
 	.byte 0x42, 0x41, 0x43, 0x4B, 0x2F, 0x6E, 0x5F, 0x6C, 0x6F, 0x67, 0x6F, 0x2E, 0x62, 0x67, 0x70, 0x00
+#ifndef EUROPE
 	.global ov34_022DD004
 ov34_022DD004:
 	.byte 0x42, 0x41, 0x43, 0x4B, 0x2F, 0x77, 0x5F, 0x65, 0x73, 0x72, 0x62, 0x2E, 0x62, 0x67, 0x70, 0x00
+#endif
 	.global OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
 OVERLAY34_UNKNOWN_STRUCT__NA_22DD014:
 	.byte 0x0F, 0x00, 0x00, 0x00
@@ -1104,9 +1150,14 @@ OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C:
 	.word ov34_022DCED8
 	.global DUNGEON_DEBUG_MENU
 DUNGEON_DEBUG_MENU:
-	.byte 0x1D, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.byte 0x1E, 0x3D, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x1F, 0x3D, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
-	.byte 0x20, 0x3D, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+#ifdef EUROPE
+#define DUNGEON_DEBUG_MENU_OFFSET 2
+#else
+#define DUNGEON_DEBUG_MENU_OFFSET 0
+#endif
+	.byte 0x1D + DUNGEON_DEBUG_MENU_OFFSET, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.byte 0x1E + DUNGEON_DEBUG_MENU_OFFSET, 0x3D, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x1F + DUNGEON_DEBUG_MENU_OFFSET, 0x3D, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
+	.byte 0x20 + DUNGEON_DEBUG_MENU_OFFSET, 0x3D, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 
 	.data
 	.global OVERLAY34_UNKNOWN_POINTER__NA_22DD080
