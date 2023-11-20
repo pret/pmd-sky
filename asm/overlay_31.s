@@ -31,10 +31,6 @@ ov31_02382864: ; 0x02382864
 	sub sp, sp, #0x254
 	mov sl, r0
 	bl GetLeader
-	arm_func_end ov31_02382864
-
-	arm_func_start ov31_02382874
-ov31_02382874: ; 0x02382874
 	ldr r4, [r0, #0xb4]
 	sub r2, sp, #4
 	add r0, r4, #0x100
@@ -105,19 +101,11 @@ ov31_02382874: ; 0x02382874
 	str r0, [sp, #0x228]
 	ldr r0, _02382AAC ; =0x000008B7
 	bl StringFromMessageId
-	arm_func_end ov31_02382874
-
-	arm_func_start ov31_0238298C
-ov31_0238298C: ; 0x0238298C
 	add r1, sp, #0x204
 	mov r2, r0
 	str r1, [sp]
 	ldr r3, _02382AB0 ; =0x0000C402
 	add r0, sp, #0x104
-	arm_func_end ov31_0238298C
-
-	arm_func_start ov31_023829A0
-ov31_023829A0: ; 0x023829A0
 	mov r1, #0x100
 	bl PreprocessString
 	mov r0, sl
@@ -129,10 +117,6 @@ ov31_023829A0: ; 0x023829A0
 	mov r8, r7
 	add r6, sp, #4
 	ldr r5, _02382AB4 ; =0x000003E7
-	arm_func_end ov31_023829A0
-
-	arm_func_start ov31_023829CC
-ov31_023829CC: ; 0x023829CC
 	add r4, sp, #0x204
 	ldr fp, _02382AB8 ; =DUNGEON_PTR
 	b _02382A88
@@ -161,10 +145,6 @@ _02382A08:
 	str r0, [sp, #0x228]
 	ldrsh r1, [sb, #0x12]
 	ldrsh r0, [sb, #0x16]
-	arm_func_end ov31_023829CC
-
-	arm_func_start ov31_02382A34
-ov31_02382A34: ; 0x02382A34
 	add r0, r1, r0
 	cmp r0, r5
 	movgt r0, r5
@@ -204,7 +184,7 @@ _02382AB0: .word 0x0000C402
 _02382AB4: .word 0x000003E7
 _02382AB8: .word DUNGEON_PTR
 _02382ABC: .word 0x000008B8
-	arm_func_end ov31_02382A34
+	arm_func_end ov31_02382864
 
 	arm_func_start DungeonMenuSwitch
 DungeonMenuSwitch: ; 0x02382AC0
@@ -7876,7 +7856,11 @@ _023893F4:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023893FC: .word OVERLAY31_UNKNOWN_POINTER__NA_238A28C
+#ifdef EUROPE
+_02389400: .word 0x00003FA9
+#else
 _02389400: .word 0x00003FA7
+#endif
 _02389404: .word DUNGEON_D_BOX_LAYOUT_27
 _02389408: .word 0x00401813
 _0238940C: .word DUNGEON_SUBMENU_6
