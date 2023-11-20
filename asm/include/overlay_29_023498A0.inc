@@ -180,7 +180,6 @@
 .public ov30_023829CC
 .public ov30_02382A34
 .public ov30_02382C30
-.public ov30_02382C68
 .public ov30_023842F4
 .public OverlayIsLoaded
 .public PositionIsOnStairs
@@ -279,3 +278,4 @@
 .public sub_020778D0
 .public SubstitutePlaceholderStringTags
 .public UnloadOverlay
+.public WriteQuicksaveData

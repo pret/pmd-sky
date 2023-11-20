@@ -3837,7 +3837,7 @@ ov29_0234CA84: ; 0x0234CA84
 	mov r1, #0x5800
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl ov30_02382C68
+	bl WriteQuicksaveData
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234CAC4: .word ov29_023537E4
