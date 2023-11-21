@@ -14,7 +14,7 @@ ov15_0238A140: ; 0x0238A140
 	add r0, r0, #0x88
 	bl InitPreprocessorArgs
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r2, _0238A228 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r1, #3
 	ldr r3, [r2]
@@ -94,7 +94,7 @@ _0238A250: ; jump table
 	b _0238A4B4 ; case 12
 _0238A284:
 	ldrsb r0, [r1, #0x80]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238A4D4
 	ldr r0, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -104,12 +104,12 @@ _0238A284:
 	b _0238A4D4
 _0238A2A8:
 	ldrsb r0, [r1, #0x83]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0x80]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238A4D4
 	cmp r4, #4
@@ -194,12 +194,12 @@ _0238A3A0:
 _0238A3E4:
 #ifdef EUROPE
 	mov r0, #1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 #endif
 	ldr r0, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
-	bl ShowDBox
+	bl ShowDialogueBox
 	mov r0, #5
 	bl ov15_0238A4E8
 	b _0238A4D4
@@ -244,7 +244,7 @@ _0238A444:
 _0238A488:
 #ifdef EUROPE
 	mov r0, #1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 #else
 	ldr r0, _0238A4E4 ; =ov15_0238B0CC
 	bl DebugPrint0
@@ -252,7 +252,7 @@ _0238A488:
 	ldr r0, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
-	bl ShowDBox
+	bl ShowDialogueBox
 	mov r0, #5
 	bl ov15_0238A4E8
 	b _0238A4D4
@@ -261,7 +261,7 @@ _0238A4AC:
 	ldmia sp!, {r4, pc}
 _0238A4B4:
 	ldrsb r0, [r1, #0x80]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238A4D4
 	ldr r0, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -314,7 +314,7 @@ _0238A548:
 	ldrsb r0, [r3, #0x80]
 	add r2, r2, #0x374
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238A56C:
 	ldrsb r1, [r3, #0x68]
@@ -355,7 +355,7 @@ _0238A5CC:
 	ldr r2, _0238AD1C ; =0x00000376
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238A608:
 	bl GetMoneyStored
@@ -367,18 +367,18 @@ _0238A608:
 	ldr r3, [r3]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238A634:
 	ldr r0, _0238AD24 ; =BANK_D_BOX_LAYOUT_2
 	ldr r1, _0238AD28 ; =ov15_0238ADC4
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r2, [r1]
 	strb r0, [r2, #0x82]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0x80]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238AD2C ; =ov15_0238B0E0
 	bl DebugPrint0
 	mov r1, #4
@@ -387,7 +387,7 @@ _0238A634:
 	ldr r1, _0238AD34 ; =0x00300013
 	mov r2, #0
 	ldr r3, _0238AD38 ; =BANK_MAIN_MENU
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
@@ -398,7 +398,7 @@ _0238A68C:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r2, #1
 	ldr r1, [r0]
@@ -422,7 +422,7 @@ _0238A68C:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238A708:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
@@ -432,7 +432,7 @@ _0238A708:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r2, #1
 	ldr r1, [r0]
@@ -457,7 +457,7 @@ _0238A708:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238A790:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -465,7 +465,7 @@ _0238A790:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238A7AC:
 	ldr r0, _0238AD4C ; =ov15_0238B0F4
@@ -495,7 +495,7 @@ _0238A7AC:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238A820:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
@@ -503,7 +503,7 @@ _0238A820:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
@@ -527,7 +527,7 @@ _0238A820:
 	mov r2, #0x37c
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r1, #1
 	ldr r0, [r0]
@@ -547,7 +547,7 @@ _0238A8AC:
 	add r2, ip, #0x37c
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238A8E8:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -559,11 +559,11 @@ _0238A8E8:
 	add r1, ip, #0x3000
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238A914:
 	ldrsb r0, [r3, #0x80]
-	bl ShowDBox
+	bl ShowDialogueBox
 	bl GetMoneyStored
 	ldr r2, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r1, _0238AD54 ; =0x0098967F
@@ -601,7 +601,7 @@ _0238A95C:
 	bl DebugPrint0
 	ldr r0, _0238AD24 ; =BANK_D_BOX_LAYOUT_2
 	ldr r1, _0238AD28 ; =ov15_0238ADC4
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r2, #0
 	ldr r3, [r1]
@@ -611,7 +611,7 @@ _0238A95C:
 	ldr r0, _0238AD64 ; =BANK_D_BOX_LAYOUT_3
 	ldr r3, _0238AD68 ; =ov15_0238AE6C
 	str r2, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 #ifdef EUROPE
 	ldr r2, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r1, #0
@@ -638,7 +638,7 @@ _0238A95C:
 	b _0238AD08
 _0238AA08:
 	ldrsb r0, [r3, #0x80]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
@@ -667,7 +667,7 @@ _0238AA08:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238AA88:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
@@ -675,7 +675,7 @@ _0238AA88:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
@@ -692,7 +692,7 @@ _0238AA88:
 	strb r2, [r1, #0x83]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
-	bl ShowDBox
+	bl ShowDialogueBox
 	bl GetMoneyCarried
 	ldr r1, _0238AD6C ; =0x0001869F
 	cmp r0, r1
@@ -706,7 +706,7 @@ _0238AA88:
 	mov r2, #0x380
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238AB20:
 	bl GetMoneyStored
@@ -721,7 +721,7 @@ _0238AB20:
 	add r2, ip, #0x380
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238AB58:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -737,7 +737,7 @@ _0238AB58:
 	ldr r3, [r3]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238AB94:
 	bl GetMoneyCarried
@@ -777,7 +777,7 @@ _0238ABD4:
 	bl DebugPrint0
 	ldr r0, _0238AD24 ; =BANK_D_BOX_LAYOUT_2
 	ldr r1, _0238AD28 ; =ov15_0238ADC4
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r2, #0
 	ldr r3, [r1]
@@ -787,7 +787,7 @@ _0238ABD4:
 	ldr r0, _0238AD64 ; =BANK_D_BOX_LAYOUT_3
 	ldr r3, _0238AD68 ; =ov15_0238AE6C
 	str r2, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 #ifdef EUROPE
 	ldr r2, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r1, #0
@@ -814,7 +814,7 @@ _0238ABD4:
 	b _0238AD08
 _0238AC80:
 	ldrsb r0, [r3, #0x80]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
@@ -843,7 +843,7 @@ _0238AC80:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238AD08
 _0238AD00:
 	ldrsb r0, [r3, #0x82]
@@ -1061,7 +1061,7 @@ _0238AF94:
 	b _0238B048
 _0238AFB0:
 	ldrsb r0, [r1, #0x80]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238B048
 	ldr r0, _0238B050 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -1087,7 +1087,7 @@ _0238AFF4:
 	ldr r0, _0238B050 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0238B050 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r3, #3
 	ldr r2, [r0]

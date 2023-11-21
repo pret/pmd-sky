@@ -40,7 +40,7 @@ _0234ECA4:
 	ldrsh r0, [r4, #0xc]
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl sub_02056264
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -58,7 +58,7 @@ _0234ECE4:
 	add sl, sb, r5, lsl #5
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdxVeneer
+	bl ov29_022F9C34
 	strb r0, [sl, #4]
 	str r7, [sl, #0x1c]
 	str r6, [sb, r5, lsl #5]
@@ -101,7 +101,7 @@ _0234ED84:
 	cmp r0, #0
 	beq _0234EDA4
 	ldrsh r0, [r6, #8]
-	bl sub_02056264
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -568,7 +568,7 @@ _0234F374:
 	ldr r3, _0234F3F0 ; =ov29_0234F430
 	add r2, sp, #0xc
 	str ip, [sp, #8]
-	bl sub_020305E4
+	bl CreateAdvancedTextBox2
 	strb r0, [r4, #2]
 	b _0234F3D4
 _0234F398:
@@ -1250,7 +1250,7 @@ ov29_0234FC50: ; 0x0234FC50
 	str r0, [r2]
 	strh r4, [r0, #2]
 	ldr r0, _0234FCA4 ; =ov29_023534B4
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0234FC9C ; =ov29_02353848
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -4259,8 +4259,8 @@ ov29_023535A4:
 	.global ov29_023535A8
 ov29_023535A8:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov29_023535AC
-ov29_023535AC:
+	.global LOADED_ATTACK_SPRITE_FILE_INDEX
+LOADED_ATTACK_SPRITE_FILE_INDEX:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 	.global EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST
 EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST:

@@ -22,6 +22,7 @@
 .public GetTileSafe
 .public HandleFaint
 .public HandleSir0Translation
+.public InitAnimationControlWithSet__0201C168
 .public IsCurrentTilesetBackground
 .public IsExperienceLocked
 .public IsFloorOver
@@ -84,7 +85,6 @@
 .public sub_020094C4
 .public sub_0201B43C
 .public sub_0201BFF0
-.public sub_0201C0CC
 .public sub_0201E380
 .public sub_0201F598
 .public sub_0204AE80

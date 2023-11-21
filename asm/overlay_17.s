@@ -168,14 +168,14 @@ ov17_0238A364: ; 0x0238A364
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A3C4
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A3C4
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -224,7 +224,7 @@ _0238A438:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A494
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	arm_func_end ov17_0238A364
 
@@ -235,7 +235,7 @@ ov17_0238A468: ; 0x0238A468
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -256,14 +256,14 @@ _0238A4A0:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A4FC
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A4FC
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -300,14 +300,14 @@ _0238A540:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A59C
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A59C
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -397,14 +397,14 @@ _0238A6A8:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A704
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A704
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -523,7 +523,7 @@ _0238A840:
 	ldr r4, _0238AFA4 ; =0x00003008
 	bne _0238A898
 	ldr r0, _0238AFA8 ; =ASSEMBLY_D_BOX_LAYOUT_4
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mov r2, #0
 	ldr r3, [r1]
@@ -534,7 +534,7 @@ _0238A898:
 	ldr r0, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r0]
 	ldr r0, [r1, #0x70]
@@ -646,7 +646,7 @@ _0238A9F8:
 	ldrsb r0, [r3]
 	ldrh r2, [r3, #0x7c]
 	add r3, r3, #0xc
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _0238AA30:
 	ldr r0, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r0]
@@ -698,7 +698,7 @@ _0238AABC:
 	ldr r1, _0238AFE8 ; =0x00300013
 	ldr r3, _0238AFEC ; =ASSEMBLY_MAIN_MENU_2
 	str r2, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -721,7 +721,7 @@ _0238AB04:
 	ldr r1, _0238AFF4 ; =0x00300033
 	ldr r3, _0238AFF8 ; =ASSEMBLY_MENU_CONFIRM
 	add r2, r2, #0x1b4
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r1]
 	strb r0, [r1, #3]
@@ -880,7 +880,7 @@ _0238AD54:
 	ldr r1, _0238B01C ; =0x00000213
 	mov r3, r7
 	add r2, r2, #0x11c
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r1]
 	strb r0, [r1, #4]
@@ -962,7 +962,7 @@ _0238AE6C:
 	ldr r3, _0238B024 ; =ASSEMBLY_MAIN_MENU_1
 	mov r1, #0x13
 	str r2, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r1]
 	strb r0, [r1, #8]
@@ -977,7 +977,7 @@ _0238AEC8:
 	tst r0, #1
 	beq _0238AEE8
 	ldrsb r0, [r4]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r0, #0
 	bne _0238AEEC
@@ -1158,13 +1158,13 @@ ov17_0238B10C: ; 0x0238B10C
 	ldr r0, _0238B190 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
 	ldr r0, _0238B190 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #2
 	beq _0238B150
 	cmp r0, #3
@@ -1328,7 +1328,7 @@ ov17_0238B2B4: ; 0x0238B2B4
 	tst r0, #8
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	bl sub_0203AAB0
 	ldr r1, _0238B368 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r1]
@@ -1385,13 +1385,13 @@ ov17_0238B390: ; 0x0238B390
 	ldr r0, _0238B4CC ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, r5, r6, r7, r8, sb, sl, pc}
 	ldr r0, _0238B4CC ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	sub r0, r0, #5
 	cmp r0, #7
 	addls pc, pc, r0, lsl #2
@@ -1686,13 +1686,13 @@ ov17_0238B738: ; 0x0238B738
 	ldr r0, _0238B7A4 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
 	ldr r0, _0238B7A4 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #0
 	beq _0238B780
 	cmp r0, #1
@@ -1924,13 +1924,13 @@ ov17_0238B9FC: ; 0x0238B9FC
 	mov r4, #0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
 	ldr r0, _0238BA7C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #3
 	beq _0238BA3C
 	cmp r0, #4

@@ -1,6 +1,6 @@
 #pragma once
-.public __divsi3
 .public _020AFC70
+.public __divsi3
 .public AbilityIsActiveVeneer
 .public CalcSpeedStageWrapper
 .public CalcStatusDuration
@@ -28,6 +28,7 @@
 .public GetWeatherColorTable
 .public HasLowHealth
 .public InitRender3dElement64
+.public InitTilesetBuffer
 .public IsBackgroundTileset
 .public IsCurrentFixedRoomBossFight
 .public IsGoldenChamber
@@ -40,7 +41,6 @@
 .public ov10_022C2638
 .public ov10_022C2654
 .public ov10_022C26A0
-.public ov10_022C26BC
 .public ov10_022C2720
 .public ov29_022DE0EC
 .public ov29_022DE608

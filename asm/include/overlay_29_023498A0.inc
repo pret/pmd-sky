@@ -5,7 +5,8 @@
 .public BAG_ITEMS_PTR_MIRROR
 .public CanSeeTarget
 .public ChangeDungeonMusic
-.public CreateDBox
+.public CreateAlertBox
+.public CreateDialogueBox
 .public CreatePortraitBox
 .public DebugPrint0
 .public DUNGEON_PTR
@@ -17,7 +18,7 @@
 .public EntityIsValid__0234987C
 .public FemaleToMaleForm
 .public FixedRoomIsSubstituteRoom
-.public FreeDBox
+.public FreeDialogueBox
 .public FreePortraitBox
 .public GetAcceptedMission
 .public GetDungeonPtrMaster
@@ -48,10 +49,10 @@
 .public IsCherrim
 .public IsCurrentMissionType
 .public IsCurrentMissionTypeExact
-.public IsDBoxActive
 .public IsDestinationFloor
 .public IsDestinationFloorWithFleeingOutlaw
 .public IsDestinationFloorWithHiddenOutlaw
+.public IsDialogueBoxActive
 .public IsExperienceLocked
 .public IsFullFloorFixedRoom
 .public IsFutureDungeon
@@ -194,7 +195,7 @@
 .public ShouldDisplayEntityWrapper
 .public ShouldMonsterHeadToStairs
 .public ShowPortraitBox
-.public ShowStringInDBox
+.public ShowStringInDialogueBox
 .public StringFromMessageId
 .public strlen
 .public strncmp
@@ -254,7 +255,6 @@
 .public sub_0202ABB0
 .public sub_0202F334
 .public sub_0202F474
-.public sub_0202FFB0
 .public sub_02030044
 .public sub_0203010C
 .public sub_020301F4

@@ -403,7 +403,7 @@ ov29_022F0AA4: ; 0x022F0AA4
 	ldmneia sp!, {r3, pc}
 	ldr r0, _022F0AD8 ; =ov29_023526A8
 	ldr r1, _022F0ADC ; =ov29_022F0B10
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _022F0AD4 ; =ov29_023535A4
 	strb r0, [r1]
 	ldmia sp!, {r3, pc}
@@ -1403,7 +1403,7 @@ _022F18B4:
 	bl GetTileSafe
 	str r0, [sp, #0x78]
 	mov r0, #7
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, [sp, #0x38]
 	cmp r0, #0
 	beq _022F198C
@@ -1786,7 +1786,7 @@ _022F1E3C:
 	beq _022F1E90
 	bl sub_0204AF78
 	mov r0, #4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #0
 	mov r1, #1
 	bl OpenMessageLog
@@ -2337,7 +2337,7 @@ _022F25D8:
 	bne _022F2748
 	ldrb r1, [fp, #0x4c]
 	mov r0, r6
-	bl CanMonsterMoveInDirection
+	bl ov29_0230105C
 	cmp r0, #0
 	moveq r0, #0
 	beq _022F2748
@@ -2428,7 +2428,7 @@ _022F2748:
 _022F27C8:
 	mov r0, r6
 	mov r1, r7
-	bl ov29_02300E78
+	bl CanMonsterMoveInDirection
 	cmp r0, #0
 	orreq r0, r8, #2
 	andeq r8, r0, #0xff
@@ -2481,7 +2481,7 @@ _022F2864:
 	strh r2, [r1, #0xd8]
 	ldrh r2, [sp, #0xb4]
 	strh r2, [r1, #0xda]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _022F289C:
 	ldr r0, _022F1DF0 ; =ov29_0237C694
 	ldrh r0, [r0]
@@ -2599,7 +2599,7 @@ _022F2A00:
 	cmp r0, #0
 	bne _022F2A70
 	mov r0, #4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldrb r0, [sp, #0xb7]
 	ldrb r1, [sp, #0xb8]
 	mov r2, #1
@@ -2612,7 +2612,7 @@ _022F2A00:
 	b _022F2A9C
 _022F2A70:
 	mov r0, #4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldrb r0, [sp, #0xb7]
 	ldrb r1, [sp, #0xb8]
 	mov r2, #0
@@ -3633,7 +3633,7 @@ _022F38F4:
 	bne _022F390C
 	mov r0, r6
 	mov r1, sb
-	bl ov29_02300E78
+	bl CanMonsterMoveInDirection
 _022F390C:
 	cmp r0, #0
 	andne r0, sb, #7
@@ -3707,7 +3707,7 @@ _022F39D8:
 	tst r0, #0xff
 	beq _022F3A40
 	ldrsh r0, [r7, #8]
-	bl CheckTeamMemberIdxVeneer
+	bl ov29_022F9C34
 	cmp r0, #0
 	ldrsh r0, [sb, #0xc]
 	ldreqsh r8, [r7, #8]
@@ -4019,7 +4019,7 @@ _022F3E28:
 _022F3E5C:
 	mov r0, #1
 	strb r5, [sb, #0x4c]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _022F3E68:
 	ldr r1, _022F3E90 ; =ov29_0237C9A4
 	mov r0, #0

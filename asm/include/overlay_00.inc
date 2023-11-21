@@ -1,6 +1,4 @@
 #pragma once
-.public __divsi3
-.public __udivsi3
 .public _02000AAC
 .public _02000BDC
 .public _02000BF4
@@ -12,6 +10,8 @@
 .public _020AEDB0
 .public _022B966C
 .public _022BCA70
+.public __divsi3
+.public __udivsi3
 .public _start_AutoloadDoneCallback
 .public abs
 .public ArrayCopy16
@@ -23,6 +23,8 @@
 .public EnableIrqFlag
 .public FileInit
 .public GetDebugFlag
+.public GetLanguage
+.public GetProcessorMode
 .public LoadOverlay
 .public MemAlloc
 .public memcmp
@@ -60,6 +62,7 @@
 .public ov09_0233CA80
 .public ov09_0233CBC8
 .public ov09_0233CBF8
+.public PlayBgmByIdVeneer
 .public RandInt
 .public SetIrqFlag
 .public snprintf
@@ -101,7 +104,6 @@
 .public sub_02017A68
 .public sub_02017A80
 .public sub_02017ACC
-.public sub_02017B58
 .public sub_020184B4
 .public sub_020184C0
 .public sub_0201BE28
@@ -175,7 +177,6 @@
 .public sub_0207B040
 .public sub_0207B17C
 .public sub_0207B1E8
-.public sub_0207B848
 .public sub_0207B854
 .public sub_0207B9EC
 .public sub_0207BA08
@@ -238,4 +239,3 @@
 .public UnloadOverlay
 .public WaitForever2
 .public wcslen
-.public GetLanguage

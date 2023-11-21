@@ -2514,7 +2514,7 @@ _0234791C:
 	add r2, sp, #0x48
 	mov r0, sl
 	str r1, [r2, r6, lsl #3]
-	bl ov29_02348020
+	bl DoesProjectileHitTarget
 	add r1, sp, #0x48
 	add r1, r1, r6, lsl #3
 	strb r0, [r1, #4]

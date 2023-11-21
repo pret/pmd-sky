@@ -1,6 +1,11 @@
 #pragma once
+.public AddItemToStorage
 .public CanSendItem
+.public ConvertStorageItemAtIdxToBulkItem
+.public ConvertStorageItemAtIdxToItem
 .public CreateAdvancedMenu
+.public CreateAdvancedTextBox1
+.public CreateScrollBox1
 .public DebugPrint0
 .public FreeAdvancedMenu
 .public GetAdvancedMenuCurrentOption
@@ -11,6 +16,7 @@
 .public GetKeyboardStatus
 .public GetKeyboardStringResult
 .public GetLanguageType
+.public GetMainTeamNameWithCheck
 .public GetMaxItemsAllowed
 .public GetMaxReachedFloor
 .public GetMaxRescueAttempts
@@ -20,7 +26,6 @@
 .public GetSosMailCount
 .public GetStringFromFileVeneer
 .public GetTeamMember
-.public GetMainTeamNameWithCheck
 .public IncrementNbSkyGiftsSent
 .public InitPreprocessorArgs
 .public InitStandardItem
@@ -100,6 +105,7 @@
 .public ov01_023398B0
 .public ov01_02339988
 .public ov01_0233C1B4
+.public PlaySeVolumeWrapper
 .public PrintIqSkillsMenu
 .public RandInt
 .public SetQuestionMarks
@@ -112,12 +118,8 @@
 .public sub_02006BFC
 .public sub_02006C8C
 .public sub_0200D310
-.public ConvertStorageItemAtIdxToBulkItem
-.public ConvertStorageItemAtIdxToItem
 .public sub_02010044
 .public sub_02010154
-.public AddItemToStorage
-.public sub_02017CCC
 .public sub_02025404
 .public sub_0202561C
 .public sub_02026214
@@ -125,10 +127,8 @@
 .public sub_02029F88
 .public sub_02029FBC
 .public sub_0202BCBC
-.public sub_0202E3CC
 .public sub_0202E6C8
 .public sub_0202E6E4
-.public sub_020305B4
 .public sub_020308A0
 .public sub_020308C4
 .public sub_02030A18

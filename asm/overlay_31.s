@@ -290,13 +290,13 @@ _02382BEC:
 	ldr r2, [r2]
 	strb r0, [r2]
 	ldr r0, _02382DA0 ; =DUNGEON_D_BOX_LAYOUT_4
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r2, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r1, _02382DA4 ; =DungeonMenuSwitch
 	ldr r2, [r2]
 	strb r0, [r2, #2]
 	ldr r0, _02382DA8 ; =DUNGEON_D_BOX_LAYOUT_2
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r2, [r1]
 	strb r0, [r2, #1]
@@ -599,7 +599,7 @@ _02382FF4:
 	ldr r3, _02383234 ; =ov31_02382F68
 	add r2, sp, #0xa0
 	str r4, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r2, _02383218 ; =ov31_0238A2A0
 	mov r1, r4
 	ldr r3, [r2, #4]
@@ -694,7 +694,7 @@ _02383170:
 	ldr r3, _02383244 ; =ov31_02383248
 	add r2, sp, #8
 	str ip, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02383218 ; =ov31_0238A2A0
 	mov r2, #4
 	ldr r3, [r1, #4]
@@ -1097,7 +1097,7 @@ ov31_0238367C: ; 0x0238367C
 	mov ip, r4, lsl #0x10
 	mov r4, ip, lsr #0x10
 	stmib sp, {r4, lr}
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	mov r5, r0
 	mov r4, #0x16
 _023836F0:
@@ -1524,7 +1524,7 @@ _02383C44:
 	beq _02383CEC
 	ldr r0, _023848B0 ; =DUNGEON_D_BOX_LAYOUT_10
 	ldr r1, _023848B4 ; =ov31_02383854
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r1]
 	add r1, r1, #0x1000
@@ -1533,7 +1533,7 @@ _02383C44:
 _02383CEC:
 	ldr r0, _023848B8 ; =DUNGEON_D_BOX_LAYOUT_11
 	mov r1, #0
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r2, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r3, #0
 	ldr r1, [r2]
@@ -1562,7 +1562,7 @@ _02383D1C:
 	ldr r3, _023848AC ; =ov31_02383478
 	add r2, r2, #0x9c
 	str r4, [sp, #0xc]
-	bl ov10_022BCA80
+	bl CreateInventoryMenu
 	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r1]
 	add r1, r1, #0x1000
@@ -1951,7 +1951,7 @@ _023842F4:
 	cmp r0, #0
 	bne _02384314
 	mov r0, #5
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02384314:
 	bl ov29_02346E5C
 	bl SortItemsInBag
@@ -3167,7 +3167,7 @@ HandleMovesMenu: ; 0x02385404
 	cmp r0, #1
 	bne _0238547C
 	ldr r0, _02385F74 ; =DUNGEON_D_BOX_LAYOUT_14
-	bl CreateDBox
+	bl CreateDialogueBox
 	mov r1, #0
 	str r0, [sp, #0x14]
 	bl sub_0202F474
@@ -3177,11 +3177,11 @@ HandleMovesMenu: ; 0x02385404
 	ldr r0, [sp, #0x14]
 	ldr r1, _02385F7C ; =0x00000404
 	mov r3, #0
-	bl ShowStringInDBox
+	bl ShowStringInDialogueBox
 	b _023854AC
 _0238547C:
 	ldr r0, _02385F80 ; =DUNGEON_D_BOX_LAYOUT_16
-	bl CreateDBox
+	bl CreateDialogueBox
 	mov r1, #0
 	str r0, [sp, #0x14]
 	bl sub_0202F474
@@ -3191,7 +3191,7 @@ _0238547C:
 	ldr r0, [sp, #0x14]
 	ldr r1, _02385F7C ; =0x00000404
 	mov r3, #0
-	bl ShowStringInDBox
+	bl ShowStringInDialogueBox
 _023854AC:
 	ldr r0, [sp]
 	ldr r6, [r0]
@@ -3911,7 +3911,7 @@ _02385D34:
 	cmp r1, r0
 	bne _02385D78
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02385D78:
 	add r0, sp, #0x1c
 	bl ov29_0234E988
@@ -3945,7 +3945,7 @@ _02385DD4:
 	b _02385DEC
 _02385DE4:
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02385DEC:
 	cmp r5, #0x14
 	bne _02385E4C
@@ -4025,7 +4025,7 @@ _02385EFC:
 	ldr r0, [sp, #0x14]
 	bl sub_0202F334
 	ldr r0, [sp, #0x14]
-	bl FreeDBox
+	bl FreeDialogueBox
 	mov r0, #8
 	mov r1, #0x1e
 	bl ov29_022EA370
@@ -5027,7 +5027,7 @@ _02386C90:
 	bl ov29_022EA62C
 	ldr r0, _02386F10 ; =DUNGEON_D_BOX_LAYOUT_18
 	ldr r1, _02386F14 ; =ov31_02386B28
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r1, [r1]
 	strb r0, [r1, #0x160]
@@ -5135,7 +5135,7 @@ _02386D70:
 	str r2, [sp, #4]
 	mov r2, #0
 	str r2, [sp, #8]
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	mov r6, r0
 	mov r4, #0x16
 _02386E3C:
@@ -5468,7 +5468,7 @@ _02387278:
 	bge _023872FC
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdxVeneer
+	bl ov29_022F9C34
 	cmp r0, #0
 	movne r6, #0
 _023872FC:
@@ -5962,7 +5962,7 @@ _02387958:
 	ldrsh r0, [r6, #0xc]
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdxVeneer
+	bl ov29_022F9C34
 	cmp r0, #0
 	ldrsh r1, [r6, #0x12]
 	ldrsh r0, [r6, #0x16]
@@ -6124,7 +6124,7 @@ _02387B80:
 	ldr r2, [r2]
 	strb r0, [r2, #0x695]
 	ldr r0, _023880C0 ; =DUNGEON_D_BOX_LAYOUT_24
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r3, _023880C4 ; =0x00000A36
 	ldr r2, [r1]
@@ -6149,7 +6149,7 @@ _02387B80:
 	add r2, sp, #0x180
 	mov r1, #0x800
 	str r5, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r1, [r1]
 	strb r0, [r1, #0x697]
@@ -6170,7 +6170,7 @@ _02387CA8:
 	add r2, sp, #0x180
 	mov r1, #0x800
 	str r5, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r1, [r1]
 	strb r0, [r1, #0x697]
@@ -6572,7 +6572,7 @@ _0238826C:
 	ldrsh r0, [r6, #0xc]
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdxVeneer
+	bl ov29_022F9C34
 	str r0, [sp, #4]
 	b _023882E8
 _023882A0:
@@ -6589,7 +6589,7 @@ _023882A0:
 	ldrsh r5, [r6, #0xe]
 	ldrsh r8, [r6, #0x10]
 	ldrsh r0, [r6, #8]
-	bl CheckTeamMemberIdx
+	bl sub_02056228
 	str r0, [sp, #4]
 	mov r1, r6
 	add r0, sp, #0xc
@@ -6826,7 +6826,7 @@ _023885DC:
 	bne _02388638
 	add r0, sl, #0x5c0
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r0, #2
 	str r0, [r4, #0x400]
 	ldr r0, [sl, #0x6b8]
@@ -6835,7 +6835,7 @@ _023885DC:
 _02388638:
 	mov r1, r5
 	add r0, sl, #0x5c0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _02388644:
 	ldrsb r0, [sl]
 	bl sub_0202AB40
@@ -7311,7 +7311,7 @@ _02388C34:
 	ldr r3, _02388D50 ; =ov31_02388D54
 	add r2, sp, #8
 	str ip, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02388D30 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	ldr r2, [r1]
 	strb r0, [r2]
@@ -7569,7 +7569,7 @@ _0238900C:
 	tst r0, #0xff
 	beq _02389058
 	ldrsh r0, [fp, #8]
-	bl ov29_022F9C40
+	bl CheckTeamMemberIdxVeneer
 	cmp r0, #0
 	bne _02389058
 	ldrsh r1, [fp, #0xc]
@@ -7821,7 +7821,7 @@ _02389344:
 	ldr r3, _02389418 ; =ov31_023891A8
 	add r2, sp, #8
 	str ip, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r2, #4
 	ldr r3, [r1]
@@ -8262,7 +8262,7 @@ ov31_0238994C: ; 0x0238994C
 	mov r2, r4
 	strb ip, [sp, #4]
 	strb r3, [sp, #5]
-	bl sub_0202F8DC
+	bl CreateTextBox2
 	strb r0, [r4]
 	mov r0, #0xb
 	strb r0, [r4, #1]
@@ -8534,7 +8534,7 @@ ov31_02389CC0: ; 0x02389CC0
 	ldr r1, _02389D78 ; =0x00001013
 	ldr r3, _02389D7C ; =0x00000A3B
 	str r2, [sp, #8]
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	mov r7, r0
 	mov r6, #0x3e
 _02389D1C:

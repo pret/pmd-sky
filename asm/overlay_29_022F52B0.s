@@ -856,7 +856,7 @@ _022F5E1C:
 	bl GetActiveTeamMember
 	mov r4, r0
 	ldrsh r0, [r4, #8]
-	bl ov29_022F9C40
+	bl CheckTeamMemberIdxVeneer
 	cmp r0, #0
 	addne r5, r5, #3
 	addne r6, r5, #3

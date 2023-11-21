@@ -342,7 +342,7 @@ _0238A5E0:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A5FC
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238A8EC
 _0238A5FC:
@@ -474,7 +474,7 @@ _0238A7B0:
 	cmp r1, r0
 	bne _0238A7DC
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _0238A8F8 ; =OVERLAY26_UNKNOWN_POINTER__NA_238AF60
 	ldr r1, [r1]
 	strb r0, [r1, #4]
@@ -485,7 +485,7 @@ _0238A7DC:
 	mov r2, r4
 	ldrsb r0, [r3, #4]
 	add r3, r3, #8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	mov r0, #1
 _0238A7FC:
 	cmp r0, #0
@@ -503,7 +503,7 @@ _0238A824:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A840
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238A8EC
 _0238A840:
@@ -577,7 +577,7 @@ ov26_0238A90C: ; 0x0238A90C
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	beq _0238A93C
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0238A96C ; =OVERLAY26_UNKNOWN_POINTER__NA_238AF60
 	mvn r1, #1
 	ldr r0, [r0]

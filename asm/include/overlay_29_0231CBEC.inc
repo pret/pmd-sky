@@ -10,7 +10,6 @@
 .public CeilFixedPoint
 .public ChangeDungeonMusic
 .public ChangeShayminForme
-.public CheckTeamMemberIdxVeneer
 .public ClearMonsterActionFields
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
@@ -87,6 +86,7 @@
 .public ov29_022F0780
 .public ov29_022F085C
 .public ov29_022F8830
+.public ov29_022F9C34
 .public ov29_022F9C74
 .public ov29_022FA02C
 .public ov29_022FBA54

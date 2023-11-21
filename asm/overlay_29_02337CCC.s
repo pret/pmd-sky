@@ -2927,14 +2927,14 @@ SetMinimapDataE447: ; 0x0233A218
 	arm_func_end SetMinimapDataE447
 
 #ifdef EUROPE
-	arm_func_start ov29_0233AE00_EU
-ov29_0233AE00_EU: ; 0x0233AE00
+	arm_func_start GetMinimapDataE447
+GetMinimapDataE447: ; 0x0233AE00
 	stmdb sp!, {r3, lr}
 	bl GetMinimapData
 	add r0, r0, #0xe000
 	ldrb r0, [r0, #0x447]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_0233AE00_EU
+	arm_func_end GetMinimapDataE447
 #endif
 
 	arm_func_start SetMinimapDataE448

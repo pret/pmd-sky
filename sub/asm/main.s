@@ -961,7 +961,7 @@ _027E0CCC:
 	mov r4, r0
 	and r0, r1, r2
 	strh r0, [r8, #0x86]
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	orr r2, r0, #1
 	add r0, r8, r5, lsl #3
 	add r3, r8, #0x128
@@ -1364,7 +1364,7 @@ _027E12EC:
 	cmp r0, #0
 	cmpeq r1, #0
 	beq _027E19CC
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	orr r0, r0, #1
 	str r0, [r8, #0x738]
 	orr r0, r1, #0
@@ -1430,7 +1430,7 @@ _027E13E0:
 	blt _027E13C4
 	strh r5, [r7, #0xbe]
 _027E13F0:
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	orr r0, r0, #1
 	str r0, [sp, #8]
 	ldr r0, _027E1718 ; =0x00008001
@@ -4377,7 +4377,7 @@ _027E3B68:
 	blo _027E3B68
 	sub r0, r7, #0x40
 	mov r1, #0x42
-	bl sub_03806DD4
+	bl __udivsi3
 	add r2, sp, #0x4e
 	stmia sp, {r2, r5}
 	add r1, sp, #0x1e
@@ -4737,7 +4737,7 @@ _027E4074:
 	moveq r0, #1
 	beq _027E409C
 	ldr r0, _027E445C ; =0x00002710
-	bl sub_03806BC8
+	bl __divsi3
 	add r0, r0, #1
 _027E409C:
 	mov r0, r0, lsl #0x10
@@ -4931,7 +4931,7 @@ _027E42F8:
 	mov r4, r0
 	cmpeq r2, #0
 	beq _027E4388
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	orr r0, r0, #1
 	str r0, [r7, #0x738]
 	orr r0, r1, #0
@@ -5712,7 +5712,7 @@ _027E4DC8:
 	rsb r0, r1, #0x10000
 	strh r0, [r8, #0xbe]
 	strh r1, [r8, #0xc0]
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	orr r1, r1, #0
 	orr r2, r0, #1
 	mov r3, #0
@@ -6449,7 +6449,7 @@ _027E584C:
 	str r0, [r4, #0x7b8]
 	str r0, [r4, #0x7bc]
 _027E5858:
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	orr r1, r1, #0
 	orr r2, r0, #1
 	mov r3, #0
@@ -6934,7 +6934,7 @@ sub_027E5E74: ; 0x027E5E74
 	cmp r0, #0
 	cmpeq r1, #0
 	beq _027E5F68
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	ldr r3, [r4, #0x73c]
 	ldr ip, [r4, #0x738]
 	cmp r3, #0
@@ -10054,7 +10054,7 @@ sub_027E89E0: ; 0x027E89E0
 	ldr r2, [r4, #0x14]
 	str r2, [r0, #0x304]
 	ldr r0, [r4, #0x30]
-	bl sub_03806DD4
+	bl __udivsi3
 	mov r1, r0
 	ldr r0, [r4, #0x2c]
 	bl sub_027E8DDC
@@ -11575,7 +11575,7 @@ sub_027E9E30: ; 0x027E9E30
 	ldrh r0, [r4, #0x6e]
 	mov r1, #0x64
 	mul r0, r6, r0
-	bl sub_03806DD4
+	bl __udivsi3
 	cmp r0, #0x10000
 	movhi r0, #5
 	bhi _027E9E84
@@ -12494,7 +12494,7 @@ sub_027EA9BC: ; 0x027EA9BC
 	mla r2, r5, r0, r2
 	mov r6, r3, lsr #6
 	orr r6, r6, r2, lsl #26
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	adds r0, r6, r0
 	adc r2, r1, #0
 	mov r1, r0
@@ -13020,7 +13020,7 @@ sub_027EB06C: ; 0x027EB06C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #0x1000000
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r1, _027EB0AC ; =0x0380FFF4
 	ldr r1, [r1]
 	add r1, r1, #0x300
@@ -13056,7 +13056,7 @@ sub_027EB0B0: ; 0x027EB0B0
 	strh r1, [r5, #0xc]
 	strh r0, [r5, #0xe]
 	mov r0, #0x1000000
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldrh r2, [r4, #0xb0]
 	mov r1, #0
 	strh r2, [r5, #0x10]
@@ -13669,7 +13669,7 @@ _027EB8DC: .word sub_037F92DC
 sub_027EB8E0: ; 0x027EB8E0
 	stmdb sp!, {r3, lr}
 	mov r0, #0x1000000
-	bl sub_037FB928
+	bl ClearIeFlag
 	mov r0, #0x1000000
 	mov r1, #0
 	bl sub_037FB7BC
@@ -13834,7 +13834,7 @@ sub_027EBAE8: ; 0x027EBAE8
 	mov r0, #0x1000000
 	add r4, r2, #0x1ac
 	mov r6, r1
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldrh r1, [r4, #8]
 	mov r5, r0
 	cmp r1, #0
@@ -13864,7 +13864,7 @@ sub_027EBB44: ; 0x027EBB44
 	ldr r2, [r0, #0x31c]
 	mov r0, #0x1000000
 	mla r6, r5, r1, r2
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r1, _027EBBD0 ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
@@ -13906,7 +13906,7 @@ sub_027EBBD4: ; 0x027EBBD4
 	ldr r2, [r0, #0x31c]
 	mov r0, #0x1000000
 	mla r6, r5, r1, r2
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r1, _027EBC40 ; =0x0380FFF4
 	mov r4, r0
 	ldr r0, [r1]
@@ -13936,7 +13936,7 @@ sub_027EBC44: ; 0x027EBC44
 	mov r6, r0
 	mov r0, #0x1000000
 	mov r5, r1
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r3, _027EBD28 ; =0x0380FFF4
 	mov r4, r0
 	cmp r5, #0x40
@@ -14147,7 +14147,7 @@ sub_027EBEB0: ; 0x027EBEB0
 	mov r0, #0x1000000
 	add r1, r1, #0x12c
 	add r4, r1, #0x400
-	bl sub_037FB928
+	bl ClearIeFlag
 	mov r6, r0
 	mov r5, #1
 	mov r1, #2
@@ -14369,7 +14369,7 @@ sub_027EC10C: ; 0x027EC10C
 	ldr r1, _027EC1C4 ; =0x0480425C
 	mov r0, #0x1000000
 	add r6, r2, r1
-	bl sub_037FB928
+	bl ClearIeFlag
 	mov r4, r0
 	cmp r5, #0
 	bne _027EC17C
@@ -14419,7 +14419,7 @@ sub_027EC1C8: ; 0x027EC1C8
 	add r1, r1, #0x300
 	ldrh r1, [r1, #0xd8]
 	add r6, r1, r2
-	bl sub_037FB928
+	bl ClearIeFlag
 	mov r4, r0
 	cmp r5, #0
 	bne _027EC224
@@ -16191,7 +16191,7 @@ _027ED9B8:
 	mov r2, #0
 	cmpne r0, #0
 	beq _027ED9F8
-	bl sub_03806DD4
+	bl __udivsi3
 	add r2, r0, #1
 	cmp r2, #0x64
 	movhi r2, #0x64
@@ -18688,7 +18688,7 @@ _027EF8B0:
 	strh r0, [r2, #2]
 _027EF8E0:
 	mov r0, #0x1000000
-	bl sub_037FB928
+	bl ClearIeFlag
 	mov r2, #2
 	ldr r1, _027EF958 ; =0x00003FFF
 	strh r2, [fp, r8]
@@ -18970,7 +18970,7 @@ _027EFCA8:
 	add r0, r3, r0
 	mov r1, #0xa
 	add r0, r0, #0x32
-	bl sub_03806DD4
+	bl __udivsi3
 	mov r4, r0
 	bl EnableIrqFlag
 	ldr r1, _027EFE04 ; =0x00003FFF
@@ -18992,7 +18992,7 @@ _027EFD40:
 	add r0, sb, r0
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_03806DD4
+	bl __udivsi3
 	ldrh r3, [sl, #0x18]
 	add r1, r0, #3
 	cmp r1, r3
@@ -19134,7 +19134,7 @@ sub_027EFEF4: ; 0x027EFEF4
 	add r4, r2, #0x344
 	beq _027F00FC
 	mov r0, #0x1000000
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldrh r1, [r6]
 	str r0, [sp]
 	cmp r1, #0
@@ -19997,7 +19997,7 @@ sub_027F0B00: ; 0x027F0B00
 	ldr r1, [r1]
 	add r1, r1, #0x2c
 	add r4, r1, #0x400
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r1, _027F0B6C ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r1]
@@ -20032,7 +20032,7 @@ sub_027F0B74: ; 0x027F0B74
 	ldr r1, [r1]
 	add r1, r1, #0x2c
 	add r4, r1, #0x400
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r1, _027F0BC4 ; =0x048080B4
 	mov r2, #2
 	strh r2, [r1]
@@ -20059,7 +20059,7 @@ sub_027F0BC8: ; 0x027F0BC8
 	ldr r1, [r1]
 	add r1, r1, #0x2c
 	add r4, r1, #0x400
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r1, _027F0C68 ; =0x0380FFF4
 	mov r5, r0
 	ldr r0, [r1]
@@ -20145,7 +20145,7 @@ sub_027F0CD4: ; 0x027F0CD4
 	add r5, r0, #0x400
 	mov r0, #0x1000000
 	add r6, r5, r4
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r1, _027F0D58 ; =_027F7870
 	mov r2, r7, lsl #1
 	ldrh r2, [r1, r2]
@@ -24422,7 +24422,7 @@ _027F47D0:
 	sub r0, r0, #0x18
 	strh r0, [r4, #0x20]
 	ldrh r0, [r4, #0x20]
-	bl sub_03806DD4
+	bl __udivsi3
 	mov r1, r6
 	strh r0, [r1, #2]
 	b _027F4AC8
@@ -26067,24 +26067,24 @@ _027F5D7C:
 	mov r0, r7
 	mov r1, #0x190
 	addls r6, r6, #0xc
-	bl sub_03806DD4
+	bl __udivsi3
 	mov r4, r0
 	mov r0, r7
 	mov r1, #0x64
-	bl sub_03806DD4
+	bl __udivsi3
 	mov r1, #0xd
 	mul r1, r6, r1
 	mov r6, r0
 	add r0, r1, #8
 	mov r1, #5
-	bl sub_03806DD4
+	bl __udivsi3
 	add r1, r7, r7, lsr #2
 	sub r1, r1, r6
 	add r1, r4, r1
 	add r0, r1, r0
 	add r0, r5, r0
 	mov r1, #7
-	bl sub_03806DD4
+	bl __udivsi3
 	ldr r0, _027F5F04 ; =0x027FFDE8
 	ldr r2, [r0]
 	mov r3, r2, lsl #5

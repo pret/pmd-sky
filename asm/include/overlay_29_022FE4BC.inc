@@ -2,6 +2,8 @@
 .public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public AnimationDelayOrSomething
+.public CanMonsterMoveInDirection
+.public CannotStandOnTile
 .public DIRECTIONS_XY
 .public DisplayActions
 .public DUNGEON_PTR
@@ -41,9 +43,7 @@
 .public ov29_022FBD08
 .public ov29_022FEDBC
 .public ov29_022FEFC8
-.public ov29_022FFC9C
 .public ov29_02300DCC
-.public ov29_02300E78
 .public ov29_02302368
 .public ov29_02304D20
 .public ov29_023085DC

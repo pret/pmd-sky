@@ -9105,7 +9105,7 @@ _023448A0:
 	ldr r3, _02344950 ; =ov03_02344970
 	add r2, sp, #8
 	str ip, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	strb r0, [r4, #5]
 	mov r0, #3
 	str r0, [r4]
@@ -10317,7 +10317,7 @@ _0234598C:
 	tst r0, #8
 	beq _02346640
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, r4
 	bl sub_02043254
 	ldr r1, _02345A5C ; =ov03_02346BDC
@@ -10473,7 +10473,7 @@ _02345B80:
 	ldr r3, _02346654 ; =0x000008E4
 	mov r2, #0
 	str r4, [sp, #8]
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _02345A5C ; =ov03_02346BDC
 	ldr r1, [r1]
 	strb r0, [r1, #0x14]
@@ -10824,7 +10824,7 @@ _02346098:
 	ldr r1, [r1]
 	str r0, [r1, #0x10]
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	bl sub_0203A51C
 	ldr r0, _02345A5C ; =ov03_02346BDC
 	mov r1, #0x3600

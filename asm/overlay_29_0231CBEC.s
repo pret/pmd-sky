@@ -1232,7 +1232,7 @@ _0231DC60:
 	bge _0231DCAC
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdxVeneer
+	bl ov29_022F9C34
 	cmp r0, #0
 	movne r6, #0
 _0231DCAC:

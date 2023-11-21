@@ -1921,7 +1921,7 @@ ov29_02336460: ; 0x02336460
 	mov r2, #0
 	add r0, r0, #0x2a8
 	add r0, r0, #0x10000
-	bl ov10_022C26BC
+	bl InitTilesetBuffer
 	ldr r1, _02336598 ; =DUNGEON_PTR
 	ldr r0, _023365A8 ; =0x00012162
 	ldr r2, [r1]

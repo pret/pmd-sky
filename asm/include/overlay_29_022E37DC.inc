@@ -7,6 +7,7 @@
 .public ChangeDungeonMusic
 .public CheckActiveChallengeRequest
 .public CheckSpawnThreshold
+.public CreateTextBox1
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public DungeonFloorToGroupFloor
@@ -163,7 +164,6 @@
 .public sub_0201D034
 .public sub_02026214
 .public sub_02027AF0
-.public sub_0202F8C4
 .public sub_0202F918
 .public sub_02048384
 .public sub_020483B8

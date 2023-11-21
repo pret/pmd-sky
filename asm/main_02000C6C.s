@@ -3947,7 +3947,7 @@ sub_02003BFC: ; 0x02003BFC
 	bl DebugPrint0
 	ldr r0, _02003CBC ; =_0229B21C
 	ldrh r0, [r0, #2]
-	bl sub_02017DF4
+	bl PlayBgmById
 	ldr r0, _02003CBC ; =_0229B21C
 	ldrh r0, [r0]
 	bl sub_02018024
@@ -3969,7 +3969,7 @@ _02003C5C:
 	bl sub_02017FF0
 	ldr r1, _02003CBC ; =_0229B21C
 	strh r0, [r1]
-	bl sub_02017EE8
+	bl StopBgmCommand
 	bl sub_02018118
 	bl sub_02018278
 	mov r0, #0x3f00
@@ -4002,7 +4002,7 @@ SoundResume: ; 0x02003CC4
 	bl DebugPrint0
 	ldr r0, _02003D28 ; =_0229B21C
 	ldrh r0, [r0, #2]
-	bl sub_02017DF4
+	bl PlayBgmById
 	ldr r0, _02003D28 ; =_0229B21C
 	ldrh r0, [r0]
 	bl sub_02018024

@@ -2090,7 +2090,7 @@ _022BE184:
 	bl sub_02028E2C
 	bl sub_02017A68
 	mov r0, #2
-	bl sub_02017B58
+	bl PlayBgmByIdVeneer
 	bl sub_020519D0
 	bl sub_0201DC90
 	bl ov00_022BE4D8
@@ -20502,7 +20502,7 @@ _022CD908:
 	mov r5, #0
 	b _022CD93C
 _022CD924:
-	bl sub_0207B848
+	bl GetProcessorMode
 	cmp r0, #0x12
 	addeq sp, sp, #0xc
 	mvneq r0, #0x1b
@@ -22168,7 +22168,7 @@ ov00_022CEF10: ; 0x022CEF10
 	and r0, r0, #3
 	cmp r0, #1
 	bne _022CEF60
-	bl sub_0207B848
+	bl GetProcessorMode
 	cmp r0, #0x12
 	beq _022CEF60
 	mov r0, #0xa

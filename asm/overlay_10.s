@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov10_022BCA80
-ov10_022BCA80: ; 0x022BCA80
+	arm_func_start CreateInventoryMenu
+CreateInventoryMenu: ; 0x022BCA80
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
 	sub sp, sp, #0x400
@@ -25,7 +25,7 @@ ov10_022BCA80: ; 0x022BCA80
 	stmeqia r5, {r0, r1, r2, r3}
 	ldmneia r6, {r0, r1, r2, r3}
 	stmneia r5, {r0, r1, r2, r3}
-	ldrne r0, _022BCC5C ; =ov10_022BCE74
+	ldrne r0, _022BCC5C ; =UpdateInventoryMenu
 	orreq sl, sl, #0x300000
 	strne r0, [sp, #0x1c]
 	ldrb r0, [sp, #0x22]
@@ -86,7 +86,7 @@ _022BCB84:
 	ldrneb r0, [sp, #0x23]
 	subne r0, r1, r0
 	strneb r0, [sp, #0x21]
-	ldr r1, _022BCC5C ; =ov10_022BCE74
+	ldr r1, _022BCC5C ; =UpdateInventoryMenu
 	mov r0, #0
 	str r1, [r4]
 	strb r0, [r4, #0x1a3]
@@ -112,7 +112,7 @@ _022BCBE8:
 	add r0, sp, #0x1c
 	mov r1, #3
 	strb r2, [r4, #0x1a2]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add r1, sp, #0xc
 	mov r6, r0
 	bl sub_02028284
@@ -133,14 +133,14 @@ _022BCBE8:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022BCC58: .word ov10_022C4394
-_022BCC5C: .word ov10_022BCE74
-	arm_func_end ov10_022BCA80
+_022BCC5C: .word UpdateInventoryMenu
+	arm_func_end CreateInventoryMenu
 
 	arm_func_start ov10_022BCC60
 ov10_022BCC60: ; 0x022BCC60
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r4
 	add r0, r0, #4
 	bl sub_020331AC
@@ -150,7 +150,7 @@ ov10_022BCC60: ; 0x022BCC60
 	arm_func_start ov10_022BCC7C
 ov10_022BCC7C: ; 0x022BCC7C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #1
 	str r1, [r0, #0x19c]
 	mov r1, #0
@@ -167,7 +167,7 @@ ov10_022BCC7C: ; 0x022BCC7C
 	arm_func_start ov10_022BCCB0
 ov10_022BCCB0: ; 0x022BCCB0
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r1, [r0, #0x19c]
 	cmp r1, #3
 	moveq r1, #2
@@ -178,7 +178,7 @@ ov10_022BCCB0: ; 0x022BCCB0
 	arm_func_start ov10_022BCCCC
 ov10_022BCCCC: ; 0x022BCCCC
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #0
 	str r1, [r0, #0x19c]
 	ldmia sp!, {r3, pc}
@@ -187,7 +187,7 @@ ov10_022BCCCC: ; 0x022BCCCC
 	arm_func_start ov10_022BCCE0
 ov10_022BCCE0: ; 0x022BCCE0
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #6
 	str r1, [r0, #0x19c]
 	ldmia sp!, {r3, pc}
@@ -197,7 +197,7 @@ ov10_022BCCE0: ; 0x022BCCE0
 ov10_022BCCF4: ; 0x022BCCF4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
@@ -208,7 +208,7 @@ ov10_022BCCF4: ; 0x022BCCF4
 ov10_022BCD10: ; 0x022BCD10
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #0x19c]
 	cmp r0, #6
@@ -233,7 +233,7 @@ ov10_022BCD10: ; 0x022BCD10
 	arm_func_start ov10_022BCD68
 ov10_022BCD68: ; 0x022BCD68
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
 	cmp r0, #7
 	cmpne r0, #8
@@ -245,7 +245,7 @@ ov10_022BCD68: ; 0x022BCD68
 	arm_func_start ov10_022BCD88
 ov10_022BCD88: ; 0x022BCD88
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r0, [r0, #0x1a0]
 	cmp r0, #0
 	moveq r0, #1
@@ -257,7 +257,7 @@ ov10_022BCD88: ; 0x022BCD88
 	arm_func_start ov10_022BCDA8
 ov10_022BCDA8: ; 0x022BCDA8
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02033064
 	ldmia sp!, {r3, pc}
@@ -266,7 +266,7 @@ ov10_022BCDA8: ; 0x022BCDA8
 	arm_func_start ov10_022BCDBC
 ov10_022BCDBC: ; 0x022BCDBC
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1a0]
 	cmp r1, #0
 	beq _022BCDEC
@@ -286,7 +286,7 @@ _022BCDEC:
 ov10_022BCDF4: ; 0x022BCDF4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	mov r0, #1
 	mov r1, #0
@@ -310,7 +310,7 @@ _022BCE38:
 	arm_func_start ov10_022BCE44
 ov10_022BCE44: ; 0x022BCE44
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02033414
 	ldmia sp!, {r3, pc}
@@ -319,7 +319,7 @@ ov10_022BCE44: ; 0x022BCE44
 	arm_func_start ov10_022BCE58
 ov10_022BCE58: ; 0x022BCE58
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r2, [r0, #0x1a3]
 	mov r1, #0
 	strb r1, [r0, #0x1a3]
@@ -327,8 +327,8 @@ ov10_022BCE58: ; 0x022BCE58
 	ldmia sp!, {r3, pc}
 	arm_func_end ov10_022BCE58
 
-	arm_func_start ov10_022BCE74
-ov10_022BCE74: ; 0x022BCE74
+	arm_func_start UpdateInventoryMenu
+UpdateInventoryMenu: ; 0x022BCE74
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x30
 	mov r8, r0
@@ -339,7 +339,7 @@ ov10_022BCE74: ; 0x022BCE74
 	moveq r1, #0
 	ldrsb r0, [r8, #0x10]
 	and r5, r1, #0xff
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02033414
 	cmp r0, #0
@@ -407,7 +407,7 @@ _022BCF6C:
 	b _022BD200
 _022BCF8C:
 	ldrsb r0, [r8, #0x10]
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02033414
 	mov r7, r0
@@ -527,7 +527,7 @@ _022BD138:
 	cmp r5, #0
 	beq _022BD200
 	ldrsb r0, [r8, #0x10]
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02033414
 	cmp r7, r0
@@ -589,7 +589,7 @@ _022BD220:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022BD228: .word 0x00000408
-	arm_func_end ov10_022BCE74
+	arm_func_end UpdateInventoryMenu
 
 	arm_func_start ov10_022BD22C
 ov10_022BD22C: ; 0x022BD22C
@@ -686,7 +686,7 @@ _022BD354:
 	arm_func_start ov10_022BD374
 ov10_022BD374: ; 0x022BD374
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
 	cmp r0, #3
 	moveq r0, #1
@@ -800,7 +800,7 @@ ov10_022BD474: ; 0x022BD474
 	add r2, sp, #0x10
 	orr r1, r5, r1
 	str r4, [sp, #0xc]
-	bl ov10_022BCA80
+	bl CreateInventoryMenu
 	b _022BD54C
 _022BD508:
 	cmp r4, #0
@@ -819,7 +819,7 @@ _022BD508:
 	add r2, sp, #0x10
 	orr r1, r6, r1
 	str r4, [sp, #0xc]
-	bl ov10_022BCA80
+	bl CreateInventoryMenu
 _022BD54C:
 	add sp, sp, #0xa8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1807,7 +1807,7 @@ _022BE200: ; jump table
 	b _022BE418 ; case 6
 _022BE21C:
 	add r0, r7, #0x68
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C14C
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
 	bl SetSpriteIdForAnimationControl
@@ -1833,7 +1833,7 @@ _022BE21C:
 	b _022BE440
 _022BE280:
 	add r0, r7, #0x68
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C14C
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
 	bl SetSpriteIdForAnimationControl
@@ -1866,7 +1866,7 @@ _022BE280:
 	b _022BE440
 _022BE300:
 	add r0, r7, #0x68
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C14C
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
 	bl SetSpriteIdForAnimationControl
@@ -1894,7 +1894,7 @@ _022BE300:
 	b _022BE440
 _022BE36C:
 	add r0, r7, #0x68
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C14C
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
 	bl SetSpriteIdForAnimationControl
@@ -4813,7 +4813,7 @@ _022C08D4:
 	ldr r0, [r4]
 	add r0, r0, #0x88
 	mla r0, r6, sb, r0
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C14C
 	add r0, r6, #1
 	ldr r1, [r4]
 	mov r0, r0, lsl #0x10
@@ -4918,7 +4918,7 @@ ov10_022C09E8: ; 0x022C09E8
 	strh r0, [r2, #4]
 	ldr r0, [r1]
 	add r0, r0, #8
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C14C
 	ldr r0, _022C0CC0 ; =ov10_022DC1D0
 	ldr r0, [r0]
 	ldrsh r1, [r0, #4]
@@ -5004,21 +5004,21 @@ _022C0B5C:
 	add r0, sb, #7
 	add r8, r8, #1
 	strb r0, [sp, #0x45]
-	ldr r1, _022C0CD0 ; =ov10_022C1864
+	ldr r1, _022C0CD0 ; =ProcessTeamStatsNameGender
 	mov r0, r4
 	strb r8, [sp, #0x44]
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, [fp]
 	add sb, sb, #9
 	add r1, r1, r7
 	strb r0, [r1, #0x27c]
 	ldmia r5, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
-	ldr r1, _022C0CD4 ; =ov10_022C1748
+	ldr r1, _022C0CD4 ; =ProcessTeamStatsLvHp
 	mov r0, r4
 	strb r8, [sp, #0x44]
 	strb sb, [sp, #0x45]
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, [fp]
 	add r1, r1, r7
 	add r7, r7, #1
@@ -5089,8 +5089,8 @@ _022C0CC0: .word ov10_022DC1D0
 _022C0CC4: .word WAN_TABLE
 _022C0CC8: .word ov10_022DBFEC
 _022C0CCC: .word ov10_022DBFDC
-_022C0CD0: .word ov10_022C1864
-_022C0CD4: .word ov10_022C1748
+_022C0CD0: .word ProcessTeamStatsNameGender
+_022C0CD4: .word ProcessTeamStatsLvHp
 _022C0CD8: .word ov10_022DC1CC
 _022C0CDC: .word ov10_022DBFFC
 	arm_func_end ov10_022C09E8
@@ -5158,7 +5158,7 @@ _022C0DA8:
 	add r0, r0, r8
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x80]
-	bl ov10_022C1748
+	bl ProcessTeamStatsLvHp
 _022C0DCC:
 	tst sb, #2
 	beq _022C0DE8
@@ -5166,7 +5166,7 @@ _022C0DCC:
 	add r0, r0, r8
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x7c]
-	bl ov10_022C1864
+	bl ProcessTeamStatsNameGender
 _022C0DE8:
 	tst sb, #4
 	beq _022C0EA8
@@ -5694,7 +5694,7 @@ ov10_022C14D0: ; 0x022C14D0
 	stmia ip, {r0, r1, r2, r3}
 	mov r0, ip
 	mov r1, #0
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _022C1594 ; =ov10_022DC1D0
 	ldr r2, [r1]
 	strb r0, [r2, #0x284]
@@ -5859,8 +5859,8 @@ _022C171C:
 _022C1744: .word ov10_022DC1D0
 	arm_func_end ov10_022C16D8
 
-	arm_func_start ov10_022C1748
-ov10_022C1748: ; 0x022C1748
+	arm_func_start ProcessTeamStatsLvHp
+ProcessTeamStatsLvHp: ; 0x022C1748
 #ifdef EUROPE
 #define OV10_022C1748_STACK_OFFSET 0x40
 #else
@@ -5946,7 +5946,7 @@ _022C182C:
 	.align 2, 0
 _022C1834: .word ov10_022DC1D0
 _022C1838: .word ov10_022DC02C
-	arm_func_end ov10_022C1748
+	arm_func_end ProcessTeamStatsLvHp
 
 	arm_func_start SprintfStatic__022C183C
 SprintfStatic__022C183C: ; 0x022C183C
@@ -5962,8 +5962,8 @@ SprintfStatic__022C183C: ; 0x022C183C
 	bx lr
 	arm_func_end SprintfStatic__022C183C
 
-	arm_func_start ov10_022C1864
-ov10_022C1864: ; 0x022C1864
+	arm_func_start ProcessTeamStatsNameGender
+ProcessTeamStatsNameGender: ; 0x022C1864
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x258
 	ldr r1, _022C1984 ; =ov10_022DC1D0
@@ -6046,7 +6046,7 @@ _022C197C:
 _022C1984: .word ov10_022DC1D0
 _022C1988: .word ov10_022DBFB0
 _022C198C: .word ov10_022DC058
-	arm_func_end ov10_022C1864
+	arm_func_end ProcessTeamStatsNameGender
 
 	arm_func_start ov10_022C1990
 ov10_022C1990: ; 0x022C1990
@@ -7062,8 +7062,8 @@ ov10_022C26A0: ; 0x022C26A0
 	ldmia sp!, {r4, pc}
 	arm_func_end ov10_022C26A0
 
-	arm_func_start ov10_022C26BC
-ov10_022C26BC: ; 0x022C26BC
+	arm_func_start InitTilesetBuffer
+InitTilesetBuffer: ; 0x022C26BC
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0xc
 	mov r4, r0
@@ -7090,7 +7090,7 @@ ov10_022C26BC: ; 0x022C26BC
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _022C271C: .word 0x00001C20
-	arm_func_end ov10_022C26BC
+	arm_func_end InitTilesetBuffer
 
 	arm_func_start ov10_022C2720
 ov10_022C2720: ; 0x022C2720
@@ -8490,7 +8490,7 @@ _022C3A64:
 	ldr r0, [sp, #0x18]
 	mov r1, r1, asr #0x10
 	mov r2, #0x10
-	bl ov10_022C26BC
+	bl InitTilesetBuffer
 	mov r1, r5, lsl #0x10
 	ldr r0, [sp, #0x38]
 	mov r1, r1, asr #0x10
@@ -9120,7 +9120,7 @@ ov10_022C434C: ; 0x022C434C
 
 	.global ov10_022C4394
 ov10_022C4394:
-	.word ov10_022BCE74
+	.word UpdateInventoryMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov10_022C43A4
 ov10_022C43A4:
@@ -9658,8 +9658,8 @@ POISON_DAMAGE_COOLDOWN:
 	.global LEECH_SEED_DAMAGE_COOLDOWN
 LEECH_SEED_DAMAGE_COOLDOWN:
 	.byte 0x02, 0x00, 0x00, 0x00
-	.global ov10_022C46B0
-ov10_022C46B0:
+	.global THROWN_ITEM_HIT_CHANCE
+THROWN_ITEM_HIT_CHANCE:
 	.byte 0x5A, 0x00, 0x00, 0x00
 	.global GEO_PEBBLE_DAMAGE
 GEO_PEBBLE_DAMAGE:

@@ -1,6 +1,6 @@
 #pragma once
-.public __divsi3
 .public _020AFC4C
+.public __divsi3
 .public abs
 .public DIRECTIONS_XY
 .public DISPLACEMENTS_WITHIN_2_LARGEST_FIRST

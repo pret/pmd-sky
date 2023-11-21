@@ -686,7 +686,7 @@ EnsureCanStandCurrentTile: ; 0x02321104
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r1, r4, #4
-	bl ov29_022FFC9C
+	bl CannotStandOnTile
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
@@ -720,7 +720,7 @@ ov29_02321164: ; 0x02321164
 	mov r5, r0
 	mov r0, r4
 	add r1, r4, #4
-	bl ov29_022FFC9C
+	bl CannotStandOnTile
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5

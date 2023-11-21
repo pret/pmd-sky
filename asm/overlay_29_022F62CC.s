@@ -193,7 +193,7 @@ _022F6548:
 	beq _022F65B4
 	mov r0, sl
 	add r1, sp, #0x14
-	bl CannotStandOnTile
+	bl ov29_022FF764
 	cmp r0, #0
 	bne _022F65B4
 	add r3, sp, #0x14
@@ -878,13 +878,13 @@ _022F6EF0: .word DUNGEON_PTR
 	arm_func_start ov29_022F6EF4
 ov29_022F6EF4: ; 0x022F6EF4
 	ldr r1, _022F6F08 ; =0x0000FFFF
-	ldr r0, _022F6F0C ; =ov29_023535AC
+	ldr r0, _022F6F0C ; =LOADED_ATTACK_SPRITE_FILE_INDEX
 	strh r1, [r0, #2]
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
 _022F6F08: .word 0x0000FFFF
-_022F6F0C: .word ov29_023535AC
+_022F6F0C: .word LOADED_ATTACK_SPRITE_FILE_INDEX
 	arm_func_end ov29_022F6EF4
 
 	arm_func_start FreeLoadedAttackSpriteAndMore
@@ -919,7 +919,7 @@ _022F6F64: .word ov29_0237C9B0
 	arm_func_start SetAndLoadCurrentAttackAnimation
 SetAndLoadCurrentAttackAnimation: ; 0x022F6F68
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _022F6FFC ; =ov29_023535AC
+	ldr r2, _022F6FFC ; =LOADED_ATTACK_SPRITE_FILE_INDEX
 	mov r5, r0
 	ldrh r0, [r2, #2]
 	mov r4, r1
@@ -945,7 +945,7 @@ _022F6FA8:
 	mov r2, r4
 	bl LoadWanTableEntryFromPackUseProvidedMemory
 	ldr r1, _022F7000 ; =ov29_0237C9AC
-	ldr r2, _022F6FFC ; =ov29_023535AC
+	ldr r2, _022F6FFC ; =LOADED_ATTACK_SPRITE_FILE_INDEX
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
 	strh r0, [r1]
@@ -958,7 +958,7 @@ _022F6FE8:
 	ldrsh r0, [r0]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022F6FFC: .word ov29_023535AC
+_022F6FFC: .word LOADED_ATTACK_SPRITE_FILE_INDEX
 _022F7000: .word ov29_0237C9AC
 _022F7004: .word WAN_TABLE
 	arm_func_end SetAndLoadCurrentAttackAnimation

@@ -4,13 +4,30 @@ from typing import Dict
 from symbol_details import SymbolDetails
 
 HEADER_FOLDER = 'include'
-XMAP_PATH = os.path.join('build', 'pmdsky.us', 'main.nef.xMAP')
 XMAP_PATH_ARM7 = os.path.join('sub', 'build', 'arm7.nef.xMAP')
 MAIN_LSF_PATH = 'main.lsf'
-REMOTE_XMAP_URL = 'https://raw.githubusercontent.com/pret/pmd-sky/xmap/pmdskyus.xMAP'
 
-# In the returned dictionary, outer key = region, inner key = symbol address, value = symbol details.
-def read_xmap_symbols() -> Dict[str, Dict[int, SymbolDetails]]:
+"""
+Dictionary format:
+{
+    <language>: {
+        <codeRegion>: {
+            <symbolAddress>: {
+                Symbol details
+            }
+        }
+    }
+}
+"""
+def read_xmap_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]]:
+    xmap_symbols: Dict[str, Dict[str, Dict[int, SymbolDetails]]] = {}
+    for language in ['us', 'eu']:
+        xmap_symbols[language] = read_xmap_symbols_for_language(language)
+    return xmap_symbols
+
+def read_xmap_symbols_for_language(language: str) -> Dict[str, Dict[int, SymbolDetails]]:
+    xmap_path = os.path.join('build', f'pmdsky.{language}', 'main.nef.xMAP')
+    remote_xmap_url = f'https://raw.githubusercontent.com/pret/pmd-sky/xmap/pmdsky{language}.xMAP'
     xmap_symbols: Dict[str, Dict[int, SymbolDetails]] = {}
     overlay_names: Dict[str, int] = {}
     OVERLAY_START = 'Overlay '
@@ -21,17 +38,17 @@ def read_xmap_symbols() -> Dict[str, Dict[int, SymbolDetails]]:
 
     SECTION_START = '# .'
 
-    if os.path.exists(XMAP_PATH):
+    if os.path.exists(xmap_path):
         print('Using local xMAP file.')
-        with open(XMAP_PATH, 'r') as xmap_file:
+        with open(xmap_path, 'r') as xmap_file:
             xmap_lines = xmap_file.readlines()
     else:
         print('No local xMAP file found. Using remote xMAP file from upstream repo.')
-        remote_xmap_response = requests.get(REMOTE_XMAP_URL)
+        remote_xmap_response = requests.get(remote_xmap_url)
         if remote_xmap_response.status_code == 200:
             xmap_lines = remote_xmap_response.text.split('\n')
         else:
-            raise Exception(f'Received error {remote_xmap_response.status_code} from {REMOTE_XMAP_URL}')
+            raise Exception(f'Received error {remote_xmap_response.status_code} from {remote_xmap_url}')
 
     def read_xmap_file(xmap_lines):
         current_section = None

@@ -830,7 +830,7 @@ ov34_022DCBF4: ; 0x022DCBF4
 	ldr r1, [r1]
 	strb r0, [r1]
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r3, _022DCC84 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r1, _022DCC8C ; =0x00000408
 	ldr ip, [r3]
@@ -839,7 +839,7 @@ ov34_022DCBF4: ; 0x022DCBF4
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r1, _022DCC84 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	mov r3, #0
 	ldr r2, [r1]
@@ -867,7 +867,7 @@ ov34_022DCC94: ; 0x022DCC94
 	ldr r0, _022DCCDC ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _022DCCDC ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	bl MemFree
@@ -919,7 +919,7 @@ _022DCD54:
 	ldr r0, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	ldreq r0, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	moveq r1, #2
@@ -983,7 +983,7 @@ ov34_022DCDF4: ; 0x022DCDF4
 	ldr r1, [r1]
 	strb r0, [r1]
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r3, _022DCE7C ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r1, _022DCE84 ; =0x00000408
 	ldr ip, [r3]
@@ -992,7 +992,7 @@ ov34_022DCDF4: ; 0x022DCDF4
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r1, _022DCE7C ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	mov r3, #0
 	ldr r2, [r1]
@@ -1024,7 +1024,7 @@ ov34_022DCE8C: ; 0x022DCE8C
 	ldr r0, _022DCED4 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _022DCED4 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	bl MemFree
@@ -1076,7 +1076,7 @@ _022DCF4C:
 	ldr r0, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	ldreq r0, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	moveq r1, #2

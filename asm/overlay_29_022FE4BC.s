@@ -256,7 +256,7 @@ _022FF244:
 	mov sl, r2, asr #0x10
 	bne _022FF29C
 	mov r0, r6
-	bl ov29_02300E78
+	bl CanMonsterMoveInDirection
 	cmp r0, #0
 	moveq r8, #1
 _022FF29C:
@@ -597,7 +597,7 @@ _022FF704:
 	bne _022FF794
 	mov r0, r6
 	add r1, r6, #4
-	bl ov29_022FFC9C
+	bl CannotStandOnTile
 	cmp r0, #0
 	beq _022FF784
 	ldr r0, [r5, #0x110]
@@ -885,7 +885,7 @@ _022FE818:
 	mov r8, r2, asr #0x10
 	bne _022FE870
 	mov r0, sb
-	bl ov29_02300E78
+	bl CanMonsterMoveInDirection
 	cmp r0, #0
 	moveq r5, #1
 _022FE870:
@@ -1226,7 +1226,7 @@ _022FECD8:
 	bne _022FED68
 	mov r0, sb
 	add r1, sb, #4
-	bl ov29_022FFC9C
+	bl CannotStandOnTile
 	cmp r0, #0
 	beq _022FED58
 	ldr r0, [r6, #0x110]

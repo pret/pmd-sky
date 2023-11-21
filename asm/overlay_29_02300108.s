@@ -1032,8 +1032,8 @@ _02300DF4:
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_02300DCC
 
-	arm_func_start ov29_02300E78
-ov29_02300E78: ; 0x02300E78
+	arm_func_start CanMonsterMoveInDirection
+CanMonsterMoveInDirection: ; 0x02300E78
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldr r2, [r6, #0xb4]
@@ -1081,7 +1081,7 @@ ov29_02300E78: ; 0x02300E78
 _02300F24: .word DIRECTIONS_XY
 _02300F28: .word ov29_0235171E
 _02300F2C: .word ov29_02352798
-	arm_func_end ov29_02300E78
+	arm_func_end CanMonsterMoveInDirection
 
 	arm_func_start GetDirectionalMobilityType
 GetDirectionalMobilityType: ; 0x02300F30
@@ -1169,8 +1169,8 @@ _02301054: .word ov29_0235171E
 _02301058: .word ov29_02352790
 	arm_func_end ov29_02300FCC
 
-	arm_func_start CanMonsterMoveInDirection
-CanMonsterMoveInDirection: ; 0x0230105C
+	arm_func_start ov29_0230105C
+ov29_0230105C: ; 0x0230105C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldr r2, [r6, #0xb4]
@@ -1219,7 +1219,7 @@ CanMonsterMoveInDirection: ; 0x0230105C
 _0230110C: .word DIRECTIONS_XY
 _02301110: .word ov29_0235171E
 _02301114: .word ov29_02352788
-	arm_func_end CanMonsterMoveInDirection
+	arm_func_end ov29_0230105C
 
 	arm_func_start IsMonsterCornered
 IsMonsterCornered: ; 0x02301118

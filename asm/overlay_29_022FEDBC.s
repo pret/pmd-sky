@@ -410,7 +410,7 @@ _022FF320:
 	beq _022FF3AC
 	ldrb r1, [r4, #0x4c]
 	mov r0, r5
-	bl ov29_02300E78
+	bl CanMonsterMoveInDirection
 	cmp r0, #0
 	beq _022FF368
 	ldrsh r1, [r4, #2]
@@ -727,8 +727,8 @@ _022FF75C:
 	ldmia sp!, {r4, pc}
 	arm_func_end IsInvalidSpawnTile
 
-	arm_func_start CannotStandOnTile
-CannotStandOnTile: ; 0x022FF764
+	arm_func_start ov29_022FF764
+ov29_022FF764: ; 0x022FF764
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r0
@@ -813,7 +813,7 @@ _022FF888:
 _022FF890:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end CannotStandOnTile
+	arm_func_end ov29_022FF764
 
 	arm_func_start ItemIsActive__022FF898
 ItemIsActive__022FF898: ; 0x022FF898
@@ -1114,8 +1114,8 @@ _022FFC94:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_022FFB90
 
-	arm_func_start ov29_022FFC9C
-ov29_022FFC9C: ; 0x022FFC9C
+	arm_func_start CannotStandOnTile
+CannotStandOnTile: ; 0x022FFC9C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r0
@@ -1211,7 +1211,7 @@ _022FFDE4:
 _022FFDEC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_022FFC9C
+	arm_func_end CannotStandOnTile
 
 	arm_func_start CalcSpeedStage
 CalcSpeedStage: ; 0x022FFDF4

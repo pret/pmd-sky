@@ -806,12 +806,12 @@ _022F7E4C:
 	tst r0, #0xff
 	beq _022F7E94
 	ldrsh r0, [sb, #8]
-	bl sub_02056264
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	strneb r5, [sb]
 	bne _022F7E94
 	ldrsh r0, [sb, #8]
-	bl CheckTeamMemberIdx
+	bl sub_02056228
 	cmp r0, #0
 	strneb r4, [sb]
 _022F7E94:
@@ -867,8 +867,8 @@ _022F7F28:
 	arm_func_end ov29_022F7F08
 
 #ifdef EUROPE
-	arm_func_start ov29_022F88E8_EU
-ov29_022F88E8_EU: ; 0x022F88E8
+	arm_func_start EuFaintCheck
+EuFaintCheck: ; 0x022F88E8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	cmp r1, #0
@@ -881,7 +881,7 @@ _022F8900:
 	bl UpdateMapSurveyorFlag
 	cmp r0, #0
 	beq _022F892C
-	bl ov29_0233AE00_EU
+	bl GetMinimapDataE447
 	cmp r0, #0
 	beq _022F892C
 	mov r0, #1
@@ -891,7 +891,7 @@ _022F892C:
 	bl ov29_022E8104
 	bl ov29_022E81F8
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022F88E8_EU
+	arm_func_end EuFaintCheck
 #endif
 
 	arm_func_start HandleFaint
@@ -1017,7 +1017,7 @@ _022F8008:
 	streqb r0, [r7, #0x165]
 #ifdef EUROPE
 	mov r0, r5
-	bl ov29_022F88E8_EU
+	bl EuFaintCheck
 #else
 	bl ov29_022E8104
 	bl ov29_022E81F8
@@ -1148,7 +1148,7 @@ _022F80F4:
 	ldrsb r2, [r2, #0x9b]
 	sub r2, r2, #1
 	strb r2, [r3, #0x79b]
-	bl ov29_022F88E8_EU
+	bl EuFaintCheck
 #else
 	ldr r1, _022F85D0 ; =DUNGEON_PTR
 	mov r0, #1
@@ -1206,7 +1206,7 @@ _022F825C:
 	strb r1, [r3, #0xa]
 	ldr r2, [r2]
 	strb r1, [r2, #0x758]
-	bl ov29_022F88E8_EU
+	bl EuFaintCheck
 #else
 	mov r0, #1
 	strb r0, [r2, #8]
@@ -1490,7 +1490,7 @@ _022F8594:
 #ifdef EUROPE
 	mov r0, r5
 	mov r1, #0
-	bl ov29_022F88E8_EU
+	bl EuFaintCheck
 #else
 	bl ov29_022E8104
 	bl ov29_022E81F8
@@ -3131,21 +3131,21 @@ _022F9C00:
 	ldmia sp!, {r3, r4, pc}
 	arm_func_end ov29_022F9B8C
 
-	arm_func_start CheckTeamMemberIdxVeneer
-CheckTeamMemberIdxVeneer: ; 0x022F9C34
-	ldr ip, _022F9C3C ; =CheckTeamMemberIdx
+	arm_func_start ov29_022F9C34
+ov29_022F9C34: ; 0x022F9C34
+	ldr ip, _022F9C3C ; =sub_02056228
 	bx ip
 	.align 2, 0
-_022F9C3C: .word CheckTeamMemberIdx
-	arm_func_end CheckTeamMemberIdxVeneer
+_022F9C3C: .word sub_02056228
+	arm_func_end ov29_022F9C34
 
-	arm_func_start ov29_022F9C40
-ov29_022F9C40: ; 0x022F9C40
-	ldr ip, _022F9C48 ; =sub_02056264
+	arm_func_start CheckTeamMemberIdxVeneer
+CheckTeamMemberIdxVeneer: ; 0x022F9C40
+	ldr ip, _022F9C48 ; =CheckTeamMemberIdx
 	bx ip
 	.align 2, 0
-_022F9C48: .word sub_02056264
-	arm_func_end ov29_022F9C40
+_022F9C48: .word CheckTeamMemberIdx
+	arm_func_end CheckTeamMemberIdxVeneer
 
 	arm_func_start ov29_022F9C4C
 ov29_022F9C4C: ; 0x022F9C4C
@@ -3154,7 +3154,7 @@ ov29_022F9C4C: ; 0x022F9C4C
 	ldrsh r0, [r0, #0xc]
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl sub_02056264
+	bl CheckTeamMemberIdx
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022F9C4C
 
@@ -3948,7 +3948,7 @@ _022FA6C4:
 	movne sb, #1
 	bne _022FA70C
 	ldrsh r0, [r4, #8]
-	bl sub_02056264
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	movne sb, #1
 	bne _022FA70C
@@ -5537,7 +5537,7 @@ _022FBB38:
 	add r1, r2, r1, lsl #1
 	ldrsh r1, [r1, sl]
 	strh r1, [r8, #0xa8]
-	bl sub_0201C0CC
+	bl InitAnimationControlWithSet__0201C168
 	ldrsh r1, [r8, #0xa8]
 	add r0, r8, #0x2c
 	bl SetSpriteIdForAnimationControl

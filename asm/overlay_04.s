@@ -1226,7 +1226,7 @@ _0233DA6C:
 	tst r0, #8
 	beq _0233EEB4
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, r5
 	bl sub_02043254
 	ldr r1, _0233E28C ; =ov01_0233C1DC
@@ -1412,7 +1412,7 @@ _0233DCCC:
 	ldr r3, _0233E2B8 ; =0x000008E4
 	mov r2, #0
 	str r5, [sp, #8]
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _0233E25C ; =ov04_0233F644
 	ldr r1, [r1]
 	strb r0, [r1, #8]

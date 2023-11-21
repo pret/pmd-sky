@@ -466,7 +466,7 @@ _022EB09C:
 	and r0, r2, r0
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02017B58
+	bl PlayBgmByIdVeneer
 	b _022EB0EC
 _022EB0D4:
 	and r0, r2, r0

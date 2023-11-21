@@ -4,13 +4,14 @@
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
 .public GetAdventureLogDungeonFloor
+.public GetExplorerMazeTeamName
 .public GetFirstNotRealMoveInTimeDarkness
 .public GetHeldButtons
 .public GetLanguageType
+.public GetMainTeamNameWithCheck
 .public GetReleasedStylus
 .public GetStringFromFileVeneer
 .public GetTeamMember
-.public GetMainTeamNameWithCheck
 .public InitPreprocessorArgs
 .public IsMovesetValid
 .public MemAlloc
@@ -101,7 +102,6 @@
 .public sub_02057030
 .public sub_02058FA4
 .public sub_02058FCC
-.public GetExplorerMazeTeamName
 .public sub_020590C0
 .public sub_020590DC
 .public sub_0205BD78

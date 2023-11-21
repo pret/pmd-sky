@@ -222,7 +222,7 @@ ov18_0238A42C: ; 0x0238A42C
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A48C
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A48C
@@ -233,7 +233,7 @@ ov18_0238A468: ; 0x0238A468
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -310,14 +310,14 @@ _0238A568:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A5C4
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A5C4
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -338,14 +338,14 @@ _0238A5D0:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A62C
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A62C
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -366,14 +366,14 @@ _0238A638:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A694
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A694
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -394,14 +394,14 @@ _0238A6A0:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A6FC
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A6FC
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -507,14 +507,14 @@ _0238A840:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A89C
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A89C
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -563,14 +563,14 @@ _0238A910:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A96C
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A96C
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -620,14 +620,14 @@ _0238A9E4:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238AA40
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AA40
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -648,14 +648,14 @@ _0238AA4C:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238AAA8
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AAA8
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xf]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -1158,7 +1158,7 @@ _0238B0FC:
 	cmp r1, r0
 	bne _0238B150
 	ldr r0, _0238BD4C ; =OVERLAY18_D_BOX_LAYOUT_11
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r2, #0
 	ldr r3, [r1]
@@ -1169,7 +1169,7 @@ _0238B150:
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mov r1, #0x1fc
 	ldr r3, [r0]
@@ -1406,7 +1406,7 @@ _0238B468:
 	ldrsb r0, [r3], #0x14
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _0238B4A4:
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r0]
@@ -1455,7 +1455,7 @@ _0238B530:
 	bne _0238B56C
 	ldr r0, _0238BDB0 ; =OVERLAY18_D_BOX_LAYOUT_1
 	ldr r1, _0238BDB4 ; =ov18_0238AF3C
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -1475,7 +1475,7 @@ _0238B56C:
 	ldr r3, _0238BDC0 ; =MOVES_MAIN_MENU
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #3]
@@ -1495,7 +1495,7 @@ _0238B5B8:
 	ldr r3, _0238BDC8 ; =MOVES_SUBMENU_3
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #4]
@@ -1518,7 +1518,7 @@ _0238B604:
 	ldr r1, _0238BDD0 ; =0x00300033
 	ldr r3, _0238BDD4 ; =MOVES_MENU_CONFIRM
 	add r2, r2, #0x90
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #6]
@@ -1538,7 +1538,7 @@ _0238B65C:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #5]
@@ -1736,7 +1736,7 @@ _0238B93C:
 	ldr r1, _0238BDF0 ; =0x80000213
 	mov r3, r4
 	add r2, r2, #0x128
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
@@ -1819,7 +1819,7 @@ _0238BA70:
 	ldr r3, _0238BE10 ; =MOVES_SUBMENU_1
 	add r2, r1, #0x258
 	mov r1, #0x33
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #0xc]
@@ -1879,7 +1879,7 @@ _0238BB10:
 	ldr r3, _0238BE18 ; =MOVES_SUBMENU_2
 	add r1, r4, #0x230
 	add r2, r2, #0x2f0
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #0xe]
@@ -1894,7 +1894,7 @@ _0238BBAC:
 	cmp r1, r0
 	bne _0238BBF0
 	ldr r0, _0238BE1C ; =OVERLAY18_D_BOX_LAYOUT_10
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r2, #0
 	ldr r3, [r1]
@@ -1905,7 +1905,7 @@ _0238BBF0:
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xf]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r3, [r0]
 	ldr r0, [r3, #0x78]
@@ -1938,7 +1938,7 @@ _0238BC50:
 	ldr r0, [r0]
 	add r3, sp, #0x14c
 	ldrsb r0, [r0, #0xf]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _0238BC74:
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mov r1, #2
@@ -1950,7 +1950,7 @@ _0238BC88:
 	tst r0, #1
 	beq _0238BCA8
 	ldrsb r0, [r4]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r0, #0
 	bne _0238BCD4
@@ -1961,7 +1961,7 @@ _0238BCA8:
 	tst r0, #0x10000
 	beq _0238BCD0
 	ldrsb r0, [r1, #0xf]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r0, #0
 	bne _0238BCD4
@@ -2114,13 +2114,13 @@ ov18_0238BE90: ; 0x0238BE90
 	ldr r0, _0238BF08 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
 	ldr r0, _0238BF08 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
 	b _0238BEFC
@@ -2213,13 +2213,13 @@ ov18_0238BFA8: ; 0x0238BFA8
 	ldr r0, _0238C038 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
 	ldr r0, _0238C038 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #8
 	bgt _0238BFFC
 	cmp r0, #2
@@ -2389,7 +2389,7 @@ ov18_0238C164: ; 0x0238C164
 	tst r0, #8
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	bl sub_0203AAB0
 	ldr r1, _0238C218 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
@@ -2471,13 +2471,13 @@ ov18_0238C27C: ; 0x0238C27C
 	ldr r0, _0238C33C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
 	ldr r0, _0238C33C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	sub r0, r0, #5
 	cmp r0, #0xb
 	addls pc, pc, r0, lsl #2
@@ -2701,7 +2701,7 @@ ov18_0238C528: ; 0x0238C528
 	mov r4, #0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, r4, r5, pc}
 	bl sub_02041094
@@ -2709,7 +2709,7 @@ ov18_0238C528: ; 0x0238C528
 	mov r5, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xa]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	sub r1, r0, #4
 	cmp r1, #0xe
 	addls pc, pc, r1, lsl #2
@@ -2744,7 +2744,7 @@ _0238C5C8:
 	cmp r0, #0x1f4
 	bge _0238C5EC
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #0x13
 	bl ov18_0238BE28
 	ldmia sp!, {r3, r4, r5, pc}
@@ -2769,7 +2769,7 @@ _0238C620:
 	b _0238C6E4
 _0238C62C:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _0238C6E4
 _0238C638:
 	mov r0, r5
@@ -2785,11 +2785,11 @@ _0238C638:
 	b _0238C6E4
 _0238C664:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _0238C6E4
 _0238C670:
 	mov r0, r4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, r5
 	bl sub_020416BC
 	bl sub_020410A4
@@ -2797,7 +2797,7 @@ _0238C670:
 	b _0238C6E4
 _0238C68C:
 	mov r0, r4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, r5
 	bl sub_020416DC
 	bl sub_020410A4
@@ -2811,7 +2811,7 @@ _0238C6A8:
 	b _0238C6E4
 _0238C6BC:
 	mov r0, r4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #0x1d
 	bl ov18_0238BE28
 	b _0238C6E4
@@ -2819,7 +2819,7 @@ _0238C6D0:
 	cmp r0, #6
 	beq _0238C6E0
 	mov r0, #1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _0238C6E0:
 	mov r4, #1
 _0238C6E4:
@@ -2933,7 +2933,7 @@ ov18_0238C808: ; 0x0238C808
 	ldr r0, _0238C884 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
 	bl sub_02041094
@@ -2941,7 +2941,7 @@ ov18_0238C808: ; 0x0238C808
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #0
 	beq _0238C850
 	cmp r0, #1
@@ -3000,7 +3000,7 @@ ov18_0238C8D0: ; 0x0238C8D0
 	ldr r0, _0238C94C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
 	bl sub_02041094
@@ -3008,7 +3008,7 @@ ov18_0238C8D0: ; 0x0238C8D0
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #0
 	beq _0238C918
 	cmp r0, #1
@@ -3284,13 +3284,13 @@ ov18_0238CC00: ; 0x0238CC00
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xc]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
 	ldr r0, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	sub r0, r0, #4
 	cmp r0, #9
 	addls pc, pc, r0, lsl #2
@@ -3511,14 +3511,14 @@ ov18_0238CED8: ; 0x0238CED8
 	ldr r0, _0238CF94 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
 	bl sub_0203FD38
 	ldr r0, _0238CF94 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	sub r0, r0, #4
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
@@ -3654,7 +3654,7 @@ ov18_0238D098: ; 0x0238D098
 	ldr r0, _0238D128 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
 	bl sub_02041094
@@ -3662,7 +3662,7 @@ ov18_0238D098: ; 0x0238D098
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #0
 	beq _0238D0E0
 	cmp r0, #1
@@ -3726,7 +3726,7 @@ ov18_0238D174: ; 0x0238D174
 	ldr r0, _0238D204 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
 	bl sub_02041094
@@ -3734,7 +3734,7 @@ ov18_0238D174: ; 0x0238D174
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #0
 	beq _0238D1BC
 	cmp r0, #1

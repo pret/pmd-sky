@@ -3,7 +3,6 @@
 .public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public CalcDamageFixedNoCategory
-.public CannotStandOnTile
 .public CanSeeTarget
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
@@ -20,6 +19,7 @@
 .public ov29_022E9298
 .public ov29_022EA370
 .public ov29_022EACCC
+.public ov29_022FF764
 .public ov29_0230175C
 .public ov29_023049A8
 .public ov29_02304A48

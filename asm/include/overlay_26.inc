@@ -1,8 +1,8 @@
 #pragma once
-.public CreateDBox
+.public CreateDialogueBox
 .public CreatePortraitBox
 .public DebugPrint0
-.public FreeDBox
+.public FreeDialogueBox
 .public FreePortraitBox
 .public GetAcceptedMission
 .public GetGameMode
@@ -15,7 +15,7 @@
 .public InitPortraitBox
 .public InitPortraitBoxWithMonsterId
 .public InitPreprocessorArgs
-.public IsDBoxActive
+.public IsDialogueBoxActive
 .public IsMoneyAllowed
 .public IsMonsterOnTeam
 .public LoadScriptVariableValue
@@ -31,7 +31,7 @@
 .public SaveScriptVariableValue
 .public SetChallengeLetterCleared
 .public SetMoneyCarried
-.public ShowMessageInDBox
+.public ShowMessageInDialogueBox
 .public ShowPortraitBox
 .public sub_0203D438
 .public sub_0203D538

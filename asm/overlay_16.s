@@ -83,7 +83,7 @@ _0238A240:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A274:
 	bl ov16_0238CBD0
@@ -100,7 +100,7 @@ _0238A298:
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r3, #6
 	ldr r1, [r0]
@@ -110,14 +110,14 @@ _0238A298:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A2D8:
 	bl ov16_0238CB98
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r3, #1
 	ldr r1, [r0]
@@ -127,7 +127,7 @@ _0238A2D8:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A318:
 	ldr r0, _0238B0D8 ; =EVO_D_BOX_LAYOUT_6
@@ -136,7 +136,7 @@ _0238A318:
 	ldr r3, _0238B0E0 ; =EVO_MAIN_MENU
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -151,7 +151,7 @@ _0238A344:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A370:
 	mov r1, #5
@@ -176,7 +176,7 @@ _0238A394:
 	ldrsb r0, [r1, #0xc1]
 	add r3, r1, #0xe8
 	mov r1, #0x18
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #0
 	ldr r0, [r0]
@@ -192,7 +192,7 @@ _0238A3DC:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A408:
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
@@ -200,7 +200,7 @@ _0238A408:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A424:
 	mov r2, #5
@@ -215,7 +215,7 @@ _0238A440:
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r3, #0x27
 	ldr r1, [r0]
@@ -229,7 +229,7 @@ ov16_0238A468: ; 0x0238A468
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A480:
 	bl ov16_0238CB98
@@ -255,7 +255,7 @@ _0238A480:
 	str r1, [r2, #0xec]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #8
 	mov r4, #0x13
@@ -265,7 +265,7 @@ _0238A480:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A50C:
 	ldr r2, [r0, #0x40]
@@ -289,7 +289,7 @@ _0238A50C:
 	ldr r1, _0238B0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -308,7 +308,7 @@ _0238A574:
 	str r1, [r2, #0xec]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r3, #0x11
 	ldr r1, [r0]
@@ -318,7 +318,7 @@ _0238A574:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A5D8:
 	mov r2, #0x1c
@@ -331,7 +331,7 @@ _0238A5D8:
 	ldr r3, _0238B0EC ; =EVO_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -343,7 +343,7 @@ _0238A614:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -383,7 +383,7 @@ _0238A668:
 	str r1, [r2, #0xec]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r4, #0x1b
 	ldr r2, [r0]
@@ -393,7 +393,7 @@ _0238A668:
 	add r2, r4, #0x420
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A6F4:
 	mov r2, #0x1c
@@ -406,7 +406,7 @@ _0238A6F4:
 	ldr r3, _0238B0EC ; =EVO_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -562,7 +562,7 @@ _0238A928:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A95C:
 	ldr r2, [r0, #0x40]
@@ -586,7 +586,7 @@ _0238A95C:
 	ldr r1, _0238B0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -602,7 +602,7 @@ _0238A9C4:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238A9F4:
 	ldrsb r0, [r0, #0xc1]
@@ -644,7 +644,7 @@ _0238AA58:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238AA94:
 	mov r1, #0x1f
@@ -662,7 +662,7 @@ _0238AA94:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238AAD8:
 	bl ov16_0238CB98
@@ -894,11 +894,11 @@ _0238AE1C:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238AE3C:
 	ldrsb r0, [r0, #0xc1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r1, #1
 	ldr r0, [r0]
@@ -922,7 +922,7 @@ _0238AE74:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238AEA0:
 	mov r2, #0xb
@@ -937,7 +937,7 @@ _0238AEA0:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238B0C4
 _0238AED8:
 	bl ov11_02310BDC
@@ -952,7 +952,7 @@ _0238AED8:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r0, #1
 	ldr r1, [r1]
@@ -990,7 +990,7 @@ _0238AED8:
 	b _0238B0C4
 _0238AF98:
 	ldrsb r0, [r0, #0xc1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r3, #1
 	ldr r2, [r1]
@@ -1027,7 +1027,7 @@ _0238AFF8:
 	mov ip, #2
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1185,7 +1185,7 @@ _0238B240:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B274:
 	bl ov16_0238CBD0
@@ -1202,7 +1202,7 @@ _0238B298:
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r3, #6
 	ldr r1, [r0]
@@ -1212,14 +1212,14 @@ _0238B298:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B2D8:
 	bl ov16_0238CB98
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r3, #1
 	ldr r1, [r0]
@@ -1229,7 +1229,7 @@ _0238B2D8:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B318:
 	ldr r0, _0238C0D8 ; =EVO_D_BOX_LAYOUT_6
@@ -1238,7 +1238,7 @@ _0238B318:
 	ldr r3, _0238C0E0 ; =EVO_MAIN_MENU
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1253,7 +1253,7 @@ _0238B344:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B370:
 	mov r1, #5
@@ -1278,7 +1278,7 @@ _0238B394:
 	ldrsb r0, [r1, #0xc1]
 	add r3, r1, #0xe8
 	mov r1, #0x18
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #0
 	ldr r0, [r0]
@@ -1294,7 +1294,7 @@ _0238B3DC:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B408:
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
@@ -1302,7 +1302,7 @@ _0238B408:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B424:
 	mov r2, #5
@@ -1317,7 +1317,7 @@ _0238B440:
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r3, #0x27
 	ldr r1, [r0]
@@ -1327,7 +1327,7 @@ _0238B440:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B480:
 	bl ov16_0238CB98
@@ -1353,7 +1353,7 @@ _0238B480:
 	str r1, [r2, #0xec]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #8
 	mov r4, #0x13
@@ -1363,7 +1363,7 @@ _0238B480:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B50C:
 	ldr r2, [r0, #0x40]
@@ -1387,7 +1387,7 @@ _0238B50C:
 	ldr r1, _0238C0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1406,7 +1406,7 @@ _0238B574:
 	str r1, [r2, #0xec]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r3, #0x11
 	ldr r1, [r0]
@@ -1416,7 +1416,7 @@ _0238B574:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B5D8:
 	mov r2, #0x1c
@@ -1429,7 +1429,7 @@ _0238B5D8:
 	ldr r3, _0238C0EC ; =EVO_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1441,7 +1441,7 @@ _0238B614:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1481,7 +1481,7 @@ _0238B668:
 	str r1, [r2, #0xec]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r4, #0x1b
 	ldr r2, [r0]
@@ -1491,7 +1491,7 @@ _0238B668:
 	add r2, r4, #0x420
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B6F4:
 	mov r2, #0x1c
@@ -1504,7 +1504,7 @@ _0238B6F4:
 	ldr r3, _0238C0EC ; =EVO_MENU_CONFIRM
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1660,7 +1660,7 @@ _0238B928:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B95C:
 	ldr r2, [r0, #0x40]
@@ -1684,7 +1684,7 @@ _0238B95C:
 	ldr r1, _0238C0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1700,7 +1700,7 @@ _0238B9C4:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238B9F4:
 	ldrsb r0, [r0, #0xc1]
@@ -1742,7 +1742,7 @@ _0238BA58:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238BA94:
 	mov r1, #0x1f
@@ -1760,7 +1760,7 @@ _0238BA94:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238BAD8:
 	bl ov16_0238CB98
@@ -1988,11 +1988,11 @@ _0238BE1C:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238BE3C:
 	ldrsb r0, [r0, #0xc1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2016,7 +2016,7 @@ _0238BE74:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238BEA0:
 	mov r2, #0xb
@@ -2031,7 +2031,7 @@ _0238BEA0:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238C0C4
 _0238BED8:
 	bl ov11_02310BDC
@@ -2046,7 +2046,7 @@ _0238BED8:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r0, #1
 	ldr r1, [r1]
@@ -2084,7 +2084,7 @@ _0238BED8:
 	b _0238C0C4
 _0238BF98:
 	ldrsb r0, [r0, #0xc1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r3, #1
 	ldr r2, [r1]
@@ -2121,7 +2121,7 @@ _0238BFF8:
 	mov ip, #2
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -2332,7 +2332,7 @@ _0238C260: ; jump table
 	b _0238C87C ; case 41
 _0238C308:
 	ldrsb r0, [r3, #0xc3]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	ldrne r1, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldrne r1, [r1]
@@ -2499,7 +2499,7 @@ _0238C554:
 	b _0238C9B0
 _0238C56C:
 	ldrsb r0, [r3, #0xc3]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	mov r4, r0
 	bl sub_0203C9E4
 	cmp r4, #1
@@ -2578,13 +2578,13 @@ _0238C66C:
 	b _0238C9B0
 _0238C690:
 	ldrsb r0, [r3, #0xc3]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0238C9B0
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc3]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r4, r0
 	ldr r0, [r1]
@@ -2711,13 +2711,13 @@ _0238C874:
 	b _0238C9B4
 _0238C87C:
 	ldrsb r0, [r3, #0xc1]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238C9B0
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r2, #0x2b
 	ldr r1, [r0]
@@ -2779,13 +2779,13 @@ _0238C96C:
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238C9B0
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldr r0, [r0, #0x74]
@@ -2812,7 +2812,7 @@ _0238C9EC:
 	str r1, [r3, #0xd8]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2894,7 +2894,7 @@ ov16_0238CAE8: ; 0x0238CAE8
 	ldr r0, _0238CB2C ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc3]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238CB2C ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2945,7 +2945,7 @@ ov16_0238CB98: ; 0x0238CB98
 	cmp r1, r0
 	ldmneia sp!,  {r3, pc}
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _0238CBCC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc1]

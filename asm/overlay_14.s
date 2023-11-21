@@ -172,7 +172,7 @@ _0238A2BC:
 	ldr r1, [r0]
 	add r0, r1, #0x2a8
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, _0238A508 ; =SENTRY_DUTY_PTR
 	mov r1, #0x800
 	ldr r0, [r0]
@@ -191,7 +191,7 @@ _0238A3E8:
 	add r0, r1, #0x36c
 	add r0, r0, r8
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r4]
 	mov r1, r7
 	add r0, r0, #0x36c
@@ -203,7 +203,7 @@ _0238A3E8:
 	add r0, r0, #0xc00
 	add r0, r0, r8
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r4]
 	mov r1, r5
 	add r0, r0, #0x3ac
@@ -215,7 +215,7 @@ _0238A3E8:
 	add r0, r0, #0x1800
 	add r0, r0, r8
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r4]
 	mov r1, r5
 	arm_func_end SentrySetupState
@@ -240,7 +240,7 @@ _0238A494:
 	add r0, r0, #0x2800
 	add r0, r0, r4
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r7]
 	mov r1, r8
 	add r0, r0, #0x2c
@@ -259,7 +259,7 @@ _0238A494:
 	beq _0238A4FC
 	mov r1, #6
 	str r1, [r2, #0x108]
-	bl sub_02017B58
+	bl PlayBgmByIdVeneer
 _0238A4FC:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -400,14 +400,14 @@ ov14_0238A6B0: ; 0x0238A6B0
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A710
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A710
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -680,14 +680,14 @@ _0238AAC4:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238AB20
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AB20
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -708,14 +708,14 @@ _0238AB2C:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238AB88
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AB88
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -798,7 +798,7 @@ ov14_0238AC40: ; 0x0238AC40
 	str r0, [ip, #0x114]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _0238ACE4 ; =SENTRY_DUTY_PTR
 	ldr r1, _0238ACE8 ; =0x00000408
 	ldr r3, [r0]
@@ -807,11 +807,11 @@ ov14_0238AC40: ; 0x0238AC40
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	add r3, r3, #0xa4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _0238ACE4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r1, _0238ACE4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r1]
 	add r0, r0, #0x3000
@@ -1725,7 +1725,7 @@ _0238B96C:
 	cmp r1, r0
 	bne _0238B9B8
 	ldr r0, _0238C148 ; =ov14_0238D9B8
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #1]
@@ -1733,7 +1733,7 @@ _0238B9B8:
 	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r2, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r0, [r2]
 	ldr r1, [r0, #0x108]
@@ -2010,7 +2010,7 @@ _0238BD6C:
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	add r3, r3, #0xa4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _0238BDA4:
 	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
@@ -2059,7 +2059,7 @@ _0238BE30:
 	bne _0238BE6C
 	ldr r0, _0238C1A4 ; =ov14_0238D9F8
 	ldr r1, _0238C1A8 ; =ov14_0238ACEC
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #3]
@@ -2075,7 +2075,7 @@ _0238BE6C:
 	bne _0238BEA8
 	ldr r0, _0238C1AC ; =ov14_0238D988
 	ldr r1, _0238C1B0 ; =ov14_0238AD04
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #4]
@@ -2091,7 +2091,7 @@ _0238BEA8:
 	bne _0238BEE4
 	ldr r0, _0238C1B4 ; =ov14_0238D998
 	ldr r1, _0238C1B0 ; =ov14_0238AD04
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #5]
@@ -2179,7 +2179,7 @@ _0238BFE4:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
@@ -2199,7 +2199,7 @@ _0238C030:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xb]
@@ -2214,7 +2214,7 @@ _0238C090:
 	tst r0, #2
 	beq _0238C0B0
 	ldrsb r0, [r2, #1]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r0, #0
 	bne _0238C0B4
@@ -2331,13 +2331,13 @@ SentryState1: ; 0x0238C20C
 	ldr r0, _0238C260 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0238C260 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #8
 	beq _0238C248
 	cmp r0, #9
@@ -2374,13 +2374,13 @@ SentryState3: ; 0x0238C288
 	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	add r0, r0, #1
 	cmp r0, #8
 	addls pc, pc, r0, lsl #2
@@ -2774,7 +2774,7 @@ _0238C72C:
 	add r0, r1, #0x6c
 	add r0, r0, #0x3400
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r1, _0238CA7C ; =0x00001003
 	ldr r0, [r0]
@@ -2791,7 +2791,7 @@ _0238C72C:
 	add r0, r1, #0x1b4
 	add r0, r0, #0x2800
 	add r1, r1, #0x120
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r1, _0238CA80 ; =0x48140000
 	ldr r0, [r0]
@@ -2844,7 +2844,7 @@ _0238C88C:
 	add r0, r0, #0x2c00
 	add r0, r0, r8
 	add r1, r1, #0x120
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r4]
 	ldr r1, _0238CA80 ; =0x48140000
 	add r0, r0, #0x188
@@ -2864,7 +2864,7 @@ _0238C88C:
 	add r0, r0, #0x3000
 	add r0, r0, r8
 	add r1, r1, #0x120
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	cmp sb, #3
 	addls pc, pc, sb, lsl #2
 	b _0238C984

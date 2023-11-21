@@ -556,7 +556,7 @@ _0238A878:
 	cmp r4, #0
 	bne _0238A888
 	mov r0, #5
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _0238A888:
 	bl SortItemsInBag
 	mov r0, #0
@@ -700,7 +700,7 @@ _0238AA08:
 	ldr r1, _0238B468 ; =0x00001013
 	ldr r3, _0238B46C ; =0x000008E4
 	str r4, [sp, #8]
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	strb r0, [r8, #0x21]
 	mov r0, #0xc
 	str r0, [r8, #4]
@@ -744,7 +744,7 @@ _0238AB00:
 	tst r0, #8
 	beq _0238C598
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	bl sub_0203AAB0
 	str r0, [r8, #0xd4]
 	bl sub_0203A5F0

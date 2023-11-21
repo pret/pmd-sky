@@ -221,7 +221,7 @@ _02347EE8:
 	bne _02347F10
 	mov r0, sl
 	mov r1, r5
-	bl ov29_02348020
+	bl DoesProjectileHitTarget
 	mov r6, r0
 _02347F10:
 	ldr r1, [sp, #8]
@@ -301,8 +301,8 @@ _02348018: .word 0x00000BE4
 _0234801C: .word 0x00000BE3
 	arm_func_end ov29_02347BC8
 
-	arm_func_start ov29_02348020
-ov29_02348020: ; 0x02348020
+	arm_func_start DoesProjectileHitTarget
+DoesProjectileHitTarget: ; 0x02348020
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r1
 	ldr r1, [r4, #0xb4]
@@ -317,7 +317,7 @@ ov29_02348020: ; 0x02348020
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _023480F8 ; =ov10_022C46B0
+	ldr r1, _023480F8 ; =THROWN_ITEM_HIT_CHANCE
 	ldrsh r1, [r1]
 	cmp r0, r1
 	movlt r1, #1
@@ -361,8 +361,8 @@ _023480F0:
 	mov r0, r6
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023480F8: .word ov10_022C46B0
-	arm_func_end ov29_02348020
+_023480F8: .word THROWN_ITEM_HIT_CHANCE
+	arm_func_end DoesProjectileHitTarget
 
 	arm_func_start ov29_023480FC
 ov29_023480FC: ; 0x023480FC

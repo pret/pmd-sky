@@ -1,6 +1,6 @@
 #pragma once
-.public __divsi3
 .public _020AFC4C
+.public __divsi3
 .public abs
 .public AddHeldItemToBag
 .public AddItemToBag
@@ -13,8 +13,8 @@
 .public CanSeeTarget
 .public CeilFixedPoint
 .public CheckTeamItemsFlags
-.public CheckTeamMemberIdxVeneer
 .public CheckTouchscreenArea
+.public CreateTextBox1
 .public DIRECTIONS_XY
 .public DrawTileGrid
 .public DUNGEON_PTR
@@ -94,6 +94,7 @@
 .public ov29_022F670C
 .public ov29_022F87C0
 .public ov29_022F89AC
+.public ov29_022F9C34
 .public ov29_022F9C4C
 .public ov29_022F9EA0
 .public ov29_022FA2F0
@@ -106,8 +107,8 @@
 .public ov29_022FF958
 .public ov29_022FFA94
 .public ov29_023009CC
-.public ov29_02300E78
 .public ov29_02300FCC
+.public ov29_0230105C
 .public ov29_02301158
 .public ov29_0230175C
 .public ov29_023049A8
@@ -162,6 +163,7 @@
 .public ov29_0237C6A4
 .public ov29_0237C9A4
 .public ov29_0237CFBB
+.public PlaySeVolumeWrapper
 .public PointCameraToMonster
 .public PositionHasMonster
 .public PreprocessString
@@ -179,14 +181,12 @@
 .public sub_02001AB0
 .public sub_02006B70
 .public sub_02017C80
-.public sub_02017CCC
 .public sub_0201B9F8
 .public sub_0201CF90
 .public sub_02026214
 .public sub_02026268
 .public sub_02027AF0
 .public sub_02027B1C
-.public sub_0202F8C4
 .public sub_0202F8FC
 .public sub_0204AEA0
 .public sub_0204AEB0

@@ -1,6 +1,6 @@
 #pragma once
-.public __divsi3
 .public _020A1870
+.public __divsi3
 .public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public AiMovement
@@ -59,6 +59,7 @@
 .public GetMaxPp
 .public GetMaxPpWrapper
 .public GetMinimapData
+.public GetMinimapDataE447
 .public GetMobilityType
 .public GetMonsterEvoStatus
 .public GetMonsterGender
@@ -91,6 +92,7 @@
 .public GroundToDungeonMoveset
 .public HasHeldItem
 .public HasMaxGinsengBoost99
+.public InitAnimationControlWithSet__0201C168
 .public InitMoveCheckId
 .public InitTeamMember
 .public IQ_SKILLS
@@ -171,7 +173,6 @@
 .public ov29_02337EC0
 .public ov29_02338F24
 .public ov29_02339F88
-.public ov29_0233AE00_EU
 .public ov29_02344B44
 .public ov29_02348100
 .public ov29_02349688
@@ -206,13 +207,12 @@
 .public sub_0200F9B4
 .public sub_0201405C
 .public sub_02017C50
-.public sub_0201C0CC
 .public sub_0204AEF0
 .public sub_02050FF8
 .public sub_02052E2C
 .public sub_02053250
 .public sub_0205349C
-.public sub_02056264
+.public sub_02056228
 .public sub_020566C4
 .public sub_020585B4
 .public sub_02058674

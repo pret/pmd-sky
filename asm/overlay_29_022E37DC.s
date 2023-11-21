@@ -6903,7 +6903,7 @@ ov29_022E8E94: ; 0x022E8E94
 	stmia ip, {r0, r1, r2, r3}
 	ldr r1, _022E8F24 ; =ov29_022E8E60
 	mov r0, ip
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _022E8F1C ; =ov29_02353558
 	ldr r2, [r1]
 	strb r0, [r2]

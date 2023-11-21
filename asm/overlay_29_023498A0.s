@@ -2443,7 +2443,7 @@ _0234B8A0:
 	tst r0, #0xff
 	bne _0234B900
 	mov r0, #0
-	bl sub_0202FFB0
+	bl CreateAlertBox
 	ldr r1, _0234BA14 ; =ov29_023537CC
 	mov r2, #0
 	ldr r3, [r1, #4]
@@ -4978,7 +4978,7 @@ _0234D948:
 	ldr r0, _0234D9BC ; =ov29_02382800
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x10]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0234D9BC ; =ov29_02382800
 	ldr r0, [r0]
 	bl MemFree
@@ -5034,7 +5034,7 @@ _0234D9E0:
 	cmp r0, #0
 	bne _0234DA90
 	ldrsb r0, [r1, #0x10]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0234DB44
 	ldr r0, [r6]
@@ -5110,7 +5110,7 @@ _0234DAF8:
 	b _0234DB44
 _0234DB2C:
 	ldrsb r0, [r1, #0x10]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -5206,7 +5206,7 @@ ov29_0234DC3C: ; 0x0234DC3C
 	cmp r0, ip
 	bne _0234DC8C
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r2, _0234DD88 ; =ov29_02382800
 	mov r1, #0
 	ldr r3, [r2]
@@ -5281,7 +5281,7 @@ _0234DD64:
 	add r1, r0, #0x400
 	ldrsb r0, [r0, #0x10]
 	ldrh r1, [r1, #0x64]
-	bl ShowStringInDBox
+	bl ShowStringInDialogueBox
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0234DD88: .word ov29_02382800

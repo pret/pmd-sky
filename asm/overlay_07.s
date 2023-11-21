@@ -598,7 +598,7 @@ _0233D1A8:
 	ldr r3, _0233D8FC ; =ov07_0233D9DC
 	str r2, [sp, #8]
 	add r2, r6, #0x1d0
-	bl sub_0202C3A8
+	bl CreateCollectionMenu
 	strb r0, [r6, #4]
 	b _0233D238
 _0233D234:
@@ -1241,7 +1241,7 @@ ov07_0233DAA8: ; 0x0233DAA8
 	tst r6, #0x400
 	beq _0233DB44
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	add r2, r4, r5, lsl #2
 	ldrb r0, [r2, #0xe]
 	cmp r0, #0
@@ -5192,7 +5192,7 @@ _02340F6C:
 	ldr r1, _023414D4 ; =0x00441C33
 	ldr r3, _023414D8 ; =ov07_02341B20
 	add r2, r4, #0x2e4
-	bl sub_0202D1F0
+	bl CreateOptionsMenu
 	strb r0, [r4, #0x2b8]
 	mov r0, #0x27
 	str r0, [r4]
@@ -5751,7 +5751,7 @@ ov07_02341738: ; 0x02341738
 	beq _0234177C
 	ldr r0, _0234179C ; =ov07_02341B00
 	ldr r1, _023417A0 ; =ov07_02341800
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02341798 ; =ov07_02341B78
 	ldr r1, [r1]
 	strb r0, [r1, #0x469]
@@ -5759,7 +5759,7 @@ ov07_02341738: ; 0x02341738
 _0234177C:
 	ldr r0, _023417A4 ; =ov07_02341AF0
 	ldr r1, _023417A0 ; =ov07_02341800
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02341798 ; =ov07_02341B78
 	ldr r1, [r1]
 	strb r0, [r1, #0x469]

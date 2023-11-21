@@ -1637,7 +1637,7 @@ _0238B6E0:
 	ldr r0, _0238B7E8 ; =RECYCLE_D_BOX_LAYOUT_2
 	ldr r1, _0238B7EC ; =ov20_0238B8CC
 	mov r2, r4
-	bl sub_0202F8DC
+	bl CreateTextBox2
 	ldr r1, _0238B7E4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r1, [r1]
 	strb r0, [r1, #0x14]
@@ -1651,7 +1651,7 @@ _0238B70C:
 	ldr r0, _0238B7F0 ; =RECYCLE_D_BOX_LAYOUT_1
 	ldr r1, _0238B7F4 ; =ov20_0238BA40
 	mov r2, r4
-	bl sub_0202F8DC
+	bl CreateTextBox2
 	ldr r1, _0238B7E4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r1, [r1]
 	strb r0, [r1, #0x15]
@@ -1665,7 +1665,7 @@ _0238B740:
 	ldr r0, _0238B7F8 ; =RECYCLE_D_BOX_LAYOUT_3
 	ldr r1, _0238B7FC ; =ov20_0238BAB4
 	mov r2, r4
-	bl sub_0202F8DC
+	bl CreateTextBox2
 	ldr r1, _0238B7E4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -2199,13 +2199,13 @@ _0238BE24:
 	b _0238C1C0
 _0238BE74:
 	ldrsb r0, [r4, #4]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0238BEDC
 	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	mvn r1, #0
 	cmp r0, r1
 	bne _0238BEC0
@@ -2269,7 +2269,7 @@ _0238BF68:
 	tst r0, #0x100
 	beq _0238C1C0
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	bl ov20_0238C288
@@ -2285,7 +2285,7 @@ _0238BFA8:
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	strb r0, [r4, #5]
 	ldr r0, [r1]
@@ -2294,13 +2294,13 @@ _0238BFA8:
 	b _0238C1C0
 _0238BFDC:
 	ldrsb r0, [r4, #5]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0238C1C0
 	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r2, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mvn r1, #0
 	ldr r3, [r2]
@@ -2366,7 +2366,7 @@ _0238C07C:
 	ldr r0, _0238C1E4 ; =RECYCLE_D_BOX_LAYOUT_4
 	ldr r1, _0238C1E8 ; =0x00001013
 	ldr r3, _0238C1EC ; =0x000008E4
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r2, #6
 	ldr r3, [r1]
@@ -2503,7 +2503,7 @@ ov20_0238C288: ; 0x0238C288
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r4, pc}
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	mvn r0, #1
 	strb r0, [r4, #4]
 	mov r0, #0
@@ -2519,7 +2519,7 @@ ov20_0238C2B8: ; 0x0238C2B8
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r4, pc}
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	mvn r0, #1
 	strb r0, [r4, #5]
 	ldmia sp!, {r4, pc}
@@ -2722,7 +2722,7 @@ _0238C560:
 	ldr r3, _0238C9D8 ; =ov20_0238CC14
 	str r2, [sp, #8]
 	add r2, r4, #0x20
-	bl sub_0202C3A8
+	bl CreateCollectionMenu
 	strb r0, [r4, #4]
 	ldrsb r0, [r4, #4]
 	mov r1, #1
@@ -2741,7 +2741,7 @@ _0238C5CC:
 	ldr r0, _0238C9E4 ; =RECYCLE_D_BOX_LAYOUT_8
 	ldr r1, _0238C9E8 ; =ov20_0238CE9C
 	mov r2, r4
-	bl sub_0202F8DC
+	bl CreateTextBox2
 	strb r0, [r4, #7]
 _0238C5F0:
 	ldrsb r1, [r4, #8]
@@ -2751,7 +2751,7 @@ _0238C5F0:
 	ldr r0, _0238C9EC ; =RECYCLE_D_BOX_LAYOUT_7
 	ldr r1, _0238C9F0 ; =ov20_0238CF20
 	mov r2, r4
-	bl sub_0202F8DC
+	bl CreateTextBox2
 	strb r0, [r4, #8]
 _0238C614:
 	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
@@ -2872,7 +2872,7 @@ _0238C7B0:
 	mov r1, #0x13
 	mov r2, #0
 	str r5, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	strb r0, [r4, #5]
 	ldr r0, [r1]
@@ -2881,13 +2881,13 @@ _0238C7B0:
 	b _0238C9BC
 _0238C7E4:
 	ldrsb r0, [r4, #5]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0238C9BC
 	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r2, [r1]
 	str r0, [r2, #0x1b4]
@@ -2959,7 +2959,7 @@ _0238C860:
 	ldr r1, _0238CA04 ; =0x00001013
 	ldr r3, _0238CA08 ; =0x000008E4
 	str r4, [sp, #8]
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r2, #7
 	ldr r3, [r1]
@@ -3201,7 +3201,7 @@ ov20_0238CBEC: ; 0x0238CBEC
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r4, pc}
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	mvn r0, #1
 	strb r0, [r4, #5]
 	ldmia sp!, {r4, pc}
@@ -3334,17 +3334,17 @@ _0238CD98:
 	ldrsb r0, [r0, #7]
 	bl sub_0202F9B8
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _0238CDFC
 _0238CDD0:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _0238CDFC
 _0238CDDC:
 	tst r0, #0x100
 	beq _0238CDFC
 	mov r0, r4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _0238CE38 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #1
 	ldr r0, [r0]

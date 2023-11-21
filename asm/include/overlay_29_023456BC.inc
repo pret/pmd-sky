@@ -1,6 +1,6 @@
 #pragma once
-.public __divsi3
 .public _020AFC4C
+.public __divsi3
 .public AbilityIsActiveVeneer
 .public abs
 .public AddMoneyCarried
@@ -13,6 +13,7 @@
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DISPLACEMENTS_WITHIN_3
 .public DisplayMessage2
+.public DoesProjectileHitTarget
 .public DrawMinimapTile
 .public DUNGEON_PTR
 .public DungeonRand16Bit
@@ -79,7 +80,6 @@
 .public ov29_02344B44
 .public ov29_02344B70
 .public ov29_02344BF8
-.public ov29_02348020
 .public ov29_0234B084
 .public ov29_0234B4CC
 .public ov29_023516FC

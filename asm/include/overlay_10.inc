@@ -1,12 +1,13 @@
 #pragma once
-.public __divsi3
 .public _020AFC4C
 .public _020B0A5C
+.public __divsi3
 .public abs
 .public AllocAndLoadFileInPack
 .public BAG_ITEMS_PTR_MIRROR
 .public CleanStickyItemsInBag
 .public CreatePortraitBox
+.public CreateTextBox1
 .public DebugPrint0
 .public DecompressAtFromMemoryPointerVeneer
 .public DecompressAtNormalVeneer
@@ -158,7 +159,6 @@
 .public GetBodySize
 .public GetCurrentBagCapacity
 .public GetDebugFlag
-.public GetDialogBoxField0xC
 .public GetDungeonGroup
 .public GetDungeonMode
 .public GetDungeonModeSpecial
@@ -170,10 +170,12 @@
 .public GetNbFloors
 .public GetNbFloorsDungeonGroup
 .public GetNbPrecedingFloors
+.public GetWindowContents
 .public GroundMainLoop
 .public HandleSir0Translation
 .public HidePortraitBox
 .public IncrementNbFriendRescues
+.public InitAnimationControlWithSet__0201C14C
 .public InitEventFlagScriptVars
 .public InitPortraitBox
 .public InitPortraitBoxWithMonsterId
@@ -193,6 +195,7 @@
 .public MemsetSimple
 .public MemZero
 .public MultiplyByFixedPoint
+.public NewWindowScreenCheck
 .public ov11_023061CC
 .public ov11_02306C64
 .public ov11_02306C9C
@@ -231,7 +234,6 @@
 .public sub_02017ACC
 .public sub_02017C80
 .public sub_0201B43C
-.public sub_0201C0B0
 .public sub_0201C108
 .public sub_0201C138
 .public sub_0201CF5C
@@ -253,7 +255,6 @@
 .public sub_02026214
 .public sub_020263C8
 .public sub_020265A8
-.public sub_02027648
 .public sub_02027AF0
 .public sub_02027B1C
 .public sub_02027B58
@@ -267,7 +268,6 @@
 .public sub_020287C4
 .public sub_02028980
 .public sub_0202A0B0
-.public sub_0202F8C4
 .public sub_0202F8FC
 .public sub_0202F918
 .public sub_0203299C

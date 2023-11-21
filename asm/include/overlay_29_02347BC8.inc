@@ -1,6 +1,6 @@
 #pragma once
-.public __divsi3
 .public _020A1878
+.public __divsi3
 .public abs
 .public AdvanceFrame
 .public ApplyItemEffect
@@ -34,7 +34,6 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
-.public ov10_022C46B0
 .public ov10_022C48E4
 .public ov29_022E09E8
 .public ov29_022E0DD8
@@ -82,6 +81,7 @@
 .public sub_02051DFC
 .public sub_02051EB8
 .public SubstitutePlaceholderStringTags
+.public THROWN_ITEM_HIT_CHANCE
 .public TrySpawnGoldenChamber
 .public TwoTurnMoveForcedMiss
 .public YesNoMenu
