@@ -39,11 +39,11 @@ def read_xmap_symbols_for_language(language: str) -> Dict[str, Dict[int, SymbolD
     SECTION_START = '# .'
 
     if os.path.exists(xmap_path):
-        print('Using local xMAP file.')
+        print(f'Using local xMAP file for {language}.')
         with open(xmap_path, 'r') as xmap_file:
             xmap_lines = xmap_file.readlines()
     else:
-        print('No local xMAP file found. Using remote xMAP file from upstream repo.')
+        print(f'No local xMAP file found for {language}. Using remote xMAP file from upstream repo.')
         remote_xmap_response = requests.get(remote_xmap_url)
         if remote_xmap_response.status_code == 200:
             xmap_lines = remote_xmap_response.text.split('\n')

@@ -22,7 +22,7 @@
 .public GetTileSafe
 .public HandleFaint
 .public HandleSir0Translation
-.public InitAnimationControlWithSet__0201C168
+.public InitAnimationControlWithSet__0201C0CC
 .public IsCurrentTilesetBackground
 .public IsExperienceLocked
 .public IsFloorOver

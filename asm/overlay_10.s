@@ -1807,7 +1807,7 @@ _022BE200: ; jump table
 	b _022BE418 ; case 6
 _022BE21C:
 	add r0, r7, #0x68
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
 	bl SetSpriteIdForAnimationControl
@@ -1833,7 +1833,7 @@ _022BE21C:
 	b _022BE440
 _022BE280:
 	add r0, r7, #0x68
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
 	bl SetSpriteIdForAnimationControl
@@ -1866,7 +1866,7 @@ _022BE280:
 	b _022BE440
 _022BE300:
 	add r0, r7, #0x68
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
 	bl SetSpriteIdForAnimationControl
@@ -1894,7 +1894,7 @@ _022BE300:
 	b _022BE440
 _022BE36C:
 	add r0, r7, #0x68
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldrsh r1, [r7, #0x64]
 	add r0, r7, #0x68
 	bl SetSpriteIdForAnimationControl
@@ -4813,7 +4813,7 @@ _022C08D4:
 	ldr r0, [r4]
 	add r0, r0, #0x88
 	mla r0, r6, sb, r0
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	add r0, r6, #1
 	ldr r1, [r4]
 	mov r0, r0, lsl #0x10
@@ -4918,7 +4918,7 @@ ov10_022C09E8: ; 0x022C09E8
 	strh r0, [r2, #4]
 	ldr r0, [r1]
 	add r0, r0, #8
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r0, _022C0CC0 ; =ov10_022DC1D0
 	ldr r0, [r0]
 	ldrsh r1, [r0, #4]

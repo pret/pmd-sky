@@ -175,7 +175,7 @@
 .public HandleSir0Translation
 .public HidePortraitBox
 .public IncrementNbFriendRescues
-.public InitAnimationControlWithSet__0201C14C
+.public InitAnimationControlWithSet__0201C0B0
 .public InitEventFlagScriptVars
 .public InitPortraitBox
 .public InitPortraitBoxWithMonsterId

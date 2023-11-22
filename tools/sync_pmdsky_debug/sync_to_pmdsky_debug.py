@@ -1,7 +1,11 @@
+import re
+from typing import List
+from ruamel.yaml.scalarint import HexCapsInt
+
 from pmdsky_debug_reader import *
 from symbol_details import *
 from xmap_reader import *
-import re
+from yaml_writer import *
 
 # Syncs symbols from the decomp to a local clone of pmdsky-debug (https://github.com/UsernameFodder/pmdsky-debug).
 # To use this script, you will need:
@@ -13,202 +17,241 @@ pmdsky_debug_symbols = read_pmdsky_debug_symbols()
 xmap_symbols = read_xmap_symbols()
 
 pmdsky_debug_location = get_pmdsky_debug_location()
-default_symbol_name = re.compile(r'^(?:ov\d{2}|sub)?_[\dA-F]{8}$')
-multiple_symbol_suffix = re.compile(r'__[\dA-F]{8}$')
+default_symbol_name = re.compile(r'^(?:ov\d{2}|sub)?_[\dA-F]{8}(?:_[\w]{2})?$')
+multiple_symbol_suffix = re.compile(r'__[\dA-F]{8}(?:_[\w]{2})?$')
 
-for section_name, xmap_section in xmap_symbols.items():
-    if section_name in pmdsky_debug_symbols:
-        pmdsky_debug_section = pmdsky_debug_symbols[section_name]
-    else:
-        pmdsky_debug_section = {}
+LANGUAGE_KEYS = {
+    'us': 'NA',
+    'eu': 'EU',
+}
 
-    for address, symbol in xmap_section.items():
-        if default_symbol_name.match(symbol.name):
-            continue
+INDENT_BLANK = '<blank>'
 
-        if symbol.name in MIXED_CASE_SYMBOLS:
-            symbol.name = MIXED_CASE_SYMBOLS[symbol.name]
+def get_base_symbol_name(symbol_name: str) -> str:
+    if multiple_symbol_suffix.search(symbol_name):
+        return symbol_name[:symbol.name.find('__')]
+    return symbol_name
 
-        if address in pmdsky_debug_section:
-            old_symbol = pmdsky_debug_section[address]
-            if pmdsky_debug_section[address].name != symbol.name:
-                print(f'Replacing {old_symbol.name} with {symbol.name}')
-                with open(old_symbol.file_path, 'r') as symbol_file:
-                    symbol_contents = symbol_file.read()
-                symbol_contents = symbol_contents.replace(f'name: {old_symbol.name}\n', f'name: {symbol.name}\n')
-                with open(old_symbol.file_path, 'w') as symbol_file:
-                    symbol_file.write(symbol_contents)
+def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_manager: YamlManager):
+    if default_symbol_name.match(symbol.name):
+        return
 
-                header_path = old_symbol.file_path.replace(SYMBOLS_FOLDER, os.path.join('headers', 'functions')).replace('.yml', '.h')
-                with open(header_path, 'r') as header_file:
-                    header_contents = header_file.read()
-                header_contents = header_contents.replace(f' {old_symbol.name}(', f' {symbol.name}(')
-                with open(header_path, 'w') as header_file:
-                    header_file.write(header_contents)
-        else:
-            if section_name == 'main':
-                symbol_path = 'arm9.yml'
-            elif section_name == 'ITCM':
-                symbol_path = os.path.join('arm9', 'itcm.yml')
-            else:
-                symbol_path = f'overlay{int(section_name):02d}.yml'
-            print(f'Adding {symbol.name} to {symbol_path}')
+    language_key = LANGUAGE_KEYS[language]
 
-            symbol_path = os.path.join(pmdsky_debug_location, SYMBOLS_FOLDER, symbol_path)
-            with open(symbol_path, 'r') as symbol_file:
-                symbol_contents = symbol_file.readlines()
+    if symbol.name in MIXED_CASE_SYMBOLS:
+        symbol.name = MIXED_CASE_SYMBOLS[symbol.name]
 
-            if multiple_symbol_suffix.search(symbol.name):
-                base_symbol_name = symbol.name[:symbol.name.find('__')]
-                found_base_symbol = False
-                found_base_symbol_na = False
-                write_multisymbol_address = False
-                for i, line in enumerate(symbol_contents):
-                    if not found_base_symbol:
-                        found_base_symbol = line == f'    - name: {base_symbol_name}\n'
-                    elif found_base_symbol and not found_base_symbol_na:
-                        found_base_symbol_na = line == '        NA:\n'
-                    elif found_base_symbol_na:
-                        if line.startswith('          - '):
-                            if int(line[-11:-1], 16) > address:
-                                write_multisymbol_address = True
-                        else:
-                            write_multisymbol_address = True
-                        if write_multisymbol_address:
-                            symbol_contents[i - 1] += f'          - 0x{address:X}\n'
-                            break
+    base_symbol_name = get_base_symbol_name(symbol.name)
 
-                if write_multisymbol_address:
-                    with open(symbol_path, 'w') as symbol_file:
-                        symbol_file.writelines(symbol_contents)
-                    continue
-                else:
-                    symbol.name = base_symbol_name
+    wram_address = None
+    if section_name == 'arm7' and address >= 0x37F8000:
+        # Shift ARM 7 WRAM to its ROM location.
+        wram_address = address
+        address -= 0x1477E18
 
-            symbol_length = 0
-            string_length = None
-            if symbol.is_data:
-                symbols_start = '  data:\n'
+    if address in pmdsky_debug_section:
+        # If the address is already defined in pmdsky-debug, replace the old symbol name with the new one in the YAML and header files.
+        old_symbol = pmdsky_debug_section[address]
+        base_old_symbol_name = get_base_symbol_name(old_symbol.name)
+        if base_old_symbol_name != base_symbol_name:
+            yaml_manager.write_yaml()
+            print(f'Replacing {base_old_symbol_name} with {base_symbol_name}')
+            with open(old_symbol.file_path, 'r') as symbols_file:
+                symbol_contents = symbols_file.read()
+            symbol_contents = symbol_contents.replace(f'name: {base_old_symbol_name}\n', f'name: {base_symbol_name}\n')
+            with open(old_symbol.file_path, 'w') as symbol_file:
+                symbol_file.write(symbol_contents)
 
-                asm_path = os.path.join('asm', symbol.file_path.replace('.o', '.s'))
-                if os.path.exists(asm_path):
-                    with open(asm_path) as asm_file:
-                        asm_contents = asm_file.readlines()
-                    for i, line in enumerate(asm_contents):
-                        if line.startswith(f'\t.global {symbol.name}'):
-                            target_line = asm_contents[i + 2]
-                            string_index = target_line.find('.string "')
-                            if string_index >= 0:
-                                target_string = target_line[string_index + len('.string "'):-2].replace('\\n', 'n')
-                                string_length = len(target_string)
-                                symbol_length = string_length + 1
-                                if symbol_length % 4 > 0:
-                                    symbol_length += 4 - symbol_length % 4
-                            break
-
-            else:
-                symbols_start = '  functions:\n'
-
-            found_symbols = False
-            symbol_before = None
-            write_end_list = False
-            for i, line in enumerate(symbol_contents):
-                if found_symbols:
-                    write_new_symbol = False
-                    if line.startswith('    - name:'):
-                        current_symbol_index = i
-                    elif line.startswith('        NA:'):
-                        if line.endswith('NA:\n'):
-                            address_line = symbol_contents[i + 1]
-                        else:
-                            address_line = line
-                        address_line_string = address_line[-10 : -1]
-                        if ':' not in address_line_string:
-                            current_symbol_address = int(address_line_string, 16)
-                            write_new_symbol = address < current_symbol_address
-                    elif symbol.is_data and i >= len(symbol_contents) - 2 or not symbol.is_data and line == '  data:\n':
-                        write_new_symbol = True
-                        write_end_list = True
-                        current_symbol_index = i
-
-                    if write_new_symbol:
-                        if write_end_list:
-                            symbol_before = None
-                        else:
-                            symbol_before = symbol_contents[current_symbol_index][len('    - name: ') : -1]
-                        if symbol.is_data:
-                            symbol_contents[current_symbol_index - 1] += f"""    - name: {symbol.name}
-      address:
-        NA: 0x{address:X}
-      length:
-        NA: 0x{symbol_length:X}
-"""
-                        else:
-                            symbol_contents[current_symbol_index - 1] += f"""    - name: {symbol.name}
-      address:
-        NA: 0x{address:X}
-"""
-                        break
-
-                elif line == symbols_start:
-                    found_symbols = True
-                    current_symbol_index = i
-
-            with open(symbol_path, 'w') as symbol_file:
-                symbol_file.writelines(symbol_contents)
-
-
-            if symbol.is_data:
-                header_file_name = 'data'
-            else:
-                header_file_name = 'functions'
-
-            header_path = symbol_path.replace(SYMBOLS_FOLDER, os.path.join('headers', header_file_name)).replace('.yml', '.h')
+            header_path = old_symbol.file_path.replace(SYMBOLS_FOLDER, os.path.join('headers', 'functions')).replace('.yml', '.h')
             with open(header_path, 'r') as header_file:
-                header_contents = header_file.readlines()
-
-            target_line = None
-            if symbol_before is not None:
-                for i, line in enumerate(header_contents):
-                    if symbol.is_data and re.search(fr' {symbol_before}[[;]', line) or symbol.is_data and f' {symbol_before}(' in line:
-                        target_line = i
-                        break
-                if target_line is None:
-                    print(f'Could not find preceding symbol {symbol_before} to {symbol.name} in {header_path}')
-                    continue
-
-            if target_line is None:
-                if 'arm9' in header_path:
-                    for i, line in enumerate(header_contents):
-                        if line.startswith('// If declaring'):
-                            target_line = i
-                            break
-                else:
-                    target_line = len(header_contents) - 2
-
-            symbol_header_path = os.path.join(HEADER_FOLDER, symbol.file_path.replace('.o', '.h'))
-            if symbol.is_data:
-                if string_length is not None:
-                    symbol_header = f'extern char {symbol.name}[{string_length}];\n'
-                else:
-                    symbol_header = f'extern undefined {symbol.name};\n'
-            elif os.path.exists(symbol_header_path):
-                with open(symbol_header_path, 'r') as symbol_header_file:
-                    symbol_header_contents = symbol_header_file.readlines()
-                for line in symbol_header_contents:
-                    if f' {symbol.name}(' in line:
-                        symbol_header = line
-                        break
-                symbol_header = symbol_header.replace('u32', 'uint32_t')
-                symbol_header = symbol_header.replace('u16', 'uint16_t')
-                symbol_header = symbol_header.replace('u8', 'uint8_t')
-                symbol_header = symbol_header.replace('s32', 'int32_t')
-                symbol_header = symbol_header.replace('s16', 'int16_t')
-                symbol_header = symbol_header.replace('s8', 'int8_t')
-            else:
-                symbol_header = f'void {symbol.name}(void);\n'
-
-            header_contents[target_line - 1] += symbol_header
-
+                header_contents = header_file.read()
+            header_contents = header_contents.replace(f' {base_old_symbol_name}(', f' {base_symbol_name}(')
             with open(header_path, 'w') as header_file:
-                header_file.writelines(header_contents)
+                header_file.write(header_contents)
+        return
+
+    path_prefix = os.path.join(pmdsky_debug_location, SYMBOLS_FOLDER)
+    if base_symbol_name in symbol_file_paths:
+        symbol_path = symbol_file_paths[base_symbol_name]
+        base_symbol_path = symbol_path[len(path_prefix) + 1:]
+    else:
+        if section_name == 'main':
+            base_symbol_path = 'arm9.yml'
+        elif section_name == 'arm7':
+            base_symbol_path = 'arm7.yml'
+        elif section_name == 'ITCM':
+            base_symbol_path = os.path.join('arm9', 'itcm.yml')
+        else:
+            base_symbol_path = f'overlay{int(section_name):02d}.yml'
+
+        symbol_path = os.path.join(path_prefix, base_symbol_path)
+
+    symbols_yaml_outer: Dict[str, Any] = yaml_manager.read_yaml(symbol_path)
+
+    symbols_yaml: Dict[str, Any] = symbols_yaml_outer[list(symbols_yaml_outer.keys())[0]]
+
+    if symbol.is_data:
+        symbol_type_key = 'data'
+    else:
+        symbol_type_key = 'functions'
+    symbol_array: List[Any] = symbols_yaml[symbol_type_key]
+
+    matching_symbol_entry = None
+    symbol_before = None
+
+    # Find the existing symbol and replace its address, or make a new one if it isn't there.
+    symbol_preexisting = False
+    insert_index = None
+    for i, symbol_entry in enumerate(symbol_array):
+        if base_symbol_name == symbol_entry['name']:
+            matching_symbol_entry = symbol_entry
+            symbol_preexisting = True
+            break
+        else:
+            # Keep track of the symbol directly before the target symbol.
+            # This will be used later as an anchor when appending to the header file.
+            symbol_before: str = symbol_entry['name']
+            if language_key in symbol_entry['address']:
+                current_symbol_address: int | List[int] = symbol_entry['address'][language_key]
+                if isinstance(current_symbol_address, list):
+                    current_symbol_address = current_symbol_address[0]
+                if current_symbol_address > address:
+                    insert_index = i
+                    break
+    if not matching_symbol_entry:
+        matching_symbol_entry = {
+            'name': base_symbol_name,
+            'address': {}
+        }
+        if insert_index is None:
+            symbol_array.append(matching_symbol_entry)
+        else:
+            symbol_array.insert(insert_index, matching_symbol_entry)
+
+    if symbol_preexisting:
+        print(f'Updating address of {base_symbol_name} in {base_symbol_path}')
+    else:
+        print(f'Adding {base_symbol_name} to {base_symbol_path}')
+
+    symbol_entry_language_addresses: Dict[str, Any] = matching_symbol_entry['address']
+    if language_key not in symbol_entry_language_addresses:
+        symbol_entry_language_addresses[language_key] = None
+    symbol_entry_addresses: int | List[int] = symbol_entry_language_addresses[language_key]
+
+
+    hex_address = HexCapsInt(address)
+    if multiple_symbol_suffix.search(symbol.name):
+        if symbol_entry_addresses is None:
+            symbol_entry_language_addresses[language_key] = [hex_address]
+        else:
+            if address not in symbol_entry_addresses:
+                symbol_entry_addresses.append(hex_address)
+            return
+    else:
+        reorder_languages = language_key == 'EU' and len(symbol_entry_language_addresses) > 1 and not symbol_entry_language_addresses[language_key]
+        symbol_entry_language_addresses[language_key] = HexCapsInt(hex_address)
+        if reorder_languages:
+            symbol_entry_language_addresses.move_to_end(language_key, last=False)
+            if 'length' in matching_symbol_entry and 'NA' in matching_symbol_entry['length']:
+                matching_symbol_entry['length'][language_key] = matching_symbol_entry['length']['NA']
+                matching_symbol_entry['length'].move_to_end(language_key, last=False)
+
+        if wram_address is not None:
+            symbol_entry_language_addresses[language_key + '-WRAM'] = HexCapsInt(wram_address)
+            if reorder_languages:
+                symbol_entry_language_addresses.move_to_end('NA-WRAM')
+
+    if symbol_preexisting:
+        return
+
+    base_symbol_path = base_symbol_path.replace('.yml', '.h')
+    header_path = symbol_path.replace(SYMBOLS_FOLDER, os.path.join('headers', symbol_type_key)).replace('.yml', '.h')
+    with open(header_path, 'r') as header_file:
+        header_contents = header_file.readlines()
+
+    target_line = None
+    if symbol_before is not None:
+        for i, line in enumerate(header_contents):
+            if symbol.is_data and re.search(fr' {symbol_before}[[;]', line) or symbol.is_data and f' {symbol_before}(' in line:
+                target_line = i
+                break
+        if target_line is None:
+            print(f'Could not find preceding symbol {symbol_before} to {base_symbol_name} in {base_symbol_path}')
+            return
+
+    if target_line is None:
+        if 'arm9' in header_path:
+            for i, line in enumerate(header_contents):
+                if line.startswith('// If declaring'):
+                    target_line = i
+                    break
+        else:
+            target_line = len(header_contents) - 2
+
+    # If the symbol is a data symbol, look through the ASM to find how much space the symbol takes.
+    symbol_length = 0
+    string_length = None
+    if symbol.is_data:
+        asm_path = os.path.join('asm', symbol.file_path.replace('.o', '.s'))
+        if os.path.exists(asm_path):
+            with open(asm_path) as asm_file:
+                asm_contents = asm_file.readlines()
+            for i, line in enumerate(asm_contents):
+                if line.startswith(f'\t.global {base_symbol_name}'):
+                    target_asm_line = asm_contents[i + 2]
+                    string_index = target_asm_line.find('.string "')
+                    if string_index >= 0:
+                        target_string = target_asm_line[string_index + len('.string "'):-2].replace('\\n', 'n')
+                        string_length = len(target_string)
+                        symbol_length = string_length + 1
+                        if symbol_length % 4 > 0:
+                            symbol_length += 4 - symbol_length % 4
+                    break
+
+    # Write the new symbol within the header file.
+    symbol_header_path = os.path.join(HEADER_FOLDER, symbol.file_path.replace('.o', '.h'))
+    if symbol.is_data:
+        if string_length is not None:
+            symbol_header = f'extern char {base_symbol_name}[{string_length}];\n'
+        else:
+            symbol_header = f'extern undefined {base_symbol_name};\n'
+    elif os.path.exists(symbol_header_path):
+        with open(symbol_header_path, 'r') as symbol_header_file:
+            symbol_header_contents = symbol_header_file.readlines()
+        for line in symbol_header_contents:
+            if f' {base_symbol_name}(' in line:
+                symbol_header = line
+                break
+        symbol_header = symbol_header.replace('u32', 'uint32_t')
+        symbol_header = symbol_header.replace('u16', 'uint16_t')
+        symbol_header = symbol_header.replace('u8', 'uint8_t')
+        symbol_header = symbol_header.replace('s32', 'int32_t')
+        symbol_header = symbol_header.replace('s16', 'int16_t')
+        symbol_header = symbol_header.replace('s8', 'int8_t')
+    else:
+        symbol_header = f'void {base_symbol_name}(void);\n'
+
+    header_contents[target_line - 1] += symbol_header
+
+    with open(header_path, 'w') as header_file:
+        header_file.writelines(header_contents)
+
+# Extract all pmdsky-debug file paths for symbols between all languages.
+symbol_file_paths: Dict[str, str] = {}
+for language, pmdsky_debug_language_symbols in pmdsky_debug_symbols.items():
+    for section_name, pmdsky_debug_section in pmdsky_debug_language_symbols.items():
+        for address, symbol in pmdsky_debug_section.items():
+            base_symbol_name = get_base_symbol_name(symbol.name)
+            symbol_file_paths[base_symbol_name] = symbol.file_path
+
+with YamlManager() as yaml_manager:
+    for language, xmap_language_symbols in xmap_symbols.items():
+        pmdsky_debug_language_symbols = pmdsky_debug_symbols[language]
+        for section_name, xmap_section in xmap_language_symbols.items():
+            if section_name in pmdsky_debug_language_symbols:
+                pmdsky_debug_section = pmdsky_debug_language_symbols[section_name]
+            else:
+                pmdsky_debug_section = {}
+
+            for address, symbol in xmap_section.items():
+                sync_xmap_symbol(address, symbol, language, yaml_manager)

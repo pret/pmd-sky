@@ -3096,6 +3096,7 @@ _0233F548:
 _0233F564:
 	add sp, sp, #0x2c
 	ldmia sp!, {r3, r4, r5, r6, pc}
+	arm_func_end UpdateInputLockBox
 	; 0x0233F56C
 
 	.global ov09_0233F56C

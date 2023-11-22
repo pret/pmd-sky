@@ -13850,7 +13850,7 @@ sub_02016EAC: ; 0x02016EAC
 	ldr r0, _0201712C ; =_020AF760
 	ldr r0, [r0, #8]
 	add r0, r0, #0x98
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r0, _0201712C ; =_020AF760
 	ldr r1, [r0, #8]
 	add r0, r1, #0x98
@@ -13889,7 +13889,7 @@ _02016FB0:
 	mov r0, #0x7c
 	mla r8, sb, r0, r6
 	mov r0, r8
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldrsh r1, [r7, #0x94]
 	mov r0, r8
 	bl SetSpriteIdForAnimationControl
@@ -13931,7 +13931,7 @@ _02017054:
 	mov r0, #0x7c
 	mla r8, sb, r0, r6
 	mov r0, r8
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldrsh r1, [r7, #0x96]
 	mov r0, r8
 	bl SetSpriteIdForAnimationControl
@@ -14849,13 +14849,13 @@ PlayBgmByIdVeneer: ; 0x02017B58
 _02017B60: .word PlayBgmById
 	arm_func_end PlayBgmByIdVeneer
 
-	arm_func_start SendAudioCommandWrapperVeneer
-SendAudioCommandWrapperVeneer: ; 0x02017B64
-	ldr ip, _02017B6C ; =SendAudioCommandWrapper
+	arm_func_start sub_02017B64
+sub_02017B64: ; 0x02017B64
+	ldr ip, _02017B6C ; =sub_02017E70
 	bx ip
 	.align 2, 0
-_02017B6C: .word SendAudioCommandWrapper
-	arm_func_end SendAudioCommandWrapperVeneer
+_02017B6C: .word sub_02017E70
+	arm_func_end sub_02017B64
 
 	arm_func_start sub_02017B70
 sub_02017B70: ; 0x02017B70
@@ -15188,8 +15188,8 @@ _02017E68: .word 0x000003E7
 _02017E6C: .word _022A4BEC
 	arm_func_end PlayBgmById
 
-	arm_func_start SendAudioCommandWrapper
-SendAudioCommandWrapper: ; 0x02017E70
+	arm_func_start sub_02017E70
+sub_02017E70: ; 0x02017E70
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r3, _02017EE0 ; =0x000003E7
 	mov r6, r0
@@ -15221,7 +15221,7 @@ SendAudioCommandWrapper: ; 0x02017E70
 	.align 2, 0
 _02017EE0: .word 0x000003E7
 _02017EE4: .word _022A4BEC
-	arm_func_end SendAudioCommandWrapper
+	arm_func_end sub_02017E70
 
 	arm_func_start StopBgmCommand
 StopBgmCommand: ; 0x02017EE8
@@ -20245,8 +20245,8 @@ InitAnimationControl: ; 0x0201C050
 	ldmia sp!, {r4, pc}
 	arm_func_end InitAnimationControl
 
-	arm_func_start InitAnimationControlWithSet__0201C14C
-InitAnimationControlWithSet__0201C14C: ; 0x0201C0B0
+	arm_func_start InitAnimationControlWithSet__0201C0B0
+InitAnimationControlWithSet__0201C0B0: ; 0x0201C0B0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl InitAnimationControl
@@ -20254,10 +20254,10 @@ InitAnimationControlWithSet__0201C14C: ; 0x0201C0B0
 	orr r0, r0, #1
 	strh r0, [r4, #2]
 	ldmia sp!, {r4, pc}
-	arm_func_end InitAnimationControlWithSet__0201C14C
+	arm_func_end InitAnimationControlWithSet__0201C0B0
 
-	arm_func_start InitAnimationControlWithSet__0201C168
-InitAnimationControlWithSet__0201C168: ; 0x0201C0CC
+	arm_func_start InitAnimationControlWithSet__0201C0CC
+InitAnimationControlWithSet__0201C0CC: ; 0x0201C0CC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl InitAnimationControl
@@ -20265,7 +20265,7 @@ InitAnimationControlWithSet__0201C168: ; 0x0201C0CC
 	orr r0, r0, #1
 	strh r0, [r4, #2]
 	ldmia sp!, {r4, pc}
-	arm_func_end InitAnimationControlWithSet__0201C168
+	arm_func_end InitAnimationControlWithSet__0201C0CC
 
 	arm_func_start SetSpriteIdForAnimationControl
 SetSpriteIdForAnimationControl: ; 0x0201C0E8
@@ -37230,7 +37230,7 @@ LoadCursors: ; 0x0202950C
 	mov r2, #0xe
 	bl sub_0201D9C8
 	ldr r0, _02029668 ; =_022AAC80
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r0, _02029668 ; =_022AAC80
 	ldr r1, _02029660 ; =_022AAC64
 	ldrsh r1, [r1, #2]
@@ -37252,7 +37252,7 @@ LoadCursors: ; 0x0202950C
 	strh r1, [r0, #0x38]
 	bl sub_0201C108
 	ldr r0, _0202966C ; =_022AACFC
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r0, _0202966C ; =_022AACFC
 	ldr r1, _02029660 ; =_022AAC64
 	ldrsh r1, [r1]
@@ -37922,7 +37922,7 @@ LoadAlert: ; 0x02029EE8
 	ldr r1, _02029F7C ; =_022AAD78
 	strh r0, [r1]
 	ldr r0, _02029F80 ; =_022AAD7C
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r1, _02029F7C ; =_022AAD78
 	ldr r0, _02029F80 ; =_022AAD7C
 	ldrsh r1, [r1]
@@ -117777,7 +117777,7 @@ _0206B328:
 	mov r0, #0x7c
 	mla r6, r5, r0, fp
 	mov r0, r6
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldrsh r1, [r4, #0x18]
 	mov r0, r6
 	bl SetSpriteIdForAnimationControl

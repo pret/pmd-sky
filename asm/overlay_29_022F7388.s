@@ -5537,7 +5537,7 @@ _022FBB38:
 	add r1, r2, r1, lsl #1
 	ldrsh r1, [r1, sl]
 	strh r1, [r8, #0xa8]
-	bl InitAnimationControlWithSet__0201C168
+	bl InitAnimationControlWithSet__0201C0CC
 	ldrsh r1, [r8, #0xa8]
 	add r0, r8, #0x2c
 	bl SetSpriteIdForAnimationControl

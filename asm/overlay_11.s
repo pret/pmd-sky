@@ -6761,7 +6761,7 @@ _022E20D0:
 	mov r2, r3, lsl #0x10
 	mov r1, r1, lsr #0x10
 	mov r2, r2, lsr #0x10
-	bl SendAudioCommandWrapperVeneer
+	bl sub_02017B64
 	b _022E2464
 _022E2120:
 	bl sub_02017B70
@@ -29166,7 +29166,7 @@ _022F4A38:
 	mov r1, #0xff
 	add r0, r4, #0xc
 	strb r1, [r4, #0xa4]
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	mov r0, #0
 	strb r0, [r4, #0x8a]
 	strh r0, [r4, #0x8c]
@@ -29211,7 +29211,7 @@ ov11_022F4AB8: ; 0x022F4AB8
 	strh r1, [r6, #0xb2]
 	add r0, r6, #0xc
 	strh r1, [r6, #0xb4]
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	mov r1, #0
 	strh r1, [r6, #0x8c]
 	strh r1, [r6, #0x8e]

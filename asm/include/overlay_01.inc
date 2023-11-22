@@ -63,7 +63,7 @@
 .public GetTeamMember
 .public GetVictoriesOnOneFloor
 .public InitAnimationControl
-.public InitAnimationControlWithSet__0201C14C
+.public InitAnimationControlWithSet__0201C0B0
 .public InitPreprocessorArgs
 .public IsAdvancedMenuActive
 .public IsAdventureLogNotEmpty

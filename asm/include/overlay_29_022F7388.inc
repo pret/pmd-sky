@@ -92,7 +92,7 @@
 .public GroundToDungeonMoveset
 .public HasHeldItem
 .public HasMaxGinsengBoost99
-.public InitAnimationControlWithSet__0201C168
+.public InitAnimationControlWithSet__0201C0CC
 .public InitMoveCheckId
 .public InitTeamMember
 .public IQ_SKILLS

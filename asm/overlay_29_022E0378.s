@@ -1522,7 +1522,7 @@ _022E1658:
 	add r0, r0, #0x12000
 	ldr r0, [r0, #0xb28]
 	add r0, r0, #0x2c
-	bl InitAnimationControlWithSet__0201C168
+	bl InitAnimationControlWithSet__0201C0CC
 	ldr r0, [r4]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
@@ -1560,7 +1560,7 @@ _022E16E8:
 	add r0, r0, #0x12000
 	ldr r0, [r0, #0xb38]
 	add r0, r0, #0x2c
-	bl InitAnimationControlWithSet__0201C168
+	bl InitAnimationControlWithSet__0201C0CC
 	ldr r0, [r4]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000

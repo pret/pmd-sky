@@ -3685,7 +3685,7 @@ ov01_0232C148: ; 0x0232C148
 	ldr r0, _0232C1CC ; =ov01_0233C800
 	mov r4, r1
 	mov r6, r2
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r1, _0232C1D0 ; =ov01_0233C780
 	ldr r0, _0232C1CC ; =ov01_0233C800
 	ldrsh r1, [r1]
@@ -3873,7 +3873,7 @@ ov01_0232C3AC: ; 0x0232C3AC
 	ldr r0, _0232C448 ; =ov01_0233C8FC
 	mov r4, r1
 	mov r6, r3
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r1, _0232C44C ; =ov01_0233C87C
 	ldr r0, _0232C448 ; =ov01_0233C8FC
 	ldrsh r1, [r1]
@@ -8589,7 +8589,7 @@ ov01_02330224: ; 0x02330224
 	strh r1, [r2, #0x8e]
 	ldr r0, [r0]
 	add r0, r0, #0x94
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r0, _02330584 ; =ov01_0233C164
 	ldr r2, [r0]
 	ldrh r1, [r2, #0x96]
@@ -8628,7 +8628,7 @@ ov01_02330224: ; 0x02330224
 	strh r2, [r1, #0xcc]
 	ldr r0, [r0]
 	add r0, r0, #0x110
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r1, _02330584 ; =ov01_0233C164
 	ldr r0, [r1]
 	add r0, r0, #0x100
@@ -8672,7 +8672,7 @@ ov01_02330224: ; 0x02330224
 	strh r2, [r0, #0x48]
 	ldr r0, [r1]
 	add r0, r0, #0x18c
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r1, _02330584 ; =ov01_0233C164
 	ldr r0, [r1]
 	add r0, r0, #0x100
@@ -8715,7 +8715,7 @@ ov01_02330224: ; 0x02330224
 	strh r2, [r0, #0xc4]
 	ldr r0, [r1]
 	add r0, r0, #0x208
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r0, _02330584 ; =ov01_0233C164
 	ldr r0, [r0]
 	ldrsh r1, [r0, #0x92]
@@ -9477,7 +9477,7 @@ _02330F18:
 	moveq r0, #0
 	beq _02330FDC
 	ldr r0, _02330FF8 ; =ov01_0233C978
-	bl InitAnimationControlWithSet__0201C14C
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r1, _02330FE4 ; =ov01_0233C174
 	ldr r0, _02330FF8 ; =ov01_0233C978
 	ldrsh r1, [r1, #2]

@@ -122,7 +122,7 @@
 .public IncrementNbBigTreasureWins
 .public IncrementNbDungeonsCleared
 .public IncrementNbSkyGiftsSent
-.public InitAnimationControlWithSet__0201C14C
+.public InitAnimationControlWithSet__0201C0B0
 .public InitBulkItem
 .public InitMainTeamAfterQuiz
 .public InitMove
@@ -306,7 +306,6 @@
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueAtIndex
 .public SaveScriptVariableValueBytes
-.public SendAudioCommandWrapperVeneer
 .public SentryRunState
 .public SetActorTalkMain
 .public SetActorTalkMainAndActorTalkSub
@@ -443,6 +442,7 @@
 .public sub_02017AB0
 .public sub_02017ACC
 .public sub_02017B18
+.public sub_02017B64
 .public sub_02017B70
 .public sub_02017B7C
 .public sub_02017B88
