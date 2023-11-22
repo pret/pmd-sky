@@ -2808,7 +2808,7 @@ DoMoveSkyAttack: ; 0x02327A28
 	bl IsChargingTwoTurnMove
 	cmp r0, #0
 	beq _02327AB8
-	ldr r1, _02327AE8 ; =ov10_022C48A8
+	ldr r1, _02327AE8 ; =SKY_ATTACK_DAMAGE_MULTIPLIER
 	mov r0, r8
 	ldr r3, [r1]
 	mov r1, r7
@@ -2849,7 +2849,7 @@ _02327ADC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02327AE8: .word ov10_022C48A8
+_02327AE8: .word SKY_ATTACK_DAMAGE_MULTIPLIER
 _02327AEC: .word SKY_ATTACK_CRINGE_CHANCE
 _02327AF0: .word 0x00000CD1
 	arm_func_end DoMoveSkyAttack

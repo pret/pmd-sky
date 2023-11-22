@@ -1,11 +1,12 @@
+import os
 import re
-from typing import List
+from typing import Any, Dict, List
 from ruamel.yaml.scalarint import HexCapsInt
 
-from pmdsky_debug_reader import *
-from symbol_details import *
-from xmap_reader import *
-from yaml_writer import *
+from pmdsky_debug_reader import LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG, SYMBOLS_FOLDER, get_pmdsky_debug_location, read_pmdsky_debug_symbols
+from symbol_details import MIXED_CASE_SYMBOLS_ARM7, MIXED_CASE_SYMBOLS_ARM9, WRAM_OFFSET, SymbolDetails
+from xmap_reader import HEADER_FOLDER, read_xmap_symbols
+from yaml_writer import YamlManager
 
 # Syncs symbols from the decomp to a local clone of pmdsky-debug (https://github.com/UsernameFodder/pmdsky-debug).
 # To use this script, you will need:
@@ -20,13 +21,6 @@ pmdsky_debug_location = get_pmdsky_debug_location()
 default_symbol_name = re.compile(r'^(?:ov\d{2}|sub)?_[\dA-F]{8}(?:_[\w]{2})?$')
 multiple_symbol_suffix = re.compile(r'__[\dA-F]{8}(?:_[\w]{2})?$')
 
-LANGUAGE_KEYS = {
-    'us': 'NA',
-    'eu': 'EU',
-}
-
-INDENT_BLANK = '<blank>'
-
 def get_base_symbol_name(symbol_name: str) -> str:
     if multiple_symbol_suffix.search(symbol_name):
         return symbol_name[:symbol.name.find('__')]
@@ -36,10 +30,14 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     if default_symbol_name.match(symbol.name):
         return
 
-    language_key = LANGUAGE_KEYS[language]
+    language_key = LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG[language]
 
-    if symbol.name in MIXED_CASE_SYMBOLS:
-        symbol.name = MIXED_CASE_SYMBOLS[symbol.name]
+    if section_name == 'arm7':
+        mixed_case_symbols = MIXED_CASE_SYMBOLS_ARM7
+    else:
+        mixed_case_symbols = MIXED_CASE_SYMBOLS_ARM9
+    if symbol.name in mixed_case_symbols:
+        symbol.name = mixed_case_symbols[symbol.name]
 
     base_symbol_name = get_base_symbol_name(symbol.name)
 
@@ -47,7 +45,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     if section_name == 'arm7' and address >= 0x37F8000:
         # Shift ARM 7 WRAM to its ROM location.
         wram_address = address
-        address -= 0x1477E18
+        address -= WRAM_OFFSET
 
     if address in pmdsky_debug_section:
         # If the address is already defined in pmdsky-debug, replace the old symbol name with the new one in the YAML and header files.
@@ -140,21 +138,20 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
 
 
     hex_address = HexCapsInt(address)
+    reorder_languages = language_key == 'EU' and len(symbol_entry_language_addresses) > 1 and not symbol_entry_language_addresses[language_key]
     if multiple_symbol_suffix.search(symbol.name):
         if symbol_entry_addresses is None:
             symbol_entry_language_addresses[language_key] = [hex_address]
+            if reorder_languages:
+                symbol_entry_language_addresses.move_to_end(language_key, last=False)
         else:
             if address not in symbol_entry_addresses:
                 symbol_entry_addresses.append(hex_address)
             return
     else:
-        reorder_languages = language_key == 'EU' and len(symbol_entry_language_addresses) > 1 and not symbol_entry_language_addresses[language_key]
         symbol_entry_language_addresses[language_key] = HexCapsInt(hex_address)
         if reorder_languages:
             symbol_entry_language_addresses.move_to_end(language_key, last=False)
-            if 'length' in matching_symbol_entry and 'NA' in matching_symbol_entry['length']:
-                matching_symbol_entry['length'][language_key] = matching_symbol_entry['length']['NA']
-                matching_symbol_entry['length'].move_to_end(language_key, last=False)
 
         if wram_address is not None:
             symbol_entry_language_addresses[language_key + '-WRAM'] = HexCapsInt(wram_address)

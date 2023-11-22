@@ -38,7 +38,7 @@
 .public GetWeatherColorTable
 .public GINSENG_CHANCE_3
 .public GUMMI_BELLY_RESTORE_TABLE
-.public GUMMI_IQ_STRING_IDS
+.public GUMMI_LIKE_STRING_IDS
 .public HandleSir0Translation
 .public InitMove
 .public IQ_GUMMI_GAIN_TABLE

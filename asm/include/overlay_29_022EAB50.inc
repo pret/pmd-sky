@@ -54,6 +54,7 @@
 .public ov29_0237C922
 .public ov29_0237C96C
 .public PlayBgmByIdVeneer
+.public PlayBgmByIdVolumeVeneer
 .public RANDOM_MUSIC_ID_TABLE
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveEquivItemNoHole
@@ -71,7 +72,6 @@
 .public sub_0200D208
 .public sub_02017ACC
 .public sub_02017B18
-.public sub_02017B64
 .public sub_02017B70
 .public sub_02017B7C
 .public sub_02017C50

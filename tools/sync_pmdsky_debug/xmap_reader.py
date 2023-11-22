@@ -1,6 +1,7 @@
 import os
 import requests
 from typing import Dict
+
 from symbol_details import SymbolDetails
 
 HEADER_FOLDER = 'include'
