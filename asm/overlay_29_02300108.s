@@ -5,7 +5,7 @@
 
 	arm_func_start GetMonsterDisplayNameType
 GetMonsterDisplayNameType: ; 0x02300108
-	ldr r1, _02300160 ; =ov29_02353538
+	ldr r1, _02300160 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
 	ldrb r2, [r1, #0x23e]
@@ -30,7 +30,7 @@ _0230014C:
 	movne r0, #0
 	bx lr
 	.align 2, 0
-_02300160: .word ov29_02353538
+_02300160: .word DUNGEON_PTR
 	arm_func_end GetMonsterDisplayNameType
 
 	arm_func_start GetMonsterName
@@ -191,7 +191,7 @@ _02300354: .word ov29_023527D0
 	arm_func_start ov29_02300358
 ov29_02300358: ; 0x02300358
 	stmdb sp!, {r4, lr}
-	ldr r2, _02300400 ; =ov29_02353538
+	ldr r2, _02300400 ; =DUNGEON_PTR
 	mov r4, r0
 	ldr r0, [r2]
 	add r0, r0, #0x1a000
@@ -237,7 +237,7 @@ _023003F0:
 	bl sub_0205858C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02300400: .word ov29_02353538
+_02300400: .word DUNGEON_PTR
 _02300404: .word 0x00000C35
 _02300408: .word 0x00000C33
 	arm_func_end ov29_02300358
@@ -1032,8 +1032,8 @@ _02300DF4:
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_02300DCC
 
-	arm_func_start ov29_02300E78
-ov29_02300E78: ; 0x02300E78
+	arm_func_start CanMonsterMoveInDirection
+CanMonsterMoveInDirection: ; 0x02300E78
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldr r2, [r6, #0xb4]
@@ -1081,7 +1081,7 @@ ov29_02300E78: ; 0x02300E78
 _02300F24: .word DIRECTIONS_XY
 _02300F28: .word ov29_0235171E
 _02300F2C: .word ov29_02352798
-	arm_func_end ov29_02300E78
+	arm_func_end CanMonsterMoveInDirection
 
 	arm_func_start GetDirectionalMobilityType
 GetDirectionalMobilityType: ; 0x02300F30
@@ -1169,8 +1169,8 @@ _02301054: .word ov29_0235171E
 _02301058: .word ov29_02352790
 	arm_func_end ov29_02300FCC
 
-	arm_func_start CanMonsterMoveInDirection
-CanMonsterMoveInDirection: ; 0x0230105C
+	arm_func_start ov29_0230105C
+ov29_0230105C: ; 0x0230105C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldr r2, [r6, #0xb4]
@@ -1219,7 +1219,7 @@ CanMonsterMoveInDirection: ; 0x0230105C
 _0230110C: .word DIRECTIONS_XY
 _02301110: .word ov29_0235171E
 _02301114: .word ov29_02352788
-	arm_func_end CanMonsterMoveInDirection
+	arm_func_end ov29_0230105C
 
 	arm_func_start IsMonsterCornered
 IsMonsterCornered: ; 0x02301118
@@ -1387,7 +1387,7 @@ CanAiMonsterMoveInDirection: ; 0x023012F8
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 	tst r0, #0x40
 	beq _02301390
-	ldr r0, _0230148C ; =ov29_02353538
+	ldr r0, _0230148C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x793]
 	cmp r0, #0
@@ -1426,7 +1426,7 @@ _023013E4:
 	and r0, r0, #3
 	cmp r0, #2
 	bne _0230142C
-	ldr r0, _0230148C ; =ov29_02353538
+	ldr r0, _0230148C ; =DUNGEON_PTR
 	ldr r1, _02301490 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -1466,7 +1466,7 @@ _0230142C:
 	.align 2, 0
 _02301484: .word DIRECTIONS_XY
 _02301488: .word ov29_0235171E
-_0230148C: .word ov29_02353538
+_0230148C: .word DUNGEON_PTR
 _02301490: .word SECONDARY_TERRAIN_TYPES
 _02301494: .word ov29_02352770
 	arm_func_end CanAiMonsterMoveInDirection
@@ -1499,7 +1499,7 @@ ov29_02301498: ; 0x02301498
 	movge r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 _023014FC:
-	ldr r0, _0230158C ; =ov29_02353538
+	ldr r0, _0230158C ; =DUNGEON_PTR
 	ldr r1, _02301590 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -1537,7 +1537,7 @@ _02301534:
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0230158C: .word ov29_02353538
+_0230158C: .word DUNGEON_PTR
 _02301590: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end ov29_02301498
 
@@ -1926,7 +1926,7 @@ ov29_02301A84: ; 0x02301A84
 	mov r0, r4
 	mov sb, r2
 	bl GetApparentWeather
-	ldr r6, _02301B24 ; =ov29_023535C0
+	ldr r6, _02301B24 ; =EXCL_ITEM_EFFECTS_WEATHER_NO_STATUS
 	mov r7, r0
 	ldrb r0, [r6, r7]
 	mov r8, #0
@@ -1962,7 +1962,7 @@ _02301B18:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02301B24: .word ov29_023535C0
+_02301B24: .word EXCL_ITEM_EFFECTS_WEATHER_NO_STATUS
 _02301B28: .word 0x00000C39
 	arm_func_end ov29_02301A84
 
@@ -2156,7 +2156,7 @@ OtherMonsterAbilityIsActive: ; 0x02301D84
 	mov r6, r1
 	mov r5, #0
 	mov r4, #1
-	ldr r8, _02301E14 ; =ov29_02353538
+	ldr r8, _02301E14 ; =DUNGEON_PTR
 	b _02301E04
 _02301DA0:
 	ldr r0, [r8]
@@ -2191,7 +2191,7 @@ _02301E04:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02301E14: .word ov29_02353538
+_02301E14: .word DUNGEON_PTR
 	arm_func_end OtherMonsterAbilityIsActive
 
 	arm_func_start LevitateIsActive
@@ -2324,7 +2324,7 @@ IqSkillIsEnabled: ; 0x02301F80
 	ldrb r0, [r2, #6]
 	cmp r0, #0
 	bne _02301FAC
-	ldr r0, _02301FB8 ; =ov29_02353538
+	ldr r0, _02301FB8 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x12]
 	cmp r0, #0
@@ -2335,7 +2335,7 @@ _02301FAC:
 	bl IqSkillFlagTest
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02301FB8: .word ov29_02353538
+_02301FB8: .word DUNGEON_PTR
 	arm_func_end IqSkillIsEnabled
 
 	arm_func_start UpdateIqSkills
@@ -2520,7 +2520,7 @@ ov29_02302200: ; 0x02302200
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r6, #0
-	ldr r5, _02302278 ; =ov29_02353538
+	ldr r5, _02302278 ; =DUNGEON_PTR
 	b _02302268
 _02302228:
 	ldr r1, [r5]
@@ -2546,7 +2546,7 @@ _02302268:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02302278: .word ov29_02353538
+_02302278: .word DUNGEON_PTR
 	arm_func_end ov29_02302200
 
 	arm_func_start GetMoveTypeForMonster
@@ -2780,7 +2780,7 @@ AddExpSpecial: ; 0x0230253C
 	cmp r0, #0x64
 	bne _02302580
 	cmp r6, #0
-	ldrgt r0, _023026B4 ; =ov29_02353538
+	ldrgt r0, _023026B4 ; =DUNGEON_PTR
 	movgt r1, #1
 	ldrgt r0, [r0]
 	strgtb r1, [r0, #0xf]
@@ -2861,7 +2861,7 @@ _0230267C:
 	subs r2, r4, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r1, [r5, #0x214]
-	ldr r0, _023026B4 ; =ov29_02353538
+	ldr r0, _023026B4 ; =DUNGEON_PTR
 	add r1, r1, r2
 	str r1, [r5, #0x214]
 	ldr r0, [r0]
@@ -2869,7 +2869,7 @@ _0230267C:
 	strb r1, [r0, #0xf]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_023026B4: .word ov29_02353538
+_023026B4: .word DUNGEON_PTR
 _023026B8: .word EXP_ELITE_EXP_BOOST
 _023026BC: .word WONDER_CHEST_EXP_BOOST
 _023026C0: .word MIRACLE_CHEST_EXP_BOOST
@@ -2899,7 +2899,7 @@ EnemyEvolution: ; 0x023026FC
 	sub sp, sp, #0x168
 	mov sl, r0
 	bl sub_02025888
-	ldr r0, _02302A28 ; =ov29_02353538
+	ldr r0, _02302A28 ; =DUNGEON_PTR
 	ldr r2, [r0]
 	ldrb r1, [r2, #0xf]
 	ldrb r0, [r2, #0x748]
@@ -2930,7 +2930,7 @@ _02302758:
 	str r1, [sp, #0xc]
 	str r0, [sp, #0x10]
 _02302780:
-	ldr r0, _02302A28 ; =ov29_02353538
+	ldr r0, _02302A28 ; =DUNGEON_PTR
 	ldr r3, [sp, #0x14]
 	ldr r0, [r0]
 	ldr r2, [sp, #0x18]
@@ -3113,7 +3113,7 @@ _02302A20:
 	add sp, sp, #0x168
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02302A28: .word ov29_02353538
+_02302A28: .word DUNGEON_PTR
 _02302A2C: .word ov29_023527F8
 _02302A30: .word 0x000003E7
 _02302A34: .word 0x00000F1F

@@ -24,7 +24,7 @@ _0238A15C: .word ov20_0238B294
 	arm_func_start ov20_0238A160
 ov20_0238A160: ; 0x0238A160
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238A1AC ; =ov20_0238D120
+	ldr r0, _0238A1AC ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0238A1A4
@@ -35,24 +35,24 @@ ov20_0238A160: ; 0x0238A160
 	bl sub_020125CC
 _0238A188:
 	bl sub_02046D20
-	ldr r0, _0238A1AC ; =ov20_0238D120
+	ldr r0, _0238A1AC ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0238A1AC ; =ov20_0238D120
+	ldr r0, _0238A1AC ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	mov r1, #0
 	str r1, [r0]
 _0238A1A4:
 	bl sub_020017EC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238A1AC: .word ov20_0238D120
+_0238A1AC: .word OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	arm_func_end ov20_0238A160
 
 	arm_func_start ov20_0238A1B0
 ov20_0238A1B0: ; 0x0238A1B0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xb0
-	ldr r0, _0238B144 ; =ov20_0238D120
+	ldr r0, _0238B144 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	ldr r8, [r0]
 	ldr r0, [r8]
 	cmp r0, #8
@@ -85,7 +85,7 @@ _0238A210:
 	cmp r0, #0
 	beq _0238B288
 _0238A228:
-	ldr sl, _0238B144 ; =ov20_0238D120
+	ldr sl, _0238B144 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	ldr sb, [sl]
 	ldr r0, [sb, #4]
 	cmp r0, #9
@@ -245,7 +245,7 @@ _0238A3EC: ; jump table
 	b _0238AAEC ; case 28
 	b _0238AB70 ; case 29
 	b _0238AB80 ; case 30
-	b ov20_0238AB14 ; case 31
+	b _0238AB14 ; case 31
 	b _0238ABA8 ; case 32
 	b _0238ABC4 ; case 33
 	b _0238ABD4 ; case 34
@@ -590,7 +590,11 @@ _0238A924:
 	add r0, sb, #0x30
 	bl InitPreprocessorArgs
 	ldr r1, [sb, #0x84]
+#ifdef EUROPE
+	add r0, r6, #0xc
+#else
 	mov r0, #0x4600
+#endif
 	ldrsh r1, [r1]
 	str r1, [sb, #0x40]
 	bl ov20_0238B340
@@ -729,7 +733,7 @@ _0238AAEC:
 	moveq r7, #0
 	strne r0, [sb, #0xc]
 	b _0238B05C
-ov20_0238AB14:
+_0238AB14:
 	ldr r0, [sb, #0x80]
 	cmp r0, #2
 	bne _0238AB24
@@ -1179,18 +1183,30 @@ _0238B130:
 	str r0, [r8]
 	b _0238B288
 	.align 2, 0
-_0238B144: .word ov20_0238D120
+_0238B144: .word OVERLAY20_UNKNOWN_POINTER__NA_238D120
+#ifdef EUROPE
+_0238B148: .word 0x0000460D
+_0238B14C: .word RECYCLE_MAIN_MENU_1
+_0238B150: .word 0x0000460C
+_0238B154: .word 0x00004613
+#else
 _0238B148: .word 0x000045EE
 _0238B14C: .word RECYCLE_MAIN_MENU_1
 _0238B150: .word 0x000045ED
 _0238B154: .word 0x000045F4
+#endif
 _0238B158: .word RECYCLE_MENU_CONFIRM_1
 _0238B15C: .word RECYCLE_SUBMENU_2
 _0238B160: .word OVERLAY20_UNKNOWN_POINTER__NA_238CF7C
 _0238B164: .word RECYCLE_MENU_CONFIRM_2
 _0238B168: .word RECYCLE_SUBMENU_1
+#ifdef EUROPE
+_0238B16C: .word 0x00004632
+_0238B170: .word 0x00004633
+#else
 _0238B16C: .word 0x00004613
 _0238B170: .word 0x00004614
+#endif
 _0238B174:
 	add r0, sp, #0x18
 	bl ov11_0230CCF0
@@ -1284,7 +1300,7 @@ _0238B28C:
 	arm_func_start ov20_0238B294
 ov20_0238B294: ; 0x0238B294
 	stmdb sp!, {r4, lr}
-	ldr r1, _0238B33C ; =ov20_0238D120
+	ldr r1, _0238B33C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	mov r4, r0
 	ldr r0, [r1]
 	cmp r0, #0
@@ -1292,12 +1308,12 @@ ov20_0238B294: ; 0x0238B294
 	mov r0, #0xb4
 	mov r1, #8
 	bl MemAlloc
-	ldr r2, _0238B33C ; =ov20_0238D120
+	ldr r2, _0238B33C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	mov r1, #0xb4
 	str r0, [r2]
 	bl MemZero
 _0238B2C8:
-	ldr r0, _0238B33C ; =ov20_0238D120
+	ldr r0, _0238B33C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	mov r1, #0
 	ldr r2, [r0]
 	mvn r0, #1
@@ -1327,13 +1343,13 @@ _0238B2C8:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238B33C: .word ov20_0238D120
+_0238B33C: .word OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	arm_func_end ov20_0238B294
 
 	arm_func_start ov20_0238B340
 ov20_0238B340: ; 0x0238B340
 	stmdb sp!, {r4, lr}
-	ldr r1, _0238B394 ; =ov20_0238D120
+	ldr r1, _0238B394 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	mov r4, r0
 	ldr r0, [r1]
 	ldrb r1, [r0, #0xa4]
@@ -1341,13 +1357,13 @@ ov20_0238B340: ; 0x0238B340
 	bne _0238B360
 	bl ov20_0238B4A8
 _0238B360:
-	ldr r1, _0238B394 ; =ov20_0238D120
+	ldr r1, _0238B394 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	mov r0, r4
 	ldr r1, [r1]
 	mov r2, #0x188
 	str r2, [r1, #0x7c]
 	bl StringFromMessageId
-	ldr r2, _0238B394 ; =ov20_0238D120
+	ldr r2, _0238B394 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	mov r1, r0
 	ldr r2, [r2]
 	ldr r0, _0238B398 ; =0x0000301C
@@ -1355,7 +1371,7 @@ _0238B360:
 	bl sub_02046C30
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238B394: .word ov20_0238D120
+_0238B394: .word OVERLAY20_UNKNOWN_POINTER__NA_238D120
 _0238B398: .word 0x0000301C
 	arm_func_end ov20_0238B340
 
@@ -1370,7 +1386,7 @@ ov20_0238B39C: ; 0x0238B39C
 	bne _0238B3BC
 	bl ov20_0238B4A8
 _0238B3BC:
-	ldr r1, _0238B40C ; =ov20_0238D120
+	ldr r1, _0238B40C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	add r0, sp, #0xc
 	ldr r2, [r1]
 	mov r3, #0x188
@@ -1379,7 +1395,7 @@ _0238B3BC:
 	bl MemZero
 	mov r0, #0
 	str r0, [sp, #0xc]
-	ldr r1, _0238B40C ; =ov20_0238D120
+	ldr r1, _0238B40C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	stmia sp, {r4, r5}
 	ldr r1, [r1]
 	add r3, sp, #0xc
@@ -1391,7 +1407,7 @@ _0238B3BC:
 	add sp, sp, #0xa4
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_0238B40C: .word ov20_0238D120
+_0238B40C: .word OVERLAY20_UNKNOWN_POINTER__NA_238D120
 	arm_func_end ov20_0238B39C
 
 	arm_func_start ov20_0238B410
@@ -1497,7 +1513,7 @@ ov20_0238B540: ; 0x0238B540
 	mov r0, #0x84
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _0238B5A8 ; =ov20_0238D124
+	ldr r1, _0238B5A8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mov r2, #0
 	str r0, [r1]
 	mvn r1, #1
@@ -1519,13 +1535,13 @@ ov20_0238B540: ; 0x0238B540
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238B5A8: .word ov20_0238D124
+_0238B5A8: .word OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	arm_func_end ov20_0238B540
 
 	arm_func_start ov20_0238B5AC
 ov20_0238B5AC: ; 0x0238B5AC
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238B658 ; =ov20_0238D124
+	ldr r0, _0238B658 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
@@ -1534,50 +1550,50 @@ ov20_0238B5AC: ; 0x0238B5AC
 	cmp r0, r1
 	beq _0238B5E4
 	bl sub_0202F8FC
-	ldr r0, _0238B658 ; =ov20_0238D124
+	ldr r0, _0238B658 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x14]
 _0238B5E4:
-	ldr r0, _0238B658 ; =ov20_0238D124
+	ldr r0, _0238B658 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x15]
 	cmp r0, r1
 	beq _0238B610
 	bl sub_0202F8FC
-	ldr r0, _0238B658 ; =ov20_0238D124
+	ldr r0, _0238B658 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x15]
 _0238B610:
-	ldr r0, _0238B658 ; =ov20_0238D124
+	ldr r0, _0238B658 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x16]
 	cmp r0, r1
 	beq _0238B63C
 	bl sub_0202F8FC
-	ldr r0, _0238B658 ; =ov20_0238D124
+	ldr r0, _0238B658 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x16]
 _0238B63C:
-	ldr r0, _0238B658 ; =ov20_0238D124
+	ldr r0, _0238B658 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0238B658 ; =ov20_0238D124
+	ldr r0, _0238B658 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238B658: .word ov20_0238D124
+_0238B658: .word OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	arm_func_end ov20_0238B5AC
 
 	arm_func_start ov20_0238B65C
 ov20_0238B65C: ; 0x0238B65C
 	stmdb sp!, {r4, lr}
-	ldr r0, _0238B7E4 ; =ov20_0238D124
+	ldr r0, _0238B7E4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r4, [r0]
 	cmp r4, #0
 	moveq r0, #0
@@ -1621,12 +1637,12 @@ _0238B6E0:
 	ldr r0, _0238B7E8 ; =RECYCLE_D_BOX_LAYOUT_2
 	ldr r1, _0238B7EC ; =ov20_0238B8CC
 	mov r2, r4
-	bl sub_0202F8DC
-	ldr r1, _0238B7E4 ; =ov20_0238D124
+	bl CreateTextBox2
+	ldr r1, _0238B7E4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r1, [r1]
 	strb r0, [r1, #0x14]
 _0238B70C:
-	ldr r1, _0238B7E4 ; =ov20_0238D124
+	ldr r1, _0238B7E4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mvn r0, #1
 	ldr r1, [r1]
 	ldrsb r1, [r1, #0x15]
@@ -1635,12 +1651,12 @@ _0238B70C:
 	ldr r0, _0238B7F0 ; =RECYCLE_D_BOX_LAYOUT_1
 	ldr r1, _0238B7F4 ; =ov20_0238BA40
 	mov r2, r4
-	bl sub_0202F8DC
-	ldr r1, _0238B7E4 ; =ov20_0238D124
+	bl CreateTextBox2
+	ldr r1, _0238B7E4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r1, [r1]
 	strb r0, [r1, #0x15]
 _0238B740:
-	ldr r1, _0238B7E4 ; =ov20_0238D124
+	ldr r1, _0238B7E4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mvn r0, #1
 	ldr r1, [r1]
 	ldrsb r1, [r1, #0x16]
@@ -1649,8 +1665,8 @@ _0238B740:
 	ldr r0, _0238B7F8 ; =RECYCLE_D_BOX_LAYOUT_3
 	ldr r1, _0238B7FC ; =ov20_0238BAB4
 	mov r2, r4
-	bl sub_0202F8DC
-	ldr r1, _0238B7E4 ; =ov20_0238D124
+	bl CreateTextBox2
+	ldr r1, _0238B7E4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 _0238B774:
@@ -1693,7 +1709,7 @@ _0238B7DC:
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238B7E4: .word ov20_0238D124
+_0238B7E4: .word OVERLAY20_UNKNOWN_POINTER__NA_238D124
 _0238B7E8: .word RECYCLE_D_BOX_LAYOUT_2
 _0238B7EC: .word ov20_0238B8CC
 _0238B7F0: .word RECYCLE_D_BOX_LAYOUT_1
@@ -1704,7 +1720,7 @@ _0238B7FC: .word ov20_0238BAB4
 
 	arm_func_start ov20_0238B800
 ov20_0238B800: ; 0x0238B800
-	ldr r0, _0238B820 ; =ov20_0238D124
+	ldr r0, _0238B820 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r0, [r0]
 	ldr r0, [r0]
 	cmp r0, #4
@@ -1713,7 +1729,7 @@ ov20_0238B800: ; 0x0238B800
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0238B820: .word ov20_0238D124
+_0238B820: .word OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	arm_func_end ov20_0238B800
 
 	arm_func_start ov20_0238B824
@@ -1722,7 +1738,7 @@ ov20_0238B824: ; 0x0238B824
 	movs r4, r1
 	mov r5, r0
 	beq _0238B888
-	ldr r0, _0238B8C8 ; =ov20_0238D124
+	ldr r0, _0238B8C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x68]
 	cmp r0, #0
@@ -1733,7 +1749,7 @@ ov20_0238B824: ; 0x0238B824
 	beq _0238B85C
 	bl sub_0202F9B8
 _0238B85C:
-	ldr r0, _0238B8C8 ; =ov20_0238D124
+	ldr r0, _0238B8C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x15]
@@ -1746,12 +1762,12 @@ _0238B87C:
 	str r0, [r1, #4]
 	b _0238B898
 _0238B888:
-	ldr r0, _0238B8C8 ; =ov20_0238D124
+	ldr r0, _0238B8C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mov r1, #5
 	ldr r0, [r0]
 	str r1, [r0, #4]
 _0238B898:
-	ldr r0, _0238B8C8 ; =ov20_0238D124
+	ldr r0, _0238B8C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	cmp r5, #0
 	ldr r1, [r0]
 	strb r4, [r1, #0x68]
@@ -1764,14 +1780,14 @@ _0238B898:
 	stmia r4, {r0, r1}
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0238B8C8: .word ov20_0238D124
+_0238B8C8: .word OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	arm_func_end ov20_0238B824
 
 	arm_func_start ov20_0238B8CC
 ov20_0238B8CC: ; 0x0238B8CC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x154
-	ldr r1, _0238BA30 ; =ov20_0238D124
+	ldr r1, _0238BA30 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mov sl, r0
 	ldr r1, [r1]
 	mov r8, #0
@@ -1863,9 +1879,14 @@ _0238BA14:
 	add sp, sp, #0x154
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0238BA30: .word ov20_0238D124
+_0238BA30: .word OVERLAY20_UNKNOWN_POINTER__NA_238D124
+#ifdef EUROPE
+_0238BA34: .word 0x00004637
+_0238BA38: .word 0x0000463B
+#else
 _0238BA34: .word 0x00004618
 _0238BA38: .word 0x0000461C
+#endif
 _0238BA3C: .word 0x00000578
 	arm_func_end ov20_0238B8CC
 
@@ -1873,7 +1894,7 @@ _0238BA3C: .word 0x00000578
 ov20_0238BA40: ; 0x0238BA40
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x154
-	ldr r1, _0238BAAC ; =ov20_0238D124
+	ldr r1, _0238BAAC ; =OVERLAY20_UNKNOWN_POINTER__NA_238D124
 	mov r5, r0
 	ldr r1, [r1]
 	ldr r4, [r1, #0x6c]
@@ -1899,8 +1920,12 @@ ov20_0238BA40: ; 0x0238BA40
 	add sp, sp, #0x154
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_0238BAAC: .word ov20_0238D124
+_0238BAAC: .word OVERLAY20_UNKNOWN_POINTER__NA_238D124
+#ifdef EUROPE
+_0238BAB0: .word 0x00004636
+#else
 _0238BAB0: .word 0x00004617
+#endif
 	arm_func_end ov20_0238BA40
 
 	arm_func_start ov20_0238BAB4
@@ -1947,8 +1972,13 @@ ov20_0238BAB4: ; 0x0238BAB4
 	add sp, sp, #0x154
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
+#ifdef EUROPE
+_0238BB58: .word 0x0000463D
+_0238BB5C: .word 0x0000463E
+#else
 _0238BB58: .word 0x0000461E
 _0238BB5C: .word 0x0000461F
+#endif
 	arm_func_end ov20_0238BAB4
 
 	arm_func_start ov20_0238BB60
@@ -1961,7 +1991,7 @@ ov20_0238BB60: ; 0x0238BB60
 	mov r0, #0x340
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _0238BD80 ; =ov20_0238D128
+	ldr r1, _0238BD80 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mvn r6, #1
 	str r0, [r1]
 	strb r6, [r0, #4]
@@ -2002,7 +2032,7 @@ ov20_0238BB60: ; 0x0238BB60
 	ldrne r1, _0238BD8C ; =0x00004620
 	strneh r1, [r0, #0x24]
 _0238BC20:
-	ldr r0, _0238BD80 ; =ov20_0238D128
+	ldr r0, _0238BD80 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r2, #0x10
 	ldr r1, [r0]
 	mov r3, #0xd
@@ -2014,7 +2044,7 @@ _0238BC20:
 	mov r0, #0x14
 	str r2, [r1, #0x90]
 	bl Arm9LoadUnkFieldNa0x2029EC8
-	ldr r2, _0238BD80 ; =ov20_0238D128
+	ldr r2, _0238BD80 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r1, #8
 	ldr r3, [r2]
 	str r0, [r3, #0x1c]
@@ -2026,7 +2056,7 @@ _0238BC20:
 	mov r0, r0, lsl #2
 	bl MemAlloc
 	mov r7, #0
-	ldr sl, _0238BD80 ; =ov20_0238D128
+	ldr sl, _0238BD80 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	add r6, sp, #0
 	ldr r1, [sl]
 	mov r5, r7
@@ -2063,7 +2093,7 @@ _0238BCEC:
 	ldr r2, [r1, #0x33c]
 	mov r3, #0
 	add r0, r7, r7, lsl #6
-	ldr r1, _0238BD80 ; =ov20_0238D128
+	ldr r1, _0238BD80 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	strb r3, [r2, r0, lsl #2]
 	ldr r2, [r1]
 	sub r4, r3, #1
@@ -2076,7 +2106,7 @@ _0238BCEC:
 	add r0, r0, #0xb4
 	ldr r1, [r1, #4]
 	bl sub_020327CC
-	ldr r0, _0238BD80 ; =ov20_0238D128
+	ldr r0, _0238BD80 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r3, #0
 	ldr r1, [r0]
 	sub r2, r3, #1
@@ -2093,17 +2123,23 @@ _0238BCEC:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0238BD80: .word ov20_0238D128
+_0238BD80: .word OVERLAY20_UNKNOWN_POINTER__NA_238D128
+#ifdef EUROPE
+_0238BD84: .word 0x00004641
+_0238BD88: .word 0x00004640
+_0238BD8C: .word 0x0000463F
+#else
 _0238BD84: .word 0x00004622
 _0238BD88: .word 0x00004621
 _0238BD8C: .word 0x00004620
+#endif
 	arm_func_end ov20_0238BB60
 
 	arm_func_start ov20_0238BD90
 ov20_0238BD90: ; 0x0238BD90
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x5c
-	ldr r1, _0238C1D0 ; =ov20_0238D128
+	ldr r1, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r4, [r1]
 	ldr r0, [r4]
 	cmp r0, #0xb
@@ -2137,11 +2173,11 @@ _0238BDE0:
 	ldr r1, _0238C1D8 ; =0x00441C33
 	add r2, r4, #0x1c
 	bl sub_0202B1AC
-	ldr r1, _0238C1D0 ; =ov20_0238D128
+	ldr r1, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r1, [r1]
 	strb r0, [r1, #4]
 _0238BE24:
-	ldr r2, _0238C1D0 ; =ov20_0238D128
+	ldr r2, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r0, #0x18
 	ldr r4, [r2]
 	mov r1, #1
@@ -2156,24 +2192,24 @@ _0238BE24:
 	ldr r0, [r2]
 	ldr r0, [r0, #0x338]
 	bl ov20_0238B824
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0238C1C0
 _0238BE74:
 	ldrsb r0, [r4, #4]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0238BEDC
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	mvn r1, #0
 	cmp r0, r1
 	bne _0238BEC0
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r3, #2
 	ldr r2, [r0]
 	mov r1, #8
@@ -2182,7 +2218,7 @@ _0238BE74:
 	str r1, [r0]
 	b _0238C1C0
 _0238BEC0:
-	ldr r1, _0238C1D0 ; =ov20_0238D128
+	ldr r1, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r2, #3
 	ldr r3, [r1]
 	str r0, [r3, #8]
@@ -2190,21 +2226,21 @@ _0238BEC0:
 	str r2, [r0]
 	b _0238C1C0
 _0238BEDC:
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202B530
-	ldr r1, _0238C1D0 ; =ov20_0238D128
+	ldr r1, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r5, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #4]
 	bl sub_0202B544
-	ldr r1, _0238C1D0 ; =ov20_0238D128
+	ldr r1, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #4]
 	bl sub_0202B568
-	ldr r2, _0238C1D0 ; =ov20_0238D128
+	ldr r2, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mla r1, r4, r0, r5
 	ldr r0, [r2]
 	str r1, [r0, #8]
@@ -2226,18 +2262,18 @@ _0238BEDC:
 	ldr r0, [r0, #0x338]
 	bl ov20_0238B824
 _0238BF68:
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202B558
 	tst r0, #0x100
 	beq _0238C1C0
 	mov r0, #0
-	bl sub_02017CCC
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	bl PlaySeVolumeWrapper
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	bl ov20_0238C288
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r1, #5
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2249,8 +2285,8 @@ _0238BFA8:
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238C1D0 ; =ov20_0238D128
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	strb r0, [r4, #5]
 	ldr r0, [r1]
 	mov r1, #4
@@ -2258,14 +2294,14 @@ _0238BFA8:
 	b _0238C1C0
 _0238BFDC:
 	ldrsb r0, [r4, #5]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0238C1C0
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl GetNormalMenuResult
-	ldr r2, _0238C1D0 ; =ov20_0238D128
+	bl GetSimpleMenuResult
+	ldr r2, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mvn r1, #0
 	ldr r3, [r2]
 	str r0, [r3, #0x330]
@@ -2276,10 +2312,10 @@ _0238BFDC:
 	bne _0238C048
 	ldrsb r0, [r0, #4]
 	bl sub_0202B490
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	bl ov20_0238C2B8
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2290,10 +2326,10 @@ _0238C048:
 	strne r1, [r0]
 	bne _0238C1C0
 	bl ov20_0238C2B8
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	bl ov20_0238C288
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r1, #5
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2301,10 +2337,10 @@ _0238C048:
 _0238C07C:
 	mov r0, r4
 	bl ov20_0238C2B8
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	bl ov20_0238C288
-	ldr r1, _0238C1D0 ; =ov20_0238D128
+	ldr r1, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	add r0, sp, #0xc
 	ldr r1, [r1]
 	ldr r1, [r1, #0x338]
@@ -2312,7 +2348,11 @@ _0238C07C:
 	ldrsh r4, [r1]
 	bl InitPreprocessorArgs
 	mov r2, #0
+#ifdef EUROPE
+	add r0, r4, #0xd3
+#else
 	add r0, r4, #0xd1
+#endif
 	add r0, r0, #0x2900
 	mov r0, r0, lsl #0x10
 	mov r1, r0, lsr #0x10
@@ -2326,8 +2366,8 @@ _0238C07C:
 	ldr r0, _0238C1E4 ; =RECYCLE_D_BOX_LAYOUT_4
 	ldr r1, _0238C1E8 ; =0x00001013
 	ldr r3, _0238C1EC ; =0x000008E4
-	bl sub_0202E3CC
-	ldr r1, _0238C1D0 ; =ov20_0238D128
+	bl CreateScrollBox1
+	ldr r1, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r2, #6
 	ldr r3, [r1]
 	strb r0, [r3, #6]
@@ -2339,11 +2379,11 @@ _0238C108:
 	bl sub_0202E6E4
 	cmp r0, #0
 	bne _0238C1C0
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
 	bl sub_0202E6C8
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mvn r3, #1
 	ldr r2, [r0]
 	mov r1, #0
@@ -2355,7 +2395,7 @@ _0238C148:
 	mov r0, #8
 	str r0, [r4]
 _0238C150:
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r4, [r0]
 	ldr r0, [r4, #0x330]
 	cmp r0, #0
@@ -2369,13 +2409,13 @@ _0238C178:
 	mov r0, #0
 	mov r1, r0
 	bl ov20_0238B824
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	bl ov20_0238C2B8
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	bl ov20_0238C288
-	ldr r0, _0238C1D0 ; =ov20_0238D128
+	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r1, #0xa
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2392,7 +2432,7 @@ _0238C1C8:
 	add sp, sp, #0x5c
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_0238C1D0: .word ov20_0238D128
+_0238C1D0: .word OVERLAY20_UNKNOWN_POINTER__NA_238D128
 _0238C1D4: .word RECYCLE_D_BOX_LAYOUT_5
 _0238C1D8: .word 0x00441C33
 _0238C1DC: .word RECYCLE_D_BOX_LAYOUT_6
@@ -2404,18 +2444,18 @@ _0238C1EC: .word 0x000008E4
 
 	arm_func_start ov20_0238C1F0
 ov20_0238C1F0: ; 0x0238C1F0
-	ldr r0, _0238C200 ; =ov20_0238D128
+	ldr r0, _0238C200 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldr r0, [r0, #0x330]
 	bx lr
 	.align 2, 0
-_0238C200: .word ov20_0238D128
+_0238C200: .word OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	arm_func_end ov20_0238C1F0
 
 	arm_func_start ov20_0238C204
 ov20_0238C204: ; 0x0238C204
 	stmdb sp!, {r3, lr}
-	ldr r1, _0238C22C ; =ov20_0238D128
+	ldr r1, _0238C22C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov lr, r0
 	ldr r0, [r1]
 	ldr ip, [r0, #0x338]
@@ -2425,34 +2465,34 @@ ov20_0238C204: ; 0x0238C204
 	stmia lr, {r0, r1}
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C22C: .word ov20_0238D128
+_0238C22C: .word OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	arm_func_end ov20_0238C204
 
 	arm_func_start ov20_0238C230
 ov20_0238C230: ; 0x0238C230
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238C284 ; =ov20_0238D128
+	ldr r0, _0238C284 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl ov20_0238B5AC
-	ldr r0, _0238C284 ; =ov20_0238D128
+	ldr r0, _0238C284 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	add r0, r0, #0x334
 	bl sub_02011DB8
-	ldr r0, _0238C284 ; =ov20_0238D128
+	ldr r0, _0238C284 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldr r0, [r0, #0x33c]
 	bl MemFree
-	ldr r0, _0238C284 ; =ov20_0238D128
+	ldr r0, _0238C284 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0238C284 ; =ov20_0238D128
+	ldr r0, _0238C284 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C284: .word ov20_0238D128
+_0238C284: .word OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	arm_func_end ov20_0238C230
 
 	arm_func_start ov20_0238C288
@@ -2463,7 +2503,7 @@ ov20_0238C288: ; 0x0238C288
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r4, pc}
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	mvn r0, #1
 	strb r0, [r4, #4]
 	mov r0, #0
@@ -2479,7 +2519,7 @@ ov20_0238C2B8: ; 0x0238C2B8
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r4, pc}
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	mvn r0, #1
 	strb r0, [r4, #5]
 	ldmia sp!, {r4, pc}
@@ -2496,13 +2536,13 @@ ov20_0238C2E0: ; 0x0238C2E0
 	mov r0, #0x1cc
 	mov r1, #8
 	bl MemAlloc
-	ldr r2, _0238C4D8 ; =ov20_0238D12C
+	ldr r2, _0238C4D8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #8
 	str r0, [r2]
 	str r6, [r0, #0x1bc]
 	ldr r0, [r4, #4]
 	bl MemAlloc
-	ldr r2, _0238C4D8 ; =ov20_0238D12C
+	ldr r2, _0238C4D8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #0
 	ldr r3, [r2]
 	mov r6, #3
@@ -2550,7 +2590,7 @@ _0238C3B0:
 	cmp r3, r0
 	blt _0238C3B0
 _0238C3C0:
-	ldr r2, _0238C4D8 ; =ov20_0238D12C
+	ldr r2, _0238C4D8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #0
 	ldr r0, [r2]
 	mvn r3, #1
@@ -2590,7 +2630,7 @@ _0238C3C0:
 	ldr r2, [r2]
 	str r1, [r2, #0x94]
 	bl Arm9LoadUnkFieldNa0x2029EC8
-	ldr r1, _0238C4D8 ; =ov20_0238D12C
+	ldr r1, _0238C4D8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r2, [r1]
 	str r0, [r2, #0x20]
 	mov r0, #0
@@ -2600,13 +2640,13 @@ _0238C3C0:
 	mov r2, r0
 	str r3, [r5, #0x80]
 	bl ov20_0238C4E8
-	ldr r0, _0238C4D8 ; =ov20_0238D12C
+	ldr r0, _0238C4D8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r1, [r4, #4]
 	ldr r0, [r0]
 	mov r2, #0xa
 	add r0, r0, #0xb8
 	bl sub_020327CC
-	ldr r1, _0238C4D8 ; =ov20_0238D12C
+	ldr r1, _0238C4D8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r2, #0
 	ldr r0, [r1]
 	sub r3, r2, #1
@@ -2621,7 +2661,7 @@ _0238C3C0:
 	str r4, [r1, #0x1b8]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0238C4D8: .word ov20_0238D12C
+_0238C4D8: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 _0238C4DC: .word ov20_0238D140
 _0238C4E0: .word 0x0000041A
 _0238C4E4: .word 0x0000032F
@@ -2629,7 +2669,7 @@ _0238C4E4: .word 0x0000032F
 
 	arm_func_start ov20_0238C4E8
 ov20_0238C4E8: ; 0x0238C4E8
-	ldr r3, _0238C508 ; =ov20_0238D12C
+	ldr r3, _0238C508 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr ip, [r3]
 	str r0, [ip, #0x1c0]
 	ldr r0, [r3]
@@ -2638,14 +2678,14 @@ ov20_0238C4E8: ; 0x0238C4E8
 	str r2, [r0, #0x1c8]
 	bx lr
 	.align 2, 0
-_0238C508: .word ov20_0238D12C
+_0238C508: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	arm_func_end ov20_0238C4E8
 
 	arm_func_start ov20_0238C50C
 ov20_0238C50C: ; 0x0238C50C
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x5c
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r4, [r0]
 	ldr r1, [r4]
 	cmp r1, #0xc
@@ -2682,7 +2722,7 @@ _0238C560:
 	ldr r3, _0238C9D8 ; =ov20_0238CC14
 	str r2, [sp, #8]
 	add r2, r4, #0x20
-	bl sub_0202C3A8
+	bl CreateCollectionMenu
 	strb r0, [r4, #4]
 	ldrsb r0, [r4, #4]
 	mov r1, #1
@@ -2701,7 +2741,7 @@ _0238C5CC:
 	ldr r0, _0238C9E4 ; =RECYCLE_D_BOX_LAYOUT_8
 	ldr r1, _0238C9E8 ; =ov20_0238CE9C
 	mov r2, r4
-	bl sub_0202F8DC
+	bl CreateTextBox2
 	strb r0, [r4, #7]
 _0238C5F0:
 	ldrsb r1, [r4, #8]
@@ -2711,10 +2751,10 @@ _0238C5F0:
 	ldr r0, _0238C9EC ; =RECYCLE_D_BOX_LAYOUT_7
 	ldr r1, _0238C9F0 ; =ov20_0238CF20
 	mov r2, r4
-	bl sub_0202F8DC
+	bl CreateTextBox2
 	strb r0, [r4, #8]
 _0238C614:
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r2, [r0]
 	ldr r1, [r2, #0xc]
 	str r1, [r2, #0x10]
@@ -2725,7 +2765,7 @@ _0238C614:
 	mov r0, #0
 	blx r1
 _0238C63C:
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2735,7 +2775,7 @@ _0238C650:
 	bl sub_0202C728
 	cmp r0, #0
 	bne _0238C724
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202C75C
@@ -2743,28 +2783,28 @@ _0238C650:
 	mvn r0, #0
 	cmp r4, r0
 	bne _0238C6B4
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	bl ov20_0238CB28
 	cmp r0, #0
-	ldreq r0, _0238C9C8 ; =ov20_0238D12C
+	ldreq r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	moveq r1, #2
 	ldreq r0, [r0]
 	streq r1, [r0, #0x1b4]
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #9
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0238C9BC
 _0238C6B4:
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r5, [r0]
 	mov r0, r5
 	bl ov20_0238CAE0
 	ldr r1, [r5, #0x1bc]
 	cmp r1, r0
 	bne _0238C6E8
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	str r4, [r5, #0xc]
 	ldr r0, [r0]
 	mov r1, #3
@@ -2777,7 +2817,7 @@ _0238C6E8:
 	ldrb r0, [r0, #7]
 	cmp r0, #0
 	bne _0238C718
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	str r4, [r5, #0xc]
 	ldr r0, [r0]
 	mov r1, #4
@@ -2788,11 +2828,11 @@ _0238C718:
 	bl sub_0202C620
 	b _0238C9BC
 _0238C724:
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202C748
-	ldr r1, _0238C9C8 ; =ov20_0238D12C
+	ldr r1, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r2, [r1]
 	str r0, [r2, #0xc]
 	ldr r3, [r1]
@@ -2807,13 +2847,13 @@ _0238C724:
 	mov r0, #0
 	blx r1
 _0238C76C:
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x1c]
 	cmp r1, #0
 	beq _0238C9BC
 	bl ov20_0238CB84
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #6
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2832,8 +2872,8 @@ _0238C7B0:
 	mov r1, #0x13
 	mov r2, #0
 	str r5, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238C9C8 ; =ov20_0238D12C
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	strb r0, [r4, #5]
 	ldr r0, [r1]
 	mov r1, #5
@@ -2841,25 +2881,25 @@ _0238C7B0:
 	b _0238C9BC
 _0238C7E4:
 	ldrsb r0, [r4, #5]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0238C9BC
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl GetNormalMenuResult
-	ldr r1, _0238C9C8 ; =ov20_0238D12C
+	bl GetSimpleMenuResult
+	ldr r1, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r2, [r1]
 	str r0, [r2, #0x1b4]
 	ldr r0, [r1]
 	bl ov20_0238CBEC
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldr r1, [r0, #0x1b4]
 	cmp r1, #1
 	bne _0238C844
 	bl ov20_0238CB84
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #6
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2867,7 +2907,7 @@ _0238C7E4:
 _0238C844:
 	ldrsb r0, [r0, #4]
 	bl sub_0202C620
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2878,7 +2918,7 @@ _0238C860:
 	ldr r1, [r1]
 	add r0, r1, r0, lsl #3
 	bl sub_020124D8
-	ldr r1, _0238C9C8 ; =ov20_0238D12C
+	ldr r1, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r4, r0
 	ldr r0, [r1]
 	ldr r1, [r0, #0x1b8]
@@ -2886,11 +2926,11 @@ _0238C860:
 	ldr r1, [r1]
 	add r0, r1, r0, lsl #3
 	bl sub_02012518
-	ldr r1, _0238C9C8 ; =ov20_0238D12C
+	ldr r1, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r5, r0
 	ldr r0, [r1]
 	bl ov20_0238CBEC
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	bl ov20_0238CB84
 	add r0, sp, #0xc
@@ -2898,7 +2938,11 @@ _0238C860:
 	ldr r0, _0238C9FC ; =0x0000FFFF
 	mov r1, #0
 	cmp r5, r0
+#ifdef EUROPE
+	add r0, r4, #0xd3
+#else
 	add r0, r4, #0xd1
+#endif
 	str r1, [sp, #0x30]
 	addne r1, r5, #0xbc
 	add r0, r0, #0x2900
@@ -2915,8 +2959,8 @@ _0238C860:
 	ldr r1, _0238CA04 ; =0x00001013
 	ldr r3, _0238CA08 ; =0x000008E4
 	str r4, [sp, #8]
-	bl sub_0202E3CC
-	ldr r1, _0238C9C8 ; =ov20_0238D12C
+	bl CreateScrollBox1
+	ldr r1, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r2, #7
 	ldr r3, [r1]
 	strb r0, [r3, #6]
@@ -2928,11 +2972,11 @@ _0238C928:
 	bl sub_0202E6E4
 	cmp r0, #0
 	bne _0238C9BC
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
 	bl sub_0202E6C8
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mvn r3, #1
 	ldr r2, [r0]
 	mov r1, #0
@@ -2944,20 +2988,20 @@ _0238C968:
 	mov r0, #9
 	str r0, [r4]
 _0238C970:
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1c8]
 	cmp r0, #0
 	beq _0238C988
 	blx r0
 _0238C988:
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	bl ov20_0238CBEC
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	bl ov20_0238CB84
-	ldr r0, _0238C9C8 ; =ov20_0238D12C
+	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #0xb
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2971,7 +3015,7 @@ _0238C9C0:
 	add sp, sp, #0x5c
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_0238C9C8: .word ov20_0238D12C
+_0238C9C8: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 _0238C9CC: .word ov20_0238CD20
 _0238C9D0: .word RECYCLE_D_BOX_LAYOUT1_1
 _0238C9D4: .word 0x00441E37
@@ -2992,30 +3036,30 @@ _0238CA08: .word 0x000008E4
 
 	arm_func_start ov20_0238CA0C
 ov20_0238CA0C: ; 0x0238CA0C
-	ldr r0, _0238CA1C ; =ov20_0238D12C
+	ldr r0, _0238CA1C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1b4]
 	bx lr
 	.align 2, 0
-_0238CA1C: .word ov20_0238D12C
+_0238CA1C: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	arm_func_end ov20_0238CA0C
 
 	arm_func_start ov20_0238CA20
 ov20_0238CA20: ; 0x0238CA20
-	ldr r0, _0238CA34 ; =ov20_0238D12C
+	ldr r0, _0238CA34 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr ip, _0238CA38 ; =sub_0201255C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1b8]
 	bx ip
 	.align 2, 0
-_0238CA34: .word ov20_0238D12C
+_0238CA34: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 _0238CA38: .word sub_0201255C
 	arm_func_end ov20_0238CA20
 
 	arm_func_start ov20_0238CA3C
 ov20_0238CA3C: ; 0x0238CA3C
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238CAD4 ; =ov20_0238D12C
+	ldr r0, _0238CAD4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr ip, [r0]
 	cmp ip, #0
 	ldmeqia sp!, {r3, pc}
@@ -3045,26 +3089,26 @@ _0238CA98:
 	blt _0238CA90
 	add r0, ip, #0x1b8
 	bl sub_020125CC
-	ldr r0, _0238CAD4 ; =ov20_0238D12C
+	ldr r0, _0238CAD4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1b0]
 	bl MemFree
-	ldr r0, _0238CAD4 ; =ov20_0238D12C
+	ldr r0, _0238CAD4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0238CAD4 ; =ov20_0238D12C
+	ldr r0, _0238CAD4 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238CAD4: .word ov20_0238D12C
+_0238CAD4: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 _0238CAD8: .word ov20_0238D140
 _0238CADC: .word 0x0000041A
 	arm_func_end ov20_0238CA3C
 
 	arm_func_start ov20_0238CAE0
 ov20_0238CAE0: ; 0x0238CAE0
-	ldr r1, _0238CB24 ; =ov20_0238D12C
+	ldr r1, _0238CB24 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r2, [r0, #0x1b8]
 	ldr r1, [r1]
 	mov r0, #0
@@ -3084,13 +3128,13 @@ _0238CB18:
 	blt _0238CB00
 	bx lr
 	.align 2, 0
-_0238CB24: .word ov20_0238D12C
+_0238CB24: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	arm_func_end ov20_0238CAE0
 
 	arm_func_start ov20_0238CB28
 ov20_0238CB28: ; 0x0238CB28
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _0238CB80 ; =ov20_0238D12C
+	ldr r1, _0238CB80 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r5, #0
 	ldr r1, [r1]
 	mov r4, r5
@@ -3114,7 +3158,7 @@ _0238CB68:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0238CB80: .word ov20_0238D12C
+_0238CB80: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	arm_func_end ov20_0238CB28
 
 	arm_func_start ov20_0238CB84
@@ -3157,7 +3201,7 @@ ov20_0238CBEC: ; 0x0238CBEC
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r4, pc}
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	mvn r0, #1
 	strb r0, [r4, #5]
 	ldmia sp!, {r4, pc}
@@ -3167,7 +3211,7 @@ ov20_0238CBEC: ; 0x0238CBEC
 ov20_0238CC14: ; 0x0238CC14
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
-	ldr r3, _0238CCBC ; =ov20_0238D12C
+	ldr r3, _0238CCBC ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r5, r0
 	ldr r0, [r3]
 	mov r4, r2
@@ -3198,7 +3242,6 @@ _0238CC60:
 	mov r2, #0
 	bl sub_0200D670
 	b _0238CC9C
-	arm_func_end ov20_0238CC14
 _0238CC94:
 	mov r0, #0
 	b _0238CCB4
@@ -3206,9 +3249,6 @@ _0238CC9C:
 	ldrb r0, [r6, #6]
 	cmp r0, #0
 	movne r0, #1
-
-	arm_func_start ov20_0238CCA8
-ov20_0238CCA8: ; 0x0238CCA8
 	moveq r0, #0
 	str r0, [r4]
 	mov r0, r5
@@ -3216,35 +3256,27 @@ _0238CCB4:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-	arm_func_end ov20_0238CCA8
-_0238CCBC: .word ov20_0238D12C
+_0238CCBC: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
+	arm_func_end ov20_0238CC14
 
 	arm_func_start ov20_0238CCC0
 ov20_0238CCC0: ; 0x0238CCC0
 	stmdb sp!, {r4, lr}
-	ldr r1, _0238CD1C ; =ov20_0238D12C
+	ldr r1, _0238CD1C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r4, r0
 	ldr r0, [r1]
 	bl ov20_0238CAE0
 	cmp r0, #0
-	arm_func_end ov20_0238CCC0
-
-	arm_func_start ov20_0238CCD8
-ov20_0238CCD8: ; 0x0238CCD8
 	movle r0, #0
 	ldmleia sp!,  {r4, pc}
-	ldr r0, _0238CD1C ; =ov20_0238D12C
+	ldr r0, _0238CD1C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	bl ov20_0238CB28
-	ldr r0, _0238CD1C ; =ov20_0238D12C
-	arm_func_end ov20_0238CCD8
-
-	arm_func_start ov20_0238CCF0
-ov20_0238CCF0: ; 0x0238CCF0
+	ldr r0, _0238CD1C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #7]
 	bl sub_0202F9B8
-	ldr r0, _0238CD1C ; =ov20_0238D12C
+	ldr r0, _0238CD1C ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
 	bl sub_0202F9B8
@@ -3253,13 +3285,13 @@ ov20_0238CCF0: ; 0x0238CCF0
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238CD1C: .word ov20_0238D12C
-	arm_func_end ov20_0238CCF0
+_0238CD1C: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
+	arm_func_end ov20_0238CCC0
 
 	arm_func_start ov20_0238CD20
 ov20_0238CD20: ; 0x0238CD20
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _0238CE38 ; =ov20_0238D12C
+	ldr r1, _0238CE38 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r4, #0
 	ldr r2, [r1]
 	tst r0, #0x400
@@ -3268,7 +3300,7 @@ ov20_0238CD20: ; 0x0238CD20
 	ldr r0, [r1]
 	ldrsb r0, [r0, #4]
 	bl sub_0202D0EC
-	ldr r1, _0238CE38 ; =ov20_0238D12C
+	ldr r1, _0238CE38 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r2, [r1]
 	ldr r1, [r2, #0x1b8]
 	ldr r1, [r1]
@@ -3281,7 +3313,7 @@ ov20_0238CD20: ; 0x0238CD20
 	bne _0238CD94
 	mov r0, r2
 	bl ov20_0238CAE0
-	ldr r1, _0238CE38 ; =ov20_0238D12C
+	ldr r1, _0238CE38 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r1, [r1]
 	ldr r1, [r1, #0x1bc]
 	cmp r0, r1
@@ -3296,29 +3328,29 @@ _0238CD98:
 	cmp r0, #0
 	moveq r1, #1
 	movne r1, #0
-	ldr r0, _0238CE38 ; =ov20_0238D12C
+	ldr r0, _0238CE38 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	strb r1, [r5, #6]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #7]
 	bl sub_0202F9B8
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _0238CDFC
 _0238CDD0:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _0238CDFC
 _0238CDDC:
 	tst r0, #0x100
 	beq _0238CDFC
 	mov r0, r4
-	bl sub_02017CCC
-	ldr r0, _0238CE38 ; =ov20_0238D12C
+	bl PlaySeVolumeWrapper
+	ldr r0, _0238CE38 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x1c]
 _0238CDFC:
-	ldr r0, _0238CE38 ; =ov20_0238D12C
+	ldr r0, _0238CE38 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r5, [r0]
 	mov r0, r5
 	bl ov20_0238CAE0
@@ -3336,13 +3368,13 @@ _0238CE30:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0238CE38: .word ov20_0238D12C
+_0238CE38: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	arm_func_end ov20_0238CD20
 
 	arm_func_start ov20_0238CE3C
 ov20_0238CE3C: ; 0x0238CE3C
 	stmdb sp!, {r3, lr}
-	ldr lr, _0238CE90 ; =ov20_0238D12C
+	ldr lr, _0238CE90 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	mov ip, r0
 	ldr r0, [lr]
 	ldr r0, [r0, #0x1b8]
@@ -3364,9 +3396,13 @@ _0238CE80:
 	bl sub_0202A03C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238CE90: .word ov20_0238D12C
+_0238CE90: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 _0238CE94: .word 0x0000032F
+#ifdef EUROPE
+_0238CE98: .word 0x00004642
+#else
 _0238CE98: .word 0x00004623
+#endif
 	arm_func_end ov20_0238CE3C
 
 	arm_func_start ov20_0238CE9C
@@ -3381,7 +3417,7 @@ ov20_0238CE9C: ; 0x0238CE9C
 	bl sub_02027B1C
 	add r0, sp, #4
 	bl InitPreprocessorArgs
-	ldr r0, _0238CF18 ; =ov20_0238D12C
+	ldr r0, _0238CF18 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	str r4, [sp, #0x2c]
 	ldr r1, [r0]
 	add r2, sp, #4
@@ -3403,8 +3439,12 @@ ov20_0238CE9C: ; 0x0238CE9C
 	add sp, sp, #0x154
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_0238CF18: .word ov20_0238D12C
+_0238CF18: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
+#ifdef EUROPE
+_0238CF1C: .word 0x00004646
+#else
 _0238CF1C: .word 0x00004627
+#endif
 	arm_func_end ov20_0238CE9C
 
 	arm_func_start ov20_0238CF20
@@ -3432,34 +3472,53 @@ ov20_0238CF20: ; 0x0238CF20
 	add sp, sp, #0x154
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
+#ifdef EUROPE
+_0238CF78: .word 0x00004647
+#else
 _0238CF78: .word 0x00004628
+#endif
 	arm_func_end ov20_0238CF20
 	; 0x0238CF7C
 
 	.global OVERLAY20_UNKNOWN_POINTER__NA_238CF7C
 OVERLAY20_UNKNOWN_POINTER__NA_238CF7C:
+#ifdef EUROPE
+#define OV20_DATA_OFFSET 0x1F
+#else
+#define OV20_DATA_OFFSET 0
+#endif
 	.word OVERLAY20_UNKNOWN_TABLE__NA_238D014
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global RECYCLE_MENU_CONFIRM_1
 RECYCLE_MENU_CONFIRM_1:
-	.byte 0x15, 0x46, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
-	.byte 0x16, 0x46, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0x15 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
+	.byte 0x16 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global RECYCLE_MENU_CONFIRM_2
 RECYCLE_MENU_CONFIRM_2:
-	.byte 0x15, 0x46, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x16, 0x46, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00
+	.byte 0x15 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x16 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global RECYCLE_SUBMENU_1
 RECYCLE_SUBMENU_1:
-	.byte 0x07, 0x46, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
-	.byte 0x08, 0x46, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0x07 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
+	.byte 0x08 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global RECYCLE_SUBMENU_2
 RECYCLE_SUBMENU_2:
-	.byte 0xF7, 0x45, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xF9, 0x45, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
-	.byte 0xFA, 0x45, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.hword 0x45F7 + OV20_DATA_OFFSET
+	.byte 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
+	.hword 0x45F9 + OV20_DATA_OFFSET
+	.byte 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
+	.hword 0x45FA + OV20_DATA_OFFSET
+	.byte 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global RECYCLE_MAIN_MENU_1
 RECYCLE_MAIN_MENU_1:
-	.byte 0xEF, 0x45, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x45, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0xF1, 0x45, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xF2, 0x45, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.hword 0x45EF + OV20_DATA_OFFSET
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.hword 0x45F0 + OV20_DATA_OFFSET
+	.byte 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.hword 0x45F1 + OV20_DATA_OFFSET
+	.byte 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.hword 0x45F2 + OV20_DATA_OFFSET
+	.byte 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global OVERLAY20_UNKNOWN_TABLE__NA_238D014
 OVERLAY20_UNKNOWN_TABLE__NA_238D014:
@@ -3491,8 +3550,8 @@ RECYCLE_D_BOX_LAYOUT_6:
 	.byte 0x16, 0x02, 0x08, 0x05, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global RECYCLE_MAIN_MENU_2
 RECYCLE_MAIN_MENU_2:
-	.byte 0x24, 0x46, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x25, 0x46, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x26, 0x46, 0x00, 0x00
+	.byte 0x24 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x25 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x26 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.global RECYCLE_D_BOX_LAYOUT_7
 RECYCLE_D_BOX_LAYOUT_7:
@@ -3516,22 +3575,22 @@ RECYCLE_D_BOX_LAYOUT1_1:
 	.byte 0x02, 0x02, 0x12, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global RECYCLE_MAIN_MENU_3
 RECYCLE_MAIN_MENU_3:
-	.byte 0x25, 0x46, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0x26, 0x46, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x25 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00
+	.byte 0x01, 0x00, 0x00, 0x00, 0x26 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00
 
 	.data
-	.global ov20_0238D120
-ov20_0238D120:
+	.global OVERLAY20_UNKNOWN_POINTER__NA_238D120
+OVERLAY20_UNKNOWN_POINTER__NA_238D120:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D124
-ov20_0238D124:
+	.global OVERLAY20_UNKNOWN_POINTER__NA_238D124
+OVERLAY20_UNKNOWN_POINTER__NA_238D124:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D128
-ov20_0238D128:
+	.global OVERLAY20_UNKNOWN_POINTER__NA_238D128
+OVERLAY20_UNKNOWN_POINTER__NA_238D128:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov20_0238D12C
-ov20_0238D12C:
+	.global OVERLAY20_UNKNOWN_POINTER__NA_238D12C
+OVERLAY20_UNKNOWN_POINTER__NA_238D12C:
 	.byte 0x00, 0x00, 0x00, 0x00
 
 	.bss

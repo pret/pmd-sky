@@ -87,7 +87,7 @@ ov29_022F067C: ; 0x022F067C
 	cmp r1, #0
 	bne _022F06F4
 	mov r5, #0
-	ldr r8, _022F077C ; =ov29_02353538
+	ldr r8, _022F077C ; =DUNGEON_PTR
 	mov r4, r5
 	add sb, sp, #0x10
 _022F06A4:
@@ -148,7 +148,7 @@ _022F0700:
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_022F077C: .word ov29_02353538
+_022F077C: .word DUNGEON_PTR
 	arm_func_end ov29_022F067C
 
 	arm_func_start ov29_022F0780
@@ -185,7 +185,7 @@ _022F07D4: .word 0x00001308
 	arm_func_start ov29_022F07D8
 ov29_022F07D8: ; 0x022F07D8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r5, _022F0844 ; =ov29_02353538
+	ldr r5, _022F0844 ; =DUNGEON_PTR
 	mov r4, r0
 	mov r6, #0
 _022F07E8:
@@ -214,7 +214,7 @@ _022F082C:
 	blt _022F07E8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022F0844: .word ov29_02353538
+_022F0844: .word DUNGEON_PTR
 	arm_func_end ov29_022F07D8
 
 	arm_func_start ov29_022F0848
@@ -240,7 +240,7 @@ ov29_022F085C: ; 0x022F085C
 	mov r0, #0x100
 	str r1, [sp]
 	bl sub_02001AB0
-	ldr r1, _022F0980 ; =ov29_02353538
+	ldr r1, _022F0980 ; =DUNGEON_PTR
 	mov r0, #0x400
 	ldr r2, [r1]
 	mov r1, #0
@@ -308,7 +308,7 @@ _022F0964:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022F0980: .word ov29_02353538
+_022F0980: .word DUNGEON_PTR
 	arm_func_end ov29_022F085C
 
 	arm_func_start ov29_022F0984
@@ -403,7 +403,7 @@ ov29_022F0AA4: ; 0x022F0AA4
 	ldmneia sp!, {r3, pc}
 	ldr r0, _022F0AD8 ; =ov29_023526A8
 	ldr r1, _022F0ADC ; =ov29_022F0B10
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _022F0AD4 ; =ov29_023535A4
 	strb r0, [r1]
 	ldmia sp!, {r3, pc}
@@ -579,7 +579,7 @@ ov29_022F0C98: ; 0x022F0C98
 	mov r0, #4
 	mov r1, r8
 	bl ov29_022E0DD8
-	ldr r1, _022F0EC8 ; =ov29_02353538
+	ldr r1, _022F0EC8 ; =DUNGEON_PTR
 	ldr r2, _022F0ECC ; =ov29_0237CFBB
 	ldr r1, [r1]
 	mov r0, #1
@@ -691,7 +691,7 @@ _022F0E64:
 	bl ov29_02339190
 	mov r0, #0
 	bl ov29_02338F58
-	ldr r1, _022F0EC8 ; =ov29_02353538
+	ldr r1, _022F0EC8 ; =DUNGEON_PTR
 	mov r0, r7
 	ldr r1, [r1]
 	mov r2, #0
@@ -712,7 +712,7 @@ _022F0E64:
 	bl ov29_022E0B44
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022F0EC8: .word ov29_02353538
+_022F0EC8: .word DUNGEON_PTR
 _022F0ECC: .word ov29_0237CFBB
 _022F0ED0: .word ov29_0237C6A4
 _022F0ED4: .word ov29_0237C694
@@ -723,7 +723,7 @@ _022F0ED8: .word 0x00003F03
 SetLeaderAction: ; 0x022F0EDC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xdc
-	ldr r1, _022F1DDC ; =ov29_02353538
+	ldr r1, _022F1DDC ; =DUNGEON_PTR
 	add r0, sp, #0xb6
 	ldr r2, [r1]
 	mov r1, #5
@@ -734,7 +734,7 @@ SetLeaderAction: ; 0x022F0EDC
 	mov r2, #0
 	str r2, [sp, #0x64]
 	bl MemZero
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	strh r1, [r0, #0x1c]
@@ -753,12 +753,12 @@ SetLeaderAction: ; 0x022F0EDC
 	bl ov29_022EA370
 	b _022F2B34
 _022F0F58:
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	strb r1, [r0, #0x78e]
 	bl ov29_02339CD4
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #5]
 	cmp r0, #0
@@ -769,7 +769,7 @@ _022F0F58:
 	cmp r0, #0
 	beq _022F0FAC
 	bl ov29_0234A980
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	cmp r0, #0
@@ -808,7 +808,7 @@ _022F1000:
 	str r0, [sp, #4]
 _022F1024:
 	bl GetLeader
-	ldr r1, _022F1DDC ; =ov29_02353538
+	ldr r1, _022F1DDC ; =DUNGEON_PTR
 	mov r6, r0
 	ldr r0, [r1]
 	ldr sb, [r6, #0xb4]
@@ -827,7 +827,7 @@ _022F1064:
 	ldr r1, _022F1DE4 ; =ov29_0237C9A4
 	mov r2, #0
 	strb r2, [r1, #2]
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	strb r2, [r1, #1]
 	ldr r0, [r0]
 	ldr r0, [r0, #0x614]
@@ -1041,7 +1041,7 @@ _022F1364:
 	beq _022F13B0
 	mov r0, #1
 	bl SetLeaderActionFields
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x78e]
@@ -1360,7 +1360,7 @@ _022F1838:
 _022F1844:
 	mov r0, #1
 	str r0, [sp, #0x48]
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r1, [r0]
 	mov r0, #1
 	str r0, [sp, #0x2c]
@@ -1370,7 +1370,7 @@ _022F1844:
 _022F1868:
 	mov r0, #1
 	str r0, [sp, #0x48]
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r1, [r0]
 	mov r0, #0
 	strb r0, [r1, #0x78c]
@@ -1403,7 +1403,7 @@ _022F18B4:
 	bl GetTileSafe
 	str r0, [sp, #0x78]
 	mov r0, #7
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, [sp, #0x38]
 	cmp r0, #0
 	beq _022F198C
@@ -1496,7 +1496,7 @@ _022F19DC:
 	beq _022F1CE0
 	mov r0, #1
 	bl SetLeaderActionFields
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x78e]
@@ -1512,7 +1512,7 @@ _022F1A64:
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, #1
 	bl SetLeaderActionFields
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x78e]
@@ -1750,7 +1750,7 @@ _022F1DB0:
 	strb r0, [sp, #0xb9]
 	b _022F2970
 	.align 2, 0
-_022F1DDC: .word ov29_02353538
+_022F1DDC: .word DUNGEON_PTR
 _022F1DE0: .word DIRECTIONS_XY
 _022F1DE4: .word ov29_0237C9A4
 _022F1DE8: .word 0x00000BA3
@@ -1786,7 +1786,7 @@ _022F1E3C:
 	beq _022F1E90
 	bl sub_0204AF78
 	mov r0, #4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #0
 	mov r1, #1
 	bl OpenMessageLog
@@ -2006,7 +2006,7 @@ _022F2150:
 	cmp r0, #0
 	bne _022F2970
 _022F2180:
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrb r0, [r0, #0x23e]
@@ -2025,7 +2025,7 @@ _022F21B4:
 	mov r0, #0
 	str r0, [sp, #0x3c]
 	str r0, [sp, #0x40]
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r1, r0, #0x100
 	ldrsh r3, [r1, #0xd8]
@@ -2192,12 +2192,12 @@ _022F23C4:
 	mov r1, #0
 	strb r1, [r0, #2]
 _022F243C:
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	cmp sl, #0
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r4, [r0, #0xdc]
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r4, [r0, #0xde]
@@ -2241,11 +2241,11 @@ _022F24AC:
 	mov r2, r7
 	mov r0, r6
 	bl ov29_023049A8
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r4, [r0, #0xd8]
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r4, [r0, #0xda]
@@ -2337,7 +2337,7 @@ _022F25D8:
 	bne _022F2748
 	ldrb r1, [fp, #0x4c]
 	mov r0, r6
-	bl CanMonsterMoveInDirection
+	bl ov29_0230105C
 	cmp r0, #0
 	moveq r0, #0
 	beq _022F2748
@@ -2388,7 +2388,7 @@ _022F26B8:
 	ldr r1, [sp, #0x14]
 	ldrsh r1, [r1, #6]
 	strh r1, [r2, #0x80]
-	ldr r1, _022F1DDC ; =ov29_02353538
+	ldr r1, _022F1DDC ; =DUNGEON_PTR
 	ldr r2, [r1]
 	mov r1, r0
 	strb r1, [r2, #0x10]
@@ -2428,7 +2428,7 @@ _022F2748:
 _022F27C8:
 	mov r0, r6
 	mov r1, r7
-	bl ov29_02300E78
+	bl CanMonsterMoveInDirection
 	cmp r0, #0
 	orreq r0, r8, #2
 	andeq r8, r0, #0xff
@@ -2455,7 +2455,7 @@ _022F2804:
 _022F282C:
 	mov r0, #1
 	bl SetLeaderActionFields
-	ldr r1, _022F1DDC ; =ov29_02353538
+	ldr r1, _022F1DDC ; =DUNGEON_PTR
 	mov r3, #1
 	ldr r0, [r1]
 	sub r2, r3, #2
@@ -2473,7 +2473,7 @@ _022F2864:
 	ldr r0, [sp, #0x40]
 	cmp r0, #0
 	beq _022F289C
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldrh r2, [sp, #0xb2]
 	ldr r1, [r0]
 	mov r0, #7
@@ -2481,7 +2481,7 @@ _022F2864:
 	strh r2, [r1, #0xd8]
 	ldrh r2, [sp, #0xb4]
 	strh r2, [r1, #0xda]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _022F289C:
 	ldr r0, _022F1DF0 ; =ov29_0237C694
 	ldrh r0, [r0]
@@ -2502,7 +2502,7 @@ _022F289C:
 	ldr r0, [r6, #0xb4]
 	ldrb r0, [r0, #0xd0]
 	cmp r0, #2
-	ldrne r0, _022F1DDC ; =ov29_02353538
+	ldrne r0, _022F1DDC ; =DUNGEON_PTR
 	movne r1, #1
 	ldrne r0, [r0]
 	strneb r1, [r0, #0x78b]
@@ -2519,21 +2519,21 @@ _022F2910:
 	mov r0, #0x23
 	bl ov29_022EA3B4
 _022F2920:
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r4, [r0, #0xd8]
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r4, [r0, #0xda]
 	b _022F2964
 _022F2944:
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r4, [r0, #0xd8]
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	strh r4, [r0, #0xda]
@@ -2563,7 +2563,7 @@ _022F29B0:
 	ldrb r0, [sp, #0xb6]
 	cmp r0, #0
 	bne _022F2A00
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	strb r1, [r0, #0x78c]
@@ -2599,7 +2599,7 @@ _022F2A00:
 	cmp r0, #0
 	bne _022F2A70
 	mov r0, #4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldrb r0, [sp, #0xb7]
 	ldrb r1, [sp, #0xb8]
 	mov r2, #1
@@ -2612,7 +2612,7 @@ _022F2A00:
 	b _022F2A9C
 _022F2A70:
 	mov r0, #4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldrb r0, [sp, #0xb7]
 	ldrb r1, [sp, #0xb8]
 	mov r2, #0
@@ -2624,6 +2624,9 @@ _022F2A70:
 	bl sub_02006B70
 _022F2A9C:
 	bl ov29_022E0B44
+#ifdef EUROPE
+	bl ov29_022F2FE4
+#endif
 	ldr r0, _022F1DE4 ; =ov29_0237C9A4
 	mov r1, #0
 	strb r1, [r0, #2]
@@ -2637,7 +2640,7 @@ _022F2A9C:
 	beq _022F2B18
 	cmp r0, #0x2b
 	bne _022F2AEC
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #8]
@@ -2647,7 +2650,7 @@ _022F2AEC:
 	ldrh r0, [sb, #0x4a]
 	cmp r0, #0x2e
 	bne _022F2B34
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	mov r3, #1
 	ldr r2, [r0]
 	mov r1, #0
@@ -2658,7 +2661,7 @@ _022F2AEC:
 _022F2B18:
 	mov r0, #0xf
 	bl AdvanceFrame
-	ldr r0, _022F1DDC ; =ov29_02353538
+	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	cmp r0, #0
@@ -2691,7 +2694,7 @@ _022F2B6C:
 ov29_022F2B74: ; 0x022F2B74
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
-	ldr r1, _022F2FBC ; =ov29_02353538
+	ldr r1, _022F2FBC ; =DUNGEON_PTR
 	ldr r8, _022F2FC0 ; =ov29_0237C9A4
 	ldr r1, [r1]
 	ldrb r2, [r8, #1]
@@ -2970,7 +2973,7 @@ _022F2FB4:
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022F2FBC: .word ov29_02353538
+_022F2FBC: .word DUNGEON_PTR
 _022F2FC0: .word ov29_0237C9A4
 _022F2FC4: .word 0x0000013F
 _022F2FC8: .word ov29_023526D8
@@ -2985,7 +2988,7 @@ _022F2FE0: .word 0x000003FF
 	arm_func_start ov29_022F2FE4
 ov29_022F2FE4: ; 0x022F2FE4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r1, _022F3084 ; =ov29_02353538
+	ldr r1, _022F3084 ; =DUNGEON_PTR
 	ldr r2, _022F3088 ; =ov29_0237C694
 	ldr r6, [r1]
 	mov r4, #0
@@ -3007,7 +3010,7 @@ ov29_022F2FE4: ; 0x022F2FE4
 	add r0, r0, #0x100
 	strh r3, [r0, #0xda]
 	ldrh r0, [r2]
-	ldr r6, _022F3084 ; =ov29_02353538
+	ldr r6, _022F3084 ; =DUNGEON_PTR
 	tst r0, #0x100
 	movne r4, #1
 	b _022F3070
@@ -3027,7 +3030,7 @@ _022F3070:
 	bne _022F3050
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022F3084: .word ov29_02353538
+_022F3084: .word DUNGEON_PTR
 _022F3088: .word ov29_0237C694
 	arm_func_end ov29_022F2FE4
 
@@ -3035,7 +3038,7 @@ _022F3088: .word ov29_0237C694
 ShouldLeaderKeepRunning: ; 0x022F308C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x68
-	ldr r0, _022F35D4 ; =ov29_02353538
+	ldr r0, _022F35D4 ; =DUNGEON_PTR
 	ldr r5, [r0]
 	bl GetLeader
 	mov r4, r0
@@ -3201,7 +3204,7 @@ _022F32DC:
 	bne _022F3368
 	ldrb r0, [r1, #0x20]
 	cmp r0, #0
-	ldreq r0, _022F35D4 ; =ov29_02353538
+	ldreq r0, _022F35D4 ; =DUNGEON_PTR
 	ldreq r0, [r0]
 	addeq r0, r0, #0x1a000
 	ldreqb r0, [r0, #0x244]
@@ -3220,7 +3223,7 @@ _022F3324:
 	bne _022F3368
 	ldrb r0, [r1, #0x20]
 	cmp r0, #0
-	ldreq r0, _022F35D4 ; =ov29_02353538
+	ldreq r0, _022F35D4 ; =DUNGEON_PTR
 	ldreq r0, [r0]
 	addeq r0, r0, #0x1a000
 	ldreqb r0, [r0, #0x244]
@@ -3392,7 +3395,7 @@ _022F35CC:
 	add sp, sp, #0x68
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022F35D4: .word ov29_02353538
+_022F35D4: .word DUNGEON_PTR
 _022F35D8: .word DIRECTIONS_XY
 _022F35DC: .word ov29_0235171E
 	arm_func_end ShouldLeaderKeepRunning
@@ -3452,7 +3455,7 @@ CheckLeaderTile: ; 0x022F3634
 _022F3698:
 	ldrh r0, [r5]
 	tst r0, #0x200
-	ldrne r0, _022F37CC ; =ov29_02353538
+	ldrne r0, _022F37CC ; =DUNGEON_PTR
 	movne r1, #1
 	ldrne r0, [r0]
 	strneb r1, [r0, #5]
@@ -3519,13 +3522,16 @@ _022F3778:
 	add r0, r4, #4
 	mov r1, #1
 	bl TryLeaderItemPickUp
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _022F37A0:
 	mov r0, r4
 	bl ShouldMonsterRunAway
 	cmp r0, #0
-	ldreq r0, _022F37CC ; =ov29_02353538
+	ldreq r0, _022F37CC ; =DUNGEON_PTR
 	moveq r1, #4
 	ldreq r0, [r0]
 	streq r1, [r0, #0x614]
@@ -3535,7 +3541,7 @@ _022F37C0:
 	bl HiddenStairsTrigger
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022F37CC: .word ov29_02353538
+_022F37CC: .word DUNGEON_PTR
 	arm_func_end CheckLeaderTile
 
 	arm_func_start ov29_022F37D0
@@ -3627,7 +3633,7 @@ _022F38F4:
 	bne _022F390C
 	mov r0, r6
 	mov r1, sb
-	bl ov29_02300E78
+	bl CanMonsterMoveInDirection
 _022F390C:
 	cmp r0, #0
 	andne r0, sb, #7
@@ -3645,7 +3651,7 @@ _022F3928:
 	arm_func_start ChangeLeader
 ChangeLeader: ; 0x022F3934
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r0, _022F3AE4 ; =ov29_02353538
+	ldr r0, _022F3AE4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldr r6, [r0, #0xc8]
 	bl GetLeader
@@ -3673,7 +3679,7 @@ _022F398C:
 	bl LogMessageByIdWithPopup
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _022F399C:
-	ldr r0, _022F3AE4 ; =ov29_02353538
+	ldr r0, _022F3AE4 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x790]
 	cmp r0, #0
@@ -3701,7 +3707,7 @@ _022F39D8:
 	tst r0, #0xff
 	beq _022F3A40
 	ldrsh r0, [r7, #8]
-	bl CheckTeamMemberIdxVeneer
+	bl ov29_022F9C34
 	cmp r0, #0
 	ldrsh r0, [sb, #0xc]
 	ldreqsh r8, [r7, #8]
@@ -3723,7 +3729,7 @@ _022F3A40:
 	mov r5, r0, asr #0x10
 	cmp r5, #4
 	blt _022F39D8
-	ldr r0, _022F3AF4 ; =ov29_0235355C
+	ldr r0, _022F3AF4 ; =LEADER_PTR
 	mov r1, #0
 	str r1, [r0]
 	add r3, sl, #0x4a
@@ -3761,11 +3767,11 @@ _022F3A6C:
 	bl ov29_022F9EA0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022F3AE4: .word ov29_02353538
+_022F3AE4: .word DUNGEON_PTR
 _022F3AE8: .word 0x00000BA4
 _022F3AEC: .word 0x00000BA5
 _022F3AF0: .word 0x00000BA6
-_022F3AF4: .word ov29_0235355C
+_022F3AF4: .word LEADER_PTR
 _022F3AF8: .word 0x00000BA7
 	arm_func_end ChangeLeader
 
@@ -4013,7 +4019,7 @@ _022F3E28:
 _022F3E5C:
 	mov r0, #1
 	strb r5, [sb, #0x4c]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _022F3E68:
 	ldr r1, _022F3E90 ; =ov29_0237C9A4
 	mov r0, #0
@@ -4054,7 +4060,7 @@ _022F3ECC:
 _022F3EDC:
 	bl ov29_022E0C9C
 _022F3EE0:
-	ldr r1, _022F40AC ; =ov29_02353538
+	ldr r1, _022F40AC ; =DUNGEON_PTR
 	ldr r0, _022F40B0 ; =0x0001A224
 	ldr r7, [r1]
 	ldr r2, [sp]
@@ -4181,7 +4187,7 @@ _022F40A4:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_022F40AC: .word ov29_02353538
+_022F40AC: .word DUNGEON_PTR
 _022F40B0: .word 0x0001A224
 _022F40B4: .word 0x0001A226
 	arm_func_end ov29_022F3EA0
@@ -4316,7 +4322,7 @@ ov29_022F426C: ; 0x022F426C
 	ldrsh r0, [r5]
 	ldrsh r1, [r5, #2]
 	bl GetTileSafe
-	ldr r1, _022F42D4 ; =ov29_02353538
+	ldr r1, _022F42D4 ; =DUNGEON_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x1a000
@@ -4337,7 +4343,7 @@ ov29_022F426C: ; 0x022F426C
 	and r0, r0, #0xff
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022F42D4: .word ov29_02353538
+_022F42D4: .word DUNGEON_PTR
 	arm_func_end ov29_022F426C
 
 	arm_func_start ov29_022F42D8
@@ -4368,7 +4374,7 @@ _022F4318:
 	ldrneb r0, [r0, #7]
 	cmpne r0, #0
 	bxeq lr
-	ldr r0, _022F434C ; =ov29_02353538
+	ldr r0, _022F434C ; =DUNGEON_PTR
 	mov r3, #0
 	ldr r2, [r0]
 	sub r1, r3, #1
@@ -4377,7 +4383,7 @@ _022F4318:
 	str r1, [r0, #0x614]
 	bx lr
 	.align 2, 0
-_022F434C: .word ov29_02353538
+_022F434C: .word DUNGEON_PTR
 	arm_func_end ov29_022F42F8
 
 	arm_func_start ov29_022F4350
@@ -4754,7 +4760,7 @@ _022F4878:
 	mov r1, r4
 	bl ov29_02321164
 	ldrb r0, [sb, #7]
-	ldr r1, _022F48D4 ; =ov29_02353538
+	ldr r1, _022F48D4 ; =DUNGEON_PTR
 	cmp r0, #0
 	ldreqh r0, [sb]
 	orreq r0, r0, #0x4000
@@ -4773,7 +4779,7 @@ _022F48C4: .word 0x00001317
 _022F48C8: .word 0x00000BB2
 _022F48CC: .word 0x00000BAE
 _022F48D0: .word 0x00000BB3
-_022F48D4: .word ov29_02353538
+_022F48D4: .word DUNGEON_PTR
 	arm_func_end ov29_022F45CC
 
 	arm_func_start ov29_022F48D8
@@ -4829,7 +4835,7 @@ _022F4928:
 	mov r0, r6
 	bl ov29_02321164
 	ldrb r0, [r5, #7]
-	ldr r1, _022F49DC ; =ov29_02353538
+	ldr r1, _022F49DC ; =DUNGEON_PTR
 	cmp r0, #0
 	ldreqh r0, [r5]
 	orreq r0, r0, #0x4000
@@ -4846,7 +4852,7 @@ _022F49C8:
 _022F49D0: .word 0x00000BAE
 _022F49D4: .word 0x00001317
 _022F49D8: .word 0x00000BB5
-_022F49DC: .word ov29_02353538
+_022F49DC: .word DUNGEON_PTR
 	arm_func_end ov29_022F48D8
 
 	arm_func_start ov29_022F49E0
@@ -4948,7 +4954,7 @@ _022F4B24:
 	movlt r0, #0
 	strltb r0, [r6, #1]
 	blt _022F4B70
-	ldr r2, _022F4BD0 ; =ov29_02353538
+	ldr r2, _022F4BD0 ; =DUNGEON_PTR
 	add r1, r0, r0, lsl #3
 	ldr r0, [r2]
 	add r0, r0, #0x3f4
@@ -4966,7 +4972,7 @@ _022F4B70:
 	mov r1, r4
 	bl ov29_02321164
 	ldrb r0, [r5, #7]
-	ldr r1, _022F4BD0 ; =ov29_02353538
+	ldr r1, _022F4BD0 ; =DUNGEON_PTR
 	cmp r0, #0
 	ldreqh r0, [r5]
 	orreq r0, r0, #0x4000
@@ -4982,7 +4988,7 @@ _022F4BC0:
 	.align 2, 0
 _022F4BC8: .word 0x00001565
 _022F4BCC: .word 0x00000BAE
-_022F4BD0: .word ov29_02353538
+_022F4BD0: .word DUNGEON_PTR
 _022F4BD4: .word 0x00001317
 _022F4BD8: .word 0x00000BB6
 	arm_func_end ov29_022F49E0
@@ -5104,7 +5110,7 @@ _022F4D48:
 	mov r0, r5
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, r5
-	ldr r1, _022F4DA8 ; =ov29_02353538
+	ldr r1, _022F4DA8 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
 	ldrb r1, [r1, #0xc4]
@@ -5116,7 +5122,7 @@ _022F4D98: .word 0x00000BAE
 _022F4D9C: .word 0x00000BB8
 _022F4DA0: .word 0x00001317
 _022F4DA4: .word 0x00000BB9
-_022F4DA8: .word ov29_02353538
+_022F4DA8: .word DUNGEON_PTR
 	arm_func_end ov29_022F4BF8
 
 	arm_func_start ov29_022F4DAC
@@ -5254,7 +5260,7 @@ _022F4F94:
 	bl ov29_02346FB8
 	cmp r0, #0
 	blt _022F4FD0
-	ldr r1, _022F5050 ; =ov29_02353538
+	ldr r1, _022F5050 ; =DUNGEON_PTR
 	add r0, r0, r0, lsl #3
 	ldr r2, [r1]
 	ldrh r1, [sp]
@@ -5282,7 +5288,7 @@ _022F4FDC:
 	ldr r1, _022F5058 ; =0x00000BBD
 	mov r0, r8
 	bl LogMessageByIdWithPopupCheckUser
-	ldr r1, _022F5050 ; =ov29_02353538
+	ldr r1, _022F5050 ; =DUNGEON_PTR
 	mov r0, r8
 	ldr r1, [r1]
 	add r1, r1, #0x4000
@@ -5301,7 +5307,7 @@ _022F5040: .word 0x00000BAE
 _022F5044: .word 0x00000BB1
 _022F5048: .word 0x00000BBB
 _022F504C: .word 0x00000BBC
-_022F5050: .word ov29_02353538
+_022F5050: .word DUNGEON_PTR
 _022F5054: .word 0x00001317
 _022F5058: .word 0x00000BBD
 	arm_func_end ov29_022F4DAC
@@ -5437,7 +5443,7 @@ _022F522C:
 	ldr r1, _022F5284 ; =0x00000BBD
 	mov r0, r7
 	bl LogMessageByIdWithPopupCheckUser
-	ldr r1, _022F5288 ; =ov29_02353538
+	ldr r1, _022F5288 ; =DUNGEON_PTR
 	mov r0, r7
 	ldr r1, [r1]
 	add r1, r1, #0x4000
@@ -5456,5 +5462,5 @@ _022F5278: .word 0x00000BBB
 _022F527C: .word 0x00000BBC
 _022F5280: .word 0x00001317
 _022F5284: .word 0x00000BBD
-_022F5288: .word ov29_02353538
+_022F5288: .word DUNGEON_PTR
 	arm_func_end ov29_022F505C

@@ -46,7 +46,7 @@ _0231FC88:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0231FCB4:
-	ldr r0, _0231FDD4 ; =ov29_02353538
+	ldr r0, _0231FDD4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -122,7 +122,7 @@ _0231FDB4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0231FDD0: .word 0x00000E56
-_0231FDD4: .word ov29_02353538
+_0231FDD4: .word DUNGEON_PTR
 _0231FDD8: .word 0x00000E55
 _0231FDDC: .word DIRECTIONS_XY
 	arm_func_end TryPounce
@@ -131,7 +131,7 @@ _0231FDDC: .word DIRECTIONS_XY
 TryBlowAway: ; 0x0231FDE0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
-	ldr r3, _02320154 ; =ov29_02353538
+	ldr r3, _02320154 ; =DUNGEON_PTR
 	mov sl, r0
 	ldr r0, [r3]
 	mov sb, r1
@@ -366,7 +366,7 @@ _0232014C:
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02320154: .word ov29_02353538
+_02320154: .word DUNGEON_PTR
 _02320158: .word 0x00000B97
 _0232015C: .word 0x00000B98
 _02320160: .word 0x00000B99

@@ -33,6 +33,7 @@
 .public CalcStatusDuration
 .public CORSOLA_TWIG_POWER
 .public DealDamageProjectile
+.public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public EndNegativeStatusConditionWrapper
 .public EnemyEvolution
@@ -80,6 +81,7 @@
 .public ov29_022F04F0
 .public ov29_022F0518
 .public ov29_022F9EA0
+.public ov29_022FB920
 .public ov29_022FB9BC
 .public ov29_02300B40
 .public ov29_02304830
@@ -89,7 +91,6 @@
 .public ov29_02344B44
 .public ov29_0234B084
 .public ov29_0234BA54
-.public ov29_02353538
 .public PROTEIN_STAT_BOOST
 .public RARE_FOSSIL_DAMAGE
 .public RestoreAllMovePP

@@ -4,7 +4,9 @@
 .public CalcSpeedStageWrapper
 .public CalcStatusDuration
 .public ChangeShayminForme
+.public CopyStringFromMessageId
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EntityIsValid__023118B4
@@ -82,12 +84,10 @@
 .public ov29_0234B084
 .public ov29_0234B0B4
 .public ov29_02353318
-.public ov29_02353538
 .public SafeguardIsActive
 .public SECONDARY_TERRAIN_TYPES
 .public SPEED_BOOST_TURN_RANGE
 .public sub_02025888
-.public CopyStringFromMessageId
 .public SubstitutePlaceholderStringTags
 .public TryActivateSteadfast
 .public UpdateStatusIconFlags

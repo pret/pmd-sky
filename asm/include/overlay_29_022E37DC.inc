@@ -7,7 +7,9 @@
 .public ChangeDungeonMusic
 .public CheckActiveChallengeRequest
 .public CheckSpawnThreshold
+.public CreateTextBox1
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public DungeonFloorToGroupFloor
 .public DungeonGetSpriteIndex
 .public DungeonGetTotalSpriteFileSize
@@ -45,6 +47,7 @@
 .public IsFullFloorFixedRoom
 .public IsInSpawnList
 .public IsItemForSpecialSpawnInBag
+.public LEADER_PTR
 .public LoadFileFromRom
 .public LoadFixedRoom
 .public LogMessageByIdWithPopup
@@ -122,11 +125,9 @@
 .public ov29_023515F4
 .public ov29_02351604
 .public ov29_0235352C
-.public ov29_02353538
 .public ov29_0235354C
 .public ov29_02353554
 .public ov29_02353558
-.public ov29_0235355C
 .public ov29_0237C850
 .public ov29_0237C888
 .public ov29_0237C88A
@@ -163,7 +164,6 @@
 .public sub_0201D034
 .public sub_02026214
 .public sub_02027AF0
-.public sub_0202F8C4
 .public sub_0202F918
 .public sub_02048384
 .public sub_020483B8

@@ -23,7 +23,7 @@ _022F52C8: .word UseSingleUseItem
 	arm_func_start UseSingleUseItemWrapper
 UseSingleUseItemWrapper: ; 0x022F52CC
 	ldr r2, [r0, #0xb4]
-	ldr r1, _022F52F0 ; =ov29_02353538
+	ldr r1, _022F52F0 ; =DUNGEON_PTR
 	ldrb r2, [r2, #0x54]
 	ldr r1, [r1]
 	ldr ip, _022F52F4 ; =UseSingleUseItem
@@ -32,7 +32,7 @@ UseSingleUseItemWrapper: ; 0x022F52CC
 	ldr r1, [r1, #0xb28]
 	bx ip
 	.align 2, 0
-_022F52F0: .word ov29_02353538
+_022F52F0: .word DUNGEON_PTR
 _022F52F4: .word UseSingleUseItem
 	arm_func_end UseSingleUseItemWrapper
 
@@ -118,7 +118,7 @@ _022F5334:
 	cmp r0, #0
 	beq _022F5498
 	mov r7, #0
-	ldr r4, _022F54B8 ; =ov29_02353538
+	ldr r4, _022F54B8 ; =DUNGEON_PTR
 	add r6, sp, #8
 	mov r5, r7
 _022F5440:
@@ -146,7 +146,7 @@ _022F5484:
 	cmp r7, #4
 	blt _022F5440
 _022F5498:
-	ldr r1, _022F54B8 ; =ov29_02353538
+	ldr r1, _022F54B8 ; =DUNGEON_PTR
 	mov r0, sb
 	ldr r1, [r1]
 	add r1, r1, #0x4000
@@ -156,7 +156,7 @@ _022F54B0:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_022F54B8: .word ov29_02353538
+_022F54B8: .word DUNGEON_PTR
 	arm_func_end UseSingleUseItem
 
 	arm_func_start UseThrowableItem
@@ -488,7 +488,7 @@ _022F5944:
 	ldrb r1, [r8, #0x4c]
 	mov r0, sb
 	bl ov29_02304A48
-	ldr r1, _022F5990 ; =ov29_02353538
+	ldr r1, _022F5990 ; =DUNGEON_PTR
 	mov r0, sb
 	ldr r1, [r1]
 	add r1, r1, #0x4000
@@ -502,7 +502,7 @@ _022F5980: .word 0x00000BAE
 _022F5984: .word 0x00000BBE
 _022F5988: .word 0x00000103
 _022F598C: .word 0x00000BBF
-_022F5990: .word ov29_02353538
+_022F5990: .word DUNGEON_PTR
 	arm_func_end UseThrowableItem
 
 	arm_func_start ItemIsActive__022F5994
@@ -549,7 +549,7 @@ ov29_022F5A0C: ; 0x022F5A0C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetLeader
-	ldr r1, _022F5A3C ; =ov29_02353538
+	ldr r1, _022F5A3C ; =DUNGEON_PTR
 	ldrb r3, [r4, #4]
 	ldr r1, [r1]
 	mov r2, #0
@@ -559,7 +559,7 @@ ov29_022F5A0C: ; 0x022F5A0C
 	bl ov29_022F5A40
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022F5A3C: .word ov29_02353538
+_022F5A3C: .word DUNGEON_PTR
 	arm_func_end ov29_022F5A0C
 
 	arm_func_start ov29_022F5A40
@@ -681,7 +681,7 @@ _022F5BE4:
 	ldrb r0, [sb, #0xbc]
 	cmp r0, #7
 	bne _022F5C3C
-	ldr r0, _022F5DA4 ; =ov29_02353538
+	ldr r0, _022F5DA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x790]
 	cmp r0, #0
@@ -804,7 +804,7 @@ _022F5D94:
 	.align 2, 0
 _022F5D9C: .word 0x00000BC1
 _022F5DA0: .word 0x00000BC2
-_022F5DA4: .word ov29_02353538
+_022F5DA4: .word DUNGEON_PTR
 _022F5DA8: .word 0x00000BC3
 _022F5DAC: .word 0x000003E7
 _022F5DB0: .word 0x0000025E
@@ -818,7 +818,7 @@ ov29_022F5DC0: ; 0x022F5DC0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetLeader
-	ldr r1, _022F5DF0 ; =ov29_02353538
+	ldr r1, _022F5DF0 ; =DUNGEON_PTR
 	ldrb r3, [r4, #4]
 	ldr r1, [r1]
 	mov r2, #0
@@ -828,7 +828,7 @@ ov29_022F5DC0: ; 0x022F5DC0
 	bl ov29_022F5DF4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022F5DF0: .word ov29_02353538
+_022F5DF0: .word DUNGEON_PTR
 	arm_func_end ov29_022F5DC0
 
 	arm_func_start ov29_022F5DF4
@@ -856,7 +856,7 @@ _022F5E1C:
 	bl GetActiveTeamMember
 	mov r4, r0
 	ldrsh r0, [r4, #8]
-	bl ov29_022F9C40
+	bl CheckTeamMemberIdxVeneer
 	cmp r0, #0
 	addne r5, r5, #3
 	addne r6, r5, #3
@@ -893,7 +893,9 @@ _022F5E84:
 	mov r1, #0x25c
 	mov r2, #0
 	bl HandleFaint
+#ifndef EUROPE
 	bl UpdateMapSurveyorFlag
+#endif
 	bl ov29_022E8104
 	bl ov29_022E81F8
 	mov r0, #0
@@ -921,7 +923,7 @@ ov29_022F5F18: ; 0x022F5F18
 	bl EntityIsValid__022F528C
 	cmp r0, #0
 	beq _022F5F88
-	ldr r0, _022F6050 ; =ov29_02353538
+	ldr r0, _022F6050 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -1001,7 +1003,7 @@ _022F6048:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_022F6050: .word ov29_02353538
+_022F6050: .word DUNGEON_PTR
 _022F6054: .word 0x00000DFD
 	arm_func_end ov29_022F5F18
 
@@ -1137,7 +1139,7 @@ ov29_022F6210: ; 0x022F6210
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r4, #0
-	ldr r7, _022F62A4 ; =ov29_02353538
+	ldr r7, _022F62A4 ; =DUNGEON_PTR
 	b _022F6294
 _022F6234:
 	ldr r0, [r7]
@@ -1171,5 +1173,5 @@ _022F6294:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022F62A4: .word ov29_02353538
+_022F62A4: .word DUNGEON_PTR
 	arm_func_end ov29_022F6210

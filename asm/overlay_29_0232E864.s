@@ -97,7 +97,7 @@ _0232E9B0:
 	mov r0, r6
 	bl CanBeSnatched
 	cmp r0, #0
-	ldrne r0, _0232F7D8 ; =ov29_02353538
+	ldrne r0, _0232F7D8 ; =DUNGEON_PTR
 	ldrne r0, [r0]
 	addne r0, r0, #0x19000
 	ldrne r5, [r0, #0x904]
@@ -1060,7 +1060,7 @@ _0232F7C8: .word ov10_022C4614
 _0232F7CC: .word ov10_022C4508
 _0232F7D0: .word ov29_02353718
 _0232F7D4: .word ov10_022C4504
-_0232F7D8: .word ov29_02353538
+_0232F7D8: .word DUNGEON_PTR
 _0232F7DC: .word 0x00000EAB
 _0232F7E0: .word 0x00000EAC
 _0232F7E4: .word 0x00000EAD
@@ -1188,352 +1188,352 @@ _0232F8B8: ; jump table
 	b _02330958 ; case 64
 	b _02330958 ; case 65
 	b _023315BC ; case 66
-	b ov29_023319B4 ; case 67
+	b _023319B4 ; case 67
 	b _0233037C ; case 68
-	b ov29_02330468 ; case 69
+	b _02330468 ; case 69
 	b _023316B8 ; case 70
-	b ov29_02330680 ; case 71
-	b ov29_0233169C ; case 72
-	b ov29_02330AA8 ; case 73
-	b ov29_02330360 ; case 74
-	b ov29_02331258 ; case 75
-	b ov29_02330DB8 ; case 76
-	b ov29_02331944 ; case 77
-	b ov29_02331434 ; case 78
+	b _02330680 ; case 71
+	b _0233169C ; case 72
+	b _02330AA8 ; case 73
+	b _02330360 ; case 74
+	b _02331258 ; case 75
+	b _02330DB8 ; case 76
+	b _02331944 ; case 77
+	b _02331434 ; case 78
 	b _02330974 ; case 79
-	b ov29_02330DB8 ; case 80
+	b _02330DB8 ; case 80
 	b _0233037C ; case 81
-	b ov29_0233069C ; case 82
-	b ov29_02331530 ; case 83
+	b _0233069C ; case 82
+	b _02331530 ; case 83
 	b _02330974 ; case 84
-	b ov29_02331928 ; case 85
-	b ov29_023304BC ; case 86
+	b _02331928 ; case 85
+	b _023304BC ; case 86
 	b _0233037C ; case 87
-	b ov29_023313E0 ; case 88
-	b ov29_023304BC ; case 89
+	b _023313E0 ; case 88
+	b _023304BC ; case 89
 	b _0233037C ; case 90
-	b ov29_02330ED0 ; case 91
-	b ov29_023319D0 ; case 92
-	b ov29_0233069C ; case 93
-	b ov29_0233103C ; case 94
-	b ov29_0233111C ; case 95
-	b ov29_02331B3C ; case 96
-	b ov29_02330AA8 ; case 97
-	b ov29_023316D4 ; case 98
-	b ov29_02330C84 ; case 99
-	b ov29_02330E98 ; case 100
-	b ov29_02330328 ; case 101
-	b ov29_023318B0 ; case 102
-	b ov29_02330878 ; case 103
-	b ov29_02331C00 ; case 104
+	b _02330ED0 ; case 91
+	b _023319D0 ; case 92
+	b _0233069C ; case 93
+	b _0233103C ; case 94
+	b _0233111C ; case 95
+	b _02331B3C ; case 96
+	b _02330AA8 ; case 97
+	b _023316D4 ; case 98
+	b _02330C84 ; case 99
+	b _02330E98 ; case 100
+	b _02330328 ; case 101
+	b _023318B0 ; case 102
+	b _02330878 ; case 103
+	b _02331C00 ; case 104
 	b _02330FE8 ; case 105
-	b ov29_02330D10 ; case 106
-	b ov29_023306B8 ; case 107
-	b ov29_02331370 ; case 108
-	b ov29_023304F4 ; case 109
-	b ov29_02330CF4 ; case 110
+	b _02330D10 ; case 106
+	b _023306B8 ; case 107
+	b _02331370 ; case 108
+	b _023304F4 ; case 109
+	b _02330CF4 ; case 110
 	b _02330974 ; case 111
-	b ov29_02330F08 ; case 112
-	b ov29_023319EC ; case 113
-	b ov29_023306B8 ; case 114
-	b ov29_02331FC0 ; case 115
-	b ov29_02330DF0 ; case 116
-	b ov29_02331090 ; case 117
-	b ov29_0233029C ; case 118
-	b ov29_02331E68 ; case 119
-	b ov29_0233077C ; case 120
-	b ov29_02331944 ; case 121
-	b ov29_0233131C ; case 122
-	b ov29_02331960 ; case 123
-	b ov29_0233093C ; case 124
-	b ov29_02330468 ; case 125
+	b _02330F08 ; case 112
+	b _023319EC ; case 113
+	b _023306B8 ; case 114
+	b _02331FC0 ; case 115
+	b _02330DF0 ; case 116
+	b _02331090 ; case 117
+	b _0233029C ; case 118
+	b _02331E68 ; case 119
+	b _0233077C ; case 120
+	b _02331944 ; case 121
+	b _0233131C ; case 122
+	b _02331960 ; case 123
+	b _0233093C ; case 124
+	b _02330468 ; case 125
 	b _02330134 ; case 126
-	b ov29_02330824 ; case 127
-	b ov29_02331998 ; case 128
-	b ov29_023309AC ; case 129
-	b ov29_02330FB0 ; case 130
-	b ov29_02330414 ; case 131
+	b _02330824 ; case 127
+	b _02331998 ; case 128
+	b _023309AC ; case 129
+	b _02330FB0 ; case 130
+	b _02330414 ; case 131
 	b _02330134 ; case 132
-	b ov29_02330798 ; case 133
-	b ov29_02330F94 ; case 134
-	b ov29_02330E0C ; case 135
+	b _02330798 ; case 133
+	b _02330F94 ; case 134
+	b _02330E0C ; case 135
 	b _02330134 ; case 136
-	b ov29_02331EFC ; case 137
-	b ov29_02331EA0 ; case 138
-	b ov29_023307D0 ; case 139
-	b ov29_02330DD4 ; case 140
-	b ov29_02330F78 ; case 141
-	b ov29_023314DC ; case 142
-	b ov29_02330468 ; case 143
-	b ov29_0233077C ; case 144
+	b _02331EFC ; case 137
+	b _02331EA0 ; case 138
+	b _023307D0 ; case 139
+	b _02330DD4 ; case 140
+	b _02330F78 ; case 141
+	b _023314DC ; case 142
+	b _02330468 ; case 143
+	b _0233077C ; case 144
 	b _02330134 ; case 145
-	b ov29_023314DC ; case 146
-	b ov29_02330728 ; case 147
-	b ov29_02330C14 ; case 148
-	b ov29_02330744 ; case 149
-	b ov29_02330430 ; case 150
-	b ov29_02330E7C ; case 151
-	b ov29_02330904 ; case 152
-	b ov29_0233170C ; case 153
+	b _023314DC ; case 146
+	b _02330728 ; case 147
+	b _02330C14 ; case 148
+	b _02330744 ; case 149
+	b _02330430 ; case 150
+	b _02330E7C ; case 151
+	b _02330904 ; case 152
+	b _0233170C ; case 153
 	b _02330134 ; case 154
-	b ov29_0233197C ; case 155
-	b ov29_02331744 ; case 156
+	b _0233197C ; case 155
+	b _02331744 ; case 156
 	b _0233030C ; case 157
-	b ov29_02330280 ; case 158
-	b ov29_02330CA0 ; case 159
-	b ov29_02331A5C ; case 160
+	b _02330280 ; case 158
+	b _02330CA0 ; case 159
+	b _02331A5C ; case 160
 	b _02330134 ; case 161
-	b ov29_02330664 ; case 162
+	b _02330664 ; case 162
 	b _02330134 ; case 163
-	b ov29_02330E60 ; case 164
-	b ov29_02331020 ; case 165
+	b _02330E60 ; case 164
+	b _02331020 ; case 165
 	b _02330134 ; case 166
 	b _02330134 ; case 167
 	b _02330134 ; case 168
-	b ov29_02330B50 ; case 169
-	b ov29_02330D80 ; case 170
+	b _02330B50 ; case 169
+	b _02330D80 ; case 170
 	b _02330A00 ; case 171
-	b ov29_0233190C ; case 172
-	b ov29_02331058 ; case 173
+	b _0233190C ; case 172
+	b _02331058 ; case 173
 	b _02330134 ; case 174
 	b _02330134 ; case 175
 	b _02330134 ; case 176
-	b ov29_023309E4 ; case 177
+	b _023309E4 ; case 177
 	b _02330134 ; case 178
 	b _02330134 ; case 179
 	b _02330134 ; case 180
-	b ov29_02330BDC ; case 181
+	b _02330BDC ; case 181
 	b _02330134 ; case 182
-	b ov29_02331F18 ; case 183
-	b ov29_02332068 ; case 184
-	b ov29_02331C1C ; case 185
-	b ov29_02330C68 ; case 186
-	b ov29_02331648 ; case 187
-	b ov29_02330760 ; case 188
+	b _02331F18 ; case 183
+	b _02332068 ; case 184
+	b _02331C1C ; case 185
+	b _02330C68 ; case 186
+	b _02331648 ; case 187
+	b _02330760 ; case 188
 	b _02330134 ; case 189
 	b _02330134 ; case 190
 	b _02330A00 ; case 191
-	b ov29_02330A38 ; case 192
-	b ov29_02330A70 ; case 193
-	b ov29_023309C8 ; case 194
+	b _02330A38 ; case 192
+	b _02330A70 ; case 193
+	b _023309C8 ; case 194
 	b _02330BA4 ; case 195
-	b ov29_02330A1C ; case 196
-	b ov29_02331514 ; case 197
-	b ov29_02330F24 ; case 198
-	b ov29_02330A1C ; case 199
-	b ov29_023304D8 ; case 200
+	b _02330A1C ; case 196
+	b _02331514 ; case 197
+	b _02330F24 ; case 198
+	b _02330A1C ; case 199
+	b _023304D8 ; case 200
 	b _02330134 ; case 201
-	b ov29_02330C68 ; case 202
-	b ov29_02330DF0 ; case 203
-	b ov29_023318CC ; case 204
-	b ov29_02331728 ; case 205
-	b ov29_023311E0 ; case 206
-	b ov29_0233085C ; case 207
+	b _02330C68 ; case 202
+	b _02330DF0 ; case 203
+	b _023318CC ; case 204
+	b _02331728 ; case 205
+	b _023311E0 ; case 206
+	b _0233085C ; case 207
 	b _02330134 ; case 208
-	b ov29_023310C8 ; case 209
-	b ov29_02330E44 ; case 210
+	b _023310C8 ; case 209
+	b _02330E44 ; case 210
 	b _02330134 ; case 211
-	b ov29_023312E4 ; case 212
-	b ov29_023314C0 ; case 213
-	b ov29_02331100 ; case 214
-	b ov29_02330C30 ; case 215
-	b ov29_02330D9C ; case 216
-	b ov29_02330D2C ; case 217
-	b ov29_02331090 ; case 218
-	b ov29_023304A0 ; case 219
-	b ov29_02331EE0 ; case 220
+	b _023312E4 ; case 212
+	b _023314C0 ; case 213
+	b _02331100 ; case 214
+	b _02330C30 ; case 215
+	b _02330D9C ; case 216
+	b _02330D2C ; case 217
+	b _02331090 ; case 218
+	b _023304A0 ; case 219
+	b _02331EE0 ; case 220
 	b _023307B4 ; case 221
 	b _02330134 ; case 222
-	b ov29_02331BAC ; case 223
-	b ov29_0233131C ; case 224
-	b ov29_02331488 ; case 225
-	b ov29_023308E8 ; case 226
-	b ov29_023311A8 ; case 227
-	b ov29_02331BC8 ; case 228
-	b ov29_0233185C ; case 229
+	b _02331BAC ; case 223
+	b _0233131C ; case 224
+	b _02331488 ; case 225
+	b _023308E8 ; case 226
+	b _023311A8 ; case 227
+	b _02331BC8 ; case 228
+	b _0233185C ; case 229
 	b _0233030C ; case 230
 	b _02330974 ; case 231
-	b ov29_02331074 ; case 232
-	b ov29_02331354 ; case 233
-	b ov29_023306B8 ; case 234
-	b ov29_0233077C ; case 235
-	b ov29_02331A94 ; case 236
-	b ov29_023311C4 ; case 237
-	b ov29_02330344 ; case 238
-	b ov29_02330344 ; case 239
+	b _02331074 ; case 232
+	b _02331354 ; case 233
+	b _023306B8 ; case 234
+	b _0233077C ; case 235
+	b _02331A94 ; case 236
+	b _023311C4 ; case 237
+	b _02330344 ; case 238
+	b _02330344 ; case 239
 	b _02330134 ; case 240
 	b _02330134 ; case 241
-	b ov29_02330344 ; case 242
-	b ov29_02330A8C ; case 243
-	b ov29_02330624 ; case 244
-	b ov29_02331A78 ; case 245
-	b ov29_02330AC4 ; case 246
-	b ov29_02330430 ; case 247
+	b _02330344 ; case 242
+	b _02330A8C ; case 243
+	b _02330624 ; case 244
+	b _02331A78 ; case 245
+	b _02330AC4 ; case 246
+	b _02330430 ; case 247
 	b _02330134 ; case 248
-	b ov29_023317B4 ; case 249
+	b _023317B4 ; case 249
 	b _02330134 ; case 250
 	b _0233037C ; case 251
-	b ov29_023315D8 ; case 252
-	b ov29_02330ED0 ; case 253
-	b ov29_02331D50 ; case 254
-	b ov29_02330680 ; case 255
-	b ov29_02331878 ; case 256
-	b ov29_02331C38 ; case 257
-	b ov29_02330C68 ; case 258
-	b ov29_02330FCC ; case 259
+	b _023315D8 ; case 252
+	b _02330ED0 ; case 253
+	b _02331D50 ; case 254
+	b _02330680 ; case 255
+	b _02331878 ; case 256
+	b _02331C38 ; case 257
+	b _02330C68 ; case 258
+	b _02330FCC ; case 259
 	b _02330134 ; case 260
-	b ov29_02330798 ; case 261
+	b _02330798 ; case 261
 	b _0233030C ; case 262
-	b ov29_02331E4C ; case 263
-	b ov29_02330840 ; case 264
-	b ov29_02330B88 ; case 265
-	b ov29_02331DDC ; case 266
-	b ov29_02330D48 ; case 267
-	b ov29_02330AFC ; case 268
-	b ov29_02331DA4 ; case 269
-	b ov29_02330328 ; case 270
+	b _02331E4C ; case 263
+	b _02330840 ; case 264
+	b _02330B88 ; case 265
+	b _02331DDC ; case 266
+	b _02330D48 ; case 267
+	b _02330AFC ; case 268
+	b _02331DA4 ; case 269
+	b _02330328 ; case 270
 	b _023307B4 ; case 271
-	b ov29_02331204 ; case 272
-	b ov29_023314DC ; case 273
+	b _02331204 ; case 272
+	b _023314DC ; case 273
 	b _02330A00 ; case 274
-	b ov29_0233070C ; case 275
-	b ov29_02330894 ; case 276
-	b ov29_02330F40 ; case 277
-	b ov29_02331A08 ; case 278
-	b ov29_023304D8 ; case 279
-	b ov29_023304D8 ; case 280
-	b ov29_02330A54 ; case 281
-	b ov29_02331CE0 ; case 282
-	b ov29_02330648 ; case 283
-	b ov29_02330AFC ; case 284
+	b _0233070C ; case 275
+	b _02330894 ; case 276
+	b _02330F40 ; case 277
+	b _02331A08 ; case 278
+	b _023304D8 ; case 279
+	b _023304D8 ; case 280
+	b _02330A54 ; case 281
+	b _02331CE0 ; case 282
+	b _02330648 ; case 283
+	b _02330AFC ; case 284
 	b _02330134 ; case 285
-	b ov29_02331F88 ; case 286
-	b ov29_02331100 ; case 287
-	b ov29_02330B34 ; case 288
-	b ov29_02330798 ; case 289
+	b _02331F88 ; case 286
+	b _02331100 ; case 287
+	b _02330B34 ; case 288
+	b _02330798 ; case 289
 	b _02330134 ; case 290
-	b ov29_02330468 ; case 291
+	b _02330468 ; case 291
 	b _0233030C ; case 292
-	b ov29_02331B20 ; case 293
-	b ov29_02330EEC ; case 294
-	b ov29_023313A8 ; case 295
-	b ov29_02331450 ; case 296
+	b _02331B20 ; case 293
+	b _02330EEC ; case 294
+	b _023313A8 ; case 295
+	b _02331450 ; case 296
 	b _02330134 ; case 297
-	b ov29_02331274 ; case 298
-	b ov29_02330AA8 ; case 299
+	b _02331274 ; case 298
+	b _02330AA8 ; case 299
 	b _02330134 ; case 300
-	b ov29_023318F0 ; case 301
-	b ov29_02330C4C ; case 302
+	b _023318F0 ; case 301
+	b _02330C4C ; case 302
 	b _023307B4 ; case 303
-	b ov29_023318B0 ; case 304
-	b ov29_023318F0 ; case 305
+	b _023318B0 ; case 304
+	b _023318F0 ; case 305
 	b _02330134 ; case 306
-	b ov29_023312E4 ; case 307
+	b _023312E4 ; case 307
 	b _02330134 ; case 308
-	b ov29_023306D4 ; case 309
-	b ov29_02330840 ; case 310
+	b _023306D4 ; case 309
+	b _02330840 ; case 310
 	b _02330134 ; case 311
 	b _02330134 ; case 312
-	b ov29_02331B58 ; case 313
-	b ov29_02331584 ; case 314
+	b _02331B58 ; case 313
+	b _02331584 ; case 314
 	b _02331D34 ; case 315
-	b ov29_02331B04 ; case 316
-	b ov29_02331878 ; case 317
-	b ov29_02331020 ; case 318
-	b ov29_02330BF8 ; case 319
-	b ov29_02330DB8 ; case 320
+	b _02331B04 ; case 316
+	b _02331878 ; case 317
+	b _02331020 ; case 318
+	b _02330BF8 ; case 319
+	b _02330DB8 ; case 320
 	b _02330134 ; case 321
 	b _02330134 ; case 322
 	b _02330134 ; case 323
-	b ov29_02331220 ; case 324
-	b ov29_02330600 ; case 325
-	b ov29_023308B0 ; case 326
-	b ov29_023320BC ; case 327
-	b ov29_02331FA4 ; case 328
-	b ov29_0233138C ; case 329
-	b ov29_02332030 ; case 330
-	b ov29_023315F4 ; case 331
-	b ov29_023305A4 ; case 332
+	b _02331220 ; case 324
+	b _02330600 ; case 325
+	b _023308B0 ; case 326
+	b _023320BC ; case 327
+	b _02331FA4 ; case 328
+	b _0233138C ; case 329
+	b _02332030 ; case 330
+	b _023315F4 ; case 331
+	b _023305A4 ; case 332
 	b _02330BA4 ; case 333
-	b ov29_02331F6C ; case 334
-	b ov29_023306F0 ; case 335
+	b _02331F6C ; case 334
+	b _023306F0 ; case 335
 	b _0233037C ; case 336
-	b ov29_02331FF8 ; case 337
-	b ov29_02330F5C ; case 338
+	b _02331FF8 ; case 337
+	b _02330F5C ; case 338
 	b _023313C4 ; case 339
 	b _02331154 ; case 340
-	b ov29_02330920 ; case 341
-	b ov29_0233077C ; case 342
-	b ov29_02330B6C ; case 343
-	b ov29_02330328 ; case 344
-	b ov29_02330328 ; case 345
+	b _02330920 ; case 341
+	b _0233077C ; case 342
+	b _02330B6C ; case 343
+	b _02330328 ; case 344
+	b _02330328 ; case 345
 	b _02330134 ; case 346
 	b _02330134 ; case 347
-	b ov29_0233146C ; case 348
-	b ov29_023316D4 ; case 349
+	b _0233146C ; case 348
+	b _023316D4 ; case 349
 	b _02330134 ; case 350
-	b ov29_02330D10 ; case 351
-	b ov29_023302D4 ; case 352
+	b _02330D10 ; case 351
+	b _023302D4 ; case 352
 	b _02330134 ; case 353
-	b ov29_02330DF0 ; case 354
-	b ov29_02330150 ; case 355
+	b _02330DF0 ; case 354
+	b _02330150 ; case 355
 	b _023326C8 ; case 356
-	b ov29_02331170 ; case 357
-	b ov29_02331170 ; case 358
-	b ov29_02331170 ; case 359
+	b _02331170 ; case 357
+	b _02331170 ; case 358
+	b _02331170 ; case 359
 	b _02330134 ; case 360
 	b _02331CC4 ; case 361
 	b _02330134 ; case 362
-	b ov29_02331A40 ; case 363
-	b CreateMainMenus ; case 364
-	b ov29_02331DC0 ; case 365
+	b _02331A40 ; case 363
+	b _023310E4 ; case 364
+	b _02331DC0 ; case 365
 	b _02330134 ; case 366
-	b ov29_023315D8 ; case 367
-	b ov29_02330AFC ; case 368
-	b ov29_02331648 ; case 369
-	b ov29_02331D6C ; case 370
-	b ov29_02330EB4 ; case 371
-	b ov29_0233111C ; case 372
-	b ov29_02331610 ; case 373
-	b ov29_02331840 ; case 374
-	b ov29_02331D88 ; case 375
-	b ov29_02332084 ; case 376
-	b ov29_023320A0 ; case 377
-	b ov29_02331F34 ; case 378
-	b ov29_02331DDC ; case 379
-	b ov29_023318B0 ; case 380
-	b ov29_02331418 ; case 381
+	b _023315D8 ; case 367
+	b _02330AFC ; case 368
+	b _02331648 ; case 369
+	b _02331D6C ; case 370
+	b _02330EB4 ; case 371
+	b _0233111C ; case 372
+	b _02331610 ; case 373
+	b _02331840 ; case 374
+	b _02331D88 ; case 375
+	b _02332084 ; case 376
+	b _023320A0 ; case 377
+	b _02331F34 ; case 378
+	b _02331DDC ; case 379
+	b _023318B0 ; case 380
+	b _02331418 ; case 381
 	b _02330A00 ; case 382
-	b ov29_023315A0 ; case 383
-	b ov29_02332014 ; case 384
-	b ov29_02331E30 ; case 385
-	b ov29_023310AC ; case 386
-	b ov29_023313FC ; case 387
-	b ov29_02331664 ; case 388
-	b ov29_023317D0 ; case 389
-	b ov29_02331DF8 ; case 390
-	b ov29_02331AE8 ; case 391
-	b ov29_0233044C ; case 392
-	b ov29_0233204C ; case 393
-	b ov29_023312C8 ; case 394
-	b ov29_02331E14 ; case 395
-	b ov29_02331894 ; case 396
-	b ov29_023320F4 ; case 397
-	b ov29_02331C54 ; case 398
-	b ov29_02331BE4 ; case 399
-	b ov29_0233162C ; case 400
-	b ov29_0233118C ; case 401
+	b _023315A0 ; case 383
+	b _02332014 ; case 384
+	b _02331E30 ; case 385
+	b _023310AC ; case 386
+	b _023313FC ; case 387
+	b _02331664 ; case 388
+	b _023317D0 ; case 389
+	b _02331DF8 ; case 390
+	b _02331AE8 ; case 391
+	b _0233044C ; case 392
+	b _0233204C ; case 393
+	b _023312C8 ; case 394
+	b _02331E14 ; case 395
+	b _02331894 ; case 396
+	b _023320F4 ; case 397
+	b _02331C54 ; case 398
+	b _02331BE4 ; case 399
+	b _0233162C ; case 400
+	b _0233118C ; case 401
 	b _023326C8 ; case 402
-	b ov29_02331E84 ; case 403
+	b _02331E84 ; case 403
 	b _023326C8 ; case 404
 	b _023326C8 ; case 405
 	b _023320D8 ; case 406
-	b ov29_02331D18 ; case 407
+	b _02331D18 ; case 407
 	b _023326C8 ; case 408
-	b ov29_02331680 ; case 409
-	b ov29_023317EC ; case 410
+	b _02331680 ; case 409
+	b _023317EC ; case 410
 	b _023326C8 ; case 411
-	b ov29_02331808 ; case 412
+	b _02331808 ; case 412
 	b _023326C8 ; case 413
 	b _023326C8 ; case 414
 	b _023326C8 ; case 415
@@ -1542,128 +1542,128 @@ _0232F8B8: ; jump table
 	b _023326C8 ; case 418
 	b _023326C8 ; case 419
 	b _023326C8 ; case 420
-	b ov29_02332674 ; case 421
-	b ov29_02332690 ; case 422
-	b ov29_023326AC ; case 423
-	b ov29_02331648 ; case 424
-	b ov29_02331840 ; case 425
-	b ov29_0233111C ; case 426
-	b ov29_02332658 ; case 427
-	b ov29_02330360 ; case 428
-	b ov29_02331DDC ; case 429
-	b ov29_02332110 ; case 430
+	b _02332674 ; case 421
+	b _02332690 ; case 422
+	b _023326AC ; case 423
+	b _02331648 ; case 424
+	b _02331840 ; case 425
+	b _0233111C ; case 426
+	b _02332658 ; case 427
+	b _02330360 ; case 428
+	b _02331DDC ; case 429
+	b _02332110 ; case 430
 	b _023307EC ; case 431
 	b _02330134 ; case 432
 	b _02330134 ; case 433
-	b ov29_0233212C ; case 434
+	b _0233212C ; case 434
 	b _02330134 ; case 435
 	b _023307EC ; case 436
-	b ov29_0233069C ; case 437
-	b ov29_02332148 ; case 438
-	b ov29_02332164 ; case 439
-	b ov29_02332180 ; case 440
-	b ov29_02330DF0 ; case 441
+	b _0233069C ; case 437
+	b _02332148 ; case 438
+	b _02332164 ; case 439
+	b _02332180 ; case 440
+	b _02330DF0 ; case 441
 	b _023307EC ; case 442
-	b ov29_023306F0 ; case 443
-	b ov29_0233111C ; case 444
+	b _023306F0 ; case 443
+	b _0233111C ; case 444
 	b _02330134 ; case 445
-	b ov29_023306B8 ; case 446
-	b ov29_0233219C ; case 447
-	b ov29_023321B8 ; case 448
-	b ov29_023321D4 ; case 449
-	b ov29_023321F0 ; case 450
+	b _023306B8 ; case 446
+	b _0233219C ; case 447
+	b _023321B8 ; case 448
+	b _023321D4 ; case 449
+	b _023321F0 ; case 450
 	b _02330134 ; case 451
-	b ov29_0233220C ; case 452
-	b ov29_02330344 ; case 453
-	b ov29_023306F0 ; case 454
-	b ov29_02330344 ; case 455
-	b ov29_02332228 ; case 456
-	b ov29_02332244 ; case 457
-	b ov29_023319D0 ; case 458
-	b ov29_02330728 ; case 459
+	b _0233220C ; case 452
+	b _02330344 ; case 453
+	b _023306F0 ; case 454
+	b _02330344 ; case 455
+	b _02332228 ; case 456
+	b _02332244 ; case 457
+	b _023319D0 ; case 458
+	b _02330728 ; case 459
 	b _02330134 ; case 460
-	b ov29_02332260 ; case 461
+	b _02332260 ; case 461
 	b _02330134 ; case 462
 	b _02330134 ; case 463
-	b ov29_0233227C ; case 464
+	b _0233227C ; case 464
 	b _023326C8 ; case 465
-	b ov29_02332298 ; case 466
+	b _02332298 ; case 466
 	b _02330134 ; case 467
-	b ov29_023305D0 ; case 468
-	b ov29_023322D0 ; case 469
+	b _023305D0 ; case 468
+	b _023322D0 ; case 469
 	b _02330134 ; case 470
-	b ov29_023322EC ; case 471
+	b _023322EC ; case 471
 	b _02331138 ; case 472
 	b _023307EC ; case 473
-	b ov29_02332458 ; case 474
-	b ov29_02332308 ; case 475
+	b _02332458 ; case 474
+	b _02332308 ; case 475
 	b _02330134 ; case 476
-	b ov29_02332324 ; case 477
-	b ov29_02332340 ; case 478
+	b _02332324 ; case 477
+	b _02332340 ; case 478
 	b _02330134 ; case 479
-	b ov29_0233235C ; case 480
+	b _0233235C ; case 480
 	b _02330134 ; case 481
-	b ov29_023310C8 ; case 482
+	b _023310C8 ; case 482
 	b _02330974 ; case 483
-	b ov29_02330520 ; case 484
-	b ov29_02330728 ; case 485
+	b _02330520 ; case 484
+	b _02330728 ; case 485
 	b _02330134 ; case 486
 	b _02330134 ; case 487
-	b ov29_023322D0 ; case 488
-	b ov29_02332378 ; case 489
-	b ov29_02332394 ; case 490
+	b _023322D0 ; case 488
+	b _02332378 ; case 489
+	b _02332394 ; case 490
 	b _02330134 ; case 491
-	b ov29_023323B0 ; case 492
-	b ov29_023323CC ; case 493
-	b ov29_02330344 ; case 494
-	b ov29_02330728 ; case 495
-	b ov29_023323E8 ; case 496
-	b ov29_02332420 ; case 497
+	b _023323B0 ; case 492
+	b _023323CC ; case 493
+	b _02330344 ; case 494
+	b _02330728 ; case 495
+	b _023323E8 ; case 496
+	b _02332420 ; case 497
 	b _023307EC ; case 498
-	b ov29_02332404 ; case 499
-	b ov29_02330DB8 ; case 500
-	b ov29_02330CA0 ; case 501
+	b _02332404 ; case 499
+	b _02330DB8 ; case 500
+	b _02330CA0 ; case 501
 	b _02330134 ; case 502
 	b _023320D8 ; case 503
-	b ov29_0233243C ; case 504
-	b ov29_02332458 ; case 505
-	b ov29_02332474 ; case 506
+	b _0233243C ; case 504
+	b _02332458 ; case 505
+	b _02332474 ; case 506
 	b _02330958 ; case 507
 	b _02330134 ; case 508
-	b ov29_02332490 ; case 509
+	b _02332490 ; case 509
 	b _02330134 ; case 510
 	b _02330134 ; case 511
 	b _02330134 ; case 512
-	b ov29_023324AC ; case 513
-	b ov29_023324C8 ; case 514
+	b _023324AC ; case 513
+	b _023324C8 ; case 514
 	b _02330134 ; case 515
-	b ov29_023324E4 ; case 516
-	b ov29_02332500 ; case 517
-	b ov29_02330DF0 ; case 518
+	b _023324E4 ; case 516
+	b _02332500 ; case 517
+	b _02330DF0 ; case 518
 	b _023302F0 ; case 519
-	b ov29_0233251C ; case 520
+	b _0233251C ; case 520
 	b _02330958 ; case 521
-	b ov29_023322B4 ; case 522
+	b _023322B4 ; case 522
 	b _02330134 ; case 523
-	b ov29_02330468 ; case 524
-	b ov29_023320BC ; case 525
-	b ov29_02332538 ; case 526
-	b ov29_02330CA0 ; case 527
-	b ov29_02332554 ; case 528
-	b ov29_02332394 ; case 529
-	b ov29_0233054C ; case 530
-	b ov29_02332570 ; case 531
-	b ov29_0233258C ; case 532
-	b ov29_023325A8 ; case 533
-	b ov29_023325C4 ; case 534
+	b _02330468 ; case 524
+	b _023320BC ; case 525
+	b _02332538 ; case 526
+	b _02330CA0 ; case 527
+	b _02332554 ; case 528
+	b _02332394 ; case 529
+	b _0233054C ; case 530
+	b _02332570 ; case 531
+	b _0233258C ; case 532
+	b _023325A8 ; case 533
+	b _023325C4 ; case 534
 	b _02331154 ; case 535
-	b ov29_02330578 ; case 536
-	b ov29_023325E0 ; case 537
-	b ov29_023325FC ; case 538
+	b _02330578 ; case 536
+	b _023325E0 ; case 537
+	b _023325FC ; case 538
 	b _02330134 ; case 539
-	b ov29_02332620 ; case 540
-	b ov29_023306B8 ; case 541
-	b ov29_0233263C ; case 542
+	b _02332620 ; case 540
+	b _023306B8 ; case 541
+	b _0233263C ; case 542
 _02330134:
 	mov r0, sb
 	mov r1, r4
@@ -1672,10 +1672,7 @@ _02330134:
 	bl DoMoveDamage__02325DC0
 	mov sl, r0
 	b _023326CC
-	arm_func_end ExecuteMoveEffect
-
-	arm_func_start ov29_02330150
-ov29_02330150: ; 0x02330150
+_02330150: ; 0x02330150
 	mov r0, sb
 	mov r1, r8
 	bl GetMoveTypeForMonster
@@ -1753,10 +1750,7 @@ _023301E8:
 	moveq r0, #0
 	and sl, r0, #0xff
 	b _023326CC
-	arm_func_end ov29_02330150
-
-	arm_func_start ov29_02330280
-ov29_02330280: ; 0x02330280
+_02330280: ; 0x02330280
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1764,10 +1758,7 @@ ov29_02330280: ; 0x02330280
 	bl DoMoveWaterfall
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330280
-
-	arm_func_start ov29_0233029C
-ov29_0233029C: ; 0x0233029C
+_0233029C: ; 0x0233029C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1783,10 +1774,7 @@ _023302B8:
 	bl DoMoveGust
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233029C
-
-	arm_func_start ov29_023302D4
-ov29_023302D4: ; 0x023302D4
+_023302D4: ; 0x023302D4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1810,10 +1798,7 @@ _0233030C:
 	bl DoMoveDamageBurn10
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023302D4
-
-	arm_func_start ov29_02330328
-ov29_02330328: ; 0x02330328
+_02330328: ; 0x02330328
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1821,10 +1806,7 @@ ov29_02330328: ; 0x02330328
 	bl DoMoveDamageFreeze15
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330328
-
-	arm_func_start ov29_02330344
-ov29_02330344: ; 0x02330344
+_02330344: ; 0x02330344
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1832,10 +1814,7 @@ ov29_02330344: ; 0x02330344
 	bl DoMoveDamage__0232A500
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330344
-
-	arm_func_start ov29_02330360
-ov29_02330360: ; 0x02330360
+_02330360: ; 0x02330360
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1882,10 +1861,7 @@ _0233037C:
 	moveq r0, #0
 	and sl, r0, #0xff
 	b _023326CC
-	arm_func_end ov29_02330360
-
-	arm_func_start ov29_02330414
-ov29_02330414: ; 0x02330414
+_02330414: ; 0x02330414
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1893,10 +1869,7 @@ ov29_02330414: ; 0x02330414
 	bl DoMoveFissure
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330414
-
-	arm_func_start ov29_02330430
-ov29_02330430: ; 0x02330430
+_02330430: ; 0x02330430
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1904,10 +1877,7 @@ ov29_02330430: ; 0x02330430
 	bl DoMoveOhko
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330430
-
-	arm_func_start ov29_0233044C
-ov29_0233044C: ; 0x0233044C
+_0233044C: ; 0x0233044C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1915,10 +1885,7 @@ ov29_0233044C: ; 0x0233044C
 	bl DoMoveOneShot
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233044C
-
-	arm_func_start ov29_02330468
-ov29_02330468: ; 0x02330468
+_02330468: ; 0x02330468
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1934,10 +1901,7 @@ _02330484:
 	bl DoMoveWhirlpool
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330468
-
-	arm_func_start ov29_023304A0
-ov29_023304A0: ; 0x023304A0
+_023304A0: ; 0x023304A0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1945,10 +1909,7 @@ ov29_023304A0: ; 0x023304A0
 	bl DoMoveSurf
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023304A0
-
-	arm_func_start ov29_023304BC
-ov29_023304BC: ; 0x023304BC
+_023304BC: ; 0x023304BC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1956,10 +1917,7 @@ ov29_023304BC: ; 0x023304BC
 	bl DoMoveShadowHold
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023304BC
-
-	arm_func_start ov29_023304D8
-ov29_023304D8: ; 0x023304D8
+_023304D8: ; 0x023304D8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -1967,10 +1925,7 @@ ov29_023304D8: ; 0x023304D8
 	bl DoMoveDamagePoison18
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023304D8
-
-	arm_func_start ov29_023304F4
-ov29_023304F4: ; 0x023304F4
+_023304F4: ; 0x023304F4
 	str r1, [sp]
 	ldr r0, [sp, #0x28]
 	add r3, sp, #0x9c
@@ -1982,10 +1937,7 @@ ov29_023304F4: ; 0x023304F4
 	bl DoMoveDamageLowerDefensiveStatVariable
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023304F4
-
-	arm_func_start ov29_02330520
-ov29_02330520: ; 0x02330520
+_02330520: ; 0x02330520
 	str r1, [sp]
 	ldr r0, [sp, #0x24]
 	add r3, sp, #0x9c
@@ -1997,10 +1949,7 @@ ov29_02330520: ; 0x02330520
 	bl DoMoveDamageLowerDefensiveStatVariable
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330520
-
-	arm_func_start ov29_0233054C
-ov29_0233054C: ; 0x0233054C
+_0233054C: ; 0x0233054C
 	str r1, [sp]
 	ldr r0, [sp, #0x20]
 	add r3, sp, #0x9c
@@ -2012,10 +1961,7 @@ ov29_0233054C: ; 0x0233054C
 	bl DoMoveDamageLowerDefensiveStatVariable
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233054C
-
-	arm_func_start ov29_02330578
-ov29_02330578: ; 0x02330578
+_02330578: ; 0x02330578
 	str r1, [sp]
 	ldr r0, [sp, #0x1c]
 	add r3, sp, #0x9c
@@ -2027,10 +1973,7 @@ ov29_02330578: ; 0x02330578
 	bl DoMoveDamageLowerDefensiveStatVariable
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330578
-
-	arm_func_start ov29_023305A4
-ov29_023305A4: ; 0x023305A4
+_023305A4: ; 0x023305A4
 	str r1, [sp]
 	ldr r0, [sp, #0x28]
 	add r3, sp, #0x9c
@@ -2042,10 +1985,7 @@ ov29_023305A4: ; 0x023305A4
 	bl DoMoveDamageLowerDefensiveStatVariable
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023305A4
-
-	arm_func_start ov29_023305D0
-ov29_023305D0: ; 0x023305D0
+_023305D0: ; 0x023305D0
 	mov r0, #2
 	str r0, [sp]
 	ldr r0, [sp, #0x18]
@@ -2058,10 +1998,7 @@ ov29_023305D0: ; 0x023305D0
 	bl DoMoveDamageLowerDefensiveStatVariable
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023305D0
-
-	arm_func_start ov29_02330600
-ov29_02330600: ; 0x02330600
+_02330600: ; 0x02330600
 	add r3, sp, #0xa0
 	ldr r3, [r3]
 	mov r0, sb
@@ -2071,10 +2008,7 @@ ov29_02330600: ; 0x02330600
 	bl DoMoveMetalClaw
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330600
-
-	arm_func_start ov29_02330624
-ov29_02330624: ; 0x02330624
+_02330624: ; 0x02330624
 	add r3, sp, #0xa0
 	ldr r3, [r3]
 	mov r0, sb
@@ -2084,10 +2018,7 @@ ov29_02330624: ; 0x02330624
 	bl DoMoveSteelWing
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330624
-
-	arm_func_start ov29_02330648
-ov29_02330648: ; 0x02330648
+_02330648: ; 0x02330648
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2095,10 +2026,7 @@ ov29_02330648: ; 0x02330648
 	bl DoMovePoisonTail
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330648
-
-	arm_func_start ov29_02330664
-ov29_02330664: ; 0x02330664
+_02330664: ; 0x02330664
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2106,10 +2034,7 @@ ov29_02330664: ; 0x02330664
 	bl DoMoveTwister
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330664
-
-	arm_func_start ov29_02330680
-ov29_02330680: ; 0x02330680
+_02330680: ; 0x02330680
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2117,10 +2042,7 @@ ov29_02330680: ; 0x02330680
 	bl DoMoveDamageLowerSpeed20
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330680
-
-	arm_func_start ov29_0233069C
-ov29_0233069C: ; 0x0233069C
+_0233069C: ; 0x0233069C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2128,10 +2050,7 @@ ov29_0233069C: ; 0x0233069C
 	bl DoMoveDamageBoostAllStats
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233069C
-
-	arm_func_start ov29_023306B8
-ov29_023306B8: ; 0x023306B8
+_023306B8: ; 0x023306B8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2139,10 +2058,7 @@ ov29_023306B8: ; 0x023306B8
 	bl DoMoveDamageConfuse10
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023306B8
-
-	arm_func_start ov29_023306D4
-ov29_023306D4: ; 0x023306D4
+_023306D4: ; 0x023306D4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2150,10 +2066,7 @@ ov29_023306D4: ; 0x023306D4
 	bl DoMoveMistBall
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023306D4
-
-	arm_func_start ov29_023306F0
-ov29_023306F0: ; 0x023306F0
+_023306F0: ; 0x023306F0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2161,10 +2074,7 @@ ov29_023306F0: ; 0x023306F0
 	bl DoMoveDamageLowerSpecialDefense50
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023306F0
-
-	arm_func_start ov29_0233070C
-ov29_0233070C: ; 0x0233070C
+_0233070C: ; 0x0233070C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2172,10 +2082,7 @@ ov29_0233070C: ; 0x0233070C
 	bl DoMoveCrushClaw
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233070C
-
-	arm_func_start ov29_02330728
-ov29_02330728: ; 0x02330728
+_02330728: ; 0x02330728
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2183,10 +2090,7 @@ ov29_02330728: ; 0x02330728
 	bl DoMoveDamagePoison40
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330728
-
-	arm_func_start ov29_02330744
-ov29_02330744: ; 0x02330744
+_02330744: ; 0x02330744
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2194,10 +2098,7 @@ ov29_02330744: ; 0x02330744
 	bl DoMoveSacredFire
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330744
-
-	arm_func_start ov29_02330760
-ov29_02330760: ; 0x02330760
+_02330760: ; 0x02330760
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2205,10 +2106,7 @@ ov29_02330760: ; 0x02330760
 	bl DoMoveThundershock
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330760
-
-	arm_func_start ov29_0233077C
-ov29_0233077C: ; 0x0233077C
+_0233077C: ; 0x0233077C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2216,10 +2114,7 @@ ov29_0233077C: ; 0x0233077C
 	bl DoMoveDamageParalyze10
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233077C
-
-	arm_func_start ov29_02330798
-ov29_02330798: ; 0x02330798
+_02330798: ; 0x02330798
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2235,10 +2130,7 @@ _023307B4:
 	bl DoMoveDamageCringe20
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330798
-
-	arm_func_start ov29_023307D0
-ov29_023307D0: ; 0x023307D0
+_023307D0: ; 0x023307D0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2262,10 +2154,7 @@ _02330808:
 	bl DoMoveCrunch
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023307D0
-
-	arm_func_start ov29_02330824
-ov29_02330824: ; 0x02330824
+_02330824: ; 0x02330824
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2273,10 +2162,7 @@ ov29_02330824: ; 0x02330824
 	bl DoMoveShadowBall
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330824
-
-	arm_func_start ov29_02330840
-ov29_02330840: ; 0x02330840
+_02330840: ; 0x02330840
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2284,10 +2170,7 @@ ov29_02330840: ; 0x02330840
 	bl DoMoveDamageConfuse30
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330840
-
-	arm_func_start ov29_0233085C
-ov29_0233085C: ; 0x0233085C
+_0233085C: ; 0x0233085C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2295,10 +2178,7 @@ ov29_0233085C: ; 0x0233085C
 	bl DoMoveTriAttack
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233085C
-
-	arm_func_start ov29_02330878
-ov29_02330878: ; 0x02330878
+_02330878: ; 0x02330878
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2306,10 +2186,7 @@ ov29_02330878: ; 0x02330878
 	bl DoMoveMeteorMash
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330878
-
-	arm_func_start ov29_02330894
-ov29_02330894: ; 0x02330894
+_02330894: ; 0x02330894
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2317,10 +2194,7 @@ ov29_02330894: ; 0x02330894
 	bl DoMoveBlazeKick
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330894
-
-	arm_func_start ov29_023308B0
-ov29_023308B0: ; 0x023308B0
+_023308B0: ; 0x023308B0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2336,10 +2210,7 @@ _023308CC:
 	bl DoMoveParalyze__02326E80
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023308B0
-
-	arm_func_start ov29_023308E8
-ov29_023308E8: ; 0x023308E8
+_023308E8: ; 0x023308E8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2347,10 +2218,7 @@ ov29_023308E8: ; 0x023308E8
 	bl DoMoveFakeOut
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023308E8
-
-	arm_func_start ov29_02330904
-ov29_02330904: ; 0x02330904
+_02330904: ; 0x02330904
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2358,10 +2226,7 @@ ov29_02330904: ; 0x02330904
 	bl DoMoveSonicBoom
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330904
-
-	arm_func_start ov29_02330920
-ov29_02330920: ; 0x02330920
+_02330920: ; 0x02330920
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2369,10 +2234,7 @@ ov29_02330920: ; 0x02330920
 	bl DoMoveDragonRage
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330920
-
-	arm_func_start ov29_0233093C
-ov29_0233093C: ; 0x0233093C
+_0233093C: ; 0x0233093C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2404,10 +2266,7 @@ _02330990:
 	bl DoMoveYawn
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233093C
-
-	arm_func_start ov29_023309AC
-ov29_023309AC: ; 0x023309AC
+_023309AC: ; 0x023309AC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2415,10 +2274,7 @@ ov29_023309AC: ; 0x023309AC
 	bl DoMoveThunderbolt
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023309AC
-
-	arm_func_start ov29_023309C8
-ov29_023309C8: ; 0x023309C8
+_023309C8: ; 0x023309C8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2426,10 +2282,7 @@ ov29_023309C8: ; 0x023309C8
 	bl DoMoveBlock
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023309C8
-
-	arm_func_start ov29_023309E4
-ov29_023309E4: ; 0x023309E4
+_023309E4: ; 0x023309E4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2445,10 +2298,7 @@ _02330A00:
 	bl DoMoveConfuse
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023309E4
-
-	arm_func_start ov29_02330A1C
-ov29_02330A1C: ; 0x02330A1C
+_02330A1C: ; 0x02330A1C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2456,10 +2306,7 @@ ov29_02330A1C: ; 0x02330A1C
 	bl DoMovePoison
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330A1C
-
-	arm_func_start ov29_02330A38
-ov29_02330A38: ; 0x02330A38
+_02330A38: ; 0x02330A38
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2467,10 +2314,7 @@ ov29_02330A38: ; 0x02330A38
 	bl DoMoveThunderWave
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330A38
-
-	arm_func_start ov29_02330A54
-ov29_02330A54: ; 0x02330A54
+_02330A54: ; 0x02330A54
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2478,10 +2322,7 @@ ov29_02330A54: ; 0x02330A54
 	bl DoMoveParalyze__0232B434
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330A54
-
-	arm_func_start ov29_02330A70
-ov29_02330A70: ; 0x02330A70
+_02330A70: ; 0x02330A70
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2489,10 +2330,7 @@ ov29_02330A70: ; 0x02330A70
 	bl DoMoveZapCannon
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330A70
-
-	arm_func_start ov29_02330A8C
-ov29_02330A8C: ; 0x02330A8C
+_02330A8C: ; 0x02330A8C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2500,10 +2338,7 @@ ov29_02330A8C: ; 0x02330A8C
 	bl DoMoveSuperpower
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330A8C
-
-	arm_func_start ov29_02330AA8
-ov29_02330AA8: ; 0x02330AA8
+_02330AA8: ; 0x02330AA8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2511,10 +2346,7 @@ ov29_02330AA8: ; 0x02330AA8
 	bl DoMoveDamageLowerSpeed100
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330AA8
-
-	arm_func_start ov29_02330AC4
-ov29_02330AC4: ; 0x02330AC4
+_02330AC4: ; 0x02330AC4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2530,10 +2362,7 @@ _02330AE0:
 	bl DoMoveFakeTears
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330AC4
-
-	arm_func_start ov29_02330AFC
-ov29_02330AFC: ; 0x02330AFC
+_02330AFC: ; 0x02330AFC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2549,10 +2378,7 @@ _02330B18:
 	bl DoMovePainSplit
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330AFC
-
-	arm_func_start ov29_02330B34
-ov29_02330B34: ; 0x02330B34
+_02330B34: ; 0x02330B34
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2560,10 +2386,7 @@ ov29_02330B34: ; 0x02330B34
 	bl DoMoveTailGlow
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330B34
-
-	arm_func_start ov29_02330B50
-ov29_02330B50: ; 0x02330B50
+_02330B50: ; 0x02330B50
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2571,10 +2394,7 @@ ov29_02330B50: ; 0x02330B50
 	bl DoMoveMinimize
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330B50
-
-	arm_func_start ov29_02330B6C
-ov29_02330B6C: ; 0x02330B6C
+_02330B6C: ; 0x02330B6C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2582,10 +2402,7 @@ ov29_02330B6C: ; 0x02330B6C
 	bl DoMoveDragonDance
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330B6C
-
-	arm_func_start ov29_02330B88
-ov29_02330B88: ; 0x02330B88
+_02330B88: ; 0x02330B88
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2609,10 +2426,7 @@ _02330BC0:
 	bl DoMoveRage
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330B88
-
-	arm_func_start ov29_02330BDC
-ov29_02330BDC: ; 0x02330BDC
+_02330BDC: ; 0x02330BDC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2620,10 +2434,7 @@ ov29_02330BDC: ; 0x02330BDC
 	bl DoMoveSwordsDance
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330BDC
-
-	arm_func_start ov29_02330BF8
-ov29_02330BF8: ; 0x02330BF8
+_02330BF8: ; 0x02330BF8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2631,10 +2442,7 @@ ov29_02330BF8: ; 0x02330BF8
 	bl DoMoveCalmMind
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330BF8
-
-	arm_func_start ov29_02330C14
-ov29_02330C14: ; 0x02330C14
+_02330C14: ; 0x02330C14
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2642,10 +2450,7 @@ ov29_02330C14: ; 0x02330C14
 	bl DoMoveGrowth
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330C14
-
-	arm_func_start ov29_02330C30
-ov29_02330C30: ; 0x02330C30
+_02330C30: ; 0x02330C30
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2653,10 +2458,7 @@ ov29_02330C30: ; 0x02330C30
 	bl DoMoveAmnesia
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330C30
-
-	arm_func_start ov29_02330C4C
-ov29_02330C4C: ; 0x02330C4C
+_02330C4C: ; 0x02330C4C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2664,10 +2466,7 @@ ov29_02330C4C: ; 0x02330C4C
 	bl DoMoveDefenseCurl
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330C4C
-
-	arm_func_start ov29_02330C68
-ov29_02330C68: ; 0x02330C68
+_02330C68: ; 0x02330C68
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2675,10 +2474,7 @@ ov29_02330C68: ; 0x02330C68
 	bl DoMoveBoostDefense2
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330C68
-
-	arm_func_start ov29_02330C84
-ov29_02330C84: ; 0x02330C84
+_02330C84: ; 0x02330C84
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2686,10 +2482,7 @@ ov29_02330C84: ; 0x02330C84
 	bl DoMoveCosmicPower
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330C84
-
-	arm_func_start ov29_02330CA0
-ov29_02330CA0: ; 0x02330CA0
+_02330CA0: ; 0x02330CA0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2713,10 +2506,7 @@ _02330CD8:
 	bl DoMoveAuroraBeam
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330CA0
-
-	arm_func_start ov29_02330CF4
-ov29_02330CF4: ; 0x02330CF4
+_02330CF4: ; 0x02330CF4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2724,10 +2514,7 @@ ov29_02330CF4: ; 0x02330CF4
 	bl DoMovePsychoBoost
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330CF4
-
-	arm_func_start ov29_02330D10
-ov29_02330D10: ; 0x02330D10
+_02330D10: ; 0x02330D10
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2735,10 +2522,7 @@ ov29_02330D10: ; 0x02330D10
 	bl DoMoveLowerSpeed1
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330D10
-
-	arm_func_start ov29_02330D2C
-ov29_02330D2C: ; 0x02330D2C
+_02330D2C: ; 0x02330D2C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2746,10 +2530,7 @@ ov29_02330D2C: ; 0x02330D2C
 	bl DoMoveGrowl
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330D2C
-
-	arm_func_start ov29_02330D48
-ov29_02330D48: ; 0x02330D48
+_02330D48: ; 0x02330D48
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2765,10 +2546,7 @@ _02330D64:
 	bl DoMoveScreech
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330D48
-
-	arm_func_start ov29_02330D80
-ov29_02330D80: ; 0x02330D80
+_02330D80: ; 0x02330D80
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2776,10 +2554,7 @@ ov29_02330D80: ; 0x02330D80
 	bl DoMoveSeismicToss
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330D80
-
-	arm_func_start ov29_02330D9C
-ov29_02330D9C: ; 0x02330D9C
+_02330D9C: ; 0x02330D9C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2787,10 +2562,7 @@ ov29_02330D9C: ; 0x02330D9C
 	bl DoMoveNightShade
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330D9C
-
-	arm_func_start ov29_02330DB8
-ov29_02330DB8: ; 0x02330DB8
+_02330DB8: ; 0x02330DB8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2798,10 +2570,7 @@ ov29_02330DB8: ; 0x02330DB8
 	bl DoMoveDamageDrain
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330DB8
-
-	arm_func_start ov29_02330DD4
-ov29_02330DD4: ; 0x02330DD4
+_02330DD4: ; 0x02330DD4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2809,10 +2578,7 @@ ov29_02330DD4: ; 0x02330DD4
 	bl DoMoveDoubleEdge
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330DD4
-
-	arm_func_start ov29_02330DF0
-ov29_02330DF0: ; 0x02330DF0
+_02330DF0: ; 0x02330DF0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2820,10 +2586,7 @@ ov29_02330DF0: ; 0x02330DF0
 	bl DoMoveDamageWithRecoil
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330DF0
-
-	arm_func_start ov29_02330E0C
-ov29_02330E0C: ; 0x02330E0C
+_02330E0C: ; 0x02330E0C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2839,10 +2602,7 @@ _02330E28:
 	bl DoMoveSwagger
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330E0C
-
-	arm_func_start ov29_02330E44
-ov29_02330E44: ; 0x02330E44
+_02330E44: ; 0x02330E44
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2850,10 +2610,7 @@ ov29_02330E44: ; 0x02330E44
 	bl DoMoveTripleKick
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330E44
-
-	arm_func_start ov29_02330E60
-ov29_02330E60: ; 0x02330E60
+_02330E60: ; 0x02330E60
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2861,10 +2618,7 @@ ov29_02330E60: ; 0x02330E60
 	bl DoMoveTwineedle
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330E60
-
-	arm_func_start ov29_02330E7C
-ov29_02330E7C: ; 0x02330E7C
+_02330E7C: ; 0x02330E7C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2872,10 +2626,7 @@ ov29_02330E7C: ; 0x02330E7C
 	bl DoMoveSolarBeam
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330E7C
-
-	arm_func_start ov29_02330E98
-ov29_02330E98: ; 0x02330E98
+_02330E98: ; 0x02330E98
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2883,10 +2634,7 @@ ov29_02330E98: ; 0x02330E98
 	bl DoMoveSkyAttack
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330E98
-
-	arm_func_start ov29_02330EB4
-ov29_02330EB4: ; 0x02330EB4
+_02330EB4: ; 0x02330EB4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2894,10 +2642,7 @@ ov29_02330EB4: ; 0x02330EB4
 	bl DoMoveSlowDown
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330EB4
-
-	arm_func_start ov29_02330ED0
-ov29_02330ED0: ; 0x02330ED0
+_02330ED0: ; 0x02330ED0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2905,10 +2650,7 @@ ov29_02330ED0: ; 0x02330ED0
 	bl DoMoveDamageMultihitFatigue
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330ED0
-
-	arm_func_start ov29_02330EEC
-ov29_02330EEC: ; 0x02330EEC
+_02330EEC: ; 0x02330EEC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2916,10 +2658,7 @@ ov29_02330EEC: ; 0x02330EEC
 	bl DoMoveWrap
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330EEC
-
-	arm_func_start ov29_02330F08
-ov29_02330F08: ; 0x02330F08
+_02330F08: ; 0x02330F08
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2927,10 +2666,7 @@ ov29_02330F08: ; 0x02330F08
 	bl DoMoveUproar
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330F08
-
-	arm_func_start ov29_02330F24
-ov29_02330F24: ; 0x02330F24
+_02330F24: ; 0x02330F24
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2938,10 +2674,7 @@ ov29_02330F24: ; 0x02330F24
 	bl DoMovePoisonFang
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330F24
-
-	arm_func_start ov29_02330F40
-ov29_02330F40: ; 0x02330F40
+_02330F40: ; 0x02330F40
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2949,10 +2682,7 @@ ov29_02330F40: ; 0x02330F40
 	bl DoMovePresent
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330F40
-
-	arm_func_start ov29_02330F5C
-ov29_02330F5C: ; 0x02330F5C
+_02330F5C: ; 0x02330F5C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2960,10 +2690,7 @@ ov29_02330F5C: ; 0x02330F5C
 	bl DoMoveReflect
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330F5C
-
-	arm_func_start ov29_02330F78
-ov29_02330F78: ; 0x02330F78
+_02330F78: ; 0x02330F78
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2971,10 +2698,7 @@ ov29_02330F78: ; 0x02330F78
 	bl DoMoveSandstorm
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330F78
-
-	arm_func_start ov29_02330F94
-ov29_02330F94: ; 0x02330F94
+_02330F94: ; 0x02330F94
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2982,10 +2706,7 @@ ov29_02330F94: ; 0x02330F94
 	bl DoMoveSafeguard
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330F94
-
-	arm_func_start ov29_02330FB0
-ov29_02330FB0: ; 0x02330FB0
+_02330FB0: ; 0x02330FB0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -2993,10 +2714,7 @@ ov29_02330FB0: ; 0x02330FB0
 	bl DoMoveMist
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330FB0
-
-	arm_func_start ov29_02330FCC
-ov29_02330FCC: ; 0x02330FCC
+_02330FCC: ; 0x02330FCC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3020,10 +2738,7 @@ _02331004:
 	bl DoMoveMemento
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02330FCC
-
-	arm_func_start ov29_02331020
-ov29_02331020: ; 0x02331020
+_02331020: ; 0x02331020
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3031,10 +2746,7 @@ ov29_02331020: ; 0x02331020
 	bl DoMoveRecoverHpTeam
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331020
-
-	arm_func_start ov29_0233103C
-ov29_0233103C: ; 0x0233103C
+_0233103C: ; 0x0233103C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3042,10 +2754,7 @@ ov29_0233103C: ; 0x0233103C
 	bl DoMoveSynthesis
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233103C
-
-	arm_func_start ov29_02331058
-ov29_02331058: ; 0x02331058
+_02331058: ; 0x02331058
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3053,10 +2762,7 @@ ov29_02331058: ; 0x02331058
 	bl DoMoveMoonlight
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331058
-
-	arm_func_start ov29_02331074
-ov29_02331074: ; 0x02331074
+_02331074: ; 0x02331074
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3064,10 +2770,7 @@ ov29_02331074: ; 0x02331074
 	bl DoMoveRest
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331074
-
-	arm_func_start ov29_02331090
-ov29_02331090: ; 0x02331090
+_02331090: ; 0x02331090
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3075,10 +2778,7 @@ ov29_02331090: ; 0x02331090
 	bl DoMoveRecoverHp
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331090
-
-	arm_func_start ov29_023310AC
-ov29_023310AC: ; 0x023310AC
+_023310AC: ; 0x023310AC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3086,10 +2786,7 @@ ov29_023310AC: ; 0x023310AC
 	bl DoMoveScan
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023310AC
-
-	arm_func_start ov29_023310C8
-ov29_023310C8: ; 0x023310C8
+_023310C8: ; 0x023310C8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3097,10 +2794,7 @@ ov29_023310C8: ; 0x023310C8
 	bl DoMoveSwapItems
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023310C8
-
-	arm_func_start ov29_023310E4
-ov29_023310E4: ; 0x023310E4
+_023310E4: ; 0x023310E4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3108,10 +2802,7 @@ ov29_023310E4: ; 0x023310E4
 	bl DoMoveTakeaway
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023310E4
-
-	arm_func_start ov29_02331100
-ov29_02331100: ; 0x02331100
+_02331100: ; 0x02331100
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3119,10 +2810,7 @@ ov29_02331100: ; 0x02331100
 	bl DoMoveDamageStealItem
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331100
-
-	arm_func_start ov29_0233111C
-ov29_0233111C: ; 0x0233111C
+_0233111C: ; 0x0233111C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3146,10 +2834,7 @@ _02331154:
 	bl DoMoveBide
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233111C
-
-	arm_func_start ov29_02331170
-ov29_02331170: ; 0x02331170
+_02331170: ; 0x02331170
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3157,10 +2842,7 @@ ov29_02331170: ; 0x02331170
 	bl DoMoveBideUnleash
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331170
-
-	arm_func_start ov29_0233118C
-ov29_0233118C: ; 0x0233118C
+_0233118C: ; 0x0233118C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3168,10 +2850,7 @@ ov29_0233118C: ; 0x0233118C
 	bl DoMoveTrapper
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233118C
-
-	arm_func_start ov29_023311A8
-ov29_023311A8: ; 0x023311A8
+_023311A8: ; 0x023311A8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3179,10 +2858,7 @@ ov29_023311A8: ; 0x023311A8
 	bl DoMoveSleepTalk
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023311A8
-
-	arm_func_start ov29_023311C4
-ov29_023311C4: ; 0x023311C4
+_023311C4: ; 0x023311C4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3190,10 +2866,7 @@ ov29_023311C4: ; 0x023311C4
 	bl DoMoveCurse
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023311C4
-
-	arm_func_start ov29_023311E0
-ov29_023311E0: ; 0x023311E0
+_023311E0: ; 0x023311E0
 	mov r0, #0
 	str r0, [sp]
 	mov r0, sb
@@ -3203,10 +2876,7 @@ ov29_023311E0: ; 0x023311E0
 	bl DoMoveHiJumpKick
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023311E0
-
-	arm_func_start ov29_02331204
-ov29_02331204: ; 0x02331204
+_02331204: ; 0x02331204
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3214,10 +2884,7 @@ ov29_02331204: ; 0x02331204
 	bl DoMoveBlastBurn
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331204
-
-	arm_func_start ov29_02331220
-ov29_02331220: ; 0x02331220
+_02331220: ; 0x02331220
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3233,10 +2900,7 @@ _0233123C:
 	bl DoMoveRazorWind
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331220
-
-	arm_func_start ov29_02331258
-ov29_02331258: ; 0x02331258
+_02331258: ; 0x02331258
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3244,10 +2908,7 @@ ov29_02331258: ; 0x02331258
 	bl DoMoveFocusPunch
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331258
-
-	arm_func_start ov29_02331274
-ov29_02331274: ; 0x02331274
+_02331274: ; 0x02331274
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3271,10 +2932,7 @@ _023312AC:
 	bl DoMoveMorningSun
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331274
-
-	arm_func_start ov29_023312C8
-ov29_023312C8: ; 0x023312C8
+_023312C8: ; 0x023312C8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3282,10 +2940,7 @@ ov29_023312C8: ; 0x023312C8
 	bl DoMoveVacuumCut
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023312C8
-
-	arm_func_start ov29_023312E4
-ov29_023312E4: ; 0x023312E4
+_023312E4: ; 0x023312E4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3301,10 +2956,7 @@ _02331300:
 	bl DoMoveIronTail
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023312E4
-
-	arm_func_start ov29_0233131C
-ov29_0233131C: ; 0x0233131C
+_0233131C: ; 0x0233131C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3320,10 +2972,7 @@ _02331338:
 	bl DoMoveWillOWisp
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233131C
-
-	arm_func_start ov29_02331354
-ov29_02331354: ; 0x02331354
+_02331354: ; 0x02331354
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3331,10 +2980,7 @@ ov29_02331354: ; 0x02331354
 	bl DoMoveIngrain
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331354
-
-	arm_func_start ov29_02331370
-ov29_02331370: ; 0x02331370
+_02331370: ; 0x02331370
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3342,10 +2988,7 @@ ov29_02331370: ; 0x02331370
 	bl DoMovePsywave
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331370
-
-	arm_func_start ov29_0233138C
-ov29_0233138C: ; 0x0233138C
+_0233138C: ; 0x0233138C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3353,10 +2996,7 @@ ov29_0233138C: ; 0x0233138C
 	bl DoMoveLeechSeed
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233138C
-
-	arm_func_start ov29_023313A8
-ov29_023313A8: ; 0x023313A8
+_023313A8: ; 0x023313A8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3372,10 +3012,7 @@ _023313C4:
 	bl DoMoveHealStatus
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023313A8
-
-	arm_func_start ov29_023313E0
-ov29_023313E0: ; 0x023313E0
+_023313E0: ; 0x023313E0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3383,10 +3020,7 @@ ov29_023313E0: ; 0x023313E0
 	bl DoMoveHaze
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023313E0
-
-	arm_func_start ov29_023313FC
-ov29_023313FC: ; 0x023313FC
+_023313FC: ; 0x023313FC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3394,10 +3028,7 @@ ov29_023313FC: ; 0x023313FC
 	bl DoMovePowerEars
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023313FC
-
-	arm_func_start ov29_02331418
-ov29_02331418: ; 0x02331418
+_02331418: ; 0x02331418
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3405,10 +3036,7 @@ ov29_02331418: ; 0x02331418
 	bl DoMoveSiesta
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331418
-
-	arm_func_start ov29_02331434
-ov29_02331434: ; 0x02331434
+_02331434: ; 0x02331434
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3416,10 +3044,7 @@ ov29_02331434: ; 0x02331434
 	bl DoMoveSmellingSalt
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331434
-
-	arm_func_start ov29_02331450
-ov29_02331450: ; 0x02331450
+_02331450: ; 0x02331450
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3427,10 +3052,7 @@ ov29_02331450: ; 0x02331450
 	bl DoMoveMagnitude
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331450
-
-	arm_func_start ov29_0233146C
-ov29_0233146C: ; 0x0233146C
+_0233146C: ; 0x0233146C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3438,10 +3060,7 @@ ov29_0233146C: ; 0x0233146C
 	bl DoMoveSkullBash
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233146C
-
-	arm_func_start ov29_02331488
-ov29_02331488: ; 0x02331488
+_02331488: ; 0x02331488
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3457,10 +3076,7 @@ _023314A4:
 	bl DoMoveFlatter
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331488
-
-	arm_func_start ov29_023314C0
-ov29_023314C0: ; 0x023314C0
+_023314C0: ; 0x023314C0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3468,10 +3084,7 @@ ov29_023314C0: ; 0x023314C0
 	bl DoMoveMudSlap
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023314C0
-
-	arm_func_start ov29_023314DC
-ov29_023314DC: ; 0x023314DC
+_023314DC: ; 0x023314DC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3487,10 +3100,7 @@ _023314F8:
 	bl DoMoveOverheat
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023314DC
-
-	arm_func_start ov29_02331514
-ov29_02331514: ; 0x02331514
+_02331514: ; 0x02331514
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3498,10 +3108,7 @@ ov29_02331514: ; 0x02331514
 	bl DoMoveToxic
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331514
-
-	arm_func_start ov29_02331530
-ov29_02331530: ; 0x02331530
+_02331530: ; 0x02331530
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3525,10 +3132,7 @@ _02331568:
 	bl DoMoveSuperFang
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331530
-
-	arm_func_start ov29_02331584
-ov29_02331584: ; 0x02331584
+_02331584: ; 0x02331584
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3536,10 +3140,7 @@ ov29_02331584: ; 0x02331584
 	bl DoMoveDamage__0232B8B0
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331584
-
-	arm_func_start ov29_023315A0
-ov29_023315A0: ; 0x023315A0
+_023315A0: ; 0x023315A0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3555,10 +3156,7 @@ _023315BC:
 	bl DoMoveEndeavor
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023315A0
-
-	arm_func_start ov29_023315D8
-ov29_023315D8: ; 0x023315D8
+_023315D8: ; 0x023315D8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3566,10 +3164,7 @@ ov29_023315D8: ; 0x023315D8
 	bl DoMoveSwitchPositions
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023315D8
-
-	arm_func_start ov29_023315F4
-ov29_023315F4: ; 0x023315F4
+_023315F4: ; 0x023315F4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3577,10 +3172,7 @@ ov29_023315F4: ; 0x023315F4
 	bl DoMoveDreamEater
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023315F4
-
-	arm_func_start ov29_02331610
-ov29_02331610: ; 0x02331610
+_02331610: ; 0x02331610
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3588,10 +3180,7 @@ ov29_02331610: ; 0x02331610
 	bl DoMoveSearchlight
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331610
-
-	arm_func_start ov29_0233162C
-ov29_0233162C: ; 0x0233162C
+_0233162C: ; 0x0233162C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3599,10 +3188,7 @@ ov29_0233162C: ; 0x0233162C
 	bl DoMoveFillIn
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233162C
-
-	arm_func_start ov29_02331648
-ov29_02331648: ; 0x02331648
+_02331648: ; 0x02331648
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3610,10 +3196,7 @@ ov29_02331648: ; 0x02331648
 	bl DoMoveWarp
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331648
-
-	arm_func_start ov29_02331664
-ov29_02331664: ; 0x02331664
+_02331664: ; 0x02331664
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3621,10 +3204,7 @@ ov29_02331664: ; 0x02331664
 	bl DoMoveDrought
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331664
-
-	arm_func_start ov29_02331680
-ov29_02331680: ; 0x02331680
+_02331680: ; 0x02331680
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3632,10 +3212,7 @@ ov29_02331680: ; 0x02331680
 	bl DoMoveSeeStairs
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331680
-
-	arm_func_start ov29_0233169C
-ov29_0233169C: ; 0x0233169C
+_0233169C: ; 0x0233169C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3651,10 +3228,7 @@ _023316B8:
 	bl DoMoveBoostDefense1
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233169C
-
-	arm_func_start ov29_023316D4
-ov29_023316D4: ; 0x023316D4
+_023316D4: ; 0x023316D4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3670,10 +3244,7 @@ _023316F0:
 	bl DoMoveVitalThrow
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023316D4
-
-	arm_func_start ov29_0233170C
-ov29_0233170C: ; 0x0233170C
+_0233170C: ; 0x0233170C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3681,10 +3252,7 @@ ov29_0233170C: ; 0x0233170C
 	bl DoMoveFly
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233170C
-
-	arm_func_start ov29_02331728
-ov29_02331728: ; 0x02331728
+_02331728: ; 0x02331728
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3692,10 +3260,7 @@ ov29_02331728: ; 0x02331728
 	bl DoMoveBounce
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331728
-
-	arm_func_start ov29_02331744
-ov29_02331744: ; 0x02331744
+_02331744: ; 0x02331744
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3727,10 +3292,7 @@ _02331798:
 	bl DoMoveDoubleTeam
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331744
-
-	arm_func_start ov29_023317B4
-ov29_023317B4: ; 0x023317B4
+_023317B4: ; 0x023317B4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3738,10 +3300,7 @@ ov29_023317B4: ; 0x023317B4
 	bl DoMoveKnockOff
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023317B4
-
-	arm_func_start ov29_023317D0
-ov29_023317D0: ; 0x023317D0
+_023317D0: ; 0x023317D0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3749,10 +3308,7 @@ ov29_023317D0: ; 0x023317D0
 	bl DoMoveTrapBuster
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023317D0
-
-	arm_func_start ov29_023317EC
-ov29_023317EC: ; 0x023317EC
+_023317EC: ; 0x023317EC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3760,10 +3316,7 @@ ov29_023317EC: ; 0x023317EC
 	bl DoMoveLongToss
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023317EC
-
-	arm_func_start ov29_02331808
-ov29_02331808: ; 0x02331808
+_02331808: ; 0x02331808
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3779,10 +3332,7 @@ _02331824:
 	bl DoMoveGrudge
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331808
-
-	arm_func_start ov29_02331840
-ov29_02331840: ; 0x02331840
+_02331840: ; 0x02331840
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3790,10 +3340,7 @@ ov29_02331840: ; 0x02331840
 	bl DoMovePetrify
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331840
-
-	arm_func_start ov29_0233185C
-ov29_0233185C: ; 0x0233185C
+_0233185C: ; 0x0233185C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3801,10 +3348,7 @@ ov29_0233185C: ; 0x0233185C
 	bl DoMoveAssist
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233185C
-
-	arm_func_start ov29_02331878
-ov29_02331878: ; 0x02331878
+_02331878: ; 0x02331878
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3812,10 +3356,7 @@ ov29_02331878: ; 0x02331878
 	bl DoMoveSetDamage
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331878
-
-	arm_func_start ov29_02331894
-ov29_02331894: ; 0x02331894
+_02331894: ; 0x02331894
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3823,10 +3364,7 @@ ov29_02331894: ; 0x02331894
 	bl DoMoveShocker
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331894
-
-	arm_func_start ov29_023318B0
-ov29_023318B0: ; 0x023318B0
+_023318B0: ; 0x023318B0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3834,10 +3372,7 @@ ov29_023318B0: ; 0x023318B0
 	bl DoMoveDecoy
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023318B0
-
-	arm_func_start ov29_023318CC
-ov29_023318CC: ; 0x023318CC
+_023318CC: ; 0x023318CC
 	mov r0, #0
 	str r0, [sp]
 	mov r0, sb
@@ -3847,10 +3382,7 @@ ov29_023318CC: ; 0x023318CC
 	bl DoMoveJumpKick
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023318CC
-
-	arm_func_start ov29_023318F0
-ov29_023318F0: ; 0x023318F0
+_023318F0: ; 0x023318F0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3858,10 +3390,7 @@ ov29_023318F0: ; 0x023318F0
 	bl DoMoveProtect
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023318F0
-
-	arm_func_start ov29_0233190C
-ov29_0233190C: ; 0x0233190C
+_0233190C: ; 0x0233190C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3869,10 +3398,7 @@ ov29_0233190C: ; 0x0233190C
 	bl DoMoveTaunt
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233190C
-
-	arm_func_start ov29_02331928
-ov29_02331928: ; 0x02331928
+_02331928: ; 0x02331928
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3880,10 +3406,7 @@ ov29_02331928: ; 0x02331928
 	bl DoMoveTickle
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331928
-
-	arm_func_start ov29_02331944
-ov29_02331944: ; 0x02331944
+_02331944: ; 0x02331944
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3891,10 +3414,7 @@ ov29_02331944: ; 0x02331944
 	bl DoMoveReversal
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331944
-
-	arm_func_start ov29_02331960
-ov29_02331960: ; 0x02331960
+_02331960: ; 0x02331960
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3902,10 +3422,7 @@ ov29_02331960: ; 0x02331960
 	bl DoMoveSelfdestruct
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331960
-
-	arm_func_start ov29_0233197C
-ov29_0233197C: ; 0x0233197C
+_0233197C: ; 0x0233197C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3913,10 +3430,7 @@ ov29_0233197C: ; 0x0233197C
 	bl DoMoveExplosion
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233197C
-
-	arm_func_start ov29_02331998
-ov29_02331998: ; 0x02331998
+_02331998: ; 0x02331998
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3924,10 +3438,7 @@ ov29_02331998: ; 0x02331998
 	bl DoMoveCharge
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331998
-
-	arm_func_start ov29_023319B4
-ov29_023319B4: ; 0x023319B4
+_023319B4: ; 0x023319B4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3935,10 +3446,7 @@ ov29_023319B4: ; 0x023319B4
 	bl DoMoveFacade
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023319B4
-
-	arm_func_start ov29_023319D0
-ov29_023319D0: ; 0x023319D0
+_023319D0: ; 0x023319D0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3946,10 +3454,7 @@ ov29_023319D0: ; 0x023319D0
 	bl DoMoveDamageWeightDependent
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023319D0
-
-	arm_func_start ov29_023319EC
-ov29_023319EC: ; 0x023319EC
+_023319EC: ; 0x023319EC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3957,10 +3462,7 @@ ov29_023319EC: ; 0x023319EC
 	bl DoMoveWaterSpout
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023319EC
-
-	arm_func_start ov29_02331A08
-ov29_02331A08: ; 0x02331A08
+_02331A08: ; 0x02331A08
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3976,10 +3478,7 @@ _02331A24:
 	bl DoMoveSmokescreen
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331A08
-
-	arm_func_start ov29_02331A40
-ov29_02331A40: ; 0x02331A40
+_02331A40: ; 0x02331A40
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3987,10 +3486,7 @@ ov29_02331A40: ; 0x02331A40
 	bl DoMoveSeeTrap
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331A40
-
-	arm_func_start ov29_02331A5C
-ov29_02331A5C: ; 0x02331A5C
+_02331A5C: ; 0x02331A5C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -3998,10 +3494,7 @@ ov29_02331A5C: ; 0x02331A5C
 	bl DoMoveStockpile
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331A5C
-
-	arm_func_start ov29_02331A78
-ov29_02331A78: ; 0x02331A78
+_02331A78: ; 0x02331A78
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4009,10 +3502,7 @@ ov29_02331A78: ; 0x02331A78
 	bl DoMoveSpitUp
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331A78
-
-	arm_func_start ov29_02331A94
-ov29_02331A94: ; 0x02331A94
+_02331A94: ; 0x02331A94
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4036,10 +3526,7 @@ _02331ACC:
 	bl DoMoveSpite
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331A94
-
-	arm_func_start ov29_02331AE8
-ov29_02331AE8: ; 0x02331AE8
+_02331AE8: ; 0x02331AE8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4047,10 +3534,7 @@ ov29_02331AE8: ; 0x02331AE8
 	bl DoMoveInvisify
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331AE8
-
-	arm_func_start ov29_02331B04
-ov29_02331B04: ; 0x02331B04
+_02331B04: ; 0x02331B04
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4058,10 +3542,7 @@ ov29_02331B04: ; 0x02331B04
 	bl DoMoveMirrorCoat
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331B04
-
-	arm_func_start ov29_02331B20
-ov29_02331B20: ; 0x02331B20
+_02331B20: ; 0x02331B20
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4069,10 +3550,7 @@ ov29_02331B20: ; 0x02331B20
 	bl DoMovePerishSong
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331B20
-
-	arm_func_start ov29_02331B3C
-ov29_02331B3C: ; 0x02331B3C
+_02331B3C: ; 0x02331B3C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4080,10 +3558,7 @@ ov29_02331B3C: ; 0x02331B3C
 	bl DoMoveRapidSpin
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331B3C
-
-	arm_func_start ov29_02331B58
-ov29_02331B58: ; 0x02331B58
+_02331B58: ; 0x02331B58
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4107,10 +3582,7 @@ _02331B90:
 	bl DoMoveWeatherBall
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331B58
-
-	arm_func_start ov29_02331BAC
-ov29_02331BAC: ; 0x02331BAC
+_02331BAC: ; 0x02331BAC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4118,10 +3590,7 @@ ov29_02331BAC: ; 0x02331BAC
 	bl DoMoveSunnyDay
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331BAC
-
-	arm_func_start ov29_02331BC8
-ov29_02331BC8: ; 0x02331BC8
+_02331BC8: ; 0x02331BC8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4129,10 +3598,7 @@ ov29_02331BC8: ; 0x02331BC8
 	bl DoMovePayDay
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331BC8
-
-	arm_func_start ov29_02331BE4
-ov29_02331BE4: ; 0x02331BE4
+_02331BE4: ; 0x02331BE4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4140,10 +3606,7 @@ ov29_02331BE4: ; 0x02331BE4
 	bl DoMoveOneRoom
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331BE4
-
-	arm_func_start ov29_02331C00
-ov29_02331C00: ; 0x02331C00
+_02331C00: ; 0x02331C00
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4151,10 +3614,7 @@ ov29_02331C00: ; 0x02331C00
 	bl DoMoveEndure
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331C00
-
-	arm_func_start ov29_02331C1C
-ov29_02331C1C: ; 0x02331C1C
+_02331C1C: ; 0x02331C1C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4162,10 +3622,7 @@ ov29_02331C1C: ; 0x02331C1C
 	bl DoMoveHelpingHand
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331C1C
-
-	arm_func_start ov29_02331C38
-ov29_02331C38: ; 0x02331C38
+_02331C38: ; 0x02331C38
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4173,10 +3630,7 @@ ov29_02331C38: ; 0x02331C38
 	bl DoMoveBellyDrum
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331C38
-
-	arm_func_start ov29_02331C54
-ov29_02331C54: ; 0x02331C54
+_02331C54: ; 0x02331C54
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4216,10 +3670,7 @@ _02331CC4:
 	bl DoMoveRockSmash
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331C54
-
-	arm_func_start ov29_02331CE0
-ov29_02331CE0: ; 0x02331CE0
+_02331CE0: ; 0x02331CE0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4235,10 +3686,7 @@ _02331CFC:
 	bl DoMoveHail
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331CE0
-
-	arm_func_start ov29_02331D18
-ov29_02331D18: ; 0x02331D18
+_02331D18: ; 0x02331D18
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4254,10 +3702,7 @@ _02331D34:
 	bl DoMoveExpose
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331D18
-
-	arm_func_start ov29_02331D50
-ov29_02331D50: ; 0x02331D50
+_02331D50: ; 0x02331D50
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4265,10 +3710,7 @@ ov29_02331D50: ; 0x02331D50
 	bl DoMoveSplash
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331D50
-
-	arm_func_start ov29_02331D6C
-ov29_02331D6C: ; 0x02331D6C
+_02331D6C: ; 0x02331D6C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4276,10 +3718,7 @@ ov29_02331D6C: ; 0x02331D6C
 	bl DoMoveTransfer
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331D6C
-
-	arm_func_start ov29_02331D88
-ov29_02331D88: ; 0x02331D88
+_02331D88: ; 0x02331D88
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4287,10 +3726,7 @@ ov29_02331D88: ; 0x02331D88
 	bl DoMoveStayAway
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331D88
-
-	arm_func_start ov29_02331DA4
-ov29_02331DA4: ; 0x02331DA4
+_02331DA4: ; 0x02331DA4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4298,10 +3734,7 @@ ov29_02331DA4: ; 0x02331DA4
 	bl DoMoveBeatUp
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331DA4
-
-	arm_func_start ov29_02331DC0
-ov29_02331DC0: ; 0x02331DC0
+_02331DC0: ; 0x02331DC0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4309,10 +3742,7 @@ ov29_02331DC0: ; 0x02331DC0
 	bl DoMoveRebound
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331DC0
-
-	arm_func_start ov29_02331DDC
-ov29_02331DDC: ; 0x02331DDC
+_02331DDC: ; 0x02331DDC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4320,10 +3750,7 @@ ov29_02331DDC: ; 0x02331DDC
 	bl DoMovePause
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331DDC
-
-	arm_func_start ov29_02331DF8
-ov29_02331DF8: ; 0x02331DF8
+_02331DF8: ; 0x02331DF8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4331,10 +3758,7 @@ ov29_02331DF8: ; 0x02331DF8
 	bl DoMoveWildCall
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331DF8
-
-	arm_func_start ov29_02331E14
-ov29_02331E14: ; 0x02331E14
+_02331E14: ; 0x02331E14
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4342,10 +3766,7 @@ ov29_02331E14: ; 0x02331E14
 	bl DoMoveReviver
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331E14
-
-	arm_func_start ov29_02331E30
-ov29_02331E30: ; 0x02331E30
+_02331E30: ; 0x02331E30
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4353,10 +3774,7 @@ ov29_02331E30: ; 0x02331E30
 	bl DoMoveEscape
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331E30
-
-	arm_func_start ov29_02331E4C
-ov29_02331E4C: ; 0x02331E4C
+_02331E4C: ; 0x02331E4C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4364,10 +3782,7 @@ ov29_02331E4C: ; 0x02331E4C
 	bl DoMoveSecretPower
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331E4C
-
-	arm_func_start ov29_02331E68
-ov29_02331E68: ; 0x02331E68
+_02331E68: ; 0x02331E68
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4375,10 +3790,7 @@ ov29_02331E68: ; 0x02331E68
 	bl DoMoveNaturePower
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331E68
-
-	arm_func_start ov29_02331E84
-ov29_02331E84: ; 0x02331E84
+_02331E84: ; 0x02331E84
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4386,10 +3798,7 @@ ov29_02331E84: ; 0x02331E84
 	bl DoMoveItemize
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331E84
-
-	arm_func_start ov29_02331EA0
-ov29_02331EA0: ; 0x02331EA0
+_02331EA0: ; 0x02331EA0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4407,10 +3816,7 @@ _02331EC4:
 	bl DoMoveMirrorMove
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331EA0
-
-	arm_func_start ov29_02331EE0
-ov29_02331EE0: ; 0x02331EE0
+_02331EE0: ; 0x02331EE0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4418,10 +3824,7 @@ ov29_02331EE0: ; 0x02331EE0
 	bl DoMoveRolePlay
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331EE0
-
-	arm_func_start ov29_02331EFC
-ov29_02331EFC: ; 0x02331EFC
+_02331EFC: ; 0x02331EFC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4429,10 +3832,7 @@ ov29_02331EFC: ; 0x02331EFC
 	bl DoMoveSkillSwap
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331EFC
-
-	arm_func_start ov29_02331F18
-ov29_02331F18: ; 0x02331F18
+_02331F18: ; 0x02331F18
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4440,10 +3840,7 @@ ov29_02331F18: ; 0x02331F18
 	bl DoMoveConversion
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331F18
-
-	arm_func_start ov29_02331F34
-ov29_02331F34: ; 0x02331F34
+_02331F34: ; 0x02331F34
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4459,10 +3856,7 @@ _02331F50:
 	bl DoMoveReturn
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331F34
-
-	arm_func_start ov29_02331F6C
-ov29_02331F6C: ; 0x02331F6C
+_02331F6C: ; 0x02331F6C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4470,10 +3864,7 @@ ov29_02331F6C: ; 0x02331F6C
 	bl DoMoveSnatch
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331F6C
-
-	arm_func_start ov29_02331F88
-ov29_02331F88: ; 0x02331F88
+_02331F88: ; 0x02331F88
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4481,10 +3872,7 @@ ov29_02331F88: ; 0x02331F88
 	bl DoMoveCamouflage
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331F88
-
-	arm_func_start ov29_02331FA4
-ov29_02331FA4: ; 0x02331FA4
+_02331FA4: ; 0x02331FA4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4492,10 +3880,7 @@ ov29_02331FA4: ; 0x02331FA4
 	bl DoMoveFrustration
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331FA4
-
-	arm_func_start ov29_02331FC0
-ov29_02331FC0: ; 0x02331FC0
+_02331FC0: ; 0x02331FC0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4511,10 +3896,7 @@ _02331FDC:
 	bl DoMoveSnore
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331FC0
-
-	arm_func_start ov29_02331FF8
-ov29_02331FF8: ; 0x02331FF8
+_02331FF8: ; 0x02331FF8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4522,10 +3904,7 @@ ov29_02331FF8: ; 0x02331FF8
 	bl DoMoveRecycle
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02331FF8
-
-	arm_func_start ov29_02332014
-ov29_02332014: ; 0x02332014
+_02332014: ; 0x02332014
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4533,10 +3912,7 @@ ov29_02332014: ; 0x02332014
 	bl DoMoveNoMove
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332014
-
-	arm_func_start ov29_02332030
-ov29_02332030: ; 0x02332030
+_02332030: ; 0x02332030
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4544,10 +3920,7 @@ ov29_02332030: ; 0x02332030
 	bl DoMoveMetronome
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332030
-
-	arm_func_start ov29_0233204C
-ov29_0233204C: ; 0x0233204C
+_0233204C: ; 0x0233204C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4555,10 +3928,7 @@ ov29_0233204C: ; 0x0233204C
 	bl DoMoveHpGauge
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233204C
-
-	arm_func_start ov29_02332068
-ov29_02332068: ; 0x02332068
+_02332068: ; 0x02332068
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4566,10 +3936,7 @@ ov29_02332068: ; 0x02332068
 	bl DoMoveConversion2
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332068
-
-	arm_func_start ov29_02332084
-ov29_02332084: ; 0x02332084
+_02332084: ; 0x02332084
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4577,10 +3944,7 @@ ov29_02332084: ; 0x02332084
 	bl DoMovePounce
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332084
-
-	arm_func_start ov29_023320A0
-ov29_023320A0: ; 0x023320A0
+_023320A0: ; 0x023320A0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4588,10 +3952,7 @@ ov29_023320A0: ; 0x023320A0
 	bl DoMoveTrawl
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023320A0
-
-	arm_func_start ov29_023320BC
-ov29_023320BC: ; 0x023320BC
+_023320BC: ; 0x023320BC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4607,10 +3968,7 @@ _023320D8:
 	bl DoMoveHurl
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023320BC
-
-	arm_func_start ov29_023320F4
-ov29_023320F4: ; 0x023320F4
+_023320F4: ; 0x023320F4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4618,10 +3976,7 @@ ov29_023320F4: ; 0x023320F4
 	bl DoMoveEcho
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023320F4
-
-	arm_func_start ov29_02332110
-ov29_02332110: ; 0x02332110
+_02332110: ; 0x02332110
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4629,10 +3984,7 @@ ov29_02332110: ; 0x02332110
 	bl DoMoveHammerArm
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332110
-
-	arm_func_start ov29_0233212C
-ov29_0233212C: ; 0x0233212C
+_0233212C: ; 0x0233212C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4640,10 +3992,7 @@ ov29_0233212C: ; 0x0233212C
 	bl DoMoveAquaRing
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233212C
-
-	arm_func_start ov29_02332148
-ov29_02332148: ; 0x02332148
+_02332148: ; 0x02332148
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4651,10 +4000,7 @@ ov29_02332148: ; 0x02332148
 	bl DoMoveGastroAcid
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332148
-
-	arm_func_start ov29_02332164
-ov29_02332164: ; 0x02332164
+_02332164: ; 0x02332164
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4662,10 +4008,7 @@ ov29_02332164: ; 0x02332164
 	bl DoMoveHealingWish
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332164
-
-	arm_func_start ov29_02332180
-ov29_02332180: ; 0x02332180
+_02332180: ; 0x02332180
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4673,10 +4016,7 @@ ov29_02332180: ; 0x02332180
 	bl DoMoveCloseCombat
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332180
-
-	arm_func_start ov29_0233219C
-ov29_0233219C: ; 0x0233219C
+_0233219C: ; 0x0233219C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4684,10 +4024,7 @@ ov29_0233219C: ; 0x0233219C
 	bl DoMoveLuckyChant
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233219C
-
-	arm_func_start ov29_023321B8
-ov29_023321B8: ; 0x023321B8
+_023321B8: ; 0x023321B8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4695,10 +4032,7 @@ ov29_023321B8: ; 0x023321B8
 	bl DoMoveGuardSwap
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023321B8
-
-	arm_func_start ov29_023321D4
-ov29_023321D4: ; 0x023321D4
+_023321D4: ; 0x023321D4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4706,10 +4040,7 @@ ov29_023321D4: ; 0x023321D4
 	bl DoMoveHealOrder
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023321D4
-
-	arm_func_start ov29_023321F0
-ov29_023321F0: ; 0x023321F0
+_023321F0: ; 0x023321F0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4717,10 +4048,7 @@ ov29_023321F0: ; 0x023321F0
 	bl DoMoveHealBlock
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023321F0
-
-	arm_func_start ov29_0233220C
-ov29_0233220C: ; 0x0233220C
+_0233220C: ; 0x0233220C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4728,10 +4056,7 @@ ov29_0233220C: ; 0x0233220C
 	bl DoMoveThunderFang
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233220C
-
-	arm_func_start ov29_02332228
-ov29_02332228: ; 0x02332228
+_02332228: ; 0x02332228
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4739,10 +4064,7 @@ ov29_02332228: ; 0x02332228
 	bl DoMoveDefog
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332228
-
-	arm_func_start ov29_02332244
-ov29_02332244: ; 0x02332244
+_02332244: ; 0x02332244
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4750,10 +4072,7 @@ ov29_02332244: ; 0x02332244
 	bl DoMoveTrumpCard
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332244
-
-	arm_func_start ov29_02332260
-ov29_02332260: ; 0x02332260
+_02332260: ; 0x02332260
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4761,10 +4080,7 @@ ov29_02332260: ; 0x02332260
 	bl DoMoveIceFang
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332260
-
-	arm_func_start ov29_0233227C
-ov29_0233227C: ; 0x0233227C
+_0233227C: ; 0x0233227C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4772,10 +4088,7 @@ ov29_0233227C: ; 0x0233227C
 	bl DoMovePsychoShift
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233227C
-
-	arm_func_start ov29_02332298
-ov29_02332298: ; 0x02332298
+_02332298: ; 0x02332298
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4783,10 +4096,7 @@ ov29_02332298: ; 0x02332298
 	bl DoMoveEmbargo
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332298
-
-	arm_func_start ov29_023322B4
-ov29_023322B4: ; 0x023322B4
+_023322B4: ; 0x023322B4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4794,10 +4104,7 @@ ov29_023322B4: ; 0x023322B4
 	bl DoMoveFireFang
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023322B4
-
-	arm_func_start ov29_023322D0
-ov29_023322D0: ; 0x023322D0
+_023322D0: ; 0x023322D0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4805,10 +4112,7 @@ ov29_023322D0: ; 0x023322D0
 	bl DoMoveBrine
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023322D0
-
-	arm_func_start ov29_023322EC
-ov29_023322EC: ; 0x023322EC
+_023322EC: ; 0x023322EC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4816,10 +4120,7 @@ ov29_023322EC: ; 0x023322EC
 	bl DoMoveNaturalGift
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023322EC
-
-	arm_func_start ov29_02332308
-ov29_02332308: ; 0x02332308
+_02332308: ; 0x02332308
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4827,10 +4128,7 @@ ov29_02332308: ; 0x02332308
 	bl DoMoveGyroBall
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332308
-
-	arm_func_start ov29_02332324
-ov29_02332324: ; 0x02332324
+_02332324: ; 0x02332324
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4838,10 +4136,7 @@ ov29_02332324: ; 0x02332324
 	bl DoMoveShadowForce
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332324
-
-	arm_func_start ov29_02332340
-ov29_02332340: ; 0x02332340
+_02332340: ; 0x02332340
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4849,10 +4144,7 @@ ov29_02332340: ; 0x02332340
 	bl DoMoveGravity
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332340
-
-	arm_func_start ov29_0233235C
-ov29_0233235C: ; 0x0233235C
+_0233235C: ; 0x0233235C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4860,10 +4152,7 @@ ov29_0233235C: ; 0x0233235C
 	bl DoMoveStealthRock
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233235C
-
-	arm_func_start ov29_02332378
-ov29_02332378: ; 0x02332378
+_02332378: ; 0x02332378
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4871,10 +4160,7 @@ ov29_02332378: ; 0x02332378
 	bl DoMoveChargeBeam
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332378
-
-	arm_func_start ov29_02332394
-ov29_02332394: ; 0x02332394
+_02332394: ; 0x02332394
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4882,10 +4168,7 @@ ov29_02332394: ; 0x02332394
 	bl DoMoveDamageEatItem
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332394
-
-	arm_func_start ov29_023323B0
-ov29_023323B0: ; 0x023323B0
+_023323B0: ; 0x023323B0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4893,10 +4176,7 @@ ov29_023323B0: ; 0x023323B0
 	bl DoMoveAcupressure
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023323B0
-
-	arm_func_start ov29_023323CC
-ov29_023323CC: ; 0x023323CC
+_023323CC: ; 0x023323CC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4904,10 +4184,7 @@ ov29_023323CC: ; 0x023323CC
 	bl DoMoveMagnetRise
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023323CC
-
-	arm_func_start ov29_023323E8
-ov29_023323E8: ; 0x023323E8
+_023323E8: ; 0x023323E8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4915,10 +4192,7 @@ ov29_023323E8: ; 0x023323E8
 	bl DoMoveToxicSpikes
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023323E8
-
-	arm_func_start ov29_02332404
-ov29_02332404: ; 0x02332404
+_02332404: ; 0x02332404
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4926,10 +4200,7 @@ ov29_02332404: ; 0x02332404
 	bl DoMoveTrickRoom
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332404
-
-	arm_func_start ov29_02332420
-ov29_02332420: ; 0x02332420
+_02332420: ; 0x02332420
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4937,10 +4208,7 @@ ov29_02332420: ; 0x02332420
 	bl DoMoveLastResort
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332420
-
-	arm_func_start ov29_0233243C
-ov29_0233243C: ; 0x0233243C
+_0233243C: ; 0x0233243C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4948,10 +4216,7 @@ ov29_0233243C: ; 0x0233243C
 	bl DoMoveWorrySeed
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233243C
-
-	arm_func_start ov29_02332458
-ov29_02332458: ; 0x02332458
+_02332458: ; 0x02332458
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4959,10 +4224,7 @@ ov29_02332458: ; 0x02332458
 	bl DoMoveDamageHpDependent
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332458
-
-	arm_func_start ov29_02332474
-ov29_02332474: ; 0x02332474
+_02332474: ; 0x02332474
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4970,10 +4232,7 @@ ov29_02332474: ; 0x02332474
 	bl DoMoveHeartSwap
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332474
-
-	arm_func_start ov29_02332490
-ov29_02332490: ; 0x02332490
+_02332490: ; 0x02332490
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4981,10 +4240,7 @@ ov29_02332490: ; 0x02332490
 	bl DoMoveRoost
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332490
-
-	arm_func_start ov29_023324AC
-ov29_023324AC: ; 0x023324AC
+_023324AC: ; 0x023324AC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -4992,10 +4248,7 @@ ov29_023324AC: ; 0x023324AC
 	bl DoMovePowerSwap
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023324AC
-
-	arm_func_start ov29_023324C8
-ov29_023324C8: ; 0x023324C8
+_023324C8: ; 0x023324C8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5003,10 +4256,7 @@ ov29_023324C8: ; 0x023324C8
 	bl DoMovePowerTrick
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023324C8
-
-	arm_func_start ov29_023324E4
-ov29_023324E4: ; 0x023324E4
+_023324E4: ; 0x023324E4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5014,10 +4264,7 @@ ov29_023324E4: ; 0x023324E4
 	bl DoMoveFeint
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023324E4
-
-	arm_func_start ov29_02332500
-ov29_02332500: ; 0x02332500
+_02332500: ; 0x02332500
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5025,10 +4272,7 @@ ov29_02332500: ; 0x02332500
 	bl DoMoveFlareBlitz
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332500
-
-	arm_func_start ov29_0233251C
-ov29_0233251C: ; 0x0233251C
+_0233251C: ; 0x0233251C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5036,10 +4280,7 @@ ov29_0233251C: ; 0x0233251C
 	bl DoMoveDefendOrder
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233251C
-
-	arm_func_start ov29_02332538
-ov29_02332538: ; 0x02332538
+_02332538: ; 0x02332538
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5047,10 +4288,7 @@ ov29_02332538: ; 0x02332538
 	bl DoMoveLunarDance
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332538
-
-	arm_func_start ov29_02332554
-ov29_02332554: ; 0x02332554
+_02332554: ; 0x02332554
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5058,10 +4296,7 @@ ov29_02332554: ; 0x02332554
 	bl DoMoveMiracleEye
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332554
-
-	arm_func_start ov29_02332570
-ov29_02332570: ; 0x02332570
+_02332570: ; 0x02332570
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5069,10 +4304,7 @@ ov29_02332570: ; 0x02332570
 	bl DoMoveWakeUpSlap
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332570
-
-	arm_func_start ov29_0233258C
-ov29_0233258C: ; 0x0233258C
+_0233258C: ; 0x0233258C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5080,10 +4312,7 @@ ov29_0233258C: ; 0x0233258C
 	bl DoMoveMetalBurst
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233258C
-
-	arm_func_start ov29_023325A8
-ov29_023325A8: ; 0x023325A8
+_023325A8: ; 0x023325A8
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5091,10 +4320,7 @@ ov29_023325A8: ; 0x023325A8
 	bl DoMoveHeadSmash
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023325A8
-
-	arm_func_start ov29_023325C4
-ov29_023325C4: ; 0x023325C4
+_023325C4: ; 0x023325C4
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5102,10 +4328,7 @@ ov29_023325C4: ; 0x023325C4
 	bl DoMoveCaptivate
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023325C4
-
-	arm_func_start ov29_023325E0
-ov29_023325E0: ; 0x023325E0
+_023325E0: ; 0x023325E0
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5113,10 +4336,7 @@ ov29_023325E0: ; 0x023325E0
 	bl DoMoveLeafStorm
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023325E0
-
-	arm_func_start ov29_023325FC
-ov29_023325FC: ; 0x023325FC
+_023325FC: ; 0x023325FC
 	ldr r0, [sp, #0x78]
 	mov r1, r4
 	str r0, [sp]
@@ -5126,10 +4346,7 @@ ov29_023325FC: ; 0x023325FC
 	bl DoMoveDracoMeteor
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_023325FC
-
-	arm_func_start ov29_02332620
-ov29_02332620: ; 0x02332620
+_02332620: ; 0x02332620
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5137,10 +4354,7 @@ ov29_02332620: ; 0x02332620
 	bl DoMoveRockPolish
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332620
-
-	arm_func_start ov29_0233263C
-ov29_0233263C: ; 0x0233263C
+_0233263C: ; 0x0233263C
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5148,10 +4362,7 @@ ov29_0233263C: ; 0x0233263C
 	bl DoMoveNastyPlot
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_0233263C
-
-	arm_func_start ov29_02332658
-ov29_02332658: ; 0x02332658
+_02332658: ; 0x02332658
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5159,10 +4370,7 @@ ov29_02332658: ; 0x02332658
 	bl DoMoveTag0x1AB
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332658
-
-	arm_func_start ov29_02332674
-ov29_02332674: ; 0x02332674
+_02332674: ; 0x02332674
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5170,10 +4378,7 @@ ov29_02332674: ; 0x02332674
 	bl ov29_0232E744
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332674
-
-	arm_func_start ov29_02332690
-ov29_02332690: ; 0x02332690
+_02332690: ; 0x02332690
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5181,10 +4386,7 @@ ov29_02332690: ; 0x02332690
 	bl DoMoveTag0x1A6
 	mov sl, r0
 	b _023326CC
-	arm_func_end ov29_02332690
-
-	arm_func_start ov29_023326AC
-ov29_023326AC: ; 0x023326AC
+_023326AC: ; 0x023326AC
 	mov r0, sb
 	mov r1, r4
 	mov r2, r8
@@ -5409,7 +4611,7 @@ _023329D8: .word 0x000001F6
 _023329DC: .word ov29_0237CA68
 _023329E0: .word 0x0000023A
 _023329E4: .word 0x00000EC2
-	arm_func_end ov29_023326AC
+	arm_func_end ExecuteMoveEffect
 
 	arm_func_start ExclusiveItemEffectIsActive__023329E8
 ExclusiveItemEffectIsActive__023329E8: ; 0x023329E8
@@ -5692,7 +4894,7 @@ PerformDamageSequence: ; 0x02332D6C
 	bl DefenderAbilityIsActive__02332A0C
 	cmp r0, #0
 	beq _02332DFC
-	ldr r1, _02332F08 ; =ov29_02353538
+	ldr r1, _02332F08 ; =DUNGEON_PTR
 	ldr r2, _02332F0C ; =0x000003E7
 	ldr r0, [r1]
 	add r0, r0, #0x700
@@ -5778,7 +4980,7 @@ _02332EFC:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02332F04: .word 0x0000013A
-_02332F08: .word ov29_02353538
+_02332F08: .word DUNGEON_PTR
 _02332F0C: .word 0x000003E7
 _02332F10: .word 0x0000270F
 _02332F14: .word 0x00000EC3
@@ -6474,7 +5676,7 @@ _02333834:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333850:
-	ldr r1, _02333FA4 ; =ov29_02353538
+	ldr r1, _02333FA4 ; =DUNGEON_PTR
 	mov r2, #0xc
 	ldr r1, [r1]
 	ldr r3, _02333FA8 ; =ov10_022C6322
@@ -6619,7 +5821,7 @@ _02333A1C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333A44:
-	ldr r0, _02333FA4 ; =ov29_02353538
+	ldr r0, _02333FA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd5b]
@@ -6628,7 +5830,7 @@ _02333A44:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333A64:
-	ldr r0, _02333FA4 ; =ov29_02353538
+	ldr r0, _02333FA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd5c]
@@ -6643,7 +5845,7 @@ _02333A84:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333A98:
-	ldr r0, _02333FA4 ; =ov29_02353538
+	ldr r0, _02333FA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldrb r0, [r0, #0xe38]
@@ -6747,7 +5949,7 @@ _02333BF4:
 	mov r5, #0
 	cmp r0, #0
 	beq _02333C78
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333C60
 _02333C0C:
 	ldr r0, [r6]
@@ -6781,7 +5983,7 @@ _02333C68:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333C78:
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333CD4
 _02333C80:
 	ldr r0, [r6]
@@ -6825,7 +6027,7 @@ _02333D00:
 	mov r5, #0
 	cmp r0, #0
 	beq _02333D78
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333D60
 _02333D18:
 	ldr r0, [r6]
@@ -6856,7 +6058,7 @@ _02333D68:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333D78:
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333DC8
 _02333D80:
 	ldr r0, [r6]
@@ -6898,7 +6100,7 @@ _02333DF8:
 	mov r5, #0
 	cmp r0, #0
 	beq _02333E8C
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333E74
 _02333E10:
 	ldr r0, [r6]
@@ -6936,7 +6138,7 @@ _02333E7C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333E8C:
-	ldr r6, _02333FA4 ; =ov29_02353538
+	ldr r6, _02333FA4 ; =DUNGEON_PTR
 	b _02333EF8
 _02333E94:
 	ldr r0, [r6]
@@ -7020,6 +6222,6 @@ _02333F90:
 _02333F98: .word 0x00000109
 _02333F9C: .word 0x00000127
 _02333FA0: .word 0x0000021E
-_02333FA4: .word ov29_02353538
+_02333FA4: .word DUNGEON_PTR
 _02333FA8: .word ov10_022C6322
 	arm_func_end StatusCheckerCheck

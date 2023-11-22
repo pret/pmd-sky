@@ -1,5 +1,5 @@
 GAME_REMASTER      ?= 0
-GAME_LANGUAGE      ?= ENGLISH
+GAME_LANGUAGE      ?= NORTH_AMERICA
 
 buildname     := pmdsky
 shortname     := sky
@@ -10,9 +10,12 @@ ifneq ($(GAME_REMASTER),0)
 buildname := $(buildname).rev$(GAME_REMASTER)
 endif
 
-ifeq ($(GAME_LANGUAGE),ENGLISH)
+ifeq ($(GAME_LANGUAGE),NORTH_AMERICA)
 buildname := $(buildname).us
 GAME_CODE := $(GAME_CODE)E
+else ifeq ($(GAME_LANGUAGE),EUROPE)
+buildname := $(buildname).eu
+GAME_CODE := $(GAME_CODE)P
 else
 $(error Unsupported game language: $(GAME_LANGUAGE))
 endif
@@ -30,13 +33,15 @@ DEFINES = $(GF_DEFINES) $(GLB_DEFINES)
 # Secure CRC
 ifeq ($(buildname),pmdsky.us)
 SECURE_CRC := 0x96A1
+else ifeq ($(buildname),pmdsky.eu)
+SECURE_CRC := 0x8EBE
 endif
 
 ifndef SECURE_CRC
 $(error Unsupported ROM: $(GAME_LANGUAGE))
 endif
 
-SUPPORTED_ROMS   := pmdsky.us
+SUPPORTED_ROMS   := pmdsky.us pmdsky.eu
 ifneq ($(filter $(buildname),$(SUPPORTED_ROMS)),$(buildname))
 $(error $(buildname) is not supported, choose from: $(SUPPORTED_ROMS))
 endif

@@ -5,6 +5,7 @@
 .public AdvanceFrame
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public EnsureCanStandCurrentTile
 .public EntityIsValid__0232017C
 .public EntityIsValid__02320764
@@ -26,7 +27,6 @@
 .public ov29_02336694
 .public ov29_0235171E
 .public ov29_023529B8
-.public ov29_02353538
 .public ov29_02353700
 .public RemoveGroundItem
 .public ShouldDisplayEntityWrapper

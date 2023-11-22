@@ -7,6 +7,8 @@
 .public ChangeLeader
 .public DecrementWindCounter
 .public DisplayActions
+.public DUNGEON_PRNG_STATE
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandRange
 .public EnemyEvolution
@@ -45,14 +47,13 @@
 .public ov29_02352070
 .public ov29_02352074
 .public ov29_023522B6
-.public ov29_02353538
-.public ov29_02353570
 .public ov29_0237C918
 .public ov29_0237C91C
 .public ov29_0237C91E
 .public ov29_0237C920
 .public ov29_0237C922
 .public ov29_0237C96C
+.public PlayBgmByIdVeneer
 .public RANDOM_MUSIC_ID_TABLE
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveEquivItemNoHole
@@ -70,7 +71,6 @@
 .public sub_0200D208
 .public sub_02017ACC
 .public sub_02017B18
-.public sub_02017B58
 .public sub_02017B64
 .public sub_02017B70
 .public sub_02017B7C

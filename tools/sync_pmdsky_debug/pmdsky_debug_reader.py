@@ -7,6 +7,11 @@ from symbol_details import SymbolDetails
 SYMBOLS_FOLDER = 'symbols'
 pmdsky_debug_path = None
 
+LANGUAGE_KEYS = {
+    'NA': 'us',
+    'EU': 'eu',
+}
+
 def get_pmdsky_debug_location() -> str:
     global pmdsky_debug_path
     if not pmdsky_debug_path:
@@ -23,53 +28,71 @@ def get_pmdsky_debug_location() -> str:
             exit(1)
     return pmdsky_debug_path
 
-# In the returned dictionary, outer key = region, inner key = symbol address, value = symbol details.
-def read_pmdsky_debug_symbols() -> Dict[str, Dict[int, SymbolDetails]]:
-    pmdsky_debug_symbols: Dict[str, Dict[int, SymbolDetails]] = {}
+"""
+Dictionary format:
+{
+    <language>: {
+        <codeRegion>: {
+            <symbolAddress>: {
+                Symbol details
+            }
+        }
+    }
+}
+"""
+def read_pmdsky_debug_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]]:
+    pmdsky_debug_symbols: Dict[str, Dict[str, Dict[int, SymbolDetails]]] = {}
+    for language in LANGUAGE_KEYS:
+        pmdsky_debug_symbols[LANGUAGE_KEYS[language]] = {}
 
     pmdsky_debug_path = get_pmdsky_debug_location()
 
-    def read_yaml_symbols(file_path: str, symbols: Dict[int, SymbolDetails] = None, address_suffix = '') -> Dict[int, SymbolDetails]:
-        if symbols is None:
-            symbols = {}
+    def read_yaml_symbols(file_path: str, symbols_key: str, address_suffix = '') -> Dict[int, SymbolDetails]:
         full_file_path = os.path.join(pmdsky_debug_path, SYMBOLS_FOLDER, file_path)
         with open(full_file_path, 'r') as symbols_file:
             symbols_yaml = yaml.safe_load(symbols_file)
 
         def read_symbols_from_array(array_key: str, is_data: bool):
             for symbol in symbols_yaml[list(symbols_yaml.keys())[0]][array_key]:
-                target_region = f'NA{address_suffix}'
-                if target_region not in symbol['address']:
-                    continue
-                addresses = symbol['address'][target_region]
-                symbol_name = symbol['name']
-                if isinstance(addresses, list):
-                    if len(addresses) > 1:
-                        for address in addresses:
-                            symbols[address] = SymbolDetails(f'{symbol_name}__{address:08X}', full_file_path, is_data)
+                for language in symbol['address'].keys():
+                    if not language.endswith(address_suffix):
+                        continue
+                    base_language = language.replace(address_suffix, '')
+                    if base_language not in LANGUAGE_KEYS:
+                        continue
+
+                    language_symbols = pmdsky_debug_symbols[LANGUAGE_KEYS[base_language]]
+                    if symbols_key not in language_symbols:
+                        language_symbols[symbols_key] = {}
+                    symbols = language_symbols[symbols_key]
+
+                    addresses = symbol['address'][language]
+                    symbol_name = symbol['name']
+                    if isinstance(addresses, list):
+                        if len(addresses) > 1:
+                            for address in addresses:
+                                symbols[address] = SymbolDetails(f'{symbol_name}__{address:08X}', full_file_path, is_data)
+                        else:
+                            symbols[addresses[0]] = SymbolDetails(symbol_name, full_file_path, is_data)
                     else:
-                        symbols[addresses[0]] = SymbolDetails(symbol_name, full_file_path, is_data)
-                else:
-                    symbols[addresses] = SymbolDetails(symbol_name, full_file_path, is_data)
+                        symbols[addresses] = SymbolDetails(symbol_name, full_file_path, is_data)
 
         read_symbols_from_array('functions', False)
         read_symbols_from_array('data', True)
 
-        return symbols
-
     itcm_file = os.path.join('arm9', 'itcm.yml')
 
-    pmdsky_debug_symbols['main'] = read_yaml_symbols('arm9.yml')
-    pmdsky_debug_symbols['main'] = read_yaml_symbols(itcm_file, pmdsky_debug_symbols['main'])
-    pmdsky_debug_symbols['ITCM'] = read_yaml_symbols(itcm_file, address_suffix='-ITCM')
-    pmdsky_debug_symbols['arm7'] = read_yaml_symbols('arm7.yml')
+    read_yaml_symbols('arm9.yml', 'main')
+    read_yaml_symbols(itcm_file, 'main')
+    read_yaml_symbols(itcm_file, 'ITCM', address_suffix='-ITCM')
+    read_yaml_symbols('arm7.yml', 'arm7')
     for i in range(0, 36):
         overlay_name = f'overlay{i:02d}'
-        pmdsky_debug_symbols[str(i)] = read_yaml_symbols(f'{overlay_name}.yml')
+        read_yaml_symbols(f'{overlay_name}.yml', str(i))
         overlay_folder = os.path.join(pmdsky_debug_path, SYMBOLS_FOLDER, overlay_name)
         if os.path.exists(overlay_folder):
             for file in os.listdir(overlay_folder):
                 if file.endswith('.yml'):
-                    read_yaml_symbols(os.path.join(overlay_name, file), pmdsky_debug_symbols[str(i)])
+                    read_yaml_symbols(os.path.join(overlay_name, file), str(i))
 
     return pmdsky_debug_symbols

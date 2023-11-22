@@ -4,8 +4,10 @@
 .public AreTileJumpsAllowed
 .public CalcDamageFixedNoCategory
 .public CanMonsterUseMove
+.public CannotStandOnTile
 .public DetermineTileWalkableNeighbors
 .public DiscoverMinimap
+.public DUNGEON_PTR
 .public EntityIsValid__02320764
 .public EntityIsValid__02321438
 .public ExclusiveItemEffectIsActiveWithLogging
@@ -31,7 +33,6 @@
 .public ov29_022F9C74
 .public ov29_022FAA04
 .public ov29_022FF958
-.public ov29_022FFC9C
 .public ov29_02304A48
 .public ov29_02305814
 .public ov29_02307BDC
@@ -39,7 +40,6 @@
 .public ov29_023247B4
 .public ov29_02336694
 .public ov29_023529B8
-.public ov29_02353538
 .public ov29_02353700
 .public ov29_0237C850
 .public RemoveGroundItem

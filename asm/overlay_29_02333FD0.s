@@ -997,13 +997,13 @@ _02334D34:
 	movne r0, #0
 	ldmneia sp!, {r4, pc}
 _02334D40:
-	ldr r0, _02334D54 ; =ov29_02353538
+	ldr r0, _02334D54 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd38]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02334D54: .word ov29_02353538
+_02334D54: .word DUNGEON_PTR
 	arm_func_end GetApparentWeather
 
 	arm_func_start ov29_02334D58
@@ -1012,7 +1012,7 @@ ov29_02334D58: ; 0x02334D58
 	bl IsSecretFloor
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _02334DA4 ; =ov29_02353538
+	ldr r0, _02334DA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x28000
 	ldrb r0, [r0, #0x6b6]
@@ -1029,12 +1029,12 @@ _02334D8C:
 	bl TryActivateWeather
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02334DA4: .word ov29_02353538
+_02334DA4: .word DUNGEON_PTR
 	arm_func_end ov29_02334D58
 
 	arm_func_start ov29_02334DA8
 ov29_02334DA8: ; 0x02334DA8
-	ldr r3, _02334E6C ; =ov29_02353538
+	ldr r3, _02334E6C ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r2, [r3]
 	add r2, r2, #0xc000
@@ -1059,7 +1059,7 @@ _02334DDC:
 	strh r0, [r2, #0x4a]
 	cmp r1, #8
 	blt _02334DDC
-	ldr r2, _02334E6C ; =ov29_02353538
+	ldr r2, _02334E6C ; =DUNGEON_PTR
 	mov r3, #9
 	ldr r1, [r2]
 	add r1, r1, #0xc000
@@ -1086,7 +1086,7 @@ _02334E34:
 	blt _02334E34
 	bx lr
 	.align 2, 0
-_02334E6C: .word ov29_02353538
+_02334E6C: .word DUNGEON_PTR
 	arm_func_end ov29_02334DA8
 
 	arm_func_start ov29_02334E70
@@ -1117,7 +1117,7 @@ _02334EC0:
 	bl AdvanceFrame
 	mov r8, r6
 _02334ED0:
-	ldr r0, _02335040 ; =ov29_02353538
+	ldr r0, _02335040 ; =DUNGEON_PTR
 	ldrb r7, [r5, r8, lsl #2]
 	ldr sl, [r0]
 	add r0, sl, r8, lsl #2
@@ -1140,7 +1140,7 @@ _02334ED0:
 	subhi r0, r0, #0xa
 	strhib r0, [r1, #0x1e0]
 _02334F28:
-	ldr r0, _02335040 ; =ov29_02353538
+	ldr r0, _02335040 ; =DUNGEON_PTR
 	add r1, r5, r8, lsl #2
 	ldr sl, [r0]
 	ldrb r7, [r1, #1]
@@ -1164,7 +1164,7 @@ _02334F28:
 	subhi r0, r0, #0xa
 	strhib r0, [r1, #0x1e1]
 _02334F84:
-	ldr r0, _02335040 ; =ov29_02353538
+	ldr r0, _02335040 ; =DUNGEON_PTR
 	add r1, r5, r8, lsl #2
 	ldr sl, [r0]
 	ldrb r7, [r1, #2]
@@ -1203,7 +1203,7 @@ _0233500C:
 	cmp r4, #0x40
 	blt _02334EC0
 _02335014:
-	ldr r0, _02335040 ; =ov29_02353538
+	ldr r0, _02335040 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd38]
@@ -1215,13 +1215,13 @@ _02335014:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233503C: .word ov29_02353562
-_02335040: .word ov29_02353538
+_02335040: .word DUNGEON_PTR
 	arm_func_end ov29_02334E70
 
 	arm_func_start ov29_02335044
 ov29_02335044: ; 0x02335044
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r1, _023350D4 ; =ov29_02353538
+	ldr r1, _023350D4 ; =DUNGEON_PTR
 	mov r5, r0
 	ldr r0, [r1]
 	add r0, r0, #0x1a000
@@ -1242,7 +1242,7 @@ _0233506C:
 	mov r1, r1, lsr #0x10
 	bl LogMessageByIdWithPopupCheckUser
 _02335094:
-	ldr r4, _023350D4 ; =ov29_02353538
+	ldr r4, _023350D4 ; =DUNGEON_PTR
 	mov r5, #0
 _0233509C:
 	ldr r0, [r4]
@@ -1261,5 +1261,5 @@ _023350C4:
 	blt _0233509C
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023350D4: .word ov29_02353538
+_023350D4: .word DUNGEON_PTR
 	arm_func_end ov29_02335044

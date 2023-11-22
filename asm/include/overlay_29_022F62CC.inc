@@ -4,18 +4,18 @@
 .public AnimationDelayOrSomething
 .public BAG_ITEMS_PTR_MIRROR
 .public CalcSpeedStageWrapper
-.public CannotStandOnTile
 .public DeleteWanTableEntryVeneer
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public EntityIsValid__022F62A8
 .public EntityIsValid__022F7364
 .public GetActiveTeamMember
 .public GetDirectionTowardsPosition
 .public GetExplorerMazeMonster
-.public GetMoneyCarried
 .public GetItemInfo
 .public GetKecleonIdToSpawnByFloor
 .public GetLeader
+.public GetMoneyCarried
 .public GetMonsterIdFromSpawnEntry
 .public GetSpriteFileSize
 .public GetTile
@@ -26,6 +26,7 @@
 .public IsFloorOver
 .public IsShaymin
 .public IsShoppableItem
+.public LOADED_ATTACK_SPRITE_FILE_INDEX
 .public LoadMissionMonsterSprites
 .public LoadMonsterSprite
 .public LoadWanTableEntryFromPackUseProvidedMemory
@@ -37,6 +38,7 @@
 .public ov10_022C4800
 .public ov29_022EACCC
 .public ov29_022F6210
+.public ov29_022FF764
 .public ov29_023009CC
 .public ov29_02304A00
 .public ov29_02304A48
@@ -44,9 +46,7 @@
 .public ov29_0231B4AC
 .public ov29_0234B09C
 .public ov29_02352760
-.public ov29_02353538
 .public ov29_023535A8
-.public ov29_023535AC
 .public ov29_0237C9AC
 .public ov29_0237C9B0
 .public RemoveGroundItem

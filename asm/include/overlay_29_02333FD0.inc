@@ -3,6 +3,7 @@
 .public abs
 .public AdvanceFrame
 .public AnimationDelayOrSomething
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__023350D8
 .public GendersEqualNotGenderless
@@ -18,7 +19,6 @@
 .public ov29_022DE608
 .public ov29_022E5FE8
 .public ov29_02338A4C
-.public ov29_02353538
 .public ov29_02353562
 .public TryActivateArtificialWeatherAbilities
 .public TryActivateWeather

@@ -15,6 +15,7 @@
 .public DealDamageWithTypeAndPowerBoost
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcomeUserTargetInteraction
 .public EndFrozenStatus
@@ -65,6 +66,7 @@
 .public ov29_022E1AD4
 .public ov29_022E1EF8
 .public ov29_022E3430
+.public ov29_022E34A8_EU
 .public ov29_022E6770
 .public ov29_022E6784
 .public ov29_022E8104
@@ -90,14 +92,12 @@
 .public ov29_0231F6E4
 .public ov29_02332F18
 .public ov29_02336694
-.public TryActivateGravity
 .public ov29_0234B084
 .public ov29_0234B0B4
 .public ov29_0234BA54
 .public ov29_0235171E
 .public ov29_02352B38
 .public ov29_02352B3C
-.public ov29_02353538
 .public PrepareTrapperTrap
 .public RevealEnemies
 .public RevealItems
@@ -113,6 +113,7 @@
 .public THUNDER_FANG_CRINGE_CHANCE
 .public THUNDER_FANG_PARALYZE_CHANCE
 .public TransferNegativeStatusCondition
+.public TryActivateGravity
 .public TryActivateIdentifyCondition
 .public TryActivateWeather
 .public TryDecreaseBelly

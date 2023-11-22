@@ -27,7 +27,7 @@ ExplorersOfSkyMain: ; 0x022DC240
 _022DC28C:
 	bl sub_0201DC90
 	bl ov34_022DC748
-	ldr r1, _022DC5A0 ; =ov34_022DD080
+	ldr r1, _022DC5A0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 	mov r2, #1
 	ldr r0, _022DC5A4 ; =ov34_022DC5B0
 	strb r2, [r1]
@@ -133,12 +133,21 @@ _022DC3F8:
 	bl ov34_022DC86C
 	bl ov34_022DCDCC
 _022DC404:
+#ifdef EUROPE
+	mov fp, #2
+	mov r8, #1
+	ldr r5, _022DC59C ; =ov34_022DD0A0
+	ldr r4, _022DC5A0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
+	mov r6, fp
+	mov r7, r8
+#else
 	mov r8, #1
 	mov fp, #2
 	ldr r5, _022DC59C ; =ov34_022DD0A0
-	ldr r4, _022DC5A0 ; =ov34_022DD080
+	ldr r4, _022DC5A0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 	mov r7, r8
 	mov r6, r8
+#endif
 	mov sb, fp
 	mov sl, #0
 _022DC424:
@@ -183,6 +192,15 @@ _022DC4A0:
 	mov r1, #0
 	str r8, [sp]
 	ldr r0, _022DC5A8 ; =ov34_022DCFF4
+#ifdef EUROPE
+	mov r2, r1
+	mov r3, r1
+	str r8, [sp, #4]
+	bl sub_02052060
+	mov r0, #0x1e
+	bl ov34_022DC958
+	str r7, [r5, #0xc]
+#else
 	str r8, [sp, #4]
 	mov r2, r1
 	mov r3, r1
@@ -200,6 +218,7 @@ _022DC4A0:
 	mov r0, #0x1e
 	bl ov34_022DC86C
 	str r6, [r5, #0xc]
+#endif
 	b _022DC54C
 _022DC508:
 	cmp r0, #3
@@ -211,6 +230,14 @@ _022DC508:
 	bgt _022DC54C
 	mov r0, #0x1e
 	bl ov34_022DC970
+#ifdef EUROPE
+	str r6, [r5, #0xc]
+	b _022DC54C
+_022DC53C:
+	mov r0, #0
+	bl ov34_022DC8B8
+	str fp, [r5, #0xc]
+#else
 	mov r0, #0x1e
 	bl ov34_022DC908
 	str fp, [r5, #0xc]
@@ -220,6 +247,7 @@ _022DC53C:
 	bl ov34_022DC8B8
 	mov r0, #2
 	str r0, [r5, #0xc]
+#endif
 _022DC54C:
 	bl sub_02006E14
 	bl sub_020039E4
@@ -245,10 +273,12 @@ _022DC584:
 	.align 2, 0
 _022DC598: .word ov34_022DC738
 _022DC59C: .word ov34_022DD0A0
-_022DC5A0: .word ov34_022DD080
+_022DC5A0: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 _022DC5A4: .word ov34_022DC5B0
 _022DC5A8: .word ov34_022DCFF4
+#ifndef EUROPE
 _022DC5AC: .word ov34_022DD004
+#endif
 	arm_func_end ExplorersOfSkyMain
 
 	arm_func_start ov34_022DC5B0
@@ -265,7 +295,7 @@ _022DC5D0:
 	bl ov34_022DCA70
 	bl sub_0201DD48
 	bl sub_0201F464
-	ldr r0, _022DC710 ; =ov34_022DD080
+	ldr r0, _022DC710 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _022DC5F0
@@ -275,7 +305,7 @@ _022DC5F0:
 	bl sub_0201BE28
 	bl sub_02017A80
 	bl sub_02003A40
-	ldr r1, _022DC710 ; =ov34_022DD080
+	ldr r1, _022DC710 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 	mov r4, r0
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -298,7 +328,11 @@ _022DC64C:
 	cmp r0, #3
 	mov r0, #0
 	bne _022DC678
+#ifdef EUROPE
+	mov r1, #0x100
+#else
 	mov r1, r0
+#endif
 	bl sub_02008F3C
 	mov r0, #1
 	mov r1, #0
@@ -307,7 +341,11 @@ _022DC64C:
 	bl sub_02008ED0
 	b _022DC6C4
 _022DC678:
+#ifdef EUROPE
+	mov r1, r0
+#else
 	sub r1, r0, #0x100
+#endif
 	bl sub_02008F3C
 	mov r0, #1
 	mvn r1, #0xff
@@ -342,13 +380,13 @@ _022DC6C4:
 	bl sub_02051C24
 _022DC6F8:
 	bl sub_0201BF4C
-	ldr r1, _022DC710 ; =ov34_022DD080
+	ldr r1, _022DC710 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 	mov r2, #0
 	mov r0, r4
 	strb r2, [r1]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022DC710: .word ov34_022DD080
+_022DC710: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD080
 _022DC714: .word ov34_022DD0A0
 	arm_func_end ov34_022DC5B0
 
@@ -522,6 +560,7 @@ _022DC900: .word ov34_022DD0B0
 _022DC904: .word ov34_022DD104
 	arm_func_end ov34_022DC8B8
 
+#ifndef EUROPE
 	arm_func_start ov34_022DC908
 ov34_022DC908: ; 0x022DC908
 	stmdb sp!, {r4, lr}
@@ -547,6 +586,7 @@ _022DC944:
 _022DC950: .word ov34_022DD0B0
 _022DC954: .word ov34_022DD104
 	arm_func_end ov34_022DC908
+#endif
 
 	arm_func_start ov34_022DC958
 ov34_022DC958: ; 0x022DC958
@@ -761,13 +801,13 @@ ov34_022DCBCC: ; 0x022DCBCC
 	ldr r0, _022DCBEC ; =OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
 	bl sub_020348E4
 	cmp r0, #0
-	ldrne r0, _022DCBF0 ; =ov34_022DD084
+	ldrne r0, _022DCBF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	movne r1, #0
 	strne r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022DCBEC: .word OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
-_022DCBF0: .word ov34_022DD084
+_022DCBF0: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	arm_func_end ov34_022DCBCC
 
 	arm_func_start ov34_022DCBF4
@@ -777,7 +817,7 @@ ov34_022DCBF4: ; 0x022DCBF4
 	mov r0, #8
 	mov r1, r0
 	bl MemAlloc
-	ldr r1, _022DCC84 ; =ov34_022DD084
+	ldr r1, _022DCC84 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	mov ip, #1
 	str r0, [r1]
 	ldr r3, _022DCC88 ; =START_MENU_CONFIRM
@@ -786,12 +826,12 @@ ov34_022DCBF4: ; 0x022DCBF4
 	mov r1, #0x31
 	str ip, [sp]
 	bl sub_0202A5CC
-	ldr r1, _022DCC84 ; =ov34_022DD084
+	ldr r1, _022DCC84 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r1, [r1]
 	strb r0, [r1]
 	mov r0, #0
-	bl CreateDBox
-	ldr r3, _022DCC84 ; =ov34_022DD084
+	bl CreateDialogueBox
+	ldr r3, _022DCC84 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r1, _022DCC8C ; =0x00000408
 	ldr ip, [r3]
 	ldr r2, _022DCC90 ; =0x00000255
@@ -799,8 +839,8 @@ ov34_022DCBF4: ; 0x022DCBF4
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDBox
-	ldr r1, _022DCC84 ; =ov34_022DD084
+	bl ShowMessageInDialogueBox
+	ldr r1, _022DCC84 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	mov r3, #0
 	ldr r2, [r1]
 	mov r0, #1
@@ -809,7 +849,7 @@ ov34_022DCBF4: ; 0x022DCBF4
 	add sp, sp, #0x98
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCC84: .word ov34_022DD084
+_022DCC84: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 _022DCC88: .word START_MENU_CONFIRM
 _022DCC8C: .word 0x00000408
 _022DCC90: .word 0x00000255
@@ -818,31 +858,31 @@ _022DCC90: .word 0x00000255
 	arm_func_start ov34_022DCC94
 ov34_022DCC94: ; 0x022DCC94
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCCDC ; =ov34_022DD084
+	ldr r0, _022DCCDC ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
 	bl sub_0202AABC
-	ldr r0, _022DCCDC ; =ov34_022DD084
+	ldr r0, _022DCCDC ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
-	ldr r0, _022DCCDC ; =ov34_022DD084
+	bl FreeDialogueBox
+	ldr r0, _022DCCDC ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022DCCDC ; =ov34_022DD084
+	ldr r0, _022DCCDC ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCCDC: .word ov34_022DD084
+_022DCCDC: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	arm_func_end ov34_022DCC94
 
 	arm_func_start ov34_022DCCE0
 ov34_022DCCE0: ; 0x022DCCE0
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCDC8 ; =ov34_022DD084
+	ldr r0, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r2, [r0]
 	ldr r1, [r2, #4]
 	cmp r1, #0
@@ -857,16 +897,16 @@ _022DCD0C:
 	bl sub_0202AB60
 	cmp r0, #0
 	bne _022DCDC0
-	ldr r0, _022DCDC8 ; =ov34_022DD084
+	ldr r0, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202ABB0
-	ldr r1, _022DCDC8 ; =ov34_022DD084
+	ldr r1, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	str r0, [r1, #4]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #1]
 	bl sub_0202F334
-	ldr r0, _022DCDC8 ; =ov34_022DD084
+	ldr r0, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #4]
@@ -876,12 +916,12 @@ _022DCD54:
 	bl sub_0202AB40
 	cmp r0, #0
 	bne _022DCDC0
-	ldr r0, _022DCDC8 ; =ov34_022DD084
+	ldr r0, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
-	ldreq r0, _022DCDC8 ; =ov34_022DD084
+	ldreq r0, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	moveq r1, #2
 	ldreq r0, [r0]
 	streq r1, [r0, #4]
@@ -907,7 +947,7 @@ _022DCDC0:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCDC8: .word ov34_022DD084
+_022DCDC8: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	arm_func_end ov34_022DCCE0
 
 	arm_func_start ov34_022DCDCC
@@ -916,13 +956,13 @@ ov34_022DCDCC: ; 0x022DCDCC
 	ldr r0, _022DCDEC ; =OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
 	bl sub_020348E4
 	cmp r0, #0
-	ldrne r0, _022DCDF0 ; =ov34_022DD08C
+	ldrne r0, _022DCDF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	movne r1, #0
 	strne r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022DCDEC: .word OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
-_022DCDF0: .word ov34_022DD08C
+_022DCDF0: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	arm_func_end ov34_022DCDCC
 
 	arm_func_start ov34_022DCDF4
@@ -932,19 +972,19 @@ ov34_022DCDF4: ; 0x022DCDF4
 	mov r0, #8
 	mov r1, r0
 	bl MemAlloc
-	ldr r1, _022DCE7C ; =ov34_022DD08C
+	ldr r1, _022DCE7C ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r3, _022DCE80 ; =DUNGEON_DEBUG_MENU
 	str r0, [r1]
 	add r2, sp, #0
 	mov r0, #0
 	mov r1, #0x11
 	bl sub_0202A5CC
-	ldr r1, _022DCE7C ; =ov34_022DD08C
+	ldr r1, _022DCE7C ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r1, [r1]
 	strb r0, [r1]
 	mov r0, #0
-	bl CreateDBox
-	ldr r3, _022DCE7C ; =ov34_022DD08C
+	bl CreateDialogueBox
+	ldr r3, _022DCE7C ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r1, _022DCE84 ; =0x00000408
 	ldr ip, [r3]
 	ldr r2, _022DCE88 ; =0x00003D1C
@@ -952,8 +992,8 @@ ov34_022DCDF4: ; 0x022DCDF4
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDBox
-	ldr r1, _022DCE7C ; =ov34_022DD08C
+	bl ShowMessageInDialogueBox
+	ldr r1, _022DCE7C ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	mov r3, #0
 	ldr r2, [r1]
 	mov r0, #1
@@ -962,40 +1002,44 @@ ov34_022DCDF4: ; 0x022DCDF4
 	add sp, sp, #0x98
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCE7C: .word ov34_022DD08C
+_022DCE7C: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 _022DCE80: .word DUNGEON_DEBUG_MENU
 _022DCE84: .word 0x00000408
+#ifdef EUROPE
+_022DCE88: .word 0x00003D1E
+#else
 _022DCE88: .word 0x00003D1C
+#endif
 	arm_func_end ov34_022DCDF4
 
 	arm_func_start ov34_022DCE8C
 ov34_022DCE8C: ; 0x022DCE8C
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCED4 ; =ov34_022DD08C
+	ldr r0, _022DCED4 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
 	bl sub_0202AABC
-	ldr r0, _022DCED4 ; =ov34_022DD08C
+	ldr r0, _022DCED4 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
-	ldr r0, _022DCED4 ; =ov34_022DD08C
+	bl FreeDialogueBox
+	ldr r0, _022DCED4 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022DCED4 ; =ov34_022DD08C
+	ldr r0, _022DCED4 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCED4: .word ov34_022DD08C
+_022DCED4: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	arm_func_end ov34_022DCE8C
 
 	arm_func_start ov34_022DCED8
 ov34_022DCED8: ; 0x022DCED8
 	stmdb sp!, {r3, lr}
-	ldr r0, _022DCFF0 ; =ov34_022DD08C
+	ldr r0, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r3, [r0]
 	ldr r1, [r3, #4]
 	cmp r1, #0
@@ -1010,16 +1054,16 @@ _022DCF04:
 	bl sub_0202AB60
 	cmp r0, #0
 	bne _022DCFE8
-	ldr r0, _022DCFF0 ; =ov34_022DD08C
+	ldr r0, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl sub_0202ABB0
-	ldr r1, _022DCFF0 ; =ov34_022DD08C
+	ldr r1, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	str r0, [r1, #4]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #1]
 	bl sub_0202F334
-	ldr r0, _022DCFF0 ; =ov34_022DD08C
+	ldr r0, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #4]
@@ -1029,12 +1073,12 @@ _022DCF4C:
 	bl sub_0202AB40
 	cmp r0, #0
 	bne _022DCFE8
-	ldr r0, _022DCFF0 ; =ov34_022DD08C
+	ldr r0, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
-	ldreq r0, _022DCFF0 ; =ov34_022DD08C
+	ldreq r0, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	moveq r1, #2
 	ldreq r0, [r0]
 	streq r1, [r0, #4]
@@ -1076,16 +1120,18 @@ _022DCFE8:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DCFF0: .word ov34_022DD08C
+_022DCFF0: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	arm_func_end ov34_022DCED8
 	; 0x022DCFF4
 
 	.global ov34_022DCFF4
 ov34_022DCFF4:
 	.byte 0x42, 0x41, 0x43, 0x4B, 0x2F, 0x6E, 0x5F, 0x6C, 0x6F, 0x67, 0x6F, 0x2E, 0x62, 0x67, 0x70, 0x00
+#ifndef EUROPE
 	.global ov34_022DD004
 ov34_022DD004:
 	.byte 0x42, 0x41, 0x43, 0x4B, 0x2F, 0x77, 0x5F, 0x65, 0x73, 0x72, 0x62, 0x2E, 0x62, 0x67, 0x70, 0x00
+#endif
 	.global OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
 OVERLAY34_UNKNOWN_STRUCT__NA_22DD014:
 	.byte 0x0F, 0x00, 0x00, 0x00
@@ -1104,19 +1150,24 @@ OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C:
 	.word ov34_022DCED8
 	.global DUNGEON_DEBUG_MENU
 DUNGEON_DEBUG_MENU:
-	.byte 0x1D, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.byte 0x1E, 0x3D, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x1F, 0x3D, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
-	.byte 0x20, 0x3D, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+#ifdef EUROPE
+#define DUNGEON_DEBUG_MENU_OFFSET 2
+#else
+#define DUNGEON_DEBUG_MENU_OFFSET 0
+#endif
+	.byte 0x1D + DUNGEON_DEBUG_MENU_OFFSET, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.byte 0x1E + DUNGEON_DEBUG_MENU_OFFSET, 0x3D, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x1F + DUNGEON_DEBUG_MENU_OFFSET, 0x3D, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
+	.byte 0x20 + DUNGEON_DEBUG_MENU_OFFSET, 0x3D, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 
 	.data
-	.global ov34_022DD080
-ov34_022DD080:
+	.global OVERLAY34_UNKNOWN_POINTER__NA_22DD080
+OVERLAY34_UNKNOWN_POINTER__NA_22DD080:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov34_022DD084
-ov34_022DD084:
+	.global OVERLAY34_UNKNOWN_POINTER__NA_22DD084
+OVERLAY34_UNKNOWN_POINTER__NA_22DD084:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov34_022DD08C
-ov34_022DD08C:
+	.global OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
+OVERLAY34_UNKNOWN_POINTER__NA_22DD08C:
 	.byte 0x00, 0x00, 0x00, 0x00
 
 	.bss

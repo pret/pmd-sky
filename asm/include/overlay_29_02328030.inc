@@ -16,6 +16,7 @@
 .public DealDamage
 .public DIVE_DAMAGE_MULTIPLIER
 .public DoMoveTakeaway
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcomeUserAction
 .public DungeonRandOutcomeUserTargetInteraction
@@ -70,7 +71,6 @@
 .public ov29_0234C668
 .public ov29_0234C738
 .public ov29_02352B18
-.public ov29_02353538
 .public ov29_0237CA6B
 .public ov29_0237CA78
 .public ov29_0237CA7C

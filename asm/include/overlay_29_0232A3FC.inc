@@ -20,6 +20,7 @@
 .public DIRECTIONS_XY
 .public DIZZY_PUNCH_CONFUSE_CHANCE
 .public DRAGON_RAGE_FIXED_DAMAGE
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public DungeonRandOutcomeUserAction
@@ -78,7 +79,6 @@
 .public ov29_0234B084
 .public ov29_0235171E
 .public ov29_02352B1C
-.public ov29_02353538
 .public ov29_0237CA84
 .public ov29_0237CA88
 .public POISON_TAIL_POISON_CHANCE

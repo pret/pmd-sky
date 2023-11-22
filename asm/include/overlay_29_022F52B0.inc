@@ -4,10 +4,12 @@
 .public ApplyItemEffect
 .public AreMovesEnabled
 .public CanMonsterUseItem
+.public CheckTeamMemberIdxVeneer
 .public DecrementStackItem
 .public DIRECTIONS_XY
 .public DisplayMessage
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EnemyEvolution
 .public EntityIsValid__022F528C
@@ -48,7 +50,6 @@
 .public ov29_022F3B8C
 .public ov29_022F6748
 .public ov29_022F87C0
-.public ov29_022F9C40
 .public ov29_022FA574
 .public ov29_0230040C
 .public ov29_02300818
@@ -82,7 +83,6 @@
 .public ov29_0235171E
 .public ov29_02352750
 .public ov29_02352758
-.public ov29_02353538
 .public ov29_0237CA80
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveEquivItemNoHole

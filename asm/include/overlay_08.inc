@@ -1,9 +1,13 @@
 #pragma once
+.public _020A2C24
+.public _020A2C34
 .public _020A2C44
+.public _020A2C54
 .public _020A2C64
 .public DebugPrint0
 .public DS_DOWNLOAD_TEAMS
 .public FileInit
+.public GetLanguage
 .public GetPressedButtons
 .public InitPreprocessorArgs
 .public MemAlloc

@@ -3,9 +3,11 @@
 .public abs
 .public CanSeeInvisibleMonsters
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public EntityIsValid__022E1A1C
 .public EntityIsValid__022E32E8
+.public GetForcedLossReason
 .public GetMonsterApparentId
 .public GetMonsterName
 .public GetSleepAnimationId
@@ -34,7 +36,6 @@
 .public ov29_023372A4
 .public ov29_02344BA8
 .public ov29_0234B034
-.public ov29_02353538
 .public ov29_0237C754
 .public ov29_0237C79C
 .public ov29_0237C84C

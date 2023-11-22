@@ -10,20 +10,20 @@ ov27_0238A140: ; 0x0238A140
 	ldr r0, _0238A37C ; =ov11_02324DB8
 	ldr r1, [r0]
 	cmp r1, #0
-	ldrne r0, _0238A380 ; =ov27_0238CE80
+	ldrne r0, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	strne r1, [r0]
 	bne _0238A370
 	ldr r0, _0238A384 ; =0x000008D4
 	mov r1, #8
 	bl MemAlloc
-	ldr r3, _0238A380 ; =ov27_0238CE80
+	ldr r3, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r2, _0238A37C ; =ov11_02324DB8
 	add r1, r0, #0x3c
 	str r0, [r3]
 	str r0, [r2]
 	add r0, r1, #0x800
 	bl sub_02034A38
-	ldr r1, _0238A380 ; =ov27_0238CE80
+	ldr r1, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r3, #0
 	ldr r4, [r1]
 	sub r2, r3, #2
@@ -38,18 +38,18 @@ ov27_0238A140: ; 0x0238A140
 	strb r2, [r0, #9]
 	bl ov27_0238A8EC
 	bl GetMoneyCarried
-	ldr r1, _0238A380 ; =ov27_0238CE80
+	ldr r1, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r1, [r1]
 	str r0, [r1, #0xc]
 	bl GetMoneyStored
-	ldr r1, _0238A380 ; =ov27_0238CE80
+	ldr r1, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r2, [r1]
 	str r0, [r2, #0x10]
 	ldr r0, [r1]
 	ldr r0, [r0, #0xc]
 	bl AddMoneyStored
 	bl GetMoneyStored
-	ldr r1, _0238A380 ; =ov27_0238CE80
+	ldr r1, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r2, [r1]
 	str r0, [r2, #0x14]
 	ldr r3, [r1]
@@ -62,15 +62,15 @@ ov27_0238A140: ; 0x0238A140
 	rsb r0, r0, #0
 	bl AddMoneyCarried
 	bl GetNbItemsInBag
-	ldr r1, _0238A380 ; =ov27_0238CE80
+	ldr r1, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r1, [r1]
 	str r0, [r1, #0x1c]
 	bl sub_0200FD48
-	ldr r1, _0238A380 ; =ov27_0238CE80
+	ldr r1, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r1, [r1]
 	str r0, [r1, #0x20]
 	bl CountNbOfItemsInStorage
-	ldr r7, _0238A380 ; =ov27_0238CE80
+	ldr r7, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r6, #0
 	ldr r1, [r7]
 	str r0, [r1, #0x24]
@@ -105,7 +105,7 @@ _0238A2B8:
 	cmp r6, #0x3e8
 	blt _0238A274
 _0238A2C0:
-	ldr r0, _0238A380 ; =ov27_0238CE80
+	ldr r0, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r3, [r0]
 	ldr r4, [r3, #0x1c]
 	ldr r0, [r3, #0x28]
@@ -148,7 +148,7 @@ _0238A348:
 _0238A350:
 	bl RemoveEmptyItemsInBag
 _0238A354:
-	ldr r0, _0238A380 ; =ov27_0238CE80
+	ldr r0, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r1, #0
 	ldr r0, [r0]
 	strb r1, [r0, #0x2c]
@@ -162,27 +162,27 @@ _0238A370:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _0238A37C: .word ov11_02324DB8
-_0238A380: .word ov27_0238CE80
+_0238A380: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 _0238A384: .word 0x000008D4
 	arm_func_end ov27_0238A140
 
 	arm_func_start ov27_0238A388
 ov27_0238A388: ; 0x0238A388
-	ldr r0, _0238A3A0 ; =ov27_0238CE80
+	ldr r0, _0238A3A0 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r1, [r0]
 	cmp r1, #0
 	movne r1, #0
 	strne r1, [r0]
 	bx lr
 	.align 2, 0
-_0238A3A0: .word ov27_0238CE80
+_0238A3A0: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	arm_func_end ov27_0238A388
 
 	arm_func_start ov27_0238A3A4
 ov27_0238A3A4: ; 0x0238A3A4
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x18c
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr ip, [r0]
 	ldr r1, [ip]
 	cmp r1, #7
@@ -231,7 +231,7 @@ _0238A448:
 	mov r1, #0x400
 	strh r3, [ip, #0x34]
 	mov r2, #0
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	str r2, [sp]
 	ldr r0, [r0]
 	add r2, r1, #0xb8
@@ -241,7 +241,7 @@ _0238A448:
 ov27_0238A468: ; 0x0238A468
 	add r0, r0, #0x38
 	bl PreprocessStringFromMessageId
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r3, #4
 	ldr r2, [r0]
 	mov r1, #1
@@ -263,12 +263,12 @@ _0238A490:
 	add r0, r0, #0x38
 	add r2, r1, #0xb9
 	bl PreprocessStringFromMessageId
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r1, #4
 	ldr r0, [r0]
 	str r1, [r0]
 _0238A4D4:
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0, #4]
@@ -287,7 +287,7 @@ _0238A4E8:
 	add r2, r1, #0xba
 	add r3, r1, #8
 	bl PreprocessStringFromMessageId
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r3, #4
 	ldr r2, [r0]
 	mov r1, #6
@@ -310,7 +310,7 @@ _0238A53C:
 	add r0, r0, #0x38
 	add r2, r1, #0xbc
 	bl PreprocessStringFromMessageId
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r3, #4
 	ldr r2, [r0]
 	mov r1, #3
@@ -333,7 +333,7 @@ _0238A594:
 	add r0, r0, #0x38
 	add r2, r1, #0xbb
 	bl PreprocessStringFromMessageId
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r2, #4
 	ldr r1, [r0]
 	str r2, [r1]
@@ -351,7 +351,7 @@ _0238A5E8:
 	add r0, r0, #0x38
 	add r3, r1, #8
 	bl PreprocessStringFromMessageId
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r3, #4
 	ldr r2, [r0]
 	mov r1, #5
@@ -368,25 +368,25 @@ _0238A63C:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A660
-	bl FreeDBox
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	bl FreeDialogueBox
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #8]
 _0238A660:
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #9]
 	cmp r0, r1
 	beq _0238A68C
 	bl FreePortraitBox
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #9]
 _0238A68C:
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r1, #3
 	ldr r0, [r0]
 	str r1, [r0]
@@ -407,7 +407,7 @@ _0238A6B8:
 	stmia r6, {r0, r1}
 	mov r0, ip
 	bl MemFree
-	ldr r2, _0238A8DC ; =ov27_0238CE80
+	ldr r2, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r1, #0
 	ldr r0, _0238A8E8 ; =ov11_02324DB8
 	str r1, [r2]
@@ -438,7 +438,7 @@ _0238A728:
 	cmp r0, #0
 	beq _0238A8D0
 _0238A740:
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r1, #0
 	ldr r3, [r0]
 	ldr r2, [r3, #0x30]
@@ -463,28 +463,28 @@ _0238A78C:
 	add r0, sp, #0x54
 	mov r4, #0
 	bl InitPreprocessorArgs
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r0, [r0]
 	add r0, r0, #0x38
 	bl sub_0202A66C
 	cmp r0, #0
 	bne _0238A7D4
 	bl ov27_0238A960
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	add r3, sp, #0x54
 	ldr r2, [r0]
 	ldrsb r0, [r2, #8]
 	ldrh r1, [r2, #0x34]
 	add r2, r2, #0x38
-	bl ShowStringInDBox
+	bl ShowStringInDialogueBox
 	mov r4, #1
 _0238A7D4:
 	cmp r4, #0
-	ldrne r0, _0238A8DC ; =ov27_0238CE80
+	ldrne r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	movne r1, #5
 	ldrne r0, [r0]
 	strne r1, [r0]
-	ldreq r0, _0238A8DC ; =ov27_0238CE80
+	ldreq r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	moveq r1, #6
 	ldreq r0, [r0]
 	streq r1, [r0]
@@ -492,7 +492,7 @@ _0238A7D4:
 _0238A7FC:
 	bl ov27_0238A928
 	cmp r0, #0
-	ldreq r0, _0238A8DC ; =ov27_0238CE80
+	ldreq r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	moveq r1, #6
 	ldreq r0, [r0]
 	streq r1, [r0]
@@ -508,7 +508,7 @@ _0238A830:
 	add r0, sp, #4
 	mov r4, #0
 	bl InitPreprocessorArgs
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r0, [r0]
 	add r0, r0, #0x38
 	add r0, r0, #0x400
@@ -516,24 +516,24 @@ _0238A830:
 	cmp r0, #0
 	bne _0238A880
 	bl ov27_0238A960
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	add r3, sp, #4
 	ldr r1, [r0]
 	add r2, r1, #0x38
 	ldrsb r0, [r1, #8]
 	ldrh r1, [r1, #0x36]
 	add r2, r2, #0x400
-	bl ShowStringInDBox
+	bl ShowStringInDialogueBox
 	mov r4, #1
 _0238A880:
 	cmp r4, #0
-	ldrne r0, _0238A8DC ; =ov27_0238CE80
+	ldrne r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	movne r1, #7
 	ldrne r0, [r0]
 	strne r1, [r0]
 	bne _0238A8D0
 	bl ov27_0238A8EC
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0]
@@ -543,7 +543,7 @@ _0238A8B0:
 	cmp r0, #0
 	beq _0238A8D0
 	bl ov27_0238A8EC
-	ldr r0, _0238A8DC ; =ov27_0238CE80
+	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0]
@@ -553,14 +553,14 @@ _0238A8D4:
 	add sp, sp, #0x18c
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_0238A8DC: .word ov27_0238CE80
+_0238A8DC: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 _0238A8E0: .word 0x00000408
 _0238A8E4: .word 0x00000618
 _0238A8E8: .word ov11_02324DB8
 
 	arm_func_start ov27_0238A8EC
 ov27_0238A8EC: ; 0x0238A8EC
-	ldr r0, _0238A924 ; =ov27_0238CE80
+	ldr r0, _0238A924 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r3, #8
 	ldr r1, [r0]
 	mov r2, #0
@@ -575,19 +575,19 @@ ov27_0238A8EC: ; 0x0238A8EC
 	str r2, [r0, #0x30]
 	bx lr
 	.align 2, 0
-_0238A924: .word ov27_0238CE80
+_0238A924: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	arm_func_end ov27_0238A8EC
 
 	arm_func_start ov27_0238A928
 ov27_0238A928: ; 0x0238A928
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238A95C ; =ov27_0238CE80
+	ldr r0, _0238A95C ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _0238A954
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, pc}
@@ -595,33 +595,33 @@ _0238A954:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238A95C: .word ov27_0238CE80
+_0238A95C: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	arm_func_end ov27_0238A928
 
 	arm_func_start ov27_0238A960
 ov27_0238A960: ; 0x0238A960
 	stmdb sp!, {r3, lr}
-	ldr r1, _0238A994 ; =ov27_0238CE80
+	ldr r1, _0238A994 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mvn r0, #1
 	ldr r1, [r1]
 	ldrsb r1, [r1, #8]
 	cmp r1, r0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl CreateDBox
-	ldr r1, _0238A994 ; =ov27_0238CE80
+	bl CreateDialogueBox
+	ldr r1, _0238A994 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	ldr r1, [r1]
 	strb r0, [r1, #8]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238A994: .word ov27_0238CE80
+_0238A994: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	arm_func_end ov27_0238A960
 
 	arm_func_start ov27_0238A998
 ov27_0238A998: ; 0x0238A998
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x30c
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r2, [r1]
 	str r0, [r2]
 	ldr r2, [r1]
@@ -680,8 +680,8 @@ _0238AA78:
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r2, #0x80]
-	bl CreateDBox
-	ldr r2, _0238B920 ; =ov27_0238CE84
+	bl CreateDialogueBox
+	ldr r2, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r1, #0x73
 	ldr r3, [r2]
 	strb r0, [r3, #0x8d]
@@ -690,23 +690,23 @@ _0238AA78:
 	ldr r0, [r2]
 	add r0, r0, #0x1a4
 	bl InitPortraitBoxWithMonsterId
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a4
 	bl SetPortraitLayout
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r2, _0238B924 ; =0x000004BE
 	ldr r3, [r0]
 	mov r1, #8
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238AAE0:
 	ldr r0, _0238B928 ; =ov27_0238CA8C
 	bl DebugPrint0
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0
 	ldr r4, [r1]
 	mov r0, #1
@@ -721,7 +721,7 @@ _0238AAE0:
 	strb r3, [r1, #0x8b]
 	bl sub_02043320
 	cmp r0, #0
-	ldrne r0, _0238B920 ; =ov27_0238CE84
+	ldrne r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	movne r1, #3
 	ldrne r0, [r0]
 	ldr r3, _0238B92C ; =DISCARD_ITEMS_MAIN_MENU
@@ -731,8 +731,8 @@ _0238AAE0:
 	add r2, sp, #0xc
 	mov r0, #0
 	str r4, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x91]
 	b _0238BA74
@@ -743,7 +743,7 @@ _0238AB60:
 	bl sub_020434D4
 	bl ov27_0238C900
 	mov r3, #0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r4, #0x73
 	ldr r2, [r0]
 	mov r1, #8
@@ -754,13 +754,13 @@ _0238AB60:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238ABAC:
 	ldr r0, _0238B938 ; =ov27_0238CAB8
 	bl DebugPrint0
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #1
 	ldr r1, [r0]
 	mov r2, #0
@@ -775,13 +775,13 @@ _0238ABAC:
 	add r2, r1, #0x4c0
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238ABFC:
 	ldr r0, _0238B93C ; =ov27_0238CAD0
 	bl DebugPrint0
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #4
 	ldr r1, [r0]
 	mov r2, #1
@@ -796,13 +796,13 @@ _0238ABFC:
 	add r2, r1, #0xa5
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238AC4C:
 	ldr r0, _0238B944 ; =ov27_0238CAE4
 	bl DebugPrint0
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #1
 	ldr r1, [r0]
 	mov r3, #0x73
@@ -817,13 +817,13 @@ _0238AC4C:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238AC9C:
 	ldr r0, _0238B948 ; =ov27_0238CAFC
 	bl DebugPrint0
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #1
 	ldr r1, [r0]
 	mov r2, #0
@@ -838,13 +838,13 @@ _0238AC9C:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238ACEC:
 	ldr r0, _0238B950 ; =ov27_0238CB14
 	bl DebugPrint0
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #1
 	ldr r1, [r0]
 	mov r2, #0
@@ -859,13 +859,13 @@ _0238ACEC:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238AD3C:
 	ldr r0, _0238B958 ; =ov27_0238CB30
 	bl DebugPrint0
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #1
 	ldr r1, [r0]
 	mov r2, #0
@@ -880,13 +880,13 @@ _0238AD3C:
 	add r2, r1, #0xab
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238AD8C:
 	ldr r0, _0238B95C ; =ov27_0238CB4C
 	bl DebugPrint0
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0xe
 	ldr r1, [r0]
 	mov r2, #0
@@ -901,7 +901,7 @@ _0238AD8C:
 	add r0, r1, #0x124
 	add r1, r1, #0x10
 	bl sub_0200D670
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r2, _0238B964 ; =0x000004CA
 	ldr r4, [r0]
 	mov r1, #0x18
@@ -910,7 +910,7 @@ _0238AD8C:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	arm_func_end ov27_0238A998
 
 	arm_func_start ov27_0238ADFC
@@ -920,7 +920,7 @@ _0238AE00:
 	ldr r0, _0238B968 ; =ov27_0238CB64
 	bl DebugPrint0
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #0xe
 	ldr r1, [r0]
 	mov r3, #0x73
@@ -935,7 +935,7 @@ _0238AE00:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238AE50:
 	ldr r0, _0238B96C ; =ov27_0238CB7C
@@ -945,7 +945,7 @@ _0238AE5C:
 	ldr r0, _0238B970 ; =ov27_0238CB8C
 	bl DebugPrint0
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0xd
 	ldr r1, [r0]
 	mov r2, #0
@@ -960,12 +960,12 @@ _0238AE5C:
 	add r2, r1, #0xac
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238AEAC:
 	ldr r0, _0238B974 ; =ov27_0238CBA4
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0xe
 	ldr r1, [r0]
 	mov r2, #0
@@ -980,16 +980,16 @@ _0238AEAC:
 	add r2, r1, #0xb5
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238AEF8:
 	ldr r0, _0238B978 ; =ov27_0238CBBC
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
-	bl ShowDBox
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	bl ShowDialogueBox
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202F2C4
@@ -999,18 +999,18 @@ _0238AEF8:
 	mov r2, #8
 	mov r3, #1
 	bl sub_02042258
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x8f]
 	b _0238BA74
 _0238AF48:
 	ldr r0, _0238B97C ; =ov27_0238CBD4
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
-	bl ShowDBox
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	bl ShowDialogueBox
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202F2C4
@@ -1019,28 +1019,28 @@ _0238AF48:
 	mov r2, #8
 	mov r3, #1
 	bl sub_02042258
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x8f]
 	b _0238BA74
 _0238AF94:
 	ldr r0, _0238B980 ; =ov27_0238CBF0
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r0]
 	add r0, r1, #0x88
 	str r0, [sp, #0x104]
 	ldrsh r0, [r1, #0x14]
 	bl IsStorableItem
 	cmp r0, #0
-	ldrne r0, _0238B920 ; =ov27_0238CE84
+	ldrne r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	movne r1, #0
-	ldreq r0, _0238B920 ; =ov27_0238CE84
+	ldreq r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	moveq r1, #3
 	ldr r0, [r0]
 	mov r2, #0
 	strb r1, [r0, #0x88]
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r4, #3
 	ldr r1, [r0]
 	ldr r3, _0238B984 ; =DISCARD_ITEMS_SUBMENU_2
@@ -1051,8 +1051,8 @@ _0238AF94:
 	add r2, sp, #0xa4
 	add r1, r4, #0x210
 	str r4, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x91]
 	b _0238BA74
@@ -1067,21 +1067,21 @@ _0238B014:
 	add r2, sp, #0x13c
 	add r1, r4, #0x210
 	str r4, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x91]
 	b _0238BA74
 _0238B050:
 	ldr r0, _0238B994 ; =ov27_0238CC28
 	bl DebugPrint0
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, _0238B998 ; =ov27_0238CC40
 	ldr r2, [r1]
 	ldrsh r1, [r2, #0x14]
 	ldrh r2, [r2, #0x12]
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov lr, #0
 	ldr ip, [r0]
 	ldr r2, _0238B99C ; =ov27_0238CC50
@@ -1108,7 +1108,7 @@ _0238B050:
 	bl PreprocessString
 	add r0, sp, #0x1d4
 	bl InitPreprocessorArgs
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	add r1, sp, #0x1d4
 	ldr r3, [r0]
 	ldr r0, _0238B9A4 ; =DISCARD_D_BOX_LAYOUT_7
@@ -1118,22 +1118,26 @@ _0238B050:
 	ldrsh r2, [r3, #0x14]
 	add r3, r3, #0x94
 	ldr r1, _0238B9A8 ; =0x00001013
+#ifdef EUROPE
+	add r2, r2, #0xd3
+#else
 	add r2, r2, #0xd1
+#endif
 	add r2, r2, #0x2900
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	stmib sp, {r2, r3}
 	ldr r3, _0238B9AC ; =0x00000315
 	mov r2, #0
-	bl sub_0202E3CC
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateScrollBox1
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x92]
 	b _0238BA74
 _0238B134:
 	ldr r0, _0238B9B0 ; =ov27_0238CC5C
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0
 	ldr r1, [r0]
 	mov r2, #0x23
@@ -1148,7 +1152,7 @@ _0238B134:
 	add r0, r1, #0x124
 	add r1, r1, #0x10
 	bl sub_0200D670
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r2, _0238B9B4 ; =0x000004C9
@@ -1160,12 +1164,12 @@ _0238B134:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238B1B0:
 	ldr r0, _0238B9B8 ; =ov27_0238CC78
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0
 	ldr r1, [r0]
 	mov r2, #0x23
@@ -1180,7 +1184,7 @@ _0238B1B0:
 	add r0, r1, #0x124
 	add r1, r1, #0x10
 	bl sub_0200D670
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x73
 	ldr r3, [r0]
 	mov r1, #8
@@ -1192,7 +1196,7 @@ _0238B1B0:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238B22C:
 	ldr r0, _0238B9BC ; =ov27_0238CC94
@@ -1203,8 +1207,8 @@ _0238B22C:
 	ldr r3, _0238B9C8 ; =DISCARD_ITEMS_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x91]
 	b _0238BA74
@@ -1217,8 +1221,8 @@ _0238B260:
 	ldr r3, _0238B9C8 ; =DISCARD_ITEMS_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x91]
 	b _0238BA74
@@ -1228,7 +1232,7 @@ _0238B294:
 	bl ov11_022DC504
 	bl GetNbItemsInBag
 	cmp r0, #0
-	ldreq r0, _0238B920 ; =ov27_0238CE84
+	ldreq r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	moveq r1, #3
 	ldreq r0, [r0]
 	streq r1, [r0, #4]
@@ -1236,18 +1240,18 @@ _0238B294:
 	mov r0, #0
 	bl sub_02043380
 	cmp r0, #0
-	ldrne r0, _0238B920 ; =ov27_0238CE84
+	ldrne r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	movne r1, #1
 	ldrne r0, [r0]
 	strne r1, [r0, #4]
-	ldreq r0, _0238B920 ; =ov27_0238CE84
+	ldreq r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	moveq r1, #0xc
 	ldreq r0, [r0]
 	streq r1, [r0, #4]
 _0238B2E8:
 	bl sub_02042AF8
 	bl sub_020434D4
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #1
 	ldr r1, [r0]
 	ldr r2, _0238B960 ; =OVERLAY27_UNKNOWN_STRUCT__NA_238C950
@@ -1256,7 +1260,7 @@ _0238B2E8:
 	add r0, r1, #0x124
 	add r1, r1, #0x10
 	bl sub_0200D670
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, _0238B940 ; =0x00000418
 	ldr r3, [r0]
 	mov ip, #0x73
@@ -1268,7 +1272,7 @@ _0238B2E8:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238B34C:
 	ldr r0, _0238B9D4 ; =ov27_0238CCDC
@@ -1276,19 +1280,19 @@ _0238B34C:
 	bl ov11_022DC504
 	bl GetNbItemsInBag
 	cmp r0, #0
-	ldreq r0, _0238B920 ; =ov27_0238CE84
+	ldreq r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	moveq r1, #3
 	beq _0238B37C
 	mov r0, #0
 	bl sub_02043380
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r1, #1
 _0238B37C:
 	ldr r0, [r0]
 	str r1, [r0, #4]
 	bl sub_02042AF8
 	bl sub_020434D4
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #1
 	ldr r1, [r0]
 	mov r3, #0x73
@@ -1300,14 +1304,14 @@ _0238B37C:
 	add r2, r1, #0xb4
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238B3C4:
 	ldr r0, _0238B9D8 ; =ov27_0238CCF8
 	bl DebugPrint0
 	bl sub_02043218
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #0x18
 	ldr r1, [r0]
 	mov r3, #0
@@ -1322,13 +1326,13 @@ _0238B3C4:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238B418:
 	ldr r0, _0238B9E0 ; =ov27_0238CD10
 	bl DebugPrint0
 	bl ov27_0238C900
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x18
 	ldr r1, [r0]
 	mov r2, #0
@@ -1343,19 +1347,19 @@ _0238B418:
 	add r1, ip, #0x400
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238B468:
 	ldr r0, _0238B9E8 ; =ov27_0238CD28
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #0x2d
 	ldr r1, [r0]
 	str r2, [r1, #4]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
-	bl ShowDBox
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	bl ShowDialogueBox
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202F2C4
@@ -1365,18 +1369,18 @@ _0238B4A0:
 	mov r1, #0
 	mov r2, #8
 	bl sub_02042CF0
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x90]
 	b _0238BA74
 _0238B4C0:
 	ldr r0, _0238B9EC ; =ov27_0238CD40
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
-	bl ShowDBox
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	bl ShowDialogueBox
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202F2C4
@@ -1384,7 +1388,7 @@ _0238B4C0:
 	mov r1, #0
 	mov r2, #8
 	bl sub_02042CF0
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x90]
 	b _0238BA74
@@ -1397,8 +1401,8 @@ _0238B508:
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x91]
 	b _0238BA74
@@ -1413,15 +1417,15 @@ _0238B53C:
 	add r2, sp, #0x224
 	add r1, ip, #0x210
 	str ip, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x91]
 	b _0238BA74
 _0238B578:
 	ldr r0, _0238B9FC ; =ov27_0238CD78
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r2, _0238B99C ; =ov27_0238CC50
 	ldr lr, [r0]
 	ldr r3, _0238B9A0 ; =0x0000C402
@@ -1441,7 +1445,7 @@ _0238B578:
 	bl PreprocessString
 	add r0, sp, #0x2bc
 	bl InitPreprocessorArgs
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	add r1, sp, #0x2bc
 	ldr r3, [r0]
 	ldr r0, _0238B9A4 ; =DISCARD_D_BOX_LAYOUT_7
@@ -1451,22 +1455,26 @@ _0238B578:
 	ldrsh r2, [r3, #0x14]
 	add r3, r3, #0x94
 	ldr r1, _0238B9A8 ; =0x00001013
+#ifdef EUROPE
+	add r2, r2, #0xd3
+#else
 	add r2, r2, #0xd1
+#endif
 	add r2, r2, #0x2900
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	stmib sp, {r2, r3}
 	ldr r3, _0238B9AC ; =0x00000315
 	mov r2, #0
-	bl sub_0202E3CC
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateScrollBox1
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x92]
 	b _0238BA74
 _0238B628:
 	ldr r0, _0238BA00 ; =ov27_0238CD90
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0
 	ldr r1, [r0]
 	ldr r2, _0238B960 ; =OVERLAY27_UNKNOWN_STRUCT__NA_238C950
@@ -1475,7 +1483,7 @@ _0238B628:
 	add r0, r1, #0x124
 	add r1, r1, #0x10
 	bl sub_0200D670
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x73
 	ldr r3, [r0]
 	add r2, ip, #0x460
@@ -1487,8 +1495,8 @@ _0238B628:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	bl ShowMessageInDialogueBox
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0x23
 	ldr r2, [r0]
 	mov r1, #0x25
@@ -1505,15 +1513,15 @@ _0238B6A8:
 	ldr r3, _0238B9C8 ; =DISCARD_ITEMS_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x91]
 	b _0238BA74
 _0238B6DC:
 	ldr r0, _0238BA08 ; =ov27_0238CDC4
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0
 	ldr r1, [r0]
 	mov r2, #0x23
@@ -1528,7 +1536,7 @@ _0238B6DC:
 	add r0, r1, #0x124
 	add r1, r1, #0x10
 	bl sub_0200D670
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r2, _0238BA0C ; =0x000004D2
@@ -1540,7 +1548,7 @@ _0238B6DC:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238B758:
 	ldr r0, _0238BA10 ; =ov27_0238CDE0
@@ -1551,8 +1559,8 @@ _0238B758:
 	ldr r3, _0238B9C8 ; =DISCARD_ITEMS_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x91]
 	b _0238BA74
@@ -1563,15 +1571,15 @@ _0238B78C:
 	mov r0, #1
 	bl sub_02043320
 	cmp r0, #0
-	ldrne r0, _0238B920 ; =ov27_0238CE84
+	ldrne r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	movne r1, #1
-	ldreq r0, _0238B920 ; =ov27_0238CE84
+	ldreq r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	moveq r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0, #4]
 	bl sub_02042AF8
 	bl sub_020434D4
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #1
 	ldr r1, [r0]
 	ldr r2, _0238B960 ; =OVERLAY27_UNKNOWN_STRUCT__NA_238C950
@@ -1580,7 +1588,7 @@ _0238B78C:
 	add r0, r1, #0x124
 	add r1, r1, #0x10
 	bl sub_0200D670
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov ip, #0x73
 	ldr r3, [r0]
 	ldr r1, _0238B940 ; =0x00000418
@@ -1592,7 +1600,7 @@ _0238B78C:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238B820:
 	ldr r0, _0238BA18 ; =ov27_0238CE10
@@ -1601,15 +1609,15 @@ _0238B820:
 	mov r0, #1
 	bl sub_02043320
 	cmp r0, #0
-	ldrne r0, _0238B920 ; =ov27_0238CE84
+	ldrne r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	movne r1, #1
-	ldreq r0, _0238B920 ; =ov27_0238CE84
+	ldreq r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	moveq r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0, #4]
 	bl sub_02042AF8
 	bl sub_020434D4
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #1
 	ldr r1, [r0]
 	mov r3, #0x73
@@ -1621,12 +1629,12 @@ _0238B820:
 	add r2, r1, #0xbd
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0238BA74
 _0238B890:
 	ldr r0, _0238BA1C ; =ov27_0238CE2C
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #0
 	ldr r1, [r0]
 	mov r3, #0x73
@@ -1638,8 +1646,8 @@ _0238B890:
 	mov r1, #8
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	bl ShowMessageInDialogueBox
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0x23
 	ldr r2, [r0]
 	mov r1, #0x29
@@ -1656,13 +1664,13 @@ _0238B8EC:
 	ldr r3, _0238B9C8 ; =DISCARD_ITEMS_MENU_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238B920 ; =ov27_0238CE84
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strb r0, [r1, #0x91]
 	b _0238BA74
 	.align 2, 0
-_0238B920: .word ov27_0238CE84
+_0238B920: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 _0238B924: .word 0x000004BE
 _0238B928: .word ov27_0238CA8C
 _0238B92C: .word DISCARD_ITEMS_MAIN_MENU
@@ -1732,7 +1740,7 @@ _0238BA28: .word ov27_0238CE58
 _0238BA2C:
 	ldr r0, _0238BA28 ; =ov27_0238CE58
 	bl DebugPrint0
-	ldr r0, _0238B920 ; =ov27_0238CE84
+	ldr r0, _0238B920 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #3
 	ldr r1, [r0]
 	mov r2, #1
@@ -1747,7 +1755,7 @@ _0238BA2C:
 	add r2, r1, #0xc4
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _0238BA74:
 	add sp, sp, #0x30c
 	ldmia sp!, {r3, r4, pc}
@@ -1762,11 +1770,11 @@ ov27_0238BA7C: ; 0x0238BA7C
 	mov r0, #0x250
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _0238BB50 ; =ov27_0238CE84
+	ldr r1, _0238BB50 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	str r0, [r1]
 	add r0, r0, #0x1b8
 	bl sub_02034A38
-	ldr r1, _0238BB50 ; =ov27_0238CE84
+	ldr r1, _0238BB50 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #0
 	ldr r3, [r1]
 	str r0, [r3, #0x1b4]
@@ -1781,7 +1789,7 @@ ov27_0238BA7C: ; 0x0238BA7C
 	ldr r0, [r1]
 	add r0, r0, #0x94
 	bl InitPreprocessorArgs
-	ldr r1, _0238BB50 ; =ov27_0238CE84
+	ldr r1, _0238BB50 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #0x73
 	ldr r0, [r1]
 	mov r3, #0
@@ -1798,7 +1806,7 @@ _0238BB0C:
 	strb r0, [r2, #0x88]
 	cmp r3, #5
 	blt _0238BB0C
-	ldr r1, _0238BB50 ; =ov27_0238CE84
+	ldr r1, _0238BB50 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r3, #1
 	ldr r2, [r1]
 	strb r3, [r2, #0x8f]
@@ -1810,30 +1818,30 @@ _0238BB0C:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238BB50: .word ov27_0238CE84
+_0238BB50: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	arm_func_end ov27_0238BA7C
 
 	arm_func_start ov27_0238BB54
 ov27_0238BB54: ; 0x0238BB54
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238BB7C ; =ov27_0238CE84
+	ldr r0, _0238BB7C ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _0238BB7C ; =ov27_0238CE84
+	ldr r0, _0238BB7C ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238BB7C: .word ov27_0238CE84
+_0238BB7C: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	arm_func_end ov27_0238BB54
 
 	arm_func_start ov27_0238BB80
 ov27_0238BB80: ; 0x0238BB80
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r0]
 	ldr r2, [r1, #0x84]
 	cmp r2, #3
@@ -1914,15 +1922,15 @@ _0238BC8C:
 	b _0238C860
 _0238BCB0:
 	ldrsb r0, [r1, #0x8d]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238C860
 	mov r0, #0x22
 	bl ov27_0238A998
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
-	bl ShowDBox
+	bl ShowDialogueBox
 	b _0238C860
 _0238BCDC:
 	bl sub_020426B4
@@ -1933,7 +1941,7 @@ _0238BCDC:
 	b _0238BD84
 _0238BCF4:
 	bl sub_02042664
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #0x2c
@@ -1954,15 +1962,15 @@ _0238BD24:
 _0238BD3C:
 	bne _0238BD4C
 	bl sub_02042B50
-	ldr r1, _0238C8F8 ; =ov27_0238CE84
+	ldr r1, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	b _0238BD54
 _0238BD4C:
 	bl sub_02042ADC
-	ldr r1, _0238C8F8 ; =ov27_0238CE84
+	ldr r1, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 _0238BD54:
 	ldr r1, [r1]
 	str r0, [r1, #0x18]
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r0]
 	ldr r0, [r1, #0x18]
 	add r1, r1, #0x10
@@ -1984,9 +1992,9 @@ _0238BD84:
 	tst r0, #8
 	beq _0238C860
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	bl sub_02042ADC
-	ldr r1, _0238C8F8 ; =ov27_0238CE84
+	ldr r1, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r2, [r1]
 	str r0, [r2, #0x18]
 	ldr r1, [r1]
@@ -1996,12 +2004,12 @@ _0238BD84:
 	mov r0, r0, asr #0x10
 	bl CopyItemAtIdx
 	bl sub_02042664
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x8f]
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #5
@@ -2016,7 +2024,7 @@ _0238BD84:
 	b _0238C860
 _0238BE28:
 	ldrsb r0, [r1, #0x91]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _0238BF48
 	cmp r0, #2
@@ -2025,7 +2033,7 @@ _0238BE28:
 	beq _0238BF00
 	b _0238C860
 _0238BE4C:
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r2, [r0]
 	ldr r1, [r2]
 	cmp r1, #0xf
@@ -2034,7 +2042,7 @@ _0238BE4C:
 	bl IsStorableItem
 	cmp r0, #0
 	bne _0238BE90
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #9
 	ldr r2, [r0]
 	mov r1, #0x2c
@@ -2043,7 +2051,7 @@ _0238BE4C:
 	str r1, [r0]
 	b _0238BEC4
 _0238BE90:
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #0x2c
 	ldr r2, [r0]
 	mov r1, #0x12
@@ -2060,12 +2068,12 @@ _0238BEB0:
 _0238BEC4:
 	bl ov27_0238C900
 	bl sub_02042664
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x8f]
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r3, #1
 	ldr r2, [r0]
 	mov r1, #0x2c
@@ -2076,12 +2084,12 @@ _0238BEC4:
 _0238BF00:
 	bl ov27_0238C900
 	bl sub_02042664
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x8f]
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #0x11
@@ -2095,7 +2103,7 @@ _0238BF00:
 _0238BF48:
 	bl ov27_0238C900
 	bl sub_02042744
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r1, #0xe
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2105,11 +2113,11 @@ _0238BF64:
 	bl sub_0202E6E4
 	cmp r0, #0
 	bne _0238C860
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x92]
 	bl sub_0202E6C8
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r0, #0xe
@@ -2118,7 +2126,7 @@ _0238BF64:
 	b _0238C860
 _0238BFA0:
 	ldrsb r0, [r1, #0x91]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _0238C038
 	cmp r0, #4
@@ -2127,7 +2135,7 @@ _0238BFA0:
 	beq _0238C038
 	b _0238C860
 _0238BFC4:
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldr r0, [r0, #0x18]
 	mov r0, r0, lsl #0x10
@@ -2142,13 +2150,13 @@ _0238BFC4:
 	bl sub_02042AF8
 	b _0238C028
 _0238BFFC:
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldr r0, [r0, #0x18]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl RemoveItemNoHole
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	add r0, r0, #0x10
 	bl AddItemToStorage
@@ -2160,11 +2168,11 @@ _0238C028:
 	b _0238C860
 _0238C038:
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202F2C4
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0xe
@@ -2177,7 +2185,7 @@ _0238C038:
 	b _0238C860
 _0238C078:
 	ldrsb r0, [r1, #0x91]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _0238C13C
 	cmp r0, #4
@@ -2219,7 +2227,7 @@ _0238C0F8:
 	bl sub_020434D4
 	bl ov27_0238C900
 	bl sub_02042AF8
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r3, #6
 	ldr r1, [r0]
 	mov r2, #0x15
@@ -2231,11 +2239,11 @@ _0238C0F8:
 	b _0238C860
 _0238C13C:
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202F2C4
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0xe
@@ -2257,7 +2265,7 @@ _0238C17C:
 	bne _0238C1D0
 	bl sub_0204317C
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #1
@@ -2279,16 +2287,16 @@ _0238C1D0:
 	bl ov27_0238A998
 	b _0238C860
 _0238C1F4:
-	ldrne r0, _0238C8F8 ; =ov27_0238CE84
+	ldrne r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldrne r0, [r0]
 	strneh r4, [r0, #0x1c]
 	bne _0238C214
 	bl sub_0204352C
-	ldr r1, _0238C8F8 ; =ov27_0238CE84
+	ldr r1, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r1]
 	strh r0, [r1, #0x1c]
 _0238C214:
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, [r0]
 	ldrsh r0, [r1, #0x1c]
 	add r1, r1, #0x10
@@ -2308,10 +2316,10 @@ _0238C234:
 	tst r0, #8
 	beq _0238C860
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, r4
 	bl sub_0204323C
-	ldr r2, _0238C8F8 ; =ov27_0238CE84
+	ldr r2, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r1, _0238C8FC ; =BAG_ITEMS_PTR_MIRROR
 	ldr r0, [r2]
 	mov r3, #0
@@ -2334,7 +2342,7 @@ _0238C234:
 	strb r3, [r0, #0x10]
 	bl sub_0204317C
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r3, #1
 	ldr r1, [r0]
 	mov r2, #0x1c
@@ -2346,7 +2354,7 @@ _0238C234:
 	b _0238C860
 _0238C2F0:
 	ldrsb r0, [r1, #0x91]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _0238C394
 	cmp r0, #3
@@ -2358,7 +2366,7 @@ _0238C314:
 	bl ov27_0238C900
 	bl sub_0204317C
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0x90]
@@ -2368,7 +2376,7 @@ _0238C314:
 	moveq r0, #0x1d
 	movne r0, #0x1e
 	str r0, [r1, #4]
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r1, #0x2b
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2377,7 +2385,7 @@ _0238C35C:
 	bl ov27_0238C900
 	bl sub_0204317C
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r3, #0x1c
@@ -2389,7 +2397,7 @@ _0238C35C:
 	str r1, [r0]
 	b _0238C860
 _0238C394:
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r1, #0x19
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2401,11 +2409,11 @@ _0238C3B0:
 	bl sub_0202E6E4
 	cmp r0, #0
 	bne _0238C860
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x92]
 	bl sub_0202E6C8
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r0, #0x19
@@ -2414,7 +2422,7 @@ _0238C3B0:
 	b _0238C860
 _0238C3EC:
 	ldrsb r0, [r1, #0x91]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _0238C454
 	cmp r0, #4
@@ -2423,13 +2431,13 @@ _0238C3EC:
 	beq _0238C454
 	b _0238C860
 _0238C410:
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x1c]
 	bl sub_02010154
 	bl sub_020434D4
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0x1f
@@ -2442,11 +2450,11 @@ _0238C410:
 	b _0238C860
 _0238C454:
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202F2C4
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0x18
@@ -2459,13 +2467,13 @@ _0238C454:
 	b _0238C860
 _0238C494:
 	ldrsb r0, [r1, #0x8d]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238C860
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x91]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _0238C55C
 	cmp r0, #4
@@ -2500,7 +2508,7 @@ _0238C510:
 	bl sub_02042AF8
 	bl ov27_0238C900
 	bl sub_020434D4
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0x20
@@ -2513,11 +2521,11 @@ _0238C510:
 	b _0238C860
 _0238C55C:
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202F2C4
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0x19
@@ -2530,7 +2538,7 @@ _0238C55C:
 	b _0238C860
 _0238C59C:
 	ldrsb r0, [r1, #0x91]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _0238C604
 	cmp r0, #4
@@ -2539,13 +2547,13 @@ _0238C59C:
 	beq _0238C604
 	b _0238C860
 _0238C5C0:
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x1c]
 	bl sub_02010154
 	bl sub_020434D4
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #0x2a
@@ -2558,11 +2566,11 @@ _0238C5C0:
 	b _0238C860
 _0238C604:
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202F2C4
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #5
 	ldr r1, [r0]
 	mov r3, #1
@@ -2579,14 +2587,14 @@ _0238C644:
 	b _0238C864
 _0238C650:
 	ldrsb r0, [r1, #0x8d]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238C860
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
-	bl ShowDBox
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	bl ShowDialogueBox
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #0x30
 	ldr r1, [r0]
 	str r2, [r1]
@@ -2596,9 +2604,9 @@ _0238C650:
 	b _0238C860
 _0238C690:
 	ldrsb r0, [r1, #0x91]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
-	ldrne r1, _0238C8F8 ; =ov27_0238CE84
+	ldrne r1, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldrne r1, [r1]
 	strne r0, [r1, #0x20]
 	cmp r0, #6
@@ -2668,7 +2676,7 @@ _0238C760:
 	b _0238C860
 _0238C788:
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x90]
@@ -2676,7 +2684,7 @@ _0238C788:
 _0238C7A0:
 	ldr r0, [r1, #4]
 	bl ov27_0238A998
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -2694,7 +2702,7 @@ _0238C7BC:
 	b _0238C860
 _0238C7E4:
 	bl ov27_0238C900
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x8f]
@@ -2702,7 +2710,7 @@ _0238C7E4:
 _0238C7FC:
 	ldr r0, [r1, #4]
 	bl ov27_0238A998
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -2717,14 +2725,14 @@ _0238C824:
 	b _0238C860
 _0238C830:
 	ldrsb r0, [r1, #0x8d]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238C860
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
-	bl ShowDBox
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	bl ShowDialogueBox
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
 	bl ov27_0238A998
@@ -2733,14 +2741,14 @@ _0238C860:
 _0238C864:
 	cmp r0, #3
 	bne _0238C8EC
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #2
 	ldr r1, [r0]
 	str r2, [r1, #0x84]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202F2C4
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
 	bl sub_0202836C
@@ -2750,10 +2758,10 @@ _0238C89C:
 	str r0, [r1, #0x84]
 	bl sub_020440B8
 	bl sub_02042BBC
-	ldr r0, _0238C8F8 ; =ov27_0238CE84
+	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x8d]
-	bl FreeDBox
+	bl FreeDialogueBox
 	b _0238C8EC
 _0238C8C0:
 	ldr r0, [r1, #0x1b4]
@@ -2775,31 +2783,31 @@ _0238C8F0:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0238C8F8: .word ov27_0238CE84
+_0238C8F8: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 _0238C8FC: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end ov27_0238BB80
 
 	arm_func_start ov27_0238C900
 ov27_0238C900: ; 0x0238C900
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238C944 ; =ov27_0238CE84
+	ldr r0, _0238C944 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x91]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
 	bl sub_0202836C
-	ldr r0, _0238C944 ; =ov27_0238CE84
+	ldr r0, _0238C944 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x91]
-	bl FreeNormalMenu
-	ldr r0, _0238C944 ; =ov27_0238CE84
+	bl FreeSimpleMenu
+	ldr r0, _0238C944 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x91]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C944: .word ov27_0238CE84
+_0238C944: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	arm_func_end ov27_0238C900
 	; 0x0238C948
 
@@ -3033,9 +3041,9 @@ ov27_0238CE58:
 	.byte 0x41, 0x4E, 0x4B, 0x53, 0x3A, 0x0A, 0x00, 0x00
 
 	.data
-	.global ov27_0238CE80
-ov27_0238CE80:
+	.global OVERLAY27_UNKNOWN_POINTER__NA_238CE80
+OVERLAY27_UNKNOWN_POINTER__NA_238CE80:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov27_0238CE84
-ov27_0238CE84:
+	.global OVERLAY27_UNKNOWN_POINTER__NA_238CE84
+OVERLAY27_UNKNOWN_POINTER__NA_238CE84:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

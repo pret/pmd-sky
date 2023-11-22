@@ -3947,7 +3947,7 @@ sub_02003BFC: ; 0x02003BFC
 	bl DebugPrint0
 	ldr r0, _02003CBC ; =_0229B21C
 	ldrh r0, [r0, #2]
-	bl sub_02017DF4
+	bl PlayBgmById
 	ldr r0, _02003CBC ; =_0229B21C
 	ldrh r0, [r0]
 	bl sub_02018024
@@ -3969,7 +3969,7 @@ _02003C5C:
 	bl sub_02017FF0
 	ldr r1, _02003CBC ; =_0229B21C
 	strh r0, [r1]
-	bl sub_02017EE8
+	bl StopBgmCommand
 	bl sub_02018118
 	bl sub_02018278
 	mov r0, #0x3f00
@@ -4002,7 +4002,7 @@ SoundResume: ; 0x02003CC4
 	bl DebugPrint0
 	ldr r0, _02003D28 ; =_0229B21C
 	ldrh r0, [r0, #2]
-	bl sub_02017DF4
+	bl PlayBgmById
 	ldr r0, _02003D28 ; =_0229B21C
 	ldrh r0, [r0]
 	bl sub_02018024
@@ -13444,7 +13444,47 @@ _0200B71C:
 
 	arm_func_start sub_0200B768
 sub_0200B768: ; 0x0200B768
+#ifdef EUROPE
+	stmdb sp!, {r4, lr}
+	sub sp, sp, #8
+	bl GetLanguage
+	ldr r1, _0200B7E4 ; =_020AFF38_EU
+	mov r4, r0
+	ldrsb r0, [r1]
+	cmp r0, r4
+	beq _0200B7DC
+	ldr r1, _0200B7E8 ; =_020AFF3C_EU
+	add r0, sp, #0
+	ldr r1, [r1, r4, lsl #2]
+	mov r2, #1
+	bl LoadFileFromRom
+	ldr r2, _0200B7EC ; =0x04000208
+	mov r1, #0
+	ldrh r0, [r2]
+	strh r1, [r2]
+	ldr r0, _0200B7F0 ; =CART_REMOVED_IMG_DATA
+	ldr r1, [sp]
+	ldr r2, [sp, #4]
+	bl MemcpySimple
+	ldr r2, _0200B7EC ; =0x04000208
+	add r0, sp, #0
+	ldrh r1, [r2]
+	mov r1, #1
+	strh r1, [r2]
+	bl UnloadFile
+	ldr r0, _0200B7E4 ; =_020AFF38_EU
+	strb r4, [r0]
+_0200B7DC:
+	add sp, sp, #8
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_0200B7E4: .word _020AFF38_EU
+_0200B7E8: .word _020AFF3C_EU
+_0200B7EC: .word 0x04000208
+_0200B7F0: .word CART_REMOVED_IMG_DATA
+#else
 	bx lr
+#endif
 	arm_func_end sub_0200B768
 
 	arm_func_start sub_0200B76C

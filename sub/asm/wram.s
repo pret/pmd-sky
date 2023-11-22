@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start sub_037F8000
-sub_037F8000: ; 0x037F8000
+	arm_func_start NitroSpMain
+NitroSpMain: ; 0x037F8000
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x210
 	bl sub_037FC9EC
@@ -312,7 +312,7 @@ _037F845C: .word 0xFFFFFF2A
 _037F8460: .word 0xFFFFFF60
 _037F8464: .word sub_037F84BC
 _037F8468: .word 0x04000004
-	arm_func_end sub_037F8000
+	arm_func_end NitroSpMain
 
 	arm_func_start sub_037F846C
 sub_037F846C: ; 0x037F846C
@@ -388,7 +388,7 @@ _037F8508:
 	bl sub_037F8704
 _037F852C:
 	mov r0, r4
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldrh r1, [r8, #0x10]
 	strh r1, [r8, #0x12]
 	mov r1, r1, lsl #1
@@ -428,7 +428,7 @@ sub_037F8598: ; 0x037F8598
 	ldr r0, _037F864C ; =0x01000010
 	mov r6, r1
 	add r5, r4, #0xbc
-	bl sub_037FB928
+	bl ClearIeFlag
 	add r2, r5, r6, lsl #3
 	ldrh r1, [r2, #2]
 	mov ip, r6, lsl #3
@@ -479,7 +479,7 @@ sub_037F8650: ; 0x037F8650
 	mov r5, r0
 	ldr r0, _037F86C0 ; =0x01000010
 	ldr r4, [r1]
-	bl sub_037FB928
+	bl ClearIeFlag
 	mov lr, r5, lsl #1
 	ldrh r5, [r4, lr]
 	ldr r2, _037F86C4 ; =0x0000FFFF
@@ -554,7 +554,7 @@ sub_037F873C: ; 0x037F873C
 	mov r5, r0
 	mov r0, #0x1000000
 	mov r4, r1
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldrh r1, [r5, #8]
 	cmp r1, #0
 	mvneq r1, #0
@@ -597,7 +597,7 @@ sub_037F87AC: ; 0x037F87AC
 	movne r0, #2
 	bne _037F8860
 	mov r0, #0x1000000
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldrh r1, [r5, #8]
 	sub r1, r1, #1
 	strh r1, [r5, #8]
@@ -738,7 +738,7 @@ sub_037F8988: ; 0x037F8988
 	movne r0, #1
 	bne _037F89E8
 	mov r0, #0x1000000
-	bl sub_037FB928
+	bl ClearIeFlag
 	mov r5, r0
 	mov r0, r4
 	mov r1, r6
@@ -775,7 +775,7 @@ sub_037F89F4: ; 0x037F89F4
 	movne r0, #2
 	bne _037F8A74
 	mov r0, #0x1000000
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldrh r1, [r5, #8]
 	cmp r1, #0
 	mvneq r1, #0
@@ -2803,7 +2803,7 @@ _037FA65C: .word 0x0380FFF4
 sub_037FA660: ; 0x037FA660
 	stmdb sp!, {r4, lr}
 	mov r0, #0x1000000
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r2, _037FA6C0 ; =0x04808210
 	mov r1, #0x1000
 	ldrh r3, [r2]
@@ -3847,8 +3847,8 @@ _037FB474:
 _037FB484: .word 0x04808180
 	arm_func_end sub_037FB454
 
-	arm_func_start sub_037FB488
-sub_037FB488: ; 0x037FB488
+	arm_func_start HardwareInterrupt
+HardwareInterrupt: ; 0x037FB488
 	stmdb sp!, {lr}
 	mov ip, #0x4000000
 	add ip, ip, #0x210
@@ -3879,15 +3879,15 @@ _037FB4D4:
 	str r2, [ip, #4]
 	ldr r1, _037FB4EC ; =_038074F4
 	ldr r0, [r1, r0, lsl #2]
-	ldr lr, _037FB4F0 ; =sub_037FB4F4
+	ldr lr, _037FB4F0 ; =ReturnFromInterrupt
 	bx r0
 	.align 2, 0
 _037FB4EC: .word _038074F4
-_037FB4F0: .word sub_037FB4F4
-	arm_func_end sub_037FB488
+_037FB4F0: .word ReturnFromInterrupt
+	arm_func_end HardwareInterrupt
 
-	arm_func_start sub_037FB4F4
-sub_037FB4F4: ; 0x037FB4F4
+	arm_func_start ReturnFromInterrupt
+ReturnFromInterrupt: ; 0x037FB4F4
 	ldr ip, _037FB630 ; =_03807608
 	mov r3, #0
 	ldr ip, [ip]
@@ -3985,15 +3985,15 @@ _037FB5DC:
 	.align 2, 0
 _037FB630: .word _03807608
 _037FB634: .word _038076A4
-	arm_func_end sub_037FB4F4
+	arm_func_end ReturnFromInterrupt
 
 	arm_func_start sub_037FB638
 sub_037FB638: ; 0x037FB638
 	bx lr
 	arm_func_end sub_037FB638
 
-	arm_func_start sub_037FB63C
-sub_037FB63C: ; 0x037FB63C
+	arm_func_start AudioInterrupt
+AudioInterrupt: ; 0x037FB63C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #0xc
 	mul r5, r0, r1
@@ -4022,7 +4022,7 @@ _037FB684:
 	cmp r0, #0
 	bne _037FB6AC
 	mov r0, r4
-	bl sub_037FB928
+	bl ClearIeFlag
 _037FB6AC:
 	ldmia sp!, {r3, r4, r5, lr}
 	bx lr
@@ -4032,78 +4032,78 @@ _037FB6B8: .word _038074E0
 _037FB6BC: .word _03807618
 _037FB6C0: .word 0x0380FFF8
 _037FB6C4: .word _03807614
-	arm_func_end sub_037FB63C
+	arm_func_end AudioInterrupt
 
 	arm_func_start sub_037FB6C8
 sub_037FB6C8: ; 0x037FB6C8
-	ldr ip, _037FB6D4 ; =sub_037FB63C
+	ldr ip, _037FB6D4 ; =AudioInterrupt
 	mov r0, #0
 	bx ip
 	.align 2, 0
-_037FB6D4: .word sub_037FB63C
+_037FB6D4: .word AudioInterrupt
 	arm_func_end sub_037FB6C8
 
 	arm_func_start sub_037FB6D8
 sub_037FB6D8: ; 0x037FB6D8
-	ldr ip, _037FB6E4 ; =sub_037FB63C
+	ldr ip, _037FB6E4 ; =AudioInterrupt
 	mov r0, #1
 	bx ip
 	.align 2, 0
-_037FB6E4: .word sub_037FB63C
+_037FB6E4: .word AudioInterrupt
 	arm_func_end sub_037FB6D8
 
 	arm_func_start sub_037FB6E8
 sub_037FB6E8: ; 0x037FB6E8
-	ldr ip, _037FB6F4 ; =sub_037FB63C
+	ldr ip, _037FB6F4 ; =AudioInterrupt
 	mov r0, #2
 	bx ip
 	.align 2, 0
-_037FB6F4: .word sub_037FB63C
+_037FB6F4: .word AudioInterrupt
 	arm_func_end sub_037FB6E8
 
 	arm_func_start sub_037FB6F8
 sub_037FB6F8: ; 0x037FB6F8
-	ldr ip, _037FB704 ; =sub_037FB63C
+	ldr ip, _037FB704 ; =AudioInterrupt
 	mov r0, #3
 	bx ip
 	.align 2, 0
-_037FB704: .word sub_037FB63C
+_037FB704: .word AudioInterrupt
 	arm_func_end sub_037FB6F8
 
 	arm_func_start sub_037FB708
 sub_037FB708: ; 0x037FB708
-	ldr ip, _037FB714 ; =sub_037FB63C
+	ldr ip, _037FB714 ; =AudioInterrupt
 	mov r0, #4
 	bx ip
 	.align 2, 0
-_037FB714: .word sub_037FB63C
+_037FB714: .word AudioInterrupt
 	arm_func_end sub_037FB708
 
 	arm_func_start sub_037FB718
 sub_037FB718: ; 0x037FB718
-	ldr ip, _037FB724 ; =sub_037FB63C
+	ldr ip, _037FB724 ; =AudioInterrupt
 	mov r0, #5
 	bx ip
 	.align 2, 0
-_037FB724: .word sub_037FB63C
+_037FB724: .word AudioInterrupt
 	arm_func_end sub_037FB718
 
 	arm_func_start sub_037FB728
 sub_037FB728: ; 0x037FB728
-	ldr ip, _037FB734 ; =sub_037FB63C
+	ldr ip, _037FB734 ; =AudioInterrupt
 	mov r0, #6
 	bx ip
 	.align 2, 0
-_037FB734: .word sub_037FB63C
+_037FB734: .word AudioInterrupt
 	arm_func_end sub_037FB728
 
 	arm_func_start sub_037FB738
 sub_037FB738: ; 0x037FB738
-	ldr ip, _037FB744 ; =sub_037FB63C
+	ldr ip, _037FB744 ; =AudioInterrupt
 	mov r0, #7
 	bx ip
 	.align 2, 0
-_037FB744: .word sub_037FB63C
+_037FB744: .word AudioInterrupt
 	arm_func_end sub_037FB738
 
 	arm_func_start sub_037FB748
@@ -4223,7 +4223,7 @@ _037FB8A0: .word _03807644
 sub_037FB8A4: ; 0x037FB8A4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_037FB8D8
+	bl ClearImeFlag
 	ldr r1, _037FB8D4 ; =0x04000210
 	ldr r3, [r1]
 	sub r2, r1, #8
@@ -4237,8 +4237,8 @@ sub_037FB8A4: ; 0x037FB8A4
 _037FB8D4: .word 0x04000210
 	arm_func_end sub_037FB8A4
 
-	arm_func_start sub_037FB8D8
-sub_037FB8D8: ; 0x037FB8D8
+	arm_func_start ClearImeFlag
+ClearImeFlag: ; 0x037FB8D8
 	ldr r2, _037FB8EC ; =0x04000208
 	mov r1, #0
 	ldrh r0, [r2]
@@ -4246,13 +4246,13 @@ sub_037FB8D8: ; 0x037FB8D8
 	bx lr
 	.align 2, 0
 _037FB8EC: .word 0x04000208
-	arm_func_end sub_037FB8D8
+	arm_func_end ClearImeFlag
 
 	arm_func_start sub_037FB8F0
 sub_037FB8F0: ; 0x037FB8F0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_037FB8D8
+	bl ClearImeFlag
 	ldr ip, _037FB924 ; =0x04000210
 	ldr r3, [ip]
 	sub r2, ip, #8
@@ -4267,11 +4267,11 @@ sub_037FB8F0: ; 0x037FB8F0
 _037FB924: .word 0x04000210
 	arm_func_end sub_037FB8F0
 
-	arm_func_start sub_037FB928
-sub_037FB928: ; 0x037FB928
+	arm_func_start ClearIeFlag
+ClearIeFlag: ; 0x037FB928
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_037FB8D8
+	bl ClearImeFlag
 	ldr ip, _037FB960 ; =0x04000210
 	mvn r1, r4
 	ldr r3, [ip]
@@ -4285,13 +4285,13 @@ sub_037FB928: ; 0x037FB928
 	bx lr
 	.align 2, 0
 _037FB960: .word 0x04000210
-	arm_func_end sub_037FB928
+	arm_func_end ClearIeFlag
 
 	arm_func_start sub_037FB964
 sub_037FB964: ; 0x037FB964
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_037FB8D8
+	bl ClearImeFlag
 	ldr r1, _037FB994 ; =0x04000214
 	ldr r3, [r1]
 	sub r2, r1, #0xc
@@ -4856,7 +4856,7 @@ sub_037FBF64: ; 0x037FBF64
 	str r1, [r0, #0x2c]
 	str r1, [r0, #0x28]
 	cmp r2, #0
-	ldrle r0, _037FC038 ; =sub_037F8000
+	ldrle r0, _037FC038 ; =NitroSpMain
 	ldrgt r1, _037FC03C ; =0x00000400
 	ldrgt r0, _037FC040 ; =0x0380FF80
 	subgt r0, r0, r1
@@ -4890,7 +4890,7 @@ _037FC028: .word _03807680
 _037FC02C: .word _038076A8
 _037FC030: .word 0x00000400
 _037FC034: .word _03807758
-_037FC038: .word sub_037F8000
+_037FC038: .word NitroSpMain
 _037FC03C: .word 0x00000400
 _037FC040: .word 0x0380FF80
 _037FC044: .word 0xD73BFDF7
@@ -5456,7 +5456,7 @@ _037FC714:
 	ble _037FC6F4
 	ldr r0, [r6, #0x18]
 	add r0, r0, r2
-	bl sub_03806BC8
+	bl __divsi3
 	ldr r2, [r6, #0x10]
 	add r0, r6, #8
 	str r5, [r2, r1, lsl #2]
@@ -5504,7 +5504,7 @@ _037FC7A0:
 	ldr r0, [r6, #0x18]
 	ldr r1, [r6, #0x14]
 	add r0, r0, #1
-	bl sub_03806BC8
+	bl __divsi3
 	str r1, [r6, #0x18]
 	ldr r1, [r6, #0x1c]
 	mov r0, r6
@@ -6337,8 +6337,8 @@ _037FD214: .word sub_037FB858
 _037FD218: .word sub_037FD1B4
 	arm_func_end sub_037FD1B4
 
-	arm_func_start sub_037FD21C
-sub_037FD21C: ; 0x037FD21C
+	arm_func_start GetCurrentPlaybackTime
+GetCurrentPlaybackTime: ; 0x037FD21C
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
 	bl EnableIrqFlag
@@ -6382,13 +6382,13 @@ _037FD288:
 _037FD2B4: .word 0x04000100
 _037FD2B8: .word _03807828
 _037FD2BC: .word 0x0000FFFF
-	arm_func_end sub_037FD21C
+	arm_func_end GetCurrentPlaybackTime
 
 	arm_func_start sub_037FD2C0
 sub_037FD2C0: ; 0x037FD2C0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	ldr r3, _037FD33C ; =0x04000106
 	mov r2, #0
 	strh r2, [r3]
@@ -6440,7 +6440,7 @@ sub_037FD34C: ; 0x037FD34C
 	str r2, [r1, #4]
 	mov r0, #0x10
 	str r2, [r1, #8]
-	bl sub_037FB928
+	bl ClearIeFlag
 _037FD384:
 	ldmia sp!, {r3, lr}
 	bx lr
@@ -6476,7 +6476,7 @@ sub_037FD3B0: ; 0x037FD3B0
 	mov r6, r2
 	cmpeq r3, #0
 	beq _037FD424
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	ldr r6, [r8, #0x28]
 	ldr r7, [r8, #0x24]
 	cmp r6, r1
@@ -6572,7 +6572,7 @@ _037FD504:
 	ldr r1, [sp, #0x18]
 	mov r7, r0
 	str r1, [r6, #4]
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	adds r3, r5, r0
 	adc r2, r4, r1
 	mov r0, r6
@@ -6676,12 +6676,12 @@ sub_037FD658: ; 0x037FD658
 	mov r2, #0
 	mov r0, #0x10
 	strh r2, [r1]
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r1, _037FD744 ; =0x0380FFF8
 	ldr r0, [r1]
 	orr r0, r0, #0x10
 	str r0, [r1]
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	ldr r2, _037FD748 ; =_03807838
 	ldr r4, [r2, #4]
 	cmp r4, #0
@@ -6752,7 +6752,7 @@ sub_037FD74C: ; 0x037FD74C
 	str r2, [r1, #0xc]
 	mov r0, #4
 	str r2, [r1, #0x10]
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r0, _037FD794 ; =_03807844
 	mov r1, #0
 	str r1, [r0, #8]
@@ -7047,7 +7047,7 @@ _037FDAF4: .word _03807844
 sub_037FDAF8: ; 0x037FDAF8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #4
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldr r2, _037FDC98 ; =0x04000004
 	ldr r1, _037FDC9C ; =0x0380FFF8
 	ldrh r0, [r2]
@@ -7114,7 +7114,7 @@ _037FDBD4:
 	cmpeq r0, sb
 	bne _037FDC90
 	mov r0, #4
-	bl sub_037FB928
+	bl ClearIeFlag
 	ldrh r1, [r7]
 	mov r0, #4
 	bic r1, r1, #0x20
@@ -7997,7 +7997,7 @@ _037FE5E8:
 	bne _037FE640
 	ldr r0, _037FE650 ; =_038078E4
 	bl sub_037FD3A0
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	ldr r2, _037FE654 ; =sub_037FE65C
 	ldr r3, _037FE658 ; =0x0000082E
 	str r2, [sp, #4]
@@ -8766,7 +8766,7 @@ _037FEF60: .word _03807E48
 sub_037FEF64: ; 0x037FEF64
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	ldr r3, _037FEFA8 ; =sub_037FEFEC
 	adds ip, r0, #0x10000
 	str r3, [sp, #4]
@@ -8852,7 +8852,7 @@ sub_037FF008: ; 0x037FF008
 	bl sub_037FE7CC
 	mov r0, #0x7f
 	bl sub_037FE7BC
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	ldr r2, _037FF0F4 ; =sub_037FEFEC
 	adds r4, r0, #0x10000
 	str r2, [sp, #4]
@@ -9948,7 +9948,7 @@ sub_037FFE64: ; 0x037FFE64
 	blt _037FFEAC
 	rsb r1, r0, #0x7e
 	mov r0, #0x1e00
-	bl sub_03806BC8
+	bl __divsi3
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 _037FFEAC:
@@ -11723,7 +11723,7 @@ _038015AC:
 	beq _038017D0
 	mov r1, sb
 	ldrsh r0, [r4]
-	bl sub_03806BC8
+	bl __divsi3
 	strh r0, [r4]
 	b _038017D0
 _038015C8:
@@ -12375,7 +12375,7 @@ _03801DDC:
 	bl sub_037FD4DC
 	b _03801E4C
 _03801E24:
-	bl sub_037FD21C
+	bl GetCurrentPlaybackTime
 	ldr r2, _03801E64 ; =sub_03801EA8
 	adds r0, r5, r0
 	stmib sp, {r2, sb}
@@ -15319,11 +15319,11 @@ _03804200:
 	b _03804284
 _03804230:
 	mul r0, sb, r8
-	bl sub_03806DD4
+	bl __udivsi3
 	ldr r2, [sl, #0xc]
 	mov r1, r8
 	add r0, r2, r0
-	bl sub_03806DD4
+	bl __udivsi3
 	mov r0, r1, lsl #0x10
 	mov r0, r0, lsr #0x10
 	cmp r0, #0xc8
@@ -16321,7 +16321,7 @@ sub_03804F1C: ; 0x03804F1C
 	bl EnableIrqFlag
 	mov r4, r0
 	mvn r0, #0xfe000000
-	bl sub_037FB928
+	bl ClearIeFlag
 	mov r5, r0
 	mov r0, r8
 	bl sub_03804CCC
@@ -16483,7 +16483,7 @@ _03805164:
 	ldr r0, [r1]
 	add r6, r5, r4
 	ldrh r1, [r6, #0xa]
-	bl sub_03806DD4
+	bl __udivsi3
 	mov r1, #0
 	mov r3, r1, lsr r0
 	ldr ip, [r6, #4]
@@ -17641,7 +17641,7 @@ _03806038:
 	beq _03806060
 	b _03806064
 _03806060:
-	ldr r0, _03806094 ; =sub_037FB4F4
+	ldr r0, _03806094 ; =ReturnFromInterrupt
 _03806064:
 	beq _0380606C
 	b _03806070
@@ -17661,7 +17661,7 @@ _03806088: .word _0380B24C
 _0380608C: .word _03807210
 _03806090: .word _038074F4
 	arm_func_end sub_03805FD0
-_03806094: .word sub_037FB4F4
+_03806094: .word ReturnFromInterrupt
 
 	arm_func_start sub_03806098
 sub_03806098: ; 0x03806098
@@ -18408,7 +18408,7 @@ _038069F0:
 	orrs r6, r5, r6
 	bne _03806A24
 	mov r1, r2
-	bl sub_03806BC8
+	bl __divsi3
 	ands r4, r4, #1
 	movne r0, r1
 	mov r1, r0, asr #0x1f
@@ -18537,7 +18537,7 @@ _03806BA4:
 	orrs r5, r1, r3
 	bne _03806A44
 	mov r1, r2
-	bl sub_03806DDC
+	bl __udivsi3_no_zero_check
 	cmp r4, #0
 	movne r0, r1
 	mov r1, #0
@@ -18545,8 +18545,8 @@ _03806BA4:
 	bx lr
 	arm_func_end sub_03806B80
 
-	arm_func_start sub_03806BC8
-sub_03806BC8: ; 0x03806BC8
+	arm_func_start __divsi3
+__divsi3: ; 0x03806BC8
 	eor ip, r0, r1
 	and ip, ip, #0x80000000
 	cmp r0, #0
@@ -18679,16 +18679,16 @@ _03806DC0:
 	ands r3, ip, #1
 	rsbne r1, r1, #0
 	bx lr
-	arm_func_end sub_03806BC8
+	arm_func_end __divsi3
 
-	arm_func_start sub_03806DD4
-sub_03806DD4: ; 0x03806DD4
+	arm_func_start __udivsi3
+__udivsi3: ; 0x03806DD4
 	cmp r1, #0
 	bxeq lr
-	arm_func_end sub_03806DD4
+	arm_func_end __udivsi3
 
-	arm_func_start sub_03806DDC
-sub_03806DDC: ; 0x03806DDC
+	arm_func_start __udivsi3_no_zero_check
+__udivsi3_no_zero_check: ; 0x03806DDC
 	cmp r0, r1
 	movlo r1, r0
 	movlo r0, #0
@@ -18808,7 +18808,7 @@ sub_03806DDC: ; 0x03806DDC
 	adcs r0, r0, r0
 	mov r1, r3
 	bx lr
-	arm_func_end sub_03806DDC
+	arm_func_end __udivsi3_no_zero_check
 
 _03806FB8:
 	.byte 0x00, 0x06, 0x0C, 0x13, 0x19, 0x1F, 0x25, 0x2B, 0x31, 0x36, 0x3C, 0x41, 0x47, 0x4C, 0x51, 0x55

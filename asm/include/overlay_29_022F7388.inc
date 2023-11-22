@@ -1,6 +1,6 @@
 #pragma once
-.public __divsi3
 .public _020A1870
+.public __divsi3
 .public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public AiMovement
@@ -22,9 +22,11 @@
 .public DisplayMessage
 .public DisplayMessage2
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRngSetPrimary
 .public DungeonRngSetSecondary
+.public EnableAllLearnableIqSkills
 .public EnableIqSkill
 .public EndBurnClassStatus
 .public EndCringeClassStatus
@@ -42,6 +44,7 @@
 .public GetApparentWeather
 .public GetBodySize
 .public GetChebyshevDistance
+.public GetConversion2ConvertToType
 .public GetDefensiveStatAtLevel
 .public GetDirectionTowardsPosition
 .public GetExp
@@ -55,6 +58,8 @@
 .public GetMaxHpAtLevel
 .public GetMaxPp
 .public GetMaxPpWrapper
+.public GetMinimapData
+.public GetMinimapDataE447
 .public GetMobilityType
 .public GetMonsterEvoStatus
 .public GetMonsterGender
@@ -77,6 +82,7 @@
 .public GetSpriteIndex__020526EC
 .public GetStairsRoom
 .public GetStairsSpawnPosition
+.public GetStatBoostsForMonsterSummary
 .public GetTile
 .public GetTileAtEntity
 .public GetTileSafe
@@ -86,6 +92,7 @@
 .public GroundToDungeonMoveset
 .public HasHeldItem
 .public HasMaxGinsengBoost99
+.public InitAnimationControlWithSet__0201C0CC
 .public InitMoveCheckId
 .public InitTeamMember
 .public IQ_SKILLS
@@ -108,6 +115,7 @@
 .public ItemZInit
 .public JoinedAtRangeCheck
 .public JoinedAtRangeCheck2
+.public LEADER_PTR
 .public LoadWanTableEntryFromPack
 .public LoadWanTableEntryFromPackUseProvidedMemory
 .public LoadWazaP2
@@ -164,6 +172,7 @@
 .public ov29_023159D4
 .public ov29_02337EC0
 .public ov29_02338F24
+.public ov29_02339F88
 .public ov29_02344B44
 .public ov29_02348100
 .public ov29_02349688
@@ -177,12 +186,11 @@
 .public ov29_0234EF24
 .public ov29_0235171E
 .public ov29_02351E28
-.public ov29_02353538
-.public ov29_0235355C
 .public ov29_0237C9B0
 .public PointCameraToMonster
 .public RandInt
 .public RemoveEquivItem
+.public RemoveHolderForItemInBag
 .public ReplaceWanFromBinFile
 .public RestoreAllMovePP
 .public SECONDARY_TERRAIN_TYPES
@@ -197,22 +205,17 @@
 .public ShowPpRestoreEffect
 .public StoryRestrictionsEnabled
 .public sub_0200F9B4
-.public RemoveHolderForItemInBag
 .public sub_0201405C
 .public sub_02017C50
-.public sub_0201C0CC
 .public sub_0204AEF0
-.public GetConversion2ConvertToType
 .public sub_02050FF8
 .public sub_02052E2C
 .public sub_02053250
 .public sub_0205349C
-.public sub_02056264
+.public sub_02056228
 .public sub_020566C4
 .public sub_020585B4
 .public sub_02058674
-.public EnableAllLearnableIqSkills
-.public GetStatBoostsForMonsterSummary
 .public SubFixedPoint
 .public SubstitutePlaceholderStringTags
 .public TEAM_MEMBER_TABLE_PTR
@@ -221,6 +224,7 @@
 .public TryInflictPausedStatus
 .public UnloadCurrentWazaP
 .public UpdateCamera
+.public UpdateMapSurveyorFlag
 .public UpdateMinimap
 .public UpdateStatusIconFlags
 .public WAN_TABLE

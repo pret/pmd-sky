@@ -2054,7 +2054,11 @@ _022DDD28: .word ov11_02319338
 _022DDD2C: .word ov11_02319350
 _022DDD30: .word ov11_02319370
 _022DDD34: .word 0x00000113
+#ifdef EUROPE
+_022DDD38: .word 0x0000013E
+#else
 _022DDD38: .word 0x00000132
+#endif
 _022DDD3C: .word ov11_02319380
 _022DDD40: .word ov11_02319398
 _022DDD44: .word ov11_02324EA4
@@ -2213,70 +2217,70 @@ _022DDDE0: ; jump table
 	b _022E04DC ; case 108
 	b _022E04DC ; case 109
 	b _022E04DC ; case 110
-	b ov11_022E04D4 ; case 111
-	b ov11_022E04C4 ; case 112
+	b _022E04D4 ; case 111
+	b _022E04C4 ; case 112
 	b _022E04DC ; case 113
 	b _022E04DC ; case 114
 	b _022E04DC ; case 115
-	b ov11_022DEE44 ; case 116
-	b ov11_022DEDC4 ; case 117
-	b ov11_022DEE00 ; case 118
-	b ov11_022DED7C ; case 119
-	b ov11_022DED60 ; case 120
-	b ov11_022DED98 ; case 121
-	b ov11_022DEF04 ; case 122
-	b ov11_022DEEBC ; case 123
-	b ov11_022DEF8C ; case 124
-	b ov11_022DEF64 ; case 125
-	b ov11_022DEF28 ; case 126
-	b ov11_022DEEDC ; case 127
-	b ov11_022DEE84 ; case 128
-	b ov11_022E04B8 ; case 129
-	b ov11_022E04CC ; case 130
+	b _022DEE44 ; case 116
+	b _022DEDC4 ; case 117
+	b _022DEE00 ; case 118
+	b _022DED7C ; case 119
+	b _022DED60 ; case 120
+	b _022DED98 ; case 121
+	b _022DEF04 ; case 122
+	b _022DEEBC ; case 123
+	b _022DEF8C ; case 124
+	b _022DEF64 ; case 125
+	b _022DEF28 ; case 126
+	b _022DEEDC ; case 127
+	b _022DEE84 ; case 128
+	b _022E04B8 ; case 129
+	b _022E04CC ; case 130
 	b _022E04DC ; case 131
 	b _022E04DC ; case 132
 	b _022E04DC ; case 133
 	b _022E04DC ; case 134
-	b ov11_022E0410 ; case 135
-	b ov11_022E0434 ; case 136
-	b ov11_022DE3AC ; case 137
+	b _022E0410 ; case 135
+	b _022E0434 ; case 136
+	b _022DE3AC ; case 137
 	b _022E04DC ; case 138
-	b ov11_022DECDC ; case 139
+	b _022DECDC ; case 139
 	b _022E04DC ; case 140
 	b _022E04DC ; case 141
-	b ov11_022DE458 ; case 142
-	b ov11_022DE484 ; case 143
+	b _022DE458 ; case 142
+	b _022DE484 ; case 143
 	b _022E04DC ; case 144
 	b _022E04DC ; case 145
 	b _022E04DC ; case 146
-	b ov11_022DE4BC ; case 147
+	b _022DE4BC ; case 147
 	b _022E04DC ; case 148
 	b _022E04DC ; case 149
-	b ov11_022DF924 ; case 150
-	b ov11_022DF924 ; case 151
-	b ov11_022DFA50 ; case 152
-	b ov11_022DF8B8 ; case 153
-	b ov11_022DF92C ; case 154
-	b ov11_022DF924 ; case 155
-	b ov11_022DF92C ; case 156
-	b ov11_022DE3F0 ; case 157
-	b ov11_022DF92C ; case 158
-	b ov11_022DFA78 ; case 159
-	b ov11_022DF92C ; case 160
-	b ov11_022DF728 ; case 161
-	b ov11_022DF710 ; case 162
-	b ov11_022DF740 ; case 163
-	b ov11_022DF760 ; case 164
-	b ov11_022DF834 ; case 165
-	b ov11_022DF7CC ; case 166
-	b ov11_022DF89C ; case 167
-	b ov11_022DF8F4 ; case 168
-	b ov11_022DFAAC ; case 169
-	b ov11_022DFD44 ; case 170
-	b ov11_022DFD44 ; case 171
-	b ov11_022DFC94 ; case 172
-	b ov11_022DFC94 ; case 173
-	b ov11_022DF92C ; case 174
+	b _022DF924 ; case 150
+	b _022DF924 ; case 151
+	b _022DFA50 ; case 152
+	b _022DF8B8 ; case 153
+	b _022DF92C ; case 154
+	b _022DF924 ; case 155
+	b _022DF92C ; case 156
+	b _022DE3F0 ; case 157
+	b _022DF92C ; case 158
+	b _022DFA78 ; case 159
+	b _022DF92C ; case 160
+	b _022DF728 ; case 161
+	b _022DF710 ; case 162
+	b _022DF740 ; case 163
+	b _022DF760 ; case 164
+	b _022DF834 ; case 165
+	b _022DF7CC ; case 166
+	b _022DF89C ; case 167
+	b _022DF8F4 ; case 168
+	b _022DFAAC ; case 169
+	b _022DFD44 ; case 170
+	b _022DFD44 ; case 171
+	b _022DFC94 ; case 172
+	b _022DFC94 ; case 173
+	b _022DF92C ; case 174
 	b _022E04DC ; case 175
 	b _022E04DC ; case 176
 	b _022E04DC ; case 177
@@ -2303,10 +2307,10 @@ _022DDDE0: ; jump table
 	b _022E04DC ; case 198
 	b _022E04DC ; case 199
 	b _022E04DC ; case 200
-	b ov11_022DE3AC ; case 201
+	b _022DE3AC ; case 201
 	b _022E04DC ; case 202
-	b ov11_022DE3AC ; case 203
-	b ov11_022DE448 ; case 204
+	b _022DE3AC ; case 203
+	b _022DE448 ; case 204
 	b _022E04DC ; case 205
 	b _022E04DC ; case 206
 	b _022E04DC ; case 207
@@ -2315,37 +2319,37 @@ _022DDDE0: ; jump table
 	b _022E04DC ; case 210
 	b _022E04DC ; case 211
 	b _022E04DC ; case 212
-	b ov11_022E048C ; case 213
+	b _022E048C ; case 213
 	b _022E04DC ; case 214
-	b ov11_022E0020 ; case 215
-	b ov11_022E0108 ; case 216
-	b ov11_022DFFC0 ; case 217
-	b ov11_022E00A8 ; case 218
-	b ov11_022DFFE8 ; case 219
-	b ov11_022E00D0 ; case 220
+	b _022E0020 ; case 215
+	b _022E0108 ; case 216
+	b _022DFFC0 ; case 217
+	b _022E00A8 ; case 218
+	b _022DFFE8 ; case 219
+	b _022E00D0 ; case 220
 	b _022E04DC ; case 221
-	b ov11_022E0278 ; case 222
-	b ov11_022E0278 ; case 223
-	b ov11_022E0020 ; case 224
-	b ov11_022E0108 ; case 225
+	b _022E0278 ; case 222
+	b _022E0278 ; case 223
+	b _022E0020 ; case 224
+	b _022E0108 ; case 225
 	b _022E04DC ; case 226
 	b _022E04DC ; case 227
-	b ov11_022DFFE8 ; case 228
-	b ov11_022E00D0 ; case 229
-	b ov11_022E01F0 ; case 230
+	b _022DFFE8 ; case 228
+	b _022E00D0 ; case 229
+	b _022E01F0 ; case 230
 	b _022E04DC ; case 231
-	b ov11_022E0190 ; case 232
+	b _022E0190 ; case 232
 	b _022E04DC ; case 233
-	b ov11_022E01B8 ; case 234
+	b _022E01B8 ; case 234
 	b _022E04DC ; case 235
 	b _022E04DC ; case 236
-	b ov11_022E0278 ; case 237
-	b ov11_022E0278 ; case 238
-	b ov11_022E01F0 ; case 239
+	b _022E0278 ; case 237
+	b _022E0278 ; case 238
+	b _022E01F0 ; case 239
 	b _022E04DC ; case 240
 	b _022E04DC ; case 241
 	b _022E04DC ; case 242
-	b ov11_022E01B8 ; case 243
+	b _022E01B8 ; case 243
 	b _022E04DC ; case 244
 	b _022E04DC ; case 245
 	b _022E04DC ; case 246
@@ -2400,40 +2404,40 @@ _022DDDE0: ; jump table
 	b _022E04DC ; case 295
 	b _022E04DC ; case 296
 	b _022E04DC ; case 297
-	b ov11_022DE834 ; case 298
-	b ov11_022DE834 ; case 299
-	b ov11_022DEBA4 ; case 300
-	b ov11_022DEBA4 ; case 301
-	b ov11_022DE934 ; case 302
-	b ov11_022DE9B8 ; case 303
-	b ov11_022DEAC4 ; case 304
-	b ov11_022DEA08 ; case 305
-	b ov11_022DEA08 ; case 306
-	b ov11_022DEAC4 ; case 307
-	b ov11_022DE960 ; case 308
-	b ov11_022DE960 ; case 309
-	b ov11_022DEC7C ; case 310
-	b ov11_022DE834 ; case 311
-	b ov11_022DE834 ; case 312
-	b ov11_022DE834 ; case 313
-	b ov11_022DE9B0 ; case 314
-	b ov11_022DE834 ; case 315
-	b ov11_022DE834 ; case 316
-	b ov11_022DE834 ; case 317
-	b ov11_022DE9B0 ; case 318
-	b ov11_022DF374 ; case 319
-	b ov11_022DF374 ; case 320
-	b ov11_022DF374 ; case 321
-	b ov11_022DF374 ; case 322
-	b ov11_022DF374 ; case 323
-	b ov11_022DF374 ; case 324
-	b ov11_022DF374 ; case 325
-	b ov11_022DF374 ; case 326
-	b ov11_022DF374 ; case 327
-	b ov11_022DF374 ; case 328
-	b ov11_022DF374 ; case 329
-	b ov11_022DF374 ; case 330
-	b ov11_022DF374 ; case 331
+	b _022DE834 ; case 298
+	b _022DE834 ; case 299
+	b _022DEBA4 ; case 300
+	b _022DEBA4 ; case 301
+	b _022DE934 ; case 302
+	b _022DE9B8 ; case 303
+	b _022DEAC4 ; case 304
+	b _022DEA08 ; case 305
+	b _022DEA08 ; case 306
+	b _022DEAC4 ; case 307
+	b _022DE960 ; case 308
+	b _022DE960 ; case 309
+	b _022DEC7C ; case 310
+	b _022DE834 ; case 311
+	b _022DE834 ; case 312
+	b _022DE834 ; case 313
+	b _022DE9B0 ; case 314
+	b _022DE834 ; case 315
+	b _022DE834 ; case 316
+	b _022DE834 ; case 317
+	b _022DE9B0 ; case 318
+	b _022DF374 ; case 319
+	b _022DF374 ; case 320
+	b _022DF374 ; case 321
+	b _022DF374 ; case 322
+	b _022DF374 ; case 323
+	b _022DF374 ; case 324
+	b _022DF374 ; case 325
+	b _022DF374 ; case 326
+	b _022DF374 ; case 327
+	b _022DF374 ; case 328
+	b _022DF374 ; case 329
+	b _022DF374 ; case 330
+	b _022DF374 ; case 331
 	b _022E04DC ; case 332
 	b _022E04DC ; case 333
 	b _022E04DC ; case 334
@@ -2444,39 +2448,36 @@ _022DDDE0: ; jump table
 	b _022E04DC ; case 339
 	b _022E04DC ; case 340
 	b _022E04DC ; case 341
-	b ov11_022DED48 ; case 342
-	b ov11_022E0378 ; case 343
-	b ov11_022E03B8 ; case 344
-	b ov11_022E03C8 ; case 345
-	b ov11_022E03C8 ; case 346
-	b ov11_022E03E0 ; case 347
-	b ov11_022E03E0 ; case 348
-	b ov11_022E03E0 ; case 349
-	b ov11_022E03C0 ; case 350
+	b _022DED48 ; case 342
+	b _022E0378 ; case 343
+	b _022E03B8 ; case 344
+	b _022E03C8 ; case 345
+	b _022E03C8 ; case 346
+	b _022E03E0 ; case 347
+	b _022E03E0 ; case 348
+	b _022E03E0 ; case 349
+	b _022E03C0 ; case 350
 	b _022E04DC ; case 351
-	b ov11_022E03E8 ; case 352
-	b ov11_022E03E8 ; case 353
-	b ov11_022E03E8 ; case 354
-	b ov11_022E03E0 ; case 355
-	b ov11_022E03F0 ; case 356
-	b ov11_022E03F0 ; case 357
-	b ov11_022E03F0 ; case 358
-	b ov11_022E03F0 ; case 359
-	b ov11_022E03E0 ; case 360
-	b ov11_022E03F8 ; case 361
-	b ov11_022E03F8 ; case 362
-	b ov11_022E038C ; case 363
-	b ov11_022E03E0 ; case 364
-	b ov11_022E03E0 ; case 365
-	b ov11_022E03E0 ; case 366
-	b ov11_022E03E0 ; case 367
-	b ov11_022E03D0 ; case 368
-	b ov11_022E03D8 ; case 369
-	b ov11_022E03D0 ; case 370
-	arm_func_end RunNextOpcode
-
-	arm_func_start ov11_022DE3AC
-ov11_022DE3AC: ; 0x022DE3AC
+	b _022E03E8 ; case 352
+	b _022E03E8 ; case 353
+	b _022E03E8 ; case 354
+	b _022E03E0 ; case 355
+	b _022E03F0 ; case 356
+	b _022E03F0 ; case 357
+	b _022E03F0 ; case 358
+	b _022E03F0 ; case 359
+	b _022E03E0 ; case 360
+	b _022E03F8 ; case 361
+	b _022E03F8 ; case 362
+	b _022E038C ; case 363
+	b _022E03E0 ; case 364
+	b _022E03E0 ; case 365
+	b _022E03E0 ; case 366
+	b _022E03E0 ; case 367
+	b _022E03D0 ; case 368
+	b _022E03D8 ; case 369
+	b _022E03D0 ; case 370
+_022DE3AC: ; 0x022DE3AC
 	ldr r2, [r4, #0x1c]
 	ldr r0, _022DED08 ; =SCRIPT_OP_CODES
 	ldrh r1, [r2]
@@ -2491,14 +2492,11 @@ ov11_022DE3AC: ; 0x022DE3AC
 	ldr r1, [r4, #0x1c]
 	add r0, r0, #2
 	add r0, r1, r0, lsl #1
-	arm_func_end ov11_022DE3AC
 _022DE3E4:
 	str r0, [r4, #0x1c]
 	mov r0, #3
 	b _022E2478
-
-	arm_func_start ov11_022DE3F0
-ov11_022DE3F0: ; 0x022DE3F0
+_022DE3F0: ; 0x022DE3F0
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r5, r0
@@ -2521,18 +2519,12 @@ ov11_022DE3F0: ; 0x022DE3F0
 	bl ov11_022E43E8
 	str r0, [r4, #0x1c]
 	b _022E2474
-	arm_func_end ov11_022DE3F0
-
-	arm_func_start ov11_022DE448
-ov11_022DE448: ; 0x022DE448
+_022DE448: ; 0x022DE448
 	mov r0, #0
 	strh r0, [r4, #0x46]
 	mov r0, #5
 	b _022E2478
-	arm_func_end ov11_022DE448
-
-	arm_func_start ov11_022DE458
-ov11_022DE458: ; 0x022DE458
+_022DE458: ; 0x022DE458
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r1, r0, lsl #0x10
@@ -2544,10 +2536,7 @@ ov11_022DE458: ; 0x022DE458
 	mov r1, #0
 	bl ov11_022E94D0
 	b _022E2474
-	arm_func_end ov11_022DE458
-
-	arm_func_start ov11_022DE484
-ov11_022DE484: ; 0x022DE484
+_022DE484: ; 0x022DE484
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r1, r0, lsl #0x10
@@ -2562,10 +2551,7 @@ ov11_022DE484: ; 0x022DE484
 	mov r2, r4
 	bl ov11_022E94D0
 	b _022E2474
-	arm_func_end ov11_022DE484
-
-	arm_func_start ov11_022DE4BC
-ov11_022DE4BC: ; 0x022DE4BC
+_022DE4BC: ; 0x022DE4BC
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r0, r0, lsl #0x10
@@ -2809,10 +2795,7 @@ _022DE808:
 	mov r0, #1
 	bl ov11_022EF594
 	b _022E2474
-	arm_func_end ov11_022DE4BC
-
-	arm_func_start ov11_022DE834
-ov11_022DE834: ; 0x022DE834
+_022DE834: ; 0x022DE834
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r0, r0, lsl #0x18
@@ -2887,10 +2870,7 @@ _022DE928:
 	mov r0, r6
 	bl ov11_022E5D14
 	b _022E2474
-	arm_func_end ov11_022DE834
-
-	arm_func_start ov11_022DE934
-ov11_022DE934: ; 0x022DE934
+_022DE934: ; 0x022DE934
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r0, r0, lsl #0x10
@@ -2902,10 +2882,7 @@ ov11_022DE934: ; 0x022DE934
 	bne _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022DE934
-
-	arm_func_start ov11_022DE960
-ov11_022DE960: ; 0x022DE960
+_022DE960: ; 0x022DE960
 	ldrh r1, [r6]
 	add r0, r4, #0x14
 	bl ov11_022E4248
@@ -2926,16 +2903,10 @@ ov11_022DE960: ; 0x022DE960
 	strh r0, [r4, #0x46]
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022DE960
-
-	arm_func_start ov11_022DE9B0
-ov11_022DE9B0: ; 0x022DE9B0
+_022DE9B0: ; 0x022DE9B0
 	mov r0, #4
 	b _022E2478
-	arm_func_end ov11_022DE9B0
-
-	arm_func_start ov11_022DE9B8
-ov11_022DE9B8: ; 0x022DE9B8
+_022DE9B8: ; 0x022DE9B8
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r0, r0, lsl #0x10
@@ -2957,10 +2928,7 @@ _022DE9E8:
 	bl ov11_022F71E4
 	mov r0, #6
 	b _022E2478
-	arm_func_end ov11_022DE9B8
-
-	arm_func_start ov11_022DEA08
-ov11_022DEA08: ; 0x022DEA08
+_022DEA08: ; 0x022DEA08
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r7, r0, lsl #0x10
@@ -3009,10 +2977,7 @@ _022DEAA0:
 	strneh r0, [r4, #0x46]
 	movne r0, #3
 	b _022E2478
-	arm_func_end ov11_022DEA08
-
-	arm_func_start ov11_022DEAC4
-ov11_022DEAC4: ; 0x022DEAC4
+_022DEAC4: ; 0x022DEAC4
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov sb, r0, lsl #0x10
@@ -3070,10 +3035,7 @@ _022DEB80:
 	strneh r0, [r4, #0x46]
 	movne r0, #3
 	b _022E2478
-	arm_func_end ov11_022DEAC4
-
-	arm_func_start ov11_022DEBA4
-ov11_022DEBA4: ; 0x022DEBA4
+_022DEBA4: ; 0x022DEBA4
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov sb, r0, lsl #0x10
@@ -3128,10 +3090,7 @@ ov11_022DEBA4: ; 0x022DEBA4
 	streqh r0, [r4, #0x46]
 	moveq r0, #3
 	b _022E2478
-	arm_func_end ov11_022DEBA4
-
-	arm_func_start ov11_022DEC7C
-ov11_022DEC7C: ; 0x022DEC7C
+_022DEC7C: ; 0x022DEC7C
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r5, r0, lsl #0x10
@@ -3156,10 +3115,7 @@ ov11_022DEC7C: ; 0x022DEC7C
 	strh r0, [r4, #0x46]
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022DEC7C
-
-	arm_func_start ov11_022DECDC
-ov11_022DECDC: ; 0x022DECDC
+_022DECDC: ; 0x022DECDC
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r0, r0, lsl #0x10
@@ -3188,20 +3144,14 @@ _022DED38: .word 0x00000135
 _022DED3C: .word 0x00000132
 _022DED40: .word 0x00000133
 _022DED44: .word 0x0000012D
-	arm_func_end ov11_022DECDC
-
-	arm_func_start ov11_022DED48
-ov11_022DED48: ; 0x022DED48
+_022DED48: ; 0x022DED48
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl UnlockScriptingLock
 	b _022E2474
-	arm_func_end ov11_022DED48
-
-	arm_func_start ov11_022DED60
-ov11_022DED60: ; 0x022DED60
+_022DED60: ; 0x022DED60
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r1, r0, lsl #0x10
@@ -3209,10 +3159,7 @@ ov11_022DED60: ; 0x022DED60
 	mov r1, r1, asr #0x10
 	bl sub_0204B3D0
 	b _022E2474
-	arm_func_end ov11_022DED60
-
-	arm_func_start ov11_022DED7C
-ov11_022DED7C: ; 0x022DED7C
+_022DED7C: ; 0x022DED7C
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r1, r0, lsl #0x10
@@ -3220,10 +3167,7 @@ ov11_022DED7C: ; 0x022DED7C
 	mov r1, r1, asr #0x10
 	bl ZinitScriptVariable
 	b _022E2474
-	arm_func_end ov11_022DED7C
-
-	arm_func_start ov11_022DED98
-ov11_022DED98: ; 0x022DED98
+_022DED98: ; 0x022DED98
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r5, r0
@@ -3235,10 +3179,7 @@ ov11_022DED98: ; 0x022DED98
 	mov r1, r1, asr #0x10
 	bl SaveScriptVariableValue
 	b _022E2474
-	arm_func_end ov11_022DED98
-
-	arm_func_start ov11_022DEDC4
-ov11_022DEDC4: ; 0x022DEDC4
+_022DEDC4: ; 0x022DEDC4
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r7, r0
@@ -3254,10 +3195,7 @@ ov11_022DEDC4: ; 0x022DEDC4
 	add r0, r4, #0x6c
 	bl sub_0204BED8
 	b _022E2474
-	arm_func_end ov11_022DEDC4
-
-	arm_func_start ov11_022DEE00
-ov11_022DEE00: ; 0x022DEE00
+_022DEE00: ; 0x022DEE00
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r7, r0
@@ -3275,10 +3213,7 @@ ov11_022DEE00: ; 0x022DEE00
 	mov r2, r2, asr #0x10
 	bl sub_0204BF10
 	b _022E2474
-	arm_func_end ov11_022DEE00
-
-	arm_func_start ov11_022DEE44
-ov11_022DEE44: ; 0x022DEE44
+_022DEE44: ; 0x022DEE44
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r7, r0
@@ -3295,10 +3230,7 @@ ov11_022DEE44: ; 0x022DEE44
 	add r0, r4, #0x6c
 	bl SaveScriptVariableValueAtIndex
 	b _022E2474
-	arm_func_end ov11_022DEE44
-
-	arm_func_start ov11_022DEE84
-ov11_022DEE84: ; 0x022DEE84
+_022DEE84: ; 0x022DEE84
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r5, r0
@@ -3313,10 +3245,7 @@ ov11_022DEE84: ; 0x022DEE84
 	mov r0, r3, asr #0x10
 	bl SetScenarioScriptVar
 	b _022E2474
-	arm_func_end ov11_022DEE84
-
-	arm_func_start ov11_022DEEBC
-ov11_022DEEBC: ; 0x022DEEBC
+_022DEEBC: ; 0x022DEEBC
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r0, r0, lsl #0x10
@@ -3325,10 +3254,7 @@ ov11_022DEEBC: ; 0x022DEEBC
 	mov r0, r0, asr #0x10
 	bl SetScenarioScriptVar
 	b _022E2474
-	arm_func_end ov11_022DEEBC
-
-	arm_func_start ov11_022DEEDC
-ov11_022DEEDC: ; 0x022DEEDC
+_022DEEDC: ; 0x022DEEDC
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -3339,10 +3265,7 @@ ov11_022DEEDC: ; 0x022DEEDC
 	and r1, r1, #0xff
 	bl sub_0204CB2C
 	b _022E2474
-	arm_func_end ov11_022DEEDC
-
-	arm_func_start ov11_022DEF04
-ov11_022DEF04: ; 0x022DEF04
+_022DEF04: ; 0x022DEF04
 	mov r1, #0x27
 	add r0, r4, #0x6c
 	sub r2, r1, #0x28
@@ -3352,10 +3275,7 @@ ov11_022DEF04: ; 0x022DEF04
 	mov r2, #0
 	bl SaveScriptVariableValue
 	b _022E2474
-	arm_func_end ov11_022DEF04
-
-	arm_func_start ov11_022DEF28
-ov11_022DEF28: ; 0x022DEF28
+_022DEF28: ; 0x022DEF28
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r7, r0
@@ -3371,10 +3291,7 @@ ov11_022DEF28: ; 0x022DEF28
 	mov r1, #0x2c
 	bl SaveScriptVariableValue
 	b _022E2474
-	arm_func_end ov11_022DEF28
-
-	arm_func_start ov11_022DEF64
-ov11_022DEF64: ; 0x022DEF64
+_022DEF64: ; 0x022DEF64
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -3385,10 +3302,7 @@ ov11_022DEF64: ; 0x022DEF64
 	mov r0, r2, asr #0x10
 	bl sub_0204D018
 	b _022E2474
-	arm_func_end ov11_022DEF64
-
-	arm_func_start ov11_022DEF8C
-ov11_022DEF8C: ; 0x022DEF8C
+_022DEF8C: ; 0x022DEF8C
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -3654,10 +3568,7 @@ _022DF348:
 	addeq r0, r1, r0, lsl #1
 	streq r0, [r4, #0x1c]
 	b _022E2474
-	arm_func_end ov11_022DEF8C
-
-	arm_func_start ov11_022DF374
-ov11_022DF374: ; 0x022DF374
+_022DF374: ; 0x022DF374
 	sub r0, r0, #0x33
 	sub r0, r5, r0
 	cmp r0, #0xc
@@ -3907,30 +3818,21 @@ _022DF6FC:
 	bl ov11_022E43E8
 	str r0, [r4, #0x1c]
 	b _022E2474
-	arm_func_end ov11_022DF374
-
-	arm_func_start ov11_022DF710
-ov11_022DF710: ; 0x022DF710
+_022DF710: ; 0x022DF710
 	ldr r1, _022DFE18 ; =ov11_02324ECC
 	mov r2, #0x60000
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	str r2, [r1, #0x4c]
 	bl InitPortraitBox
 	b _022E2474
-	arm_func_end ov11_022DF710
-
-	arm_func_start ov11_022DF728
-ov11_022DF728: ; 0x022DF728
+_022DF728: ; 0x022DF728
 	ldr r1, _022DFE18 ; =ov11_02324ECC
 	mov r2, #0x70000
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	str r2, [r1, #0x4c]
 	bl InitPortraitBox
 	b _022E2474
-	arm_func_end ov11_022DF728
-
-	arm_func_start ov11_022DF740
-ov11_022DF740: ; 0x022DF740
+_022DF740: ; 0x022DF740
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	orr r2, r0, #0x10000
@@ -3939,10 +3841,7 @@ ov11_022DF740: ; 0x022DF740
 	str r2, [r1, #0x4c]
 	bl InitPortraitBox
 	b _022E2474
-	arm_func_end ov11_022DF740
-
-	arm_func_start ov11_022DF760
-ov11_022DF760: ; 0x022DF760
+_022DF760: ; 0x022DF760
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r7, r0
@@ -3970,10 +3869,7 @@ ov11_022DF760: ; 0x022DF760
 	and r1, r4, #0xff
 	bl SetPortraitLayout
 	b _022E2474
-	arm_func_end ov11_022DF760
-
-	arm_func_start ov11_022DF7CC
-ov11_022DF7CC: ; 0x022DF7CC
+_022DF7CC: ; 0x022DF7CC
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -4000,10 +3896,7 @@ ov11_022DF7CC: ; 0x022DF7CC
 	and r1, r4, #0xff
 	bl SetPortraitLayout
 	b _022E2474
-	arm_func_end ov11_022DF7CC
-
-	arm_func_start ov11_022DF834
-ov11_022DF834: ; 0x022DF834
+_022DF834: ; 0x022DF834
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -4030,10 +3923,7 @@ ov11_022DF834: ; 0x022DF834
 	and r1, r4, #0xff
 	bl SetPortraitLayout
 	b _022E2474
-	arm_func_end ov11_022DF834
-
-	arm_func_start ov11_022DF89C
-ov11_022DF89C: ; 0x022DF89C
+_022DF89C: ; 0x022DF89C
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r1, r0
@@ -4041,10 +3931,7 @@ ov11_022DF89C: ; 0x022DF89C
 	and r1, r1, #0xff
 	bl SetPortraitLayout
 	b _022E2474
-	arm_func_end ov11_022DF89C
-
-	arm_func_start ov11_022DF8B8
-ov11_022DF8B8: ; 0x022DF8B8
+_022DF8B8: ; 0x022DF8B8
 	ldr r0, _022DED30 ; =ov11_02316A44
 	ldr r1, [r0, #0x80]
 	ldr r0, [r0, #0x7c]
@@ -4060,10 +3947,7 @@ ov11_022DF8B8: ; 0x022DF8B8
 	add r1, sp, #0xd0
 	bl SetPortraitOffset
 	b _022E2474
-	arm_func_end ov11_022DF8B8
-
-	arm_func_start ov11_022DF8F4
-ov11_022DF8F4: ; 0x022DF8F4
+_022DF8F4: ; 0x022DF8F4
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	ldr r1, _022DED18 ; =ov11_02324E80
@@ -4076,16 +3960,10 @@ ov11_022DF8F4: ; 0x022DF8F4
 	ldr r0, [r2, #0xc]
 	bl sub_02034E60
 	b _022E2474
-	arm_func_end ov11_022DF8F4
-
-	arm_func_start ov11_022DF924
-ov11_022DF924: ; 0x022DF924
+_022DF924: ; 0x022DF924
 	mov r0, #5
 	b _022E2478
-	arm_func_end ov11_022DF924
-
-	arm_func_start ov11_022DF92C
-ov11_022DF92C: ; 0x022DF92C
+_022DF92C: ; 0x022DF92C
 	ldrh r1, [r6]
 	add r0, r4, #0x14
 	bl ov11_022E4248
@@ -4169,10 +4047,7 @@ _022DFA30:
 _022DFA48:
 	mov r0, #5
 	b _022E2478
-	arm_func_end ov11_022DF92C
-
-	arm_func_start ov11_022DFA50
-ov11_022DFA50: ; 0x022DFA50
+_022DFA50: ; 0x022DFA50
 	ldrh r1, [r6]
 	add r0, r4, #0x14
 	bl ov11_022E4248
@@ -4183,10 +4058,7 @@ ov11_022DFA50: ; 0x022DFA50
 	bl ov11_02300ACC
 	mov r0, #5
 	b _022E2478
-	arm_func_end ov11_022DFA50
-
-	arm_func_start ov11_022DFA78
-ov11_022DFA78: ; 0x022DFA78
+_022DFA78: ; 0x022DFA78
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r5, r0
@@ -4200,10 +4072,7 @@ ov11_022DFA78: ; 0x022DFA78
 	bl ov11_02300728
 	mov r0, #5
 	b _022E2478
-	arm_func_end ov11_022DFA78
-
-	arm_func_start ov11_022DFAAC
-ov11_022DFAAC: ; 0x022DFAAC
+_022DFAAC: ; 0x022DFAAC
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r5, r0
@@ -4334,10 +4203,7 @@ _022DFC64:
 	bl ov11_022F1244
 	mov r0, #4
 	b _022E2478
-	arm_func_end ov11_022DFAAC
-
-	arm_func_start ov11_022DFC94
-ov11_022DFC94: ; 0x022DFC94
+_022DFC94: ; 0x022DFC94
 	ldrh r0, [r6]
 	ldr r5, [r4, #0x1c]
 	bl ProcessScriptParam
@@ -4384,10 +4250,7 @@ _022DFD0C:
 	strh r0, [r4, #0x44]
 	mov r0, #5
 	b _022E2478
-	arm_func_end ov11_022DFC94
-
-	arm_func_start ov11_022DFD44
-ov11_022DFD44: ; 0x022DFD44
+_022DFD44: ; 0x022DFD44
 	ldr r0, _022DFE40 ; =0x0000524C
 	mov r1, #8
 	ldr r7, [r4, #0x1c]
@@ -4555,10 +4418,7 @@ _022DFFAC:
 	mov r1, #0
 	str r1, [r0]
 	b _022E2474
-	arm_func_end ov11_022DFD44
-
-	arm_func_start ov11_022DFFC0
-ov11_022DFFC0: ; 0x022DFFC0
+_022DFFC0: ; 0x022DFFC0
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -4569,10 +4429,7 @@ ov11_022DFFC0: ; 0x022DFFC0
 	beq _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022DFFC0
-
-	arm_func_start ov11_022DFFE8
-ov11_022DFFE8: ; 0x022DFFE8
+_022DFFE8: ; 0x022DFFE8
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -4589,10 +4446,7 @@ _022E0010:
 	beq _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022DFFE8
-
-	arm_func_start ov11_022E0020
-ov11_022E0020: ; 0x022E0020
+_022E0020: ; 0x022E0020
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r7, r0
@@ -4629,10 +4483,7 @@ _022E0098:
 	beq _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E0020
-
-	arm_func_start ov11_022E00A8
-ov11_022E00A8: ; 0x022E00A8
+_022E00A8: ; 0x022E00A8
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -4643,10 +4494,7 @@ ov11_022E00A8: ; 0x022E00A8
 	beq _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E00A8
-
-	arm_func_start ov11_022E00D0
-ov11_022E00D0: ; 0x022E00D0
+_022E00D0: ; 0x022E00D0
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -4663,10 +4511,7 @@ _022E00F8:
 	beq _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E00D0
-
-	arm_func_start ov11_022E0108
-ov11_022E0108: ; 0x022E0108
+_022E0108: ; 0x022E0108
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r7, r0
@@ -4703,10 +4548,7 @@ _022E0180:
 	beq _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E0108
-
-	arm_func_start ov11_022E0190
-ov11_022E0190: ; 0x022E0190
+_022E0190: ; 0x022E0190
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -4717,10 +4559,7 @@ ov11_022E0190: ; 0x022E0190
 	beq _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E0190
-
-	arm_func_start ov11_022E01B8
-ov11_022E01B8: ; 0x022E01B8
+_022E01B8: ; 0x022E01B8
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -4737,10 +4576,7 @@ _022E01E0:
 	beq _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E01B8
-
-	arm_func_start ov11_022E01F0
-ov11_022E01F0: ; 0x022E01F0
+_022E01F0: ; 0x022E01F0
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r7, r0
@@ -4777,10 +4613,7 @@ _022E0268:
 	beq _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E01F0
-
-	arm_func_start ov11_022E0278
-ov11_022E0278: ; 0x022E0278
+_022E0278: ; 0x022E0278
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r4, r0
@@ -4852,19 +4685,13 @@ _022E0368:
 	beq _022E2474
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E0278
-
-	arm_func_start ov11_022E0378
-ov11_022E0378: ; 0x022E0378
+_022E0378: ; 0x022E0378
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	strh r0, [r4, #0x46]
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E0378
-
-	arm_func_start ov11_022E038C
-ov11_022E038C: ; 0x022E038C
+_022E038C: ; 0x022E038C
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r5, r0
@@ -4876,58 +4703,31 @@ ov11_022E038C: ; 0x022E038C
 	strh r0, [r4, #0x46]
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E038C
-
-	arm_func_start ov11_022E03B8
-ov11_022E03B8: ; 0x022E03B8
+_022E03B8: ; 0x022E03B8
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E03B8
-
-	arm_func_start ov11_022E03C0
-ov11_022E03C0: ; 0x022E03C0
+_022E03C0: ; 0x022E03C0
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E03C0
-
-	arm_func_start ov11_022E03C8
-ov11_022E03C8: ; 0x022E03C8
+_022E03C8: ; 0x022E03C8
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E03C8
-
-	arm_func_start ov11_022E03D0
-ov11_022E03D0: ; 0x022E03D0
+_022E03D0: ; 0x022E03D0
 	mov r0, #4
 	b _022E2478
-	arm_func_end ov11_022E03D0
-
-	arm_func_start ov11_022E03D8
-ov11_022E03D8: ; 0x022E03D8
+_022E03D8: ; 0x022E03D8
 	mov r0, #4
 	b _022E2478
-	arm_func_end ov11_022E03D8
-
-	arm_func_start ov11_022E03E0
-ov11_022E03E0: ; 0x022E03E0
+_022E03E0: ; 0x022E03E0
 	mov r0, #3
 	b _022E2478
-	arm_func_end ov11_022E03E0
-
-	arm_func_start ov11_022E03E8
-ov11_022E03E8: ; 0x022E03E8
+_022E03E8: ; 0x022E03E8
 	mov r0, #4
 	b _022E2478
-	arm_func_end ov11_022E03E8
-
-	arm_func_start ov11_022E03F0
-ov11_022E03F0: ; 0x022E03F0
+_022E03F0: ; 0x022E03F0
 	mov r0, #4
 	b _022E2478
-	arm_func_end ov11_022E03F0
-
-	arm_func_start ov11_022E03F8
-ov11_022E03F8: ; 0x022E03F8
+_022E03F8: ; 0x022E03F8
 	mov r0, #3
 	b _022E2478
 _022E0400:
@@ -4935,10 +4735,7 @@ _022E0400:
 	add r5, r4, #0x24
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r5, {r0, r1, r2, r3}
-	arm_func_end ov11_022E03F8
-
-	arm_func_start ov11_022E0410
-ov11_022E0410: ; 0x022E0410
+_022E0410: ; 0x022E0410
 	ldrh r0, [r6]
 	ldr r1, [r4, #0x14]
 	add r0, r1, r0, lsl #1
@@ -4949,10 +4746,7 @@ _022E0424:
 	add r5, r4, #0x24
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r5, {r0, r1, r2, r3}
-	arm_func_end ov11_022E0410
-
-	arm_func_start ov11_022E0434
-ov11_022E0434: ; 0x022E0434
+_022E0434: ; 0x022E0434
 	ldrh r0, [r6]
 	bl ProcessScriptParam
 	mov r5, r0
@@ -4976,10 +4770,7 @@ ov11_022E0434: ; 0x022E0434
 _022E0484:
 	mov r0, #6
 	b _022E2478
-	arm_func_end ov11_022E0434
-
-	arm_func_start ov11_022E048C
-ov11_022E048C: ; 0x022E048C
+_022E048C: ; 0x022E048C
 	ldr r0, [r4, #0x2c]
 	cmp r0, #0
 	moveq r0, #0
@@ -4991,29 +4782,17 @@ ov11_022E048C: ; 0x022E048C
 	mov r0, #0
 	str r0, [r4, #0x2c]
 	b _022E2474
-	arm_func_end ov11_022E048C
-
-	arm_func_start ov11_022E04B8
-ov11_022E04B8: ; 0x022E04B8
+_022E04B8: ; 0x022E04B8
 	mov r0, #0
 	str r0, [r4, #0x2c]
 	b _022E2474
-	arm_func_end ov11_022E04B8
-
-	arm_func_start ov11_022E04C4
-ov11_022E04C4: ; 0x022E04C4
+_022E04C4: ; 0x022E04C4
 	mov r0, #0
 	b _022E2478
-	arm_func_end ov11_022E04C4
-
-	arm_func_start ov11_022E04CC
-ov11_022E04CC: ; 0x022E04CC
+_022E04CC: ; 0x022E04CC
 	mov r0, #1
 	b _022E2478
-	arm_func_end ov11_022E04CC
-
-	arm_func_start ov11_022E04D4
-ov11_022E04D4: ; 0x022E04D4
+_022E04D4: ; 0x022E04D4
 	mov r0, #6
 	b _022E2478
 _022E04DC:
@@ -6958,7 +6737,7 @@ _022E20A4:
 	mov r0, r0, lsr #0x10
 	cmp r0, r1
 	beq _022E20C8
-	bl sub_02017B58
+	bl PlayBgmByIdVeneer
 	b _022E2464
 _022E20C8:
 	bl sub_02017B70
@@ -7043,7 +6822,7 @@ _022E21A8:
 	mov r2, r3, lsl #0x10
 	mov r1, r1, lsr #0x10
 	mov r2, r2, lsr #0x10
-	bl SendAudioCommandWrapperVeneer
+	bl PlayBgmByIdVolumeVeneer
 	b _022E2464
 _022E21F8:
 	bl sub_02017BEC
@@ -7228,7 +7007,7 @@ _022E2474:
 _022E2478:
 	add sp, sp, #0x2c8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov11_022E04D4
+	arm_func_end RunNextOpcode
 
 	arm_func_start ov11_022E2480
 ov11_022E2480: ; 0x022E2480
@@ -9699,8 +9478,13 @@ _022E46F8: .word SsbLoad2
 
 	arm_func_start SsbLoad2
 SsbLoad2: ; 0x022E46FC
+#ifdef EUROPE
+#define SSB_LOAD_2_STACK_OFFSET 8
+#else
+#define SSB_LOAD_2_STACK_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, lr}
-	sub sp, sp, #0x54
+	sub sp, sp, #0x54 + SSB_LOAD_2_STACK_OFFSET
 	mov r4, r1
 	mov r5, r0
 	ldr r1, _022E48A4 ; =ov11_02319694
@@ -9708,14 +9492,18 @@ SsbLoad2: ; 0x022E46FC
 	mov r0, #2
 	bl DebugPrint
 	bl DataTransferInit
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	bl FileInitVeneer
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	mov r1, r4
 	bl FileOpen
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	add r1, sp, #0
+#ifdef EUROPE
+	mov r2, #0x12
+#else
 	mov r2, #0xc
+#endif
 	bl FileRead
 	ldrh r3, [sp, #4]
 	ldrh r2, [sp, #6]
@@ -9739,7 +9527,7 @@ SsbLoad2: ; 0x022E46FC
 _022E4790:
 	ldrh r2, [sp, #4]
 	ldr r1, [r5]
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	mov r2, r2, lsl #1
 	bl FileRead
 	ldrh r0, [sp]
@@ -9750,7 +9538,7 @@ _022E4790:
 	ldrh r2, [sp, #6]
 	ldr r3, [r5]
 	add r1, r1, r0
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	add r1, r3, r1, lsl #1
 	mov r2, r2, lsl #1
 	bl FileRead
@@ -9763,7 +9551,11 @@ _022E47D4:
 	ldr r0, _022E48A8 ; =ov11_02324F70
 	mov r3, #0
 	add r1, r2, r1
+#ifdef EUROPE
+	add r2, r1, #9
+#else
 	add r2, r1, #6
+#endif
 	ldrsb ip, [r0]
 	add r1, sp, #0
 	b _022E4814
@@ -9776,13 +9568,13 @@ _022E4814:
 	cmp r3, ip
 	blt _022E4804
 	mov r1, r2, lsl #1
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	mov r2, #0
 	bl FileSeek
 	ldrh r2, [sp, #2]
 	ldrh r1, [sp, #4]
 	ldr r3, [r5]
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	add r1, r3, r1, lsl #1
 	mov r2, r2, lsl #1
 	bl FileRead
@@ -9799,16 +9591,16 @@ _022E4814:
 	sub r2, r0, ip
 	ldr r5, [r5]
 	add r1, r3, r1
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	add r1, r5, r1, lsl #1
 	mov r2, r2, lsl #1
 	bl FileRead
 _022E488C:
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	bl FileClose
 	bl DataTransferStop
 	mov r0, r4
-	add sp, sp, #0x54
+	add sp, sp, #0x54 + SSB_LOAD_2_STACK_OFFSET
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _022E48A4: .word ov11_02319694
@@ -11354,8 +11146,13 @@ ov11_022E5D14: ; 0x022E5D14
 
 	arm_func_start SsbLoad1
 SsbLoad1: ; 0x022E5D50
+#ifdef EUROPE
+#define SSB_LOAD_1_STACK_OFFSET 8
+#else
+#define SSB_LOAD_1_STACK_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, lr}
-	sub sp, sp, #0x54
+	sub sp, sp, #0x54 + SSB_LOAD_1_STACK_OFFSET
 	mov r5, r1
 	mov r4, r0
 	ldr r1, _022E5EF4 ; =ov11_02319908
@@ -11363,14 +11160,18 @@ SsbLoad1: ; 0x022E5D50
 	mov r0, #2
 	bl DebugPrint
 	bl DataTransferInit
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	bl FileInitVeneer
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	mov r1, r5
 	bl FileOpen
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	add r1, sp, #0
+#ifdef EUROPE
+	mov r2, #0x12
+#else
 	mov r2, #0xc
+#endif
 	bl FileRead
 	ldrh r3, [sp, #4]
 	ldrh r2, [sp, #6]
@@ -11393,7 +11194,7 @@ SsbLoad1: ; 0x022E5D50
 _022E5DE0:
 	ldrh r2, [sp, #4]
 	ldr r1, [r4]
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	mov r2, r2, lsl #1
 	bl FileRead
 	ldrh r0, [sp]
@@ -11404,7 +11205,7 @@ _022E5DE0:
 	ldrh r2, [sp, #6]
 	ldr r3, [r4]
 	add r1, r1, r0
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	add r1, r3, r1, lsl #1
 	mov r2, r2, lsl #1
 	bl FileRead
@@ -11417,7 +11218,11 @@ _022E5E24:
 	ldr r0, _022E5EF8 ; =ov11_02324F74
 	mov r3, #0
 	add r1, r2, r1
+#ifdef EUROPE
+	add r2, r1, #9
+#else
 	add r2, r1, #6
+#endif
 	ldrsb ip, [r0, #1]
 	add r1, sp, #0
 	b _022E5E64
@@ -11430,13 +11235,13 @@ _022E5E64:
 	cmp r3, ip
 	blt _022E5E54
 	mov r1, r2, lsl #1
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	mov r2, #0
 	bl FileSeek
 	ldrh r2, [sp, #2]
 	ldrh r1, [sp, #4]
 	ldr r3, [r4]
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	add r1, r3, r1, lsl #1
 	mov r2, r2, lsl #1
 	bl FileRead
@@ -11453,16 +11258,16 @@ _022E5E64:
 	sub r2, r0, ip
 	ldr r4, [r4]
 	add r1, r3, r1
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	add r1, r4, r1, lsl #1
 	mov r2, r2, lsl #1
 	bl FileRead
 _022E5EDC:
-	add r0, sp, #0xc
+	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	bl FileClose
 	bl DataTransferStop
 	mov r0, #1
-	add sp, sp, #0x54
+	add sp, sp, #0x54 + SSB_LOAD_1_STACK_OFFSET
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _022E5EF4: .word ov11_02319908
@@ -13894,7 +13699,7 @@ ov11_022E7F34: ; 0x022E7F34
 	ldr r0, _022E7F78 ; =ov11_02319AD0
 	bl DebugPrint0
 	ldr r2, [sp]
-	ldr r0, _022E7F7C ; =ov11_02324CA4
+	ldr r0, _022E7F7C ; =UNIONALL_RAM_ADDRESS
 	str r2, [r0]
 	ldrh r1, [r2]
 	add r1, r2, r1, lsl #1
@@ -13904,22 +13709,22 @@ ov11_022E7F34: ; 0x022E7F34
 	.align 2, 0
 _022E7F74: .word ov11_02319AB4
 _022E7F78: .word ov11_02319AD0
-_022E7F7C: .word ov11_02324CA4
+_022E7F7C: .word UNIONALL_RAM_ADDRESS
 	arm_func_end ov11_022E7F34
 
 	arm_func_start ov11_022E7F80
 ov11_022E7F80: ; 0x022E7F80
 	stmdb sp!, {r3, lr}
-	ldr r0, _022E7FA4 ; =ov11_02324CA4
+	ldr r0, _022E7FA4 ; =UNIONALL_RAM_ADDRESS
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022E7FA4 ; =ov11_02324CA4
+	ldr r0, _022E7FA4 ; =UNIONALL_RAM_ADDRESS
 	mov r1, #0
 	str r1, [r0]
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022E7FA4: .word ov11_02324CA4
+_022E7FA4: .word UNIONALL_RAM_ADDRESS
 	arm_func_end ov11_022E7F80
 
 	arm_func_start ov11_022E7FA8
@@ -13937,7 +13742,7 @@ GetCoroutineInfo: ; 0x022E7FB8
 	mov r4, r0
 	mov r5, r1
 	bl ov11_022DC89C
-	ldr r0, _022E8020 ; =ov11_02324CA4
+	ldr r0, _022E8020 ; =UNIONALL_RAM_ADDRESS
 	add r1, r5, r5, lsl #1
 	ldr r2, [r0]
 	add r3, r2, r1, lsl #1
@@ -13960,7 +13765,7 @@ GetCoroutineInfo: ; 0x022E7FB8
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022E8020: .word ov11_02324CA4
+_022E8020: .word UNIONALL_RAM_ADDRESS
 	arm_func_end GetCoroutineInfo
 
 	arm_func_start ov11_022E8024
@@ -14397,7 +14202,7 @@ _022E851C:
 	ldr r2, _022E8664 ; =0x0000025F
 	ldrsb r0, [r3, #4]
 	add r3, r3, #0x18
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _022E865C ; =ov11_02324CAC
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
@@ -14463,7 +14268,7 @@ _022E861C:
 	mov r2, #0x260
 	ldrsb r0, [r3, #4]
 	add r3, r3, #0x18
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _022E865C ; =ov11_02324CAC
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
@@ -14489,7 +14294,7 @@ ov11_022E866C: ; 0x022E866C
 	cmp r1, r0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _022E86A0 ; =ov11_02324CAC
 	ldr r1, [r1]
 	strb r0, [r1, #4]
@@ -14528,7 +14333,7 @@ ov11_022E86E4: ; 0x022E86E4
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	beq _022E8714
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _022E8744 ; =ov11_02324CAC
 	mvn r1, #1
 	ldr r0, [r0]
@@ -14560,7 +14365,7 @@ ov11_022E8748: ; 0x022E8748
 	cmp r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E8770: .word ov11_02324CAC
@@ -16773,10 +16578,6 @@ _022EA3EC:
 	add r0, r0, #0x100
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	arm_func_end ov11_022EA0BC
-
-	arm_func_start ov11_022EA428
-ov11_022EA428: ; 0x022EA428
 	cmp r0, #0xff
 	movgt r7, #0x80
 	bgt _022EA444
@@ -16914,10 +16715,6 @@ _022EA5DC:
 _022EA624:
 	mov r0, #2
 	mov r1, r0
-	arm_func_end ov11_022EA428
-
-	arm_func_start ov11_022EA62C
-ov11_022EA62C: ; 0x022EA62C
 	and r2, r8, #0xff
 	bl sub_02009454
 	mov r0, #3
@@ -17052,7 +16849,7 @@ _022EA7FC: .word ov11_02389128
 _022EA800: .word ov11_02389018
 _022EA804: .word ov11_0238916C
 _022EA808: .word ov11_02388FD4
-	arm_func_end ov11_022EA62C
+	arm_func_end ov11_022EA0BC
 
 	arm_func_start ov11_022EA80C
 ov11_022EA80C: ; 0x022EA80C
@@ -23362,6 +23159,215 @@ ov11_022EFD5C: ; 0x022EFD5C
 	str r2, [r0, #0x10]
 	str r2, [r0, #0x14]
 	str r2, [r0, #0x18]
+#ifdef EUROPE
+	cmp r1, #0
+	add r0, r5, #0x100
+	ldrsh r1, [r0, #0xbe]
+	moveq r3, #0
+	movne r3, #1
+	ldr r0, _022F0D74 ; =0x0000017B
+	and r4, r3, #0xff
+	cmp r1, r0
+	bgt _022F085C
+	bge _022F0028
+	sub r3, r0, #0x4d
+	cmp r1, r3
+	bgt _022F07A8
+	bge _022F0038
+	cmp r1, #0xdc
+	bgt _022F0730
+	bge _022EFFF4
+	cmp r1, #0x85
+	bgt _022F0724
+	bge _022EFFF4
+	cmp r1, #8
+	beq _022F0008
+	b _022F03A8
+_022F0724:
+	cmp r1, #0xd4
+	beq _022EFFF4
+	b _022F03A8
+_022F0730:
+	cmp r1, #0x10c
+	bgt _022F0760
+	bge _022F03B0
+	cmp r1, #0xf5
+	bgt _022F03A8
+	cmp r1, #0xf3
+	blt _022F03A8
+	beq _022F0064
+	cmp r1, #0xf4
+	cmpne r1, #0xf5
+	beq _022F0028
+	b _022F03A8
+_022F0760:
+	sub r3, r0, #0x6a
+	cmp r1, r3
+	bgt _022F077C
+	sub r0, r0, #0x6a
+	cmp r1, r0
+	beq _022F0114
+	b _022F03A8
+_022F077C:
+	sub r3, r0, #0x68
+	cmp r1, r3
+	bgt _022F03A8
+	sub r3, r0, #0x69
+	cmp r1, r3
+	blt _022F03A8
+	beq _022EFFF4
+	sub r0, r0, #0x68
+	cmp r1, r0
+	beq _022F038C
+	b _022F03A8
+_022F07A8:
+	sub r3, r0, #0x19
+	cmp r1, r3
+	bgt _022F081C
+	bge _022F0064
+	cmp r1, #0x130
+	bgt _022F07D4
+	bge _022F0054
+	sub r0, r0, #0x4c
+	cmp r1, r0
+	beq _022F0054
+	b _022F03A8
+_022F07D4:
+	sub r0, r0, #0x4a
+	sub r0, r1, r0
+	cmp r0, #0xc
+	addls pc, pc, r0, lsl #2
+	b _022F03A8
+_022F07E8: ; jump table
+	b _022F0048 ; case 0
+	b _022F0038 ; case 1
+	b _022F03A8 ; case 2
+	b _022F03A8 ; case 3
+	b _022F0054 ; case 4
+	b _022F03A8 ; case 5
+	b _022F03A8 ; case 6
+	b _022F03A8 ; case 7
+	b _022F03A8 ; case 8
+	b _022F03A8 ; case 9
+	b _022F03A8 ; case 10
+	b _022F03A8 ; case 11
+	b _022F016C ; case 12
+_022F081C:
+	ldr r0, _022F0D78 ; =0x0000016B
+	cmp r1, r0
+	bgt _022F083C
+	bge _022F00BC
+	sub r0, r0, #8
+	cmp r1, r0
+	beq _022F0008
+	b _022F03A8
+_022F083C:
+	cmp r1, #0x16c
+	bgt _022F084C
+	beq _022F0114
+	b _022F03A8
+_022F084C:
+	add r0, r0, #0xb
+	cmp r1, r0
+	beq _022F0028
+	b _022F03A8
+_022F085C:
+	add r3, r0, #0x3a
+	cmp r1, r3
+	bgt _022F08F0
+	mov r2, r3
+	cmp r1, r2
+	bge _022EFFF4
+	add r2, r0, #0x18
+	cmp r1, r2
+	bgt _022F08AC
+	bge _022EFFF4
+	cmp r1, #0x184
+	bgt _022F089C
+	bge _022EFFF4
+	cmp r1, #0x17c
+	beq _022F0028
+	b _022F03A8
+_022F089C:
+	add r0, r0, #0x13
+	cmp r1, r0
+	beq _022F0028
+	b _022F03A8
+_022F08AC:
+	add r2, r0, #0x26
+	cmp r1, r2
+	bgt _022F08D0
+	add r0, r0, #0x26
+	cmp r1, r0
+	bge _022EFFF4
+	cmp r1, #0x19c
+	beq _022F0018
+	b _022F03A8
+_022F08D0:
+	cmp r1, #0x1b0
+	bgt _022F08E0
+	beq _022F0038
+	b _022F03A8
+_022F08E0:
+	add r0, r0, #0x36
+	cmp r1, r0
+	beq _022F0038
+	b _022F03A8
+_022F08F0:
+	add r3, r0, #0x53
+	cmp r1, r3
+	bgt _022F0944
+	mov r2, r3
+	cmp r1, r2
+	bge _022F0244
+	cmp r1, #0x1bc
+	bgt _022F0924
+	bge _022F0038
+	add r0, r0, #0x40
+	cmp r1, r0
+	beq _022F0038
+	b _022F03A8
+_022F0924:
+	cmp r1, #0x1cc
+	bgt _022F0934
+	beq _022F01D0
+	b _022F03A8
+_022F0934:
+	add r0, r0, #0x52
+	cmp r1, r0
+	beq _022F01D0
+	b _022F03A8
+_022F0944:
+	cmp r1, #0x1d0
+	bgt _022F0960
+	bge _022F0244
+	add r0, r0, #0x54
+	cmp r1, r0
+	beq _022F0228
+	b _022F03A8
+_022F0960:
+	add r3, r0, #0x57
+	cmp r1, r3
+	bgt _022F097C
+	add r0, r0, #0x57
+	cmp r1, r0
+	beq _022F02A4
+	b _022F03A8
+_022F097C:
+	add r3, r0, #0x5b
+	cmp r1, r3
+	bgt _022F03A8
+	add r3, r0, #0x58
+	cmp r1, r3
+	blt _022F03A8
+	beq _022F0304
+	cmp r1, #0x1d4
+	beq _022F0314
+	add r0, r0, #0x5b
+	cmp r1, r0
+	beq _022F032C
+	b _022F03A8
+#else
 	add r0, r5, #0x100
 	cmp r1, #0
 	moveq r1, #0
@@ -23536,6 +23542,7 @@ _022EFFCC: ; jump table
 	b _022F0314 ; case 7
 	b _022F03A8 ; case 8
 	b _022F032C ; case 9
+#endif
 _022EFFF4:
 	mov r1, #0
 	mov r0, r5
@@ -23699,7 +23706,11 @@ _022F0228:
 	b _022F03B0
 _022F0244:
 	mov r0, r5
+#ifdef EUROPE
+	mov r1, #0
+#else
 	mov r1, r2
+#endif
 	bl ov11_022EE620
 	mov r0, r4
 	bl sub_02009120
@@ -23711,9 +23722,15 @@ _022F0244:
 	mov r0, #3
 	mov r1, #2
 	bl sub_02009454
+#ifdef EUROPE
+	mov r2, r4
+	mov r0, #4
+	mov r1, #2
+#else
 	mov r0, #4
 	mov r1, #2
 	mov r2, r4
+#endif
 	bl sub_02009454
 	mov r2, r4
 	mov r0, #0x60
@@ -23799,9 +23816,14 @@ _022F03B0:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef EUROPE
+_022F0D74: .word 0x0000017B
+_022F0D78: .word 0x0000016B
+#else
 _022F03B8: .word 0x00000113
 _022F03BC: .word 0x00000123
 _022F03C0: .word 0x00000195
+#endif
 	arm_func_end ov11_022EFD5C
 
 	arm_func_start ov11_022F03C4
@@ -23855,7 +23877,11 @@ ov11_022F042C: ; 0x022F042C
 	cmp r2, r0
 	bgt _022F054C
 	bge _022F07FC
+#ifdef EUROPE
+	sub r1, r0, #0x4c
+#else
 	sub r1, r0, #0x47
+#endif
 	cmp r2, r1
 	bgt _022F04D4
 	bge _022F0C44
@@ -23877,27 +23903,51 @@ _022F0484:
 	beq _022F0AF0
 	b _022F11C0
 _022F04A8:
+#ifdef EUROPE
+	sub r1, r0, #0x6a
+#else
 	sub r1, r0, #0x59
+#endif
 	cmp r2, r1
 	bgt _022F04C4
+#ifdef EUROPE
+	sub r0, r0, #0x6a
+#else
 	sub r0, r0, #0x59
+#endif
 	cmp r2, r0
 	beq _022F0F04
 	b _022F11C0
 _022F04C4:
+#ifdef EUROPE
+	sub r0, r0, #0x4d
+#else
 	sub r0, r0, #0x48
+#endif
 	cmp r2, r0
 	beq _022F0C44
 	b _022F11C0
 _022F04D4:
+#ifdef EUROPE
+	sub r1, r0, #0x18
+#else
 	sub r1, r0, #0x13
+#endif
 	cmp r2, r1
 	bgt _022F0524
 	bge _022F0634
+#ifdef EUROPE
+	sub r0, r0, #0x46
+#else
 	sub r0, r0, #0x41
+#endif
 	cmp r2, r0
 	bgt _022F0514
+#ifdef EUROPE
+	subs r0, r2, #0x130
+#else
 	subs r0, r2, #0x124
+#endif
 	addpl pc, pc, r0, lsl #2
 	b _022F11C0
 _022F04FC: ; jump table
@@ -23913,18 +23963,42 @@ _022F0514:
 	beq _022F0700
 	b _022F11C0
 _022F0524:
+#ifdef EUROPE
+	cmp r2, #0x16c
+	bgt _022F0540
+	bge _022F0F04
+	sub r0, r0, #0x10
+#else
 	sub r1, r0, #0xb
 	cmp r2, r1
 	bgt _022F0540
 	sub r0, r0, #0xb
+#endif
 	cmp r2, r0
 	beq _022F0700
 	b _022F11C0
 _022F0540:
+#ifdef EUROPE
+	sub r0, r0, #5
+	cmp r2, r0
+	beq _022F07FC
+#else
 	cmp r2, #0x160
 	beq _022F0F04
+#endif
 	b _022F11C0
 _022F054C:
+#ifdef EUROPE
+	cmp r2, #0x1bc
+	bgt _022F05B0
+	bge _022F0C44
+	cmp r2, #0x19c
+	bgt _022F0594
+	bge _022F08F8
+	cmp r2, #0x17c
+	bgt _022F0588
+	beq _022F0700
+#else
 	add r1, r0, #0x37
 	cmp r2, r1
 	bgt _022F05B0
@@ -23939,21 +24013,53 @@ _022F054C:
 	add r0, r0, #5
 	cmp r2, r0
 	beq _022F07FC
+#endif
 	b _022F11C0
 _022F0588:
+#ifdef EUROPE
+	add r0, r0, #0x13
+	cmp r2, r0
+	beq _022F09F4
+#else
 	cmp r2, #0x170
 	beq _022F0700
+#endif
 	b _022F11C0
 _022F0594:
+#ifdef EUROPE
+	add r1, r0, #0x36
+	cmp r2, r1
+	bgt _022F05A4
+	add r0, r0, #0x36
+	cmp r2, r0
+	bge _022F0C44
+	cmp r2, #0x1b0
+	beq _022F0C44
+#else
 	cmp r2, #0x190
 	bgt _022F05A4
 	beq _022F08F8
+#endif
 	b _022F11C0
 _022F05A4:
+#ifdef EUROPE
+	add r0, r0, #0x40
+	cmp r2, r0
+#else
 	cmp r2, #0x1a0
+#endif
 	beq _022F0C44
 	b _022F11C0
 _022F05B0:
+#ifdef EUROPE
+	add r1, r0, #0x53
+	cmp r2, r1
+	bgt _022F05E4
+	bge _022F1128
+	cmp r2, #0x1cc
+	bgt _022F05D8
+	beq _022F1090
+#else
 	cmp r2, #0x1b0
 	bgt _022F05E4
 	bge _022F1090
@@ -23963,12 +24069,29 @@ _022F05B0:
 	add r0, r0, #0x41
 	cmp r2, r0
 	beq _022F0C44
+#endif
 	b _022F11C0
 _022F05D8:
+#ifdef EUROPE
+	add r0, r0, #0x52
+	cmp r2, r0
+	beq _022F1090
+#else
 	cmp r2, #0x1ac
 	beq _022F0C44
+#endif
 	b _022F11C0
 _022F05E4:
+#ifdef EUROPE
+	add r1, r0, #0x57
+	cmp r2, r1
+	bgt _022F0604
+	add r0, r0, #0x57
+	cmp r2, r0
+	bge _022F0FF8
+	cmp r2, #0x1d0
+	beq _022F1128
+#else
 	add r1, r0, #0x48
 	cmp r2, r1
 	bgt _022F0604
@@ -23976,8 +24099,13 @@ _022F05E4:
 	add r0, r0, #0x47
 	cmp r2, r0
 	beq _022F1090
+#endif
 	b _022F11C0
 _022F0604:
+#ifdef EUROPE
+	add r0, r0, #0x5b
+	cmp r2, r0
+#else
 	add r1, r0, #0x50
 	cmp r2, r1
 	bgt _022F11C0
@@ -23988,6 +24116,7 @@ _022F0604:
 	cmp r2, r1
 	addne r0, r0, #0x50
 	cmpne r2, r0
+#endif
 	beq _022F0FF8
 	b _022F11C0
 _022F0634:
@@ -24753,8 +24882,13 @@ _022F11CC:
 	add sp, sp, #0x80
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef EUROPE
+_022F11D4: .word 0x0000017B
+_022F11D8: .word 0x00000162
+#else
 _022F11D4: .word 0x0000016A
 _022F11D8: .word 0x00000156
+#endif
 	arm_func_end ov11_022F042C
 
 	arm_func_start ov11_022F11DC
@@ -24763,7 +24897,7 @@ ov11_022F11DC: ; 0x022F11DC
 	mov r0, #0x3c
 	mov r1, #6
 	bl MemAlloc
-	ldr r1, _022F1210 ; =ov11_02324CC0
+	ldr r1, _022F1210 ; =GROUND_STATE_MAP
 	mvn r2, #0
 	str r0, [r1, #4]
 	strh r2, [r0]
@@ -24773,7 +24907,7 @@ ov11_022F11DC: ; 0x022F11DC
 	bl ov11_022F1244
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F1210: .word ov11_02324CC0
+_022F1210: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F11DC
 
 	arm_func_start ov11_022F1214
@@ -24782,15 +24916,15 @@ ov11_022F1214: ; 0x022F1214
 	bl ov11_022F1244
 	bl ov11_022F2FE8
 	bl ov11_022F22C8
-	ldr r0, _022F1240 ; =ov11_02324CC0
+	ldr r0, _022F1240 ; =GROUND_STATE_MAP
 	ldr r0, [r0, #4]
 	bl MemFree
-	ldr r0, _022F1240 ; =ov11_02324CC0
+	ldr r0, _022F1240 ; =GROUND_STATE_MAP
 	mov r1, #0
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F1240: .word ov11_02324CC0
+_022F1240: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1214
 
 	arm_func_start ov11_022F1244
@@ -24806,7 +24940,7 @@ _022F1258:
 	beq _022F1268
 	bl ov11_023118E8
 _022F1268:
-	ldr r0, _022F12BC ; =ov11_02324CC0
+	ldr r0, _022F12BC ; =GROUND_STATE_MAP
 	mov r2, #0
 	ldr r1, [r0, #4]
 	strb r2, [r1, #3]
@@ -24815,20 +24949,20 @@ _022F1268:
 	bl ov11_022F3010
 	mov r0, #0
 	bl ov11_022F22F4
-	ldr r0, _022F12BC ; =ov11_02324CC0
+	ldr r0, _022F12BC ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl ov11_022EBEAC
-	ldr r0, _022F12BC ; =ov11_02324CC0
+	ldr r0, _022F12BC ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022F12BC ; =ov11_02324CC0
+	ldr r0, _022F12BC ; =GROUND_STATE_MAP
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F12BC: .word ov11_02324CC0
+_022F12BC: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1244
 
 	arm_func_start ov11_022F12C0
@@ -24844,7 +24978,7 @@ ov11_022F12C0: ; 0x022F12C0
 	mov r0, #0x2f4
 	mov r1, #6
 	bl MemAlloc
-	ldr r2, _022F1538 ; =ov11_02324CC0
+	ldr r2, _022F1538 ; =GROUND_STATE_MAP
 	mvn r1, #0
 	str r0, [r2]
 	ldr r0, [r2, #4]
@@ -24854,15 +24988,15 @@ ov11_022F12C0: ; 0x022F12C0
 	ldr r0, [r2]
 	ldr r1, _022F153C ; =ov11_02320CD8
 	bl ov11_022EBC18
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	mvn r1, #0
 	ldr r0, [r0]
 	bl ov11_022EC27C
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldmia r0, {r1, r2}
 	add r0, r2, #4
 	bl ov11_022EFD5C
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	add r0, r1, #0x20
 	add r1, r1, #4
@@ -24907,11 +25041,11 @@ _022F13C4:
 _022F13CC:
 	cmp r0, r5
 	bne _022F1410
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	bl MemFree
 	ldrsh r1, [r4]
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	mov r3, #0
 	str r3, [r0]
 	cmp r1, #0xb
@@ -24928,7 +25062,7 @@ _022F1414:
 	ldrsh r0, [r6]
 	cmp r0, r1
 	bne _022F13CC
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, _022F154C ; =ov11_02320D10
 	ldr r0, [r0]
 	bl ov11_022EBC18
@@ -24949,7 +25083,7 @@ _022F1444:
 	str ip, [sp, #4]
 	bl FatalError
 _022F146C:
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, _022F153C ; =ov11_02320CD8
 	ldr r0, [r0]
 	bl ov11_022EBC18
@@ -24958,15 +25092,15 @@ _022F146C:
 	mov r0, #1
 	bl ov11_022F22F4
 _022F148C:
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldrsh r1, [r4, #4]
 	ldr r0, [r0]
 	bl ov11_022EC27C
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldmia r0, {r1, r2}
 	add r0, r2, #4
 	bl ov11_022EFD5C
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	add r0, r1, #0x20
 	add r1, r1, #4
@@ -24977,13 +25111,13 @@ _022F148C:
 	beq _022F14D4
 	bl ov11_022F25A4
 _022F14D4:
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r2, _022F1558 ; =ov11_02320CA8
 	ldr r0, [r0]
 	mov r1, #0
 	bl ov11_022EF2D4
 _022F14E8:
-	ldr r0, _022F1538 ; =ov11_02324CC0
+	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0, #4]
 	strb r1, [r0, #2]
@@ -25006,7 +25140,7 @@ _022F152C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022F1534: .word ov11_02320FB4
-_022F1538: .word ov11_02324CC0
+_022F1538: .word GROUND_STATE_MAP
 _022F153C: .word ov11_02320CD8
 _022F1540: .word EVENTS
 _022F1544: .word ov11_02320CF4
@@ -25033,7 +25167,7 @@ GetSpecialLayoutBackground: ; 0x022F155C
 	mov r0, #0x2f4
 	mov r1, #6
 	bl MemAlloc
-	ldr r2, _022F16F4 ; =ov11_02324CC0
+	ldr r2, _022F16F4 ; =GROUND_STATE_MAP
 	mvn r1, #0
 	str r0, [r2]
 	ldr r0, [r2, #4]
@@ -25042,19 +25176,19 @@ GetSpecialLayoutBackground: ; 0x022F155C
 	ldrneb r0, [r7]
 	cmpne r0, #0xff
 	bne _022F1600
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, _022F16F8 ; =ov11_02320CD8
 	ldr r0, [r0]
 	bl ov11_022EBC18
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	mvn r1, #0
 	ldr r0, [r0]
 	bl ov11_022EC27C
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldmia r0, {r1, r2}
 	add r0, r2, #4
 	bl ov11_022EFD5C
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	add r0, r1, #0x20
 	add r1, r1, #4
@@ -25079,7 +25213,7 @@ _022F1600:
 	str r3, [sp, #4]
 	bl FatalError
 _022F1644:
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, _022F1708 ; =ov11_02320D10
 	ldr r0, [r0]
 	bl ov11_022EBC18
@@ -25089,7 +25223,7 @@ _022F1644:
 	bl ov11_022F22F4
 	cmp r5, #0
 	beq _022F1688
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldrsh r1, [r4, #4]
 	ldr r0, [r0]
 	mov r2, r7
@@ -25097,29 +25231,29 @@ _022F1644:
 	bl LoadMapType11
 	b _022F16A0
 _022F1688:
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldrsh r1, [r4, #4]
 	ldr r0, [r0]
 	mov r2, r7
 	mov r3, r6
 	bl LoadMapType10
 _022F16A0:
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldmia r0, {r1, r2}
 	add r0, r2, #4
 	bl ov11_022EFD5C
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	add r0, r1, #0x20
 	add r1, r1, #4
 	bl ov11_022F03C4
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r2, _022F170C ; =ov11_02320CB8
 	ldr r0, [r0]
 	mov r1, #0
 	bl ov11_022EF2D4
 _022F16D8:
-	ldr r0, _022F16F4 ; =ov11_02324CC0
+	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0, #4]
 	strb r1, [r0, #2]
@@ -25127,7 +25261,7 @@ _022F16D8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022F16F0: .word ov11_02320FE8
-_022F16F4: .word ov11_02324CC0
+_022F16F4: .word GROUND_STATE_MAP
 _022F16F8: .word ov11_02320CD8
 _022F16FC: .word EVENTS
 _022F1700: .word ov11_02320CA8
@@ -25138,7 +25272,7 @@ _022F170C: .word ov11_02320CB8
 
 	arm_func_start ov11_022F1710
 ov11_022F1710: ; 0x022F1710
-	ldr r0, _022F1734 ; =ov11_02324CC0
+	ldr r0, _022F1734 ; =GROUND_STATE_MAP
 	mov r2, #0
 	ldr r1, [r0, #4]
 	ldr ip, _022F1738 ; =ov11_022EDD14
@@ -25148,7 +25282,7 @@ ov11_022F1710: ; 0x022F1710
 	ldr r0, [r0]
 	bx ip
 	.align 2, 0
-_022F1734: .word ov11_02324CC0
+_022F1734: .word GROUND_STATE_MAP
 _022F1738: .word ov11_022EDD14
 	arm_func_end ov11_022F1710
 
@@ -25160,7 +25294,7 @@ ov11_022F173C: ; 0x022F173C
 	mov r2, r4
 	mov r0, #1
 	bl DebugPrint
-	ldr r2, _022F1790 ; =ov11_02324CC0
+	ldr r2, _022F1790 ; =GROUND_STATE_MAP
 	ldr r1, _022F1794 ; =EVENTS
 	ldr r3, [r2, #4]
 	mov r0, #0xc
@@ -25169,32 +25303,32 @@ ov11_022F173C: ; 0x022F173C
 	ldrsh r1, [r0, #4]
 	ldr r0, [r2]
 	bl ov11_022EDD20
-	ldr r0, _022F1790 ; =ov11_02324CC0
+	ldr r0, _022F1790 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0, #4]
 	strb r1, [r0, #2]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022F178C: .word ov11_02321018
-_022F1790: .word ov11_02324CC0
+_022F1790: .word GROUND_STATE_MAP
 _022F1794: .word EVENTS
 	arm_func_end ov11_022F173C
 
 	arm_func_start ov11_022F1798
 ov11_022F1798: ; 0x022F1798
-	ldr r0, _022F17B0 ; =ov11_02324CC0
+	ldr r0, _022F17B0 ; =GROUND_STATE_MAP
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldrnesh r0, [r0]
 	mvneq r0, #0
 	bx lr
 	.align 2, 0
-_022F17B0: .word ov11_02324CC0
+_022F17B0: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1798
 
 	arm_func_start ov11_022F17B4
 ov11_022F17B4: ; 0x022F17B4
-	ldr r0, _022F17E0 ; =ov11_02324CC0
+	ldr r0, _022F17E0 ; =GROUND_STATE_MAP
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	mvneq r0, #0
@@ -25206,18 +25340,18 @@ ov11_022F17B4: ; 0x022F17B4
 	ldrsh r0, [r1, r0]
 	bx lr
 	.align 2, 0
-_022F17E0: .word ov11_02324CC0
+_022F17E0: .word GROUND_STATE_MAP
 _022F17E4: .word EVENTS
 	arm_func_end ov11_022F17B4
 
 	arm_func_start ov11_022F17E8
 ov11_022F17E8: ; 0x022F17E8
-	ldr r1, _022F17F8 ; =ov11_02324CC0
+	ldr r1, _022F17F8 ; =GROUND_STATE_MAP
 	ldr ip, _022F17FC ; =ov11_022ED69C
 	ldr r1, [r1]
 	bx ip
 	.align 2, 0
-_022F17F8: .word ov11_02324CC0
+_022F17F8: .word GROUND_STATE_MAP
 _022F17FC: .word ov11_022ED69C
 	arm_func_end ov11_022F17E8
 
@@ -25683,40 +25817,40 @@ _022F1DB8: ; jump table
 	b _022F1E18 ; case 4
 	b _022F1E2C ; case 5
 _022F1DD0:
-	ldr r0, _022F1E40 ; =ov11_02324CC0
+	ldr r0, _022F1E40 ; =GROUND_STATE_MAP
 	mov r1, #0
 	ldr r0, [r0]
 	mov r2, r1
 	bl ov11_022EE5EC
 	ldmia sp!, {r3, pc}
 _022F1DE8:
-	ldr r0, _022F1E40 ; =ov11_02324CC0
+	ldr r0, _022F1E40 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0]
 	mov r2, r1
 	bl ov11_022EE5EC
 	ldmia sp!, {r3, pc}
 _022F1E00:
-	ldr r0, _022F1E40 ; =ov11_02324CC0
+	ldr r0, _022F1E40 ; =GROUND_STATE_MAP
 	mov r1, #0
 	ldr r0, [r0]
 	mov r2, #1
 	bl ov11_022EE5EC
 	ldmia sp!, {r3, pc}
 _022F1E18:
-	ldr r0, _022F1E40 ; =ov11_02324CC0
+	ldr r0, _022F1E40 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0]
 	bl ov11_022EE5E4
 	ldmia sp!, {r3, pc}
 _022F1E2C:
-	ldr r0, _022F1E40 ; =ov11_02324CC0
+	ldr r0, _022F1E40 ; =GROUND_STATE_MAP
 	mov r1, #0
 	ldr r0, [r0]
 	bl ov11_022EE5E4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F1E40: .word ov11_02324CC0
+_022F1E40: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1DA8
 
 	arm_func_start ov11_022F1E44
@@ -25725,7 +25859,7 @@ ov11_022F1E44: ; 0x022F1E44
 	cmp r0, #1
 	cmpne r0, #3
 	bne _022F1E64
-	ldr r0, _022F1E6C ; =ov11_02324CC0
+	ldr r0, _022F1E6C ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	bl ov11_022EE60C
 	ldmia sp!, {r3, pc}
@@ -25733,76 +25867,76 @@ _022F1E64:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F1E6C: .word ov11_02324CC0
+_022F1E6C: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1E44
 
 	arm_func_start ov11_022F1E70
 ov11_022F1E70: ; 0x022F1E70
-	ldr r1, _022F1E88 ; =ov11_02324CC0
+	ldr r1, _022F1E88 ; =GROUND_STATE_MAP
 	ldr ip, _022F1E8C ; =ov11_022EF2BC
 	mov r2, r0
 	ldr r0, [r1]
 	mov r1, #0
 	bx ip
 	.align 2, 0
-_022F1E88: .word ov11_02324CC0
+_022F1E88: .word GROUND_STATE_MAP
 _022F1E8C: .word ov11_022EF2BC
 	arm_func_end ov11_022F1E70
 
 	arm_func_start ov11_022F1E90
 ov11_022F1E90: ; 0x022F1E90
-	ldr r3, _022F1EA4 ; =ov11_02324CC0
+	ldr r3, _022F1EA4 ; =GROUND_STATE_MAP
 	ldr ip, _022F1EA8 ; =ov11_022EF40C
 	mov r2, r1
 	ldr r1, [r3]
 	bx ip
 	.align 2, 0
-_022F1EA4: .word ov11_02324CC0
+_022F1EA4: .word GROUND_STATE_MAP
 _022F1EA8: .word ov11_022EF40C
 	arm_func_end ov11_022F1E90
 
 	arm_func_start ov11_022F1EAC
 ov11_022F1EAC: ; 0x022F1EAC
-	ldr r2, _022F1EC4 ; =ov11_02324CC0
+	ldr r2, _022F1EC4 ; =GROUND_STATE_MAP
 	mov r1, r0
 	ldr r0, [r2, #4]
 	ldr ip, _022F1EC8 ; =ov11_022F03F8
 	add r0, r0, #4
 	bx ip
 	.align 2, 0
-_022F1EC4: .word ov11_02324CC0
+_022F1EC4: .word GROUND_STATE_MAP
 _022F1EC8: .word ov11_022F03F8
 	arm_func_end ov11_022F1EAC
 
 	arm_func_start ov11_022F1ECC
 ov11_022F1ECC: ; 0x022F1ECC
-	ldr r2, _022F1EE4 ; =ov11_02324CC0
+	ldr r2, _022F1EE4 ; =GROUND_STATE_MAP
 	mov r1, r0
 	ldr r0, [r2, #4]
 	ldr ip, _022F1EE8 ; =ov11_022F040C
 	add r0, r0, #4
 	bx ip
 	.align 2, 0
-_022F1EE4: .word ov11_02324CC0
+_022F1EE4: .word GROUND_STATE_MAP
 _022F1EE8: .word ov11_022F040C
 	arm_func_end ov11_022F1ECC
 
 	arm_func_start ov11_022F1EEC
 ov11_022F1EEC: ; 0x022F1EEC
-	ldr r1, _022F1F00 ; =ov11_02324CC0
+	ldr r1, _022F1F00 ; =GROUND_STATE_MAP
 	ldr ip, _022F1F04 ; =ov11_022F03C4
 	ldr r1, [r1, #4]
 	add r1, r1, #0x20
 	bx ip
 	.align 2, 0
-_022F1F00: .word ov11_02324CC0
+_022F1F00: .word GROUND_STATE_MAP
 _022F1F04: .word ov11_022F03C4
 	arm_func_end ov11_022F1EEC
 
 	arm_func_start ov11_022F1F08
 ov11_022F1F08: ; 0x022F1F08
 	stmdb sp!, {r3, lr}
-	ldr r2, _022F1F38 ; =ov11_02324CC0
+	ldr r2, _022F1F38 ; =GROUND_STATE_MAP
 	mov r3, r0
 	ldr r0, [r2]
 	mov r2, r1
@@ -25814,13 +25948,13 @@ ov11_022F1F08: ; 0x022F1F08
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F1F38: .word ov11_02324CC0
+_022F1F38: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F1F08
 
 	arm_func_start ov11_022F1F3C
 ov11_022F1F3C: ; 0x022F1F3C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r2, _022F2044 ; =ov11_02324CC0
+	ldr r2, _022F2044 ; =GROUND_STATE_MAP
 	mov r7, r0
 	ldr r0, [r2]
 	mov r6, r1
@@ -25889,14 +26023,14 @@ _022F203C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022F2044: .word ov11_02324CC0
+_022F2044: .word GROUND_STATE_MAP
 _022F2048: .word EVENTS
 	arm_func_end ov11_022F1F3C
 
 	arm_func_start ov11_022F204C
 ov11_022F204C: ; 0x022F204C
 	stmdb sp!, {r3, lr}
-	ldr r2, _022F20C8 ; =ov11_02324CC0
+	ldr r2, _022F20C8 ; =GROUND_STATE_MAP
 	ldr r3, [r0]
 	ldr r0, [r0, #4]
 	ldr r2, [r2]
@@ -25931,13 +26065,13 @@ _022F20B8:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F20C8: .word ov11_02324CC0
+_022F20C8: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F204C
 
 	arm_func_start ov11_022F20CC
 ov11_022F20CC: ; 0x022F20CC
 	stmdb sp!, {r3, lr}
-	ldr r2, _022F2148 ; =ov11_02324CC0
+	ldr r2, _022F2148 ; =GROUND_STATE_MAP
 	ldr r3, [r0]
 	ldr r0, [r0, #4]
 	ldr r2, [r2]
@@ -25972,13 +26106,13 @@ _022F2138:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F2148: .word ov11_02324CC0
+_022F2148: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F20CC
 
 	arm_func_start ov11_022F214C
 ov11_022F214C: ; 0x022F214C
 	stmdb sp!, {r4, lr}
-	ldr ip, _022F2174 ; =ov11_02324CC0
+	ldr ip, _022F2174 ; =GROUND_STATE_MAP
 	mov r4, r0
 	mov lr, r1
 	mov r3, r2
@@ -25988,7 +26122,7 @@ ov11_022F214C: ; 0x022F214C
 	bl ov11_022EF4C0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022F2174: .word ov11_02324CC0
+_022F2174: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F214C
 
 	arm_func_start ov11_022F2178
@@ -26011,7 +26145,7 @@ _022F2190: .word ov11_022F37D0
 ov11_022F2194: ; 0x022F2194
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	ldr r0, [r0, #4]
 	ldrb r0, [r0, #2]
 	cmp r0, #0
@@ -26023,12 +26157,12 @@ ov11_022F2194: ; 0x022F2194
 	moveq r0, #0
 	streq r0, [sp]
 	streq r0, [sp, #4]
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	add r0, r1, #0x20
 	add r1, r1, #4
 	bl ov11_022F03C4
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	add r1, sp, #0
 	ldr r0, [r0, #4]
 	mov r2, #0
@@ -26036,16 +26170,16 @@ ov11_022F2194: ; 0x022F2194
 	bl ov11_022F042C
 	cmp r0, #0
 	beq _022F2214
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	add r2, sp, #0
 	ldr r0, [r0]
 	mov r1, #0
 	bl ov11_022EF2D4
 _022F2214:
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	bl ov11_022EF70C
-	ldr r0, _022F2240 ; =ov11_02324CC0
+	ldr r0, _022F2240 ; =GROUND_STATE_MAP
 	mov r1, #1
 	ldr r0, [r0, #4]
 	strb r1, [r0, #3]
@@ -26055,13 +26189,13 @@ _022F2230:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F2240: .word ov11_02324CC0
+_022F2240: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F2194
 
 	arm_func_start ov11_022F2244
 ov11_022F2244: ; 0x022F2244
 	stmdb sp!, {r3, lr}
-	ldr r0, _022F2274 ; =ov11_02324CC0
+	ldr r0, _022F2274 ; =GROUND_STATE_MAP
 	ldr r1, [r0, #4]
 	ldrb r1, [r1, #3]
 	cmp r1, #0
@@ -26074,7 +26208,7 @@ _022F2268:
 	bl ov11_022F4358
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F2274: .word ov11_02324CC0
+_022F2274: .word GROUND_STATE_MAP
 	arm_func_end ov11_022F2244
 
 	arm_func_start ov11_022F2278
@@ -27300,7 +27434,7 @@ _022F32B4:
 	ldr r1, [r5]
 	mla r0, r6, r4, r0
 	add r1, r1, #0x1a0
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	add r6, r6, #1
 	cmp r6, #0x40
 	blt _022F32B4
@@ -27327,7 +27461,7 @@ _022F3318:
 	ldr r1, [r5]
 	mla r0, r6, r4, r0
 	add r1, r1, #0x1a0
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	add r6, r6, #1
 	cmp r6, #0x40
 	blt _022F3318
@@ -27429,7 +27563,7 @@ _022F349C:
 	ldr r1, [r5]
 	add r0, r0, sb
 	add r1, r1, #0x1a0
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	cmp r8, #4
 	movlt r1, r7
 	movge r1, r6
@@ -27660,6 +27794,11 @@ _022F37CC: .word 0x00000802
 
 	arm_func_start ov11_022F37D0
 ov11_022F37D0: ; 0x022F37D0
+#ifdef EUROPE
+#define OV11_022F37D0_LOAD_OFFSET 0x10
+#else
+#define OV11_022F37D0_LOAD_OFFSET 0
+#endif
 	stmdb sp!, {r3, lr}
 	ldr r0, _022F3E48 ; =ov11_02324CE0
 	ldr r3, [r0]
@@ -27744,7 +27883,7 @@ _022F38DC:
 	ldr r0, _022F3E48 ; =ov11_02324CE0
 	ldr r2, _022F3E50 ; =0x08080000
 	ldr r0, [r0]
-	mov r1, #0xbd
+	mov r1, #0xbd + OV11_022F37D0_LOAD_OFFSET
 	add r0, r0, #0x1a0
 	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =ov11_02324CE0
@@ -27769,7 +27908,7 @@ _022F393C:
 	ldr r0, _022F3E48 ; =ov11_02324CE0
 	ldr r2, _022F3E50 ; =0x08080000
 	ldr r0, [r0]
-	mov r1, #0xbd
+	mov r1, #0xbd + OV11_022F37D0_LOAD_OFFSET
 	add r0, r0, #0x1a0
 	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =ov11_02324CE0
@@ -27791,7 +27930,7 @@ _022F399C:
 	ldr r2, _022F3E54 ; =0x08080005
 	strb r3, [r1, #0x10]
 	ldr r0, [r0]
-	mov r1, #0xb6
+	mov r1, #0xb6 + OV11_022F37D0_LOAD_OFFSET
 	add r0, r0, #0x1a0
 	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =ov11_02324CE0
@@ -27813,7 +27952,7 @@ _022F39F0:
 	ldr r2, _022F3E54 ; =0x08080005
 	strb r3, [r1, #0x10]
 	ldr r0, [r0]
-	mov r1, #0xbe
+	mov r1, #0xbe + OV11_022F37D0_LOAD_OFFSET
 	add r0, r0, #0x1a0
 	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =ov11_02324CE0
@@ -27832,7 +27971,11 @@ _022F3A44:
 	ldr r0, _022F3E48 ; =ov11_02324CE0
 	mov r3, #1
 	ldr r2, [r0]
+#ifdef EUROPE
+	mov r1, #0x230
+#else
 	ldr r1, _022F3E58 ; =0x00000222
+#endif
 	strb r3, [r2, #0x10]
 	ldr r0, [r0]
 	mov r2, #0x8000000
@@ -27847,11 +27990,11 @@ _022F3A44:
 	str r1, [r0]
 	b _022F3DE0
 _022F3A98:
-	bl ov14_0238CC94
+	bl ov16_0238CC94
 	ldr r1, _022F3E48 ; =ov11_02324CE0
 	ldr r1, [r1]
 	str r0, [r1, #0x33c]
-	bl ov14_0238CCA8
+	bl ov16_0238CCA8
 	ldr r1, _022F3E48 ; =ov11_02324CE0
 	ldr r1, [r1]
 	str r0, [r1, #0x340]
@@ -27882,7 +28025,7 @@ _022F3A98:
 	mov r2, #4
 	add r0, r0, #0x18
 	bl SetAnimDataFields2
-	bl ov14_0238CCA8
+	bl ov16_0238CCA8
 	bl FemaleToMaleForm
 	ldr r1, _022F3E60 ; =0x00000807
 	bl GetIdleAnimationType
@@ -27977,13 +28120,13 @@ _022F3C64:
 	ldr r2, _022F3E68 ; =0x0C080000
 	strb r3, [r1, #0x10]
 	ldr r0, [r0]
-	mov r1, #0xee
+	mov r1, #0xee + OV11_022F37D0_LOAD_OFFSET
 	add r0, r0, #0x1a0
 	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =ov11_02324CE0
 	ldr r2, _022F3E68 ; =0x0C080000
 	ldr r0, [r0]
-	mov r1, #0xef
+	mov r1, #0xef + OV11_022F37D0_LOAD_OFFSET
 	add r0, r0, #0x264
 	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =ov11_02324CE0
@@ -28010,13 +28153,13 @@ _022F3CD0:
 	ldr r0, _022F3E48 ; =ov11_02324CE0
 	ldr r2, _022F3E68 ; =0x0C080000
 	ldr r0, [r0]
-	mov r1, #0xec
+	mov r1, #0xec + OV11_022F37D0_LOAD_OFFSET
 	add r0, r0, #0x1a0
 	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =ov11_02324CE0
 	ldr r2, _022F3E68 ; =0x0C080000
 	ldr r0, [r0]
-	mov r1, #0xed
+	mov r1, #0xed + OV11_022F37D0_LOAD_OFFSET
 	add r0, r0, #0x264
 	bl LoadObjectAnimData
 	ldr r0, _022F3E48 ; =ov11_02324CE0
@@ -28100,15 +28243,17 @@ _022F3E34:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022F3E48: .word ov11_02324CE0
-_022F3E4C: .word 0x0000012D
+_022F3E4C: .word 0x0000012D + OV11_022F37D0_LOAD_OFFSET
 _022F3E50: .word 0x08080000
 _022F3E54: .word 0x08080005
+#ifndef EUROPE
 _022F3E58: .word 0x00000222
+#endif
 _022F3E5C: .word 0x0B040000
 _022F3E60: .word 0x00000807
 _022F3E64: .word ov11_02321340
 _022F3E68: .word 0x0C080000
-_022F3E6C: .word 0x0000010D
+_022F3E6C: .word 0x0000010D + OV11_022F37D0_LOAD_OFFSET
 	arm_func_end ov11_022F37D0
 
 	arm_func_start ov11_022F3E70
@@ -28241,7 +28386,7 @@ _022F4018:
 	ldr r1, [r6]
 	add r0, r0, sl
 	add r1, r1, #0x1a0
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r6, #4]
 	ldr r1, [r8, #0xc]
 	add r0, r0, sl
@@ -29021,7 +29166,7 @@ _022F4A38:
 	mov r1, #0xff
 	add r0, r4, #0xc
 	strb r1, [r4, #0xa4]
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C0B0
 	mov r0, #0
 	strb r0, [r4, #0x8a]
 	strh r0, [r4, #0x8c]
@@ -29066,7 +29211,7 @@ ov11_022F4AB8: ; 0x022F4AB8
 	strh r1, [r6, #0xb2]
 	add r0, r6, #0xc
 	strh r1, [r6, #0xb4]
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C0B0
 	mov r1, #0
 	strh r1, [r6, #0x8c]
 	strh r1, [r6, #0x8e]
@@ -31676,13 +31821,13 @@ ov11_022F6EFC: ; 0x022F6EFC
 _022F6F04: .word ov11_022F4BE4
 	arm_func_end ov11_022F6EFC
 
-	arm_func_start ov11_022F6F08
-ov11_022F6F08: ; 0x022F6F08
+	arm_func_start InitAnimDataFromOtherAnimDataVeneer
+InitAnimDataFromOtherAnimDataVeneer: ; 0x022F6F08
 	ldr ip, _022F6F10 ; =InitAnimDataFromOtherAnimData
 	bx ip
 	.align 2, 0
 _022F6F10: .word InitAnimDataFromOtherAnimData
-	arm_func_end ov11_022F6F08
+	arm_func_end InitAnimDataFromOtherAnimDataVeneer
 
 	arm_func_start AnimRelatedFunction__022F6F14
 AnimRelatedFunction__022F6F14: ; 0x022F6F14
@@ -31821,7 +31966,7 @@ ov11_022F709C: ; 0x022F709C
 	mov r0, #0x124
 	mov r1, #6
 	bl MemAlloc
-	ldr r3, _022F70C8 ; =ov11_02324CF4
+	ldr r3, _022F70C8 ; =GROUND_STATE_PTRS
 	ldr r1, _022F70CC ; =ov11_02321414
 	mov r2, #0
 	str r0, [r3]
@@ -31829,7 +31974,7 @@ ov11_022F709C: ; 0x022F709C
 	bl ov11_022F7104
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F70C8: .word ov11_02324CF4
+_022F70C8: .word GROUND_STATE_PTRS
 _022F70CC: .word ov11_02321414
 	arm_func_end ov11_022F709C
 
@@ -31837,24 +31982,24 @@ _022F70CC: .word ov11_02321414
 ov11_022F70D0: ; 0x022F70D0
 	stmdb sp!, {r3, lr}
 	bl ov11_022F7104
-	ldr r0, _022F7100 ; =ov11_02324CF4
+	ldr r0, _022F7100 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	bl ov11_022DC934
-	ldr r0, _022F7100 ; =ov11_02324CF4
+	ldr r0, _022F7100 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _022F7100 ; =ov11_02324CF4
+	ldr r0, _022F7100 ; =GROUND_STATE_PTRS
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F7100: .word ov11_02324CF4
+_022F7100: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F70D0
 
 	arm_func_start ov11_022F7104
 ov11_022F7104: ; 0x022F7104
 	stmdb sp!, {r3, lr}
-	ldr r0, _022F713C ; =ov11_02324CF4
+	ldr r0, _022F713C ; =GROUND_STATE_PTRS
 	mov r2, #0
 	ldr r1, [r0]
 	str r2, [r1, #0xf0]
@@ -31862,13 +32007,13 @@ ov11_022F7104: ; 0x022F7104
 	str r2, [r1, #0x10c]
 	ldr r0, [r0]
 	bl ov11_022DCAE0
-	ldr r0, _022F713C ; =ov11_02324CF4
+	ldr r0, _022F713C ; =GROUND_STATE_PTRS
 	mov r1, #0
 	ldr r0, [r0]
 	strb r1, [r0, #0xec]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F713C: .word ov11_02324CF4
+_022F713C: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7104
 
 	arm_func_start ov11_022F7140
@@ -31877,7 +32022,7 @@ ov11_022F7140: ; 0x022F7140
 	ldr r1, _022F7180 ; =ov11_02321464
 	mov r0, #2
 	bl DebugPrint
-	ldr r1, _022F7184 ; =ov11_02324CF4
+	ldr r1, _022F7184 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r0, [r1]
 	mov r3, #0x48
@@ -31891,7 +32036,7 @@ ov11_022F7140: ; 0x022F7140
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022F7180: .word ov11_02321464
-_022F7184: .word ov11_02324CF4
+_022F7184: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7140
 
 	arm_func_start ov11_022F7188
@@ -31904,7 +32049,7 @@ ov11_022F7188: ; 0x022F7188
 	mov r3, r4
 	mov r0, #2
 	bl DebugPrint
-	ldr r1, _022F71E0 ; =ov11_02324CF4
+	ldr r1, _022F71E0 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -31919,7 +32064,7 @@ ov11_022F7188: ; 0x022F7188
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F71DC: .word ov11_023214A0
-_022F71E0: .word ov11_02324CF4
+_022F71E0: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7188
 
 	arm_func_start ov11_022F71E4
@@ -31930,7 +32075,7 @@ ov11_022F71E4: ; 0x022F71E4
 	mov r2, r4
 	mov r0, #2
 	bl DebugPrint
-	ldr r0, _022F7228 ; =ov11_02324CF4
+	ldr r0, _022F7228 ; =GROUND_STATE_PTRS
 	ldr r2, [r0]
 	ldr r1, [r2, #0x10c]
 	cmp r1, #1
@@ -31942,7 +32087,7 @@ ov11_022F71E4: ; 0x022F71E4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022F7224: .word ov11_023214E4
-_022F7228: .word ov11_02324CF4
+_022F7228: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F71E4
 
 	arm_func_start ov11_022F722C
@@ -31958,7 +32103,7 @@ ov11_022F722C: ; 0x022F722C
 	mov r0, #2
 	str r4, [sp]
 	bl DebugPrint
-	ldr r1, _022F729C ; =ov11_02324CF4
+	ldr r1, _022F729C ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -31977,7 +32122,7 @@ _022F7290:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _022F7298: .word ov11_0232150C
-_022F729C: .word ov11_02324CF4
+_022F729C: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F722C
 
 	arm_func_start ov11_022F72A0
@@ -32003,7 +32148,7 @@ ov11_022F72A0: ; 0x022F72A0
 	str r4, [sp, #4]
 	bl DebugPrint
 _022F72F0:
-	ldr r1, _022F7350 ; =ov11_02324CF4
+	ldr r1, _022F7350 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32021,7 +32166,7 @@ _022F7324:
 	subs r2, r2, #1
 	strb r0, [r1], #1
 	bne _022F7324
-	ldr r0, _022F7350 ; =ov11_02324CF4
+	ldr r0, _022F7350 ; =GROUND_STATE_PTRS
 	strb r5, [r3, #0x11c]
 	ldr r0, [r0]
 	strb r4, [r0, #0x11d]
@@ -32030,7 +32175,7 @@ _022F7344:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _022F734C: .word ov11_02321548
-_022F7350: .word ov11_02324CF4
+_022F7350: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F72A0
 
 	arm_func_start ov11_022F7354
@@ -32056,7 +32201,7 @@ ov11_022F7354: ; 0x022F7354
 	str r4, [sp, #4]
 	bl DebugPrint
 _022F73A4:
-	ldr r1, _022F7404 ; =ov11_02324CF4
+	ldr r1, _022F7404 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32074,7 +32219,7 @@ _022F73D8:
 	subs r2, r2, #1
 	strb r0, [r1], #1
 	bne _022F73D8
-	ldr r0, _022F7404 ; =ov11_02324CF4
+	ldr r0, _022F7404 ; =GROUND_STATE_PTRS
 	strb r5, [r3, #0x11c]
 	ldr r0, [r0]
 	strb r4, [r0, #0x11d]
@@ -32083,7 +32228,7 @@ _022F73F8:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _022F7400: .word ov11_02321580
-_022F7404: .word ov11_02324CF4
+_022F7404: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7354
 
 	arm_func_start ov11_022F7408
@@ -32104,7 +32249,7 @@ ov11_022F7408: ; 0x022F7408
 	mov r0, #2
 	bl DebugPrint
 _022F7444:
-	ldr r1, _022F749C ; =ov11_02324CF4
+	ldr r1, _022F749C ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32129,7 +32274,7 @@ _022F7490:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _022F7498: .word ov11_023215B8
-_022F749C: .word ov11_02324CF4
+_022F749C: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7408
 
 	arm_func_start ov11_022F74A0
@@ -32142,7 +32287,7 @@ ov11_022F74A0: ; 0x022F74A0
 	mov r3, r4
 	mov r0, #2
 	bl DebugPrint
-	ldr r1, _022F74FC ; =ov11_02324CF4
+	ldr r1, _022F74FC ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32158,7 +32303,7 @@ ov11_022F74A0: ; 0x022F74A0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F74F8: .word ov11_023215E4
-_022F74FC: .word ov11_02324CF4
+_022F74FC: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F74A0
 
 	arm_func_start ov11_022F7500
@@ -32180,7 +32325,7 @@ ov11_022F7500: ; 0x022F7500
 	mov r0, #2
 	bl DebugPrint
 _022F7540:
-	ldr r1, _022F7590 ; =ov11_02324CF4
+	ldr r1, _022F7590 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
 	cmp r0, #1
@@ -32203,13 +32348,13 @@ _022F7584:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _022F758C: .word ov11_02321614
-_022F7590: .word ov11_02324CF4
+_022F7590: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7500
 
 	arm_func_start ov11_022F7594
 ov11_022F7594: ; 0x022F7594
 	stmdb sp!, {r3, lr}
-	ldr r1, _022F75BC ; =ov11_02324CF4
+	ldr r1, _022F75BC ; =GROUND_STATE_PTRS
 	mov ip, #1
 	ldr r3, [r1]
 	mov r2, r0
@@ -32219,12 +32364,12 @@ ov11_022F7594: ; 0x022F7594
 	bl ov11_022DCCEC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F75BC: .word ov11_02324CF4
+_022F75BC: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7594
 
 	arm_func_start ov11_022F75C0
 ov11_022F75C0: ; 0x022F75C0
-	ldr r0, _022F75EC ; =ov11_02324CF4
+	ldr r0, _022F75EC ; =GROUND_STATE_PTRS
 	ldr r1, [r0]
 	ldr r0, [r1, #0x10c]
 	cmp r0, #0
@@ -32236,32 +32381,32 @@ ov11_022F75C0: ; 0x022F75C0
 	ldreqb r0, [r1, #0xec]
 	bx lr
 	.align 2, 0
-_022F75EC: .word ov11_02324CF4
+_022F75EC: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F75C0
 
 	arm_func_start ov11_022F75F0
 ov11_022F75F0: ; 0x022F75F0
 	stmdb sp!, {r4, lr}
-	ldr r1, _022F7624 ; =ov11_02324CF4
+	ldr r1, _022F7624 ; =GROUND_STATE_PTRS
 	mov r4, r0
 	ldr r0, [r1]
 	bl ov11_022DC958
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, pc}
-	ldr r0, _022F7624 ; =ov11_02324CF4
+	ldr r0, _022F7624 ; =GROUND_STATE_PTRS
 	mov r1, r4
 	ldr r0, [r0]
 	bl ov11_022DCA58
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_022F7624: .word ov11_02324CF4
+_022F7624: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F75F0
 
 	arm_func_start ov11_022F7628
 ov11_022F7628: ; 0x022F7628
 	stmdb sp!, {r3, lr}
-	ldr r0, _022F764C ; =ov11_02324CF4
+	ldr r0, _022F764C ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	ldr r1, [r0, #0x10c]
 	cmp r1, #0
@@ -32270,18 +32415,18 @@ ov11_022F7628: ; 0x022F7628
 	bl ov11_022DCA70
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F764C: .word ov11_02324CF4
+_022F764C: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7628
 
 	arm_func_start ov11_022F7650
 ov11_022F7650: ; 0x022F7650
-	ldr r2, _022F7664 ; =ov11_02324CF4
+	ldr r2, _022F7664 ; =GROUND_STATE_PTRS
 	ldr ip, _022F7668 ; =ov11_022DD0EC
 	mov r1, r0
 	ldr r0, [r2]
 	bx ip
 	.align 2, 0
-_022F7664: .word ov11_02324CF4
+_022F7664: .word GROUND_STATE_PTRS
 _022F7668: .word ov11_022DD0EC
 	arm_func_end ov11_022F7650
 
@@ -32289,7 +32434,7 @@ _022F7668: .word ov11_022DD0EC
 ov11_022F766C: ; 0x022F766C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x20
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r1, [r0]
 	ldr r0, [r1, #0xf0]
 	cmp r0, #2
@@ -32298,7 +32443,7 @@ ov11_022F766C: ; 0x022F766C
 	ldr r1, _022F7BBC ; =ov11_02321644
 	mov r0, #2
 	bl DebugPrint
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r4, #0
 	ldr r1, [r0]
 	str r4, [r1, #0xf0]
@@ -32326,14 +32471,14 @@ _022F76E0:
 	bl ov11_022E5EFC
 	cmp r0, #0
 	beq _022F7B80
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r3, #1
 	ldr r0, [r0]
 	add r2, sp, #4
 	mov r1, r4
 	strh r3, [sp, #0x1c]
 	bl ov11_022DCCEC
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r3, #1
 	ldr r2, [r0]
 	mov r0, r4
@@ -32352,7 +32497,7 @@ _022F773C:
 	bl ov11_022E5EFC
 	cmp r0, #0
 	beq _022F7B80
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	add r2, sp, #4
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
@@ -32362,7 +32507,7 @@ _022F773C:
 	mov r1, #0
 	strh r3, [sp, #0x1c]
 	bl ov11_022DCCEC
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32385,7 +32530,7 @@ _022F77BC:
 	bl ov11_022E5EFC
 	cmp r0, #0
 	beq _022F7B80
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	add r2, sp, #4
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
@@ -32395,7 +32540,7 @@ _022F77BC:
 	mov r1, #0
 	strh r3, [sp, #0x1c]
 	bl ov11_022DCCEC
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32418,7 +32563,7 @@ _022F783C:
 	bl ov11_022E5EFC
 	cmp r0, #0
 	beq _022F78A0
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	add r2, sp, #4
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
@@ -32428,7 +32573,7 @@ _022F783C:
 	mov r1, #0
 	strh r3, [sp, #0x1c]
 	bl ov11_022DCCEC
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xec]
@@ -32446,14 +32591,14 @@ _022F78B0:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022E5BF4
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xec]
 	b _022F7B80
 _022F78E0:
 	bl ov11_022E5C84
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xec]
@@ -32467,7 +32612,7 @@ _022F78F8:
 	ldr r1, _022F7BC0 ; =ov11_02321664
 	mov r0, #2
 	bl DebugPrint
-	ldr ip, _022F7BB8 ; =ov11_02324CF4
+	ldr ip, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r5, [ip]
 	add r4, r5, #0x10c
 	add lr, r5, #0xf4
@@ -32502,7 +32647,7 @@ _022F7988:
 	bl GetCoroutineInfo
 	cmp r0, #0
 	beq _022F79D4
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	add r2, sp, #4
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
@@ -32512,12 +32657,12 @@ _022F7988:
 	mov r1, #0
 	strh r3, [sp, #0x1c]
 	bl ov11_022DCCEC
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xec]
 _022F79D4:
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #0xf0]
@@ -32525,7 +32670,7 @@ _022F79D4:
 _022F79E8:
 	mov r0, r3
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32541,7 +32686,7 @@ _022F7A10:
 	mov r0, r3
 	mov r1, r1, asr #0x10
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32557,7 +32702,7 @@ _022F7A4C:
 	mov r0, r3
 	mov r1, r1, asr #0x10
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32569,7 +32714,7 @@ _022F7A4C:
 _022F7A8C:
 	mov r1, #0xb
 	bl ov11_022F881C
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
 	cmp r1, #0
@@ -32578,7 +32723,7 @@ _022F7A8C:
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32590,7 +32735,7 @@ _022F7A8C:
 _022F7ADC:
 	mov r1, #0xb
 	bl ov11_022F881C
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x105]
 	cmp r1, #0
@@ -32599,7 +32744,7 @@ _022F7ADC:
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32611,11 +32756,11 @@ _022F7ADC:
 _022F7B2C:
 	mov r1, #0xb
 	bl ov11_022F881C
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r1, #1
 	ldr r0, [r0]
 	bl ov11_022DCB48
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #0xec]
@@ -32633,23 +32778,23 @@ _022F7B78:
 	mov r0, #0
 	str r0, [r3, #0xf0]
 _022F7B80:
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	ldr r1, [r0, #0xf0]
 	cmp r1, #0
 	bne _022F7B98
 	bl FuncThatCallsRunNextOpcode
 _022F7B98:
-	ldr r0, _022F7BB8 ; =ov11_02324CF4
+	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	bl ov11_022DC940
-	ldr r1, _022F7BB8 ; =ov11_02324CF4
+	ldr r1, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r1, [r1]
 	strb r0, [r1, #0xec]
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022F7BB8: .word ov11_02324CF4
+_022F7BB8: .word GROUND_STATE_PTRS
 _022F7BBC: .word ov11_02321644
 _022F7BC0: .word ov11_02321664
 	arm_func_end ov11_022F766C
@@ -32657,7 +32802,7 @@ _022F7BC0: .word ov11_02321664
 	arm_func_start ov11_022F7BC4
 ov11_022F7BC4: ; 0x022F7BC4
 	stmdb sp!, {r3, lr}
-	ldr r0, _022F7CB8 ; =ov11_02324CF4
+	ldr r0, _022F7CB8 ; =GROUND_STATE_PTRS
 	ldr r3, [r0]
 	ldr r0, [r3, #0xf0]
 	cmp r0, #1
@@ -32715,12 +32860,12 @@ _022F7C7C:
 	mov r2, #0
 	bl ov11_022E551C
 _022F7C8C:
-	ldr r0, _022F7CB8 ; =ov11_02324CF4
+	ldr r0, _022F7CB8 ; =GROUND_STATE_PTRS
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0, #0xf0]
 _022F7C9C:
-	ldr r0, _022F7CB8 ; =ov11_02324CF4
+	ldr r0, _022F7CB8 ; =GROUND_STATE_PTRS
 	ldr r0, [r0]
 	ldr r1, [r0, #0xf0]
 	cmp r1, #0
@@ -32728,7 +32873,7 @@ _022F7C9C:
 	bl ov11_022DD2C0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F7CB8: .word ov11_02324CF4
+_022F7CB8: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7BC4
 
 	arm_func_start AllocAndInitPartnerFollowDataAndLiveActorList
@@ -34806,10 +34951,6 @@ _022F9878:
 	tst r0, #0x1000
 	beq _022F98C8
 	ldrsh r0, [r6]
-	arm_func_end ov11_022F9638
-
-	arm_func_start ov11_022F98B4
-ov11_022F98B4: ; 0x022F98B4
 	mov r1, r4
 	bl ov11_022F8B54
 	cmp r0, #0
@@ -34890,7 +35031,7 @@ _022F99BC:
 	.align 2, 0
 _022F99C4: .word ov11_02321684
 _022F99C8: .word ov11_02324CF8
-	arm_func_end ov11_022F98B4
+	arm_func_end ov11_022F9638
 
 	arm_func_start ov11_022F99CC
 ov11_022F99CC: ; 0x022F99CC
@@ -35957,7 +36098,7 @@ _022FA8D8:
 _022FA8F0:
 	bl KeyWaitInit
 	mov r0, #4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	bl sub_020676AC
 	bl ov11_02300D5C
 	add r0, r4, #0x12c
@@ -37278,10 +37419,6 @@ _022FBA98:
 	ble _022FBB20
 	sub r0, r0, #1
 	str r0, [sl, #0x17c]
-	arm_func_end ov11_022FBA68
-
-	arm_func_start ov11_022FBAF0
-ov11_022FBAF0: ; 0x022FBAF0
 	cmp r0, #0
 	bgt _022FBB20
 	add r0, sl, #0x100
@@ -37341,7 +37478,7 @@ _022FBBA0:
 	.align 2, 0
 _022FBBC0: .word ov11_02321684
 _022FBBC4: .word ov11_02324CF8
-	arm_func_end ov11_022FBAF0
+	arm_func_end ov11_022FBA68
 
 	arm_func_start ov11_022FBBC8
 ov11_022FBBC8: ; 0x022FBBC8
@@ -41283,8 +41420,8 @@ ov11_022FEE90: ; 0x022FEE90
 	bx lr
 	arm_func_end ov11_022FEE90
 
-	arm_func_start ov11_022FEE94
-ov11_022FEE94: ; 0x022FEE94
+	arm_func_start CreateTeamInfoBox
+CreateTeamInfoBox: ; 0x022FEE94
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	mov r0, #0x378
@@ -41298,12 +41435,12 @@ ov11_022FEE94: ; 0x022FEE94
 	ldrne r0, _022FEF1C ; =ov11_0232245C
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r5, {r0, r1, r2, r3}
-	ldr r2, _022FEF20 ; =ov11_022FEFA4
+	ldr r2, _022FEF20 ; =UpdateTeamInfoBox
 	str r4, [sp, #0xc]
 	add r0, sp, #0
 	mov r1, #1
 	str r2, [r4]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	mov r2, #1
 	mov r5, r0
 	mov r1, #0
@@ -41321,13 +41458,13 @@ ov11_022FEE94: ; 0x022FEE94
 	.align 2, 0
 _022FEF18: .word ov11_0232246C
 _022FEF1C: .word ov11_0232245C
-_022FEF20: .word ov11_022FEFA4
-	arm_func_end ov11_022FEE94
+_022FEF20: .word UpdateTeamInfoBox
+	arm_func_end CreateTeamInfoBox
 
 	arm_func_start ov11_022FEF24
 ov11_022FEF24: ; 0x022FEF24
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #4
 	str r1, [r0, #0x370]
 	ldrsb r0, [r0, #4]
@@ -41342,7 +41479,7 @@ ov11_022FEF24: ; 0x022FEF24
 ov11_022FEF4C: ; 0x022FEF4C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldrsb r0, [r4, #4]
 	mvn r1, #1
@@ -41360,7 +41497,7 @@ _022FEF70:
 	arm_func_start ov11_022FEF84
 ov11_022FEF84: ; 0x022FEF84
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x370]
 	cmp r0, #5
 	movne r0, #1
@@ -41369,8 +41506,8 @@ ov11_022FEF84: ; 0x022FEF84
 	ldmia sp!, {r3, pc}
 	arm_func_end ov11_022FEF84
 
-	arm_func_start ov11_022FEFA4
-ov11_022FEFA4: ; 0x022FEFA4
+	arm_func_start UpdateTeamInfoBox
+UpdateTeamInfoBox: ; 0x022FEFA4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x54
 	sub sp, sp, #0x400
@@ -41421,7 +41558,11 @@ _022FEFFC:
 	bl sub_020265A8
 	ldrsb r0, [r8, #0x10]
 	mov r1, #0x3a
+#ifdef EUROPE
+	mov r2, #0xe
+#else
 	mov r2, #4
+#endif
 	add r3, sp, #0x54
 	bl sub_02026214
 	mov r0, #0x16
@@ -41451,7 +41592,11 @@ _022FF0AC:
 	ldrsb r0, [r8, #0x10]
 	add r3, sp, #0x54
 	mov r1, #0x3a
+#ifdef EUROPE
+	mov r2, #0x1a
+#else
 	mov r2, #0x16
+#endif
 	bl sub_02026214
 	ldrsb r0, [r6, #4]
 	mvn r1, #1
@@ -41482,14 +41627,22 @@ _022FF118:
 	cmp r5, #3
 	ldrsb r0, [r8, #0x10]
 	add r3, sp, #0x54
+#ifdef EUROPE
+	mov r2, #2
+	beq _022FF15C
+	mov r1, #0xaa
+#else
 	beq _022FF15C
 	mov r1, #0x9a
 	mov r2, #4
+#endif
 	bl sub_02026214
 	b _022FF168
 _022FF15C:
 	mov r1, #0x10
+#ifndef EUROPE
 	mov r2, #2
+#endif
 	bl sub_02026214
 _022FF168:
 	mov r0, #3
@@ -41523,7 +41676,7 @@ _022FF1C4: .word 0x0000021F
 _022FF1C8: .word 0x0000C402
 _022FF1CC: .word 0x00000221
 _022FF1D0: .word 0x00000226
-	arm_func_end ov11_022FEFA4
+	arm_func_end UpdateTeamInfoBox
 
 	arm_func_start ov11_022FF1D4
 ov11_022FF1D4: ; 0x022FF1D4
@@ -41768,7 +41921,11 @@ _022FF4E4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022FF4F0: .word ov11_0232249C
+#ifdef EUROPE
+_022FF4F4: .word 0x000001CB
+#else
 _022FF4F4: .word 0x000001AF
+#endif
 _022FF4F8: .word ov11_02324D14
 _022FF4FC: .word ov11_0238A078
 	arm_func_end ov11_022FF490
@@ -41810,7 +41967,11 @@ _022FF558:
 	.align 2, 0
 _022FF57C: .word ov11_02324D14
 _022FF580: .word ov11_0238A078
+#ifdef EUROPE
+_022FF584: .word 0x000001CB
+#else
 _022FF584: .word 0x000001AF
+#endif
 	arm_func_end ov11_022FF500
 
 	arm_func_start ov11_022FF588
@@ -42122,7 +42283,11 @@ _022FF9D8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022FF9E0: .word ov11_02324D14
+#ifdef EUROPE
+_022FF9E4: .word 0x000001CB
+#else
 _022FF9E4: .word 0x000001AF
+#endif
 _022FF9E8: .word ov11_023224AC
 _022FF9EC: .word ov11_022FF9FC
 _022FF9F0: .word ov11_023224BC
@@ -42187,7 +42352,11 @@ _022FFA70:
 	.align 2, 0
 _022FFAA0: .word ov11_02324D14
 _022FFAA4: .word ov11_0238A078
+#ifdef EUROPE
+_022FFAA8: .word 0x000001CB
+#else
 _022FFAA8: .word 0x000001AF
+#endif
 	arm_func_end ov11_022FFA5C
 
 	arm_func_start ov11_022FFAAC
@@ -42491,7 +42660,7 @@ _022FFEA8:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _022FFEC4
-	bl FreeDBox
+	bl FreeDialogueBox
 _022FFEC4:
 	ldr r0, _022FFEFC ; =ov11_02324D1C
 	mvn r1, #1
@@ -42614,7 +42783,7 @@ _02300040:
 	mvn r1, #1
 	cmp r0, r1
 	beq _02300078
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02300570
 _02300078:
@@ -42634,7 +42803,7 @@ _0230009C:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _023000C8
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0230057C ; =ov11_02324D1C
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -42697,7 +42866,7 @@ _02300178:
 _0230018C:
 	ldrb r0, [r2, #0xc]
 	cmp r0, #0
-	beq _023001F4
+	beq ov11_023001F4
 	bl ov11_0230D220
 	cmp r0, #0
 	bne _02300570
@@ -42721,7 +42890,10 @@ _0230018C:
 	ldr r0, [r0, #4]
 	ldrsh r0, [r0, #0xe]
 	bl WorldMapSetCamera
-_023001F4:
+	arm_func_end ov11_022FFF00
+
+	arm_func_start ov11_023001F4
+ov11_023001F4:
 	ldr r0, _0230057C ; =ov11_02324D1C
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
@@ -42789,10 +42961,6 @@ _023002E4:
 	ldr r1, _0230057C ; =ov11_02324D1C
 	mov r2, #6
 	ldr r3, [r1, #4]
-	arm_func_end ov11_022FFF00
-
-	arm_func_start ov11_023002F0
-ov11_023002F0: ; 0x023002F0
 	str r0, [r3, #0x10]
 	ldr r0, [r1, #4]
 	str r2, [r0, #4]
@@ -42819,7 +42987,7 @@ _02300340:
 	cmp r0, r1
 	bne _02300398
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _0230057C ; =ov11_02324D1C
 	ldr r2, [r1, #4]
 	strb r0, [r2, #1]
@@ -42836,7 +43004,7 @@ _02300340:
 	ldrsb r0, [r0, #1]
 	ldr r2, _02300594 ; =0x0000022F
 	add r3, sp, #8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _02300398:
 	ldr r1, _0230057C ; =ov11_02324D1C
 	mvn r0, #1
@@ -42912,7 +43080,7 @@ _02300494:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _023004B8
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02300570
 _023004B8:
@@ -42932,7 +43100,7 @@ _023004DC:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _02300508
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0230057C ; =ov11_02324D1C
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -42981,7 +43149,7 @@ _02300590: .word 0x00000408
 _02300594: .word 0x0000022F
 _02300598: .word 0x00400013
 _0230059C: .word ov11_02322530
-	arm_func_end ov11_023002F0
+	arm_func_end ov11_023001F4
 
 	arm_func_start ov11_023005A0
 ov11_023005A0: ; 0x023005A0
@@ -43152,7 +43320,7 @@ ov11_023007AC: ; 0x023007AC
 	str r0, [r1]
 	str r2, [r0, #4]
 	ldr r0, _023007EC ; =ov11_023225CC
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _023007E8 ; =ov11_02324D24
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -43171,7 +43339,7 @@ ov11_023007F0: ; 0x023007F0
 	cmp r0, #0
 	beq _02300824
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02300848 ; =ov11_02324D24
 	ldr r0, [r0]
 	bl MemFree
@@ -43236,7 +43404,7 @@ _023008D0:
 	ldr r3, [r2, #4]
 	ldrh r2, [r3, #4]
 	add r3, r3, #8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02300904
 _023008EC:
 	ldr r2, _02300A20 ; =ov11_02324D24
@@ -43244,7 +43412,7 @@ _023008EC:
 	ldr r3, [r2, #4]
 	add r2, r3, #0x58
 	add r3, r3, #8
-	bl ShowStringInDBox
+	bl ShowStringInDialogueBox
 _02300904:
 	ldr r0, _02300A20 ; =ov11_02324D24
 	ldmia r0, {r1, r2}
@@ -43285,7 +43453,7 @@ _02300964:
 	b _02300A18
 _02300990:
 	ldrsb r0, [r3]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02300A18
 	ldr r0, _02300A20 ; =ov11_02324D24
@@ -43433,7 +43601,7 @@ ov11_02300B50: ; 0x02300B50
 	ldr r1, [r1]
 	ldr r0, _02300B98 ; =ov11_023225EC
 	strb r2, [r1, #8]
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02300B94 ; =ov11_02324D2C
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -43452,7 +43620,7 @@ ov11_02300B9C: ; 0x02300B9C
 	cmp r0, #0
 	beq _02300BD0
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02300BF4 ; =ov11_02324D2C
 	ldr r0, [r0]
 	bl MemFree
@@ -43506,7 +43674,7 @@ _02300C58:
 	ldr r3, [r2, #4]
 	ldrh r2, [r3, #4]
 	add r3, r3, #8
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02300C8C
 _02300C74:
 	ldr r2, _02300D58 ; =ov11_02324D2C
@@ -43514,7 +43682,7 @@ _02300C74:
 	ldr r3, [r2, #4]
 	add r2, r3, #0x58
 	add r3, r3, #8
-	bl ShowStringInDBox
+	bl ShowStringInDialogueBox
 _02300C8C:
 	ldr r0, _02300D58 ; =ov11_02324D2C
 	ldr r2, [r0, #4]
@@ -43536,7 +43704,7 @@ _02300CC8:
 	ldr r0, _02300D58 ; =ov11_02324D2C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	ldr r1, _02300D58 ; =ov11_02324D2C
 	cmp r0, #0
 	ldr r2, [r1]
@@ -43670,11 +43838,11 @@ _02300E5C:
 	strb r0, [r3]
 	ldr r0, _02300EF0 ; =ov11_0232261C
 	mov r3, #0x10000
-	bl sub_0202FBBC
+	bl CreateDynamicTextBox
 	ldr r1, _02300ED8 ; =ov11_02324D34
 	ldr r1, [r1]
 	strb r0, [r1, #1]
-	bl ov11_022FEE94
+	bl CreateTeamInfoBox
 	ldr r1, _02300ED8 ; =ov11_02324D34
 	mov r3, #0
 	ldr r2, [r1]
@@ -44180,7 +44348,7 @@ _0230152C:
 	cmp r1, r0
 	bne _02301554
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02301A10 ; =ov11_02324D48
 	ldr r1, [r1]
 	strb r0, [r1, #0x254]
@@ -44210,7 +44378,7 @@ _0230157C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldmia sp!, {r3, pc}
 _023015BC:
 	bl ov11_02302618
@@ -44233,7 +44401,7 @@ _023015F0:
 	ldr r1, _02301A1C ; =0x00300011
 	ldr r3, _02301A20 ; =ov11_0232271C
 	str r2, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02301A10 ; =ov11_02324D48
 	ldr r1, [r1]
 	strb r0, [r1, #0x255]
@@ -44253,7 +44421,7 @@ _02301618:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldmia sp!, {r3, pc}
 _02301658:
 	ldr r0, _02301A18 ; =ov11_023226FC
@@ -44261,7 +44429,7 @@ _02301658:
 	ldr r1, _02301A1C ; =0x00300011
 	ldr r3, _02301A20 ; =ov11_0232271C
 	str r2, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02301A10 ; =ov11_02324D48
 	ldr r1, [r1]
 	strb r0, [r1, #0x255]
@@ -44346,7 +44514,7 @@ _02301780:
 	ldrsb r0, [r0, #0x54]
 	add r3, r2, #0x188
 	mov r2, #0x3a4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldmia sp!, {r3, pc}
 _023017B4:
 	mov r1, #1
@@ -44475,12 +44643,12 @@ _02301938:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldmia sp!, {r3, pc}
 _023019A0:
 	add r0, r2, #0x200
 	ldrsb r0, [r0, #0x54]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r1, _02301A10 ; =ov11_02324D48
 	mvn r3, #1
 	ldr r2, [r1]
@@ -44560,7 +44728,7 @@ _02301AA8:
 	cmp r1, r0
 	bne _02301AD0
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02301F8C ; =ov11_02324D48
 	ldr r1, [r1]
 	strb r0, [r1, #0x254]
@@ -44590,7 +44758,7 @@ _02301AF8:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldmia sp!, {r3, pc}
 _02301B38:
 	bl ov11_02302618
@@ -44613,7 +44781,7 @@ _02301B6C:
 	ldr r1, _02301F98 ; =0x00300011
 	ldr r3, _02301F9C ; =ov11_0232271C
 	str r2, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02301F8C ; =ov11_02324D48
 	ldr r1, [r1]
 	strb r0, [r1, #0x255]
@@ -44633,7 +44801,7 @@ _02301B94:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldmia sp!, {r3, pc}
 _02301BD4:
 	ldr r0, _02301F94 ; =ov11_023226FC
@@ -44641,7 +44809,7 @@ _02301BD4:
 	ldr r1, _02301F98 ; =0x00300011
 	ldr r3, _02301F9C ; =ov11_0232271C
 	str r2, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02301F8C ; =ov11_02324D48
 	ldr r1, [r1]
 	strb r0, [r1, #0x255]
@@ -44726,7 +44894,7 @@ _02301CFC:
 	add r3, r2, #0x188
 	ldrsb r0, [r0, #0x54]
 	mov r2, #0x3a4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldmia sp!, {r3, pc}
 _02301D30:
 	mov r1, #1
@@ -44855,12 +45023,12 @@ _02301EB4:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldmia sp!, {r3, pc}
 _02301F1C:
 	add r0, r2, #0x200
 	ldrsb r0, [r0, #0x54]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r1, _02301F8C ; =ov11_02324D48
 	mvn r3, #1
 	ldr r2, [r1]
@@ -44910,14 +45078,14 @@ ov11_02301FAC: ; 0x02301FAC
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x54]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02302000 ; =ov11_02324D48
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x54]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02302000 ; =ov11_02324D48
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
@@ -44996,7 +45164,7 @@ _02302078: ; jump table
 _023020E0:
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x54]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02302554
 	mov r0, #3
@@ -45005,12 +45173,12 @@ _023020E0:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x54]
-	bl ShowDBox
+	bl ShowDialogueBox
 	b _02302554
 _02302114:
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x55]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _02302170
 	cmp r0, #4
@@ -45112,7 +45280,7 @@ _0230221C:
 _0230228C:
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x55]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _023022C4
 	cmp r0, #4
@@ -45137,14 +45305,14 @@ _023022D4:
 _023022E0:
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x54]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02302554
 	ldr r0, _023025E4 ; =ov11_02324D48
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x54]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _023025E4 ; =ov11_02324D48
 	mov r2, #0x1a
 	ldr r1, [r0]
@@ -45337,7 +45505,7 @@ _023025A4:
 	ldrsb r0, [r0, #0x54]
 	cmp r0, r1
 	beq _023025DC
-	bl FreeDBox
+	bl FreeDialogueBox
 	b _023025DC
 _023025CC:
 	ldr r0, [r0, #0x20]
@@ -45383,7 +45551,7 @@ ov11_02302618: ; 0x02302618
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x55]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _02302664 ; =ov11_02324D48
 	mvn r1, #1
 	ldr r0, [r0]
@@ -45459,13 +45627,13 @@ _02302744:
 	ldmia sp!, {r3, pc}
 _0230274C:
 	ldrsb r0, [r2, #0xfc]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0230283C
 	ldr r0, _02302844 ; =ov11_02324D4C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xfc]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02302844 ; =ov11_02324D4C
 	mov r2, #0xd
 	ldr r1, [r0]
@@ -45494,13 +45662,13 @@ _0230278C:
 	b _0230283C
 _023027D0:
 	ldrsb r0, [r2, #0xfc]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0230283C
 	ldr r0, _02302844 ; =ov11_02324D4C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xfc]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02302844 ; =ov11_02324D4C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -45511,7 +45679,7 @@ _023027D0:
 	ldr r0, _02302844 ; =ov11_02324D4C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xfc]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02302844 ; =ov11_02324D4C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -45983,7 +46151,7 @@ _02302E0C:
 	cmp r1, r0
 	bne _023031DC
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	mov r1, sb
 	ldr r3, [r1, #4]
 	mov r2, #1
@@ -45996,7 +46164,7 @@ _02302E4C:
 	ldr r2, _023031E8 ; =0x000002C5
 	mov r1, #0x10
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #2
@@ -46004,13 +46172,13 @@ _02302E4C:
 	b _023031DC
 _02302E74:
 	ldrsb r0, [r3, #9]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _023031DC
 	mov r0, sb
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #9]
-	bl ShowDBox
+	bl ShowDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #3
@@ -46061,19 +46229,19 @@ _02302EC0:
 	b _023031DC
 _02302F4C:
 	ldrsb r0, [r3, #0xa]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _023031DC
 	mov r0, sb
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #0xa]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	mov r1, sb
 	ldr r2, [r1, #4]
 	str r0, [r2, #4]
 	ldr r0, [r1, #4]
 	ldrsb r0, [r0, #0xa]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	mov r0, sb
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #4]
@@ -46085,7 +46253,7 @@ _02302F4C:
 	b _02302FE8
 _02302FA8:
 	ldrsb r0, [r1, #9]
-	bl FreeDBox
+	bl FreeDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #0xb
@@ -46093,7 +46261,7 @@ _02302FA8:
 	b _023031DC
 _02302FC4:
 	ldrsb r0, [r1, #9]
-	bl FreeDBox
+	bl FreeDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #1
@@ -46110,7 +46278,7 @@ _02302FF4:
 	ldr r2, _023031F8 ; =0x000002C9
 	add r3, r3, #0x13c
 	mov r1, #0x10
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #6
@@ -46118,13 +46286,13 @@ _02302FF4:
 	b _023031DC
 _0230301C:
 	ldrsb r0, [r3, #9]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _023031DC
 	mov r0, sb
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #9]
-	bl ShowDBox
+	bl ShowDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #7
@@ -46137,7 +46305,7 @@ _02303050:
 	ldr r3, _02303204 ; =ov11_02322798
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	mov r1, sb
 	ldr r3, [r1, #4]
 	mov r2, #8
@@ -46147,19 +46315,19 @@ _02303050:
 	b _023031DC
 _02303088:
 	ldrsb r0, [r3, #0xa]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _023031DC
 	mov r0, sb
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #0xa]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	mov r1, sb
 	ldr r2, [r1, #4]
 	str r0, [r2, #4]
 	ldr r0, [r1, #4]
 	ldrsb r0, [r0, #0xa]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	mov r0, sb
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #4]
@@ -46180,7 +46348,7 @@ _023030F4:
 	mov r1, #0x218
 	add r2, r1, #0xb2
 	add r3, r3, #0x13c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #0xa
@@ -46188,7 +46356,7 @@ _023030F4:
 	b _023031DC
 _0230311C:
 	ldrsb r0, [r3, #9]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	moveq r0, sb
 	ldreq r0, [r0, #4]
@@ -46235,7 +46403,7 @@ _023031C0:
 	mov r0, sb
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #9]
-	bl FreeDBox
+	bl FreeDialogueBox
 	mov r0, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _023031DC:
@@ -46441,14 +46609,14 @@ _023034A0:
 _023034A8:
 	add r0, r2, #0xc00
 	ldrsb r0, [r0, #0x7d]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _023035B4
 	ldr r0, _023035BC ; =ov11_02324D54
 	ldr r0, [r0]
 	add r0, r0, #0xc00
 	ldrsb r0, [r0, #0x7d]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _023035BC ; =ov11_02324D54
 	mov r2, #0xd
 	ldr r1, [r0]
@@ -46479,14 +46647,14 @@ _023034F4:
 _02303538:
 	add r0, r2, #0xc00
 	ldrsb r0, [r0, #0x7d]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _023035B4
 	ldr r0, _023035BC ; =ov11_02324D54
 	ldr r0, [r0]
 	add r0, r0, #0xc00
 	ldrsb r0, [r0, #0x7d]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _023035BC ; =ov11_02324D54
 	mvn r1, #1
 	ldr r0, [r0]
@@ -46499,7 +46667,7 @@ _02303538:
 	ldr r0, [r0]
 	add r0, r0, #0xc00
 	ldrsb r0, [r0, #0x7d]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _023035BC ; =ov11_02324D54
 	mvn r1, #1
 	ldr r0, [r0]
@@ -46889,7 +47057,7 @@ _02303A20:
 	ldr r2, [r3, #0x40]
 	sub r2, r2, #2
 	str r2, [r3, #0x10]
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02303AF8 ; =ov11_02324D58
 	mov r2, #1
 	ldr r3, [r1, #4]
@@ -47012,7 +47180,7 @@ _02303BFC:
 	ldr r3, _02303D74 ; =ov11_023228F0
 	add r2, r1, #0xf8
 	mov r1, #0x33
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02303D68 ; =ov11_02324D58
 	ldr r2, [r1, #4]
 	strb r0, [r2, #2]
@@ -47030,7 +47198,7 @@ _02303C5C:
 	add r2, r1, #0xf8
 	ldr r3, _02303D78 ; =ov11_02322910
 	mov r1, #0x33
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02303D68 ; =ov11_02324D58
 	ldr r1, [r1, #4]
 	strb r0, [r1, #2]
@@ -47086,7 +47254,7 @@ _02303D24:
 	ldmia sp!, {r3, pc}
 _02303D4C:
 	ldrsb r0, [r3, #2]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _02303D68 ; =ov11_02324D58
 	mov r1, #4
 	ldr r0, [r0, #4]
@@ -47094,7 +47262,11 @@ _02303D4C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02303D68: .word ov11_02324D58
+#ifdef EUROPE
+_02303D6C: .word 0x00003D01
+#else
 _02303D6C: .word 0x00003CFF
+#endif
 _02303D70: .word ov11_023228D0
 _02303D74: .word ov11_023228F0
 _02303D78: .word ov11_02322910
@@ -47121,7 +47293,7 @@ _02303DA0: ; jump table
 	b _0230422C ; case 6
 _02303DBC:
 	ldrsb r0, [r2, #2]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #5
 	addls pc, pc, r0, lsl #2
 	b _0230428C
@@ -47306,7 +47478,7 @@ _0230404C:
 	b _0230428C
 _0230406C:
 	ldrsb r0, [r2, #2]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #4
 	addls pc, pc, r0, lsl #2
 	b _0230428C
@@ -47445,7 +47617,7 @@ _02304250:
 	b _0230428C
 _02304268:
 	ldrsb r0, [r2, #2]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _02304298 ; =ov11_02324D58
 	mvn r3, #1
 	ldr r2, [r0, #4]
@@ -48453,7 +48625,7 @@ _02304EA8:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0230543C
 _02304EDC:
 	mov r0, #3
@@ -48462,7 +48634,7 @@ _02304EDC:
 	ldr r0, _02305444 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02305444 ; =ov11_02324D84
 	mov r3, #3
 	ldr r1, [r0]
@@ -48472,7 +48644,7 @@ _02304EDC:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0230543C
 _02304F24:
 	add r0, r4, #0x1b0
@@ -48554,7 +48726,7 @@ _02304FE4:
 	ldr r0, _02305444 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02305444 ; =ov11_02324D84
 	mov r4, #0x15
 	ldr r3, [r0]
@@ -48564,7 +48736,7 @@ _02304FE4:
 	add r2, r4, #0x2bc
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0230543C
 _0230508C:
 	mov r4, #3
@@ -48574,7 +48746,7 @@ _0230508C:
 	ldr r3, _0230545C ; =ov11_02322BC8
 	add r2, sp, #0x68
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
@@ -48601,12 +48773,16 @@ _023050BC:
 	add ip, r4, #0x15c
 	str ip, [sp]
 	ldrsh r4, [r4, #0x58]
+#ifdef EUROPE
+	add r4, r4, #0xd3
+#else
 	add r4, r4, #0xd1
+#endif
 	add r4, r4, #0x2900
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, ip}
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4b]
@@ -48657,7 +48833,7 @@ _02305138:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02305444 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldr r0, [r0, #0x44]
@@ -48705,7 +48881,7 @@ _0230527C:
 	ldr r0, _02305444 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02305444 ; =ov11_02324D84
 	mov r3, #5
 	ldr r1, [r0]
@@ -48715,7 +48891,7 @@ _0230527C:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0230543C
 _023052D0:
 	mov r4, #3
@@ -48725,7 +48901,7 @@ _023052D0:
 	ldr r3, _0230545C ; =ov11_02322BC8
 	add r2, sp, #0x100
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
@@ -48748,7 +48924,7 @@ _02305310:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _0230543C
 _02305348:
 	ldr r0, _02305478 ; =ov11_02322BB8
@@ -48757,14 +48933,14 @@ _02305348:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
 	b _0230543C
 _02305374:
 	ldrsb r0, [r4, #0x48]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02305444 ; =ov11_02324D84
 	mvn r2, #1
 	ldr r1, [r0]
@@ -48814,7 +48990,7 @@ _02305408:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _0230543C:
 	add sp, sp, #0x198
 	ldmia sp!, {r3, r4, r5, pc}
@@ -48910,7 +49086,7 @@ _02305560:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02305AF4
 _02305594:
 	mov r0, #3
@@ -48919,7 +49095,7 @@ _02305594:
 	ldr r0, _02305AFC ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02305AFC ; =ov11_02324D84
 	mov r3, #3
 	ldr r1, [r0]
@@ -48929,7 +49105,7 @@ _02305594:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02305AF4
 _023055DC:
 	add r0, r4, #0x1b0
@@ -49011,7 +49187,7 @@ _0230569C:
 	ldr r0, _02305AFC ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02305AFC ; =ov11_02324D84
 	mov r4, #0x15
 	ldr r3, [r0]
@@ -49021,7 +49197,7 @@ _0230569C:
 	add r2, r4, #0x2bc
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02305AF4
 _02305744:
 	mov r4, #3
@@ -49031,7 +49207,7 @@ _02305744:
 	ldr r3, _02305B14 ; =ov11_02322BC8
 	add r2, sp, #0xb0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
@@ -49058,12 +49234,16 @@ _02305774:
 	add ip, r4, #0x15c
 	str ip, [sp]
 	ldrsh r4, [r4, #0x58]
+#ifdef EUROPE
+	add r4, r4, #0xd3
+#else
 	add r4, r4, #0xd1
+#endif
 	add r4, r4, #0x2900
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, ip}
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4b]
@@ -49114,7 +49294,7 @@ _023057F0:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02305AFC ; =ov11_02324D84
 	ldr r0, [r0]
 	ldr r0, [r0, #0x44]
@@ -49162,7 +49342,7 @@ _02305934:
 	ldr r0, _02305AFC ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02305AFC ; =ov11_02324D84
 	mov r3, #5
 	ldr r1, [r0]
@@ -49172,7 +49352,7 @@ _02305934:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02305AF4
 _02305988:
 	mov r4, #3
@@ -49182,7 +49362,7 @@ _02305988:
 	ldr r3, _02305B14 ; =ov11_02322BC8
 	add r2, sp, #0x18
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
@@ -49205,7 +49385,7 @@ _023059C8:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02305AF4
 _02305A00:
 	ldr r0, _02305B30 ; =ov11_02322BB8
@@ -49214,14 +49394,14 @@ _02305A00:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
 	b _02305AF4
 _02305A2C:
 	ldrsb r0, [r4, #0x48]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02305AFC ; =ov11_02324D84
 	mvn r2, #1
 	ldr r1, [r0]
@@ -49271,7 +49451,7 @@ _02305AC0:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _02305AF4:
 	add sp, sp, #0x198
 	ldmia sp!, {r3, r4, r5, pc}
@@ -49373,7 +49553,7 @@ _02305BE0: ; jump table
 	b _02306050 ; case 22
 _02305C3C:
 	ldrsb r0, [r3, #0x4a]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _02305C70
 	cmp r0, #2
@@ -49393,7 +49573,7 @@ _02305C70:
 	b _023060C0
 _02305C80:
 	ldrsb r0, [r3, #0x4a]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _02305CB4
 	cmp r0, #2
@@ -49413,7 +49593,7 @@ _02305CB4:
 	b _023060C0
 _02305CC4:
 	ldrsb r0, [r3, #0x4a]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	beq _02305CF8
 	cmp r0, #2
@@ -49454,7 +49634,7 @@ _02305D08:
 	ldr r1, [r1]
 	str r0, [r1, #0x44]
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x49]
@@ -49487,7 +49667,7 @@ _02305D9C:
 	cmp r0, #0
 	bne _02305DE4
 	mov r0, #5
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02305DE4:
 	bl SortItemsInBag
 	bl GetNbItemsInBag
@@ -49575,7 +49755,7 @@ _02305F00:
 	b _023060C0
 _02305F24:
 	ldrsb r0, [r3, #0x4a]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
 	b _023060C0
@@ -49659,13 +49839,13 @@ _02306044:
 	b _023060C4
 _02306050:
 	ldrsb r0, [r3, #0x48]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _023060C0
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02306148 ; =ov11_02324D84
 	mov r2, #0x18
 	ldr r1, [r0]
@@ -49676,13 +49856,13 @@ _02306050:
 	b _023060C0
 _02306090:
 	ldrsb r0, [r3, #0x48]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _023060C0
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
@@ -49718,7 +49898,7 @@ _02306120:
 	str r1, [r3, #0x50]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
-	bl FreeDBox
+	bl FreeDialogueBox
 	b _02306140
 _02306138:
 	mov r0, #4
@@ -49743,7 +49923,7 @@ ov11_0230614C: ; 0x0230614C
 	ldr r0, _02306190 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x4a]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _02306190 ; =ov11_02324D84
 	mvn r1, #1
 	ldr r0, [r0]
@@ -49763,7 +49943,7 @@ ov11_02306194: ; 0x02306194
 	cmp r1, r0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _023061C8 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x48]
@@ -49916,7 +50096,7 @@ _02306388:
 	mov r2, #0x2e0
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02306760
 _023063BC:
 	mov r0, #3
@@ -49925,7 +50105,7 @@ _023063BC:
 	ldr r0, _02306768 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x21]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02306768 ; =ov11_02324D88
 	mov r3, #3
 	ldr r1, [r0]
@@ -49935,7 +50115,7 @@ _023063BC:
 	mov r1, #8
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02306760
 _02306404:
 	ldr r0, _0230676C ; =ov11_02322C10
@@ -49944,7 +50124,7 @@ _02306404:
 	ldr r3, _02306774 ; =ov11_02322C38
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02306768 ; =ov11_02324D88
 	ldr r1, [r1]
 	strb r0, [r1, #0x22]
@@ -49954,14 +50134,14 @@ _02306430:
 	ldr r0, _02306768 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x21]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02306768 ; =ov11_02324D88
 	ldr r2, _02306778 ; =0x000002EA
 	ldr r3, [r0]
 	mov r1, #8
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02306768 ; =ov11_02324D88
 	mov r1, #5
 	ldr r0, [r0]
@@ -49977,7 +50157,7 @@ _02306474:
 	ldr r1, _0230677C ; =0x00300031
 	ldr r3, _02306780 ; =ov11_02322C20
 	add r2, r2, #0x8c
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02306768 ; =ov11_02324D88
 	mov r2, #6
 	ldr r3, [r1]
@@ -49987,18 +50167,18 @@ _02306474:
 	b _02306760
 _023064B8:
 	ldrsb r0, [r2, #0x22]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _02306760
 	ldr r0, _02306768 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x22]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _02306768 ; =ov11_02324D88
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0x22]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	cmp r4, #2
 	beq _023064FC
 	cmp r4, #3
@@ -50040,7 +50220,7 @@ _02306538:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02306768 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0xc]
@@ -50086,7 +50266,7 @@ _02306610:
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02306768 ; =ov11_02324D88
 	ldr r1, [r1]
 	strb r0, [r1, #0x22]
@@ -50142,7 +50322,7 @@ _023066C0:
 	b _02306760
 _023066F4:
 	ldrsb r0, [r2, #0x21]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02306768 ; =ov11_02324D88
 	mvn r3, #1
 	ldr r2, [r0]
@@ -50169,7 +50349,7 @@ _0230672C:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _02306760:
 	add sp, sp, #0x7c
 	ldmia sp!, {r3, r4, pc}
@@ -50253,7 +50433,7 @@ _02306858:
 	mov r2, #0x2e0
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02306C30
 _0230688C:
 	mov r0, #3
@@ -50262,7 +50442,7 @@ _0230688C:
 	ldr r0, _02306C38 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x21]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02306C38 ; =ov11_02324D88
 	mov r3, #3
 	ldr r1, [r0]
@@ -50272,7 +50452,7 @@ _0230688C:
 	mov r1, #8
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02306C30
 _023068D4:
 	ldr r0, _02306C3C ; =ov11_02322C10
@@ -50281,7 +50461,7 @@ _023068D4:
 	ldr r3, _02306C44 ; =ov11_02322C38
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02306C38 ; =ov11_02324D88
 	ldr r1, [r1]
 	strb r0, [r1, #0x22]
@@ -50291,14 +50471,14 @@ _02306900:
 	ldr r0, _02306C38 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x21]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02306C38 ; =ov11_02324D88
 	ldr r2, _02306C48 ; =0x000002EA
 	ldr r3, [r0]
 	mov r1, #8
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02306C38 ; =ov11_02324D88
 	mov r1, #5
 	ldr r0, [r0]
@@ -50314,7 +50494,7 @@ _02306944:
 	ldr r1, _02306C4C ; =0x00300031
 	ldr r3, _02306C50 ; =ov11_02322C20
 	add r2, r2, #0x8c
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02306C38 ; =ov11_02324D88
 	mov r2, #6
 	ldr r3, [r1]
@@ -50324,18 +50504,18 @@ _02306944:
 	b _02306C30
 _02306988:
 	ldrsb r0, [r2, #0x22]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _02306C30
 	ldr r0, _02306C38 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x22]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _02306C38 ; =ov11_02324D88
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0x22]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	cmp r4, #2
 	beq _023069CC
 	cmp r4, #3
@@ -50377,7 +50557,7 @@ _02306A08:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02306C38 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0xc]
@@ -50423,7 +50603,7 @@ _02306AE0:
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02306C38 ; =ov11_02324D88
 	ldr r1, [r1]
 	strb r0, [r1, #0x22]
@@ -50479,7 +50659,7 @@ _02306B90:
 	b _02306C30
 _02306BC4:
 	ldrsb r0, [r2, #0x21]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02306C38 ; =ov11_02324D88
 	mvn r3, #1
 	ldr r2, [r0]
@@ -50506,7 +50686,7 @@ _02306BFC:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _02306C30:
 	add sp, sp, #0x7c
 	ldmia sp!, {r3, r4, pc}
@@ -50593,7 +50773,7 @@ _02306CE4: ; jump table
 	b _02307070 ; case 22
 _02306D40:
 	ldrsb r0, [r2, #0x22]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	ldrne r1, _023071C0 ; =ov11_02324D88
 	ldrne r1, [r1]
@@ -50623,7 +50803,7 @@ _02306DA0:
 	ldr r0, _023071C0 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x21]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _023071C0 ; =ov11_02324D88
 	mvn r3, #1
 	ldr r1, [r0]
@@ -50660,7 +50840,7 @@ _02306DE8:
 	ldr r1, [r1]
 	str r0, [r1, #4]
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	bl sub_0203A5F0
 	bl sub_0203A51C
 	ldr r0, _023071C0 ; =ov11_02324D88
@@ -50713,7 +50893,7 @@ _02306ED0:
 	b _02307120
 _02306EFC:
 	ldrsb r0, [r2, #0x22]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #7
 	addls pc, pc, r0, lsl #2
 	b _02307120
@@ -50818,13 +50998,13 @@ _02307068:
 	b _02307124
 _02307070:
 	ldrsb r0, [r2, #0x21]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02307120
 	ldr r0, _023071C0 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x21]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _023071C0 ; =ov11_02324D88
 	mov r2, #0x18
 	ldr r1, [r0]
@@ -50835,13 +51015,13 @@ _02307070:
 	b _02307120
 _023070B0:
 	ldrsb r0, [r2, #0x21]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02307120
 	ldr r0, _023071C0 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x21]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _023071C0 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldr r0, [r0, #0x14]
@@ -50897,7 +51077,7 @@ _0230717C:
 	ldrsb r0, [r0, #0x21]
 	cmp r0, r1
 	beq _023071B8
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _023071C0 ; =ov11_02324D88
 	mvn r1, #1
 	ldr r0, [r0]
@@ -50926,7 +51106,7 @@ ov11_023071C4: ; 0x023071C4
 	ldr r0, _02307208 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x22]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _02307208 ; =ov11_02324D88
 	mvn r1, #1
 	ldr r0, [r0]
@@ -50946,7 +51126,7 @@ ov11_0230720C: ; 0x0230720C
 	cmp r1, r0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02307240 ; =ov11_02324D88
 	ldr r1, [r1]
 	strb r0, [r1, #0x21]
@@ -51094,7 +51274,7 @@ _023073FC:
 	ldr r2, [r2]
 	strb r0, [r2, #4]
 	ldr r0, _023082BC ; =ov11_02322C88
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	mvn r3, #0
 	ldr r4, [r1]
@@ -51146,7 +51326,7 @@ _023074EC:
 	cmp r0, #0
 	bne _023074FC
 	mov r0, #5
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _023074FC:
 	bl SortItemsInBag
 	ldr r0, _023082B4 ; =ov11_02324D8C
@@ -51198,7 +51378,11 @@ _02307548:
 	tst r0, #0xff
 	beq _023075E4
 	ldrsh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0x4b
+#else
 	add r0, r0, #0x49
+#endif
 	add r0, r0, #0x2f00
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -51377,7 +51561,7 @@ _02307840:
 	tst r0, #8
 	beq _02308CF0
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
@@ -51616,7 +51800,7 @@ _02307BCC:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0xd
 	ldr r0, [r0]
@@ -51680,7 +51864,7 @@ _02307C78:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x14
 	ldr r0, [r0]
@@ -51688,13 +51872,13 @@ _02307C78:
 	b _02308CF0
 _02307CD0:
 	ldrsb r0, [r4, #8]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl ShowDBox
+	bl ShowDialogueBox
 	bl ov11_02308F14
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x15
@@ -51762,7 +51946,7 @@ _02307D90:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r1, [r0]
 	ldr r0, [r1, #0x244]
@@ -51844,7 +52028,7 @@ _02307ECC:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x17
 	ldr r3, [r0]
@@ -51856,13 +52040,13 @@ _02307ECC:
 	b _02308CF0
 _02307F20:
 	ldrsb r0, [r4, #8]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl ShowDBox
+	bl ShowDialogueBox
 	bl ov11_02308F14
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x10
@@ -52049,7 +52233,7 @@ _023081D0:
 	ldr r3, _02308318 ; =ov11_02322CF0
 	add r2, r1, #0x1c
 	mov r1, #0x33
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	mov r2, #0x20
 	ldr r3, [r1]
@@ -52059,18 +52243,18 @@ _023081D0:
 	b _02308CF0
 _02308214:
 	ldrsb r0, [r4, #0xc]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xc]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -52203,7 +52387,7 @@ _0230841C:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x24
 	ldr r0, [r0]
@@ -52211,7 +52395,7 @@ _0230841C:
 	b _02308CF0
 _02308450:
 	ldrsb r0, [r4, #8]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	ldreq r0, _023082B4 ; =ov11_02324D8C
 	moveq r1, #0x25
@@ -52307,7 +52491,7 @@ _02308594:
 	strb r2, [r1, #7]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl ShowDBox
+	bl ShowDialogueBox
 	bl ov11_02308F14
 	b _02308CF0
 _023085C8:
@@ -52390,7 +52574,7 @@ _023086B0:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	add r0, r0, #0x238
@@ -52429,7 +52613,7 @@ _02308748:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x29
 	ldr r0, [r0]
@@ -52443,7 +52627,7 @@ _023087A0:
 	add r2, r1, #0xf10
 	ldrsb r0, [r0, #8]
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x1e
 	ldr r0, [r0]
@@ -52451,13 +52635,13 @@ _023087A0:
 	b _02308CF0
 _023087D4:
 	ldrsb r0, [r4, #8]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl ShowDBox
+	bl ShowDialogueBox
 	bl ov11_02308F14
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x21
@@ -52466,13 +52650,13 @@ _023087D4:
 	b _02308CF0
 _0230880C:
 	ldrsb r0, [r4, #8]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl ShowDBox
+	bl ShowDialogueBox
 	bl ov11_02308F14
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0
@@ -52571,7 +52755,7 @@ _02308940:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #6
 	ldr r0, [r0]
@@ -52579,13 +52763,13 @@ _02308940:
 	b _02308CF0
 _023089C0:
 	ldrsb r0, [r4, #8]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl ShowDBox
+	bl ShowDialogueBox
 	bl ov11_02304AC4
 	cmp r0, #0
 	ldreq r0, _023082B4 ; =ov11_02324D8C
@@ -52677,12 +52861,16 @@ _02308AB4:
 	str r4, [sp, #0x438]
 	str r6, [sp]
 	ldrsh r4, [r5, #0x4e]
+#ifdef EUROPE
+	add r4, r4, #0xd3
+#else
 	add r4, r4, #0xd1
+#endif
 	add r4, r4, #0x2900
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, r6}
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	mov r2, #0xb
 	ldr r3, [r1]
@@ -52744,7 +52932,7 @@ _02308C1C:
 	mov r2, #0x2b4
 	ldrsb r0, [r0, #8]
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0xd
 	ldr r0, [r0]
@@ -52752,13 +52940,13 @@ _02308C1C:
 	b _02308CF0
 _02308C4C:
 	ldrsb r0, [r4, #8]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl ShowDBox
+	bl ShowDialogueBox
 	bl ov11_02308F14
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x10
@@ -52956,7 +53144,7 @@ ov11_02308EDC: ; 0x02308EDC
 	cmp r1, r0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02308F10 ; =ov11_02324D8C
 	ldr r1, [r1]
 	strb r0, [r1, #8]
@@ -52974,7 +53162,7 @@ ov11_02308F14: ; 0x02308F14
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02308F48 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -54165,7 +54353,7 @@ _02309F60:
 	beq _02309FAC
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl sub_02056264
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	streq fp, [r8]
 	streqh r6, [r8, #4]
@@ -54362,7 +54550,7 @@ _0230A1F4:
 	ldr r3, _0230A2CC ; =ov11_0230A2D0
 	add r2, sp, #8
 	str r4, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _0230A2B0 ; =ov11_02324D94
 	mov r2, #4
 	ldr r3, [r1]
@@ -54398,7 +54586,11 @@ _0230A2A8:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0230A2B0: .word ov11_02324D94
+#ifdef EUROPE
+_0230A2B4: .word 0x00003FBA
+#else
 _0230A2B4: .word 0x00003FB8
+#endif
 _0230A2B8: .word ov11_02322EAC
 _0230A2BC: .word 0x00401833
 _0230A2C0: .word ov11_02322EDC
@@ -54418,7 +54610,11 @@ ov11_0230A2D0: ; 0x0230A2D0
 	ldrh r1, [r0, r1]
 	mov r0, r5
 	bl sub_02030A2C
+#ifdef EUROPE
+	add r0, r4, #0xc3
+#else
 	add r0, r4, #0xc1
+#endif
 	add r0, r0, #0x3f00
 	mov r1, r0, lsl #0x10
 	mov r0, r5
@@ -55784,7 +55980,7 @@ _0230B5A8:
 	str r6, [sp, #4]
 	add r2, r2, #0x4400
 	str r5, [sp, #8]
-	bl sub_0202C3A8
+	bl CreateCollectionMenu
 	mov r2, r8
 	ldr r1, [r2, #4]
 	cmp r4, #3
@@ -55915,7 +56111,7 @@ ov11_0230B78C: ; 0x0230B78C
 	cmp r0, #0
 	beq _0230B7E8
 	mov r0, r1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r1, #0
 	strb r1, [r5, #4]
 	add r0, r4, #0x1400
@@ -55929,7 +56125,7 @@ _0230B7E8:
 	cmp r0, r1
 	bge _0230B834
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #1
 	strb r0, [r5, #4]
 	bl ov11_0230B874
@@ -55944,7 +56140,7 @@ _0230B7E8:
 	b _0230B83C
 _0230B834:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _0230B83C:
 	ldr r0, _0230B870 ; =ov11_02324DA4
 	ldr r1, [r0, #4]
@@ -56251,7 +56447,7 @@ _0230BC00:
 	add r2, r2, #0x22c
 	add r2, r2, #0x4400
 	stmib sp, {ip, lr}
-	bl sub_0202C3A8
+	bl CreateCollectionMenu
 	ldr r2, _0230BCD8 ; =ov11_02324DA4
 	ldr r1, [r2, #4]
 	add r1, r1, #0x1000
@@ -56507,7 +56703,11 @@ _0230BF7C:
 	.align 2, 0
 _0230BF8C: .word ov11_02324DA4
 _0230BF90: .word 0x0000032F
+#ifdef EUROPE
+_0230BF94: .word 0x00004642
+#else
 _0230BF94: .word 0x00004623
+#endif
 	arm_func_end ov11_0230BF38
 
 	arm_func_start ov11_0230BF98
@@ -59789,7 +59989,7 @@ ov11_0230E7EC: ; 0x0230E7EC
 	ldr r3, _0230E8C4 ; =0x00003FCA
 	mov r1, r0
 	mov r2, r0
-	bl sub_0202FE2C
+	bl CreateControlsChart
 	ldr r1, _0230E8C0 ; =ov11_02324DDC
 	ldr r1, [r1, #4]
 	strb r0, [r1, #8]
@@ -59829,7 +60029,11 @@ _0230E854:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230E8C0: .word ov11_02324DDC
+#ifdef EUROPE
+_0230E8C4: .word 0x00003FCC
+#else
 _0230E8C4: .word 0x00003FCA
+#endif
 _0230E8C8: .word ov11_023232BC
 _0230E8CC: .word ov11_023232FC
 	arm_func_end ov11_0230E7EC
@@ -59898,12 +60102,12 @@ ov11_0230E978: ; 0x0230E978
 	ldr r0, _0230EB50 ; =0x0000FF94
 	mov r1, #0xf
 	bl MemAlloc
-	ldr r1, _0230EB54 ; =ov11_02324DE4
+	ldr r1, _0230EB54 ; =WORLD_MAP_MODE
 	str r0, [r1, #8]
 	bl GetExecuteSpecialEpisodeType
 	mvn r1, #0
 	cmp r0, r1
-	ldr r0, _0230EB54 ; =ov11_02324DE4
+	ldr r0, _0230EB54 ; =WORLD_MAP_MODE
 	movne r2, #1
 	mov ip, #1
 	ldr r1, [r0, #8]
@@ -59926,12 +60130,12 @@ ov11_0230E978: ; 0x0230E978
 	strneb r2, [r0, #0x999]
 	bne _0230EA08
 	bl sub_0204CDCC
-	ldr r1, _0230EB54 ; =ov11_02324DE4
+	ldr r1, _0230EB54 ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf000
 	strb r0, [r1, #0x999]
 _0230EA08:
-	ldr ip, _0230EB54 ; =ov11_02324DE4
+	ldr ip, _0230EB54 ; =WORLD_MAP_MODE
 	mvn r0, #0
 	ldr r2, [ip, #8]
 	mov r1, #0
@@ -59958,7 +60162,7 @@ _0230EA54:
 	str r0, [r2, #0x9b0]
 	cmp r1, r3
 	blt _0230EA54
-	ldr r2, _0230EB54 ; =ov11_02324DE4
+	ldr r2, _0230EB54 ; =WORLD_MAP_MODE
 	mov ip, #0
 	ldr r1, [r2, #8]
 	sub r3, ip, #2
@@ -59974,7 +60178,7 @@ _0230EA54:
 	bl ov11_02312844
 	bl ov11_0230EC00
 	bl GetMainCharacter1
-	ldr r1, _0230EB54 ; =ov11_02324DE4
+	ldr r1, _0230EB54 ; =WORLD_MAP_MODE
 	ldrsh r2, [r0, #4]
 	ldr r0, [r1, #8]
 	mov r3, #0
@@ -59989,34 +60193,34 @@ _0230EA54:
 	add r1, r1, #0x500
 	ldrsh r1, [r1, #0x2e]
 	bl ov11_022F5BBC
-	ldr r0, _0230EB54 ; =ov11_02324DE4
+	ldr r0, _0230EB54 ; =WORLD_MAP_MODE
 	mov r1, #0xa
 	ldr r0, [r0, #8]
 	add r0, r0, #0x134
 	add r0, r0, #0x400
 	bl ov11_022F4974
-	ldr r0, _0230EB54 ; =ov11_02324DE4
+	ldr r0, _0230EB54 ; =WORLD_MAP_MODE
 	mov r1, #0x9b
 	ldr r0, [r0, #8]
 	ldr r2, _0230EB5C ; =0xA0080000
 	add r0, r0, #0x1f8
 	add r0, r0, #0x400
 	bl LoadObjectAnimData
-	ldr r0, _0230EB54 ; =ov11_02324DE4
+	ldr r0, _0230EB54 ; =WORLD_MAP_MODE
 	mov r1, #8
 	ldr r0, [r0, #8]
 	add r0, r0, #0x1f8
 	add r0, r0, #0x400
 	bl ov11_022F4974
 	mov r2, #0
-	ldr r1, _0230EB54 ; =ov11_02324DE4
+	ldr r1, _0230EB54 ; =WORLD_MAP_MODE
 	mov r0, #1
 	ldr r1, [r1, #8]
 	strb r2, [r1, #0x6bc]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230EB50: .word 0x0000FF94
-_0230EB54: .word ov11_02324DE4
+_0230EB54: .word WORLD_MAP_MODE
 _0230EB58: .word 0x00000136
 _0230EB5C: .word 0xA0080000
 	arm_func_end ov11_0230E978
@@ -60026,7 +60230,7 @@ ov11_0230EB60: ; 0x0230EB60
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	bne _0230EB90
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldr r0, [r1, #8]
 	cmp r0, #9
@@ -60038,17 +60242,17 @@ ov11_0230EB60: ; 0x0230EB60
 _0230EB90:
 	bl ov11_0230EC00
 	bl ov11_02312894
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	add r0, r0, #0x134
 	add r0, r0, #0x400
 	bl ov11_022F5C3C
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	add r0, r0, #0x1f8
 	add r0, r0, #0x400
 	bl ov11_022F6EFC
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldrb r0, [r1, #0x6bc]
 	cmp r0, #0
@@ -60056,22 +60260,22 @@ _0230EB90:
 	add r0, r1, #0x6c0
 	bl ov11_022F6EFC
 _0230EBDC:
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	bl MemFree
-	ldr r0, _0230EBFC ; =ov11_02324DE4
+	ldr r0, _0230EBFC ; =WORLD_MAP_MODE
 	mov r1, #0
 	str r1, [r0, #8]
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0230EBFC: .word ov11_02324DE4
+_0230EBFC: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230EB60
 
 	arm_func_start ov11_0230EC00
 ov11_0230EC00: ; 0x0230EC00
 	stmdb sp!, {r3, lr}
-	ldr r0, _0230ED20 ; =ov11_02324DE4
+	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	mov r3, #1
 	ldr r1, [r0, #8]
 	mov r2, #0
@@ -60087,14 +60291,14 @@ ov11_0230EC00: ; 0x0230EC00
 	cmp r0, r1
 	beq _0230EC58
 	bl sub_0202FD50
-	ldr r0, _0230ED20 ; =ov11_02324DE4
+	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf000
 	strb r1, [r0, #0x998]
 _0230EC58:
 	mov ip, #0
-	ldr r2, _0230ED20 ; =ov11_02324DE4
+	ldr r2, _0230ED20 ; =WORLD_MAP_MODE
 	ldr r1, _0230ED24 ; =0x00000136
 	mov r0, ip
 _0230EC68:
@@ -60104,13 +60308,13 @@ _0230EC68:
 	str r0, [r3, #0x54]
 	cmp ip, r1
 	blt _0230EC68
-	ldr r1, _0230ED20 ; =ov11_02324DE4
+	ldr r1, _0230ED20 ; =WORLD_MAP_MODE
 	mvn r2, #0
 	ldr r1, [r1, #8]
 	add r1, r1, #0x500
 	strh r2, [r1, #0x2c]
 	bl ov11_023128C0
-	ldr r1, _0230ED20 ; =ov11_02324DE4
+	ldr r1, _0230ED20 ; =WORLD_MAP_MODE
 	mvn ip, #0
 	ldr r0, [r1, #8]
 	mov r3, #0
@@ -60132,26 +60336,26 @@ _0230EC68:
 	mov r0, #1
 	mov r1, #6
 	bl ov11_022EB0C0
-	ldr r0, _0230ED20 ; =ov11_02324DE4
+	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl ov11_022EBEAC
-	ldr r0, _0230ED20 ; =ov11_02324DE4
+	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #4]
 	bl MemFree
-	ldr r0, _0230ED20 ; =ov11_02324DE4
+	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	mov r1, #0
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0230ED20: .word ov11_02324DE4
+_0230ED20: .word WORLD_MAP_MODE
 _0230ED24: .word 0x00000136
 	arm_func_end ov11_0230EC00
 
 	arm_func_start ov11_0230ED28
 ov11_0230ED28: ; 0x0230ED28
-	ldr r0, _0230ED44 ; =ov11_02324DE4
+	ldr r0, _0230ED44 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	movne r0, #1
@@ -60159,14 +60363,14 @@ ov11_0230ED28: ; 0x0230ED28
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0230ED44: .word ov11_02324DE4
+_0230ED44: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230ED28
 
 	arm_func_start GetDungeonMapPos
 GetDungeonMapPos: ; 0x0230ED48
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
-	ldr r2, _0230EDAC ; =ov11_02324DE4
+	ldr r2, _0230EDAC ; =WORLD_MAP_MODE
 	mov r4, r0
 	ldr r2, [r2, #8]
 	mov r0, r1
@@ -60192,12 +60396,12 @@ _0230EDA4:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0230EDAC: .word ov11_02324DE4
+_0230EDAC: .word WORLD_MAP_MODE
 	arm_func_end GetDungeonMapPos
 
 	arm_func_start ov11_0230EDB0
 ov11_0230EDB0: ; 0x0230EDB0
-	ldr r1, _0230EDD8 ; =ov11_02324DE4
+	ldr r1, _0230EDD8 ; =WORLD_MAP_MODE
 	mov r3, #0
 	ldr r2, [r1, #8]
 	str r3, [r2, #0x34]
@@ -60208,14 +60412,14 @@ ov11_0230EDB0: ; 0x0230EDB0
 	str r0, [r2, #0x4c]
 	bx lr
 	.align 2, 0
-_0230EDD8: .word ov11_02324DE4
+_0230EDD8: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230EDB0
 
 	arm_func_start ov11_0230EDDC
 ov11_0230EDDC: ; 0x0230EDDC
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r1, _0230EF44 ; =ov11_02324DE4
+	ldr r1, _0230EF44 ; =WORLD_MAP_MODE
 	mov r0, #0
 	ldr r1, [r1, #8]
 	sub r2, r0, #1
@@ -60230,7 +60434,7 @@ ov11_0230EDDC: ; 0x0230EDDC
 	mov r0, #1
 	mov r1, #6
 	bl ov11_022EB0C0
-	ldr r1, _0230EF44 ; =ov11_02324DE4
+	ldr r1, _0230EF44 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	add r0, r2, #0xf900
 	ldrsh r0, [r0, #0x9c]
@@ -60247,14 +60451,14 @@ _0230EE54:
 	add r0, sp, #0
 	bl ov11_0230EDB0
 _0230EE5C:
-	ldr r0, _0230EF44 ; =ov11_02324DE4
+	ldr r0, _0230EF44 ; =WORLD_MAP_MODE
 	mvn r2, #0
 	ldr r1, [r0, #8]
 	mov r0, #1
 	add r1, r1, #0xf900
 	strh r2, [r1, #0x9c]
 _0230EE74:
-	ldr r1, _0230EF44 ; =ov11_02324DE4
+	ldr r1, _0230EF44 ; =WORLD_MAP_MODE
 	mvn r2, #0
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf900
@@ -60268,7 +60472,7 @@ _0230EE74:
 	mov r0, #1
 	mov r1, #6
 	bl ov11_022EB0C0
-	ldr r1, _0230EF44 ; =ov11_02324DE4
+	ldr r1, _0230EF44 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	add r0, r2, #0xf900
 	ldrsh r0, [r0, #0x9e]
@@ -60282,7 +60486,7 @@ _0230EE74:
 	mov r0, #1
 	bl ov11_022EB2F4
 _0230EEE0:
-	ldr r1, _0230EF44 ; =ov11_02324DE4
+	ldr r1, _0230EF44 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	add r0, r2, #0xf000
 	ldr r0, [r0, #0x9a0]
@@ -60300,7 +60504,7 @@ _0230EEE0:
 	ldr r0, [r0, #0x9a8]
 	str r0, [r1, #0x3c]
 _0230EF24:
-	ldr r0, _0230EF44 ; =ov11_02324DE4
+	ldr r0, _0230EF44 ; =WORLD_MAP_MODE
 	mvn r2, #0
 	ldr r1, [r0, #8]
 	mov r0, #1
@@ -60310,14 +60514,14 @@ _0230EF3C:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0230EF44: .word ov11_02324DE4
+_0230EF44: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230EDDC
 
 	arm_func_start ov11_0230EF48
 ov11_0230EF48: ; 0x0230EF48
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
-	ldr r3, _0230EFFC ; =ov11_02324DE4
+	ldr r3, _0230EFFC ; =WORLD_MAP_MODE
 	mov r4, r2
 	ldr r2, [r3, #8]
 	mov r5, r1
@@ -60328,7 +60532,7 @@ ov11_0230EF48: ; 0x0230EF48
 	cmp r0, r1
 	cmpne r5, #0
 	beq _0230EFF4
-	ldr r1, _0230EFFC ; =ov11_02324DE4
+	ldr r1, _0230EFFC ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, r0, lsl #2
 	ldr r1, [r1, #0x54]
@@ -60337,7 +60541,7 @@ ov11_0230EF48: ; 0x0230EF48
 	cmp r4, #0
 	beq _0230EFF4
 _0230EF9C:
-	ldr r2, _0230EFFC ; =ov11_02324DE4
+	ldr r2, _0230EFFC ; =WORLD_MAP_MODE
 	mov r1, #0xc4
 	ldr r3, [r2, #8]
 	mul r4, r0, r1
@@ -60349,7 +60553,7 @@ _0230EF9C:
 	add r1, r1, #0x1f8
 	add r0, r6, r4
 	add r1, r1, #0x400
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	add r0, r6, r4
 	mov r1, #8
 	bl ov11_022F4974
@@ -60363,13 +60567,13 @@ _0230EFF4:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0230EFFC: .word ov11_02324DE4
+_0230EFFC: .word WORLD_MAP_MODE
 _0230F000: .word ov11_02323310
 	arm_func_end ov11_0230EF48
 
 	arm_func_start WorldMapSetMode
 WorldMapSetMode: ; 0x0230F004
-	ldr r1, _0230F04C ; =ov11_02324DE4
+	ldr r1, _0230F04C ; =WORLD_MAP_MODE
 	str r0, [r1]
 	ldr r3, [r1, #8]
 	cmp r3, #0
@@ -60388,12 +60592,12 @@ WorldMapSetMode: ; 0x0230F004
 	strb r2, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F04C: .word ov11_02324DE4
+_0230F04C: .word WORLD_MAP_MODE
 	arm_func_end WorldMapSetMode
 
 	arm_func_start ov11_0230F050
 ov11_0230F050: ; 0x0230F050
-	ldr r2, _0230F088 ; =ov11_02324DE4
+	ldr r2, _0230F088 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	bxeq lr
@@ -60408,12 +60612,12 @@ ov11_0230F050: ; 0x0230F050
 	strb r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F088: .word ov11_02324DE4
+_0230F088: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F050
 
 	arm_func_start ov11_0230F08C
 ov11_0230F08C: ; 0x0230F08C
-	ldr r2, _0230F0C0 ; =ov11_02324DE4
+	ldr r2, _0230F0C0 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	bxeq lr
@@ -60427,12 +60631,12 @@ ov11_0230F08C: ; 0x0230F08C
 	strb r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F0C0: .word ov11_02324DE4
+_0230F0C0: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F08C
 
 	arm_func_start WorldMapSetCamera
 WorldMapSetCamera: ; 0x0230F0C4
-	ldr r2, _0230F0E8 ; =ov11_02324DE4
+	ldr r2, _0230F0E8 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	addne r1, r1, #0xf900
@@ -60442,12 +60646,12 @@ WorldMapSetCamera: ; 0x0230F0C4
 	strneb r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F0E8: .word ov11_02324DE4
+_0230F0E8: .word WORLD_MAP_MODE
 	arm_func_end WorldMapSetCamera
 
 	arm_func_start ov11_0230F0EC
 ov11_0230F0EC: ; 0x0230F0EC
-	ldr r2, _0230F134 ; =ov11_02324DE4
+	ldr r2, _0230F134 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	bxeq lr
@@ -60466,12 +60670,12 @@ ov11_0230F0EC: ; 0x0230F0EC
 	strb r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F134: .word ov11_02324DE4
+_0230F134: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F0EC
 
 	arm_func_start ov11_0230F138
 ov11_0230F138: ; 0x0230F138
-	ldr r3, _0230F17C ; =ov11_02324DE4
+	ldr r3, _0230F17C ; =WORLD_MAP_MODE
 	ldr r2, [r3, #8]
 	cmp r2, #0
 	bxeq lr
@@ -60489,12 +60693,12 @@ ov11_0230F138: ; 0x0230F138
 	strb r2, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0230F17C: .word ov11_02324DE4
+_0230F17C: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F138
 
 	arm_func_start ov11_0230F180
 ov11_0230F180: ; 0x0230F180
-	ldr r1, _0230F1B0 ; =ov11_02324DE4
+	ldr r1, _0230F1B0 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	cmp r2, #0
 	bxeq lr
@@ -60507,12 +60711,12 @@ ov11_0230F180: ; 0x0230F180
 	strb r2, [r0, #0x9ac]
 	bx lr
 	.align 2, 0
-_0230F1B0: .word ov11_02324DE4
+_0230F1B0: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F180
 
 	arm_func_start ov11_0230F1B4
 ov11_0230F1B4: ; 0x0230F1B4
-	ldr r1, _0230F1E8 ; =ov11_02324DE4
+	ldr r1, _0230F1E8 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	cmp r2, #0
 	bxeq lr
@@ -60526,12 +60730,12 @@ ov11_0230F1B4: ; 0x0230F1B4
 	strb r1, [r0, #0x9ac]
 	bx lr
 	.align 2, 0
-_0230F1E8: .word ov11_02324DE4
+_0230F1E8: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F1B4
 
 	arm_func_start ov11_0230F1EC
 ov11_0230F1EC: ; 0x0230F1EC
-	ldr r2, _0230F218 ; =ov11_02324DE4
+	ldr r2, _0230F218 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	bxeq lr
@@ -60543,12 +60747,12 @@ ov11_0230F1EC: ; 0x0230F1EC
 	strb r1, [r0, #0xe88]
 	bx lr
 	.align 2, 0
-_0230F218: .word ov11_02324DE4
+_0230F218: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F1EC
 
 	arm_func_start ov11_0230F21C
 ov11_0230F21C: ; 0x0230F21C
-	ldr r2, _0230F258 ; =ov11_02324DE4
+	ldr r2, _0230F258 ; =WORLD_MAP_MODE
 	ldr r1, [r2, #8]
 	cmp r1, #0
 	bxeq lr
@@ -60564,12 +60768,12 @@ ov11_0230F21C: ; 0x0230F21C
 	strb r3, [r0, #0xe90]
 	bx lr
 	.align 2, 0
-_0230F258: .word ov11_02324DE4
+_0230F258: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F21C
 
 	arm_func_start ov11_0230F25C
 ov11_0230F25C: ; 0x0230F25C
-	ldr r1, _0230F288 ; =ov11_02324DE4
+	ldr r1, _0230F288 ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	cmp r1, #0
 	moveq r0, #0
@@ -60581,13 +60785,13 @@ ov11_0230F25C: ; 0x0230F25C
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_0230F288: .word ov11_02324DE4
+_0230F288: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F25C
 
 	arm_func_start ov11_0230F28C
 ov11_0230F28C: ; 0x0230F28C
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _0230F358 ; =ov11_02324DE4
+	ldr r2, _0230F358 ; =WORLD_MAP_MODE
 	mov r5, r0
 	ldr r0, [r2, #4]
 	mov r4, r1
@@ -60640,19 +60844,19 @@ _0230F350:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0230F358: .word ov11_02324DE4
+_0230F358: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F28C
 
 	arm_func_start ov11_0230F35C
 ov11_0230F35C: ; 0x0230F35C
-	ldr r0, _0230F374 ; =ov11_02324DE4
+	ldr r0, _0230F374 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	ldrneb r0, [r0, #0xc]
 	moveq r0, #0
 	bx lr
 	.align 2, 0
-_0230F374: .word ov11_02324DE4
+_0230F374: .word WORLD_MAP_MODE
 	arm_func_end ov11_0230F35C
 
 	arm_func_start ov11_0230F378
@@ -60664,7 +60868,7 @@ ov11_0230F378: ; 0x0230F378
 ov11_0230F37C: ; 0x0230F37C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x4c
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #8]
 	cmp r0, #9
@@ -60684,35 +60888,35 @@ _0230F39C: ; jump table
 _0230F3C4:
 	bl ov11_022E9F78
 	cmp r0, #0
-	ldrne r0, _02310050 ; =ov11_02324DE4
+	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #1
 	ldrne r0, [r0, #8]
 	strneb r1, [r0, #0xc]
 	bne _0230FDB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 _0230F3EC:
 	bl ov11_022E9F78
 	cmp r0, #0
-	ldrne r0, _02310050 ; =ov11_02324DE4
+	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	movne r1, #1
 	ldrne r0, [r0, #8]
 	strneb r1, [r0, #0xc]
 	bne _0230FDB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldrb r0, [r1, #0x6bc]
 	cmp r0, #0
 	beq _0230F434
 	add r0, r1, #0x6c0
 	bl ov11_022F6EFC
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	strb r1, [r0, #0x6bc]
 _0230F434:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0]
 	cmp r1, #0
 	bne _0230F4D4
@@ -60728,7 +60932,7 @@ _0230F434:
 	ldr r1, _02310054 ; =0x0000010D
 	cmp r0, r1
 	bne _0230F48C
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf000
@@ -60736,12 +60940,12 @@ _0230F434:
 	b _0230F4A0
 _0230F48C:
 	bl sub_0204CDCC
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf000
 	strb r0, [r1, #0x999]
 _0230F4A0:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf900
@@ -60749,13 +60953,13 @@ _0230F4A0:
 	cmp r0, r1
 	beq _0230F4D4
 	bl sub_0202FD50
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf000
 	strb r1, [r0, #0x998]
 _0230F4D4:
-	ldr r3, _02310050 ; =ov11_02324DE4
+	ldr r3, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r3, #8]
 	add r1, r0, #0xf000
 	ldrb r1, [r1, #0xf90]
@@ -60763,7 +60967,7 @@ _0230F4D4:
 	beq _0230F514
 	mov r0, #0x10
 	bl ov11_022E9CB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r3, #1
 	ldr r2, [r0, #8]
 	mov r1, #8
@@ -60794,7 +60998,7 @@ _0230F514:
 	cmp r0, #0
 	beq _0230F588
 	bl sub_0206A9DC
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	mov r2, #2
 	ldr r3, [r1, #8]
 	strh r0, [r3, #2]
@@ -60816,7 +61020,7 @@ _0230F588:
 	mov r1, #2
 	str r1, [r0, #8]
 _0230F5BC:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r2, #0
 	ldr r1, [r0, #8]
 	strb r2, [r1, #5]
@@ -60830,7 +61034,7 @@ _0230F5BC:
 	ldrgtb r0, [r0, #0x99a]
 	strgtb r0, [r1, #5]
 _0230F5F0:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #1
 	ldr r0, [r0, #8]
 	strb r1, [r0, #0xc]
@@ -60844,7 +61048,7 @@ _0230F604:
 	moveq r1, #0
 	streqb r1, [r0, #0xc]
 	beq _0230FDB0
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	mov r2, #5
 	str r2, [r0, #8]
 	ldr r0, [r1, #8]
@@ -60854,17 +61058,17 @@ _0230F604:
 _0230F640:
 	bl ov11_022E9F78
 	cmp r0, #0
-	ldrne r0, _02310050 ; =ov11_02324DE4
+	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	movne r1, #1
 	ldrne r0, [r0, #8]
 	strneb r1, [r0, #0xc]
 	bne _0230FDB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #7
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 _0230F66C:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	add r0, r1, #0xf000
 	ldrb r0, [r0, #0xf90]
@@ -60877,7 +61081,7 @@ _0230F66C:
 _0230F694:
 	mov r0, #0x10
 	bl ov11_022E9CB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r3, #0
 	ldr r2, [r0, #8]
 	mov r1, #1
@@ -60898,12 +61102,12 @@ _0230F6BC:
 	mov r1, r4
 	bl GetDungeonMapPos
 	cmp r0, #0
-	ldreq r0, _02310050 ; =ov11_02324DE4
+	ldreq r0, _02310050 ; =WORLD_MAP_MODE
 	moveq r1, #0
 	ldreq r0, [r0, #8]
 	streqb r1, [r0, #0xc]
 	beq _0230FDB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldrsh r0, [r1, #0x30]
 	cmp r0, r4
@@ -60911,13 +61115,13 @@ _0230F6BC:
 	mov r1, r4
 	bl sub_0206A8A0
 	cmp r0, #0
-	ldrne r0, _02310050 ; =ov11_02324DE4
+	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	ldrne r0, [r0, #8]
 	strneh r4, [r0, #0x30]
 	bne _0230FDB0
 	mov r0, #0x10
 	bl ov11_022E9CB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r3, #0
 	ldr r2, [r0, #8]
 	mov r1, #1
@@ -60931,7 +61135,7 @@ _0230F758:
 	b _0230FDB0
 _0230F764:
 	bl ov11_0230EDDC
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r2, [r0, #8]
 	add r0, r2, #0xf000
 	ldrb r1, [r0, #0x9ac]
@@ -60940,7 +61144,7 @@ _0230F764:
 	cmpeq r1, #0
 	beq _0230F7A4
 	mov r1, #5
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	str r1, [r2, #8]
 	ldr r0, [r0, #8]
 	mov r1, #1
@@ -60969,7 +61173,7 @@ _0230F7D0:
 	bl ov11_0230EDB0
 	b _0230F8A8
 _0230F7F0:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -61020,7 +61224,7 @@ _0230F890:
 	add r0, sp, #0x3c
 	bl ov11_0230EDB0
 _0230F8A8:
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	add r0, r2, #0x500
 	ldrsh r0, [r0, #0x2e]
@@ -61029,7 +61233,7 @@ _0230F8A8:
 	mov r0, #0
 	strb r0, [r2, #0x530]
 	ldr r0, [r1, #8]
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #0x2c]
 	ldr r3, [r1, #8]
 	cmp r0, #0
@@ -61043,7 +61247,7 @@ _0230F8A8:
 	add r0, r0, #0x400
 	bl SetAnimDataFields2
 _0230F900:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r2, [r0, #8]
 	ldrsb r0, [r2, #4]
 	cmp r0, #0
@@ -61059,7 +61263,7 @@ _0230F900:
 	rsb r0, r1, r0, lsl #31
 	add r0, r1, r0, ror #31
 	cmp r0, #1
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	moveq r1, #0
 	movne r1, #0x1f8
 	str r1, [sp, #0x34]
@@ -61074,7 +61278,7 @@ _0230F900:
 	str r3, [sp, #0x38]
 	bl ov11_022F040C
 _0230F978:
-	ldr r2, _02310050 ; =ov11_02324DE4
+	ldr r2, _02310050 ; =WORLD_MAP_MODE
 	ldr r4, [r2, #8]
 	ldrb r0, [r4, #5]
 	cmp r0, #0
@@ -61111,7 +61315,7 @@ _0230F9F4:
 	mov r7, #0
 	ldr r5, _02310068 ; =ov11_02323490
 	mov r2, #0x18
-	ldr r3, _02310050 ; =ov11_02324DE4
+	ldr r3, _02310050 ; =WORLD_MAP_MODE
 	b _0230FA20
 _0230FA08:
 	add r1, r7, r0
@@ -61127,7 +61331,7 @@ _0230FA20:
 	cmp r7, r4
 	bne _0230FA08
 	ldr r0, [r1, #0x994]
-	ldr r2, _02310050 ; =ov11_02324DE4
+	ldr r2, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #0x10]
 	mov r3, #0
 	str r0, [r1, #0x990]
@@ -61143,11 +61347,11 @@ _0230FA20:
 	beq _0230FB24
 	add r0, r4, #0xf400
 	add r1, r1, #0x6c0
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	add r0, r4, #0xf400
 	mov r1, #0xe
 	bl ov11_022F4974
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	add r0, r4, #0xf400
 	ldr r1, [r1, #8]
 	mov r2, #0
@@ -61157,7 +61361,7 @@ _0230FA20:
 	bl SetAnimDataFields2
 	mov r5, #0
 	mov r4, r5
-	ldr r7, _02310050 ; =ov11_02324DE4
+	ldr r7, _02310050 ; =WORLD_MAP_MODE
 	mov r6, #0xc4
 	b _0230FB08
 _0230FABC:
@@ -61167,7 +61371,7 @@ _0230FABC:
 	add sb, r0, #0xf000
 	add r0, sb, r8
 	add r1, r1, #0x6c0
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	add r0, sb, r8
 	rsb r1, r5, #0x20
 	bl ov11_022F4974
@@ -61189,7 +61393,7 @@ _0230FB08:
 	mov r1, #1
 	strb r1, [r0, #0x5a0]
 _0230FB24:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	strb r1, [r0, #5]
@@ -61199,7 +61403,7 @@ _0230FB38:
 	mov r1, #0
 	str r1, [r0, #0x990]
 _0230FB44:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0x2c]
 	cmp r0, #4
@@ -61226,7 +61430,7 @@ _0230FB90:
 _0230FB9C:
 	mov sb, #0
 	mov r6, #1
-	ldr r4, _02310050 ; =ov11_02324DE4
+	ldr r4, _02310050 ; =WORLD_MAP_MODE
 	ldr sl, _0231006C ; =0x00000136
 	mov r5, sb
 	mov r8, r6
@@ -61265,7 +61469,7 @@ _0230FC28:
 	add sb, sb, #1
 	cmp sb, sl
 	blt _0230FBB8
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldr r0, [r1, #0x2c]
 	cmp r0, #4
@@ -61285,7 +61489,7 @@ _0230FC6C:
 	mov r2, #0
 	bl ov11_0230EF48
 _0230FC7C:
-	ldr r2, _02310050 ; =ov11_02324DE4
+	ldr r2, _02310050 ; =WORLD_MAP_MODE
 	ldr r4, [r2, #8]
 	add r0, r4, #0xf000
 	ldrb r0, [r0, #0xe88]
@@ -61305,7 +61509,7 @@ _0230FC7C:
 	add r0, r4, #0xf400
 	add r1, r1, #0x1f8
 	add r1, r1, #0x400
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	add r0, r4, #0xf400
 	mov r1, #0xc
 	bl ov11_022F4974
@@ -61314,7 +61518,7 @@ _0230FC7C:
 	mov r2, #0
 	bl SetAnimDataFields2
 _0230FCEC:
-	ldr r2, _02310050 ; =ov11_02324DE4
+	ldr r2, _02310050 ; =WORLD_MAP_MODE
 	mov r0, #0
 	ldr r1, [r2, #8]
 	add r1, r1, #0xf000
@@ -61328,7 +61532,7 @@ _0230FCEC:
 	bne _0230FD34
 	mov r1, #0x20
 	bl LoadScriptVariableValue
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf900
 	strh r0, [r1, #0x9c]
@@ -61338,13 +61542,13 @@ _0230FD34:
 	beq _0230FD5C
 	mov r0, #0x10
 	bl ov11_022E9C98
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #6
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 	b _0230FDB0
 _0230FD5C:
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	mvn r0, #0
 	ldr r2, [r1, #8]
 	ldrsh r1, [r2, #0x30]
@@ -61358,17 +61562,17 @@ _0230FD84:
 	bl ov11_022E9F78
 	cmp r0, #0
 	bne _0230FDB0
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #9
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 _0230FDA0:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	strb r1, [r0, #0xc]
 _0230FDB0:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldr r3, [r1, #0x40]
 	ldr r2, [r1, #0x44]
@@ -61403,12 +61607,12 @@ _0230FDE8:
 	cmp r3, #0
 	ldreq r0, [sp, #0x20]
 	cmpeq r0, #0
-	ldreq r0, _02310050 ; =ov11_02324DE4
+	ldreq r0, _02310050 ; =WORLD_MAP_MODE
 	moveq r1, #0
 	ldreq r0, [r0, #8]
 	streq r1, [r0, #0x34]
 	beq _0230FF74
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r2, [r0, #8]
 	ldr r1, [r2, #0x40]
 	add r1, r1, r3
@@ -61435,7 +61639,7 @@ _0230FE78:
 	sub r1, r2, r1
 	str r1, [sp, #0x18]
 	bl EuclideanNorm__020050B0
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	mov r4, r0
 	ldr r5, [r1, #8]
 	ldr r0, [r5, #0x38]
@@ -61444,19 +61648,19 @@ _0230FE78:
 	mov r0, r4
 	bl __divsf3
 	bl __fixsfsi
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	str r0, [r5, #0x3c]
 	ldr r1, [r1, #8]
 	ldr r0, [r1, #0x3c]
 	cmp r0, #0
 	movle r0, #1
 	strle r0, [r1, #0x3c]
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #3
 	ldr r0, [r0, #8]
 	str r1, [r0, #0x34]
 _0230FF04:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #1
 	ldr r2, [r0, #8]
 	add r0, sp, #0xc
@@ -61465,7 +61669,7 @@ _0230FF04:
 	add r1, r2, #0x40
 	add r2, r2, #0x48
 	bl sub_0200514C
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r2, [sp, #0xc]
 	ldr r3, [r0, #8]
 	ldr r1, [sp, #0x10]
@@ -61486,7 +61690,7 @@ _0230FF64:
 	str r2, [r1, #0x40]
 	str r0, [r1, #0x44]
 _0230FF74:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r3, [r0, #8]
 	ldr r0, [r3, #0x34]
 	cmp r0, #0
@@ -61503,11 +61707,11 @@ _0230FF74:
 	sub r1, r2, r1
 	str r1, [sp, #0x28]
 	bl sub_020055C8
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	strb r0, [r1, #0x50]
 _0230FFC4:
-	ldr r2, _02310050 ; =ov11_02324DE4
+	ldr r2, _02310050 ; =WORLD_MAP_MODE
 	ldr r4, [r2, #8]
 	add r1, r4, #0x500
 	ldrsh r0, [r1, #0x2e]
@@ -61520,7 +61724,7 @@ _0230FFC4:
 	beq _0231002C
 	strb r3, [r4, #0x530]
 	ldr r0, [r2, #8]
-	ldr r1, _02310050 ; =ov11_02324DE4
+	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #0x2c]
 	ldr r3, [r1, #8]
 	cmp r0, #0
@@ -61534,7 +61738,7 @@ _0230FFC4:
 	add r0, r0, #0x400
 	bl SetAnimDataFields2
 _0231002C:
-	ldr r0, _02310050 ; =ov11_02324DE4
+	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldr r0, [r1, #0x34]
 	cmp r0, #0
@@ -61544,7 +61748,7 @@ _0231002C:
 	add sp, sp, #0x4c
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02310050: .word ov11_02324DE4
+_02310050: .word WORLD_MAP_MODE
 _02310054: .word 0x0000010D
 _02310058: .word 0x00000807
 _0231005C: .word ov11_02323310
@@ -61559,7 +61763,7 @@ _02310070: .word 0x0000080D
 ov11_02310074: ; 0x02310074
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
-	ldr r1, _0231031C ; =ov11_02324DE4
+	ldr r1, _0231031C ; =WORLD_MAP_MODE
 	ldr r2, [r1, #8]
 	ldr r0, [r2, #8]
 	cmp r0, #2
@@ -61575,7 +61779,7 @@ ov11_02310074: ; 0x02310074
 	mov r0, #0x2f4
 	mov r1, #0xf
 	bl MemAlloc
-	ldr r2, _0231031C ; =ov11_02324DE4
+	ldr r2, _0231031C ; =WORLD_MAP_MODE
 	mvn r1, #0
 	str r0, [r2, #4]
 	ldr r0, [r2, #8]
@@ -61585,11 +61789,11 @@ ov11_02310074: ; 0x02310074
 	ldr r0, [r2, #4]
 	ldr r1, _02310324 ; =ov11_02323394
 	bl ov11_022EBC18
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mvn r1, #0
 	ldr r0, [r0, #4]
 	bl ov11_022EC27C
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldmib r0, {r1, r2}
 	add r0, r2, #0x10
 	bl ov11_022EFD5C
@@ -61637,28 +61841,28 @@ _02310178:
 	str ip, [sp, #4]
 	bl FatalError
 _023101A0:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r1, _02310324 ; =ov11_02323394
 	ldr r0, [r0, #4]
 	bl ov11_022EBC18
 	mov r0, #1
 	bl ov11_023128C0
 _023101B8:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldrsh r1, [r4, #4]
 	ldr r0, [r0, #4]
 	bl ov11_022EC27C
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldmib r0, {r1, r2}
 	add r0, r2, #0x10
 	bl ov11_022EFD5C
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r2, _02310338 ; =ov11_02323330
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bl ov11_022EF2D4
 _023101EC:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r2, [r0, #8]
 	ldrb r1, [r2, #5]
 	cmp r1, #0
@@ -61670,22 +61874,22 @@ _023101EC:
 	add r0, r0, #0x6c0
 	mov r1, #0x9a
 	bl LoadObjectAnimData
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mov r1, #8
 	ldr r0, [r0, #8]
 	add r0, r0, #0x6c0
 	bl ov11_022F4974
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mov r1, #1
 	ldr r0, [r0, #8]
 	strb r1, [r0, #0x6bc]
 _02310240:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mov r1, #4
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 _02310250:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	add r0, r1, #0xf000
 	ldrb r0, [r0, #0xe8c]
@@ -61699,18 +61903,18 @@ _02310250:
 	bl sub_0202FD6C
 	cmp r0, #0
 	bne _023102B0
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf900
 	ldrsb r0, [r0, #0x98]
 	bl sub_0202FD50
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf000
 	strb r1, [r0, #0x998]
 _023102B0:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r2, [r0, #8]
 	add r0, r2, #0xf900
@@ -61725,13 +61929,13 @@ _023102B0:
 	ldr r0, _02310340 ; =ov11_02323340
 	mov r1, #0x13
 	mov r2, #0
-	bl sub_0202FBBC
-	ldr r1, _0231031C ; =ov11_02324DE4
+	bl CreateDynamicTextBox
+	ldr r1, _0231031C ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf000
 	strb r0, [r1, #0x998]
 _02310300:
-	ldr r0, _0231031C ; =ov11_02324DE4
+	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf000
@@ -61740,7 +61944,7 @@ _02310314:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0231031C: .word ov11_02324DE4
+_0231031C: .word WORLD_MAP_MODE
 _02310320: .word ov11_02323730
 _02310324: .word ov11_02323394
 _02310328: .word EVENTS
@@ -61756,7 +61960,7 @@ _02310340: .word ov11_02323340
 ov11_02310344: ; 0x02310344
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #8]
 	cmp r0, #7
@@ -61771,7 +61975,7 @@ ov11_02310344: ; 0x02310344
 	moveq r0, #0
 	streq r0, [sp, #0x10]
 	streq r0, [sp, #0x14]
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	ldr r1, [r0, #0x2c]
 	cmp r1, #3
@@ -61786,7 +61990,7 @@ ov11_02310344: ; 0x02310344
 	sub r1, r1, r2
 	subs sb, r1, #0x1e
 	ldr r2, [r0, #0x990]
-	ldr r1, _02310624 ; =ov11_02324DE4
+	ldr r1, _02310624 ; =WORLD_MAP_MODE
 	sub r2, r2, #1
 	str r2, [r0, #0x990]
 	ldr r2, [r1, #8]
@@ -61812,7 +62016,7 @@ ov11_02310344: ; 0x02310344
 	mov r8, #0
 	add r7, sp, #8
 	mov r6, r8
-	ldr r5, _02310624 ; =ov11_02324DE4
+	ldr r5, _02310624 ; =WORLD_MAP_MODE
 	mov r4, #0xc4
 	b _02310490
 _02310438:
@@ -61853,7 +62057,7 @@ _023104A4:
 	ldrsh r0, [r0, #0x2e]
 	cmp r0, #0
 	beq _023104F8
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	add r2, sp, #0
 	ldr r5, [r0, #8]
 	mov r3, sb
@@ -61867,7 +62071,7 @@ _023104A4:
 	add r0, r0, #0x400
 	bl ov11_022F5C94
 _023104F8:
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	mvn r2, #0
 	ldr r0, [r0, #8]
 	add r0, r0, #0x500
@@ -61878,7 +62082,7 @@ _023104F8:
 	bl GetDungeonMapPos
 	cmp r0, #0
 	beq _02310540
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	add r1, sp, #0
 	ldr r0, [r0, #8]
 	mov r2, #0
@@ -61889,7 +62093,7 @@ _02310540:
 	mov sl, #0
 	add r8, sp, #0
 	mov fp, sl
-	ldr r7, _02310624 ; =ov11_02324DE4
+	ldr r7, _02310624 ; =WORLD_MAP_MODE
 	mov r5, #0xc4
 	mvn r6, #0
 	ldr r4, _02310628 ; =0x00000136
@@ -61923,7 +62127,7 @@ _023105BC:
 	cmp sl, r4
 	blt _02310560
 _023105C4:
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	add r1, sp, #0x10
 	ldr r0, [r0, #8]
 	mov r2, #0
@@ -61931,16 +62135,16 @@ _023105C4:
 	bl ov11_022F042C
 	cmp r0, #0
 	beq _023105F8
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	add r2, sp, #0x10
 	ldr r0, [r0, #4]
 	mov r1, #0
 	bl ov11_022EF2D4
 _023105F8:
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #4]
 	bl ov11_022EF70C
-	ldr r0, _02310624 ; =ov11_02324DE4
+	ldr r0, _02310624 ; =WORLD_MAP_MODE
 	mov r1, #1
 	ldr r0, [r0, #8]
 	strb r1, [r0, #6]
@@ -61950,14 +62154,14 @@ _02310614:
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02310624: .word ov11_02324DE4
+_02310624: .word WORLD_MAP_MODE
 _02310628: .word 0x00000136
 	arm_func_end ov11_02310344
 
 	arm_func_start ov11_0231062C
 ov11_0231062C: ; 0x0231062C
 	stmdb sp!, {r3, lr}
-	ldr r0, _02310668 ; =ov11_02324DE4
+	ldr r0, _02310668 ; =WORLD_MAP_MODE
 	ldr r1, [r0, #8]
 	ldrb r1, [r1, #6]
 	cmp r1, #0
@@ -61965,7 +62169,7 @@ ov11_0231062C: ; 0x0231062C
 	cmpne r0, #0
 	beq _02310660
 	bl ov11_022EFB70
-	ldr r0, _02310668 ; =ov11_02324DE4
+	ldr r0, _02310668 ; =WORLD_MAP_MODE
 	mov r1, #0
 	ldr r0, [r0, #8]
 	strb r1, [r0, #6]
@@ -61973,7 +62177,7 @@ _02310660:
 	bl ov11_02312B18
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02310668: .word ov11_02324DE4
+_02310668: .word WORLD_MAP_MODE
 	arm_func_end ov11_0231062C
 
 	arm_func_start ov11_0231066C
@@ -64200,23 +64404,52 @@ ov11_02312264: ; 0x02312264
 	mov r1, #0xf
 	bl MemAlloc
 	ldr r1, _0231233C ; =ov11_02324E18
+#ifdef EUROPE
+	mvn r2, #0
+	str r0, [r1, #4]
+	strh r2, [r0]
+	bl GetLanguage
+	mov r2, r0, lsl #1
+	ldr r0, _02312D14 ; =0x0232473C
+	ldr ip, _02312D18 ; =0x00000115
+	ldr r1, _0231233C ; =ov11_02324E18
+	ldrsh r2, [r0, r2]
+	ldr r0, [r1, #4]
+	rsb r3, ip, #0x114
+#else
 	mvn r3, #0
 	str r0, [r1, #4]
 	strh r3, [r0]
 	ldr r0, [r1, #4]
 	rsb r2, r3, #0x114
+#endif
 	strh r2, [r0, #0x2c]
 	ldr r2, [r1, #4]
 	mov r0, #0
+#ifdef EUROPE
+	strh ip, [r2, #0x2c]
+	ldr r2, [r1, #4]
+#endif
 	strh r3, [r2, #2]
 	ldr r1, [r1, #4]
 	strh r3, [r1, #0x2e]
 	bl ov11_02312844
+#ifdef EUROPE
+	bl GetLanguage
+	ldr r1, _0231233C ; =0x02325958
+	mov r2, r0, lsl #1
+	ldr r0, [r1, #4]
+	ldr r1, _02312D1C ; =0x02324728
+	add r0, r0, #0x30
+	ldrsh r1, [r1, r2]
+	ldr r2, _02312340 ; =0xA0080000
+#else
 	ldr r0, _0231233C ; =ov11_02324E18
 	ldr r2, _02312340 ; =0xA0080000
 	ldr r0, [r0, #4]
 	mov r1, #0xa7
 	add r0, r0, #0x30
+#endif
 	bl LoadObjectAnimData
 	ldr r0, _0231233C ; =ov11_02324E18
 	mov r1, #8
@@ -64229,9 +64462,16 @@ ov11_02312264: ; 0x02312264
 	mov r2, #0
 	add r0, r0, #0x30
 	bl SetAnimDataFields2
+#ifdef EUROPE
+	bl GetLanguage
+	mov r2, r0, lsl #1
+#endif
 	ldr r0, _0231233C ; =ov11_02324E18
 	ldr r1, _02312344 ; =0x00000179
 	ldr r0, [r0, #4]
+#ifdef EUROPE
+	ldrsh r1, [r1, r2]
+#endif
 	ldr r2, _02312340 ; =0xA0080000
 	add r0, r0, #0xf4
 	bl LoadObjectAnimData
@@ -64251,8 +64491,16 @@ ov11_02312264: ; 0x02312264
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0231233C: .word ov11_02324E18
+#ifdef EUROPE
+_02312D14: .word 0x0232473C
+_02312D18: .word 0x00000115
+_02312D1C: .word 0x02324728
+_02312340: .word 0xA0080000
+_02312344: .word 0x02324732
+#else
 _02312340: .word 0xA0080000
 _02312344: .word 0x00000179
+#endif
 	arm_func_end ov11_02312264
 
 	arm_func_start ov11_02312348
@@ -65081,7 +65329,7 @@ _02312E14:
 	ldmia r7, {r0, r1}
 	add r0, r0, r5
 	add r1, r1, #0x324
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r7]
 	mov r1, sb
 	mov r2, r8
@@ -65129,7 +65377,7 @@ _02312EC8:
 	ldmia r7, {r0, r1}
 	add r0, r0, r5
 	add r1, r1, #0x324
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r7]
 	mov r1, sb
 	mov r2, r8
@@ -65166,7 +65414,7 @@ _02312F58:
 	ldmia r5, {r0, r1}
 	mla r0, r6, r4, r0
 	add r1, r1, #0x324
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	add r6, r6, #1
 	cmp r6, #0x50
 	blt _02312F58
@@ -65261,6 +65509,11 @@ _023130A8: .word ov11_02324E28
 
 	arm_func_start ov11_023130AC
 ov11_023130AC: ; 0x023130AC
+#ifdef EUROPE
+#define OV11_023130AC_LOAD_OFFSET 0x10
+#else
+#define OV11_023130AC_LOAD_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	bl GetHero
 	mov r5, r0
@@ -65307,7 +65560,7 @@ _02313130:
 _02313150:
 	ldr r2, _02313468 ; =0x88080000
 	add r0, ip, #0x324
-	mov r1, #0xcd
+	mov r1, #0xcd + OV11_023130AC_LOAD_OFFSET
 	bl LoadObjectAnimData
 	ldr r0, _02313464 ; =ov11_02324E28
 	ldr r2, _02313468 ; =0x88080000
@@ -65318,7 +65571,7 @@ _02313150:
 	ldr r0, _02313464 ; =ov11_02324E28
 	ldr r2, _0231346C ; =0x08080000
 	ldr r0, [r0, #4]
-	mov r1, #0xad
+	mov r1, #0xad + OV11_023130AC_LOAD_OFFSET
 	add r0, r0, #0xac
 	add r0, r0, #0x400
 	bl LoadObjectAnimData
@@ -65447,7 +65700,7 @@ _023132EC:
 	ldr r0, _02313464 ; =ov11_02324E28
 	ldr r2, _0231347C ; =0x8C080000
 	ldr r0, [r0, #4]
-	mov r1, #0xd0
+	mov r1, #0xd0 + OV11_023130AC_LOAD_OFFSET
 	add r0, r0, #0x324
 	bl LoadObjectAnimData
 	ldr r0, _02313464 ; =ov11_02324E28
@@ -65471,7 +65724,7 @@ _023132EC:
 _023133D4:
 	ldr r2, _02313468 ; =0x88080000
 	add r0, ip, #0x324
-	mov r1, #0xb6
+	mov r1, #0xb6 + OV11_023130AC_LOAD_OFFSET
 	bl LoadObjectAnimData
 	ldr r0, _02313464 ; =ov11_02324E28
 	mov r3, #1
@@ -65484,7 +65737,7 @@ _023133D4:
 _02313404:
 	ldr r2, _02313468 ; =0x88080000
 	add r0, ip, #0x324
-	mov r1, #0xbe
+	mov r1, #0xbe + OV11_023130AC_LOAD_OFFSET
 	bl LoadObjectAnimData
 	ldr r0, _02313464 ; =ov11_02324E28
 	mov r3, #1
@@ -65516,7 +65769,11 @@ _02313474: .word 0x8C100000
 _02313478: .word 0x00001013
 _0231347C: .word 0x8C080000
 _02313480: .word 0x00000801
+#ifdef EUROPE
+_02313484: .word 0x00000231
+#else
 _02313484: .word 0x00000223
+#endif
 	arm_func_end ov11_023130AC
 
 	arm_func_start ov11_02313488
@@ -65691,7 +65948,7 @@ _023136D0:
 	ldmia r6, {r0, r1}
 	add r0, r0, sb
 	add r1, r1, #0x324
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r6]
 	ldr r1, [r8, #0xc]
 	add r0, r0, sb
@@ -68745,10 +69002,10 @@ ov11_02316168: ; 0x02316168
 	bl OverlayIsLoaded
 	cmp r0, #0
 	beq _023161BC
-	bl ov14_0238CCBC
+	bl ov16_0238CCBC
 	cmp r0, #0
 	beq _023161BC
-	bl ov14_0238CCBC
+	bl ov16_0238CCBC
 	cmp r0, #1
 	str r0, [r4, #0xc]
 	cmpne r0, #2
@@ -68761,7 +69018,7 @@ _023161B0:
 	mov r0, #0
 	strh r0, [r4, #0x16]
 _023161B8:
-	bl ov14_0238CCD8
+	bl ov16_0238CCD8
 _023161BC:
 	ldrh r0, [r4, #0x16]
 	add r0, r0, #1
@@ -68830,7 +69087,7 @@ _0231626C:
 	ldrh r0, [r4, #0x16]
 	cmp r0, #0xb4
 	bne _023162B8
-	bl ov14_0238CCF0
+	bl ov16_0238CCF0
 _023162B8:
 	ldrh r0, [r4, #0x16]
 	cmp r0, #0xc4
@@ -69216,65 +69473,211 @@ _02316788: .word ov11_02324E78
 	arm_func_end ov11_023165C8
 	; 0x0231678C
 
-	.global ov11_0231678C
-ov11_0231678C:
-	.byte 0x08, 0x40, 0x2D, 0xE9, 0xA0, 0x00, 0x9F, 0xE5, 0x00, 0x20, 0x90, 0xE5, 0x00, 0x10, 0x92, 0xE5
-	.byte 0x02, 0x00, 0x51, 0xE3, 0x0E, 0x00, 0x00, 0x1A, 0x01, 0x10, 0xA0, 0xE3, 0x05, 0x10, 0xC2, 0xE5
-	.byte 0x00, 0x30, 0x90, 0xE5, 0x08, 0x00, 0x93, 0xE5, 0x00, 0x00, 0x50, 0xE3, 0x03, 0x00, 0x00, 0x1A
-	.byte 0x78, 0x10, 0x9F, 0xE5, 0x78, 0x20, 0x9F, 0xE5, 0x08, 0x00, 0x83, 0xE2, 0x2B, 0xC2, 0xF4, 0xEB
-	.byte 0x64, 0x00, 0x9F, 0xE5, 0x03, 0x10, 0xA0, 0xE3, 0x00, 0x00, 0x90, 0xE5, 0x00, 0x10, 0x80, 0xE5
-	.byte 0x08, 0x80, 0xBD, 0xE8, 0x03, 0x00, 0x51, 0xE3, 0x08, 0x80, 0xBD, 0x18, 0x01, 0x00, 0xA0, 0xE3
-	.byte 0x05, 0x00, 0xC2, 0xE5, 0x4C, 0xFF, 0xFF, 0xEB, 0xBD, 0x0F, 0xA0, 0xE3, 0x0F, 0x10, 0xA0, 0xE3
-	.byte 0x5B, 0xAA, 0xF3, 0xEB, 0x30, 0x20, 0x9F, 0xE5, 0x38, 0x10, 0x9F, 0xE5, 0x04, 0x00, 0x82, 0xE5
-	.byte 0x01, 0x55, 0xFF, 0xEB, 0x20, 0x00, 0x9F, 0xE5, 0x2C, 0x10, 0x9F, 0xE5, 0x04, 0x00, 0x90, 0xE5
-	.byte 0x00, 0x20, 0xA0, 0xE3, 0x8F, 0x5D, 0xFF, 0xEB, 0x0C, 0x00, 0x9F, 0xE5, 0x04, 0x10, 0xA0, 0xE3
-	.byte 0x00, 0x00, 0x90, 0xE5, 0x00, 0x10, 0x80, 0xE5, 0x08, 0x80, 0xBD, 0xE8
-	.word ov11_02324E78
-	.word ov11_02324BCC
-	.word ov11_023168E0
-	.word ov11_02324BDC
-	.word ov11_02324C1C
-	.global ov11_0231684C
-ov11_0231684C:
-	.byte 0x08, 0x40, 0x2D, 0xE9, 0x40, 0x00, 0x9F, 0xE5, 0x00, 0x10, 0x90, 0xE5, 0x00, 0x10, 0x91, 0xE5
-	.byte 0x04, 0x00, 0x51, 0xE3, 0x0A, 0x00, 0x00, 0x1A, 0x04, 0x00, 0x90, 0xE5, 0xA7, 0x63, 0xFF, 0xEB
-	.byte 0x01, 0x00, 0xA0, 0xE3, 0x31, 0x63, 0xFF, 0xEB, 0x1C, 0x00, 0x9F, 0xE5, 0x01, 0x30, 0xA0, 0xE3
-	.byte 0x00, 0x20, 0x90, 0xE5, 0x05, 0x10, 0xA0, 0xE3, 0x04, 0x30, 0xC2, 0xE5, 0x00, 0x00, 0x90, 0xE5
-	.byte 0x00, 0x10, 0x80, 0xE5, 0x00, 0x00, 0xA0, 0xE3, 0x08, 0x80, 0xBD, 0xE8
-	.word ov11_02324E78
-	.global ov11_0231689C
-ov11_0231689C:
-	.byte 0x08, 0x40, 0x2D, 0xE9, 0x34, 0x00, 0x9F, 0xE5, 0x00, 0x10, 0x90, 0xE5, 0x04, 0x10, 0xD1, 0xE5
-	.byte 0x00, 0x00, 0x51, 0xE3, 0x04, 0x00, 0x90, 0x15, 0x00, 0x00, 0x50, 0x13, 0x08, 0x80, 0xBD, 0x08
-	.byte 0xAB, 0x64, 0xFF, 0xEB, 0x14, 0x00, 0x9F, 0xE5, 0x00, 0x20, 0xA0, 0xE3, 0x00, 0x10, 0x90, 0xE5
-	.byte 0x10, 0x00, 0xA0, 0xE3, 0x04, 0x20, 0xC1, 0xE5, 0xEF, 0x4C, 0xFF, 0xEB, 0x08, 0x80, 0xBD, 0xE8
-	.word ov11_02324E78
-	.global ov11_023168E0
-ov11_023168E0:
-	.byte 0xF8, 0x4F, 0x2D, 0xE9, 0x00, 0xA0, 0xA0, 0xE1, 0xB4, 0xD1, 0xF4, 0xEB
-	.byte 0x00, 0x40, 0xA0, 0xE1, 0x01, 0x0B, 0xA0, 0xE3, 0x0F, 0x10, 0xA0, 0xE3, 0x1C, 0xAA, 0xF3, 0xEB
-	.byte 0x00, 0x60, 0xA0, 0xE1, 0x02, 0x00, 0x54, 0xE3, 0x00, 0x70, 0xA0, 0xE3, 0x3B, 0x00, 0x00, 0x1A
-	.byte 0x18, 0x41, 0x9F, 0xE5, 0x18, 0x51, 0x9F, 0xE5, 0x07, 0x80, 0xA0, 0xE1, 0x05, 0xB0, 0xA0, 0xE3
-	.byte 0x08, 0x0C, 0xA0, 0xE1, 0x40, 0x0C, 0xA0, 0xE1, 0xF1, 0x21, 0xF5, 0xEB, 0x00, 0x00, 0x50, 0xE3
-	.byte 0x2F, 0x00, 0x00, 0x1A, 0x08, 0x0C, 0xA0, 0xE1, 0x40, 0x0C, 0xA0, 0xE1, 0xE6, 0x21, 0xF5, 0xEB
-	.byte 0x00, 0x90, 0xA0, 0xE1, 0x00, 0x00, 0xD9, 0xE5, 0x0B, 0x10, 0xA0, 0xE1, 0x07, 0x20, 0xA0, 0xE1
-	.byte 0x05, 0x00, 0x50, 0xE3, 0x05, 0x30, 0xA0, 0x01, 0x04, 0x30, 0xA0, 0x11, 0x0A, 0x00, 0xA0, 0xE1
-	.byte 0x2C, 0x3E, 0xF4, 0xEB, 0x06, 0x00, 0xA0, 0xE1, 0x01, 0x1B, 0xA0, 0xE3, 0x09, 0x20, 0xA0, 0xE1
-	.byte 0x74, 0x2D, 0xF5, 0xEB, 0x0A, 0x00, 0xA0, 0xE1, 0x12, 0x10, 0xA0, 0xE3, 0x07, 0x20, 0xA0, 0xE1
-	.byte 0x06, 0x30, 0xA0, 0xE1, 0x23, 0x3E, 0xF4, 0xEB, 0x06, 0x00, 0xA0, 0xE1, 0x01, 0x1B, 0xA0, 0xE3
-	.byte 0x09, 0x20, 0xA0, 0xE1, 0x7E, 0x2D, 0xF5, 0xEB, 0x0A, 0x00, 0xA0, 0xE1, 0x40, 0x10, 0xA0, 0xE3
-	.byte 0x0A, 0x20, 0x87, 0xE2, 0x06, 0x30, 0xA0, 0xE1, 0x1A, 0x3E, 0xF4, 0xEB, 0x01, 0x10, 0xD9, 0xE5
-	.byte 0x0E, 0x00, 0x51, 0xE3, 0x05, 0x00, 0x00, 0x1A, 0x78, 0x30, 0x9F, 0xE5, 0x0A, 0x00, 0xA0, 0xE1
-	.byte 0xCC, 0x10, 0xA0, 0xE3, 0x0A, 0x20, 0x87, 0xE2, 0x27, 0x3E, 0xF4, 0xEB, 0x07, 0x00, 0x00, 0xEA
-	.byte 0x04, 0x00, 0x89, 0xE2, 0xF1, 0x30, 0xF5, 0xEB, 0xF6, 0x30, 0xF5, 0xEB, 0x00, 0x30, 0xA0, 0xE1
-	.byte 0x0A, 0x00, 0xA0, 0xE1, 0xCC, 0x10, 0xA0, 0xE3, 0x0A, 0x20, 0x87, 0xE2, 0x09, 0x3E, 0xF4, 0xEB
-	.byte 0x14, 0x70, 0x87, 0xE2, 0x01, 0x80, 0x88, 0xE2, 0x08, 0x00, 0x58, 0xE3, 0xC7, 0xFF, 0xFF, 0xBA
-	.byte 0x00, 0x00, 0x57, 0xE3, 0x04, 0x00, 0x00, 0x1A, 0x2C, 0x30, 0x9F, 0xE5, 0x0A, 0x00, 0xA0, 0xE1
-	.byte 0x05, 0x10, 0xA0, 0xE3, 0x48, 0x20, 0xA0, 0xE3, 0x13, 0x3E, 0xF4, 0xEB, 0x0A, 0x00, 0xA0, 0xE1
-	.byte 0x33, 0x44, 0xF4, 0xEB, 0x06, 0x00, 0xA0, 0xE1, 0xD7, 0xA9, 0xF3, 0xEB, 0xF8, 0x8F, 0xBD, 0xE8
-	.word ov11_02324C38
-	.word ov11_02324C30
-	.byte 0x2A, 0x3C, 0x00, 0x00, 0xDF, 0x08, 0x00, 0x00
+	arm_func_start ov11_0231678C
+ov11_0231678C: ; 0x0231678C
+	stmdb sp!, {r3, lr}
+	ldr r0, _02316838 ; =ov11_02324E78
+	ldr r2, [r0]
+	ldr r1, [r2]
+	cmp r1, #2
+	bne _023167E0
+	mov r1, #1
+	strb r1, [r2, #5]
+	ldr r3, [r0]
+	ldr r0, [r3, #8]
+	cmp r0, #0
+	bne _023167CC
+	ldr r1, _0231683C ; =ov11_02324BCC
+	ldr r2, _02316840 ; =ov11_023168E0
+	add r0, r3, #8
+	bl sub_0204707C
+_023167CC:
+	ldr r0, _02316838 ; =ov11_02324E78
+	mov r1, #3
+	ldr r0, [r0]
+	str r1, [r0]
+	ldmia sp!, {r3, pc}
+_023167E0:
+	cmp r1, #3
+	ldmneia sp!, {r3, pc}
+	mov r0, #1
+	strb r0, [r2, #5]
+	bl ov11_02316528
+	mov r0, #0x2f4
+	mov r1, #0xf
+	bl MemAlloc
+	ldr r2, _02316838 ; =ov11_02324E78
+	ldr r1, _02316844 ; =ov11_02324BDC
+	str r0, [r2, #4]
+	bl ov11_022EBC18
+	ldr r0, _02316838 ; =ov11_02324E78
+	ldr r1, _02316848 ; =ov11_02324C1C
+	ldr r0, [r0, #4]
+	mov r2, #0
+	bl ov11_022EDE64
+	ldr r0, _02316838 ; =ov11_02324E78
+	mov r1, #4
+	ldr r0, [r0]
+	str r1, [r0]
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_02316838: .word ov11_02324E78
+_0231683C: .word ov11_02324BCC
+_02316840: .word ov11_023168E0
+_02316844: .word ov11_02324BDC
+_02316848: .word ov11_02324C1C
+	arm_func_end ov11_0231678C
+
+	arm_func_start ov11_0231684C
+ov11_0231684C: ; 0x0231684C
+	stmdb sp!, {r3, lr}
+	ldr r0, _02316898 ; =ov11_02324E78
+	ldr r1, [r0]
+	ldr r1, [r1]
+	cmp r1, #4
+	bne _02316890
+	ldr r0, [r0, #4]
+	bl ov11_022EF70C
+	mov r0, #1
+	bl ov11_022EF53C
+	ldr r0, _02316898 ; =ov11_02324E78
+	mov r3, #1
+	ldr r2, [r0]
+	mov r1, #5
+	strb r3, [r2, #4]
+	ldr r0, [r0]
+	str r1, [r0]
+_02316890:
+	mov r0, #0
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_02316898: .word ov11_02324E78
+	arm_func_end ov11_0231684C
+
+	arm_func_start ov11_0231689C
+ov11_0231689C: ; 0x0231689C
+	stmdb sp!, {r3, lr}
+	ldr r0, _023168DC ; =ov11_02324E78
+	ldr r1, [r0]
+	ldrb r1, [r1, #4]
+	cmp r1, #0
+	ldrne r0, [r0, #4]
+	cmpne r0, #0
+	ldmeqia sp!, {r3, pc}
+	bl ov11_022EFB70
+	ldr r0, _023168DC ; =ov11_02324E78
+	mov r2, #0
+	ldr r1, [r0]
+	mov r0, #0x10
+	strb r2, [r1, #4]
+	bl ov11_022E9C98
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_023168DC: .word ov11_02324E78
+	arm_func_end ov11_0231689C
+
+	arm_func_start ov11_023168E0
+ov11_023168E0: ; 0x023168E0
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	mov sl, r0
+	bl GetGameMode
+	mov r4, r0
+	mov r0, #0x400
+	mov r1, #0xf
+	bl MemAlloc
+	mov r6, r0
+	cmp r4, #2
+	mov r7, #0
+	bne _023169FC
+	ldr r4, _02316A2C ; =ov11_02324C38
+	ldr r5, _02316A30 ; =ov11_02324C30
+	mov r8, r7
+	mov fp, #5
+_0231691C:
+	mov r0, r8, lsl #0x18
+	mov r0, r0, asr #0x18
+	bl sub_0205F0F0
+	cmp r0, #0
+	bne _023169F0
+	mov r0, r8, lsl #0x18
+	mov r0, r0, asr #0x18
+	bl GetAcceptedMission
+	mov sb, r0
+	ldrb r0, [sb]
+	mov r1, fp
+	mov r2, r7
+	cmp r0, #5
+	moveq r3, r5
+	movne r3, r4
+	mov r0, sl
+	bl sub_02026214
+	mov r0, r6
+	mov r1, #0x400
+	mov r2, sb
+	bl sub_02061F44
+	mov r0, sl
+	mov r1, #0x12
+	mov r2, r7
+	mov r3, r6
+	bl sub_02026214
+	mov r0, r6
+	mov r1, #0x400
+	mov r2, sb
+	bl sub_02061F90
+	mov r0, sl
+	mov r1, #0x40
+	add r2, r7, #0xa
+	mov r3, r6
+	bl sub_02026214
+	ldrb r1, [sb, #1]
+	cmp r1, #0xe
+	bne _023169CC
+	ldr r3, _02316A34 ; =0x00003C2A
+	mov r0, sl
+	mov r1, #0xcc
+	add r2, r7, #0xa
+	bl sub_02026268
+	b _023169EC
+_023169CC:
+	add r0, sb, #4
+	bl sub_02062D9C
+	bl sub_02062DB4
+	mov r3, r0
+	mov r0, sl
+	mov r1, #0xcc
+	add r2, r7, #0xa
+	bl sub_02026214
+_023169EC:
+	add r7, r7, #0x14
+_023169F0:
+	add r8, r8, #1
+	cmp r8, #8
+	blt _0231691C
+_023169FC:
+	cmp r7, #0
+	bne _02316A18
+	ldr r3, _02316A38 ; =0x000008DF
+	mov r0, sl
+	mov r1, #5
+	mov r2, #0x48
+	bl sub_02026268
+_02316A18:
+	mov r0, sl
+	bl sub_02027AF0
+	mov r0, r6
+	bl MemFree
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	.align 2, 0
+_02316A2C: .word ov11_02324C38
+_02316A30: .word ov11_02324C30
+#ifdef EUROPE
+_02316A34: .word 0x00003C2C
+#else
+_02316A34: .word 0x00003C2A
+#endif
+_02316A38: .word 0x000008DF
+	arm_func_end ov11_023168E0
+
 	.global ov11_02316A3C
 ov11_02316A3C:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -76013,10 +76416,15 @@ C_ROUTINES:
 	.word ov11_02319B1C
 	.global GROUND_WEATHER_TABLE
 GROUND_WEATHER_TABLE:
-	.byte 0x00, 0x00, 0x13, 0x01, 0x01, 0x00, 0xB0, 0x01, 0x01, 0x00, 0xB1, 0x01
-	.byte 0x02, 0x00, 0xB2, 0x01, 0x01, 0x00, 0xB3, 0x01, 0x02, 0x00, 0xB4, 0x01, 0x01, 0x00, 0xB5, 0x01
-	.byte 0x02, 0x00, 0xB6, 0x01, 0x01, 0x00, 0xB7, 0x01, 0x02, 0x00, 0xB8, 0x01, 0x01, 0x00, 0xB9, 0x01
-	.byte 0x02, 0x00, 0xBA, 0x01
+#ifdef EUROPE
+#define GROUND_WEATHER_OFFSET 0x1C
+#else
+#define GROUND_WEATHER_OFFSET 0
+#endif
+	.byte 0x00, 0x00, 0x13, 0x01, 0x01, 0x00, 0xB0 + GROUND_WEATHER_OFFSET, 0x01, 0x01, 0x00, 0xB1 + GROUND_WEATHER_OFFSET, 0x01
+	.byte 0x02, 0x00, 0xB2 + GROUND_WEATHER_OFFSET, 0x01, 0x01, 0x00, 0xB3 + GROUND_WEATHER_OFFSET, 0x01, 0x02, 0x00, 0xB4 + GROUND_WEATHER_OFFSET, 0x01, 0x01, 0x00, 0xB5 + GROUND_WEATHER_OFFSET, 0x01
+	.byte 0x02, 0x00, 0xB6 + GROUND_WEATHER_OFFSET, 0x01, 0x01, 0x00, 0xB7 + GROUND_WEATHER_OFFSET, 0x01, 0x02, 0x00, 0xB8 + GROUND_WEATHER_OFFSET, 0x01, 0x01, 0x00, 0xB9 + GROUND_WEATHER_OFFSET, 0x01
+	.byte 0x02, 0x00, 0xBA + GROUND_WEATHER_OFFSET, 0x01
 	.global GROUND_WAN_FILES_TABLE
 GROUND_WAN_FILES_TABLE:
 	.byte 0x64, 0x33, 0x30, 0x70, 0x33, 0x33, 0x61, 0x35, 0x00, 0x00, 0x00, 0x00
@@ -76062,9 +76470,11 @@ ov11_0231DEC4:
 	.global ov11_0231DED0
 ov11_0231DED0:
 	.byte 0x64, 0x34, 0x35, 0x70, 0x33, 0x31, 0x61, 0x36, 0x00, 0x00, 0x00, 0x00
+#ifndef EUROPE
 	.global ov11_0231DEDC
 ov11_0231DEDC:
 	.byte 0x73, 0x30, 0x35, 0x70, 0x30, 0x32, 0x61, 0x34, 0x00, 0x00, 0x00, 0x00
+#endif
 	.global ov11_0231DEE8
 ov11_0231DEE8:
 	.byte 0x70, 0x31, 0x37, 0x70
@@ -76527,10 +76937,12 @@ ov11_0231E500:
 	.global ov11_0231E50C
 ov11_0231E50C:
 	.byte 0x64, 0x37, 0x33, 0x70, 0x32, 0x38, 0x61, 0x31, 0x00, 0x00, 0x00, 0x00
+#ifndef EUROPE
 	.global ov11_0231E518
 ov11_0231E518:
 	.byte 0x73, 0x30, 0x35, 0x70
 	.byte 0x30, 0x32, 0x63, 0x31, 0x00, 0x00, 0x00, 0x00
+#endif
 	.global ov11_0231E524
 ov11_0231E524:
 	.byte 0x70, 0x32, 0x32, 0x70, 0x30, 0x31, 0x61, 0x31
@@ -76916,6 +77328,103 @@ ov11_0231EA34:
 	.global ov11_0231EA40
 ov11_0231EA40:
 	.byte 0x73, 0x30, 0x35, 0x70, 0x30, 0x33, 0x61, 0x31, 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+	.global ov11_0231F414
+ov11_0231F414:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x65, 0x34
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F420
+ov11_0231F420:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x64, 0x34
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F42C
+ov11_0231F42C:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x63, 0x34
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F438
+ov11_0231F438:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x62, 0x34
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F444
+ov11_0231F444:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x61, 0x34
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F450
+ov11_0231F450:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x65, 0x33
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F45C
+ov11_0231F45C:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x64, 0x33
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F468
+ov11_0231F468:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x63, 0x33
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F474
+ov11_0231F474:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x62, 0x33
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F480
+ov11_0231F480:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x61, 0x33
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F48C
+ov11_0231F48C:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x65, 0x32
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F498
+ov11_0231F498:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x64, 0x32
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F4A4
+ov11_0231F4A4:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x63, 0x32
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F4B0
+ov11_0231F4B0:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x62, 0x32
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F4BC
+ov11_0231F4BC:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x61, 0x32
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F4C8
+ov11_0231F4C8:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x65, 0x31
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F4D4
+ov11_0231F4D4:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x64, 0x31
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F4E0
+ov11_0231F4E0:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x63, 0x31
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global ov11_0231F4EC
+ov11_0231F4EC:
+	.byte 0x73, 0x30, 0x35, 0x70
+	.byte 0x30, 0x32, 0x62, 0x31
+	.byte 0x00, 0x00, 0x00, 0x00
+#else
 	.global ov11_0231EA4C
 ov11_0231EA4C:
 	.byte 0x73, 0x30, 0x35, 0x70, 0x30, 0x32, 0x62, 0x31, 0x00, 0x00, 0x00, 0x00
@@ -76927,6 +77436,7 @@ ov11_0231EA58:
 ov11_0231EA64:
 	.byte 0x73, 0x30, 0x35, 0x70, 0x30, 0x32, 0x61, 0x32
 	.byte 0x00, 0x00, 0x00, 0x00
+#endif
 	.global ov11_0231EA70
 ov11_0231EA70:
 	.byte 0x73, 0x30, 0x35, 0x70, 0x30, 0x32, 0x61, 0x31, 0x00, 0x00, 0x00, 0x00
@@ -77575,6 +78085,65 @@ OBJECTS:
 	.word ov11_0231EA7C
 	.byte 0x01, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x02, 0x01
 	.word ov11_0231EA70
+#ifdef EUROPE
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x02, 0x01
+	.word ov11_0231F4EC
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x02, 0x01
+	.word ov11_0231F4E0
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x02, 0x01
+	.word ov11_0231F4D4
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x02, 0x01
+	.word ov11_0231F4C8
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x02, 0x01
+	.word ov11_0231F4BC
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x02, 0x01
+	.word ov11_0231F4B0
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x02, 0x01
+	.word ov11_0231F4A4
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x02, 0x01
+	.word ov11_0231F498
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x02, 0x01
+	.word ov11_0231F48C
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0C, 0x00, 0x02, 0x01
+	.word ov11_0231F480
+	.byte 0x01, 0x00, 0x00, 0x00
+	.byte 0x0C, 0x00, 0x02, 0x01
+	.word ov11_0231F474
+	.byte 0x01, 0x00, 0x00, 0x00
+	.byte 0x0C, 0x00, 0x02, 0x01
+	.word ov11_0231F468
+	.byte 0x01, 0x00, 0x00, 0x00
+	.byte 0x0C, 0x00, 0x02, 0x01
+	.word ov11_0231F45C
+	.byte 0x01, 0x00, 0x00, 0x00
+	.byte 0x0C, 0x00, 0x02, 0x01
+	.word ov11_0231F450
+	.byte 0x01, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x00, 0x00
+	.word ov11_0231F444
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x00, 0x00
+	.word ov11_0231F438
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x00, 0x00
+	.word ov11_0231F42C
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x00, 0x00
+	.word ov11_0231F420
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x0B, 0x00, 0x00, 0x00
+	.word ov11_0231F414
+#else
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x0B, 0x00, 0x02, 0x01
 	.word ov11_0231EA64
@@ -77582,6 +78151,7 @@ OBJECTS:
 	.word ov11_0231EA58
 	.byte 0x01, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x02, 0x01
 	.word ov11_0231EA4C
+#endif
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x02, 0x01
 	.word ov11_0231EA40
 	.byte 0x00, 0x00, 0x00, 0x00
@@ -78050,8 +78620,10 @@ OBJECTS:
 	.word ov11_0231E530
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
 	.word ov11_0231E524
+#ifndef EUROPE
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
 	.word ov11_0231E518
+#endif
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x0B, 0x00, 0x00, 0x00
 	.word ov11_0231E50C
@@ -78401,8 +78973,10 @@ OBJECTS:
 	.word ov11_0231DEF4
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
 	.word ov11_0231DEE8
+#ifndef EUROPE
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
 	.word ov11_0231DEDC
+#endif
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x0B, 0x00, 0x00, 0x00
 	.word ov11_0231DED0
@@ -78471,13 +79045,8 @@ RECRUITMENT_TABLE_LEVELS:
 	.global RECRUITMENT_TABLE_SPECIES
 RECRUITMENT_TABLE_SPECIES:
 	.byte 0x99, 0x01, 0x9A, 0x01
-	.byte 0x9B, 0x01, 0x9F, 0x01, 0x0A, 0x02, 0x0B, 0x02
-	.word _020D020C
-	.byte 0x0E, 0x02, 0x10, 0x02
-	.byte 0x11, 0x02, 0x15, 0x02
-	.word _020F0090
-	.byte 0x67, 0x04, 0x97, 0x00
-	.word _02130214
+	.byte 0x9B, 0x01, 0x9F, 0x01, 0x0A, 0x02, 0x0B, 0x02, 0x0C, 0x02, 0x0D, 0x02, 0x0E, 0x02, 0x10, 0x02
+	.byte 0x11, 0x02, 0x15, 0x02, 0x90, 0x00, 0x0F, 0x02, 0x67, 0x04, 0x97, 0x00, 0x14, 0x02, 0x13, 0x02
 	.byte 0x12, 0x02, 0xA0, 0x01, 0x9E, 0x01, 0x16, 0x02
 	.global ov11_02320904
 ov11_02320904:
@@ -79389,11 +79958,11 @@ ov11_02322418:
 	.byte 0x25, 0x33, 0x64, 0x20, 0x20, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x20, 0x25, 0x33, 0x64, 0x00
 	.global ov11_0232245C
 ov11_0232245C:
-	.word ov11_022FEFA4
+	.word UpdateTeamInfoBox
 	.byte 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov11_0232246C
 ov11_0232246C:
-	.word ov11_022FEFA4
+	.word UpdateTeamInfoBox
 	.byte 0x12, 0x13, 0x0C, 0x02, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov11_0232247C
 ov11_0232247C:
@@ -79637,13 +80206,18 @@ ov11_023228E0:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov11_023228F0
 ov11_023228F0:
-	.byte 0x13, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x3D, 0x00, 0x00
-	.byte 0x03, 0x00, 0x00, 0x00, 0x12, 0x3D, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+#define OV11_023228F0_OFFSET 2
+#else
+#define OV11_023228F0_OFFSET 0
+#endif
+	.byte 0x13 + OV11_023228F0_OFFSET, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00 + OV11_023228F0_OFFSET, 0x3D, 0x00, 0x00
+	.byte 0x03, 0x00, 0x00, 0x00, 0x12 + OV11_023228F0_OFFSET, 0x3D, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
 	.global ov11_02322910
 ov11_02322910:
-	.byte 0x0F, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x10, 0x3D, 0x00, 0x00
-	.byte 0x03, 0x00, 0x00, 0x00, 0x11, 0x3D, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x0F + OV11_023228F0_OFFSET, 0x3D, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x10 + OV11_023228F0_OFFSET, 0x3D, 0x00, 0x00
+	.byte 0x03, 0x00, 0x00, 0x00, 0x11 + OV11_023228F0_OFFSET, 0x3D, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
 	.global ov11_02322930
 ov11_02322930:
@@ -79896,10 +80470,15 @@ ov11_02322ECC:
 	.word ov11_0230A100
 	.global ov11_02322EDC
 ov11_02322EDC:
-	.byte 0xB9, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xBA, 0x3F, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0xBB, 0x3F, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xBC, 0x3F, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
-	.byte 0xBD, 0x3F, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xBE, 0x3F, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
-	.byte 0xBF, 0x3F, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0xC0, 0x3F, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
+#ifdef EUROPE
+#define OV11_02322EDC_OFFSET 2
+#else
+#define OV11_02322EDC_OFFSET 0
+#endif
+	.byte 0xB9 + OV11_02322EDC_OFFSET, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xBA + OV11_02322EDC_OFFSET, 0x3F, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.byte 0xBB + OV11_02322EDC_OFFSET, 0x3F, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xBC + OV11_02322EDC_OFFSET, 0x3F, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.byte 0xBD + OV11_02322EDC_OFFSET, 0x3F, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xBE + OV11_02322EDC_OFFSET, 0x3F, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
+	.byte 0xBF + OV11_02322EDC_OFFSET, 0x3F, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0xC0 + OV11_02322EDC_OFFSET, 0x3F, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global ov11_02322F24
 ov11_02322F24:
@@ -80518,6 +81097,23 @@ ov11_02323BBC:
 	.global ov11_02323BD0
 ov11_02323BD0:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+	.global ov11_02323BE8
+ov11_02323BE8:
+	.byte 0x00, 0xC0, 0x00, 0x00
+	.byte 0x00, 0xA4, 0x00, 0x00
+	.global ov11_02323BD8
+ov11_02323BD8:
+	.byte 0x00, 0x80, 0x00, 0x00, 0x00, 0x84, 0x00, 0x00
+	.global ov11_02323BE0
+ov11_02323BE0:
+	.byte 0x00, 0x04, 0x00, 0x00
+	.byte 0x00, 0x18, 0x00, 0x00
+	.word ov11_02323C1C
+	.byte 0x9B, 0x01, 0x00, 0x00, 0xAF, 0x00, 0xB0, 0x00
+	.byte 0xB1, 0x00, 0xB2, 0x00, 0xB3, 0x00, 0xA5, 0x00, 0xA6, 0x00, 0xA7, 0x00, 0xA8, 0x00, 0xA9, 0x00
+	.byte 0x15, 0x01, 0xC7, 0x01, 0xC8, 0x01, 0xC9, 0x01, 0xCA, 0x01, 0x00, 0x00
+#else
 	.global ov11_02323BD8
 ov11_02323BD8:
 	.byte 0x00, 0x80, 0x00, 0x00
@@ -80531,6 +81127,7 @@ ov11_02323BE8:
 	.byte 0x00, 0xA4, 0x00, 0x00
 	.word ov11_02323C1C
 	.byte 0x52, 0x01, 0x00, 0x00
+#endif
 	.global ov11_02323BF8
 ov11_02323BF8:
 	.byte 0x0D, 0x00, 0x00, 0x00
@@ -81009,8 +81606,8 @@ ov11_02324C9C:
 	.global ov11_02324CA0
 ov11_02324CA0:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324CA4
-ov11_02324CA4:
+	.global UNIONALL_RAM_ADDRESS
+UNIONALL_RAM_ADDRESS:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324CAC
 ov11_02324CAC:
@@ -81021,8 +81618,8 @@ ov11_02324CB0:
 	.global ov11_02324CBC
 ov11_02324CBC:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324CC0
-ov11_02324CC0:
+	.global GROUND_STATE_MAP
+GROUND_STATE_MAP:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324CC8
 ov11_02324CC8:
@@ -81045,8 +81642,8 @@ ov11_02324CE8:
 	.global ov11_02324CF0
 ov11_02324CF0:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324CF4
-ov11_02324CF4:
+	.global GROUND_STATE_PTRS
+GROUND_STATE_PTRS:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324CF8
 ov11_02324CF8:
@@ -81066,7 +81663,12 @@ ov11_02324D0C:
 	.byte 0xBD, 0x02, 0xBD, 0x02, 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324D14
 ov11_02324D14:
-	.byte 0xFF, 0xFF, 0xAF, 0x01, 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+	.byte 0xFF, 0xFF, 0xCB, 0x01
+#else
+	.byte 0xFF, 0xFF, 0xAF, 0x01
+#endif
+	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324D1C
 ov11_02324D1C:
 	.byte 0xD5, 0x00, 0xD5, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -81175,8 +81777,8 @@ ov11_02324DD4:
 	.global ov11_02324DDC
 ov11_02324DDC:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324DE4
-ov11_02324DE4:
+	.global WORLD_MAP_MODE
+WORLD_MAP_MODE:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324DF0

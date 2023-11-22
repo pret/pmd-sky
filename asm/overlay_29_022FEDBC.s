@@ -9,7 +9,7 @@ ov29_022FEDBC: ; 0x022FEDBC
 	sub sp, sp, #0x10
 	mov r4, #0
 _022FEDC8:
-	ldr r0, _022FEFB8 ; =ov29_02353538
+	ldr r0, _022FEFB8 ; =DUNGEON_PTR
 	mov r6, #0
 	ldr r0, [r0]
 	add r0, r0, r4, lsl #2
@@ -145,7 +145,7 @@ _022FEFA4:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022FEFB8: .word ov29_02353538
+_022FEFB8: .word DUNGEON_PTR
 _022FEFBC: .word 0x0000020D
 _022FEFC0: .word 0x00000DF3
 _022FEFC4: .word 0x00001204
@@ -157,7 +157,7 @@ ov29_022FEFC8: ; 0x022FEFC8
 	sub sp, sp, #0x10
 	mov r5, #0
 _022FEFD4:
-	ldr r0, _022FF160 ; =ov29_02353538
+	ldr r0, _022FF160 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -264,7 +264,7 @@ _022FF14C:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022FF160: .word ov29_02353538
+_022FF160: .word DUNGEON_PTR
 _022FF164: .word 0x00000DF4
 	arm_func_end ov29_022FEFC8
 
@@ -272,7 +272,7 @@ _022FF164: .word 0x00000DF4
 TryActivateFlashFireOnAllMonsters: ; 0x022FF168
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
-	ldr r5, _022FF1C4 ; =ov29_02353538
+	ldr r5, _022FF1C4 ; =DUNGEON_PTR
 	mov r6, r4
 _022FF178:
 	ldr r0, [r5]
@@ -296,7 +296,7 @@ _022FF1B4:
 	blt _022FF178
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_022FF1C4: .word ov29_02353538
+_022FF1C4: .word DUNGEON_PTR
 	arm_func_end TryActivateFlashFireOnAllMonsters
 
 	arm_func_start HasStatusThatPreventsActing
@@ -410,7 +410,7 @@ _022FF320:
 	beq _022FF3AC
 	ldrb r1, [r4, #0x4c]
 	mov r0, r5
-	bl ov29_02300E78
+	bl CanMonsterMoveInDirection
 	cmp r0, #0
 	beq _022FF368
 	ldrsh r1, [r4, #2]
@@ -727,8 +727,8 @@ _022FF75C:
 	ldmia sp!, {r4, pc}
 	arm_func_end IsInvalidSpawnTile
 
-	arm_func_start CannotStandOnTile
-CannotStandOnTile: ; 0x022FF764
+	arm_func_start ov29_022FF764
+ov29_022FF764: ; 0x022FF764
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r0
@@ -813,7 +813,7 @@ _022FF888:
 _022FF890:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end CannotStandOnTile
+	arm_func_end ov29_022FF764
 
 	arm_func_start ItemIsActive__022FF898
 ItemIsActive__022FF898: ; 0x022FF898
@@ -1114,8 +1114,8 @@ _022FFC94:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_022FFB90
 
-	arm_func_start ov29_022FFC9C
-ov29_022FFC9C: ; 0x022FFC9C
+	arm_func_start CannotStandOnTile
+CannotStandOnTile: ; 0x022FFC9C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r0
@@ -1211,7 +1211,7 @@ _022FFDE4:
 _022FFDEC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_022FFC9C
+	arm_func_end CannotStandOnTile
 
 	arm_func_start CalcSpeedStage
 CalcSpeedStage: ; 0x022FFDF4
@@ -1254,7 +1254,7 @@ _022FFE78:
 	mov r1, #0x3a
 	bl IqSkillIsEnabled
 	cmp r0, #0
-	ldr r1, _022FFF18 ; =ov29_023535B8
+	ldr r1, _022FFF18 ; =EXCL_ITEM_EFFECTS_WEATHER_MOVE_SPEED_BOOST
 	addne r4, r4, #1
 	ldrb r0, [r1, r5]
 	cmp r0, #0
@@ -1279,7 +1279,7 @@ _022FFEB0:
 	bne _022FFEFC
 	ldrb r0, [r6, #6]
 	cmp r0, #0
-	ldrne r0, _022FFF24 ; =ov29_02353538
+	ldrne r0, _022FFF24 ; =DUNGEON_PTR
 	ldrne r0, [r0]
 	ldrneb r0, [r0, #0x790]
 	cmpne r0, #0
@@ -1293,10 +1293,10 @@ _022FFEFC:
 	str r4, [r6, #0x110]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022FFF18: .word ov29_023535B8
+_022FFF18: .word EXCL_ITEM_EFFECTS_WEATHER_MOVE_SPEED_BOOST
 _022FFF1C: .word 0x000001A5
 _022FFF20: .word 0x0000017F
-_022FFF24: .word ov29_02353538
+_022FFF24: .word DUNGEON_PTR
 	arm_func_end CalcSpeedStage
 
 	arm_func_start ExclusiveItemEffectIsActive__022FFF28
@@ -1356,7 +1356,7 @@ _022FFFB8:
 	movne r5, #1
 	movne r6, r5
 _022FFFD8:
-	ldr r4, _023000DC ; =ov29_023535B0
+	ldr r4, _023000DC ; =EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST
 	ldrb r0, [r4, r8]
 	cmp r0, #0
 	beq _02300000
@@ -1427,6 +1427,6 @@ _023000D4:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_023000DC: .word ov29_023535B0
+_023000DC: .word EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST
 _023000E0: .word 0x00000C31
 	arm_func_end GetNumberOfAttacks

@@ -10,6 +10,8 @@
 .public ChooseAiMove
 .public ClearMonsterActionFields
 .public DefenderAbilityIsActive__0230A940
+.public DoesTacticFollowLeader
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EndFrozenClassStatus
 .public EntityIsValid__02308FBC
@@ -53,13 +55,11 @@
 .public ov29_0230F728
 .public ov29_0231EDFC
 .public ov29_023380FC
-.public ov29_02353538
 .public ov29_023535DC
 .public ov29_0237CA6D
 .public ResetDamageData
 .public SetActionPassTurnOrWalk
 .public ShouldRunMonsterAi
 .public sub_02054EC8
-.public DoesTacticFollowLeader
 .public SubstitutePlaceholderStringTags
 .public UpdateAiTargetPos

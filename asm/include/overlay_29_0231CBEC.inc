@@ -10,11 +10,11 @@
 .public CeilFixedPoint
 .public ChangeDungeonMusic
 .public ChangeShayminForme
-.public CheckTeamMemberIdxVeneer
 .public ClearMonsterActionFields
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EAT_ITEM_EFFECT_IGNORE_LIST
@@ -86,6 +86,7 @@
 .public ov29_022F0780
 .public ov29_022F085C
 .public ov29_022F8830
+.public ov29_022F9C34
 .public ov29_022F9C74
 .public ov29_022FA02C
 .public ov29_022FBA54
@@ -109,7 +110,6 @@
 .public ov29_023529AC
 .public ov29_023529B0
 .public ov29_02353324
-.public ov29_02353538
 .public ov31_023853BC
 .public ov31_023853E0
 .public ov31_02385FE0

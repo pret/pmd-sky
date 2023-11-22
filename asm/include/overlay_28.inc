@@ -2,7 +2,7 @@
 .public GetStringFromFileVeneer
 .public MemAlloc
 .public MemFree
-.public NewDialogBox
+.public NewWindow
 .public ov11_022E6E8C
 .public ov11_022E6EC8
 .public strcpy

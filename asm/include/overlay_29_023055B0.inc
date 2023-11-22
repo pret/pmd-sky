@@ -1,6 +1,7 @@
 #pragma once
 .public AbilityIsActiveVeneer
 .public CalcSpeedStageWrapper
+.public DUNGEON_PTR
 .public EndBlinkerClassStatus
 .public EndBurnClassStatus
 .public EndCringeClassStatus
@@ -43,7 +44,6 @@
 .public ov29_023049A8
 .public ov29_02337D68
 .public ov29_02353318
-.public ov29_02353538
 .public SubstitutePlaceholderStringTags
 .public TryNonLeaderItemPickUp
 .public TryTriggerMonsterHouse

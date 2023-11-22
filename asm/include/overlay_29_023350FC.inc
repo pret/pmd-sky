@@ -1,6 +1,6 @@
 #pragma once
-.public __divsi3
 .public _020AFC70
+.public __divsi3
 .public AbilityIsActiveVeneer
 .public CalcSpeedStageWrapper
 .public CalcStatusDuration
@@ -8,8 +8,11 @@
 .public CeilFixedPoint
 .public Conversion2IsActive
 .public DebugPrint0
+.public DEFAULT_TILE
 .public DIRECTIONS_XY
+.public DisplayCharTextureUi
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonGoesUp
 .public EntityIsValid__023350D8
@@ -25,6 +28,7 @@
 .public GetWeatherColorTable
 .public HasLowHealth
 .public InitRender3dElement64
+.public InitTilesetBuffer
 .public IsBackgroundTileset
 .public IsCurrentFixedRoomBossFight
 .public IsGoldenChamber
@@ -37,7 +41,6 @@
 .public ov10_022C2638
 .public ov10_022C2654
 .public ov10_022C26A0
-.public ov10_022C26BC
 .public ov10_022C2720
 .public ov29_022DE0EC
 .public ov29_022DE608
@@ -58,10 +61,8 @@
 .public ov29_02352B9C
 .public ov29_02352D58
 .public ov29_02352F14
-.public ov29_02353538
 .public ov29_0235371C
 .public ov29_02353720
-.public ov29_02353724
 .public ov29_0237C850
 .public ov29_0237C9B8
 .public ov29_0237CA8C

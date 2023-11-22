@@ -409,10 +409,6 @@ EndBurnClassStatus: ; 0x023061A8
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, #0
 	ldr r4, [r5, #0xb4]
-	arm_func_end EndBurnClassStatus
-
-	arm_func_start ov29_023061CC
-ov29_023061CC: ; 0x023061CC
 	mov r1, r5
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
@@ -454,7 +450,7 @@ _02306238:
 _0230624C: .word 0x00000C9E
 _02306250: .word 0x00000C9C
 _02306254: .word 0x00000C9D
-	arm_func_end ov29_023061CC
+	arm_func_end EndBurnClassStatus
 
 	arm_func_start EndFrozenClassStatus
 EndFrozenClassStatus: ; 0x02306258
@@ -810,7 +806,7 @@ TryRemoveSnatchedMonsterFromDungeonStruct: ; 0x023066D8
 	ldrb r0, [r0, #0xd8]
 	cmp r0, #3
 	ldmneia sp!, {r4, pc}
-	ldr r1, _02306724 ; =ov29_02353538
+	ldr r1, _02306724 ; =DUNGEON_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x19000
@@ -820,7 +816,7 @@ TryRemoveSnatchedMonsterFromDungeonStruct: ; 0x023066D8
 	str r2, [r0, #0x90c]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02306724: .word ov29_02353538
+_02306724: .word DUNGEON_PTR
 	arm_func_end TryRemoveSnatchedMonsterFromDungeonStruct
 
 	arm_func_start EndCurseClassStatus
@@ -880,7 +876,7 @@ _023067D4:
 	mov r1, r0
 	mov r0, r7
 	bl ov29_02304830
-	ldr r1, _023068B0 ; =ov29_02353538
+	ldr r1, _023068B0 ; =DUNGEON_PTR
 	mov r0, #0
 	ldr r1, [r1]
 	cmp r6, #2
@@ -907,7 +903,7 @@ _02306830:
 	mov r0, r7
 	bl LogMessageByIdWithPopupCheckUser
 _02306854:
-	ldr r0, _023068B0 ; =ov29_02353538
+	ldr r0, _023068B0 ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0xe]
@@ -934,7 +930,7 @@ _02306894:
 	.align 2, 0
 _023068A8: .word 0x00000C95
 _023068AC: .word 0x00000C96
-_023068B0: .word ov29_02353538
+_023068B0: .word DUNGEON_PTR
 _023068B4: .word 0x00000CA5
 _023068B8: .word 0x00000CBF
 _023068BC: .word 0x00000CC2
@@ -1240,10 +1236,6 @@ EndMiracleEyeStatus: ; 0x02306C64
 	ldrb r0, [r4, #0xf5]
 	cmp r0, #0
 	beq _02306CB8
-	arm_func_end EndMiracleEyeStatus
-
-	arm_func_start ov29_02306C9C
-ov29_02306C9C: ; 0x02306C9C
 	cmp r0, #1
 	beq _02306CAC
 	cmp r0, #2
@@ -1260,7 +1252,7 @@ _02306CB8:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02306CCC: .word 0x00000CC4
-	arm_func_end ov29_02306C9C
+	arm_func_end EndMiracleEyeStatus
 
 	arm_func_start EndMagnetRiseStatus
 EndMagnetRiseStatus: ; 0x02306CD0
@@ -1306,7 +1298,7 @@ _02306D50: .word 0x00000CC5
 ov29_02306D54: ; 0x02306D54
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, #0
-	ldr r4, _02306DC8 ; =ov29_02353538
+	ldr r4, _02306DC8 ; =DUNGEON_PTR
 	mov sb, r0
 	mov r5, r8
 	mov r6, #1
@@ -1337,7 +1329,7 @@ _02306DB0:
 	blt _02306D70
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_02306DC8: .word ov29_02353538
+_02306DC8: .word DUNGEON_PTR
 	arm_func_end ov29_02306D54
 
 	arm_func_start ov29_02306DCC
@@ -1900,7 +1892,7 @@ _02307574:
 	subs r1, r1, #1
 	strb r0, [r2], #1
 	bne _02307574
-	ldr r1, _023076BC ; =ov29_02353538
+	ldr r1, _023076BC ; =DUNGEON_PTR
 	mov r0, r8
 	ldr r1, [r1]
 	mov r2, #1
@@ -1988,7 +1980,7 @@ _023076B4:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_023076BC: .word ov29_02353538
+_023076BC: .word DUNGEON_PTR
 	arm_func_end ov29_0230737C
 
 	arm_func_start ov29_023076C0
@@ -2047,7 +2039,7 @@ _0230776C:
 	stmia r3, {r0, r1, r2}
 	mov r0, #0xff
 	strb r0, [r7, #0xe8]
-	ldr r2, _023077F8 ; =ov29_02353538
+	ldr r2, _023077F8 ; =DUNGEON_PTR
 	mov r0, #0
 _02307794:
 	ldr r1, [r2]
@@ -2077,7 +2069,7 @@ _023077CC:
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_023077F8: .word ov29_02353538
+_023077F8: .word DUNGEON_PTR
 	arm_func_end ov29_023076C0
 
 	arm_func_start ov29_023077FC
@@ -2522,7 +2514,7 @@ ov29_02307DD0: ; 0x02307DD0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, #0
 _02307DD8:
-	ldr r0, _02307EF4 ; =ov29_02353538
+	ldr r0, _02307EF4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
@@ -2541,7 +2533,7 @@ _02307DD8:
 	mov r7, r8
 	mov r5, r8
 	ldrb sl, [r6, #0x25]
-	ldr fp, _02307EF4 ; =ov29_02353538
+	ldr fp, _02307EF4 ; =DUNGEON_PTR
 	b _02307EBC
 _02307E2C:
 	ldr r0, [fp]
@@ -2601,5 +2593,5 @@ _02307EE4:
 	blt _02307DD8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02307EF4: .word ov29_02353538
+_02307EF4: .word DUNGEON_PTR
 	arm_func_end ov29_02307DD0

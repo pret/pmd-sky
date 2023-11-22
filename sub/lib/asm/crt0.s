@@ -67,9 +67,9 @@ _023800C4:
 	blo _023800B4
 	bl sub_0238018C
 	ldr r1, _02380108 ; =0x0380FFFC
-	ldr r0, _0238010C ; =sub_037FB488
+	ldr r0, _0238010C ; =HardwareInterrupt
 	str r0, [r1]
-	ldr r1, _02380110 ; =sub_037F8000
+	ldr r1, _02380110 ; =NitroSpMain
 	ldr lr, _02380114 ; =0xFFFF0000
 	bx r1
 	.align 2, 0
@@ -83,8 +83,8 @@ _023800FC: .word 0x027FFA80
 _02380100: .word 0x023FE904
 _02380104: .word _start_ModuleParams
 _02380108: .word 0x0380FFFC
-_0238010C: .word sub_037FB488
-_02380110: .word sub_037F8000
+_0238010C: .word HardwareInterrupt
+_02380110: .word NitroSpMain
 _02380114: .word 0xFFFF0000
 	arm_func_end _start
 

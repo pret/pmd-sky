@@ -6,6 +6,7 @@
 .public AnimationDelayOrSomething
 .public CalcSpeedStageWrapper
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonGoesUp
 .public EntityIsValid__022E0354
 .public EntityIsValid__022E1A1C
@@ -21,6 +22,7 @@
 .public GetTileSafe
 .public HandleFaint
 .public HandleSir0Translation
+.public InitAnimationControlWithSet__0201C0CC
 .public IsCurrentTilesetBackground
 .public IsExperienceLocked
 .public IsFloorOver
@@ -56,7 +58,6 @@
 .public ov29_0234C668
 .public ov29_0234C738
 .public ov29_023510E0
-.public ov29_02353538
 .public ov29_02353540
 .public ov29_02353544
 .public ov29_0237C694
@@ -84,7 +85,6 @@
 .public sub_020094C4
 .public sub_0201B43C
 .public sub_0201BFF0
-.public sub_0201C0CC
 .public sub_0201E380
 .public sub_0201F598
 .public sub_0204AE80

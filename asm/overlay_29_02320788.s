@@ -16,7 +16,7 @@ TryAftermathExplosion: ; 0x02320788
 	ldr fp, [sp, #0x3c]
 	mov r5, #0
 	mov r7, #0x15
-	ldr r4, _02320A8C ; =ov29_02353538
+	ldr r4, _02320A8C ; =DUNGEON_PTR
 	b _023207F4
 _023207BC:
 	ldr r0, [r4]
@@ -219,7 +219,7 @@ _02320A84:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02320A8C: .word ov29_02353538
+_02320A8C: .word DUNGEON_PTR
 _02320A90: .word 0x00000BFC
 _02320A94: .word 0x00000BFB
 _02320A98: .word ov29_023529B8
@@ -442,7 +442,7 @@ _02320D84:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02320DA0:
-	ldr r0, _023210EC ; =ov29_02353538
+	ldr r0, _023210EC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -457,7 +457,7 @@ _02320DA0:
 _02320DD0:
 	cmp r7, #1
 	bne _02320E20
-	ldr r0, _023210EC ; =ov29_02353538
+	ldr r0, _023210EC ; =DUNGEON_PTR
 	ldrsh r1, [r8, #4]
 	ldr r0, [r0]
 	add r0, r0, #0xcc00
@@ -535,7 +535,7 @@ _02320EC8:
 	strh r0, [sp, #2]
 	b _02321008
 _02320EF4:
-	ldr r1, _023210EC ; =ov29_02353538
+	ldr r1, _023210EC ; =DUNGEON_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0
@@ -570,7 +570,7 @@ _02320F60:
 	strh r0, [sp, #2]
 	b _02321008
 _02320F74:
-	ldr r1, _023210EC ; =ov29_02353538
+	ldr r1, _023210EC ; =DUNGEON_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #1
@@ -673,7 +673,7 @@ _023210DC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _023210E8: .word 0x00000E74
-_023210EC: .word ov29_02353538
+_023210EC: .word DUNGEON_PTR
 _023210F0: .word 0x00000E72
 _023210F4: .word 0x00000E73
 _023210F8: .word 0x00000E71
@@ -686,7 +686,7 @@ EnsureCanStandCurrentTile: ; 0x02321104
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r1, r4, #4
-	bl ov29_022FFC9C
+	bl CannotStandOnTile
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
@@ -720,7 +720,7 @@ ov29_02321164: ; 0x02321164
 	mov r5, r0
 	mov r0, r4
 	add r1, r4, #4
-	bl ov29_022FFC9C
+	bl CannotStandOnTile
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -768,7 +768,7 @@ _02321200:
 _02321210:
 	mov r0, r4
 	bl ov29_022F9C74
-	ldr r1, _02321234 ; =ov29_02353538
+	ldr r1, _02321234 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x4000
@@ -776,7 +776,7 @@ _02321210:
 	bl ov29_02305814
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02321234: .word ov29_02353538
+_02321234: .word DUNGEON_PTR
 	arm_func_end ov29_0232119C
 
 	arm_func_start ov29_02321238

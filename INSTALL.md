@@ -1,4 +1,4 @@
-This doc details the steps necessary to build a copy of _Pokémon Mystery Dungeon: Explorers of Sky_ (EN-US) from the sources contained in this repository.
+This doc details the steps necessary to build a copy of _Pokémon Mystery Dungeon: Explorers of Sky_ from the sources contained in this repository.
 
 ## 0. Clone the repository
 
@@ -11,7 +11,7 @@ To install the compiler and SDK needed for this project, run `make install_toolc
 If you have issues with the `make` command above, you can also install the compiler and SDK manually.
 
 ### Manual installation
-The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. Join the pret Discord, download the pinned `mwccarm.zip` zip in `#pokediamond`, and extract it to `tools/`. At the end of this operation, you should have the file `tools/mwccarm/2.0/sp2p2/mwccarm.exe`. In the future, a GCC option will be available so MWCC is not required to build; however, it is required for a matching ROM.
+The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. Join the pret Discord, download the pinned `mwccarm.zip` zip in `#pokediamond`, and extract it to `tools/`. At the end of this operation, you should have the file `tools/mwccarm/2.0/sp2p2/mwccarm.exe`.
 
 For Nitro SDK, download the `NitroSDK-4_2-071210-jp.7z` file pinned in the pret Discord in `#pokeheartgold`. Extract and copy the folder `tools/bin` from the Nitro SDK into the folder `tools` in your `pmd-sky` clone. At the end of this operation, you should have the file `tools/bin/makelcf.exe` inside your `pmd-sky` clone. Finally, copy `include/nitro/specfiles/ARM7-TS.lcf.template` into the subdirectory `sub`, and `include/nitro/specfiles/ARM9-TS.lcf.template` and `include/nitro/specfiles/mwldarm.response.template` into the project root.
 
@@ -94,7 +94,7 @@ $ brew install wine-crossover
 
 ## 3. Build ROM
 
-Run `make` to build the ROM. The ROM will be output as `build/pmdsky.us/pmdsky.us.nds`
+Run `make` to build the ROM. This will build the North American ROM at `build/pmdsky.us/pmdsky.us.nds`. If you want the European ROM, run `make eu` to build the ROM at `build/pmdsky.eu/pmdsky.eu.nds`.
 
 There are targets for building and testing changes to individual components without repackaging the ROM. For the ARM9 modules, run `make main`. For the ARM7 module, run `make sub`. For the filesystem, run `make filesystem`.
 

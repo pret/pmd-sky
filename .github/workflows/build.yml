@@ -52,9 +52,15 @@ jobs:
           mv include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
         working-directory: ~
 
-      - name: Build
+      - name: Build North America
         env:
-          GAME_LANGUAGE: ENGLISH
+          GAME_LANGUAGE: NORTH_AMERICA
+          GAME_REVISION: 0
+        run: make -j${nproc}
+
+      - name: Build Europe
+        env:
+          GAME_LANGUAGE: EUROPE
           GAME_REVISION: 0
         run: make -j${nproc}
 
@@ -77,19 +83,20 @@ jobs:
           name: pmdsky-failure-${{ github.run_id }}
           path: failure.tar.gz
           retention-days: 1
-      
+
       - name: Checkout xMAP
         if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@main
         with:
           path: 'xmap'
           ref: 'xmap'
-      
+
       - name: Move xMAP
         if: ${{ github.event_name == 'push' }}
         run: |
           mkdir -p xmap
           cp build/pmdsky.us/*.xMAP xmap/pmdskyus.xMAP
+          cp build/pmdsky.eu/*.xMAP xmap/pmdskyeu.xMAP
           echo "XMAP_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
 
       - name: Update xMAP

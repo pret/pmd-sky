@@ -99,6 +99,7 @@
 .public CeilFixedPoint
 .public DIRECTIONS_XY
 .public DTCM_BSS
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EnableIrqFlag
@@ -142,7 +143,6 @@
 .public ov29_0230175C
 .public ov29_02301F20
 .public ov29_02302200
-.public ShouldMonsterFollowLeader
 .public ov29_023082C4
 .public ov29_0231985C
 .public ov29_0231A460
@@ -152,7 +152,6 @@
 .public ov29_0235171E
 .public ov29_0235177C
 .public ov29_02353530
-.public ov29_02353538
 .public RENDER_3D
 .public Rgb8ToRgb5
 .public SetActionPassTurnOrWalk
@@ -160,6 +159,7 @@
 .public SetActionUseMoveAi
 .public SetIrqFlag
 .public SetMonsterActionFields
+.public ShouldMonsterFollowLeader
 .public ShouldMonsterHeadToStairs
 .public ShouldMonsterRunAwayVariation
 .public sub_0201BD50

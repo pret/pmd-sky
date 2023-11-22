@@ -9,7 +9,7 @@ ov29_023350FC: ; 0x023350FC
 	mov r0, #0
 	bl GetApparentWeather
 	bl GetWeatherColorTable
-	ldr r2, _0233516C ; =ov29_02353538
+	ldr r2, _0233516C ; =DUNGEON_PTR
 	mov r1, #0
 _02335114:
 	ldr r3, [r2]
@@ -35,7 +35,7 @@ _02335114:
 	bl ov29_022DE608
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233516C: .word ov29_02353538
+_0233516C: .word DUNGEON_PTR
 	arm_func_end ov29_023350FC
 
 	arm_func_start TryWeatherFormChange
@@ -251,7 +251,7 @@ ActivateSportCondition: ; 0x0233544C
 	ldr r1, _023354B4 ; =SPORT_CONDITION_TURN_RANGE
 	mov r2, r0
 	bl CalcStatusDuration
-	ldr r1, _023354B8 ; =ov29_02353538
+	ldr r1, _023354B8 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0xc000
 	strb r0, [r1, #0xd5b]
@@ -263,7 +263,7 @@ _02335488:
 	ldr r1, _023354B4 ; =SPORT_CONDITION_TURN_RANGE
 	mov r2, r0
 	bl CalcStatusDuration
-	ldr r1, _023354B8 ; =ov29_02353538
+	ldr r1, _023354B8 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0xc000
 	strb r0, [r1, #0xd5c]
@@ -273,7 +273,7 @@ _02335488:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023354B4: .word SPORT_CONDITION_TURN_RANGE
-_023354B8: .word ov29_02353538
+_023354B8: .word DUNGEON_PTR
 _023354BC: .word 0x00000CDA
 _023354C0: .word 0x00000CDB
 	arm_func_end ActivateSportCondition
@@ -288,7 +288,7 @@ TryActivateWeather: ; 0x023354C4
 	mov r6, r4
 	sub r5, r4, #1
 	bl GetApparentWeather
-	ldr fp, _02335664 ; =ov29_02353538
+	ldr fp, _02335664 ; =DUNGEON_PTR
 	mov r7, r0
 	mov r8, r4
 _023354F0:
@@ -320,13 +320,13 @@ _02335524:
 	addge r0, r1, #0xc000
 	strgeb r5, [r0, #0xd38]
 	bge _02335570
-	ldr r0, _02335664 ; =ov29_02353538
+	ldr r0, _02335664 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r1, [r0, #0xd39]
 	strb r1, [r0, #0xd38]
 _02335570:
-	ldr r0, _02335664 ; =ov29_02353538
+	ldr r0, _02335664 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r1, [r0, #0xd5d]
@@ -342,7 +342,7 @@ _02335570:
 	mov r6, #1
 	bl ov29_02334E70
 _023355AC:
-	ldr r0, _02335664 ; =ov29_02353538
+	ldr r0, _02335664 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r1, [r0, #0xd5a]
@@ -350,7 +350,7 @@ _023355AC:
 	subne r1, r1, #1
 	moveq r1, #9
 	strb r1, [r0, #0xd5a]
-	ldr r0, _02335664 ; =ov29_02353538
+	ldr r0, _02335664 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	add r0, r1, #0xc000
 	ldrb r0, [r0, #0xd5b]
@@ -359,7 +359,7 @@ _023355AC:
 	add r0, r1, #0x5b
 	add r0, r0, #0xcd00
 	bl TickStatusTurnCounter
-	ldr r0, _02335664 ; =ov29_02353538
+	ldr r0, _02335664 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd5b]
@@ -369,7 +369,7 @@ _023355AC:
 	ldr r1, _02335668 ; =0x00000C93
 	bl LogMessageByIdWithPopupCheckUser
 _02335614:
-	ldr r0, _02335664 ; =ov29_02353538
+	ldr r0, _02335664 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	add r0, r1, #0xc000
 	ldrb r0, [r0, #0xd5c]
@@ -378,7 +378,7 @@ _02335614:
 	add r0, r1, #0x15c
 	add r0, r0, #0xcc00
 	bl TickStatusTurnCounter
-	ldr r0, _02335664 ; =ov29_02353538
+	ldr r0, _02335664 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
 	ldrb r0, [r0, #0xd5c]
@@ -391,7 +391,7 @@ _0233565C:
 	mov r0, r6
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02335664: .word ov29_02353538
+_02335664: .word DUNGEON_PTR
 _02335668: .word 0x00000C93
 _0233566C: .word 0x00000C92
 	arm_func_end TryActivateWeather
@@ -427,8 +427,13 @@ LoadTextureUi: ; 0x023356C0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r0, _02335750 ; =ov29_02352B4C
+#ifdef EUROPE
+	ldr r1, [r0, #0xc]
+	ldr r0, [r0, #8]
+#else
 	ldr r1, [r0, #4]
 	ldr r0, [r0]
+#endif
 	str r1, [sp, #4]
 	str r0, [sp]
 	bl GetLanguage
@@ -481,15 +486,29 @@ _02335770: .word ov29_0237CA90
 ov29_02335774: ; 0x02335774
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
+#ifdef EUROPE
+	ldr r0, _023357F4 ; =ov29_02352B4C
+	ldr r1, [r0, #4]
+	ldr r0, [r0]
+	str r1, [sp, #4]
+	str r0, [sp]
+	bl GetLanguage
+	ldr r1, _02336244 ; =0x0235431C
+	mov r0, r0, lsl #1
+	ldrh r2, [r1, r0]
+#else
 	ldr r1, _023357F4 ; =ov29_02352B4C
 	ldr r2, _023357F8 ; =0x000003EF
 	ldr r3, [r1, #0xc]
 	ldr ip, [r1, #8]
 	str r3, [sp, #4]
+#endif
 	add r0, sp, #0
 	mov r1, #4
 	mov r3, #0x300
+#ifndef EUROPE
 	str ip, [sp]
+#endif
 	bl LoadWteFromFileDirectory
 	mov r1, #0
 	ldr r0, [sp, #4]
@@ -514,7 +533,11 @@ _023357C8:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023357F4: .word ov29_02352B4C
+#ifdef EUROPE
+_02336244: .word 0x0235431C
+#else
 _023357F8: .word 0x000003EF
+#endif
 _023357FC: .word ov29_0237CA96
 _02335800: .word ov29_0237CA8C
 	arm_func_end ov29_02335774
@@ -685,9 +708,446 @@ _02335A0C: .word SetBothScreensWindowColorToDefault
 DisplayUi: ; 0x02335A10
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
-	ldr r0, _02335F2C ; =ov29_02353538
+	ldr r0, _02335F2C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x21c
+#ifdef EUROPE
+	add r4, r0, #0x1a000
+	ldr r0, [r4, #0x10]
+	cmp r0, #0
+	moveq r1, #0
+	beq _02336498
+	ldr r1, [r0]
+	cmp r1, #0
+	movne r1, #1
+	moveq r1, #0
+	and r1, r1, #0xff
+_02336498:
+	cmp r1, #0
+	beq _02335F24
+	ldr r1, _02335F30 ; =ov29_0237CA8C
+	ldrb r1, [r1, #0x12]
+	cmp r1, #0
+	bne _02335F24
+	ldr r8, [r0, #0xb4]
+	mov r7, #0
+	ldrsh r3, [r8, #0x12]
+	ldrsh r2, [r8, #0x16]
+	ldr r1, _02335F34 ; =0x000003E7
+	mov sb, r7
+	add sl, r3, r2
+	cmp sl, r1
+	movgt sl, r1
+	ldr r1, _02335F2C ; =DUNGEON_PTR
+	ldrsh r6, [r8, #0x10]
+	ldr r1, [r1]
+	ldrb fp, [r8, #0xa]
+	ldrb r2, [r1, #0x749]
+	ldrsh r1, [r1, #0x1e]
+	add r5, r2, r1
+	bl HasLowHealth
+	cmp r0, #0
+	add r0, r8, #0x100
+	ldrh r1, [r0, #0x46]
+	sub r2, sp, #4
+	movne r7, #1
+	strh r1, [r2]
+	ldrh r0, [r0, #0x48]
+	strh r0, [r2, #2]
+	ldr r0, [r2]
+	bl CeilFixedPoint
+	cmp r0, #0
+	moveq sb, #1
+	cmp r7, #0
+	beq _02336564
+	ldr r0, _02335F38 ; =ov29_0237C850
+	ldr r0, [r0]
+	tst r0, #0x10
+	beq _02336550
+	mov r0, #0
+	mov r1, r0
+	mov r8, #0x20
+	bl SetScreenWindowsColor
+	b _0233656C
+_02336550:
+	mov r0, #1
+	mov r1, #0
+	mov r8, #0x10
+	bl SetScreenWindowsColor
+	b _0233656C
+_02336564:
+	mov r8, #0x10
+	bl SetBothScreensWindowColorToDefault
+_0233656C:
+	cmp sb, #0
+	beq _023365A8_EU
+	ldr r0, _02335F38 ; =ov29_0237C850
+	ldr r0, [r0]
+	ands r0, r0, #0x10
+	movne r8, #0x30
+	cmp r7, #0
+	bne _023365A8_EU
+	cmp r0, #0
+	beq _023365A4_EU
+	mov r0, #3
+	mov r1, #0
+	bl SetScreenWindowsColor
+	b _023365A8_EU
+_023365A4_EU:
+	bl SetBothScreensWindowColorToDefault
+_023365A8_EU:
+	add r0, sp, #4
+	mov r1, #2
+	bl ov29_02335808
+	bl GetLanguage
+	cmp fp, #0x64
+	bne _023365D4
+	cmp r0, #0
+	cmpne r0, #2
+	cmpne r0, #4
+	moveq r7, #0
+	beq _023365D8
+_023365D4:
+	mov r7, #8
+_023365D8:
+	bl IsCurrentFixedRoomBossFight
+	cmp r0, #0
+	addne r0, r7, #0x18
+	movne r0, r0, lsl #0x10
+	movne r7, r0, asr #0x10
+	bne _02336818
+	bl GetLanguage
+	sub r1, r0, #1
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
+	and r1, r1, #0xff
+	cmp r1, #3
+	bhi _02336754
+	cmp r0, #2
+	mov sb, #0
+	bne _02336678
+	ldr r0, _02335F2C ; =DUNGEON_PTR
+	mov sb, #1
+	ldr r0, [r0]
+	ldrb r0, [r0, #0x748]
+	bl DungeonGoesUp
+	cmp r0, #0
+	add r0, sp, #4
+	mov r2, #0
+	mov r1, r7
+	bne _0233665C
+	mov r3, #0x18
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+	b _023366DC
+_0233665C:
+	mov r3, #0x14
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+	b _023366DC
+_02336678:
+	add r0, sp, #4
+	mov r1, r7
+	mov r2, sb
+	mov r3, #0x14
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	ldr r1, _02335F2C ; =DUNGEON_PTR
+	add r2, r7, r0
+	ldr r0, [r1]
+	mov r1, r2, lsl #0x10
+	ldrb r0, [r0, #0x748]
+	mov r7, r1, asr #0x10
+	bl DungeonGoesUp
+	cmp r0, #0
+	movne sb, #1
+	bne _023366DC
+	add r0, sp, #4
+	mov r1, r7
+	mov r2, sb
+	mov r3, #0x18
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+_023366DC:
+	cmp r5, #0xa
+	ldrb r0, [r4, #0x2f]
+	bge _02336710
+	cmp r0, #0
+	moveq r3, #1
+	movne r3, #0
+	mov r1, r5, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r7
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+	b _02336734
+_02336710:
+	cmp r0, #0
+	moveq r3, #1
+	movne r3, #0
+	mov r1, r5, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r7
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+_02336734:
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+	cmp sb, #0
+	addne r0, r7, #8
+	movne r0, r0, lsl #0x10
+	movne r7, r0, asr #0x10
+	b _02336818
+_02336754:
+	ldr r0, _02335F2C ; =DUNGEON_PTR
+	ldr r0, [r0]
+	ldrb r0, [r0, #0x748]
+	bl DungeonGoesUp
+	cmp r0, #0
+	bne _02336790
+	add r0, sp, #4
+	mov r1, r7
+	mov r2, #0
+	mov r3, #0x18
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+_02336790:
+	cmp r5, #0xa
+	ldrb r0, [r4, #0x2f]
+	bge _023367C4
+	cmp r0, #0
+	moveq r3, #1
+	movne r3, #0
+	mov r1, r5, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r7
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+	b _023367E8
+_023367C4:
+	cmp r0, #0
+	moveq r3, #1
+	movne r3, #0
+	mov r1, r5, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r7
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+_023367E8:
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+	add r0, sp, #4
+	mov r1, r7
+	mov r2, #0
+	mov r3, #0x14
+	str r8, [sp]
+	bl DisplayCharTextureUi
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+_02336818:
+	add r0, sp, #4
+	mov r1, r7
+	str r8, [sp]
+	mov r2, #0
+	mov r3, #0x15
+	bl DisplayCharTextureUi
+	ldrb r1, [r4, #0x2f]
+	add r0, r7, r0
+	mov r0, r0, lsl #0x10
+	cmp r1, #0
+	moveq r3, #1
+	mov r7, r0, asr #0x10
+	movne r3, #0
+	mov r1, fp, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r7
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+	mov r5, #0x48
+	add r0, sp, #4
+	mov r1, r5
+	str r8, [sp]
+	mov r2, #0
+	mov r3, #0x16
+	bl DisplayCharTextureUi
+	ldrb r1, [r4, #0x2f]
+	add r0, r0, #0x48
+	mov r0, r0, lsl #0x10
+	cmp r1, #0
+	moveq r3, #1
+	mov r5, r0, asr #0x10
+	movne r3, #0
+	mov r1, r6, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r5
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+	add r0, r5, r0
+	mov r7, r0, lsl #0x10
+	mov r5, r7, asr #0x10
+	add r0, sp, #4
+	mov r1, r5
+	str r8, [sp]
+	mov r2, #0
+	mov r3, #0x17
+	bl DisplayCharTextureUi
+	ldrb r1, [r4, #0x2f]
+	add r0, r0, r7, asr #16
+	mov r0, r0, lsl #0x10
+	cmp r1, #0
+	moveq r3, #1
+	mov r5, r0, asr #0x10
+	movne r3, #0
+	mov r1, sl, lsl #0x10
+	mov r2, r1, asr #0x10
+	mov r0, r5
+	and r3, r3, #0xff
+	mov r1, #0
+	bl DisplayNumberTextureUi
+	ldr r0, _02335F30 ; =ov29_0237CA8C
+	cmp sl, #0
+	ldr r0, [r0, #4]
+	mov r4, #0x90
+	ldr r8, [r0, #4]
+	mov r5, #0x10
+	blt _02335F24
+	add r0, sp, #4
+	bl InitRender3dElement64
+	ldr r0, _02335F30 ; =ov29_0237CA8C
+	mov fp, #5
+	ldrh r3, [r0]
+	mov r0, r6, lsl #0x10
+	mov sb, #0x28
+	mov r2, #0x1000
+	mov r7, r0, asr #0x10
+	ldr r1, _02335F3C ; =_020AFC70
+	str r2, [sp, #0x24]
+	ldr r0, [r1]
+	cmp r7, #0x70
+	strb fp, [sp, #0x40]
+	strb sb, [sp, #0x42]
+	strh r3, [sp, #0x18]
+	ldr r0, [r0, #0xe0]
+	mov r1, #0
+	mov r2, #0x90
+	add r0, r0, #0x400
+	str r0, [sp, #0x28]
+	mov r0, sl, lsl #0x10
+	mov sb, r0, asr #0x10
+	movgt r7, #0x70
+	cmp sb, #0x70
+	movgt sb, #0x70
+	add r0, sb, #0x90
+	mov r0, r0, lsl #0x10
+	mov r3, r0, asr #0x10
+	strh r1, [sp, #6]
+	strh r3, [sp, #8]
+	strh r1, [sp, #0xa]
+	add r0, r5, #1
+	mov r1, r0, lsl #0x10
+	strh r2, [sp, #4]
+	strh r2, [sp, #0xc]
+	ldrsh r2, [r8, #0xce]
+	mov r5, r1, asr #0x10
+	add r0, sp, #4
+	strh r2, [sp, #0xe]
+	strh r3, [sp, #0x10]
+	ldrsh r3, [r8, #0xce]
+	mov r2, #0x10
+	strh r3, [sp, #0x12]
+	ldrsh r3, [r8, #0xc8]
+	strh r3, [sp, #0x1a]
+	ldrsh r1, [r8, #0xca]
+	strh r1, [sp, #0x1c]
+	ldrsh r1, [r8, #0xcc]
+	strh r1, [sp, #0x1e]
+	ldrsh r1, [r8, #0xce]
+	strh r1, [sp, #0x20]
+	strh r2, [sp, #0x2e]
+	bl sub_0201F2A0
+	cmp r6, #0
+	ble _02336A70
+	add r0, r7, #0x90
+	mov r0, r0, lsl #0x10
+	mov r3, #0x90
+	mov r2, r0, asr #0x10
+	mov r1, #0
+	strh r3, [sp, #4]
+	strh r2, [sp, #8]
+	strh r3, [sp, #0xc]
+	strh r1, [sp, #6]
+	strh r1, [sp, #0xa]
+	ldrsh r1, [r8, #0xe6]
+	add r0, sp, #4
+	strh r2, [sp, #0x10]
+	strh r1, [sp, #0xe]
+	ldrsh r1, [r8, #0xe6]
+	strh r1, [sp, #0x12]
+	ldrsh r1, [r8, #0xe0]
+	strh r1, [sp, #0x1a]
+	ldrsh r1, [r8, #0xe2]
+	strh r1, [sp, #0x1c]
+	ldrsh r1, [r8, #0xe4]
+	strh r1, [sp, #0x1e]
+	ldrsh r1, [r8, #0xe6]
+	strh r1, [sp, #0x20]
+	strh r5, [sp, #0x2e]
+	bl sub_0201F2A0
+_02336A70:
+	sub r0, sb, r7
+	mov r0, r0, lsl #0x10
+	mov r1, r0, asr #0x10
+	cmp r1, #0
+	ble _02335F24
+	add r0, r4, r7
+	mov r0, r0, lsl #0x10
+	add r1, r1, r0, asr #16
+	mov r1, r1, lsl #0x10
+	mov r3, r0, asr #0x10
+	mov r0, #0
+	mov r2, r1, asr #0x10
+	strh r3, [sp, #4]
+	strh r0, [sp, #6]
+	strh r0, [sp, #0xa]
+	strh r2, [sp, #8]
+	strh r3, [sp, #0xc]
+	ldrsh r1, [r8, #0xde]
+	add r0, sp, #4
+	strh r2, [sp, #0x10]
+	strh r1, [sp, #0xe]
+	ldrsh r1, [r8, #0xde]
+	strh r1, [sp, #0x12]
+	ldrsh r1, [r8, #0xd8]
+	strh r1, [sp, #0x1a]
+	ldrsh r1, [r8, #0xda]
+	strh r1, [sp, #0x1c]
+	ldrsh r1, [r8, #0xdc]
+	strh r1, [sp, #0x1e]
+	ldrsh r1, [r8, #0xde]
+	strh r1, [sp, #0x20]
+	strh r5, [sp, #0x2e]
+#else
 	add r5, r0, #0x1a000
 	ldr r0, [r5, #0x10]
 	cmp r0, #0
@@ -714,7 +1174,7 @@ _02335A4C:
 	add r4, r3, r2
 	cmp r4, r1
 	movgt r4, r1
-	ldr r1, _02335F2C ; =ov29_02353538
+	ldr r1, _02335F2C ; =DUNGEON_PTR
 	ldrsh r8, [sl, #0x10]
 	ldr r1, [r1]
 	ldrb sb, [sl, #0xa]
@@ -782,7 +1242,7 @@ _02335B5C:
 	movne r0, r0, lsl #0x10
 	movne r6, r0, asr #0x10
 	bne _02335C48
-	ldr r0, _02335F2C ; =ov29_02353538
+	ldr r0, _02335F2C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x748]
 	bl DungeonGoesUp
@@ -1018,12 +1478,13 @@ _02335EA0:
 	ldrsh r1, [sb, #0xde]
 	strh r1, [sp, #0x20]
 	strh r6, [sp, #0x2e]
+#endif
 	bl sub_0201F2A0
 _02335F24:
 	add sp, sp, #0x44
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02335F2C: .word ov29_02353538
+_02335F2C: .word DUNGEON_PTR
 _02335F30: .word ov29_0237CA8C
 _02335F34: .word 0x000003E7
 _02335F38: .word ov29_0237C850
@@ -1154,22 +1615,22 @@ _023360F8: .word ov29_0237CA8C
 	arm_func_start GetTile
 GetTile: ; 0x023360FC
 	cmp r0, #0
-	ldrlt r0, _0233615C ; =ov29_02353724
+	ldrlt r0, _0233615C ; =DEFAULT_TILE
 	ldrlt r0, [r0]
 	bxlt lr
 	cmp r1, #0
-	ldrlt r0, _0233615C ; =ov29_02353724
+	ldrlt r0, _0233615C ; =DEFAULT_TILE
 	ldrlt r0, [r0]
 	bxlt lr
 	cmp r0, #0x38
-	ldrge r0, _0233615C ; =ov29_02353724
+	ldrge r0, _0233615C ; =DEFAULT_TILE
 	ldrge r0, [r0]
 	bxge lr
 	cmp r1, #0x20
-	ldrge r0, _0233615C ; =ov29_02353724
+	ldrge r0, _0233615C ; =DEFAULT_TILE
 	ldrge r0, [r0]
 	bxge lr
-	ldr r3, _02336160 ; =ov29_02353538
+	ldr r3, _02336160 ; =DUNGEON_PTR
 	mov r2, #0xe0
 	ldr r3, [r3]
 	mla r2, r1, r2, r3
@@ -1178,8 +1639,8 @@ GetTile: ; 0x023360FC
 	ldr r0, [r0, #0x2e4]
 	bx lr
 	.align 2, 0
-_0233615C: .word ov29_02353724
-_02336160: .word ov29_02353538
+_0233615C: .word DEFAULT_TILE
+_02336160: .word DUNGEON_PTR
 	arm_func_end GetTile
 
 	arm_func_start GetTileSafe
@@ -1192,7 +1653,7 @@ GetTileSafe: ; 0x02336164
 	cmplt r1, #0x20
 	blt _023361A8
 _02336180:
-	ldr r0, _023361C8 ; =ov29_02353724
+	ldr r0, _023361C8 ; =DEFAULT_TILE
 	ldr lr, _023361CC ; =ov29_0237CAB8
 	ldr r4, [r0]
 	mov ip, lr
@@ -1203,7 +1664,7 @@ _02336180:
 	str r1, [lr]
 	ldmia sp!, {r4, pc}
 _023361A8:
-	ldr r3, _023361D0 ; =ov29_02353538
+	ldr r3, _023361D0 ; =DUNGEON_PTR
 	mov r2, #0xe0
 	ldr r3, [r3]
 	mla r2, r1, r2, r3
@@ -1212,14 +1673,14 @@ _023361A8:
 	ldr r0, [r0, #0x2e4]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_023361C8: .word ov29_02353724
+_023361C8: .word DEFAULT_TILE
 _023361CC: .word ov29_0237CAB8
-_023361D0: .word ov29_02353538
+_023361D0: .word DUNGEON_PTR
 	arm_func_end GetTileSafe
 
 	arm_func_start IsFullFloorFixedRoom
 IsFullFloorFixedRoom: ; 0x023361D4
-	ldr r0, _02336200 ; =ov29_02353538
+	ldr r0, _02336200 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -1232,19 +1693,19 @@ _023361F8:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_02336200: .word ov29_02353538
+_02336200: .word DUNGEON_PTR
 	arm_func_end IsFullFloorFixedRoom
 
 	arm_func_start IsCurrentTilesetBackground
 IsCurrentTilesetBackground: ; 0x02336204
-	ldr r0, _0233621C ; =ov29_02353538
+	ldr r0, _0233621C ; =DUNGEON_PTR
 	ldr ip, _02336220 ; =IsBackgroundTileset
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
 	bx ip
 	.align 2, 0
-_0233621C: .word ov29_02353538
+_0233621C: .word DUNGEON_PTR
 _02336220: .word IsBackgroundTileset
 	arm_func_end IsCurrentTilesetBackground
 
@@ -1254,7 +1715,7 @@ TrySpawnGoldenChamber: ; 0x02336224
 	bl IsGoldenChamber
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r1, _0233625C ; =ov29_02353538
+	ldr r1, _0233625C ; =DUNGEON_PTR
 	mov r3, #0x3c
 	ldr r0, [r1]
 	mov r2, #0x6f
@@ -1265,7 +1726,7 @@ TrySpawnGoldenChamber: ; 0x02336224
 	strb r2, [r0, #0xda]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233625C: .word ov29_02353538
+_0233625C: .word DUNGEON_PTR
 	arm_func_end TrySpawnGoldenChamber
 
 	arm_func_start CountItemsOnFloorForAcuteSniffer
@@ -1301,14 +1762,14 @@ _023362C0:
 	ldrsh r0, [sp, #2]
 	cmp r0, #0x20
 	blt _0233627C
-	ldr r1, _023362E4 ; =ov29_02353538
+	ldr r1, _023362E4 ; =DUNGEON_PTR
 	ldr r0, _023362E8 ; =0x00012AF8
 	ldr r1, [r1]
 	strh r6, [r1, r0]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_023362E4: .word ov29_02353538
+_023362E4: .word DUNGEON_PTR
 _023362E8: .word 0x00012AF8
 	arm_func_end CountItemsOnFloorForAcuteSniffer
 
@@ -1316,7 +1777,7 @@ _023362E8: .word 0x00012AF8
 ov29_023362EC: ; 0x023362EC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov ip, #0
-	ldr r8, _023363BC ; =ov29_02353538
+	ldr r8, _023363BC ; =DUNGEON_PTR
 	mov r2, ip
 	mov r5, #0x14
 	mov r6, #0x460
@@ -1341,7 +1802,7 @@ _02336314:
 	add ip, ip, #1
 	cmp ip, #0x20
 	blt _02336308
-	ldr r1, _023363BC ; =ov29_02353538
+	ldr r1, _023363BC ; =DUNGEON_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
@@ -1353,7 +1814,7 @@ _02336314:
 	add r0, r0, #0x12000
 	strb r2, [r0, #0xaa8]
 	bl ov29_023369F8
-	ldr r1, _023363BC ; =ov29_02353538
+	ldr r1, _023363BC ; =DUNGEON_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
@@ -1369,12 +1830,12 @@ _02336314:
 	strb r2, [r0, #0xb25]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_023363BC: .word ov29_02353538
+_023363BC: .word DUNGEON_PTR
 	arm_func_end ov29_023362EC
 
 	arm_func_start GetStairsSpawnPosition
 GetStairsSpawnPosition: ; 0x023363C0
-	ldr r3, _023363E8 ; =ov29_02353538
+	ldr r3, _023363E8 ; =DUNGEON_PTR
 	ldr r2, [r3]
 	add r2, r2, #0xcc00
 	ldrsh r2, [r2, #0xe4]
@@ -1385,12 +1846,12 @@ GetStairsSpawnPosition: ; 0x023363C0
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_023363E8: .word ov29_02353538
+_023363E8: .word DUNGEON_PTR
 	arm_func_end GetStairsSpawnPosition
 
 	arm_func_start PositionIsOnStairs
 PositionIsOnStairs: ; 0x023363EC
-	ldr r2, _02336424 ; =ov29_02353538
+	ldr r2, _02336424 ; =DUNGEON_PTR
 	mov ip, #0
 	ldr r2, [r2]
 	add r2, r2, #0xcc00
@@ -1405,13 +1866,13 @@ PositionIsOnStairs: ; 0x023363EC
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_02336424: .word ov29_02353538
+_02336424: .word DUNGEON_PTR
 	arm_func_end PositionIsOnStairs
 
 	arm_func_start GetStairsRoom
 GetStairsRoom: ; 0x02336428
 	stmdb sp!, {r3, lr}
-	ldr r0, _0233644C ; =ov29_02353538
+	ldr r0, _0233644C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r1, r0, #0xcc00
 	ldrsh r0, [r1, #0xe4]
@@ -1420,22 +1881,22 @@ GetStairsRoom: ; 0x02336428
 	ldrb r0, [r0, #7]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0233644C: .word ov29_02353538
+_0233644C: .word DUNGEON_PTR
 	arm_func_end GetStairsRoom
 
 	arm_func_start GetDefaultTileTextureId
 GetDefaultTileTextureId: ; 0x02336450
-	ldr r0, _0233645C ; =ov29_02353724
+	ldr r0, _0233645C ; =DEFAULT_TILE
 	ldr r0, [r0, #4]
 	bx lr
 	.align 2, 0
-_0233645C: .word ov29_02353724
+_0233645C: .word DEFAULT_TILE
 	arm_func_end GetDefaultTileTextureId
 
 	arm_func_start ov29_02336460
 ov29_02336460: ; 0x02336460
 	stmdb sp!, {r4, lr}
-	ldr r1, _02336598 ; =ov29_02353538
+	ldr r1, _02336598 ; =DUNGEON_PTR
 	ldr r0, _0233659C ; =ov29_0237CAAC
 	ldr r1, [r1]
 	mov r2, #0
@@ -1446,7 +1907,7 @@ ov29_02336460: ; 0x02336460
 	ldr r1, _023365A0 ; =ov29_0237CAA0
 	mov r0, #0
 	ldr ip, [r1, #0x14]
-	ldr r3, _023365A4 ; =ov29_02353724
+	ldr r3, _023365A4 ; =DEFAULT_TILE
 	mov r2, r0
 	mov r1, #1
 	str ip, [r3, #4]
@@ -1454,14 +1915,14 @@ ov29_02336460: ; 0x02336460
 	mov r1, r4
 	mov r2, #0
 	bl ov10_022C2588
-	ldr r0, _02336598 ; =ov29_02353538
+	ldr r0, _02336598 ; =DUNGEON_PTR
 	mov r1, r4
 	ldr r0, [r0]
 	mov r2, #0
 	add r0, r0, #0x2a8
 	add r0, r0, #0x10000
-	bl ov10_022C26BC
-	ldr r1, _02336598 ; =ov29_02353538
+	bl InitTilesetBuffer
+	ldr r1, _02336598 ; =DUNGEON_PTR
 	ldr r0, _023365A8 ; =0x00012162
 	ldr r2, [r1]
 	mov r1, r4
@@ -1488,7 +1949,7 @@ ov29_02336460: ; 0x02336460
 	strb r0, [r1, #2]
 	mov r0, #3
 	strb r0, [r1, #3]
-	ldr r0, _02336598 ; =ov29_02353538
+	ldr r0, _02336598 ; =DUNGEON_PTR
 	ldr r2, _023365B4 ; =SECONDARY_TERRAIN_TYPES
 	ldr ip, [r0]
 	add r0, ip, #0x4000
@@ -1513,10 +1974,10 @@ ov29_02336460: ; 0x02336460
 	strlsb r1, [r0, #5]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02336598: .word ov29_02353538
+_02336598: .word DUNGEON_PTR
 _0233659C: .word ov29_0237CAAC
 _023365A0: .word ov29_0237CAA0
-_023365A4: .word ov29_02353724
+_023365A4: .word DEFAULT_TILE
 _023365A8: .word 0x00012162
 _023365AC: .word ov29_0237CAA0
 _023365B0: .word ov29_0237C9B8
@@ -1530,20 +1991,20 @@ ov29_023365B8: ; 0x023365B8
 	bl ov10_022C2638
 	ldr r0, _023365E0 ; =ov29_0237CAA0
 	bl ov10_022C26A0
-	ldr r0, _023365E4 ; =ov29_02353724
+	ldr r0, _023365E4 ; =DEFAULT_TILE
 	mov r1, #0
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023365DC: .word ov29_0237CAAC
 _023365E0: .word ov29_0237CAA0
-_023365E4: .word ov29_02353724
+_023365E4: .word DEFAULT_TILE
 	arm_func_end ov29_023365B8
 
 	arm_func_start ov29_023365E8
 ov29_023365E8: ; 0x023365E8
 	stmdb sp!, {r3, lr}
-	ldr r0, _02336648 ; =ov29_02353538
+	ldr r0, _02336648 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd4]
@@ -1554,22 +2015,22 @@ ov29_023365E8: ; 0x023365E8
 	mov r1, r1, lsr #0x10
 	cmp r1, #1
 	ldrls r1, _0233664C ; =ov29_02352B60
-	ldrls r0, _02336650 ; =ov29_02353724
+	ldrls r0, _02336650 ; =DEFAULT_TILE
 	strls r1, [r0]
 	ldmlsia sp!, {r3, pc}
 	bl ov29_022E0378
 	cmp r0, #0
 	ldrne r1, _02336654 ; =ov29_02352B88
-	ldrne r0, _02336650 ; =ov29_02353724
+	ldrne r0, _02336650 ; =DEFAULT_TILE
 	strne r1, [r0]
 	ldreq r1, _02336658 ; =ov29_02352B74
-	ldreq r0, _02336650 ; =ov29_02353724
+	ldreq r0, _02336650 ; =DEFAULT_TILE
 	streq r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02336648: .word ov29_02353538
+_02336648: .word DUNGEON_PTR
 _0233664C: .word ov29_02352B60
-_02336650: .word ov29_02353724
+_02336650: .word DEFAULT_TILE
 _02336654: .word ov29_02352B88
 _02336658: .word ov29_02352B74
 	arm_func_end ov29_023365E8
@@ -1607,7 +2068,7 @@ ov29_02336694: ; 0x02336694
 	cmplt r8, #0x20
 	bge _023369E8
 	bl GetTile
-	ldr r1, _023369F0 ; =ov29_02353538
+	ldr r1, _023369F0 ; =DUNGEON_PTR
 	ldrh r2, [r0]
 	ldr r4, [r1]
 	add r0, r4, #0x4000
@@ -1726,7 +2187,7 @@ _02336828:
 _02336884:
 	cmp r1, #3
 	bne _02336954
-	ldr r1, _023369F0 ; =ov29_02353538
+	ldr r1, _023369F0 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
 	ldrsh r1, [r1, #0xd4]
@@ -1808,7 +2269,7 @@ _0233699C:
 	mov r1, r8
 	movne r4, #0
 	bl GetTileSafe
-	ldr r1, _023369F0 ; =ov29_02353538
+	ldr r1, _023369F0 ; =DUNGEON_PTR
 	add r2, sl, sl, lsl #1
 	ldr r1, [r1]
 	add r1, r1, r2
@@ -1820,13 +2281,13 @@ _023369E8:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023369F0: .word ov29_02353538
+_023369F0: .word DUNGEON_PTR
 _023369F4: .word 0x00012162
 	arm_func_end ov29_02336694
 
 	arm_func_start ov29_023369F8
 ov29_023369F8: ; 0x023369F8
-	ldr r1, _02336A48 ; =ov29_02353538
+	ldr r1, _02336A48 ; =DUNGEON_PTR
 	mov ip, #0
 	mvn r3, #0
 	mov r2, #0xff
@@ -1848,7 +2309,7 @@ _02336A08:
 	blt _02336A08
 	bx lr
 	.align 2, 0
-_02336A48: .word ov29_02353538
+_02336A48: .word DUNGEON_PTR
 	arm_func_end ov29_023369F8
 
 	arm_func_start DetermineAllTilesWalkableNeighbors
@@ -2203,7 +2664,7 @@ _02336F48: .word ov29_02352F14
 UpdateTrapsVisibility: ; 0x02336F4C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
-	ldr r0, _02337108 ; =ov29_02353538
+	ldr r0, _02337108 ; =DUNGEON_PTR
 	ldr sl, [r0]
 	add r1, sl, #0x1a000
 	ldrb r0, [r1, #0x245]
@@ -2316,7 +2777,7 @@ _023370B8:
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02337108: .word ov29_02353538
+_02337108: .word DUNGEON_PTR
 _0233710C: .word 0x0001A224
 _02337110: .word ov29_02352B9C
 _02337114: .word ov29_02352D58
@@ -2327,7 +2788,7 @@ _02337118: .word 0x0001A226
 ov29_0233711C: ; 0x0233711C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x1c
-	ldr r2, _02337294 ; =ov29_02353538
+	ldr r2, _02337294 ; =DUNGEON_PTR
 	mov r4, r1
 	ldr sl, [r2]
 	mov r5, r0
@@ -2422,7 +2883,7 @@ _0233726C:
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02337294: .word ov29_02353538
+_02337294: .word DUNGEON_PTR
 _02337298: .word 0x0001A224
 _0233729C: .word ov29_02352B9C
 _023372A0: .word ov29_02352D58
@@ -2432,7 +2893,7 @@ _023372A0: .word ov29_02352D58
 ov29_023372A4: ; 0x023372A4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x1c
-	ldr r2, _02337418 ; =ov29_02353538
+	ldr r2, _02337418 ; =DUNGEON_PTR
 	mov r4, r1
 	ldr sl, [r2]
 	mov r5, r0
@@ -2526,7 +2987,7 @@ _023373F0:
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02337418: .word ov29_02353538
+_02337418: .word DUNGEON_PTR
 _0233741C: .word 0x0001A224
 _02337420: .word ov29_02352B9C
 _02337424: .word ov29_02352D58
@@ -2536,7 +2997,7 @@ _02337424: .word ov29_02352D58
 DrawTileGrid: ; 0x02337428
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
-	ldr r5, _02337780 ; =ov29_02353538
+	ldr r5, _02337780 ; =DUNGEON_PTR
 	str r2, [sp, #4]
 	mov r4, r0
 	mov r7, r1
@@ -2544,7 +3005,7 @@ DrawTileGrid: ; 0x02337428
 	ldr r5, [r5]
 	bl GetLeader
 	ldr r1, _02337784 ; =0x0001A224
-	ldr r2, _02337780 ; =ov29_02353538
+	ldr r2, _02337780 ; =DUNGEON_PTR
 	ldrsh r8, [r5, r1]
 	ldr r1, [r2]
 	ldr r2, _02337788 ; =DIRECTIONS_XY
@@ -2766,7 +3227,7 @@ _02337730:
 	add sp, sp, #0x44
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02337780: .word ov29_02353538
+_02337780: .word DUNGEON_PTR
 _02337784: .word 0x0001A224
 _02337788: .word DIRECTIONS_XY
 _0233778C: .word ov29_02352B9C
@@ -2803,7 +3264,7 @@ _023377BC:
 	mov r0, #0
 	mov r1, r0
 	bl sub_02051E60
-	ldr r0, _02337818 ; =ov29_02353538
+	ldr r0, _02337818 ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
@@ -2811,7 +3272,7 @@ _023377BC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02337818: .word ov29_02353538
+_02337818: .word DUNGEON_PTR
 	arm_func_end HideTileGrid
 
 	arm_func_start ov29_0233781C
@@ -2841,7 +3302,7 @@ ov29_0233785C: ; 0x0233785C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r1, _02337A34 ; =0x0000270F
 	mov r3, #0
-	ldr r6, _02337A38 ; =ov29_02353538
+	ldr r6, _02337A38 ; =DUNGEON_PTR
 	mov sb, r3
 	rsb r0, r1, #0
 	mov r4, #0x1c
@@ -2879,7 +3340,7 @@ _023378EC:
 	add r5, sl, #1
 	mov r0, sl, lsl #0x10
 	mov r1, r5, lsl #0x10
-	ldr fp, _02337A38 ; =ov29_02353538
+	ldr fp, _02337A38 ; =DUNGEON_PTR
 	mov r8, #0
 	mov r6, r0, asr #0x10
 	mov r4, r1, asr #0x10
@@ -2921,7 +3382,7 @@ _0233797C:
 	cmp sl, #0x20
 	blt _023378EC
 	mov r2, #0x18
-	ldr r7, _02337A38 ; =ov29_02353538
+	ldr r7, _02337A38 ; =DUNGEON_PTR
 	mov r1, #0
 	mov r3, r2
 	mov r4, r2
@@ -2956,7 +3417,7 @@ _02337A10:
 	add r1, r1, #1
 	cmp r1, #0x20
 	blt _023379B0
-	ldr r0, _02337A38 ; =ov29_02353538
+	ldr r0, _02337A38 ; =DUNGEON_PTR
 	add r1, sb, #1
 	ldr r0, [r0]
 	add r0, r0, #0xe000
@@ -2964,7 +3425,7 @@ _02337A10:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02337A34: .word 0x0000270F
-_02337A38: .word ov29_02353538
+_02337A38: .word DUNGEON_PTR
 	arm_func_end ov29_0233785C
 
 	arm_func_start DiscoverMinimap
@@ -2976,7 +3437,7 @@ DiscoverMinimap: ; 0x02337A3C
 	bl GetTile
 	ldrb r4, [r0, #7]
 	bl GetVisibilityRange
-	ldr r1, _02337B28 ; =ov29_02353538
+	ldr r1, _02337B28 ; =DUNGEON_PTR
 	ldr r3, [r1]
 	add r1, r3, #0x1a000
 	ldrb r2, [r1, #0x23e]
@@ -3035,7 +3496,7 @@ _02337B1C:
 	ble _02337AE0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02337B28: .word ov29_02353538
+_02337B28: .word DUNGEON_PTR
 	arm_func_end DiscoverMinimap
 
 	arm_func_start PositionHasItem
@@ -3044,10 +3505,6 @@ PositionHasItem: ; 0x02337B2C
 	mov r1, r0
 	ldrsh r0, [r1]
 	ldrsh r1, [r1, #2]
-	arm_func_end PositionHasItem
-
-	arm_func_start ov29_02337B3C
-ov29_02337B3C: ; 0x02337B3C
 	bl GetTile
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
@@ -3059,7 +3516,7 @@ ov29_02337B3C: ; 0x02337B3C
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02337B3C
+	arm_func_end PositionHasItem
 
 	arm_func_start PositionHasMonster
 PositionHasMonster: ; 0x02337B68
@@ -3082,10 +3539,6 @@ _02337B94:
 	arm_func_start TrySmashWall
 TrySmashWall: ; 0x02337B9C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	arm_func_end TrySmashWall
-
-	arm_func_start ov29_02337BA0
-ov29_02337BA0: ; 0x02337BA0
 	mov r8, r0
 	ldrsh r0, [r8]
 	ldrsh r1, [r8, #2]
@@ -3134,11 +3587,7 @@ _02337BF8:
 _02337C4C:
 	cmp r5, #0
 	beq _02337C9C
-	arm_func_end ov29_02337BA0
-
-	arm_func_start ov29_02337C54
-ov29_02337C54: ; 0x02337C54
-	ldr r4, _02337CA4 ; =ov29_02353538
+	ldr r4, _02337CA4 ; =DUNGEON_PTR
 	mov r6, #0
 _02337C5C:
 	ldr r0, [r4]
@@ -3162,5 +3611,5 @@ _02337C9C:
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02337CA4: .word ov29_02353538
-	arm_func_end ov29_02337C54
+_02337CA4: .word DUNGEON_PTR
+	arm_func_end TrySmashWall

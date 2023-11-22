@@ -21,6 +21,7 @@
 .public DealDamage
 .public DealDamageWithType
 .public DIG_DAMAGE_MULTIPLIER
+.public DUNGEON_PTR
 .public DungeonRandOutcomeUserAction
 .public DungeonRandOutcomeUserTargetInteraction
 .public DungeonRandRange
@@ -78,7 +79,6 @@
 .public ov29_0234B034
 .public ov29_0234BA54
 .public ov29_02352AD8
-.public ov29_02353538
 .public ov29_0237CA69
 .public ov29_0237CA6A
 .public ov29_0237CA6D

@@ -1,6 +1,6 @@
 #pragma once
-.public __divsi3
 .public _020A1878
+.public __divsi3
 .public abs
 .public AdvanceFrame
 .public ApplyItemEffect
@@ -8,6 +8,7 @@
 .public CheckAcceptedMissionByTypeAndDungeon
 .public DisplayMessage
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__0234987C
 .public ExclusiveItemEffectFlagTest
@@ -33,7 +34,6 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
-.public ov10_022C46B0
 .public ov10_022C48E4
 .public ov29_022E09E8
 .public ov29_022E0DD8
@@ -65,7 +65,6 @@
 .public ov29_0234B4CC
 .public ov29_0234C668
 .public ov29_0234C738
-.public ov29_02353538
 .public ov29_023537C4
 .public ov29_0237C694
 .public SpawnDroppedItem
@@ -82,6 +81,7 @@
 .public sub_02051DFC
 .public sub_02051EB8
 .public SubstitutePlaceholderStringTags
+.public THROWN_ITEM_HIT_CHANCE
 .public TrySpawnGoldenChamber
 .public TwoTurnMoveForcedMiss
 .public YesNoMenu

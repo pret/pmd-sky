@@ -2,7 +2,9 @@
 .public AdvanceFrame
 .public Arm9LoadUnkFieldNa0x2029EC8
 .public Arm9StoreUnkFieldNa0x2029ED8
-.public CheckTeamMemberIdxVeneer
+.public CheckTeamMemberIdx
+.public CreateAdvancedTextBox2
+.public CreateTextBox1
 .public DisplayMessage
 .public DungeonGoesUp
 .public DungeonRequestsDoneWrapper
@@ -56,6 +58,7 @@
 .public ov29_022EA370
 .public ov29_022EA428
 .public ov29_022F0C98
+.public ov29_022F9C34
 .public ov29_02300818
 .public ov29_0230D704
 .public ov29_0230D70C
@@ -95,10 +98,8 @@
 .public sub_0202AB40
 .public sub_0202AB80
 .public sub_0202ABB0
-.public sub_0202F8C4
 .public sub_0202F8FC
 .public sub_0202F954
-.public sub_020305E4
 .public sub_0203083C
 .public sub_020308A0
 .public sub_020348E4
@@ -109,7 +110,6 @@
 .public sub_0204E114
 .public sub_0204F10C
 .public sub_0204F1B4
-.public sub_02056264
 .public sub_0205B77C
 .public sub_02061DC8
 .public sub_02061F44

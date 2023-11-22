@@ -7,6 +7,1087 @@
 ApplyDamage: ; 0x02308FE0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x64
+#ifdef EUROPE
+	ldr r8, [sp, #0x8c]
+	mov r4, #0
+	mov r5, r2
+	mov sb, r1
+	strb r4, [r5, #0x10]
+	ldr r1, [sb]
+	mov sl, r0
+	str r3, [sp, #0x10]
+	mov fp, r4
+	str r4, [sp, #0x14]
+	cmp r1, #1
+	bne _02309A58
+	ldr r0, [sb, #0xb4]
+	ldrb r0, [r0, #0xbc]
+	bl IsSecretBazaarNpcBehavior
+	cmp r0, #0
+	beq _02309A68
+_02309A58:
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_02309A68:
+	ldr r7, [sb, #0xb4]
+	ldrb r0, [r7, #6]
+	cmp r0, #0
+	beq _02309A88
+	ldrb r0, [r7, #8]
+	cmp r0, #0
+	moveq r0, #1
+	streq r0, [sp, #0x14]
+_02309A88:
+	mov r0, sl
+	mov r1, sb
+	bl ov29_02307BDC
+	mov r0, sl
+	mov r1, sb
+	bl UpdateShopkeeperModeAfterAttack
+	ldr r0, [sl]
+	cmp r0, #1
+	ldreq r0, [sl, #0xb4]
+	ldreqb r0, [r0, #0xec]
+	cmpeq r0, #3
+	ldreqb r0, [r5, #0xf]
+	cmpeq r0, #0
+	ldreq r0, _02309F98 ; =SET_DAMAGE_STATUS_DAMAGE
+	ldreqsh r0, [r0]
+	streq r0, [r5]
+	ldr r0, [sl]
+	cmp r0, #1
+	bne _02309B60
+	mov r0, sl
+	mov r1, sb
+	mov r2, #0x73
+	mov r3, #1
+	bl DefenderAbilityIsActive__0230A940
+	cmp r0, #0
+	ldrne r0, [r5, #4]
+	cmpne r0, #4
+	cmpne r0, #0xe
+	cmpne r0, #0
+	cmpne r0, #0x17
+	beq _02309BD0
+	mov r1, sb
+	mov r0, #1
+	mov r2, #0
+	bl SubstitutePlaceholderStringTags
+	ldr r2, _02309F9C ; =0x00000C46
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+	mov r0, sl
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _02309B50
+	mov r0, sb
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _02309B50
+	mov r0, sl
+	mov r1, sb
+	bl ov29_022E576C
+_02309B50:
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_02309B60:
+	cmp r0, #6
+	bne _02309BD0
+	mov r0, sb
+	mov r1, #0x73
+	bl AbilityIsActiveVeneer
+	cmp r0, #0
+	ldrne r0, [r5, #4]
+	cmpne r0, #4
+	cmpne r0, #0xe
+	cmpne r0, #0x17
+	beq _02309BD0
+	mov r1, sb
+	mov r0, #1
+	mov r2, #0
+	bl SubstitutePlaceholderStringTags
+	ldr r1, _02309F9C ; =0x00000C46
+	mov r0, sb
+	bl LogMessageByIdWithPopupCheckUser
+	mov r0, sb
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _02309BC0
+	mov r0, sb
+	bl ov29_022E57A0
+_02309BC0:
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_02309BD0:
+	ldr r0, _02309FA0 ; =0x0000024D
+	cmp r8, r0
+	beq _02309C50
+	ldr r0, [sl]
+	cmp r0, #1
+	bne _02309C50
+	mov r0, sl
+	mov r1, sb
+	mov r2, #0xd
+	mov r3, #1
+	bl DefenderAbilityIsActive__0230A940
+	cmp r0, #0
+	beq _02309C50
+	ldr r1, [r5]
+	ldr r0, _02309FA4 ; =0x0000270F
+	cmp r1, r0
+	bne _02309C50
+	mov r1, sb
+	mov r0, #1
+	mov r2, #0
+	bl SubstitutePlaceholderStringTags
+	mov r0, sl
+	mov r1, sb
+	mov r2, #0xc40
+	bl LogMessageByIdWithPopupCheckUserTarget
+	mov r0, sl
+	mov r1, sb
+	bl ov29_022E576C
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_02309C50:
+	ldrb r0, [r7, #0xc4]
+	cmp r0, #1
+	bne _02309CA0
+	cmp r8, #0x250
+	beq _02309C90
+	mov r1, sb
+	mov r0, #1
+	mov r2, #0
+	bl SubstitutePlaceholderStringTags
+	ldr r2, _02309FA8 ; =0x00000C41
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+	mov r0, sl
+	mov r1, sb
+	bl ov29_022E576C
+_02309C90:
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_02309CA0:
+	ldrb r0, [r7, #0xbd]
+	cmp r0, #1
+	cmpne r0, #5
+	cmpne r0, #3
+	bne _02309CC8
+	ldrb r0, [r7, #0xbe]
+	cmp r0, #0x7f
+	bne _02309CC8
+	mov r0, sb
+	bl ov29_02307C48
+_02309CC8:
+	ldr r0, [sl]
+	cmp r0, #1
+	bne _02309E04
+	mov r0, sl
+	mov r1, sb
+	mov r2, #0x23
+	mov r3, #1
+	bl DefenderAbilityIsActive__0230A940
+	cmp r0, #0
+	beq _02309D24
+	ldrb r0, [r5, #0xc]
+	cmp r0, #5
+	bne _02309D24
+	mov r3, #0
+	str r3, [sp]
+	ldr r2, [r5]
+	mov r0, sl
+	mov r1, sb
+	bl TryIncreaseHp
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_02309D24:
+	mov r0, sl
+	mov r1, sb
+	mov r2, #0x24
+	mov r3, #1
+	bl DefenderAbilityIsActive__0230A940
+	cmp r0, #0
+	beq _02309D74
+	ldrb r0, [r5, #0xc]
+	cmp r0, #3
+	bne _02309D74
+	mov r3, #0
+	str r3, [sp]
+	ldr r2, [r5]
+	mov r0, sl
+	mov r1, sb
+	bl TryIncreaseHp
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_02309D74:
+	mov r0, sl
+	mov r1, sb
+	mov r2, #0x55
+	mov r3, #1
+	bl DefenderAbilityIsActive__0230A940
+	cmp r0, #0
+	beq _02309DC4
+	ldrb r0, [r5, #0xc]
+	cmp r0, #3
+	bne _02309DC4
+	mov r3, #0
+	str r3, [sp]
+	ldr r2, [r5]
+	mov r0, sl
+	mov r1, sb
+	bl TryIncreaseHp
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_02309DC4:
+	mov r0, sl
+	mov r1, sb
+	mov r2, #0x66
+	mov r3, #1
+	bl DefenderAbilityIsActive__0230A940
+	cmp r0, #0
+	beq _02309E04
+	ldrb r0, [r5, #0xc]
+	cmp r0, #5
+	bne _02309E04
+	mov r0, sb
+	bl ActivateMotorDrive
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_02309E04:
+	ldr r6, _02309FAC ; =TYPE_DAMAGE_NEGATING_EXCLUSIVE_ITEM_EFFECTS
+	b _02309E78
+_02309E0C:
+	ldrb r0, [r5, #0xc]
+	cmp r1, r0
+	bne _02309E74
+	ldr r1, [r6, #4]
+	mov r0, sl
+	and r2, r1, #0xff
+	str r2, [sp]
+	mov r2, #0
+	mov r1, sb
+	mov r3, r2
+	bl ExclusiveItemEffectIsActiveWithLogging
+	cmp r0, #0
+	beq _02309E74
+	ldr r0, [r6, #4]
+	cmp r0, #0x71
+	mov r0, #1
+	strleb r0, [r5, #0x10]
+	ble _02309E6C
+	str r0, [sp]
+	ldr r2, [r5]
+	mov r0, sl
+	mov r1, sb
+	mov r3, #0
+	bl TryIncreaseHp
+_02309E6C:
+	mov r0, #0
+	b _02309E88
+_02309E74:
+	add r6, r6, #8
+_02309E78:
+	ldrb r1, [r6]
+	cmp r1, #0x12
+	bne _02309E0C
+	mov r0, #1
+_02309E88:
+	cmp r0, #0
+	bne _02309F04
+	ldrb r0, [r5, #0x10]
+	cmp r0, #0
+	beq _02309EF4
+	ldr r0, [sl]
+	cmp r0, #1
+	bne _02309ED8
+	mov r0, sl
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _02309EF4
+	mov r0, sb
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _02309EF4
+	mov r0, sl
+	mov r1, sb
+	bl ov29_022FB98C
+	b _02309EF4
+_02309ED8:
+	mov r0, sb
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _02309EF4
+	mov r0, sl
+	mov r1, sb
+	bl ov29_022FB98C
+_02309EF4:
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_02309F04:
+	ldr r0, [r5]
+	cmp r0, #0
+	ble _02309F4C
+	mov r0, sb
+	mov r1, #0x51
+	bl ExclusiveItemEffectIsActive__0230A9B8
+	cmp r0, #0
+	beq _02309F4C
+	ldr r0, _02309FB0 ; =ov10_022C45C4
+	ldrsh r0, [r0]
+	bl DungeonRandOutcome__022EAB20
+	cmp r0, #0
+	beq _02309F4C
+	mov r0, sb
+	mov r1, sb
+	mov r2, #1
+	mov r3, #0
+	bl RestoreRandomMovePP
+_02309F4C:
+	ldrb r0, [r7, #0x15c]
+	cmp r0, #0
+	bne _02309FCC_EU
+	ldrb r0, [r5, #0xe]
+	cmp r0, #0
+	beq _02309F74
+	ldr r2, _02309FB4 ; =0x00000C42
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+_02309F74:
+	ldr r0, [r5, #8]
+	cmp r0, #0
+	beq _02309F94
+	cmp r0, #1
+	beq _02309FA8_EU
+	cmp r0, #3
+	beq _02309FBC_EU
+	b _02309FCC_EU
+_02309F94:
+	ldr r2, _02309FB8 ; =0x00000C43
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+	b _02309FCC_EU
+_02309FA8_EU:
+	ldr r2, _02309FBC ; =0x00000C44
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+	b _02309FCC_EU
+_02309FBC_EU:
+	ldr r2, _02309FC0 ; =0x00000C45
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+_02309FCC_EU:
+	mov r0, #0
+	mov r1, sl
+	mov r2, r0
+	bl SubstitutePlaceholderStringTags
+	mov r1, sb
+	mov r0, #1
+	mov r2, #0
+	bl SubstitutePlaceholderStringTags
+	ldr r1, [r5]
+	cmp r1, #0
+	bne _0230A07C
+	mov r0, sl
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _0230A044
+	mov r0, sb
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _0230A044
+	ldrb r0, [r7, #0x15c]
+	cmp r0, #0
+	bne _0230A034
+	ldr r2, _02309FC4 ; =0x00000C47
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+_0230A034:
+	mov r0, sl
+	mov r1, sb
+	bl ov29_022E576C
+	b _0230A06C
+_0230A044:
+	ldrb r0, [r7, #0x15c]
+	cmp r0, #0
+	bne _0230A060
+	ldr r2, _02309FC4 ; =0x00000C47
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+_0230A060:
+	mov r0, #0x1e
+	mov r1, #0x18
+	bl ov29_022EA370
+_0230A06C:
+	mov r0, #1
+	strb r0, [r5, #0x10]
+	mov r0, #0
+	b _0230A918
+_0230A07C:
+	ldr r0, _02309FA4 ; =0x0000270F
+	cmp r1, r0
+	bne _0230A16C
+	ldr r0, [sp, #0x90]
+	cmp r0, #0
+	beq _0230A144
+	mov r0, sb
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _0230A144
+	mov r0, sb
+	bl GetTileAtEntity
+	mov r2, #0
+	mov r1, #1
+	str r2, [sp]
+	str r1, [sp, #4]
+	add r1, r1, #0x2b4
+	str r2, [sp, #8]
+	str r2, [sp, #0xc]
+	mov fp, r0
+	mov r0, sb
+	mov r3, #3
+	bl PlayEffectAnimationEntity
+	mov r0, r0, lsl #0x10
+	mov r6, r0, asr #0x10
+	mvn r1, #0
+	cmp r6, r1
+	ldr r0, _02309FC8 ; =ov29_023535D4
+	strh r1, [r0]
+	beq _0230A144
+	b _0230A100
+_0230A0F8:
+	mov r0, #0x18
+	bl AdvanceFrame
+_0230A100:
+	mov r0, r6
+	bl ov10_022BF964
+	cmp r0, #0
+	bne _0230A0F8
+	mov r0, r6
+	bl ov10_022BDE50
+	mov r2, #0
+	str r2, [sp]
+	mov r0, #1
+	stmib sp, {r0, r2}
+	ldr r1, _02309FCC ; =0x000002B6
+	mov r0, sb
+	mov r3, #3
+	str r2, [sp, #0xc]
+	bl PlayEffectAnimationEntity
+	ldr r1, _02309FC8 ; =ov29_023535D4
+	strh r0, [r1]
+_0230A144:
+	ldrb r0, [r7, #0x15c]
+	cmp r0, #0
+	bne _0230A160
+	ldr r2, _02309FD0 ; =0x00000C48
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+_0230A160:
+	ldr r0, _02309FD4 ; =0x000003E7
+	str r0, [r7, #0xb8]
+	b _0230A234
+_0230A16C:
+	mov r0, #0
+	bl ov29_0234B09C
+	ldr r1, [r5, #4]
+	ldr r2, [r7, #0xb8]
+	cmp r1, #0x1b
+	ldrlt r0, _02309FD8 ; =DAMAGE_STRING_IDS
+	movge r6, #0
+	movlt r1, r1, lsl #1
+	ldrlth r6, [r0, r1]
+	ldr r1, [r5]
+	ldr r0, _02309FD4 ; =0x000003E7
+	add r1, r2, r1
+	str r1, [r7, #0xb8]
+	cmp r1, r0
+	strgt r0, [r7, #0xb8]
+	mov r0, sb
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _0230A210
+	ldr r0, [r5, #4]
+	cmp r0, #0xe
+	cmpne r0, #0x17
+	ldrne r0, _02309FDC ; =0x0000025F
+	cmpne r8, r0
+	beq _0230A1E8
+	ldr r0, [r5]
+	mov r2, #1
+	mov r1, sb
+	rsb r0, r0, #0
+	sub r3, r2, #2
+	bl ov29_022EA718
+_0230A1E8:
+	ldrb r0, [r7, #0x15c]
+	cmp r0, #0
+	bne _0230A234
+	cmp r6, #0
+	beq _0230A234
+	mov r0, sl
+	mov r1, sb
+	mov r2, r6
+	bl LogMessageByIdWithPopupCheckUserTarget
+	b _0230A234
+_0230A210:
+	ldrb r0, [r7, #0x15c]
+	cmp r0, #0
+	bne _0230A234
+	cmp r6, #0
+	beq _0230A234
+	mov r0, sl
+	mov r1, sb
+	mov r2, r6
+	bl LogMessageByIdWithPopupCheckUserTarget
+_0230A234:
+	ldr r0, [r5, #4]
+	cmp r0, #0xe
+	bne _0230A24C
+	ldrsh r0, [r7, #0x10]
+	cmp r0, #1
+	bgt _0230A348
+_0230A24C:
+	cmp fp, #0
+	bne _0230A348
+	mov r0, sb
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _0230A348
+	ldrsh r1, [sl, #4]
+	ldrsh r0, [sb, #4]
+	cmp r1, r0
+	ldreqsh r1, [sl, #6]
+	ldreqsh r0, [sb, #6]
+	cmpeq r1, r0
+	beq _0230A318
+	ldr r0, [sl]
+	cmp r0, #1
+	bne _0230A318
+	ldrb r0, [r7, #7]
+	mov r6, #0
+	cmp r0, #0
+	beq _0230A2CC
+	bl sub_0204AF00
+	cmp r0, #0
+	beq _0230A2CC
+	mov r0, sb
+	bl ov29_022F9AF4
+	cmp r0, #0
+	bne _0230A2CC
+	mov r0, sb
+	mov r1, sl
+	bl CanSeeTarget
+	cmp r0, #0
+	movne r6, #1
+_0230A2CC:
+	ldrb r0, [r7, #0xf1]
+	cmp r0, #2
+	beq _0230A2EC
+	mov r0, sb
+	mov r1, #1
+	bl IsBlinded
+	cmp r0, #0
+	beq _0230A2F0
+_0230A2EC:
+	mov r6, #0
+_0230A2F0:
+	cmp r6, #0
+	beq _0230A310
+	add r0, sb, #4
+	add r1, sl, #4
+	ldr r6, [sb, #0xb4]
+	bl GetDirectionTowardsPosition
+	and r0, r0, #7
+	strb r0, [r6, #0x4c]
+_0230A310:
+	mov r0, sb
+	bl UpdateAiTargetPos
+_0230A318:
+	ldr r0, _02309FDC ; =0x0000025F
+	cmp r8, r0
+	beq _0230A348
+	ldr r1, [sb, #0xb4]
+	mov r0, sb
+	ldrb r2, [r1, #0x4c]
+	mov r1, #6
+	bl ov29_023049A8
+	mov r0, sb
+	mov r1, r5
+	bl ov29_022E5478
+	mov r4, #1
+_0230A348:
+	ldrb r0, [r7, #6]
+	cmp r0, #0
+	beq _0230A388
+	ldr r0, [r5]
+	cmp r0, #0
+	ble _0230A388
+	ldr r0, [sl]
+	cmp r0, #1
+	ldreq r0, [sl, #0xb4]
+	ldreqb r0, [r0, #6]
+	cmpeq r0, #0
+	bne _0230A388
+	ldrsh r0, [r7, #2]
+	bl SetMonsterFlag2
+	ldrsh r0, [r7, #2]
+	bl SetPokemonBattled
+_0230A388:
+	ldrsh r6, [r7, #0x10]
+	ldr r0, [r5]
+	cmp r6, r0
+	subgt r0, r6, r0
+	movle r0, #0
+	strh r0, [r7, #0x10]
+	ldrb r0, [r7, #0xd5]
+	cmp r0, #9
+	bne _0230A3D4
+	ldrsh r0, [r7, #0x10]
+	cmp r0, #0
+	bne _0230A454
+	ldr r2, _02309FE0 ; =0x00000C49
+	mov r3, #1
+	mov r0, sl
+	mov r1, sb
+	strh r3, [r7, #0x10]
+	bl LogMessageByIdWithPopupCheckUserTarget
+	b _0230A454
+_0230A3D4:
+	ldr r0, [sp, #0x10]
+	cmp r0, #1
+	bne _0230A408
+	ldrsh r0, [r7, #0x10]
+	cmp r0, #0
+	bne _0230A454
+	ldr r2, _02309FE4 ; =0x00000C4A
+	mov r3, #1
+	mov r0, sl
+	mov r1, sb
+	strh r3, [r7, #0x10]
+	bl LogMessageByIdWithPopupCheckUserTarget
+	b _0230A454
+_0230A408:
+	mov r0, sb
+	mov r1, #0x22
+	bl ExclusiveItemEffectIsActive__0230A9B8
+	cmp r0, #0
+	beq _0230A454
+	ldr r0, _02309FE8 ; =ov10_022C4834
+	ldr r0, [r0]
+	bl DungeonRandOutcome__022EAB20
+	cmp r0, #0
+	beq _0230A454
+	ldrsh r0, [r7, #0x10]
+	cmp r0, #0
+	bne _0230A454
+	ldr r2, _02309FE0 ; =0x00000C49
+	mov r3, #1
+	mov r0, sl
+	mov r1, sb
+	strh r3, [r7, #0x10]
+	bl LogMessageByIdWithPopupCheckUserTarget
+_0230A454:
+	bl ov29_022E81F8
+	ldrsh r0, [r7, #0x10]
+	subs r6, r6, r0
+	movmi r6, #0
+	cmp r4, #0
+	cmpeq fp, #0
+	beq _0230A47C
+	mov r0, #0xa
+	mov r1, #0x18
+	bl ov29_022EA370
+_0230A47C:
+	mov r0, sb
+	bl UpdateStatusIconFlags
+	ldrsh r0, [r7, #0x10]
+	cmp r0, #0
+	beq _0230A54C
+	cmp r4, #0
+	beq _0230A4A4
+	mov r0, sb
+	mov r1, #8
+	bl ov29_02304A48
+_0230A4A4:
+	ldr r0, [r5, #4]
+	cmp r0, #0xe
+	beq _0230A530
+	mov r0, sb
+	mov r1, #0x17
+	bl ItemIsActive__0230A9DC
+	cmp r0, #0
+	beq _0230A4F0
+	cmp r6, #0
+	ble _0230A4F0
+	ldr r1, [r5]
+	ldr r0, _02309FA4 ; =0x0000270F
+	cmp r1, r0
+	beq _0230A4F0
+	ldr r1, _02309FEC ; =ov10_022C45FC
+	mov r0, sl
+	ldrsh r2, [r1]
+	mov r1, sb
+	bl AddExpSpecial
+_0230A4F0:
+	mov r0, sb
+	mov r1, #0x50
+	bl ExclusiveItemEffectIsActive__0230A9B8
+	cmp r0, #0
+	beq _0230A530
+	cmp r6, #0
+	ble _0230A530
+	ldr r1, [r5]
+	ldr r0, _02309FA4 ; =0x0000270F
+	cmp r1, r0
+	beq _0230A530
+	ldr r1, _02309FEC ; =ov10_022C45FC
+	mov r0, sl
+	ldrsh r2, [r1]
+	mov r1, sb
+	bl AddExpSpecial
+_0230A530:
+	cmp fp, #0
+	beq _0230A544
+	mov r0, sb
+	bl ov29_0230D7D4
+	bl UpdateTrapsVisibility
+_0230A544:
+	mov r0, #0
+	b _0230A918
+_0230A54C:
+	ldr r0, _02309FDC ; =0x0000025F
+	cmp r8, r0
+	bne _0230A588
+	ldr r1, [sb, #0xb4]
+	mov r0, sb
+	ldrb r2, [r1, #0x4c]
+	mov r1, #6
+	bl ov29_023049A8
+	mov r0, sb
+	mov r1, r5
+	bl ov29_022E5478
+	mov r0, #0xa
+	mov r1, #0x18
+	bl ov29_022EA370
+	mov r4, #1
+_0230A588:
+	ldrb r0, [r7, #0xef]
+	cmp r0, #2
+	bne _0230A5A4
+	mov r0, sl
+	mov r1, sb
+	mov r2, #0
+	bl EndInvisibleClassStatus
+_0230A5A4:
+	cmp fp, #0
+	beq _0230A5D0
+	mov r0, #0x14
+	mov r1, #0x18
+	bl ov29_022EA370
+	mov r1, #2
+	mov r0, sb
+	strb r1, [sb, #0x22]
+	bl ov29_0230D7D4
+	bl UpdateTrapsVisibility
+	b _0230A5EC
+_0230A5D0:
+	cmp r4, #0
+	beq _0230A5EC
+	mov r2, #1
+	mov r0, #0x1e
+	mov r1, #0x18
+	strb r2, [sb, #0x22]
+	bl ov29_022EA370
+_0230A5EC:
+	mov r0, sl
+	mov r4, #1
+	bl EntityIsValid__02308FBC
+	cmp r0, #0
+	beq _0230A614
+	ldr r0, [sl]
+	cmp r0, #1
+	bne _0230A614
+	cmp sl, sb
+	movne r4, #0
+_0230A614:
+	mov r0, #0
+	mov r1, sl
+	mov r2, r0
+	strb r0, [r7, #0x156]
+	bl SubstitutePlaceholderStringTags
+	mov r1, sb
+	mov r0, #1
+	mov r2, #0
+	bl SubstitutePlaceholderStringTags
+	ldr r0, [r5, #4]
+	mov fp, #0
+	cmp r0, #0x13
+	cmpne r0, #4
+	cmpne r0, #0x14
+	ldrb r0, [r7, #6]
+	bne _0230A680
+	cmp r0, #0
+	beq _0230A670
+	ldr r2, _02309FF0 ; =0x00000C4B
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+	b _0230A7E8
+_0230A670:
+	ldr r1, _02309FF0 ; =0x00000C4B
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+	b _0230A7E8
+_0230A680:
+	cmp r0, #0
+	beq _0230A6C8
+	ldrb r0, [r7, #0xbc]
+	cmp r0, #7
+	bne _0230A6AC
+	ldr r0, _02309FF4 ; =ov29_02353220
+	mov r1, r4, lsl #1
+	ldrh r1, [r0, r1]
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+	b _0230A7E8
+_0230A6AC:
+	ldr r0, _02309FF8 ; =ov29_0235321C
+	mov r1, r4, lsl #1
+	ldrh r2, [r0, r1]
+	mov r0, sl
+	mov r1, sb
+	bl LogMessageByIdWithPopupCheckUserTarget
+	b _0230A7E8
+_0230A6C8:
+	ldrsh r0, [r7, #0xc]
+	bl GetActiveTeamMember
+	ldrb r1, [r7, #7]
+	mov r5, r0
+	cmp r1, #0
+	bne _0230A704
+	ldrb r0, [r7, #0x48]
+	bl JoinedAtRangeCheck2Veneer
+	cmp r0, #0
+	beq _0230A71C
+	ldr r0, _02309FFC ; =DUNGEON_PTR
+	ldr r0, [r0]
+	ldrb r0, [r0, #0x75c]
+	cmp r0, #0
+	bne _0230A71C
+_0230A704:
+	ldr r0, _0230A000 ; =ov29_02353228
+	mov r1, r4, lsl #1
+	ldrh r1, [r0, r1]
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+	b _0230A7E8
+_0230A71C:
+	mov r0, r7
+	bl IsExperienceLocked
+	cmp r0, #0
+	beq _0230A76C
+	mov r0, r7
+	bl IsSpecialStoryAlly
+	cmp r0, #0
+	beq _0230A754
+	ldr r0, _0230A004 ; =ov29_02353234
+	mov r1, r4, lsl #1
+	ldrh r1, [r0, r1]
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+	b _0230A7E8
+_0230A754:
+	ldr r0, _0230A008 ; =ov29_0235322C
+	mov r1, r4, lsl #1
+	ldrh r1, [r0, r1]
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+	b _0230A7E8
+_0230A76C:
+	ldrb r0, [r7, #0xbc]
+	cmp r0, #7
+	bne _0230A790
+	ldr r0, _02309FF4 ; =ov29_02353220
+	mov r1, r4, lsl #1
+	ldrh r1, [r0, r1]
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+	b _0230A7E8
+_0230A790:
+	ldrsh r0, [r5, #8]
+	bl IsMonsterIdInNormalRangeVeneer
+	cmp r0, #0
+	beq _0230A7E4
+	ldr r0, _02309FFC ; =DUNGEON_PTR
+	ldr r0, [r0]
+	ldrb r0, [r0, #0x75d]
+	cmp r0, #0
+	beq _0230A7CC
+	ldr r0, _0230A00C ; =ov29_02353224
+	mov r1, r4, lsl #1
+	ldrh r1, [r0, r1]
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+	b _0230A7E8
+_0230A7CC:
+	ldr r0, _0230A010 ; =ov29_02353230
+	mov r1, r4, lsl #1
+	ldrh r1, [r0, r1]
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+	b _0230A7E8
+_0230A7E4:
+	mov fp, #1
+_0230A7E8:
+	ldrb r0, [r7, #0xc4]
+	add r0, r0, #0xfd
+	and r0, r0, #0xff
+	cmp r0, #1
+	bhi _0230A804
+	ldr r0, [r7, #0xb4]
+	bl FreeOtherWrappedMonsters
+_0230A804:
+	ldrb r0, [r7, #0x62]
+	tst r0, #1
+	movne r1, #1
+	moveq r1, #0
+	tst r1, #0xff
+	beq _0230A964
+	tst r0, #8
+	movne r0, #1
+	moveq r0, #0
+	tst r0, #0xff
+	bne _0230A964
+	ldrb r0, [r7, #0x62]
+	tst r0, #2
+	ldreqsh r1, [r7, #0x66]
+	ldreq r0, _0230A018 ; =0x00000153
+	cmpeq r1, r0
+	bne _0230A964
+	mov r0, sb
+	bl ov29_022E550C
+	mov r0, #0
+	strb r0, [sb, #0x22]
+	ldrsh r2, [r7, #0x12]
+	ldrsh r1, [r7, #0x16]
+	ldr r0, _02309FD4 ; =0x000003E7
+	add r1, r2, r1
+	cmp r1, r0
+	movgt r1, r0
+	strh r1, [r7, #0x10]
+	mov r2, #0
+	strb r2, [r7, #0x162]
+	mov r0, #1
+	strb r0, [r7, #0x156]
+	add r0, r7, #0x100
+	ldrh r1, [r0, #0x4a]
+	strh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x4c]
+	strh r1, [r0, #0x48]
+	ldrb r0, [r7, #7]
+	cmp r0, #0
+	ldrne r0, _02309FFC ; =DUNGEON_PTR
+	ldrne r1, [r0]
+	strneb r2, [r1, #0x799]
+	ldrne r0, [r0]
+	strneb r2, [r0, #0x78d]
+	add r0, r7, #0x62
+	bl ItemZInit
+	ldrb r0, [r7, #0xd8]
+	cmp r0, #3
+	bne _0230A8E0
+	mov r0, sl
+	mov r1, sb
+	mov r2, #3
+	mov r3, #1
+	bl EndCurseClassStatus
+	b _0230A8FC
+_0230A8E0:
+	cmp r0, #2
+	bne _0230A8FC
+	mov r0, sl
+	mov r1, sb
+	mov r2, #2
+	mov r3, #1
+	bl EndCurseClassStatus
+_0230A8FC:
+	mov r0, sb
+	bl ov29_023159D4
+	mov r0, r7
+	mov r1, #0
+	bl SubInitMonster
+	bl ov10_022BDC68
+	mov r0, sb
+	bl RestorePpAllMovesSetFlags
+	mov r0, sb
+	bl GetSleepAnimationId
+	mov r1, r0
+	mov r0, sb
+	bl ov29_02304830
+	mov r0, sb
+	bl UpdateStatusIconFlags
+	mov r0, #1
+	mov r1, sb
+	mov r2, #0
+	bl SubstitutePlaceholderStringTags
+	mov r0, sl
+	ldr r1, _0230A01C ; =0x00000C4C
+	bl LogMessageByIdWithPopup
+	mov r0, sb
+	bl ov29_0230D628
+	mov r0, #0
+	b _0230A918
+_0230A964:
+	ldrb r0, [r7, #7]
+	cmp r0, #0
+	beq _0230AC40_EU
+	ldrb r0, [r7, #0x62]
+	tst r0, #1
+	movne r1, #1
+	moveq r1, #0
+	tst r1, #0xff
+	beq _0230AC40_EU
+	tst r0, #8
+	movne r0, #1
+	moveq r0, #0
+	tst r0, #0xff
+	ldreqsh r1, [r7, #0x66]
+	ldreq r0, _0230A020 ; =0x00000159
+	cmpeq r1, r0
+	bne _0230AC40_EU
+	mov r6, #0
+	mov r5, r6
+#else
 	ldr r5, [sp, #0x8c]
 	mov sb, #0
 	mov r6, r2
@@ -897,7 +1978,7 @@ _02309C98:
 	bl JoinedAtRangeCheck2Veneer
 	cmp r0, #0
 	beq _02309CEC
-	ldr r0, _02309FFC ; =ov29_02353538
+	ldr r0, _02309FFC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75c]
 	cmp r0, #0
@@ -946,7 +2027,7 @@ _02309D60:
 	bl IsMonsterIdInNormalRangeVeneer
 	cmp r0, #0
 	beq _02309DB4
-	ldr r0, _02309FFC ; =ov29_02353538
+	ldr r0, _02309FFC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x75d]
 	cmp r0, #0
@@ -1018,7 +2099,7 @@ _02309DE4:
 	strh r1, [r0, #0x48]
 	ldrb r0, [r4, #7]
 	cmp r0, #0
-	ldrne r0, _02309FFC ; =ov29_02353538
+	ldrne r0, _02309FFC ; =DUNGEON_PTR
 	ldrne r1, [r0]
 	strneb r2, [r1, #0x799]
 	ldrne r0, [r0]
@@ -1089,7 +2170,8 @@ _02309F44:
 	bne _0230A224
 	mov sl, #0
 	mov sb, sl
-	ldr r6, _02309FFC ; =ov29_02353538
+	ldr r6, _02309FFC ; =DUNGEON_PTR
+#endif
 	b _0230A090
 	.align 2, 0
 _02309F98: .word SET_DAMAGE_STATUS_DAMAGE
@@ -1117,17 +2199,640 @@ _02309FEC: .word ov10_022C45FC
 _02309FF0: .word 0x00000C4B
 _02309FF4: .word ov29_02353220
 _02309FF8: .word ov29_0235321C
-_02309FFC: .word ov29_02353538
+_02309FFC: .word DUNGEON_PTR
 _0230A000: .word ov29_02353228
 _0230A004: .word ov29_02353234
 _0230A008: .word ov29_0235322C
 _0230A00C: .word ov29_02353224
 _0230A010: .word ov29_02353230
+#ifndef EUROPE
 _0230A014: .word ov29_02353218
+#endif
 _0230A018: .word 0x00000153
 _0230A01C: .word 0x00000C4C
 _0230A020: .word 0x00000159
 _0230A024:
+#ifdef EUROPE
+	ldr r0, _02309FFC ; =DUNGEON_PTR
+	ldr r0, [r0]
+	add r0, r0, r5, lsl #2
+	add r0, r0, #0x12000
+	ldr r6, [r0, #0xb28]
+	mov r0, r6
+	bl EntityIsValid__02308FBC
+	cmp r0, #0
+	cmpne r6, sb
+	beq _0230AAA8
+	mov r0, sb
+	mov r1, r6
+	bl CanSeeTarget
+	cmp r0, #0
+	beq _0230AAA8
+	ldrsh r1, [r6, #4]
+	ldrsh r0, [sb, #4]
+	sub r0, r1, r0
+	bl abs
+	cmp r0, #1
+	bgt _0230AAA8
+	ldrsh r1, [r6, #6]
+	ldrsh r0, [sb, #6]
+	sub r0, r1, r0
+	bl abs
+	cmp r0, #1
+	ble _0230AAB4
+_0230AAA8:
+	add r5, r5, #1
+_0230A090:
+	cmp r5, #4
+	blt _0230A024
+_0230AAB4:
+	cmp r5, #4
+	beq _0230AC40_EU
+	mov r0, sb
+	bl ov29_022E550C
+	mov r0, #0
+	mov r1, sb
+	mov r2, r0
+	bl SubstitutePlaceholderStringTags
+	ldrh r2, [r6, #4]
+	ldrh r1, [r6, #6]
+	mov r0, r6
+	strh r2, [sp, #0x18]
+	strh r1, [sp, #0x1a]
+	mov r2, sb
+	mov r1, #0x260
+	bl HandleFaint
+	ldrsh r1, [sp, #0x18]
+	ldrsh r2, [sp, #0x1a]
+	mov r0, sb
+	mov r3, #1
+	bl MoveMonsterToPos
+	mov r0, sb
+	mov r1, #0
+	bl UpdateEntityPixelPos
+	mov r0, #0
+	strb r0, [sb, #0x22]
+	ldrsh r2, [r7, #0x12]
+	ldrsh r1, [r7, #0x16]
+	ldr r0, _02309FD4 ; =0x000003E7
+	add r1, r2, r1
+	cmp r1, r0
+	movgt r1, r0
+	mov r0, sb
+	strh r1, [r7, #0x10]
+	bl ov29_022E66D8
+	mov r2, #0
+	strb r2, [r7, #0x162]
+	mov r0, #1
+	strb r0, [r7, #0x156]
+	add r0, r7, #0x100
+	ldrh r1, [r0, #0x4a]
+	strh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x4c]
+	strh r1, [r0, #0x48]
+	ldrb r0, [r7, #7]
+	cmp r0, #0
+	ldrne r0, _02309FFC ; =DUNGEON_PTR
+	ldrne r1, [r0]
+	strneb r2, [r1, #0x799]
+	ldrne r0, [r0]
+	strneb r2, [r0, #0x78d]
+	add r0, r7, #0x62
+	bl ItemZInit
+	ldrb r0, [r7, #0xd8]
+	cmp r0, #3
+	bne _0230ABAC
+	mov r0, sl
+	mov r1, sb
+	mov r2, #3
+	mov r3, #1
+	bl EndCurseClassStatus
+	b _0230ABC8
+_0230ABAC:
+	cmp r0, #2
+	bne _0230ABC8
+	mov r0, sl
+	mov r1, sb
+	mov r2, #2
+	mov r3, #1
+	bl EndCurseClassStatus
+_0230ABC8:
+	mov r0, sb
+	bl ov29_023159D4
+	mov r0, r7
+	mov r1, #0
+	bl SubInitMonster
+	bl ov10_022BDC68
+	mov r0, sb
+	bl RestorePpAllMovesSetFlags
+	mov r0, sb
+	bl GetSleepAnimationId
+	mov r1, r0
+	mov r0, sb
+	bl ov29_02304830
+	mov r0, sb
+	bl UpdateStatusIconFlags
+	mov r0, #0
+	mov r1, sb
+	mov r2, r0
+	bl SubstitutePlaceholderStringTags
+	mov r1, r6
+	mov r0, #1
+	mov r2, #0
+	bl SubstitutePlaceholderStringTags
+	mov r0, sl
+	ldr r1, _0230A920 ; =0x00000C4D
+	bl LogMessageByIdWithPopup
+	mov r0, sb
+	bl ov29_0230D628
+	mov r0, #0
+	b _0230A918
+_0230AC40_EU:
+	mov r0, sb
+	mov r1, #0x16
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	beq _0230B04C
+	ldrb r0, [r7, #0x62]
+	mov r5, #0
+	mov r6, r5
+	tst r0, #1
+	movne r0, #1
+	moveq r0, r5
+	tst r0, #0xff
+	beq _0230ACB8
+	mov r0, sb
+	mov r1, #0x6f
+	bl AbilityIsActiveVeneer
+	cmp r0, #0
+	bne _0230ACB8
+	ldrb r0, [r7, #0x62]
+	tst r0, #8
+	movne r0, #1
+	moveq r0, #0
+	tst r0, #0xff
+	bne _0230ACB8
+	ldrsh r0, [r7, #0x66]
+	cmp r0, #0x49
+	addeq r5, r7, #0x62
+	beq _0230ACB8
+	cmp r0, #0x69
+	addeq r6, r7, #0x62
+_0230ACB8:
+	cmp r5, #0
+	ldreqb r0, [r7, #6]
+	cmpeq r0, #0
+	bne _0230AD44
+	ldr r0, _0230A924 ; =BAG_ITEMS_PTR_MIRROR
+	mov r2, #0
+	ldr ip, [r0]
+	mov lr, #6
+	b _0230AD3C
+_0230ACDC:
+	mul r0, r2, lr
+	ldr r1, [ip, #0x384]
+	add r3, r1, r0
+	ldrb r0, [r1, r0]
+	tst r0, #1
+	movne r1, #1
+	moveq r1, #0
+	tst r1, #0xff
+	beq _0230AD38
+	tst r0, #8
+	movne r0, #1
+	moveq r0, #0
+	tst r0, #0xff
+	ldreqb r0, [r3, #1]
+	cmpeq r0, #0
+	bne _0230AD38
+	ldrsh r0, [r3, #4]
+	cmp r0, #0x49
+	moveq r5, r3
+	beq _0230AD44
+	cmp r6, #0
+	cmpeq r0, #0x69
+	moveq r6, r3
+_0230AD38:
+	add r2, r2, #1
+_0230AD3C:
+	cmp r2, #0x32
+	blt _0230ACDC
+_0230AD44:
+	cmp r5, #0
+	beq _0230AE8C
+	cmp fp, #0
+	beq _0230AD68
+	ldr r0, _0230B394 ; =0x02353E44
+	mov r1, r4, lsl #1
+	ldrh r1, [r0, r1]
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+_0230AD68:
+	mov r0, sb
+	bl ov29_022FBD24
+	mov r0, sb
+	bl ov29_022E550C
+	mov r0, r5
+	bl ov29_0230D688
+	mov r0, #0
+	strb r0, [sb, #0x22]
+	ldrsh r2, [r7, #0x12]
+	ldrsh r1, [r7, #0x16]
+	ldr r0, _02309FD4 ; =0x000003E7
+	add r1, r2, r1
+	cmp r1, r0
+	movgt r1, r0
+	strh r1, [r7, #0x10]
+	mov r2, #0
+	strb r2, [r7, #0x162]
+	mov r0, #1
+	strb r0, [r7, #0x156]
+	add r0, r7, #0x100
+	ldrh r1, [r0, #0x4a]
+	strh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x4c]
+	strh r1, [r0, #0x48]
+	ldrb r0, [r7, #7]
+	cmp r0, #0
+	ldrne r0, _02309FFC ; =DUNGEON_PTR
+	ldrne r1, [r0]
+	strneb r2, [r1, #0x799]
+	ldrne r0, [r0]
+	strneb r2, [r0, #0x78d]
+	ldrb r0, [r7, #0xd8]
+	cmp r0, #3
+	bne _0230AE08
+	mov r0, sl
+	mov r1, sb
+	mov r2, #3
+	mov r3, #1
+	bl EndCurseClassStatus
+	b _0230AE24
+_0230AE08:
+	cmp r0, #2
+	bne _0230AE24
+	mov r0, sl
+	mov r1, sb
+	mov r2, #2
+	mov r3, #1
+	bl EndCurseClassStatus
+_0230AE24:
+	mov r0, sb
+	bl ov29_023159D4
+	mov r0, r7
+	mov r1, #0
+	bl SubInitMonster
+	bl ov10_022BDC68
+	mov r0, sb
+	bl RestorePpAllMovesSetFlags
+	mov r0, sb
+	bl GetSleepAnimationId
+	mov r1, r0
+	mov r0, sb
+	bl ov29_02304830
+	mov r0, sb
+	bl UpdateStatusIconFlags
+	mov r0, #1
+	mov r1, sb
+	mov r2, #0
+	bl SubstitutePlaceholderStringTags
+	mov r0, sl
+	ldr r1, _0230A01C ; =0x00000C4C
+	bl LogMessageByIdWithPopup
+	mov r0, sb
+	bl ov29_0230D628
+	mov r0, #0
+	b _0230A918
+_0230AE8C:
+	ldr r0, _02309FFC ; =DUNGEON_PTR
+	ldr r0, [r0]
+	ldrb r0, [r0, #8]
+	cmp r0, #0
+	bne _0230B030
+	cmp r6, #0
+	beq _0230B030
+	cmp fp, #0
+	beq _0230AEC4
+	ldr r0, _0230B394 ; =0x02353E44
+	mov r1, r4, lsl #1
+	ldrh r1, [r0, r1]
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+_0230AEC4:
+	bl ov29_022EAF20
+	ldrb r1, [r7, #0xd8]
+	mov r4, r0
+	cmp r1, #2
+	bne _0230AEEC
+	ldrb r2, [r7, #0xd8]
+	mov r0, sb
+	mov r1, sb
+	mov r3, #0
+	bl EndCurseClassStatus
+_0230AEEC:
+	mov r0, #0
+	mov r1, #0x69
+	bl ov29_02344B9C
+	mov r0, #1
+	mov r1, #0x49
+	bl ov29_02344B9C
+	mov r0, #0
+	mov r1, sb
+	mov r2, r0
+	bl SubstitutePlaceholderStringTags
+	mov r0, #1
+	bl ov29_022EFB20
+	mov r0, sb
+	bl ov29_022E550C
+	mov r0, r6
+	bl ov29_0230D688
+	mov r0, #0
+	strb r0, [sb, #0x22]
+	mov r0, #1
+	strb r0, [r7, #0x23d]
+	mov r0, sb
+	bl GetSleepAnimationId
+	mov r1, r0
+	mov r0, sb
+	bl ov29_02304830
+	mov r0, #1
+	mov r1, sb
+	mov r2, #0
+	bl SubstitutePlaceholderStringTags
+	mov r0, sl
+	ldr r1, _0230A01C ; =0x00000C4C
+	bl LogMessageByIdWithPopup
+	mov r0, #0xa
+	bl ov29_0234BA54
+	mov r0, #0
+	bl ov29_0234B1A4
+	mov r0, #1
+	bl ov29_022F0534
+	ldr r0, _0230A928 ; =0x00000C6A
+	bl ov29_022F0780
+	mov r0, sb
+	mov r1, #0xb
+	bl ov29_02304830
+	ldr r0, _0230A92C ; =0x00000C6B
+	mov r1, sb
+	mov r2, #0
+	bl ov29_022F0604
+	mov r0, #4
+	bl ov29_022EAF34
+	mov r0, sb
+	bl ov29_022F0518
+	mov r0, sb
+	mov r1, #6
+	bl ov29_02304830
+	ldr r0, _0230A930 ; =0x00000C6C
+	bl ov29_022F0780
+	bl ov29_022F05E4
+	mov r0, #1
+	bl ov29_022EFB84
+	mov r0, #1
+	strb r0, [sb, #0x22]
+	mov r0, #0
+	strb r0, [r7, #0x23d]
+	mov r0, sl
+	ldr r1, _0230A934 ; =0x00000C6D
+	bl LogMessageByIdWithPopup
+	mov r0, #0xa
+	bl ov29_0234BA54
+	mov r0, #0
+	bl ov29_022F0534
+	ldr r0, _02309FFC ; =DUNGEON_PTR
+	ldr r0, [r0]
+	add r0, r0, #0x4000
+	ldrsh r0, [r0, #0xd6]
+	bl MusicTableIdxToMusicId
+	bl ChangeDungeonMusic
+	mov r0, r4
+	bl ov29_022EAF34
+	mov r0, sb
+	bl ov29_0230D628
+	b _0230B04C
+_0230B030:
+	cmp fp, #0
+	beq _0230B04C
+	ldr r0, _0230B3A8 ; =0x02353E40
+	mov r1, r4, lsl #1
+	ldrh r1, [r0, r1]
+	mov r0, sl
+	bl LogMessageByIdWithPopup
+_0230B04C:
+	ldrb r0, [r7, #7]
+	cmp r0, #0
+	bne _0230B108
+	ldrb r0, [r7, #0x62]
+	tst r0, #1
+	movne r0, #1
+	moveq r0, #0
+	tst r0, #0xff
+	beq _0230B0FC
+	ldrb r0, [r7, #6]
+	cmp r0, #0
+	beq _0230B0E8
+	mov r0, #9
+	bl IsCurrentMissionType
+	cmp r0, #0
+	beq _0230B0B4
+	mov r0, r7
+	bl ov29_022FBDE0
+	cmp r0, #0
+	beq _0230B0B4
+	ldrb r0, [r7, #0x62]
+	tst r0, #0x40
+	bicne r1, r0, #0x40
+	andne r0, r1, #0xff
+	orrne r0, r0, #0x80
+	strneb r0, [r7, #0x62]
+_0230B0B4:
+	mov r0, sb
+	add r1, sb, #4
+	add r2, r7, #0x62
+	mov r3, #1
+	bl SpawnDroppedItemWrapper
+	cmp r0, #0
+	beq _0230B0F0
+	ldrb r0, [r7, #0x62]
+	tst r0, #0x80
+	beq _0230B0F0
+	mov r0, #1
+	bl ov29_0234969C
+	b _0230B0F0
+_0230B0E8:
+	add r0, r7, #0x62
+	bl RemoveHolderForItemInBag
+_0230B0F0:
+	add r0, r7, #0x62
+	bl ItemZInit
+	b _0230B108
+_0230B0FC:
+	mov r0, sl
+	mov r1, sb
+	bl TrySpawnEnemyItemDrop
+_0230B108:
+	ldrb r0, [r7, #0x100]
+	mov r4, #0
+	cmp r0, #0
+	ldrne r0, _02309FFC ; =DUNGEON_PTR
+	ldrne r1, _02309FD4 ; =0x000003E7
+	ldrne r0, [r0]
+	addne r0, r0, #0x700
+	strneh r1, [r0, #0x96]
+	ldr r0, [sl]
+	cmp r0, #1
+	bne _0230B268
+	ldrsh r0, [r7, #2]
+	ldrb r1, [r7, #0xa]
+	ldr r6, [sl, #0xb4]
+	bl GetExp
+	mov r5, r0
+	mov r0, r7
+	bl ov29_02303E0C
+	cmp r0, #0
+	bne _0230B268
+	ldrb r0, [r7, #0x100]
+	cmp r0, #0
+	beq _0230B180
+	add r0, r7, #0x100
+	ldrsh r2, [r0, #0x68]
+	mov r0, #0xc
+	ldr r1, _0230A938 ; =ov10_022C593C
+	smulbb r0, r2, r0
+	ldrsh r5, [r1, r0]
+	b _0230B1AC
+_0230B180:
+	ldrb r0, [r7, #0x108]
+	cmp r0, #0
+	addeq r0, r5, r5, lsr #31
+	moveq r5, r0, asr #1
+	beq _0230B1A4
+	cmp r0, #2
+	addeq r0, r5, r5, lsl #1
+	addeq r0, r0, r0, lsr #31
+	moveq r5, r0, asr #1
+_0230B1A4:
+	cmp r5, #0
+	moveq r5, #1
+_0230B1AC:
+	ldrb r0, [r7, #0xfd]
+	cmp r0, #0
+	movne r0, #1
+	strneb r0, [r6, #0x155]
+	ldr r0, [sp, #0x88]
+	cmp r0, #1
+	bne _0230B268
+	ldrb r0, [r6, #6]
+	cmp r0, #0
+	bne _0230B240
+	ldrb r0, [r7, #6]
+	cmp r0, #0
+	beq _0230B268
+	mov r0, sl
+	mov r1, sl
+	mov r2, r5
+	bl AddExpSpecial
+	ldr r6, _02309FFC ; =DUNGEON_PTR
+	mov r4, #0
+_0230B1F8:
+	ldr r0, [r6]
+	add r0, r0, r4, lsl #2
+	add r0, r0, #0x12000
+	ldr r7, [r0, #0xb28]
+	mov r0, r7
+	bl EntityIsValid__02308FBC
+	cmp r0, #0
+	cmpne r7, sl
+	beq _0230B22C
+	mov r0, sl
+	mov r1, r7
+	mov r2, r5
+	bl AddExpSpecial
+_0230B22C:
+	add r4, r4, #1
+	cmp r4, #4
+	blt _0230B1F8
+	mov r4, #1
+	b _0230B268
+_0230B240:
+	ldr r0, _02309FFC ; =DUNGEON_PTR
+	ldr r0, [r0]
+	ldrb r0, [r0, #0x748]
+	bl CanEnemyEvolve
+	cmp r0, #0
+	movne r1, #1
+	ldrne r0, _02309FFC ; =DUNGEON_PTR
+	strneb r1, [r6, #0x153]
+	ldrne r0, [r0]
+	strneb r1, [r0, #0xf]
+_0230B268:
+	mov r0, sl
+	bl EntityIsValid__02308FBC
+	cmp r0, #0
+	beq _0230B290
+	ldr r0, [sl]
+	cmp r0, #1
+	ldreq r0, [sl, #0xb4]
+	ldreqb r0, [r0, #7]
+	cmpeq r0, #0
+	moveq r4, #0
+_0230B290:
+	cmp r4, #0
+	beq _0230B338
+	add r0, sp, #0x1c
+	mov r1, sb
+	bl ov29_022F9058
+	mov r0, sl
+	mov r1, sb
+	bl RecruitCheck
+	cmp r0, #0
+	beq _0230B314
+	add r2, sp, #0x1c
+	mov r0, sl
+	mov r1, sb
+	bl TryRecruit
+	cmp r0, #0
+	bne _0230B304
+	mov r0, sb
+	bl EntityIsValid__02308FBC
+	cmp r0, #0
+	beq _0230A8F4
+	mov r0, sl
+	mov r1, sb
+	mov r2, r8
+	bl AftermathCheck
+	mov r0, sb
+	mov r2, sl
+	mov r1, #0x234
+	bl HandleFaint
+	b _0230A8F4
+_0230B304:
+	ldr r0, _0230A93C ; =ov29_0237CA6C
+	mov r1, #1
+	strb r1, [r0]
+	b _0230A8F4
+_0230B314:
+	mov r0, sl
+	mov r1, sb
+	mov r2, r8
+	bl AftermathCheck
+	mov r0, sb
+	mov r1, r8
+	mov r2, sl
+	bl HandleFaint
+	b _0230A8F4
+_0230B338:
+	mov r0, sl
+	mov r1, sb
+	mov r2, r8
+	bl AftermathCheck
+	mov r0, sl
+	bl ov29_022ECD84
+	mov r0, sb
+	mov r1, r8
+	mov r2, sl
+#else
 	ldr r0, [r6]
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x12000
@@ -1206,7 +2911,7 @@ _0230A098:
 	strh r1, [r0, #0x48]
 	ldrb r0, [r4, #7]
 	cmp r0, #0
-	ldrne r0, _02309FFC ; =ov29_02353538
+	ldrne r0, _02309FFC ; =DUNGEON_PTR
 	ldrne r1, [r0]
 	strneb r2, [r1, #0x799]
 	ldrne r0, [r0]
@@ -1362,7 +3067,7 @@ _0230A330:
 	strh r1, [r0, #0x48]
 	ldrb r0, [r4, #7]
 	cmp r0, #0
-	ldrne r0, _02309FFC ; =ov29_02353538
+	ldrne r0, _02309FFC ; =DUNGEON_PTR
 	ldrne r1, [r0]
 	strneb r2, [r1, #0x799]
 	ldrne r0, [r0]
@@ -1412,7 +3117,7 @@ _0230A3F4:
 	mov r0, #0
 	b _0230A918
 _0230A45C:
-	ldr r0, _02309FFC ; =ov29_02353538
+	ldr r0, _02309FFC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	cmp r0, #0
@@ -1500,7 +3205,7 @@ _0230A4A0:
 	bl ov29_0234BA54
 	mov r0, #0
 	bl ov29_022F0534
-	ldr r0, _02309FFC ; =ov29_02353538
+	ldr r0, _02309FFC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd6]
@@ -1566,7 +3271,7 @@ _0230A69C:
 	ldrb r0, [r4, #0x100]
 	mov r6, #0
 	cmp r0, #0
-	ldrne r0, _02309FFC ; =ov29_02353538
+	ldrne r0, _02309FFC ; =DUNGEON_PTR
 	ldrne r1, _02309FD4 ; =0x000003E7
 	ldrne r0, [r0]
 	addne r0, r0, #0x700
@@ -1624,7 +3329,7 @@ _0230A740:
 	mov r1, r8
 	mov r2, sb
 	bl AddExpSpecial
-	ldr r6, _02309FFC ; =ov29_02353538
+	ldr r6, _02309FFC ; =DUNGEON_PTR
 	mov r4, #0
 _0230A78C:
 	ldr r0, [r6]
@@ -1647,13 +3352,13 @@ _0230A7C0:
 	mov r6, #1
 	b _0230A7FC
 _0230A7D4:
-	ldr r0, _02309FFC ; =ov29_02353538
+	ldr r0, _02309FFC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x748]
 	bl CanEnemyEvolve
 	cmp r0, #0
 	movne r1, #1
-	ldrne r0, _02309FFC ; =ov29_02353538
+	ldrne r0, _02309FFC ; =DUNGEON_PTR
 	strneb r1, [sl, #0x153]
 	ldrne r0, [r0]
 	strneb r1, [r0, #0xf]
@@ -1723,6 +3428,7 @@ _0230A8CC:
 	mov r0, r7
 	mov r1, r5
 	mov r2, r8
+#endif
 	bl HandleFaint
 _0230A8F4:
 	ldr r0, _0230A93C ; =ov29_0237CA6C
@@ -1741,10 +3447,16 @@ _0230A918:
 	.align 2, 0
 _0230A920: .word 0x00000C4D
 _0230A924: .word BAG_ITEMS_PTR_MIRROR
+#ifdef EUROPE
+_0230B394: .word 0x02353E44
+#endif
 _0230A928: .word 0x00000C6A
 _0230A92C: .word 0x00000C6B
 _0230A930: .word 0x00000C6C
 _0230A934: .word 0x00000C6D
+#ifdef EUROPE
+_0230B3A8: .word 0x02353E40
+#endif
 _0230A938: .word ov10_022C593C
 _0230A93C: .word ov29_0237CA6C
 	arm_func_end ApplyDamage
@@ -1868,7 +3580,7 @@ GetTypeMatchupBothTypes: ; 0x0230AA8C
 	strh r4, [sp]
 	strh r3, [sp, #2]
 	bl ScrappyShouldActivate
-	ldr fp, _0230AB50 ; =ov29_02353538
+	ldr fp, _0230AB50 ; =DUNGEON_PTR
 	mov r7, r0
 	mov r6, #0
 	mov r5, #1
@@ -1911,7 +3623,7 @@ _0230AB18:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0230AB4C: .word ov29_02352838
-_0230AB50: .word ov29_02353538
+_0230AB50: .word DUNGEON_PTR
 _0230AB54: .word TYPE_MATCHUP_COMBINATOR_TABLE
 	arm_func_end GetTypeMatchupBothTypes
 
@@ -1945,7 +3657,7 @@ _0230ABB4:
 	mov r0, fp
 _0230ABB8:
 	cmp r0, #0
-	ldrne r1, _0230ABEC ; =ov29_02353538
+	ldrne r1, _0230ABEC ; =DUNGEON_PTR
 	movne r0, #1
 	ldrne r1, [r1]
 	strneb r0, [r1, #0x1cc]
@@ -1959,7 +3671,7 @@ _0230ABDC:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0230ABEC: .word ov29_02353538
+_0230ABEC: .word DUNGEON_PTR
 	arm_func_end ScrappyShouldActivate
 
 	arm_func_start IsTypeIneffectiveAgainstGhost
@@ -2186,7 +3898,7 @@ _0230AEC0:
 	bl GhostImmunityIsActive
 	cmp r0, #0
 	beq _0230AF1C
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	mov r5, #0
 	ldr r1, [r0]
 	mov r0, #1
@@ -2228,7 +3940,7 @@ _0230AF8C:
 	cmp r4, #2
 	blt _0230AE28
 _0230AF94:
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r4, [sp, #0x34]
 	ldr r2, [r0]
 	ldr r1, _0230B79C ; =TYPE_MATCHUP_COMBINATOR_TABLE
@@ -2336,7 +4048,7 @@ _0230B104:
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _0230B14C
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	ldr r3, [r0]
 	mov r5, #1
@@ -2352,7 +4064,7 @@ _0230B14C:
 	bl FlashFireShouldActivate
 	cmp r0, #0
 	beq _0230B198
-	ldr r1, _0230B798 ; =ov29_02353538
+	ldr r1, _0230B798 ; =DUNGEON_PTR
 	mov r0, fp
 	ldr r2, [r1]
 	mov r3, #1
@@ -2374,7 +4086,7 @@ _0230B198:
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _0230B1DC
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	ldr r3, [r0]
 	mov r5, #1
@@ -2400,7 +4112,7 @@ _0230B208:
 	cmp r0, #0
 	beq _0230B248
 _0230B218:
-	ldr r1, _0230B798 ; =ov29_02353538
+	ldr r1, _0230B798 ; =DUNGEON_PTR
 	mov r0, fp
 	ldr r2, [r1]
 	mov r3, #1
@@ -2440,7 +4152,7 @@ _0230B248:
 	mov r5, r0
 	cmp r7, #0
 	beq _0230B2D4
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	ldr r3, [r0]
 	mov r7, #1
@@ -2485,7 +4197,7 @@ _0230B2F4:
 	mov r5, r0
 	cmp r7, #0
 	beq _0230B380
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	ldr r3, [r0]
 	mov r7, #1
@@ -2530,7 +4242,7 @@ _0230B3A0:
 	mov r5, r0
 	cmp r7, #0
 	beq _0230B42C
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	ldr r3, [r0]
 	mov r7, #1
@@ -2575,7 +4287,7 @@ _0230B44C:
 	mov r5, r0
 	cmp r7, #0
 	beq _0230B4D8
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	ldr r3, [r0]
 	mov r7, #1
@@ -2600,7 +4312,7 @@ _0230B4F8:
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _0230B534
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7B0 ; =DAMAGE_MULTIPLIER_1_5
 	ldr r3, [r0]
 	mov r5, #1
@@ -2630,7 +4342,7 @@ _0230B560:
 	bl MonsterIsType
 	cmp r0, #0
 	beq _0230B5CC
-	ldr r1, _0230B798 ; =ov29_02353538
+	ldr r1, _0230B798 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r2, [r1]
 	mov r3, #1
@@ -2657,7 +4369,7 @@ _0230B5CC:
 	bne _0230B634
 	cmp r8, #2
 	bne _0230B60C
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7B0 ; =DAMAGE_MULTIPLIER_1_5
 	ldr r3, [r0]
 	mov r7, #1
@@ -2669,7 +4381,7 @@ _0230B5CC:
 _0230B60C:
 	cmp r8, #3
 	bne _0230B634
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	ldr r3, [r0]
 	mov r7, #1
@@ -2682,7 +4394,7 @@ _0230B634:
 	bne _0230B690
 	cmp r8, #2
 	bne _0230B668
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7A8 ; =DAMAGE_MULTIPLIER_0_5
 	ldr r3, [r0]
 	mov r7, #1
@@ -2694,7 +4406,7 @@ _0230B634:
 _0230B668:
 	cmp r8, #3
 	bne _0230B690
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7B0 ; =DAMAGE_MULTIPLIER_1_5
 	ldr r3, [r0]
 	mov r7, #1
@@ -2711,12 +4423,12 @@ _0230B690:
 	mov r0, fp
 	mov r1, fp
 	bl MultiplyFixedPoint64
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x1c2]
 _0230B6C0:
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r7, [r0]
 	add r0, r7, #0xc000
 	ldrb r0, [r0, #0xd5b]
@@ -2734,7 +4446,7 @@ _0230B6E0:
 	strb r3, [r7, #0x1d0]
 	bl MultiplyFixedPoint64
 _0230B700:
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r5, [r0]
 	add r0, r5, #0xc000
 	ldrb r0, [r0, #0xd5c]
@@ -2753,7 +4465,7 @@ _0230B738:
 	ldreqb r0, [r6, #0xd2]
 	cmpeq r0, #0xb
 	bne _0230B768
-	ldr r0, _0230B798 ; =ov29_02353538
+	ldr r0, _0230B798 ; =DUNGEON_PTR
 	ldr r2, _0230B7BC ; =DAMAGE_MULTIPLIER_2
 	ldr r3, [r0]
 	mov r5, #1
@@ -2776,7 +4488,7 @@ _0230B788: .word MATCHUP_SUPER_EFFECTIVE_MULTIPLIER_ERRATIC_PLAYER
 _0230B78C: .word MATCHUP_NEUTRAL_MULTIPLIER
 _0230B790: .word MATCHUP_NOT_VERY_EFFECTIVE_MULTIPLIER
 _0230B794: .word MATCHUP_SUPER_EFFECTIVE_MULTIPLIER
-_0230B798: .word ov29_02353538
+_0230B798: .word DUNGEON_PTR
 _0230B79C: .word TYPE_MATCHUP_COMBINATOR_TABLE
 _0230B7A0: .word TINTED_LENS_MULTIPLIER
 _0230B7A4: .word SOLID_ROCK_MULTIPLIER
@@ -2895,7 +4607,7 @@ _0230B90C:
 	ldreqb r0, [r6, #0xfe]
 	cmpeq r0, #0
 	bne _0230B960
-	ldr r1, _0230BBA4 ; =ov29_02353538
+	ldr r1, _0230BBA4 ; =DUNGEON_PTR
 	mov r0, #0
 	ldr r2, [r1]
 	mov r1, #1
@@ -3030,7 +4742,7 @@ _0230BAF4:
 	moveq r0, #2
 	beq _0230BB98
 _0230BB3C:
-	ldr r0, _0230BBA4 ; =ov29_02353538
+	ldr r0, _0230BBA4 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	add r0, r1, #0xc000
 	ldrb r0, [r0, #0xd5b]
@@ -3060,7 +4772,7 @@ _0230BB98:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0230BBA0: .word ov29_02352884
-_0230BBA4: .word ov29_02353538
+_0230BBA4: .word DUNGEON_PTR
 _0230BBA8: .word 0x000003E7
 	arm_func_end ov29_0230B7D4
 
@@ -3068,7 +4780,7 @@ _0230BBA8: .word 0x000003E7
 CalcDamage: ; 0x0230BBAC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc0
-	ldr r4, _0230C450 ; =ov29_02353538
+	ldr r4, _0230C450 ; =DUNGEON_PTR
 	mov sl, r0
 	ldr r4, [r4]
 	ldr r6, [sl, #0xb4]
@@ -3647,7 +5359,7 @@ _0230C41C:
 	strb r0, [r5, #0x36]
 	b _0230C5E0
 	.align 2, 0
-_0230C450: .word ov29_02353538
+_0230C450: .word DUNGEON_PTR
 _0230C454: .word ME_FIRST_MULTIPLIER
 _0230C458: .word 0x000001D3
 _0230C45C: .word 0x00000163
@@ -3873,7 +5585,7 @@ _0230C76C:
 	ldr r0, [sp, #0x30]
 	cmp r0, #1
 	bne _0230C7D4
-	ldr r0, _0230C450 ; =ov29_02353538
+	ldr r0, _0230C450 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldr r0, [sp, #0x14]
 	add r0, r1, r0
@@ -3893,7 +5605,7 @@ _0230C7D4:
 	ldr r0, [sp, #0x30]
 	cmp r0, #1
 	bne _0230C820
-	ldr r0, _0230C450 ; =ov29_02353538
+	ldr r0, _0230C450 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldr r0, [sp, #0x14]
 	add r0, r1, r0
@@ -4429,10 +6141,6 @@ _0230CFBC:
 	str r0, [r8]
 _0230CFFC:
 	ldr r0, [r8]
-	arm_func_end CalcDamage
-
-	arm_func_start ov29_0230D000
-ov29_0230D000: ; 0x0230D000
 	cmp r0, #0
 	ble _0230D038
 	mov r0, sl
@@ -4470,7 +6178,7 @@ _0230D078: .word DAMAGE_MULTIPLIER_1_5
 _0230D07C: .word 0x00000195
 _0230D080: .word POWER_PITCHER_DAMAGE_MULTIPLIER
 _0230D084: .word AIR_BLADE_DAMAGE_MULTIPLIER
-	arm_func_end ov29_0230D000
+	arm_func_end CalcDamage
 
 	arm_func_start ov29_0230D088
 ov29_0230D088: ; 0x0230D088
@@ -4586,10 +6294,6 @@ _0230D1F0:
 	str r1, [sp, #0x10]
 	ldr r4, [sp, #0x44]
 	str r0, [sp, #0x14]
-	arm_func_end CalcRecoilDamageFixed
-
-	arm_func_start ov29_0230D220
-ov29_0230D220: ; 0x0230D220
 	mov r0, r7
 	mov r1, r7
 	mov r2, r6
@@ -4599,7 +6303,7 @@ ov29_0230D220: ; 0x0230D220
 _0230D238:
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, pc}
-	arm_func_end ov29_0230D220
+	arm_func_end CalcRecoilDamageFixed
 
 	arm_func_start CalcDamageFixed
 CalcDamageFixed: ; 0x0230D240
@@ -4821,7 +6525,7 @@ _0230D518:
 	arm_func_start ResetDamageCalcDiagnostics
 ResetDamageCalcDiagnostics: ; 0x0230D528
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _0230D614 ; =ov29_02353538
+	ldr r0, _0230D614 ; =DUNGEON_PTR
 	mov r1, #0x54
 	ldr r4, [r0]
 	add r5, r4, #0x184
@@ -4880,7 +6584,7 @@ ResetDamageCalcDiagnostics: ; 0x0230D528
 	strb r1, [r5, #0x33]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0230D614: .word ov29_02353538
+_0230D614: .word DUNGEON_PTR
 	arm_func_end ResetDamageCalcDiagnostics
 
 	arm_func_start ov29_0230D618
@@ -4895,7 +6599,7 @@ _0230D624: .word ov29_02352894
 	arm_func_start ov29_0230D628
 ov29_0230D628: ; 0x0230D628
 	stmdb sp!, {r3, lr}
-	ldr r1, _0230D650 ; =ov29_02353538
+	ldr r1, _0230D650 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
 	ldr r1, [r1, #0x22c]
@@ -4905,7 +6609,7 @@ ov29_0230D628: ; 0x0230D628
 	bl PointCameraToMonster
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0230D650: .word ov29_02353538
+_0230D650: .word DUNGEON_PTR
 	arm_func_end ov29_0230D628
 
 	arm_func_start ov29_0230D654
@@ -4975,10 +6679,6 @@ ov29_0230D70C: ; 0x0230D70C
 	mov r0, #0x64
 	bl DungeonRandInt
 	ldr r1, _0230D734 ; =ov10_022C45B4
-	arm_func_end ov29_0230D70C
-
-	arm_func_start ov29_0230D71C
-ov29_0230D71C: ; 0x0230D71C
 	ldrsh r1, [r1]
 	cmp r0, r1
 	movlt r0, #1
@@ -4987,7 +6687,7 @@ ov29_0230D71C: ; 0x0230D71C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230D734: .word ov10_022C45B4
-	arm_func_end ov29_0230D71C
+	arm_func_end ov29_0230D70C
 
 	arm_func_start ov29_0230D738
 ov29_0230D738: ; 0x0230D738
@@ -5142,10 +6842,6 @@ ov29_0230D8E8: ; 0x0230D8E8
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, #0
 	mov r1, r5
-	arm_func_end ov29_0230D8E8
-
-	arm_func_start ov29_0230D92C
-ov29_0230D92C: ; 0x0230D92C
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
 	mov r1, r4
@@ -5159,7 +6855,7 @@ ov29_0230D92C: ; 0x0230D92C
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0230D958: .word 0x00000F2E
-	arm_func_end ov29_0230D92C
+	arm_func_end ov29_0230D8E8
 
 	arm_func_start ov29_0230D95C
 ov29_0230D95C: ; 0x0230D95C
@@ -5293,7 +6989,7 @@ ov29_0230DAB8: ; 0x0230DAB8
 	arm_func_start SpecificRecruitCheck
 SpecificRecruitCheck: ; 0x0230DB14
 	stmdb sp!, {r4, lr}
-	ldr r1, _0230DBC8 ; =ov29_02353538
+	ldr r1, _0230DBC8 ; =DUNGEON_PTR
 	mov r4, r0
 	ldr r1, [r1]
 	ldrb r1, [r1, #0x759]
@@ -5305,7 +7001,7 @@ SpecificRecruitCheck: ; 0x0230DB14
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
 	cmp r4, #0x97
-	ldreq r0, _0230DBC8 ; =ov29_02353538
+	ldreq r0, _0230DBC8 ; =DUNGEON_PTR
 	ldreq r0, [r0]
 	addeq r0, r0, #0x700
 	ldreqsb r0, [r0, #0x98]
@@ -5338,14 +7034,14 @@ SpecificRecruitCheck: ; 0x0230DB14
 	and r0, r0, #0xff
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0230DBC8: .word ov29_02353538
+_0230DBC8: .word DUNGEON_PTR
 _0230DBCC: .word 0x000001A3
 	arm_func_end SpecificRecruitCheck
 
 	arm_func_start RecruitCheck
 RecruitCheck: ; 0x0230DBD0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	ldr r2, _0230E024 ; =ov29_02353538
+	ldr r2, _0230E024 ; =DUNGEON_PTR
 	mov r8, r0
 	ldr r0, [r2]
 	mov r7, r1
@@ -5370,7 +7066,7 @@ _0230DC28:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _0230DC30:
-	ldr r0, _0230E024 ; =ov29_02353538
+	ldr r0, _0230E024 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x75d]
 	cmp r0, #0
@@ -5639,7 +7335,7 @@ _0230DFD4:
 	movge r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0230E024: .word ov29_02353538
+_0230E024: .word DUNGEON_PTR
 _0230E028: .word 0x000001E6
 _0230E02C: .word 0x0000010F
 _0230E030: .word 0xFFFFFDEA
@@ -5722,7 +7418,7 @@ _0230E114:
 	strb r1, [sp, #0xac]
 	strb r0, [sp, #0xad]
 	ldrsh r2, [r8, #0xc]
-	ldr r1, _0230E560 ; =ov29_02353538
+	ldr r1, _0230E560 ; =DUNGEON_PTR
 	sub r3, r0, #1
 	strb r2, [sp, #0xae]
 	strh r4, [sp, #0xb2]
@@ -5999,7 +7695,7 @@ _0230E550:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0230E55C: .word 0x00000C77
-_0230E560: .word ov29_02353538
+_0230E560: .word DUNGEON_PTR
 _0230E564: .word 0x00000C7B
 _0230E568: .word 0x00000C7E
 _0230E56C: .word 0x00000C7F
@@ -6110,7 +7806,7 @@ ov29_0230E658: ; 0x0230E658
 TrySpawnMonsterAndTickSpawnCounter: ; 0x0230E6BC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
-	ldr r0, _0230E8D8 ; =ov29_02353538
+	ldr r0, _0230E8D8 ; =DUNGEON_PTR
 	mov r6, #0
 	ldr r7, [r0]
 	add r0, r7, #0x700
@@ -6182,7 +7878,7 @@ _0230E7B8:
 	ldrb r0, [r7, #0x790]
 	cmp r0, #0
 	bne _0230E80C
-	ldr r0, _0230E8D8 ; =ov29_02353538
+	ldr r0, _0230E8D8 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xc9]
@@ -6237,7 +7933,7 @@ _0230E844:
 	strh r4, [sp, #8]
 	strb r1, [sp, #2]
 	bl DungeonRandInt
-	ldr r1, _0230E8D8 ; =ov29_02353538
+	ldr r1, _0230E8D8 ; =DUNGEON_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	ldrb r0, [r0, #0x748]
@@ -6255,7 +7951,7 @@ _0230E8D0:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0230E8D8: .word ov29_02353538
+_0230E8D8: .word DUNGEON_PTR
 _0230E8DC: .word SPAWN_COOLDOWN
 _0230E8E0: .word SPAWN_COOLDOWN_THIEF_ALERT
 _0230E8E4: .word SPAWN_CAP_NO_MONSTER_HOUSE

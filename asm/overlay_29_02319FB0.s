@@ -303,7 +303,7 @@ _0231A3A4:
 	ldrsh r0, [r5, #2]
 	mov r1, #0x258
 	bl __divsi3
-	ldr r0, _0231A45C ; =ov29_02353538
+	ldr r0, _0231A45C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r1
 	add r0, r0, #0x3000
@@ -335,7 +335,7 @@ _0231A454:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0231A45C: .word ov29_02353538
+_0231A45C: .word DUNGEON_PTR
 	arm_func_end ov29_0231A364
 
 	arm_func_start ov29_0231A460
@@ -662,7 +662,7 @@ ov29_0231A8A0: ; 0x0231A8A0
 	bl IsMonster__0231A9D4
 	cmp r0, #0
 	beq _0231A910
-	ldr r0, _0231A9CC ; =ov29_02353538
+	ldr r0, _0231A9CC ; =DUNGEON_PTR
 	ldr r4, [sb, #0xb4]
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -738,7 +738,7 @@ _0231A9C4:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0231A9CC: .word ov29_02353538
+_0231A9CC: .word DUNGEON_PTR
 _0231A9D0: .word 0x00000DFD
 	arm_func_end ov29_0231A8A0
 
@@ -794,7 +794,7 @@ _0231AA74:
 	subs r1, r1, #1
 	strh r0, [r2], #2
 	bne _0231AA74
-	ldr r0, _0231AC94 ; =ov29_02353538
+	ldr r0, _0231AC94 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -939,7 +939,7 @@ _0231AC88:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _0231AC90: .word 0x00000DF8
-_0231AC94: .word ov29_02353538
+_0231AC94: .word DUNGEON_PTR
 _0231AC98: .word 0x00000DF9
 _0231AC9C: .word 0x00000DFA
 _0231ACA0: .word 0x00000DFB
@@ -1188,7 +1188,7 @@ _0231AFAC:
 ov29_0231AFB4: ; 0x0231AFB4
 	stmdb sp!, {r4, lr}
 	mov ip, #0
-	ldr r1, _0231B004 ; =ov29_02353538
+	ldr r1, _0231B004 ; =DUNGEON_PTR
 	mov r2, ip
 	mov r3, ip
 _0231AFC8:
@@ -1209,14 +1209,14 @@ _0231AFDC:
 	blt _0231AFC8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0231B004: .word ov29_02353538
+_0231B004: .word DUNGEON_PTR
 	arm_func_end ov29_0231AFB4
 
 	arm_func_start ov29_0231B008
 ov29_0231B008: ; 0x0231B008
 	stmdb sp!, {r3, r4, r5, lr}
 	mov lr, #0
-	ldr r1, _0231B05C ; =ov29_02353538
+	ldr r1, _0231B05C ; =DUNGEON_PTR
 	mov r3, lr
 	mov r2, #2
 	mov ip, lr
@@ -1238,7 +1238,7 @@ _0231B034:
 	blt _0231B020
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0231B05C: .word ov29_02353538
+_0231B05C: .word DUNGEON_PTR
 	arm_func_end ov29_0231B008
 
 	arm_func_start ActivateMotorDrive

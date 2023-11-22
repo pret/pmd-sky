@@ -14,6 +14,7 @@
 .public CeilFixedPoint
 .public DIRECTIONS_XY
 .public DisplayActions
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EndBurnClassStatus
@@ -29,6 +30,7 @@
 .public GenerateStandardItem
 .public GetApparentWeather
 .public GetCurrentBagCapacity
+.public GetExclusiveItemForMonsterFromBag
 .public GetItemCategoryVeneer
 .public GetItemInfo
 .public GetTile
@@ -65,6 +67,7 @@
 .public ov10_022C4BBC
 .public ov10_022C4BE4
 .public ov10_022C4FC4
+.public ov29_022E34A8_EU
 .public ov29_022E42E8
 .public ov29_022E53F0
 .public ov29_022E543C
@@ -98,7 +101,6 @@
 .public ov29_0234B084
 .public ov29_0234B294
 .public ov29_023529A8
-.public ov29_02353538
 .public ov29_023536FC
 .public POISON_DAMAGE
 .public POISON_DAMAGE_COOLDOWN
@@ -107,7 +109,6 @@
 .public SpawnDroppedItemWrapper
 .public SPEED_BOOST_TURNS
 .public sub_0200D8AC
-.public GetExclusiveItemForMonsterFromBag
 .public sub_02050FF8
 .public SubFixedPoint
 .public SubstitutePlaceholderStringTags

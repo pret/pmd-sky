@@ -9,6 +9,7 @@
 .public BoostOffensiveStat
 .public CalcStatusDuration
 .public CeilFixedPoint
+.public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonRandInt
 .public EndCurseClassStatus
@@ -118,7 +119,6 @@
 .public ov29_02304BAC
 .public ov29_0234B09C
 .public ov29_0234B0B4
-.public ov29_02353538
 .public SafeguardIsActive
 .public ShouldDisplayEntityWrapper
 .public ShowPpRestoreEffect

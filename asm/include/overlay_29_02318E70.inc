@@ -5,6 +5,7 @@
 .public CanAttackInDirection
 .public CanSeeTarget
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EntityIsValid__02318E4C
@@ -48,7 +49,6 @@
 .public ov29_022E41AC
 .public ov29_022E543C
 .public ov29_0231A364
-.public ov29_02353538
 .public ov29_0237CA18
 .public ov29_0237CA20
 .public ov29_0237CA28

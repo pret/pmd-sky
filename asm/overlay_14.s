@@ -10,11 +10,11 @@ SentrySetupState: ; 0x0238A140
 	ldr r0, _0238A504 ; =0x000038D4
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _0238A508 ; =ov14_0238DB80
+	ldr r1, _0238A508 ; =SENTRY_DUTY_PTR
 	str r0, [r1]
 	add r0, r0, #0xa4
 	bl InitPreprocessorArgs
-	ldr r0, _0238A508 ; =ov14_0238DB80
+	ldr r0, _0238A508 ; =SENTRY_DUTY_PTR
 	mov r5, #0
 	ldr r1, [r0]
 	sub r3, r5, #1
@@ -88,7 +88,7 @@ _0238A25C:
 	str r2, [r1, #0x554]
 	cmp r5, #4
 	blt _0238A25C
-	ldr r2, _0238A508 ; =ov14_0238DB80
+	ldr r2, _0238A508 ; =SENTRY_DUTY_PTR
 	mov r0, #0
 	ldr r1, [r2]
 	mov r3, #0x60
@@ -110,12 +110,12 @@ _0238A2BC:
 	cmp r0, #6
 	blt _0238A2BC
 	bl GetHeroMemberIdx
-	ldr r1, _0238A508 ; =ov14_0238DB80
+	ldr r1, _0238A508 ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3800
 	strh r0, [r1, #0xd0]
 	bl GetPartnerMemberIdx
-	ldr r3, _0238A508 ; =ov14_0238DB80
+	ldr r3, _0238A508 ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r2, [r3]
 	add r2, r2, #0x3800
@@ -148,24 +148,32 @@ _0238A2BC:
 	ldr r2, [r3]
 	strb r1, [r2, #0xb]
 	bl ov14_0238AC04
-	ldr r0, _0238A508 ; =ov14_0238DB80
+	ldr r0, _0238A508 ; =SENTRY_DUTY_PTR
+#ifdef EUROPE
+	mov r1, #0xbd
+#else
 	mov r1, #0xad
+#endif
 	ldr r0, [r0]
 	mov r2, #0x8100000
 	add r0, r0, #0x120
 	bl LoadObjectAnimData
-	ldr r0, _0238A508 ; =ov14_0238DB80
+	ldr r0, _0238A508 ; =SENTRY_DUTY_PTR
 	ldr r2, _0238A50C ; =0x88080000
 	ldr r0, [r0]
+#ifdef EUROPE
+	mov r1, #0xdd
+#else
 	mov r1, #0xcd
+#endif
 	add r0, r0, #0x1e4
 	bl LoadObjectAnimData
-	ldr r0, _0238A508 ; =ov14_0238DB80
+	ldr r0, _0238A508 ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x2a8
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
-	ldr r0, _0238A508 ; =ov14_0238DB80
+	bl InitAnimDataFromOtherAnimDataVeneer
+	ldr r0, _0238A508 ; =SENTRY_DUTY_PTR
 	mov r1, #0x800
 	ldr r0, [r0]
 	mov r2, #0
@@ -173,7 +181,7 @@ _0238A2BC:
 	bl SetAnimDataFields2
 	mov sb, #0
 	ldr r5, _0238A510 ; =0xC8100000
-	ldr r4, _0238A508 ; =ov14_0238DB80
+	ldr r4, _0238A508 ; =SENTRY_DUTY_PTR
 	mov r7, #0x800
 	mov r6, sb
 	mov sl, #0xc4
@@ -183,7 +191,7 @@ _0238A3E8:
 	add r0, r1, #0x36c
 	add r0, r0, r8
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r4]
 	mov r1, r7
 	add r0, r0, #0x36c
@@ -195,7 +203,7 @@ _0238A3E8:
 	add r0, r0, #0xc00
 	add r0, r0, r8
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r4]
 	mov r1, r5
 	add r0, r0, #0x3ac
@@ -207,7 +215,7 @@ _0238A3E8:
 	add r0, r0, #0x1800
 	add r0, r0, r8
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r4]
 	mov r1, r5
 	arm_func_end SentrySetupState
@@ -222,7 +230,7 @@ ov14_0238A468: ; 0x0238A468
 	cmp sb, #0x10
 	blt _0238A3E8
 	ldr r8, _0238A510 ; =0xC8100000
-	ldr r7, _0238A508 ; =ov14_0238DB80
+	ldr r7, _0238A508 ; =SENTRY_DUTY_PTR
 	mov r5, #0
 	mov r6, #0xc4
 _0238A494:
@@ -232,7 +240,7 @@ _0238A494:
 	add r0, r0, #0x2800
 	add r0, r0, r4
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r7]
 	mov r1, r8
 	add r0, r0, #0x2c
@@ -242,7 +250,7 @@ _0238A494:
 	add r5, r5, #1
 	cmp r5, #2
 	blt _0238A494
-	ldr r0, _0238A508 ; =ov14_0238DB80
+	ldr r0, _0238A508 ; =SENTRY_DUTY_PTR
 	ldr r2, [r0]
 	ldr r0, [r2, #0x11c]
 	cmp r0, #2
@@ -251,13 +259,13 @@ _0238A494:
 	beq _0238A4FC
 	mov r1, #6
 	str r1, [r2, #0x108]
-	bl sub_02017B58
+	bl PlayBgmByIdVeneer
 _0238A4FC:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0238A504: .word 0x000038D4
-_0238A508: .word ov14_0238DB80
+_0238A508: .word SENTRY_DUTY_PTR
 _0238A50C: .word 0x88080000
 _0238A510: .word 0xC8100000
 	arm_func_end ov14_0238A468
@@ -265,7 +273,7 @@ _0238A510: .word 0xC8100000
 	arm_func_start ov14_0238A514
 ov14_0238A514: ; 0x0238A514
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238A6AC ; =ov14_0238DB80
+	ldr r0, _0238A6AC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #2
@@ -276,7 +284,7 @@ ov14_0238A514: ; 0x0238A514
 	beq _0238A540
 	bl sub_0202F334
 _0238A540:
-	ldr r0, _0238A6AC ; =ov14_0238DB80
+	ldr r0, _0238A6AC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #1
@@ -287,7 +295,7 @@ _0238A540:
 	beq _0238A568
 	bl sub_0202BC60
 _0238A568:
-	ldr r0, _0238A6AC ; =ov14_0238DB80
+	ldr r0, _0238A6AC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #4
@@ -298,7 +306,7 @@ _0238A568:
 	beq _0238A590
 	bl HidePortraitBox
 _0238A590:
-	ldr r0, _0238A6AC ; =ov14_0238DB80
+	ldr r0, _0238A6AC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #8
@@ -309,7 +317,7 @@ _0238A590:
 	beq _0238A5B8
 	bl sub_0202F954
 _0238A5B8:
-	ldr r0, _0238A6AC ; =ov14_0238DB80
+	ldr r0, _0238A6AC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x10
@@ -320,7 +328,7 @@ _0238A5B8:
 	beq _0238A5E0
 	bl sub_0202F954
 _0238A5E0:
-	ldr r0, _0238A6AC ; =ov14_0238DB80
+	ldr r0, _0238A6AC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x20
@@ -331,7 +339,7 @@ _0238A5E0:
 	beq _0238A608
 	bl sub_0202F954
 _0238A608:
-	ldr r0, _0238A6AC ; =ov14_0238DB80
+	ldr r0, _0238A6AC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x40
@@ -342,7 +350,7 @@ _0238A608:
 	beq _0238A630
 	bl HidePortraitBox
 _0238A630:
-	ldr r0, _0238A6AC ; =ov14_0238DB80
+	ldr r0, _0238A6AC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x80
@@ -353,7 +361,7 @@ _0238A630:
 	beq _0238A658
 	bl HidePortraitBox
 _0238A658:
-	ldr r0, _0238A6AC ; =ov14_0238DB80
+	ldr r0, _0238A6AC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x100
@@ -364,7 +372,7 @@ _0238A658:
 	beq _0238A680
 	bl HidePortraitBox
 _0238A680:
-	ldr r0, _0238A6AC ; =ov14_0238DB80
+	ldr r0, _0238A6AC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x200
@@ -376,13 +384,13 @@ _0238A680:
 	bl HidePortraitBox
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238A6AC: .word ov14_0238DB80
+_0238A6AC: .word SENTRY_DUTY_PTR
 	arm_func_end ov14_0238A514
 
 	arm_func_start ov14_0238A6B0
 ov14_0238A6B0: ; 0x0238A6B0
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #2
@@ -392,15 +400,15 @@ ov14_0238A6B0: ; 0x0238A6B0
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A710
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A710
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	bl FreeDialogueBox
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -410,7 +418,7 @@ _0238A710:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A71C:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #1
@@ -424,11 +432,11 @@ _0238A71C:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A778
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl FreeAdvancedMenu
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -438,7 +446,7 @@ _0238A778:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A784:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #4
@@ -452,11 +460,11 @@ _0238A784:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A7E0
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl FreePortraitBox
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -466,7 +474,7 @@ _0238A7E0:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A7EC:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #8
@@ -480,11 +488,11 @@ _0238A7EC:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A848
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl sub_0202F8FC
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -494,7 +502,7 @@ _0238A848:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A854:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x10
@@ -508,11 +516,11 @@ _0238A854:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A8B0
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_0202F8FC
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -522,7 +530,7 @@ _0238A8B0:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A8BC:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x20
@@ -536,11 +544,11 @@ _0238A8BC:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A918
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl sub_0202F8FC
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -550,7 +558,7 @@ _0238A918:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A924:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x40
@@ -564,11 +572,11 @@ _0238A924:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A980
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
 	bl FreePortraitBox
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -578,7 +586,7 @@ _0238A980:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A98C:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x80
@@ -592,11 +600,11 @@ _0238A98C:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A9E8
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #7]
 	bl FreePortraitBox
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -606,7 +614,7 @@ _0238A9E8:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A9F4:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x100
@@ -620,11 +628,11 @@ _0238A9F4:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AA50
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
 	bl FreePortraitBox
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -634,7 +642,7 @@ _0238AA50:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238AA5C:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x200
@@ -648,11 +656,11 @@ _0238AA5C:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AAB8
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #9]
 	bl FreePortraitBox
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -662,7 +670,7 @@ _0238AAB8:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238AAC4:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x40000000
@@ -672,15 +680,15 @@ _0238AAC4:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238AB20
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AB20
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl FreeNormalMenu
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	bl FreeSimpleMenu
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -690,7 +698,7 @@ _0238AB20:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238AB2C:
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x80000000
@@ -700,15 +708,15 @@ _0238AB2C:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238AB88
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AB88
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl FreeNormalMenu
-	ldr r0, _0238AB9C ; =ov14_0238DB80
+	bl FreeSimpleMenu
+	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -721,7 +729,7 @@ _0238AB94:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238AB9C: .word ov14_0238DB80
+_0238AB9C: .word SENTRY_DUTY_PTR
 	arm_func_end ov14_0238A6B0
 
 	arm_func_start ov14_0238ABA0
@@ -778,7 +786,7 @@ _0238AC3C: .word ov14_0238DB84
 	arm_func_start ov14_0238AC40
 ov14_0238AC40: ; 0x0238AC40
 	stmdb sp!, {r3, lr}
-	ldr r1, _0238ACE4 ; =ov14_0238DB80
+	ldr r1, _0238ACE4 ; =SENTRY_DUTY_PTR
 	ldr ip, [r1]
 	add r0, ip, #0x3000
 	ldr r2, [r0, #0x880]
@@ -790,8 +798,8 @@ ov14_0238AC40: ; 0x0238AC40
 	str r0, [ip, #0x114]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #1]
-	bl ShowDBox
-	ldr r0, _0238ACE4 ; =ov14_0238DB80
+	bl ShowDialogueBox
+	ldr r0, _0238ACE4 ; =SENTRY_DUTY_PTR
 	ldr r1, _0238ACE8 ; =0x00000408
 	ldr r3, [r0]
 	ldr r2, [r3, #0x114]
@@ -799,12 +807,12 @@ ov14_0238AC40: ; 0x0238AC40
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	add r3, r3, #0xa4
-	bl ShowMessageInDBox
-	ldr r0, _0238ACE4 ; =ov14_0238DB80
+	bl ShowMessageInDialogueBox
+	ldr r0, _0238ACE4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl ShowDBox
-	ldr r1, _0238ACE4 ; =ov14_0238DB80
+	bl ShowDialogueBox
+	ldr r1, _0238ACE4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r1]
 	add r0, r0, #0x3000
 	ldr r2, [r0, #0x888]
@@ -819,7 +827,7 @@ ov14_0238AC40: ; 0x0238AC40
 	str r0, [r2, #0x888]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238ACE4: .word ov14_0238DB80
+_0238ACE4: .word SENTRY_DUTY_PTR
 _0238ACE8: .word 0x00000408
 	arm_func_end ov14_0238AC40
 
@@ -842,7 +850,7 @@ ov14_0238AD04: ; 0x0238AD04
 	cmp r4, r1
 	beq _0238ADF0
 	bl sub_02027B58
-	ldr r0, _0238ADF8 ; =ov14_0238DB80
+	ldr r0, _0238ADF8 ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #4]
 	cmp r4, r0
@@ -856,7 +864,7 @@ ov14_0238AD04: ; 0x0238AD04
 	mov r0, r4
 	sub r2, r1, #3
 	bl sub_02026214
-	ldr r1, _0238ADF8 ; =ov14_0238DB80
+	ldr r1, _0238ADF8 ; =SENTRY_DUTY_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	add r1, r1, #0x3800
@@ -868,7 +876,7 @@ ov14_0238AD04: ; 0x0238AD04
 	add r3, sp, #0
 	bl sub_02026214
 _0238AD84:
-	ldr r0, _0238ADF8 ; =ov14_0238DB80
+	ldr r0, _0238ADF8 ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	cmp r4, r0
@@ -882,7 +890,7 @@ _0238AD84:
 	mov r0, r4
 	sub r2, r1, #3
 	bl sub_02026214
-	ldr r1, _0238ADF8 ; =ov14_0238DB80
+	ldr r1, _0238ADF8 ; =SENTRY_DUTY_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
 	add r1, r1, #0x3800
@@ -900,7 +908,7 @@ _0238ADF0:
 	add sp, sp, #0x18
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238ADF8: .word ov14_0238DB80
+_0238ADF8: .word SENTRY_DUTY_PTR
 	arm_func_end ov14_0238AD04
 
 	arm_func_start SentryUpdateDisplay
@@ -908,7 +916,7 @@ SentryUpdateDisplay: ; 0x0238ADFC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x6c
 	ldr r1, _0238B690 ; =ov14_0238D970
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r2, [r1, #0x14]
 	ldr r1, [r1, #0x10]
 	ldr r4, [r0]
@@ -935,7 +943,7 @@ SentryUpdateDisplay: ; 0x0238ADFC
 	cmp r1, #2
 	moveq r1, #3
 	ldr r4, _0238B698 ; =ov14_0238DA40
-	ldr r7, _0238B694 ; =ov14_0238DB80
+	ldr r7, _0238B694 ; =SENTRY_DUTY_PTR
 	streq r1, [r0, #0x540]
 	add sb, sp, #0x14
 	mov r8, r5
@@ -959,7 +967,7 @@ _0238AE88:
 	cmp r5, #4
 	blt _0238AE88
 _0238AECC:
-	ldr r7, _0238B694 ; =ov14_0238DB80
+	ldr r7, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r0, [r7]
 	add r0, r0, #0x3000
 	ldrb r0, [r0, #0x870]
@@ -1034,7 +1042,7 @@ _0238AFD0:
 	cmp sl, #4
 	blt _0238AF04
 _0238AFDC:
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r2, [r0]
 	add r0, r2, #0x3000
 	ldrb r1, [r0, #0x870]
@@ -1050,7 +1058,7 @@ _0238AFDC:
 	mov r2, #0
 	str r3, [sp, #0x18]
 	bl AnimRelatedFunction__022F7064
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	add r1, sp, #0x14
 	ldr r0, [r0]
 	mov r2, #0
@@ -1058,7 +1066,7 @@ _0238AFDC:
 	add r0, r0, #0x3400
 	bl AnimRelatedFunction__022F6F14
 _0238B038:
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r2, [r0]
 	add r0, r2, #0x3000
 	ldrb r1, [r0, #0x870]
@@ -1084,7 +1092,7 @@ _0238B078:
 	cmp r0, #0
 	bne _0238B1A8
 _0238B098:
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x3000
 	ldr r0, [r0, #0x534]
@@ -1096,7 +1104,7 @@ _0238B098:
 	mov r2, #0
 	bl SetAnimDataFields2
 _0238B0C4:
-	ldr r1, _0238B694 ; =ov14_0238DB80
+	ldr r1, _0238B694 ; =SENTRY_DUTY_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x3000
@@ -1112,7 +1120,7 @@ _0238B0EC:
 	add r0, r0, #0x2800
 	mov r2, #0
 	bl SetAnimDataFields2
-	ldr r1, _0238B694 ; =ov14_0238DB80
+	ldr r1, _0238B694 ; =SENTRY_DUTY_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x3000
@@ -1128,7 +1136,7 @@ _0238B128:
 	add r0, r0, #0x2800
 	mov r2, #0
 	bl SetAnimDataFields2
-	ldr r1, _0238B694 ; =ov14_0238DB80
+	ldr r1, _0238B694 ; =SENTRY_DUTY_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x3000
@@ -1148,7 +1156,7 @@ _0238B164:
 	mov r2, #0
 	bl SetAnimDataFields2
 _0238B184:
-	ldr r1, _0238B694 ; =ov14_0238DB80
+	ldr r1, _0238B694 ; =SENTRY_DUTY_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x3000
@@ -1158,7 +1166,7 @@ _0238B184:
 	add r0, r0, #0x3000
 	str r2, [r0, #0x538]
 _0238B1A8:
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r3, [r0]
 	add r0, r3, #0x3000
 	ldr r1, [r0, #0x534]
@@ -1175,7 +1183,7 @@ _0238B1DC:
 	mov sl, #0
 	ldr r8, _0238B6B0 ; =ov14_0238DB84
 	ldr r7, _0238B6B4 ; =ov14_0238DA60
-	ldr r5, _0238B694 ; =ov14_0238DB80
+	ldr r5, _0238B694 ; =SENTRY_DUTY_PTR
 	mov fp, sl
 	mov r6, #0xa000
 	mov r4, #0xc4
@@ -1204,7 +1212,7 @@ _0238B1F8:
 	add sl, sl, #1
 	cmp sl, #0x10
 	blt _0238B1F8
-	ldr r1, _0238B694 ; =ov14_0238DB80
+	ldr r1, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r0, [r1]
 	add r0, r0, #0x3000
 	ldr r3, [r0, #0x884]
@@ -1231,7 +1239,7 @@ _0238B1F8:
 	bl PreprocessString
 	mov r1, r4
 	str r1, [sp]
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r2, _0238B6C0 ; =ov14_0238DB18
 	ldr r0, [r0]
 	ldr r3, _0238B6B8 ; =0x0000C402
@@ -1240,7 +1248,7 @@ _0238B1F8:
 	mov r1, #0x400
 	bl PreprocessString
 _0238B2E4:
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x3000
 	ldr r0, [r0, #0x564]
@@ -1268,7 +1276,7 @@ _0238B2E4:
 	bl ov14_0238D828
 	mov r1, #1
 	str r1, [sp]
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	add r1, sp, #0x10
 	ldr r0, [r0]
 	add r2, sp, #0xc
@@ -1277,7 +1285,7 @@ _0238B2E4:
 	mov r3, #0x16
 	bl ov14_0238D828
 _0238B374:
-	ldr r1, _0238B694 ; =ov14_0238DB80
+	ldr r1, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r0, [r1]
 	add r0, r0, #0x3000
 	ldr r3, [r0, #0x88c]
@@ -1298,7 +1306,7 @@ _0238B374:
 	str r4, [sp]
 	bl PreprocessString
 _0238B3C4:
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x3000
 	ldr r0, [r0, #0x568]
@@ -1325,7 +1333,7 @@ _0238B3C4:
 	str r4, [sp]
 	bl ov14_0238D828
 _0238B42C:
-	ldr r4, _0238B694 ; =ov14_0238DB80
+	ldr r4, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r0, [r4]
 	add r0, r0, #0x3000
 	ldr r8, [r0, #0x56c]
@@ -1372,7 +1380,7 @@ _0238B4BC:
 	cmp r7, r0
 	blt _0238B4A0
 _0238B4D0:
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0x898]
@@ -1380,7 +1388,7 @@ _0238B4D0:
 _0238B4E4:
 	mov r0, #0x2600
 	mov r4, #0
-	ldr r6, _0238B694 ; =ov14_0238DB80
+	ldr r6, _0238B694 ; =SENTRY_DUTY_PTR
 	str r0, [sp, #0x18]
 	add r8, sp, #0x14
 	mov r7, r4
@@ -1400,7 +1408,7 @@ _0238B500:
 	add r4, r4, #1
 	cmp r4, #2
 	blt _0238B500
-	ldr r6, _0238B694 ; =ov14_0238DB80
+	ldr r6, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r0, [r6]
 	add r0, r0, #0x3000
 	ldrb r1, [r0, #0x870]
@@ -1426,7 +1434,7 @@ _0238B574:
 	add r4, r4, #1
 	cmp r4, #4
 	blt _0238B574
-	ldr r0, _0238B694 ; =ov14_0238DB80
+	ldr r0, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x53c]
@@ -1435,7 +1443,7 @@ _0238B574:
 	ldr r0, _0238B6D4 ; =0x00002C05
 	bl sub_02017C80
 _0238B5BC:
-	ldr r6, _0238B694 ; =ov14_0238DB80
+	ldr r6, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r0, [r6]
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x53c]
@@ -1495,7 +1503,7 @@ _0238B688:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0238B690: .word ov14_0238D970
-_0238B694: .word ov14_0238DB80
+_0238B694: .word SENTRY_DUTY_PTR
 _0238B698: .word ov14_0238DA40
 _0238B69C: .word 0x00000806
 _0238B6A0: .word 0x00001005
@@ -1517,30 +1525,30 @@ _0238B6D4: .word 0x00002C05
 	arm_func_start SentrySetExitingState
 SentrySetExitingState: ; 0x0238B6D8
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238B704 ; =ov14_0238DB80
+	ldr r0, _0238B704 ; =SENTRY_DUTY_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #0x118]
 	bl ov14_0238A514
-	ldr r0, _0238B704 ; =ov14_0238DB80
+	ldr r0, _0238B704 ; =SENTRY_DUTY_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #0x104]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238B704: .word ov14_0238DB80
+_0238B704: .word SENTRY_DUTY_PTR
 	arm_func_end SentrySetExitingState
 
 	arm_func_start ov14_0238B708
 ov14_0238B708: ; 0x0238B708
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r0, _0238B7F8 ; =ov14_0238DB80
+	ldr r0, _0238B7F8 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, r0, #0x2a8
 	bl ov11_022F6EFC
-	ldr r7, _0238B7F8 ; =ov14_0238DB80
+	ldr r7, _0238B7F8 ; =SENTRY_DUTY_PTR
 	mov r4, #0
 	mov r6, #0xc4
 _0238B730:
@@ -1562,7 +1570,7 @@ _0238B730:
 	add r4, r4, #1
 	cmp r4, #0x10
 	blt _0238B730
-	ldr r5, _0238B7F8 ; =ov14_0238DB80
+	ldr r5, _0238B7F8 ; =SENTRY_DUTY_PTR
 	mov r6, #0
 	mov r4, #0xc4
 _0238B784:
@@ -1574,37 +1582,37 @@ _0238B784:
 	add r6, r6, #1
 	cmp r6, #2
 	blt _0238B784
-	ldr r0, _0238B7F8 ; =ov14_0238DB80
+	ldr r0, _0238B7F8 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x120
 	bl ov11_022F6EFC
-	ldr r0, _0238B7F8 ; =ov14_0238DB80
+	ldr r0, _0238B7F8 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1e4
 	bl ov11_022F6EFC
-	ldr r0, _0238B7F8 ; =ov14_0238DB80
+	ldr r0, _0238B7F8 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x11c]
 	cmp r0, #2
 	beq _0238B7DC
 	bl sub_02017B70
 _0238B7DC:
-	ldr r0, _0238B7F8 ; =ov14_0238DB80
+	ldr r0, _0238B7F8 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0238B7F8 ; =ov14_0238DB80
+	ldr r0, _0238B7F8 ; =SENTRY_DUTY_PTR
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0238B7F8: .word ov14_0238DB80
+_0238B7F8: .word SENTRY_DUTY_PTR
 	arm_func_end ov14_0238B708
 
 	arm_func_start SentryRunState
 SentryRunState: ; 0x0238B7FC
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r2, [r0]
 	ldr r1, [r2, #0x104]
 	cmp r1, #3
@@ -1629,11 +1637,11 @@ _0238B84C:
 	mov r1, #0
 	str r1, [r2, #0x10c]
 	ldr r1, [r0]
-	ldr r0, _0238C130 ; =ov14_0238DB94
+	ldr r0, _0238C130 ; =SENTRY_DUTY_STATE_HANDLER_TABLE
 	ldr r1, [r1, #0x108]
 	ldr r0, [r0, r1, lsl #2]
 	blx r0
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r3, [r0]
 	ldr r1, [r3, #0x108]
 	ldr r2, [r3, #0x110]
@@ -1644,13 +1652,13 @@ _0238B84C:
 	bne _0238B8A4
 	str r2, [r3, #0x108]
 	ldr r1, [r0]
-	ldr r0, _0238C130 ; =ov14_0238DB94
+	ldr r0, _0238C130 ; =SENTRY_DUTY_STATE_HANDLER_TABLE
 	ldr r1, [r1, #0x108]
 	ldr r0, [r0, r1, lsl #2]
 	blx r0
 _0238B8A4:
 	bl ov14_0238A514
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #0x10c]
@@ -1659,7 +1667,7 @@ _0238B8BC:
 	bl ov14_0238A6B0
 	cmp r0, #0
 	beq _0238C0D8
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r3, [r1]
 	ldr r0, [r3, #0x118]
 	tst r0, #1
@@ -1688,7 +1696,7 @@ _0238B8BC:
 	add r2, r2, #0xc
 	str r4, [sp, #4]
 	bl CreateAdvancedMenu
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1]
 	b _0238B96C
@@ -1698,11 +1706,11 @@ _0238B94C:
 	add r2, r2, #0xc
 	str r4, [sp, #4]
 	bl CreateAdvancedMenu
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1]
 _0238B96C:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r3, [r0]
 	ldr r1, [r3, #0x118]
 	tst r1, #2
@@ -1717,16 +1725,16 @@ _0238B96C:
 	cmp r1, r0
 	bne _0238B9B8
 	ldr r0, _0238C148 ; =ov14_0238D9B8
-	bl CreateDBox
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	bl CreateDialogueBox
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #1]
 _0238B9B8:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl ShowDBox
-	ldr r2, _0238C12C ; =ov14_0238DB80
+	bl ShowDialogueBox
+	ldr r2, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r0, [r2]
 	ldr r1, [r0, #0x108]
 	cmp r1, #0x21
@@ -1989,7 +1997,7 @@ _0238BD48:
 _0238BD68:
 	ldr r4, _0238C144 ; =0x00003018
 _0238BD6C:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r2, [r0]
 	ldr r1, [r2, #0x114]
 	cmp r1, r5
@@ -2002,9 +2010,9 @@ _0238BD6C:
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	add r3, r3, #0xa4
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _0238BDA4:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #4
@@ -2017,30 +2025,30 @@ _0238BDA4:
 	mov r1, #3
 	mov r2, #1
 	bl CreatePortraitBox
-	ldr r2, _0238C12C ; =ov14_0238DB80
+	ldr r2, _0238C12C ; =SENTRY_DUTY_PTR
 	mov r1, #0x32
 	ldr r3, [r2]
 	strb r0, [r3, #2]
 	ldr r0, [r2]
 	add r0, r0, #0xf4
 	bl InitPortraitBoxWithMonsterId
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xf4
 	bl SetPortraitLayout
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xf4
 	bl SetPortraitEmotion
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #2]
 	add r1, r1, #0xf4
 	bl ShowPortraitBox
 _0238BE30:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #8
@@ -2051,12 +2059,12 @@ _0238BE30:
 	bne _0238BE6C
 	ldr r0, _0238C1A4 ; =ov14_0238D9F8
 	ldr r1, _0238C1A8 ; =ov14_0238ACEC
-	bl sub_0202F8C4
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	bl CreateTextBox1
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #3]
 _0238BE6C:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x10
@@ -2067,12 +2075,12 @@ _0238BE6C:
 	bne _0238BEA8
 	ldr r0, _0238C1AC ; =ov14_0238D988
 	ldr r1, _0238C1B0 ; =ov14_0238AD04
-	bl sub_0202F8C4
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	bl CreateTextBox1
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #4]
 _0238BEA8:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x20
@@ -2083,12 +2091,12 @@ _0238BEA8:
 	bne _0238BEE4
 	ldr r0, _0238C1B4 ; =ov14_0238D998
 	ldr r1, _0238C1B0 ; =ov14_0238AD04
-	bl sub_0202F8C4
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	bl CreateTextBox1
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #5]
 _0238BEE4:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x40
@@ -2101,11 +2109,11 @@ _0238BEE4:
 	mov r2, r0
 	mov r1, #3
 	bl CreatePortraitBox
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #6]
 _0238BF24:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x80
@@ -2118,11 +2126,11 @@ _0238BF24:
 	mov r2, r0
 	mov r1, #4
 	bl CreatePortraitBox
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #7]
 _0238BF64:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x100
@@ -2135,11 +2143,11 @@ _0238BF64:
 	mov r2, r0
 	mov r1, #5
 	bl CreatePortraitBox
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #8]
 _0238BFA4:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x200
@@ -2152,11 +2160,11 @@ _0238BFA4:
 	mov r2, r0
 	mov r1, #6
 	bl CreatePortraitBox
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #9]
 _0238BFE4:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x40000000
@@ -2171,12 +2179,12 @@ _0238BFE4:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
 _0238C030:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x118]
 	tst r0, #0x80000000
@@ -2191,12 +2199,12 @@ _0238C030:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
-	ldr r1, _0238C12C ; =ov14_0238DB80
+	bl CreateSimpleMenuWrapper
+	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xb]
 _0238C07C:
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0, #0x10c]
@@ -2206,7 +2214,7 @@ _0238C090:
 	tst r0, #2
 	beq _0238C0B0
 	ldrsb r0, [r2, #1]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r0, #0
 	bne _0238C0B4
@@ -2215,7 +2223,7 @@ _0238C0B0:
 _0238C0B4:
 	cmp r0, #0
 	beq _0238C0D8
-	ldr r0, _0238C12C ; =ov14_0238DB80
+	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	str r2, [r1, #0x10c]
@@ -2228,7 +2236,7 @@ _0238C0D8:
 _0238C0E0:
 	bl ov14_0238A6B0
 	cmp r0, #0
-	ldrne r0, _0238C12C ; =ov14_0238DB80
+	ldrne r0, _0238C12C ; =SENTRY_DUTY_PTR
 	movne r1, #2
 	ldrne r0, [r0]
 	strne r1, [r0, #0x104]
@@ -2249,8 +2257,8 @@ _0238C124:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0238C12C: .word ov14_0238DB80
-_0238C130: .word ov14_0238DB94
+_0238C12C: .word SENTRY_DUTY_PTR
+_0238C130: .word SENTRY_DUTY_STATE_HANDLER_TABLE
 _0238C134: .word 0x04080800
 _0238C138: .word ov14_0238D9C8
 _0238C13C: .word ov14_0238ABA0
@@ -2292,7 +2300,7 @@ _0238C1C4: .word ov14_0238DA08
 
 	arm_func_start SentrySetStateIntermediate
 SentrySetStateIntermediate: ; 0x0238C1C8
-	ldr r1, _0238C1E4 ; =ov14_0238DB80
+	ldr r1, _0238C1E4 ; =SENTRY_DUTY_PTR
 	mov r3, #3
 	ldr r2, [r1]
 	str r3, [r2, #0x10c]
@@ -2300,12 +2308,12 @@ SentrySetStateIntermediate: ; 0x0238C1C8
 	str r0, [r1, #0x110]
 	bx lr
 	.align 2, 0
-_0238C1E4: .word ov14_0238DB80
+_0238C1E4: .word SENTRY_DUTY_PTR
 	arm_func_end SentrySetStateIntermediate
 
 	arm_func_start SentryState0
 SentryState0: ; 0x0238C1E8
-	ldr r0, _0238C208 ; =ov14_0238DB80
+	ldr r0, _0238C208 ; =SENTRY_DUTY_PTR
 	mov r3, #0x80000000
 	ldr r2, [r0]
 	mov r1, #1
@@ -2314,22 +2322,22 @@ SentryState0: ; 0x0238C1E8
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C208: .word ov14_0238DB80
+_0238C208: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState0
 
 	arm_func_start SentryState1
 SentryState1: ; 0x0238C20C
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238C260 ; =ov14_0238DB80
+	ldr r0, _0238C260 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0238C260 ; =ov14_0238DB80
+	ldr r0, _0238C260 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #8
 	beq _0238C248
 	cmp r0, #9
@@ -2343,12 +2351,12 @@ _0238C254:
 	bl SentrySetStateIntermediate
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C260: .word ov14_0238DB80
+_0238C260: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState1
 
 	arm_func_start SentryState2
 SentryState2: ; 0x0238C264
-	ldr r0, _0238C284 ; =ov14_0238DB80
+	ldr r0, _0238C284 ; =SENTRY_DUTY_PTR
 	mov r3, #0x40000000
 	ldr r2, [r0]
 	mov r1, #3
@@ -2357,22 +2365,22 @@ SentryState2: ; 0x0238C264
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C284: .word ov14_0238DB80
+_0238C284: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState2
 
 	arm_func_start SentryState3
 SentryState3: ; 0x0238C288
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238C3AC ; =ov14_0238DB80
+	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	ldr r0, _0238C3AC ; =ov14_0238DB80
+	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	add r0, r0, #1
 	cmp r0, #8
 	addls pc, pc, r0, lsl #2
@@ -2388,56 +2396,56 @@ _0238C2C4: ; jump table
 	b _0238C378 ; case 7
 	b _0238C390 ; case 8
 _0238C2E8:
-	ldr r0, _0238C3AC ; =ov14_0238DB80
+	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x890]
 	b _0238C3A4
 _0238C300:
-	ldr r0, _0238C3AC ; =ov14_0238DB80
+	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x890]
 	b _0238C3A4
 _0238C318:
-	ldr r0, _0238C3AC ; =ov14_0238DB80
+	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	mov r1, #2
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x890]
 	b _0238C3A4
 _0238C330:
-	ldr r0, _0238C3AC ; =ov14_0238DB80
+	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	mov r1, #3
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x890]
 	b _0238C3A4
 _0238C348:
-	ldr r0, _0238C3AC ; =ov14_0238DB80
+	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x890]
 	b _0238C3A4
 _0238C360:
-	ldr r0, _0238C3AC ; =ov14_0238DB80
+	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	mov r1, #5
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x890]
 	b _0238C3A4
 _0238C378:
-	ldr r0, _0238C3AC ; =ov14_0238DB80
+	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	mov r1, #6
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	str r1, [r0, #0x890]
 	b _0238C3A4
 _0238C390:
-	ldr r0, _0238C3AC ; =ov14_0238DB80
+	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	mov r1, #7
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -2446,12 +2454,12 @@ _0238C3A4:
 	bl SentrySetExitingState
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C3AC: .word ov14_0238DB80
+_0238C3AC: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState3
 
 	arm_func_start SentryState4
 SentryState4: ; 0x0238C3B0
-	ldr r0, _0238C3D0 ; =ov14_0238DB80
+	ldr r0, _0238C3D0 ; =SENTRY_DUTY_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #5
@@ -2460,7 +2468,7 @@ SentryState4: ; 0x0238C3B0
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C3D0: .word ov14_0238DB80
+_0238C3D0: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState4
 
 	arm_func_start SentryStateExit
@@ -2473,7 +2481,7 @@ _0238C3DC: .word SentrySetExitingState
 
 	arm_func_start SentryState6
 SentryState6: ; 0x0238C3E0
-	ldr r0, _0238C400 ; =ov14_0238DB80
+	ldr r0, _0238C400 ; =SENTRY_DUTY_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #7
@@ -2482,23 +2490,23 @@ SentryState6: ; 0x0238C3E0
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C400: .word ov14_0238DB80
+_0238C400: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState6
 
 	arm_func_start SentryState7
 SentryState7: ; 0x0238C404
-	ldr r0, _0238C418 ; =ov14_0238DB80
+	ldr r0, _0238C418 ; =SENTRY_DUTY_PTR
 	mov r1, #8
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C418: .word ov14_0238DB80
+_0238C418: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState7
 
 	arm_func_start SentryState8
 SentryState8: ; 0x0238C41C
-	ldr r0, _0238C43C ; =ov14_0238DB80
+	ldr r0, _0238C43C ; =SENTRY_DUTY_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #9
@@ -2507,12 +2515,12 @@ SentryState8: ; 0x0238C41C
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C43C: .word ov14_0238DB80
+_0238C43C: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState8
 
 	arm_func_start SentryState9
 SentryState9: ; 0x0238C440
-	ldr r0, _0238C460 ; =ov14_0238DB80
+	ldr r0, _0238C460 ; =SENTRY_DUTY_PTR
 	mov r3, #2
 	ldr r2, [r0]
 	mov r1, #0xc
@@ -2521,43 +2529,43 @@ SentryState9: ; 0x0238C440
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C460: .word ov14_0238DB80
+_0238C460: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState9
 
 	arm_func_start SentryStateA
 SentryStateA: ; 0x0238C464
-	ldr r0, _0238C478 ; =ov14_0238DB80
+	ldr r0, _0238C478 ; =SENTRY_DUTY_PTR
 	mov r1, #0xb
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C478: .word ov14_0238DB80
+_0238C478: .word SENTRY_DUTY_PTR
 	arm_func_end SentryStateA
 
 	arm_func_start SentryStateB
 SentryStateB: ; 0x0238C47C
-	ldr r0, _0238C490 ; =ov14_0238DB80
+	ldr r0, _0238C490 ; =SENTRY_DUTY_PTR
 	mov r1, #0xc
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238C490: .word ov14_0238DB80
+_0238C490: .word SENTRY_DUTY_PTR
 	arm_func_end SentryStateB
 
 	arm_func_start SentryStateGenerateChoices
 SentryStateGenerateChoices: ; 0x0238C494
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x20
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r1, _0238CA58 ; =0x000003FA
 	ldr r0, [r0]
 	str r1, [r0, #0x118]
 	bl GetHero
 	mov r6, r0
 	bl GetPartner
-	ldr r2, _0238CA54 ; =ov14_0238DB80
+	ldr r2, _0238CA54 ; =SENTRY_DUTY_PTR
 	mov r5, r0
 	ldr r1, [r2]
 	mov r0, #0
@@ -2569,7 +2577,7 @@ SentryStateGenerateChoices: ; 0x0238C494
 	mov r1, #4
 	str r3, [r2, #0x894]
 	bl RandRange
-	ldr r2, _0238CA54 ; =ov14_0238DB80
+	ldr r2, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x3000
 	str r0, [r1, #0x888]
@@ -2596,7 +2604,7 @@ SentryStateGenerateChoices: ; 0x0238C494
 	mov r0, #0
 	mov r1, #4
 	bl RandRange
-	ldr r1, _0238CA54 ; =ov14_0238DB80
+	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	str r0, [r1, #0x87c]
@@ -2604,7 +2612,7 @@ _0238C564:
 	mov r0, #0
 	mov r1, #0x65
 	bl RandRange
-	ldr r2, _0238CA54 ; =ov14_0238DB80
+	ldr r2, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r3, _0238CA60 ; =SENTRY_DUTY_MONSTER_IDS
 	ldr r1, [r2]
 	add r1, r1, #0x3000
@@ -2628,7 +2636,7 @@ _0238C564:
 	ldrsh r1, [r1, #0xa2]
 	cmp r1, r0
 	beq _0238C564
-	ldr r1, _0238CA54 ; =ov14_0238DB80
+	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldrsh r0, [r5, #4]
 	ldr r2, [r1]
 	add r1, r2, #0x3000
@@ -2641,7 +2649,7 @@ _0238C564:
 	ldrne r0, _0238CA64 ; =0x00000119
 	cmpne r4, r0
 	beq _0238C564
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	mov r8, #0
 	ldr r4, [r0]
 	add r2, r4, #0x3000
@@ -2663,7 +2671,7 @@ _0238C640:
 _0238C648:
 	cmp r8, r0
 	blt _0238C564
-	ldr r1, _0238CA54 ; =ov14_0238DB80
+	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	mov sb, #0
 	ldr r2, [r1]
 	add r1, r2, #0x3000
@@ -2672,7 +2680,7 @@ _0238C648:
 	add r0, r0, #0x3000
 	str r1, [r0, #0x8b8]
 _0238C670:
-	ldr sl, _0238CA54 ; =ov14_0238DB80
+	ldr sl, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r0, [sl]
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x87c]
@@ -2731,19 +2739,19 @@ _0238C72C:
 	blt _0238C670
 	ldr r0, _0238CA68 ; =ov14_0238DB2C
 	bl DebugPrint0
-	ldr r1, _0238CA54 ; =ov14_0238DB80
+	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r0, _0238CA6C ; =ov14_0238DB44
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	ldr r1, [r1, #0x880]
 	bl DebugPrint0
-	ldr r1, _0238CA54 ; =ov14_0238DB80
+	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r0, _0238CA70 ; =ov14_0238DB58
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	ldr r1, [r1, #0x87c]
 	bl DebugPrint0
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r2, _0238CA74 ; =0x880A0000
 	ldr r3, [r0]
 	add r0, r3, #0x3000
@@ -2754,27 +2762,27 @@ _0238C72C:
 	add r0, r0, #0x3000
 	mov r1, r1, asr #0x10
 	bl ov11_022F6FE0
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r1, _0238CA78 ; =0x00001001
 	ldr r0, [r0]
 	mov r2, #0
 	add r0, r0, #0x3a8
 	add r0, r0, #0x3000
 	bl SetAnimDataFields2
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x6c
 	add r0, r0, #0x3400
 	add r1, r1, #0x1e4
-	bl ov11_022F6F08
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	bl InitAnimDataFromOtherAnimDataVeneer
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r1, _0238CA7C ; =0x00001003
 	ldr r0, [r0]
 	mov r2, #0
 	add r0, r0, #0x6c
 	add r0, r0, #0x3400
 	bl SetAnimDataFields2
-	ldr r1, _0238CA54 ; =ov14_0238DB80
+	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	mov r2, #0x60
 	ldr r0, [r1]
 	add r0, r0, #0x3000
@@ -2783,21 +2791,21 @@ _0238C72C:
 	add r0, r1, #0x1b4
 	add r0, r0, #0x2800
 	add r1, r1, #0x120
-	bl ov11_022F6F08
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	bl InitAnimDataFromOtherAnimDataVeneer
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r1, _0238CA80 ; =0x48140000
 	ldr r0, [r0]
 	add r0, r0, #0x1b4
 	add r0, r0, #0x2800
 	bl SetAnimDataFieldsWrapper
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	mov r1, #0x800
 	ldr r0, [r0]
 	mov r2, #0
 	add r0, r0, #0x1b4
 	add r0, r0, #0x2800
 	bl SetAnimDataFields2
-	ldr r4, _0238CA54 ; =ov14_0238DB80
+	ldr r4, _0238CA54 ; =SENTRY_DUTY_PTR
 	mov sb, #0
 	ldr r0, [r4]
 	ldr r1, _0238CA84 ; =ov14_0238D970
@@ -2836,7 +2844,7 @@ _0238C88C:
 	add r0, r0, #0x2c00
 	add r0, r0, r8
 	add r1, r1, #0x120
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r4]
 	ldr r1, _0238CA80 ; =0x48140000
 	add r0, r0, #0x188
@@ -2856,7 +2864,7 @@ _0238C88C:
 	add r0, r0, #0x3000
 	add r0, r0, r8
 	add r1, r1, #0x120
-	bl ov11_022F6F08
+	bl InitAnimDataFromOtherAnimDataVeneer
 	cmp sb, #3
 	addls pc, pc, sb, lsl #2
 	b _0238C984
@@ -2902,15 +2910,15 @@ _0238C9C0:
 	mov sb, r0, asr #0x10
 	cmp sb, #4
 	blt _0238C88C
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl ov14_0238AD04
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl ov14_0238AD04
-	ldr r0, _0238CA54 ; =ov14_0238DB80
+	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
@@ -2918,14 +2926,14 @@ _0238C9C0:
 	beq _0238CA10
 	bl sub_02027B58
 _0238CA10:
-	ldr r1, _0238CA54 ; =ov14_0238DB80
+	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r0, _0238CA90 ; =0x00002C04
 	ldr r1, [r1]
 	mov r2, #1
 	add r1, r1, #0x3000
 	strb r2, [r1, #0x870]
 	bl sub_02017C80
-	ldr r1, _0238CA54 ; =ov14_0238DB80
+	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	mov r3, #2
 	ldr r0, [r1]
 	mov r2, #0xd
@@ -2936,7 +2944,7 @@ _0238CA10:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0238CA54: .word ov14_0238DB80
+_0238CA54: .word SENTRY_DUTY_PTR
 _0238CA58: .word 0x000003FA
 _0238CA5C: .word 0x000005DC
 _0238CA60: .word SENTRY_DUTY_MONSTER_IDS
@@ -2958,7 +2966,7 @@ _0238CA90: .word 0x00002C04
 SentryStateGetUserChoice: ; 0x0238CA94
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x38
-	ldr r2, _0238CFA4 ; =ov14_0238DB80
+	ldr r2, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #0x3c
 	ldr r0, [r2]
 	add r0, r0, #0x3000
@@ -2980,7 +2988,7 @@ SentryStateGetUserChoice: ; 0x0238CA94
 	rsb r0, r1, r8, lsl #28
 	add r0, r1, r0, ror #28
 	bl ov14_0238AC04
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #0x3c
 	ldr r4, [r0]
 	add r0, r4, #0x3000
@@ -3024,7 +3032,7 @@ _0238CB64:
 	add r5, r6, #0x28
 	cmp r3, r5
 	bgt _0238CBB8
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r4, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3049,14 +3057,14 @@ _0238CBCC:
 _0238CBEC:
 	cmp r4, #0
 	beq _0238CCCC
-	ldr r1, _0238CFA4 ; =ov14_0238DB80
+	ldr r1, _0238CFA4 ; =SENTRY_DUTY_PTR
 	ldr r0, _0238CFAC ; =0x00003F02
 	ldr r1, [r1]
 	mov r2, #0
 	add r1, r1, #0x3000
 	str r2, [r1, #0x8ac]
 	bl sub_02017C80
-	ldr r2, _0238CFA4 ; =ov14_0238DB80
+	ldr r2, _0238CFA4 ; =SENTRY_DUTY_PTR
 	ldr r1, [r2]
 	add r0, r1, #0x3000
 	ldr r0, [r0, #0x878]
@@ -3091,41 +3099,25 @@ _0238CC7C:
 	mov r0, #4
 	str r0, [r1, #0x538]
 	ldr r3, [r2]
-	arm_func_end SentryStateGetUserChoice
-
-	arm_func_start ov14_0238CC94
-ov14_0238CC94: ; 0x0238CC94
 	mov r2, #3
 	add r0, r3, #0x3000
 	ldr r1, [r0, #0x878]
 	mov r0, #0x10
 	add r1, r3, r1, lsl #2
-	arm_func_end ov14_0238CC94
-
-	arm_func_start ov14_0238CCA8
-ov14_0238CCA8: ; 0x0238CCA8
 	add r1, r1, #0x3000
 	str r2, [r1, #0x554]
 	bl SentrySetStateIntermediate
 	b _0238CCE0
 _0238CCB8:
 	mov r2, #5
-	arm_func_end ov14_0238CCA8
-
-	arm_func_start ov14_0238CCBC
-ov14_0238CCBC: ; 0x0238CCBC
 	mov r0, #0x14
 	str r2, [r1, #0x538]
 	bl SentrySetStateIntermediate
 	b _0238CCE0
 _0238CCCC:
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #3
 	ldr r0, [r0]
-	arm_func_end ov14_0238CCBC
-
-	arm_func_start ov14_0238CCD8
-ov14_0238CCD8: ; 0x0238CCD8
 	add r0, r0, #0x3000
 	str r1, [r0, #0x538]
 _0238CCE0:
@@ -3133,13 +3125,9 @@ _0238CCE0:
 	tst r0, #0xf0
 	beq _0238CCF4
 	ldr r0, _0238CFB4 ; =0x00003F01
-	arm_func_end ov14_0238CCD8
-
-	arm_func_start ov14_0238CCF0
-ov14_0238CCF0: ; 0x0238CCF0
 	bl sub_02017C80
 _0238CCF4:
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0x878]
@@ -3158,7 +3146,7 @@ _0238CD20:
 	strne r1, [r0, #0x878]
 	tst r2, #0x10
 	beq _0238CF14
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3171,7 +3159,7 @@ _0238CD50:
 	strne r1, [r0, #0x878]
 	tst r2, #0x20
 	beq _0238CF14
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3184,7 +3172,7 @@ _0238CD80:
 	strne r1, [r0, #0x878]
 	tst r2, #0x10
 	beq _0238CF14
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #3
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3197,7 +3185,7 @@ _0238CDB0:
 	strne r1, [r0, #0x878]
 	tst r2, #0x20
 	beq _0238CF14
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #2
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3206,7 +3194,7 @@ _0238CDB0:
 _0238CDE0:
 	add r0, r4, #0x3000
 	mov r2, #1
-	ldr r1, _0238CFA4 ; =ov14_0238DB80
+	ldr r1, _0238CFA4 ; =SENTRY_DUTY_PTR
 	strb r2, [r0, #0x871]
 	ldr r0, [r1]
 	mov r2, #2
@@ -3216,7 +3204,7 @@ _0238CDE0:
 	bl SentrySetStateIntermediate
 	b _0238CF14
 _0238CE0C:
-	ldr r4, _0238CFA4 ; =ov14_0238DB80
+	ldr r4, _0238CFA4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r4]
 	add r0, r0, #0x3000
 	ldrb r1, [r0, #0x89d]
@@ -3295,7 +3283,7 @@ _0238CF14:
 _0238CF1C:
 	cmp r8, #5
 	blt _0238CF5C
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldrb r0, [r0, #0x89e]
@@ -3304,7 +3292,7 @@ _0238CF1C:
 	bl ov14_0238AC40
 	ldr r0, _0238CFC0 ; =0x00002C06
 	bl sub_02017C80
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3312,7 +3300,7 @@ _0238CF1C:
 _0238CF5C:
 	cmp r8, #0xb
 	blt _0238CF9C
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldrb r0, [r0, #0x89f]
@@ -3321,7 +3309,7 @@ _0238CF5C:
 	bl ov14_0238AC40
 	ldr r0, _0238CFC0 ; =0x00002C06
 	bl sub_02017C80
-	ldr r0, _0238CFA4 ; =ov14_0238DB80
+	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3330,7 +3318,7 @@ _0238CF9C:
 	add sp, sp, #0x38
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0238CFA4: .word ov14_0238DB80
+_0238CFA4: .word SENTRY_DUTY_PTR
 _0238CFA8: .word ov14_0238DA20
 _0238CFAC: .word 0x00003F02
 _0238CFB0: .word 0x00003F03
@@ -3338,13 +3326,13 @@ _0238CFB4: .word 0x00003F01
 _0238CFB8: .word ov14_0238D96C
 _0238CFBC: .word ov14_0238DA80
 _0238CFC0: .word 0x00002C06
-	arm_func_end ov14_0238CCF0
+	arm_func_end SentryStateGetUserChoice
 
 	arm_func_start SentryStateFinalizeRound
 SentryStateFinalizeRound: ; 0x0238CFC4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x20
-	ldr r2, _0238D2FC ; =ov14_0238DB80
+	ldr r2, _0238D2FC ; =SENTRY_DUTY_PTR
 	mov r0, #0
 	ldr r1, [r2]
 	add r1, r1, #0x3000
@@ -3364,17 +3352,17 @@ SentryStateFinalizeRound: ; 0x0238CFC4
 	bl ov14_0238AC04
 	cmp r4, #0
 	beq _0238D078
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3a8
 	add r0, r0, #0x3000
 	bl ov11_022F7058
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x6c
 	add r0, r0, #0x3400
 	bl ov11_022F6EFC
-	ldr r1, _0238D2FC ; =ov14_0238DB80
+	ldr r1, _0238D2FC ; =SENTRY_DUTY_PTR
 	mov r3, #1
 	ldr r0, [r1]
 	mov r2, #0
@@ -3389,7 +3377,7 @@ SentryStateFinalizeRound: ; 0x0238CFC4
 	bl ov11_022F6EFC
 _0238D078:
 	ldr r0, _0238D300 ; =ov14_0238D970
-	ldr r4, _0238D2FC ; =ov14_0238DB80
+	ldr r4, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r6, [r0, #8]
 	ldr r5, [r0, #0xc]
 	mov r7, #0
@@ -3459,23 +3447,23 @@ _0238D160:
 	mov r7, r0, asr #0x10
 	cmp r7, #4
 	blt _0238D09C
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_02027B58
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl sub_02027AF0
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl sub_02027B58
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl sub_02027AF0
-	ldr r1, _0238D2FC ; =ov14_0238DB80
+	ldr r1, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r3, [r1]
 	add r0, r3, #0x3000
 	ldr r2, [r0, #0x884]
@@ -3491,7 +3479,7 @@ _0238D160:
 	bl SetSentryDutyGamePoints
 	cmp r0, #0
 	beq _0238D25C
-	ldr r1, _0238D2FC ; =ov14_0238DB80
+	ldr r1, _0238D2FC ; =SENTRY_DUTY_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x3000
@@ -3502,7 +3490,7 @@ _0238D160:
 	cmp r1, #0xfa0
 	movgt r1, #1
 	strgt r1, [r0, #0x890]
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r1, _0238D304 ; =0x00001B58
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3510,7 +3498,7 @@ _0238D160:
 	cmp r2, r1
 	movgt r1, #2
 	strgt r1, [r0, #0x890]
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldrb r1, [r0, #0x89c]
@@ -3518,7 +3506,7 @@ _0238D160:
 	movne r1, #3
 	b _0238D2C0
 _0238D25C:
-	ldr r1, _0238D2FC ; =ov14_0238DB80
+	ldr r1, _0238D2FC ; =SENTRY_DUTY_PTR
 	mov r2, #4
 	ldr r0, [r1]
 	add r0, r0, #0x3000
@@ -3529,7 +3517,7 @@ _0238D25C:
 	cmp r1, #0xfa0
 	movgt r1, #5
 	strgt r1, [r0, #0x890]
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r1, _0238D304 ; =0x00001B58
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3537,7 +3525,7 @@ _0238D25C:
 	cmp r2, r1
 	movgt r1, #6
 	strgt r1, [r0, #0x890]
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldrb r1, [r0, #0x89c]
@@ -3545,7 +3533,7 @@ _0238D25C:
 	movne r1, #7
 _0238D2C0:
 	strne r1, [r0, #0x890]
-	ldr r0, _0238D2FC ; =ov14_0238DB80
+	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x11c]
 	cmp r0, #0
@@ -3562,26 +3550,26 @@ _0238D2F4:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0238D2FC: .word ov14_0238DB80
+_0238D2FC: .word SENTRY_DUTY_PTR
 _0238D300: .word ov14_0238D970
 _0238D304: .word 0x00001B58
 	arm_func_end SentryStateFinalizeRound
 
 	arm_func_start SentryStateF
 SentryStateF: ; 0x0238D308
-	ldr r0, _0238D31C ; =ov14_0238DB80
+	ldr r0, _0238D31C ; =SENTRY_DUTY_PTR
 	mov r1, #0xa
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D31C: .word ov14_0238DB80
+_0238D31C: .word SENTRY_DUTY_PTR
 	arm_func_end SentryStateF
 
 	arm_func_start SentryState10
 SentryState10: ; 0x0238D320
 	stmdb sp!, {r3, lr}
-	ldr r2, _0238D390 ; =ov14_0238DB80
+	ldr r2, _0238D390 ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r2]
 	add r0, r0, #0x3000
@@ -3601,7 +3589,7 @@ SentryState10: ; 0x0238D320
 _0238D368:
 	ldr r0, _0238D394 ; =0x00002C08
 	bl sub_02017C80
-	ldr r0, _0238D390 ; =ov14_0238DB80
+	ldr r0, _0238D390 ; =SENTRY_DUTY_PTR
 	mvn r3, #0
 	ldr r2, [r0]
 	mov r1, #0x11
@@ -3610,24 +3598,24 @@ _0238D368:
 	str r1, [r0, #0x110]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D390: .word ov14_0238DB80
+_0238D390: .word SENTRY_DUTY_PTR
 _0238D394: .word 0x00002C08
 	arm_func_end SentryState10
 
 	arm_func_start SentryState11
 SentryState11: ; 0x0238D398
-	ldr r0, _0238D3AC ; =ov14_0238DB80
+	ldr r0, _0238D3AC ; =SENTRY_DUTY_PTR
 	mov r1, #0xd
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D3AC: .word ov14_0238DB80
+_0238D3AC: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState11
 
 	arm_func_start SentryState12
 SentryState12: ; 0x0238D3B0
-	ldr r1, _0238D3E0 ; =ov14_0238DB80
+	ldr r1, _0238D3E0 ; =SENTRY_DUTY_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	ldr r3, _0238D3E4 ; =0x00002311
@@ -3640,13 +3628,13 @@ SentryState12: ; 0x0238D3B0
 	str r2, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D3E0: .word ov14_0238DB80
+_0238D3E0: .word SENTRY_DUTY_PTR
 _0238D3E4: .word 0x00002311
 	arm_func_end SentryState12
 
 	arm_func_start SentryState13
 SentryState13: ; 0x0238D3E8
-	ldr r1, _0238D40C ; =ov14_0238DB80
+	ldr r1, _0238D40C ; =SENTRY_DUTY_PTR
 	mov r3, #1
 	ldr r0, [r1]
 	mov r2, #0x17
@@ -3656,24 +3644,24 @@ SentryState13: ; 0x0238D3E8
 	str r2, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D40C: .word ov14_0238DB80
+_0238D40C: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState13
 
 	arm_func_start SentryState14
 SentryState14: ; 0x0238D410
-	ldr r0, _0238D424 ; =ov14_0238DB80
+	ldr r0, _0238D424 ; =SENTRY_DUTY_PTR
 	mov r1, #0x15
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D424: .word ov14_0238DB80
+_0238D424: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState14
 
 	arm_func_start SentryState15
 SentryState15: ; 0x0238D428
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238D464 ; =ov14_0238DB80
+	ldr r0, _0238D464 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x8ac]
@@ -3689,13 +3677,13 @@ _0238D450:
 	bl SentrySetStateIntermediate
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D464: .word ov14_0238DB80
+_0238D464: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState15
 
 	arm_func_start SentryState16
 SentryState16: ; 0x0238D468
 	stmdb sp!, {r3, lr}
-	ldr r2, _0238D4BC ; =ov14_0238DB80
+	ldr r2, _0238D4BC ; =SENTRY_DUTY_PTR
 	mvn r1, #0x3f
 	ldr r0, [r2]
 	add r0, r0, #0x3000
@@ -3716,12 +3704,12 @@ SentryState16: ; 0x0238D468
 	bl SentrySetStateIntermediate
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D4BC: .word ov14_0238DB80
+_0238D4BC: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState16
 
 	arm_func_start SentryState17
 SentryState17: ; 0x0238D4C0
-	ldr r1, _0238D534 ; =ov14_0238DB80
+	ldr r1, _0238D534 ; =SENTRY_DUTY_PTR
 	mov r3, #4
 	ldr r2, [r1]
 	add r0, r2, #0x3000
@@ -3739,7 +3727,7 @@ SentryState17: ; 0x0238D4C0
 	addeq r0, r2, r0, lsl #2
 	addeq r0, r0, #0x3000
 	streq r1, [r0, #0x554]
-	ldr r1, _0238D534 ; =ov14_0238DB80
+	ldr r1, _0238D534 ; =SENTRY_DUTY_PTR
 	mov r2, #0x18
 	ldr ip, [r1]
 	add r0, ip, #0x3000
@@ -3751,13 +3739,13 @@ SentryState17: ; 0x0238D4C0
 	str r2, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D534: .word ov14_0238DB80
+_0238D534: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState17
 
 	arm_func_start SentryState18
 SentryState18: ; 0x0238D538
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238D56C ; =ov14_0238DB80
+	ldr r0, _0238D56C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x8ac]
@@ -3771,24 +3759,24 @@ _0238D560:
 	bl SentrySetStateIntermediate
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D56C: .word ov14_0238DB80
+_0238D56C: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState18
 
 	arm_func_start SentryState19
 SentryState19: ; 0x0238D570
-	ldr r0, _0238D584 ; =ov14_0238DB80
+	ldr r0, _0238D584 ; =SENTRY_DUTY_PTR
 	mov r1, #0x1a
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D584: .word ov14_0238DB80
+_0238D584: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState19
 
 	arm_func_start SentryState1A
 SentryState1A: ; 0x0238D588
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238D5C4 ; =ov14_0238DB80
+	ldr r0, _0238D5C4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x8ac]
@@ -3804,13 +3792,13 @@ _0238D5B0:
 	bl SentrySetStateIntermediate
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D5C4: .word ov14_0238DB80
+_0238D5C4: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState1A
 
 	arm_func_start SentryStateFinalizePoints
 SentryStateFinalizePoints: ; 0x0238D5C8
 	stmdb sp!, {r3, lr}
-	ldr r2, _0238D654 ; =ov14_0238DB80
+	ldr r2, _0238D654 ; =SENTRY_DUTY_PTR
 	mvn r1, #0x3f
 	ldr r0, [r2]
 	add r0, r0, #0x3000
@@ -3837,7 +3825,7 @@ SentryStateFinalizePoints: ; 0x0238D5C8
 	addne r1, r1, #0x7d0
 	strne r1, [r0, #0x88c]
 _0238D634:
-	ldr r0, _0238D654 ; =ov14_0238DB80
+	ldr r0, _0238D654 ; =SENTRY_DUTY_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	mov r0, #0x1c
@@ -3846,12 +3834,12 @@ _0238D634:
 	bl SentrySetStateIntermediate
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D654: .word ov14_0238DB80
+_0238D654: .word SENTRY_DUTY_PTR
 	arm_func_end SentryStateFinalizePoints
 
 	arm_func_start SentryState1C
 SentryState1C: ; 0x0238D658
-	ldr r1, _0238D694 ; =ov14_0238DB80
+	ldr r1, _0238D694 ; =SENTRY_DUTY_PTR
 	ldr r2, _0238D698 ; =0x00002310
 	ldr r0, [r1]
 	mov r3, #2
@@ -3867,14 +3855,14 @@ SentryState1C: ; 0x0238D658
 	str r2, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D694: .word ov14_0238DB80
+_0238D694: .word SENTRY_DUTY_PTR
 _0238D698: .word 0x00002310
 	arm_func_end SentryState1C
 
 	arm_func_start SentryState1D
 SentryState1D: ; 0x0238D69C
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238D6FC ; =ov14_0238DB80
+	ldr r0, _0238D6FC ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x3000
 	ldr r0, [r0, #0x8ac]
@@ -3886,7 +3874,7 @@ SentryState1D: ; 0x0238D69C
 	beq _0238D6CC
 	bl sub_02027B58
 _0238D6CC:
-	ldr r0, _0238D6FC ; =ov14_0238DB80
+	ldr r0, _0238D6FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x8ac]
@@ -3900,24 +3888,24 @@ _0238D6F0:
 	bl SentrySetStateIntermediate
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D6FC: .word ov14_0238DB80
+_0238D6FC: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState1D
 
 	arm_func_start SentryState1E
 SentryState1E: ; 0x0238D700
-	ldr r0, _0238D714 ; =ov14_0238DB80
+	ldr r0, _0238D714 ; =SENTRY_DUTY_PTR
 	mov r1, #0x1f
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D714: .word ov14_0238DB80
+_0238D714: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState1E
 
 	arm_func_start SentryState1F
 SentryState1F: ; 0x0238D718
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238D790 ; =ov14_0238DB80
+	ldr r0, _0238D790 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0x8ac]
@@ -3925,7 +3913,7 @@ SentryState1F: ; 0x0238D718
 	bge _0238D754
 	mov r0, #0x1e
 	bl SentrySetStateIntermediate
-	ldr r0, _0238D790 ; =ov14_0238DB80
+	ldr r0, _0238D790 ; =SENTRY_DUTY_PTR
 	mov r1, #0x1e
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3938,7 +3926,7 @@ _0238D754:
 	mov r0, #0x1e
 	bl sub_02017B7C
 _0238D768:
-	ldr r0, _0238D790 ; =ov14_0238DB80
+	ldr r0, _0238D790 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0x8b4]
@@ -3949,24 +3937,24 @@ _0238D768:
 	bl SentrySetExitingState
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D790: .word ov14_0238DB80
+_0238D790: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState1F
 
 	arm_func_start SentryState20
 SentryState20: ; 0x0238D794
-	ldr r0, _0238D7A8 ; =ov14_0238DB80
+	ldr r0, _0238D7A8 ; =SENTRY_DUTY_PTR
 	mov r1, #0x21
 	ldr r0, [r0]
 	str r1, [r0, #0x110]
 	bx lr
 	.align 2, 0
-_0238D7A8: .word ov14_0238DB80
+_0238D7A8: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState20
 
 	arm_func_start SentryState21
 SentryState21: ; 0x0238D7AC
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238D824 ; =ov14_0238DB80
+	ldr r0, _0238D824 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0x8ac]
@@ -3974,7 +3962,7 @@ SentryState21: ; 0x0238D7AC
 	bge _0238D7E8
 	mov r0, #0x20
 	bl SentrySetStateIntermediate
-	ldr r0, _0238D824 ; =ov14_0238DB80
+	ldr r0, _0238D824 ; =SENTRY_DUTY_PTR
 	mov r1, #0x1e
 	ldr r0, [r0]
 	add r0, r0, #0x3000
@@ -3987,7 +3975,7 @@ _0238D7E8:
 	mov r0, #0x1e
 	bl sub_02017B7C
 _0238D7FC:
-	ldr r0, _0238D824 ; =ov14_0238DB80
+	ldr r0, _0238D824 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0x8b4]
@@ -3998,7 +3986,7 @@ _0238D7FC:
 	bl SentrySetExitingState
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238D824: .word ov14_0238DB80
+_0238D824: .word SENTRY_DUTY_PTR
 	arm_func_end SentryState21
 
 	arm_func_start ov14_0238D828
@@ -4012,7 +4000,11 @@ ov14_0238D828: ; 0x0238D828
 	ldr r7, [sb]
 	bl strlen
 	ldr r2, [sp, #0x30]
+#ifdef EUROPE
+	add fp, sp, #0
+#else
 	mov r6, #0
+#endif
 	cmp r0, r2
 	ldrlt r1, [r8]
 	sublt r0, r2, r0
@@ -4020,9 +4012,16 @@ ov14_0238D828: ; 0x0238D828
 	strlt r0, [r8]
 	mov r0, r4, lsl #8
 	str r0, [sp, #4]
+#ifdef EUROPE
+	ldr r0, _0238D968 ; =0x0000080F
+	mov r6, #0
+	sub r4, r0, #1
+	sub r5, r0, #3
+#else
 	add r5, sp, #0
 	ldr fp, _0238D968 ; =0x0000080F
 	mov r4, r6
+#endif
 	b _0238D950
 _0238D87C:
 	ldrb r1, [sl], #1
@@ -4034,6 +4033,15 @@ _0238D87C:
 	cmp r1, #0x39
 	bhi _0238D8DC
 	sub r0, r1, #0x2b
+#ifdef EUROPE
+	ldr r2, [r8]
+	orr r0, r0, #0x800
+	mov r0, r0, lsl #0x10
+	add r2, r2, #8
+	mov r1, r0, asr #0x10
+	str r2, [r8]
+	mov r0, r7
+#else
 	orr r0, r0, #0x800
 	mov r0, r0, lsl #0x10
 	mov r1, r0, asr #0x10
@@ -4041,11 +4049,17 @@ _0238D87C:
 	mov r0, r7
 	add r2, r2, #8
 	str r2, [r8]
+#endif
 	mov r2, r6
 	bl SetAnimDataFields2
 	mov r0, r7
+#ifdef EUROPE
+	mov r1, fp
+	mov r2, #0
+#else
 	mov r1, r5
 	mov r2, r4
+#endif
 	bl AnimRelatedFunction__022F6F14
 	add r7, r7, #0xc4
 	b _0238D950
@@ -4056,11 +4070,19 @@ _0238D8DC:
 	mov r0, r7
 	add r1, r1, #8
 	str r1, [r8]
+#ifdef EUROPE
+	mov r1, r5
+#else
 	mov r1, fp
+#endif
 	mov r2, #0
 	bl SetAnimDataFields2
 	mov r0, r7
+#ifdef EUROPE
+	mov r1, fp
+#else
 	mov r1, r5
+#endif
 	mov r2, #0
 	bl AnimRelatedFunction__022F6F14
 	add r7, r7, #0xc4
@@ -4068,6 +4090,43 @@ _0238D8DC:
 _0238D918:
 	cmp r1, #0x50
 	bne _0238D950
+#ifdef EUROPE
+	ldr r0, [r8]
+	add r0, r0, #8
+	str r0, [r8]
+	bl GetLanguage
+	sub r1, r0, #2
+	mov r1, r1, lsl #0x18
+	mov r1, r1, asr #0x18
+	and r1, r1, #0xff
+	cmp r1, #1
+	mov r2, #0
+	bhi _0238E4AC
+	ldr r1, [sp]
+	mov r0, r7
+	add r1, r1, #0x400
+	str r1, [sp]
+	mov r1, r4
+	bl SetAnimDataFields2
+	b _0238E4DC
+_0238E4AC:
+	cmp r0, #4
+	bne _0238E4D0
+	ldr r1, [sp]
+	mov r0, r7
+	add r1, r1, #0x400
+	str r1, [sp]
+	ldr r1, _0238D968 ; =0x00000812
+	bl SetAnimDataFields2
+	b _0238E4DC
+_0238E4D0:
+	mov r0, r7
+	mov r1, #0x810
+	bl SetAnimDataFields2
+_0238E4DC:
+	mov r0, r7
+	mov r1, fp
+#else
 	ldr r1, [r8]
 	mov r0, r7
 	add r1, r1, #8
@@ -4077,6 +4136,7 @@ _0238D918:
 	bl SetAnimDataFields2
 	mov r0, r7
 	mov r1, r5
+#endif
 	mov r2, #0
 	bl AnimRelatedFunction__022F6F14
 	add r7, r7, #0xc4
@@ -4088,7 +4148,11 @@ _0238D950:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef EUROPE
+_0238D968: .word 0x00000812
+#else
 _0238D968: .word 0x0000080F
+#endif
 	arm_func_end ov14_0238D828
 	; 0x0238D96C
 
@@ -4195,15 +4259,15 @@ ov14_0238DB58:
 	.byte 0x65, 0x72, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x3D, 0x20, 0x25, 0x64, 0x0A, 0x00, 0x00, 0x00
 
 	.data
-	.global ov14_0238DB80
-ov14_0238DB80:
+	.global SENTRY_DUTY_PTR
+SENTRY_DUTY_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov14_0238DB84
 ov14_0238DB84:
 	.byte 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01
 	.byte 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01
-	.global ov14_0238DB94
-ov14_0238DB94:
+	.global SENTRY_DUTY_STATE_HANDLER_TABLE
+SENTRY_DUTY_STATE_HANDLER_TABLE:
 	.word SentryState0
 	.word SentryState1
 	.word SentryState2

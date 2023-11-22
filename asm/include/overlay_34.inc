@@ -1,11 +1,11 @@
 #pragma once
-.public CreateDBox
-.public FreeDBox
+.public CreateDialogueBox
+.public FreeDialogueBox
 .public GetDebugFlag
-.public IsDBoxActive
+.public IsDialogueBoxActive
 .public MemAlloc
 .public MemFree
-.public ShowMessageInDBox
+.public ShowMessageInDialogueBox
 .public sub_02002878
 .public sub_0200383C
 .public sub_020038D8

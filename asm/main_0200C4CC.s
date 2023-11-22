@@ -2595,8 +2595,13 @@ _0200E6CC:
 
 	arm_func_start LoadItemPspi2n
 LoadItemPspi2n: ; 0x0200E6D8
+#ifdef EUROPE
+#define LOAD_ITEM_PSPI_2N_STACK_SIZE #0x108
+#else
+#define LOAD_ITEM_PSPI_2N_STACK_SIZE #8
+#endif
 	stmdb sp!, {r3, lr}
-	sub sp, sp, #8
+	sub sp, sp, LOAD_ITEM_PSPI_2N_STACK_SIZE
 	ldr r1, _0200E748 ; =_02098038
 	add r0, sp, #0
 	mov r2, #1
@@ -2617,28 +2622,71 @@ LoadItemPspi2n: ; 0x0200E6D8
 	beq _0200E740
 	ldr r0, _0200E758 ; =_020AF6C8
 	bl ZInit8
+#ifdef EUROPE
+	bl GetLanguage
+	mov r2, r0
+	ldr r1, _0200E800 ; =_020AFF88_EU
+	add r0, sp, #8
+	ldr r2, [r1, r2, lsl #2]
+	ldr r1, _0200E75C ; =_02098070
+	bl SprintfStatic__0200E808_EU
+	ldr r0, _0200E758 ; =_020AF6C8
+	add r1, sp, #8
+#else
 	ldr r0, _0200E758 ; =_020AF6C8
 	ldr r1, _0200E75C ; =_02098070
+#endif
 	mov r2, #1
 	bl LoadFileFromRom
 _0200E740:
-	add sp, sp, #8
+	add sp, sp, LOAD_ITEM_PSPI_2N_STACK_SIZE
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0200E748: .word _02098038
+#ifdef EUROPE
+_0200E74C: .word ITEM_DATA_TABLE_PTRS
+#else
 _0200E74C: .word _020AF6C4
+#endif
 _0200E750: .word _02098054
+#ifdef EUROPE
+_0200E754: .word _020AF6C4
+#else
 _0200E754: .word ITEM_DATA_TABLE_PTRS
+#endif
 _0200E758: .word _020AF6C8
+#ifdef EUROPE
+_0200E800: .word _020AFF88_EU
+#endif
 _0200E75C: .word _02098070
 	arm_func_end LoadItemPspi2n
+
+#ifdef EUROPE
+	arm_func_start SprintfStatic__0200E808_EU
+SprintfStatic__0200E808_EU: ; 0x0200E808
+	stmdb sp!, {r0, r1, r2, r3}
+	stmdb sp!, {r3, lr}
+	add r2, sp, #0xc
+	bic r2, r2, #3
+	ldr r1, [sp, #0xc]
+	add r2, r2, #4
+	bl vsprintf
+	ldmia sp!, {r3, lr}
+	add sp, sp, #0x10
+	bx lr
+	arm_func_end SprintfStatic__0200E808_EU
+#endif
 
 	arm_func_start GetExclusiveItemType
 GetExclusiveItemType: ; 0x0200E760
 	stmdb sp!, {r3, lr}
 	bl GetExclusiveItemOffsetEnsureValid
 	ldr r1, _0200E778 ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1, #4]
+#else
 	ldr r1, [r1]
+#endif
 	ldrb r0, [r1, r0, lsl #2]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -2672,7 +2720,11 @@ _0200E7BC: .word 0x00000578
 	arm_func_start IsItemValid
 IsItemValid: ; 0x0200E7C0
 	ldr r1, _0200E7E4 ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xe]
 	tst r0, #1
@@ -2689,7 +2741,11 @@ GetExclusiveItemParameter: ; 0x0200E7E8
 	stmdb sp!, {r3, lr}
 	bl GetExclusiveItemOffsetEnsureValid
 	ldr r1, _0200E804 ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1, #4]
+#else
 	ldr r1, [r1]
+#endif
 	add r0, r1, r0, lsl #2
 	ldrsh r0, [r0, #2]
 	ldmia sp!, {r3, pc}
@@ -2702,7 +2758,11 @@ GetItemCategory: ; 0x0200E808
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
 	ldr r1, _0200E824 ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #4]
 	ldmia sp!, {r3, pc}
@@ -2736,8 +2796,13 @@ _0200E860: .word 0x00000578
 GetItemName: ; 0x0200E864
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
+#ifdef EUROPE
+	add r0, r0, #0x278
+	add r0, r0, #0x1800
+#else
 	add r0, r0, #0x76
 	add r0, r0, #0x1a00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -2746,6 +2811,11 @@ GetItemName: ; 0x0200E864
 
 	arm_func_start GetItemNameFormatted
 GetItemNameFormatted: ; 0x0200E884
+#ifdef EUROPE
+#define GET_ITEM_NAME_FORMATTED_SPRINTF SprintfStatic__0200E808_EU
+#else
+#define GET_ITEM_NAME_FORMATTED_SPRINTF SprintfStatic__0200E990
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, r1
 	mov r8, r0
@@ -2753,8 +2823,13 @@ GetItemNameFormatted: ; 0x0200E884
 	mov r6, r2
 	mov r5, r3
 	bl EnsureValidItem
+#ifdef EUROPE
+	add r0, r0, #0x278
+	add r0, r0, #0x1800
+#else
 	add r0, r0, #0x76
 	add r0, r0, #0x1a00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -2763,7 +2838,11 @@ GetItemNameFormatted: ; 0x0200E884
 	bl EnsureValidItem
 	ldr r1, _0200E97C ; =ITEM_DATA_TABLE_PTRS
 	cmp r5, #0
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrb r1, [r0, #4]
 	bne _0200E8E8
@@ -2777,7 +2856,7 @@ _0200E8E8:
 	ldr r1, _0200E980 ; =_0209808C
 	mov r0, r8
 	mov r2, r4
-	bl SprintfStatic__0200E990
+	bl GET_ITEM_NAME_FORMATTED_SPRINTF
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0200E904:
 	mov r0, r8
@@ -2792,13 +2871,13 @@ _0200E914:
 	ldr r1, _0200E984 ; =_0209809C
 	mov r0, r8
 	mov r2, r4
-	bl SprintfStatic__0200E990
+	bl GET_ITEM_NAME_FORMATTED_SPRINTF
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0200E938:
 	ldr r1, _0200E988 ; =_020980AC
 	mov r0, r8
 	mov r2, r4
-	bl SprintfStatic__0200E990
+	bl GET_ITEM_NAME_FORMATTED_SPRINTF
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0200E94C:
 	cmp r6, #0
@@ -2806,13 +2885,13 @@ _0200E94C:
 	ldr r1, _0200E98C ; =_020980B0
 	mov r0, r8
 	mov r2, r4
-	bl SprintfStatic__0200E990
+	bl GET_ITEM_NAME_FORMATTED_SPRINTF
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0200E968:
 	ldr r1, _0200E988 ; =_020980AC
 	mov r0, r8
 	mov r2, r4
-	bl SprintfStatic__0200E990
+	bl GET_ITEM_NAME_FORMATTED_SPRINTF
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0200E97C: .word ITEM_DATA_TABLE_PTRS
@@ -2822,6 +2901,7 @@ _0200E988: .word _020980AC
 _0200E98C: .word _020980B0
 	arm_func_end GetItemNameFormatted
 
+#ifndef EUROPE
 	arm_func_start SprintfStatic__0200E990
 SprintfStatic__0200E990: ; 0x0200E990
 	stmdb sp!, {r0, r1, r2, r3}
@@ -2835,6 +2915,7 @@ SprintfStatic__0200E990: ; 0x0200E990
 	add sp, sp, #0x10
 	bx lr
 	arm_func_end SprintfStatic__0200E990
+#endif
 
 	arm_func_start GetItemBuyPrice
 GetItemBuyPrice: ; 0x0200E9B8
@@ -2842,7 +2923,11 @@ GetItemBuyPrice: ; 0x0200E9B8
 	bl EnsureValidItem
 	ldr r1, _0200E9D4 ; =ITEM_DATA_TABLE_PTRS
 	mov r0, r0, lsl #4
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	ldrh r0, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -2854,7 +2939,11 @@ GetItemSellPrice: ; 0x0200E9D8
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
 	ldr r1, _0200E9F4 ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrh r0, [r0, #2]
 	ldmia sp!, {r3, pc}
@@ -2867,7 +2956,11 @@ GetItemSpriteId: ; 0x0200E9F8
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
 	ldr r1, _0200EA14 ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #5]
 	ldmia sp!, {r3, pc}
@@ -2880,7 +2973,11 @@ GetItemPaletteId: ; 0x0200EA18
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
 	ldr r1, _0200EA34 ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xc]
 	ldmia sp!, {r3, pc}
@@ -2893,7 +2990,11 @@ GetItemActionName: ; 0x0200EA38
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
 	ldr r1, _0200EA54 ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xd]
 	ldmia sp!, {r3, pc}
@@ -2907,7 +3008,11 @@ GetThrownItemQuantityLimit: ; 0x0200EA58
 	mov r4, r1
 	bl EnsureValidItem
 	ldr r1, _0200EA7C ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	add r0, r0, r4
 	ldrb r0, [r0, #0xa]
@@ -2921,7 +3026,11 @@ GetItemMoveId: ; 0x0200EA80
 	stmdb sp!, {r3, lr}
 	bl EnsureValidItem
 	ldr r1, _0200EA9C ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrsh r0, [r0, #8]
 	ldmia sp!, {r3, pc}
@@ -2936,7 +3045,11 @@ TestItemAiFlag: ; 0x0200EAA0
 	bne _0200EAD4
 	bl EnsureValidItem
 	ldr r1, _0200EB2C ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xe]
 	tst r0, #0x80
@@ -2949,7 +3062,11 @@ _0200EAD4:
 	bne _0200EB04
 	bl EnsureValidItem
 	ldr r1, _0200EB2C ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xe]
 	tst r0, #0x40
@@ -2960,7 +3077,11 @@ _0200EAD4:
 _0200EB04:
 	bl EnsureValidItem
 	ldr r1, _0200EB2C ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xe]
 	tst r0, #0x20
@@ -2975,7 +3096,11 @@ _0200EB2C: .word ITEM_DATA_TABLE_PTRS
 	arm_func_start IsItemInTimeDarkness
 IsItemInTimeDarkness: ; 0x0200EB30
 	ldr r1, _0200EB54 ; =ITEM_DATA_TABLE_PTRS
+#ifdef EUROPE
+	ldr r1, [r1]
+#else
 	ldr r1, [r1, #4]
+#endif
 	add r0, r1, r0, lsl #4
 	ldrb r0, [r0, #0xe]
 	tst r0, #2
@@ -8864,8 +8989,13 @@ _02013450: .word _020AF700
 GetMoveName: ; 0x02013454
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	ldr ip, _02013474 ; =StringFromMessageId
 	mov r0, r0, lsr #0x10
@@ -8931,8 +9061,13 @@ _0201351C: ; jump table
 	b _020136F4 ; case 5
 _02013534:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -8944,8 +9079,13 @@ _02013534:
 	b _02013730
 _02013564:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -8970,8 +9110,13 @@ _02013564:
 	b _02013730
 _020135C8:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -8996,8 +9141,13 @@ _020135C8:
 	b _02013730
 _0201362C:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -9022,8 +9172,13 @@ _0201362C:
 	b _02013730
 _02013690:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -9048,8 +9203,13 @@ _02013690:
 	b _02013730
 _020136F4:
 	ldrh r0, [r6, #4]
+#ifdef EUROPE
+	add r0, r0, #0xff0
+	add r0, r0, #0x1000
+#else
 	add r0, r0, #0xee
 	add r0, r0, #0x1f00
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromMessageId
@@ -11669,6 +11829,11 @@ _02015788: .word _020AF710
 
 	arm_func_start sub_0201578C
 sub_0201578C: ; 0x0201578C
+#ifdef EUROPE
+#define SUB_0201578C_STACK_OFFSET 4
+#else
+#define SUB_0201578C_STACK_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2f8
 	sub sp, sp, #0x400
@@ -11679,7 +11844,7 @@ sub_0201578C: ; 0x0201578C
 	str r1, [sp, #8]
 	mov r7, r2
 	str r3, [sp, #0xc]
-	str r4, [sp, #0x2c]
+	str r4, [sp, #0x2c + SUB_0201578C_STACK_OFFSET]
 _020157B8:
 	ldr r0, [sp, #0xc]
 	ldrb r0, [r0, r4]
@@ -11748,17 +11913,301 @@ _02015888:
 	mov r0, r7, lsr #0x1f
 	rsb r3, r0, r7, lsl #29
 	add r0, r0, r3, ror #29
-	str r0, [sp, #0x3c]
+	str r0, [sp, #0x3c + SUB_0201578C_STACK_OFFSET]
 	mov r0, r2, asr #3
 	mov r6, r7, asr #2
-	str r1, [sp, #0x34]
+	str r1, [sp, #0x34 + SUB_0201578C_STACK_OFFSET]
 	add r1, r7, r6, lsr #29
-	str r0, [sp, #0x30]
+	str r0, [sp, #0x30 + SUB_0201578C_STACK_OFFSET]
 	mov r0, r1, asr #3
 	add r6, sp, #0x500
-	str r0, [sp, #0x38]
+	str r0, [sp, #0x38 + SUB_0201578C_STACK_OFFSET]
 	add r6, r6, #0xf8
 	b _02015CD8
+#ifdef EUROPE
+_020158E0:
+	ldrb r0, [r6], #1
+	cmp r0, #0x23
+	str r0, [sp, #0x18]
+	addeq r5, r5, #8
+	beq _02015CD8
+	cmp r0, #0x20
+	addeq r5, r5, #6
+	beq _02015CD8
+	cmp r0, #0x5b
+	bne _02015B14
+	mov r0, #1
+	str r6, [sp, #0x44]
+	str r0, [sp, #0x1c]
+	mov r1, r0
+_020159C0:
+	ldrb r0, [r6], #1
+	cmp r0, #0x5d
+	beq _020159E0
+	cmp r0, #0x3a
+	addeq r0, sp, #0x44
+	streq r6, [r0, r1, lsl #2]
+	addeq r1, r1, #1
+	b _020159C0
+_020159E0:
+	ldr r0, [sp, #0x44]
+	ldr r1, _02015DEC ; =_02099404_EU
+	bl StrcmpTagVeneer
+	cmp r0, #0
+	beq _02015A0C
+	ldr r0, [sp, #0x48]
+	bl sub_0202380C_EU
+	str r0, [sp, #0x18]
+	mov r0, #0
+	str r0, [sp, #0x1c]
+	b _02015B08
+_02015A0C:
+	ldr r0, [sp, #0x44]
+	ldr r1, _02015D0C ; =_02098FC0
+	bl StrcmpTagVeneer
+	cmp r0, #0
+	beq _02015B08
+	ldr r0, [sp, #0x48]
+	bl StoiTagVeneer
+	ldr r0, [sp, #0x4c]
+	bl StoiTagVeneer
+	ldr r1, _02015D10 ; =_020AF710
+	add ip, r5, #2
+	ldr r1, [r1]
+	ldr r8, [sp, #0x10]
+	ldrsh r3, [r1, #0x32]
+	mov r1, ip, asr #2
+	add r1, ip, r1, lsr #29
+	mov r2, r1, asr #3
+	ldr r1, [sp, #0x34]
+	mov r0, r0, lsl #0x10
+	add r1, r2, r1, lsl #5
+	add r2, r3, r1
+	ldr r1, [sp, #4]
+	add r2, r1, r2, lsl #5
+	ldr r1, [sp, #0x38]
+	add sb, r2, r1, lsl #2
+	mov r1, #0
+	str r1, [sp, #0x20]
+_02015A78:
+	mov sl, sb
+	mov lr, #0
+	b _02015AD0
+_02015A84:
+	add r1, ip, lr
+	mov r2, r1, lsr #0x1f
+	rsb r1, r2, r1, lsl #29
+	add r1, r2, r1, ror #29
+	ldr r2, _02015D14 ; =_02098EE0
+	add lr, lr, #8
+	add r3, r2, r1, lsl #4
+	ldr r1, [r2, r1, lsl #4]
+	ldr r2, [sl]
+	ldr fp, [r3, #8]
+	bic r1, r1, #0
+	orr r1, r2, r1, lsl fp
+	str r1, [sl]
+	ldr r1, [r3, #4]
+	ldr r2, [sl, #0x20]!
+	ldr r3, [r3, #0xc]
+	bic r1, r1, #0
+	orr r1, r2, r1, lsr r3
+	str r1, [sl]
+_02015AD0:
+	cmp lr, r0, asr #16
+	blt _02015A84
+	add r8, r8, #1
+	mov r2, r8, lsr #0x1f
+	rsb r1, r2, r8, lsl #29
+	adds r1, r2, r1, ror #29
+	ldr r1, [sp, #0x20]
+	add sb, sb, #4
+	add r1, r1, #1
+	addeq sb, sb, #0x3e0
+	str r1, [sp, #0x20]
+	cmp r1, #2
+	blt _02015A78
+	add r5, r5, r0, asr #16
+_02015B08:
+	ldr r0, [sp, #0x1c]
+	cmp r0, #0
+	bne _02015CD8
+_02015B14:
+	ldr r0, [sp, #0x18]
+	bl sub_02025480
+	bl sub_0201628C
+	mov sl, #0
+	add r1, sp, #0x400
+	add r1, r1, #0xd8
+	ldr r3, [r0]
+	str r1, [sp, #0x24]
+	mov r8, sl
+	mov sb, sl
+_02015B3C:
+	ldrb r2, [r3], #1
+	add r1, sp, #0x58
+	add r1, r1, sb
+	mov fp, r2, asr #4
+	and ip, fp, #0xf
+	add fp, sp, #0x58
+	strb ip, [fp, sb]
+	and r2, r2, #0xf
+	add sb, sb, #2
+	strb r2, [r1, #1]
+	cmp sb, #0x240
+	blt _02015B3C
+_02015B6C:
+	cmp r8, #0x240
+	bge _02015BFC
+	add r1, sp, #0x58
+	ldrb r1, [r1, sl]
+	add r3, sl, #1
+	mov sl, r3
+	tst r1, #8
+	and r1, r1, #7
+	mov sb, #0
+	beq _02015BF0
+	add r2, sp, #0x58
+	ldrb r2, [r2, r3]
+	add sl, r3, #1
+	and r3, r2, #0xff
+	b _02015BC0
+_02015BA8:
+	add r2, sp, #0x298
+	strb r3, [r2, r8]
+	add r8, r8, #1
+	cmp r8, #0x240
+	bge _02015B6C
+	add sb, sb, #1
+_02015BC0:
+	cmp sb, r1
+	blt _02015BA8
+	b _02015B6C
+_02015BCC:
+	add r2, sp, #0x58
+	ldrb r3, [r2, sl]
+	add r2, sp, #0x298
+	add sl, sl, #1
+	strb r3, [r2, r8]
+	add r8, r8, #1
+	cmp r8, #0x240
+	bge _02015B6C
+	add sb, sb, #1
+_02015BF0:
+	cmp sb, r1
+	blt _02015BCC
+	b _02015B6C
+_02015BFC:
+	mov fp, #0
+_02015C00:
+	ldr r1, [sp, #0x24]
+	str r1, [sp, #0x14]
+	add r1, r1, #4
+	str r1, [sp, #0x24]
+	add r1, sp, #0x298
+	add ip, r1, fp
+	ldrb r3, [r1, fp]
+	ldrb r1, [ip, #2]
+	ldrb r2, [ip, #1]
+	and sl, r3, #0xf
+	mov r1, r1, lsl #8
+	and r8, r1, #0xf00
+	ldrb r1, [ip, #5]
+	mov r2, r2, lsl #4
+	and sb, r2, #0xf0
+	mov r1, r1, lsl #0x14
+	ldrb r3, [ip, #3]
+	ldrb r2, [ip, #4]
+	and lr, r1, #0xf00000
+	ldrb r1, [ip, #7]
+	ldrb ip, [ip, #6]
+	mov r2, r2, lsl #0x10
+	mov r1, r1, lsl #0x1c
+	mov ip, ip, lsl #0x18
+	mov r3, r3, lsl #0xc
+	add fp, fp, #8
+	and r1, r1, #0xf0000000
+	and ip, ip, #0xf000000
+	orr r1, r1, ip
+	and r2, r2, #0xf0000
+	orr r1, lr, r1
+	and r3, r3, #0xf000
+	orr r1, r2, r1
+	orr r1, r3, r1
+	orr r1, r8, r1
+	orr r1, sb, r1
+	orr r2, sl, r1
+	ldr r1, [sp, #0x14]
+	cmp fp, #0x240
+	str r2, [r1]
+	blt _02015C00
+	ldrb lr, [r0, #6]
+	ldr r0, _02015D10 ; =_020AF710
+	add r8, sp, #0x400
+	ldr r1, [r0]
+	mov r0, r5, asr #2
+	add r0, r5, r0, lsr #29
+	ldrsh r3, [r1, #0x32]
+	mov r1, r0, asr #3
+	ldr r0, [sp, #0x3c]
+	mov r2, r7
+	add r0, r1, r0, lsl #5
+	add r1, r3, r0
+	ldr r0, [sp, #4]
+	add r8, r8, #0xd8
+	add r1, r0, r1, lsl #5
+	ldr r0, [sp, #0x40]
+	add r3, r1, r0, lsl #2
+	mov r1, r5, lsr #0x1f
+	rsb r0, r1, r5, lsl #29
+	add r1, r1, r0, ror #29
+	ldr r0, _02015D14 ; =_02098EE0
+	add sb, r0, r1, lsl #4
+	mov r0, #0
+	str r0, [sp, #0x28]
+_02015D04:
+	mov r0, #0
+	mov sl, r3
+	str r0, [sp, #0x2c]
+_02015D10_EU:
+	ldr r1, [r8]
+	cmp r1, #0
+	beq _02015D4C
+	ldr r0, [sl]
+	ldr ip, [sb]
+	ldr fp, [sb, #8]
+	and ip, r1, ip
+	orr r0, r0, ip, lsl fp
+	str r0, [sl]
+	ldr ip, [sl, #0x20]
+	ldr fp, [sb, #4]
+	ldr r0, [sb, #0xc]
+	and r1, r1, fp
+	orr r0, ip, r1, lsr r0
+	str r0, [sl, #0x20]
+_02015D4C:
+	ldr r0, [sp, #0x2c]
+	add r8, r8, #4
+	add r0, r0, #1
+	add sl, sl, #0x20
+	str r0, [sp, #0x2c]
+	cmp r0, #3
+	blt _02015D10_EU
+	add r2, r2, #1
+	mov r1, r2, lsr #0x1f
+	rsb r0, r1, r2, lsl #29
+	adds r0, r1, r0, ror #29
+	ldr r0, [sp, #0x28]
+	add r3, r3, #4
+	add r0, r0, #1
+	addeq r3, r3, #0x3e0
+	str r0, [sp, #0x28]
+	cmp r0, #0x18
+	blt _02015D04
+	ldr r0, [sp, #0x18]
+	add r5, r5, lr
+	cmp r0, #0x7e
+#else
 _020158E0:
 	ldrb r8, [r6], #1
 	cmp r8, #0x23
@@ -12026,6 +12475,7 @@ _02015C70:
 	ldr r0, [sp, #0x20]
 	cmp r8, #0x7e
 	add r5, r5, r0
+#endif
 	ldreqb r0, [r6]
 	cmpeq r0, #0x32
 	ldreqb r0, [r6, #1]
@@ -12035,18 +12485,21 @@ _02015CD8:
 	ldrb r0, [r6]
 	cmp r0, #0
 	bne _020158E0
-	ldr r0, [sp, #0x2c]
+	ldr r0, [sp, #0x2c + SUB_0201578C_STACK_OFFSET]
 	add r7, r7, #0x18
 	add r0, r0, #1
-	str r0, [sp, #0x2c]
+	str r0, [sp, #0x2c + SUB_0201578C_STACK_OFFSET]
 	b _020157B8
 _02015CF8:
-	ldr r0, [sp, #0x2c]
+	ldr r0, [sp, #0x2c + SUB_0201578C_STACK_OFFSET]
 	add sp, sp, #0x2f8
 	add sp, sp, #0x400
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02015D08: .word _02098FBC
+#ifdef EUROPE
+_02015DEC: .word _02099404_EU
+#endif
 _02015D0C: .word _02098FC0
 _02015D10: .word _020AF710
 _02015D14: .word _02098EE0
@@ -13397,7 +13850,7 @@ sub_02016EAC: ; 0x02016EAC
 	ldr r0, _0201712C ; =_020AF760
 	ldr r0, [r0, #8]
 	add r0, r0, #0x98
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r0, _0201712C ; =_020AF760
 	ldr r1, [r0, #8]
 	add r0, r1, #0x98
@@ -13436,7 +13889,7 @@ _02016FB0:
 	mov r0, #0x7c
 	mla r8, sb, r0, r6
 	mov r0, r8
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C0B0
 	ldrsh r1, [r7, #0x94]
 	mov r0, r8
 	bl SetSpriteIdForAnimationControl
@@ -13478,7 +13931,7 @@ _02017054:
 	mov r0, #0x7c
 	mla r8, sb, r0, r6
 	mov r0, r8
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C0B0
 	ldrsh r1, [r7, #0x96]
 	mov r0, r8
 	bl SetSpriteIdForAnimationControl
@@ -14026,7 +14479,7 @@ _020177E8:
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #0xc]
 	add r0, r6, #0x14
-	bl ov00_022C2528
+	bl ov10_022C2528
 	cmp r0, #0
 	ldrneb r0, [r6, #0x28]
 	addne r0, r0, #1
@@ -14037,7 +14490,7 @@ _02017820:
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #0xc]
 	add r0, r6, #0x14
-	bl ov00_022C2528
+	bl ov10_022C2528
 	cmp r0, #0
 	ldrneb r0, [r6, #0x28]
 	addne r0, r0, #1
@@ -14075,6 +14528,77 @@ _02017868:
 	arm_func_start sub_020178A8
 sub_020178A8: ; 0x020178A8
 	stmdb sp!, {r4, r5, r6, r7, lr}
+#ifdef EUROPE
+	sub sp, sp, #0x254
+	mov r4, r1
+	and r1, r4, #0xff
+	mov r7, r0
+	bl sub_0204F77C
+	mov r5, r0
+	cmp r5, r7
+	and r6, r4, #0xff
+	beq _020179BC
+	bl GetNbFloors
+	cmp r0, #1
+	moveq r6, #0
+_020179BC:
+	mov r1, r7
+	and r2, r4, #0xff
+	mov r0, #2
+	bl sub_0204F6F8
+	mov r4, r0
+	add r0, sp, #4
+	bl InitPreprocessorArgs
+	mov r0, r5
+	bl DungeonGoesUp
+	cmp r0, #0
+	movne r2, r6
+	rsbeq r2, r6, #0
+	ldr r1, _020179FC ; =_020AF76C
+	add r0, sp, #0x54
+	str r2, [sp, #0x28]
+	bl SprintfStatic__02017A40
+	add r5, sp, #4
+	add r0, sp, #0x154
+	add r2, sp, #0x54
+	mov r1, #0x100
+	mov r3, #0
+	str r5, [sp]
+	bl PreprocessString
+	bl sub_02015570
+	cmp r6, #0
+	mov r0, r4
+	beq _02017A70
+	bl sub_020155FC
+	mov r1, #0x18
+	mul r1, r0, r1
+	add r0, r1, #0x38
+	rsb r5, r0, #0xc0
+	mov r0, r5, asr #1
+	mov r1, r4
+	bl sub_02015E44
+	sub r1, r0, #1
+	mov r0, #0x18
+	mul r0, r1, r0
+	add r0, r0, r5, asr #1
+	add r1, r0, #0x20
+	add r2, sp, #0x154
+	mov r0, #0
+	mov r3, #2
+	bl sub_02015D18
+	b _02017A8C
+_02017A70:
+	bl sub_020155FC
+	mov r1, #0x18
+	mul r1, r0, r1
+	rsb r0, r1, #0xc0
+	mov r1, r4
+	mov r0, r0, asr #1
+	bl sub_02015E44
+_02017A8C:
+	bl sub_02015E6C
+	add sp, sp, #0x254
+#else
 	sub sp, sp, #0x104
 	mov r5, r1
 	and r1, r5, #0xff
@@ -14163,9 +14687,14 @@ _020179D4:
 _020179F0:
 	bl sub_02015E6C
 	add sp, sp, #0x104
+#endif
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef EUROPE
+_020179FC: .word _0209958C
+#else
 _020179FC: .word _020AF76C
+#endif
 	arm_func_end sub_020178A8
 
 	arm_func_start sub_02017A00
@@ -14178,7 +14707,11 @@ sub_02017A00: ; 0x02017A00
 	bl sub_02015E6C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02017A1C: .word 0x000044BF
+#else
 _02017A1C: .word 0x000044BD
+#endif
 	arm_func_end sub_02017A00
 
 	arm_func_start sub_02017A20
@@ -14191,7 +14724,11 @@ sub_02017A20: ; 0x02017A20
 	bl sub_02015E6C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02017A3C: .word 0x000044C0
+#else
 _02017A3C: .word 0x000044BE
+#endif
 	arm_func_end sub_02017A20
 
 	arm_func_start SprintfStatic__02017A40
@@ -14239,7 +14776,7 @@ _02017AAC: .word _022A4BE8
 	arm_func_start sub_02017AB0
 sub_02017AB0: ; 0x02017AB0
 	stmdb sp!, {r3, lr}
-	bl sub_02017EE8
+	bl StopBgmCommand
 	bl sub_02018118
 	bl sub_02018278
 	mov r0, #0x3f00
@@ -14304,28 +14841,28 @@ _02017B4C:
 _02017B54: .word 0x000003E7
 	arm_func_end sub_02017B18
 
-	arm_func_start sub_02017B58
-sub_02017B58: ; 0x02017B58
-	ldr ip, _02017B60 ; =sub_02017DF4
+	arm_func_start PlayBgmByIdVeneer
+PlayBgmByIdVeneer: ; 0x02017B58
+	ldr ip, _02017B60 ; =PlayBgmById
 	bx ip
 	.align 2, 0
-_02017B60: .word sub_02017DF4
-	arm_func_end sub_02017B58
+_02017B60: .word PlayBgmById
+	arm_func_end PlayBgmByIdVeneer
 
 	arm_func_start sub_02017B64
 sub_02017B64: ; 0x02017B64
-	ldr ip, _02017B6C ; =SendAudioCommandWrapper
+	ldr ip, _02017B6C ; =sub_02017E70
 	bx ip
 	.align 2, 0
-_02017B6C: .word SendAudioCommandWrapper
+_02017B6C: .word sub_02017E70
 	arm_func_end sub_02017B64
 
 	arm_func_start sub_02017B70
 sub_02017B70: ; 0x02017B70
-	ldr ip, _02017B78 ; =sub_02017EE8
+	ldr ip, _02017B78 ; =StopBgmCommand
 	bx ip
 	.align 2, 0
-_02017B78: .word sub_02017EE8
+_02017B78: .word StopBgmCommand
 	arm_func_end sub_02017B70
 
 	arm_func_start sub_02017B7C
@@ -14375,13 +14912,13 @@ sub_02017BD4: ; 0x02017BD4
 _02017BDC: .word sub_02018024
 	arm_func_end sub_02017BD4
 
-	arm_func_start SendAudioCommandWrapperVeneer
-SendAudioCommandWrapperVeneer: ; 0x02017BE0
-	ldr ip, _02017BE8 ; =sub_020180A0
+	arm_func_start PlayBgmByIdVolumeVeneer
+PlayBgmByIdVolumeVeneer: ; 0x02017BE0
+	ldr ip, _02017BE8 ; =PlayBgmByIdVolume
 	bx ip
 	.align 2, 0
-_02017BE8: .word sub_020180A0
-	arm_func_end SendAudioCommandWrapperVeneer
+_02017BE8: .word PlayBgmByIdVolume
+	arm_func_end PlayBgmByIdVolumeVeneer
 
 	arm_func_start sub_02017BEC
 sub_02017BEC: ; 0x02017BEC
@@ -14456,19 +14993,19 @@ _02017C70: .word sub_020182AC
 
 	arm_func_start sub_02017C74
 sub_02017C74: ; 0x02017C74
-	ldr ip, _02017C7C ; =sub_020182B8
+	ldr ip, _02017C7C ; =PlaySeByIdVolume
 	bx ip
 	.align 2, 0
-_02017C7C: .word sub_020182B8
+_02017C7C: .word PlaySeByIdVolume
 	arm_func_end sub_02017C74
 
 	arm_func_start sub_02017C80
 sub_02017C80: ; 0x02017C80
-	ldr ip, _02017C8C ; =sub_020182B8
+	ldr ip, _02017C8C ; =PlaySeByIdVolume
 	mov r1, #0x100
 	bx ip
 	.align 2, 0
-_02017C8C: .word sub_020182B8
+_02017C8C: .word PlaySeByIdVolume
 	arm_func_end sub_02017C80
 
 	arm_func_start sub_02017C90
@@ -14511,18 +15048,18 @@ sub_02017CC0: ; 0x02017CC0
 _02017CC8: .word sub_02018460
 	arm_func_end sub_02017CC0
 
-	arm_func_start sub_02017CCC
-sub_02017CCC: ; 0x02017CCC
+	arm_func_start PlaySeVolumeWrapper
+PlaySeVolumeWrapper: ; 0x02017CCC
 	ldr r1, _02017CE4 ; =_0209915C
 	mov r0, r0, lsl #1
 	ldrh r0, [r1, r0]
-	ldr ip, _02017CE8 ; =sub_020182B8
+	ldr ip, _02017CE8 ; =PlaySeByIdVolume
 	mov r1, #0x100
 	bx ip
 	.align 2, 0
 _02017CE4: .word _0209915C
-_02017CE8: .word sub_020182B8
-	arm_func_end sub_02017CCC
+_02017CE8: .word PlaySeByIdVolume
+	arm_func_end PlaySeVolumeWrapper
 
 	arm_func_start sub_02017CEC
 sub_02017CEC: ; 0x02017CEC
@@ -14535,7 +15072,7 @@ sub_02017CEC: ; 0x02017CEC
 	mov r3, #3
 	mov r1, #0x100
 	strh r3, [r2]
-	bl sub_020182B8
+	bl PlaySeByIdVolume
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02017D18: .word _022A4BE8
@@ -14609,14 +15146,14 @@ _02017DE4: .word _022A4BEC
 
 	arm_func_start sub_02017DE8
 sub_02017DE8: ; 0x02017DE8
-	ldr ip, _02017DF0 ; =sub_02019850
+	ldr ip, _02017DF0 ; =IsSongOver
 	bx ip
 	.align 2, 0
-_02017DF0: .word sub_02019850
+_02017DF0: .word IsSongOver
 	arm_func_end sub_02017DE8
 
-	arm_func_start sub_02017DF4
-sub_02017DF4: ; 0x02017DF4
+	arm_func_start PlayBgmById
+PlayBgmById: ; 0x02017DF4
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _02017E68 ; =0x000003E7
 	mov r5, r0
@@ -14649,10 +15186,10 @@ sub_02017DF4: ; 0x02017DF4
 	.align 2, 0
 _02017E68: .word 0x000003E7
 _02017E6C: .word _022A4BEC
-	arm_func_end sub_02017DF4
+	arm_func_end PlayBgmById
 
-	arm_func_start SendAudioCommandWrapper
-SendAudioCommandWrapper: ; 0x02017E70
+	arm_func_start sub_02017E70
+sub_02017E70: ; 0x02017E70
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r3, _02017EE0 ; =0x000003E7
 	mov r6, r0
@@ -14684,10 +15221,10 @@ SendAudioCommandWrapper: ; 0x02017E70
 	.align 2, 0
 _02017EE0: .word 0x000003E7
 _02017EE4: .word _022A4BEC
-	arm_func_end SendAudioCommandWrapper
+	arm_func_end sub_02017E70
 
-	arm_func_start sub_02017EE8
-sub_02017EE8: ; 0x02017EE8
+	arm_func_start StopBgmCommand
+StopBgmCommand: ; 0x02017EE8
 	stmdb sp!, {r3, lr}
 	bl sub_02018B50
 	ldr r0, _02017F20 ; =0x000003E7
@@ -14705,7 +15242,7 @@ sub_02017EE8: ; 0x02017EE8
 	.align 2, 0
 _02017F20: .word 0x000003E7
 _02017F24: .word _022A4BEC
-	arm_func_end sub_02017EE8
+	arm_func_end StopBgmCommand
 
 	arm_func_start sub_02017F28
 sub_02017F28: ; 0x02017F28
@@ -14831,8 +15368,8 @@ _02018098: .word 0x000003E7
 _0201809C: .word _022A4BEC
 	arm_func_end sub_02018024
 
-	arm_func_start sub_020180A0
-sub_020180A0: ; 0x020180A0
+	arm_func_start PlayBgmByIdVolume
+PlayBgmByIdVolume: ; 0x020180A0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r3, _02018110 ; =0x000003E7
 	mov r6, r0
@@ -14864,7 +15401,7 @@ sub_020180A0: ; 0x020180A0
 	.align 2, 0
 _02018110: .word 0x000003E7
 _02018114: .word _022A4BEC
-	arm_func_end sub_020180A0
+	arm_func_end PlayBgmByIdVolume
 
 	arm_func_start sub_02018118
 sub_02018118: ; 0x02018118
@@ -15005,8 +15542,8 @@ sub_020182AC: ; 0x020182AC
 _020182B4: .word sub_0201A480
 	arm_func_end sub_020182AC
 
-	arm_func_start sub_020182B8
-sub_020182B8: ; 0x020182B8
+	arm_func_start PlaySeByIdVolume
+PlaySeByIdVolume: ; 0x020182B8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -15029,11 +15566,11 @@ sub_020182B8: ; 0x020182B8
 	movne r5, #0
 	mov r0, r4
 	strh r5, [r4, #8]
-	bl sub_02018AE4
+	bl SendAudioCommand2
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02018318: .word _0209916C
-	arm_func_end sub_020182B8
+	arm_func_end PlaySeByIdVolume
 
 	arm_func_start sub_0201831C
 sub_0201831C: ; 0x0201831C
@@ -15066,7 +15603,7 @@ sub_0201831C: ; 0x0201831C
 	strh r6, [r4, #8]
 	mov r0, r4
 	strh r5, [r4, #0xa]
-	bl sub_02018AE4
+	bl SendAudioCommand2
 _02018394:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
@@ -15090,7 +15627,7 @@ sub_020183A0: ; 0x020183A0
 	strh r6, [r0, #4]
 	strh r5, [r0, #6]
 	strh r4, [r0, #8]
-	bl sub_02018AE4
+	bl SendAudioCommand2
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020183E0: .word _020991C8
@@ -15112,7 +15649,7 @@ sub_020183E4: ; 0x020183E4
 	strh r6, [r0, #4]
 	strh r5, [r0, #6]
 	strh r4, [r0, #0xa]
-	bl sub_02018AE4
+	bl SendAudioCommand2
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02018424: .word _020991F0
@@ -15131,7 +15668,7 @@ sub_02018428: ; 0x02018428
 	strh r4, [r0, #4]
 	mov r1, #0
 	strh r1, [r0, #6]
-	bl sub_02018AE4
+	bl SendAudioCommand2
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0201845C: .word _02099210
@@ -15151,7 +15688,7 @@ sub_02018460: ; 0x02018460
 	bl sub_02018A78
 	strh r5, [r0, #4]
 	strh r4, [r0, #6]
-	bl sub_02018AE4
+	bl SendAudioCommand2
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02018498: .word _02099224
@@ -15653,8 +16190,8 @@ _02018ADC: .word _020AF7E4
 _02018AE0: .word _022A4C50
 	arm_func_end sub_02018A78
 
-	arm_func_start sub_02018AE4
-sub_02018AE4: ; 0x02018AE4
+	arm_func_start SendAudioCommand2
+SendAudioCommand2: ; 0x02018AE4
 	stmdb sp!, {r4, lr}
 	ldr r1, _02018B3C ; =_022A4C00
 	mov r4, r0
@@ -15684,7 +16221,7 @@ _02018B40: .word _022A4C00
 _02018B44: .word _02099240
 _02018B48: .word _020AF7C0
 _02018B4C: .word _020AF780
-	arm_func_end sub_02018AE4
+	arm_func_end SendAudioCommand2
 
 	arm_func_start sub_02018B50
 sub_02018B50: ; 0x02018B50
@@ -16644,8 +17181,8 @@ _02019848: .word _020AFB28
 _0201984C: .word _022A4E58
 	arm_func_end sub_02019824
 
-	arm_func_start sub_02019850
-sub_02019850: ; 0x02019850
+	arm_func_start IsSongOver
+IsSongOver: ; 0x02019850
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	ldr r0, _020198B0 ; =_020AFB28
@@ -16674,7 +17211,7 @@ _0201989C:
 	.align 2, 0
 _020198B0: .word _020AFB28
 _020198B4: .word _022A4E58
-	arm_func_end sub_02019850
+	arm_func_end IsSongOver
 
 	arm_func_start PlayBgm
 PlayBgm: ; 0x020198B8
@@ -19708,8 +20245,8 @@ InitAnimationControl: ; 0x0201C050
 	ldmia sp!, {r4, pc}
 	arm_func_end InitAnimationControl
 
-	arm_func_start sub_0201C0B0
-sub_0201C0B0: ; 0x0201C0B0
+	arm_func_start InitAnimationControlWithSet__0201C0B0
+InitAnimationControlWithSet__0201C0B0: ; 0x0201C0B0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl InitAnimationControl
@@ -19717,10 +20254,10 @@ sub_0201C0B0: ; 0x0201C0B0
 	orr r0, r0, #1
 	strh r0, [r4, #2]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201C0B0
+	arm_func_end InitAnimationControlWithSet__0201C0B0
 
-	arm_func_start sub_0201C0CC
-sub_0201C0CC: ; 0x0201C0CC
+	arm_func_start InitAnimationControlWithSet__0201C0CC
+InitAnimationControlWithSet__0201C0CC: ; 0x0201C0CC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl InitAnimationControl
@@ -19728,7 +20265,7 @@ sub_0201C0CC: ; 0x0201C0CC
 	orr r0, r0, #1
 	strh r0, [r4, #2]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201C0CC
+	arm_func_end InitAnimationControlWithSet__0201C0CC
 
 	arm_func_start SetSpriteIdForAnimationControl
 SetSpriteIdForAnimationControl: ; 0x0201C0E8
@@ -22894,8 +23431,8 @@ _0201E9C0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end Render3d64Texture0x7
 
-	arm_func_start Render3d64Border
-Render3d64Border: ; 0x0201E9EC
+	arm_func_start Render3d64WindowFrame
+Render3d64WindowFrame: ; 0x0201E9EC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x4c
 	mov sl, r0
@@ -23069,7 +23606,7 @@ _0201EA04:
 	bl EnqueueRender3d64Tiling
 	add sp, sp, #0x4c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end Render3d64Border
+	arm_func_end Render3d64WindowFrame
 
 	arm_func_start EnqueueRender3d64Tiling
 EnqueueRender3d64Tiling: ; 0x0201EC9C
@@ -24907,13 +25444,39 @@ sub_0202057C: ; 0x0202057C
 	bl sub_02004F74
 	ldrsb r0, [sp]
 	bl sub_020205C0
+#ifdef EUROPE
+	bl sub_0202059C
+#endif
 	add sp, sp, #0x54
 	ldmia sp!, {pc}
 	arm_func_end sub_0202057C
 
 	arm_func_start sub_0202059C
 sub_0202059C: ; 0x0202059C
+#ifdef EUROPE
+	stmdb sp!, {r4, lr}
+	mov r4, r0
+	mvn r0, #0
+	cmp r4, r0
+	ldmeqia sp!, {r4, pc}
+	ldr r1, _02020680 ; =LANGUAGE_INFO_DATA
+	ldr r0, _02020684 ; =_02099C04_EU
+	ldrsb r1, [r1]
+	mov r2, r4
+	bl DebugPrint0
+	ldr r1, _02020680 ; =LANGUAGE_INFO_DATA
+	mov r0, r4
+	strb r4, [r1]
+	bl sub_020206C0_EU
+	ldr r1, _02020680 ; =LANGUAGE_INFO_DATA
+	strb r0, [r1, #1]
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_02020680: .word LANGUAGE_INFO_DATA
+_02020684: .word _02099C04_EU
+#else
 	bx lr
+#endif
 	arm_func_end sub_0202059C
 
 	arm_func_start GetLanguageType
@@ -24925,6 +25488,18 @@ GetLanguageType: ; 0x020205A0
 _020205AC: .word LANGUAGE_INFO_DATA
 	arm_func_end GetLanguageType
 
+#ifdef EUROPE
+	arm_func_start sub_02020698_EU
+sub_02020698_EU: ; 0x02020698
+	and r0, r0, #0xff
+	cmp r0, #4
+	movls r0, #1
+	movhi r0, #0
+	and r0, r0, #0xff
+	bx lr
+	arm_func_end sub_02020698_EU
+#endif
+
 	arm_func_start GetLanguage
 GetLanguage: ; 0x020205B0
 	ldr r0, _020205BC ; =LANGUAGE_INFO_DATA
@@ -24933,6 +25508,23 @@ GetLanguage: ; 0x020205B0
 	.align 2, 0
 _020205BC: .word LANGUAGE_INFO_DATA
 	arm_func_end GetLanguage
+
+#ifdef EUROPE
+	arm_func_start sub_020206C0_EU
+sub_020206C0_EU: ; 0x020206C0
+	cmp r0, #0
+	blt _020206D8_EU
+	cmp r0, #5
+	ldrlt r1, _020206E0_EU ; =_02099BF0_EU
+	ldrltsb r0, [r1, r0]
+	bxlt lr
+_020206D8_EU:
+	mvn r0, #0
+	bx lr
+	.align 2, 0
+_020206E0_EU: .word _02099BF0_EU
+	arm_func_end sub_020206C0_EU
+#endif
 
 	arm_func_start sub_020205C0
 sub_020205C0: ; 0x020205C0
@@ -25167,7 +25759,25 @@ _02020888: .word strstr
 
 	arm_func_start sub_0202088C
 sub_0202088C: ; 0x0202088C
+#ifdef EUROPE
+	stmdb sp!, {r3, lr}
+	bl GetLanguage
+	ldr r1, _020209E0 ; =_020B05B0_EU
+	mov r2, r0, lsl #1
+	ldrh r2, [r1, r2]
+	ldr r1, _020209E4 ; =_020B05AC_EU
+	cmp r0, #2
+	strh r2, [r1]
+	strh r2, [r1, #2]
+	moveq r0, #0x2e
+	streqh r0, [r1]
+	ldmia sp!, {r3, pc}
+	.align 2, 0
+_020209E0: .word _020B05B0_EU
+_020209E4: .word _020B05AC_EU
+#else
 	bx lr
+#endif
 	arm_func_end sub_0202088C
 
 	arm_func_start sub_02020890
@@ -25614,8 +26224,15 @@ _02020DB8:
 
 	arm_func_start AnalyzeText
 AnalyzeText: ; 0x02020DC8
+#ifdef EUROPE
+#define ANALYZE_TEXT_STACK_OFFSET 8
+#define ANALYZE_TEXT_LOAD_OFFSET -0x10
+#else
+#define ANALYZE_TEXT_STACK_OFFSET 0
+#define ANALYZE_TEXT_LOAD_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
-	sub sp, sp, #0x84
+	sub sp, sp, #0x84 + ANALYZE_TEXT_STACK_OFFSET
 	mov r4, r0
 	ldr r0, [r4, #0x78]
 	add r0, r0, #1
@@ -25707,8 +26324,8 @@ _02020EE4:
 	mov r6, #1
 	add r0, r0, #1
 	str r0, [r4, #0x88]
-	str r0, [sp, #0x70]
-	add r0, sp, #0x70
+	str r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	add r0, sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET
 _02020F24:
 	ldr r1, [r4, #0x88]
 	mov r2, r1
@@ -25723,7 +26340,7 @@ _02020F24:
 	addeq r6, r6, #1
 	b _02020F24
 _02020F54:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldrb r7, [r0]
 	cmp r7, #0x41
 	blo _02021A38
@@ -25739,7 +26356,11 @@ _02020F7C: ; jump table
 	b _02021A10 ; case 2
 	b _02021A10 ; case 3
 	b _0202134C ; case 4
+#ifdef EUROPE
+	b _0202155C ; case 5
+#else
 	b _02021A10 ; case 5
+#endif
 	b _020212F0 ; case 6
 	b _02021A10 ; case 7
 	b _02021A10 ; case 8
@@ -25776,17 +26397,17 @@ _02020FD4:
 	b _02021AA0
 _02021018:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, [r0, #0xe8]
 	ldr r0, [r0, #0xe4]
-	str r1, [sp, #0x6c]
-	str r0, [sp, #0x68]
+	str r1, [sp, #0x6c + ANALYZE_TEXT_STACK_OFFSET]
+	str r0, [sp, #0x68 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
-	add r0, sp, #0x68
+	add r0, sp, #0x68 + ANALYZE_TEXT_STACK_OFFSET
 	bl FatalError
 _02021040:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EDC ; =_020999C8
 	bl StrcmpTag
 	cmp r0, #0
@@ -25795,7 +26416,7 @@ _02021040:
 	bne _02021098
 	ldrb r1, [r4, #0x9c]
 	cmp r1, #0
-	ldrne r0, [sp, #0x74]
+	ldrne r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	strneb r1, [r4, #0x99]
 	ldrneb r0, [r0]
 	strneb r0, [r4, #0x9c]
@@ -25804,21 +26425,21 @@ _02021040:
 	strb r0, [r4, #0x99]
 	ldrb r0, [r4, #0xa8]
 	cmp r0, #0
-	ldreq r0, [sp, #0x74]
+	ldreq r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	ldreqb r0, [r0]
 	streqb r0, [r4, #0x98]
 	b _020210F0
 _02021098:
 	cmp r6, #3
 	bne _020210F0
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldrb r2, [r4, #0x9c]
 	cmp r2, #0
 	cmpne r0, #3
 	beq _020210D0
 	add r1, r4, r0
-	ldr r0, [sp, #0x78]
+	ldr r0, [sp, #0x78 + ANALYZE_TEXT_STACK_OFFSET]
 	strb r2, [r1, #0x99]
 	ldrb r0, [r0]
 	strb r0, [r4, #0x9c]
@@ -25829,7 +26450,7 @@ _020210D0:
 	strb r1, [r0, #0x99]
 	ldrb r0, [r4, #0xa8]
 	cmp r0, #0
-	ldreq r0, [sp, #0x78]
+	ldreq r0, [sp, #0x78 + ANALYZE_TEXT_STACK_OFFSET]
 	ldreqb r0, [r0]
 	streqb r0, [r4, #0x98]
 _020210F0:
@@ -25839,7 +26460,7 @@ _020210F0:
 	blx r2
 	b _02021AA0
 _02021104:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EE0 ; =_020999CC
 	bl StrcmpTag
 	cmp r0, #0
@@ -25863,7 +26484,7 @@ _02021104:
 _02021158:
 	cmp r6, #2
 	bne _020211B0
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldrb r1, [r4, #0x9c]
 	cmp r1, #0
@@ -25891,7 +26512,7 @@ _020211B0:
 	blx r2
 	b _02021AA0
 _020211C4:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EE4 ; =_020999D0
 	bl StrcmpTag
 	cmp r0, #0
@@ -25907,7 +26528,7 @@ _020211C4:
 	str r0, [r4, #0x90]
 	b _02021AA0
 _02021200:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EE8 ; =_020999D4
 	bl StrcmpTag
 	cmp r0, #0
@@ -25939,22 +26560,22 @@ _02021260:
 	mov r0, #1
 	b _02021AA4
 _02021278:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EEC ; =_020999D8
 	bl StrcmpTag
 	cmp r0, #0
 	beq _0202129C
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	str r0, [r4, #0x90]
 	b _02021AA0
 _0202129C:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EF0 ; =_020999E4
 	bl StrcmpTag
 	cmp r0, #0
 	beq _020212C8
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldr r1, [r4, #0x90]
 	add r0, r1, r0
@@ -25962,17 +26583,17 @@ _0202129C:
 	b _02021AA0
 _020212C8:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0xf8]
-	ldr r0, [r0, #0xf4]
-	str r1, [sp, #0x64]
-	str r0, [sp, #0x60]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0xf8 - ANALYZE_TEXT_STACK_OFFSET]
+	ldr r0, [r0, #0xf4 - ANALYZE_TEXT_STACK_OFFSET]
+	str r1, [sp, #0x64 + ANALYZE_TEXT_STACK_OFFSET]
+	str r0, [sp, #0x60 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
-	add r0, sp, #0x60
+	add r0, sp, #0x60 + ANALYZE_TEXT_STACK_OFFSET
 	bl FatalError
 _020212F0:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EF4 ; =_020999F0
 	bl StrcmpTag
 	cmp r0, #0
@@ -25987,22 +26608,22 @@ _020212F0:
 	b _02021AA0
 _02021324:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, [r0, #0x100]
 	ldr r0, [r0, #0xfc]
-	str r1, [sp, #0x5c]
-	str r0, [sp, #0x58]
+	str r1, [sp, #0x5c + ANALYZE_TEXT_STACK_OFFSET]
+	str r0, [sp, #0x58 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
-	add r0, sp, #0x58
+	add r0, sp, #0x58 + ANALYZE_TEXT_STACK_OFFSET
 	bl FatalError
 _0202134C:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EF8 ; =_020999F4
 	bl StrcmpTag
 	cmp r0, #0
 	beq _020213A8
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl sub_02020A4C
 	movs r3, r0
 	beq _020213F4
@@ -26021,18 +26642,62 @@ _0202134C:
 	str r0, [r4, #0x80]
 	b _020213F4
 _020213A8:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EFC ; =_020999F8
 	bl StrcmpTag
 	cmp r0, #0
 	beq _020213CC
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	str r0, [r4, #0x58]
 	b _020213F4
 _020213CC:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+#ifdef EUROPE
+	ldr r1, [r0, #0x108]
+	ldr r0, [r0, #0x104]
+	str r1, [sp, #0x5c]
+	str r0, [sp, #0x58]
+	ldr r3, [r4, #0x84]
+	ldr r1, _02021ED8 ; =_020999B0
+	add r0, sp, #0x58
+	bl FatalError
+_020213F4:
+	ldr r0, [r4, #0x58]
+	ldr r1, [r4, #0x34]
+	blx r1
+	b _02021AA0
+_0202155C:
+	ldr r1, _020220C4 ; =_02099E64_EU
+	bl StrcmpTag
+	cmp r0, #0
+	beq _02021598
+	ldr r1, _020220C8 ; =_020B05AC_EU
+	ldr r0, [r4, #0x54]
+	ldrh r3, [r1]
+	ldr r1, [r4, #0x90]
+	ldr r2, [r4, #0x94]
+	ldr r5, [r4, #0x40]
+	blx r5
+	ldr r0, [r4, #0x90]
+	add r0, r0, #6
+	str r0, [r4, #0x90]
+	b _02021AA0
+_02021598:
+	ldr r0, _02021ED4 ; =_020997E4
+	ldr r2, [sp, #0x78]
+	ldr r1, [r0, #0x90]
+	ldr r0, [r0, #0x8c]
+	str r1, [sp, #0x54]
+	str r0, [sp, #0x50]
+	ldr r3, [r4, #0x84]
+	ldr r1, _02021ED8 ; =_020999B0
+	add r0, sp, #0x50
+	bl FatalError
+_02021404:
+	ldr r0, [sp, #0x78]
+#else
 	ldr r1, [r0, #0xa0]
 	ldr r0, [r0, #0x9c]
 	str r1, [sp, #0x54]
@@ -26047,6 +26712,7 @@ _020213F4:
 	blx r1
 	b _02021AA0
 _02021404:
+#endif
 	ldr r1, _02021F00 ; =_020999FC
 	bl StrcmpTag
 	cmp r0, #0
@@ -26061,9 +26727,9 @@ _02021404:
 	b _02021AA4
 _02021434:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x98]
-	ldr r0, [r0, #0x94]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x98 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x94 + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x4c]
 	str r0, [sp, #0x48]
 	ldr r3, [r4, #0x84]
@@ -26071,12 +26737,12 @@ _02021434:
 	add r0, sp, #0x48
 	bl FatalError
 _0202145C:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F04 ; =_02099A00
 	bl StrcmpTag
 	cmp r0, #0
 	beq _020214E8
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldr r2, [r4, #0xa4]
 	mov r1, #0x18
@@ -26086,7 +26752,7 @@ _0202145C:
 	strb r1, [r2, r3]
 	add r3, r2, r3
 	strh r0, [r3, #2]
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r2, [r4, #0x94]
 	ldr r1, [r4, #0x90]
 	sub r0, r0, #1
@@ -26107,7 +26773,7 @@ _0202145C:
 	blx r2
 	b _02021AA0
 _020214E8:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F08 ; =_02099A04
 	bl StrcmpTag
 	cmp r0, #0
@@ -26149,15 +26815,15 @@ _0202156C:
 	mov r0, #1
 	b _02021AA4
 _02021588:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F0C ; =_02099A08
 	bl StrcmpTag
 	cmp r0, #0
 	beq _0202166C
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	mov r5, r0
-	ldr r0, [sp, #0x78]
+	ldr r0, [sp, #0x78 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	mov r6, r0
 	ldr r0, _02021F10 ; =_020997E4
@@ -26212,9 +26878,9 @@ _02021654:
 	b _02021AA0
 _0202166C:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x90]
-	ldr r0, [r0, #0x8c]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x90 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x8c + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x44]
 	str r0, [sp, #0x40]
 	ldr r3, [r4, #0x84]
@@ -26222,12 +26888,12 @@ _0202166C:
 	add r0, sp, #0x40
 	bl FatalError
 _02021694:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F14 ; =_02099A10
 	bl StrcmpTag
 	cmp r0, #0
 	beq _020216F8
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl sub_02020948
 	mov r3, r0
 	mvn r0, #0
@@ -26248,12 +26914,12 @@ _02021694:
 	str r0, [r4, #0x80]
 	b _02021AA0
 _020216F8:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F18 ; =_02099A14
 	bl StrcmpTag
 	cmp r0, #0
 	beq _02021728
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldr r2, [r4, #0x90]
 	mov r1, #6
@@ -26261,23 +26927,31 @@ _020216F8:
 	str r1, [r4, #0x90]
 	b _02021AA0
 _02021728:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F1C ; =_02099A18
 	bl StrcmpTag
 	cmp r0, #0
 	beq _02021764
+#ifdef EUROPE
+	ldr r1, _020220C8 ; =_020B05AC_EU
 	ldr r0, [r4, #0x54]
+	ldrh r3, [r1, #2]
+#else
+	ldr r0, [r4, #0x54]
+#endif
 	ldr r1, [r4, #0x90]
 	ldr r2, [r4, #0x94]
 	ldr r5, [r4, #0x40]
+#ifndef EUROPE
 	mov r3, #0x2c
+#endif
 	blx r5
 	ldr r0, [r4, #0x90]
 	add r0, r0, #6
 	str r0, [r4, #0x90]
 	b _02021AA0
 _02021764:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F20 ; =_02099A1C
 	bl StrcmpTag
 	cmp r0, #0
@@ -26285,7 +26959,7 @@ _02021764:
 	ldrh r0, [r4, #0x60]
 	tst r0, #1
 	bne _02021AA0
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -26293,9 +26967,9 @@ _02021764:
 	b _02021AA0
 _0202179C:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x88]
-	ldr r0, [r0, #0x84]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x88 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x84 + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x3c]
 	str r0, [sp, #0x38]
 	ldr r3, [r4, #0x84]
@@ -26303,7 +26977,7 @@ _0202179C:
 	add r0, sp, #0x38
 	bl FatalError
 _020217C4:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F24 ; =_02099A24
 	bl StrcmpTag
 	cmp r0, #0
@@ -26337,9 +27011,9 @@ _02021828:
 	b _02021AA4
 _02021840:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x80]
-	ldr r0, [r0, #0x7c]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x80 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x7c + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x34]
 	str r0, [sp, #0x30]
 	ldr r3, [r4, #0x84]
@@ -26347,7 +27021,7 @@ _02021840:
 	add r0, sp, #0x30
 	bl FatalError
 _02021868:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F28 ; =_02099A28
 	bl StrcmpTag
 	cmp r0, #0
@@ -26367,9 +27041,9 @@ _02021868:
 	b _02021AA4
 _020218B0:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x78]
-	ldr r0, [r0, #0x74]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x78 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x74 + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x2c]
 	str r0, [sp, #0x28]
 	ldr r3, [r4, #0x84]
@@ -26377,26 +27051,26 @@ _020218B0:
 	add r0, sp, #0x28
 	bl FatalError
 _020218D8:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F2C ; =_02099A2C
 	bl StrcmpTag
 	cmp r0, #0
 	beq _02021904
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	ldr r1, [r4, #0x90]
 	add r0, r1, r0
 	str r0, [r4, #0x90]
 	b _02021AA0
 _02021904:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F30 ; =_02099A30
 	bl StrcmpTag
 	cmp r0, #0
 	movne r0, #0x400
 	strne r0, [r4, #0x80]
 	bne _02021AA0
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F34 ; =_02099A34
 	bl StrcmpTag
 	cmp r0, #0
@@ -26408,7 +27082,7 @@ _02021904:
 	str r0, [r4, #0x80]
 	b _02021AA0
 _0202194C:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F38 ; =_02099A38
 	bl StrcmpTag
 	cmp r0, #0
@@ -26416,7 +27090,7 @@ _0202194C:
 	ldrh r0, [r4, #0x60]
 	tst r0, #1
 	bne _02021AA0
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -26424,9 +27098,9 @@ _0202194C:
 	b _02021AA0
 _02021984:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x70]
-	ldr r0, [r0, #0x6c]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x70 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x6c + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x24]
 	str r0, [sp, #0x20]
 	ldr r3, [r4, #0x84]
@@ -26434,7 +27108,7 @@ _02021984:
 	add r0, sp, #0x20
 	bl FatalError
 _020219AC:
-	ldr r0, [sp, #0x70]
+	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F3C ; =_02099A40
 	bl StrcmpTag
 	cmp r0, #0
@@ -26442,7 +27116,7 @@ _020219AC:
 	ldrh r0, [r4, #0x60]
 	tst r0, #1
 	bne _02021AA0
-	ldr r0, [sp, #0x74]
+	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
 	bl StoiTag
 	str r0, [r4, #0x7c]
 	mov r0, #6
@@ -26451,9 +27125,9 @@ _020219AC:
 	b _02021AA4
 _020219E8:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x68]
-	ldr r0, [r0, #0x64]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x68 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x64 + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0x1c]
 	str r0, [sp, #0x18]
 	ldr r3, [r4, #0x84]
@@ -26462,9 +27136,14 @@ _020219E8:
 	bl FatalError
 _02021A10:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+#ifdef EUROPE
+	ldr r1, [r0, #0x40]
+	ldr r0, [r0, #0x3c]
+#else
 	ldr r1, [r0, #0x60]
 	ldr r0, [r0, #0x5c]
+#endif
 	str r1, [sp, #0x14]
 	str r0, [sp, #0x10]
 	ldr r3, [r4, #0x84]
@@ -26478,9 +27157,9 @@ _02021A38:
 	bls _02021AA0
 _02021A48:
 	ldr r0, _02021ED4 ; =_020997E4
-	ldr r2, [sp, #0x70]
-	ldr r1, [r0, #0x58]
-	ldr r0, [r0, #0x54]
+	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
+	ldr r1, [r0, #0x58 + ANALYZE_TEXT_LOAD_OFFSET]
+	ldr r0, [r0, #0x54 + ANALYZE_TEXT_LOAD_OFFSET]
 	str r1, [sp, #0xc]
 	str r0, [sp, #8]
 	ldr r3, [r4, #0x84]
@@ -26492,8 +27171,13 @@ _02021A70:
 	beq _02021AA0
 	ldr r1, _02021ED4 ; =_020997E4
 	add r0, sp, #0
+#ifdef EUROPE
+	ldr r2, [r1, #0x98]
+	ldr r1, [r1, #0x94]
+#else
 	ldr r2, [r1, #0x48]
 	ldr r1, [r1, #0x44]
+#endif
 	str r2, [sp, #4]
 	str r1, [sp]
 	ldr r2, [r4, #0x88]
@@ -26799,7 +27483,7 @@ _02021E9C:
 _02021EC4:
 	ldr r0, [r4, #0x5c]
 _02021EC8:
-	add sp, sp, #0x84
+	add sp, sp, #0x84 + ANALYZE_TEXT_STACK_OFFSET
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02021ED0: .word _020999AC
@@ -26814,6 +27498,10 @@ _02021EF0: .word _020999E4
 _02021EF4: .word _020999F0
 _02021EF8: .word _020999F4
 _02021EFC: .word _020999F8
+#ifdef EUROPE
+_020220C4: .word _02099E64_EU
+_020220C8: .word _020B05AC_EU
+#endif
 _02021F00: .word _020999FC
 _02021F04: .word _02099A00
 _02021F08: .word _02099A04
@@ -27015,6 +27703,13 @@ _0202212C:
 	ldr r1, _020223D4 ; =_02099A18
 	mov r0, r6
 	bl StrcmpTag
+#ifdef EUROPE
+	cmp r0, #0
+	bne _020221D8
+	ldr r1, _020225D0 ; =_02099E64_EU
+	mov r0, r6
+	bl StrcmpTag
+#endif
 	cmp r0, #0
 	bne _020221D8
 	ldr r1, _020223D8 ; =_02099A08
@@ -27093,6 +27788,14 @@ _020222A4:
 	b _0202212C
 _020222CC:
 	ldr r1, _020223D4 ; =_02099A18
+#ifdef EUROPE
+	mov r0, r6
+	bl StrcmpTag
+	cmp r0, #0
+	addne r4, r4, #6
+	bne _0202212C
+	ldr r1, _020225D0 ; =_02099A08
+#endif
 	mov r0, r6
 	bl StrcmpTag
 	cmp r0, #0
@@ -27165,6 +27868,9 @@ _020223C8: .word _020999F4
 _020223CC: .word _02099A2C
 _020223D0: .word _02099A14
 _020223D4: .word _02099A18
+#ifdef EUROPE
+_020225D0: .word _02099E64_EU
+#endif
 _020223D8: .word _02099A08
 _020223DC: .word _020997E4
 _020223E0: .word _02099A24
@@ -27356,8 +28062,13 @@ _02022658:
 _02022694:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0xd8]
+	ldr ip, [r1, #0xd4]
+#else
 	ldr r2, [r1, #0x50]
 	ldr ip, [r1, #0x4c]
+#endif
 	str r2, [sp, #0xb0]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0xac
@@ -27515,8 +28226,13 @@ _020228A8:
 _020228E0:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0xf8]
+	ldr ip, [r1, #0xf4]
+#else
 	ldr r2, [r1, #0xe0]
 	ldr ip, [r1, #0xdc]
+#endif
 	str r2, [sp, #0x98]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x94
@@ -27553,8 +28269,13 @@ _02022938:
 _0202296C:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x110]
+	ldr ip, [r1, #0x10c]
+#else
 	ldr r2, [r1, #0x108]
 	ldr ip, [r1, #0x104]
+#endif
 	str r2, [sp, #0x90]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x8c
@@ -27578,8 +28299,13 @@ _02022994:
 _020229C8:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #8]
+	ldr ip, [r1, #4]
+#else
 	ldr r2, [r1, #0x20]
 	ldr ip, [r1, #0x1c]
+#endif
 	str r2, [sp, #0x88]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x84
@@ -27641,8 +28367,13 @@ _02022A7C:
 _02022AB0:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x10]
+	ldr ip, [r1, #0xc]
+#else
 	ldr r2, [r1, #0x18]
 	ldr ip, [r1, #0x14]
+#endif
 	str r2, [sp, #0x80]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x7c
@@ -27663,8 +28394,13 @@ _02022AD8:
 _02022B00:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x20]
+	ldr ip, [r1, #0x1c]
+#else
 	ldr r2, [r1, #0x10]
 	ldr ip, [r1, #0xc]
+#endif
 	str r2, [sp, #0x78]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x74
@@ -27714,8 +28450,13 @@ _02022B8C:
 _02022BBC:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x50]
+	ldr ip, [r1, #0x4c]
+#else
 	ldr r2, [r1, #0x40]
 	ldr ip, [r1, #0x3c]
+#endif
 	str r2, [sp, #0x68]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x64
@@ -27749,8 +28490,13 @@ _02022C14:
 _02022C3C:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0xe0]
+	ldr ip, [r1, #0xdc]
+#else
 	ldr r2, [r1, #0xa8]
 	ldr ip, [r1, #0xa4]
+#endif
 	str r2, [sp, #0x60]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x5c
@@ -27816,8 +28562,13 @@ _02022D04:
 _02022D34:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0xd0]
+	ldr ip, [r1, #0xcc]
+#else
 	ldr r2, [r1, #0xc0]
 	ldr ip, [r1, #0xbc]
+#endif
 	str r2, [sp, #0x58]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x54
@@ -27874,8 +28625,13 @@ _02022DD4:
 _02022E08:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x118]
+	ldr ip, [r1, #0x114]
+#else
 	ldr r2, [r1, #0xf0]
 	ldr ip, [r1, #0xec]
+#endif
 	str r2, [sp, #0x50]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x4c
@@ -27913,8 +28669,13 @@ _02022E64:
 _02022E98:
 	ldr r1, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r2, [r1, #0x18]
+	ldr ip, [r1, #0x14]
+#else
 	ldr r2, [r1, #8]
 	ldr ip, [r1, #4]
+#endif
 	str r2, [sp, #0x48]
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x44
@@ -28083,8 +28844,13 @@ _02023094:
 _02023114:
 	ldr r0, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r1, [r0, #0xa0]
+	ldr r2, [r0, #0x9c]
+#else
 	ldr r1, [r0, #0xb0]
 	ldr r2, [r0, #0xac]
+#endif
 	str r1, [sp, #0x38]
 	str r2, [sp, #0x34]
 	ldr r1, _02023484 ; =_020999B0
@@ -28151,8 +28917,13 @@ _020231D8:
 _02023214:
 	ldr r0, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r1, [r0, #0xc0]
+	ldr r2, [r0, #0xbc]
+#else
 	ldr r1, [r0, #0xd0]
 	ldr r2, [r0, #0xcc]
+#endif
 	str r1, [sp, #0x30]
 	str r2, [sp, #0x2c]
 	ldr r1, _02023484 ; =_020999B0
@@ -28200,8 +28971,13 @@ _020232A0:
 _020232C8:
 	ldr r0, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
+#ifdef EUROPE
+	ldr r1, [r0, #0xa8]
+	ldr r2, [r0, #0xa4]
+#else
 	ldr r1, [r0, #0xd8]
 	ldr r2, [r0, #0xd4]
+#endif
 	str r1, [sp, #0x20]
 	str r2, [sp, #0x1c]
 	ldr r1, _02023484 ; =_020999B0
@@ -28298,8 +29074,13 @@ _020233EC:
 _0202342C:
 	ldr r1, _02023480 ; =_020997E4
 	add r0, sp, #0x14
+#ifdef EUROPE
+	ldr r3, [r1, #0xb0]
+	ldr r1, [r1, #0xac]
+#else
 	ldr r3, [r1, #0x110]
 	ldr r1, [r1, #0x10c]
+#endif
 	str r3, [sp, #0x18]
 	str r1, [sp, #0x14]
 	ldr r1, _02023570 ; =_02099C84
@@ -28441,12 +29222,32 @@ StoiTagVeneer: ; 0x02023604
 _0202360C: .word StoiTag
 	arm_func_end StoiTagVeneer
 
+#ifdef EUROPE
+	arm_func_start sub_0202380C_EU
+sub_0202380C_EU: ; 0x0202380C
+	ldr ip, _02023814 ; =sub_02020A4C
+	bx ip
+	.align 2, 0
+_02023814: .word sub_02020A4C
+	arm_func_end sub_0202380C_EU
+#endif
+
 	arm_func_start sub_02023610
 sub_02023610: ; 0x02023610
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
+#ifdef EUROPE
+	bl GetLanguageType
+	cmp r0, #5
+	moveq r1, #1
+	ldr r0, _02023864 ; =_020B05BC_EU
+	movne r1, #0
+#endif
 	ldr r6, _02023644 ; =_022A5048
 	ldr r5, _02023648 ; =_02099CA0
 	mov r7, #0
+#ifdef EUROPE
+	strb r1, [r0]
+#endif
 	mov r4, #1
 _02023624:
 	mov r2, r4
@@ -28458,10 +29259,15 @@ _02023624:
 	blt _02023624
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02023864: .word _020B05BC_EU
+#endif
 _02023644: .word _022A5048
 _02023648: .word _02099CA0
 	arm_func_end sub_02023610
-_0202364C:
+
+	arm_func_start sub_0202364C
+sub_0202364C: ; 0x02023610
 	ldrb r2, [r1], #1
 	ldrb r3, [r0], #1
 	cmp r2, #0
@@ -28477,9 +29283,10 @@ _02023674:
 	moveq r0, #0
 	bxeq lr
 	cmp r3, r2
-	beq _0202364C
+	beq sub_0202364C
 	mov r0, #0
 	bx lr
+	arm_func_end sub_0202364C
 
 	arm_func_start InitPreprocessorArgs
 InitPreprocessorArgs: ; 0x02023690
@@ -28559,7 +29366,11 @@ sub_0202372C: ; 0x0202372C
 	add sp, sp, #0x100
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02023784: .word _0209A230_EU
+#else
 _02023784: .word _02099D0C
+#endif
 _02023788: .word _02099D10
 	arm_func_end sub_0202372C
 
@@ -28581,6 +29392,90 @@ SprintfStatic__0202378C: ; 0x0202378C
 sub_020237B4: ; 0x020237B4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x100
+#ifdef EUROPE
+	mov r4, r1
+	mov r8, r0
+	mov r7, r2
+	ldr r1, _020238C8 ; =_02099D0C
+	add r0, sp, #0
+	mov r2, r4
+	mov r6, r3
+	bl SprintfStatic__0202378C
+	add r0, sp, #0
+	bl strlen
+	mov r5, r0
+	sub r0, r5, #1
+	mov r1, #3
+	bl __divsi3
+	mov r4, r0
+	cmp r7, #0
+	ble _02023A38
+	cmp r5, r7
+	movgt r7, r5
+	sub r0, r7, #1
+	mov r1, #3
+	bl __divsi3
+_02023A38:
+	ldr r1, _02023B14 ; =_020B05BC_EU
+	ldrb r1, [r1]
+	cmp r1, #0
+	beq _02023A50
+	cmp r5, #4
+	movle r4, #0
+_02023A50:
+	cmp r4, #0
+	ble _02023AD0
+	add r2, sp, #0
+	sub r1, r5, #1
+	add sb, r2, r1
+	mov lr, #0
+	add sl, sb, r4, lsl #2
+	mov ip, lr
+	strb lr, [sl, #1]
+	mov r3, #0x5d
+	mov r2, #0x50
+	mov fp, #0x5b
+	b _02023AC8
+_02023A84:
+	cmp lr, #3
+	blt _02023AB8
+	strb r3, [sl]
+	cmp r6, #0
+	movne r1, #0x47
+	strb r2, [sl, #-1]
+	moveq r1, #0x4d
+	strb r1, [sl, #-2]
+	strb fp, [sl, #-3]
+	sub sl, sl, #4
+	cmp sl, sb
+	beq _02023AD0
+	mov lr, #0
+_02023AB8:
+	ldrb r1, [sb], #-1
+	add lr, lr, #1
+	add ip, ip, #1
+	strb r1, [sl], #-1
+_02023AC8:
+	cmp ip, r5
+	blt _02023A84
+_02023AD0:
+	cmp r7, #0
+	ble _02023AF8
+	sub r1, r7, r5
+	add r2, r0, r1
+	ldr r1, _020238CC ; =_02099D10
+	add r3, sp, #0
+	mov r0, r8
+	sub r2, r2, r4
+	bl SprintfStatic__0202378C
+	b _02023B04
+_02023AF8:
+	add r1, sp, #0
+	mov r0, r8
+	bl strcpy
+_02023B04:
+	mov r0, r8
+#else
 	mov r3, r1
 	mov r7, r0
 	mov r6, r2
@@ -28653,10 +29548,16 @@ _020238B0:
 	bl strcpy
 _020238BC:
 	mov r0, r7
+#endif
 	add sp, sp, #0x100
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef EUROPE
+_020238C8: .word _0209A230_EU
+_02023B14: .word _020B05BC_EU
+#else
 _020238C8: .word _02099D0C
+#endif
 _020238CC: .word _02099D10
 	arm_func_end sub_020237B4
 
@@ -28664,6 +29565,9 @@ _020238CC: .word _02099D10
 sub_020238D0: ; 0x020238D0
 	ldr ip, _020238DC ; =sub_020237B4
 	mov r2, #5
+#ifdef EUROPE
+	mov r3, #1
+#endif
 	bx ip
 	.align 2, 0
 _020238DC: .word sub_020237B4
@@ -28673,6 +29577,9 @@ _020238DC: .word sub_020237B4
 sub_020238E0: ; 0x020238E0
 	ldr ip, _020238EC ; =sub_020237B4
 	mov r2, #0
+#ifdef EUROPE
+	mov r3, #1
+#endif
 	bx ip
 	.align 2, 0
 _020238EC: .word sub_020237B4
@@ -28682,6 +29589,9 @@ _020238EC: .word sub_020237B4
 sub_020238F0: ; 0x020238F0
 	ldr ip, _020238FC ; =sub_020237B4
 	mov r2, #7
+#ifdef EUROPE
+	mov r3, #1
+#endif
 	bx ip
 	.align 2, 0
 _020238FC: .word sub_020237B4
@@ -28691,6 +29601,9 @@ _020238FC: .word sub_020237B4
 sub_02023900: ; 0x02023900
 	ldr ip, _0202390C ; =sub_020237B4
 	mov r2, #0
+#ifdef EUROPE
+	mov r3, #1
+#endif
 	bx ip
 	.align 2, 0
 _0202390C: .word sub_020237B4
@@ -28700,6 +29613,9 @@ _0202390C: .word sub_020237B4
 sub_02023910: ; 0x02023910
 	ldr ip, _0202391C ; =sub_020237B4
 	mov r2, #0
+#ifdef EUROPE
+	mov r3, r2
+#endif
 	bx ip
 	.align 2, 0
 _0202391C: .word sub_020237B4
@@ -29281,7 +30197,7 @@ sub_020240B0: ; 0x020240B0
 _020240CC:
 	ldr r1, [r5, #4]
 	mov r0, r7
-	bl _0202364C
+	bl sub_0202364C
 	cmp r0, #0
 	beq _020240F4
 	mov r1, r6, lsl #0x10
@@ -29314,7 +30230,7 @@ sub_02024114: ; 0x02024114
 _02024130:
 	ldr r1, [r5, #4]
 	mov r0, r7
-	bl _0202364C
+	bl sub_0202364C
 	cmp r0, #0
 	beq _02024158
 	mov r1, r6, lsl #0x10
@@ -29347,7 +30263,7 @@ sub_02024178: ; 0x02024178
 _02024194:
 	ldr r1, [r5, #4]
 	mov r0, r7
-	bl _0202364C
+	bl sub_0202364C
 	cmp r0, #0
 	beq _020241BC
 	mov r1, r6, lsl #0x10
@@ -29489,6 +30405,11 @@ _0202435C: .word _02099D50
 
 	arm_func_start SetStringAccuracy
 SetStringAccuracy: ; 0x02024360
+#ifdef EUROPE
+#define SET_STRING_ACCURACY_OFFSET 2
+#else
+#define SET_STRING_ACCURACY_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r2, _02024410 ; =0x000027A2
 	mov r4, r0
@@ -29542,10 +30463,10 @@ _02024408:
 	ldr r0, _02024424 ; =_02099D50
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02024410: .word 0x000027A2
-_02024414: .word 0x000029C1
+_02024410: .word 0x000027A2 + SET_STRING_ACCURACY_OFFSET
+_02024414: .word 0x000029C1 + SET_STRING_ACCURACY_OFFSET
 _02024418: .word MOVE_ACCURACY_STARS_TABLE
-_0202441C: .word 0x000027A0
+_0202441C: .word 0x000027A0 + SET_STRING_ACCURACY_OFFSET
 _02024420: .word _02099D84
 _02024424: .word _02099D50
 	arm_func_end SetStringAccuracy
@@ -29606,10 +30527,19 @@ _020244D4:
 	ldr r0, _020244F0 ; =_02099D50
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef EUROPE
+_020244DC: .word 0x000027A4
+_020244E0: .word 0x000029C3
+#else
 _020244DC: .word 0x000027A2
 _020244E0: .word 0x000029C1
+#endif
 _020244E4: .word MOVE_POWER_STARS_TABLE
+#ifdef EUROPE
+_020244E8: .word 0x000027A3
+#else
 _020244E8: .word 0x000027A1
+#endif
 _020244EC: .word _02099D84
 _020244F0: .word _02099D50
 	arm_func_end SetStringPower
@@ -29627,7 +30557,11 @@ sub_020244F4: ; 0x020244F4
 	beq _02024564
 	b _02024580
 _0202451C:
+#ifdef EUROPE
+	add r0, r1, #0xc3
+#else
 	add r0, r1, #0xc1
+#endif
 	add r0, r0, #0x3400
 	mov r1, r0, lsl #0x10
 	add r0, sp, #0
@@ -29668,6 +30602,34 @@ _02024594: .word _02099D50
 
 	arm_func_start sub_02024598
 sub_02024598: ; 0x02024598
+#ifdef EUROPE
+	stmdb sp!, {r3, r4, r5, lr}
+	movs r4, r1
+	mov r5, r0
+	bmi _02024828
+	bl GetLanguage
+	mov r2, r0
+	ldr r1, _0202484C ; =_020B05D4_EU
+	mov r0, r5
+	ldr r1, [r1, r2, lsl #3]
+	mov r2, r4
+	bl SprintfStatic__0202378C
+	b _02024844
+_02024828:
+	bl GetLanguage
+	mov r2, r0
+	ldr r1, _02024850 ; =_020B05D8_EU
+	mov r0, r5
+	ldr r1, [r1, r2, lsl #3]
+	rsb r2, r4, #0
+	bl SprintfStatic__0202378C
+_02024844:
+	mov r0, r5
+	ldmia sp!, {r3, r4, r5, pc}
+	.align 2, 0
+_0202484C: .word _020B05D4_EU
+_02024850: .word _020B05D8_EU
+#else
 	stmdb sp!, {r4, lr}
 	movs r2, r1
 	mov r4, r0
@@ -29685,12 +30647,68 @@ _020245C0:
 	.align 2, 0
 _020245C8: .word _02099DA0
 _020245CC: .word _02099DB0
+#endif
 	arm_func_end sub_02024598
+
+#ifdef EUROPE
+	arm_func_start sub_02024854_EU
+sub_02024854_EU: ; 0x02024854
+	stmdb sp!, {r4, r5, r6, lr}
+	sub sp, sp, #0x40
+	ldr ip, [sp, #0x50]
+	mov r6, r0
+	mov r5, r1
+	mov r4, r3
+	cmp ip, #2
+	bgt _02024884
+	ldr r1, _020248DC ; =_02099DC0
+	mov r2, r5
+	bl SprintfStatic__0202378C
+	b _020248D4
+_02024884:
+	and r0, r2, #0xff
+	bl DungeonGoesUp
+	cmp r0, #0
+	add r0, sp, #0
+	beq _020248B8
+	mov r1, r4
+	bl sub_02024598
+	ldr r1, _020248E0 ; =_0209A2D4_EU
+	add r3, sp, #0
+	mov r0, r6
+	mov r2, r5
+	bl SprintfStatic__0202378C
+	b _020248D4
+_020248B8:
+	rsb r1, r4, #0
+	bl sub_02024598
+	ldr r1, _020248E0 ; =_0209A2D4_EU
+	add r3, sp, #0
+	mov r0, r6
+	mov r2, r5
+	bl SprintfStatic__0202378C
+_020248D4:
+	add sp, sp, #0x40
+	ldmia sp!, {r4, r5, r6, pc}
+	.align 2, 0
+_020248DC: .word _02099DC0
+_020248E0: .word _0209A2D4_EU
+	arm_func_end sub_02024854_EU
+#endif
 
 	arm_func_start sub_020245D0
 sub_020245D0: ; 0x020245D0
+#ifdef EUROPE
+#define SUB_020245D0_STACK_OFFSET 4
+#else
+#define SUB_020245D0_STACK_OFFSET 0
+#endif
+#ifdef EUROPE
+	stmdb sp!, {r4, r5, r6, r7, lr}
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	sub sp, sp, #0x80
+#endif
+	sub sp, sp, #0x80 + SUB_020245D0_STACK_OFFSET
 	mov r3, r1, lsl #0x10
 	and r1, r1, #0xf0000
 	mov r7, r0
@@ -29723,10 +30741,10 @@ _02024634:
 	and r1, r4, #0xff
 	bl sub_0204F6F8
 	mov r1, r0
-	add r0, sp, #0x40
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	bl GetStringFromFileVeneer
 	ldr r1, _02024924 ; =_02099DC0
-	add r2, sp, #0x40
+	add r2, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	mov r0, r7
 	bl SprintfStatic__0202378C
 	mov r0, r7
@@ -29740,10 +30758,10 @@ _02024668:
 	mov r2, r0
 	bl sub_0204F6F8
 	mov r1, r0
-	add r0, sp, #0x40
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	bl GetStringFromFileVeneer
 	ldr r1, _02024924 ; =_02099DC0
-	add r2, sp, #0x40
+	add r2, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	mov r0, r7
 	bl SprintfStatic__0202378C
 	mov r0, r7
@@ -29759,12 +30777,20 @@ _020246A8:
 	and r1, r4, #0xff
 	bl sub_0204F6F8
 	mov r1, r0
-	add r0, sp, #0x40
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	bl GetStringFromFileVeneer
 	cmp r6, #0
 	mvnlt r0, #0
 	mullt r0, r6, r0
 	movlt r6, r0
+#ifdef EUROPE
+	add r1, sp, #0x44
+	mov r0, r7
+	mov r2, r4
+	mov r3, r6
+	str r5, [sp]
+	bl sub_02024854_EU
+#else
 	cmp r5, #2
 	bhi _02024704
 	ldr r1, _02024924 ; =_02099DC0
@@ -29789,6 +30815,7 @@ _0202472C:
 	mov r3, r6
 	bl SprintfStatic__0202378C
 _0202473C:
+#endif
 	mov r0, r7
 	b _0202491C
 _02024744:
@@ -29802,11 +30829,11 @@ _02024744:
 	mov r0, #1
 	bl sub_0204F6F8
 	mov r1, r0
-	add r0, sp, #0x40
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	bl GetStringFromFileVeneer
 	mov r1, #0
-	add r0, sp, #0
-	add r3, sp, #0x40
+	add r0, sp, #0 + SUB_020245D0_STACK_OFFSET
+	add r3, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 _02024780:
 	ldrb r2, [r3, r1]
 	cmp r2, #0
@@ -29854,8 +30881,8 @@ _02024780:
 	mov r3, #0x5d
 	strb r3, [r0, r2]
 	add ip, r1, #0xd
-	add r3, sp, #0x40
-	add r0, sp, #0
+	add r3, sp, #0x40 + SUB_020245D0_STACK_OFFSET
+	add r0, sp, #0 + SUB_020245D0_STACK_OFFSET
 _02024840:
 	ldrb r2, [r3, r1]
 	add r1, r1, #1
@@ -29864,8 +30891,8 @@ _02024840:
 	add ip, ip, #1
 	bne _02024840
 	mov r3, #0
-	add r2, sp, #0
-	add r0, sp, #0x40
+	add r2, sp, #0 + SUB_020245D0_STACK_OFFSET
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	b _02024874
 _02024868:
 	ldrb r1, [r2, r3]
@@ -29879,6 +30906,14 @@ _02024880:
 	add r1, r1, #1
 	b _02024780
 _02024888:
+#ifdef EUROPE
+	add r1, sp, #0x44
+	mov r0, r7
+	mov r2, r4
+	mov r3, r6
+	str r5, [sp]
+	bl sub_02024854_EU
+#else
 	cmp r5, #2
 	bhi _020248A4
 	ldr r1, _02024924 ; =_02099DC0
@@ -29903,6 +30938,7 @@ _020248CC:
 	mov r3, r6
 	bl SprintfStatic__0202378C
 _020248DC:
+#endif
 	mov r0, r7
 	b _0202491C
 _020248E4:
@@ -29911,10 +30947,10 @@ _020248E4:
 	mov r0, #0
 	bl sub_0204F6F8
 	mov r1, r0
-	add r0, sp, #0x40
+	add r0, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	bl GetStringFromFileVeneer
 	ldr r1, _02024924 ; =_02099DC0
-	add r2, sp, #0x40
+	add r2, sp, #0x40 + SUB_020245D0_STACK_OFFSET
 	mov r0, r7
 	bl SprintfStatic__0202378C
 	mov r0, r7
@@ -29922,12 +30958,18 @@ _020248E4:
 _02024918:
 	ldr r0, _02024930 ; =_02099D50
 _0202491C:
-	add sp, sp, #0x80
+	add sp, sp, #0x80 + SUB_020245D0_STACK_OFFSET
+#ifdef EUROPE
+	ldmia sp!, {r4, r5, r6, r7, pc}
+#else
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+#endif
 	.align 2, 0
 _02024924: .word _02099DC0
+#ifndef EUROPE
 _02024928: .word _02099DD0
 _0202492C: .word _02099DEC
+#endif
 _02024930: .word _02099D50
 	arm_func_end sub_020245D0
 
@@ -30111,7 +31153,11 @@ sub_02024B48: ; 0x02024B48
 	tst r1, #0xf0000
 	mov r0, r2, lsr #0x10
 	bne _02024B88
+#ifdef EUROPE
+	add r0, r0, #0x71
+#else
 	add r0, r0, #0x6f
+#endif
 	add r0, r0, #0x2700
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -30287,6 +31333,27 @@ _02024D70:
 _02024D78: .word _02099D50
 	arm_func_end sub_02024D48
 
+#ifdef EUROPE
+	arm_func_start sub_02025010_EU
+sub_02025010_EU: ; 0x02025010
+	stmdb sp!, {r3, r4, r5, lr}
+	mov r5, r0
+	mov r4, r1
+	bl GetLanguage
+	ldr r2, _02025040 ; =_020B05C0_EU
+	ldr r1, _02025044 ; =_0209A2F4_EU
+	ldr r2, [r2, r0, lsl #2]
+	mov r0, r5
+	mov r3, r4
+	bl SprintfStatic__0202378C
+	mov r0, r5
+	ldmia sp!, {r3, r4, r5, pc}
+	.align 2, 0
+_02025040: .word _020B05C0_EU
+_02025044: .word _0209A2F4_EU
+	arm_func_end sub_02025010_EU
+#endif
+
 	arm_func_start sub_02024D7C
 sub_02024D7C: ; 0x02024D7C
 	stmdb sp!, {r4, lr}
@@ -30448,8 +31515,13 @@ _02024F78:
 	.align 2, 0
 _02024F94: .word 0x000001B1
 _02024F98: .word 0x000001B2
+#ifdef EUROPE
+_02024F9C: .word 0x000029D3
+_02024FA0: .word 0x00002F4B
+#else
 _02024F9C: .word 0x000029D1
 _02024FA0: .word 0x00002F49
+#endif
 _02024FA4: .word _02099E18
 _02024FA8: .word _02099CA4
 _02024FAC: .word _02099CC4
@@ -31387,7 +32459,11 @@ _02025ABC:
 _02025AC4: .word 0x000004B8
 _02025AC8: .word _022A7A08
 _02025ACC: .word _022A7A0C
+#ifdef EUROPE
+_02025AD0: .word 0x00003EFF
+#else
 _02025AD0: .word 0x00003EFD
+#endif
 _02025AD4: .word TBL_TALK_GROUP_STRING_ID_START
 	arm_func_end GetTalkLine
 
@@ -31402,7 +32478,11 @@ sub_02025AD8: ; 0x02025AD8
 	ldr r0, [sp]
 	ldr r2, _02025B70 ; =_022A7A54
 	add r3, r0, #4
+#ifdef EUROPE
+	str r0, [r2, #8]
+#else
 	str r0, [r2, #0x10]
+#endif
 	str r3, [r2]
 	ldr r1, _02025B74 ; =_0209AC04
 	add r0, sp, #0
@@ -31411,7 +32491,11 @@ sub_02025AD8: ; 0x02025AD8
 	ldr r0, [sp]
 	ldr r2, _02025B70 ; =_022A7A54
 	add r3, r0, #4
+#ifdef EUROPE
+	str r0, [r2, #0xc]
+#else
 	str r0, [r2, #0x14]
+#endif
 	str r3, [r2, #4]
 	ldr r1, _02025B78 ; =_0209AC18
 	add r0, sp, #0
@@ -31420,12 +32504,22 @@ sub_02025AD8: ; 0x02025AD8
 	ldr r0, [sp]
 	ldr r1, _02025B7C ; =_020AFD04
 	mov r2, #0
+#ifdef EUROPE
+	str r0, [r1, #8]
+	str r2, [r1, #4]
+#else
 	str r0, [r1, #0xc]
 	str r2, [r1, #8]
+#endif
 	ldr r0, _02025B70 ; =_022A7A54
 	mov r2, #0xb
+#ifdef EUROPE
+	str r2, [r0, #0x10]
+	str r2, [r0, #0x14]
+#else
 	str r2, [r0, #8]
 	str r2, [r0, #0xc]
+#endif
 	mov r0, #1
 	strb r0, [r1]
 	add sp, sp, #8
@@ -31441,7 +32535,11 @@ _02025B7C: .word _020AFD04
 	arm_func_start sub_02025B80
 sub_02025B80: ; 0x02025B80
 	ldr r1, _02025B8C ; =_020AFD04
+#ifdef EUROPE
+	str r0, [r1, #4]
+#else
 	str r0, [r1, #8]
+#endif
 	bx lr
 	.align 2, 0
 _02025B8C: .word _020AFD04
@@ -31460,9 +32558,15 @@ sub_02025B90: ; 0x02025B90
 	add r0, sp, #0
 	bl sub_02027274
 	ldr r0, _02025C08 ; =_020AFD04
+#ifdef EUROPE
+	ldr r1, [r0, #0x8]
+	cmp r1, #0
+	strne r1, [r0, #0xc]
+#else
 	ldr r1, [r0, #0xc]
 	cmp r1, #0
 	strne r1, [r0, #4]
+#endif
 	ldr r1, _02025C0C ; =_020AFD1C
 	add r0, sp, #0
 	ldr r2, [r1, r4, lsl #2]
@@ -31474,7 +32578,11 @@ sub_02025B90: ; 0x02025B90
 	bl LoadFileFromRom
 	ldr r0, _02025C08 ; =_020AFD04
 	ldr r1, [r0, #0x10]
+#ifdef EUROPE
+	str r1, [r0, #8]
+#else
 	str r1, [r0, #0xc]
+#endif
 	add sp, sp, #0x40
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -31502,12 +32610,22 @@ _02025C30:
 	str r2, [r1, #0x14]
 	bl sub_02027274
 	ldr r0, _02025C70 ; =_020AFD04
+#ifdef EUROPE
+	ldr r1, [r0, #0xc]
+	cmp r1, #0
+	strne r1, [r0, #8]
+#else
 	ldr r1, [r0, #4]
 	cmp r1, #0
 	strne r1, [r0, #0xc]
+#endif
 	ldr r0, _02025C70 ; =_020AFD04
 	mov r1, #0
+#ifdef EUROPE
+	str r1, [r0, #0xc]
+#else
 	str r1, [r0, #4]
+#endif
 	bl sub_02027170
 	bl sub_02027390
 	ldmia sp!, {r3, pc}
@@ -31520,11 +32638,23 @@ _02025C78: .word _0209AC38
 	arm_func_start sub_02025C7C
 sub_02025C7C: ; 0x02025C7C
 	stmdb sp!, {r4, lr}
+#ifdef EUROPE
+	ldr r2, _02025D3C ; =_020AFD04
+	ldr r1, _0202601C_EU ; =0x000082BD
+	ldr r4, [r2, #4]
+	ldr r2, _02025D40 ; =_022A7A54
+	cmp r0, r1
+	ldr r1, [r2, r4, lsl #2]
+	ldreq r0, _02026024 ; =_0209B09C_EU
+	ldmeqia sp!, {r4, pc}
+	cmp r0, #0xf800
+#else
 	ldr r1, _02025D3C ; =_020AFD04
 	ldr r2, _02025D40 ; =_022A7A54
 	ldr r4, [r1, #8]
 	cmp r0, #0xf800
 	ldr r1, [r2, r4, lsl #2]
+#endif
 	blo _02025CCC
 	ldr r2, _02025D44 ; =0x0000FFFF
 	cmp r0, r2
@@ -31574,7 +32704,13 @@ _02025D34:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02025D3C: .word _020AFD04
+#ifdef EUROPE
+_0202601C_EU: .word 0x000082BD
+#endif
 _02025D40: .word _022A7A54
+#ifdef EUROPE
+_02026024: .word _0209B09C_EU
+#endif
 _02025D44: .word 0x0000FFFF
 _02025D48: .word _022A7A64
 _02025D4C: .word _0209AB60
@@ -31827,7 +32963,11 @@ sub_02026020: ; 0x02026020
 	arm_func_start sub_02026038
 sub_02026038: ; 0x02026038
 	ldr r1, _02026044 ; =_020AFD04
+#ifdef EUROPE
+	str r0, [r1, #4]
+#else
 	str r0, [r1, #8]
+#endif
 	bx lr
 	.align 2, 0
 _02026044: .word _020AFD04
@@ -32281,7 +33421,11 @@ sub_0202654C: ; 0x0202654C
 	stmdb sp!, {r3, lr}
 	ldr r1, _02026590 ; =_020AFD04
 	mov r3, r0
+#ifdef EUROPE
+	ldr r1, [r1, #4]
+#else
 	ldr r1, [r1, #8]
+#endif
 	cmp r1, #2
 	blt _0202657C
 	mov r1, #0
@@ -32303,7 +33447,11 @@ _02026590: .word _020AFD04
 	arm_func_start sub_02026594
 sub_02026594: ; 0x02026594
 	ldr r1, _020265A4 ; =_020AFD04
+#ifdef EUROPE
+	ldr r1, [r1, #8]
+#else
 	ldr r1, [r1, #0xc]
+#endif
 	ldrb r0, [r1, r0, lsl #2]
 	bx lr
 	.align 2, 0
@@ -32471,7 +33619,11 @@ sub_0202676C: ; 0x0202676C
 	bl sub_020275F8
 	ldr r1, _02026B14 ; =_020AFD04
 	str r0, [sp, #0x18]
+#ifdef EUROPE
+	ldr r0, [r1, #4]
+#else
 	ldr r0, [r1, #8]
+#endif
 	cmp r0, #2
 	blt _020267C0
 	ldr r0, [sp, #4]
@@ -32505,7 +33657,11 @@ _02026804:
 _02026808:
 	ldr r0, _02026B14 ; =_020AFD04
 	ldr r3, [sp, #0x24]
+#ifdef EUROPE
+	ldr r2, [r0, #4]
+#else
 	ldr r2, [r0, #8]
+#endif
 	ldr r1, _02026B18 ; =_022A7A5C
 	sub r0, r3, #8
 	cmp r6, #0
@@ -32733,7 +33889,11 @@ sub_02026B1C: ; 0x02026B1C
 	sub sp, sp, #8
 	ldr r5, _02026C64 ; =_020AFD04
 	mov r4, r0
+#ifdef EUROPE
+	ldr r5, [r5, #8]
+#else
 	ldr r5, [r5, #0xc]
+#endif
 	mov r6, r1
 	add r7, r5, r3, lsl #2
 	mov r5, r2
@@ -32745,7 +33905,11 @@ sub_02026B1C: ; 0x02026B1C
 	blt _02026C5C
 	ldr r0, _02026C64 ; =_020AFD04
 	add r1, sp, #0
+#ifdef EUROPE
+	ldr r2, [r0, #8]
+#else
 	ldr r2, [r0, #0xc]
+#endif
 	mov r0, r4
 	add r4, r2, r3
 	bl sub_020282C8
@@ -32831,7 +33995,11 @@ sub_02026C68: ; 0x02026C68
 	bhi _02026CA4
 	ldr ip, _02026E38 ; =_020AFD04
 	sub r3, r3, #0x40
+#ifdef EUROPE
+	ldr ip, [ip, #4]
+#else
 	ldr ip, [ip, #8]
+#endif
 	mov r3, r3, lsl #0x10
 	mov r3, r3, asr #0x10
 	cmp ip, #3
@@ -32841,7 +34009,11 @@ sub_02026C68: ; 0x02026C68
 	b _02026E18
 _02026CA4:
 	ldr ip, _02026E38 ; =_020AFD04
+#ifdef EUROPE
+	ldr ip, [ip, #4]
+#else
 	ldr ip, [ip, #8]
+#endif
 	cmp ip, #3
 	bne _02026D40
 	cmp r3, #0x40
@@ -32899,6 +34071,41 @@ _02026D40:
 	movls r3, r3, asr #0x10
 	bls _02026E18
 _02026D5C:
+#ifdef EUROPE
+	cmp r3, #0xe1
+	bgt _02027090
+	bge _020270F4
+	cmp r3, #0x2e
+	bgt _02027084
+	subs ip, r3, #0x26
+	addpl pc, pc, ip, lsl #2
+	b _02026E10
+_02027060: ; jump table
+	b _02026DE8 ; case 0
+	b _02026DE0 ; case 1
+	b _02026E10 ; case 2
+	b _02026E10 ; case 3
+	b _02026E10 ; case 4
+	b _02026E10 ; case 5
+	b _02026DD0 ; case 6
+	b _02026DD8 ; case 7
+	b _02026DC8 ; case 8
+_02027084:
+	cmp r3, #0xc1
+	beq _02026E00
+	b _02026E10
+_02027090:
+	cmp r3, #0xeb
+	bgt _020270A8
+	bge _02026DF8
+	cmp r3, #0xe9
+	beq _02026DF0
+	b _02026E10
+_020270A8:
+	cmp r3, #0xed
+	beq _020270FC
+	b _02026E10
+#else
 	cmp r3, #0xc1
 	bgt _02026DAC
 	bge _02026E00
@@ -32929,6 +34136,7 @@ _02026DBC:
 	cmp r3, #0xeb
 	beq _02026DF8
 	b _02026E10
+#endif
 _02026DC8:
 	mov r3, #0x1b
 	b _02026E18
@@ -32953,9 +34161,18 @@ _02026DF8:
 _02026E00:
 	mov r3, #0x3d
 	b _02026E18
+#ifdef EUROPE
+_020270F4:
+	mov r3, #0x4c
+	b _02026E18
+_020270FC:
+	mov r3, #0x4d
+	b _02026E18
+#else
 _02026E08:
 	mov r3, #0x3e
 	b _02026E18
+#endif
 _02026E10:
 	mov r0, #6
 	ldmia sp!, {r3, pc}
@@ -32963,7 +34180,11 @@ _02026E18:
 	ldrb ip, [sp, #8]
 	cmp ip, #0
 	ldreq r0, _02026E38 ; =_020AFD04
+#ifdef EUROPE
+	ldreq r0, [r0, #8]
+#else
 	ldreq r0, [r0, #0xc]
+#endif
 	ldreqb r0, [r0, r3, lsl #2]
 	ldmeqia sp!, {r3, pc}
 	bl sub_02026B1C
@@ -33585,8 +34806,8 @@ sub_02027624: ; 0x02027624
 _02027644: .word _022A88DC
 	arm_func_end sub_02027624
 
-	arm_func_start sub_02027648
-sub_02027648: ; 0x02027648
+	arm_func_start NewWindowScreenCheck
+NewWindowScreenCheck: ; 0x02027648
 	stmdb sp!, {r4, lr}
 	mov r4, #0
 	ldr ip, _020276B8 ; =_022A88DC
@@ -33615,15 +34836,15 @@ _02027678:
 	ldreq r2, _020276BC ; =_022A7A6C
 	moveq r3, #1
 	streqh r3, [r2, #0xa]
-	bl NewDialogBox
+	bl NewWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020276B8: .word _022A88DC
 _020276BC: .word _022A7A6C
-	arm_func_end sub_02027648
+	arm_func_end NewWindowScreenCheck
 
-	arm_func_start NewDialogBox
-NewDialogBox: ; 0x020276C0
+	arm_func_start NewWindow
+NewWindow: ; 0x020276C0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
@@ -33736,7 +34957,7 @@ _02027704:
 	strh r1, [r5, #0x78]
 	add r0, r5, #0xbc
 	strh r1, [r5, #0x7a]
-	bl InitDialogBoxTrailer
+	bl InitWindowTrailer
 	mov r0, #0
 	strb r0, [r6]
 	add r0, r6, #4
@@ -33750,7 +34971,7 @@ _02027898: .word _022A88DC
 _0202789C: .word _022A7B1C
 _020278A0: .word _022A7A74
 _020278A4: .word _022A7A6C
-	arm_func_end NewDialogBox
+	arm_func_end NewWindow
 
 	arm_func_start sub_020278A8
 sub_020278A8: ; 0x020278A8
@@ -34205,7 +35426,7 @@ sub_02027E30: ; 0x02027E30
 	mov r0, #0xe0
 	mla r0, r1, r0, r2
 	add r0, r0, #0xbc
-	bl InitDialogBoxTrailer
+	bl InitWindowTrailer
 	ldrsb r0, [r4]
 	cmp r0, #0
 	blt _02027F20
@@ -34318,7 +35539,7 @@ _0202801C:
 	mov r0, #0xe0
 	mla r0, r1, r0, r2
 	add r0, r0, #0xbc
-	bl InitDialogBoxTrailer
+	bl InitWindowTrailer
 	mov r0, #0
 	strh r0, [r7, #0x3a]
 	strh r0, [r7, #0x38]
@@ -34589,8 +35810,8 @@ sub_02028324: ; 0x02028324
 _02028338: .word _022A88E4
 	arm_func_end sub_02028324
 
-	arm_func_start GetDialogBoxField0xC
-GetDialogBoxField0xC: ; 0x0202833C
+	arm_func_start GetWindowContents
+GetWindowContents: ; 0x0202833C
 	ldr r2, _02028350 ; =_022A88DC
 	mov r1, #0xe0
 	mla r1, r0, r1, r2
@@ -34598,7 +35819,7 @@ GetDialogBoxField0xC: ; 0x0202833C
 	bx lr
 	.align 2, 0
 _02028350: .word _022A88DC
-	arm_func_end GetDialogBoxField0xC
+	arm_func_end GetWindowContents
 
 	arm_func_start sub_02028354
 sub_02028354: ; 0x02028354
@@ -35036,12 +36257,12 @@ sub_020288DC: ; 0x020288DC
 	ldr r2, _020288F4 ; =_022A88DC
 	mov r1, #0xe0
 	mla r1, r0, r1, r2
-	ldr ip, _020288F8 ; =InitDialogBoxTrailer
+	ldr ip, _020288F8 ; =InitWindowTrailer
 	add r0, r1, #0xbc
 	bx ip
 	.align 2, 0
 _020288F4: .word _022A88DC
-_020288F8: .word InitDialogBoxTrailer
+_020288F8: .word InitWindowTrailer
 	arm_func_end sub_020288DC
 
 	arm_func_start sub_020288FC
@@ -36009,7 +37230,7 @@ LoadCursors: ; 0x0202950C
 	mov r2, #0xe
 	bl sub_0201D9C8
 	ldr r0, _02029668 ; =_022AAC80
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r0, _02029668 ; =_022AAC80
 	ldr r1, _02029660 ; =_022AAC64
 	ldrsh r1, [r1, #2]
@@ -36031,7 +37252,7 @@ LoadCursors: ; 0x0202950C
 	strh r1, [r0, #0x38]
 	bl sub_0201C108
 	ldr r0, _0202966C ; =_022AACFC
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r0, _0202966C ; =_022AACFC
 	ldr r1, _02029660 ; =_022AAC64
 	ldrsh r1, [r1]
@@ -36064,15 +37285,15 @@ _02029668: .word _022AAC80
 _0202966C: .word _022AACFC
 	arm_func_end LoadCursors
 
-	arm_func_start InitDialogBoxTrailer
-InitDialogBoxTrailer: ; 0x02029670
+	arm_func_start InitWindowTrailer
+InitWindowTrailer: ; 0x02029670
 	mov r1, #0
 	str r1, [r0]
 	strb r1, [r0, #4]
 	strb r1, [r0, #0x19]
 	strb r1, [r0, #0x18]
 	bx lr
-	arm_func_end InitDialogBoxTrailer
+	arm_func_end InitWindowTrailer
 
 	arm_func_start sub_02029688
 sub_02029688: ; 0x02029688
@@ -36701,7 +37922,7 @@ LoadAlert: ; 0x02029EE8
 	ldr r1, _02029F7C ; =_022AAD78
 	strh r0, [r1]
 	ldr r0, _02029F80 ; =_022AAD7C
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C0B0
 	ldr r1, _02029F7C ; =_022AAD78
 	ldr r0, _02029F80 ; =_022AAD7C
 	ldrsh r1, [r1]
@@ -37190,7 +38411,7 @@ _0202A504:
 _0202A564:
 	add r0, sp, #0x18
 	mov r1, #0
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	mov r1, #0
 	mov r4, r0
 	bl sub_02027A08
@@ -37262,7 +38483,7 @@ _0202A638:
 	mov r2, r7
 	mov r3, r4
 	str r6, [r5, #0x100]
-	bl sub_0202A75C
+	bl CreateParentMenu
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end sub_0202A5CC
 
@@ -37323,7 +38544,7 @@ _0202A6FC:
 	mov r2, r7
 	mov r3, r4
 	str r6, [r5, #0x100]
-	bl sub_0202A75C
+	bl CreateParentMenu
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end sub_0202A690
 
@@ -37335,7 +38556,7 @@ sub_0202A730: ; 0x0202A730
 	mvn r1, #1
 	cmp r4, r1
 	beq _0202A754
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #1
 	strb r1, [r0, #0x1b0]
 _0202A754:
@@ -37343,8 +38564,8 @@ _0202A754:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202A730
 
-	arm_func_start sub_0202A75C
-sub_0202A75C: ; 0x0202A75C
+	arm_func_start CreateParentMenu
+CreateParentMenu: ; 0x0202A75C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
 	mov r6, r0
@@ -37364,7 +38585,7 @@ sub_0202A75C: ; 0x0202A75C
 	addne ip, sp, #0x1c
 	ldmneia r6, {r0, r1, r2, r3}
 	stmneia ip, {r0, r1, r2, r3}
-	ldrne r0, _0202A94C ; =sub_0202ABFC
+	ldrne r0, _0202A94C ; =UpdateParentMenu
 	mov r5, r8
 	strne r0, [sp, #0x1c]
 	bne _0202A7CC
@@ -37436,7 +38657,7 @@ _0202A880:
 	ldrneb r0, [sp, #0x23]
 	subne r0, r1, r0
 	strneb r0, [sp, #0x21]
-	ldr r0, _0202A94C ; =sub_0202ABFC
+	ldr r0, _0202A94C ; =UpdateParentMenu
 	cmp sb, #0
 	str r0, [r4]
 	str sl, [r4, #0xfc]
@@ -37464,7 +38685,7 @@ _0202A8DC:
 	add r0, sp, #0x1c
 	mov r1, #3
 	strb r2, [sp, #0x24]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add r1, sp, #0xc
 	mov r6, r0
 	bl sub_02028284
@@ -37480,14 +38701,14 @@ _0202A8DC:
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0202A94C: .word sub_0202ABFC
+_0202A94C: .word UpdateParentMenu
 _0202A950: .word _0209AE90
-	arm_func_end sub_0202A75C
+	arm_func_end CreateParentMenu
 
 	arm_func_start sub_0202A954
 sub_0202A954: ; 0x0202A954
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #1
 	str r1, [r0, #0x19c]
 	mov r1, #0
@@ -37587,7 +38808,7 @@ _0202AA3C:
 	arm_func_start sub_0202AAA8
 sub_0202AAA8: ; 0x0202AAA8
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #7
 	str r1, [r0, #0x19c]
 	ldmia sp!, {r3, pc}
@@ -37597,7 +38818,7 @@ sub_0202AAA8: ; 0x0202AAA8
 sub_0202AABC: ; 0x0202AABC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #0x198]
 	bl MemFree
@@ -37612,7 +38833,7 @@ sub_0202AABC: ; 0x0202AABC
 sub_0202AAE8: ; 0x0202AAE8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #0x19c]
 	cmp r0, #4
@@ -37637,7 +38858,7 @@ sub_0202AAE8: ; 0x0202AAE8
 	arm_func_start sub_0202AB40
 sub_0202AB40: ; 0x0202AB40
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
 	cmp r0, #8
 	cmpne r0, #9
@@ -37649,7 +38870,7 @@ sub_0202AB40: ; 0x0202AB40
 	arm_func_start sub_0202AB60
 sub_0202AB60: ; 0x0202AB60
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r0, [r0, #0x1a0]
 	cmp r0, #0
 	moveq r0, #1
@@ -37661,7 +38882,7 @@ sub_0202AB60: ; 0x0202AB60
 	arm_func_start sub_0202AB80
 sub_0202AB80: ; 0x0202AB80
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02032558
 	ldmia sp!, {r3, pc}
@@ -37671,7 +38892,7 @@ sub_0202AB80: ; 0x0202AB80
 sub_0202AB94: ; 0x0202AB94
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r4
 	add r0, r0, #4
 	bl sub_02032684
@@ -37681,7 +38902,7 @@ sub_0202AB94: ; 0x0202AB94
 	arm_func_start sub_0202ABB0
 sub_0202ABB0: ; 0x0202ABB0
 	stmdb sp!, {r4, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1a0]
 	ldr r4, [r0, #0x198]
 	cmp r1, #0
@@ -37704,8 +38925,8 @@ _0202ABF4:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202ABB0
 
-	arm_func_start sub_0202ABFC
-sub_0202ABFC: ; 0x0202ABFC
+	arm_func_start UpdateParentMenu
+UpdateParentMenu: ; 0x0202ABFC
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x30
 	mov r6, r0
@@ -37857,7 +39078,7 @@ _0202ADF8:
 	bne _0202AE2C
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202AE2C:
 	mov r1, #1
 	mov r0, #0
@@ -37873,14 +39094,14 @@ _0202AE2C:
 _0202AE58:
 	add r0, r4, #4
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	b _0202AED8
 _0202AE68:
 	tst r1, #2
 	add r0, r4, #4
 	beq _0202AEA4
 	mov r1, #1
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r0, #1
 	strb r0, [r4, #0x1a0]
 	strb r0, [r4, #0x1a1]
@@ -37953,7 +39174,7 @@ _0202AF6C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0202AF74: .word 0x00000408
-	arm_func_end sub_0202ABFC
+	arm_func_end UpdateParentMenu
 
 	arm_func_start sub_0202AF78
 sub_0202AF78: ; 0x0202AF78
@@ -38012,7 +39233,7 @@ _0202B008:
 sub_0202B030: ; 0x0202B030
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	add r0, r4, #4
 	bl IsMenuOptionActive
@@ -38023,7 +39244,7 @@ sub_0202B030: ; 0x0202B030
 	bne _0202B068
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202B068:
 	mov r2, #1
 	mov r1, #0
@@ -38039,7 +39260,7 @@ _0202B068:
 _0202B094:
 	add r0, r4, #4
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202B030
 
@@ -38047,7 +39268,7 @@ _0202B094:
 sub_0202B0A4: ; 0x0202B0A4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	cmp r5, #0
 	add r0, r4, #4
@@ -38066,8 +39287,8 @@ _0202B0D8:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202B0A4
 
-	arm_func_start CreateNormalMenu
-CreateNormalMenu: ; 0x0202B0EC
+	arm_func_start CreateSimpleMenuWrapper
+CreateSimpleMenuWrapper: ; 0x0202B0EC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, r3
 	mov sb, r1
@@ -38117,11 +39338,11 @@ _0202B16C:
 	mov r2, r8
 	mov r3, r5
 	str r4, [sp]
-	bl sub_0202B284
+	bl CreateSimpleMenu
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0202B1A8: .word 0x0000C402
-	arm_func_end CreateNormalMenu
+	arm_func_end CreateSimpleMenuWrapper
 
 	arm_func_start sub_0202B1AC
 sub_0202B1AC: ; 0x0202B1AC
@@ -38182,13 +39403,13 @@ _0202B248:
 	mov r2, r7
 	mov r3, r4
 	str r6, [sp]
-	bl sub_0202B284
+	bl CreateSimpleMenu
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	arm_func_end sub_0202B1AC
 
-	arm_func_start sub_0202B284
-sub_0202B284: ; 0x0202B284
+	arm_func_start CreateSimpleMenu
+CreateSimpleMenu: ; 0x0202B284
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
 	mov r6, r0
@@ -38208,7 +39429,7 @@ sub_0202B284: ; 0x0202B284
 	addne ip, sp, #0x1c
 	ldmneia r6, {r0, r1, r2, r3}
 	stmneia ip, {r0, r1, r2, r3}
-	ldrne r0, _0202B488 ; =sub_0202B5C8
+	ldrne r0, _0202B488 ; =UpdateSimpleMenu
 	mov r5, r8
 	orr sl, sl, #0x8000
 	strne r0, [sp, #0x1c]
@@ -38285,7 +39506,7 @@ _0202B3BC:
 	ldrneb r0, [sp, #0x23]
 	subne r0, r1, r0
 	strneb r0, [sp, #0x21]
-	ldr r0, _0202B488 ; =sub_0202B5C8
+	ldr r0, _0202B488 ; =UpdateSimpleMenu
 	cmp sb, #0
 	str r0, [r4]
 	str sl, [r4, #0xfc]
@@ -38312,7 +39533,7 @@ _0202B418:
 	add r0, sp, #0x1c
 	mov r1, #3
 	strb r2, [sp, #0x24]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add r1, sp, #0xc
 	mov r6, r0
 	bl sub_02028284
@@ -38329,14 +39550,14 @@ _0202B418:
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0202B488: .word sub_0202B5C8
+_0202B488: .word UpdateSimpleMenu
 _0202B48C: .word _0209AEA0
-	arm_func_end sub_0202B284
+	arm_func_end CreateSimpleMenu
 
 	arm_func_start sub_0202B490
 sub_0202B490: ; 0x0202B490
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #1
 	str r1, [r0, #0x19c]
 	mov r1, #0
@@ -38350,11 +39571,11 @@ sub_0202B490: ; 0x0202B490
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202B490
 
-	arm_func_start FreeNormalMenu
-FreeNormalMenu: ; 0x0202B4C4
+	arm_func_start FreeSimpleMenu
+FreeSimpleMenu: ; 0x0202B4C4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #0x198]
 	bl MemFree
@@ -38363,24 +39584,24 @@ FreeNormalMenu: ; 0x0202B4C4
 	mov r0, r5
 	bl sub_02028194
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end FreeNormalMenu
+	arm_func_end FreeSimpleMenu
 
-	arm_func_start IsNormalMenuActive
-IsNormalMenuActive: ; 0x0202B4F0
+	arm_func_start IsSimpleMenuActive
+IsSimpleMenuActive: ; 0x0202B4F0
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
 	cmp r0, #7
 	cmpne r0, #8
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end IsNormalMenuActive
+	arm_func_end IsSimpleMenuActive
 
 	arm_func_start sub_0202B510
 sub_0202B510: ; 0x0202B510
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r0, [r0, #0x1a0]
 	cmp r0, #0
 	moveq r0, #1
@@ -38392,7 +39613,7 @@ sub_0202B510: ; 0x0202B510
 	arm_func_start sub_0202B530
 sub_0202B530: ; 0x0202B530
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02032558
 	ldmia sp!, {r3, pc}
@@ -38401,7 +39622,7 @@ sub_0202B530: ; 0x0202B530
 	arm_func_start sub_0202B544
 sub_0202B544: ; 0x0202B544
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02032560
 	ldmia sp!, {r3, pc}
@@ -38410,7 +39631,7 @@ sub_0202B544: ; 0x0202B544
 	arm_func_start sub_0202B558
 sub_0202B558: ; 0x0202B558
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x1a4]
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202B558
@@ -38418,16 +39639,16 @@ sub_0202B558: ; 0x0202B558
 	arm_func_start sub_0202B568
 sub_0202B568: ; 0x0202B568
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_0203259C
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202B568
 
-	arm_func_start GetNormalMenuResult
-GetNormalMenuResult: ; 0x0202B57C
+	arm_func_start GetSimpleMenuResult
+GetSimpleMenuResult: ; 0x0202B57C
 	stmdb sp!, {r4, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1a0]
 	ldr r4, [r0, #0x198]
 	cmp r1, #0
@@ -38448,10 +39669,10 @@ _0202B5B0:
 _0202B5C0:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end GetNormalMenuResult
+	arm_func_end GetSimpleMenuResult
 
-	arm_func_start sub_0202B5C8
-sub_0202B5C8: ; 0x0202B5C8
+	arm_func_start UpdateSimpleMenu
+UpdateSimpleMenu: ; 0x0202B5C8
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x30
 	mov r6, r0
@@ -38604,7 +39825,7 @@ _0202B7C8:
 	bne _0202B7FC
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202B7FC:
 	mov r1, #1
 	mov r0, #0
@@ -38620,14 +39841,14 @@ _0202B7FC:
 _0202B828:
 	add r0, r4, #4
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	b _0202B8A8
 _0202B838:
 	tst r1, #2
 	add r0, r4, #4
 	beq _0202B874
 	mov r1, #1
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r0, #1
 	strb r0, [r4, #0x1a0]
 	strb r0, [r4, #0x1a1]
@@ -38693,7 +39914,7 @@ _0202B928:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0202B930: .word 0x00000408
-	arm_func_end sub_0202B5C8
+	arm_func_end UpdateSimpleMenu
 
 	arm_func_start sub_0202B934
 sub_0202B934: ; 0x0202B934
@@ -38761,7 +39982,7 @@ _0202B9F4:
 sub_0202BA0C: ; 0x0202BA0C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0x1ac]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202BA0C
@@ -38786,7 +40007,7 @@ CreateAdvancedMenu: ; 0x0202BA20
 	stmeqia r4, {r0, r1, r2, r3}
 	ldmneia r6, {r0, r1, r2, r3}
 	stmneia r4, {r0, r1, r2, r3}
-	ldrne r0, _0202BBEC ; =sub_0202BD64
+	ldrne r0, _0202BBEC ; =UpdateAdvancedMenu
 	orr sl, sl, #0x8000
 	strne r0, [sp, #0x18]
 	ldrb r0, [sp, #0x1e]
@@ -38847,7 +40068,7 @@ _0202BB1C:
 	ldrneb r0, [sp, #0x1f]
 	subne r0, r1, r0
 	strneb r0, [sp, #0x1d]
-	ldr r0, _0202BBEC ; =sub_0202BD64
+	ldr r0, _0202BBEC ; =UpdateAdvancedMenu
 	cmp sb, #0
 	str r0, [r5]
 	str sl, [r5, #0xfc]
@@ -38873,7 +40094,7 @@ _0202BB78:
 	add r0, sp, #0x18
 	mov r1, #3
 	str r2, [r5, #0x1ac]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add r1, sp, #8
 	mov r6, r0
 	bl sub_02028284
@@ -38892,13 +40113,13 @@ _0202BB78:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0202BBE8: .word _0209AEB0
-_0202BBEC: .word sub_0202BD64
+_0202BBEC: .word UpdateAdvancedMenu
 	arm_func_end CreateAdvancedMenu
 
 	arm_func_start sub_0202BBF0
 sub_0202BBF0: ; 0x0202BBF0
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #1
 	str r1, [r0, #0x19c]
 	mov r1, #0
@@ -38916,7 +40137,7 @@ sub_0202BBF0: ; 0x0202BBF0
 	arm_func_start sub_0202BC28
 sub_0202BC28: ; 0x0202BC28
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r1, [r0, #0x19c]
 	cmp r1, #3
 	moveq r1, #2
@@ -38928,7 +40149,7 @@ sub_0202BC28: ; 0x0202BC28
 FreeAdvancedMenu: ; 0x0202BC44
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
@@ -38939,7 +40160,7 @@ FreeAdvancedMenu: ; 0x0202BC44
 sub_0202BC60: ; 0x0202BC60
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #0x19c]
 	cmp r0, #3
@@ -38965,7 +40186,7 @@ sub_0202BC60: ; 0x0202BC60
 	arm_func_start sub_0202BCBC
 sub_0202BCBC: ; 0x0202BCBC
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
 	cmp r0, #7
 	cmpne r0, #8
@@ -38977,7 +40198,7 @@ sub_0202BCBC: ; 0x0202BCBC
 	arm_func_start IsAdvancedMenuActive
 IsAdvancedMenuActive: ; 0x0202BCDC
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r0, [r0, #0x1a0]
 	cmp r0, #0
 	moveq r0, #1
@@ -38989,7 +40210,7 @@ IsAdvancedMenuActive: ; 0x0202BCDC
 	arm_func_start GetAdvancedMenuCurrentOption
 GetAdvancedMenuCurrentOption: ; 0x0202BCFC
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02032578
 	ldmia sp!, {r3, pc}
@@ -38998,7 +40219,7 @@ GetAdvancedMenuCurrentOption: ; 0x0202BCFC
 	arm_func_start GetAdvancedMenuResult
 GetAdvancedMenuResult: ; 0x0202BD10
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1a0]
 	cmp r1, #0
 	beq _0202BD40
@@ -39018,15 +40239,15 @@ _0202BD40:
 sub_0202BD48: ; 0x0202BD48
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r4
 	add r0, r0, #4
 	bl sub_02032684
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202BD48
 
-	arm_func_start sub_0202BD64
-sub_0202BD64: ; 0x0202BD64
+	arm_func_start UpdateAdvancedMenu
+UpdateAdvancedMenu: ; 0x0202BD64
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x30
 	mov r6, r0
@@ -39156,7 +40377,7 @@ _0202BF14:
 	bne _0202BF48
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202BF48:
 	mov r1, #1
 	mov r0, #0
@@ -39172,14 +40393,14 @@ _0202BF48:
 _0202BF74:
 	add r0, r4, #4
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	b _0202C0E8
 _0202BF84:
 	tst r1, #2
 	beq _0202BFC0
 	add r0, r4, #4
 	mov r1, #1
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r0, #1
 	strb r0, [r4, #0x1a0]
 	strb r0, [r4, #0x1a1]
@@ -39198,7 +40419,7 @@ _0202BFC0:
 	beq _0202C00C
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r4, #0x1a0]
@@ -39218,7 +40439,7 @@ _0202C00C:
 	beq _0202C058
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r4, #0x1a0]
@@ -39237,7 +40458,7 @@ _0202C058:
 	add r0, r4, #4
 	beq _0202C080
 	mov r1, #5
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [r4, #0x18c]
 	blx r0
 	b _0202C0E8
@@ -39342,13 +40563,13 @@ _0202C1D8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0202C1E0: .word 0x00000408
-	arm_func_end sub_0202BD64
+	arm_func_end UpdateAdvancedMenu
 
 	arm_func_start sub_0202C1E4
 sub_0202C1E4: ; 0x0202C1E4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	add r0, r4, #4
 	bl IsMenuOptionActive
@@ -39359,7 +40580,7 @@ sub_0202C1E4: ; 0x0202C1E4
 	bne _0202C21C
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202C21C:
 	mov r2, #1
 	mov r1, #0
@@ -39376,7 +40597,7 @@ _0202C21C:
 _0202C24C:
 	add r0, r4, #4
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202C1E4
@@ -39469,7 +40690,7 @@ _0202C36C:
 	arm_func_start sub_0202C38C
 sub_0202C38C: ; 0x0202C38C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1a0]
 	cmp r1, #0
 	ldrne r0, [r0, #0x1a4]
@@ -39477,8 +40698,8 @@ sub_0202C38C: ; 0x0202C38C
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202C38C
 
-	arm_func_start sub_0202C3A8
-sub_0202C3A8: ; 0x0202C3A8
+	arm_func_start CreateCollectionMenu
+CreateCollectionMenu: ; 0x0202C3A8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
 	sub sp, sp, #0x400
@@ -39499,7 +40720,7 @@ sub_0202C3A8: ; 0x0202C3A8
 	addne r6, sp, #0x1c
 	ldmneia r4, {r0, r1, r2, r3}
 	stmneia r6, {r0, r1, r2, r3}
-	ldrne r0, _0202C5D8 ; =sub_0202C808
+	ldrne r0, _0202C5D8 ; =UpdateCollectionMenu
 	strne r0, [sp, #0x1c]
 	bne _0202C418
 	ldr r0, _0202C5DC ; =_0209AEC0
@@ -39567,7 +40788,7 @@ _0202C4C4:
 	ldrneb r0, [sp, #0x23]
 	subne r0, r1, r0
 	strneb r0, [sp, #0x21]
-	ldr r1, _0202C5D8 ; =sub_0202C808
+	ldr r1, _0202C5D8 ; =UpdateCollectionMenu
 	mov r0, #0
 	str r1, [r5]
 	str sl, [r5, #0xfc]
@@ -39610,7 +40831,7 @@ _0202C528:
 	strb r3, [r5, #0x1c9]
 	str r3, [r5, #0x1a4]
 	str r3, [r5, #0x1a0]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add r1, sp, #0xc
 	mov r6, r0
 	bl sub_02028284
@@ -39629,15 +40850,15 @@ _0202C528:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0202C5D4: .word 0x10008004
-_0202C5D8: .word sub_0202C808
+_0202C5D8: .word UpdateCollectionMenu
 _0202C5DC: .word _0209AEC0
-	arm_func_end sub_0202C3A8
+	arm_func_end CreateCollectionMenu
 
 	arm_func_start sub_0202C5E0
 sub_0202C5E0: ; 0x0202C5E0
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0x1bc]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202C5E0
@@ -39660,7 +40881,7 @@ sub_0202C5F4: ; 0x0202C5F4
 	arm_func_start sub_0202C620
 sub_0202C620: ; 0x0202C620
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #1
 	str r1, [r0, #0x1ac]
 	mov r1, #0
@@ -39682,7 +40903,7 @@ sub_0202C654: ; 0x0202C654
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	mov r0, #1
 	str r0, [r4, #0x1ac]
@@ -39692,7 +40913,7 @@ sub_0202C654: ; 0x0202C654
 	cmp r5, #0
 	bne _0202C6A4
 	mov r0, r8
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02032578
 	str r0, [r4, #0x100]
@@ -39715,7 +40936,7 @@ _0202C6A4:
 sub_0202C6D4: ; 0x0202C6D4
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r4
 	add r0, r0, #4
 	bl sub_0203271C
@@ -39727,7 +40948,7 @@ sub_0202C6F0: ; 0x0202C6F0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r4, r2
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r5, [r0, #0x1b4]
 	str r4, [r0, #0x1b8]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -39737,7 +40958,7 @@ sub_0202C6F0: ; 0x0202C6F0
 sub_0202C70C: ; 0x0202C70C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
@@ -39747,7 +40968,7 @@ sub_0202C70C: ; 0x0202C70C
 	arm_func_start sub_0202C728
 sub_0202C728: ; 0x0202C728
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x1ac]
 	cmp r0, #6
 	cmpne r0, #7
@@ -39759,7 +40980,7 @@ sub_0202C728: ; 0x0202C728
 	arm_func_start sub_0202C748
 sub_0202C748: ; 0x0202C748
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02032578
 	ldmia sp!, {r3, pc}
@@ -39768,7 +40989,7 @@ sub_0202C748: ; 0x0202C748
 	arm_func_start sub_0202C75C
 sub_0202C75C: ; 0x0202C75C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1b0]
 	cmp r1, #0
 	beq _0202C78C
@@ -39788,7 +41009,7 @@ _0202C78C:
 sub_0202C794: ; 0x0202C794
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	strb r4, [r0, #0x1c8]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202C794
@@ -39797,7 +41018,7 @@ sub_0202C794: ; 0x0202C794
 sub_0202C7A8: ; 0x0202C7A8
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0x1a0]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202C7A8
@@ -39806,7 +41027,7 @@ sub_0202C7A8: ; 0x0202C7A8
 sub_0202C7BC: ; 0x0202C7BC
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0x1a4]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202C7BC
@@ -39815,7 +41036,7 @@ sub_0202C7BC: ; 0x0202C7BC
 sub_0202C7D0: ; 0x0202C7D0
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0x1a8]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202C7D0
@@ -39823,7 +41044,7 @@ sub_0202C7D0: ; 0x0202C7D0
 	arm_func_start sub_0202C7E4
 sub_0202C7E4: ; 0x0202C7E4
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r1, [r0, #0x1ac]
 	cmp r1, #3
 	moveq r1, #2
@@ -39833,8 +41054,8 @@ sub_0202C7E4: ; 0x0202C7E4
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202C7E4
 
-	arm_func_start sub_0202C808
-sub_0202C808: ; 0x0202C808
+	arm_func_start UpdateCollectionMenu
+UpdateCollectionMenu: ; 0x0202C808
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
 	mov r4, r0
@@ -39993,7 +41214,7 @@ _0202C994:
 _0202CA54:
 	add r0, r5, #4
 	mov r1, #3
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202CA60:
 	mov r1, r7
 	add r0, r5, #4
@@ -40043,7 +41264,7 @@ _0202CAF0:
 	bne _0202CB10
 	add r0, r5, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202CB10:
 	mov r1, #1
 	mov r0, #0
@@ -40057,14 +41278,14 @@ _0202CB10:
 _0202CB34:
 	add r0, r5, #4
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	b _0202CC94
 _0202CB44:
 	tst r0, #2
 	beq _0202CB94
 	add r0, r5, #4
 	mov r1, #1
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r1, [r5, #0x1a0]
 	cmp r1, #0
 	beq _0202CB74
@@ -40092,7 +41313,7 @@ _0202CB94:
 	beq _0202CBC0
 	add r0, r5, #4
 	mov r1, #5
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202CBC0:
 	mov r1, #1
 	mov r0, #0
@@ -40112,7 +41333,7 @@ _0202CBE8:
 	beq _0202CC30
 	add r0, r5, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r5, #0x1b0]
@@ -40130,7 +41351,7 @@ _0202CC30:
 	beq _0202CC74
 	add r0, r5, #4
 	mov r1, #5
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r5, #0x1b0]
@@ -40296,7 +41517,7 @@ _0202CE94:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0202CE9C: .word 0x00000408
-	arm_func_end sub_0202C808
+	arm_func_end UpdateCollectionMenu
 
 	arm_func_start sub_0202CEA0
 sub_0202CEA0: ; 0x0202CEA0
@@ -40431,7 +41652,7 @@ _0202D058:
 sub_0202D068: ; 0x0202D068
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0x18c]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202D068
@@ -40440,7 +41661,7 @@ sub_0202D068: ; 0x0202D068
 sub_0202D07C: ; 0x0202D07C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r1, [r0, #0xfc]
 	ands r2, r1, #0x10000000
 	cmpne r4, #0
@@ -40468,7 +41689,7 @@ _0202D0B0:
 sub_0202D0D8: ; 0x0202D0D8
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	strb r4, [r0, #0x1b2]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202D0D8
@@ -40476,7 +41697,7 @@ sub_0202D0D8: ; 0x0202D0D8
 	arm_func_start sub_0202D0EC
 sub_0202D0EC: ; 0x0202D0EC
 	stmdb sp!, {r3, r4, r5, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r5, r0
 	add r0, r5, #4
 	bl sub_02032558
@@ -40490,7 +41711,7 @@ sub_0202D0EC: ; 0x0202D0EC
 	arm_func_start sub_0202D114
 sub_0202D114: ; 0x0202D114
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x1ac]
 	cmp r0, #3
 	moveq r0, #1
@@ -40503,7 +41724,7 @@ sub_0202D114: ; 0x0202D114
 sub_0202D134: ; 0x0202D134
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	mov r0, #1
 	mov r2, #0
@@ -40521,7 +41742,7 @@ sub_0202D134: ; 0x0202D134
 sub_0202D16C: ; 0x0202D16C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	cmp r5, #0
 	ldr r0, [r4, #0xfc]
@@ -40555,8 +41776,8 @@ _0202D1BC:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202D16C
 
-	arm_func_start sub_0202D1F0
-sub_0202D1F0: ; 0x0202D1F0
+	arm_func_start CreateOptionsMenu
+CreateOptionsMenu: ; 0x0202D1F0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x12c
 	mov r5, r1
@@ -40651,7 +41872,7 @@ _0202D300:
 	addne sb, sp, #0x1c
 	ldmneia r6, {r0, r1, r2, r3}
 	stmneia sb, {r0, r1, r2, r3}
-	ldrne r0, _0202D528 ; =sub_0202D618
+	ldrne r0, _0202D528 ; =UpdateOptionsMenu
 	mov r8, fp
 	strne r0, [sp, #0x1c]
 	bne _0202D364
@@ -40745,7 +41966,7 @@ _0202D468:
 	ldrneb r0, [sp, #0x23]
 	subne r0, r1, r0
 	strneb r0, [sp, #0x21]
-	ldr r0, _0202D528 ; =sub_0202D618
+	ldr r0, _0202D528 ; =UpdateOptionsMenu
 	cmp r4, #0
 	str r0, [r7]
 	str r5, [r7, #0xfc]
@@ -40769,7 +41990,7 @@ _0202D4C4:
 	add r0, sp, #0x1c
 	mov r1, #3
 	strb r2, [r7, #0x1a5]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add r1, sp, #0xc
 	mov r6, r0
 	bl sub_02028284
@@ -40786,15 +42007,15 @@ _0202D4C4:
 	add sp, sp, #0x12c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0202D528: .word sub_0202D618
+_0202D528: .word UpdateOptionsMenu
 _0202D52C: .word _0209AED0
-	arm_func_end sub_0202D1F0
+	arm_func_end CreateOptionsMenu
 
 	arm_func_start sub_0202D530
 sub_0202D530: ; 0x0202D530
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #0x198]
 	bl MemFree
@@ -40808,7 +42029,7 @@ sub_0202D530: ; 0x0202D530
 	arm_func_start sub_0202D55C
 sub_0202D55C: ; 0x0202D55C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x1a0]
 	cmp r0, #6
 	cmpne r0, #7
@@ -40820,7 +42041,7 @@ sub_0202D55C: ; 0x0202D55C
 	arm_func_start sub_0202D57C
 sub_0202D57C: ; 0x0202D57C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r0, [r0, #0x1a4]
 	cmp r0, #0
 	moveq r0, #1
@@ -40832,7 +42053,7 @@ sub_0202D57C: ; 0x0202D57C
 	arm_func_start sub_0202D59C
 sub_0202D59C: ; 0x0202D59C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02032558
 	ldmia sp!, {r3, pc}
@@ -40842,7 +42063,7 @@ sub_0202D59C: ; 0x0202D59C
 sub_0202D5B0: ; 0x0202D5B0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r4, [r0, #0x198]
 	b _0202D5D0
 _0202D5C4:
@@ -40860,7 +42081,7 @@ _0202D5D0:
 	arm_func_start sub_0202D5E4
 sub_0202D5E4: ; 0x0202D5E4
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1a4]
 	cmp r1, #0
 	beq _0202D610
@@ -40875,8 +42096,8 @@ _0202D610:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202D5E4
 
-	arm_func_start sub_0202D618
-sub_0202D618: ; 0x0202D618
+	arm_func_start UpdateOptionsMenu
+UpdateOptionsMenu: ; 0x0202D618
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x30
 	mov r7, r0
@@ -41021,7 +42242,7 @@ _0202D7E0:
 	add r0, r4, #4
 	ble _0202D86C
 	mov r1, #3
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [sp, #8]
 	tst r0, #8
 	ldr r0, [r6, #0x108]
@@ -41039,7 +42260,7 @@ _0202D864:
 	b _0202D900
 _0202D86C:
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	b _0202D900
 _0202D878:
 	tst r0, #0x80
@@ -41051,7 +42272,7 @@ _0202D878:
 	add r0, r4, #4
 	bge _0202D8DC
 	mov r1, #3
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [sp, #8]
 	tst r0, #8
 	ldr r0, [r6, #0x108]
@@ -41071,7 +42292,7 @@ _0202D8D4:
 	b _0202D900
 _0202D8DC:
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	b _0202D900
 _0202D8E8:
 	ldr r0, [sp, #8]
@@ -41079,7 +42300,7 @@ _0202D8E8:
 	beq _0202D900
 	add r0, r4, #4
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202D900:
 	cmp r5, #0
 	beq _0202D910
@@ -41117,7 +42338,7 @@ _0202D96C:
 	beq _0202D960
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r4, #0x1a4]
@@ -41132,7 +42353,7 @@ _0202D9AC:
 	beq _0202D9DC
 	add r0, r4, #4
 	mov r1, #1
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r0, #1
 	strb r0, [r4, #0x1a4]
 	strb r0, [r4, #0x1a5]
@@ -41179,7 +42400,7 @@ _0202DA30:
 _0202DA5C:
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_0202D618
+	arm_func_end UpdateOptionsMenu
 
 	arm_func_start sub_0202DA64
 sub_0202DA64: ; 0x0202DA64
@@ -41316,8 +42537,8 @@ _0202DC48: .word _0209AEFC
 _0202DC4C: .word _0209AF04
 	arm_func_end sub_0202DA64
 
-	arm_func_start sub_0202DC50
-sub_0202DC50: ; 0x0202DC50
+	arm_func_start CreateDebugMenu
+CreateDebugMenu: ; 0x0202DC50
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
 	mov r7, r3
@@ -41365,7 +42586,7 @@ _0202DCB8:
 	str r1, [sp, #8]
 	ldmneia r8, {r0, r1, r2, r3}
 	stmneia fp, {r0, r1, r2, r3}
-	ldrne r0, _0202DEE8 ; =sub_0202DF98
+	ldrne r0, _0202DEE8 ; =UpdateDebugMenu
 	mov sb, r4
 	orr r5, r5, #4
 	ldr r6, [sp, #0x5c]
@@ -41446,7 +42667,7 @@ _0202DDF8:
 	ldrneb r0, [sp, #0x17]
 	subne r0, r1, r0
 	strneb r0, [sp, #0x15]
-	ldr r0, _0202DEE8 ; =sub_0202DF98
+	ldr r0, _0202DEE8 ; =UpdateDebugMenu
 	cmp sl, #0
 	str r0, [r7]
 	str r5, [r7, #0xfc]
@@ -41482,7 +42703,7 @@ _0202DE54:
 	str r0, [r7, #0x3b0]
 	add r0, sp, #0x10
 	mov r1, #3
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add r1, sp, #0x20
 	mov r6, r0
 	bl sub_02028284
@@ -41499,17 +42720,22 @@ _0202DE54:
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0202DEE8: .word sub_0202DF98
+_0202DEE8: .word UpdateDebugMenu
 _0202DEEC: .word _0209AF0C
+#ifdef EUROPE
+_0202DEF0: .word 0x00003C67
+_0202DEF4: .word 0x00003C68
+#else
 _0202DEF0: .word 0x00003C65
 _0202DEF4: .word 0x00003C66
-	arm_func_end sub_0202DC50
+#endif
+	arm_func_end CreateDebugMenu
 
 	arm_func_start sub_0202DEF8
 sub_0202DEF8: ; 0x0202DEF8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #0x198]
 	bl MemFree
@@ -41523,7 +42749,7 @@ sub_0202DEF8: ; 0x0202DEF8
 	arm_func_start sub_0202DF24
 sub_0202DF24: ; 0x0202DF24
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x1a0]
 	cmp r0, #6
 	cmpne r0, #7
@@ -41535,7 +42761,7 @@ sub_0202DF24: ; 0x0202DF24
 	arm_func_start sub_0202DF44
 sub_0202DF44: ; 0x0202DF44
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r0, [r0, #0x1a4]
 	cmp r0, #0
 	moveq r0, #1
@@ -41547,7 +42773,7 @@ sub_0202DF44: ; 0x0202DF44
 	arm_func_start sub_0202DF64
 sub_0202DF64: ; 0x0202DF64
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1a4]
 	cmp r1, #0
 	beq _0202DF90
@@ -41562,8 +42788,8 @@ _0202DF90:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202DF64
 
-	arm_func_start sub_0202DF98
-sub_0202DF98: ; 0x0202DF98
+	arm_func_start UpdateDebugMenu
+UpdateDebugMenu: ; 0x0202DF98
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x30
 	mov r7, r0
@@ -41675,7 +42901,7 @@ _0202E0EC:
 	add r0, r4, #4
 	bne _0202E154
 	mov r1, #3
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldrb r0, [r6, #0x100]
 	mov r5, #1
 	cmp r0, #0
@@ -41685,7 +42911,7 @@ _0202E0EC:
 	b _0202E15C
 _0202E154:
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202E15C:
 	cmp r5, #0
 	beq _0202E16C
@@ -41714,7 +42940,7 @@ _0202E1A4:
 	beq _0202E194
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r4, #0x1a4]
@@ -41729,7 +42955,7 @@ _0202E1E4:
 	beq _0202E214
 	add r0, r4, #4
 	mov r1, #1
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r0, #1
 	strb r0, [r4, #0x1a4]
 	strb r0, [r4, #0x1a5]
@@ -41776,7 +43002,7 @@ _0202E268:
 _0202E294:
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_0202DF98
+	arm_func_end UpdateDebugMenu
 
 	arm_func_start sub_0202E29C
 sub_0202E29C: ; 0x0202E29C
@@ -41862,8 +43088,8 @@ _0202E3B0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end sub_0202E29C
 
-	arm_func_start sub_0202E3CC
-sub_0202E3CC: ; 0x0202E3CC
+	arm_func_start CreateScrollBox1
+CreateScrollBox1: ; 0x0202E3CC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
 	mov r8, r0
@@ -41881,8 +43107,8 @@ sub_0202E3CC: ; 0x0202E3CC
 	stmeqia ip, {r0, r1, r2, r3}
 	ldmneia r8, {r0, r1, r2, r3}
 	stmneia ip, {r0, r1, r2, r3}
-	ldrne r0, _0202E510 ; =sub_0202E708
-	ldr r1, _0202E510 ; =sub_0202E708
+	ldrne r0, _0202E510 ; =UpdateScrollBox
+	ldr r1, _0202E510 ; =UpdateScrollBox
 	strne r0, [sp]
 	ldr r0, _0202E514 ; =0x0D0C8012
 	str r4, [sp, #0xc]
@@ -41948,18 +43174,18 @@ _0202E4E0:
 	add r0, sp, #0
 	mov r1, #3
 	strb r3, [r2, #0x468]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0202E508: .word 0x00001D6C
 _0202E50C: .word _0209AF1C
-_0202E510: .word sub_0202E708
+_0202E510: .word UpdateScrollBox
 _0202E514: .word 0x0D0C8012
-	arm_func_end sub_0202E3CC
+	arm_func_end CreateScrollBox1
 
-	arm_func_start sub_0202E518
-sub_0202E518: ; 0x0202E518
+	arm_func_start CreateScrollBox2
+CreateScrollBox2: ; 0x0202E518
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov r6, r0
@@ -41983,8 +43209,8 @@ sub_0202E518: ; 0x0202E518
 	addne ip, sp, #0
 	ldmneia r6, {r0, r1, r2, r3}
 	stmneia ip, {r0, r1, r2, r3}
-	ldrne r0, _0202E6A8 ; =sub_0202E708
-	ldr r1, _0202E6A8 ; =sub_0202E708
+	ldrne r0, _0202E6A8 ; =UpdateScrollBox
+	ldr r1, _0202E6A8 ; =UpdateScrollBox
 	strne r0, [sp]
 	ldr r0, _0202E6AC ; =0x0D0C8012
 	str r4, [sp, #0xc]
@@ -42065,20 +43291,20 @@ _0202E670:
 	add r0, sp, #0
 	mov r1, #3
 	strb r3, [r2, #0x468]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0202E6A0: .word 0x00001D6C
 _0202E6A4: .word _0209AF1C
-_0202E6A8: .word sub_0202E708
+_0202E6A8: .word UpdateScrollBox
 _0202E6AC: .word 0x0D0C8012
-	arm_func_end sub_0202E518
+	arm_func_end CreateScrollBox2
 
 	arm_func_start sub_0202E6B0
 sub_0202E6B0: ; 0x0202E6B0
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #0x1000
 	mov r1, #7
 	str r1, [r0, #0x464]
@@ -42089,7 +43315,7 @@ sub_0202E6B0: ; 0x0202E6B0
 sub_0202E6C8: ; 0x0202E6C8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
@@ -42099,7 +43325,7 @@ sub_0202E6C8: ; 0x0202E6C8
 	arm_func_start sub_0202E6E4
 sub_0202E6E4: ; 0x0202E6E4
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #0x1000
 	ldr r0, [r0, #0x464]
 	cmp r0, #8
@@ -42109,8 +43335,8 @@ sub_0202E6E4: ; 0x0202E6E4
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202E6E4
 
-	arm_func_start sub_0202E708
-sub_0202E708: ; 0x0202E708
+	arm_func_start UpdateScrollBox
+UpdateScrollBox: ; 0x0202E708
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x6c
 	mov r4, r0
@@ -42327,7 +43553,7 @@ _0202E9C0:
 	beq _0202EA48
 	add r0, r5, #4
 	mov r1, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	subs r8, r8, #1
 	addmi r0, r5, #0x1000
 	ldrmi r0, [r0, #0x4bc]
@@ -42338,7 +43564,7 @@ _0202EA48:
 	beq _0202EA70
 	add r0, r5, #4
 	mov r1, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	add r0, r5, #0x1000
 	ldr r0, [r0, #0x4bc]
 	add r8, r8, #1
@@ -42385,7 +43611,7 @@ _0202EAC0:
 _0202EAFC:
 	add r0, r5, #4
 	mov r1, #3
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r7, #1
 	b _0202EB54
 _0202EB10:
@@ -42405,7 +43631,7 @@ _0202EB10:
 _0202EB44:
 	add r0, r5, #4
 	mov r1, #3
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r7, #1
 _0202EB54:
 	ldr r0, [sp, #0x14]
@@ -42555,7 +43781,7 @@ _0202ED44:
 	beq _0202EDBC
 	add r0, r5, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [r5, #0x430]
 	add r2, r6, #0x18
 	add r0, r0, #1
@@ -42577,7 +43803,7 @@ _0202ED44:
 _0202EDBC:
 	add r0, r5, #4
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _0202EDC8:
 	cmp r7, #0
 	bne _0202EE28
@@ -42586,7 +43812,7 @@ _0202EDC8:
 	beq _0202EE28
 	add r0, r5, #4
 	mov r1, #1
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [r5, #0x430]
 	cmp r0, #0
 	ble _0202EE0C
@@ -42633,7 +43859,7 @@ _0202EE74:
 _0202EE7C: .word 0x0000040C
 _0202EE80: .word 0x000001AF
 _0202EE84: .word 0x00000408
-	arm_func_end sub_0202E708
+	arm_func_end UpdateScrollBox
 
 	arm_func_start sub_0202EE88
 sub_0202EE88: ; 0x0202EE88
@@ -42791,8 +44017,8 @@ _0202F0A8: .word 0x0000C406
 _0202F0AC: .word 0x0000C506
 	arm_func_end sub_0202EE88
 
-	arm_func_start CreateDBox
-CreateDBox: ; 0x0202F0B0
+	arm_func_start CreateDialogueBox
+CreateDialogueBox: ; 0x0202F0B0
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	mov r6, r0
@@ -42807,8 +44033,8 @@ CreateDBox: ; 0x0202F0B0
 	stmeqia r5, {r0, r1, r2, r3}
 	ldmneia r6, {r0, r1, r2, r3}
 	stmneia r5, {r0, r1, r2, r3}
-	ldrne r0, _0202F144 ; =sub_0202F488
-	ldr r1, _0202F144 ; =sub_0202F488
+	ldrne r0, _0202F144 ; =UpdateDialogueBox
+	ldr r1, _0202F144 ; =UpdateDialogueBox
 	strne r0, [sp]
 	str r4, [sp, #0xc]
 	str r1, [r4]
@@ -42816,7 +44042,7 @@ CreateDBox: ; 0x0202F0B0
 	add r0, sp, #0
 	mov r1, #3
 	strb r2, [r4, #0xa]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	mov r5, r0
 	mov r1, r5
 	add r0, r4, #0xc
@@ -42831,45 +44057,45 @@ CreateDBox: ; 0x0202F0B0
 	.align 2, 0
 _0202F13C: .word 0x00000528
 _0202F140: .word _0209AF2C
-_0202F144: .word sub_0202F488
-	arm_func_end CreateDBox
+_0202F144: .word UpdateDialogueBox
+	arm_func_end CreateDialogueBox
 
-	arm_func_start FreeDBox
-FreeDBox: ; 0x0202F148
+	arm_func_start FreeDialogueBox
+FreeDialogueBox: ; 0x0202F148
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r0, r4
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
 	ldmia sp!, {r4, pc}
-	arm_func_end FreeDBox
+	arm_func_end FreeDialogueBox
 
 	arm_func_start sub_0202F16C
 sub_0202F16C: ; 0x0202F16C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #0xc
 	bl sub_020261D4
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202F16C
 
-	arm_func_start IsDBoxActive
-IsDBoxActive: ; 0x0202F180
+	arm_func_start IsDialogueBoxActive
+IsDialogueBoxActive: ; 0x0202F180
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r0, [r0, #8]
 	ldmia sp!, {r3, pc}
-	arm_func_end IsDBoxActive
+	arm_func_end IsDialogueBoxActive
 
 	arm_func_start sub_0202F190
 sub_0202F190: ; 0x0202F190
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r4, r2
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r5
 	mov r2, r4
 	add r0, r0, #0xc
@@ -42877,13 +44103,13 @@ sub_0202F190: ; 0x0202F190
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202F190
 
-	arm_func_start ShowMessageInDBox
-ShowMessageInDBox: ; 0x0202F1B4
+	arm_func_start ShowMessageInDialogueBox
+ShowMessageInDialogueBox: ; 0x0202F1B4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #4]
 	cmp r0, #2
@@ -42915,15 +44141,15 @@ _0202F200:
 	add r2, r4, #0x128
 	bl sub_02026194
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ShowMessageInDBox
+	arm_func_end ShowMessageInDialogueBox
 
-	arm_func_start ShowStringInDBox
-ShowStringInDBox: ; 0x0202F23C
+	arm_func_start ShowStringInDialogueBox
+ShowStringInDialogueBox: ; 0x0202F23C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #4]
 	cmp r0, #2
@@ -42955,12 +44181,12 @@ _0202F288:
 	add r2, r4, #0x128
 	bl sub_02026194
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ShowStringInDBox
+	arm_func_end ShowStringInDialogueBox
 
 	arm_func_start sub_0202F2C4
 sub_0202F2C4: ; 0x0202F2C4
 	stmdb sp!, {r4, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #4]
 	cmp r0, #4
@@ -42996,7 +44222,7 @@ _0202F31C:
 	arm_func_start sub_0202F334
 sub_0202F334: ; 0x0202F334
 	stmdb sp!, {r4, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #4]
 	cmp r0, #4
@@ -43029,10 +44255,10 @@ _0202F38C:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202F334
 
-	arm_func_start ShowDBox
-ShowDBox: ; 0x0202F3A4
+	arm_func_start ShowDialogueBox
+ShowDialogueBox: ; 0x0202F3A4
 	stmdb sp!, {r4, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #4]
 	cmp r0, #4
@@ -43055,12 +44281,12 @@ _0202F3E0:
 	str r0, [r4, #4]
 	strb r0, [r4, #8]
 	ldmia sp!, {r4, pc}
-	arm_func_end ShowDBox
+	arm_func_end ShowDialogueBox
 
 	arm_func_start sub_0202F3F8
 sub_0202F3F8: ; 0x0202F3F8
 	stmdb sp!, {r4, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #4]
 	cmp r0, #4
@@ -43090,7 +44316,7 @@ sub_0202F44C: ; 0x0202F44C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r4, r2
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r0
 	mov r0, r5
 	mov r2, r4
@@ -43103,13 +44329,13 @@ sub_0202F44C: ; 0x0202F44C
 sub_0202F474: ; 0x0202F474
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	strb r4, [r0, #0xa]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202F474
 
-	arm_func_start sub_0202F488
-sub_0202F488: ; 0x0202F488
+	arm_func_start UpdateDialogueBox
+UpdateDialogueBox: ; 0x0202F488
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xc]
@@ -43189,7 +44415,7 @@ _0202F57C:
 	sub r0, r0, #6
 	str r0, [r5, #0xb8]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0202F488
+	arm_func_end UpdateDialogueBox
 
 	arm_func_start CreatePortraitBox
 CreatePortraitBox: ; 0x0202F5AC
@@ -43206,7 +44432,7 @@ CreatePortraitBox: ; 0x0202F5AC
 	add ip, sp, #0
 	ldmia r1, {r0, r1, r2, r3}
 	stmia ip, {r0, r1, r2, r3}
-	ldr r0, _0202F64C ; =sub_0202F70C
+	ldr r0, _0202F64C ; =UpdatePortraitBox
 	cmp r6, #0
 	str r0, [sp]
 	mvnne r0, #3
@@ -43217,7 +44443,7 @@ CreatePortraitBox: ; 0x0202F5AC
 	add r0, sp, #0
 	strb r6, [r5, #0x2a]
 	mov r1, #3
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	strb r0, [r5]
 	mov r1, #0
 	add r0, r5, #8
@@ -43234,14 +44460,14 @@ CreatePortraitBox: ; 0x0202F5AC
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0202F648: .word _0209AF3C
-_0202F64C: .word sub_0202F70C
+_0202F64C: .word UpdatePortraitBox
 	arm_func_end CreatePortraitBox
 
 	arm_func_start FreePortraitBox
 FreePortraitBox: ; 0x0202F650
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
@@ -43251,7 +44477,7 @@ FreePortraitBox: ; 0x0202F650
 	arm_func_start sub_0202F66C
 sub_0202F66C: ; 0x0202F66C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #4]
 	sub r0, r0, #1
 	cmp r0, #1
@@ -43265,7 +44491,7 @@ sub_0202F66C: ; 0x0202F66C
 ShowPortraitBox: ; 0x0202F690
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #4]
 	cmp r0, #2
@@ -43288,7 +44514,7 @@ _0202F6D0:
 	arm_func_start HidePortraitBox
 HidePortraitBox: ; 0x0202F6DC
 	stmdb sp!, {r4, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	mov r0, #0
 	strb r0, [r4, #0x28]
@@ -43301,8 +44527,8 @@ HidePortraitBox: ; 0x0202F6DC
 	ldmia sp!, {r4, pc}
 	arm_func_end HidePortraitBox
 
-	arm_func_start sub_0202F70C
-sub_0202F70C: ; 0x0202F70C
+	arm_func_start UpdatePortraitBox
+UpdatePortraitBox: ; 0x0202F70C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xc]
@@ -43424,35 +44650,35 @@ _0202F894:
 	sub r0, r0, #6
 	str r0, [r5, #0xb8]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0202F70C
+	arm_func_end UpdatePortraitBox
 
-	arm_func_start sub_0202F8C4
-sub_0202F8C4: ; 0x0202F8C4
+	arm_func_start CreateTextBox1
+CreateTextBox1: ; 0x0202F8C4
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl sub_0202F9DC
+	bl CreateTextBoxInternal
 	str r4, [r0, #4]
 	ldrsb r0, [r0]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202F8C4
+	arm_func_end CreateTextBox1
 
-	arm_func_start sub_0202F8DC
-sub_0202F8DC: ; 0x0202F8DC
+	arm_func_start CreateTextBox2
+CreateTextBox2: ; 0x0202F8DC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r2
 	mov r5, r1
-	bl sub_0202F9DC
+	bl CreateTextBoxInternal
 	str r4, [r0, #0x14]
 	str r5, [r0, #8]
 	ldrsb r0, [r0]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0202F8DC
+	arm_func_end CreateTextBox2
 
 	arm_func_start sub_0202F8FC
 sub_0202F8FC: ; 0x0202F8FC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
@@ -43463,7 +44689,7 @@ sub_0202F8FC: ; 0x0202F8FC
 sub_0202F918: ; 0x0202F918
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r0, r4
 	bl sub_0202836C
 	mov r0, r4
@@ -43471,7 +44697,7 @@ sub_0202F918: ; 0x0202F918
 	mov r0, r4
 	bl sub_0202F954
 	mov r0, r4
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
@@ -43481,7 +44707,7 @@ sub_0202F918: ; 0x0202F918
 	arm_func_start sub_0202F954
 sub_0202F954: ; 0x0202F954
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r1, [r0, #0x10]
 	cmp r1, #6
 	addls pc, pc, r1, lsl #2
@@ -43515,7 +44741,7 @@ _0202F9AC:
 	arm_func_start sub_0202F9B8
 sub_0202F9B8: ; 0x0202F9B8
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r1, [r0, #0x10]
 	cmp r1, #3
 	moveq r1, #2
@@ -43525,8 +44751,8 @@ sub_0202F9B8: ; 0x0202F9B8
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202F9B8
 
-	arm_func_start sub_0202F9DC
-sub_0202F9DC: ; 0x0202F9DC
+	arm_func_start CreateTextBoxInternal
+CreateTextBoxInternal: ; 0x0202F9DC
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	mov r5, r0
@@ -43540,30 +44766,30 @@ sub_0202F9DC: ; 0x0202F9DC
 	ldmeqia r0, {r0, r1, r2, r3}
 	ldmneia r5, {r0, r1, r2, r3}
 	stmia ip, {r0, r1, r2, r3}
-	ldr r1, _0202FA58 ; =sub_0202FA5C
+	ldr r1, _0202FA58 ; =UpdateTextBox
 	add r0, sp, #0
 	str r1, [sp]
 	str r4, [sp, #0xc]
 	mov r1, #3
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	strb r0, [r4]
 	mov r0, #0
 	str r0, [r4, #4]
 	str r0, [r4, #8]
 	str r0, [r4, #0x14]
 	str r0, [r4, #0x10]
-	ldr r1, _0202FA58 ; =sub_0202FA5C
+	ldr r1, _0202FA58 ; =UpdateTextBox
 	mov r0, r4
 	str r1, [r4, #0xc]
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0202FA54: .word _0209AF4C
-_0202FA58: .word sub_0202FA5C
-	arm_func_end sub_0202F9DC
+_0202FA58: .word UpdateTextBox
+	arm_func_end CreateTextBoxInternal
 
-	arm_func_start sub_0202FA5C
-sub_0202FA5C: ; 0x0202FA5C
+	arm_func_start UpdateTextBox
+UpdateTextBox: ; 0x0202FA5C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xc]
@@ -43654,12 +44880,12 @@ _0202FB88:
 	mov r0, #7
 	str r0, [r4, #0x10]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0202FA5C
+	arm_func_end UpdateTextBox
 
 	arm_func_start sub_0202FB9C
 sub_0202FB9C: ; 0x0202FB9C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x10]
 	cmp r0, #7
 	movne r0, #1
@@ -43668,8 +44894,8 @@ sub_0202FB9C: ; 0x0202FB9C
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202FB9C
 
-	arm_func_start sub_0202FBBC
-sub_0202FBBC: ; 0x0202FBBC
+	arm_func_start CreateDynamicTextBox
+CreateDynamicTextBox: ; 0x0202FBBC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x64
 	mov r7, r0
@@ -43697,7 +44923,7 @@ sub_0202FBBC: ; 0x0202FBBC
 	addne lr, sp, #4
 	ldmneia r7, {r0, r1, r2, r3}
 	stmneia lr, {r0, r1, r2, r3}
-	ldrne r0, _0202FD34 ; =sub_0202FD8C
+	ldrne r0, _0202FD34 ; =UpdateDynamicTextBox
 	strne r0, [sp, #4]
 	bne _0202FC48
 	ldr r0, _0202FD38 ; =_0209AF5C
@@ -43744,7 +44970,7 @@ _0202FC48:
 	cmp r0, #0
 	movlt r0, #0
 	strlt r0, [r4, #0x1b0]
-	ldr r0, _0202FD34 ; =sub_0202FD8C
+	ldr r0, _0202FD34 ; =UpdateDynamicTextBox
 	cmp r5, #0
 	stmia r4, {r0, r6}
 	beq _0202FD10
@@ -43762,20 +44988,20 @@ _0202FD10:
 	add r0, sp, #4
 	mov r1, #3
 	str r2, [r4, #0xa0]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add sp, sp, #0x64
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0202FD2C: .word _0209AF6C
 _0202FD30: .word 0x0000C402
-_0202FD34: .word sub_0202FD8C
+_0202FD34: .word UpdateDynamicTextBox
 _0202FD38: .word _0209AF5C
-	arm_func_end sub_0202FBBC
+	arm_func_end CreateDynamicTextBox
 
 	arm_func_start sub_0202FD3C
 sub_0202FD3C: ; 0x0202FD3C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #3
 	str r1, [r0, #0xa0]
 	ldmia sp!, {r3, pc}
@@ -43785,7 +45011,7 @@ sub_0202FD3C: ; 0x0202FD3C
 sub_0202FD50: ; 0x0202FD50
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
@@ -43795,7 +45021,7 @@ sub_0202FD50: ; 0x0202FD50
 	arm_func_start sub_0202FD6C
 sub_0202FD6C: ; 0x0202FD6C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0xa0]
 	cmp r0, #2
 	cmpne r0, #4
@@ -43804,8 +45030,8 @@ sub_0202FD6C: ; 0x0202FD6C
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202FD6C
 
-	arm_func_start sub_0202FD8C
-sub_0202FD8C: ; 0x0202FD8C
+	arm_func_start UpdateDynamicTextBox
+UpdateDynamicTextBox: ; 0x0202FD8C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xc]
@@ -43850,10 +45076,10 @@ _0202FE0C:
 	movne r0, #4
 	strne r0, [r4, #0xa0]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0202FD8C
+	arm_func_end UpdateDynamicTextBox
 
-	arm_func_start sub_0202FE2C
-sub_0202FE2C: ; 0x0202FE2C
+	arm_func_start CreateControlsChart
+CreateControlsChart: ; 0x0202FE2C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	mov r7, r0
@@ -43872,10 +45098,10 @@ sub_0202FE2C: ; 0x0202FE2C
 	stmeqia lr, {r0, r1, r2, r3}
 	ldmneia r7, {r0, r1, r2, r3}
 	stmneia lr, {r0, r1, r2, r3}
-	ldrne r0, _0202FED0 ; =sub_0202FF10
+	ldrne r0, _0202FED0 ; =UpdateControlsChart
 	str ip, [sp, #0xc]
 	strne r0, [sp]
-	ldr r0, _0202FED0 ; =sub_0202FF10
+	ldr r0, _0202FED0 ; =UpdateControlsChart
 	cmp r4, #0
 	stmia ip, {r0, r5}
 	beq _0202FEB0
@@ -43893,19 +45119,19 @@ _0202FEB0:
 	add r0, sp, #0
 	mov r1, #3
 	str r2, [ip, #0xa0]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0202FECC: .word _0209AF78
-_0202FED0: .word sub_0202FF10
-	arm_func_end sub_0202FE2C
+_0202FED0: .word UpdateControlsChart
+	arm_func_end CreateControlsChart
 
 	arm_func_start sub_0202FED4
 sub_0202FED4: ; 0x0202FED4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
@@ -43915,7 +45141,7 @@ sub_0202FED4: ; 0x0202FED4
 	arm_func_start sub_0202FEF0
 sub_0202FEF0: ; 0x0202FEF0
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0xa0]
 	cmp r0, #2
 	cmpne r0, #4
@@ -43924,8 +45150,8 @@ sub_0202FEF0: ; 0x0202FEF0
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202FEF0
 
-	arm_func_start sub_0202FF10
-sub_0202FF10: ; 0x0202FF10
+	arm_func_start UpdateControlsChart
+UpdateControlsChart: ; 0x0202FF10
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xc]
@@ -43970,10 +45196,10 @@ _0202FF90:
 	movne r0, #4
 	strne r0, [r4, #0xa0]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_0202FF10
+	arm_func_end UpdateControlsChart
 
-	arm_func_start sub_0202FFB0
-sub_0202FFB0: ; 0x0202FFB0
+	arm_func_start CreateAlertBox
+CreateAlertBox: ; 0x0202FFB0
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	mov r5, r0
@@ -43990,12 +45216,12 @@ sub_0202FFB0: ; 0x0202FFB0
 	stmeqia ip, {r0, r1, r2, r3}
 	ldmneia r5, {r0, r1, r2, r3}
 	stmneia ip, {r0, r1, r2, r3}
-	ldrne r0, _02030040 ; =sub_02030274
+	ldrne r0, _02030040 ; =UpdateAlertBox
 	str r4, [sp, #0xc]
 	strne r0, [sp]
 	add r0, sp, #0
 	mov r1, #3
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	strb r0, [r4]
 	ldrsb r1, [r4]
 	add r0, r4, #8
@@ -44011,21 +45237,21 @@ sub_0202FFB0: ; 0x0202FFB0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0203003C: .word _0209AF94
-_02030040: .word sub_02030274
-	arm_func_end sub_0202FFB0
+_02030040: .word UpdateAlertBox
+	arm_func_end CreateAlertBox
 
 	arm_func_start sub_02030044
 sub_02030044: ; 0x02030044
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldrsb r0, [r4]
 	bl sub_0202836C
 	add r0, r4, #8
 	bl sub_0202613C
 	mov r0, r5
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r5
 	bl sub_02028194
@@ -44087,7 +45313,7 @@ sub_0203010C: ; 0x0203010C
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #4]
 	cmp r0, #2
@@ -44147,7 +45373,7 @@ _02030144:
 	arm_func_start sub_020301F4
 sub_020301F4: ; 0x020301F4
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #4]
 	cmp r0, #3
 	moveq r0, #1
@@ -44159,7 +45385,7 @@ sub_020301F4: ; 0x020301F4
 	arm_func_start sub_02030214
 sub_02030214: ; 0x02030214
 	stmdb sp!, {r4, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	ldr r0, [r4, #4]
 	cmp r0, #5
@@ -44188,8 +45414,8 @@ _02030260:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02030214
 
-	arm_func_start sub_02030274
-sub_02030274: ; 0x02030274
+	arm_func_start UpdateAlertBox
+UpdateAlertBox: ; 0x02030274
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xc]
@@ -44222,7 +45448,7 @@ _020302C8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _020302E0:
 	ldrsb r0, [r5, #0x10]
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #0x600
 	ldrsh r1, [r0, #0x46]
 	ldrsh r0, [r0, #0x44]
@@ -44233,7 +45459,7 @@ _020302E0:
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldrsb r4, [r5, #0x10]
 	mov r0, r4
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r6, r0
 	add r3, r6, #0x600
 	ldr r1, [r6, #0x20]
@@ -44312,7 +45538,7 @@ _020303C4:
 _02030438:
 	ldrsb r5, [r5, #0x10]
 	mov r0, r5
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r7, r0
 	add r3, r7, #0x600
 	ldr r1, [r7, #0x20]
@@ -44411,33 +45637,33 @@ _02030588:
 	mvn r0, #5
 	str r0, [r5, #0xb8]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_02030274
+	arm_func_end UpdateAlertBox
 
-	arm_func_start sub_020305B4
-sub_020305B4: ; 0x020305B4
+	arm_func_start CreateAdvancedTextBox1
+CreateAdvancedTextBox1: ; 0x020305B4
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r3
 	ldr ip, [sp, #0x14]
 	ldr r3, [sp, #0x10]
 	str ip, [sp]
-	bl sub_0203061C
+	bl CreateAdvancedTextBoxInternal
 	add r1, r0, #0x100
 	str r4, [r0, #0x1a4]
 	ldrsb r0, [r1, #0xa0]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end sub_020305B4
+	arm_func_end CreateAdvancedTextBox1
 
-	arm_func_start sub_020305E4
-sub_020305E4: ; 0x020305E4
+	arm_func_start CreateAdvancedTextBox2
+CreateAdvancedTextBox2: ; 0x020305E4
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r3
 	ldr ip, [sp, #0x18]
 	ldr r3, [sp, #0x14]
 	str ip, [sp]
-	bl sub_0203061C
+	bl CreateAdvancedTextBoxInternal
 	ldr r2, [sp, #0x10]
 	str r4, [r0, #0x1a8]
 	add r1, r0, #0x100
@@ -44445,10 +45671,10 @@ sub_020305E4: ; 0x020305E4
 	ldrsb r0, [r1, #0xa0]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end sub_020305E4
+	arm_func_end CreateAdvancedTextBox2
 
-	arm_func_start sub_0203061C
-sub_0203061C: ; 0x0203061C
+	arm_func_start CreateAdvancedTextBoxInternal
+CreateAdvancedTextBoxInternal: ; 0x0203061C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x28
 	mov r8, r0
@@ -44470,7 +45696,7 @@ sub_0203061C: ; 0x0203061C
 	addne ip, sp, #0x18
 	ldmneia r8, {r0, r1, r2, r3}
 	stmneia ip, {r0, r1, r2, r3}
-	ldrne r0, _02030774 ; =sub_02030AE8
+	ldrne r0, _02030774 ; =UpdateAdvancedTextBox
 	strne r0, [sp, #0x18]
 	bne _02030690
 	ldr r0, _02030778 ; =_0209AFA4
@@ -44490,7 +45716,7 @@ _02030690:
 	ldrneb r0, [sp, #0x1f]
 	subne r0, r1, r0
 	strneb r0, [sp, #0x1d]
-	ldr r0, _02030774 ; =sub_02030AE8
+	ldr r0, _02030774 ; =UpdateAdvancedTextBox
 	cmp r6, #0
 	str r0, [r4]
 	str r7, [r4, #0x104]
@@ -44515,7 +45741,7 @@ _020306F0:
 	add r0, sp, #0x18
 	mov r1, #3
 	strb r2, [r4, #0x1c3]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add r1, sp, #8
 	strb r0, [r4, #0x1a0]
 	bl sub_02028284
@@ -44539,15 +45765,15 @@ _020306F0:
 	add sp, sp, #0x28
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02030774: .word sub_02030AE8
+_02030774: .word UpdateAdvancedTextBox
 _02030778: .word _0209AFA4
-	arm_func_end sub_0203061C
+	arm_func_end CreateAdvancedTextBoxInternal
 
 	arm_func_start sub_0203077C
 sub_0203077C: ; 0x0203077C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	strb r4, [r0, #0x1c3]
 	ldr r1, [r0, #0x104]
 	tst r4, #0xff
@@ -44561,7 +45787,7 @@ sub_0203077C: ; 0x0203077C
 sub_020307A4: ; 0x020307A4
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	strb r4, [r0, #0x1c4]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_020307A4
@@ -44569,7 +45795,7 @@ sub_020307A4: ; 0x020307A4
 	arm_func_start sub_020307B8
 sub_020307B8: ; 0x020307B8
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #1
 	str r1, [r0, #0x1bc]
 	mov r1, #0
@@ -44587,10 +45813,10 @@ sub_020307B8: ; 0x020307B8
 sub_020307EC: ; 0x020307EC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	mov r0, r5
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x1bc]
 	cmp r0, #7
 	moveq r0, #1
@@ -44611,7 +45837,7 @@ _02030828:
 	arm_func_start sub_0203083C
 sub_0203083C: ; 0x0203083C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #1
 	strb r1, [r0, #0x1c2]
 	ldmia sp!, {r3, pc}
@@ -44627,7 +45853,7 @@ sub_02030850: ; 0x02030850
 	mov r0, r5
 	bl sub_0202812C
 	mov r0, r5
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	mov r0, r5
 	bl sub_02028194
@@ -44639,7 +45865,7 @@ sub_02030850: ; 0x02030850
 	arm_func_start sub_0203088C
 sub_0203088C: ; 0x0203088C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, #5
 	str r1, [r0, #0x1bc]
 	ldmia sp!, {r3, pc}
@@ -44649,7 +45875,7 @@ sub_0203088C: ; 0x0203088C
 sub_020308A0: ; 0x020308A0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	mov r0, r5
 	bl sub_02028194
@@ -44661,7 +45887,7 @@ sub_020308A0: ; 0x020308A0
 	arm_func_start sub_020308C4
 sub_020308C4: ; 0x020308C4
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x1bc]
 	cmp r0, #6
 	cmpne r0, #7
@@ -44673,7 +45899,7 @@ sub_020308C4: ; 0x020308C4
 	arm_func_start sub_020308E4
 sub_020308E4: ; 0x020308E4
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1c0]
 	cmp r1, #0
 	ldrneb r0, [r0, #0x1c1]
@@ -44686,7 +45912,7 @@ sub_020308E4: ; 0x020308E4
 	arm_func_start sub_02030908
 sub_02030908: ; 0x02030908
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1c0]
 	cmp r1, #0
 	beq _02030938
@@ -44705,7 +45931,7 @@ _02030938:
 	arm_func_start sub_02030940
 sub_02030940: ; 0x02030940
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1c0]
 	cmp r1, #0
 	beq _02030970
@@ -44728,7 +45954,7 @@ sub_02030978: ; 0x02030978
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r0
 	strh r5, [r1, #0xfc]
 	strh r4, [r1, #0xfe]
@@ -44749,7 +45975,7 @@ sub_020309B8: ; 0x020309B8
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r0
 	strh r6, [r1, #0xfc]
 	ldr r4, [sp, #0x28]
@@ -44772,7 +45998,7 @@ sub_020309B8: ; 0x020309B8
 	arm_func_start sub_02030A18
 sub_02030A18: ; 0x02030A18
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02032568
 	ldmia sp!, {r3, pc}
@@ -44782,7 +46008,7 @@ sub_02030A18: ; 0x02030A18
 sub_02030A2C: ; 0x02030A2C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	strh r4, [r0, #0x20]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02030A2C
@@ -44790,7 +46016,7 @@ sub_02030A2C: ; 0x02030A2C
 	arm_func_start sub_02030A40
 sub_02030A40: ; 0x02030A40
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x1b0]
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02030A40
@@ -44799,7 +46025,7 @@ sub_02030A40: ; 0x02030A40
 sub_02030A50: ; 0x02030A50
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0xc0]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02030A50
@@ -44807,7 +46033,7 @@ sub_02030A50: ; 0x02030A50
 	arm_func_start sub_02030A64
 sub_02030A64: ; 0x02030A64
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0xc0]
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02030A64
@@ -44816,7 +46042,7 @@ sub_02030A64: ; 0x02030A64
 sub_02030A74: ; 0x02030A74
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r4
 	add r0, r0, #4
 	bl sub_02031C74
@@ -44827,7 +46053,7 @@ sub_02030A74: ; 0x02030A74
 sub_02030A90: ; 0x02030A90
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r4
 	add r0, r0, #4
 	bl sub_02031C84
@@ -44838,7 +46064,7 @@ sub_02030A90: ; 0x02030A90
 sub_02030AAC: ; 0x02030AAC
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	strb r4, [r0, #0xf8]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02030AAC
@@ -44847,7 +46073,7 @@ sub_02030AAC: ; 0x02030AAC
 sub_02030AC0: ; 0x02030AC0
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0x1b4]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02030AC0
@@ -44856,13 +46082,13 @@ sub_02030AC0: ; 0x02030AC0
 sub_02030AD4: ; 0x02030AD4
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0x1b8]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02030AD4
 
-	arm_func_start sub_02030AE8
-sub_02030AE8: ; 0x02030AE8
+	arm_func_start UpdateAdvancedTextBox
+UpdateAdvancedTextBox: ; 0x02030AE8
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x44
 	mov r7, r0
@@ -45022,7 +46248,7 @@ _02030D04:
 	bne _02030D38
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _02030D38:
 	mov r1, #1
 	mov r0, #0
@@ -45047,7 +46273,7 @@ _02030D74:
 	beq _02030D94
 	add r0, r4, #4
 	mov r1, #1
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _02030D94:
 	mov r0, #1
 	strb r0, [r4, #0x1c0]
@@ -45122,7 +46348,7 @@ _02030E88:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _02030E90: .word 0x00000408
-	arm_func_end sub_02030AE8
+	arm_func_end UpdateAdvancedTextBox
 
 	arm_func_start sub_02030E94
 sub_02030E94: ; 0x02030E94
@@ -45157,7 +46383,7 @@ _02030ED8:
 sub_02030EF0: ; 0x02030EF0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	mov r0, #1
 	mov r2, #0
@@ -45175,15 +46401,15 @@ sub_02030EF0: ; 0x02030EF0
 sub_02030F28: ; 0x02030F28
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r4
 	add r0, r0, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02030F28
 
-	arm_func_start sub_02030F44
-sub_02030F44: ; 0x02030F44
+	arm_func_start CreateTeamSelectionMenu
+CreateTeamSelectionMenu: ; 0x02030F44
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x28
 	sub sp, sp, #0x400
@@ -45202,7 +46428,7 @@ sub_02030F44: ; 0x02030F44
 	stmeqia r4, {r0, r1, r2, r3}
 	ldmneia r6, {r0, r1, r2, r3}
 	stmneia r4, {r0, r1, r2, r3}
-	ldrne r0, _02031118 ; =sub_0203123C
+	ldrne r0, _02031118 ; =UpdateTeamSelectionMenu
 	orr sl, sl, #0x8000
 	strne r0, [sp, #0x18]
 	ldrb r0, [sp, #0x1e]
@@ -45263,7 +46489,7 @@ _02031040:
 	ldrneb r0, [sp, #0x1f]
 	subne r0, r1, r0
 	strneb r0, [sp, #0x1d]
-	ldr r0, _02031118 ; =sub_0203123C
+	ldr r0, _02031118 ; =UpdateTeamSelectionMenu
 	cmp sb, #0
 	str r0, [r5]
 	str sl, [r5, #0xfc]
@@ -45291,7 +46517,7 @@ _0203109C:
 	add r0, sp, #0x18
 	mov r1, #3
 	strb r2, [r5, #0x1b0]
-	bl sub_02027648
+	bl NewWindowScreenCheck
 	add r1, sp, #8
 	mov r6, r0
 	bl sub_02028284
@@ -45310,13 +46536,13 @@ _0203109C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _02031114: .word _0209AFB4
-_02031118: .word sub_0203123C
-	arm_func_end sub_02030F44
+_02031118: .word UpdateTeamSelectionMenu
+	arm_func_end CreateTeamSelectionMenu
 
 	arm_func_start sub_0203111C
 sub_0203111C: ; 0x0203111C
 	stmdb sp!, {r4, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	mov r0, #1
 	str r0, [r4, #0x19c]
@@ -45336,7 +46562,7 @@ sub_0203111C: ; 0x0203111C
 	arm_func_start sub_0203115C
 sub_0203115C: ; 0x0203115C
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r1, [r0, #0x19c]
 	cmp r1, #3
 	moveq r1, #2
@@ -45349,7 +46575,7 @@ sub_0203115C: ; 0x0203115C
 sub_0203117C: ; 0x0203117C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r4
 	add r0, r0, #4
 	bl sub_0203271C
@@ -45360,7 +46586,7 @@ sub_0203117C: ; 0x0203117C
 sub_02031198: ; 0x02031198
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
 	bl sub_02028194
@@ -45370,7 +46596,7 @@ sub_02031198: ; 0x02031198
 	arm_func_start sub_020311B4
 sub_020311B4: ; 0x020311B4
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
 	cmp r0, #6
 	cmpne r0, #7
@@ -45382,7 +46608,7 @@ sub_020311B4: ; 0x020311B4
 	arm_func_start sub_020311D4
 sub_020311D4: ; 0x020311D4
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	add r0, r0, #4
 	bl sub_02032578
 	ldmia sp!, {r3, pc}
@@ -45391,7 +46617,7 @@ sub_020311D4: ; 0x020311D4
 	arm_func_start sub_020311E8
 sub_020311E8: ; 0x020311E8
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldrb r1, [r0, #0x1a0]
 	cmp r1, #0
 	beq _02031218
@@ -45411,15 +46637,15 @@ _02031218:
 sub_02031220: ; 0x02031220
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r1, r4
 	add r0, r0, #4
 	bl sub_02032684
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02031220
 
-	arm_func_start sub_0203123C
-sub_0203123C: ; 0x0203123C
+	arm_func_start UpdateTeamSelectionMenu
+UpdateTeamSelectionMenu: ; 0x0203123C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x30
 	mov r7, r0
@@ -45563,7 +46789,7 @@ _02031400:
 	bne _02031450
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _02031450:
 	mov r1, #1
 	mov r0, #0
@@ -45579,14 +46805,14 @@ _02031450:
 _0203147C:
 	add r0, r4, #4
 	mov r1, #2
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	b _020315C4
 _0203148C:
 	tst r1, #2
 	beq _020314C8
 	add r0, r4, #4
 	mov r1, #1
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r0, #1
 	strb r0, [r4, #0x1a0]
 	strb r0, [r4, #0x1a1]
@@ -45605,7 +46831,7 @@ _020314C8:
 	beq _02031518
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r2, #1
 	mov r0, #0
 	strb r2, [r4, #0x1a0]
@@ -45626,7 +46852,7 @@ _02031518:
 	beq _02031568
 	add r0, r4, #4
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r2, #1
 	mov r0, #0
 	strb r2, [r4, #0x1a0]
@@ -45646,7 +46872,7 @@ _02031568:
 	add r0, r4, #4
 	beq _02031590
 	mov r1, #5
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [r4, #0x18c]
 	blx r0
 	b _020315C4
@@ -45778,7 +47004,7 @@ _02031750:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02031758: .word 0x00000408
-	arm_func_end sub_0203123C
+	arm_func_end UpdateTeamSelectionMenu
 
 	arm_func_start sub_0203175C
 sub_0203175C: ; 0x0203175C
@@ -45869,7 +47095,7 @@ _02031868:
 sub_02031888: ; 0x02031888
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0x18c]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02031888
@@ -45878,7 +47104,7 @@ sub_02031888: ; 0x02031888
 sub_0203189C: ; 0x0203189C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	str r4, [r0, #0x190]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0203189C
@@ -45886,7 +47112,7 @@ sub_0203189C: ; 0x0203189C
 	arm_func_start sub_020318B0
 sub_020318B0: ; 0x020318B0
 	stmdb sp!, {r3, lr}
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
 	cmp r0, #3
 	moveq r0, #1
@@ -45899,7 +47125,7 @@ sub_020318B0: ; 0x020318B0
 sub_020318D0: ; 0x020318D0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDialogBoxField0xC
+	bl GetWindowContents
 	mov r4, r0
 	mov r0, #1
 	mov r2, #0
@@ -46013,7 +47239,7 @@ sub_02031A3C: ; 0x02031A3C
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, r1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02031A3C
@@ -46301,7 +47527,7 @@ _02031E0C:
 	beq _02031E2C
 	mov r0, r8
 	mov r1, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r0, #1
 	b _02031E78
 _02031E2C:
@@ -46310,7 +47536,7 @@ _02031E2C:
 	beq _02031E44
 	mov r0, r8
 	mov r1, #3
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _02031E44:
 	ldr r0, [r8, #0xd8]
 	cmp r0, #0
@@ -46445,7 +47671,7 @@ _02031FFC:
 	beq _0203201C
 	mov r0, r8
 	mov r1, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	mov r0, #1
 	b _02032068
 _0203201C:
@@ -46454,7 +47680,7 @@ _0203201C:
 	beq _02032034
 	mov r0, r8
 	mov r1, #3
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _02032034:
 	ldr r0, [r8, #0xd8]
 	cmp r0, #0
@@ -47227,18 +48453,18 @@ _02032958:
 	bx lr
 	arm_func_end sub_0203293C
 
-	arm_func_start sub_02032960
-sub_02032960: ; 0x02032960
+	arm_func_start PlayMenuOptionSound
+PlayMenuOptionSound: ; 0x02032960
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0, #0x10]
 	tst r0, #0x10
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, r1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_02032960
+	arm_func_end PlayMenuOptionSound
 
 	arm_func_start sub_02032984
 sub_02032984: ; 0x02032984
@@ -48061,7 +49287,7 @@ sub_020333D8: ; 0x020333D8
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, r1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020333D8
@@ -48411,7 +49637,7 @@ _0203385C:
 	bl sub_02032864
 	mov r0, sb
 	mov r1, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [r8]
 	mov r4, #1
 	orr r0, r0, #0x400000
@@ -48434,7 +49660,7 @@ _020338D4:
 	bl sub_0203282C
 	mov r0, sb
 	mov r1, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [r8]
 	mov r4, #1
 	orr r0, r0, #0x800000
@@ -48454,7 +49680,7 @@ _0203392C:
 	bl sub_0203280C
 	mov r0, sb
 	mov r1, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [r8]
 	mov r4, #1
 	orr r0, r0, #0x100000
@@ -48474,7 +49700,7 @@ _02033978:
 	bl sub_020327E4
 	mov r0, sb
 	mov r1, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [r8]
 	mov r4, #1
 	orr r0, r0, #0x200000
@@ -48514,14 +49740,14 @@ _020339EC:
 	bl sub_020327E4
 	mov r0, sb
 	mov r1, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [r8]
 	orr r0, r0, #0x4000
 	str r0, [r8]
 	b _02033A60
 _02033A58:
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _02033A60:
 	mov r4, #1
 _02033A64:
@@ -48548,14 +49774,14 @@ _02033A64:
 	bl sub_0203280C
 	mov r0, sb
 	mov r1, #4
-	bl sub_02032960
+	bl PlayMenuOptionSound
 	ldr r0, [r8]
 	orr r0, r0, #0x8000
 	str r0, [r8]
 	b _02033ADC
 _02033AD4:
 	mov r1, #0
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _02033ADC:
 	mov r4, #1
 _02033AE0:
@@ -48604,7 +49830,7 @@ _02033B2C:
 	orr r2, r1, #0x10000
 	mov r1, #2
 	str r2, [r8]
-	bl sub_02032960
+	bl PlayMenuOptionSound
 _02033B94:
 	mov r4, #1
 _02033B98:
@@ -50169,7 +51395,7 @@ sub_02035098: ; 0x02035098
 	mvnne r1, #1
 	cmpne r0, r1
 	beq _020350C4
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _020350D0 ; =_020AFDBC
 	str r0, [r1, #0x10]
 _020350C4:
@@ -50203,7 +51429,7 @@ sub_020350D4: ; 0x020350D4
 	ldr r1, [r1, #8]
 	strb r0, [r1, #2]
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02035150 ; =_020AFDBC
 	mvn r2, #1
 	ldr r3, [r1, #8]
@@ -50227,12 +51453,12 @@ sub_02035154: ; 0x02035154
 	mvn r1, #1
 	cmp r0, r1
 	beq _0203517C
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 _0203517C:
 	ldr r0, _020351D8 ; =_020AFDBC
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _020351D8 ; =_020AFDBC
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0, #2]
@@ -50288,7 +51514,7 @@ _02035234:
 	ldrh r1, [r3, #0x14]
 	ldrh r2, [r3, #0x16]
 	add r3, r3, #0x18
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02035598 ; =_020AFDBC
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -50299,7 +51525,7 @@ _0203525C:
 	ldrh r1, [r3, #0x14]
 	add r2, r3, #0x68
 	add r3, r3, #0x18
-	bl ShowStringInDBox
+	bl ShowStringInDialogueBox
 	ldr r0, _02035598 ; =_020AFDBC
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -50334,7 +51560,7 @@ _020352C8:
 	b _020352EC
 _020352E0:
 	ldrsb r0, [r2, #1]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	mov r4, r0
 _020352EC:
 	ldr r0, _02035598 ; =_020AFDBC
@@ -50369,7 +51595,7 @@ _02035350:
 	ldrsb r0, [r0]
 	cmp r0, r1
 	beq _0203536C
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 _0203536C:
 	ldr r0, _02035598 ; =_020AFDBC
 	ldr r2, [r0, #0xc]
@@ -50381,7 +51607,7 @@ _0203536C:
 	bne _020353A0
 	ldr r3, [r2, #0x470]
 	add r2, sp, #4
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02035598 ; =_020AFDBC
 	b _020353B0
 _020353A0:
@@ -50395,7 +51621,7 @@ _020353B0:
 	ldr r0, _02035598 ; =_020AFDBC
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0, #1]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02035598 ; =_020AFDBC
 	ldr r1, [r0, #0xc]
 	ldr r1, [r1, #0x47c]
@@ -50419,7 +51645,7 @@ _02035408:
 	ldrsb r0, [r0]
 	cmp r0, r1
 	beq _02035468
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _02035598 ; =_020AFDBC
 	mov r4, #1
 	str r0, [r1, #0x10]
@@ -50427,13 +51653,13 @@ _02035408:
 	strb r4, [r0, #9]
 	ldr r0, [r1, #8]
 	ldrsb r0, [r0]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _02035468
 	ldr r0, _02035598 ; =_020AFDBC
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _02035598 ; =_020AFDBC
 	mvn r1, #1
 	ldr r0, [r0, #8]
@@ -50676,7 +51902,7 @@ _02035790:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _020357AC
-	bl FreeDBox
+	bl FreeDialogueBox
 _020357AC:
 	ldr r0, _020357EC ; =_020AFDD0
 	mvn r1, #1
@@ -50722,13 +51948,13 @@ _0203582C:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0203586C
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02035CC0
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02035CCC ; =_020AFDD0
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -50773,7 +51999,7 @@ _020358A8:
 	ldr r3, _02035CD4 ; =_0209B134
 	orr r1, r1, #0x1800
 	add r2, r2, #0xc
-	bl sub_0202D1F0
+	bl CreateOptionsMenu
 	ldr r1, _02035CCC ; =_020AFDD0
 	ldr r1, [r1, #4]
 	strb r0, [r1]
@@ -50846,7 +52072,7 @@ _020359FC:
 	cmp r0, r1
 	bne _02035A34
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r3, _02035CCC ; =_020AFDD0
 	ldr r1, _02035CD8 ; =0x00000408
 	ldr r4, [r3, #4]
@@ -50855,7 +52081,7 @@ _020359FC:
 	ldr r0, [r3, #4]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _02035A34:
 	ldr r1, _02035CCC ; =_020AFDD0
 	mvn r0, #1
@@ -50927,13 +52153,13 @@ _02035B24:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _02035B68
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02035CC0
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02035CCC ; =_020AFDD0
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -51119,7 +52345,7 @@ _02035DD8:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _02035DF4
-	bl FreeDBox
+	bl FreeDialogueBox
 _02035DF4:
 	ldr r0, _02035E34 ; =_020AFDD8
 	mvn r1, #1
@@ -51164,13 +52390,13 @@ _02035E70:
 	mvn r1, #1
 	cmp r0, r1
 	beq _02035EB0
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02036300
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0203630C ; =_020AFDD8
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -51215,7 +52441,7 @@ _02035EEC:
 	ldr r3, _02036314 ; =_0209B1F0
 	orr r1, r1, #0x1800
 	add r2, r2, #0xc
-	bl sub_0202D1F0
+	bl CreateOptionsMenu
 	ldr r1, _0203630C ; =_020AFDD8
 	ldr r1, [r1, #4]
 	strb r0, [r1]
@@ -51307,7 +52533,7 @@ _0203608C:
 	cmp r0, r1
 	bne _020360C4
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r3, _0203630C ; =_020AFDD8
 	ldr r1, _02036318 ; =0x00000408
 	ldr r4, [r3, #4]
@@ -51316,7 +52542,7 @@ _0203608C:
 	ldr r0, [r3, #4]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _020360C4:
 	ldr r1, _0203630C ; =_020AFDD8
 	mvn r0, #1
@@ -51388,13 +52614,13 @@ _020361B4:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _020361F8
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02036300
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0203630C ; =_020AFDD8
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -51549,7 +52775,7 @@ _0203638C:
 	orr r1, r1, #0x33
 	orr r1, r1, #0x9800
 	add r2, r2, #0xc
-	bl sub_0202DC50
+	bl CreateDebugMenu
 	ldr r1, _0203642C ; =_020AFDE0
 	mov r3, #0
 	ldr r2, [r1, #4]
@@ -51562,7 +52788,11 @@ _0203638C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0203642C: .word _020AFDE0
+#ifdef EUROPE
+_02036430: .word 0x00003C66
+#else
 _02036430: .word 0x00003C64
+#endif
 _02036434: .word _0209B208
 _02036438: .word _0209B228
 	arm_func_end sub_02036358
@@ -51723,7 +52953,7 @@ _020365D4:
 	orr r1, r1, #0x33
 	orr r1, r1, #0x9800
 	add r2, r2, #0xc
-	bl sub_0202DC50
+	bl CreateDebugMenu
 	ldr r1, _02036674 ; =_020AFDE8
 	mov r3, #0
 	ldr r2, [r1, #4]
@@ -51736,7 +52966,11 @@ _020365D4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02036674: .word _020AFDE8
+#ifdef EUROPE
+_02036678: .word 0x00003C75
+#else
 _02036678: .word 0x00003C73
+#endif
 _0203667C: .word _0209B244
 _02036680: .word _0209B264
 	arm_func_end sub_020365A0
@@ -51902,6 +53136,110 @@ _02036850:
 	strb r2, [r1, #0x1d]
 	ldr r1, [r0]
 	strb r2, [r1, #0x1e]
+#ifdef EUROPE
+	ldr r2, [r0]
+	ldr r1, [r2, #0xc]
+	cmp r1, #0xa
+	addne r1, r1, #0x118
+	addne r0, r2, #0x100
+	bne _02036BC4
+	mov r1, #1
+	str r1, [r2, #0xc]
+	ldr r0, [r0]
+	mov r1, #0x120
+	add r0, r0, #0x100
+_02036BC4:
+	strh r1, [r0, #0xa6]
+	ldr r0, _02036CB0 ; =_020AFDF0
+	mov r2, #0
+	ldr r1, [r0]
+	strb r2, [r1, #0x16]
+	ldr r1, [r0]
+	strb r2, [r1, #0x15]
+	ldr r1, [r0]
+	strh r2, [r1, #8]
+	ldr r1, [r0]
+	strb r2, [r1, #0x10]
+	ldr r3, [r0]
+	ldr r1, [r3, #0xc]
+	cmp r1, #9
+	addls pc, pc, r1, lsl #2
+	b _02036A40
+_02036C04: ; jump table
+	b _02036A40 ; case 0
+	b _02036CEC ; case 1
+	b _02036A40 ; case 2
+	b _02036A40 ; case 3
+	b _02036A20 ; case 4
+	b _02036C2C ; case 5
+	b _02036C9C ; case 6
+	b _02036CCC_EU ; case 7
+	b _02036C5C ; case 8
+	b _02036D04 ; case 9
+_02036C2C:
+	mov r1, #9
+	strb r1, [r3, #0x18]
+	ldr r1, [r0]
+	mov r2, #1
+	strb r2, [r1, #0x10]
+	ldr r1, [r0]
+	mov r2, #0x36
+	strb r2, [r1, #0x1b]
+	ldr r0, [r0]
+	mov r1, #2
+	strb r1, [r0, #0x16]
+	b _02036A58
+_02036C5C:
+	mov r1, #6
+	strb r1, [r3, #0x18]
+	ldr r1, [r0]
+	mov r2, #3
+	strb r2, [r1, #0x16]
+	ldr r1, [r0]
+	mov r2, #1
+	strb r2, [r1, #0x10]
+	ldr r1, [r0]
+	mov r2, #0x36
+	strb r2, [r1, #0x1b]
+	ldr r0, [r0]
+	add r1, r2, #0xe9
+	add r0, r0, #0x100
+	strh r1, [r0, #0xa6]
+	b _02036A58
+_02036C9C:
+	mov r1, #9
+	strb r1, [r3, #0x18]
+	ldr r1, [r0]
+	mov r2, #1
+	strb r2, [r1, #0x10]
+	ldr r1, [r0]
+	mov r2, #0x22
+	strb r2, [r1, #0x1b]
+	ldr r0, [r0]
+	mov r1, #2
+	strb r1, [r0, #0x16]
+	b _02036A58
+_02036CCC_EU:
+	strb r2, [r3, #0x16]
+	ldr r1, [r0]
+	mov r2, #6
+	strb r2, [r1, #0x18]
+	ldr r0, [r0]
+	mov r1, #0x36
+	strb r1, [r0, #0x1b]
+	b _02036A58
+_02036CEC:
+	mov r1, #6
+	strb r1, [r3, #0x18]
+	ldr r0, [r0]
+	mov r1, #0xa
+	strb r1, [r0, #0x1b]
+	b _02036A58
+_02036D04:
+	mov r1, #4
+	strb r1, [r3, #0x16]
+	ldr r0, [r0]
+#else
 	ldr r1, [r0]
 	mov r2, #0
 	ldr r0, [r1, #0xc]
@@ -52001,6 +53339,7 @@ _02036A08:
 	mov r0, #4
 	strb r0, [r3, #0x16]
 	ldr r0, [r1]
+#endif
 	mov r1, #0x11c
 	add r0, r0, #0x100
 	strh r1, [r0, #0xa6]
@@ -52118,7 +53457,7 @@ _02036BA0: ; jump table
 _02036BB0:
 	ldr r0, _02036CB4 ; =_0209B2FC
 	ldr r1, _02036CB8 ; =sub_02037F58
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02036CB0 ; =_020AFDF0
 	ldr r2, [r1]
 	strb r0, [r2]
@@ -52137,7 +53476,7 @@ _02036BB0:
 _02036BF8:
 	ldr r0, _02036CBC ; =_0209B31C
 	ldr r1, _02036CC0 ; =sub_02037CA8
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02036CB0 ; =_020AFDF0
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -52145,7 +53484,7 @@ _02036BF8:
 _02036C14:
 	ldr r0, _02036CBC ; =_0209B31C
 	ldr r1, _02036CC4 ; =sub_02037C78
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02036CB0 ; =_020AFDF0
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -52153,7 +53492,7 @@ _02036C14:
 _02036C30:
 	ldr r0, _02036CC8 ; =_0209B2EC
 	ldr r1, _02036CB8 ; =sub_02037F58
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02036CB0 ; =_020AFDF0
 	ldr r2, [r1]
 	strb r0, [r2]
@@ -52168,14 +53507,14 @@ _02036C30:
 	beq _02036C84
 	ldr r0, _02036CBC ; =_0209B31C
 	ldr r1, _02036CC4 ; =sub_02037C78
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02036CB0 ; =_020AFDF0
 	ldr r1, [r1]
 	strb r0, [r1, #2]
 _02036C84:
 	ldr r0, _02036CCC ; =_0209B2DC
 	ldr r1, _02036CD0 ; =sub_02037CD8
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02036CB0 ; =_020AFDF0
 	mov r2, #0
 	ldr r3, [r1]
@@ -52319,7 +53658,7 @@ _02036E30:
 	beq _02036EE0
 	mov r0, #3
 	strb r1, [r2, #0x1c]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02037444 ; =_020AFDF0
 	mov r1, #8
 	ldr r0, [r0]
@@ -52440,7 +53779,7 @@ _02037044:
 	beq _02037068
 	mov r0, #3
 	strb r2, [r1, #0x18]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02037444 ; =_020AFDF0
 	mov r1, #8
 	ldr r0, [r0]
@@ -52581,11 +53920,11 @@ _02037240:
 	sub r1, r0, #1
 	mov r0, #3
 	strb r1, [r2, #0x1c]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02037374
 _02037268:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02037374
 _02037274:
 	ldr r0, _02037444 ; =_020AFDF0
@@ -52602,11 +53941,11 @@ _02037274:
 	add r1, r1, #1
 	mov r0, #3
 	strb r1, [r4, #0x1c]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02037374
 _020372B4:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02037374
 _020372C0:
 	ldr r0, _02037444 ; =_020AFDF0
@@ -52622,11 +53961,11 @@ _020372C0:
 	sub r1, r0, r1
 	mov r0, #3
 	strb r1, [r2, #0x1c]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02037374
 _020372FC:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02037374
 _02037308:
 	ldr r0, _02037444 ; =_020AFDF0
@@ -52652,11 +53991,11 @@ _02037308:
 	ldrb r1, [r2, #0x1c]
 	add r1, r1, r5
 	strb r1, [r2, #0x1c]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02037374
 _0203736C:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02037374:
 	ldrh r0, [sp, #0x10]
 	cmp r0, #8
@@ -52683,7 +54022,7 @@ _020373B0:
 	b _0203743C
 _020373C4:
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02037444 ; =_020AFDF0
 	mov r1, #5
 	ldr r0, [r0]
@@ -52705,7 +54044,7 @@ _020373E0:
 	ldrb r1, [r2, #0x16]
 	and r1, r1, #1
 	strb r1, [r2, #0x16]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02037444 ; =_020AFDF0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
@@ -52903,7 +54242,7 @@ _020376A4:
 	blt _02037698
 	ldr r0, _020376E4 ; =_0209B30C
 	ldr r1, _020376E8 ; =sub_02037F58
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _020376E0 ; =_020AFDF0
 	mov r2, #0
 	ldr r3, [r1]
@@ -53164,7 +54503,7 @@ _020379D4:
 	bl StrncpySimple
 	b _02037A54
 _02037A40:
-	bl ov00_0230D71C
+	bl ov11_0230D71C
 	ldr r0, _02037C28 ; =_020AFDF0
 	ldr r0, [r0]
 	add r0, r0, #0xfc
@@ -53222,7 +54561,7 @@ _02037AEC:
 	ldrb r0, [r0, #0x11]
 	cmp r0, #0
 	bne _02037B10
-	bl ov00_022E6E68
+	bl ov11_022E6E68
 _02037B10:
 	ldr r0, _02037C28 ; =_020AFDF0
 	mov r1, #3
@@ -53241,7 +54580,7 @@ _02037B24:
 	bne _02037B64
 	ldr r0, _02037C30 ; =_0209B2FC
 	ldr r1, _02037C34 ; =sub_02037F58
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02037C28 ; =_020AFDF0
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -53257,7 +54596,7 @@ _02037B64:
 	ldr r2, [r2]
 	mov r3, #0
 	strb r3, [r2, #0x15]
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02037C28 ; =_020AFDF0
 	ldr r2, [r1]
 	strb r0, [r2]
@@ -53270,7 +54609,7 @@ _02037B64:
 	beq _02037BD0
 	ldr r0, _02037C3C ; =_0209B31C
 	ldr r1, _02037C40 ; =sub_02037C78
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02037C28 ; =_020AFDF0
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -53288,7 +54627,7 @@ _02037BD0:
 _02037BF8:
 	ldr r0, _02037C44 ; =_0209B2DC
 	ldr r1, _02037C48 ; =sub_02037CD8
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02037C28 ; =_020AFDF0
 	mov r2, #0
 	ldr r3, [r1]
@@ -53954,11 +55293,11 @@ _02038500:
 	cmp ip, #0
 	bne _02038514
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _020388F8
 _02038514:
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02038900 ; =_020AFDF0
 	mov r2, #0
 	ldr r1, [r0]
@@ -53973,11 +55312,11 @@ _02038544:
 	cmp ip, #1
 	bne _02038558
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _020388F8
 _02038558:
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02038900 ; =_020AFDF0
 	mov r2, #1
 	ldr r1, [r0]
@@ -53995,7 +55334,7 @@ _02038588:
 	movne r2, #0
 	mov r0, #4
 	strb r2, [r1, #0x15]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #0
 	bl sub_020383FC
 	ldr r0, _02038900 ; =_020AFDF0
@@ -54030,7 +55369,7 @@ _020385F0:
 	cmp r4, #0x12
 	bge _02038680
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r1, #0x20
 	ldr r0, _02038900 ; =_020AFDF0
 	b _0203864C
@@ -54079,7 +55418,7 @@ _02038680:
 	cmp r1, r0
 	beq _020386E8
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #3
 	ldmia sp!, {r3, r4, r5, pc}
 _020386E8:
@@ -54099,7 +55438,7 @@ _020386FC:
 	beq _0203872C
 _0203871C:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #2
 	ldmia sp!, {r3, r4, r5, pc}
 _0203872C:
@@ -54114,11 +55453,11 @@ _0203872C:
 	cmp r0, #0x3c
 	ble _02038760
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _020388F8
 _02038760:
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	cmp r4, #0
 	beq _02038794
 	bl sub_02038A54
@@ -54150,7 +55489,7 @@ _020387B4:
 	cmp r0, #0xff
 	bne _02038810
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _020388F8
 _020387E4:
 	ldr r0, [r1, #0xc]
@@ -54163,7 +55502,7 @@ _020387E4:
 	bls _02038810
 _02038804:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _020388F8
 _02038810:
 	ldr r0, _02038900 ; =_020AFDF0
@@ -54224,7 +55563,7 @@ _020388A4:
 	movge r0, #5
 	strgeb r0, [r2, #0x18]
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	bl sub_02038ADC
 	ldr r0, _02038900 ; =_020AFDF0
 	ldr r0, [r0]
@@ -54250,7 +55589,7 @@ sub_02038904: ; 0x02038904
 	cmp r2, #0
 	bne _0203893C
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 _0203893C:
@@ -54262,7 +55601,7 @@ _0203893C:
 	ldr r2, [r0, #0xf8]
 	mov r0, #1
 	strb r3, [r2, r1]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02038A50 ; =_020AFDF0
 	ldr r0, [r0]
 	ldrsb r0, [r0]
@@ -54322,7 +55661,7 @@ _02038A10:
 	strb r2, [r1, r0]
 _02038A2C:
 	mov r0, #1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02038A50 ; =_020AFDF0
 	ldr r0, [r0]
 	ldrsb r0, [r0]
@@ -54848,7 +56187,7 @@ _0203913C:
 	mov r2, #1
 	ldr r1, _02039210 ; =sub_0203939C
 	str r2, [sp, #4]
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02039208 ; =_020AFE40
 	ldr r3, _02039214 ; =_0209B4E4
 	ldr r1, [r1]
@@ -54857,7 +56196,7 @@ _0203913C:
 	mov r0, #0
 	mov r1, #0x31
 	str r0, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02039208 ; =_020AFE40
 	mov r2, #0
 	ldr r3, [r1]
@@ -54867,7 +56206,7 @@ _0203913C:
 	b _020391FC
 _020391C0:
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r3, _02039208 ; =_020AFE40
 	mov r1, #0x218
 	ldr r4, [r3]
@@ -54876,7 +56215,7 @@ _020391C0:
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0, #2]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02039208 ; =_020AFE40
 	mov r1, #1
 	ldr r0, [r0]
@@ -54924,7 +56263,7 @@ _02039270:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _020392DC
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	b _020392DC
 _02039290:
 	ldrsb r0, [r0]
@@ -54939,7 +56278,7 @@ _020392A4:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _020392DC
-	bl FreeDBox
+	bl FreeDialogueBox
 	b _020392DC
 _020392C4:
 	bl MemFree
@@ -54983,7 +56322,7 @@ sub_0203931C: ; 0x0203931C
 	cmp r0, #1
 	bne _0203934C
 	ldrsb r0, [r1, #2]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02039390
 	mov r0, #1
@@ -54993,17 +56332,17 @@ _0203934C:
 	cmp r0, #0
 	bne _0203937C
 	ldrsb r0, [r1, #1]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _02039390
 	ldr r0, _02039398 ; =_020AFE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldmia sp!, {r3, pc}
 _0203937C:
 	ldrsb r0, [r1, #2]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
@@ -55100,7 +56439,7 @@ sub_02039460: ; 0x02039460
 	ldr r3, _02039520 ; =sub_02039C14
 	mov r0, ip
 	str r2, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	b _02039500
 _020394C8:
 	ldr r0, _02039524 ; =_0209C5D0
@@ -55116,7 +56455,7 @@ _020394C8:
 	ldr r3, _02039520 ; =sub_02039C14
 	mov r0, ip
 	str r2, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 _02039500:
 	strb r0, [r4, #0x14]
 	mov r0, r4
@@ -55149,7 +56488,7 @@ _0203954C: ; jump table
 	b _0203955C ; case 3
 _0203955C:
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldrsb r0, [r5, #0x14]
 	bl sub_0202836C
 	ldrsb r0, [r5, #0x14]
@@ -55166,7 +56505,7 @@ _02039584:
 	ldrsb r0, [r5, #0x14]
 	bl sub_020308A0
 	mov r0, #1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mvn r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _020395AC:
@@ -55321,7 +56660,7 @@ _02039788:
 	beq _020397A0
 	mov r0, #3
 	strb r5, [r4, #0x28]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _020397A0:
 	ldrb r1, [r4, #0x28]
 	mov r0, #0xc
@@ -55356,7 +56695,7 @@ _0203980C:
 	cmp r3, r0
 	bne _0203982C
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #0
 	b _020398B0
 _0203982C:
@@ -55365,7 +56704,7 @@ _0203982C:
 	mov r0, #3
 	ldr r1, [r1, r2, lsl #2]
 	add r5, r3, r1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, [r4, #0xc]
 	cmp r5, r0
 	strgt r0, [r4]
@@ -55378,7 +56717,7 @@ _0203985C:
 	cmp r3, r0
 	bne _0203987C
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #0
 	b _020398B0
 _0203987C:
@@ -55387,7 +56726,7 @@ _0203987C:
 	mov r0, #3
 	ldr r1, [r1, r2, lsl #2]
 	sub r5, r3, r1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, [r4, #8]
 	cmp r5, r0
 	strlt r0, [r4]
@@ -55433,7 +56772,7 @@ _020398EC:
 	beq _0203993C
 	mov r0, #3
 	strb r2, [r4, #0x28]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _0203993C:
 	mov r0, #0
 _02039940:
@@ -56193,7 +57532,7 @@ _0203A390:
 	mov r4, #6
 	add r2, r2, #0x400
 	str r4, [sp, #4]
-	bl sub_02030F44
+	bl CreateTeamSelectionMenu
 	ldr r1, _0203A4D4 ; =_020AFE5C
 	ldr r1, [r1, #0x10]
 	strb r0, [r1, #0x468]
@@ -56210,7 +57549,7 @@ _0203A3E0:
 	mov r4, #6
 	add r2, r2, #0x400
 	str r4, [sp, #4]
-	bl sub_02030F44
+	bl CreateTeamSelectionMenu
 	ldr r1, _0203A4D4 ; =_020AFE5C
 	ldr r1, [r1, #0x10]
 	strb r0, [r1, #0x468]
@@ -56237,7 +57576,7 @@ _0203A420:
 	mov r4, #8
 	add r2, r2, #0x400
 	str r4, [sp, #4]
-	bl sub_02030F44
+	bl CreateTeamSelectionMenu
 	ldr r2, _0203A4D4 ; =_020AFE5C
 	ldr r1, _0203A510 ; =_0203B884
 	ldr r3, [r2, #0x10]
@@ -56248,7 +57587,7 @@ _0203A420:
 	bl sub_02031888
 	ldr r0, _0203A514 ; =_0209C638
 	ldr r1, _0203A518 ; =sub_0203C784
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0203A4D4 ; =_020AFE5C
 	mov r2, #1
 	ldr r3, [r1, #0x10]
@@ -56452,7 +57791,7 @@ _0203A6F0:
 	bne _0203A748
 	ldr r0, _0203A754 ; =_0209C638
 	ldr r1, _0203A758 ; =sub_0203C784
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0203A750 ; =_020AFE5C
 	ldr r1, [r1, #0x10]
 	strb r0, [r1, #0x469]
@@ -57808,20 +59147,20 @@ sub_0203B91C: ; 0x0203B91C
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0203BA18 ; =_020AFE5C
 	ldr r1, [r1, #0x10]
 	strb r0, [r1, #0x506]
 	ldmia sp!, {r3, pc}
 _0203B968:
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0203BA18 ; =_020AFE5C
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #6]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #5
 	addls pc, pc, r0, lsl #2
 	b _0203B9E8
@@ -57856,7 +59195,7 @@ _0203B9E8:
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #6]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0203BA18 ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -58120,27 +59459,27 @@ sub_0203BCEC: ; 0x0203BCEC
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0203BE0C ; =_020AFE5C
 	ldr r1, [r1, #0x10]
 	strb r0, [r1, #0x507]
 	b _0203BE04
 _0203BD3C:
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0203BE04
 	ldr r0, _0203BE0C ; =_020AFE5C
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #7]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _0203BE0C ; =_020AFE5C
 	mov r0, r0, lsl #0x10
 	ldr r1, [r1, #0x10]
 	mov r4, r0, asr #0x10
 	add r0, r1, #0x500
 	ldrsb r0, [r0, #7]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0203BE0C ; =_020AFE5C
 	mvn r2, #1
 	ldr r1, [r0, #0x10]
@@ -58226,14 +59565,14 @@ sub_0203BE18: ; 0x0203BE18
 	str r2, [r0, #0x508]
 	b _0203BEC4
 _0203BE94:
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0203BEC4
 	ldr r0, _0203BECC ; =_020AFE5C
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #7]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0203BECC ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -58351,7 +59690,7 @@ _0203C02C: .word _022AADF8
 sub_0203C030: ; 0x0203C030
 	stmdb sp!, {r3, lr}
 	ldr r0, _0203C078 ; =_0209C648
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r3, _0203C07C ; =_020AFE5C
 	ldr r1, _0203C080 ; =0x00000418
 	ldr ip, [r3, #0x10]
@@ -58361,7 +59700,7 @@ sub_0203C030: ; 0x0203C030
 	mov r3, #0
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #5]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _0203C07C ; =_020AFE5C
 	mov r1, #5
 	ldr r0, [r0, #0x10]
@@ -58381,7 +59720,7 @@ sub_0203C088: ; 0x0203C088
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #5]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0203C0D0 ; =_020AFE5C
@@ -58408,7 +59747,7 @@ sub_0203C0D4: ; 0x0203C0D4
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0203C120 ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -58461,7 +59800,7 @@ sub_0203C124: ; 0x0203C124
 	add r2, r2, #0x1d8
 	ldr r3, _0203C1F4 ; =sub_0203BCCC
 	add r2, r2, #0x400
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _0203C1E8 ; =_020AFE5C
 	mov r2, #8
 	ldr r3, [r1, #0x10]
@@ -58506,7 +59845,7 @@ _0203C22C:
 	ldmia sp!, {r3, pc}
 _0203C244:
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _0203C324 ; =_020AFE5C
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
@@ -58552,7 +59891,7 @@ _0203C2BC:
 	ldmia sp!, {r3, pc}
 _0203C2F4:
 	mov r0, #1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _0203C324 ; =_020AFE5C
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
@@ -59161,10 +60500,10 @@ _0203CA3C: .word _0209C7F4
 	arm_func_start sub_0203CA40
 sub_0203CA40: ; 0x0203CA40
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov00_0230D92C
+	bl ov11_0230D92C
 	ldr r0, _0203CA68 ; =_020AFE70
 	mov r1, #1
 	ldr r0, [r0]
@@ -59177,7 +60516,7 @@ _0203CA68: .word _020AFE70
 	arm_func_start sub_0203CA6C
 sub_0203CA6C: ; 0x0203CA6C
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203CA8C ; =_020AFE70
 	moveq r1, #2
@@ -59191,14 +60530,14 @@ _0203CA8C: .word _020AFE70
 	arm_func_start sub_0203CA90
 sub_0203CA90: ; 0x0203CA90
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0203CAC8 ; =_020AFE70
 	ldr r0, [r0]
 	ldrsh r0, [r0, #4]
 	bl sub_0203CCD8
-	bl ov00_02310C18
+	bl ov11_02310C18
 	ldr r0, _0203CAC8 ; =_020AFE70
 	mov r1, #3
 	ldr r0, [r0]
@@ -59211,7 +60550,7 @@ _0203CAC8: .word _020AFE70
 	arm_func_start sub_0203CACC
 sub_0203CACC: ; 0x0203CACC
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203CAEC ; =_020AFE70
 	moveq r1, #4
@@ -59256,10 +60595,10 @@ _0203CB54: .word _020AFE70
 	arm_func_start sub_0203CB58
 sub_0203CB58: ; 0x0203CB58
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov00_0230D92C
+	bl ov11_0230D92C
 	ldr r0, _0203CB80 ; =_020AFE70
 	mov r1, #6
 	ldr r0, [r0]
@@ -59272,7 +60611,7 @@ _0203CB80: .word _020AFE70
 	arm_func_start sub_0203CB84
 sub_0203CB84: ; 0x0203CB84
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0203CC5C ; =_020AFE70
@@ -59335,7 +60674,7 @@ _0203CC5C: .word _020AFE70
 	arm_func_start sub_0203CC60
 sub_0203CC60: ; 0x0203CC60
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203CC80 ; =_020AFE70
 	moveq r1, #0xa
@@ -59349,10 +60688,10 @@ _0203CC80: .word _020AFE70
 	arm_func_start sub_0203CC84
 sub_0203CC84: ; 0x0203CC84
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
-	bl ov00_0230D000
+	bl ov11_0230D000
 	ldr r0, _0203CCAC ; =_020AFE70
 	mov r1, #9
 	ldr r0, [r0]
@@ -59365,7 +60704,7 @@ _0203CCAC: .word _020AFE70
 	arm_func_start sub_0203CCB0
 sub_0203CCB0: ; 0x0203CCB0
 	stmdb sp!, {r3, lr}
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203CCD0 ; =_020AFE70
 	moveq r1, #0xa
@@ -59413,7 +60752,7 @@ _0203CD2C:
 	bne _0203CD5C
 	ldr r0, _0203CE08 ; =_0209C7E4
 	ldr r1, _0203CE0C ; =sub_0203CE1C
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0203CE04 ; =_020AFE70
 	ldr r1, [r1]
 	strb r0, [r1, #1]
@@ -59426,7 +60765,7 @@ _0203CD5C:
 	bne _0203CD8C
 	ldr r0, _0203CE10 ; =_0209C7D4
 	ldr r1, _0203CE14 ; =sub_0203CFCC
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _0203CE04 ; =_020AFE70
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -60528,7 +61867,7 @@ _0203DD68:
 	ldr r3, _0203E4F4 ; =_0209C86C
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _0203E4B0 ; =_020AFE74
 	mov r2, #0x11
 	ldr r3, [r1]
@@ -60539,20 +61878,20 @@ _0203DD68:
 _0203DDAC:
 	add r0, r4, #0x100
 	ldrsb r0, [r0, #0xa0]
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _0203EF9C
 	ldr r0, _0203E4B0 ; =_020AFE74
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0xa0]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _0203E4B0 ; =_020AFE74
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0xa0]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _0203E4B0 ; =_020AFE74
 	mvn r1, #1
 	ldr r0, [r0]
@@ -60575,14 +61914,14 @@ _0203DE24:
 	str r1, [r0]
 	b _0203EF9C
 _0203DE38:
-	bl ov00_0230D92C
+	bl ov11_0230D92C
 	ldr r0, _0203E4B0 ; =_020AFE74
 	mov r1, #0x13
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203DE50:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203E4B0 ; =_020AFE74
 	moveq r1, #0x14
@@ -60604,7 +61943,7 @@ _0203DE6C:
 	str r1, [r0]
 	b _0203EF9C
 _0203DEA0:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203E4B0 ; =_020AFE74
 	moveq r1, #0x16
@@ -60640,14 +61979,14 @@ _0203DF1C:
 	bl sub_02037468
 	cmp r0, #0
 	beq _0203EF9C
-	bl ov00_0230D92C
+	bl ov11_0230D92C
 	ldr r0, _0203E4B0 ; =_020AFE74
 	mov r1, #0x18
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203DF40:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203E4B0 ; =_020AFE74
 	moveq r1, #0x19
@@ -60655,14 +61994,14 @@ _0203DF40:
 	streq r1, [r0]
 	b _0203EF9C
 _0203DF5C:
-	bl ov00_0230D92C
+	bl ov11_0230D92C
 	ldr r0, _0203E4B0 ; =_020AFE74
 	mov r1, #0x1a
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0203EF9C
 _0203DF74:
-	bl ov00_0230D220
+	bl ov11_0230D220
 	cmp r0, #0
 	ldreq r0, _0203E4B0 ; =_020AFE74
 	moveq r1, #0x1b
@@ -61860,7 +63199,7 @@ _0203F08C:
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
 	beq _0203F0B8
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0203F0EC ; =_020AFE74
 	mvn r1, #1
 	ldr r0, [r0]
@@ -62023,7 +63362,7 @@ _0203F2C0:
 	ldr r3, _0203F35C ; =sub_0203F0F0
 	add r2, sp, #8
 	str r4, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _0203F360 ; =sub_0203F928
 	mov r4, r0
 	bl sub_02030AD4
@@ -62037,7 +63376,7 @@ _0203F2FC:
 	ldr r3, _0203F35C ; =sub_0203F0F0
 	add r2, sp, #8
 	str r4, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	mov r4, r0
 _0203F324:
 	ldr r0, _0203F340 ; =_020AFE78
@@ -62266,7 +63605,7 @@ _0203F60C:
 	tst r0, #0x40
 	beq _0203F748
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _0203F748
 _0203F660:
 	ldrsb r0, [r2]
@@ -62276,7 +63615,7 @@ _0203F660:
 	tst r4, #0x40000
 	bne _0203F680
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _0203F680:
 	ldr r0, _0203F8D4 ; =_020AFE78
 	ldr r1, [r0]
@@ -62312,7 +63651,7 @@ _0203F6A8:
 	tst r0, #0x80
 	beq _0203F748
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _0203F748
 _0203F708:
 	ldrsb r0, [r3]
@@ -62322,7 +63661,7 @@ _0203F708:
 	tst r4, #0x80000
 	bne _0203F728
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _0203F728:
 	ldr r0, _0203F8D4 ; =_020AFE78
 	ldr r2, [r0]
@@ -62417,7 +63756,7 @@ _0203F83C:
 	ldr r1, _0203F8E8 ; =0x00001013
 	stmia sp, {r2, r4}
 	str r2, [sp, #8]
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _0203F8D4 ; =_020AFE78
 	mov r2, #4
 	ldr r3, [r1]
@@ -62946,7 +64285,7 @@ _0203FF44:
 	ldr r1, _02040164 ; =0x00401803
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -62959,7 +64298,7 @@ _0203FF7C:
 	ldr r1, _02040170 ; =0x00400800
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -62978,7 +64317,7 @@ _0203FFAC:
 	ldr r1, _02040164 ; =0x00401803
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -62997,7 +64336,7 @@ _0203FFF4:
 	ldr r1, _02040178 ; =0x00401A03
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -63016,7 +64355,7 @@ _0204003C:
 	ldr r1, _02040180 ; =0x00400A00
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -63034,7 +64373,7 @@ _02040084:
 	ldr r1, _02040184 ; =0x00409823
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -63049,7 +64388,7 @@ _020400C8:
 	ldr r1, _02040188 ; =0x00401823
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -63609,7 +64948,7 @@ _0204087C:
 	cmp r0, r1
 	bne _020408B8
 	mov r0, #1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #1
 	b _02040F88
 _020408B8:
@@ -63688,18 +65027,18 @@ _02040980:
 	cmp r1, r0, asr #16
 	beq _020409D8
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r1, _02040F94 ; =_020AFE7C
 	mov r0, #3
 	strh r4, [r1, #2]
 	b _02040F88
 _020409D8:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02040A44
 _020409E4:
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02040F94 ; =_020AFE7C
 	ldr r1, [r0, #8]
 	ldrsh r2, [r0, #2]
@@ -63743,18 +65082,18 @@ _02040A44:
 	cmp r1, r0, asr #16
 	beq _02040A9C
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r1, _02040F94 ; =_020AFE7C
 	mov r0, #4
 	strh r4, [r1, #2]
 	b _02040F88
 _02040A9C:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02040B10
 _02040AA8:
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02040F94 ; =_020AFE7C
 	ldrsh r1, [r0, #2]
 	cmp r1, #0
@@ -63874,7 +65213,7 @@ _02040C38:
 	cmp r1, r0
 	beq _02040C90
 	mov r0, #4
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02040F94 ; =_020AFE7C
 	mov r1, #0
 	strh r1, [r0, #2]
@@ -63892,7 +65231,7 @@ _02040C90:
 	tst r0, #2
 	beq _02040CAC
 	mov r0, #1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #1
 	b _02040F88
 _02040CAC:
@@ -64044,7 +65383,7 @@ _02040E88:
 	b _02040EC0
 _02040EB8:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02040EC0:
 	bl sub_02041178
 	b _02040F84
@@ -64052,7 +65391,7 @@ _02040EC8:
 	cmp r4, #0
 	beq _02040EEC
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02040F94 ; =_020AFE7C
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0]
@@ -64063,14 +65402,14 @@ _02040EEC:
 	tst r0, #0x400
 	mov r0, #0
 	beq _02040F14
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02040F94 ; =_020AFE7C
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0]
 	bl sub_02030EF0
 	b _02040F18
 _02040F14:
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02040F18:
 	ldr r0, _02040F94 ; =_020AFE7C
 	mov r1, #2
@@ -64096,7 +65435,7 @@ _02040F18:
 	b _02040F88
 _02040F70:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	cmp r4, #0
 	beq _02040F84
 	bl sub_02041178
@@ -64896,11 +66235,19 @@ _020418C0:
 	add r1, r1, #0x200
 	strh r6, [r1, #0xac]
 	ldr r2, [r5]
+#ifdef EUROPE
+	add r1, r0, #0x3a4
+#else
 	add r1, r0, #0xa2
+#endif
 	add r2, r2, r8
 	str r0, [r2, #0x3c]
 	ldr r2, [r5]
+#ifdef EUROPE
+	add r3, r1, #0x2400
+#else
 	add r3, r1, #0x2700
+#endif
 	add r1, r2, r7, lsl #1
 	add r1, r1, #0x200
 	strh r3, [r1, #0xb4]
@@ -64942,7 +66289,7 @@ _02041950:
 	ldr r1, _020419FC ; =0x00001013
 	mov r2, #0
 	str r4, [sp, #0xc]
-	bl sub_0202E518
+	bl CreateScrollBox2
 	ldr r1, _020419F4 ; =_020AFE8C
 	b _020419D4
 _020419A0:
@@ -64957,7 +66304,7 @@ _020419A0:
 	ldrh r3, [r1, #0xac]
 	ldr r1, _020419FC ; =0x00001013
 	mov r2, #0
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _020419F4 ; =_020AFE8C
 _020419D4:
 	ldr r1, [r1]
@@ -65124,7 +66471,7 @@ _02041BC0:
 	streq r0, [r2, #0x6f0]
 	beq _020420B0
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _020420BC ; =_020AFE90
 	ldr r2, _020420C0 ; =_0209C9B0
 	ldrsb r3, [r0]
@@ -65253,7 +66600,7 @@ _02041DD4: ; jump table
 	b _02041DE8 ; case 4
 _02041DE8:
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02041DF0:
 	ldr r0, _020420BC ; =_020AFE90
 	ldr r0, [r0, #4]
@@ -65271,7 +66618,7 @@ _02041E14:
 	b _020420B0
 _02041E24:
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _020420BC ; =_020AFE90
 	mov r1, #3
 	ldr r0, [r0, #4]
@@ -65284,7 +66631,7 @@ _02041E40:
 	cmp r0, #0x18
 	bne _02041E60
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02041E98
 _02041E60:
 	cmp r0, #0x1b
@@ -65295,7 +66642,7 @@ _02041E60:
 	bhi _02041E84
 _02041E78:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02041E98
 _02041E84:
 	ldrb r1, [r2, r1]
@@ -65360,13 +66707,18 @@ _02041F30:
 	str lr, [sp, #0xb8]
 	str ip, [sp]
 	ldr ip, [sp, #0xb8]
+#ifdef EUROPE
+	add ip, ip, #0x32c
+	add ip, ip, #0x2400
+#else
 	add ip, ip, #0x2a
 	add ip, ip, #0x2700
+#endif
 	mov ip, ip, lsl #0x10
 	mov ip, ip, lsr #0x10
 	str ip, [sp, #4]
 	str r2, [sp, #8]
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _020420BC ; =_020AFE90
 	mov r2, #6
 	ldr r3, [r1, #4]
@@ -65617,7 +66969,7 @@ sub_02042258: ; 0x02042258
 	ldr r1, _020423C8 ; =0x00443C33
 	ldr r3, _020423CC ; =sub_02042760
 	add r2, r2, #8
-	bl sub_0202C3A8
+	bl CreateCollectionMenu
 	ldr r2, _020423B4 ; =_020AFEA8
 	ldr r1, _020423D0 ; =sub_0204262C
 	ldr r3, [r2, #4]
@@ -65644,6 +66996,11 @@ sub_02042258: ; 0x02042258
 	beq _0204237C
 	b _020423A0
 _02042368:
+#ifdef EUROPE
+	ldrsb r0, [r1, #4]
+	mov r1, #9
+	bl sub_0202C5E0
+#endif
 	mov r0, #0
 	bl sub_0204440C
 	mov r0, #2
@@ -65651,7 +67008,16 @@ _02042368:
 	b _020423A0
 _0204237C:
 	ldrsb r0, [r1, #4]
+#ifdef EUROPE
+	mov r1, #9
+	bl sub_0202C5E0
+	ldr r0, _020423B4 ; =_020AFEA8
+#endif
 	mov r1, #0x76
+#ifdef EUROPE
+	ldr r0, [r0, #4]
+	ldrsb r0, [r0, #4]
+#endif
 	bl sub_0202C5F4
 	mov r0, #0
 	bl sub_0204440C
@@ -65693,7 +67059,7 @@ sub_020423D8: ; 0x020423D8
 	ble _0204241C
 	bl sub_02042AF8
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r5, #1
 	b _020425D8
 _0204241C:
@@ -65726,11 +67092,11 @@ _02042478:
 	cmp r5, #0
 	beq _0204248C
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _020425D8
 _0204248C:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _020425D8
 _02042498:
 	tst r0, #0x400
@@ -65762,7 +67128,7 @@ _020424CC:
 	mov r1, #0
 	mov r0, #6
 	str r1, [r2, r4, lsl #2]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r5, #1
 	b _020425D8
 _02042514:
@@ -65775,7 +67141,7 @@ _02042514:
 	cmp r1, r0
 	bge _02042550
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02042618 ; =_020AFEA8
 	mov r5, #1
 	ldr r0, [r0, #8]
@@ -65783,12 +67149,12 @@ _02042514:
 	b _020425D8
 _02042550:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r5, #0
 	b _020425D8
 _02042560:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r5, #0
 	b _020425D8
 _02042570:
@@ -65808,17 +67174,17 @@ _02042570:
 	beq _020425B8
 	mov r1, #0
 	str r1, [r2, r4, lsl #2]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _020425D8
 _020425B8:
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _02042618 ; =_020AFEA8
 	ldr r0, [r0, #8]
 	str r5, [r0, r4, lsl #2]
 	b _020425D8
 _020425CC:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r5, #0
 _020425D8:
 	bl sub_02042B20
@@ -66509,7 +67875,7 @@ _02042E6C:
 	ldr r3, _02042FA4 ; =_020432B4
 	add r2, r2, #0x400
 	str r4, [sp, #8]
-	bl sub_0202C3A8
+	bl CreateCollectionMenu
 	ldr r2, _02042F88 ; =_020AFEB4
 	ldr r1, _02042FA8 ; =sub_020430F4
 	ldr r3, [r2, #4]
@@ -66552,7 +67918,7 @@ _02042F28:
 _02042F3C:
 	ldr r0, _02042FB0 ; =_0209CA48
 	ldr r1, _02042FB4 ; =sub_02044210
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02042F88 ; =_020AFEB4
 	ldr r1, [r1, #4]
 	strb r0, [r1, #0x7d5]
@@ -66626,7 +67992,7 @@ _0204303C:
 	cmp r4, #0
 	beq _020430A0
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _020430F0 ; =_020AFEB4
 	mvn r1, #1
 	ldr r3, [r0, #8]
@@ -66651,7 +68017,7 @@ _0204307C:
 	b _020430A8
 _020430A0:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _020430A8:
 	bl sub_020434FC
 	cmp r0, #0
@@ -67130,26 +68496,26 @@ sub_020435CC: ; 0x020435CC
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02043760 ; =_020AFEB4
 	ldr r1, [r1, #4]
 	strb r0, [r1, #0x7d8]
 	b _02043758
 _0204361C:
-	bl IsNormalMenuActive
+	bl IsSimpleMenuActive
 	cmp r0, #0
 	bne _02043758
 	ldr r0, _02043760 ; =_020AFEB4
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd8]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	ldr r1, _02043760 ; =_020AFEB4
 	mov r4, r0
 	ldr r0, [r1, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd8]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _02043760 ; =_020AFEB4
 	mvn r2, #1
 	ldr r1, [r0, #4]
@@ -67232,7 +68598,7 @@ _02043768: .word _0209CAB4
 sub_0204376C: ; 0x0204376C
 	stmdb sp!, {r3, lr}
 	ldr r0, _020437B4 ; =_0209CA88
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r3, _020437B8 ; =_020AFEB4
 	ldr r1, _020437BC ; =0x00000418
 	ldr ip, [r3, #4]
@@ -67242,7 +68608,7 @@ sub_0204376C: ; 0x0204376C
 	mov r3, #0
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd7]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _020437B8 ; =_020AFEB4
 	mov r1, #2
 	ldr r0, [r0, #4]
@@ -67262,7 +68628,7 @@ sub_020437C4: ; 0x020437C4
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd7]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	mov r0, #9
@@ -67302,7 +68668,7 @@ sub_02043844: ; 0x02043844
 	ldrsb r0, [r0, #0xd7]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02043940 ; =_020AFEB4
 	mvn r2, #1
 	ldr r1, [r0, #4]
@@ -68066,7 +69432,7 @@ sub_0204426C: ; 0x0204426C
 	ldr r1, _020442C8 ; =sub_02044338
 	ldr r0, [r0]
 	add r0, r2, r0, lsl #4
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _020442C0 ; =_020AFEC8
 	ldr r1, [r1]
 	strb r0, [r1, #5]
@@ -68195,7 +69561,7 @@ sub_0204440C: ; 0x0204440C
 	ldr r2, [r2]
 	mov r3, #1
 	strb r3, [r2, #4]
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _02044468 ; =_020AFECC
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
@@ -68267,7 +69633,11 @@ sub_020444F0: ; 0x020444F0
 	ldrsh r0, [r0, #8]
 	cmp r0, #0
 	beq _02044558
+#ifdef EUROPE
+	add r0, r0, #0x4b
+#else
 	add r0, r0, #0x49
+#endif
 	add r0, r0, #0x2f00
 	mov r3, r0, lsl #0x10
 	mov r1, #2
@@ -68301,7 +69671,7 @@ sub_02044568: ; 0x02044568
 	ldr r1, _020445C4 ; =sub_02044604
 	ldr r0, [r0]
 	add r0, r2, r0, lsl #4
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	ldr r1, _020445BC ; =_020AFED0
 	ldr r1, [r1]
 	strb r0, [r1, #5]
@@ -68402,7 +69772,7 @@ sub_02044688: ; 0x02044688
 	ldr r0, _020447EC ; =_0209CB78
 	ldr r1, _020447F0 ; =sub_02044964
 	mov r2, r4
-	bl sub_0202F8DC
+	bl CreateTextBox2
 	strb r0, [r4, #0x72c]
 	cmp r5, #3
 	mov r0, #0x10
@@ -68424,7 +69794,7 @@ sub_02044688: ; 0x02044688
 	ldr r3, _020447FC ; =sub_02044990
 	add r2, sp, #0xc
 	mov r1, #0x800
-	bl sub_020305E4
+	bl CreateAdvancedTextBox2
 	strb r0, [r4, #0x72d]
 	b _020447A8
 _02044760:
@@ -68444,7 +69814,7 @@ _02044760:
 	ldr r3, _020447FC ; =sub_02044990
 	add r2, sp, #0xc
 	mov r1, #0x800
-	bl sub_020305E4
+	bl CreateAdvancedTextBox2
 	strb r0, [r4, #0x72d]
 _020447A8:
 	mov r0, r6
@@ -68632,7 +70002,7 @@ sub_020449AC: ; 0x020449AC
 	bl sub_020584FC
 	b _02044A30
 _020449E8:
-	ldr r1, _02044ADC ; =ov29_02353538
+	ldr r1, _02044ADC ; =DUNGEON_PTR
 	add r0, r6, #0x2e
 	ldr r1, [r1]
 	add r0, r0, #0x700
@@ -68641,7 +70011,7 @@ _020449E8:
 	ldr r1, [r1, #0xb28]
 	mov r2, r4
 	ldr r7, [r1, #0xb4]
-	bl ov00_022E2A78
+	bl ov29_022E2A78
 	ldrb r0, [r7, #0xbc]
 	cmp r0, #7
 	beq _02044A2C
@@ -68670,7 +70040,7 @@ _02044A4C:
 	add r1, r0, #0x3e
 	b _02044A8C
 _02044A70:
-	ldr r0, _02044ADC ; =ov29_02353538
+	ldr r0, _02044ADC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -68701,7 +70071,7 @@ _02044ACC:
 	bl sub_0203083C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02044ADC: .word ov29_02353538
+_02044ADC: .word DUNGEON_PTR
 _02044AE0: .word 0x00000A3D
 _02044AE4: .word 0x00000A37
 _02044AE8: .word _0209CB6C
@@ -68738,7 +70108,7 @@ sub_02044AEC: ; 0x02044AEC
 	bl sub_020449AC
 	b _02044BEC
 _02044B5C:
-	ldr r0, _02044BF4 ; =ov29_02353538
+	ldr r0, _02044BF4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
@@ -68780,7 +70150,7 @@ _02044BEC:
 	str r4, [r7, #0x930]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02044BF4: .word ov29_02353538
+_02044BF4: .word DUNGEON_PTR
 	arm_func_end sub_02044AEC
 
 	arm_func_start sub_02044BF8
@@ -68848,7 +70218,7 @@ _02044CCC:
 _02044CD8:
 	mov r5, r4
 _02044CDC:
-	ldr r0, _020451A0 ; =ov29_02353538
+	ldr r0, _020451A0 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -68964,7 +70334,7 @@ _02044E28:
 	bl sub_020584FC
 	b _02044EC4
 _02044E8C:
-	ldr r3, _020451A0 ; =ov29_02353538
+	ldr r3, _020451A0 ; =DUNGEON_PTR
 	add r0, r5, r6
 	ldr r3, [r3]
 	ldrb r0, [r0, #0x18]
@@ -68989,7 +70359,7 @@ _02044EC4:
 	bl strcpy
 	b _020450A8
 _02044EE8:
-	ldr r0, _020451A0 ; =ov29_02353538
+	ldr r0, _020451A0 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, fp, lsl #2
 	add r0, r0, #0x12000
@@ -68997,7 +70367,7 @@ _02044EE8:
 	bl sub_0204533C
 	cmp r0, #0
 	beq _020450F4
-	ldr r0, _020451A0 ; =ov29_02353538
+	ldr r0, _020451A0 ; =DUNGEON_PTR
 	ldr r2, [r0]
 	ldr r0, _020451AC ; =TEAM_MEMBER_TABLE_PTR
 	ldr r1, [r0]
@@ -69011,7 +70381,7 @@ _02044EE8:
 	mov r0, #0x68
 	smlabb r0, r1, r0, r2
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdx
+	bl sub_02056228
 	cmp r0, #0
 	ldrsh r1, [r8, #0x12]
 	ldrsh r0, [r8, #0x16]
@@ -69176,7 +70546,7 @@ _02045194:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0204519C: .word 0x00000728
-_020451A0: .word ov29_02353538
+_020451A0: .word DUNGEON_PTR
 _020451A4: .word 0x000003E7
 _020451A8: .word _0209CBA8
 _020451AC: .word TEAM_MEMBER_TABLE_PTR
@@ -69353,7 +70723,7 @@ _020453C0:
 	mvn r0, #0
 	ldmia sp!, {r4, pc}
 _020453C8:
-	ldr r0, _020453F4 ; =ov29_02353538
+	ldr r0, _020453F4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
@@ -69366,7 +70736,7 @@ _020453EC:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020453F4: .word ov29_02353538
+_020453F4: .word DUNGEON_PTR
 	arm_func_end sub_02045360
 
 	arm_func_start sub_020453F8
@@ -69476,7 +70846,7 @@ _02045558:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02045A14
 _02045584:
 	mov r0, #2
@@ -69485,7 +70855,7 @@ _02045584:
 	ldr r0, _02045A1C ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02045A1C ; =_020AFED4
 	mov r3, #2
 	ldr r1, [r0]
@@ -69495,7 +70865,7 @@ _02045584:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02045A14
 _020455CC:
 	ldr r1, _02045A28 ; =0x000002CE
@@ -69589,7 +70959,7 @@ _02045688:
 	ldr r0, _02045A1C ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02045A1C ; =_020AFED4
 	mov r4, #0x11
 	ldr r3, [r0]
@@ -69599,7 +70969,7 @@ _02045688:
 	add r2, r4, #0x2c0
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02045A14
 _02045764:
 	mov r4, #3
@@ -69610,7 +70980,7 @@ _02045764:
 	ldr r3, _02045A40 ; =_0209CC48
 	add r2, sp, #0x64
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02045A1C ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -69649,12 +71019,16 @@ _02045798:
 	add r4, r4, #0x300
 	str ip, [sp]
 	ldrsh r4, [r4, #0x88]
+#ifdef EUROPE
+	add r4, r4, #0xd3
+#else
 	add r4, r4, #0xd1
+#endif
 	add r4, r4, #0x2900
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, ip}
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _02045A1C ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x17]
@@ -69701,7 +71075,7 @@ _020458C0:
 	ldr r0, _02045A1C ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02045A1C ; =_020AFED4
 	mov r3, #7
 	ldr r1, [r0]
@@ -69711,7 +71085,7 @@ _020458C0:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02045A14
 _02045914:
 	mov r4, #3
@@ -69722,7 +71096,7 @@ _02045914:
 	ldr r3, _02045A40 ; =_0209CC48
 	add r2, sp, #0xfc
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02045A1C ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -69739,14 +71113,14 @@ _02045958:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02045A1C ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045A14
 _02045984:
 	ldrsb r0, [r4, #0x14]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02045A1C ; =_020AFED4
 	mvn r1, #1
 	ldr r0, [r0]
@@ -69782,7 +71156,7 @@ _020459E0:
 	mov r2, #0x2d0
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _02045A14:
 	add sp, sp, #0x194
 	ldmia sp!, {r4, r5, pc}
@@ -69846,7 +71220,7 @@ _02045ACC:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02045F88
 _02045AF8:
 	mov r0, #2
@@ -69855,7 +71229,7 @@ _02045AF8:
 	ldr r0, _02045F90 ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02045F90 ; =_020AFED4
 	mov r3, #2
 	ldr r1, [r0]
@@ -69865,7 +71239,7 @@ _02045AF8:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02045F88
 _02045B40:
 	ldr r1, _02045F9C ; =0x000002CE
@@ -69959,7 +71333,7 @@ _02045BFC:
 	ldr r0, _02045F90 ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02045F90 ; =_020AFED4
 	mov r4, #0x11
 	ldr r3, [r0]
@@ -69969,7 +71343,7 @@ _02045BFC:
 	add r2, r4, #0x2c0
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02045F88
 _02045CD8:
 	mov r4, #3
@@ -69980,7 +71354,7 @@ _02045CD8:
 	ldr r3, _02045FB4 ; =_0209CC48
 	add r2, sp, #0xac
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02045F90 ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -70019,12 +71393,16 @@ _02045D0C:
 	add r4, r4, #0x300
 	str ip, [sp]
 	ldrsh r4, [r4, #0x88]
+#ifdef EUROPE
+	add r4, r4, #0xd3
+#else
 	add r4, r4, #0xd1
+#endif
 	add r4, r4, #0x2900
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, ip}
-	bl sub_0202E3CC
+	bl CreateScrollBox1
 	ldr r1, _02045F90 ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x17]
@@ -70071,7 +71449,7 @@ _02045E34:
 	ldr r0, _02045F90 ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02045F90 ; =_020AFED4
 	mov r3, #7
 	ldr r1, [r0]
@@ -70081,7 +71459,7 @@ _02045E34:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	b _02045F88
 _02045E88:
 	mov r4, #3
@@ -70092,7 +71470,7 @@ _02045E88:
 	ldr r3, _02045FB4 ; =_0209CC48
 	add r2, sp, #0x14
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02045F90 ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -70109,14 +71487,14 @@ _02045ECC:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateNormalMenu
+	bl CreateSimpleMenuWrapper
 	ldr r1, _02045F90 ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045F88
 _02045EF8:
 	ldrsb r0, [r4, #0x14]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02045F90 ; =_020AFED4
 	mvn r1, #1
 	ldr r0, [r0]
@@ -70152,7 +71530,7 @@ _02045F54:
 	mov r2, #0x2d0
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 _02045F88:
 	add sp, sp, #0x194
 	ldmia sp!, {r4, r5, pc}
@@ -70248,7 +71626,7 @@ _02046074: ; jump table
 	b _020464CC ; case 18
 _020460C0:
 	ldrsb r0, [r2, #0x16]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	ldrne r1, _020465D8 ; =_020AFED4
 	ldrne r1, [r1]
@@ -70272,7 +71650,7 @@ _02046104:
 	b _0204653C
 _02046114:
 	ldrsb r0, [r2, #0x16]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	ldrne r1, _020465D8 ; =_020AFED4
 	ldrne r1, [r1]
@@ -70296,7 +71674,7 @@ _02046158:
 	b _0204653C
 _02046168:
 	ldrsb r0, [r2, #0x16]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #1
 	ldrne r1, _020465D8 ; =_020AFED4
 	ldrne r1, [r1]
@@ -70361,7 +71739,7 @@ _02046234:
 	tst r0, #8
 	beq _020462F4
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r1, _020465D8 ; =_020AFED4
 	mov r0, r4
 	ldr r1, [r1]
@@ -70453,7 +71831,7 @@ _02046394:
 	b _0204653C
 _020463B4:
 	ldrsb r0, [r2, #0x16]
-	bl GetNormalMenuResult
+	bl GetSimpleMenuResult
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
 	b _0204653C
@@ -70532,13 +71910,13 @@ _020464C4:
 	b _02046540
 _020464CC:
 	ldrsb r0, [r2, #0x14]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0204653C
 	ldr r0, _020465D8 ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _020465D8 ; =_020AFED4
 	mov r2, #0x14
 	ldr r1, [r0]
@@ -70549,13 +71927,13 @@ _020464CC:
 	b _0204653C
 _0204650C:
 	ldrsb r0, [r2, #0x14]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0204653C
 	ldr r0, _020465D8 ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _020465D8 ; =_020AFED4
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
@@ -70591,7 +71969,7 @@ _02046590:
 	ldrsb r0, [r0, #0x14]
 	cmp r0, r1
 	beq _020465CC
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _020465D8 ; =_020AFED4
 	mvn r1, #1
 	ldr r0, [r0]
@@ -70622,7 +72000,7 @@ sub_020465DC: ; 0x020465DC
 	ldr r0, _02046620 ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x16]
-	bl FreeNormalMenu
+	bl FreeSimpleMenu
 	ldr r0, _02046620 ; =_020AFED4
 	mvn r1, #1
 	ldr r0, [r0]
@@ -70642,7 +72020,7 @@ sub_02046624: ; 0x02046624
 	cmp r1, r0
 	ldmneia sp!, {r3, pc}
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02046658 ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x14]
@@ -70705,7 +72083,7 @@ _020466D0:
 	ldr r3, _0204673C ; =sub_02046798
 	add r2, sp, #8
 	str ip, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	ldr r1, _0204672C ; =_020AFED8
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -70729,11 +72107,11 @@ sub_02046740: ; 0x02046740
 	cmp r1, r0
 	blt _02046768
 	mov r0, #0x14
-	bl sub_02017B58
+	bl PlayBgmByIdVeneer
 	ldmia sp!, {r3, pc}
 _02046768:
 	mov r0, #0x13
-	bl sub_02017B58
+	bl PlayBgmByIdVeneer
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02046774: .word _020AFED8
@@ -70827,7 +72205,7 @@ sub_0204682C: ; 0x0204682C
 	ldr r1, [r2]
 	mov r0, #0
 	strh r3, [r1, #8]
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02046890 ; =_020AFEDC
 	mov r2, #0
 	ldr r3, [r1]
@@ -70849,7 +72227,7 @@ sub_02046898: ; 0x02046898
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _020468D0 ; =_020AFEDC
 	ldr r0, [r0]
 	bl MemFree
@@ -70880,7 +72258,7 @@ _02046900:
 	ldrh r2, [r2, #8]
 	ldr r1, _020469B8 ; =0x00000618
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _020469B4 ; =_020AFEDC
 	mov r1, #1
 	ldr r0, [r0]
@@ -70888,7 +72266,7 @@ _02046900:
 	b _020469AC
 _02046928:
 	ldrsb r0, [r2]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _020469AC
 	ldr r0, _020469B4 ; =_020AFEDC
@@ -70902,7 +72280,7 @@ _02046928:
 	b _020469AC
 _0204695C:
 	ldrsb r0, [r2]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	ldreq r0, _020469B4 ; =_020AFEDC
 	moveq r1, #3
@@ -71488,7 +72866,7 @@ sub_0204707C: ; 0x0204707C
 	bl MemZero
 	mov r0, r6
 	mov r1, r5
-	bl sub_0202F8C4
+	bl CreateTextBox1
 	strb r0, [r4]
 	mov r0, #3
 	str r0, [r4, #8]
@@ -71614,7 +72992,7 @@ _0204721C: .word _020AFEE4
 sub_02047220: ; 0x02047220
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02047240 ; =_020AFEE4
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -71639,14 +73017,14 @@ sub_02047244: ; 0x02047244
 	ldr r0, _020472A0 ; =_020AFEE4
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _020472A0 ; =_020AFEE4
 	mov r3, r4
 	ldr r2, [r0]
 	ldrsb r0, [r2]
 	ldrh r1, [r2, #0x68]
 	ldrh r2, [r2, #0x14]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -71663,7 +73041,7 @@ sub_020472A4: ; 0x020472A4
 	cmp r0, #1
 	bne _020472D4
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _020472EC ; =_020AFEE4
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -71695,14 +73073,14 @@ sub_020472F0: ; 0x020472F0
 	ldr r0, _02047354 ; =_020AFEE4
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl ShowDBox
+	bl ShowDialogueBox
 	ldr r0, _02047354 ; =_020AFEE4
 	mov r2, r5
 	ldr r1, [r0]
 	mov r3, r4
 	ldrsb r0, [r1]
 	ldrh r1, [r1, #0x68]
-	bl ShowStringInDBox
+	bl ShowStringInDialogueBox
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -71719,7 +73097,7 @@ sub_02047358: ; 0x02047358
 	cmp r0, #1
 	bne _02047388
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _020473A0 ; =_020AFEE4
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -71751,7 +73129,7 @@ sub_020473A4: ; 0x020473A4
 	ldr r0, _020473F8 ; =_020AFEE4
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _020473F8 ; =_020AFEE4
 	mvn r1, #1
 	ldr r0, [r0]
@@ -71772,7 +73150,7 @@ sub_020473FC: ; 0x020473FC
 	cmp r0, r1
 	moveq r0, #1
 	ldmeqia sp!, {r4, pc}
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	movne r0, #4
 	bne _02047440
@@ -72081,7 +73459,7 @@ sub_02047760: ; 0x02047760
 	mov r0, lr
 	add r2, r2, #0x1c00
 	str ip, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	add r1, r4, #0x100
 	strb r0, [r4, #0x120]
 	ldrsb r0, [r1, #0x20]
@@ -72119,7 +73497,7 @@ _02047850:
 	mov r0, ip
 	add r2, r2, #0x1c00
 	str r1, [sp, #4]
-	bl sub_020305B4
+	bl CreateAdvancedTextBox1
 	strb r0, [r4, #0x120]
 	add r0, r4, #0x1f00
 	mov r1, #8
@@ -72444,7 +73822,7 @@ _02047CB8:
 	beq _02047D0C
 _02047CF0:
 	mov r0, #1
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #3
 	str r0, [r5, #0x11c]
 	mov r0, #1
@@ -72478,7 +73856,7 @@ _02047D34:
 	b _02047D74
 _02047D6C:
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02047D74:
 	mov r6, #1
 	b _02047DC4
@@ -72500,7 +73878,7 @@ _02047D8C:
 	strgth r3, [r1, #0x74]
 	bgt _02047DC0
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02047DC0:
 	mov r6, #1
 _02047DC4:
@@ -72570,7 +73948,7 @@ _02047EAC:
 	mov r1, #3
 	mov r0, #1
 	str r1, [r5, #0x11c]
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	b _02047EE4
 _02047EC0:
 	mov r0, #4
@@ -74200,11 +75578,26 @@ _020492B4:
 	ldrne r0, _02049330 ; =_020AFF40
 	movne r1, #4
 	strne r1, [r0, #4]
+#ifdef EUROPE
+	bne _02049310
+	ldr r1, [r4, #0x2c]
+	ldr r0, _02049330 ; =_020AFF40
+	mov r2, #0
+	stmia r0, {r1, r2}
+	ldr r1, [r4, #0x28]
+	sub r0, r2, #1
+	cmp r1, r0
+	beq _02049310
+	ldrsb r0, [r4, #0x34]
+	bl sub_020205C0
+	bl sub_0202059C
+#else
 	ldreq r2, [r4, #0x2c]
 	ldreq r0, _02049330 ; =_020AFF40
 	moveq r1, #0
 	streq r2, [r0]
 	streq r1, [r0, #4]
+#endif
 _02049310:
 	mov r0, r4
 	bl MemFree
@@ -74485,7 +75878,7 @@ sub_02049684: ; 0x02049684
 	ldr r1, [r2]
 	mov r0, #0
 	str r3, [r1, #8]
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _020496EC ; =_020AFF4C
 	mov r3, #0
 	ldr r2, [r1]
@@ -74508,7 +75901,7 @@ sub_020496F4: ; 0x020496F4
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0204972C ; =_020AFF4C
 	ldr r0, [r0]
 	bl MemFree
@@ -74547,7 +75940,7 @@ _02049770:
 	ldrh r2, [r1, r2]
 	ldr r1, _02049A20 ; =0x00000408
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02049A18 ; =_020AFF4C
 	mov r1, #1
 	ldr r0, [r0]
@@ -74555,7 +75948,7 @@ _02049770:
 	b _02049A10
 _020497A4:
 	ldrsb r0, [r3]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	ldreq r0, _02049A18 ; =_020AFF4C
 	moveq r1, #2
@@ -74644,7 +76037,7 @@ _020498C8:
 	ldr r1, _02049A30 ; =0x0000040C
 	mov r2, #0x238
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02049A18 ; =_020AFF4C
 	mov r1, #8
 	ldr r0, [r0]
@@ -74660,7 +76053,7 @@ _02049908:
 	ldrh r2, [r1, r2]
 	ldr r1, _02049A38 ; =0x0000061C
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02049A18 ; =_020AFF4C
 	mov r1, #5
 	ldr r0, [r0]
@@ -74671,7 +76064,7 @@ _02049944:
 	ldr r1, _02049A38 ; =0x0000061C
 	ldr r2, _02049A3C ; =0x00000239
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02049A18 ; =_020AFF4C
 	mov r1, #5
 	ldr r0, [r0]
@@ -74679,7 +76072,7 @@ _02049944:
 	b _02049A10
 _0204996C:
 	ldrsb r0, [r3]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02049A10
 	ldr r0, _02049A18 ; =_020AFF4C
@@ -74693,7 +76086,7 @@ _0204996C:
 	b _02049A10
 _020499A0:
 	ldrsb r0, [r3]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02049A10
 	ldr r0, _02049A18 ; =_020AFF4C
@@ -74719,7 +76112,7 @@ _020499F4:
 	ldmia sp!, {r3, pc}
 _020499FC:
 	ldrsb r0, [r3]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02049A10
 	bl CardBackupError
@@ -74771,7 +76164,7 @@ sub_02049A74: ; 0x02049A74
 	ldr r1, [r1]
 	str r0, [r1, #0xc]
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02049ACC ; =_020AFF54
 	mov r3, #0
 	ldr r2, [r1]
@@ -74793,7 +76186,7 @@ sub_02049AD0: ; 0x02049AD0
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02049B08 ; =_020AFF54
 	ldr r0, [r0]
 	bl MemFree
@@ -74829,7 +76222,7 @@ _02049B4C:
 	ldr r1, _02049D38 ; =0x00000408
 	ldr r2, _02049D3C ; =0x0000024F
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02049D34 ; =_020AFF54
 	mov r1, #1
 	ldr r0, [r0]
@@ -74837,7 +76230,7 @@ _02049B4C:
 	b _02049D2C
 _02049B74:
 	ldrsb r0, [r2]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	ldreq r0, _02049D34 ; =_020AFF54
 	moveq r1, #2
@@ -74879,7 +76272,7 @@ _02049BEC:
 	ldrsb r0, [r1]
 	ldr r1, _02049D40 ; =0x0000040C
 	mov r2, #0x238
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02049D34 ; =_020AFF54
 	mov r1, #8
 	ldr r0, [r0]
@@ -74891,7 +76284,7 @@ _02049C2C:
 	ldr r1, _02049D44 ; =0x0000061C
 	bne _02049C58
 	mov r2, #0x250
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02049D34 ; =_020AFF54
 	mov r1, #5
 	ldr r0, [r0]
@@ -74899,7 +76292,7 @@ _02049C2C:
 	b _02049D2C
 _02049C58:
 	ldr r2, _02049D48 ; =0x0000023A
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _02049D34 ; =_020AFF54
 	mov r1, #5
 	ldr r0, [r0]
@@ -74907,7 +76300,7 @@ _02049C58:
 	b _02049D2C
 _02049C74:
 	ldrsb r0, [r2]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02049D2C
 	ldr r0, _02049D34 ; =_020AFF54
@@ -74921,7 +76314,7 @@ _02049C74:
 	b _02049D2C
 _02049CA8:
 	ldrsb r0, [r2]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02049D2C
 	ldr r0, _02049D34 ; =_020AFF54
@@ -74952,7 +76345,7 @@ _02049D10:
 	ldmia sp!, {r3, pc}
 _02049D18:
 	ldrsb r0, [r2]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02049D2C
 	bl CardBackupError
@@ -75005,7 +76398,7 @@ sub_02049D84: ; 0x02049D84
 	ldr r1, [r2, #4]
 	mov r0, #0
 	str r3, [r1, #8]
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r1, _02049DEC ; =_020AFF5C
 	mov r3, #0
 	ldr r2, [r1, #4]
@@ -75028,7 +76421,7 @@ sub_02049DF4: ; 0x02049DF4
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _02049E2C ; =_020AFF5C
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -75066,7 +76459,7 @@ _02049E6C:
 	ldrh r2, [r1, r2]
 	ldr r1, _0204A00C ; =0x00000408
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _0204A004 ; =_020AFF5C
 	mov r1, #1
 	ldr r0, [r0, #4]
@@ -75074,7 +76467,7 @@ _02049E6C:
 	b _02049FFC
 _02049EA0:
 	ldrsb r0, [r3]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	ldreq r0, _0204A004 ; =_020AFF5C
 	moveq r1, #2
@@ -75124,7 +76517,7 @@ _02049F2C:
 	mov r3, r3, lsl #1
 	ldrh r2, [r2, r3]
 	mov r3, #0
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	ldr r0, _0204A004 ; =_020AFF5C
 	mov r1, #5
 	ldr r0, [r0, #4]
@@ -75132,7 +76525,7 @@ _02049F2C:
 	b _02049FFC
 _02049F6C:
 	ldrsb r0, [r3]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02049FFC
 	ldr r0, _0204A004 ; =_020AFF5C
@@ -75146,7 +76539,7 @@ _02049F6C:
 	b _02049FFC
 _02049FA0:
 	ldrsb r0, [r3]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _02049FFC
 	ldr r0, _0204A004 ; =_020AFF5C
@@ -75200,7 +76593,7 @@ sub_0204A02C: ; 0x0204A02C
 	ldr r1, _0204A078 ; =_020AFF64
 	str r0, [r1]
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r3, _0204A078 ; =_020AFF64
 	ldr r1, _0204A07C ; =0x00000408
 	ldr ip, [r3]
@@ -75209,7 +76602,7 @@ sub_0204A02C: ; 0x0204A02C
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -75225,7 +76618,7 @@ sub_0204A080: ; 0x0204A080
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0204A0B8 ; =_020AFF64
 	ldr r0, [r0]
 	bl MemFree
@@ -75243,7 +76636,7 @@ sub_0204A0BC: ; 0x0204A0BC
 	ldr r0, _0204A0E4 ; =_020AFF64
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl IsDBoxActive
+	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0204A0DC
 	bl CardBackupError
@@ -75273,7 +76666,7 @@ sub_0204A0FC: ; 0x0204A0FC
 	ldr r1, _0204A148 ; =_020AFF68
 	str r0, [r1]
 	mov r0, #0
-	bl CreateDBox
+	bl CreateDialogueBox
 	ldr r3, _0204A148 ; =_020AFF68
 	ldr r1, _0204A14C ; =0x00000408
 	ldr ip, [r3]
@@ -75282,7 +76675,7 @@ sub_0204A0FC: ; 0x0204A0FC
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0]
-	bl ShowMessageInDBox
+	bl ShowMessageInDialogueBox
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -75299,7 +76692,7 @@ sub_0204A154: ; 0x0204A154
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDBox
+	bl FreeDialogueBox
 	ldr r0, _0204A18C ; =_020AFF68
 	ldr r0, [r0]
 	bl MemFree
@@ -76522,7 +77915,11 @@ _0204B0C4:
 	mov sl, #0
 	ldr r7, _0204B300 ; =0x00000137
 	mov sb, sl
+#ifdef EUROPE
+	sub r4, r7, #0x144
+#else
 	sub r4, r7, #0x138
+#endif
 	mov r8, #0x21
 	mov r6, sl
 	mov r5, #0x22
@@ -76651,7 +78048,11 @@ _0204B118:
 	.align 2, 0
 _0204B2F8: .word _022AB0AC
 _0204B2FC: .word SCRIPT_VARS
+#ifdef EUROPE
+_0204B300: .word 0x00000143
+#else
 _0204B300: .word 0x00000137
+#endif
 	arm_func_end InitScriptVariableValues
 
 	arm_func_start InitEventFlagScriptVars
@@ -76707,7 +78108,11 @@ InitEventFlagScriptVars: ; 0x0204B304
 	bl SaveScriptVariableValue
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef EUROPE
+_0204B3CC: .word 0x00000143
+#else
 _0204B3CC: .word 0x00000137
+#endif
 	arm_func_end InitEventFlagScriptVars
 
 	arm_func_start sub_0204B3D0
@@ -82036,13 +83441,22 @@ _0204F734:
 	mov r4, r0, lsr #0x10
 	b _0204F770
 _0204F74C:
+#ifdef EUROPE
+	add r0, r0, #0xbe
+	add r0, r0, #0x4300
+#else
 	add r0, r0, #0x3bc
 	add r0, r0, #0x4000
+#endif
 	mov r0, r0, lsl #0x10
 	mov r4, r0, lsr #0x10
 	b _0204F770
 _0204F760:
+#ifdef EUROPE
+	add r0, r0, #0xbd
+#else
 	add r0, r0, #0xbb
+#endif
 	add r0, r0, #0x4200
 	mov r0, r0, lsl #0x10
 	mov r4, r0, lsr #0x10
@@ -82230,14 +83644,24 @@ _0204F980:
 	ldreq r0, _0204F9B4 ; =0x000042BA
 	ldmeqia sp!, {r4, pc}
 _0204F99C:
+#ifdef EUROPE
+	add r0, r4, #0xba
+	add r0, r0, #0x4100
+#else
 	add r0, r4, #0x1b8
 	add r0, r0, #0x4000
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef EUROPE
+_0204F9B0: .word 0x000042BB
+_0204F9B4: .word 0x000042BC
+#else
 _0204F9B0: .word 0x000042B9
 _0204F9B4: .word 0x000042BA
+#endif
 	arm_func_end GetGroundNameId
 
 	arm_func_start sub_0204F9B8
@@ -83495,8 +84919,13 @@ _02050918: .word ADVENTURE_LOG_PTR
 
 	arm_func_start GetAbilityString
 GetAbilityString: ; 0x0205091C
+#ifdef EUROPE
+	add r1, r1, #0x5e0
+	add r1, r1, #0x3000
+#else
 	add r1, r1, #0xde
 	add r1, r1, #0x3500
+#endif
 	mov r1, r1, lsl #0x10
 	ldr ip, _02050938 ; =CopyNStringFromMessageId
 	mov r1, r1, lsr #0x10
@@ -83508,8 +84937,13 @@ _02050938: .word CopyNStringFromMessageId
 
 	arm_func_start GetAbilityDescStringId
 GetAbilityDescStringId: ; 0x0205093C
+#ifdef EUROPE
+	add r0, r0, #0x25c
+	add r0, r0, #0x3400
+#else
 	add r0, r0, #0x5a
 	add r0, r0, #0x3600
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bx lr
@@ -83517,7 +84951,11 @@ GetAbilityDescStringId: ; 0x0205093C
 
 	arm_func_start GetTypeStringId
 GetTypeStringId: ; 0x02050950
+#ifdef EUROPE
+	add r0, r0, #0xcd
+#else
 	add r0, r0, #0xcb
+#endif
 	add r0, r0, #0x3500
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -83933,13 +85371,13 @@ sub_02050E18: ; 0x02050E18
 	mov r1, #0
 	strb r1, [r0, #4]
 	ldr r2, [r0]
-	ldr r1, _02050E50 ; =_022550FF
+	ldr r1, _02050E50 ; =0x022550FF
 	cmp r2, r1
 	addlo r1, r2, #1
 	strlo r1, [r0]
 	bx lr
 	.align 2, 0
-_02050E50: .word _022550FF
+_02050E50: .word 0x022550FF
 	arm_func_end sub_02050E18
 
 	arm_func_start sub_02050E54
@@ -85666,7 +87104,11 @@ LoadMonsterMd: ; 0x02052358
 	bl LoadM2nAndN2m
 	ldr r0, _02052390 ; =_020B09B4
 	ldr r1, [r0, #0xc]
+#ifdef EUROPE
+	str r1, [r0, #8]
+#else
 	str r1, [r0, #4]
+#endif
 	add r1, r1, #8
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
@@ -85683,7 +87125,11 @@ GetNameRaw: ; 0x02052394
 	mov r0, r1
 	mov r1, #0x258
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x21
+#else
 	add r0, r1, #0x1f
+#endif
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85703,7 +87149,11 @@ GetName: ; 0x020523D0
 	mov r1, #0x258
 	mov r4, r2
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x21
+#else
 	add r0, r1, #0x1f
+#endif
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85742,7 +87192,11 @@ GetNameWithGender: ; 0x02052440
 	mov r1, #0x258
 	mov r4, r2
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x21
+#else
 	add r0, r1, #0x1f
+#endif
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85892,7 +87346,11 @@ _02052684:
 	mov r0, r4
 	mov r1, #0x258
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x21
+#else
 	add r0, r1, #0x1f
+#endif
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85903,7 +87361,11 @@ _02052684:
 	bl SprintfStatic__02052418
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef EUROPE
+_020526B8: .word 0x000022EA
+#else
 _020526B8: .word 0x000022E8
+#endif
 _020526BC: .word UNOWN_SPECIES_ADDITIONAL_CHAR_PTR_TABLE
 _020526C0: .word _020A31F4
 _020526C4: .word _020A31FC
@@ -85914,7 +87376,11 @@ GetNameString: ; 0x020526C8
 	stmdb sp!, {r3, lr}
 	mov r1, #0x258
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x21
+#else
 	add r0, r1, #0x1f
+#endif
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -85979,7 +87445,11 @@ GetCategoryString: ; 0x0205275C
 	mov r0, r5
 	mov r1, #0x258
 	bl __divsi3
+#ifdef EUROPE
+	add r0, r1, #0x79
+#else
 	add r0, r1, #0x77
+#endif
 	add r0, r0, #0x2400
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -86416,33 +87886,77 @@ _02052BD0: .word _020B09B4
 	arm_func_start LoadM2nAndN2m
 LoadM2nAndN2m: ; 0x02052BD4
 	stmdb sp!, {r3, lr}
+#ifdef EUROPE
+	sub sp, sp, #0x100
+#endif
 	ldr r0, _02052C2C ; =_020B09C8
 	bl PointsToZero
 	cmp r0, #0
 	beq _02052C00
+#ifdef EUROPE
+	bl GetLanguage
+	mov r2, r0
+	ldr r1, _02052FA8 ; =_020B12F4_EU
+	add r0, sp, #0
+	ldr r2, [r1, r2, lsl #2]
+	ldr r1, _02052FAC ; =_020A3210
+	bl SprintfStatic__02052418
+#endif
 	ldr r0, _02052C2C ; =_020B09C8
 	bl ZInit8
 	ldr r0, _02052C2C ; =_020B09C8
+#ifdef EUROPE
+	add r1, sp, #0
+#else
 	ldr r1, _02052C30 ; =_020A3210
+#endif
 	mov r2, #0
 	bl LoadFileFromRom
 _02052C00:
 	ldr r0, _02052C34 ; =_020B09D0
 	bl PointsToZero
 	cmp r0, #0
+#ifdef EUROPE
+	beq _02052F9C
+	bl GetLanguage
+	mov r2, r0
+	ldr r1, _02052FB4 ; =_020B1308_EU
+	add r0, sp, #0
+	ldr r2, [r1, r2, lsl #2]
+	ldr r1, _02052FAC ; =_020A3210
+	bl SprintfStatic__02052418
+#else
 	ldmeqia sp!, {r3, pc}
+#endif
 	ldr r0, _02052C34 ; =_020B09D0
 	bl ZInit8
 	ldr r0, _02052C34 ; =_020B09D0
+#ifdef EUROPE
+	add r1, sp, #0
+#else
 	ldr r1, _02052C38 ; =_020A322C
+#endif
 	mov r2, #0
 	bl LoadFileFromRom
+#ifdef EUROPE
+_02052F9C:
+	add sp, sp, #0x100
+#endif
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02052C2C: .word _020B09C8
+#ifdef EUROPE
+_02052FA8: .word _020B12F4_EU
+_02052FAC: .word _020A3210
+#else
 _02052C30: .word _020A3210
+#endif
 _02052C34: .word _020B09D0
+#ifdef EUROPE
+_02052FB4: .word _020B1308_EU
+#else
 _02052C38: .word _020A322C
+#endif
 	arm_func_end LoadM2nAndN2m
 
 	arm_func_start sub_02052C3C
@@ -90658,8 +92172,8 @@ _020561D8:
 _02056224: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end RemoveActiveMembersFromRescueTeam
 
-	arm_func_start CheckTeamMemberIdx
-CheckTeamMemberIdx: ; 0x02056228
+	arm_func_start sub_02056228
+sub_02056228: ; 0x02056228
 	ldr r1, _0205625C ; =0x000055AA
 	cmp r0, r1
 	moveq r0, #1
@@ -90676,10 +92190,10 @@ CheckTeamMemberIdx: ; 0x02056228
 	.align 2, 0
 _0205625C: .word 0x000055AA
 _02056260: .word 0x00005AA5
-	arm_func_end CheckTeamMemberIdx
+	arm_func_end sub_02056228
 
-	arm_func_start sub_02056264
-sub_02056264: ; 0x02056264
+	arm_func_start CheckTeamMemberIdx
+CheckTeamMemberIdx: ; 0x02056264
 	ldr r1, _0205628C ; =0x000055AA
 	cmp r0, r1
 	moveq r0, #1
@@ -90693,7 +92207,7 @@ sub_02056264: ; 0x02056264
 	.align 2, 0
 _0205628C: .word 0x000055AA
 _02056290: .word 0x00005AA5
-	arm_func_end sub_02056264
+	arm_func_end CheckTeamMemberIdx
 
 	arm_func_start IsMonsterIdInNormalRange
 IsMonsterIdInNormalRange: ; 0x02056294
@@ -92622,7 +94136,7 @@ _02057B50:
 	tst r0, #0xff
 	beq _02057C14
 	ldrsh r0, [r8, #8]
-	bl sub_02056264
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	bne _02057C14
 	ldrsh r0, [r8, #0xc]
@@ -92880,7 +94394,7 @@ _02057EB4:
 	tst r0, #0xff
 	beq _02057EDC
 	ldrsh r0, [r8, #8]
-	bl sub_02056264
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	strneb r5, [r8]
 _02057EDC:
@@ -92948,7 +94462,7 @@ _02057F90:
 	and r1, r2, #0xff
 	orr r1, r1, #1
 	strb r1, [r7]
-	bl sub_02056264
+	bl CheckTeamMemberIdx
 	cmp r0, #0
 	mov r0, sb
 	mov r1, #0
@@ -93480,7 +94994,7 @@ sub_02058674: ; 0x02058674
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl CheckTeamMemberIdx
+	bl sub_02056228
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -93889,7 +95403,11 @@ _02058C18: .word _020AFC4C
 
 	arm_func_start GetIqSkillStringId
 GetIqSkillStringId: ; 0x02058C1C
+#ifdef EUROPE
+	add r0, r0, #0xe7
+#else
 	add r0, r0, #0xe5
+#endif
 	add r0, r0, #0x2600
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -97001,7 +98519,11 @@ _0205B680:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0205B688: .word _020A3678
+#ifdef EUROPE
+_0205B68C: .word 0x000038CB
+#else
 _0205B68C: .word 0x000038C9
+#endif
 	arm_func_end sub_0205B5A8
 
 	arm_func_start sub_0205B690
@@ -103654,13 +105176,24 @@ _02060DE4:
 _02060DF4: .word _020A4654
 _02060DF8: .word _020A4664
 _02060DFC: .word REMOTE_STRING_PTR_TABLE
+#ifdef EUROPE
+_02060E00: .word 0x000038CB
+_02060E04: .word 0x000038CD
+_02060E08: .word 0x000038CE
+_02060E0C: .word 0x000038CC
+#else
 _02060E00: .word 0x000038C9
 _02060E04: .word 0x000038CB
 _02060E08: .word 0x000038CC
 _02060E0C: .word 0x000038CA
+#endif
 _02060E10: .word _020A4644
 _02060E14: .word _020A4674
+#ifdef EUROPE
+_02060E18: .word 0x00003C2C
+#else
 _02060E18: .word 0x00003C2A
+#endif
 _02060E1C: .word _020A4678
 _02060E20: .word RANK_STRING_PTR_TABLE
 	arm_func_end sub_02060AFC
@@ -103703,7 +105236,11 @@ _02060EA0: .word _020A4654
 _02060EA4: .word _020A4664
 _02060EA8: .word REMOTE_STRING_PTR_TABLE
 _02060EAC: .word _020A4644
+#ifdef EUROPE
+_02060EB0: .word 0x00003C4F
+#else
 _02060EB0: .word 0x00003C4D
+#endif
 	arm_func_end sub_02060E24
 
 	arm_func_start sub_02060EB4
@@ -104615,42 +106152,47 @@ _02061BA4:
 	add sp, sp, #0x14c
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02061BD0: .word 0x000038C9
-_02061BD4: .word 0x000038CB
-_02061BD8: .word 0x000038CC
-_02061BDC: .word 0x000038CA
-_02061BE0: .word 0x00003C1E
-_02061BE4: .word 0x000038CE
-_02061BE8: .word 0x000038CF
-_02061BEC: .word 0x000038CD
-_02061BF0: .word 0x00003C21
-_02061BF4: .word 0x00003C20
-_02061BF8: .word 0x00003C1F
+#ifdef EUROPE
+#define SUB_02060FD8_OFFSET 2
+#else
+#define SUB_02060FD8_OFFSET 0
+#endif
+_02061BD0: .word 0x000038C9 + SUB_02060FD8_OFFSET
+_02061BD4: .word 0x000038CB + SUB_02060FD8_OFFSET
+_02061BD8: .word 0x000038CC + SUB_02060FD8_OFFSET
+_02061BDC: .word 0x000038CA + SUB_02060FD8_OFFSET
+_02061BE0: .word 0x00003C1E + SUB_02060FD8_OFFSET
+_02061BE4: .word 0x000038CE + SUB_02060FD8_OFFSET
+_02061BE8: .word 0x000038CF + SUB_02060FD8_OFFSET
+_02061BEC: .word 0x000038CD + SUB_02060FD8_OFFSET
+_02061BF0: .word 0x00003C21 + SUB_02060FD8_OFFSET
+_02061BF4: .word 0x00003C20 + SUB_02060FD8_OFFSET
+_02061BF8: .word 0x00003C1F + SUB_02060FD8_OFFSET
 _02061BFC: .word _020A4688
-_02061C00: .word 0x00003C37
+_02061C00: .word 0x00003C37 + SUB_02060FD8_OFFSET
 _02061C04: .word _020A4698
 _02061C08: .word MISSION_MENU_STRING_IDS_1
 _02061C0C: .word _020A46A8
-_02061C10: .word 0x00003C22
-_02061C14: .word 0x00003C23
-_02061C18: .word 0x00003C24
-_02061C1C: .word 0x00003C26
-_02061C20: .word 0x00003C25
-_02061C24: .word 0x00003C27
-_02061C28: .word 0x00003C28
-_02061C2C: .word 0x00003C2A
+_02061C10: .word 0x00003C22 + SUB_02060FD8_OFFSET
+_02061C14: .word 0x00003C23 + SUB_02060FD8_OFFSET
+_02061C18: .word 0x00003C24 + SUB_02060FD8_OFFSET
+_02061C1C: .word 0x00003C26 + SUB_02060FD8_OFFSET
+_02061C20: .word 0x00003C25 + SUB_02060FD8_OFFSET
+_02061C24: .word 0x00003C27 + SUB_02060FD8_OFFSET
+_02061C28: .word 0x00003C28 + SUB_02060FD8_OFFSET
+_02061C2C: .word 0x00003C2A + SUB_02060FD8_OFFSET
 _02061C30: .word MISSION_RANK_POINTS
 _02061C34: .word RANK_STRING_PTR_TABLE
-_02061C38: .word 0x00003C29
-_02061C3C: .word 0x00003C2C
-_02061C40: .word 0x00003C2B
+_02061C38: .word 0x00003C29 + SUB_02060FD8_OFFSET
+_02061C3C: .word 0x00003C2C + SUB_02060FD8_OFFSET
+_02061C40: .word 0x00003C2B + SUB_02060FD8_OFFSET
 _02061C44: .word MISSION_MENU_STRING_IDS_2
-_02061C48: .word 0x000038DF
-_02061C4C: .word 0x00003C2D
+_02061C48: .word 0x000038DF + SUB_02060FD8_OFFSET
+_02061C4C: .word 0x00003C2D + SUB_02060FD8_OFFSET
 _02061C50: .word _020A3CBC
-_02061C54: .word 0x00003C2E
-_02061C58: .word 0x00003C2F
-_02061C5C: .word 0x00003C30
+_02061C54: .word 0x00003C2E + SUB_02060FD8_OFFSET
+_02061C58: .word 0x00003C2F + SUB_02060FD8_OFFSET
+_02061C5C: .word 0x00003C30 + SUB_02060FD8_OFFSET
 	arm_func_end sub_02060FD8
 
 	arm_func_start sub_02061C60
@@ -104679,9 +106221,15 @@ sub_02061C60: ; 0x02061C60
 	bl sub_02061CC8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02061CBC: .word 0x00003C20
+_02061CC0: .word _020A46A8
+_02061CC4: .word 0x00003C50
+#else
 _02061CBC: .word 0x00003C1E
 _02061CC0: .word _020A46A8
 _02061CC4: .word 0x00003C4E
+#endif
 	arm_func_end sub_02061C60
 
 	arm_func_start sub_02061CC8
@@ -104754,11 +106302,20 @@ _02061DB8:
 	add sp, sp, #0x28
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef EUROPE
+_02061DC4: .word 0x00003C33
+#else
 _02061DC4: .word 0x00003C31
+#endif
 	arm_func_end sub_02061CC8
 
 	arm_func_start sub_02061DC8
 sub_02061DC8: ; 0x02061DC8
+#ifdef EUROPE
+#define SUB_02061DC8_WORD_OFFSET 2
+#else
+#define SUB_02061DC8_WORD_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, lr}
 	sub sp, sp, #0x54
 	mov r5, r0
@@ -104806,7 +106363,11 @@ _02061E5C:
 	b _02061EE8
 _02061E68:
 	str r6, [sp, #4]
+#ifdef EUROPE
+	mov r2, #0x3c40
+#else
 	ldr r2, _02061F18 ; =0x00003C3E
+#endif
 	b _02061EE8
 _02061E74:
 	str r6, [sp, #4]
@@ -104814,7 +106375,11 @@ _02061E74:
 	b _02061EE8
 _02061E80:
 	str r6, [sp, #4]
+#ifdef EUROPE
+	ldr r2, _02062298 ; =0x00003C42
+#else
 	mov r2, #0x3c40
+#endif
 	b _02061EE8
 _02061E8C:
 	str r6, [sp, #4]
@@ -104858,21 +106423,26 @@ _02061EE8:
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_02061F08: .word 0x00003C38
-_02061F0C: .word 0x00003C3A
-_02061F10: .word 0x00003C39
-_02061F14: .word 0x00003C3B
+_02061F08: .word 0x00003C38 + SUB_02061DC8_WORD_OFFSET
+_02061F0C: .word 0x00003C3A + SUB_02061DC8_WORD_OFFSET
+_02061F10: .word 0x00003C39 + SUB_02061DC8_WORD_OFFSET
+_02061F14: .word 0x00003C3B + SUB_02061DC8_WORD_OFFSET
+#ifndef EUROPE
 _02061F18: .word 0x00003C3E
-_02061F1C: .word 0x00003C3F
-_02061F20: .word 0x00003C3D
-_02061F24: .word 0x00003C42
-_02061F28: .word 0x00003C43
-_02061F2C: .word 0x00003C3C
-_02061F30: .word 0x00003C41
-_02061F34: .word 0x00003C44
-_02061F38: .word 0x00003C45
-_02061F3C: .word 0x00003C47
-_02061F40: .word 0x00003C46
+#endif
+_02061F1C: .word 0x00003C3F + SUB_02061DC8_WORD_OFFSET
+#ifdef EUROPE
+_02062298: .word 0x00003C42
+#endif
+_02061F20: .word 0x00003C3D + SUB_02061DC8_WORD_OFFSET
+_02061F24: .word 0x00003C42 + SUB_02061DC8_WORD_OFFSET
+_02061F28: .word 0x00003C43 + SUB_02061DC8_WORD_OFFSET
+_02061F2C: .word 0x00003C3C + SUB_02061DC8_WORD_OFFSET
+_02061F30: .word 0x00003C41 + SUB_02061DC8_WORD_OFFSET
+_02061F34: .word 0x00003C44 + SUB_02061DC8_WORD_OFFSET
+_02061F38: .word 0x00003C45 + SUB_02061DC8_WORD_OFFSET
+_02061F3C: .word 0x00003C47 + SUB_02061DC8_WORD_OFFSET
+_02061F40: .word 0x00003C46 + SUB_02061DC8_WORD_OFFSET
 	arm_func_end sub_02061DC8
 
 	arm_func_start sub_02061F44
@@ -105067,10 +106637,17 @@ _020621F4:
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef EUROPE
+_020621FC: .word 0x00003C37
+_02062200: .word 0x00003C36
+_02062204: .word 0x00003C38
+_02062208: .word 0x00003C34
+#else
 _020621FC: .word 0x00003C35
 _02062200: .word 0x00003C34
 _02062204: .word 0x00003C36
 _02062208: .word 0x00003C32
+#endif
 	arm_func_end sub_02061FDC
 
 	arm_func_start sub_0206220C
@@ -109802,7 +111379,13 @@ MainLoop: ; 0x02065D1C
 	bl KeyWaitInit
 	add r0, sp, #4
 	bl ReadSaveHeader
+#ifdef EUROPE
+	mov r4, r0
+	bl sub_020205F8
+	cmp r4, #1
+#else
 	cmp r0, #1
+#endif
 	bne _02065DF0
 	mov r0, #2
 	bl LoadOverlay
@@ -111113,7 +112696,7 @@ _02066EF4:
 	bne _02066F44
 	bl sub_02046BB4
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, [r6, #8]
 	add r0, r6, r0, lsl #1
 	ldrsh r0, [r0, #0xc]
@@ -111153,7 +112736,7 @@ _02066F84:
 	cmp r0, #0xe
 	bne _02066FB4
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, _020674A0 ; =_020B0B2C
 	mov r1, #4
 	ldr r0, [r0, #0x14]
@@ -111380,7 +112963,7 @@ _020672B8:
 	cmp r4, #7
 	bne _020672D4
 	mov r0, #0
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _020672D4:
 	ldr r0, _020674A0 ; =_020B0B2C
 	mov r1, #0
@@ -111514,7 +113097,11 @@ _020674AC: .word sub_02069750
 _020674B0: .word _020A937C
 _020674B4: .word _020B0B39
 _020674B8: .word JOB_MENU_11
+#ifdef EUROPE
+_020674BC: .word 0x0000387A
+#else
 _020674BC: .word 0x00003878
+#endif
 _020674C0: .word 0x00000233
 _020674C4: .word _020A9268
 _020674C8: .word JOB_MENU_4
@@ -111705,6 +113292,11 @@ _02067704: .word _020B0B2C
 
 	arm_func_start sub_02067708
 sub_02067708: ; 0x02067708
+#ifdef EUROPE
+#define SUB_02067708_WORD_OFFSET 2
+#else
+#define SUB_02067708_WORD_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x5c
 	ldr r1, _02067C00 ; =_020B0B2C
@@ -111988,7 +113580,11 @@ _02067AF8:
 	ldr r5, _02067C68 ; =JOB_MENU_6
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
+#ifdef EUROPE
+	ldr r6, _02067FF0 ; =0x0000380F
+#else
 	rsb r6, r8, #0x3a40
+#endif
 	mov r7, sb
 	b _02067BC4
 _02067B20:
@@ -112035,7 +113631,11 @@ _02067BA0:
 	ldr r1, [r1, r2, lsl #3]
 	ldr r5, _02067C88 ; =JOB_MENU_8
 	str r1, [r4, #0xe48]
+#ifdef EUROPE
+	ldr r6, _02068014 ; =0x000037B5
+#else
 	add r6, r8, #0x3580
+#endif
 	str r0, [r4, #0xef4]
 	mov r7, sb
 _02067BC4:
@@ -112073,34 +113673,45 @@ _02067C38: .word _020A92EC
 _02067C3C: .word _020B0B37
 _02067C40: .word JOB_MENU_5
 _02067C44: .word JOB_MENU_7
-_02067C48: .word 0x000037B0
+_02067C48: .word 0x000037B0 + SUB_02067708_WORD_OFFSET
 _02067C4C: .word _020A931C
 _02067C50: .word _020B0B30
 _02067C54: .word JOB_MENU_3
-_02067C58: .word 0x0000380C
+_02067C58: .word 0x0000380C + SUB_02067708_WORD_OFFSET
 _02067C5C: .word _020A9278
 _02067C60: .word _020A9304
 _02067C64: .word _020B0B38
 _02067C68: .word JOB_MENU_6
+#ifdef EUROPE
+_02067FF0: .word 0x0000380F
+#endif
 _02067C6C: .word JOB_MENU_9
-_02067C70: .word 0x000038BF
+_02067C70: .word 0x000038BF + SUB_02067708_WORD_OFFSET
 _02067C74: .word JOB_MENU_11
-_02067C78: .word 0x00003878
+_02067C78: .word 0x00003878 + SUB_02067708_WORD_OFFSET
 _02067C7C: .word _020B0B39
 _02067C80: .word _020A9334
 _02067C84: .word _020B0B33
 _02067C88: .word JOB_MENU_8
+#ifdef EUROPE
+_02068014: .word 0x000037B5
+#endif
 	arm_func_end sub_02067708
 
 	arm_func_start sub_02067C8C
 sub_02067C8C: ; 0x02067C8C
+#ifdef EUROPE
+#define SUB_02067C8C_WORD_OFFSET 2
+#else
+#define SUB_02067C8C_WORD_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x60
 	ldr r0, _020682E0 ; =_020B0B2C
 	ldr r6, [r0, #0x14]
 	bl sub_02046BB4
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldr r0, [r6, #8]
 	add r0, r6, r0, lsl #1
 	ldrsh r0, [r0, #0xc]
@@ -112242,8 +113853,13 @@ _02067E70:
 	add r0, r0, #0x2e4
 	add r0, r0, #0xc00
 	bl sub_02047150
+#ifdef EUROPE
+	ldr r1, _02068678 ; =0x00003826
+	mov r0, #0x1c
+#else
 	mov r0, #0x1c
 	rsb r1, r0, #0x3840
+#endif
 	mov r2, #0
 	bl sub_02046BE8
 	ldr r0, _020682E0 ; =_020B0B2C
@@ -112388,8 +114004,13 @@ _02068090:
 	add r0, r0, #0x2e4
 	add r0, r0, #0xc00
 	bl sub_02047150
+#ifdef EUROPE
+	mov r0, #0x1c
+	rsb r1, r0, #0x3840
+#else
 	ldr r1, _020682F4 ; =0x00003822
 	mov r0, #0x1c
+#endif
 	mov r2, #0
 	bl sub_02046BE8
 	ldr r0, _020682E0 ; =_020B0B2C
@@ -112542,15 +114163,20 @@ _020682D8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020682E0: .word _020B0B2C
-_020682E4: .word 0x0000381F
-_020682E8: .word 0x00003820
-_020682EC: .word 0x00003825
-_020682F0: .word 0x00003821
+_020682E4: .word 0x0000381F + SUB_02067C8C_WORD_OFFSET
+_020682E8: .word 0x00003820 + SUB_02067C8C_WORD_OFFSET
+#ifdef EUROPE
+_02068678: .word 0x00003826
+#endif
+_020682EC: .word 0x00003825 + SUB_02067C8C_WORD_OFFSET
+_020682F0: .word 0x00003821 + SUB_02067C8C_WORD_OFFSET
+#ifndef EUROPE
 _020682F4: .word 0x00003822
-_020682F8: .word 0x00003823
-_020682FC: .word 0x00003826
-_02068300: .word 0x00003827
-_02068304: .word 0x00003828
+#endif
+_020682F8: .word 0x00003823 + SUB_02067C8C_WORD_OFFSET
+_020682FC: .word 0x00003826 + SUB_02067C8C_WORD_OFFSET
+_02068300: .word 0x00003827 + SUB_02067C8C_WORD_OFFSET
+_02068304: .word 0x00003828 + SUB_02067C8C_WORD_OFFSET
 	arm_func_end sub_02067C8C
 
 	arm_func_start sub_02068308
@@ -112850,6 +114476,11 @@ _020686F0: .word _020B0A54
 
 	arm_func_start sub_020686F4
 sub_020686F4: ; 0x020686F4
+#ifdef EUROPE
+#define SUB_020686F4_WORD_OFFSET 2
+#else
+#define SUB_020686F4_WORD_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x68
 	ldr r0, _02068E14 ; =_020B0B2C
@@ -113197,6 +114828,20 @@ _02068BA0:
 	str r1, [r7, #0xef0]
 	b _02068C18
 _02068BF4:
+#ifdef EUROPE
+	sub r0, r1, #0xf
+	cmp r0, #2
+	bhi _02068C18
+	cmp r1, #0x11
+	ldreq r1, _02068E64 ; =0x0000381F
+	ldr r0, _02068E14 ; =_020B0B2C
+	ldrne r1, _02068E6C ; =0x00003820
+	strh r1, [r8, #8]
+	ldrsb r1, [r0, #0x13]
+	ldr r0, _02068E70 ; =_020B0B3F
+	str r1, [r7, #8]
+	str r0, [r7, #0xef0]
+#else
 	sub r1, r1, #0xf
 	cmp r1, #2
 	bhi _02068C18
@@ -113206,6 +114851,7 @@ _02068BF4:
 	ldrsb r0, [r0, #0x13]
 	str r0, [r7, #8]
 	str r1, [r7, #0xef0]
+#endif
 _02068C18:
 	ldr r1, [r7, #0x6c]
 	ldr r0, [r7, #8]
@@ -113351,26 +114997,26 @@ _02068E08:
 _02068E14: .word _020B0B2C
 _02068E18: .word sub_02069660
 _02068E1C: .word _020B0B2E
-_02068E20: .word 0x00003815
-_02068E24: .word 0x00003817
-_02068E28: .word 0x00003816
+_02068E20: .word 0x00003815 + SUB_020686F4_WORD_OFFSET
+_02068E24: .word 0x00003817 + SUB_020686F4_WORD_OFFSET
+_02068E28: .word 0x00003816 + SUB_020686F4_WORD_OFFSET
 _02068E2C: .word _020B0B31
-_02068E30: .word 0x00003818
+_02068E30: .word 0x00003818 + SUB_020686F4_WORD_OFFSET
 _02068E34: .word sub_02069598
 _02068E38: .word _020B0B2D
-_02068E3C: .word 0x00003F1E
+_02068E3C: .word 0x00003F1E + SUB_020686F4_WORD_OFFSET
 _02068E40: .word sub_02069074
-_02068E44: .word 0x00003819
+_02068E44: .word 0x00003819 + SUB_020686F4_WORD_OFFSET
 _02068E48: .word _020B0B3E
-_02068E4C: .word 0x0000381A
+_02068E4C: .word 0x0000381A + SUB_020686F4_WORD_OFFSET
 _02068E50: .word _020B0B3D
-_02068E54: .word 0x0000381B
+_02068E54: .word 0x0000381B + SUB_020686F4_WORD_OFFSET
 _02068E58: .word _020B0B36
-_02068E5C: .word 0x0000381C
+_02068E5C: .word 0x0000381C + SUB_020686F4_WORD_OFFSET
 _02068E60: .word _020B0B3B
-_02068E64: .word 0x0000381D
+_02068E64: .word 0x0000381D + SUB_020686F4_WORD_OFFSET
 _02068E68: .word _020B0B2C
-_02068E6C: .word 0x0000381E
+_02068E6C: .word 0x0000381E + SUB_020686F4_WORD_OFFSET
 _02068E70: .word _020B0B3F
 _02068E74: .word sub_020690A4
 _02068E78: .word _020B0B2F
@@ -113646,7 +115292,7 @@ sub_020691B8: ; 0x020691B8
 	str r3, [sp, #8]
 	ldr r3, [lr, #0xe44]
 	add r2, r2, #0xc00
-	bl sub_0202C3A8
+	bl CreateCollectionMenu
 	ldr r3, _020692A8 ; =_020B0B2C
 	mov r1, #0
 	ldr ip, [r3, #0x14]
@@ -113947,7 +115593,7 @@ sub_02069598: ; 0x02069598
 	cmp r0, #0
 	beq _02069600
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	mov r0, #0
 	strb r0, [r4, r6]
 	bl sub_020674E8
@@ -113967,7 +115613,7 @@ _02069600:
 	bhs _0206963C
 _0206961C:
 	mov r0, #6
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 	ldrsb r0, [r5, #0x7d]
 	mov r1, #1
 	bl sub_0202D07C
@@ -113976,13 +115622,13 @@ _0206961C:
 	b _02069644
 _0206963C:
 	mov r0, #2
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02069644:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 _0206964C:
 	mov r0, #3
-	bl sub_02017CCC
+	bl PlaySeVolumeWrapper
 _02069654:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
@@ -114058,7 +115704,11 @@ sub_020696E8: ; 0x020696E8
 	add sp, sp, #0x154
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
+#ifdef EUROPE
+_0206974C: .word 0x00003815
+#else
 _0206974C: .word 0x00003813
+#endif
 	arm_func_end sub_020696E8
 
 	arm_func_start sub_02069750
@@ -114079,7 +115729,11 @@ sub_02069750: ; 0x02069750
 	add sp, sp, #0x100
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef EUROPE
+_0206978C: .word 0x00003816
+#else
 _0206978C: .word 0x00003814
+#endif
 	arm_func_end sub_02069750
 
 	arm_func_start sub_02069790
@@ -114621,7 +116275,7 @@ _02069E78:
 _02069E84:
 	add r4, r5, #0x58
 	add r5, r5, #0x90
-	bl ov29_0233CAA8
+	bl ov03_0233CAA8
 	cmp r0, #1
 	bne _02069F90
 	ldr r0, _0206A5E0 ; =_020B0B48
@@ -114680,7 +116334,7 @@ _02069E84:
 _02069F6C:
 	add r0, r5, #4
 	mov r1, #0x14
-	bl ov29_02337B3C
+	bl ov01_02337B3C
 	ldr r1, _0206A5E0 ; =_020B0B48
 	strb r0, [r5, #3]
 	ldr r0, [r1]
@@ -114688,7 +116342,7 @@ _02069F6C:
 	str r1, [r0]
 	b _0206A5D4
 _02069F90:
-	bl ov29_0233CAA8
+	bl ov03_0233CAA8
 	cmp r0, #0
 	bne _0206A5D4
 	ldr r0, _0206A5E0 ; =_020B0B48
@@ -114752,7 +116406,7 @@ _02069F90:
 	bl GetMainTeamNameWithCheck
 	add r0, r4, #4
 	mov r1, #0x34
-	bl ov29_02337B3C
+	bl ov01_02337B3C
 	strb r0, [r4, #3]
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0x1000
@@ -114776,17 +116430,17 @@ _0206A0AC:
 	strh r2, [sp, #0xc4]
 	strb r1, [sp, #0xc6]
 	str r4, [sp, #0xc8]
-	bl ov29_02337BA0
+	bl ov01_02337BA0
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A5E4 ; =0x00001001
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0206A5D4
 _0206A104:
-	bl ov29_02337E0C
+	bl ov01_02337E0C
 	movs r4, r0
 	beq _0206A5D4
-	bl ov29_02337C54
+	bl ov01_02337C54
 	cmp r4, #0xe
 	addls pc, pc, r4, lsl #2
 	b _0206A5D4
@@ -114807,7 +116461,7 @@ _0206A120: ; jump table
 	b _0206A380 ; case 13
 	b _0206A380 ; case 14
 _0206A15C:
-	bl ov29_0233CAA8
+	bl ov03_0233CAA8
 	cmp r0, #1
 	bne _0206A300
 	ldr r0, _0206A5E0 ; =_020B0B48
@@ -114822,7 +116476,7 @@ _0206A15C:
 	beq _0206A1B0
 	ldr r1, _0206A5F8 ; =0x000037A8
 	mov r0, #0x1c
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A5FC ; =0x00002001
 	ldr r0, [r0]
@@ -114857,7 +116511,7 @@ _0206A204:
 	add r2, sp, #0x1bc
 	mov r0, #0x1c
 	str r3, [sp, #0x1f4]
-	bl ov29_0233CDD8
+	bl ov03_0233CDD8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0
 	ldr r0, [r0]
@@ -114902,7 +116556,7 @@ _0206A2AC:
 	add r2, sp, #0x16c
 	mov r0, #0x1c
 	str r3, [sp, #0x1a4]
-	bl ov29_0233CDD8
+	bl ov03_0233CDD8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0
 	ldr r0, [r0]
@@ -114920,7 +116574,7 @@ _0206A2EC:
 	str r1, [r0]
 	b _0206A5D4
 _0206A300:
-	bl ov29_0233CAA8
+	bl ov03_0233CAA8
 	cmp r0, #0
 	bne _0206A5D4
 	add r0, sp, #0x11c
@@ -114948,7 +116602,7 @@ _0206A354:
 	add r2, sp, #0x11c
 	mov r0, #0x1c
 	str r3, [sp, #0x154]
-	bl ov29_0233CDD8
+	bl ov03_0233CDD8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0x8000
 	ldr r0, [r0]
@@ -114958,17 +116612,17 @@ _0206A380:
 	mov r0, #1
 	b _0206A5D8
 _0206A388:
-	bl ov29_0233CAD8
+	bl ov03_0233CAD8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A5E8 ; =0x00003001
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0206A5D4
 _0206A3A0:
-	bl ov29_0233CB3C
+	bl ov03_0233CB3C
 	cmp r0, #2
 	bne _0206A450
-	bl ov29_0233CB10
+	bl ov03_0233CB10
 	add r0, sp, #0xcc
 	bl InitPreprocessorArgs
 	ldr r0, _0206A5E0 ; =_020B0B48
@@ -115000,7 +116654,7 @@ _0206A410:
 	add r2, sp, #0xcc
 	mov r0, #0x1c
 	str r3, [sp, #0x104]
-	bl ov29_0233CDD8
+	bl ov03_0233CDD8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0
 	ldr r0, [r0]
@@ -115014,11 +116668,11 @@ _0206A410:
 _0206A450:
 	cmp r0, #1
 	bne _0206A5D4
-	bl ov29_0233CB10
+	bl ov03_0233CB10
 	mov r0, #1
 	b _0206A5D8
 _0206A464:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	mov r4, r0
 	bl sub_020698B8
 	cmp r4, #0x12
@@ -115030,7 +116684,7 @@ _0206A464:
 	str r1, [r0]
 	b _0206A5D4
 _0206A490:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	cmp r0, #0x12
 	bne _0206A5D4
 	mov r0, #1
@@ -115038,14 +116692,14 @@ _0206A490:
 _0206A4A4:
 	ldr r1, _0206A60C ; =0x0000023B
 	mov r0, #0
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A610 ; =0x00004002
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0206A5D4
 _0206A4C4:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	cmp r0, #0x12
 	bne _0206A5D4
 	mov r0, #0xe0
@@ -115074,11 +116728,11 @@ _0206A4F8:
 	mov r0, #0x1c
 	beq _0206A53C
 	ldr r1, _0206A618 ; =0x0000379E
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 	b _0206A544
 _0206A53C:
 	mov r1, #0x23c
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 _0206A544:
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A61C ; =0x00004003
@@ -115091,32 +116745,32 @@ _0206A558:
 	beq _0206A5D8
 	ldr r1, _0206A620 ; =0x00000239
 	mov r0, #0x1c
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r1, _0206A5EC ; =0x00004004
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0206A5D4
 _0206A584:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	cmp r0, #0x12
 	bne _0206A5D4
 	ldr r1, _0206A624 ; =0x000037A0
 	mov r0, #0x1c
-	bl ov29_0233CDC8
+	bl ov03_0233CDC8
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0x8000
 	ldr r0, [r0]
 	str r1, [r0]
 	b _0206A5D4
 _0206A5B0:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	cmp r0, #0x12
 	bne _0206A5D4
 	mov r0, #1
 	b _0206A5D8
 _0206A5C4:
-	bl ov29_0233CDE4
+	bl ov03_0233CDE4
 	cmp r0, #0x12
 	moveq r0, #2
 	beq _0206A5D8
@@ -115126,36 +116780,41 @@ _0206A5D8:
 	add sp, sp, #0x20c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef EUROPE
+#define SUB_02069DC0_OFFSET 2
+#else
+#define SUB_02069DC0_OFFSET 0
+#endif
 _0206A5E0: .word _020B0B48
 _0206A5E4: .word 0x00001001
 _0206A5E8: .word 0x00003001
 _0206A5EC: .word 0x00004004
 _0206A5F0: .word sub_0206A628
-_0206A5F4: .word PositionHasMonster
-_0206A5F8: .word 0x000037A8
+_0206A5F4: .word ov01_02337B68
+_0206A5F8: .word 0x000037A8 + SUB_02069DC0_OFFSET
 _0206A5FC: .word 0x00002001
-_0206A600: .word 0x000038C9
-_0206A604: .word 0x0000379F
-_0206A608: .word 0x00003793
+_0206A600: .word 0x000038C9 + SUB_02069DC0_OFFSET
+_0206A604: .word 0x0000379F + SUB_02069DC0_OFFSET
+_0206A608: .word 0x00003793 + SUB_02069DC0_OFFSET
 _0206A60C: .word 0x0000023B
 _0206A610: .word 0x00004002
 _0206A614: .word 0x00004001
-_0206A618: .word 0x0000379E
+_0206A618: .word 0x0000379E + SUB_02069DC0_OFFSET
 _0206A61C: .word 0x00004003
 _0206A620: .word 0x00000239
-_0206A624: .word 0x000037A0
+_0206A624: .word 0x000037A0 + SUB_02069DC0_OFFSET
 	arm_func_end sub_02069DC0
 
 	arm_func_start sub_0206A628
 sub_0206A628: ; 0x0206A628
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov29_0233CAA8
+	bl ov03_0233CAA8
 	cmp r0, #1
 	bne _0206A70C
 	add r0, r4, #4
 	mov r1, #0x34
-	bl ov29_02337B3C
+	bl ov01_02337B3C
 	ldrb r1, [r4, #3]
 	cmp r0, r1
 	movne r0, #3
@@ -115383,6 +117042,11 @@ _0206A908: .word _020A94D2
 
 	arm_func_start sub_0206A90C
 sub_0206A90C: ; 0x0206A90C
+#ifdef EUROPE
+#define SUB_0206A90C_WORD_OFFSET 2
+#else
+#define SUB_0206A90C_WORD_OFFSET 0
+#endif
 	stmdb sp!, {r3, lr}
 	bl sub_0206A7CC
 	mvn r1, #0
@@ -115401,14 +117065,14 @@ sub_0206A90C: ; 0x0206A90C
 	bl sub_02024934
 	ldmia sp!, {r3, pc}
 _0206A950:
-	add r0, r0, #0x7f
+	add r0, r0, #0x7f + SUB_0206A90C_WORD_OFFSET
 	add r0, r0, #0x3f00
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0206A964: .word 0x0000403A
-_0206A968: .word 0x00004033
+_0206A964: .word 0x0000403A + SUB_0206A90C_WORD_OFFSET
+_0206A968: .word 0x00004033 + SUB_0206A90C_WORD_OFFSET
 	arm_func_end sub_0206A90C
 
 	arm_func_start sub_0206A96C
@@ -115471,7 +117135,11 @@ _0206AA24:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0206AA34: .word MAP_MARKER_PLACEMENTS
+#ifdef EUROPE
+_0206AA38: .word 0xFFFFFEC6
+#else
 _0206AA38: .word 0xFFFFFED2
+#endif
 _0206AA3C: .word _020A94C6
 	arm_func_end sub_0206A9DC
 
@@ -115567,7 +117235,7 @@ _0206AB5C:
 	str r3, [r2, #0x34]
 	ldr r1, [r1, #8]
 	strb r3, [r1, #0x31]
-	bl ov00_022C2340
+	bl ov10_022C2340
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0206AB90: .word _020B0B4C
@@ -115746,7 +117414,7 @@ sub_0206ADB8: ; 0x0206ADB8
 	cmp r0, #0
 	moveq r0, #0
 	beq _0206B9B4
-	bl ov00_022C23EC
+	bl ov10_022C23EC
 	ldr r0, _0206B9BC ; =_020B0B4C
 	ldr r8, [r0, #8]
 	ldrb r0, [r8, #0x30]
@@ -116109,7 +117777,7 @@ _0206B328:
 	mov r0, #0x7c
 	mla r6, r5, r0, fp
 	mov r0, r6
-	bl sub_0201C0B0
+	bl InitAnimationControlWithSet__0201C0B0
 	ldrsh r1, [r4, #0x18]
 	mov r0, r6
 	bl SetSpriteIdForAnimationControl
@@ -116219,7 +117887,7 @@ _0206B408:
 	strh r2, [r0, #0x10]
 	strh r2, [r0, #0x12]
 	ldr r0, _0206B9C8 ; =sub_0206BFA8
-	bl ov00_022C2450
+	bl ov10_022C2450
 	mov r0, #0x8000
 	str r0, [r6, #0x30]
 	mov r0, #0x6000
@@ -116316,7 +117984,7 @@ _0206B580:
 	str r0, [r6, #0x1c]
 	ldr r0, _0206B9D4 ; =sub_0206BEAC
 	mov r1, r6
-	bl ov00_022C2450
+	bl ov10_022C2450
 _0206B658:
 	add r4, r4, #1
 	cmp r4, #3
@@ -116611,7 +118279,7 @@ sub_0206BA5C: ; 0x0206BA5C
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
-	bl ov00_022C23B0
+	bl ov10_022C23B0
 	ldr r0, _0206BB8C ; =_020B0B4C
 	ldr r5, [r0, #8]
 	cmp r5, #0
@@ -116973,7 +118641,7 @@ _0206BF68:
 	mov r0, r4
 	bl sub_0206BB94
 	mov r0, r6
-	bl ov00_022C24DC
+	bl ov10_022C24DC
 	ldmia sp!, {r4, r5, r6, pc}
 _0206BF7C:
 	ldr r1, [r4, #8]
@@ -117047,7 +118715,7 @@ _0206C078:
 	mov r0, r4
 	bl sub_0206BB94
 	mov r0, r6
-	bl ov00_022C24DC
+	bl ov10_022C24DC
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0206C08C:
 	ldr r0, [r4, #0x38]
@@ -118584,7 +120252,7 @@ _0206D444:
 	mov r1, r7, lsl #0x10
 	mov r0, sl
 	mov r1, r1, asr #0x10
-	bl sub_0206D558
+	bl ReadWaviEntry
 	cmp r0, #0
 	beq _0206D4C4
 	str r5, [r0, #0x24]
@@ -118662,8 +120330,8 @@ _0206D550: .word 0x04000208
 _0206D554: .word _022B7990
 	arm_func_end sub_0206D4E4
 
-	arm_func_start sub_0206D558
-sub_0206D558: ; 0x0206D558
+	arm_func_start ReadWaviEntry
+ReadWaviEntry: ; 0x0206D558
 	ldr r2, [r0, #0x10]
 	cmp r2, #0
 	moveq r0, #0
@@ -118678,7 +120346,7 @@ sub_0206D558: ; 0x0206D558
 	moveq r0, #0
 	addne r0, r2, r0
 	bx lr
-	arm_func_end sub_0206D558
+	arm_func_end ReadWaviEntry
 
 	arm_func_start sub_0206D590
 sub_0206D590: ; 0x0206D590
@@ -118912,7 +120580,7 @@ sub_0206D808: ; 0x0206D808
 _0206D854:
 	mov r0, r7
 	mov r1, #1
-	bl sub_0206E4E8
+	bl FindSmdlSongChunk
 	movs r5, r0
 	bne _0206D880
 	mov r1, r7
@@ -119855,8 +121523,8 @@ _0206E4E0: .word _022B7330
 _0206E4E4: .word 0x04000208
 	arm_func_end sub_0206E3C4
 
-	arm_func_start sub_0206E4E8
-sub_0206E4E8: ; 0x0206E4E8
+	arm_func_start FindSmdlSongChunk
+FindSmdlSongChunk: ; 0x0206E4E8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r6, _0206E54C ; =0x736F6E67
 	ldr r7, _0206E550 ; =0x656F6420
@@ -119887,7 +121555,7 @@ _0206E548:
 	.align 2, 0
 _0206E54C: .word 0x736F6E67
 _0206E550: .word 0x656F6420
-	arm_func_end sub_0206E4E8
+	arm_func_end FindSmdlSongChunk
 
 	arm_func_start sub_0206E554
 sub_0206E554: ; 0x0206E554
@@ -123142,7 +124810,7 @@ _02071030:
 	ldrsb r0, [r5, #0xd0]
 	cmp r0, #1
 	bne _020710D0
-	bl sub_0207AEE4
+	bl GetTimer0Control
 	ldr r2, [r8, #0xec8]
 	ldr r1, [r8, #0xecc]
 	sub sl, r0, r2
@@ -123205,7 +124873,7 @@ _02071118:
 	ldrsb r0, [r5, #0xd0]
 	cmp r0, #1
 	bne _02071030
-	bl sub_0207AEE4
+	bl GetTimer0Control
 	str r0, [r8, #0xecc]
 	b _02071030
 _02071148:
@@ -123276,8 +124944,8 @@ _02071200:
 _02071220: .word _022B7330
 	arm_func_end sub_02071160
 
-	arm_func_start ParseDseEvents
-ParseDseEvents: ; 0x02071224
+	arm_func_start ParseDseEvent
+ParseDseEvent: ; 0x02071224
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r6, r1
@@ -123402,7 +125070,7 @@ _020713C4:
 _020713DC: .word SMD_EVENTS_FUN_TABLE
 _020713E0: .word _020B0B7C
 _020713E4: .word 0x02040811
-	arm_func_end ParseDseEvents
+	arm_func_end ParseDseEvent
 
 	arm_func_start UpdateSequencerTracks
 UpdateSequencerTracks: ; 0x020713E8
@@ -123582,7 +125250,7 @@ _02071648:
 	bne _02071674
 	mov r0, sl
 	mov r1, r8
-	bl ParseDseEvents
+	bl ParseDseEvent
 	ldrsb r0, [r8, #2]
 	cmp r0, #1
 	ldreqb r0, [sl, #0xd]
@@ -126967,7 +128635,7 @@ _02073F40:
 	str r2, [sp, #4]
 	str r1, [sp, #8]
 	ldrsh r1, [r5, #0x12]
-	bl sub_0206D558
+	bl ReadWaviEntry
 	movs fp, r0
 	beq _02073F40
 	ldrb r3, [sl, #5]
@@ -133729,7 +135397,7 @@ sub_02079340: ; 0x02079340
 	ldr r4, _02079404 ; =_022B966C
 	cmp r0, #0
 	bne _02079370
-	bl sub_0207B848
+	bl GetProcessorMode
 	cmp r0, #0x12
 	bne _0207937C
 _02079370:
@@ -136011,14 +137679,14 @@ _0207AEDC: .word 0x0000FFFF
 _0207AEE0: .word _022B99A0
 	arm_func_end sub_0207AE44
 
-	arm_func_start sub_0207AEE4
-sub_0207AEE4: ; 0x0207AEE4
+	arm_func_start GetTimer0Control
+GetTimer0Control: ; 0x0207AEE4
 	ldr r0, _0207AEF0 ; =0x04000100
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
 _0207AEF0: .word 0x04000100
-	arm_func_end sub_0207AEE4
+	arm_func_end GetTimer0Control
 
 	arm_func_start sub_0207AEF4
 sub_0207AEF4: ; 0x0207AEF4
@@ -136768,12 +138436,12 @@ GetIrqFlag: ; 0x0207B83C
 	bx lr
 	arm_func_end GetIrqFlag
 
-	arm_func_start sub_0207B848
-sub_0207B848: ; 0x0207B848
+	arm_func_start GetProcessorMode
+GetProcessorMode: ; 0x0207B848
 	mrs r0, cpsr
 	and r0, r0, #0x1f
 	bx lr
-	arm_func_end sub_0207B848
+	arm_func_end GetProcessorMode
 
 	arm_func_start sub_0207B854
 sub_0207B854: ; 0x0207B854
@@ -137031,7 +138699,7 @@ sub_0207BB50: ; 0x0207BB50
 	mov r5, r0
 	ldrh r6, [r1]
 	ldr r4, _0207BC14 ; =0x027FFC00
-	bl sub_0207AEE4
+	bl GetTimer0Control
 	orr r0, r0, r6, lsl #16
 	str r0, [r5]
 	ldr r1, _0207BC18 ; =_022B99A8
@@ -163101,11 +164769,31 @@ _02092AB8:
 _02092AD8:
 	.byte 0x00, 0x08, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
 	.byte 0x00, 0x20, 0x00, 0x00
+#ifdef EUROPE
+	.global _02092E80
+_02092E80:
+	.byte 0x2F, 0x53, 0x59, 0x53, 0x54, 0x45, 0x4D, 0x2F, 0x68, 0x73, 0x64, 0x5F
+	.byte 0x69, 0x74, 0x61, 0x2E, 0x64, 0x61, 0x74, 0x00
+	.global _02092E94
+_02092E94:
+	.byte 0x2F, 0x53, 0x59, 0x53, 0x54, 0x45, 0x4D, 0x2F
+	.byte 0x68, 0x73, 0x64, 0x5F, 0x73, 0x70, 0x61, 0x2E, 0x64, 0x61, 0x74, 0x00
+	.global _02092EA8
+_02092EA8:
+	.byte 0x2F, 0x53, 0x59, 0x53
+	.byte 0x54, 0x45, 0x4D, 0x2F, 0x68, 0x73, 0x64, 0x5F, 0x66, 0x72, 0x65, 0x2E, 0x64, 0x61, 0x74, 0x00
+	.global _02092EBC
+_02092EBC:
+	.byte 0x2F, 0x53, 0x59, 0x53, 0x54, 0x45, 0x4D, 0x2F, 0x68, 0x73, 0x64, 0x5F, 0x65, 0x6E, 0x67, 0x2E
+	.byte 0x64, 0x61, 0x74, 0x00
+	.global _02092ED0
+_02092ED0:
+	.byte 0x2F, 0x53, 0x59, 0x53, 0x54, 0x45, 0x4D, 0x2F, 0x68, 0x73, 0x64, 0x5F
+	.byte 0x67, 0x65, 0x72, 0x2E, 0x64, 0x61, 0x74, 0x00
+#endif
 	.global CART_REMOVED_IMG_DATA
 CART_REMOVED_IMG_DATA:
-	.byte 0x41, 0x54, 0x34, 0x50
-	.word _02196A58
-	.byte 0x04, 0x06, 0x08, 0x0A
+	.byte 0x41, 0x54, 0x34, 0x50, 0x58, 0x6A, 0x19, 0x02, 0x04, 0x06, 0x08, 0x0A
 	.byte 0x0C, 0x0E, 0x00, 0x0D, 0x00, 0xC0, 0x00, 0x20, 0x20, 0x1F, 0xFC, 0x5F, 0xF8, 0xBF, 0xF2, 0xFF
 	.byte 0xE2, 0xFF, 0xD0, 0xFF, 0xBE, 0x00, 0xFF, 0xAC, 0xFF, 0x9A, 0xFF, 0x88, 0xFF, 0x76, 0xFF, 0x64
 	.byte 0xFF, 0x52, 0xFF, 0x40, 0xFF, 0x2E, 0x00, 0xFF, 0x1C, 0xFF, 0x0A, 0xFE, 0xF8, 0xFE, 0xE6, 0xFE
@@ -164027,8 +165715,7 @@ AVAILABLE_ITEMS_IN_GROUP_TABLE:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.word _021EA084
-	.byte 0x60, 0x06, 0x08, 0x00, 0x40, 0x04, 0x06, 0x00, 0x08, 0x0F, 0x70, 0x00
+	.byte 0x84, 0xA0, 0x1E, 0x02, 0x60, 0x06, 0x08, 0x00, 0x40, 0x04, 0x06, 0x00, 0x08, 0x0F, 0x70, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x80, 0x01, 0x80, 0xF0, 0xBB, 0xDF, 0xDE, 0xF7, 0xFA, 0xE7, 0x07, 0xFC
 	.byte 0x73, 0x7E, 0x5F, 0x00, 0x00, 0x00, 0x41, 0x87, 0x0E, 0xDC, 0x00, 0x08, 0xE0, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -164586,6 +166273,28 @@ _02097FC4:
 _02097FE4:
 	.byte 0x25, 0x73, 0x5B, 0x43, 0x53, 0x3A, 0x31, 0x3A, 0x52, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x3A
 	.byte 0x31, 0x5D, 0x00, 0x00
+#ifdef EUROPE
+	.global _020983F4
+_020983F4:
+	.byte 0x73, 0x74, 0x5F, 0x69, 0x32, 0x6E, 0x5F, 0x69
+	.byte 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _02098404
+_02098404:
+	.byte 0x73, 0x74, 0x5F, 0x69, 0x32, 0x6E, 0x5F, 0x65
+	.byte 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _02098414
+_02098414:
+	.byte 0x73, 0x74, 0x5F, 0x69, 0x32, 0x6E, 0x5F, 0x73
+	.byte 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _02098424
+_02098424:
+	.byte 0x73, 0x74, 0x5F, 0x69, 0x32, 0x6E, 0x5F, 0x67
+	.byte 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _02098434
+_02098434:
+	.byte 0x73, 0x74, 0x5F, 0x69, 0x32, 0x6E, 0x5F, 0x66
+	.byte 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+#endif
 	.global ARM9_UNKNOWN_TABLE__NA_2097FF8
 ARM9_UNKNOWN_TABLE__NA_2097FF8:
 	.byte 0xC8, 0x01, 0xAC, 0x00, 0xC9, 0x01, 0xAD, 0x00, 0xCA, 0x01, 0xAE, 0x00
@@ -164604,8 +166313,14 @@ _02098054:
 	.global _02098070
 _02098070:
 	.byte 0x72, 0x6F, 0x6D, 0x30
-	.byte 0x3A, 0x2F, 0x42, 0x41, 0x4C, 0x41, 0x4E, 0x43, 0x45, 0x2F, 0x73, 0x74, 0x5F, 0x69, 0x32, 0x6E
+	.byte 0x3A, 0x2F, 0x42, 0x41, 0x4C, 0x41, 0x4E, 0x43
+#ifdef EUROPE
+	.byte 0x45, 0x2F, 0x25, 0x73
+	.byte 0x00, 0x00, 0x00, 0x00
+#else
+	.byte 0x45, 0x2F, 0x73, 0x74, 0x5F, 0x69, 0x32, 0x6E
 	.byte 0x5F, 0x6A, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00
+#endif
 	.global _0209808C
 _0209808C:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x55, 0x5D, 0x25, 0x73
@@ -164850,23 +166565,11 @@ _020988D8:
 TYPE_SPECIFIC_EXCLUSIVE_ITEMS:
 	.byte 0xFA, 0x01, 0xFB, 0x01, 0xFC, 0x01, 0xFD, 0x01
 	.byte 0xFE, 0x01, 0xFF, 0x01, 0x00, 0x02, 0x01, 0x02, 0x02, 0x02, 0x03, 0x02, 0x04, 0x02, 0x05, 0x02
-	.byte 0x06, 0x02, 0x07, 0x02, 0x08, 0x02, 0x09, 0x02, 0x0A, 0x02, 0x0B, 0x02
-	.word _020D020C
-	.byte 0x0E, 0x02, 0x0F, 0x02
-	.word _02110210
-	.byte 0x12, 0x02, 0x13, 0x02
-	.word _02150214
-	.byte 0x16, 0x02, 0x17, 0x02
-	.word _02190218
-	.byte 0x1A, 0x02, 0x1B, 0x02
-	.word _021D021C
-	.byte 0x1E, 0x02, 0x1F, 0x02
-	.word _02210220
-	.byte 0x22, 0x02, 0x23, 0x02
-	.word _02250224
-	.byte 0x26, 0x02, 0x27, 0x02
-	.word _02290228
-	.byte 0x2A, 0x02, 0x2B, 0x02, 0x2C, 0x02, 0x2D, 0x02
+	.byte 0x06, 0x02, 0x07, 0x02, 0x08, 0x02, 0x09, 0x02, 0x0A, 0x02, 0x0B, 0x02, 0x0C, 0x02, 0x0D, 0x02
+	.byte 0x0E, 0x02, 0x0F, 0x02, 0x10, 0x02, 0x11, 0x02, 0x12, 0x02, 0x13, 0x02, 0x14, 0x02, 0x15, 0x02
+	.byte 0x16, 0x02, 0x17, 0x02, 0x18, 0x02, 0x19, 0x02, 0x1A, 0x02, 0x1B, 0x02, 0x1C, 0x02, 0x1D, 0x02
+	.byte 0x1E, 0x02, 0x1F, 0x02, 0x20, 0x02, 0x21, 0x02, 0x22, 0x02, 0x23, 0x02, 0x24, 0x02, 0x25, 0x02
+	.byte 0x26, 0x02, 0x27, 0x02, 0x28, 0x02, 0x29, 0x02, 0x2A, 0x02, 0x2B, 0x02, 0x2C, 0x02, 0x2D, 0x02
 	.byte 0x2E, 0x02, 0x2F, 0x02, 0x30, 0x02, 0x31, 0x02, 0x32, 0x02, 0x33, 0x02, 0x34, 0x02, 0x35, 0x02
 	.byte 0x36, 0x02, 0x37, 0x02, 0x38, 0x02, 0x39, 0x02, 0x3A, 0x02, 0x3B, 0x02, 0x3C, 0x02, 0x3D, 0x02
 	.global _02098CB4
@@ -164899,7 +166602,7 @@ _02098D68:
 	.global RECOIL_MOVE_LIST
 RECOIL_MOVE_LIST:
 	.byte 0x74, 0x00, 0x8C, 0x00, 0xCB, 0x00, 0xCC, 0x00, 0xCE, 0x00, 0x62, 0x01, 0xB9, 0x01, 0x05, 0x02
-	.byte 0x06, 0x02, 0x15, 0x02,  0x00, 0x00
+	.byte 0x06, 0x02, 0x15, 0x02, 0x00, 0x00
 	.global PUNCH_MOVE_LIST
 PUNCH_MOVE_LIST:
 	.byte 0x41, 0x00, 0x4B, 0x00, 0x67, 0x00, 0x7E, 0x00, 0x88, 0x00
@@ -164988,6 +166691,11 @@ _02098FA8:
 	.global _02098FBC
 _02098FBC:
 	.byte 0x5B, 0x52, 0x5D, 0x00
+#ifdef EUROPE
+	.global _02099404_EU
+_02099404_EU:
+	.byte 0x46, 0x00, 0x00, 0x00
+#endif
 	.global _02098FC0
 _02098FC0:
 	.byte 0x4C, 0x49, 0x4E, 0x45
@@ -165060,6 +166768,11 @@ _02099138:
 	.global _02099140
 _02099140:
 	.byte 0x25, 0x73, 0x00, 0x00
+#ifdef EUROPE
+	.global _0209958C
+_0209958C:
+	.byte 0x5B, 0x66, 0x6C, 0x6F, 0x6F, 0x72, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00
+#else
 	.global _02099144
 _02099144:
 	.byte 0x00, 0x00, 0x00, 0x00
@@ -165072,6 +166785,7 @@ _0209914C:
 	.global _02099154
 _02099154:
 	.byte 0x25, 0x73, 0x25, 0x63, 0x25, 0x63, 0x46, 0x00
+#endif
 	.global _0209915C
 _0209915C:
 	.byte 0x02, 0x3F, 0x03, 0x3F, 0x03, 0x3F, 0x01, 0x3F
@@ -165443,9 +167157,24 @@ _02099784:
 	.global _020997A4
 _020997A4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00
+#ifdef EUROPE
+	.global _02099BF0_EU
+_02099BF0_EU:
+	.byte 0x01, 0x02, 0x03, 0x04, 0x05, 0x00, 0x00, 0x00
+	.global _020997B4
+_020997B4:
+	.byte 0xFF, 0x00, 0x01, 0x02
+	.byte 0x03, 0x04, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00
+	.global _02099C04_EU
+_02099C04_EU:
+	.byte 0x73, 0x65, 0x74, 0x20, 0x6C, 0x61, 0x6E, 0x67
+	.byte 0x20, 0x6D, 0x6F, 0x64, 0x65, 0x20, 0x28, 0x25, 0x64, 0x29, 0x2D, 0x3E, 0x28, 0x25, 0x64, 0x29
+	.byte 0x0A, 0x00, 0x00, 0x00
+#else
 	.global _020997B4
 _020997B4:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00
+#endif
 	.global _020997C0
 _020997C0:
 	.byte 0x45, 0x00, 0x00, 0x00
@@ -165457,6 +167186,24 @@ _020997C8:
 	.byte 0x45, 0x32, 0x00, 0x00
 	.global _020997CC
 _020997CC:
+#ifdef EUROPE
+	.byte 0x53, 0x31, 0x00, 0x00
+	.global _020997D0
+_020997D0:
+	.byte 0x52, 0x51, 0x00, 0x00
+	.global _020997D4
+_020997D4:
+	.byte 0x53, 0x32, 0x00, 0x00
+	.global _020997D8
+_020997D8:
+	.byte 0x45, 0x52, 0x00, 0x00
+	.global _020997DC
+_020997DC:
+	.byte 0x52, 0x45, 0x00, 0x00
+	.global _020997E0
+_020997E0:
+	.byte 0x45, 0x31, 0x00, 0x00
+#else
 	.byte 0x45, 0x52, 0x00, 0x00
 	.global _020997D0
 _020997D0:
@@ -165473,10 +167220,82 @@ _020997DC:
 	.global _020997E0
 _020997E0:
 	.byte 0x53, 0x32, 0x00, 0x00
+#endif
 	.global _020997E4
 _020997E4:
 	.byte 0x8B, 0x87, 0x8C, 0x87
 	.word _020998F8
+#ifdef EUROPE
+	.byte 0x93, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0xB3, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0x3D, 0x09, 0x00, 0x00
+	.word _020998F8
+	.byte 0xBE, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0xCD, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0x63, 0x09, 0x00, 0x00
+	.word _020998F8
+	.byte 0xD7, 0x09, 0x00, 0x00
+	.word _020998F8
+	.byte 0x7D, 0x06, 0x00, 0x00
+	.word _020998F8
+	.byte 0x86, 0x06, 0x00, 0x00
+	.word _020998F8
+	.byte 0xDB, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0x77, 0x06, 0x00, 0x00
+	.word _020998F8
+	.byte 0x64, 0x06, 0x00, 0x00
+	.word _020998F8
+	.byte 0x46, 0x06, 0x00, 0x00
+	.word _020998F8
+	.byte 0x34, 0x06, 0x00, 0x00
+	.word _020998F8
+	.byte 0x13, 0x06, 0x00, 0x00
+	.word _020998F8
+	.byte 0xDA, 0x05, 0x00, 0x00
+	.word _020998F8
+	.byte 0x7E, 0x05, 0x00, 0x00
+	.word _020998F8
+	.byte 0x69, 0x05, 0x00, 0x00
+	.word _020998F8
+	.byte 0x8A, 0x06, 0x00, 0x00
+	.word _020998F8
+	.byte 0x9E, 0x09, 0x00, 0x00
+	.word _020998F8
+	.byte 0xDD, 0x09, 0x00, 0x00
+	.word _020998F8
+	.byte 0x22, 0x0A, 0x00, 0x00
+	.word _020998F8
+	.byte 0x34, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0xC2, 0x09, 0x00, 0x00
+	.word _020998F8
+	.byte 0x54, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0x10, 0x09, 0x00, 0x00
+	.word _020998F8
+	.byte 0x1F, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0xED, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0x98, 0x04, 0x00, 0x00
+	.word _020998F8
+	.byte 0x20, 0x05, 0x00, 0x00
+	.word _020998F8
+	.byte 0x72, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0x2D, 0x05, 0x00, 0x00
+	.word _020998F8
+	.byte 0x4D, 0x05, 0x00, 0x00
+	.word _020998F8
+	.byte 0x84, 0x08, 0x00, 0x00
+	.word _020998F8
+	.byte 0x2A, 0x09, 0x00, 0x00
+#else
 	.byte 0x1C, 0x09, 0x00, 0x00
 	.word _020998F8
 	.byte 0x9D, 0x08, 0x00, 0x00
@@ -165544,12 +167363,51 @@ _020997E4:
 	.byte 0x63, 0x08, 0x00, 0x00
 	.word _020998F8
 	.byte 0x01, 0x0A, 0x00, 0x00
+#endif
 	.global _020998F8
 _020998F8:
 	.byte 0x6D, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x5F, 0x61, 0x6E, 0x61, 0x6C
 	.byte 0x79, 0x7A, 0x65, 0x2E, 0x63, 0x00, 0x00, 0x00
 	.global _0209990C
 _0209990C:
+#ifdef EUROPE
+	.word _020997D8
+	.byte 0x96, 0x00, 0x00, 0x00
+	.word _020997DC
+	.byte 0x97, 0x00, 0x00, 0x00
+	.word _020997C4
+	.byte 0xBA, 0x00, 0x00, 0x00
+	.word _020997C0
+	.byte 0x8D, 0x00, 0x00, 0x00
+	.word _020997D0
+	.byte 0xBF, 0x00, 0x00, 0x00
+	.word _020997CC
+	.byte 0x91, 0x00, 0x00, 0x00
+	.word _020997E0
+	.byte 0x92, 0x00, 0x00, 0x00
+	.word _020997D4
+	.byte 0x93, 0x00, 0x00, 0x00
+	.word _020997C8
+	.byte 0x94, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.global _0209995C
+_0209995C:
+	.word _020997D8
+	.byte 0x96, 0x00, 0x00, 0x00
+	.word _020997DC
+	.byte 0x97, 0x00, 0x00, 0x00
+	.word _020997C4
+	.byte 0xBA, 0x00, 0x00, 0x00
+	.word _020997C0
+	.byte 0x8D, 0x00, 0x00, 0x00
+	.word _020997D0
+	.byte 0xBF, 0x00, 0x00, 0x00
+	.word _020997CC
+	.byte 0xB8, 0x00, 0x00, 0x00
+	.word _020997E0
+	.byte 0x91, 0x00, 0x00, 0x00
+	.word _020997D4
+#else
 	.word _020997CC
 	.byte 0x96, 0x00, 0x00, 0x00
 	.word _020997D0
@@ -165586,6 +167444,7 @@ _0209995C:
 	.word _020997D8
 	.byte 0x91, 0x00, 0x00, 0x00
 	.word _020997E0
+#endif
 	.byte 0xB7, 0x00, 0x00, 0x00
 	.word _020997C8
 	.byte 0x93, 0x00, 0x00, 0x00
@@ -165625,6 +167484,11 @@ _020999F4:
 	.global _020999F8
 _020999F8:
 	.byte 0x46, 0x54, 0x00, 0x00
+#ifdef EUROPE
+	.global _02099E64_EU
+_02099E64_EU:
+	.byte 0x47, 0x50, 0x00, 0x00
+#endif
 	.global _020999FC
 _020999FC:
 	.byte 0x4B, 0x00, 0x00, 0x00
@@ -165872,8 +167736,24 @@ _02099C84:
 	.byte 0x74, 0x61, 0x67, 0x20, 0x63, 0x6F, 0x64, 0x65, 0x20, 0x65, 0x72, 0x72, 0x6F, 0x72, 0x20, 0x25
 	.byte 0x30, 0x32, 0x78, 0x20, 0x25, 0x63, 0x20, 0x5B, 0x25, 0x73, 0x5D, 0x00
 	.global _02099CA0
+#ifdef EUROPE
+	.global _0209A10C_EU
+_0209A10C_EU:
+	.byte 0x4C, 0x2E, 0x00, 0x00
+	.global _0209A110_EU
+_0209A110_EU:
+	.byte 0x4E, 0x2E, 0x00, 0x00
+#endif
 _02099CA0:
 	.byte 0xBD, 0xBE, 0x2D, 0x00
+#ifdef EUROPE
+	.global _0209A118_EU
+_0209A118_EU:
+	.byte 0x4C, 0x76, 0x2E, 0x00
+	.global _0209A11C_EU
+_0209A11C_EU:
+	.byte 0x4E, 0x76, 0x2E, 0x00
+#endif
 	.global _02099CA4
 _02099CA4:
 	.byte 0x3C, 0x00, 0x3D, 0x00, 0xFF, 0xFF, 0x00, 0x00
@@ -165898,6 +167778,106 @@ MOVE_ACCURACY_STARS_TABLE:
 	.byte 0x5F, 0x00, 0x00, 0x00, 0x65, 0x00, 0x00, 0x00
 	.global _02099D0C
 _02099D0C:
+#ifdef EUROPE
+	.byte 0x45, 0x5B, 0x43, 0x53
+	.byte 0x3A, 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00
+	.global _0209A198
+_0209A198:
+	.byte 0x55, 0x5B, 0x43, 0x53
+	.byte 0x3A, 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00
+	.global _0209A1A8
+_0209A1A8:
+	.byte 0x5B, 0x43, 0x53, 0x3A
+	.byte 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D, 0x46, 0x00, 0x00, 0x00
+	.global _0209A1B8
+_0209A1B8:
+	.byte 0x50, 0x20, 0x5B, 0x43
+	.byte 0x53, 0x3A, 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00
+	.global _0209A1C8
+_0209A1C8:
+	.byte 0x42, 0x5B, 0x43, 0x53
+	.byte 0x3A, 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D, 0x46, 0x00, 0x00
+	.global _0209A1D8
+_0209A1D8:
+	.byte 0x50, 0x2E, 0x20, 0x5B
+	.byte 0x43, 0x53, 0x3A, 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D, 0x00
+	.global _0209A1E8
+_0209A1E8:
+	.byte 0x50, 0x20, 0x2D, 0x5B
+	.byte 0x43, 0x53, 0x3A, 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D, 0x00
+	.global _0209A1F8
+_0209A1F8:
+	.byte 0x45, 0x2E, 0x20, 0x5B
+	.byte 0x43, 0x53, 0x3A, 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D, 0x00
+	.global _0209A208
+_0209A208:
+	.byte 0x50, 0x2E, 0x20, 0x2D
+	.byte 0x5B, 0x43, 0x53, 0x3A, 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+	.global _0209A21C
+_0209A21C:
+	.byte 0x45, 0x2E, 0x20, 0x2D, 0x5B, 0x43, 0x53, 0x3A, 0x56, 0x5D, 0x25, 0x64, 0x5B, 0x43, 0x52, 0x5D
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _0209A230_EU
+_0209A230_EU:
+	.byte 0x25, 0x64, 0x00, 0x00
+	.global _02099D10
+_02099D10:
+	.byte 0x5B, 0x4D, 0x53, 0x3A, 0x25, 0x64, 0x5D, 0x25
+	.byte 0x73, 0x00, 0x00, 0x00
+	.global _02099D1C
+_02099D1C:
+	.byte 0x5B, 0x43, 0x53, 0x3A, 0x4B, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _02099D2C
+_02099D2C:
+	.byte 0x5B, 0x43, 0x53, 0x3A, 0x4E, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _02099D3C
+_02099D3C:
+	.byte 0x5B, 0x43, 0x53, 0x3A, 0x4B, 0x5D, 0x5B, 0x4D, 0x3A, 0x54, 0x31, 0x5D
+	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+	.global _02099D50
+_02099D50:
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _02099D54
+_02099D54:
+	.byte 0x5B, 0x43, 0x53, 0x3A
+	.byte 0x59, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+	.global _02099D64
+_02099D64:
+	.byte 0x5B, 0x43, 0x53, 0x3A
+	.byte 0x46, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+	.global _02099D74
+_02099D74:
+	.byte 0x5B, 0x43, 0x53, 0x3A
+	.byte 0x4D, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+	.global _02099D84
+_02099D84:
+	.byte 0x5B, 0x4D, 0x3A, 0x53
+	.byte 0x33, 0x5D, 0x00, 0x00
+	.global _02099D8C
+_02099D8C:
+	.byte 0x25, 0x73, 0x00, 0x00
+	.global _02099D90
+_02099D90:
+	.byte 0x5B, 0x43, 0x53, 0x3A, 0x48, 0x5D, 0x25, 0x73
+	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+	.global _02099DC0
+_02099DC0:
+	.byte 0x5B, 0x43, 0x53, 0x3A, 0x50, 0x5D, 0x25, 0x73
+	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+	.global _0209A2D4_EU
+_0209A2D4_EU:
+	.byte 0x5B, 0x43, 0x53, 0x3A, 0x50, 0x5D, 0x25, 0x73
+	.byte 0x5B, 0x43, 0x52, 0x5D, 0x20, 0x25, 0x73, 0x00
+	.global _02099E08
+_02099E08:
+	.byte 0x5B, 0x43, 0x53, 0x3A, 0x58, 0x5D, 0x25, 0x73
+	.byte 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+	.global _0209A2F4_EU
+_0209A2F4_EU:
+	.byte 0x25, 0x73, 0x20, 0x25, 0x64, 0x00, 0x00, 0x00
+#else
 	.byte 0x25, 0x64, 0x00, 0x00
 	.global _02099D10
 _02099D10:
@@ -165963,6 +167943,7 @@ _02099DEC:
 _02099E08:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x58, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D
 	.byte 0x00, 0x00, 0x00, 0x00
+#endif
 	.global _02099E18
 _02099E18:
 	.byte 0x5B, 0x42, 0x41, 0x52, 0x5D, 0x00, 0x00, 0x00
@@ -166002,12 +167983,26 @@ _02099E44:
 	.byte 0x00, 0x2B, 0x00, 0x2C, 0x00, 0x2D, 0x00, 0x2E, 0x00, 0x2F, 0x00, 0x19, 0x00, 0x18, 0x00, 0x0D
 	.byte 0x04, 0x69, 0x02, 0x69, 0x06, 0x69, 0x0A, 0x69, 0x08, 0x69, 0x0C, 0x69, 0x00, 0x6A, 0x02, 0x7B
 	.byte 0x04, 0x83, 0x02, 0x83, 0x06, 0x83, 0x08, 0x83, 0x04, 0x93, 0x02, 0x93, 0x06, 0x93, 0x08, 0x93
-	.byte 0x00, 0x80, 0x02, 0xA5, 0x04, 0xA9, 0x02, 0xA9, 0x06, 0xA9, 0x09, 0xA9, 0x07, 0xA9, 0x00, 0x56
-	.byte 0x0B, 0xA9, 0x04, 0xC8, 0x06, 0xC8, 0x08, 0xC8, 0x0A, 0xC8, 0x02, 0xD8, 0x00, 0xC6, 0x00, 0xC3
+	.byte 0x00, 0x80, 0x02, 0xA5, 0x04, 0xA9, 0x02, 0xA9
+#ifdef EUROPE
+	.byte 0x06, 0xA9, 0x0A, 0xA9, 0x08, 0xA9, 0x00, 0x56, 0x0C, 0xA9, 0x06, 0xC8
+	.byte 0x04, 0xC8, 0x08, 0xC8
+#else
+	.byte 0x06, 0xA9, 0x09, 0xA9, 0x07, 0xA9, 0x00, 0x56
+	.byte 0x0B, 0xA9, 0x04, 0xC8, 0x06, 0xC8, 0x08, 0xC8
+#endif
+	.byte 0x0A, 0xC8, 0x02, 0xD8, 0x00, 0xC6, 0x00, 0xC3
 	.byte 0x05, 0x69, 0x03, 0x69, 0x07, 0x69, 0x0B, 0x69, 0x09, 0x69, 0x0D, 0x69, 0x01, 0x6A, 0x03, 0x7B
 	.byte 0x05, 0x83, 0x03, 0x83, 0x07, 0x83, 0x09, 0x83, 0x05, 0x93, 0x03, 0x93, 0x07, 0x93, 0x09, 0x93
-	.byte 0x01, 0x80, 0x03, 0xA5, 0x05, 0xA9, 0x03, 0xA9, 0x07, 0xA9, 0x0A, 0xA9, 0x08, 0xA9, 0x00, 0x57
-	.byte 0x0C, 0xA9, 0x05, 0xC8, 0x07, 0xC8, 0x09, 0xC8, 0x0B, 0xC8, 0x03, 0xD8, 0x01, 0xC6, 0x05, 0xD8
+	.byte 0x01, 0x80, 0x03, 0xA5, 0x05, 0xA9, 0x03, 0xA9
+#ifdef EUROPE
+	.byte 0x07, 0xA9, 0x0B, 0xA9, 0x09, 0xA9, 0x00, 0x57, 0x0D, 0xA9, 0x07, 0xC8
+	.byte 0x05, 0xC8, 0x09, 0xC8
+#else
+	.byte 0x07, 0xA9, 0x0A, 0xA9, 0x08, 0xA9, 0x00, 0x57
+	.byte 0x0C, 0xA9, 0x05, 0xC8, 0x07, 0xC8, 0x09, 0xC8,
+#endif
+	.byte 0x0B, 0xC8, 0x03, 0xD8, 0x01, 0xC6, 0x05, 0xD8
 	.global _0209A044
 _0209A044:
 	.byte 0x20, 0x00
@@ -166187,12 +168182,33 @@ _0209A3B6:
 	.byte 0x5D, 0xFF, 0x7D, 0x00, 0x5E, 0xFF, 0x3F, 0x00, 0xE3, 0xFF, 0xAF, 0x00
 	.global _0209AAB0
 _0209AAB0:
+#ifdef EUROPE
+	.byte 0x2F, 0x4D, 0x45, 0x53, 0x53, 0x41, 0x47, 0x45
+	.byte 0x2F, 0x74, 0x65, 0x78, 0x74, 0x5F, 0x69, 0x2E, 0x73, 0x74, 0x72, 0x00
+	.global _0209AAC4
+_0209AAC4:
+	.byte 0x2F, 0x4D, 0x45, 0x53
+	.byte 0x53, 0x41, 0x47, 0x45, 0x2F, 0x74, 0x65, 0x78, 0x74, 0x5F, 0x73, 0x2E, 0x73, 0x74, 0x72, 0x00
+	.global _0209AFBC
+_0209AFBC:
+	.byte 0x2F, 0x4D, 0x45, 0x53, 0x53, 0x41, 0x47, 0x45, 0x2F, 0x74, 0x65, 0x78, 0x74, 0x5F, 0x66, 0x2E
+	.byte 0x73, 0x74, 0x72, 0x00
+	.global _0209AFD0
+_0209AFD0:
+	.byte 0x2F, 0x4D, 0x45, 0x53, 0x53, 0x41, 0x47, 0x45, 0x2F, 0x74, 0x65, 0x78
+	.byte 0x74, 0x5F, 0x67, 0x2E, 0x73, 0x74, 0x72, 0x00
+	.global _0209AFE4_EU
+_0209AFE4_EU:
+	.byte 0x2F, 0x4D, 0x45, 0x53, 0x53, 0x41, 0x47, 0x45
+	.byte 0x2F, 0x74, 0x65, 0x78, 0x74, 0x5F, 0x65, 0x2E, 0x73, 0x74, 0x72, 0x00
+#else
 	.byte 0x2F, 0x4D, 0x45, 0x53
 	.byte 0x53, 0x41, 0x47, 0x45, 0x2F, 0x74, 0x65, 0x78, 0x74, 0x5F, 0x65, 0x2E, 0x73, 0x74, 0x72, 0x00
 	.global _0209AAC4
 _0209AAC4:
 	.byte 0x2F, 0x4D, 0x45, 0x53, 0x53, 0x41, 0x47, 0x45, 0x2F, 0x74, 0x65, 0x78, 0x74, 0x5F, 0x6A, 0x2E
 	.byte 0x73, 0x74, 0x72, 0x00
+#endif
 	.global _0209AAD8
 _0209AAD8:
 	.byte 0x2F, 0x4D, 0x45, 0x53, 0x53, 0x41, 0x47, 0x45, 0x2F, 0x74, 0x62, 0x6C
@@ -166209,6 +168225,12 @@ _0209AB60:
 	.byte 0xA1, 0x81, 0x0A, 0x00
 	.byte 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03, 0xFF, 0x03
 	.byte 0xFF, 0x03, 0xFF, 0x03, 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+	.global _0209B09C_EU
+_0209B09C_EU:
+	.byte 0xBD, 0x82, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#endif
 	.global _0209AB7C
 _0209AB7C:
 	.byte 0x73, 0x74, 0x61, 0x66, 0x66, 0x6F, 0x6E, 0x74
@@ -166385,23 +168407,23 @@ _0209AE7C:
 	.byte 0x6B, 0x6D, 0x61, 0x72, 0x6B, 0x2E, 0x77, 0x31, 0x36, 0x00, 0x00, 0x00
 	.global _0209AE90
 _0209AE90:
-	.word sub_0202ABFC
+	.word UpdateParentMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AEA0
 _0209AEA0:
-	.word sub_0202B5C8
+	.word UpdateSimpleMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AEB0
 _0209AEB0:
-	.word sub_0202BD64
+	.word UpdateAdvancedMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AEC0
 _0209AEC0:
-	.word sub_0202C808
+	.word UpdateCollectionMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AED0
 _0209AED0:
-	.word sub_0202D618
+	.word UpdateOptionsMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AEE0
 _0209AEE0:
@@ -166421,32 +168443,32 @@ _0209AF04:
 	.byte 0x5B, 0x4D, 0x3A, 0x42, 0x31, 0x35, 0x5D, 0x00
 	.global _0209AF0C
 _0209AF0C:
-	.word sub_0202DF98
+	.word UpdateDebugMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AF1C
 _0209AF1C:
-	.word sub_0202E708
+	.word UpdateScrollBox
 	.byte 0x02, 0x02, 0x1C, 0x14
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AF2C
 _0209AF2C:
-	.word sub_0202F488
+	.word UpdateDialogueBox
 	.byte 0x02, 0x11, 0x1C, 0x05
 	.byte 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AF3C
 _0209AF3C:
-	.word sub_0202F70C
+	.word UpdatePortraitBox
 	.byte 0x01, 0x0A, 0x05, 0x05
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AF4C
 _0209AF4C:
-	.word sub_0202FA5C
+	.word UpdateTextBox
 	.byte 0x01, 0x10, 0x1E, 0x06
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AF5C
 _0209AF5C:
-	.word sub_0202FD8C
+	.word UpdateDynamicTextBox
 	.byte 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AF6C
@@ -166455,20 +168477,20 @@ _0209AF6C:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _0209AF78
 _0209AF78:
-	.word sub_0202FF10
+	.word UpdateControlsChart
 	.byte 0x02, 0x02, 0x1C, 0x14, 0x01, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AF94
 _0209AF94:
-	.word sub_02030274
+	.word UpdateAlertBox
 	.byte 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AFA4
 _0209AFA4:
-	.word sub_02030AE8
+	.word UpdateAdvancedTextBox
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AFB4
 _0209AFB4:
-	.word sub_0203123C
+	.word UpdateTeamSelectionMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AFC4
 _0209AFC4:
@@ -166552,14 +168574,23 @@ _0209B09C:
 	.word sub_020351DC
 	.global _0209B0AC
 _0209B0AC:
-	.byte 0x97, 0x01, 0x98, 0x01, 0x00, 0x00, 0x94, 0x01
+	.byte 0x97, 0x01, 0x98, 0x01, 0x00, 0x00
+	.global _0209B0B2
+_0209B0B2:
+	.byte 0x94, 0x01
 	.byte 0x95, 0x01, 0x00, 0x00
 	.global _0209B0B8
 _0209B0B8:
-	.byte 0x9A, 0x01, 0x9B, 0x01, 0x00, 0x00, 0x9D, 0x01, 0x9E, 0x01, 0x00, 0x00
+	.byte 0x9A, 0x01, 0x9B, 0x01, 0x00, 0x00
+	.global _0209B0BE
+_0209B0BE:
+	.byte 0x9D, 0x01, 0x9E, 0x01, 0x00, 0x00
 	.global _0209B0C4
 _0209B0C4:
-	.byte 0xA0, 0x01, 0xA1, 0x01, 0x00, 0x00, 0xA3, 0x01, 0xA4, 0x01, 0x00, 0x00
+	.byte 0xA0, 0x01, 0xA1, 0x01, 0x00, 0x00
+	.global _0209B0CA
+_0209B0CA:
+	.byte 0xA3, 0x01, 0xA4, 0x01, 0x00, 0x00
 	.global _0209B0D0
 _0209B0D0:
 	.byte 0x86, 0x01, 0x87, 0x01
@@ -166599,16 +168630,20 @@ _0209B134:
 	.word _0209B0E0
 	.byte 0x8F, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word _0209B0D8
-	.byte 0x93, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xB2, 0xB0, 0x09, 0x02
+	.byte 0x93, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word _0209B0B2
 	.byte 0x96, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word _0209B0AC
 	.byte 0x99, 0x01, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.word _0209B0B8
 	.byte 0x9C, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0xBE, 0xB0, 0x09, 0x02, 0x9F, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word _0209B0BE
+	.byte 0x9F, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word _0209B0C4
-	.byte 0xA2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xCA, 0xB0, 0x09, 0x02, 0x00, 0x00, 0x00, 0x00
+	.byte 0xA2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word _0209B0CA
+	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209B1AC
 _0209B1AC:
@@ -166646,8 +168681,15 @@ _0209B218:
 	.word sub_02036478
 	.global _0209B228
 _0209B228:
-	.byte 0x67, 0x3C, 0x68, 0x3C, 0x69, 0x3C, 0x6A, 0x3C, 0x6B, 0x3C, 0x6C, 0x3C
-	.byte 0x6D, 0x3C, 0x6E, 0x3C, 0x6F, 0x3C, 0x70, 0x3C, 0x71, 0x3C, 0x72, 0x3C, 0x00, 0x00, 0x00, 0x00
+#ifndef EUROPE
+	.byte 0x67, 0x3C, 0x68, 0x3C
+#endif
+	.byte 0x69, 0x3C, 0x6A, 0x3C, 0x6B, 0x3C, 0x6C, 0x3C
+	.byte 0x6D, 0x3C, 0x6E, 0x3C, 0x6F, 0x3C, 0x70, 0x3C, 0x71, 0x3C, 0x72, 0x3C
+#ifdef EUROPE
+	.byte 0x73, 0x3C, 0x74, 0x3C
+#endif
+	.byte 0x00, 0x00, 0x00, 0x00
 	.global _0209B244
 _0209B244:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -166659,8 +168701,14 @@ _0209B254:
 	.word sub_020366C0
 	.global _0209B264
 _0209B264:
-	.byte 0x74, 0x3C, 0x75, 0x3C, 0x76, 0x3C, 0x77, 0x3C, 0x78, 0x3C, 0x79, 0x3C, 0x7A, 0x3C, 0x7B, 0x3C
+#ifndef EUROPE
+	.byte 0x74, 0x3C, 0x75, 0x3C
+#endif
+	.byte 0x76, 0x3C, 0x77, 0x3C, 0x78, 0x3C, 0x79, 0x3C, 0x7A, 0x3C, 0x7B, 0x3C
 	.byte 0x7C, 0x3C, 0x7D, 0x3C, 0x7E, 0x3C, 0x7F, 0x3C, 0x80, 0x3C, 0x81, 0x3C, 0x82, 0x3C, 0x83, 0x3C
+#ifdef EUROPE
+	.byte 0x84, 0x3C, 0x85, 0x3C
+#endif
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global _0209B288
 _0209B288:
@@ -167310,19 +169358,43 @@ _0209C9E4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x12, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209C9F4
 _0209C9F4:
+#ifdef EUROPE
+	.byte 0x5B, 0x43, 0x4C, 0x55, 0x4D, 0x5F, 0x53, 0x45, 0x54, 0x3A, 0x37, 0x5D
+	.byte 0x25, 0x64, 0x5B, 0x4D, 0x3A, 0x53, 0x31, 0x5D, 0x25, 0x73, 0x00, 0x00
+#else
 	.byte 0x25, 0x64, 0x25, 0x73, 0x00, 0x00, 0x00, 0x00
+#endif
 	.global _0209C9FC
 _0209C9FC:
+#ifdef EUROPE
+	.byte 0x5B, 0x43, 0x4C, 0x55
+	.byte 0x4D, 0x5F, 0x53, 0x45, 0x54, 0x3A, 0x37, 0x5D, 0x5B, 0x4D, 0x53, 0x3A, 0x31, 0x5D, 0x5B, 0x4D
+	.byte 0x3A, 0x53, 0x31, 0x5D, 0x25, 0x73, 0x00, 0x00
+#else
 	.byte 0x5B, 0x4D, 0x53, 0x3A, 0x31, 0x5D, 0x25, 0x73
 	.byte 0x00, 0x00, 0x00, 0x00
+#endif
 	.global _0209CA08
 _0209CA08:
+#ifdef EUROPE
+	.byte 0x5B, 0x43, 0x4C, 0x55, 0x4D, 0x5F, 0x53, 0x45
+	.byte 0x54, 0x3A, 0x37, 0x5D, 0x5B, 0x43, 0x53, 0x3A, 0x57, 0x5D, 0x25, 0x64, 0x5B, 0x4D, 0x3A, 0x53
+	.byte 0x31, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00, 0x00
+#else
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x57, 0x5D, 0x25, 0x64, 0x25, 0x73, 0x5B, 0x43
 	.byte 0x52, 0x5D, 0x00, 0x00
+#endif
 	.global _0209CA18
 _0209CA18:
+#ifdef EUROPE
+	.byte 0x5B, 0x43, 0x4C, 0x55
+	.byte 0x4D, 0x5F, 0x53, 0x45, 0x54, 0x3A, 0x37, 0x5D, 0x5B, 0x43, 0x53, 0x3A, 0x57, 0x5D, 0x5B, 0x4D
+	.byte 0x53, 0x3A, 0x31, 0x5D, 0x5B, 0x4D, 0x3A, 0x53, 0x31, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D
+	.byte 0x00, 0x00, 0x00, 0x00
+#else
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x57, 0x5D, 0x5B, 0x4D, 0x53, 0x3A, 0x31, 0x5D
 	.byte 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00
+#endif
 	.global _0209CA2C
 _0209CA2C:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x57, 0x5D, 0x25, 0x73
@@ -168509,9 +170581,15 @@ WONDER_MAIL_BITS_MAP:
 	.byte 0x33, 0x51, 0x40, 0x57
 	.global WONDER_MAIL_BITS_SWAP
 WONDER_MAIL_BITS_SWAP:
+#ifdef EUROPE
+	.byte 0x0E, 0x04, 0x03, 0x18, 0x09, 0x1E, 0x0A, 0x20, 0x10, 0x21, 0x14, 0x00, 0x13, 0x16, 0x05, 0x12
+	.byte 0x06, 0x01, 0x17, 0x1C, 0x07, 0x1B, 0x0D, 0x1F, 0x15, 0x1A, 0x02, 0x0B, 0x0C, 0x19, 0x0F, 0x08
+	.byte 0x1D, 0x11, 0x00, 0x00
+#else
 	.byte 0x07, 0x1B, 0x0D, 0x1F, 0x15, 0x1A, 0x06, 0x01, 0x17, 0x1C, 0x09, 0x1E
 	.byte 0x0A, 0x20, 0x10, 0x21, 0x0F, 0x08, 0x1D, 0x11, 0x14, 0x00, 0x13, 0x16, 0x05, 0x12, 0x0E, 0x04
 	.byte 0x03, 0x18, 0x02, 0x0B, 0x0C, 0x19, 0x00, 0x00
+#endif
 	.global ARM9_UNKNOWN_TABLE__NA_209E12C
 ARM9_UNKNOWN_TABLE__NA_209E12C:
 	.byte 0x0D, 0x07, 0x19, 0x0F, 0x04, 0x1D, 0x2A, 0x31
@@ -168637,9 +170715,15 @@ _0209E6BD:
 	.byte 0x00, 0x00, 0x00
 	.global TACTIC_NAME_STRING_IDS
 TACTIC_NAME_STRING_IDS:
+#ifndef EUROPE
 	.byte 0xCF, 0x26, 0xD0, 0x26
+#endif
 	.byte 0xD1, 0x26, 0xD2, 0x26, 0xD3, 0x26, 0xD4, 0x26, 0xD5, 0x26, 0xD6, 0x26, 0xD7, 0x26, 0xD8, 0x26
+#ifdef EUROPE
+	.byte 0xD9, 0x26, 0xDA, 0x26, 0xDB, 0x26, 0x00, 0x00
+#else
 	.byte 0xD9, 0x26, 0x00, 0x00
+#endif
 	.global STATUS_NAME_STRING_IDS
 STATUS_NAME_STRING_IDS:
 	.byte 0xE9, 0x08, 0xEA, 0x08, 0xEB, 0x08, 0xEC, 0x08, 0xED, 0x08, 0xEE, 0x08
@@ -168683,13 +170767,23 @@ _0209E7A6:
 	.byte 0x00, 0x00, 0x2B, 0x0A, 0x00, 0x00, 0x2C, 0x0A, 0x00, 0x00, 0x2D, 0x0A, 0x00, 0x00, 0x2E, 0x0A
 	.byte 0x00, 0x00, 0x2F, 0x0A, 0x00, 0x00, 0x30, 0x0A, 0x00, 0x00, 0x31, 0x0A, 0x00, 0x00, 0x32, 0x0A
 	.byte 0x00, 0x00, 0x33, 0x0A, 0x00, 0x00, 0x34, 0x0A, 0x00, 0x00, 0x35, 0x0A
+#ifdef EUROPE
+	.global STATUSES_FULL_DESCRIPTION_STRING_IDS
+STATUSES_FULL_DESCRIPTION_STRING_IDS:
+	.byte 0xF5, 0x34
+	.global _0209E912
+_0209E912:
+	.byte 0xF6, 0x34
+#else
 	.global STATUSES_FULL_DESCRIPTION_STRING_IDS
 STATUSES_FULL_DESCRIPTION_STRING_IDS:
 	.byte 0xF3, 0x34
 	.global _0209E912
 _0209E912:
 	.byte 0xF4, 0x34
-	.byte 0xF5, 0x34, 0xF6, 0x34, 0xF7, 0x34, 0xF8, 0x34, 0xF9, 0x34, 0xFA, 0x34, 0xFB, 0x34, 0xFC, 0x34
+	.byte 0xF5, 0x34, 0xF6, 0x34
+#endif
+	.byte 0xF7, 0x34, 0xF8, 0x34, 0xF9, 0x34, 0xFA, 0x34, 0xFB, 0x34, 0xFC, 0x34
 	.byte 0xFD, 0x34, 0xFE, 0x34, 0xFF, 0x34, 0x00, 0x35, 0x01, 0x35, 0x02, 0x35, 0x03, 0x35, 0x04, 0x35
 	.byte 0x05, 0x35, 0x06, 0x35, 0x07, 0x35, 0x08, 0x35, 0x09, 0x35, 0x0A, 0x35, 0x0B, 0x35, 0x0C, 0x35
 	.byte 0x0D, 0x35, 0x0E, 0x35, 0x0F, 0x35, 0x10, 0x35, 0x11, 0x35, 0x12, 0x35, 0x13, 0x35, 0x14, 0x35
@@ -168709,12 +170803,21 @@ _0209E912:
 	.byte 0x7D, 0x35, 0x7E, 0x35, 0x7F, 0x35, 0x80, 0x35, 0x81, 0x35, 0x82, 0x35, 0x83, 0x35, 0x84, 0x35
 	.byte 0x85, 0x35, 0x86, 0x35, 0x87, 0x35, 0x88, 0x35, 0x89, 0x35, 0x8A, 0x35, 0x8B, 0x35, 0x8C, 0x35
 	.byte 0x8D, 0x35, 0x8E, 0x35, 0x8F, 0x35, 0x90, 0x35, 0x91, 0x35, 0x92, 0x35, 0x93, 0x35, 0x94, 0x35
+#ifdef EUROPE
+	.byte 0x95, 0x35, 0x96, 0x35, 0x99, 0x35, 0x9A, 0x35
+	.byte 0x9C, 0x35, 0x9D, 0x35, 0x9B, 0x35, 0x9E, 0x35
+#else
 	.byte 0x97, 0x35, 0x98, 0x35, 0x9A, 0x35, 0x9B, 0x35, 0x99, 0x35, 0x9C, 0x35, 0x9D, 0x35, 0x9E, 0x35
+#endif
 	.byte 0x9F, 0x35, 0xA0, 0x35, 0xA1, 0x35, 0xA2, 0x35, 0xA3, 0x35, 0xA4, 0x35, 0xA5, 0x35, 0xA6, 0x35
 	.byte 0xA7, 0x35, 0xA8, 0x35, 0xA9, 0x35, 0xAA, 0x35, 0xAB, 0x35, 0xAC, 0x35, 0xAD, 0x35, 0xAE, 0x35
 	.byte 0xAF, 0x35, 0xB0, 0x35, 0xB1, 0x35, 0xB2, 0x35, 0xB3, 0x35, 0xB4, 0x35, 0xB5, 0x35, 0xB6, 0x35
 	.byte 0xB7, 0x35, 0xB8, 0x35, 0xB9, 0x35, 0xBA, 0x35, 0xBB, 0x35, 0xBC, 0x35, 0xBD, 0x35, 0xBE, 0x35
-	.byte 0xBF, 0x35, 0xC0, 0x35, 0x00, 0x00, 0x00, 0x00
+	.byte 0xBF, 0x35, 0xC0, 0x35
+#ifdef EUROPE
+	.byte 0xC1, 0x35, 0xC2, 0x35
+#endif
+	.byte 0x00, 0x00, 0x00, 0x00
 	.global ARM9_UNKNOWN_DATA__NA_209EAAC
 ARM9_UNKNOWN_DATA__NA_209EAAC:
 	.byte 0x00, 0x07, 0x00, 0x00
@@ -169686,7 +171789,7 @@ _020A0C6A:
 	.byte 0x04, 0x00
 	.global _020A0C6C
 _020A0C6C:
-	.byte  0xE8, 0x03
+	.byte 0xE8, 0x03
 	.global _020A0C6E
 _020A0C6E:
 	.byte 0x00, 0x00, 0xA4, 0x04, 0x00, 0x00
@@ -170452,11 +172555,17 @@ RANK_UP_TABLE:
 	.global DS_DOWNLOAD_TEAMS
 DS_DOWNLOAD_TEAMS:
 	.byte 0xFF, 0x00, 0xE9, 0x01, 0x0E, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00
+	.global _020A2C24
+_020A2C24:
 	.byte 0xFF, 0x00, 0x1E, 0x01, 0x14, 0x00, 0x00, 0x00, 0xAC, 0x01, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00
+	.global _020A2C34
+_020A2C34:
 	.byte 0xFF, 0x00, 0xA6, 0x01, 0x18, 0x00, 0x00, 0x00, 0x35, 0x01, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00
 	.global _020A2C44
 _020A2C44:
 	.byte 0xFF, 0x00, 0x1B, 0x01, 0x14, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00
+	.global _020A2C54
+_020A2C54:
 	.byte 0xFF, 0x00, 0xC8, 0x01, 0x1E, 0x00, 0x00, 0x00, 0x83, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x00, 0x00
 	.global _020A2C64
 _020A2C64:
@@ -170470,6 +172579,75 @@ UNOWN_SPECIES_ADDITIONAL_CHARS:
 	.byte 0x42, 0x00, 0x00, 0x00
 	.global _020A2C8C
 _020A2C8C:
+#ifdef EUROPE
+	.byte 0x58, 0x00, 0x00, 0x00
+	.global _020A2C90
+_020A2C90:
+	.byte 0x4E, 0x00, 0x00, 0x00
+	.global _020A2C94
+_020A2C94:
+	.byte 0x41, 0x00, 0x00, 0x00
+	.global _020A2C98
+_020A2C98:
+	.byte 0x4F, 0x00, 0x00, 0x00
+	.global _020A2C9C
+_020A2C9C:
+	.byte 0x59, 0x00, 0x00, 0x00
+	.global _020A2CA0
+_020A2CA0:
+	.byte 0x49, 0x00, 0x00, 0x00
+	.global _020A2CA4
+_020A2CA4:
+	.byte 0x4D, 0x00, 0x00, 0x00
+	.global _020A2CA8
+_020A2CA8:
+	.byte 0x4C, 0x00, 0x00, 0x00
+	.global _020A2CAC
+_020A2CAC:
+	.byte 0x50, 0x00, 0x00, 0x00
+	.global _020A2CB0
+_020A2CB0:
+	.byte 0x5A, 0x00, 0x00, 0x00
+	.global _020A2CB4
+_020A2CB4:
+	.byte 0x53, 0x00, 0x00, 0x00
+	.global _020A2CB8
+_020A2CB8:
+	.byte 0x52, 0x00, 0x00, 0x00
+	.global _020A2CBC
+_020A2CBC:
+	.byte 0x51, 0x00, 0x00, 0x00
+	.global _020A2CC0
+_020A2CC0:
+	.byte 0x3F, 0x00, 0x00, 0x00
+	.global _020A2CC4
+_020A2CC4:
+	.byte 0x48, 0x00, 0x00, 0x00
+	.global _020A2CC8
+_020A2CC8:
+	.byte 0x4A, 0x00, 0x00, 0x00
+	.global _020A2CCC
+_020A2CCC:
+	.byte 0x4B, 0x00, 0x00, 0x00
+	.global _020A2CD0
+_020A2CD0:
+	.byte 0x21, 0x00, 0x00, 0x00
+	.global _020A2CD4
+_020A2CD4:
+	.byte 0x56, 0x00, 0x00, 0x00
+	.global _020A2CD8
+_020A2CD8:
+	.byte 0x57, 0x00, 0x00, 0x00
+	.global _020A2CDC
+_020A2CDC:
+	.byte 0x55, 0x00, 0x00, 0x00
+	.global _020A2CE0
+_020A2CE0:
+	.byte 0x47, 0x00, 0x00, 0x00
+	.global _020A2CE4
+_020A2CE4:
+	.byte 0x54, 0x00, 0x00, 0x00
+#else
 	.byte 0x4D, 0x00, 0x00, 0x00
 	.global _020A2C90
 _020A2C90:
@@ -170537,6 +172715,7 @@ _020A2CE0:
 	.global _020A2CE4
 _020A2CE4:
 	.byte 0x47, 0x00, 0x00, 0x00
+#endif
 	.global _020A2CE8
 _020A2CE8:
 	.byte 0x46, 0x00, 0x00, 0x00
@@ -170551,10 +172730,47 @@ _020A2CF4:
 	.byte 0x43, 0x00, 0x00, 0x00
 	.global _020A2CF8
 _020A2CF8:
+#ifdef EUROPE
+	.word GetKeyM2N
+	.word GetKeyM2NBaseForm
+	.word GetKeyN2M
+	.word GetKeyN2MBaseForm
+	.global _020A328C_EU
+_020A328C_EU:
+	.byte 0x73, 0x74, 0x5F, 0x6E, 0x32, 0x6D, 0x5F, 0x66, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _020A329C
+_020A329C:
+	.byte 0x73, 0x74, 0x5F, 0x6E, 0x32, 0x6D, 0x5F, 0x67, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _020A32AC
+_020A32AC:
+	.byte 0x73, 0x74, 0x5F, 0x6E, 0x32, 0x6D, 0x5F, 0x69, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _020A32BC
+_020A32BC:
+	.byte 0x73, 0x74, 0x5F, 0x6E, 0x32, 0x6D, 0x5F, 0x73, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _020A32CC
+_020A32CC:
+	.byte 0x73, 0x74, 0x5F, 0x6D, 0x32, 0x6E, 0x5F, 0x65, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _020A32DC
+_020A32DC:
+	.byte 0x73, 0x74, 0x5F, 0x6E, 0x32, 0x6D, 0x5F, 0x65, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _020A32EC
+_020A32EC:
+	.byte 0x73, 0x74, 0x5F, 0x6D, 0x32, 0x6E, 0x5F, 0x66, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _020A32FC
+_020A32FC:
+	.byte 0x73, 0x74, 0x5F, 0x6D, 0x32, 0x6E, 0x5F, 0x67, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _020A330C
+_020A330C:
+	.byte 0x73, 0x74, 0x5F, 0x6D, 0x32, 0x6E, 0x5F, 0x69, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+	.global _020A331C
+_020A331C:
+	.byte 0x73, 0x74, 0x5F, 0x6D, 0x32, 0x6E, 0x5F, 0x73, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
+#else
 	.word GetKeyN2M
 	.word GetKeyN2MBaseForm
 	.word GetKeyM2N
 	.word GetKeyM2NBaseForm
+#endif
 	.global MONSTER_SPRITE_DATA
 MONSTER_SPRITE_DATA:
 	.byte 0x00
@@ -170659,13 +172875,18 @@ _020A3200:
 	.global _020A3210
 _020A3210:
 	.byte 0x72, 0x6F, 0x6D, 0x30
-	.byte 0x3A, 0x2F, 0x42, 0x41, 0x4C, 0x41, 0x4E, 0x43, 0x45, 0x2F, 0x73, 0x74, 0x5F, 0x6E, 0x32, 0x6D
+	.byte 0x3A, 0x2F, 0x42, 0x41, 0x4C, 0x41, 0x4E, 0x43
+#ifdef EUROPE
+    .byte 0x45, 0x2F, 0x25, 0x73, 0x00, 0x00, 0x00, 0x00
+#else
+	.byte 0x45, 0x2F, 0x73, 0x74, 0x5F, 0x6E, 0x32, 0x6D
 	.byte 0x5F, 0x6A, 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00
 	.global _020A322C
 _020A322C:
 	.byte 0x72, 0x6F, 0x6D, 0x30, 0x3A, 0x2F, 0x42, 0x41
 	.byte 0x4C, 0x41, 0x4E, 0x43, 0x45, 0x2F, 0x73, 0x74, 0x5F, 0x6D, 0x32, 0x6E, 0x5F, 0x6A, 0x2E, 0x62
 	.byte 0x69, 0x6E, 0x00, 0x00
+#endif
 	.global _020A3248
 _020A3248:
 	.word sub_02054844
@@ -170785,7 +173006,7 @@ _020A34B8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global _020A34C4
 _020A34C4:
-	.byte 0x05, 0x0A, 0x04, 0x08, 0x03, 0x06, 0x02, 0x04, 0x01, 0x02, 0x00, 0x00,  0xFF, 0x00
+	.byte 0x05, 0x0A, 0x04, 0x08, 0x03, 0x06, 0x02, 0x04, 0x01, 0x02, 0x00, 0x00, 0xFF, 0x00
 	.global _020A34D2
 _020A34D2:
 	.byte 0x60, 0x14
@@ -171034,8 +173255,16 @@ _020A3B8C:
 	.byte 0x43, 0x52, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00
 	.global MISSION_MENU_STRING_IDS_1
 MISSION_MENU_STRING_IDS_1:
-	.byte 0xD0, 0x38, 0xD1, 0x38, 0xD2, 0x38, 0xD3, 0x38
-	.byte 0xD4, 0x38, 0xD5, 0x38, 0xD6, 0x38, 0x00, 0x00
+#ifndef EUROPE
+	.byte 0xD0, 0x38, 0xD1, 0x38
+#endif
+	.byte 0xD2, 0x38, 0xD3, 0x38
+	.byte 0xD4, 0x38, 0xD5, 0x38
+#ifdef EUROPE
+	.byte 0xD6, 0x38, 0xD7, 0x38, 0xD8, 0x38, 0x00, 0x00
+#else
+	.byte 0xD6, 0x38, 0x00, 0x00
+#endif
 	.global RANK_STRINGS_2
 RANK_STRINGS_2:
 	.byte 0x5B, 0x43, 0x53, 0x3A, 0x44, 0x5D, 0x45, 0x5B
@@ -171050,8 +173279,12 @@ _020A3BCC:
 	.byte 0x43, 0x52, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00
 	.global MISSION_MENU_STRING_IDS_2
 MISSION_MENU_STRING_IDS_2:
+#ifdef EUROPE
+	.byte 0xD9, 0x38, 0xDA, 0x38, 0xDD, 0x38, 0xDB, 0x38, 0xDE, 0x38, 0xDC, 0x38, 0xDF, 0x38, 0xE0, 0x38
+#else
 	.byte 0xD7, 0x38, 0xD8, 0x38, 0xDB, 0x38, 0xD9, 0x38
 	.byte 0xDC, 0x38, 0xDA, 0x38, 0xDD, 0x38, 0xDE, 0x38
+#endif
 	.global RANK_STRINGS_3
 RANK_STRINGS_3:
 	.byte 0x5B, 0x4D, 0x3A, 0x53, 0x33, 0x5D, 0x5B, 0x43
@@ -171097,7 +173330,7 @@ MISSION_DUNGEON_UNLOCK_TABLE:
 	.byte 0x5B
 	.global _020A3CAD
 _020A3CAD:
-	.byte 0x02, 0x60, 0x06,  0x62, 0x06
+	.byte 0x02, 0x60, 0x06, 0x62, 0x06
 	.global NO_SEND_ITEM_TABLE
 NO_SEND_ITEM_TABLE:
 	.byte 0xB2, 0x00
@@ -171130,7 +173363,7 @@ ARM9_UNKNOWN_FUNCTION_TABLE__NA_20A3CF4:
 MISSION_BANNED_STORY_MONSTERS:
 	.byte 0x6D, 0x00, 0x29, 0x00, 0xDD, 0x01, 0x83, 0x01, 0x69, 0x00, 0x71, 0x00, 0x73, 0x00, 0xB2, 0x00
 	.byte 0xFC, 0x01, 0x33, 0x01, 0x3C, 0x01, 0x60, 0x01, 0x61, 0x01, 0x8B, 0x00, 0x8D, 0x00, 0xB7, 0x01
-	.byte 0xB8, 0x01, 0xE4, 0x01, 0x51, 0x01, 0x52, 0x01,  0x00, 0x00
+	.byte 0xB8, 0x01, 0xE4, 0x01, 0x51, 0x01, 0x52, 0x01, 0x00, 0x00
 	.global ITEM_DELIVERY_TABLE
 ITEM_DELIVERY_TABLE:
 	.byte 0x49, 0x00, 0x48, 0x00, 0x57, 0x00
@@ -171155,20 +173388,138 @@ MISSION_BANNED_MONSTERS:
 	.byte 0x91, 0x00, 0x92, 0x00, 0x99, 0x01, 0x9A, 0x01, 0x9B, 0x01, 0x9C, 0x01, 0x9D, 0x01, 0x9E, 0x01
 	.byte 0x9F, 0x01, 0xA0, 0x01, 0xA1, 0x01, 0xA2, 0x01, 0xA3, 0x01, 0xA4, 0x01, 0xA5, 0x01, 0x0E, 0x01
 	.byte 0x0F, 0x01, 0x10, 0x01, 0x14, 0x01, 0x15, 0x01, 0x16, 0x01, 0x17, 0x01, 0x96, 0x00, 0x97, 0x00
-	.byte 0x0A, 0x02, 0x0B, 0x02
-	.word _020D020C
-	.byte 0x0E, 0x02, 0x10, 0x02, 0x11, 0x02, 0x12, 0x02
-	.byte 0xEA, 0x01, 0x13, 0x02
-	.word _02150214
-	.byte 0x16, 0x02, 0x36, 0x01, 0x28, 0x00, 0x32, 0x00
+	.byte 0x0A, 0x02, 0x0B, 0x02, 0x0C, 0x02, 0x0D, 0x02, 0x0E, 0x02, 0x10, 0x02, 0x11, 0x02, 0x12, 0x02
+	.byte 0xEA, 0x01, 0x13, 0x02, 0x14, 0x02, 0x15, 0x02, 0x16, 0x02, 0x36, 0x01, 0x28, 0x00, 0x32, 0x00
 	.byte 0x33, 0x00, 0x60, 0x00, 0x7A, 0x00, 0x82, 0x00, 0x83, 0x00, 0xB7, 0x00, 0x46, 0x01, 0xC0, 0x00
 	.byte 0xEF, 0x00, 0xF3, 0x00, 0xF4, 0x00, 0x19, 0x01, 0x42, 0x01, 0x4A, 0x01, 0x50, 0x01, 0x71, 0x01
-	.byte 0x86, 0x01, 0xB2, 0x01, 0xD6, 0x01, 0xE3, 0x01, 0xEF, 0x01, 0x07, 0x02
-	.word _020F0208
+	.byte 0x86, 0x01, 0xB2, 0x01, 0xD6, 0x01, 0xE3, 0x01, 0xEF, 0x01, 0x07, 0x02, 0x08, 0x02, 0x0F, 0x02
 	.byte 0x05, 0x02, 0xBA, 0x01, 0xFA, 0x01, 0x78, 0x01, 0x88, 0x01, 0xE5, 0x00, 0x63, 0x01, 0xFB, 0x00
 	.byte 0xF2, 0x00, 0x23, 0x01, 0xC8, 0x01, 0xF1, 0x00, 0x4B, 0x01, 0x3A, 0x01, 0x43, 0x00, 0x00, 0x00
 	.global MISSION_STRING_IDS
 MISSION_STRING_IDS:
+#ifdef EUROPE
+	.byte 0x43, 0x3B, 0x44, 0x3B, 0x45, 0x3B, 0x3F, 0x39
+	.byte 0x40, 0x39, 0x41, 0x39, 0x42, 0x39, 0x43, 0x39, 0x44, 0x39, 0x45, 0x39, 0x46, 0x39, 0x47, 0x39
+	.byte 0x48, 0x39, 0x49, 0x39, 0x1F, 0x3B, 0x20, 0x3B, 0x21, 0x3B, 0x22, 0x3B, 0x23, 0x3B, 0x24, 0x3B
+	.byte 0x25, 0x3B, 0x26, 0x3B, 0x4A, 0x39, 0x4B, 0x39, 0x4C, 0x39, 0x4D, 0x39, 0x4E, 0x39, 0x4F, 0x39
+	.byte 0x50, 0x39, 0x51, 0x39, 0x52, 0x39, 0x53, 0x39, 0x54, 0x39, 0x27, 0x3B, 0x28, 0x3B, 0x29, 0x3B
+	.byte 0x2A, 0x3B, 0x2B, 0x3B, 0x2C, 0x3B, 0x2D, 0x3B, 0x2E, 0x3B, 0x2F, 0x3B, 0x30, 0x3B, 0x31, 0x3B
+	.byte 0x55, 0x39, 0x56, 0x39, 0x57, 0x39, 0x58, 0x39, 0x59, 0x39, 0x5A, 0x39, 0x5B, 0x39, 0x32, 0x3B
+	.byte 0x33, 0x3B, 0x34, 0x3B, 0x35, 0x3B, 0x36, 0x3B, 0x37, 0x3B, 0x38, 0x3B, 0x5C, 0x39, 0x5D, 0x39
+	.byte 0x5E, 0x39, 0x5F, 0x39, 0x60, 0x39, 0x61, 0x39, 0x39, 0x3B, 0x3A, 0x3B, 0x3B, 0x3B, 0x3C, 0x3B
+	.byte 0x3D, 0x3B, 0x3E, 0x3B, 0x3F, 0x3B, 0x40, 0x3B, 0x41, 0x3B, 0x42, 0x3B, 0x90, 0x39, 0x91, 0x39
+	.byte 0x92, 0x39, 0x93, 0x39, 0x94, 0x39, 0x95, 0x39, 0x96, 0x39, 0x8A, 0x3B, 0x8B, 0x3B, 0x8C, 0x3B
+	.byte 0x8D, 0x3B, 0x8E, 0x3B, 0x8F, 0x3B, 0x90, 0x3B, 0x91, 0x3B, 0x92, 0x3B, 0x93, 0x3B, 0x73, 0x39
+	.byte 0x74, 0x39, 0x75, 0x39, 0x76, 0x39, 0x77, 0x39, 0x78, 0x39, 0x79, 0x39, 0x7A, 0x39, 0x7B, 0x39
+	.byte 0x7C, 0x39, 0x7D, 0x39, 0x7E, 0x39, 0x7F, 0x39, 0x80, 0x39, 0x81, 0x39, 0x82, 0x39, 0x83, 0x39
+	.byte 0x84, 0x39, 0x85, 0x39, 0x86, 0x39, 0x87, 0x39, 0x88, 0x39, 0x89, 0x39, 0x8A, 0x39, 0x8B, 0x39
+	.byte 0x8C, 0x39, 0x8D, 0x39, 0x8E, 0x39, 0x8F, 0x39, 0x77, 0x3B, 0x78, 0x3B, 0x79, 0x3B, 0x7A, 0x3B
+	.byte 0x7B, 0x3B, 0x7C, 0x3B, 0x7D, 0x3B, 0x7E, 0x3B, 0x7F, 0x3B, 0x80, 0x3B, 0x81, 0x3B, 0x82, 0x3B
+	.byte 0x83, 0x3B, 0x84, 0x3B, 0x85, 0x3B, 0x86, 0x3B, 0x87, 0x3B, 0x88, 0x3B, 0x89, 0x3B, 0x9E, 0x39
+	.byte 0x9F, 0x39, 0xA0, 0x39, 0xA1, 0x39, 0x9F, 0x3B, 0xA0, 0x3B, 0xA1, 0x3B, 0xA2, 0x3B, 0xA3, 0x3B
+	.byte 0xA4, 0x3B, 0xA5, 0x3B, 0xA6, 0x3B, 0xA7, 0x3B, 0xA8, 0x3B, 0xA9, 0x3B, 0xAA, 0x3B, 0xAB, 0x3B
+	.byte 0xAC, 0x3B, 0xAD, 0x3B, 0xAE, 0x3B, 0xAF, 0x3B, 0xB0, 0x3B, 0x97, 0x39, 0x98, 0x39, 0x99, 0x39
+	.byte 0x9A, 0x39, 0x9B, 0x39, 0x9C, 0x39, 0x9D, 0x39, 0x94, 0x3B, 0x95, 0x3B, 0x96, 0x3B, 0x97, 0x3B
+	.byte 0x98, 0x3B, 0x99, 0x3B, 0x9A, 0x3B, 0x9B, 0x3B, 0x9C, 0x3B, 0x9D, 0x3B, 0x9E, 0x3B, 0xB1, 0x3B
+	.byte 0xB2, 0x3B, 0xB3, 0x3B, 0xB4, 0x3B, 0xB5, 0x3B, 0xB6, 0x3B, 0xB7, 0x3B, 0xB8, 0x3B, 0xB9, 0x3B
+	.byte 0xBA, 0x3B, 0xBB, 0x3B, 0xBC, 0x3B, 0xBD, 0x3B, 0xBE, 0x3B, 0xBF, 0x3B, 0xC0, 0x3B, 0xC1, 0x3B
+	.byte 0xC2, 0x3B, 0xC3, 0x3B, 0xC4, 0x3B, 0xC5, 0x3B, 0xC6, 0x3B, 0xC7, 0x3B, 0xC8, 0x3B, 0xC9, 0x3B
+	.byte 0xCA, 0x3B, 0xCB, 0x3B, 0xCC, 0x3B, 0xCD, 0x3B, 0xCE, 0x3B, 0xCF, 0x3B, 0xD0, 0x3B, 0xD1, 0x3B
+	.byte 0xD2, 0x3B, 0xD3, 0x3B, 0xD4, 0x3B, 0xD5, 0x3B, 0xD6, 0x3B, 0xD7, 0x3B, 0xD8, 0x3B, 0xD9, 0x3B
+	.byte 0xDA, 0x3B, 0xDB, 0x3B, 0xDC, 0x3B, 0xDD, 0x3B, 0xDE, 0x3B, 0xDF, 0x3B, 0xE0, 0x3B, 0xE1, 0x3B
+	.byte 0xE2, 0x3B, 0xE3, 0x3B, 0xE4, 0x3B, 0xE5, 0x3B, 0xE6, 0x3B, 0xE7, 0x3B, 0xE8, 0x3B, 0xE9, 0x3B
+	.byte 0xEA, 0x3B, 0xEB, 0x3B, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39
+	.byte 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39
+	.byte 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39
+	.byte 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39
+	.byte 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39
+	.byte 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39
+	.byte 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39
+	.byte 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA2, 0x39, 0xA3, 0x3A, 0xA4, 0x3A, 0xA5, 0x3A
+	.byte 0xA6, 0x3A, 0x0D, 0x39, 0x0E, 0x39, 0x0F, 0x39, 0x8C, 0x3A, 0x8D, 0x3A, 0x8E, 0x3A, 0x8F, 0x3A
+	.byte 0x90, 0x3A, 0x91, 0x3A, 0x92, 0x3A, 0x93, 0x3A, 0x94, 0x3A, 0x95, 0x3A, 0x96, 0x3A, 0x97, 0x3A
+	.byte 0x98, 0x3A, 0x99, 0x3A, 0x9A, 0x3A, 0x9B, 0x3A, 0x9C, 0x3A, 0x9D, 0x3A, 0x9E, 0x3A, 0x9F, 0x3A
+	.byte 0xA0, 0x3A, 0xA1, 0x3A, 0xA2, 0x3A, 0xAD, 0x3A, 0xAE, 0x3A, 0xAF, 0x3A, 0xB0, 0x3A, 0xB1, 0x3A
+	.byte 0xB2, 0x3A, 0x67, 0x39, 0x67, 0x39, 0x67, 0x39, 0x67, 0x39, 0x67, 0x39, 0x67, 0x39, 0xA7, 0x3A
+	.byte 0xA8, 0x3A, 0xA9, 0x3A, 0xAA, 0x3A, 0xAB, 0x3A, 0xAC, 0x3A, 0x11, 0x39, 0x12, 0x39, 0x13, 0x39
+	.byte 0x14, 0x39, 0x15, 0x39, 0x16, 0x39, 0x17, 0x39, 0x18, 0x39, 0x19, 0x39, 0x1A, 0x39, 0x1B, 0x39
+	.byte 0x1C, 0x39, 0x1D, 0x39, 0x5D, 0x3A, 0x5E, 0x3A, 0x5F, 0x3A, 0x60, 0x3A, 0x61, 0x3A, 0x62, 0x3A
+	.byte 0x63, 0x3A, 0x64, 0x3A, 0x65, 0x3A, 0x66, 0x3A, 0x67, 0x3A, 0x68, 0x3A, 0x69, 0x3A, 0x71, 0x3A
+	.byte 0x72, 0x3A, 0x73, 0x3A, 0x74, 0x3A, 0x75, 0x3A, 0x1E, 0x39, 0x1F, 0x39, 0x20, 0x39, 0x21, 0x39
+	.byte 0x22, 0x39, 0x23, 0x39, 0x24, 0x39, 0x25, 0x39, 0x26, 0x39, 0x27, 0x39, 0x28, 0x39, 0x29, 0x39
+	.byte 0x2A, 0x39, 0x6A, 0x3A, 0x6B, 0x3A, 0x6C, 0x3A, 0x6D, 0x3A, 0x6E, 0x3A, 0x6F, 0x3A, 0x70, 0x3A
+	.byte 0x76, 0x3A, 0x77, 0x3A, 0x78, 0x3A, 0x79, 0x3A, 0x7A, 0x3A, 0x7B, 0x3A, 0x7C, 0x3A, 0x7D, 0x3A
+	.byte 0x7E, 0x3A, 0x7F, 0x3A, 0x87, 0x3A, 0x88, 0x3A, 0x89, 0x3A, 0x8A, 0x3A, 0x8B, 0x3A, 0x2B, 0x39
+	.byte 0x2C, 0x39, 0x2D, 0x39, 0x2E, 0x39, 0x80, 0x3A, 0x81, 0x3A, 0x82, 0x3A, 0x83, 0x3A, 0x84, 0x3A
+	.byte 0x85, 0x3A, 0x86, 0x3A, 0xDF, 0x39, 0xE0, 0x39, 0xE1, 0x39, 0xE2, 0x39, 0xE3, 0x39, 0xE4, 0x39
+	.byte 0xE5, 0x39, 0xE6, 0x39, 0xE7, 0x39, 0xE8, 0x39, 0xE9, 0x39, 0xE3, 0x38, 0xE4, 0x38, 0xE5, 0x38
+	.byte 0xE6, 0x38, 0xE7, 0x38, 0xE8, 0x38, 0xE9, 0x38, 0xEA, 0x38, 0xEB, 0x38, 0xEC, 0x38, 0xED, 0x38
+	.byte 0xEE, 0x38, 0xEF, 0x38, 0xF0, 0x38, 0xF1, 0x38, 0xF2, 0x38, 0xCE, 0x39, 0xCF, 0x39, 0xD0, 0x39
+	.byte 0xD1, 0x39, 0xD2, 0x39, 0xD3, 0x39, 0xD4, 0x39, 0xD5, 0x39, 0xD6, 0x39, 0xD7, 0x39, 0xD8, 0x39
+	.byte 0xD9, 0x39, 0xDA, 0x39, 0xDB, 0x39, 0xDC, 0x39, 0xDD, 0x39, 0xDE, 0x39, 0x12, 0x3A, 0x13, 0x3A
+	.byte 0x14, 0x3A, 0x15, 0x3A, 0x16, 0x3A, 0x17, 0x3A, 0x18, 0x3A, 0x19, 0x3A, 0x1A, 0x3A, 0x1B, 0x3A
+	.byte 0x1C, 0x3A, 0x1D, 0x3A, 0x1E, 0x3A, 0xF3, 0x38, 0xF4, 0x38, 0xF5, 0x38, 0xF6, 0x38, 0xF7, 0x38
+	.byte 0xF8, 0x38, 0xF9, 0x38, 0xFA, 0x38, 0xFB, 0x38, 0xFC, 0x38, 0xFD, 0x38, 0xFE, 0x38, 0xFF, 0x38
+	.byte 0x00, 0x39, 0xEA, 0x39, 0xEB, 0x39, 0xEC, 0x39, 0xED, 0x39, 0xEE, 0x39, 0xEF, 0x39, 0xF0, 0x39
+	.byte 0xF1, 0x39, 0xF2, 0x39, 0xF3, 0x39, 0xF4, 0x39, 0xF5, 0x39, 0xF6, 0x39, 0xF7, 0x39, 0xF8, 0x39
+	.byte 0xF9, 0x39, 0xFA, 0x39, 0xFB, 0x39, 0xFC, 0x39, 0xFD, 0x39, 0xFE, 0x39, 0xFF, 0x39, 0x00, 0x3A
+	.byte 0x01, 0x3A, 0x02, 0x3A, 0x03, 0x3A, 0x04, 0x3A, 0x05, 0x3A, 0x06, 0x3A, 0x07, 0x3A, 0x08, 0x3A
+	.byte 0x09, 0x3A, 0x0A, 0x3A, 0x0B, 0x3A, 0x0C, 0x3A, 0x0D, 0x3A, 0x0E, 0x3A, 0x0F, 0x3A, 0x10, 0x3A
+	.byte 0x11, 0x3A, 0x65, 0x39, 0x65, 0x39, 0x65, 0x39, 0x65, 0x39, 0x65, 0x39, 0x65, 0x39, 0x65, 0x39
+	.byte 0x65, 0x39, 0x65, 0x39, 0x65, 0x39, 0x65, 0x39, 0x65, 0x39, 0x65, 0x39, 0x65, 0x39, 0x65, 0x39
+	.byte 0x65, 0x39, 0x65, 0x39, 0x65, 0x39, 0x1F, 0x3A, 0x20, 0x3A, 0x21, 0x3A, 0x22, 0x3A, 0x23, 0x3A
+	.byte 0x24, 0x3A, 0x25, 0x3A, 0x26, 0x3A, 0x27, 0x3A, 0x28, 0x3A, 0x29, 0x3A, 0x2A, 0x3A, 0x2B, 0x3A
+	.byte 0x2C, 0x3A, 0x2D, 0x3A, 0x2E, 0x3A, 0x2F, 0x3A, 0x30, 0x3A, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39
+	.byte 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39
+	.byte 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39
+	.byte 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39
+	.byte 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x66, 0x39, 0x31, 0x3A, 0x32, 0x3A, 0x33, 0x3A
+	.byte 0x34, 0x3A, 0x35, 0x3A, 0x36, 0x3A, 0x37, 0x3A, 0x38, 0x3A, 0x39, 0x3A, 0x3A, 0x3A, 0x3B, 0x3A
+	.byte 0x3C, 0x3A, 0x3D, 0x3A, 0x3E, 0x3A, 0x3F, 0x3A, 0x40, 0x3A, 0x41, 0x3A, 0x42, 0x3A, 0x43, 0x3A
+	.byte 0x44, 0x3A, 0x45, 0x3A, 0x46, 0x3A, 0x47, 0x3A, 0x48, 0x3A, 0x49, 0x3A, 0x4A, 0x3A, 0x4B, 0x3A
+	.byte 0x4C, 0x3A, 0x4D, 0x3A, 0x4E, 0x3A, 0x4F, 0x3A, 0x50, 0x3A, 0x01, 0x39, 0x02, 0x39, 0x03, 0x39
+	.byte 0x04, 0x39, 0x05, 0x39, 0x06, 0x39, 0x07, 0x39, 0x08, 0x39, 0x09, 0x39, 0x0A, 0x39, 0x0B, 0x39
+	.byte 0x0C, 0x39, 0x51, 0x3A, 0x52, 0x3A, 0x53, 0x3A, 0x54, 0x3A, 0x55, 0x3A, 0x56, 0x3A, 0x57, 0x3A
+	.byte 0x58, 0x3A, 0x59, 0x3A, 0x5A, 0x3A, 0x5B, 0x3A, 0x5C, 0x3A, 0x1A, 0x3B, 0x1B, 0x3B, 0x1C, 0x3B
+	.byte 0x1D, 0x3B, 0x1E, 0x3B, 0x3D, 0x39, 0x3E, 0x39, 0x12, 0x3B, 0x13, 0x3B, 0x14, 0x3B, 0x15, 0x3B
+	.byte 0x16, 0x3B, 0x17, 0x3B, 0x18, 0x3B, 0x19, 0x3B, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39
+	.byte 0x72, 0x39, 0x56, 0x3B, 0x57, 0x3B, 0x58, 0x3B, 0x59, 0x3B, 0x5A, 0x3B, 0x72, 0x39, 0x72, 0x39
+	.byte 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39
+	.byte 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39
+	.byte 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39, 0x72, 0x39
+	.byte 0x72, 0x39, 0x72, 0x39, 0x5B, 0x3B, 0x5C, 0x3B, 0x5D, 0x3B, 0x5E, 0x3B, 0x5F, 0x3B, 0x60, 0x3B
+	.byte 0x61, 0x3B, 0x62, 0x3B, 0x63, 0x3B, 0x64, 0x3B, 0x65, 0x3B, 0x66, 0x3B, 0x67, 0x3B, 0x68, 0x3B
+	.byte 0x69, 0x3B, 0x6A, 0x3B, 0x6B, 0x3B, 0x6C, 0x3B, 0x6D, 0x3B, 0x6E, 0x3B, 0x6F, 0x3B, 0x70, 0x3B
+	.byte 0x71, 0x3B, 0x72, 0x3B, 0x73, 0x3B, 0x74, 0x3B, 0x75, 0x3B, 0x76, 0x3B, 0x10, 0x3B, 0x11, 0x3B
+	.byte 0x54, 0x3B, 0x55, 0x3B, 0x08, 0x3B, 0x09, 0x3B, 0x0A, 0x3B, 0x0B, 0x3B, 0x0C, 0x3B, 0x0D, 0x3B
+	.byte 0x0E, 0x3B, 0x0F, 0x3B, 0x33, 0x39, 0x34, 0x39, 0x35, 0x39, 0x36, 0x39, 0x37, 0x39, 0x38, 0x39
+	.byte 0x39, 0x39, 0x3A, 0x39, 0x3B, 0x39, 0x3C, 0x39, 0xFA, 0x3A, 0xFB, 0x3A, 0xFC, 0x3A, 0xFD, 0x3A
+	.byte 0xFE, 0x3A, 0xFF, 0x3A, 0x00, 0x3B, 0x01, 0x3B, 0x02, 0x3B, 0x03, 0x3B, 0x04, 0x3B, 0x05, 0x3B
+	.byte 0x06, 0x3B, 0x07, 0x3B, 0xA3, 0x39, 0xA4, 0x39, 0xA5, 0x39, 0xA6, 0x39, 0xA7, 0x39, 0xA8, 0x39
+	.byte 0xA9, 0x39, 0xAA, 0x39, 0xAB, 0x39, 0xAC, 0x39, 0xAD, 0x39, 0xAE, 0x39, 0xAF, 0x39, 0xB0, 0x39
+	.byte 0xB1, 0x39, 0xB2, 0x39, 0xED, 0x3B, 0xEE, 0x3B, 0xEF, 0x3B, 0xF0, 0x3B, 0xF1, 0x3B, 0xF2, 0x3B
+	.byte 0xF3, 0x3B, 0xF4, 0x3B, 0xF5, 0x3B, 0xF6, 0x3B, 0xF7, 0x3B, 0xF8, 0x3B, 0xF9, 0x3B, 0xFA, 0x3B
+	.byte 0xFB, 0x3B, 0xFC, 0x3B, 0xFD, 0x3B, 0xFE, 0x3B, 0xFF, 0x3B, 0x00, 0x3C, 0x01, 0x3C, 0x02, 0x3C
+	.byte 0x03, 0x3C, 0x04, 0x3C, 0x05, 0x3C, 0x06, 0x3C, 0x07, 0x3C, 0x08, 0x3C, 0xB3, 0x39, 0xB4, 0x39
+	.byte 0xB5, 0x39, 0xB6, 0x39, 0xB7, 0x39, 0xB8, 0x39, 0xB9, 0x39, 0xBA, 0x39, 0xBB, 0x39, 0xBC, 0x39
+	.byte 0xBD, 0x39, 0xBE, 0x39, 0xBF, 0x39, 0xC0, 0x39, 0xC1, 0x39, 0xC2, 0x39, 0xC3, 0x39, 0xC4, 0x39
+	.byte 0xC5, 0x39, 0xC6, 0x39, 0xC7, 0x39, 0xC8, 0x39, 0xC9, 0x39, 0xCA, 0x39, 0xCB, 0x39, 0xCC, 0x39
+	.byte 0xCD, 0x39, 0x09, 0x3C, 0x0A, 0x3C, 0x0B, 0x3C, 0x0C, 0x3C, 0x0D, 0x3C, 0x0E, 0x3C, 0x0F, 0x3C
+	.byte 0x10, 0x3C, 0x11, 0x3C, 0x12, 0x3C, 0x13, 0x3C, 0x14, 0x3C, 0x15, 0x3C, 0x16, 0x3C, 0x17, 0x3C
+	.byte 0x18, 0x3C, 0x19, 0x3C, 0x1A, 0x3C, 0x1B, 0x3C, 0x1C, 0x3C, 0x1D, 0x3C, 0x1E, 0x3C, 0x1F, 0x3C
+	.byte 0xC0, 0x3A, 0xC1, 0x3A, 0xC2, 0x3A, 0xC3, 0x3A, 0xC4, 0x3A, 0xC5, 0x3A, 0xC6, 0x3A, 0xC7, 0x3A
+	.byte 0xC8, 0x3A, 0xC9, 0x3A, 0xCA, 0x3A, 0xCB, 0x3A, 0xCC, 0x3A, 0xCD, 0x3A, 0xCE, 0x3A, 0xCF, 0x3A
+	.byte 0xD0, 0x3A, 0x63, 0x39, 0xB3, 0x3A, 0xB4, 0x3A, 0xB5, 0x3A, 0xB6, 0x3A, 0xB7, 0x3A, 0xB8, 0x3A
+	.byte 0xB9, 0x3A, 0xBA, 0x3A, 0xBB, 0x3A, 0xBC, 0x3A, 0xBD, 0x3A, 0xBE, 0x3A, 0xBF, 0x3A, 0xDB, 0x3A
+	.byte 0xDC, 0x3A, 0xDD, 0x3A, 0xDE, 0x3A, 0xDF, 0x3A, 0x2F, 0x39, 0x30, 0x39, 0x31, 0x39, 0x32, 0x39
+	.byte 0xD1, 0x3A, 0xD2, 0x3A, 0xD3, 0x3A, 0xD4, 0x3A, 0xD5, 0x3A, 0xD6, 0x3A, 0xD7, 0x3A, 0xD8, 0x3A
+	.byte 0xD9, 0x3A, 0xDA, 0x3A, 0xE3, 0x3A, 0xE4, 0x3A, 0x63, 0x39, 0xE0, 0x3A, 0xE1, 0x3A, 0xE2, 0x3A
+	.byte 0x63, 0x39, 0x46, 0x3B, 0xF1, 0x3A, 0xF2, 0x3A, 0xF3, 0x3A, 0xF4, 0x3A, 0xF5, 0x3A, 0xF6, 0x3A
+	.byte 0xF7, 0x3A, 0xF8, 0x3A, 0xF9, 0x3A, 0x64, 0x39, 0xE5, 0x3A, 0xE6, 0x3A, 0xE7, 0x3A, 0xE8, 0x3A
+	.byte 0xE9, 0x3A, 0xEA, 0x3A, 0xEB, 0x3A, 0xEC, 0x3A, 0xED, 0x3A, 0xEE, 0x3A, 0xEF, 0x3A, 0xF0, 0x3A
+	.byte 0x68, 0x39, 0x69, 0x39, 0x6A, 0x39, 0x6B, 0x39, 0x6C, 0x39, 0x6D, 0x39, 0x6E, 0x39, 0x71, 0x39
+	.byte 0x4A, 0x3B, 0x4B, 0x3B, 0x4C, 0x3B, 0x4D, 0x3B, 0x4E, 0x3B, 0x4F, 0x3B, 0x50, 0x3B, 0x53, 0x3B
+#else
 	.byte 0x41, 0x3B, 0x42, 0x3B, 0x43, 0x3B, 0x3D, 0x39, 0x3E, 0x39, 0x3F, 0x39, 0x40, 0x39, 0x41, 0x39
 	.byte 0x42, 0x39, 0x43, 0x39, 0x44, 0x39, 0x45, 0x39, 0x46, 0x39, 0x47, 0x39, 0x1D, 0x3B, 0x1E, 0x3B
 	.byte 0x1F, 0x3B, 0x20, 0x3B, 0x21, 0x3B, 0x22, 0x3B, 0x23, 0x3B, 0x24, 0x3B, 0x48, 0x39, 0x49, 0x39
@@ -171290,6 +173641,7 @@ MISSION_STRING_IDS:
 	.byte 0xEB, 0x3A, 0xEC, 0x3A, 0xED, 0x3A, 0xEE, 0x3A, 0x66, 0x39, 0x67, 0x39, 0x68, 0x39, 0x69, 0x39
 	.byte 0x6A, 0x39, 0x6B, 0x39, 0x6C, 0x39, 0x6F, 0x39, 0x48, 0x3B, 0x49, 0x3B, 0x4A, 0x3B, 0x4B, 0x3B
 	.byte 0x4C, 0x3B, 0x4D, 0x3B, 0x4E, 0x3B, 0x51, 0x3B
+#endif
 	.global _020A462C
 _020A462C:
 	.byte 0x72, 0x6F, 0x6D, 0x30, 0x3A, 0x52, 0x45, 0x53
@@ -171333,6 +173685,1401 @@ _020A46D0:
 	.byte 0x66, 0x20, 0x3A, 0x20, 0x25, 0x73, 0x00, 0x00
 	.global LEVEL_LIST
 LEVEL_LIST:
+#ifdef EUROPE
+	.byte 0x54, 0x30, 0x30, 0x50, 0x30, 0x31, 0x00, 0x00
+	.global _020A4CF4
+_020A4CF4:
+	.byte 0x56, 0x30, 0x30, 0x50, 0x30, 0x31, 0x00, 0x00
+	.global _020A4CFC
+_020A4CFC:
+	.byte 0x54, 0x30, 0x30, 0x50, 0x30, 0x33, 0x00, 0x00
+	.global _020A4D04
+_020A4D04:
+	.byte 0x54, 0x30, 0x30, 0x50, 0x30, 0x32, 0x00, 0x00
+	.global _020A4D0C
+_020A4D0C:
+	.byte 0x44, 0x30, 0x30, 0x50, 0x30, 0x32, 0x00, 0x00
+	.global _020A4D14
+_020A4D14:
+	.byte 0x44, 0x30, 0x30, 0x50, 0x30, 0x31, 0x00, 0x00
+	.global _020A4D1C
+_020A4D1C:
+	.byte 0x56, 0x30, 0x30, 0x50, 0x30, 0x33, 0x00, 0x00
+	.global _020A4D24
+_020A4D24:
+	.byte 0x56, 0x30, 0x30, 0x50, 0x30, 0x32, 0x00, 0x00
+	.global _020A4D2C
+_020A4D2C:
+	.byte 0x44, 0x31, 0x35, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A4D34
+_020A4D34:
+	.byte 0x44, 0x31, 0x30, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A4D3C
+_020A4D3C:
+	.byte 0x44, 0x31, 0x32, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A4D44
+_020A4D44:
+	.byte 0x44, 0x31, 0x32, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A4D4C
+_020A4D4C:
+	.byte 0x44, 0x31, 0x34, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4D54
+_020A4D54:
+	.byte 0x44, 0x31, 0x34, 0x50, 0x31, 0x32, 0x41, 0x00
+	.global _020A4D5C
+_020A4D5C:
+	.byte 0x44, 0x31, 0x35, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A4D64
+_020A4D64:
+	.byte 0x44, 0x30, 0x38, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4D6C
+_020A4D6C:
+	.byte 0x44, 0x30, 0x33, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4D74
+_020A4D74:
+	.byte 0x44, 0x30, 0x37, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4D7C
+_020A4D7C:
+	.byte 0x44, 0x30, 0x39, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4D84
+_020A4D84:
+	.byte 0x44, 0x30, 0x36, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4D8C
+_020A4D8C:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x36, 0x44, 0x00
+	.global _020A4D94
+_020A4D94:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x36, 0x43, 0x00
+	.global _020A4D9C
+_020A4D9C:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x36, 0x41, 0x00
+	.global _020A4DA4
+_020A4DA4:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x35, 0x41, 0x00
+	.global _020A4DAC
+_020A4DAC:
+	.byte 0x44, 0x31, 0x31, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4DB4
+_020A4DB4:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A4DBC
+_020A4DBC:
+	.byte 0x44, 0x31, 0x33, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4DC4
+_020A4DC4:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4DCC
+_020A4DCC:
+	.byte 0x56, 0x33, 0x37, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A4DD4
+_020A4DD4:
+	.byte 0x56, 0x33, 0x39, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A4DDC
+_020A4DDC:
+	.byte 0x56, 0x32, 0x38, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4DE4
+_020A4DE4:
+	.byte 0x56, 0x32, 0x31, 0x50, 0x30, 0x32, 0x42, 0x00
+	.global _020A4DEC
+_020A4DEC:
+	.byte 0x56, 0x33, 0x31, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A4DF4
+_020A4DF4:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x31, 0x30, 0x41, 0x00
+	.global _020A4DFC
+_020A4DFC:
+	.byte 0x56, 0x33, 0x32, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4E04
+_020A4E04:
+	.byte 0x56, 0x33, 0x31, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4E0C
+_020A4E0C:
+	.byte 0x56, 0x31, 0x39, 0x50, 0x30, 0x35, 0x41, 0x00
+	.global _020A4E14
+_020A4E14:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x39, 0x41, 0x00
+	.global _020A4E1C
+_020A4E1C:
+	.byte 0x44, 0x30, 0x31, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4E24
+_020A4E24:
+	.byte 0x44, 0x30, 0x32, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A4E2C
+_020A4E2C:
+	.byte 0x44, 0x30, 0x34, 0x50, 0x31, 0x32, 0x41, 0x00
+	.global _020A4E34
+_020A4E34:
+	.byte 0x44, 0x30, 0x35, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A4E3C
+_020A4E3C:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x31, 0x30, 0x41, 0x00
+	.global _020A4E44
+_020A4E44:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x30, 0x39, 0x41, 0x00
+	.global _020A4E4C
+_020A4E4C:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x30, 0x37, 0x41, 0x00
+	.global _020A4E54
+_020A4E54:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x30, 0x36, 0x41, 0x00
+	.global _020A4E5C
+_020A4E5C:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x30, 0x35, 0x41, 0x00
+	.global _020A4E64
+_020A4E64:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A4E6C
+_020A4E6C:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A4E74
+_020A4E74:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A4E7C
+_020A4E7C:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4E84
+_020A4E84:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A4E8C
+_020A4E8C:
+	.byte 0x56, 0x32, 0x35, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A4E94
+_020A4E94:
+	.byte 0x56, 0x32, 0x35, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A4E9C
+_020A4E9C:
+	.byte 0x56, 0x33, 0x39, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A4EA4
+_020A4EA4:
+	.byte 0x56, 0x32, 0x34, 0x50, 0x30, 0x39, 0x41, 0x00
+	.global _020A4EAC
+_020A4EAC:
+	.byte 0x56, 0x32, 0x34, 0x50, 0x30, 0x38, 0x41, 0x00
+	.global _020A4EB4
+_020A4EB4:
+	.byte 0x56, 0x32, 0x34, 0x50, 0x30, 0x37, 0x41, 0x00
+	.global _020A4EBC
+_020A4EBC:
+	.byte 0x56, 0x32, 0x34, 0x50, 0x30, 0x36, 0x41, 0x00
+	.global _020A4EC4
+_020A4EC4:
+	.byte 0x56, 0x32, 0x34, 0x50, 0x30, 0x35, 0x41, 0x00
+	.global _020A4ECC
+_020A4ECC:
+	.byte 0x56, 0x32, 0x34, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A4ED4
+_020A4ED4:
+	.byte 0x56, 0x33, 0x37, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A4EDC
+_020A4EDC:
+	.byte 0x56, 0x32, 0x33, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4EE4
+_020A4EE4:
+	.byte 0x56, 0x33, 0x33, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4EEC
+_020A4EEC:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4EF4
+_020A4EF4:
+	.byte 0x56, 0x32, 0x33, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A4EFC
+_020A4EFC:
+	.byte 0x56, 0x30, 0x31, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4F04
+_020A4F04:
+	.byte 0x56, 0x32, 0x32, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A4F0C
+_020A4F0C:
+	.byte 0x56, 0x32, 0x32, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A4F14
+_020A4F14:
+	.byte 0x56, 0x32, 0x32, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4F1C
+_020A4F1C:
+	.byte 0x53, 0x31, 0x37, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4F24
+_020A4F24:
+	.byte 0x56, 0x32, 0x31, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A4F2C
+_020A4F2C:
+	.byte 0x56, 0x32, 0x31, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4F34
+_020A4F34:
+	.byte 0x56, 0x31, 0x39, 0x50, 0x30, 0x36, 0x41, 0x00
+	.global _020A4F3C
+_020A4F3C:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x39, 0x41, 0x00
+	.global _020A4F44
+_020A4F44:
+	.byte 0x56, 0x31, 0x39, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A4F4C
+_020A4F4C:
+	.byte 0x56, 0x31, 0x39, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A4F54
+_020A4F54:
+	.byte 0x56, 0x31, 0x39, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A4F5C
+_020A4F5C:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x38, 0x41, 0x00
+	.global _020A4F64
+_020A4F64:
+	.byte 0x56, 0x31, 0x37, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A4F6C
+_020A4F6C:
+	.byte 0x44, 0x30, 0x31, 0x50, 0x31, 0x31, 0x42, 0x00
+	.global _020A4F74
+_020A4F74:
+	.byte 0x44, 0x30, 0x32, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4F7C
+_020A4F7C:
+	.byte 0x44, 0x30, 0x33, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A4F84
+_020A4F84:
+	.byte 0x44, 0x30, 0x34, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4F8C
+_020A4F8C:
+	.byte 0x44, 0x30, 0x34, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A4F94
+_020A4F94:
+	.byte 0x44, 0x30, 0x35, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A4F9C
+_020A4F9C:
+	.byte 0x56, 0x31, 0x34, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A4FA4
+_020A4FA4:
+	.byte 0x56, 0x31, 0x34, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A4FAC
+_020A4FAC:
+	.byte 0x56, 0x31, 0x34, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4FB4
+_020A4FB4:
+	.byte 0x56, 0x31, 0x33, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4FBC
+_020A4FBC:
+	.byte 0x56, 0x31, 0x32, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4FC4
+_020A4FC4:
+	.byte 0x56, 0x31, 0x30, 0x50, 0x30, 0x33, 0x43, 0x00
+	.global _020A4FCC
+_020A4FCC:
+	.byte 0x56, 0x31, 0x30, 0x50, 0x30, 0x31, 0x43, 0x00
+	.global _020A4FD4
+_020A4FD4:
+	.byte 0x56, 0x30, 0x39, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A4FDC
+_020A4FDC:
+	.byte 0x56, 0x30, 0x39, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A4FE4
+_020A4FE4:
+	.byte 0x56, 0x30, 0x35, 0x50, 0x30, 0x35, 0x41, 0x00
+	.global _020A4FEC
+_020A4FEC:
+	.byte 0x56, 0x30, 0x35, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A4FF4
+_020A4FF4:
+	.byte 0x56, 0x30, 0x35, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A4FFC
+_020A4FFC:
+	.byte 0x56, 0x30, 0x35, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5004
+_020A5004:
+	.byte 0x56, 0x30, 0x34, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A500C
+_020A500C:
+	.byte 0x56, 0x30, 0x34, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5014
+_020A5014:
+	.byte 0x56, 0x30, 0x34, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A501C
+_020A501C:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x31, 0x33, 0x41, 0x00
+	.global _020A5024
+_020A5024:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x31, 0x32, 0x41, 0x00
+	.global _020A502C
+_020A502C:
+	.byte 0x56, 0x32, 0x35, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A5034
+_020A5034:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x30, 0x39, 0x41, 0x00
+	.global _020A503C
+_020A503C:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x30, 0x38, 0x41, 0x00
+	.global _020A5044
+_020A5044:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x30, 0x37, 0x41, 0x00
+	.global _020A504C
+_020A504C:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x30, 0x36, 0x42, 0x00
+	.global _020A5054
+_020A5054:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x30, 0x36, 0x41, 0x00
+	.global _020A505C
+_020A505C:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x30, 0x35, 0x43, 0x00
+	.global _020A5064
+_020A5064:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A506C
+_020A506C:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A5074
+_020A5074:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A507C
+_020A507C:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5084
+_020A5084:
+	.byte 0x56, 0x30, 0x32, 0x50, 0x30, 0x38, 0x41, 0x00
+	.global _020A508C
+_020A508C:
+	.byte 0x56, 0x30, 0x32, 0x50, 0x30, 0x37, 0x41, 0x00
+	.global _020A5094
+_020A5094:
+	.byte 0x56, 0x30, 0x32, 0x50, 0x30, 0x36, 0x41, 0x00
+	.global _020A509C
+_020A509C:
+	.byte 0x56, 0x30, 0x32, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A50A4
+_020A50A4:
+	.byte 0x56, 0x30, 0x32, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A50AC
+_020A50AC:
+	.byte 0x56, 0x30, 0x32, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A50B4
+_020A50B4:
+	.byte 0x56, 0x30, 0x31, 0x50, 0x30, 0x38, 0x42, 0x00
+	.global _020A50BC
+_020A50BC:
+	.byte 0x56, 0x30, 0x31, 0x50, 0x30, 0x37, 0x42, 0x00
+	.global _020A50C4
+_020A50C4:
+	.byte 0x56, 0x30, 0x31, 0x50, 0x30, 0x36, 0x42, 0x00
+	.global _020A50CC
+_020A50CC:
+	.byte 0x56, 0x30, 0x31, 0x50, 0x30, 0x35, 0x42, 0x00
+	.global _020A50D4
+_020A50D4:
+	.byte 0x56, 0x32, 0x34, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A50DC
+_020A50DC:
+	.byte 0x56, 0x32, 0x33, 0x50, 0x30, 0x35, 0x41, 0x00
+	.global _020A50E4
+_020A50E4:
+	.byte 0x56, 0x33, 0x34, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A50EC
+_020A50EC:
+	.byte 0x56, 0x33, 0x39, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A50F4
+_020A50F4:
+	.byte 0x56, 0x30, 0x31, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A50FC
+_020A50FC:
+	.byte 0x56, 0x32, 0x34, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5104
+_020A5104:
+	.byte 0x54, 0x30, 0x31, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A510C
+_020A510C:
+	.byte 0x44, 0x39, 0x33, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5114
+_020A5114:
+	.byte 0x54, 0x30, 0x31, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A511C
+_020A511C:
+	.byte 0x54, 0x30, 0x31, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5124
+_020A5124:
+	.byte 0x54, 0x30, 0x31, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A512C
+_020A512C:
+	.byte 0x53, 0x39, 0x39, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A5134
+_020A5134:
+	.byte 0x53, 0x39, 0x39, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A513C
+_020A513C:
+	.byte 0x53, 0x39, 0x39, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5144
+_020A5144:
+	.byte 0x53, 0x32, 0x31, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A514C
+_020A514C:
+	.byte 0x53, 0x32, 0x30, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5154
+_020A5154:
+	.byte 0x53, 0x31, 0x37, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A515C
+_020A515C:
+	.byte 0x44, 0x36, 0x39, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5164
+_020A5164:
+	.byte 0x53, 0x31, 0x35, 0x50, 0x30, 0x35, 0x42, 0x00
+	.global _020A516C
+_020A516C:
+	.byte 0x53, 0x31, 0x35, 0x50, 0x30, 0x35, 0x41, 0x00
+	.global _020A5174
+_020A5174:
+	.byte 0x53, 0x31, 0x35, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A517C
+_020A517C:
+	.byte 0x53, 0x31, 0x35, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A5184
+_020A5184:
+	.byte 0x53, 0x31, 0x35, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A518C
+_020A518C:
+	.byte 0x53, 0x31, 0x35, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5194
+_020A5194:
+	.byte 0x53, 0x31, 0x34, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A519C
+_020A519C:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A51A4
+_020A51A4:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x38, 0x41, 0x00
+	.global _020A51AC
+_020A51AC:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x37, 0x41, 0x00
+	.global _020A51B4
+_020A51B4:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x36, 0x41, 0x00
+	.global _020A51BC
+_020A51BC:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x35, 0x41, 0x00
+	.global _020A51C4
+_020A51C4:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x34, 0x42, 0x00
+	.global _020A51CC
+_020A51CC:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A51D4
+_020A51D4:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A51DC
+_020A51DC:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A51E4
+_020A51E4:
+	.byte 0x56, 0x31, 0x39, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A51EC
+_020A51EC:
+	.byte 0x44, 0x35, 0x34, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A51F4
+_020A51F4:
+	.byte 0x44, 0x35, 0x33, 0x50, 0x34, 0x31, 0x43, 0x00
+	.global _020A51FC
+_020A51FC:
+	.byte 0x56, 0x31, 0x37, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5204
+_020A5204:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x31, 0x42, 0x00
+	.global _020A520C
+_020A520C:
+	.byte 0x56, 0x31, 0x37, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5214
+_020A5214:
+	.byte 0x44, 0x30, 0x31, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A521C
+_020A521C:
+	.byte 0x56, 0x31, 0x36, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5224
+_020A5224:
+	.byte 0x56, 0x33, 0x38, 0x50, 0x30, 0x37, 0x41, 0x00
+	.global _020A522C
+_020A522C:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5234
+_020A5234:
+	.byte 0x56, 0x31, 0x35, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A523C
+_020A523C:
+	.byte 0x56, 0x31, 0x35, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5244
+_020A5244:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A524C
+_020A524C:
+	.byte 0x56, 0x31, 0x35, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5254
+_020A5254:
+	.byte 0x53, 0x31, 0x31, 0x50, 0x30, 0x32, 0x43, 0x00
+	.global _020A525C
+_020A525C:
+	.byte 0x53, 0x31, 0x31, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5264
+_020A5264:
+	.byte 0x53, 0x30, 0x38, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A526C
+_020A526C:
+	.byte 0x53, 0x30, 0x37, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5274
+_020A5274:
+	.byte 0x53, 0x30, 0x37, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A527C
+_020A527C:
+	.byte 0x53, 0x30, 0x36, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5284
+_020A5284:
+	.byte 0x53, 0x30, 0x35, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A528C
+_020A528C:
+	.byte 0x53, 0x30, 0x35, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A5294
+_020A5294:
+	.byte 0x53, 0x30, 0x35, 0x50, 0x30, 0x32, 0x43, 0x00
+	.global _020A529C
+_020A529C:
+	.byte 0x53, 0x30, 0x35, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A52A4
+_020A52A4:
+	.byte 0x53, 0x30, 0x34, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A52AC
+_020A52AC:
+	.byte 0x53, 0x30, 0x33, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A52B4
+_020A52B4:
+	.byte 0x53, 0x30, 0x32, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A52BC
+_020A52BC:
+	.byte 0x53, 0x30, 0x31, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A52C4
+_020A52C4:
+	.byte 0x53, 0x30, 0x31, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A52CC
+_020A52CC:
+	.byte 0x53, 0x30, 0x31, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A52D4
+_020A52D4:
+	.byte 0x53, 0x30, 0x31, 0x50, 0x30, 0x31, 0x42, 0x00
+	.global _020A52DC
+_020A52DC:
+	.byte 0x53, 0x30, 0x31, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A52E4
+_020A52E4:
+	.byte 0x50, 0x32, 0x38, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A52EC
+_020A52EC:
+	.byte 0x50, 0x32, 0x37, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A52F4
+_020A52F4:
+	.byte 0x50, 0x32, 0x36, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A52FC
+_020A52FC:
+	.byte 0x50, 0x32, 0x35, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5304
+_020A5304:
+	.byte 0x50, 0x32, 0x34, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A530C
+_020A530C:
+	.byte 0x50, 0x32, 0x33, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5314
+_020A5314:
+	.byte 0x50, 0x32, 0x33, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A531C
+_020A531C:
+	.byte 0x50, 0x32, 0x32, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5324
+_020A5324:
+	.byte 0x50, 0x32, 0x31, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A532C
+_020A532C:
+	.byte 0x50, 0x32, 0x30, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A5334
+_020A5334:
+	.byte 0x50, 0x32, 0x30, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A533C
+_020A533C:
+	.byte 0x50, 0x32, 0x30, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5344
+_020A5344:
+	.byte 0x50, 0x31, 0x39, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A534C
+_020A534C:
+	.byte 0x50, 0x31, 0x39, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5354
+_020A5354:
+	.byte 0x50, 0x31, 0x38, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A535C
+_020A535C:
+	.byte 0x50, 0x31, 0x37, 0x50, 0x30, 0x32, 0x43, 0x00
+	.global _020A5364
+_020A5364:
+	.byte 0x50, 0x31, 0x37, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A536C
+_020A536C:
+	.byte 0x50, 0x31, 0x37, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5374
+_020A5374:
+	.byte 0x50, 0x31, 0x36, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A537C
+_020A537C:
+	.byte 0x50, 0x31, 0x35, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5384
+_020A5384:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A538C
+_020A538C:
+	.byte 0x50, 0x31, 0x34, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5394
+_020A5394:
+	.byte 0x50, 0x31, 0x33, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A539C
+_020A539C:
+	.byte 0x50, 0x31, 0x32, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A53A4
+_020A53A4:
+	.byte 0x50, 0x31, 0x32, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A53AC
+_020A53AC:
+	.byte 0x50, 0x31, 0x31, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A53B4
+_020A53B4:
+	.byte 0x50, 0x31, 0x30, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A53BC
+_020A53BC:
+	.byte 0x50, 0x30, 0x39, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A53C4
+_020A53C4:
+	.byte 0x50, 0x30, 0x38, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A53CC
+_020A53CC:
+	.byte 0x50, 0x30, 0x37, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A53D4
+_020A53D4:
+	.byte 0x50, 0x30, 0x36, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A53DC
+_020A53DC:
+	.byte 0x50, 0x30, 0x35, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A53E4
+_020A53E4:
+	.byte 0x50, 0x30, 0x35, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A53EC
+_020A53EC:
+	.byte 0x56, 0x30, 0x33, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A53F4
+_020A53F4:
+	.byte 0x56, 0x32, 0x35, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A53FC
+_020A53FC:
+	.byte 0x50, 0x30, 0x35, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5404
+_020A5404:
+	.byte 0x50, 0x30, 0x34, 0x50, 0x30, 0x31, 0x43, 0x00
+	.global _020A540C
+_020A540C:
+	.byte 0x50, 0x30, 0x33, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5414
+_020A5414:
+	.byte 0x50, 0x30, 0x33, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A541C
+_020A541C:
+	.byte 0x50, 0x30, 0x32, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5424
+_020A5424:
+	.byte 0x50, 0x30, 0x31, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A542C
+_020A542C:
+	.byte 0x50, 0x30, 0x31, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A5434
+_020A5434:
+	.byte 0x50, 0x30, 0x31, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A543C
+_020A543C:
+	.byte 0x50, 0x30, 0x31, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A5444
+_020A5444:
+	.byte 0x48, 0x30, 0x32, 0x50, 0x39, 0x39, 0x43, 0x00
+	.global _020A544C
+_020A544C:
+	.byte 0x48, 0x30, 0x32, 0x50, 0x39, 0x39, 0x41, 0x00
+	.global _020A5454
+_020A5454:
+	.byte 0x48, 0x30, 0x31, 0x50, 0x39, 0x39, 0x45, 0x00
+	.global _020A545C
+_020A545C:
+	.byte 0x48, 0x30, 0x31, 0x50, 0x39, 0x39, 0x44, 0x00
+	.global _020A5464
+_020A5464:
+	.byte 0x48, 0x30, 0x31, 0x50, 0x39, 0x39, 0x43, 0x00
+	.global _020A546C
+_020A546C:
+	.byte 0x48, 0x30, 0x31, 0x50, 0x39, 0x39, 0x41, 0x00
+	.global _020A5474
+_020A5474:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x31, 0x30, 0x43, 0x00
+	.global _020A547C
+_020A547C:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x31, 0x30, 0x41, 0x00
+	.global _020A5484
+_020A5484:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x39, 0x43, 0x00
+	.global _020A548C
+_020A548C:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x39, 0x41, 0x00
+	.global _020A5494
+_020A5494:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x38, 0x41, 0x00
+	.global _020A549C
+_020A549C:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x37, 0x43, 0x00
+	.global _020A54A4
+_020A54A4:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x37, 0x41, 0x00
+	.global _020A54AC
+_020A54AC:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x36, 0x42, 0x00
+	.global _020A54B4
+_020A54B4:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x36, 0x41, 0x00
+	.global _020A54BC
+_020A54BC:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x35, 0x43, 0x00
+	.global _020A54C4
+_020A54C4:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x35, 0x41, 0x00
+	.global _020A54CC
+_020A54CC:
+	.byte 0x56, 0x30, 0x31, 0x50, 0x30, 0x34, 0x42, 0x00
+	.global _020A54D4
+_020A54D4:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x34, 0x43, 0x00
+	.global _020A54DC
+_020A54DC:
+	.byte 0x53, 0x30, 0x30, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A54E4
+_020A54E4:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A54EC
+_020A54EC:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x33, 0x41, 0x00
+	.global _020A54F4
+_020A54F4:
+	.byte 0x56, 0x30, 0x31, 0x50, 0x30, 0x33, 0x42, 0x00
+	.global _020A54FC
+_020A54FC:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A5504
+_020A5504:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x31, 0x43, 0x00
+	.global _020A550C
+_020A550C:
+	.byte 0x56, 0x30, 0x31, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5514
+_020A5514:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x31, 0x42, 0x00
+	.global _020A551C
+_020A551C:
+	.byte 0x56, 0x30, 0x31, 0x50, 0x30, 0x33, 0x43, 0x00
+	.global _020A5524
+_020A5524:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A552C
+_020A552C:
+	.byte 0x44, 0x39, 0x35, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5534
+_020A5534:
+	.byte 0x44, 0x39, 0x34, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A553C
+_020A553C:
+	.byte 0x56, 0x32, 0x34, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5544
+_020A5544:
+	.byte 0x44, 0x39, 0x32, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A554C
+_020A554C:
+	.byte 0x44, 0x39, 0x31, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5554
+_020A5554:
+	.byte 0x44, 0x39, 0x30, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A555C
+_020A555C:
+	.byte 0x44, 0x38, 0x39, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5564
+_020A5564:
+	.byte 0x44, 0x38, 0x38, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A556C
+_020A556C:
+	.byte 0x44, 0x38, 0x37, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5574
+_020A5574:
+	.byte 0x44, 0x38, 0x36, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A557C
+_020A557C:
+	.byte 0x44, 0x38, 0x35, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5584
+_020A5584:
+	.byte 0x44, 0x38, 0x34, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A558C
+_020A558C:
+	.byte 0x44, 0x38, 0x33, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5594
+_020A5594:
+	.byte 0x44, 0x38, 0x32, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A559C
+_020A559C:
+	.byte 0x44, 0x38, 0x31, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A55A4
+_020A55A4:
+	.byte 0x44, 0x38, 0x30, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A55AC
+_020A55AC:
+	.byte 0x44, 0x37, 0x39, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A55B4
+_020A55B4:
+	.byte 0x44, 0x37, 0x39, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A55BC
+_020A55BC:
+	.byte 0x44, 0x37, 0x39, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A55C4
+_020A55C4:
+	.byte 0x44, 0x37, 0x32, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A55CC
+_020A55CC:
+	.byte 0x44, 0x37, 0x31, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A55D4
+_020A55D4:
+	.byte 0x44, 0x37, 0x30, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A55DC
+_020A55DC:
+	.byte 0x56, 0x33, 0x37, 0x50, 0x30, 0x31, 0x41, 0x00
+	.global _020A55E4
+_020A55E4:
+	.byte 0x44, 0x36, 0x38, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A55EC
+_020A55EC:
+	.byte 0x44, 0x36, 0x37, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A55F4
+_020A55F4:
+	.byte 0x44, 0x36, 0x36, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A55FC
+_020A55FC:
+	.byte 0x44, 0x36, 0x35, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5604
+_020A5604:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A560C
+_020A560C:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A5614
+_020A5614:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x32, 0x39, 0x41, 0x00
+	.global _020A561C
+_020A561C:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x32, 0x38, 0x41, 0x00
+	.global _020A5624
+_020A5624:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x32, 0x37, 0x41, 0x00
+	.global _020A562C
+_020A562C:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x32, 0x36, 0x41, 0x00
+	.global _020A5634
+_020A5634:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x32, 0x35, 0x41, 0x00
+	.global _020A563C
+_020A563C:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x32, 0x34, 0x41, 0x00
+	.global _020A5644
+_020A5644:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x32, 0x33, 0x41, 0x00
+	.global _020A564C
+_020A564C:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x32, 0x32, 0x41, 0x00
+	.global _020A5654
+_020A5654:
+	.byte 0x44, 0x37, 0x33, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A565C
+_020A565C:
+	.byte 0x54, 0x30, 0x30, 0x50, 0x30, 0x34, 0x41, 0x00
+	.global _020A5664
+_020A5664:
+	.byte 0x44, 0x36, 0x33, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A566C
+_020A566C:
+	.byte 0x44, 0x36, 0x32, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5674
+_020A5674:
+	.byte 0x44, 0x36, 0x31, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A567C
+_020A567C:
+	.byte 0x44, 0x36, 0x30, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5684
+_020A5684:
+	.byte 0x44, 0x35, 0x39, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A568C
+_020A568C:
+	.byte 0x44, 0x35, 0x38, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5694
+_020A5694:
+	.byte 0x44, 0x35, 0x37, 0x50, 0x34, 0x34, 0x41, 0x00
+	.global _020A569C
+_020A569C:
+	.byte 0x44, 0x35, 0x37, 0x50, 0x34, 0x33, 0x41, 0x00
+	.global _020A56A4
+_020A56A4:
+	.byte 0x44, 0x35, 0x37, 0x50, 0x34, 0x32, 0x41, 0x00
+	.global _020A56AC
+_020A56AC:
+	.byte 0x44, 0x35, 0x37, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A56B4
+_020A56B4:
+	.byte 0x44, 0x35, 0x37, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A56BC
+_020A56BC:
+	.byte 0x44, 0x35, 0x36, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A56C4
+_020A56C4:
+	.byte 0x44, 0x35, 0x36, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A56CC
+_020A56CC:
+	.byte 0x44, 0x35, 0x36, 0x50, 0x31, 0x32, 0x41, 0x00
+	.global _020A56D4
+_020A56D4:
+	.byte 0x44, 0x35, 0x36, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A56DC
+_020A56DC:
+	.byte 0x44, 0x35, 0x35, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A56E4
+_020A56E4:
+	.byte 0x44, 0x35, 0x35, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A56EC
+_020A56EC:
+	.byte 0x44, 0x35, 0x35, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A56F4
+_020A56F4:
+	.byte 0x44, 0x35, 0x34, 0x50, 0x33, 0x32, 0x41, 0x00
+	.global _020A56FC
+_020A56FC:
+	.byte 0x50, 0x30, 0x35, 0x50, 0x30, 0x32, 0x41, 0x00
+	.global _020A5704
+_020A5704:
+	.byte 0x44, 0x35, 0x34, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A570C
+_020A570C:
+	.byte 0x44, 0x31, 0x30, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A5714
+_020A5714:
+	.byte 0x44, 0x35, 0x33, 0x50, 0x34, 0x31, 0x42, 0x00
+	.global _020A571C
+_020A571C:
+	.byte 0x44, 0x35, 0x33, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5724
+_020A5724:
+	.byte 0x44, 0x35, 0x33, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A572C
+_020A572C:
+	.byte 0x44, 0x35, 0x33, 0x50, 0x31, 0x31, 0x42, 0x00
+	.global _020A5734
+_020A5734:
+	.byte 0x44, 0x35, 0x33, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A573C
+_020A573C:
+	.byte 0x44, 0x35, 0x32, 0x50, 0x33, 0x32, 0x41, 0x00
+	.global _020A5744
+_020A5744:
+	.byte 0x44, 0x35, 0x32, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A574C
+_020A574C:
+	.byte 0x44, 0x35, 0x32, 0x50, 0x31, 0x31, 0x43, 0x00
+	.global _020A5754
+_020A5754:
+	.byte 0x44, 0x35, 0x32, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A575C
+_020A575C:
+	.byte 0x44, 0x35, 0x31, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5764
+_020A5764:
+	.byte 0x44, 0x35, 0x31, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A576C
+_020A576C:
+	.byte 0x44, 0x35, 0x31, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A5774
+_020A5774:
+	.byte 0x44, 0x35, 0x30, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A577C
+_020A577C:
+	.byte 0x44, 0x34, 0x39, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5784
+_020A5784:
+	.byte 0x44, 0x34, 0x38, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A578C
+_020A578C:
+	.byte 0x44, 0x34, 0x38, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A5794
+_020A5794:
+	.byte 0x44, 0x34, 0x37, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A579C
+_020A579C:
+	.byte 0x44, 0x34, 0x36, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A57A4
+_020A57A4:
+	.byte 0x44, 0x34, 0x36, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A57AC
+_020A57AC:
+	.byte 0x44, 0x34, 0x36, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A57B4
+_020A57B4:
+	.byte 0x44, 0x34, 0x36, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A57BC
+_020A57BC:
+	.byte 0x44, 0x34, 0x35, 0x50, 0x34, 0x32, 0x41, 0x00
+	.global _020A57C4
+_020A57C4:
+	.byte 0x44, 0x34, 0x35, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A57CC
+_020A57CC:
+	.byte 0x44, 0x34, 0x35, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A57D4
+_020A57D4:
+	.byte 0x44, 0x34, 0x34, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A57DC
+_020A57DC:
+	.byte 0x44, 0x34, 0x33, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A57E4
+_020A57E4:
+	.byte 0x44, 0x34, 0x32, 0x50, 0x34, 0x32, 0x41, 0x00
+	.global _020A57EC
+_020A57EC:
+	.byte 0x44, 0x34, 0x32, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A57F4
+_020A57F4:
+	.byte 0x44, 0x34, 0x32, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A57FC
+_020A57FC:
+	.byte 0x44, 0x34, 0x32, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A5804
+_020A5804:
+	.byte 0x44, 0x34, 0x31, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A580C
+_020A580C:
+	.byte 0x44, 0x34, 0x31, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A5814
+_020A5814:
+	.byte 0x44, 0x34, 0x30, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A581C
+_020A581C:
+	.byte 0x44, 0x33, 0x39, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5824
+_020A5824:
+	.byte 0x44, 0x33, 0x39, 0x50, 0x33, 0x32, 0x41, 0x00
+	.global _020A582C
+_020A582C:
+	.byte 0x44, 0x33, 0x39, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A5834
+_020A5834:
+	.byte 0x44, 0x33, 0x38, 0x50, 0x31, 0x32, 0x41, 0x00
+	.global _020A583C
+_020A583C:
+	.byte 0x44, 0x33, 0x38, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A5844
+_020A5844:
+	.byte 0x44, 0x33, 0x37, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A584C
+_020A584C:
+	.byte 0x44, 0x33, 0x37, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A5854
+_020A5854:
+	.byte 0x44, 0x33, 0x36, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A585C
+_020A585C:
+	.byte 0x44, 0x33, 0x36, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A5864
+_020A5864:
+	.byte 0x44, 0x33, 0x35, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A586C
+_020A586C:
+	.byte 0x44, 0x33, 0x35, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A5874
+_020A5874:
+	.byte 0x44, 0x33, 0x34, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A587C
+_020A587C:
+	.byte 0x44, 0x33, 0x33, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5884
+_020A5884:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x34, 0x34, 0x41, 0x00
+	.global _020A588C
+_020A588C:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x34, 0x33, 0x41, 0x00
+	.global _020A5894
+_020A5894:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x34, 0x32, 0x41, 0x00
+	.global _020A589C
+_020A589C:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A58A4
+_020A58A4:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x33, 0x33, 0x41, 0x00
+	.global _020A58AC
+_020A58AC:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x33, 0x32, 0x41, 0x00
+	.global _020A58B4
+_020A58B4:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A58BC
+_020A58BC:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x31, 0x34, 0x41, 0x00
+	.global _020A58C4
+_020A58C4:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x31, 0x33, 0x41, 0x00
+	.global _020A58CC
+_020A58CC:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x31, 0x32, 0x41, 0x00
+	.global _020A58D4
+_020A58D4:
+	.byte 0x44, 0x33, 0x32, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A58DC
+_020A58DC:
+	.byte 0x44, 0x33, 0x31, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A58E4
+_020A58E4:
+	.byte 0x44, 0x33, 0x31, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A58EC
+_020A58EC:
+	.byte 0x44, 0x33, 0x31, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A58F4
+_020A58F4:
+	.byte 0x44, 0x33, 0x30, 0x50, 0x34, 0x32, 0x41, 0x00
+	.global _020A58FC
+_020A58FC:
+	.byte 0x44, 0x33, 0x30, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A5904
+_020A5904:
+	.byte 0x44, 0x33, 0x30, 0x50, 0x33, 0x34, 0x41, 0x00
+	.global _020A590C
+_020A590C:
+	.byte 0x44, 0x33, 0x30, 0x50, 0x33, 0x33, 0x41, 0x00
+	.global _020A5914
+_020A5914:
+	.byte 0x44, 0x33, 0x30, 0x50, 0x33, 0x32, 0x41, 0x00
+	.global _020A591C
+_020A591C:
+	.byte 0x44, 0x33, 0x30, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A5924
+_020A5924:
+	.byte 0x44, 0x32, 0x39, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A592C
+_020A592C:
+	.byte 0x44, 0x32, 0x38, 0x50, 0x34, 0x34, 0x41, 0x00
+	.global _020A5934
+_020A5934:
+	.byte 0x44, 0x32, 0x38, 0x50, 0x33, 0x34, 0x41, 0x00
+	.global _020A593C
+_020A593C:
+	.byte 0x44, 0x32, 0x38, 0x50, 0x33, 0x33, 0x43, 0x00
+	.global _020A5944
+_020A5944:
+	.byte 0x44, 0x32, 0x38, 0x50, 0x33, 0x33, 0x41, 0x00
+	.global _020A594C
+_020A594C:
+	.byte 0x44, 0x32, 0x38, 0x50, 0x33, 0x32, 0x41, 0x00
+	.global _020A5954
+_020A5954:
+	.byte 0x44, 0x32, 0x38, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A595C
+_020A595C:
+	.byte 0x44, 0x32, 0x38, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A5964
+_020A5964:
+	.byte 0x44, 0x32, 0x37, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A596C
+_020A596C:
+	.byte 0x44, 0x32, 0x36, 0x50, 0x34, 0x33, 0x41, 0x00
+	.global _020A5974
+_020A5974:
+	.byte 0x44, 0x32, 0x36, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A597C
+_020A597C:
+	.byte 0x44, 0x32, 0x36, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A5984
+_020A5984:
+	.byte 0x44, 0x32, 0x35, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A598C
+_020A598C:
+	.byte 0x44, 0x32, 0x34, 0x50, 0x33, 0x31, 0x42, 0x00
+	.global _020A5994
+_020A5994:
+	.byte 0x44, 0x32, 0x34, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A599C
+_020A599C:
+	.byte 0x44, 0x32, 0x34, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A59A4
+_020A59A4:
+	.byte 0x44, 0x32, 0x33, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A59AC
+_020A59AC:
+	.byte 0x44, 0x32, 0x32, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A59B4
+_020A59B4:
+	.byte 0x44, 0x32, 0x31, 0x50, 0x34, 0x31, 0x41, 0x00
+	.global _020A59BC
+_020A59BC:
+	.byte 0x44, 0x32, 0x31, 0x50, 0x32, 0x31, 0x41, 0x00
+	.global _020A59C4
+_020A59C4:
+	.byte 0x44, 0x32, 0x30, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A59CC
+_020A59CC:
+	.byte 0x44, 0x31, 0x39, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A59D4
+_020A59D4:
+	.byte 0x44, 0x31, 0x38, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A59DC
+_020A59DC:
+	.byte 0x44, 0x31, 0x37, 0x50, 0x34, 0x35, 0x41, 0x00
+	.global _020A59E4
+_020A59E4:
+	.byte 0x44, 0x31, 0x37, 0x50, 0x33, 0x34, 0x41, 0x00
+	.global _020A59EC
+_020A59EC:
+	.byte 0x44, 0x31, 0x37, 0x50, 0x33, 0x33, 0x41, 0x00
+	.global _020A59F4
+_020A59F4:
+	.byte 0x44, 0x31, 0x37, 0x50, 0x33, 0x32, 0x41, 0x00
+	.global _020A59FC
+_020A59FC:
+	.byte 0x44, 0x31, 0x37, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A5A04
+_020A5A04:
+	.byte 0x44, 0x31, 0x37, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A5A0C
+_020A5A0C:
+	.byte 0x44, 0x31, 0x36, 0x50, 0x33, 0x31, 0x41, 0x00
+	.global _020A5A14
+_020A5A14:
+	.byte 0x44, 0x31, 0x36, 0x50, 0x31, 0x31, 0x41, 0x00
+	.global _020A5A1C
+_020A5A1C:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x34, 0x43, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5A28
+_020A5A28:
+	.byte 0x54, 0x30, 0x30, 0x50
+	.byte 0x30, 0x34, 0x41, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5A34
+_020A5A34:
+	.byte 0x50, 0x30, 0x35, 0x50, 0x30, 0x32, 0x41, 0x32
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020A5A40
+_020A5A40:
+	.byte 0x53, 0x39, 0x39, 0x50, 0x30, 0x33, 0x41, 0x34, 0x00, 0x00, 0x00, 0x00
+	.global _020A5A4C
+_020A5A4C:
+	.byte 0x50, 0x31, 0x34, 0x50, 0x30, 0x31, 0x41, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5A58
+_020A5A58:
+	.byte 0x53, 0x39, 0x39, 0x50
+	.byte 0x30, 0x31, 0x41, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5A64
+_020A5A64:
+	.byte 0x53, 0x39, 0x39, 0x50, 0x30, 0x31, 0x41, 0x33
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020A5A70
+_020A5A70:
+	.byte 0x53, 0x39, 0x39, 0x50, 0x30, 0x33, 0x41, 0x35, 0x00, 0x00, 0x00, 0x00
+	.global _020A5A7C
+_020A5A7C:
+	.byte 0x53, 0x30, 0x35, 0x50, 0x30, 0x32, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00
+	.global _020A5A88
+_020A5A88:
+	.byte 0x53, 0x39, 0x39, 0x50
+	.byte 0x30, 0x31, 0x41, 0x34, 0x00, 0x00, 0x00, 0x00
+	.global _020A5A94
+_020A5A94:
+	.byte 0x53, 0x31, 0x31, 0x50, 0x30, 0x32, 0x43, 0x32
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020A5AA0
+_020A5AA0:
+	.byte 0x53, 0x31, 0x31, 0x50, 0x30, 0x32, 0x43, 0x33, 0x00, 0x00, 0x00, 0x00
+	.global _020A5AAC
+_020A5AAC:
+	.byte 0x53, 0x31, 0x31, 0x50, 0x30, 0x32, 0x43, 0x34, 0x00, 0x00, 0x00, 0x00
+	.global _020A5AB8
+_020A5AB8:
+	.byte 0x53, 0x31, 0x31, 0x50
+	.byte 0x30, 0x32, 0x43, 0x35, 0x00, 0x00, 0x00, 0x00
+	.global _020A5AC4
+_020A5AC4:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x31, 0x41, 0x32
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020A5AD0
+_020A5AD0:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x31, 0x41, 0x33, 0x00, 0x00, 0x00, 0x00
+	.global _020A5ADC
+_020A5ADC:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x31, 0x31, 0x41, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5AE8
+_020A5AE8:
+	.byte 0x53, 0x31, 0x33, 0x50
+	.byte 0x30, 0x31, 0x41, 0x34, 0x00, 0x00, 0x00, 0x00
+	.global _020A5AF4
+_020A5AF4:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x31, 0x41, 0x35
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020A5B00
+_020A5B00:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x31, 0x42, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5B0C
+_020A5B0C:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x31, 0x31, 0x41, 0x33, 0x00, 0x00, 0x00, 0x00
+	.global _020A5B18
+_020A5B18:
+	.byte 0x53, 0x31, 0x33, 0x50
+	.byte 0x30, 0x31, 0x42, 0x33, 0x00, 0x00, 0x00, 0x00
+	.global _020A5B24
+_020A5B24:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x31, 0x42, 0x34
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020A5B30
+_020A5B30:
+	.byte 0x53, 0x31, 0x33, 0x50, 0x30, 0x31, 0x42, 0x35, 0x00, 0x00, 0x00, 0x00
+	.global _020A5B3C
+_020A5B3C:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x31, 0x31, 0x41, 0x34, 0x00, 0x00, 0x00, 0x00
+	.global _020A5B48
+_020A5B48:
+	.byte 0x53, 0x39, 0x39, 0x50
+	.byte 0x30, 0x31, 0x41, 0x35, 0x00, 0x00, 0x00, 0x00
+	.global _020A5B54
+_020A5B54:
+	.byte 0x53, 0x30, 0x35, 0x50, 0x30, 0x32, 0x43, 0x32
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020A5B60
+_020A5B60:
+	.byte 0x56, 0x32, 0x36, 0x50, 0x31, 0x31, 0x41, 0x35, 0x00, 0x00, 0x00, 0x00
+	.global _020A5B6C
+_020A5B6C:
+	.byte 0x53, 0x39, 0x39, 0x50, 0x30, 0x33, 0x41, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5B78
+_020A5B78:
+	.byte 0x54, 0x30, 0x31, 0x50
+	.byte 0x30, 0x33, 0x41, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5B84
+_020A5B84:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x31, 0x41, 0x32
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020A5B90
+_020A5B90:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x31, 0x42, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5B9C
+_020A5B9C:
+	.byte 0x47, 0x30, 0x31, 0x50, 0x30, 0x31, 0x43, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5BA8
+_020A5BA8:
+	.byte 0x47, 0x30, 0x31, 0x50
+	.byte 0x30, 0x34, 0x41, 0x32, 0x00, 0x00, 0x00, 0x00
+	.global _020A5BB4
+_020A5BB4:
+	.byte 0x53, 0x39, 0x39, 0x50, 0x30, 0x33, 0x41, 0x33
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020A5BC0
+_020A5BC0:
+	.byte 0x53, 0x30, 0x35, 0x50, 0x30, 0x32, 0x43, 0x33, 0x00, 0x00, 0x00, 0x00
+	.global _020A5BCC
+_020A5BCC:
+	.byte 0x53, 0x30, 0x35, 0x50, 0x30, 0x32, 0x43, 0x35
+#else
 	.byte 0x44, 0x30, 0x30, 0x50, 0x30, 0x31, 0x00, 0x00
 	.global _020A46F4
 _020A46F4:
@@ -172628,6 +176375,7 @@ _020A5470:
 	.global _020A547C
 _020A547C:
 	.byte 0x50, 0x31, 0x34, 0x50, 0x30, 0x31, 0x41, 0x32
+#endif
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global EVENTS
 EVENTS:
@@ -172637,6 +176385,1039 @@ _020A548A:
 	.byte 0xB9, 0x00, 0x00, 0x00, 0xFF, 0xFF
 	.global _020A5490
 _020A5490:
+#ifdef EUROPE
+	.word _020A54DC
+	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
+	.word LEVEL_LIST
+	.byte 0x06, 0x00, 0x00, 0x00, 0x02, 0x00, 0xFF, 0xFF
+	.word _020A4D04
+	.byte 0x06, 0x00, 0x00, 0x00, 0x03, 0x00, 0xFF, 0xFF
+	.word _020A4CFC
+	.byte 0x06, 0x00, 0x00, 0x00
+	.byte 0x04, 0x00, 0xFF, 0xFF
+	.word _020A565C
+	.byte 0x06, 0x00, 0x00, 0x00, 0x05, 0x00, 0xFF, 0xFF
+	.word _020A5A28
+	.byte 0x0B, 0x00, 0x01, 0x00, 0x06, 0x00, 0xFF, 0xFF
+	.word _020A4D14
+	.byte 0x0A, 0x00, 0x01, 0x00, 0x07, 0x00, 0xFF, 0xFF
+	.word _020A4D0C
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0x08, 0x00, 0xFF, 0xFF
+	.word _020A4CF4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x09, 0x00, 0xFF, 0xFF
+	.word _020A4D24
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x0A, 0x00, 0xFF, 0xFF
+	.word _020A4D1C
+	.byte 0x06, 0x00, 0xC4, 0x00, 0x0B, 0x00, 0xFF, 0xFF
+	.word _020A4E1C
+	.byte 0x06, 0x00, 0xC4, 0x00
+	.byte 0x0C, 0x00, 0xFF, 0xFF
+	.word _020A4F6C
+	.byte 0x01, 0x00, 0x02, 0x00, 0x0D, 0x00, 0xFF, 0xFF
+	.word _020A5214
+	.byte 0x06, 0x00, 0x04, 0x00, 0x0E, 0x00, 0xFF, 0xFF
+	.word _020A4F74
+	.byte 0x06, 0x00, 0x04, 0x00, 0x0F, 0x00, 0xFF, 0xFF
+	.word _020A4E24
+	.byte 0x06, 0x00, 0x05, 0x00
+	.byte 0x10, 0x00, 0xFF, 0xFF
+	.word _020A4D6C
+	.byte 0x01, 0x00, 0x05, 0x00, 0x11, 0x00, 0xFF, 0xFF
+	.word _020A4F7C
+	.byte 0x06, 0x00, 0x07, 0x00, 0x12, 0x00, 0xFF, 0xFF
+	.word _020A4F84
+	.byte 0x06, 0x00, 0x07, 0x00, 0x13, 0x00, 0xFF, 0xFF
+	.word _020A4E2C
+	.byte 0x06, 0x00, 0x07, 0x00
+	.byte 0x14, 0x00, 0xFF, 0xFF
+	.word _020A4F8C
+	.byte 0x06, 0x00, 0x08, 0x00, 0x15, 0x00, 0xFF, 0xFF
+	.word _020A4F94
+	.byte 0x06, 0x00, 0x08, 0x00, 0x16, 0x00, 0xFF, 0xFF
+	.word _020A4E34
+	.byte 0x06, 0x00, 0xC5, 0x00, 0x17, 0x00, 0xFF, 0xFF
+	.word _020A4D84
+	.byte 0x06, 0x00, 0xC6, 0x00
+	.byte 0x18, 0x00, 0xFF, 0xFF
+	.word _020A4D74
+	.byte 0x06, 0x00, 0xC7, 0x00, 0x19, 0x00, 0x07, 0x00
+	.word _020A4D64
+	.byte 0x06, 0x00, 0xC8, 0x00, 0x1A, 0x00, 0xFF, 0xFF
+	.word _020A4D7C
+	.byte 0x0A, 0x00, 0xC9, 0x00, 0x1B, 0x00, 0xFF, 0xFF
+	.word _020A570C
+	.byte 0x01, 0x00, 0x0F, 0x00
+	.byte 0x1C, 0x00, 0xFF, 0xFF
+	.word _020A4D34
+	.byte 0x06, 0x00, 0x12, 0x00, 0x1D, 0x00, 0xFF, 0xFF
+	.word _020A4DAC
+	.byte 0x0A, 0x00, 0xCA, 0x00, 0x1E, 0x00, 0xFF, 0xFF
+	.word _020A4D44
+	.byte 0x01, 0x00, 0x12, 0x00, 0x1F, 0x00, 0xFF, 0xFF
+	.word _020A4D3C
+	.byte 0x06, 0x00, 0x15, 0x00
+	.byte 0x20, 0x00, 0xFF, 0xFF
+	.word _020A4DBC
+	.byte 0x06, 0x00, 0x16, 0x00, 0x21, 0x00, 0xFF, 0xFF
+	.word _020A4D4C
+	.byte 0x07, 0x00, 0x16, 0x00, 0x22, 0x00, 0xFF, 0xFF
+	.word _020A4D54
+	.byte 0x0A, 0x00, 0xCB, 0x00, 0x23, 0x00, 0xFF, 0xFF
+	.word _020A4D2C
+	.byte 0x01, 0x00, 0xBC, 0x00
+	.byte 0x24, 0x00, 0xFF, 0xFF
+	.word _020A4D5C
+	.byte 0x06, 0x00, 0x19, 0x00, 0x25, 0x00, 0xFF, 0xFF
+	.word _020A5A14
+	.byte 0x06, 0x00, 0xCC, 0x00, 0x26, 0x00, 0xFF, 0xFF
+	.word _020A5A0C
+	.byte 0x06, 0x00, 0xBD, 0x00, 0x27, 0x00, 0xFF, 0xFF
+	.word _020A5A04
+	.byte 0x06, 0x00, 0xBD, 0x00
+	.byte 0x28, 0x00, 0xFF, 0xFF
+	.word _020A59FC
+	.byte 0x06, 0x00, 0xBD, 0x00, 0x29, 0x00, 0xFF, 0xFF
+	.word _020A59F4
+	.byte 0x06, 0x00, 0xBD, 0x00, 0x2A, 0x00, 0xFF, 0xFF
+	.word _020A59EC
+	.byte 0x06, 0x00, 0xBD, 0x00, 0x2B, 0x00, 0xFF, 0xFF
+	.word _020A59E4
+	.byte 0x01, 0x00, 0xBD, 0x00
+	.byte 0x2C, 0x00, 0xFF, 0xFF
+	.word _020A59DC
+	.byte 0x06, 0x00, 0xCD, 0x00, 0x2D, 0x00, 0xFF, 0xFF
+	.word _020A59D4
+	.byte 0x06, 0x00, 0xCE, 0x00, 0x2E, 0x00, 0xFF, 0xFF
+	.word _020A59CC
+	.byte 0x06, 0x00, 0xCF, 0x00, 0x2F, 0x00, 0xFF, 0xFF
+	.word _020A59C4
+	.byte 0x0A, 0x00, 0xD0, 0x00
+	.byte 0x30, 0x00, 0xFF, 0xFF
+	.word _020A59BC
+	.byte 0x01, 0x00, 0x1E, 0x00, 0x31, 0x00, 0xFF, 0xFF
+	.word _020A59B4
+	.byte 0x06, 0x00, 0xD1, 0x00, 0x32, 0x00, 0xFF, 0xFF
+	.word _020A59AC
+	.byte 0x06, 0x00, 0xD3, 0x00, 0x33, 0x00, 0xFF, 0xFF
+	.word _020A59A4
+	.byte 0x06, 0x00, 0xD4, 0x00
+	.byte 0x34, 0x00, 0xFF, 0xFF
+	.word _020A599C
+	.byte 0x07, 0x00, 0x23, 0x00, 0x35, 0x00, 0xFF, 0xFF
+	.word _020A5994
+	.byte 0x07, 0x00, 0x23, 0x00, 0x36, 0x00, 0xFF, 0xFF
+	.word _020A598C
+	.byte 0x06, 0x00, 0xD5, 0x00, 0x37, 0x00, 0xFF, 0xFF
+	.word _020A5984
+	.byte 0x0A, 0x00, 0xD6, 0x00
+	.byte 0x38, 0x00, 0xFF, 0xFF
+	.word _020A597C
+	.byte 0x06, 0x00, 0x24, 0x00, 0x39, 0x00, 0xFF, 0xFF
+	.word _020A5974
+	.byte 0x01, 0x00, 0x24, 0x00, 0x3A, 0x00, 0xFF, 0xFF
+	.word _020A596C
+	.byte 0x06, 0x00, 0xD7, 0x00, 0x3B, 0x00, 0xFF, 0xFF
+	.word _020A5964
+	.byte 0x0A, 0x00, 0xD8, 0x00
+	.byte 0x3C, 0x00, 0xFF, 0xFF
+	.word _020A595C
+	.byte 0x06, 0x00, 0xBE, 0x00, 0x3D, 0x00, 0xFF, 0xFF
+	.word _020A5954
+	.byte 0x06, 0x00, 0xBE, 0x00, 0x3E, 0x00, 0xFF, 0xFF
+	.word _020A594C
+	.byte 0x06, 0x00, 0xBE, 0x00, 0x3F, 0x00, 0xFF, 0xFF
+	.word _020A5944
+	.byte 0x06, 0x00, 0xBE, 0x00
+	.byte 0x40, 0x00, 0xFF, 0xFF
+	.word _020A593C
+	.byte 0x06, 0x00, 0xBE, 0x00, 0x41, 0x00, 0xFF, 0xFF
+	.word _020A5934
+	.byte 0x01, 0x00, 0xBE, 0x00, 0x42, 0x00, 0xFF, 0xFF
+	.word _020A592C
+	.byte 0x06, 0x00, 0xD9, 0x00, 0x43, 0x00, 0xFF, 0xFF
+	.word _020A5924
+	.byte 0x0A, 0x00, 0xDA, 0x00
+	.byte 0x44, 0x00, 0xFF, 0xFF
+	.word _020A591C
+	.byte 0x06, 0x00, 0x2A, 0x00, 0x45, 0x00, 0xFF, 0xFF
+	.word _020A5914
+	.byte 0x06, 0x00, 0x2A, 0x00, 0x46, 0x00, 0xFF, 0xFF
+	.word _020A590C
+	.byte 0x06, 0x00, 0x2A, 0x00, 0x47, 0x00, 0xFF, 0xFF
+	.word _020A5904
+	.byte 0x01, 0x00, 0x2A, 0x00
+	.byte 0x48, 0x00, 0xFF, 0xFF
+	.word _020A58FC
+	.byte 0x01, 0x00, 0x2A, 0x00, 0x49, 0x00, 0xFF, 0xFF
+	.word _020A58F4
+	.byte 0x06, 0x00, 0xDB, 0x00, 0x4A, 0x00, 0xFF, 0xFF
+	.word _020A58EC
+	.byte 0x06, 0x00, 0x2D, 0x00, 0x4B, 0x00, 0xFF, 0xFF
+	.word _020A58E4
+	.byte 0x01, 0x00, 0x2D, 0x00
+	.byte 0x4C, 0x00, 0xFF, 0xFF
+	.word _020A58DC
+	.byte 0x0A, 0x00, 0xDC, 0x00, 0x4D, 0x00, 0xFF, 0xFF
+	.word _020A58D4
+	.byte 0x0A, 0x00, 0xDD, 0x00, 0x4E, 0x00, 0xFF, 0xFF
+	.word _020A58CC
+	.byte 0x0A, 0x00, 0xDE, 0x00, 0x4F, 0x00, 0xFF, 0xFF
+	.word _020A58C4
+	.byte 0x07, 0x00, 0x37, 0x00
+	.byte 0x50, 0x00, 0xFF, 0xFF
+	.word _020A58BC
+	.byte 0x0A, 0x00, 0x37, 0x00, 0x51, 0x00, 0xFF, 0xFF
+	.word _020A58B4
+	.byte 0x0A, 0x00, 0x37, 0x00, 0x52, 0x00, 0xFF, 0xFF
+	.word _020A58AC
+	.byte 0x0A, 0x00, 0x37, 0x00, 0x53, 0x00, 0xFF, 0xFF
+	.word _020A58A4
+	.byte 0x0B, 0x00, 0x37, 0x00
+	.byte 0x54, 0x00, 0xFF, 0xFF
+	.word _020A589C
+	.byte 0x0B, 0x00, 0x37, 0x00, 0x55, 0x00, 0xFF, 0xFF
+	.word _020A5894
+	.byte 0x0B, 0x00, 0x37, 0x00, 0x56, 0x00, 0xFF, 0xFF
+	.word _020A588C
+	.byte 0x01, 0x00, 0x37, 0x00, 0x57, 0x00, 0xFF, 0xFF
+	.word _020A5884
+	.byte 0x0B, 0x00, 0x47, 0x00
+	.byte 0x58, 0x00, 0xFF, 0xFF
+	.word _020A587C
+	.byte 0x0A, 0x00, 0x33, 0x00, 0x59, 0x00, 0xFF, 0xFF
+	.word _020A5874
+	.byte 0x0A, 0x00, 0xDF, 0x00, 0x5A, 0x00, 0xFF, 0xFF
+	.word _020A586C
+	.byte 0x0B, 0x00, 0x34, 0x00, 0x5B, 0x00, 0xFF, 0xFF
+	.word _020A5864
+	.byte 0x01, 0x00, 0x3F, 0x00
+	.byte 0x5C, 0x00, 0xFF, 0xFF
+	.word _020A585C
+	.byte 0x06, 0x00, 0x3F, 0x00, 0x5D, 0x00, 0xFF, 0xFF
+	.word _020A5854
+	.byte 0x0A, 0x00, 0x40, 0x00, 0x5E, 0x00, 0xFF, 0xFF
+	.word _020A584C
+	.byte 0x0A, 0x00, 0x40, 0x00, 0x5F, 0x00, 0xFF, 0xFF
+	.word _020A5844
+	.byte 0x0A, 0x00, 0x41, 0x00
+	.byte 0x60, 0x00, 0xFF, 0xFF
+	.word _020A583C
+	.byte 0x0A, 0x00, 0xE0, 0x00, 0x61, 0x00, 0xFF, 0xFF
+	.word _020A5834
+	.byte 0x0A, 0x00, 0xE1, 0x00, 0x62, 0x00, 0xFF, 0xFF
+	.word _020A582C
+	.byte 0x0A, 0x00, 0x41, 0x00, 0x63, 0x00, 0xFF, 0xFF
+	.word _020A5824
+	.byte 0x0B, 0x00, 0x41, 0x00
+	.byte 0x64, 0x00, 0xFF, 0xFF
+	.word _020A581C
+	.byte 0x06, 0x00, 0x44, 0x00, 0x65, 0x00, 0xFF, 0xFF
+	.word _020A5814
+	.byte 0x0A, 0x00, 0xE2, 0x00, 0x66, 0x00, 0xFF, 0xFF
+	.word _020A580C
+	.byte 0x01, 0x00, 0x44, 0x00, 0x67, 0x00, 0xFF, 0xFF
+	.word _020A5804
+	.byte 0x0A, 0x00, 0xE3, 0x00
+	.byte 0x68, 0x00, 0xFF, 0xFF
+	.word _020A57FC
+	.byte 0x06, 0x00, 0xE4, 0x00, 0x69, 0x00, 0xFF, 0xFF
+	.word _020A57F4
+	.byte 0x01, 0x00, 0xE5, 0x00, 0x6A, 0x00, 0xFF, 0xFF
+	.word _020A57EC
+	.byte 0x01, 0x00, 0xE6, 0x00, 0x6B, 0x00, 0xFF, 0xFF
+	.word _020A57E4
+	.byte 0x07, 0x00, 0x7C, 0x00
+	.byte 0x6C, 0x00, 0xFF, 0xFF
+	.word _020A57DC
+	.byte 0x06, 0x00, 0x7C, 0x00, 0x6D, 0x00, 0xFF, 0xFF
+	.word _020A57D4
+	.byte 0x0A, 0x00, 0xE7, 0x00, 0x6E, 0x00, 0xFF, 0xFF
+	.word _020A57CC
+	.byte 0x06, 0x00, 0x83, 0x00, 0x6F, 0x00, 0xFF, 0xFF
+	.word _020A57C4
+	.byte 0x01, 0x00, 0xE8, 0x00
+	.byte 0x70, 0x00, 0xFF, 0xFF
+	.word _020A57BC
+	.byte 0x06, 0x00, 0xE9, 0x00, 0x71, 0x00, 0xFF, 0xFF
+	.word _020A57B4
+	.byte 0x0A, 0x00, 0xEA, 0x00, 0x72, 0x00, 0xFF, 0xFF
+	.word _020A57AC
+	.byte 0x01, 0x00, 0xEB, 0x00, 0x73, 0x00, 0xFF, 0xFF
+	.word _020A57A4
+	.byte 0x01, 0x00, 0xEC, 0x00
+	.byte 0x74, 0x00, 0xFF, 0xFF
+	.word _020A579C
+	.byte 0x06, 0x00, 0xED, 0x00, 0x75, 0x00, 0xFF, 0xFF
+	.word _020A5794
+	.byte 0x06, 0x00, 0xEE, 0x00, 0x76, 0x00, 0xFF, 0xFF
+	.word _020A578C
+	.byte 0x0A, 0x00, 0xEF, 0x00, 0x77, 0x00, 0xFF, 0xFF
+	.word _020A5784
+	.byte 0x01, 0x00, 0xF0, 0x00
+	.byte 0x78, 0x00, 0xFF, 0xFF
+	.word _020A577C
+	.byte 0x06, 0x00, 0xF1, 0x00, 0x79, 0x00, 0xFF, 0xFF
+	.word _020A5774
+	.byte 0x06, 0x00, 0xF2, 0x00, 0x7A, 0x00, 0xFF, 0xFF
+	.word _020A576C
+	.byte 0x0A, 0x00, 0xF3, 0x00, 0x7B, 0x00, 0xFF, 0xFF
+	.word _020A5764
+	.byte 0x01, 0x00, 0xF4, 0x00
+	.byte 0x7C, 0x00, 0xFF, 0xFF
+	.word _020A575C
+	.byte 0x06, 0x00, 0xF5, 0x00, 0x7D, 0x00, 0xFF, 0xFF
+	.word _020A5754
+	.byte 0x06, 0x00, 0xF5, 0x00, 0x7E, 0x00, 0xFF, 0xFF
+	.word _020A574C
+	.byte 0x06, 0x00, 0xF6, 0x00, 0x7F, 0x00, 0xFF, 0xFF
+	.word _020A5744
+	.byte 0x07, 0x00, 0xF7, 0x00
+	.byte 0x80, 0x00, 0xFF, 0xFF
+	.word _020A573C
+	.byte 0x06, 0x00, 0xF8, 0x00, 0x81, 0x00, 0xFF, 0xFF
+	.word _020A5734
+	.byte 0x06, 0x00, 0xF8, 0x00, 0x82, 0x00, 0xFF, 0xFF
+	.word _020A572C
+	.byte 0x0A, 0x00, 0xF9, 0x00, 0x83, 0x00, 0xFF, 0xFF
+	.word _020A5724
+	.byte 0x01, 0x00, 0xFA, 0x00
+	.byte 0x84, 0x00, 0xFF, 0xFF
+	.word _020A571C
+	.byte 0x01, 0x00, 0xFA, 0x00, 0x85, 0x00, 0xFF, 0xFF
+	.word _020A5714
+	.byte 0x01, 0x00, 0xFA, 0x00, 0x86, 0x00, 0xFF, 0xFF
+	.word _020A51F4
+	.byte 0x06, 0x00, 0xFB, 0x00, 0x87, 0x00, 0xFF, 0xFF
+	.word _020A5704
+	.byte 0x06, 0x00, 0x96, 0x00
+	.byte 0x88, 0x00, 0xFF, 0xFF
+	.word _020A51EC
+	.byte 0x06, 0x00, 0x96, 0x00, 0x89, 0x00, 0xFF, 0xFF
+	.word _020A56F4
+	.byte 0x06, 0x00, 0xFC, 0x00, 0x8A, 0x00, 0xFF, 0xFF
+	.word _020A56EC
+	.byte 0x0A, 0x00, 0xFD, 0x00, 0x8B, 0x00, 0xFF, 0xFF
+	.word _020A56E4
+	.byte 0x01, 0x00, 0xFE, 0x00
+	.byte 0x8C, 0x00, 0xFF, 0xFF
+	.word _020A56DC
+	.byte 0x06, 0x00, 0xFF, 0x00, 0x8D, 0x00, 0xFF, 0xFF
+	.word _020A56D4
+	.byte 0x06, 0x00, 0x9C, 0x00, 0x8E, 0x00, 0xFF, 0xFF
+	.word _020A56CC
+	.byte 0x0A, 0x00, 0x00, 0x01, 0x8F, 0x00, 0xFF, 0xFF
+	.word _020A56C4
+	.byte 0x01, 0x00, 0x01, 0x01
+	.byte 0x90, 0x00, 0xFF, 0xFF
+	.word _020A56BC
+	.byte 0x0A, 0x00, 0x02, 0x01, 0x91, 0x00, 0xFF, 0xFF
+	.word _020A56B4
+	.byte 0x01, 0x00, 0x03, 0x01, 0x92, 0x00, 0xFF, 0xFF
+	.word _020A56AC
+	.byte 0x01, 0x00, 0x04, 0x01, 0x93, 0x00, 0xFF, 0xFF
+	.word _020A56A4
+	.byte 0x01, 0x00, 0x05, 0x01
+	.byte 0x94, 0x00, 0xFF, 0xFF
+	.word _020A569C
+	.byte 0x01, 0x00, 0x06, 0x01, 0x95, 0x00, 0xFF, 0xFF
+	.word _020A5694
+	.byte 0x0A, 0x00, 0x68, 0x00, 0x96, 0x00, 0xFF, 0xFF
+	.word _020A568C
+	.byte 0x0A, 0x00, 0x6C, 0x00, 0x97, 0x00, 0xFF, 0xFF
+	.word _020A5684
+	.byte 0x0A, 0x00, 0x6D, 0x00
+	.byte 0x98, 0x00, 0xFF, 0xFF
+	.word _020A567C
+	.byte 0x0A, 0x00, 0x6E, 0x00, 0x99, 0x00, 0xFF, 0xFF
+	.word _020A5674
+	.byte 0x0A, 0x00, 0x6F, 0x00, 0x9A, 0x00, 0xFF, 0xFF
+	.word _020A566C
+	.byte 0x0A, 0x00, 0x69, 0x00, 0x9B, 0x00, 0xFF, 0xFF
+	.word _020A5664
+	.byte 0x06, 0x00, 0x07, 0x01
+	.byte 0x9C, 0x00, 0xFF, 0xFF
+	.word _020A519C
+	.byte 0x0A, 0x00, 0x08, 0x01, 0x9D, 0x00, 0xFF, 0xFF
+	.word _020A5654
+	.byte 0x0A, 0x00, 0x09, 0x01, 0x9E, 0x00, 0xFF, 0xFF
+	.word _020A564C
+	.byte 0x0A, 0x00, 0x0A, 0x01, 0x9F, 0x00, 0xFF, 0xFF
+	.word _020A5644
+	.byte 0x0A, 0x00, 0x0B, 0x01
+	.byte 0xA0, 0x00, 0xFF, 0xFF
+	.word _020A563C
+	.byte 0x0A, 0x00, 0x0C, 0x01, 0xA1, 0x00, 0xFF, 0xFF
+	.word _020A5634
+	.byte 0x0A, 0x00, 0x0D, 0x01, 0xA2, 0x00, 0xFF, 0xFF
+	.word _020A562C
+	.byte 0x0A, 0x00, 0x0E, 0x01, 0xA3, 0x00, 0xFF, 0xFF
+	.word _020A5624
+	.byte 0x06, 0x00, 0x0F, 0x01
+	.byte 0xA4, 0x00, 0xFF, 0xFF
+	.word _020A561C
+	.byte 0x0A, 0x00, 0x10, 0x01, 0xA5, 0x00, 0xFF, 0xFF
+	.word _020A5614
+	.byte 0x06, 0x00, 0x11, 0x01, 0xA6, 0x00, 0xFF, 0xFF
+	.word _020A560C
+	.byte 0x01, 0x00, 0x12, 0x01, 0xA7, 0x00, 0xFF, 0xFF
+	.word _020A5604
+	.byte 0x0B, 0x00, 0x51, 0x00
+	.byte 0xA8, 0x00, 0xFF, 0xFF
+	.word _020A55FC
+	.byte 0x0B, 0x00, 0x4D, 0x00, 0xA9, 0x00, 0xFF, 0xFF
+	.word _020A55F4
+	.byte 0x0B, 0x00, 0x4F, 0x00, 0xAA, 0x00, 0xFF, 0xFF
+	.word _020A55EC
+	.byte 0x0B, 0x00, 0x4B, 0x00, 0xAB, 0x00, 0xFF, 0xFF
+	.word _020A55E4
+	.byte 0x0B, 0x00, 0x53, 0x00
+	.byte 0xAC, 0x00, 0xFF, 0xFF
+	.word _020A515C
+	.byte 0x0B, 0x00, 0x57, 0x00, 0xAD, 0x00, 0xFF, 0xFF
+	.word _020A55D4
+	.byte 0x0B, 0x00, 0x55, 0x00, 0xAE, 0x00, 0xFF, 0xFF
+	.word _020A55CC
+	.byte 0x0B, 0x00, 0x49, 0x00, 0xAF, 0x00, 0xFF, 0xFF
+	.word _020A55C4
+	.byte 0x06, 0x00, 0x13, 0x01
+	.byte 0xB0, 0x00, 0xFF, 0xFF
+	.word _020A55BC
+	.byte 0x0A, 0x00, 0x14, 0x01, 0xB1, 0x00, 0xFF, 0xFF
+	.word _020A55B4
+	.byte 0x0B, 0x00, 0x30, 0x00, 0xB2, 0x00, 0xFF, 0xFF
+	.word _020A55AC
+	.byte 0x0B, 0x00, 0x5C, 0x00, 0xB3, 0x00, 0xFF, 0xFF
+	.word _020A55A4
+	.byte 0x0A, 0x00, 0x5E, 0x00
+	.byte 0xB4, 0x00, 0xFF, 0xFF
+	.word _020A559C
+	.byte 0x0A, 0x00, 0x5F, 0x00, 0xB5, 0x00, 0xFF, 0xFF
+	.word _020A5594
+	.byte 0x0A, 0x00, 0x60, 0x00, 0xB6, 0x00, 0xFF, 0xFF
+	.word _020A558C
+	.byte 0x0A, 0x00, 0x61, 0x00, 0xB7, 0x00, 0xFF, 0xFF
+	.word _020A5584
+	.byte 0x0A, 0x00, 0x62, 0x00
+	.byte 0xB8, 0x00, 0xFF, 0xFF
+	.word _020A557C
+	.byte 0x0A, 0x00, 0x63, 0x00, 0xB9, 0x00, 0xFF, 0xFF
+	.word _020A5574
+	.byte 0x0A, 0x00, 0x64, 0x00, 0xBA, 0x00, 0xFF, 0xFF
+	.word _020A556C
+	.byte 0x0A, 0x00, 0x65, 0x00, 0xBB, 0x00, 0xFF, 0xFF
+	.word _020A5564
+	.byte 0x0A, 0x00, 0x66, 0x00
+	.byte 0xBC, 0x00, 0xFF, 0xFF
+	.word _020A555C
+	.byte 0x0A, 0x00, 0x67, 0x00, 0xBD, 0x00, 0xFF, 0xFF
+	.word _020A5554
+	.byte 0x0A, 0x00, 0x58, 0x00, 0xBE, 0x00, 0xFF, 0xFF
+	.word _020A554C
+	.byte 0x0A, 0x00, 0x59, 0x00, 0xBF, 0x00, 0xFF, 0xFF
+	.word _020A5544
+	.byte 0x0A, 0x00, 0x5A, 0x00
+	.byte 0xC0, 0x00, 0xFF, 0xFF
+	.word _020A510C
+	.byte 0x0A, 0x00, 0x5B, 0x00, 0xC1, 0x00, 0xFF, 0xFF
+	.word _020A5534
+	.byte 0x0A, 0x00, 0x5C, 0x00, 0xC2, 0x00, 0xFF, 0xFF
+	.word _020A552C
+	.byte 0x06, 0x00, 0x15, 0x01, 0xC3, 0x00, 0xFF, 0xFF
+	.word _020A5524
+	.byte 0x06, 0x00, 0x15, 0x01
+	.byte 0xC4, 0x00, 0xFF, 0xFF
+	.word _020A5B84
+	.byte 0x06, 0x00, 0x15, 0x01, 0xC5, 0x00, 0xFF, 0xFF
+	.word _020A5514
+	.byte 0x06, 0x00, 0x15, 0x01, 0xC6, 0x00, 0xFF, 0xFF
+	.word _020A5B90
+	.byte 0x06, 0x00, 0x15, 0x01, 0xC7, 0x00, 0xFF, 0xFF
+	.word _020A5504
+	.byte 0x06, 0x00, 0x15, 0x01
+	.byte 0xC8, 0x00, 0xFF, 0xFF
+	.word _020A5B9C
+	.byte 0x06, 0x00, 0x16, 0x01, 0xC9, 0x00, 0xFF, 0xFF
+	.word _020A54E4
+	.byte 0x06, 0x00, 0x17, 0x01, 0xCA, 0x00, 0xFF, 0xFF
+	.word _020A54EC
+	.byte 0x06, 0x00, 0x18, 0x01, 0xCB, 0x00, 0xFF, 0xFF
+	.word _020A54FC
+	.byte 0x06, 0x00, 0x18, 0x01
+	.byte 0xCC, 0x00, 0xFF, 0xFF
+	.word _020A5BA8
+	.byte 0x06, 0x00, 0x18, 0x01, 0xCD, 0x00, 0xFF, 0xFF
+	.word _020A54D4
+	.byte 0x06, 0x00, 0x18, 0x01, 0xCE, 0x00, 0xFF, 0xFF
+	.word _020A5A1C
+	.byte 0x06, 0x00, 0x19, 0x01, 0xCF, 0x00, 0xFF, 0xFF
+	.word _020A54C4
+	.byte 0x06, 0x00, 0x19, 0x01
+	.byte 0xD0, 0x00, 0xFF, 0xFF
+	.word _020A54BC
+	.byte 0x06, 0x00, 0x1A, 0x01, 0xD1, 0x00, 0xFF, 0xFF
+	.word _020A54B4
+	.byte 0x06, 0x00, 0x1A, 0x01, 0xD2, 0x00, 0xFF, 0xFF
+	.word _020A54AC
+	.byte 0x02, 0x00, 0x1B, 0x01, 0xD3, 0x00, 0xFF, 0xFF
+	.word _020A54A4
+	.byte 0x02, 0x00, 0x1B, 0x01
+	.byte 0xD4, 0x00, 0xFF, 0xFF
+	.word _020A549C
+	.byte 0x02, 0x00, 0x1C, 0x01, 0xD5, 0x00, 0xFF, 0xFF
+	.word _020A5494
+	.byte 0x02, 0x00, 0x1D, 0x01, 0xD6, 0x00, 0xFF, 0xFF
+	.word _020A548C
+	.byte 0x02, 0x00, 0x1D, 0x01, 0xD7, 0x00, 0xFF, 0xFF
+	.word _020A5484
+	.byte 0x02, 0x00, 0x1E, 0x01
+	.byte 0xD8, 0x00, 0xFF, 0xFF
+	.word _020A547C
+	.byte 0x02, 0x00, 0x1E, 0x01, 0xD9, 0x00, 0xFF, 0xFF
+	.word _020A5474
+	.byte 0x06, 0x00, 0x1F, 0x01, 0xDA, 0x00, 0xFF, 0xFF
+	.word _020A546C
+	.byte 0x06, 0x00, 0x1F, 0x01, 0xDB, 0x00, 0xFF, 0xFF
+	.word _020A5464
+	.byte 0x06, 0x00, 0x1F, 0x01
+	.byte 0xDC, 0x00, 0xFF, 0xFF
+	.word _020A545C
+	.byte 0x06, 0x00, 0x1F, 0x01, 0xDD, 0x00, 0xFF, 0xFF
+	.word _020A5454
+	.byte 0x06, 0x00, 0x20, 0x01, 0xDE, 0x00, 0xFF, 0xFF
+	.word _020A544C
+	.byte 0x06, 0x00, 0x21, 0x01, 0xDF, 0x00, 0xFF, 0xFF
+	.word _020A5444
+	.byte 0x06, 0x00, 0x22, 0x01
+	.byte 0xE0, 0x00, 0xFF, 0xFF
+	.word _020A543C
+	.byte 0x06, 0x00, 0x23, 0x01, 0xE1, 0x00, 0xFF, 0xFF
+	.word _020A5434
+	.byte 0x06, 0x00, 0x24, 0x01, 0xE2, 0x00, 0xFF, 0xFF
+	.word _020A542C
+	.byte 0x06, 0x00, 0x25, 0x01, 0xE3, 0x00, 0xFF, 0xFF
+	.word _020A5424
+	.byte 0x06, 0x00, 0x26, 0x01
+	.byte 0xE4, 0x00, 0xFF, 0xFF
+	.word _020A541C
+	.byte 0x07, 0x00, 0xB7, 0x00, 0xE5, 0x00, 0x07, 0x00
+	.word _020A5414
+	.byte 0x07, 0x00, 0xB7, 0x00, 0xE6, 0x00, 0xFF, 0xFF
+	.word _020A540C
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xE7, 0x00, 0xFF, 0xFF
+	.word _020A5404
+	.byte 0x09, 0x00, 0xB7, 0x00
+	.byte 0xE8, 0x00, 0xFF, 0xFF
+	.word _020A53FC
+	.byte 0x06, 0x00, 0x27, 0x01, 0xE9, 0x00, 0xFF, 0xFF
+	.word _020A56FC
+	.byte 0x06, 0x00, 0x27, 0x01, 0xEA, 0x00, 0xFF, 0xFF
+	.word _020A5A34
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xEB, 0x00, 0xFF, 0xFF
+	.word _020A53E4
+	.byte 0x06, 0x00, 0xB7, 0x00
+	.byte 0xEC, 0x00, 0xFF, 0xFF
+	.word _020A53DC
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xED, 0x00, 0xFF, 0xFF
+	.word _020A53D4
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xEE, 0x00, 0xFF, 0xFF
+	.word _020A53CC
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xEF, 0x00, 0xFF, 0xFF
+	.word _020A53C4
+	.byte 0x06, 0x00, 0xB7, 0x00
+	.byte 0xF0, 0x00, 0xFF, 0xFF
+	.word _020A53BC
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xF1, 0x00, 0xFF, 0xFF
+	.word _020A53B4
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xF2, 0x00, 0xFF, 0xFF
+	.word _020A53AC
+	.byte 0x09, 0x00, 0xB7, 0x00, 0xF3, 0x00, 0xFF, 0xFF
+	.word _020A53A4
+	.byte 0x06, 0x00, 0xB7, 0x00
+	.byte 0xF4, 0x00, 0xFF, 0xFF
+	.word _020A539C
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xF5, 0x00, 0xFF, 0xFF
+	.word _020A5394
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xF6, 0x00, 0xFF, 0xFF
+	.word _020A538C
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xF7, 0x00, 0xFF, 0xFF
+	.word _020A5A4C
+	.byte 0x06, 0x00, 0xB7, 0x00
+	.byte 0xF8, 0x00, 0xFF, 0xFF
+	.word _020A537C
+	.byte 0x06, 0x00, 0x28, 0x01, 0xF9, 0x00, 0xFF, 0xFF
+	.word _020A5374
+	.byte 0x06, 0x00, 0x29, 0x01, 0xFA, 0x00, 0xFF, 0xFF
+	.word _020A536C
+	.byte 0x06, 0x00, 0x2A, 0x01, 0xFB, 0x00, 0xFF, 0xFF
+	.word _020A5364
+	.byte 0x06, 0x00, 0x2A, 0x01
+	.byte 0xFC, 0x00, 0xFF, 0xFF
+	.word _020A535C
+	.byte 0x06, 0x00, 0xB7, 0x00, 0xFD, 0x00, 0xFF, 0xFF
+	.word _020A5354
+	.byte 0x07, 0x00, 0x2B, 0x01, 0xFE, 0x00, 0xFF, 0xFF
+	.word _020A534C
+	.byte 0x06, 0x00, 0x2C, 0x01, 0xFF, 0x00, 0xFF, 0xFF
+	.word _020A5344
+	.byte 0x06, 0x00, 0xC3, 0x00
+	.byte 0x00, 0x01, 0xFF, 0xFF
+	.word _020A533C
+	.byte 0x06, 0x00, 0xC3, 0x00, 0x01, 0x01, 0xFF, 0xFF
+	.word _020A5334
+	.byte 0x06, 0x00, 0xC3, 0x00, 0x02, 0x01, 0xFF, 0xFF
+	.word _020A532C
+	.byte 0x06, 0x00, 0xB7, 0x00, 0x03, 0x01, 0xFF, 0xFF
+	.word _020A5324
+	.byte 0x06, 0x00, 0xB7, 0x00
+	.byte 0x04, 0x01, 0xFF, 0xFF
+	.word _020A531C
+	.byte 0x06, 0x00, 0xB7, 0x00, 0x05, 0x01, 0xFF, 0xFF
+	.word _020A5314
+	.byte 0x06, 0x00, 0xB7, 0x00, 0x06, 0x01, 0xFF, 0xFF
+	.word _020A530C
+	.byte 0x06, 0x00, 0xB7, 0x00, 0x07, 0x01, 0xFF, 0xFF
+	.word _020A5304
+	.byte 0x06, 0x00, 0xB7, 0x00
+	.byte 0x08, 0x01, 0xFF, 0xFF
+	.word _020A52FC
+	.byte 0x06, 0x00, 0xB7, 0x00, 0x09, 0x01, 0xFF, 0xFF
+	.word _020A52F4
+	.byte 0x06, 0x00, 0xB7, 0x00, 0x0A, 0x01, 0xFF, 0xFF
+	.word _020A52EC
+	.byte 0x06, 0x00, 0xB7, 0x00, 0x0B, 0x01, 0xFF, 0xFF
+	.word _020A52E4
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0x0C, 0x01, 0xFF, 0xFF
+	.word _020A52DC
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x0D, 0x01, 0xFF, 0xFF
+	.word _020A52D4
+	.byte 0x06, 0x00, 0x2D, 0x01, 0x0E, 0x01, 0xFF, 0xFF
+	.word _020A52CC
+	.byte 0x06, 0x00, 0x2E, 0x01, 0x0F, 0x01, 0xFF, 0xFF
+	.word _020A52C4
+	.byte 0x06, 0x00, 0xB9, 0x00
+	.byte 0x10, 0x01, 0xFF, 0xFF
+	.word _020A52BC
+	.byte 0x06, 0x00, 0xB9, 0x00, 0x11, 0x01, 0xFF, 0xFF
+	.word _020A52B4
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x12, 0x01, 0xFF, 0xFF
+	.word _020A52AC
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x14, 0x01, 0xFF, 0xFF
+	.word _020A52A4
+	.byte 0x04, 0x00, 0xB9, 0x00
+	.byte 0x15, 0x01, 0xFF, 0xFF
+	.word _020A529C
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x16, 0x01, 0xFF, 0xFF
+	.word _020A5294
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x17, 0x01, 0xFF, 0xFF
+	.word _020A528C
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x18, 0x01, 0xFF, 0xFF
+	.word _020A5284
+	.byte 0x04, 0x00, 0xB9, 0x00
+	.byte 0x19, 0x01, 0xFF, 0xFF
+	.word _020A527C
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x1A, 0x01, 0xFF, 0xFF
+	.word _020A5274
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x1B, 0x01, 0xFF, 0xFF
+	.word _020A526C
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x1C, 0x01, 0xFF, 0xFF
+	.word _020A5264
+	.byte 0x04, 0x00, 0xB9, 0x00
+	.byte 0x1D, 0x01, 0xFF, 0xFF
+	.word _020A525C
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x1E, 0x01, 0xFF, 0xFF
+	.word _020A5254
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x1F, 0x01, 0xFF, 0xFF
+	.word _020A5A94
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x20, 0x01, 0xFF, 0xFF
+	.word _020A5AA0
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0x21, 0x01, 0xFF, 0xFF
+	.word _020A5AAC
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x22, 0x01, 0xFF, 0xFF
+	.word _020A5AB8
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x23, 0x01, 0xFF, 0xFF
+	.word _020A522C
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x24, 0x01, 0xFF, 0xFF
+	.word _020A5AC4
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0x25, 0x01, 0xFF, 0xFF
+	.word _020A5AD0
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x26, 0x01, 0xFF, 0xFF
+	.word _020A5AE8
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x27, 0x01, 0xFF, 0xFF
+	.word _020A5AF4
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x28, 0x01, 0xFF, 0xFF
+	.word _020A5204
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0x29, 0x01, 0xFF, 0xFF
+	.word _020A5B00
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x2A, 0x01, 0xFF, 0xFF
+	.word _020A5B18
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x2B, 0x01, 0xFF, 0xFF
+	.word _020A5B24
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x2C, 0x01, 0xFF, 0xFF
+	.word _020A5B30
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0x2D, 0x01, 0xFF, 0xFF
+	.word _020A51DC
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x2E, 0x01, 0xFF, 0xFF
+	.word _020A51D4
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x2F, 0x01, 0xFF, 0xFF
+	.word _020A51CC
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x30, 0x01, 0xFF, 0xFF
+	.word _020A51C4
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0x31, 0x01, 0xFF, 0xFF
+	.word _020A51BC
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x32, 0x01, 0xFF, 0xFF
+	.word _020A51B4
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x33, 0x01, 0xFF, 0xFF
+	.word _020A51AC
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x34, 0x01, 0xFF, 0xFF
+	.word _020A51A4
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0x35, 0x01, 0xFF, 0xFF
+	.word _020A4F3C
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x36, 0x01, 0xFF, 0xFF
+	.word _020A5194
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x37, 0x01, 0xFF, 0xFF
+	.word _020A518C
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x38, 0x01, 0xFF, 0xFF
+	.word _020A5184
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0x39, 0x01, 0xFF, 0xFF
+	.word _020A517C
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x3A, 0x01, 0xFF, 0xFF
+	.word _020A5174
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x3B, 0x01, 0xFF, 0xFF
+	.word _020A516C
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x3C, 0x01, 0xFF, 0xFF
+	.word _020A5164
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0x3D, 0x01, 0xFF, 0xFF
+	.word _020A4F1C
+	.byte 0x01, 0x00, 0xB9, 0x00, 0x3E, 0x01, 0xFF, 0xFF
+	.word _020A5154
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x3F, 0x01, 0xFF, 0xFF
+	.word _020A514C
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x40, 0x01, 0xFF, 0xFF
+	.word _020A5144
+	.byte 0x04, 0x00, 0xB9, 0x00
+	.byte 0x41, 0x01, 0xFF, 0xFF
+	.word _020A513C
+	.byte 0x04, 0x00, 0xB9, 0x00, 0x42, 0x01, 0xFF, 0xFF
+	.word _020A5134
+	.byte 0x09, 0x00, 0xB9, 0x00, 0x43, 0x01, 0xFF, 0xFF
+	.word _020A512C
+	.byte 0x06, 0x00, 0x2F, 0x01, 0x44, 0x01, 0x03, 0x00
+	.word _020A5124
+	.byte 0x06, 0x00, 0x30, 0x01
+	.byte 0x45, 0x01, 0x03, 0x00
+	.word _020A511C
+	.byte 0x06, 0x00, 0x31, 0x01, 0x46, 0x01, 0xFF, 0xFF
+	.word _020A5114
+	.byte 0x06, 0x00, 0x31, 0x01, 0x47, 0x01, 0xFF, 0xFF
+	.word _020A5B78
+	.byte 0x06, 0x00, 0x32, 0x01, 0x48, 0x01, 0xFF, 0xFF
+	.word _020A5104
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0x49, 0x01, 0xFF, 0xFF
+	.word _020A4EFC
+	.byte 0x04, 0x00, 0xBA, 0x00, 0x4A, 0x01, 0xFF, 0xFF
+	.word _020A550C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x4B, 0x01, 0xFF, 0xFF
+	.word _020A50F4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x4C, 0x01, 0xFF, 0xFF
+	.word _020A54F4
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0x4D, 0x01, 0xFF, 0xFF
+	.word _020A551C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x4E, 0x01, 0xFF, 0xFF
+	.word _020A54CC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x4F, 0x01, 0xFF, 0xFF
+	.word _020A50CC
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x50, 0x01, 0xFF, 0xFF
+	.word _020A50C4
+	.byte 0x07, 0x00, 0xBA, 0x00
+	.byte 0x51, 0x01, 0xFF, 0xFF
+	.word _020A50BC
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x52, 0x01, 0xFF, 0xFF
+	.word _020A50B4
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x53, 0x01, 0xFF, 0xFF
+	.word _020A50AC
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x54, 0x01, 0xFF, 0xFF
+	.word _020A50A4
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0x55, 0x01, 0xFF, 0xFF
+	.word _020A509C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x56, 0x01, 0xFF, 0xFF
+	.word _020A5094
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x57, 0x01, 0xFF, 0xFF
+	.word _020A508C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x58, 0x01, 0xFF, 0xFF
+	.word _020A5084
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0x59, 0x01, 0xFF, 0xFF
+	.word _020A507C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x5A, 0x01, 0xFF, 0xFF
+	.word _020A5074
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x5B, 0x01, 0xFF, 0xFF
+	.word _020A506C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x5C, 0x01, 0xFF, 0xFF
+	.word _020A53EC
+	.byte 0x01, 0x00, 0xBA, 0x00
+	.byte 0x5D, 0x01, 0xFF, 0xFF
+	.word _020A505C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x5E, 0x01, 0xFF, 0xFF
+	.word _020A5054
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x5F, 0x01, 0xFF, 0xFF
+	.word _020A504C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x60, 0x01, 0xFF, 0xFF
+	.word _020A5044
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0x61, 0x01, 0xFF, 0xFF
+	.word _020A503C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x62, 0x01, 0xFF, 0xFF
+	.word _020A5034
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x63, 0x01, 0xFF, 0xFF
+	.word _020A5384
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x64, 0x01, 0xFF, 0xFF
+	.word _020A5024
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0x65, 0x01, 0xFF, 0xFF
+	.word _020A501C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x66, 0x01, 0xFF, 0xFF
+	.word _020A5014
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x67, 0x01, 0xFF, 0xFF
+	.word _020A500C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x68, 0x01, 0xFF, 0xFF
+	.word _020A5004
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0x69, 0x01, 0xFF, 0xFF
+	.word _020A4FFC
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x6A, 0x01, 0xFF, 0xFF
+	.word _020A4FF4
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x6B, 0x01, 0xFF, 0xFF
+	.word _020A4FEC
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x6C, 0x01, 0xFF, 0xFF
+	.word _020A4FE4
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0x6D, 0x01, 0xFF, 0xFF
+	.word _020A4FDC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x6E, 0x01, 0xFF, 0xFF
+	.word _020A4FD4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x6F, 0x01, 0xFF, 0xFF
+	.word _020A4FCC
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x70, 0x01, 0xFF, 0xFF
+	.word _020A4FC4
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0x71, 0x01, 0xFF, 0xFF
+	.word _020A4FBC
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x72, 0x01, 0xFF, 0xFF
+	.word _020A4FB4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x73, 0x01, 0xFF, 0xFF
+	.word _020A4FAC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x74, 0x01, 0xFF, 0xFF
+	.word _020A4FA4
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0x75, 0x01, 0xFF, 0xFF
+	.word _020A4F9C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x76, 0x01, 0xFF, 0xFF
+	.word _020A524C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x77, 0x01, 0xFF, 0xFF
+	.word _020A523C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x78, 0x01, 0xFF, 0xFF
+	.word _020A5234
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0x79, 0x01, 0xFF, 0xFF
+	.word _020A521C
+	.byte 0x04, 0x00, 0xBA, 0x00, 0x7A, 0x01, 0xFF, 0xFF
+	.word _020A520C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x7B, 0x01, 0xFF, 0xFF
+	.word _020A51FC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x7C, 0x01, 0xFF, 0xFF
+	.word _020A4F64
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0x7D, 0x01, 0xFF, 0xFF
+	.word _020A51E4
+	.byte 0x04, 0x00, 0xBA, 0x00, 0x7E, 0x01, 0xFF, 0xFF
+	.word _020A4F54
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x7F, 0x01, 0xFF, 0xFF
+	.word _020A4F4C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x80, 0x01, 0xFF, 0xFF
+	.word _020A4F44
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0x81, 0x01, 0xFF, 0xFF
+	.word _020A4E0C
+	.byte 0x04, 0x00, 0xBA, 0x00, 0x82, 0x01, 0xFF, 0xFF
+	.word _020A4F34
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x83, 0x01, 0xFF, 0xFF
+	.word _020A4F2C
+	.byte 0x07, 0x00, 0xBA, 0x00, 0x84, 0x01, 0xFF, 0xFF
+	.word _020A4F24
+	.byte 0x07, 0x00, 0xBA, 0x00
+	.byte 0x85, 0x01, 0xFF, 0xFF
+	.word _020A4DE4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x86, 0x01, 0xFF, 0xFF
+	.word _020A4F14
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x87, 0x01, 0xFF, 0xFF
+	.word _020A4F0C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x88, 0x01, 0xFF, 0xFF
+	.word _020A4F04
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0x89, 0x01, 0xFF, 0xFF
+	.word _020A4EDC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x8A, 0x01, 0xFF, 0xFF
+	.word _020A4EF4
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x8B, 0x01, 0xFF, 0xFF
+	.word _020A50DC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x8C, 0x01, 0xFF, 0xFF
+	.word _020A50FC
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0x8D, 0x01, 0xFF, 0xFF
+	.word _020A553C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x8E, 0x01, 0xFF, 0xFF
+	.word _020A50D4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x8F, 0x01, 0xFF, 0xFF
+	.word _020A4ECC
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x90, 0x01, 0xFF, 0xFF
+	.word _020A4EC4
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0x91, 0x01, 0xFF, 0xFF
+	.word _020A4EBC
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x92, 0x01, 0xFF, 0xFF
+	.word _020A4EB4
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x93, 0x01, 0xFF, 0xFF
+	.word _020A4EAC
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x94, 0x01, 0xFF, 0xFF
+	.word _020A4EA4
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0x95, 0x01, 0xFF, 0xFF
+	.word _020A53F4
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x96, 0x01, 0xFF, 0xFF
+	.word _020A4E94
+	.byte 0x04, 0x00, 0xBA, 0x00, 0x97, 0x01, 0xFF, 0xFF
+	.word _020A4E8C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x98, 0x01, 0xFF, 0xFF
+	.word _020A502C
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0x99, 0x01, 0xFF, 0xFF
+	.word _020A4E7C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x9A, 0x01, 0xFF, 0xFF
+	.word _020A4E74
+	.byte 0x06, 0x00, 0xBA, 0x00, 0x9B, 0x01, 0xFF, 0xFF
+	.word _020A4E6C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x9C, 0x01, 0xFF, 0xFF
+	.word _020A4E64
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0x9D, 0x01, 0xFF, 0xFF
+	.word _020A4E5C
+	.byte 0x09, 0x00, 0xBA, 0x00, 0x9E, 0x01, 0xFF, 0xFF
+	.word _020A4E54
+	.byte 0x01, 0x00, 0xBA, 0x00, 0x9F, 0x01, 0xFF, 0xFF
+	.word _020A4E4C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xA0, 0x01, 0xFF, 0xFF
+	.word _020A4E44
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0xA1, 0x01, 0xFF, 0xFF
+	.word _020A4E3C
+	.byte 0x01, 0x00, 0xBA, 0x00, 0xA2, 0x01, 0xFF, 0xFF
+	.word _020A5244
+	.byte 0x01, 0x00, 0xBA, 0x00, 0xA3, 0x01, 0xFF, 0xFF
+	.word _020A5ADC
+	.byte 0x01, 0x00, 0xBA, 0x00, 0xA4, 0x01, 0xFF, 0xFF
+	.word _020A5B0C
+	.byte 0x01, 0x00, 0xBA, 0x00
+	.byte 0xA5, 0x01, 0xFF, 0xFF
+	.word _020A5B3C
+	.byte 0x01, 0x00, 0xBA, 0x00, 0xA6, 0x01, 0xFF, 0xFF
+	.word _020A5B60
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xA7, 0x01, 0xFF, 0xFF
+	.word _020A4DDC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xA8, 0x01, 0xFF, 0xFF
+	.word _020A4E04
+	.byte 0x04, 0x00, 0xBA, 0x00
+	.byte 0xA9, 0x01, 0xFF, 0xFF
+	.word _020A4DEC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xAA, 0x01, 0xFF, 0xFF
+	.word _020A4DFC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xAB, 0x01, 0xFF, 0xFF
+	.word _020A4EE4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xAC, 0x01, 0xFF, 0xFF
+	.word _020A50E4
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0xAD, 0x01, 0xFF, 0xFF
+	.word _020A55DC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xAE, 0x01, 0xFF, 0xFF
+	.word _020A4ED4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xAF, 0x01, 0xFF, 0xFF
+	.word _020A4DCC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xB0, 0x01, 0xFF, 0xFF
+	.word _020A4DC4
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0xB1, 0x01, 0xFF, 0xFF
+	.word _020A5064
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xB2, 0x01, 0xFF, 0xFF
+	.word _020A4DB4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xB3, 0x01, 0xFF, 0xFF
+	.word _020A4E84
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xB4, 0x01, 0xFF, 0xFF
+	.word _020A4DA4
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0xB5, 0x01, 0xFF, 0xFF
+	.word _020A4D9C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xB6, 0x01, 0xFF, 0xFF
+	.word _020A4D94
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xB7, 0x01, 0xFF, 0xFF
+	.word _020A4D8C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xB8, 0x01, 0xFF, 0xFF
+	.word _020A5224
+	.byte 0x06, 0x00, 0xBA, 0x00
+	.byte 0xB9, 0x01, 0xFF, 0xFF
+	.word _020A4F5C
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xBA, 0x01, 0xFF, 0xFF
+	.word _020A4E14
+	.byte 0x09, 0x00, 0xBA, 0x00, 0xBB, 0x01, 0xFF, 0xFF
+	.word _020A4DF4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xBC, 0x01, 0xFF, 0xFF
+	.word _020A4EEC
+	.byte 0x09, 0x00, 0xBA, 0x00
+	.byte 0xBD, 0x01, 0xFF, 0xFF
+	.word _020A50EC
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xBE, 0x01, 0xFF, 0xFF
+	.word _020A4DD4
+	.byte 0x06, 0x00, 0xBA, 0x00, 0xBF, 0x01, 0xFF, 0xFF
+	.word _020A4E9C
+	.byte 0x04, 0x00, 0xB9, 0x00, 0xC0, 0x01, 0xFF, 0xFF
+	.word _020A5A58
+	.byte 0x04, 0x00, 0xB9, 0x00
+	.byte 0xC1, 0x01, 0xFF, 0xFF
+	.word _020A5A64
+	.byte 0x04, 0x00, 0xB9, 0x00, 0xC2, 0x01, 0xFF, 0xFF
+	.word _020A5A88
+	.byte 0x04, 0x00, 0xB9, 0x00, 0xC3, 0x01, 0xFF, 0xFF
+	.word _020A5B48
+	.byte 0x09, 0x00, 0xB9, 0x00, 0xC4, 0x01, 0xFF, 0xFF
+	.word _020A5B6C
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0xC5, 0x01, 0xFF, 0xFF
+	.word _020A5BB4
+	.byte 0x09, 0x00, 0xB9, 0x00, 0xC6, 0x01, 0xFF, 0xFF
+	.word _020A5A40
+	.byte 0x09, 0x00, 0xB9, 0x00, 0xC7, 0x01, 0xFF, 0xFF
+	.word _020A5A70
+	.byte 0x09, 0x00, 0xB9, 0x00, 0xC8, 0x01, 0xFF, 0xFF
+	.word _020A5B54
+	.byte 0x09, 0x00, 0xB9, 0x00
+	.byte 0xC9, 0x01, 0xFF, 0xFF
+	.word _020A5BC0
+	.byte 0x09, 0x00, 0xB9, 0x00, 0xCA, 0x01, 0xFF, 0xFF
+	.word _020A5A7C
+	.byte 0x09, 0x00, 0xB9, 0x00, 0xCB, 0x01, 0xFF, 0xFF
+	.word _020A5BCC
+#else
 	.word _020A5414
 	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.word _020A470C
@@ -173606,6 +178387,7 @@ _020A5490:
 	.byte 0x06, 0x00, 0xBA, 0x00
 	.byte 0xAF, 0x01, 0xFF, 0xFF
 	.word _020A477C
+#endif
 	.global ARM9_UNKNOWN_TABLE__NA_20A68BC
 ARM9_UNKNOWN_TABLE__NA_20A68BC:
 	.byte 0x5F, 0x00, 0x22, 0x00, 0x10, 0x00, 0x13, 0x00
@@ -175273,7 +180055,12 @@ ENTITIES:
 	.word _020A6D2C
 	.byte 0x00, 0x00, 0x02, 0x01, 0x06, 0x00, 0x2B, 0x01
 	.word _020A6DC8
-	.byte 0x82, 0x45, 0x02, 0x01, 0x05, 0x00, 0xEC, 0x00
+#ifdef EUROPE
+	.byte 0xA1, 0x45, 0x02, 0x01
+#else
+	.byte 0x82, 0x45, 0x02, 0x01
+#endif
+	.byte 0x05, 0x00, 0xEC, 0x00
 	.word _020A6D68
 	.byte 0x00, 0x00, 0x02, 0x01
 	.byte 0x05, 0x00, 0xED, 0x00
@@ -175725,12 +180512,26 @@ ENTITIES:
 	.word _020A6F6C
 	.byte 0x00, 0x00, 0x02, 0x01, 0x06, 0x00, 0x0B, 0x04
 	.word _020A6E94
+#ifdef EUROPE
+	.byte 0xA2, 0x45, 0x02, 0x01
+#else
 	.byte 0x83, 0x45, 0x02, 0x01
+#endif
 	.byte 0x06, 0x00, 0xB2, 0x01
 	.word _020A743C
-	.byte 0x85, 0x45, 0x02, 0x01, 0x06, 0x00, 0x0A, 0x04
+#ifdef EUROPE
+	.byte 0xA4, 0x45, 0x02, 0x01
+#else
+	.byte 0x85, 0x45, 0x02, 0x01
+#endif
+	.byte 0x06, 0x00, 0x0A, 0x04
 	.word _020A744C
-	.byte 0x84, 0x45, 0x02, 0x01, 0x05, 0x00, 0xEA, 0x00
+#ifdef EUROPE
+	.byte 0xA3, 0x45, 0x02, 0x01
+#else
+	.byte 0x84, 0x45, 0x02, 0x01
+#endif
+	.byte 0x05, 0x00, 0xEA, 0x00
 	.word _020A705C
 	.byte 0x00, 0x00, 0x02, 0x01, 0x05, 0x00, 0x93, 0x01
 	.word _020A6FEC
@@ -175770,10 +180571,19 @@ ENTITIES:
 	.word _020A70FC
 	.byte 0x00, 0x00, 0x03, 0x02, 0x06, 0x00, 0x28, 0x00
 	.word _020A7CF8
+#ifdef EUROPE
+	.byte 0xA5, 0x45, 0x02, 0x02
+#else
 	.byte 0x86, 0x45, 0x02, 0x02
+#endif
 	.byte 0x06, 0x00, 0x3F, 0x02
 	.word _020A7D0C
-	.byte 0x87, 0x45, 0x02, 0x02, 0x05, 0x00, 0xC2, 0x00
+#ifdef EUROPE
+	.byte 0xA6, 0x45, 0x02, 0x02
+#else
+	.byte 0x87, 0x45, 0x02, 0x02
+#endif
+	.byte 0x05, 0x00, 0xC2, 0x00
 	.word _020A693C
 	.byte 0x00, 0x00, 0x02, 0x01, 0x05, 0x00, 0x09, 0x01
 	.word _020A725C
@@ -175984,15 +180794,20 @@ _020A9208:
 JOB_D_BOX_LAYOUT_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+#define JOB_MENU_OFFSET 2
+#else
+#define JOB_MENU_OFFSET 0
+#endif
 	.global JOB_MENU_1
 JOB_MENU_1:
-	.byte 0x09, 0x38, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0B, 0x38, 0x00, 0x00
-	.byte 0x03, 0x00, 0x00, 0x00, 0x08, 0x38, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x09 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0B + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
+	.byte 0x03, 0x00, 0x00, 0x00, 0x08 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_2
 JOB_MENU_2:
-	.byte 0x0A, 0x38, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0B, 0x38, 0x00, 0x00
-	.byte 0x03, 0x00, 0x00, 0x00, 0x08, 0x38, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x0A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0B + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
+	.byte 0x03, 0x00, 0x00, 0x00, 0x08 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 	.global _020A9268
 _020A9268:
@@ -176016,72 +180831,72 @@ _020A92A8:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global JOB_MENU_3
 JOB_MENU_3:
-	.byte 0x29, 0x38, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x2A, 0x38, 0x00, 0x00
+	.byte 0x29 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x2A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_4
 JOB_MENU_4:
-	.byte 0x29, 0x38, 0x00, 0x00
-	.byte 0x05, 0x00, 0x00, 0x00, 0x2A, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x29 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
+	.byte 0x05, 0x00, 0x00, 0x00, 0x2A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_5
 JOB_MENU_5:
-	.byte 0x91, 0x37, 0x00, 0x00
+	.byte 0x91 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00
 	.global _020A92EC
 _020A92EC:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x92, 0x37, 0x00, 0x00
+	.byte 0x01, 0x00, 0x00, 0x00, 0x92 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_6
 JOB_MENU_6:
-	.byte 0x29, 0x38, 0x00, 0x00
+	.byte 0x29 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.global _020A9304
 _020A9304:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x2A, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x00, 0x00, 0x00, 0x2A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_7
 JOB_MENU_7:
-	.byte 0xB1, 0x37, 0x00, 0x00
+	.byte 0xB1 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00
 	.global _020A931C
 _020A931C:
-	.byte 0x05, 0x00, 0x00, 0x00, 0xB2, 0x37, 0x00, 0x00
+	.byte 0x05, 0x00, 0x00, 0x00, 0xB2 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_8
 JOB_MENU_8:
-	.byte 0xB4, 0x37, 0x00, 0x00
+	.byte 0xB4 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00
 	.global _020A9334
 _020A9334:
-	.byte 0x02, 0x00, 0x00, 0x00, 0xB5, 0x37, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x02, 0x00, 0x00, 0x00, 0xB5 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_9
 JOB_MENU_9:
-	.byte 0x29, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x2A, 0x38, 0x00, 0x00
+	.byte 0x29 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x2A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_10
 JOB_MENU_10:
-	.byte 0x0E, 0x38, 0x00, 0x00
+	.byte 0x0E + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.global _020A9364
 _020A9364:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x08, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x02, 0x00, 0x00, 0x00, 0x08 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_11
 JOB_MENU_11:
-	.byte 0x29, 0x38, 0x00, 0x00
+	.byte 0x29 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.global _020A937C
 _020A937C:
-	.byte 0x06, 0x00, 0x00, 0x00, 0x2A, 0x38, 0x00, 0x00
+	.byte 0x06, 0x00, 0x00, 0x00, 0x2A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_12
 JOB_MENU_12:
-	.byte 0x0F, 0x38, 0x00, 0x00
+	.byte 0x0F + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.global _020A9394
 _020A9394:
-	.byte 0x03, 0x00, 0x00, 0x00, 0x11, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x08, 0x38, 0x00, 0x00
+	.byte 0x03, 0x00, 0x00, 0x00, 0x11 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x08 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_MENU_13
 JOB_MENU_13:
-	.byte 0x10, 0x38, 0x00, 0x00
+	.byte 0x10 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.global _020A93B4
 _020A93B4:
-	.byte 0x04, 0x00, 0x00, 0x00, 0x11, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x08, 0x38, 0x00, 0x00
+	.byte 0x04, 0x00, 0x00, 0x00, 0x11 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x08 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global JOB_D_BOX_LAYOUT_2
 JOB_D_BOX_LAYOUT_2:
@@ -176110,10 +180925,15 @@ _020A94BC:
 	.byte 0xC1, 0x00
 	.global _020A94C6
 _020A94C6:
-	.byte 0x2B, 0x01, 0x2A, 0x01, 0x2C, 0x01, 0x2D, 0x01,  0x2E, 0x01
+#ifdef EUROPE
+#define MAP_MARKER_OFFSET 0xC
+#else
+#define MAP_MARKER_OFFSET 0x0
+#endif
+	.byte 0x2B + MAP_MARKER_OFFSET, 0x01, 0x2A + MAP_MARKER_OFFSET, 0x01, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x2E + MAP_MARKER_OFFSET, 0x01
 	.global MAP_MARKER_PLACEMENTS
 MAP_MARKER_PLACEMENTS:
-	.byte  0x0C, 0x01
+	.byte 0x0C, 0x01
 	.global _020A94D2
 _020A94D2:
 	.byte 0xFF, 0xFF
@@ -176178,34 +180998,34 @@ _020A94D2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x70, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x70, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x70, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B, 0x01, 0xFF, 0xFF
-	.byte 0x3C, 0x01, 0xC0, 0x00, 0x2B, 0x01, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B, 0x01, 0x7C, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2B, 0x01, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B, 0x01, 0x7C, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2A, 0x01, 0xFF, 0xFF, 0x8C, 0x00, 0x64, 0x00, 0x2A, 0x01, 0xFF, 0xFF
-	.byte 0xFC, 0x00, 0x84, 0x00, 0x2A, 0x01, 0xFF, 0xFF, 0x44, 0x01, 0x34, 0x00, 0x2A, 0x01, 0x83, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2A, 0x01, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0xFF, 0xFF
-	.byte 0x7C, 0x00, 0x5C, 0x00, 0x2F, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x86, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0xFF, 0xFF, 0x84, 0x00, 0x44, 0x00, 0x2F, 0x01, 0xFF, 0xFF
-	.byte 0x54, 0x00, 0x2C, 0x00, 0x2F, 0x01, 0x8A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0xFF, 0xFF
-	.byte 0xA4, 0x00, 0x5C, 0x00, 0x2F, 0x01, 0xFF, 0xFF, 0x2C, 0x01, 0x2C, 0x01, 0x2F, 0x01, 0xFF, 0xFF
-	.byte 0xAC, 0x00, 0x7C, 0x00, 0x2E, 0x01, 0xFF, 0xFF, 0x4C, 0x00, 0x54, 0x00, 0x2E, 0x01, 0x8F, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x8F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0xFF, 0xFF
-	.byte 0x84, 0x00, 0x74, 0x00, 0x2E, 0x01, 0xFF, 0xFF, 0xBC, 0x00, 0x5C, 0x00, 0x2E, 0x01, 0x93, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x93, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0xFF, 0xFF
-	.byte 0x24, 0x01, 0x28, 0x01, 0x2D, 0x01, 0xFF, 0xFF, 0x34, 0x01, 0x28, 0x01, 0x2D, 0x01, 0x97, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0x97, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0xFF, 0xFF
-	.byte 0x2C, 0x01, 0x2C, 0x01, 0x2D, 0x01, 0xFF, 0xFF, 0x2C, 0x01, 0x2C, 0x01, 0x2D, 0x01, 0xFF, 0xFF
-	.byte 0x34, 0x01, 0x14, 0x01, 0x2D, 0x01, 0x9C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0x9C, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0xFF, 0xFF, 0x10, 0x01, 0xBC, 0x00, 0x2C, 0x01, 0x9F, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x9F, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x9F, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xFF, 0xFF
+	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0x3C, 0x01, 0xC0, 0x00, 0x2B + MAP_MARKER_OFFSET, 0x01, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B + MAP_MARKER_OFFSET, 0x01, 0x7C, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2B + MAP_MARKER_OFFSET, 0x01, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B + MAP_MARKER_OFFSET, 0x01, 0x7C, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0x8C, 0x00, 0x64, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0xFC, 0x00, 0x84, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0x44, 0x01, 0x34, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0x83, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0x7C, 0x00, 0x5C, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x86, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0x84, 0x00, 0x44, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0x54, 0x00, 0x2C, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x8A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0xA4, 0x00, 0x5C, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0x2C, 0x01, 0x2C, 0x01, 0x2F + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0xAC, 0x00, 0x7C, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0x4C, 0x00, 0x54, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x8F, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x8F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0x84, 0x00, 0x74, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0xBC, 0x00, 0x5C, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x93, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x93, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0x24, 0x01, 0x28, 0x01, 0x2D + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0x34, 0x01, 0x28, 0x01, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x97, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x97, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0x2C, 0x01, 0x2C, 0x01, 0x2D + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0x2C, 0x01, 0x2C, 0x01, 0x2D + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0x34, 0x01, 0x14, 0x01, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x9C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x9C, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0x10, 0x01, 0xBC, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xFF, 0xFF
 	.byte 0x2C, 0x01, 0x2C, 0x01, 0x0C, 0x01, 0xFF, 0xFF, 0x2C, 0x01, 0x2C, 0x01, 0x0C, 0x01, 0xFF, 0xFF
 	.byte 0x2C, 0x01, 0x2C, 0x01, 0x0C, 0x01, 0xFF, 0xFF, 0x2C, 0x01, 0x2C, 0x01, 0x0C, 0x01, 0xFF, 0xFF
 	.byte 0x2C, 0x01, 0x2C, 0x01, 0x0C, 0x01, 0xFF, 0xFF, 0x2C, 0x01, 0x2C, 0x01, 0x0C, 0x01, 0xFF, 0xFF
 	.byte 0x2C, 0x01, 0x2C, 0x01, 0x0C, 0x01, 0xFF, 0xFF, 0x2C, 0x01, 0x2C, 0x01, 0x0C, 0x01, 0xFF, 0xFF
 	.byte 0x2C, 0x01, 0x2C, 0x01, 0x0C, 0x01, 0xFF, 0xFF, 0x3C, 0x01, 0xC0, 0x00, 0x0C, 0x01, 0xFF, 0xFF
-	.byte 0x74, 0x01, 0xA4, 0x00, 0x2A, 0x01, 0xFF, 0xFF, 0xBC, 0x00, 0x5C, 0x00, 0x0C, 0x01, 0xFF, 0xFF
+	.byte 0x74, 0x01, 0xA4, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0xBC, 0x00, 0x5C, 0x00, 0x0C, 0x01, 0xFF, 0xFF
 	.byte 0xEC, 0x00, 0x7C, 0x00, 0x0C, 0x01, 0xFF, 0xFF, 0x24, 0x01, 0xB4, 0x00, 0x0C, 0x01, 0xFF, 0xFF
 	.byte 0x2C, 0x01, 0x2C, 0x01, 0x0C, 0x01, 0xFF, 0xFF, 0xD4, 0x00, 0xB4, 0x00, 0x0C, 0x01, 0xB5, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x0C, 0x01, 0xB5, 0x00
@@ -176221,7 +181041,7 @@ _020A94D2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x19, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0D, 0x01, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0D, 0x01, 0x1D, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0D, 0x01, 0x1E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0D, 0x01, 0x1E, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x0D, 0x01, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x8C, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x0D, 0x01, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x8C, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0D, 0x01, 0x22, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x23, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x24, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x27, 0x00
@@ -176230,24 +181050,24 @@ _020A94D2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x37, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x37, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x41, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0x44, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2B, 0x01, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B, 0x01, 0x7C, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2B, 0x01, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B, 0x01, 0x7C, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2A, 0x01, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2A, 0x01, 0x83, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x86, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x86, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x89, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x8A, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x8A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x8D, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2F, 0x01, 0x8E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x8F, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x8F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x8F, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x92, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x92, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x92, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x93, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x93, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E, 0x01, 0x93, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0x96, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0x97, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0x97, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0x97, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0x9C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0x9C, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2D, 0x01, 0x9C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x9F, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x9F, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C, 0x01, 0x9F, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2B + MAP_MARKER_OFFSET, 0x01, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B + MAP_MARKER_OFFSET, 0x01, 0x7C, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2B + MAP_MARKER_OFFSET, 0x01, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B + MAP_MARKER_OFFSET, 0x01, 0x7C, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0x83, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x86, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x86, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x89, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x8A, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x8A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x8D, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2F + MAP_MARKER_OFFSET, 0x01, 0x8E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x8F, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x8F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x8F, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x92, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x92, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x92, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x93, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x93, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E + MAP_MARKER_OFFSET, 0x01, 0x93, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x96, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x97, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x97, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x97, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x9C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x9C, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2D + MAP_MARKER_OFFSET, 0x01, 0x9C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0x9F, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB0, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB0, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB0, 0x00
@@ -176264,14 +181084,14 @@ _020A94D2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB5, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB5, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB3, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x0D, 0x01, 0xC1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2A, 0x01, 0xFF, 0xFF
-	.byte 0x64, 0x00, 0x80, 0x00, 0x2A, 0x01, 0xFF, 0xFF, 0x44, 0x00, 0x84, 0x00, 0x2A, 0x01, 0x29, 0x01
-	.byte 0x00, 0x00, 0x00, 0x00, 0x2A, 0x01, 0xB1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2A, 0x01, 0xB1, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x0D, 0x01, 0xC1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0x64, 0x00, 0x80, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0x44, 0x00, 0x84, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0x29, 0x01
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0xB1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2A + MAP_MARKER_OFFSET, 0x01, 0xB1, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x0C, 0x01, 0xB5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB5, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB5, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x01, 0xB5, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x2B, 0x01, 0xFF, 0xFF
-	.byte 0xD4, 0x00, 0xB4, 0x00, 0x2C, 0x01, 0xFF, 0xFF, 0xD4, 0x00, 0xB4, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x2B + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF
+	.byte 0xD4, 0x00, 0xB4, 0x00, 0x2C + MAP_MARKER_OFFSET, 0x01, 0xFF, 0xFF, 0xD4, 0x00, 0xB4, 0x00
 	.global _020A9E80
 _020A9E80:
 	.byte 0x00, 0x00, 0x00, 0x00
@@ -176564,9 +181384,7 @@ TRIG_TABLE:
 	.byte 0xD1, 0x0F, 0x6C, 0x02, 0xD2, 0x0F, 0x65, 0x02, 0xD3, 0x0F, 0x5F, 0x02, 0xD4, 0x0F, 0x59, 0x02
 	.byte 0xD5, 0x0F, 0x53, 0x02, 0xD5, 0x0F, 0x4D, 0x02, 0xD6, 0x0F, 0x46, 0x02, 0xD7, 0x0F, 0x40, 0x02
 	.byte 0xD8, 0x0F, 0x3A, 0x02, 0xD9, 0x0F, 0x34, 0x02, 0xDA, 0x0F, 0x2D, 0x02, 0xDB, 0x0F, 0x27, 0x02
-	.word _02210FDC
-	.word _021B0FDC
-	.byte 0xDD, 0x0F, 0x15, 0x02, 0xDE, 0x0F, 0x0E, 0x02
+	.byte 0xDC, 0x0F, 0x21, 0x02, 0xDC, 0x0F, 0x1B, 0x02, 0xDD, 0x0F, 0x15, 0x02, 0xDE, 0x0F, 0x0E, 0x02
 	.byte 0xDF, 0x0F, 0x08, 0x02, 0xE0, 0x0F, 0x02, 0x02, 0xE0, 0x0F, 0xFC, 0x01, 0xE1, 0x0F, 0xF5, 0x01
 	.byte 0xE2, 0x0F, 0xEF, 0x01, 0xE3, 0x0F, 0xE9, 0x01, 0xE3, 0x0F, 0xE3, 0x01, 0xE4, 0x0F, 0xDC, 0x01
 	.byte 0xE5, 0x0F, 0xD6, 0x01, 0xE6, 0x0F, 0xD0, 0x01, 0xE6, 0x0F, 0xCA, 0x01, 0xE7, 0x0F, 0xC3, 0x01
@@ -177121,10 +181939,7 @@ TRIG_TABLE:
 	.byte 0x1A, 0xF0, 0xCA, 0x01, 0x1A, 0xF0, 0xD0, 0x01, 0x1B, 0xF0, 0xD6, 0x01, 0x1C, 0xF0, 0xDC, 0x01
 	.byte 0x1D, 0xF0, 0xE3, 0x01, 0x1D, 0xF0, 0xE9, 0x01, 0x1E, 0xF0, 0xEF, 0x01, 0x1F, 0xF0, 0xF5, 0x01
 	.byte 0x20, 0xF0, 0xFC, 0x01, 0x20, 0xF0, 0x02, 0x02, 0x21, 0xF0, 0x08, 0x02, 0x22, 0xF0, 0x0E, 0x02
-	.byte 0x23, 0xF0, 0x15, 0x02
-	.word _021BF024
-	.word _0221F024
-	.byte 0x25, 0xF0, 0x27, 0x02
+	.byte 0x23, 0xF0, 0x15, 0x02, 0x24, 0xF0, 0x1B, 0x02, 0x24, 0xF0, 0x21, 0x02, 0x25, 0xF0, 0x27, 0x02
 	.byte 0x26, 0xF0, 0x2D, 0x02, 0x27, 0xF0, 0x34, 0x02, 0x28, 0xF0, 0x3A, 0x02, 0x29, 0xF0, 0x40, 0x02
 	.byte 0x2A, 0xF0, 0x46, 0x02, 0x2B, 0xF0, 0x4D, 0x02, 0x2B, 0xF0, 0x53, 0x02, 0x2C, 0xF0, 0x59, 0x02
 	.byte 0x2D, 0xF0, 0x5F, 0x02, 0x2E, 0xF0, 0x65, 0x02, 0x2F, 0xF0, 0x6C, 0x02, 0x30, 0xF0, 0x72, 0x02
@@ -177919,6 +182734,19 @@ _020AF5E8:
 _020AF694:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
+#ifdef EUROPE
+	.global _020AFF38_EU
+_020AFF38_EU:
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020AFF3C_EU
+_020AFF3C_EU:
+	.word _02092EBC
+	.word _02092EA8
+	.word _02092ED0
+	.word _02092E80
+	.word _02092E94
+#endif
+
 	; debug related
 
 	.global DEBUG_IS_INITIALIZED ; 020af698
@@ -177957,6 +182785,15 @@ _020AF6C4:
 	.global _020AF6C8
 _020AF6C8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+	.global _020AFF88_EU
+_020AFF88_EU:
+	.word _02098404
+	.word _02098434
+	.word _02098424
+	.word _020983F4
+	.word _02098414
+#endif
 	.global _020AF6D0
 _020AF6D0:
 	.byte 0x00, 0x00, 0x00, 0x00
@@ -178007,12 +182844,14 @@ _020AF722:
 _020AF760:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifndef EUROPE
 	.global _020AF76C
 _020AF76C:
 	.word _02099144
 	.word _02099148
 	.word _02099154
 	.word _0209914C
+#endif
 	.global _020AF77C
 _020AF77C:
 	.byte 0x00, 0x00, 0x00, 0x00
@@ -178195,6 +183034,9 @@ _020AFC6C:
 _020AFC70:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+	.byte 0x00, 0x00, 0x00, 0x00
+#endif
 	.global RENDER_3D
 RENDER_3D:
 	.byte 0x00, 0x00, 0x80, 0x00
@@ -178210,24 +183052,70 @@ RENDER_3D_FUNCTIONS_64:
 	.word Render3d64RectangleMulticolor
 	.word Render3d64Quadrilateral
 	.word Render3d64Tiling
-	.word Render3d64Border
+	.word Render3d64WindowFrame
 	.word Render3d64Texture0x7
 	.global _020AFCE4
 _020AFCE4:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global LANGUAGE_INFO_DATA
 LANGUAGE_INFO_DATA:
+#ifdef EUROPE
+	.byte 0x00, 0x01, 0x00, 0x00
+	.global _020B05AC_EU
+_020B05AC_EU:
+	.byte 0x2C, 0x00, 0x2C, 0x00
+	.global _020B05B0_EU
+_020B05B0_EU:
+	.byte 0x2C, 0x00, 0x20, 0x00
+	.byte 0x20, 0x00, 0x2E, 0x00
+	.byte 0x20, 0x00, 0x00, 0x00
+	.global _020B05BC_EU
+_020B05BC_EU:
+	.byte 0x00, 0x00, 0x00, 0x00
+	.global _020B05C0_EU
+_020B05C0_EU:
+	.word _0209A118_EU
+	.word _0209A110_EU
+	.word _0209A118_EU
+	.word _0209A10C_EU
+	.word _0209A11C_EU
+	.global _020B05D4_EU
+_020B05D4_EU:
+	.word _0209A1A8
+	.global _020B05D8_EU
+_020B05D8_EU:
+	.word _0209A1C8
+	.word _0209A1F8
+	.word _0209A21C
+	.word _02099D0C
+	.word _0209A198
+	.word _0209A1D8
+	.word _0209A208
+	.word _0209A1B8
+	.word _0209A1E8
+#else
 	.byte 0x00, 0x08, 0x00, 0x00
+#endif
 	.global _020AFCEC
 _020AFCEC:
 	.byte 0xFF, 0x00, 0x00, 0x00
 	.global _020AFCF0
 _020AFCF0:
+#ifdef EUROPE
+	.word _0209AFE4_EU
+	.word _0209AFBC
+	.word _0209AFD0
+#endif
 	.word _0209AAB0
 	.word _0209AAC4
 	.global TBL_TALK_GROUP_STRING_ID_START
 TBL_TALK_GROUP_STRING_ID_START:
+#ifdef EUROPE
+	.byte 0x17, 0x12, 0x6D, 0x16, 0xC6, 0x17, 0x65, 0x0F
+	.byte 0xBE, 0x10, 0x1F, 0x19
+#else
 	.byte 0x15, 0x12, 0x6B, 0x16, 0xC4, 0x17, 0x63, 0x0F, 0xBC, 0x10, 0x1D, 0x19
+#endif
 	.global _020AFD04
 _020AFD04:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -178671,14 +183559,58 @@ _020B09C8:
 _020B09D0:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
+#ifdef EUROPE
+	.global _020B12F4_EU
+_020B12F4_EU:
+	.word _020A32DC
+	.word _020A328C_EU
+	.word _020A329C
+	.word _020A32AC
+	.word _020A32BC
+	.global _020B1308_EU
+_020B1308_EU:
+	.word _020A32CC
+	.word _020A32EC
+	.word _020A32FC
+	.word _020A330C
+	.word _020A331C
+#endif
 	.global UNOWN_SPECIES_ADDITIONAL_CHAR_PTR_TABLE
 UNOWN_SPECIES_ADDITIONAL_CHAR_PTR_TABLE:
+#ifdef EUROPE
+	.word _020A2C94
+#else
 	.word _020A2C90
+#endif
 	.word UNOWN_SPECIES_ADDITIONAL_CHARS
 	.word _020A2CF4
 	.word _020A2CF0
 	.word _020A2CEC
 	.word _020A2CE8
+#ifdef EUROPE
+	.word _020A2CE0
+	.word _020A2CC4
+	.word _020A2CA0
+	.word _020A2CC8
+	.word _020A2CCC
+	.word _020A2CA8
+	.word _020A2CA4
+	.word _020A2C90
+	.word _020A2C98
+	.word _020A2CAC
+	.word _020A2CBC
+	.word _020A2CB8
+	.word _020A2CB4
+	.word _020A2CE4
+	.word _020A2CDC
+	.word _020A2CD4
+	.word _020A2CD8
+	.word _020A2C8C
+	.word _020A2C9C
+	.word _020A2CB0
+	.word _020A2CD0
+	.word _020A2CC0
+#else
 	.word _020A2CE4
 	.word _020A2CE0
 	.word _020A2CDC
@@ -178701,6 +183633,7 @@ UNOWN_SPECIES_ADDITIONAL_CHAR_PTR_TABLE:
 	.word _020A2C98
 	.word _020A2C94
 	.word _020A2CC4
+#endif
 	.global TEAM_MEMBER_TABLE_PTR
 TEAM_MEMBER_TABLE_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
@@ -178778,7 +183711,7 @@ _020B0B2F:
 	.byte 0x00
 	.global _020B0B30
 _020B0B30:
-	.byte  0x00
+	.byte 0x00
 	.global _020B0B31
 _020B0B31:
 	.byte 0x00
@@ -178802,7 +183735,7 @@ _020B0B37:
 	.byte 0x00
 	.global _020B0B38
 _020B0B38:
-	.byte  0x00
+	.byte 0x00
 	.global _020B0B39
 _020B0B39:
 	.byte 0x00
@@ -178814,7 +183747,7 @@ _020B0B3B:
 	.byte 0x00
 	.global _020B0B3C
 _020B0B3C:
-	.byte  0x00
+	.byte 0x00
 	.global _020B0B3D
 _020B0B3D:
 	.byte 0x00
@@ -179912,64 +184845,7 @@ _020B33C0:
 	.space 0x1800
 	.global _020B4BC0
 _020B4BC0:
-	.space 0x1B64C
-	.global _020D020C
-_020D020C:
-	.space 0x1FE84
-	.global _020F0090
-_020F0090:
-	.space 0x178
-	.global _020F0208
-_020F0208:
-	.space 0x20008
-	.global _02110210
-_02110210:
-	.space 0x20004
-	.global _02130214
-_02130214:
-	.space 0x20000
-	.global _02150214
-_02150214:
-	.space 0x40004
-	.global _02190218
-_02190218:
-	.space 0x6840
-	.global _02196A58
-_02196A58:
-	.space 0x15D9C
-	.global _021AC7F4
-_021AC7F4:
-	.space 0x47E8
-	.global _021B0FDC
-_021B0FDC:
-	.space 0xE048
-	.global _021BF024
-_021BF024:
-	.space 0x111F8
-	.global _021D021C
-_021D021C:
-	.space 0x19E68
-	.global _021EA084
-_021EA084:
-	.space 0x2619C
-	.global _02210220
-_02210220:
-	.space 0xDBC
-	.global _02210FDC
-_02210FDC:
-	.space 0xE048
-	.global _0221F024
-_0221F024:
-	.space 0x31200
-	.global _02250224
-_02250224:
-	.space 0x4EDB
-	.global _022550FF
-_022550FF:
-	.space 0x3B129
-	.global _02290228
-_02290228:
-	.space 0xAD98
+	.space 0x1E6400
 	.global _0229AFC0
 _0229AFC0:
 	.space 0xC
@@ -180297,12 +185173,21 @@ _022A7A0C:
 	.global _022A7A54
 _022A7A54:
 	.space 0x8
+#ifdef EUROPE
+	.global _022A7A64
+_022A7A64:
+	.space 0x8
+	.global _022A7A5C
+_022A7A5C:
+	.space 0x8
+#else
 	.global _022A7A5C
 _022A7A5C:
 	.space 0x8
 	.global _022A7A64
 _022A7A64:
 	.space 0x8
+#endif
 	.global _022A7A6C
 _022A7A6C:
 	.space 0x8

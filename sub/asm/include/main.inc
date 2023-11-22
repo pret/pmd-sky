@@ -4,7 +4,11 @@
 .public _0380B408
 .public _0380B434
 .public _0380B460
+.public __divsi3
+.public __udivsi3
+.public ClearIeFlag
 .public EnableIrqFlag
+.public GetCurrentPlaybackTime
 .public SDK_SUBPRIV_ARENA_LO
 .public SetIrqFlag
 .public sub_037F84E0
@@ -33,7 +37,6 @@
 .public sub_037FB454
 .public sub_037FB7BC
 .public sub_037FB8F0
-.public sub_037FB928
 .public sub_037FBBFC
 .public sub_037FC054
 .public sub_037FC15C
@@ -50,7 +53,6 @@
 .public sub_037FC90C
 .public sub_037FCC74
 .public sub_037FCD84
-.public sub_037FD21C
 .public sub_037FD390
 .public sub_037FD3A0
 .public sub_037FD4DC
@@ -86,8 +88,6 @@
 .public sub_03803B7C
 .public sub_0380521C
 .public sub_03806B80
-.public sub_03806BC8
-.public sub_03806DD4
 .public sub_03807334
 .public sub_03807380
 .public sub_038073D4

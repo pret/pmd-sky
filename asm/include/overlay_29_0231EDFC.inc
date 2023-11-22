@@ -3,9 +3,9 @@
 .public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public CalcDamageFixedNoCategory
-.public CannotStandOnTile
 .public CanSeeTarget
 .public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandRange
 .public EntityIsValid__0231F570
@@ -19,13 +19,13 @@
 .public ov29_022E9298
 .public ov29_022EA370
 .public ov29_022EACCC
+.public ov29_022FF764
 .public ov29_0230175C
 .public ov29_023049A8
 .public ov29_02304A48
 .public ov29_0232033C
 .public ov29_02321238
 .public ov29_0235171E
-.public ov29_02353538
 .public ShouldDisplayEntityWrapper
 .public sub_020018D0
 .public SubstitutePlaceholderStringTags

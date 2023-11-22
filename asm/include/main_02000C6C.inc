@@ -1,8 +1,4 @@
 #pragma once
-.public __addsf3
-.public __divsi3
-.public __floatsisf
-.public __mulsf3
 .public _0200A314
 .public _0200A314
 .public _0200A344
@@ -96,6 +92,8 @@
 .public _020AF5E8
 .public _020AF694
 .public _020AF698
+.public _020AFF38_EU
+.public _020AFF3C_EU
 .public _020B2B98
 .public _020B3380
 .public _020B3384
@@ -177,6 +175,10 @@
 .public _022A3805
 .public _022A3806
 .public _022B966C
+.public __addsf3
+.public __divsi3
+.public __floatsisf
+.public __mulsf3
 .public abs
 .public ArrayFill32Fast
 .public CART_REMOVED_IMG_DATA
@@ -187,6 +189,7 @@
 .public DecompressAtFromMemoryPointer
 .public FatalError
 .public FileInit
+.public GetLanguage
 .public GetOverlayInfo
 .public InitDebug
 .public InitOverlay
@@ -196,9 +199,11 @@
 .public MEMORY_ALLOCATION_ARENA_GETTERS
 .public NATURAL_LOG_VALUE_TABLE
 .public OS_IRQTable
+.public PlayBgmById
 .public PRNG_SEQUENCE_NUM
 .public sprintf
 .public sqrtf
+.public StopBgmCommand
 .public strcat
 .public strcmp
 .public strcpy
@@ -214,8 +219,6 @@
 .public strncpy
 .public sub_02017D20
 .public sub_02017DB4
-.public sub_02017DF4
-.public sub_02017EE8
 .public sub_02017FF0
 .public sub_02018024
 .public sub_02018118

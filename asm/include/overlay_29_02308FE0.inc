@@ -38,8 +38,10 @@
 .public DEF_SCARF_STAT_BOOST
 .public DEFENSIVE_STAT_STAGE_MULTIPLIERS
 .public DivideFixedPoint64
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
+.public EnableAllLearnableIqSkills
 .public EndCurseClassStatus
 .public EndInvisibleClassStatus
 .public EnsureCanStandCurrentTile
@@ -219,7 +221,6 @@
 .public ov29_0235322C
 .public ov29_02353230
 .public ov29_02353234
-.public ov29_02353538
 .public ov29_023535D4
 .public ov29_0237CA6C
 .public PlayEffectAnimation0x171
@@ -237,6 +238,7 @@
 .public POWER_PITCHER_DAMAGE_MULTIPLIER
 .public PreprocessString
 .public RECRUITMENT_LEVEL_BOOST_TABLE
+.public RemoveHolderForItemInBag
 .public ResetDamageData
 .public RestorePpAllMovesSetFlags
 .public RestoreRandomMovePP
@@ -257,9 +259,8 @@
 .public SpawnMonster
 .public SPECIAL_BAND_STAT_BOOST
 .public StringFromMessageId
-.public StrncpySimpleNoPad
-.public RemoveHolderForItemInBag
 .public StrncpyName
+.public StrncpySimpleNoPad
 .public sub_02025888
 .public sub_0204AF00
 .public sub_020534BC
@@ -270,7 +271,6 @@
 .public sub_02056830
 .public sub_020584FC
 .public sub_020585B4
-.public EnableAllLearnableIqSkills
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags
 .public SUPER_LUCK_CRIT_RATE_BOOST

@@ -2,6 +2,7 @@
 .public AdvanceFrame
 .public DisplayMessage
 .public DrawTileGrid
+.public DUNGEON_PTR
 .public EntityIsValid__0234DDD0
 .public EntityIsValid__0234EC14
 .public EntryOverlay31
@@ -39,7 +40,6 @@
 .public ov29_0234EC38
 .public ov29_0234ED30
 .public ov29_0235352C
-.public ov29_02353538
 .public ov29_02382804
 .public ov31_02382E08
 .public ov31_02382E18

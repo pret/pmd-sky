@@ -171,7 +171,7 @@ _022EE574:
 	bl SetFlagsForHeldItemInBag
 	b _022EE5E8
 _022EE5C4:
-	ldr r1, _022EE620 ; =ov29_02353538
+	ldr r1, _022EE620 ; =DUNGEON_PTR
 	sub r0, r0, #1
 	ldr r2, [r1]
 	add r1, r0, r0, lsl #3
@@ -181,6 +181,9 @@ _022EE5C4:
 	orr r0, r0, #8
 	strb r0, [r2, r1, lsl #6]
 _022EE5E8:
+#ifdef EUROPE
+	mov r0, #0
+#endif
 	bl ov29_022FB920
 	ldr r1, _022EE624 ; =0x00000309
 	mov r0, sb
@@ -197,7 +200,7 @@ _022EE610:
 	.align 2, 0
 _022EE618: .word BAG_ITEMS_PTR_MIRROR
 _022EE61C: .word 0x00000E5F
-_022EE620: .word ov29_02353538
+_022EE620: .word DUNGEON_PTR
 _022EE624: .word 0x00000309
 _022EE628: .word 0x00000E5E
 	arm_func_end ApplyStickyTrapEffect
@@ -293,7 +296,7 @@ _022EE6FC:
 	bl TransmuteHeldItemInBag
 	b _022EE7AC
 _022EE77C:
-	ldr r0, _022EE810 ; =ov29_02353538
+	ldr r0, _022EE810 ; =DUNGEON_PTR
 	ldrb r2, [r8, #1]
 	ldr r3, [r0]
 	ldrh r1, [r8]
@@ -336,7 +339,7 @@ _022EE800:
 	.align 2, 0
 _022EE808: .word BAG_ITEMS_PTR_MIRROR
 _022EE80C: .word ov10_022C4434
-_022EE810: .word ov29_02353538
+_022EE810: .word DUNGEON_PTR
 _022EE814: .word 0x00000E63
 _022EE818: .word 0x00000E61
 _022EE81C: .word 0x00000E62
@@ -351,7 +354,7 @@ ApplyPitfallTrapEffect: ; 0x022EE820
 	mov r5, r3
 	mov r4, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
-	ldr r0, _022EE980 ; =ov29_02353538
+	ldr r0, _022EE980 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrb r0, [r0, #0xda]
@@ -399,7 +402,7 @@ _022EE8AC:
 	mov r2, #0x11
 	mov r3, #0x254
 	bl ApplyDamageAndEffectsWrapper
-	ldr r0, _022EE980 ; =ov29_02353538
+	ldr r0, _022EE980 ; =DUNGEON_PTR
 	mov r1, #2
 	ldr r0, [r0]
 	mov r4, #0
@@ -440,7 +443,7 @@ _022EE968:
 	bl ov29_022EF478
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022EE980: .word ov29_02353538
+_022EE980: .word DUNGEON_PTR
 _022EE984: .word 0x00000E64
 _022EE988: .word ov10_022C44E4
 _022EE98C: .word 0x00000E66
@@ -454,7 +457,7 @@ ApplySummonTrapEffect: ; 0x022EE994
 	mov r0, #3
 	mov r5, r1
 	bl DungeonRandInt
-	ldr r1, _022EEA20 ; =ov29_02353538
+	ldr r1, _022EEA20 ; =DUNGEON_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
@@ -487,7 +490,7 @@ _022EEA10:
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022EEA20: .word ov29_02353538
+_022EEA20: .word DUNGEON_PTR
 _022EEA24: .word 0x00000E68
 _022EEA28: .word 0x0000030F
 _022EEA2C: .word 0x00000E67
@@ -568,7 +571,7 @@ ApplyPokemonTrapEffect: ; 0x022EEB18
 	mov r4, r1
 	mov r7, #0
 	bl GetVisibilityRange
-	ldr r1, _022EED1C ; =ov29_02353538
+	ldr r1, _022EED1C ; =DUNGEON_PTR
 	mov r5, r0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
@@ -595,7 +598,7 @@ _022EEB60:
 	add r5, r0, r5
 	b _022EECE8
 _022EEB94:
-	ldr r0, _022EED1C ; =ov29_02353538
+	ldr r0, _022EED1C ; =DUNGEON_PTR
 	mov r1, #0x1c
 	ldr r0, [r0]
 	add r0, r0, #0x2e8
@@ -635,7 +638,7 @@ _022EEBE4:
 	mov r8, #0
 	b _022EEC68
 _022EEC28:
-	ldr r0, _022EED1C ; =ov29_02353538
+	ldr r0, _022EED1C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x790]
 	cmp r0, #0
@@ -707,7 +710,7 @@ _022EED14:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022EED1C: .word ov29_02353538
+_022EED1C: .word DUNGEON_PTR
 _022EED20: .word 0x00000E6B
 _022EED24: .word 0x00000E6C
 _022EED28: .word 0x00000E6D
@@ -901,7 +904,7 @@ _022EEFB0:
 	str sb, [sp, #0x14]
 	add r7, r5, #1
 _022EEFC4:
-	ldr r0, _022EF070 ; =ov29_02353538
+	ldr r0, _022EF070 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
@@ -949,7 +952,7 @@ _022EF064:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022EF06C: .word ov10_022C4B18
-_022EF070: .word ov29_02353538
+_022EF070: .word DUNGEON_PTR
 	arm_func_end ApplyRandomTrapEffect
 
 	arm_func_start ApplyGrudgeTrapEffect
@@ -971,7 +974,7 @@ ApplyGrudgeTrapEffect: ; 0x022EF074
 	bl ov29_022E56D4
 _022EF0B0:
 	mov r7, #0
-	ldr r4, _022EF14C ; =ov29_02353538
+	ldr r4, _022EF14C ; =DUNGEON_PTR
 	mov r8, r7
 	mov r5, #1
 	mov r6, r7
@@ -1012,7 +1015,7 @@ _022EF11C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _022EF148: .word 0x0000030F
-_022EF14C: .word ov29_02353538
+_022EF14C: .word DUNGEON_PTR
 _022EF150: .word 0x00000E6F
 	arm_func_end ApplyGrudgeTrapEffect
 
@@ -1394,7 +1397,7 @@ _022EF648:
 	ble _022EF614
 	b _022EF6C4
 _022EF65C:
-	ldr r0, _022EF6F4 ; =ov29_02353538
+	ldr r0, _022EF6F4 ; =DUNGEON_PTR
 	mov r1, #0x1c
 	ldr r0, [r0]
 	add r0, r0, #0x2e8
@@ -1439,7 +1442,7 @@ _022EF6E4:
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_022EF6F4: .word ov29_02353538
+_022EF6F4: .word DUNGEON_PTR
 _022EF6F8: .word 0x00000E02
 _022EF6FC: .word 0x00000E03
 	arm_func_end RevealTrapsNearby
@@ -1469,7 +1472,7 @@ ov29_022EF738: ; 0x022EF738
 	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	beq _022EF780
-	ldr r0, _022EF798 ; =ov29_02353538
+	ldr r0, _022EF798 ; =DUNGEON_PTR
 	mov r1, #0xc
 	ldr r0, [r0]
 	ldr r2, _022EF79C ; =ov10_022C6C7A
@@ -1484,13 +1487,13 @@ ov29_022EF738: ; 0x022EF738
 	streqb r1, [r0, #0xca]
 	ldmia sp!, {r3, pc}
 _022EF780:
-	ldr r0, _022EF798 ; =ov29_02353538
+	ldr r0, _022EF798 ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	strb r1, [r0, #0xca]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022EF798: .word ov29_02353538
+_022EF798: .word DUNGEON_PTR
 _022EF79C: .word ov10_022C6C7A
 	arm_func_end ov29_022EF738

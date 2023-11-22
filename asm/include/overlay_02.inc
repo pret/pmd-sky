@@ -1,8 +1,7 @@
 #pragma once
+.public _020AE224
 .public __divsi3
 .public __udivsi3
-.public _020AE224
-.public _021AC7F4
 .public ArrayCopy16
 .public ArrayCopy32
 .public ArrayCopy32Fast
@@ -12,6 +11,7 @@
 .public ClearIrqFlag
 .public EnableIrqFlag
 .public FileInit
+.public GetLanguage
 .public MemAlloc
 .public memcmp
 .public memcpy

@@ -972,7 +972,7 @@ ApplyGonePebbleEffect: ; 0x0231D838
 	mov r0, r6
 	mov r1, r5
 	bl TryInflictEndureStatus
-	ldr r0, _0231D9BC ; =ov29_02353538
+	ldr r0, _0231D9BC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 	ldrsh r0, [r0, #0xd6]
@@ -1022,7 +1022,7 @@ _0231D9A8:
 _0231D9B0: .word 0x000003FF
 _0231D9B4: .word 0x00000C65
 _0231D9B8: .word 0x00000C66
-_0231D9BC: .word ov29_02353538
+_0231D9BC: .word DUNGEON_PTR
 	arm_func_end ApplyGonePebbleEffect
 
 	arm_func_start ApplyGracideaEffect
@@ -1114,7 +1114,7 @@ _0231DAC8:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0231DAF0:
-	ldr fp, _0231DBE8 ; =ov29_02353538
+	ldr fp, _0231DBE8 ; =DUNGEON_PTR
 	mov r4, #0
 _0231DAF8:
 	ldr r0, [fp]
@@ -1179,7 +1179,7 @@ _0231DB70:
 	.align 2, 0
 _0231DBE0: .word 0x00000BE7
 _0231DBE4: .word 0x00000BF4
-_0231DBE8: .word ov29_02353538
+_0231DBE8: .word DUNGEON_PTR
 _0231DBEC: .word 0x00000141
 	arm_func_end ov29_0231DA80
 
@@ -1201,7 +1201,7 @@ ov29_0231DBF0: ; 0x0231DBF0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0231DC2C:
-	ldr r4, _0231DD54 ; =ov29_02353538
+	ldr r4, _0231DD54 ; =DUNGEON_PTR
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x75c]
 	cmp r0, #0
@@ -1232,7 +1232,7 @@ _0231DC60:
 	bge _0231DCAC
 	bl GetActiveTeamMember
 	ldrsh r0, [r0, #8]
-	bl CheckTeamMemberIdxVeneer
+	bl ov29_022F9C34
 	cmp r0, #0
 	movne r6, #0
 _0231DCAC:
@@ -1269,7 +1269,7 @@ _0231DCEC:
 	mov r0, sl
 	mov r1, sb
 	bl ov29_022E5AE4
-	ldr r0, _0231DD54 ; =ov29_02353538
+	ldr r0, _0231DD54 ; =DUNGEON_PTR
 	ldr r2, _0231DD5C ; =0x00000142
 	ldr r3, [r0]
 	mov r0, sl
@@ -1280,7 +1280,7 @@ _0231DCEC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0231DD50: .word 0x00000BE7
-_0231DD54: .word ov29_02353538
+_0231DD54: .word DUNGEON_PTR
 _0231DD58: .word 0x00000BA4
 _0231DD5C: .word 0x00000142
 	arm_func_end ov29_0231DBF0
@@ -1306,7 +1306,7 @@ ov29_0231DD60: ; 0x0231DD60
 	mov r0, #0
 	b _0231E044
 _0231DDA8:
-	ldr fp, _0231E050 ; =ov29_02353538
+	ldr fp, _0231E050 ; =DUNGEON_PTR
 	mov r5, #0
 _0231DDB0:
 	ldr r0, [fp]
@@ -1495,7 +1495,7 @@ _0231E044:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0231E04C: .word 0x00000BE7
-_0231E050: .word ov29_02353538
+_0231E050: .word DUNGEON_PTR
 _0231E054: .word 0x0000016A
 _0231E058: .word 0x00000BF5
 	arm_func_end ov29_0231DD60
@@ -2232,7 +2232,7 @@ ov29_0231EA40: ; 0x0231EA40
 	bl IsFullFloorFixedRoom
 	cmp r0, #0
 	bne _0231EA80
-	ldr r0, _0231EDC8 ; =ov29_02353538
+	ldr r0, _0231EDC8 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r1, r0, #0x4000
 	ldrsh r0, [r1, #0xd4]
@@ -2272,7 +2272,7 @@ _0231EAC8:
 	mov r6, #0
 	mov sb, #1
 _0231EAE0:
-	ldr fp, _0231EDC8 ; =ov29_02353538
+	ldr fp, _0231EDC8 ; =DUNGEON_PTR
 	mov r5, #1
 	mov r4, #0
 _0231EAEC:
@@ -2341,7 +2341,7 @@ _0231EBCC:
 	add sb, sb, #1
 	cmp sb, #0x37
 	blt _0231EAE0
-	ldr r0, _0231EDC8 ; =ov29_02353538
+	ldr r0, _0231EDC8 ; =DUNGEON_PTR
 	mov r2, #1
 	ldr r0, [r0]
 	add r1, r0, #0xcc00
@@ -2378,7 +2378,7 @@ _0231EC4C:
 	blt _0231EC10
 _0231EC64:
 	cmp r6, #0
-	ldrne r0, _0231EDC8 ; =ov29_02353538
+	ldrne r0, _0231EDC8 ; =DUNGEON_PTR
 	mov r5, #0
 	ldrne r0, [r0]
 	movne r1, #0
@@ -2406,7 +2406,7 @@ _0231ECA8:
 	add r5, r5, #1
 	cmp r5, #0x38
 	blt _0231EC84
-	ldr r4, _0231EDC8 ; =ov29_02353538
+	ldr r4, _0231EDC8 ; =DUNGEON_PTR
 	mov r5, #0
 _0231ECD4:
 	ldr r0, [r4]
@@ -2441,7 +2441,7 @@ _0231ED08:
 	mov r0, sl
 	mov r1, #1
 	bl ov29_02305814
-	ldr r4, _0231EDC8 ; =ov29_02353538
+	ldr r4, _0231EDC8 ; =DUNGEON_PTR
 	mov r6, #0
 _0231ED58:
 	ldr r0, [r4]
@@ -2464,7 +2464,7 @@ _0231ED98:
 	add r6, r6, #1
 	cmp r6, #0x14
 	blt _0231ED58
-	ldr r0, _0231EDC8 ; =ov29_02353538
+	ldr r0, _0231EDC8 ; =DUNGEON_PTR
 	mov r3, #1
 	ldr r1, [r0]
 	mov r0, #0x14
@@ -2474,7 +2474,7 @@ _0231ED98:
 	bl ov29_022EA370
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0231EDC8: .word ov29_02353538
+_0231EDC8: .word DUNGEON_PTR
 _0231EDCC: .word 0x00000E01
 _0231EDD0: .word 0x00000DFF
 _0231EDD4: .word 0x00000DFE

@@ -69,7 +69,7 @@ _0231EED4:
 	ldr fp, _0231F54C ; =DIRECTIONS_XY
 	mov r6, sl
 _0231EEE0:
-	ldr r0, _0231F550 ; =ov29_02353538
+	ldr r0, _0231F550 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
@@ -117,7 +117,7 @@ _0231EF64:
 	add r1, sp, #0x34
 	add r2, r3, r2
 	strh r2, [sp, #0x36]
-	bl CannotStandOnTile
+	bl ov29_022FF764
 	cmp r0, #0
 	bne _0231EFB8
 	ldrsh r0, [sp, #0x34]
@@ -158,7 +158,7 @@ _0231EFF8:
 	add r1, sp, #0x30
 	add r2, r3, r2
 	strh r2, [sp, #0x32]
-	bl CannotStandOnTile
+	bl ov29_022FF764
 	cmp r0, #0
 	bne _0231F074
 	ldrsh r0, [sp, #0x30]
@@ -225,7 +225,7 @@ _0231F0F4:
 	strh r0, [sp, #0x2e]
 	mov r0, r4
 	mov r1, r6
-	bl CannotStandOnTile
+	bl ov29_022FF764
 	cmp r0, #0
 	bne _0231F150
 	ldrsh r0, [sp, #0x2c]
@@ -409,7 +409,7 @@ _0231F3A4:
 	mov r1, sb
 	strh r3, [sp, #0x28]
 	strh r2, [sp, #0x2a]
-	bl CannotStandOnTile
+	bl ov29_022FF764
 	cmp r0, #0
 	bne _0231F408
 	ldrsh r0, [sp, #0x28]
@@ -514,7 +514,7 @@ _0231F53C:
 _0231F544: .word 0x00000E45
 _0231F548: .word 0x00000E46
 _0231F54C: .word DIRECTIONS_XY
-_0231F550: .word ov29_02353538
+_0231F550: .word DUNGEON_PTR
 _0231F554: .word 0x00000E48
 _0231F558: .word 0x00000E47
 _0231F55C: .word 0x00000212
