@@ -1,16 +1,26 @@
 import os
 import yaml
+from typing import Dict, List
+
 from containing_folder import CONTAINING_FOLDER
-from typing import Dict
 from symbol_details import SymbolDetails
 
 SYMBOLS_FOLDER = 'symbols'
 pmdsky_debug_path = None
 
-LANGUAGE_KEYS = {
+LANGUAGE_KEYS_PMDSKY_DEBUG_TO_XMAP = {
     'NA': 'us',
     'EU': 'eu',
 }
+
+LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG = {value: key for key, value in LANGUAGE_KEYS_PMDSKY_DEBUG_TO_XMAP.items()}
+
+# Symbols with duplicate addresses that should be ignored.
+SYMBOL_BLACKLIST = set([
+    'EXCLUSIVE_ITEM_STAT_BOOST_DATA',
+    'GAME_STATE_VALUES',
+    'GUMMI_IQ_STRING_IDS',
+])
 
 def get_pmdsky_debug_location() -> str:
     global pmdsky_debug_path
@@ -42,40 +52,48 @@ Dictionary format:
 """
 def read_pmdsky_debug_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]]:
     pmdsky_debug_symbols: Dict[str, Dict[str, Dict[int, SymbolDetails]]] = {}
-    for language in LANGUAGE_KEYS:
-        pmdsky_debug_symbols[LANGUAGE_KEYS[language]] = {}
+    for language in LANGUAGE_KEYS_PMDSKY_DEBUG_TO_XMAP:
+        pmdsky_debug_symbols[LANGUAGE_KEYS_PMDSKY_DEBUG_TO_XMAP[language]] = {}
 
     pmdsky_debug_path = get_pmdsky_debug_location()
 
     def read_yaml_symbols(file_path: str, symbols_key: str, address_suffix = '') -> Dict[int, SymbolDetails]:
         full_file_path = os.path.join(pmdsky_debug_path, SYMBOLS_FOLDER, file_path)
         with open(full_file_path, 'r') as symbols_file:
-            symbols_yaml = yaml.safe_load(symbols_file)
+            symbols_yaml: Dict[str, any] = yaml.safe_load(symbols_file)
 
         def read_symbols_from_array(array_key: str, is_data: bool):
             for symbol in symbols_yaml[list(symbols_yaml.keys())[0]][array_key]:
                 for language in symbol['address'].keys():
                     if not language.endswith(address_suffix):
                         continue
-                    base_language = language.replace(address_suffix, '')
-                    if base_language not in LANGUAGE_KEYS:
+                    base_language: str = language.replace(address_suffix, '')
+                    if base_language not in LANGUAGE_KEYS_PMDSKY_DEBUG_TO_XMAP:
                         continue
 
-                    language_symbols = pmdsky_debug_symbols[LANGUAGE_KEYS[base_language]]
+                    language_symbols = pmdsky_debug_symbols[LANGUAGE_KEYS_PMDSKY_DEBUG_TO_XMAP[base_language]]
                     if symbols_key not in language_symbols:
                         language_symbols[symbols_key] = {}
                     symbols = language_symbols[symbols_key]
 
-                    addresses = symbol['address'][language]
-                    symbol_name = symbol['name']
+                    addresses: int | List[int] = symbol['address'][language]
+                    symbol_name: str = symbol['name']
+                    if symbol_name in SYMBOL_BLACKLIST:
+                        continue
+
+                    def add_symbol_address(address: int, symbol_details: SymbolDetails):
+                        if address in symbols:
+                            print(f'Warning: Duplicate symbols found for address {hex(address)}: {symbols[address].name}, {symbol_details.name}')
+                        symbols[address] = symbol_details
+
                     if isinstance(addresses, list):
                         if len(addresses) > 1:
                             for address in addresses:
-                                symbols[address] = SymbolDetails(f'{symbol_name}__{address:08X}', full_file_path, is_data)
+                                add_symbol_address(address, SymbolDetails(f'{symbol_name}__{address:08X}', full_file_path, is_data))
                         else:
-                            symbols[addresses[0]] = SymbolDetails(symbol_name, full_file_path, is_data)
+                            add_symbol_address(addresses[0], SymbolDetails(symbol_name, full_file_path, is_data))
                     else:
-                        symbols[addresses] = SymbolDetails(symbol_name, full_file_path, is_data)
+                        add_symbol_address(addresses, SymbolDetails(symbol_name, full_file_path, is_data))
 
         read_symbols_from_array('functions', False)
         read_symbols_from_array('data', True)

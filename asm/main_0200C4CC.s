@@ -14849,13 +14849,13 @@ PlayBgmByIdVeneer: ; 0x02017B58
 _02017B60: .word PlayBgmById
 	arm_func_end PlayBgmByIdVeneer
 
-	arm_func_start sub_02017B64
-sub_02017B64: ; 0x02017B64
-	ldr ip, _02017B6C ; =sub_02017E70
+	arm_func_start PlayBgmByIdVolumeVeneer
+PlayBgmByIdVolumeVeneer: ; 0x02017B64
+	ldr ip, _02017B6C ; =PlayBgmByIdVolume
 	bx ip
 	.align 2, 0
-_02017B6C: .word sub_02017E70
-	arm_func_end sub_02017B64
+_02017B6C: .word PlayBgmByIdVolume
+	arm_func_end PlayBgmByIdVolumeVeneer
 
 	arm_func_start sub_02017B70
 sub_02017B70: ; 0x02017B70
@@ -14912,13 +14912,13 @@ sub_02017BD4: ; 0x02017BD4
 _02017BDC: .word sub_02018024
 	arm_func_end sub_02017BD4
 
-	arm_func_start PlayBgmByIdVolumeVeneer
-PlayBgmByIdVolumeVeneer: ; 0x02017BE0
-	ldr ip, _02017BE8 ; =PlayBgmByIdVolume
+	arm_func_start sub_02017BE0
+sub_02017BE0: ; 0x02017BE0
+	ldr ip, _02017BE8 ; =sub_020180A0
 	bx ip
 	.align 2, 0
-_02017BE8: .word PlayBgmByIdVolume
-	arm_func_end PlayBgmByIdVolumeVeneer
+_02017BE8: .word sub_020180A0
+	arm_func_end sub_02017BE0
 
 	arm_func_start sub_02017BEC
 sub_02017BEC: ; 0x02017BEC
@@ -15188,8 +15188,8 @@ _02017E68: .word 0x000003E7
 _02017E6C: .word _022A4BEC
 	arm_func_end PlayBgmById
 
-	arm_func_start sub_02017E70
-sub_02017E70: ; 0x02017E70
+	arm_func_start PlayBgmByIdVolume
+PlayBgmByIdVolume: ; 0x02017E70
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r3, _02017EE0 ; =0x000003E7
 	mov r6, r0
@@ -15221,7 +15221,7 @@ sub_02017E70: ; 0x02017E70
 	.align 2, 0
 _02017EE0: .word 0x000003E7
 _02017EE4: .word _022A4BEC
-	arm_func_end sub_02017E70
+	arm_func_end PlayBgmByIdVolume
 
 	arm_func_start StopBgmCommand
 StopBgmCommand: ; 0x02017EE8
@@ -15368,8 +15368,8 @@ _02018098: .word 0x000003E7
 _0201809C: .word _022A4BEC
 	arm_func_end sub_02018024
 
-	arm_func_start PlayBgmByIdVolume
-PlayBgmByIdVolume: ; 0x020180A0
+	arm_func_start sub_020180A0
+sub_020180A0: ; 0x020180A0
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r3, _02018110 ; =0x000003E7
 	mov r6, r0
@@ -15401,7 +15401,7 @@ PlayBgmByIdVolume: ; 0x020180A0
 	.align 2, 0
 _02018110: .word 0x000003E7
 _02018114: .word _022A4BEC
-	arm_func_end PlayBgmByIdVolume
+	arm_func_end sub_020180A0
 
 	arm_func_start sub_02018118
 sub_02018118: ; 0x02018118

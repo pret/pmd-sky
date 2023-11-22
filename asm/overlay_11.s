@@ -6761,7 +6761,7 @@ _022E20D0:
 	mov r2, r3, lsl #0x10
 	mov r1, r1, lsr #0x10
 	mov r2, r2, lsr #0x10
-	bl sub_02017B64
+	bl PlayBgmByIdVolumeVeneer
 	b _022E2464
 _022E2120:
 	bl sub_02017B70
@@ -6822,7 +6822,7 @@ _022E21A8:
 	mov r2, r3, lsl #0x10
 	mov r1, r1, lsr #0x10
 	mov r2, r2, lsr #0x10
-	bl PlayBgmByIdVolumeVeneer
+	bl sub_02017BE0
 	b _022E2464
 _022E21F8:
 	bl sub_02017BEC
