@@ -67,6 +67,7 @@ $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 
 us: ; @$(MAKE) GAME_LANGUAGE=NORTH_AMERICA
 eu: ; @$(MAKE) GAME_LANGUAGE=EUROPE
+jp: ; @$(MAKE) GAME_LANGUAGE=JAPAN
 
 compare: @$(MAKE) COMPARE=1
 

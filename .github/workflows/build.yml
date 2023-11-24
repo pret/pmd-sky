@@ -64,6 +64,12 @@ jobs:
           GAME_REVISION: 0
         run: make -j${nproc}
 
+      - name: Build Japan
+        env:
+          GAME_LANGUAGE: JAPAN
+          GAME_REVISION: 0
+        run: make -j${nproc}
+
       - name: Webhook
         if: ${{ github.event_name == 'push' }}
         run: |

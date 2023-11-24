@@ -98,7 +98,7 @@ This repository has a [devcontainer](https://containers.dev/) containing all the
 
 ## 3. Build ROM
 
-Run `make` to build the ROM. This will build the North American ROM at `build/pmdsky.us/pmdsky.us.nds`. If you want the European ROM, run `make eu` to build the ROM at `build/pmdsky.eu/pmdsky.eu.nds`.
+Run `make` to build the ROM. This will build the North American ROM at `build/pmdsky.us/pmdsky.us.nds`. If you want the European or Japanese ROM, run `make eu` or `make jp` respectively.
 
 There are targets for building and testing changes to individual components without repackaging the ROM. For the ARM9 modules, run `make main`. For the ARM7 module, run `make sub`. For the filesystem, run `make filesystem`.
 

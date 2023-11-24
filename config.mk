@@ -16,6 +16,9 @@ GAME_CODE := $(GAME_CODE)E
 else ifeq ($(GAME_LANGUAGE),EUROPE)
 buildname := $(buildname).eu
 GAME_CODE := $(GAME_CODE)P
+else ifeq ($(GAME_LANGUAGE),JAPAN)
+buildname := $(buildname).jp
+GAME_CODE := $(GAME_CODE)J
 else
 $(error Unsupported game language: $(GAME_LANGUAGE))
 endif
@@ -35,13 +38,15 @@ ifeq ($(buildname),pmdsky.us)
 SECURE_CRC := 0x96A1
 else ifeq ($(buildname),pmdsky.eu)
 SECURE_CRC := 0x8EBE
+else ifeq ($(buildname),pmdsky.jp)
+SECURE_CRC := 0x74E4
 endif
 
 ifndef SECURE_CRC
 $(error Unsupported ROM: $(GAME_LANGUAGE))
 endif
 
-SUPPORTED_ROMS   := pmdsky.us pmdsky.eu
+SUPPORTED_ROMS   := pmdsky.us pmdsky.eu pmdsky.jp
 ifneq ($(filter $(buildname),$(SUPPORTED_ROMS)),$(buildname))
 $(error $(buildname) is not supported, choose from: $(SUPPORTED_ROMS))
 endif
