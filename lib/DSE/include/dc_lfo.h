@@ -7,7 +7,7 @@
 
 struct dse_lfo;
 
-typedef s32 (*SoundLfoWaveformCallback)(struct dse_lfo *lfo);
+typedef s32 (*sound_lfo_waveform_callback)(struct dse_lfo *lfo);
 
 struct dse_lfo
 {
@@ -31,7 +31,7 @@ struct dse_lfo
     s32 envelope_level;
     s32 envelope_delta;
     s16 *output_ptr;
-    SoundLfoWaveformCallback waveform_callback;
+    sound_lfo_waveform_callback waveform_callback;
 
     //+0x30
     struct dse_lfo *next;

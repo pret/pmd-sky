@@ -42,6 +42,8 @@ src_files.extend(add_files_with_extensions('lib', ['.c', '.h']))
 
 replaced_symbols = set()
 for language, pmdsky_debug_language_symbols in pmdsky_debug_symbols.items():
+    if language not in xmap_symbols:
+        continue
     xmap_language_symbols = xmap_symbols[language]
     for section_name, pmdsky_debug_section in pmdsky_debug_language_symbols.items():
         if section_name == 'ram':
