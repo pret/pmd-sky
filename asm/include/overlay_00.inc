@@ -67,6 +67,7 @@
 .public SetIrqFlag
 .public snprintf
 .public sprintf
+.public StartThread
 .public strcat
 .public strchr
 .public strcmp
@@ -141,8 +142,6 @@
 .public sub_020790DC
 .public sub_0207911C
 .public sub_02079550
-.public sub_02079560
-.public sub_0207965C
 .public sub_0207976C
 .public sub_02079800
 .public sub_02079830
@@ -236,6 +235,7 @@
 .public sub_0208FE3C
 .public sub_020902AC
 .public SVC_WaitByLoop
+.public ThreadExit
 .public UnloadOverlay
 .public WaitForever2
 .public wcslen

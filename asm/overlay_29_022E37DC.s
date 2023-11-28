@@ -1267,7 +1267,7 @@ ov29_022E46D4: ; 0x022E46D4
 	ldrb r0, [r0, #0x11e]
 	mov r2, #1
 	mov r3, #0xb
-	bl ov29_022EA718
+	bl DisplayAnimatedNumbers
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E46D4
 

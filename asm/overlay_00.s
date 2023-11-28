@@ -13474,7 +13474,7 @@ _022C7B8C:
 	bl SetIrqFlag
 	b _022C7A9C
 _022C7BA4:
-	bl sub_0207965C
+	bl ThreadExit
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov00_022C7A94
 
@@ -13503,7 +13503,7 @@ ov00_022C7BAC: ; 0x022C7BAC
 	mov r2, r5
 	add r3, r3, ip
 	stmia sp, {ip, lr}
-	bl sub_02079560
+	bl StartThread
 	mov r0, r5
 	bl sub_02079940
 _022C7C14:
@@ -14137,7 +14137,7 @@ _022C8324:
 	ldr r0, _022C8494 ; =ov00_023252E0
 	ldr r3, _022C8498 ; =ov00_023268C0
 	str r4, [sp, #4]
-	bl sub_02079560
+	bl StartThread
 	mov r1, #0x800
 	ldr r0, _022C848C ; =ov00_02318844
 	str r1, [sp]
@@ -14147,7 +14147,7 @@ _022C8324:
 	ldr r1, _022C84A0 ; =ov00_022CBC40
 	ldr r3, _022C84A4 ; =ov00_023260C0
 	mov r2, #0
-	bl sub_02079560
+	bl StartThread
 	ldr r0, _022C8494 ; =ov00_023252E0
 	bl sub_02079940
 	ldr r0, _022C849C ; =ov00_02325220
@@ -20296,7 +20296,7 @@ ov00_022CD61C: ; 0x022CD61C
 	mov r2, r6
 	add r3, r7, r4
 	str ip, [sp, #4]
-	bl sub_02079560
+	bl StartThread
 	add r0, r6, #0x20
 	bl sub_02079940
 	add r0, r7, r4
@@ -37905,7 +37905,7 @@ _022DBE24:
 	add r0, r0, #0x1000
 	add r3, lr, #0x1000
 	str ip, [sp, #4]
-	bl sub_02079560
+	bl StartThread
 	ldr r0, _022DBE70 ; =ov00_02326CB4
 	ldr r0, [r0, #8]
 	add r0, r0, #0x318
@@ -39382,7 +39382,7 @@ _022DD30C:
 	add r0, r0, #0x1800
 	add r3, r5, #0x1000
 	str r4, [sp, #4]
-	bl sub_02079560
+	bl StartThread
 	add r0, r5, #0x338
 	add r0, r0, #0x1800
 	bl sub_02079940
@@ -40863,7 +40863,7 @@ _022DE74C:
 	add r0, r0, #0x1000
 	add r3, r2, #0x1000
 	str ip, [sp, #4]
-	bl sub_02079560
+	bl StartThread
 	ldr r0, _022DE794 ; =ov00_02326CD8
 	ldr r0, [r0]
 	add r0, r0, #0x11c
@@ -44052,7 +44052,7 @@ _022E123C:
 	add r3, r3, #0x9c0
 	mov r2, #0
 	str ip, [sp, #4]
-	bl sub_02079560
+	bl StartThread
 	ldr r0, _022E1284 ; =ov00_02326D84
 	ldr r0, [r0]
 	add r0, r0, #0x9c0
@@ -63022,7 +63022,7 @@ ov00_022F13A0: ; 0x022F13A0
 	str ip, [sp]
 	mov ip, #0x10
 	str ip, [sp, #4]
-	bl sub_02079560
+	bl StartThread
 	ldr r0, _022F13DC ; =ov00_02327964
 	bl sub_02079940
 	add sp, sp, #8
@@ -63494,7 +63494,7 @@ ov00_022F193C: ; 0x022F193C
 	add r3, r4, #0x2000
 	mov r2, #0
 	str r5, [sp, #4]
-	bl sub_02079560
+	bl StartThread
 	ldr r0, _022F19AC ; =ov00_02328260
 	bl sub_02079940
 	mov r0, #1

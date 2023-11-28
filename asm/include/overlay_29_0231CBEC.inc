@@ -39,6 +39,8 @@
 .public GINSENG_CHANCE_3
 .public GUMMI_BELLY_RESTORE_TABLE
 .public GUMMI_LIKE_STRING_IDS
+.public HandleMovesMenuWrapper0
+.public HandleMovesMenuWrapper1
 .public HandleSir0Translation
 .public InitMove
 .public IQ_GUMMI_GAIN_TABLE
@@ -110,8 +112,6 @@
 .public ov29_023529AC
 .public ov29_023529B0
 .public ov29_02353324
-.public ov31_023853BC
-.public ov31_023853E0
 .public ov31_02385FE0
 .public ov31_023860A4
 .public ov31_0238619C

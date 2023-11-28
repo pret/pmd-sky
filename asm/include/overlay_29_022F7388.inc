@@ -19,6 +19,7 @@
 .public DeleteWanTableEntryVeneer
 .public DIRECTIONS_XY
 .public DiscoverMinimap
+.public DisplayAnimatedNumbers
 .public DisplayMessage
 .public DisplayMessage2
 .public DrawMinimapTile
@@ -147,7 +148,6 @@
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
-.public ov29_022EA718
 .public ov29_022ECDE4
 .public ov29_022EF7C4
 .public ov29_022EF938

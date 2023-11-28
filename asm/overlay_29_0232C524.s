@@ -394,7 +394,7 @@ DoMoveSlowDown: ; 0x0232CA14
 	arm_func_start DoMoveSearchlight
 DoMoveSearchlight: ; 0x0232CA2C
 	stmdb sp!, {r3, lr}
-	bl ov29_022E3430
+	bl RevealWholeFloor
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end DoMoveSearchlight

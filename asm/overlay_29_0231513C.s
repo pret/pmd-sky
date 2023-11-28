@@ -334,7 +334,7 @@ _023155C8:
 	mov r0, r4
 	mov r1, r6
 	sub r3, r2, #2
-	bl ov29_022EA718
+	bl DisplayAnimatedNumbers
 _023155E4:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}

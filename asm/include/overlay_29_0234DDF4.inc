@@ -13,6 +13,7 @@
 .public GetLeaderAction
 .public GetLeaderMonster
 .public GetTile
+.public HandleMovesMenuWrapper0
 .public HideTileGrid
 .public InitMove
 .public LoadOverlay
@@ -45,7 +46,6 @@
 .public ov31_02382E18
 .public ov31_0238367C
 .public ov31_023838E4
-.public ov31_023853BC
 .public ov31_02385FE0
 .public ov31_023860A4
 .public ov31_0238619C

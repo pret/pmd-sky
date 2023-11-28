@@ -65,7 +65,6 @@
 .public ov29_022E1AAC
 .public ov29_022E1AD4
 .public ov29_022E1EF8
-.public ov29_022E3430
 .public ov29_022E34A8_EU
 .public ov29_022E6770
 .public ov29_022E6784
@@ -102,6 +101,7 @@
 .public RevealEnemies
 .public RevealItems
 .public RevealStairs
+.public RevealWholeFloor
 .public ROOST_HP_RESTORATION_TABLE
 .public SHADOW_FORCE_DAMAGE_MULTIPLIER
 .public SLEEP_TURN_RANGE

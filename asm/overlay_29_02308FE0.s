@@ -547,7 +547,7 @@ _0230A16C:
 	mov r1, sb
 	rsb r0, r0, #0
 	sub r3, r2, #2
-	bl ov29_022EA718
+	bl DisplayAnimatedNumbers
 _0230A1E8:
 	ldrb r0, [r7, #0x15c]
 	cmp r0, #0
@@ -1627,7 +1627,7 @@ _02309740:
 	mov r1, r7
 	rsb r0, r0, #0
 	sub r3, r2, #2
-	bl ov29_022EA718
+	bl DisplayAnimatedNumbers
 _023097BC:
 	ldrb r0, [r4, #0x15c]
 	cmp r0, #0
