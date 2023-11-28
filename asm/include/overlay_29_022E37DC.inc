@@ -9,6 +9,7 @@
 .public CheckSpawnThreshold
 .public CreateTextBox1
 .public DIRECTIONS_XY
+.public DisplayAnimatedNumbers
 .public DUNGEON_PTR
 .public DungeonFloorToGroupFloor
 .public DungeonGetSpriteIndex
@@ -86,7 +87,6 @@
 .public ov29_022DE5F0
 .public ov29_022E2CA0
 .public ov29_022EA370
-.public ov29_022EA718
 .public ov29_022EACCC
 .public ov29_022EACE4
 .public ov29_022ED0F4

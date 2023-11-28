@@ -37,6 +37,7 @@
 .public DebugRecruitingEnabled
 .public DEF_SCARF_STAT_BOOST
 .public DEFENSIVE_STAT_STAGE_MULTIPLIERS
+.public DisplayAnimatedNumbers
 .public DivideFixedPoint64
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -161,7 +162,6 @@
 .public ov29_022E81F8
 .public ov29_022E9628
 .public ov29_022EA370
-.public ov29_022EA718
 .public ov29_022EACAC
 .public ov29_022EAF20
 .public ov29_022EAF34

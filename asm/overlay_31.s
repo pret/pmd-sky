@@ -3121,8 +3121,8 @@ _023853B0:
 _023853B8: .word DUNGEON_PTR
 	arm_func_end MovesMenu
 
-	arm_func_start ov31_023853BC
-ov31_023853BC: ; 0x023853BC
+	arm_func_start HandleMovesMenuWrapper0
+HandleMovesMenuWrapper0: ; 0x023853BC
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr lr, [sp, #0x10]
@@ -3132,10 +3132,10 @@ ov31_023853BC: ; 0x023853BC
 	bl HandleMovesMenu
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
-	arm_func_end ov31_023853BC
+	arm_func_end HandleMovesMenuWrapper0
 
-	arm_func_start ov31_023853E0
-ov31_023853E0: ; 0x023853E0
+	arm_func_start HandleMovesMenuWrapper1
+HandleMovesMenuWrapper1: ; 0x023853E0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr lr, [sp, #0x10]
@@ -3145,7 +3145,7 @@ ov31_023853E0: ; 0x023853E0
 	bl HandleMovesMenu
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
-	arm_func_end ov31_023853E0
+	arm_func_end HandleMovesMenuWrapper1
 
 	arm_func_start HandleMovesMenu
 HandleMovesMenu: ; 0x02385404

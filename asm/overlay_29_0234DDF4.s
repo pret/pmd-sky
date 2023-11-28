@@ -428,7 +428,7 @@ _0234E3CC:
 	mov r1, #0
 	mov r2, #1
 	str r7, [sp]
-	bl ov31_023853BC
+	bl HandleMovesMenuWrapper0
 	cmp r0, #0
 	movne r5, r8
 	bl ov29_022F0B9C

@@ -3238,8 +3238,8 @@ LoadFixedRoomDataVeneer: ; 0x0233A624
 _0233A62C: .word LoadFixedRoomData
 	arm_func_end LoadFixedRoomDataVeneer
 
-	arm_func_start ov29_0233A630
-ov29_0233A630: ; 0x0233A630
+	arm_func_start UnloadFixedRoomData
+UnloadFixedRoomData: ; 0x0233A630
 	stmdb sp!, {r3, lr}
 	bl ov29_02343DD8
 	ldr r0, _0233A650 ; =DUNGEON_PTR
@@ -3250,7 +3250,7 @@ ov29_0233A630: ; 0x0233A630
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233A650: .word DUNGEON_PTR
-	arm_func_end ov29_0233A630
+	arm_func_end UnloadFixedRoomData
 
 	arm_func_start IsNormalFloor
 IsNormalFloor: ; 0x0233A654
@@ -3816,7 +3816,7 @@ _0233AE28:
 	bhi _0233AE58
 	bl ConvertWallsToChasms
 _0233AE58:
-	bl ov29_0233A630
+	bl UnloadFixedRoomData
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0

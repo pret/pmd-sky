@@ -9,6 +9,7 @@
 .public BoostOffensiveStat
 .public CalcStatusDuration
 .public CeilFixedPoint
+.public DisplayAnimatedNumbers
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public DungeonRandInt
@@ -112,7 +113,6 @@
 .public ov29_022E4AF0
 .public ov29_022E4B3C
 .public ov29_022E81F8
-.public ov29_022EA718
 .public ov29_022EACCC
 .public ov29_022FB984
 .public ov29_02304830

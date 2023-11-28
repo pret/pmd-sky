@@ -92,8 +92,8 @@ _022E3428: .word DUNGEON_PTR
 _022E342C: .word 0x000003E7
 	arm_func_end ov29_022E335C
 
-	arm_func_start ov29_022E3430
-ov29_022E3430: ; 0x022E3430
+	arm_func_start RevealWholeFloor
+RevealWholeFloor: ; 0x022E3430
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r1, _022E34A8 ; =DUNGEON_PTR
 	mov r7, #0
@@ -129,7 +129,7 @@ _022E3458:
 	.align 2, 0
 _022E34A8: .word DUNGEON_PTR
 _022E34AC: .word 0x00000B77
-	arm_func_end ov29_022E3430
+	arm_func_end RevealWholeFloor
 
 	arm_func_start ov29_022E34B0
 ov29_022E34B0: ; 0x022E34B0

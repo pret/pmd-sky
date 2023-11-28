@@ -102,6 +102,7 @@
 .public ov00_02318160
 .public ov00_023250C8
 .public SetIrqFlag
+.public StartThread
 .public strcpy
 .public strlen
 .public strncpy
@@ -175,7 +176,6 @@
 .public sub_020790DC
 .public sub_0207911C
 .public sub_02079550
-.public sub_02079560
 .public sub_02079800
 .public sub_02079830
 .public sub_02079940

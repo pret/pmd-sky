@@ -203,6 +203,7 @@
 .public PRNG_SEQUENCE_NUM
 .public sprintf
 .public sqrtf
+.public StartThread
 .public StopBgmCommand
 .public strcat
 .public strcmp
@@ -272,7 +273,6 @@
 .public sub_02078A98
 .public sub_02078C68
 .public sub_0207902C
-.public sub_02079560
 .public sub_02079844
 .public sub_02079888
 .public sub_02079940

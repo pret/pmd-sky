@@ -1297,8 +1297,8 @@ _022EA710: .word _020AFC4C
 _022EA714: .word 0x000001EA
 	arm_func_end ov29_022EA64C
 
-	arm_func_start ov29_022EA718
-ov29_022EA718: ; 0x022EA718
+	arm_func_start DisplayAnimatedNumbers
+DisplayAnimatedNumbers: ; 0x022EA718
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	movs sl, r0
 	mov sb, r1
@@ -1367,7 +1367,7 @@ _022EA7FC: .word DUNGEON_PTR
 _022EA800: .word ov29_0237C850
 _022EA804: .word ov29_02353560
 _022EA808: .word 0xFFFFFC19
-	arm_func_end ov29_022EA718
+	arm_func_end DisplayAnimatedNumbers
 
 	arm_func_start ov29_022EA80C
 ov29_022EA80C: ; 0x022EA80C

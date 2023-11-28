@@ -119785,7 +119785,7 @@ sub_0206CD9C: ; 0x0206CD9C
 	add r3, r2, #0x800
 	ldr r1, _0206CE24 ; =sub_0206CE68
 	mov r2, #0
-	bl sub_02079560
+	bl StartThread
 	ldr r0, _0206CE20 ; =_022B9120
 	bl sub_02079940
 	add sp, sp, #8
@@ -123784,7 +123784,7 @@ sub_020701F8: ; 0x020701F8
 	ldr r3, [r2, #0x34]
 	mov r2, #0
 	add r3, r3, #0x400
-	bl sub_02079560
+	bl StartThread
 	ldr r0, _02070284 ; =_022B94BC
 	bl sub_02079940
 	mov r0, #0
@@ -124664,7 +124664,7 @@ sub_02070E0C: ; 0x02070E0C
 	ldr r3, [r2, #0xdd4]
 	mov r2, #0
 	add r3, r3, #0x800
-	bl sub_02079560
+	bl StartThread
 	ldr r0, _02070E98 ; =_022B9044
 	bl sub_02079940
 	bl sub_02070EDC
@@ -135217,8 +135217,8 @@ sub_02079144: ; 0x02079144
 _0207914C: .word sub_02085BD4
 	arm_func_end sub_02079144
 
-	arm_func_start sub_02079150
-sub_02079150: ; 0x02079150
+	arm_func_start IncrementThreadCount
+IncrementThreadCount: ; 0x02079150
 	ldr r1, _02079164 ; =_022B9648
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
@@ -135226,7 +135226,7 @@ sub_02079150: ; 0x02079150
 	bx lr
 	.align 2, 0
 _02079164: .word _022B9648
-	arm_func_end sub_02079150
+	arm_func_end IncrementThreadCount
 
 	arm_func_start sub_02079168
 sub_02079168: ; 0x02079168
@@ -135329,8 +135329,8 @@ _02079290:
 	bx lr
 	arm_func_end sub_02079268
 
-	arm_func_start sub_02079298
-sub_02079298: ; 0x02079298
+	arm_func_start InsertThreadIntoList
+InsertThreadIntoList: ; 0x02079298
 	stmdb sp!, {r3, lr}
 	ldr r1, _020792F4 ; =_022B9648
 	mov ip, #0
@@ -135359,7 +135359,7 @@ _020792D0:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _020792F4: .word _022B9648
-	arm_func_end sub_02079298
+	arm_func_end InsertThreadIntoList
 
 	arm_func_start sub_020792F8
 sub_020792F8: ; 0x020792F8
@@ -135509,7 +135509,7 @@ _0207947C:
 	ldr r3, _0207954C ; =_022B98C4
 	mov r2, #0
 	str ip, [sp, #4]
-	bl sub_02079560
+	bl StartThread
 	ldr r0, _02079518 ; =_022B9648
 	mov r1, #0x20
 	str r1, [r0, #0xa4]
@@ -135543,8 +135543,8 @@ sub_02079550: ; 0x02079550
 _0207955C: .word _022B9654
 	arm_func_end sub_02079550
 
-	arm_func_start sub_02079560
-sub_02079560: ; 0x02079560
+	arm_func_start StartThread
+StartThread: ; 0x02079560
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r5, r1
@@ -135552,7 +135552,7 @@ sub_02079560: ; 0x02079560
 	mov r6, r3
 	bl EnableIrqFlag
 	mov r4, r0
-	bl sub_02079150
+	bl IncrementThreadCount
 	ldr r2, [sp, #0x1c]
 	mov r1, #0
 	str r2, [r8, #0x70]
@@ -135560,7 +135560,7 @@ sub_02079560: ; 0x02079560
 	str r1, [r8, #0x64]
 	mov r0, r8
 	str r1, [r8, #0x74]
-	bl sub_02079298
+	bl InsertThreadIntoList
 	ldr r0, [sp, #0x18]
 	mov r1, r5
 	str r6, [r8, #0x94]
@@ -135578,8 +135578,8 @@ sub_02079560: ; 0x02079560
 	str ip, [r8, #0xa0]
 	mov r0, r8
 	str ip, [r8, #0x9c]
-	bl sub_02079C84
-	ldr r2, _02079658 ; =sub_0207965C
+	bl InitThread
+	ldr r2, _02079658 ; =ThreadExit
 	str r7, [r8, #4]
 	str r2, [r8, #0x3c]
 	ldr r2, [sp, #0x18]
@@ -135592,7 +135592,7 @@ sub_02079560: ; 0x02079560
 	str r1, [r8, #0x88]
 	mov r0, r8
 	str r1, [r8, #0x8c]
-	bl sub_02079C7C
+	bl SetThreadField0xB4
 	mov r0, #0
 	str r0, [r8, #0x78]
 	str r0, [r8, #0x80]
@@ -135608,11 +135608,11 @@ sub_02079560: ; 0x02079560
 	.align 2, 0
 _02079650: .word 0xFDDB597D
 _02079654: .word 0x7BF9DD5B
-_02079658: .word sub_0207965C
-	arm_func_end sub_02079560
+_02079658: .word ThreadExit
+	arm_func_end StartThread
 
-	arm_func_start sub_0207965C
-sub_0207965C: ; 0x0207965C
+	arm_func_start ThreadExit
+ThreadExit: ; 0x0207965C
 	stmdb sp!, {r3, lr}
 	bl EnableIrqFlag
 	ldr r0, _02079678 ; =_022B9648
@@ -135622,7 +135622,7 @@ sub_0207965C: ; 0x0207965C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02079678: .word _022B9648
-	arm_func_end sub_0207965C
+	arm_func_end ThreadExit
 
 	arm_func_start sub_0207967C
 sub_0207967C: ; 0x0207967C
@@ -135634,7 +135634,7 @@ sub_0207967C: ; 0x0207967C
 	cmp r2, #0
 	beq _020796C4
 	ldr r1, _020796D4 ; =sub_020796D8
-	bl sub_02079C84
+	bl InitThread
 	str r4, [r5, #4]
 	ldr r1, [r5]
 	mov r0, r5
@@ -135995,7 +135995,7 @@ _02079ABC:
 _02079AE4:
 	mov r0, r7
 	str r6, [r7, #0x70]
-	bl sub_02079298
+	bl InsertThreadIntoList
 	bl sub_02079340
 _02079AF4:
 	mov r0, r5
@@ -136135,14 +136135,14 @@ sub_02079C48: ; 0x02079C48
 _02079C78: .word _022B9648
 	arm_func_end sub_02079C48
 
-	arm_func_start sub_02079C7C
-sub_02079C7C: ; 0x02079C7C
+	arm_func_start SetThreadField0xB4
+SetThreadField0xB4: ; 0x02079C7C
 	str r1, [r0, #0xb4]
 	bx lr
-	arm_func_end sub_02079C7C
+	arm_func_end SetThreadField0xB4
 
-	arm_func_start sub_02079C84
-sub_02079C84: ; 0x02079C84
+	arm_func_start InitThread
+InitThread: ; 0x02079C84
 	add r1, r1, #4
 	str r1, [r0, #0x40]
 	str r2, [r0, #0x44]
@@ -136182,7 +136182,7 @@ _02079CC4:
 	str r1, [r0, #0x34]
 	str r1, [r0, #0x3c]
 	bx lr
-	arm_func_end sub_02079C84
+	arm_func_end InitThread
 
 	arm_func_start sub_02079D08
 sub_02079D08: ; 0x02079D08
@@ -147994,7 +147994,7 @@ _020832BC:
 	ldr r3, _02083350 ; =_022BBE00
 	add r0, r4, #0x44
 	str ip, [sp, #4]
-	bl sub_02079560
+	bl StartThread
 	add r0, r4, #0x44
 	bl sub_02079940
 	ldr r1, _02083354 ; =sub_02084380
@@ -150120,7 +150120,7 @@ sub_02084DA4: ; 0x02084DA4
 	mov r2, #0x14
 	str r2, [sp, #4]
 	mov r2, r5
-	bl sub_02079560
+	bl StartThread
 	mov r0, r5
 	bl sub_02079940
 _02084E10:
@@ -150209,7 +150209,7 @@ _02084F04:
 	bl SetIrqFlag
 	b _02084E68
 _02084F24:
-	bl sub_0207965C
+	bl ThreadExit
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0

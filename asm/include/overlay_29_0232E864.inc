@@ -14,6 +14,7 @@
 .public Conversion2IsActive
 .public CreateMainMenus
 .public DIRECTIONS_XY
+.public DisplayAnimatedNumbers
 .public DoMoveAbsorb
 .public DoMoveAcupressure
 .public DoMoveAmnesia
@@ -386,7 +387,6 @@
 .public ov29_022E6388
 .public ov29_022E6424
 .public ov29_022EA370
-.public ov29_022EA718
 .public ov29_022EDC30
 .public ov29_022F9840
 .public ov29_022FB1A8

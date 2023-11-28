@@ -1369,14 +1369,14 @@ _0231DE6C:
 	mov r1, r8
 	mov r3, r2
 	str r8, [sp]
-	bl ov31_023853BC
+	bl HandleMovesMenuWrapper0
 	b _0231DEB0
 _0231DE9C:
 	mov r0, r7
 	mov r1, fp
 	mov r3, r2
 	str fp, [sp]
-	bl ov31_023853E0
+	bl HandleMovesMenuWrapper1
 _0231DEB0:
 	cmp r0, #0
 	beq _0231DF1C

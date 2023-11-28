@@ -912,7 +912,7 @@ _0232F598:
 	mov r1, r4
 	mov r2, #1
 	sub r3, r2, #2
-	bl ov29_022EA718
+	bl DisplayAnimatedNumbers
 _0232F5BC:
 	cmp r6, #0xcc
 	beq _0232F5EC
@@ -4942,7 +4942,7 @@ _02332E3C:
 	ldr r0, _02332F10 ; =0x0000270F
 	mov r1, r7
 	sub r3, r2, #2
-	bl ov29_022EA718
+	bl DisplayAnimatedNumbers
 	ldr r2, _02332F14 ; =0x00000EC3
 	mov r0, r8
 	mov r1, r7
