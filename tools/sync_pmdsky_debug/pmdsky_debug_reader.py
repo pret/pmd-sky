@@ -19,7 +19,6 @@ LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG = {value: key for key, value in LANGUAGE_KEYS
 SYMBOL_BLACKLIST = set([
     'EXCLUSIVE_ITEM_STAT_BOOST_DATA',
     'GAME_STATE_VALUES',
-    'GUMMI_IQ_STRING_IDS',
 ])
 
 def get_pmdsky_debug_location() -> str:
