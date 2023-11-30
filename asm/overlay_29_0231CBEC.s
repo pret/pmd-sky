@@ -477,7 +477,7 @@ _0231D23C:
 	mov r0, sl
 	mov r1, sb
 	bl LogMessageByIdWithPopupCheckUserTarget
-	ldr r0, _0231D484 ; =ov29_02353324
+	ldr r0, _0231D484 ; =GUMMI_IQ_STRING_IDS
 	mov r1, fp, lsl #1
 	ldrh r2, [r0, r1]
 	mov r0, sl
@@ -635,7 +635,7 @@ _0231D474: .word GUMMI_BELLY_RESTORE_TABLE
 _0231D478: .word 0x000003E7
 _0231D47C: .word 0x00000BF3
 _0231D480: .word GUMMI_LIKE_STRING_IDS
-_0231D484: .word ov29_02353324
+_0231D484: .word GUMMI_IQ_STRING_IDS
 _0231D488: .word ov10_022C44CC
 _0231D48C: .word ov10_022C45E4
 _0231D490: .word ov29_023529B0

@@ -38,6 +38,7 @@
 .public GetWeatherColorTable
 .public GINSENG_CHANCE_3
 .public GUMMI_BELLY_RESTORE_TABLE
+.public GUMMI_IQ_STRING_IDS
 .public GUMMI_LIKE_STRING_IDS
 .public HandleMovesMenuWrapper0
 .public HandleMovesMenuWrapper1
@@ -111,7 +112,6 @@
 .public ov29_0234BA54
 .public ov29_023529AC
 .public ov29_023529B0
-.public ov29_02353324
 .public ov31_02385FE0
 .public ov31_023860A4
 .public ov31_0238619C
