@@ -1275,7 +1275,7 @@ _022E2AAC:
 	ldmia sp!, {r4, pc}
 _022E2ABC:
 	ldr r0, _022E2AD4 ; =0x00000A42
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r4
 	bl strcpy
@@ -1321,7 +1321,7 @@ _022E2B3C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022E2B50:
 	ldr r0, _022E2B64 ; =0x00000A42
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, r4, r7, lsl #2
 	str r0, [r1, #0x38]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}

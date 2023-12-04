@@ -760,7 +760,7 @@ ov29_022ED82C: ; 0x022ED82C
 	mov r1, r1, lsl #0x10
 	mov r4, r0
 	mov r0, r1, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r4
 	bl strcpy

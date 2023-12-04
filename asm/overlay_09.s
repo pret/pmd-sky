@@ -205,13 +205,13 @@ _0233CD34:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0233CD70
-	bl ov09_0233ECFC
+	bl IsPlaybackControlsMenuActive
 	cmp r0, #0
 	bne _0233D918
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl ov09_0233EC58
+	bl ClosePlaybackControlsMenu
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -229,7 +229,7 @@ _0233CD70:
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -275,7 +275,7 @@ _0233CDB4:
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mov r3, #0
 	ldr r2, [r0]
@@ -295,7 +295,7 @@ _0233CE78:
 	ldrsb r0, [r3, #1]
 	add r2, r1, #0xed
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mov r1, #0
 	ldr r0, [r0]
@@ -308,7 +308,7 @@ _0233CEB8:
 	ldrsb r0, [r3, #1]
 	add r2, r1, #0xee
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mov r1, #1
 	ldr r0, [r0]
@@ -317,7 +317,7 @@ _0233CEE4:
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl ov09_0233E384
+	bl IsJukeboxTrackMenuActive
 	cmp r0, #0
 	bne _0233CF6C
 	ldr r0, _0233D928 ; =ov09_0233F7E0
@@ -389,7 +389,7 @@ _0233CFA8:
 	b _0233D918
 _0233CFF8:
 	ldrsb r0, [r3, #4]
-	bl ov09_0233F3DC
+	bl IsInputLockBoxActive
 	cmp r0, #0
 	bne _0233D050
 	ldr r0, _0233D928 ; =ov09_0233F7E0
@@ -401,7 +401,7 @@ _0233CFF8:
 	str r2, [r1, #0x3c]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl ov09_0233F3C0
+	bl CloseInputLockBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r2, #1
 	ldr r1, [r0]
@@ -423,7 +423,7 @@ _0233D050:
 	ldrsb r0, [r2, #1]
 	add r2, r1, #0xed
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mov r1, #0
 	ldr r0, [r0]
@@ -436,7 +436,7 @@ _0233D098:
 	ldrsb r0, [r2, #1]
 	add r2, r1, #0xee
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mov r1, #1
 	ldr r0, [r0]
@@ -447,13 +447,13 @@ _0233D0C8:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0233D104
-	bl ov09_0233E384
+	bl IsJukeboxTrackMenuActive
 	cmp r0, #0
 	bne _0233D918
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl ov09_0233E34C
+	bl CloseJukeboxTrackMenu
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -471,7 +471,7 @@ _0233D104:
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -527,14 +527,14 @@ _0233D148:
 	add r2, r1, #0xf6
 	ldrsb r0, [r0, #3]
 	add r3, sp, #0xe00
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	add r1, sp, #0xe00
 	str r1, [sp]
 	ldr r2, _0233D958 ; =0x000004FA
 	ldr r3, _0233D95C ; =0x0000C402
 	add r0, sp, #0xa00
 	mov r1, #0x100
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, sp, #0xa00
 	b _0233D248
 _0233D238:
@@ -560,7 +560,7 @@ _0233D254:
 	b _0233D918
 _0233D280:
 	ldrsb r0, [r3, #2]
-	bl ov09_0233ECFC
+	bl IsPlaybackControlsMenuActive
 	cmp r0, #0
 	bne _0233D3E8
 	ldr r0, _0233D928 ; =ov09_0233F7E0
@@ -696,7 +696,7 @@ _0233D454:
 	ldr r1, _0233D940 ; =0x00000404
 	ldrsb r0, [r0, #3]
 	add r2, r1, #0xf7
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r3, #0
 	ldr r2, [r0]
@@ -737,14 +737,14 @@ _0233D494:
 	add r3, sp, #0x9b0
 	ldrsb r0, [r0, #3]
 	add r2, r1, #0xf6
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	add r1, sp, #0x9b0
 	str r1, [sp]
 	ldr r2, _0233D958 ; =0x000004FA
 	ldr r3, _0233D95C ; =0x0000C402
 	add r0, sp, #0x5b0
 	mov r1, #0x100
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, sp, #0x5b0
 	b _0233D54C
 _0233D53C:
@@ -785,7 +785,7 @@ _0233D56C:
 	b _0233D918
 _0233D5BC:
 	ldrsb r0, [r3, #4]
-	bl ov09_0233F3DC
+	bl IsInputLockBoxActive
 	cmp r0, #0
 	bne _0233D614
 	ldr r0, _0233D928 ; =ov09_0233F7E0
@@ -797,7 +797,7 @@ _0233D5BC:
 	str r2, [r1, #0x3c]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl ov09_0233F3C0
+	bl CloseInputLockBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r2, #1
 	ldr r1, [r0]
@@ -830,7 +830,7 @@ _0233D64C:
 	ldr r1, _0233D940 ; =0x00000404
 	ldrsb r0, [r0, #3]
 	add r2, r1, #0xf7
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r3, #0
 	ldr r2, [r0]
@@ -873,7 +873,7 @@ _0233D68C:
 	ldrsb r0, [r0, #3]
 	add r3, r3, #0xc8
 	add r2, r1, #0xf6
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	add r1, sp, #0x400
 	add r1, r1, #0xc8
 	str r1, [sp]
@@ -881,7 +881,7 @@ _0233D68C:
 	ldr r3, _0233D95C ; =0x0000C402
 	add r0, sp, #0xc8
 	mov r1, #0x100
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, sp, #0xc8
 	b _0233D750
 _0233D740:
@@ -928,13 +928,13 @@ _0233D7AC:
 	ldrsb r0, [r0]
 	cmp r0, r1
 	beq _0233D808
-	bl ov09_0233E384
+	bl IsJukeboxTrackMenuActive
 	cmp r0, #0
 	bne _0233D918
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl ov09_0233E34C
+	bl CloseJukeboxTrackMenu
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -952,7 +952,7 @@ _0233D808:
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -964,13 +964,13 @@ _0233D84C:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _0233D890
-	bl ov09_0233ECFC
+	bl IsPlaybackControlsMenuActive
 	cmp r0, #0
 	bne _0233D918
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl ov09_0233EC58
+	bl ClosePlaybackControlsMenu
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -988,7 +988,7 @@ _0233D890:
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -1315,7 +1315,7 @@ _0233DCF0:
 	beq _0233DD1C
 	mov r0, r7
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldrb r0, [r8, #0x15]
 	cmp r0, #0
 	moveq r0, #1
@@ -1338,7 +1338,7 @@ _0233DD1C:
 	bne _0233DD60
 	mov r0, r7
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0233DD60:
 	mov r0, #0x78
 	str r0, [r8, #0x28]
@@ -1352,7 +1352,7 @@ _0233DD70:
 	tst r0, #4
 	beq _0233DDA0
 	mov r0, r7
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldrb r0, [r8, #0x16]
 	cmp r0, #0
 	moveq r0, #1
@@ -1371,7 +1371,7 @@ _0233DDA0:
 	mov r0, r7
 	beq _0233DDF0
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	cmp r6, #0
 	movne r0, #1
 	strneb r0, [r6]
@@ -1381,7 +1381,7 @@ _0233DDA0:
 	b _0233DDF8
 _0233DDF0:
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0233DDF8:
 	mov r0, #4
 	str r0, [r8, #0x2c]
@@ -1393,7 +1393,7 @@ _0233DE0C:
 	beq _0233DE48
 	mov r0, r7
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r1, #4
 	mov r0, r8
 	str r1, [r8, #0x2c]
@@ -1415,11 +1415,11 @@ _0233DE48:
 	mov r0, r7
 	bne _0233DE78
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0233DEDC
 _0233DE78:
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, r8
 	bl ov09_0233DAD0
 	mov r0, #1
@@ -1436,11 +1436,11 @@ _0233DE94:
 	mov r0, r7
 	bne _0233DEC4
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0233DEDC
 _0233DEC4:
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, r8
 	bl ov09_0233DA70
 	mov r0, #1
@@ -1488,7 +1488,7 @@ ov09_0233DEEC: ; 0x0233DEEC
 	mov r1, r4
 	mov r0, r7
 	mov r4, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldrb r0, [r8, #0x15]
 	cmp r0, #0
 	moveq r0, r4
@@ -1520,11 +1520,11 @@ _0233DF84:
 	mov r0, r7
 	beq _0233DFF0
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0233E00C
 _0233DFF0:
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldrb r0, [r8, #0x16]
 	cmp r0, #0
 	moveq r0, r4
@@ -1578,7 +1578,7 @@ _0233E094:
 	mov r0, r5
 	mov r1, r7
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldrh r0, [r6, #2]
 	add r6, r6, #4
 	str r0, [r5, #0x100]
@@ -1614,7 +1614,7 @@ _0233E0B8:
 	orr sl, sl, #0x8000
 	strne r0, [sp, #0x14]
 	bne _0233E144
-	ldr r0, _0233E2D0 ; =ov09_0233F794
+	ldr r0, _0233E2D0 ; =JUKEBOX_TRACK_MENU_DEFAULT_WINDOW_PARAMS
 	add sb, sp, #0x14
 	ldmia r0, {r0, r1, r2, r3}
 	stmia sb, {r0, r1, r2, r3}
@@ -1634,7 +1634,7 @@ _0233E15C:
 	add r6, r6, #0x104
 _0233E170:
 	mov r0, r6
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0233E15C
 	mov r0, sl
@@ -1655,7 +1655,7 @@ _0233E19C:
 	str r0, [sp, #0xc]
 _0233E1B8:
 	mov r0, r6
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0233E19C
 	ldr r0, [sp, #0x10]
@@ -1669,12 +1669,12 @@ _0233E1B8:
 	mov r0, sl
 	bne _0233E200
 	mov r1, r8
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 	strb r0, [sp, #0x1b]
 	b _0233E208
 _0233E200:
 	mov r1, r8
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 _0233E208:
 	tst sl, #0x200000
 	ldrneb r1, [sp, #0x18]
@@ -1713,7 +1713,7 @@ _0233E264:
 	bl NewWindowScreenCheck
 	add r1, sp, #0x24
 	mov r5, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r0, [sp, #0xc]
 	add r3, sp, #0x24
 	str r0, [sp]
@@ -1722,14 +1722,14 @@ _0233E264:
 	add r0, r7, #8
 	add r2, r7, #0x104
 	str r4, [sp, #4]
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r5
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233E2C8: .word 0x0000C402
 _0233E2CC: .word UpdateJukeboxTrackMenu
-_0233E2D0: .word ov09_0233F794
+_0233E2D0: .word JUKEBOX_TRACK_MENU_DEFAULT_WINDOW_PARAMS
 	arm_func_end CreateJukeboxTrackMenu
 
 	arm_func_start ov09_0233E2D4
@@ -1770,8 +1770,8 @@ ov09_0233E308: ; 0x0233E308
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov09_0233E308
 
-	arm_func_start ov09_0233E34C
-ov09_0233E34C: ; 0x0233E34C
+	arm_func_start CloseJukeboxTrackMenu
+CloseJukeboxTrackMenu: ; 0x0233E34C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetWindowContents
@@ -1784,12 +1784,12 @@ ov09_0233E34C: ; 0x0233E34C
 	mov r0, r4
 	bl MemFree
 	mov r0, r5
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov09_0233E34C
+	arm_func_end CloseJukeboxTrackMenu
 
-	arm_func_start ov09_0233E384
-ov09_0233E384: ; 0x0233E384
+	arm_func_start IsJukeboxTrackMenuActive
+IsJukeboxTrackMenuActive: ; 0x0233E384
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x1a0]
@@ -1798,7 +1798,7 @@ ov09_0233E384: ; 0x0233E384
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov09_0233E384
+	arm_func_end IsJukeboxTrackMenuActive
 
 	arm_func_start ov09_0233E3A4
 ov09_0233E3A4: ; 0x0233E3A4
@@ -1957,7 +1957,7 @@ _0233E598:
 	bl ov09_0233DB84
 	add r0, r4, #8
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0233E750
 _0233E5D8:
 	add r0, r4, #8
@@ -1969,7 +1969,7 @@ _0233E5D8:
 	bne _0233E600
 	add r0, r4, #8
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0233E600:
 	mov r1, #1
 	mov r0, #0
@@ -1985,7 +1985,7 @@ _0233E600:
 _0233E62C:
 	add r0, r4, #8
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0233E750
 _0233E63C:
 	tst r0, #2
@@ -1997,12 +1997,12 @@ _0233E63C:
 	bl ov09_0233DB84
 	add r0, r4, #8
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0233E750
 _0233E668:
 	add r0, r4, #8
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #1
 	strb r0, [r4, #0x1a4]
 	strb r0, [r4, #0x1a5]
@@ -2161,7 +2161,7 @@ _0233E88C:
 	add r0, sp, #4
 	mov r1, #0x100
 	mov r2, #0x4f0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, r4, #8
 	mov r1, r7
 	bl sub_020328D8
@@ -2269,7 +2269,7 @@ _0233E9C4:
 	ldr r0, [sp, #8]
 	add r4, sp, #0x1c
 	cmp r0, #0
-	ldreq r0, _0233EC18 ; =ov09_0233F7A4
+	ldreq r0, _0233EC18 ; =PLAYBACK_CONTROLS_MENU_DEFAULT_WINDOW_PARAMS
 	orreq sl, sl, #0x300000
 	ldmeqia r0, {r0, r1, r2, r3}
 	stmeqia r4, {r0, r1, r2, r3}
@@ -2291,7 +2291,7 @@ _0233EA6C:
 	add r6, r6, #0x104
 _0233EA80:
 	mov r0, r6
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0233EA6C
 	b _0233EAA8
@@ -2303,7 +2303,7 @@ _0233EA94:
 	add r5, r5, #0x104
 _0233EAA8:
 	mov r0, r5
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0233EA94
 	mov r0, sl
@@ -2334,7 +2334,7 @@ _0233EB00:
 	add r5, r5, #0x104
 _0233EB14:
 	mov r0, r4
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0233EADC
 	ldrb r0, [sp, #0x23]
@@ -2344,7 +2344,7 @@ _0233EB14:
 	mov r0, sl
 	mov r1, sb
 	mov r3, r2
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 	strb r0, [sp, #0x23]
 _0233EB48:
 	tst sl, #0x200000
@@ -2389,7 +2389,7 @@ _0233EBA4:
 	bl NewWindowScreenCheck
 	add r1, sp, #0x2c
 	mov r5, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r4, [sp, #0x18]
 	add r3, sp, #0x2c
 	str r4, [sp]
@@ -2397,12 +2397,12 @@ _0233EBA4:
 	add r0, r7, #8
 	add r2, r7, #0x104
 	str r4, [sp, #4]
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r5
 	add sp, sp, #0x3c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0233EC18: .word ov09_0233F7A4
+_0233EC18: .word PLAYBACK_CONTROLS_MENU_DEFAULT_WINDOW_PARAMS
 _0233EC1C: .word UpdatePlaybackControlsMenu
 	arm_func_end CreatePlaybackControlsMenu
 
@@ -2424,8 +2424,8 @@ ov09_0233EC20: ; 0x0233EC20
 	ldmia sp!, {r3, pc}
 	arm_func_end ov09_0233EC20
 
-	arm_func_start ov09_0233EC58
-ov09_0233EC58: ; 0x0233EC58
+	arm_func_start ClosePlaybackControlsMenu
+ClosePlaybackControlsMenu: ; 0x0233EC58
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetWindowContents
@@ -2440,9 +2440,9 @@ ov09_0233EC58: ; 0x0233EC58
 	mov r0, r4
 	bl MemFree
 	mov r0, r5
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov09_0233EC58
+	arm_func_end ClosePlaybackControlsMenu
 
 	arm_func_start ov09_0233EC98
 ov09_0233EC98: ; 0x0233EC98
@@ -2473,8 +2473,8 @@ ov09_0233EC98: ; 0x0233EC98
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov09_0233EC98
 
-	arm_func_start ov09_0233ECFC
-ov09_0233ECFC: ; 0x0233ECFC
+	arm_func_start IsPlaybackControlsMenuActive
+IsPlaybackControlsMenuActive: ; 0x0233ECFC
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x1a4]
@@ -2483,7 +2483,7 @@ ov09_0233ECFC: ; 0x0233ECFC
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov09_0233ECFC
+	arm_func_end IsPlaybackControlsMenuActive
 
 	arm_func_start ov09_0233ED1C
 ov09_0233ED1C: ; 0x0233ED1C
@@ -2643,7 +2643,7 @@ _0233EF18:
 	bl ov09_0233DB84
 	add r0, r4, #8
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0233F078
 _0233EF58:
 	add r0, r4, #8
@@ -2655,7 +2655,7 @@ _0233EF58:
 	bne _0233EF80
 	add r0, r4, #8
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0233EF80:
 	mov r1, #1
 	mov r0, #0
@@ -2671,7 +2671,7 @@ _0233EF80:
 _0233EFAC:
 	add r0, r4, #8
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0233F078
 _0233EFBC:
 	tst r2, #2
@@ -2683,12 +2683,12 @@ _0233EFBC:
 	bl ov09_0233DB84
 	add r0, r4, #8
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0233F078
 _0233EFE8:
 	add r0, r4, #8
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #1
 	strb r0, [r4, #0x1a8]
 	strb r0, [r4, #0x1a9]
@@ -2829,7 +2829,7 @@ _0233F188:
 	add r6, r6, #0x104
 _0233F1DC:
 	mov r0, r5
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0233F16C
 	ldrsb r1, [sl, #0x10]
@@ -2865,12 +2865,12 @@ CreateInputLockBox: ; 0x0233F210
 	ldr r3, _0233F3B4 ; =0x0000C402
 	add r0, r4, #0x1a8
 	mov r1, #0x100
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, r4, #0x1a8
 	bl sub_020265A8
 	cmp r7, #0
 	mov ip, r0
-	ldreq r0, _0233F3B8 ; =ov09_0233F7B4
+	ldreq r0, _0233F3B8 ; =INPUT_LOCK_BOX_DEFAULT_WINDOW_PARAMS
 	str ip, [r4, #0x1a4]
 	addeq r7, sp, #0x18
 	ldmeqia r0, {r0, r1, r2, r3}
@@ -2940,7 +2940,7 @@ _0233F368:
 	bl NewWindowScreenCheck
 	add r1, sp, #8
 	mov r7, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	mov r5, #1
 	str r5, [sp]
 	add r3, sp, #8
@@ -2948,29 +2948,29 @@ _0233F368:
 	add r0, r4, #8
 	add r2, r4, #0x104
 	str r5, [sp, #4]
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r7
 	add sp, sp, #0x28
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0233F3B4: .word 0x0000C402
-_0233F3B8: .word ov09_0233F7B4
+_0233F3B8: .word INPUT_LOCK_BOX_DEFAULT_WINDOW_PARAMS
 _0233F3BC: .word UpdateInputLockBox
 	arm_func_end CreateInputLockBox
 
-	arm_func_start ov09_0233F3C0
-ov09_0233F3C0: ; 0x0233F3C0
+	arm_func_start CloseInputLockBox
+CloseInputLockBox: ; 0x0233F3C0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end ov09_0233F3C0
+	arm_func_end CloseInputLockBox
 
-	arm_func_start ov09_0233F3DC
-ov09_0233F3DC: ; 0x0233F3DC
+	arm_func_start IsInputLockBoxActive
+IsInputLockBoxActive: ; 0x0233F3DC
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
@@ -2979,7 +2979,7 @@ ov09_0233F3DC: ; 0x0233F3DC
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov09_0233F3DC
+	arm_func_end IsInputLockBoxActive
 
 	arm_func_start UpdateInputLockBox
 UpdateInputLockBox: ; 0x0233F3FC
@@ -3155,18 +3155,18 @@ ov09_0233F664:
 ov09_0233F780:
 	.byte 0x42, 0x41, 0x43, 0x4B, 0x2F, 0x73, 0x31, 0x38, 0x70, 0x30, 0x32, 0x61
 	.byte 0x2E, 0x62, 0x67, 0x70, 0x00, 0x00, 0x00, 0x00
-	.global ov09_0233F794
-ov09_0233F794:
+	.global JUKEBOX_TRACK_MENU_DEFAULT_WINDOW_PARAMS
+JUKEBOX_TRACK_MENU_DEFAULT_WINDOW_PARAMS:
 	.word UpdateJukeboxTrackMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov09_0233F7A4
-ov09_0233F7A4:
+	.global PLAYBACK_CONTROLS_MENU_DEFAULT_WINDOW_PARAMS
+PLAYBACK_CONTROLS_MENU_DEFAULT_WINDOW_PARAMS:
 	.word UpdatePlaybackControlsMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov09_0233F7B4
-ov09_0233F7B4:
+	.global INPUT_LOCK_BOX_DEFAULT_WINDOW_PARAMS
+INPUT_LOCK_BOX_DEFAULT_WINDOW_PARAMS:
 	.word UpdateInputLockBox
 	.byte 0x0A, 0x08, 0x0C, 0x02
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

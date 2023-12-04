@@ -3,7 +3,7 @@
 .public CanLearnIqSkill
 .public CanSeeTarget
 .public CanThrowItems
-.public CopyStringFromMessageId
+.public CopyStringFromId
 .public DIRECTIONS_XY
 .public DisableIqSkill
 .public DUNGEON_PTR
@@ -80,7 +80,7 @@
 .public ov29_023527F8
 .public SECONDARY_TERRAIN_TYPES
 .public strcpy
-.public StringFromMessageId
+.public StringFromId
 .public sub_02024FB8
 .public sub_02025888
 .public sub_02056084

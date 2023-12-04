@@ -84,7 +84,7 @@
 .public SOLARBEAM_DAMAGE_MULTIPLIER
 .public SONICBOOM_FIXED_DAMAGE
 .public SPATK_STAT_IDX
-.public StringFromMessageId
+.public StringFromId
 .public SubstitutePlaceholderStringTags
 .public THUNDERBOLT_PARALYZE_CHANCE
 .public THUNDERSHOCK_PARALYZE_CHANCE

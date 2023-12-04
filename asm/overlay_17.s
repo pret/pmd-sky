@@ -127,7 +127,7 @@ _0238A2E4:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A30C
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 _0238A30C:
 	ldr r0, _0238A360 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r0]
@@ -138,7 +138,7 @@ _0238A30C:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A334
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 _0238A334:
 	ldr r0, _0238A360 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r0]
@@ -149,7 +149,7 @@ _0238A334:
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl sub_0202E6B0
+	bl SetScrollBoxState7
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A360: .word OVERLAY17_UNKNOWN_POINTER__NA_238BE00
@@ -175,7 +175,7 @@ ov17_0238A364: ; 0x0238A364
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -196,14 +196,14 @@ _0238A3D0:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A42C
-	bl sub_0202F66C
+	bl PortraitBoxNeedsUpdate
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A42C
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -235,7 +235,7 @@ ov17_0238A468: ; 0x0238A468
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -263,7 +263,7 @@ _0238A4A0:
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -307,7 +307,7 @@ _0238A540:
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -339,14 +339,14 @@ _0238A5DC:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A630
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A630
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	bl sub_020407C0
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
@@ -368,14 +368,14 @@ _0238A63C:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A69C
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A69C
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #7]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	bl sub_02041A00
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
@@ -404,7 +404,7 @@ _0238A6A8:
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238A718 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mvn r1, #1
 	ldr r0, [r0]
@@ -522,7 +522,7 @@ _0238A840:
 	cmp r1, r0
 	ldr r4, _0238AFA4 ; =0x00003008
 	bne _0238A898
-	ldr r0, _0238AFA8 ; =ASSEMBLY_D_BOX_LAYOUT_4
+	ldr r0, _0238AFA8 ; =ASSEMBLY_WINDOW_PARAMS_4
 	bl CreateDialogueBox
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mov r2, #0
@@ -646,7 +646,7 @@ _0238A9F8:
 	ldrsb r0, [r3]
 	ldrh r2, [r3, #0x7c]
 	add r3, r3, #0xc
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _0238AA30:
 	ldr r0, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r0]
@@ -667,7 +667,7 @@ _0238AA30:
 	strb r0, [r3, #1]
 	ldr r0, [r2]
 	add r0, r0, #0x5c
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mov r1, #0
 	ldr r0, [r0]
@@ -682,7 +682,7 @@ _0238AA30:
 	ldr r1, [r0]
 	ldrsb r0, [r1, #1]
 	add r1, r1, #0x5c
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _0238AABC:
 	ldr r0, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r0]
@@ -693,12 +693,12 @@ _0238AABC:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238AB04
-	ldr r0, _0238AFE4 ; =ASSEMBLY_D_BOX_LAYOUT_1
+	ldr r0, _0238AFE4 ; =ASSEMBLY_WINDOW_PARAMS_1
 	mov r2, #0
 	ldr r1, _0238AFE8 ; =0x00300013
-	ldr r3, _0238AFEC ; =ASSEMBLY_MAIN_MENU_2
+	ldr r3, _0238AFEC ; =ASSEMBLY_MAIN_MENU_ITEMS_2
 	str r2, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -717,11 +717,11 @@ _0238AB04:
 	mov r0, #0
 	str r0, [sp]
 	ldr r2, [r1]
-	ldr r0, _0238AFF0 ; =ASSEMBLY_D_BOX_LAYOUT_3
+	ldr r0, _0238AFF0 ; =ASSEMBLY_WINDOW_PARAMS_3
 	ldr r1, _0238AFF4 ; =0x00300033
-	ldr r3, _0238AFF8 ; =ASSEMBLY_MENU_CONFIRM
+	ldr r3, _0238AFF8 ; =ASSEMBLY_MENU_ITEMS_CONFIRM
 	add r2, r2, #0x1b4
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r1]
 	strb r0, [r1, #3]
@@ -758,7 +758,7 @@ _0238AB94:
 	mov r0, r6
 	bl sub_020564B0
 	cmp r0, #0
-	ldrne r7, _0238AFFC ; =ASSEMBLY_SUBMENU_1
+	ldrne r7, _0238AFFC ; =ASSEMBLY_SUBMENU_ITEMS_1
 	bne _0238ACEC
 	mov r0, r6
 	bl IsMainCharacter
@@ -791,20 +791,20 @@ _0238AC28:
 	cmp r8, #0
 	beq _0238AC5C
 	cmp r7, #0
-	ldrne r7, _0238B000 ; =ASSEMBLY_SUBMENU_6
-	ldreq r7, _0238B004 ; =ASSEMBLY_SUBMENU_3
+	ldrne r7, _0238B000 ; =ASSEMBLY_SUBMENU_ITEMS_6
+	ldreq r7, _0238B004 ; =ASSEMBLY_SUBMENU_ITEMS_3
 	b _0238ACEC
 _0238AC5C:
 	cmp r5, #0
 	beq _0238AC74
 	cmp r7, #0
-	ldrne r7, _0238B000 ; =ASSEMBLY_SUBMENU_6
-	ldreq r7, _0238B004 ; =ASSEMBLY_SUBMENU_3
+	ldrne r7, _0238B000 ; =ASSEMBLY_SUBMENU_ITEMS_6
+	ldreq r7, _0238B004 ; =ASSEMBLY_SUBMENU_ITEMS_3
 	b _0238ACEC
 _0238AC74:
 	cmp r7, #0
-	ldrne r7, _0238B008 ; =ASSEMBLY_SUBMENU_7
-	ldreq r7, _0238B00C ; =ASSEMBLY_SUBMENU_5
+	ldrne r7, _0238B008 ; =ASSEMBLY_SUBMENU_ITEMS_7
+	ldreq r7, _0238B00C ; =ASSEMBLY_SUBMENU_ITEMS_5
 	b _0238ACEC
 _0238AC84:
 	cmp r8, #0
@@ -820,23 +820,23 @@ _0238ACA4:
 	cmp r6, r0
 	bne _0238ACC0
 	cmp r7, #0
-	ldrne r7, _0238B010 ; =ASSEMBLY_SUBMENU_2
-	ldreq r7, _0238B004 ; =ASSEMBLY_SUBMENU_3
+	ldrne r7, _0238B010 ; =ASSEMBLY_SUBMENU_ITEMS_2
+	ldreq r7, _0238B004 ; =ASSEMBLY_SUBMENU_ITEMS_3
 	b _0238ACEC
 _0238ACC0:
-	ldr r7, _0238AFFC ; =ASSEMBLY_SUBMENU_1
+	ldr r7, _0238AFFC ; =ASSEMBLY_SUBMENU_ITEMS_1
 	b _0238ACEC
 _0238ACC8:
 	cmp r5, #0
 	beq _0238ACE0
 	cmp r7, #0
-	ldrne r7, _0238B010 ; =ASSEMBLY_SUBMENU_2
-	ldreq r7, _0238B004 ; =ASSEMBLY_SUBMENU_3
+	ldrne r7, _0238B010 ; =ASSEMBLY_SUBMENU_ITEMS_2
+	ldreq r7, _0238B004 ; =ASSEMBLY_SUBMENU_ITEMS_3
 	b _0238ACEC
 _0238ACE0:
 	cmp r7, #0
-	ldrne r7, _0238B014 ; =ASSEMBLY_SUBMENU_4
-	ldreq r7, _0238B00C ; =ASSEMBLY_SUBMENU_5
+	ldrne r7, _0238B014 ; =ASSEMBLY_SUBMENU_ITEMS_4
+	ldreq r7, _0238B00C ; =ASSEMBLY_SUBMENU_ITEMS_5
 _0238ACEC:
 	mov r8, #0
 	mov r4, r8
@@ -872,7 +872,7 @@ _0238AD54:
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	mov r2, #0
 	ldr r4, [r1]
-	ldr r0, _0238B018 ; =ASSEMBLY_D_BOX_LAYOUT_2
+	ldr r0, _0238B018 ; =ASSEMBLY_WINDOW_PARAMS_2
 	add r3, r4, #0x24c
 	str r3, [r4, #0x17c]
 	str r2, [sp]
@@ -880,7 +880,7 @@ _0238AD54:
 	ldr r1, _0238B01C ; =0x00000213
 	mov r3, r7
 	add r2, r2, #0x11c
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r1]
 	strb r0, [r1, #4]
@@ -957,12 +957,12 @@ _0238AE6C:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238AEB4
-	ldr r0, _0238B020 ; =ASSEMBLY_D_BOX_LAYOUT_5
+	ldr r0, _0238B020 ; =ASSEMBLY_WINDOW_PARAMS_5
 	mov r2, #0
-	ldr r3, _0238B024 ; =ASSEMBLY_MAIN_MENU_1
+	ldr r3, _0238B024 ; =ASSEMBLY_MAIN_MENU_ITEMS_1
 	mov r1, #0x13
 	str r2, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238AF9C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r1]
 	strb r0, [r1, #8]
@@ -1039,7 +1039,7 @@ _0238AF94:
 _0238AF9C: .word OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 _0238AFA0: .word OVERLAY17_FUNCTION_POINTER_TABLE
 _0238AFA4: .word 0x00003008
-_0238AFA8: .word ASSEMBLY_D_BOX_LAYOUT_4
+_0238AFA8: .word ASSEMBLY_WINDOW_PARAMS_4
 _0238AFAC: .word 0x0000041E
 _0238AFB0: .word 0x0000041F
 _0238AFB4: .word 0x00000425
@@ -1054,23 +1054,23 @@ _0238AFD4: .word 0x00000423
 _0238AFD8: .word 0x00000424
 _0238AFDC: .word 0x0000042A
 _0238AFE0: .word 0x00000186
-_0238AFE4: .word ASSEMBLY_D_BOX_LAYOUT_1
+_0238AFE4: .word ASSEMBLY_WINDOW_PARAMS_1
 _0238AFE8: .word 0x00300013
-_0238AFEC: .word ASSEMBLY_MAIN_MENU_2
-_0238AFF0: .word ASSEMBLY_D_BOX_LAYOUT_3
+_0238AFEC: .word ASSEMBLY_MAIN_MENU_ITEMS_2
+_0238AFF0: .word ASSEMBLY_WINDOW_PARAMS_3
 _0238AFF4: .word 0x00300033
-_0238AFF8: .word ASSEMBLY_MENU_CONFIRM
-_0238AFFC: .word ASSEMBLY_SUBMENU_1
-_0238B000: .word ASSEMBLY_SUBMENU_6
-_0238B004: .word ASSEMBLY_SUBMENU_3
-_0238B008: .word ASSEMBLY_SUBMENU_7
-_0238B00C: .word ASSEMBLY_SUBMENU_5
-_0238B010: .word ASSEMBLY_SUBMENU_2
-_0238B014: .word ASSEMBLY_SUBMENU_4
-_0238B018: .word ASSEMBLY_D_BOX_LAYOUT_2
+_0238AFF8: .word ASSEMBLY_MENU_ITEMS_CONFIRM
+_0238AFFC: .word ASSEMBLY_SUBMENU_ITEMS_1
+_0238B000: .word ASSEMBLY_SUBMENU_ITEMS_6
+_0238B004: .word ASSEMBLY_SUBMENU_ITEMS_3
+_0238B008: .word ASSEMBLY_SUBMENU_ITEMS_7
+_0238B00C: .word ASSEMBLY_SUBMENU_ITEMS_5
+_0238B010: .word ASSEMBLY_SUBMENU_ITEMS_2
+_0238B014: .word ASSEMBLY_SUBMENU_ITEMS_4
+_0238B018: .word ASSEMBLY_WINDOW_PARAMS_2
 _0238B01C: .word 0x00000213
-_0238B020: .word ASSEMBLY_D_BOX_LAYOUT_5
-_0238B024: .word ASSEMBLY_MAIN_MENU_1
+_0238B020: .word ASSEMBLY_WINDOW_PARAMS_5
+_0238B024: .word ASSEMBLY_MAIN_MENU_ITEMS_1
 	arm_func_end ov17_0238ADFC
 
 	arm_func_start ov17_0238B028
@@ -2024,79 +2024,79 @@ _0238BB30: .word OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	arm_func_end ov17_0238BB1C
 	; 0x0238BB34
 
-	.global ASSEMBLY_D_BOX_LAYOUT_1
-ASSEMBLY_D_BOX_LAYOUT_1:
+	.global ASSEMBLY_WINDOW_PARAMS_1
+ASSEMBLY_WINDOW_PARAMS_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ASSEMBLY_D_BOX_LAYOUT_2
-ASSEMBLY_D_BOX_LAYOUT_2:
+	.global ASSEMBLY_WINDOW_PARAMS_2
+ASSEMBLY_WINDOW_PARAMS_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x13, 0x02, 0x0B, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ASSEMBLY_D_BOX_LAYOUT_3
-ASSEMBLY_D_BOX_LAYOUT_3:
+	.global ASSEMBLY_WINDOW_PARAMS_3
+ASSEMBLY_WINDOW_PARAMS_3:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x08, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ASSEMBLY_D_BOX_LAYOUT_4
-ASSEMBLY_D_BOX_LAYOUT_4:
+	.global ASSEMBLY_WINDOW_PARAMS_4
+ASSEMBLY_WINDOW_PARAMS_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFD, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ASSEMBLY_D_BOX_LAYOUT_5
-ASSEMBLY_D_BOX_LAYOUT_5:
+	.global ASSEMBLY_WINDOW_PARAMS_5
+ASSEMBLY_WINDOW_PARAMS_5:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ASSEMBLY_MENU_CONFIRM
-ASSEMBLY_MENU_CONFIRM:
+	.global ASSEMBLY_MENU_ITEMS_CONFIRM
+ASSEMBLY_MENU_ITEMS_CONFIRM:
 	.byte 0x11, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x04, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global ASSEMBLY_MAIN_MENU_1
-ASSEMBLY_MAIN_MENU_1:
+	.global ASSEMBLY_MAIN_MENU_ITEMS_1
+ASSEMBLY_MAIN_MENU_ITEMS_1:
 	.byte 0x14, 0x04, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x15, 0x04, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00
-	.global ASSEMBLY_MAIN_MENU_2
-ASSEMBLY_MAIN_MENU_2:
+	.global ASSEMBLY_MAIN_MENU_ITEMS_2
+ASSEMBLY_MAIN_MENU_ITEMS_2:
 	.byte 0x13, 0x04, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x14, 0x04, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x15, 0x04, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00
-	.global ASSEMBLY_SUBMENU_1
-ASSEMBLY_SUBMENU_1:
+	.global ASSEMBLY_SUBMENU_ITEMS_1
+ASSEMBLY_SUBMENU_ITEMS_1:
 	.byte 0x1A, 0x04, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x1B, 0x04, 0x00, 0x00
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x1C, 0x04, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x1D, 0x04, 0x00, 0x00
 	.byte 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00
-	.global ASSEMBLY_SUBMENU_2
-ASSEMBLY_SUBMENU_2:
+	.global ASSEMBLY_SUBMENU_ITEMS_2
+ASSEMBLY_SUBMENU_ITEMS_2:
 	.byte 0x18, 0x04, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x1A, 0x04, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x1B, 0x04, 0x00, 0x00
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x1C, 0x04, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x1D, 0x04, 0x00, 0x00
 	.byte 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00
-	.global ASSEMBLY_SUBMENU_3
-ASSEMBLY_SUBMENU_3:
+	.global ASSEMBLY_SUBMENU_ITEMS_3
+ASSEMBLY_SUBMENU_ITEMS_3:
 	.byte 0x17, 0x04, 0x00, 0x00
 	.byte 0x06, 0x00, 0x00, 0x00, 0x1A, 0x04, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x1B, 0x04, 0x00, 0x00
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x1C, 0x04, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x1D, 0x04, 0x00, 0x00
 	.byte 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00
-.global ASSEMBLY_SUBMENU_4
-ASSEMBLY_SUBMENU_4:
+.global ASSEMBLY_SUBMENU_ITEMS_4
+ASSEMBLY_SUBMENU_ITEMS_4:
 	.byte 0x18, 0x04, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x19, 0x04, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x1A, 0x04, 0x00, 0x00
 	.byte 0x09, 0x00, 0x00, 0x00, 0x1B, 0x04, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x1C, 0x04, 0x00, 0x00
 	.byte 0x0B, 0x00, 0x00, 0x00, 0x1D, 0x04, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x0C, 0x00, 0x00, 0x00
-	.global ASSEMBLY_SUBMENU_5
-ASSEMBLY_SUBMENU_5:
+	.global ASSEMBLY_SUBMENU_ITEMS_5
+ASSEMBLY_SUBMENU_ITEMS_5:
 	.byte 0x17, 0x04, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x19, 0x04, 0x00, 0x00
 	.byte 0x08, 0x00, 0x00, 0x00, 0x1A, 0x04, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x1B, 0x04, 0x00, 0x00
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x1C, 0x04, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0x1D, 0x04, 0x00, 0x00
 	.byte 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00
-	.global ASSEMBLY_SUBMENU_6
-ASSEMBLY_SUBMENU_6:
+	.global ASSEMBLY_SUBMENU_ITEMS_6
+ASSEMBLY_SUBMENU_ITEMS_6:
 	.byte 0x16, 0x04, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00, 0x18, 0x04, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x1A, 0x04, 0x00, 0x00
 	.byte 0x09, 0x00, 0x00, 0x00, 0x1B, 0x04, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x1C, 0x04, 0x00, 0x00
 	.byte 0x0B, 0x00, 0x00, 0x00, 0x1D, 0x04, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x0C, 0x00, 0x00, 0x00
-	.global ASSEMBLY_SUBMENU_7
-ASSEMBLY_SUBMENU_7:
+	.global ASSEMBLY_SUBMENU_ITEMS_7
+ASSEMBLY_SUBMENU_ITEMS_7:
 	.byte 0x16, 0x04, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x18, 0x04, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x19, 0x04, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x1A, 0x04, 0x00, 0x00
 	.byte 0x09, 0x00, 0x00, 0x00, 0x1B, 0x04, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x1C, 0x04, 0x00, 0x00

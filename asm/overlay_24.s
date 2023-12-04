@@ -269,7 +269,7 @@ _0238A4D8:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8e]
-	bl sub_0202C70C
+	bl CloseCollectionMenu
 	b _0238A604
 _0238A4FC:
 	ldr r0, [r1, #8]
@@ -289,7 +289,7 @@ _0238A518:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238A60C ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mvn r2, #1
 	ldr r1, [r0]
@@ -429,7 +429,7 @@ _0238A6F4:
 	strb r0, [r3, #0x28d]
 	ldr r0, [r2]
 	add r0, r0, #0x294
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r1, #0
 	ldr r0, [r0]
@@ -446,7 +446,7 @@ _0238A6F4:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r3, [r0]
 	ldrb r0, [r3, #0x21]
@@ -460,12 +460,12 @@ _0238A6F4:
 	bne _0238A7B8
 	ldr r2, _0238B390 ; =0x0000038A
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238A7C4
 _0238A7B8:
 	ldr r2, _0238B394 ; =0x0000038B
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _0238A7C4:
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r3, #4
@@ -481,16 +481,16 @@ _0238A7E4:
 	ldr r1, _0238B398 ; =0x00003008
 	ldr r2, _0238B39C ; =0x0000038F
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238A800:
-	ldr r0, _0238B3A0 ; =DAYCARE_D_BOX_LAYOUT_4
+	ldr r0, _0238B3A0 ; =DAYCARE_WINDOW_PARAMS_4
 	mov r4, #4
 	ldr r1, _0238B3A4 ; =0x00300013
-	ldr r3, _0238B3A8 ; =DAYCARE_MAIN_MENU
+	ldr r3, _0238B3A8 ; =DAYCARE_MAIN_MENU_ITEMS
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, [r1]
 	strb r0, [r1, #0x28f]
@@ -511,7 +511,7 @@ _0238A82C:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B398 ; =0x00003008
 	ldr r3, [r0]
@@ -519,7 +519,7 @@ _0238A82C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238A890:
 	bl ov24_0238C47C
@@ -540,7 +540,7 @@ _0238A890:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B38C ; =0x00003018
 	ldr r3, [r0]
@@ -548,7 +548,7 @@ _0238A890:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238A900:
 	bl ov24_0238C47C
@@ -566,7 +566,7 @@ _0238A900:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B38C ; =0x00003018
 	ldr r3, [r0]
@@ -574,7 +574,7 @@ _0238A900:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238A964:
 	bl ov24_0238C47C
@@ -598,7 +598,7 @@ _0238A964:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B38C ; =0x00003018
 	ldr r3, [r0]
@@ -606,7 +606,7 @@ _0238A964:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238A9E0:
 	bl ov24_0238C47C
@@ -630,7 +630,7 @@ _0238A9E0:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B38C ; =0x00003018
 	ldr r3, [r0]
@@ -638,7 +638,7 @@ _0238A9E0:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238AA5C:
 	bl ov24_0238C47C
@@ -662,7 +662,7 @@ _0238AA5C:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B38C ; =0x00003018
 	ldr r3, [r0]
@@ -670,7 +670,7 @@ _0238AA5C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238AAD8:
 	ldr r0, _0238B3B0 ; =0x0000220F
@@ -693,7 +693,7 @@ _0238AAD8:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B38C ; =0x00003018
 	ldr r3, [r0]
@@ -701,7 +701,7 @@ _0238AAD8:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238AB50:
 	bl ov24_0238C47C
@@ -730,7 +730,7 @@ _0238AB50:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B38C ; =0x00003018
 	ldr r3, [r0]
@@ -738,7 +738,7 @@ _0238AB50:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238ABE0:
 	mov r2, #0x12
@@ -781,7 +781,7 @@ _0238AC2C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238AC80:
 	mov r2, #0x1b
@@ -806,7 +806,7 @@ _0238AC80:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238ACE0:
 	ldr r0, _0238B3B0 ; =0x0000220F
@@ -840,7 +840,7 @@ _0238ACE0:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B38C ; =0x00003018
 	ldr r4, [r0]
@@ -851,15 +851,15 @@ _0238ACE0:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238AD90:
 	mov r0, #0
-	ldr r3, _0238B3CC ; =DAYCARE_MENU_CONFIRM
+	ldr r3, _0238B3CC ; =DAYCARE_MENU_ITEMS_CONFIRM
 	mov r2, r0
 	mov r1, #0x11
 	str r0, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, [r1]
 	strb r0, [r1, #0x28f]
@@ -952,7 +952,7 @@ _0238AECC:
 	ldrsb r0, [r0, #0x8c]
 	ldr r2, _0238B3D4 ; =0x000003A2
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238AF00:
 	bl Rand16Bit
@@ -993,7 +993,7 @@ _0238AF00:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B38C ; =0x00003018
 	ldr r3, [r0]
@@ -1001,7 +1001,7 @@ _0238AF00:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238AFC0:
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
@@ -1018,7 +1018,7 @@ _0238AFC0:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238B38C ; =0x00003018
 	ldr r3, [r0]
@@ -1026,7 +1026,7 @@ _0238AFC0:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r3, #0x25
 	ldr r2, [r0]
@@ -1181,7 +1181,7 @@ _0238B170:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238B278:
 	mov r0, #0xa
@@ -1206,12 +1206,12 @@ _0238B284:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B37C
 _0238B2D4:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r1, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mvn r3, #1
 	ldr r2, [r1]
@@ -1249,7 +1249,7 @@ _0238B338:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B384 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r1, #4
 	ldr r0, [r0]
@@ -1265,9 +1265,9 @@ _0238B390: .word 0x0000038A
 _0238B394: .word 0x0000038B
 _0238B398: .word 0x00003008
 _0238B39C: .word 0x0000038F
-_0238B3A0: .word DAYCARE_D_BOX_LAYOUT_4
+_0238B3A0: .word DAYCARE_WINDOW_PARAMS_4
 _0238B3A4: .word 0x00300013
-_0238B3A8: .word DAYCARE_MAIN_MENU
+_0238B3A8: .word DAYCARE_MAIN_MENU_ITEMS
 _0238B3AC: .word 0x00000391
 _0238B3B0: .word 0x0000220F
 _0238B3B4: .word 0x00000392
@@ -1276,7 +1276,7 @@ _0238B3BC: .word 0x00000397
 _0238B3C0: .word 0x00000396
 _0238B3C4: .word 0x00000715
 _0238B3C8: .word 0x00000395
-_0238B3CC: .word DAYCARE_MENU_CONFIRM
+_0238B3CC: .word DAYCARE_MENU_ITEMS_CONFIRM
 _0238B3D0: .word OVERLAY24_UNKNOWN_STRUCT__NA_238C508
 _0238B3D4: .word 0x000003A2
 _0238B3D8: .word _020A1868
@@ -1364,7 +1364,7 @@ _0238B4D0:
 	strb r0, [r3, #0x28d]
 	ldr r0, [r2]
 	add r0, r0, #0x294
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r1, #0
 	ldr r0, [r0]
@@ -1381,7 +1381,7 @@ _0238B4D0:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r3, [r0]
 	ldrb r0, [r3, #0x21]
@@ -1395,12 +1395,12 @@ _0238B4D0:
 	bne _0238B594
 	ldr r2, _0238C16C ; =0x0000038A
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B5A0
 _0238B594:
 	ldr r2, _0238C170 ; =0x0000038B
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _0238B5A0:
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r3, #4
@@ -1416,16 +1416,16 @@ _0238B5C0:
 	ldr r1, _0238C174 ; =0x00003008
 	ldr r2, _0238C178 ; =0x0000038F
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238B5DC:
-	ldr r0, _0238C17C ; =DAYCARE_D_BOX_LAYOUT_4
+	ldr r0, _0238C17C ; =DAYCARE_WINDOW_PARAMS_4
 	mov r4, #4
 	ldr r1, _0238C180 ; =0x00300013
-	ldr r3, _0238C184 ; =DAYCARE_MAIN_MENU
+	ldr r3, _0238C184 ; =DAYCARE_MAIN_MENU_ITEMS
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, [r1]
 	strb r0, [r1, #0x28f]
@@ -1446,7 +1446,7 @@ _0238B608:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C174 ; =0x00003008
 	ldr r3, [r0]
@@ -1454,7 +1454,7 @@ _0238B608:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238B66C:
 	bl ov24_0238C47C
@@ -1475,7 +1475,7 @@ _0238B66C:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C168 ; =0x00003018
 	ldr r3, [r0]
@@ -1483,7 +1483,7 @@ _0238B66C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238B6DC:
 	bl ov24_0238C47C
@@ -1501,7 +1501,7 @@ _0238B6DC:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C168 ; =0x00003018
 	ldr r3, [r0]
@@ -1509,7 +1509,7 @@ _0238B6DC:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238B740:
 	bl ov24_0238C47C
@@ -1533,7 +1533,7 @@ _0238B740:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C168 ; =0x00003018
 	ldr r3, [r0]
@@ -1541,7 +1541,7 @@ _0238B740:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238B7BC:
 	bl ov24_0238C47C
@@ -1565,7 +1565,7 @@ _0238B7BC:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C168 ; =0x00003018
 	ldr r3, [r0]
@@ -1573,7 +1573,7 @@ _0238B7BC:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238B838:
 	bl ov24_0238C47C
@@ -1597,7 +1597,7 @@ _0238B838:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C168 ; =0x00003018
 	ldr r3, [r0]
@@ -1605,7 +1605,7 @@ _0238B838:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238B8B4:
 	ldr r0, _0238C18C ; =0x0000220F
@@ -1628,7 +1628,7 @@ _0238B8B4:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C168 ; =0x00003018
 	ldr r3, [r0]
@@ -1636,7 +1636,7 @@ _0238B8B4:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238B92C:
 	bl ov24_0238C47C
@@ -1665,7 +1665,7 @@ _0238B92C:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C168 ; =0x00003018
 	ldr r3, [r0]
@@ -1673,7 +1673,7 @@ _0238B92C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238B9BC:
 	mov r2, #0x12
@@ -1716,7 +1716,7 @@ _0238BA08:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238BA5C:
 	mov r2, #0x1b
@@ -1741,7 +1741,7 @@ _0238BA5C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238BABC:
 	ldr r0, _0238C18C ; =0x0000220F
@@ -1775,7 +1775,7 @@ _0238BABC:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C168 ; =0x00003018
 	ldr r4, [r0]
@@ -1786,15 +1786,15 @@ _0238BABC:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238BB6C:
 	mov r0, #0
-	ldr r3, _0238C1A8 ; =DAYCARE_MENU_CONFIRM
+	ldr r3, _0238C1A8 ; =DAYCARE_MENU_ITEMS_CONFIRM
 	mov r2, r0
 	mov r1, #0x11
 	str r0, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, [r1]
 	strb r0, [r1, #0x28f]
@@ -1883,7 +1883,7 @@ _0238BCA8:
 	ldrsb r0, [r0, #0x8c]
 	ldr r2, _0238C1B0 ; =0x000003A2
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238BCDC:
 	bl Rand16Bit
@@ -1924,7 +1924,7 @@ _0238BCDC:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C168 ; =0x00003018
 	ldr r3, [r0]
@@ -1932,7 +1932,7 @@ _0238BCDC:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238BD9C:
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
@@ -1949,7 +1949,7 @@ _0238BD9C:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8d]
 	add r1, r1, #0x294
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, _0238C168 ; =0x00003018
 	ldr r3, [r0]
@@ -1957,7 +1957,7 @@ _0238BD9C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r3, #0x25
 	ldr r2, [r0]
@@ -2112,7 +2112,7 @@ _0238BF4C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238C054:
 	mov r0, #0xa
@@ -2137,12 +2137,12 @@ _0238C060:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C158
 _0238C0B0:
 	add r0, r1, #0x200
 	ldrsb r0, [r0, #0x8c]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r1, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mvn r3, #1
 	ldr r2, [r1]
@@ -2180,7 +2180,7 @@ _0238C114:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x8c]
 	add r3, r3, #0x1f8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238C164 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r1, #4
 	ldr r0, [r0]
@@ -2196,9 +2196,9 @@ _0238C16C: .word 0x0000038A
 _0238C170: .word 0x0000038B
 _0238C174: .word 0x00003008
 _0238C178: .word 0x0000038F
-_0238C17C: .word DAYCARE_D_BOX_LAYOUT_4
+_0238C17C: .word DAYCARE_WINDOW_PARAMS_4
 _0238C180: .word 0x00300013
-_0238C184: .word DAYCARE_MAIN_MENU
+_0238C184: .word DAYCARE_MAIN_MENU_ITEMS
 _0238C188: .word 0x00000391
 _0238C18C: .word 0x0000220F
 _0238C190: .word 0x00000392
@@ -2207,7 +2207,7 @@ _0238C198: .word 0x00000397
 _0238C19C: .word 0x00000396
 _0238C1A0: .word 0x00000715
 _0238C1A4: .word 0x00000395
-_0238C1A8: .word DAYCARE_MENU_CONFIRM
+_0238C1A8: .word DAYCARE_MENU_ITEMS_CONFIRM
 _0238C1AC: .word OVERLAY24_UNKNOWN_STRUCT__NA_238C508
 _0238C1B0: .word 0x000003A2
 _0238C1B4: .word _020A1868
@@ -2388,7 +2388,7 @@ _0238C408:
 	ldrsb r0, [r0, #0x8c]
 	cmp r0, r1
 	beq _0238C43C
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238C478 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2398,7 +2398,7 @@ _0238C43C:
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8d]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238C478 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2430,7 +2430,7 @@ ov24_0238C47C: ; 0x0238C47C
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x8f]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238C4C8 ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2471,12 +2471,12 @@ ov24_0238C50A:
 OVERLAY24_UNKNOWN_STRUCT__NA_238C514:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global DAYCARE_MENU_CONFIRM
-DAYCARE_MENU_CONFIRM:
+	.global DAYCARE_MENU_ITEMS_CONFIRM
+DAYCARE_MENU_ITEMS_CONFIRM:
 	.byte 0x86, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x87, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global DAYCARE_MAIN_MENU
-DAYCARE_MAIN_MENU:
+	.global DAYCARE_MAIN_MENU_ITEMS
+DAYCARE_MAIN_MENU_ITEMS:
 	.byte 0x8C, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x8D, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
 	.byte 0x8E, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x8A, 0x03, 0x8B, 0x03, 0x8C, 0x03, 0x8D, 0x03, 0x8E, 0x03, 0x8F, 0x03, 0x90, 0x03, 0x91, 0x03
@@ -2486,8 +2486,8 @@ DAYCARE_MAIN_MENU:
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x0A, 0x08, 0x03
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x0F, 0x08, 0x03
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DAYCARE_D_BOX_LAYOUT_4
-DAYCARE_D_BOX_LAYOUT_4:
+	.global DAYCARE_WINDOW_PARAMS_4
+DAYCARE_WINDOW_PARAMS_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x04
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

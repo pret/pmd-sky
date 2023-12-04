@@ -764,7 +764,7 @@ _02326014:
 	b _02326070
 _02326050:
 	ldr r0, _02326084 ; =0x00000CD6
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r8
 	mov r1, r8
@@ -928,7 +928,7 @@ DoMoveRage: ; 0x02326220
 	ldr r0, _02326260 ; =0x00000CCF
 	mov r5, r1
 	mov r4, r2
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r6
 	mov r1, r5
@@ -1941,7 +1941,7 @@ DoMoveRazorWind: ; 0x02326EB8
 	b _02326F38
 _02326F14:
 	ldr r0, _02326F44 ; =0x00000CCD
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r7
 	mov r1, r7
@@ -1965,7 +1965,7 @@ DoMoveBide: ; 0x02326F48
 	ldr r0, _02326F88 ; =0x00000CCE
 	mov r5, r1
 	mov r4, r2
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r6
 	mov r1, r5
@@ -2327,7 +2327,7 @@ DoMoveFocusPunch: ; 0x023273CC
 	b _0232744C
 _02327428:
 	mov r0, #0xcd0
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r7
 	mov r1, r7
@@ -2836,7 +2836,7 @@ _02327AAC:
 	b _02327ADC
 _02327AB8:
 	ldr r0, _02327AF0 ; =0x00000CD1
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r8
 	mov r1, r8

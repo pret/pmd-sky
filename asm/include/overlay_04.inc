@@ -1,10 +1,11 @@
 #pragma once
 .public AddItemToStorage
 .public CanSendItem
+.public CloseScrollBox
 .public ConvertStorageItemAtIdxToBulkItem
 .public ConvertStorageItemAtIdxToItem
 .public CountNbOfItemsInStorage
-.public CreateScrollBox1
+.public CreateScrollBoxSingle
 .public GetItemCategory
 .public GetLanguageType
 .public GetMainTeamNameWithCheck
@@ -16,6 +17,7 @@
 .public InitStandardItem
 .public IsItemInTimeDarkness
 .public IsItemValidVeneer
+.public IsScrollBoxActive
 .public LoadFileFromRom
 .public MemAlloc
 .public MemFree
@@ -56,8 +58,6 @@
 .public sub_02010154
 .public sub_02029F88
 .public sub_02029FBC
-.public sub_0202E6C8
-.public sub_0202E6E4
 .public sub_0203D438
 .public sub_0203D538
 .public sub_0203EFD4

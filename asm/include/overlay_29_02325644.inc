@@ -95,7 +95,7 @@
 .public SMOKESCREEN_TURN_RANGE
 .public SNORE_CRINGE_CHANCE
 .public SPATK_STAT_IDX
-.public StringFromMessageId
+.public StringFromId
 .public sub_0201CF90
 .public SubstitutePlaceholderStringTags
 .public SURE_SHOT_TURN_RANGE

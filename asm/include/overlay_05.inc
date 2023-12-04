@@ -1,6 +1,6 @@
 #pragma once
+.public CloseAdvancedMenu
 .public CreateAdvancedMenu
-.public FreeAdvancedMenu
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
 .public GetAdventureLogDungeonFloor
@@ -13,6 +13,7 @@
 .public GetStringFromFileVeneer
 .public GetTeamMember
 .public InitPreprocessorArgs
+.public IsAdvancedMenuActive2
 .public IsMovesetValid
 .public MemAlloc
 .public MemFree
@@ -78,7 +79,6 @@
 .public sub_02029F88
 .public sub_02029FBC
 .public sub_0202BBF0
-.public sub_0202BCBC
 .public sub_02046A20
 .public sub_02046A9C
 .public sub_02046B04

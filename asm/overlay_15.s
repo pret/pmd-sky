@@ -43,7 +43,7 @@ ov15_0238A140: ; 0x0238A140
 	str ip, [r0]
 	ldr r0, [r2]
 	add r0, r0, #0xdc
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238A228 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r1, #0
 	ldr r0, [r0]
@@ -58,7 +58,7 @@ ov15_0238A140: ; 0x0238A140
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
 	add r1, r1, #0xdc
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	mov r0, #0
 	bl ov15_0238A4E8
 	mov r0, #1
@@ -171,7 +171,7 @@ _0238A380:
 	strb r2, [r1, #0xd8]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x68]
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 	b _0238A4D4
 _0238A3A0:
 	ldr r0, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -221,7 +221,7 @@ _0238A424:
 	strb r2, [r1, #0xd8]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x68]
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 	b _0238A4D4
 _0238A444:
 	ldr r0, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -314,7 +314,7 @@ _0238A548:
 	ldrsb r0, [r3, #0x80]
 	add r2, r2, #0x374
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A56C:
 	ldrsb r1, [r3, #0x68]
@@ -330,11 +330,11 @@ _0238A56C:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x68]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r2, #1
 	ldr r1, [r0]
@@ -355,7 +355,7 @@ _0238A5CC:
 	ldr r2, _0238AD1C ; =0x00000376
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A608:
 	bl GetMoneyStored
@@ -367,12 +367,12 @@ _0238A608:
 	ldr r3, [r3]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A634:
-	ldr r0, _0238AD24 ; =BANK_D_BOX_LAYOUT_2
+	ldr r0, _0238AD24 ; =BANK_WINDOW_PARAMS_2
 	ldr r1, _0238AD28 ; =ov15_0238ADC4
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r2, [r1]
 	strb r0, [r2, #0x82]
@@ -382,12 +382,12 @@ _0238A634:
 	ldr r0, _0238AD2C ; =ov15_0238B0E0
 	bl DebugPrint0
 	mov r1, #4
-	ldr r0, _0238AD30 ; =BANK_D_BOX_LAYOUT_4
+	ldr r0, _0238AD30 ; =BANK_WINDOW_PARAMS_4
 	str r1, [sp]
 	ldr r1, _0238AD34 ; =0x00300013
 	mov r2, #0
-	ldr r3, _0238AD38 ; =BANK_MAIN_MENU
-	bl CreateSimpleMenuWrapper
+	ldr r3, _0238AD38 ; =BANK_MAIN_MENU_ITEMS
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
@@ -398,7 +398,7 @@ _0238A68C:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r2, #1
 	ldr r1, [r0]
@@ -409,7 +409,7 @@ _0238A68C:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	mvn r3, #1
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov ip, #1
@@ -422,7 +422,7 @@ _0238A68C:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A708:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
@@ -432,7 +432,7 @@ _0238A708:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r2, #1
 	ldr r1, [r0]
@@ -443,7 +443,7 @@ _0238A708:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r1, #1
 	ldr r0, [r0]
@@ -457,7 +457,7 @@ _0238A708:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A790:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -465,7 +465,7 @@ _0238A790:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A7AC:
 	ldr r0, _0238AD4C ; =ov15_0238B0F4
@@ -476,7 +476,7 @@ _0238A7AC:
 	str r2, [r1, #8]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x68]
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
@@ -495,7 +495,7 @@ _0238A7AC:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A820:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
@@ -503,7 +503,7 @@ _0238A820:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
@@ -511,7 +511,7 @@ _0238A820:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r2, #1
 	ldr r1, [r0]
@@ -527,7 +527,7 @@ _0238A820:
 	mov r2, #0x37c
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r1, #1
 	ldr r0, [r0]
@@ -547,7 +547,7 @@ _0238A8AC:
 	add r2, ip, #0x37c
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A8E8:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -559,7 +559,7 @@ _0238A8E8:
 	add r1, ip, #0x3000
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A914:
 	ldrsb r0, [r3, #0x80]
@@ -599,19 +599,19 @@ _0238A95C:
 	ldr r1, [r1]
 	str r2, [r1, #0x78]
 	bl DebugPrint0
-	ldr r0, _0238AD24 ; =BANK_D_BOX_LAYOUT_2
+	ldr r0, _0238AD24 ; =BANK_WINDOW_PARAMS_2
 	ldr r1, _0238AD28 ; =ov15_0238ADC4
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r2, #0
 	ldr r3, [r1]
 	ldr r1, _0238AD60 ; =0x00001017
 	strb r0, [r3, #0x82]
 	str r2, [sp]
-	ldr r0, _0238AD64 ; =BANK_D_BOX_LAYOUT_3
+	ldr r0, _0238AD64 ; =BANK_WINDOW_PARAMS_3
 	ldr r3, _0238AD68 ; =ov15_0238AE6C
 	str r2, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 #ifdef EUROPE
 	ldr r2, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r1, #0
@@ -619,7 +619,7 @@ _0238A95C:
 	strb r0, [r3, #0x68]
 	ldr r0, [r2]
 	ldrsb r0, [r0, #0x68]
-	bl sub_020307A4
+	bl SetAdvancedTextBoxField0x1C4
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 #else
@@ -646,7 +646,7 @@ _0238AA08:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x68]
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x68]
@@ -667,7 +667,7 @@ _0238AA08:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238AA88:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
@@ -675,7 +675,7 @@ _0238AA88:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
@@ -683,7 +683,7 @@ _0238AA88:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r2, #1
 	ldr r1, [r0]
@@ -706,7 +706,7 @@ _0238AA88:
 	mov r2, #0x380
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238AB20:
 	bl GetMoneyStored
@@ -721,7 +721,7 @@ _0238AB20:
 	add r2, ip, #0x380
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238AB58:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -737,7 +737,7 @@ _0238AB58:
 	ldr r3, [r3]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238AB94:
 	bl GetMoneyCarried
@@ -775,19 +775,19 @@ _0238ABD4:
 	ldr r1, [r1]
 	str r2, [r1, #0x78]
 	bl DebugPrint0
-	ldr r0, _0238AD24 ; =BANK_D_BOX_LAYOUT_2
+	ldr r0, _0238AD24 ; =BANK_WINDOW_PARAMS_2
 	ldr r1, _0238AD28 ; =ov15_0238ADC4
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r2, #0
 	ldr r3, [r1]
 	ldr r1, _0238AD60 ; =0x00001017
 	strb r0, [r3, #0x82]
 	str r2, [sp]
-	ldr r0, _0238AD64 ; =BANK_D_BOX_LAYOUT_3
+	ldr r0, _0238AD64 ; =BANK_WINDOW_PARAMS_3
 	ldr r3, _0238AD68 ; =ov15_0238AE6C
 	str r2, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 #ifdef EUROPE
 	ldr r2, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r1, #0
@@ -795,7 +795,7 @@ _0238ABD4:
 	strb r0, [r3, #0x68]
 	ldr r0, [r2]
 	ldrsb r0, [r0, #0x68]
-	bl sub_020307A4
+	bl SetAdvancedTextBoxField0x1C4
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 #else
@@ -822,7 +822,7 @@ _0238AC80:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x68]
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x68]
@@ -843,7 +843,7 @@ _0238AC80:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238AD00:
 	ldrsb r0, [r3, #0x82]
@@ -857,12 +857,12 @@ _0238AD14: .word 0x00003008
 _0238AD18: .word ov15_0238B0D4
 _0238AD1C: .word 0x00000376
 _0238AD20: .word 0x00000377
-_0238AD24: .word BANK_D_BOX_LAYOUT_2
+_0238AD24: .word BANK_WINDOW_PARAMS_2
 _0238AD28: .word ov15_0238ADC4
 _0238AD2C: .word ov15_0238B0E0
-_0238AD30: .word BANK_D_BOX_LAYOUT_4
+_0238AD30: .word BANK_WINDOW_PARAMS_4
 _0238AD34: .word 0x00300013
-_0238AD38: .word BANK_MAIN_MENU
+_0238AD38: .word BANK_MAIN_MENU_ITEMS
 _0238AD3C: .word ov15_0238B0E8
 _0238AD40: .word 0x00003018
 _0238AD44: .word 0x00000379
@@ -873,7 +873,7 @@ _0238AD54: .word 0x0098967F
 _0238AD58: .word 0x0000037E
 _0238AD5C: .word ov15_0238B10C
 _0238AD60: .word 0x00001017
-_0238AD64: .word BANK_D_BOX_LAYOUT_3
+_0238AD64: .word BANK_WINDOW_PARAMS_3
 _0238AD68: .word ov15_0238AE6C
 _0238AD6C: .word 0x0001869F
 _0238AD70: .word 0x00000382
@@ -924,7 +924,7 @@ ov15_0238ADC4: ; 0x0238ADC4
 
 	arm_func_start ov15_0238ADFC
 ov15_0238ADFC: ; 0x0238ADFC
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #4
 	mov r0, r4
 	mov r1, #8
@@ -939,7 +939,7 @@ ov15_0238ADFC: ; 0x0238ADFC
 	add r0, sp, #4
 	mov r1, #0x100
 	mov r2, #0x374
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	mov r1, #0x74
 	mov r2, #6
@@ -1083,11 +1083,11 @@ _0238AFF4:
 	ldr r0, _0238B050 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x81]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238B050 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238B050 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r3, #3
 	ldr r2, [r0]
@@ -1108,22 +1108,22 @@ _0238B050: .word OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	arm_func_end ov15_0238AF54
 	; 0x0238B054
 
-	.global BANK_MAIN_MENU
-BANK_MAIN_MENU:
+	.global BANK_MAIN_MENU_ITEMS
+BANK_MAIN_MENU_ITEMS:
 	.byte 0x6F, 0x03, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x70, 0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0x71, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x72, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x12, 0x1E, 0x05
 	.byte 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global BANK_D_BOX_LAYOUT_2
-BANK_D_BOX_LAYOUT_2:
+	.global BANK_WINDOW_PARAMS_2
+BANK_WINDOW_PARAMS_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x03, 0x1C, 0x03
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global BANK_D_BOX_LAYOUT_3
-BANK_D_BOX_LAYOUT_3:
+	.global BANK_WINDOW_PARAMS_3
+BANK_WINDOW_PARAMS_3:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x13, 0x08, 0x0B, 0x07
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global BANK_D_BOX_LAYOUT_4
-BANK_D_BOX_LAYOUT_4:
+	.global BANK_WINDOW_PARAMS_4
+BANK_WINDOW_PARAMS_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x0A, 0x05
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

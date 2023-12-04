@@ -83,7 +83,7 @@ _0238A240:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A274:
 	bl ov16_0238CBD0
@@ -110,7 +110,7 @@ _0238A298:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A2D8:
 	bl ov16_0238CB98
@@ -127,16 +127,16 @@ _0238A2D8:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A318:
-	ldr r0, _0238B0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238B0D8 ; =EVO_WINDOW_PARAMS_6
 	mov r4, #3
 	ldr r1, _0238B0DC ; =0x00300011
-	ldr r3, _0238B0E0 ; =EVO_MAIN_MENU
+	ldr r3, _0238B0E0 ; =EVO_MAIN_MENU_ITEMS
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -151,7 +151,7 @@ _0238A344:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A370:
 	mov r1, #5
@@ -176,7 +176,7 @@ _0238A394:
 	ldrsb r0, [r1, #0xc1]
 	add r3, r1, #0xe8
 	mov r1, #0x18
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #0
 	ldr r0, [r0]
@@ -192,7 +192,7 @@ _0238A3DC:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A408:
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
@@ -200,7 +200,7 @@ _0238A408:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A424:
 	mov r2, #5
@@ -229,7 +229,7 @@ ov16_0238A468: ; 0x0238A468
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A480:
 	bl ov16_0238CB98
@@ -265,7 +265,7 @@ _0238A480:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A50C:
 	ldr r2, [r0, #0x40]
@@ -282,14 +282,14 @@ _0238A50C:
 	mov r4, #2
 	str r1, [r0, #0x74]
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
-	ldr r3, _0238B0EC ; =EVO_MENU_CONFIRM
+	ldr r3, _0238B0EC ; =EVO_MENU_ITEMS_CONFIRM
 	ldr r1, [r0]
-	ldr r0, _0238B0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238B0D8 ; =EVO_WINDOW_PARAMS_6
 	str r4, [r1, #0x78]
 	ldr r1, _0238B0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -318,7 +318,7 @@ _0238A574:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A5D8:
 	mov r2, #0x1c
@@ -326,24 +326,24 @@ _0238A5D8:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238B0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238B0D8 ; =EVO_WINDOW_PARAMS_6
 	ldr r1, _0238B0F0 ; =0x00300013
-	ldr r3, _0238B0EC ; =EVO_MENU_CONFIRM
+	ldr r3, _0238B0EC ; =EVO_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238B0C4
 _0238A614:
-	ldr r0, _0238B0F8 ; =EVO_D_BOX_LAYOUT_5
+	ldr r0, _0238B0F8 ; =EVO_WINDOW_PARAMS_5
 	mov r4, #3
-	ldr r3, _0238B0FC ; =EVO_SUBMENU
+	ldr r3, _0238B0FC ; =EVO_SUBMENU_ITEMS
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -393,7 +393,7 @@ _0238A668:
 	add r2, r4, #0x420
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A6F4:
 	mov r2, #0x1c
@@ -401,12 +401,12 @@ _0238A6F4:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238B0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238B0D8 ; =EVO_WINDOW_PARAMS_6
 	ldr r1, _0238B0F0 ; =0x00300013
-	ldr r3, _0238B0EC ; =EVO_MENU_CONFIRM
+	ldr r3, _0238B0EC ; =EVO_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -562,7 +562,7 @@ _0238A928:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A95C:
 	ldr r2, [r0, #0x40]
@@ -579,14 +579,14 @@ _0238A95C:
 	mov r4, #2
 	str r1, [r0, #0x74]
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
-	ldr r3, _0238B0EC ; =EVO_MENU_CONFIRM
+	ldr r3, _0238B0EC ; =EVO_MENU_ITEMS_CONFIRM
 	ldr r1, [r0]
-	ldr r0, _0238B0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238B0D8 ; =EVO_WINDOW_PARAMS_6
 	str r4, [r1, #0x78]
 	ldr r1, _0238B0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -602,7 +602,7 @@ _0238A9C4:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238A9F4:
 	ldrsb r0, [r0, #0xc1]
@@ -644,7 +644,7 @@ _0238AA58:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238AA94:
 	mov r1, #0x1f
@@ -662,7 +662,7 @@ _0238AA94:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238AAD8:
 	bl ov16_0238CB98
@@ -894,11 +894,11 @@ _0238AE1C:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238AE3C:
 	ldrsb r0, [r0, #0xc1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r1, #1
 	ldr r0, [r0]
@@ -922,7 +922,7 @@ _0238AE74:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238AEA0:
 	mov r2, #0xb
@@ -937,7 +937,7 @@ _0238AEA0:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C4
 _0238AED8:
 	bl ov11_02310BDC
@@ -952,7 +952,7 @@ _0238AED8:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r0, #1
 	ldr r1, [r1]
@@ -971,7 +971,7 @@ _0238AED8:
 	add r0, r2, #0xc8
 	add r1, r2, r1, lsl #1
 	ldrsh r1, [r1, #0xc]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #4
 	ldr r0, [r0]
@@ -986,11 +986,11 @@ _0238AED8:
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0xc2]
 	add r1, r1, #0xc8
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _0238B0C4
 _0238AF98:
 	ldrsb r0, [r0, #0xc1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r3, #1
 	ldr r2, [r1]
@@ -1020,14 +1020,14 @@ _0238AFF8:
 	str r2, [r0, #0x74]
 	ldr r2, [r1]
 	mov ip, #4
-	ldr r0, _0238B0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238B0D8 ; =EVO_WINDOW_PARAMS_6
 	ldr r1, _0238B0DC ; =0x00300011
-	ldr r3, _0238B0EC ; =EVO_MENU_CONFIRM
+	ldr r3, _0238B0EC ; =EVO_MENU_ITEMS_CONFIRM
 	str ip, [r2, #0x78]
 	mov ip, #2
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1061,7 +1061,7 @@ _0238B088:
 	str r0, [sp, #0x9c]
 	str ip, [sp]
 	mov ip, #4
-	ldr r0, _0238B13C ; =EVO_D_BOX_LAYOUT_4
+	ldr r0, _0238B13C ; =EVO_WINDOW_PARAMS_4
 	ldr r1, _0238B140 ; =0x00009813
 	ldr r3, _0238B144 ; =ov16_0238CB30
 	add r2, sp, #0x90
@@ -1077,16 +1077,16 @@ _0238B0C4:
 _0238B0CC: .word OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 _0238B0D0: .word 0x00000431
 _0238B0D4: .word 0x00000432
-_0238B0D8: .word EVO_D_BOX_LAYOUT_6
+_0238B0D8: .word EVO_WINDOW_PARAMS_6
 _0238B0DC: .word 0x00300011
-_0238B0E0: .word EVO_MAIN_MENU
+_0238B0E0: .word EVO_MAIN_MENU_ITEMS
 _0238B0E4: .word 0x00000442
 _0238B0E8: .word 0x00000449
-_0238B0EC: .word EVO_MENU_CONFIRM
+_0238B0EC: .word EVO_MENU_ITEMS_CONFIRM
 _0238B0F0: .word 0x00300013
 _0238B0F4: .word 0x00000434
-_0238B0F8: .word EVO_D_BOX_LAYOUT_5
-_0238B0FC: .word EVO_SUBMENU
+_0238B0F8: .word EVO_WINDOW_PARAMS_5
+_0238B0FC: .word EVO_SUBMENU_ITEMS
 _0238B100: .word 0x00000125
 _0238B104: .word 0x0000043E
 _0238B108: .word 0x0000043A
@@ -1102,7 +1102,7 @@ _0238B12C: .word 0x0000042D
 _0238B130: .word 0x00000433
 _0238B134: .word 0x00000447
 _0238B138: .word 0x00000446
-_0238B13C: .word EVO_D_BOX_LAYOUT_4
+_0238B13C: .word EVO_WINDOW_PARAMS_4
 _0238B140: .word 0x00009813
 _0238B144: .word ov16_0238CB30
 	arm_func_end ov16_0238ADFC
@@ -1185,7 +1185,7 @@ _0238B240:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B274:
 	bl ov16_0238CBD0
@@ -1212,7 +1212,7 @@ _0238B298:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B2D8:
 	bl ov16_0238CB98
@@ -1229,16 +1229,16 @@ _0238B2D8:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B318:
-	ldr r0, _0238C0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238C0D8 ; =EVO_WINDOW_PARAMS_6
 	mov r4, #3
 	ldr r1, _0238C0DC ; =0x00300011
-	ldr r3, _0238C0E0 ; =EVO_MAIN_MENU
+	ldr r3, _0238C0E0 ; =EVO_MAIN_MENU_ITEMS
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1253,7 +1253,7 @@ _0238B344:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B370:
 	mov r1, #5
@@ -1278,7 +1278,7 @@ _0238B394:
 	ldrsb r0, [r1, #0xc1]
 	add r3, r1, #0xe8
 	mov r1, #0x18
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #0
 	ldr r0, [r0]
@@ -1294,7 +1294,7 @@ _0238B3DC:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B408:
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
@@ -1302,7 +1302,7 @@ _0238B408:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B424:
 	mov r2, #5
@@ -1327,7 +1327,7 @@ _0238B440:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B480:
 	bl ov16_0238CB98
@@ -1363,7 +1363,7 @@ _0238B480:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B50C:
 	ldr r2, [r0, #0x40]
@@ -1380,14 +1380,14 @@ _0238B50C:
 	mov r4, #2
 	str r1, [r0, #0x74]
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
-	ldr r3, _0238C0EC ; =EVO_MENU_CONFIRM
+	ldr r3, _0238C0EC ; =EVO_MENU_ITEMS_CONFIRM
 	ldr r1, [r0]
-	ldr r0, _0238C0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238C0D8 ; =EVO_WINDOW_PARAMS_6
 	str r4, [r1, #0x78]
 	ldr r1, _0238C0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1416,7 +1416,7 @@ _0238B574:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B5D8:
 	mov r2, #0x1c
@@ -1424,24 +1424,24 @@ _0238B5D8:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238C0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238C0D8 ; =EVO_WINDOW_PARAMS_6
 	ldr r1, _0238C0F0 ; =0x00300013
-	ldr r3, _0238C0EC ; =EVO_MENU_CONFIRM
+	ldr r3, _0238C0EC ; =EVO_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
 	b _0238C0C4
 _0238B614:
-	ldr r0, _0238C0F8 ; =EVO_D_BOX_LAYOUT_5
+	ldr r0, _0238C0F8 ; =EVO_WINDOW_PARAMS_5
 	mov r4, #3
-	ldr r3, _0238C0FC ; =EVO_SUBMENU
+	ldr r3, _0238C0FC ; =EVO_SUBMENU_ITEMS
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1491,7 +1491,7 @@ _0238B668:
 	add r2, r4, #0x420
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B6F4:
 	mov r2, #0x1c
@@ -1499,12 +1499,12 @@ _0238B6F4:
 	ldr r0, [r1]
 	mov r4, #2
 	str r4, [r0, #0x78]
-	ldr r0, _0238C0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238C0D8 ; =EVO_WINDOW_PARAMS_6
 	ldr r1, _0238C0F0 ; =0x00300013
-	ldr r3, _0238C0EC ; =EVO_MENU_CONFIRM
+	ldr r3, _0238C0EC ; =EVO_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1660,7 +1660,7 @@ _0238B928:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B95C:
 	ldr r2, [r0, #0x40]
@@ -1677,14 +1677,14 @@ _0238B95C:
 	mov r4, #2
 	str r1, [r0, #0x74]
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
-	ldr r3, _0238C0EC ; =EVO_MENU_CONFIRM
+	ldr r3, _0238C0EC ; =EVO_MENU_ITEMS_CONFIRM
 	ldr r1, [r0]
-	ldr r0, _0238C0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238C0D8 ; =EVO_WINDOW_PARAMS_6
 	str r4, [r1, #0x78]
 	ldr r1, _0238C0F0 ; =0x00300013
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -1700,7 +1700,7 @@ _0238B9C4:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238B9F4:
 	ldrsb r0, [r0, #0xc1]
@@ -1742,7 +1742,7 @@ _0238BA58:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238BA94:
 	mov r1, #0x1f
@@ -1760,7 +1760,7 @@ _0238BA94:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238BAD8:
 	bl ov16_0238CB98
@@ -1988,11 +1988,11 @@ _0238BE1C:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238BE3C:
 	ldrsb r0, [r0, #0xc1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2016,7 +2016,7 @@ _0238BE74:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238BEA0:
 	mov r2, #0xb
@@ -2031,7 +2031,7 @@ _0238BEA0:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238C0C4
 _0238BED8:
 	bl ov11_02310BDC
@@ -2046,7 +2046,7 @@ _0238BED8:
 	mov r1, #8
 	ldrsb r0, [r3, #0xc1]
 	add r3, r3, #0xe8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r0, #1
 	ldr r1, [r1]
@@ -2065,7 +2065,7 @@ _0238BED8:
 	add r0, r2, #0xc8
 	add r1, r2, r1, lsl #1
 	ldrsh r1, [r1, #0xc]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r1, #4
 	ldr r0, [r0]
@@ -2080,11 +2080,11 @@ _0238BED8:
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0xc2]
 	add r1, r1, #0xc8
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _0238C0C4
 _0238BF98:
 	ldrsb r0, [r0, #0xc1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r3, #1
 	ldr r2, [r1]
@@ -2114,14 +2114,14 @@ _0238BFF8:
 	str r2, [r0, #0x74]
 	ldr r2, [r1]
 	mov ip, #4
-	ldr r0, _0238C0D8 ; =EVO_D_BOX_LAYOUT_6
+	ldr r0, _0238C0D8 ; =EVO_WINDOW_PARAMS_6
 	ldr r1, _0238C0DC ; =0x00300011
-	ldr r3, _0238C0EC ; =EVO_MENU_CONFIRM
+	ldr r3, _0238C0EC ; =EVO_MENU_ITEMS_CONFIRM
 	str ip, [r2, #0x78]
 	mov ip, #2
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r1, [r1]
 	strb r0, [r1, #0xc3]
@@ -2155,7 +2155,7 @@ _0238C088:
 	str r0, [sp, #0x24]
 	str ip, [sp]
 	mov ip, #4
-	ldr r0, _0238C13C ; =EVO_D_BOX_LAYOUT_4
+	ldr r0, _0238C13C ; =EVO_WINDOW_PARAMS_4
 	ldr r1, _0238C140 ; =0x00009813
 	ldr r3, _0238C144 ; =ov16_0238CB30
 	add r2, sp, #0x18
@@ -2171,16 +2171,16 @@ _0238C0C4:
 _0238C0CC: .word OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 _0238C0D0: .word 0x00000431
 _0238C0D4: .word 0x00000432
-_0238C0D8: .word EVO_D_BOX_LAYOUT_6
+_0238C0D8: .word EVO_WINDOW_PARAMS_6
 _0238C0DC: .word 0x00300011
-_0238C0E0: .word EVO_MAIN_MENU
+_0238C0E0: .word EVO_MAIN_MENU_ITEMS
 _0238C0E4: .word 0x00000442
 _0238C0E8: .word 0x00000449
-_0238C0EC: .word EVO_MENU_CONFIRM
+_0238C0EC: .word EVO_MENU_ITEMS_CONFIRM
 _0238C0F0: .word 0x00300013
 _0238C0F4: .word 0x00000434
-_0238C0F8: .word EVO_D_BOX_LAYOUT_5
-_0238C0FC: .word EVO_SUBMENU
+_0238C0F8: .word EVO_WINDOW_PARAMS_5
+_0238C0FC: .word EVO_SUBMENU_ITEMS
 _0238C100: .word 0x00000125
 _0238C104: .word 0x0000043E
 _0238C108: .word 0x0000043A
@@ -2196,7 +2196,7 @@ _0238C12C: .word 0x0000042D
 _0238C130: .word 0x00000433
 _0238C134: .word 0x00000447
 _0238C138: .word 0x00000446
-_0238C13C: .word EVO_D_BOX_LAYOUT_4
+_0238C13C: .word EVO_WINDOW_PARAMS_4
 _0238C140: .word 0x00009813
 _0238C144: .word ov16_0238CB30
 	arm_func_end ov16_0238B148
@@ -2592,7 +2592,7 @@ _0238C690:
 	ldrsb r0, [r0, #0xc2]
 	cmp r0, r1
 	beq _0238C6E0
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2742,7 +2742,7 @@ _0238C8BC:
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc3]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r2, #1
 	ldr r1, [r0]
@@ -2758,7 +2758,7 @@ _0238C918:
 	str r1, [r2, #0x40]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc3]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r1, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r3, #1
 	ldr r2, [r1]
@@ -2812,14 +2812,14 @@ _0238C9EC:
 	str r1, [r3, #0xd8]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc2]
 	cmp r0, r1
 	beq _0238CAD0
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2894,7 +2894,7 @@ ov16_0238CAE8: ; 0x0238CAE8
 	ldr r0, _0238CB2C ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc3]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238CB2C ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mvn r1, #1
 	ldr r0, [r0]
@@ -3081,17 +3081,17 @@ _0238CD04: .word OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	arm_func_end ov16_0238CCF0
 	; 0x0238CD08
 
-	.global EVO_MENU_CONFIRM
-EVO_MENU_CONFIRM:
+	.global EVO_MENU_ITEMS_CONFIRM
+EVO_MENU_ITEMS_CONFIRM:
 	.byte 0x2B, 0x04, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x2C, 0x04, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global EVO_SUBMENU
-EVO_SUBMENU:
+	.global EVO_SUBMENU_ITEMS
+EVO_SUBMENU_ITEMS:
 	.byte 0x35, 0x04, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0x36, 0x04, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x37, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global EVO_MAIN_MENU
-EVO_MAIN_MENU:
+	.global EVO_MAIN_MENU_ITEMS
+EVO_MAIN_MENU_ITEMS:
 	.byte 0x2E, 0x04, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0x2F, 0x04, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x30, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x2D, 0x04, 0x2E, 0x04, 0x2F, 0x04, 0x30, 0x04
@@ -3101,16 +3101,16 @@ EVO_MAIN_MENU:
 	.byte 0x02, 0x02, 0x12, 0x10, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x0A, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global EVO_D_BOX_LAYOUT_4
-EVO_D_BOX_LAYOUT_4:
+	.global EVO_WINDOW_PARAMS_4
+EVO_WINDOW_PARAMS_4:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global EVO_D_BOX_LAYOUT_5
-EVO_D_BOX_LAYOUT_5:
+	.global EVO_WINDOW_PARAMS_5
+EVO_WINDOW_PARAMS_5:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x13, 0x02, 0x0B, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global EVO_D_BOX_LAYOUT_6
-EVO_D_BOX_LAYOUT_6:
+	.global EVO_WINDOW_PARAMS_6
+EVO_WINDOW_PARAMS_6:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x14, 0x10, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

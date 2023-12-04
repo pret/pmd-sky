@@ -18,7 +18,7 @@ CreateInventoryMenu: ; 0x022BCA80
 	bl MemAlloc
 	mov r4, r0
 	cmp r6, #0
-	ldreq r0, _022BCC58 ; =ov10_022C4394
+	ldreq r0, _022BCC58 ; =INVENTORY_MENU_DEFAULT_WINDOW_PARAMS
 	str r7, [r4, #0x198]
 	add r5, sp, #0x1c
 	ldmeqia r0, {r0, r1, r2, r3}
@@ -67,14 +67,14 @@ _022BCB44:
 	add r3, r3, #0x58
 	mov r0, sl
 	mov r1, sb
-	bl sub_020329E4
+	bl CalcMenuHeightDiv8__020329E4
 	strb r0, [sp, #0x23]
 	b _022BCB84
 _022BCB74:
 	add r3, r3, #0x58
 	mov r0, sl
 	mov r1, sb
-	bl sub_020329E4
+	bl CalcMenuHeightDiv8__020329E4
 _022BCB84:
 	tst sl, #0x200000
 	ldrneb r1, [sp, #0x20]
@@ -115,7 +115,7 @@ _022BCBE8:
 	bl NewWindowScreenCheck
 	add r1, sp, #0xc
 	mov r6, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r0, [sp, #0x454]
 	ldrb r5, [sp, #0x45c]
 	str r0, [sp]
@@ -126,13 +126,13 @@ _022BCBE8:
 	add r0, r4, #4
 	add r2, r4, #0xfc
 	str r5, [sp, #8]
-	bl sub_02032A38
+	bl InitInventoryMenuInput
 	mov r0, r6
 	add sp, sp, #0x2c
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_022BCC58: .word ov10_022C4394
+_022BCC58: .word INVENTORY_MENU_DEFAULT_WINDOW_PARAMS
 _022BCC5C: .word UpdateInventoryMenu
 	arm_func_end CreateInventoryMenu
 
@@ -175,34 +175,34 @@ ov10_022BCCB0: ; 0x022BCCB0
 	ldmia sp!, {r3, pc}
 	arm_func_end ov10_022BCCB0
 
-	arm_func_start ov10_022BCCCC
-ov10_022BCCCC: ; 0x022BCCCC
+	arm_func_start SetInventoryMenuState0
+SetInventoryMenuState0: ; 0x022BCCCC
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	mov r1, #0
 	str r1, [r0, #0x19c]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov10_022BCCCC
+	arm_func_end SetInventoryMenuState0
 
-	arm_func_start ov10_022BCCE0
-ov10_022BCCE0: ; 0x022BCCE0
+	arm_func_start SetInventoryMenuState6
+SetInventoryMenuState6: ; 0x022BCCE0
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	mov r1, #6
 	str r1, [r0, #0x19c]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov10_022BCCE0
+	arm_func_end SetInventoryMenuState6
 
-	arm_func_start ov10_022BCCF4
-ov10_022BCCF4: ; 0x022BCCF4
+	arm_func_start CloseInventoryMenu
+CloseInventoryMenu: ; 0x022BCCF4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end ov10_022BCCF4
+	arm_func_end CloseInventoryMenu
 
 	arm_func_start ov10_022BCD10
 ov10_022BCD10: ; 0x022BCD10
@@ -230,8 +230,8 @@ ov10_022BCD10: ; 0x022BCD10
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov10_022BCD10
 
-	arm_func_start ov10_022BCD68
-ov10_022BCD68: ; 0x022BCD68
+	arm_func_start IsInventoryMenuActive
+IsInventoryMenuActive: ; 0x022BCD68
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
@@ -240,10 +240,10 @@ ov10_022BCD68: ; 0x022BCD68
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov10_022BCD68
+	arm_func_end IsInventoryMenuActive
 
-	arm_func_start ov10_022BCD88
-ov10_022BCD88: ; 0x022BCD88
+	arm_func_start CheckInventoryMenuField0x1A0
+CheckInventoryMenuField0x1A0: ; 0x022BCD88
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldrb r0, [r0, #0x1a0]
@@ -252,7 +252,7 @@ ov10_022BCD88: ; 0x022BCD88
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov10_022BCD88
+	arm_func_end CheckInventoryMenuField0x1A0
 
 	arm_func_start ov10_022BCDA8
 ov10_022BCDA8: ; 0x022BCDA8
@@ -316,8 +316,8 @@ ov10_022BCE44: ; 0x022BCE44
 	ldmia sp!, {r3, pc}
 	arm_func_end ov10_022BCE44
 
-	arm_func_start ov10_022BCE58
-ov10_022BCE58: ; 0x022BCE58
+	arm_func_start PopInventoryMenuField0x1A3
+PopInventoryMenuField0x1A3: ; 0x022BCE58
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldrb r2, [r0, #0x1a3]
@@ -325,7 +325,7 @@ ov10_022BCE58: ; 0x022BCE58
 	strb r1, [r0, #0x1a3]
 	mov r0, r2
 	ldmia sp!, {r3, pc}
-	arm_func_end ov10_022BCE58
+	arm_func_end PopInventoryMenuField0x1A3
 
 	arm_func_start UpdateInventoryMenu
 UpdateInventoryMenu: ; 0x022BCE74
@@ -683,8 +683,8 @@ _022BD354:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end ov10_022BD22C
 
-	arm_func_start ov10_022BD374
-ov10_022BD374: ; 0x022BD374
+	arm_func_start IsInventoryMenuState3
+IsInventoryMenuState3: ; 0x022BD374
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
@@ -693,7 +693,7 @@ ov10_022BD374: ; 0x022BD374
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov10_022BD374
+	arm_func_end IsInventoryMenuState3
 
 	arm_func_start ov10_022BD394
 ov10_022BD394: ; 0x022BD394
@@ -5007,7 +5007,7 @@ _022C0B5C:
 	ldr r1, _022C0CD0 ; =ProcessTeamStatsNameGender
 	mov r0, r4
 	strb r8, [sp, #0x44]
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, [fp]
 	add sb, sb, #9
 	add r1, r1, r7
@@ -5018,7 +5018,7 @@ _022C0B5C:
 	mov r0, r4
 	strb r8, [sp, #0x44]
 	strb sb, [sp, #0x45]
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, [fp]
 	add r1, r1, r7
 	add r7, r7, #1
@@ -5053,10 +5053,10 @@ _022C0C30:
 	cmp r0, r4
 	bne _022C0C9C
 	mov r0, fp
-	bl InitPortraitBox
+	bl InitPortraitParams
 	mov r0, fp
 	mov r1, #1
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldrb r1, [r8, sb]
 	mov r0, fp
 	bl SetPortraitLayout
@@ -5184,17 +5184,17 @@ _022C0DE8:
 	cmp r0, r4
 	beq _022C0EA8
 	add r0, sp, #0x10
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldrb r0, [r7]
 	cmp r0, #0
 	add r0, sp, #0x10
 	bne _022C0E48
 	mov r1, #1
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	b _022C0E50
 _022C0E48:
 	ldrsh r1, [r7, #0x42]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 _022C0E50:
 	add r0, sp, #0x10
 	add r1, sp, #8
@@ -5219,7 +5219,7 @@ _022C0E90:
 	add r0, r0, sl
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x78]
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _022C0EA8:
 	add r8, r8, #1
 	cmp r8, #4
@@ -5612,7 +5612,7 @@ _022C13EC:
 	add r0, r0, r5
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x78]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, [r6]
 	add r0, r0, r5
 	strb r4, [r0, #0x278]
@@ -5630,7 +5630,7 @@ _022C1454:
 	ldrsb r0, [r0, #0x7c]
 	cmp r0, r4
 	beq _022C147C
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, [r6]
 	add r0, r0, r5
 	strb r4, [r0, #0x27c]
@@ -5641,7 +5641,7 @@ _022C147C:
 	ldrsb r0, [r0, #0x80]
 	cmp r0, r4
 	beq _022C14A4
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, [r6]
 	add r0, r0, r5
 	strb r4, [r0, #0x280]
@@ -5694,7 +5694,7 @@ ov10_022C14D0: ; 0x022C14D0
 	stmia ip, {r0, r1, r2, r3}
 	mov r0, ip
 	mov r1, #0
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _022C1594 ; =ov10_022DC1D0
 	ldr r2, [r1]
 	strb r0, [r2, #0x284]
@@ -5839,7 +5839,7 @@ ov10_022C16D8: ; 0x022C16D8
 	ldrsb r0, [r0, #0x84]
 	cmp r0, r1
 	beq _022C171C
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _022C1744 ; =ov10_022DC1D0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -9118,8 +9118,8 @@ ov10_022C434C: ; 0x022C434C
 	arm_func_end ov10_022C434C
 	; 0x022C4394
 
-	.global ov10_022C4394
-ov10_022C4394:
+	.global INVENTORY_MENU_DEFAULT_WINDOW_PARAMS
+INVENTORY_MENU_DEFAULT_WINDOW_PARAMS:
 	.word UpdateInventoryMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov10_022C43A4

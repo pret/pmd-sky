@@ -45,7 +45,7 @@
 .public ProcessWte
 .public SpawnTrap
 .public strcpy
-.public StringFromMessageId
+.public StringFromId
 .public sub_0201B9F8
 .public sub_0201E080
 .public sub_0201F2A0

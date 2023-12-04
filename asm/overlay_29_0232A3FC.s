@@ -2221,7 +2221,7 @@ DoMoveSkullBash: ; 0x0232C064
 	b _0232C0E4
 _0232C0C0:
 	ldr r0, _0232C0F0 ; =0x00000CEB
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r7
 	mov r1, r6

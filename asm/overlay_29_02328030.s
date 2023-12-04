@@ -217,7 +217,7 @@ DoMoveCharge: ; 0x023282C8
 	ldr r0, _02328320 ; =0x00000CD9
 	mov r5, r1
 	mov r4, r2
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r6
 	mov r1, r5
@@ -987,7 +987,7 @@ _02328CDC:
 	b _02328D30
 _02328D0C:
 	ldr r0, _02328D40 ; =0x00000CD2
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r7
 	mov r1, r7
@@ -1076,7 +1076,7 @@ DoMoveFly: ; 0x02328DE4
 	b _02328E64
 _02328E40:
 	ldr r0, _02328E70 ; =0x00000CD3
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r7
 	mov r1, r7
@@ -1158,7 +1158,7 @@ _02328F0C:
 	b _02328F7C
 _02328F58:
 	ldr r0, _02328F90 ; =0x00000CD5
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r8
 	mov r1, r8
@@ -2071,7 +2071,7 @@ _02329B20:
 	b _02329B50
 _02329B2C:
 	ldr r0, _02329B64 ; =0x00000CD4
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r8
 	mov r1, r8

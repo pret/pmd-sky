@@ -1107,7 +1107,7 @@ _023223D4:
 	strb r1, [sp, #0x28]
 	ldrh r1, [sl, #2]
 	strh r1, [sp, #0x2a]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	str r5, [sp]
 	mov r0, #1
@@ -1134,7 +1134,7 @@ _02322460:
 	strb r1, [sp, #0x30]
 	ldrh r1, [sl, #2]
 	strh r1, [sp, #0x32]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	str r5, [sp]
 	mov r0, #1
@@ -1169,7 +1169,7 @@ _023224C4:
 	cmp r0, #0
 	beq _02322554
 	ldr r0, _02322D30 ; =0x00000EA6
-	bl StringFromMessageId
+	bl StringFromId
 	cmp sb, #0
 	ldr r1, [r6, #0xb4]
 	mov r2, #0
@@ -1192,7 +1192,7 @@ _02322554:
 	b _02322578
 _0232256C:
 	ldr r0, _02322D34 ; =0x00000EA7
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp, #0x20]
 _02322578:
 	cmp sb, #0

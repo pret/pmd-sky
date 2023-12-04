@@ -7,7 +7,8 @@
 .public ChangeDungeonMusic
 .public CheckActiveChallengeRequest
 .public CheckSpawnThreshold
-.public CreateTextBox1
+.public CloseTextBox2
+.public CreateTextBox
 .public DIRECTIONS_XY
 .public DisplayAnimatedNumbers
 .public DUNGEON_PTR
@@ -155,7 +156,7 @@
 .public STATUS_ICON_ARRAY_REFLECT
 .public STATUS_ICON_ARRAY_SLEEP
 .public STATUS_ICON_ARRAY_SURE_SHOT
-.public StringFromMessageId
+.public StringFromId
 .public sub_0200B330
 .public sub_0200B3D4
 .public sub_0201B9F8
@@ -164,7 +165,6 @@
 .public sub_0201D034
 .public sub_02026214
 .public sub_02027AF0
-.public sub_0202F918
 .public sub_02048384
 .public sub_020483B8
 .public sub_020483D8

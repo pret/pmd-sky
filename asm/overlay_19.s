@@ -279,7 +279,7 @@ ov19_0238A468: ; 0x0238A468
 	mvnne r1, #1
 	cmpne r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238A4A0 ; =ov11_02324DB0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -397,7 +397,7 @@ _0238A624:
 	ldr r4, _0238B428 ; =0x0001012E
 	cmp r0, #2
 	ldreq r0, _0238B42C ; =0x0000458B
-	ldr r2, _0238B430 ; =BAR_MAIN_MENU
+	ldr r2, _0238B430 ; =BAR_MAIN_MENU_ITEMS
 	ldrne r0, _0238B434 ; =0x0000458C
 	mov r1, r0, lsl #0x10
 	mov r0, #0
@@ -540,7 +540,7 @@ _0238A838:
 	mov r0, #0
 	bl GetPressedButtons
 	ldrsb r0, [r8, #0x20]
-	bl ov10_022BCE58
+	bl PopInventoryMenuField0x1A3
 	mov r4, r0
 	ldrsb r0, [r8, #0x20]
 	bl ov10_022BCDA8
@@ -570,7 +570,7 @@ _0238A888:
 	b _0238C598
 _0238A8B0:
 	ldrsb r0, [r8, #0x20]
-	bl ov10_022BCD68
+	bl IsInventoryMenuActive
 	cmp r0, #0
 	bne _0238A934
 	ldrsb r0, [r8, #0x20]
@@ -581,10 +581,10 @@ _0238A8B0:
 	str r0, [r8, #0x58]
 	ldrsh r2, [r1, #2]
 	mov r1, #0
-	ldr r0, _0238B454 ; =BAR_D_BOX_LAYOUT_1
+	ldr r0, _0238B454 ; =BAR_WINDOW_PARAMS_1
 	mov r2, r2, lsl #0x18
 	mov r4, r2, asr #0x18
-	ldr r2, _0238B458 ; =BAR_SUBMENU_1
+	ldr r2, _0238B458 ; =BAR_SUBMENU_ITEMS_1
 	mov r3, r1
 	str r4, [sp]
 	mov r4, #0x70000
@@ -696,22 +696,22 @@ _0238AA08:
 	str r4, [sp]
 	mov r0, r0, lsr #0x10
 	str r0, [sp, #4]
-	ldr r0, _0238B464 ; =BAR_D_BOX_LAYOUT_2
+	ldr r0, _0238B464 ; =BAR_WINDOW_PARAMS_2
 	ldr r1, _0238B468 ; =0x00001013
 	ldr r3, _0238B46C ; =0x000008E4
 	str r4, [sp, #8]
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	strb r0, [r8, #0x21]
 	mov r0, #0xc
 	str r0, [r8, #4]
 	b _0238C598
 _0238AAA8:
 	ldrsb r0, [r8, #0x21]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0238C598
 	ldrsb r0, [r8, #0x21]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	mvn r0, #1
 	strb r0, [r8, #0x21]
 	mov r0, #8
@@ -761,10 +761,10 @@ _0238AB54:
 	str r0, [r8, #0xd4]
 	ldrsh r2, [r1, #4]
 	mov r1, #0
-	ldr r0, _0238B470 ; =BAR_D_BOX_LAYOUT_3
+	ldr r0, _0238B470 ; =BAR_WINDOW_PARAMS_3
 	mov r2, r2, lsl #0x18
 	mov r4, r2, asr #0x18
-	ldr r2, _0238B474 ; =BAR_SUBMENU_2
+	ldr r2, _0238B474 ; =BAR_SUBMENU_ITEMS_2
 	mov r3, r1
 	str r4, [sp]
 	mov r4, #0x70000
@@ -817,7 +817,7 @@ _0238ABF0:
 	str r0, [sp, #0x974]
 	bl sub_0203A51C
 	bl ov19_0238D450
-	ldr r1, _0238B478 ; =BAR_MENU_CONFIRM_1
+	ldr r1, _0238B478 ; =BAR_MENU_ITEMS_CONFIRM_1
 	ldr r0, _0238B47C ; =0x0000459A
 	str r1, [sp]
 	add r1, sp, #0x900
@@ -966,7 +966,7 @@ _0238AE20:
 	ldr r0, _0238B424 ; =ov11_02324DB0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x22]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _0238B424 ; =ov11_02324DB0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -1078,7 +1078,7 @@ _0238AFB8:
 	add r0, r8, #0x1cc
 	mov r1, #0x400
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, #3
 	str r0, [r8, #0x1c4]
 	mov r0, #0x1b
@@ -1269,7 +1269,7 @@ _0238B250:
 	ldr r2, _0238B48C ; =0x000045B1
 	add r0, r8, #0x1cc
 	mov r1, #0x400
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, #0x1d
 	str r0, [r8, #4]
 	mov r0, #0xc
@@ -1296,7 +1296,7 @@ _0238B2B8:
 	ldr r2, _0238B490 ; =0x000045BC
 	add r0, r8, #0x1cc
 	mov r1, #0x400
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, #0x1e
 	str r0, [r8, #4]
 	mov r0, #0xc
@@ -1348,7 +1348,7 @@ _0238B34C:
 	add r0, r8, #0x1cc
 	mov r1, #0x400
 #endif
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, #0x1f
 	str r0, [r8, #4]
 	mov r0, #0xc
@@ -1375,7 +1375,7 @@ _0238B3B4:
 	ldr r2, _0238B49C ; =0x000045BE
 	add r0, r8, #0x1cc
 	mov r1, #0x400
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, #7
 	str r0, [r8, #0x1c4]
 	mov r0, #0x20
@@ -1392,7 +1392,7 @@ _0238B3B4:
 _0238B424: .word ov11_02324DB0
 _0238B428: .word 0x0001012E
 _0238B42C: .word 0x0000458B + OV19_0238A4A4_OFFSET
-_0238B430: .word BAR_MAIN_MENU
+_0238B430: .word BAR_MAIN_MENU_ITEMS
 _0238B434: .word 0x0000458C + OV19_0238A4A4_OFFSET
 _0238B438: .word 0x00004590 + OV19_0238A4A4_OFFSET
 _0238B43C: .word 0x0000458F + OV19_0238A4A4_OFFSET
@@ -1401,16 +1401,16 @@ _0238B444: .word 0x0000458D + OV19_0238A4A4_OFFSET
 _0238B448: .word 0x0000458E + OV19_0238A4A4_OFFSET
 _0238B44C: .word ov19_0238D4A4
 _0238B450: .word OVERLAY19_UNKNOWN_POINTER__NA_238E360
-_0238B454: .word BAR_D_BOX_LAYOUT_1
-_0238B458: .word BAR_SUBMENU_1
+_0238B454: .word BAR_WINDOW_PARAMS_1
+_0238B458: .word BAR_SUBMENU_ITEMS_1
 _0238B45C: .word 0x00003F02
 _0238B460: .word 0x00004594 + OV19_0238A4A4_OFFSET
-_0238B464: .word BAR_D_BOX_LAYOUT_2
+_0238B464: .word BAR_WINDOW_PARAMS_2
 _0238B468: .word 0x00001013
 _0238B46C: .word 0x000008E4
-_0238B470: .word BAR_D_BOX_LAYOUT_3
-_0238B474: .word BAR_SUBMENU_2
-_0238B478: .word BAR_MENU_CONFIRM_1
+_0238B470: .word BAR_WINDOW_PARAMS_3
+_0238B474: .word BAR_SUBMENU_ITEMS_2
+_0238B478: .word BAR_MENU_ITEMS_CONFIRM_1
 _0238B47C: .word 0x0000459A + OV19_0238A4A4_OFFSET
 _0238B480: .word 0x0000459D + OV19_0238A4A4_OFFSET
 _0238B484: .word 0x0000101C
@@ -1437,7 +1437,7 @@ _0238B4A4:
 	add r0, r8, #0x1cc
 	mov r1, #0x400
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, #8
 	str r0, [r8, #0x1c4]
 	mov r0, #0x21
@@ -1485,7 +1485,7 @@ _0238B528:
 	mov r3, #0
 	mov r5, r5, lsl #1
 	ldrh r2, [r2, r5]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, sp, #0x5c0
 	bl InitPreprocessorArgs
 	ldr r1, [r8, #0xd4]
@@ -1568,7 +1568,7 @@ _0238B690:
 	add r0, r8, #0x1cc
 	mov r1, #0x400
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, #0x24
 	str r0, [r8, #4]
 	mov r0, #0xc
@@ -1707,7 +1707,7 @@ _0238B85C:
 	add r0, r4, #0x1cc
 	mov r1, #0x400
 	str r6, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r5
 	bl MemFree
 	mov r5, #2
@@ -1726,7 +1726,7 @@ _0238B8BC:
 	add r0, r4, #0x1cc
 	mov r1, #0x400
 	str r6, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r5
 	bl MemFree
 	mov r5, #1
@@ -1927,7 +1927,7 @@ _0238BB9C:
 	str r3, [sp]
 	mov r1, #0x400
 	mov r3, #0x1c
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r5
 	add r1, r5, #0x400
 	bl strcat
@@ -1972,7 +1972,7 @@ _0238BC38:
 	mov r1, #0x100
 	mov r3, #0
 	str fp, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r5
 	add r1, r5, #0x400
 	bl strcat
@@ -2018,7 +2018,7 @@ _0238BCE8:
 	add r0, r8, #0x1cc
 	mov r1, #0x400
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 _0238BD2C:
 	cmp r5, #3
 	moveq r0, #0x29
@@ -2132,7 +2132,7 @@ _0238BE68:
 	ldr r2, _0238C4D8 ; =0x000045D9
 	add r0, r8, #0x1cc
 	mov r1, #0x400
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, #0x2b
 	str r0, [r8, #4]
 	mov r0, #0xc
@@ -2255,7 +2255,7 @@ _0238C07C:
 	add r0, r8, #0x10
 	str r2, [sp, #0x4cc]
 	ldrsh r1, [r1, #4]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	add r0, r8, #0x10
 	mov r1, #0x13
 	bl SetPortraitLayout
@@ -2299,7 +2299,7 @@ _0238C0FC:
 	add r0, r8, #0x10
 	str r2, [sp, #0x3e4]
 	ldrsh r1, [r1, #4]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	add r0, r8, #0x10
 	mov r1, #0x13
 	bl SetPortraitLayout
@@ -2319,7 +2319,7 @@ _0238C174:
 	bl SetPortraitOffset
 _0238C180:
 	bl ov19_0238D450
-	ldr r1, _0238C4F4 ; =BAR_MENU_CONFIRM_2
+	ldr r1, _0238C4F4 ; =BAR_MENU_ITEMS_CONFIRM_2
 	ldr r0, _0238C4F8 ; =0x000045DC
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -2380,7 +2380,7 @@ _0238C244:
 	bl ov19_0238D47C
 	ldr r1, _0238C500 ; =0x00000163
 	add r0, r8, #0x10
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	add r0, sp, #0x348
 	bl InitPreprocessorArgs
 	add r0, r8, #0x100
@@ -2422,7 +2422,7 @@ _0238C2E4:
 	bl ov19_0238D47C
 	ldr r1, _0238C500 ; =0x00000163
 	add r0, r8, #0x10
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	add r0, sp, #0x30
 	bl sub_0206351C
 	mov r0, #6
@@ -2488,7 +2488,7 @@ _0238C3AC:
 	mov r1, #0x400
 #endif
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, #0xb
 	str r0, [r8, #0x1c4]
 	mov r0, #0x3b
@@ -2560,7 +2560,7 @@ _0238C4E4: .word ov19_0238E1C4
 _0238C4E8: .word 0x000045DB + OV19_0238A4A4_OFFSET
 _0238C4EC: .word OVERLAY19_UNKNOWN_STRUCT__NA_238E1A4
 _0238C4F0: .word ov19_0238E1AC
-_0238C4F4: .word BAR_MENU_CONFIRM_2
+_0238C4F4: .word BAR_MENU_ITEMS_CONFIRM_2
 _0238C4F8: .word 0x000045DC + OV19_0238A4A4_OFFSET
 _0238C4FC: .word ov19_0238E1B4
 _0238C500: .word 0x00000163
@@ -2688,7 +2688,7 @@ ov19_0238C670: ; 0x0238C670
 	mov r5, #0
 	bl InitPreprocessorArgs
 	add r0, r4, #0x1cc
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	bne _0238C6B4
 	add r0, r4, #0x100
@@ -2791,7 +2791,7 @@ ov19_0238C7B0: ; 0x0238C7B0
 	bl InitPreprocessorArgs
 	add r0, r4, #0x1cc
 	add r0, r0, #0x400
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	bne _0238C7FC
 	add r0, r4, #0x100
@@ -2852,7 +2852,7 @@ ov19_0238C80C: ; 0x0238C80C
 	add r0, r6, #0x1cc
 	mov r1, #0x400
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	bl MemFree
 	b _0238C8E8
@@ -2864,7 +2864,7 @@ _0238C8C0:
 	add r0, r6, #0x1cc
 	mov r1, #0x400
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	bl MemFree
 _0238C8E8:
@@ -2931,7 +2931,7 @@ ov19_0238C900: ; 0x0238C900
 	add r0, r5, #0x1cc
 	mov r1, #0x400
 	str r7, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	bl MemFree
 	mov r0, #1
@@ -2981,7 +2981,7 @@ ov19_0238C9F0: ; 0x0238C9F0
 	add r0, r5, #0x400
 	mov r1, #0x100
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r5
 	add r1, r5, #0x400
 	bl strcat
@@ -3075,7 +3075,7 @@ ov19_0238CB2C: ; 0x0238CB2C
 	str r2, [sp]
 	ldr r2, _0238CBBC ; =0x000045EC
 	mov r1, #0x400
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
@@ -3153,7 +3153,7 @@ _0238CC4C:
 	mov r0, sb
 	mov r1, #0x100
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, sl
 	mov r1, sb
 	bl strcat
@@ -3365,7 +3365,7 @@ _0238CF3C:
 	mov r1, #0x100
 	ldrh r2, [r2, r7]
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 _0238CF84:
 	add r0, fp, #0x400
 	bl sub_02020868
@@ -3400,7 +3400,7 @@ _0238CFF0:
 	mov r0, r4
 	mov r1, #0x100
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	cmp r8, #1
 	bne _0238D04C
 	cmp r5, #0
@@ -3730,7 +3730,7 @@ ov19_0238D450: ; 0x0238D450
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
 	add r1, r2, #0x10
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238D478: .word ov11_02324DB0
@@ -3781,7 +3781,7 @@ ov19_0238D4E4: ; 0x0238D4E4
 	ldrsb r0, [r0, #0x20]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov10_022BCCF4
+	bl CloseInventoryMenu
 	ldr r0, _0238D518 ; =ov11_02324DB0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -3806,7 +3806,7 @@ ov19_0238D51C: ; 0x0238D51C
 	ldr r0, _0238D568 ; =ov11_02324DB0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x20]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _0238D568 ; =ov11_02324DB0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -3835,7 +3835,7 @@ ov19_0238D56C: ; 0x0238D56C
 	ldr r1, _0238D5F8 ; =0x00000163
 	add r0, r4, #0x10
 	strb r2, [r4, #0x22]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	add r0, r4, #0x10
 	mov r1, #0
 	bl SetPortraitLayout
@@ -3873,7 +3873,7 @@ ov19_0238D5FC: ; 0x0238D5FC
 	ldr r1, _0238D688 ; =0x00000163
 	add r0, r4, #0x10
 	strb r2, [r4, #0x22]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	add r0, r4, #0x10
 	mov r1, #0
 	bl SetPortraitLayout
@@ -4413,25 +4413,25 @@ ov19_0238E1C4:
 	.global OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC
 OVERLAY19_UNKNOWN_STRING_IDS__NA_238E1CC:
 	.byte 0xCE + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xCF + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xD0 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xD1 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xD2 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xD3 + OVERLAY19_STRING_IDS_OFFSET, 0x45
-	.global BAR_D_BOX_LAYOUT_1
-BAR_D_BOX_LAYOUT_1:
+	.global BAR_WINDOW_PARAMS_1
+BAR_WINDOW_PARAMS_1:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x02, 0x08, 0x05, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global BAR_D_BOX_LAYOUT_2
-BAR_D_BOX_LAYOUT_2:
+	.global BAR_WINDOW_PARAMS_2
+BAR_WINDOW_PARAMS_2:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global BAR_D_BOX_LAYOUT_3
-BAR_D_BOX_LAYOUT_3:
+	.global BAR_WINDOW_PARAMS_3
+BAR_WINDOW_PARAMS_3:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x14, 0x02, 0x0A, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global BAR_MENU_CONFIRM_1
-BAR_MENU_CONFIRM_1:
+	.global BAR_MENU_ITEMS_CONFIRM_1
+BAR_MENU_ITEMS_CONFIRM_1:
 	.byte 0x9B + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00
 	.byte 0x08, 0x00, 0x00, 0x00, 0x9C + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global BAR_MENU_CONFIRM_2
-BAR_MENU_CONFIRM_2:
+	.global BAR_MENU_ITEMS_CONFIRM_2
+BAR_MENU_ITEMS_CONFIRM_2:
 	.byte 0xDD + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0xDE + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00
 	.byte 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238
@@ -4439,18 +4439,18 @@ OVERLAY19_UNKNOWN_STRING_IDS__NA_238E238:
 	.byte 0xA0 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xA2 + OVERLAY19_STRING_IDS_OFFSET, 0x45
 	.byte 0xA5 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xA6 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xA7 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xA9 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xAA + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xAB + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xAC + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xAE + OVERLAY19_STRING_IDS_OFFSET, 0x45
 	.byte 0xAF + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0xB0 + OVERLAY19_STRING_IDS_OFFSET, 0x45
-	.global BAR_MAIN_MENU
-BAR_MAIN_MENU:
+	.global BAR_MAIN_MENU_ITEMS
+BAR_MAIN_MENU_ITEMS:
 	.byte 0x88 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x89 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x8A + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global BAR_SUBMENU_1
-BAR_SUBMENU_1:
+	.global BAR_SUBMENU_ITEMS_1
+BAR_SUBMENU_ITEMS_1:
 	.byte 0x91 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x92 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x93 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global BAR_SUBMENU_2
-BAR_SUBMENU_2:
+	.global BAR_SUBMENU_ITEMS_2
+BAR_SUBMENU_ITEMS_2:
 	.byte 0x95 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x96 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00, 0x97 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x98 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x99 + OVERLAY19_STRING_IDS_OFFSET, 0x45, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

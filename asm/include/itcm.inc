@@ -119,6 +119,7 @@
 .public GetTileAtEntity
 .public GetTileSafe
 .public GetVisibilityRange
+.public GetWindow
 .public HasDropeyeStatus
 .public InitMove
 .public IqSkillIsEnabled
@@ -164,7 +165,6 @@
 .public ShouldMonsterRunAwayVariation
 .public sub_0201BD50
 .public sub_0201BD80
-.public sub_020275F8
 .public sub_0202760C
 .public sub_02027AF0
 .public sub_0207A238

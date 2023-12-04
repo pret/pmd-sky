@@ -855,7 +855,7 @@ _0234E9B8:
 	bne _0234E9B8
 _0234E9D4:
 	ldrsb r0, [r7]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	mvn r0, #1
 	strb r0, [r7]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}

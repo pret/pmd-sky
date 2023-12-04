@@ -107,7 +107,7 @@
 .public SLEEP_TURN_RANGE
 .public SPATK_STAT_IDX
 .public SpawnDroppedItemWrapper
-.public StringFromMessageId
+.public StringFromId
 .public sub_02024FB8
 .public SubstitutePlaceholderStringTags
 .public THUNDER_FANG_CRINGE_CHANCE

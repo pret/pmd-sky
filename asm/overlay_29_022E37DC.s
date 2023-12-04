@@ -6864,7 +6864,7 @@ ov29_022E8E60: ; 0x022E8E60
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _022E8E90 ; =0x00003FCB
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, #0
 	mov r3, r0
 	mov r0, r4
@@ -6903,7 +6903,7 @@ ov29_022E8E94: ; 0x022E8E94
 	stmia ip, {r0, r1, r2, r3}
 	ldr r1, _022E8F24 ; =ov29_022E8E60
 	mov r0, ip
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _022E8F1C ; =ov29_02353558
 	ldr r2, [r1]
 	strb r0, [r2]
@@ -6933,7 +6933,7 @@ ov29_022E8F28: ; 0x022E8F28
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _022E8F74 ; =ov29_02353558
 	mvn r2, #1
 	ldr r1, [r0]
@@ -6961,7 +6961,7 @@ ov29_022E8F78: ; 0x022E8F78
 	ldr r0, _022E8FC8 ; =0x00003FCB
 	ldr r1, [r1]
 	ldrsb r4, [r1]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, #0
 	mov r3, r0
 	mov r0, r4

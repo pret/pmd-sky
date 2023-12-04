@@ -617,7 +617,7 @@ _0233D244:
 	mov r1, r1, asr #0x18
 	bl ov01_02337938
 	ldrsb r0, [r6, #4]
-	bl sub_0202C728
+	bl IsCollectionMenuActive
 	cmp r0, #0
 	bne _0233D8C8
 	ldrsb r0, [r6, #4]
@@ -631,7 +631,7 @@ _0233D244:
 	beq _0233D2AC
 	bl sub_0202836C
 	ldrsb r0, [r5, #4]
-	bl sub_0202C70C
+	bl CloseCollectionMenu
 	mvn r0, #1
 	strb r0, [r5, #4]
 _0233D2AC:
@@ -1201,7 +1201,7 @@ ov07_0233D9DC: ; 0x0233D9DC
 	mov r0, r5
 	mov r1, #0x100
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldr r1, _0233DAA4 ; =ov07_02341ACC
 	mov r0, r5
 	bl strcat
@@ -1320,7 +1320,7 @@ ov07_0233DB50: ; 0x0233DB50
 	mov r0, r5
 	mov r1, #0x100
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldr r1, _0233DC44 ; =ov07_02341ACC
 	mov r0, r5
 	bl strcat
@@ -1417,7 +1417,7 @@ _0233DCB0:
 	mov r0, r7
 	mov r1, #0x100
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 _0233DD3C:
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, r6, r7, pc}
@@ -5207,7 +5207,7 @@ _02340FFC:
 	bl ov01_02337938
 	add r0, r4, #0x200
 	ldrsb r0, [r0, #0xb8]
-	bl sub_0202D55C
+	bl IsOptionsMenuActive
 	cmp r0, #0
 	bne _023410A0
 	add r0, r4, #0x200
@@ -5727,7 +5727,7 @@ ov07_023416FC: ; 0x023416FC
 	ldrsb r0, [r0, #0xb8]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl sub_0202D530
+	bl CloseOptionsMenu
 	ldr r0, _02341734 ; =ov07_02341B78
 	mvn r1, #1
 	ldr r0, [r0]
@@ -5751,7 +5751,7 @@ ov07_02341738: ; 0x02341738
 	beq _0234177C
 	ldr r0, _0234179C ; =ov07_02341B00
 	ldr r1, _023417A0 ; =ov07_02341800
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02341798 ; =ov07_02341B78
 	ldr r1, [r1]
 	strb r0, [r1, #0x469]
@@ -5759,7 +5759,7 @@ ov07_02341738: ; 0x02341738
 _0234177C:
 	ldr r0, _023417A4 ; =ov07_02341AF0
 	ldr r1, _023417A0 ; =ov07_02341800
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02341798 ; =ov07_02341B78
 	ldr r1, [r1]
 	strb r0, [r1, #0x469]
@@ -5787,7 +5787,7 @@ ov07_023417A8: ; 0x023417A8
 	ldr r0, [r0]
 	add r0, r0, #0x400
 	ldrsb r0, [r0, #0x69]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _023417FC ; =ov07_02341B78
 	mvn r2, #1
 	ldr r1, [r0]

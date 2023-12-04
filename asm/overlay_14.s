@@ -407,7 +407,7 @@ ov14_0238A6B0: ; 0x0238A6B0
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -428,14 +428,14 @@ _0238A71C:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A778
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A778
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -456,14 +456,14 @@ _0238A784:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A7E0
-	bl sub_0202F66C
+	bl PortraitBoxNeedsUpdate
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A7E0
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -484,14 +484,14 @@ _0238A7EC:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A848
-	bl sub_0202FB9C
+	bl IsTextBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A848
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -512,14 +512,14 @@ _0238A854:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A8B0
-	bl sub_0202FB9C
+	bl IsTextBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A8B0
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -540,14 +540,14 @@ _0238A8BC:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A918
-	bl sub_0202FB9C
+	bl IsTextBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A918
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -568,14 +568,14 @@ _0238A924:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A980
-	bl sub_0202F66C
+	bl PortraitBoxNeedsUpdate
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A980
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -596,14 +596,14 @@ _0238A98C:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A9E8
-	bl sub_0202F66C
+	bl PortraitBoxNeedsUpdate
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A9E8
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #7]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -624,14 +624,14 @@ _0238A9F4:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238AA50
-	bl sub_0202F66C
+	bl PortraitBoxNeedsUpdate
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AA50
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -652,14 +652,14 @@ _0238AA5C:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238AAB8
-	bl sub_0202F66C
+	bl PortraitBoxNeedsUpdate
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AAB8
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #9]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -687,7 +687,7 @@ _0238AAC4:
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -715,7 +715,7 @@ _0238AB2C:
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AB9C ; =SENTRY_DUTY_PTR
 	mvn r1, #1
 	ldr r0, [r0]
@@ -745,7 +745,7 @@ ov14_0238ABA0: ; 0x0238ABA0
 	mov r1, r1, lsl #0x10
 	str r0, [sp, #0x28]
 	mov r0, r1, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp, #0x3c]
 	add r0, sp, #4
 	str r0, [sp]
@@ -807,7 +807,7 @@ ov14_0238AC40: ; 0x0238AC40
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	add r3, r3, #0xa4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238ACE4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
@@ -2010,7 +2010,7 @@ _0238BD6C:
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	add r3, r3, #0xa4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _0238BDA4:
 	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
@@ -2031,7 +2031,7 @@ _0238BDA4:
 	strb r0, [r3, #2]
 	ldr r0, [r2]
 	add r0, r0, #0xf4
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	mov r1, #0
 	ldr r0, [r0]
@@ -2046,7 +2046,7 @@ _0238BDA4:
 	ldr r1, [r0]
 	ldrsb r0, [r1, #2]
 	add r1, r1, #0xf4
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _0238BE30:
 	ldr r0, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
@@ -2059,7 +2059,7 @@ _0238BE30:
 	bne _0238BE6C
 	ldr r0, _0238C1A4 ; =ov14_0238D9F8
 	ldr r1, _0238C1A8 ; =ov14_0238ACEC
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #3]
@@ -2075,7 +2075,7 @@ _0238BE6C:
 	bne _0238BEA8
 	ldr r0, _0238C1AC ; =ov14_0238D988
 	ldr r1, _0238C1B0 ; =ov14_0238AD04
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #4]
@@ -2091,7 +2091,7 @@ _0238BEA8:
 	bne _0238BEE4
 	ldr r0, _0238C1B4 ; =ov14_0238D998
 	ldr r1, _0238C1B0 ; =ov14_0238AD04
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #5]
@@ -2175,11 +2175,11 @@ _0238BFE4:
 	bne _0238C030
 	ldr r0, _0238C1B8 ; =ov14_0238D9A8
 	mov r4, #8
-	ldr r3, _0238C1BC ; =FOOTPRINT_DEBUG_MENU
+	ldr r3, _0238C1BC ; =SENTRY_DEBUG_MENU_ITEMS
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
@@ -2199,7 +2199,7 @@ _0238C030:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C12C ; =SENTRY_DUTY_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xb]
@@ -2293,7 +2293,7 @@ _0238C1AC: .word ov14_0238D988
 _0238C1B0: .word ov14_0238AD04
 _0238C1B4: .word ov14_0238D998
 _0238C1B8: .word ov14_0238D9A8
-_0238C1BC: .word FOOTPRINT_DEBUG_MENU
+_0238C1BC: .word SENTRY_DEBUG_MENU_ITEMS
 _0238C1C0: .word ov14_0238D9E8
 _0238C1C4: .word ov14_0238DA08
 	arm_func_end SentryRunState
@@ -2894,7 +2894,7 @@ _0238C984:
 	add r0, sp, #0x10
 	str r6, [sp, #8]
 	str r5, [sp, #0xc]
-	bl InitPortraitBox
+	bl InitPortraitParams
 	add r0, sp, #0x10
 	mov r1, #3
 	bl SetPortraitLayout
@@ -2903,7 +2903,7 @@ _0238C984:
 	bl SetPortraitOffset
 	mov r0, r7
 	add r1, sp, #0x10
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _0238C9C0:
 	add r0, sb, #1
 	mov r0, r0, lsl #0x10
@@ -3223,13 +3223,13 @@ _0238CE0C:
 	mov sl, sb
 _0238CE50:
 	mov r0, r7
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldr r1, [r4]
 	mov r0, r7
 	add r1, r1, sb, lsl #1
 	add r1, r1, #0x3800
 	ldrsh r1, [r1, #0xa2]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldrb r1, [r6, sb]
 	mov r0, r7
 	bl SetPortraitLayout
@@ -3251,25 +3251,25 @@ _0238CEB0:
 	ldr r0, [r4]
 	mov r1, r7
 	ldrsb r0, [r0, #6]
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _0238CEFC
 _0238CEC4:
 	ldr r0, [r4]
 	mov r1, r7
 	ldrsb r0, [r0, #7]
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _0238CEFC
 _0238CED8:
 	ldr r0, [r4]
 	mov r1, r7
 	ldrsb r0, [r0, #8]
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _0238CEFC
 _0238CEEC:
 	ldr r0, [r4]
 	mov r1, r7
 	ldrsb r0, [r0, #9]
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _0238CEFC:
 	add r0, sb, #1
 	mov r0, r0, lsl #0x10
@@ -3431,7 +3431,7 @@ _0238D124:
 	add r0, sp, #0x10
 	str r6, [sp, #8]
 	str r5, [sp, #0xc]
-	bl InitPortraitBox
+	bl InitPortraitParams
 	add r0, sp, #0x10
 	mov r1, #3
 	bl SetPortraitLayout
@@ -3440,7 +3440,7 @@ _0238D124:
 	bl SetPortraitOffset
 	mov r0, r8
 	add r1, sp, #0x10
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _0238D160:
 	add r0, r7, #1
 	mov r0, r0, lsl #0x10
@@ -4220,8 +4220,8 @@ ov14_0238DA80:
 	.byte 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00
 	.byte 0x0A, 0x00, 0x00, 0x00
-	.global FOOTPRINT_DEBUG_MENU
-FOOTPRINT_DEBUG_MENU:
+	.global SENTRY_DEBUG_MENU_ITEMS
+SENTRY_DEBUG_MENU_ITEMS:
 	.byte 0xCE, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xCF, 0x06, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0xD0, 0x06, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xD1, 0x06, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0xD2, 0x06, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xD3, 0x06, 0x00, 0x00

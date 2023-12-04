@@ -700,7 +700,7 @@ _0233D244:
 	mov r0, r6
 	mov r1, #0x100
 	mov r3, #0x400
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r1, r6
 	add r0, r8, #0x40
 	bl sub_020255D8
@@ -710,7 +710,7 @@ _0233D244:
 	mov r0, r5
 	mov r1, #0x100
 	mov r3, #0x400
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, r8, #0x240
 	mov r1, r5
 	bl sub_020255D8
@@ -725,7 +725,7 @@ _0233D244:
 	mov r1, #0x100
 	mov r3, #0x400
 	str sb, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r1, r5
 	add r0, r6, #2
 	bl sub_020255D8

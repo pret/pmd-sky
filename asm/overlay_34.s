@@ -820,12 +820,12 @@ ov34_022DCBF4: ; 0x022DCBF4
 	ldr r1, _022DCC84 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	mov ip, #1
 	str r0, [r1]
-	ldr r3, _022DCC88 ; =START_MENU_CONFIRM
+	ldr r3, _022DCC88 ; =START_MENU_ITEMS_CONFIRM
 	add r2, sp, #0
 	mov r0, #0
 	mov r1, #0x31
 	str ip, [sp]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _022DCC84 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -839,7 +839,7 @@ ov34_022DCBF4: ; 0x022DCBF4
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r1, _022DCC84 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	mov r3, #0
 	ldr r2, [r1]
@@ -850,7 +850,7 @@ ov34_022DCBF4: ; 0x022DCBF4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022DCC84: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD084
-_022DCC88: .word START_MENU_CONFIRM
+_022DCC88: .word START_MENU_ITEMS_CONFIRM
 _022DCC8C: .word 0x00000408
 _022DCC90: .word 0x00000255
 	arm_func_end ov34_022DCBF4
@@ -863,11 +863,11 @@ ov34_022DCC94: ; 0x022DCC94
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _022DCCDC ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _022DCCDC ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	bl MemFree
@@ -894,7 +894,7 @@ ov34_022DCCE0: ; 0x022DCCE0
 	b _022DCDC0
 _022DCD0C:
 	ldrsb r0, [r2]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	bne _022DCDC0
 	ldr r0, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
@@ -913,7 +913,7 @@ _022DCD0C:
 	b _022DCDC0
 _022DCD54:
 	ldrsb r0, [r2]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _022DCDC0
 	ldr r0, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
@@ -973,12 +973,12 @@ ov34_022DCDF4: ; 0x022DCDF4
 	mov r1, r0
 	bl MemAlloc
 	ldr r1, _022DCE7C ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
-	ldr r3, _022DCE80 ; =DUNGEON_DEBUG_MENU
+	ldr r3, _022DCE80 ; =DUNGEON_DEBUG_MENU_ITEMS
 	str r0, [r1]
 	add r2, sp, #0
 	mov r0, #0
 	mov r1, #0x11
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _022DCE7C ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -992,7 +992,7 @@ ov34_022DCDF4: ; 0x022DCDF4
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r1, _022DCE7C ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	mov r3, #0
 	ldr r2, [r1]
@@ -1003,7 +1003,7 @@ ov34_022DCDF4: ; 0x022DCDF4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022DCE7C: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
-_022DCE80: .word DUNGEON_DEBUG_MENU
+_022DCE80: .word DUNGEON_DEBUG_MENU_ITEMS
 _022DCE84: .word 0x00000408
 #ifdef EUROPE
 _022DCE88: .word 0x00003D1E
@@ -1020,11 +1020,11 @@ ov34_022DCE8C: ; 0x022DCE8C
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _022DCED4 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _022DCED4 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	bl MemFree
@@ -1051,7 +1051,7 @@ ov34_022DCED8: ; 0x022DCED8
 	b _022DCFE8
 _022DCF04:
 	ldrsb r0, [r3]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	bne _022DCFE8
 	ldr r0, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
@@ -1070,7 +1070,7 @@ _022DCF04:
 	b _022DCFE8
 _022DCF4C:
 	ldrsb r0, [r3]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _022DCFE8
 	ldr r0, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
@@ -1138,8 +1138,8 @@ OVERLAY34_UNKNOWN_STRUCT__NA_22DD014:
 	.word ov34_022DCBF4
 	.word ov34_022DCC94
 	.word ov34_022DCCE0
-	.global START_MENU_CONFIRM
-START_MENU_CONFIRM:
+	.global START_MENU_ITEMS_CONFIRM
+START_MENU_ITEMS_CONFIRM:
 	.byte 0x56, 0x02, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x57, 0x02, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
@@ -1148,8 +1148,8 @@ OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C:
 	.word ov34_022DCDF4
 	.word ov34_022DCE8C
 	.word ov34_022DCED8
-	.global DUNGEON_DEBUG_MENU
-DUNGEON_DEBUG_MENU:
+	.global DUNGEON_DEBUG_MENU_ITEMS
+DUNGEON_DEBUG_MENU_ITEMS:
 #ifdef EUROPE
 #define DUNGEON_DEBUG_MENU_OFFSET 2
 #else

@@ -14,7 +14,8 @@
 .public CeilFixedPoint
 .public CheckTeamItemsFlags
 .public CheckTouchscreenArea
-.public CreateTextBox1
+.public CloseTextBox
+.public CreateTextBox
 .public DIRECTIONS_XY
 .public DrawTileGrid
 .public DUNGEON_PTR
@@ -187,7 +188,6 @@
 .public sub_02026268
 .public sub_02027AF0
 .public sub_02027B1C
-.public sub_0202F8FC
 .public sub_0204AEA0
 .public sub_0204AEB0
 .public sub_0204AEC0

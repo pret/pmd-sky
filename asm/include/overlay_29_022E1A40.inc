@@ -41,7 +41,7 @@
 .public ov29_0237C84C
 .public SECONDARY_TERRAIN_TYPES
 .public strcpy
-.public StringFromMessageId
+.public StringFromId
 .public sub_02009194
 .public sub_020091B0
 .public TeamMemberHasEnabledIqSkill

@@ -43,7 +43,7 @@ GetDungeonResultMsg: ; 0x0200C4FC
 	ldrh r1, [sp, #8]
 	ldr r0, _0200C5AC ; =0x000009CB
 	str r1, [sp, #0x1c]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add r4, sp, #0xc
 	mov r1, r5
@@ -58,7 +58,7 @@ _0200C570:
 	ldr r0, _0200C5B0 ; =_0209E7A6
 	mov r1, r1, lsl #2
 	ldrh r0, [r0, r1]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	mov r0, r6
 	mov r1, r5
@@ -96,7 +96,7 @@ sub_0200C5DC: ; 0x0200C5DC
 	sub sp, sp, #0x400
 	mov r5, r1
 	mov r6, r0
-	bl sub_020275F8
+	bl GetWindow
 	ldrb r1, [r5, #0x5c]
 	ldrb r4, [r0, #6]
 	cmp r1, #0x3d
@@ -106,7 +106,7 @@ sub_0200C5DC: ; 0x0200C5DC
 	ldrb r1, [r5, #0x5d]
 	ldr r0, _0200CA18 ; =0x000009CC
 	str r1, [sp, #0x28]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add ip, sp, #4
 	add r0, sp, #0x54
@@ -129,7 +129,7 @@ sub_0200C5DC: ; 0x0200C5DC
 	cmp r0, #0
 	beq _0200C698
 	ldr r0, _0200CA1C ; =0x000009CD
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add ip, sp, #4
 	add r0, sp, #0x54
@@ -140,7 +140,7 @@ sub_0200C5DC: ; 0x0200C5DC
 	b _0200C6BC
 _0200C698:
 	ldr r0, _0200CA20 ; =0x000009CE
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add ip, sp, #4
 	add r0, sp, #0x54
@@ -177,7 +177,7 @@ _0200C6BC:
 	str r1, [sp, #0x28]
 	ldrb r1, [r5, #0x6e]
 	str r1, [sp, #0x2c]
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #4
 	mov r2, r0
 	str r1, [sp]
@@ -193,7 +193,7 @@ _0200C6BC:
 	ldrsh r1, [r5, #0x68]
 	mov r0, #0x9d0
 	str r1, [sp, #0x28]
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #4
 	mov r2, r0
 	str r1, [sp]
@@ -216,7 +216,7 @@ _0200C6BC:
 	ldr r0, _0200CA28 ; =0x000009D5
 	add r1, r2, r1
 	str r1, [sp, #0x28]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add r4, sp, #4
 	add r0, sp, #0x54
@@ -227,7 +227,7 @@ _0200C6BC:
 	b _0200C810
 _0200C7EC:
 	ldr r0, _0200CA2C ; =0x000009D1
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add r4, sp, #4
 	add r0, sp, #0x54
@@ -248,7 +248,7 @@ _0200C810:
 	ldr r0, _0200CA30 ; =0x000009D6
 	add r1, r1, r2
 	str r1, [sp, #0x2c]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add r4, sp, #4
 	add r0, sp, #0x54
@@ -259,7 +259,7 @@ _0200C810:
 	b _0200C888
 _0200C864:
 	ldr r0, _0200CA34 ; =0x000009D2
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add r4, sp, #4
 	add r0, sp, #0x54
@@ -283,7 +283,7 @@ _0200C888:
 	ldr r0, _0200CA38 ; =0x000009D7
 	add r1, r2, r1
 	str r1, [sp, #0x28]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add r4, sp, #4
 	add r0, sp, #0x54
@@ -294,7 +294,7 @@ _0200C888:
 	b _0200C90C
 _0200C8E8:
 	ldr r0, _0200CA3C ; =0x000009D3
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add r4, sp, #4
 	add r0, sp, #0x54
@@ -315,7 +315,7 @@ _0200C90C:
 	ldr r0, _0200CA40 ; =0x000009D8
 	add r1, r1, r2
 	str r1, [sp, #0x2c]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add r4, sp, #4
 	add r0, sp, #0x54
@@ -326,7 +326,7 @@ _0200C90C:
 	b _0200C984
 _0200C960:
 	ldr r0, _0200CA44 ; =0x000009D4
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add r4, sp, #4
 	add r0, sp, #0x54
@@ -352,7 +352,7 @@ _0200C984:
 	str r0, [sp, #0x3c]
 	bl sub_0200D670
 	ldr r0, _0200CA4C ; =0x000009DA
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #4
 	mov r2, r0
 	str r1, [sp]
@@ -2805,7 +2805,7 @@ GetItemName: ; 0x0200E864
 #endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	ldmia sp!, {r3, pc}
 	arm_func_end GetItemName
 
@@ -2832,7 +2832,7 @@ GetItemNameFormatted: ; 0x0200E884
 #endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r4, r0
 	mov r0, r7
 	bl EnsureValidItem
@@ -8997,11 +8997,11 @@ GetMoveName: ; 0x02013454
 	add r0, r0, #0x1f00
 #endif
 	mov r0, r0, lsl #0x10
-	ldr ip, _02013474 ; =StringFromMessageId
+	ldr ip, _02013474 ; =StringFromId
 	mov r0, r0, lsr #0x10
 	bx ip
 	.align 2, 0
-_02013474: .word StringFromMessageId
+_02013474: .word StringFromId
 	arm_func_end GetMoveName
 
 	arm_func_start FormatMoveString
@@ -9070,7 +9070,7 @@ _02013534:
 #endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	ldr r1, _02013740 ; =_02098DF4
 	add r3, sp, #0x10
@@ -9088,7 +9088,7 @@ _02013564:
 #endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	ldrb r1, [r6]
 	mov r5, r0
 	mov r0, r6
@@ -9119,7 +9119,7 @@ _020135C8:
 #endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	ldrb r1, [r6]
 	mov r5, r0
 	mov r0, r6
@@ -9150,7 +9150,7 @@ _0201362C:
 #endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	ldrb r1, [r6]
 	mov r5, r0
 	mov r0, r6
@@ -9181,7 +9181,7 @@ _02013690:
 #endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	ldrb r1, [r6]
 	mov r5, r0
 	mov r0, r6
@@ -9212,7 +9212,7 @@ _020136F4:
 #endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r4, r0
 	mov r0, r6
 	bl GetMaxPp
@@ -9684,7 +9684,7 @@ GetMoveMessageFromId: ; 0x02013C30
 	ldr r2, _02013C5C ; =DUNGEON_MOVE_TABLES
 	mov r1, #0x1a
 	ldr r2, [r2, #8]
-	ldr ip, _02013C60 ; =StringFromMessageId
+	ldr ip, _02013C60 ; =StringFromId
 	mla r1, r0, r1, r2
 	ldrh r0, [r1, #0x18]
 	add r0, r0, #0x314
@@ -9694,7 +9694,7 @@ GetMoveMessageFromId: ; 0x02013C30
 	bx ip
 	.align 2, 0
 _02013C5C: .word DUNGEON_MOVE_TABLES
-_02013C60: .word StringFromMessageId
+_02013C60: .word StringFromId
 	arm_func_end GetMoveMessageFromId
 
 	arm_func_start GetNbMoves
@@ -11713,7 +11713,7 @@ _020155F8: .word _02098EA8
 sub_020155FC: ; 0x020155FC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x104
-	bl StringFromMessageId
+	bl StringFromId
 	mov r8, #0
 	mov r7, r0
 	mov sb, r8
@@ -11968,9 +11968,9 @@ _02015A0C:
 	cmp r0, #0
 	beq _02015B08
 	ldr r0, [sp, #0x48]
-	bl StoiTagVeneer
+	bl AtoiTagVeneer
 	ldr r0, [sp, #0x4c]
-	bl StoiTagVeneer
+	bl AtoiTagVeneer
 	ldr r1, _02015D10 ; =_020AF710
 	add ip, r5, #2
 	ldr r1, [r1]
@@ -12236,9 +12236,9 @@ _0201592C:
 	cmp r0, #0
 	beq _02015CD8
 	ldr r0, [sp, #0x48]
-	bl StoiTagVeneer
+	bl AtoiTagVeneer
 	ldr r0, [sp, #0x4c]
-	bl StoiTagVeneer
+	bl AtoiTagVeneer
 	ldr r1, _02015D10 ; =_020AF710
 	add ip, r5, #2
 	ldr r1, [r1]
@@ -12595,7 +12595,7 @@ sub_02015E44: ; 0x02015E44
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	mov r1, r4
 	mov r0, #0
@@ -12910,9 +12910,9 @@ _0201622C:
 	cmp r0, #0
 	beq _02016270
 	ldr r0, [sp, #4]
-	bl StoiTagVeneer
+	bl AtoiTagVeneer
 	ldr r0, [sp, #8]
-	bl StoiTagVeneer
+	bl AtoiTagVeneer
 	mov r0, r0, lsl #0x10
 	add r5, r5, r0, asr #16
 	b _02016270
@@ -25822,8 +25822,8 @@ _020208F0:
 	bx lr
 	arm_func_end StrcmpTag
 
-	arm_func_start StoiTag
-StoiTag: ; 0x0202090C
+	arm_func_start AtoiTag
+AtoiTag: ; 0x0202090C
 	mov r3, #0
 	mov r1, #0xa
 _02020914:
@@ -25839,7 +25839,7 @@ _02020914:
 	mlals r2, r3, r1, r2
 	subls r3, r2, #0x30
 	b _02020914
-	arm_func_end StoiTag
+	arm_func_end AtoiTag
 
 	arm_func_start sub_02020944
 sub_02020944: ; 0x02020944
@@ -25855,7 +25855,7 @@ sub_02020948: ; 0x02020948
 	cmp r4, #0x5a
 	bhi _02020A24
 	add r0, r0, #1
-	bl StoiTag
+	bl AtoiTag
 	mov r0, r0, lsl #0x10
 	cmp r4, #0x49
 	mov r0, r0, asr #0x10
@@ -25917,7 +25917,7 @@ _02020A24:
 	blo _02020A44
 	cmp r4, #0x39
 	bhi _02020A44
-	bl StoiTag
+	bl AtoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	ldmia sp!, {r4, pc}
@@ -26433,7 +26433,7 @@ _02021098:
 	cmp r6, #3
 	bne _020210F0
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	ldrb r2, [r4, #0x9c]
 	cmp r2, #0
 	cmpne r0, #3
@@ -26485,7 +26485,7 @@ _02021158:
 	cmp r6, #2
 	bne _020211B0
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	ldrb r1, [r4, #0x9c]
 	cmp r1, #0
 	cmpne r0, #3
@@ -26566,7 +26566,7 @@ _02021278:
 	cmp r0, #0
 	beq _0202129C
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	str r0, [r4, #0x90]
 	b _02021AA0
 _0202129C:
@@ -26576,7 +26576,7 @@ _0202129C:
 	cmp r0, #0
 	beq _020212C8
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	ldr r1, [r4, #0x90]
 	add r0, r1, r0
 	str r0, [r4, #0x90]
@@ -26648,7 +26648,7 @@ _020213A8:
 	cmp r0, #0
 	beq _020213CC
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	str r0, [r4, #0x58]
 	b _020213F4
 _020213CC:
@@ -26743,7 +26743,7 @@ _0202145C:
 	cmp r0, #0
 	beq _020214E8
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	ldr r2, [r4, #0xa4]
 	mov r1, #0x18
 	mul r3, r2, r1
@@ -26821,10 +26821,10 @@ _02021588:
 	cmp r0, #0
 	beq _0202166C
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	mov r5, r0
 	ldr r0, [sp, #0x78 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	mov r6, r0
 	ldr r0, _02021F10 ; =_020997E4
 	mov r1, r5, lsl #1
@@ -26920,7 +26920,7 @@ _020216F8:
 	cmp r0, #0
 	beq _02021728
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	ldr r2, [r4, #0x90]
 	mov r1, #6
 	mla r1, r0, r1, r2
@@ -26960,7 +26960,7 @@ _02021764:
 	tst r0, #1
 	bne _02021AA0
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017C50
@@ -27057,7 +27057,7 @@ _020218D8:
 	cmp r0, #0
 	beq _02021904
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	ldr r1, [r4, #0x90]
 	add r0, r1, r0
 	str r0, [r4, #0x90]
@@ -27091,7 +27091,7 @@ _0202194C:
 	tst r0, #1
 	bne _02021AA0
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017C80
@@ -27117,7 +27117,7 @@ _020219AC:
 	tst r0, #1
 	bne _02021AA0
 	ldr r0, [sp, #0x74 + ANALYZE_TEXT_STACK_OFFSET]
-	bl StoiTag
+	bl AtoiTag
 	str r0, [r4, #0x7c]
 	mov r0, #6
 	str r0, [r4, #0x5c]
@@ -27772,7 +27772,7 @@ _02022280:
 	cmp r0, #0
 	beq _020222A4
 	mov r0, r5
-	bl StoiTag
+	bl AtoiTag
 	add r4, r4, r0
 	b _0202212C
 _020222A4:
@@ -27782,7 +27782,7 @@ _020222A4:
 	cmp r0, #0
 	beq _020222CC
 	mov r0, r5
-	bl StoiTag
+	bl AtoiTag
 	mov r1, #6
 	mla r4, r0, r1, r4
 	b _0202212C
@@ -27807,10 +27807,10 @@ _020222E8:
 	cmp r0, #0x3a
 	bne _020222E8
 	mov r0, r5
-	bl StoiTag
+	bl AtoiTag
 	mov r5, r0
 	mov r0, r6
-	bl StoiTag
+	bl AtoiTag
 	ldr r1, _020223DC ; =_020997E4
 	mov r2, r5, lsl #1
 	mov r5, r0
@@ -28036,7 +28036,7 @@ _02022628:
 	cmp r0, #0
 	beq _02022658
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28050,7 +28050,7 @@ _02022658:
 	cmp r0, #0
 	beq _02022694
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r2, r8, r0, lsl #2
 	ldr r1, [r2, #0x10]
 	ldr r2, [r2, #0x24]
@@ -28082,7 +28082,7 @@ _020226BC:
 	cmp r0, #0
 	beq _020226F0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -28096,7 +28096,7 @@ _020226F0:
 	cmp r0, #0
 	beq _02022724
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -28132,7 +28132,7 @@ _02022774:
 	cmp r0, #0
 	beq _020227A8
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28185,7 +28185,7 @@ _02022838:
 	cmp r0, #0
 	beq _02022870
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r2, [r0, #0x24]
 	ldr r1, _020234AC ; =_02099AD0
@@ -28200,7 +28200,7 @@ _02022870:
 	cmp r0, #0
 	beq _020228A8
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r2, [r0, #0x24]
 	ldr r1, _020234B4 ; =_02099AE0
@@ -28215,7 +28215,7 @@ _020228A8:
 	cmp r0, #0
 	beq _020228E0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	ldr r2, [r0, #0x24]
@@ -28259,7 +28259,7 @@ _02022938:
 	cmp r0, #0
 	beq _0202296C
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -28289,7 +28289,7 @@ _02022994:
 	cmp r0, #0
 	beq _020229C8
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -28329,7 +28329,7 @@ _02022A14:
 	cmp r0, #0
 	beq _02022A48
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28343,7 +28343,7 @@ _02022A48:
 	cmp r0, #0
 	beq _02022A7C
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -28357,7 +28357,7 @@ _02022A7C:
 	cmp r0, #0
 	beq _02022AB0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x24]
 	add r0, sp, #0x1c8
@@ -28414,7 +28414,7 @@ _02022B28:
 	cmp r0, #0
 	beq _02022B64
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r3, r8, r0, lsl #2
 	ldr r1, [r3, #0x10]
 	ldr r2, [r3, #0x24]
@@ -28441,7 +28441,7 @@ _02022B8C:
 	cmp r0, #0
 	beq _02022BBC
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	ldr r1, [r8, r0, lsl #2]
 	add r0, sp, #0x1c8
 	bl sub_02023920
@@ -28470,7 +28470,7 @@ _02022BE4:
 	cmp r0, #0
 	beq _02022C14
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	ldr r1, [r8, r0, lsl #2]
 	add r0, sp, #0x1c8
 	bl sub_02023B68
@@ -28510,7 +28510,7 @@ _02022C64:
 	cmp r0, #0
 	beq _02022C9C
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	ldr r2, [r0, #0x24]
@@ -28525,7 +28525,7 @@ _02022C9C:
 	cmp r0, #0
 	beq _02022CD4
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r2, [r0, #0x24]
 	ldr r1, _020234F4 ; =_02099B7C
@@ -28615,7 +28615,7 @@ _02022DD4:
 	cmp r0, #0
 	beq _02022E08
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28645,7 +28645,7 @@ _02022E30:
 	cmp r0, #0
 	beq _02022E64
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28659,7 +28659,7 @@ _02022E64:
 	cmp r0, #0
 	beq _02022E98
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28689,7 +28689,7 @@ _02022EC0:
 	cmp r0, #0
 	beq _02022EF8
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	mov r2, #0
 	orr r1, r0, #0x50000
 	add r0, sp, #0x1c8
@@ -28712,7 +28712,7 @@ _02022EF8:
 	cmp r6, #2
 	bne _020232F0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r7, [r0, #0x38]
 	b _020232F0
@@ -28723,7 +28723,7 @@ _02022F40:
 	cmp r0, #0
 	beq _02022F78
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r2, [r0, #0x24]
 	ldr r1, _02023528 ; =_02099BFC
@@ -28749,7 +28749,7 @@ _02022FA0:
 	cmp r0, #0
 	beq _02022FD4
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28763,7 +28763,7 @@ _02022FD4:
 	cmp r0, #0
 	beq _02023008
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28777,7 +28777,7 @@ _02023008:
 	cmp r0, #0
 	beq _0202303C
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28801,7 +28801,7 @@ _0202306C:
 	cmp r6, #2
 	bne _020232F0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -28815,7 +28815,7 @@ _02023094:
 	cmp r0, #0
 	beq _02023114
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r5, [r0, #0x24]
 	mov r1, #0xe10
@@ -28864,10 +28864,10 @@ _0202313C:
 	cmp r0, #0
 	beq _02023180
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	mov r5, r0
 	ldr r0, [sp, #0xbc]
-	bl StoiTag
+	bl AtoiTag
 	add r1, r8, r5, lsl #2
 	mov r2, r0
 	ldr r1, [r1, #0x24]
@@ -28882,10 +28882,10 @@ _02023180:
 	cmp r0, #0
 	beq _020231D8
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	mov r5, r0
 	ldr r0, [sp, #0xbc]
-	bl StoiTag
+	bl AtoiTag
 	add r1, r8, r5, lsl #2
 	ldr r3, [r1, #0x24]
 	mov r2, r0
@@ -28905,7 +28905,7 @@ _020231D8:
 	cmp r0, #0
 	beq _02023214
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r2, r8, r0, lsl #2
 	ldr r1, [r2, #0x10]
 	ldr r2, [r2, #0x24]
@@ -28937,7 +28937,7 @@ _0202323C:
 	cmp r0, #0
 	beq _0202326C
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	ldr r1, [r8, r0, lsl #2]
 	add r0, sp, #0x1c8
 	bl sub_02024AA8
@@ -28950,7 +28950,7 @@ _0202326C:
 	cmp r0, #0
 	beq _020232A0
 	ldr r0, [sp, #0xb8]
-	bl StoiTag
+	bl AtoiTag
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
@@ -29186,15 +29186,15 @@ SprintfStatic__02023590: ; 0x02023590
 	bx lr
 	arm_func_end SprintfStatic__02023590
 
-	arm_func_start PreprocessStringFromMessageId
-PreprocessStringFromMessageId: ; 0x020235B8
+	arm_func_start PreprocessStringFromId
+PreprocessStringFromId: ; 0x020235B8
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
 	mov r0, r2
 	mov r5, r1
 	mov r4, r3
-	bl StringFromMessageId
+	bl StringFromId
 	ldr ip, [sp, #0x18]
 	mov r2, r0
 	mov r0, r6
@@ -29204,7 +29204,7 @@ PreprocessStringFromMessageId: ; 0x020235B8
 	bl PreprocessString
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end PreprocessStringFromMessageId
+	arm_func_end PreprocessStringFromId
 
 	arm_func_start StrcmpTagVeneer
 StrcmpTagVeneer: ; 0x020235F8
@@ -29214,13 +29214,13 @@ StrcmpTagVeneer: ; 0x020235F8
 _02023600: .word StrcmpTag
 	arm_func_end StrcmpTagVeneer
 
-	arm_func_start StoiTagVeneer
-StoiTagVeneer: ; 0x02023604
-	ldr ip, _0202360C ; =StoiTag
+	arm_func_start AtoiTagVeneer
+AtoiTagVeneer: ; 0x02023604
+	ldr ip, _0202360C ; =AtoiTag
 	bx ip
 	.align 2, 0
-_0202360C: .word StoiTag
-	arm_func_end StoiTagVeneer
+_0202360C: .word AtoiTag
+	arm_func_end AtoiTagVeneer
 
 #ifdef EUROPE
 	arm_func_start sub_0202380C_EU
@@ -30566,7 +30566,7 @@ _0202451C:
 	mov r1, r0, lsl #0x10
 	add r0, sp, #0
 	mov r1, r1, lsr #0x10
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	cmp r4, #0x11
 	add r2, sp, #0
 	bne _02024550
@@ -31105,7 +31105,7 @@ sub_02024AA8: ; 0x02024AA8
 	add r0, r0, #0xa00
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r4
 	bl strcpy
@@ -31130,7 +31130,7 @@ sub_02024AF4: ; 0x02024AF4
 	add r0, r0, #0x100
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	ldr r1, _02024B40 ; =_02099E08
 	mov r0, r4
@@ -31161,7 +31161,7 @@ sub_02024B48: ; 0x02024B48
 	add r0, r0, #0x2700
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r4
 	bl strcpy
@@ -31184,7 +31184,7 @@ sub_02024B94: ; 0x02024B94
 	bne _02024BCC
 	and r0, r0, #0xff
 	bl GetTypeStringId
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r4
 	bl strcpy
@@ -31423,10 +31423,10 @@ sub_02024E34: ; 0x02024E34
 	mov sl, r0
 	ldr r0, _02024F94 ; =0x000001B1
 	mov r4, r1
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	ldr r0, _02024F98 ; =0x000001B2
-	bl StringFromMessageId
+	bl StringFromId
 	ldr r1, _02024F9C ; =0x000029D1
 	mov fp, r0
 	cmp r4, r1
@@ -32302,8 +32302,8 @@ GetStringFromFileVeneer: ; 0x020258B8
 _020258C0: .word GetStringFromFile
 	arm_func_end GetStringFromFileVeneer
 
-	arm_func_start StringFromMessageId
-StringFromMessageId: ; 0x020258C4
+	arm_func_start StringFromId
+StringFromId: ; 0x020258C4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl sub_02025888
@@ -32312,10 +32312,10 @@ StringFromMessageId: ; 0x020258C4
 	bl GetStringFromFile
 	mov r0, r4
 	ldmia sp!, {r4, pc}
-	arm_func_end StringFromMessageId
+	arm_func_end StringFromId
 
-	arm_func_start CopyStringFromMessageId
-CopyStringFromMessageId: ; 0x020258E4
+	arm_func_start CopyStringFromId
+CopyStringFromId: ; 0x020258E4
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x400
 	mov r4, r0
@@ -32326,10 +32326,10 @@ CopyStringFromMessageId: ; 0x020258E4
 	bl strcpy
 	add sp, sp, #0x400
 	ldmia sp!, {r4, pc}
-	arm_func_end CopyStringFromMessageId
+	arm_func_end CopyStringFromId
 
-	arm_func_start CopyNStringFromMessageId
-CopyNStringFromMessageId: ; 0x0202590C
+	arm_func_start CopyNStringFromId
+CopyNStringFromId: ; 0x0202590C
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x400
 	mov r5, r0
@@ -32342,7 +32342,7 @@ CopyNStringFromMessageId: ; 0x0202590C
 	bl strncpy
 	add sp, sp, #0x400
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end CopyNStringFromMessageId
+	arm_func_end CopyNStringFromId
 
 	arm_func_start LoadTblTalk
 LoadTblTalk: ; 0x0202593C
@@ -32750,7 +32750,7 @@ sub_02025D90: ; 0x02025D90
 _02025DB4:
 	mov r0, fp
 	mov r5, sl
-	bl sub_020275F8
+	bl GetWindow
 	mov r4, r0
 	mov r0, fp
 	bl sub_0202760C
@@ -32884,7 +32884,7 @@ _02025F5C:
 	cmp r0, #0
 	bne _02025FAC
 	ldrsb r0, [r5]
-	bl sub_020275F8
+	bl GetWindow
 	ldrsb r1, [r0, #9]
 	mvn r0, #5
 	cmp r1, r0
@@ -32894,7 +32894,7 @@ _02025F5C:
 	ldrsb r0, [r5]
 	add r4, sp, #0x28
 	mov r1, r4
-	bl sub_02028284
+	bl GetWindowRectangle
 _02025FAC:
 	add r0, sp, #4
 	bl GetReleasedStylus
@@ -33031,7 +33031,7 @@ sub_020260C4: ; 0x020260C4
 	mov r6, r1
 	add r1, sp, #0
 	mov r5, r2
-	bl sub_02028284
+	bl GetWindowRectangle
 	cmp r6, #0
 	bge _02026118
 	ldr r1, [sp, #8]
@@ -33211,7 +33211,7 @@ sub_02026268: ; 0x02026268
 	add r0, sp, #0xc
 	mov r1, #0x400
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, sp, #0x400
 	add r0, r0, #0xc
 	mov r1, r4
@@ -33246,7 +33246,7 @@ sub_020262E0: ; 0x020262E0
 	add r0, sp, #0xc
 	mov r1, #0x400
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, sp, #0x400
 	add r0, r0, #0xc
 	mov r1, r4
@@ -33616,7 +33616,7 @@ sub_0202676C: ; 0x0202676C
 	mov r6, r2
 	mov r7, r3
 	ldr r5, [sp, #0x50]
-	bl sub_020275F8
+	bl GetWindow
 	ldr r1, _02026B14 ; =_020AFD04
 	str r0, [sp, #0x18]
 #ifdef EUROPE
@@ -34771,15 +34771,15 @@ _020275F0: .word _022A7B00
 _020275F4: .word _022A7A8C
 	arm_func_end sub_020275DC
 
-	arm_func_start sub_020275F8
-sub_020275F8: ; 0x020275F8
+	arm_func_start GetWindow
+GetWindow: ; 0x020275F8
 	ldr r2, _02027608 ; =_022A88DC
 	mov r1, #0xe0
 	mla r0, r1, r0, r2
 	bx lr
 	.align 2, 0
 _02027608: .word _022A88DC
-	arm_func_end sub_020275F8
+	arm_func_end GetWindow
 
 	arm_func_start sub_0202760C
 sub_0202760C: ; 0x0202760C
@@ -35657,8 +35657,8 @@ _0202818C: .word _022A88E4
 _02028190: .word _020AFD4C
 	arm_func_end sub_0202812C
 
-	arm_func_start sub_02028194
-sub_02028194: ; 0x02028194
+	arm_func_start DeleteWindow
+DeleteWindow: ; 0x02028194
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r2, _02028224 ; =_022A88DC
 	mov r1, #0xe0
@@ -35700,7 +35700,7 @@ _020281EC:
 	.align 2, 0
 _02028224: .word _022A88DC
 _02028228: .word _022A7A74
-	arm_func_end sub_02028194
+	arm_func_end DeleteWindow
 
 	arm_func_start sub_0202822C
 sub_0202822C: ; 0x0202822C
@@ -35739,8 +35739,8 @@ sub_02028270: ; 0x02028270
 _02028280: .word _022A7A74
 	arm_func_end sub_02028270
 
-	arm_func_start sub_02028284
-sub_02028284: ; 0x02028284
+	arm_func_start GetWindowRectangle
+GetWindowRectangle: ; 0x02028284
 	ldr r3, _020282C4 ; =_022A88DC
 	mov r2, #0xe0
 	mla r3, r0, r2, r3
@@ -35759,7 +35759,7 @@ sub_02028284: ; 0x02028284
 	bx lr
 	.align 2, 0
 _020282C4: .word _022A88DC
-	arm_func_end sub_02028284
+	arm_func_end GetWindowRectangle
 
 	arm_func_start sub_020282C8
 sub_020282C8: ; 0x020282C8
@@ -38411,7 +38411,7 @@ _0202A504:
 _0202A564:
 	add r0, sp, #0x18
 	mov r1, #0
-	bl CreateTextBox1
+	bl CreateTextBox
 	mov r1, #0
 	mov r4, r0
 	bl sub_02027A08
@@ -38439,8 +38439,8 @@ _0202A5C4: .word _0209AE44
 _0202A5C8: .word _0209AE34
 	arm_func_end sub_0202A45C
 
-	arm_func_start sub_0202A5CC
-sub_0202A5CC: ; 0x0202A5CC
+	arm_func_start CreateParentMenuFromStringIds
+CreateParentMenuFromStringIds: ; 0x0202A5CC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, r3
 	mov r8, r1
@@ -38483,12 +38483,12 @@ _0202A638:
 	mov r2, r7
 	mov r3, r4
 	str r6, [r5, #0x100]
-	bl CreateParentMenu
+	bl CreateParentMenuInternal
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_0202A5CC
+	arm_func_end CreateParentMenuFromStringIds
 
-	arm_func_start sub_0202A66C
-sub_0202A66C: ; 0x0202A66C
+	arm_func_start IsEmptyString
+IsEmptyString: ; 0x0202A66C
 	cmp r0, #0
 	moveq r0, #1
 	bxeq lr
@@ -38498,10 +38498,10 @@ sub_0202A66C: ; 0x0202A66C
 	movne r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end sub_0202A66C
+	arm_func_end IsEmptyString
 
-	arm_func_start sub_0202A690
-sub_0202A690: ; 0x0202A690
+	arm_func_start CreateParentMenu
+CreateParentMenu: ; 0x0202A690
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, r3
 	mov r8, r1
@@ -38544,14 +38544,14 @@ _0202A6FC:
 	mov r2, r7
 	mov r3, r4
 	str r6, [r5, #0x100]
-	bl CreateParentMenu
+	bl CreateParentMenuInternal
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_0202A690
+	arm_func_end CreateParentMenu
 
-	arm_func_start sub_0202A730
-sub_0202A730: ; 0x0202A730
+	arm_func_start CreateParentMenuWrapper
+CreateParentMenuWrapper: ; 0x0202A730
 	stmdb sp!, {r4, lr}
-	bl sub_0202A690
+	bl CreateParentMenu
 	mov r4, r0
 	mvn r1, #1
 	cmp r4, r1
@@ -38562,10 +38562,10 @@ sub_0202A730: ; 0x0202A730
 _0202A754:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202A730
+	arm_func_end CreateParentMenuWrapper
 
-	arm_func_start CreateParentMenu
-CreateParentMenu: ; 0x0202A75C
+	arm_func_start CreateParentMenuInternal
+CreateParentMenuInternal: ; 0x0202A75C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
 	mov r6, r0
@@ -38589,7 +38589,7 @@ CreateParentMenu: ; 0x0202A75C
 	mov r5, r8
 	strne r0, [sp, #0x1c]
 	bne _0202A7CC
-	ldr r0, _0202A950 ; =_0209AE90
+	ldr r0, _0202A950 ; =PARENT_MENU_DEFAULT_WINDOW_PARAMS
 	add r6, sp, #0x1c
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r6, {r0, r1, r2, r3}
@@ -38609,7 +38609,7 @@ _0202A7E4:
 	add r5, r5, #0x104
 _0202A7F8:
 	mov r0, r5
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202A7E4
 	mov r0, sl
@@ -38634,7 +38634,7 @@ _0202A83C:
 	str r0, [sp, #8]
 _0202A84C:
 	mov r0, r5
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202A828
 	ldrb r0, [sp, #0x23]
@@ -38644,7 +38644,7 @@ _0202A84C:
 	mov r0, sl
 	mov r1, sb
 	mov r3, r2
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 	strb r0, [sp, #0x23]
 _0202A880:
 	tst sl, #0x200000
@@ -38688,7 +38688,7 @@ _0202A8DC:
 	bl NewWindowScreenCheck
 	add r1, sp, #0xc
 	mov r6, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r5, [sp, #8]
 	add r3, sp, #0xc
 	str r5, [sp]
@@ -38696,14 +38696,14 @@ _0202A8DC:
 	add r0, r4, #4
 	add r2, r4, #0x100
 	str r5, [sp, #4]
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r6
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0202A94C: .word UpdateParentMenu
-_0202A950: .word _0209AE90
-	arm_func_end CreateParentMenu
+_0202A950: .word PARENT_MENU_DEFAULT_WINDOW_PARAMS
+	arm_func_end CreateParentMenuInternal
 
 	arm_func_start sub_0202A954
 sub_0202A954: ; 0x0202A954
@@ -38730,7 +38730,7 @@ sub_0202A98C: ; 0x0202A98C
 	mov r4, r0
 	mov sb, r1
 	mov r5, #0
-	bl sub_020275F8
+	bl GetWindow
 	mov r7, r0
 	mov r1, sb
 	ldr r8, [r7, #0xc]
@@ -38777,7 +38777,7 @@ _0202AA34:
 	add sl, sl, #1
 _0202AA3C:
 	mov r0, sb
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202AA34
 	str r5, [r8, #0x198]
@@ -38793,29 +38793,29 @@ _0202AA3C:
 	add r1, sp, #8
 	mov r0, r4
 	str r2, [r8, #0x1a4]
-	bl sub_02028284
+	bl GetWindowRectangle
 	str sl, [sp]
 	str sl, [sp, #4]
 	ldr r1, [r8, #0xfc]
 	add r0, r8, #4
 	add r2, r8, #0x100
 	add r3, sp, #8
-	bl sub_02031AF8
+	bl InitWindowInput
 	add sp, sp, #0x18
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	arm_func_end sub_0202A98C
 
-	arm_func_start sub_0202AAA8
-sub_0202AAA8: ; 0x0202AAA8
+	arm_func_start SetParentMenuState7
+SetParentMenuState7: ; 0x0202AAA8
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	mov r1, #7
 	str r1, [r0, #0x19c]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202AAA8
+	arm_func_end SetParentMenuState7
 
-	arm_func_start sub_0202AABC
-sub_0202AABC: ; 0x0202AABC
+	arm_func_start CloseParentMenu
+CloseParentMenu: ; 0x0202AABC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetWindowContents
@@ -38825,9 +38825,9 @@ sub_0202AABC: ; 0x0202AABC
 	mov r0, r4
 	bl MemFree
 	mov r0, r5
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0202AABC
+	arm_func_end CloseParentMenu
 
 	arm_func_start sub_0202AAE8
 sub_0202AAE8: ; 0x0202AAE8
@@ -38855,8 +38855,8 @@ sub_0202AAE8: ; 0x0202AAE8
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202AAE8
 
-	arm_func_start sub_0202AB40
-sub_0202AB40: ; 0x0202AB40
+	arm_func_start IsParentMenuActive
+IsParentMenuActive: ; 0x0202AB40
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
@@ -38865,10 +38865,10 @@ sub_0202AB40: ; 0x0202AB40
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202AB40
+	arm_func_end IsParentMenuActive
 
-	arm_func_start sub_0202AB60
-sub_0202AB60: ; 0x0202AB60
+	arm_func_start CheckParentMenuField0x1A0
+CheckParentMenuField0x1A0: ; 0x0202AB60
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldrb r0, [r0, #0x1a0]
@@ -38877,7 +38877,7 @@ sub_0202AB60: ; 0x0202AB60
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202AB60
+	arm_func_end CheckParentMenuField0x1A0
 
 	arm_func_start sub_0202AB80
 sub_0202AB80: ; 0x0202AB80
@@ -39078,7 +39078,7 @@ _0202ADF8:
 	bne _0202AE2C
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202AE2C:
 	mov r1, #1
 	mov r0, #0
@@ -39094,14 +39094,14 @@ _0202AE2C:
 _0202AE58:
 	add r0, r4, #4
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0202AED8
 _0202AE68:
 	tst r1, #2
 	add r0, r4, #4
 	beq _0202AEA4
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #1
 	strb r0, [r4, #0x1a0]
 	strb r0, [r4, #0x1a1]
@@ -39218,7 +39218,7 @@ _0202AFCC:
 	add r6, r6, #0x104
 _0202B008:
 	mov r0, r6
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202AFB0
 	ldrsb r1, [sl, #0x10]
@@ -39244,7 +39244,7 @@ sub_0202B030: ; 0x0202B030
 	bne _0202B068
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202B068:
 	mov r2, #1
 	mov r1, #0
@@ -39260,7 +39260,7 @@ _0202B068:
 _0202B094:
 	add r0, r4, #4
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202B030
 
@@ -39287,8 +39287,8 @@ _0202B0D8:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202B0A4
 
-	arm_func_start CreateSimpleMenuWrapper
-CreateSimpleMenuWrapper: ; 0x0202B0EC
+	arm_func_start CreateSimpleMenuFromStringIds
+CreateSimpleMenuFromStringIds: ; 0x0202B0EC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, r3
 	mov sb, r1
@@ -39319,7 +39319,7 @@ _0202B148:
 	mov r0, r6
 	mov r1, fp
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldr r0, [r7, #4]
 	add r7, r7, #8
 	str r0, [r6, #0x100]
@@ -39338,14 +39338,14 @@ _0202B16C:
 	mov r2, r8
 	mov r3, r5
 	str r4, [sp]
-	bl CreateSimpleMenu
+	bl CreateSimpleMenuInternal
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0202B1A8: .word 0x0000C402
-	arm_func_end CreateSimpleMenuWrapper
+	arm_func_end CreateSimpleMenuFromStringIds
 
-	arm_func_start sub_0202B1AC
-sub_0202B1AC: ; 0x0202B1AC
+	arm_func_start CreateSimpleMenu
+CreateSimpleMenu: ; 0x0202B1AC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #4
 	mov r6, r3
@@ -39360,7 +39360,7 @@ _0202B1D0:
 	add r5, r5, #1
 _0202B1D8:
 	mov r0, r4
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202B1D0
 	add r0, r5, #1
@@ -39386,7 +39386,7 @@ _0202B21C:
 	str r0, [ip]
 _0202B234:
 	mov r0, r6
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202B208
 	mov ip, #0x10
@@ -39403,13 +39403,13 @@ _0202B248:
 	mov r2, r7
 	mov r3, r4
 	str r6, [sp]
-	bl CreateSimpleMenu
+	bl CreateSimpleMenuInternal
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end sub_0202B1AC
+	arm_func_end CreateSimpleMenu
 
-	arm_func_start CreateSimpleMenu
-CreateSimpleMenu: ; 0x0202B284
+	arm_func_start CreateSimpleMenuInternal
+CreateSimpleMenuInternal: ; 0x0202B284
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
 	mov r6, r0
@@ -39434,7 +39434,7 @@ CreateSimpleMenu: ; 0x0202B284
 	orr sl, sl, #0x8000
 	strne r0, [sp, #0x1c]
 	bne _0202B2F8
-	ldr r0, _0202B48C ; =_0209AEA0
+	ldr r0, _0202B48C ; =SIMPLE_MENU_DEFAULT_WINDOW_PARAMS
 	add r6, sp, #0x1c
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r6, {r0, r1, r2, r3}
@@ -39454,7 +39454,7 @@ _0202B310:
 	add r5, r5, #0x104
 _0202B324:
 	mov r0, r5
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202B310
 	mov r0, sl
@@ -39475,7 +39475,7 @@ _0202B350:
 	str r0, [sp, #8]
 _0202B36C:
 	mov r0, r5
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202B350
 	ldr r0, [sp, #0x50]
@@ -39489,12 +39489,12 @@ _0202B36C:
 	mov r0, sl
 	bne _0202B3B4
 	mov r1, sb
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 	strb r0, [sp, #0x23]
 	b _0202B3BC
 _0202B3B4:
 	mov r1, sb
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 _0202B3BC:
 	tst sl, #0x200000
 	ldrneb r1, [sp, #0x20]
@@ -39536,7 +39536,7 @@ _0202B418:
 	bl NewWindowScreenCheck
 	add r1, sp, #0xc
 	mov r6, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r0, [sp, #8]
 	add r3, sp, #0xc
 	str r0, [sp]
@@ -39545,14 +39545,14 @@ _0202B418:
 	add r0, r4, #4
 	add r2, r4, #0x100
 	str r5, [sp, #4]
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r6
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0202B488: .word UpdateSimpleMenu
-_0202B48C: .word _0209AEA0
-	arm_func_end CreateSimpleMenu
+_0202B48C: .word SIMPLE_MENU_DEFAULT_WINDOW_PARAMS
+	arm_func_end CreateSimpleMenuInternal
 
 	arm_func_start sub_0202B490
 sub_0202B490: ; 0x0202B490
@@ -39571,8 +39571,8 @@ sub_0202B490: ; 0x0202B490
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202B490
 
-	arm_func_start FreeSimpleMenu
-FreeSimpleMenu: ; 0x0202B4C4
+	arm_func_start CloseSimpleMenu
+CloseSimpleMenu: ; 0x0202B4C4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetWindowContents
@@ -39582,9 +39582,9 @@ FreeSimpleMenu: ; 0x0202B4C4
 	mov r0, r4
 	bl MemFree
 	mov r0, r5
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end FreeSimpleMenu
+	arm_func_end CloseSimpleMenu
 
 	arm_func_start IsSimpleMenuActive
 IsSimpleMenuActive: ; 0x0202B4F0
@@ -39598,8 +39598,8 @@ IsSimpleMenuActive: ; 0x0202B4F0
 	ldmia sp!, {r3, pc}
 	arm_func_end IsSimpleMenuActive
 
-	arm_func_start sub_0202B510
-sub_0202B510: ; 0x0202B510
+	arm_func_start CheckSimpleMenuField0x1A0
+CheckSimpleMenuField0x1A0: ; 0x0202B510
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldrb r0, [r0, #0x1a0]
@@ -39608,7 +39608,7 @@ sub_0202B510: ; 0x0202B510
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202B510
+	arm_func_end CheckSimpleMenuField0x1A0
 
 	arm_func_start sub_0202B530
 sub_0202B530: ; 0x0202B530
@@ -39628,13 +39628,13 @@ sub_0202B544: ; 0x0202B544
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202B544
 
-	arm_func_start sub_0202B558
-sub_0202B558: ; 0x0202B558
+	arm_func_start GetSimpleMenuField0x1A4
+GetSimpleMenuField0x1A4: ; 0x0202B558
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x1a4]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202B558
+	arm_func_end GetSimpleMenuField0x1A4
 
 	arm_func_start sub_0202B568
 sub_0202B568: ; 0x0202B568
@@ -39825,7 +39825,7 @@ _0202B7C8:
 	bne _0202B7FC
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202B7FC:
 	mov r1, #1
 	mov r0, #0
@@ -39841,14 +39841,14 @@ _0202B7FC:
 _0202B828:
 	add r0, r4, #4
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0202B8A8
 _0202B838:
 	tst r1, #2
 	add r0, r4, #4
 	beq _0202B874
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #1
 	strb r0, [r4, #0x1a0]
 	strb r0, [r4, #0x1a1]
@@ -39978,14 +39978,14 @@ _0202B9F4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end sub_0202B934
 
-	arm_func_start sub_0202BA0C
-sub_0202BA0C: ; 0x0202BA0C
+	arm_func_start SetSimpleMenuField0x1AC
+SetSimpleMenuField0x1AC: ; 0x0202BA0C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	str r4, [r0, #0x1ac]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202BA0C
+	arm_func_end SetSimpleMenuField0x1AC
 
 	arm_func_start CreateAdvancedMenu
 CreateAdvancedMenu: ; 0x0202BA20
@@ -40001,7 +40001,7 @@ CreateAdvancedMenu: ; 0x0202BA20
 	bl MemAlloc
 	mov r5, r0
 	cmp r6, #0
-	ldreq r0, _0202BBE8 ; =_0209AEB0
+	ldreq r0, _0202BBE8 ; =ADVANCED_MENU_DEFAULT_WINDOW_PARAMS
 	add r4, sp, #0x18
 	ldmeqia r0, {r0, r1, r2, r3}
 	stmeqia r4, {r0, r1, r2, r3}
@@ -40049,14 +40049,14 @@ _0202BADC:
 	add r3, r3, #0x4c
 	mov r0, sl
 	mov r1, sb
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 	strb r0, [sp, #0x1f]
 	b _0202BB1C
 _0202BB0C:
 	add r3, r3, #0x4c
 	mov r0, sl
 	mov r1, sb
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 _0202BB1C:
 	tst sl, #0x200000
 	ldrneb r1, [sp, #0x1c]
@@ -40097,7 +40097,7 @@ _0202BB78:
 	bl NewWindowScreenCheck
 	add r1, sp, #8
 	mov r6, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r0, [sp, #0x448]
 	add r3, sp, #8
 	str r0, [sp]
@@ -40106,13 +40106,13 @@ _0202BB78:
 	add r0, r5, #4
 	add r2, r5, #0x100
 	str r4, [sp, #4]
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r6
 	add sp, sp, #0x28
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0202BBE8: .word _0209AEB0
+_0202BBE8: .word ADVANCED_MENU_DEFAULT_WINDOW_PARAMS
 _0202BBEC: .word UpdateAdvancedMenu
 	arm_func_end CreateAdvancedMenu
 
@@ -40145,16 +40145,16 @@ sub_0202BC28: ; 0x0202BC28
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202BC28
 
-	arm_func_start FreeAdvancedMenu
-FreeAdvancedMenu: ; 0x0202BC44
+	arm_func_start CloseAdvancedMenu
+CloseAdvancedMenu: ; 0x0202BC44
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end FreeAdvancedMenu
+	arm_func_end CloseAdvancedMenu
 
 	arm_func_start sub_0202BC60
 sub_0202BC60: ; 0x0202BC60
@@ -40183,8 +40183,8 @@ sub_0202BC60: ; 0x0202BC60
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202BC60
 
-	arm_func_start sub_0202BCBC
-sub_0202BCBC: ; 0x0202BCBC
+	arm_func_start IsAdvancedMenuActive2
+IsAdvancedMenuActive2: ; 0x0202BCBC
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
@@ -40193,7 +40193,7 @@ sub_0202BCBC: ; 0x0202BCBC
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202BCBC
+	arm_func_end IsAdvancedMenuActive2
 
 	arm_func_start IsAdvancedMenuActive
 IsAdvancedMenuActive: ; 0x0202BCDC
@@ -40377,7 +40377,7 @@ _0202BF14:
 	bne _0202BF48
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202BF48:
 	mov r1, #1
 	mov r0, #0
@@ -40393,14 +40393,14 @@ _0202BF48:
 _0202BF74:
 	add r0, r4, #4
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0202C0E8
 _0202BF84:
 	tst r1, #2
 	beq _0202BFC0
 	add r0, r4, #4
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #1
 	strb r0, [r4, #0x1a0]
 	strb r0, [r4, #0x1a1]
@@ -40419,7 +40419,7 @@ _0202BFC0:
 	beq _0202C00C
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r4, #0x1a0]
@@ -40439,7 +40439,7 @@ _0202C00C:
 	beq _0202C058
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r4, #0x1a0]
@@ -40458,7 +40458,7 @@ _0202C058:
 	add r0, r4, #4
 	beq _0202C080
 	mov r1, #5
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [r4, #0x18c]
 	blx r0
 	b _0202C0E8
@@ -40580,7 +40580,7 @@ sub_0202C1E4: ; 0x0202C1E4
 	bne _0202C21C
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202C21C:
 	mov r2, #1
 	mov r1, #0
@@ -40597,7 +40597,7 @@ _0202C21C:
 _0202C24C:
 	add r0, r4, #4
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202C1E4
@@ -40723,7 +40723,7 @@ CreateCollectionMenu: ; 0x0202C3A8
 	ldrne r0, _0202C5D8 ; =UpdateCollectionMenu
 	strne r0, [sp, #0x1c]
 	bne _0202C418
-	ldr r0, _0202C5DC ; =_0209AEC0
+	ldr r0, _0202C5DC ; =COLLECTION_MENU_DEFAULT_WINDOW_PARAMS
 	add r4, sp, #0x1c
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
@@ -40769,14 +40769,14 @@ _0202C484:
 	add r3, r3, #0x58
 	mov r0, sl
 	mov r1, sb
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 	strb r0, [sp, #0x23]
 	b _0202C4C4
 _0202C4B4:
 	add r3, r3, #0x58
 	mov r0, sl
 	mov r1, sb
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 _0202C4C4:
 	tst sl, #0x200000
 	ldrneb r1, [sp, #0x20]
@@ -40834,7 +40834,7 @@ _0202C528:
 	bl NewWindowScreenCheck
 	add r1, sp, #0xc
 	mov r6, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r0, [sp, #0x454]
 	add r3, sp, #0xc
 	str r0, [sp]
@@ -40843,7 +40843,7 @@ _0202C528:
 	add r0, r5, #4
 	add r2, r5, #0x100
 	str r4, [sp, #4]
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r6
 	add sp, sp, #0x2c
 	add sp, sp, #0x400
@@ -40851,23 +40851,23 @@ _0202C528:
 	.align 2, 0
 _0202C5D4: .word 0x10008004
 _0202C5D8: .word UpdateCollectionMenu
-_0202C5DC: .word _0209AEC0
+_0202C5DC: .word COLLECTION_MENU_DEFAULT_WINDOW_PARAMS
 	arm_func_end CreateCollectionMenu
 
-	arm_func_start sub_0202C5E0
-sub_0202C5E0: ; 0x0202C5E0
+	arm_func_start SetCollectionMenuField0x1BC
+SetCollectionMenuField0x1BC: ; 0x0202C5E0
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	str r4, [r0, #0x1bc]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202C5E0
+	arm_func_end SetCollectionMenuField0x1BC
 
-	arm_func_start sub_0202C5F4
-sub_0202C5F4: ; 0x0202C5F4
+	arm_func_start SetCollectionMenuWidth
+SetCollectionMenuWidth: ; 0x0202C5F4
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl sub_020275F8
+	bl GetWindow
 	ldr r1, [r0, #0xc]
 	str r4, [r1, #0x1c0]
 	ldrb r0, [r0, #6]
@@ -40876,7 +40876,7 @@ sub_0202C5F4: ; 0x0202C5F4
 	cmp r4, r0
 	strgt r0, [r1, #0x1c0]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202C5F4
+	arm_func_end SetCollectionMenuWidth
 
 	arm_func_start sub_0202C620
 sub_0202C620: ; 0x0202C620
@@ -40920,14 +40920,14 @@ sub_0202C654: ; 0x0202C654
 _0202C6A4:
 	add r1, sp, #8
 	mov r0, r8
-	bl sub_02028284
+	bl GetWindowRectangle
 	str r7, [sp]
 	str r6, [sp, #4]
 	ldr r1, [r4, #0xfc]
 	add r3, sp, #8
 	add r0, r4, #4
 	add r2, r4, #0x100
-	bl sub_02031AF8
+	bl InitWindowInput
 	add sp, sp, #0x18
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0202C654
@@ -40954,19 +40954,19 @@ sub_0202C6F0: ; 0x0202C6F0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202C6F0
 
-	arm_func_start sub_0202C70C
-sub_0202C70C: ; 0x0202C70C
+	arm_func_start CloseCollectionMenu
+CloseCollectionMenu: ; 0x0202C70C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202C70C
+	arm_func_end CloseCollectionMenu
 
-	arm_func_start sub_0202C728
-sub_0202C728: ; 0x0202C728
+	arm_func_start IsCollectionMenuActive
+IsCollectionMenuActive: ; 0x0202C728
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x1ac]
@@ -40975,7 +40975,7 @@ sub_0202C728: ; 0x0202C728
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202C728
+	arm_func_end IsCollectionMenuActive
 
 	arm_func_start sub_0202C748
 sub_0202C748: ; 0x0202C748
@@ -41005,41 +41005,41 @@ _0202C78C:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202C75C
 
-	arm_func_start sub_0202C794
-sub_0202C794: ; 0x0202C794
+	arm_func_start SetCollectionMenuField0x1C8
+SetCollectionMenuField0x1C8: ; 0x0202C794
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	strb r4, [r0, #0x1c8]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202C794
+	arm_func_end SetCollectionMenuField0x1C8
 
-	arm_func_start sub_0202C7A8
-sub_0202C7A8: ; 0x0202C7A8
+	arm_func_start SetCollectionMenuField0x1A0
+SetCollectionMenuField0x1A0: ; 0x0202C7A8
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	str r4, [r0, #0x1a0]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202C7A8
+	arm_func_end SetCollectionMenuField0x1A0
 
-	arm_func_start sub_0202C7BC
-sub_0202C7BC: ; 0x0202C7BC
+	arm_func_start SetCollectionMenuField0x1A4
+SetCollectionMenuField0x1A4: ; 0x0202C7BC
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	str r4, [r0, #0x1a4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202C7BC
+	arm_func_end SetCollectionMenuField0x1A4
 
-	arm_func_start sub_0202C7D0
-sub_0202C7D0: ; 0x0202C7D0
+	arm_func_start SetCollectionMenuVoidFn
+SetCollectionMenuVoidFn: ; 0x0202C7D0
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	str r4, [r0, #0x1a8]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202C7D0
+	arm_func_end SetCollectionMenuVoidFn
 
 	arm_func_start sub_0202C7E4
 sub_0202C7E4: ; 0x0202C7E4
@@ -41214,7 +41214,7 @@ _0202C994:
 _0202CA54:
 	add r0, r5, #4
 	mov r1, #3
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202CA60:
 	mov r1, r7
 	add r0, r5, #4
@@ -41264,7 +41264,7 @@ _0202CAF0:
 	bne _0202CB10
 	add r0, r5, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202CB10:
 	mov r1, #1
 	mov r0, #0
@@ -41278,14 +41278,14 @@ _0202CB10:
 _0202CB34:
 	add r0, r5, #4
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0202CC94
 _0202CB44:
 	tst r0, #2
 	beq _0202CB94
 	add r0, r5, #4
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r1, [r5, #0x1a0]
 	cmp r1, #0
 	beq _0202CB74
@@ -41313,7 +41313,7 @@ _0202CB94:
 	beq _0202CBC0
 	add r0, r5, #4
 	mov r1, #5
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202CBC0:
 	mov r1, #1
 	mov r0, #0
@@ -41333,7 +41333,7 @@ _0202CBE8:
 	beq _0202CC30
 	add r0, r5, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r5, #0x1b0]
@@ -41351,7 +41351,7 @@ _0202CC30:
 	beq _0202CC74
 	add r0, r5, #4
 	mov r1, #5
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r5, #0x1b0]
@@ -41685,14 +41685,14 @@ _0202D0B0:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202D07C
 
-	arm_func_start sub_0202D0D8
-sub_0202D0D8: ; 0x0202D0D8
+	arm_func_start SetCollectionMenuField0x1B2
+SetCollectionMenuField0x1B2: ; 0x0202D0D8
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	strb r4, [r0, #0x1b2]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202D0D8
+	arm_func_end SetCollectionMenuField0x1B2
 
 	arm_func_start sub_0202D0EC
 sub_0202D0EC: ; 0x0202D0EC
@@ -41708,8 +41708,8 @@ sub_0202D0EC: ; 0x0202D0EC
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202D0EC
 
-	arm_func_start sub_0202D114
-sub_0202D114: ; 0x0202D114
+	arm_func_start IsCollectionMenuState3
+IsCollectionMenuState3: ; 0x0202D114
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x1ac]
@@ -41718,7 +41718,7 @@ sub_0202D114: ; 0x0202D114
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202D114
+	arm_func_end IsCollectionMenuState3
 
 	arm_func_start sub_0202D134
 sub_0202D134: ; 0x0202D134
@@ -41876,7 +41876,7 @@ _0202D300:
 	mov r8, fp
 	strne r0, [sp, #0x1c]
 	bne _0202D364
-	ldr r0, _0202D52C ; =_0209AED0
+	ldr r0, _0202D52C ; =OPTIONS_MENU_DEFAULT_WINDOW_PARAMS
 	add r6, sp, #0x1c
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r6, {r0, r1, r2, r3}
@@ -41915,7 +41915,7 @@ _0202D3C8:
 	add r8, r8, #0x10c
 _0202D3CC:
 	mov r0, r8
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202D374
 	ldrb r0, [sp, #0x22]
@@ -41949,12 +41949,12 @@ _0202D400:
 	mov r0, r5
 	bne _0202D460
 	mov r1, r4
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 	strb r0, [sp, #0x23]
 	b _0202D468
 _0202D460:
 	mov r1, r4
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 _0202D468:
 	tst r5, #0x200000
 	ldrneb r1, [sp, #0x20]
@@ -41993,7 +41993,7 @@ _0202D4C4:
 	bl NewWindowScreenCheck
 	add r1, sp, #0xc
 	mov r6, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r0, [sp, #8]
 	add r3, sp, #0xc
 	str r0, [sp]
@@ -42002,17 +42002,17 @@ _0202D4C4:
 	add r0, r7, #4
 	add r2, r7, #0x100
 	str r4, [sp, #4]
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r6
 	add sp, sp, #0x12c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0202D528: .word UpdateOptionsMenu
-_0202D52C: .word _0209AED0
+_0202D52C: .word OPTIONS_MENU_DEFAULT_WINDOW_PARAMS
 	arm_func_end CreateOptionsMenu
 
-	arm_func_start sub_0202D530
-sub_0202D530: ; 0x0202D530
+	arm_func_start CloseOptionsMenu
+CloseOptionsMenu: ; 0x0202D530
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetWindowContents
@@ -42022,12 +42022,12 @@ sub_0202D530: ; 0x0202D530
 	mov r0, r4
 	bl MemFree
 	mov r0, r5
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0202D530
+	arm_func_end CloseOptionsMenu
 
-	arm_func_start sub_0202D55C
-sub_0202D55C: ; 0x0202D55C
+	arm_func_start IsOptionsMenuActive
+IsOptionsMenuActive: ; 0x0202D55C
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x1a0]
@@ -42036,10 +42036,10 @@ sub_0202D55C: ; 0x0202D55C
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202D55C
+	arm_func_end IsOptionsMenuActive
 
-	arm_func_start sub_0202D57C
-sub_0202D57C: ; 0x0202D57C
+	arm_func_start CheckOptionsMenuField0x1A4
+CheckOptionsMenuField0x1A4: ; 0x0202D57C
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldrb r0, [r0, #0x1a4]
@@ -42048,7 +42048,7 @@ sub_0202D57C: ; 0x0202D57C
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202D57C
+	arm_func_end CheckOptionsMenuField0x1A4
 
 	arm_func_start sub_0202D59C
 sub_0202D59C: ; 0x0202D59C
@@ -42072,7 +42072,7 @@ _0202D5C4:
 	str r0, [r5], #4
 _0202D5D0:
 	mov r0, r4
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202D5C4
 	ldmia sp!, {r3, r4, r5, pc}
@@ -42242,7 +42242,7 @@ _0202D7E0:
 	add r0, r4, #4
 	ble _0202D86C
 	mov r1, #3
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [sp, #8]
 	tst r0, #8
 	ldr r0, [r6, #0x108]
@@ -42260,7 +42260,7 @@ _0202D864:
 	b _0202D900
 _0202D86C:
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0202D900
 _0202D878:
 	tst r0, #0x80
@@ -42272,7 +42272,7 @@ _0202D878:
 	add r0, r4, #4
 	bge _0202D8DC
 	mov r1, #3
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [sp, #8]
 	tst r0, #8
 	ldr r0, [r6, #0x108]
@@ -42292,7 +42292,7 @@ _0202D8D4:
 	b _0202D900
 _0202D8DC:
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _0202D900
 _0202D8E8:
 	ldr r0, [sp, #8]
@@ -42300,7 +42300,7 @@ _0202D8E8:
 	beq _0202D900
 	add r0, r4, #4
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202D900:
 	cmp r5, #0
 	beq _0202D910
@@ -42333,12 +42333,12 @@ _0202D960:
 	str r0, [r6], #4
 _0202D96C:
 	mov r0, r5
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202D960
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r4, #0x1a4]
@@ -42353,7 +42353,7 @@ _0202D9AC:
 	beq _0202D9DC
 	add r0, r4, #4
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #1
 	strb r0, [r4, #0x1a4]
 	strb r0, [r4, #0x1a5]
@@ -42592,7 +42592,7 @@ _0202DCB8:
 	ldr r6, [sp, #0x5c]
 	strne r0, [sp, #0x10]
 	bne _0202DD28
-	ldr r0, _0202DEEC ; =_0209AF0C
+	ldr r0, _0202DEEC ; =DEBUG_MENU_DEFAULT_WINDOW_PARAMS
 	add r8, sp, #0x10
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r8, {r0, r1, r2, r3}
@@ -42610,7 +42610,7 @@ _0202DD34:
 	add sb, r0, #0x100
 _0202DD4C:
 	mov r0, sb
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202DD34
 	ldrb r0, [sp, #0x16]
@@ -42640,7 +42640,7 @@ _0202DD90:
 	add sb, r0, #0x100
 _0202DDB8:
 	mov r0, sb
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202DD90
 	ldrb r0, [sp, #0x17]
@@ -42650,12 +42650,12 @@ _0202DDB8:
 	mov r0, r5
 	bne _0202DDF0
 	mov r1, sl
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 	strb r0, [sp, #0x17]
 	b _0202DDF8
 _0202DDF0:
 	mov r1, sl
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 _0202DDF8:
 	tst r5, #0x200000
 	ldrneb r1, [sp, #0x14]
@@ -42706,7 +42706,7 @@ _0202DE54:
 	bl NewWindowScreenCheck
 	add r1, sp, #0x20
 	mov r6, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r2, [sp, #8]
 	mov r1, r5
 	str r2, [sp]
@@ -42715,13 +42715,13 @@ _0202DE54:
 	add r2, r7, #0x100
 	add r3, sp, #0x20
 	str r4, [sp, #4]
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r6
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0202DEE8: .word UpdateDebugMenu
-_0202DEEC: .word _0209AF0C
+_0202DEEC: .word DEBUG_MENU_DEFAULT_WINDOW_PARAMS
 #ifdef EUROPE
 _0202DEF0: .word 0x00003C67
 _0202DEF4: .word 0x00003C68
@@ -42731,8 +42731,8 @@ _0202DEF4: .word 0x00003C66
 #endif
 	arm_func_end CreateDebugMenu
 
-	arm_func_start sub_0202DEF8
-sub_0202DEF8: ; 0x0202DEF8
+	arm_func_start CloseDebugMenu
+CloseDebugMenu: ; 0x0202DEF8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetWindowContents
@@ -42742,12 +42742,12 @@ sub_0202DEF8: ; 0x0202DEF8
 	mov r0, r4
 	bl MemFree
 	mov r0, r5
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0202DEF8
+	arm_func_end CloseDebugMenu
 
-	arm_func_start sub_0202DF24
-sub_0202DF24: ; 0x0202DF24
+	arm_func_start IsDebugMenuActive
+IsDebugMenuActive: ; 0x0202DF24
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x1a0]
@@ -42756,10 +42756,10 @@ sub_0202DF24: ; 0x0202DF24
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202DF24
+	arm_func_end IsDebugMenuActive
 
-	arm_func_start sub_0202DF44
-sub_0202DF44: ; 0x0202DF44
+	arm_func_start CheckDebugMenuField0x1A4
+CheckDebugMenuField0x1A4: ; 0x0202DF44
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldrb r0, [r0, #0x1a4]
@@ -42768,7 +42768,7 @@ sub_0202DF44: ; 0x0202DF44
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202DF44
+	arm_func_end CheckDebugMenuField0x1A4
 
 	arm_func_start sub_0202DF64
 sub_0202DF64: ; 0x0202DF64
@@ -42901,7 +42901,7 @@ _0202E0EC:
 	add r0, r4, #4
 	bne _0202E154
 	mov r1, #3
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldrb r0, [r6, #0x100]
 	mov r5, #1
 	cmp r0, #0
@@ -42911,7 +42911,7 @@ _0202E0EC:
 	b _0202E15C
 _0202E154:
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202E15C:
 	cmp r5, #0
 	beq _0202E16C
@@ -42935,12 +42935,12 @@ _0202E194:
 	strb r1, [r6], #1
 _0202E1A4:
 	mov r0, r5
-	bl sub_0202A66C
+	bl IsEmptyString
 	cmp r0, #0
 	beq _0202E194
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r1, #1
 	mov r0, #0
 	strb r1, [r4, #0x1a4]
@@ -42955,7 +42955,7 @@ _0202E1E4:
 	beq _0202E214
 	add r0, r4, #4
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #1
 	strb r0, [r4, #0x1a4]
 	strb r0, [r4, #0x1a5]
@@ -43088,8 +43088,8 @@ _0202E3B0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end sub_0202E29C
 
-	arm_func_start CreateScrollBox1
-CreateScrollBox1: ; 0x0202E3CC
+	arm_func_start CreateScrollBoxSingle
+CreateScrollBoxSingle: ; 0x0202E3CC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
 	mov r8, r0
@@ -43101,7 +43101,7 @@ CreateScrollBox1: ; 0x0202E3CC
 	bl MemAlloc
 	mov r4, r0
 	cmp r8, #0
-	ldreq r0, _0202E50C ; =_0209AF1C
+	ldreq r0, _0202E50C ; =SCROLL_BOX_DEFAULT_WINDOW_PARAMS
 	add ip, sp, #0
 	ldmeqia r0, {r0, r1, r2, r3}
 	stmeqia ip, {r0, r1, r2, r3}
@@ -43179,13 +43179,13 @@ _0202E4E0:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0202E508: .word 0x00001D6C
-_0202E50C: .word _0209AF1C
+_0202E50C: .word SCROLL_BOX_DEFAULT_WINDOW_PARAMS
 _0202E510: .word UpdateScrollBox
 _0202E514: .word 0x0D0C8012
-	arm_func_end CreateScrollBox1
+	arm_func_end CreateScrollBoxSingle
 
-	arm_func_start CreateScrollBox2
-CreateScrollBox2: ; 0x0202E518
+	arm_func_start CreateScrollBoxMulti
+CreateScrollBoxMulti: ; 0x0202E518
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov r6, r0
@@ -43202,7 +43202,7 @@ CreateScrollBox2: ; 0x0202E518
 	bl MemAlloc
 	cmp r6, #0
 	mov r4, r0
-	ldreq r0, _0202E6A4 ; =_0209AF1C
+	ldreq r0, _0202E6A4 ; =SCROLL_BOX_DEFAULT_WINDOW_PARAMS
 	addeq r6, sp, #0
 	ldmeqia r0, {r0, r1, r2, r3}
 	stmeqia r6, {r0, r1, r2, r3}
@@ -43296,34 +43296,34 @@ _0202E670:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0202E6A0: .word 0x00001D6C
-_0202E6A4: .word _0209AF1C
+_0202E6A4: .word SCROLL_BOX_DEFAULT_WINDOW_PARAMS
 _0202E6A8: .word UpdateScrollBox
 _0202E6AC: .word 0x0D0C8012
-	arm_func_end CreateScrollBox2
+	arm_func_end CreateScrollBoxMulti
 
-	arm_func_start sub_0202E6B0
-sub_0202E6B0: ; 0x0202E6B0
+	arm_func_start SetScrollBoxState7
+SetScrollBoxState7: ; 0x0202E6B0
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #0x1000
 	mov r1, #7
 	str r1, [r0, #0x464]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202E6B0
+	arm_func_end SetScrollBoxState7
 
-	arm_func_start sub_0202E6C8
-sub_0202E6C8: ; 0x0202E6C8
+	arm_func_start CloseScrollBox
+CloseScrollBox: ; 0x0202E6C8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202E6C8
+	arm_func_end CloseScrollBox
 
-	arm_func_start sub_0202E6E4
-sub_0202E6E4: ; 0x0202E6E4
+	arm_func_start IsScrollBoxActive
+IsScrollBoxActive: ; 0x0202E6E4
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #0x1000
@@ -43333,7 +43333,7 @@ sub_0202E6E4: ; 0x0202E6E4
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202E6E4
+	arm_func_end IsScrollBoxActive
 
 	arm_func_start UpdateScrollBox
 UpdateScrollBox: ; 0x0202E708
@@ -43398,7 +43398,7 @@ _0202E788:
 	add r0, r3, #0x1400
 	add r3, r1, #4
 	str sb, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 _0202E7F0:
 	ldr r2, [r5, #0x19c]
 	mov r0, #0x50
@@ -43451,7 +43451,7 @@ _0202E85C:
 	mov r1, #0x400
 	add r0, r3, #0x1800
 	add r3, r1, #4
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, r5, #0xc4
 	add sb, r0, #0x1400
 	b _0202E8E0
@@ -43485,7 +43485,7 @@ _0202E8E0:
 	eorle r0, r0, #8
 	strle r0, [r5, #0xfc]
 	ldrsb r0, [r4, #0x10]
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r0, [r5, #0x430]
 	add r3, sp, #0x38
 	cmp r0, #0
@@ -43497,7 +43497,7 @@ _0202E8E0:
 	str r0, [sp, #4]
 	ldr r1, [r5, #0xfc]
 	add r0, r5, #4
-	bl sub_02031AF8
+	bl InitWindowInput
 	ldr r1, [r5, #0x19c]
 	add r0, r5, #4
 	bl sub_02032684
@@ -43508,7 +43508,7 @@ _0202E974:
 	ldr r1, [r5, #0xfc]
 	add r0, r5, #4
 	add r2, r5, #0x100
-	bl sub_02031AF8
+	bl InitWindowInput
 _0202E98C:
 	add r0, r5, #0x1000
 	mov r1, #4
@@ -43553,7 +43553,7 @@ _0202E9C0:
 	beq _0202EA48
 	add r0, r5, #4
 	mov r1, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	subs r8, r8, #1
 	addmi r0, r5, #0x1000
 	ldrmi r0, [r0, #0x4bc]
@@ -43564,7 +43564,7 @@ _0202EA48:
 	beq _0202EA70
 	add r0, r5, #4
 	mov r1, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	add r0, r5, #0x1000
 	ldr r0, [r0, #0x4bc]
 	add r8, r8, #1
@@ -43611,7 +43611,7 @@ _0202EAC0:
 _0202EAFC:
 	add r0, r5, #4
 	mov r1, #3
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r7, #1
 	b _0202EB54
 _0202EB10:
@@ -43631,7 +43631,7 @@ _0202EB10:
 _0202EB44:
 	add r0, r5, #4
 	mov r1, #3
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r7, #1
 _0202EB54:
 	ldr r0, [sp, #0x14]
@@ -43641,7 +43641,7 @@ _0202EB54:
 	mvn r2, #0
 	add r1, sp, #0x28
 	str r2, [sp, #8]
-	bl sub_02028284
+	bl GetWindowRectangle
 	add r0, r5, #0x108
 	add r0, r0, #0x1400
 	str r0, [sp, #0xc]
@@ -43781,7 +43781,7 @@ _0202ED44:
 	beq _0202EDBC
 	add r0, r5, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [r5, #0x430]
 	add r2, r6, #0x18
 	add r0, r0, #1
@@ -43803,7 +43803,7 @@ _0202ED44:
 _0202EDBC:
 	add r0, r5, #4
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _0202EDC8:
 	cmp r7, #0
 	bne _0202EE28
@@ -43812,7 +43812,7 @@ _0202EDC8:
 	beq _0202EE28
 	add r0, r5, #4
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [r5, #0x430]
 	cmp r0, #0
 	ble _0202EE0C
@@ -44027,7 +44027,7 @@ CreateDialogueBox: ; 0x0202F0B0
 	bl MemAlloc
 	mov r4, r0
 	cmp r6, #0
-	ldreq r0, _0202F140 ; =_0209AF2C
+	ldreq r0, _0202F140 ; =DIALOGUE_BOX_DEFAULT_WINDOW_PARAMS
 	add r5, sp, #0
 	ldmeqia r0, {r0, r1, r2, r3}
 	stmeqia r5, {r0, r1, r2, r3}
@@ -44056,12 +44056,12 @@ CreateDialogueBox: ; 0x0202F0B0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0202F13C: .word 0x00000528
-_0202F140: .word _0209AF2C
+_0202F140: .word DIALOGUE_BOX_DEFAULT_WINDOW_PARAMS
 _0202F144: .word UpdateDialogueBox
 	arm_func_end CreateDialogueBox
 
-	arm_func_start FreeDialogueBox
-FreeDialogueBox: ; 0x0202F148
+	arm_func_start CloseDialogueBox
+CloseDialogueBox: ; 0x0202F148
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
@@ -44069,9 +44069,9 @@ FreeDialogueBox: ; 0x0202F148
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end FreeDialogueBox
+	arm_func_end CloseDialogueBox
 
 	arm_func_start sub_0202F16C
 sub_0202F16C: ; 0x0202F16C
@@ -44103,8 +44103,8 @@ sub_0202F190: ; 0x0202F190
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202F190
 
-	arm_func_start ShowMessageInDialogueBox
-ShowMessageInDialogueBox: ; 0x0202F1B4
+	arm_func_start ShowStringIdInDialogueBox
+ShowStringIdInDialogueBox: ; 0x0202F1B4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r2
@@ -44135,13 +44135,13 @@ _0202F200:
 	add r0, r4, #0x128
 	mov r1, #0x400
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r1, r7
 	add r0, r4, #0xc
 	add r2, r4, #0x128
 	bl sub_02026194
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ShowMessageInDialogueBox
+	arm_func_end ShowStringIdInDialogueBox
 
 	arm_func_start ShowStringInDialogueBox
 ShowStringInDialogueBox: ; 0x0202F23C
@@ -44311,8 +44311,8 @@ _0202F434:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202F3F8
 
-	arm_func_start sub_0202F44C
-sub_0202F44C: ; 0x0202F44C
+	arm_func_start ReadStringFromDialogueBox
+ReadStringFromDialogueBox: ; 0x0202F44C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r4, r2
@@ -44323,7 +44323,7 @@ sub_0202F44C: ; 0x0202F44C
 	add r1, r1, #0x128
 	bl MemcpySimple
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0202F44C
+	arm_func_end ReadStringFromDialogueBox
 
 	arm_func_start sub_0202F474
 sub_0202F474: ; 0x0202F474
@@ -44427,7 +44427,7 @@ CreatePortraitBox: ; 0x0202F5AC
 	mov r1, #8
 	mov r6, r2
 	bl MemAlloc
-	ldr r1, _0202F648 ; =_0209AF3C
+	ldr r1, _0202F648 ; =PORTRAIT_BOX_DEFAULT_WINDOW_PARAMS
 	mov r5, r0
 	add ip, sp, #0
 	ldmia r1, {r0, r1, r2, r3}
@@ -44448,9 +44448,9 @@ CreatePortraitBox: ; 0x0202F5AC
 	mov r1, #0
 	add r0, r5, #8
 	str r1, [r5, #4]
-	bl InitPortraitBox
+	bl InitPortraitParams
 	add r0, r5, #0x18
-	bl InitPortraitBox
+	bl InitPortraitParams
 	str r4, [r5, #0x2c]
 	mov r0, #0
 	strb r0, [r5, #0x28]
@@ -44459,23 +44459,23 @@ CreatePortraitBox: ; 0x0202F5AC
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0202F648: .word _0209AF3C
+_0202F648: .word PORTRAIT_BOX_DEFAULT_WINDOW_PARAMS
 _0202F64C: .word UpdatePortraitBox
 	arm_func_end CreatePortraitBox
 
-	arm_func_start FreePortraitBox
-FreePortraitBox: ; 0x0202F650
+	arm_func_start ClosePortraitBox
+ClosePortraitBox: ; 0x0202F650
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end FreePortraitBox
+	arm_func_end ClosePortraitBox
 
-	arm_func_start sub_0202F66C
-sub_0202F66C: ; 0x0202F66C
+	arm_func_start PortraitBoxNeedsUpdate
+PortraitBoxNeedsUpdate: ; 0x0202F66C
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #4]
@@ -44485,10 +44485,10 @@ sub_0202F66C: ; 0x0202F66C
 	movhi r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202F66C
+	arm_func_end PortraitBoxNeedsUpdate
 
-	arm_func_start ShowPortraitBox
-ShowPortraitBox: ; 0x0202F690
+	arm_func_start ShowPortraitInPortraitBox
+ShowPortraitInPortraitBox: ; 0x0202F690
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	bl GetWindowContents
@@ -44504,12 +44504,12 @@ ShowPortraitBox: ; 0x0202F690
 	stmneia ip, {r0, r1, r2, r3}
 	bne _0202F6D0
 	add r0, r4, #0x18
-	bl InitPortraitBox
+	bl InitPortraitParams
 _0202F6D0:
 	mov r0, #1
 	strb r0, [r4, #0x28]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ShowPortraitBox
+	arm_func_end ShowPortraitInPortraitBox
 
 	arm_func_start HidePortraitBox
 HidePortraitBox: ; 0x0202F6DC
@@ -44519,7 +44519,7 @@ HidePortraitBox: ; 0x0202F6DC
 	mov r0, #0
 	strb r0, [r4, #0x28]
 	add r0, r4, #0x18
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	movne r0, #1
@@ -44643,7 +44643,7 @@ _0202F894:
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	add r0, r4, #8
-	bl InitPortraitBox
+	bl InitPortraitParams
 	mov r0, #0
 	strb r0, [r4, #0x29]
 	str r0, [r4, #4]
@@ -44652,18 +44652,18 @@ _0202F894:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end UpdatePortraitBox
 
-	arm_func_start CreateTextBox1
-CreateTextBox1: ; 0x0202F8C4
+	arm_func_start CreateTextBox
+CreateTextBox: ; 0x0202F8C4
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl CreateTextBoxInternal
 	str r4, [r0, #4]
 	ldrsb r0, [r0]
 	ldmia sp!, {r4, pc}
-	arm_func_end CreateTextBox1
+	arm_func_end CreateTextBox
 
-	arm_func_start CreateTextBox2
-CreateTextBox2: ; 0x0202F8DC
+	arm_func_start CreateTextBoxWithArg
+CreateTextBoxWithArg: ; 0x0202F8DC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r2
 	mov r5, r1
@@ -44672,21 +44672,21 @@ CreateTextBox2: ; 0x0202F8DC
 	str r5, [r0, #8]
 	ldrsb r0, [r0]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end CreateTextBox2
+	arm_func_end CreateTextBoxWithArg
 
-	arm_func_start sub_0202F8FC
-sub_0202F8FC: ; 0x0202F8FC
+	arm_func_start CloseTextBox
+CloseTextBox: ; 0x0202F8FC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202F8FC
+	arm_func_end CloseTextBox
 
-	arm_func_start sub_0202F918
-sub_0202F918: ; 0x0202F918
+	arm_func_start CloseTextBox2
+CloseTextBox2: ; 0x0202F918
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
@@ -44700,9 +44700,9 @@ sub_0202F918: ; 0x0202F918
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202F918
+	arm_func_end CloseTextBox2
 
 	arm_func_start sub_0202F954
 sub_0202F954: ; 0x0202F954
@@ -44761,7 +44761,7 @@ CreateTextBoxInternal: ; 0x0202F9DC
 	bl MemAlloc
 	mov r4, r0
 	cmp r5, #0
-	ldreq r0, _0202FA54 ; =_0209AF4C
+	ldreq r0, _0202FA54 ; =TEXT_BOX_DEFAULT_WINDOW_PARAMS
 	add ip, sp, #0
 	ldmeqia r0, {r0, r1, r2, r3}
 	ldmneia r5, {r0, r1, r2, r3}
@@ -44784,7 +44784,7 @@ CreateTextBoxInternal: ; 0x0202F9DC
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0202FA54: .word _0209AF4C
+_0202FA54: .word TEXT_BOX_DEFAULT_WINDOW_PARAMS
 _0202FA58: .word UpdateTextBox
 	arm_func_end CreateTextBoxInternal
 
@@ -44882,8 +44882,8 @@ _0202FB88:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end UpdateTextBox
 
-	arm_func_start sub_0202FB9C
-sub_0202FB9C: ; 0x0202FB9C
+	arm_func_start IsTextBoxActive
+IsTextBoxActive: ; 0x0202FB9C
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x10]
@@ -44892,10 +44892,10 @@ sub_0202FB9C: ; 0x0202FB9C
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202FB9C
+	arm_func_end IsTextBoxActive
 
-	arm_func_start CreateDynamicTextBox
-CreateDynamicTextBox: ; 0x0202FBBC
+	arm_func_start CreateAreaNameBox
+CreateAreaNameBox: ; 0x0202FBBC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x64
 	mov r7, r0
@@ -44923,10 +44923,10 @@ CreateDynamicTextBox: ; 0x0202FBBC
 	addne lr, sp, #4
 	ldmneia r7, {r0, r1, r2, r3}
 	stmneia lr, {r0, r1, r2, r3}
-	ldrne r0, _0202FD34 ; =UpdateDynamicTextBox
+	ldrne r0, _0202FD34 ; =UpdateAreaNameBox
 	strne r0, [sp, #4]
 	bne _0202FC48
-	ldr r0, _0202FD38 ; =_0209AF5C
+	ldr r0, _0202FD38 ; =AREA_NAME_BOX_DEFAULT_WINDOW_PARAMS
 	add r7, sp, #4
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r7, {r0, r1, r2, r3}
@@ -44970,7 +44970,7 @@ _0202FC48:
 	cmp r0, #0
 	movlt r0, #0
 	strlt r0, [r4, #0x1b0]
-	ldr r0, _0202FD34 ; =UpdateDynamicTextBox
+	ldr r0, _0202FD34 ; =UpdateAreaNameBox
 	cmp r5, #0
 	stmia r4, {r0, r6}
 	beq _0202FD10
@@ -44994,32 +44994,32 @@ _0202FD10:
 	.align 2, 0
 _0202FD2C: .word _0209AF6C
 _0202FD30: .word 0x0000C402
-_0202FD34: .word UpdateDynamicTextBox
-_0202FD38: .word _0209AF5C
-	arm_func_end CreateDynamicTextBox
+_0202FD34: .word UpdateAreaNameBox
+_0202FD38: .word AREA_NAME_BOX_DEFAULT_WINDOW_PARAMS
+	arm_func_end CreateAreaNameBox
 
-	arm_func_start sub_0202FD3C
-sub_0202FD3C: ; 0x0202FD3C
+	arm_func_start SetAreaNameBoxState3
+SetAreaNameBoxState3: ; 0x0202FD3C
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	mov r1, #3
 	str r1, [r0, #0xa0]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202FD3C
+	arm_func_end SetAreaNameBoxState3
 
-	arm_func_start sub_0202FD50
-sub_0202FD50: ; 0x0202FD50
+	arm_func_start CloseAreaNameBox
+CloseAreaNameBox: ; 0x0202FD50
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202FD50
+	arm_func_end CloseAreaNameBox
 
-	arm_func_start sub_0202FD6C
-sub_0202FD6C: ; 0x0202FD6C
+	arm_func_start IsAreaNameBoxActive
+IsAreaNameBoxActive: ; 0x0202FD6C
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0xa0]
@@ -45028,10 +45028,10 @@ sub_0202FD6C: ; 0x0202FD6C
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202FD6C
+	arm_func_end IsAreaNameBoxActive
 
-	arm_func_start UpdateDynamicTextBox
-UpdateDynamicTextBox: ; 0x0202FD8C
+	arm_func_start UpdateAreaNameBox
+UpdateAreaNameBox: ; 0x0202FD8C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xc]
@@ -45076,7 +45076,7 @@ _0202FE0C:
 	movne r0, #4
 	strne r0, [r4, #0xa0]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end UpdateDynamicTextBox
+	arm_func_end UpdateAreaNameBox
 
 	arm_func_start CreateControlsChart
 CreateControlsChart: ; 0x0202FE2C
@@ -45091,7 +45091,7 @@ CreateControlsChart: ; 0x0202FE2C
 	bl MemAlloc
 	mov ip, r0
 	cmp r7, #0
-	ldreq r0, _0202FECC ; =_0209AF78
+	ldreq r0, _0202FECC ; =CONTROLS_CHART_DEFAULT_WINDOW_PARAMS
 	strh r6, [ip, #0xa4]
 	add lr, sp, #0
 	ldmeqia r0, {r0, r1, r2, r3}
@@ -45123,23 +45123,23 @@ _0202FEB0:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0202FECC: .word _0209AF78
+_0202FECC: .word CONTROLS_CHART_DEFAULT_WINDOW_PARAMS
 _0202FED0: .word UpdateControlsChart
 	arm_func_end CreateControlsChart
 
-	arm_func_start sub_0202FED4
-sub_0202FED4: ; 0x0202FED4
+	arm_func_start CloseControlsChart
+CloseControlsChart: ; 0x0202FED4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202FED4
+	arm_func_end CloseControlsChart
 
-	arm_func_start sub_0202FEF0
-sub_0202FEF0: ; 0x0202FEF0
+	arm_func_start IsControlsChartActive
+IsControlsChartActive: ; 0x0202FEF0
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0xa0]
@@ -45148,7 +45148,7 @@ sub_0202FEF0: ; 0x0202FEF0
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202FEF0
+	arm_func_end IsControlsChartActive
 
 	arm_func_start UpdateControlsChart
 UpdateControlsChart: ; 0x0202FF10
@@ -45210,7 +45210,7 @@ CreateAlertBox: ; 0x0202FFB0
 	mov r4, r0
 	bl MemZero
 	cmp r5, #0
-	ldreq r0, _0203003C ; =_0209AF94
+	ldreq r0, _0203003C ; =ALERT_BOX_DEFAULT_WINDOW_PARAMS
 	add ip, sp, #0
 	ldmeqia r0, {r0, r1, r2, r3}
 	stmeqia ip, {r0, r1, r2, r3}
@@ -45236,12 +45236,12 @@ CreateAlertBox: ; 0x0202FFB0
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0203003C: .word _0209AF94
+_0203003C: .word ALERT_BOX_DEFAULT_WINDOW_PARAMS
 _02030040: .word UpdateAlertBox
 	arm_func_end CreateAlertBox
 
-	arm_func_start sub_02030044
-sub_02030044: ; 0x02030044
+	arm_func_start CloseAlertBox
+CloseAlertBox: ; 0x02030044
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetWindowContents
@@ -45254,9 +45254,9 @@ sub_02030044: ; 0x02030044
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r5
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02030044
+	arm_func_end CloseAlertBox
 
 	arm_func_start sub_0203007C
 sub_0203007C: ; 0x0203007C
@@ -45370,8 +45370,8 @@ _02030144:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_0203010C
 
-	arm_func_start sub_020301F4
-sub_020301F4: ; 0x020301F4
+	arm_func_start IsAlertBoxActive
+IsAlertBoxActive: ; 0x020301F4
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #4]
@@ -45380,7 +45380,7 @@ sub_020301F4: ; 0x020301F4
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020301F4
+	arm_func_end IsAlertBoxActive
 
 	arm_func_start sub_02030214
 sub_02030214: ; 0x02030214
@@ -45639,8 +45639,8 @@ _02030588:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end UpdateAlertBox
 
-	arm_func_start CreateAdvancedTextBox1
-CreateAdvancedTextBox1: ; 0x020305B4
+	arm_func_start CreateAdvancedTextBox
+CreateAdvancedTextBox: ; 0x020305B4
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r3
@@ -45653,10 +45653,10 @@ CreateAdvancedTextBox1: ; 0x020305B4
 	ldrsb r0, [r1, #0xa0]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end CreateAdvancedTextBox1
+	arm_func_end CreateAdvancedTextBox
 
-	arm_func_start CreateAdvancedTextBox2
-CreateAdvancedTextBox2: ; 0x020305E4
+	arm_func_start CreateAdvancedTextBoxWithArg
+CreateAdvancedTextBoxWithArg: ; 0x020305E4
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r4, r3
@@ -45671,7 +45671,7 @@ CreateAdvancedTextBox2: ; 0x020305E4
 	ldrsb r0, [r1, #0xa0]
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end CreateAdvancedTextBox2
+	arm_func_end CreateAdvancedTextBoxWithArg
 
 	arm_func_start CreateAdvancedTextBoxInternal
 CreateAdvancedTextBoxInternal: ; 0x0203061C
@@ -45699,7 +45699,7 @@ CreateAdvancedTextBoxInternal: ; 0x0203061C
 	ldrne r0, _02030774 ; =UpdateAdvancedTextBox
 	strne r0, [sp, #0x18]
 	bne _02030690
-	ldr r0, _02030778 ; =_0209AFA4
+	ldr r0, _02030778 ; =ADVANCED_TEXT_BOX_DEFAULT_WINDOW_PARAMS
 	add r8, sp, #0x18
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r8, {r0, r1, r2, r3}
@@ -45744,7 +45744,7 @@ _020306F0:
 	bl NewWindowScreenCheck
 	add r1, sp, #8
 	strb r0, [r4, #0x1a0]
-	bl sub_02028284
+	bl GetWindowRectangle
 	mov r1, #0x100
 	strh r1, [r4, #0xfc]
 	tst r7, #0x8000
@@ -45760,17 +45760,17 @@ _020306F0:
 	add r0, r4, #4
 	add r2, r4, #0x108
 	stmia sp, {r5, r6}
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r4
 	add sp, sp, #0x28
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02030774: .word UpdateAdvancedTextBox
-_02030778: .word _0209AFA4
+_02030778: .word ADVANCED_TEXT_BOX_DEFAULT_WINDOW_PARAMS
 	arm_func_end CreateAdvancedTextBoxInternal
 
-	arm_func_start sub_0203077C
-sub_0203077C: ; 0x0203077C
+	arm_func_start SetAdvancedTextBoxPartialMenu
+SetAdvancedTextBoxPartialMenu: ; 0x0203077C
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
@@ -45781,16 +45781,16 @@ sub_0203077C: ; 0x0203077C
 	biceq r1, r1, #0x400000
 	str r1, [r0, #0x104]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0203077C
+	arm_func_end SetAdvancedTextBoxPartialMenu
 
-	arm_func_start sub_020307A4
-sub_020307A4: ; 0x020307A4
+	arm_func_start SetAdvancedTextBoxField0x1C4
+SetAdvancedTextBoxField0x1C4: ; 0x020307A4
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	strb r4, [r0, #0x1c4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_020307A4
+	arm_func_end SetAdvancedTextBoxField0x1C4
 
 	arm_func_start sub_020307B8
 sub_020307B8: ; 0x020307B8
@@ -45834,17 +45834,17 @@ _02030828:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_020307EC
 
-	arm_func_start sub_0203083C
-sub_0203083C: ; 0x0203083C
+	arm_func_start SetAdvancedTextBoxField0x1C2
+SetAdvancedTextBoxField0x1C2: ; 0x0203083C
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	mov r1, #1
 	strb r1, [r0, #0x1c2]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0203083C
+	arm_func_end SetAdvancedTextBoxField0x1C2
 
-	arm_func_start sub_02030850
-sub_02030850: ; 0x02030850
+	arm_func_start CloseAdvancedTextBox2
+CloseAdvancedTextBox2: ; 0x02030850
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl sub_0202836C
@@ -45856,36 +45856,36 @@ sub_02030850: ; 0x02030850
 	bl GetWindowContents
 	mov r4, r0
 	mov r0, r5
-	bl sub_02028194
+	bl DeleteWindow
 	mov r0, r4
 	bl MemFree
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02030850
+	arm_func_end CloseAdvancedTextBox2
 
-	arm_func_start sub_0203088C
-sub_0203088C: ; 0x0203088C
+	arm_func_start SetAdvancedTextBoxState5
+SetAdvancedTextBoxState5: ; 0x0203088C
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	mov r1, #5
 	str r1, [r0, #0x1bc]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0203088C
+	arm_func_end SetAdvancedTextBoxState5
 
-	arm_func_start sub_020308A0
-sub_020308A0: ; 0x020308A0
+	arm_func_start CloseAdvancedTextBox
+CloseAdvancedTextBox: ; 0x020308A0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetWindowContents
 	mov r4, r0
 	mov r0, r5
-	bl sub_02028194
+	bl DeleteWindow
 	mov r0, r4
 	bl MemFree
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020308A0
+	arm_func_end CloseAdvancedTextBox
 
-	arm_func_start sub_020308C4
-sub_020308C4: ; 0x020308C4
+	arm_func_start IsAdvancedTextBoxActive
+IsAdvancedTextBoxActive: ; 0x020308C4
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x1bc]
@@ -45894,7 +45894,7 @@ sub_020308C4: ; 0x020308C4
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020308C4
+	arm_func_end IsAdvancedTextBoxActive
 
 	arm_func_start sub_020308E4
 sub_020308E4: ; 0x020308E4
@@ -46013,13 +46013,13 @@ sub_02030A2C: ; 0x02030A2C
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02030A2C
 
-	arm_func_start sub_02030A40
-sub_02030A40: ; 0x02030A40
+	arm_func_start GetAdvancedTextBoxFlags2
+GetAdvancedTextBoxFlags2: ; 0x02030A40
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x1b0]
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_02030A40
+	arm_func_end GetAdvancedTextBoxFlags2
 
 	arm_func_start sub_02030A50
 sub_02030A50: ; 0x02030A50
@@ -46069,23 +46069,23 @@ sub_02030AAC: ; 0x02030AAC
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02030AAC
 
-	arm_func_start sub_02030AC0
-sub_02030AC0: ; 0x02030AC0
+	arm_func_start SetUnkAdvancedTextBoxFn
+SetUnkAdvancedTextBoxFn: ; 0x02030AC0
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	str r4, [r0, #0x1b4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02030AC0
+	arm_func_end SetUnkAdvancedTextBoxFn
 
-	arm_func_start sub_02030AD4
-sub_02030AD4: ; 0x02030AD4
+	arm_func_start SetUnkAdvancedTextBoxWindowFn
+SetUnkAdvancedTextBoxWindowFn: ; 0x02030AD4
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	str r4, [r0, #0x1b8]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02030AD4
+	arm_func_end SetUnkAdvancedTextBoxWindowFn
 
 	arm_func_start UpdateAdvancedTextBox
 UpdateAdvancedTextBox: ; 0x02030AE8
@@ -46248,7 +46248,7 @@ _02030D04:
 	bne _02030D38
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _02030D38:
 	mov r1, #1
 	mov r0, #0
@@ -46273,7 +46273,7 @@ _02030D74:
 	beq _02030D94
 	add r0, r4, #4
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _02030D94:
 	mov r0, #1
 	strb r0, [r4, #0x1c0]
@@ -46397,16 +46397,16 @@ sub_02030EF0: ; 0x02030EF0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_02030EF0
 
-	arm_func_start sub_02030F28
-sub_02030F28: ; 0x02030F28
+	arm_func_start PlayAdvancedTextBoxInputSound
+PlayAdvancedTextBoxInputSound: ; 0x02030F28
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	bl GetWindowContents
 	mov r1, r4
 	add r0, r0, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02030F28
+	arm_func_end PlayAdvancedTextBoxInputSound
 
 	arm_func_start CreateTeamSelectionMenu
 CreateTeamSelectionMenu: ; 0x02030F44
@@ -46422,7 +46422,7 @@ CreateTeamSelectionMenu: ; 0x02030F44
 	bl MemAlloc
 	mov r5, r0
 	cmp r6, #0
-	ldreq r0, _02031114 ; =_0209AFB4
+	ldreq r0, _02031114 ; =TEAM_SELECTION_MENU_DEFAULT_WINDOW_PARAMS
 	add r4, sp, #0x18
 	ldmeqia r0, {r0, r1, r2, r3}
 	stmeqia r4, {r0, r1, r2, r3}
@@ -46470,14 +46470,14 @@ _02031000:
 	add r3, r3, #0x4c
 	mov r0, sl
 	mov r1, sb
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 	strb r0, [sp, #0x1f]
 	b _02031040
 _02031030:
 	add r3, r3, #0x4c
 	mov r0, sl
 	mov r1, sb
-	bl sub_02031AA4
+	bl CalcMenuHeightDiv8__02031AA4
 _02031040:
 	tst sl, #0x200000
 	ldrneb r1, [sp, #0x1c]
@@ -46520,7 +46520,7 @@ _0203109C:
 	bl NewWindowScreenCheck
 	add r1, sp, #8
 	mov r6, r0
-	bl sub_02028284
+	bl GetWindowRectangle
 	ldr r0, [sp, #0x448]
 	add r3, sp, #8
 	str r0, [sp]
@@ -46529,13 +46529,13 @@ _0203109C:
 	add r0, r5, #4
 	add r2, r5, #0x100
 	str r4, [sp, #4]
-	bl sub_02031AF8
+	bl InitWindowInput
 	mov r0, r6
 	add sp, sp, #0x28
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02031114: .word _0209AFB4
+_02031114: .word TEAM_SELECTION_MENU_DEFAULT_WINDOW_PARAMS
 _02031118: .word UpdateTeamSelectionMenu
 	arm_func_end CreateTeamSelectionMenu
 
@@ -46582,19 +46582,19 @@ sub_0203117C: ; 0x0203117C
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0203117C
 
-	arm_func_start sub_02031198
-sub_02031198: ; 0x02031198
+	arm_func_start CloseTeamSelectionMenu
+CloseTeamSelectionMenu: ; 0x02031198
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetWindowContents
 	bl MemFree
 	mov r0, r4
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02031198
+	arm_func_end CloseTeamSelectionMenu
 
-	arm_func_start sub_020311B4
-sub_020311B4: ; 0x020311B4
+	arm_func_start IsTeamSelectionMenuActive
+IsTeamSelectionMenuActive: ; 0x020311B4
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
@@ -46603,7 +46603,7 @@ sub_020311B4: ; 0x020311B4
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020311B4
+	arm_func_end IsTeamSelectionMenuActive
 
 	arm_func_start sub_020311D4
 sub_020311D4: ; 0x020311D4
@@ -46789,7 +46789,7 @@ _02031400:
 	bne _02031450
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _02031450:
 	mov r1, #1
 	mov r0, #0
@@ -46805,14 +46805,14 @@ _02031450:
 _0203147C:
 	add r0, r4, #4
 	mov r1, #2
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	b _020315C4
 _0203148C:
 	tst r1, #2
 	beq _020314C8
 	add r0, r4, #4
 	mov r1, #1
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #1
 	strb r0, [r4, #0x1a0]
 	strb r0, [r4, #0x1a1]
@@ -46831,7 +46831,7 @@ _020314C8:
 	beq _02031518
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r2, #1
 	mov r0, #0
 	strb r2, [r4, #0x1a0]
@@ -46852,7 +46852,7 @@ _02031518:
 	beq _02031568
 	add r0, r4, #4
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r2, #1
 	mov r0, #0
 	strb r2, [r4, #0x1a0]
@@ -46872,7 +46872,7 @@ _02031568:
 	add r0, r4, #4
 	beq _02031590
 	mov r1, #5
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [r4, #0x18c]
 	blx r0
 	b _020315C4
@@ -47109,8 +47109,8 @@ sub_0203189C: ; 0x0203189C
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0203189C
 
-	arm_func_start sub_020318B0
-sub_020318B0: ; 0x020318B0
+	arm_func_start IsTeamSelectionMenuState3
+IsTeamSelectionMenuState3: ; 0x020318B0
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x19c]
@@ -47119,7 +47119,7 @@ sub_020318B0: ; 0x020318B0
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_020318B0
+	arm_func_end IsTeamSelectionMenuState3
 
 	arm_func_start sub_020318D0
 sub_020318D0: ; 0x020318D0
@@ -47266,8 +47266,8 @@ sub_02031A5C: ; 0x02031A5C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_02031A5C
 
-	arm_func_start sub_02031AA4
-sub_02031AA4: ; 0x02031AA4
+	arm_func_start CalcMenuHeightDiv8__02031AA4
+CalcMenuHeightDiv8__02031AA4: ; 0x02031AA4
 	tst r0, #0x40000
 	bne _02031ABC
 	ldr ip, [r2]
@@ -47290,10 +47290,10 @@ _02031ABC:
 	add r0, r1, r0, lsr #29
 	mov r0, r0, asr #3
 	bx lr
-	arm_func_end sub_02031AA4
+	arm_func_end CalcMenuHeightDiv8__02031AA4
 
-	arm_func_start sub_02031AF8
-sub_02031AF8: ; 0x02031AF8
+	arm_func_start InitWindowInput
+InitWindowInput: ; 0x02031AF8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r1
 	mov r6, r2
@@ -47396,7 +47396,7 @@ _02031C4C:
 	str r1, [r7, #0xe0]
 	bl sub_02032984
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_02031AF8
+	arm_func_end InitWindowInput
 
 	arm_func_start sub_02031C74
 sub_02031C74: ; 0x02031C74
@@ -47527,7 +47527,7 @@ _02031E0C:
 	beq _02031E2C
 	mov r0, r8
 	mov r1, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #1
 	b _02031E78
 _02031E2C:
@@ -47536,7 +47536,7 @@ _02031E2C:
 	beq _02031E44
 	mov r0, r8
 	mov r1, #3
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _02031E44:
 	ldr r0, [r8, #0xd8]
 	cmp r0, #0
@@ -47671,7 +47671,7 @@ _02031FFC:
 	beq _0203201C
 	mov r0, r8
 	mov r1, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #1
 	b _02032068
 _0203201C:
@@ -47680,7 +47680,7 @@ _0203201C:
 	beq _02032034
 	mov r0, r8
 	mov r1, #3
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _02032034:
 	ldr r0, [r8, #0xd8]
 	cmp r0, #0
@@ -48453,8 +48453,8 @@ _02032958:
 	bx lr
 	arm_func_end sub_0203293C
 
-	arm_func_start PlayMenuOptionSound
-PlayMenuOptionSound: ; 0x02032960
+	arm_func_start PlayWindowInputSound
+PlayWindowInputSound: ; 0x02032960
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0, #0x10]
 	tst r0, #0x10
@@ -48464,7 +48464,7 @@ PlayMenuOptionSound: ; 0x02032960
 	bl PlaySeVolumeWrapper
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end PlayMenuOptionSound
+	arm_func_end PlayWindowInputSound
 
 	arm_func_start sub_02032984
 sub_02032984: ; 0x02032984
@@ -48498,8 +48498,8 @@ sub_0203299C: ; 0x0203299C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_0203299C
 
-	arm_func_start sub_020329E4
-sub_020329E4: ; 0x020329E4
+	arm_func_start CalcMenuHeightDiv8__020329E4
+CalcMenuHeightDiv8__020329E4: ; 0x020329E4
 	tst r0, #0x40000
 	bne _020329FC
 	ldr ip, [r2]
@@ -48522,10 +48522,10 @@ _020329FC:
 	add r0, r1, r0, lsr #29
 	mov r0, r0, asr #3
 	bx lr
-	arm_func_end sub_020329E4
+	arm_func_end CalcMenuHeightDiv8__020329E4
 
-	arm_func_start sub_02032A38
-sub_02032A38: ; 0x02032A38
+	arm_func_start InitInventoryMenuInput
+InitInventoryMenuInput: ; 0x02032A38
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r1
 	mov r6, r2
@@ -48629,7 +48629,7 @@ _02032B94:
 	str r1, [r7, #0xe0]
 	bl sub_020333FC
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_02032A38
+	arm_func_end InitInventoryMenuInput
 
 	arm_func_start sub_02032BB8
 sub_02032BB8: ; 0x02032BB8
@@ -49335,7 +49335,7 @@ sub_02033440: ; 0x02033440
 	add r0, sp, #4
 	mov r1, #0x100
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, sp, #4
 	bl sub_020265A8
 _02033488:
@@ -49368,7 +49368,7 @@ sub_020334A8: ; 0x020334A8
 	add r0, sp, #0x54
 	mov r1, #0x100
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0x54
 	mov r0, r4
 	mov r1, #8
@@ -49457,7 +49457,7 @@ _02033610:
 	ldr r3, _020336F4 ; =0x0000C402
 	add r0, sp, #0x54
 	mov r1, #0x100
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0x54
 	mov r0, r4
 	mov r1, #8
@@ -49637,7 +49637,7 @@ _0203385C:
 	bl sub_02032864
 	mov r0, sb
 	mov r1, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [r8]
 	mov r4, #1
 	orr r0, r0, #0x400000
@@ -49660,7 +49660,7 @@ _020338D4:
 	bl sub_0203282C
 	mov r0, sb
 	mov r1, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [r8]
 	mov r4, #1
 	orr r0, r0, #0x800000
@@ -49680,7 +49680,7 @@ _0203392C:
 	bl sub_0203280C
 	mov r0, sb
 	mov r1, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [r8]
 	mov r4, #1
 	orr r0, r0, #0x100000
@@ -49700,7 +49700,7 @@ _02033978:
 	bl sub_020327E4
 	mov r0, sb
 	mov r1, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [r8]
 	mov r4, #1
 	orr r0, r0, #0x200000
@@ -49740,14 +49740,14 @@ _020339EC:
 	bl sub_020327E4
 	mov r0, sb
 	mov r1, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [r8]
 	orr r0, r0, #0x4000
 	str r0, [r8]
 	b _02033A60
 _02033A58:
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _02033A60:
 	mov r4, #1
 _02033A64:
@@ -49774,14 +49774,14 @@ _02033A64:
 	bl sub_0203280C
 	mov r0, sb
 	mov r1, #4
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	ldr r0, [r8]
 	orr r0, r0, #0x8000
 	str r0, [r8]
 	b _02033ADC
 _02033AD4:
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _02033ADC:
 	mov r4, #1
 _02033AE0:
@@ -49830,7 +49830,7 @@ _02033B2C:
 	orr r2, r1, #0x10000
 	mov r1, #2
 	str r2, [r8]
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _02033B94:
 	mov r4, #1
 _02033B98:
@@ -51137,7 +51137,7 @@ sub_02034D50: ; 0x02034D50
 	bl MemAlloc
 	ldr r1, _02034DA0 ; =_020AFDBC
 	str r0, [r1, #0xc]
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldr r0, _02034DA0 ; =_020AFDBC
 	mov r2, #0
 	ldr r1, [r0, #0xc]
@@ -51205,7 +51205,7 @@ sub_02034E28: ; 0x02034E28
 	ldmneia sp!, {r4, pc}
 	ldr r0, _02034E5C ; =_020AFDBC
 	ldr r0, [r0, #0xc]
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02034E5C: .word _020AFDBC
@@ -51453,16 +51453,16 @@ sub_02035154: ; 0x02035154
 	mvn r1, #1
 	cmp r0, r1
 	beq _0203517C
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 _0203517C:
 	ldr r0, _020351D8 ; =_020AFDBC
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _020351D8 ; =_020AFDBC
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0, #2]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _020351D8 ; =_020AFDBC
 	ldr r0, [r0, #8]
 	bl MemFree
@@ -51514,7 +51514,7 @@ _02035234:
 	ldrh r1, [r3, #0x14]
 	ldrh r2, [r3, #0x16]
 	add r3, r3, #0x18
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02035598 ; =_020AFDBC
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -51595,7 +51595,7 @@ _02035350:
 	ldrsb r0, [r0]
 	cmp r0, r1
 	beq _0203536C
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 _0203536C:
 	ldr r0, _02035598 ; =_020AFDBC
 	ldr r2, [r0, #0xc]
@@ -51607,13 +51607,13 @@ _0203536C:
 	bne _020353A0
 	ldr r3, [r2, #0x470]
 	add r2, sp, #4
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02035598 ; =_020AFDBC
 	b _020353B0
 _020353A0:
 	ldr r3, [r2, #0x474]
 	add r2, sp, #4
-	bl sub_0202B1AC
+	bl CreateSimpleMenu
 	ldr r1, _02035598 ; =_020AFDBC
 _020353B0:
 	ldr r1, [r1, #8]
@@ -51629,7 +51629,7 @@ _020353B0:
 	ble _020353E8
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0]
-	bl sub_0202BA0C
+	bl SetSimpleMenuField0x1AC
 _020353E8:
 	ldr r0, _02035598 ; =_020AFDBC
 	mov r2, #0
@@ -51659,7 +51659,7 @@ _02035408:
 	ldr r0, _02035598 ; =_020AFDBC
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _02035598 ; =_020AFDBC
 	mvn r1, #1
 	ldr r0, [r0, #8]
@@ -51720,7 +51720,7 @@ _020354F8:
 	ldr r2, [r0, #8]
 	ldr r1, [r0, #0xc]
 	ldrsb r0, [r2, #2]
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _02035554
 _02035544:
 	ldr r0, _02035598 ; =_020AFDBC
@@ -51894,7 +51894,7 @@ sub_02035768: ; 0x02035768
 	mvn r1, #1
 	cmp r0, r1
 	beq _02035790
-	bl sub_0202D530
+	bl CloseOptionsMenu
 _02035790:
 	ldr r0, _020357EC ; =_020AFDD0
 	mvn r1, #1
@@ -51902,7 +51902,7 @@ _02035790:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _020357AC
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 _020357AC:
 	ldr r0, _020357EC ; =_020AFDD0
 	mvn r1, #1
@@ -51910,7 +51910,7 @@ _020357AC:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _020357C8
-	bl sub_0202AABC
+	bl CloseParentMenu
 _020357C8:
 	mov r0, #1
 	bl sub_02048078
@@ -51954,7 +51954,7 @@ _0203582C:
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02035CCC ; =_020AFDD0
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -51964,13 +51964,13 @@ _0203586C:
 	ldrsb r0, [r3, #2]
 	cmp r0, r1
 	beq _020358A8
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02035CC0
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02035CCC ; =_020AFDD0
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52012,7 +52012,7 @@ _02035920:
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202D57C
+	bl CheckOptionsMenuField0x1A4
 	cmp r0, #0
 	bne _02035CC0
 	ldr r0, _02035CCC ; =_020AFDD0
@@ -52055,13 +52055,13 @@ _020359BC:
 	mvn r1, #1
 	cmp r0, r1
 	beq _020359FC
-	bl sub_0202D55C
+	bl IsOptionsMenuActive
 	cmp r0, #0
 	bne _02035CC0
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202D530
+	bl CloseOptionsMenu
 	ldr r0, _02035CCC ; =_020AFDD0
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52081,7 +52081,7 @@ _020359FC:
 	ldr r0, [r3, #4]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _02035A34:
 	ldr r1, _02035CCC ; =_020AFDD0
 	mvn r0, #1
@@ -52093,7 +52093,7 @@ _02035A34:
 	ldr r3, _02035CE0 ; =_0209B11C
 	mov r2, r0
 	mov r1, #0x13
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _02035CCC ; =_020AFDD0
 	ldr r1, [r1, #4]
 	strb r0, [r1, #2]
@@ -52105,7 +52105,7 @@ _02035A6C:
 	b _02035CC0
 _02035A80:
 	ldrsb r0, [r3, #2]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	bne _02035CC0
 	ldr r0, _02035CCC ; =_020AFDD0
@@ -52135,13 +52135,13 @@ _02035AE8:
 	mvn r1, #1
 	cmp r0, r1
 	beq _02035B24
-	bl sub_0202D55C
+	bl IsOptionsMenuActive
 	cmp r0, #0
 	bne _02035CC0
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202D530
+	bl CloseOptionsMenu
 	ldr r0, _02035CCC ; =_020AFDD0
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52159,7 +52159,7 @@ _02035B24:
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02035CCC ; =_020AFDD0
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52171,13 +52171,13 @@ _02035B68:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _02035BAC
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02035CC0
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02035CCC ; =_020AFDD0
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52337,7 +52337,7 @@ sub_02035DB0: ; 0x02035DB0
 	mvn r1, #1
 	cmp r0, r1
 	beq _02035DD8
-	bl sub_0202D530
+	bl CloseOptionsMenu
 _02035DD8:
 	ldr r0, _02035E34 ; =_020AFDD8
 	mvn r1, #1
@@ -52345,7 +52345,7 @@ _02035DD8:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _02035DF4
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 _02035DF4:
 	ldr r0, _02035E34 ; =_020AFDD8
 	mvn r1, #1
@@ -52353,7 +52353,7 @@ _02035DF4:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _02035E10
-	bl sub_0202AABC
+	bl CloseParentMenu
 _02035E10:
 	mov r0, #1
 	bl sub_02048078
@@ -52396,7 +52396,7 @@ _02035E70:
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0203630C ; =_020AFDD8
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52406,13 +52406,13 @@ _02035EB0:
 	ldrsb r0, [r3, #2]
 	cmp r0, r1
 	beq _02035EEC
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02036300
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _0203630C ; =_020AFDD8
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52454,7 +52454,7 @@ _02035F64:
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202D57C
+	bl CheckOptionsMenuField0x1A4
 	cmp r0, #0
 	bne _02035FE8
 	ldr r0, _0203630C ; =_020AFDD8
@@ -52516,13 +52516,13 @@ _0203604C:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0203608C
-	bl sub_0202D55C
+	bl IsOptionsMenuActive
 	cmp r0, #0
 	bne _02036300
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202D530
+	bl CloseOptionsMenu
 	ldr r0, _0203630C ; =_020AFDD8
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52542,7 +52542,7 @@ _0203608C:
 	ldr r0, [r3, #4]
 	mov r3, #0
 	ldrsb r0, [r0, #1]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _020360C4:
 	ldr r1, _0203630C ; =_020AFDD8
 	mvn r0, #1
@@ -52554,7 +52554,7 @@ _020360C4:
 	ldr r3, _02036320 ; =_0209B1D8
 	mov r2, r0
 	mov r1, #0x13
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _0203630C ; =_020AFDD8
 	ldr r1, [r1, #4]
 	strb r0, [r1, #2]
@@ -52566,7 +52566,7 @@ _020360FC:
 	b _02036300
 _02036110:
 	ldrsb r0, [r3, #2]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	bne _02036300
 	ldr r0, _0203630C ; =_020AFDD8
@@ -52596,13 +52596,13 @@ _02036178:
 	mvn r1, #1
 	cmp r0, r1
 	beq _020361B4
-	bl sub_0202D55C
+	bl IsOptionsMenuActive
 	cmp r0, #0
 	bne _02036300
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202D530
+	bl CloseOptionsMenu
 	ldr r0, _0203630C ; =_020AFDD8
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52620,7 +52620,7 @@ _020361B4:
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0203630C ; =_020AFDD8
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52632,13 +52632,13 @@ _020361F8:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _0203623C
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02036300
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _0203630C ; =_020AFDD8
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -52805,7 +52805,7 @@ sub_0203643C: ; 0x0203643C
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_0202DEF8
+	bl CloseDebugMenu
 	ldr r0, _02036474 ; =_020AFDE0
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -52832,7 +52832,7 @@ sub_02036478: ; 0x02036478
 	b _02036560
 _020364A4:
 	ldrsb r0, [r1]
-	bl sub_0202DF44
+	bl CheckDebugMenuField0x1A4
 	cmp r0, #0
 	moveq r0, r4
 	ldreq r0, [r0, #4]
@@ -52841,7 +52841,7 @@ _020364A4:
 	b _02036560
 _020364C4:
 	ldrsb r0, [r1]
-	bl sub_0202DF24
+	bl IsDebugMenuActive
 	cmp r0, #0
 	bne _02036560
 	mov r0, r4
@@ -52983,7 +52983,7 @@ sub_02036684: ; 0x02036684
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_0202DEF8
+	bl CloseDebugMenu
 	ldr r0, _020366BC ; =_020AFDE8
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -53010,7 +53010,7 @@ sub_020366C0: ; 0x020366C0
 	b _020367A8
 _020366EC:
 	ldrsb r0, [r1]
-	bl sub_0202DF44
+	bl CheckDebugMenuField0x1A4
 	cmp r0, #0
 	moveq r0, r4
 	ldreq r0, [r0, #4]
@@ -53019,7 +53019,7 @@ _020366EC:
 	b _020367A8
 _0203670C:
 	ldrsb r0, [r1]
-	bl sub_0202DF24
+	bl IsDebugMenuActive
 	cmp r0, #0
 	bne _020367A8
 	mov r0, r4
@@ -53457,7 +53457,7 @@ _02036BA0: ; jump table
 _02036BB0:
 	ldr r0, _02036CB4 ; =_0209B2FC
 	ldr r1, _02036CB8 ; =sub_02037F58
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02036CB0 ; =_020AFDF0
 	ldr r2, [r1]
 	strb r0, [r2]
@@ -53476,7 +53476,7 @@ _02036BB0:
 _02036BF8:
 	ldr r0, _02036CBC ; =_0209B31C
 	ldr r1, _02036CC0 ; =sub_02037CA8
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02036CB0 ; =_020AFDF0
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -53484,7 +53484,7 @@ _02036BF8:
 _02036C14:
 	ldr r0, _02036CBC ; =_0209B31C
 	ldr r1, _02036CC4 ; =sub_02037C78
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02036CB0 ; =_020AFDF0
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -53492,7 +53492,7 @@ _02036C14:
 _02036C30:
 	ldr r0, _02036CC8 ; =_0209B2EC
 	ldr r1, _02036CB8 ; =sub_02037F58
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02036CB0 ; =_020AFDF0
 	ldr r2, [r1]
 	strb r0, [r2]
@@ -53507,14 +53507,14 @@ _02036C30:
 	beq _02036C84
 	ldr r0, _02036CBC ; =_0209B31C
 	ldr r1, _02036CC4 ; =sub_02037C78
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02036CB0 ; =_020AFDF0
 	ldr r1, [r1]
 	strb r0, [r1, #2]
 _02036C84:
 	ldr r0, _02036CCC ; =_0209B2DC
 	ldr r1, _02036CD0 ; =sub_02037CD8
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02036CB0 ; =_020AFDF0
 	mov r2, #0
 	ldr r3, [r1]
@@ -53833,7 +53833,7 @@ _02037110:
 	ldr r0, _02037444 ; =_020AFDF0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_020275F8
+	bl GetWindow
 	ldr r3, _02037444 ; =_020AFDF0
 	mov r1, #0xa
 	ldr ip, [r3]
@@ -54100,18 +54100,18 @@ _0203749C:
 	b _02037534
 _020374D4:
 	ldrsb r0, [r0]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02037558 ; =_020AFDF0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02037558 ; =_020AFDF0
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _02037534
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02037558 ; =_020AFDF0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -54242,7 +54242,7 @@ _020376A4:
 	blt _02037698
 	ldr r0, _020376E4 ; =_0209B30C
 	ldr r1, _020376E8 ; =sub_02037F58
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _020376E0 ; =_020AFDF0
 	mov r2, #0
 	ldr r3, [r1]
@@ -54278,7 +54278,7 @@ _02037720:
 	b _02037750
 _0203772C:
 	ldrsb r0, [r0]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	b _02037750
 _02037738:
 	bl MemFree
@@ -54395,18 +54395,18 @@ _02037880:
 	b _02037908
 _020378B8:
 	ldrsb r0, [r3]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02037C28 ; =_020AFDF0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02037C28 ; =_020AFDF0
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _02037908
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02037C28 ; =_020AFDF0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -54580,7 +54580,7 @@ _02037B24:
 	bne _02037B64
 	ldr r0, _02037C30 ; =_0209B2FC
 	ldr r1, _02037C34 ; =sub_02037F58
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02037C28 ; =_020AFDF0
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -54596,7 +54596,7 @@ _02037B64:
 	ldr r2, [r2]
 	mov r3, #0
 	strb r3, [r2, #0x15]
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02037C28 ; =_020AFDF0
 	ldr r2, [r1]
 	strb r0, [r2]
@@ -54609,7 +54609,7 @@ _02037B64:
 	beq _02037BD0
 	ldr r0, _02037C3C ; =_0209B31C
 	ldr r1, _02037C40 ; =sub_02037C78
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02037C28 ; =_020AFDF0
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -54627,7 +54627,7 @@ _02037BD0:
 _02037BF8:
 	ldr r0, _02037C44 ; =_0209B2DC
 	ldr r1, _02037C48 ; =sub_02037CD8
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02037C28 ; =_020AFDF0
 	mov r2, #0
 	ldr r3, [r1]
@@ -54917,7 +54917,7 @@ sub_02037F58: ; 0x02037F58
 	add r0, sp, #0x12
 	bl GetStringFromFileVeneer
 	mov r0, sb
-	bl sub_020275F8
+	bl GetWindow
 	mov r4, r0
 	add r0, sp, #0x12
 	bl sub_020265A8
@@ -55922,7 +55922,7 @@ _02038D88:
 	strb r6, [r1, #0x1d]
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_020275F8
+	bl GetWindow
 	mov r4, r0
 	bl sub_02038ADC
 	ldr r0, _02039068 ; =_020AFDF0
@@ -56187,7 +56187,7 @@ _0203913C:
 	mov r2, #1
 	ldr r1, _02039210 ; =sub_0203939C
 	str r2, [sp, #4]
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02039208 ; =_020AFE40
 	ldr r3, _02039214 ; =_0209B4E4
 	ldr r1, [r1]
@@ -56196,7 +56196,7 @@ _0203913C:
 	mov r0, #0
 	mov r1, #0x31
 	str r0, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02039208 ; =_020AFE40
 	mov r2, #0
 	ldr r3, [r1]
@@ -56215,7 +56215,7 @@ _020391C0:
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0, #2]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02039208 ; =_020AFE40
 	mov r1, #1
 	ldr r0, [r0]
@@ -56263,14 +56263,14 @@ _02039270:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _020392DC
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	b _020392DC
 _02039290:
 	ldrsb r0, [r0]
 	mvn r1, #1
 	cmp r0, r1
 	beq _020392A4
-	bl sub_0202F8FC
+	bl CloseTextBox
 _020392A4:
 	ldr r0, _02039300 ; =_020AFE40
 	mvn r1, #1
@@ -56278,7 +56278,7 @@ _020392A4:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _020392DC
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	b _020392DC
 _020392C4:
 	bl MemFree
@@ -56382,7 +56382,7 @@ _020393E0:
 	mov r1, #0x400
 	mov r2, #0x124
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0x154
 	mov r0, r4
 	mov r1, #4
@@ -56439,7 +56439,7 @@ sub_02039460: ; 0x02039460
 	ldr r3, _02039520 ; =sub_02039C14
 	mov r0, ip
 	str r2, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	b _02039500
 _020394C8:
 	ldr r0, _02039524 ; =_0209C5D0
@@ -56455,7 +56455,7 @@ _020394C8:
 	ldr r3, _02039520 ; =sub_02039C14
 	mov r0, ip
 	str r2, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 _02039500:
 	strb r0, [r4, #0x14]
 	mov r0, r4
@@ -56492,18 +56492,18 @@ _0203955C:
 	ldrsb r0, [r5, #0x14]
 	bl sub_0202836C
 	ldrsb r0, [r5, #0x14]
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	ldrsb r0, [r5, #0x14]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, [r5]
 	ldmia sp!, {r3, r4, r5, pc}
 _02039584:
 	ldrsb r0, [r5, #0x14]
 	bl sub_0202836C
 	ldrsb r0, [r5, #0x14]
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	ldrsb r0, [r5, #0x14]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	mov r0, #1
 	bl PlaySeVolumeWrapper
 	mvn r0, #0
@@ -56513,7 +56513,7 @@ _020395AC:
 	cmp r4, r0
 	beq _020395C0
 	ldrsb r0, [r5, #0x14]
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 _020395C0:
 	mvn r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
@@ -56617,7 +56617,7 @@ sub_020396E4: ; 0x020396E4
 	mov r0, #0
 	bl GetPressedButtons
 	ldrsb r0, [r4, #0x14]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	bne _02039730
 	ldrsb r0, [r4, #0x14]
@@ -56813,7 +56813,7 @@ sub_0203994C: ; 0x0203994C
 	movne r0, #0
 	bne _020399F0
 	ldrsb r0, [r4, #0x14]
-	bl sub_020275F8
+	bl GetWindow
 	ldrb r1, [r0, #5]
 	ldr r2, [r4, #0x24]
 	ldr r0, [sp, #8]
@@ -56839,7 +56839,7 @@ sub_020399FC: ; 0x020399FC
 	ldrsb r0, [r6, #0x14]
 	mov r5, r1
 	mov r4, r2
-	bl sub_020275F8
+	bl GetWindow
 	ldrb r1, [r0, #5]
 	ldr r3, [r6, #0x24]
 	ldr ip, _02039B08 ; =0x0000FFFF
@@ -57527,7 +57527,7 @@ _0203A390:
 	add r2, r3, #0x500
 	ldrsh r4, [r2, #0xd4]
 	add r2, r3, #0x6c
-	ldr r3, _0203A4FC ; =sub_0203A75C
+	ldr r3, _0203A4FC ; =TeamSelectionMenuGetItem
 	str r4, [sp]
 	mov r4, #6
 	add r2, r2, #0x400
@@ -57544,7 +57544,7 @@ _0203A3E0:
 	ldrsh r4, [r1, #0xd4]
 	add r2, r2, #0x6c
 	ldr r1, _0203A500 ; =0x00401C33
-	ldr r3, _0203A4FC ; =sub_0203A75C
+	ldr r3, _0203A4FC ; =TeamSelectionMenuGetItem
 	str r4, [sp]
 	mov r4, #6
 	add r2, r2, #0x400
@@ -57571,7 +57571,7 @@ _0203A420:
 	add r2, r3, #0x500
 	ldrsh r4, [r2, #0xd4]
 	add r2, r3, #0x6c
-	ldr r3, _0203A4FC ; =sub_0203A75C
+	ldr r3, _0203A4FC ; =TeamSelectionMenuGetItem
 	str r4, [sp]
 	mov r4, #8
 	add r2, r2, #0x400
@@ -57587,7 +57587,7 @@ _0203A420:
 	bl sub_02031888
 	ldr r0, _0203A514 ; =_0209C638
 	ldr r1, _0203A518 ; =sub_0203C784
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0203A4D4 ; =_020AFE5C
 	mov r2, #1
 	ldr r3, [r1, #0x10]
@@ -57613,7 +57613,7 @@ _0203A4EC: .word 0x00000302
 _0203A4F0: .word 0x00000303
 _0203A4F4: .word _0209C668
 _0203A4F8: .word 0x00401E33
-_0203A4FC: .word sub_0203A75C
+_0203A4FC: .word TeamSelectionMenuGetItem
 _0203A500: .word 0x00401C33
 _0203A504: .word sub_0203B91C
 _0203A508: .word sub_0203BA24
@@ -57639,7 +57639,7 @@ sub_0203A51C: ; 0x0203A51C
 	ldr r0, [r1, #0x10]
 	add r0, r0, #0x400
 	ldrsb r0, [r0, #0x68]
-	bl sub_02031198
+	bl CloseTeamSelectionMenu
 	ldr r0, _0203A5A4 ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -57647,7 +57647,7 @@ sub_0203A51C: ; 0x0203A51C
 	ldrsb r0, [r0, #0x69]
 	cmp r0, r1
 	beq _0203A588
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0203A5A4 ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -57681,7 +57681,7 @@ sub_0203A5A8: ; 0x0203A5A8
 	ldr r0, [r1, #0x10]
 	add r0, r0, #0x400
 	ldrsb r0, [r0, #0x68]
-	bl sub_020311B4
+	bl IsTeamSelectionMenuActive
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0203A5EC: .word _020AFE5C
@@ -57748,7 +57748,7 @@ sub_0203A658: ; 0x0203A658
 	ldrsb r0, [r0, #0x69]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0203A6B8 ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -57791,7 +57791,7 @@ _0203A6F0:
 	bne _0203A748
 	ldr r0, _0203A754 ; =_0209C638
 	ldr r1, _0203A758 ; =sub_0203C784
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0203A750 ; =_020AFE5C
 	ldr r1, [r1, #0x10]
 	strb r0, [r1, #0x469]
@@ -57805,8 +57805,8 @@ _0203A754: .word _0209C638
 _0203A758: .word sub_0203C784
 	arm_func_end sub_0203A6BC
 
-	arm_func_start sub_0203A75C
-sub_0203A75C: ; 0x0203A75C
+	arm_func_start TeamSelectionMenuGetItem
+TeamSelectionMenuGetItem: ; 0x0203A75C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x28
 	ldr r3, _0203A960 ; =_020AFE5C
@@ -57954,7 +57954,7 @@ _0203A960: .word _020AFE5C
 _0203A964: .word TEAM_MEMBER_TABLE_PTR
 _0203A968: .word _0209C798
 _0203A96C: .word _0209C7B8
-	arm_func_end sub_0203A75C
+	arm_func_end TeamSelectionMenuGetItem
 
 	arm_func_start SprintfStatic__0203A970
 SprintfStatic__0203A970: ; 0x0203A970
@@ -57995,7 +57995,7 @@ sub_0203A9B8: ; 0x0203A9B8
 	cmpne r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_020311B4
+	bl IsTeamSelectionMenuActive
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0203A9E8: .word _020AFE5C
@@ -58013,7 +58013,7 @@ sub_0203A9EC: ; 0x0203A9EC
 	cmpne r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_020318B0
+	bl IsTeamSelectionMenuState3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0203AA1C: .word _020AFE5C
@@ -58030,7 +58030,7 @@ sub_0203AA20: ; 0x0203AA20
 	mvnne r1, #1
 	cmpne r0, r1
 	beq _0203AAA0
-	bl sub_020311B4
+	bl IsTeamSelectionMenuActive
 	cmp r0, #0
 	beq _0203AA68
 	ldr r0, _0203AAAC ; =_020AFE5C
@@ -59147,7 +59147,7 @@ sub_0203B91C: ; 0x0203B91C
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0203BA18 ; =_020AFE5C
 	ldr r1, [r1, #0x10]
 	strb r0, [r1, #0x506]
@@ -59195,7 +59195,7 @@ _0203B9E8:
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #6]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0203BA18 ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -59459,7 +59459,7 @@ sub_0203BCEC: ; 0x0203BCEC
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0203BE0C ; =_020AFE5C
 	ldr r1, [r1, #0x10]
 	strb r0, [r1, #0x507]
@@ -59479,7 +59479,7 @@ _0203BD3C:
 	mov r4, r0, asr #0x10
 	add r0, r1, #0x500
 	ldrsb r0, [r0, #7]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0203BE0C ; =_020AFE5C
 	mvn r2, #1
 	ldr r1, [r0, #0x10]
@@ -59572,7 +59572,7 @@ _0203BE94:
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #7]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0203BECC ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -59594,7 +59594,7 @@ sub_0203BEDC: ; 0x0203BEDC
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #0xc]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	ldreq r0, _0203BF0C ; =_020AFE5C
 	moveq r1, #3
@@ -59622,7 +59622,7 @@ sub_0203BF10: ; 0x0203BF10
 	str r1, [r0, #0x508]
 	ldmia sp!, {r4, pc}
 _0203BF48:
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
 	ldr r0, _0203C028 ; =_020AFE5C
@@ -59675,7 +59675,7 @@ _0203C000:
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #0xc]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _0203C028 ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -59700,7 +59700,7 @@ sub_0203C030: ; 0x0203C030
 	mov r3, #0
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #5]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0203C07C ; =_020AFE5C
 	mov r1, #5
 	ldr r0, [r0, #0x10]
@@ -59747,7 +59747,7 @@ sub_0203C0D4: ; 0x0203C0D4
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0203C120 ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -59800,7 +59800,7 @@ sub_0203C124: ; 0x0203C124
 	add r2, r2, #0x1d8
 	ldr r3, _0203C1F4 ; =sub_0203BCCC
 	add r2, r2, #0x400
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _0203C1E8 ; =_020AFE5C
 	mov r2, #8
 	ldr r3, [r1, #0x10]
@@ -59841,7 +59841,7 @@ _0203C22C:
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #0xbc]
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 	ldmia sp!, {r3, pc}
 _0203C244:
 	mov r0, #0
@@ -59850,12 +59850,12 @@ _0203C244:
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #0xbc]
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	ldr r0, _0203C324 ; =_020AFE5C
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #0xbc]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _0203C324 ; =_020AFE5C
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0, #0x5a8]
@@ -59896,7 +59896,7 @@ _0203C2F4:
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #0xbc]
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	ldr r0, _0203C324 ; =_020AFE5C
 	mov r1, #9
 	ldr r0, [r0, #0x10]
@@ -59917,7 +59917,7 @@ sub_0203C32C: ; 0x0203C32C
 	ldrsb r0, [r0, #0xbc]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _0203C378 ; =_020AFE5C
 	mvn r1, #1
 	ldr r0, [r0, #0x10]
@@ -60275,7 +60275,7 @@ sub_0203C784: ; 0x0203C784
 	ldr r0, [r0, #0xc]
 	mov r0, r0, lsl #1
 	ldrh r0, [r1, r0]
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp, #0x3c]
 	add ip, sp, #4
 	mov r0, r4
@@ -60624,7 +60624,7 @@ sub_0203CB84: ; 0x0203CB84
 	ldr r0, _0203CC5C ; =_020AFE70
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0203CC5C ; =_020AFE70
 	mvn r1, #1
 	ldr r0, [r0]
@@ -60640,7 +60640,7 @@ _0203CBD0:
 	ldr r0, _0203CC5C ; =_020AFE70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0203CC5C ; =_020AFE70
 	mvn r1, #1
 	ldr r0, [r0]
@@ -60656,7 +60656,7 @@ _0203CC0C:
 	ldr r0, _0203CC5C ; =_020AFE70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0203CC5C ; =_020AFE70
 	mvn r1, #1
 	ldr r0, [r0]
@@ -60752,7 +60752,7 @@ _0203CD2C:
 	bne _0203CD5C
 	ldr r0, _0203CE08 ; =_0209C7E4
 	ldr r1, _0203CE0C ; =sub_0203CE1C
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0203CE04 ; =_020AFE70
 	ldr r1, [r1]
 	strb r0, [r1, #1]
@@ -60765,16 +60765,16 @@ _0203CD5C:
 	bne _0203CD8C
 	ldr r0, _0203CE10 ; =_0209C7D4
 	ldr r1, _0203CE14 ; =sub_0203CFCC
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0203CE04 ; =_020AFE70
 	ldr r1, [r1]
 	strb r0, [r1, #2]
 _0203CD8C:
 	add r0, sp, #0
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldrsh r1, [r4, #4]
 	add r0, sp, #0
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	add r0, sp, #0
 	mov r1, #2
 	bl SetPortraitLayout
@@ -60788,7 +60788,7 @@ _0203CD8C:
 	add r1, sp, #0
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0203CE04 ; =_020AFE70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
@@ -60989,7 +60989,7 @@ _0203D098:
 	ldr r0, _0203D40C ; =0x00000977
 	str r2, [sp, #0xa0]
 	mov r5, r1, asr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add ip, sp, #0x7c
 	add r0, sp, #0xcc
@@ -61010,7 +61010,7 @@ _0203D098:
 	str r0, [sp, #0xa4]
 	ldr r0, _0203D410 ; =0x00000978
 	str r1, [sp, #0xa0]
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #0x7c
 	mov r2, r0
 	str r1, [sp]
@@ -61027,7 +61027,7 @@ _0203D098:
 	mov r0, r0, lsl #0x10
 	mov r5, r0, asr #0x10
 	ldr r0, _0203D414 ; =0x00000979
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #0x7c
 	mov r2, r0
 	str r1, [sp]
@@ -61048,7 +61048,7 @@ _0203D098:
 	addne r1, r2, r1
 	addne r0, r0, #1
 	strne r1, [sp, #0xa0]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add ip, sp, #0x7c
 	add r0, sp, #0xcc
@@ -61069,7 +61069,7 @@ _0203D098:
 	addne r0, r2, r1
 	strne r0, [sp, #0xa0]
 	movne r0, #0x980
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add ip, sp, #0x7c
 	add r0, sp, #0xcc
@@ -61086,7 +61086,7 @@ _0203D098:
 	mov r0, r0, lsl #0x10
 	mov r5, r0, asr #0x10
 	ldr r0, _0203D420 ; =0x0000097A
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #0x7c
 	mov r2, r0
 	str r1, [sp]
@@ -61107,7 +61107,7 @@ _0203D098:
 	addne r1, r2, r1
 	addne r0, r0, #1
 	strne r1, [sp, #0xa0]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add ip, sp, #0x7c
 	add r0, sp, #0xcc
@@ -61128,7 +61128,7 @@ _0203D098:
 	addne r1, r2, r1
 	addne r0, r0, #1
 	strne r1, [sp, #0xa0]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add ip, sp, #0x7c
 	add r0, sp, #0xcc
@@ -61155,7 +61155,7 @@ _0203D338:
 	bl sub_0205B0A0
 	str r0, [sp, #0xb4]
 	ldr r0, _0203D42C ; =0x00000983
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #0x7c
 	mov r2, r0
 	str r1, [sp]
@@ -61182,7 +61182,7 @@ _0203D338:
 	add r0, sp, #0xcc
 	mov r3, #0
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _0203D3D0
 _0203D3B8:
 	ldr r2, _0203D434 ; =0x00000985
@@ -61190,7 +61190,7 @@ _0203D3B8:
 	add r0, sp, #0xcc
 	mov r3, #0
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 _0203D3D0:
 	add r0, r5, #0xc
 	mov r1, r0, lsl #0x10
@@ -61265,14 +61265,14 @@ _0203D474:
 	str r1, [r2, #0x8c]
 	ldr r0, [r0]
 	add r0, r0, #0x190
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldr r0, _0203D534 ; =_020AFE74
 	ldr r0, [r0]
 	ldrsh r1, [r0, #0x14]
 	cmp r1, #0
 	beq _0203D4F8
 	add r0, r0, #0x190
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 _0203D4F8:
 	ldr r1, _0203D534 ; =_020AFE74
 	mvn r4, #1
@@ -61661,7 +61661,7 @@ _0203DA64:
 	ldr r3, _0203E4D4 ; =_0209C884
 	mov r2, r0
 	mov r1, #0x11
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _0203E4B0 ; =_020AFE74
 	mov r2, #9
 	ldr r3, [r1]
@@ -61671,7 +61671,7 @@ _0203DA64:
 	b _0203EF9C
 _0203DAA0:
 	ldrsb r0, [r4, #4]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _0203EF9C
 	ldr r0, _0203E4B0 ; =_020AFE74
@@ -61867,7 +61867,7 @@ _0203DD68:
 	ldr r3, _0203E4F4 ; =_0209C86C
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0203E4B0 ; =_020AFE74
 	mov r2, #0x11
 	ldr r3, [r1]
@@ -61891,7 +61891,7 @@ _0203DDAC:
 	ldr r0, [r1]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0xa0]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0203E4B0 ; =_020AFE74
 	mvn r1, #1
 	ldr r0, [r0]
@@ -63172,7 +63172,7 @@ sub_0203F00C: ; 0x0203F00C
 	ldr r1, [r1]
 	ldrsb r0, [r1, #6]
 	add r1, r1, #0x190
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0203F058: .word _020AFE74
@@ -63187,7 +63187,7 @@ sub_0203F05C: ; 0x0203F05C
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	beq _0203F08C
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _0203F0EC ; =_020AFE74
 	mvn r1, #1
 	ldr r0, [r0]
@@ -63199,7 +63199,7 @@ _0203F08C:
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
 	beq _0203F0B8
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0203F0EC ; =_020AFE74
 	mvn r1, #1
 	ldr r0, [r0]
@@ -63211,7 +63211,7 @@ _0203F0B8:
 	ldrsb r0, [r0, #6]
 	cmp r0, r1
 	beq _0203F0E4
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0203F0EC ; =_020AFE74
 	mvn r1, #1
 	ldr r0, [r0]
@@ -63362,10 +63362,10 @@ _0203F2C0:
 	ldr r3, _0203F35C ; =sub_0203F0F0
 	add r2, sp, #8
 	str r4, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _0203F360 ; =sub_0203F928
 	mov r4, r0
-	bl sub_02030AD4
+	bl SetUnkAdvancedTextBoxWindowFn
 	b _0203F324
 _0203F2FC:
 	ldrsh r4, [r2, #0xe]
@@ -63376,7 +63376,7 @@ _0203F2FC:
 	ldr r3, _0203F35C ; =sub_0203F0F0
 	add r2, sp, #8
 	str r4, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	mov r4, r0
 _0203F324:
 	ldr r0, _0203F340 ; =_020AFE78
@@ -63450,7 +63450,7 @@ _0203F3D8:
 _0203F404:
 	ldrsb r0, [r4]
 	mov r1, #0
-	bl sub_02030AC0
+	bl SetUnkAdvancedTextBoxFn
 	ldr r0, _0203F8D4 ; =_020AFE78
 	ldr r2, [r0]
 	ldrb r0, [r2, #0x2c]
@@ -63467,7 +63467,7 @@ _0203F404:
 	ldr r0, _0203F8D4 ; =_020AFE78
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 	ldr r0, _0203F8D4 ; =_020AFE78
 	mov r1, #0
 	ldr r0, [r0]
@@ -63498,11 +63498,11 @@ _0203F464:
 	ldrsb r0, [r3]
 	bne _0203F7EC
 	ldr r1, _0203F8D8 ; =sub_0203F368
-	bl sub_02030AC0
+	bl SetUnkAdvancedTextBoxFn
 	ldr r0, _0203F8D4 ; =_020AFE78
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_02030A40
+	bl GetAdvancedTextBoxFlags2
 	ldr r1, _0203F8D4 ; =_020AFE78
 	mov r4, r0
 	ldr r0, [r1]
@@ -63521,7 +63521,7 @@ _0203F50C:
 	and r5, r1, #0xff
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	bne _0203F588
 	ldr r0, _0203F8D4 ; =_020AFE78
@@ -63562,7 +63562,7 @@ _0203F588:
 	mov r1, #0
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_02030F28
+	bl PlayAdvancedTextBoxInputSound
 	bl sub_02001808
 	cmp r0, #0xa000
 	blt _0203F748
@@ -63729,7 +63729,7 @@ _0203F7EC:
 	ldr r0, _0203F8D4 ; =_020AFE78
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	beq _0203F834
 	ldr r0, _0203F8D4 ; =_020AFE78
@@ -63756,7 +63756,7 @@ _0203F83C:
 	ldr r1, _0203F8E8 ; =0x00001013
 	stmia sp, {r2, r4}
 	str r2, [sp, #8]
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _0203F8D4 ; =_020AFE78
 	mov r2, #4
 	ldr r3, [r1]
@@ -63766,13 +63766,13 @@ _0203F83C:
 	b _0203F8C8
 _0203F898:
 	ldrsb r0, [r4, #1]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0203F8C8
 	ldr r0, _0203F8D4 ; =_020AFE78
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _0203F8D4 ; =_020AFE78
 	mov r1, #0
 	ldr r0, [r0]
@@ -63840,13 +63840,13 @@ _0203F970: .word _020AFE78
 	arm_func_start sub_0203F974
 sub_0203F974: ; 0x0203F974
 	ldr r0, _0203F988 ; =_020AFE78
-	ldr ip, _0203F98C ; =sub_0203088C
+	ldr ip, _0203F98C ; =SetAdvancedTextBoxState5
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bx ip
 	.align 2, 0
 _0203F988: .word _020AFE78
-_0203F98C: .word sub_0203088C
+_0203F98C: .word SetAdvancedTextBoxState5
 	arm_func_end sub_0203F974
 
 	arm_func_start sub_0203F990
@@ -63857,7 +63857,7 @@ sub_0203F990: ; 0x0203F990
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _0203F9C8 ; =_020AFE78
 	ldr r0, [r0]
 	bl MemFree
@@ -64285,7 +64285,7 @@ _0203FF44:
 	ldr r1, _02040164 ; =0x00401803
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -64298,7 +64298,7 @@ _0203FF7C:
 	ldr r1, _02040170 ; =0x00400800
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -64317,7 +64317,7 @@ _0203FFAC:
 	ldr r1, _02040164 ; =0x00401803
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -64336,7 +64336,7 @@ _0203FFF4:
 	ldr r1, _02040178 ; =0x00401A03
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -64355,7 +64355,7 @@ _0204003C:
 	ldr r1, _02040180 ; =0x00400A00
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -64373,7 +64373,7 @@ _02040084:
 	ldr r1, _02040184 ; =0x00409823
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -64388,7 +64388,7 @@ _020400C8:
 	ldr r1, _02040188 ; =0x00401823
 	ldr r3, _02040168 ; =sub_020401A8
 	add r2, r2, #4
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	strb r0, [r1]
@@ -64850,7 +64850,7 @@ _02040710:
 	ldr r0, _020407AC ; =_020AFE7C
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0]
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 _0204075C:
 	ldr r0, _020407AC ; =_020AFE7C
 	ldr r1, [r0, #0xc]
@@ -64937,7 +64937,7 @@ sub_020407EC: ; 0x020407EC
 	b _02040F88
 _0204087C:
 	ldrsb r0, [r3]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	bne _020408B8
 	ldr r0, _02040F94 ; =_020AFE7C
@@ -66289,7 +66289,7 @@ _02041950:
 	ldr r1, _020419FC ; =0x00001013
 	mov r2, #0
 	str r4, [sp, #0xc]
-	bl CreateScrollBox2
+	bl CreateScrollBoxMulti
 	ldr r1, _020419F4 ; =_020AFE8C
 	b _020419D4
 _020419A0:
@@ -66304,7 +66304,7 @@ _020419A0:
 	ldrh r3, [r1, #0xac]
 	ldr r1, _020419FC ; =0x00001013
 	mov r2, #0
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _020419F4 ; =_020AFE8C
 _020419D4:
 	ldr r1, [r1]
@@ -66338,7 +66338,7 @@ sub_02041A18: ; 0x02041A18
 	ldr r0, _02041A3C ; =_020AFE8C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	movne r0, #0
 	moveq r0, #1
@@ -66453,7 +66453,7 @@ _02041B9C: ; jump table
 	b _020420A0 ; case 8
 _02041BC0:
 	ldrsb r0, [r3]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _02041CF8
 	ldr r0, _020420BC ; =_020AFE90
@@ -66685,7 +66685,7 @@ _02041EE4:
 	str r0, [r2, #0x6f0]
 	ldr r0, [r1, #4]
 	ldrsb r0, [r0]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _020420BC ; =_020AFE90
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -66718,7 +66718,7 @@ _02041F30:
 	mov ip, ip, lsr #0x10
 	str ip, [sp, #4]
 	str r2, [sp, #8]
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _020420BC ; =_020AFE90
 	mov r2, #6
 	ldr r3, [r1, #4]
@@ -66728,13 +66728,13 @@ _02041F30:
 	b _020420B0
 _02041FA4:
 	ldrsb r0, [r3, #1]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _020420B0
 	ldr r0, _020420BC ; =_020AFE90
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _020420BC ; =_020AFE90
 	mov r3, #7
 	ldr r2, [r0, #4]
@@ -66829,7 +66829,7 @@ sub_020420F4: ; 0x020420F4
 	mvn r1, #1
 	cmp r0, r1
 	beq _0204211C
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 _0204211C:
 	ldr r0, _02042138 ; =_020AFE90
 	ldr r0, [r0, #4]
@@ -66902,7 +66902,7 @@ _020421E8:
 	mov r1, r0
 	add r0, sp, #4
 	mov r2, #0x40
-	bl CopyNStringFromMessageId
+	bl CopyNStringFromId
 	add r0, sp, #0x44
 	add r1, sp, #4
 	bl strcat
@@ -66981,12 +66981,12 @@ sub_02042258: ; 0x02042258
 	ldr r1, _020423D4 ; =sub_0204263C
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
-	bl sub_0202C7D0
+	bl SetCollectionMenuVoidFn
 	ldr r0, _020423B4 ; =_020AFEA8
 	mov r1, #0xd
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
-	bl sub_0202C5E0
+	bl SetCollectionMenuField0x1BC
 	ldr r0, _020423B4 ; =_020AFEA8
 	ldr r1, [r0, #4]
 	ldr r0, [r1]
@@ -66999,7 +66999,7 @@ _02042368:
 #ifdef EUROPE
 	ldrsb r0, [r1, #4]
 	mov r1, #9
-	bl sub_0202C5E0
+	bl SetCollectionMenuField0x1BC
 #endif
 	mov r0, #0
 	bl sub_0204440C
@@ -67010,7 +67010,7 @@ _0204237C:
 	ldrsb r0, [r1, #4]
 #ifdef EUROPE
 	mov r1, #9
-	bl sub_0202C5E0
+	bl SetCollectionMenuField0x1BC
 	ldr r0, _020423B4 ; =_020AFEA8
 #endif
 	mov r1, #0x76
@@ -67018,7 +67018,7 @@ _0204237C:
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
 #endif
-	bl sub_0202C5F4
+	bl SetCollectionMenuWidth
 	mov r0, #0
 	bl sub_0204440C
 	mov r0, #0
@@ -67253,7 +67253,7 @@ sub_02042664: ; 0x02042664
 	ldr r0, _020426B0 ; =_020AFEA8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #4]
-	bl sub_0202C70C
+	bl CloseCollectionMenu
 	ldr r0, _020426B0 ; =_020AFEA8
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -67274,7 +67274,7 @@ sub_020426B4: ; 0x020426B4
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0, #4]
-	bl sub_0202C728
+	bl IsCollectionMenuActive
 	cmp r0, #0
 	bne _02042708
 	ldr r0, _0204272C ; =_020AFEA8
@@ -67572,7 +67572,7 @@ sub_02042AAC: ; 0x02042AAC
 	cmpne r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_0202D114
+	bl IsCollectionMenuState3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02042AD8: .word _020AFEA8
@@ -67889,7 +67889,7 @@ _02042E6C:
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
-	bl sub_0202C7D0
+	bl SetCollectionMenuVoidFn
 	ldr r0, _02042F88 ; =_020AFEB4
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
@@ -67918,7 +67918,7 @@ _02042F28:
 _02042F3C:
 	ldr r0, _02042FB0 ; =_0209CA48
 	ldr r1, _02042FB4 ; =sub_02044210
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02042F88 ; =_020AFEB4
 	ldr r1, [r1, #4]
 	strb r0, [r1, #0x7d5]
@@ -68108,7 +68108,7 @@ sub_0204317C: ; 0x0204317C
 	bne _020431BC
 	add r0, r1, #0x700
 	ldrsb r0, [r0, #0xd5]
-	bl sub_0202F8FC
+	bl CloseTextBox
 _020431BC:
 	ldr r0, _02043214 ; =_020AFEB4
 	mvn r1, #1
@@ -68117,7 +68117,7 @@ _020431BC:
 	ldrsb r0, [r0, #0xd6]
 	cmp r0, r1
 	beq _020431DC
-	bl sub_0202F8FC
+	bl CloseTextBox
 _020431DC:
 	ldr r1, _02043214 ; =_020AFEB4
 	ldr r0, [r1, #4]
@@ -68125,7 +68125,7 @@ _020431DC:
 	add r0, r0, #0x700
 	str r2, [r1, #0xc]
 	ldrsb r0, [r0, #0xd4]
-	bl sub_0202C70C
+	bl CloseCollectionMenu
 	ldr r0, _02043214 ; =_020AFEB4
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -68329,7 +68329,7 @@ sub_02043400: ; 0x02043400
 	cmpne r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_0202C728
+	bl IsCollectionMenuActive
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02043430: .word _020AFEB4
@@ -68347,7 +68347,7 @@ sub_02043434: ; 0x02043434
 	cmpne r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_0202D114
+	bl IsCollectionMenuState3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02043464: .word _020AFEB4
@@ -68360,7 +68360,7 @@ sub_02043468: ; 0x02043468
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd4]
-	bl sub_0202C728
+	bl IsCollectionMenuActive
 	cmp r0, #0
 	beq _020434A0
 	ldr r0, _020434D0 ; =_020AFEB4
@@ -68496,7 +68496,7 @@ sub_020435CC: ; 0x020435CC
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02043760 ; =_020AFEB4
 	ldr r1, [r1, #4]
 	strb r0, [r1, #0x7d8]
@@ -68515,7 +68515,7 @@ _0204361C:
 	ldr r0, [r1, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd8]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _02043760 ; =_020AFEB4
 	mvn r2, #1
 	ldr r1, [r0, #4]
@@ -68608,7 +68608,7 @@ sub_0204376C: ; 0x0204376C
 	mov r3, #0
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd7]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _020437B8 ; =_020AFEB4
 	mov r1, #2
 	ldr r0, [r0, #4]
@@ -68668,7 +68668,7 @@ sub_02043844: ; 0x02043844
 	ldrsb r0, [r0, #0xd7]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02043940 ; =_020AFEB4
 	mvn r2, #1
 	ldr r1, [r0, #4]
@@ -68788,7 +68788,7 @@ sub_020439FC: ; 0x020439FC
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd9]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldr r0, _02043B78 ; =_020AFEB4
@@ -68807,7 +68807,7 @@ sub_020439FC: ; 0x020439FC
 	ldr r0, [r1, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd9]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _02043B78 ; =_020AFEB4
 	mvn r3, #1
 	ldr r1, [r0, #4]
@@ -69432,7 +69432,7 @@ sub_0204426C: ; 0x0204426C
 	ldr r1, _020442C8 ; =sub_02044338
 	ldr r0, [r0]
 	add r0, r2, r0, lsl #4
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _020442C0 ; =_020AFEC8
 	ldr r1, [r1]
 	strb r0, [r1, #5]
@@ -69451,7 +69451,7 @@ sub_020442CC: ; 0x020442CC
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0, #5]
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _02044304 ; =_020AFEC8
 	ldr r0, [r0]
 	bl MemFree
@@ -69561,7 +69561,7 @@ sub_0204440C: ; 0x0204440C
 	ldr r2, [r2]
 	mov r3, #1
 	strb r3, [r2, #4]
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02044468 ; =_020AFECC
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
@@ -69580,7 +69580,7 @@ sub_02044474: ; 0x02044474
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0, #0xa]
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _020444AC ; =_020AFECC
 	ldr r0, [r0]
 	bl MemFree
@@ -69671,7 +69671,7 @@ sub_02044568: ; 0x02044568
 	ldr r1, _020445C4 ; =sub_02044604
 	ldr r0, [r0]
 	add r0, r2, r0, lsl #4
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _020445BC ; =_020AFED0
 	ldr r1, [r1]
 	strb r0, [r1, #5]
@@ -69690,7 +69690,7 @@ sub_020445C8: ; 0x020445C8
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0, #5]
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _02044600 ; =_020AFED0
 	ldr r0, [r0]
 	bl MemFree
@@ -69772,7 +69772,7 @@ sub_02044688: ; 0x02044688
 	ldr r0, _020447EC ; =_0209CB78
 	ldr r1, _020447F0 ; =sub_02044964
 	mov r2, r4
-	bl CreateTextBox2
+	bl CreateTextBoxWithArg
 	strb r0, [r4, #0x72c]
 	cmp r5, #3
 	mov r0, #0x10
@@ -69794,7 +69794,7 @@ sub_02044688: ; 0x02044688
 	ldr r3, _020447FC ; =sub_02044990
 	add r2, sp, #0xc
 	mov r1, #0x800
-	bl CreateAdvancedTextBox2
+	bl CreateAdvancedTextBoxWithArg
 	strb r0, [r4, #0x72d]
 	b _020447A8
 _02044760:
@@ -69814,7 +69814,7 @@ _02044760:
 	ldr r3, _020447FC ; =sub_02044990
 	add r2, sp, #0xc
 	mov r1, #0x800
-	bl CreateAdvancedTextBox2
+	bl CreateAdvancedTextBoxWithArg
 	strb r0, [r4, #0x72d]
 _020447A8:
 	mov r0, r6
@@ -69942,7 +69942,7 @@ sub_02044918: ; 0x02044918
 	mvn r1, #1
 	cmp r0, r1
 	beq _02044940
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	mvn r0, #1
 	strb r0, [r4, #0x72d]
 _02044940:
@@ -69951,7 +69951,7 @@ _02044940:
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r4, pc}
-	bl sub_0202F8FC
+	bl CloseTextBox
 	mvn r0, #1
 	strb r0, [r4, #0x72c]
 	ldmia sp!, {r4, pc}
@@ -69963,7 +69963,7 @@ sub_02044964: ; 0x02044964
 	add r1, r1, #0x900
 	mov r4, r0
 	ldrh r0, [r1, #0x2e]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, #2
 	mov r3, r0
 	mov r0, r4
@@ -70068,7 +70068,7 @@ _02044AB8:
 _02044ACC:
 	add r0, r6, #0x700
 	ldrsb r0, [r0, #0x2d]
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02044ADC: .word DUNGEON_PTR
@@ -70535,7 +70535,7 @@ _020450F8:
 	orr r1, r0, r1
 	ldr r0, _020451D4 ; =_0209CB98
 	orr r1, r1, #0x1200
-	bl sub_0202A690
+	bl CreateParentMenu
 	ldr r1, [sp, #0xe0]
 	strb r0, [sl, #8]
 	cmp r1, #1
@@ -70578,14 +70578,14 @@ sub_020451D8: ; 0x020451D8
 	b _02045290
 _02045208:
 	ldrsb r0, [r4, #8]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	beq _02045290
 	mov r0, #1
 	str r0, [r4]
 _02045220:
 	ldrsb r0, [r4, #8]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02045278
 	mov r0, #2
@@ -70656,13 +70656,13 @@ sub_020452B8: ; 0x020452B8
 	movhi r0, #0
 	bhi _02045320
 	ldrsb r0, [r4, #8]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	mvn r0, #1
 	strb r0, [r4, #8]
 	mov r0, #1
 	b _02045320
 _02045310:
-	bl sub_0202AABC
+	bl CloseParentMenu
 	mvn r0, #1
 	strb r0, [r4, #8]
 	mov r0, #1
@@ -70846,7 +70846,7 @@ _02045558:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02045A14
 _02045584:
 	mov r0, #2
@@ -70865,7 +70865,7 @@ _02045584:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02045A14
 _020455CC:
 	ldr r1, _02045A28 ; =0x000002CE
@@ -70897,7 +70897,7 @@ _020455CC:
 	ldrb lr, [r5, #0x380]
 	str lr, [sp, #0x3c]
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r1, #3
 	str r1, [r4, #0x274]
 	mov r2, #0
@@ -70910,7 +70910,7 @@ _020455CC:
 	ldr r3, [r3]
 	ldr r1, _02045A38 ; =0x00300011
 	add r3, r3, #0x70
-	bl sub_0202B1AC
+	bl CreateSimpleMenu
 	ldr r1, _02045A1C ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -70969,7 +70969,7 @@ _02045688:
 	add r2, r4, #0x2c0
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02045A14
 _02045764:
 	mov r4, #3
@@ -70980,7 +70980,7 @@ _02045764:
 	ldr r3, _02045A40 ; =_0209CC48
 	add r2, sp, #0x64
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02045A1C ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -71028,7 +71028,7 @@ _02045798:
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, ip}
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _02045A1C ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x17]
@@ -71085,7 +71085,7 @@ _020458C0:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02045A14
 _02045914:
 	mov r4, #3
@@ -71096,7 +71096,7 @@ _02045914:
 	ldr r3, _02045A40 ; =_0209CC48
 	add r2, sp, #0xfc
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02045A1C ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -71113,14 +71113,14 @@ _02045958:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02045A1C ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045A14
 _02045984:
 	ldrsb r0, [r4, #0x14]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02045A1C ; =_020AFED4
 	mvn r1, #1
 	ldr r0, [r0]
@@ -71156,7 +71156,7 @@ _020459E0:
 	mov r2, #0x2d0
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _02045A14:
 	add sp, sp, #0x194
 	ldmia sp!, {r4, r5, pc}
@@ -71220,7 +71220,7 @@ _02045ACC:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02045F88
 _02045AF8:
 	mov r0, #2
@@ -71239,7 +71239,7 @@ _02045AF8:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02045F88
 _02045B40:
 	ldr r1, _02045F9C ; =0x000002CE
@@ -71271,7 +71271,7 @@ _02045B40:
 	ldrb lr, [r5, #0x380]
 	str lr, [sp, #0x16c]
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r1, #3
 	str r1, [r4, #0x274]
 	mov r2, #0
@@ -71284,7 +71284,7 @@ _02045B40:
 	ldr r3, [r3]
 	ldr r1, _02045FAC ; =0x00300011
 	add r3, r3, #0x70
-	bl sub_0202B1AC
+	bl CreateSimpleMenu
 	ldr r1, _02045F90 ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -71343,7 +71343,7 @@ _02045BFC:
 	add r2, r4, #0x2c0
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02045F88
 _02045CD8:
 	mov r4, #3
@@ -71354,7 +71354,7 @@ _02045CD8:
 	ldr r3, _02045FB4 ; =_0209CC48
 	add r2, sp, #0xac
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02045F90 ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -71402,7 +71402,7 @@ _02045D0C:
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, ip}
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _02045F90 ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x17]
@@ -71459,7 +71459,7 @@ _02045E34:
 	mov r1, #8
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02045F88
 _02045E88:
 	mov r4, #3
@@ -71470,7 +71470,7 @@ _02045E88:
 	ldr r3, _02045FB4 ; =_0209CC48
 	add r2, sp, #0x14
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02045F90 ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
@@ -71487,14 +71487,14 @@ _02045ECC:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02045F90 ; =_020AFED4
 	ldr r1, [r1]
 	strb r0, [r1, #0x16]
 	b _02045F88
 _02045EF8:
 	ldrsb r0, [r4, #0x14]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02045F90 ; =_020AFED4
 	mvn r1, #1
 	ldr r0, [r0]
@@ -71530,7 +71530,7 @@ _02045F54:
 	mov r2, #0x2d0
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _02045F88:
 	add sp, sp, #0x194
 	ldmia sp!, {r4, r5, pc}
@@ -71885,13 +71885,13 @@ _0204645C:
 	b _0204653C
 _02046478:
 	ldrsb r0, [r2, #0x17]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0204653C
 	ldr r0, _020465D8 ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x17]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _020465D8 ; =_020AFED4
 	mvn r2, #1
 	ldr r1, [r0]
@@ -71969,7 +71969,7 @@ _02046590:
 	ldrsb r0, [r0, #0x14]
 	cmp r0, r1
 	beq _020465CC
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _020465D8 ; =_020AFED4
 	mvn r1, #1
 	ldr r0, [r0]
@@ -72000,7 +72000,7 @@ sub_020465DC: ; 0x020465DC
 	ldr r0, _02046620 ; =_020AFED4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x16]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _02046620 ; =_020AFED4
 	mvn r1, #1
 	ldr r0, [r0]
@@ -72037,7 +72037,7 @@ sub_0204665C: ; 0x0204665C
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _02046694 ; =_020AFED8
 	ldr r0, [r0]
 	bl MemFree
@@ -72083,7 +72083,7 @@ _020466D0:
 	ldr r3, _0204673C ; =sub_02046798
 	add r2, sp, #8
 	str ip, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _0204672C ; =_020AFED8
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -72121,13 +72121,13 @@ _02046778: .word 0x00000279
 	arm_func_start sub_0204677C
 sub_0204677C: ; 0x0204677C
 	ldr r0, _02046790 ; =_020AFED8
-	ldr ip, _02046794 ; =sub_020308C4
+	ldr ip, _02046794 ; =IsAdvancedTextBoxActive
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bx ip
 	.align 2, 0
 _02046790: .word _020AFED8
-_02046794: .word sub_020308C4
+_02046794: .word IsAdvancedTextBoxActive
 	arm_func_end sub_0204677C
 
 	arm_func_start sub_02046798
@@ -72227,7 +72227,7 @@ sub_02046898: ; 0x02046898
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _020468D0 ; =_020AFEDC
 	ldr r0, [r0]
 	bl MemFree
@@ -72258,7 +72258,7 @@ _02046900:
 	ldrh r2, [r2, #8]
 	ldr r1, _020469B8 ; =0x00000618
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _020469B4 ; =_020AFEDC
 	mov r1, #1
 	ldr r0, [r0]
@@ -72737,7 +72737,7 @@ _02046EF8:
 	addne r2, r6, #0x2c
 	moveq r2, #0
 	add r0, r6, #4
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	strb r0, [r6]
 	mov r0, #1
 	b _02046F30
@@ -72780,7 +72780,7 @@ _02046F80:
 	addne r2, r4, #0x2c
 	moveq r2, #0
 	add r0, r4, #4
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	strb r0, [r4]
 	mov r0, #1
 	str r0, [r4, #0xc8]
@@ -72793,7 +72793,7 @@ _02046FBC:
 	bl sub_0202AB80
 	str r0, [r4, #0x18]
 	ldrsb r0, [r4]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mvn r1, #3
@@ -72842,7 +72842,7 @@ sub_02047040: ; 0x02047040
 	mvn r1, #1
 	cmp r0, r1
 	beq _02047068
-	bl sub_0202AABC
+	bl CloseParentMenu
 _02047068:
 	mov r0, r4
 	bl MemFree
@@ -72866,7 +72866,7 @@ sub_0204707C: ; 0x0204707C
 	bl MemZero
 	mov r0, r6
 	mov r1, r5
-	bl CreateTextBox1
+	bl CreateTextBox
 	strb r0, [r4]
 	mov r0, #3
 	str r0, [r4, #8]
@@ -72928,7 +72928,7 @@ sub_02047150: ; 0x02047150
 	ldrsb r0, [r4]
 	bl sub_0202812C
 	ldrsb r0, [r4]
-	bl sub_0202F918
+	bl CloseTextBox2
 	mov r0, r4
 	bl MemFree
 	mov r0, #0
@@ -73024,7 +73024,7 @@ sub_02047244: ; 0x02047244
 	ldrsb r0, [r2]
 	ldrh r1, [r2, #0x68]
 	ldrh r2, [r2, #0x14]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -73129,7 +73129,7 @@ sub_020473A4: ; 0x020473A4
 	ldr r0, _020473F8 ; =_020AFEE4
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _020473F8 ; =_020AFEE4
 	mvn r1, #1
 	ldr r0, [r0]
@@ -73208,14 +73208,14 @@ sub_020474B8: ; 0x020474B8
 	ldr r2, _020474D8 ; =_020AFEE4
 	mov r3, r0
 	ldr r0, [r2]
-	ldr ip, _020474DC ; =sub_0202F44C
+	ldr ip, _020474DC ; =ReadStringFromDialogueBox
 	mov r2, r1
 	ldrsb r0, [r0]
 	mov r1, r3
 	bx ip
 	.align 2, 0
 _020474D8: .word _020AFEE4
-_020474DC: .word sub_0202F44C
+_020474DC: .word ReadStringFromDialogueBox
 	arm_func_end sub_020474B8
 
 	arm_func_start sub_020474E0
@@ -73459,12 +73459,12 @@ sub_02047760: ; 0x02047760
 	mov r0, lr
 	add r2, r2, #0x1c00
 	str ip, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	add r1, r4, #0x100
 	strb r0, [r4, #0x120]
 	ldrsb r0, [r1, #0x20]
 	mov r1, #1
-	bl sub_0203077C
+	bl SetAdvancedTextBoxPartialMenu
 	add r0, r4, #0x100
 	ldrsb r0, [r0, #0x20]
 	mov r1, #1
@@ -73497,7 +73497,7 @@ _02047850:
 	mov r0, ip
 	add r2, r2, #0x1c00
 	str r1, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	strb r0, [r4, #0x120]
 	add r0, r4, #0x1f00
 	mov r1, #8
@@ -73590,7 +73590,7 @@ _020479B0:
 	strh r2, [r0, #0x7e]
 	add r0, r4, #0x100
 	ldrsb r0, [r0, #0x20]
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 	cmp r5, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	add r0, r4, #0x2000
@@ -73782,7 +73782,7 @@ sub_02047C40: ; 0x02047C40
 	bl sub_020063F4
 	add r0, r5, #0x100
 	ldrsb r0, [r0, #0x20]
-	bl sub_02030A40
+	bl GetAdvancedTextBoxFlags2
 	ldr r1, [r5, #0x11c]
 	mov r4, r0
 	cmp r1, #4
@@ -73815,7 +73815,7 @@ _02047CB8:
 	beq _02047EE4
 	add r0, r5, #0x100
 	ldrsb r0, [r0, #0x20]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	beq _02047CF0
 	ands r8, r4, #2
@@ -73938,7 +73938,7 @@ _02047E70:
 	add r1, r5, #0x100
 	strh r2, [r0, #0x7e]
 	ldrsb r0, [r1, #0x20]
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 _02047E9C:
 	cmp r8, #0
 	bne _02047EAC
@@ -73980,7 +73980,7 @@ sub_02047EF4: ; 0x02047EF4
 	ldmeqia sp!, {r4, pc}
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x20]
-	bl sub_02030850
+	bl CloseAdvancedTextBox2
 	ldr r0, _02047F34 ; =_020AFEEC
 	ldr r0, [r0, r4, lsl #2]
 	bl MemFree
@@ -75901,7 +75901,7 @@ sub_020496F4: ; 0x020496F4
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0204972C ; =_020AFF4C
 	ldr r0, [r0]
 	bl MemFree
@@ -75940,7 +75940,7 @@ _02049770:
 	ldrh r2, [r1, r2]
 	ldr r1, _02049A20 ; =0x00000408
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02049A18 ; =_020AFF4C
 	mov r1, #1
 	ldr r0, [r0]
@@ -76037,7 +76037,7 @@ _020498C8:
 	ldr r1, _02049A30 ; =0x0000040C
 	mov r2, #0x238
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02049A18 ; =_020AFF4C
 	mov r1, #8
 	ldr r0, [r0]
@@ -76053,7 +76053,7 @@ _02049908:
 	ldrh r2, [r1, r2]
 	ldr r1, _02049A38 ; =0x0000061C
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02049A18 ; =_020AFF4C
 	mov r1, #5
 	ldr r0, [r0]
@@ -76064,7 +76064,7 @@ _02049944:
 	ldr r1, _02049A38 ; =0x0000061C
 	ldr r2, _02049A3C ; =0x00000239
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02049A18 ; =_020AFF4C
 	mov r1, #5
 	ldr r0, [r0]
@@ -76186,7 +76186,7 @@ sub_02049AD0: ; 0x02049AD0
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02049B08 ; =_020AFF54
 	ldr r0, [r0]
 	bl MemFree
@@ -76222,7 +76222,7 @@ _02049B4C:
 	ldr r1, _02049D38 ; =0x00000408
 	ldr r2, _02049D3C ; =0x0000024F
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02049D34 ; =_020AFF54
 	mov r1, #1
 	ldr r0, [r0]
@@ -76272,7 +76272,7 @@ _02049BEC:
 	ldrsb r0, [r1]
 	ldr r1, _02049D40 ; =0x0000040C
 	mov r2, #0x238
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02049D34 ; =_020AFF54
 	mov r1, #8
 	ldr r0, [r0]
@@ -76284,7 +76284,7 @@ _02049C2C:
 	ldr r1, _02049D44 ; =0x0000061C
 	bne _02049C58
 	mov r2, #0x250
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02049D34 ; =_020AFF54
 	mov r1, #5
 	ldr r0, [r0]
@@ -76292,7 +76292,7 @@ _02049C2C:
 	b _02049D2C
 _02049C58:
 	ldr r2, _02049D48 ; =0x0000023A
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02049D34 ; =_020AFF54
 	mov r1, #5
 	ldr r0, [r0]
@@ -76421,7 +76421,7 @@ sub_02049DF4: ; 0x02049DF4
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02049E2C ; =_020AFF5C
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -76459,7 +76459,7 @@ _02049E6C:
 	ldrh r2, [r1, r2]
 	ldr r1, _0204A00C ; =0x00000408
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0204A004 ; =_020AFF5C
 	mov r1, #1
 	ldr r0, [r0, #4]
@@ -76517,7 +76517,7 @@ _02049F2C:
 	mov r3, r3, lsl #1
 	ldrh r2, [r2, r3]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0204A004 ; =_020AFF5C
 	mov r1, #5
 	ldr r0, [r0, #4]
@@ -76602,7 +76602,7 @@ sub_0204A02C: ; 0x0204A02C
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -76618,7 +76618,7 @@ sub_0204A080: ; 0x0204A080
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0204A0B8 ; =_020AFF64
 	ldr r0, [r0]
 	bl MemFree
@@ -76675,7 +76675,7 @@ sub_0204A0FC: ; 0x0204A0FC
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -76692,7 +76692,7 @@ sub_0204A154: ; 0x0204A154
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0204A18C ; =_020AFF68
 	ldr r0, [r0]
 	bl MemFree
@@ -80941,8 +80941,8 @@ InitKaomadoStream: ; 0x0204D780
 _0204D798: .word _022AB4B0
 	arm_func_end InitKaomadoStream
 
-	arm_func_start InitPortraitBox
-InitPortraitBox: ; 0x0204D79C
+	arm_func_start InitPortraitParams
+InitPortraitParams: ; 0x0204D79C
 	mov r2, #0
 	strh r2, [r0]
 	sub r1, r2, #2
@@ -80957,19 +80957,19 @@ InitPortraitBox: ; 0x0204D79C
 	strb r2, [r0, #0xe]
 	strb r2, [r0, #0xf]
 	bx lr
-	arm_func_end InitPortraitBox
+	arm_func_end InitPortraitParams
 
-	arm_func_start InitPortraitBoxWithMonsterId
-InitPortraitBoxWithMonsterId: ; 0x0204D7D4
+	arm_func_start InitPortraitParamsWithMonsterId
+InitPortraitParamsWithMonsterId: ; 0x0204D7D4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl InitPortraitBox
+	bl InitPortraitParams
 	strh r4, [r5]
 	mov r0, #0
 	strb r0, [r5, #2]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end InitPortraitBoxWithMonsterId
+	arm_func_end InitPortraitParamsWithMonsterId
 
 	arm_func_start SetPortraitEmotion
 SetPortraitEmotion: ; 0x0204D7F4
@@ -81698,7 +81698,7 @@ sub_0204E114: ; 0x0204E114
 	movne r0, r0, lsl #0x10
 	movne r0, r0, lsr #0x10
 _0204E144:
-	bl StringFromMessageId
+	bl StringFromId
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0204E14C: .word 0x00000B2C
@@ -84927,12 +84927,12 @@ GetAbilityString: ; 0x0205091C
 	add r1, r1, #0x3500
 #endif
 	mov r1, r1, lsl #0x10
-	ldr ip, _02050938 ; =CopyNStringFromMessageId
+	ldr ip, _02050938 ; =CopyNStringFromId
 	mov r1, r1, lsr #0x10
 	mov r2, #0x50
 	bx ip
 	.align 2, 0
-_02050938: .word CopyNStringFromMessageId
+_02050938: .word CopyNStringFromId
 	arm_func_end GetAbilityString
 
 	arm_func_start GetAbilityDescStringId
@@ -87133,7 +87133,7 @@ GetNameRaw: ; 0x02052394
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r4
 	mov r2, #0x14
@@ -87157,7 +87157,7 @@ GetName: ; 0x020523D0
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	mov r0, r5
 	mov r2, r4
@@ -87200,7 +87200,7 @@ GetNameWithGender: ; 0x02052440
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	ldr r2, _020524F4 ; =_020B09B4
 	mov r1, #0x44
 	ldr r2, [r2]
@@ -87334,7 +87334,7 @@ GetSpeciesString: ; 0x02052500
 	movne r4, #0
 _02052660:
 	ldr r0, _020526B8 ; =0x000022E8
-	bl StringFromMessageId
+	bl StringFromId
 	ldr r1, _020526BC ; =UNOWN_SPECIES_ADDITIONAL_CHAR_PTR_TABLE
 	mov r2, r0
 	ldr r3, [r1, r4, lsl #2]
@@ -87354,7 +87354,7 @@ _02052684:
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	ldr r1, _020526C4 ; =_020A31FC
 	mov r0, r5
@@ -87384,7 +87384,7 @@ GetNameString: ; 0x020526C8
 	add r0, r0, #0x2200
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	ldmia sp!, {r3, pc}
 	arm_func_end GetNameString
 
@@ -87453,7 +87453,7 @@ GetCategoryString: ; 0x0205275C
 	add r0, r0, #0x2400
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	ldr r1, _020527A4 ; =_020A3200
 	mov r0, r4
@@ -97211,12 +97211,12 @@ CopyTacticString: ; 0x0205A430
 	ldr r2, _0205A448 ; =TACTIC_NAME_STRING_IDS
 	mov r1, r1, lsl #1
 	ldrh r1, [r2, r1]
-	ldr ip, _0205A44C ; =CopyNStringFromMessageId
+	ldr ip, _0205A44C ; =CopyNStringFromId
 	mov r2, #0x40
 	bx ip
 	.align 2, 0
 _0205A448: .word TACTIC_NAME_STRING_IDS
-_0205A44C: .word CopyNStringFromMessageId
+_0205A44C: .word CopyNStringFromId
 	arm_func_end CopyTacticString
 
 	arm_func_start GetStatBoostsForMonsterSummary
@@ -97277,7 +97277,7 @@ _0205A4F0:
 	mov r1, #0xc8
 	mov r3, #0
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97289,7 +97289,7 @@ _0205A4F0:
 	add r0, sp, #0xbc
 	mov r1, #0xc8
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x1c
@@ -97311,7 +97311,7 @@ _0205A4F0:
 	mov r1, #0xc8
 	mov r3, #0
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97328,7 +97328,7 @@ _0205A5B8:
 	mov r1, #0xc8
 	mov r3, #0
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97340,7 +97340,7 @@ _0205A5B8:
 	add r0, sp, #0xbc
 	mov r1, #0xc8
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x42
@@ -97359,7 +97359,7 @@ _0205A5B8:
 	add r0, sp, #0xbc
 	mov r1, #0xc8
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97376,7 +97376,7 @@ _0205A5B8:
 	ldr r2, _0205ADB8 ; =0x0000095C
 	mov r1, #0xc8
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97388,7 +97388,7 @@ _0205A6BC:
 	str r1, [sp, #0x90]
 	mov r1, #0xc8
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97401,7 +97401,7 @@ _0205A6E4:
 	mov r1, #0xc8
 	mov r3, #0
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97420,7 +97420,7 @@ _0205A6E4:
 	add r0, sp, #0xbc
 	mov r1, #0xc8
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97437,7 +97437,7 @@ _0205A6E4:
 	ldr r2, _0205ADC8 ; =0x0000095E
 	mov r1, #0xc8
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97449,7 +97449,7 @@ _0205A7A8:
 	str r1, [sp, #0x90]
 	mov r1, #0xc8
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97474,7 +97474,7 @@ _0205A7D0:
 	mov r2, #0x960
 	mov r3, #0
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _0205A83C
 _0205A820:
 	ldr r2, _0205ADD4 ; =0x0000095F
@@ -97483,7 +97483,7 @@ _0205A820:
 	mov r1, #0xc8
 	mov r3, #0
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 _0205A83C:
 	add r3, sp, #0xbc
 	mov r0, r4
@@ -97508,7 +97508,7 @@ _0205A83C:
 	mov r1, #0xc8
 	mov r3, #0
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97527,7 +97527,7 @@ _0205A83C:
 	mov r1, #0xc8
 	mov r3, #0
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97564,7 +97564,7 @@ _0205A954:
 	bl sub_02026268
 	ldrb r0, [r6, #0x18]
 	bl GetAbilityDescStringId
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, #0
 	str r1, [sp]
 	mov r1, #0xb
@@ -97578,7 +97578,7 @@ _0205A954:
 	cmp r0, #0
 	beq _0205AD98
 	bl GetAbilityDescStringId
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, #0
 	mov r3, r0
 	mov r0, r4
@@ -97621,7 +97621,7 @@ _0205AA04:
 	mov r3, r1, lsl #1
 	ldr r1, _0205ADEC ; =STATUS_NAME_STRING_IDS
 	ldrh r1, [r1, r3]
-	bl CopyNStringFromMessageId
+	bl CopyNStringFromId
 	ldr r0, [sp, #8]
 	ldr r2, _0205ADF0 ; =_020A34FC
 	str r0, [sp, #0xa8]
@@ -97690,7 +97690,7 @@ _0205AB08:
 	mov r1, r0
 	ldr r0, [sp, #0xc]
 	mov r2, #0x50
-	bl CopyNStringFromMessageId
+	bl CopyNStringFromId
 	ldr r0, [sp, #0xc]
 	ldrb r1, [fp, r8]
 	str r0, [sp, #0xa8]
@@ -97775,7 +97775,7 @@ _0205AC5C:
 	mov r1, #0xc8
 	mov r3, #0
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -97794,7 +97794,7 @@ _0205AC5C:
 	ldr r2, _0205AE18 ; =0x0000096B
 	mov r1, #0xc8
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x2b
@@ -97816,7 +97816,7 @@ _0205AC5C:
 	add r0, sp, #0xbc
 	mov r1, #0xc8
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x3a
@@ -97834,7 +97834,7 @@ _0205AC5C:
 	add r0, sp, #0xbc
 	mov r1, #0xc8
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0xbc
 	mov r0, r4
 	mov r1, #4
@@ -104938,7 +104938,7 @@ _02060A74:
 	ldrh r2, [sb, r2]
 	mov r0, r5
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r6
 	mov r1, r5
 	bl strcat
@@ -105046,7 +105046,7 @@ _02060C14:
 	mov r1, #0x100
 	mov r3, #0
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldr r1, _02060E10 ; =_020A4644
 	mov r0, r6
 	bl strcat
@@ -105138,7 +105138,7 @@ _02060D18:
 	mov r1, #0x100
 	mov r3, #0
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldr r1, _02060E1C ; =_020A4678
 	mov r0, r6
 	bl strcat
@@ -105300,7 +105300,7 @@ _02060F60:
 	ldrh r2, [r2, ip]
 	mov r0, r6
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x400
@@ -105394,7 +105394,7 @@ _020610B8:
 	mov r1, #0x100
 	mov r3, #0
 	str r6, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r8
 	mov r3, r5
 	mov r1, #4
@@ -105777,7 +105777,7 @@ _02061518:
 	mov r1, #0x100
 	mov r3, #0
 	str r6, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _020616B4
 _02061660:
 	ldr r1, _02061C20 ; =0x00003C25
@@ -105797,7 +105797,7 @@ _02061670:
 	mov r1, #0x100
 	mov r3, #0
 	str r6, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _020616B4
 _020616A8:
 	ldr r1, _02061C20 ; =0x00003C25
@@ -105874,7 +105874,7 @@ _02061764:
 	mov r0, r4
 	mov r1, #0x100
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r8
 	mov r1, #0x56
 	mov r2, r7
@@ -105922,7 +105922,7 @@ _02061850:
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
 	ldrh r0, [r0, r1]
-	bl StringFromMessageId
+	bl StringFromId
 	add r3, sp, #0xac
 	mov r2, r0
 	str r3, [sp]
@@ -105943,7 +105943,7 @@ _020618A0:
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
 	ldrh r0, [r0, r1]
-	bl StringFromMessageId
+	bl StringFromId
 	add r3, sp, #0xac
 	mov r2, r0
 	str r3, [sp]
@@ -105964,7 +105964,7 @@ _020618F0:
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
 	ldrh r0, [r0, r1]
-	bl StringFromMessageId
+	bl StringFromId
 	add r3, sp, #0xac
 	mov r2, r0
 	str r3, [sp]
@@ -105985,7 +105985,7 @@ _02061940:
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
 	ldrh r0, [r0, r1]
-	bl StringFromMessageId
+	bl StringFromId
 	add r3, sp, #0xac
 	mov r2, r0
 	str r3, [sp]
@@ -106006,7 +106006,7 @@ _02061990:
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
 	ldrh r0, [r0, r1]
-	bl StringFromMessageId
+	bl StringFromId
 	add r3, sp, #0xac
 	mov r2, r0
 	str r3, [sp]
@@ -106039,7 +106039,7 @@ _02061A0C:
 	ldrb r1, [sb, #0x1a]
 	mov r1, r1, lsl #1
 	ldrh r0, [r0, r1]
-	bl StringFromMessageId
+	bl StringFromId
 	add r3, sp, #0xac
 	mov r2, r0
 	str r3, [sp]
@@ -106101,7 +106101,7 @@ _02061AAC:
 	bl sub_0200D310
 	ldr r0, _02061C54 ; =0x00003C2E
 	str r5, [sp, #0x94]
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #0x5c
 	mov r2, r0
 	str r1, [sp]
@@ -106126,7 +106126,7 @@ _02061B48:
 	ldrsh r1, [sb, #0x3c]
 	ldr r0, _02061C5C ; =0x00003C30
 	str r1, [sp, #0x5c]
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #0x5c
 	mov r2, r0
 	str r1, [sp]
@@ -106419,7 +106419,7 @@ _02061EE8:
 	mov r1, r4
 	mov r3, #0
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -106523,7 +106523,7 @@ sub_02061FDC: ; 0x02061FDC
 	mov r1, r5
 	mov r3, #0
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _020621F4
 _0206205C:
 	ldrb r0, [r7, #0x46]
@@ -106544,7 +106544,7 @@ _0206205C:
 	str r0, [sp, #0x28]
 	mov r0, r6
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _020621F4
 _020620AC:
 	ldr r1, [r7, #0x5c]
@@ -106564,7 +106564,7 @@ _020620AC:
 	mov r1, r5
 	mov r3, #0
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _020621F4
 _020620F8:
 	cmp r1, #0
@@ -106587,7 +106587,7 @@ _020620F8:
 	mov r1, r5
 	mov r3, #0
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _020621F4
 _02062150:
 	ldrb r0, [r7, #0x46]
@@ -106632,7 +106632,7 @@ _020621A4:
 	str r0, [sp, #0x28]
 	mov r0, r6
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 _020621F4:
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, r6, r7, pc}
@@ -111998,7 +111998,7 @@ _02066550:
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	bne _020665B4
-	ldr r4, _02066878 ; =JOB_MENU_1
+	ldr r4, _02066878 ; =JOB_MENU_ITEMS_1
 	bl sub_0205E954
 	cmp r0, #0
 	ldreq r0, _02066874 ; =_020B0B24
@@ -112009,7 +112009,7 @@ _02066550:
 _020665B4:
 	cmp r0, #1
 	bne _020665D8
-	ldr r4, _0206687C ; =JOB_MENU_2
+	ldr r4, _0206687C ; =JOB_MENU_ITEMS_2
 	bl sub_0205EAC8
 	cmp r0, #0
 	ldreq r0, _02066874 ; =_020B0B24
@@ -112029,7 +112029,7 @@ _020665D8:
 	mov r1, #0
 	add r2, r4, r2, lsl #3
 	ldr lr, [r2, #4]
-	ldr r0, _02066880 ; =JOB_D_BOX_LAYOUT_1
+	ldr r0, _02066880 ; =JOB_WINDOW_PARAMS_1
 	str lr, [ip, #0xc]
 	str r4, [sp]
 	str r1, [sp, #4]
@@ -112219,9 +112219,9 @@ _0206686C:
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _02066874: .word _020B0B24
-_02066878: .word JOB_MENU_1
-_0206687C: .word JOB_MENU_2
-_02066880: .word JOB_D_BOX_LAYOUT_1
+_02066878: .word JOB_MENU_ITEMS_1
+_0206687C: .word JOB_MENU_ITEMS_2
+_02066880: .word JOB_WINDOW_PARAMS_1
 _02066884: .word 0x00000233
 	arm_func_end sub_02066510
 
@@ -112417,7 +112417,7 @@ _02066B08:
 	cmp r1, #0
 	strneb r4, [r1]
 	ldrsb r0, [r6, #0x7d]
-	bl sub_0202C728
+	bl IsCollectionMenuActive
 	cmp r0, #0
 	bne _02066D68
 	ldrsb r0, [r6, #0x7d]
@@ -112815,7 +112815,7 @@ _020670A0:
 	ldr r1, _020674B0 ; =_020A937C
 	ldrsb r3, [r0, #0xd]
 	ldr r0, _020674B4 ; =_020B0B39
-	ldr r2, _020674B8 ; =JOB_MENU_11
+	ldr r2, _020674B8 ; =JOB_MENU_ITEMS_11
 	ldr r1, [r1, r3, lsl #3]
 	add r3, r6, #0x248
 	str r1, [r6, #0xe48]
@@ -112893,7 +112893,7 @@ _020671BC:
 	ldr r1, _020674B0 ; =_020A937C
 	ldrsb r3, [r0, #0xd]
 	ldr r0, _020674B4 ; =_020B0B39
-	ldr r2, _020674B8 ; =JOB_MENU_11
+	ldr r2, _020674B8 ; =JOB_MENU_ITEMS_11
 	ldr r1, [r1, r3, lsl #3]
 	add r3, r6, #0x248
 	str r1, [r6, #0xe48]
@@ -112995,7 +112995,7 @@ _020672F4:
 	streq r0, [r6, #0xe48]
 	moveq r0, #0
 	streq r0, [r6, #0xef4]
-	ldreq r4, _020674C8 ; =JOB_MENU_4
+	ldreq r4, _020674C8 ; =JOB_MENU_ITEMS_4
 	mov r0, r5
 	str r4, [sp]
 	str r1, [sp, #4]
@@ -113096,7 +113096,7 @@ _020674A8: .word sub_020696E8
 _020674AC: .word sub_02069750
 _020674B0: .word _020A937C
 _020674B4: .word _020B0B39
-_020674B8: .word JOB_MENU_11
+_020674B8: .word JOB_MENU_ITEMS_11
 #ifdef EUROPE
 _020674BC: .word 0x0000387A
 #else
@@ -113104,7 +113104,7 @@ _020674BC: .word 0x00003878
 #endif
 _020674C0: .word 0x00000233
 _020674C4: .word _020A9268
-_020674C8: .word JOB_MENU_4
+_020674C8: .word JOB_MENU_ITEMS_4
 	arm_func_end sub_02066A44
 
 	arm_func_start sub_020674CC
@@ -113354,7 +113354,7 @@ _020677CC:
 	ldr r1, _02067C0C ; =_020A9364
 	ldrsb r2, [r0, #0x10]
 	ldr r0, _02067C10 ; =_020B0B3C
-	ldr r5, _02067C14 ; =JOB_MENU_10
+	ldr r5, _02067C14 ; =JOB_MENU_ITEMS_10
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -113380,7 +113380,7 @@ _02067828:
 	ldr r1, _02067C0C ; =_020A9364
 	ldrsb r2, [r0, #0xe]
 	ldr r0, _02067C18 ; =_020B0B3A
-	ldr r5, _02067C14 ; =JOB_MENU_10
+	ldr r5, _02067C14 ; =JOB_MENU_ITEMS_10
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -113406,7 +113406,7 @@ _02067884:
 	ldr r1, _02067C0C ; =_020A9364
 	ldrsb r2, [r0, #9]
 	ldr r0, _02067C1C ; =_020B0B35
-	ldr r5, _02067C14 ; =JOB_MENU_10
+	ldr r5, _02067C14 ; =JOB_MENU_ITEMS_10
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -113432,7 +113432,7 @@ _020678E0:
 	ldr r1, _02067C0C ; =_020A9364
 	ldrsb r2, [r0, #8]
 	ldr r0, _02067C20 ; =_020B0B34
-	ldr r5, _02067C14 ; =JOB_MENU_10
+	ldr r5, _02067C14 ; =JOB_MENU_ITEMS_10
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -113469,7 +113469,7 @@ _02067954:
 	ldr r1, _02067C24 ; =_020A9394
 	ldrsb r2, [r0, #6]
 	ldr r0, _02067C28 ; =_020B0B32
-	ldr r5, _02067C2C ; =JOB_MENU_12
+	ldr r5, _02067C2C ; =JOB_MENU_ITEMS_12
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -113492,7 +113492,7 @@ _020679BC:
 	ldr r1, _02067C30 ; =_020A93B4
 	ldrsb r2, [r0, #6]
 	ldr r0, _02067C28 ; =_020B0B32
-	ldr r5, _02067C34 ; =JOB_MENU_13
+	ldr r5, _02067C34 ; =JOB_MENU_ITEMS_13
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
@@ -113522,13 +113522,13 @@ _02067A2C:
 	ldr r1, _02067C38 ; =_020A92EC
 	ldrsb r2, [r0, #0xb]
 	ldr r0, _02067C3C ; =_020B0B37
-	ldr r5, _02067C40 ; =JOB_MENU_5
+	ldr r5, _02067C40 ; =JOB_MENU_ITEMS_5
 	ldr r1, [r1, r2, lsl #3]
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
 	b _02067BC4
 _02067A50:
-	ldr r5, _02067C44 ; =JOB_MENU_7
+	ldr r5, _02067C44 ; =JOB_MENU_ITEMS_7
 	ldr r6, _02067C48 ; =0x000037B0
 	mov r7, sb
 	bl sub_020692B4
@@ -113547,7 +113547,7 @@ _02067A80:
 	mov r7, r6
 	ldrsb r2, [r1, #0x85]
 	sub r1, r7, #2
-	ldr r5, _02067C54 ; =JOB_MENU_3
+	ldr r5, _02067C54 ; =JOB_MENU_ITEMS_3
 	cmp r2, r1
 	ldreq r0, [r0, #4]
 	ldr r6, _02067C58 ; =0x0000380C
@@ -113565,7 +113565,7 @@ _02067A80:
 	ldr r0, [r2, #0x14]
 	add r0, r0, #0xd00
 	ldrsb r0, [r0, #0x85]
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _02067AE4:
 	ldr r1, [r5, #0xc]
 	mov r0, #0
@@ -113577,7 +113577,7 @@ _02067AF8:
 	ldr r1, _02067C60 ; =_020A9304
 	ldr r0, _02067C64 ; =_020B0B38
 	ldr r1, [r1, r2, lsl #3]
-	ldr r5, _02067C68 ; =JOB_MENU_6
+	ldr r5, _02067C68 ; =JOB_MENU_ITEMS_6
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
 #ifdef EUROPE
@@ -113592,12 +113592,12 @@ _02067B20:
 	mov r7, r6
 	str r0, [r4, #0xe48]
 	str r7, [r4, #0xef4]
-	ldr r5, _02067C6C ; =JOB_MENU_9
+	ldr r5, _02067C6C ; =JOB_MENU_ITEMS_9
 	ldr r6, _02067C70 ; =0x000038BF
 	b _02067BC4
 _02067B3C:
 	ldr r1, [r4, #0x6c]
-	ldr r5, _02067C74 ; =JOB_MENU_11
+	ldr r5, _02067C74 ; =JOB_MENU_ITEMS_11
 	ldr r6, _02067C78 ; =0x00003878
 	mov r2, sb
 	b _02067B68
@@ -113629,7 +113629,7 @@ _02067BA0:
 	ldr r1, _02067C80 ; =_020A9334
 	ldr r0, _02067C84 ; =_020B0B33
 	ldr r1, [r1, r2, lsl #3]
-	ldr r5, _02067C88 ; =JOB_MENU_8
+	ldr r5, _02067C88 ; =JOB_MENU_ITEMS_8
 	str r1, [r4, #0xe48]
 #ifdef EUROPE
 	ldr r6, _02068014 ; =0x000037B5
@@ -113660,39 +113660,39 @@ _02067C04: .word _020A9298
 _02067C08: .word 0x00000233
 _02067C0C: .word _020A9364
 _02067C10: .word _020B0B3C
-_02067C14: .word JOB_MENU_10
+_02067C14: .word JOB_MENU_ITEMS_10
 _02067C18: .word _020B0B3A
 _02067C1C: .word _020B0B35
 _02067C20: .word _020B0B34
 _02067C24: .word _020A9394
 _02067C28: .word _020B0B32
-_02067C2C: .word JOB_MENU_12
+_02067C2C: .word JOB_MENU_ITEMS_12
 _02067C30: .word _020A93B4
-_02067C34: .word JOB_MENU_13
+_02067C34: .word JOB_MENU_ITEMS_13
 _02067C38: .word _020A92EC
 _02067C3C: .word _020B0B37
-_02067C40: .word JOB_MENU_5
-_02067C44: .word JOB_MENU_7
+_02067C40: .word JOB_MENU_ITEMS_5
+_02067C44: .word JOB_MENU_ITEMS_7
 _02067C48: .word 0x000037B0 + SUB_02067708_WORD_OFFSET
 _02067C4C: .word _020A931C
 _02067C50: .word _020B0B30
-_02067C54: .word JOB_MENU_3
+_02067C54: .word JOB_MENU_ITEMS_3
 _02067C58: .word 0x0000380C + SUB_02067708_WORD_OFFSET
 _02067C5C: .word _020A9278
 _02067C60: .word _020A9304
 _02067C64: .word _020B0B38
-_02067C68: .word JOB_MENU_6
+_02067C68: .word JOB_MENU_ITEMS_6
 #ifdef EUROPE
 _02067FF0: .word 0x0000380F
 #endif
-_02067C6C: .word JOB_MENU_9
+_02067C6C: .word JOB_MENU_ITEMS_9
 _02067C70: .word 0x000038BF + SUB_02067708_WORD_OFFSET
-_02067C74: .word JOB_MENU_11
+_02067C74: .word JOB_MENU_ITEMS_11
 _02067C78: .word 0x00003878 + SUB_02067708_WORD_OFFSET
 _02067C7C: .word _020B0B39
 _02067C80: .word _020A9334
 _02067C84: .word _020B0B33
-_02067C88: .word JOB_MENU_8
+_02067C88: .word JOB_MENU_ITEMS_8
 #ifdef EUROPE
 _02068014: .word 0x000037B5
 #endif
@@ -115305,7 +115305,7 @@ sub_020691B8: ; 0x020691B8
 	mov r1, #1
 	ldr r0, [r0, #0x14]
 	ldrsb r0, [r0, #0x7d]
-	bl sub_0202D0D8
+	bl SetCollectionMenuField0x1B2
 	ldr r0, _020692A8 ; =_020B0B2C
 	ldr r1, [r0, #0x14]
 	ldrb r0, [r1, #0x7c]
@@ -115352,7 +115352,7 @@ sub_020692B4: ; 0x020692B4
 	ldr r0, _020692F8 ; =_020B0B2C
 	ldr r0, [r0, #0x14]
 	ldrsb r0, [r0, #0x7d]
-	bl sub_0202C70C
+	bl CloseCollectionMenu
 	ldr r0, _020692F8 ; =_020B0B2C
 	mvn r1, #1
 	ldr r0, [r0, #0x14]
@@ -115565,7 +115565,7 @@ sub_0206955C: ; 0x0206955C
 	ldrsb r0, [r0, #0x85]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _02069594 ; =_020B0B2C
 	mvn r1, #1
 	ldr r0, [r0, #0x14]
@@ -115693,7 +115693,7 @@ sub_020696E8: ; 0x020696E8
 	add r0, sp, #4
 	mov r1, #0x100
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	mov r1, #0
 	mov r2, #3
@@ -115750,7 +115750,7 @@ sub_02069790: ; 0x02069790
 	ldr r0, _020697F4 ; =_020B0B44
 	mov ip, #0
 	ldr r2, [r0]
-	ldr r1, _020697F8 ; =JOB_D_BOX_LAYOUT_2
+	ldr r1, _020697F8 ; =JOB_WINDOW_PARAMS_2
 	str r4, [r2]
 	ldr r3, [r0]
 	ldr r2, _020697FC ; =sub_02069AEC
@@ -115765,7 +115765,7 @@ sub_02069790: ; 0x02069790
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020697F4: .word _020B0B44
-_020697F8: .word JOB_D_BOX_LAYOUT_2
+_020697F8: .word JOB_WINDOW_PARAMS_2
 _020697FC: .word sub_02069AEC
 	arm_func_end sub_02069790
 
@@ -115784,7 +115784,7 @@ sub_02069800: ; 0x02069800
 	ldr r0, _02069864 ; =_020B0B44
 	mov ip, #0
 	ldr r2, [r0]
-	ldr r1, _02069868 ; =JOB_D_BOX_LAYOUT_2
+	ldr r1, _02069868 ; =JOB_WINDOW_PARAMS_2
 	str r5, [r2, #4]
 	ldr r3, [r0]
 	ldr r2, _0206986C ; =sub_02069CC0
@@ -115798,7 +115798,7 @@ sub_02069800: ; 0x02069800
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02069864: .word _020B0B44
-_02069868: .word JOB_D_BOX_LAYOUT_2
+_02069868: .word JOB_WINDOW_PARAMS_2
 _0206986C: .word sub_02069CC0
 	arm_func_end sub_02069800
 
@@ -168405,24 +168405,24 @@ _0209AE68:
 _0209AE7C:
 	.byte 0x46, 0x4F, 0x4E, 0x54, 0x2F, 0x72, 0x61, 0x6E
 	.byte 0x6B, 0x6D, 0x61, 0x72, 0x6B, 0x2E, 0x77, 0x31, 0x36, 0x00, 0x00, 0x00
-	.global _0209AE90
-_0209AE90:
+	.global PARENT_MENU_DEFAULT_WINDOW_PARAMS
+PARENT_MENU_DEFAULT_WINDOW_PARAMS:
 	.word UpdateParentMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AEA0
-_0209AEA0:
+	.global SIMPLE_MENU_DEFAULT_WINDOW_PARAMS
+SIMPLE_MENU_DEFAULT_WINDOW_PARAMS:
 	.word UpdateSimpleMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AEB0
-_0209AEB0:
+	.global ADVANCED_MENU_DEFAULT_WINDOW_PARAMS
+ADVANCED_MENU_DEFAULT_WINDOW_PARAMS:
 	.word UpdateAdvancedMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AEC0
-_0209AEC0:
+	.global COLLECTION_MENU_DEFAULT_WINDOW_PARAMS
+COLLECTION_MENU_DEFAULT_WINDOW_PARAMS:
 	.word UpdateCollectionMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AED0
-_0209AED0:
+	.global OPTIONS_MENU_DEFAULT_WINDOW_PARAMS
+OPTIONS_MENU_DEFAULT_WINDOW_PARAMS:
 	.word UpdateOptionsMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AEE0
@@ -168441,55 +168441,55 @@ _0209AEFC:
 	.global _0209AF04
 _0209AF04:
 	.byte 0x5B, 0x4D, 0x3A, 0x42, 0x31, 0x35, 0x5D, 0x00
-	.global _0209AF0C
-_0209AF0C:
+	.global DEBUG_MENU_DEFAULT_WINDOW_PARAMS
+DEBUG_MENU_DEFAULT_WINDOW_PARAMS:
 	.word UpdateDebugMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AF1C
-_0209AF1C:
+	.global SCROLL_BOX_DEFAULT_WINDOW_PARAMS
+SCROLL_BOX_DEFAULT_WINDOW_PARAMS:
 	.word UpdateScrollBox
 	.byte 0x02, 0x02, 0x1C, 0x14
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AF2C
-_0209AF2C:
+	.global DIALOGUE_BOX_DEFAULT_WINDOW_PARAMS
+DIALOGUE_BOX_DEFAULT_WINDOW_PARAMS:
 	.word UpdateDialogueBox
 	.byte 0x02, 0x11, 0x1C, 0x05
 	.byte 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AF3C
-_0209AF3C:
+	.global PORTRAIT_BOX_DEFAULT_WINDOW_PARAMS
+PORTRAIT_BOX_DEFAULT_WINDOW_PARAMS:
 	.word UpdatePortraitBox
 	.byte 0x01, 0x0A, 0x05, 0x05
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AF4C
-_0209AF4C:
+	.global TEXT_BOX_DEFAULT_WINDOW_PARAMS
+TEXT_BOX_DEFAULT_WINDOW_PARAMS:
 	.word UpdateTextBox
 	.byte 0x01, 0x10, 0x1E, 0x06
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AF5C
-_0209AF5C:
-	.word UpdateDynamicTextBox
+	.global AREA_NAME_BOX_DEFAULT_WINDOW_PARAMS
+AREA_NAME_BOX_DEFAULT_WINDOW_PARAMS:
+	.word UpdateAreaNameBox
 	.byte 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AF6C
 _0209AF6C:
 	.byte 0x5B, 0x61, 0x72, 0x65, 0x61, 0x3A, 0x30, 0x5D
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global _0209AF78
-_0209AF78:
+	.global CONTROLS_CHART_DEFAULT_WINDOW_PARAMS
+CONTROLS_CHART_DEFAULT_WINDOW_PARAMS:
 	.word UpdateControlsChart
 	.byte 0x02, 0x02, 0x1C, 0x14, 0x01, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AF94
-_0209AF94:
+	.global ALERT_BOX_DEFAULT_WINDOW_PARAMS
+ALERT_BOX_DEFAULT_WINDOW_PARAMS:
 	.word UpdateAlertBox
 	.byte 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AFA4
-_0209AFA4:
+	.global ADVANCED_TEXT_BOX_DEFAULT_WINDOW_PARAMS
+ADVANCED_TEXT_BOX_DEFAULT_WINDOW_PARAMS:
 	.word UpdateAdvancedTextBox
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global _0209AFB4
-_0209AFB4:
+	.global TEAM_SELECTION_MENU_DEFAULT_WINDOW_PARAMS
+TEAM_SELECTION_MENU_DEFAULT_WINDOW_PARAMS:
 	.word UpdateTeamSelectionMenu
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global _0209AFC4
@@ -180790,8 +180790,8 @@ ENTITIES:
 _020A9208:
 	.byte 0x53, 0x50, 0x45, 0x50, 0x20, 0x54, 0x59, 0x50, 0x45, 0x20, 0x25, 0x64
 	.byte 0x0A, 0x00, 0x00, 0x00
-	.global JOB_D_BOX_LAYOUT_1
-JOB_D_BOX_LAYOUT_1:
+	.global JOB_WINDOW_PARAMS_1
+JOB_WINDOW_PARAMS_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 #ifdef EUROPE
@@ -180799,13 +180799,13 @@ JOB_D_BOX_LAYOUT_1:
 #else
 #define JOB_MENU_OFFSET 0
 #endif
-	.global JOB_MENU_1
-JOB_MENU_1:
+	.global JOB_MENU_ITEMS_1
+JOB_MENU_ITEMS_1:
 	.byte 0x09 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0B + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x08 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_2
-JOB_MENU_2:
+	.global JOB_MENU_ITEMS_2
+JOB_MENU_ITEMS_2:
 	.byte 0x0A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0B + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x08 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
@@ -180829,77 +180829,77 @@ _020A9298:
 _020A92A8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x14, 0x1A, 0x02, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global JOB_MENU_3
-JOB_MENU_3:
+	.global JOB_MENU_ITEMS_3
+JOB_MENU_ITEMS_3:
 	.byte 0x29 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x2A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_4
-JOB_MENU_4:
+	.global JOB_MENU_ITEMS_4
+JOB_MENU_ITEMS_4:
 	.byte 0x29 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00, 0x2A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_5
-JOB_MENU_5:
+	.global JOB_MENU_ITEMS_5
+JOB_MENU_ITEMS_5:
 	.byte 0x91 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00
 	.global _020A92EC
 _020A92EC:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x92 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_6
-JOB_MENU_6:
+	.global JOB_MENU_ITEMS_6
+JOB_MENU_ITEMS_6:
 	.byte 0x29 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.global _020A9304
 _020A9304:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x2A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_7
-JOB_MENU_7:
+	.global JOB_MENU_ITEMS_7
+JOB_MENU_ITEMS_7:
 	.byte 0xB1 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00
 	.global _020A931C
 _020A931C:
 	.byte 0x05, 0x00, 0x00, 0x00, 0xB2 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_8
-JOB_MENU_8:
+	.global JOB_MENU_ITEMS_8
+JOB_MENU_ITEMS_8:
 	.byte 0xB4 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00
 	.global _020A9334
 _020A9334:
 	.byte 0x02, 0x00, 0x00, 0x00, 0xB5 + JOB_MENU_OFFSET, 0x37, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_9
-JOB_MENU_9:
+	.global JOB_MENU_ITEMS_9
+JOB_MENU_ITEMS_9:
 	.byte 0x29 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x2A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_10
-JOB_MENU_10:
+	.global JOB_MENU_ITEMS_10
+JOB_MENU_ITEMS_10:
 	.byte 0x0E + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.global _020A9364
 _020A9364:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x08 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_11
-JOB_MENU_11:
+	.global JOB_MENU_ITEMS_11
+JOB_MENU_ITEMS_11:
 	.byte 0x29 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.global _020A937C
 _020A937C:
 	.byte 0x06, 0x00, 0x00, 0x00, 0x2A + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_12
-JOB_MENU_12:
+	.global JOB_MENU_ITEMS_12
+JOB_MENU_ITEMS_12:
 	.byte 0x0F + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.global _020A9394
 _020A9394:
 	.byte 0x03, 0x00, 0x00, 0x00, 0x11 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x08 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_MENU_13
-JOB_MENU_13:
+	.global JOB_MENU_ITEMS_13
+JOB_MENU_ITEMS_13:
 	.byte 0x10 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.global _020A93B4
 _020A93B4:
 	.byte 0x04, 0x00, 0x00, 0x00, 0x11 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x08 + JOB_MENU_OFFSET, 0x38, 0x00, 0x00
 	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global JOB_D_BOX_LAYOUT_2
-JOB_D_BOX_LAYOUT_2:
+	.global JOB_WINDOW_PARAMS_2
+JOB_WINDOW_PARAMS_2:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x1C, 0x14, 0x01, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global DUNGEON_SWAP_ID_TABLE

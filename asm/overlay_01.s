@@ -7482,7 +7482,7 @@ _0232F4A4:
 	ldr r0, _0232F500 ; =ov01_0233C158
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl sub_0202F8FC
+	bl CloseTextBox
 _0232F4E0:
 	ldr r0, _0232F500 ; =ov01_0233C158
 	ldr r0, [r0]
@@ -7600,7 +7600,7 @@ _0232F618:
 	bne _0232F664
 	ldr r0, _0232F734 ; =ov01_0233AFEC
 	ldr r1, _0232F738 ; =ov01_0232F830
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0232F730 ; =ov01_0233C158
 	ldr r1, [r1]
 	strb r0, [r1, #8]
@@ -7773,7 +7773,7 @@ ov01_0232F830: ; 0x0232F830
 	add r0, sp, #0x54
 	mov r1, #0x400
 	mov r2, #0x20c
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r5
 	mov r1, #0x1e
 	mov r2, #0x14
@@ -7789,7 +7789,7 @@ ov01_0232F830: ; 0x0232F830
 	add r0, sp, #0x54
 	mov r1, #0x100
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0x54
 	mov r0, r5
 	mov r1, #0x5a
@@ -7869,7 +7869,7 @@ _0232F9AC:
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _0232F9D8
-	bl sub_0202FED4
+	bl CloseControlsChart
 _0232F9D8:
 	ldr r0, _0232F9F8 ; =ov01_0233C15C
 	ldr r0, [r0]
@@ -8029,7 +8029,7 @@ _0232FBC4:
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _0232FBFC
-	bl sub_0202FED4
+	bl CloseControlsChart
 	ldr r0, _0232FC24 ; =ov01_0233C15C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -8088,7 +8088,7 @@ _0232FC94:
 	strb r1, [r3, #9]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl sub_0202FEF0
+	bl IsControlsChartActive
 	cmp r0, #0
 	bne _0232FCEC
 	bl ov01_0232F9FC
@@ -8238,7 +8238,7 @@ _0232FE48:
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _0232FE74
-	bl sub_0202FED4
+	bl CloseControlsChart
 _0232FE74:
 	ldr r0, _0232FE94 ; =ov01_0233C160
 	ldr r0, [r0]
@@ -8398,7 +8398,7 @@ _02330060:
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _02330098
-	bl sub_0202FED4
+	bl CloseControlsChart
 	ldr r0, _023300C0 ; =ov01_0233C160
 	mvn r1, #1
 	ldr r0, [r0]
@@ -8457,7 +8457,7 @@ _02330130:
 	strb r1, [r3, #9]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl sub_0202FEF0
+	bl IsControlsChartActive
 	cmp r0, #0
 	bne _02330188
 	bl ov01_0232FE98
@@ -8780,7 +8780,7 @@ _023305C0:
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _023305EC
-	bl sub_0202FED4
+	bl CloseControlsChart
 _023305EC:
 	ldr r0, _0233063C ; =ov01_0233C164
 	ldr r1, _02330640 ; =WAN_TABLE
@@ -9053,7 +9053,7 @@ _02330990:
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _023309C8
-	bl sub_0202FED4
+	bl CloseControlsChart
 	ldr r0, _023309F0 ; =ov01_0233C164
 	mvn r1, #1
 	ldr r0, [r0]
@@ -9112,7 +9112,7 @@ _02330A60:
 	strb r1, [r3, #0x284]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl sub_0202FEF0
+	bl IsControlsChartActive
 	cmp r0, #0
 	bne _02330AB8
 	bl ov01_02330644
@@ -10032,7 +10032,7 @@ ov01_023316CC: ; 0x023316CC
 	mvn r1, #1
 	cmp r0, r1
 	beq _023316F4
-	bl sub_0202AABC
+	bl CloseParentMenu
 _023316F4:
 	ldr r0, _02331780 ; =ov01_0233C178
 	mvn r1, #1
@@ -10040,7 +10040,7 @@ _023316F4:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _02331710
-	bl sub_0202AABC
+	bl CloseParentMenu
 _02331710:
 	ldr r0, _02331780 ; =ov01_0233C178
 	mvn r1, #1
@@ -10048,7 +10048,7 @@ _02331710:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _0233172C
-	bl sub_0202AABC
+	bl CloseParentMenu
 _0233172C:
 	ldr r0, _02331780 ; =ov01_0233C178
 	mvn r1, #1
@@ -10056,7 +10056,7 @@ _0233172C:
 	ldrsb r0, [r0, #3]
 	cmp r0, r1
 	beq _02331748
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 _02331748:
 	ldr r0, _02331780 ; =ov01_0233C178
 	mvn r1, #1
@@ -10064,7 +10064,7 @@ _02331748:
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	beq _02331764
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 _02331764:
 	ldr r0, _02331780 ; =ov01_0233C178
 	ldr r0, [r0]
@@ -10122,7 +10122,7 @@ _02331810:
 	cmp r0, #0
 	bne _023324F4
 	bl ov01_0232F910
-	ldr r0, _0233250C ; =OVERLAY1_D_BOX_LAYOUT_3
+	ldr r0, _0233250C ; =MAIN_MENU_WINDOW_PARAMS_3
 	bl CreateDialogueBox
 	ldr r1, _02332508 ; =ov01_0233C178
 	mov r3, #2
@@ -10140,13 +10140,13 @@ _0233184C:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _02331890
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _023324F4
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -10158,13 +10158,13 @@ _02331890:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _023318D4
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _023324F4
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -10176,13 +10176,13 @@ _023318D4:
 	ldrsb r0, [r0, #3]
 	cmp r0, r1
 	beq _02331918
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _023324F4
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -10285,11 +10285,11 @@ _02331A54:
 	mov r4, #1
 	b _023324F4
 _02331A78:
-	ldr r0, _02332510 ; =OVERLAY1_D_BOX_LAYOUT_1
+	ldr r0, _02332510 ; =MAIN_MENU_WINDOW_PARAMS_1
 	ldr r1, _02332514 ; =0x00400231
 	add r2, sp, #0x26c
 	add r3, r3, #0x1c
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _02332508 ; =ov01_0233C178
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -10317,12 +10317,12 @@ _02331AB4:
 	ldrsb r0, [r3, #4]
 	ldrh r2, [r2, #0x7e]
 	mov r3, r4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _02331AF0:
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	bne _02331C20
 	ldr r0, _02332508 ; =ov01_0233C178
@@ -10440,13 +10440,13 @@ _02331CA8:
 	sub r1, r4, #2
 	cmp r0, r1
 	beq _02331CE4
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _023324F4
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -10464,13 +10464,13 @@ _02331CE4:
 	str r2, [sp, #0x1d4]
 	str r1, [r3, #0xc]
 	ldr r3, [r0]
-	ldr r0, _0233251C ; =OVERLAY1_D_BOX_LAYOUT_2
+	ldr r0, _0233251C ; =MAIN_MENU_WINDOW_PARAMS_2
 	add r5, r3, #0xf0
 	ldr r1, _02332520 ; =0x00400233
 	add r2, sp, #0x1d4
 	add r3, r3, #0x98
 	str r5, [sp, #0x234]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _02332508 ; =ov01_0233C178
 	mov r2, #5
 	ldr r3, [r1]
@@ -10494,12 +10494,12 @@ _02331D4C:
 	ldrsb r0, [r0, #4]
 	ldrh r2, [r2, #0x32]
 	mov r3, r4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _02331D8C:
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	bne _023324F4
 	ldr r0, _02332508 ; =ov01_0233C178
@@ -10533,13 +10533,13 @@ _02331E08:
 	sub r1, r4, #2
 	cmp r0, r1
 	beq _02331E44
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _023324F4
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -10558,7 +10558,7 @@ _02331E44:
 	add r2, sp, #0x13c
 	mov r0, #0
 	str r5, [sp, #0x13c]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r3, _02332508 ; =ov01_0233C178
 	ldr r1, _02332518 ; =0x00000404
 	ldr r5, [r3]
@@ -10567,7 +10567,7 @@ _02331E44:
 	ldr r0, [r3]
 	mov r3, #0
 	ldrsb r0, [r0, #4]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r3, #0
 	ldr r2, [r0]
@@ -10578,7 +10578,7 @@ _02331E44:
 	b _023324F4
 _02331EC0:
 	ldrsb r0, [r1, #2]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	bne _023324F4
 	ldr r0, _02332508 ; =ov01_0233C178
@@ -10614,13 +10614,13 @@ _02331F3C:
 	sub r1, r4, #2
 	cmp r0, r1
 	beq _02331F78
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _023324F4
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -10642,7 +10642,7 @@ _02331F78:
 	str r1, [sp, #0xb0]
 	str r0, [sp, #0x104]
 	ldr r5, [r5, #0x114]
-	ldr r0, _02332534 ; =OVERLAY1_D_BOX_LAYOUT_4
+	ldr r0, _02332534 ; =MAIN_MENU_WINDOW_PARAMS_4
 	str r5, [sp]
 	mov r5, #0xa
 	ldr r1, _02332538 ; =0x00400A33
@@ -10667,7 +10667,7 @@ _02331F78:
 	mov r2, r2, lsl #0x10
 	ldr r1, _02332518 ; =0x00000404
 	mov r2, r2, lsr #0x10
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r3, #0
 	ldr r2, [r0]
@@ -10694,7 +10694,7 @@ _02332040:
 	mov r2, r2, lsl #0x10
 	ldr r1, _02332518 ; =0x00000404
 	mov r2, r2, lsr #0x10
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _02332088:
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
@@ -10753,14 +10753,14 @@ _02332148:
 	ldrsb r0, [r0]
 	cmp r0, r1
 	beq _02332190
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	movne r5, #0
 	bne _02332190
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -10772,14 +10772,14 @@ _02332190:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _023321D8
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	movne r5, #0
 	bne _023321D8
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -10791,14 +10791,14 @@ _023321D8:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _02332220
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	movne r5, #0
 	bne _02332220
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -10810,14 +10810,14 @@ _02332220:
 	ldrsb r0, [r0, #3]
 	cmp r0, r1
 	beq _02332268
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	movne r5, #0
 	bne _02332268
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -10837,7 +10837,7 @@ _02332268:
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02332508 ; =ov01_0233C178
 	mvn r1, #1
 	ldr r0, [r0]
@@ -11028,17 +11028,17 @@ _02332500:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _02332508: .word ov01_0233C178
-_0233250C: .word OVERLAY1_D_BOX_LAYOUT_3
-_02332510: .word OVERLAY1_D_BOX_LAYOUT_1
+_0233250C: .word MAIN_MENU_WINDOW_PARAMS_3
+_02332510: .word MAIN_MENU_WINDOW_PARAMS_1
 _02332514: .word 0x00400231
 _02332518: .word 0x00000404
-_0233251C: .word OVERLAY1_D_BOX_LAYOUT_2
+_0233251C: .word MAIN_MENU_WINDOW_PARAMS_2
 _02332520: .word 0x00400233
 _02332524: .word 0x00400033
 _02332528: .word CONTINUE_CHOICE
 _0233252C: .word 0x000001DF
 _02332530: .word 0x000001E1
-_02332534: .word OVERLAY1_D_BOX_LAYOUT_4
+_02332534: .word MAIN_MENU_WINDOW_PARAMS_4
 _02332538: .word 0x00400A33
 _0233253C: .word ov01_02332580
 _02332540: .word 0x000001E9
@@ -11104,7 +11104,7 @@ _023325E4:
 	add r0, r0, r5, lsl #3
 	add r0, r0, #0x100
 	ldrh r0, [r0, #0x1c]
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp, #0x40]
 	add r5, sp, #4
 	ldr r3, _02332644 ; =0x0000C402
@@ -11256,15 +11256,15 @@ _02332810:
 _0233281C:
 	ldr r1, [r1]
 	str r0, [r1, #4]
-	ldr r0, _023329D0 ; =OVERLAY1_D_BOX_LAYOUT_5
+	ldr r0, _023329D0 ; =MAIN_MENU_WINDOW_PARAMS_5
 	ldr r1, _023329D4 ; =ov01_02332EF4
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r2, _023329C8 ; =ov01_0233C184
 	mov r1, #0
 	ldr r2, [r2]
 	strb r0, [r2, #0x60c]
-	ldr r0, _023329D8 ; =OVERLAY1_D_BOX_LAYOUT_6
-	bl CreateTextBox1
+	ldr r0, _023329D8 ; =MAIN_MENU_WINDOW_PARAMS_6
+	bl CreateTextBox
 	ldr r1, _023329C8 ; =ov01_0233C184
 	ldr r2, [r1]
 	strb r0, [r2, #0x60d]
@@ -11358,11 +11358,11 @@ _02332950:
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xd]
 	bl sub_02027AF0
-	ldr r0, _023329F0 ; =OVERLAY1_D_BOX_LAYOUT_7
-	ldr r3, _023329F4 ; =MAIN_MENU_CONFIRM
+	ldr r0, _023329F0 ; =MAIN_MENU_WINDOW_PARAMS_7
+	ldr r3, _023329F4 ; =MAIN_MENU_ITEMS_CONFIRM
 	add r2, sp, #0xc
 	mov r1, #0x33
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _023329C8 ; =ov01_0233C184
 	ldr r1, [r1]
 	strb r0, [r1, #0x60e]
@@ -11374,16 +11374,16 @@ _023329BC:
 _023329C4: .word ov01_0233B70C
 _023329C8: .word ov01_0233C184
 _023329CC: .word ov01_0233B798
-_023329D0: .word OVERLAY1_D_BOX_LAYOUT_5
+_023329D0: .word MAIN_MENU_WINDOW_PARAMS_5
 _023329D4: .word ov01_02332EF4
-_023329D8: .word OVERLAY1_D_BOX_LAYOUT_6
+_023329D8: .word MAIN_MENU_WINDOW_PARAMS_6
 _023329DC: .word 0x00000203
 _023329E0: .word 0x00000201
 _023329E4: .word 0x00000202
 _023329E8: .word 0x00000206
 _023329EC: .word 0x0000020A
-_023329F0: .word OVERLAY1_D_BOX_LAYOUT_7
-_023329F4: .word MAIN_MENU_CONFIRM
+_023329F0: .word MAIN_MENU_WINDOW_PARAMS_7
+_023329F4: .word MAIN_MENU_ITEMS_CONFIRM
 	arm_func_end ov01_02332698
 
 	arm_func_start ov01_023329F8
@@ -11403,17 +11403,17 @@ ov01_023329F8: ; 0x023329F8
 	cmp r2, r1
 	beq _02332A60
 	ldrsb r0, [r0, #0xe]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332A7C ; =ov01_0233C184
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xd]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02332A7C ; =ov01_0233C184
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xc]
-	bl sub_0202F8FC
+	bl CloseTextBox
 _02332A60:
 	ldr r0, _02332A7C ; =ov01_0233C184
 	ldr r0, [r0]
@@ -11439,7 +11439,7 @@ _02332A90:
 	ldrsb r0, [r0, #0xf]
 	cmp r0, r6
 	beq _02332AB8
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, [r5]
 	add r0, r0, r4
 	strb r6, [r0, #0x60f]
@@ -11474,7 +11474,7 @@ _02332AEC: ; jump table
 _02332B0C:
 	add r0, r3, #0x600
 	ldrsb r0, [r0, #0xe]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	bne _02332ED0
 	ldr r0, _02332EDC ; =ov01_0233C184
@@ -11492,7 +11492,7 @@ _02332B0C:
 _02332B50:
 	add r0, r3, #0x600
 	ldrsb r0, [r0, #0xe]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02332ED0
 	ldr r0, _02332EDC ; =ov01_0233C184
@@ -11516,17 +11516,17 @@ _02332B50:
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xe]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332EDC ; =ov01_0233C184
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xd]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02332EDC ; =ov01_0233C184
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xc]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02332EDC ; =ov01_0233C184
 	mvn r2, #1
 	ldr r1, [r0]
@@ -11609,7 +11609,7 @@ _02332CDC:
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xe]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	b _02332ED0
 _02332D10:
 	mov r0, #0xa
@@ -11626,7 +11626,7 @@ _02332D1C:
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xe]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	b _02332ED0
 _02332D4C:
 	mov r0, #8
@@ -11642,7 +11642,7 @@ _02332D5C:
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xe]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02332EDC ; =ov01_0233C184
 	mov r2, #0xb
 	ldr r1, [r0]
@@ -11730,11 +11730,11 @@ _02332E58:
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xd]
 	bl sub_02027AF0
-	ldr r0, _02332EEC ; =OVERLAY1_D_BOX_LAYOUT_7
-	ldr r3, _02332EF0 ; =MAIN_MENU_CONFIRM
+	ldr r0, _02332EEC ; =MAIN_MENU_WINDOW_PARAMS_7
+	ldr r3, _02332EF0 ; =MAIN_MENU_ITEMS_CONFIRM
 	add r2, sp, #0
 	mov r1, #0x33
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _02332EDC ; =ov01_0233C184
 	ldr r1, [r1]
 	strb r0, [r1, #0x60e]
@@ -11748,8 +11748,8 @@ _02332EDC: .word ov01_0233C184
 _02332EE0: .word 0x00000207
 _02332EE4: .word 0x00000205
 _02332EE8: .word 0x0000020A
-_02332EEC: .word OVERLAY1_D_BOX_LAYOUT_7
-_02332EF0: .word MAIN_MENU_CONFIRM
+_02332EEC: .word MAIN_MENU_WINDOW_PARAMS_7
+_02332EF0: .word MAIN_MENU_ITEMS_CONFIRM
 	arm_func_end ov01_02332ACC
 
 	arm_func_start ov01_02332EF4
@@ -12312,7 +12312,7 @@ _023336CC:
 	strb r2, [r0]
 	str ip, [sp]
 	mov ip, #8
-	ldr r0, _0233375C ; =OVERLAY1_D_BOX_LAYOUT_8
+	ldr r0, _0233375C ; =MAIN_MENU_WINDOW_PARAMS_8
 	ldr r1, _02333760 ; =0x05001812
 	ldr r3, _02333764 ; =ov01_0233382C
 	add r2, sp, #8
@@ -12331,7 +12331,7 @@ _02333758: .word 0x00003FEB
 #else
 _02333758: .word 0x00003FE9
 #endif
-_0233375C: .word OVERLAY1_D_BOX_LAYOUT_8
+_0233375C: .word MAIN_MENU_WINDOW_PARAMS_8
 _02333760: .word 0x05001812
 _02333764: .word ov01_0233382C
 	arm_func_end ov01_023336A0
@@ -12367,7 +12367,7 @@ ov01_02333794: ; 0x02333794
 	b _02333820
 _023337C0:
 	ldrsb r0, [r1]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _02333820
 	ldr r0, _02333828 ; =ov01_0233C188
@@ -12382,7 +12382,7 @@ _023337C0:
 	b _02333820
 _023337F8:
 	ldrsb r0, [r1]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _02333828 ; =ov01_0233C188
 	mov r2, #3
 	ldr r1, [r0, #4]
@@ -12493,7 +12493,7 @@ _0233393C:
 	mov r2, r6
 	mov r1, #0x400
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r5
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -12528,14 +12528,14 @@ ov01_02333994: ; 0x02333994
 	mov r1, r0
 	bl MemAlloc
 	ldr r1, _023339EC ; =ov01_0233C190
-	ldr r3, _023339F0 ; =MAIN_DEBUG_MENU_1
+	ldr r3, _023339F0 ; =MAIN_DEBUG_MENU_ITEMS_1
 	str r0, [r1, #4]
 	mov ip, #0xb
-	ldr r0, _023339F4 ; =OVERLAY1_D_BOX_LAYOUT_9
+	ldr r0, _023339F4 ; =MAIN_MENU_WINDOW_PARAMS_9
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _023339EC ; =ov01_0233C190
 	mov r3, #0
 	ldr r2, [r1, #4]
@@ -12547,8 +12547,8 @@ ov01_02333994: ; 0x02333994
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023339EC: .word ov01_0233C190
-_023339F0: .word MAIN_DEBUG_MENU_1
-_023339F4: .word OVERLAY1_D_BOX_LAYOUT_9
+_023339F0: .word MAIN_DEBUG_MENU_ITEMS_1
+_023339F4: .word MAIN_MENU_WINDOW_PARAMS_9
 	arm_func_end ov01_02333994
 
 	arm_func_start ov01_023339F8
@@ -12559,7 +12559,7 @@ ov01_023339F8: ; 0x023339F8
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _02333A30 ; =ov01_0233C190
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -12587,7 +12587,7 @@ ov01_02333A34: ; 0x02333A34
 	b _02333BBC
 _02333A64:
 	ldrsb r0, [r2]
-	bl sub_0202B510
+	bl CheckSimpleMenuField0x1A0
 	cmp r0, #0
 	ldreq r0, _02333BC8 ; =ov01_0233C190
 	moveq r1, #1
@@ -12737,12 +12737,12 @@ ov01_02333C20: ; 0x02333C20
 	mov r1, r0
 	bl MemAlloc
 	ldr r1, _02333C70 ; =ov01_0233C198
-	ldr r3, _02333C74 ; =MAIN_DEBUG_MENU_2
+	ldr r3, _02333C74 ; =MAIN_DEBUG_MENU_ITEMS_2
 	str r0, [r1, #4]
-	ldr r0, _02333C78 ; =OVERLAY1_D_BOX_LAYOUT_10
+	ldr r0, _02333C78 ; =MAIN_MENU_WINDOW_PARAMS_10
 	mov r1, #0x13
 	mov r2, #0
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _02333C70 ; =ov01_0233C198
 	mov r3, #0
 	ldr r2, [r1, #4]
@@ -12754,8 +12754,8 @@ ov01_02333C20: ; 0x02333C20
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02333C70: .word ov01_0233C198
-_02333C74: .word MAIN_DEBUG_MENU_2
-_02333C78: .word OVERLAY1_D_BOX_LAYOUT_10
+_02333C74: .word MAIN_DEBUG_MENU_ITEMS_2
+_02333C78: .word MAIN_MENU_WINDOW_PARAMS_10
 	arm_func_end ov01_02333C20
 
 	arm_func_start ov01_02333C7C
@@ -12766,7 +12766,7 @@ ov01_02333C7C: ; 0x02333C7C
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02333CB4 ; =ov01_0233C198
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -12794,7 +12794,7 @@ ov01_02333CB8: ; 0x02333CB8
 	b _02333E3C
 _02333CE8:
 	ldrsb r0, [r3]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	ldreq r0, _02333E48 ; =ov01_0233C198
 	moveq r1, #1
@@ -12803,7 +12803,7 @@ _02333CE8:
 	b _02333E3C
 _02333D08:
 	ldrsb r0, [r3]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02333E3C
 	ldr r0, _02333E48 ; =ov01_0233C198
@@ -13374,7 +13374,7 @@ _023344EC:
 	bl ShowStringInDialogueBox
 	ldr r0, _02334618 ; =ov01_0233B8C8
 	ldr r1, _0233461C ; =ov01_02334F2C
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02334604 ; =ov01_0233C1A0
 	mov r4, #0
 	ldr r2, [r1, #4]
@@ -13456,15 +13456,15 @@ ov01_0233462C: ; 0x0233462C
 	ldr r0, _023346B8 ; =ov01_0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _023346B8 ; =ov01_0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _023346B8 ; =ov01_0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _023346B8 ; =ov01_0233C1A0
 	ldr r0, [r0, #4]
 	add r0, r0, #0x1ac
@@ -13551,7 +13551,7 @@ _023347B0:
 	ldr r0, _02334B90 ; =ov01_0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _023349BC
 	ldr r0, _02334B90 ; =ov01_0233C1A0
@@ -13786,7 +13786,7 @@ _02334B04:
 	b _02334B88
 _02334B0C:
 	ldrsb r0, [r1]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	movne r0, #0
 	bne _02334B58
@@ -13800,7 +13800,7 @@ _02334B0C:
 	ldr r0, _02334B90 ; =ov01_0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
-	bl sub_0202FB9C
+	bl IsTextBoxActive
 	cmp r0, #0
 	movne r0, #0
 	moveq r0, #1
@@ -14557,7 +14557,7 @@ _0233535C:
 	mov r1, r5, lsl #1
 	ldr r0, [r0]
 	ldrh r0, [r0, r1]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r4, r0
 	mov r0, r6
 	mov r1, r4
@@ -14571,7 +14571,7 @@ _0233535C:
 	cmp r0, #1
 	bne _023353E4
 	mov r0, #0xfd
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	ldr r1, _023355C8 ; =ov01_0233BAF0
 	mov r0, r7
@@ -15350,7 +15350,7 @@ _02335DC4:
 	ldr r3, _02335F7C ; =ov01_02336664
 	mov r1, #0x400000
 	str r2, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02335F58 ; =ov01_0233C1A8
 	ldr r1, [r1]
 	strb r0, [r1, #1]
@@ -15362,7 +15362,7 @@ _02335DF0:
 	ldr r3, _02335F84 ; =ov01_02336730
 	mov r1, #0x400000
 	str r2, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02335F58 ; =ov01_0233C1A8
 	ldr r1, [r1]
 	strb r0, [r1, #1]
@@ -15374,7 +15374,7 @@ _02335E1C:
 	ldr r3, _02335F88 ; =ov01_02336540
 	mov r1, #0x400000
 	str r2, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02335F58 ; =ov01_0233C1A8
 	ldr r1, [r1]
 	strb r0, [r1, #1]
@@ -15385,7 +15385,7 @@ _02335E44:
 	ldr r3, _02335F90 ; =ov01_02336890
 	mov r1, #0x400000
 	str r2, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02335F58 ; =ov01_0233C1A8
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -15487,19 +15487,19 @@ ov01_02335FA8: ; 0x02335FA8
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02336010 ; =ov01_0233C1A8
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _02336010 ; =ov01_0233C1A8
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _02336010 ; =ov01_0233C1A8
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02336010 ; =ov01_0233C1A8
 	ldr r0, [r0]
 	bl MemFree
@@ -15746,11 +15746,11 @@ _02336338:
 	ldr r0, _02336534 ; =ov01_0233C1A8
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	ldr r0, _02336534 ; =ov01_0233C1A8
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	ldr r0, _02336534 ; =ov01_0233C1A8
 	mov r3, #2
 	ldr r1, [r0]
@@ -15839,7 +15839,7 @@ _02336494:
 	ldr r0, _02336534 ; =ov01_0233C1A8
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	movne r0, #0
 	bne _023364FC
@@ -15853,7 +15853,7 @@ _02336494:
 	ldr r0, _02336534 ; =ov01_0233C1A8
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	movne r0, #0
 	moveq r0, #1
@@ -22043,17 +22043,17 @@ ov01_0233B318:
 ov01_0233B504:
 	.byte 0x72, 0x6F, 0x6D, 0x30
 	.byte 0x3A, 0x47, 0x52, 0x4F, 0x55, 0x4E, 0x44, 0x2F, 0x25, 0x73, 0x2E, 0x77, 0x61, 0x6E, 0x00, 0x00
-	.global OVERLAY1_D_BOX_LAYOUT_1
-OVERLAY1_D_BOX_LAYOUT_1:
+	.global MAIN_MENU_WINDOW_PARAMS_1
+MAIN_MENU_WINDOW_PARAMS_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY1_D_BOX_LAYOUT_2
-OVERLAY1_D_BOX_LAYOUT_2:
+	.global MAIN_MENU_WINDOW_PARAMS_2
+MAIN_MENU_WINDOW_PARAMS_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY1_D_BOX_LAYOUT_3
-OVERLAY1_D_BOX_LAYOUT_3:
+	.global MAIN_MENU_WINDOW_PARAMS_3
+MAIN_MENU_WINDOW_PARAMS_3:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x12, 0x1C, 0x04, 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY1_D_BOX_LAYOUT_4
-OVERLAY1_D_BOX_LAYOUT_4:
+	.global MAIN_MENU_WINDOW_PARAMS_4
+MAIN_MENU_WINDOW_PARAMS_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov01_0233B558
 ov01_0233B558:
@@ -22117,20 +22117,20 @@ ov01_0233B70C:
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word ov01_023329F8
 	.word ov01_02332ACC
-	.global OVERLAY1_D_BOX_LAYOUT_5
-OVERLAY1_D_BOX_LAYOUT_5:
+	.global MAIN_MENU_WINDOW_PARAMS_5
+MAIN_MENU_WINDOW_PARAMS_5:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x1C, 0x0E, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY1_D_BOX_LAYOUT_6
-OVERLAY1_D_BOX_LAYOUT_6:
+	.global MAIN_MENU_WINDOW_PARAMS_6
+MAIN_MENU_WINDOW_PARAMS_6:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x12, 0x14, 0x04, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY1_D_BOX_LAYOUT_7
-OVERLAY1_D_BOX_LAYOUT_7:
+	.global MAIN_MENU_WINDOW_PARAMS_7
+MAIN_MENU_WINDOW_PARAMS_7:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x18, 0x12, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global MAIN_MENU_CONFIRM
-MAIN_MENU_CONFIRM:
+	.global MAIN_MENU_ITEMS_CONFIRM
+MAIN_MENU_ITEMS_CONFIRM:
 	.byte 0xF7, 0x01, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xF8, 0x01, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global ov01_0233B764
@@ -22151,8 +22151,8 @@ ov01_0233B7BC:
 ov01_0233B7C4:
 	.byte 0x5B, 0x74, 0x69, 0x6D
 	.byte 0x65, 0x3A, 0x30, 0x5D, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY1_D_BOX_LAYOUT_8
-OVERLAY1_D_BOX_LAYOUT_8:
+	.global MAIN_MENU_WINDOW_PARAMS_8
+MAIN_MENU_WINDOW_PARAMS_8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x1C, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov01_0233B7E0
@@ -22161,8 +22161,8 @@ ov01_0233B7E0:
 	.word ov01_023336A0
 	.word ov01_02333768
 	.word ov01_02333794
-	.global OVERLAY1_D_BOX_LAYOUT_9
-OVERLAY1_D_BOX_LAYOUT_9:
+	.global MAIN_MENU_WINDOW_PARAMS_9
+MAIN_MENU_WINDOW_PARAMS_9:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov01_0233B800
@@ -22171,8 +22171,8 @@ ov01_0233B800:
 	.word ov01_02333994
 	.word ov01_023339F8
 	.word ov01_02333A34
-	.global MAIN_DEBUG_MENU_1
-MAIN_DEBUG_MENU_1:
+	.global MAIN_DEBUG_MENU_ITEMS_1
+MAIN_DEBUG_MENU_ITEMS_1:
 	.byte 0xEB, 0x01, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0xEC, 0x01, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xEE, 0x01, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
 	.byte 0xEF, 0x01, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0xF0, 0x01, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
@@ -22180,8 +22180,8 @@ MAIN_DEBUG_MENU_1:
 	.byte 0xF3, 0x01, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0xF4, 0x01, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
 	.byte 0xF5, 0x01, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0xF6, 0x01, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global OVERLAY1_D_BOX_LAYOUT_10
-OVERLAY1_D_BOX_LAYOUT_10:
+	.global MAIN_MENU_WINDOW_PARAMS_10
+MAIN_MENU_WINDOW_PARAMS_10:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov01_0233B880
@@ -22190,8 +22190,8 @@ ov01_0233B880:
 	.word ov01_02333C20
 	.word ov01_02333C7C
 	.word ov01_02333CB8
-	.global MAIN_DEBUG_MENU_2
-MAIN_DEBUG_MENU_2:
+	.global MAIN_DEBUG_MENU_ITEMS_2
+MAIN_DEBUG_MENU_ITEMS_2:
 #ifdef EUROPE
 #define MAIN_DEBUG_MENU_2_OFFSET 2
 #else
