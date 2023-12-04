@@ -80,7 +80,7 @@
 .public SpawnMonster
 .public strcat
 .public strcpy
-.public StringFromMessageId
+.public StringFromId
 .public sub_020149C0
 .public sub_0201B9F8
 .public sub_0201CF5C

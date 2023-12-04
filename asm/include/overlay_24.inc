@@ -2,14 +2,15 @@
 .public _020A1868
 .public _020A18E0
 .public __divsi3
+.public CloseCollectionMenu
+.public CloseDialogueBox
+.public ClosePortraitBox
+.public CloseSimpleMenu
 .public CreateDialogueBox
 .public CreatePortraitBox
-.public CreateSimpleMenuWrapper
+.public CreateSimpleMenuFromStringIds
 .public EGG_HP_BONUS
 .public EGG_STAT_BONUSES
-.public FreeDialogueBox
-.public FreePortraitBox
-.public FreeSimpleMenu
 .public GetAdventureLogCompleted
 .public GetFirstEmptyMemberIdx
 .public GetKeyboardStatus
@@ -19,7 +20,7 @@
 .public GetSimpleMenuResult
 .public HidePortraitBox
 .public IncrementNbEggsHatched
-.public InitPortraitBoxWithMonsterId
+.public InitPortraitParamsWithMonsterId
 .public InitPreprocessorArgs
 .public IsBagFull
 .public IsDialogueBoxActive
@@ -38,8 +39,8 @@
 .public SetPortraitLayout
 .public ShowDialogueBox
 .public ShowKeyboard
-.public ShowMessageInDialogueBox
-.public ShowPortraitBox
+.public ShowPortraitInPortraitBox
+.public ShowStringIdInDialogueBox
 .public SpecialProcAddItemToBag
 .public strcpy
 .public StrcpyName
@@ -57,7 +58,6 @@
 .public sub_02017C50
 .public sub_02017CB4
 .public sub_0202836C
-.public sub_0202C70C
 .public sub_0202F2C4
 .public sub_02037468
 .public sub_0203909C

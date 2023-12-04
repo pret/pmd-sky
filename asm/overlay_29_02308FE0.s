@@ -7780,7 +7780,7 @@ ov29_0230E658: ; 0x0230E658
 	bl sub_02025888
 	mov r5, r0
 	mov r0, r4
-	bl StringFromMessageId
+	bl StringFromId
 	mov r4, r0
 	bl ov29_0234B034
 	mov r2, r4

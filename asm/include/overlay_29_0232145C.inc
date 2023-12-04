@@ -137,7 +137,7 @@
 .public ShouldDisplayEntityWrapper
 .public ShouldMovePlayAlternativeAnimation
 .public SLEEP_TURN_RANGE
-.public StringFromMessageId
+.public StringFromId
 .public sub_020018D0
 .public sub_02001980
 .public sub_0201CF90

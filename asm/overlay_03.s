@@ -9064,7 +9064,7 @@ _02344838:
 	mov r0, #0xa
 	bl ov01_023375D0
 	ldrsb r0, [r4, #4]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _02344928
 	ldrsb r0, [r4, #4]
@@ -9073,7 +9073,7 @@ _02344838:
 	ldrsb r0, [r4, #4]
 	bl sub_0202836C
 	ldrsb r0, [r4, #4]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	mvn r0, #1
 	strb r0, [r4, #4]
 	cmp r5, #0
@@ -9105,21 +9105,21 @@ _023448A0:
 	ldr r3, _02344950 ; =ov03_02344970
 	add r2, sp, #8
 	str ip, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	strb r0, [r4, #5]
 	mov r0, #3
 	str r0, [r4]
 	b _02344928
 _023448F4:
 	ldrsb r0, [r4, #5]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	bne _02344928
 	ldrsb r0, [r4, #5]
 	bl sub_02030A18
 	str r0, [r4, #8]
 	ldrsb r0, [r4, #5]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	mvn r0, #1
 	strb r0, [r4, #5]
 	mov r0, #0
@@ -9154,11 +9154,11 @@ ov03_02344954: ; 0x02344954
 	add r0, r0, #0x3000
 #endif
 	mov r0, r0, lsl #0x10
-	ldr ip, _0234496C ; =StringFromMessageId
+	ldr ip, _0234496C ; =StringFromId
 	mov r0, r0, lsr #0x10
 	bx ip
 	.align 2, 0
-_0234496C: .word StringFromMessageId
+_0234496C: .word StringFromId
 	arm_func_end ov03_02344954
 
 	arm_func_start ov03_02344970
@@ -9187,7 +9187,7 @@ ov03_02344970: ; 0x02344970
 #endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	mov r0, r4
 	mov r1, #4
@@ -10473,7 +10473,7 @@ _02345B80:
 	ldr r3, _02346654 ; =0x000008E4
 	mov r2, #0
 	str r4, [sp, #8]
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _02345A5C ; =ov03_02346BDC
 	ldr r1, [r1]
 	strb r0, [r1, #0x14]
@@ -10485,7 +10485,7 @@ _02345BFC:
 	b _02346640
 _02345C10:
 	ldrsb r0, [r4, #0x14]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _02346640
 	ldr r0, _02345A5C ; =ov03_02346BDC
@@ -10494,7 +10494,7 @@ _02345C10:
 	ldrsb r0, [r0, #0x14]
 	cmp r0, r1
 	beq _02345C4C
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _02345A5C ; =ov03_02346BDC
 	mvn r1, #1
 	ldr r0, [r0]
@@ -11109,7 +11109,7 @@ _023464C8:
 	ldr r0, _02345A5C ; =ov03_02346BDC
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _02345A5C ; =ov03_02346BDC
 	mvn r1, #1
 	ldr r0, [r0]
@@ -11268,7 +11268,7 @@ ov03_023466E8: ; 0x023466E8
 	ldr r0, _02346734 ; =ov03_02346BDC
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x14]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _02346734 ; =ov03_02346BDC
 	mvn r1, #1
 	ldr r0, [r0]

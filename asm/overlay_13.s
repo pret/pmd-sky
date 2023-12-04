@@ -320,7 +320,7 @@ Overlay13SwitchFunctionNa238A574: ; 0x0238A574
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	add r0, r0, #0x3b4
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldr r2, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r2]
 	ldr r1, [r0, #0x20]
@@ -432,7 +432,7 @@ _0238A6F4:
 	str r0, [r1, #0x20]
 	b _0238BD74
 _0238A73C:
-	ldr r0, _0238B4FC ; =QUIZ_D_BOX_LAYOUT_4
+	ldr r0, _0238B4FC ; =QUIZ_WINDOW_PARAMS_4
 	bl CreateDialogueBox
 	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mov r3, #2
@@ -452,7 +452,7 @@ _0238A73C:
 	add r2, r1, #0x6c0
 	ldrsb r0, [r0, #2]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, #2
 	bl WaitForNextStep
 	b _0238BD74
@@ -465,9 +465,9 @@ _0238A79C:
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
-	ldr r0, _0238B500 ; =QUIZ_D_BOX_LAYOUT_1
+	ldr r0, _0238B500 ; =QUIZ_WINDOW_PARAMS_1
 	ldr r1, [r1]
 	mvn r2, #1
 	strb r2, [r1, #2]
@@ -523,9 +523,9 @@ _0238A830:
 	bl GetDebugFlag
 	cmp r0, #0
 	beq _0238BD74
-	ldr r0, _0238B504 ; =QUIZ_D_BOX_LAYOUT_3
+	ldr r0, _0238B504 ; =QUIZ_WINDOW_PARAMS_3
 	ldr r1, _0238B508 ; =ov13_0238BE6C
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r1]
 	strb r0, [r1, #6]
@@ -569,7 +569,7 @@ _0238A8B8:
 	mov r7, #0
 	strh r6, [r2, #0x60]
 	ldr r2, [r4]
-	ldr r5, _0238B514 ; =QUIZ_DEBUG_MENU
+	ldr r5, _0238B514 ; =QUIZ_DEBUG_MENU_ITEMS
 	add r0, r2, #0x6c
 	str r0, [r2, #8]
 	ldr r0, _0238B518 ; =QUIZ_ANSWER_STRINGS
@@ -595,7 +595,7 @@ _0238A9A4:
 	cmp r7, r8
 	bne _0238A968
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
-	ldr r1, _0238B514 ; =QUIZ_DEBUG_MENU
+	ldr r1, _0238B514 ; =QUIZ_DEBUG_MENU_ITEMS
 	mov r2, r8, lsl #3
 	mov r3, #0
 	ldr r0, [r0]
@@ -608,7 +608,7 @@ _0238A9A4:
 	mov r3, #0
 	ldrsb r0, [r2, #2]
 	ldrh r2, [r2, #0x60]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
@@ -628,14 +628,14 @@ _0238AA00:
 	b _0238BD74
 _0238AA28:
 	add r4, r0, #0xc
-	ldr r0, _0238B51C ; =QUIZ_D_BOX_LAYOUT_5
+	ldr r0, _0238B51C ; =QUIZ_WINDOW_PARAMS_5
 	ldr r1, _0238B520 ; =0x00300011
-	ldr r3, _0238B514 ; =QUIZ_DEBUG_MENU
+	ldr r3, _0238B514 ; =QUIZ_DEBUG_MENU_ITEMS
 	str r4, [r2, #0x18]
 	mov r4, #0xa
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r2, [r1]
 	strb r0, [r2, #3]
@@ -774,7 +774,7 @@ _0238AC2C:
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mvn r1, #1
 	ldr r2, [r0]
@@ -797,7 +797,7 @@ _0238AC2C:
 	ldrsb r0, [r0, #6]
 	cmp r0, r1
 	beq _0238BD74
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -820,7 +820,7 @@ _0238ACC0:
 	ldrh r2, [r1, r2]
 	mov r1, #8
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, #0x25
 	bl WaitForNextStep
 	b _0238BD74
@@ -841,7 +841,7 @@ _0238AD00:
 	add r2, r2, r3, lsl #1
 	mov r2, r2, lsl #1
 	ldrsh r1, [r1, r2]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mov r1, #1
 	ldr r0, [r0]
@@ -856,7 +856,7 @@ _0238AD00:
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #0x3b4
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
@@ -874,7 +874,7 @@ _0238AD00:
 	mov r3, r3, lsl #1
 	ldrh r2, [r2, r3]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, #0x26
 	bl WaitForNextStep
 	b _0238BD74
@@ -909,7 +909,7 @@ _0238AE20:
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mvn r3, #1
 	ldr r2, [r0]
@@ -952,7 +952,7 @@ _0238AEA8:
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mvn r2, #1
 	ldr r1, [r0]
@@ -1035,7 +1035,7 @@ _0238AFBC:
 	b _0238BD74
 _0238AFF8:
 	ldrsb r0, [r0, #4]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
@@ -1046,7 +1046,7 @@ _0238AFF8:
 	mov r1, #8
 	ldrsb r0, [r0, #2]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, #0x24
 	bl WaitForNextStep
 	b _0238BD74
@@ -1055,7 +1055,7 @@ _0238B038:
 	ldr r0, _0238B53C ; =QUIZ_BORDER_COLOR_TABLE
 	ldrb r0, [r0, r1]
 	bl SetBothScreensWindowsColor
-	ldr r0, _0238B540 ; =QUIZ_D_BOX_LAYOUT_2
+	ldr r0, _0238B540 ; =QUIZ_WINDOW_PARAMS_2
 	bl CreateDialogueBox
 	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r2, [r1]
@@ -1069,7 +1069,7 @@ _0238B038:
 	mov r1, #8
 	ldrsb r0, [r0, #4]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mov r2, #0x11
 	ldr r1, [r0]
@@ -1096,7 +1096,7 @@ _0238B0C4:
 	mov r1, #8
 	ldrsb r0, [r0, #4]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
@@ -1112,7 +1112,7 @@ _0238B100:
 	mov r1, #8
 	ldrsb r0, [r0, #4]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
@@ -1128,7 +1128,7 @@ _0238B13C:
 	mov r2, #0x6b0
 	ldrsb r0, [r0, #4]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
@@ -1144,7 +1144,7 @@ _0238B178:
 	mov r1, #0x18
 	ldrsb r0, [r0, #4]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
@@ -1165,7 +1165,7 @@ _0238B1B4:
 	add r2, r2, #0x600
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
@@ -1177,7 +1177,7 @@ _0238B204:
 	ldr r2, _0238B554 ; =0x000006C9
 	mov r1, #0x218
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
@@ -1374,15 +1374,15 @@ _0238B4C0:
 	b _0238BD74
 	.align 2, 0
 _0238B4F8: .word OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
-_0238B4FC: .word QUIZ_D_BOX_LAYOUT_4
-_0238B500: .word QUIZ_D_BOX_LAYOUT_1
-_0238B504: .word QUIZ_D_BOX_LAYOUT_3
+_0238B4FC: .word QUIZ_WINDOW_PARAMS_4
+_0238B500: .word QUIZ_WINDOW_PARAMS_1
+_0238B504: .word QUIZ_WINDOW_PARAMS_3
 _0238B508: .word ov13_0238BE6C
 _0238B50C: .word QUIZ_QUESTION_ANSWER_ASSOCIATIONS
 _0238B510: .word QUIZ_QUESTION_STRINGS
-_0238B514: .word QUIZ_DEBUG_MENU
+_0238B514: .word QUIZ_DEBUG_MENU_ITEMS
 _0238B518: .word QUIZ_ANSWER_STRINGS
-_0238B51C: .word QUIZ_D_BOX_LAYOUT_5
+_0238B51C: .word QUIZ_WINDOW_PARAMS_5
 _0238B520: .word 0x00300011
 _0238B524: .word QUIZ_MALE_FEMALE_BOOST_TABLE
 _0238B528: .word QUIZ_ANSWER_POINTS
@@ -1391,7 +1391,7 @@ _0238B530: .word STARTERS_HERO_IDS
 _0238B534: .word 0x00002208
 _0238B538: .word 0x000005CC
 _0238B53C: .word QUIZ_BORDER_COLOR_TABLE
-_0238B540: .word QUIZ_D_BOX_LAYOUT_2
+_0238B540: .word QUIZ_WINDOW_PARAMS_2
 _0238B544: .word 0x000006AD
 _0238B548: .word 0x000006AE
 _0238B54C: .word 0x000006AF
@@ -1480,7 +1480,7 @@ _0238B670:
 	mov r1, #8
 	ldrsb r0, [r0, #2]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
@@ -1496,7 +1496,7 @@ _0238B6AC:
 	mov r1, #4
 	ldrsb r0, [r0, #2]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r0]
 	ldr r0, [r1, #0x20]
@@ -1521,7 +1521,7 @@ _0238B6E8:
 	add r3, sp, #0x128
 	ldrsb r0, [r0, #2]
 	add r2, r1, #0x6c0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mov r1, #0x3b
 	ldr r0, [r0]
@@ -1536,7 +1536,7 @@ _0238B744:
 	mov r1, #8
 	ldrsb r0, [r0, #2]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, #0x37
 	bl WaitForNextStep
 	b _0238BD74
@@ -1545,13 +1545,13 @@ _0238B774:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238BD74
-	ldr r0, _0238B51C ; =QUIZ_D_BOX_LAYOUT_5
+	ldr r0, _0238B51C ; =QUIZ_WINDOW_PARAMS_5
 	mov r4, #2
 	ldr r1, _0238BD88 ; =0x00300013
-	ldr r3, _0238BD8C ; =QUIZ_MENU_1
+	ldr r3, _0238BD8C ; =QUIZ_MENU_ITEMS_1
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r2, [r1]
 	strb r0, [r2, #3]
@@ -1580,14 +1580,14 @@ _0238B7DC:
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mvn r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #3]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mvn r3, #1
 	ldr r2, [r0]
@@ -1600,7 +1600,7 @@ _0238B848:
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mvn r3, #1
 	ldr r2, [r0]
@@ -1679,7 +1679,7 @@ _0238B970:
 	cmp r7, #0x15
 	blt _0238B910
 	ldr r1, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
-	ldr r0, _0238BD98 ; =QUIZ_D_BOX_LAYOUT_6
+	ldr r0, _0238BD98 ; =QUIZ_WINDOW_PARAMS_6
 	ldr r2, [r1]
 	ldr r1, _0238BD9C ; =0x00001011
 	ldr r2, [r2, #0x370]
@@ -1718,7 +1718,7 @@ _0238B9FC:
 	add r1, r2, r1, lsl #1
 	add r1, r1, #0x300
 	ldrsh r1, [r1, #0x74]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mov r1, #0
 	ldr r0, [r0]
@@ -1738,7 +1738,7 @@ _0238B9FC:
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #0x3b4
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _0238BD74
 _0238BA70:
 	ldrsb r0, [r0, #3]
@@ -1759,7 +1759,7 @@ _0238BA70:
 	add r0, r0, #0x300
 	ldrsh r1, [r0, #0x74]
 	add r0, r2, #0x3b4
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mov r1, #0
 	ldr r0, [r0]
@@ -1779,7 +1779,7 @@ _0238BA70:
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #0x3b4
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _0238BB98
 _0238BB10:
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
@@ -1795,7 +1795,7 @@ _0238BB10:
 	add r0, r0, #0x300
 	ldrsh r1, [r0, #0x74]
 	add r0, r2, #0x3b4
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mov r1, #1
 	ldr r0, [r0]
@@ -1815,7 +1815,7 @@ _0238BB10:
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #0x3b4
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _0238BB98:
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
@@ -1851,7 +1851,7 @@ _0238BB98:
 	add r1, r2, r1, lsl #1
 	add r1, r1, #0x300
 	ldrsh r1, [r1, #0x74]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mov r1, #1
 	ldr r0, [r0]
@@ -1871,11 +1871,11 @@ _0238BB98:
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #0x3b4
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	mvn r2, #1
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r1, [r0]
@@ -1932,7 +1932,7 @@ _0238BD1C:
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mvn r3, #1
 	ldr r2, [r0]
@@ -1948,10 +1948,10 @@ _0238BD7C: .word 0x000006C2
 _0238BD80: .word 0x000006C3
 _0238BD84: .word 0x000006C5
 _0238BD88: .word 0x00300013
-_0238BD8C: .word QUIZ_MENU_1
+_0238BD8C: .word QUIZ_MENU_ITEMS_1
 _0238BD90: .word STARTERS_TYPE_INCOMPATIBILITY_TABLE
 _0238BD94: .word STARTERS_PARTNER_IDS
-_0238BD98: .word QUIZ_D_BOX_LAYOUT_6
+_0238BD98: .word QUIZ_WINDOW_PARAMS_6
 _0238BD9C: .word 0x00001011
 _0238BDA0: .word GetOptionStringFromID
 _0238BDA4: .word PORTRAIT_ATTRIBUTES
@@ -2048,7 +2048,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	ldrb ip, [lr, #0x37]
 	str ip, [sp, #0x34]
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0
@@ -2069,7 +2069,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	ldrb ip, [lr, #0x3b]
 	str ip, [sp, #0x34]
 	str r5, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0xc
@@ -2091,7 +2091,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	ldrb lr, [r5, #0x3f]
 	str lr, [sp, #0x34]
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x18
@@ -2113,7 +2113,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	str r1, [sp, #0x34]
 	mov r1, #0x400
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #0x54
 	mov r0, r4
 	mov r1, #4
@@ -2148,24 +2148,24 @@ OVERLAY13_UNKNOWN_STRUCT__NA_238C024:
 	.byte 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word ExitOverlay13
 	.word Overlay13SwitchFunctionNa238A1C8
-	.global QUIZ_D_BOX_LAYOUT_1
-QUIZ_D_BOX_LAYOUT_1:
+	.global QUIZ_WINDOW_PARAMS_1
+QUIZ_WINDOW_PARAMS_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFD, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global QUIZ_D_BOX_LAYOUT_2
-QUIZ_D_BOX_LAYOUT_2:
+	.global QUIZ_WINDOW_PARAMS_2
+QUIZ_WINDOW_PARAMS_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05, 0x01, 0xFD, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global QUIZ_D_BOX_LAYOUT_3
-QUIZ_D_BOX_LAYOUT_3:
+	.global QUIZ_WINDOW_PARAMS_3
+QUIZ_WINDOW_PARAMS_3:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x1E, 0x06, 0x01, 0xFD, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global QUIZ_D_BOX_LAYOUT_4
-QUIZ_D_BOX_LAYOUT_4:
+	.global QUIZ_WINDOW_PARAMS_4
+QUIZ_WINDOW_PARAMS_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFA, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global QUIZ_MENU_1
-QUIZ_MENU_1:
+	.global QUIZ_MENU_ITEMS_1
+QUIZ_MENU_ITEMS_1:
 	.byte 0xC6, 0x06, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xC7, 0x06, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.global STARTERS_PARTNER_IDS
@@ -2418,16 +2418,16 @@ ov13_0238CE70:
 	.global OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global QUIZ_D_BOX_LAYOUT_5
-QUIZ_D_BOX_LAYOUT_5:
+	.global QUIZ_WINDOW_PARAMS_5
+QUIZ_WINDOW_PARAMS_5:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global QUIZ_D_BOX_LAYOUT_6
-QUIZ_D_BOX_LAYOUT_6:
+	.global QUIZ_WINDOW_PARAMS_6
+QUIZ_WINDOW_PARAMS_6:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x0B, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global QUIZ_DEBUG_MENU
-QUIZ_DEBUG_MENU:
+	.global QUIZ_DEBUG_MENU_ITEMS
+QUIZ_DEBUG_MENU_ITEMS:
 	.byte 0xB9, 0x01, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xB7, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xB5, 0x01, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0xD7, 0x01, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xB9, 0x01, 0x00, 0x00

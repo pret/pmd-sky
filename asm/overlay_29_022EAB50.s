@@ -632,7 +632,7 @@ _022EB2F8:
 	mov r0, r0, lsl #0x10
 	mov r7, r0, lsr #0x10
 	mov r0, r7
-	bl StringFromMessageId
+	bl StringFromId
 	ldr r1, _022EB368 ; =ov29_02352070
 	bl strcmp
 	cmp r0, #0

@@ -44,14 +44,14 @@ GetMonsterName: ; 0x02300164
 	bne _02300190
 	ldr r1, _02300274 ; =0x00000C34
 	mov r0, r5
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	ldmia sp!, {r3, r4, r5, pc}
 _02300190:
 	cmp r0, #2
 	bne _023001A8
 	ldr r1, _02300278 ; =0x00000C32
 	mov r0, r5
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	ldmia sp!, {r3, r4, r5, pc}
 _023001A8:
 	ldrb r0, [r4, #6]
@@ -125,7 +125,7 @@ ov29_0230027C: ; 0x0230027C
 	bne _023002B4
 	ldr r1, _023002C0 ; =0x00000C32
 	add r0, sp, #0
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	ldr r1, _023002C4 ; =ov29_023527C0
 	add r2, sp, #0
 	mov r0, r4
@@ -164,7 +164,7 @@ ov29_023002F0: ; 0x023002F0
 	cmp r3, #2
 	bne _02300328
 	ldr r0, _02300350 ; =0x00000C33
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	ldr r1, _02300354 ; =ov29_023527D0
 	mov r0, r5
@@ -208,7 +208,7 @@ _0230038C:
 	cmp r0, #0
 	beq _023003B0
 	ldr r0, _02300404 ; =0x00000C35
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r4
 	bl strcpy
@@ -218,7 +218,7 @@ _023003B0:
 	cmp r0, #2
 	bne _023003D4
 	ldr r0, _02300408 ; =0x00000C33
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r4
 	bl strcpy

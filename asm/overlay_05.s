@@ -2244,7 +2244,7 @@ _0233E8D4:
 	ldr r0, [r0]
 	add r0, r0, #0x1700
 	ldrsb r0, [r0, #0xdc]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _0233F854
 	ldr r0, _0233EB00 ; =ov05_0233FCA8
@@ -3439,7 +3439,7 @@ ov05_0233F980: ; 0x0233F980
 	bl sub_0202836C
 	add r0, r4, #0x1700
 	ldrsb r0, [r0, #0xdc]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	add r0, r4, #0x1000
 	mvn r1, #1
 	strb r1, [r0, #0x7dc]

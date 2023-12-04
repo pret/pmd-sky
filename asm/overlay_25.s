@@ -149,14 +149,14 @@ _0238A334:
 _0238A350:
 	add r0, r2, #0x100
 	ldrsb r0, [r0, #0x3b]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0238A674
 	ldr r0, _0238A67C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x3b]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _0238A67C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	mvn r2, #1
 	ldr r1, [r0]
@@ -289,7 +289,7 @@ _0238A528:
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x3c]
-	bl sub_0202F918
+	bl CloseTextBox2
 	bl ov11_0230B9BC
 	b _0238A674
 _0238A550:
@@ -333,7 +333,7 @@ _0238A5C0:
 	ldrsb r0, [r0, #0x38]
 	ldr r2, _0238A68C ; =0x000003E2
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238A67C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	mov r1, #0x1b
 	ldr r0, [r0]
@@ -351,7 +351,7 @@ _0238A5F8:
 	ldrsb r0, [r0, #0x38]
 	rsb r2, r2, #0x3e4
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _0238A67C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	mov r1, #0x1b
 	ldr r0, [r0]
@@ -441,7 +441,7 @@ _0238A734:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, #0
 	mov r1, #3
 	mov r2, #1
@@ -452,7 +452,7 @@ _0238A734:
 	strb r0, [r3, #0x139]
 	ldr r0, [r2]
 	add r0, r0, #0x140
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	mov r1, #0
 	ldr r0, [r0]
@@ -470,22 +470,22 @@ _0238A734:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _0238B0C8
 _0238A7E4:
-	ldr r0, _0238B0DC ; =APPRAISAL_D_BOX_LAYOUT_1
+	ldr r0, _0238B0DC ; =APPRAISAL_WINDOW_PARAMS_1
 	ldr r1, _0238B0E0 ; =ov25_0238B414
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r2, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0E4 ; =0x00300013
 	ldr r2, [r2]
-	ldr r3, _0238B0E8 ; =APPRAISAL_MAIN_MENU
+	ldr r3, _0238B0E8 ; =APPRAISAL_MAIN_MENU_ITEMS
 	strb r0, [r2, #0x13d]
 	mov ip, #4
-	ldr r0, _0238B0EC ; =APPRAISAL_D_BOX_LAYOUT_5
+	ldr r0, _0238B0EC ; =APPRAISAL_WINDOW_PARAMS_5
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, [r1]
 	strb r0, [r1, #0x13a]
@@ -507,7 +507,7 @@ _0238A828:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0D4 ; =0x00003008
 	ldr r3, [r0]
@@ -515,7 +515,7 @@ _0238A828:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238A890:
 	bl ov25_0238B380
@@ -537,7 +537,7 @@ _0238A890:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
@@ -545,7 +545,7 @@ _0238A890:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238A904:
 	bl ov25_0238B380
@@ -564,7 +564,7 @@ _0238A904:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
@@ -572,7 +572,7 @@ _0238A904:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238A96C:
 	bl ov25_0238B380
@@ -594,7 +594,7 @@ _0238A96C:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
@@ -602,7 +602,7 @@ _0238A96C:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238A9E0:
 	bl ov25_0238B380
@@ -624,7 +624,7 @@ _0238A9E0:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
@@ -632,7 +632,7 @@ _0238A9E0:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238AA54:
 	bl ov25_0238B380
@@ -654,7 +654,7 @@ _0238AA54:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
@@ -662,7 +662,7 @@ _0238AA54:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238AAC8:
 	bl ov25_0238B380
@@ -684,7 +684,7 @@ _0238AAC8:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
@@ -692,7 +692,7 @@ _0238AAC8:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238AB3C:
 	bl ov25_0238B380
@@ -717,7 +717,7 @@ _0238AB3C:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
@@ -725,7 +725,7 @@ _0238AB3C:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238ABBC:
 	bl ov25_0238B380
@@ -750,7 +750,7 @@ _0238ABBC:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _0238B0C8
 _0238AC1C:
 	mov r0, #0xd
@@ -772,7 +772,7 @@ _0238AC1C:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0D4 ; =0x00003008
 	ldr r3, [r0]
@@ -780,7 +780,7 @@ _0238AC1C:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238AC90:
 	mov r0, #0xd
@@ -802,7 +802,7 @@ _0238AC90:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
@@ -810,7 +810,7 @@ _0238AC90:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238AD04:
 	add r0, r1, #0x100
@@ -850,14 +850,14 @@ _0238AD48:
 	b _0238B0C8
 _0238AD8C:
 	mov r2, #0x96
-	ldr r0, _0238B104 ; =APPRAISAL_D_BOX_LAYOUT_6
-	ldr r3, _0238B108 ; =APPRAISAL_SUBMENU
+	ldr r0, _0238B104 ; =APPRAISAL_WINDOW_PARAMS_6
+	ldr r3, _0238B108 ; =APPRAISAL_SUBMENU_ITEMS
 	str r2, [r1, #0x4c]
 	mov ip, #3
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, [r1]
 	strb r0, [r1, #0x13a]
@@ -888,7 +888,7 @@ ov25_0238ADFC: ; 0x0238ADFC
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	add r1, sp, #0x18
 	ldr ip, [r0]
-	ldr r0, _0238B114 ; =APPRAISAL_D_BOX_LAYOUT_8
+	ldr r0, _0238B114 ; =APPRAISAL_WINDOW_PARAMS_8
 	add r2, ip, #0x78
 	str r2, [sp, #0x50]
 	str r1, [sp]
@@ -907,7 +907,7 @@ ov25_0238ADFC: ; 0x0238ADFC
 	add ip, ip, #0x28
 	mov r2, #0
 	str ip, [sp, #8]
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, [r1]
 	strb r0, [r1, #0x13b]
@@ -932,7 +932,7 @@ _0238AE64:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0D4 ; =0x00003008
 	ldr ip, [r0]
@@ -946,22 +946,22 @@ _0238AE64:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0238B0C8
 _0238AEF0:
-	ldr r0, _0238B0DC ; =APPRAISAL_D_BOX_LAYOUT_1
+	ldr r0, _0238B0DC ; =APPRAISAL_WINDOW_PARAMS_1
 	ldr r1, _0238B0E0 ; =ov25_0238B414
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
-	ldr r3, _0238B120 ; =APPRAISAL_MENU_CONFIRM
+	ldr r3, _0238B120 ; =APPRAISAL_MENU_ITEMS_CONFIRM
 	ldr r1, [r1]
 	mov ip, #2
 	strb r0, [r1, #0x13d]
-	ldr r0, _0238B124 ; =APPRAISAL_D_BOX_LAYOUT_7
+	ldr r0, _0238B124 ; =APPRAISAL_WINDOW_PARAMS_7
 	mov r1, #0x80000013
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, [r1]
 	strb r0, [r1, #0x13a]
@@ -1064,7 +1064,7 @@ _0238B00C:
 	add r0, r1, #0x100
 	ldrsb r0, [r0, #0x39]
 	add r1, r1, #0x140
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
@@ -1072,7 +1072,7 @@ _0238B00C:
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _0238B0C8:
 	add sp, sp, #0x68
 	ldmia sp!, {r3, pc}
@@ -1080,25 +1080,25 @@ _0238B0C8:
 _0238B0D0: .word OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 _0238B0D4: .word 0x00003008
 _0238B0D8: .word 0x000003D7
-_0238B0DC: .word APPRAISAL_D_BOX_LAYOUT_1
+_0238B0DC: .word APPRAISAL_WINDOW_PARAMS_1
 _0238B0E0: .word ov25_0238B414
 _0238B0E4: .word 0x00300013
-_0238B0E8: .word APPRAISAL_MAIN_MENU
-_0238B0EC: .word APPRAISAL_D_BOX_LAYOUT_5
+_0238B0E8: .word APPRAISAL_MAIN_MENU_ITEMS
+_0238B0EC: .word APPRAISAL_WINDOW_PARAMS_5
 _0238B0F0: .word 0x000003DD
 _0238B0F4: .word 0x00003018
 _0238B0F8: .word 0x000003E5
 _0238B0FC: .word 0x000003D9
 _0238B100: .word 0x000003DF
-_0238B104: .word APPRAISAL_D_BOX_LAYOUT_6
-_0238B108: .word APPRAISAL_SUBMENU
+_0238B104: .word APPRAISAL_WINDOW_PARAMS_6
+_0238B108: .word APPRAISAL_SUBMENU_ITEMS
 _0238B10C: .word ov25_0238B5A4
 _0238B110: .word 0x0000C402
-_0238B114: .word APPRAISAL_D_BOX_LAYOUT_8
+_0238B114: .word APPRAISAL_WINDOW_PARAMS_8
 _0238B118: .word 0x00001013
 _0238B11C: .word 0x0000033E
-_0238B120: .word APPRAISAL_MENU_CONFIRM
-_0238B124: .word APPRAISAL_D_BOX_LAYOUT_7
+_0238B120: .word APPRAISAL_MENU_ITEMS_CONFIRM
+_0238B124: .word APPRAISAL_WINDOW_PARAMS_7
 _0238B128: .word 0x0000018F
 _0238B12C: .word OVERLAY25_UNKNOWN_STRUCT__NA_238B498
 _0238B130: .word 0x000003E1
@@ -1249,12 +1249,12 @@ _0238B318:
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x38]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238B37C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x39]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	b _0238B374
 _0238B348:
 	bl ov11_022E6EC8
@@ -1291,7 +1291,7 @@ ov25_0238B380: ; 0x0238B380
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x3a]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238B410 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -1309,7 +1309,7 @@ _0238B3C8:
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x3d]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0238B410 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -1361,22 +1361,22 @@ _0238B494: .word 0x00000225
 	.global OVERLAY25_UNKNOWN_STRUCT__NA_238B498
 OVERLAY25_UNKNOWN_STRUCT__NA_238B498:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global APPRAISAL_D_BOX_LAYOUT_1
-APPRAISAL_D_BOX_LAYOUT_1:
+	.global APPRAISAL_WINDOW_PARAMS_1
+APPRAISAL_WINDOW_PARAMS_1:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x02, 0x08, 0x04, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global APPRAISAL_MENU_CONFIRM
-APPRAISAL_MENU_CONFIRM:
+	.global APPRAISAL_MENU_ITEMS_CONFIRM
+APPRAISAL_MENU_ITEMS_CONFIRM:
 	.byte 0xD1, 0x03, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0xD2, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
-	.global APPRAISAL_MAIN_MENU
-APPRAISAL_MAIN_MENU:
+	.global APPRAISAL_MAIN_MENU_ITEMS
+APPRAISAL_MAIN_MENU_ITEMS:
 	.byte 0xD3, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0xD5, 0x03, 0x00, 0x00
 	.byte 0x06, 0x00, 0x00, 0x00, 0xD6, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
-	.global APPRAISAL_SUBMENU
-APPRAISAL_SUBMENU:
+	.global APPRAISAL_SUBMENU_ITEMS
+APPRAISAL_SUBMENU_ITEMS:
 	.byte 0xDA, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0xD5, 0x03, 0x00, 0x00
 	.byte 0x06, 0x00, 0x00, 0x00, 0xE6, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0xD3, 0x03, 0xD4, 0x03, 0xD5, 0x03, 0xD6, 0x03, 0xD7, 0x03, 0xD8, 0x03
@@ -1385,20 +1385,20 @@ APPRAISAL_SUBMENU:
 	.byte 0x02, 0x02, 0x12, 0x10, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x0A, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x0F, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global APPRAISAL_D_BOX_LAYOUT_5
-APPRAISAL_D_BOX_LAYOUT_5:
+	.global APPRAISAL_WINDOW_PARAMS_5
+APPRAISAL_WINDOW_PARAMS_5:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global APPRAISAL_D_BOX_LAYOUT_6
-APPRAISAL_D_BOX_LAYOUT_6:
+	.global APPRAISAL_WINDOW_PARAMS_6
+APPRAISAL_WINDOW_PARAMS_6:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x02, 0x08, 0x05, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global APPRAISAL_D_BOX_LAYOUT_7
-APPRAISAL_D_BOX_LAYOUT_7:
+	.global APPRAISAL_WINDOW_PARAMS_7
+APPRAISAL_WINDOW_PARAMS_7:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x18, 0x0B, 0x06, 0x04, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global APPRAISAL_D_BOX_LAYOUT_8
-APPRAISAL_D_BOX_LAYOUT_8:
+	.global APPRAISAL_WINDOW_PARAMS_8
+APPRAISAL_WINDOW_PARAMS_8:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov25_0238B5A4

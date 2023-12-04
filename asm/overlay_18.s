@@ -148,7 +148,7 @@ _0238A334:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A35C
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 _0238A35C:
 	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r0]
@@ -159,7 +159,7 @@ _0238A35C:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A384
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 _0238A384:
 	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r0]
@@ -170,7 +170,7 @@ _0238A384:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A3AC
-	bl sub_0202E6B0
+	bl SetScrollBoxState7
 _0238A3AC:
 	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r0]
@@ -192,7 +192,7 @@ _0238A3D4:
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238A3FC
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 _0238A3FC:
 	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r0]
@@ -233,7 +233,7 @@ ov18_0238A468: ; 0x0238A468
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -254,14 +254,14 @@ _0238A498:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A4F4
-	bl sub_0202F66C
+	bl PortraitBoxNeedsUpdate
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A4F4
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -282,14 +282,14 @@ _0238A500:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A55C
-	bl sub_0202FB9C
+	bl IsTextBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A55C
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -317,7 +317,7 @@ _0238A568:
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -345,7 +345,7 @@ _0238A5D0:
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -373,7 +373,7 @@ _0238A638:
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -401,7 +401,7 @@ _0238A6A0:
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -449,14 +449,14 @@ _0238A774:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A7C8
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A7C8
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	bl sub_020407C0
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
@@ -478,14 +478,14 @@ _0238A7D4:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A834
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A834
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #9]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	bl sub_02041A00
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
@@ -514,7 +514,7 @@ _0238A840:
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -535,14 +535,14 @@ _0238A8A8:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A904
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A904
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -570,7 +570,7 @@ _0238A910:
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -591,14 +591,14 @@ _0238A978:
 	cmp r0, r1
 	moveq r2, #1
 	beq _0238A9D8
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A9D8
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xd]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	bl sub_020407C0
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
@@ -627,7 +627,7 @@ _0238A9E4:
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -655,7 +655,7 @@ _0238AA4C:
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xf]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r1, #1
 	ldr r0, [r0]
@@ -1157,7 +1157,7 @@ _0238B0FC:
 	ldr r4, _0238BD48 ; =0x00003008
 	cmp r1, r0
 	bne _0238B150
-	ldr r0, _0238BD4C ; =OVERLAY18_D_BOX_LAYOUT_11
+	ldr r0, _0238BD4C ; =LINK_SHOP_WINDOW_PARAMS_11
 	bl CreateDialogueBox
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r2, #0
@@ -1406,7 +1406,7 @@ _0238B468:
 	ldrsb r0, [r3], #0x14
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _0238B4A4:
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r0]
@@ -1427,7 +1427,7 @@ _0238B4A4:
 	strb r0, [r3, #1]
 	ldr r0, [r2]
 	add r0, r0, #0x64
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mov r1, #0
 	ldr r0, [r0]
@@ -1442,7 +1442,7 @@ _0238B4A4:
 	ldr r1, [r0]
 	ldrsb r0, [r1, #1]
 	add r1, r1, #0x64
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _0238B530:
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r0]
@@ -1453,9 +1453,9 @@ _0238B530:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238B56C
-	ldr r0, _0238BDB0 ; =OVERLAY18_D_BOX_LAYOUT_1
+	ldr r0, _0238BDB0 ; =LINK_SHOP_WINDOW_PARAMS_1
 	ldr r1, _0238BDB4 ; =ov18_0238AF3C
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #2]
@@ -1469,13 +1469,13 @@ _0238B56C:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238B5B8
-	ldr r0, _0238BDB8 ; =OVERLAY18_D_BOX_LAYOUT_9
+	ldr r0, _0238BDB8 ; =LINK_SHOP_WINDOW_PARAMS_9
 	mov r4, #3
 	ldr r1, _0238BDBC ; =0x00300013
-	ldr r3, _0238BDC0 ; =MOVES_MAIN_MENU
+	ldr r3, _0238BDC0 ; =LINK_SHOP_MAIN_MENU_ITEMS
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #3]
@@ -1489,13 +1489,13 @@ _0238B5B8:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238B604
-	ldr r0, _0238BDC4 ; =OVERLAY18_D_BOX_LAYOUT_7
+	ldr r0, _0238BDC4 ; =LINK_SHOP_WINDOW_PARAMS_7
 	mov r4, #4
 	ldr r1, _0238BDBC ; =0x00300013
-	ldr r3, _0238BDC8 ; =MOVES_SUBMENU_3
+	ldr r3, _0238BDC8 ; =LINK_SHOP_SUBMENU_ITEMS_3
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #4]
@@ -1514,11 +1514,11 @@ _0238B604:
 	mov r0, #2
 	str r0, [sp]
 	ldr r2, [r1]
-	ldr r0, _0238BDCC ; =OVERLAY18_D_BOX_LAYOUT_2
+	ldr r0, _0238BDCC ; =LINK_SHOP_WINDOW_PARAMS_2
 	ldr r1, _0238BDD0 ; =0x00300033
-	ldr r3, _0238BDD4 ; =MOVES_MENU_CONFIRM
+	ldr r3, _0238BDD4 ; =LINK_SHOP_MENU_ITEMS_CONFIRM
 	add r2, r2, #0x90
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #6]
@@ -1532,13 +1532,13 @@ _0238B65C:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238B6A8
-	ldr r0, _0238BDD8 ; =OVERLAY18_D_BOX_LAYOUT_8
+	ldr r0, _0238BDD8 ; =LINK_SHOP_WINDOW_PARAMS_8
 	mov r4, #5
-	ldr r3, _0238BDDC ; =MOVES_SUBMENU_4
+	ldr r3, _0238BDDC ; =LINK_SHOP_SUBMENU_ITEMS_4
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #5]
@@ -1664,11 +1664,11 @@ _0238B820:
 	beq _0238B87C
 	bl sub_02040FA8
 	cmp r0, #0
-	ldrne r4, _0238BDE0 ; =MOVES_SUBMENU_6
-	ldreq r4, _0238BDE4 ; =MOVES_SUBMENU_5
+	ldrne r4, _0238BDE0 ; =LINK_SHOP_SUBMENU_ITEMS_6
+	ldreq r4, _0238BDE4 ; =LINK_SHOP_SUBMENU_ITEMS_5
 	b _0238B880
 _0238B87C:
-	ldr r4, _0238BDE8 ; =MOVES_SUBMENU_7
+	ldr r4, _0238BDE8 ; =LINK_SHOP_SUBMENU_ITEMS_7
 _0238B880:
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mov r2, #0
@@ -1732,11 +1732,11 @@ _0238B93C:
 	str r3, [r5, #0x188]
 	str r2, [sp]
 	ldr r2, [r1]
-	ldr r0, _0238BDEC ; =OVERLAY18_D_BOX_LAYOUT_5
+	ldr r0, _0238BDEC ; =LINK_SHOP_WINDOW_PARAMS_5
 	ldr r1, _0238BDF0 ; =0x80000213
 	mov r3, r4
 	add r2, r2, #0x128
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
@@ -1792,7 +1792,7 @@ _0238B984:
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	str r1, [sp, #4]
 	ldr r1, [r0]
-	ldr r0, _0238BE00 ; =OVERLAY18_D_BOX_LAYOUT_6
+	ldr r0, _0238BE00 ; =LINK_SHOP_WINDOW_PARAMS_6
 	add r2, r1, #0x1c0
 	ldr r1, _0238BE04 ; =0x00401833
 	ldr r3, _0238BE08 ; =ov18_0238AEF0
@@ -1815,11 +1815,11 @@ _0238BA70:
 	mov r0, #3
 	str r0, [sp]
 	ldr r1, [r1]
-	ldr r0, _0238BE0C ; =OVERLAY18_D_BOX_LAYOUT_4
-	ldr r3, _0238BE10 ; =MOVES_SUBMENU_1
+	ldr r0, _0238BE0C ; =LINK_SHOP_WINDOW_PARAMS_4
+	ldr r3, _0238BE10 ; =LINK_SHOP_SUBMENU_ITEMS_1
 	add r2, r1, #0x258
 	mov r1, #0x33
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #0xc]
@@ -1872,14 +1872,14 @@ _0238BB10:
 	add r0, r2, #0x39c
 	str r0, [r2, #0x350]
 	ldr r2, [r1]
-	ldr r0, _0238BE14 ; =OVERLAY18_D_BOX_LAYOUT_3
+	ldr r0, _0238BE14 ; =LINK_SHOP_WINDOW_PARAMS_3
 	str r3, [r2, #0x2f0]
 	str r4, [sp]
 	ldr r2, [r1]
-	ldr r3, _0238BE18 ; =MOVES_SUBMENU_2
+	ldr r3, _0238BE18 ; =LINK_SHOP_SUBMENU_ITEMS_2
 	add r1, r4, #0x230
 	add r2, r2, #0x2f0
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r1, [r1]
 	strb r0, [r1, #0xe]
@@ -1893,7 +1893,7 @@ _0238BBAC:
 	mvn r0, #1
 	cmp r1, r0
 	bne _0238BBF0
-	ldr r0, _0238BE1C ; =OVERLAY18_D_BOX_LAYOUT_10
+	ldr r0, _0238BE1C ; =LINK_SHOP_WINDOW_PARAMS_10
 	bl CreateDialogueBox
 	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mvn r2, #0
@@ -1938,7 +1938,7 @@ _0238BC50:
 	ldr r0, [r0]
 	add r3, sp, #0x14c
 	ldrsb r0, [r0, #0xf]
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _0238BC74:
 	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	mov r1, #2
@@ -2004,7 +2004,7 @@ _0238BD38:
 _0238BD40: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
 _0238BD44: .word OVERLAY18_FUNCTION_POINTER_TABLE
 _0238BD48: .word 0x00003008
-_0238BD4C: .word OVERLAY18_D_BOX_LAYOUT_11
+_0238BD4C: .word LINK_SHOP_WINDOW_PARAMS_11
 _0238BD50: .word 0x000003FB
 _0238BD54: .word 0x000003F9
 _0238BD58: .word 0x00003018
@@ -2035,34 +2035,34 @@ _0238BDA0: .word 0x00000401
 _0238BDA4: .word 0x00000403
 _0238BDA8: .word 0x00000402
 _0238BDAC: .word 0x00000404
-_0238BDB0: .word OVERLAY18_D_BOX_LAYOUT_1
+_0238BDB0: .word LINK_SHOP_WINDOW_PARAMS_1
 _0238BDB4: .word ov18_0238AF3C
-_0238BDB8: .word OVERLAY18_D_BOX_LAYOUT_9
+_0238BDB8: .word LINK_SHOP_WINDOW_PARAMS_9
 _0238BDBC: .word 0x00300013
-_0238BDC0: .word MOVES_MAIN_MENU
-_0238BDC4: .word OVERLAY18_D_BOX_LAYOUT_7
-_0238BDC8: .word MOVES_SUBMENU_3
-_0238BDCC: .word OVERLAY18_D_BOX_LAYOUT_2
+_0238BDC0: .word LINK_SHOP_MAIN_MENU_ITEMS
+_0238BDC4: .word LINK_SHOP_WINDOW_PARAMS_7
+_0238BDC8: .word LINK_SHOP_SUBMENU_ITEMS_3
+_0238BDCC: .word LINK_SHOP_WINDOW_PARAMS_2
 _0238BDD0: .word 0x00300033
-_0238BDD4: .word MOVES_MENU_CONFIRM
-_0238BDD8: .word OVERLAY18_D_BOX_LAYOUT_8
-_0238BDDC: .word MOVES_SUBMENU_4
-_0238BDE0: .word MOVES_SUBMENU_6
-_0238BDE4: .word MOVES_SUBMENU_5
-_0238BDE8: .word MOVES_SUBMENU_7
-_0238BDEC: .word OVERLAY18_D_BOX_LAYOUT_5
+_0238BDD4: .word LINK_SHOP_MENU_ITEMS_CONFIRM
+_0238BDD8: .word LINK_SHOP_WINDOW_PARAMS_8
+_0238BDDC: .word LINK_SHOP_SUBMENU_ITEMS_4
+_0238BDE0: .word LINK_SHOP_SUBMENU_ITEMS_6
+_0238BDE4: .word LINK_SHOP_SUBMENU_ITEMS_5
+_0238BDE8: .word LINK_SHOP_SUBMENU_ITEMS_7
+_0238BDEC: .word LINK_SHOP_WINDOW_PARAMS_5
 _0238BDF0: .word 0x80000213
 _0238BDF4: .word TEAM_MEMBER_TABLE_PTR
 _0238BDF8: .word ov18_0238D5F8
 _0238BDFC: .word 0x00000A3E
-_0238BE00: .word OVERLAY18_D_BOX_LAYOUT_6
+_0238BE00: .word LINK_SHOP_WINDOW_PARAMS_6
 _0238BE04: .word 0x00401833
 _0238BE08: .word ov18_0238AEF0
-_0238BE0C: .word OVERLAY18_D_BOX_LAYOUT_4
-_0238BE10: .word MOVES_SUBMENU_1
-_0238BE14: .word OVERLAY18_D_BOX_LAYOUT_3
-_0238BE18: .word MOVES_SUBMENU_2
-_0238BE1C: .word OVERLAY18_D_BOX_LAYOUT_10
+_0238BE0C: .word LINK_SHOP_WINDOW_PARAMS_4
+_0238BE10: .word LINK_SHOP_SUBMENU_ITEMS_1
+_0238BE14: .word LINK_SHOP_WINDOW_PARAMS_3
+_0238BE18: .word LINK_SHOP_SUBMENU_ITEMS_2
+_0238BE1C: .word LINK_SHOP_WINDOW_PARAMS_10
 _0238BE20: .word 0x000003FA
 _0238BE24: .word 0x00003408
 	arm_func_end ov18_0238B01C
@@ -3236,7 +3236,7 @@ ov18_0238CAD4: ; 0x0238CAD4
 _0238CB8C:
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xb]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _0238CBD0
 	ldr r0, _0238CBD8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
@@ -3785,93 +3785,93 @@ ov18_0238D260:
 	.byte 0x04, 0xC0, 0x9F, 0xE5, 0x11, 0x00, 0xA0, 0xE3
 	.byte 0x1C, 0xFF, 0x2F, 0xE1
 	.word ov18_0238BE28
-	.global OVERLAY18_D_BOX_LAYOUT_1
-OVERLAY18_D_BOX_LAYOUT_1:
+	.global LINK_SHOP_WINDOW_PARAMS_1
+LINK_SHOP_WINDOW_PARAMS_1:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x04
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY18_D_BOX_LAYOUT_2
-OVERLAY18_D_BOX_LAYOUT_2:
+	.global LINK_SHOP_WINDOW_PARAMS_2
+LINK_SHOP_WINDOW_PARAMS_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x08, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY18_D_BOX_LAYOUT_3
-OVERLAY18_D_BOX_LAYOUT_3:
+	.global LINK_SHOP_WINDOW_PARAMS_3
+LINK_SHOP_WINDOW_PARAMS_3:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY18_D_BOX_LAYOUT_4
-OVERLAY18_D_BOX_LAYOUT_4:
+	.global LINK_SHOP_WINDOW_PARAMS_4
+LINK_SHOP_WINDOW_PARAMS_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY18_D_BOX_LAYOUT_5
-OVERLAY18_D_BOX_LAYOUT_5:
+	.global LINK_SHOP_WINDOW_PARAMS_5
+LINK_SHOP_WINDOW_PARAMS_5:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY18_D_BOX_LAYOUT_6
-OVERLAY18_D_BOX_LAYOUT_6:
+	.global LINK_SHOP_WINDOW_PARAMS_6
+LINK_SHOP_WINDOW_PARAMS_6:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x12, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY18_D_BOX_LAYOUT_7
-OVERLAY18_D_BOX_LAYOUT_7:
+	.global LINK_SHOP_WINDOW_PARAMS_7
+LINK_SHOP_WINDOW_PARAMS_7:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x0B, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY18_D_BOX_LAYOUT_8
-OVERLAY18_D_BOX_LAYOUT_8:
+	.global LINK_SHOP_WINDOW_PARAMS_8
+LINK_SHOP_WINDOW_PARAMS_8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x13, 0x02, 0x0B, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY18_D_BOX_LAYOUT_9
-OVERLAY18_D_BOX_LAYOUT_9:
+	.global LINK_SHOP_WINDOW_PARAMS_9
+LINK_SHOP_WINDOW_PARAMS_9:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY18_D_BOX_LAYOUT_10
-OVERLAY18_D_BOX_LAYOUT_10:
+	.global LINK_SHOP_WINDOW_PARAMS_10
+LINK_SHOP_WINDOW_PARAMS_10:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x12, 0x1C, 0x04
 	.byte 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global OVERLAY18_D_BOX_LAYOUT_11
-OVERLAY18_D_BOX_LAYOUT_11:
+	.global LINK_SHOP_WINDOW_PARAMS_11
+LINK_SHOP_WINDOW_PARAMS_11:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05
 	.byte 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global MOVES_MENU_CONFIRM
-MOVES_MENU_CONFIRM:
+	.global LINK_SHOP_MENU_ITEMS_CONFIRM
+LINK_SHOP_MENU_ITEMS_CONFIRM:
 	.byte 0xE7, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xE8, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global MOVES_SUBMENU_1
-MOVES_SUBMENU_1:
+	.global LINK_SHOP_SUBMENU_ITEMS_1
+LINK_SHOP_SUBMENU_ITEMS_1:
 	.byte 0xF3, 0x03, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00, 0xEB, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0xEC, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
-	.global MOVES_SUBMENU_2
-MOVES_SUBMENU_2:
+	.global LINK_SHOP_SUBMENU_ITEMS_2
+LINK_SHOP_SUBMENU_ITEMS_2:
 	.byte 0xF0, 0x03, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0xEB, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0xEC, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
-	.global MOVES_MAIN_MENU
-MOVES_MAIN_MENU:
+	.global LINK_SHOP_MAIN_MENU_ITEMS
+LINK_SHOP_MAIN_MENU_ITEMS:
 	.byte 0xEA, 0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xEB, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0xEC, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
-	.global MOVES_SUBMENU_3
-MOVES_SUBMENU_3:
+	.global LINK_SHOP_SUBMENU_ITEMS_3
+LINK_SHOP_SUBMENU_ITEMS_3:
 	.byte 0xED, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0xEE, 0x03, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
 	.byte 0xF3, 0x03, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00, 0xE9, 0x03, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.global MOVES_SUBMENU_4
-MOVES_SUBMENU_4:
+	.global LINK_SHOP_SUBMENU_ITEMS_4
+LINK_SHOP_SUBMENU_ITEMS_4:
 	.byte 0xF4, 0x03, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00
 	.byte 0xF5, 0x03, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0xF6, 0x03, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
 	.byte 0xF3, 0x03, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00, 0xEC, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
-	.global MOVES_SUBMENU_5
-MOVES_SUBMENU_5:
+	.global LINK_SHOP_SUBMENU_ITEMS_5
+LINK_SHOP_SUBMENU_ITEMS_5:
 	.byte 0xED, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
 	.byte 0xEE, 0x03, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0xEF, 0x03, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00
 	.byte 0x3F, 0x0A, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x40, 0x0A, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00
 	.byte 0xF0, 0x03, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0xEB, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0xEC, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
-	.global MOVES_SUBMENU_6
-MOVES_SUBMENU_6:
+	.global LINK_SHOP_SUBMENU_ITEMS_6
+LINK_SHOP_SUBMENU_ITEMS_6:
 	.byte 0xF1, 0x03, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0xEE, 0x03, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
 	.byte 0xEF, 0x03, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x3F, 0x0A, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00
 	.byte 0x40, 0x0A, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0xF0, 0x03, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
 	.byte 0xEB, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xEC, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
-	.global MOVES_SUBMENU_7
-MOVES_SUBMENU_7:
+	.global LINK_SHOP_SUBMENU_ITEMS_7
+LINK_SHOP_SUBMENU_ITEMS_7:
 	.byte 0xF2, 0x03, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00
 	.byte 0xEE, 0x03, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0xEF, 0x03, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00
 	.byte 0x3F, 0x0A, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x40, 0x0A, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00

@@ -1,9 +1,9 @@
 #pragma once
+.public CloseDialogueBox
+.public ClosePortraitBox
 .public CreateDialogueBox
 .public CreatePortraitBox
 .public DebugPrint0
-.public FreeDialogueBox
-.public FreePortraitBox
 .public GetAcceptedMission
 .public GetGameMode
 .public GetMaxItemsAllowed
@@ -12,8 +12,8 @@
 .public IncrementNbAdventures
 .public IncrementNbDungeonsCleared
 .public IncrementNbFainted
-.public InitPortraitBox
-.public InitPortraitBoxWithMonsterId
+.public InitPortraitParams
+.public InitPortraitParamsWithMonsterId
 .public InitPreprocessorArgs
 .public IsDialogueBoxActive
 .public IsMoneyAllowed
@@ -31,8 +31,8 @@
 .public SaveScriptVariableValue
 .public SetChallengeLetterCleared
 .public SetMoneyCarried
-.public ShowMessageInDialogueBox
-.public ShowPortraitBox
+.public ShowPortraitInPortraitBox
+.public ShowStringIdInDialogueBox
 .public sub_0203D438
 .public sub_0203D538
 .public sub_0203EFD4

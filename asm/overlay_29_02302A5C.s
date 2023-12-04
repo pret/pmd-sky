@@ -241,7 +241,7 @@ _02302D58:
 	b _02302DEC
 _02302DBC:
 	ldr r0, _02302F68 ; =0x00000F27
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r5
 	bl strcpy
@@ -259,7 +259,7 @@ _02302DEC:
 	cmp r0, #0
 	ble _02302E18
 	ldr r0, _02302F6C ; =0x00000F18
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r5
 	bl strcat
@@ -278,7 +278,7 @@ _02302E18:
 	bl strcat
 _02302E44:
 	ldr r0, _02302F78 ; =0x00000F19
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r5
 	bl strcat
@@ -297,7 +297,7 @@ _02302E5C:
 	bl strcat
 _02302E88:
 	ldr r0, _02302F7C ; =0x00000F1A
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r5
 	bl strcat
@@ -316,7 +316,7 @@ _02302EA0:
 	bl strcat
 _02302ECC:
 	ldr r0, _02302F80 ; =0x00000F1B
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r5
 	bl strcat
@@ -335,7 +335,7 @@ _02302EE4:
 	bl strcat
 _02302F10:
 	ldr r0, _02302F84 ; =0x00000F1C
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r5
 	bl strcat

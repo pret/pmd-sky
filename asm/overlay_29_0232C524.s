@@ -1570,7 +1570,7 @@ DoMoveShadowForce: ; 0x0232D860
 	b _0232D8EC
 _0232D8CC:
 	ldr r0, _0232D8F8 ; =0x00000CD7
-	bl StringFromMessageId
+	bl StringFromId
 	str r0, [sp]
 	mov r0, r7
 	mov r1, r6

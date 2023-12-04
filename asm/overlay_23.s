@@ -81,7 +81,7 @@ _0238A218:
 	strb r0, [r3, #0x96]
 	ldr r0, [r2]
 	add r0, r0, #0x1ac
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -147,24 +147,24 @@ _0238A34C:
 	cmp r0, #1
 	bne _0238A38C
 	mov r4, #3
-	ldr r0, _0238B0E8 ; =STORAGE_D_BOX_LAYOUT_8
-	ldr r3, _0238B0EC ; =STORAGE_MAIN_MENU_2
+	ldr r0, _0238B0E8 ; =STORAGE_WINDOW_PARAMS_8
+	ldr r3, _0238B0EC ; =STORAGE_MAIN_MENU_ITEMS_2
 	add r2, sp, #0xc
 	add r1, r4, #0x210
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238B230
 _0238A38C:
-	ldr r0, _0238B0F0 ; =STORAGE_D_BOX_LAYOUT_4
+	ldr r0, _0238B0F0 ; =STORAGE_WINDOW_PARAMS_4
 	mov r4, #4
 	ldr r1, _0238B0F4 ; =0x00300013
-	ldr r3, _0238B0F8 ; =STORAGE_MAIN_MENU_4
+	ldr r3, _0238B0F8 ; =STORAGE_MAIN_MENU_ITEMS_4
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -513,13 +513,13 @@ _0238A8B8:
 	mov r4, #3
 	strb r2, [r1, #0x91]
 	ldr r1, [r0]
-	ldr r0, _0238B150 ; =STORAGE_D_BOX_LAYOUT_5
+	ldr r0, _0238B150 ; =STORAGE_WINDOW_PARAMS_5
 	strb r2, [r1, #0x92]
-	ldr r3, _0238B154 ; =STORAGE_MAIN_MENU_3
+	ldr r3, _0238B154 ; =STORAGE_MAIN_MENU_ITEMS_3
 	add r2, sp, #0xa4
 	add r1, r4, #0x210
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -530,12 +530,12 @@ _0238A8FC:
 	ldr r0, _0238B15C ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
 	mov r4, #3
 	str r0, [sp, #0x19c]
-	ldr r0, _0238B150 ; =STORAGE_D_BOX_LAYOUT_5
-	ldr r3, _0238B154 ; =STORAGE_MAIN_MENU_3
+	ldr r0, _0238B150 ; =STORAGE_WINDOW_PARAMS_5
+	ldr r3, _0238B154 ; =STORAGE_MAIN_MENU_ITEMS_3
 	add r2, sp, #0x13c
 	add r1, r4, #0x210
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -579,7 +579,7 @@ _0238A938:
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	add r1, sp, #0x1d4
 	ldr r3, [r0]
-	ldr r0, _0238B170 ; =STORAGE_D_BOX_LAYOUT_7
+	ldr r0, _0238B170 ; =STORAGE_WINDOW_PARAMS_7
 	add r2, r3, #0xec
 	str r2, [sp, #0x20c]
 	str r1, [sp]
@@ -597,7 +597,7 @@ _0238A938:
 	stmib sp, {r2, r3}
 	ldr r3, _0238B178 ; =0x00000315
 	mov r2, #0
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x9a]
@@ -692,12 +692,12 @@ _0238AB64:
 	ldr r0, _0238B188 ; =ov23_0238D6F0
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B18C ; =STORAGE_D_BOX_LAYOUT_6
+	ldr r0, _0238B18C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238B0F4 ; =0x00300013
-	ldr r3, _0238B190 ; =STORAGE_MENU_CONFIRM
+	ldr r3, _0238B190 ; =STORAGE_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -706,12 +706,12 @@ _0238AB98:
 	ldr r0, _0238B194 ; =ov23_0238D708
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B18C ; =STORAGE_D_BOX_LAYOUT_6
+	ldr r0, _0238B18C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238B0F4 ; =0x00300013
-	ldr r3, _0238B190 ; =STORAGE_MENU_CONFIRM
+	ldr r3, _0238B190 ; =STORAGE_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -857,12 +857,12 @@ _0238ADCC:
 	ldr r0, _0238B1AC ; =ov23_0238D7BC
 	bl DebugPrint0
 	mov ip, #3
-	ldr r0, _0238B150 ; =STORAGE_D_BOX_LAYOUT_5
-	ldr r3, _0238B1B0 ; =STORAGE_MAIN_MENU_1
+	ldr r0, _0238B150 ; =STORAGE_WINDOW_PARAMS_5
+	ldr r3, _0238B1B0 ; =STORAGE_MAIN_MENU_ITEMS_1
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -873,12 +873,12 @@ _0238AE00:
 	ldr r0, _0238B1B4 ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
 	mov ip, #3
 	str r0, [sp, #0x284]
-	ldr r0, _0238B150 ; =STORAGE_D_BOX_LAYOUT_5
-	ldr r3, _0238B1B0 ; =STORAGE_MAIN_MENU_1
+	ldr r0, _0238B150 ; =STORAGE_WINDOW_PARAMS_5
+	ldr r3, _0238B1B0 ; =STORAGE_MAIN_MENU_ITEMS_1
 	add r2, sp, #0x224
 	add r1, ip, #0x210
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -909,7 +909,7 @@ _0238AE3C:
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	add r1, sp, #0x2bc
 	ldr r3, [r0]
-	ldr r0, _0238B170 ; =STORAGE_D_BOX_LAYOUT_7
+	ldr r0, _0238B170 ; =STORAGE_WINDOW_PARAMS_7
 	add r2, r3, #0xec
 	str r2, [sp, #0x2f4]
 	str r1, [sp]
@@ -927,7 +927,7 @@ _0238AE3C:
 	stmib sp, {r2, r3}
 	ldr r3, _0238B178 ; =0x00000315
 	mov r2, #0
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x9a]
@@ -980,12 +980,12 @@ _0238AF94:
 	ldr r0, _0238B1C4 ; =ov23_0238D81C
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B18C ; =STORAGE_D_BOX_LAYOUT_6
+	ldr r0, _0238B18C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238B0F4 ; =0x00300013
-	ldr r3, _0238B190 ; =STORAGE_MENU_CONFIRM
+	ldr r3, _0238B190 ; =STORAGE_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -1037,12 +1037,12 @@ _0238B06C:
 	ldr r0, _0238B1CC ; =ov23_0238D854
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238B18C ; =STORAGE_D_BOX_LAYOUT_6
+	ldr r0, _0238B18C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238B0F4 ; =0x00300013
-	ldr r3, _0238B190 ; =STORAGE_MENU_CONFIRM
+	ldr r3, _0238B190 ; =STORAGE_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -1068,11 +1068,11 @@ _0238B0C8:
 _0238B0DC: .word OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 _0238B0E0: .word 0x00003008
 _0238B0E4: .word ov23_0238D448
-_0238B0E8: .word STORAGE_D_BOX_LAYOUT_8
-_0238B0EC: .word STORAGE_MAIN_MENU_2
-_0238B0F0: .word STORAGE_D_BOX_LAYOUT_4
+_0238B0E8: .word STORAGE_WINDOW_PARAMS_8
+_0238B0EC: .word STORAGE_MAIN_MENU_ITEMS_2
+_0238B0F0: .word STORAGE_WINDOW_PARAMS_4
 _0238B0F4: .word 0x00300013
-_0238B0F8: .word STORAGE_MAIN_MENU_4
+_0238B0F8: .word STORAGE_MAIN_MENU_ITEMS_4
 _0238B0FC: .word ov23_0238D468
 _0238B100: .word ov23_0238D484
 _0238B104: .word 0x00003018
@@ -1094,23 +1094,23 @@ _0238B140: .word ov23_0238D5CC
 _0238B144: .word ov23_0238D5E8
 _0238B148: .word ov23_0238D608
 _0238B14C: .word ov23_0238D628
-_0238B150: .word STORAGE_D_BOX_LAYOUT_5
-_0238B154: .word STORAGE_MAIN_MENU_3
+_0238B150: .word STORAGE_WINDOW_PARAMS_5
+_0238B154: .word STORAGE_MAIN_MENU_ITEMS_3
 _0238B158: .word ov23_0238D64C
 _0238B15C: .word OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
 _0238B160: .word ov23_0238D670
 _0238B164: .word ov23_0238D68C
 _0238B168: .word ov23_0238D69C
 _0238B16C: .word 0x0000C402
-_0238B170: .word STORAGE_D_BOX_LAYOUT_7
+_0238B170: .word STORAGE_WINDOW_PARAMS_7
 _0238B174: .word 0x00001013
 _0238B178: .word 0x00000315
 _0238B17C: .word ov23_0238D6A8
 _0238B180: .word ov23_0238D6CC
 _0238B184: .word 0x0000031E
 _0238B188: .word ov23_0238D6F0
-_0238B18C: .word STORAGE_D_BOX_LAYOUT_6
-_0238B190: .word STORAGE_MENU_CONFIRM
+_0238B18C: .word STORAGE_WINDOW_PARAMS_6
+_0238B190: .word STORAGE_MENU_ITEMS_CONFIRM
 _0238B194: .word ov23_0238D708
 _0238B198: .word ov23_0238D71C
 _0238B19C: .word ov23_0238D73C
@@ -1118,7 +1118,7 @@ _0238B1A0: .word ov23_0238D75C
 _0238B1A4: .word ov23_0238D77C
 _0238B1A8: .word ov23_0238D79C
 _0238B1AC: .word ov23_0238D7BC
-_0238B1B0: .word STORAGE_MAIN_MENU_1
+_0238B1B0: .word STORAGE_MAIN_MENU_ITEMS_1
 _0238B1B4: .word OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
 _0238B1B8: .word ov23_0238D7E0
 _0238B1BC: .word ov23_0238D7FC
@@ -1233,7 +1233,7 @@ _0238B308:
 	strb r0, [r3, #0x96]
 	ldr r0, [r2]
 	add r0, r0, #0x1ac
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -1299,24 +1299,24 @@ _0238B43C:
 	cmp r0, #1
 	bne _0238B47C
 	mov r4, #3
-	ldr r0, _0238C1D8 ; =STORAGE_D_BOX_LAYOUT_8
-	ldr r3, _0238C1DC ; =STORAGE_MAIN_MENU_2
+	ldr r0, _0238C1D8 ; =STORAGE_WINDOW_PARAMS_8
+	ldr r3, _0238C1DC ; =STORAGE_MAIN_MENU_ITEMS_2
 	add r2, sp, #0x274
 	add r1, r4, #0x210
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
 	b _0238C320
 _0238B47C:
-	ldr r0, _0238C1E0 ; =STORAGE_D_BOX_LAYOUT_4
+	ldr r0, _0238C1E0 ; =STORAGE_WINDOW_PARAMS_4
 	mov r4, #4
 	ldr r1, _0238C1E4 ; =0x00300013
-	ldr r3, _0238C1E8 ; =STORAGE_MAIN_MENU_4
+	ldr r3, _0238C1E8 ; =STORAGE_MAIN_MENU_ITEMS_4
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -1665,13 +1665,13 @@ _0238B9A8:
 	mov r4, #3
 	strb r2, [r1, #0x91]
 	ldr r1, [r0]
-	ldr r0, _0238C240 ; =STORAGE_D_BOX_LAYOUT_5
+	ldr r0, _0238C240 ; =STORAGE_WINDOW_PARAMS_5
 	strb r2, [r1, #0x92]
-	ldr r3, _0238C244 ; =STORAGE_MAIN_MENU_3
+	ldr r3, _0238C244 ; =STORAGE_MAIN_MENU_ITEMS_3
 	add r2, sp, #0x1dc
 	add r1, r4, #0x210
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -1682,12 +1682,12 @@ _0238B9EC:
 	ldr r0, _0238C24C ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
 	mov r4, #3
 	str r0, [sp, #0x1a4]
-	ldr r0, _0238C240 ; =STORAGE_D_BOX_LAYOUT_5
-	ldr r3, _0238C244 ; =STORAGE_MAIN_MENU_3
+	ldr r0, _0238C240 ; =STORAGE_WINDOW_PARAMS_5
+	ldr r3, _0238C244 ; =STORAGE_MAIN_MENU_ITEMS_3
 	add r2, sp, #0x144
 	add r1, r4, #0x210
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -1731,7 +1731,7 @@ _0238BA28:
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	add r1, sp, #0xf4
 	ldr r3, [r0]
-	ldr r0, _0238C260 ; =STORAGE_D_BOX_LAYOUT_7
+	ldr r0, _0238C260 ; =STORAGE_WINDOW_PARAMS_7
 	add r2, r3, #0xec
 	str r2, [sp, #0x12c]
 	str r1, [sp]
@@ -1749,7 +1749,7 @@ _0238BA28:
 	stmib sp, {r2, r3}
 	ldr r3, _0238C268 ; =0x00000315
 	mov r2, #0
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x9a]
@@ -1844,12 +1844,12 @@ _0238BC54:
 	ldr r0, _0238C278 ; =ov23_0238D6F0
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238C27C ; =STORAGE_D_BOX_LAYOUT_6
+	ldr r0, _0238C27C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238C1E4 ; =0x00300013
-	ldr r3, _0238C280 ; =STORAGE_MENU_CONFIRM
+	ldr r3, _0238C280 ; =STORAGE_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -1858,12 +1858,12 @@ _0238BC88:
 	ldr r0, _0238C284 ; =ov23_0238D708
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238C27C ; =STORAGE_D_BOX_LAYOUT_6
+	ldr r0, _0238C27C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238C1E4 ; =0x00300013
-	ldr r3, _0238C280 ; =STORAGE_MENU_CONFIRM
+	ldr r3, _0238C280 ; =STORAGE_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -2009,12 +2009,12 @@ _0238BEBC:
 	ldr r0, _0238C29C ; =ov23_0238D7BC
 	bl DebugPrint0
 	mov ip, #3
-	ldr r0, _0238C240 ; =STORAGE_D_BOX_LAYOUT_5
-	ldr r3, _0238C2A0 ; =STORAGE_MAIN_MENU_1
+	ldr r0, _0238C240 ; =STORAGE_WINDOW_PARAMS_5
+	ldr r3, _0238C2A0 ; =STORAGE_MAIN_MENU_ITEMS_1
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -2025,12 +2025,12 @@ _0238BEF0:
 	ldr r0, _0238C2A4 ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
 	mov ip, #3
 	str r0, [sp, #0xbc]
-	ldr r0, _0238C240 ; =STORAGE_D_BOX_LAYOUT_5
-	ldr r3, _0238C2A0 ; =STORAGE_MAIN_MENU_1
+	ldr r0, _0238C240 ; =STORAGE_WINDOW_PARAMS_5
+	ldr r3, _0238C2A0 ; =STORAGE_MAIN_MENU_ITEMS_1
 	add r2, sp, #0x5c
 	add r1, ip, #0x210
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -2061,7 +2061,7 @@ _0238BF2C:
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	add r1, sp, #0xc
 	ldr r3, [r0]
-	ldr r0, _0238C260 ; =STORAGE_D_BOX_LAYOUT_7
+	ldr r0, _0238C260 ; =STORAGE_WINDOW_PARAMS_7
 	add r2, r3, #0xec
 	str r2, [sp, #0x44]
 	str r1, [sp]
@@ -2079,7 +2079,7 @@ _0238BF2C:
 	stmib sp, {r2, r3}
 	ldr r3, _0238C268 ; =0x00000315
 	mov r2, #0
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x9a]
@@ -2132,12 +2132,12 @@ _0238C084:
 	ldr r0, _0238C2B4 ; =ov23_0238D81C
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238C27C ; =STORAGE_D_BOX_LAYOUT_6
+	ldr r0, _0238C27C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238C1E4 ; =0x00300013
-	ldr r3, _0238C280 ; =STORAGE_MENU_CONFIRM
+	ldr r3, _0238C280 ; =STORAGE_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -2189,12 +2189,12 @@ _0238C15C:
 	ldr r0, _0238C2BC ; =ov23_0238D854
 	bl DebugPrint0
 	mov ip, #2
-	ldr r0, _0238C27C ; =STORAGE_D_BOX_LAYOUT_6
+	ldr r0, _0238C27C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238C1E4 ; =0x00300013
-	ldr r3, _0238C280 ; =STORAGE_MENU_CONFIRM
+	ldr r3, _0238C280 ; =STORAGE_MENU_ITEMS_CONFIRM
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r1]
 	strb r0, [r1, #0x99]
@@ -2220,11 +2220,11 @@ _0238C1B8:
 _0238C1CC: .word OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 _0238C1D0: .word 0x00003008
 _0238C1D4: .word ov23_0238D448
-_0238C1D8: .word STORAGE_D_BOX_LAYOUT_8
-_0238C1DC: .word STORAGE_MAIN_MENU_2
-_0238C1E0: .word STORAGE_D_BOX_LAYOUT_4
+_0238C1D8: .word STORAGE_WINDOW_PARAMS_8
+_0238C1DC: .word STORAGE_MAIN_MENU_ITEMS_2
+_0238C1E0: .word STORAGE_WINDOW_PARAMS_4
 _0238C1E4: .word 0x00300013
-_0238C1E8: .word STORAGE_MAIN_MENU_4
+_0238C1E8: .word STORAGE_MAIN_MENU_ITEMS_4
 _0238C1EC: .word ov23_0238D468
 _0238C1F0: .word ov23_0238D484
 _0238C1F4: .word 0x00003018
@@ -2246,23 +2246,23 @@ _0238C230: .word ov23_0238D5CC
 _0238C234: .word ov23_0238D5E8
 _0238C238: .word ov23_0238D608
 _0238C23C: .word ov23_0238D628
-_0238C240: .word STORAGE_D_BOX_LAYOUT_5
-_0238C244: .word STORAGE_MAIN_MENU_3
+_0238C240: .word STORAGE_WINDOW_PARAMS_5
+_0238C244: .word STORAGE_MAIN_MENU_ITEMS_3
 _0238C248: .word ov23_0238D64C
 _0238C24C: .word OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
 _0238C250: .word ov23_0238D670
 _0238C254: .word ov23_0238D68C
 _0238C258: .word ov23_0238D69C
 _0238C25C: .word 0x0000C402
-_0238C260: .word STORAGE_D_BOX_LAYOUT_7
+_0238C260: .word STORAGE_WINDOW_PARAMS_7
 _0238C264: .word 0x00001013
 _0238C268: .word 0x00000315
 _0238C26C: .word ov23_0238D6A8
 _0238C270: .word ov23_0238D6CC
 _0238C274: .word 0x0000031E
 _0238C278: .word ov23_0238D6F0
-_0238C27C: .word STORAGE_D_BOX_LAYOUT_6
-_0238C280: .word STORAGE_MENU_CONFIRM
+_0238C27C: .word STORAGE_WINDOW_PARAMS_6
+_0238C280: .word STORAGE_MENU_ITEMS_CONFIRM
 _0238C284: .word ov23_0238D708
 _0238C288: .word ov23_0238D71C
 _0238C28C: .word ov23_0238D73C
@@ -2270,7 +2270,7 @@ _0238C290: .word ov23_0238D75C
 _0238C294: .word ov23_0238D77C
 _0238C298: .word ov23_0238D79C
 _0238C29C: .word ov23_0238D7BC
-_0238C2A0: .word STORAGE_MAIN_MENU_1
+_0238C2A0: .word STORAGE_MAIN_MENU_ITEMS_1
 _0238C2A4: .word OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
 _0238C2A8: .word ov23_0238D7E0
 _0238C2AC: .word ov23_0238D7FC
@@ -2665,13 +2665,13 @@ _0238C80C:
 	b _0238CFD0
 _0238C828:
 	ldrsb r0, [r1, #0x9a]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0238CFD0
 	ldr r0, _0238D090 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x9a]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _0238D090 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mvn r2, #1
 	ldr r1, [r0]
@@ -2922,13 +2922,13 @@ _0238CBCC:
 	b _0238CFD0
 _0238CBE8:
 	ldrsb r0, [r1, #0x9a]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0238CFD0
 	ldr r0, _0238D090 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x9a]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _0238D090 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mvn r2, #1
 	ldr r1, [r0]
@@ -3228,11 +3228,11 @@ _0238D01C:
 	ldr r0, _0238D090 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238D090 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x96]
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	b _0238D088
 _0238D050:
 	ldr r0, [r1, #4]
@@ -3272,7 +3272,7 @@ ov23_0238D098: ; 0x0238D098
 	ldr r0, _0238D0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x99]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _0238D0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mvn r1, #1
 	ldr r0, [r0]
@@ -3300,14 +3300,14 @@ ov23_0238D0E0: ; 0x0238D0E0
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x96]
 	add r1, r1, #0x1ac
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldr r1, _0238D144 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r0, r6
 	ldr r3, [r1]
 	mov r1, r5
 	mov r2, r4
 	add r3, r3, #0x9c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0238D144: .word OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
@@ -3452,27 +3452,27 @@ OVERLAY23_UNKNOWN_VALUE__NA_238D2EC:
 OVERLAY23_UNKNOWN_STRUCT__NA_238D2F0:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
-	.global STORAGE_MENU_CONFIRM
-STORAGE_MENU_CONFIRM:
+	.global STORAGE_MENU_ITEMS_CONFIRM
+STORAGE_MENU_ITEMS_CONFIRM:
 	.byte 0x0E, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x0F, 0x03, 0x00, 0x00
 	.byte 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global STORAGE_MAIN_MENU_1
-STORAGE_MAIN_MENU_1:
+	.global STORAGE_MAIN_MENU_ITEMS_1
+STORAGE_MAIN_MENU_ITEMS_1:
 	.byte 0x11, 0x03, 0x00, 0x00
 	.byte 0x03, 0x00, 0x00, 0x00, 0x12, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x14, 0x03, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global STORAGE_MAIN_MENU_2
-STORAGE_MAIN_MENU_2:
+	.global STORAGE_MAIN_MENU_ITEMS_2
+STORAGE_MAIN_MENU_ITEMS_2:
 	.byte 0x10, 0x03, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x11, 0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x13, 0x03, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global STORAGE_MAIN_MENU_3
-STORAGE_MAIN_MENU_3:
+	.global STORAGE_MAIN_MENU_ITEMS_3
+STORAGE_MAIN_MENU_ITEMS_3:
 	.byte 0x10, 0x03, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x12, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x14, 0x03, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global STORAGE_MAIN_MENU_4
-STORAGE_MAIN_MENU_4:
+	.global STORAGE_MAIN_MENU_ITEMS_4
+STORAGE_MAIN_MENU_ITEMS_4:
 	.byte 0x10, 0x03, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00, 0x11, 0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x12, 0x03, 0x00, 0x00
 	.byte 0x06, 0x00, 0x00, 0x00, 0x13, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -3482,20 +3482,20 @@ STORAGE_MAIN_MENU_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x12, 0x10, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x14, 0x12, 0x02, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x0F, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global STORAGE_D_BOX_LAYOUT_4
-STORAGE_D_BOX_LAYOUT_4:
+	.global STORAGE_WINDOW_PARAMS_4
+STORAGE_WINDOW_PARAMS_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global STORAGE_D_BOX_LAYOUT_5
-STORAGE_D_BOX_LAYOUT_5:
+	.global STORAGE_WINDOW_PARAMS_5
+STORAGE_WINDOW_PARAMS_5:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global STORAGE_D_BOX_LAYOUT_6
-STORAGE_D_BOX_LAYOUT_6:
+	.global STORAGE_WINDOW_PARAMS_6
+STORAGE_WINDOW_PARAMS_6:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x1E, 0x0F, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global STORAGE_D_BOX_LAYOUT_7
-STORAGE_D_BOX_LAYOUT_7:
+	.global STORAGE_WINDOW_PARAMS_7
+STORAGE_WINDOW_PARAMS_7:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global STORAGE_D_BOX_LAYOUT_8
-STORAGE_D_BOX_LAYOUT_8:
+	.global STORAGE_WINDOW_PARAMS_8
+STORAGE_WINDOW_PARAMS_8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov23_0238D448
 ov23_0238D448:

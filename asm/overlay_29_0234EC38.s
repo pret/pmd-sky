@@ -495,7 +495,7 @@ ov29_0234F290: ; 0x0234F290
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234F2B4: .word ov29_02353834
@@ -568,7 +568,7 @@ _0234F374:
 	ldr r3, _0234F3F0 ; =ov29_0234F430
 	add r2, sp, #0xc
 	str ip, [sp, #8]
-	bl CreateAdvancedTextBox2
+	bl CreateAdvancedTextBoxWithArg
 	strb r0, [r4, #2]
 	b _0234F3D4
 _0234F398:
@@ -578,7 +578,7 @@ _0234F398:
 	cmp r0, #1
 	bhi _0234F3D4
 	ldrsb r0, [r4, #2]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	mvn r0, #1
 	strb r0, [r4, #2]
 	ldr r0, [r4, #4]
@@ -612,7 +612,7 @@ ov29_0234F3F4: ; 0x0234F3F4
 	mvn r1, #1
 	cmp r0, r1
 	beq _0234F41C
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 _0234F41C:
 	ldr r0, [r4]
 	bl MemFree
@@ -701,7 +701,7 @@ _0234F508:
 	add r0, r0, #0x800
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	mov r0, r5
 	mov r1, #0xa
@@ -710,7 +710,7 @@ _0234F508:
 	b _0234F75C
 _0234F578:
 	ldr r0, _0234F770 ; =0x000008DE
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	mov r0, r5
 	mov r1, #0xa
@@ -804,7 +804,7 @@ _0234F6BC:
 	cmp r7, #0x13
 	bne _0234F75C
 	ldr r0, _0234F770 ; =0x000008DE
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	mov r0, r5
 	mov r1, #0xa
@@ -813,7 +813,7 @@ _0234F6BC:
 	b _0234F75C
 _0234F6F8:
 	ldr r0, _0234F770 ; =0x000008DE
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	mov r0, r5
 	mov r1, #0xa
@@ -926,7 +926,7 @@ _0234F840:
 	mov r3, r4
 	strh lr, [sp, #8]
 	str ip, [sp, #0xc]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _0234F9C8 ; =ov29_0235383C
 	ldr r2, [r1, #4]
 	strb r0, [r2]
@@ -937,7 +937,7 @@ _0234F840:
 	b _0234F9BC
 _0234F8A0:
 	ldrsb r0, [r2]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	beq _0234F8D0
 	ldr r0, _0234F9C8 ; =ov29_0235383C
@@ -1044,7 +1044,7 @@ ov29_0234F9E8: ; 0x0234F9E8
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _0234FA20 ; =ov29_0235383C
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -1223,7 +1223,7 @@ ov29_0234FC1C: ; 0x0234FC1C
 	mov r4, r0
 	ldr r0, [r1]
 	ldrh r0, [r0, #2]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	mov r0, r4
 	mov r1, #4
@@ -1250,7 +1250,7 @@ ov29_0234FC50: ; 0x0234FC50
 	str r0, [r2]
 	strh r4, [r0, #2]
 	ldr r0, _0234FCA4 ; =ov29_023534B4
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _0234FC9C ; =ov29_02353848
 	ldr r1, [r1]
 	strb r0, [r1]
@@ -1274,7 +1274,7 @@ ov29_0234FCA8: ; 0x0234FCA8
 	ldr r0, _0234FCF8 ; =ov29_02353848
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _0234FCF8 ; =ov29_02353848
 	ldr r0, [r0]
 	bl MemFree

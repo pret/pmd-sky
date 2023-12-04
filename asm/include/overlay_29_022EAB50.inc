@@ -67,7 +67,7 @@
 .public ShouldDisplayEntityWrapper
 .public SpawnItem
 .public strcmp
-.public StringFromMessageId
+.public StringFromId
 .public sub_01FFBDF4
 .public sub_0200D208
 .public sub_02017ACC

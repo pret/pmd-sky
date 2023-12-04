@@ -443,10 +443,10 @@ _0238A74C:
 	cmp r6, #0
 	beq _0238A7B0
 	add r0, sp, #0
-	bl InitPortraitBox
+	bl InitPortraitParams
 	add r0, sp, #0
 	mov r1, r5
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r1, _0238A8F8 ; =OVERLAY26_UNKNOWN_POINTER__NA_238AF60
 	mvn r0, #1
 	ldr r1, [r1]
@@ -465,7 +465,7 @@ _0238A79C:
 	add r1, sp, #0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _0238A7B0:
 	ldr r1, _0238A8F8 ; =OVERLAY26_UNKNOWN_POINTER__NA_238AF60
 	mvn r0, #1
@@ -485,7 +485,7 @@ _0238A7DC:
 	mov r2, r4
 	ldrsb r0, [r3, #4]
 	add r3, r3, #8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, #1
 _0238A7FC:
 	cmp r0, #0
@@ -577,7 +577,7 @@ ov26_0238A90C: ; 0x0238A90C
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	beq _0238A93C
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0238A96C ; =OVERLAY26_UNKNOWN_POINTER__NA_238AF60
 	mvn r1, #1
 	ldr r0, [r0]
@@ -589,7 +589,7 @@ _0238A93C:
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0238A96C ; =OVERLAY26_UNKNOWN_POINTER__NA_238AF60
 	mvn r1, #1
 	ldr r0, [r0]

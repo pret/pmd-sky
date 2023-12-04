@@ -1959,7 +1959,7 @@ LogMessageByIdWithPopupCheckUser: ; 0x0234B2A4
 	cmp r4, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r5
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r6
 	mov r2, #1
@@ -1990,7 +1990,7 @@ LogMessageByIdQuiet: ; 0x0234B31C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r4
 	mov r2, #0
@@ -2024,7 +2024,7 @@ LogMessageByIdWithPopupCheckUserTarget: ; 0x0234B350
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r5
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r7
 	mov r2, #1
@@ -2072,7 +2072,7 @@ LogMessageByIdQuietCheckUserTarget: ; 0x0234B3F0
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r5
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r7
 	mov r2, #0
@@ -2097,7 +2097,7 @@ LogMessageByIdWithPopupCheckUserUnknown: ; 0x0234B444
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r5
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r7
 	mov r2, #1
@@ -2110,7 +2110,7 @@ LogMessageByIdWithPopup: ; 0x0234B498
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r4
 	mov r2, #1
@@ -2310,7 +2310,7 @@ LogMessageById: ; 0x0234B714
 	mov r5, r0
 	mov r4, r2
 	mov r0, r1
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	mov r0, r5
 	mov r2, r4
@@ -2358,7 +2358,7 @@ ov29_0234B768: ; 0x0234B768
 	ldr r0, [r0, #4]
 	add r0, r0, #0xc00
 	ldrsb r0, [r0, #0xec]
-	bl sub_02030044
+	bl CloseAlertBox
 	ldr r0, _0234B7E8 ; =ov29_023537CC
 	mvn r3, #1
 	ldr r1, [r0, #4]
@@ -2393,7 +2393,7 @@ ov29_0234B7EC: ; 0x0234B7EC
 	ldrsh r1, [r1, #0x8e]
 	cmp r2, r1
 	bne _0234B848
-	bl sub_020301F4
+	bl IsAlertBoxActive
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
@@ -2592,7 +2592,7 @@ InitPortraitDungeon: ; 0x0234BAC0
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
-	bl InitPortraitBox
+	bl InitPortraitParams
 	strh r5, [r6]
 	strb r4, [r6, #2]
 	mov r2, #0
@@ -4167,7 +4167,7 @@ DisplayDungeonTip: ; 0x0234CEF0
 	cmp r0, #0
 	bne _0234CF58
 	ldrh r0, [r5, #4]
-	bl StringFromMessageId
+	bl StringFromId
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0234CF58
@@ -4581,7 +4581,7 @@ ov29_0234D484: ; 0x0234D484
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, r1
-	bl StringFromMessageId
+	bl StringFromId
 	mov r4, r0
 	mov r0, #0
 	mov r1, r0
@@ -4629,7 +4629,7 @@ YesNoMenu: ; 0x0234D518
 	mov r0, r1
 	mov r5, r2
 	mov r4, r3
-	bl StringFromMessageId
+	bl StringFromId
 	ldrb ip, [sp, #0x18]
 	mov r1, r0
 	mov r0, r6
@@ -4666,7 +4666,7 @@ DisplayMessageInternal: ; 0x0234D590
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl StringFromMessageId
+	bl StringFromId
 	ldr r1, [sp, #0x18]
 	ldrb ip, [sp, #0x1c]
 	str r1, [sp]
@@ -4757,7 +4757,7 @@ ov29_0234D690: ; 0x0234D690
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl StringFromMessageId
+	bl StringFromId
 	ldrb ip, [sp, #0x18]
 	mov r1, r6
 	mov r2, r5
@@ -4795,7 +4795,7 @@ ov29_0234D70C: ; 0x0234D70C
 	mov r6, r2
 	mov r7, r1
 	mov r5, r3
-	bl StringFromMessageId
+	bl StringFromId
 	mov r4, r0
 	mov r0, r6
 	bl ov29_0234DBE0
@@ -4850,7 +4850,7 @@ ov29_0234D7C0: ; 0x0234D7C0
 	mov r7, r1
 	mov r6, r2
 	mov r5, r3
-	bl StringFromMessageId
+	bl StringFromId
 	ldrb r1, [sp, #0x20]
 	mov r2, #0
 	mov r4, r0
@@ -4961,7 +4961,7 @@ _0234D8E4:
 	ldrsb r0, [r0, #0x11]
 	cmp r0, r1
 	beq _0234D91C
-	bl sub_0202AABC
+	bl CloseParentMenu
 _0234D91C:
 	ldr r0, _0234D9BC ; =ov29_02382800
 	mvn r1, #1
@@ -4969,7 +4969,7 @@ _0234D91C:
 	ldrsb r0, [r0, #0x12]
 	cmp r0, r1
 	beq _0234D948
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _0234D9BC ; =ov29_02382800
 	mvn r1, #1
 	ldr r0, [r0]
@@ -4978,7 +4978,7 @@ _0234D948:
 	ldr r0, _0234D9BC ; =ov29_02382800
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x10]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0234D9BC ; =ov29_02382800
 	ldr r0, [r0]
 	bl MemFree
@@ -5050,7 +5050,7 @@ _0234D9E0:
 	mov r0, #0
 	moveq r1, #0x13
 	mov r2, r0
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, [r6]
 	strb r0, [r1, #0x11]
 	ldr r1, [r6]
@@ -5091,7 +5091,7 @@ _0234DAD4:
 	ldrsb r0, [r0, #0x11]
 	cmp r0, r8
 	beq _0234DAF8
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, [r6]
 	strb r8, [r0, #0x11]
 _0234DAF8:
@@ -5186,7 +5186,7 @@ _0234DC20:
 	mov r1, r4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x12]
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234DC38: .word ov29_02382800

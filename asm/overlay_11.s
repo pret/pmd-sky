@@ -377,9 +377,9 @@ ov11_022DC718: ; 0x022DC718
 	stmdb sp!, {r3, lr}
 	bl ov11_022E4B88
 	ldr r0, _022DC788 ; =ov11_02324E94
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldr r0, _022DC78C ; =ov11_02324EA4
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldr r0, _022DC790 ; =ov11_02324ECC
 	bl InitPreprocessorArgs
 	mov r3, #0
@@ -3823,14 +3823,14 @@ _022DF710: ; 0x022DF710
 	mov r2, #0x60000
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	str r2, [r1, #0x4c]
-	bl InitPortraitBox
+	bl InitPortraitParams
 	b _022E2474
 _022DF728: ; 0x022DF728
 	ldr r1, _022DFE18 ; =ov11_02324ECC
 	mov r2, #0x70000
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	str r2, [r1, #0x4c]
-	bl InitPortraitBox
+	bl InitPortraitParams
 	b _022E2474
 _022DF740: ; 0x022DF740
 	ldrh r0, [r6]
@@ -3839,7 +3839,7 @@ _022DF740: ; 0x022DF740
 	ldr r1, _022DFE18 ; =ov11_02324ECC
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	str r2, [r1, #0x4c]
-	bl InitPortraitBox
+	bl InitPortraitParams
 	b _022E2474
 _022DF760: ; 0x022DF760
 	ldrh r0, [r6]
@@ -3860,7 +3860,7 @@ _022DF760: ; 0x022DF760
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	mov r1, r1, asr #0x10
 	str r3, [r2, #0x4c]
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	mov r1, r5, lsl #0x18
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	mov r1, r1, asr #0x18
@@ -3887,7 +3887,7 @@ _022DF7CC: ; 0x022DF7CC
 	bl sub_02065974
 	mov r1, r0
 	ldr r0, _022DFE1C ; =ov11_02324EA4
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	mov r1, r5, lsl #0x18
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	mov r1, r1, asr #0x18
@@ -3914,7 +3914,7 @@ _022DF834: ; 0x022DF834
 	bl sub_02065974
 	mov r1, r0
 	ldr r0, _022DFE1C ; =ov11_02324EA4
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	mov r1, r5, lsl #0x18
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	mov r1, r1, asr #0x18
@@ -11548,7 +11548,7 @@ _022E6294:
 	mov r1, #0x400
 	mov r2, #0x234
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, sp, #0xa0
 	add r1, sp, #0x60
 	bl StrcpyName
@@ -12566,7 +12566,7 @@ _022E7020:
 	mov r1, #0x40
 	mov r3, #0x400
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _022E70F8
 _022E7054:
 	add r0, sp, #0xa4
@@ -12580,7 +12580,7 @@ _022E7054:
 	mov r1, #0x40
 	mov r3, #0x400
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _022E70F8
 _022E7088:
 	add r0, sp, #0x54
@@ -12594,7 +12594,7 @@ _022E7088:
 	mov r2, #0x25c
 	mov r3, #0x400
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _022E70F8
 _022E70BC:
 	add r0, sp, #4
@@ -12608,7 +12608,7 @@ _022E70BC:
 	mov r1, #0x40
 	mov r3, #0x400
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	b _022E70F8
 _022E70F0:
 	mov r0, #0
@@ -14075,12 +14075,12 @@ ov11_022E8340: ; 0x022E8340
 	str r2, [r1, #0x64]
 	ldr r0, [r0]
 	add r0, r0, #8
-	bl InitPortraitBox
+	bl InitPortraitParams
 	ldr r0, _022E83F0 ; =ov11_02324CAC
 	ldr r1, _022E83F4 ; =0x00000133
 	ldr r0, [r0]
 	add r0, r0, #8
-	bl InitPortraitBoxWithMonsterId
+	bl InitPortraitParamsWithMonsterId
 	ldr r0, _022E83F0 ; =ov11_02324CAC
 	mov r1, #0x12
 	ldr r0, [r0]
@@ -14202,12 +14202,12 @@ _022E851C:
 	ldr r2, _022E8664 ; =0x0000025F
 	ldrsb r0, [r3, #4]
 	add r3, r3, #0x18
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _022E865C ; =ov11_02324CAC
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #8
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 	b _022E8654
 _022E8558:
 	ldr r2, _022E8668 ; =0x00000133
@@ -14268,12 +14268,12 @@ _022E861C:
 	mov r2, #0x260
 	ldrsb r0, [r3, #4]
 	add r3, r3, #0x18
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _022E865C ; =ov11_02324CAC
 	ldr r1, [r0]
 	ldrsb r0, [r1, #5]
 	add r1, r1, #8
-	bl ShowPortraitBox
+	bl ShowPortraitInPortraitBox
 _022E8654:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
@@ -14333,7 +14333,7 @@ ov11_022E86E4: ; 0x022E86E4
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	beq _022E8714
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _022E8744 ; =ov11_02324CAC
 	mvn r1, #1
 	ldr r0, [r0]
@@ -14345,7 +14345,7 @@ _022E8714:
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl FreePortraitBox
+	bl ClosePortraitBox
 	ldr r0, _022E8744 ; =ov11_02324CAC
 	mvn r1, #1
 	ldr r0, [r0]
@@ -41432,7 +41432,7 @@ CreateTeamInfoBox: ; 0x022FEE94
 	cmp r0, #3
 	ldreq r0, _022FEF18 ; =ov11_0232246C
 	add r5, sp, #0
-	ldrne r0, _022FEF1C ; =ov11_0232245C
+	ldrne r0, _022FEF1C ; =TEAM_INFO_BOX_DEFAULT_WINDOW_PARAMS
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r5, {r0, r1, r2, r3}
 	ldr r2, _022FEF20 ; =UpdateTeamInfoBox
@@ -41449,7 +41449,7 @@ CreateTeamInfoBox: ; 0x022FEE94
 	sub r1, r1, #2
 	add r0, r4, #8
 	strb r1, [r4, #4]
-	bl InitPortraitBox
+	bl InitPortraitParams
 	mov r1, #3
 	mov r0, r5
 	str r1, [r4, #0x18]
@@ -41457,7 +41457,7 @@ CreateTeamInfoBox: ; 0x022FEE94
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022FEF18: .word ov11_0232246C
-_022FEF1C: .word ov11_0232245C
+_022FEF1C: .word TEAM_INFO_BOX_DEFAULT_WINDOW_PARAMS
 _022FEF20: .word UpdateTeamInfoBox
 	arm_func_end CreateTeamInfoBox
 
@@ -41475,8 +41475,8 @@ ov11_022FEF24: ; 0x022FEF24
 	ldmia sp!, {r3, pc}
 	arm_func_end ov11_022FEF24
 
-	arm_func_start ov11_022FEF4C
-ov11_022FEF4C: ; 0x022FEF4C
+	arm_func_start CloseTeamInfoBox
+CloseTeamInfoBox: ; 0x022FEF4C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl GetWindowContents
@@ -41485,17 +41485,17 @@ ov11_022FEF4C: ; 0x022FEF4C
 	mvn r1, #1
 	cmp r0, r1
 	beq _022FEF70
-	bl sub_0202F8FC
+	bl CloseTextBox
 _022FEF70:
 	mov r0, r4
 	bl MemFree
 	mov r0, r5
-	bl sub_02028194
+	bl DeleteWindow
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov11_022FEF4C
+	arm_func_end CloseTeamInfoBox
 
-	arm_func_start ov11_022FEF84
-ov11_022FEF84: ; 0x022FEF84
+	arm_func_start IsTeamInfoBoxActive
+IsTeamInfoBoxActive: ; 0x022FEF84
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldr r0, [r0, #0x370]
@@ -41504,7 +41504,7 @@ ov11_022FEF84: ; 0x022FEF84
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov11_022FEF84
+	arm_func_end IsTeamInfoBoxActive
 
 	arm_func_start UpdateTeamInfoBox
 UpdateTeamInfoBox: ; 0x022FEFA4
@@ -41553,7 +41553,7 @@ _022FEFFC:
 	mov r1, #0x100
 	ldrne r7, _022FF1CC ; =0x00000221
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r0, sp, #0x54
 	bl sub_020265A8
 	ldrsb r0, [r8, #0x10]
@@ -41575,7 +41575,7 @@ _022FEFFC:
 	ldr r3, _022FF1C8 ; =0x0000C402
 	add r0, sp, #0x54
 	mov r1, #0x100
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldrsb r0, [r8, #0x10]
 	add r3, sp, #0x54
 	mov r1, #0x28
@@ -41588,7 +41588,7 @@ _022FF0AC:
 	add r0, sp, #0x54
 	mov r2, r7
 	mov r1, #0x100
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldrsb r0, [r8, #0x10]
 	add r3, sp, #0x54
 	mov r1, #0x3a
@@ -41602,7 +41602,7 @@ _022FF0AC:
 	mvn r1, #1
 	cmp r0, r1
 	beq _022FF0F8
-	bl sub_0202F8FC
+	bl CloseTextBox
 	mvn r0, #1
 	strb r0, [r6, #4]
 _022FF0F8:
@@ -41623,7 +41623,7 @@ _022FF118:
 	mov r1, #0x100
 	mov r2, #0x224
 	str r6, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	cmp r5, #3
 	ldrsb r0, [r8, #0x10]
 	add r3, sp, #0x54
@@ -41780,7 +41780,7 @@ ov11_022FF31C: ; 0x022FF31C
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _022FF354 ; =ov11_02324D0C
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -41816,7 +41816,7 @@ _022FF384:
 	b _022FF42C
 _022FF3A4:
 	ldrsb r0, [r2]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _022FF42C
 	ldr r0, _022FF434 ; =ov11_02324D0C
@@ -41985,7 +41985,7 @@ ov11_022FF588: ; 0x022FF588
 	mvn r1, #1
 	cmp r0, r1
 	beq _022FF5B0
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 _022FF5B0:
 	ldr r0, _022FF5CC ; =ov11_02324D14
 	ldr r0, [r0, #4]
@@ -42020,13 +42020,13 @@ _022FF608:
 	mvn r1, #1
 	cmp r0, r1
 	beq _022FF644
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _022FF9D4
 	ldr r0, _022FF9E0 ; =ov11_02324D14
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _022FF9E0 ; =ov11_02324D14
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -42096,13 +42096,13 @@ _022FF724:
 	mvn r1, #1
 	cmp r0, r1
 	beq _022FF760
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _022FF9D4
 	ldr r0, _022FF9E0 ; =ov11_02324D14
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _022FF9E0 ; =ov11_02324D14
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -42244,13 +42244,13 @@ _022FF950:
 	mvn r1, #1
 	cmp r0, r1
 	beq _022FF98C
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _022FF9D4
 	ldr r0, _022FF9E0 ; =ov11_02324D14
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _022FF9E0 ; =ov11_02324D14
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -42652,7 +42652,7 @@ ov11_022FFE80: ; 0x022FFE80
 	mvn r1, #1
 	cmp r0, r1
 	beq _022FFEA8
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 _022FFEA8:
 	ldr r0, _022FFEFC ; =ov11_02324D1C
 	mvn r1, #1
@@ -42660,7 +42660,7 @@ _022FFEA8:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _022FFEC4
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 _022FFEC4:
 	ldr r0, _022FFEFC ; =ov11_02324D1C
 	mvn r1, #1
@@ -42668,7 +42668,7 @@ _022FFEC4:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _022FFEE0
-	bl sub_0202AABC
+	bl CloseParentMenu
 _022FFEE0:
 	ldr r0, _022FFEFC ; =ov11_02324D1C
 	ldr r0, [r0, #4]
@@ -42793,7 +42793,7 @@ _02300078:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _0230009C
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02300570
 _0230009C:
@@ -42803,7 +42803,7 @@ _0230009C:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _023000C8
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0230057C ; =ov11_02324D1C
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -42815,7 +42815,7 @@ _023000C8:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _02300570
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _0230057C ; =ov11_02324D1C
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -42970,13 +42970,13 @@ _02300300:
 	mvn r1, #1
 	cmp r0, r1
 	beq _02300340
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _02300570
 	ldr r0, _0230057C ; =ov11_02324D1C
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _0230057C ; =ov11_02324D1C
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -43004,7 +43004,7 @@ _02300340:
 	ldrsb r0, [r0, #1]
 	ldr r2, _02300594 ; =0x0000022F
 	add r3, sp, #8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _02300398:
 	ldr r1, _0230057C ; =ov11_02324D1C
 	mvn r0, #1
@@ -43016,7 +43016,7 @@ _02300398:
 	ldr r1, _02300598 ; =0x00400013
 	ldr r3, _0230059C ; =ov11_02322530
 	mov r2, r0
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _0230057C ; =ov11_02324D1C
 	ldr r1, [r1, #4]
 	strb r0, [r1, #2]
@@ -43028,7 +43028,7 @@ _023003D0:
 	b _02300570
 _023003E4:
 	ldrsb r0, [r2, #2]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	bne _02300570
 	ldr r0, _0230057C ; =ov11_02324D1C
@@ -43062,13 +43062,13 @@ _02300458:
 	mvn r1, #1
 	cmp r0, r1
 	beq _02300494
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _02300570
 	ldr r0, _0230057C ; =ov11_02324D1C
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	ldr r0, _0230057C ; =ov11_02324D1C
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -43090,7 +43090,7 @@ _023004B8:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _023004DC
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02300570
 _023004DC:
@@ -43100,7 +43100,7 @@ _023004DC:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	beq _02300508
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _0230057C ; =ov11_02324D1C
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -43112,7 +43112,7 @@ _02300508:
 	ldrsb r0, [r0, #2]
 	cmp r0, r1
 	beq _02300534
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _0230057C ; =ov11_02324D1C
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -43339,7 +43339,7 @@ ov11_023007F0: ; 0x023007F0
 	cmp r0, #0
 	beq _02300824
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02300848 ; =ov11_02324D24
 	ldr r0, [r0]
 	bl MemFree
@@ -43404,7 +43404,7 @@ _023008D0:
 	ldr r3, [r2, #4]
 	ldrh r2, [r3, #4]
 	add r3, r3, #8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02300904
 _023008EC:
 	ldr r2, _02300A20 ; =ov11_02324D24
@@ -43620,7 +43620,7 @@ ov11_02300B9C: ; 0x02300B9C
 	cmp r0, #0
 	beq _02300BD0
 	ldrsb r0, [r0]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02300BF4 ; =ov11_02324D2C
 	ldr r0, [r0]
 	bl MemFree
@@ -43674,7 +43674,7 @@ _02300C58:
 	ldr r3, [r2, #4]
 	ldrh r2, [r3, #4]
 	add r3, r3, #8
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02300C8C
 _02300C74:
 	ldr r2, _02300D58 ; =ov11_02324D2C
@@ -43830,7 +43830,7 @@ _02300E5C:
 	ldr r1, _02300EEC ; =0x00400213
 	add r2, sp, #0
 	mov r3, r8
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r2, _02300ED8 ; =ov11_02324D34
 	mov r1, #0x13
 	ldr r3, [r2]
@@ -43838,7 +43838,7 @@ _02300E5C:
 	strb r0, [r3]
 	ldr r0, _02300EF0 ; =ov11_0232261C
 	mov r3, #0x10000
-	bl CreateDynamicTextBox
+	bl CreateAreaNameBox
 	ldr r1, _02300ED8 ; =ov11_02324D34
 	ldr r1, [r1]
 	strb r0, [r1, #1]
@@ -43872,15 +43872,15 @@ ov11_02300EF4: ; 0x02300EF4
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02300F4C ; =ov11_02324D34
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202FD50
+	bl CloseAreaNameBox
 	ldr r0, _02300F4C ; =ov11_02324D34
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl ov11_022FEF4C
+	bl CloseTeamInfoBox
 	ldr r0, _02300F4C ; =ov11_02324D34
 	ldr r0, [r0]
 	bl MemFree
@@ -43919,7 +43919,7 @@ _02300F80:
 	b _02301130
 _02300FA4:
 	ldrsb r0, [r2]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	bne _02301130
 	ldr r0, _02301138 ; =ov11_02324D34
@@ -43934,7 +43934,7 @@ _02300FA4:
 	strne r1, [r0, #4]
 	bne _02301130
 	ldrsb r0, [r0, #1]
-	bl sub_0202FD3C
+	bl SetAreaNameBoxState3
 	ldr r0, _02301138 ; =ov11_02324D34
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
@@ -43946,17 +43946,17 @@ _02300FA4:
 	b _02301130
 _0230100C:
 	ldrsb r0, [r2]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02301130
 	ldr r0, _02301138 ; =ov11_02324D34
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202AAA8
+	bl SetParentMenuState7
 	ldr r0, _02301138 ; =ov11_02324D34
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202FD3C
+	bl SetAreaNameBoxState3
 	ldr r0, _02301138 ; =ov11_02324D34
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
@@ -43968,19 +43968,19 @@ _0230100C:
 	b _02301130
 _02301060:
 	ldrsb r0, [r2]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02301130
 	ldr r0, _02301138 ; =ov11_02324D34
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202FD6C
+	bl IsAreaNameBoxActive
 	cmp r0, #0
 	bne _02301130
 	ldr r0, _02301138 ; =ov11_02324D34
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl ov11_022FEF84
+	bl IsTeamInfoBoxActive
 	cmp r0, #0
 	ldreq r0, _02301138 ; =ov11_02324D34
 	moveq r1, #4
@@ -44091,7 +44091,7 @@ ov11_0230119C: ; 0x0230119C
 	strh r4, [sp, #8]
 	str lr, [sp, #0xc]
 	str ip, [sp]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _0230120C ; =ov11_02324D40
 	mov r3, #0
 	ldr r2, [r1, #4]
@@ -44118,7 +44118,7 @@ ov11_02301220: ; 0x02301220
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02301258 ; =ov11_02324D40
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -44146,7 +44146,7 @@ ov11_0230125C: ; 0x0230125C
 	b _0230138C
 _0230128C:
 	ldrsb r0, [r2]
-	bl sub_0202AB60
+	bl CheckParentMenuField0x1A0
 	cmp r0, #0
 	ldreq r0, _02301398 ; =ov11_02324D40
 	moveq r1, #1
@@ -44155,7 +44155,7 @@ _0230128C:
 	b _0230138C
 _023012AC:
 	ldrsb r0, [r2]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _0230138C
 	ldr r0, _02301398 ; =ov11_02324D40
@@ -44378,7 +44378,7 @@ _0230157C:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldmia sp!, {r3, pc}
 _023015BC:
 	bl ov11_02302618
@@ -44401,7 +44401,7 @@ _023015F0:
 	ldr r1, _02301A1C ; =0x00300011
 	ldr r3, _02301A20 ; =ov11_0232271C
 	str r2, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02301A10 ; =ov11_02324D48
 	ldr r1, [r1]
 	strb r0, [r1, #0x255]
@@ -44421,7 +44421,7 @@ _02301618:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldmia sp!, {r3, pc}
 _02301658:
 	ldr r0, _02301A18 ; =ov11_023226FC
@@ -44429,7 +44429,7 @@ _02301658:
 	ldr r1, _02301A1C ; =0x00300011
 	ldr r3, _02301A20 ; =ov11_0232271C
 	str r2, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02301A10 ; =ov11_02324D48
 	ldr r1, [r1]
 	strb r0, [r1, #0x255]
@@ -44514,7 +44514,7 @@ _02301780:
 	ldrsb r0, [r0, #0x54]
 	add r3, r2, #0x188
 	mov r2, #0x3a4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldmia sp!, {r3, pc}
 _023017B4:
 	mov r1, #1
@@ -44643,12 +44643,12 @@ _02301938:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldmia sp!, {r3, pc}
 _023019A0:
 	add r0, r2, #0x200
 	ldrsb r0, [r0, #0x54]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r1, _02301A10 ; =ov11_02324D48
 	mvn r3, #1
 	ldr r2, [r1]
@@ -44758,7 +44758,7 @@ _02301AF8:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldmia sp!, {r3, pc}
 _02301B38:
 	bl ov11_02302618
@@ -44781,7 +44781,7 @@ _02301B6C:
 	ldr r1, _02301F98 ; =0x00300011
 	ldr r3, _02301F9C ; =ov11_0232271C
 	str r2, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02301F8C ; =ov11_02324D48
 	ldr r1, [r1]
 	strb r0, [r1, #0x255]
@@ -44801,7 +44801,7 @@ _02301B94:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldmia sp!, {r3, pc}
 _02301BD4:
 	ldr r0, _02301F94 ; =ov11_023226FC
@@ -44809,7 +44809,7 @@ _02301BD4:
 	ldr r1, _02301F98 ; =0x00300011
 	ldr r3, _02301F9C ; =ov11_0232271C
 	str r2, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02301F8C ; =ov11_02324D48
 	ldr r1, [r1]
 	strb r0, [r1, #0x255]
@@ -44894,7 +44894,7 @@ _02301CFC:
 	add r3, r2, #0x188
 	ldrsb r0, [r0, #0x54]
 	mov r2, #0x3a4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldmia sp!, {r3, pc}
 _02301D30:
 	mov r1, #1
@@ -45023,12 +45023,12 @@ _02301EB4:
 	add r0, r3, #0x200
 	ldrsb r0, [r0, #0x54]
 	add r3, r3, #0x188
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldmia sp!, {r3, pc}
 _02301F1C:
 	add r0, r2, #0x200
 	ldrsb r0, [r0, #0x54]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r1, _02301F8C ; =ov11_02324D48
 	mvn r3, #1
 	ldr r2, [r1]
@@ -45505,7 +45505,7 @@ _023025A4:
 	ldrsb r0, [r0, #0x54]
 	cmp r0, r1
 	beq _023025DC
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	b _023025DC
 _023025CC:
 	ldr r0, [r0, #0x20]
@@ -45551,7 +45551,7 @@ ov11_02302618: ; 0x02302618
 	ldr r0, [r0]
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x55]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _02302664 ; =ov11_02324D48
 	mvn r1, #1
 	ldr r0, [r0]
@@ -45679,7 +45679,7 @@ _023027D0:
 	ldr r0, _02302844 ; =ov11_02324D4C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xfc]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02302844 ; =ov11_02324D4C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -46164,7 +46164,7 @@ _02302E4C:
 	ldr r2, _023031E8 ; =0x000002C5
 	mov r1, #0x10
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #2
@@ -46202,7 +46202,7 @@ _02302EC0:
 	mov r1, r6
 	mov r3, r4
 	add r0, r0, r8, lsl #2
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r1, r5, r7, lsl #3
 	ldr r0, [sb, #4]
 	add r7, r7, #1
@@ -46219,7 +46219,7 @@ _02302EC0:
 	ldr r1, _023031F4 ; =0x00300011
 	add r3, r2, #0x18c
 	mov r2, #0
-	bl sub_0202B1AC
+	bl CreateSimpleMenu
 	ldr r1, _023031E4 ; =ov11_02324D4C
 	mov r2, #4
 	ldr r3, [r1, #4]
@@ -46241,7 +46241,7 @@ _02302F4C:
 	str r0, [r2, #4]
 	ldr r0, [r1, #4]
 	ldrsb r0, [r0, #0xa]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	mov r0, sb
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #4]
@@ -46253,7 +46253,7 @@ _02302F4C:
 	b _02302FE8
 _02302FA8:
 	ldrsb r0, [r1, #9]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #0xb
@@ -46261,7 +46261,7 @@ _02302FA8:
 	b _023031DC
 _02302FC4:
 	ldrsb r0, [r1, #9]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #1
@@ -46278,7 +46278,7 @@ _02302FF4:
 	ldr r2, _023031F8 ; =0x000002C9
 	add r3, r3, #0x13c
 	mov r1, #0x10
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #6
@@ -46305,7 +46305,7 @@ _02303050:
 	ldr r3, _02303204 ; =ov11_02322798
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	mov r1, sb
 	ldr r3, [r1, #4]
 	mov r2, #8
@@ -46327,7 +46327,7 @@ _02303088:
 	str r0, [r2, #4]
 	ldr r0, [r1, #4]
 	ldrsb r0, [r0, #0xa]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	mov r0, sb
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #4]
@@ -46348,7 +46348,7 @@ _023030F4:
 	mov r1, #0x218
 	add r2, r1, #0xb2
 	add r3, r3, #0x13c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	mov r0, sb
 	ldr r0, [r0, #4]
 	mov r1, #0xa
@@ -46403,7 +46403,7 @@ _023031C0:
 	mov r0, sb
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #9]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	mov r0, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _023031DC:
@@ -46521,7 +46521,7 @@ ov11_023032C4: ; 0x023032C4
 	add r0, r2, #0x24
 	add r2, r1, #0x4a
 	str r4, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldr r6, _023033F8 ; =ov11_023227B0
 	ldr r5, _023033F4 ; =0x0000C402
 	ldr r4, _023033F0 ; =ov11_02324D54
@@ -46543,7 +46543,7 @@ _02303390:
 	mov r2, r0, lsl #0x10
 	add r0, ip, r8, lsl #6
 	mov r2, r2, lsr #0x10
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r8, r8, #1
 	cmp r8, #0x1e
 	blt _02303390
@@ -46584,7 +46584,7 @@ _02303418: ; jump table
 _0230344C:
 	add r0, r2, #0xc00
 	ldrsb r0, [r0, #0x7c]
-	bl sub_0202BCBC
+	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _023035B4
 	ldr r0, _023035BC ; =ov11_02324D54
@@ -46599,7 +46599,7 @@ _0230344C:
 	ldr r0, [r1]
 	add r0, r0, #0xc00
 	ldrsb r0, [r0, #0x7c]
-	bl FreeAdvancedMenu
+	bl CloseAdvancedMenu
 	mov r0, #2
 	bl ov11_023035C0
 	b _023035B4
@@ -46667,7 +46667,7 @@ _02303538:
 	ldr r0, [r0]
 	add r0, r0, #0xc00
 	ldrsb r0, [r0, #0x7d]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _023035BC ; =ov11_02324D54
 	mvn r1, #1
 	ldr r0, [r0]
@@ -47057,7 +47057,7 @@ _02303A20:
 	ldr r2, [r3, #0x40]
 	sub r2, r2, #2
 	str r2, [r3, #0x10]
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02303AF8 ; =ov11_02324D58
 	mov r2, #1
 	ldr r3, [r1, #4]
@@ -47096,7 +47096,7 @@ ov11_02303B04: ; 0x02303B04
 	ldr r0, _02303B4C ; =ov11_02324D58
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02303B4C ; =ov11_02324D58
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -47180,7 +47180,7 @@ _02303BFC:
 	ldr r3, _02303D74 ; =ov11_023228F0
 	add r2, r1, #0xf8
 	mov r1, #0x33
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02303D68 ; =ov11_02324D58
 	ldr r2, [r1, #4]
 	strb r0, [r2, #2]
@@ -47198,7 +47198,7 @@ _02303C5C:
 	add r2, r1, #0xf8
 	ldr r3, _02303D78 ; =ov11_02322910
 	mov r1, #0x33
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02303D68 ; =ov11_02324D58
 	ldr r1, [r1, #4]
 	strb r0, [r1, #2]
@@ -47254,7 +47254,7 @@ _02303D24:
 	ldmia sp!, {r3, pc}
 _02303D4C:
 	ldrsb r0, [r3, #2]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _02303D68 ; =ov11_02324D58
 	mov r1, #4
 	ldr r0, [r0, #4]
@@ -47617,7 +47617,7 @@ _02304250:
 	b _0230428C
 _02304268:
 	ldrsb r0, [r2, #2]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _02304298 ; =ov11_02324D58
 	mvn r3, #1
 	ldr r2, [r0, #4]
@@ -48625,7 +48625,7 @@ _02304EA8:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0230543C
 _02304EDC:
 	mov r0, #3
@@ -48644,7 +48644,7 @@ _02304EDC:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0230543C
 _02304F24:
 	add r0, r4, #0x1b0
@@ -48677,7 +48677,7 @@ _02304F24:
 	ldrb lr, [r5]
 	str lr, [sp, #0x40]
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r2, #3
 	str r2, [r4, #0x3b4]
 	mov r0, #0
@@ -48690,7 +48690,7 @@ _02304F24:
 	ldr r3, [r3]
 	mov r2, r0
 	add r3, r3, #0x1b0
-	bl sub_0202B1AC
+	bl CreateSimpleMenu
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
@@ -48736,7 +48736,7 @@ _02304FE4:
 	add r2, r4, #0x2bc
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0230543C
 _0230508C:
 	mov r4, #3
@@ -48746,7 +48746,7 @@ _0230508C:
 	ldr r3, _0230545C ; =ov11_02322BC8
 	add r2, sp, #0x68
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
@@ -48782,7 +48782,7 @@ _023050BC:
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, ip}
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4b]
@@ -48833,7 +48833,7 @@ _02305138:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02305444 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldr r0, [r0, #0x44]
@@ -48891,7 +48891,7 @@ _0230527C:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0230543C
 _023052D0:
 	mov r4, #3
@@ -48901,7 +48901,7 @@ _023052D0:
 	ldr r3, _0230545C ; =ov11_02322BC8
 	add r2, sp, #0x100
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
@@ -48924,7 +48924,7 @@ _02305310:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _0230543C
 _02305348:
 	ldr r0, _02305478 ; =ov11_02322BB8
@@ -48933,14 +48933,14 @@ _02305348:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02305444 ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
 	b _0230543C
 _02305374:
 	ldrsb r0, [r4, #0x48]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02305444 ; =ov11_02324D84
 	mvn r2, #1
 	ldr r1, [r0]
@@ -48990,7 +48990,7 @@ _02305408:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _0230543C:
 	add sp, sp, #0x198
 	ldmia sp!, {r3, r4, r5, pc}
@@ -49086,7 +49086,7 @@ _02305560:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02305AF4
 _02305594:
 	mov r0, #3
@@ -49105,7 +49105,7 @@ _02305594:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02305AF4
 _023055DC:
 	add r0, r4, #0x1b0
@@ -49138,7 +49138,7 @@ _023055DC:
 	ldrb lr, [r5]
 	str lr, [sp, #0x170]
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	mov r2, #3
 	str r2, [r4, #0x3b4]
 	mov r0, #0
@@ -49151,7 +49151,7 @@ _023055DC:
 	ldr r3, [r3]
 	mov r2, r0
 	add r3, r3, #0x1b0
-	bl sub_0202B1AC
+	bl CreateSimpleMenu
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
@@ -49197,7 +49197,7 @@ _0230569C:
 	add r2, r4, #0x2bc
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02305AF4
 _02305744:
 	mov r4, #3
@@ -49207,7 +49207,7 @@ _02305744:
 	ldr r3, _02305B14 ; =ov11_02322BC8
 	add r2, sp, #0xb0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
@@ -49243,7 +49243,7 @@ _02305774:
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, ip}
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4b]
@@ -49294,7 +49294,7 @@ _023057F0:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02305AFC ; =ov11_02324D84
 	ldr r0, [r0]
 	ldr r0, [r0, #0x44]
@@ -49352,7 +49352,7 @@ _02305934:
 	mov r1, #8
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02305AF4
 _02305988:
 	mov r4, #3
@@ -49362,7 +49362,7 @@ _02305988:
 	ldr r3, _02305B14 ; =ov11_02322BC8
 	add r2, sp, #0x18
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
@@ -49385,7 +49385,7 @@ _023059C8:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02305AF4
 _02305A00:
 	ldr r0, _02305B30 ; =ov11_02322BB8
@@ -49394,14 +49394,14 @@ _02305A00:
 	mov r1, #0x13
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02305AFC ; =ov11_02324D84
 	ldr r1, [r1]
 	strb r0, [r1, #0x4a]
 	b _02305AF4
 _02305A2C:
 	ldrsb r0, [r4, #0x48]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02305AFC ; =ov11_02324D84
 	mvn r2, #1
 	ldr r1, [r0]
@@ -49451,7 +49451,7 @@ _02305AC0:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x48]
 	add r3, r3, #0x15c
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _02305AF4:
 	add sp, sp, #0x198
 	ldmia sp!, {r3, r4, r5, pc}
@@ -49621,7 +49621,7 @@ _02305D08:
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x49]
-	bl ov10_022BD374
+	bl IsInventoryMenuState3
 	cmp r0, #0
 	beq _02305D9C
 	ldr r0, _02306148 ; =ov11_02324D84
@@ -49653,13 +49653,13 @@ _02305D9C:
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x49]
-	bl ov10_022BD374
+	bl IsInventoryMenuState3
 	cmp r0, #0
 	beq _02305E44
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x49]
-	bl ov10_022BCE58
+	bl PopInventoryMenuField0x1A3
 	ldrh r1, [sp]
 	tst r1, #4
 	cmpeq r0, #0
@@ -49697,13 +49697,13 @@ _02305E44:
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x49]
-	bl ov10_022BCD68
+	bl IsInventoryMenuActive
 	cmp r0, #0
 	bne _023060C0
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x49]
-	bl ov10_022BCD88
+	bl CheckInventoryMenuField0x1A0
 	cmp r0, #0
 	bne _023060C0
 	ldr r0, _02306148 ; =ov11_02324D84
@@ -49737,7 +49737,7 @@ _02305ECC:
 	bne _023060C0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x49]
-	bl ov10_022BCCF4
+	bl CloseInventoryMenu
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
@@ -49784,7 +49784,7 @@ _02305F80:
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x49]
-	bl ov10_022BCCE0
+	bl SetInventoryMenuState6
 	ldr r0, _02306148 ; =ov11_02324D84
 	mov r3, #2
 	ldr r1, [r0]
@@ -49807,13 +49807,13 @@ _02305FBC:
 	b _023060C0
 _02305FE0:
 	ldrsb r0, [r3, #0x4b]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _023060C0
 	ldr r0, _02306148 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x4b]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _02306148 ; =ov11_02324D84
 	mvn r3, #1
 	ldr r1, [r0]
@@ -49823,7 +49823,7 @@ _02305FE0:
 	str r2, [r1, #0x38]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x49]
-	bl ov10_022BCCCC
+	bl SetInventoryMenuState0
 	b _023060C0
 _0230602C:
 	bl ov11_022DC504
@@ -49898,7 +49898,7 @@ _02306120:
 	str r1, [r3, #0x50]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x48]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	b _02306140
 _02306138:
 	mov r0, #4
@@ -49923,7 +49923,7 @@ ov11_0230614C: ; 0x0230614C
 	ldr r0, _02306190 ; =ov11_02324D84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x4a]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _02306190 ; =ov11_02324D84
 	mvn r1, #1
 	ldr r0, [r0]
@@ -50096,7 +50096,7 @@ _02306388:
 	mov r2, #0x2e0
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02306760
 _023063BC:
 	mov r0, #3
@@ -50115,7 +50115,7 @@ _023063BC:
 	mov r1, #8
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02306760
 _02306404:
 	ldr r0, _0230676C ; =ov11_02322C10
@@ -50124,7 +50124,7 @@ _02306404:
 	ldr r3, _02306774 ; =ov11_02322C38
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02306768 ; =ov11_02324D88
 	ldr r1, [r1]
 	strb r0, [r1, #0x22]
@@ -50141,7 +50141,7 @@ _02306430:
 	mov r1, #8
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02306768 ; =ov11_02324D88
 	mov r1, #5
 	ldr r0, [r0]
@@ -50157,7 +50157,7 @@ _02306474:
 	ldr r1, _0230677C ; =0x00300031
 	ldr r3, _02306780 ; =ov11_02322C20
 	add r2, r2, #0x8c
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02306768 ; =ov11_02324D88
 	mov r2, #6
 	ldr r3, [r1]
@@ -50178,7 +50178,7 @@ _023064B8:
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0x22]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	cmp r4, #2
 	beq _023064FC
 	cmp r4, #3
@@ -50220,7 +50220,7 @@ _02306538:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02306768 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0xc]
@@ -50266,7 +50266,7 @@ _02306610:
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02306768 ; =ov11_02324D88
 	ldr r1, [r1]
 	strb r0, [r1, #0x22]
@@ -50322,7 +50322,7 @@ _023066C0:
 	b _02306760
 _023066F4:
 	ldrsb r0, [r2, #0x21]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02306768 ; =ov11_02324D88
 	mvn r3, #1
 	ldr r2, [r0]
@@ -50349,7 +50349,7 @@ _0230672C:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _02306760:
 	add sp, sp, #0x7c
 	ldmia sp!, {r3, r4, pc}
@@ -50433,7 +50433,7 @@ _02306858:
 	mov r2, #0x2e0
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02306C30
 _0230688C:
 	mov r0, #3
@@ -50452,7 +50452,7 @@ _0230688C:
 	mov r1, #8
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	b _02306C30
 _023068D4:
 	ldr r0, _02306C3C ; =ov11_02322C10
@@ -50461,7 +50461,7 @@ _023068D4:
 	ldr r3, _02306C44 ; =ov11_02322C38
 	mov r2, #0
 	str r4, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02306C38 ; =ov11_02324D88
 	ldr r1, [r1]
 	strb r0, [r1, #0x22]
@@ -50478,7 +50478,7 @@ _02306900:
 	mov r1, #8
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02306C38 ; =ov11_02324D88
 	mov r1, #5
 	ldr r0, [r0]
@@ -50494,7 +50494,7 @@ _02306944:
 	ldr r1, _02306C4C ; =0x00300031
 	ldr r3, _02306C50 ; =ov11_02322C20
 	add r2, r2, #0x8c
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02306C38 ; =ov11_02324D88
 	mov r2, #6
 	ldr r3, [r1]
@@ -50515,7 +50515,7 @@ _02306988:
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0x22]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	cmp r4, #2
 	beq _023069CC
 	cmp r4, #3
@@ -50557,7 +50557,7 @@ _02306A08:
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _02306C38 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0xc]
@@ -50603,7 +50603,7 @@ _02306AE0:
 	mov r1, #0x13
 	mov r2, #0
 	str ip, [sp]
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _02306C38 ; =ov11_02324D88
 	ldr r1, [r1]
 	strb r0, [r1, #0x22]
@@ -50659,7 +50659,7 @@ _02306B90:
 	b _02306C30
 _02306BC4:
 	ldrsb r0, [r2, #0x21]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02306C38 ; =ov11_02324D88
 	mvn r3, #1
 	ldr r2, [r0]
@@ -50686,7 +50686,7 @@ _02306BFC:
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x21]
 	add r3, r3, #0x30
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 _02306C30:
 	add sp, sp, #0x7c
 	ldmia sp!, {r3, r4, pc}
@@ -50803,7 +50803,7 @@ _02306DA0:
 	ldr r0, _023071C0 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x21]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _023071C0 ; =ov11_02324D88
 	mvn r3, #1
 	ldr r1, [r0]
@@ -51077,7 +51077,7 @@ _0230717C:
 	ldrsb r0, [r0, #0x21]
 	cmp r0, r1
 	beq _023071B8
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _023071C0 ; =ov11_02324D88
 	mvn r1, #1
 	ldr r0, [r0]
@@ -51106,7 +51106,7 @@ ov11_023071C4: ; 0x023071C4
 	ldr r0, _02307208 ; =ov11_02324D88
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x22]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _02307208 ; =ov11_02324D88
 	mvn r1, #1
 	ldr r0, [r0]
@@ -51274,7 +51274,7 @@ _023073FC:
 	ldr r2, [r2]
 	strb r0, [r2, #4]
 	ldr r0, _023082BC ; =ov11_02322C88
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	mvn r3, #0
 	ldr r4, [r1]
@@ -51292,7 +51292,7 @@ _02307464:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl ov10_022BCCE0
+	bl SetInventoryMenuState6
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0xc
 	ldr r0, [r0]
@@ -51315,7 +51315,7 @@ _023074B8:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl ov10_022BCE58
+	bl PopInventoryMenuField0x1A3
 	ldrh r1, [sp, #0xe]
 	tst r1, #4
 	bne _023074EC
@@ -51386,7 +51386,7 @@ _02307548:
 	add r0, r0, #0x2f00
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	add r0, sp, #0x20
 	bl strcpy
@@ -51407,7 +51407,7 @@ _0230760C:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl ov10_022BCD68
+	bl IsInventoryMenuActive
 	cmp r0, #0
 	bne _02307840
 	ldr r0, _023082B4 ; =ov11_02324D8C
@@ -51494,7 +51494,7 @@ _02307734:
 	add r2, sp, #0x470
 	mov r3, r6
 	str r4, [sp, #0x4d0]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	ldr r1, [r1]
 	strb r0, [r1, #6]
@@ -51513,7 +51513,7 @@ _0230777C:
 	ldr r0, _023082CC ; =ov11_02322CB8
 	ldr r3, _023082D8 ; =ov11_02322D88
 	mov r2, #0
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	ldr r1, [r1]
 	strb r0, [r1, #6]
@@ -51525,7 +51525,7 @@ _023077C4:
 	beq _023077F0
 	ldr r0, _023082DC ; =ov11_02322CA8
 	ldr r3, _023082E0 ; =ov11_02322D10
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	ldr r1, [r1]
 	strb r0, [r1, #6]
@@ -51533,7 +51533,7 @@ _023077C4:
 _023077F0:
 	ldr r0, _023082DC ; =ov11_02322CA8
 	ldr r3, _023082E4 ; =ov11_02322D60
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	ldr r1, [r1]
 	strb r0, [r1, #6]
@@ -51575,14 +51575,14 @@ _02307840:
 	str r0, [r2, #0x10]
 	ldr r0, [r1]
 	ldrsb r0, [r0, #5]
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #5]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl ov10_022BCCF4
+	bl CloseInventoryMenu
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r3, #1
 	ldr r2, [r0]
@@ -51593,7 +51593,7 @@ _02307840:
 	b _02308CF0
 _023078D4:
 	ldrsb r0, [r4, #6]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
@@ -51632,7 +51632,7 @@ _02307948:
 	add r2, r2, #8
 	mov r1, #0x33
 	str r4, [sp, #0x508]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	mov r2, #4
 	ldr r3, [r1]
@@ -51669,7 +51669,7 @@ _023079E4:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r3, #1
 	ldr r2, [r0]
@@ -51800,7 +51800,7 @@ _02307BCC:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0xd
 	ldr r0, [r0]
@@ -51864,7 +51864,7 @@ _02307C78:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x14
 	ldr r0, [r0]
@@ -51946,7 +51946,7 @@ _02307D90:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r1, [r0]
 	ldr r0, [r1, #0x244]
@@ -52028,7 +52028,7 @@ _02307ECC:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x17
 	ldr r3, [r0]
@@ -52168,7 +52168,7 @@ _023080F0:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r3, #1
 	ldr r2, [r0]
@@ -52214,7 +52214,7 @@ _0230819C:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r3, #1
 	ldr r2, [r0]
@@ -52233,7 +52233,7 @@ _023081D0:
 	ldr r3, _02308318 ; =ov11_02322CF0
 	add r2, r1, #0x1c
 	mov r1, #0x33
-	bl CreateSimpleMenuWrapper
+	bl CreateSimpleMenuFromStringIds
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	mov r2, #0x20
 	ldr r3, [r1]
@@ -52254,7 +52254,7 @@ _02308214:
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xc]
-	bl FreeSimpleMenu
+	bl CloseSimpleMenu
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -52274,7 +52274,7 @@ _02308274:
 	strh r0, [r1, #0x4c]
 	ldr r0, [r2]
 	ldrsb r0, [r0, #0xa]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r3, #1
 	ldr r2, [r0]
@@ -52347,7 +52347,7 @@ _02308394:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r3, #1
 	ldr r2, [r0]
@@ -52387,7 +52387,7 @@ _0230841C:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x24
 	ldr r0, [r0]
@@ -52410,7 +52410,7 @@ _02308470:
 	mov r0, #0
 	mov r1, #0x33
 	str r4, [sp, #0x508]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	mov r2, #0x26
 	ldr r3, [r1]
@@ -52420,7 +52420,7 @@ _02308470:
 	b _02308CF0
 _023084AC:
 	ldrsb r0, [r4, #7]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
@@ -52484,7 +52484,7 @@ _02308594:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #7]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r2, #1
 	ldr r1, [r0]
@@ -52516,13 +52516,13 @@ _023085C8:
 	b _02308CF0
 _02308614:
 	ldrsb r0, [r4, #0xb]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	bl sub_02041A00
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r3, #1
@@ -52574,7 +52574,7 @@ _023086B0:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	add r0, r0, #0x238
@@ -52613,7 +52613,7 @@ _02308748:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x29
 	ldr r0, [r0]
@@ -52627,7 +52627,7 @@ _023087A0:
 	add r2, r1, #0xf10
 	ldrsb r0, [r0, #8]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0x1e
 	ldr r0, [r0]
@@ -52665,7 +52665,7 @@ _0230880C:
 	b _02308CF0
 _02308844:
 	ldrsb r0, [r4, #7]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
@@ -52706,7 +52706,7 @@ _02308844:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl ov10_022BCCE0
+	bl SetInventoryMenuState6
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #5
 	ldr r0, [r0]
@@ -52715,14 +52715,14 @@ _02308900:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #7]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #7]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -52730,20 +52730,20 @@ _02308900:
 	b _02308CF0
 _02308940:
 	ldrsb r0, [r4, #4]
-	bl ov10_022BCD68
+	bl IsInventoryMenuActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #5]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl ov10_022BCCF4
+	bl CloseInventoryMenu
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -52755,7 +52755,7 @@ _02308940:
 	mov r1, #0x18
 	ldrsb r0, [r3, #8]
 	add r3, r3, #0xb4
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #6
 	ldr r0, [r0]
@@ -52870,7 +52870,7 @@ _02308AB4:
 	mov r4, r4, lsl #0x10
 	mov r4, r4, lsr #0x10
 	stmib sp, {r4, r6}
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _023082B4 ; =ov11_02324D8C
 	mov r2, #0xb
 	ldr r3, [r1]
@@ -52880,13 +52880,13 @@ _02308AB4:
 	b _02308CF0
 _02308B70:
 	ldrsb r0, [r4, #9]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _02308CF0
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #9]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r3, #1
 	ldr r2, [r0]
@@ -52900,7 +52900,7 @@ _02308BB0:
 	mvn r1, #1
 	cmp r0, r1
 	beq _02308BD4
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -52912,7 +52912,7 @@ _02308BD4:
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	beq _02308C00
-	bl ov10_022BCCF4
+	bl CloseInventoryMenu
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -52932,7 +52932,7 @@ _02308C1C:
 	mov r2, #0x2b4
 	ldrsb r0, [r0, #8]
 	mov r3, #0
-	bl ShowMessageInDialogueBox
+	bl ShowStringIdInDialogueBox
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mov r1, #0xd
 	ldr r0, [r0]
@@ -52959,20 +52959,20 @@ _02308C84:
 	b _02308CF0
 _02308C90:
 	ldrsb r0, [r4, #4]
-	bl ov10_022BCD68
+	bl IsInventoryMenuActive
 	cmp r0, #0
 	bne _02308CE8
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r2, #1
 	ldr r1, [r0]
 	strb r2, [r1, #5]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl ov10_022BCCF4
+	bl CloseInventoryMenu
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	mvn r3, #1
 	ldr r2, [r0]
@@ -53024,7 +53024,7 @@ ov11_02308D48: ; 0x02308D48
 	ldrsb r0, [r0, #6]
 	cmp r0, r1
 	beq _02308D78
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02308DD4 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -53036,7 +53036,7 @@ _02308D78:
 	ldrsb r0, [r0, #5]
 	cmp r0, r1
 	beq _02308DA4
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _02308DD4 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -53048,7 +53048,7 @@ _02308DA4:
 	ldrsb r0, [r0, #4]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl ov10_022BCCF4
+	bl CloseInventoryMenu
 	ldr r0, _02308DD4 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -53162,7 +53162,7 @@ ov11_02308F14: ; 0x02308F14
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	ldr r0, _02308F48 ; =ov11_02324D8C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -53591,7 +53591,7 @@ _023094E0:
 	ldr r1, [sp, #0x14]
 	add r2, r3, #0x7c
 	add r3, r3, #0x154
-	bl sub_0202A690
+	bl CreateParentMenu
 	ldr r1, _02309D80 ; =ov11_02324D90
 	mov r2, #1
 	ldr r3, [r1]
@@ -53658,7 +53658,7 @@ _023095E0:
 	ldr r0, _02309D80 ; =ov11_02324D90
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02309D74
 	ldr r0, _02309D80 ; =ov11_02324D90
@@ -53712,7 +53712,7 @@ _02309658:
 	ldr r3, _02309DA4 ; =ov11_02322E28
 	mov r1, #0x13
 	mov r2, #0
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _02309D80 ; =ov11_02324D90
 	ldr r1, [r1]
 	strb r0, [r1, #5]
@@ -53722,7 +53722,7 @@ _023096D0:
 	ldr r3, _02309DA8 ; =ov11_02322E00
 	mov r1, #0x13
 	mov r2, #0
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _02309D80 ; =ov11_02324D90
 	ldr r1, [r1]
 	strb r0, [r1, #5]
@@ -53743,7 +53743,7 @@ _02309704:
 	b _02309D74
 _02309724:
 	ldrsb r0, [r3, #5]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02309D74
 	ldr r0, _02309D80 ; =ov11_02324D90
@@ -53798,7 +53798,7 @@ _023097D8:
 	ldr r0, _02309D80 ; =ov11_02324D90
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	b _02309D74
 _023097EC:
 	ldr r0, [r3, #0x10]
@@ -53881,7 +53881,7 @@ _023098E4:
 	ldr r0, _02309D80 ; =ov11_02324D90
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _02309D80 ; =ov11_02324D90
 	mov r1, #2
 	ldr r0, [r0]
@@ -53913,7 +53913,7 @@ _02309934:
 	ldr r0, _02309D80 ; =ov11_02324D90
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _02309D80 ; =ov11_02324D90
 	mov r1, #0xa
 	ldr r0, [r0]
@@ -53947,7 +53947,7 @@ _023099F8:
 	ldr r0, _02309D80 ; =ov11_02324D90
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _02309D80 ; =ov11_02324D90
 	mov r1, #7
 	ldr r0, [r0]
@@ -53984,7 +53984,7 @@ _02309A8C:
 	ldr r0, _02309D80 ; =ov11_02324D90
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02309D80 ; =ov11_02324D90
 	mov r1, #0xf
 	ldr r0, [r0]
@@ -54173,7 +54173,7 @@ _02309D38:
 	b _02309D74
 _02309D54:
 	ldrsb r0, [r3, #4]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02309D80 ; =ov11_02324D90
 	mov r1, #0x1b
 	ldr r0, [r0]
@@ -54495,7 +54495,7 @@ _0230A13C:
 	str lr, [sp, #0xa0]
 	strh ip, [sp, #0xa8]
 	str r4, [sp, #0xac]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _0230A2B0 ; =ov11_02324D94
 	mov r2, #1
 	ldr r3, [r1]
@@ -54505,7 +54505,7 @@ _0230A13C:
 	b _0230A2A4
 _0230A184:
 	ldrsb r0, [r2]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _0230A2A4
 	ldr r0, _0230A2B0 ; =ov11_02324D94
@@ -54516,7 +54516,7 @@ _0230A184:
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _0230A2B0 ; =ov11_02324D94
 	mvn r2, #1
 	ldr r1, [r0]
@@ -54550,7 +54550,7 @@ _0230A1F4:
 	ldr r3, _0230A2CC ; =ov11_0230A2D0
 	add r2, sp, #8
 	str r4, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _0230A2B0 ; =ov11_02324D94
 	mov r2, #4
 	ldr r3, [r1]
@@ -54560,13 +54560,13 @@ _0230A1F4:
 	b _0230A2A4
 _0230A258:
 	ldrsb r0, [r2, #1]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	bne _0230A2A4
 	ldr r0, _0230A2B0 ; =ov11_02324D94
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _0230A2B0 ; =ov11_02324D94
 	mvn r3, #1
 	ldr r2, [r0]
@@ -55092,7 +55092,7 @@ _0230A98C:
 	beq _0230A9C4
 	bl sub_02041A00
 	ldrsb r0, [r4, #0x78]
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	mvn r0, #1
 	strb r0, [r4, #0x78]
 _0230A9C4:
@@ -55265,7 +55265,7 @@ _0230AC10:
 	ldr r0, [sp, #0xc]
 	mov r1, #0x100
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldr r1, [sp, #0xc]
 	mov r0, r4
 	bl strcat
@@ -55400,7 +55400,7 @@ ov11_0230ADCC: ; 0x0230ADCC
 	bl sub_0203FD80
 	bl sub_020407C0
 	ldrsb r0, [r4, #0x74]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	mvn r0, #1
 	strb r0, [r4, #0x74]
 	ldmia sp!, {r4, pc}
@@ -55991,13 +55991,13 @@ _0230B5A8:
 	mov r1, #1
 	add r0, r0, #0x1400
 	ldrsb r0, [r0, #0xe4]
-	bl sub_0202C794
+	bl SetCollectionMenuField0x1C8
 	mov r0, r8
 	ldr r0, [r0, #4]
 	ldr r1, _0230B690 ; =ov11_0230BF38
 	add r0, r0, #0x1400
 	ldrsb r0, [r0, #0xe4]
-	bl sub_0202C7BC
+	bl SetCollectionMenuField0x1A4
 	bl ov11_0230CAA4
 	bl ov11_0230C9F8
 _0230B65C:
@@ -56301,7 +56301,7 @@ _0230B9F8:
 	ldr r0, [r0, #4]
 	add r0, r0, #0x1400
 	ldrsb r0, [r0, #0xe4]
-	bl sub_0202C70C
+	bl CloseCollectionMenu
 _0230BA44:
 	ldr r0, _0230BA60 ; =ov11_02324DA4
 	ldr r0, [r0, #4]
@@ -56348,7 +56348,7 @@ ov11_0230BA64: ; 0x0230BA64
 _0230BAD8:
 	add r0, r4, #0x1400
 	ldrsb r0, [r0, #0xe4]
-	bl sub_0202C728
+	bl IsCollectionMenuActive
 	cmp r0, #0
 	bne _0230BB0C
 	add r0, r4, #0x1400
@@ -56393,7 +56393,7 @@ ov11_0230BB1C: ; 0x0230BB1C
 	ldr r0, [r0, #4]
 	add r0, r0, #0x1400
 	ldrsb r0, [r0, #0xe4]
-	bl sub_0202C70C
+	bl CloseCollectionMenu
 	ldr r0, _0230BB94 ; =ov11_02324DA4
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -56459,13 +56459,13 @@ _0230BC00:
 	add r0, r1, #0x1400
 	ldrsb r0, [r0, #0xe4]
 	mov r1, #1
-	bl sub_0202C794
+	bl SetCollectionMenuField0x1C8
 	ldr r0, _0230BCD8 ; =ov11_02324DA4
 	ldr r1, _0230BCF4 ; =ov11_0230BF38
 	ldr r0, [r0, #4]
 	add r0, r0, #0x1400
 	ldrsb r0, [r0, #0xe4]
-	bl sub_0202C7BC
+	bl SetCollectionMenuField0x1A4
 	bl ov11_0230CAA4
 	bl ov11_0230C9F8
 	ldr r0, _0230BCD8 ; =ov11_02324DA4
@@ -56532,7 +56532,7 @@ ov11_0230BD28: ; 0x0230BD28
 	cmpne r0, r1
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_0202D114
+	bl IsCollectionMenuState3
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230BD58: .word ov11_02324DA4
@@ -59769,7 +59769,7 @@ _0230E528:
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _0230E554
-	bl sub_0202FED4
+	bl CloseControlsChart
 _0230E554:
 	ldr r0, _0230E574 ; =ov11_02324DDC
 	ldr r0, [r0, #4]
@@ -59948,7 +59948,7 @@ _0230E788:
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _0230E7C0
-	bl sub_0202FED4
+	bl CloseControlsChart
 	ldr r0, _0230E7E8 ; =ov11_02324DDC
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -60006,7 +60006,7 @@ _0230E854:
 	strb r1, [r3, #9]
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #8]
-	bl sub_0202FEF0
+	bl IsControlsChartActive
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
 	bl ov11_0230E578
@@ -60290,7 +60290,7 @@ ov11_0230EC00: ; 0x0230EC00
 	ldrsb r0, [r0, #0x98]
 	cmp r0, r1
 	beq _0230EC58
-	bl sub_0202FD50
+	bl CloseAreaNameBox
 	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
@@ -60952,7 +60952,7 @@ _0230F4A0:
 	ldrsb r0, [r0, #0x98]
 	cmp r0, r1
 	beq _0230F4D4
-	bl sub_0202FD50
+	bl CloseAreaNameBox
 	ldr r0, _02310050 ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
@@ -61900,14 +61900,14 @@ _02310250:
 	mvn r1, #1
 	cmp r0, r1
 	beq _023102B0
-	bl sub_0202FD6C
+	bl IsAreaNameBoxActive
 	cmp r0, #0
 	bne _023102B0
 	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r0, [r0, #8]
 	add r0, r0, #0xf900
 	ldrsb r0, [r0, #0x98]
-	bl sub_0202FD50
+	bl CloseAreaNameBox
 	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mvn r1, #1
 	ldr r0, [r0, #8]
@@ -61929,7 +61929,7 @@ _023102B0:
 	ldr r0, _02310340 ; =ov11_02323340
 	mov r1, #0x13
 	mov r2, #0
-	bl CreateDynamicTextBox
+	bl CreateAreaNameBox
 	ldr r1, _0231031C ; =WORLD_MAP_MODE
 	ldr r1, [r1, #8]
 	add r1, r1, #0xf000
@@ -79956,8 +79956,8 @@ ov11_02322418:
 	.byte 0x78, 0x65, 0x63, 0x75, 0x74, 0x65, 0x20, 0x69, 0x64, 0x20, 0x25, 0x33, 0x64, 0x20, 0x20, 0x6B
 	.byte 0x69, 0x6E, 0x64, 0x20, 0x25, 0x33, 0x64, 0x20, 0x20, 0x68, 0x61, 0x6E, 0x67, 0x65, 0x72, 0x20
 	.byte 0x25, 0x33, 0x64, 0x20, 0x20, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x20, 0x25, 0x33, 0x64, 0x00
-	.global ov11_0232245C
-ov11_0232245C:
+	.global TEAM_INFO_BOX_DEFAULT_WINDOW_PARAMS
+TEAM_INFO_BOX_DEFAULT_WINDOW_PARAMS:
 	.word UpdateTeamInfoBox
 	.byte 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov11_0232246C

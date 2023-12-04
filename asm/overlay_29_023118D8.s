@@ -2120,7 +2120,7 @@ LowerOffensiveStat: ; 0x023135FC
 	beq _02313660
 	ldr r1, _023137F4 ; =0x00000DCB
 	mov r0, r6
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r6
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2128,7 +2128,7 @@ LowerOffensiveStat: ; 0x023135FC
 _02313660:
 	ldr r1, _023137F8 ; =0x00000DCA
 	mov r0, r6
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r6
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2196,7 +2196,7 @@ _02313720:
 	bne _02313780
 	ldr r1, _02313804 ; =0x00000DCD
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #2
 	bl ov29_0234B0B4
@@ -2204,7 +2204,7 @@ _02313720:
 _02313780:
 	ldr r1, _02313808 ; =0x00000DCC
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #2
 	bl ov29_0234B0B4
@@ -2268,7 +2268,7 @@ LowerDefensiveStat: ; 0x02313814
 	beq _02313878
 	ldr r1, _02313988 ; =0x00000DC9
 	mov r0, r6
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r6
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2276,7 +2276,7 @@ LowerDefensiveStat: ; 0x02313814
 _02313878:
 	ldr r1, _0231398C ; =0x00000DC8
 	mov r0, r6
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r6
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2310,7 +2310,7 @@ _023138B4:
 	bne _02313914
 	ldr r1, _02313990 ; =0x00000DCD
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #2
 	bl ov29_0234B0B4
@@ -2318,7 +2318,7 @@ _023138B4:
 _02313914:
 	ldr r1, _02313994 ; =0x00000DCC
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #2
 	bl ov29_0234B0B4
@@ -2388,7 +2388,7 @@ BoostOffensiveStat: ; 0x0231399C
 	beq _02313A24
 	ldr r1, _02313AF0 ; =0x00000DCB
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2396,7 +2396,7 @@ BoostOffensiveStat: ; 0x0231399C
 _02313A24:
 	ldr r1, _02313AF4 ; =0x00000DCA
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2411,7 +2411,7 @@ _02313A3C:
 	bne _02313A78
 	ldr r1, _02313AF8 ; =0x00000DCD
 	mov r0, r5
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r5
 	mov r0, #2
 	bl ov29_0234B0B4
@@ -2419,7 +2419,7 @@ _02313A3C:
 _02313A78:
 	ldr r1, _02313AFC ; =0x00000DCC
 	mov r0, r5
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r5
 	mov r0, #2
 	bl ov29_0234B0B4
@@ -2491,7 +2491,7 @@ BoostDefensiveStat: ; 0x02313B08
 	beq _02313B90
 	ldr r1, _02313C5C ; =0x00000DC9
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2499,7 +2499,7 @@ BoostDefensiveStat: ; 0x02313B08
 _02313B90:
 	ldr r1, _02313C60 ; =0x00000DC8
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2514,7 +2514,7 @@ _02313BA8:
 	bne _02313BE4
 	ldr r1, _02313C64 ; =0x00000DCD
 	mov r0, r5
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r5
 	mov r0, #2
 	bl ov29_0234B0B4
@@ -2522,7 +2522,7 @@ _02313BA8:
 _02313BE4:
 	ldr r1, _02313C68 ; =0x00000DCC
 	mov r0, r5
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r5
 	mov r0, #2
 	bl ov29_0234B0B4
@@ -2641,7 +2641,7 @@ ApplyOffensiveStatMultiplier: ; 0x02313D40
 	beq _02313D94
 	ldr r1, _02313F48 ; =0x00000DCB
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2649,7 +2649,7 @@ ApplyOffensiveStatMultiplier: ; 0x02313D40
 _02313D94:
 	ldr r1, _02313F4C ; =0x00000DCA
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2794,7 +2794,7 @@ ApplyDefensiveStatMultiplier: ; 0x02313F64
 	beq _02313FB8
 	ldr r1, _023140CC ; =0x00000DC9
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2802,7 +2802,7 @@ ApplyDefensiveStatMultiplier: ; 0x02313F64
 _02313FB8:
 	ldr r1, _023140D0 ; =0x00000DC8
 	mov r0, r4
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0B4
@@ -2913,7 +2913,7 @@ BoostHitChanceStat: ; 0x023140E4
 	beq _0231415C
 	ldr r1, _02314218 ; =0x00000DC7
 	mov r0, r8
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r8
 	mov r0, r4
 	bl ov29_0234B0B4
@@ -2921,7 +2921,7 @@ BoostHitChanceStat: ; 0x023140E4
 _0231415C:
 	ldr r1, _0231421C ; =0x00000DC6
 	mov r0, r8
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r8
 	mov r0, r4
 	bl ov29_0234B0B4
@@ -2998,7 +2998,7 @@ LowerHitChanceStat: ; 0x0231422C
 	beq _02314284
 	ldr r1, _023143D0 ; =0x00000DC7
 	mov r0, r5
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r5
 	mov r0, r4
 	bl ov29_0234B0B4
@@ -3006,7 +3006,7 @@ LowerHitChanceStat: ; 0x0231422C
 _02314284:
 	ldr r1, _023143D4 ; =0x00000DC6
 	mov r0, r5
-	bl CopyStringFromMessageId
+	bl CopyStringFromId
 	mov r1, r5
 	mov r0, r4
 	bl ov29_0234B0B4

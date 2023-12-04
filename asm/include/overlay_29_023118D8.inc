@@ -4,7 +4,7 @@
 .public CalcSpeedStageWrapper
 .public CalcStatusDuration
 .public ChangeShayminForme
-.public CopyStringFromMessageId
+.public CopyStringFromId
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public DungeonRandInt

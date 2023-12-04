@@ -403,7 +403,7 @@ ov29_022F0AA4: ; 0x022F0AA4
 	ldmneia sp!, {r3, pc}
 	ldr r0, _022F0AD8 ; =ov29_023526A8
 	ldr r1, _022F0ADC ; =ov29_022F0B10
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _022F0AD4 ; =ov29_023535A4
 	strb r0, [r1]
 	ldmia sp!, {r3, pc}
@@ -421,7 +421,7 @@ ov29_022F0AE0: ; 0x022F0AE0
 	ldrsb r0, [r0]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _022F0B0C ; =ov29_023535A4
 	mvn r1, #1
 	strb r1, [r0]

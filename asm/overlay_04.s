@@ -1412,7 +1412,7 @@ _0233DCCC:
 	ldr r3, _0233E2B8 ; =0x000008E4
 	mov r2, #0
 	str r5, [sp, #8]
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	ldr r1, _0233E25C ; =ov04_0233F644
 	ldr r1, [r1]
 	strb r0, [r1, #8]
@@ -1422,7 +1422,7 @@ _0233DD48:
 	b _0233EEB4
 _0233DD54:
 	ldrsb r0, [r4, #8]
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0233EEB4
 	ldr r0, _0233E25C ; =ov04_0233F644
@@ -1431,7 +1431,7 @@ _0233DD54:
 	ldrsb r0, [r0, #8]
 	cmp r0, r1
 	beq _0233DD90
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	ldr r0, _0233E25C ; =ov04_0233F644
 	mvn r1, #1
 	ldr r0, [r0]

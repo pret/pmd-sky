@@ -1185,7 +1185,7 @@ sub_01FF905C: ; 0x01FF905C
 	mov r6, r1
 	mov r5, r2
 	mov r8, r3
-	bl sub_020275F8
+	bl GetWindow
 	mov r7, r0
 	mov r0, sb
 	bl sub_0202760C

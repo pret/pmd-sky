@@ -91,7 +91,7 @@
 .public SPATK_STAT_IDX
 .public SpawnDroppedItem
 .public STEEL_WING_BOOST_DEFENSE_CHANCE
-.public StringFromMessageId
+.public StringFromId
 .public sub_02025888
 .public sub_02050FF8
 .public sub_02054EC8

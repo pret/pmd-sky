@@ -6,7 +6,7 @@
 	arm_func_start EntryOverlay31
 EntryOverlay31: ; 0x02382820
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238285C ; =DUNGEON_D_BOX_LAYOUT_3
+	ldr r0, _0238285C ; =DUNGEON_WINDOW_PARAMS_3
 	bl sub_020348E4
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
@@ -21,7 +21,7 @@ EntryOverlay31: ; 0x02382820
 	str r0, [r1, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238285C: .word DUNGEON_D_BOX_LAYOUT_3
+_0238285C: .word DUNGEON_WINDOW_PARAMS_3
 _02382860: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	arm_func_end EntryOverlay31
 
@@ -51,7 +51,7 @@ ov31_02382864: ; 0x02382864
 	bl CeilFixedPoint
 	str r0, [sp, #0x22c]
 	ldr r0, _02382AA0 ; =0x000008B2
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #0x204
 	mov r2, r0
 	str r1, [sp]
@@ -67,7 +67,7 @@ ov31_02382864: ; 0x02382864
 	bl GetMoneyCarried
 	str r0, [sp, #0x228]
 	ldr r0, _02382AA4 ; =0x000008B5
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #0x204
 	mov r2, r0
 	str r1, [sp]
@@ -84,7 +84,7 @@ ov31_02382864: ; 0x02382864
 	bl GetApparentWeather
 	str r0, [sp, #0x204]
 	ldr r0, _02382AA8 ; =0x000008B6
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #0x204
 	mov r2, r0
 	str r1, [sp]
@@ -100,7 +100,7 @@ ov31_02382864: ; 0x02382864
 	bl sub_0204F9E0
 	str r0, [sp, #0x228]
 	ldr r0, _02382AAC ; =0x000008B7
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #0x204
 	mov r2, r0
 	str r1, [sp]
@@ -150,7 +150,7 @@ _02382A08:
 	movgt r0, r5
 	str r0, [sp, #0x22c]
 	ldr r0, _02382ABC ; =0x000008B8
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	add r0, sp, #0x104
 	mov r1, #0x100
@@ -207,7 +207,7 @@ DungeonMenuSwitch: ; 0x02382AC0
 	str r5, [sp]
 	bl PreprocessString
 	mov r0, r4
-	bl sub_020275F8
+	bl GetWindow
 	mov r5, r0
 	mov r0, r6
 	bl sub_020265A8
@@ -280,23 +280,23 @@ _02382BEC:
 	str r1, [sp, #0x64]
 	bl Arm9LoadUnkFieldNa0x2029EC8
 	str r0, [sp, #4]
-	ldr r0, _02382D90 ; =DUNGEON_D_BOX_LAYOUT_1
+	ldr r0, _02382D90 ; =DUNGEON_WINDOW_PARAMS_1
 	ldr r1, _02382D94 ; =0x00000233
-	ldr r3, _02382D98 ; =DUNGEON_MAIN_MENU
+	ldr r3, _02382D98 ; =DUNGEON_MAIN_MENU_ITEMS
 	add r2, sp, #4
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r2, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r1, _02382D9C ; =ov31_02382864
 	ldr r2, [r2]
 	strb r0, [r2]
-	ldr r0, _02382DA0 ; =DUNGEON_D_BOX_LAYOUT_4
-	bl CreateTextBox1
+	ldr r0, _02382DA0 ; =DUNGEON_WINDOW_PARAMS_4
+	bl CreateTextBox
 	ldr r2, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r1, _02382DA4 ; =DungeonMenuSwitch
 	ldr r2, [r2]
 	strb r0, [r2, #2]
-	ldr r0, _02382DA8 ; =DUNGEON_D_BOX_LAYOUT_2
-	bl CreateTextBox1
+	ldr r0, _02382DA8 ; =DUNGEON_WINDOW_PARAMS_2
+	bl CreateTextBox
 	ldr r1, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r2, [r1]
 	strb r0, [r2, #1]
@@ -307,7 +307,7 @@ _02382BEC:
 	b _02382D80
 _02382C6C:
 	ldrsb r0, [r2]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	beq _02382D20
 	ldr r0, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
@@ -384,13 +384,13 @@ _02382D84:
 	ldmia sp!, {pc}
 	.align 2, 0
 _02382D8C: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
-_02382D90: .word DUNGEON_D_BOX_LAYOUT_1
+_02382D90: .word DUNGEON_WINDOW_PARAMS_1
 _02382D94: .word 0x00000233
-_02382D98: .word DUNGEON_MAIN_MENU
+_02382D98: .word DUNGEON_MAIN_MENU_ITEMS
 _02382D9C: .word ov31_02382864
-_02382DA0: .word DUNGEON_D_BOX_LAYOUT_4
+_02382DA0: .word DUNGEON_WINDOW_PARAMS_4
 _02382DA4: .word DungeonMenuSwitch
-_02382DA8: .word DUNGEON_D_BOX_LAYOUT_2
+_02382DA8: .word DUNGEON_WINDOW_PARAMS_2
 	arm_func_end ov31_02382B54
 
 	arm_func_start ov31_02382DAC
@@ -401,15 +401,15 @@ ov31_02382DAC: ; 0x02382DAC
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldrsb r0, [r0, #1]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	ldr r0, [r0]
 	bl MemFree
@@ -540,7 +540,7 @@ ov31_02382F68: ; 0x02382F68
 	ldr r0, [r1, #0x14]
 	mov r0, r0, lsl #2
 	ldrh r0, [r2, r0]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	ldr ip, _02382FB4 ; =ov31_0238A2A0
 	mov r0, r4
@@ -575,12 +575,12 @@ _02382FDC: ; jump table
 	b _0238320C ; case 5
 _02382FF4:
 	ldr r2, [r1, #0x14]
-	ldr r3, _0238321C ; =DUNGEON_SUBMENU_1
-	ldr r0, _02383220 ; =DUNGEON_D_BOX_LAYOUT_7
+	ldr r3, _0238321C ; =DUNGEON_SUBMENU_ITEMS_1
+	ldr r0, _02383220 ; =DUNGEON_WINDOW_PARAMS_7
 	add r3, r3, r2, lsl #5
 	ldr r1, _02383224 ; =0x00400013
 	mov r2, #0
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _02383218 ; =ov31_0238A2A0
 	ldr r3, _02383228 ; =ov31_02389E22
 	ldr r4, [r1, #4]
@@ -589,7 +589,7 @@ _02382FF4:
 	ldr r0, [r1, #4]
 	mov r4, #0
 	ldr r1, [r0, #0x14]
-	ldr r0, _0238322C ; =DUNGEON_D_BOX_LAYOUT_6
+	ldr r0, _0238322C ; =DUNGEON_WINDOW_PARAMS_6
 	mov r1, r1, lsl #2
 	ldrh r3, [r3, r1]
 	str r2, [sp, #0xac]
@@ -599,14 +599,14 @@ _02382FF4:
 	ldr r3, _02383234 ; =ov31_02382F68
 	add r2, sp, #0xa0
 	str r4, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r2, _02383218 ; =ov31_0238A2A0
 	mov r1, r4
 	ldr r3, [r2, #4]
 	strb r0, [r3]
 	ldr r0, [r2, #4]
 	ldrsb r0, [r0]
-	bl sub_020307A4
+	bl SetAdvancedTextBoxField0x1C4
 	ldr r0, _02383218 ; =ov31_0238A2A0
 	mov r1, #1
 	ldr r0, [r0, #4]
@@ -614,7 +614,7 @@ _02382FF4:
 	b _0238320C
 _0238308C:
 	ldrsb r0, [r1, #1]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _0238320C
 	ldr r0, _02383218 ; =ov31_0238A2A0
@@ -687,14 +687,14 @@ _02383170:
 	mov r1, r1, lsl #2
 	ldrh r1, [r0, r1]
 	mov ip, #1
-	ldr r0, _0238323C ; =DUNGEON_D_BOX_LAYOUT_5
+	ldr r0, _0238323C ; =DUNGEON_WINDOW_PARAMS_5
 	strh r1, [sp, #0x10]
 	str ip, [sp]
 	ldr r1, _02383240 ; =0x00001812
 	ldr r3, _02383244 ; =ov31_02383248
 	add r2, sp, #8
 	str ip, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02383218 ; =ov31_0238A2A0
 	mov r2, #4
 	ldr r3, [r1, #4]
@@ -704,13 +704,13 @@ _02383170:
 	b _0238320C
 _023831DC:
 	ldrsb r0, [r1, #2]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	bne _0238320C
 	ldr r0, _02383218 ; =ov31_0238A2A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _02383218 ; =ov31_0238A2A0
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -722,15 +722,15 @@ _02383210:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02383218: .word ov31_0238A2A0
-_0238321C: .word DUNGEON_SUBMENU_1
-_02383220: .word DUNGEON_D_BOX_LAYOUT_7
+_0238321C: .word DUNGEON_SUBMENU_ITEMS_1
+_02383220: .word DUNGEON_WINDOW_PARAMS_7
 _02383224: .word 0x00400013
 _02383228: .word ov31_02389E22
-_0238322C: .word DUNGEON_D_BOX_LAYOUT_6
+_0238322C: .word DUNGEON_WINDOW_PARAMS_6
 _02383230: .word 0x80000813
 _02383234: .word ov31_02382F68
 _02383238: .word ov29_0237C91C
-_0238323C: .word DUNGEON_D_BOX_LAYOUT_5
+_0238323C: .word DUNGEON_WINDOW_PARAMS_5
 _02383240: .word 0x00001812
 _02383244: .word ov31_02383248
 	arm_func_end ov31_02382FBC
@@ -745,7 +745,7 @@ ov31_02383248: ; 0x02383248
 	ldr r0, [r1, #0x14]
 	mov r0, r0, lsl #2
 	ldrh r0, [r2, r0]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	mov r0, r4
 	mov r1, #4
@@ -766,7 +766,7 @@ ov31_0238328C: ; 0x0238328C
 	ldrsb r0, [r0]
 	cmp r0, r1
 	beq _023832BC
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _023832EC ; =ov31_0238A2A0
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -778,7 +778,7 @@ _023832BC:
 	ldrsb r0, [r0, #1]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _023832EC ; =ov31_0238A2A0
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -1087,7 +1087,7 @@ ov31_0238367C: ; 0x0238367C
 	str r2, [sp, #0x38]
 	str lr, [sp]
 	ldrsh r4, [r0, #4]
-	ldr r0, _02383728 ; =DUNGEON_D_BOX_LAYOUT_8
+	ldr r0, _02383728 ; =DUNGEON_WINDOW_PARAMS_8
 #ifdef EUROPE
 	add ip, r4, #0xd3
 #else
@@ -1097,18 +1097,18 @@ ov31_0238367C: ; 0x0238367C
 	mov ip, r4, lsl #0x10
 	mov r4, ip, lsr #0x10
 	stmib sp, {r4, lr}
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	mov r5, r0
 	mov r4, #0x16
 _023836F0:
 	mov r0, r4
 	bl AdvanceFrame
 	mov r0, r5
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _023836F0
 	mov r0, r5
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	mov r0, #0x16
 	bl AdvanceFrame
 	add sp, sp, #0x5c
@@ -1116,7 +1116,7 @@ _023836F0:
 	.align 2, 0
 _02383720: .word 0x00001013
 _02383724: .word 0x000008E4
-_02383728: .word DUNGEON_D_BOX_LAYOUT_8
+_02383728: .word DUNGEON_WINDOW_PARAMS_8
 	arm_func_end ov31_0238367C
 
 	arm_func_start ov31_0238372C
@@ -1164,7 +1164,7 @@ _02383798:
 	bne _02383798
 _023837B4:
 	ldrsb r0, [r7]
-	bl ov10_022BCCF4
+	bl CloseInventoryMenu
 	mvn r0, #1
 	strb r0, [r7]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1185,7 +1185,7 @@ ov31_023837C8: ; 0x023837C8
 	ldrsb r0, [r0, #0x94]
 	cmp r0, r1
 	beq _02383800
-	bl sub_0202F918
+	bl CloseTextBox2
 _02383800:
 	ldr r0, _02383850 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
@@ -1194,7 +1194,7 @@ _02383800:
 	ldrsb r0, [r0, #0x95]
 	cmp r0, r1
 	beq _02383820
-	bl sub_0202F918
+	bl CloseTextBox2
 _02383820:
 	ldr r0, _02383850 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
@@ -1217,7 +1217,7 @@ ov31_02383854: ; 0x02383854
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _0238387C ; =0x000008E6
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, #2
 	mov r3, r0
 	mov r0, r4
@@ -1410,7 +1410,7 @@ _02383B08:
 	ldrsb r0, [r0, #0x93]
 	cmp r0, r1
 	beq _02383B48
-	bl ov10_022BCD68
+	bl IsInventoryMenuActive
 	cmp r0, #0
 	bne _02383D78
 	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
@@ -1522,18 +1522,18 @@ _02383C44:
 	add r1, r1, #0x1000
 	strb r0, [r1, #0x193]
 	beq _02383CEC
-	ldr r0, _023848B0 ; =DUNGEON_D_BOX_LAYOUT_10
+	ldr r0, _023848B0 ; =DUNGEON_WINDOW_PARAMS_10
 	ldr r1, _023848B4 ; =ov31_02383854
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r1, [r1]
 	add r1, r1, #0x1000
 	strb r0, [r1, #0x194]
 	b _02383D78
 _02383CEC:
-	ldr r0, _023848B8 ; =DUNGEON_D_BOX_LAYOUT_11
+	ldr r0, _023848B8 ; =DUNGEON_WINDOW_PARAMS_11
 	mov r1, #0
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r2, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r3, #0
 	ldr r1, [r2]
@@ -1557,7 +1557,7 @@ _02383D1C:
 	add r2, sp, #0x500
 	str r4, [sp, #8]
 	mov r4, #0
-	ldr r0, _023848C0 ; =DUNGEON_D_BOX_LAYOUT_12
+	ldr r0, _023848C0 ; =DUNGEON_WINDOW_PARAMS_12
 	ldr r1, _023848C4 ; =0x00400813
 	ldr r3, _023848AC ; =ov31_02383478
 	add r2, r2, #0x9c
@@ -1591,7 +1591,7 @@ _02383D8C:
 	ldr r0, [r4]
 	add r0, r0, #0x1100
 	ldrsb r0, [r0, #0x93]
-	bl ov10_022BCE58
+	bl PopInventoryMenuField0x1A3
 	str r0, [sp, #0x2c]
 	ldr r0, [r4]
 	add r1, r0, #0x1100
@@ -1658,7 +1658,7 @@ _02383D8C:
 	add r0, sp, #0x4c
 	mov r1, #0x400
 	mov r3, #0
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	ldr r0, _023848A8 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	ldr r0, [sp, #0x10]
@@ -1677,7 +1677,7 @@ _02383F00:
 	add r0, r0, #0x2f00
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	add r0, sp, #0x4c
 	bl strcpy
@@ -1731,7 +1731,7 @@ _02383F7C:
 	add r0, r0, #0x2f00
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, r0
 	add r0, sp, #0x4c
 	bl strcpy
@@ -1770,7 +1770,7 @@ _02384054:
 	ldr r0, [r4]
 	add r0, r0, #0x1100
 	ldrsb r0, [r0, #0x93]
-	bl ov10_022BCD68
+	bl IsInventoryMenuActive
 	cmp r0, #0
 	beq _02384088
 	ldr r0, [r4]
@@ -1784,7 +1784,7 @@ _02384088:
 	ldr r0, [r4]
 	add r0, r0, #0x1100
 	ldrsb r0, [r0, #0x93]
-	bl ov10_022BCD68
+	bl IsInventoryMenuActive
 	cmp r0, #0
 	bne _023841A4
 	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
@@ -2344,11 +2344,11 @@ _023848A0: .word 0x000008E5
 _023848A4: .word BAG_ITEMS_PTR_MIRROR
 _023848A8: .word DUNGEON_PTR
 _023848AC: .word ov31_02383478
-_023848B0: .word DUNGEON_D_BOX_LAYOUT_10
+_023848B0: .word DUNGEON_WINDOW_PARAMS_10
 _023848B4: .word ov31_02383854
-_023848B8: .word DUNGEON_D_BOX_LAYOUT_11
+_023848B8: .word DUNGEON_WINDOW_PARAMS_11
 _023848BC: .word 0x000008E3
-_023848C0: .word DUNGEON_D_BOX_LAYOUT_12
+_023848C0: .word DUNGEON_WINDOW_PARAMS_12
 _023848C4: .word 0x00400813
 _023848C8: .word 0x000008E7
 _023848CC: .word ov31_02389F5C
@@ -2669,9 +2669,9 @@ _02384C9C:
 	ldr r1, _02385130 ; =0x00000213
 	add r3, r3, #0x1000
 	cmp r0, #0
-	ldrne r0, _02385134 ; =DUNGEON_D_BOX_LAYOUT_13
-	ldreq r0, _02385138 ; =DUNGEON_D_BOX_LAYOUT_9
-	bl sub_0202A5CC
+	ldrne r0, _02385134 ; =DUNGEON_WINDOW_PARAMS_13
+	ldreq r0, _02385138 ; =DUNGEON_WINDOW_PARAMS_9
+	bl CreateParentMenuFromStringIds
 	ldr r4, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mov r8, #0x14
 	ldr r1, [r4]
@@ -2681,7 +2681,7 @@ _02384D78:
 	ldr r0, [r4]
 	add r0, r0, #0x1100
 	ldrsb r0, [r0, #0x92]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02384E24
 	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
@@ -2775,7 +2775,7 @@ _02384EC4:
 	ldrsb r0, [r0, #0x94]
 	cmp r0, r1
 	beq _02384F00
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2789,7 +2789,7 @@ _02384F00:
 	ldrsb r0, [r0, #0x95]
 	cmp r0, r1
 	beq _02384F34
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2841,7 +2841,7 @@ _02384FC0:
 	ldrsb r0, [r0, #0x94]
 	cmp r0, r1
 	beq _02384FF4
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2855,7 +2855,7 @@ _02384FF4:
 	ldrsb r0, [r0, #0x95]
 	cmp r0, r1
 	beq _02385028
-	bl sub_0202F918
+	bl CloseTextBox2
 	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	mvn r1, #1
 	ldr r0, [r0]
@@ -2935,8 +2935,8 @@ _0238511C:
 _02385128: .word ov29_0237C91C
 _0238512C: .word 0x000008E8
 _02385130: .word 0x00000213
-_02385134: .word DUNGEON_D_BOX_LAYOUT_13
-_02385138: .word DUNGEON_D_BOX_LAYOUT_9
+_02385134: .word DUNGEON_WINDOW_PARAMS_13
+_02385138: .word DUNGEON_WINDOW_PARAMS_9
 	arm_func_end ov31_023838E4
 
 	arm_func_start ov31_0238513C
@@ -3166,13 +3166,13 @@ HandleMovesMenu: ; 0x02385404
 	ldr r0, [sp, #0x154]
 	cmp r0, #1
 	bne _0238547C
-	ldr r0, _02385F74 ; =DUNGEON_D_BOX_LAYOUT_14
+	ldr r0, _02385F74 ; =DUNGEON_WINDOW_PARAMS_14
 	bl CreateDialogueBox
 	mov r1, #0
 	str r0, [sp, #0x14]
 	bl sub_0202F474
 	ldr r0, _02385F78 ; =0x00003FCD
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	ldr r0, [sp, #0x14]
 	ldr r1, _02385F7C ; =0x00000404
@@ -3180,13 +3180,13 @@ HandleMovesMenu: ; 0x02385404
 	bl ShowStringInDialogueBox
 	b _023854AC
 _0238547C:
-	ldr r0, _02385F80 ; =DUNGEON_D_BOX_LAYOUT_16
+	ldr r0, _02385F80 ; =DUNGEON_WINDOW_PARAMS_16
 	bl CreateDialogueBox
 	mov r1, #0
 	str r0, [sp, #0x14]
 	bl sub_0202F474
 	ldr r0, _02385F84 ; =0x00003FCC
-	bl StringFromMessageId
+	bl StringFromId
 	mov r2, r0
 	ldr r0, [sp, #0x14]
 	ldr r1, _02385F7C ; =0x00000404
@@ -3810,11 +3810,11 @@ _02385C60:
 	cmp r3, #0
 	moveq r1, #3
 	streqb r1, [r0]
-	ldr r0, _02385F90 ; =DUNGEON_D_BOX_LAYOUT_15
+	ldr r0, _02385F90 ; =DUNGEON_WINDOW_PARAMS_15
 	ldr r1, _02385F94 ; =0x80000213
 	add r2, sp, #0x3c
 	add r3, sp, #0xd4
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	strb r0, [sp, #0x1c]
 	mov r0, #0x1b
 	bl AdvanceFrame
@@ -3884,7 +3884,7 @@ _02385CF4:
 	blt _02385D1C
 _02385D0C:
 	ldrsb r0, [sp, #0x1c]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02385CA0
 _02385D1C:
@@ -4021,11 +4021,11 @@ _02385EF0:
 	mov r4, #0
 _02385EFC:
 	ldr r0, [sp, #0x18]
-	bl sub_02030850
+	bl CloseAdvancedTextBox2
 	ldr r0, [sp, #0x14]
 	bl sub_0202F334
 	ldr r0, [sp, #0x14]
-	bl FreeDialogueBox
+	bl CloseDialogueBox
 	mov r0, #8
 	mov r1, #0x1e
 	bl ov29_022EA370
@@ -4052,14 +4052,14 @@ _02385F50:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02385F70: .word OVERLAY31_UNKNOWN_POINTER__NA_238A270
-_02385F74: .word DUNGEON_D_BOX_LAYOUT_14
+_02385F74: .word DUNGEON_WINDOW_PARAMS_14
 #ifdef EUROPE
 _02385F78: .word 0x00003FCF
 #else
 _02385F78: .word 0x00003FCD
 #endif
 _02385F7C: .word 0x00000404
-_02385F80: .word DUNGEON_D_BOX_LAYOUT_16
+_02385F80: .word DUNGEON_WINDOW_PARAMS_16
 #ifdef EUROPE
 _02385F84: .word 0x00003FCE
 #else
@@ -4067,7 +4067,7 @@ _02385F84: .word 0x00003FCC
 #endif
 _02385F88: .word DUNGEON_PTR
 _02385F8C: .word 0x000008DC
-_02385F90: .word DUNGEON_D_BOX_LAYOUT_15
+_02385F90: .word DUNGEON_WINDOW_PARAMS_15
 _02385F94: .word 0x80000213
 _02385F98: .word 0x0000099B
 _02385F9C: .word 0x000009A8
@@ -4144,7 +4144,7 @@ _02386070:
 	beq _0238608C
 	bl sub_02041A00
 	mov r0, r5
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	b _02386098
 _0238608C:
 	mov r0, r4
@@ -4544,11 +4544,11 @@ _023865B4:
 	cmp sl, #2
 	bne _02386694
 	mov r0, r4
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	mov r0, #0x1e
 	bl AdvanceFrame
 	mov r0, r4
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	mov r0, #0x1b
 	mov r4, sb
 	bl AdvanceFrame
@@ -4660,17 +4660,17 @@ _0238674C:
 	strh r0, [fp, r1]
 	add r0, fp, r2, lsl #3
 	str r8, [r0, #4]
-	ldr r0, _02386B18 ; =DUNGEON_D_BOX_LAYOUT_15
+	ldr r0, _02386B18 ; =DUNGEON_WINDOW_PARAMS_15
 	ldr r1, _02386B1C ; =0x00000213
 	add r2, sp, #0x24
 	mov r3, fp
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	str r0, [sp, #0x10]
 _023867A0:
 	mov r0, #0x1b
 	bl AdvanceFrame
 	ldr r0, [sp, #0x10]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _023867A0
 	ldr r0, [sp, #0x10]
@@ -4683,7 +4683,7 @@ _023867A0:
 	mov r0, #0x1b
 	bl AdvanceFrame
 	ldr r0, [sp, #0x10]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, [sp, #0xc]
 	cmp r0, #1
 	bne _023867F8
@@ -4694,12 +4694,12 @@ _023867F8:
 	mov r1, #0
 	bl ov29_022EA428
 	mov r0, r4
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 _0238680C:
 	mov r0, #0x1b
 	bl AdvanceFrame
 	mov r0, r4
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	bne _0238680C
 	mov r0, #0x1b
@@ -4723,7 +4723,7 @@ _0238680C:
 	mov r0, #0x1b
 	bl AdvanceFrame
 	mov r0, r4
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	mov r4, sb
 	bl sub_020407C0
 	cmp sl, #1
@@ -4776,11 +4776,11 @@ _02386924:
 	cmp r4, r0
 	beq _02386950
 	mov r0, r4
-	bl sub_0203088C
+	bl SetAdvancedTextBoxState5
 	mov r0, #0x1b
 	bl AdvanceFrame
 	mov r0, r4
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	mvn r4, #1
 	bl sub_020407C0
 _02386950:
@@ -4913,7 +4913,7 @@ _02386AE8:
 _02386B0C: .word OVERLAY31_UNKNOWN_POINTER__NA_238A270
 _02386B10: .word ov29_0235352C
 _02386B14: .word 0x000008DC
-_02386B18: .word DUNGEON_D_BOX_LAYOUT_15
+_02386B18: .word DUNGEON_WINDOW_PARAMS_15
 _02386B1C: .word 0x00000213
 _02386B20: .word 0x000008D6
 _02386B24: .word 0x000008D7
@@ -4931,7 +4931,7 @@ ov31_02386B28: ; 0x02386B28
 	bl GetTile
 	mov r4, r0
 	ldr r0, _02386C0C ; =0x000008D1
-	bl StringFromMessageId
+	bl StringFromId
 	ldr r1, _02386C08 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	mov r3, r0
 	ldr r0, [r1]
@@ -4960,7 +4960,7 @@ _02386B98:
 	ldrb r1, [r0]
 	ldr r0, _02386C10 ; =0x000008D2
 	str r1, [sp, #0x14]
-	bl StringFromMessageId
+	bl StringFromId
 	add r1, sp, #4
 	mov r2, r0
 	str r1, [sp]
@@ -5006,7 +5006,7 @@ ov31_02386C14: ; 0x02386C14
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x60]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02386C68: .word OVERLAY31_UNKNOWN_POINTER__NA_238A27C
@@ -5025,9 +5025,9 @@ ov31_02386C6C: ; 0x02386C6C
 	str r5, [r0, #0x64]
 _02386C90:
 	bl ov29_022EA62C
-	ldr r0, _02386F10 ; =DUNGEON_D_BOX_LAYOUT_18
+	ldr r0, _02386F10 ; =DUNGEON_WINDOW_PARAMS_18
 	ldr r1, _02386F14 ; =ov31_02386B28
-	bl CreateTextBox1
+	bl CreateTextBox
 	ldr r1, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	ldr r1, [r1]
 	strb r0, [r1, #0x160]
@@ -5071,13 +5071,13 @@ _02386CF0:
 	add r1, r0, #0x58
 	bl ov31_0238513C
 	ldr r1, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
-	ldr r0, _02386F18 ; =DUNGEON_D_BOX_LAYOUT_17
+	ldr r0, _02386F18 ; =DUNGEON_WINDOW_PARAMS_17
 	ldr r3, [r1]
 	ldr r1, _02386F1C ; =0x00000213
 	add r4, r3, #0x58
 	add r2, sp, #0x5c
 	str r4, [sp, #0xbc]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r6, _02386F0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A27C
 	mov r4, #0x2d
 	ldr r1, [r6]
@@ -5088,7 +5088,7 @@ _02386D70:
 	ldr r0, [r6]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x61]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02386D70
 	ldr r0, [r6]
@@ -5122,7 +5122,7 @@ _02386D70:
 	str r3, [sp, #0x1c]
 	str r2, [sp]
 	ldrb r2, [r0]
-	ldr r0, _02386F24 ; =DUNGEON_D_BOX_LAYOUT_19
+	ldr r0, _02386F24 ; =DUNGEON_WINDOW_PARAMS_19
 	sub r3, r1, #0x740
 #ifdef EUROPE
 	add r2, r2, #0xdc
@@ -5135,18 +5135,18 @@ _02386D70:
 	str r2, [sp, #4]
 	mov r2, #0
 	str r2, [sp, #8]
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	mov r6, r0
 	mov r4, #0x16
 _02386E3C:
 	mov r0, r4
 	bl AdvanceFrame
 	mov r0, r6
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _02386E3C
 	mov r0, r6
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	mov r0, #0xb
 	mov r1, #0
 	bl ov29_022EA428
@@ -5197,12 +5197,12 @@ _02386EF8:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02386F0C: .word OVERLAY31_UNKNOWN_POINTER__NA_238A27C
-_02386F10: .word DUNGEON_D_BOX_LAYOUT_18
+_02386F10: .word DUNGEON_WINDOW_PARAMS_18
 _02386F14: .word ov31_02386B28
-_02386F18: .word DUNGEON_D_BOX_LAYOUT_17
+_02386F18: .word DUNGEON_WINDOW_PARAMS_17
 _02386F1C: .word 0x00000213
 _02386F20: .word 0x00001013
-_02386F24: .word DUNGEON_D_BOX_LAYOUT_19
+_02386F24: .word DUNGEON_WINDOW_PARAMS_19
 _02386F28: .word ov29_0237C91C
 	arm_func_end ov31_02386C6C
 
@@ -5221,7 +5221,7 @@ ov31_02386F2C: ; 0x02386F2C
 	ldrsb r0, [r0, #0x97]
 	cmp r0, r1
 	beq _02386F64
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 _02386F64:
 	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
@@ -5230,7 +5230,7 @@ _02386F64:
 	ldrsb r0, [r0, #0x98]
 	cmp r0, r1
 	beq _02386F98
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	bl sub_020407C0
 	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
@@ -5244,7 +5244,7 @@ _02386F98:
 	ldrsb r0, [r0, #0x96]
 	cmp r0, r1
 	beq _02386FB8
-	bl sub_0202F8FC
+	bl CloseTextBox
 _02386FB8:
 	ldr r0, _02387010 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r0, [r0]
@@ -5320,7 +5320,7 @@ TeamMenu: ; 0x0238704C
 	mov r3, r7
 	bl ov31_02388114
 	ldr r2, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
-	ldr r1, _02387620 ; =DUNGEON_D_BOX_LAYOUT_22
+	ldr r1, _02387620 ; =DUNGEON_WINDOW_PARAMS_22
 	ldr r3, [r2]
 	str r0, [r3, #0x7a8]
 	ldr r0, [r2]
@@ -5575,13 +5575,13 @@ _02387410:
 	bl Arm9LoadUnkFieldNa0x2029EC8
 	add r4, r0, #1
 	ldr r1, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
-	ldr r0, _02387630 ; =DUNGEON_D_BOX_LAYOUT_23
+	ldr r0, _02387630 ; =DUNGEON_WINDOW_PARAMS_23
 	ldr r3, [r1]
 	ldr r1, _02387634 ; =0x00000233
 	add r2, sp, #0x18
 	add r3, r3, #0x530
 	str r4, [sp, #0x18]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r4, _02387618 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mov r6, #0x1b
 	ldr r1, [r4]
@@ -5596,7 +5596,7 @@ _023874B0:
 	ldr r0, [r4]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0x94]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	ldr r0, [r4]
 	add r0, r0, #0x600
@@ -5686,11 +5686,11 @@ _023875F0:
 _02387614: .word 0x000007AC
 _02387618: .word OVERLAY31_UNKNOWN_POINTER__NA_238A280
 _0238761C: .word ov31_02387014
-_02387620: .word DUNGEON_D_BOX_LAYOUT_22
+_02387620: .word DUNGEON_WINDOW_PARAMS_22
 _02387624: .word DUNGEON_PTR
 _02387628: .word 0x00005AA5
 _0238762C: .word 0x00000A3C
-_02387630: .word DUNGEON_D_BOX_LAYOUT_23
+_02387630: .word DUNGEON_WINDOW_PARAMS_23
 _02387634: .word 0x00000233
 _02387638: .word ov29_0237C91C
 	arm_func_end TeamMenu
@@ -5807,7 +5807,7 @@ ov31_0238778C: ; 0x0238778C
 	ldr r0, [r1]
 	add r0, r0, #0x600
 	ldrh r0, [r0, #0x92]
-	bl StringFromMessageId
+	bl StringFromId
 	mov r1, #2
 	mov r3, r0
 	mov r0, r4
@@ -6115,16 +6115,16 @@ _02387B80:
 	orr r1, r1, #0x33
 	ldr r3, [r0]
 	str r2, [sp, #0x148]
-	ldr r0, _023880B8 ; =DUNGEON_D_BOX_LAYOUT_21
+	ldr r0, _023880B8 ; =DUNGEON_WINDOW_PARAMS_21
 	add r2, sp, #0xe8
 	orr r1, r1, #0x1200
-	bl sub_0202A690
+	bl CreateParentMenu
 	ldr r2, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r1, _023880BC ; =ov31_0238778C
 	ldr r2, [r2]
 	strb r0, [r2, #0x695]
-	ldr r0, _023880C0 ; =DUNGEON_D_BOX_LAYOUT_24
-	bl CreateTextBox1
+	ldr r0, _023880C0 ; =DUNGEON_WINDOW_PARAMS_24
+	bl CreateTextBox
 	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r3, _023880C4 ; =0x00000A36
 	ldr r2, [r1]
@@ -6144,12 +6144,12 @@ _02387B80:
 	strh r1, [r0, #0x92]
 	mov r5, #0
 	str r5, [sp]
-	ldr r0, _023880C8 ; =DUNGEON_D_BOX_LAYOUT_20
+	ldr r0, _023880C8 ; =DUNGEON_WINDOW_PARAMS_20
 	ldr r3, _023880CC ; =ov31_023877C4
 	add r2, sp, #0x180
 	mov r1, #0x800
 	str r5, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r1, [r1]
 	strb r0, [r1, #0x697]
@@ -6165,12 +6165,12 @@ _02387CA8:
 	strh r1, [r0, #0x92]
 	mov r5, #0
 	str r5, [sp]
-	ldr r0, _023880C8 ; =DUNGEON_D_BOX_LAYOUT_20
+	ldr r0, _023880C8 ; =DUNGEON_WINDOW_PARAMS_20
 	ldr r3, _023880CC ; =ov31_023877C4
 	add r2, sp, #0x180
 	mov r1, #0x800
 	str r5, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	ldr r1, [r1]
 	strb r0, [r1, #0x697]
@@ -6287,7 +6287,7 @@ _02387E6C:
 	bl sub_0200D310
 _02387E90:
 	ldr r0, [sp, #0xc]
-	bl sub_0203083C
+	bl SetAdvancedTextBoxField0x1C2
 _02387E98:
 	mov r0, r8
 	mov r1, #0
@@ -6305,7 +6305,7 @@ _02387EC0:
 	ldr r0, [r5]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0x95]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02387D10
 	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
@@ -6335,7 +6335,7 @@ _02387F28:
 	ldrsb r0, [r0, #0x97]
 	cmp r0, r1
 	beq _02387F58
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
 	ldr r0, [r0]
@@ -6348,7 +6348,7 @@ _02387F58:
 	ldrsb r0, [r0, #0x98]
 	cmp r0, r1
 	beq _02387F8C
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	bl sub_020407C0
 	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r1, #1
@@ -6359,7 +6359,7 @@ _02387F8C:
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0x96]
-	bl sub_0202F8FC
+	bl CloseTextBox
 	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	mvn r2, #1
 	ldr r1, [r0]
@@ -6435,11 +6435,11 @@ _023880A8: .word ov31_0238A074
 _023880AC: .word ov31_0238A07C
 _023880B0: .word ov31_0238A084
 _023880B4: .word 0x00000A3A
-_023880B8: .word DUNGEON_D_BOX_LAYOUT_21
+_023880B8: .word DUNGEON_WINDOW_PARAMS_21
 _023880BC: .word ov31_0238778C
-_023880C0: .word DUNGEON_D_BOX_LAYOUT_24
+_023880C0: .word DUNGEON_WINDOW_PARAMS_24
 _023880C4: .word 0x00000A36
-_023880C8: .word DUNGEON_D_BOX_LAYOUT_20
+_023880C8: .word DUNGEON_WINDOW_PARAMS_20
 _023880CC: .word ov31_023877C4
 _023880D0: .word 0x00000A3D
 _023880D4: .word OVERLAY31_UNKNOWN_STRUCT__NA_2389FE8
@@ -6741,7 +6741,7 @@ ov31_02388444: ; 0x02388444
 	orr r1, r3, r1
 	mov r0, r5
 	add r3, r6, #0x90
-	bl sub_0202A730
+	bl CreateParentMenuWrapper
 	b _0238851C
 _023884FC:
 	cmp r4, #0
@@ -6751,7 +6751,7 @@ _023884FC:
 	mov r0, r5
 	orr r1, r1, #0x1200
 	add r3, r6, #0x90
-	bl sub_0202A690
+	bl CreateParentMenu
 _0238851C:
 	strb r0, [r6]
 	add sp, sp, #0x98
@@ -6826,7 +6826,7 @@ _023885DC:
 	bne _02388638
 	add r0, sl, #0x5c0
 	mov r1, #0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 	mov r0, #2
 	str r0, [r4, #0x400]
 	ldr r0, [sl, #0x6b8]
@@ -6835,10 +6835,10 @@ _023885DC:
 _02388638:
 	mov r1, r5
 	add r0, sl, #0x5c0
-	bl PlayMenuOptionSound
+	bl PlayWindowInputSound
 _02388644:
 	ldrsb r0, [sl]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _023886A8
 	ldrsb r0, [sl]
@@ -6905,11 +6905,11 @@ _02388700: .word sub_0202A954
 
 	arm_func_start ov31_02388704
 ov31_02388704: ; 0x02388704
-	ldr ip, _02388710 ; =sub_02028284
+	ldr ip, _02388710 ; =GetWindowRectangle
 	ldrsb r0, [r0]
 	bx ip
 	.align 2, 0
-_02388710: .word sub_02028284
+_02388710: .word GetWindowRectangle
 	arm_func_end ov31_02388704
 
 	arm_func_start ov31_02388714
@@ -6989,15 +6989,15 @@ _023887D8:
 	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	mov r5, #0x10
 	ldr r1, [r0]
-	ldr r0, _023889C0 ; =DUNGEON_D_BOX_LAYOUT_25
+	ldr r0, _023889C0 ; =DUNGEON_WINDOW_PARAMS_25
 	add r4, r1, #0xc
 	ldr r1, _023889C4 ; =0x00001A13
-	ldr r3, _023889C8 ; =DUNGEON_SUBMENU_5
+	ldr r3, _023889C8 ; =DUNGEON_SUBMENU_ITEMS_5
 	add r2, sp, #4
 	strh ip, [sp, #0xc]
 	str r5, [sp, #0x10]
 	str r4, [sp, #0x64]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r4, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	mov r5, #0x62
 	ldr r1, [r4]
@@ -7007,7 +7007,7 @@ _0238884C:
 	bl AdvanceFrame
 	ldr r0, [r4]
 	ldrsb r0, [r0, #4]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _0238884C
 	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
@@ -7022,7 +7022,7 @@ _0238884C:
 	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	ldr r1, [r0]
 	ldr r0, [r1, #8]
@@ -7104,9 +7104,9 @@ _023889B0:
 	.align 2, 0
 _023889B8: .word OVERLAY31_UNKNOWN_POINTER__NA_238A284
 _023889BC: .word 0x000008C2
-_023889C0: .word DUNGEON_D_BOX_LAYOUT_25
+_023889C0: .word DUNGEON_WINDOW_PARAMS_25
 _023889C4: .word 0x00001A13
-_023889C8: .word DUNGEON_SUBMENU_5
+_023889C8: .word DUNGEON_SUBMENU_ITEMS_5
 _023889CC: .word 0x000008C5
 _023889D0: .word 0x000008C6
 _023889D4: .word 0x0000025A
@@ -7306,12 +7306,12 @@ _02388C34:
 	str r0, [sp, #0x14]
 	mov ip, #0
 	str ip, [sp]
-	ldr r0, _02388D48 ; =DUNGEON_D_BOX_LAYOUT_26
+	ldr r0, _02388D48 ; =DUNGEON_WINDOW_PARAMS_26
 	ldr r1, _02388D4C ; =0x00001813
 	ldr r3, _02388D50 ; =ov31_02388D54
 	add r2, sp, #8
 	str ip, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _02388D30 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	ldr r2, [r1]
 	strb r0, [r2]
@@ -7322,7 +7322,7 @@ _02388C34:
 	b _02388D24
 _02388CD0:
 	ldrsb r0, [r1]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	bne _02388D24
 	ldr r0, _02388D30 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
@@ -7333,7 +7333,7 @@ _02388CD0:
 	b _02388D24
 _02388CF8:
 	ldrsb r0, [r1]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _02388D30 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	ldr r1, [r0]
 	ldr r0, [r1, #0xd94]
@@ -7356,7 +7356,7 @@ _02388D38: .word 0x00000B44
 _02388D3C: .word ov29_0238280C
 _02388D40: .word 0x00000B45
 _02388D44: .word 0x00000B46
-_02388D48: .word DUNGEON_D_BOX_LAYOUT_26
+_02388D48: .word DUNGEON_WINDOW_PARAMS_26
 _02388D4C: .word 0x00001813
 _02388D50: .word ov31_02388D54
 	arm_func_end RecruitmentSearchMenuLoop
@@ -7423,7 +7423,7 @@ _02388E1C:
 	b _02388E4C
 _02388E30:
 	ldr r0, _02388E5C ; =0x00000B47
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	mov r0, sl
 	mov r1, r8
@@ -7687,7 +7687,7 @@ ov31_023891A8: ; 0x023891A8
 	mov r5, r0
 	bl sub_02030A18
 	mov r4, r0
-	ldr r0, _023891F8 ; =DUNGEON_SUBMENU_6
+	ldr r0, _023891F8 ; =DUNGEON_SUBMENU_ITEMS_6
 	mov r1, r4, lsl #3
 	ldrh r1, [r0, r1]
 	mov r0, r5
@@ -7701,7 +7701,7 @@ ov31_023891A8: ; 0x023891A8
 #endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl StringFromMessageId
+	bl StringFromId
 	mov r3, r0
 	mov r0, r5
 	mov r1, #4
@@ -7709,7 +7709,7 @@ ov31_023891A8: ; 0x023891A8
 	bl sub_02026214
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023891F8: .word DUNGEON_SUBMENU_6
+_023891F8: .word DUNGEON_SUBMENU_ITEMS_6
 	arm_func_end ov31_023891A8
 
 	arm_func_start HelpMenuLoop
@@ -7733,13 +7733,13 @@ _0238921C: ; jump table
 _02389238:
 	ldr ip, _02389400 ; =0x00003FA7
 	mov r4, #0x10
-	ldr r0, _02389404 ; =DUNGEON_D_BOX_LAYOUT_27
+	ldr r0, _02389404 ; =DUNGEON_WINDOW_PARAMS_27
 	ldr r1, _02389408 ; =0x00401813
-	ldr r3, _0238940C ; =DUNGEON_SUBMENU_6
+	ldr r3, _0238940C ; =DUNGEON_SUBMENU_ITEMS_6
 	add r2, sp, #8
 	strh ip, [sp, #0x10]
 	str r4, [sp, #0x14]
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	ldr r1, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r2, #1
 	ldr r3, [r1]
@@ -7769,7 +7769,7 @@ _023892B8:
 	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _023893F0
 	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
@@ -7807,11 +7807,11 @@ _02389344:
 	mov r0, #0x10
 	str r0, [sp, #0x14]
 	ldr r1, [r2, #4]
-	ldr r0, _0238940C ; =DUNGEON_SUBMENU_6
+	ldr r0, _0238940C ; =DUNGEON_SUBMENU_ITEMS_6
 	mov r1, r1, lsl #3
 	ldrh r1, [r0, r1]
 	mov ip, #8
-	ldr r0, _02389410 ; =DUNGEON_D_BOX_LAYOUT_28
+	ldr r0, _02389410 ; =DUNGEON_WINDOW_PARAMS_28
 	strh r1, [sp, #0x10]
 	ldr r2, [r2, #4]
 	ldr r1, _02389414 ; =0x00009833
@@ -7821,7 +7821,7 @@ _02389344:
 	ldr r3, _02389418 ; =ov31_023891A8
 	add r2, sp, #8
 	str ip, [sp, #4]
-	bl CreateAdvancedTextBox1
+	bl CreateAdvancedTextBox
 	ldr r1, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r2, #4
 	ldr r3, [r1]
@@ -7831,13 +7831,13 @@ _02389344:
 	b _023893F0
 _023893A8:
 	ldrsb r0, [r2, #1]
-	bl sub_020308C4
+	bl IsAdvancedTextBoxActive
 	cmp r0, #0
 	bne _023893F0
 	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_020308A0
+	bl CloseAdvancedTextBox
 	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r1, #2
 	ldr r0, [r0]
@@ -7845,7 +7845,7 @@ _023893A8:
 	b _023893F0
 _023893DC:
 	ldrsb r0, [r2]
-	bl sub_0202AABC
+	bl CloseParentMenu
 	bl ov29_0234F77C
 	mov r0, #4
 	b _023893F4
@@ -7861,10 +7861,10 @@ _02389400: .word 0x00003FA9
 #else
 _02389400: .word 0x00003FA7
 #endif
-_02389404: .word DUNGEON_D_BOX_LAYOUT_27
+_02389404: .word DUNGEON_WINDOW_PARAMS_27
 _02389408: .word 0x00401813
-_0238940C: .word DUNGEON_SUBMENU_6
-_02389410: .word DUNGEON_D_BOX_LAYOUT_28
+_0238940C: .word DUNGEON_SUBMENU_ITEMS_6
+_02389410: .word DUNGEON_WINDOW_PARAMS_28
 _02389414: .word 0x00009833
 _02389418: .word ov31_023891A8
 	arm_func_end HelpMenuLoop
@@ -7963,11 +7963,11 @@ ov31_0238948C: ; 0x0238948C
 	add r0, r5, #0x78
 	str r0, [sp, #0xe4]
 _02389560:
-	ldr r0, _023898F8 ; =DUNGEON_D_BOX_LAYOUT_31
+	ldr r0, _023898F8 ; =DUNGEON_WINDOW_PARAMS_31
 	ldr r1, _023898FC ; =0x80401813
 	add r2, sp, #0x9c
 	add r3, r5, #0xc4
-	bl sub_0202A690
+	bl CreateParentMenu
 	strb r0, [r5]
 _02389578:
 	mov r0, #0x3d
@@ -7979,7 +7979,7 @@ _02389578:
 	mov r0, #0
 	bl GetPressedButtons
 	ldrsb r0, [r5]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _023897C8
 	ldrsb r0, [r5]
@@ -8036,11 +8036,11 @@ _02389640:
 	add r0, r5, #1
 	str r1, [r2, #0x10]
 	bl ov29_0234E988
-	ldr r0, _02389908 ; =DUNGEON_D_BOX_LAYOUT_30
+	ldr r0, _02389908 ; =DUNGEON_WINDOW_PARAMS_30
 	ldr r1, _0238990C ; =0x80000213
 	add r2, sp, #4
 	add r3, r5, #4
-	bl sub_0202A5CC
+	bl CreateParentMenuFromStringIds
 	strb r0, [r5, #1]
 	mvn r8, #0
 	mov r4, #0x3d
@@ -8048,7 +8048,7 @@ _02389694:
 	mov r0, r4
 	bl AdvanceFrame
 	ldrsb r0, [r5, #1]
-	bl sub_0202AB40
+	bl IsParentMenuActive
 	cmp r0, #0
 	bne _02389694
 	ldrsb r0, [r5, #1]
@@ -8214,11 +8214,11 @@ _023898B0:
 	.align 2, 0
 _023898F0: .word 0x00000F5F
 _023898F4: .word 0x00000F5E
-_023898F8: .word DUNGEON_D_BOX_LAYOUT_31
+_023898F8: .word DUNGEON_WINDOW_PARAMS_31
 _023898FC: .word 0x80401813
 _02389900: .word 0x00003F02
 _02389904: .word 0x00000A3C
-_02389908: .word DUNGEON_D_BOX_LAYOUT_30
+_02389908: .word DUNGEON_WINDOW_PARAMS_30
 _0238990C: .word 0x80000213
 _02389910: .word 0x00003F07
 _02389914: .word 0x00003F04
@@ -8250,7 +8250,7 @@ ov31_0238994C: ; 0x0238994C
 	mov r0, r1, asr #2
 	add r2, r2, r3, lsr #29
 	add ip, r1, r0, lsr #29
-	ldr r6, _023899B0 ; =DUNGEON_D_BOX_LAYOUT_32
+	ldr r6, _023899B0 ; =DUNGEON_WINDOW_PARAMS_32
 	mov lr, r2, asr #3
 	add r5, sp, #0
 	ldmia r6, {r0, r1, r2, r3}
@@ -8262,14 +8262,14 @@ ov31_0238994C: ; 0x0238994C
 	mov r2, r4
 	strb ip, [sp, #4]
 	strb r3, [sp, #5]
-	bl CreateTextBox2
+	bl CreateTextBoxWithArg
 	strb r0, [r4]
 	mov r0, #0xb
 	strb r0, [r4, #1]
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023899B0: .word DUNGEON_D_BOX_LAYOUT_32
+_023899B0: .word DUNGEON_WINDOW_PARAMS_32
 _023899B4: .word ov31_02389A04
 	arm_func_end ov31_0238994C
 
@@ -8292,7 +8292,7 @@ ov31_023899D4: ; 0x023899D4
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldrsb r0, [r4]
-	bl sub_0202F918
+	bl CloseTextBox2
 	mov r0, r4
 	bl MemFree
 	mov r0, #0
@@ -8319,7 +8319,7 @@ ov31_02389A04: ; 0x02389A04
 	add r0, sp, #4
 	mov r1, #0x40
 	str ip, [sp]
-	bl PreprocessStringFromMessageId
+	bl PreprocessStringFromId
 	add r3, sp, #4
 	mov r0, r5
 	mov r1, #4
@@ -8530,22 +8530,22 @@ ov31_02389CC0: ; 0x02389CC0
 	str r1, [sp]
 	str r2, [sp, #4]
 	mov r2, #0
-	ldr r0, _02389D74 ; =DUNGEON_D_BOX_LAYOUT_29
+	ldr r0, _02389D74 ; =DUNGEON_WINDOW_PARAMS_29
 	ldr r1, _02389D78 ; =0x00001013
 	ldr r3, _02389D7C ; =0x00000A3B
 	str r2, [sp, #8]
-	bl CreateScrollBox1
+	bl CreateScrollBoxSingle
 	mov r7, r0
 	mov r6, #0x3e
 _02389D1C:
 	mov r0, r6
 	bl AdvanceFrame
 	mov r0, r7
-	bl sub_0202E6E4
+	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _02389D1C
 	mov r0, r7
-	bl sub_0202E6C8
+	bl CloseScrollBox
 	mov r0, #0xb
 	mov r1, #0
 	bl ov29_022EA428
@@ -8562,7 +8562,7 @@ _02389D6C:
 	add sp, sp, #0x5c
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_02389D74: .word DUNGEON_D_BOX_LAYOUT_29
+_02389D74: .word DUNGEON_WINDOW_PARAMS_29
 _02389D78: .word 0x00001013
 _02389D7C: .word 0x00000A3B
 	arm_func_end ov31_02389CC0
@@ -8577,8 +8577,8 @@ ov31_02389D80: ; 0x02389D80
 	arm_func_end ov31_02389D80
 	; 0x02389D94
 
-	.global DUNGEON_D_BOX_LAYOUT_1
-DUNGEON_D_BOX_LAYOUT_1:
+	.global DUNGEON_WINDOW_PARAMS_1
+DUNGEON_WINDOW_PARAMS_1:
 	.byte 0x00, 0x00, 0x00, 0x00
 #ifdef EUROPE
 	.byte 0x02, 0x02, 0x07, 0x0C
@@ -8586,19 +8586,19 @@ DUNGEON_D_BOX_LAYOUT_1:
 	.byte 0x02, 0x02, 0x00, 0x0C
 #endif
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_2
-DUNGEON_D_BOX_LAYOUT_2:
+	.global DUNGEON_WINDOW_PARAMS_2
+DUNGEON_WINDOW_PARAMS_2:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0B, 0x04, 0x13, 0x02, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_3
-DUNGEON_D_BOX_LAYOUT_3:
+	.global DUNGEON_WINDOW_PARAMS_3
+DUNGEON_WINDOW_PARAMS_3:
 	.byte 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word ov31_02382DAC
 	.word ov31_02382B54
-	.global DUNGEON_D_BOX_LAYOUT_4
-DUNGEON_D_BOX_LAYOUT_4:
+	.global DUNGEON_WINDOW_PARAMS_4
+DUNGEON_WINDOW_PARAMS_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x10, 0x1C, 0x06, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_MAIN_MENU
-DUNGEON_MAIN_MENU:
+	.global DUNGEON_MAIN_MENU_ITEMS
+DUNGEON_MAIN_MENU_ITEMS:
 	.byte 0xAD, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xAE, 0x08, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0xAF, 0x08, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xB0, 0x08, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0xB1, 0x08, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xB3, 0x08, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
@@ -8619,20 +8619,20 @@ OVERLAY31_UNKNOWN_STRUCT__NA_2389E30:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.word ov31_023832F0
 	.word ov31_02382FBC
-	.global DUNGEON_D_BOX_LAYOUT_5
-DUNGEON_D_BOX_LAYOUT_5:
+	.global DUNGEON_WINDOW_PARAMS_5
+DUNGEON_WINDOW_PARAMS_5:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x1C, 0x0D, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_6
-DUNGEON_D_BOX_LAYOUT_6:
+	.global DUNGEON_WINDOW_PARAMS_6
+DUNGEON_WINDOW_PARAMS_6:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x13, 0x04, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_7
-DUNGEON_D_BOX_LAYOUT_7:
+	.global DUNGEON_WINDOW_PARAMS_7
+DUNGEON_WINDOW_PARAMS_7:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x17, 0x02, 0x07, 0x06, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_SUBMENU_1
-DUNGEON_SUBMENU_1:
+	.global DUNGEON_SUBMENU_ITEMS_1
+DUNGEON_SUBMENU_ITEMS_1:
 	.byte 0xAD, 0x09, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0xCF, 0x08, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0xD0, 0x08, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xAD, 0x09, 0x00, 0x00
@@ -8646,28 +8646,28 @@ DUNGEON_SUBMENU_1:
 OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0:
 	.byte 0x01, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x6A, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_8
-DUNGEON_D_BOX_LAYOUT_8:
+	.global DUNGEON_WINDOW_PARAMS_8
+DUNGEON_WINDOW_PARAMS_8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_9
-DUNGEON_D_BOX_LAYOUT_9:
+	.global DUNGEON_WINDOW_PARAMS_9
+DUNGEON_WINDOW_PARAMS_9:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x07, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_10
-DUNGEON_D_BOX_LAYOUT_10:
+	.global DUNGEON_WINDOW_PARAMS_10
+DUNGEON_WINDOW_PARAMS_10:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x08, 0x02
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_11
-DUNGEON_D_BOX_LAYOUT_11:
+	.global DUNGEON_WINDOW_PARAMS_11
+DUNGEON_WINDOW_PARAMS_11:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x14, 0x12, 0x02
 	.byte 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_12
-DUNGEON_D_BOX_LAYOUT_12:
+	.global DUNGEON_WINDOW_PARAMS_12
+DUNGEON_WINDOW_PARAMS_12:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x13, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_13
-DUNGEON_D_BOX_LAYOUT_13:
+	.global DUNGEON_WINDOW_PARAMS_13
+DUNGEON_WINDOW_PARAMS_13:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x17, 0x02, 0x07, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov31_02389F5C
@@ -8678,47 +8678,47 @@ OVERLAY31_JP_STRING:
 	.byte 0x0A, 0x0A, 0x2D, 0x2D, 0x2D, 0x2D, 0x81, 0x40, 0x20, 0x8F, 0x89, 0x8A, 0xFA, 0x83, 0x7C, 0x83
 	.byte 0x57, 0x83, 0x56, 0x83, 0x87, 0x83, 0x93, 0x3D, 0x25, 0x64, 0x81, 0x40, 0x2D, 0x2D, 0x2D, 0x2D
 	.byte 0x2D, 0x20, 0x0A, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_14
-DUNGEON_D_BOX_LAYOUT_14:
+	.global DUNGEON_WINDOW_PARAMS_14
+DUNGEON_WINDOW_PARAMS_14:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x11, 0x1C, 0x05, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_15
-DUNGEON_D_BOX_LAYOUT_15:
+	.global DUNGEON_WINDOW_PARAMS_15
+DUNGEON_WINDOW_PARAMS_15:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_16
-DUNGEON_D_BOX_LAYOUT_16:
+	.global DUNGEON_WINDOW_PARAMS_16
+DUNGEON_WINDOW_PARAMS_16:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x10, 0x1C, 0x04, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_17
-DUNGEON_D_BOX_LAYOUT_17:
+	.global DUNGEON_WINDOW_PARAMS_17
+DUNGEON_WINDOW_PARAMS_17:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x17, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_18
-DUNGEON_D_BOX_LAYOUT_18:
+	.global DUNGEON_WINDOW_PARAMS_18
+DUNGEON_WINDOW_PARAMS_18:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x13, 0x04, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_19
-DUNGEON_D_BOX_LAYOUT_19:
+	.global DUNGEON_WINDOW_PARAMS_19
+DUNGEON_WINDOW_PARAMS_19:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global OVERLAY31_UNKNOWN_STRUCT__NA_2389FE8
 OVERLAY31_UNKNOWN_STRUCT__NA_2389FE8:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x6A, 0x00, 0x01, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_20
-DUNGEON_D_BOX_LAYOUT_20:
+	.global DUNGEON_WINDOW_PARAMS_20
+DUNGEON_WINDOW_PARAMS_20:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x0E, 0x12, 0x04, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_21
-DUNGEON_D_BOX_LAYOUT_21:
+	.global DUNGEON_WINDOW_PARAMS_21
+DUNGEON_WINDOW_PARAMS_21:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0E, 0x02, 0x10, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_22
-DUNGEON_D_BOX_LAYOUT_22:
+	.global DUNGEON_WINDOW_PARAMS_22
+DUNGEON_WINDOW_PARAMS_22:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x0F, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_23
-DUNGEON_D_BOX_LAYOUT_23:
+	.global DUNGEON_WINDOW_PARAMS_23
+DUNGEON_WINDOW_PARAMS_23:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x13, 0x02, 0x0B, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_24
-DUNGEON_D_BOX_LAYOUT_24:
+	.global DUNGEON_WINDOW_PARAMS_24
+DUNGEON_WINDOW_PARAMS_24:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x0A, 0x02, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov31_0238A044
 ov31_0238A044:
@@ -8782,16 +8782,16 @@ ov31_0238A0E8:
 	.byte 0x5B, 0x73, 0x74, 0x72, 0x69, 0x6E, 0x67, 0x3A, 0x30, 0x5D, 0x5B, 0x43
 	.byte 0x4C, 0x55, 0x4D, 0x5F, 0x53, 0x45, 0x54, 0x3A, 0x38, 0x30, 0x5D, 0x5B, 0x73, 0x74, 0x72, 0x69
 	.byte 0x6E, 0x67, 0x3A, 0x31, 0x5D, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_25
-DUNGEON_D_BOX_LAYOUT_25:
+	.global DUNGEON_WINDOW_PARAMS_25
+DUNGEON_WINDOW_PARAMS_25:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x0C, 0x00
 	.byte 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_SUBMENU_5
-DUNGEON_SUBMENU_5:
+	.global DUNGEON_SUBMENU_ITEMS_5
+DUNGEON_SUBMENU_ITEMS_5:
 	.byte 0xC3, 0x08, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0xC4, 0x08, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global DUNGEON_D_BOX_LAYOUT_26
-DUNGEON_D_BOX_LAYOUT_26:
+	.global DUNGEON_WINDOW_PARAMS_26
+DUNGEON_WINDOW_PARAMS_26:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x1C, 0x12, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global OVERLAY31_UNKNOWN_STRUCT__NA_238A144
 OVERLAY31_UNKNOWN_STRUCT__NA_238A144:
@@ -8802,12 +8802,12 @@ OVERLAY31_UNKNOWN_STRUCT__NA_238A144:
 ov31_0238A154:
 	.byte 0x5B, 0x76, 0x61, 0x6C, 0x75, 0x65, 0x3A, 0x30, 0x3A, 0x33, 0x5D, 0x20, 0x5B, 0x43, 0x53, 0x3A
 	.byte 0x25, 0x63, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_27
-DUNGEON_D_BOX_LAYOUT_27:
+	.global DUNGEON_WINDOW_PARAMS_27
+DUNGEON_WINDOW_PARAMS_27:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x0F, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_28
-DUNGEON_D_BOX_LAYOUT_28:
+	.global DUNGEON_WINDOW_PARAMS_28
+DUNGEON_WINDOW_PARAMS_28:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x1C, 0x14, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global OVERLAY31_UNKNOWN_STRUCT__NA_238A190
@@ -8816,8 +8816,8 @@ OVERLAY31_UNKNOWN_STRUCT__NA_238A190:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.word ov31_02389460
 	.word HelpMenuLoop
-	.global DUNGEON_SUBMENU_6
-DUNGEON_SUBMENU_6:
+	.global DUNGEON_SUBMENU_ITEMS_6
+DUNGEON_SUBMENU_ITEMS_6:
 #ifdef EUROPE
 #define DUNGEON_SUBMENU_6_OFFSET 2
 #else
@@ -8829,20 +8829,20 @@ DUNGEON_SUBMENU_6:
 	.byte 0x04, 0x00, 0x00, 0x00, 0xAD + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0xAE + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00
 	.byte 0x06, 0x00, 0x00, 0x00, 0xAF + DUNGEON_SUBMENU_6_OFFSET, 0x3F, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.global DUNGEON_D_BOX_LAYOUT_29
-DUNGEON_D_BOX_LAYOUT_29:
+	.global DUNGEON_WINDOW_PARAMS_29
+DUNGEON_WINDOW_PARAMS_29:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x18, 0x13, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_30
-DUNGEON_D_BOX_LAYOUT_30:
+	.global DUNGEON_WINDOW_PARAMS_30
+DUNGEON_WINDOW_PARAMS_30:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_31
-DUNGEON_D_BOX_LAYOUT_31:
+	.global DUNGEON_WINDOW_PARAMS_31
+DUNGEON_WINDOW_PARAMS_31:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x12, 0x00, 0x00, 0xFF, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global DUNGEON_D_BOX_LAYOUT_32
-DUNGEON_D_BOX_LAYOUT_32:
+	.global DUNGEON_WINDOW_PARAMS_32
+DUNGEON_WINDOW_PARAMS_32:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x14, 0x0F, 0x02, 0x00, 0xFE, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov31_0238A228

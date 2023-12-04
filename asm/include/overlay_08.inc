@@ -45,7 +45,7 @@
 .public ov01_0232C3AC
 .public ov01_0232C454
 .public ov01_023310B8
-.public PreprocessStringFromMessageId
+.public PreprocessStringFromId
 .public Rand16Bit
 .public sub_020037A4
 .public sub_02003B5C
