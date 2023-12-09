@@ -13,6 +13,8 @@ Static main
 	Object src/main_debug.o
 	Object src/main_pack.o
 	Object asm/main_0200C4CC.o
+	Object src/main_02054BE0.o
+	Object asm/main_02054C24.o
 	Object lib/NitroSDK/src/dc_envelope.o
 	Object asm/main_0207509C.o
 }
