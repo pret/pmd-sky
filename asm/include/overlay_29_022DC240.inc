@@ -1,7 +1,7 @@
 #pragma once
 .public _020AFC4C
 .public _020AFC70
-.public __divsi3
+.public _s32_div_f
 .public AllocAndLoadFileInPack
 .public ChangeGiratinaFormIfSkyDungeon
 .public ClearHiddenStairs

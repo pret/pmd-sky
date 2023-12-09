@@ -1,7 +1,7 @@
 #pragma once
 .public _020A1868
 .public _020A18E0
-.public __divsi3
+.public _s32_div_f
 .public CloseCollectionMenu
 .public CloseDialogueBox
 .public ClosePortraitBox

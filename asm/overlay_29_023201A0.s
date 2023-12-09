@@ -150,11 +150,11 @@ _02320394:
 	sub r0, r6, r8
 	mov r1, #0xc
 	mov r5, #0
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sp]
 	sub r0, r7, sb
 	mov r1, #0xc
-	bl __divsi3
+	bl _s32_div_f
 	mov fp, r0
 	mov r4, r5
 _023203C0:

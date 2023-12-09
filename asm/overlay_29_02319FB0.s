@@ -302,7 +302,7 @@ _0231A3A4:
 	beq _0231A404
 	ldrsh r0, [r5, #2]
 	mov r1, #0x258
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _0231A45C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r1

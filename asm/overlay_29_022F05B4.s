@@ -4067,14 +4067,14 @@ _022F3EE0:
 	ldrsh r0, [r7, r0]
 	mov r1, #0x18
 	add r0, r2, r0
-	bl __divsi3
+	bl _s32_div_f
 	ldr r1, _022F40B4 ; =0x0001A226
 	ldr r3, [sp, #4]
 	ldrsh r2, [r7, r1]
 	mov r7, r0
 	mov r1, #0x18
 	add r0, r3, r2
-	bl __divsi3
+	bl _s32_div_f
 	mov r8, r0
 	strh r7, [sb]
 	strh r8, [sb, #2]

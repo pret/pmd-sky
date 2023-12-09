@@ -1,5 +1,5 @@
 #pragma once
-.public __divsi3
+.public _s32_div_f
 .public AdvanceFrame
 .public CheckLeaderTile
 .public CheckNonLeaderTile

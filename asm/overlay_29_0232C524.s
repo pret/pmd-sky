@@ -1320,7 +1320,7 @@ DoMoveTrumpCard: ; 0x0232D560
 	mov r0, #0x64
 	mul r0, r4, r0
 	moveq r1, #1
-	bl __divsi3
+	bl _s32_div_f
 	cmp r0, #0x19
 	bgt _0232D5BC
 	mov r0, r8

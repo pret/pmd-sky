@@ -176,9 +176,9 @@
 .public _022A3806
 .public _022B966C
 .public __addsf3
-.public __divsi3
 .public __floatsisf
 .public __mulsf3
+.public _s32_div_f
 .public abs
 .public ArrayFill32Fast
 .public CART_REMOVED_IMG_DATA

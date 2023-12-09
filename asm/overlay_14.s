@@ -932,7 +932,7 @@ SentryUpdateDisplay: ; 0x0238ADFC
 	beq _0238AECC
 	ldr r0, [r0, #0x874]
 	mov r1, #0x3c
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	cmp r0, #9
@@ -2981,7 +2981,7 @@ SentryStateGetUserChoice: ; 0x0238CA94
 	ldr r0, [r2]
 	add r0, r0, #0x3000
 	ldr r0, [r0, #0x874]
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r0, lsl #0x10
 	mov r8, r0, asr #0x10
 	mov r1, r8, lsr #0x1f
@@ -2993,7 +2993,7 @@ SentryStateGetUserChoice: ; 0x0238CA94
 	ldr r4, [r0]
 	add r0, r4, #0x3000
 	ldr r0, [r0, #0x874]
-	bl __divsi3
+	bl _s32_div_f
 	cmp r0, #0x10
 	bge _0238CDE0
 	mov r4, #0

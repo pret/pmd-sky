@@ -92,7 +92,7 @@ _02347C8C:
 	mov r1, fp
 	mov r0, #0x80000
 	mov r8, #0
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sp, #0x18]
 	ldrsh r0, [r6, #2]
 	mov r1, #0x1800
@@ -103,14 +103,14 @@ _02347C8C:
 	mul r1, r0, r1
 	sub r0, r1, r6
 	mov r1, fp
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0xc]
 	mov r1, #0x1800
 	mul r1, r0, r1
 	sub r0, r1, r7
 	mov r1, fp
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sp, #0x1c]
 	mov r0, r8
 	str r0, [sp, #0x28]

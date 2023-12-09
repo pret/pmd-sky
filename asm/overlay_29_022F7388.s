@@ -6000,7 +6000,7 @@ _022FC128:
 	str r0, [sp, #4]
 	mov r0, fp
 	mov r1, #0x258
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _022FC230 ; =DUNGEON_PTR
 	mov r1, r1, lsl #0x10
 	ldr r0, [r0]
@@ -6078,7 +6078,7 @@ InitEnemyStatsAndMoves: ; 0x022FC234
 	mov r8, r2
 	mov r7, r3
 	ldr r6, [sp, #0x34]
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r1, lsl #0x10
 	ldr r2, _022FC464 ; =DUNGEON_PTR
 	mov r4, r0, asr #0x10

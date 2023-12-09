@@ -453,7 +453,7 @@ _0232A9B8:
 	add r0, r0, #0xc
 	rsb r0, r1, r0, lsl #8
 	mov r1, #0xc
-	bl __divsi3
+	bl _s32_div_f
 	ldrsh r3, [sp, #0x26]
 	mov r1, #0x18
 	ldr r2, [sb, #0x10]
@@ -462,7 +462,7 @@ _0232A9B8:
 	mov r5, r0
 	rsb r0, r2, r1, lsl #8
 	mov r1, #0xc
-	bl __divsi3
+	bl _s32_div_f
 	mov r4, r0
 	add r0, sb, #4
 	bl ov29_022E2CA0

@@ -411,7 +411,7 @@ DigitCount: ; 0x02335670
 	b _023356B0
 _0233569C:
 	mov r1, r4
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	add r5, r5, #1
@@ -622,7 +622,7 @@ _023358E8:
 	mov r1, #0xa
 	strh r2, [sp]
 	strh fp, [sp, #2]
-	bl __divsi3
+	bl _s32_div_f
 	add r0, sb, r1
 	mov r0, r0, lsl #0x10
 	mov r7, r0, asr #0x10
@@ -640,7 +640,7 @@ _023358E8:
 	bl sub_0201F2A0
 	mov r0, sl
 	mov r1, #0xa
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r0, lsl #0x10
 	mov sl, r0, asr #0x10
 	add r0, r4, r7, lsl #3
@@ -1588,7 +1588,7 @@ _02336094:
 	strh sl, [sp, #2]
 	strh r5, [sp, #8]
 	strh r5, [sp, #0xa]
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r1, lsl #3
 	strh r0, [sp, #0x16]
 	add r0, sp, #0
@@ -1598,7 +1598,7 @@ _02336094:
 	bl sub_0201F2A0
 	mov r0, sb
 	mov r1, #0xa
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r0, lsl #0x10
 	mov sb, r0, asr #0x10
 	add r6, r6, #1

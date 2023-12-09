@@ -5556,7 +5556,7 @@ ov02_0232DD08: ; 0x0232DD08
 	ldr r0, [r0, #4]
 	sub r0, r0, r4
 	mul r0, r2, r0
-	bl __divsi3
+	bl _s32_div_f
 	add r0, r4, r0
 	ldmia sp!, {r4, pc}
 	arm_func_end ov02_0232DD08
@@ -6104,12 +6104,12 @@ _0232E17A:
 	str r0, [sp, #0x60]
 	ldr r0, [sp, #0xc]
 	lsl r1, r1, #2
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sp, #0x14]
 	mov r1, #0xfa
 	ldr r0, [sp, #0xc]
 	lsl r1, r1, #2
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, #0xfa
 	lsl r0, r0, #2
 	mul r0, r1
@@ -9352,7 +9352,7 @@ _0232FAF0:
 	ldr r1, [sp]
 	add r0, r7, r0
 	ldr r1, [r1, #0xc]
-	bl __udivsi3
+	bl _u32_div_f
 	ldrb r0, [r4, r1]
 	add r6, r6, #1
 	strb r7, [r4, r1]
@@ -9408,14 +9408,14 @@ ov02_0232FB4C: ; 0x0232FB4C
 	ldr r0, [r5]
 	ldr r1, [sp]
 	add r0, r0, #1
-	bl __udivsi3
+	bl _u32_div_f
 	lsl r0, r1, #0x18
 	lsr r7, r0, #0x18
 	ldrb r6, [r4, r7]
 	ldr r0, [r5, #4]
 	ldr r1, [sp]
 	add r0, r6, r0
-	bl __udivsi3
+	bl _u32_div_f
 	lsl r0, r1, #0x18
 	lsr r1, r0, #0x18
 	ldrb r0, [r4, r1]
@@ -9425,7 +9425,7 @@ ov02_0232FB4C: ; 0x0232FB4C
 	strb r0, [r4, r7]
 	ldr r1, [r5, #0xc]
 	add r0, r6, r0
-	bl __udivsi3
+	bl _u32_div_f
 	ldrb r0, [r4, r1]
 	pop {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
@@ -9593,7 +9593,7 @@ ov02_0232FCA0: ; 0x0232FCA0
 	asr r4, r1, #1
 	add r1, r6, #0
 	add r7, r3, #0
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, #0
 	cmp r4, #0
 	ble _0232FCD2

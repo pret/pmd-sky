@@ -1,5 +1,5 @@
 #pragma once
-.public __divsi3
+.public _s32_div_f
 .public AddItemToBagNoHeld
 .public AddItemToStorage
 .public Arm9LoadUnkFieldNa0x2029EC8

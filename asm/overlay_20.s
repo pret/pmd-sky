@@ -1015,7 +1015,7 @@ _0238AEE8:
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	mov r1, #0x64
-	bl __divsi3
+	bl _s32_div_f
 	mov r5, r1, lsl #0x10
 	add r0, sb, #0x84
 	bl sub_02011E18
@@ -1028,7 +1028,7 @@ _0238AEE8:
 	str r5, [sp]
 	bl Rand16Bit
 	ldr r1, [r5, #4]
-	bl __divsi3
+	bl _s32_div_f
 	ldr r2, [r5]
 	mov r0, #0x18
 	mla r0, r1, r0, r2

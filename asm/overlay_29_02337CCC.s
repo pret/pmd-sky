@@ -3502,13 +3502,13 @@ _0233A9DC:
 _0233A9E4:
 	ldr r1, [sp, #8]
 	mov r0, #0x38
-	bl __divsi3
+	bl _s32_div_f
 	cmp r0, #7
 	movle r0, #1
 	strle r0, [sp, #8]
 	ldr r1, [sp, #4]
 	mov r0, #0x20
-	bl __divsi3
+	bl _s32_div_f
 	ldr r1, [r4]
 	cmp r0, #7
 	add r2, r1, #0x4000
@@ -5446,13 +5446,13 @@ _0233C584:
 _0233C590:
 	add r1, r4, #4
 	mov r0, #0x38
-	bl __divsi3
+	bl _s32_div_f
 	mov r6, r0
 	cmp r6, #2
 	add r1, r5, #4
 	mov r0, #0x20
 	movlt r6, #1
-	bl __divsi3
+	bl _s32_div_f
 	mov r7, r0
 	cmp r7, #2
 	movlt r7, #1
@@ -6158,7 +6158,7 @@ _0233CFA8:
 	mov r0, r5
 	mov r1, r8
 	str r4, [sl, r6, lsl #2]
-	bl __divsi3
+	bl _s32_div_f
 	add r4, r4, r0
 	add r6, r6, #1
 _0233CFC0:
@@ -6173,7 +6173,7 @@ _0233CFDC:
 	mov r0, r4
 	mov r1, r7
 	str r6, [sb, r5, lsl #2]
-	bl __divsi3
+	bl _s32_div_f
 	add r6, r6, r0
 	add r5, r5, #1
 _0233CFF4:
@@ -10877,11 +10877,11 @@ _0234113C:
 	beq _02341228
 	add r0, r6, r6, lsl #2
 	mov r1, #0xa
-	bl __divsi3
+	bl _s32_div_f
 	mov r4, r0
 	mov r0, r6, lsl #3
 	mov r1, #0xa
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r0
 	mov r0, r4
 	bl DungeonRandRange
@@ -11261,11 +11261,11 @@ _023416A0:
 	beq _02341754
 	rsb r0, r7, r7, lsl #3
 	mov r1, #0xa
-	bl __divsi3
+	bl _s32_div_f
 	mov r4, r0
 	mov r0, r7, lsl #3
 	mov r1, #0xa
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r0
 	mov r0, r4
 	bl DungeonRandRange
@@ -12968,7 +12968,7 @@ _02342E30:
 	beq _02342EA4
 	bl DungeonRand16Bit
 	mov r1, #0x64
-	bl __divsi3
+	bl _s32_div_f
 	mov r5, r1
 	ldrb r6, [r6, #0x1b]
 	bl ShouldBoostHiddenStairsSpawnChance
@@ -13515,7 +13515,7 @@ _023435BC:
 	mov fp, r0, lsl #0x10
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa
-	bl __divsi3
+	bl _s32_div_f
 	ldr r3, [sl, #4]
 	ldr r0, [sp, #0x20]
 	str r3, [sp]

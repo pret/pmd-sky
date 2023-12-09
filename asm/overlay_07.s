@@ -5693,7 +5693,7 @@ _02341688:
 	bge _023416F0
 	mov r0, r7
 	mov r1, #0x1b
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #0
 	bne _023416E4
 	strb r6, [sl, r8]

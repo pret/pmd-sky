@@ -7757,13 +7757,13 @@ ov01_0232F830: ; 0x0232F830
 	bl InitPreprocessorArgs
 	ldr r1, _0232F904 ; =0x00002710
 	mov r0, r4
-	bl __udivsi3
+	bl _u32_div_f
 	ldr r1, _0232F904 ; =0x00002710
-	bl __udivsi3
+	bl _u32_div_f
 	str r1, [sp, #0x28]
 	ldr r1, _0232F904 ; =0x00002710
 	mov r0, r4
-	bl __udivsi3
+	bl _u32_div_f
 	mov r0, r5
 	str r1, [sp, #0x2c]
 	bl sub_02027B1C
@@ -14316,11 +14316,11 @@ _023350EC:
 	bge _0233513C
 	mov r0, r5
 	mov r1, #0x12
-	bl __divsi3
+	bl _s32_div_f
 	mov r6, r1
 	mov r0, r5
 	mov r1, #0x12
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, #0xc
 	mul r2, r6, r1
 	mov r1, r0, lsl #4
@@ -14486,13 +14486,13 @@ ov01_02335280: ; 0x02335280
 	mov r0, r0, lsl #0x10
 	mov r4, r0, asr #0x10
 	mov r0, r4
-	bl __divsi3
+	bl _s32_div_f
 	movs r6, r1
 	movne r5, #2
 	mov r0, r4
 	mov r1, #6
 	moveq r5, #0
-	bl __divsi3
+	bl _s32_div_f
 	add r0, r6, r0, lsl #3
 	add r0, r0, r5
 	mov r0, r0, lsl #0x10
@@ -18303,7 +18303,7 @@ _02338438:
 _02338474:
 	ldr r0, [sb, #0x58]
 	mov r1, #0xa
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #0
 	bne _023384B8
 	ldr r0, _02338844 ; =ov01_0233C210

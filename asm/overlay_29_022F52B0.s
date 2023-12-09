@@ -711,7 +711,7 @@ _022F5C3C:
 	movgt r1, r0
 	mov r0, r1, lsl #3
 	mov r1, #0xa
-	bl __divsi3
+	bl _s32_div_f
 	ldrsh r1, [sb, #0x10]
 	cmp r1, r0
 	movge r4, #0

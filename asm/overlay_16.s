@@ -2425,7 +2425,7 @@ _0238C448:
 	bl ov16_0238CC64
 	bl Rand16Bit
 	mov r1, #0x64
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r2, [r0]
 	strb r1, [r2, #6]

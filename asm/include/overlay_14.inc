@@ -1,5 +1,5 @@
 #pragma once
-.public __divsi3
+.public _s32_div_f
 .public AnimRelatedFunction__022F6F14
 .public AnimRelatedFunction__022F7064
 .public CloseAdvancedMenu

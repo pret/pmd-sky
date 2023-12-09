@@ -163,7 +163,7 @@ _022EACFC: .word 0x000003E6
 MusicTableIdxToMusicId: ; 0x022EAD00
 	stmdb sp!, {r4, lr}
 	mov r1, #0xaa
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _022EAD5C ; =MUSIC_ID_TABLE
 	mov r1, r1, lsl #1
 	ldrh r4, [r0, r1]

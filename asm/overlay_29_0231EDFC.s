@@ -292,7 +292,7 @@ _0231F1B0:
 	ldrsh r0, [r0, r1]
 	mov r1, #3
 	mov r0, r0, lsl #8
-	bl __divsi3
+	bl _s32_div_f
 	ldrsh sl, [sp, #0x40]
 	mov r1, #0x18
 	ldr r2, _0231F560 ; =ov29_0235171E
@@ -303,7 +303,7 @@ _0231F1B0:
 	ldrsh r2, [r2, r3]
 	mov r1, #3
 	mov r0, r2, lsl #8
-	bl __divsi3
+	bl _s32_div_f
 	ldrsh r2, [sp, #0x42]
 	mov r1, #0x18
 	ldr sl, [r4, #0xc]
@@ -313,7 +313,7 @@ _0231F1B0:
 	ldr r0, [r4, #0x10]
 	mov r1, sb
 	sub r0, fp, r0
-	bl __divsi3
+	bl _s32_div_f
 	str sl, [sp, #0x38]
 	ldr r1, [r4, #0x10]
 	str r0, [sp, #0x18]
@@ -321,7 +321,7 @@ _0231F1B0:
 	str r1, [sp, #0x3c]
 	mov r1, sb
 	mov sl, #0
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sp, #0x1c]
 	b _0231F31C
 _0231F294:
@@ -357,7 +357,7 @@ _0231F294:
 _0231F308:
 	mov r0, #0x800
 	mov r1, sb
-	bl __divsi3
+	bl _s32_div_f
 	add r7, r7, r0
 	add sl, sl, #1
 _0231F31C:

@@ -3,9 +3,9 @@
 .public _020A548A
 .public _020A5490
 .public __divsf3
-.public __divsi3
 .public __fixsfsi
 .public __floatsisf
+.public _s32_div_f
 .public abs
 .public AddBulkItemToStorage
 .public AddItemToBagNoHeld

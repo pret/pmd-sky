@@ -1,7 +1,7 @@
 #pragma once
 .public _020AFC4C
 .public _020B0A5C
-.public __divsi3
+.public _s32_div_f
 .public abs
 .public AllocAndLoadFileInPack
 .public BAG_ITEMS_PTR_MIRROR

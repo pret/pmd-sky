@@ -1,5 +1,5 @@
 #pragma once
-.public __divsi3
+.public _s32_div_f
 .public AbilityIsActiveVeneer
 .public ATK_STAT_IDX
 .public BAG_ITEMS_PTR_MIRROR

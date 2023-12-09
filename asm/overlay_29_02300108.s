@@ -2797,7 +2797,7 @@ _02302580:
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r0
 	mov r0, r6, lsl #8
 	bl MultiplyByFixedPoint
@@ -2812,7 +2812,7 @@ _023025C0:
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r0
 	mov r0, r6, lsl #8
 	bl MultiplyByFixedPoint
@@ -2827,7 +2827,7 @@ _023025F8:
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r0
 	mov r0, r6, lsl #8
 	bl MultiplyByFixedPoint
@@ -2848,7 +2848,7 @@ _02302650:
 	mov r1, #0x64
 	ldrsh r0, [r0]
 	mov r0, r0, lsl #8
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r0
 	mov r0, r6, lsl #8
 	bl MultiplyByFixedPoint

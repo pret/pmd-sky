@@ -5,6 +5,7 @@ PROC_LD        := v5te
 LCF_TEMPLATE   := ARM9-TS.lcf.template
 LIBS           := -Llib -lsyscall -nostdlib
 OPTFLAGS       := -O4,s
+OPTFLAGS_SDK   := -O4,p
 
 include config.mk
 

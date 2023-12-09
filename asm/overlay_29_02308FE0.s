@@ -5681,7 +5681,7 @@ _0230C8E0:
 	str r0, [r1]
 	beq _0230C920
 	mov r1, fp
-	bl __divsi3
+	bl _s32_div_f
 	add r1, sp, #0x90
 	str r0, [r1]
 _0230C920:
@@ -5691,7 +5691,7 @@ _0230C920:
 	add r4, sp, #0x94
 	mov r1, r0
 	ldr r0, [r4]
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [r4]
 _0230C940:
 	ldr r0, [sp, #0x90]

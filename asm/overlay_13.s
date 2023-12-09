@@ -1652,7 +1652,7 @@ _0238B8BC:
 _0238B910:
 	mov r1, #0x15
 	add r0, r6, r7
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r1, lsl #1
 	ldrsh sl, [fp, r0]
 	mov r1, #0

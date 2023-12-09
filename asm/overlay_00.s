@@ -6080,7 +6080,7 @@ ov00_022C16D4: ; 0x022C16D4
 	stmia r6, {r5, ip}
 	sub r0, r2, #1
 	mov r4, r3
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [r6, #0xc]
 	mov r0, #0
 	str r0, [r6, #8]
@@ -6459,7 +6459,7 @@ _022C1BF4:
 	mov r8, #0
 	add r0, r0, r1
 	sub r0, r0, #1
-	bl __divsi3
+	bl _s32_div_f
 	mov r2, r8
 	b _022C1C48
 _022C1C38:
@@ -7571,7 +7571,7 @@ ov00_022C2BB8: ; 0x022C2BB8
 	add r0, r1, r2
 	mov r1, r2
 	sub r0, r0, #1
-	bl __divsi3
+	bl _s32_div_f
 	add r0, r0, #0x1f
 	bic r0, r0, #0x1f
 	mov r0, r0, lsl #2
@@ -10316,7 +10316,7 @@ _022C50D0:
 	ldr r8, [r7, #8]
 	add r0, r8, r1
 	sub r0, r0, #1
-	bl __udivsi3
+	bl _u32_div_f
 	mov r1, sb, lsl #1
 	ldrh r3, [r6, r1]
 	mov r2, r0, lsl #0x10
@@ -13684,7 +13684,7 @@ ov00_022C7E20: ; 0x022C7E20
 	sub r1, r0, #2
 	mov r0, #0x1e
 	str r1, [r2, #8]
-	bl __divsi3
+	bl _s32_div_f
 	ldr r1, _022C7E4C ; =ov00_02325064
 	mov r2, #0x1e
 	str r0, [r1, #0xc]
@@ -21532,7 +21532,7 @@ _022CE6F8:
 	ble _022CE71C
 	mov r0, r4
 	mov r1, r5
-	bl __divsi3
+	bl _s32_div_f
 	cmp r0, #0
 	mulgt r0, r5, r0
 	ldmgtia sp!, {r3, r4, r5, pc}
@@ -30673,7 +30673,7 @@ _022D611C:
 	add r0, r0, #0x2000
 	ldr r6, [r0, #0x284]
 	mov r0, r6
-	bl __udivsi3
+	bl _u32_div_f
 	cmp r1, #0
 	bne _022D6188
 	ldr r4, _022D62C8 ; =0x00000728
@@ -32181,7 +32181,7 @@ _022D7530:
 	add r0, r0, r2
 	blt _022D7530
 _022D7544:
-	bl __divsi3
+	bl _s32_div_f
 _022D7548:
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
@@ -60004,7 +60004,7 @@ ov00_022EEB50: ; 0x022EEB50
 	ldr r0, [r0]
 	ldr r1, [r1, #0x50]
 	mla r0, r2, r0, r3
-	bl __udivsi3
+	bl _u32_div_f
 	ldr r0, _022EEB8C ; =ov00_02327720
 	mov r2, r1, asr #0x10
 	str r1, [r0]
@@ -66693,7 +66693,7 @@ _022F449C:
 	blo _022F44D4
 	mov r0, sb
 	mov r1, r8
-	bl __udivsi3
+	bl _u32_div_f
 	mul r2, r0, r8
 	cmp sl, #0
 	addne r0, r0, #0x30
@@ -67021,7 +67021,7 @@ ov00_022F4870: ; 0x022F4870
 	ldr r2, [r5, #0x14]
 	ldr r1, [r5, #8]
 	sub r0, r0, r2
-	bl __divsi3
+	bl _s32_div_f
 	mov r2, r0
 	mov r0, r5
 	mov r1, r4
@@ -67131,7 +67131,7 @@ _022F49F0:
 	ldr r2, [r7, #0x14]
 	ldr r1, [r7, #8]
 	sub r0, r0, r2
-	bl __divsi3
+	bl _s32_div_f
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end ov00_022F4968
@@ -68187,7 +68187,7 @@ ov00_022F5680: ; 0x022F5680
 	ldmeqia sp!, {r3, r4, r5, pc}
 	bl ov00_022F5644
 	mov r1, r4
-	bl __udivsi3
+	bl _u32_div_f
 	add r0, r1, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov00_022F5680
@@ -70539,7 +70539,7 @@ _022F7628:
 	bl ov00_022F75CC
 	mov r1, r7
 	add r0, r5, #1
-	bl __divsi3
+	bl _s32_div_f
 	add r6, r6, #1
 	cmp r6, #0x100
 	and r5, r1, #0xff
@@ -89999,7 +89999,7 @@ _023086A0:
 ov00_023086AC: ; 0x023086AC
 	stmdb sp!, {r3, lr}
 	ldr r0, [r0]
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_023086AC
@@ -94036,7 +94036,7 @@ ov00_0230BFA0: ; 0x0230BFA0
 	bl ov00_0230C24C
 	ldr r0, [r0]
 	ldr r1, [r5]
-	bl __divsi3
+	bl _s32_div_f
 	bl ov00_0230C16C
 	mov r1, r0
 	mov r0, r4
@@ -94112,7 +94112,7 @@ ov00_0230C098: ; 0x0230C098
 	ldr r2, [r7]
 	ldr r0, [r0]
 	mla r0, r1, r0, r2
-	bl __divsi3
+	bl _s32_div_f
 	bl ov00_0230C16C
 	mov r1, r0
 	mov r0, r4
@@ -95485,11 +95485,11 @@ _0230D284:
 	ldrnesb r6, [r0, #-1]
 	mov r1, r7
 	add r0, sl, sb
-	bl __divsi3
+	bl _s32_div_f
 	mul r0, r6, r8
 	mov r6, r1
 	mov r1, r7
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _0230D320 ; =ov00_0231BED4
 	ldrsb r3, [r0, r6]
 	ldrsb r2, [r0, r1]
@@ -99155,7 +99155,7 @@ ov00_023102C8: ; 0x023102C8
 	ldrh r0, [r2, #4]
 	ldr r2, [r2]
 	mul r0, r2, r0
-	bl __udivsi3
+	bl _u32_div_f
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_023102C8
@@ -102520,7 +102520,7 @@ _02313038:
 	rsb r2, r3, r2, lsl #24
 	add r2, r3, r2, ror #24
 	and r5, r2, #0xff
-	bl __divsi3
+	bl _s32_div_f
 	and r4, r1, #0xff
 	mov r0, r6
 	add r1, fp, r5
@@ -103992,7 +103992,7 @@ _02314508:
 	and r0, r5, r0
 	bls _02314528
 	mov r1, sb
-	bl __udivsi3
+	bl _u32_div_f
 	mov r0, r1
 _02314528:
 	cmp r0, sb
@@ -105558,7 +105558,7 @@ _0231595C:
 	bne _02315948
 _0231596C:
 	mov r0, ip
-	bl __udivsi3
+	bl _u32_div_f
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -106238,7 +106238,7 @@ _02316168:
 	bne _02316154
 _02316178:
 	mov r0, ip
-	bl __udivsi3
+	bl _u32_div_f
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -106824,7 +106824,7 @@ ov00_02316920: ; 0x02316920
 _0231694C:
 	mov r0, r4
 	mov r1, r5
-	bl __divsi3
+	bl _s32_div_f
 	ldrsb r1, [r6, r1]
 	mov r2, r4, lsr #0x1f
 	rsb r0, r2, r4, lsl #29

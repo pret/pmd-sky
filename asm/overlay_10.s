@@ -2498,11 +2498,11 @@ ov10_022BEB2C: ; 0x022BEB2C
 	mul r2, r0, r6
 	strh r2, [r4, #0x26]
 	ldrsh r0, [r4, #0x24]
-	bl __divsi3
+	bl _s32_div_f
 	strh r0, [r4, #0x24]
 	ldrsh r0, [r4, #0x26]
 	add r1, r6, #1
-	bl __divsi3
+	bl _s32_div_f
 	strh r0, [r4, #0x26]
 	ldrsh r0, [r4, #0x26]
 	sub r0, r0, #9
@@ -2828,7 +2828,7 @@ ov10_022BF01C: ; 0x022BF01C
 	mov r5, r0
 	mov r0, r6
 	mov r1, #0x258
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r1, lsl #0x10
 	ldrsh r3, [r4, #0x14]
 	mov r2, #0
@@ -2861,7 +2861,7 @@ ov10_022BF088: ; 0x022BF088
 	mov r5, r0
 	mov r0, r6
 	mov r1, #0x258
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r1, lsl #0x10
 	ldrsh r3, [r4, #0x14]
 	mov r2, #0
@@ -2894,7 +2894,7 @@ ov10_022BF0F4: ; 0x022BF0F4
 	mov r5, r0
 	mov r0, r6
 	mov r1, #0x258
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r1, lsl #0x10
 	ldrsh r3, [r4, #0x14]
 	mov r2, #0
@@ -3618,7 +3618,7 @@ ov10_022BFA3C: ; 0x022BFA3C
 	mov r5, r0
 	mov r0, r6
 	mov r1, #0x258
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r1, lsl #0x10
 	ldrsh r3, [r4, #0x14]
 	mov r2, #0

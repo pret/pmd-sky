@@ -1034,7 +1034,7 @@ _023464C4:
 	ldr r2, [r6, #0xc]
 	add r0, r0, #4
 	rsb r0, r2, r0, lsl #8
-	bl __divsi3
+	bl _s32_div_f
 	add r1, sp, #0x6c
 	str r0, [r1, r8, lsl #3]
 	add r0, fp, r8, lsl #2
@@ -1045,7 +1045,7 @@ _023464C4:
 	ldr r2, [r6, #0x10]
 	add r0, r0, #4
 	rsb r0, r2, r0, lsl #8
-	bl __divsi3
+	bl _s32_div_f
 	add r1, sp, #0x6c
 	add r1, r1, r8, lsl #3
 	str r0, [r1, #4]
@@ -2028,7 +2028,7 @@ _02347224:
 	beq _023472B8
 	bl DungeonRand16Bit
 	mov r1, sb
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r1, lsl #0x10
 	add r1, sp, #0
 	mov r0, r0, asr #0x10
@@ -2166,12 +2166,12 @@ _02347410:
 	sub r0, r8, r5
 	mov r1, #0x18
 	mov r7, r6
-	bl __divsi3
+	bl _s32_div_f
 	ldr r1, [sp, #0x10]
 	str r0, [sp, #8]
 	sub r0, sb, r1
 	mov r1, #0x18
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sp, #4]
 	mov r5, r6
 _0234744C:
