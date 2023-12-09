@@ -21718,20 +21718,20 @@ _022EEA00:
 _022EEA18:
 	ldr r0, [r4, #0x3c]
 	mov r1, #3
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [r4, #0x44]
 	ldr r0, [r4, #0x40]
 	mov r1, #3
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [r4, #0x48]
 	ldr r0, [r4, #0x34]
 	mov r1, #0x18
-	bl __divsi3
+	bl _s32_div_f
 	add r0, r1, #0x10
 	str r0, [r4, #0x4c]
 	ldr r0, [r4, #0x38]
 	mov r1, #0x18
-	bl __divsi3
+	bl _s32_div_f
 	str r1, [r4, #0x50]
 	ldmia sp!, {r4, pc}
 	arm_func_end ov11_022EE9B0
@@ -26899,14 +26899,14 @@ _022F2B6C:
 	ldr r0, [r5]
 	mov r1, #0x480
 	add sl, sb, r8
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _022F2F10 ; =ov11_023210D4
 	ldr r0, [r0, r4, lsl #2]
 	sub r0, r0, r1
 	str r0, [sb, r8]
 	ldr r0, [r5, #4]
 	ldr r1, _022F2F08 ; =0x0000049C
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _022F2F10 ; =ov11_023210D4
 	add r0, r0, r4, lsl #2
 	ldr r0, [r0, #0x8c]
@@ -26971,7 +26971,7 @@ _022F2C74:
 	mov r0, sl
 	mov r1, #5
 	add sb, r6, r8
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _022F2F14 ; =ov11_023210AC
 	ldr r3, [r0, r1, lsl #2]
 	ldr r1, [r5]
@@ -26982,11 +26982,11 @@ _022F2C74:
 	sub r1, r3, r1
 	str r1, [r6, r8]
 	mov r1, #5
-	bl __divsi3
+	bl _s32_div_f
 	mov fp, r0
 	ldr r0, [r5, #4]
 	mov r1, #0x300
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _022F2F14 ; =ov11_023210AC
 	add r0, r0, fp, lsl #2
 	ldr r0, [r0, #0x14]
@@ -27049,7 +27049,7 @@ _022F2D7C:
 	ldrsh r2, [r7, #2]
 	mov r0, #0xa0
 	smulbb r0, r2, r0
-	bl __divsi3
+	bl _s32_div_f
 	b _022F2DB8
 _022F2DB4:
 	mov r0, #0xa0
@@ -27064,22 +27064,22 @@ _022F2DC8:
 	mov r0, sl
 	mov r1, #5
 	add sb, fp, r8
-	bl __divsi3
+	bl _s32_div_f
 	mov r7, r1
 	ldr r0, [r5]
 	mov r1, #0xf0
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _022F2F18 ; =ov11_02321098
 	ldr r2, [r0, r7, lsl #2]
 	mov r0, sl
 	sub r1, r2, r1
 	str r1, [fp, r8]
 	mov r1, #5
-	bl __divsi3
+	bl _s32_div_f
 	mov r7, r0
 	ldr r0, [r5, #4]
 	mov r1, #0x300
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _022F2F14 ; =ov11_023210AC
 	add r0, r0, r7, lsl #2
 	ldr r0, [r0, #0x14]
@@ -66688,7 +66688,7 @@ _02314080:
 	add r1, r1, r7
 	str r8, [r1, #0x38]
 	mov r1, #0xf
-	bl __divsi3
+	bl _s32_div_f
 	ldr r3, [r4]
 	ldr r1, _023145FC ; =ov11_02323DD0
 	add r3, r3, r7
@@ -66795,7 +66795,7 @@ _02314240:
 	mul sb, sl, r5
 	mov r0, sl
 	mov r1, fp
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, sl, asr #2
 	add r0, sl, r0, lsr #29
 	mov r2, r0, asr #3
@@ -66907,7 +66907,7 @@ _02314374:
 	ldr r2, [r7, #0x24]
 	rsb r2, r2, #0x64
 	mul r0, r2, r0
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r5, asr #4
 	add r2, r7, r4
 	strh r0, [r2, #0x40]
@@ -67208,7 +67208,7 @@ _023147F4:
 	ldr r1, [r4, #0x28]
 	ldr r0, [r4, #4]
 	add r1, r1, #8
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #1
 	bne _0231482C
 	ldr r0, [r4, #8]
@@ -67225,7 +67225,7 @@ _0231482C:
 	ldr r1, [r4, #0x28]
 	ldr r0, [r4, #4]
 	add r1, r1, #8
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #0
 	bne _02314D24
 	ldr r1, [r4, #8]
@@ -67264,7 +67264,7 @@ _023148CC:
 	ldr r1, [r4, #0x28]
 	ldr r0, [r4, #4]
 	add r1, r1, #6
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #0
 	bne _02314D24
 	ldr r1, [r4, #8]
@@ -67275,7 +67275,7 @@ _023148CC:
 	mov r1, #3
 	ldr r4, [r0, #8]
 	mov r0, r4
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #0
 	bne _0231493C
 	add r0, r4, r4, lsr #31
@@ -67295,12 +67295,12 @@ _0231493C:
 	ldr r0, [r0]
 	ldr r4, [r0, #8]
 	mov r0, r4
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #0
 	bne _02314988
 	mov r0, r4
 	mov r1, #3
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r0, lsr #0x1f
 	rsb r0, r1, r0, lsl #30
 	add r0, r1, r0, ror #30
@@ -67315,12 +67315,12 @@ _02314988:
 	ldr r0, [r0]
 	ldr r4, [r0, #8]
 	mov r0, r4
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #1
 	bne _02314D24
 	mov r0, r4
 	mov r1, #3
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, r0, lsr #0x1f
 	rsb r0, r1, r0, lsl #30
 	ldr r2, _02314D3C ; =ov11_02324460
@@ -67378,7 +67378,7 @@ _02314A38:
 	mov r0, #0xb7
 	mul r0, r2, r0
 	mov r1, #0x140
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, [sb, #0xc]
 	mov fp, r1
 	add r0, r0, #1
@@ -67388,7 +67388,7 @@ _02314A9C:
 	ldr sb, [r4]
 	mov r1, #3
 	ldr r0, [sb, #4]
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #1
 	bne _02314CA0
 	ldr r0, [sb, #8]
@@ -67405,7 +67405,7 @@ _02314A9C:
 	mov r0, #0x9f
 	mul r0, r2, r0
 	mov r1, #0x140
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, [sb, #0x10]
 	mov fp, r1
 	add r0, r0, #1
@@ -67433,7 +67433,7 @@ _02314B04:
 	mov r0, #0x92
 	mul r0, r2, r0
 	mov r1, #0x140
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, [sb, #0x14]
 	mov fp, r1
 	add r0, r0, #1
@@ -67443,7 +67443,7 @@ _02314B70:
 	ldr sb, [r4]
 	mov r1, #5
 	ldr r0, [sb, #4]
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #2
 	bne _02314CA0
 	ldr r0, [sb, #8]
@@ -67460,7 +67460,7 @@ _02314B70:
 	mov r0, #0x9b
 	mul r0, r2, r0
 	mov r1, #0x140
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, [sb, #0x18]
 	mov fp, r1
 	add r0, r0, #1
@@ -67471,7 +67471,7 @@ _02314BD8:
 	mov r1, #5
 	ldr sb, [r0, #8]
 	mov r0, sb
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #3
 	bne _02314CA0
 	mov r1, sb, lsr #0x1f
@@ -67486,7 +67486,7 @@ _02314BD8:
 	ldr r2, [sb, #0x1c]
 	mov r1, #0x140
 	mul r0, r2, sl
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, [sb, #0x1c]
 	mov fp, r1
 	add r0, r0, #1
@@ -67497,7 +67497,7 @@ _02314C3C:
 	mov r1, #6
 	ldr sb, [r0, #8]
 	mov r0, sb
-	bl __divsi3
+	bl _s32_div_f
 	cmp r1, #3
 	bne _02314CA0
 	mov r1, sb, lsr #0x1f
@@ -67513,7 +67513,7 @@ _02314C3C:
 	ldr r0, _02314D40 ; =0x000001BF
 	mov r1, #0x140
 	mul r0, r2, r0
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, [sb, #0x20]
 	mov fp, r1
 	add r0, r0, #1
@@ -67537,7 +67537,7 @@ _02314CA0:
 	mov r0, #0x3c00
 	mul r0, r2, r0
 	mov r1, r1, lsl #5
-	bl __divsi3
+	bl _s32_div_f
 	ldrh r1, [r6, #0x12]
 	rsb r0, r0, #0x200
 	mul r0, r1, r0
@@ -68092,18 +68092,18 @@ _02315440:
 	mov r1, r4
 	ldrh r4, [r2, r0]
 	mov r0, #0x1000
-	bl __divsi3
+	bl _s32_div_f
 	mov r1, #0xa
 	mul r7, r0, r1
 	mul r0, r5, r4
 	mov r1, r7
-	bl __divsi3
+	bl _s32_div_f
 	ldr r2, [r8, #4]
 	mov r1, r7
 	add r2, r2, r0
 	mul r0, r6, r4
 	str r2, [r8, #4]
-	bl __divsi3
+	bl _s32_div_f
 	ldr r1, [r8, #8]
 	sub r0, r1, r0
 	str r0, [r8, #8]
@@ -68792,7 +68792,7 @@ _02315E68:
 	add r0, r1, r0, lsr #30
 	mov r0, r0, asr #2
 	mov r1, #3
-	bl __divsi3
+	bl _s32_div_f
 	sub r1, r1, #0xc4
 	ldr r0, _02315ED4 ; =ov11_02324E34
 	str r1, [r4, #8]

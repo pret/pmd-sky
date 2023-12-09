@@ -1,6 +1,6 @@
 #pragma once
 .public _020AFC70
-.public __divsi3
+.public _s32_div_f
 .public AbilityIsActiveVeneer
 .public CalcSpeedStageWrapper
 .public CalcStatusDuration

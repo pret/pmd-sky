@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 
 MIXED_CASE_SYMBOLS_ARM9 = {
+    '_s32_div_f': '__divsi3',
+    '_u32_div_f': '__udivsi3',
     '_secure': 'SECURE',
     '_start_AutoloadDoneCallback': 'StartAutoloadDoneCallback',
     '_start_ModuleParams': 'START_MODULE_PARAMS',

@@ -2160,7 +2160,7 @@ _023232E4:
 	ldrsh r2, [r2, r4]
 	str r3, [sp, #0x10]
 	str r2, [sp, #0xc]
-	bl __divsi3
+	bl _s32_div_f
 	ldr r2, [sp, #0x84]
 	str r0, [sp, #0x18]
 	mul r1, r2, r0
@@ -2175,7 +2175,7 @@ _0232335C:
 _02323360:
 	mov r0, #0x80000
 	mov sb, #0
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sp, #0x80]
 	mov r0, #1
 	bl ov29_0234B4CC
@@ -2623,7 +2623,7 @@ _02323984:
 	mov r4, r0
 	mov r1, r6
 	mov r0, #0x18
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	cmp r0, #2
@@ -2643,7 +2643,7 @@ _02323A18:
 _02323A20:
 	mov r0, #0x80000
 	mov r5, #0
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sp, #0x1c]
 	ldrb r2, [r7, #0x4c]
 	ldr r1, _02323C38 ; =ov29_02352A8C

@@ -10,9 +10,9 @@
 .public _020AEDB0
 .public _022B966C
 .public _022BCA70
-.public __divsi3
-.public __udivsi3
+.public _s32_div_f
 .public _start_AutoloadDoneCallback
+.public _u32_div_f
 .public abs
 .public ArrayCopy16
 .public ArrayCopy32

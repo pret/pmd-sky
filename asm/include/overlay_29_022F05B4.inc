@@ -1,6 +1,6 @@
 #pragma once
 .public _020AFC4C
-.public __divsi3
+.public _s32_div_f
 .public abs
 .public AddHeldItemToBag
 .public AddItemToBag

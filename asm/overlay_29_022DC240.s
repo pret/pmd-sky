@@ -718,7 +718,7 @@ _022DCB24:
 	mov fp, r6, lsl #5
 	mov r0, r2, asr #2
 	mov r6, r3, lsr #0x10
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1374,7 +1374,7 @@ ov29_022DD518: ; 0x022DD518
 	mov r0, r0, asr #2
 	smulbb r2, r3, r2
 	mov r6, r2, lsl #5
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0xe

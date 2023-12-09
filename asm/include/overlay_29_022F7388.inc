@@ -1,6 +1,6 @@
 #pragma once
 .public _020A1870
-.public __divsi3
+.public _s32_div_f
 .public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public AiMovement

@@ -77,9 +77,10 @@ PRECOMPILE_OBJ_DIR := $(dir $(PRECOMPILE_OBJ))
 PRECOMPILE_DEPFILE := $(BUILD_DIR)/precompile/global.d
 
 # Directories
+LIB_SUBDIRS               := NitroSDK
 SRC_SUBDIR                := src
 ASM_SUBDIR                := asm
-LIB_SRC_SUBDIR            := lib/src
+LIB_SRC_SUBDIR            := lib/src $(LIB_SUBDIRS:%=lib/%/src)
 LIB_ASM_SUBDIR            := lib/asm
 ALL_SUBDIRS               := $(SRC_SUBDIR) $(ASM_SUBDIR) $(LIB_SRC_SUBDIR) $(LIB_ASM_SUBDIR)
 
@@ -117,7 +118,7 @@ XMAP              := $(NEF).xMAP
 
 EXCCFLAGS         := -Cpp_exceptions off
 
-MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -enum int -lang c99 $(EXCCFLAGS) -gccext,on -proc $(PROC) -msgstyle gcc -gccinc -i ./include -i ./include/library -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -interworking -inline on,noauto -char signed -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error
+MWCFLAGS           = $(DEFINES) -enum int -lang c99 $(EXCCFLAGS) -gccext,on -proc $(PROC) -msgstyle gcc -gccinc -i ./include -i ./include/library -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -interworking -inline on,noauto -char signed -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error
 
 MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -gccinc -i . -i ./include -i $(WORK_DIR)/asm/include -i $(WORK_DIR)/files -i $(WORK_DIR)/lib/asm/include -i $(WORK_DIR)/lib/syscall/asm/include -I$(WORK_DIR)/lib/include -DSDK_ASM
 MWLDFLAGS         := -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
@@ -131,7 +132,8 @@ LIBRARY_INCLUDE_FLAGS := -I$(WORK_DIR)/lib/msl/include/MSL_C $(foreach dname,$(L
 SRC_INCLUDE_FLAGS := -i ./include -i ./include/library -i $(WORK_DIR)/files $(LIBRARY_INCLUDE_FLAGS)
 SDK_INCLUDE_FLAGS := $(LIBRARY_INCLUDE_FLAGS)
 
-MW_COMPILE_SRC = $(WINE) $(MWCC) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
+MW_COMPILE_SRC = $(WINE) $(MWCC) $(OPTFLAGS) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
+MW_COMPILE_LIB = $(WINE) $(MWCC) $(OPTFLAGS_SDK) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS) -i $(PRECOMPILE_OBJ_DIR) -prefix $(PRECOMPILE_OBJ_BASENAME)
 MW_COMPILE_SRC_PRECOMPILE = $(WINE) $(MWCC) $(MWCFLAGS) $(SRC_INCLUDE_FLAGS)
 
 MW_ASSEMBLE = $(WINE) $(MWAS) $(MWASFLAGS)
@@ -184,6 +186,7 @@ ifeq ($(NODEP),)
   DEPFILES := $(ALL_OBJS:%.o=%.d)
   MW_COMPILE_SRC += $(DEPFLAGS)
   MW_COMPILE_SRC_PRECOMPILE += $(DEPFLAGS)
+  MW_COMPILE_LIB += $(DEPFLAGS)
   $(GLOBAL_ASM_OBJS): BUILD_C_SRC := $(ASM_PROCESSOR) "$(MW_COMPILE_SRC)" "$(MW_ASSEMBLE)"
   BUILD_C_SRC ?= $(MW_COMPILE_SRC) -c -o
   BUILD_C_LIB := $(MW_COMPILE_LIB) -c -o
@@ -202,7 +205,7 @@ $(BUILD_DIR)/src/%.o: src/%.c $(BUILD_DIR)/src/%.d $(PRECOMPILE_OBJ)
 
 $(BUILD_DIR)/lib/%.o: lib/%.c $(NITRO_PRECOMPILE_OBJ)
 $(BUILD_DIR)/lib/%.o: lib/%.c $(BUILD_DIR)/lib/%.d $(NITRO_PRECOMPILE_OBJ)
-	$(MW_COMPILE_LIB) -I$(dir $<) -c -o $@ $<
+	$(BUILD_C_LIB) $@ $< -I$(dir $<)
 	@$(call fixdep,$(BUILD_DIR)/lib/$*.d)
 
 $(BUILD_DIR)/%.o: %.s

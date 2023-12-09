@@ -165,7 +165,7 @@ _02315348:
 	mov r1, r1, lsl #8
 	bl MultiplyByFixedPoint
 	mov r1, #0x64
-	bl __divsi3
+	bl _s32_div_f
 	add r5, r5, r0, asr #8
 _0231537C:
 	ldrsh r1, [sb, #0x12]
@@ -1929,7 +1929,7 @@ _02316C08:
 	mov r1, r1, lsl #8
 	bl MultiplyByFixedPoint
 	mov r1, #0x64
-	bl __divsi3
+	bl _s32_div_f
 	bl sub_02001888
 	ldr r1, _02317108 ; =0x000003E7
 	add r8, r8, r0, asr #8

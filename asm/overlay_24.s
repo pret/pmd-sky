@@ -957,7 +957,7 @@ _0238AECC:
 _0238AF00:
 	bl Rand16Bit
 	mov r1, #0x64
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _0238B3D8 ; =_020A1868
 	ldrsh r0, [r0]
 	cmp r1, r0
@@ -1888,7 +1888,7 @@ _0238BCA8:
 _0238BCDC:
 	bl Rand16Bit
 	mov r1, #0x64
-	bl __divsi3
+	bl _s32_div_f
 	ldr r0, _0238C1B4 ; =_020A1868
 	ldrsh r0, [r0]
 	cmp r1, r0

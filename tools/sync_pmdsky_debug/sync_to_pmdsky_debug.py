@@ -1,6 +1,7 @@
 import os
 import re
 from typing import Any, Dict, List
+from ruamel.yaml.comments import CommentedMap
 from ruamel.yaml.scalarint import HexCapsInt
 
 from pmdsky_debug_reader import LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG, SYMBOLS_FOLDER, get_pmdsky_debug_location, read_pmdsky_debug_symbols
@@ -119,7 +120,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     if not matching_symbol_entry:
         matching_symbol_entry = {
             'name': base_symbol_name,
-            'address': {}
+            'address': CommentedMap()
         }
         if insert_index is None:
             symbol_array.append(matching_symbol_entry)
@@ -169,7 +170,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     target_line = None
     if symbol_before is not None:
         for i, line in enumerate(header_contents):
-            if symbol.is_data and re.search(fr' {symbol_before}[[;]', line) or symbol.is_data and f' {symbol_before}(' in line:
+            if symbol.is_data and re.search(fr' {symbol_before}[[;]', line) or not symbol.is_data and f' {symbol_before}(' in line:
                 target_line = i
                 break
         if target_line is None:
@@ -207,6 +208,8 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
 
     # Write the new symbol within the header file.
     symbol_header_path = os.path.join(HEADER_FOLDER, symbol.file_path.replace('.o', '.h'))
+    if not os.path.exists(symbol_header_path):
+        symbol_header_path = os.path.join('lib', 'NitroSDK', symbol_header_path)
     if symbol.is_data:
         if string_length is not None:
             symbol_header = f'extern char {base_symbol_name}[{string_length}];\n'

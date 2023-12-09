@@ -5511,14 +5511,14 @@ sub_0200514C: ; 0x0200514C
 	mov r8, r0
 	mla r0, r2, r5, r1
 	add r1, r5, r4
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [r8]
 	ldr r0, [r6, #4]
 	ldr r2, [r7, #4]
 	mul r1, r0, r4
 	mla r0, r2, r5, r1
 	add r1, r5, r4
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [r8, #4]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0200514C
@@ -12820,17 +12820,17 @@ _0200AF34:
 	mov r1, #0xff
 	mul r0, r2, r8
 	add r5, r5, #2
-	bl __divsi3
+	bl _s32_div_f
 	ldrb r2, [r4, #2]
 	str r0, [sp, #4]
 	mov r1, #0xff
 	mul r0, r2, r7
-	bl __divsi3
+	bl _s32_div_f
 	ldrb r2, [r4, #1]
 	str r0, [sp, #8]
 	mov r1, #0xff
 	mul r0, r2, r6
-	bl __divsi3
+	bl _s32_div_f
 	ldr r1, [sp, #4]
 	mov r0, r0, lsl #0x10
 	mov r1, r1, lsl #0x10
@@ -12879,17 +12879,17 @@ _0200B014:
 	mov r1, #0xff
 	mul r0, r2, r8
 	add r5, r5, #2
-	bl __divsi3
+	bl _s32_div_f
 	ldrb r2, [r4, #2]
 	str r0, [sp, #0xc]
 	mov r1, #0xff
 	mul r0, r2, r7
-	bl __divsi3
+	bl _s32_div_f
 	ldrb r2, [r4, #1]
 	str r0, [sp, #0x10]
 	mov r1, #0xff
 	mul r0, r2, r6
-	bl __divsi3
+	bl _s32_div_f
 	ldr r1, [sp, #0xc]
 	mov r0, r0, lsl #0x10
 	mov r1, r1, lsl #0x10
@@ -12966,17 +12966,17 @@ _0200B14C:
 	mov r1, #0xff
 	mul r0, r2, sb
 	add r6, r6, #2
-	bl __divsi3
+	bl _s32_div_f
 	ldrb r2, [r4, #2]
 	str r0, [sp, #4]
 	mov r1, #0xff
 	mul r0, r2, r8
-	bl __divsi3
+	bl _s32_div_f
 	ldrb r2, [r4, #1]
 	str r0, [sp, #8]
 	mov r1, #0xff
 	mul r0, r2, r7
-	bl __divsi3
+	bl _s32_div_f
 	ldr r1, [sp, #4]
 	mov r0, r0, lsl #0x10
 	mov r1, r1, lsl #0x10
@@ -13025,17 +13025,17 @@ _0200B22C:
 	mov r1, #0xff
 	mul r0, r2, sb
 	add r6, r6, #2
-	bl __divsi3
+	bl _s32_div_f
 	ldrb r2, [r4, #2]
 	str r0, [sp, #0xc]
 	mov r1, #0xff
 	mul r0, r2, r8
-	bl __divsi3
+	bl _s32_div_f
 	ldrb r2, [r4, #1]
 	str r0, [sp, #0x10]
 	mov r1, #0xff
 	mul r0, r2, r7
-	bl __divsi3
+	bl _s32_div_f
 	ldr r1, [sp, #0xc]
 	mov r0, r0, lsl #0x10
 	mov r1, r1, lsl #0x10
@@ -13721,7 +13721,7 @@ _0200BA38:
 	ldrsh r0, [r4, #0x12]
 	ldr r1, [r4, #0xc]
 	mul r0, r2, r0
-	bl __divsi3
+	bl _s32_div_f
 	ldrsh r1, [r4, #0x10]
 	sub r0, r1, r0
 	strh r0, [r4, #0x14]
@@ -13741,7 +13741,7 @@ _0200BA80:
 	ldrsh r0, [r4, #0x12]
 	ldr r1, [r4, #0xc]
 	mul r0, r2, r0
-	bl __divsi3
+	bl _s32_div_f
 	ldrsh r1, [r4, #0x10]
 	add r0, r1, r0
 	strh r0, [r4, #0x14]
@@ -13758,7 +13758,7 @@ _0200BAC8:
 	ldrsh r0, [r4, #0x12]
 	ldr r1, [r4, #0xc]
 	mul r0, r2, r0
-	bl __divsi3
+	bl _s32_div_f
 	ldrsh r1, [r4, #0x10]
 	sub r0, r1, r0
 _0200BAF8:
@@ -13775,7 +13775,7 @@ _0200BB04:
 	ldrsh r0, [r4, #0x12]
 	ldr r1, [r4, #0xc]
 	mul r0, r2, r0
-	bl __divsi3
+	bl _s32_div_f
 	ldrsh r1, [r4, #0x10]
 	add r0, r1, r0
 _0200BB34:

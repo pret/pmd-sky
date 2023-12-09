@@ -322,7 +322,7 @@ _0231F9C4:
 	smulbb r2, r2, fp
 	add r2, r2, #4
 	rsb r0, r0, r2, lsl #8
-	bl __divsi3
+	bl _s32_div_f
 	add r1, r4, sb, lsl #3
 	add r1, r1, #0x1000
 	str r0, [r1, #0x2f4]
@@ -334,7 +334,7 @@ _0231F9C4:
 	smulbb r0, r0, r5
 	add r0, r0, #4
 	rsb r0, r2, r0, lsl #8
-	bl __divsi3
+	bl _s32_div_f
 	add r1, r4, sb, lsl #3
 	add r1, r1, #0x1000
 	str r0, [r1, #0x2f8]

@@ -199,7 +199,7 @@ ov29_022EC8A8: ; 0x022EC8A8
 	mov r0, r2
 	mov r1, #0x30
 	mov r4, r3
-	bl __divsi3
+	bl _s32_div_f
 	mov r3, r1, lsl #1
 	and r0, r3, #0xff
 	mov r2, r0, lsr #1

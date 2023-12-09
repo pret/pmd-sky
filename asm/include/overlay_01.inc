@@ -1,7 +1,7 @@
 #pragma once
 .public _020B0A5C
-.public __divsi3
-.public __udivsi3
+.public _s32_div_f
+.public _u32_div_f
 .public ArrayCopy32
 .public BAG_ITEMS_PTR_MIRROR
 .public CardBackupError

@@ -483,7 +483,7 @@ ov29_02304D20: ; 0x02304D20
 	ldr r1, [r5]
 	mov r0, #0x18
 	mov r1, r1, lsl #1
-	bl __divsi3
+	bl _s32_div_f
 	add r1, sb, #0x100
 	strh r0, [r1, #0xb4]
 	ldr r0, [sb, #0x1ac]
@@ -496,7 +496,7 @@ ov29_02304D20: ; 0x02304D20
 	str r2, [sb, #0x1b0]
 	ldr r1, [r1]
 	mov r1, r1, lsl #1
-	bl __divsi3
+	bl _s32_div_f
 	strh r0, [r7, #0x18]
 	ldr r0, [r7, #0x10]
 	mov r0, r0, lsl #1
@@ -516,7 +516,7 @@ _02304E80:
 	ldr r1, [r5]
 	mov r0, r4
 	add r1, r1, r1, lsl #1
-	bl __divsi3
+	bl _s32_div_f
 	add r1, r8, #0x100
 	strh r0, [r1, #0xb4]
 	ldr r0, [r8, #0x1ac]
@@ -540,7 +540,7 @@ _02304E80:
 	mov r0, #0x18
 	ldr r1, [r1]
 	add r1, r1, r1, lsl #1
-	bl __divsi3
+	bl _s32_div_f
 	strh r0, [r7, #0x18]
 	ldr r0, [r7, #0x10]
 	add r0, r0, r0, lsl #1
@@ -561,7 +561,7 @@ _02304F2C:
 	ldr r1, [r5]
 	mov r0, r6
 	mov r1, r1, lsl #2
-	bl __divsi3
+	bl _s32_div_f
 	add r1, sl, #0x100
 	strh r0, [r1, #0xb4]
 	ldr r0, [sl, #0x1ac]
@@ -572,11 +572,11 @@ _02304F2C:
 	mov r0, r0, lsl #2
 	str r0, [sl, #0x1b0]
 	ldr r0, [sl, #0x1ac]
-	bl __divsi3
+	bl _s32_div_f
 	str r0, [sl, #0x1ac]
 	ldr r0, [sl, #0x1b0]
 	mov r1, #3
-	bl __divsi3
+	bl _s32_div_f
 	add r8, r8, #1
 	str r0, [sl, #0x1b0]
 	cmp r8, #3
@@ -585,7 +585,7 @@ _02304F2C:
 	mov r0, #0x18
 	ldr r1, [r1]
 	mov r1, r1, lsl #2
-	bl __divsi3
+	bl _s32_div_f
 	strh r0, [r7, #0x18]
 	ldr r0, [r7, #0x10]
 	mov r0, r0, lsl #2
@@ -597,7 +597,7 @@ _02304F2C:
 _02304FC0:
 	ldr r1, [r5]
 	mov r0, #0x18
-	bl __divsi3
+	bl _s32_div_f
 	strh r0, [r7, #0x18]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -825,7 +825,7 @@ _02305314:
 	ldr r1, _02305584 ; =ov29_0237C9CC
 	mov r0, #0x18
 	ldr r1, [r1]
-	bl __divsi3
+	bl _s32_div_f
 	cmp r5, r0
 	blt _023051B0
 _0230532C:

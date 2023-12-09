@@ -1436,7 +1436,7 @@ _022EA848:
 	bge _022EA910
 	rsb r0, r1, r1, lsl #8
 	mov r1, #0x1f
-	bl __divsi3
+	bl _s32_div_f
 _022EA910:
 	ldr ip, _022EA95C ; =ov29_0237C850
 	mov r1, r4, lsl #0x10

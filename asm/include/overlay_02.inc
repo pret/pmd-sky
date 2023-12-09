@@ -1,7 +1,7 @@
 #pragma once
 .public _020AE224
-.public __divsi3
-.public __udivsi3
+.public _s32_div_f
+.public _u32_div_f
 .public ArrayCopy16
 .public ArrayCopy32
 .public ArrayCopy32Fast

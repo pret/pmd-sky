@@ -113,7 +113,7 @@ _02344C10:
 	bne _02344C10
 	bl DungeonRand16Bit
 	mov r1, #0xc
-	bl __divsi3
+	bl _s32_div_f
 	add r2, sp, #0
 	mov r0, #6
 	smlabb r0, r1, r0, r2
