@@ -209,7 +209,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     # Write the new symbol within the header file.
     symbol_header_path = os.path.join(HEADER_FOLDER, symbol.file_path.replace('.o', '.h'))
     if not os.path.exists(symbol_header_path):
-        symbol_header_path = os.path.join('lib', 'NitroSDK', symbol_header_path)
+        symbol_header_path = os.path.join('lib', 'DSE', symbol_header_path)
     if symbol.is_data:
         if string_length is not None:
             symbol_header = f'extern char {base_symbol_name}[{string_length}];\n'
@@ -225,7 +225,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
         symbol_header = symbol_header.replace('u32', 'uint32_t')
         symbol_header = symbol_header.replace('u16', 'uint16_t')
         symbol_header = symbol_header.replace('u8', 'uint8_t')
-        symbol_header = symbol_header.replace('s32', 'int32_t')
+        symbol_header = symbol_header.replace('s32', 'int')
         symbol_header = symbol_header.replace('s16', 'int16_t')
         symbol_header = symbol_header.replace('s8', 'int8_t')
     else:

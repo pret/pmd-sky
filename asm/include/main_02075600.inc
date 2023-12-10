@@ -1517,7 +1517,6 @@
 .public _020A9EA4
 .public _020A9EB8
 .public _020A9ECC
-.public _020A9FA0
 .public _020AE0B4
 .public _020AE0C4
 .public _020AE0C6
@@ -1536,7 +1535,6 @@
 .public _020AEEF0
 .public _020AF38C
 .public _020AFE44
-.public _020B1250
 .public _020B2B94
 .public _020B2B98
 .public _020B2B9C
@@ -1716,7 +1714,6 @@
 .public ARM9_UNKNOWN_TABLE__NA_20ADFB0
 .public ARM9_UNKNOWN_TABLE__NA_20AE924
 .public BaseFormsEqual
-.public DRIVER_WORK
 .public DTCM_BSS
 .public GetKeyM2N
 .public GetKeyM2NBaseForm
@@ -1727,8 +1724,6 @@
 .public MIi_UncompressBackward
 .public MISSION_FLOOR_RANKS_AND_ITEM_LISTS_1
 .public MISSION_FLOOR_RANKS_AND_ITEM_LISTS_2
-.public MUSIC_DURATION_LOOKUP_TABLE_1
-.public MUSIC_DURATION_LOOKUP_TABLE_2
 .public OS_IRQTable
 .public OSi_ReferSymbol
 .public RANK_STRINGS_1
@@ -1747,6 +1742,16 @@
 .public SDK_SECTION_ARENA_DTCM_START
 .public SDK_SECTION_ARENA_EX_START
 .public SDK_SECTION_ARENA_ITCM_START
+.public SoundLfoWaveFullNoiseFunc
+.public SoundLfoWaveFullSquareFunc
+.public SoundLfoWaveFullTriangleFunc
+.public SoundLfoWaveHalfNoiseFunc
+.public SoundLfoWaveHalfSquareFunc
+.public SoundLfoWaveHalfTriangleFunc
+.public SoundLfoWaveInvalidFunc
+.public SoundLfoWaveReverseSawFunc
+.public SoundLfoWaveSawFunc
+.public SoundUtilGetRandomNumber
 .public STRING_BALANCE_M_LEVEL_BIN
 .public STRING_DUNGEON_DUNGEON_BIN
 .public STRING_EFFECT_EFFECT_BIN
@@ -1891,7 +1896,6 @@
 .public sub_0206074C
 .public sub_02060804
 .public sub_02060904
-.public sub_0206C8F4
 .public sub_0206CC14
 .public sub_0206F808
 .public sub_0206FD88

@@ -28987,8 +28987,8 @@ sub_0206C8C4: ; 0x0206C8C4
 	bx lr
 	arm_func_end sub_0206C8C4
 
-	arm_func_start sub_0206C8F4
-sub_0206C8F4: ; 0x0206C8F4
+	arm_func_start SoundUtilGetRandomNumber
+SoundUtilGetRandomNumber: ; 0x0206C8F4
 	ldr r1, _0206C914 ; =DRIVER_WORK
 	ldr r0, _0206C918 ; =0x00007FFF
 	ldr r2, [r1, #0x34]
@@ -29000,7 +29000,7 @@ sub_0206C8F4: ; 0x0206C8F4
 	.align 2, 0
 _0206C914: .word DRIVER_WORK
 _0206C918: .word 0x00007FFF
-	arm_func_end sub_0206C8F4
+	arm_func_end SoundUtilGetRandomNumber
 
 	arm_func_start sub_0206C91C
 sub_0206C91C: ; 0x0206C91C
@@ -33178,7 +33178,7 @@ _0206FFE0:
 	mov r1, fp
 	bl SoundEnvelopeForceVolume
 	add r0, r7, #0x5c
-	bl sub_0207509C
+	bl SoundLfoBankReset
 	mov r0, #1
 	strh r0, [r7, #6]
 	ldrb r0, [sl, #0x1f]
@@ -33686,7 +33686,7 @@ FlushChannels: ; 0x02070674
 	mvn r1, #0xc0000000
 	bl SoundEnvelopeForceVolume
 	add r0, r5, #0x5c
-	bl sub_0207509C
+	bl SoundLfoBankReset
 	mov r0, #0
 	strh r0, [r5, #6]
 	mov r0, #0x10
@@ -33811,7 +33811,7 @@ _02070810:
 	add r0, sl, #0x3c
 	bl SoundEnvelopeForceVolume
 	add r0, sl, #0x5c
-	bl sub_0207509C
+	bl SoundLfoBankReset
 	add sb, sb, #1
 	strh r5, [sl, #6]
 	cmp sb, #2
@@ -37986,7 +37986,7 @@ sub_02073C5C: ; 0x02073C5C
 _02073C74:
 	mov r1, r5
 	add r0, r4, #0x5c
-	bl sub_020752AC
+	bl SoundLfoBankSetConstEnvelopes
 	ldr r4, [r4, #0x154]
 	cmp r4, #0
 	bne _02073C74
@@ -38027,7 +38027,7 @@ sub_02073CD8: ; 0x02073CD8
 	ldrb r0, [r5, #0xc]
 	sub r0, r2, r0
 	add r6, r0, #1
-	bl sub_0206C8F4
+	bl SoundUtilGetRandomNumber
 	mul r1, r6, r0
 	mov r0, r1, asr #0xe
 	ldrb r2, [r5, #0xc]
@@ -38188,7 +38188,7 @@ sub_02073EDC: ; 0x02073EDC
 	moveq r0, #0
 	streq r0, [sp]
 	beq _02073F28
-	bl sub_0206C8F4
+	bl SoundUtilGetRandomNumber
 	mov r1, r4, lsl #1
 	mul r2, r1, r0
 	mov r0, r2, asr #0xe
@@ -38317,7 +38317,7 @@ _020740B0:
 	orr r2, r2, #0xff0
 	strh r2, [r4, #6]
 	ldrsb r2, [sl, #0x51]
-	bl sub_020750B4
+	bl SoundLfoBankSet
 	add r0, r5, #0x20
 	add r8, r4, #0x3c
 	ldmia r0, {r0, r1, r2, r3}
@@ -38514,7 +38514,7 @@ _02074364:
 	strb r5, [sb, #0x17]
 	bl SoundEnvelopeReset
 	add r0, sb, #0x5c
-	bl sub_0207509C
+	bl SoundLfoBankReset
 	str r4, [sb, #0x154]
 	str r4, [sb, #0x158]
 	ldrh r0, [sl, #0x2e]
@@ -38602,7 +38602,7 @@ _020744B0:
 	cmp r1, #1
 	bne _02074514
 	add r0, r5, #0x5c
-	bl sub_020752F8
+	bl SoundLfoBankTick
 	ldrh r1, [r5, #6]
 	orr r0, r1, r0
 	strh r0, [r5, #6]

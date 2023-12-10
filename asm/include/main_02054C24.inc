@@ -405,6 +405,10 @@
 .public SoundEnvelopeStop
 .public SoundEnvelopeStop2
 .public SoundEnvelopeTick
+.public SoundLfoBankReset
+.public SoundLfoBankSet
+.public SoundLfoBankSetConstEnvelopes
+.public SoundLfoBankTick
 .public SPECIAL_BAND_STAT_BOOST
 .public SprintfStatic__02054A60
 .public StartThread
@@ -571,10 +575,6 @@
 .public sub_020534BC
 .public sub_02053D1C
 .public sub_02053F10
-.public sub_0207509C
-.public sub_020750B4
-.public sub_020752AC
-.public sub_020752F8
 .public sub_02075600
 .public sub_020756E8
 .public sub_02079800
