@@ -13,6 +13,7 @@
 .public CreateSimpleMenuFromStringIds
 .public CreateTextBox
 .public DebugPrint0
+.public DrawTextInWindow
 .public GetMoneyCarried
 .public GetPressedButtons
 .public GetSimpleMenuResult
@@ -70,7 +71,6 @@
 .public sub_02013150
 .public sub_02017C74
 .public sub_02017C80
-.public sub_02026214
 .public sub_02026268
 .public sub_02027AF0
 .public sub_02027B1C

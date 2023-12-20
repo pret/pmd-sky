@@ -14,6 +14,7 @@
 .public CreateSimpleMenu
 .public CreateSimpleMenuFromStringIds
 .public CreateTextBoxWithArg
+.public DrawTextInWindow
 .public GetItemAtIdx
 .public GetSimpleMenuField0x1A4
 .public GetSimpleMenuResult
@@ -76,7 +77,6 @@
 .public sub_02017C10
 .public sub_02017C50
 .public sub_02025D50
-.public sub_02026214
 .public sub_02027AF0
 .public sub_02027B1C
 .public sub_0202A03C

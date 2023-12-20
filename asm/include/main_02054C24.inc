@@ -213,6 +213,7 @@
 .public DEF_SCARF_STAT_BOOST
 .public DeleteWanTableEntryVeneer
 .public DEMO_TEAMS
+.public DrawTextInWindow
 .public DRIVER_WORK
 .public DUNGEON_SWAP_ID_TABLE
 .public DungeonGoesUp
@@ -488,7 +489,6 @@
 .public sub_0202568C
 .public sub_02025888
 .public sub_02025AD8
-.public sub_02026214
 .public sub_02026268
 .public sub_02026358
 .public sub_020264F8

@@ -1,6 +1,7 @@
 #pragma once
 .public CloseAdvancedMenu
 .public CreateAdvancedMenu
+.public DrawTextInWindow
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
 .public GetAdventureLogDungeonFloor
@@ -73,7 +74,6 @@
 .public sub_02003BC8
 .public sub_02003BFC
 .public sub_02006C8C
-.public sub_02026214
 .public sub_02027AF0
 .public sub_0202836C
 .public sub_02029F88

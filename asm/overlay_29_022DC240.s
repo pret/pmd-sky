@@ -344,17 +344,17 @@ ov29_022DC694: ; 0x022DC694
 	mov r0, r5
 	mov r1, #0
 	mov r2, #1
-	bl ov10_022C09E8
+	bl DrawTeamStats
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, pc}
 	arm_func_end ov29_022DC694
 
 	arm_func_start ov29_022DC6D0
 ov29_022DC6D0: ; 0x022DC6D0
-	ldr ip, _022DC6D8 ; =ov10_022C0CE0
+	ldr ip, _022DC6D8 ; =UpdateTeamStats
 	bx ip
 	.align 2, 0
-_022DC6D8: .word ov10_022C0CE0
+_022DC6D8: .word UpdateTeamStats
 	arm_func_end ov29_022DC6D0
 
 	arm_func_start ov29_022DC6DC
@@ -388,7 +388,7 @@ ov29_022DC6E8: ; 0x022DC6E8
 	arm_func_start ov29_022DC728
 ov29_022DC728: ; 0x022DC728
 	stmdb sp!, {r3, lr}
-	bl ov10_022C13B4
+	bl FreeTeamStats
 	bl ov10_022C096C
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022DC728
@@ -426,7 +426,7 @@ ov29_022DC778: ; 0x022DC778
 	arm_func_start ov29_022DC77C
 ov29_022DC77C: ; 0x022DC77C
 	stmdb sp!, {r3, lr}
-	bl ov10_022C16D8
+	bl FreeMapAndTeam
 	bl ov10_022C096C
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022DC77C
@@ -3119,7 +3119,7 @@ ov29_022DEADC: ; 0x022DEADC
 	mov r0, #1
 	mov r1, #0x4000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	ldmia sp!, {r3, pc}
@@ -3131,7 +3131,7 @@ ov29_022DEB40: ; 0x022DEB40
 	mov r0, #2
 	mov r1, #0x4000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	mov r0, #1
@@ -3519,7 +3519,7 @@ _022DF0AC:
 	bl sub_02017B00
 	mov r1, r5
 	bl ov29_022EAF48
-	bl ov29_022E7EC4
+	bl AllocTopScreenStatus
 	bl ov29_022E6F94
 	bl ov29_022E1640
 	bl ov29_023362EC
@@ -3890,7 +3890,7 @@ _022DF5E4:
 	cmp r0, #0
 	bne _022DF660
 	mov r0, #0x3c
-	bl ov29_023482D4
+	bl DisplayFloorCard
 _022DF660:
 	bl ov29_022E12F8
 	cmp r5, #0
@@ -4013,17 +4013,17 @@ _022DF7EC:
 	mov r2, #0
 	beq _022DF824
 	mov r0, #4
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r8, #0
 	b _022DF82C
 _022DF824:
 	mov r0, #1
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 _022DF82C:
 	mov r0, #1
 	mov r2, r0
 	mov r1, #0x1000
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	bl ov29_022E0E44
@@ -4337,7 +4337,7 @@ _022DFC60:
 	mov r0, #1
 	mov r1, #0x4000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	mov r0, #0
@@ -4347,7 +4347,7 @@ _022DFC60:
 	mov r0, #2
 	mov r1, #0x4000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	mov r0, #1
@@ -4765,7 +4765,7 @@ _022E02EC:
 	strneb r0, [sl, #0x1a8]
 _022E030C:
 	bl ov10_022BDC0C
-	bl ov29_022E7F44
+	bl FreeTopScreenStatus
 	bl ov29_0234AFD0
 	bl ov29_0234BB20
 	bl ov29_02338D30

@@ -1446,13 +1446,13 @@ DoMoveSeismicToss: ; 0x02329258
 	mov r0, #5
 	mov r1, #0x2000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	mov r0, #4
 	mov r1, #0x400
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #1
 	bl ov29_022ECAFC
 	mov r0, #0

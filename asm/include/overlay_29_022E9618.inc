@@ -13,6 +13,7 @@
 .public EntityIsValid__022E95F4
 .public GetLeader
 .public GetTile
+.public HandleTopScreenFades
 .public InitWeirdMinimapMatrix
 .public MemAlloc
 .public MemFree
@@ -23,7 +24,6 @@
 .public ov29_022DE638
 .public ov29_022E1854
 .public ov29_022E335C
-.public ov29_022E886C
 .public ov29_022E8C10
 .public ov29_022ED800
 .public ov29_02300818

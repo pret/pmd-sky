@@ -29,6 +29,7 @@
 .public CreateTextBox
 .public DebugPrint0
 .public DeleteWanTableEntryVeneer
+.public DrawTextInWindow
 .public EnableIrqFlag
 .public FemaleToMaleForm
 .public GetAdvancedMenuCurrentOption
@@ -273,7 +274,6 @@
 .public sub_02025480
 .public sub_02025888
 .public sub_02025D50
-.public sub_02026214
 .public sub_02026268
 .public sub_0202676C
 .public sub_0202737C

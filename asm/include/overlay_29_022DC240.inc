@@ -3,6 +3,7 @@
 .public _020AFC70
 .public _s32_div_f
 .public AllocAndLoadFileInPack
+.public AllocTopScreenStatus
 .public ChangeGiratinaFormIfSkyDungeon
 .public ClearHiddenStairs
 .public CloseFixedBin
@@ -11,8 +12,10 @@
 .public DeleteAllMonsterSpriteFiles
 .public DetermineAllTilesWalkableNeighbors
 .public DIRECTIONS_XY
+.public DisplayFloorCard
 .public DisplayMessage
 .public DisplayMessage2
+.public DrawTeamStats
 .public DUNGEON_PTR
 .public DungeonGoesUp
 .public DungeonRandInt
@@ -22,6 +25,9 @@
 .public FadeToBlack
 .public FIXED_ROOM_REVISIT_OVERRIDES
 .public FreeLoadedAttackSpriteAndMore
+.public FreeMapAndTeam
+.public FreeTeamStats
+.public FreeTopScreenStatus
 .public GenerateDungeonRngSeed
 .public GenerateFloor
 .public GetApparentWeather
@@ -67,14 +73,10 @@
 .public ov10_022C0814
 .public ov10_022C096C
 .public ov10_022C0998
-.public ov10_022C09E8
-.public ov10_022C0CE0
 .public ov10_022C0F6C
 .public ov10_022C11D8
-.public ov10_022C13B4
 .public ov10_022C14D0
 .public ov10_022C159C
-.public ov10_022C16D8
 .public ov10_022C22A0
 .public ov29_022E0434
 .public ov29_022E081C
@@ -96,8 +98,6 @@
 .public ov29_022E6E40
 .public ov29_022E6F94
 .public ov29_022E7CFC
-.public ov29_022E7EC4
-.public ov29_022E7F44
 .public ov29_022E7F7C
 .public ov29_022E8104
 .public ov29_022E8708
@@ -194,7 +194,6 @@
 .public ov29_02346DA4
 .public ov29_02346E48
 .public ov29_023480FC
-.public ov29_023482D4
 .public ov29_023484A0
 .public ov29_02348850
 .public ov29_02348894
@@ -221,7 +220,6 @@
 .public ov29_0234C584
 .public ov29_0234C5EC
 .public ov29_0234C654
-.public ov29_0234C668
 .public ov29_0234C738
 .public ov29_0234CA84
 .public ov29_0234CB34
@@ -277,6 +275,7 @@
 .public SpawnInitialMonsters
 .public SpawnShopkeepers
 .public SpawnTeam
+.public StartFadeDungeonWrapper
 .public sub_01FF8130
 .public sub_01FF81CC
 .public sub_01FF8C60
@@ -340,4 +339,5 @@
 .public UpdateMinimap
 .public UpdateShouldBoostHiddenStairsSpawnChance
 .public UpdateShouldBoostKecleonShopSpawnChance
+.public UpdateTeamStats
 .public UpdateTrapsVisibility

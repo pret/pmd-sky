@@ -10,6 +10,7 @@
 .public CreateAdvancedTextBox
 .public CreateScrollBoxSingle
 .public DebugPrint0
+.public DrawTextInWindow
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
 .public GetHeldButtons
@@ -127,7 +128,6 @@
 .public sub_02010154
 .public sub_02025404
 .public sub_0202561C
-.public sub_02026214
 .public sub_0202836C
 .public sub_02029F88
 .public sub_02029FBC

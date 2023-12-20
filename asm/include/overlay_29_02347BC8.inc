@@ -16,6 +16,7 @@
 .public GenerateMissionEggMonster
 .public GetAcceptedMission
 .public GetBgRegionArea
+.public GetCurrentHiddenStairsType
 .public GetForcedLossReason
 .public GetLeader
 .public GetMaxPp
@@ -47,7 +48,6 @@
 .public ov29_023009CC
 .public ov29_02304A84
 .public ov29_02307BDC
-.public ov29_023386B0
 .public ov29_02344B44
 .public ov29_02344B70
 .public ov29_02344B9C
@@ -63,11 +63,11 @@
 .public ov29_0234B06C
 .public ov29_0234B0B4
 .public ov29_0234B4CC
-.public ov29_0234C668
 .public ov29_0234C738
 .public ov29_023537C4
 .public ov29_0237C694
 .public SpawnDroppedItem
+.public StartFadeDungeonWrapper
 .public strcpy
 .public sub_020018D0
 .public sub_02011220

@@ -1,4 +1,5 @@
 #pragma once
+.public DrawTextInWindow
 .public GetStringFromFileVeneer
 .public MemAlloc
 .public MemFree
@@ -9,7 +10,6 @@
 .public sub_02025B80
 .public sub_02025B90
 .public sub_02025C14
-.public sub_02026214
 .public sub_02027170
 .public sub_02027228
 .public sub_0202810C

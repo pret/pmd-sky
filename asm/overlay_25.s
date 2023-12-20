@@ -1345,7 +1345,7 @@ ov25_0238B414: ; 0x0238B414
 	mov r0, r4
 	mov r2, r1
 	add r3, sp, #4
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #0x54

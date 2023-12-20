@@ -11,6 +11,7 @@
 .public CreateTextBox
 .public DIRECTIONS_XY
 .public DisplayAnimatedNumbers
+.public DrawTextInWindow
 .public DUNGEON_PTR
 .public DungeonFloorToGroupFloor
 .public DungeonGetSpriteIndex
@@ -103,7 +104,6 @@
 .public ov29_02349378
 .public ov29_0234B1A4
 .public ov29_0234B4E0
-.public ov29_0234C668
 .public ov29_0234C70C
 .public ov29_0234F25C
 .public ov29_0234F278
@@ -127,7 +127,6 @@
 .public ov29_02351604
 .public ov29_0235352C
 .public ov29_0235354C
-.public ov29_02353554
 .public ov29_02353558
 .public ov29_0237C850
 .public ov29_0237C888
@@ -141,6 +140,7 @@
 .public SetMinimapDataE448
 .public SetMonsterId
 .public ShouldDisplayEntityWrapper
+.public StartFadeDungeonWrapper
 .public STATUS_ICON_ARRAY_BIDE
 .public STATUS_ICON_ARRAY_BLINDED
 .public STATUS_ICON_ARRAY_BURN
@@ -163,7 +163,6 @@
 .public sub_0201C000
 .public sub_0201CF90
 .public sub_0201D034
-.public sub_02026214
 .public sub_02027AF0
 .public sub_02048384
 .public sub_020483B8
@@ -172,5 +171,6 @@
 .public sub_0204AEA0
 .public sub_0204AF58
 .public SubstitutePlaceholderStringTags
+.public TOP_SCREEN_STATUS_PTR
 .public UnloadFile
 .public UpdateMinimap

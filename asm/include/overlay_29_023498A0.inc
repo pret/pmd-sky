@@ -14,6 +14,7 @@
 .public CreateParentMenuFromStringIds
 .public CreatePortraitBox
 .public DebugPrint0
+.public DUNGEON_FADES_PTR
 .public DUNGEON_PTR
 .public DungeonAlloc
 .public DungeonFree
@@ -172,7 +173,6 @@
 .public ov29_023537C8
 .public ov29_023537CC
 .public ov29_023537D8
-.public ov29_023537E0
 .public ov29_023537E4
 .public ov29_023537E8
 .public ov29_0237C694

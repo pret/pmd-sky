@@ -6,6 +6,7 @@
 .public CreateCollectionMenu
 .public CreateOptionsMenu
 .public CreateTextBox
+.public DrawTextInWindow
 .public GetKeyboardStatus
 .public GetKeyboardStringResult
 .public GetLanguageType
@@ -113,7 +114,6 @@
 .public sub_02003BC8
 .public sub_02003BFC
 .public sub_0202065C
-.public sub_02026214
 .public sub_020264F8
 .public sub_02027AF0
 .public sub_02027B1C

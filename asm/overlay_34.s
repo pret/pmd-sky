@@ -697,7 +697,7 @@ ov34_022DCA70: ; 0x022DCA70
 	cmp r0, #0
 	beq _022DCB2C
 	ldr r0, _022DCB5C ; =ov34_022DD104
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	cmp r0, #0
 	bne _022DCAB4
 	ldr r1, _022DCB58 ; =ov34_022DD0B0
@@ -717,7 +717,7 @@ _022DCAC4:
 	ldrsh r0, [r0, #0x14]
 	bl ov34_022DCB64
 	ldr r0, _022DCB60 ; =ov34_022DD0C0
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	cmp r0, #0
 	bne _022DCAFC
 	ldr r1, _022DCB58 ; =ov34_022DD0B0

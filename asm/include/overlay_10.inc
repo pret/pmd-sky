@@ -7,6 +7,7 @@
 .public BAG_ITEMS_PTR_MIRROR
 .public CalcMenuHeightDiv8__020329E4
 .public CleanStickyItemsInBag
+.public ClearWindow
 .public ClosePortraitBox
 .public CloseTextBox
 .public CloseTextBox2
@@ -157,6 +158,7 @@
 .public DoMoveWillOWisp
 .public DoMoveWrap
 .public DoMoveYawn
+.public DrawTextInWindow
 .public ExplorersOfSkyMain
 .public GendersEqual
 .public GetBgRegionArea
@@ -209,7 +211,6 @@
 .public ov29_022EA428
 .public ov29_0234C584
 .public ov29_0234C5EC
-.public ov29_0234C668
 .public PreprocessString
 .public ProcessWte
 .public Rand16Bit
@@ -226,6 +227,7 @@
 .public SetPortraitOffset
 .public SetSpriteIdForAnimationControl
 .public ShowPortraitInPortraitBox
+.public StartFadeDungeonWrapper
 .public strcmp
 .public strcpy
 .public sub_02001808
@@ -258,12 +260,10 @@
 .public sub_0201F2A0
 .public sub_0201F598
 .public sub_02025010_EU
-.public sub_02026214
 .public sub_020263C8
 .public sub_020265A8
 .public sub_02027AF0
 .public sub_02027B1C
-.public sub_02027B58
 .public sub_0202810C
 .public sub_0202812C
 .public sub_0202830C

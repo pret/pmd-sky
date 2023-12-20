@@ -55,7 +55,6 @@
 .public ov29_0234B034
 .public ov29_0234B0B4
 .public ov29_0234B1A4
-.public ov29_0234C668
 .public ov29_0234C738
 .public ov29_023510E0
 .public ov29_02353540
@@ -73,6 +72,7 @@
 .public SECONDARY_TERRAIN_TYPES
 .public SetMinimapDataE447
 .public SetMoneyCarried
+.public StartFadeDungeonWrapper
 .public sub_020063F4
 .public sub_02006564
 .public sub_02006BFC

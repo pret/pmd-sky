@@ -23,6 +23,7 @@
 .public EnableIrqFlag
 .public FileInit
 .public GetDebugFlag
+.public GetFadeStatus
 .public GetLanguage
 .public GetProcessorMode
 .public LoadOverlay
@@ -101,7 +102,6 @@
 .public sub_0200BB74
 .public sub_0200BC54
 .public sub_0200BD14
-.public sub_0200BD2C
 .public sub_02017A68
 .public sub_02017A80
 .public sub_02017ACC

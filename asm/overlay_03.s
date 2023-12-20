@@ -9192,7 +9192,7 @@ ov03_02344970: ; 0x02344970
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x10
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov03_02344970
 

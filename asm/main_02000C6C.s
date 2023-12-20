@@ -13657,8 +13657,8 @@ _0200B958:
 	bx lr
 	arm_func_end sub_0200B928
 
-	arm_func_start sub_0200B990
-sub_0200B990: ; 0x0200B990
+	arm_func_start UpdateFadeStatus
+UpdateFadeStatus: ; 0x0200B990
 	ldr r3, _0200BA00 ; =_02094AE8
 	mov ip, r1, lsl #1
 	ldrsh r3, [r3, ip]
@@ -13691,10 +13691,10 @@ _0200B9D4:
 	.align 2, 0
 _0200BA00: .word _02094AE8
 _0200BA04: .word _02094AF0
-	arm_func_end sub_0200B990
+	arm_func_end UpdateFadeStatus
 
-	arm_func_start sub_0200BA08
-sub_0200BA08: ; 0x0200BA08
+	arm_func_start HandleFades
+HandleFades: ; 0x0200BA08
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4, #4]
@@ -13793,7 +13793,7 @@ _0200BB50:
 _0200BB58:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0200BA08
+	arm_func_end HandleFades
 
 	arm_func_start sub_0200BB60
 sub_0200BB60: ; 0x0200BB60
@@ -13807,12 +13807,12 @@ _0200BB70: .word sub_0200B928
 
 	arm_func_start sub_0200BB74
 sub_0200BB74: ; 0x0200BB74
-	ldr ip, _0200BB84 ; =sub_0200B990
+	ldr ip, _0200BB84 ; =UpdateFadeStatus
 	mov r3, #1
 	str r3, [r0]
 	bx ip
 	.align 2, 0
-_0200BB84: .word sub_0200B990
+_0200BB84: .word UpdateFadeStatus
 	arm_func_end sub_0200BB74
 
 	arm_func_start sub_0200BB88
@@ -13878,10 +13878,10 @@ _0200BC40:
 
 	arm_func_start sub_0200BC54
 sub_0200BC54: ; 0x0200BC54
-	ldr ip, _0200BC5C ; =sub_0200BA08
+	ldr ip, _0200BC5C ; =HandleFades
 	bx ip
 	.align 2, 0
-_0200BC5C: .word sub_0200BA08
+_0200BC5C: .word HandleFades
 	arm_func_end sub_0200BC54
 
 	arm_func_start sub_0200BC60
@@ -13902,7 +13902,7 @@ _0200BC70:
 	cmpne r1, #0xb
 	bne _0200BCA4
 	mov r1, #2
-	bl sub_0200B990
+	bl UpdateFadeStatus
 	ldmia sp!, {r4, pc}
 _0200BCA4:
 	mov r1, r2
@@ -13924,7 +13924,7 @@ _0200BCC0:
 	cmp r1, #1
 	bne _0200BCE4
 	mov r1, #1
-	bl sub_0200B990
+	bl UpdateFadeStatus
 	ldmia sp!, {r4, pc}
 _0200BCE4:
 	cmp r1, #3
@@ -13938,7 +13938,7 @@ _0200BCE4:
 	ldmia sp!, {r4, pc}
 _0200BD08:
 	mov r1, #2
-	bl sub_0200B990
+	bl UpdateFadeStatus
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0200BCB0
 
@@ -13952,8 +13952,8 @@ sub_0200BD14: ; 0x0200BD14
 	bx lr
 	arm_func_end sub_0200BD14
 
-	arm_func_start sub_0200BD2C
-sub_0200BD2C: ; 0x0200BD2C
+	arm_func_start GetFadeStatus
+GetFadeStatus: ; 0x0200BD2C
 	ldrsh r1, [r0, #0x10]
 	mvn r0, #0xff
 	cmp r1, r0
@@ -13963,7 +13963,7 @@ sub_0200BD2C: ; 0x0200BD2C
 	moveq r0, #2
 	movne r0, #0
 	bx lr
-	arm_func_end sub_0200BD2C
+	arm_func_end GetFadeStatus
 
 	arm_func_start sub_0200BD50
 sub_0200BD50: ; 0x0200BD50
@@ -13976,7 +13976,7 @@ sub_0200BD50: ; 0x0200BD50
 	cmpeq r0, #0
 	beq _0200C000
 	mov r0, r4
-	bl sub_0200BA08
+	bl HandleFades
 	cmp r0, #0
 	beq _0200BF90
 	ldr r0, [r4]

@@ -845,7 +845,7 @@ _0238AC9C:
 	mov r2, r8
 	mov r3, r4
 	add r1, r6, r1, ror #29
-	bl sub_02026214
+	bl DrawTextInWindow
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0

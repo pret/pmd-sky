@@ -124,7 +124,6 @@
 .public ov29_02348BE8
 .public ov29_0234B09C
 .public ov29_0234B1A4
-.public ov29_0234C668
 .public ov29_0234C738
 .public ov29_023502F0
 .public ov29_023502F4
@@ -163,6 +162,7 @@
 .public SpawnEnemyTrapAtPos
 .public SpawnItem
 .public SpawnMonster
+.public StartFadeDungeonWrapper
 .public sub_020018D0
 .public sub_0200A174
 .public sub_0200B330

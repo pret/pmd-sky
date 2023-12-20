@@ -2575,7 +2575,7 @@ ov00_022BE774: ; 0x022BE774
 	cmp r0, #0
 	beq _022BE830
 	ldr r0, _022BE860 ; =ov00_0231E2FC
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	cmp r0, #0
 	bne _022BE7B8
 	ldr r1, _022BE85C ; =ov00_0231E2A8
@@ -2595,7 +2595,7 @@ _022BE7C8:
 	ldrsh r0, [r0, #0x14]
 	bl ov00_022BE868
 	ldr r0, _022BE864 ; =ov00_0231E2B8
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	cmp r0, #0
 	bne _022BE800
 	ldr r1, _022BE85C ; =ov00_0231E2A8
