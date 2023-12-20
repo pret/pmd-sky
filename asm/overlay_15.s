@@ -929,7 +929,7 @@ ov15_0238ADFC: ; 0x0238ADFC
 	mov r0, r4
 	mov r1, #8
 	mov r2, #6
-	bl sub_02026214
+	bl DrawTextInWindow
 	bl GetMoneyStored
 	add r1, sp, #0x400
 	str r0, [sp, #0x428]
@@ -944,7 +944,7 @@ ov15_0238ADFC: ; 0x0238ADFC
 	mov r1, #0x74
 	mov r2, #6
 	add r3, sp, #4
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #0x54

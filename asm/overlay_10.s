@@ -4893,8 +4893,8 @@ _022C09BC:
 _022C09E4: .word ov10_022DC1D0
 	arm_func_end ov10_022C0998
 
-	arm_func_start ov10_022C09E8
-ov10_022C09E8: ; 0x022C09E8
+	arm_func_start DrawTeamStats
+DrawTeamStats: ; 0x022C09E8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x50
 	ldr r3, _022C0CC0 ; =ov10_022DC1D0
@@ -5093,10 +5093,10 @@ _022C0CD0: .word ProcessTeamStatsNameGender
 _022C0CD4: .word ProcessTeamStatsLvHp
 _022C0CD8: .word ov10_022DC1CC
 _022C0CDC: .word ov10_022DBFFC
-	arm_func_end ov10_022C09E8
+	arm_func_end DrawTeamStats
 
-	arm_func_start ov10_022C0CE0
-ov10_022C0CE0: ; 0x022C0CE0
+	arm_func_start UpdateTeamStats
+UpdateTeamStats: ; 0x022C0CE0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x20
 	ldr r0, _022C0F5C ; =ov10_022DC1D0
@@ -5130,14 +5130,14 @@ ov10_022C0CE0: ; 0x022C0CE0
 	mov r0, #4
 	mov r1, #0x1000
 	mov r2, #1
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	b _022C0D80
 _022C0D6C:
 	bl ov29_0234C584
 	mov r0, #1
 	mov r2, r0
 	mov r1, #0x1000
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 _022C0D80:
 	ldr fp, _022C0F5C ; =ov10_022DC1D0
 	mov r8, #0
@@ -5276,7 +5276,7 @@ _022C0F5C: .word ov10_022DC1D0
 _022C0F60: .word 0x0000FFFF
 _022C0F64: .word ov10_022DBFB0
 _022C0F68: .word ov10_022DC1CC
-	arm_func_end ov10_022C0CE0
+	arm_func_end UpdateTeamStats
 
 	arm_func_start ov10_022C0F6C
 ov10_022C0F6C: ; 0x022C0F6C
@@ -5579,8 +5579,8 @@ _022C13AC: .word ov10_022DC1D0
 _022C13B0: .word ov10_022C231C
 	arm_func_end ov10_022C1398
 
-	arm_func_start ov10_022C13B4
-ov10_022C13B4: ; 0x022C13B4
+	arm_func_start FreeTeamStats
+FreeTeamStats: ; 0x022C13B4
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, _022C14C8 ; =ov10_022DC1D0
 	ldr r0, [r0]
@@ -5658,7 +5658,7 @@ _022C14A4:
 	.align 2, 0
 _022C14C8: .word ov10_022DC1D0
 _022C14CC: .word WAN_TABLE
-	arm_func_end ov10_022C13B4
+	arm_func_end FreeTeamStats
 
 	arm_func_start ov10_022C14D0
 ov10_022C14D0: ; 0x022C14D0
@@ -5770,7 +5770,7 @@ _022C15F4:
 	mov r1, #0
 	mov r2, sb
 	add r3, sp, OV10_022C159C_STACK_OFFSET
-	bl sub_02026214
+	bl DrawTextInWindow
 #ifdef EUROPE
 	mov r1, r8
 	add r0, sp, #0x54
@@ -5788,7 +5788,7 @@ _022C15F4:
 	mov r1, #0x44
 	mov r2, sb
 	add r3, sp, OV10_022C159C_STACK_OFFSET
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, fp
 	bl InitPreprocessorArgs
 	ldr r2, _022C16D4 ; =ov10_022DC014
@@ -5803,7 +5803,7 @@ _022C15F4:
 	mov r1, #0x80
 	mov r2, sb
 	add r3, sp, OV10_022C159C_STACK_OFFSET
-	bl sub_02026214
+	bl DrawTextInWindow
 	add sb, sb, #0xc
 _022C169C:
 	add r5, r5, #1
@@ -5825,8 +5825,8 @@ _022C16D0: .word ov10_022DC00C
 _022C16D4: .word ov10_022DC014
 	arm_func_end ov10_022C159C
 
-	arm_func_start ov10_022C16D8
-ov10_022C16D8: ; 0x022C16D8
+	arm_func_start FreeMapAndTeam
+FreeMapAndTeam: ; 0x022C16D8
 	stmdb sp!, {r3, lr}
 	ldr r0, _022C1744 ; =ov10_022DC1D0
 	ldr r0, [r0]
@@ -5857,7 +5857,7 @@ _022C171C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022C1744: .word ov10_022DC1D0
-	arm_func_end ov10_022C16D8
+	arm_func_end FreeMapAndTeam
 
 	arm_func_start ProcessTeamStatsLvHp
 ProcessTeamStatsLvHp: ; 0x022C1748
@@ -5897,12 +5897,12 @@ _022C1794:
 	cmp r0, #0
 	mov r0, r4
 	bne _022C17C8
-	bl sub_02027B58
+	bl ClearWindow
 	mov r0, r4
 	bl sub_02027AF0
 	b _022C182C
 _022C17C8:
-	bl sub_02027B58
+	bl ClearWindow
 	add r0, sp, #0x104 + OV10_022C1748_STACK_OFFSET
 	bl InitPreprocessorArgs
 #ifdef EUROPE
@@ -5937,7 +5937,7 @@ _022C17C8:
 	mov r0, r4
 	mov r2, r1
 	add r3, sp, #0x154 + OV10_022C1748_STACK_OFFSET
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 _022C182C:
@@ -5992,7 +5992,7 @@ _022C18A4:
 	cmp r0, #0
 	bne _022C18D8
 	mov r0, r5
-	bl sub_02027B58
+	bl ClearWindow
 	mov r0, r5
 	bl sub_02027AF0
 	b _022C197C
@@ -6003,7 +6003,7 @@ _022C18D8:
 	strb r2, [sp, #4]
 	ldrb r1, [r1, #1]
 	strb r1, [sp, #5]
-	bl sub_02027B58
+	bl ClearWindow
 	add r0, sp, #8
 	bl InitPreprocessorArgs
 	ldrsh r0, [r4, #0x42]
@@ -6036,7 +6036,7 @@ _022C1930:
 	add r3, sp, #0x58
 	mov r0, r5
 	mov r2, r1
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r5
 	bl sub_02027AF0
 _022C197C:

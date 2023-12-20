@@ -2853,7 +2853,7 @@ _0234BDA0:
 	mov r0, #1
 	mov r1, #0x4000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	add r0, r4, #0xc4
@@ -2898,7 +2898,7 @@ _0234BE80:
 	mov r0, #2
 	mov r1, #0x4000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 _0234BEB8:
@@ -3143,7 +3143,7 @@ _0234C1F4:
 	bl ov29_022E0A64
 	bl ov29_022DDE24
 	bl ov29_022E9F9C
-	bl ov29_0234C9E4
+	bl HandleFadesDungeonBothScreens
 	bl sub_02034A80
 	bl ov29_022EA008
 	ldr r0, _0234C2EC ; =DUNGEON_PTR
@@ -3296,8 +3296,8 @@ _0234C3F8:
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_0234C3A0
 
-	arm_func_start ov29_0234C408
-ov29_0234C408: ; 0x0234C408
+	arm_func_start StartFadeDungeon
+StartFadeDungeon: ; 0x0234C408
 	stmdb sp!, {r3, lr}
 	str r2, [r0, #0x8c]
 	str r1, [r0, #0x94]
@@ -3364,7 +3364,7 @@ _0234C4CC:
 _0234C4F0:
 	bl ov29_0234C3A0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_0234C408
+	arm_func_end StartFadeDungeon
 
 	arm_func_start ov29_0234C4F8
 ov29_0234C4F8: ; 0x0234C4F8
@@ -3372,49 +3372,49 @@ ov29_0234C4F8: ; 0x0234C4F8
 	mov r0, #0x144
 	mov r1, #0
 	bl MemAlloc
-	ldr r2, _0234C540 ; =ov29_023537E0
+	ldr r2, _0234C540 ; =DUNGEON_FADES_PTR
 	mov r1, #0x144
 	str r0, [r2]
 	bl MemZero
-	ldr r0, _0234C540 ; =ov29_023537E0
+	ldr r0, _0234C540 ; =DUNGEON_FADES_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	bl ov29_0234C2F4
-	ldr r0, _0234C540 ; =ov29_023537E0
+	ldr r0, _0234C540 ; =DUNGEON_FADES_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	add r0, r0, #0x9c
 	bl ov29_0234C2F4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234C540: .word ov29_023537E0
+_0234C540: .word DUNGEON_FADES_PTR
 	arm_func_end ov29_0234C4F8
 
 	arm_func_start ov29_0234C544
 ov29_0234C544: ; 0x0234C544
 	stmdb sp!, {r3, lr}
-	ldr r0, _0234C580 ; =ov29_023537E0
+	ldr r0, _0234C580 ; =DUNGEON_FADES_PTR
 	ldr r0, [r0]
 	bl ov29_0234C354
-	ldr r0, _0234C580 ; =ov29_023537E0
+	ldr r0, _0234C580 ; =DUNGEON_FADES_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x9c
 	bl ov29_0234C354
-	ldr r0, _0234C580 ; =ov29_023537E0
+	ldr r0, _0234C580 ; =DUNGEON_FADES_PTR
 	ldr r0, [r0]
 	bl MemFree
-	ldr r0, _0234C580 ; =ov29_023537E0
+	ldr r0, _0234C580 ; =DUNGEON_FADES_PTR
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234C580: .word ov29_023537E0
+_0234C580: .word DUNGEON_FADES_PTR
 	arm_func_end ov29_0234C544
 
 	arm_func_start ov29_0234C584
 ov29_0234C584: ; 0x0234C584
 	stmdb sp!, {r3, lr}
-	ldr r1, _0234C5E8 ; =ov29_023537E0
+	ldr r1, _0234C5E8 ; =DUNGEON_FADES_PTR
 	mov r2, #0x10000
 	ldr r3, [r1]
 	mov r1, #0x9c
@@ -3440,13 +3440,13 @@ _0234C5CC:
 	bl ov29_0234C3A0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234C5E8: .word ov29_023537E0
+_0234C5E8: .word DUNGEON_FADES_PTR
 	arm_func_end ov29_0234C584
 
 	arm_func_start ov29_0234C5EC
 ov29_0234C5EC: ; 0x0234C5EC
 	stmdb sp!, {r3, lr}
-	ldr r2, _0234C650 ; =ov29_023537E0
+	ldr r2, _0234C650 ; =DUNGEON_FADES_PTR
 	mov r1, #0x9c
 	ldr r3, [r2]
 	mov r2, #0x10000
@@ -3472,23 +3472,23 @@ _0234C630:
 	bl ov29_0234C3A0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234C650: .word ov29_023537E0
+_0234C650: .word DUNGEON_FADES_PTR
 	arm_func_end ov29_0234C5EC
 
 	arm_func_start ov29_0234C654
 ov29_0234C654: ; 0x0234C654
-	ldr r1, _0234C664 ; =ov29_023537E0
+	ldr r1, _0234C664 ; =DUNGEON_FADES_PTR
 	ldr r1, [r1]
 	strh r0, [r1, #0x72]
 	bx lr
 	.align 2, 0
-_0234C664: .word ov29_023537E0
+_0234C664: .word DUNGEON_FADES_PTR
 	arm_func_end ov29_0234C654
 
-	arm_func_start ov29_0234C668
-ov29_0234C668: ; 0x0234C668
+	arm_func_start StartFadeDungeonWrapper
+StartFadeDungeonWrapper: ; 0x0234C668
 	stmdb sp!, {r3, lr}
-	ldr r3, _0234C708 ; =ov29_023537E0
+	ldr r3, _0234C708 ; =DUNGEON_FADES_PTR
 	mov ip, #0
 	ldr lr, [r3]
 	add lr, lr, r2, lsl #2
@@ -3533,15 +3533,15 @@ _0234C6E4:
 	ldmia sp!, {r3, pc}
 _0234C6FC:
 	mov r2, r3
-	bl ov29_0234C408
+	bl StartFadeDungeon
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234C708: .word ov29_023537E0
-	arm_func_end ov29_0234C668
+_0234C708: .word DUNGEON_FADES_PTR
+	arm_func_end StartFadeDungeonWrapper
 
 	arm_func_start ov29_0234C70C
 ov29_0234C70C: ; 0x0234C70C
-	ldr r2, _0234C734 ; =ov29_023537E0
+	ldr r2, _0234C734 ; =DUNGEON_FADES_PTR
 	mov r1, #0x9c
 	ldr r2, [r2]
 	mla r1, r0, r1, r2
@@ -3552,7 +3552,7 @@ ov29_0234C70C: ; 0x0234C70C
 	movne r0, #1
 	bx lr
 	.align 2, 0
-_0234C734: .word ov29_023537E0
+_0234C734: .word DUNGEON_FADES_PTR
 	arm_func_end ov29_0234C70C
 
 	arm_func_start ov29_0234C738
@@ -3561,7 +3561,7 @@ ov29_0234C738: ; 0x0234C738
 	mov r5, r0
 	mov r0, #0x9c
 	mul r4, r5, r0
-	ldr r6, _0234C7D0 ; =ov29_023537E0
+	ldr r6, _0234C7D0 ; =DUNGEON_FADES_PTR
 	mov r7, #5
 _0234C750:
 	ldr r1, [r6]
@@ -3602,13 +3602,13 @@ _0234C7C0:
 _0234C7CC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0234C7D0: .word ov29_023537E0
+_0234C7D0: .word DUNGEON_FADES_PTR
 	arm_func_end ov29_0234C738
 
-	arm_func_start ov29_0234C7D4
-ov29_0234C7D4: ; 0x0234C7D4
+	arm_func_start HandleFadesDungeon
+HandleFadesDungeon: ; 0x0234C7D4
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _0234C9E0 ; =ov29_023537E0
+	ldr r1, _0234C9E0 ; =DUNGEON_FADES_PTR
 	mov r5, r0
 	ldr r4, [r1]
 	add r0, r4, r5, lsl #2
@@ -3644,13 +3644,13 @@ _0234C830:
 	ldr r1, [r0, #0x94]
 	bne _0234C864
 	mov r2, #2
-	bl ov29_0234C408
+	bl StartFadeDungeon
 	b _0234C86C
 _0234C864:
 	mov r2, #4
-	bl ov29_0234C408
+	bl StartFadeDungeon
 _0234C86C:
-	ldr r0, _0234C9E0 ; =ov29_023537E0
+	ldr r0, _0234C9E0 ; =DUNGEON_FADES_PTR
 	ldr r0, [r0]
 	add r1, r0, #0x140
 	ldrb r0, [r1, r5]
@@ -3671,7 +3671,7 @@ _0234C888:
 	bl ov29_0234C354
 	ldmia sp!, {r3, r4, r5, pc}
 _0234C8B8:
-	ldr r1, _0234C9E0 ; =ov29_023537E0
+	ldr r1, _0234C9E0 ; =DUNGEON_FADES_PTR
 	mov r0, #0x9c
 	ldr r1, [r1]
 	mla r4, r5, r0, r1
@@ -3754,18 +3754,18 @@ _0234C9BC:
 	strpl r0, [r4, #0x8c]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0234C9E0: .word ov29_023537E0
-	arm_func_end ov29_0234C7D4
+_0234C9E0: .word DUNGEON_FADES_PTR
+	arm_func_end HandleFadesDungeon
 
-	arm_func_start ov29_0234C9E4
-ov29_0234C9E4: ; 0x0234C9E4
+	arm_func_start HandleFadesDungeonBothScreens
+HandleFadesDungeonBothScreens: ; 0x0234C9E4
 	stmdb sp!, {r3, lr}
 	mov r0, #0
-	bl ov29_0234C7D4
+	bl HandleFadesDungeon
 	mov r0, #1
-	bl ov29_0234C7D4
+	bl HandleFadesDungeon
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_0234C9E4
+	arm_func_end HandleFadesDungeonBothScreens
 
 	arm_func_start ov29_0234C9FC
 ov29_0234C9FC: ; 0x0234C9FC

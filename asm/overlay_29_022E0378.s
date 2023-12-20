@@ -480,11 +480,11 @@ FadeToBlack: ; 0x022E0968
 	mov r0, #2
 	mov r1, #0x1000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #2
 	mov r1, #0x1000
 	mov r2, #1
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	bl ov29_022E0E44

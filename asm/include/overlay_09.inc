@@ -3,6 +3,7 @@
 .public CloseDialogueBox
 .public CreateDialogueBox
 .public DeleteWindow
+.public DrawTextInWindow
 .public GetPressedButtons
 .public GetStringFromFileVeneer
 .public GetWindowContents
@@ -38,7 +39,6 @@
 .public sub_02017B18
 .public sub_02017B70
 .public sub_02017B7C
-.public sub_02026214
 .public sub_020263C8
 .public sub_020265A8
 .public sub_02027AF0

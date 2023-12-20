@@ -2053,7 +2053,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	mov r1, #4
 	mov r2, #0
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r0, _0238BFFC ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r2, _0238C008 ; =0x000006CB
 	ldr lr, [r0]
@@ -2074,7 +2074,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	mov r1, #4
 	mov r2, #0xc
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r1, #0x400
 	ldr r0, _0238BFFC ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	mov ip, r5
@@ -2096,7 +2096,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	mov r1, #4
 	mov r2, #0x18
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r0, _0238BFFC ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r3, _0238C004 ; =0x0000C402
 	ldr r2, [r0]
@@ -2118,7 +2118,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x24
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #0x54

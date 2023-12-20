@@ -7778,7 +7778,7 @@ ov01_0232F830: ; 0x0232F830
 	mov r1, #0x1e
 	mov r2, #0x14
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, #0x16
 	bl GetPerformanceFlagWithChecks
 	cmp r0, #0
@@ -7794,7 +7794,7 @@ ov01_0232F830: ; 0x0232F830
 	mov r0, r5
 	mov r1, #0x5a
 	mov r2, #0
-	bl sub_02026214
+	bl DrawTextInWindow
 _0232F8F0:
 	mov r0, r5
 	bl sub_02027AF0
@@ -11257,7 +11257,7 @@ _0233281C:
 	ldr r1, [r1]
 	str r0, [r1, #4]
 	ldr r0, _023329D0 ; =MAIN_MENU_WINDOW_PARAMS_5
-	ldr r1, _023329D4 ; =ov01_02332EF4
+	ldr r1, _023329D4 ; =ProcessContinueScreenContents
 	bl CreateTextBox
 	ldr r2, _023329C8 ; =ov01_0233C184
 	mov r1, #0
@@ -11375,7 +11375,7 @@ _023329C4: .word ov01_0233B70C
 _023329C8: .word ov01_0233C184
 _023329CC: .word ov01_0233B798
 _023329D0: .word MAIN_MENU_WINDOW_PARAMS_5
-_023329D4: .word ov01_02332EF4
+_023329D4: .word ProcessContinueScreenContents
 _023329D8: .word MAIN_MENU_WINDOW_PARAMS_6
 _023329DC: .word 0x00000203
 _023329E0: .word 0x00000201
@@ -11752,8 +11752,8 @@ _02332EEC: .word MAIN_MENU_WINDOW_PARAMS_7
 _02332EF0: .word MAIN_MENU_ITEMS_CONFIRM
 	arm_func_end ov01_02332ACC
 
-	arm_func_start ov01_02332EF4
-ov01_02332EF4: ; 0x02332EF4
+	arm_func_start ProcessContinueScreenContents
+ProcessContinueScreenContents: ; 0x02332EF4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x94
 	sub sp, sp, #0x800
@@ -11766,7 +11766,7 @@ ov01_02332EF4: ; 0x02332EF4
 	mov r0, r4
 	mov r1, #8
 	mov r2, #0
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r3, _02333624 ; =0x0000020F
 	mov r0, r4
 	mov r1, #8
@@ -11854,7 +11854,7 @@ _02333000:
 	mov r1, #0x90
 	add r3, r2, #0xc
 	mov r2, #0xf
-	bl sub_02026214
+	bl DrawTextInWindow
 	bl GetHero
 	movs r5, r0
 	add r0, sp, #0x400
@@ -11892,7 +11892,7 @@ _023330BC:
 	mov r1, #0x50
 	add r3, r2, #0x10c
 	mov r2, #0xf
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02333158
 _02333110:
 	bl GetSpecialEpisodeType
@@ -11992,7 +11992,7 @@ _02333260:
 	mov r1, #0x50
 	add r3, r2, #0x20c
 	mov r2, #0x1c
-	bl sub_02026214
+	bl DrawTextInWindow
 	bl sub_0204F9E0
 	str r0, [sp, #0x3c8]
 	add r1, sp, #0x3a4
@@ -12010,7 +12010,7 @@ _02333260:
 	mov r1, #0x50
 	add r3, r2, #0x30c
 	mov r2, #0x36
-	bl sub_02026214
+	bl DrawTextInWindow
 	bl GetNbAdventures
 	cmp r0, #0
 	beq _02333334
@@ -12038,7 +12038,7 @@ _02333260:
 	add r2, r2, #0xc
 	add r3, r2, #0x400
 	mov r2, #0x43
-	bl sub_02026214
+	bl DrawTextInWindow
 _02333334:
 	ldr r0, _02333628 ; =ov01_0233C184
 	mov r1, #0
@@ -12178,7 +12178,7 @@ _02333534:
 	add r3, r2, #0x10c
 	mov r2, r1
 	add r3, r3, #0x400
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr sb, _02333628 ; =ov01_0233C184
 	mov r8, #3
 	ldr r0, [sb]
@@ -12259,7 +12259,7 @@ _02333668: .word 0x00002710
 _0233366C: .word 0x05F5E100
 _02333670: .word 0x00000217
 _02333674: .word ov01_0233B764
-	arm_func_end ov01_02332EF4
+	arm_func_end ProcessContinueScreenContents
 
 	arm_func_start ov01_02333678
 ov01_02333678: ; 0x02333678
@@ -15908,7 +15908,7 @@ _02336564:
 	ldrsh r1, [r2, #0x16]
 	ldrsh r2, [r2, #0x18]
 	mov r3, r6
-	bl sub_02026214
+	bl DrawTextInWindow
 	add r0, r7, #1
 	mov r0, r0, lsl #0x10
 	mov r7, r0, asr #0x10
@@ -15924,7 +15924,7 @@ _02336564:
 	ldrsh r1, [r2, #0x2e]
 	ldrsh r2, [r2, #0x30]
 	add r1, r1, #0xc
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r0, _0233665C ; =ov01_0233C1A8
 	add r3, sp, #0
 	ldr r2, [r0]
@@ -15932,7 +15932,7 @@ _02336564:
 	ldrsh r1, [r2, #0x4e]
 	ldrsh r2, [r2, #0x50]
 	add r1, r1, #0xc
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r0, _0233665C ; =ov01_0233C1A8
 	ldr r1, _02336658 ; =ov01_0233BC74
 	ldr r0, [r0]
@@ -15986,7 +15986,7 @@ _02336684:
 	ldrsh r1, [r2, #0x16]
 	ldrsh r2, [r2, #0x18]
 	mov r3, r6
-	bl sub_02026214
+	bl DrawTextInWindow
 	add r0, r7, #1
 	mov r0, r0, lsl #0x10
 	mov r7, r0, asr #0x10
@@ -16043,7 +16043,7 @@ _02336750:
 	ldrsh r1, [r2, #0x16]
 	ldrsh r2, [r2, #0x18]
 	mov r3, r7
-	bl sub_02026214
+	bl DrawTextInWindow
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
 	mov r8, r0, asr #0x10
@@ -16076,7 +16076,7 @@ _02336750:
 	ldrsh r1, [r2, #0x16]
 	ldrsh r2, [r2, #0x18]
 	sub r1, r1, #0xc
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r5, _02336880 ; =ov01_0233BB9E
 	ldr sb, _02336888 ; =ov01_0233C1A8
 	mov r7, #0
@@ -16097,7 +16097,7 @@ _02336824:
 	mov r3, r6
 	sub r1, r1, #0x30
 	smlabb r1, r7, r8, r1
-	bl sub_02026214
+	bl DrawTextInWindow
 	add r0, r7, #1
 	mov r0, r0, lsl #0x10
 	mov r7, r0, asr #0x10
@@ -16136,7 +16136,7 @@ _023368B4:
 	ldrsh r1, [r2, #0x16]
 	ldrsh r2, [r2, #0x18]
 	mov r3, r6
-	bl sub_02026214
+	bl DrawTextInWindow
 	add r0, r7, #1
 	mov r0, r0, lsl #0x10
 	mov r7, r0, asr #0x10

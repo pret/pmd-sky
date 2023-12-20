@@ -12,6 +12,7 @@
 .public CreateScrollBoxSingle
 .public CreateSimpleMenuFromStringIds
 .public CreateTextBox
+.public DrawTextInWindow
 .public GetMoneyCarried
 .public GetNbItemsInBag
 .public GetPressedButtons
@@ -47,7 +48,6 @@
 .public sub_0200D670
 .public sub_02017C74
 .public sub_02017C80
-.public sub_02026214
 .public sub_02026268
 .public sub_02027AF0
 .public sub_02027B1C

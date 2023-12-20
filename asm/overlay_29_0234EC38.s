@@ -646,7 +646,7 @@ _0234F460:
 	mov r0, r5
 	mov r1, #0xa
 	mov r2, #0x13
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrb r0, [r4, #1]
 	bl DungeonGoesUp
 	cmp r0, #0
@@ -666,7 +666,7 @@ _0234F460:
 	mov r0, r5
 	mov r1, #0x15
 	mov r2, #0x13
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r2, #0
 	add r0, sp, #0x58
 	mov r3, r2
@@ -677,7 +677,7 @@ _0234F460:
 	mov r0, r5
 	mov r1, #0x3c
 	mov r2, #0x13
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0234F75C
 _0234F508:
 	ldrb r0, [r4, #1]
@@ -706,7 +706,7 @@ _0234F508:
 	mov r0, r5
 	mov r1, #0xa
 	mov r2, #0x13
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0234F75C
 _0234F578:
 	ldr r0, _0234F770 ; =0x000008DE
@@ -715,7 +715,7 @@ _0234F578:
 	mov r0, r5
 	mov r1, #0xa
 	mov r2, #0x13
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0234F75C
 _0234F598:
 	mov sb, #0
@@ -747,11 +747,11 @@ _0234F5AC:
 	mov r2, r7
 	bne _0234F610
 	ldr r3, _0234F774 ; =ov29_02353404
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0234F618
 _0234F610:
 	ldr r3, _0234F764 ; =ov29_023533F0
-	bl sub_02026214
+	bl DrawTextInWindow
 _0234F618:
 	ldrb r1, [sl, #1]
 	cmp r1, #3
@@ -783,7 +783,7 @@ _0234F618:
 	mov r1, #0x15
 	mov r2, r7
 	add r3, sp, #0x58
-	bl sub_02026214
+	bl DrawTextInWindow
 _0234F694:
 	mov r2, sl
 	add r0, sp, #0x58
@@ -793,7 +793,7 @@ _0234F694:
 	mov r1, #0x3c
 	mov r2, r7
 	add r3, sp, #0x58
-	bl sub_02026214
+	bl DrawTextInWindow
 	add r7, r7, #0xe
 _0234F6BC:
 	add r8, r8, #1
@@ -809,7 +809,7 @@ _0234F6BC:
 	mov r0, r5
 	mov r1, #0xa
 	mov r2, #0x13
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0234F75C
 _0234F6F8:
 	ldr r0, _0234F770 ; =0x000008DE
@@ -818,7 +818,7 @@ _0234F6F8:
 	mov r0, r5
 	mov r1, #0xa
 	mov r2, #0x13
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0234F75C
 _0234F718:
 	add r0, sp, #6
@@ -831,14 +831,14 @@ _0234F718:
 	mov r0, r5
 	mov r1, #0xa
 	mov r2, #0x13
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0234F75C
 _0234F748:
 	ldr r3, _0234F778 ; =ov29_0235340C
 	mov r0, r5
 	mov r1, #0xa
 	mov r2, #0x13
-	bl sub_02026214
+	bl DrawTextInWindow
 _0234F75C:
 	add sp, sp, #0xbc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -1228,7 +1228,7 @@ ov29_0234FC1C: ; 0x0234FC1C
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0234FC4C: .word ov29_02353848
@@ -4220,8 +4220,8 @@ ov29_02353544:
 	.global ov29_0235354C
 ov29_0235354C:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov29_02353554
-ov29_02353554:
+	.global TOP_SCREEN_STATUS_PTR
+TOP_SCREEN_STATUS_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov29_02353558
 ov29_02353558:
@@ -4430,8 +4430,8 @@ ov29_023537CC:
 ov29_023537D8:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov29_023537E0
-ov29_023537E0:
+	.global DUNGEON_FADES_PTR
+DUNGEON_FADES_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov29_023537E4
 ov29_023537E4:

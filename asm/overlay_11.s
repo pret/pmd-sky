@@ -120,8 +120,8 @@ ov11_022DC3A0: ; 0x022DC3A0
 	mov r1, #1
 	ldr r0, [r0]
 	mov r2, #0
-	bl ov10_022C09E8
-	bl ov10_022C0CE0
+	bl DrawTeamStats
+	bl UpdateTeamStats
 	ldr r0, _022DC3F8 ; =ov11_02324C60
 	mov r2, #1
 	ldr r1, [r0]
@@ -142,7 +142,7 @@ ov11_022DC3FC: ; 0x022DC3FC
 	ldrneb r0, [r0, #0x185]
 	cmpne r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov10_022C13B4
+	bl FreeTeamStats
 	ldr r0, _022DC430 ; =ov11_02324C60
 	mov r1, #0
 	ldr r0, [r0]
@@ -165,7 +165,7 @@ ov11_022DC434: ; 0x022DC434
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0
 	strb r0, [r1, #0x19a]
-	bl ov10_022C0CE0
+	bl UpdateTeamStats
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022DC468: .word ov11_02324C60
@@ -8657,7 +8657,7 @@ _022E3C28:
 	streqh r0, [sb, #0xe]
 	b _022E3C5C
 _022E3C40:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	moveq r0, #2
 	movne r5, #0
@@ -16225,8 +16225,8 @@ _022E9F70: .word ov11_02388FC0
 _022E9F74: .word ov11_02389128
 	arm_func_end ov11_022E9F48
 
-	arm_func_start ov11_022E9F78
-ov11_022E9F78: ; 0x022E9F78
+	arm_func_start IsScreenFadeInProgress
+IsScreenFadeInProgress: ; 0x022E9F78
 	stmdb sp!, {r3, lr}
 	ldr r0, _022E9F9C ; =ov11_023890A0
 	bl sub_0200BD14
@@ -16239,7 +16239,7 @@ ov11_022E9F78: ; 0x022E9F78
 	.align 2, 0
 _022E9F9C: .word ov11_023890A0
 _022E9FA0: .word ov11_02389018
-	arm_func_end ov11_022E9F78
+	arm_func_end IsScreenFadeInProgress
 
 	arm_func_start ov11_022E9FA4
 ov11_022E9FA4: ; 0x022E9FA4
@@ -16261,11 +16261,11 @@ ov11_022E9FC8: ; 0x022E9FC8
 	cmp r0, #0
 	bne _022E9FE0
 	ldr r0, _022E9FEC ; =ov11_02389128
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	ldmia sp!, {r3, pc}
 _022E9FE0:
 	ldr r0, _022E9FF0 ; =ov11_02389018
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E9FEC: .word ov11_02389128
@@ -16367,7 +16367,7 @@ ov11_022EA0BC: ; 0x022EA0BC
 	ldrsh r0, [r0, #0x14]
 	bl ov11_022EA80C
 	ldr r0, _022EA7FC ; =ov11_02389128
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	cmp r0, #0
 	bne _022EA12C
 	ldr r1, _022EA7F4 ; =ov11_02388FC0
@@ -16384,7 +16384,7 @@ _022EA12C:
 	movne r4, #0
 	bne _022EA1B4
 	ldr r0, _022EA7FC ; =ov11_02389128
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	cmp r0, #2
 	bne _022EA1B4
 	ldr r0, _022EA7F4 ; =ov11_02388FC0
@@ -16417,7 +16417,7 @@ _022EA1B4:
 	ldrsh r0, [r0, #0x14]
 	bl ov11_022EA8A0
 	ldr r0, _022EA800 ; =ov11_02389018
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	cmp r0, #0
 	bne _022EA1EC
 	ldr r1, _022EA7F4 ; =ov11_02388FC0
@@ -16434,7 +16434,7 @@ _022EA1EC:
 	movne r4, #0
 	bne _022EA264
 	ldr r0, _022EA800 ; =ov11_02389018
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	cmp r0, #2
 	bne _022EA264
 	mov r0, #0
@@ -16510,7 +16510,7 @@ _022EA300:
 	ldrsh r0, [r0, #0x14]
 	bl ov11_022EA80C
 	ldr r0, _022EA7FC ; =ov11_02389128
-	bl sub_0200BD2C
+	bl GetFadeStatus
 	cmp r0, #0
 	bne _022EA354
 	ldr r1, _022EA7F4 ; =ov11_02388FC0
@@ -41564,7 +41564,7 @@ _022FEFFC:
 	mov r2, #4
 #endif
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, #0x16
 	bl GetPerformanceFlagWithChecks
 	cmp r0, #0
@@ -41580,7 +41580,7 @@ _022FEFFC:
 	add r3, sp, #0x54
 	mov r1, #0x28
 	mov r2, #0x16
-	bl sub_02026214
+	bl DrawTextInWindow
 _022FF0AC:
 	add r1, sp, #4
 	str r1, [sp]
@@ -41597,7 +41597,7 @@ _022FF0AC:
 #else
 	mov r2, #0x16
 #endif
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrsb r0, [r6, #4]
 	mvn r1, #1
 	cmp r0, r1
@@ -41636,14 +41636,14 @@ _022FF118:
 	mov r1, #0x9a
 	mov r2, #4
 #endif
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _022FF168
 _022FF15C:
 	mov r1, #0x10
 #ifndef EUROPE
 	mov r2, #2
 #endif
-	bl sub_02026214
+	bl DrawTextInWindow
 _022FF168:
 	mov r0, #3
 	str r0, [r4, #0x370]
@@ -47652,7 +47652,7 @@ ov11_023042A8: ; 0x023042A8
 	mov r1, #1
 	ldr r3, [r2, r3, lsl #2]
 	mov r2, #3
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r0, _02304390 ; =ov11_02324D58
 	ldr r3, [r0, #4]
 	ldr r0, [r3, #0x10]
@@ -47695,7 +47695,7 @@ _02304334:
 	mov r0, r4
 	mov r1, #0x3c
 	mov r2, #3
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #4
@@ -51400,7 +51400,7 @@ _023075F0:
 	add r3, sp, #0x20
 	mov r0, r5
 	mov r2, r1
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r5
 	bl sub_02027AF0
 _0230760C:
@@ -55526,7 +55526,7 @@ GetExclusiveItemRequirements: ; 0x0230AF38
 	mov r1, #0x18
 	mov r2, sb
 	add r3, sp, #0xa
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r8
 	bl ov11_0230C068
 	cmp r0, #3
@@ -55542,21 +55542,21 @@ _0230AFB4:
 	mov r0, r7
 	mov r1, #0x6c
 	mov r2, sb
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0230AFF8
 _0230AFCC:
 	ldr r3, _0230B1E4 ; =ov11_02322FB0
 	mov r0, r7
 	mov r1, #0x6c
 	mov r2, sb
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0230AFF8
 _0230AFE4:
 	ldr r3, _0230B1E8 ; =ov11_02322FC0
 	mov r0, r7
 	mov r1, #0x6c
 	mov r2, sb
-	bl sub_02026214
+	bl DrawTextInWindow
 _0230AFF8:
 	ldr r0, [r6]
 	cmp r0, #0
@@ -58716,7 +58716,7 @@ _0230D7F8: ; jump table
 	b _0230D8A0 ; case 4
 	b _0230D890 ; case 5
 _0230D810:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _0230D8A0
 	bl ov11_022EA014
@@ -58742,7 +58742,7 @@ _0230D810:
 	str r1, [r0]
 	b _0230D8A0
 _0230D874:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldreq r0, _0230D8A8 ; =ov11_02324DC0
 	moveq r1, #2
@@ -58886,7 +58886,7 @@ _0230D9F4: ; jump table
 	b _0230DAB4 ; case 6
 	b _0230DAA8 ; case 7
 _0230DA14:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _0230DACC
 	bl ov11_022EA014
@@ -58918,7 +58918,7 @@ _0230DA78:
 	bl ov11_022E9CB0
 	b _0230DACC
 _0230DA8C:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldreq r0, _0230DAD4 ; =ov11_02324DC4
 	moveq r1, #2
@@ -58926,7 +58926,7 @@ _0230DA8C:
 	streq r1, [r0]
 	b _0230DACC
 _0230DAA8:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _0230DACC
 _0230DAB4:
@@ -59127,7 +59127,7 @@ _0230DCF4: ; jump table
 	b _0230DE4C ; case 6
 	b _0230DE68 ; case 7
 _0230DD14:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _0230DE80 ; =ov11_02324DC8
 	mov r1, #1
@@ -59138,7 +59138,7 @@ _0230DD14:
 	ldr r0, [r0, #4]
 	str r1, [r0, #4]
 _0230DD3C:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _0230DE80 ; =ov11_02324DC8
 	movne r1, #1
@@ -59178,7 +59178,7 @@ _0230DD94:
 	str r1, [r0, #4]
 	b _0230DE78
 _0230DDD4:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _0230DE80 ; =ov11_02324DC8
 	movne r1, #1
@@ -59210,7 +59210,7 @@ _0230DE00:
 	strb r1, [r0, #0xc]
 	b _0230DE78
 _0230DE4C:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _0230DE78
 	ldr r0, _0230DE80 ; =ov11_02324DC8
@@ -59492,7 +59492,7 @@ _0230E194: ; jump table
 	b _0230E2E4 ; case 6
 	b _0230E328 ; case 7
 _0230E1B4:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _0230E340 ; =ov11_02324DD4
 	mov r1, #1
@@ -59503,7 +59503,7 @@ _0230E1B4:
 	ldr r0, [r0, #4]
 	str r1, [r0, #4]
 _0230E1DC:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _0230E340 ; =ov11_02324DD4
 	movne r1, #1
@@ -59541,7 +59541,7 @@ _0230E234:
 	str r1, [r0, #4]
 	b _0230E338
 _0230E26C:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _0230E340 ; =ov11_02324DD4
 	movne r1, #1
@@ -59573,7 +59573,7 @@ _0230E298:
 	strb r1, [r0, #9]
 	b _0230E338
 _0230E2E4:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _0230E338
 	ldr r0, _0230E340 ; =ov11_02324DD4
@@ -59838,8 +59838,8 @@ ov11_0230E614: ; 0x0230E614
 	bx lr
 	arm_func_end ov11_0230E614
 
-	arm_func_start ov11_0230E618
-ov11_0230E618: ; 0x0230E618
+	arm_func_start HandleControlsTopScreenGround
+HandleControlsTopScreenGround: ; 0x0230E618
 	stmdb sp!, {r3, lr}
 	ldr r0, _0230E7E8 ; =ov11_02324DDC
 	ldr r0, [r0, #4]
@@ -59858,7 +59858,7 @@ _0230E634: ; jump table
 	b _0230E788 ; case 7
 	b _0230E7D0 ; case 8
 _0230E658:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _0230E7E8 ; =ov11_02324DDC
 	mov r1, #1
@@ -59869,7 +59869,7 @@ _0230E658:
 	ldr r0, [r0, #4]
 	str r1, [r0, #4]
 _0230E680:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _0230E7E8 ; =ov11_02324DDC
 	movne r1, #1
@@ -59907,7 +59907,7 @@ _0230E6D8:
 	str r1, [r0, #4]
 	b _0230E7E0
 _0230E710:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _0230E7E8 ; =ov11_02324DDC
 	movne r1, #1
@@ -59939,7 +59939,7 @@ _0230E73C:
 	strb r1, [r0, #9]
 	b _0230E7E0
 _0230E788:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _0230E7E0
 	ldr r0, _0230E7E8 ; =ov11_02324DDC
@@ -59968,7 +59968,7 @@ _0230E7E0:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0230E7E8: .word ov11_02324DDC
-	arm_func_end ov11_0230E618
+	arm_func_end HandleControlsTopScreenGround
 
 	arm_func_start ov11_0230E7EC
 ov11_0230E7EC: ; 0x0230E7EC
@@ -60886,7 +60886,7 @@ _0230F39C: ; jump table
 	b _0230FD84 ; case 8
 	b _0230FDA0 ; case 9
 _0230F3C4:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	mov r1, #1
@@ -60897,7 +60897,7 @@ _0230F3C4:
 	ldr r0, [r0, #8]
 	str r1, [r0, #8]
 _0230F3EC:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	movne r1, #1
@@ -61056,7 +61056,7 @@ _0230F604:
 	strb r1, [r0, #0xc]
 	b _0230FDB0
 _0230F640:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02310050 ; =WORLD_MAP_MODE
 	movne r1, #1
@@ -61559,7 +61559,7 @@ _0230FD5C:
 	streq r0, [r2, #8]
 	b _0230FDB0
 _0230FD84:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _0230FDB0
 	ldr r0, _02310050 ; =WORLD_MAP_MODE
@@ -62359,7 +62359,7 @@ _0231086C: ; jump table
 	b _02310A1C ; case 7
 	b _02310A38 ; case 8
 _02310890:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02310A50 ; =ov11_02324DF0
 	mov r1, #1
@@ -62370,7 +62370,7 @@ _02310890:
 	ldr r0, [r0]
 	str r1, [r0, #4]
 _023108B8:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02310A50 ; =ov11_02324DF0
 	movne r1, #1
@@ -62433,7 +62433,7 @@ _02310958:
 	strb r1, [r0, #0x6ec]
 	b _02310A48
 _023109A4:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02310A50 ; =ov11_02324DF0
 	movne r1, #1
@@ -62465,7 +62465,7 @@ _023109D0:
 	strb r1, [r0, #0x6ec]
 	b _02310A48
 _02310A1C:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _02310A48
 	ldr r0, _02310A50 ; =ov11_02324DF0
@@ -64178,7 +64178,7 @@ _02311F60: ; jump table
 	b _023120A8 ; case 6
 	b _023120E4 ; case 7
 _02311F80:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _023120FC ; =ov11_02324E10
 	mov r1, #1
@@ -64189,7 +64189,7 @@ _02311F80:
 	ldr r0, [r0, #4]
 	str r1, [r0, #4]
 _02311FA8:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _023120FC ; =ov11_02324E10
 	movne r1, #1
@@ -64227,7 +64227,7 @@ _02312000:
 	str r1, [r0, #4]
 	b _023120F4
 _02312038:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _023120FC ; =ov11_02324E10
 	movne r1, #1
@@ -64257,7 +64257,7 @@ _02312064:
 	strb r1, [r0, #9]
 	b _023120F4
 _023120A8:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _023120F4
 	ldr r0, _023120FC ; =ov11_02324E10
@@ -66256,8 +66256,8 @@ ov11_02313AD8: ; 0x02313AD8
 	bx lr
 	arm_func_end ov11_02313AD8
 
-	arm_func_start ov11_02313ADC
-ov11_02313ADC: ; 0x02313ADC
+	arm_func_start HandleTeamStatsGround
+HandleTeamStatsGround: ; 0x02313ADC
 	stmdb sp!, {r3, lr}
 	ldr r0, _02313CAC ; =ov11_02324E30
 	ldr r0, [r0]
@@ -66275,7 +66275,7 @@ _02313AF8: ; jump table
 	b _02313C58 ; case 6
 	b _02313C94 ; case 7
 _02313B18:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02313CAC ; =ov11_02324E30
 	mov r1, #1
@@ -66286,7 +66286,7 @@ _02313B18:
 	ldr r0, [r0]
 	str r1, [r0, #4]
 _02313B40:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02313CAC ; =ov11_02324E30
 	movne r1, #1
@@ -66324,7 +66324,7 @@ _02313B98:
 	str r1, [r0, #4]
 	b _02313CA4
 _02313BD0:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02313CAC ; =ov11_02324E30
 	movne r1, #1
@@ -66361,7 +66361,7 @@ _02313C40:
 	strb r1, [r0, #9]
 	b _02313CA4
 _02313C58:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _02313CA4
 	ldr r0, _02313CAC ; =ov11_02324E30
@@ -66387,7 +66387,7 @@ _02313CA4:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02313CAC: .word ov11_02324E30
-	arm_func_end ov11_02313ADC
+	arm_func_end HandleTeamStatsGround
 
 	arm_func_start ov11_02313CB0
 ov11_02313CB0: ; 0x02313CB0
@@ -69364,7 +69364,7 @@ _023165E4: ; jump table
 	b _02316738 ; case 7
 	b _02316770 ; case 8
 _02316608:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02316788 ; =ov11_02324E78
 	mov r1, #1
@@ -69375,7 +69375,7 @@ _02316608:
 	ldr r0, [r0]
 	str r1, [r0]
 _02316630:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02316788 ; =ov11_02324E78
 	movne r1, #1
@@ -69413,7 +69413,7 @@ _02316688:
 	str r1, [r0]
 	b _02316780
 _023166C0:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	ldrne r0, _02316788 ; =ov11_02324E78
 	movne r1, #1
@@ -69445,7 +69445,7 @@ _023166EC:
 	strb r1, [r0, #5]
 	b _02316780
 _02316738:
-	bl ov11_022E9F78
+	bl IsScreenFadeInProgress
 	cmp r0, #0
 	bne _02316780
 	ldr r0, _02316788 ; =ov11_02324E78
@@ -69610,7 +69610,7 @@ _0231691C:
 	moveq r3, r5
 	movne r3, r4
 	mov r0, sl
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r6
 	mov r1, #0x400
 	mov r2, sb
@@ -69619,7 +69619,7 @@ _0231691C:
 	mov r1, #0x12
 	mov r2, r7
 	mov r3, r6
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r6
 	mov r1, #0x400
 	mov r2, sb
@@ -69628,7 +69628,7 @@ _0231691C:
 	mov r1, #0x40
 	add r2, r7, #0xa
 	mov r3, r6
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrb r1, [sb, #1]
 	cmp r1, #0xe
 	bne _023169CC
@@ -69646,7 +69646,7 @@ _023169CC:
 	mov r0, sl
 	mov r1, #0xcc
 	add r2, r7, #0xa
-	bl sub_02026214
+	bl DrawTextInWindow
 _023169EC:
 	add r7, r7, #0x14
 _023169F0:
@@ -80753,7 +80753,7 @@ ov11_023232D8:
 	.word ov11_0230E4FC
 	.word ov11_0230E5F4
 	.word ov11_0230E614
-	.word ov11_0230E618
+	.word HandleControlsTopScreenGround
 	.word ov11_0230E7EC
 	.word ov11_0230E8D0
 	.word ov11_0230E920
@@ -81185,7 +81185,7 @@ ov11_02323D2C:
 	.word ov11_023139CC
 	.word ov11_02313AB8
 	.word ov11_02313AD8
-	.word ov11_02313ADC
+	.word HandleTeamStatsGround
 	.word ov11_02313CB0
 	.word ov11_02313D18
 	.word ov11_02313D90

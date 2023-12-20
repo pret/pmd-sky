@@ -770,7 +770,7 @@ ov29_022EA008: ; 0x022EA008
 	cmp r0, #0
 	beq _022EA27C
 	bl ov29_0234B854
-	bl ov29_022E886C
+	bl HandleTopScreenFades
 	ldr r0, _022EA290 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	cmp r0, #0

@@ -68,7 +68,6 @@
 .public ov29_02337E2C
 .public ov29_0234B034
 .public ov29_0234B084
-.public ov29_0234C668
 .public ov29_0234C738
 .public ov29_02352B18
 .public ov29_0237CA6B
@@ -84,6 +83,7 @@
 .public SOLARBEAM_DAMAGE_MULTIPLIER
 .public SONICBOOM_FIXED_DAMAGE
 .public SPATK_STAT_IDX
+.public StartFadeDungeonWrapper
 .public StringFromId
 .public SubstitutePlaceholderStringTags
 .public THUNDERBOLT_PARALYZE_CHANCE

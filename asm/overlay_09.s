@@ -3011,7 +3011,7 @@ _0233F444:
 	ldr r1, [r6, #0x2ac]
 	ldr r2, [r6, #0x2a8]
 	add r3, r6, #0x1a8
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrsb r0, [r5, #0x10]
 	bl sub_02027AF0
 	ldr r1, [r6, #4]

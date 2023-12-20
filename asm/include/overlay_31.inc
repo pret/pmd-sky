@@ -34,6 +34,7 @@
 .public DebugPrint0
 .public DisableDungeonSubMenuOption
 .public DisplayMessage
+.public DrawTextInWindow
 .public DrawTileGrid
 .public DUNGEON_PTR
 .public FormatMoveString
@@ -185,7 +186,6 @@
 .public sub_02017C74
 .public sub_02017C80
 .public sub_02025888
-.public sub_02026214
 .public sub_020265A8
 .public sub_02027AF0
 .public sub_02027B1C

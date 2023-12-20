@@ -456,7 +456,7 @@ ov29_022F0B10: ; 0x022F0B10
 	mov r1, #0xa
 	mov r2, #0x14
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #0xd4

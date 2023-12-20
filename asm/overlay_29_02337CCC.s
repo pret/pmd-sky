@@ -822,8 +822,8 @@ _023386A8:
 	ldmia sp!, {r3, pc}
 	arm_func_end IsSecretFloor
 
-	arm_func_start ov29_023386B0
-ov29_023386B0: ; 0x023386B0
+	arm_func_start GetCurrentHiddenStairsType
+GetCurrentHiddenStairsType: ; 0x023386B0
 	stmdb sp!, {r3, lr}
 	bl IsSecretBazaar
 	cmp r0, #0
@@ -834,7 +834,7 @@ ov29_023386B0: ; 0x023386B0
 	movne r0, #2
 	moveq r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_023386B0
+	arm_func_end GetCurrentHiddenStairsType
 
 	arm_func_start HiddenStairsPresent
 HiddenStairsPresent: ; 0x023386D8
@@ -14790,13 +14790,13 @@ _02344690:
 	mov r0, #4
 	mov r1, #0x4000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	mov r0, #4
 	mov r1, #0x4000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	mov r0, r4

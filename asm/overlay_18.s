@@ -1043,7 +1043,7 @@ ov18_0238AF3C: ; 0x0238AF3C
 	mov r0, r4
 	mov r1, #0x16
 	mov r2, #0x10
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #0x54

@@ -3549,7 +3549,7 @@ _0233FAE0:
 	mov r0, r6
 	mov r1, #4
 	mov r2, #2
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r6
 	bl sub_02027AF0
 	add sp, sp, #0x194

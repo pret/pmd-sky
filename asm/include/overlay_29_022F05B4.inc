@@ -17,6 +17,7 @@
 .public CloseTextBox
 .public CreateTextBox
 .public DIRECTIONS_XY
+.public DrawTextInWindow
 .public DrawTileGrid
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -184,7 +185,6 @@
 .public sub_02017C80
 .public sub_0201B9F8
 .public sub_0201CF90
-.public sub_02026214
 .public sub_02026268
 .public sub_02027AF0
 .public sub_02027B1C

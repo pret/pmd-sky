@@ -837,7 +837,7 @@ ov14_0238ACEC: ; 0x0238ACEC
 	mvn r1, #1
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
-	bl sub_02027B58
+	bl ClearWindow
 	ldmia sp!, {r3, pc}
 	arm_func_end ov14_0238ACEC
 
@@ -849,7 +849,7 @@ ov14_0238AD04: ; 0x0238AD04
 	mvn r1, #1
 	cmp r4, r1
 	beq _0238ADF0
-	bl sub_02027B58
+	bl ClearWindow
 	ldr r0, _0238ADF8 ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #4]
@@ -863,7 +863,7 @@ ov14_0238AD04: ; 0x0238AD04
 	add r3, sp, #0
 	mov r0, r4
 	sub r2, r1, #3
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r1, _0238ADF8 ; =SENTRY_DUTY_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
@@ -874,7 +874,7 @@ ov14_0238AD04: ; 0x0238AD04
 	mov r0, r4
 	sub r2, r1, #0x7b
 	add r3, sp, #0
-	bl sub_02026214
+	bl DrawTextInWindow
 _0238AD84:
 	ldr r0, _0238ADF8 ; =SENTRY_DUTY_PTR
 	ldr r1, [r0]
@@ -889,7 +889,7 @@ _0238AD84:
 	add r3, sp, #0
 	mov r0, r4
 	sub r2, r1, #3
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r1, _0238ADF8 ; =SENTRY_DUTY_PTR
 	add r0, sp, #0
 	ldr r1, [r1]
@@ -900,7 +900,7 @@ _0238AD84:
 	mov r0, r4
 	sub r2, r1, #0x7b
 	add r3, sp, #0
-	bl sub_02026214
+	bl DrawTextInWindow
 _0238ADE8:
 	mov r0, r4
 	bl sub_02027AF0
@@ -2924,7 +2924,7 @@ _0238C9C0:
 	ldrsb r0, [r0, #3]
 	cmp r0, r1
 	beq _0238CA10
-	bl sub_02027B58
+	bl ClearWindow
 _0238CA10:
 	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r0, _0238CA90 ; =0x00002C04
@@ -3450,7 +3450,7 @@ _0238D160:
 	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl sub_02027B58
+	bl ClearWindow
 	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
@@ -3458,7 +3458,7 @@ _0238D160:
 	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl sub_02027B58
+	bl ClearWindow
 	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
@@ -3585,7 +3585,7 @@ SentryState10: ; 0x0238D320
 	ldrsb r0, [r0, #3]
 	cmp r0, r1
 	beq _0238D368
-	bl sub_02027B58
+	bl ClearWindow
 _0238D368:
 	ldr r0, _0238D394 ; =0x00002C08
 	bl sub_02017C80
@@ -3872,7 +3872,7 @@ SentryState1D: ; 0x0238D69C
 	mvn r1, #1
 	cmp r0, r1
 	beq _0238D6CC
-	bl sub_02027B58
+	bl ClearWindow
 _0238D6CC:
 	ldr r0, _0238D6FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]

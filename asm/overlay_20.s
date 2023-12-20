@@ -1802,7 +1802,7 @@ ov20_0238B8CC: ; 0x0238B8CC
 	mov r0, sl
 	mov r1, #8
 	mov r2, r8
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, #0x17
 	str r0, [sp]
 	mov r0, sl
@@ -1867,7 +1867,7 @@ _0238B9F8:
 	mov r1, #8
 	mov r2, r8
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 	add r8, r8, #0xc
 	add sb, sb, #1
 _0238BA14:
@@ -1914,7 +1914,7 @@ ov20_0238BA40: ; 0x0238BA40
 	mov r0, r5
 	mov r1, #8
 	mov r2, #2
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r5
 	bl sub_02027AF0
 	add sp, sp, #0x154
@@ -1947,7 +1947,7 @@ ov20_0238BAB4: ; 0x0238BAB4
 	mov r0, r4
 	mov r1, #8
 	mov r2, #0
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, #0x17
 	str r0, [sp]
 	mov r0, r4
@@ -1966,7 +1966,7 @@ ov20_0238BAB4: ; 0x0238BAB4
 	mov r1, #8
 	mov r2, #0x18
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #0x154
@@ -3433,7 +3433,7 @@ ov20_0238CE9C: ; 0x0238CE9C
 	mov r0, r5
 	mov r2, r1
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r5
 	bl sub_02027AF0
 	add sp, sp, #0x154
@@ -3466,7 +3466,7 @@ ov20_0238CF20: ; 0x0238CF20
 	mov r0, r4
 	mov r2, r1
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #0x154

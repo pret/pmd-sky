@@ -1334,7 +1334,7 @@ ov07_0233DB50: ; 0x0233DB50
 	mov r1, #4
 	mov r2, #2
 	mov r3, r5
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r6
 	bl MemFree
 	mov r0, r5

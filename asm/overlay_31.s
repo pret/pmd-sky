@@ -25,8 +25,8 @@ _0238285C: .word DUNGEON_WINDOW_PARAMS_3
 _02382860: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
 	arm_func_end EntryOverlay31
 
-	arm_func_start ov31_02382864
-ov31_02382864: ; 0x02382864
+	arm_func_start DrawDungeonMenuStatusWindow
+DrawDungeonMenuStatusWindow: ; 0x02382864
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x254
 	mov sl, r0
@@ -63,7 +63,7 @@ ov31_02382864: ; 0x02382864
 	mov r1, #0x73
 	mov r2, #0
 	add r3, sp, #0x104
-	bl sub_02026214
+	bl DrawTextInWindow
 	bl GetMoneyCarried
 	str r0, [sp, #0x228]
 	ldr r0, _02382AA4 ; =0x000008B5
@@ -79,7 +79,7 @@ ov31_02382864: ; 0x02382864
 	mov r1, #0x73
 	mov r2, #0xc
 	add r3, sp, #0x104
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, #0
 	bl GetApparentWeather
 	str r0, [sp, #0x204]
@@ -96,7 +96,7 @@ ov31_02382864: ; 0x02382864
 	mov r0, sl
 	mov r1, #0x73
 	mov r2, #0x18
-	bl sub_02026214
+	bl DrawTextInWindow
 	bl sub_0204F9E0
 	str r0, [sp, #0x228]
 	ldr r0, _02382AAC ; =0x000008B7
@@ -112,7 +112,7 @@ ov31_02382864: ; 0x02382864
 	mov r1, #0x73
 	mov r2, #0x24
 	add r3, sp, #0x104
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r7, #0
 	mov r8, r7
 	add r6, sp, #4
@@ -161,7 +161,7 @@ _02382A08:
 	mov r1, #4
 	mov r2, r7
 	add r3, sp, #0x104
-	bl sub_02026214
+	bl DrawTextInWindow
 	add r7, r7, #0xc
 	cmp r7, #0x30
 	bge _02382A90
@@ -184,7 +184,7 @@ _02382AB0: .word 0x0000C402
 _02382AB4: .word 0x000003E7
 _02382AB8: .word DUNGEON_PTR
 _02382ABC: .word 0x000008B8
-	arm_func_end ov31_02382864
+	arm_func_end DrawDungeonMenuStatusWindow
 
 	arm_func_start DungeonMenuSwitch
 DungeonMenuSwitch: ; 0x02382AC0
@@ -218,7 +218,7 @@ DungeonMenuSwitch: ; 0x02382AC0
 	add r0, r0, r0, lsr #31
 	mov r1, r0, asr #1
 	mov r0, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #0x54
@@ -286,7 +286,7 @@ _02382BEC:
 	add r2, sp, #4
 	bl CreateParentMenuFromStringIds
 	ldr r2, _02382D8C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	ldr r1, _02382D9C ; =ov31_02382864
+	ldr r1, _02382D9C ; =DrawDungeonMenuStatusWindow
 	ldr r2, [r2]
 	strb r0, [r2]
 	ldr r0, _02382DA0 ; =DUNGEON_WINDOW_PARAMS_4
@@ -387,7 +387,7 @@ _02382D8C: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
 _02382D90: .word DUNGEON_WINDOW_PARAMS_1
 _02382D94: .word 0x00000233
 _02382D98: .word DUNGEON_MAIN_MENU_ITEMS
-_02382D9C: .word ov31_02382864
+_02382D9C: .word DrawDungeonMenuStatusWindow
 _02382DA0: .word DUNGEON_WINDOW_PARAMS_4
 _02382DA4: .word DungeonMenuSwitch
 _02382DA8: .word DUNGEON_WINDOW_PARAMS_2
@@ -547,7 +547,7 @@ ov31_02382F68: ; 0x02382F68
 	mov r1, #0x10
 	mov r2, #0x12
 	str r3, [ip]
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	ldmia sp!, {r4, pc}
@@ -750,7 +750,7 @@ ov31_02383248: ; 0x02383248
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x14
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02383284: .word ov31_0238A2A0
@@ -1222,7 +1222,7 @@ ov31_02383854: ; 0x02383854
 	mov r3, r0
 	mov r0, r4
 	mov r2, r1
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0238387C: .word 0x000008E6
@@ -1691,7 +1691,7 @@ _02383F34:
 	mov r0, r8
 	mov r2, r1
 	add r3, sp, #0x4c
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r8
 	bl sub_02027AF0
 	ldr r0, [sp, #0x28]
@@ -1747,7 +1747,7 @@ _02383FF0:
 	mov r0, r8
 	mov r2, r1
 	add r3, sp, #0x4c
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r8
 	bl sub_02027AF0
 	ldr r0, [r4]
@@ -4939,7 +4939,7 @@ ov31_02386B28: ; 0x02386B28
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x60]
 	mov r2, #2
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r1, [r4, #0x10]
 	cmp r1, #0
 	moveq r0, #0
@@ -4975,7 +4975,7 @@ _02386B98:
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x60]
 	add r3, sp, #0x54
-	bl sub_02026214
+	bl DrawTextInWindow
 _02386C00:
 	add sp, sp, #0xa4
 	ldmia sp!, {r3, r4, pc}
@@ -5812,7 +5812,7 @@ ov31_0238778C: ; 0x0238778C
 	mov r3, r0
 	mov r0, r4
 	mov r2, r1
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _023877C0: .word OVERLAY31_UNKNOWN_POINTER__NA_238A280
@@ -5821,7 +5821,7 @@ _023877C0: .word OVERLAY31_UNKNOWN_POINTER__NA_238A280
 	arm_func_start ov31_023877C4
 ov31_023877C4: ; 0x023877C4
 	ldr r2, _023877E4 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
-	ldr ip, _023877E8 ; =sub_02026214
+	ldr ip, _023877E8 ; =DrawTextInWindow
 	ldr r3, [r2]
 	mov r1, #2
 	add r3, r3, #0x12
@@ -5830,7 +5830,7 @@ ov31_023877C4: ; 0x023877C4
 	bx ip
 	.align 2, 0
 _023877E4: .word OVERLAY31_UNKNOWN_POINTER__NA_238A280
-_023877E8: .word sub_02026214
+_023877E8: .word DrawTextInWindow
 	arm_func_end ov31_023877C4
 
 	arm_func_start ov31_023877EC
@@ -7405,7 +7405,7 @@ _02388D90:
 	mov r1, r8
 	mov r2, sb
 	mov r3, r6
-	bl sub_02026214
+	bl DrawTextInWindow
 	add sb, sb, #0xd
 	cmp sb, #0x7c
 	blt _02388E18
@@ -7428,7 +7428,7 @@ _02388E30:
 	mov r0, sl
 	mov r1, r8
 	mov r2, sb
-	bl sub_02026214
+	bl DrawTextInWindow
 _02388E4C:
 	add sp, sp, #0xd4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -7706,7 +7706,7 @@ ov31_023891A8: ; 0x023891A8
 	mov r0, r5
 	mov r1, #4
 	mov r2, #0x10
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023891F8: .word DUNGEON_SUBMENU_ITEMS_6
@@ -8324,7 +8324,7 @@ ov31_02389A04: ; 0x02389A04
 	mov r0, r5
 	mov r1, #4
 	mov r2, #2
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r5
 	bl sub_02027AF0
 	add sp, sp, #0x94

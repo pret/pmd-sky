@@ -61,6 +61,8 @@
 .public DecompressAtNormalVeneer
 .public DeleteWanTableEntryVeneer
 .public DeleteWindow
+.public DrawTeamStats
+.public DrawTextInWindow
 .public DungeonMoveToGroundMove
 .public DungeonRequestsDoneWrapper
 .public DungeonSwapIdxToId
@@ -78,6 +80,7 @@
 .public FileOpen
 .public FileRead
 .public FileSeek
+.public FreeTeamStats
 .public GenerateDailyMissions
 .public GenerateKecleonItems1
 .public GenerateKecleonItems2
@@ -96,6 +99,7 @@
 .public GetDungeonModeSpecial
 .public GetExclusiveItemType
 .public GetExecuteSpecialEpisodeType
+.public GetFadeStatus
 .public GetFirstEmptyMemberIdx
 .public GetFirstUnequippedItemOfType
 .public GetGameMode
@@ -220,11 +224,8 @@
 .public ov10_022C0814
 .public ov10_022C096C
 .public ov10_022C0998
-.public ov10_022C09E8
-.public ov10_022C0CE0
 .public ov10_022C11D8
 .public ov10_022C1398
-.public ov10_022C13B4
 .public ov10_022C1D40
 .public ov10_022C1D78
 .public ov10_022C2300
@@ -440,7 +441,6 @@
 .public sub_0200BC60
 .public sub_0200BCB0
 .public sub_0200BD14
-.public sub_0200BD2C
 .public sub_0200BD50
 .public sub_0200CF6C
 .public sub_0200D310
@@ -517,7 +517,6 @@
 .public sub_0201F36C
 .public sub_0201F464
 .public sub_020236FC
-.public sub_02026214
 .public sub_02026268
 .public sub_020262E0
 .public sub_020265A8
@@ -809,6 +808,7 @@
 .public TRIG_TABLE
 .public UnloadFile
 .public UnloadOverlay
+.public UpdateTeamStats
 .public vsprintf
 .public WAN_TABLE
 .public ZInit8

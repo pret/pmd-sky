@@ -6873,7 +6873,7 @@ _0205A4F0:
 	mov r0, r4
 	mov r1, #4
 	mov r2, r7
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r3, r5
 	str r3, [sp]
 	ldr r2, _0205ADA4 ; =0x00000952
@@ -6885,7 +6885,7 @@ _0205A4F0:
 	mov r1, #4
 	mov r2, #0x1c
 	add r3, sp, #0xbc
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r2, [r6, #0x2c]
 	cmp r2, #0x64
 	bge _0205A5B8
@@ -6907,7 +6907,7 @@ _0205A4F0:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x28
-	bl sub_02026214
+	bl DrawTextInWindow
 _0205A5B8:
 	ldr r0, [r6, #0x24]
 	ldr r2, _0205ADAC ; =0x00000954
@@ -6924,7 +6924,7 @@ _0205A5B8:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x36
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r3, r5
 	str r3, [sp]
 	ldr r2, _0205ADB0 ; =0x00000955
@@ -6936,7 +6936,7 @@ _0205A5B8:
 	mov r1, #4
 	mov r2, #0x42
 	add r3, sp, #0xbc
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrb r1, [r6, #0x34]
 	ldr r2, _0205ADB4 ; =0x00000957
 	add r5, sp, #0x6c
@@ -6955,7 +6955,7 @@ _0205A5B8:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x42
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrb r2, [r6, #0x3b]
 	ldrb r1, [r6, #0x36]
 	add r0, sp, #0xbc
@@ -6972,7 +6972,7 @@ _0205A5B8:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x42
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0205A6E4
 _0205A6BC:
 	ldr r2, _0205ADBC ; =0x0000095B
@@ -6984,7 +6984,7 @@ _0205A6BC:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x42
-	bl sub_02026214
+	bl DrawTextInWindow
 _0205A6E4:
 	ldr r2, _0205ADC0 ; =0x00000956
 	add r5, sp, #0x6c
@@ -6997,7 +6997,7 @@ _0205A6E4:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x4e
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrb r1, [r6, #0x35]
 	ldr r2, _0205ADC4 ; =0x00000959
 	add r5, sp, #0x6c
@@ -7016,7 +7016,7 @@ _0205A6E4:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x4e
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrb r2, [r6, #0x3c]
 	ldrb r1, [r6, #0x37]
 	add r0, sp, #0xbc
@@ -7033,7 +7033,7 @@ _0205A6E4:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x4e
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0205A7D0
 _0205A7A8:
 	ldr r2, _0205ADCC ; =0x0000095D
@@ -7045,7 +7045,7 @@ _0205A7A8:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x4e
-	bl sub_02026214
+	bl DrawTextInWindow
 _0205A7D0:
 	ldrb r0, [r6, #0x1c]
 	tst r0, #1
@@ -7080,7 +7080,7 @@ _0205A83C:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x5a
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrsh r0, [r6, #0x3e]
 	mov r1, #0xa
 	str r0, [sp, #0x90]
@@ -7104,7 +7104,7 @@ _0205A83C:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x68
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrb r0, [r6, #0x38]
 	cmp r0, #0
 	bne _0205AD98
@@ -7123,7 +7123,7 @@ _0205A83C:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x74
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _0205AD98
 _0205A900:
 	ldr r3, _0205ADE4 ; =0x00000972
@@ -7226,7 +7226,7 @@ _0205AA04:
 	mov r1, #0xc
 	mov r2, r7
 	add r3, sp, #0xbc
-	bl sub_02026214
+	bl DrawTextInWindow
 	cmp sl, #1
 	ldrgeb r1, [sb, #0x58]
 	addge r0, r5, sl, lsl #2
@@ -7319,7 +7319,7 @@ _0205AB98:
 	mov r1, #0xc
 	mov r2, r7
 	add r3, sp, #0xbc
-	bl sub_02026214
+	bl DrawTextInWindow
 _0205ABD8:
 	add sl, sl, #1
 	add r8, r8, #1
@@ -7371,7 +7371,7 @@ _0205AC5C:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x10
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r3, _0205AE14 ; =0x00000967
 	mov r0, r4
 	mov r1, #4
@@ -7390,7 +7390,7 @@ _0205AC5C:
 	mov r1, #4
 	mov r2, #0x2b
 	add r3, sp, #0xbc
-	bl sub_02026214
+	bl DrawTextInWindow
 	bl sub_02025888
 	mov r5, r0
 	ldrsh r0, [r6]
@@ -7412,7 +7412,7 @@ _0205AC5C:
 	mov r1, #4
 	mov r2, #0x3a
 	add r3, sp, #0xbc
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrsh r0, [r6]
 	bl GetBodySize
 	mov r1, r0
@@ -7430,7 +7430,7 @@ _0205AC5C:
 	mov r0, r4
 	mov r1, #4
 	mov r2, #0x58
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrb r2, [r6, #0x44]
 	mov r0, r4
 	mov r1, #4
@@ -14906,7 +14906,7 @@ _02060FA8:
 	mov r2, r5
 	mov r3, r7
 	mov r1, #4
-	bl sub_02026214
+	bl DrawTextInWindow
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -14990,7 +14990,7 @@ _020610B8:
 	mov r3, r5
 	mov r1, #4
 	mov r2, #0
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061124
 _020610E8:
 	mov r3, r7
@@ -15001,7 +15001,7 @@ _020610E8:
 	mov r0, r8
 	mov r3, r5
 	mov r1, #4
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061124
 _02061110:
 	ldr r3, _02061BE0 ; =0x00003C1E
@@ -15184,7 +15184,7 @@ _02061370:
 	mov r3, r5
 	mov r1, #4
 	mov r2, #0x11
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r1, [sb, #0x58]
 	mov r0, r5
 	add r1, r1, #0x24
@@ -15197,7 +15197,7 @@ _02061370:
 	mov r1, #4
 	mov r2, #0x1e
 	mov r3, r5
-	bl sub_02026214
+	bl DrawTextInWindow
 _020613D4:
 	ldrb r1, [sb, #0x46]
 	cmp r1, #0xf
@@ -15260,7 +15260,7 @@ _02061494:
 	mov r2, r6
 	mov r3, r4
 	mov r1, #0x42
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061518
 _020614BC:
 	ldr r0, [sb, #0x5c]
@@ -15286,7 +15286,7 @@ _020614EC:
 	mov r0, r8
 	mov r1, #0x42
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 _02061518:
 	ldrb r2, [sb, #0x48]
 	ldr r1, _02061C08 ; =MISSION_MENU_STRING_IDS_1
@@ -15304,12 +15304,12 @@ _02061518:
 	movhi r1, #0x40
 	mov r0, r8
 	add r1, r1, #0x6c
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r3, _02061C0C ; =_020A46A8
 	mov r0, r8
 	mov r1, #0x6c
 	mov r2, #1
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r3, _02061C10 ; =0x00003C22
 	mov r0, r8
 	mov r1, #4
@@ -15328,7 +15328,7 @@ _02061518:
 	mov r3, r4
 	mov r1, #0x42
 	mov r2, #0x3a
-	bl sub_02026214
+	bl DrawTextInWindow
 	add r7, r7, #0x47
 	ldr r3, _02061C14 ; =0x00003C23
 	mov r0, r8
@@ -15343,7 +15343,7 @@ _02061518:
 	mov r1, #0x42
 	mov r2, r7
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldrb r0, [sb, #0x46]
 	cmp r0, #0
 	beq _020616C8
@@ -15399,7 +15399,7 @@ _020616B4:
 	mov r2, r7
 	mov r3, r4
 	mov r1, #0x42
-	bl sub_02026214
+	bl DrawTextInWindow
 _020616C8:
 	ldr r1, [sb, #0x5c]
 	cmp r1, #0
@@ -15455,7 +15455,7 @@ _02061764:
 	ldr r3, [r1, sl, lsl #2]
 	mov r2, r7
 	mov r1, #0x42
-	bl sub_02026214
+	bl DrawTextInWindow
 	add r0, sp, #0xfc
 	bl InitPreprocessorArgs
 	str r6, [sp, #0x120]
@@ -15470,7 +15470,7 @@ _02061764:
 	mov r1, #0x56
 	mov r2, r7
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 _020617D4:
 	ldr r1, [sb, #0x64]
 	cmp r1, #0
@@ -15525,7 +15525,7 @@ _02061850:
 	mov r0, r8
 	mov r1, #0x42
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061BA4
 _020618A0:
 	ldr r1, [sb, #0x20]
@@ -15546,7 +15546,7 @@ _020618A0:
 	mov r0, r8
 	mov r1, #0x42
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061BA4
 _020618F0:
 	ldrsh r1, [sb, #0x2c]
@@ -15567,7 +15567,7 @@ _020618F0:
 	mov r0, r8
 	mov r1, #0x42
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061BA4
 _02061940:
 	ldrsh r1, [sb, #0x2c]
@@ -15588,7 +15588,7 @@ _02061940:
 	mov r0, r8
 	mov r1, #0x42
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061BA4
 _02061990:
 	ldrsh r1, [sb, #0x2c]
@@ -15609,7 +15609,7 @@ _02061990:
 	mov r0, r8
 	mov r1, #0x42
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061BA4
 _020619E0:
 	ldr r0, _02061C44 ; =MISSION_MENU_STRING_IDS_2
@@ -15621,7 +15621,7 @@ _020619E0:
 	mov r2, r6
 	mov r3, r5
 	mov r1, #0x42
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061BA4
 _02061A0C:
 	ldrsh r1, [sb, #0x3c]
@@ -15642,7 +15642,7 @@ _02061A0C:
 	mov r0, r8
 	mov r1, #0x42
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061BA4
 _02061A5C:
 	ldr r0, _02061C44 ; =MISSION_MENU_STRING_IDS_2
@@ -15654,7 +15654,7 @@ _02061A5C:
 	mov r2, r6
 	mov r3, r5
 	mov r1, #0x42
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061BA4
 _02061A88:
 	ldr r1, _02061C48 ; =0x000038DF
@@ -15664,7 +15664,7 @@ _02061A88:
 	mov r2, r6
 	mov r3, r5
 	mov r1, #0x42
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061BA4
 _02061AAC:
 	cmp r1, #0
@@ -15704,7 +15704,7 @@ _02061AAC:
 	mov r1, #0x42
 	add r2, r7, #0xd
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 	b _02061BA4
 _02061B48:
 	cmp r0, #6
@@ -15729,7 +15729,7 @@ _02061B48:
 	mov r1, #0x42
 	add r2, r7, #0xd
 	mov r3, r4
-	bl sub_02026214
+	bl DrawTextInWindow
 _02061BA4:
 	ldrb r1, [sb, #0x45]
 	ldr r2, [sb, #0x5c]
@@ -15799,7 +15799,7 @@ sub_02061C60: ; 0x02061C60
 	mov r0, r5
 	mov r1, #0x6c
 	mov r2, #1
-	bl sub_02026214
+	bl DrawTextInWindow
 	ldr r3, _02061CC4 ; =0x00003C4E
 	mov r0, r5
 	mov r1, #4
@@ -25289,7 +25289,7 @@ sub_020696E8: ; 0x020696E8
 	mov r1, #0
 	mov r2, #3
 	add r3, sp, #4
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #0x154
@@ -25314,7 +25314,7 @@ sub_02069750: ; 0x02069750
 	mov r0, r4
 	mov r1, #0
 	mov r2, #3
-	bl sub_02026214
+	bl DrawTextInWindow
 	mov r0, r4
 	bl sub_02027AF0
 	add sp, sp, #0x100

@@ -500,27 +500,27 @@ ExclusiveItemEffectIsActive__023482B0: ; 0x023482B0
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__023482B0
 
-	arm_func_start ov29_023482D4
-ov29_023482D4: ; 0x023482D4
+	arm_func_start DisplayFloorCard
+DisplayFloorCard: ; 0x023482D4
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _02348308 ; =DUNGEON_PTR
 	mov r5, r0
 	ldr r4, [r1]
-	bl ov29_023386B0
+	bl GetCurrentHiddenStairsType
 	mov r3, r0
 	ldrb ip, [r4, #0x749]
 	ldrsh r1, [r4, #0x1e]
 	ldrb r0, [r4, #0x748]
 	mov r2, r5
 	add r1, ip, r1
-	bl ov29_0234830C
+	bl HandleFloorCard
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02348308: .word DUNGEON_PTR
-	arm_func_end ov29_023482D4
+	arm_func_end DisplayFloorCard
 
-	arm_func_start ov29_0234830C
-ov29_0234830C: ; 0x0234830C
+	arm_func_start HandleFloorCard
+HandleFloorCard: ; 0x0234830C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0xc
 	mov r7, r0
@@ -547,7 +547,7 @@ ov29_0234830C: ; 0x0234830C
 	mov r0, #1
 	mov r1, #0x1000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl sub_02051EB8
 	mov sb, r0
@@ -602,7 +602,7 @@ _0234842C:
 	mov r0, #2
 	mov r1, #0x1000
 	mov r2, #0
-	bl ov29_0234C668
+	bl StartFadeDungeonWrapper
 	mov r0, #0
 	bl ov29_0234C738
 	mov r0, #1
@@ -630,7 +630,7 @@ _02348490:
 	.align 2, 0
 _02348498: .word ov29_023537C4
 _0234849C: .word ov29_0237C694
-	arm_func_end ov29_0234830C
+	arm_func_end HandleFloorCard
 
 	arm_func_start ov29_023484A0
 ov29_023484A0: ; 0x023484A0

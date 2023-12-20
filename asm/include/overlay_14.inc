@@ -2,6 +2,7 @@
 .public _s32_div_f
 .public AnimRelatedFunction__022F6F14
 .public AnimRelatedFunction__022F7064
+.public ClearWindow
 .public CloseAdvancedMenu
 .public CloseDialogueBox
 .public ClosePortraitBox
@@ -13,6 +14,7 @@
 .public CreateSimpleMenuFromStringIds
 .public CreateTextBox
 .public DebugPrint0
+.public DrawTextInWindow
 .public FemaleToMaleForm
 .public GetHero
 .public GetHeroMemberIdx
@@ -62,9 +64,7 @@
 .public sub_02017B70
 .public sub_02017B7C
 .public sub_02017C80
-.public sub_02026214
 .public sub_02027AF0
-.public sub_02027B58
 .public sub_0202BC60
 .public sub_0202F334
 .public sub_0202F954

@@ -10,6 +10,7 @@
 .public CreateParentMenuFromStringIds
 .public CreateTextBox
 .public DisplayMessage
+.public DrawTextInWindow
 .public DungeonGoesUp
 .public DungeonRequestsDoneWrapper
 .public EntityIsValid__0234EC14
@@ -97,7 +98,6 @@
 .public StrncpySimple
 .public StrncpySimpleNoPadSafe
 .public sub_0200B3D4
-.public sub_02026214
 .public sub_020282F4
 .public sub_0202AB80
 .public sub_0202ABB0
