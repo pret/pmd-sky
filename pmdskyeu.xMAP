@@ -3396,7 +3396,7 @@
   02027D74 00000020 .text   SetBothScreensWindowsColor	(main_0200C4CC.o)
   02027D94 00000050 .text   sub_02027AA0	(main_0200C4CC.o)
   02027DD8 00000000 .text   $d	(main_0200C4CC.o)
-  02027DE4 0000002C .text   sub_02027AF0	(main_0200C4CC.o)
+  02027DE4 0000002C .text   UpdateWindow	(main_0200C4CC.o)
   02027DE4 00000000 .text   $a	(main_0200C4CC.o)
   02027E0C 00000000 .text   $d	(main_0200C4CC.o)
   02027E10 00000000 .text   $a	(main_0200C4CC.o)
@@ -27825,13 +27825,13 @@
   023016F8 0000002C .text   ov11_02300D5C	(overlay_11.o)
   0230171C 00000000 .text   $d	(overlay_11.o)
   02301724 00000000 .text   $a	(overlay_11.o)
-  02301724 0000016C .text   ov11_02300D88	(overlay_11.o)
+  02301724 0000016C .text   CreateTopGroundMenu	(overlay_11.o)
   02301874 00000000 .text   $d	(overlay_11.o)
   02301890 00000000 .text   $a	(overlay_11.o)
-  02301890 0000005C .text   ov11_02300EF4	(overlay_11.o)
+  02301890 0000005C .text   CloseTopGroundMenu	(overlay_11.o)
   023018E8 00000000 .text   $d	(overlay_11.o)
   023018EC 00000000 .text   $a	(overlay_11.o)
-  023018EC 000001EC .text   ov11_02300F50	(overlay_11.o)
+  023018EC 000001EC .text   UpdateTopGroundMenu	(overlay_11.o)
   02301AD4 00000000 .text   $d	(overlay_11.o)
   02301AD8 00000000 .text   $a	(overlay_11.o)
   02301AD8 00000010 .text   ov11_0230113C	(overlay_11.o)
@@ -27997,7 +27997,7 @@
   023052C8 00000198 .text   ov11_0230492C	(overlay_11.o)
   02305458 00000000 .text   $d	(overlay_11.o)
   02305460 00000000 .text   $a	(overlay_11.o)
-  02305460 0000001C .text   ov11_02304AC4	(overlay_11.o)
+  02305460 0000001C .text   IsBagNotEmpty	(overlay_11.o)
   0230547C 00000014 .text   ov11_02304AE0	(overlay_11.o)
   02305488 00000000 .text   $d	(overlay_11.o)
   02305490 00000000 .text   $a	(overlay_11.o)
@@ -39872,5 +39872,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Dec 20 03:34:38 2023
-# Link end time: Wed Dec 20 03:34:39 2023
+# Link start time: Thu Dec 21 06:58:08 2023
+# Link end time: Thu Dec 21 06:58:09 2023

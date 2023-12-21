@@ -3378,7 +3378,7 @@
   02027AA0 00000050 .text   sub_02027AA0	(main_0200C4CC.o)
   02027AE4 00000000 .text   $d	(main_0200C4CC.o)
   02027AF0 00000000 .text   $a	(main_0200C4CC.o)
-  02027AF0 0000002C .text   sub_02027AF0	(main_0200C4CC.o)
+  02027AF0 0000002C .text   UpdateWindow	(main_0200C4CC.o)
   02027B18 00000000 .text   $d	(main_0200C4CC.o)
   02027B1C 0000003C .text   sub_02027B1C	(main_0200C4CC.o)
   02027B1C 00000000 .text   $a	(main_0200C4CC.o)
@@ -27802,13 +27802,13 @@
   02300D5C 0000002C .text   ov11_02300D5C	(overlay_11.o)
   02300D80 00000000 .text   $d	(overlay_11.o)
   02300D88 00000000 .text   $a	(overlay_11.o)
-  02300D88 0000016C .text   ov11_02300D88	(overlay_11.o)
+  02300D88 0000016C .text   CreateTopGroundMenu	(overlay_11.o)
   02300ED8 00000000 .text   $d	(overlay_11.o)
   02300EF4 00000000 .text   $a	(overlay_11.o)
-  02300EF4 0000005C .text   ov11_02300EF4	(overlay_11.o)
+  02300EF4 0000005C .text   CloseTopGroundMenu	(overlay_11.o)
   02300F4C 00000000 .text   $d	(overlay_11.o)
   02300F50 00000000 .text   $a	(overlay_11.o)
-  02300F50 000001EC .text   ov11_02300F50	(overlay_11.o)
+  02300F50 000001EC .text   UpdateTopGroundMenu	(overlay_11.o)
   02301138 00000000 .text   $d	(overlay_11.o)
   0230113C 00000000 .text   $a	(overlay_11.o)
   0230113C 00000010 .text   ov11_0230113C	(overlay_11.o)
@@ -27974,7 +27974,7 @@
   0230492C 00000198 .text   ov11_0230492C	(overlay_11.o)
   02304ABC 00000000 .text   $d	(overlay_11.o)
   02304AC4 00000000 .text   $a	(overlay_11.o)
-  02304AC4 0000001C .text   ov11_02304AC4	(overlay_11.o)
+  02304AC4 0000001C .text   IsBagNotEmpty	(overlay_11.o)
   02304AE0 00000014 .text   ov11_02304AE0	(overlay_11.o)
   02304AEC 00000000 .text   $d	(overlay_11.o)
   02304AF4 00000000 .text   $a	(overlay_11.o)
@@ -39838,5 +39838,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Dec 20 03:33:56 2023
-# Link end time: Wed Dec 20 03:33:57 2023
+# Link start time: Thu Dec 21 06:57:26 2023
+# Link end time: Thu Dec 21 06:57:27 2023
