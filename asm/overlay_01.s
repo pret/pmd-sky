@@ -7797,7 +7797,7 @@ ov01_0232F830: ; 0x0232F830
 	bl DrawTextInWindow
 _0232F8F0:
 	mov r0, r5
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x54
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, pc}
@@ -11357,7 +11357,7 @@ _02332950:
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xd]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r0, _023329F0 ; =MAIN_MENU_WINDOW_PARAMS_7
 	ldr r3, _023329F4 ; =MAIN_MENU_ITEMS_CONFIRM
 	add r2, sp, #0xc
@@ -11729,7 +11729,7 @@ _02332E58:
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xd]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r0, _02332EEC ; =MAIN_MENU_WINDOW_PARAMS_7
 	ldr r3, _02332EF0 ; =MAIN_MENU_ITEMS_CONFIRM
 	add r2, sp, #0
@@ -14273,7 +14273,7 @@ _0233506C:
 	mov r0, sl
 	bl ov01_02335088
 	mov r0, sl
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x204
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -15951,7 +15951,7 @@ _02336564:
 	add r3, r3, #0x12
 	bl sub_02030978
 	mov r0, r8
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -16010,7 +16010,7 @@ _02336684:
 	add r3, r3, #0x12
 	bl sub_02030978
 	mov r0, r8
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02336724: .word ov01_0233BB88
@@ -16104,7 +16104,7 @@ _02336824:
 	cmp r7, #3
 	blt _02336824
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02336880: .word ov01_0233BB9E
@@ -16155,7 +16155,7 @@ _023368B4:
 	sub r2, r2, #8
 	bl sub_02030978
 	mov r0, r8
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0

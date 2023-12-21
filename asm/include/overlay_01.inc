@@ -277,7 +277,6 @@
 .public sub_02026268
 .public sub_0202676C
 .public sub_0202737C
-.public sub_02027AF0
 .public sub_02027B1C
 .public sub_020288FC
 .public sub_02029F88
@@ -372,5 +371,6 @@
 .public sub_020851AC
 .public sub_0208FE3C
 .public sub_0208FE48
+.public UpdateWindow
 .public vsprintf
 .public WAN_TABLE

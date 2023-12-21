@@ -163,7 +163,6 @@
 .public sub_0201C000
 .public sub_0201CF90
 .public sub_0201D034
-.public sub_02027AF0
 .public sub_02048384
 .public sub_020483B8
 .public sub_020483D8
@@ -174,3 +173,4 @@
 .public TOP_SCREEN_STATUS_PTR
 .public UnloadFile
 .public UpdateMinimap
+.public UpdateWindow

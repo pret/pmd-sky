@@ -1875,7 +1875,7 @@ _0238BA14:
 	cmp sb, r0
 	blt _0238B94C
 	mov r0, sl
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x154
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -1916,7 +1916,7 @@ ov20_0238BA40: ; 0x0238BA40
 	mov r2, #2
 	bl DrawTextInWindow
 	mov r0, r5
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x154
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
@@ -1968,7 +1968,7 @@ ov20_0238BAB4: ; 0x0238BAB4
 	add r3, sp, #0x54
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x154
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -3435,7 +3435,7 @@ ov20_0238CE9C: ; 0x0238CE9C
 	add r3, sp, #0x54
 	bl DrawTextInWindow
 	mov r0, r5
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x154
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
@@ -3468,7 +3468,7 @@ ov20_0238CF20: ; 0x0238CF20
 	add r3, sp, #0x54
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x154
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0

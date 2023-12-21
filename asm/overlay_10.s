@@ -377,7 +377,7 @@ _022BCF0C:
 	ldrb r0, [r8, #8]
 	bl sub_020287C4
 	ldrsb r0, [r8, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, #2
 	str r0, [r4, #0x19c]
 	b _022BD200
@@ -677,7 +677,7 @@ _022BD354:
 	add r0, r4, #4
 	bl sub_0202A0B0
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #4
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -5810,7 +5810,7 @@ _022C169C:
 	cmp r5, #4
 	blt _022C15F4
 	mov r0, sl
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r0, _022C16CC ; =ov10_022DC1D0
 	ldr r0, [r0]
 	add r0, r0, #0x2d8
@@ -5899,7 +5899,7 @@ _022C1794:
 	bne _022C17C8
 	bl ClearWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	b _022C182C
 _022C17C8:
 	bl ClearWindow
@@ -5939,7 +5939,7 @@ _022C17C8:
 	add r3, sp, #0x154 + OV10_022C1748_STACK_OFFSET
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 _022C182C:
 	add sp, sp, #0x254 + OV10_022C1748_STACK_OFFSET
 	ldmia sp!, {r4, r5, pc}
@@ -5994,7 +5994,7 @@ _022C18A4:
 	mov r0, r5
 	bl ClearWindow
 	mov r0, r5
-	bl sub_02027AF0
+	bl UpdateWindow
 	b _022C197C
 _022C18D8:
 	ldr r1, _022C1988 ; =ov10_022DBFB0
@@ -6038,7 +6038,7 @@ _022C1930:
 	mov r2, r1
 	bl DrawTextInWindow
 	mov r0, r5
-	bl sub_02027AF0
+	bl UpdateWindow
 _022C197C:
 	add sp, sp, #0x258
 	ldmia sp!, {r3, r4, r5, pc}

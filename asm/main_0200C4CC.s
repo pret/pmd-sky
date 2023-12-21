@@ -32943,11 +32943,11 @@ _0202600C: .word sub_01FF929C
 
 	arm_func_start sub_02026010
 sub_02026010: ; 0x02026010
-	ldr ip, _0202601C ; =sub_02027AF0
+	ldr ip, _0202601C ; =UpdateWindow
 	ldrsb r0, [r0]
 	bx ip
 	.align 2, 0
-_0202601C: .word sub_02027AF0
+_0202601C: .word UpdateWindow
 	arm_func_end sub_02026010
 
 	arm_func_start sub_02026020
@@ -35161,8 +35161,8 @@ _02027AE8: .word _020AFD9C
 _02027AEC: .word _020AFD94
 	arm_func_end sub_02027AA0
 
-	arm_func_start sub_02027AF0
-sub_02027AF0: ; 0x02027AF0
+	arm_func_start UpdateWindow
+UpdateWindow: ; 0x02027AF0
 	ldr r2, _02027B18 ; =_022A88DC
 	mov r1, #0xe0
 	mla r1, r0, r1, r2
@@ -35175,7 +35175,7 @@ sub_02027AF0: ; 0x02027AF0
 	bx lr
 	.align 2, 0
 _02027B18: .word _022A88DC
-	arm_func_end sub_02027AF0
+	arm_func_end UpdateWindow
 
 	arm_func_start sub_02027B1C
 sub_02027B1C: ; 0x02027B1C
@@ -35190,7 +35190,7 @@ sub_02027B1C: ; 0x02027B1C
 	mov r1, #0
 	bl memset
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02027B50: .word _022A88F0
@@ -35571,7 +35571,7 @@ sub_02028080: ; 0x02028080
 	mla r4, r0, r2, r3
 	strb r1, [r4, #9]
 	ldrsb r0, [r4, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r0, _020280BC ; =_020AFD4C
 	ldrb r1, [r4, #8]
 	ldr r3, [r0, #8]
@@ -38426,7 +38426,7 @@ _0202A564:
 	add r1, r5, #0x30
 	bl sub_02026E3C
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, r5
 	bl MemFree
 _0202A5B4:
@@ -38784,7 +38784,7 @@ _0202AA3C:
 	ldrb r0, [r7, #8]
 	bl sub_020287C4
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, #3
 	str r0, [r8, #0x19c]
 	mov r2, #0
@@ -39225,7 +39225,7 @@ _0202B008:
 	add r0, r5, #4
 	bl sub_0202A03C
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end sub_0202AF78
 
@@ -39974,7 +39974,7 @@ _0202B9F4:
 	add r0, r4, #4
 	bl sub_0202A03C
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end sub_0202B934
 
@@ -40282,7 +40282,7 @@ _0202BDC8:
 	ldrb r0, [r6, #8]
 	bl sub_020287C4
 	ldrsb r0, [r6, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, #2
 	str r0, [r4, #0x19c]
 	b _0202C1D8
@@ -40681,7 +40681,7 @@ _0202C36C:
 	add r0, r4, #4
 	bl sub_0202A03C
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0xc
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -41102,7 +41102,7 @@ _0202C8A4:
 	ldrb r0, [r4, #8]
 	bl sub_020287C4
 	ldrsb r0, [r4, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, #2
 	str r0, [r5, #0x1ac]
 	b _0202CE40
@@ -41643,7 +41643,7 @@ _0202D04C:
 	bl sub_0202A03C
 _0202D058:
 	ldrsb r0, [r5, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x410
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end sub_0202CEA0
@@ -42127,7 +42127,7 @@ _0202D668:
 	ldrb r0, [r7, #8]
 	bl sub_020287C4
 	ldrsb r0, [r7, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, #2
 	str r0, [r4, #0x1a0]
 	b _0202DA5C
@@ -42525,7 +42525,7 @@ _0202DC1C:
 	add r0, r4, #4
 	bl sub_0202A03C
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x160
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -42819,7 +42819,7 @@ _0202DFE8:
 	ldrb r0, [r7, #8]
 	bl sub_020287C4
 	ldrsb r0, [r7, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, #2
 	str r0, [r4, #0x1a0]
 	b _0202E294
@@ -43083,7 +43083,7 @@ _0202E3B0:
 	add r0, r4, #4
 	bl sub_0202A03C
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end sub_0202E29C
@@ -44008,7 +44008,7 @@ _0202F088:
 	add r0, r5, #4
 	bl sub_0202A03C
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x124
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -45061,7 +45061,7 @@ _0202FDD0:
 	add r3, r6, #0xac
 	bl DrawTextInWindow
 	ldrsb r0, [r5, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, #2
 	str r0, [r4, #0xa0]
 	sub r0, r0, #3
@@ -45181,7 +45181,7 @@ _0202FF54:
 	mov r2, #2
 	bl sub_02026268
 	ldrsb r0, [r5, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, #2
 	str r0, [r4, #0xa0]
 	sub r0, r0, #3
@@ -45507,7 +45507,7 @@ _02030388:
 	bl sub_02025D50
 _020303C4:
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add r0, r6, #0x600
 	ldrsh r1, [r0, #0x46]
 	strh r1, [r0, #0x48]
@@ -46375,7 +46375,7 @@ _02030ED8:
 	add r0, r4, #4
 	bl sub_0202A03C
 	ldrsb r0, [r5, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_02030E94
 
@@ -46691,7 +46691,7 @@ _020312D4:
 	ldrb r0, [r7, #8]
 	bl sub_020287C4
 	ldrsb r0, [r7, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, #2
 	str r0, [r4, #0x19c]
 	b _02031714
@@ -47085,7 +47085,7 @@ _02031868:
 	add r0, r4, #4
 	bl sub_0202A03C
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0xc
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -54678,7 +54678,7 @@ sub_02037C78: ; 0x02037C78
 	mov r2, r1
 	bl sub_02026268
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02037CA4: .word 0x00000122
@@ -54695,7 +54695,7 @@ sub_02037CA8: ; 0x02037CA8
 	mov r2, r1
 	bl sub_02026268
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02037CD4: .word 0x00000123
@@ -54859,7 +54859,7 @@ _02037EF8:
 	cmp r4, #0x54
 	bne _02037D20
 	mov r0, r7
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x40
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
@@ -55197,7 +55197,7 @@ _02038394:
 	bl sub_02025D50
 _020383CC:
 	mov r0, sb
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x114
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -56389,7 +56389,7 @@ _020393E0:
 	mov r2, #3
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x254
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -60285,7 +60285,7 @@ sub_0203C784: ; 0x0203C784
 	str ip, [sp]
 	bl sub_020262E0
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -60902,7 +60902,7 @@ _0203CEE4:
 	add r3, sp, #0xd4
 	bl DrawTextInWindow
 	mov r0, r5
-	bl sub_02027AF0
+	bl UpdateWindow
 _0203CF84:
 	add sp, sp, #0x1d4
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -61200,7 +61200,7 @@ _0203D3D0:
 	mov r1, #4
 	bl DrawTextInWindow
 	mov r0, r6
-	bl sub_02027AF0
+	bl UpdateWindow
 _0203D3F4:
 	add sp, sp, #0xcc
 	add sp, sp, #0x400
@@ -64503,7 +64503,7 @@ _02040250:
 	mov r0, #1
 	bl sub_0204027C
 	mov r0, sl
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02040274: .word _020AFE7C
@@ -65428,7 +65428,7 @@ _02040F18:
 	ldr r0, _02040F94 ; =_020AFE7C
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0]
-	bl sub_02027AF0
+	bl UpdateWindow
 	cmp r4, #0
 	bne _02040F84
 	mov r0, #2
@@ -69407,7 +69407,7 @@ sub_02044210: ; 0x02044210
 	mov r2, #2
 	bl sub_020262E0
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -69532,7 +69532,7 @@ _020443B0:
 	bl sub_020262E0
 _020443F4:
 	mov r0, r5
-	bl sub_02027AF0
+	bl UpdateWindow
 _020443FC:
 	add sp, sp, #0x54
 	ldmia sp!, {r4, r5, pc}
@@ -69647,7 +69647,7 @@ sub_020444F0: ; 0x020444F0
 	bl sub_02026268
 _02044558:
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02044564: .word _020AFECC
@@ -69732,7 +69732,7 @@ sub_02044604: ; 0x02044604
 	mov r2, #0xc
 	bl sub_020262E0
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 _02044678:
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, pc}
@@ -73762,7 +73762,7 @@ _02047C18:
 	strb r1, [r0, #0xf7b]
 _02047C2C:
 	mov r0, sl
-	bl sub_02027AF0
+	bl UpdateWindow
 _02047C34:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}

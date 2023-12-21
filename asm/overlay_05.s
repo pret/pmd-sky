@@ -3551,7 +3551,7 @@ _0233FAE0:
 	mov r2, #2
 	bl DrawTextInWindow
 	mov r0, r6
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x194
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0

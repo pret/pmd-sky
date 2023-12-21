@@ -172,7 +172,7 @@ _02382A88:
 	blt _023829D8
 _02382A90:
 	mov r0, sl
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x254
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -220,7 +220,7 @@ DungeonMenuSwitch: ; 0x02382AC0
 	mov r0, r4
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
@@ -549,7 +549,7 @@ ov31_02382F68: ; 0x02382F68
 	str r3, [ip]
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02382FB4: .word ov31_0238A2A0
@@ -1693,7 +1693,7 @@ _02383F34:
 	add r3, sp, #0x4c
 	bl DrawTextInWindow
 	mov r0, r8
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #1
@@ -1749,7 +1749,7 @@ _02383FF0:
 	add r3, sp, #0x4c
 	bl DrawTextInWindow
 	mov r0, r8
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r0, [r4]
 	mov r1, #0
 	add r2, r0, #0x1000
@@ -8326,7 +8326,7 @@ ov31_02389A04: ; 0x02389A04
 	mov r2, #2
 	bl DrawTextInWindow
 	mov r0, r5
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x94
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0

@@ -1329,7 +1329,7 @@ _01FF9274:
 	ldrb r1, [r1, #6]
 	cmp r6, r1
 	blt _01FF9170
-	bl sub_02027AF0
+	bl UpdateWindow
 _01FF9288:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -1441,7 +1441,7 @@ _01FF940C:
 	ldrb r1, [r1, #6]
 	cmp r6, r1
 	blt _01FF92EC
-	bl sub_02027AF0
+	bl UpdateWindow
 _01FF9420:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}

@@ -494,7 +494,6 @@
 .public sub_020264F8
 .public sub_02026E78
 .public sub_02027180
-.public sub_02027AF0
 .public sub_0202836C
 .public sub_02029F88
 .public sub_02029FBC
@@ -614,6 +613,7 @@
 .public UnloadFile
 .public UnloadOverlay
 .public UpdateTrackVolumeEnvelopes
+.public UpdateWindow
 .public vsprintf
 .public WAN_TABLE
 .public ZINC_BAND_STAT_BOOST

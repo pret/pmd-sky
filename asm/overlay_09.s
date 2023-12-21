@@ -2182,7 +2182,7 @@ _0233E8EC:
 	add r0, r4, #8
 	bl sub_0202A03C
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r1, [r4, #4]
 	mov r0, #2
 	bl ov01_02330E38
@@ -2836,7 +2836,7 @@ _0233F1DC:
 	add r0, r4, #8
 	bl sub_0202A03C
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r1, [r4, #4]
 	mov r0, #3
 	bl ov01_02330E38
@@ -3013,7 +3013,7 @@ _0233F444:
 	add r3, r6, #0x1a8
 	bl DrawTextInWindow
 	ldrsb r0, [r5, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r1, [r6, #4]
 	mov r0, #1
 	bl ov01_02330E38

@@ -41613,7 +41613,7 @@ _022FF0F8:
 	bl sub_0202A434
 	strb r0, [r6, #4]
 	ldrsb r0, [r8, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 _022FF118:
 	bl GetMoneyCarried
 	str r0, [sp, #0x28]
@@ -43760,8 +43760,8 @@ _02300D80: .word ov11_0232260C
 _02300D84: .word ov11_02324D34
 	arm_func_end ov11_02300D5C
 
-	arm_func_start ov11_02300D88
-ov11_02300D88: ; 0x02300D88
+	arm_func_start CreateTopGroundMenu
+CreateTopGroundMenu: ; 0x02300D88
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x98
 	bl GetGameMode
@@ -43802,7 +43802,7 @@ _02300DFC:
 	beq _02300E2C
 	b _02300E44
 _02300E1C:
-	bl ov11_02304AC4
+	bl IsBagNotEmpty
 	b _02300E48
 _02300E24:
 	mov r0, r7
@@ -43862,10 +43862,10 @@ _02300EE4: .word ov11_0232262C
 _02300EE8: .word ov11_023225FC
 _02300EEC: .word 0x00400213
 _02300EF0: .word ov11_0232261C
-	arm_func_end ov11_02300D88
+	arm_func_end CreateTopGroundMenu
 
-	arm_func_start ov11_02300EF4
-ov11_02300EF4: ; 0x02300EF4
+	arm_func_start CloseTopGroundMenu
+CloseTopGroundMenu: ; 0x02300EF4
 	stmdb sp!, {r3, lr}
 	ldr r0, _02300F4C ; =ov11_02324D34
 	ldr r0, [r0]
@@ -43890,10 +43890,10 @@ ov11_02300EF4: ; 0x02300EF4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02300F4C: .word ov11_02324D34
-	arm_func_end ov11_02300EF4
+	arm_func_end CloseTopGroundMenu
 
-	arm_func_start ov11_02300F50
-ov11_02300F50: ; 0x02300F50
+	arm_func_start UpdateTopGroundMenu
+UpdateTopGroundMenu: ; 0x02300F50
 	stmdb sp!, {r3, lr}
 	ldr r0, _02301138 ; =ov11_02324D34
 	ldr r2, [r0]
@@ -44031,7 +44031,7 @@ _02301130:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02301138: .word ov11_02324D34
-	arm_func_end ov11_02300F50
+	arm_func_end UpdateTopGroundMenu
 
 	arm_func_start ov11_0230113C
 ov11_0230113C: ; 0x0230113C
@@ -47697,7 +47697,7 @@ _02304334:
 	mov r2, #3
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #4
 	add sp, sp, #0x400
 	ldmia sp!, {r3, r4, pc}
@@ -48294,8 +48294,8 @@ _02304ABC: .word ov11_02324D78
 _02304AC0: .word ov11_02322AC4
 	arm_func_end ov11_0230492C
 
-	arm_func_start ov11_02304AC4
-ov11_02304AC4: ; 0x02304AC4
+	arm_func_start IsBagNotEmpty
+IsBagNotEmpty: ; 0x02304AC4
 	stmdb sp!, {r3, lr}
 	bl GetNbItemsInBag
 	cmp r0, #0
@@ -48303,7 +48303,7 @@ ov11_02304AC4: ; 0x02304AC4
 	movle r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov11_02304AC4
+	arm_func_end IsBagNotEmpty
 
 	arm_func_start ov11_02304AE0
 ov11_02304AE0: ; 0x02304AE0
@@ -51286,7 +51286,7 @@ _023073FC:
 	str r2, [r0]
 	b _02308CF0
 _02307464:
-	bl ov11_02304AC4
+	bl IsBagNotEmpty
 	cmp r0, #0
 	bne _02307494
 	ldr r0, _023082B4 ; =ov11_02324D8C
@@ -51402,7 +51402,7 @@ _023075F0:
 	mov r2, r1
 	bl DrawTextInWindow
 	mov r0, r5
-	bl sub_02027AF0
+	bl UpdateWindow
 _0230760C:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 	ldr r0, [r0]
@@ -52770,7 +52770,7 @@ _023089C0:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
 	bl ShowDialogueBox
-	bl ov11_02304AC4
+	bl IsBagNotEmpty
 	cmp r0, #0
 	ldreq r0, _023082B4 ; =ov11_02324D8C
 	moveq r1, #0xc
@@ -55685,7 +55685,7 @@ _0230B184:
 	str r4, [sp]
 	bl sub_020262E0
 	mov r0, r7
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x15c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -57549,7 +57549,7 @@ ov11_0230CA7C: ; 0x0230CA7C
 	mov r2, #2
 	bl sub_02026268
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0230CAA0: .word 0x000003A9
@@ -57620,7 +57620,7 @@ ov11_0230CB28: ; 0x0230CB28
 	mov r1, #6
 	bl sub_020262E0
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -69663,7 +69663,7 @@ _023169FC:
 	bl sub_02026268
 _02316A18:
 	mov r0, sl
-	bl sub_02027AF0
+	bl UpdateWindow
 	mov r0, r6
 	bl MemFree
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -80060,9 +80060,9 @@ ov11_023225FC:
 	.global ov11_0232260C
 ov11_0232260C:
 	.byte 0x0D, 0x00, 0x00, 0x00
-	.word ov11_02300D88
-	.word ov11_02300EF4
-	.word ov11_02300F50
+	.word CreateTopGroundMenu
+	.word CloseTopGroundMenu
+	.word UpdateTopGroundMenu
 	.global ov11_0232261C
 ov11_0232261C:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x0D, 0x04, 0x11, 0x02, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

@@ -2120,7 +2120,7 @@ ov13_0238BE6C: ; 0x0238BE6C
 	mov r2, #0x24
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x54
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, pc}
