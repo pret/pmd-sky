@@ -6871,7 +6871,7 @@ ov29_022E8E60: ; 0x022E8E60
 	mov r2, r1
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 #ifdef EUROPE
@@ -6968,7 +6968,7 @@ ov29_022E8F78: ; 0x022E8F78
 	mov r2, r1
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E8FC4: .word ov29_02353558

@@ -2840,7 +2840,7 @@ ov21_0238C9A4: ; 0x0238C9A4
 	add r3, sp, #4
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x54
 	add sp, sp, #0x400
 	ldmia sp!, {r3, r4, pc}

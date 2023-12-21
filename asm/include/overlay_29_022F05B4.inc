@@ -186,7 +186,6 @@
 .public sub_0201B9F8
 .public sub_0201CF90
 .public sub_02026268
-.public sub_02027AF0
 .public sub_02027B1C
 .public sub_0204AEA0
 .public sub_0204AEB0
@@ -203,4 +202,5 @@
 .public UpdateAiTargetPos
 .public UpdateMinimap
 .public UpdateTrapsVisibility
+.public UpdateWindow
 .public YesNoMenu

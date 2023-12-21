@@ -74,7 +74,6 @@
 .public sub_02003BC8
 .public sub_02003BFC
 .public sub_02006C8C
-.public sub_02027AF0
 .public sub_0202836C
 .public sub_02029F88
 .public sub_02029FBC
@@ -108,3 +107,4 @@
 .public sub_02062B64
 .public sub_0208FE3C
 .public sub_0208FE48
+.public UpdateWindow

@@ -903,7 +903,7 @@ _0238AD84:
 	bl DrawTextInWindow
 _0238ADE8:
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 _0238ADF0:
 	add sp, sp, #0x18
 	ldmia sp!, {r4, pc}
@@ -3454,7 +3454,7 @@ _0238D160:
 	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
@@ -3462,7 +3462,7 @@ _0238D160:
 	ldr r0, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl sub_02027AF0
+	bl UpdateWindow
 	ldr r1, _0238D2FC ; =SENTRY_DUTY_PTR
 	ldr r3, [r1]
 	add r0, r3, #0x3000

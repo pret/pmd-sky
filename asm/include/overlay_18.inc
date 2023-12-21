@@ -51,7 +51,6 @@
 .public sub_02017C74
 .public sub_02017C80
 .public sub_02026268
-.public sub_02027AF0
 .public sub_02027B1C
 .public sub_0202BBF0
 .public sub_0202BC60
@@ -112,4 +111,5 @@
 .public sub_020573A0
 .public sub_0205B028
 .public TEAM_MEMBER_TABLE_PTR
+.public UpdateWindow
 .public vsprintf

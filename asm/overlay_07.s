@@ -1340,7 +1340,7 @@ ov07_0233DB50: ; 0x0233DB50
 	mov r0, r5
 	bl MemFree
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
@@ -5846,7 +5846,7 @@ _02341888:
 	add r7, r7, #0x12
 	blt _02341824
 	mov r0, sl
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x108
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0

@@ -25291,7 +25291,7 @@ sub_020696E8: ; 0x020696E8
 	add r3, sp, #4
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x154
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -25316,7 +25316,7 @@ sub_02069750: ; 0x02069750
 	mov r2, #3
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x100
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -25717,7 +25717,7 @@ _02069C50:
 	strb r2, [sp, #0x45]
 	bl sub_02060FD8
 	mov r0, r5
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x68
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -25756,7 +25756,7 @@ _02069CFC:
 	bl sub_02060FD8
 _02069D2C:
 	mov r0, r6
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x68
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0

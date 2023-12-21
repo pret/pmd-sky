@@ -166,7 +166,6 @@
 .public sub_0201BD50
 .public sub_0201BD80
 .public sub_0202760C
-.public sub_02027AF0
 .public sub_0207A238
 .public sub_0207A244
 .public sub_0207A300
@@ -178,3 +177,4 @@
 .public TRIG_TABLE
 .public TryAddTargetToAiTargetList
 .public UpdateAiTargetPos
+.public UpdateWindow

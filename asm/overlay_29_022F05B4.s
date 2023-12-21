@@ -458,7 +458,7 @@ ov29_022F0B10: ; 0x022F0B10
 	add r3, sp, #0x54
 	bl DrawTextInWindow
 	mov r0, r4
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0xd4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0

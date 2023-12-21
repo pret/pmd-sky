@@ -35,7 +35,6 @@
 .public ShowStringIdInDialogueBox
 .public sub_02017C80
 .public sub_02026268
-.public sub_02027AF0
 .public sub_02027B1C
 .public sub_0202836C
 .public sub_020288DC
@@ -44,3 +43,4 @@
 .public sub_020395CC
 .public sub_020396E4
 .public sub_02039B0C
+.public UpdateWindow
