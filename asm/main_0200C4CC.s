@@ -45791,7 +45791,7 @@ _0202F3CC:
 	add r0, r5, #4
 	bl sub_0202A03C
 	ldrsb r0, [sl, #0x10]
-	bl sub_02027AF0
+	bl UpdateWindow
 	add sp, sp, #0x124
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
