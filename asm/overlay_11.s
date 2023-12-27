@@ -8087,11 +8087,11 @@ _022E33C4:
 	bl EuclideanNorm__02005050
 	mov r4, r0
 	ldr r0, [sb, #0x4c]
-	bl __floatsisf
+	bl _fflt
 	mov r1, r0
 	mov r0, r4
-	bl __divsf3
-	bl __fixsfsi
+	bl _fdiv
+	bl _ffix
 	strh r0, [sb, #0x46]
 	ldrsh r0, [sb, #0x46]
 	cmp r0, #0
@@ -17952,11 +17952,11 @@ _022EB5F4:
 	bl EuclideanNorm__020050B0
 	str r0, [sp, #8]
 	ldr r0, [r8, #0xc]
-	bl __floatsisf
+	bl _fflt
 	mov r1, r0
 	ldr r0, [sp, #8]
-	bl __divsf3
-	bl __fixsfsi
+	bl _fdiv
+	bl _ffix
 	str r0, [r8, #0x10]
 	cmp r0, #0
 	movle r0, #1
@@ -61643,11 +61643,11 @@ _0230FE78:
 	mov r4, r0
 	ldr r5, [r1, #8]
 	ldr r0, [r5, #0x38]
-	bl __floatsisf
+	bl _fflt
 	mov r1, r0
 	mov r0, r4
-	bl __divsf3
-	bl __fixsfsi
+	bl _fdiv
+	bl _ffix
 	ldr r1, _02310050 ; =WORLD_MAP_MODE
 	str r0, [r5, #0x3c]
 	ldr r1, [r1, #8]

@@ -269,7 +269,7 @@
 .public sub_02085030
 .public sub_02085158
 .public sub_0208B360
-.public sub_0208FE3C
-.public sub_0208FE48
-.public sub_0208FE84
+.public _ll_udiv
+.public _ull_mod
+.public _ll_mul
 .public WaitForever2

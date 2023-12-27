@@ -3584,16 +3584,16 @@ _020037D8:
 	ldrh r5, [r1]
 	bl EnableAllInterrupts
 	mov r0, r4
-	bl __floatsisf
+	bl _fflt
 	mov r4, r0
 	mov r0, r5
-	bl __floatsisf
+	bl _fflt
 	mov r1, r0
 	ldr r0, _02003820 ; =0x3B792FB2
-	bl __mulsf3
+	bl _fmul
 	mov r1, r0
 	mov r0, r4
-	bl __addsf3
+	bl _fadd
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02003818: .word _020AEF7C
@@ -5427,25 +5427,25 @@ EuclideanNorm__02005050: ; 0x02005050
 	stmdb sp!, {r4, r5, r6, lr}
 	ldmia r0, {r5, r6}
 	mov r0, r5
-	bl __floatsisf
+	bl _fflt
 	mov r4, r0
 	mov r0, r5
-	bl __floatsisf
+	bl _fflt
 	mov r1, r0
 	mov r0, r4
-	bl __mulsf3
+	bl _fmul
 	mov r5, r0
 	mov r0, r6
-	bl __floatsisf
+	bl _fflt
 	mov r4, r0
 	mov r0, r6
-	bl __floatsisf
+	bl _fflt
 	mov r1, r0
 	mov r0, r4
-	bl __mulsf3
+	bl _fmul
 	mov r1, r0
 	mov r0, r5
-	bl __addsf3
+	bl _fadd
 	bl sqrtf
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end EuclideanNorm__02005050
@@ -5455,25 +5455,25 @@ EuclideanNorm__020050B0: ; 0x020050B0
 	stmdb sp!, {r4, r5, r6, lr}
 	ldmia r0, {r5, r6}
 	mov r0, r5
-	bl __floatsisf
+	bl _fflt
 	mov r4, r0
 	mov r0, r5
-	bl __floatsisf
+	bl _fflt
 	mov r1, r0
 	mov r0, r4
-	bl __mulsf3
+	bl _fmul
 	mov r5, r0
 	mov r0, r6
-	bl __floatsisf
+	bl _fflt
 	mov r4, r0
 	mov r0, r6
-	bl __floatsisf
+	bl _fflt
 	mov r1, r0
 	mov r0, r4
-	bl __mulsf3
+	bl _fmul
 	mov r1, r0
 	mov r0, r5
-	bl __addsf3
+	bl _fadd
 	bl sqrtf
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end EuclideanNorm__020050B0

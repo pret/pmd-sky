@@ -741,8 +741,8 @@
 .public _022AB92C
 .public _022AB930
 .public _022ABDE0
-.public __extendsfdf2
-.public __subsf3
+.public _f2d
+.public _fsub
 .public _s32_div_f
 .public _u32_div_f
 .public ADVANCED_MENU_DEFAULT_WINDOW_PARAMS

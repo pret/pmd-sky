@@ -2,9 +2,9 @@
 .public _020A1870
 .public _020A548A
 .public _020A5490
-.public __divsf3
-.public __fixsfsi
-.public __floatsisf
+.public _fdiv
+.public _ffix
+.public _fflt
 .public _s32_div_f
 .public abs
 .public AddBulkItemToStorage

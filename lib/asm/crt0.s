@@ -78,7 +78,7 @@ _020008D4:
 	add r1, r1, #0x3c
 	ldr r0, _02000948 ; =sub_01FF95E8
 	str r0, [r1]
-	bl sub_020907F0
+	bl _fp_init
 	bl sub_02000B98
 	bl sub_020908A8
 	ldr r1, _0200094C ; =NitroMain

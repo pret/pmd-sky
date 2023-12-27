@@ -75434,8 +75434,8 @@ _0204900C:
 	bl GetTime
 	mov r1, r7
 	mov r7, r0
-	bl __subsf3
-	bl __extendsfdf2
+	bl _fsub
+	bl _f2d
 	mov r3, r0
 	mov r2, r1
 	ldr r0, _0204923C ; =_0209CD84
@@ -75492,8 +75492,8 @@ _020491A8:
 _020491C4:
 	bl GetTime
 	mov r1, r7
-	bl __subsf3
-	bl __extendsfdf2
+	bl _fsub
+	bl _f2d
 	mov r3, r0
 	mov r2, r1
 	ldr r0, _02049244 ; =_0209CD94

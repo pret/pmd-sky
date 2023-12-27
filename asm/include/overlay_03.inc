@@ -240,6 +240,6 @@
 .public sub_020698B8
 .public sub_02069904
 .public sub_02069940
-.public sub_0208FE3C
-.public sub_0208FE48
+.public _ll_udiv
+.public _ull_mod
 .public UnloadFile

@@ -8197,25 +8197,25 @@ _02343C90:
 	mov r0, r6
 	mov r1, r4
 	mov r3, #0
-	bl sub_0208FE48
+	bl _ull_mod
 	str r0, [sp, #0x15c]
 	ldr r2, _02343FE0 ; =0x00002710
 	mov r0, r6
 	mov r1, r4
 	mov r3, #0
-	bl sub_0208FE3C
+	bl _ll_udiv
 	ldr r2, _02343FE0 ; =0x00002710
 	mov r3, #0
-	bl sub_0208FE48
+	bl _ull_mod
 	str r0, [sp, #0x158]
 	ldr r2, _02343FE4 ; =0x05F5E100
 	mov r1, r4
 	mov r0, r6
 	mov r3, #0
-	bl sub_0208FE3C
+	bl _ll_udiv
 	ldr r2, _02343FE0 ; =0x00002710
 	mov r3, #0
-	bl sub_0208FE48
+	bl _ull_mod
 	str r0, [sp, #0x154]
 	ldr r1, _02343FE8 ; =0x00003867
 	mov r0, #0x1c

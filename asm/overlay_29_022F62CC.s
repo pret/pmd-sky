@@ -401,7 +401,7 @@ ov29_022F67D0: ; 0x022F67D0
 	mov r2, #0x64
 	smull r0, r1, r3, r1
 	mov r3, #0
-	bl sub_0208FC8C
+	bl _ll_sdiv
 	bl sub_020018A4
 	mov r4, r0
 	ldr r1, _022F69F8 ; =0x00000E4F
@@ -549,7 +549,7 @@ ov29_022F6A0C: ; 0x022F6A0C
 	mov r2, #0x64
 	smull r0, r1, r3, r0
 	mov r3, #0
-	bl sub_0208FC8C
+	bl _ll_sdiv
 	bl sub_020018A4
 	mov r6, r0
 _022F6A80:

@@ -9831,7 +9831,7 @@ ov02_0232FE1C: ; 0x0232FE1C
 	ldr r2, _0232FE6C ; =0x01FF6210
 	asr r1, r0, #0x1f
 	add r3, r4, #0
-	bl sub_0208FE84
+	bl _ll_mul
 	lsr r3, r0, #6
 	lsl r2, r1, #0x1a
 	orr r3, r2
@@ -9842,7 +9842,7 @@ ov02_0232FE1C: ; 0x0232FE1C
 	ldr r2, _0232FE6C ; =0x01FF6210
 	asr r1, r0, #0x1f
 	mov r3, #0
-	bl sub_0208FE84
+	bl _ll_mul
 	lsr r3, r0, #6
 	lsl r2, r1, #0x1a
 	orr r3, r2
@@ -15512,7 +15512,7 @@ _0233284C:
 	ldr r2, [sp, #0x20]
 	ldr r1, [sp, #0x18]
 	asr r3, r2, #0x1f
-	bl sub_0208FE84
+	bl _ll_mul
 	str r0, [sp, #0xc]
 	mov r0, #0
 	str r1, [sp, #8]
@@ -15745,7 +15745,7 @@ _02332A0A:
 	ldr r2, [sp, #0x24]
 	ldr r1, [sp, #0x18]
 	asr r3, r2, #0x1f
-	bl sub_0208FE84
+	bl _ll_mul
 	str r0, [sp, #0xc]
 	mov r0, #0
 	str r1, [sp, #8]
@@ -18720,7 +18720,7 @@ ov02_02334140: ; 0x02334140
 	ldr r2, _02334158 ; =0x000082EA
 	lsl r0, r0, #6
 	mov r3, #0
-	bl sub_0208FE3C
+	bl _ll_udiv
 	pop {r3, pc}
 	.align 2, 0
 _02334158: .word 0x000082EA
@@ -26543,7 +26543,7 @@ ov02_0233A508: ; 0x0233A508
 	mov r0, r8
 	mov r1, sl
 	mov r2, #0xa
-	bl sub_0208FE48
+	bl _ull_mod
 	mov r1, #0x3e8
 	umull r4, r1, r0, r1
 	mov r0, r8
@@ -26551,7 +26551,7 @@ ov02_0233A508: ; 0x0233A508
 	mov r3, #0
 	mov r2, #0xa
 	str r4, [sp, #0x64]
-	bl sub_0208FE3C
+	bl _ll_udiv
 	mov sb, #0
 	ldr r7, _0233A700 ; =0x00002710
 	mov r8, r0
@@ -26564,14 +26564,14 @@ _0233A614:
 	mov r1, sl
 	mov r2, r7
 	mov r3, r6
-	bl sub_0208FE48
+	bl _ull_mod
 	rsb r1, sb, #2
 	str r0, [r5, r1, lsl #2]
 	mov r0, r8
 	mov r1, sl
 	mov r2, r7
 	mov r3, r4
-	bl sub_0208FE3C
+	bl _ll_udiv
 	mov r8, r0
 	mov sl, r1
 	add sb, sb, #1

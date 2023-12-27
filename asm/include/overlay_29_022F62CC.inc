@@ -52,7 +52,7 @@
 .public RemoveGroundItem
 .public SpawnItem
 .public sub_020018A4
-.public sub_0208FC8C
+.public _ll_sdiv
 .public TeamLeaderIqSkillIsEnabled
 .public TryWarp
 .public WAN_TABLE
