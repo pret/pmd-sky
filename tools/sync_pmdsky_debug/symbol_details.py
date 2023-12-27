@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+# Some symbol names in the decomp do not match pmdsky-debug because of naming convention differences.
+# Map these symbol names between the two projects to avoid changes when syncing the projects.
 MIXED_CASE_SYMBOLS_ARM9 = {
     '_secure': 'SECURE',
     '_start_AutoloadDoneCallback': 'StartAutoloadDoneCallback',

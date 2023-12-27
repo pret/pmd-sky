@@ -16,6 +16,9 @@ pmdsky_debug_symbols = read_pmdsky_debug_symbols()
 xmap_symbols = read_xmap_symbols()
 
 asm_files = []
+"""
+Searches for all files within a directory that have certain extensions.
+"""
 def add_files_with_extensions(folder: str, extensions: List[str]) -> List[str]:
     found_files = []
     for root, _, files in os.walk(folder):
@@ -57,6 +60,8 @@ for language, pmdsky_debug_language_symbols in pmdsky_debug_symbols.items():
 
                 print(f'Replacing {old_symbol.name} with {symbol.name}')
                 replaced_symbols.add(old_symbol.name)
+
+                # Replace symbol occurrences in ASM files.
                 if symbol.is_data:
                     asm_search_string_bases = [
                         f'\n{old_symbol.name}:\n',
@@ -100,6 +105,7 @@ for language, pmdsky_debug_language_symbols in pmdsky_debug_symbols.items():
                     with open(file_path, 'w') as asm_file:
                         asm_file.write(asm_contents)
 
+                # Replace symbol occurrences in C files.
                 src_search_string_data_regex = re.compile(fr'([ &*(]){old_symbol.name}([,); [])')
                 src_search_string_data_regex_replace = fr'\1{symbol.name}\2'
 

@@ -146,6 +146,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     symbol_entry_addresses: int | List[int] = symbol_entry_language_addresses[language_key]
 
 
+    # If needed, reorder language addresses within the YAML for consistency with existing pmdsky-debug entries.
     hex_address = HexCapsInt(address)
     reorder_languages = language_key == 'EU' and len(symbol_entry_language_addresses) > 1 and not symbol_entry_language_addresses[language_key]
     if multiple_symbol_suffix.search(symbol.name):
@@ -170,11 +171,14 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     if symbol_preexisting:
         return
 
+    # Add the symbol to the correspond header file.
     base_symbol_path = base_symbol_path.replace('.yml', '.h')
     header_path = symbol_path.replace(SYMBOLS_FOLDER, os.path.join('headers', symbol_type_key)).replace('.yml', '.h')
     with open(header_path, 'r') as header_file:
         header_contents = header_file.readlines()
 
+    # Look for the symbol that was immediately before the new symbol in the YAML.
+    # The new symbol will be added directly after this anchor symbol.
     target_line = None
     if symbol_before is not None:
         for i, line in enumerate(header_contents):
@@ -230,6 +234,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
             if f' {base_symbol_name}(' in line:
                 symbol_header = line
                 break
+        # Match the typedefs used in pmdsky-debug.
         symbol_header = symbol_header.replace('u32', 'uint32_t')
         symbol_header = symbol_header.replace('u16', 'uint16_t')
         symbol_header = symbol_header.replace('u8', 'uint8_t')
