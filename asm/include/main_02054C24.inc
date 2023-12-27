@@ -183,9 +183,9 @@
 .public _022B9484
 .public _022B94BC
 .public _022B9584
-.public __divsf3
-.public __floatunsisf
-.public __mulsf3
+.public _fdiv
+.public _ffltu
+.public _fmul
 .public _s32_div_f
 .public _u32_div_f
 .public AddMoneyCarried
@@ -606,7 +606,7 @@
 .public sub_0207F748
 .public sub_0207F808
 .public sub_0207F828
-.public sub_0208F1CC
+.public _fls
 .public TACTIC_NAME_STRING_IDS
 .public TACTICS_UNLOCK_LEVEL_TABLE
 .public TEAM_MEMBER_TABLE_PTR

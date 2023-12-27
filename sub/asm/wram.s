@@ -5456,7 +5456,7 @@ _037FC714:
 	ble _037FC6F4
 	ldr r0, [r6, #0x18]
 	add r0, r0, r2
-	bl __divsi3
+	bl _s32_div_f
 	ldr r2, [r6, #0x10]
 	add r0, r6, #8
 	str r5, [r2, r1, lsl #2]
@@ -5504,7 +5504,7 @@ _037FC7A0:
 	ldr r0, [r6, #0x18]
 	ldr r1, [r6, #0x14]
 	add r0, r0, #1
-	bl __divsi3
+	bl _s32_div_f
 	str r1, [r6, #0x18]
 	ldr r1, [r6, #0x1c]
 	mov r0, r6
@@ -9948,7 +9948,7 @@ sub_037FFE64: ; 0x037FFE64
 	blt _037FFEAC
 	rsb r1, r0, #0x7e
 	mov r0, #0x1e00
-	bl __divsi3
+	bl _s32_div_f
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 _037FFEAC:
@@ -11723,7 +11723,7 @@ _038015AC:
 	beq _038017D0
 	mov r1, sb
 	ldrsh r0, [r4]
-	bl __divsi3
+	bl _s32_div_f
 	strh r0, [r4]
 	b _038017D0
 _038015C8:
@@ -15319,11 +15319,11 @@ _03804200:
 	b _03804284
 _03804230:
 	mul r0, sb, r8
-	bl __udivsi3
+	bl _u32_div_f
 	ldr r2, [sl, #0xc]
 	mov r1, r8
 	add r0, r2, r0
-	bl __udivsi3
+	bl _u32_div_f
 	mov r0, r1, lsl #0x10
 	mov r0, r0, lsr #0x10
 	cmp r0, #0xc8
@@ -16483,7 +16483,7 @@ _03805164:
 	ldr r0, [r1]
 	add r6, r5, r4
 	ldrh r1, [r6, #0xa]
-	bl __udivsi3
+	bl _u32_div_f
 	mov r1, #0
 	mov r3, r1, lsr r0
 	ldr ip, [r6, #4]
@@ -18408,7 +18408,7 @@ _038069F0:
 	orrs r6, r5, r6
 	bne _03806A24
 	mov r1, r2
-	bl __divsi3
+	bl _s32_div_f
 	ands r4, r4, #1
 	movne r0, r1
 	mov r1, r0, asr #0x1f
@@ -18537,7 +18537,7 @@ _03806BA4:
 	orrs r5, r1, r3
 	bne _03806A44
 	mov r1, r2
-	bl __udivsi3_no_zero_check
+	bl _u32_div_not_0_f
 	cmp r4, #0
 	movne r0, r1
 	mov r1, #0
@@ -18545,8 +18545,8 @@ _03806BA4:
 	bx lr
 	arm_func_end sub_03806B80
 
-	arm_func_start __divsi3
-__divsi3: ; 0x03806BC8
+	arm_func_start _s32_div_f
+_s32_div_f: ; 0x03806BC8
 	eor ip, r0, r1
 	and ip, ip, #0x80000000
 	cmp r0, #0
@@ -18679,16 +18679,16 @@ _03806DC0:
 	ands r3, ip, #1
 	rsbne r1, r1, #0
 	bx lr
-	arm_func_end __divsi3
+	arm_func_end _s32_div_f
 
-	arm_func_start __udivsi3
-__udivsi3: ; 0x03806DD4
+	arm_func_start _u32_div_f
+_u32_div_f: ; 0x03806DD4
 	cmp r1, #0
 	bxeq lr
-	arm_func_end __udivsi3
+	arm_func_end _u32_div_f
 
-	arm_func_start __udivsi3_no_zero_check
-__udivsi3_no_zero_check: ; 0x03806DDC
+	arm_func_start _u32_div_not_0_f
+_u32_div_not_0_f: ; 0x03806DDC
 	cmp r0, r1
 	movlo r1, r0
 	movlo r0, #0
@@ -18808,7 +18808,7 @@ __udivsi3_no_zero_check: ; 0x03806DDC
 	adcs r0, r0, r0
 	mov r1, r3
 	bx lr
-	arm_func_end __udivsi3_no_zero_check
+	arm_func_end _u32_div_not_0_f
 
 _03806FB8:
 	.byte 0x00, 0x06, 0x0C, 0x13, 0x19, 0x1F, 0x25, 0x2B, 0x31, 0x36, 0x3C, 0x41, 0x47, 0x4C, 0x51, 0x55

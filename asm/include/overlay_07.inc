@@ -146,6 +146,6 @@
 .public sub_0204A018
 .public sub_0204A1CC
 .public sub_0205BD78
-.public sub_0208FE3C
-.public sub_0208FE48
+.public _ll_udiv
+.public _ull_mod
 .public UpdateWindow

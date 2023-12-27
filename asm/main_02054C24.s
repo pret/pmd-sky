@@ -34410,16 +34410,16 @@ _02071030:
 	addlo r1, r1, #0x10000
 	str r0, [r8, #0xec8]
 	mov r0, r1
-	bl __floatunsisf
+	bl _ffltu
 	mov sb, r0
 	mov r0, sl
-	bl __floatunsisf
+	bl _ffltu
 	mov r1, r0
 	mov r0, sb
-	bl __divsf3
+	bl _fdiv
 	mov r1, r0
 	ldr r0, _02071158 ; =0x42C80000
-	bl __mulsf3
+	bl _fmul
 	mov sb, r0
 	ldrsh r0, [r7, #0xc4]
 	mov r1, sb
@@ -34428,7 +34428,7 @@ _02071030:
 	strlt r0, [r8, #0xec0]
 	str sb, [r8, #0xebc]
 	ldr r0, [r8, #0xec0]
-	bl sub_0208F1CC
+	bl _fls
 	strlo sb, [r8, #0xec0]
 	movlo r0, #0x64
 	strloh r0, [r7, #0xc4]

@@ -4,8 +4,8 @@
 .public _0380B408
 .public _0380B434
 .public _0380B460
-.public __divsi3
-.public __udivsi3
+.public _s32_div_f
+.public _u32_div_f
 .public ClearIeFlag
 .public EnableIrqFlag
 .public GetCurrentPlaybackTime

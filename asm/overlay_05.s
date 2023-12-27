@@ -1591,25 +1591,25 @@ _0233DEF0:
 	ldr r2, _0233EB2C ; =0x00002710
 	mov r1, r5
 	mov r3, #0
-	bl sub_0208FE48
+	bl _ull_mod
 	str r0, [sp, #0x324]
 	ldr r2, _0233EB2C ; =0x00002710
 	mov r0, r4
 	mov r1, r5
 	mov r3, #0
-	bl sub_0208FE3C
+	bl _ll_udiv
 	ldr r2, _0233EB2C ; =0x00002710
 	mov r3, #0
-	bl sub_0208FE48
+	bl _ull_mod
 	str r0, [sp, #0x320]
 	ldr r2, _0233EB30 ; =0x05F5E100
 	mov r1, r5
 	mov r0, r4
 	mov r3, #0
-	bl sub_0208FE3C
+	bl _ll_udiv
 	ldr r2, _0233EB2C ; =0x00002710
 	mov r3, #0
-	bl sub_0208FE48
+	bl _ull_mod
 	str r0, [sp, #0x31c]
 	mov r0, #5
 	bl ov01_0233767C
@@ -3207,25 +3207,25 @@ _0233F664:
 	mov r0, r5
 	mov r1, r4
 	mov r3, #0
-	bl sub_0208FE48
+	bl _ull_mod
 	str r0, [sp, #0x184]
 	ldr r2, _0233EB2C ; =0x00002710
 	mov r0, r5
 	mov r1, r4
 	mov r3, #0
-	bl sub_0208FE3C
+	bl _ll_udiv
 	ldr r2, _0233EB2C ; =0x00002710
 	mov r3, #0
-	bl sub_0208FE48
+	bl _ull_mod
 	str r0, [sp, #0x180]
 	ldr r2, _0233EB30 ; =0x05F5E100
 	mov r1, r4
 	mov r0, r5
 	mov r3, #0
-	bl sub_0208FE3C
+	bl _ll_udiv
 	ldr r2, _0233EB2C ; =0x00002710
 	mov r3, #0
-	bl sub_0208FE48
+	bl _ull_mod
 	add r1, sp, #0x58
 	str r1, [sp, #0x190]
 	str r0, [sp, #0x17c]

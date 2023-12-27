@@ -4377,7 +4377,7 @@ _027E3B68:
 	blo _027E3B68
 	sub r0, r7, #0x40
 	mov r1, #0x42
-	bl __udivsi3
+	bl _u32_div_f
 	add r2, sp, #0x4e
 	stmia sp, {r2, r5}
 	add r1, sp, #0x1e
@@ -4737,7 +4737,7 @@ _027E4074:
 	moveq r0, #1
 	beq _027E409C
 	ldr r0, _027E445C ; =0x00002710
-	bl __divsi3
+	bl _s32_div_f
 	add r0, r0, #1
 _027E409C:
 	mov r0, r0, lsl #0x10
@@ -10054,7 +10054,7 @@ sub_027E89E0: ; 0x027E89E0
 	ldr r2, [r4, #0x14]
 	str r2, [r0, #0x304]
 	ldr r0, [r4, #0x30]
-	bl __udivsi3
+	bl _u32_div_f
 	mov r1, r0
 	ldr r0, [r4, #0x2c]
 	bl sub_027E8DDC
@@ -11575,7 +11575,7 @@ sub_027E9E30: ; 0x027E9E30
 	ldrh r0, [r4, #0x6e]
 	mov r1, #0x64
 	mul r0, r6, r0
-	bl __udivsi3
+	bl _u32_div_f
 	cmp r0, #0x10000
 	movhi r0, #5
 	bhi _027E9E84
@@ -16191,7 +16191,7 @@ _027ED9B8:
 	mov r2, #0
 	cmpne r0, #0
 	beq _027ED9F8
-	bl __udivsi3
+	bl _u32_div_f
 	add r2, r0, #1
 	cmp r2, #0x64
 	movhi r2, #0x64
@@ -18970,7 +18970,7 @@ _027EFCA8:
 	add r0, r3, r0
 	mov r1, #0xa
 	add r0, r0, #0x32
-	bl __udivsi3
+	bl _u32_div_f
 	mov r4, r0
 	bl EnableIrqFlag
 	ldr r1, _027EFE04 ; =0x00003FFF
@@ -18992,7 +18992,7 @@ _027EFD40:
 	add r0, sb, r0
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl __udivsi3
+	bl _u32_div_f
 	ldrh r3, [sl, #0x18]
 	add r1, r0, #3
 	cmp r1, r3
@@ -24422,7 +24422,7 @@ _027F47D0:
 	sub r0, r0, #0x18
 	strh r0, [r4, #0x20]
 	ldrh r0, [r4, #0x20]
-	bl __udivsi3
+	bl _u32_div_f
 	mov r1, r6
 	strh r0, [r1, #2]
 	b _027F4AC8
@@ -26067,24 +26067,24 @@ _027F5D7C:
 	mov r0, r7
 	mov r1, #0x190
 	addls r6, r6, #0xc
-	bl __udivsi3
+	bl _u32_div_f
 	mov r4, r0
 	mov r0, r7
 	mov r1, #0x64
-	bl __udivsi3
+	bl _u32_div_f
 	mov r1, #0xd
 	mul r1, r6, r1
 	mov r6, r0
 	add r0, r1, #8
 	mov r1, #5
-	bl __udivsi3
+	bl _u32_div_f
 	add r1, r7, r7, lsr #2
 	sub r1, r1, r6
 	add r1, r4, r1
 	add r0, r1, r0
 	add r0, r5, r0
 	mov r1, #7
-	bl __udivsi3
+	bl _u32_div_f
 	ldr r0, _027F5F04 ; =0x027FFDE8
 	ldr r2, [r0]
 	mov r3, r2, lsl #5

@@ -7,5 +7,5 @@
 .public SDK_STATIC_BSS_END
 .public SDK_STATIC_BSS_START
 .public sub_01FF95E8
-.public sub_020907F0
+.public _fp_init
 .public sub_020908A8

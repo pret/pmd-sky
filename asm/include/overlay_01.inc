@@ -369,8 +369,8 @@
 .public sub_02062B64
 .public sub_0207A2A4
 .public sub_020851AC
-.public sub_0208FE3C
-.public sub_0208FE48
+.public _ll_udiv
+.public _ull_mod
 .public UpdateWindow
 .public vsprintf
 .public WAN_TABLE
