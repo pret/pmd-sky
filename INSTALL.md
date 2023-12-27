@@ -92,6 +92,10 @@ $ brew install coreutils make gnu-sed llvm arm-gcc-bin libpng git pkg-config
 $ brew install wine-crossover
 ```
 
+### Docker
+
+This repository has a [devcontainer](https://containers.dev/) containing all the necessary dependencies, which can be used if you prefer not to install the dependencies manually.
+
 ## 3. Build ROM
 
 Run `make` to build the ROM. This will build the North American ROM at `build/pmdsky.us/pmdsky.us.nds`. If you want the European ROM, run `make eu` to build the ROM at `build/pmdsky.eu/pmdsky.eu.nds`.
