@@ -1,0 +1,16 @@
+{
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "runArgs": ["--init"],
+    "onCreateCommand": "/opt/devcontainer/onCreate.sh ${containerWorkspaceFolder}",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "dan-c-underwood.arm",
+                "ms-python.python"
+            ]
+        }
+    }
+}
