@@ -6,11 +6,9 @@ MIXED_CASE_SYMBOLS_ARM9 = {
     '_secure': 'SECURE',
     '_start_AutoloadDoneCallback': 'StartAutoloadDoneCallback',
     '_start_ModuleParams': 'START_MODULE_PARAMS',
-    'MIi_UncompressBackward': 'MIiUncompressBackward',
-    'OSi_ReferSymbol': 'OSiReferSymbol',
-    'SVC_CpuSet': 'SvcCpuSet',
-    'SVC_SoftReset': 'SvcSoftReset',
-    'SVC_WaitByLoop': 'SvcWaitByLoop',
+    'SVC_CpuSet': 'Svc_CpuSet',
+    'SVC_SoftReset': 'Svc_SoftReset',
+    'SVC_WaitByLoop': 'Svc_WaitByLoop',
 }
 
 MIXED_CASE_SYMBOLS_ARM7 = {
