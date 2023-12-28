@@ -187,7 +187,7 @@ Overlay OVY_29
 	Object asm/overlay_29_022E0378.o
 	Object src/dg_object_022E1A1C.o
 	Object asm/overlay_29_022E1A40.o
-	Object src/overlay_29_022E32E8.o
+	Object src/dg_camera_022E32E8.o
 	Object asm/overlay_29_022E330C.o
 	Object src/overlay_29_022E37B8.o
 	Object asm/overlay_29_022E37DC.o

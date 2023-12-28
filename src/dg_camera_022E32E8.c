@@ -1,4 +1,4 @@
-#include "overlay_29_022E32E8.h"
+#include "dg_camera.h"
 
 u8 EntityIsValid__022E32E8(struct entity *entity)
 {
