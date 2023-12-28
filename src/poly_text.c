@@ -1,4 +1,4 @@
-#include "overlay_29_022DC240.h"
+#include "poly_text.h"
 
 extern void MemZero(void* ptr, u32 len);
 
