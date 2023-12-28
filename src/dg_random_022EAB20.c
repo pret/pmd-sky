@@ -1,4 +1,4 @@
-#include "dungeon_random.h"
+#include "dg_random.h"
 
 extern s32 DungeonRand16Bit(void);
 
