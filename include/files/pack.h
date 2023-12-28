@@ -1,7 +1,7 @@
 #ifndef PMDSKY_FILES_PACK_H
 #define PMDSKY_FILES_PACK_H
 
-#include <io.h>
+#include <file.h>
 
 struct pack_file_table_of_content {
     u32 offset; // The offset of the file relative to the start of the Pack file

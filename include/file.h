@@ -1,5 +1,5 @@
-#ifndef PMDSKY_IO_H
-#define PMDSKY_IO_H
+#ifndef PMDSKY_FILE_H
+#define PMDSKY_FILE_H
 
 struct file_stream {
     u32 field_0x0;
