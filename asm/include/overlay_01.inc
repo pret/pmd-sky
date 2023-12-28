@@ -246,6 +246,7 @@
 .public sprintf
 .public strcmp
 .public strcpy
+.public StrcpyName
 .public StrcpySimple
 .public StringFromId
 .public StrncmpSimple
