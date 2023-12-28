@@ -183,7 +183,7 @@ Overlay OVY_29
 {
 	After OVY_10
 	Object asm/overlay_29_022DC240.o
-	Object src/overlay_29_022E0354.o
+	Object src/dg_022E0354.o
 	Object asm/overlay_29_022E0378.o
 	Object src/overlay_29_022E1A1C.o
 	Object asm/overlay_29_022E1A40.o

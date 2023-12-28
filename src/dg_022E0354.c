@@ -1,4 +1,4 @@
-#include "overlay_29_022E0354.h"
+#include "dg.h"
 
 u8 EntityIsValid__022E0354(struct entity *entity)
 {
