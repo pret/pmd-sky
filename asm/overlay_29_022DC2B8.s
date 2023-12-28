@@ -1,42 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022DC240.inc"
+	.include "overlay_29_022DC2B8.inc"
 
 	.text
-
-	arm_func_start ov29_022DC240
-ov29_022DC240: ; 0x022DC240
-	stmdb sp!, {r4, lr}
-	ldr r1, _022DC2B0 ; =0x0001963C
-	mov r4, r0
-	bl MemZero
-	ldr r0, _022DC2B4 ; =0x0001962A
-	mov r2, #0
-	strh r2, [r4, r0]
-	add r1, r0, #2
-	strh r2, [r4, r1]
-	add r1, r0, #4
-	mov r2, #0x100
-	strh r2, [r4, r1]
-	add r1, r0, #6
-	mov r2, #0xc0
-	strh r2, [r4, r1]
-	add r1, r0, #8
-	mov r2, #0x40
-	strh r2, [r4, r1]
-	add r1, r0, #0xa
-	mov r2, #0x18
-	strh r2, [r4, r1]
-	add r1, r0, #0xc
-	mov r2, #4
-	strh r2, [r4, r1]
-	add r0, r0, #0xe
-	mov r1, #8
-	strh r1, [r4, r0]
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_022DC2B0: .word 0x0001963C
-_022DC2B4: .word 0x0001962A
-	arm_func_end ov29_022DC240
 
 	arm_func_start ov29_022DC2B8
 ov29_022DC2B8: ; 0x022DC2B8
