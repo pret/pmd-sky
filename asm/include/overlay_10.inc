@@ -13,7 +13,7 @@
 .public CloseTextBox2
 .public CreatePortraitBox
 .public CreateTextBox
-.public DebugPrint0
+.public Debug_Print0
 .public DecompressAtFromMemoryPointerVeneer
 .public DecompressAtNormalVeneer
 .public DeleteWanTableEntryVeneer
@@ -164,7 +164,7 @@
 .public GetBgRegionArea
 .public GetBodySize
 .public GetCurrentBagCapacity
-.public GetDebugFlag
+.public Debug_GetDebugFlag
 .public GetDungeonGroup
 .public GetDungeonMode
 .public GetDungeonModeSpecial

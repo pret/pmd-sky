@@ -97,7 +97,7 @@ _0238A218:
 	b _0238B230
 _0238A2A0:
 	ldr r0, _0238B0E4 ; =ov23_0238D448
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r3, [r0]
 	add r1, r3, #0x90
@@ -171,7 +171,7 @@ _0238A38C:
 	b _0238B230
 _0238A3B8:
 	ldr r0, _0238B0FC ; =ov23_0238D468
-	bl DebugPrint0
+	bl Debug_Print0
 	bl sub_02042AF8
 	bl sub_020434D4
 	bl ov23_0238D098
@@ -191,7 +191,7 @@ _0238A3B8:
 	b _0238B230
 _0238A404:
 	ldr r0, _0238B100 ; =ov23_0238D484
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #1
@@ -212,7 +212,7 @@ _0238A404:
 	b _0238B230
 _0238A454:
 	ldr r0, _0238B108 ; =ov23_0238D4A4
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #4
@@ -233,7 +233,7 @@ _0238A454:
 	b _0238B230
 _0238A4A4:
 	ldr r0, _0238B110 ; =ov23_0238D4C0
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #1
@@ -254,7 +254,7 @@ _0238A4A4:
 	b _0238B230
 _0238A4F4:
 	ldr r0, _0238B114 ; =ov23_0238D4DC
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #1
@@ -275,7 +275,7 @@ _0238A4F4:
 	b _0238B230
 _0238A544:
 	ldr r0, _0238B11C ; =ov23_0238D4F8
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #1
@@ -296,7 +296,7 @@ _0238A544:
 	b _0238B230
 _0238A594:
 	ldr r0, _0238B120 ; =ov23_0238D51C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #1
@@ -317,7 +317,7 @@ _0238A594:
 	b _0238B230
 _0238A5E4:
 	ldr r0, _0238B128 ; =ov23_0238D540
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #1
@@ -338,7 +338,7 @@ _0238A5E4:
 	b _0238B230
 _0238A634:
 	ldr r0, _0238B12C ; =ov23_0238D55C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #0xf
@@ -368,7 +368,7 @@ _0238A634:
 	b _0238B230
 _0238A6A8:
 	ldr r0, _0238B134 ; =ov23_0238D578
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #0xf
@@ -389,11 +389,11 @@ _0238A6A8:
 	b _0238B230
 _0238A6F8:
 	ldr r0, _0238B138 ; =ov23_0238D594
-	bl DebugPrint0
+	bl Debug_Print0
 	b _0238B230
 _0238A704:
 	ldr r0, _0238B13C ; =ov23_0238D5AC
-	bl DebugPrint0
+	bl Debug_Print0
 	bl sub_02042730
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
@@ -415,7 +415,7 @@ _0238A704:
 	b _0238B230
 _0238A758:
 	ldr r0, _0238B140 ; =ov23_0238D5CC
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #0xf
 	ldr r1, [r0]
@@ -435,7 +435,7 @@ _0238A758:
 	b _0238B230
 _0238A7A4:
 	ldr r0, _0238B144 ; =ov23_0238D5E8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
@@ -459,7 +459,7 @@ _0238A7A4:
 	b _0238B230
 _0238A800:
 	ldr r0, _0238B148 ; =ov23_0238D608
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
@@ -483,7 +483,7 @@ _0238A800:
 	b _0238B230
 _0238A85C:
 	ldr r0, _0238B14C ; =ov23_0238D628
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r0]
 	add r0, r1, #0x90
@@ -526,7 +526,7 @@ _0238A8B8:
 	b _0238B230
 _0238A8FC:
 	ldr r0, _0238B158 ; =ov23_0238D64C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B15C ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
 	mov r4, #3
 	str r0, [sp, #0x19c]
@@ -542,13 +542,13 @@ _0238A8FC:
 	b _0238B230
 _0238A938:
 	ldr r0, _0238B160 ; =ov23_0238D670
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r1, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, _0238B164 ; =ov23_0238D68C
 	ldr r2, [r1]
 	ldrsh r1, [r2, #0x1c]
 	ldrh r2, [r2, #0x1a]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov lr, #0
 	ldr ip, [r0]
@@ -604,7 +604,7 @@ _0238A938:
 	b _0238B230
 _0238AA1C:
 	ldr r0, _0238B17C ; =ov23_0238D6A8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
@@ -647,7 +647,7 @@ _0238AA54:
 	b _0238B230
 _0238AAC0:
 	ldr r0, _0238B180 ; =ov23_0238D6CC
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
@@ -690,7 +690,7 @@ _0238AAF8:
 	b _0238B230
 _0238AB64:
 	ldr r0, _0238B188 ; =ov23_0238D6F0
-	bl DebugPrint0
+	bl Debug_Print0
 	mov ip, #2
 	ldr r0, _0238B18C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238B0F4 ; =0x00300013
@@ -704,7 +704,7 @@ _0238AB64:
 	b _0238B230
 _0238AB98:
 	ldr r0, _0238B194 ; =ov23_0238D708
-	bl DebugPrint0
+	bl Debug_Print0
 	mov ip, #2
 	ldr r0, _0238B18C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238B0F4 ; =0x00300013
@@ -718,7 +718,7 @@ _0238AB98:
 	b _0238B230
 _0238ABCC:
 	ldr r0, _0238B198 ; =ov23_0238D71C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov11_022DC504
 	bl GetNbItemsInBag
 	cmp r0, #0
@@ -761,7 +761,7 @@ _0238AC28:
 	b _0238B230
 _0238AC68:
 	ldr r0, _0238B19C ; =ov23_0238D73C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl sub_02043218
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
@@ -783,7 +783,7 @@ _0238AC68:
 	b _0238B230
 _0238ACBC:
 	ldr r0, _0238B1A0 ; =ov23_0238D75C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #0x19
@@ -804,7 +804,7 @@ _0238ACBC:
 	b _0238B230
 _0238AD0C:
 	ldr r0, _0238B1A4 ; =ov23_0238D77C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #0x2b
 	ldr r1, [r0]
@@ -832,7 +832,7 @@ _0238AD54:
 	b _0238B230
 _0238AD74:
 	ldr r0, _0238B1A8 ; =ov23_0238D79C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
@@ -855,7 +855,7 @@ _0238AD74:
 	b _0238B230
 _0238ADCC:
 	ldr r0, _0238B1AC ; =ov23_0238D7BC
-	bl DebugPrint0
+	bl Debug_Print0
 	mov ip, #3
 	ldr r0, _0238B150 ; =STORAGE_WINDOW_PARAMS_5
 	ldr r3, _0238B1B0 ; =STORAGE_MAIN_MENU_ITEMS_1
@@ -869,7 +869,7 @@ _0238ADCC:
 	b _0238B230
 _0238AE00:
 	ldr r0, _0238B1AC ; =ov23_0238D7BC
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B1B4 ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
 	mov ip, #3
 	str r0, [sp, #0x284]
@@ -885,7 +885,7 @@ _0238AE00:
 	b _0238B230
 _0238AE3C:
 	ldr r0, _0238B1B8 ; =ov23_0238D7E0
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r2, _0238B168 ; =ov23_0238D69C
 	ldr lr, [r0]
@@ -934,7 +934,7 @@ _0238AE3C:
 	b _0238B230
 _0238AEEC:
 	ldr r0, _0238B1BC ; =ov23_0238D7FC
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
@@ -978,7 +978,7 @@ _0238AF24:
 	b _0238B230
 _0238AF94:
 	ldr r0, _0238B1C4 ; =ov23_0238D81C
-	bl DebugPrint0
+	bl Debug_Print0
 	mov ip, #2
 	ldr r0, _0238B18C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238B0F4 ; =0x00300013
@@ -992,7 +992,7 @@ _0238AF94:
 	b _0238B230
 _0238AFC8:
 	ldr r0, _0238B1C8 ; =ov23_0238D834
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0DC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
@@ -1035,7 +1035,7 @@ _0238B000:
 	b _0238B230
 _0238B06C:
 	ldr r0, _0238B1CC ; =ov23_0238D854
-	bl DebugPrint0
+	bl Debug_Print0
 	mov ip, #2
 	ldr r0, _0238B18C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238B0F4 ; =0x00300013
@@ -1049,7 +1049,7 @@ _0238B06C:
 	b _0238B230
 _0238B0A0:
 	ldr r0, _0238B1D0 ; =ov23_0238D868
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov11_022DC504
 	mov r0, #1
 	bl sub_02043320
@@ -1249,7 +1249,7 @@ _0238B308:
 	b _0238C320
 _0238B390:
 	ldr r0, _0238C1D4 ; =ov23_0238D448
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r3, [r0]
 	add r1, r3, #0x90
@@ -1323,7 +1323,7 @@ _0238B47C:
 	b _0238C320
 _0238B4A8:
 	ldr r0, _0238C1EC ; =ov23_0238D468
-	bl DebugPrint0
+	bl Debug_Print0
 	bl sub_02042AF8
 	bl sub_020434D4
 	bl ov23_0238D098
@@ -1343,7 +1343,7 @@ _0238B4A8:
 	b _0238C320
 _0238B4F4:
 	ldr r0, _0238C1F0 ; =ov23_0238D484
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #1
@@ -1364,7 +1364,7 @@ _0238B4F4:
 	b _0238C320
 _0238B544:
 	ldr r0, _0238C1F8 ; =ov23_0238D4A4
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #4
@@ -1385,7 +1385,7 @@ _0238B544:
 	b _0238C320
 _0238B594:
 	ldr r0, _0238C200 ; =ov23_0238D4C0
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #1
@@ -1406,7 +1406,7 @@ _0238B594:
 	b _0238C320
 _0238B5E4:
 	ldr r0, _0238C204 ; =ov23_0238D4DC
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #1
@@ -1427,7 +1427,7 @@ _0238B5E4:
 	b _0238C320
 _0238B634:
 	ldr r0, _0238C20C ; =ov23_0238D4F8
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #1
@@ -1448,7 +1448,7 @@ _0238B634:
 	b _0238C320
 _0238B684:
 	ldr r0, _0238C210 ; =ov23_0238D51C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #1
@@ -1469,7 +1469,7 @@ _0238B684:
 	b _0238C320
 _0238B6D4:
 	ldr r0, _0238C218 ; =ov23_0238D540
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #1
@@ -1490,7 +1490,7 @@ _0238B6D4:
 	b _0238C320
 _0238B724:
 	ldr r0, _0238C21C ; =ov23_0238D55C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #0xf
@@ -1520,7 +1520,7 @@ _0238B724:
 	b _0238C320
 _0238B798:
 	ldr r0, _0238C224 ; =ov23_0238D578
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #0xf
@@ -1541,11 +1541,11 @@ _0238B798:
 	b _0238C320
 _0238B7E8:
 	ldr r0, _0238C228 ; =ov23_0238D594
-	bl DebugPrint0
+	bl Debug_Print0
 	b _0238C320
 _0238B7F4:
 	ldr r0, _0238C22C ; =ov23_0238D5AC
-	bl DebugPrint0
+	bl Debug_Print0
 	bl sub_02042730
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
@@ -1567,7 +1567,7 @@ _0238B7F4:
 	b _0238C320
 _0238B848:
 	ldr r0, _0238C230 ; =ov23_0238D5CC
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r3, #0xf
 	ldr r1, [r0]
@@ -1587,7 +1587,7 @@ _0238B848:
 	b _0238C320
 _0238B894:
 	ldr r0, _0238C234 ; =ov23_0238D5E8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
@@ -1611,7 +1611,7 @@ _0238B894:
 	b _0238C320
 _0238B8F0:
 	ldr r0, _0238C238 ; =ov23_0238D608
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
@@ -1635,7 +1635,7 @@ _0238B8F0:
 	b _0238C320
 _0238B94C:
 	ldr r0, _0238C23C ; =ov23_0238D628
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r1, [r0]
 	add r0, r1, #0x90
@@ -1678,7 +1678,7 @@ _0238B9A8:
 	b _0238C320
 _0238B9EC:
 	ldr r0, _0238C248 ; =ov23_0238D64C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C24C ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2EC
 	mov r4, #3
 	str r0, [sp, #0x1a4]
@@ -1694,13 +1694,13 @@ _0238B9EC:
 	b _0238C320
 _0238BA28:
 	ldr r0, _0238C250 ; =ov23_0238D670
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r1, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, _0238C254 ; =ov23_0238D68C
 	ldr r2, [r1]
 	ldrsh r1, [r2, #0x1c]
 	ldrh r2, [r2, #0x1a]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov lr, #0
 	ldr ip, [r0]
@@ -1756,7 +1756,7 @@ _0238BA28:
 	b _0238C320
 _0238BB0C:
 	ldr r0, _0238C26C ; =ov23_0238D6A8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
@@ -1799,7 +1799,7 @@ _0238BB44:
 	b _0238C320
 _0238BBB0:
 	ldr r0, _0238C270 ; =ov23_0238D6CC
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
@@ -1842,7 +1842,7 @@ _0238BBE8:
 	b _0238C320
 _0238BC54:
 	ldr r0, _0238C278 ; =ov23_0238D6F0
-	bl DebugPrint0
+	bl Debug_Print0
 	mov ip, #2
 	ldr r0, _0238C27C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238C1E4 ; =0x00300013
@@ -1856,7 +1856,7 @@ _0238BC54:
 	b _0238C320
 _0238BC88:
 	ldr r0, _0238C284 ; =ov23_0238D708
-	bl DebugPrint0
+	bl Debug_Print0
 	mov ip, #2
 	ldr r0, _0238C27C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238C1E4 ; =0x00300013
@@ -1870,7 +1870,7 @@ _0238BC88:
 	b _0238C320
 _0238BCBC:
 	ldr r0, _0238C288 ; =ov23_0238D71C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov11_022DC504
 	bl GetNbItemsInBag
 	cmp r0, #0
@@ -1913,7 +1913,7 @@ _0238BD18:
 	b _0238C320
 _0238BD58:
 	ldr r0, _0238C28C ; =ov23_0238D73C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl sub_02043218
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
@@ -1935,7 +1935,7 @@ _0238BD58:
 	b _0238C320
 _0238BDAC:
 	ldr r0, _0238C290 ; =ov23_0238D75C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov23_0238D098
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #0x19
@@ -1956,7 +1956,7 @@ _0238BDAC:
 	b _0238C320
 _0238BDFC:
 	ldr r0, _0238C294 ; =ov23_0238D77C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #0x2b
 	ldr r1, [r0]
@@ -1984,7 +1984,7 @@ _0238BE44:
 	b _0238C320
 _0238BE64:
 	ldr r0, _0238C298 ; =ov23_0238D79C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x95]
@@ -2007,7 +2007,7 @@ _0238BE64:
 	b _0238C320
 _0238BEBC:
 	ldr r0, _0238C29C ; =ov23_0238D7BC
-	bl DebugPrint0
+	bl Debug_Print0
 	mov ip, #3
 	ldr r0, _0238C240 ; =STORAGE_WINDOW_PARAMS_5
 	ldr r3, _0238C2A0 ; =STORAGE_MAIN_MENU_ITEMS_1
@@ -2021,7 +2021,7 @@ _0238BEBC:
 	b _0238C320
 _0238BEF0:
 	ldr r0, _0238C29C ; =ov23_0238D7BC
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C2A4 ; =OVERLAY23_UNKNOWN_VALUE__NA_238D2E8
 	mov ip, #3
 	str r0, [sp, #0xbc]
@@ -2037,7 +2037,7 @@ _0238BEF0:
 	b _0238C320
 _0238BF2C:
 	ldr r0, _0238C2A8 ; =ov23_0238D7E0
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r2, _0238C258 ; =ov23_0238D69C
 	ldr lr, [r0]
@@ -2086,7 +2086,7 @@ _0238BF2C:
 	b _0238C320
 _0238BFDC:
 	ldr r0, _0238C2AC ; =ov23_0238D7FC
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
@@ -2130,7 +2130,7 @@ _0238C014:
 	b _0238C320
 _0238C084:
 	ldr r0, _0238C2B4 ; =ov23_0238D81C
-	bl DebugPrint0
+	bl Debug_Print0
 	mov ip, #2
 	ldr r0, _0238C27C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238C1E4 ; =0x00300013
@@ -2144,7 +2144,7 @@ _0238C084:
 	b _0238C320
 _0238C0B8:
 	ldr r0, _0238C2B8 ; =ov23_0238D834
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238C1CC ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r2, [r0]
 	ldr r1, [r2]
@@ -2187,7 +2187,7 @@ _0238C0F0:
 	b _0238C320
 _0238C15C:
 	ldr r0, _0238C2BC ; =ov23_0238D854
-	bl DebugPrint0
+	bl Debug_Print0
 	mov ip, #2
 	ldr r0, _0238C27C ; =STORAGE_WINDOW_PARAMS_6
 	ldr r1, _0238C1E4 ; =0x00300013
@@ -2201,7 +2201,7 @@ _0238C15C:
 	b _0238C320
 _0238C190:
 	ldr r0, _0238C2C0 ; =ov23_0238D868
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov11_022DC504
 	mov r0, #1
 	bl sub_02043320

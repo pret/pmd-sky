@@ -790,7 +790,7 @@ _022DCBE4:
 	ldr r1, _022DCCE0 ; =OVERLAY11_DEBUG_STRINGS
 	str r3, [sp, #0x10]
 	str r2, [sp, #0x14]
-	bl FatalError
+	bl Debug_FatalError
 _022DCC10:
 	ldrsh r1, [r4, #0x7c]
 	mvn r0, #0
@@ -803,7 +803,7 @@ _022DCC10:
 	ldr r1, _022DCCE4 ; =ov11_02319224
 	str r3, [sp, #8]
 	str r2, [sp, #0xc]
-	bl FatalError
+	bl Debug_FatalError
 _022DCC40:
 	add r5, r4, #0xc
 	add lr, r4, #0x7c
@@ -826,7 +826,7 @@ _022DCC6C:
 	ldr r1, _022DCCE8 ; =ov11_02319240
 	str ip, [sp]
 	str r3, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _022DCC8C:
 	add r0, r4, #0xc
 	bl ov11_022DC830
@@ -923,7 +923,7 @@ _022DCDA4:
 	ldr r1, _022DCEE0 ; =OVERLAY11_DEBUG_STRINGS
 	str r3, [sp, #0x10]
 	str r2, [sp, #0x14]
-	bl FatalError
+	bl Debug_FatalError
 _022DCDDC:
 	ldrsh r1, [r5, #0x7c]
 	mvn r0, #0
@@ -936,7 +936,7 @@ _022DCDDC:
 	ldr r1, _022DCEE4 ; =ov11_02319224
 	str r3, [sp, #8]
 	str r2, [sp, #0xc]
-	bl FatalError
+	bl Debug_FatalError
 _022DCE0C:
 	add r6, r5, #0xc
 	add lr, r5, #0x7c
@@ -960,7 +960,7 @@ _022DCE38:
 	str r1, [sp]
 	ldrsh r2, [r4, #0x18]
 	ldr r1, _022DCEE8 ; =ov11_02319240
-	bl FatalError
+	bl Debug_FatalError
 _022DCE5C:
 	add r0, r5, #0xc
 	bl ov11_022DC830
@@ -1416,7 +1416,7 @@ _022DD424:
 	ldr r2, [sp, #8]
 	ldr r1, _022DDD0C ; =ov11_02319260
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, [sp, #8]
 	mov r0, r4
 	bl ov11_022E43E8
@@ -1439,7 +1439,7 @@ _022DD468:
 	ldr r1, _022DDD10 ; =ov11_02319284
 	mov r2, r8
 	mov r3, r7
-	bl DebugPrint
+	bl Debug_Print
 	mov r2, r7
 	mov r3, r5
 	mov r0, r4
@@ -1450,7 +1450,7 @@ _022DD468:
 	mov r0, #2
 	ldr r1, _022DDD14 ; =ov11_023192B4
 	mov r3, r5
-	bl DebugPrint
+	bl Debug_Print
 	cmp r5, #0
 	blt _022DDD00
 	mov r2, #2
@@ -1514,7 +1514,7 @@ _022DD594:
 	beq _022DD5BC
 	ldr r1, _022DDD1C ; =ov11_023192E8
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	b _022DDD00
 _022DD5BC:
 	bl sub_02034E70
@@ -1529,7 +1529,7 @@ _022DD5D0:
 	streqh r0, [r4, #0xe]
 	beq _022DDD00
 	ldr r1, _022DDD20 ; =ov11_02319304
-	bl DebugPrint
+	bl Debug_Print
 	b _022DDD00
 _022DD5F0:
 	ldrsh r0, [r4, #0x48]
@@ -1540,7 +1540,7 @@ _022DD5F0:
 	beq _022DD618
 	ldr r1, _022DDD24 ; =ov11_02319320
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	b _022DDD00
 _022DD618:
 	bl sub_02034CA4
@@ -1555,7 +1555,7 @@ _022DD62C:
 	streqh r0, [r4, #0xe]
 	beq _022DDD00
 	ldr r1, _022DDD28 ; =ov11_02319338
-	bl DebugPrint
+	bl Debug_Print
 	b _022DDD00
 _022DD64C:
 	ldrsh r0, [r4, #0x48]
@@ -1572,12 +1572,12 @@ _022DD668:
 	streqh r0, [r4, #0xe]
 	beq _022DDD00
 	ldr r1, _022DDD2C ; =ov11_02319350
-	bl DebugPrint
+	bl Debug_Print
 	b _022DDD00
 _022DD688:
 	ldr r1, _022DDD30 ; =ov11_02319370
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	bl sub_02034DA8
 	cmp r0, #0
 	moveq r0, #2
@@ -1701,7 +1701,7 @@ _022DD830:
 	beq _022DD860
 	ldr r1, _022DDD3C ; =ov11_02319380
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 _022DD860:
 	ldrsh r0, [r4, #0x48]
 	cmp r0, #0
@@ -1769,7 +1769,7 @@ _022DD928:
 _022DD938:
 	ldr r1, _022DDD40 ; =ov11_02319398
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022DDD44 ; =ov11_02324EA4
 	bl sub_02034E28
 	ldr r0, _022DDD18 ; =ov11_02324E80
@@ -1801,7 +1801,7 @@ _022DD990:
 	ldr r1, _022DDD50 ; =ov11_023193AC
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	cmp r5, #0
 	ble _022DDA04
 	add r0, r5, r5, lsl #1
@@ -1818,7 +1818,7 @@ _022DD990:
 	ldrh r3, [r6, #4]
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 _022DDA04:
 	ldr r0, _022DDD58 ; =ov11_02324C64
 	ldr r0, [r0]
@@ -2503,7 +2503,7 @@ _022DE3F0: ; 0x022DE3F0
 	ldr r1, _022DED10 ; =ov11_023193EC
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	add r1, sp, #0x158
 	mov r0, r5
 	bl ov11_022E60BC
@@ -2513,7 +2513,7 @@ _022DE3F0: ; 0x022DE3F0
 	ldr r2, [sp, #0x158]
 	ldr r1, _022DED14 ; =ov11_02319410
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, [sp, #0x158]
 	mov r0, r4
 	bl ov11_022E43E8
@@ -2577,7 +2577,7 @@ _022DE500:
 	ldrsh r2, [r1, #8]
 	mov r0, #2
 	strh r2, [r1, #6]
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022DE554
 	ldr r3, _022DED18 ; =ov11_02324E80
@@ -2590,7 +2590,7 @@ _022DE500:
 	mov r0, #2
 	str r4, [sp]
 	ldrsh r3, [r3, #6]
-	bl DebugPrint
+	bl Debug_Print
 _022DE554:
 	ldr r1, _022DED18 ; =ov11_02324E80
 	mov r0, #0
@@ -2634,7 +2634,7 @@ _022DE5D8:
 	ldrsh r2, [r1, #2]
 	mov r0, #2
 	strh r2, [r1, #4]
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022DE62C
 	ldr r3, _022DED18 ; =ov11_02324E80
@@ -2647,7 +2647,7 @@ _022DE5D8:
 	mov r0, #2
 	str r4, [sp]
 	ldrsh r3, [r3, #4]
-	bl DebugPrint
+	bl Debug_Print
 _022DE62C:
 	ldr r1, _022DED18 ; =ov11_02324E80
 	mov r0, #0
@@ -2666,7 +2666,7 @@ _022DE650:
 	ldr r1, _022DED18 ; =ov11_02324E80
 	mov r0, #2
 	strh r4, [r1, #6]
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022DE6A4
 	ldr r3, _022DED18 ; =ov11_02324E80
@@ -2679,7 +2679,7 @@ _022DE650:
 	mov r0, #2
 	str r4, [sp]
 	ldrsh r3, [r3, #6]
-	bl DebugPrint
+	bl Debug_Print
 _022DE6A4:
 	mov r0, #5
 	b _022E2478
@@ -3561,7 +3561,7 @@ _022DF348:
 	bl ProcessScriptParam
 	mov r5, r0
 	mov r0, #0xb
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r5, r0
 	ldreqh r0, [r6, #2]
 	ldreq r1, [r4, #0x14]
@@ -3811,7 +3811,7 @@ _022DF6D8:
 	mov r2, r5
 	str r6, [sp, #0xd8]
 	str r3, [sp, #0xdc]
-	bl FatalError
+	bl Debug_FatalError
 _022DF6FC:
 	mov r0, r4
 	mov r1, r7
@@ -3970,7 +3970,7 @@ _022DF92C: ; 0x022DF92C
 	mov r4, r0
 	ldr r1, _022DFE20 ; =ov11_023194B0
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	cmp r5, #0x9e
 	cmpne r5, #0xae
 	bne _022DF960
@@ -4079,7 +4079,7 @@ _022DFAAC: ; 0x022DFAAC
 	ldr r1, _022DFE28 ; =ov11_023194C0
 	mov r0, #2
 	mov r6, #0
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022DED18 ; =ov11_02324E80
 	ldr r0, [r0, #0xc]
 	cmp r0, #0
@@ -4217,7 +4217,7 @@ _022DFC94: ; 0x022DFC94
 	ldr r1, _022DFE34 ; =ov11_023194D8
 	mov r3, r6
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	mov r7, #2
 	ldr r6, _022DFE38 ; =ov11_023194F4
 	b _022DFD0C
@@ -4228,7 +4228,7 @@ _022DFCD8:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r8
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [r4, #0x44]
 	cmp r8, r0
 	streq r5, [r4, #0x1c]
@@ -4245,7 +4245,7 @@ _022DFD0C:
 	bne _022E2474
 	ldr r1, _022DFE3C ; =ov11_02319504
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	mvn r0, #0
 	strh r0, [r4, #0x44]
 	mov r0, #5
@@ -4348,7 +4348,7 @@ _022DFE70:
 	ldr r3, [r5]
 	stmia sp, {r2, sl}
 	ldmia r3, {r2, r3}
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, [r5]
 	add r7, r7, #6
 	ldr r0, [r1]
@@ -4369,7 +4369,7 @@ _022DFED8:
 	ldr r1, _022DFE50 ; =ov11_02319534
 	ldmia r0, {r2, r3}
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022DFE44 ; =ov11_02324C64
 	ldr r0, [r0]
 	ldr r1, [r0]
@@ -4385,7 +4385,7 @@ _022DFED8:
 	mov r2, r5
 	mov r3, r4
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022DFE44 ; =ov11_02324C64
 	mov r2, #0
 	ldr r3, [r1]
@@ -4753,7 +4753,7 @@ _022E0434: ; 0x022E0434
 	ldr r1, _022E121C ; =ov11_0231956C
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	mov r1, r5, lsl #0x10
 	add r0, sp, #0x15c
 	mov r1, r1, asr #0x10
@@ -6410,7 +6410,7 @@ _022E1BE0:
 	ldr r1, _022E2284 ; =ov11_0231958C
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	mvn r0, #0
 	cmp r5, r0
 	beq _022E1C48
@@ -6431,7 +6431,7 @@ _022E1C5C:
 	ldr r1, _022E2288 ; =ov11_023195AC
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, r5
 	bl SetEnterDungeon
 	mov r0, r4
@@ -7337,7 +7337,7 @@ _022E291C:
 	str r2, [sp]
 	mov r2, r6
 	mov r3, r7
-	bl DebugPrint
+	bl Debug_Print
 	cmp r7, #0
 	blt _022E29A8
 	mov r0, r7
@@ -9186,7 +9186,7 @@ _022E437C:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r8
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, r8, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7650
@@ -9221,7 +9221,7 @@ ov11_022E43E8: ; 0x022E43E8
 	mov r0, #2
 	ldr r5, [r8, #0x1c]
 	mov r6, #0
-	bl DebugPrint
+	bl Debug_Print
 	mov r4, #2
 	ldr sl, _022E45AC ; =ov11_02319618
 	mov fp, r4
@@ -9246,7 +9246,7 @@ _022E4448:
 	mov r0, r4
 	mov r1, sl
 	mov r2, sb
-	bl DebugPrint
+	bl Debug_Print
 	mov r1, sb
 	mov r0, r7
 	mov r2, fp
@@ -9257,7 +9257,7 @@ _022E4448:
 	ldr r1, _022E45B0 ; =ov11_02319628
 	mov r2, r6
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldrh r0, [r5, #4]
 	ldr r1, [r8, #0x14]
 	add r0, r1, r0, lsl #1
@@ -9274,7 +9274,7 @@ _022E44AC:
 	ldr r1, _022E45B4 ; =ov11_02319640
 	mov r0, #2
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldrh r2, [r5, #2]
 	mov r1, sb
 	mov r0, r7
@@ -9285,7 +9285,7 @@ _022E44AC:
 	ldr r1, _022E45B0 ; =ov11_02319628
 	mov r2, r6
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldrh r0, [r5, #6]
 	ldr r1, [r8, #0x14]
 	add r0, r1, r0, lsl #1
@@ -9302,7 +9302,7 @@ _022E4514:
 	ldr r1, _022E45B8 ; =ov11_02319658
 	mov r0, #2
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, sb, lsl #0x10
 	mov r1, r0, asr #0x10
 	add r0, r8, #0x6c
@@ -9317,7 +9317,7 @@ _022E4514:
 	ldr r1, _022E45B0 ; =ov11_02319628
 	mov r2, r6
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldrh r0, [r5, #6]
 	ldr r1, [r8, #0x14]
 	add r0, r1, r0, lsl #1
@@ -9331,7 +9331,7 @@ _022E458C:
 	ldr r1, _022E45C0 ; =ov11_02319674
 	ldr r2, [r0, r3, lsl #3]
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
@@ -9490,7 +9490,7 @@ SsbLoad2: ; 0x022E46FC
 	ldr r1, _022E48A4 ; =ov11_02319694
 	mov r2, r4
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	bl DataTransferInit
 	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	bl FileInitVeneer
@@ -9900,7 +9900,7 @@ _022E4C84:
 	add r3, sp, #9
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldmia r4, {r0, r1}
 	bl MemZero
 	add r1, sp, #9
@@ -9931,7 +9931,7 @@ ov11_022E4CD4: ; 0x022E4CD4
 	mov r2, sl
 	mov r3, sb
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	cmp sl, #2
 	ldreq r0, _022E4FC8 ; =ov11_02324C6C
 	ldreq r4, [r0, #0x20]
@@ -10240,7 +10240,7 @@ ov11_022E5148: ; 0x022E5148
 	ldr r1, _022E5180 ; =ov11_0231978C
 	mov r2, r4
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022E5184 ; =ov11_02324F74
 	ldrsh r0, [r0, #6]
 	cmp r0, r4
@@ -10261,7 +10261,7 @@ ov11_022E5188: ; 0x022E5188
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022E51C8
 	add r1, sp, #0
@@ -10271,7 +10271,7 @@ ov11_022E5188: ; 0x022E5188
 	add r3, sp, #0
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 _022E51C8:
 	mov r0, r5
 	bl ov11_022E5148
@@ -10321,7 +10321,7 @@ ov11_022E5258: ; 0x022E5258
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022E5298
 	add r1, sp, #0
@@ -10331,7 +10331,7 @@ ov11_022E5258: ; 0x022E5258
 	add r3, sp, #0
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 _022E5298:
 	ldr r0, _022E530C ; =ov11_02324F74
 	ldrsh r0, [r0, #2]
@@ -10376,7 +10376,7 @@ ov11_022E5314: ; 0x022E5314
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022E5354
 	add r1, sp, #0
@@ -10386,7 +10386,7 @@ ov11_022E5314: ; 0x022E5314
 	add r3, sp, #0
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 _022E5354:
 	mov r0, r5
 	bl ov11_022E5148
@@ -10435,7 +10435,7 @@ ScriptStationLoadTalk: ; 0x022E53E4
 	ldr r1, _022E5444 ; =ov11_02319828
 	mov r2, r0
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022E5448 ; =ov11_02324F74
 	mvn r0, #0
 	ldrsh r2, [r1, #0xc]
@@ -10468,7 +10468,7 @@ ov11_022E544C: ; 0x022E544C
 	ldr r1, _022E550C ; =ov11_0231984C
 	mov r2, r4
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022E5510 ; =ov11_02324F74
 	ldrsh r0, [r1, #6]
 	cmp r0, r4
@@ -10527,7 +10527,7 @@ ov11_022E551C: ; 0x022E551C
 	mov r0, #2
 	mov r5, r1
 	mov r4, r2
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022E5564
 	add r1, sp, #4
@@ -10538,7 +10538,7 @@ ov11_022E551C: ; 0x022E551C
 	mov r2, r6
 	mov r0, #2
 	str r4, [sp]
-	bl DebugPrint
+	bl Debug_Print
 _022E5564:
 	ldr r0, _022E56B0 ; =ov11_02324F74
 	ldrsh r0, [r0, #6]
@@ -10642,7 +10642,7 @@ ov11_022E56B8: ; 0x022E56B8
 	mov r0, #2
 	mov r4, r1
 	mov r6, r2
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022E5700
 	add r1, sp, #0xd
@@ -10653,7 +10653,7 @@ ov11_022E56B8: ; 0x022E56B8
 	mov r2, r5
 	mov r0, #2
 	str r6, [sp]
-	bl DebugPrint
+	bl Debug_Print
 _022E5700:
 	ldr r0, _022E583C ; =ov11_02324F74
 	mvn r1, #0
@@ -10753,7 +10753,7 @@ ov11_022E584C: ; 0x022E584C
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, #2
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022E5884
 	add r1, sp, #4
@@ -10762,7 +10762,7 @@ ov11_022E584C: ; 0x022E584C
 	ldr r1, _022E5900 ; =ov11_023198AC
 	add r2, sp, #4
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 _022E5884:
 	ldr r1, _022E5904 ; =ov11_02324F74
 	mvn r2, #0
@@ -10810,7 +10810,7 @@ ov11_022E590C: ; 0x022E590C
 	mov r2, r4
 	mov r3, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022E59DC ; =ov11_02324F74
 	mvn r2, #0
 	ldr r0, _022E59E0 ; =ov11_02324F8A
@@ -10918,7 +10918,7 @@ ov11_022E5A68: ; 0x022E5A68
 	stmdb sp!, {r3, lr}
 	ldr r1, _022E5A94 ; =ov11_023198F0
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, #0
 	bl ov11_022EAFF8
 	bl ov11_022FEA28
@@ -11158,7 +11158,7 @@ SsbLoad1: ; 0x022E5D50
 	ldr r1, _022E5EF4 ; =ov11_02319908
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	bl DataTransferInit
 	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	bl FileInitVeneer
@@ -11423,7 +11423,7 @@ ov11_022E60BC: ; 0x022E60BC
 	ldr r1, _022E68C4 ; =ov11_02319924
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022E68C8 ; =ov11_02324C9C
 	mov r0, #1
 	strb r0, [r1]
@@ -11753,7 +11753,7 @@ _022E652C:
 	ldrb r1, [sp, #0x11]
 	ldr r2, [sp, #0x3c]
 	ldr r0, _022E68D4 ; =ov11_0231993C
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r8, #0
 	ldr r0, [sp, #0x3c]
 	add sb, sp, #0x34
@@ -11791,7 +11791,7 @@ _022E657C:
 	ldr r1, [sp, #0x3c]
 	ldrb r2, [sl, #4]
 	ldrb r3, [sl, #1]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldrb r0, [sp, #0x34]
 	cmp r0, #0
 	beq _022E6630
@@ -11821,7 +11821,7 @@ _022E6644:
 	str r1, [r0]
 	ldr r0, _022E68DC ; =ov11_023199B4
 	str r1, [r4]
-	bl DebugPrint0
+	bl Debug_Print0
 	bl sub_0205F504
 	mov r1, #0
 	mov r2, r1
@@ -11852,7 +11852,7 @@ _022E6678:
 	ldrb r2, [sp, #0x24]
 	ldrsh r3, [sp, #0x26]
 	ldr r1, [sp, #0x2c]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldrb r0, [sp, #0x24]
 	cmp r0, #0
 	beq _022E66F8
@@ -12432,7 +12432,7 @@ ov11_022E6E8C: ; 0x022E6E8C
 	ldr r1, _022E6EBC ; =ov11_02319A20
 	mov r2, r4
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022E6EC0 ; =ov11_02324F94
 	ldr r1, _022E6EC4 ; =ov11_02324C9C
 	mov r2, #1
@@ -12644,7 +12644,7 @@ ScriptSpecialProcessCall: ; 0x022E7118
 	mov r2, r5
 	mov r0, #2
 	mov r6, r3
-	bl DebugPrint
+	bl Debug_Print
 	cmp r5, #0x3e
 	addls pc, pc, r5, lsl #2
 	b _022E7ABC
@@ -12814,7 +12814,7 @@ _022E737C:
 	ldrsb r1, [sp, #2]
 	ldr r0, _022E7ACC ; =ov11_02319A68
 	mov r2, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	cmp r4, #0
 	movgt r0, r4
 	bgt _022E7AC0
@@ -13630,7 +13630,7 @@ ov11_022E7E84: ; 0x022E7E84
 	ldr r1, _022E7F24 ; =ov11_02319A98
 	mov r2, r4
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	add r0, r4, #1
 	cmp r0, #9
 	addls pc, pc, r0, lsl #2
@@ -13697,7 +13697,7 @@ ov11_022E7F34: ; 0x022E7F34
 	bl ov11_022E46E8
 	ldr r1, [sp, #4]
 	ldr r0, _022E7F78 ; =ov11_02319AD0
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r2, [sp]
 	ldr r0, _022E7F7C ; =UNIONALL_RAM_ADDRESS
 	str r2, [r0]
@@ -14390,7 +14390,7 @@ GroundMainLoop: ; 0x022E8774
 	mov r2, r0
 	ldr r0, _022E91EC ; =ov11_023209B0
 	mov r1, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	bl sub_02028E2C
 	mov r0, #0
 	mov r1, #0xb0000
@@ -14513,7 +14513,7 @@ _022E8960:
 	cmpne r0, #2
 	beq _022E8990
 	ldr r0, _022E9204 ; =ov11_023209CC
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022E8FDC
 _022E8990:
 	bl sub_02034D0C
@@ -14546,7 +14546,7 @@ _022E89A8: ; jump table
 	b _022E8CCC ; case 20
 _022E89FC:
 	ldr r0, _022E9208 ; =ov11_023209EC
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
@@ -14578,7 +14578,7 @@ _022E8A3C:
 	ldr r0, _022E920C ; =ov11_02320A08
 	mov r1, r5
 	mov r2, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	cmp r5, #2
 	ldreq r0, _022E9210 ; =0x0000029D
 	streqh r0, [sp, #2]
@@ -14610,7 +14610,7 @@ _022E8AE4:
 	mov r1, #0x2b
 	bl SaveScriptVariableValue
 	ldr r0, _022E9208 ; =ov11_023209EC
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
@@ -14629,7 +14629,7 @@ _022E8AE4:
 	ldr r0, _022E9224 ; =ov11_02320A28
 	mov r1, r4
 	mov r2, r5
-	bl DebugPrint0
+	bl Debug_Print0
 	cmp r4, #2
 	cmpne r4, #3
 	beq _022E8B94
@@ -14690,7 +14690,7 @@ _022E8BEC:
 	b _022E8CD4
 _022E8C20:
 	ldr r0, _022E9208 ; =ov11_023209EC
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
@@ -14755,7 +14755,7 @@ _022E8CD4:
 	ldr r1, _022E91E8 ; =ov11_02324FA0
 	ldr r0, _022E9234 ; =ov11_02320A44
 	ldr r1, [r1, #0x14]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _022E91E8 ; =ov11_02324FA0
 	ldr r1, [r0, #0x14]
 	cmp r1, #1
@@ -15007,12 +15007,12 @@ _022E9090:
 	cmp r0, #7
 	bne _022E90C0
 	ldr r0, _022E923C ; =ov11_02320A60
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0xd
 	b _022E91E0
 _022E90C0:
 	ldr r0, _022E9240 ; =ov11_02320A70
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0xc
 	b _022E91E0
 _022E90D0:
@@ -15045,7 +15045,7 @@ _022E90E4:
 	mov r1, r5
 	mov r2, r4
 	ldr r0, _022E9244 ; =ov11_02320A7C
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #4
 	b _022E91E0
 _022E914C:
@@ -15055,7 +15055,7 @@ _022E914C:
 	mov r2, r0
 	ldr r0, _022E9248 ; =ov11_02320A94
 	mov r1, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #5
 	b _022E91E0
 _022E9170:
@@ -15068,7 +15068,7 @@ _022E9170:
 	cmp r1, #5
 	bne _022E91A0
 	ldr r0, _022E924C ; =ov11_02320AAC
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #9
 	b _022E91E0
 _022E91A0:
@@ -15078,17 +15078,17 @@ _022E91A0:
 	cmp r0, #0
 	beq _022E91C4
 	ldr r0, _022E924C ; =ov11_02320AAC
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #9
 	b _022E91E0
 _022E91C4:
 	ldr r0, _022E9250 ; =ov11_02320AB8
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0xb
 	b _022E91E0
 _022E91D4:
 	ldr r0, _022E9254 ; =ov11_02320AC8
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0xa
 _022E91E0:
 	add sp, sp, #0x34
@@ -15262,7 +15262,7 @@ _022E9410: .word ov11_02324CB0
 GroundMainReturnDungeon: ; 0x022E9414
 	stmdb sp!, {r3, lr}
 	ldr r0, _022E9434 ; =ov11_023209EC
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	mov r1, #0x5c
 	bl ZinitScriptVariable
@@ -15278,7 +15278,7 @@ GroundMainNextDay: ; 0x022E9438
 	bl GetGameMode
 	mov r4, r0
 	ldr r0, _022E94C8 ; =ov11_02320AD4
-	bl DebugPrint0
+	bl Debug_Print0
 	cmp r4, #3
 	bne _022E9468
 	mov r0, #0
@@ -15302,7 +15302,7 @@ _022E9468:
 _022E9498:
 	ldr r0, _022E94CC ; =ov11_02320AEC
 	mov r1, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	bl GenerateKecleonItems1
 	mov r0, r4
@@ -15331,7 +15331,7 @@ ov11_022E94D0: ; 0x022E94D0
 	mov r2, r5
 	mov r3, r6
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022E9550 ; =ov11_02324FA0
 	mov r1, #1
 	str r1, [r0, #0x1c]
@@ -15387,7 +15387,7 @@ ov11_022E958C: ; 0x022E958C
 	ldr r1, _022E95D8 ; =ov11_02320B34
 	mov r2, r4
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022E95D4 ; =ov11_02324FA0
 	mov r0, #4
 	str r0, [r1, #0x1c]
@@ -15411,7 +15411,7 @@ JumpToTitleScreen: ; 0x022E95DC
 	ldr r1, _022E9640 ; =ov11_02320B58
 	mov r2, r4
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022E963C ; =ov11_02324FA0
 	mov r1, #6
 	str r1, [r0, #0x1c]
@@ -15444,7 +15444,7 @@ ov11_022E9644: ; 0x022E9644
 	ldr r1, _022E9690 ; =ov11_02320B78
 	mov r2, r4
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022E968C ; =ov11_02324FA0
 	mov r0, #7
 	str r0, [r1, #0x1c]
@@ -15469,7 +15469,7 @@ ReturnToTitleScreen: ; 0x022E9694
 	ldr r1, _022E96E0 ; =ov11_02320B9C
 	mov r2, r4
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022E96DC ; =ov11_02324FA0
 	mov r0, #8
 	str r0, [r1, #0x1c]
@@ -16856,7 +16856,7 @@ ov11_022EA80C: ; 0x022EA80C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	ldrne r0, _022EA89C ; =ov11_02388FD8
 	movne r1, #0
@@ -16899,7 +16899,7 @@ ov11_022EA8A0: ; 0x022EA8A0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	mov r0, #0
 	beq _022EA8C8
@@ -16917,7 +16917,7 @@ ov11_022EA8D4: ; 0x022EA8D4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	mov r0, #1
 	beq _022EA8FC
@@ -24973,7 +24973,7 @@ ov11_022F12C0: ; 0x022F12C0
 	ldr r1, _022F1534 ; =ov11_02320FB4
 	mov r2, r5
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	bl ov11_022F1244
 	mov r0, #0x2f4
 	mov r1, #6
@@ -25081,7 +25081,7 @@ _022F1444:
 	mov r2, r5
 	str lr, [sp]
 	str ip, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _022F146C:
 	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, _022F153C ; =ov11_02320CD8
@@ -25162,7 +25162,7 @@ GetSpecialLayoutBackground: ; 0x022F155C
 	mov r2, r8
 	mov r0, #1
 	mov r5, r3
-	bl DebugPrint
+	bl Debug_Print
 	bl ov11_022F1244
 	mov r0, #0x2f4
 	mov r1, #6
@@ -25211,7 +25211,7 @@ _022F1600:
 	mov r2, r8
 	str ip, [sp]
 	str r3, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _022F1644:
 	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, _022F1708 ; =ov11_02320D10
@@ -25293,7 +25293,7 @@ ov11_022F173C: ; 0x022F173C
 	ldr r1, _022F178C ; =ov11_02321018
 	mov r2, r4
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldr r2, _022F1790 ; =GROUND_STATE_MAP
 	ldr r1, _022F1794 ; =EVENTS
 	ldr r3, [r2, #4]
@@ -26450,7 +26450,7 @@ ov11_022F25A4: ; 0x022F25A4
 	ldr r3, [r0, #4]
 	mov r2, r4
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldr r2, _022F26D0 ; =ov11_02324CC8
 	mov r1, #0
 	ldr r0, [r2]
@@ -26746,7 +26746,7 @@ ov11_022F294C: ; 0x022F294C
 	ldr r0, _022F2AA4 ; =ov11_02321278
 	mov r1, #0xd80
 	strh r3, [r2, #2]
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov11_022F2F1C
 	ldr r0, _022F2AA0 ; =ov11_02324CD0
 	mov r1, #1
@@ -28085,7 +28085,7 @@ _022F3BEC:
 	cmp r0, #0
 	bne _022F3C10
 	ldr r0, _022F3E64 ; =ov11_02321340
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022F3DE0
 _022F3C10:
 	ldr r0, _022F3E48 ; =ov11_02324CE0
@@ -29481,7 +29481,7 @@ _022F4EA4:
 	str r1, [sp, #0xc]
 	ldr r1, _022F5094 ; =ov11_02321388
 	ldmib r7, {r2, r3}
-	bl FatalError
+	bl Debug_FatalError
 _022F4EE8:
 	ldr r1, [r7]
 	add r0, r4, #1
@@ -29555,7 +29555,7 @@ _022F4FAC:
 	str r1, [sp, #4]
 	ldr r1, _022F5094 ; =ov11_02321388
 	ldmib r7, {r2, r3}
-	bl FatalError
+	bl Debug_FatalError
 _022F4FF0:
 	ldrsh r0, [r4, #6]
 	sub r0, r0, r6
@@ -29582,7 +29582,7 @@ _022F5024:
 	str sl, [sp, #0x14]
 	str r4, [sp, #0x18]
 	str ip, [sp]
-	bl FatalError
+	bl Debug_FatalError
 _022F5050:
 	cmp r5, #0
 	strgeh sb, [r8, #0x94]
@@ -32021,7 +32021,7 @@ ov11_022F7140: ; 0x022F7140
 	stmdb sp!, {r3, lr}
 	ldr r1, _022F7180 ; =ov11_02321464
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022F7184 ; =GROUND_STATE_PTRS
 	mov r2, #1
 	ldr r0, [r1]
@@ -32048,7 +32048,7 @@ ov11_022F7188: ; 0x022F7188
 	mov r2, r5
 	mov r3, r4
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022F71E0 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
@@ -32074,7 +32074,7 @@ ov11_022F71E4: ; 0x022F71E4
 	ldr r1, _022F7224 ; =ov11_023214E4
 	mov r2, r4
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022F7228 ; =GROUND_STATE_PTRS
 	ldr r2, [r0]
 	ldr r1, [r2, #0x10c]
@@ -32102,7 +32102,7 @@ ov11_022F722C: ; 0x022F722C
 	mov r3, r5
 	mov r0, #2
 	str r4, [sp]
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022F729C ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
@@ -32134,7 +32134,7 @@ ov11_022F72A0: ; 0x022F72A0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022F72F0
 	add r1, sp, #8
@@ -32146,7 +32146,7 @@ ov11_022F72A0: ; 0x022F72A0
 	mov r2, r7
 	mov r0, #2
 	str r4, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 _022F72F0:
 	ldr r1, _022F7350 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
@@ -32187,7 +32187,7 @@ ov11_022F7354: ; 0x022F7354
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022F73A4
 	add r1, sp, #8
@@ -32199,7 +32199,7 @@ ov11_022F7354: ; 0x022F7354
 	mov r2, r7
 	mov r0, #2
 	str r4, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 _022F73A4:
 	ldr r1, _022F7404 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
@@ -32238,7 +32238,7 @@ ov11_022F7408: ; 0x022F7408
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022F7444
 	add r1, sp, #0
@@ -32247,7 +32247,7 @@ ov11_022F7408: ; 0x022F7408
 	ldr r1, _022F7498 ; =ov11_023215B8
 	add r2, sp, #0
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 _022F7444:
 	ldr r1, _022F749C ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
@@ -32286,7 +32286,7 @@ ov11_022F74A0: ; 0x022F74A0
 	mov r2, r5
 	mov r3, r4
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _022F74FC ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
 	ldr r0, [r2, #0x10c]
@@ -32313,7 +32313,7 @@ ov11_022F7500: ; 0x022F7500
 	mov r5, r0
 	mov r0, #2
 	mov r4, r1
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	cmp r0, #0
 	beq _022F7540
 	add r1, sp, #0
@@ -32323,7 +32323,7 @@ ov11_022F7500: ; 0x022F7500
 	add r3, sp, #0
 	mov r2, r5
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 _022F7540:
 	ldr r1, _022F7590 ; =GROUND_STATE_PTRS
 	ldr r2, [r1]
@@ -32442,7 +32442,7 @@ ov11_022F766C: ; 0x022F766C
 	ldr r2, [r1, #0xf4]
 	ldr r1, _022F7BBC ; =ov11_02321644
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022F7BB8 ; =GROUND_STATE_PTRS
 	mov r4, #0
 	ldr r1, [r0]
@@ -32611,7 +32611,7 @@ _022F78F8:
 	beq _022F7B80
 	ldr r1, _022F7BC0 ; =ov11_02321664
 	mov r0, #2
-	bl DebugPrint
+	bl Debug_Print
 	ldr ip, _022F7BB8 ; =GROUND_STATE_PTRS
 	ldr r5, [ip]
 	add r4, r5, #0x10c
@@ -33064,7 +33064,7 @@ _022F7EFC:
 	mov r0, #1
 	str r4, [sp]
 	smlabb r4, r3, ip, r7
-	bl DebugPrint
+	bl Debug_Print
 	cmp sb, #0
 	bge _022F7FE8
 	ldrsh r0, [sp, #0x12]
@@ -33132,7 +33132,7 @@ _022F7FE8:
 	ldr r1, _022F83EC ; =ov11_023219A4
 	mov r2, sb
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r1, [r7, #2]
 	mvn r0, #0
 	cmp r1, r0
@@ -33366,7 +33366,7 @@ _022F8354:
 	ldrsh r2, [r7, #2]
 	ldr r3, [r7, #0x15c]
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, [sp, #0xc]
 	cmp r0, #1
 	ldrlssh r1, [r8, #8]
@@ -33421,7 +33421,7 @@ ov11_022F8408: ; 0x022F8408
 	mov r2, sl
 	mov r3, sb
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	sub r0, sl, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -33447,7 +33447,7 @@ _022F8464:
 	ldrsb ip, [r7, #8]
 	mov r2, r8
 	str ip, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [r7, #6]
 	cmp sl, r0
 	bne _022F84B4
@@ -33482,7 +33482,7 @@ _022F84EC:
 	mov r0, fp
 	mov r2, r8
 	str ip, [sp]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsb r0, [sl, #9]
 	cmp r0, r6
 	beq _022F8534
@@ -33525,7 +33525,7 @@ DeleteLiveActor: ; 0x022F8578
 	smlabb r4, r2, r0, r1
 	ldr r1, _022F85BC ; =ov11_02321A8C
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	add r0, r4, #0x18c
 	bl ov11_022F5C3C
 	add r0, r4, #0x38
@@ -33548,7 +33548,7 @@ ov11_022F85C0: ; 0x022F85C0
 	mov r2, sl
 	mov r3, sb
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	sub r0, sl, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -33574,7 +33574,7 @@ _022F861C:
 	ldrsb ip, [r7, #8]
 	mov r2, r8
 	str ip, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [r7, #6]
 	cmp sl, r0
 	bne _022F867C
@@ -33615,7 +33615,7 @@ _022F86B4:
 	ldrsb ip, [sl, #8]
 	mov r2, r8
 	str ip, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	cmp sb, r4
 	ldrnesb r0, [sl, #9]
 	cmpne sb, r0
@@ -33813,7 +33813,7 @@ ov11_022F8920: ; 0x022F8920
 	ldrsh r3, [r4, #2]
 	ldr r1, _022F898C ; =ov11_02321AD4
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r1, [r4, #2]
 	mvn r0, #0
 	cmp r1, r0
@@ -33895,7 +33895,7 @@ ov11_022F8A20: ; 0x022F8A20
 	mov r0, #1
 	str r3, [sp, #4]
 	ldrsh r3, [r4, #2]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [r4, #2]
 	mvn r2, #0
 	cmp r0, r2
@@ -34051,7 +34051,7 @@ ov11_022F8C18: ; 0x022F8C18
 	ldr r1, _022F8E5C ; =ov11_02321B40
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022F8E60 ; =ov11_02324CF8
 	mvn r4, #1
 	ldr r6, [r0, #4]
@@ -34072,7 +34072,7 @@ _022F8C74:
 	ldr r1, _022F8E68 ; =ov11_02321B80
 	mov r0, #1
 	mov r2, r7
-	bl DebugPrint
+	bl Debug_Print
 	str sb, [sp]
 	ldrsh r2, [r6, #2]
 	add r0, sp, #4
@@ -34126,7 +34126,7 @@ _022F8D64:
 	ldr r1, _022F8E6C ; =ov11_02321B94
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022F8E60 ; =ov11_02324CF8
 	mvn r4, #1
 	ldr r7, [r0, #4]
@@ -34144,7 +34144,7 @@ _022F8D8C:
 	ldr r1, _022F8E68 ; =ov11_02321B80
 	mov r0, #1
 	mov r2, r6
-	bl DebugPrint
+	bl Debug_Print
 	str sb, [sp]
 	ldrsh r2, [r7, #2]
 	add r0, sp, #4
@@ -34214,7 +34214,7 @@ ov11_022F8E70: ; 0x022F8E70
 	ldr r1, _022F8FB4 ; =ov11_02321BD4
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022F8FB8 ; =ov11_02324CF8
 	mvn r4, #1
 	ldr r6, [r0, #4]
@@ -34235,7 +34235,7 @@ _022F8EC8:
 	ldr r1, _022F8FBC ; =ov11_02321B80
 	mov r0, fp
 	mov r2, r7
-	bl DebugPrint
+	bl Debug_Print
 	add r0, r6, #0x38
 	bl ov11_022DCAE0
 	orr r8, r8, r0
@@ -34251,7 +34251,7 @@ _022F8F28:
 	ldr r1, _022F8FC0 ; =ov11_02321C14
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022F8FB8 ; =ov11_02324CF8
 	mvn r5, #0
 	ldr sl, [r0, #4]
@@ -34271,7 +34271,7 @@ _022F8F54:
 	mov r0, r6
 	mov r1, fp
 	mov r2, r7
-	bl DebugPrint
+	bl Debug_Print
 	add r0, sl, #0x38
 	bl ov11_022DD080
 	strb r5, [sl, #9]
@@ -35151,7 +35151,7 @@ ov11_022F9AD4: ; 0x022F9AD4
 	cmp r0, #3
 	bne _022F9B8C
 	ldr r0, _022F9F58 ; =ov11_02321C54
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #1
 	b _022F9F4C
 _022F9B8C:
@@ -35225,7 +35225,7 @@ _022F9C54:
 _022F9C94:
 	ldr r0, _022F9F68 ; =ov11_02321C68
 	mov r1, r7
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	b _022F9F4C
 _022F9CA8:
@@ -35239,7 +35239,7 @@ _022F9CA8:
 	bne _022F9CDC
 	ldr r0, _022F9F6C ; =ov11_02321C88
 	mov r1, r7
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #1
 	b _022F9F4C
 _022F9CDC:
@@ -35268,7 +35268,7 @@ _022F9D28:
 	beq _022F9D44
 	ldr r0, _022F9F70 ; =ov11_02321CA0
 	mov r1, r7
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	b _022F9F4C
 _022F9D44:
@@ -35295,7 +35295,7 @@ _022F9D50:
 _022F9D90:
 	ldr r0, _022F9F74 ; =ov11_02321CBC
 	mov r1, r7
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	b _022F9F4C
 _022F9DA4:
@@ -35309,7 +35309,7 @@ _022F9DA4:
 	bne _022F9DD8
 	ldr r0, _022F9F78 ; =ov11_02321CDC
 	mov r1, r7
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #1
 	b _022F9F4C
 _022F9DD8:
@@ -35338,7 +35338,7 @@ _022F9E24:
 	bne _022F9E40
 	ldr r0, _022F9F7C ; =ov11_02321CF4
 	mov r1, r7
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	b _022F9F4C
 _022F9E40:
@@ -35367,7 +35367,7 @@ _022F9E54:
 _022F9E94:
 	ldr r0, _022F9F80 ; =ov11_02321D10
 	mov r1, r8
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	b _022F9F4C
 _022F9EA8:
@@ -35381,7 +35381,7 @@ _022F9EA8:
 	bne _022F9EDC
 	ldr r0, _022F9F84 ; =ov11_02321D30
 	mov r1, r8
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #1
 	b _022F9F4C
 _022F9EDC:
@@ -35389,7 +35389,7 @@ _022F9EDC:
 	bne _022F9EF8
 	ldr r0, _022F9F88 ; =ov11_02321D48
 	mov r1, r8
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	b _022F9F4C
 _022F9EF8:
@@ -35413,7 +35413,7 @@ _022F9F34:
 	blt _022F9E54
 	ldr r0, _022F9F8C ; =ov11_02321D6C
 	mov r1, r8
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 _022F9F4C:
 	add sp, sp, #0x34
@@ -35843,7 +35843,7 @@ _022FA4C8:
 	cmp r0, #3
 	bne _022FA55C
 	ldr r0, _022FA9CC ; =ov11_02321C54
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA55C:
 	ldr r1, [r4, #0xc]
@@ -35917,7 +35917,7 @@ _022FA628:
 _022FA668:
 	ldr r0, _022FA9DC ; =ov11_02321C68
 	mov r1, r6
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA678:
 	mov r0, r4
@@ -35929,7 +35929,7 @@ _022FA678:
 	bne _022FA6A4
 	ldr r0, _022FA9E0 ; =ov11_02321C88
 	mov r1, r6
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA6A4:
 	ldr r3, [sp, #0x10]
@@ -35957,7 +35957,7 @@ _022FA6F0:
 	beq _022FA708
 	ldr r0, _022FA9E4 ; =ov11_02321CA0
 	mov r1, r6
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA708:
 	mov sl, #0x100
@@ -35983,7 +35983,7 @@ _022FA714:
 _022FA754:
 	ldr r0, _022FA9E8 ; =ov11_02321CBC
 	mov r1, r6
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA764:
 	mov r0, r4
@@ -35995,7 +35995,7 @@ _022FA764:
 	bne _022FA790
 	ldr r0, _022FA9EC ; =ov11_02321CDC
 	mov r1, r6
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA790:
 	ldr r3, [sp, #0x10]
@@ -36023,7 +36023,7 @@ _022FA7DC:
 	bne _022FA7F4
 	ldr r0, _022FA9F0 ; =ov11_02321CF4
 	mov r1, r6
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA7F4:
 	mov sl, #0
@@ -36051,7 +36051,7 @@ _022FA808:
 _022FA848:
 	ldr r0, _022FA9F4 ; =ov11_02321D10
 	mov r1, sl
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA858:
 	mov r0, r4
@@ -36063,14 +36063,14 @@ _022FA858:
 	bne _022FA884
 	ldr r0, _022FA9F8 ; =ov11_02321D30
 	mov r1, sl
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA884:
 	cmp r0, #6
 	bne _022FA89C
 	ldr r0, _022FA9FC ; =ov11_02321D48
 	mov r1, sl
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA89C:
 	ldr r2, [sp, #0x10]
@@ -36093,7 +36093,7 @@ _022FA8D8:
 	blt _022FA808
 	ldr r0, _022FAA00 ; =ov11_02321D6C
 	mov r1, sl
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022FA93C
 _022FA8F0:
 	bl KeyWaitInit
@@ -37768,7 +37768,7 @@ _022FBF58:
 	mov r3, r4
 	str sl, [sp, #0xc]
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r1, [r6, #6]
 	mvn r0, #0
 	cmp r1, r0
@@ -38016,7 +38016,7 @@ ov11_022FC2DC: ; 0x022FC2DC
 	mov r2, sl
 	mov r3, sb
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	sub r0, sl, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -38042,7 +38042,7 @@ _022FC338:
 	ldrsb ip, [r7, #0xc]
 	mov r2, r8
 	str ip, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [r7, #0xa]
 	cmp sl, r0
 	bne _022FC388
@@ -38077,7 +38077,7 @@ _022FC3C0:
 	mov r0, fp
 	mov r2, r8
 	str ip, [sp]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsb r0, [sl, #0xd]
 	cmp r0, r6
 	beq _022FC408
@@ -38120,7 +38120,7 @@ ov11_022FC44C: ; 0x022FC44C
 	smlabb r4, r2, r0, r1
 	ldr r1, _022FC490 ; =ov11_02321F10
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	add r0, r4, #0x154
 	bl ov11_022F6EFC
 	add r0, r4, #0x3c
@@ -38143,7 +38143,7 @@ ov11_022FC494: ; 0x022FC494
 	mov r2, sl
 	mov r3, sb
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	sub r0, sl, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -38169,7 +38169,7 @@ _022FC4F0:
 	ldrsb ip, [r7, #0xc]
 	mov r2, r8
 	str ip, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [r7, #0xa]
 	cmp sl, r0
 	bne _022FC548
@@ -38208,7 +38208,7 @@ _022FC580:
 	ldrsb ip, [sl, #0xc]
 	mov r2, r8
 	str ip, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	cmp sb, r4
 	ldrnesb r0, [sl, #0xd]
 	cmpne sb, r0
@@ -38438,7 +38438,7 @@ ov11_022FC83C: ; 0x022FC83C
 	mov r0, #1
 	str r3, [sp, #4]
 	ldrsh r3, [r4, #6]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r1, [r4, #6]
 	mvn r0, #0
 	cmp r1, r0
@@ -38479,7 +38479,7 @@ ov11_022FC8C4: ; 0x022FC8C4
 	ldr r1, _022FCA8C ; =ov11_02321FA0
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022FCA90 ; =ov11_02324D00
 	mvn r4, #1
 	ldr r6, [r0]
@@ -38500,7 +38500,7 @@ _022FC920:
 	ldr r1, _022FCA94 ; =ov11_02321FE0
 	mov r0, #1
 	mov r2, r7
-	bl DebugPrint
+	bl Debug_Print
 	str sb, [sp]
 	ldrsh r2, [r6, #6]
 	add r0, sp, #4
@@ -38537,7 +38537,7 @@ _022FC9D4:
 	ldr r1, _022FCA98 ; =ov11_02321FF4
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022FCA90 ; =ov11_02324D00
 	mvn r4, #1
 	ldr r7, [r0]
@@ -38555,7 +38555,7 @@ _022FC9FC:
 	ldr r1, _022FCA94 ; =ov11_02321FE0
 	mov r0, #1
 	mov r2, r6
-	bl DebugPrint
+	bl Debug_Print
 	str sb, [sp]
 	ldrsh r2, [r7, #6]
 	add r0, sp, #4
@@ -38607,7 +38607,7 @@ ov11_022FCA9C: ; 0x022FCA9C
 	ldr r1, _022FCBE0 ; =ov11_02322034
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022FCBE4 ; =ov11_02324D00
 	mvn r4, #1
 	ldr r6, [r0]
@@ -38628,7 +38628,7 @@ _022FCAF4:
 	ldr r1, _022FCBE8 ; =ov11_02321FE0
 	mov r0, fp
 	mov r2, r7
-	bl DebugPrint
+	bl Debug_Print
 	add r0, r6, #0x3c
 	bl ov11_022DCAE0
 	orr r8, r8, r0
@@ -38644,7 +38644,7 @@ _022FCB54:
 	ldr r1, _022FCBEC ; =ov11_02322074
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022FCBE4 ; =ov11_02324D00
 	mvn r5, #0
 	ldr sl, [r0]
@@ -38664,7 +38664,7 @@ _022FCB80:
 	mov r0, r6
 	mov r1, fp
 	mov r2, r7
-	bl DebugPrint
+	bl Debug_Print
 	add r0, sl, #0x3c
 	bl ov11_022DD080
 	strb r5, [sl, #0xd]
@@ -39652,7 +39652,7 @@ _022FD7C0:
 	ldr r1, _022FDA70 ; =ov11_02322160
 	mov r2, sb
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r1, [r5, #6]
 	mvn r0, #0
 	cmp r1, r0
@@ -39843,7 +39843,7 @@ ov11_022FDA7C: ; 0x022FDA7C
 	mov r2, sl
 	mov r3, sb
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	sub r0, sl, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -39869,7 +39869,7 @@ _022FDAD8:
 	ldrsb ip, [r7, #0xc]
 	mov r2, r8
 	str ip, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [r7, #0xa]
 	cmp sl, r0
 	bne _022FDB28
@@ -39904,7 +39904,7 @@ _022FDB60:
 	mov r0, fp
 	mov r2, r8
 	str ip, [sp]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsb r0, [sl, #0xd]
 	cmp r0, r6
 	beq _022FDBA8
@@ -39947,7 +39947,7 @@ ov11_022FDBEC: ; 0x022FDBEC
 	smlabb r4, r2, r0, r1
 	ldr r1, _022FDC30 ; =ov11_02322224
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	add r0, r4, #0x150
 	bl ov11_022F6F9C
 	add r0, r4, #0x3c
@@ -39970,7 +39970,7 @@ ov11_022FDC34: ; 0x022FDC34
 	mov r2, sl
 	mov r3, sb
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	sub r0, sl, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -39996,7 +39996,7 @@ _022FDC90:
 	ldrsb ip, [r7, #0xc]
 	mov r2, r8
 	str ip, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [r7, #0xa]
 	cmp sl, r0
 	bne _022FDCE8
@@ -40035,7 +40035,7 @@ _022FDD20:
 	ldrsb ip, [sl, #0xc]
 	mov r2, r8
 	str ip, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	cmp sb, r4
 	ldrnesb r0, [sl, #0xd]
 	cmpne sb, r0
@@ -40265,7 +40265,7 @@ ov11_022FDFD4: ; 0x022FDFD4
 	ldr r1, _022FE19C ; =ov11_02322244
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022FE1A0 ; =ov11_02324D04
 	mvn r4, #1
 	ldr r6, [r0]
@@ -40286,7 +40286,7 @@ _022FE030:
 	ldr r1, _022FE1A4 ; =ov11_02322288
 	mov r0, #1
 	mov r2, r7
-	bl DebugPrint
+	bl Debug_Print
 	str sb, [sp]
 	ldrsh r2, [r6, #6]
 	add r0, sp, #4
@@ -40323,7 +40323,7 @@ _022FE0E4:
 	ldr r1, _022FE1A8 ; =ov11_0232229C
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022FE1A0 ; =ov11_02324D04
 	mvn r4, #1
 	ldr r7, [r0]
@@ -40341,7 +40341,7 @@ _022FE10C:
 	ldr r1, _022FE1A4 ; =ov11_02322288
 	mov r0, #1
 	mov r2, r6
-	bl DebugPrint
+	bl Debug_Print
 	str sb, [sp]
 	ldrsh r2, [r7, #6]
 	add r0, sp, #4
@@ -40393,7 +40393,7 @@ ov11_022FE1AC: ; 0x022FE1AC
 	ldr r1, _022FE2F0 ; =ov11_023222E0
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022FE2F4 ; =ov11_02324D04
 	mvn r4, #1
 	ldr r6, [r0]
@@ -40414,7 +40414,7 @@ _022FE204:
 	ldr r1, _022FE2F8 ; =ov11_02322288
 	mov r0, fp
 	mov r2, r7
-	bl DebugPrint
+	bl Debug_Print
 	add r0, r6, #0x3c
 	bl ov11_022DCAE0
 	orr r8, r8, r0
@@ -40430,7 +40430,7 @@ _022FE264:
 	ldr r1, _022FE2FC ; =ov11_02322324
 	mov r2, sl
 	mov r3, sb
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _022FE2F4 ; =ov11_02324D04
 	mvn r5, #0
 	ldr sl, [r0]
@@ -40450,7 +40450,7 @@ _022FE290:
 	mov r0, r6
 	mov r1, fp
 	mov r2, r7
-	bl DebugPrint
+	bl Debug_Print
 	add r0, sl, #0x3c
 	bl ov11_022DD080
 	strb r5, [sl, #0xd]
@@ -41150,7 +41150,7 @@ _022FEB0C:
 	ldr r1, _022FEBF8 ; =ov11_02322368
 	mov r2, sl
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [sb]
 	bl ov11_022E7FA8
 	strh sl, [r4]
@@ -41256,7 +41256,7 @@ ov11_022FEC68: ; 0x022FEC68
 	ldr r1, _022FEC98 ; =ov11_023223A4
 	mov r0, #1
 	add r4, r3, r2, lsl #5
-	bl DebugPrint
+	bl Debug_Print
 	mvn r0, #0
 	strh r0, [r4, #2]
 	ldmia sp!, {r4, pc}
@@ -41275,7 +41275,7 @@ ov11_022FEC9C: ; 0x022FEC9C
 	mov r2, sl
 	mov r3, sb
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	sub r0, sl, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -41301,7 +41301,7 @@ _022FECF8:
 	ldrsb ip, [r7, #6]
 	mov r2, r8
 	str ip, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [r7, #4]
 	cmp sl, r0
 	bne _022FED48
@@ -41342,7 +41342,7 @@ ov11_022FED74: ; 0x022FED74
 	ldrsh r3, [r4, #8]
 	str r3, [sp, #4]
 	ldrsh r3, [r4, #2]
-	bl DebugPrint
+	bl Debug_Print
 	ldrsh r0, [r4, #2]
 	mvn r2, #0
 	cmp r0, r2
@@ -46748,7 +46748,7 @@ _0230367C:
 	b _0230371C
 _023036A4:
 	ldr r0, _02303738 ; =ov11_023227E8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _02303724 ; =ov11_02324D54
 	mov r1, #2
 	ldr r0, [r0]
@@ -46756,11 +46756,11 @@ _023036A4:
 	b _0230371C
 _023036C0:
 	ldr r0, _0230373C ; =ov11_02322808
-	bl DebugPrint0
+	bl Debug_Print0
 	b _0230371C
 _023036CC:
 	ldr r0, _02303740 ; =ov11_02322828
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _02303724 ; =ov11_02324D54
 	mov r1, #2
 	ldr r0, [r0]
@@ -46768,15 +46768,15 @@ _023036CC:
 	b _0230371C
 _023036E8:
 	ldr r0, _02303744 ; =ov11_02322850
-	bl DebugPrint0
+	bl Debug_Print0
 	b _0230371C
 _023036F4:
 	ldr r0, _02303748 ; =ov11_0232287C
-	bl DebugPrint0
+	bl Debug_Print0
 	b _0230371C
 _02303700:
 	ldr r0, _0230374C ; =ov11_02322894
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _02303724 ; =ov11_02324D54
 	mov r1, #1
 	ldr r0, [r0]
@@ -46877,7 +46877,7 @@ _02303830:
 	b _023038D0
 _02303858:
 	ldr r0, _023038EC ; =ov11_023227E8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _023038D8 ; =ov11_02324D54
 	mov r1, #2
 	ldr r0, [r0]
@@ -46885,11 +46885,11 @@ _02303858:
 	b _023038D0
 _02303874:
 	ldr r0, _023038F0 ; =ov11_02322808
-	bl DebugPrint0
+	bl Debug_Print0
 	b _023038D0
 _02303880:
 	ldr r0, _023038F4 ; =ov11_02322828
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _023038D8 ; =ov11_02324D54
 	mov r1, #2
 	ldr r0, [r0]
@@ -46897,15 +46897,15 @@ _02303880:
 	b _023038D0
 _0230389C:
 	ldr r0, _023038F8 ; =ov11_02322850
-	bl DebugPrint0
+	bl Debug_Print0
 	b _023038D0
 _023038A8:
 	ldr r0, _023038FC ; =ov11_0232287C
-	bl DebugPrint0
+	bl Debug_Print0
 	b _023038D0
 _023038B4:
 	ldr r0, _02303900 ; =ov11_02322894
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _023038D8 ; =ov11_02324D54
 	mov r1, #1
 	ldr r0, [r0]
@@ -61774,7 +61774,7 @@ ov11_02310074: ; 0x02310074
 	ldr r1, _02310320 ; =ov11_02323730
 	ldrsh r5, [r2, #2]
 	mov r2, r5
-	bl DebugPrint
+	bl Debug_Print
 	bl ov11_0230EC00
 	mov r0, #0x2f4
 	mov r1, #0xf
@@ -61839,7 +61839,7 @@ _02310178:
 	mov r2, r5
 	str lr, [sp]
 	str ip, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _023101A0:
 	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r1, _02310324 ; =ov11_02323394
@@ -63005,7 +63005,7 @@ ov11_02311074: ; 0x02311074
 	ldr r1, _02311270 ; =ov11_02323974
 	ldrsh r5, [r2]
 	mov r2, r5
-	bl DebugPrint
+	bl Debug_Print
 	bl ov11_02310CD4
 	mov r0, #0x2f4
 	mov r1, #0xf
@@ -63078,7 +63078,7 @@ _02311194:
 	mov r2, r5
 	str lr, [sp]
 	str ip, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _023111BC:
 	ldr r0, _0231126C ; =ov11_02324DF8
 	ldr r1, _02311274 ; =ov11_02323920
@@ -63440,7 +63440,7 @@ ov11_023115F4: ; 0x023115F4
 	ldr r1, _023117A8 ; =ov11_02323A58
 	mov r2, r4
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	bl ov11_023113E8
 	mov r0, #0x2f4
 	mov r1, #0xf
@@ -63509,7 +63509,7 @@ _0231170C:
 	mov r2, r4
 	str ip, [sp]
 	str r3, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _02311730:
 	ldr r0, _023117A4 ; =ov11_02324E00
 	ldr r1, _023117AC ; =ov11_02323A04
@@ -63840,7 +63840,7 @@ ov11_02311AF4: ; 0x02311AF4
 	ldr r1, _02311CA8 ; =ov11_02323B3C
 	mov r2, r4
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	bl ov11_023118E8
 	mov r0, #0x2f4
 	mov r1, #0xf
@@ -63909,7 +63909,7 @@ _02311C0C:
 	mov r2, r4
 	str ip, [sp]
 	str r3, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _02311C30:
 	ldr r0, _02311CA4 ; =ov11_02324E08
 	ldr r1, _02311CAC ; =ov11_02323AE8
@@ -64673,7 +64673,7 @@ ov11_02312540: ; 0x02312540
 	ldr r1, _02312714 ; =ov11_02323C8C
 	ldrsh r5, [r2]
 	mov r2, r5
-	bl DebugPrint
+	bl Debug_Print
 	bl ov11_02312398
 	mov r0, #0x2f4
 	mov r1, #0xf
@@ -64736,7 +64736,7 @@ _0231263C:
 	mov r2, r5
 	str lr, [sp]
 	str ip, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _02312664:
 	ldr r0, _02312710 ; =ov11_02324E18
 	ldr r1, _02312718 ; =ov11_02323C38
@@ -64982,7 +64982,7 @@ ov11_0231297C: ; 0x0231297C
 	ldrb r3, [r0, #2]
 	mov r2, r4
 	mov r0, #1
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _02312A68 ; =ov11_02324E20
 	mov r2, #0
 	ldr r0, [r1, #4]

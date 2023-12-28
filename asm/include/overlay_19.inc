@@ -17,7 +17,7 @@
 .public CloseScrollBox
 .public CreatePortraitBox
 .public CreateScrollBoxSingle
-.public DebugPrint0
+.public Debug_Print0
 .public DungeonSwapIdToIdx
 .public EnableIqSkill
 .public FemaleToMaleForm

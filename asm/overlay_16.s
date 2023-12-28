@@ -2459,7 +2459,7 @@ _0238C4C4:
 	cmp r0, #0
 	beq _0238C4F0
 	ldr r0, _0238CAE4 ; =ov16_0238CE04
-	bl DebugPrint0
+	bl Debug_Print0
 	b _0238C9B0
 _0238C4F0:
 	bl sub_0203C940

@@ -1345,7 +1345,7 @@ _02383A1C:
 	bl Arm9LoadUnkFieldNa0x2029EC8
 	mov r1, r0
 	ldr r0, _0238489C ; =OVERLAY31_JP_STRING
-	bl DebugPrint0
+	bl Debug_Print0
 	bl GetNbItemsInBag
 	ldr r2, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	cmp r6, #0

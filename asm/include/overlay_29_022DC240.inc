@@ -8,7 +8,7 @@
 .public ClearHiddenStairs
 .public CloseFixedBin
 .public CountItemsOnFloorForAcuteSniffer
-.public DebugPrint0
+.public Debug_Print0
 .public DeleteAllMonsterSpriteFiles
 .public DetermineAllTilesWalkableNeighbors
 .public DIRECTIONS_XY

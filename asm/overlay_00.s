@@ -2642,7 +2642,7 @@ ov00_022BE868: ; 0x022BE868
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	mov r0, #0
 	beq _022BE890
@@ -2660,7 +2660,7 @@ ov00_022BE89C: ; 0x022BE89C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	mov r0, #1
 	beq _022BE8C4

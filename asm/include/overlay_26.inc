@@ -3,7 +3,7 @@
 .public ClosePortraitBox
 .public CreateDialogueBox
 .public CreatePortraitBox
-.public DebugPrint0
+.public Debug_Print0
 .public GetAcceptedMission
 .public GetGameMode
 .public GetMaxItemsAllowed

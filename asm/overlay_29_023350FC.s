@@ -2557,7 +2557,7 @@ ov29_02336DB0: ; 0x02336DB0
 	tst r0, #0x200
 	beq _02336DE0
 	ldr r0, _02336F48 ; =ov29_02352F14
-	bl DebugPrint0
+	bl Debug_Print0
 _02336DE0:
 	ldrh r1, [r4]
 	tst r1, #0x1000

@@ -9,7 +9,7 @@
 .public CreateAdvancedMenu
 .public CreateAdvancedTextBox
 .public CreateScrollBoxSingle
-.public DebugPrint0
+.public Debug_Print0
 .public DrawTextInWindow
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult

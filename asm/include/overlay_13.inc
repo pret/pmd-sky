@@ -14,7 +14,7 @@
 .public FemaleToMaleForm
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
-.public GetDebugFlag
+.public Debug_GetDebugFlag
 .public GetKeyboardStatus
 .public GetKeyboardStringResult
 .public GetMonsterGenderVeneer

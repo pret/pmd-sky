@@ -1455,13 +1455,13 @@ _022BDD38:
 	cmp r1, #0
 	bne _022BDD6C
 	ldr r0, _022BDE48 ; =ov10_022C79D8
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022BDE34
 _022BDD6C:
 	sub r1, r1, #1
 	ldr r0, _022BDE4C ; =ov10_022C7A18
 	str r1, [r6, #4]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, [r6, #4]
 	cmp r0, #0
 	mvneq r0, #0
@@ -1482,13 +1482,13 @@ _022BDD90:
 	cmp r1, #0
 	bne _022BDDD0
 	ldr r0, _022BDE48 ; =ov10_022C79D8
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022BDE34
 _022BDDD0:
 	sub r1, r1, #1
 	ldr r0, _022BDE4C ; =ov10_022C7A18
 	str r1, [r6, #4]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, [r6, #4]
 	cmp r0, #0
 	mvneq r0, #0
@@ -7544,7 +7544,7 @@ _022C2D1C:
 	ldrsb r1, [sp, #0xfd]
 	ldrsh r2, [sp, #0xf2]
 	ldr r0, _022C3124 ; =ov10_022DC094
-	bl DebugPrint0
+	bl Debug_Print0
 	b _022C2EF0
 _022C2D74:
 	cmp r5, #0
@@ -7693,7 +7693,7 @@ _022C2F5C:
 	bl UnloadOverlay
 _022C2F84:
 	mov r0, #0xb
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	beq _022C3014
 	mov r0, #0xf
@@ -7739,7 +7739,7 @@ _022C3014:
 	beq _022C304C
 	ldrsb r1, [sp, #0xfe]
 	ldr r0, _022C3130 ; =ov10_022DC0B8
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0xe
 	bl LoadOverlay
 	add r0, sp, #0xf0
@@ -7752,7 +7752,7 @@ _022C3014:
 _022C304C:
 	ldr r1, [sp, #0x1a0]
 	ldr r0, _022C3134 ; =ov10_022DC0D4
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r1, [sp, #0x1a0]
 	cmp r1, #3
 	moveq r6, #1
@@ -8444,7 +8444,7 @@ ov10_022C3938: ; 0x022C3938
 	str fp, [sp]
 	str r7, [sp, #4]
 	str r5, [sp, #8]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldrb r0, [sp, #0x5c]
 	cmp r0, #1
 	bls _022C3A64

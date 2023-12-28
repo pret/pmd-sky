@@ -1,5 +1,5 @@
-#ifndef PMDSKY_MAIN_DEBUG_H
-#define PMDSKY_MAIN_DEBUG_H
+#ifndef PMDSKY_DEBUG_H
+#define PMDSKY_DEBUG_H
 
 #include <stdarg.h>
 
@@ -50,22 +50,22 @@ enum debug_log_flag {
 
 // Would have initialized debugging-related things, if they were not removed.
 // As for the release version, does nothing but set DEBUG_IS_INITIALIZED to true.
-void InitDebug(void);
+void Debug_Init(void);
 
 // Would have initialized the first set of debug flags.
 // Does nothing in release binary.
-void InitDebugFlag(void);
+void Debug_InitDebugFlag(void);
 
 // Just returns 0 in the final binary.
 // flag: flag ID
 // return: flag value
-u32 GetDebugFlag(enum debug_flag flag);
+u32 Debug_GetDebugFlag(enum debug_flag flag);
 
 // Should set the value of a debug flag. A no-op in the final binary.
-void SetDebugFlag(enum debug_flag flag, u32 val);
+void Debug_SetDebugFlag(enum debug_flag flag, u32 val);
 
 // Does nothing, only called in the debug initialization function.
-void InitDebugStripped6(void);
+void Debug_Stripped6(void);
 
 // Write a base message into a string and append the file name and line number to the end in the format "file = '%s'  line = %5d\n".
 // If no program position info is given, "ProgPos info NULL\n" is appended instead.
@@ -76,58 +76,58 @@ void InitDebugStripped6(void);
 s32 AppendProgPos(u8* str, struct prog_pos_info* prog_pos, const u8* msg);
 
 // Does nothing, only called in the debug initialization function.
-void InitDebugStripped5(void);
+void Debug_Stripped5(void);
 
 // Would log a printf format string tagged with the file name and line number in the debug binary.
 // This still constructs the string, but doesn't actually do anything with it in the final binary.
 // If message is a null pointer, the string "  Print  " is used instead.
 // msg: message
 // prog_pos: program position info (can be null)
-void DebugPrintTrace(const u8* msg, struct prog_pos_info* prog_pos);
+void Debug_PrintTrace(const u8* msg, struct prog_pos_info* prog_pos);
 
 // Would display a printf format string on the top screen in the debug binary.
 // This still constructs the string with vsprintf, but doesn't actually do anything with it in the final binary.
-// Identical to DebugPrint0 in release builds.
+// Identical to Debug_Print0 in release builds.
 void DebugDisplay(const u8* fmt, ...);
 
 // Would log a printf format string in the debug binary.
 // This still constructs the string with vsprintf, but doesn't actually do anything with it in the final binary.
 // Identical to DebugDisplay in release builds.
-void DebugPrint0(const u8* fmt, ...);
+void Debug_Print0(const u8* fmt, ...);
 
 // Would have initialized the second set of debug flags.
 // Does nothing in release binary.
-void InitDebugLogFlag(void);
+void Debug_InitLogFlag(void);
 
 // Should return the value of the specified debug log flag. Just returns FALSE in the final binary.
 // flag: flag ID
 // return: flag value
-u32 GetDebugLogFlag(enum debug_log_flag flag);
+u32 Debug_GetLogFlag(enum debug_log_flag flag);
 
 // Should set the value of a debug log flag. A no-op in the final binary.
 // flag: flag ID
 // val: flag value
-void SetDebugLogFlag(enum debug_log_flag flag, u32 val);
+void Debug_SetLogFlag(enum debug_log_flag flag, u32 val);
 
 // Would log a printf format string in the debug binary. A no-op in the final binary.
 // level: log level
 // fmt: format
-void DebugPrint(u8 level, const u8* fmt, ...);
+void Debug_Print(u8 level, const u8* fmt, ...);
 
 // Does nothing, only called in the debug initialization function.
-void InitDebugStripped4(void);
+void Debug_Stripped4(void);
 
 // Does nothing, only called in the debug initialization function.
-void InitDebugStripped3(void);
+void Debug_Stripped3(void);
 
 // Does nothing, only called in the debug initialization function.
-void InitDebugStripped2(void);
+void Debug_Stripped2(void);
 
 // Does nothing, only called in the debug initialization function.
-void InitDebugStripped1(void);
+void Debug_Stripped1(void);
 
 // Display some debug messages, then hangs the process.
 // This function is called in lots of places to bail on a fatal error. Looking at the static data callers use to fill in the program position info is informative, as it tells you the original file name (probably from the standard __FILE__ macro) and line number (probably from the standard __LINE__ macro) in the source code.
-void FatalError(struct prog_pos_info *prog_pos, const u8* fmt, ...);
+void Debug_FatalError(struct prog_pos_info *prog_pos, const u8* fmt, ...);
 
-#endif //PMDSKY_MAIN_DEBUG_H
+#endif //PMDSKY_DEBUG_H

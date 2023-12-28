@@ -8340,7 +8340,7 @@ _02012BD0:
 	blt _02012BD0
 	ldr r0, _020130A0 ; =_02098CCC
 	mov r6, r5
-	bl DebugPrint0
+	bl Debug_Print0
 	add r0, sp, #0x24
 	bl GetPartyMembers
 	str r0, [sp, #0xc]
@@ -8390,7 +8390,7 @@ _02012C78:
 	mov r3, r8
 	mov sb, r8
 	str r2, [sp]
-	bl DebugPrint0
+	bl Debug_Print0
 	add r0, r4, #0x12c
 	add r0, r0, #0x800
 	str r0, [sp, #0x14]
@@ -8634,7 +8634,7 @@ _02012FE8:
 	bne _02013008
 	ldr r0, _020130B4 ; =_02098D48
 	mov r1, r8
-	bl DebugPrint0
+	bl Debug_Print0
 	b _02013014
 _02013008:
 	add sl, sl, #1
@@ -15173,7 +15173,7 @@ PlayBgmById: ; 0x02017DF4
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -15210,7 +15210,7 @@ PlayBgmByIdVolume: ; 0x02017E70
 	mov r7, r0
 	mov r0, #3
 	strh r6, [r7, #4]
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	movne r4, #0
 	strh r4, [r7, #6]
@@ -15353,7 +15353,7 @@ sub_02018024: ; 0x02018024
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -15390,7 +15390,7 @@ sub_020180A0: ; 0x020180A0
 	mov r7, r0
 	mov r0, #3
 	strh r6, [r7, #4]
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	movne r4, #0
 	strh r4, [r7, #6]
@@ -15501,7 +15501,7 @@ sub_0201820C: ; 0x0201820C
 	mov r4, r0
 	mov r0, #3
 	strh r5, [r4, #4]
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	movne r1, #0
 	moveq r1, #0x100
@@ -15551,7 +15551,7 @@ PlaySeByIdVolume: ; 0x020182B8
 	mov r2, r6
 	mov r3, r5
 	mov r0, #8
-	bl DebugPrint
+	bl Debug_Print
 	cmp r6, #0x3f00
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, #0xd
@@ -15561,7 +15561,7 @@ PlaySeByIdVolume: ; 0x020182B8
 	mov r4, r0
 	mov r0, #4
 	strh r6, [r4, #4]
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	movne r5, #0
 	mov r0, r4
@@ -15586,7 +15586,7 @@ sub_0201831C: ; 0x0201831C
 	mov r3, r7
 	mov r0, #8
 	str r5, [sp, #4]
-	bl DebugPrint
+	bl Debug_Print
 	cmp r8, #0x3f00
 	beq _02018394
 	mov r0, #0xe
@@ -15597,7 +15597,7 @@ sub_0201831C: ; 0x0201831C
 	strh r8, [r4, #4]
 	mov r0, #4
 	strh r7, [r4, #6]
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	movne r6, #0
 	strh r6, [r4, #8]
@@ -15621,7 +15621,7 @@ sub_020183A0: ; 0x020183A0
 	mov r2, r6
 	mov r3, r4
 	mov r0, #8
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, #0x10
 	bl sub_02018A78
 	strh r6, [r0, #4]
@@ -15643,7 +15643,7 @@ sub_020183E4: ; 0x020183E4
 	mov r2, r6
 	mov r3, r4
 	mov r0, #8
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, #0x11
 	bl sub_02018A78
 	strh r6, [r0, #4]
@@ -15662,7 +15662,7 @@ sub_02018428: ; 0x02018428
 	ldr r1, _0201845C ; =_02099210
 	mov r2, r4
 	mov r0, #8
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, #0xf
 	bl sub_02018A78
 	strh r4, [r0, #4]
@@ -15683,7 +15683,7 @@ sub_02018460: ; 0x02018460
 	mov r2, r5
 	mov r3, r4
 	mov r0, #8
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, #0xf
 	bl sub_02018A78
 	strh r5, [r0, #4]
@@ -15848,7 +15848,7 @@ _02018650:
 	ldreqb r0, [r4, #1]
 	beq _02018650
 	mov r0, r6
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	bne _020187D0
 	ldr r1, [sp]
@@ -16352,7 +16352,7 @@ InitSoundSystem: ; 0x02018C28
 	ldr r2, _02018E54 ; =_022A4E58
 	ldr r0, _02018E58 ; =_020993B4
 	str r1, [r2, #0x80]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r1, _02018E5C ; =_020993D0
 	add r0, sp, #8
 	bl sub_02019314
@@ -16362,7 +16362,7 @@ InitSoundSystem: ; 0x02018C28
 	ldr r0, _02018E54 ; =_022A4E58
 	str r1, [r0, #0x7c]
 	ldr r0, _02018E60 ; =_020993E8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r1, _02018E64 ; =_02099404
 	add r0, sp, #0
 	bl sub_02019314
@@ -16374,7 +16374,7 @@ InitSoundSystem: ; 0x02018C28
 	ldr r2, _02018E54 ; =_022A4E58
 	ldr r0, _02018E68 ; =_02099418
 	str r1, [r2, #0x8c]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r1, _02018E6C ; =_02099434
 	add r0, sp, #0
 	bl sub_02019314
@@ -16384,7 +16384,7 @@ InitSoundSystem: ; 0x02018C28
 	ldr r2, _02018E54 ; =_022A4E58
 	ldr r0, _02018E70 ; =_02099448
 	str r1, [r2, #0x88]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _02018E54 ; =_022A4E58
 	mov r2, #0
 	str r2, [r0, #0xc4]
@@ -16486,7 +16486,7 @@ ManipBgmPlayback: ; 0x02018EA4
 	ldr r1, _02019054 ; =_02099464
 	ldrh r2, [r0, #0x20]
 	mov r0, #7
-	bl DebugPrint
+	bl Debug_Print
 	bl sub_02019408
 	ldr r0, _02019050 ; =_022A4E58
 	mov r2, #0
@@ -16506,7 +16506,7 @@ _02018F0C:
 	ldr r1, _0201905C ; =_02099470
 	ldrh r2, [r0, #0x48]
 	mov r0, #7
-	bl DebugPrint
+	bl Debug_Print
 	bl sub_02019488
 	ldr r0, _02019050 ; =_022A4E58
 	mov r2, #0
@@ -16535,7 +16535,7 @@ _02018F5C:
 	ldrh r2, [r0, #0x20]
 	ldr r1, _02019064 ; =_0209947C
 	mov r0, #7
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _02019050 ; =_022A4E58
 	mov ip, #4
 	ldrh r2, [r0, #0x22]
@@ -16556,7 +16556,7 @@ _02018FE0:
 	ldrh r2, [r0, #0x48]
 	ldr r1, _02019068 ; =_0209948C
 	mov r0, #7
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _02019050 ; =_022A4E58
 	mov ip, #4
 	ldrh r2, [r0, #0x4a]
@@ -16625,7 +16625,7 @@ SoundDriverReset: ; 0x020190C8
 	bl sub_02002CB4
 	ldr r1, _02019250 ; =_0209949C
 	mov r0, #6
-	bl DebugPrint
+	bl Debug_Print
 	ldr r4, _02019254 ; =_022A4E58
 	ldr r0, [r4, #0x18]
 	cmp r0, #1
@@ -17016,7 +17016,7 @@ _020195C8:
 	add r3, sp, #0xc
 	mov r2, r6
 	mov r0, #8
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _02019770 ; =_020AFB28
 	bl sub_02002E98
 	ldr r0, _02019774 ; =_022A4EF4
@@ -17041,7 +17041,7 @@ _020195C8:
 	mov r8, #0
 	mov r0, #8
 	str r7, [sp]
-	bl DebugPrint
+	bl Debug_Print
 	mov sb, r8
 	add r6, sp, #4
 	mov fp, #8
@@ -17057,7 +17057,7 @@ _02019684:
 	str r2, [sp]
 	mov r2, sb
 	mov r3, sl
-	bl DebugPrint
+	bl Debug_Print
 	ldr r1, _02019784 ; =_02099514
 	mov r2, sl
 	add r0, sp, #0xc
@@ -17066,7 +17066,7 @@ _02019684:
 	mov r0, #8
 	mov r2, r8
 	add r3, sp, #0xc
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _02019770 ; =_020AFB28
 	bl sub_02002E98
 	add r0, r5, r8, lsl #3
@@ -17227,7 +17227,7 @@ PlayBgm: ; 0x020198B8
 	mov r3, r4
 	mov r0, #7
 	str r5, [sp]
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _02019B08 ; =_022A4E58
 	ldrh r0, [r0, #0x48]
 	cmp r6, r0
@@ -17391,7 +17391,7 @@ StopBgm: ; 0x02019B28
 	ldr r1, _02019C40 ; =_02099584
 	mov r2, r4
 	mov r0, #7
-	bl DebugPrint
+	bl Debug_Print
 	ldr r5, _02019C44 ; =_022A4E58
 	ldr r0, [r5, #0x1c]
 	cmp r0, #0
@@ -17425,7 +17425,7 @@ _02019B78:
 	ldr r1, [r0, #0x18]
 	ldr r2, [r0, #0x1c]
 	ldr r0, _02019C48 ; =_02099594
-	bl DebugPrint0
+	bl Debug_Print0
 	cmp r4, #0
 	beq _02019BE4
 	ldr r0, _02019C44 ; =_022A4E58
@@ -17478,7 +17478,7 @@ ChangeBgm: ; 0x02019C50
 	mov r2, r4
 	mov r3, r5
 	mov r0, #7
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _02019D00 ; =_022A4E58
 	ldr r1, [r0, #0x1c]
 	cmp r1, #0
@@ -17576,7 +17576,7 @@ PlayBgm2: ; 0x02019D84
 	mov r3, r4
 	mov r0, #7
 	str r5, [sp]
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _02019FC8 ; =_022A4E58
 	ldrh r0, [r0, #0x20]
 	cmp r6, r0
@@ -17736,7 +17736,7 @@ StopBgm2: ; 0x02019FE8
 	ldr r1, _0201A0DC ; =_020995E8
 	mov r2, r4
 	mov r0, #7
-	bl DebugPrint
+	bl Debug_Print
 	ldr r5, _0201A0E0 ; =_022A4E58
 	ldr r0, [r5, #0x44]
 	cmp r0, #0
@@ -17814,7 +17814,7 @@ ChangeBgm2: ; 0x0201A0E8
 	mov r2, r4
 	mov r3, r5
 	mov r0, #7
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _0201A198 ; =_022A4E58
 	ldr r1, [r0, #0x44]
 	cmp r1, #0
@@ -17884,7 +17884,7 @@ PlayME: ; 0x0201A1C8
 	mov r3, r4
 	mov r0, #7
 	str r5, [sp]
-	bl DebugPrint
+	bl Debug_Print
 	ldr r7, _0201A3F8 ; =_022A4E58
 	cmp r6, #0xd
 	ldr r0, [r7, #0x18]
@@ -18038,7 +18038,7 @@ StopME: ; 0x0201A40C
 	ldr r1, _0201A478 ; =_02099644
 	mov r2, r4
 	mov r0, #7
-	bl DebugPrint
+	bl Debug_Print
 	ldr r0, _0201A47C ; =_022A4E58
 	ldr r1, [r0, #0x18]
 	cmp r1, #1
@@ -18117,7 +18117,7 @@ PlaySe: ; 0x0201A4FC
 	mov r2, r5
 	mov r3, r7
 	mov r0, #8
-	bl DebugPrint
+	bl Debug_Print
 	rsb r0, r7, r7, lsl #7
 	mov r0, r0, asr #8
 	mov r1, #4
@@ -18224,7 +18224,7 @@ PlaySeFullSpec: ; 0x0201A66C
 	ldr r1, _0201A820 ; =_02099660
 	mov r2, sb
 	mov r3, r8
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, #4
 	str r0, [sp, #8]
 	mov r0, #0x3e8
@@ -18344,7 +18344,7 @@ SeChangeVolume: ; 0x0201A828
 	mov r3, r7
 	str r6, [sp]
 	mov r0, #8
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, #0x3e8
 	mul r0, r7, r0
 	mov r1, #4
@@ -18405,7 +18405,7 @@ SeChangePan: ; 0x0201A900
 	mov r3, r7
 	str r6, [sp]
 	mov r0, #8
-	bl DebugPrint
+	bl Debug_Print
 	mov r0, #0x3e8
 	mul r0, r7, r0
 	mov r1, #4
@@ -18466,7 +18466,7 @@ StopSe: ; 0x0201A9E4
 	mov r2, r7
 	mov r3, r5
 	mov r0, #8
-	bl DebugPrint
+	bl Debug_Print
 	cmp r7, #0x3f00
 	bne _0201AA2C
 	mov r0, #0
@@ -20287,7 +20287,7 @@ sub_0201C108: ; 0x0201C108
 	cmp r0, #0
 	bne _0201C124
 	ldr r0, _0201C134 ; =_020996E0
-	bl DebugPrint0
+	bl Debug_Print0
 _0201C124:
 	ldrh r0, [r4, #2]
 	orr r0, r0, #0x8000
@@ -25463,7 +25463,7 @@ sub_0202059C: ; 0x0202059C
 	ldr r0, _02020684 ; =_02099C04_EU
 	ldrsb r1, [r1]
 	mov r2, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r1, _02020680 ; =LANGUAGE_INFO_DATA
 	mov r0, r4
 	strb r4, [r1]
@@ -26114,7 +26114,7 @@ _02020C70:
 	mov r1, #0x44
 	strb r1, [r4, #0x98]
 	str r0, [r4, #0xa0]
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	movne r0, #4
 	moveq r0, #1
@@ -26405,7 +26405,7 @@ _02021018:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x68 + ANALYZE_TEXT_STACK_OFFSET
-	bl FatalError
+	bl Debug_FatalError
 _02021040:
 	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EDC ; =_020999C8
@@ -26591,7 +26591,7 @@ _020212C8:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x60 + ANALYZE_TEXT_STACK_OFFSET
-	bl FatalError
+	bl Debug_FatalError
 _020212F0:
 	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EF4 ; =_020999F0
@@ -26616,7 +26616,7 @@ _02021324:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x58 + ANALYZE_TEXT_STACK_OFFSET
-	bl FatalError
+	bl Debug_FatalError
 _0202134C:
 	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021EF8 ; =_020999F4
@@ -26662,7 +26662,7 @@ _020213CC:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x58
-	bl FatalError
+	bl Debug_FatalError
 _020213F4:
 	ldr r0, [r4, #0x58]
 	ldr r1, [r4, #0x34]
@@ -26694,7 +26694,7 @@ _02021598:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x50
-	bl FatalError
+	bl Debug_FatalError
 _02021404:
 	ldr r0, [sp, #0x78]
 #else
@@ -26705,7 +26705,7 @@ _02021404:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x50
-	bl FatalError
+	bl Debug_FatalError
 _020213F4:
 	ldr r0, [r4, #0x58]
 	ldr r1, [r4, #0x34]
@@ -26735,7 +26735,7 @@ _02021434:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x48
-	bl FatalError
+	bl Debug_FatalError
 _0202145C:
 	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F04 ; =_02099A00
@@ -26886,7 +26886,7 @@ _0202166C:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x40
-	bl FatalError
+	bl Debug_FatalError
 _02021694:
 	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F14 ; =_02099A10
@@ -26975,7 +26975,7 @@ _0202179C:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x38
-	bl FatalError
+	bl Debug_FatalError
 _020217C4:
 	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F24 ; =_02099A24
@@ -27019,7 +27019,7 @@ _02021840:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x30
-	bl FatalError
+	bl Debug_FatalError
 _02021868:
 	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F28 ; =_02099A28
@@ -27049,7 +27049,7 @@ _020218B0:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x28
-	bl FatalError
+	bl Debug_FatalError
 _020218D8:
 	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F2C ; =_02099A2C
@@ -27106,7 +27106,7 @@ _02021984:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x20
-	bl FatalError
+	bl Debug_FatalError
 _020219AC:
 	ldr r0, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
 	ldr r1, _02021F3C ; =_02099A40
@@ -27133,7 +27133,7 @@ _020219E8:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x18
-	bl FatalError
+	bl Debug_FatalError
 _02021A10:
 	ldr r0, _02021ED4 ; =_020997E4
 	ldr r2, [sp, #0x70 + ANALYZE_TEXT_STACK_OFFSET]
@@ -27149,7 +27149,7 @@ _02021A10:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #0x10
-	bl FatalError
+	bl Debug_FatalError
 _02021A38:
 	cmp r7, #0x61
 	blo _02021A48
@@ -27165,7 +27165,7 @@ _02021A48:
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021ED8 ; =_020999B0
 	add r0, sp, #8
-	bl FatalError
+	bl Debug_FatalError
 _02021A70:
 	cmp r5, #0x5b
 	beq _02021AA0
@@ -27183,7 +27183,7 @@ _02021A70:
 	ldr r2, [r4, #0x88]
 	ldr r3, [r4, #0x84]
 	ldr r1, _02021F40 ; =_02099A44
-	bl FatalError
+	bl Debug_FatalError
 _02021AA0:
 	mov r0, #0
 _02021AA4:
@@ -28074,7 +28074,7 @@ _02022694:
 	add r0, sp, #0xac
 	mov r2, r5
 	str ip, [sp, #0xac]
-	bl FatalError
+	bl Debug_FatalError
 _020226BC:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023488 ; =_02099A84
@@ -28113,7 +28113,7 @@ _02022724:
 	add r0, sp, #0xa4
 	mov r2, r5
 	str ip, [sp, #0xa4]
-	bl FatalError
+	bl Debug_FatalError
 _0202274C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023490 ; =_02099A98
@@ -28177,7 +28177,7 @@ _020227F8:
 	add r0, sp, #0x9c
 	mov r2, r5
 	str ip, [sp, #0x9c]
-	bl FatalError
+	bl Debug_FatalError
 _02022838:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234A8 ; =_02099AC8
@@ -28238,7 +28238,7 @@ _020228E0:
 	add r0, sp, #0x94
 	mov r2, r5
 	str ip, [sp, #0x94]
-	bl FatalError
+	bl Debug_FatalError
 _02022908:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234BC ; =_02099AF8
@@ -28281,7 +28281,7 @@ _0202296C:
 	add r0, sp, #0x8c
 	mov r2, r5
 	str ip, [sp, #0x8c]
-	bl FatalError
+	bl Debug_FatalError
 _02022994:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234C4 ; =_02099B10
@@ -28311,7 +28311,7 @@ _020229C8:
 	add r0, sp, #0x84
 	mov r2, r5
 	str ip, [sp, #0x84]
-	bl FatalError
+	bl Debug_FatalError
 _020229F0:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234C8 ; =_02099B18
@@ -28379,7 +28379,7 @@ _02022AB0:
 	add r0, sp, #0x7c
 	mov r2, r5
 	str ip, [sp, #0x7c]
-	bl FatalError
+	bl Debug_FatalError
 _02022AD8:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234D8 ; =_02099B40
@@ -28406,7 +28406,7 @@ _02022B00:
 	add r0, sp, #0x74
 	mov r2, r5
 	str ip, [sp, #0x74]
-	bl FatalError
+	bl Debug_FatalError
 _02022B28:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234DC ; =_02099B48
@@ -28433,7 +28433,7 @@ _02022B64:
 	add r0, sp, #0x6c
 	mov r2, r5
 	str ip, [sp, #0x6c]
-	bl FatalError
+	bl Debug_FatalError
 _02022B8C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234E0 ; =_02099B50
@@ -28462,7 +28462,7 @@ _02022BBC:
 	add r0, sp, #0x64
 	mov r2, r5
 	str ip, [sp, #0x64]
-	bl FatalError
+	bl Debug_FatalError
 _02022BE4:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234E4 ; =_02099B58
@@ -28502,7 +28502,7 @@ _02022C3C:
 	add r0, sp, #0x5c
 	mov r2, r5
 	str ip, [sp, #0x5c]
-	bl FatalError
+	bl Debug_FatalError
 _02022C64:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _020234EC ; =_02099B6C
@@ -28574,7 +28574,7 @@ _02022D34:
 	add r0, sp, #0x54
 	mov r2, r5
 	str ip, [sp, #0x54]
-	bl FatalError
+	bl Debug_FatalError
 _02022D5C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023500 ; =_02099BA8
@@ -28637,7 +28637,7 @@ _02022E08:
 	add r0, sp, #0x4c
 	mov r2, r5
 	str ip, [sp, #0x4c]
-	bl FatalError
+	bl Debug_FatalError
 _02022E30:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023510 ; =_02099BCC
@@ -28681,7 +28681,7 @@ _02022E98:
 	add r0, sp, #0x44
 	mov r2, r5
 	str ip, [sp, #0x44]
-	bl FatalError
+	bl Debug_FatalError
 _02022EC0:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023518 ; =_02099BDC
@@ -28741,7 +28741,7 @@ _02022F78:
 	add r0, sp, #0x3c
 	mov r2, r5
 	str ip, [sp, #0x3c]
-	bl FatalError
+	bl Debug_FatalError
 _02022FA0:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _0202352C ; =_02099C0C
@@ -28856,7 +28856,7 @@ _02023114:
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x34
 	mov r2, r5
-	bl FatalError
+	bl Debug_FatalError
 _0202313C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023544 ; =_02099C44
@@ -28929,7 +28929,7 @@ _02023214:
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x2c
 	mov r2, r5
-	bl FatalError
+	bl Debug_FatalError
 _0202323C:
 	ldr r0, [sp, #0xb4]
 	ldr r1, _02023558 ; =_02099C70
@@ -28967,7 +28967,7 @@ _020232A0:
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x24
 	mov r2, r5
-	bl FatalError
+	bl Debug_FatalError
 _020232C8:
 	ldr r0, _02023480 ; =_020997E4
 	ldr r3, [sp, #0xb4]
@@ -28983,7 +28983,7 @@ _020232C8:
 	ldr r1, _02023484 ; =_020999B0
 	add r0, sp, #0x1c
 	mov r2, r5
-	bl FatalError
+	bl Debug_FatalError
 _020232F0:
 	cmp r7, #0
 	beq _02022434
@@ -29086,7 +29086,7 @@ _0202342C:
 	ldr r1, _02023570 ; =_02099C84
 	mov r3, r2
 	str r5, [sp]
-	bl FatalError
+	bl Debug_FatalError
 _02023454:
 	add r1, sp, #0x500
 	add r0, sp, #0x5f0
@@ -52747,7 +52747,7 @@ sub_02036358: ; 0x02036358
 	str r0, [r1, #8]
 _0203638C:
 	and r0, r5, #0xff
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	ldr r1, [r4, #4]
 	add r1, r1, r5
 	add r5, r5, #1
@@ -52866,7 +52866,7 @@ _02036514:
 	and r0, r5, #0xff
 	add r1, r1, r5
 	ldrb r1, [r1, #0xa4]
-	bl SetDebugFlag
+	bl Debug_SetDebugFlag
 	add r5, r5, #1
 	cmp r5, #0xc
 	blt _02036514
@@ -52925,7 +52925,7 @@ sub_020365A0: ; 0x020365A0
 	str r0, [r1, #8]
 _020365D4:
 	and r0, r5, #0xff
-	bl GetDebugLogFlag
+	bl Debug_GetLogFlag
 	ldr r1, [r4, #4]
 	add r1, r1, r5
 	add r5, r5, #1
@@ -53044,7 +53044,7 @@ _0203675C:
 	and r0, r5, #0xff
 	add r1, r1, r5
 	ldrb r1, [r1, #0xa4]
-	bl SetDebugLogFlag
+	bl Debug_SetLogFlag
 	add r5, r5, #1
 	cmp r5, #0x10
 	blt _0203675C
@@ -54313,7 +54313,7 @@ sub_02037778: ; 0x02037778
 	cmp r2, r1
 	beq _020377B0
 	ldr r0, _02037C2C ; =_0209B48C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _02037C28 ; =_020AFDF0
 	ldr r3, [r0]
 	ldr r1, [r3, #4]
@@ -57044,7 +57044,7 @@ _02039CA8:
 	mov r3, r4
 	str r6, [sp]
 	ldr r1, [r1, #4]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0203A4D4 ; =_020AFE5C
 	ldr r1, [r0, #4]
 	cmp r1, r5
@@ -75002,7 +75002,7 @@ sub_02048B74: ; 0x02048B74
 	ldr r0, _02048BAC ; =_0209CD4C
 	ldr r1, [r1, #4]
 	mov r2, #0
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r3, #0
 	ldr r1, _02048BA8 ; =_020AFF38
 	ldr r0, _02048BB0 ; =_022AAE70
@@ -75061,7 +75061,7 @@ sub_02048C0C: ; 0x02048C0C
 	ldr r1, [r1, #4]
 	ldr r0, _02048C38 ; =_0209CD4C
 	mov r2, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _02048C34 ; =_020AFF38
 	str r4, [r0, #4]
 	ldmia sp!, {r4, pc}
@@ -75120,7 +75120,7 @@ _02048CB4: .word 0x000F1206
 sub_02048CB8: ; 0x02048CB8
 	stmdb sp!, {r3, lr}
 	mov r0, #9
-	bl GetDebugFlag
+	bl Debug_GetDebugFlag
 	cmp r0, #0
 	beq _02048CE4
 	ldr r1, _02048CF0 ; =_022AAE74
@@ -75350,7 +75350,7 @@ NoteSaveBase: ; 0x02048F84
 	mov r2, r0
 	ldr r0, _0204921C ; =_0209CD6C
 	mov r1, sb
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	bl SetNotifyNote
 	bl GetTime
@@ -75440,7 +75440,7 @@ _0204900C:
 	mov r2, r1
 	ldr r0, _0204923C ; =_0209CD84
 	mov r1, r3
-	bl DebugPrint0
+	bl Debug_Print0
 	cmp sb, #2
 	moveq r5, #0
 	beq _0204912C
@@ -75498,7 +75498,7 @@ _020491C4:
 	mov r2, r1
 	ldr r0, _02049244 ; =_0209CD94
 	mov r1, r3
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	bl MemFree
 	cmp r5, #0
@@ -75654,7 +75654,7 @@ NoteLoadBase: ; 0x02049370
 	bl sub_02048BFC
 	mov r1, r0
 	ldr r0, _02049600 ; =_0209CDA4
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	bl SetNotifyNote
 	mov r0, #0
@@ -75701,7 +75701,7 @@ _0204943C:
 	bne _020494A0
 	ldr r1, [r4, #0x2c]
 	ldr r0, _0204960C ; =_0209CDB8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, [r4, #0x2c]
 	bl sub_02048C0C
 	ldr r0, [r4, #0x28]
@@ -77851,14 +77851,14 @@ _0204B024: .word GAME_MODE
 	arm_func_start sub_0204B028
 sub_0204B028: ; 0x0204B028
 	ldr r1, _0204B040 ; =_0209DF70
-	ldr ip, _0204B044 ; =DebugPrint0
+	ldr ip, _0204B044 ; =Debug_Print0
 	ldr r0, _0204B048 ; =_0209CF0C
 	ldrsh r1, [r1, #0x24]
 	mov r2, #0x400
 	bx ip
 	.align 2, 0
 _0204B040: .word _0209DF70
-_0204B044: .word DebugPrint0
+_0204B044: .word Debug_Print0
 _0204B048: .word _0209CF0C
 	arm_func_end sub_0204B028
 
@@ -78896,7 +78896,7 @@ _0204BD68:
 	ldr r1, _0204BD94 ; =_0209CF28
 	str ip, [sp]
 	str r3, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _0204BD88:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
@@ -78992,7 +78992,7 @@ _0204BE9C:
 	ldr r1, _0204BEC8 ; =_0209CF48
 	str ip, [sp]
 	str r3, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _0204BEBC:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
@@ -79097,7 +79097,7 @@ EventFlagResume: ; 0x0204BFC0
 	sub r4, r0, #2
 	ldr r0, _0204C1E0 ; =_0209CF64
 	mov r1, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4, lsl #0x10
 	mov r2, r0, lsr #0x10
 	mov r0, #0
@@ -79239,7 +79239,7 @@ EventFlagBackup: ; 0x0204C1E4
 	sub r4, r0, #2
 	ldr r0, _0204C404 ; =_0209CF84
 	mov r1, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	mov r1, #0x1c
 	bl LoadScriptVariableValue
@@ -79546,7 +79546,7 @@ SetScenarioScriptVar: ; 0x0204C618
 	mov r2, r8
 	mov r3, r5
 	str r6, [sp, #8]
-	bl DebugPrint
+	bl Debug_Print
 	cmp r8, #3
 	bne _0204C694
 	cmp r7, r5
@@ -80019,7 +80019,7 @@ sub_0204CBE8: ; 0x0204CBE8
 	sub r4, r0, #2
 	ldr r0, _0204CCB4 ; =_0209DFC8
 	mov r1, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4, lsl #0x10
 	mov r2, r0, lsr #0x10
 	mov r0, #0
@@ -80077,7 +80077,7 @@ ScenarioFlagBackup: ; 0x0204CCB8
 	sub r4, r0, #2
 	ldr r0, _0204CD84 ; =_0209DFE8
 	mov r1, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	mov r2, r0
 	mov r1, #2
@@ -81453,7 +81453,7 @@ _0204DDD4:
 	ldrb r2, [sp, #0x54]
 	ldr r0, _0204DE78 ; =_0209E264
 	mov r1, r5
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, [sp, #0x54]
 	cmp r0, r5
 	movne r0, #0
@@ -81508,7 +81508,7 @@ _0204DE98:
 	str r1, [sp, #0x54]
 	ldrb r2, [sp, #0x54]
 	ldr r0, _0204DF4C ; =_0209E264
-	bl DebugPrint0
+	bl Debug_Print0
 	ldrb r0, [sp, #0x54]
 	add r1, sp, #0x58
 	mov r2, #0x11
@@ -88692,7 +88692,7 @@ _02053598:
 	add r0, r3, r2
 	bl GetInfoMoveGround
 	ldr r0, _02053624 ; =_020A32D4
-	bl DebugPrint0
+	bl Debug_Print0
 	ldmia sp!, {r3, r4, r5, pc}
 _02053604:
 	add r2, r5, #0x22
@@ -90188,7 +90188,7 @@ _0205493C:
 	bl MemAlloc
 	str r0, [sb, #4]
 	ldr r0, _02054A58 ; =_020A32F8
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r8, #0
 	mov sl, r8
 	mov r7, #1
@@ -90233,7 +90233,7 @@ _0205498C:
 	ldr r0, _02054A5C ; =_020A3330
 	mov r1, r8
 	add r3, sp, #0
-	bl DebugPrint0
+	bl Debug_Print0
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
 	cmp r6, r0, asr #16

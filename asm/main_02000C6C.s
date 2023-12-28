@@ -26,7 +26,7 @@ NitroMain: ; 0x02000C6C
 	mov r2, r4
 	mov r1, r0
 	ldr r0, _02000DD4 ; =_02092448
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0
 	bl sub_0207A524
 	mov r4, r0
@@ -85,7 +85,7 @@ _02000D44:
 	bl sub_02002C2C
 	bl sub_02002F0C
 	bl InitMemAllocTableVeneer
-	bl InitDebug
+	bl Debug_Init
 	bl sub_02002FB8
 	ldr r0, _02000DDC ; =_02092460
 	bl sub_020082F4
@@ -113,7 +113,7 @@ InitMemAllocTable: ; 0x02000DE0
 	mov r2, r1
 	str r1, [sp]
 	str r3, [sp, #4]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr ip, _02000E60 ; =_020B3380
 	mov lr, #0
 	ldr r0, _02000E64 ; =_020B3384
@@ -359,7 +359,7 @@ _020010E4:
 	ldr r2, [sl, #0xc]
 	ldr r3, [sl, #0x10]
 	ldr r1, _0200116C ; =_02090BA0
-	bl FatalError
+	bl Debug_FatalError
 _02001124:
 	ldr r0, [r4, #0x10]
 	sub r1, r0, r7
@@ -457,7 +457,7 @@ _02001238:
 	mov r2, r4
 	str ip, [sp, #4]
 	str r3, [sp, #8]
-	bl FatalError
+	bl Debug_FatalError
 _02001264:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, pc}
@@ -680,7 +680,7 @@ _0200150C:
 	ldr r2, [r4, #0xc]
 	ldr r3, [r4, #0x10]
 	ldr r1, _02001630 ; =_02090BA0
-	bl FatalError
+	bl Debug_FatalError
 _02001554:
 	ldr r2, [r4, #8]
 	add r1, r7, #1
@@ -731,7 +731,7 @@ _020015DC:
 	mov r2, r4
 	mov r3, r5
 	stmia sp, {r8, sb}
-	bl FatalError
+	bl Debug_FatalError
 _02001610:
 	mov r0, r6
 	add sp, sp, #0x20
@@ -1910,7 +1910,7 @@ sub_02002448: ; 0x02002448
 	mov r1, r4
 	bic r2, r2, #0x10000
 	str r2, [r3]
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	bl sub_0207B930
 	bl sub_02079C14
@@ -3287,7 +3287,7 @@ TaskProcBoot: ; 0x02003328
 	ldr r1, _020035E0 ; =_020AEF7C
 	ldr r0, _02003604 ; =_020924D8
 	strb sl, [r1, #5]
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r8, #1
 	ldr r4, _020035E0 ; =_020AEF7C
 	mov r6, sl
@@ -3944,7 +3944,7 @@ sub_02003BFC: ; 0x02003BFC
 	cmp r0, #0
 	bne _02003C54
 	ldr r0, _02003CB8 ; =_020924E8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _02003CBC ; =_0229B21C
 	ldrh r0, [r0, #2]
 	bl PlayBgmById
@@ -3962,7 +3962,7 @@ _02003C5C:
 	cmp r0, #0
 	beq _02003CAC
 	ldr r0, _02003CC0 ; =_020924F8
-	bl DebugPrint0
+	bl Debug_Print0
 	bl sub_02017DB4
 	ldr r1, _02003CBC ; =_0229B21C
 	strh r0, [r1, #2]
@@ -3999,7 +3999,7 @@ SoundResume: ; 0x02003CC4
 	cmp r0, #0
 	beq _02003D18
 	ldr r0, _02003D24 ; =_020924E8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _02003D28 ; =_0229B21C
 	ldrh r0, [r0, #2]
 	bl PlayBgmById
@@ -4030,7 +4030,7 @@ CardPullOutWithStatus: ; 0x02003D2C
 	ldmeqia sp!, {r4, pc}
 	ldr r0, _02003D6C ; =_02092508
 	mov r1, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	cmp r4, #0
 	beq _02003D5C
 	bl sub_020081DC
@@ -4047,7 +4047,7 @@ _02003D6C: .word _02092508
 CardPullOut: ; 0x02003D70
 	stmdb sp!, {r3, lr}
 	ldr r0, _02003D8C ; =_0209251C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _02003D90 ; =_020AEF7C
 	mov r1, #1
 	strb r1, [r0, #0xd]
@@ -4061,7 +4061,7 @@ _02003D90: .word _020AEF7C
 CardBackupError: ; 0x02003D94
 	stmdb sp!, {r3, lr}
 	ldr r0, _02003DB0 ; =_0209252C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _02003DB4 ; =_020AEF7C
 	mov r1, #1
 	strb r1, [r0, #0xc]
@@ -4110,7 +4110,7 @@ _02003E28:
 	bl sub_020184A8
 	ldr r0, _02003EC8 ; =_02092540
 	mov r1, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	cmp r4, #2
 	bne _02003E9C
 	mov r0, #1
@@ -4283,7 +4283,7 @@ _02004078:
 	ldr r1, _020040A8 ; =_0209258C
 	str r3, [sp]
 	str r2, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _02004098:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
@@ -4373,7 +4373,7 @@ _020041A4:
 	ldr r1, _020047D4 ; =_020925A0
 	str r3, [sp, #8]
 	str r2, [sp, #0xc]
-	bl FatalError
+	bl Debug_FatalError
 _020041C4:
 	bl DataTransferInit
 	bl sub_0207A324
@@ -4787,7 +4787,7 @@ _02004780:
 	ldr r1, _020047D4 ; =_020925A0
 	str r3, [sp]
 	str r2, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _020047A0:
 	add r0, sp, #0x10
 	bl LoadOverlayInternal
@@ -4925,7 +4925,7 @@ _02004968:
 	ldr r1, _02004EE0 ; =_020925B4
 	str r3, [sp, #8]
 	str r2, [sp, #0xc]
-	bl FatalError
+	bl Debug_FatalError
 _02004988:
 	bl DataTransferInit
 	cmp r4, #0x24
@@ -5301,7 +5301,7 @@ _02004EAC:
 	ldr r1, _02004EE0 ; =_020925B4
 	str r3, [sp]
 	str r2, [sp, #4]
-	bl FatalError
+	bl Debug_FatalError
 _02004ECC:
 	bl DataTransferStop
 _02004ED0:
@@ -7774,7 +7774,7 @@ sub_02006EF8: ; 0x02006EF8
 	ldr r0, _02006F38 ; =_0209278C
 	add r2, sp, #0
 	mov r1, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	add sp, sp, #0x3c
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -7875,7 +7875,7 @@ _02007060:
 	ldr r0, _02007080 ; =_020927BC
 	ldr r1, _02007074 ; =_020AF2B8
 	ldr r2, _02007078 ; =_020AF2C4
-	bl DebugPrint0
+	bl Debug_Print0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02007074: .word _020AF2B8
@@ -8180,7 +8180,7 @@ _02007408:
 	ldr r2, [r0, #4]
 	mov r0, r5
 	mov r1, r4
-	bl DebugPrint
+	bl Debug_Print
 	ldr r2, [r6]
 	ldr r0, [r7]
 	ldr r1, [r2]
@@ -9434,10 +9434,10 @@ _02008388:
 	bl sub_02007380
 	bl sub_02007384
 	ldr r0, _02008434 ; =_0209297C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl sub_020073D8
 	ldr r0, _02008438 ; =_0209299C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0200843C ; =_020AF3D0
 	ldr r1, _02008440 ; =0x0000070D
 	ldr r0, [r0, #8]
@@ -9988,7 +9988,7 @@ _02008B04:
 	ldr r4, [r5, #0x14]
 	str r4, [sp, #0x18]
 	ldr r2, [r2, ip, lsl #2]
-	bl FatalError
+	bl Debug_FatalError
 _02008B5C:
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -10271,7 +10271,7 @@ sub_02008ED0: ; 0x02008ED0
 	ldmeqia sp!, {r4, pc}
 	ldr r0, _02008F34 ; =_02092AB8
 	mov r2, r4
-	bl DebugPrint0
+	bl Debug_Print0
 	cmp r4, #0
 	beq _02008F0C
 	cmp r4, #0xff

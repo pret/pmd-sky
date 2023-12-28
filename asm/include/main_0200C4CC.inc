@@ -775,8 +775,8 @@
 .public DataTransferInit
 .public DataTransferStop
 .public DEBUG_MENU_DEFAULT_WINDOW_PARAMS
-.public DebugPrint
-.public DebugPrint0
+.public Debug_Print
+.public Debug_Print0
 .public DEFAULT_HERO_ID
 .public DexNumbersEqual
 .public DIALOGUE_BOX_DEFAULT_WINDOW_PARAMS
@@ -797,7 +797,7 @@
 .public EXCLUSIVE_ITEM_SPECIAL_ATTACK_BOOSTS
 .public EXCLUSIVE_ITEM_SPECIAL_DEFENSE_BOOSTS
 .public EXCLUSIVE_ITEM_STAT_BOOST_DATA_INDEXES
-.public FatalError
+.public Debug_FatalError
 .public FemaleToMaleForm
 .public FileClose
 .public FileGetSize
@@ -812,8 +812,8 @@
 .public GetActiveTeamMember
 .public GetActorMatchingStorageId
 .public GetBaseFormCastformDeoxysCherrim
-.public GetDebugFlag
-.public GetDebugLogFlag
+.public Debug_GetDebugFlag
+.public Debug_GetLogFlag
 .public GetDungeonModeSpecial
 .public GetEvolutionPossibilities
 .public GetFileLengthInPackWithPackNb
@@ -932,8 +932,8 @@
 .public SCROLL_BOX_DEFAULT_WINDOW_PARAMS
 .public SECONDARY_TERRAIN_TYPES
 .public SetActiveTeam
-.public SetDebugFlag
-.public SetDebugLogFlag
+.public Debug_SetDebugFlag
+.public Debug_SetLogFlag
 .public SetRngSeed
 .public SetTeamSetupHeroAndPartnerOnly
 .public SIMPLE_MENU_DEFAULT_WINDOW_PARAMS

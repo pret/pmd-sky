@@ -209,7 +209,7 @@
 .public CopyNStringFromId
 .public CreateCollectionMenu
 .public CreatePortraitBox
-.public DebugPrint0
+.public Debug_Print0
 .public DEF_SCARF_STAT_BOOST
 .public DeleteWanTableEntryVeneer
 .public DEMO_TEAMS
@@ -234,7 +234,7 @@
 .public GetBaseOffensiveStat
 .public GetBodySize
 .public GetCategoryString
-.public GetDebugFlag
+.public Debug_GetDebugFlag
 .public GetDexNumber
 .public GetDungeonMode
 .public GetEvoParameters

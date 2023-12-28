@@ -33,7 +33,7 @@
 .public DAMAGE_MULTIPLIER_1_5
 .public DAMAGE_MULTIPLIER_2
 .public DAMAGE_STRING_IDS
-.public DebugPrint0
+.public Debug_Print0
 .public DebugRecruitingEnabled
 .public DEF_SCARF_STAT_BOOST
 .public DEFENSIVE_STAT_STAGE_MULTIPLIERS

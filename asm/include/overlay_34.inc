@@ -4,7 +4,7 @@
 .public CloseParentMenu
 .public CreateDialogueBox
 .public CreateParentMenuFromStringIds
-.public GetDebugFlag
+.public Debug_GetDebugFlag
 .public GetFadeStatus
 .public IsDialogueBoxActive
 .public IsParentMenuActive

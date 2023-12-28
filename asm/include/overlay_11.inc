@@ -56,8 +56,8 @@
 .public CreateTextBox
 .public DataTransferInit
 .public DataTransferStop
-.public DebugPrint
-.public DebugPrint0
+.public Debug_Print
+.public Debug_Print0
 .public DecompressAtNormalVeneer
 .public DeleteWanTableEntryVeneer
 .public DeleteWindow
@@ -73,7 +73,7 @@
 .public EuclideanNorm__02005050
 .public EuclideanNorm__020050B0
 .public EVENTS
-.public FatalError
+.public Debug_FatalError
 .public FemaleToMaleForm
 .public FileClose
 .public FileInitVeneer
@@ -92,8 +92,8 @@
 .public GetAdvancedMenuResult
 .public GetAtSize
 .public GetCurrentBagCapacity
-.public GetDebugFlag
-.public GetDebugLogFlag
+.public Debug_GetDebugFlag
+.public Debug_GetLogFlag
 .public GetDexNumber
 .public GetDungeonMode
 .public GetDungeonModeSpecial

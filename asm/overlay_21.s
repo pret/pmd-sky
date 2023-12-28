@@ -85,7 +85,7 @@ _0238A168: ; jump table
 	b _0238B7B8 ; case 66
 _0238A274:
 	ldr r0, _0238B090 ; =ov21_0238CBB8
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
 	mov r2, #0x96
@@ -132,7 +132,7 @@ _0238A274:
 	b _0238B7B8
 _0238A32C:
 	ldr r0, _0238B0A0 ; =ov21_0238CBD4
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238B0A4 ; =SWAP_SHOP_WINDOW_PARAMS_1
 	ldr r1, _0238B0A8 ; =ov21_0238C9A4
 	bl CreateTextBox
@@ -152,7 +152,7 @@ _0238A32C:
 	b _0238B7B8
 _0238A378:
 	ldr r0, _0238B0B8 ; =ov21_0238CBF8
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov21_0238C920
 	mov r0, r4
 	ldr r1, [r0]
@@ -223,7 +223,7 @@ ov21_0238A468: ; 0x0238A468
 	b _0238B7B8
 _0238A478:
 	ldr r0, _0238B0C8 ; =ov21_0238CC18
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov21_0238C920
 	mov r0, r4
 	ldr r1, [r0]
@@ -253,7 +253,7 @@ _0238A478:
 	b _0238B7B8
 _0238A4EC:
 	ldr r0, _0238B0C8 ; =ov21_0238CC18
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	ldr r2, [r0]
 	mov r4, #2
@@ -267,7 +267,7 @@ _0238A4EC:
 	b _0238B7B8
 _0238A520:
 	ldr r0, _0238B0C8 ; =ov21_0238CC18
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov21_0238C920
 	mov r0, r4
 	ldr r1, [r0]
@@ -297,7 +297,7 @@ _0238A520:
 	b _0238B7B8
 _0238A594:
 	ldr r0, _0238B0D8 ; =ov21_0238CC3C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov21_0238C920
 	mov r0, r4
 	ldr r1, [r0]
@@ -352,7 +352,7 @@ _0238A5FC:
 	b _0238B7B8
 _0238A668:
 	ldr r0, _0238B0E0 ; =ov21_0238CC5C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov21_0238C920
 	mov r0, r4
 	ldr r1, [r0]
@@ -382,7 +382,7 @@ _0238A668:
 	b _0238B7B8
 _0238A6DC:
 	ldr r0, _0238B0E8 ; =ov21_0238CC7C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov21_0238C920
 	mov r0, r4
 	ldr r1, [r0]
@@ -412,7 +412,7 @@ _0238A6DC:
 	b _0238B7B8
 _0238A750:
 	ldr r0, _0238B0EC ; =ov21_0238CC9C
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov21_0238C920
 	mov r0, r4
 	ldr r1, [r0]
@@ -445,7 +445,7 @@ _0238A750:
 	b _0238B7B8
 _0238A7D0:
 	ldr r0, _0238B0F4 ; =ov21_0238CCC0
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov21_0238C920
 	mov r0, r4
 	ldr r1, [r0]
@@ -475,12 +475,12 @@ _0238A7D0:
 	b _0238B7B8
 _0238A844:
 	ldr r0, _0238B0F8 ; =ov21_0238CCE4
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov11_022DC504
 	b _0238B7B8
 _0238A854:
 	ldr r0, _0238B0FC ; =ov21_0238CD00
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov21_0238C920
 	mov r0, r4
 	ldr r1, [r0]
@@ -513,7 +513,7 @@ _0238A854:
 	b _0238B7B8
 _0238A8D4:
 	ldr r0, _0238B100 ; =ov21_0238CD24
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
 	mov r2, #0xd
@@ -545,7 +545,7 @@ _0238A8D4:
 	b _0238B7B8
 _0238A950:
 	ldr r0, _0238B108 ; =ov21_0238CD44
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
@@ -561,7 +561,7 @@ _0238A950:
 	b _0238B7B8
 _0238A98C:
 	ldr r0, _0238B10C ; =ov21_0238CD68
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov11_0230C910
 	mov r0, #0
 	mov r1, r0
@@ -569,7 +569,7 @@ _0238A98C:
 	b _0238B7B8
 _0238A9A8:
 	ldr r0, _0238B110 ; =ov21_0238CD8C
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
@@ -586,7 +586,7 @@ _0238A9A8:
 	b _0238B7B8
 _0238A9E8:
 	ldr r0, _0238B114 ; =ov21_0238CDB4
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r4, #3
 	ldr r0, _0238B118 ; =SWAP_SHOP_WINDOW_PARAMS_6
 	ldr r1, _0238B11C ; =0x00400013
@@ -600,7 +600,7 @@ _0238A9E8:
 	b _0238B7B8
 _0238AA1C:
 	ldr r0, _0238B124 ; =ov21_0238CDDC
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	ldr r5, [r0]
 	ldr r2, _0238B128 ; =ov21_0238CE00
@@ -646,7 +646,7 @@ _0238AA1C:
 	b _0238B7B8
 _0238AAC0:
 	ldr r0, _0238B13C ; =ov21_0238CE0C
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #0x96
@@ -720,7 +720,7 @@ _0238ABC0:
 	b _0238B7B8
 _0238ABDC:
 	ldr r0, _0238B148 ; =ov21_0238CE34
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r1, r4
 	ldr r2, [r1]
 	mov r3, #0x96
@@ -744,7 +744,7 @@ _0238ABDC:
 	b _0238B7B8
 _0238AC38:
 	ldr r0, _0238B150 ; =ov21_0238CE4C
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #6
@@ -762,7 +762,7 @@ _0238AC38:
 	b _0238B7B8
 _0238AC7C:
 	ldr r0, _0238B154 ; =ov21_0238CE78
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #7
@@ -780,7 +780,7 @@ _0238AC7C:
 	b _0238B7B8
 _0238ACC0:
 	ldr r0, _0238B158 ; =ov21_0238CEA4
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #8
@@ -934,7 +934,7 @@ _0238AE94:
 	b _0238B7B8
 _0238AEF4:
 	ldr r0, _0238B164 ; =ov21_0238CED0
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r4
 	mov r2, #0x13
 	ldr r1, [r0]
@@ -958,7 +958,7 @@ _0238AEF4:
 	b _0238B7B8
 _0238AF50:
 	ldr r0, _0238B16C ; =ov21_0238CEF8
-	bl DebugPrint0
+	bl Debug_Print0
 	mvn r0, #0x95
 	bl AddMoneyCarried
 	ldr r1, [r4]
@@ -2029,7 +2029,7 @@ _0238BE84: ; jump table
 	b _0238BED8 ; case 8
 _0238BEA8:
 	ldr r0, _0238C8E4 ; =OVERLAY21_JP_STRING
-	bl DebugPrint0
+	bl Debug_Print0
 	bl ov21_0238C920
 	bl ov11_0230B694
 	cmp r0, #0

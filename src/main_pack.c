@@ -6,7 +6,7 @@ extern void FileSeek(struct file_stream* file, int offset, int whence);
 extern u32 FileRead(struct file_stream* file, void* buf, u32 size);
 extern void FileInitVeneer(struct file_stream* file);
 extern char STRING_FILE_DIRECTORY_INIT;
-extern void DebugPrint0(const char* fmt, ...);
+extern void Debug_Print0(const char* fmt, ...);
 extern void FileOpen(struct file_stream* file, const char* filepath);
 extern void* MemAlloc(u32 len, u32 flags);
 extern void MemZero(void* ptr, u32 len);
@@ -51,7 +51,7 @@ void OpenPackFile(struct pack_file_opened *pack_file, char *file_path) {
   struct pack_file_table_of_content *toc_alloc = (struct pack_file_table_of_content *) MemAlloc(toc_total_size, 0);
   pack_file->table_of_content = toc_alloc;
   FileRead(&pack_file->opened_file,pack_file->table_of_content,toc_total_size);
-  DebugPrint0(&STRING_FILE_DIRECTORY_INIT,pack_file->zero,
+  Debug_Print0(&STRING_FILE_DIRECTORY_INIT,pack_file->zero,
               pack_file->nb_entry_table_of_content,toc_total_size,file_path);
   DataTransferStop();
   return;

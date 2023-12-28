@@ -4120,7 +4120,7 @@ _0238D934:
 _0238D938:
 	ldr r0, _0238DAD0 ; =ov19_0238E2D0
 	mov r1, r5
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r5
 	bl ov11_022E6E8C
 	mov r0, #4
@@ -4196,7 +4196,7 @@ _0238DA20:
 _0238DA24:
 	ldr r0, _0238DAD4 ; =ov19_0238E2E8
 	mov r1, r5
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r5
 	bl ov11_022E6E8C
 _0238DA38:
@@ -4206,7 +4206,7 @@ _0238DA38:
 	streq r0, [r4]
 	beq _0238DAC4
 	ldr r0, _0238DAD8 ; =ov19_0238E304
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0xd
 	str r0, [r4]
 	b _0238DAC4
@@ -4230,7 +4230,7 @@ _0238DA8C:
 	streq r0, [r4]
 	beq _0238DAC4
 	ldr r0, _0238DADC ; =ov19_0238E324
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, #0xf
 	str r0, [r4]
 	b _0238DAC4

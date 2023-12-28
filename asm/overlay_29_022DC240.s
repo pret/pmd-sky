@@ -74,7 +74,7 @@ ov29_022DC314: ; 0x022DC314
 	mov r5, r0
 	ldr r0, _022DC338 ; =ov29_0234FD14
 	mov r4, r1
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r5
 	mov r1, r4
 	bl sub_02008BF4
@@ -3437,7 +3437,7 @@ _022DEF94:
 	bl ov29_022DDE00
 	ldr r0, _022DFF3C ; =ov29_023510C8
 	mov r1, #0x3e0
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _022DFF40 ; =DUNGEON_PTR
 	cmp r5, #0
 	str sb, [r0]
