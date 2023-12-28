@@ -4375,7 +4375,7 @@ _020041A4:
 	str r2, [sp, #0xc]
 	bl Debug_FatalError
 _020041C4:
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	bl sub_0207A324
 	bl sub_0207A270
 	cmp r4, #0x24
@@ -4798,7 +4798,7 @@ _020047A0:
 _020047B8:
 	add r0, sp, #0x10
 	bl InitOverlay
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 _020047C4:
 	add sp, sp, #0x3c
 	ldmia sp!, {r3, r4, pc}
@@ -4927,7 +4927,7 @@ _02004968:
 	str r2, [sp, #0xc]
 	bl Debug_FatalError
 _02004988:
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	cmp r4, #0x24
 	addls pc, pc, r4, lsl #2
 	b _02004EAC
@@ -5303,7 +5303,7 @@ _02004EAC:
 	str r2, [sp, #4]
 	bl Debug_FatalError
 _02004ECC:
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 _02004ED0:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
@@ -8349,7 +8349,7 @@ sub_020075F4: ; 0x020075F4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	mov r0, #2
 	str r0, [r5]
 	ldmia r5!, {r0, r1, r2, r3}
@@ -8371,7 +8371,7 @@ sub_02007624: ; 0x02007624
 	stmia ip!, {r0, r1, r2, r3}
 	ldmia lr, {r0, r1, r2}
 	stmia ip, {r0, r1, r2}
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02007624
@@ -9218,8 +9218,8 @@ _02008160:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02008138
 
-	arm_func_start DataTransferInit
-DataTransferInit: ; 0x02008168
+	arm_func_start FileRom_InitDataTransfer
+FileRom_InitDataTransfer: ; 0x02008168
 	stmdb sp!, {r3, lr}
 	ldr r0, _0200818C ; =_020AF368
 	bl sub_02002CB4
@@ -9232,10 +9232,10 @@ DataTransferInit: ; 0x02008168
 	.align 2, 0
 _0200818C: .word _020AF368
 _02008190: .word _020AF360
-	arm_func_end DataTransferInit
+	arm_func_end FileRom_InitDataTransfer
 
-	arm_func_start DataTransferStop
-DataTransferStop: ; 0x02008194
+	arm_func_start FileRom_StopDataTransfer
+FileRom_StopDataTransfer: ; 0x02008194
 	stmdb sp!, {r4, lr}
 	ldr r1, _020081C0 ; =_020AF360
 	ldr r0, _020081C4 ; =_020AF368
@@ -9250,7 +9250,7 @@ DataTransferStop: ; 0x02008194
 	.align 2, 0
 _020081C0: .word _020AF360
 _020081C4: .word _020AF368
-	arm_func_end DataTransferStop
+	arm_func_end FileRom_StopDataTransfer
 
 	arm_func_start sub_020081C8
 sub_020081C8: ; 0x020081C8
@@ -9282,16 +9282,16 @@ _020081FC: .word sub_02002E10
 _02008200: .word _020AF368
 	arm_func_end sub_020081F0
 
-	arm_func_start FileInitVeneer
-FileInitVeneer: ; 0x02008204
+	arm_func_start FileRom_Veneer_FileInit
+FileRom_Veneer_FileInit: ; 0x02008204
 	ldr ip, _0200820C ; =FileInit
 	bx ip
 	.align 2, 0
 _0200820C: .word FileInit
-	arm_func_end FileInitVeneer
+	arm_func_end FileRom_Veneer_FileInit
 
-	arm_func_start FileOpen
-FileOpen: ; 0x02008210
+	arm_func_start FileRom_HandleOpen
+FileRom_HandleOpen: ; 0x02008210
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, r1
@@ -9305,7 +9305,7 @@ _02008220:
 	mov r0, r4
 	bl CardPullOutWithStatus
 	b _02008220
-	arm_func_end FileOpen
+	arm_func_end FileRom_HandleOpen
 
 	arm_func_start sub_02008240
 sub_02008240: ; 0x02008240
@@ -9320,8 +9320,8 @@ FileGetSize: ; 0x02008244
 	bx lr
 	arm_func_end FileGetSize
 
-	arm_func_start FileRead
-FileRead: ; 0x02008254
+	arm_func_start FileRom_HandleRead
+FileRom_HandleRead: ; 0x02008254
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
@@ -9345,10 +9345,10 @@ _02008298:
 	bgt _02008270
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end FileRead
+	arm_func_end FileRom_HandleRead
 
-	arm_func_start FileSeek
-FileSeek: ; 0x020082A8
+	arm_func_start FileRom_HandleSeek
+FileRom_HandleSeek: ; 0x020082A8
 	stmdb sp!, {r3, lr}
 	bl sub_0207F828
 	cmp r0, #0
@@ -9356,7 +9356,7 @@ FileSeek: ; 0x020082A8
 	mov r0, #1
 	bl CardPullOutWithStatus
 	ldmia sp!, {r3, pc}
-	arm_func_end FileSeek
+	arm_func_end FileRom_HandleSeek
 
 	arm_func_start FileClose
 FileClose: ; 0x020082C4

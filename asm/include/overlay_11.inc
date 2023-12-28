@@ -54,8 +54,8 @@
 .public CreateSimpleMenu
 .public CreateSimpleMenuFromStringIds
 .public CreateTextBox
-.public DataTransferInit
-.public DataTransferStop
+.public FileRom_InitDataTransfer
+.public FileRom_StopDataTransfer
 .public Debug_Print
 .public Debug_Print0
 .public DecompressAtNormalVeneer
@@ -76,10 +76,10 @@
 .public Debug_FatalError
 .public FemaleToMaleForm
 .public FileClose
-.public FileInitVeneer
-.public FileOpen
-.public FileRead
-.public FileSeek
+.public FileRom_Veneer_FileInit
+.public FileRom_HandleOpen
+.public FileRom_HandleRead
+.public FileRom_HandleSeek
 .public FreeTeamStats
 .public GenerateDailyMissions
 .public GenerateKecleonItems1

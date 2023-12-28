@@ -9491,12 +9491,12 @@ SsbLoad2: ; 0x022E46FC
 	mov r2, r4
 	mov r0, #2
 	bl Debug_Print
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
-	bl FileInitVeneer
+	bl FileRom_Veneer_FileInit
 	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	mov r1, r4
-	bl FileOpen
+	bl FileRom_HandleOpen
 	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	add r1, sp, #0
 #ifdef EUROPE
@@ -9504,7 +9504,7 @@ SsbLoad2: ; 0x022E46FC
 #else
 	mov r2, #0xc
 #endif
-	bl FileRead
+	bl FileRom_HandleRead
 	ldrh r3, [sp, #4]
 	ldrh r2, [sp, #6]
 	ldr r0, _022E48A8 ; =ov11_02324F70
@@ -9529,7 +9529,7 @@ _022E4790:
 	ldr r1, [r5]
 	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	mov r2, r2, lsl #1
-	bl FileRead
+	bl FileRom_HandleRead
 	ldrh r0, [sp]
 	cmp r0, #0
 	beq _022E47D4
@@ -9541,7 +9541,7 @@ _022E4790:
 	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	add r1, r3, r1, lsl #1
 	mov r2, r2, lsl #1
-	bl FileRead
+	bl FileRom_HandleRead
 _022E47D4:
 	ldrh r0, [sp, #2]
 	cmp r0, #0
@@ -9570,14 +9570,14 @@ _022E4814:
 	mov r1, r2, lsl #1
 	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	ldrh r2, [sp, #2]
 	ldrh r1, [sp, #4]
 	ldr r3, [r5]
 	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	add r1, r3, r1, lsl #1
 	mov r2, r2, lsl #1
-	bl FileRead
+	bl FileRom_HandleRead
 	ldr r0, _022E48A8 ; =ov11_02324F70
 	add r1, sp, #0
 	ldrsb r0, [r0]
@@ -9594,11 +9594,11 @@ _022E4814:
 	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	add r1, r5, r1, lsl #1
 	mov r2, r2, lsl #1
-	bl FileRead
+	bl FileRom_HandleRead
 _022E488C:
 	add r0, sp, #0xc + SSB_LOAD_2_STACK_OFFSET
 	bl FileClose
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	mov r0, r4
 	add sp, sp, #0x54 + SSB_LOAD_2_STACK_OFFSET
 	ldmia sp!, {r4, r5, pc}
@@ -11159,12 +11159,12 @@ SsbLoad1: ; 0x022E5D50
 	mov r2, r5
 	mov r0, #2
 	bl Debug_Print
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
-	bl FileInitVeneer
+	bl FileRom_Veneer_FileInit
 	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	mov r1, r5
-	bl FileOpen
+	bl FileRom_HandleOpen
 	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	add r1, sp, #0
 #ifdef EUROPE
@@ -11172,7 +11172,7 @@ SsbLoad1: ; 0x022E5D50
 #else
 	mov r2, #0xc
 #endif
-	bl FileRead
+	bl FileRom_HandleRead
 	ldrh r3, [sp, #4]
 	ldrh r2, [sp, #6]
 	ldr r0, _022E5EF8 ; =ov11_02324F74
@@ -11196,7 +11196,7 @@ _022E5DE0:
 	ldr r1, [r4]
 	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	mov r2, r2, lsl #1
-	bl FileRead
+	bl FileRom_HandleRead
 	ldrh r0, [sp]
 	cmp r0, #0
 	beq _022E5E24
@@ -11208,7 +11208,7 @@ _022E5DE0:
 	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	add r1, r3, r1, lsl #1
 	mov r2, r2, lsl #1
-	bl FileRead
+	bl FileRom_HandleRead
 _022E5E24:
 	ldrh r0, [sp, #2]
 	cmp r0, #0
@@ -11237,14 +11237,14 @@ _022E5E64:
 	mov r1, r2, lsl #1
 	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	ldrh r2, [sp, #2]
 	ldrh r1, [sp, #4]
 	ldr r3, [r4]
 	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	add r1, r3, r1, lsl #1
 	mov r2, r2, lsl #1
-	bl FileRead
+	bl FileRom_HandleRead
 	ldr r0, _022E5EF8 ; =ov11_02324F74
 	add r1, sp, #0
 	ldrsb r0, [r0, #1]
@@ -11261,11 +11261,11 @@ _022E5E64:
 	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	add r1, r4, r1, lsl #1
 	mov r2, r2, lsl #1
-	bl FileRead
+	bl FileRom_HandleRead
 _022E5EDC:
 	add r0, sp, #0xc + SSB_LOAD_1_STACK_OFFSET
 	bl FileClose
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	mov r0, #1
 	add sp, sp, #0x54 + SSB_LOAD_1_STACK_OFFSET
 	ldmia sp!, {r4, r5, pc}
@@ -18325,33 +18325,33 @@ LoadBackgroundAttributes: ; 0x022EBB40
 	sub sp, sp, #0x48
 	mov sl, r0
 	mov r4, r1
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	add r0, sp, #0
-	bl FileInitVeneer
+	bl FileRom_Veneer_FileInit
 	ldr r1, _022EBC14 ; =ov11_02320C44
 	add r0, sp, #0
-	bl FileOpen
+	bl FileRom_HandleOpen
 	mov r0, #0x58
 	mul r1, r4, r0
 	add r0, sp, #0
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	add r0, sp, #0
 	mov r1, sl
 	mov r2, #8
-	bl FileRead
+	bl FileRom_HandleRead
 	mov r0, #0
 	strb r0, [sl, #8]
 	add r0, sp, #0
 	add r1, sl, #0xa
 	mov r2, #8
-	bl FileRead
+	bl FileRom_HandleRead
 	mov r0, #0
 	strb r0, [sl, #0x12]
 	add r0, sp, #0
 	add r1, sl, #0x14
 	mov r2, #8
-	bl FileRead
+	bl FileRom_HandleRead
 	mov r8, #0
 	strb r8, [sl, #0x1c]
 	add r6, sl, #0x1e
@@ -18364,7 +18364,7 @@ _022EBBD8:
 	mov r0, r7
 	mov r2, fp
 	add r1, r6, sb
-	bl FileRead
+	bl FileRom_HandleRead
 	add r0, sl, sb
 	add r8, r8, #1
 	strb r5, [r0, #0x26]
@@ -18372,7 +18372,7 @@ _022EBBD8:
 	blt _022EBBD8
 	add r0, sp, #0
 	bl FileClose
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0

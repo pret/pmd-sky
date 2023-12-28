@@ -16806,12 +16806,12 @@ sub_02019314: ; 0x02019314
 	sub sp, sp, #0x48
 	mov r5, r0
 	mov r4, r1
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	add r0, sp, #0
-	bl FileInitVeneer
+	bl FileRom_Veneer_FileInit
 	add r0, sp, #0
 	mov r1, r4
-	bl FileOpen
+	bl FileRom_HandleOpen
 	add r0, sp, #0
 	bl FileGetSize
 	str r0, [r5, #4]
@@ -16823,11 +16823,11 @@ sub_02019314: ; 0x02019314
 	str r0, [r5]
 	add r0, sp, #0
 	ldmia r5, {r1, r2}
-	bl FileRead
+	bl FileRom_HandleRead
 	mov r4, r0
 	add r0, sp, #0
 	bl FileClose
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	mov r0, r4
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, pc}
@@ -16841,12 +16841,12 @@ LoadDseFile: ; 0x0201938C
 	sub sp, sp, #0x48
 	mov r5, r0
 	mov r4, r1
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	add r0, sp, #0
-	bl FileInitVeneer
+	bl FileRom_Veneer_FileInit
 	add r0, sp, #0
 	mov r1, r4
-	bl FileOpen
+	bl FileRom_HandleOpen
 	add r0, sp, #0
 	bl FileGetSize
 	str r0, [r5, #4]
@@ -16858,11 +16858,11 @@ LoadDseFile: ; 0x0201938C
 	str r0, [r5]
 	add r0, sp, #0
 	ldmia r5, {r1, r2}
-	bl FileRead
+	bl FileRom_HandleRead
 	mov r4, r0
 	add r0, sp, #0
 	bl FileClose
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	mov r0, r4
 	add sp, sp, #0x48
 	ldmia sp!, {r3, r4, r5, pc}
@@ -17316,7 +17316,7 @@ _02019970:
 	str r0, [r1, #0x2c]
 	ldr r0, _02019B00 ; =_020AFB28
 	bl sub_02002E98
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	bl sub_02003AB0
 	ldr r0, _02019B08 ; =_022A4E58
 	ldr r2, [r0, #4]
@@ -17329,7 +17329,7 @@ _02019A5C:
 	bl sub_0206D30C
 	cmp r0, #0
 	bne _02019A5C
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	ldr r0, _02019B00 ; =_020AFB28
 	bl sub_02002CB4
 	ldr r0, _02019B08 ; =_022A4E58
@@ -17662,7 +17662,7 @@ _02019E3C:
 	str r0, [r1, #0x54]
 	ldr r0, _02019FC0 ; =_020AFB28
 	bl sub_02002E98
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	bl sub_02003AB0
 	ldr r0, _02019FC8 ; =_022A4E58
 	ldr r2, [r0, #0xc]
@@ -17675,7 +17675,7 @@ _02019F1C:
 	bl sub_0206D30C
 	cmp r0, #0
 	bne _02019F1C
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	ldr r0, _02019FC0 ; =_020AFB28
 	bl sub_02002CB4
 	ldr r0, _02019FC8 ; =_022A4E58
@@ -32203,28 +32203,28 @@ GetStringFromFile: ; 0x02025788
 	sub sp, sp, #8
 	mov r4, r1
 	mov r5, r0
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	sub r0, r4, #1
 	mov r1, r0, lsl #0x10
 	ldr r0, _020257F8 ; =_022A59C0
 	mov r1, r1, lsr #0xe
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	ldr r0, _020257F8 ; =_022A59C0
 	add r1, sp, #0
 	mov r2, #8
-	bl FileRead
+	bl FileRom_HandleRead
 	ldr r1, [sp]
 	ldr r0, _020257F8 ; =_022A59C0
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	ldr r3, [sp, #4]
 	ldr r2, [sp]
 	ldr r0, _020257F8 ; =_022A59C0
 	mov r1, r5
 	sub r2, r3, r2
-	bl FileRead
-	bl DataTransferStop
+	bl FileRom_HandleRead
+	bl FileRom_StopDataTransfer
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -32252,7 +32252,7 @@ LoadStringFile: ; 0x02025818
 	ldrsb r0, [r1]
 	cmp r0, r4
 	ldmeqia sp!, {r4, pc}
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	ldr r1, _0202587C ; =_020AFCEC
 	mvn r0, #0
 	ldrsb r1, [r1]
@@ -32264,12 +32264,12 @@ _02025854:
 	ldr r1, _0202587C ; =_020AFCEC
 	ldr r0, _02025880 ; =_022A59C0
 	strb r4, [r1]
-	bl FileInitVeneer
+	bl FileRom_Veneer_FileInit
 	ldr r1, _02025884 ; =_020AFCF0
 	ldr r0, _02025880 ; =_022A59C0
 	ldr r1, [r1, r4, lsl #2]
-	bl FileOpen
-	bl DataTransferStop
+	bl FileRom_HandleOpen
+	bl FileRom_StopDataTransfer
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0202587C: .word _020AFCEC
@@ -32347,21 +32347,21 @@ CopyNStringFromId: ; 0x0202590C
 	arm_func_start LoadTblTalk
 LoadTblTalk: ; 0x0202593C
 	stmdb sp!, {r3, lr}
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	ldr r0, _02025980 ; =_022A7A0C
-	bl FileInitVeneer
+	bl FileRom_Veneer_FileInit
 	ldr r0, _02025980 ; =_022A7A0C
 	ldr r1, _02025984 ; =_0209AAD8
-	bl FileOpen
+	bl FileRom_HandleOpen
 	ldr r0, _02025980 ; =_022A7A0C
 	mov r1, #0x33c
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	ldr r0, _02025980 ; =_022A7A0C
 	ldr r1, _02025988 ; =_022A7A08
 	mov r2, #2
-	bl FileRead
-	bl DataTransferStop
+	bl FileRom_HandleRead
+	bl FileRom_StopDataTransfer
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02025980: .word _022A7A0C
@@ -32384,21 +32384,21 @@ GetTalkLine: ; 0x0202598C
 	cmp r4, #2
 	moveq r4, #0
 _020259BC:
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	ldr r1, _02025AC8 ; =_022A7A08
 	ldr r0, _02025ACC ; =_022A7A0C
 	ldrsh r1, [r1]
 	mov r2, #0
 	add r1, r1, r6
-	bl FileSeek
+	bl FileRom_HandleSeek
 	ldr r0, _02025ACC ; =_022A7A0C
 	add r1, sp, #0
 	mov r2, #1
-	bl FileRead
+	bl FileRom_HandleRead
 	ldrsb r2, [sp]
 	cmp r2, #0
 	bge _02025A00
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	ldr r0, _02025AD0 ; =0x00003EFD
 	b _02025ABC
 _02025A00:
@@ -32407,26 +32407,26 @@ _02025A00:
 	ldr r0, _02025ACC ; =_022A7A0C
 	mov r1, r1, lsl #1
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	ldr r0, _02025ACC ; =_022A7A0C
 	add r1, sp, #2
 	mov r2, #4
-	bl FileRead
+	bl FileRom_HandleRead
 	ldrsh r1, [sp, #2]
 	ldrsh r0, [sp, #4]
 	subs r6, r0, r1
 	bne _02025A44
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	ldr r0, _02025AD0 ; =0x00003EFD
 	b _02025ABC
 _02025A44:
 	ldr r0, _02025ACC ; =_022A7A0C
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	ldr r0, _02025ACC ; =_022A7A0C
 	add r1, sp, #6
 	mov r2, r6
-	bl FileRead
+	bl FileRom_HandleRead
 	cmp r4, #1
 	bne _02025A78
 	mov r0, #2
@@ -32441,7 +32441,7 @@ _02025A78:
 	bl RandInt
 	mov r4, r0
 _02025A90:
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	ldr r2, _02025AD4 ; =TBL_TALK_GROUP_STRING_ID_START
 	mov r3, r5, lsl #1
 	add r0, sp, #6
@@ -38348,21 +38348,21 @@ sub_0202A45C: ; 0x0202A45C
 	mov sb, r2
 	mov r8, r3
 	ldr r7, [sp, #0x90]
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	add r0, sp, #0x28
-	bl FileInitVeneer
+	bl FileRom_Veneer_FileInit
 	ldr r1, _0202A5C0 ; =_020AFDAC
 	add r0, sp, #0x28
 	ldr r1, [r1, sl, lsl #2]
-	bl FileOpen
+	bl FileRom_HandleOpen
 	mov r1, r4, lsl #3
 	add r0, sp, #0x28
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	add r0, sp, #0x28
 	add r1, sp, #8
 	mov r2, #0x10
-	bl FileRead
+	bl FileRom_HandleRead
 	ldr r6, [sp, #8]
 	ldr r1, [sp, #0x10]
 	mov r0, r6
@@ -38378,15 +38378,15 @@ sub_0202A45C: ; 0x0202A45C
 	add r0, sp, #0x28
 	mov r1, r6
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	add r0, sp, #0x28
 	mov r1, r5
 	mov r2, r4
-	bl FileRead
+	bl FileRom_HandleRead
 _0202A504:
 	add r0, sp, #0x28
 	bl FileClose
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	cmp sl, #2
 	ldreq r0, _0202A5C4 ; =_0209AE44
 	add r4, sp, #0x18
@@ -80932,10 +80932,10 @@ CopyProgressInfoFromScratchFrom: ; 0x0204D748
 	arm_func_start InitKaomadoStream
 InitKaomadoStream: ; 0x0204D780
 	stmdb sp!, {r3, lr}
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	ldr r0, _0204D798 ; =_022AB4B0
-	bl FileInitVeneer
-	bl DataTransferStop
+	bl FileRom_Veneer_FileInit
+	bl FileRom_StopDataTransfer
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0204D798: .word _022AB4B0
@@ -81051,10 +81051,10 @@ LoadPortrait: ; 0x0204D8BC
 	mov sb, r1
 	ldrsh r7, [sl]
 	ldrsb r8, [sl, #2]
-	bl DataTransferInit
+	bl FileRom_InitDataTransfer
 	ldr r0, _0204DA14 ; =_022AB4B0
 	ldr r1, _0204DA18 ; =KAOMADO_FILEPATH
-	bl FileOpen
+	bl FileRom_HandleOpen
 	mov fp, #0
 	mov r4, fp
 	mov r5, #1
@@ -81067,11 +81067,11 @@ _0204D8F4:
 	ldr r0, _0204DA14 ; =_022AB4B0
 	mov r2, #0
 	sub r7, r7, #0x258
-	bl FileSeek
+	bl FileRom_HandleSeek
 	ldr r0, _0204DA14 ; =_022AB4B0
 	add r1, sp, #0
 	mov r2, #0xc
-	bl FileRead
+	bl FileRom_HandleRead
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	movge r0, #1
@@ -81111,15 +81111,15 @@ _0204D99C:
 	beq _0204D9C8
 	ldr r0, _0204DA14 ; =_022AB4B0
 	mov r2, #0
-	bl FileSeek
+	bl FileRom_HandleSeek
 	ldr r0, _0204DA14 ; =_022AB4B0
 	mov r1, sb
 	mov r2, r6
-	bl FileRead
+	bl FileRom_HandleRead
 _0204D9C8:
 	ldr r0, _0204DA14 ; =_022AB4B0
 	bl FileClose
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	mov r0, #1
 	b _0204DA0C
 _0204D9DC:
@@ -81133,7 +81133,7 @@ _0204D9DC:
 	bne _0204D9DC
 	ldr r0, _0204DA14 ; =_022AB4B0
 	bl FileClose
-	bl DataTransferStop
+	bl FileRom_StopDataTransfer
 	mov r0, #0
 _0204DA0C:
 	add sp, sp, #0xc

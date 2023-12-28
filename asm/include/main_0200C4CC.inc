@@ -772,8 +772,8 @@
 .public CLIENT_LEVEL_TABLE
 .public COLLECTION_MENU_DEFAULT_WINDOW_PARAMS
 .public CONTROLS_CHART_DEFAULT_WINDOW_PARAMS
-.public DataTransferInit
-.public DataTransferStop
+.public FileRom_InitDataTransfer
+.public FileRom_StopDataTransfer
 .public DEBUG_MENU_DEFAULT_WINDOW_PARAMS
 .public Debug_Print
 .public Debug_Print0
@@ -801,10 +801,10 @@
 .public FemaleToMaleForm
 .public FileClose
 .public FileGetSize
-.public FileInitVeneer
-.public FileOpen
-.public FileRead
-.public FileSeek
+.public FileRom_Veneer_FileInit
+.public FileRom_HandleOpen
+.public FileRom_HandleRead
+.public FileRom_HandleSeek
 .public FORBIDDEN_FORGOT_MOVE_LIST
 .public GAME_MODE
 .public GET_ITEM_NAME_FORMATTED_SPRINTF
