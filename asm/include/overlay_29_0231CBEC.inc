@@ -1,7 +1,7 @@
 #pragma once
 .public _020A1894
 .public AbilityIsActiveVeneer
-.public AllocAndLoadFileInPack
+.public DirectoryFileMngr_OpenDirectoryFile
 .public ATK_STAT_IDX
 .public BoostIQ
 .public BoostOffensiveStat

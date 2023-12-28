@@ -996,7 +996,7 @@ _022E0F80:
 	add r2, sp, #8
 	mov r0, #4
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #8]
 	add r0, sp, #0x14
 	bl HandleSir0Translation
@@ -1020,7 +1020,7 @@ _022E0F80:
 	mov r0, #4
 	add r2, sp, #8
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #8]
 	add r0, sp, #0x10
 	bl HandleSir0Translation
@@ -1060,7 +1060,7 @@ _022E1038:
 	add r2, sp, #8
 	mov r0, #4
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #8]
 	add r0, sp, #0x18
 	bl HandleSir0Translation
@@ -1084,7 +1084,7 @@ _022E1038:
 	mov r0, #4
 	add r2, sp, #8
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #8]
 	add r0, sp, #0x1c
 	bl HandleSir0Translation
@@ -1103,7 +1103,7 @@ _022E1038:
 	mov r0, #4
 	mov r1, #0x3e4
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, _022E11EC ; =ov29_02353540
 	ldr r0, _022E11F0 ; =ov29_02353540
 	ldr r1, [r1, #4]
@@ -1160,7 +1160,7 @@ ov29_022E11F8: ; 0x022E11F8
 	add r2, sp, #4
 	mov r0, #4
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #4]
 	add r0, sp, #0
 	bl HandleSir0Translation
@@ -1242,7 +1242,7 @@ ov29_022E1304: ; 0x022E1304
 	add r2, sp, #8
 	mov r0, #4
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #8]
 	add r0, sp, #0x10
 	bl HandleSir0Translation

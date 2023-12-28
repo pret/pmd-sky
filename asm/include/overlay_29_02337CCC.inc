@@ -3,7 +3,7 @@
 .public _020AFC70
 .public _s32_div_f
 .public abs
-.public AllocAndLoadFileInPack
+.public DirectoryFileMngr_OpenDirectoryFile
 .public CORNER_CARDINAL_NEIGHBOR_IS_OPEN
 .public CountStickyItemsInBag
 .public DetermineAllTilesWalkableNeighbors

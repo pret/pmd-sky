@@ -2,7 +2,7 @@
 .public _020AFC4C
 .public _020AFC70
 .public _s32_div_f
-.public AllocAndLoadFileInPack
+.public DirectoryFileMngr_OpenDirectoryFile
 .public AllocTopScreenStatus
 .public ChangeGiratinaFormIfSkyDungeon
 .public ClearHiddenStairs

@@ -52459,15 +52459,15 @@ _020AFF3C_EU:
 
 	; pack file related
 
-	.global PACK_FILES_OPENED ; 0x20af69c
-	PACK_FILES_OPENED:
-	; [Runtime] A pointer to the 6 opened Pack files (listed at PACK_FILE_PATHS_TABLE)
+	.global DIRECTORY_FILES_EXTRACTED ; 0x20af69c
+	DIRECTORY_FILES_EXTRACTED:
+	; [Runtime] A pointer to the 6 opened Pack files (listed at DIRECTORY_FILE_TABLE)
 	.word 0x0
 
 	; List of pointers to path strings to all known pack files.
 	; The game uses this table to load its resources when launching dungeon mode.
-	.global PACK_FILE_PATHS_TABLE ; 0x020af6a0
-	PACK_FILE_PATHS_TABLE:
+	.global DIRECTORY_FILE_TABLE ; 0x020af6a0
+	DIRECTORY_FILE_TABLE:
 	.word STRING_MONSTER_MONSTER_BIN
 	.word STRING_MONSTER_M_ATTACK_BIN
 	.word STRING_MONSTER_M_GROUND_BIN

@@ -750,7 +750,7 @@
 .public ADVENTURE_LOG_ENCOUNTERS_MONSTER_IDS
 .public ADVENTURE_LOG_PTR
 .public ALERT_BOX_DEFAULT_WINDOW_PARAMS
-.public AllocAndLoadFileInPack
+.public DirectoryFileMngr_OpenDirectoryFile
 .public AREA_NAME_BOX_DEFAULT_WINDOW_PARAMS
 .public ARM9_UNKNOWN_DATA__NA_209E6BC
 .public ARM9_UNKNOWN_PTR__NA_20A2C84
@@ -816,7 +816,7 @@
 .public Debug_GetLogFlag
 .public GetDungeonModeSpecial
 .public GetEvolutionPossibilities
-.public GetFileLengthInPackWithPackNb
+.public DirectoryFileMngr_GetDirectoryFileSize
 .public GetHeldButtons
 .public GetHero
 .public GetHeroMemberIdx
@@ -859,7 +859,7 @@
 .public LANGUAGE_INFO_DATA
 .public LIFE_SEED_HP_BOOST
 .public LoadFileFromRom
-.public LoadFileInPackWithPackId
+.public DirectoryFileMngr_LoadDirectoryFile
 .public LoadOverlay
 .public MemAlloc
 .public MemArenaAlloc

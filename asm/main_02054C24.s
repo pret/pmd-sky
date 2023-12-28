@@ -4731,7 +4731,7 @@ sub_0205882C: ; 0x0205882C
 	add r2, sp, #0x14
 	mov r0, #4
 	str r3, [sp, #0x1c]
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #0x14]
 	add r0, sp, #0x1c
 	bl HandleSir0Translation
@@ -4861,7 +4861,7 @@ _02058928:
 	add r2, sp, #0xc
 	mov r0, #4
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #0xc]
 	add r0, sp, #8
 	bl HandleSir0Translation
@@ -19568,7 +19568,7 @@ _02064B94:
 	mov r3, r6
 	str r7, [r5, #0x48]
 	add r2, r5, #0x50
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldrsh r2, [r5, #0x4c]
 	add r1, sp, #0
 	mov r0, r5
@@ -20955,7 +20955,7 @@ MainLoop: ; 0x02065D1C
 	ldr r0, [r0]
 	bl InitWanTable
 	bl sub_0201F208
-	bl OpenAllPackFiles
+	bl DirectoryFileMngr_ExtractAllDirectoryFiles
 	bl sub_0204AB18
 	bl InitKaomadoStream
 	bl sub_02025AD8

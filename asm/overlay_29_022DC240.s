@@ -2511,7 +2511,7 @@ ov29_022DE300: ; 0x022DE300
 	mov r3, #0
 	ldr r2, [r2]
 	add r2, r2, #0x40
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r0, _022DE410 ; =ov29_02353530
 	ldr r1, [r0]
 	add r0, r1, #0x48

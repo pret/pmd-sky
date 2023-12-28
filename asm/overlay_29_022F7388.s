@@ -167,7 +167,7 @@ _022F756C:
 _022F7598:
 	mov r1, r4
 	mov r0, #0
-	bl GetFileLengthInPackWithPackNb
+	bl DirectoryFileMngr_GetDirectoryFileSize
 	ldr r1, _022F75C4 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x2c000

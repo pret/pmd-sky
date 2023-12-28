@@ -1533,7 +1533,7 @@ ov29_02338F68: ; 0x02338F68
 	ldr r2, _02338FC0 ; =ov29_02353784
 	mov r0, #4
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, _02338FC4 ; =ov29_0235376C
 	add r0, sp, #0
 	ldr r1, [r1, #0x18]

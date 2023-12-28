@@ -11,7 +11,8 @@ Static main
 	StackSize 0 2048
 	Object asm/main_02000C6C.o
 	Object src/debug.o
-	Object src/main_pack.o
+	Object src/directory_file_mngr.o
+	Object src/directory_file.o
 	Object asm/main_0200C4CC.o
 	Object src/main_02054BE0.o
 	Object asm/main_02054C24.o

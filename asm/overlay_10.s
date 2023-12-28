@@ -2244,7 +2244,7 @@ _022BE830:
 	add r1, r1, #0x10c
 	mov r1, r1, lsl #0x10
 	mov r1, r1, lsr #0x10
-	bl GetFileLengthInPackWithPackNb
+	bl DirectoryFileMngr_GetDirectoryFileSize
 	cmp r4, r0
 	bge _022BE980
 	add r5, sp, #0x30
@@ -2306,7 +2306,7 @@ _022BE918:
 	mov r1, r1, asr #0x10
 	mov r1, r1, lsl #0x10
 	mov r1, r1, lsr #0x10
-	bl GetFileLengthInPackWithPackNb
+	bl DirectoryFileMngr_GetDirectoryFileSize
 	cmp r4, r0
 	bge _022BE980
 	add r5, sp, #4
@@ -6980,7 +6980,7 @@ ov10_022C2588: ; 0x022C2588
 	mov r1, r0, lsr #0x10
 	add r2, sp, #4
 	mov r0, #4
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #4]
 	add r0, sp, #0
 	bl HandleSir0Translation
@@ -7007,7 +7007,7 @@ ov10_022C25EC: ; 0x022C25EC
 	mov r1, r0, lsr #0x10
 	mov r2, r4
 	mov r0, #4
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [r4]
 	add r0, sp, #0
 	bl HandleSir0Translation
@@ -7041,7 +7041,7 @@ ov10_022C2654: ; 0x022C2654
 	mov r1, r0, lsr #0x10
 	mov r2, r4
 	mov r0, #4
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [r4]
 	add r0, sp, #0
 	bl HandleSir0Translation
@@ -7076,7 +7076,7 @@ InitTilesetBuffer: ; 0x022C26BC
 	mov r1, r0, lsr #0x10
 	add r2, sp, #4
 	mov r0, #4
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #4]
 	add r0, sp, #0
 	bl HandleSir0Translation
@@ -7109,7 +7109,7 @@ ov10_022C2720: ; 0x022C2720
 	add r2, sp, #4
 	mov r3, r4
 	mov r0, #4
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #4]
 	add r0, sp, #0
 	bl HandleSir0Translation
@@ -7126,7 +7126,7 @@ _022C2788:
 	add r2, sp, #4
 	mov r3, r4
 	mov r0, #4
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #4]
 	add r0, sp, #0
 	bl HandleSir0Translation

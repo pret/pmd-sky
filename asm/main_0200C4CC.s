@@ -21762,11 +21762,11 @@ _0201D4C0:
 	ldr sb, [r0, #0x500]
 	mov r0, r8
 	mov r1, r7
-	bl GetFileLengthInPackWithPackNb
+	bl DirectoryFileMngr_GetDirectoryFileSize
 	mov r0, r8
 	mov r1, r7
 	mov r2, sb
-	bl LoadFileInPackWithPackId
+	bl DirectoryFileMngr_LoadDirectoryFile
 	mov r0, sb
 	bl GetAtSize
 	mov r7, r0
@@ -21780,7 +21780,7 @@ _0201D4C0:
 _0201D53C:
 	mov r0, r8
 	mov r1, r7
-	bl GetFileLengthInPackWithPackNb
+	bl DirectoryFileMngr_GetDirectoryFileSize
 	mov r1, r6
 	mov sb, r0
 	bl MemAlloc
@@ -21788,7 +21788,7 @@ _0201D53C:
 	mov r0, r8
 	mov r1, r7
 	mov r2, r6
-	bl LoadFileInPackWithPackId
+	bl DirectoryFileMngr_LoadDirectoryFile
 	str sb, [r4, #0x28]
 _0201D56C:
 	str r6, [r4, #0x34]
@@ -21832,11 +21832,11 @@ _0201D5CC:
 	ldr sb, [r0, #0x500]
 	mov r0, r8
 	mov r1, r7
-	bl GetFileLengthInPackWithPackNb
+	bl DirectoryFileMngr_GetDirectoryFileSize
 	mov r0, r8
 	mov r1, r7
 	mov r2, sb
-	bl LoadFileInPackWithPackId
+	bl DirectoryFileMngr_LoadDirectoryFile
 	mov r0, sb
 	bl GetAtSize
 	mov r2, sb
@@ -21847,11 +21847,11 @@ _0201D5CC:
 _0201D62C:
 	mov r0, r8
 	mov r1, r7
-	bl GetFileLengthInPackWithPackNb
+	bl DirectoryFileMngr_GetDirectoryFileSize
 	mov r0, r8
 	mov r1, r7
 	mov r2, r6
-	bl LoadFileInPackWithPackId
+	bl DirectoryFileMngr_LoadDirectoryFile
 _0201D648:
 	mov r0, #2
 	strb r0, [r4, #0x21]
@@ -21885,11 +21885,11 @@ ReplaceWanFromBinFile: ; 0x0201D684
 	mov r0, r5
 	mov r1, r4
 	ldr r8, [r6, #0x34]
-	bl GetFileLengthInPackWithPackNb
+	bl DirectoryFileMngr_GetDirectoryFileSize
 	mov r0, r5
 	mov r1, r4
 	mov r2, r7
-	bl LoadFileInPackWithPackId
+	bl DirectoryFileMngr_LoadDirectoryFile
 	mov r0, r7
 	bl GetAtSize
 	mov r2, r7
@@ -21901,11 +21901,11 @@ _0201D6E8:
 	ldr r7, [r6, #0x34]
 	mov r0, r5
 	mov r1, r4
-	bl GetFileLengthInPackWithPackNb
+	bl DirectoryFileMngr_GetDirectoryFileSize
 	mov r0, r5
 	mov r1, r4
 	mov r2, r7
-	bl LoadFileInPackWithPackId
+	bl DirectoryFileMngr_LoadDirectoryFile
 _0201D708:
 	ldr r1, [r6, #0x34]
 	add r0, r6, #0x30
@@ -22558,7 +22558,7 @@ LoadWteFromFileDirectory: ; 0x0201DEC4
 	mov r0, r1
 	mov r1, r2
 	add r2, sp, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp]
 	add r0, sp, #8
 	bl HandleSir0Translation
@@ -22639,7 +22639,7 @@ LoadWtuFromBin: ; 0x0201DFB4
 	mov r0, r7
 	mov r1, r6
 	mov r3, r5
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r5, [sp]
 	ldr r1, _0201E01C ; =_02099720
 	str r5, [r4]
@@ -88843,7 +88843,7 @@ GetLvlUpEntry: ; 0x0205379C
 	add r2, sp, #4
 	mov r0, #5
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #4]
 	add r0, sp, #0
 	bl HandleSir0Translation

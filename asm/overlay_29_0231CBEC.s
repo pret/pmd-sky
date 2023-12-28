@@ -940,7 +940,7 @@ ApplyGonePebbleEffect: ; 0x0231D838
 	mov r0, #4
 	add r2, sp, #4
 	mov r3, #0
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r1, [sp, #4]
 	add r0, sp, #0
 	bl HandleSir0Translation
