@@ -1517,10 +1517,8 @@
 .public _020A9EA4
 .public _020A9EB8
 .public _020A9ECC
-.public _020AE0B4
-.public _020AE0C4
-.public _020AE0C6
-.public _020AE0C8
+.public sTexPlttStartAddrTable
+.public sTexStartAddrTable
 .public _020AEBF8
 .public _020AEC1C
 .public _020AEC5C
@@ -1535,8 +1533,8 @@
 .public _020AEEF0
 .public _020AF38C
 .public _020AFE44
-.public _020B2B94
-.public _020B2B98
+.public sIsDispOn
+.public GXi_DmaId
 .public _020B2B9C
 .public _020B2BAC
 .public _020B2BB0
@@ -1612,9 +1610,9 @@
 .public _020B333C
 .public _020B3364
 .public _022B9208
-.public _022B9588
-.public _022B958A
-.public _022B958C
+.public sDispMode
+.public GXi_VRamLockId
+.public gGXState
 .public _022B958E
 .public _022B9590
 .public _022B9592
@@ -1627,8 +1625,8 @@
 .public _022B95A0
 .public _022B95A2
 .public _022B95A4
-.public _022B95A8
-.public _022B95C4
+.public sSubBGExtPltt
+.public sClrImg
 .public _022B95E4
 .public _022B95E8
 .public _022B95EC
@@ -1711,7 +1709,7 @@
 .public _secure
 .public ACTOR_LIST
 .public ARM9_UNKNOWN_DATA__NA_209EAAC
-.public ARM9_UNKNOWN_TABLE__NA_20ADFB0
+.public FX_AtanIdxTable_
 .public ARM9_UNKNOWN_TABLE__NA_20AE924
 .public BaseFormsEqual
 .public DTCM_BSS

@@ -105,7 +105,7 @@
 .public EnableIrqFlag
 .public EntityIsValid__0230827C
 .public EntityIsValid__02319F8C
-.public GeomMtxMult4x3
+.public G3_MultMtx43
 .public GeomSetTexImageParam
 .public GeomSetVertexCoord16
 .public GetAllBaseForms

@@ -19009,36 +19009,36 @@ _0201B0A8:
 	blt _0201B0A8
 	b _0201B12C
 _0201B0C0:
-	bl sub_020783D0
+	bl GX_BeginLoadBGExtPltt
 	mov r0, r6
 	mov r1, r5
 	mov r2, #0x20
 	bl Memcpy32
-	bl sub_02078470
+	bl GX_EndLoadBGExtPltt
 	b _0201B12C
 _0201B0DC:
-	bl sub_020784B8
+	bl GX_BeginLoadOBJExtPltt
 	mov r0, r6
 	mov r1, r5
 	mov r2, #0x20
 	bl Memcpy32
-	bl sub_02078500
+	bl GX_EndLoadOBJExtPltt
 	b _0201B12C
 _0201B0F8:
-	bl sub_02078544
+	bl GXS_BeginLoadBGExtPltt
 	mov r0, r6
 	mov r1, r5
 	mov r2, #0x20
 	bl Memcpy32
-	bl sub_0207855C
+	bl GXS_EndLoadBGExtPltt
 	b _0201B12C
 _0201B114:
-	bl sub_0207859C
+	bl GXS_BeginLoadOBJExtPltt
 	mov r0, r6
 	mov r1, r5
 	mov r2, #0x20
 	bl Memcpy32
-	bl sub_020785B4
+	bl GXS_EndLoadOBJExtPltt
 _0201B12C:
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
@@ -22861,33 +22861,33 @@ _0201E274:
 	beq _0201E2A4
 	ldr sb, [r1, #4]
 	ldr r8, [r1, #0xc]
-	bl sub_020785F4
+	bl GX_BeginLoadTex
 	mov r0, sl
 	mov r1, r8
 	mov r2, sb
-	bl sub_02078650
-	bl sub_02078790
+	bl GX_LoadTex
+	bl GX_EndLoadTex
 	b _0201E2F8
 _0201E2A4:
 	ldr r8, [r1, #4]
 	ldr sb, [r1, #0xc]
-	bl sub_020785F4
+	bl GX_BeginLoadTex
 	mov r0, fp
 	mov r1, sb
 	mov r2, r8
-	bl sub_02078650
-	bl sub_02078790
+	bl GX_LoadTex
+	bl GX_EndLoadTex
 	b _0201E2F8
 _0201E2C8:
 	ldr sl, [r1, #4]
 	ldr sb, [r1, #0xc]
 	ldr r8, [r1, #8]
-	bl sub_020787DC
+	bl GX_BeginLoadTexPltt
 	mov r0, r8
 	mov r1, sb
 	mov r2, sl
-	bl sub_02078810
-	bl sub_0207887C
+	bl GX_LoadTexPltt
+	bl GX_EndLoadTexPltt
 	b _0201E2F8
 _0201E2F0:
 	ldr r0, [r1, #8]
@@ -23201,7 +23201,7 @@ sub_0201E634: ; 0x0201E634
 	ldr r1, [r4, #0xac]
 	ldr r2, [r4, #0xa0]
 	ldr r3, [r4, #0xa4]
-	bl sub_02077C48
+	bl G3i_OrthoW_
 	ldr r1, _0201E718 ; =0x0400044C
 	mov r2, #0
 	mov r0, r4
@@ -23211,7 +23211,7 @@ sub_0201E634: ; 0x0201E634
 	add r2, r4, #0x18
 	mov r3, #1
 	str ip, [sp]
-	bl sub_02077CAC
+	bl G3i_LookAt_
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
@@ -77015,7 +77015,7 @@ _0204A5CC: .word _020AFF6C
 sub_0204A5D0: ; 0x0204A5D0
 	stmdb sp!, {r4, lr}
 	bl sub_02084304
-	bl sub_0207902C
+	bl OS_GetLockID
 	mov r4, r0
 	mov r0, r4, lsl #0x10
 	mov r0, r0, lsr #0x10
@@ -77061,7 +77061,7 @@ _0204A664:
 	mov sb, r7, lsl #8
 	b _0204A70C
 _0204A670:
-	bl sub_0207902C
+	bl OS_GetLockID
 	mov r5, r0
 	bl sub_02002580
 	mov r4, r0
@@ -77142,7 +77142,7 @@ _0204A774:
 	mov r4, #0
 	b _0204A8C0
 _0204A78C:
-	bl sub_0207902C
+	bl OS_GetLockID
 	mov r6, r0
 	bl sub_02002580
 	mov r7, r0
@@ -77252,7 +77252,7 @@ sub_0204A8E0: ; 0x0204A8E0
 	mov fp, r6
 	b _0204A9B4
 _0204A918:
-	bl sub_0207902C
+	bl OS_GetLockID
 	mov r5, r0
 	bl sub_02002580
 	mov r4, r0
@@ -77317,7 +77317,7 @@ sub_0204A9C8: ; 0x0204A9C8
 	mov fp, #6
 	b _0204AB04
 _0204AA00:
-	bl sub_0207902C
+	bl OS_GetLockID
 	mov r5, r0
 	bl sub_02002580
 	mov r1, #0x13

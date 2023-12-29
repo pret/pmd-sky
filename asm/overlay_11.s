@@ -15176,7 +15176,7 @@ _022E92E0:
 	bl sub_02008ED0
 _022E930C:
 	bl sub_02008F88
-	bl sub_020778D0
+	bl G3X_Reset
 	bl sub_0201DE10
 	bl ov11_022F2244
 	bl ov11_0230D6F0
@@ -68506,11 +68506,11 @@ ov11_023159E8: ; 0x023159E8
 	ldmib r4, {r0, r1}
 	sub r0, r0, #0xa0000
 	rsb r1, r1, #0x80000
-	bl sub_02075EC8
+	bl FX_Atan2Idx
 	strh r0, [r4, #0x10]
 	add r0, sp, #0xc
 	add r1, sp, #0
-	bl sub_02075E4C
+	bl VEC_Distance
 	mov r1, r0, asr #3
 	add r0, r0, r1, lsr #28
 	mov r0, r0, asr #4

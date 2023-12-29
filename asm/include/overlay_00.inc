@@ -136,9 +136,9 @@
 .public sub_020590DC
 .public sub_0205B77C
 .public sub_0205B80C
-.public sub_02075720
+.public CRYPTO_RC4Init
 .public sub_020757B0
-.public sub_020778D0
+.public G3X_Reset
 .public sub_020790DC
 .public sub_0207911C
 .public sub_02079550

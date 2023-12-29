@@ -11,7 +11,7 @@ _02000808:
 	ldrh r0, [ip, #6]
 	cmp r0, #0
 	bne _02000808
-	bl sub_02000AB0
+	bl init_cp15
 	mov r0, #0x13
 	msr cpsr_c, r0
 	ldr r0, _02000930 ; =OS_IRQTable
@@ -37,15 +37,15 @@ _02000854:
 	mov r0, #0
 	ldr r1, _02000930 ; =OS_IRQTable
 	mov r2, #0x4000
-	bl sub_02000954
+	bl INITi_CpuClear32
 	mov r0, #0
 	ldr r1, _02000938 ; =0x05000000
 	mov r2, #0x400
-	bl sub_02000954
+	bl INITi_CpuClear32
 	mov r0, #0x200
 	ldr r1, _0200093C ; =0x07000000
 	mov r2, #0x400
-	bl sub_02000954
+	bl INITi_CpuClear32
 	ldr r1, _02000940 ; =_start_ModuleParams
 	ldr r0, [r1, #0x14]
 	bl MIi_UncompressBackward
@@ -102,8 +102,8 @@ _0200094C: .word NitroMain
 _02000950: .word 0xFFFF0000
 	arm_func_end _start
 
-	arm_func_start sub_02000954
-sub_02000954: ; 0x02000954
+	arm_func_start INITi_CpuClear32
+INITi_CpuClear32: ; 0x02000954
 	add ip, r1, r2
 _02000958:
 	cmp r1, ip
@@ -114,7 +114,7 @@ _02000964:
 _02000968:
 	blt _02000958
 	bx lr
-	arm_func_end sub_02000954
+	arm_func_end INITi_CpuClear32
 
 	arm_func_start MIi_UncompressBackward
 MIi_UncompressBackward: ; 0x02000970
@@ -228,8 +228,8 @@ _start_AutoloadDoneCallback:
 	bx lr
 	arm_func_end _start_AutoloadDoneCallback
 
-	arm_func_start sub_02000AB0
-sub_02000AB0: ; 0x02000AB0
+	arm_func_start init_cp15
+init_cp15: ; 0x02000AB0
 	mrc p15, 0, r0, c1, c0, 0
 	ldr r1, _02000B68 ; =0x000F9005
 	bic r0, r0, r1
@@ -289,7 +289,7 @@ _02000B88: .word 0x027FF017
 _02000B8C: .word 0x05100011
 _02000B90: .word 0x15111011
 _02000B94: .word 0x0005707D
-	arm_func_end sub_02000AB0
+	arm_func_end init_cp15
 
 	arm_func_start sub_02000B98
 sub_02000B98: ; 0x02000B98

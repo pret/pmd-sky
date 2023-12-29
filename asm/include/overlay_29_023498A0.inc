@@ -275,7 +275,7 @@
 .public sub_02051DD0
 .public sub_02051E60
 .public sub_0205BAB0
-.public sub_020778D0
+.public G3X_Reset
 .public SubstitutePlaceholderStringTags
 .public UnloadOverlay
 .public WriteQuicksaveData

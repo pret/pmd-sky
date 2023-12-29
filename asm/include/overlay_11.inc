@@ -799,9 +799,9 @@
 .public sub_0206C134
 .public sub_0206C144
 .public sub_0206C164
-.public sub_02075E4C
-.public sub_02075EC8
-.public sub_020778D0
+.public VEC_Distance
+.public FX_Atan2Idx
+.public G3X_Reset
 .public SwitchAnimationControlToNextFrame
 .public TEAM_MEMBER_TABLE_PTR
 .public TRIG_TABLE

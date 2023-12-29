@@ -370,7 +370,7 @@ _022DC6C4:
 	bl sub_02028A64
 	bl sub_0201BE5C
 	bl sub_0201BE84
-	bl sub_020778D0
+	bl G3X_Reset
 	bl sub_0201DE10
 	bl sub_02028E88
 	ldr r0, _022DC714 ; =ov34_022DD0A0
