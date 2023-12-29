@@ -38,7 +38,7 @@ def find_symbol_in_header(symbol_name: str, is_data: bool, header_contents: List
             return i
     return None
 
-def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_manager: YamlManager):
+def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_manager: YamlManager, pmdsky_debug_section: Dict[int, SymbolDetails]):
     if default_symbol_name.match(symbol.name):
         return
 
@@ -265,4 +265,4 @@ with YamlManager() as yaml_manager:
                 pmdsky_debug_section = {}
 
             for address, symbol in xmap_section.items():
-                sync_xmap_symbol(address, symbol, language, yaml_manager)
+                sync_xmap_symbol(address, symbol, language, yaml_manager, pmdsky_debug_section)
