@@ -3194,7 +3194,7 @@ _0234C274:
 	mov r0, #0
 	bl sub_02008ED0
 _0234C2B8:
-	bl sub_020778D0
+	bl G3X_Reset
 	bl sub_02008F88
 	bl sub_0201DE10
 	bl ov10_022BF7D4

@@ -227,7 +227,7 @@ sub_01FF8224: ; 0x01FF8224
 	mov r2, #0
 	add r0, sp, #0x10
 	str r2, [r1]
-	bl GeomMtxMult4x3
+	bl G3_MultMtx43
 	ldrh r0, [r4, #0x14]
 	ldrh r2, [r4, #0x16]
 	ldr r1, _01FF8474 ; =0x0400046C
@@ -390,7 +390,7 @@ sub_01FF849C: ; 0x01FF849C
 	mov r1, #0
 	add r0, sp, #0x18
 	str r1, [r2]
-	bl GeomMtxMult4x3
+	bl G3_MultMtx43
 	ldr r1, _01FF871C ; =0x0400046C
 	mov r0, #0x40000
 	str r0, [r1]
@@ -585,7 +585,7 @@ sub_01FF8728: ; 0x01FF8728
 	mov r2, #0
 	add r0, sp, #0x1c
 	str r2, [r1]
-	bl GeomMtxMult4x3
+	bl G3_MultMtx43
 	ldr r1, _01FF89FC ; =0x0400046C
 	mov r0, #0x40000
 	str r0, [r1]
@@ -751,7 +751,7 @@ sub_01FF8A10: ; 0x01FF8A10
 	mov r2, #0
 	add r0, sp, #0
 	str r2, [r1]
-	bl GeomMtxMult4x3
+	bl G3_MultMtx43
 	ldrh r0, [r8, #0x1e]
 	ldrh r1, [r8, #0x20]
 	ldr r3, _01FF8C24 ; =0x0400046C

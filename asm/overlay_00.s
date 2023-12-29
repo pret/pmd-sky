@@ -2294,7 +2294,7 @@ _022BE464:
 	bl sub_02028A64
 	bl sub_0201BE5C
 	bl sub_0201BE84
-	bl sub_020778D0
+	bl G3X_Reset
 	bl sub_0201DE10
 	bl sub_02028E88
 	bl sub_02051C24
@@ -35981,7 +35981,7 @@ _022DA63C:
 	mov r2, #8
 	add r0, r0, #0x96
 	add r0, r0, #0x1c00
-	bl sub_02075720
+	bl CRYPTO_RC4Init
 	ldr r0, _022DA86C ; =ov00_02326CA4
 	mov r2, #0x70
 	ldr r3, [r0]

@@ -62,4 +62,4 @@
 .public sub_02051B44
 .public sub_02051C24
 .public sub_02052060
-.public sub_020778D0
+.public G3X_Reset

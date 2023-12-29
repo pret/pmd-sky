@@ -1903,7 +1903,7 @@ sub_02002448: ; 0x02002448
 	mov r1, #1
 	bl sub_020027F8
 	bl sub_02079C14
-	bl sub_0207621C
+	bl GX_DispOff
 	ldr r3, _02002498 ; =0x04001000
 	ldr r0, _0200249C ; =_02092464
 	ldr r2, [r3]
@@ -2912,7 +2912,7 @@ _02002FDC:
 	str r4, [r5, #0x24]
 	cmpne r6, #5
 	bne _02003000
-	bl sub_0207902C
+	bl OS_GetLockID
 	strh r0, [r5, #0x28]
 	b _02003004
 _02003000:
@@ -3263,7 +3263,7 @@ TaskProcBoot: ; 0x02003328
 	bl sub_02078C68
 	bl EnableAllInterrupts
 	mov r0, #1
-	bl sub_020761E8
+	bl GX_VBlankIntr
 	ldr r0, _020035F8 ; =_020AF154
 	ldr r1, _020035E0 ; =_020AEF7C
 	ldr r2, _020035FC ; =_0229F248
@@ -6323,7 +6323,7 @@ _02005C3C:
 	bl sub_0207BF04
 	b _02005CE0
 _02005C60:
-	bl sub_020783D0
+	bl GX_BeginLoadBGExtPltt
 	ldr r0, [r4, #0xb8]
 	ldr r0, [r0]
 	stmia sp, {r0, r4}
@@ -6332,10 +6332,10 @@ _02005C60:
 	ldr r2, [r6, #0xc]
 	ldr r3, [r6, #4]
 	bl sub_0207BE6C
-	bl sub_02078470
+	bl GX_EndLoadBGExtPltt
 	b _02005CE0
 _02005C8C:
-	bl sub_020784B8
+	bl GX_BeginLoadOBJExtPltt
 	ldr r0, [r4, #0xb8]
 	ldr r0, [r0]
 	stmia sp, {r0, r4}
@@ -6344,10 +6344,10 @@ _02005C8C:
 	ldr r2, [r6, #0xc]
 	ldr r3, [r6, #4]
 	bl sub_0207BE6C
-	bl sub_02078500
+	bl GX_EndLoadOBJExtPltt
 	b _02005CE0
 _02005CB8:
-	bl sub_02078544
+	bl GXS_BeginLoadBGExtPltt
 	ldr r0, [r4, #0xb8]
 	ldr r0, [r0]
 	stmia sp, {r0, r4}
@@ -6356,7 +6356,7 @@ _02005CB8:
 	ldr r2, [r6, #0xc]
 	ldr r3, [r6, #4]
 	bl sub_0207BE6C
-	bl sub_0207855C
+	bl GXS_EndLoadBGExtPltt
 _02005CE0:
 	ldr r0, _02005D0C ; =_020AF240
 	bl sub_02002E98
@@ -10187,11 +10187,11 @@ sub_02008DAC: ; 0x02008DAC
 	stmdb sp!, {r4, lr}
 	ldr r1, _02008EAC ; =_020AF694
 	mov r3, #0xff
-	ldr r0, _02008EB0 ; =_020B2B98
+	ldr r0, _02008EB0 ; =GXi_DmaId
 	mov r2, #3
 	strb r3, [r1]
 	str r2, [r0]
-	bl sub_02076074
+	bl GX_Init
 	ldr r2, _02008EB4 ; =0x04000304
 	ldr r0, _02008EB8 ; =0xFFFFFDF1
 	ldrh r1, [r2]
@@ -10199,21 +10199,21 @@ sub_02008DAC: ; 0x02008DAC
 	orr r0, r0, #0xe
 	orr r0, r0, #0x200
 	strh r0, [r2]
-	bl sub_020777C4
-	bl sub_0207793C
-	bl sub_0207621C
+	bl G3X_Init
+	bl G3X_ClearFifo
+	bl GX_DispOff
 	ldr r1, _02008EBC ; =0x04001000
 	ldr r0, [r1]
 	bic r0, r0, #0x10000
 	str r0, [r1]
 	bl sub_0200961C
 	ldr r0, _02008EC0 ; =0x000001FF
-	bl sub_02076E90
+	bl GX_SetBankForLCDC
 	mov r0, #0
 	mov r1, #0x6800000
 	mov r2, #0xa4000
 	bl ArrayFill32Fast
-	bl sub_0207735C
+	bl GX_DisableBankForLCDC
 	mov r0, #0xc0
 	mov r1, #0x7000000
 	mov r2, #0x400
@@ -10251,7 +10251,7 @@ _02008E98:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02008EAC: .word _020AF694
-_02008EB0: .word _020B2B98
+_02008EB0: .word GXi_DmaId
 _02008EB4: .word 0x04000304
 _02008EB8: .word 0xFFFFFDF1
 _02008EBC: .word 0x04001000
@@ -10280,7 +10280,7 @@ sub_02008ED0: ; 0x02008ED0
 	b _02008F24
 _02008F0C:
 	bl sub_02009648
-	bl sub_02076258
+	bl GX_DispOn
 	ldr r1, _02008F38 ; =0x04001000
 	ldr r0, [r1]
 	orr r0, r0, #0x10000
@@ -10358,14 +10358,14 @@ sub_02008F88: ; 0x02008F88
 	mov r1, r2, asr #3
 	add r1, r2, r1, lsr #28
 	mov r1, r1, asr #4
-	bl sub_02076324
+	bl GXx_SetMasterBrightness_
 	ldr r1, _02009080 ; =_022A37A0
 	ldr r0, _02009088 ; =0x0400106C
 	ldr r2, [r1, #8]
 	mov r1, r2, asr #3
 	add r1, r2, r1, lsr #28
 	mov r1, r1, asr #4
-	bl sub_02076324
+	bl GXx_SetMasterBrightness_
 	ldr r0, _02009080 ; =_022A37A0
 	ldr sb, [r0]
 	cmp sb, #0
@@ -10887,15 +10887,15 @@ _02009618: .word 0x0400100E
 	arm_func_start sub_0200961C
 sub_0200961C: ; 0x0200961C
 	stmdb sp!, {r3, lr}
-	bl sub_0207729C
-	bl sub_020772B0
-	bl sub_020772C4
-	bl sub_020772E8
-	bl sub_0207730C
-	bl sub_02077320
-	bl sub_02077370
-	bl sub_02077384
-	bl sub_02077398
+	bl GX_DisableBankForBG
+	bl GX_DisableBankForOBJ
+	bl GX_DisableBankForBGExtPltt
+	bl GX_DisableBankForOBJExtPltt
+	bl GX_DisableBankForTex
+	bl GX_DisableBankForTexPltt
+	bl GX_DisableBankForSubBG
+	bl GX_DisableBankForSubOBJ
+	bl GX_DisableBankForSubBGExtPltt
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0200961C
 
@@ -10904,21 +10904,21 @@ sub_02009648: ; 0x02009648
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	mov r0, #1
-	bl sub_02076464
+	bl GX_SetBankForBG
 	mov r0, #2
-	bl sub_020766F4
+	bl GX_SetBankForOBJ
 	mov r0, #0x10
-	bl sub_02076844
+	bl GX_SetBankForBGExtPltt
 	mov r0, #0x40
-	bl sub_02076944
+	bl GX_SetBankForOBJExtPltt
 	mov r0, #8
-	bl sub_020769F0
+	bl GX_SetBankForTex
 	mov r0, #0x20
-	bl sub_02076BC8
+	bl GX_SetBankForTexPltt
 	mov r0, #1
 	mov r1, #0
 	mov r2, r0
-	bl sub_020762A0
+	bl GX_SetGraphicsMode
 	mov r2, #0x4000000
 	ldr r1, [r2]
 	ldr r0, _02009B78 ; =0x00005C10
@@ -10968,7 +10968,7 @@ sub_02009648: ; 0x02009648
 	ldr r0, _02009B7C ; =0x04000050
 	mov r1, #1
 	mov r2, #0x3e
-	bl sub_020776E8
+	bl G2x_SetBlendAlpha_
 	ldr ip, _02009B80 ; =0x04000040
 	mov lr, #0
 	strh lr, [ip]
@@ -11017,13 +11017,13 @@ sub_02009648: ; 0x02009648
 	orr r1, r1, #0x10
 	orr r1, r1, #0x200000
 	str r1, [r6]
-	bl sub_02076EB0
+	bl GX_SetBankForSubBG
 	mov r0, #0x100
-	bl sub_02076F58
+	bl GX_SetBankForSubOBJ
 	mov r0, #0x80
-	bl sub_02076FC8
+	bl GX_SetBankForSubBGExtPltt
 	mov r0, #0
-	bl sub_02076308
+	bl GXS_SetGraphicsMode
 	ldr r2, _02009B88 ; =0x04001000
 	ldr r0, [r2]
 	bic r0, r0, #0x1f00
@@ -11142,7 +11142,7 @@ sub_02009648: ; 0x02009648
 	strh r4, [ip]
 	strh r1, [lr, #0x3c]
 	str r1, [sp]
-	bl sub_02077A8C
+	bl G3X_SetClearColor
 	mov r0, #0
 	bl sub_02009120
 	mov r0, #1
@@ -11556,7 +11556,7 @@ _02009F10:
 	ldrh r3, [ip, r3]
 	and r3, r3, #0xf8
 	mov r3, r3, asr #3
-	bl sub_020776E8
+	bl G2x_SetBlendAlpha_
 	ldmia sp!, {r3, pc}
 _02009F48:
 	ldr r0, _02009F8C ; =_022A37BE
@@ -11569,7 +11569,7 @@ _02009F48:
 	ldrh r3, [ip, r3]
 	and r3, r3, #0xf8
 	mov r3, r3, asr #3
-	bl sub_020776E8
+	bl G2x_SetBlendAlpha_
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02009F78: .word _022A37B6
@@ -11759,40 +11759,40 @@ _0200A1D4:
 	bl Memcpy32
 	b _0200A268
 _0200A1EC:
-	bl sub_020783D0
+	bl GX_BeginLoadBGExtPltt
 	ldr r2, [r6, #4]
 	mov r0, r5
 	mov r1, r4
 	mov r2, r2, lsl #1
 	bl Memcpy32
-	bl sub_02078470
+	bl GX_EndLoadBGExtPltt
 	b _0200A268
 _0200A20C:
-	bl sub_020784B8
+	bl GX_BeginLoadOBJExtPltt
 	ldr r2, [r6, #4]
 	mov r0, r5
 	mov r1, r4
 	mov r2, r2, lsl #1
 	bl Memcpy32
-	bl sub_02078500
+	bl GX_EndLoadOBJExtPltt
 	b _0200A268
 _0200A22C:
-	bl sub_02078544
+	bl GXS_BeginLoadBGExtPltt
 	ldr r2, [r6, #4]
 	mov r0, r5
 	mov r1, r4
 	mov r2, r2, lsl #1
 	bl Memcpy32
-	bl sub_0207855C
+	bl GXS_EndLoadBGExtPltt
 	b _0200A268
 _0200A24C:
-	bl sub_0207859C
+	bl GXS_BeginLoadOBJExtPltt
 	ldr r2, [r6, #4]
 	mov r0, r5
 	mov r1, r4
 	mov r2, r2, lsl #1
 	bl Memcpy32
-	bl sub_020785B4
+	bl GXS_EndLoadOBJExtPltt
 _0200A268:
 	mov r0, #0
 	strb r0, [r6, #8]
@@ -13490,24 +13490,24 @@ _0200B7F0: .word CART_REMOVED_IMG_DATA
 	arm_func_start sub_0200B76C
 sub_0200B76C: ; 0x0200B76C
 	stmdb sp!, {r4, lr}
-	bl sub_0207621C
+	bl GX_DispOff
 	ldr r2, _0200B874 ; =0x04001000
 	mov r0, #3
 	ldr r1, [r2]
 	bic r1, r1, #0x10000
 	str r1, [r2]
 	bl sub_0207C164
-	bl sub_0207729C
-	bl sub_020772B0
-	bl sub_020772C4
-	bl sub_020772E8
-	bl sub_0207730C
-	bl sub_02077320
-	bl sub_02077370
-	bl sub_02077384
-	bl sub_02077398
+	bl GX_DisableBankForBG
+	bl GX_DisableBankForOBJ
+	bl GX_DisableBankForBGExtPltt
+	bl GX_DisableBankForOBJExtPltt
+	bl GX_DisableBankForTex
+	bl GX_DisableBankForTexPltt
+	bl GX_DisableBankForSubBG
+	bl GX_DisableBankForSubOBJ
+	bl GX_DisableBankForSubBGExtPltt
 	ldr r0, _0200B878 ; =0x000001FF
-	bl sub_02076E90
+	bl GX_SetBankForLCDC
 	mov r0, #0
 	mov r1, #0x6800000
 	mov r2, #0xa4000
@@ -13540,16 +13540,16 @@ sub_0200B76C: ; 0x0200B76C
 	mov r0, #2
 	mov r1, #0
 	mov r2, r1
-	bl sub_020762A0
+	bl GX_SetGraphicsMode
 	mov r0, #0
-	bl sub_02076308
+	bl GXS_SetGraphicsMode
 	ldr r0, _0200B88C ; =0x0400006C
 	mov r1, #0
-	bl sub_02076324
+	bl GXx_SetMasterBrightness_
 	ldr r0, _0200B890 ; =0x0400106C
 	mov r1, #0
-	bl sub_02076324
-	bl sub_02076258
+	bl GXx_SetMasterBrightness_
+	bl GX_DispOn
 	ldr r1, _0200B874 ; =0x04001000
 	ldr r0, [r1]
 	orr r0, r0, #0x10000
