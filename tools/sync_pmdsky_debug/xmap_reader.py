@@ -56,6 +56,9 @@ def read_xmap_symbols_for_language(language: str) -> Dict[str, Dict[int, SymbolD
         for line in xmap_lines:
             if line.startswith(SECTION_START):
                 section_name = line[len(SECTION_START) : -1]
+                # The corresponding BSS sections can contain RAM data symbols
+                is_ram = section_name.endswith('.bss')
+                section_name = section_name.removesuffix('.bss')
                 if section_name in overlay_names:
                     current_section = str(overlay_names[section_name])
                 elif section_name == 'main' or section_name == 'ITCM' or section_name == 'arm7':
@@ -64,10 +67,12 @@ def read_xmap_symbols_for_language(language: str) -> Dict[str, Dict[int, SymbolD
                     current_section = 'arm7'
                 else:
                     current_section = None
+                if current_section is not None and is_ram:
+                    current_section = 'ram'
                 if current_section is not None and current_section not in xmap_symbols:
                     xmap_symbols[current_section]: Dict[str, int] = {}
 
-            elif current_section is not None and line.startswith('  ') and ('.text' in line or '.data' in line) and len(line) > 28 and line[28] not in NON_FUNCTION_SYMBOLS:
+            elif current_section is not None and line.startswith('  ') and ('.text' in line or '.data' in line or '.bss' in line) and len(line) > 28 and line[28] not in NON_FUNCTION_SYMBOLS:
                 symbol_split = line[28:-1].split('\t')
                 symbol_name = symbol_split[0]
                 symbol_address = int(line[2:10], 16)

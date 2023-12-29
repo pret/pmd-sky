@@ -114,5 +114,6 @@ def read_pmdsky_debug_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]
             for file in os.listdir(overlay_folder):
                 if file.endswith('.yml'):
                     read_yaml_symbols(os.path.join(overlay_name, file), str(i))
+    read_yaml_symbols('ram.yml', 'ram')
 
     return pmdsky_debug_symbols

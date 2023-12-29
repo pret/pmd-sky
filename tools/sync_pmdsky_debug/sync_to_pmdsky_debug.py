@@ -70,6 +70,8 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
             base_symbol_path = 'arm7.yml'
         elif section_name == 'ITCM':
             base_symbol_path = os.path.join('arm9', 'itcm.yml')
+        elif section_name == 'ram':
+            base_symbol_path = 'ram.yml'
         else:
             base_symbol_path = f'overlay{int(section_name):02d}.yml'
 
