@@ -27,6 +27,11 @@ def get_base_symbol_name(symbol_name: str) -> str:
         return symbol_name[:symbol.name.find('__')]
     return symbol_name
 
+def read_symbol_array(symbol_path: str, symbol_type_key: str, yaml_manager: YamlManager) -> List[Any]:
+    symbols_yaml_outer: Dict[str, Any] = yaml_manager.read_yaml(symbol_path)
+    symbols_yaml: Dict[str, Any] = symbols_yaml_outer[list(symbols_yaml_outer.keys())[0]]
+    return symbols_yaml[symbol_type_key]
+
 def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_manager: YamlManager):
     if default_symbol_name.match(symbol.name):
         return
@@ -48,27 +53,6 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
         wram_address = address
         address -= WRAM_OFFSET
 
-    if address in pmdsky_debug_section:
-        # If the address is already defined in pmdsky-debug, replace the old symbol name with the new one in the YAML and header files.
-        old_symbol = pmdsky_debug_section[address]
-        base_old_symbol_name = get_base_symbol_name(old_symbol.name)
-        if base_old_symbol_name != base_symbol_name:
-            yaml_manager.write_yaml()
-            print(f'Replacing {base_old_symbol_name} with {base_symbol_name}')
-            with open(old_symbol.file_path, 'r') as symbols_file:
-                symbol_contents = symbols_file.read()
-            symbol_contents = symbol_contents.replace(f'name: {base_old_symbol_name}\n', f'name: {base_symbol_name}\n')
-            with open(old_symbol.file_path, 'w') as symbol_file:
-                symbol_file.write(symbol_contents)
-
-            header_path = old_symbol.file_path.replace(SYMBOLS_FOLDER, os.path.join('headers', 'functions')).replace('.yml', '.h')
-            with open(header_path, 'r') as header_file:
-                header_contents = header_file.read()
-            header_contents = header_contents.replace(f' {base_old_symbol_name}(', f' {base_symbol_name}(')
-            with open(header_path, 'w') as header_file:
-                header_file.write(header_contents)
-        return
-
     path_prefix = os.path.join(pmdsky_debug_location, SYMBOLS_FOLDER)
     if base_symbol_name in symbol_file_paths:
         symbol_path = symbol_file_paths[base_symbol_name]
@@ -85,18 +69,42 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
 
         symbol_path = os.path.join(path_prefix, base_symbol_path)
 
-    symbols_yaml_outer: Dict[str, Any] = yaml_manager.read_yaml(symbol_path)
-
-    symbols_yaml: Dict[str, Any] = symbols_yaml_outer[list(symbols_yaml_outer.keys())[0]]
-
     if symbol.is_data:
         symbol_type_key = 'data'
     else:
         symbol_type_key = 'functions'
-    symbol_array: List[Any] = symbols_yaml[symbol_type_key]
+
+    if address in pmdsky_debug_section:
+        # If the address is already defined in pmdsky-debug, replace the old symbol name with the new one in the YAML and header files.
+        old_symbol = pmdsky_debug_section[address]
+        base_old_symbol_name = get_base_symbol_name(old_symbol.name)
+        if base_old_symbol_name != base_symbol_name:
+            print(f'Replacing {base_old_symbol_name} with {base_symbol_name}')
+            symbol_array = read_symbol_array(symbol_path, symbol_type_key, yaml_manager)
+            for yaml_symbol in symbol_array:
+                if yaml_symbol['name'] == base_old_symbol_name:
+                    yaml_symbol['name'] = base_symbol_name
+                    break
+
+            header_path = old_symbol.file_path.replace(SYMBOLS_FOLDER, os.path.join('headers', symbol_type_key)).replace('.yml', '.h')
+            with open(header_path, 'r') as header_file:
+                header_contents = header_file.read()
+
+            if symbol.is_data:
+                # Match data symbols by looking for either the end-of-line semicolon or array start bracket.
+                header_contents = re.sub(fr' {base_old_symbol_name}([\[;])', fr' {base_symbol_name}\1', header_contents)
+            else:
+                # Match function symbols by looking for the open parentheses syntax.
+                header_contents = header_contents.replace(f' {base_old_symbol_name}(', f' {base_symbol_name}(')
+
+            with open(header_path, 'w') as header_file:
+                header_file.write(header_contents)
+        return
 
     matching_symbol_entry = None
     symbol_before = None
+
+    symbol_array = read_symbol_array(symbol_path, symbol_type_key, yaml_manager)
 
     # Find the existing symbol and replace its address, or make a new one if it isn't there.
     symbol_preexisting = False
@@ -170,7 +178,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     target_line = None
     if symbol_before is not None:
         for i, line in enumerate(header_contents):
-            if symbol.is_data and re.search(fr' {symbol_before}[[;]', line) or not symbol.is_data and f' {symbol_before}(' in line:
+            if symbol.is_data and re.search(fr' {symbol_before}[\[;]', line) or not symbol.is_data and f' {symbol_before}(' in line:
                 target_line = i
                 break
         if target_line is None:
