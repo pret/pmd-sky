@@ -1,5 +1,7 @@
 #include "dg_random.h"
 
+// file starts at 0x022ea968
+
 extern s32 DungeonRand16Bit(void);
 
 u8 DungeonRandOutcome__022EAB20(s32 percentChance)
