@@ -1,6 +1,8 @@
-#include "overlay_29_022E0354.h"
+#include "dg_camera.h"
 
-u8 EntityIsValid__022E0354(struct entity *entity)
+// file starts at 0x022e26b68
+
+u8 EntityIsValid__022E32E8(struct entity *entity)
 {
     if (entity == NULL)
     {

@@ -1,6 +1,6 @@
 #pragma once
 .public CanSendItem
-.public DebugPrint0
+.public Debug_Print0
 .public DungeonRequestsDoneWrapper
 .public GetAdventureLogDungeonFloor
 .public GetHeldButtons

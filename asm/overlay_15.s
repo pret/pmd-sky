@@ -247,7 +247,7 @@ _0238A488:
 	bl PlaySeVolumeWrapper
 #else
 	ldr r0, _0238A4E4 ; =ov15_0238B0CC
-	bl DebugPrint0
+	bl Debug_Print0
 #endif
 	ldr r0, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
@@ -326,7 +326,7 @@ _0238A56C:
 	ldr r0, _0238AD18 ; =ov15_0238B0D4
 	and r1, r1, #0x1f
 	strb r1, [r3, #0x68]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x68]
@@ -380,7 +380,7 @@ _0238A634:
 	ldrsb r0, [r0, #0x80]
 	bl ShowDialogueBox
 	ldr r0, _0238AD2C ; =ov15_0238B0E0
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r1, #4
 	ldr r0, _0238AD30 ; =BANK_WINDOW_PARAMS_4
 	str r1, [sp]
@@ -394,7 +394,7 @@ _0238A634:
 	b _0238AD08
 _0238A68C:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
@@ -428,7 +428,7 @@ _0238A708:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
 	mov r1, #6
 	str r1, [r3, #8]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
@@ -469,7 +469,7 @@ _0238A790:
 	b _0238AD08
 _0238A7AC:
 	ldr r0, _0238AD4C ; =ov15_0238B0F4
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r2, #1
 	ldr r1, [r0]
@@ -499,7 +499,7 @@ _0238A7AC:
 	b _0238AD08
 _0238A820:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
@@ -598,7 +598,7 @@ _0238A95C:
 	str ip, [r3, #0x74]
 	ldr r1, [r1]
 	str r2, [r1, #0x78]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238AD24 ; =BANK_WINDOW_PARAMS_2
 	ldr r1, _0238AD28 ; =ov15_0238ADC4
 	bl CreateTextBox
@@ -671,7 +671,7 @@ _0238AA08:
 	b _0238AD08
 _0238AA88:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
@@ -774,7 +774,7 @@ _0238ABD4:
 	str ip, [r3, #0x74]
 	ldr r1, [r1]
 	str r2, [r1, #0x78]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238AD24 ; =BANK_WINDOW_PARAMS_2
 	ldr r1, _0238AD28 ; =ov15_0238ADC4
 	bl CreateTextBox
@@ -987,7 +987,7 @@ ov15_0238AE98: ; 0x0238AE98
 	cmp r1, r0
 	beq _0238AEC4
 	ldr r0, _0238AF44 ; =ov15_0238B11C
-	bl DebugPrint0
+	bl Debug_Print0
 _0238AEC4:
 	ldr r1, _0238AF40 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r0, #1
@@ -996,7 +996,7 @@ _0238AEC4:
 	cmp r1, r0
 	beq _0238AEE4
 	ldr r0, _0238AF48 ; =ov15_0238B12C
-	bl DebugPrint0
+	bl Debug_Print0
 _0238AEE4:
 	ldr r1, _0238AF40 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r0, #1
@@ -1005,7 +1005,7 @@ _0238AEE4:
 	cmp r1, r0
 	beq _0238AF04
 	ldr r0, _0238AF4C ; =ov15_0238B13C
-	bl DebugPrint0
+	bl Debug_Print0
 _0238AF04:
 	ldr r1, _0238AF40 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mvn r0, #1
@@ -1014,7 +1014,7 @@ _0238AF04:
 	cmp r1, r0
 	beq _0238AF24
 	ldr r0, _0238AF50 ; =ov15_0238B150
-	bl DebugPrint0
+	bl Debug_Print0
 _0238AF24:
 	ldr r0, _0238AF40 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]

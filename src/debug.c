@@ -1,4 +1,4 @@
-#include "main_debug.h"
+#include "debug.h"
 
 extern s32 vsprintf(u8* str, const u8* format, va_list ap);
 extern u8* strcpy(u8* dest, const u8* src);
@@ -17,30 +17,30 @@ extern u8 STRING_DEBUG_STRING_NEWLINE;
 
 extern BOOL DEBUG_IS_INITIALIZED;
 
-void InitDebug(void) {
-    InitDebugStripped6();
-    InitDebugStripped5();
-    InitDebugStripped4();
-    InitDebugStripped3();
-    InitDebugStripped2();
-    InitDebugStripped1();
+void Debug_Init(void) {
+    Debug_Stripped6();
+    Debug_Stripped5();
+    Debug_Stripped4();
+    Debug_Stripped3();
+    Debug_Stripped2();
+    Debug_Stripped1();
 
-    InitDebugLogFlag();
+    Debug_InitLogFlag();
 
     DEBUG_IS_INITIALIZED = TRUE;
 
-    InitDebugFlag();
+    Debug_InitDebugFlag();
 }
 
-void InitDebugFlag(void) {}
+void Debug_InitDebugFlag(void) {}
 
-u32 GetDebugFlag(enum debug_flag flag) {
+u32 Debug_GetDebugFlag(enum debug_flag flag) {
     return FALSE;
 }
 
-void SetDebugFlag(enum debug_flag flag, u32 val) {}
+void Debug_SetDebugFlag(enum debug_flag flag, u32 val) {}
 
-void InitDebugStripped6(void) {}
+void Debug_Stripped6(void) {}
 
 s32 AppendProgPos(u8* str, struct prog_pos_info* prog_pos, const u8* msg) {
     if (msg == NULL) {
@@ -54,9 +54,9 @@ s32 AppendProgPos(u8* str, struct prog_pos_info* prog_pos, const u8* msg) {
     };
 }
 
-void InitDebugStripped5(void) {}
+void Debug_Stripped5(void) {}
 
-void DebugPrintTrace(const u8* msg, struct prog_pos_info* prog_pos) {
+void Debug_PrintTrace(const u8* msg, struct prog_pos_info* prog_pos) {
     u8 message_buffer[256];
 
     if (prog_pos != NULL) {
@@ -84,32 +84,32 @@ void DebugDisplay(const u8* fmt, ...) {
     // Would have called the "display to top screen" function here
 }
 
-void DebugPrint0(const u8* fmt, ...) {
+void Debug_Print0(const u8* fmt, ...) {
     va_list args;
     va_start(args, fmt);
     u8 message_buffer[256];
     vsprintf(message_buffer, fmt, args);
 }
 
-void InitDebugLogFlag(void) {}
+void Debug_InitLogFlag(void) {}
 
-u32 GetDebugLogFlag(enum debug_log_flag flag) {
+u32 Debug_GetLogFlag(enum debug_log_flag flag) {
     return FALSE;
 }
 
-void SetDebugLogFlag(enum debug_log_flag flag, u32 val) {}
+void Debug_SetLogFlag(enum debug_log_flag flag, u32 val) {}
 
-void DebugPrint(u8 level, const u8* fmt, ...) {}
+void Debug_Print(u8 level, const u8* fmt, ...) {}
 
-void InitDebugStripped4(void) {}
-void InitDebugStripped3(void) {}
-void InitDebugStripped2(void) {}
-void InitDebugStripped1(void) {}
+void Debug_Stripped4(void) {}
+void Debug_Stripped3(void) {}
+void Debug_Stripped2(void) {}
+void Debug_Stripped1(void) {}
 
-void FatalError(struct prog_pos_info *prog_pos, const u8* fmt, ...) {
+void Debug_FatalError(struct prog_pos_info *prog_pos, const u8* fmt, ...) {
     va_list args;
     u8 message_buffer[256];
-    DebugPrintTrace(&STRING_DEBUG_FATAL, prog_pos);
+    Debug_PrintTrace(&STRING_DEBUG_FATAL, prog_pos);
     if (fmt != NULL) {
         va_start(args, fmt);
         vsprintf(message_buffer, fmt, args);

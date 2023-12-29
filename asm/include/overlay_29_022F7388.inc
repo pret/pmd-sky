@@ -50,7 +50,7 @@
 .public GetDirectionTowardsPosition
 .public GetExp
 .public GetExplorerMazeMonster
-.public GetFileLengthInPackWithPackNb
+.public DirectoryFileMngr_GetDirectoryFileSize
 .public GetFloorType
 .public GetForcedLossReason
 .public GetLeader

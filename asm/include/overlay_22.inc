@@ -13,7 +13,7 @@
 .public CreatePortraitBox
 .public CreateScrollBoxSingle
 .public CreateSimpleMenuFromStringIds
-.public DebugPrint0
+.public Debug_Print0
 .public GetActualBuyPrice
 .public GetActualSellPrice
 .public GetCurrentBagCapacity

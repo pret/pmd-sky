@@ -31,7 +31,7 @@
 .public CreateScrollBoxSingle
 .public CreateTextBox
 .public CreateTextBoxWithArg
-.public DebugPrint0
+.public Debug_Print0
 .public DisableDungeonSubMenuOption
 .public DisplayMessage
 .public DrawTextInWindow

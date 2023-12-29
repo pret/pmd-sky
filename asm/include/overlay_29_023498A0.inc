@@ -13,7 +13,7 @@
 .public CreateDialogueBox
 .public CreateParentMenuFromStringIds
 .public CreatePortraitBox
-.public DebugPrint0
+.public Debug_Print0
 .public DUNGEON_FADES_PTR
 .public DUNGEON_PTR
 .public DungeonAlloc

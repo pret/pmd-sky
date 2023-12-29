@@ -4512,14 +4512,14 @@ _0234D38C:
 	sub r1, r1, #0xb
 	orr r1, r1, #0x90000
 	str r1, [sp, #8]
-	bl DebugPrint0
+	bl Debug_Print0
 	b _0234D3D0
 _0234D3BC:
 	bl ov29_02337EE8
 	mov r1, r0
 	ldr r0, _0234D45C ; =ov29_02353380
 	str r1, [sp, #8]
-	bl DebugPrint0
+	bl Debug_Print0
 _0234D3D0:
 	ldrsh r0, [r4, #4]
 	str r0, [sp, #0xc]

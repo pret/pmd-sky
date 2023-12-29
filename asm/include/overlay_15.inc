@@ -11,7 +11,7 @@
 .public CreatePortraitBox
 .public CreateSimpleMenuFromStringIds
 .public CreateTextBox
-.public DebugPrint0
+.public Debug_Print0
 .public DrawTextInWindow
 .public GetMoneyCarried
 .public GetMoneyStored

@@ -189,7 +189,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public AddMoneyCarried
-.public AllocAndLoadFileInPack
+.public DirectoryFileMngr_OpenDirectoryFile
 .public ARM9_UNKNOWN_FUNCTION_TABLE__NA_20A3CF4
 .public ARM9_UNKNOWN_TABLE__NA_20A3CC8
 .public ARM9_UNKNOWN_TABLE__NA_20A3CE4
@@ -209,7 +209,7 @@
 .public CopyNStringFromId
 .public CreateCollectionMenu
 .public CreatePortraitBox
-.public DebugPrint0
+.public Debug_Print0
 .public DEF_SCARF_STAT_BOOST
 .public DeleteWanTableEntryVeneer
 .public DEMO_TEAMS
@@ -234,7 +234,7 @@
 .public GetBaseOffensiveStat
 .public GetBodySize
 .public GetCategoryString
-.public GetDebugFlag
+.public Debug_GetDebugFlag
 .public GetDexNumber
 .public GetDungeonMode
 .public GetEvoParameters
@@ -347,7 +347,7 @@
 .public NO_SEND_ITEM_TABLE
 .public NoteLoadBase
 .public NoteSaveBase
-.public OpenAllPackFiles
+.public DirectoryFileMngr_ExtractAllDirectoryFiles
 .public ov00_022BE0C8
 .public ov01_02337B3C
 .public ov01_02337B68

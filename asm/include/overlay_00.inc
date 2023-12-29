@@ -22,7 +22,7 @@
 .public ArrayFill32Fast
 .public EnableIrqFlag
 .public FileInit
-.public GetDebugFlag
+.public Debug_GetDebugFlag
 .public GetFadeStatus
 .public GetLanguage
 .public GetProcessorMode

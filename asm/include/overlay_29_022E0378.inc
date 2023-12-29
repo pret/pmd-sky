@@ -2,7 +2,7 @@
 .public _020AFC28
 .public _020AFC4C
 .public _020AFC70
-.public AllocAndLoadFileInPack
+.public DirectoryFileMngr_OpenDirectoryFile
 .public AnimationDelayOrSomething
 .public CalcSpeedStageWrapper
 .public DisplayMessage2

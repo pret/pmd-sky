@@ -5750,17 +5750,17 @@ _0230C940:
 	bl FixedPoint64ToInt
 	mov r1, r0
 	ldr r0, _0230C4A4 ; =ov29_02352984
-	bl DebugPrint0
+	bl Debug_Print0
 	add r0, sp, #0xa0
 	bl FixedPoint64ToInt
 	mov r1, r0
 	ldr r0, _0230C4A8 ; =ov29_02352990
-	bl DebugPrint0
+	bl Debug_Print0
 	add r0, sp, #0x98
 	bl FixedPoint64ToInt
 	mov r1, r0
 	ldr r0, _0230C4AC ; =ov29_0235299C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r1, _0230C4B0 ; =DAMAGE_FORMULA_AT_PREFACTOR
 	add r0, sp, #0x70
 	ldr r1, [r1]

@@ -1,6 +1,8 @@
-#include "overlay_29_022E95F4.h"
+#include "dg_effect.h"
 
-u8 EntityIsValid__022E95F4(struct entity *entity)
+// file starts at 0x022e35e4
+
+u8 EntityIsValid__022E37B8(struct entity *entity)
 {
     if (entity == NULL)
     {

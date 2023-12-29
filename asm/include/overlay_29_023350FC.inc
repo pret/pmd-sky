@@ -7,7 +7,7 @@
 .public CASTFORM_WEATHER_ATTRIBUTE_TABLE
 .public CeilFixedPoint
 .public Conversion2IsActive
-.public DebugPrint0
+.public Debug_Print0
 .public DEFAULT_TILE
 .public DIRECTIONS_XY
 .public DisplayCharTextureUi

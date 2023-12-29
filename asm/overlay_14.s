@@ -2738,19 +2738,19 @@ _0238C72C:
 	cmp sb, #4
 	blt _0238C670
 	ldr r0, _0238CA68 ; =ov14_0238DB2C
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r0, _0238CA6C ; =ov14_0238DB44
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	ldr r1, [r1, #0x880]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r0, _0238CA70 ; =ov14_0238DB58
 	ldr r1, [r1]
 	add r1, r1, #0x3000
 	ldr r1, [r1, #0x87c]
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _0238CA54 ; =SENTRY_DUTY_PTR
 	ldr r2, _0238CA74 ; =0x880A0000
 	ldr r3, [r0]

@@ -14,7 +14,7 @@
 .public CreateDialogueBox
 .public CreateScrollBoxSingle
 .public CreateSimpleMenuFromStringIds
-.public DebugPrint0
+.public Debug_Print0
 .public GetItemAtIdx
 .public GetMoneyCarried
 .public GetMoneyStored

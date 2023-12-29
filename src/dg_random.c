@@ -1,4 +1,6 @@
-#include "dungeon_random.h"
+#include "dg_random.h"
+
+// file starts at 0x022ea968
 
 extern s32 DungeonRand16Bit(void);
 

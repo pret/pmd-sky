@@ -1,42 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022DC240.inc"
+	.include "overlay_29_022DC2B8.inc"
 
 	.text
-
-	arm_func_start ov29_022DC240
-ov29_022DC240: ; 0x022DC240
-	stmdb sp!, {r4, lr}
-	ldr r1, _022DC2B0 ; =0x0001963C
-	mov r4, r0
-	bl MemZero
-	ldr r0, _022DC2B4 ; =0x0001962A
-	mov r2, #0
-	strh r2, [r4, r0]
-	add r1, r0, #2
-	strh r2, [r4, r1]
-	add r1, r0, #4
-	mov r2, #0x100
-	strh r2, [r4, r1]
-	add r1, r0, #6
-	mov r2, #0xc0
-	strh r2, [r4, r1]
-	add r1, r0, #8
-	mov r2, #0x40
-	strh r2, [r4, r1]
-	add r1, r0, #0xa
-	mov r2, #0x18
-	strh r2, [r4, r1]
-	add r1, r0, #0xc
-	mov r2, #4
-	strh r2, [r4, r1]
-	add r0, r0, #0xe
-	mov r1, #8
-	strh r1, [r4, r0]
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_022DC2B0: .word 0x0001963C
-_022DC2B4: .word 0x0001962A
-	arm_func_end ov29_022DC240
 
 	arm_func_start ov29_022DC2B8
 ov29_022DC2B8: ; 0x022DC2B8
@@ -74,7 +39,7 @@ ov29_022DC314: ; 0x022DC314
 	mov r5, r0
 	ldr r0, _022DC338 ; =ov29_0234FD14
 	mov r4, r1
-	bl DebugPrint0
+	bl Debug_Print0
 	mov r0, r5
 	mov r1, r4
 	bl sub_02008BF4
@@ -2511,7 +2476,7 @@ ov29_022DE300: ; 0x022DE300
 	mov r3, #0
 	ldr r2, [r2]
 	add r2, r2, #0x40
-	bl AllocAndLoadFileInPack
+	bl DirectoryFileMngr_OpenDirectoryFile
 	ldr r0, _022DE410 ; =ov29_02353530
 	ldr r1, [r0]
 	add r0, r1, #0x48
@@ -3437,7 +3402,7 @@ _022DEF94:
 	bl ov29_022DDE00
 	ldr r0, _022DFF3C ; =ov29_023510C8
 	mov r1, #0x3e0
-	bl DebugPrint0
+	bl Debug_Print0
 	ldr r0, _022DFF40 ; =DUNGEON_PTR
 	cmp r5, #0
 	str sb, [r0]

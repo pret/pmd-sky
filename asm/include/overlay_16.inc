@@ -8,7 +8,7 @@
 .public CreateDialogueBox
 .public CreatePortraitBox
 .public CreateSimpleMenuFromStringIds
-.public DebugPrint0
+.public Debug_Print0
 .public EVOLUTION_HP_BONUS
 .public EVOLUTION_PHYSICAL_STAT_BONUSES
 .public EVOLUTION_SPECIAL_STAT_BONUSES
