@@ -38,7 +38,7 @@ def find_symbol_in_header(symbol_name: str, is_data: bool, header_contents: List
             return i
     return None
 
-def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_manager: YamlManager):
+def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_manager: YamlManager, pmdsky_debug_section: Dict[int, SymbolDetails]):
     if default_symbol_name.match(symbol.name):
         return
 
@@ -70,6 +70,8 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
             base_symbol_path = 'arm7.yml'
         elif section_name == 'ITCM':
             base_symbol_path = os.path.join('arm9', 'itcm.yml')
+        elif section_name == 'ram':
+            base_symbol_path = 'ram.yml'
         else:
             base_symbol_path = f'overlay{int(section_name):02d}.yml'
 
@@ -265,4 +267,4 @@ with YamlManager() as yaml_manager:
                 pmdsky_debug_section = {}
 
             for address, symbol in xmap_section.items():
-                sync_xmap_symbol(address, symbol, language, yaml_manager)
+                sync_xmap_symbol(address, symbol, language, yaml_manager, pmdsky_debug_section)
