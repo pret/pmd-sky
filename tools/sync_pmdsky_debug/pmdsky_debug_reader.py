@@ -21,6 +21,9 @@ SYMBOL_BLACKLIST = set([
     'GAME_STATE_VALUES',
 ])
 
+"""
+Returns the file path where pmdsky-debug is located locally, defined within pmdsky_debug_location.txt.
+"""
 def get_pmdsky_debug_location() -> str:
     global pmdsky_debug_path
     if not pmdsky_debug_path:

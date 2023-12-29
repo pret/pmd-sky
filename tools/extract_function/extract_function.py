@@ -19,6 +19,7 @@ if function_location.endswith('.s'):
 if function_header.endswith(';'):
     function_header = function_header[:-1]
 
+# Extract the function name from the function header argument.
 left_parentheses_index = function_header.find('(')
 if left_parentheses_index >= 0:
     function_name = function_header[function_header.rfind(' ', None, left_parentheses_index) + 1 : left_parentheses_index]
@@ -56,6 +57,7 @@ first_function_start_line = None
 def get_line_address(line: str):
     return line[line.index(ADDRESS_FIND) + len(ADDRESS_FIND) : -1]
 
+# Find the start and end of the function within the ASM file.
 for i, line in enumerate(original_lines):
     if first_function_start_line is None and line.startswith(ARM_FUNC_START):
         first_function_start_line = i
@@ -63,7 +65,7 @@ for i, line in enumerate(original_lines):
         function_start_line = i
     elif line.strip() == f'arm_func_end {function_name}'.strip():
         function_end_line = i
-    
+
     if function_start_line is not None and extract_function_address is None and ADDRESS_FIND in line:
         extract_function_address = get_line_address(line)
     if function_end_line is not None and ADDRESS_FIND in line:
@@ -93,6 +95,7 @@ with open(LSF_FILE_PATH, 'r') as lsf_file:
 
 extract_file_name = f'{file_prefix}{extract_function_address}'
 
+# If needed, add the extracted function's new .o file to main.lsf.
 merge_prev_file = None
 merge_next_file = None
 SRC_LSF_PREFIX = '\tObject src/'
@@ -112,12 +115,15 @@ for i, line in enumerate(lsf_lines):
         if include_new_asm_file:
             lsf_lines[i] += f'\tObject asm/{file_prefix}{new_file_address}.o\n'
         break
-    
+
 BRANCH_LINK_INSTRUCTION = '\tbl '
 BRANCH_LINK_EXCHANGE_INSTRUCTION = '\tblx '
 BRANCH_INSTRUCTION = '\tb '
 WORD_KEY = '.word '
 WORD_PLUS_OFFSET = ' + 0x'
+"""
+Searches through an ASM file's contents for all external symbosl, then populates a .inc file with all the necessary .public definitions.
+"""
 def write_inc_file(lines: List[str], file_path: str):
     defined_functions = set()
     used_functions = set()
@@ -189,6 +195,9 @@ function_body = f"""{function_header}
 
 }}"""
 
+# Add the extracted function to a .h and .c file.
+# If there is an existing C file adjacent to the extracted function, add the function to that file.
+# Otherwise, make a new set of files.
 if merge_prev_file:
     header_file_path = os.path.join(HEADER_FOLDER, f'{merge_prev_file}.h')
     with open(header_file_path, 'r') as header_file:
