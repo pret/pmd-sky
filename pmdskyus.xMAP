@@ -38,7 +38,7 @@
             11](.data,section) found in local overlay_29_0234EC38.o
             11](MemFree,func) found in global main_02000C6C.o
              12](DecompressAtFromMemoryPointer,func) found in global main_0200C4CC.o
-              13](DebugPrint0,func) found in global main_debug.o
+              13](Debug_Print0,func) found in global debug.o
               13](GetKeyN2MSwitch,func) found in global itcm.o
                14](TryAddTargetToAiTargetList,func) found in global overlay_29_02319FB0.o
                 15](LogMessageByIdWithPopupCheckUserTarget,func) found in global overlay_29_023498A0.o
@@ -49,11 +49,11 @@
                  16](AdvanceFrame,func) found in global overlay_29_022E9618.o
                   17](ov29_02335F40,func) found in global overlay_29_023350FC.o
                    18](ov29_022E66C4,func) found in global overlay_29_022E37DC.o
-                    19](EntityIsValid__022E95F4,func) found in global overlay_29_022E95F4.o
+                    19](EntityIsValid__022E95F4,func) found in global dg_uty.o
                     19](GetTile,func) found in global overlay_29_023350FC.o
                     19](GetVisibilityRange,func) found in global overlay_29_022E330C.o
                      20](AnimationDelayOrSomething,func) found in global overlay_29_022E37DC.o
-                     20](EntityIsValid__022E37B8,func) found in global overlay_29_022E37B8.o
+                     20](EntityIsValid__022E37B8,func) found in global dg_effect.o
                      20](LogMessageByIdWithPopupCheckUser,func) found in global overlay_29_023498A0.o
                      20](UpdateMinimap,func) found in global overlay_29_02337CCC.o
                       21](ov29_022F0848,func) found in global overlay_29_022F05B4.o
@@ -69,7 +69,7 @@
                               29](ov29_022EF9BC,func) found in global overlay_29_022EF7C4.o
                                30](EntityIsValid__022F0590,func) found in global overlay_29_022F0590.o
                                30](ov29_022EA370,func) found in global overlay_29_022E9618.o
-                               30](ov29_022DE5F0,func) found in global overlay_29_022DC240.o
+                               30](ov29_022DE5F0,func) found in global overlay_29_022DC2B8.o
                                 31](CloseFixedBin,func) found in global overlay_29_02337CCC.o
                                 31](FreeLoadedAttackSpriteAndMore,func) found in global overlay_29_022F62CC.o
                                  32](EntityIsValid__022F7364,func) found in global overlay_29_022F7364.o
@@ -79,7 +79,7 @@
                                    34](CalcStatusDuration,func) found in global overlay_29_022EAB50.o
                                    34](SubstitutePlaceholderStringTags,func) found in global overlay_29_022E1A40.o
                                     35](ov29_022E34C8,func) found in global overlay_29_022E330C.o
-                                    35](EntityIsValid__022E32E8,func) found in global overlay_29_022E32E8.o
+                                    35](EntityIsValid__022E32E8,func) found in global dg_camera.o
                                     35](ov29_023047DC,func) found in global overlay_29_023047DC.o
                                     35](IsBlinded,func) found in global overlay_29_0231513C.o
                                     35](TeamMemberHasEnabledIqSkill,func) found in global overlay_29_022F7388.o
@@ -93,12 +93,12 @@
                                        38](GetItemInfo,func) found in global overlay_29_022E0378.o
                                         39](ov29_022ED9D0,func) found in global overlay_29_022ECDE4.o
                                         39](ov29_02303F18,func) found in global overlay_29_02302A5C.o
-                                        39](EntityIsValid__022E1A1C,func) found in global overlay_29_022E1A1C.o
-                                        39](ov29_022DD7D8,func) found in global overlay_29_022DC240.o
-                                        39](AllocAndLoadFileInPack,func) found in global main_pack.o
-                                         40](GetFileLengthInPack,func) found in global main_pack.o
-                                         40](LoadFileInPack,func) found in global main_pack.o
-                                        39](EntityIsValid__022E0354,func) found in global overlay_29_022E0354.o
+                                        39](EntityIsValid__022E1A1C,func) found in global dg_object.o
+                                        39](ov29_022DD7D8,func) found in global overlay_29_022DC2B8.o
+                                        39](DirectoryFileMngr_OpenDirectoryFile,func) found in global directory_file_mngr.o
+                                         40](DirectoryFile_GetDirectoryFileSize,func) found in global directory_file.o
+                                         40](DirectoryFile_LoadDirectoryFile,func) found in global directory_file.o
+                                        39](EntityIsValid__022E0354,func) found in global dg.o
                                         39](CalcSpeedStageWrapper,func) found in global overlay_29_022FEDBC.o
                                          40](ov29_02344B44,func) found in global overlay_29_02344B1C.o
                                          40](ov29_0230F654,func) found in global overlay_29_0230F02C.o
@@ -110,7 +110,7 @@
                                            42](GetApparentWeather,func) found in global overlay_29_02333FD0.o
                                             43](EntityIsValid__023350D8,func) found in global overlay_29_023350D8.o
                                            42](EntityIsValid__02321438,func) found in global overlay_29_02321438.o
-                                           42](DungeonRandOutcome__022EAB50,func) found in global dungeon_random.o
+                                           42](DungeonRandOutcome__022EAB50,func) found in global dg_random.o
                                            42](GetNaturePowerVariant,func) found in global overlay_29_02328030.o
                                             43](ov29_0232A834,func) found in global overlay_29_0232A3FC.o
                                              44](EntityIsValidMoveEffects__0232C500,func) found in global overlay_29_0232C500.o
@@ -122,7 +122,7 @@
                                                46](ov29_0231A364,func) found in global overlay_29_02319FB0.o
                                                46](StatusCheckerCheck,func) found in global overlay_29_0232E864.o
                                                46](EntityIsValid__02318E4C,func) found in global overlay_29_02318E4C.o
-                                               46](DungeonRandOutcome__022EAB20,func) found in global dungeon_random.o
+                                               46](DungeonRandOutcome__022EAB20,func) found in global dg_random.o
                                               45](IsCurrentFixedRoomBossFight,func) found in global overlay_29_022E0378.o
                                               45](EntityIsValid__0232E840,func) found in global overlay_29_0232E840.o
                                               45](ApplyDamageAndEffects,func) found in global overlay_29_023082A0.o
@@ -190,12 +190,13 @@
                                       37](EntityIsValid__02347BA4,func) found in global overlay_29_02347BA4.o
                                      36](EntityIsValid__022ECDC0,func) found in global overlay_29_022ECDC0.o
                                   33](EntityIsValid__0231B194,func) found in global overlay_29_0231B194.o
+                                31](ov29_022DC240,func) found in global poly_text.o
                                30](EntityIsValid__022EF7A0,func) found in global overlay_29_022EF7A0.o
                               29](EntityIsValid__023047B8,func) found in global overlay_29_023047B8.o
                              28](EntityIsValid__02302A38,func) found in global overlay_29_02302A38.o
                            26](EntityIsValid__022EC608,func) found in global overlay_29_022EC608.o
                            26](ExecuteMonsterAction,func) found in global overlay_29_022FE4BC.o
-                         24](GetFileLengthInPackWithPackNb,func) found in global main_pack.o
+                         24](DirectoryFileMngr_GetDirectoryFileSize,func) found in global directory_file_mngr.o
                         23](EntityIsValid__0234987C,func) found in global overlay_29_0234987C.o
                       21](EntityIsValid__02344AF8,func) found in global overlay_29_02344AF8.o
                       21](EntityIsValid__02337CA8,func) found in global overlay_29_02337CA8.o
@@ -203,12 +204,12 @@
                   17](.data,section) found in local overlay_30.o
                14](EntityIsValid__0230827C,func) found in global overlay_29_0230827C.o
                14](DTCM_BSS,notype) found in global dtcm.o
-              13](DebugPrint,func) found in global main_debug.o
-              13](FatalError,func) found in global main_debug.o
-               14](DebugPrintTrace,func) found in global main_debug.o
-                15](AppendProgPos,func) found in global main_debug.o
-               14](DebugDisplay,func) found in global main_debug.o
-              13](GetDebugFlag,func) found in global main_debug.o
+              13](Debug_Print,func) found in global debug.o
+              13](Debug_FatalError,func) found in global debug.o
+               14](Debug_PrintTrace,func) found in global debug.o
+                15](AppendProgPos,func) found in global debug.o
+               14](DebugDisplay,func) found in global debug.o
+              13](Debug_GetDebugFlag,func) found in global debug.o
               13](ov11_02306C64,func) found in global overlay_11.o
                14](ov27_0238BB80,func) found in global overlay_27.o
                 15](.data,section) found in local overlay_27.o
@@ -245,22 +246,22 @@
                  16](.text,section) found in local overlay_14.o
                14](ov13_0238ADFC,func) found in global overlay_13.o
                 15](.data,section) found in local overlay_13.o
-               14](GetDebugLogFlag,func) found in global main_debug.o
+               14](Debug_GetLogFlag,func) found in global debug.o
                14](ov28_0238A140,func) found in global overlay_28.o
                 15](.data,section) found in local overlay_28.o
                 15](.bss,section) found in local overlay_28.o
-              13](SetDebugLogFlag,func) found in global main_debug.o
-              13](SetDebugFlag,func) found in global main_debug.o
-              13](LoadFileInPackWithPackId,func) found in global main_pack.o
-             12](InitDebug,func) found in global main_debug.o
-              13](InitDebugStripped6,func) found in global main_debug.o
-              13](InitDebugStripped5,func) found in global main_debug.o
-              13](InitDebugStripped4,func) found in global main_debug.o
-              13](InitDebugStripped3,func) found in global main_debug.o
-              13](InitDebugStripped2,func) found in global main_debug.o
-              13](InitDebugStripped1,func) found in global main_debug.o
-              13](InitDebugLogFlag,func) found in global main_debug.o
-              13](InitDebugFlag,func) found in global main_debug.o
+              13](Debug_SetLogFlag,func) found in global debug.o
+              13](Debug_SetDebugFlag,func) found in global debug.o
+              13](DirectoryFileMngr_LoadDirectoryFile,func) found in global directory_file_mngr.o
+             12](Debug_Init,func) found in global debug.o
+              13](Debug_Stripped6,func) found in global debug.o
+              13](Debug_Stripped5,func) found in global debug.o
+              13](Debug_Stripped4,func) found in global debug.o
+              13](Debug_Stripped3,func) found in global debug.o
+              13](Debug_Stripped2,func) found in global debug.o
+              13](Debug_Stripped1,func) found in global debug.o
+              13](Debug_InitLogFlag,func) found in global debug.o
+              13](Debug_InitDebugFlag,func) found in global debug.o
           9](EntityIsValid__0230E8F0,func) found in global overlay_29_0230E8F0.o
         7](.data,section) found in local overlay_10.o
         7](ExplorersOfSkyMain,func) found in global overlay_34.o
@@ -300,8 +301,8 @@
           9](.text,section) found in local overlay_03.o
          8](.bss,section) found in local overlay_03.o
         7](.bss,section) found in local overlay_01.o
-       6](OpenAllPackFiles,func) found in global main_pack.o
-        7](OpenPackFile,func) found in global main_pack.o
+       6](DirectoryFileMngr_ExtractAllDirectoryFiles,func) found in global directory_file_mngr.o
+        7](DirectoryFile_ExtractDirectoryFile,func) found in global directory_file.o
      4](SoundLfoWaveHalfNoiseFunc,func) found in global dc_lfo_2.o
      4](SoundLfoWaveReverseSawFunc,func) found in global dc_lfo_2.o
      4](SoundLfoWaveSawFunc,func) found in global dc_lfo_2.o
@@ -972,9 +973,9 @@
   020080B8 00000008 .text   sub_020080B8	(main_02000C6C.o)
   020080C0 00000078 .text   sub_020080C0	(main_02000C6C.o)
   02008138 00000030 .text   sub_02008138	(main_02000C6C.o)
-  02008168 0000002C .text   DataTransferInit	(main_02000C6C.o)
+  02008168 0000002C .text   FileRom_InitDataTransfer	(main_02000C6C.o)
   0200818C 00000000 .text   $d	(main_02000C6C.o)
-  02008194 00000034 .text   DataTransferStop	(main_02000C6C.o)
+  02008194 00000034 .text   FileRom_StopDataTransfer	(main_02000C6C.o)
   02008194 00000000 .text   $a	(main_02000C6C.o)
   020081C0 00000000 .text   $d	(main_02000C6C.o)
   020081C8 00000014 .text   sub_020081C8	(main_02000C6C.o)
@@ -986,15 +987,15 @@
   020081F0 00000014 .text   sub_020081F0	(main_02000C6C.o)
   020081F0 00000000 .text   $a	(main_02000C6C.o)
   020081FC 00000000 .text   $d	(main_02000C6C.o)
-  02008204 0000000C .text   FileInitVeneer	(main_02000C6C.o)
+  02008204 0000000C .text   FileRom_Veneer_FileInit	(main_02000C6C.o)
   02008204 00000000 .text   $a	(main_02000C6C.o)
   0200820C 00000000 .text   $d	(main_02000C6C.o)
-  02008210 00000030 .text   FileOpen	(main_02000C6C.o)
+  02008210 00000030 .text   FileRom_HandleOpen	(main_02000C6C.o)
   02008210 00000000 .text   $a	(main_02000C6C.o)
   02008240 00000004 .text   sub_02008240	(main_02000C6C.o)
   02008244 00000010 .text   FileGetSize	(main_02000C6C.o)
-  02008254 00000054 .text   FileRead	(main_02000C6C.o)
-  020082A8 0000001C .text   FileSeek	(main_02000C6C.o)
+  02008254 00000054 .text   FileRom_HandleRead	(main_02000C6C.o)
+  020082A8 0000001C .text   FileRom_HandleSeek	(main_02000C6C.o)
   020082C4 0000001C .text   FileClose	(main_02000C6C.o)
   020082E0 00000014 .text   sub_020082E0	(main_02000C6C.o)
   020082F0 00000000 .text   $d	(main_02000C6C.o)
@@ -1276,67 +1277,67 @@
   0200C01C 00000000 .text   $d	(main_02000C6C.o)
   0200C020 00000000 .text   $a	(main_02000C6C.o)
   0200C020 000000B4 .text   sub_0200C020	(main_02000C6C.o)
-  0200C0D4 00000000 .text   $a	(main_debug.o)
-  0200C0D4 00000038 .text   InitDebug	(main_debug.o)
-  0200C108 00000000 .text   $d	(main_debug.o)
-  0200C10C 00000004 .text   InitDebugFlag	(main_debug.o)
-  0200C10C 00000000 .text   $a	(main_debug.o)
-  0200C110 00000008 .text   GetDebugFlag	(main_debug.o)
-  0200C110 00000000 .text   $a	(main_debug.o)
-  0200C118 00000004 .text   SetDebugFlag	(main_debug.o)
-  0200C118 00000000 .text   $a	(main_debug.o)
-  0200C11C 00000004 .text   InitDebugStripped6	(main_debug.o)
-  0200C11C 00000000 .text   $a	(main_debug.o)
-  0200C120 00000000 .text   $a	(main_debug.o)
-  0200C120 00000048 .text   AppendProgPos	(main_debug.o)
-  0200C15C 00000000 .text   $d	(main_debug.o)
-  0200C168 00000004 .text   InitDebugStripped5	(main_debug.o)
-  0200C168 00000000 .text   $a	(main_debug.o)
-  0200C16C 00000000 .text   $a	(main_debug.o)
-  0200C16C 0000005C .text   DebugPrintTrace	(main_debug.o)
-  0200C1C4 00000000 .text   $d	(main_debug.o)
-  0200C1C8 00000034 .text   DebugDisplay	(main_debug.o)
-  0200C1C8 00000000 .text   $a	(main_debug.o)
-  0200C1FC 00000034 .text   DebugPrint0	(main_debug.o)
-  0200C1FC 00000000 .text   $a	(main_debug.o)
-  0200C230 00000004 .text   InitDebugLogFlag	(main_debug.o)
-  0200C230 00000000 .text   $a	(main_debug.o)
-  0200C234 00000008 .text   GetDebugLogFlag	(main_debug.o)
-  0200C234 00000000 .text   $a	(main_debug.o)
-  0200C23C 00000004 .text   SetDebugLogFlag	(main_debug.o)
-  0200C23C 00000000 .text   $a	(main_debug.o)
-  0200C240 0000000C .text   DebugPrint	(main_debug.o)
-  0200C240 00000000 .text   $a	(main_debug.o)
-  0200C24C 00000004 .text   InitDebugStripped4	(main_debug.o)
-  0200C24C 00000000 .text   $a	(main_debug.o)
-  0200C250 00000004 .text   InitDebugStripped3	(main_debug.o)
-  0200C250 00000000 .text   $a	(main_debug.o)
-  0200C254 00000004 .text   InitDebugStripped2	(main_debug.o)
-  0200C254 00000000 .text   $a	(main_debug.o)
-  0200C258 00000004 .text   InitDebugStripped1	(main_debug.o)
-  0200C258 00000000 .text   $a	(main_debug.o)
-  0200C25C 00000000 .text   $a	(main_debug.o)
-  0200C25C 00000080 .text   FatalError	(main_debug.o)
-  0200C2CC 00000000 .text   $d	(main_debug.o)
-  0200C2DC 00000000 .text   $a	(main_pack.o)
-  0200C2DC 00000060 .text   OpenAllPackFiles	(main_pack.o)
-  0200C334 00000000 .text   $d	(main_pack.o)
-  0200C33C 00000000 .text   $a	(main_pack.o)
-  0200C33C 00000020 .text   GetFileLengthInPackWithPackNb	(main_pack.o)
-  0200C354 00000000 .text   $d	(main_pack.o)
-  0200C35C 00000000 .text   $a	(main_pack.o)
-  0200C35C 0000002C .text   LoadFileInPackWithPackId	(main_pack.o)
-  0200C384 00000000 .text   $d	(main_pack.o)
-  0200C388 00000000 .text   $a	(main_pack.o)
-  0200C388 00000058 .text   AllocAndLoadFileInPack	(main_pack.o)
-  0200C3DC 00000000 .text   $d	(main_pack.o)
-  0200C3E0 00000000 .text   $a	(main_pack.o)
-  0200C3E0 00000094 .text   OpenPackFile	(main_pack.o)
-  0200C470 00000000 .text   $d	(main_pack.o)
-  0200C474 00000010 .text   GetFileLengthInPack	(main_pack.o)
-  0200C474 00000000 .text   $a	(main_pack.o)
-  0200C484 00000048 .text   LoadFileInPack	(main_pack.o)
-  0200C484 00000000 .text   $a	(main_pack.o)
+  0200C0D4 00000000 .text   $a	(debug.o)
+  0200C0D4 00000038 .text   Debug_Init	(debug.o)
+  0200C108 00000000 .text   $d	(debug.o)
+  0200C10C 00000004 .text   Debug_InitDebugFlag	(debug.o)
+  0200C10C 00000000 .text   $a	(debug.o)
+  0200C110 00000008 .text   Debug_GetDebugFlag	(debug.o)
+  0200C110 00000000 .text   $a	(debug.o)
+  0200C118 00000004 .text   Debug_SetDebugFlag	(debug.o)
+  0200C118 00000000 .text   $a	(debug.o)
+  0200C11C 00000004 .text   Debug_Stripped6	(debug.o)
+  0200C11C 00000000 .text   $a	(debug.o)
+  0200C120 00000000 .text   $a	(debug.o)
+  0200C120 00000048 .text   AppendProgPos	(debug.o)
+  0200C15C 00000000 .text   $d	(debug.o)
+  0200C168 00000004 .text   Debug_Stripped5	(debug.o)
+  0200C168 00000000 .text   $a	(debug.o)
+  0200C16C 00000000 .text   $a	(debug.o)
+  0200C16C 0000005C .text   Debug_PrintTrace	(debug.o)
+  0200C1C4 00000000 .text   $d	(debug.o)
+  0200C1C8 00000034 .text   DebugDisplay	(debug.o)
+  0200C1C8 00000000 .text   $a	(debug.o)
+  0200C1FC 00000034 .text   Debug_Print0	(debug.o)
+  0200C1FC 00000000 .text   $a	(debug.o)
+  0200C230 00000004 .text   Debug_InitLogFlag	(debug.o)
+  0200C230 00000000 .text   $a	(debug.o)
+  0200C234 00000008 .text   Debug_GetLogFlag	(debug.o)
+  0200C234 00000000 .text   $a	(debug.o)
+  0200C23C 00000004 .text   Debug_SetLogFlag	(debug.o)
+  0200C23C 00000000 .text   $a	(debug.o)
+  0200C240 0000000C .text   Debug_Print	(debug.o)
+  0200C240 00000000 .text   $a	(debug.o)
+  0200C24C 00000004 .text   Debug_Stripped4	(debug.o)
+  0200C24C 00000000 .text   $a	(debug.o)
+  0200C250 00000004 .text   Debug_Stripped3	(debug.o)
+  0200C250 00000000 .text   $a	(debug.o)
+  0200C254 00000004 .text   Debug_Stripped2	(debug.o)
+  0200C254 00000000 .text   $a	(debug.o)
+  0200C258 00000004 .text   Debug_Stripped1	(debug.o)
+  0200C258 00000000 .text   $a	(debug.o)
+  0200C25C 00000000 .text   $a	(debug.o)
+  0200C25C 00000080 .text   Debug_FatalError	(debug.o)
+  0200C2CC 00000000 .text   $d	(debug.o)
+  0200C2DC 00000000 .text   $a	(directory_file_mngr.o)
+  0200C2DC 00000060 .text   DirectoryFileMngr_ExtractAllDirectoryFiles	(directory_file_mngr.o)
+  0200C334 00000000 .text   $d	(directory_file_mngr.o)
+  0200C33C 00000000 .text   $a	(directory_file_mngr.o)
+  0200C33C 00000020 .text   DirectoryFileMngr_GetDirectoryFileSize	(directory_file_mngr.o)
+  0200C354 00000000 .text   $d	(directory_file_mngr.o)
+  0200C35C 00000000 .text   $a	(directory_file_mngr.o)
+  0200C35C 0000002C .text   DirectoryFileMngr_LoadDirectoryFile	(directory_file_mngr.o)
+  0200C384 00000000 .text   $d	(directory_file_mngr.o)
+  0200C388 00000000 .text   $a	(directory_file_mngr.o)
+  0200C388 00000058 .text   DirectoryFileMngr_OpenDirectoryFile	(directory_file_mngr.o)
+  0200C3DC 00000000 .text   $d	(directory_file_mngr.o)
+  0200C3E0 00000000 .text   $a	(directory_file.o)
+  0200C3E0 00000094 .text   DirectoryFile_ExtractDirectoryFile	(directory_file.o)
+  0200C470 00000000 .text   $d	(directory_file.o)
+  0200C474 00000010 .text   DirectoryFile_GetDirectoryFileSize	(directory_file.o)
+  0200C474 00000000 .text   $a	(directory_file.o)
+  0200C484 00000048 .text   DirectoryFile_LoadDirectoryFile	(directory_file.o)
+  0200C484 00000000 .text   $a	(directory_file.o)
   0200C4CC 00000000 .text   $a	(main_0200C4CC.o)
   0200C4CC 00048714 .text   .text	(main_0200C4CC.o)
   0200C4CC 00000030 .text   sub_0200C4CC	(main_0200C4CC.o)
@@ -12066,8 +12067,8 @@
   020AF5E8 00000000 .text   _020AF5E8	(main_02075600.o)
   020AF694 00000000 .text   _020AF694	(main_02075600.o)
   020AF698 00000000 .text   DEBUG_IS_INITIALIZED	(main_02075600.o)
-  020AF69C 00000000 .text   PACK_FILES_OPENED	(main_02075600.o)
-  020AF6A0 00000000 .text   PACK_FILE_PATHS_TABLE	(main_02075600.o)
+  020AF69C 00000000 .text   DIRECTORY_FILES_EXTRACTED	(main_02075600.o)
+  020AF6A0 00000000 .text   DIRECTORY_FILE_TABLE	(main_02075600.o)
   020AF6B8 00000000 .text   BAG_ITEMS_PTR_MIRROR	(main_02075600.o)
   020AF6C0 00000000 .text   ITEM_DATA_TABLE_PTRS	(main_02075600.o)
   020AF6C4 00000000 .text   _020AF6C4	(main_02075600.o)
@@ -33085,246 +33086,246 @@
 #>0000001D          SDK_OVERLAY.OVY_29.ID (linker command file)
 #>022DC240          SDK_OVERLAY.OVY_29.START (linker command file)
 #>022DC240          SDK_OVERLAY.OVY_29.TEXT_START (linker command file)
-  022DC240 00004114 .text   .text	(overlay_29_022DC240.o)
-  022DC240 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC240 00000078 .text   ov29_022DC240	(overlay_29_022DC240.o)
-  022DC2B0 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC2B8 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC2B8 0000005C .text   ov29_022DC2B8	(overlay_29_022DC240.o)
-  022DC30C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC314 00000028 .text   ov29_022DC314	(overlay_29_022DC240.o)
-  022DC314 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC338 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC33C 00000208 .text   ov29_022DC33C	(overlay_29_022DC240.o)
-  022DC33C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC52C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC544 000000D8 .text   ov29_022DC544	(overlay_29_022DC240.o)
-  022DC544 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC604 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC61C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC61C 00000040 .text   ov29_022DC61C	(overlay_29_022DC240.o)
-  022DC650 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC65C 00000014 .text   ov29_022DC65C	(overlay_29_022DC240.o)
-  022DC65C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC668 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC670 00000014 .text   ov29_022DC670	(overlay_29_022DC240.o)
-  022DC670 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC67C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC684 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC684 00000010 .text   ov29_022DC684	(overlay_29_022DC240.o)
-  022DC690 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC694 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC694 0000003C .text   ov29_022DC694	(overlay_29_022DC240.o)
-  022DC6D0 0000000C .text   ov29_022DC6D0	(overlay_29_022DC240.o)
-  022DC6D8 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC6DC 0000000C .text   ov29_022DC6DC	(overlay_29_022DC240.o)
-  022DC6DC 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC6E4 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC6E8 00000040 .text   ov29_022DC6E8	(overlay_29_022DC240.o)
-  022DC6E8 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC728 00000010 .text   ov29_022DC728	(overlay_29_022DC240.o)
-  022DC738 00000034 .text   ov29_022DC738	(overlay_29_022DC240.o)
-  022DC76C 0000000C .text   ov29_022DC76C	(overlay_29_022DC240.o)
-  022DC774 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC778 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC778 00000004 .text   ov29_022DC778	(overlay_29_022DC240.o)
-  022DC77C 00000010 .text   ov29_022DC77C	(overlay_29_022DC240.o)
-  022DC78C 00000058 .text   ov29_022DC78C	(overlay_29_022DC240.o)
-  022DC7E0 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DC7E4 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DC7E4 0000003C .text   ov29_022DC7E4	(overlay_29_022DC240.o)
-  022DC820 00000884 .text   ov29_022DC820	(overlay_29_022DC240.o)
-  022DD08C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DD0A4 00000474 .text   ov29_022DD0A4	(overlay_29_022DC240.o)
-  022DD0A4 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DD500 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DD518 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DD518 0000009C .text   ov29_022DD518	(overlay_29_022DC240.o)
-  022DD5AC 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DD5B4 000001BC .text   ov29_022DD5B4	(overlay_29_022DC240.o)
-  022DD5B4 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DD758 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DD770 0000003C .text   ov29_022DD770	(overlay_29_022DC240.o)
-  022DD770 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DD7A8 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DD7AC 0000002C .text   ov29_022DD7AC	(overlay_29_022DC240.o)
-  022DD7AC 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DD7D4 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DD7D8 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DD7D8 00000050 .text   ov29_022DD7D8	(overlay_29_022DC240.o)
-  022DD824 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DD828 00000014 .text   ov29_022DD828	(overlay_29_022DC240.o)
-  022DD828 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DD838 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DD83C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DD83C 00000078 .text   ov29_022DD83C	(overlay_29_022DC240.o)
-  022DD8B0 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DD8B4 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DD8B4 000001A0 .text   ov29_022DD8B4	(overlay_29_022DC240.o)
-  022DDA50 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDA54 00000114 .text   ov29_022DDA54	(overlay_29_022DC240.o)
-  022DDA54 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDB60 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDB68 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDB68 00000030 .text   ov29_022DDB68	(overlay_29_022DC240.o)
-  022DDB94 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDB98 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDB98 00000068 .text   ov29_022DDB98	(overlay_29_022DC240.o)
-  022DDBFC 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDC00 000000A0 .text   ov29_022DDC00	(overlay_29_022DC240.o)
-  022DDC00 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDC8C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDCA0 00000004 .text   ov29_022DDCA0	(overlay_29_022DC240.o)
-  022DDCA0 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDCA4 000000AC .text   ov29_022DDCA4	(overlay_29_022DC240.o)
-  022DDD40 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDD50 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDD50 00000054 .text   ov29_022DDD50	(overlay_29_022DC240.o)
-  022DDDA0 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDDA4 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDDA4 0000005C .text   ov29_022DDDA4	(overlay_29_022DC240.o)
-  022DDDFC 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDE00 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDE00 00000024 .text   ov29_022DDE00	(overlay_29_022DC240.o)
-  022DDE24 0000000C .text   ov29_022DDE24	(overlay_29_022DC240.o)
-  022DDE2C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDE30 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDE30 000000C8 .text   ov29_022DDE30	(overlay_29_022DC240.o)
-  022DDEDC 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDEF8 000000F8 .text   ov29_022DDEF8	(overlay_29_022DC240.o)
-  022DDEF8 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDFD8 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDFF0 0000000C .text   ov29_022DDFF0	(overlay_29_022DC240.o)
-  022DDFF0 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DDFF8 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DDFFC 0000006C .text   ov29_022DDFFC	(overlay_29_022DC240.o)
-  022DDFFC 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE064 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE068 00000038 .text   ov29_022DE068	(overlay_29_022DC240.o)
-  022DE068 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE09C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE0A0 0000002C .text   ov29_022DE0A0	(overlay_29_022DC240.o)
-  022DE0A0 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE0C8 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE0CC 00000020 .text   ov29_022DE0CC	(overlay_29_022DC240.o)
-  022DE0CC 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE0E8 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE0EC 00000030 .text   ov29_022DE0EC	(overlay_29_022DC240.o)
-  022DE0EC 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE118 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE11C 00000018 .text   ov29_022DE11C	(overlay_29_022DC240.o)
-  022DE11C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE12C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE134 00000028 .text   ov29_022DE134	(overlay_29_022DC240.o)
-  022DE134 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE158 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE15C 00000088 .text   ov29_022DE15C	(overlay_29_022DC240.o)
-  022DE15C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE1E4 00000024 .text   ov29_022DE1E4	(overlay_29_022DC240.o)
-  022DE200 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE208 00000024 .text   ov29_022DE208	(overlay_29_022DC240.o)
-  022DE208 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE224 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE22C 00000048 .text   ov29_022DE22C	(overlay_29_022DC240.o)
-  022DE22C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE26C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE274 00000014 .text   ov29_022DE274	(overlay_29_022DC240.o)
-  022DE274 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE288 00000008 .text   ov29_022DE288	(overlay_29_022DC240.o)
-  022DE290 00000038 .text   ov29_022DE290	(overlay_29_022DC240.o)
-  022DE2C4 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE2C8 00000038 .text   ov29_022DE2C8	(overlay_29_022DC240.o)
-  022DE2C8 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE2FC 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE300 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE300 00000118 .text   ov29_022DE300	(overlay_29_022DC240.o)
-  022DE410 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE418 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE418 00000064 .text   ov29_022DE418	(overlay_29_022DC240.o)
-  022DE478 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE47C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE47C 0000001C .text   ov29_022DE47C	(overlay_29_022DC240.o)
-  022DE494 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE498 00000064 .text   ov29_022DE498	(overlay_29_022DC240.o)
-  022DE498 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE4F8 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE4FC 00000070 .text   ov29_022DE4FC	(overlay_29_022DC240.o)
-  022DE4FC 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE55C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE56C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE56C 0000006C .text   ov29_022DE56C	(overlay_29_022DC240.o)
-  022DE5D4 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE5D8 00000018 .text   ov29_022DE5D8	(overlay_29_022DC240.o)
-  022DE5D8 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE5EC 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE5F0 00000018 .text   ov29_022DE5F0	(overlay_29_022DC240.o)
-  022DE5F0 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE604 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE608 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE608 00000018 .text   ov29_022DE608	(overlay_29_022DC240.o)
-  022DE61C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE620 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE620 00000018 .text   GetWeatherColorTable	(overlay_29_022DC240.o)
-  022DE634 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE638 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE638 0000021C .text   ov29_022DE638	(overlay_29_022DC240.o)
-  022DE844 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE854 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE854 00000014 .text   ov29_022DE854	(overlay_29_022DC240.o)
-  022DE868 0000009C .text   ov29_022DE868	(overlay_29_022DC240.o)
-  022DE900 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE904 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE904 0000002C .text   ov29_022DE904	(overlay_29_022DC240.o)
-  022DE92C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE930 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE930 00000024 .text   ov29_022DE930	(overlay_29_022DC240.o)
-  022DE950 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE954 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE954 00000014 .text   ov29_022DE954	(overlay_29_022DC240.o)
-  022DE968 00000090 .text   ov29_022DE968	(overlay_29_022DC240.o)
-  022DE9F4 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DE9F8 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DE9F8 00000018 .text   ov29_022DE9F8	(overlay_29_022DC240.o)
-  022DEA0C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEA10 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DEA10 0000000C .text   ov29_022DEA10	(overlay_29_022DC240.o)
-  022DEA18 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEA1C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DEA1C 00000018 .text   ov29_022DEA1C	(overlay_29_022DC240.o)
-  022DEA30 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEA34 00000028 .text   ov29_022DEA34	(overlay_29_022DC240.o)
-  022DEA34 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DEA58 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEA5C 00000024 .text   DungeonAlloc	(overlay_29_022DC240.o)
-  022DEA5C 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DEA78 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEA80 00000010 .text   GetDungeonPtrMaster	(overlay_29_022DC240.o)
-  022DEA80 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DEA8C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEA90 00000020 .text   DungeonZInit	(overlay_29_022DC240.o)
-  022DEA90 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DEAA4 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEAB0 0000002C .text   DungeonFree	(overlay_29_022DC240.o)
-  022DEAB0 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DEAD8 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEADC 00000064 .text   ov29_022DEADC	(overlay_29_022DC240.o)
-  022DEADC 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DEB40 00000064 .text   ov29_022DEB40	(overlay_29_022DC240.o)
-  022DEBA4 0000000C .text   ov29_022DEBA4	(overlay_29_022DC240.o)
-  022DEBAC 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEBB0 0000000C .text   ov29_022DEBB0	(overlay_29_022DC240.o)
-  022DEBB0 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DEBB8 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEBBC 0000037C .text   ov29_022DEBBC	(overlay_29_022DC240.o)
-  022DEBBC 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DEF2C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DEF38 0000141C .text   RunDungeon	(overlay_29_022DC240.o)
-  022DEF38 00000000 .text   $a	(overlay_29_022DC240.o)
-  022DFF3C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022DFF84 00000000 .text   $a	(overlay_29_022DC240.o)
-  022E034C 00000000 .text   $d	(overlay_29_022DC240.o)
-  022E0354 00000024 .text   EntityIsValid__022E0354	(overlay_29_022E0354.o)
-  022E0354 00000000 .text   $a	(overlay_29_022E0354.o)
+  022DC240 00000000 .text   $a	(poly_text.o)
+  022DC240 00000078 .text   ov29_022DC240	(poly_text.o)
+  022DC2B0 00000000 .text   $d	(poly_text.o)
+  022DC2B8 0000409C .text   .text	(overlay_29_022DC2B8.o)
+  022DC2B8 0000005C .text   ov29_022DC2B8	(overlay_29_022DC2B8.o)
+  022DC2B8 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC30C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC314 00000028 .text   ov29_022DC314	(overlay_29_022DC2B8.o)
+  022DC314 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC338 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC33C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC33C 00000208 .text   ov29_022DC33C	(overlay_29_022DC2B8.o)
+  022DC52C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC544 000000D8 .text   ov29_022DC544	(overlay_29_022DC2B8.o)
+  022DC544 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC604 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC61C 00000040 .text   ov29_022DC61C	(overlay_29_022DC2B8.o)
+  022DC61C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC650 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC65C 00000014 .text   ov29_022DC65C	(overlay_29_022DC2B8.o)
+  022DC65C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC668 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC670 00000014 .text   ov29_022DC670	(overlay_29_022DC2B8.o)
+  022DC670 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC67C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC684 00000010 .text   ov29_022DC684	(overlay_29_022DC2B8.o)
+  022DC684 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC690 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC694 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC694 0000003C .text   ov29_022DC694	(overlay_29_022DC2B8.o)
+  022DC6D0 0000000C .text   ov29_022DC6D0	(overlay_29_022DC2B8.o)
+  022DC6D8 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC6DC 0000000C .text   ov29_022DC6DC	(overlay_29_022DC2B8.o)
+  022DC6DC 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC6E4 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC6E8 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC6E8 00000040 .text   ov29_022DC6E8	(overlay_29_022DC2B8.o)
+  022DC728 00000010 .text   ov29_022DC728	(overlay_29_022DC2B8.o)
+  022DC738 00000034 .text   ov29_022DC738	(overlay_29_022DC2B8.o)
+  022DC76C 0000000C .text   ov29_022DC76C	(overlay_29_022DC2B8.o)
+  022DC774 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC778 00000004 .text   ov29_022DC778	(overlay_29_022DC2B8.o)
+  022DC778 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC77C 00000010 .text   ov29_022DC77C	(overlay_29_022DC2B8.o)
+  022DC78C 00000058 .text   ov29_022DC78C	(overlay_29_022DC2B8.o)
+  022DC7E0 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DC7E4 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DC7E4 0000003C .text   ov29_022DC7E4	(overlay_29_022DC2B8.o)
+  022DC820 00000884 .text   ov29_022DC820	(overlay_29_022DC2B8.o)
+  022DD08C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DD0A4 00000474 .text   ov29_022DD0A4	(overlay_29_022DC2B8.o)
+  022DD0A4 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DD500 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DD518 0000009C .text   ov29_022DD518	(overlay_29_022DC2B8.o)
+  022DD518 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DD5AC 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DD5B4 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DD5B4 000001BC .text   ov29_022DD5B4	(overlay_29_022DC2B8.o)
+  022DD758 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DD770 0000003C .text   ov29_022DD770	(overlay_29_022DC2B8.o)
+  022DD770 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DD7A8 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DD7AC 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DD7AC 0000002C .text   ov29_022DD7AC	(overlay_29_022DC2B8.o)
+  022DD7D4 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DD7D8 00000050 .text   ov29_022DD7D8	(overlay_29_022DC2B8.o)
+  022DD7D8 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DD824 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DD828 00000014 .text   ov29_022DD828	(overlay_29_022DC2B8.o)
+  022DD828 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DD838 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DD83C 00000078 .text   ov29_022DD83C	(overlay_29_022DC2B8.o)
+  022DD83C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DD8B0 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DD8B4 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DD8B4 000001A0 .text   ov29_022DD8B4	(overlay_29_022DC2B8.o)
+  022DDA50 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDA54 00000114 .text   ov29_022DDA54	(overlay_29_022DC2B8.o)
+  022DDA54 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDB60 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDB68 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDB68 00000030 .text   ov29_022DDB68	(overlay_29_022DC2B8.o)
+  022DDB94 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDB98 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDB98 00000068 .text   ov29_022DDB98	(overlay_29_022DC2B8.o)
+  022DDBFC 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDC00 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDC00 000000A0 .text   ov29_022DDC00	(overlay_29_022DC2B8.o)
+  022DDC8C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDCA0 00000004 .text   ov29_022DDCA0	(overlay_29_022DC2B8.o)
+  022DDCA0 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDCA4 000000AC .text   ov29_022DDCA4	(overlay_29_022DC2B8.o)
+  022DDD40 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDD50 00000054 .text   ov29_022DDD50	(overlay_29_022DC2B8.o)
+  022DDD50 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDDA0 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDDA4 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDDA4 0000005C .text   ov29_022DDDA4	(overlay_29_022DC2B8.o)
+  022DDDFC 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDE00 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDE00 00000024 .text   ov29_022DDE00	(overlay_29_022DC2B8.o)
+  022DDE24 0000000C .text   ov29_022DDE24	(overlay_29_022DC2B8.o)
+  022DDE2C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDE30 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDE30 000000C8 .text   ov29_022DDE30	(overlay_29_022DC2B8.o)
+  022DDEDC 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDEF8 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDEF8 000000F8 .text   ov29_022DDEF8	(overlay_29_022DC2B8.o)
+  022DDFD8 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDFF0 0000000C .text   ov29_022DDFF0	(overlay_29_022DC2B8.o)
+  022DDFF0 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DDFF8 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DDFFC 0000006C .text   ov29_022DDFFC	(overlay_29_022DC2B8.o)
+  022DDFFC 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE064 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE068 00000038 .text   ov29_022DE068	(overlay_29_022DC2B8.o)
+  022DE068 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE09C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE0A0 0000002C .text   ov29_022DE0A0	(overlay_29_022DC2B8.o)
+  022DE0A0 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE0C8 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE0CC 00000020 .text   ov29_022DE0CC	(overlay_29_022DC2B8.o)
+  022DE0CC 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE0E8 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE0EC 00000030 .text   ov29_022DE0EC	(overlay_29_022DC2B8.o)
+  022DE0EC 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE118 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE11C 00000018 .text   ov29_022DE11C	(overlay_29_022DC2B8.o)
+  022DE11C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE12C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE134 00000028 .text   ov29_022DE134	(overlay_29_022DC2B8.o)
+  022DE134 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE158 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE15C 00000088 .text   ov29_022DE15C	(overlay_29_022DC2B8.o)
+  022DE15C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE1E4 00000024 .text   ov29_022DE1E4	(overlay_29_022DC2B8.o)
+  022DE200 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE208 00000024 .text   ov29_022DE208	(overlay_29_022DC2B8.o)
+  022DE208 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE224 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE22C 00000048 .text   ov29_022DE22C	(overlay_29_022DC2B8.o)
+  022DE22C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE26C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE274 00000014 .text   ov29_022DE274	(overlay_29_022DC2B8.o)
+  022DE274 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE288 00000008 .text   ov29_022DE288	(overlay_29_022DC2B8.o)
+  022DE290 00000038 .text   ov29_022DE290	(overlay_29_022DC2B8.o)
+  022DE2C4 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE2C8 00000038 .text   ov29_022DE2C8	(overlay_29_022DC2B8.o)
+  022DE2C8 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE2FC 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE300 00000118 .text   ov29_022DE300	(overlay_29_022DC2B8.o)
+  022DE300 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE410 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE418 00000064 .text   ov29_022DE418	(overlay_29_022DC2B8.o)
+  022DE418 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE478 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE47C 0000001C .text   ov29_022DE47C	(overlay_29_022DC2B8.o)
+  022DE47C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE494 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE498 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE498 00000064 .text   ov29_022DE498	(overlay_29_022DC2B8.o)
+  022DE4F8 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE4FC 00000070 .text   ov29_022DE4FC	(overlay_29_022DC2B8.o)
+  022DE4FC 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE55C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE56C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE56C 0000006C .text   ov29_022DE56C	(overlay_29_022DC2B8.o)
+  022DE5D4 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE5D8 00000018 .text   ov29_022DE5D8	(overlay_29_022DC2B8.o)
+  022DE5D8 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE5EC 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE5F0 00000018 .text   ov29_022DE5F0	(overlay_29_022DC2B8.o)
+  022DE5F0 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE604 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE608 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE608 00000018 .text   ov29_022DE608	(overlay_29_022DC2B8.o)
+  022DE61C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE620 00000018 .text   GetWeatherColorTable	(overlay_29_022DC2B8.o)
+  022DE620 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE634 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE638 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE638 0000021C .text   ov29_022DE638	(overlay_29_022DC2B8.o)
+  022DE844 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE854 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE854 00000014 .text   ov29_022DE854	(overlay_29_022DC2B8.o)
+  022DE868 0000009C .text   ov29_022DE868	(overlay_29_022DC2B8.o)
+  022DE900 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE904 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE904 0000002C .text   ov29_022DE904	(overlay_29_022DC2B8.o)
+  022DE92C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE930 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE930 00000024 .text   ov29_022DE930	(overlay_29_022DC2B8.o)
+  022DE950 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE954 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE954 00000014 .text   ov29_022DE954	(overlay_29_022DC2B8.o)
+  022DE968 00000090 .text   ov29_022DE968	(overlay_29_022DC2B8.o)
+  022DE9F4 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DE9F8 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DE9F8 00000018 .text   ov29_022DE9F8	(overlay_29_022DC2B8.o)
+  022DEA0C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEA10 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DEA10 0000000C .text   ov29_022DEA10	(overlay_29_022DC2B8.o)
+  022DEA18 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEA1C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DEA1C 00000018 .text   ov29_022DEA1C	(overlay_29_022DC2B8.o)
+  022DEA30 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEA34 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DEA34 00000028 .text   ov29_022DEA34	(overlay_29_022DC2B8.o)
+  022DEA58 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEA5C 00000024 .text   DungeonAlloc	(overlay_29_022DC2B8.o)
+  022DEA5C 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DEA78 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEA80 00000010 .text   GetDungeonPtrMaster	(overlay_29_022DC2B8.o)
+  022DEA80 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DEA8C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEA90 00000020 .text   DungeonZInit	(overlay_29_022DC2B8.o)
+  022DEA90 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DEAA4 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEAB0 0000002C .text   DungeonFree	(overlay_29_022DC2B8.o)
+  022DEAB0 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DEAD8 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEADC 00000064 .text   ov29_022DEADC	(overlay_29_022DC2B8.o)
+  022DEADC 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DEB40 00000064 .text   ov29_022DEB40	(overlay_29_022DC2B8.o)
+  022DEBA4 0000000C .text   ov29_022DEBA4	(overlay_29_022DC2B8.o)
+  022DEBAC 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEBB0 0000000C .text   ov29_022DEBB0	(overlay_29_022DC2B8.o)
+  022DEBB0 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DEBB8 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEBBC 0000037C .text   ov29_022DEBBC	(overlay_29_022DC2B8.o)
+  022DEBBC 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DEF2C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DEF38 0000141C .text   RunDungeon	(overlay_29_022DC2B8.o)
+  022DEF38 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022DFF3C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022DFF84 00000000 .text   $a	(overlay_29_022DC2B8.o)
+  022E034C 00000000 .text   $d	(overlay_29_022DC2B8.o)
+  022E0354 00000024 .text   EntityIsValid__022E0354	(dg.o)
+  022E0354 00000000 .text   $a	(dg.o)
   022E0378 00000038 .text   ov29_022E0378	(overlay_29_022E0378.o)
   022E0378 000016A4 .text   .text	(overlay_29_022E0378.o)
   022E0378 00000000 .text   $a	(overlay_29_022E0378.o)
@@ -33456,8 +33457,8 @@
   022E1854 00000000 .text   $a	(overlay_29_022E0378.o)
   022E1854 000001C8 .text   ov29_022E1854	(overlay_29_022E0378.o)
   022E1A18 00000000 .text   $d	(overlay_29_022E0378.o)
-  022E1A1C 00000024 .text   EntityIsValid__022E1A1C	(overlay_29_022E1A1C.o)
-  022E1A1C 00000000 .text   $a	(overlay_29_022E1A1C.o)
+  022E1A1C 00000024 .text   EntityIsValid__022E1A1C	(dg_object.o)
+  022E1A1C 00000000 .text   $a	(dg_object.o)
   022E1A40 000018A8 .text   .text	(overlay_29_022E1A40.o)
   022E1A40 00000000 .text   $a	(overlay_29_022E1A40.o)
   022E1A40 00000044 .text   UpdateEntityPixelPos	(overlay_29_022E1A40.o)
@@ -33557,8 +33558,8 @@
   022E2EC4 00000000 .text   $a	(overlay_29_022E1A40.o)
   022E2EC4 00000424 .text   UpdateCamera	(overlay_29_022E1A40.o)
   022E32DC 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E32E8 00000024 .text   EntityIsValid__022E32E8	(overlay_29_022E32E8.o)
-  022E32E8 00000000 .text   $a	(overlay_29_022E32E8.o)
+  022E32E8 00000024 .text   EntityIsValid__022E32E8	(dg_camera.o)
+  022E32E8 00000000 .text   $a	(dg_camera.o)
   022E330C 00000030 .text   ItemIsActive__022E330C	(overlay_29_022E330C.o)
   022E330C 000004AC .text   .text	(overlay_29_022E330C.o)
   022E330C 00000000 .text   $a	(overlay_29_022E330C.o)
@@ -33590,8 +33591,8 @@
   022E3590 00000000 .text   $a	(overlay_29_022E330C.o)
   022E35E4 000001D4 .text   PlayEffectAnimationEntity	(overlay_29_022E330C.o)
   022E37B0 00000000 .text   $d	(overlay_29_022E330C.o)
-  022E37B8 00000024 .text   EntityIsValid__022E37B8	(overlay_29_022E37B8.o)
-  022E37B8 00000000 .text   $a	(overlay_29_022E37B8.o)
+  022E37B8 00000024 .text   EntityIsValid__022E37B8	(dg_effect.o)
+  022E37B8 00000000 .text   $a	(dg_effect.o)
   022E37DC 00000044 .text   PlayEffectAnimationPos	(overlay_29_022E37DC.o)
   022E37DC 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E37DC 00005E18 .text   .text	(overlay_29_022E37DC.o)
@@ -34143,8 +34144,8 @@
   022E9580 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E9580 00000074 .text   GetLeader	(overlay_29_022E37DC.o)
   022E95EC 00000000 .text   $d	(overlay_29_022E37DC.o)
-  022E95F4 00000024 .text   EntityIsValid__022E95F4	(overlay_29_022E95F4.o)
-  022E95F4 00000000 .text   $a	(overlay_29_022E95F4.o)
+  022E95F4 00000024 .text   EntityIsValid__022E95F4	(dg_uty.o)
+  022E95F4 00000000 .text   $a	(dg_uty.o)
   022E9618 00000000 .text   $a	(overlay_29_022E9618.o)
   022E9618 00001508 .text   .text	(overlay_29_022E9618.o)
   022E9618 00000010 .text   GetLeaderMonster	(overlay_29_022E9618.o)
@@ -34248,10 +34249,10 @@
   022EAA98 00000028 .text   DungeonRandInt	(overlay_29_022E9618.o)
   022EAA98 00000000 .text   $a	(overlay_29_022E9618.o)
   022EAAC0 00000060 .text   DungeonRandRange	(overlay_29_022E9618.o)
-  022EAB20 00000030 .text   DungeonRandOutcome__022EAB20	(dungeon_random.o)
-  022EAB20 00000000 .text   $a	(dungeon_random.o)
-  022EAB50 00000030 .text   DungeonRandOutcome__022EAB50	(dungeon_random.o)
-  022EAB50 00000000 .text   $a	(dungeon_random.o)
+  022EAB20 00000030 .text   DungeonRandOutcome__022EAB20	(dg_random.o)
+  022EAB20 00000000 .text   $a	(dg_random.o)
+  022EAB50 00000030 .text   DungeonRandOutcome__022EAB50	(dg_random.o)
+  022EAB50 00000000 .text   $a	(dg_random.o)
   022EAB80 00001A88 .text   .text	(overlay_29_022EAB50.o)
   022EAB80 000000B4 .text   CalcStatusDuration	(overlay_29_022EAB50.o)
   022EAB80 00000000 .text   $a	(overlay_29_022EAB50.o)
@@ -39837,5 +39838,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri Dec 29 06:13:47 2023
-# Link end time: Fri Dec 29 06:13:48 2023
+# Link start time: Fri Dec 29 18:23:18 2023
+# Link end time: Fri Dec 29 18:23:19 2023
