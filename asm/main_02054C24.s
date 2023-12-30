@@ -6839,7 +6839,11 @@ _0205A3B8:
 	bl GetNameString
 	mov r1, r0
 	add r0, sp, #0
+#ifdef JAPAN
+	bl sub_02025304_JP
+#else
 	bl StrcpyName
+#endif
 	add r0, sp, #0
 	add r1, sp, #0x86
 	mov r2, #0xa
@@ -8190,7 +8194,11 @@ _0205B5CC:
 	bl GetStringFromFileVeneer
 	add r0, sp, #0x31
 	add r1, sp, #0
+#ifdef JAPAN
+	bl sub_02025304_JP
+#else
 	bl StrcpyName
+#endif
 	cmp r4, #1
 	bne _0205B668
 	add r0, sp, #0x18
