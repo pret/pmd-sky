@@ -47,16 +47,16 @@ struct driver_work {
     s16 usec_per_sound_driver_tick;
 };
 
-void SoundEnvelopeReset(struct sound_envelope *envelope);
-void SoundEnvelopeParametersReset(struct sound_envelope_parameters *parameters);
-void SoundEnvelopeParametersCheckValidity(struct sound_envelope_parameters *parameters);
-void SoundEnvelopeSetParameters(struct sound_envelope *envelope, struct sound_envelope_parameters *parameters);
-void SoundEnvelopeSetSlide(struct sound_envelope *envelope, s32 target_volume, s32 msec_tab_index);
+void SoundEnvelope_Reset(struct sound_envelope *envelope);
+void SoundEnvelopeParameters_Reset(struct sound_envelope_parameters *parameters);
+void SoundEnvelopeParameters_CheckValidity(struct sound_envelope_parameters *parameters);
+void SoundEnvelope_SetParameters(struct sound_envelope *envelope, struct sound_envelope_parameters *parameters);
+void SoundEnvelope_SetSlide(struct sound_envelope *envelope, s32 target_volume, s32 msec_tab_index);
 void UpdateTrackVolumeEnvelopes(struct sound_envelope *envelope);
-void SoundEnvelopeRelease(struct sound_envelope *envelope);
-void SoundEnvelopeStop(struct sound_envelope *envelope);
-void SoundEnvelopeForceVolume(struct sound_envelope *envelope, s32 volume);
-void SoundEnvelopeStop2(struct sound_envelope *envelope);
-s8 SoundEnvelopeTick(struct sound_envelope *envelope);
+void SoundEnvelope_Release(struct sound_envelope *envelope);
+void SoundEnvelope_Stop(struct sound_envelope *envelope);
+void SoundEnvelope_ForceVolume(struct sound_envelope *envelope, s32 volume);
+void SoundEnvelope_Stop2(struct sound_envelope *envelope);
+s8 SoundEnvelope_Tick(struct sound_envelope *envelope);
 
 #endif //PMDSKY_DC_ENVELOPE_H

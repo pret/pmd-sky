@@ -1,4 +1,6 @@
 #pragma once
+.public _ll_udiv
+.public _ull_mod
 .public AddItemToStorage
 .public CanSendItem
 .public CloseAdvancedMenu
@@ -240,6 +242,4 @@
 .public sub_020698B8
 .public sub_02069904
 .public sub_02069940
-.public _ll_udiv
-.public _ull_mod
 .public UnloadFile

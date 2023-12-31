@@ -1,5 +1,7 @@
 #pragma once
+.public _ll_udiv
 .public _s32_div_f
+.public _ull_mod
 .public CloseCollectionMenu
 .public CloseOptionsMenu
 .public CloseTextBox
@@ -146,6 +148,4 @@
 .public sub_0204A018
 .public sub_0204A1CC
 .public sub_0205BD78
-.public _ll_udiv
-.public _ull_mod
 .public UpdateWindow

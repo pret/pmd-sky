@@ -5,6 +5,7 @@
 .public CreateDialogueBox
 .public CreateParentMenuFromStringIds
 .public Debug_GetDebugFlag
+.public G3X_Reset
 .public GetFadeStatus
 .public IsDialogueBoxActive
 .public IsParentMenuActive
@@ -62,4 +63,3 @@
 .public sub_02051B44
 .public sub_02051C24
 .public sub_02052060
-.public G3X_Reset

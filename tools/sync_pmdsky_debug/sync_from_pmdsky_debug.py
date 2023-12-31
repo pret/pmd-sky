@@ -29,11 +29,16 @@ def add_files_with_extensions(folder: str, extensions: List[str]) -> List[str]:
                     break
     return found_files
 
-asm_files = add_files_with_extensions('asm', ['.s', '.inc'])
-asm_arm7_files = add_files_with_extensions(os.path.join('sub', 'asm'), ['.s', '.inc'])
-asm_arm7_files.extend(add_files_with_extensions(os.path.join('sub', 'lib'), ['.s', '.inc']))
+ASM_EXTENSIONS = ['.s', '.inc']
+asm_files = add_files_with_extensions('asm', ASM_EXTENSIONS)
+asm_files.extend(add_files_with_extensions('lib', ASM_EXTENSIONS))
+
+asm_arm7_files = add_files_with_extensions(os.path.join('sub', 'asm'), ASM_EXTENSIONS)
+asm_arm7_files.extend(add_files_with_extensions(os.path.join('sub', 'lib'), ASM_EXTENSIONS))
+
 src_files = add_files_with_extensions(HEADER_FOLDER, ['.h'])
 src_files.extend(add_files_with_extensions('src', ['.c']))
+src_files.extend(add_files_with_extensions('lib', ['.c', '.h']))
 
 replaced_symbols = set()
 for language, pmdsky_debug_language_symbols in pmdsky_debug_symbols.items():
@@ -99,7 +104,7 @@ for language, pmdsky_debug_language_symbols in pmdsky_debug_symbols.items():
                         asm_contents = asm_file.read()
                     for search_string in asm_search_strings:
                         asm_contents = asm_contents.replace(search_string[0], search_string[1])
-                    if file_path.endswith('.inc') and 'macros' not in file_path:
+                    if file_path.endswith('.inc') and 'macros' not in file_path and 'syscall' not in file_path:
                         asm_contents_split = asm_contents.split('\n')
                         sorted_imports = sorted(asm_contents_split[1:], key=str.casefold)
                         if len(sorted_imports) and sorted_imports[0] == '':

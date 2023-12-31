@@ -1,4 +1,5 @@
 #pragma once
+.public _ll_sdiv
 .public abs
 .public AddMoneyCarried
 .public AnimationDelayOrSomething
@@ -52,7 +53,6 @@
 .public RemoveGroundItem
 .public SpawnItem
 .public sub_020018A4
-.public _ll_sdiv
 .public TeamLeaderIqSkillIsEnabled
 .public TryWarp
 .public WAN_TABLE

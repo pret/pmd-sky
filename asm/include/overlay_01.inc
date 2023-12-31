@@ -1,7 +1,9 @@
 #pragma once
 .public _020B0A5C
+.public _ll_udiv
 .public _s32_div_f
 .public _u32_div_f
+.public _ull_mod
 .public ArrayCopy32
 .public BAG_ITEMS_PTR_MIRROR
 .public CardBackupError
@@ -369,8 +371,6 @@
 .public sub_02062B64
 .public sub_0207A2A4
 .public sub_020851AC
-.public _ll_udiv
-.public _ull_mod
 .public UpdateWindow
 .public vsprintf
 .public WAN_TABLE

@@ -1,4 +1,6 @@
 #pragma once
+.public _ll_udiv
+.public _ull_mod
 .public CloseAdvancedMenu
 .public CreateAdvancedMenu
 .public DrawTextInWindow
@@ -105,6 +107,4 @@
 .public sub_020590DC
 .public sub_0205BD78
 .public sub_02062B64
-.public _ll_udiv
-.public _ull_mod
 .public UpdateWindow

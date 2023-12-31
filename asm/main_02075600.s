@@ -53863,22 +53863,22 @@ MUSIC_DURATION_LOOKUP_TABLE_2:
 	.byte 0x77, 0x62, 0x04, 0x00, 0x00, 0x7B, 0x04, 0x00, 0xFF, 0xFF, 0xFF, 0x7F
 	.global LFO_WAVEFORM_CALLBACKS
 LFO_WAVEFORM_CALLBACKS:
-	.word SoundLfoWaveHalfSquareFunc
-	.word SoundLfoWaveFullSquareFunc
-	.word SoundLfoWaveHalfTriangleFunc
-	.word SoundLfoWaveFullTriangleFunc
-	.word SoundLfoWaveSawFunc
-	.word SoundLfoWaveReverseSawFunc
-	.word SoundLfoWaveHalfNoiseFunc
-	.word SoundLfoWaveFullNoiseFunc
-	.word SoundLfoWaveInvalidFunc
-	.word SoundLfoWaveInvalidFunc
-	.word SoundLfoWaveInvalidFunc
-	.word SoundLfoWaveInvalidFunc
-	.word SoundLfoWaveInvalidFunc
-	.word SoundLfoWaveInvalidFunc
-	.word SoundLfoWaveInvalidFunc
-	.word SoundLfoWaveInvalidFunc
+	.word SoundLfoWave_HalfSquareFunc
+	.word SoundLfoWave_FullSquareFunc
+	.word SoundLfoWave_HalfTriangleFunc
+	.word SoundLfoWave_FullTriangleFunc
+	.word SoundLfoWave_SawFunc
+	.word SoundLfoWave_ReverseSawFunc
+	.word SoundLfoWave_HalfNoiseFunc
+	.word SoundLfoWave_FullNoiseFunc
+	.word SoundLfoWave_InvalidFunc
+	.word SoundLfoWave_InvalidFunc
+	.word SoundLfoWave_InvalidFunc
+	.word SoundLfoWave_InvalidFunc
+	.word SoundLfoWave_InvalidFunc
+	.word SoundLfoWave_InvalidFunc
+	.word SoundLfoWave_InvalidFunc
+	.word SoundLfoWave_InvalidFunc
 	.global _020B1290
 _020B1290:
 	.byte 0x00, 0x01, 0x02, 0x03

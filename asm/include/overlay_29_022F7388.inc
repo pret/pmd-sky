@@ -18,6 +18,7 @@
 .public Conversion2IsActive
 .public DeleteWanTableEntryVeneer
 .public DIRECTIONS_XY
+.public DirectoryFileMngr_GetDirectoryFileSize
 .public DiscoverMinimap
 .public DisplayAnimatedNumbers
 .public DisplayMessage
@@ -50,7 +51,6 @@
 .public GetDirectionTowardsPosition
 .public GetExp
 .public GetExplorerMazeMonster
-.public DirectoryFileMngr_GetDirectoryFileSize
 .public GetFloorType
 .public GetForcedLossReason
 .public GetLeader

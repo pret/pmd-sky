@@ -1,6 +1,6 @@
 #include "dc_lfo.h"
 
-void SoundLfoBankReset(struct dse_lfo_bank *lfo_bank)
+void SoundLfoBank_Reset(struct dse_lfo_bank *lfo_bank)
 {
     /*
     lfo_bank->outputs[0] = 0;
