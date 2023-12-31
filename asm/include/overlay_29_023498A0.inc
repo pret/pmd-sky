@@ -24,6 +24,7 @@
 .public EntityIsValid__0234987C
 .public FemaleToMaleForm
 .public FixedRoomIsSubstituteRoom
+.public G3X_Reset
 .public GetAcceptedMission
 .public GetDungeonPtrMaster
 .public GetDungeonTipShown
@@ -275,7 +276,6 @@
 .public sub_02051DD0
 .public sub_02051E60
 .public sub_0205BAB0
-.public G3X_Reset
 .public SubstitutePlaceholderStringTags
 .public UnloadOverlay
 .public WriteQuicksaveData

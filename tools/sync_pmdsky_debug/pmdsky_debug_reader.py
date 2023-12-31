@@ -100,20 +100,22 @@ def read_pmdsky_debug_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]
         read_symbols_from_array('functions', False)
         read_symbols_from_array('data', True)
 
-    itcm_file = os.path.join('arm9', 'itcm.yml')
-
-    read_yaml_symbols('arm9.yml', 'main')
-    read_yaml_symbols(itcm_file, 'main')
-    read_yaml_symbols(itcm_file, 'ITCM', address_suffix='-ITCM')
-    read_yaml_symbols('arm7.yml', 'arm7')
+    read_pairs = [
+        ('arm9', 'main'),
+        ('arm7', 'arm7')
+    ]
     for i in range(0, 36):
-        overlay_name = f'overlay{i:02d}'
-        read_yaml_symbols(f'{overlay_name}.yml', str(i))
-        overlay_folder = os.path.join(pmdsky_debug_path, SYMBOLS_FOLDER, overlay_name)
-        if os.path.exists(overlay_folder):
-            for file in os.listdir(overlay_folder):
+        read_pairs.append((f'overlay{i:02d}', str(i)))
+
+    for read_pair in read_pairs:
+        file_path, symbols_key = read_pair
+        read_yaml_symbols(f'{file_path}.yml', symbols_key)
+        symbol_subfolder = os.path.join(pmdsky_debug_path, SYMBOLS_FOLDER, file_path)
+        if os.path.exists(symbol_subfolder):
+            for file in os.listdir(symbol_subfolder):
                 if file.endswith('.yml'):
-                    read_yaml_symbols(os.path.join(overlay_name, file), str(i))
+                    read_yaml_symbols(os.path.join(file_path, file), symbols_key)
+    read_yaml_symbols(os.path.join('arm9', 'itcm.yml'), 'ITCM', address_suffix='-ITCM')
     read_yaml_symbols('ram.yml', 'ram')
 
     return pmdsky_debug_symbols

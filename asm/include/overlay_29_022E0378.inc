@@ -2,9 +2,9 @@
 .public _020AFC28
 .public _020AFC4C
 .public _020AFC70
-.public DirectoryFileMngr_OpenDirectoryFile
 .public AnimationDelayOrSomething
 .public CalcSpeedStageWrapper
+.public DirectoryFileMngr_OpenDirectoryFile
 .public DisplayMessage2
 .public DUNGEON_PTR
 .public DungeonGoesUp

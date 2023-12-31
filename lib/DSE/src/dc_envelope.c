@@ -4,14 +4,14 @@ extern u16 MUSIC_DURATION_LOOKUP_TABLE_1[128];
 extern u32 MUSIC_DURATION_LOOKUP_TABLE_2[128];
 extern struct driver_work DRIVER_WORK;
 
-void SoundEnvelopeReset(struct sound_envelope *envelope)
+void SoundEnvelope_Reset(struct sound_envelope *envelope)
 {
     envelope->parameters.use_envelope = 0;
     envelope->state = ENVELOPE_STATE_OFF;
     envelope->current_volume = 0;
 }
 
-void SoundEnvelopeParametersReset(struct sound_envelope_parameters *parameters)
+void SoundEnvelopeParameters_Reset(struct sound_envelope_parameters *parameters)
 {
     /*
     parameters->use_envelope = 0;
@@ -33,7 +33,7 @@ void SoundEnvelopeParametersReset(struct sound_envelope_parameters *parameters)
     ((u32 *)parameters)[3] = 0xffffffff;
 }
 
-void SoundEnvelopeParametersCheckValidity(struct sound_envelope_parameters *parameters)
+void SoundEnvelopeParameters_CheckValidity(struct sound_envelope_parameters *parameters)
 {
     parameters->use_envelope = 1;
 
@@ -50,7 +50,7 @@ void SoundEnvelopeParametersCheckValidity(struct sound_envelope_parameters *para
     }
 }
 
-void SoundEnvelopeSetParameters(struct sound_envelope *envelope, struct sound_envelope_parameters *parameters)
+void SoundEnvelope_SetParameters(struct sound_envelope *envelope, struct sound_envelope_parameters *parameters)
 {
     if (parameters->slide_time_multiplier <= 0x7f)
     {
@@ -86,7 +86,7 @@ void SoundEnvelopeSetParameters(struct sound_envelope *envelope, struct sound_en
     }
 }
 
-void SoundEnvelopeSetSlide(struct sound_envelope *envelope, s32 target_volume, s32 msec_tab_index)
+void SoundEnvelope_SetSlide(struct sound_envelope *envelope, s32 target_volume, s32 msec_tab_index)
 {
     u8 slide_time_multiplier;
 
@@ -128,7 +128,7 @@ void UpdateTrackVolumeEnvelopes(struct sound_envelope *envelope)
         {
             envelope->current_volume = envelope->parameters.attack_begin << 23;
             envelope->state = ENVELOPE_STATE_ATTACK;
-            SoundEnvelopeSetSlide(envelope, 0x7f, envelope->parameters.attack_time);
+            SoundEnvelope_SetSlide(envelope, 0x7f, envelope->parameters.attack_time);
         }
         else
         {
@@ -136,19 +136,19 @@ void UpdateTrackVolumeEnvelopes(struct sound_envelope *envelope)
 
             if (envelope->parameters.hold_time != 0)
             {
-                SoundEnvelopeSetSlide(envelope, 0x7f, envelope->parameters.hold_time);
+                SoundEnvelope_SetSlide(envelope, 0x7f, envelope->parameters.hold_time);
                 envelope->state = ENVELOPE_STATE_HOLD;
             }
             else if (envelope->parameters.decay_time != 0)
             {
-                SoundEnvelopeSetSlide(envelope, (s8)envelope->parameters.sustain_level, envelope->parameters.decay_time);
+                SoundEnvelope_SetSlide(envelope, (s8)envelope->parameters.sustain_level, envelope->parameters.decay_time);
 
                 envelope->state = ENVELOPE_STATE_DECAY;
             }
             else
             {
                 //Do not set volume to sustain level?
-                SoundEnvelopeSetSlide(envelope, 0, envelope->parameters.sustain_time);
+                SoundEnvelope_SetSlide(envelope, 0, envelope->parameters.sustain_time);
                 envelope->state = ENVELOPE_STATE_SUSTAIN;
             }
         }
@@ -165,16 +165,16 @@ void UpdateTrackVolumeEnvelopes(struct sound_envelope *envelope)
     }
 }
 
-void SoundEnvelopeRelease(struct sound_envelope *envelope)
+void SoundEnvelope_Release(struct sound_envelope *envelope)
 {
     if (envelope->state == ENVELOPE_STATE_OFF)
         return;
 
-    SoundEnvelopeSetSlide(envelope, 0, envelope->parameters.release_time);
+    SoundEnvelope_SetSlide(envelope, 0, envelope->parameters.release_time);
     envelope->state = ENVELOPE_STATE_RELEASE;
 }
 
-void SoundEnvelopeStop(struct sound_envelope *envelope)
+void SoundEnvelope_Stop(struct sound_envelope *envelope)
 {
     envelope->state = ENVELOPE_STATE_OFF;
     envelope->current_volume = 0;
@@ -182,7 +182,7 @@ void SoundEnvelopeStop(struct sound_envelope *envelope)
     envelope->update_volume = 0;
 }
 
-void SoundEnvelopeForceVolume(struct sound_envelope *envelope, s32 volume)
+void SoundEnvelope_ForceVolume(struct sound_envelope *envelope, s32 volume)
 {
     envelope->parameters.use_envelope = 0;
     envelope->state = ENVELOPE_STATE_CONST;
@@ -191,7 +191,7 @@ void SoundEnvelopeForceVolume(struct sound_envelope *envelope, s32 volume)
     envelope->update_volume = 1;
 }
 
-void SoundEnvelopeStop2(struct sound_envelope *envelope)
+void SoundEnvelope_Stop2(struct sound_envelope *envelope)
 {
     envelope->state = ENVELOPE_STATE_OFF;
     envelope->current_volume = 0;
@@ -199,7 +199,7 @@ void SoundEnvelopeStop2(struct sound_envelope *envelope)
     envelope->update_volume = 0;
 }
 
-s8 SoundEnvelopeTick(struct sound_envelope *envelope)
+s8 SoundEnvelope_Tick(struct sound_envelope *envelope)
 {
     if (envelope->state > ENVELOPE_STATE_DONE) //OFF, CONST, DONE
     {
@@ -221,7 +221,7 @@ s8 SoundEnvelopeTick(struct sound_envelope *envelope)
                     hold_time = envelope->parameters.hold_time;
                     if (hold_time != 0)
                     {
-                        SoundEnvelopeSetSlide(envelope, 0x7f, hold_time);
+                        SoundEnvelope_SetSlide(envelope, 0x7f, hold_time);
                         envelope->state = ENVELOPE_STATE_HOLD;
                         break;
                     }
@@ -229,7 +229,7 @@ s8 SoundEnvelopeTick(struct sound_envelope *envelope)
                     decay_time = envelope->parameters.decay_time;
                     if (decay_time != 0)
                     {
-                        SoundEnvelopeSetSlide(envelope, (s8)envelope->parameters.sustain_level, decay_time);
+                        SoundEnvelope_SetSlide(envelope, (s8)envelope->parameters.sustain_level, decay_time);
                         envelope->state = ENVELOPE_STATE_DECAY;
                         break;
                     }
@@ -238,12 +238,12 @@ s8 SoundEnvelopeTick(struct sound_envelope *envelope)
                     sustain_time = envelope->parameters.sustain_time;
                     if (sustain_time != 0)
                     {
-                        SoundEnvelopeSetSlide(envelope, 0, sustain_time);
+                        SoundEnvelope_SetSlide(envelope, 0, sustain_time);
                         envelope->state = ENVELOPE_STATE_SUSTAIN;
                         break;
                     }
                 case ENVELOPE_STATE_SUSTAIN:
-                    SoundEnvelopeSetSlide(envelope, 0, 0);
+                    SoundEnvelope_SetSlide(envelope, 0, 0);
                     envelope->state = ENVELOPE_STATE_DONE;
                     break;
                 case ENVELOPE_STATE_RELEASE:

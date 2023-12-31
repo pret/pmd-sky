@@ -1,8 +1,8 @@
 #include "dc_lfo_2.h"
 
-extern s32 SoundUtilGetRandomNumber();
+extern s32 SoundUtil_GetRandomNumber();
 
-void SoundLfoBankSetConstEnvelopes(struct dse_lfo_bank *lfo_bank, s8 level)
+void SoundLfoBank_SetConstEnvelopes(struct dse_lfo_bank *lfo_bank, s8 level)
 {
     struct dse_lfo *lfo;
 
@@ -18,7 +18,7 @@ void SoundLfoBankSetConstEnvelopes(struct dse_lfo_bank *lfo_bank, s8 level)
     }
 }
 
-u16 SoundLfoBankTick(struct dse_lfo_bank *lfo_bank)
+u16 SoundLfoBank_Tick(struct dse_lfo_bank *lfo_bank)
 {
     s32 output;
     struct dse_lfo *lfo;
@@ -69,14 +69,14 @@ u16 SoundLfoBankTick(struct dse_lfo_bank *lfo_bank)
     return new_flags;
 }
 
-s32 SoundLfoWaveInvalidFunc(struct dse_lfo *lfo)
+s32 SoundLfoWave_InvalidFunc(struct dse_lfo *lfo)
 {
     lfo->phase_flags = 0;
     lfo->type = SOUND_LFO_TYPE_INVALID;
     return 0;
 }
 
-s32 SoundLfoWaveHalfSquareFunc(struct dse_lfo *lfo)
+s32 SoundLfoWave_HalfSquareFunc(struct dse_lfo *lfo)
 {
     s32 new_output;
 
@@ -101,7 +101,7 @@ s32 SoundLfoWaveHalfSquareFunc(struct dse_lfo *lfo)
     return lfo->current_output;
 }
 
-s32 SoundLfoWaveFullSquareFunc(struct dse_lfo *lfo)
+s32 SoundLfoWave_FullSquareFunc(struct dse_lfo *lfo)
 {
     s32 new_output;
 
@@ -116,7 +116,7 @@ s32 SoundLfoWaveFullSquareFunc(struct dse_lfo *lfo)
         }
         else
         {
-                new_output = lfo->amplitude;
+            new_output = lfo->amplitude;
         }
         lfo->current_output = new_output;
         lfo->phase_flags ^= 2;
@@ -125,7 +125,7 @@ s32 SoundLfoWaveFullSquareFunc(struct dse_lfo *lfo)
     return lfo->current_output;
 }
 
-s32 SoundLfoWaveHalfTriangleFunc(struct dse_lfo *lfo)
+s32 SoundLfoWave_HalfTriangleFunc(struct dse_lfo *lfo)
 {
     u8 flags;
 
@@ -147,7 +147,7 @@ s32 SoundLfoWaveHalfTriangleFunc(struct dse_lfo *lfo)
     return lfo->current_output;
 }
 
-s32 SoundLfoWaveFullTriangleFunc(struct dse_lfo *lfo)
+s32 SoundLfoWave_FullTriangleFunc(struct dse_lfo *lfo)
 {
     s32 new_output;
     u16 ticks_left;
@@ -178,7 +178,7 @@ s32 SoundLfoWaveFullTriangleFunc(struct dse_lfo *lfo)
     return new_output;
 }
 
-s32 SoundLfoWaveSawFunc(struct dse_lfo *lfo)
+s32 SoundLfoWave_SawFunc(struct dse_lfo *lfo)
 {
     u16 ticks_left;
 
@@ -197,7 +197,7 @@ s32 SoundLfoWaveSawFunc(struct dse_lfo *lfo)
     return lfo->current_output;
 }
 
-s32 SoundLfoWaveReverseSawFunc(struct dse_lfo *lfo)
+s32 SoundLfoWave_ReverseSawFunc(struct dse_lfo *lfo)
 {
     s32 new_output;
 
@@ -215,21 +215,21 @@ s32 SoundLfoWaveReverseSawFunc(struct dse_lfo *lfo)
     return lfo->current_output;
 }
 
-s32 SoundLfoWaveHalfNoiseFunc(struct dse_lfo *lfo)
+s32 SoundLfoWave_HalfNoiseFunc(struct dse_lfo *lfo)
 {
     s32 random;
 
     if (lfo->ticks_until_phase_change == 0)
     {
         lfo->ticks_until_phase_change = lfo->ticks_per_phase_change;
-        random = SoundUtilGetRandomNumber();
+        random = SoundUtil_GetRandomNumber();
         lfo->current_output = (s32)((lfo->amplitude >> 0x10) * random);
     }
     lfo->ticks_until_phase_change--;
     return lfo->current_output;
 }
 
-s32 SoundLfoWaveFullNoiseFunc(struct dse_lfo *lfo)
+s32 SoundLfoWave_FullNoiseFunc(struct dse_lfo *lfo)
 {
     s32 random;
     s32 amplitude;
@@ -238,7 +238,7 @@ s32 SoundLfoWaveFullNoiseFunc(struct dse_lfo *lfo)
     {
         lfo->ticks_until_phase_change = lfo->ticks_per_phase_change;
         amplitude = lfo->amplitude;
-        random = SoundUtilGetRandomNumber();
+        random = SoundUtil_GetRandomNumber();
         lfo->current_output = (s32)((amplitude >> 0xf) * random - (amplitude >> 1));
     }
     lfo->ticks_until_phase_change--;

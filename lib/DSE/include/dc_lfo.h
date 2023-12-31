@@ -48,6 +48,6 @@ struct dse_lfo_bank
     //+0xe0
 };
 
-void SoundLfoBankReset(struct dse_lfo_bank *lfo_bank);
+void SoundLfoBank_Reset(struct dse_lfo_bank *lfo_bank);
 
 #endif //PMDSKY_DC_LFO_H

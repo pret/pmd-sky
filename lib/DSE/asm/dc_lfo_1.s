@@ -4,8 +4,8 @@
 	.text
 
 ; https://decomp.me/scratch/Md0hi
-	arm_func_start SoundLfoBankSet
-SoundLfoBankSet: ; 0x020750B4
+	arm_func_start SoundLfoBank_Set
+SoundLfoBank_Set: ; 0x020750B4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x20
 	mov sb, r0
@@ -141,4 +141,4 @@ _0207529C: .word LFO_OUTPUT_VOICE_UPDATE_FLAGS
 _020752A0: .word 0x81020409
 _020752A4: .word DRIVER_WORK
 _020752A8: .word LFO_WAVEFORM_CALLBACKS
-	arm_func_end SoundLfoBankSet
+	arm_func_end SoundLfoBank_Set

@@ -3,12 +3,12 @@
 .public _020AFC70
 .public _s32_div_f
 .public abs
-.public DirectoryFileMngr_OpenDirectoryFile
 .public CORNER_CARDINAL_NEIGHBOR_IS_OPEN
 .public CountStickyItemsInBag
 .public DetermineAllTilesWalkableNeighbors
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
+.public DirectoryFileMngr_OpenDirectoryFile
 .public DUNGEON_PTR
 .public DungeonRand16Bit
 .public DungeonRandInt

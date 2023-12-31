@@ -5,7 +5,7 @@ from ruamel.yaml.comments import CommentedMap
 from ruamel.yaml.scalarint import HexCapsInt
 
 from pmdsky_debug_reader import LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG, SYMBOLS_FOLDER, get_pmdsky_debug_location, read_pmdsky_debug_symbols
-from symbol_details import MIXED_CASE_SYMBOLS_ARM7, MIXED_CASE_SYMBOLS_ARM9, WRAM_OFFSET, SymbolDetails
+from symbol_details import NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_OFFSET, SymbolDetails
 from xmap_reader import HEADER_FOLDER, read_xmap_symbols
 from yaml_writer import YamlManager
 
@@ -45,11 +45,11 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     language_key = LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG[language]
 
     if section_name == 'arm7':
-        mixed_case_symbols = MIXED_CASE_SYMBOLS_ARM7
+        nonmatching_symbols = NONMATCHING_SYMBOLS_ARM7
     else:
-        mixed_case_symbols = MIXED_CASE_SYMBOLS_ARM9
-    if symbol.name in mixed_case_symbols:
-        symbol.name = mixed_case_symbols[symbol.name]
+        nonmatching_symbols = NONMATCHING_SYMBOLS_ARM9
+    if symbol.name in nonmatching_symbols:
+        symbol.name = nonmatching_symbols[symbol.name]
 
     base_symbol_name = get_base_symbol_name(symbol.name)
 

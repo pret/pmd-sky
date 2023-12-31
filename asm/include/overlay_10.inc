@@ -3,7 +3,6 @@
 .public _020B0A5C
 .public _s32_div_f
 .public abs
-.public DirectoryFileMngr_OpenDirectoryFile
 .public BAG_ITEMS_PTR_MIRROR
 .public CalcMenuHeightDiv8__020329E4
 .public CleanStickyItemsInBag
@@ -13,11 +12,14 @@
 .public CloseTextBox2
 .public CreatePortraitBox
 .public CreateTextBox
+.public Debug_GetDebugFlag
 .public Debug_Print0
 .public DecompressAtFromMemoryPointerVeneer
 .public DecompressAtNormalVeneer
 .public DeleteWanTableEntryVeneer
 .public DeleteWindow
+.public DirectoryFileMngr_GetDirectoryFileSize
+.public DirectoryFileMngr_OpenDirectoryFile
 .public DoesNotSaveWhenEntering
 .public DoMoveAbsorb
 .public DoMoveAttract
@@ -164,11 +166,9 @@
 .public GetBgRegionArea
 .public GetBodySize
 .public GetCurrentBagCapacity
-.public Debug_GetDebugFlag
 .public GetDungeonGroup
 .public GetDungeonMode
 .public GetDungeonModeSpecial
-.public DirectoryFileMngr_GetDirectoryFileSize
 .public GetGameMode
 .public GetItemAtIdx
 .public GetMoneyCarried

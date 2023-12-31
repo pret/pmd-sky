@@ -28987,8 +28987,8 @@ sub_0206C8C4: ; 0x0206C8C4
 	bx lr
 	arm_func_end sub_0206C8C4
 
-	arm_func_start SoundUtilGetRandomNumber
-SoundUtilGetRandomNumber: ; 0x0206C8F4
+	arm_func_start SoundUtil_GetRandomNumber
+SoundUtil_GetRandomNumber: ; 0x0206C8F4
 	ldr r1, _0206C914 ; =DRIVER_WORK
 	ldr r0, _0206C918 ; =0x00007FFF
 	ldr r2, [r1, #0x34]
@@ -29000,7 +29000,7 @@ SoundUtilGetRandomNumber: ; 0x0206C8F4
 	.align 2, 0
 _0206C914: .word DRIVER_WORK
 _0206C918: .word 0x00007FFF
-	arm_func_end SoundUtilGetRandomNumber
+	arm_func_end SoundUtil_GetRandomNumber
 
 	arm_func_start sub_0206C91C
 sub_0206C91C: ; 0x0206C91C
@@ -33176,9 +33176,9 @@ _0206FF5C:
 _0206FFE0:
 	add r0, r7, #0x3c
 	mov r1, fp
-	bl SoundEnvelopeForceVolume
+	bl SoundEnvelope_ForceVolume
 	add r0, r7, #0x5c
-	bl SoundLfoBankReset
+	bl SoundLfoBank_Reset
 	mov r0, #1
 	strh r0, [r7, #6]
 	ldrb r0, [sl, #0x1f]
@@ -33684,9 +33684,9 @@ FlushChannels: ; 0x02070674
 	bl sub_020748A0
 	add r0, r5, #0x3c
 	mvn r1, #0xc0000000
-	bl SoundEnvelopeForceVolume
+	bl SoundEnvelope_ForceVolume
 	add r0, r5, #0x5c
-	bl SoundLfoBankReset
+	bl SoundLfoBank_Reset
 	mov r0, #0
 	strh r0, [r5, #6]
 	mov r0, #0x10
@@ -33809,9 +33809,9 @@ _02070810:
 	movne r0, #0x7f
 	str r0, [sl, #0x144]
 	add r0, sl, #0x3c
-	bl SoundEnvelopeForceVolume
+	bl SoundEnvelope_ForceVolume
 	add r0, sl, #0x5c
-	bl SoundLfoBankReset
+	bl SoundLfoBank_Reset
 	add sb, sb, #1
 	strh r5, [sl, #6]
 	cmp sb, #2
@@ -35374,7 +35374,7 @@ sub_02071CC8: ; 0x02071CC8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r0, r3, #0x64
-	bl SoundEnvelopeParametersReset
+	bl SoundEnvelopeParameters_Reset
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02071CC8
@@ -35386,7 +35386,7 @@ sub_02071CE0: ; 0x02071CE0
 	ldrb r1, [r4]
 	add r0, r3, #0x64
 	strb r1, [r3, #0x6c]
-	bl SoundEnvelopeParametersCheckValidity
+	bl SoundEnvelopeParameters_CheckValidity
 	add r0, r4, #1
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02071CE0
@@ -35398,7 +35398,7 @@ sub_02071D00: ; 0x02071D00
 	ldrb r1, [r4]
 	add r0, r3, #0x64
 	strb r1, [r3, #0x6d]
-	bl SoundEnvelopeParametersCheckValidity
+	bl SoundEnvelopeParameters_CheckValidity
 	add r0, r4, #1
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02071D00
@@ -35410,7 +35410,7 @@ sub_02071D20: ; 0x02071D20
 	ldrb r1, [r4]
 	add r0, r3, #0x64
 	strb r1, [r3, #0x70]
-	bl SoundEnvelopeParametersCheckValidity
+	bl SoundEnvelopeParameters_CheckValidity
 	add r0, r4, #1
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02071D20
@@ -35426,7 +35426,7 @@ sub_02071D40: ; 0x02071D40
 	cmp r0, #0xff
 	strneb r0, [r3, #0x6f]
 	add r0, r3, #0x64
-	bl SoundEnvelopeParametersCheckValidity
+	bl SoundEnvelopeParameters_CheckValidity
 	add r0, r4, #2
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02071D40
@@ -35438,7 +35438,7 @@ sub_02071D70: ; 0x02071D70
 	ldrb r1, [r4]
 	add r0, r3, #0x64
 	strb r1, [r3, #0x71]
-	bl SoundEnvelopeParametersCheckValidity
+	bl SoundEnvelopeParameters_CheckValidity
 	add r0, r4, #1
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02071D70
@@ -35450,7 +35450,7 @@ sub_02071D90: ; 0x02071D90
 	ldrb r1, [r4]
 	add r0, r3, #0x64
 	strb r1, [r3, #0x72]
-	bl SoundEnvelopeParametersCheckValidity
+	bl SoundEnvelopeParameters_CheckValidity
 	add r0, r4, #1
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02071D90
@@ -37027,42 +37027,42 @@ sub_02073088: ; 0x02073088
 
 	arm_func_start sub_02073094
 sub_02073094: ; 0x02073094
-	ldr ip, _020730A4 ; =SoundEnvelopeParametersCheckValidity
+	ldr ip, _020730A4 ; =SoundEnvelopeParameters_CheckValidity
 	strb r1, [r0, #0x72]
 	add r0, r0, #0x64
 	bx ip
 	.align 2, 0
-_020730A4: .word SoundEnvelopeParametersCheckValidity
+_020730A4: .word SoundEnvelopeParameters_CheckValidity
 	arm_func_end sub_02073094
 
 	arm_func_start sub_020730A8
 sub_020730A8: ; 0x020730A8
-	ldr ip, _020730B8 ; =SoundEnvelopeParametersCheckValidity
+	ldr ip, _020730B8 ; =SoundEnvelopeParameters_CheckValidity
 	strb r1, [r0, #0x6d]
 	add r0, r0, #0x64
 	bx ip
 	.align 2, 0
-_020730B8: .word SoundEnvelopeParametersCheckValidity
+_020730B8: .word SoundEnvelopeParameters_CheckValidity
 	arm_func_end sub_020730A8
 
 	arm_func_start sub_020730BC
 sub_020730BC: ; 0x020730BC
-	ldr ip, _020730CC ; =SoundEnvelopeParametersCheckValidity
+	ldr ip, _020730CC ; =SoundEnvelopeParameters_CheckValidity
 	strb r1, [r0, #0x6e]
 	add r0, r0, #0x64
 	bx ip
 	.align 2, 0
-_020730CC: .word SoundEnvelopeParametersCheckValidity
+_020730CC: .word SoundEnvelopeParameters_CheckValidity
 	arm_func_end sub_020730BC
 
 	arm_func_start sub_020730D0
 sub_020730D0: ; 0x020730D0
-	ldr ip, _020730E0 ; =SoundEnvelopeParametersCheckValidity
+	ldr ip, _020730E0 ; =SoundEnvelopeParameters_CheckValidity
 	strb r1, [r0, #0x71]
 	add r0, r0, #0x64
 	bx ip
 	.align 2, 0
-_020730E0: .word SoundEnvelopeParametersCheckValidity
+_020730E0: .word SoundEnvelopeParameters_CheckValidity
 	arm_func_end sub_020730D0
 
 	arm_func_start sub_020730E4
@@ -37778,7 +37778,7 @@ _020739A8:
 	cmp r0, #4
 	blt _020739A8
 	add r0, r4, #0x64
-	bl SoundEnvelopeParametersReset
+	bl SoundEnvelopeParameters_Reset
 	mov r0, #0
 	ldr r1, _02073A88 ; =0x04000208
 	str r0, [r4, #0xb4]
@@ -37851,7 +37851,7 @@ _02073AB4:
 	strh r5, [r6, #4]
 	str r5, [r6, #0x158]
 	str r5, [r6, #0x154]
-	bl SoundEnvelopeStop
+	bl SoundEnvelope_Stop
 	ldr r0, [r6, #0x14c]
 	cmp r7, #0
 	and r0, r0, #0xff
@@ -37970,7 +37970,7 @@ _02073C48:
 	str lr, [r5, #0xc0]
 _02073C4C:
 	add r0, r5, #0x64
-	bl SoundEnvelopeParametersReset
+	bl SoundEnvelopeParameters_Reset
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_02073BC8
@@ -37986,7 +37986,7 @@ sub_02073C5C: ; 0x02073C5C
 _02073C74:
 	mov r1, r5
 	add r0, r4, #0x5c
-	bl SoundLfoBankSetConstEnvelopes
+	bl SoundLfoBank_SetConstEnvelopes
 	ldr r4, [r4, #0x154]
 	cmp r4, #0
 	bne _02073C74
@@ -38027,7 +38027,7 @@ sub_02073CD8: ; 0x02073CD8
 	ldrb r0, [r5, #0xc]
 	sub r0, r2, r0
 	add r6, r0, #1
-	bl SoundUtilGetRandomNumber
+	bl SoundUtil_GetRandomNumber
 	mul r1, r6, r0
 	mov r0, r1, asr #0xe
 	ldrb r2, [r5, #0xc]
@@ -38188,7 +38188,7 @@ sub_02073EDC: ; 0x02073EDC
 	moveq r0, #0
 	streq r0, [sp]
 	beq _02073F28
-	bl SoundUtilGetRandomNumber
+	bl SoundUtil_GetRandomNumber
 	mov r1, r4, lsl #1
 	mul r2, r1, r0
 	mov r0, r2, asr #0xe
@@ -38317,7 +38317,7 @@ _020740B0:
 	orr r2, r2, #0xff0
 	strh r2, [r4, #6]
 	ldrsb r2, [sl, #0x51]
-	bl SoundLfoBankSet
+	bl SoundLfoBank_Set
 	add r0, r5, #0x20
 	add r8, r4, #0x3c
 	ldmia r0, {r0, r1, r2, r3}
@@ -38329,7 +38329,7 @@ _020740B0:
 	beq _02074128
 	mov r0, r8
 	add r1, sl, #0x64
-	bl SoundEnvelopeSetParameters
+	bl SoundEnvelope_SetParameters
 _02074128:
 	mov r1, r4
 	mov r0, sl
@@ -38512,9 +38512,9 @@ _02074364:
 	strb r7, [sb, #0x16]
 	add r0, sb, #0x3c
 	strb r5, [sb, #0x17]
-	bl SoundEnvelopeReset
+	bl SoundEnvelope_Reset
 	add r0, sb, #0x5c
-	bl SoundLfoBankReset
+	bl SoundLfoBank_Reset
 	str r4, [sb, #0x154]
 	str r4, [sb, #0x158]
 	ldrh r0, [sl, #0x2e]
@@ -38596,13 +38596,13 @@ UpdateChannels: ; 0x0207448C
 	mov r4, #2
 _020744B0:
 	add r0, r5, #0x3c
-	bl SoundEnvelopeTick
+	bl SoundEnvelope_Tick
 	ldrsb r1, [r5, #0x5a]
 	mov r8, r0
 	cmp r1, #1
 	bne _02074514
 	add r0, r5, #0x5c
-	bl SoundLfoBankTick
+	bl SoundLfoBank_Tick
 	ldrh r1, [r5, #6]
 	orr r0, r1, r0
 	strh r0, [r5, #6]
@@ -38675,7 +38675,7 @@ _020745B4:
 	tst r8, #1
 	bne _020745F0
 	add r0, r6, #0x3c
-	bl SoundEnvelopeStop2
+	bl SoundEnvelope_Stop2
 	add r0, r6, #0x100
 	strh r5, [r0, #0x4c]
 	b _020745F0
@@ -38885,7 +38885,7 @@ sub_0207485C: ; 0x0207485C
 	add r0, r4, #0x3c
 	and r1, r1, #0xff
 	str r1, [r4, #0x14c]
-	bl SoundEnvelopeRelease
+	bl SoundEnvelope_Release
 	ldrh r0, [r4, #6]
 	bic r0, r0, #1
 	strh r0, [r4, #6]
@@ -38921,7 +38921,7 @@ _020748F0:
 	str r0, [r4, #0x158]
 	str r0, [r4, #0x154]
 	add r0, r4, #0x3c
-	bl SoundEnvelopeStop
+	bl SoundEnvelope_Stop
 	ldr r1, [r4, #0x14c]
 	mov r0, #0
 	and r1, r1, #0xff
@@ -38944,7 +38944,7 @@ _02074948:
 	str r0, [r4, #0x158]
 	str r0, [r4, #0x154]
 	add r0, r4, #0x3c
-	bl SoundEnvelopeStop
+	bl SoundEnvelope_Stop
 	ldr r1, [r4, #0x14c]
 	mov r0, #0
 	and r1, r1, #0xff

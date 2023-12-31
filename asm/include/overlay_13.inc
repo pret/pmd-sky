@@ -10,11 +10,11 @@
 .public CreatePortraitBox
 .public CreateSimpleMenuFromStringIds
 .public CreateTextBox
+.public Debug_GetDebugFlag
 .public DrawTextInWindow
 .public FemaleToMaleForm
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
-.public Debug_GetDebugFlag
 .public GetKeyboardStatus
 .public GetKeyboardStringResult
 .public GetMonsterGenderVeneer
