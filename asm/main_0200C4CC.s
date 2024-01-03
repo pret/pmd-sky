@@ -33533,7 +33533,7 @@ _02025E50:
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
-	bl sub_01FF9128
+	bl sub_01FF9130_JP
 	ldr r2, [r8, #4]
 	ldr r3, [r8]
 	and ip, r5, r2
@@ -33558,7 +33558,7 @@ _02025E50:
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x20]
-	bl sub_01FF9128
+	bl sub_01FF9130_JP
 	ldr r3, [r8, #8]
 	ldr r2, [r8, #0xc]
 	and r6, r6, r3

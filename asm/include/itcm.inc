@@ -166,6 +166,7 @@
 .public sub_0201BD50
 .public sub_0201BD80
 .public sub_0202760C
+.public sub_0202796C_JP
 .public sub_0207A238
 .public sub_0207A244
 .public sub_0207A300

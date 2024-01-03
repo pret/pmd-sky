@@ -963,9 +963,9 @@
 .public RemoveActiveMembersFromAllTeams
 .public RemoveActiveMembersFromRescueTeam
 .public RemoveActiveMembersFromSpecialEpisodeTeam
-.public Render3dStack
 .public RENDER_3D
 .public RENDER_3D_FUNCTIONS_64
+.public Render3dStack
 .public ResumeBgm
 .public Rgb8ToRgb5
 .public SCRIPT_VARS
@@ -998,6 +998,7 @@
 .public sub_01FF8F28
 .public sub_01FF905C
 .public sub_01FF9128
+.public sub_01FF9130_JP
 .public sub_01FF929C
 .public sub_02001808
 .public sub_02002580
