@@ -70,7 +70,11 @@ _0200C5A0:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _0200C5A8: .word 0x00000233
+#ifdef JAPAN
+_0200C5AC: .word 0x000023B6
+#else
 _0200C5AC: .word 0x000009CB
+#endif
 _0200C5B0: .word _0209E7A6
 	arm_func_end GetDungeonResultMsg
 
@@ -13048,7 +13052,7 @@ _0201620C:
 	b _0201620C
 _02016228:
 	ldr r0, [sp]
-	ldr r1, _02016288 ; =0x02098FC0
+	ldr r1, _02016288 ; =_02098FC0_JP
 	bl StrcmpTag
 	cmp r0, #0
 	beq _02016294
@@ -32063,7 +32067,7 @@ _020251D4:
 	arm_func_start sub_020251F0
 sub_020251F0: ; 0x020251F0
 #ifdef JAPAN
-	ldr r1, _02025264 ; =0x020B112C
+	ldr r1, _02025264 ; =_020B112C_JP
 	ldr r1, [r1, #4]
 	add r2, r1, r0, lsl #1
 	ldrb r1, [r1, r0, lsl #1]
@@ -32073,7 +32077,7 @@ sub_020251F0: ; 0x020251F0
 	mov r0, r0, lsr #0x10
 	bx lr
 	.align 2, 0
-_02025264: .word 0x020B112C
+_02025264: .word _020B112C_JP
 #else
 	bx lr
 #endif
@@ -32131,7 +32135,7 @@ _02025224:
 StrcpyName: ; 0x02025230
 #ifdef JAPAN
 	stmdb sp!, {r3, lr}
-	ldr r3, _02025300 ; =0x020B112C
+	ldr r3, _02025300 ; =_020B112C_JP
 	b _020252D8
 _020252C4:
 	ldrb ip, [r1], #1
@@ -32152,7 +32156,7 @@ _020252F0:
 	strgth r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02025300: .word 0x020B112C
+_02025300: .word _020B112C_JP
 #else
 	stmdb sp!, {r4, lr}
 	mov ip, #0
@@ -32230,7 +32234,7 @@ _020252FC:
 sub_02025304_JP: ; 0x02025304
 	stmdb sp!, {r4, r5, r6, lr}
 	mov lr, #0
-	ldr r2, _02025368 ; =0x020B112C
+	ldr r2, _02025368 ; =_020B112C_JP
 	b _02025350
 _02025314:
 	mov r5, lr
@@ -32259,7 +32263,7 @@ _02025350:
 	strb r1, [r0]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02025368: .word 0x020B112C
+_02025368: .word _020B112C_JP
 	arm_func_end sub_02025304_JP
 #endif
 
@@ -32268,7 +32272,7 @@ StrncpyName: ; 0x02025314
 #ifdef JAPAN
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
-	ldr r3, _020253DC ; =0x020B112C
+	ldr r3, _020253DC ; =_020B112C_JP
 	b _020253CC
 _0202537C:
 	ldrb r7, [r1]
@@ -32300,7 +32304,7 @@ _020253CC:
 	bgt _0202537C
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_020253DC: .word 0x020B112C
+_020253DC: .word _020B112C_JP
 #else
 	stmdb sp!, {r3, r4, r5, lr}
 	mov lr, #0
@@ -32381,7 +32385,7 @@ _020253F4:
 sub_020253E0_JP: ; 0x020253E0
 	stmdb sp!, {r4, r5, r6, lr}
 	mov ip, #0
-	ldr r3, _02025444 ; =0x020B112C
+	ldr r3, _02025444 ; =_020B112C_JP
 	b _02025434
 _020253F0:
 	ldrh r5, [r1]
@@ -32410,7 +32414,7 @@ _02025434:
 	bgt _020253F0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02025444: .word 0x020B112C
+_02025444: .word _020B112C_JP
 	arm_func_end sub_020253E0_JP
 #else
 	arm_func_start sub_02025404
@@ -32517,7 +32521,7 @@ sub_020254F8: ; 0x020254F8
 	tst r0, #0xff00
 	ldmeqia sp!, {r3, pc}
 	mov lr, #0
-	ldr r3, _02025534 ; =0x0209A740
+	ldr r3, _02025534 ; =_0209A044
 	ldr r1, _02025538 ; =0x00000111
 	b _02025520
 _02025504:
@@ -32535,7 +32539,7 @@ _02025520:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02025530: .word 0x000081A5
-_02025534: .word 0x0209A740
+_02025534: .word _0209A044
 _02025538: .word 0x00000111
 #else
 	cmp r0, #0
@@ -33088,14 +33092,14 @@ sub_02025AD8: ; 0x02025AD8
 	bl LoadFileFromRom
 #ifdef JAPAN
 	ldr r1, [sp]
-	ldr r0, _02025B34 ; =0x022A92C0
+	ldr r0, _02025B34 ; =_022A7A54
 	bl HandleSir0Translation
 	ldr r1, _02025B38 ; =_0209AC04
 	add r0, sp, #0
 	mov r2, #1
 	bl LoadFileFromRom
 	ldr r1, [sp]
-	ldr r0, _02025B3C ; =0x022A92C4
+	ldr r0, _02025B3C ; =_022A92C4_JP
 	bl HandleSir0Translation
 	ldr r1, _02025B40 ; =_0209AC18
 	add r0, sp, #0
@@ -33106,7 +33110,7 @@ sub_02025AD8: ; 0x02025AD8
 	mov r1, #0
 	str r2, [r0]
 	str r1, [r0, #4]
-	ldr r0, _02025B48 ; =0x022A92B4
+	ldr r0, _02025B48 ; =_022A92B4_JP
 	mov r1, #0xb
 	str r1, [r0, #4]
 	str r1, [r0, #8]
@@ -33164,12 +33168,12 @@ sub_02025AD8: ; 0x02025AD8
 	.align 2, 0
 _02025B6C: .word _0209ABF0
 #ifdef JAPAN
-_02025B34: .word 0x022A92C0
+_02025B34: .word _022A7A54
 _02025B38: .word _0209AC04
-_02025B3C: .word 0x022A92C4
+_02025B3C: .word _022A92C4_JP
 _02025B40: .word _0209AC18
 _02025B44: .word _020AFD04
-_02025B48: .word 0x022A92B4
+_02025B48: .word _022A92B4_JP
 #else
 _02025B70: .word _022A7A54
 _02025B74: .word _0209AC04
@@ -33459,7 +33463,7 @@ sub_02025D90: ; 0x02025D90
 	mov r4, fp, lsr #0x1f
 	rsb r1, r4, fp, lsl #29
 	add r5, r4, r1, ror #29
-	ldr r6, _02025F58 ; =0x0209B488
+	ldr r6, _02025F58 ; =_0209B488
 	mov r4, #0x18
 	mla r8, r5, r4, r6
 	mov r1, fp, asr #2
@@ -33592,7 +33596,7 @@ _02025F44:
 	add sp, sp, #0x28
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02025F58: .word 0x0209B488
+_02025F58: .word _0209B488
 #else
 	ldr r4, [sp, #0x28]
 	mov sl, r1
@@ -34489,7 +34493,7 @@ sub_0202676C: ; 0x0202676C
 	mov r5, r3
 	str r1, [sp, #0x58]
 	bl GetWindow
-	ldr r1, _02026EA0 ; =0x020B114C
+	ldr r1, _02026EA0 ; =_020AFD04
 	mov r4, r0
 	ldr r0, [r1, #4]
 	cmp r0, #2
@@ -34505,7 +34509,7 @@ sub_0202676C: ; 0x0202676C
 _0202689C:
 	mov r0, r5
 	bl sub_02025C7C
-	ldr r1, _02026EA4 ; =0x022A92B4
+	ldr r1, _02026EA4 ; =_022A92B4_JP
 	str r0, [sp, #0x1c]
 	ldrb r1, [r1]
 	ldr sb, [r0]
@@ -34528,9 +34532,9 @@ _020268E0:
 	beq _02026B70
 	ldr r0, [sp, #4]
 	bl sub_0202760C
-	ldr r1, _02026EA0 ; =0x020B114C
+	ldr r1, _02026EA0 ; =_020AFD04
 	mov r0, r0, lsl #1
-	ldr r2, _02026EA8 ; =0x022A92B8
+	ldr r2, _02026EA8 ; =_022A92B8_JP
 	ldr r1, [r1, #4]
 	str r0, [sp, #0x14]
 	ldr r5, [r2, r1, lsl #2]
@@ -34566,7 +34570,7 @@ _02026920:
 	rsb r3, r7, fp, lsl #29
 	add r1, r7, r3, ror #29
 	add r3, r0, r8, lsl #2
-	ldr r2, _02026EAC ; =0x0209B408
+	ldr r2, _02026EAC ; =_0209B408_JP
 	mov r0, #0
 	add r8, r2, r1, lsl #4
 	str r0, [sp, #0x30]
@@ -34588,7 +34592,7 @@ _0202699C:
 _020269D0:
 	mov r0, r7, lsl #2
 	rsb lr, r0, #0x1c
-	ldr r0, _02026EB0_JP ; =0x0209B32C
+	ldr r0, _02026EB0_JP ; =_0209B32C_JP
 	ldr r1, [r0, r7, lsl #2]
 	ldr r0, [sp, #0x20]
 	and r0, r1, r2, lsl r0
@@ -34614,7 +34618,7 @@ _02026A0C:
 _02026A30:
 	mov fp, r7, lsl #2
 	rsb ip, fp, #0x1c
-	ldr fp, _02026EB0_JP ; =0x0209B32C
+	ldr fp, _02026EB0_JP ; =_0209B32C_JP
 	ldr fp, [fp, r7, lsl #2]
 	and fp, fp, r1, lsr r0
 	mov fp, fp, lsr ip
@@ -34643,7 +34647,7 @@ _02026A68:
 _02026A9C:
 	mov r0, ip, lsl #2
 	rsb lr, r0, #0x1c
-	ldr r0, _02026EB0_JP ; =0x0209B32C
+	ldr r0, _02026EB0_JP ; =_0209B32C_JP
 	ldr r1, [r0, ip, lsl #2]
 	ldr r0, [sp, #0x24]
 	and r0, r1, r2, lsl r0
@@ -34669,7 +34673,7 @@ _02026AD8:
 _02026AFC:
 	mov fp, r7, lsl #2
 	rsb ip, fp, #0x1c
-	ldr fp, _02026EB0_JP ; =0x0209B32C
+	ldr fp, _02026EB0_JP ; =_0209B32C_JP
 	ldr fp, [fp, r7, lsl #2]
 	and fp, fp, r1, lsr r0
 	mov fp, fp, lsr ip
@@ -34701,8 +34705,8 @@ _02026B60:
 _02026B70:
 	ldr r0, [sp, #4]
 	bl sub_0202760C
-	ldr r1, _02026EA0 ; =0x020B114C
-	ldr r2, _02026EA8 ; =0x022A92B8
+	ldr r1, _02026EA0 ; =_020AFD04
+	ldr r2, _02026EA8 ; =_022A92B8_JP
 	ldr r1, [r1, #4]
 	str r0, [sp, #0x28]
 	cmp sl, #0
@@ -34928,11 +34932,11 @@ _02026E98:
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02026EA0: .word 0x020B114C
-_02026EA4: .word 0x022A92B4
-_02026EA8: .word 0x022A92B8
-_02026EAC: .word 0x0209B408
-_02026EB0_JP: .word 0x0209B32C
+_02026EA0: .word _020AFD04
+_02026EA4: .word _022A92B4_JP
+_02026EA8: .word _022A92B8_JP
+_02026EAC: .word _0209B408_JP
+_02026EB0_JP: .word _0209B32C_JP
 #else
 	sub sp, sp, #0x2c
 	str r0, [sp, #4]
@@ -35737,7 +35741,7 @@ _02026EB0:
 	bl MemZero
 	mov r2, #0
 #ifdef JAPAN
-	ldr r1, _0202737C ; =0x022A92C8
+	ldr r1, _0202737C ; =_022A92C8_JP
 #else
 	ldr r1, _02026FF4 ; =_022A7A6C
 #endif
@@ -35800,7 +35804,7 @@ _0202702C: .word 0x06898000
 _02027030: .word _022A7A78
 _02027034: .word 0x0689A000
 #ifdef JAPAN
-_0202737C: .word 0x022A92C8
+_0202737C: .word _022A7A6C
 #endif
 _02027038: .word _022A7EDC
 _0202703C: .word _022A7AB4
@@ -36296,11 +36300,11 @@ _02027620: .word _022A88F0
 sub_0202796C_JP: ; 0x0202796C
 	mov r1, #0xe0
 	mul r1, r0, r1
-	ldr r0, _02027980 ; =0x022AA0FC
+	ldr r0, _02027980 ; =_022A88F0
 	ldr r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_02027980: .word 0x022AA0FC
+_02027980: .word _022A88F0
 	arm_func_end sub_0202796C_JP
 #endif
 
@@ -56777,14 +56781,14 @@ _02037E0C:
 	cmp r0, #0xff
 #ifdef JAPAN
 	bne _02037E38
-	ldr r1, _020381F4 ; =0x020B12A0
+	ldr r1, _020381F4 ; =_020B12A0_JP
 	add r0, sp, #0
 	ldr r2, [r1, r5, lsl #2]
-	ldr r1, _020381F8 ; =0x0209BDF8
+	ldr r1, _020381F8 ; =_0209B4A4
 	bl SprintfStatic__02037F30
 	b _02038178
 _02037E38:
-	ldr r1, _020381F4 ; =0x020B12A0
+	ldr r1, _020381F4 ; =_020B12A0_JP
 	add r0, sp, #0
 	ldr r1, [r1, r5, lsl #2]
 	bl strcpy
@@ -56869,8 +56873,8 @@ _02037F1C: .word KEYBOARD_STRING_IDS
 #ifdef JAPAN
 _020381EC: .word 0x000031D8
 _020381F0: .word 0x000031D9
-_020381F4: .word 0x020B12A0
-_020381F8: .word 0x0209BDF8
+_020381F4: .word _020B12A0_JP
+_020381F8: .word _0209B4A4
 #else
 _02037F20: .word _0209B4A4
 _02037F24: .word _0209B4AC
@@ -57370,7 +57374,7 @@ _020383E8: .word _0209B32C
 _020383EC: .word _0209B2C4
 _020383F0: .word _0209B2D0
 #ifdef JAPAN
-_0203864C_JP: .word 0x020B12A0
+_0203864C_JP: .word _020B12A0_JP
 #else
 _020383F4: .word _0209B4C4
 _020383F8: .word _0209B4C0
@@ -58393,7 +58397,7 @@ _02039098: .word _0209B32C
 	arm_func_start sub_0203935C
 sub_0203935C: ; 0x0203935C
 	stmdb sp!, {r3, lr}
-	ldr r1, _0203942C_JP ; =0x020B1234
+	ldr r1, _0203942C_JP ; =_020AFDF0
 	ldr r2, [r1]
 	ldrb r1, [r2, #0x10]
 	cmp r1, #0
@@ -58416,7 +58420,7 @@ _020393A8:
 	add r1, r2, r3
 	ldrb r1, [r1, #-1]
 	bl sub_02039430
-	ldr r1, _0203942C_JP ; =0x020B1234
+	ldr r1, _0203942C_JP ; =_020AFDF0
 	ldr r2, [r1]
 	ldr r1, [r2, #0xf8]
 	ldrb r2, [r2, #0x1c]
@@ -58434,7 +58438,7 @@ _020393E4:
 	ldmia sp!, {r3, pc}
 _020393F0:
 	bl sub_02039430
-	ldr r1, _0203942C_JP ; =0x020B1234
+	ldr r1, _0203942C_JP ; =_020AFDF0
 	ldr r1, [r1]
 	ldrb r2, [r1, #0x1c]
 	ldr r3, [r1, #0xf8]
@@ -58450,7 +58454,7 @@ _02039420:
 	bl PlaySeVolumeWrapper
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0203942C_JP: .word 0x020B1234
+_0203942C_JP: .word _020AFDF0
 	arm_func_end sub_0203935C
 
 	arm_func_start sub_02039430
@@ -58460,24 +58464,24 @@ sub_02039430: ; 0x02039430
 	cmp r0, #1
 	beq _02039464
 	cmp r0, #2
-	ldreq r0, _02039474 ; =0x0209C29E
+	ldreq r0, _02039474 ; =_0209C29E_JP
 	addeq r1, r1, r1, lsl #1
 	ldreqb r0, [r0, r1]
 	bx lr
 _02039454:
-	ldr r0, _02039478 ; =0x0209C29C
+	ldr r0, _02039478 ; =_0209C29C_JP
 	add r1, r1, r1, lsl #1
 	ldrb r0, [r0, r1]
 	bx lr
 _02039464:
-	ldr r0, _0203947C ; =0x0209C29D
+	ldr r0, _0203947C ; =_0209C29D_JP
 	add r1, r1, r1, lsl #1
 	ldrb r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_02039474: .word 0x0209C29E
-_02039478: .word 0x0209C29C
-_0203947C: .word 0x0209C29D
+_02039474: .word _0209C29E_JP
+_02039478: .word _0209C29C_JP
+_0203947C: .word _0209C29D_JP
 	arm_func_end sub_02039430
 #endif
 
@@ -90346,7 +90350,7 @@ _020524B0:
 	bl SprintfStatic__02052418
 	ldmia sp!, {r4, r5, r6, pc}
 _020524D4:
-	ldr r1, _02052838 ; =0x020A45C8
+	ldr r1, _02052838 ; =_020A45C8_JP
 	mov r0, r6
 	mov r2, r4
 	bl SprintfStatic__02052418
@@ -90374,7 +90378,7 @@ _020524F4: .word _020B09B4
 _020524F8: .word _020A31D4
 _020524FC: .word _020A31E4
 #ifdef JAPAN
-_02052838_JP: .word 0x020A45C8
+_02052838_JP: .word _020A45C8_JP
 #endif
 	arm_func_end GetNameWithGender
 
