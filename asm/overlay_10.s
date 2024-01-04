@@ -767,10 +767,15 @@ SprintfStatic__022BD44C: ; 0x022BD44C
 ov10_022BD474: ; 0x022BD474
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0xa8
+#ifdef JAPAN
+	ldr lr, _022BECF4 ; =0x00001D38
+#endif
 	mov ip, #0
 	mov r7, #0x10
 	mov r6, #0xd
+#ifndef JAPAN
 	mov lr, #0x8e0
+#endif
 	mov r5, r0
 	mov r4, r1
 	str r7, [sp, #0x1c]
@@ -824,6 +829,9 @@ _022BD54C:
 	add sp, sp, #0xa8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef JAPAN
+_022BECF4: .word 0x00001D38
+#endif
 _022BD554: .word ov10_022C43C0
 _022BD558: .word 0x00481C33
 _022BD55C: .word ov10_022C43D0
@@ -4908,9 +4916,15 @@ DrawTeamStats: ; 0x022C09E8
 	mov r1, #0
 	ldr r0, _022C0CC4 ; =WAN_TABLE
 	str r1, [sp]
+#ifdef JAPAN
+	ldr r0, [r0]
+	mov r1, #4
+	mov r2, #0x3f8
+#else
 	mov r1, #4
 	ldr r0, [r0]
 	add r2, r1, #0x400
+#endif
 	mov r3, #0xf
 	bl LoadWanTableEntryFromPack
 	ldr r1, _022C0CC0 ; =ov10_022DC1D0
@@ -4996,28 +5010,53 @@ _022C0B5C:
 	mov r0, #0xc
 	mul sb, r1, r0
 	mov ip, r7, lsr #0x1f
+#ifdef JAPAN
+	rsb r8, ip, r7, lsl #31
+#endif
 	ldmia r6, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
+#ifndef JAPAN
 	rsb r8, ip, r7, lsl #31
+#endif
 	add r8, ip, r8, ror #31
 	mov r8, r8, lsl #4
+#ifdef JAPAN
+	add r0, r8, #7
+	strb r0, [sp, #0x44]
+	add r0, sb, #1
+#else
 	add r0, sb, #7
 	add r8, r8, #1
+#endif
 	strb r0, [sp, #0x45]
 	ldr r1, _022C0CD0 ; =ProcessTeamStatsNameGender
 	mov r0, r4
+#ifndef JAPAN
 	strb r8, [sp, #0x44]
+#endif
 	bl CreateTextBox
 	ldr r1, [fp]
+#ifdef JAPAN
+	add ip, r8, #1
+#else
 	add sb, sb, #9
+#endif
 	add r1, r1, r7
 	strb r0, [r1, #0x27c]
 	ldmia r5, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
+#ifdef JAPAN
+	add r8, sb, #7
+#endif
 	ldr r1, _022C0CD4 ; =ProcessTeamStatsLvHp
 	mov r0, r4
+#ifdef JAPAN
+	strb ip, [sp, #0x44]
+	strb r8, [sp, #0x45]
+#else
 	strb r8, [sp, #0x44]
 	strb sb, [sp, #0x45]
+#endif
 	bl CreateTextBox
 	ldr r1, [fp]
 	add r1, r1, r7
@@ -5357,6 +5396,31 @@ _022C1030:
 	add r0, r0, r5
 	strb r1, [r0, #0x84]
 _022C1094:
+#ifdef JAPAN
+	ldrh r0, [r4, #2]
+	ldrsh r7, [sp, #0x4c]
+	ldrb r1, [sp, #0x5c]
+	orr r0, r0, #0x10
+	strh r0, [r4, #2]
+	mov r3, #0
+	strh r3, [r4, #0x38]
+	ldrh r2, [r4, #2]
+	mov r5, r7, lsl #0x1f
+	ldr r0, _022C11D4 ; =0x0000F3FF
+	orr r2, r2, #0x20
+	strh r2, [r4, #2]
+	strh r0, [r4, #0x10]
+	strh r0, [r4, #0x14]
+	mov r2, r7, asr #1
+	mov r0, #0x60
+	smulbb r0, r2, r0
+	strh r3, [r4, #0x16]
+	cmp r1, #0
+	add r6, r0, #0x50
+	ldrneh r0, [r4, #0x16]
+	mov r5, r5, lsr #0x18
+	add r8, r5, #0x60
+#else
 	ldrsh r8, [sp, #0x4c]
 	mov r1, #0x60
 	mov r0, sl
@@ -5404,10 +5468,16 @@ _022C1104:
 	add r6, r6, r0
 	ldrneh r0, [r4, #0x16]
 	mov r5, #0
+#endif
 	orrne r0, r0, #0x400
 	strneh r0, [r4, #0x16]
 	ldrsh r0, [sp, #0x58]
+#ifdef JAPAN
+	mov r5, #0
+	add r0, r8, r0
+#else
 	add r0, r7, r0
+#endif
 	strh r0, [r4, #0x1c]
 	strh r6, [r4, #0x1e]
 	b _022C1178
@@ -5433,8 +5503,13 @@ _022C1178:
 	str r6, [sp]
 	mov r0, fp
 	mov r1, sl
+#ifdef JAPAN
+	mov r2, r7
+	mov r3, r8
+#else
 	mov r2, r8
 	mov r3, r7
+#endif
 	str r4, [sp, #4]
 	bl ov29_022DD83C
 _022C11C4:
@@ -5785,7 +5860,11 @@ _022C15F4:
 #endif
 	bl SprintfStatic__022C183C
 	mov r0, sl
+#ifdef JAPAN
+	mov r1, #0x38
+#else
 	mov r1, #0x44
+#endif
 	mov r2, sb
 	add r3, sp, OV10_022C159C_STACK_OFFSET
 	bl DrawTextInWindow
@@ -5861,8 +5940,10 @@ _022C1744: .word ov10_022DC1D0
 
 	arm_func_start ProcessTeamStatsLvHp
 ProcessTeamStatsLvHp: ; 0x022C1748
-#ifdef EUROPE
+#if defined(EUROPE)
 #define OV10_022C1748_STACK_OFFSET 0x40
+#elif defined(JAPAN)
+#define OV10_022C1748_STACK_OFFSET -0x100
 #else
 #define OV10_022C1748_STACK_OFFSET 0
 #endif
@@ -5903,6 +5984,33 @@ _022C1794:
 	b _022C182C
 _022C17C8:
 	bl ClearWindow
+#ifdef JAPAN
+	ldrsh r2, [r5, #0x48]
+	ldr r1, _022C1838 ; =ov10_022DC02C
+	add r0, sp, #0x54
+	bl SprintfStatic__022C183C
+	mov r1, #0
+	add r3, sp, #0x54
+	mov r0, r4
+	mov r2, r1
+	bl DrawTextInWindow
+	add r0, sp, #4
+	bl InitPreprocessorArgs
+	ldrsh r1, [r5, #0x4a]
+	add r3, sp, #4
+	ldr r2, _022C2FA4 ; =ov10_022DC014
+	str r1, [sp, #0x28]
+	ldrsh ip, [r5, #0x4c]
+	add r0, sp, #0x54
+	mov r1, #0x100
+	str ip, [sp, #0x2c]
+	str r3, [sp]
+	mov r3, #0
+	bl PreprocessString
+	mov r0, r4
+	mov r1, #0
+	mov r2, #0x10
+#else
 	add r0, sp, #0x104 + OV10_022C1748_STACK_OFFSET
 	bl InitPreprocessorArgs
 #ifdef EUROPE
@@ -5936,6 +6044,7 @@ _022C17C8:
 	mov r1, #0
 	mov r0, r4
 	mov r2, r1
+#endif
 	add r3, sp, #0x154 + OV10_022C1748_STACK_OFFSET
 	bl DrawTextInWindow
 	mov r0, r4
@@ -5946,6 +6055,9 @@ _022C182C:
 	.align 2, 0
 _022C1834: .word ov10_022DC1D0
 _022C1838: .word ov10_022DC02C
+#ifdef JAPAN
+_022C2FA4: .word ov10_022DC014
+#endif
 	arm_func_end ProcessTeamStatsLvHp
 
 	arm_func_start SprintfStatic__022C183C
@@ -5965,9 +6077,14 @@ SprintfStatic__022C183C: ; 0x022C183C
 	arm_func_start ProcessTeamStatsNameGender
 ProcessTeamStatsNameGender: ; 0x022C1864
 	stmdb sp!, {r3, r4, r5, lr}
+#ifdef JAPAN
+	ldr r1, _022C1984 ; =ov10_022DC1D0
+	mov r4, r0
+#else
 	sub sp, sp, #0x258
 	ldr r1, _022C1984 ; =ov10_022DC1D0
 	mov r5, r0
+#endif
 	ldr r1, [r1]
 	mov r3, #0
 	add r2, r1, #0x480
@@ -5976,7 +6093,11 @@ _022C1884:
 	add r0, r1, r3
 	add r0, r0, #0x200
 	ldrsb r0, [r0, #0x7c]
+#ifdef JAPAN
+	cmp r4, r0
+#else
 	cmp r5, r0
+#endif
 	beq _022C18A4
 	add r3, r3, #1
 _022C189C:
@@ -5984,10 +6105,59 @@ _022C189C:
 	blt _022C1884
 _022C18A4:
 	cmp r3, #4
+#ifdef JAPAN
+	ldmeqia sp!, {r3, r4, r5, pc}
+#else
 	beq _022C197C
+#endif
 	mov r0, #0x5c
 	mul r1, r3, r0
 	ldrb r0, [r2, r1]
+#ifdef JAPAN
+	add r5, r2, r1
+	cmp r0, #0
+	mov r0, r4
+	bne _022C3040
+	bl ClearWindow
+	mov r0, r4
+	bl UpdateWindow
+	ldmia sp!, {r3, r4, r5, pc}
+_022C3040:
+	bl ClearWindow
+	mov r1, #0
+	mov r0, r4
+	mov r2, r1
+	add r3, r5, #1
+	bl DrawTextInWindow
+	ldrsh r0, [r5, #0x42]
+	bl GetMonsterGenderVeneer
+	cmp r0, #1
+	bne _022C3080
+	ldr r3, _022C30C4 ; =ov10_022DC02C
+	mov r0, r4
+	mov r1, #0x10
+	mov r2, #0xc
+	bl DrawTextInWindow
+	b _022C30B4
+_022C3080:
+	ldrsh r0, [r5, #0x42]
+	bl GetMonsterGenderVeneer
+	cmp r0, #2
+	mov r1, #0x10
+	mov r2, #0xc
+	bne _022C30A8
+	ldr r3, _022C30C8_JP ; =ov10_022DD718_JP
+	mov r0, r4
+	bl DrawTextInWindow
+	b _022C30B4
+_022C30A8:
+	ldr r3, _022C30CC ; =ov10_022DD71C_JP
+	mov r0, r4
+	bl DrawTextInWindow
+_022C30B4:
+	mov r0, r4
+	bl UpdateWindow
+#else
 	add r4, r2, r1
 	cmp r0, #0
 	bne _022C18D8
@@ -6041,11 +6211,18 @@ _022C1930:
 	bl UpdateWindow
 _022C197C:
 	add sp, sp, #0x258
+#endif
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022C1984: .word ov10_022DC1D0
+#ifdef JAPAN
+_022C30C4: .word ov10_022DC02C
+_022C30C8_JP: .word ov10_022DD718_JP
+_022C30CC: .word ov10_022DD71C_JP
+#else
 _022C1988: .word ov10_022DBFB0
 _022C198C: .word ov10_022DC058
+#endif
 	arm_func_end ProcessTeamStatsNameGender
 
 	arm_func_start ov10_022C1990
@@ -6288,6 +6465,7 @@ _022C1CE0: .word ov10_022DBFBA
 _022C1CE4: .word 0x0000FFFF
 	arm_func_end ov10_022C1A04
 
+#ifndef JAPAN
 	arm_func_start ov10_022C1CE8
 ov10_022C1CE8: ; 0x022C1CE8
 	ldr r2, _022C1D38 ; =0x0000017B
@@ -6316,6 +6494,7 @@ _022C1D30:
 _022C1D38: .word 0x0000017B
 _022C1D3C: .word 0xFFFFFC2D
 	arm_func_end ov10_022C1CE8
+#endif
 
 	arm_func_start ov10_022C1D40
 ov10_022C1D40: ; 0x022C1D40
@@ -7882,7 +8061,11 @@ ov10_022C31A4: ; 0x022C31A4
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022C3200: .word ov10_022DC218
+#ifdef JAPAN
+_022C3204: .word 0x000003F5
+#else
 _022C3204: .word 0x00000401
+#endif
 	arm_func_end ov10_022C31A4
 
 	arm_func_start ov10_022C3208
@@ -16641,11 +16824,21 @@ ov10_022DBFCC:
 	.byte 0x01, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov10_022DBFDC
 ov10_022DBFDC:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x09, 0x0E, 0x02
+	.byte 0x00, 0x00, 0x00, 0x00
+#ifdef JAPAN
+	.byte 0x01, 0x07, 0x07, 0x04
+#else
+	.byte 0x01, 0x09, 0x0E, 0x02
+#endif
 	.byte 0x01, 0xFB, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov10_022DBFEC
 ov10_022DBFEC:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x07, 0x0E, 0x02
+	.byte 0x00, 0x00, 0x00, 0x00
+#ifdef JAPAN
+	.byte 0x07, 0x01, 0x07, 0x04
+#else
+	.byte 0x01, 0x07, 0x0E, 0x02
+#endif
 	.byte 0x01, 0xFB, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov10_022DBFFC
 ov10_022DBFFC:
@@ -16665,6 +16858,15 @@ ov10_022DC014:
 	.byte 0x75, 0x65, 0x3A, 0x31, 0x3A, 0x33, 0x5D, 0x00
 	.global ov10_022DC02C
 ov10_022DC02C:
+#ifdef JAPAN
+	.byte 0x81, 0x89, 0x00, 0x00
+	.global ov10_022DD718_JP
+ov10_022DD718_JP:
+	.byte 0x81, 0x8A, 0x00, 0x00
+	.global ov10_022DD71C_JP
+ov10_022DD71C_JP:
+	.byte 0x81, 0x5B, 0x00, 0x00
+#else
 #ifdef EUROPE
 	.byte 0x25, 0x73, 0x20, 0x5B
 #else
@@ -16678,6 +16880,7 @@ ov10_022DC02C:
 ov10_022DC058:
 	.byte 0x25, 0x73, 0x5B, 0x43, 0x4C, 0x55, 0x4D, 0x5F, 0x53, 0x45, 0x54, 0x3A
 	.byte 0x37, 0x30, 0x5D, 0x25, 0x73, 0x00, 0x00, 0x00
+#endif
 	.global ov10_022DC06C
 ov10_022DC06C:
 	.byte 0x2F, 0x44, 0x55, 0x4E, 0x47, 0x45, 0x4F, 0x4E
@@ -16744,10 +16947,15 @@ ov10_022DC1D0:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov10_022DC1D4
 ov10_022DC1D4:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x10, 0x00, 0x00, 0x00, 0x19, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x0C, 0x00, 0x09, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x10, 0x00, 0x0C, 0x00, 0x19, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifdef JAPAN
+#define OV10_022DC1D4_OFFSET 4
+#else
+#define OV10_022DC1D4_OFFSET 0
+#endif
+	.byte 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x01 + OV10_022DC1D4_OFFSET, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x10, 0x00, 0x00, 0x00, 0x19, 0x00, 0x01 + OV10_022DC1D4_OFFSET, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x0C, 0x00, 0x09, 0x00, 0x0D + OV10_022DC1D4_OFFSET, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x10, 0x00, 0x0C, 0x00, 0x19, 0x00, 0x0D + OV10_022DC1D4_OFFSET, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov10_022DC214
 ov10_022DC214:
 	.byte 0x00, 0x00, 0x00, 0x00
