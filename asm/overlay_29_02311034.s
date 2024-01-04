@@ -27,13 +27,24 @@ ExclusiveItemEffectIsActive__02311064: ; 0x02311064
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
+#ifdef JAPAN
+	add r0, r2, #0x224
+#else
 	add r0, r2, #0x228
+#endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__02311064
 
 	arm_func_start TickStatusAndHealthRegen
 TickStatusAndHealthRegen: ; 0x02311088
+#ifdef JAPAN
+#define TICK_STATUS_AND_HEALTH_REGEN_OFFSET -4
+#define TICK_STATUS_AND_HEALTH_REGEN_OFFSET_2 -1
+#else
+#define TICK_STATUS_AND_HEALTH_REGEN_OFFSET 0
+#define TICK_STATUS_AND_HEALTH_REGEN_OFFSET_2 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	movs sl, r0
 	mov r4, #0
@@ -57,7 +68,7 @@ TickStatusAndHealthRegen: ; 0x02311088
 	cmp r0, #0
 	moveq r4, #1
 _023110E0:
-	ldrb r0, [r7, #0x150]
+	ldrb r0, [r7, #0x150 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET]
 	cmp r0, #0
 	cmpeq r4, #0
 	bne _023112A8
@@ -150,10 +161,10 @@ _023111F4:
 	cmp r3, r0
 	movgt r3, r0
 	add r0, r7, #0x200
-	ldrsh r1, [r0, #0x10]
-	add r2, r7, #0x210
+	ldrsh r1, [r0, #0x10 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET]
+	add r2, r7, #0x210 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET
 	add r1, r1, r3
-	strh r1, [r0, #0x10]
+	strh r1, [r0, #0x10 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET]
 	b _02311268
 _02311250:
 	ldrsh r1, [r7, #0x10]
@@ -163,7 +174,7 @@ _02311250:
 	sub r1, r1, r4
 	strh r1, [r2]
 _02311268:
-	ldrsh r1, [r0, #0x10]
+	ldrsh r1, [r0, #0x10 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET]
 	cmp r1, r4
 	bge _02311250
 	ldrsh r1, [r7, #0x12]
@@ -188,9 +199,11 @@ _023112A8:
 	ldrb r0, [r7, #0xbe]
 	cmp r0, #0
 	bne _0231131C
+#ifndef JAPAN
 	ldr r0, [r7, #0x110]
 	cmp r0, #1
 	ble _02311304
+#endif
 	ldrb r0, [r7, #0xbd]
 	cmp r0, #4
 	bne _02311304
@@ -461,16 +474,20 @@ _023116B4:
 	bl IsFloorOver
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	ldrb r0, [r7, #0x105]
+	ldrb r0, [r7, #0x105 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET_2]
 	cmp r0, #0
 	beq _0231174C
+#ifdef JAPAN
+	add r0, r7, #0x104
+#else
 	add r0, r7, #5
 	add r0, r0, #0x100
+#endif
 	bl TickStatusTurnCounter
-	ldrb r0, [r7, #0x105]
+	ldrb r0, [r7, #0x105 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET_2]
 	cmp r0, #0
 	bne _0231174C
-	ldrb r0, [r7, #0x104]
+	ldrb r0, [r7, #0x104 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET_2]
 	cmp r0, #2
 	bne _02311720
 	mov r0, #0
@@ -493,31 +510,31 @@ _02311720:
 	bl LogMessageByIdWithPopupCheckUser
 _02311744:
 	mov r0, #0
-	strb r0, [r7, #0x104]
+	strb r0, [r7, #0x104 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET_2]
 _0231174C:
 	mov r6, #0
-	add r0, r7, #0x19
+	add r0, r7, #0x19 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET
 	mov sb, r6
 	add r5, r0, #0x100
-	add r4, r7, #0x114
+	add r4, r7, #0x114 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET
 	mov fp, #1
 _02311764:
 	add r8, r7, sb
-	ldrb r0, [r8, #0x119]
+	ldrb r0, [r8, #0x119 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET]
 	cmp r0, #0
 	beq _02311788
 	add r0, r5, sb
 	bl TickStatusTurnCounter
-	ldrb r0, [r8, #0x119]
+	ldrb r0, [r8, #0x119 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET]
 	cmp r0, #0
 	moveq r6, fp
 _02311788:
-	ldrb r0, [r8, #0x114]
+	ldrb r0, [r8, #0x114 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET]
 	cmp r0, #0
 	beq _023117A8
 	add r0, r4, sb
 	bl TickStatusTurnCounter
-	ldrb r0, [r8, #0x114]
+	ldrb r0, [r8, #0x114 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET]
 	cmp r0, #0
 	moveq r6, #1
 _023117A8:
@@ -528,7 +545,7 @@ _023117A8:
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r1, [sl, #0xb4]
 	mov r0, sl
-	ldr r5, [r1, #0x110]
+	ldr r5, [r1, #0x110 + TICK_STATUS_AND_HEALTH_REGEN_OFFSET]
 	bl CalcSpeedStageWrapper
 	mov r4, r0
 	cmp r5, r4
@@ -550,8 +567,13 @@ _02311808: .word RAIN_ABILITY_BONUS_REGEN
 _0231180C: .word ICE_BODY_BONUS_REGEN
 _02311810: .word ov10_022C4674
 _02311814: .word 0x000003E7
+#ifdef JAPAN
+_02311818: .word 0x00000A06
+_0231181C: .word 0x00000A07
+#else
 _02311818: .word 0x00000CC6
 _0231181C: .word 0x00000CC7
+#endif
 _02311820: .word ov29_02353318
 	arm_func_end TickStatusAndHealthRegen
 

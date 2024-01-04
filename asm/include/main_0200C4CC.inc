@@ -342,6 +342,7 @@
 .public _0209B4E4
 .public _0209B4FC
 .public _0209B50C
+.public _0209B548_JP
 .public _0209C29C_JP
 .public _0209C29D_JP
 .public _0209C29E_JP
@@ -702,6 +703,7 @@
 .public _022A88E4
 .public _022A88F0
 .public _022A88F8
+.public _022A88FC
 .public _022A8908
 .public _022A8990
 .public _022A8991

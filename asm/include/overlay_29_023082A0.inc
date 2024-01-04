@@ -5,6 +5,7 @@
 .public ApplyDamageAndEffectsWrapper
 .public ATK_STAT_IDX
 .public BoostOffensiveStat
+.public CanSeeTarget
 .public CanTargetEntity
 .public CategoryIsNotPhysical
 .public ChooseAiMove

@@ -12,7 +12,11 @@ _023047E8:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xad4]
+#else
 	ldr r6, [r0, #0xb78]
+#endif
 	mov r0, r6
 	bl EntityIsValid__023047B8
 	cmp r0, #0
@@ -40,8 +44,13 @@ ov29_02304830: ; 0x02304830
 	ldr r0, [r2]
 	ldr r4, [r5, #0xb4]
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldr r2, [r0, #0x188]
+	ldrb r3, [r0, #0x1a1]
+#else
 	ldr r2, [r0, #0x22c]
 	ldrb r3, [r0, #0x245]
+#endif
 	cmp r5, r2
 	mov r2, #0
 	strb r2, [r5, #0x28]
@@ -121,7 +130,11 @@ _02304960:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xad4]
+#else
 	ldr r6, [r0, #0xb78]
+#endif
 	mov r0, r6
 	bl EntityIsValid__023047B8
 	cmp r0, #0
@@ -296,7 +309,11 @@ _02304B70:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xad4]
+#else
 	ldr r6, [r0, #0xb78]
+#endif
 	mov r0, r6
 	bl EntityIsValid__023047B8
 	cmp r0, #0
@@ -340,14 +357,22 @@ _02304BF8:
 	ldr r1, _02304C38 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrsh r0, [r0, #0x30]
+#else
 	ldrsh r0, [r0, #0xd4]
+#endif
 	ldrb r0, [r1, r0]
 	cmp r0, #1
 	ldrne r0, _02304C30 ; =ov29_02352808
 	ldrneb r4, [r0, r4]
 _02304C24:
 	mov r0, r4
+#ifdef JAPAN
+	strb r4, [r5, #0x21c]
+#else
 	strb r4, [r5, #0x220]
+#endif
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02304C30: .word ov29_02352808
@@ -422,12 +447,17 @@ _02304CFC:
 
 	arm_func_start ov29_02304D20
 ov29_02304D20: ; 0x02304D20
+#ifdef JAPAN
+#define OV29_02304D20_OFFSET -4
+#else
+#define OV29_02304D20_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r6, r0
 	ldr sb, [r6, #0xb4]
 	mov r5, r1
 	add r0, sb, #0x200
-	ldrsh r0, [r0, #0xc]
+	ldrsh r0, [r0, #0xc + OV29_02304D20_OFFSET]
 	mov r4, r2
 	cmp r0, #4
 	movge r0, #0
@@ -440,9 +470,9 @@ ov29_02304D20: ; 0x02304D20
 	moveq r1, #1
 	str r1, [r2]
 	add r0, sb, #0x200
-	ldrsh r3, [r0, #0xc]
+	ldrsh r3, [r0, #0xc + OV29_02304D20_OFFSET]
 	mov r1, #0x1c
-	add r0, sb, #0x19c
+	add r0, sb, #0x19c + OV29_02304D20_OFFSET
 	smulbb sl, r3, r1
 	add r7, r0, sl
 	mov r1, #0
@@ -474,10 +504,10 @@ ov29_02304D20: ; 0x02304D20
 	moveq r1, #1
 	add r0, sb, #0x200
 	str r1, [r5]
-	ldrsh r1, [r0, #0xc]
+	ldrsh r1, [r0, #0xc + OV29_02304D20_OFFSET]
 	add r1, r1, #1
-	strh r1, [r0, #0xc]
-	ldrsh r0, [r0, #0xc]
+	strh r1, [r0, #0xc + OV29_02304D20_OFFSET]
+	ldrsh r0, [r0, #0xc + OV29_02304D20_OFFSET]
 	cmp r0, #2
 	bne _02304E6C
 	ldr r1, [r5]
@@ -485,15 +515,15 @@ ov29_02304D20: ; 0x02304D20
 	mov r1, r1, lsl #1
 	bl _s32_div_f
 	add r1, sb, #0x100
-	strh r0, [r1, #0xb4]
-	ldr r0, [sb, #0x1ac]
+	strh r0, [r1, #0xb4 + OV29_02304D20_OFFSET]
+	ldr r0, [sb, #0x1ac + OV29_02304D20_OFFSET]
 	mov r1, r5
 	mov r0, r0, lsl #1
-	str r0, [sb, #0x1ac]
-	ldr r2, [sb, #0x1b0]
+	str r0, [sb, #0x1ac + OV29_02304D20_OFFSET]
+	ldr r2, [sb, #0x1b0 + OV29_02304D20_OFFSET]
 	mov r0, #0x18
 	mov r2, r2, lsl #1
-	str r2, [sb, #0x1b0]
+	str r2, [sb, #0x1b0 + OV29_02304D20_OFFSET]
 	ldr r1, [r1]
 	mov r1, r1, lsl #1
 	bl _s32_div_f
@@ -518,23 +548,23 @@ _02304E80:
 	add r1, r1, r1, lsl #1
 	bl _s32_div_f
 	add r1, r8, #0x100
-	strh r0, [r1, #0xb4]
-	ldr r0, [r8, #0x1ac]
+	strh r0, [r1, #0xb4 + OV29_02304D20_OFFSET]
+	ldr r0, [r8, #0x1ac + OV29_02304D20_OFFSET]
 	add r6, r6, #1
 	add r0, r0, r0, lsl #1
-	str r0, [r8, #0x1ac]
-	ldr r0, [r8, #0x1b0]
+	str r0, [r8, #0x1ac + OV29_02304D20_OFFSET]
+	ldr r0, [r8, #0x1b0 + OV29_02304D20_OFFSET]
 	cmp r6, #2
 	add r0, r0, r0, lsl #1
-	str r0, [r8, #0x1b0]
-	ldr r0, [r8, #0x1ac]
+	str r0, [r8, #0x1b0 + OV29_02304D20_OFFSET]
+	ldr r0, [r8, #0x1ac + OV29_02304D20_OFFSET]
 	add r0, r0, r0, lsr #31
 	mov r0, r0, asr #1
-	str r0, [r8, #0x1ac]
-	ldr r0, [r8, #0x1b0]
+	str r0, [r8, #0x1ac + OV29_02304D20_OFFSET]
+	ldr r0, [r8, #0x1b0 + OV29_02304D20_OFFSET]
 	add r0, r0, r0, lsr #31
 	mov r0, r0, asr #1
-	str r0, [r8, #0x1b0]
+	str r0, [r8, #0x1b0 + OV29_02304D20_OFFSET]
 	blt _02304E80
 	ldr r1, _02304FD4 ; =ov29_0237C9CC
 	mov r0, #0x18
@@ -563,22 +593,22 @@ _02304F2C:
 	mov r1, r1, lsl #2
 	bl _s32_div_f
 	add r1, sl, #0x100
-	strh r0, [r1, #0xb4]
-	ldr r0, [sl, #0x1ac]
+	strh r0, [r1, #0xb4 + OV29_02304D20_OFFSET]
+	ldr r0, [sl, #0x1ac + OV29_02304D20_OFFSET]
 	mov r1, fp
 	mov r0, r0, lsl #2
-	str r0, [sl, #0x1ac]
-	ldr r0, [sl, #0x1b0]
+	str r0, [sl, #0x1ac + OV29_02304D20_OFFSET]
+	ldr r0, [sl, #0x1b0 + OV29_02304D20_OFFSET]
 	mov r0, r0, lsl #2
-	str r0, [sl, #0x1b0]
-	ldr r0, [sl, #0x1ac]
+	str r0, [sl, #0x1b0 + OV29_02304D20_OFFSET]
+	ldr r0, [sl, #0x1ac + OV29_02304D20_OFFSET]
 	bl _s32_div_f
-	str r0, [sl, #0x1ac]
-	ldr r0, [sl, #0x1b0]
+	str r0, [sl, #0x1ac + OV29_02304D20_OFFSET]
+	ldr r0, [sl, #0x1b0 + OV29_02304D20_OFFSET]
 	mov r1, #3
 	bl _s32_div_f
 	add r8, r8, #1
-	str r0, [sl, #0x1b0]
+	str r0, [sl, #0x1b0 + OV29_02304D20_OFFSET]
 	cmp r8, #3
 	blt _02304F2C
 	ldr r1, _02304FD4 ; =ov29_0237C9CC
@@ -608,6 +638,13 @@ _02304FDC: .word ov29_0235173E
 
 	arm_func_start DisplayActions
 DisplayActions: ; 0x02304FE0
+#ifdef JAPAN
+#define DISPLAY_ACTIONS_OFFSET -4
+#define DISPLAY_ACTIONS_OFFSET_2 -0xA4
+#else
+#define DISPLAY_ACTIONS_OFFSET 0
+#define DISPLAY_ACTIONS_OFFSET_2 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	ldr r1, _02305580 ; =ov29_0237C9C1
@@ -629,30 +666,30 @@ _02305020:
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r8, [r0, #0xb78]
+	ldr r8, [r0, #0xb78 + DISPLAY_ACTIONS_OFFSET_2]
 	mov r0, r8
 	bl EntityIsValid__0230558C
 	cmp r0, #0
 	beq _02305160
 	ldr sb, [r8, #0xb4]
 	add r0, sb, #0x200
-	ldrsh r0, [r0, #0xc]
+	ldrsh r0, [r0, #0xc + DISPLAY_ACTIONS_OFFSET]
 	cmp r0, #0
 	bne _023050EC
-	ldrb r0, [sb, #0x151]
+	ldrb r0, [sb, #0x151 + DISPLAY_ACTIONS_OFFSET]
 	cmp r0, #0
 	beq _02305160
-	strb r4, [sb, #0x151]
+	strb r4, [sb, #0x151 + DISPLAY_ACTIONS_OFFSET]
 	add r0, sb, #0x100
-	ldrsh r1, [r0, #0x7e]
+	ldrsh r1, [r0, #0x7e + DISPLAY_ACTIONS_OFFSET]
 	cmp r1, #0
-	ldreqsh r0, [r0, #0x80]
+	ldreqsh r0, [r0, #0x80 + DISPLAY_ACTIONS_OFFSET]
 	cmpeq r0, #0
 	beq _02305160
 	ldrsh r0, [r8, #4]
 	cmp r1, r0
 	addeq r0, sb, #0x100
-	ldreqsh r1, [r0, #0x80]
+	ldreqsh r1, [r0, #0x80 + DISPLAY_ACTIONS_OFFSET]
 	ldreqsh r0, [r8, #6]
 	cmpeq r1, r0
 	beq _02305160
@@ -667,7 +704,7 @@ _02305020:
 	bne _02305160
 _023050C0:
 	add r0, r8, #4
-	add r1, sb, #0x7e
+	add r1, sb, #0x7e + DISPLAY_ACTIONS_OFFSET
 	add r1, r1, #0x100
 	bl GetDirectionTowardsPosition
 	mov r1, r0
@@ -683,25 +720,25 @@ _023050EC:
 	add r1, sp, #0xc
 	orr r2, r2, #0x2000
 	strh r2, [sb]
-	ldr r3, [sb, #0x1a0]
+	ldr r3, [sb, #0x1a0 + DISPLAY_ACTIONS_OFFSET]
 	mov r2, #0x18
 	mul r2, r3, r2
 	add r2, r2, #0xc
 	mov r2, r2, lsl #8
 	str r2, [sp, #0xc]
-	ldr r3, [sb, #0x1a4]
+	ldr r3, [sb, #0x1a4 + DISPLAY_ACTIONS_OFFSET]
 	mov r2, #0x18
 	mul r2, r3, r2
 	add r2, r2, #0x10
 	mov r2, r2, lsl #8
 	str r2, [sp, #0x10]
 	bl UpdateEntityPixelPos
-	ldr r2, [sb, #0x1a8]
+	ldr r2, [sb, #0x1a8 + DISPLAY_ACTIONS_OFFSET]
 	mov r0, r8
 	mov r1, #0
 	bl ov29_023049D4
 	add r0, sb, #0x200
-	strh fp, [r0, #0xe]
+	strh fp, [r0, #0xe + DISPLAY_ACTIONS_OFFSET]
 	mov r0, r8
 	mov r6, #1
 	bl ShouldDisplayEntityWrapper
@@ -738,16 +775,16 @@ _023051C4:
 	ldr r0, [r4]
 	add r0, r0, sl, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb78]
+	ldr r7, [r0, #0xb78 + DISPLAY_ACTIONS_OFFSET_2]
 	mov r0, r7
 	bl EntityIsValid__0230558C
 	cmp r0, #0
 	beq _02305304
 	ldr sb, [r7, #0xb4]
 	add r0, sb, #0x200
-	ldrsh r2, [r0, #0xe]
-	ldrsh r1, [r0, #0xc]
-	add r3, sb, #0x19c
+	ldrsh r2, [r0, #0xe + DISPLAY_ACTIONS_OFFSET]
+	ldrsh r1, [r0, #0xc + DISPLAY_ACTIONS_OFFSET]
+	add r3, sb, #0x19c + DISPLAY_ACTIONS_OFFSET
 	mov r0, #0x1c
 	smlabb r8, r2, r0, r3
 	cmp r1, #0
@@ -782,25 +819,25 @@ _02305258:
 	add r2, sb, #0x200
 	ldrsh r0, [r2, #0xe]
 	add r0, r0, #1
-	strh r0, [r2, #0xe]
-	ldrsh r1, [r2, #0xe]
-	ldrsh r0, [r2, #0xc]
+	strh r0, [r2, #0xe + DISPLAY_ACTIONS_OFFSET]
+	ldrsh r1, [r2, #0xe + DISPLAY_ACTIONS_OFFSET]
+	ldrsh r0, [r2, #0xc + DISPLAY_ACTIONS_OFFSET]
 	cmp r1, r0
-	streqh fp, [r2, #0xc]
+	streqh fp, [r2, #0xc + DISPLAY_ACTIONS_OFFSET]
 	beq _02305304
 	mov r0, #0x1c
 	smlabb r0, r1, r0, sb
-	ldr r3, [r0, #0x1a0]
+	ldr r3, [r0, #0x1a0 + DISPLAY_ACTIONS_OFFSET]
 	mov r1, #0x18
 	mul r1, r3, r1
 	add r1, r1, #0xc
 	mov r1, r1, lsl #8
 	str r1, [sp, #4]
-	ldrsh r3, [r2, #0xe]
+	ldrsh r3, [r2, #0xe + DISPLAY_ACTIONS_OFFSET]
 	mov r2, #0x1c
 	mov r0, r7
 	smlabb r2, r3, r2, sb
-	ldr r3, [r2, #0x1a4]
+	ldr r3, [r2, #0x1a4 + DISPLAY_ACTIONS_OFFSET]
 	mov r2, #0x18
 	mul r2, r3, r2
 	add r2, r2, #0x10
@@ -809,11 +846,11 @@ _02305258:
 	str r2, [sp, #8]
 	bl UpdateEntityPixelPos
 	add r2, sb, #0x200
-	ldrsh r3, [r2, #0xe]
+	ldrsh r3, [r2, #0xe + DISPLAY_ACTIONS_OFFSET]
 	mov r2, #0x1c
 	mov r0, r7
 	smlabb r2, r3, r2, sb
-	ldr r2, [r2, #0x1a8]
+	ldr r2, [r2, #0x1a8 + DISPLAY_ACTIONS_OFFSET]
 	mov r1, #0
 	bl ov29_023049D4
 _02305304:
@@ -836,14 +873,14 @@ _02305338:
 	ldr r0, [r8]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
-	ldr r5, [r0, #0xb78]
+	ldr r5, [r0, #0xb78 + DISPLAY_ACTIONS_OFFSET_2]
 	mov r0, r5
 	bl EntityIsValid__0230558C
 	cmp r0, #0
 	beq _0230537C
 	ldr r1, [r5, #0xb4]
 	add r0, r1, #0x200
-	strh r4, [r0, #0xc]
+	strh r4, [r0, #0xc + DISPLAY_ACTIONS_OFFSET]
 	ldrh r0, [r1]
 	tst r0, #0x2000
 	beq _0230537C
@@ -867,7 +904,7 @@ _023053A8:
 	ldr r0, [r5]
 	add r0, r0, sl, lsl #2
 	add r0, r0, #0x12000
-	ldr sb, [r0, #0xb78]
+	ldr sb, [r0, #0xb78 + DISPLAY_ACTIONS_OFFSET_2]
 	mov r0, sb
 	bl EntityIsValid__0230558C
 	cmp r0, #0
@@ -946,7 +983,7 @@ _0230547C:
 	ldr r1, [r5]
 	mov r0, sb
 	add r1, r1, #0x4000
-	ldrb r1, [r1, #0xc4]
+	ldrb r1, [r1, #0xc4 + DISPLAY_ACTIONS_OFFSET_2]
 	bl ov29_02305814
 _023054E4:
 	mov r0, sb

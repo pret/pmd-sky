@@ -86,8 +86,13 @@ _02315250:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02315260: .word ov10_022C47B0
+#ifdef JAPAN
+_02315264: .word 0x00000A83
+_02315268: .word 0x00000A84
+#else
 _02315264: .word 0x00000D43
 _02315268: .word 0x00000D44
+#endif
 	arm_func_end TryInflictCoweringStatus
 
 	arm_func_start TryRestoreHp
@@ -339,15 +344,20 @@ _023155E4:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023155EC: .word 0x00000D83
+#ifdef JAPAN
+#define TRY_INCREASE_HP_OFFSET -0x2C0
+#else
+#define TRY_INCREASE_HP_OFFSET 0
+#endif
+_023155EC: .word 0x00000D83 + TRY_INCREASE_HP_OFFSET
 _023155F0: .word ov10_022C4470
 _023155F4: .word 0x000003E7
-_023155F8: .word 0x00000CFD
-_023155FC: .word 0x00000CFA
-_02315600: .word 0x00000CFB
-_02315604: .word 0x00000CFC
-_02315608: .word 0x00000CF9
-_0231560C: .word 0x00000CF8
+_023155F8: .word 0x00000CFD + TRY_INCREASE_HP_OFFSET
+_023155FC: .word 0x00000CFA + TRY_INCREASE_HP_OFFSET
+_02315600: .word 0x00000CFB + TRY_INCREASE_HP_OFFSET
+_02315604: .word 0x00000CFC + TRY_INCREASE_HP_OFFSET
+_02315608: .word 0x00000CF9 + TRY_INCREASE_HP_OFFSET
+_0231560C: .word 0x00000CF8 + TRY_INCREASE_HP_OFFSET
 	arm_func_end TryIncreaseHp
 
 	arm_func_start RevealItems
@@ -388,8 +398,13 @@ _02315650:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02315698: .word 0x00000A24
+_0231569C: .word 0x00000A22
+#else
 _02315698: .word 0x00000CE4
 _0231569C: .word 0x00000CE2
+#endif
 	arm_func_end RevealItems
 
 	arm_func_start RevealStairs
@@ -441,9 +456,15 @@ _02315700:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02315750: .word 0x00000A26
+_02315754: .word 0x00000A25
+_02315758: .word 0x00000A23
+#else
 _02315750: .word 0x00000CE6
 _02315754: .word 0x00000CE5
 _02315758: .word 0x00000CE3
+#endif
 	arm_func_end RevealStairs
 
 	arm_func_start RevealEnemies
@@ -484,12 +505,22 @@ _0231579C:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_023157E4: .word 0x00000A2A
+_023157E8: .word 0x00000A29
+#else
 _023157E4: .word 0x00000CEA
 _023157E8: .word 0x00000CE9
+#endif
 	arm_func_end RevealEnemies
 
 	arm_func_start TryInflictLeechSeedStatus
 TryInflictLeechSeedStatus: ; 0x023157EC
+#ifdef JAPAN
+#define TRY_INFLICT_LEECH_SEED_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_LEECH_SEED_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r5, r1
 	mov r6, r0
@@ -595,7 +626,11 @@ _02315960:
 	ldr r0, [r1]
 	add r0, r0, r2, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xad4]
+#else
 	ldr r0, [r0, #0xb78]
+#endif
 	cmp r6, r0
 	streqb r2, [r4, #0xe8]
 	ldreq r0, [r6, #0xb4]
@@ -606,7 +641,7 @@ _02315960:
 	blt _02315960
 	mov r0, r6
 	mov r1, r5
-	mov r2, #0xce0
+	mov r2, #0xce0 + TRY_INFLICT_LEECH_SEED_STATUS_OFFSET
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r6
 	mov r1, r5
@@ -616,11 +651,11 @@ _02315960:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_023159BC: .word 0x00000DE1
-_023159C0: .word 0x00000DE2
-_023159C4: .word 0x00000CAF
+_023159BC: .word 0x00000DE1 + TRY_INFLICT_LEECH_SEED_STATUS_OFFSET
+_023159C0: .word 0x00000DE2 + TRY_INFLICT_LEECH_SEED_STATUS_OFFSET
+_023159C4: .word 0x00000CAF + TRY_INFLICT_LEECH_SEED_STATUS_OFFSET
 _023159C8: .word ov10_022C4790
-_023159CC: .word 0x00000CE1
+_023159CC: .word 0x00000CE1 + TRY_INFLICT_LEECH_SEED_STATUS_OFFSET
 _023159D0: .word DUNGEON_PTR
 	arm_func_end TryInflictLeechSeedStatus
 
@@ -635,7 +670,11 @@ _023159E8:
 	ldr r0, [r7]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xad4]
+#else
 	ldr r6, [r0, #0xb78]
+#endif
 	mov r0, r6
 	bl EntityIsValid__02315118
 	cmp r0, #0
@@ -719,7 +758,11 @@ _02315B10:
 	ldr r0, [r1]
 	add r0, r0, r2, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xad4]
+#else
 	ldr r0, [r0, #0xb78]
+#endif
 	cmp r5, r0
 	streqb r2, [r4, #0xe8]
 	ldreq r0, [r5, #0xb4]
@@ -736,11 +779,16 @@ _02315B10:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02315B5C: .word 0x00000C94
+#ifdef JAPAN
+#define TRY_INFLICT_DESTINY_BOND_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_DESTINY_BOND_OFFSET 0
+#endif
+_02315B5C: .word 0x00000C94 + TRY_INFLICT_DESTINY_BOND_OFFSET
 _02315B60: .word ov10_022C47D4
-_02315B64: .word 0x00000D54
+_02315B64: .word 0x00000D54 + TRY_INFLICT_DESTINY_BOND_OFFSET
 _02315B68: .word DUNGEON_PTR
-_02315B6C: .word 0x00000D53
+_02315B6C: .word 0x00000D53 + TRY_INFLICT_DESTINY_BOND_OFFSET
 	arm_func_end TryInflictDestinyBondStatus
 
 	arm_func_start TryInflictSureShotStatus
@@ -782,8 +830,13 @@ _02315BEC:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02315BF8: .word 0x00000A6E
+_02315BFC: .word 0x00000A6F
+#else
 _02315BF8: .word 0x00000D2E
 _02315BFC: .word 0x00000D2F
+#endif
 	arm_func_end TryInflictSureShotStatus
 
 	arm_func_start TryInflictWhifferStatus
@@ -831,7 +884,11 @@ TryInflictWhifferStatus: ; 0x02315C00
 	bl ov29_022E45B8
 	mov r0, r5
 	mov r1, r4
+#ifdef JAPAN
+	mov r2, #0xa70
+#else
 	mov r2, #0xd30
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r5
 	mov r1, r4
@@ -848,7 +905,11 @@ _02315CD4:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02315CE4: .word 0x00000A71
+#else
 _02315CE4: .word 0x00000D31
+#endif
 	arm_func_end TryInflictWhifferStatus
 
 	arm_func_start TryInflictSetDamageStatus
@@ -886,7 +947,11 @@ TryInflictSetDamageStatus: ; 0x02315CE8
 _02315D60:
 	mov r0, r6
 	mov r1, r5
+#ifdef JAPAN
+	mov r2, #0xa80
+#else
 	mov r2, #0xd40
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _02315D70:
 	mov r0, r5
@@ -894,7 +959,11 @@ _02315D70:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02315D7C: .word ov10_022C47A4
+#ifdef JAPAN
+_02315D80: .word 0x00000A7F
+#else
 _02315D80: .word 0x00000D3F
+#endif
 	arm_func_end TryInflictSetDamageStatus
 
 	arm_func_start TryInflictFocusEnergyStatus
@@ -940,12 +1009,22 @@ _02315E0C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02315E18: .word ov10_022C47AC
+#ifdef JAPAN
+_02315E1C: .word 0x00000A81
+_02315E20: .word 0x00000A82
+#else
 _02315E1C: .word 0x00000D41
 _02315E20: .word 0x00000D42
+#endif
 	arm_func_end TryInflictFocusEnergyStatus
 
 	arm_func_start TryInflictDecoyStatus
 TryInflictDecoyStatus: ; 0x02315E24
+#ifdef JAPAN
+#define TRY_INFLICT_DECOY_STATUS_OFFSET -0xA4
+#else
+#define TRY_INFLICT_DECOY_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
 	mov sb, r1
@@ -998,7 +1077,7 @@ _02315EDC:
 	ldr r0, [fp]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
-	ldr r5, [r0, #0xb78]
+	ldr r5, [r0, #0xb78 + TRY_INFLICT_DECOY_STATUS_OFFSET]
 	mov r0, r5
 	bl EntityIsValid__02315118
 	cmp r0, #0
@@ -1068,7 +1147,7 @@ _02315FCC:
 	ldr r0, [r0]
 	cmp r7, #0
 	add r0, r0, #0x3000
-	strb r1, [r0, #0xe38]
+	strb r1, [r0, #0xe38 + TRY_INFLICT_DECOY_STATUS_OFFSET]
 	beq _0231600C
 	ldr r2, _023160D8 ; =0x00000D45
 	mov r0, sl
@@ -1087,7 +1166,7 @@ _02316028:
 	ldr r0, [r0]
 	add r0, r0, sl, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb78]
+	ldr r7, [r0, #0xb78 + TRY_INFLICT_DECOY_STATUS_OFFSET]
 	mov r0, r7
 	bl EntityIsValid__02315118
 	cmp r0, #0
@@ -1129,10 +1208,18 @@ _023160C4:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+_023160CC: .word 0x00000A86
+#else
 _023160CC: .word 0x00000D46
+#endif
 _023160D0: .word DUNGEON_PTR
 _023160D4: .word ov10_022C47B4
+#ifdef JAPAN
+_023160D8: .word 0x00000A85
+#else
 _023160D8: .word 0x00000D45
+#endif
 	arm_func_end TryInflictDecoyStatus
 
 	arm_func_start TryInflictCurseStatus
@@ -1246,12 +1333,21 @@ _0231626C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02316274: .word ov10_022C4784
+#ifdef JAPAN
+_02316278: .word 0x00000A2C
+#else
 _02316278: .word 0x00000CEC
+#endif
 _0231627C: .word ATK_STAT_IDX
 	arm_func_end TryInflictCurseStatus
 
 	arm_func_start TryInflictSnatchStatus
 TryInflictSnatchStatus: ; 0x02316280
+#ifdef JAPAN
+#define TRY_INFLICT_SNATCH_STATUS_OFFSET -0xA4
+#else
+#define TRY_INFLICT_SNATCH_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r4, r1
 	mov r5, r0
@@ -1272,7 +1368,7 @@ _023162C0:
 	ldr r0, [r6]
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x12000
-	ldr sl, [r0, #0xb78]
+	ldr sl, [r0, #0xb78 + TRY_INFLICT_SNATCH_STATUS_OFFSET]
 	mov r0, sl
 	bl EntityIsValid__02315118
 	cmp r0, #0
@@ -1312,12 +1408,12 @@ _02316350:
 	ldr r2, [r3]
 	mov r1, r4
 	add r2, r2, #0x19000
-	str r4, [r2, #0x904]
+	str r4, [r2, #0x904 + TRY_INFLICT_SNATCH_STATUS_OFFSET]
 	ldr r2, [r3]
 	ldr r6, [r6, #0xb0]
 	add r3, r2, #0x19000
 	mov r2, r0
-	str r6, [r3, #0x90c]
+	str r6, [r3, #0x90c + TRY_INFLICT_SNATCH_STATUS_OFFSET]
 	bl SubstitutePlaceholderStringTags
 	ldr r2, _023163A4 ; =0x00000CED
 	mov r0, r5
@@ -1329,7 +1425,11 @@ _02316350:
 	.align 2, 0
 _0231639C: .word DUNGEON_PTR
 _023163A0: .word ov10_022C4788
+#ifdef JAPAN
+_023163A4: .word 0x00000A2D
+#else
 _023163A4: .word 0x00000CED
+#endif
 	arm_func_end TryInflictSnatchStatus
 
 	arm_func_start TryInflictTauntStatus
@@ -1358,10 +1458,15 @@ TryInflictTauntStatus: ; 0x023163A8
 	cmp r0, #0
 	movne r0, #0
 	bne _023164C0
+#ifndef JAPAN
 	ldr r3, _023164C8 ; =0x00000C39
+#endif
 	mov ip, #8
 	mov r0, r5
 	mov r1, r4
+#ifdef JAPAN
+	add r3, ip, #0x970
+#endif
 	mov r2, #1
 	str ip, [sp]
 	bl ExclusiveItemEffectIsActiveWithLogging
@@ -1410,14 +1515,25 @@ _023164C0:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_023164CC: .word ov10_022C47BC
+_023164D0: .word 0x00000A89
+_023164D4: .word 0x00000A8A
+#else
 _023164C8: .word 0x00000C39
 _023164CC: .word ov10_022C47BC
 _023164D0: .word 0x00000D49
 _023164D4: .word 0x00000D4A
+#endif
 	arm_func_end TryInflictTauntStatus
 
 	arm_func_start TryInflictStockpileStatus
 TryInflictStockpileStatus: ; 0x023164D8
+#ifdef JAPAN
+#define TRY_INFLICT_STOCKPILE_STATUS_OFFSET -4
+#else
+#define TRY_INFLICT_STOCKPILE_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r7, r0
@@ -1431,16 +1547,16 @@ TryInflictStockpileStatus: ; 0x023164D8
 	mov r1, r6
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
-	ldrb r0, [r5, #0x11e]
+	ldrb r0, [r5, #0x11e + TRY_INFLICT_STOCKPILE_STATUS_OFFSET]
 	cmp r0, #3
 	bhs _02316554
 	add r1, r0, #1
 	mov r0, #1
-	strb r1, [r5, #0x11e]
+	strb r1, [r5, #0x11e + TRY_INFLICT_STOCKPILE_STATUS_OFFSET]
 	bl AnimationDelayOrSomething
 	mov r0, r6
 	bl ov29_022E46D4
-	ldrb r1, [r5, #0x11e]
+	ldrb r1, [r5, #0x11e + TRY_INFLICT_STOCKPILE_STATUS_OFFSET]
 	mov r0, r4
 	bl ov29_0234B09C
 	ldr r2, _02316574 ; =0x00000D4B
@@ -1460,8 +1576,13 @@ _02316564:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02316574: .word 0x00000A8B
+_02316578: .word 0x00000A8C
+#else
 _02316574: .word 0x00000D4B
 _02316578: .word 0x00000D4C
+#endif
 	arm_func_end TryInflictStockpileStatus
 
 	arm_func_start TryInflictInvisibleStatus
@@ -1511,8 +1632,13 @@ _02316614:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02316620: .word ov10_022C47C8
+#ifdef JAPAN
+_02316624: .word 0x00000A8D
+_02316628: .word 0x00000A8E
+#else
 _02316624: .word 0x00000D4D
 _02316628: .word 0x00000D4E
+#endif
 	arm_func_end TryInflictInvisibleStatus
 
 	arm_func_start TryInflictPerishSongStatus
@@ -1550,7 +1676,11 @@ TryInflictPerishSongStatus: ; 0x0231662C
 	mov r1, r5
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
+#ifdef JAPAN
+	ldrb r0, [r4, #0x105]
+#else
 	ldrb r0, [r4, #0x106]
+#endif
 	cmp r0, #0
 	bne _023166F4
 	ldr r1, _02316714 ; =ov10_022C47D0
@@ -1561,7 +1691,11 @@ TryInflictPerishSongStatus: ; 0x0231662C
 	ldr r2, _02316718 ; =0x00000D51
 	mov r0, r6
 	mov r1, r5
+#ifdef JAPAN
+	strb r3, [r4, #0x105]
+#else
 	strb r3, [r4, #0x106]
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r6
 	mov r1, r5
@@ -1579,8 +1713,13 @@ _02316704:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02316714: .word ov10_022C47D0
+#ifdef JAPAN
+_02316718: .word 0x00000A91
+_0231671C: .word 0x00000A92
+#else
 _02316718: .word 0x00000D51
 _0231671C: .word 0x00000D52
+#endif
 	arm_func_end TryInflictPerishSongStatus
 
 	arm_func_start TryInflictEncoreStatus
@@ -1610,9 +1749,15 @@ TryInflictEncoreStatus: ; 0x02316720
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov ip, #8
+#ifdef JAPAN
+	mov r0, r7
+	mov r1, r6
+	add r3, ip, #0x970
+#else
 	ldr r3, _023168C4 ; =0x00000C39
 	mov r0, r7
 	mov r1, r6
+#endif
 	mov r2, #1
 	str ip, [sp]
 	bl ExclusiveItemEffectIsActiveWithLogging
@@ -1620,7 +1765,11 @@ TryInflictEncoreStatus: ; 0x02316720
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov lr, #0
+#ifdef JAPAN
+	add ip, r4, #0x120
+#else
 	add ip, r4, #0x124
+#endif
 	mov r1, lr
 	mov r2, #1
 	b _023167E8
@@ -1643,7 +1792,11 @@ _023167E8:
 _023167F0:
 	cmp lr, #4
 	bne _02316834
+#ifdef JAPAN
+	ldrb r0, [r4, #0x140]
+#else
 	ldrb r0, [r4, #0x144]
+#endif
 	tst r0, #0x10
 	bne _02316834
 	cmp r5, #0
@@ -1699,15 +1852,27 @@ _023168B4:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define TRY_INFLICT_ENCORE_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_ENCORE_STATUS_OFFSET 0
+#endif
+#ifndef JAPAN
 _023168C4: .word 0x00000C39
-_023168C8: .word 0x00000D57
+#endif
+_023168C8: .word 0x00000D57 + TRY_INFLICT_ENCORE_STATUS_OFFSET
 _023168CC: .word ov10_022C47D8
-_023168D0: .word 0x00000D55
-_023168D4: .word 0x00000D56
+_023168D0: .word 0x00000D55 + TRY_INFLICT_ENCORE_STATUS_OFFSET
+_023168D4: .word 0x00000D56 + TRY_INFLICT_ENCORE_STATUS_OFFSET
 	arm_func_end TryInflictEncoreStatus
 
 	arm_func_start TryDecreaseBelly
 TryDecreaseBelly: ; 0x023168D8
+#ifdef JAPAN
+#define TRY_DECREASE_BELLY_OFFSET -4
+#else
+#define TRY_DECREASE_BELLY_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x24
 	mov r5, r1
@@ -1733,8 +1898,8 @@ TryDecreaseBelly: ; 0x023168D8
 	bl sub_02050FF8
 	strh r0, [sp, #0x10]
 	add r1, r4, #0x100
-	ldrh ip, [r1, #0x4a]
-	ldrh r1, [r1, #0x4c]
+	ldrh ip, [r1, #0x4a + TRY_DECREASE_BELLY_OFFSET]
+	ldrh r1, [r1, #0x4c + TRY_DECREASE_BELLY_OFFSET]
 	mov r0, r0, lsr #0x10
 	ldrh r2, [sp, #0x10]
 	sub r3, sp, #4
@@ -1760,17 +1925,17 @@ TryDecreaseBelly: ; 0x023168D8
 	ldrh r2, [sp, #0xc]
 	add r1, r4, #0x100
 	ldrh r0, [sp, #0xe]
-	strh r2, [r1, #0x4a]
+	strh r2, [r1, #0x4a + TRY_DECREASE_BELLY_OFFSET]
 	sub r3, sp, #4
-	strh r0, [r1, #0x4c]
-	ldrh r0, [r1, #0x46]
+	strh r0, [r1, #0x4c + TRY_DECREASE_BELLY_OFFSET]
+	ldrh r0, [r1, #0x46 + TRY_DECREASE_BELLY_OFFSET]
 	strh r0, [r3]
-	ldrh r0, [r1, #0x48]
+	ldrh r0, [r1, #0x48 + TRY_DECREASE_BELLY_OFFSET]
 	strh r0, [r3, #2]
-	ldrh r2, [r1, #0x4a]
+	ldrh r2, [r1, #0x4a + TRY_DECREASE_BELLY_OFFSET]
 	ldr r0, [r3]
 	strh r2, [r3]
-	ldrh r1, [r1, #0x4c]
+	ldrh r1, [r1, #0x4c + TRY_DECREASE_BELLY_OFFSET]
 	strh r1, [r3, #2]
 	ldr r1, [r3]
 	bl sub_02050F78
@@ -1780,9 +1945,9 @@ TryDecreaseBelly: ; 0x023168D8
 	ldrh r0, [sp, #8]
 	add r1, r4, #0x100
 	ldrh r2, [sp, #0xa]
-	strh r0, [r1, #0x46]
+	strh r0, [r1, #0x46 + TRY_DECREASE_BELLY_OFFSET]
 	mov r0, #0
-	strh r2, [r1, #0x48]
+	strh r2, [r1, #0x48 + TRY_DECREASE_BELLY_OFFSET]
 	mov r1, r5
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
@@ -1822,8 +1987,8 @@ _02316A88:
 	bl sub_02050FF8
 	strh r0, [sp, #4]
 	add r1, r4, #0x100
-	ldrh ip, [r1, #0x46]
-	ldrh r1, [r1, #0x48]
+	ldrh ip, [r1, #0x46 + TRY_DECREASE_BELLY_OFFSET]
+	ldrh r1, [r1, #0x48 + TRY_DECREASE_BELLY_OFFSET]
 	mov r0, r0, lsr #0x10
 	ldrh r2, [sp, #4]
 	sub r3, sp, #4
@@ -1849,9 +2014,9 @@ _02316A88:
 	ldrh r1, [sp]
 	add r2, r4, #0x100
 	ldrh r3, [sp, #2]
-	strh r1, [r2, #0x46]
+	strh r1, [r2, #0x46 + TRY_DECREASE_BELLY_OFFSET]
 	mov r0, #0
-	strh r3, [r2, #0x48]
+	strh r3, [r2, #0x48 + TRY_DECREASE_BELLY_OFFSET]
 	mov r1, r5
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
@@ -1863,11 +2028,11 @@ _02316A88:
 	ldr r0, [r2]
 	bl CeilFixedPoint
 	add r1, r4, #0x100
-	ldrh r2, [r1, #0x46]
+	ldrh r2, [r1, #0x46 + TRY_DECREASE_BELLY_OFFSET]
 	sub r3, sp, #4
 	mov r4, r0
 	strh r2, [r3]
-	ldrh r0, [r1, #0x48]
+	ldrh r0, [r1, #0x48 + TRY_DECREASE_BELLY_OFFSET]
 	strh r0, [r3, #2]
 	ldr r0, [r3]
 	bl CeilFixedPoint
@@ -1892,14 +2057,24 @@ _02316B98:
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02316BA0: .word 0x00000D64
-_02316BA4: .word 0x00000D68
-_02316BA8: .word 0x00000D63
-_02316BAC: .word 0x00000D69
+#ifdef JAPAN
+#define TRY_DECREASE_BELLY_DATA_OFFSET -0x2C0
+#else
+#define TRY_DECREASE_BELLY_DATA_OFFSET 0
+#endif
+_02316BA0: .word 0x00000D64 + TRY_DECREASE_BELLY_DATA_OFFSET
+_02316BA4: .word 0x00000D68 + TRY_DECREASE_BELLY_DATA_OFFSET
+_02316BA8: .word 0x00000D63 + TRY_DECREASE_BELLY_DATA_OFFSET
+_02316BAC: .word 0x00000D69 + TRY_DECREASE_BELLY_DATA_OFFSET
 	arm_func_end TryDecreaseBelly
 
 	arm_func_start TryIncreaseBelly
 TryIncreaseBelly: ; 0x02316BB0
+#ifdef JAPAN
+#define TRY_INCREASE_BELLY_OFFSET -4
+#else
+#define TRY_INCREASE_BELLY_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
 	mov sb, r1
@@ -1960,19 +2135,19 @@ _02316C74:
 	mov r4, #0
 	beq _02316CE8
 	add r0, r5, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + TRY_INCREASE_BELLY_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + TRY_INCREASE_BELLY_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
 	add r1, r5, #0x100
-	ldrh r2, [r1, #0x4a]
+	ldrh r2, [r1, #0x4a + TRY_INCREASE_BELLY_OFFSET]
 	sub r3, sp, #4
 	mov fp, r0
 	strh r2, [r3]
-	ldrh r0, [r1, #0x4c]
+	ldrh r0, [r1, #0x4c + TRY_INCREASE_BELLY_OFFSET]
 	strh r0, [r3, #2]
 	ldr r0, [r3]
 	bl CeilFixedPoint
@@ -1985,23 +2160,23 @@ _02316CE8:
 	cmp r4, #0
 	add r0, r5, #0x100
 	beq _02316F08
-	ldrh r4, [r0, #0x4a]
-	ldrh r3, [r0, #0x4c]
-	ldrh r1, [r0, #0x46]
+	ldrh r4, [r0, #0x4a + TRY_INCREASE_BELLY_OFFSET]
+	ldrh r3, [r0, #0x4c + TRY_INCREASE_BELLY_OFFSET]
+	ldrh r1, [r0, #0x46 + TRY_INCREASE_BELLY_OFFSET]
 	sub r2, sp, #4
 	strh r4, [sp, #0x24]
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + TRY_INCREASE_BELLY_OFFSET]
 	strh r3, [sp, #0x26]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
 	add r1, r5, #0x100
-	ldrh r2, [r1, #0x4a]
+	ldrh r2, [r1, #0x4a + TRY_INCREASE_BELLY_OFFSET]
 	sub r3, sp, #4
 	mov r4, r0
 	strh r2, [r3]
-	ldrh r0, [r1, #0x4c]
+	ldrh r0, [r1, #0x4c + TRY_INCREASE_BELLY_OFFSET]
 	strh r0, [r3, #2]
 	ldr r0, [r3]
 	bl CeilFixedPoint
@@ -2016,11 +2191,11 @@ _02316CE8:
 	add r1, r5, #0x100
 	ldrh r7, [sp, #0x18]
 	ldrh r2, [sp, #0x1a]
-	ldrh r0, [r1, #0x4a]
+	ldrh r0, [r1, #0x4a + TRY_INCREASE_BELLY_OFFSET]
 	sub r3, sp, #4
 	strh r7, [sp, #0x28]
 	strh r0, [r3]
-	ldrh r0, [r1, #0x4c]
+	ldrh r0, [r1, #0x4c + TRY_INCREASE_BELLY_OFFSET]
 	strh r2, [sp, #0x2a]
 	ldrh r2, [sp, #0x28]
 	strh r0, [r3, #2]
@@ -2036,19 +2211,19 @@ _02316CE8:
 	ldrh r0, [sp, #0x14]
 	add r1, r5, #0x100
 	ldrh r2, [sp, #0x16]
-	strh r0, [r1, #0x4a]
+	strh r0, [r1, #0x4a + TRY_INCREASE_BELLY_OFFSET]
 	mov r0, #0xc8
-	strh r2, [r1, #0x4c]
+	strh r2, [r1, #0x4c + TRY_INCREASE_BELLY_OFFSET]
 	bl sub_02050FF8
 	strh r0, [sp, #0x10]
 	mov r0, r0, lsr #0x10
 	strh r0, [sp, #0x12]
 	add r1, r5, #0x100
-	ldrh r0, [r1, #0x4a]
+	ldrh r0, [r1, #0x4a + TRY_INCREASE_BELLY_OFFSET]
 	sub r7, sp, #4
 	ldrh r3, [sp, #0x10]
 	strh r0, [r7]
-	ldrh r0, [r1, #0x4c]
+	ldrh r0, [r1, #0x4c + TRY_INCREASE_BELLY_OFFSET]
 	ldrh r2, [sp, #0x12]
 	strh r0, [r7, #2]
 	ldr r0, [r7]
@@ -2062,13 +2237,13 @@ _02316CE8:
 	ldrh r2, [sp, #0xc]
 	add r0, r5, #0x100
 	ldrh r1, [sp, #0xe]
-	strh r2, [r0, #0x4a]
+	strh r2, [r0, #0x4a + TRY_INCREASE_BELLY_OFFSET]
 	tst r4, #0xff
-	strh r1, [r0, #0x4c]
-	ldrh r1, [r0, #0x4a]
-	strh r1, [r0, #0x46]
-	ldrh r1, [r0, #0x4c]
-	strh r1, [r0, #0x48]
+	strh r1, [r0, #0x4c + TRY_INCREASE_BELLY_OFFSET]
+	ldrh r1, [r0, #0x4a + TRY_INCREASE_BELLY_OFFSET]
+	strh r1, [r0, #0x46 + TRY_INCREASE_BELLY_OFFSET]
+	ldrh r1, [r0, #0x4c + TRY_INCREASE_BELLY_OFFSET]
+	strh r1, [r0, #0x48 + TRY_INCREASE_BELLY_OFFSET]
 	bne _02316E60
 	cmp r6, #0
 	beq _02316E60
@@ -2085,11 +2260,11 @@ _02316E60:
 	ldr r0, [r2]
 	bl CeilFixedPoint
 	add r1, r5, #0x100
-	ldrh r2, [r1, #0x4a]
+	ldrh r2, [r1, #0x4a + TRY_INCREASE_BELLY_OFFSET]
 	sub r3, sp, #4
 	mov r4, r0
 	strh r2, [r3]
-	ldrh r0, [r1, #0x4c]
+	ldrh r0, [r1, #0x4c + TRY_INCREASE_BELLY_OFFSET]
 	strh r0, [r3, #2]
 	ldr r0, [r3]
 	bl CeilFixedPoint
@@ -2121,8 +2296,8 @@ _02316ED4:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _023170F4
 _02316F08:
-	ldrh r2, [r0, #0x46]
-	ldrh r1, [r0, #0x48]
+	ldrh r2, [r0, #0x46 + TRY_INCREASE_BELLY_OFFSET]
+	ldrh r1, [r0, #0x48 + TRY_INCREASE_BELLY_OFFSET]
 	mov r0, r8
 	strh r2, [sp, #0x20]
 	strh r1, [sp, #0x22]
@@ -2133,11 +2308,11 @@ _02316F08:
 	add r1, r5, #0x100
 	ldrh r4, [sp, #8]
 	ldrh r2, [sp, #0xa]
-	ldrh r0, [r1, #0x46]
+	ldrh r0, [r1, #0x46 + TRY_INCREASE_BELLY_OFFSET]
 	sub r3, sp, #4
 	strh r4, [sp, #0x1c]
 	strh r0, [r3]
-	ldrh r0, [r1, #0x48]
+	ldrh r0, [r1, #0x48 + TRY_INCREASE_BELLY_OFFSET]
 	strh r2, [sp, #0x1e]
 	ldrh r2, [sp, #0x1c]
 	strh r0, [r3, #2]
@@ -2153,17 +2328,17 @@ _02316F08:
 	ldrh r2, [sp, #4]
 	add r1, r5, #0x100
 	ldrh r0, [sp, #6]
-	strh r2, [r1, #0x46]
+	strh r2, [r1, #0x46 + TRY_INCREASE_BELLY_OFFSET]
 	sub r3, sp, #4
-	strh r0, [r1, #0x48]
-	ldrh r0, [r1, #0x46]
+	strh r0, [r1, #0x48 + TRY_INCREASE_BELLY_OFFSET]
+	ldrh r0, [r1, #0x46 + TRY_INCREASE_BELLY_OFFSET]
 	strh r0, [r3]
-	ldrh r0, [r1, #0x48]
+	ldrh r0, [r1, #0x48 + TRY_INCREASE_BELLY_OFFSET]
 	strh r0, [r3, #2]
-	ldrh r2, [r1, #0x4a]
+	ldrh r2, [r1, #0x4a + TRY_INCREASE_BELLY_OFFSET]
 	ldr r0, [r3]
 	strh r2, [r3]
-	ldrh r1, [r1, #0x4c]
+	ldrh r1, [r1, #0x4c + TRY_INCREASE_BELLY_OFFSET]
 	strh r1, [r3, #2]
 	ldr r1, [r3]
 	bl sub_02050F78
@@ -2175,12 +2350,12 @@ _02316F08:
 	cmp r8, r0
 	add r0, r5, #0x100
 	ldrh r1, [sp, #2]
-	strh r2, [r0, #0x46]
-	strh r1, [r0, #0x48]
-	ldreqh r1, [r0, #0x4a]
-	streqh r1, [r0, #0x46]
-	ldreqh r1, [r0, #0x4c]
-	streqh r1, [r0, #0x48]
+	strh r2, [r0, #0x46 + TRY_INCREASE_BELLY_OFFSET]
+	strh r1, [r0, #0x48 + TRY_INCREASE_BELLY_OFFSET]
+	ldreqh r1, [r0, #0x4a + TRY_INCREASE_BELLY_OFFSET]
+	streqh r1, [r0, #0x46 + TRY_INCREASE_BELLY_OFFSET]
+	ldreqh r1, [r0, #0x4c + TRY_INCREASE_BELLY_OFFSET]
+	streqh r1, [r0, #0x48 + TRY_INCREASE_BELLY_OFFSET]
 	mov r0, sb
 	bl ov29_022E47BC
 	mov r0, #0
@@ -2195,11 +2370,11 @@ _02316F08:
 	ldr r0, [r2]
 	bl CeilFixedPoint
 	add r1, r5, #0x100
-	ldrh r2, [r1, #0x46]
+	ldrh r2, [r1, #0x46 + TRY_INCREASE_BELLY_OFFSET]
 	sub r3, sp, #4
 	mov r4, r0
 	strh r2, [r3]
-	ldrh r0, [r1, #0x48]
+	ldrh r0, [r1, #0x48 + TRY_INCREASE_BELLY_OFFSET]
 	strh r0, [r3, #2]
 	ldr r0, [r3]
 	bl CeilFixedPoint
@@ -2214,19 +2389,19 @@ _02316F08:
 	b _023170F4
 _02317074:
 	add r0, r5, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + TRY_INCREASE_BELLY_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + TRY_INCREASE_BELLY_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
 	add r1, r5, #0x100
-	ldrh r2, [r1, #0x4a]
+	ldrh r2, [r1, #0x4a + TRY_INCREASE_BELLY_OFFSET]
 	sub r3, sp, #4
 	mov r4, r0
 	strh r2, [r3]
-	ldrh r0, [r1, #0x4c]
+	ldrh r0, [r1, #0x4c + TRY_INCREASE_BELLY_OFFSET]
 	strh r0, [r3, #2]
 	ldr r0, [r3]
 	bl CeilFixedPoint
@@ -2253,14 +2428,19 @@ _023170FC:
 	add sp, sp, #0x2c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define TRY_INCREASE_BELLY_DATA_OFFSET -0x2C0
+#else
+#define TRY_INCREASE_BELLY_DATA_OFFSET 0
+#endif
 _02317104: .word ov10_022C44B0
 _02317108: .word 0x000003E7
-_0231710C: .word 0x00000D6C
-_02317110: .word 0x00000D6A
-_02317114: .word 0x00000D66
-_02317118: .word 0x00000D65
-_0231711C: .word 0x00000D67
-_02317120: .word 0x00000D6B
+_0231710C: .word 0x00000D6C + TRY_INCREASE_BELLY_DATA_OFFSET
+_02317110: .word 0x00000D6A + TRY_INCREASE_BELLY_DATA_OFFSET
+_02317114: .word 0x00000D66 + TRY_INCREASE_BELLY_DATA_OFFSET
+_02317118: .word 0x00000D65 + TRY_INCREASE_BELLY_DATA_OFFSET
+_0231711C: .word 0x00000D67 + TRY_INCREASE_BELLY_DATA_OFFSET
+_02317120: .word 0x00000D6B + TRY_INCREASE_BELLY_DATA_OFFSET
 	arm_func_end TryIncreaseBelly
 
 	arm_func_start TryInflictMuzzledStatus
@@ -2328,8 +2508,13 @@ _02317200:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02317210: .word ov10_022C4848
+#ifdef JAPAN
+_02317214: .word 0x00000AB2
+_02317218: .word 0x00000AB3
+#else
 _02317214: .word 0x00000D72
 _02317218: .word 0x00000D73
+#endif
 	arm_func_end TryInflictMuzzledStatus
 
 	arm_func_start TryTransform
@@ -2464,10 +2649,15 @@ _023173F4:
 	add sp, sp, #0x240
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023173FC: .word 0x00000D6F
-_02317400: .word 0x00000D6E
+#ifdef JAPAN
+#define TRY_TRANSFORM_OFFSET -0x2C0
+#else
+#define TRY_TRANSFORM_OFFSET 0
+#endif
+_023173FC: .word 0x00000D6F + TRY_TRANSFORM_OFFSET
+_02317400: .word 0x00000D6E + TRY_TRANSFORM_OFFSET
 _02317404: .word ov10_022C47FC
-_02317408: .word 0x00000D6D
+_02317408: .word 0x00000D6D + TRY_TRANSFORM_OFFSET
 	arm_func_end TryTransform
 
 	arm_func_start TryInflictMobileStatus
@@ -2503,7 +2693,11 @@ TryInflictMobileStatus: ; 0x0231740C
 	bl SubstitutePlaceholderStringTags
 	mov r0, r6
 	mov r1, r5
+#ifdef JAPAN
+	mov r2, #0xab0
+#else
 	mov r2, #0xd70
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _023174B4
 _02317494:
@@ -2521,7 +2715,11 @@ _023174B4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023174C0: .word ov10_022C480C
+#ifdef JAPAN
+_023174C4: .word 0x00000AB1
+#else
 _023174C4: .word 0x00000D71
+#endif
 	arm_func_end TryInflictMobileStatus
 
 	arm_func_start TryInflictExposedStatus
@@ -2625,10 +2823,15 @@ _02317628:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02317638: .word 0x00000D77
-_0231763C: .word 0x00000D75
-_02317640: .word 0x00000D76
-_02317644: .word 0x00000D74
+#ifdef JAPAN
+#define TRY_INFLICT_EXPOSED_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_EXPOSED_STATUS_OFFSET 0
+#endif
+_02317638: .word 0x00000D77 + TRY_INFLICT_EXPOSED_STATUS_OFFSET
+_0231763C: .word 0x00000D75 + TRY_INFLICT_EXPOSED_STATUS_OFFSET
+_02317640: .word 0x00000D76 + TRY_INFLICT_EXPOSED_STATUS_OFFSET
+_02317644: .word 0x00000D74 + TRY_INFLICT_EXPOSED_STATUS_OFFSET
 	arm_func_end TryInflictExposedStatus
 
 	arm_func_start TryActivateIdentifyCondition
@@ -2666,8 +2869,13 @@ _023176AC:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023176C0: .word DUNGEON_PTR
+#ifdef JAPAN
+_023176C4: .word 0x00000AB8
+_023176C8: .word 0x00000AB9
+#else
 _023176C4: .word 0x00000D78
 _023176C8: .word 0x00000D79
+#endif
 	arm_func_end TryActivateIdentifyCondition
 
 	arm_func_start TryInflictBlinkerStatus
@@ -2744,8 +2952,13 @@ _023177C8:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _023177D8: .word ov10_022C4828
+#ifdef JAPAN
+_023177DC: .word 0x00000A74
+_023177E0: .word 0x00000A75
+#else
 _023177DC: .word 0x00000D34
 _023177E0: .word 0x00000D35
+#endif
 	arm_func_end TryInflictBlinkerStatus
 
 	arm_func_start IsBlinded
@@ -2850,9 +3063,15 @@ _02317940:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02317950: .word 0x00000A76
+_02317954: .word ov10_022C4830
+_02317958: .word 0x00000A77
+#else
 _02317950: .word 0x00000D36
 _02317954: .word ov10_022C4830
 _02317958: .word 0x00000D37
+#endif
 	arm_func_end TryInflictCrossEyedStatus
 
 	arm_func_start TryInflictEyedropStatus
@@ -2902,8 +3121,13 @@ _023179F4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02317A00: .word ov10_022C4838
+#ifdef JAPAN
+_02317A04: .word 0x00000A78
+_02317A08: .word 0x00000A79
+#else
 _02317A04: .word 0x00000D38
 _02317A08: .word 0x00000D39
+#endif
 	arm_func_end TryInflictEyedropStatus
 
 	arm_func_start TryInflictSlipStatus
@@ -2969,8 +3193,13 @@ _02317AD8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02317AE8: .word ov10_022C486C
+#ifdef JAPAN
+_02317AEC: .word 0x00000A7A
+_02317AF0: .word 0x00000A7B
+#else
 _02317AEC: .word 0x00000D3A
 _02317AF0: .word 0x00000D3B
+#endif
 	arm_func_end TryInflictSlipStatus
 
 	arm_func_start TryInflictDropeyeStatus
@@ -3051,11 +3280,16 @@ _02317BFC:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02317C0C: .word 0x00000D3E
+#ifdef JAPAN
+#define TRY_INFLICT_DROPEYE_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_DROPEYE_STATUS_OFFSET 0
+#endif
+_02317C0C: .word 0x00000D3E + TRY_INFLICT_DROPEYE_STATUS_OFFSET
 _02317C10: .word ov10_022C487C
 _02317C14: .word 0x00000115
-_02317C18: .word 0x00000D3C
-_02317C1C: .word 0x00000D3D
+_02317C18: .word 0x00000D3C + TRY_INFLICT_DROPEYE_STATUS_OFFSET
+_02317C1C: .word 0x00000D3D + TRY_INFLICT_DROPEYE_STATUS_OFFSET
 	arm_func_end TryInflictDropeyeStatus
 
 	arm_func_start RestoreAllMovePP
@@ -3073,7 +3307,11 @@ RestoreAllMovePP: ; 0x02317C20
 	beq _02317D48
 	ldr r0, [sb, #0xb4]
 	mov r5, r6
+#ifdef JAPAN
+	add r4, r0, #0x120
+#else
 	add r4, r0, #0x124
+#endif
 _02317C58:
 	ldrb r0, [r4, r5, lsl #3]
 	add r7, r4, r5, lsl #3
@@ -3142,8 +3380,13 @@ _02317D48:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02317D50: .word 0x00000AF3
+_02317D54: .word 0x00000AF4
+#else
 _02317D50: .word 0x00000DB3
 _02317D54: .word 0x00000DB4
+#endif
 	arm_func_end RestoreAllMovePP
 
 	arm_func_start RestoreOneMovePP
@@ -3160,7 +3403,11 @@ RestoreOneMovePP: ; 0x02317D58
 	cmp r0, #0
 	beq _02317E78
 	ldr r0, [r7, #0xb4]
+#ifdef JAPAN
+	add r1, r0, #0x120
+#else
 	add r1, r0, #0x124
+#endif
 	ldrb r0, [r1, r5, lsl #3]
 	add r5, r1, r5, lsl #3
 	tst r0, #1
@@ -3227,8 +3474,13 @@ _02317E78:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02317E80: .word 0x00000AF3
+_02317E84: .word 0x00000AF4
+#else
 _02317E80: .word 0x00000DB3
 _02317E84: .word 0x00000DB4
+#endif
 	arm_func_end RestoreOneMovePP
 
 	arm_func_start RestoreRandomMovePP
@@ -3242,7 +3494,11 @@ RestoreRandomMovePP: ; 0x02317E88
 	mov r8, r2
 	mov r7, r3
 	mov r5, r6
+#ifdef JAPAN
+	add r4, r1, #0x120
+#else
 	add r4, r1, #0x124
+#endif
 	add fp, sp, #0xc
 _02317EB4:
 	ldrb r1, [r4, r5, lsl #3]
@@ -3328,8 +3584,13 @@ _02317FD0:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02317FDC: .word 0x00000AD6
+_02317FE0: .word 0x00000AD7
+#else
 _02317FDC: .word 0x00000D96
 _02317FE0: .word 0x00000D97
+#endif
 	arm_func_end ApplyProteinEffect
 
 	arm_func_start ApplyCalciumEffect
@@ -3372,8 +3633,13 @@ _02318064:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02318070: .word 0x00000AD8
+_02318074: .word 0x00000AD9
+#else
 _02318070: .word 0x00000D98
 _02318074: .word 0x00000D99
+#endif
 	arm_func_end ApplyCalciumEffect
 
 	arm_func_start ApplyIronEffect
@@ -3416,8 +3682,13 @@ _023180F8:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02318104: .word 0x00000ADA
+_02318108: .word 0x00000ADB
+#else
 _02318104: .word 0x00000D9A
 _02318108: .word 0x00000D9B
+#endif
 	arm_func_end ApplyIronEffect
 
 	arm_func_start ApplyZincEffect
@@ -3460,8 +3731,13 @@ _0231818C:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02318198: .word 0x00000ADC
+_0231819C: .word 0x00000ADD
+#else
 _02318198: .word 0x00000D9C
 _0231819C: .word 0x00000D9D
+#endif
 	arm_func_end ApplyZincEffect
 
 	arm_func_start TryInflictLongTossStatus
@@ -3495,8 +3771,13 @@ _023181FC:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02318208: .word 0x00000B1D
+_0231820C: .word 0x00000B1E
+#else
 _02318208: .word 0x00000DDD
 _0231820C: .word 0x00000DDE
+#endif
 	arm_func_end TryInflictLongTossStatus
 
 	arm_func_start TryInflictPierceStatus
@@ -3523,14 +3804,22 @@ TryInflictPierceStatus: ; 0x02318210
 _0231825C:
 	mov r0, r6
 	mov r1, r5
+#ifdef JAPAN
+	mov r2, #0xb20
+#else
 	mov r2, #0xde0
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _0231826C:
 	mov r0, r5
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02318278: .word 0x00000B1F
+#else
 _02318278: .word 0x00000DDF
+#endif
 	arm_func_end TryInflictPierceStatus
 
 	arm_func_start TryInflictGastroAcidStatus
@@ -3618,8 +3907,13 @@ _023183A0:
 	.align 2, 0
 _023183B0: .word ov10_022C476C
 _023183B4: .word DUNGEON_PTR
+#ifdef JAPAN
+_023183B8: .word 0x00000ABB
+_023183BC: .word 0x00000ABC
+#else
 _023183B8: .word 0x00000D7B
 _023183BC: .word 0x00000D7C
+#endif
 	arm_func_end TryInflictGastroAcidStatus
 
 	arm_func_start SetAquaRingHealingCountdownTo4
@@ -3719,8 +4013,13 @@ _023184F0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023184FC: .word ov10_022C4764
+#ifdef JAPAN
+_02318500: .word 0x00000ABD
+_02318504: .word 0x00000ABE
+#else
 _02318500: .word 0x00000D7D
 _02318504: .word 0x00000D7E
+#endif
 	arm_func_end TryInflictAquaRingStatus
 
 	arm_func_start TryInflictLuckyChantStatus
@@ -3767,7 +4066,11 @@ _02318594:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023185A0: .word ov10_022C4768
+#ifdef JAPAN
+_023185A4: .word 0x00000ABF
+#else
 _023185A4: .word 0x00000D7F
+#endif
 	arm_func_end TryInflictLuckyChantStatus
 
 	arm_func_start TryInflictHealBlockStatus
@@ -3847,8 +4150,13 @@ _023186B0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _023186C0: .word ov10_022C4774
+#ifdef JAPAN
+_023186C4: .word 0x00000AC1
+_023186C8: .word 0x00000AC2
+#else
 _023186C4: .word 0x00000D81
 _023186C8: .word 0x00000D82
+#endif
 	arm_func_end TryInflictHealBlockStatus
 
 	arm_func_start MonsterHasEmbargoStatus
@@ -3881,7 +4189,11 @@ LogItemBlockedByEmbargo: ; 0x02318700
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02318728: .word 0x00000AC6
+#else
 _02318728: .word 0x00000D86
+#endif
 	arm_func_end LogItemBlockedByEmbargo
 
 	arm_func_start TryInflictEmbargoStatus
@@ -3961,8 +4273,13 @@ _02318834:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02318844: .word ov10_022C4778
+#ifdef JAPAN
+_02318848: .word 0x00000AC4
+_0231884C: .word 0x00000AC5
+#else
 _02318848: .word 0x00000D84
 _0231884C: .word 0x00000D85
+#endif
 	arm_func_end TryInflictEmbargoStatus
 
 	arm_func_start TryInflictMiracleEyeStatus
@@ -4045,10 +4362,15 @@ _02318964:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02318974: .word 0x00000D89
+#ifdef JAPAN
+#define TRY_INFLICT_MIRACLE_EYE_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_MIRACLE_EYE_STATUS_OFFSET 0
+#endif
+_02318974: .word 0x00000D89 + TRY_INFLICT_MIRACLE_EYE_STATUS_OFFSET
 _02318978: .word ov10_022C477C
-_0231897C: .word 0x00000D87
-_02318980: .word 0x00000D88
+_0231897C: .word 0x00000D87 + TRY_INFLICT_MIRACLE_EYE_STATUS_OFFSET
+_02318980: .word 0x00000D88 + TRY_INFLICT_MIRACLE_EYE_STATUS_OFFSET
 	arm_func_end TryInflictMiracleEyeStatus
 
 	arm_func_start TryInflictMagnetRiseStatus
@@ -4103,10 +4425,15 @@ _02318A30:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02318A3C: .word 0x00000D8C
+#ifdef JAPAN
+#define TRY_INFLICT_MAGNET_RISE_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_MAGNET_RISE_STATUS_OFFSET 0
+#endif
+_02318A3C: .word 0x00000D8C + TRY_INFLICT_MAGNET_RISE_STATUS_OFFSET
 _02318A40: .word ov10_022C4780
-_02318A44: .word 0x00000D8A
-_02318A48: .word 0x00000D8B
+_02318A44: .word 0x00000D8A + TRY_INFLICT_MAGNET_RISE_STATUS_OFFSET
+_02318A48: .word 0x00000D8B + TRY_INFLICT_MAGNET_RISE_STATUS_OFFSET
 	arm_func_end TryInflictMagnetRiseStatus
 
 	arm_func_start IsFloating
@@ -4138,7 +4465,11 @@ ov29_02318A90: ; 0x02318A90
 	bl IsMonster__02318AB0
 	cmp r0, #0
 	ldrne r0, [r5, #0xb4]
+#ifdef JAPAN
+	strneb r4, [r0, #0x10a]
+#else
 	strneb r4, [r0, #0x10b]
+#endif
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_02318A90
 
@@ -4170,10 +4501,17 @@ ov29_02318AD4: ; 0x02318AD4
 	mov r4, #0x53
 	b _02318B3C
 _02318B04:
+#ifdef JAPAN
+	ldrb r0, [r7, #0x10a]
+	cmp r0, #1
+	bne _02318B20
+	ldr r0, [r7, #0x184]
+#else
 	ldrb r0, [r7, #0x10b]
 	cmp r0, #1
 	bne _02318B20
 	ldr r0, [r7, #0x188]
+#endif
 	cmp r0, #0xc800
 	movge r8, r6
 	movlt r8, r5
@@ -4206,10 +4544,17 @@ ov29_02318B48: ; 0x02318B48
 	mov r4, #0x53
 	b _02318BB0
 _02318B78:
+#ifdef JAPAN
+	ldrb r0, [r7, #0x10a]
+	cmp r0, #0
+	bne _02318B94
+	ldr r0, [r7, #0x184]
+#else
 	ldrb r0, [r7, #0x10b]
 	cmp r0, #0
 	bne _02318B94
 	ldr r0, [r7, #0x188]
+#endif
 	cmp r0, #0
 	movle r8, r6
 	movgt r8, r5
@@ -4255,7 +4600,11 @@ ov29_02318BBC: ; 0x02318BBC
 _02318C18:
 	strb r7, [r5, #0xd2]
 	mov r2, #0
+#ifdef JAPAN
+	add r0, r5, #0x120
+#else
 	add r0, r5, #0x124
+#endif
 	b _02318C3C
 _02318C28:
 	add r1, r0, r2, lsl #3
@@ -4270,17 +4619,29 @@ _02318C44:
 	add r0, r7, #0xf9
 	mov r1, #1
 	and r0, r0, #0xff
+#ifdef JAPAN
+	strb r1, [r5, #0x150]
+#else
 	strb r1, [r5, #0x154]
+#endif
 	cmp r0, #1
 	mov r4, #0
 	movls r4, r1
+#ifdef JAPAN
+	strlsb r1, [r5, #0x10a]
+#else
 	strlsb r1, [r5, #0x10b]
+#endif
 	bls _02318C7C
 	cmp r7, #9
 	cmpne r7, #0xa
 	cmpne r7, #0xd
 	moveq r0, #2
+#ifdef JAPAN
+	streqb r0, [r5, #0x10a]
+#else
 	streqb r0, [r5, #0x10b]
+#endif
 _02318C7C:
 	cmp r7, #1
 	bne _02318CD0
@@ -4326,7 +4687,11 @@ _02318CF0:
 	bl ov29_02318AD4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02318D20: .word 0x00000ABA
+#else
 _02318D20: .word 0x00000D7A
+#endif
 _02318D24: .word ov10_022C4754
 _02318D28: .word 0x00000166
 _02318D2C: .word 0x00000217

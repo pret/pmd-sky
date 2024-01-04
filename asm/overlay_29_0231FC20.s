@@ -49,7 +49,11 @@ _0231FCB4:
 	ldr r0, _0231FDD4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	bl AreTileJumpsAllowed
 	cmp r0, #0
 	bne _0231FCE4
@@ -121,9 +125,15 @@ _0231FDB4:
 	bl ov29_0232124C
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0231FDD0: .word 0x00000B98
+_0231FDD4: .word DUNGEON_PTR
+_0231FDD8: .word 0x00000B97
+#else
 _0231FDD0: .word 0x00000E56
 _0231FDD4: .word DUNGEON_PTR
 _0231FDD8: .word 0x00000E55
+#endif
 _0231FDDC: .word DIRECTIONS_XY
 	arm_func_end TryPounce
 
@@ -136,7 +146,11 @@ TryBlowAway: ; 0x0231FDE0
 	ldr r0, [r3]
 	mov sb, r1
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	mov r1, #0xa
 	mov r4, r2
 	str r1, [sp, #0x20]
@@ -366,12 +380,17 @@ _0232014C:
 	add sp, sp, #0x30
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define TRY_BLOW_AWAY_OFFSET -0x2C1
+#else
+#define TRY_BLOW_AWAY_OFFSET 0
+#endif
 _02320154: .word DUNGEON_PTR
-_02320158: .word 0x00000B97
-_0232015C: .word 0x00000B98
-_02320160: .word 0x00000B99
+_02320158: .word 0x00000B97 + TRY_BLOW_AWAY_OFFSET
+_0232015C: .word 0x00000B98 + TRY_BLOW_AWAY_OFFSET
+_02320160: .word 0x00000B99 + TRY_BLOW_AWAY_OFFSET
 _02320164: .word 0x00000212
-_02320168: .word 0x00000B96
+_02320168: .word 0x00000B96 + TRY_BLOW_AWAY_OFFSET
 _0232016C: .word DIRECTIONS_XY
 _02320170: .word ov10_022C4570
 _02320174: .word 0x00000163

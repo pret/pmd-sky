@@ -5,6 +5,11 @@
 
 	arm_func_start ov29_022FEDBC
 ov29_022FEDBC: ; 0x022FEDBC
+#ifdef JAPAN
+#define OV29_022FEDBC_OFFSET -4
+#else
+#define OV29_022FEDBC_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov r4, #0
@@ -14,12 +19,16 @@ _022FEDC8:
 	ldr r0, [r0]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xad4]
+#else
 	ldr r7, [r0, #0xb78]
+#endif
 	mov r0, r7
 	bl EntityIsValid__022FED98
 	cmp r0, #0
 	ldrne r8, [r7, #0xb4]
-	ldrneb r5, [r8, #0x177]
+	ldrneb r5, [r8, #0x177 + OV29_022FEDBC_OFFSET]
 	cmpne r5, #0xff
 	beq _022FEFA4
 	mov r0, r7
@@ -27,24 +36,24 @@ _022FEDC8:
 	bl ov29_02300DCC
 	cmp r0, #0
 	movne r0, #0xff
-	strneb r0, [r8, #0x177]
+	strneb r0, [r8, #0x177 + OV29_022FEDBC_OFFSET]
 	bne _022FEFA4
 	mov r0, r7
 	bl IsMonsterSleeping
 	cmp r0, #0
 	moveq r0, #0xff
-	streqb r0, [r8, #0x177]
+	streqb r0, [r8, #0x177 + OV29_022FEDBC_OFFSET]
 	beq _022FEFA4
 	ldrb r0, [r8, #0xf3]
 	cmp r0, #1
 	moveq r0, #0xff
-	streqb r0, [r8, #0x177]
+	streqb r0, [r8, #0x177 + OV29_022FEDBC_OFFSET]
 	beq _022FEFA4
 	mov r0, #4
 	bl DungeonRandInt
 	ldr fp, _022FEFBC ; =0x0000020D
 	mov sb, r6
-	add lr, r8, #0x124
+	add lr, r8, #0x124 + OV29_022FEDBC_OFFSET
 	sub r1, fp, #0xc6
 	b _022FEF80
 _022FEE60:
@@ -68,7 +77,7 @@ _022FEE84:
 	cmpne r2, fp
 	beq _022FEF70
 	mov sb, #0
-	add r6, r8, #0x124
+	add r6, r8, #0x124 + OV29_022FEDBC_OFFSET
 	mov fp, #1
 	b _022FEF20
 _022FEEB8:
@@ -132,7 +141,7 @@ _022FEF80:
 	blt _022FEE60
 _022FEF88:
 	mov r0, #0xff
-	strb r0, [r8, #0x177]
+	strb r0, [r8, #0x177 + OV29_022FEDBC_OFFSET]
 	cmp r6, #0
 	beq _022FEFA4
 	ldr r1, _022FEFC4 ; =0x00001204
@@ -147,12 +156,21 @@ _022FEFA4:
 	.align 2, 0
 _022FEFB8: .word DUNGEON_PTR
 _022FEFBC: .word 0x0000020D
+#ifdef JAPAN
+_022FEFC0: .word 0x00000B33
+#else
 _022FEFC0: .word 0x00000DF3
+#endif
 _022FEFC4: .word 0x00001204
 	arm_func_end ov29_022FEDBC
 
 	arm_func_start ov29_022FEFC8
 ov29_022FEFC8: ; 0x022FEFC8
+#ifdef JAPAN
+#define OV29_022FEFC8_OFFSET -4
+#else
+#define OV29_022FEFC8_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov r5, #0
@@ -161,12 +179,16 @@ _022FEFD4:
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r8, [r0, #0xad4]
+#else
 	ldr r8, [r0, #0xb78]
+#endif
 	mov r0, r8
 	bl EntityIsValid__022FED98
 	cmp r0, #0
 	ldrne sl, [r8, #0xb4]
-	ldrneb r7, [sl, #0x178]
+	ldrneb r7, [sl, #0x178 + OV29_022FEFC8_OFFSET]
 	cmpne r7, #0xff
 	beq _022FF14C
 	mov r0, r8
@@ -174,24 +196,24 @@ _022FEFD4:
 	bl ov29_02300DCC
 	cmp r0, #0
 	movne r0, #0xff
-	strneb r0, [sl, #0x178]
-	strneb r0, [sl, #0x177]
+	strneb r0, [sl, #0x178 + OV29_022FEFC8_OFFSET]
+	strneb r0, [sl, #0x177 + OV29_022FEFC8_OFFSET]
 	bne _022FF14C
 	mov r0, r8
 	bl IsMonsterSleeping
 	cmp r0, #0
 	moveq r0, #0xff
-	streqb r0, [sl, #0x178]
-	streqb r0, [sl, #0x177]
+	streqb r0, [sl, #0x178 + OV29_022FEFC8_OFFSET]
+	streqb r0, [sl, #0x177 + OV29_022FEFC8_OFFSET]
 	beq _022FF14C
 	ldrb r0, [sl, #0xf3]
 	cmp r0, #1
 	moveq r0, #0xff
-	streqb r0, [sl, #0x178]
-	streqb r0, [sl, #0x177]
+	streqb r0, [sl, #0x178 + OV29_022FEFC8_OFFSET]
+	streqb r0, [sl, #0x177 + OV29_022FEFC8_OFFSET]
 	beq _022FF14C
 	mov r6, #0
-	add r4, sl, #0x124
+	add r4, sl, #0x124 + OV29_022FEFC8_OFFSET
 	mov fp, #1
 	b _022FF0F8
 _022FF068:
@@ -255,8 +277,8 @@ _022FF100:
 	mov r3, #1
 	bl ov29_02322374
 	mov r0, #0xff
-	strb r0, [sl, #0x178]
-	strb r0, [sl, #0x177]
+	strb r0, [sl, #0x178 + OV29_022FEFC8_OFFSET]
+	strb r0, [sl, #0x177 + OV29_022FEFC8_OFFSET]
 _022FF14C:
 	add r5, r5, #1
 	cmp r5, #0x14
@@ -265,7 +287,11 @@ _022FF14C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022FF160: .word DUNGEON_PTR
+#ifdef JAPAN
+_022FF164: .word 0x00000B34
+#else
 _022FF164: .word 0x00000DF4
+#endif
 	arm_func_end ov29_022FEFC8
 
 	arm_func_start TryActivateFlashFireOnAllMonsters
@@ -278,17 +304,29 @@ _022FF178:
 	ldr r0, [r5]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xad4]
+#else
 	ldr r7, [r0, #0xb78]
+#endif
 	mov r0, r7
 	bl EntityIsValid__022FED98
 	cmp r0, #0
 	ldrne r2, [r7, #0xb4]
+#ifdef JAPAN
+	ldrneb r0, [r2, #0x158]
+#else
 	ldrneb r0, [r2, #0x15c]
+#endif
 	cmpne r0, #0
 	beq _022FF1B4
 	mov r0, r7
 	mov r1, r7
+#ifdef JAPAN
+	strb r6, [r2, #0x158]
+#else
 	strb r6, [r2, #0x15c]
+#endif
 	bl ActivateFlashFire
 _022FF1B4:
 	add r4, r4, #1
@@ -393,10 +431,17 @@ _022FF2DC:
 	ldrsh r2, [r5, #4]
 	add r1, r4, #0x100
 	mov r0, #1
+#ifdef JAPAN
+	strh r2, [r1, #0x7a]
+	ldrsh r2, [r5, #6]
+	sub r2, r2, #1
+	strh r2, [r1, #0x7c]
+#else
 	strh r2, [r1, #0x7e]
 	ldrsh r2, [r5, #6]
 	sub r2, r2, #1
 	strh r2, [r1, #0x80]
+#endif
 	ldmia sp!, {r3, r4, r5, pc}
 _022FF320:
 	ldrb r0, [r4, #9]
@@ -451,12 +496,17 @@ _022FF3AC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_022FF3DC: .word 0x00000C28
-_022FF3E0: .word 0x00000C29
-_022FF3E4: .word 0x00000C2A
-_022FF3E8: .word 0x00000C2B
-_022FF3EC: .word 0x00000C2C
-_022FF3F0: .word 0x00000C2D
+#ifdef JAPAN
+#define HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET -0x2C1
+#else
+#define HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET 0
+#endif
+_022FF3DC: .word 0x00000C28 + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET
+_022FF3E0: .word 0x00000C29 + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET
+_022FF3E4: .word 0x00000C2A + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET
+_022FF3E8: .word 0x00000C2B + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET
+_022FF3EC: .word 0x00000C2C + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET
+_022FF3F0: .word 0x00000C2D + HAS_STATUS_THAT_PREVENTS_ACTING_OFFSET
 	arm_func_end HasStatusThatPreventsActing
 
 	arm_func_start ov29_022FF3F4
@@ -568,7 +618,11 @@ _022FF53C:
 	b _022FF5FC
 _022FF564:
 	mov r5, #0
+#ifdef JAPAN
+	add r4, r6, #0x120
+#else
 	add r4, r6, #0x124
+#endif
 	mov r8, r5
 	mov sb, #1
 	b _022FF5F4
@@ -591,7 +645,11 @@ _022FF578:
 	b _022FF5CC
 _022FF5B8:
 	add r0, r6, r5, lsl #3
+#ifdef JAPAN
+	ldrb r0, [r0, #0x120]
+#else
 	ldrb r0, [r0, #0x124]
+#endif
 	tst r0, #2
 	beq _022FF5D4
 	sub r5, r5, #1
@@ -618,14 +676,19 @@ _022FF604:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_022FF60C: .word 0x00000C2E
-_022FF610: .word 0x00000C28
-_022FF614: .word 0x00000C29
-_022FF618: .word 0x00000C2A
-_022FF61C: .word 0x00000C2B
-_022FF620: .word 0x00000C2C
-_022FF624: .word 0x00000C2D
-_022FF628: .word 0x00000C2F
+#ifdef JAPAN
+#define OV29_022FF3F4_OFFSET -0x2C1
+#else
+#define OV29_022FF3F4_OFFSET 0
+#endif
+_022FF60C: .word 0x00000C2E + OV29_022FF3F4_OFFSET
+_022FF610: .word 0x00000C28 + OV29_022FF3F4_OFFSET
+_022FF614: .word 0x00000C29 + OV29_022FF3F4_OFFSET
+_022FF618: .word 0x00000C2A + OV29_022FF3F4_OFFSET
+_022FF61C: .word 0x00000C2B + OV29_022FF3F4_OFFSET
+_022FF620: .word 0x00000C2C + OV29_022FF3F4_OFFSET
+_022FF624: .word 0x00000C2D + OV29_022FF3F4_OFFSET
+_022FF628: .word 0x00000C2F + OV29_022FF3F4_OFFSET
 	arm_func_end ov29_022FF3F4
 
 	arm_func_start GetMobilityTypeCheckSlip
@@ -777,12 +840,29 @@ _022FF810:
 	mov r0, r6
 	bl GetMobilityTypeCheckSlipAndFloating
 	ldrh r2, [r4]
+#ifdef JAPAN
+	mov r4, r0
+	mov r0, r6
+	mov r1, #0xc
+	and r5, r2, #3
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	mov r0, r6
+	mov r1, #0xd
+	movne r4, #2
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r4, #3
+	cmp r4, #3
+	addls pc, pc, r4, lsl #2
+#else
 	mov r1, r0
 	mov r0, r6
 	and r4, r2, #3
 	bl GetMobilityTypeAfterIqSkills
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
+#endif
 	b _022FF888
 _022FF83C: ; jump table
 	b _022FF84C ; case 0
@@ -790,20 +870,35 @@ _022FF83C: ; jump table
 	b _022FF878 ; case 2
 	b _022FF888 ; case 3
 _022FF84C:
+#ifdef JAPAN
+	cmp r5, #1
+#else
 	cmp r4, #1
+#endif
 	bne _022FF890
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022FF85C:
+#ifdef JAPAN
+	cmp r5, #2
+	moveq r0, #0
+	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
+	cmp r5, #1
+#else
 	cmp r4, #2
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	cmp r4, #1
+#endif
 	bne _022FF890
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022FF878:
+#ifdef JAPAN
+	cmp r5, #0
+#else
 	cmp r4, #0
+#endif
 	beq _022FF890
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -831,6 +926,7 @@ ItemIsActive__022FF898: ; 0x022FF898
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ItemIsActive__022FF898
 
+#ifndef JAPAN
 	arm_func_start GetMobilityTypeAfterIqSkills
 GetMobilityTypeAfterIqSkills: ; 0x022FF8C8
 	stmdb sp!, {r3, r4, r5, lr}
@@ -851,6 +947,7 @@ _022FF8EC:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end GetMobilityTypeAfterIqSkills
+#endif
 
 	arm_func_start ov29_022FF908
 ov29_022FF908: ; 0x022FF908
@@ -928,12 +1025,29 @@ _022FFA0C:
 	mov r0, r6
 	bl GetMobilityTypeCheckSlipAndFloating
 	ldrh r2, [r4]
+#ifdef JAPAN
+	mov r4, r0
+	mov r0, r6
+	mov r1, #0xc
+	and r5, r2, #3
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	mov r0, r6
+	mov r1, #0xd
+	movne r4, #2
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r4, #3
+	cmp r4, #3
+	addls pc, pc, r4, lsl #2
+#else
 	mov r1, r0
 	mov r0, r6
 	and r4, r2, #3
 	bl GetMobilityTypeAfterIqSkills
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
+#endif
 	b _022FFA84
 _022FFA38: ; jump table
 	b _022FFA48 ; case 0
@@ -941,20 +1055,35 @@ _022FFA38: ; jump table
 	b _022FFA74 ; case 2
 	b _022FFA84 ; case 3
 _022FFA48:
+#ifdef JAPAN
+	cmp r5, #1
+#else
 	cmp r4, #1
+#endif
 	bne _022FFA8C
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022FFA58:
+#ifdef JAPAN
+	cmp r5, #2
+	moveq r0, #0
+	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
+	cmp r5, #1
+#else
 	cmp r4, #2
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	cmp r4, #1
+#endif
 	bne _022FFA8C
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022FFA74:
+#ifdef JAPAN
+	cmp r5, #0
+#else
 	cmp r4, #0
+#endif
 	beq _022FFA8C
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1091,12 +1220,29 @@ _022FFC44:
 	mov r0, r6
 	bl GetMobilityTypeCheckSlipAndFloating
 	ldrh r2, [r4]
+#ifdef JAPAN
+	mov r4, r0
+	mov r0, r6
+	mov r1, #0xc
+	and r5, r2, #3
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	mov r0, r6
+	mov r1, #0xd
+	movne r4, #2
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r4, #3
+	cmp r4, #3
+	addls pc, pc, r4, lsl #2
+#else
 	mov r1, r0
 	mov r0, r6
 	and r4, r2, #3
 	bl GetMobilityTypeAfterIqSkills
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
+#endif
 	b _022FFC94
 _022FFC70: ; jump table
 	b _022FFC80 ; case 0
@@ -1104,7 +1250,11 @@ _022FFC70: ; jump table
 	b _022FFC80 ; case 2
 	b _022FFC94 ; case 3
 _022FFC80:
+#ifdef JAPAN
+	cmp r5, #0
+#else
 	cmp r4, #0
+#endif
 	moveq r0, #1
 	movne r0, #0
 	and r0, r0, #0xff
@@ -1175,12 +1325,29 @@ _022FFD6C:
 	mov r0, r6
 	bl GetMobilityTypeCheckSlipAndFloating
 	ldrh r2, [r4]
+#ifdef JAPAN
+	mov r4, r0
+	mov r0, r6
+	mov r1, #0xc
+	and r5, r2, #3
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	mov r0, r6
+	mov r1, #0xd
+	movne r4, #2
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r4, #3
+	cmp r4, #3
+	addls pc, pc, r4, lsl #2
+#else
 	mov r1, r0
 	mov r0, r6
 	and r4, r2, #3
 	bl GetMobilityTypeAfterIqSkills
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
+#endif
 	b _022FFDE4
 _022FFD98: ; jump table
 	b _022FFDA8 ; case 0
@@ -1188,20 +1355,35 @@ _022FFD98: ; jump table
 	b _022FFDD4 ; case 2
 	b _022FFDE4 ; case 3
 _022FFDA8:
+#ifdef JAPAN
+	cmp r5, #1
+#else
 	cmp r4, #1
+#endif
 	bne _022FFDEC
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022FFDB8:
+#ifdef JAPAN
+	cmp r5, #2
+	moveq r0, #0
+	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
+	cmp r5, #1
+#else
 	cmp r4, #2
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	cmp r4, #1
+#endif
 	bne _022FFDEC
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022FFDD4:
+#ifdef JAPAN
+	cmp r5, #0
+#else
 	cmp r4, #0
+#endif
 	beq _022FFDEC
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -1215,6 +1397,11 @@ _022FFDEC:
 
 	arm_func_start CalcSpeedStage
 CalcSpeedStage: ; 0x022FFDF4
+#ifdef JAPAN
+#define CALC_SPEED_STAGE_OFFSET -4
+#else
+#define CALC_SPEED_STAGE_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
@@ -1225,10 +1412,10 @@ CalcSpeedStage: ; 0x022FFDF4
 	mov r1, r4
 _022FFE14:
 	add r2, r6, r1
-	ldrb r0, [r2, #0x119]
+	ldrb r0, [r2, #0x119 + CALC_SPEED_STAGE_OFFSET]
 	add r1, r1, #1
 	cmp r0, #0
-	ldrb r0, [r2, #0x114]
+	ldrb r0, [r2, #0x114 + CALC_SPEED_STAGE_OFFSET]
 	subne r4, r4, r7
 	cmp r0, #0
 	addne r4, r4, r7
@@ -1290,7 +1477,7 @@ _022FFEFC:
 	cmp r4, #5
 	movge r4, #4
 	mov r0, r4
-	str r4, [r6, #0x110]
+	str r4, [r6, #0x110 + CALC_SPEED_STAGE_OFFSET]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022FFF18: .word EXCL_ITEM_EFFECTS_WEATHER_MOVE_SPEED_BOOST
@@ -1307,7 +1494,11 @@ ExclusiveItemEffectIsActive__022FFF28: ; 0x022FFF28
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
+#ifdef JAPAN
+	add r0, r2, #0x224
+#else
 	add r0, r2, #0x228
+#endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__022FFF28
@@ -1390,8 +1581,13 @@ _02300028:
 	beq _023000C8
 	mov r0, sl
 	bl ov29_022E655C
+#ifdef JAPAN
+	ldr r1, _02301510 ; =0x0000096F
+	mov r0, sl
+#else
 	mov r0, sl
 	mov r1, #0xc30
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	b _023000C8
 _02300068:
@@ -1416,8 +1612,13 @@ _02300068:
 	add r1, sp, #0
 	mov r0, #0
 	bl ov29_02344B44
+#ifdef JAPAN
+	mov r0, sl
+	mov r1, #0x970
+#else
 	ldr r1, _023000E0 ; =0x00000C31
 	mov r0, sl
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 _023000C8:
 	cmp r5, #0
@@ -1428,5 +1629,9 @@ _023000D4:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _023000DC: .word EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST
+#ifdef JAPAN
+_02301510: .word 0x0000096F
+#else
 _023000E0: .word 0x00000C31
+#endif
 	arm_func_end GetNumberOfAttacks

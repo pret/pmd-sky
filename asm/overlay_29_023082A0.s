@@ -54,6 +54,234 @@ _02308338:
 
 	arm_func_start RunMonsterAi
 RunMonsterAi: ; 0x02308340
+#ifdef JAPAN
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+	mov sl, r0
+	ldr sb, [sl, #0xb4]
+	ldrh r1, [sb]
+	tst r1, #0x8000
+	beq _023098A8
+	ldrb r1, [sb, #0xc4]
+	cmp r1, #6
+	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	mov r1, sl
+	mov r2, #1
+	bl EndFrozenClassStatus
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+_023098A8:
+	mov r1, #0
+	strb r1, [sb, #0x10b]
+	ldrb r1, [sb, #0xbc]
+	cmp r1, #6
+	bls _023098C8
+	bl ShouldRunMonsterAi
+	cmp r0, #0
+	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+_023098C8:
+	ldrb r0, [sb, #0xbc]
+	cmp r0, #7
+	ldrneb r0, [sb, #0x108]
+	cmpne r0, #0
+	beq _02309924
+	mov r0, sl
+	bl ov29_02300B40
+	cmp r0, #0
+	beq _02309910
+	mov r0, #0
+	mov r1, sl
+	mov r2, r0
+	strb r0, [sb, #0x108]
+	bl SubstitutePlaceholderStringTags
+	ldr r1, _02309BB0 ; =0x00000B2D
+	mov r0, sl
+	bl LogMessageByIdWithPopupCheckUser
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+_02309910:
+	mov r0, sl
+	bl ov29_0230E914
+	ldrh r0, [sb, #0x4a]
+	cmp r0, #0
+	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+_02309924:
+	mov r0, sl
+	bl HasStatusThatPreventsActing
+	cmp r0, #0
+	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldr r4, _02309BB4 ; =0x023547B8
+	ldr r0, [r4]
+	add r0, r0, #0x3000
+	ldrb r0, [r0, #0xd94]
+	cmp r0, #0
+	beq _023099E4
+	mov r7, #0
+	mov fp, r7
+	mov r5, #1
+	mov r6, r7
+	b _023099DC
+_02309960:
+	ldr r0, [r4]
+	add r0, r0, r7, lsl #2
+	add r0, r0, #0x12000
+	ldr r8, [r0, #0xad4]
+	cmp r8, #0
+	moveq r0, r6
+	beq _02309990
+	ldr r0, [r8]
+	cmp r0, #0
+	movne r0, r5
+	moveq r0, fp
+	and r0, r0, #0xff
+_02309990:
+	cmp r0, #0
+	beq _023099D8
+	ldr r0, [r8, #0xb4]
+	ldrb r0, [r0, #0xd8]
+	cmp r0, #2
+	bne _023099D8
+	mov r0, sl
+	mov r1, r8
+	bl CanSeeTarget
+	cmp r0, #0
+	beq _023099D8
+	ldr r0, [r8, #0xb4]
+	ldrb r0, [r0, #0xd9]
+	cmp r0, #0
+	movne r0, #2
+	moveq r0, #1
+	strb r0, [sb, #0x10b]
+	b _023099E4
+_023099D8:
+	add r7, r7, #1
+_023099DC:
+	cmp r7, #0x14
+	blt _02309960
+_023099E4:
+	add r0, sb, #0x4a
+	bl ClearMonsterActionFields
+	ldrb r0, [sb, #0xbc]
+	cmp r0, #7
+	bne _02309A2C
+	ldrsh r1, [sb, #2]
+	add r0, sb, #0x4a
+	bl SetActionPassTurnOrWalk
+	mov r0, #8
+	bl DungeonRandInt
+	strb r0, [sb, #0x4c]
+	ldrsh r1, [sl, #4]
+	add r0, sb, #0x100
+	strh r1, [r0, #0x7a]
+	ldrsh r1, [sl, #6]
+	sub r1, r1, #1
+	strh r1, [r0, #0x7c]
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+_02309A2C:
+	mov r0, sl
+	bl ov29_0230E914
+	ldrh r0, [sb, #0x4a]
+	cmp r0, #0
+	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	mov r0, sl
+	mov r1, #0x15
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	bne _02309AEC
+	mov r0, sl
+	bl ChooseAiMove
+	ldrh r0, [sb, #0x4a]
+	cmp r0, #0
+	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldrb r0, [sb, #0xd0]
+	cmp r0, #2
+	bne _02309A84
+	ldrsh r1, [sb, #2]
+	add r0, sb, #0x4a
+	bl SetActionPassTurnOrWalk
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+_02309A84:
+	ldrsh r0, [sb, #2]
+	bl GetCanMoveFlag
+	cmp r0, #0
+	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	mov r0, sl
+	mov r1, #1
+	bl AiMovement
+	ldrb r0, [sb, #6]
+	cmp r0, #0
+	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	mov r0, sl
+	mov r1, #0x17
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	ldrh r0, [sb, #0x4a]
+	cmp r0, #1
+	ldmhiia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	mov r0, #0
+	mov r1, sl
+	mov r2, r0
+	bl SubstitutePlaceholderStringTags
+	ldr r1, _02309BB8 ; =0x00000B2E
+	mov r0, sl
+	bl LogMessageByIdWithPopupCheckUser
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+_02309AEC:
+	ldrb r0, [sb, #0xd0]
+	cmp r0, #2
+	bne _02309B08
+	ldrsh r1, [sb, #2]
+	add r0, sb, #0x4a
+	bl SetActionPassTurnOrWalk
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+_02309B08:
+	ldrsh r0, [sb, #2]
+	bl GetCanMoveFlag
+	cmp r0, #0
+	beq _02309B24
+	mov r0, sl
+	mov r1, #1
+	bl AiMovement
+_02309B24:
+	ldrh r0, [sb, #0x4a]
+	cmp r0, #0
+	cmpne r0, #1
+	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	mov r0, sl
+	bl ChooseAiMove
+	ldrsh r0, [sb, #2]
+	bl GetCanMoveFlag
+	cmp r0, #0
+	ldrneb r0, [sb, #6]
+	cmpne r0, #0
+	beq _02309B90
+	mov r0, sl
+	mov r1, #0x17
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	beq _02309B90
+	ldrh r0, [sb, #0x4a]
+	cmp r0, #1
+	bhi _02309B90
+	mov r0, #0
+	mov r1, sl
+	mov r2, r0
+	bl SubstitutePlaceholderStringTags
+	ldr r1, _02309BB8 ; =0x00000B2E
+	mov r0, sl
+	bl LogMessageByIdWithPopupCheckUser
+_02309B90:
+	ldrh r0, [sb, #0x4a]
+	cmp r0, #0
+	cmpne r0, #1
+	movne r0, #0
+	strneb r0, [sb, #0x7d]
+	strneb r0, [sb, #0x14a]
+	strneb r0, [sb, #0x14d]
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+	.align 2, 0
+_02309BB0: .word 0x00000B2D
+_02309BB4: .word 0x023547B8
+_02309BB8: .word 0x00000B2E
+#else
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xb4]
@@ -232,6 +460,7 @@ _023085B4:
 	.align 2, 0
 _023085D4: .word 0x00000DED
 _023085D8: .word 0x00000DEE
+#endif
 	arm_func_end RunMonsterAi
 
 	arm_func_start ov29_023085DC
@@ -265,6 +494,11 @@ _02308618:
 
 	arm_func_start ApplyDamageAndEffects
 ApplyDamageAndEffects: ; 0x0230863C
+#ifdef JAPAN
+#define APPLY_DAMAGE_AND_EFFECTS_OFFSET -4
+#else
+#define APPLY_DAMAGE_AND_EFFECTS_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x40
 	ldr r7, [sp, #0x68]
@@ -464,7 +698,9 @@ _02308914:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x12
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	addne r5, r5, #2
@@ -645,7 +881,9 @@ _02308BB0:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #5
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _02308C38
@@ -682,7 +920,9 @@ _02308C38:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0xa
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _02308C88
@@ -693,17 +933,19 @@ _02308C38:
 	cmp r0, r1
 	bge _02308C88
 	add r0, r6, #0x100
-	ldrh r3, [r0, #0x92]
+	ldrh r3, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	ldr r1, _02308F98 ; =ov29_0237CA6D
 	mov r2, #0
 	orr r3, r3, #2
-	strh r3, [r0, #0x92]
+	strh r3, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	strb r2, [r1]
 _02308C88:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x17
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _02308CDC
@@ -718,14 +960,16 @@ _02308C88:
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
-	ldrlth r1, [r0, #0x92]
+	ldrlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	orrlt r1, r1, #4
-	strlth r1, [r0, #0x92]
+	strlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 _02308CDC:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x20
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _02308D24
@@ -737,14 +981,16 @@ _02308CDC:
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
-	ldrlth r1, [r0, #0x92]
+	ldrlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	orrlt r1, r1, #8
-	strlth r1, [r0, #0x92]
+	strlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 _02308D24:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x27
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _02308D64
@@ -754,14 +1000,16 @@ _02308D24:
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
-	ldrlth r1, [r0, #0x92]
+	ldrlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	orrlt r1, r1, #0x20
-	strlth r1, [r0, #0x92]
+	strlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 _02308D64:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x3d
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _02308DE0
@@ -777,23 +1025,25 @@ _02308D64:
 	bl DungeonRandInt
 	cmp r0, #1
 	addlt r0, r6, #0x100
-	ldrlth r1, [r0, #0x92]
+	ldrlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	orrlt r1, r1, #0x40
-	strlth r1, [r0, #0x92]
+	strlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	blt _02308DE0
 	cmp r0, #2
 	add r0, r6, #0x100
-	ldrlth r1, [r0, #0x92]
+	ldrlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	orrlt r1, r1, #0x10
-	strlth r1, [r0, #0x92]
-	ldrgeh r1, [r0, #0x92]
+	strlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
+	ldrgeh r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	orrge r1, r1, #0x80
-	strgeh r1, [r0, #0x92]
+	strgeh r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 _02308DE0:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x3e
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _02308E20
@@ -803,14 +1053,16 @@ _02308DE0:
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
-	ldrlth r1, [r0, #0x92]
+	ldrlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	orrlt r1, r1, #0x100
-	strlth r1, [r0, #0x92]
+	strlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 _02308E20:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x44
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _02308E80
@@ -828,14 +1080,20 @@ _02308E20:
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
-	ldrlth r1, [r0, #0x92]
+	ldrlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	orrlt r1, r1, #0x200
-	strlth r1, [r0, #0x92]
+	strlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 _02308E80:
+#ifdef JAPAN
+	mov r0, sl
+	mov r1, sb
+	mov r2, #1
+#else
 	mov r2, #1
 	mov r0, sl
 	mov r1, sb
 	mov r3, r2
+#endif
 	bl DefenderAbilityIsActive__0230A940
 	cmp r0, #0
 	beq _02308EC0
@@ -845,9 +1103,9 @@ _02308E80:
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
-	ldrlth r1, [r0, #0x92]
+	ldrlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	orrlt r1, r1, #0x400
-	strlth r1, [r0, #0x92]
+	strlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 _02308EC0:
 	mov r0, sl
 	mov r1, sb
@@ -865,7 +1123,11 @@ _02308ECC:
 	ldr r1, [r1]
 	add r1, r1, r2, lsl #2
 	add r1, r1, #0x12000
+#ifdef JAPAN
+	ldr r4, [r1, #0xad4]
+#else
 	ldr r4, [r1, #0xb78]
+#endif
 	cmp r4, #0
 	moveq r1, #0
 	streqb r1, [r0, #0xe0]

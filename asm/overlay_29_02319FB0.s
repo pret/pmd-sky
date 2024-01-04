@@ -307,7 +307,11 @@ _0231A3A4:
 	ldr r0, [r0]
 	add r0, r0, r1
 	add r0, r0, #0x3000
+#ifdef JAPAN
+	ldrb r4, [r0, #0xb24]
+#else
 	ldrb r4, [r0, #0xb74]
+#endif
 	b _0231A454
 _0231A404:
 	mov r0, sb
@@ -636,8 +640,13 @@ _0231A868:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0231A870: .word ov10_022C459C
+#ifdef JAPAN
+_0231A874: .word 0x00000B35
+_0231A878: .word 0x00000B37
+#else
 _0231A874: .word 0x00000DF5
 _0231A878: .word 0x00000DF7
+#endif
 	arm_func_end ShouldUsePp
 
 	arm_func_start ExclusiveItemEffectIsActive__0231A87C
@@ -648,13 +657,22 @@ ExclusiveItemEffectIsActive__0231A87C: ; 0x0231A87C
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
+#ifdef JAPAN
+	add r0, r2, #0x224
+#else
 	add r0, r2, #0x228
+#endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__0231A87C
 
 	arm_func_start ov29_0231A8A0
 ov29_0231A8A0: ; 0x0231A8A0
+#ifdef JAPAN
+#define OV29_0231A8A0_OFFSET -4
+#else
+#define OV29_0231A8A0_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #4
 	mov sb, r0
@@ -666,7 +684,11 @@ ov29_0231A8A0: ; 0x0231A8A0
 	ldr r4, [sb, #0xb4]
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	bl AreMovesEnabled
 	cmp r0, #0
 	bne _0231A8EC
@@ -677,13 +699,13 @@ ov29_0231A8A0: ; 0x0231A8A0
 _0231A8EC:
 	mov r1, r7
 	mov r0, sb
-	strb r1, [r4, #0x23f]
+	strb r1, [r4, #0x23f + OV29_0231A8A0_OFFSET]
 	bl ShouldUsePp
 	cmp r0, #0
 	movne r7, #1
-	strneb r7, [r4, #0x23f]
+	strneb r7, [r4, #0x23f + OV29_0231A8A0_OFFSET]
 	mov r0, #0
-	strb r0, [r4, #0x23e]
+	strb r0, [r4, #0x23e + OV29_0231A8A0_OFFSET]
 _0231A910:
 	mov r6, #0
 	mov r4, #1
@@ -704,9 +726,9 @@ _0231A924:
 	beq _0231A984
 	bl IsFloorOver
 	cmp r0, #0
-	ldreqb r0, [r8, #0x23e]
+	ldreqb r0, [r8, #0x23e + OV29_0231A8A0_OFFSET]
 	cmpeq r0, #0
-	ldreqb r0, [r8, #0x163]
+	ldreqb r0, [r8, #0x163 + OV29_0231A8A0_OFFSET]
 	cmpeq r0, #0
 	bne _0231A984
 	add r6, r6, #1
@@ -739,7 +761,11 @@ _0231A9C4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0231A9CC: .word DUNGEON_PTR
+#ifdef JAPAN
+_0231A9D0: .word 0x00000B3D
+#else
 _0231A9D0: .word 0x00000DFD
+#endif
 	arm_func_end ov29_0231A8A0
 
 	arm_func_start IsMonster__0231A9D4
@@ -797,7 +823,11 @@ _0231AA74:
 	ldr r0, _0231AC94 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	bl AreOrbsAllowed
 	cmp r0, #0
 	mov r4, #1
@@ -821,7 +851,11 @@ _0231AAB4:
 	strb r2, [sp, #8]
 	add r0, sp, #8
 	mov r1, r7
+#ifdef JAPAN
+	add r2, r5, #0x120
+#else
 	add r2, r5, #0x124
+#endif
 	str r3, [sp, #0xc]
 	bl AiConsiderMove
 	ldrb r0, [sp, #8]
@@ -938,12 +972,17 @@ _0231AC88:
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
-_0231AC90: .word 0x00000DF8
+#ifdef JAPAN
+#define OV29_0231A9F8_OFFSET -0xC20
+#else
+#define OV29_0231A9F8_OFFSET 0
+#endif
+_0231AC90: .word 0x00000DF8 + OV29_0231A9F8_OFFSET
 _0231AC94: .word DUNGEON_PTR
-_0231AC98: .word 0x00000DF9
-_0231AC9C: .word 0x00000DFA
-_0231ACA0: .word 0x00000DFB
-_0231ACA4: .word 0x00000DFC
+_0231AC98: .word 0x00000DF9 + OV29_0231A9F8_OFFSET
+_0231AC9C: .word 0x00000DFA + OV29_0231A9F8_OFFSET
+_0231ACA0: .word 0x00000DFB + OV29_0231A9F8_OFFSET
+_0231ACA4: .word 0x00000DFC + OV29_0231A9F8_OFFSET
 _0231ACA8: .word 0x00000141
 	arm_func_end ov29_0231A9F8
 
@@ -1029,7 +1068,11 @@ ov29_0231ADA8: ; 0x0231ADA8
 	ldr r1, [r0, #0xb4]
 	mov r0, #0
 	mov r5, r0
+#ifdef JAPAN
+	add r4, r1, #0x120
+#else
 	add r4, r1, #0x124
+#endif
 	mov ip, r0
 	mov lr, #1
 	add r2, sp, #0
@@ -1076,7 +1119,11 @@ ov29_0231AE3C: ; 0x0231AE3C
 	mov r3, #1
 _0231AE54:
 	add r1, ip, lr, lsl #3
+#ifdef JAPAN
+	ldrb r1, [r1, #0x120]
+#else
 	ldrb r1, [r1, #0x124]
+#endif
 	tst r1, #1
 	movne r1, r3
 	moveq r1, r2
@@ -1144,6 +1191,11 @@ _0231AF20: .word WEATHER_BALL_TYPE_TABLE
 
 	arm_func_start ov29_0231AF24
 ov29_0231AF24: ; 0x0231AF24
+#ifdef JAPAN
+#define OV29_0231AF24_OFFSET -4
+#else
+#define OV29_0231AF24_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
@@ -1166,13 +1218,13 @@ ov29_0231AF24: ; 0x0231AF24
 	add r0, r4, #0x4a
 	bl SetActionUseMoveAi
 	mov r2, #1
-	strb r2, [r4, #0x124]
+	strb r2, [r4, #0x124 + OV29_0231AF24_OFFSET]
 	add r0, r4, #0x100
 	mov r1, #0
-	strh r1, [r0, #0x26]
-	strh r5, [r0, #0x28]
-	strb r2, [r4, #0x12a]
-	strb r1, [r4, #0x12b]
+	strh r1, [r0, #0x26 + OV29_0231AF24_OFFSET]
+	strh r5, [r0, #0x28 + OV29_0231AF24_OFFSET]
+	strb r2, [r4, #0x12a + OV29_0231AF24_OFFSET]
+	strb r1, [r4, #0x12b + OV29_0231AF24_OFFSET]
 _0231AF98:
 	mov r3, #0
 	mov r0, r6
@@ -1194,8 +1246,13 @@ ov29_0231AFB4: ; 0x0231AFB4
 _0231AFC8:
 	ldr r0, [r1]
 	mov r4, r3
+#ifdef JAPAN
+	add r0, r0, #0x1840
+	add r0, r0, #0x18000
+#else
 	add r0, r0, #0xe4
 	add r0, r0, #0x19800
+#endif
 	add lr, r0, ip, lsl #4
 _0231AFDC:
 	str r2, [lr, r4, lsl #3]
@@ -1223,8 +1280,13 @@ ov29_0231B008: ; 0x0231B008
 _0231B020:
 	ldr r0, [r1]
 	mov r5, ip
+#ifdef JAPAN
+	add r0, r0, #0x1840
+	add r0, r0, #0x18000
+#else
 	add r0, r0, #0xe4
 	add r0, r0, #0x19800
+#endif
 	add r4, r0, lr, lsl #4
 _0231B034:
 	str r3, [r4, r5, lsl #3]
@@ -1245,9 +1307,15 @@ _0231B05C: .word DUNGEON_PTR
 ActivateMotorDrive: ; 0x0231B060
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
+#ifdef JAPAN
+	mov ip, #0x66
+	mov r4, r0
+	rsb r2, ip, #0x9e0
+#else
 	ldr r2, _0231B0A0 ; =0x00000C3B
 	mov ip, #0x66
 	mov r4, r0
+#endif
 	mov r1, #0
 	mov r3, #2
 	str ip, [sp]
@@ -1260,7 +1328,9 @@ ActivateMotorDrive: ; 0x0231B060
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
+#ifndef JAPAN
 _0231B0A0: .word 0x00000C3B
+#endif
 	arm_func_end ActivateMotorDrive
 
 	arm_func_start TryActivateFrisk
@@ -1326,6 +1396,11 @@ _0231B184:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0231B18C: .word 0x0000097C
+_0231B190: .word 0x0000097B
+#else
 _0231B18C: .word 0x00000C3D
 _0231B190: .word 0x00000C3C
+#endif
 	arm_func_end TryActivateFrisk

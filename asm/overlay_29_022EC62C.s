@@ -24,7 +24,11 @@ _022EC668:
 	ldr r0, [r7]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r5, [r0, #0xad4]
+#else
 	ldr r5, [r0, #0xb78]
+#endif
 	mov r0, r5
 	bl EntityIsValid__022EC608
 	cmp r0, #0
@@ -57,6 +61,11 @@ _022EC6D8: .word DUNGEON_PTR
 
 	arm_func_start TrySpawnMonsterAndActivatePlusMinus
 TrySpawnMonsterAndActivatePlusMinus: ; 0x022EC6DC
+#ifdef JAPAN
+#define TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET -0xA4
+#else
+#define TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r0, _022EC7E0 ; =DUNGEON_PTR
 	ldr r1, _022EC7E4 ; =ov29_023522B6
@@ -73,31 +82,31 @@ TrySpawnMonsterAndActivatePlusMinus: ; 0x022EC6DC
 	ldr r0, [r4]
 	mov fp, #1
 	add r0, r0, #0x3000
-	strb r8, [r0, #0xe34]
+	strb r8, [r0, #0xe34 + TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET]
 	ldr r0, [r4]
 	mov r7, r8
 	add r0, r0, #0x3000
-	strb r8, [r0, #0xe35]
+	strb r8, [r0, #0xe35 + TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET]
 	ldr r0, [r4]
 	mov r6, fp
 	add r0, r0, #0x3000
-	strb r8, [r0, #0xe36]
+	strb r8, [r0, #0xe36 + TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET]
 	ldr r0, [r4]
 	mov r5, fp
 	add r0, r0, #0x3000
-	strb r8, [r0, #0xe37]
+	strb r8, [r0, #0xe37 + TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET]
 _022EC750:
 	ldr r0, [r4]
 	add r0, r0, r8, lsl #2
 	add r0, r0, #0x12000
-	ldr sb, [r0, #0xb78]
+	ldr sb, [r0, #0xb78 + TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET]
 	mov r0, sb
 	bl EntityIsValid__022EC608
 	cmp r0, #0
 	beq _022EC7C8
 	ldr r0, [sb, #0xb4]
 	mov r1, #0x3f
-	strb r7, [r0, #0x152]
+	strb r7, [r0, #0x152 + TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET]
 	ldrb r0, [r0, #6]
 	cmp r0, #0
 	moveq sl, fp
@@ -109,14 +118,14 @@ _022EC750:
 	mov r1, #0x38
 	addne r0, r0, sl
 	addne r0, r0, #0x3000
-	strneb r6, [r0, #0xe36]
+	strneb r6, [r0, #0xe36 + TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET]
 	mov r0, sb
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	ldrne r0, [r4]
 	addne r0, r0, sl
 	addne r0, r0, #0x3000
-	strneb r5, [r0, #0xe34]
+	strneb r5, [r0, #0xe34 + TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET]
 _022EC7C8:
 	add r8, r8, #1
 	cmp r8, #0x14
@@ -230,7 +239,11 @@ _022EC900:
 	add r2, r3, r2
 	ldr r2, [r5, r2, lsl #2]
 	add r1, r1, #0x1a000
+#ifdef JAPAN
+	str r2, [r1, #0x18c]
+#else
 	str r2, [r1, #0x230]
+#endif
 	bl AdvanceFrame
 _022EC93C:
 	ldrb r0, [r6, #3]
@@ -254,7 +267,11 @@ _022EC96C:
 	ldr r0, [r0]
 	ldr r1, _022EC9A0 ; =ov29_02353598
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	str r2, [r0, #0x18c]
+#else
 	str r2, [r0, #0x230]
+#endif
 	strb r2, [r1]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
@@ -268,16 +285,27 @@ ov29_022EC9A4: ; 0x022EC9A4
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	mov r3, #0xc
+#ifdef JAPAN
+	smulbb r4, r1, r3
+	ldr r1, _022ECAD8 ; =ov10_022C6320
+	mov r6, r0
+	ldrb r4, [r1, r4]
+#else
 	smulbb r3, r1, r3
 	ldr r1, _022ECAD8 ; =ov10_022C6320
 	mov r6, r0
 	ldrb r4, [r1, r3]
+#endif
 	mov r5, r2
 	cmp r4, #5
 	beq _022ECA28
 	cmp r5, #0
 	bne _022EC9E0
+#ifdef JAPAN
+	add r1, r3, #0x930
+#else
 	ldr r1, _022ECADC ; =0x00000BFD
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	b _022ECA18
 _022EC9E0:
@@ -295,7 +323,11 @@ _022EC9F4:
 _022ECA08:
 	cmp r5, #3
 	bne _022ECA18
+#ifdef JAPAN
+	ldr r1, _022EE14C ; =0x0000093F
+#else
 	mov r1, #0xc00
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 _022ECA18:
 	mov r0, r4
@@ -307,8 +339,13 @@ _022ECA28:
 	mov r4, r0
 	cmp r5, #0
 	bne _022ECA48
+#ifdef JAPAN
+	mov r0, r6
+	mov r1, #0x940
+#else
 	ldr r1, _022ECAE8 ; =0x00000C01
 	mov r0, r6
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	b _022ECA8C
 _022ECA48:
@@ -354,6 +391,14 @@ _022ECAD0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022ECAD8: .word ov10_022C6320
+#ifdef JAPAN
+_022ECAE0: .word 0x0000093D
+_022ECAE4: .word 0x0000093E
+_022EE14C: .word 0x0000093F
+_022ECAEC: .word 0x00000941
+_022ECAF0: .word 0x00000942
+_022ECAF4: .word 0x00000943
+#else
 _022ECADC: .word 0x00000BFD
 _022ECAE0: .word 0x00000BFE
 _022ECAE4: .word 0x00000BFF
@@ -361,6 +406,7 @@ _022ECAE8: .word 0x00000C01
 _022ECAEC: .word 0x00000C02
 _022ECAF0: .word 0x00000C03
 _022ECAF4: .word 0x00000C04
+#endif
 _022ECAF8: .word ov29_02352380
 	arm_func_end ov29_022EC9A4
 
@@ -394,6 +440,11 @@ _022ECB44: .word ov29_02353598
 
 	arm_func_start DecrementWindCounter
 DecrementWindCounter: ; 0x022ECB48
+#ifdef JAPAN
+#define DECREMENT_WIND_COUNTER_OFFSET -0xA4
+#else
+#define DECREMENT_WIND_COUNTER_OFFSET 0
+#endif
 	stmdb sp!, {r4, lr}
 	bl GetLeader
 	movs r4, r0
@@ -444,7 +495,7 @@ _022ECB70:
 	mov r0, r4
 	ldr r2, [r1]
 	add r1, r2, #0x4000
-	ldrsh r1, [r1, #0xd4]
+	ldrsh r1, [r1, #0xd4 + DECREMENT_WIND_COUNTER_OFFSET]
 	ldrb r2, [r2, #0x79a]
 	bl ov29_022EC9A4
 	ldr r0, _022ECD7C ; =DUNGEON_PTR
@@ -473,7 +524,7 @@ _022ECC2C:
 	mov r0, r4
 	ldr r2, [r1]
 	add r1, r2, #0x4000
-	ldrsh r1, [r1, #0xd4]
+	ldrsh r1, [r1, #0xd4 + DECREMENT_WIND_COUNTER_OFFSET]
 	ldrb r2, [r2, #0x79a]
 	bl ov29_022EC9A4
 	ldr r0, _022ECD7C ; =DUNGEON_PTR
@@ -502,7 +553,7 @@ _022ECC9C:
 	mov r0, r4
 	ldr r2, [r1]
 	add r1, r2, #0x4000
-	ldrsh r1, [r1, #0xd4]
+	ldrsh r1, [r1, #0xd4 + DECREMENT_WIND_COUNTER_OFFSET]
 	ldrb r2, [r2, #0x79a]
 	bl ov29_022EC9A4
 	ldr r0, _022ECD7C ; =DUNGEON_PTR
@@ -527,7 +578,7 @@ _022ECD0C:
 	mov r0, r4
 	ldr r2, [r1]
 	add r1, r2, #0x4000
-	ldrsh r1, [r1, #0xd4]
+	ldrsh r1, [r1, #0xd4 + DECREMENT_WIND_COUNTER_OFFSET]
 	ldrb r2, [r2, #0x79a]
 	bl ov29_022EC9A4
 	ldr r0, _022ECD7C ; =DUNGEON_PTR

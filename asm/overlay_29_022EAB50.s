@@ -192,6 +192,11 @@ _022EAD64: .word RANDOM_MUSIC_ID_TABLE
 
 	arm_func_start ov29_022EAD68
 ov29_022EAD68: ; 0x022EAD68
+#ifdef JAPAN
+#define OV29_022EAD68_OFFSET -0xA4
+#else
+#define OV29_022EAD68_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, lr}
 	bl IsCurrentFixedRoomBossFight
 	cmp r0, #0
@@ -217,12 +222,12 @@ _022EADAC:
 	ldr r0, [r0]
 	ldr r2, _022EAE10 ; =FIXED_ROOM_PROPERTIES_TABLE
 	add r0, r0, #0x4000
-	ldrb r3, [r0, #0xda]
+	ldrb r3, [r0, #0xda + OV29_022EAD68_OFFSET]
 	smulbb r1, r3, r1
 	ldr r1, [r2, r1]
 	cmp r1, #0
-	ldreqsh r1, [r0, #0xd6]
-	strneh r1, [r0, #0xd6]
+	ldreqsh r1, [r0, #0xd6 + OV29_022EAD68_OFFSET]
+	strneh r1, [r0, #0xd6 + OV29_022EAD68_OFFSET]
 	mov r0, r1, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl MusicTableIdxToMusicId
@@ -255,7 +260,11 @@ ChangeDungeonMusic: ; 0x022EAE14
 	bx lr
 	.align 2, 0
 _022EAE38: .word DUNGEON_PTR
+#ifdef JAPAN
+_022EAE3C: .word 0x0002CA62
+#else
 _022EAE3C: .word 0x0002CB06
+#endif
 	arm_func_end ChangeDungeonMusic
 
 	arm_func_start ov29_022EAE40
@@ -286,7 +295,11 @@ ov29_022EAE40: ; 0x022EAE40
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022EAEA0: .word DUNGEON_PTR
+#ifdef JAPAN
+_022EAEA4: .word 0x0002CA5E
+#else
 _022EAEA4: .word 0x0002CB02
+#endif
 _022EAEA8: .word 0x000003E7
 	arm_func_end ov29_022EAE40
 
@@ -307,7 +320,11 @@ ov29_022EAEAC: ; 0x022EAEAC
 	strh ip, [r1, r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef JAPAN
+_022EAEE4: .word 0x0002CA5E
+#else
 _022EAEE4: .word 0x0002CB02
+#endif
 _022EAEE8: .word DUNGEON_PTR
 _022EAEEC: .word 0x000003E7
 	arm_func_end ov29_022EAEAC
@@ -361,9 +378,15 @@ ov29_022EAF48: ; 0x022EAF48
 	mov r4, #0
 	ldr r3, [ip]
 	ldr lr, _022EAFAC ; =0x000003E7
+#ifdef JAPAN
+	add r2, r3, #0x254
+	add r3, r3, #0x2c000
+	str r4, [r3, #0xa54]
+#else
 	add r2, r3, #0x2f8
 	add r3, r3, #0x2c000
 	str r4, [r3, #0xaf8]
+#endif
 	add r3, r2, #0x2c800
 	str r4, [r3, #4]
 	ldr r2, [ip]
@@ -397,7 +420,11 @@ ov29_022EAFB0: ; 0x022EAFB0
 	add r0, r3, #0x700
 	ldrh r0, [r0, #0x96]
 	ldr r2, _022EB16C ; =0x000003E7
+#ifdef JAPAN
+	add r1, r3, #0x254
+#else
 	add r1, r3, #0x2f8
+#endif
 	cmp r0, r2
 	add r4, r1, #0x2c800
 	bne _022EB034
@@ -609,7 +636,11 @@ _022EB2BC:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_022EB2C4: .word 0x00000887
+#else
 _022EB2C4: .word 0x00000B76
+#endif
 	arm_func_end TrySwitchPlace
 
 	arm_func_start ov29_022EB2C8
@@ -627,8 +658,13 @@ ov29_022EB2C8: ; 0x022EB2C8
 	ldreq r0, _022EB364 ; =0x000009C9
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 _022EB2F8:
+#ifdef JAPAN
+	add r0, r6, #0x57
+	add r0, r0, #0x2300
+#else
 	add r0, r6, #0x87
 	add r0, r0, #0x900
+#endif
 	mov r0, r0, lsl #0x10
 	mov r7, r0, lsr #0x10
 	mov r0, r7
@@ -656,11 +692,19 @@ _022EB34C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022EB360: .word ov29_0237C91C
+#ifdef JAPAN
+_022EB364: .word 0x00002399
+#else
 _022EB364: .word 0x000009C9
+#endif
 _022EB368: .word ov29_02352070
 _022EB36C: .word ov29_0237C91E
 _022EB370: .word ov29_02352032
+#ifdef JAPAN
+_022EB374: .word 0x0000239A
+#else
 _022EB374: .word 0x000009CA
+#endif
 	arm_func_end ov29_022EB2C8
 
 	arm_func_start ov29_022EB378
@@ -777,7 +821,11 @@ _022EB498:
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xa84]
+#else
 	ldr r0, [r0, #0xb28]
+#endif
 	ldr r0, [r0, #0xb4]
 	add r0, r0, #0x62
 	ldmia sp!, {r3, pc}
@@ -839,7 +887,11 @@ ov29_022EB568: ; 0x022EB568
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xa84]
+#else
 	ldr r0, [r0, #0xb28]
+#endif
 	bx lr
 	.align 2, 0
 _022EB590: .word DUNGEON_PTR
@@ -975,7 +1027,11 @@ _022EB71C:
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xa84]
+#else
 	ldr r0, [r0, #0xb28]
+#endif
 	ldr r0, [r0, #0xb4]
 	add r0, r0, #0x62
 	cmp r4, r0
@@ -1066,7 +1122,11 @@ _022EB850:
 	ldr r4, _022EB8A0 ; =ov29_0237C91C
 	mov r6, r2, lsl #3
 	ldr lr, [ip]
+#ifdef JAPAN
+	add r3, r0, #0x57
+#else
 	add r3, r0, #0x87
+#endif
 	add lr, lr, #1
 	ldr r5, _022EB8A4 ; =ov29_0237C91E
 	strh r0, [r4, r6]
@@ -1075,7 +1135,11 @@ _022EB850:
 	mov r1, #1
 	ldr r0, _022EB8AC ; =ov29_0237C922
 	strb r1, [r4, r2, lsl #3]
+#ifdef JAPAN
+	add r1, r3, #0x2300
+#else
 	add r1, r3, #0x900
+#endif
 	strh r1, [r0, r6]
 	str lr, [ip]
 	ldmia sp!, {r4, r5, r6, pc}
@@ -1480,6 +1544,13 @@ ov29_022EBCE8: ; 0x022EBCE8
 
 	arm_func_start RunFractionalTurn
 RunFractionalTurn: ; 0x022EBD08
+#ifdef JAPAN
+#define RUN_FRACTIONAL_TURN_OFFSET -0xA4
+#define RUN_FRACTIONAL_TURN_OFFSET_2 -4
+#else
+#define RUN_FRACTIONAL_TURN_OFFSET 0
+#define RUN_FRACTIONAL_TURN_OFFSET_2 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x40
 	mov r4, r0
@@ -1516,7 +1587,7 @@ _022EBD80:
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r4, [r0, #0xb28]
+	ldr r4, [r0, #0xb28 + RUN_FRACTIONAL_TURN_OFFSET]
 	mov r0, r4
 	bl EntityIsValid__022EC608
 	cmp r0, #0
@@ -1536,7 +1607,7 @@ _022EBD80:
 	bl TryActivateArtificialWeatherAbilities
 	mov r1, #0
 	mov r0, r4
-	strb r1, [r6, #0x14e]
+	strb r1, [r6, #0x14e + RUN_FRACTIONAL_TURN_OFFSET_2]
 	bl CalcSpeedStageWrapper
 	ldr r1, _022EC2FC ; =DUNGEON_PTR
 	ldr r3, _022EC300 ; =FRACTIONAL_TURN_SEQUENCE
@@ -1549,7 +1620,7 @@ _022EBD80:
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	beq _022EBEC8
-	ldrb r0, [r6, #0x152]
+	ldrb r0, [r6, #0x152 + RUN_FRACTIONAL_TURN_OFFSET_2]
 	cmp r0, #0
 	bne _022EBEC8
 	ldrh r0, [r6]
@@ -1561,7 +1632,7 @@ _022EBD80:
 	bne _022EBEC8
 	mov r1, #0
 	mov r0, r4
-	strb r1, [r6, #0x14f]
+	strb r1, [r6, #0x14f + RUN_FRACTIONAL_TURN_OFFSET_2]
 	bl TickStatusAndHealthRegen
 	mov r0, r4
 	bl EntityIsValid__022EC608
@@ -1626,18 +1697,18 @@ _022EBF18:
 	ldr r0, [r0]
 	add r0, r0, sl, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb28]
+	ldr r7, [r0, #0xb28 + RUN_FRACTIONAL_TURN_OFFSET]
 	mov r0, r7
 	bl EntityIsValid__022EC608
 	cmp r0, #0
 	ldrne r1, [r7, #0xb4]
-	ldrneb r0, [r1, #0x14e]
+	ldrneb r0, [r1, #0x14e + RUN_FRACTIONAL_TURN_OFFSET_2]
 	cmpne r0, #0
 	beq _022EBFA8
 	ldrb r0, [r1, #7]
 	cmp r0, #0
-	strneb r6, [r1, #0x14f]
-	strneb r6, [r1, #0x14e]
+	strneb r6, [r1, #0x14f + RUN_FRACTIONAL_TURN_OFFSET_2]
+	strneb r6, [r1, #0x14e + RUN_FRACTIONAL_TURN_OFFSET_2]
 	bne _022EBFA8
 	ldrsh r1, [r8, #6]
 	ldrsh r0, [r7, #6]
@@ -1673,9 +1744,9 @@ _022EBFC8:
 	beq _022EC008
 	ldr r2, [r4, #0xb4]
 	mov r0, r4
-	strb sl, [r2, #0x14f]
+	strb sl, [r2, #0x14f + RUN_FRACTIONAL_TURN_OFFSET_2]
 	mov r1, sl
-	strb r7, [r2, #0x14e]
+	strb r7, [r2, #0x14e + RUN_FRACTIONAL_TURN_OFFSET_2]
 	bl RunMonsterAi
 	mov r0, r4
 	bl ExecuteMonsterAction
@@ -1702,12 +1773,12 @@ _022EC038:
 	ldr r0, [r5]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb28]
+	ldr r7, [r0, #0xb28 + RUN_FRACTIONAL_TURN_OFFSET]
 	mov r0, r7
 	bl EntityIsValid__022EC608
 	cmp r0, #0
 	ldrne r8, [r7, #0xb4]
-	ldrneb r0, [r8, #0x14e]
+	ldrneb r0, [r8, #0x14e + RUN_FRACTIONAL_TURN_OFFSET_2]
 	cmpne r0, #0
 	beq _022EC088
 	mov r0, r7
@@ -1718,7 +1789,7 @@ _022EC038:
 	beq _022EC088
 	mov r0, r7
 	bl EnemyEvolution
-	strb r6, [r8, #0x14e]
+	strb r6, [r8, #0x14e + RUN_FRACTIONAL_TURN_OFFSET_2]
 _022EC088:
 	add r4, r4, #1
 	cmp r4, #4
@@ -1738,7 +1809,7 @@ _022EC0BC:
 	ldr r0, [r4]
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x12000
-	ldr r8, [r0, #0xb38]
+	ldr r8, [r0, #0xb38 + RUN_FRACTIONAL_TURN_OFFSET]
 	mov r0, r8
 	bl EntityIsValid__022EC608
 	cmp r0, #0
@@ -1760,7 +1831,7 @@ _022EC0BC:
 	strneh r0, [sl]
 	bne _022EC1BC
 	mov r0, r8
-	strb r7, [sl, #0x14e]
+	strb r7, [sl, #0x14e + RUN_FRACTIONAL_TURN_OFFSET_2]
 	bl CalcSpeedStageWrapper
 	ldr r2, [r4]
 	mla r1, r0, fp, r6
@@ -1770,14 +1841,14 @@ _022EC0BC:
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	beq _022EC1BC
-	ldrb r0, [sl, #0x152]
+	ldrb r0, [sl, #0x152 + RUN_FRACTIONAL_TURN_OFFSET_2]
 	cmp r0, #0
 	bne _022EC1BC
 	ldrh r1, [sl]
 	mov r0, r8
 	bic r1, r1, #0xc000
 	strh r1, [sl]
-	strb r5, [sl, #0x14f]
+	strb r5, [sl, #0x14f + RUN_FRACTIONAL_TURN_OFFSET_2]
 	bl TickStatusAndHealthRegen
 	mov r0, r8
 	bl EntityIsValid__022EC608
@@ -1815,12 +1886,12 @@ _022EC1E0:
 	ldr r0, [r5]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb38]
+	ldr r7, [r0, #0xb38 + RUN_FRACTIONAL_TURN_OFFSET]
 	mov r0, r7
 	bl EntityIsValid__022EC608
 	cmp r0, #0
 	ldrne r8, [r7, #0xb4]
-	ldrneb r0, [r8, #0x14e]
+	ldrneb r0, [r8, #0x14e + RUN_FRACTIONAL_TURN_OFFSET_2]
 	cmpne r0, #0
 	beq _022EC230
 	mov r0, r7
@@ -1831,7 +1902,7 @@ _022EC1E0:
 	beq _022EC230
 	mov r0, r7
 	bl EnemyEvolution
-	strb r6, [r8, #0x14e]
+	strb r6, [r8, #0x14e + RUN_FRACTIONAL_TURN_OFFSET_2]
 _022EC230:
 	add r4, r4, #1
 	cmp r4, #0x10
@@ -1856,7 +1927,7 @@ _022EC278:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r0, [r0, #0xb78]
+	ldr r0, [r0, #0xb78 + RUN_FRACTIONAL_TURN_OFFSET]
 	bl EntityIsValid__022EC608
 	cmp r0, #0
 	beq _022EC2A0
@@ -1922,7 +1993,11 @@ RunLeaderTurn: ; 0x022EC308
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r0, [r4, #0xb4]
+#ifdef JAPAN
+	ldrb r0, [r0, #0x14e]
+#else
 	ldrb r0, [r0, #0x152]
+#endif
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -2033,7 +2108,11 @@ _022EC500:
 	ldr r0, [r4]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xad4]
+#else
 	ldr r6, [r0, #0xb78]
+#endif
 	mov r0, r6
 	bl EntityIsValid__022EC608
 	cmp r0, #0

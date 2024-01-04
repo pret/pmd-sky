@@ -64,7 +64,11 @@ ov29_022E1AD4: ; 0x022E1AD4
 	bl EntityIsValid__022E1A1C
 	cmp r0, #0
 	ldrne r0, [r4, #0xb4]
+#ifdef JAPAN
+	ldrneb r0, [r0, #0x177]
+#else
 	ldrneb r0, [r0, #0x17b]
+#endif
 	moveq r0, #0
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E1AD4
@@ -100,7 +104,11 @@ _022E1B38:
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xa84]
+#else
 	ldr r7, [r0, #0xb28]
+#endif
 	mov r0, r7
 	bl EntityIsValid__022E1A1C
 	cmp r0, #0
@@ -116,10 +124,17 @@ _022E1B38:
 	strh r0, [r7, #0xac]
 	ldr r0, [r7, #0xb4]
 	movne r6, r6, lsl #1
+#ifdef JAPAN
+	strb r4, [r0, #0x176]
+	ldr r0, [r7, #0xb4]
+	mov r2, #0
+	strb r6, [r0, #0x177]
+#else
 	strb r4, [r0, #0x17a]
 	ldr r0, [r7, #0xb4]
 	mov r2, #0
 	strb r6, [r0, #0x17b]
+#endif
 	mov r1, #1
 	ldr r0, _022E1C08 ; =ov29_0237C754
 	b _022E1BB4
@@ -179,14 +194,22 @@ _022E1C48:
 	mov r2, r3
 	b _022E1C6C
 _022E1C54:
+#ifdef JAPAN
+	ldrb r1, [r4, #0x176]
+#else
 	ldrb r1, [r4, #0x17a]
+#endif
 	add r0, r3, #1
 	mov r0, r0, lsl #0x10
 	add r1, r5, r1
 	strb r2, [r3, r1]
 	mov r3, r0, asr #0x10
 _022E1C6C:
+#ifdef JAPAN
+	ldrb r0, [r4, #0x177]
+#else
 	ldrb r0, [r4, #0x17b]
+#endif
 	cmp r3, r0
 	blt _022E1C54
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -279,7 +302,11 @@ _022E1D90:
 	ldr r0, [sb]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xa84]
+#else
 	ldr r7, [r0, #0xb28]
+#endif
 	mov r0, r7
 	bl EntityIsValid__022E1A1C
 	cmp r0, #0
@@ -289,10 +316,17 @@ _022E1D90:
 	ldr r0, _022E1EC0 ; =DUNGEON_PTR
 	strb r5, [r7, #0x24]
 	ldr r0, [r0]
+#ifdef JAPAN
+	mov r1, #0x23c
+	add r0, r0, #0x3f4
+	add r0, r0, #0x400
+	mla r0, r5, r1, r0
+#else
 	add r1, r5, r5, lsl #3
 	add r0, r0, #0x3f4
 	add r0, r0, #0x400
 	add r0, r0, r1, lsl #6
+#endif
 	str r0, [r7, #0xb4]
 	strh r8, [r0, #2]
 	mov r1, r8
@@ -326,10 +360,17 @@ _022E1D90:
 	bl ov29_022E2978
 	ldr r1, [sp, #8]
 	ldr r0, [r7, #0xb4]
+#ifdef JAPAN
+	strb r1, [r0, #0x176]
+	ldr r1, [sp, #4]
+	ldr r0, [r7, #0xb4]
+	strb r1, [r0, #0x177]
+#else
 	strb r1, [r0, #0x17a]
 	ldr r1, [sp, #4]
 	ldr r0, [r7, #0xb4]
 	strb r1, [r0, #0x17b]
+#endif
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
 	mov r0, r0, lsl #0x10
@@ -411,7 +452,11 @@ _022E1F44:
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xa94]
+#else
 	ldr r7, [r0, #0xb38]
+#endif
 	mov r0, r7
 	bl EntityIsValid__022E1A1C
 	cmp r0, #0
@@ -427,10 +472,17 @@ _022E1F44:
 	strh r0, [r7, #0xac]
 	ldr r0, [r7, #0xb4]
 	movne r6, r6, lsl #1
+#ifdef JAPAN
+	strb r5, [r0, #0x176]
+	ldr r0, [r7, #0xb4]
+	mov r2, #0
+	strb r6, [r0, #0x177]
+#else
 	strb r5, [r0, #0x17a]
 	ldr r0, [r7, #0xb4]
 	mov r2, #0
 	strb r6, [r0, #0x17b]
+#endif
 	mov r1, #1
 	ldr r0, _022E2014 ; =ov29_0237C79C
 	b _022E1FC0
@@ -550,7 +602,11 @@ _022E211C:
 	ldr r0, [sb]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xa94]
+#else
 	ldr r7, [r0, #0xb38]
+#endif
 	mov r0, r7
 	bl EntityIsValid__022E1A1C
 	cmp r0, #0
@@ -562,10 +618,17 @@ _022E211C:
 	ldr r1, _022E225C ; =DUNGEON_PTR
 	strb r0, [r7, #0x22]
 	ldr r1, [r1]
+#ifdef JAPAN
+	mov r2, #0x23c
+	add r1, r1, #0xe4
+	add r1, r1, #0x1000
+	mla r2, r5, r2, r1
+#else
 	add r2, r5, r5, lsl #3
 	add r1, r1, #0xf4
 	add r1, r1, #0x1000
 	add r2, r1, r2, lsl #6
+#endif
 	str r2, [r7, #0xb4]
 	mov r1, r8
 	strh r8, [r2, #2]
@@ -600,10 +663,17 @@ _022E211C:
 	str r1, [r7, #0x1c]
 	ldr r1, [sp, #8]
 	ldr r0, [r7, #0xb4]
+#ifdef JAPAN
+	strb r1, [r0, #0x176]
+	ldr r1, [sp, #4]
+	ldr r0, [r7, #0xb4]
+	strb r1, [r0, #0x177]
+#else
 	strb r1, [r0, #0x17a]
 	ldr r1, [sp, #4]
 	ldr r0, [r7, #0xb4]
 	strb r1, [r0, #0x17b]
+#endif
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
 	mov r0, r0, lsl #0x10
@@ -648,7 +718,11 @@ _022E2280:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xc24]
+#else
 	ldr r6, [r0, #0xcc8]
+#endif
 	mov r0, r6
 	bl EntityIsValid__022E1A1C
 	cmp r0, #0
@@ -658,8 +732,13 @@ _022E2280:
 	str r1, [r6]
 	ldr r0, [r0]
 	mov r2, #0
+#ifdef JAPAN
+	add r0, r0, #0xf20
+	add r0, r0, #0x3000
+#else
 	add r0, r0, #0x3c4
 	add r0, r0, #0x3c00
+#endif
 	add r0, r0, r5, lsl #2
 	str r0, [r6, #0xb4]
 	strb sl, [r0]
@@ -695,7 +774,11 @@ SpawnItemEntity: ; 0x022E2314
 	ldr r1, [r1]
 	mov r6, r0
 	add r0, r1, #0x4000
+#ifdef JAPAN
+	ldrsh r0, [r0, #0x30]
+#else
 	ldrsh r0, [r0, #0xd4]
+#endif
 	ldrb r0, [r2, r0]
 	cmp r0, #1
 	bne _022E235C
@@ -715,11 +798,26 @@ _022E2368:
 	ldr r0, [r7]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r5, [r0, #0xb24]
+#else
 	ldr r5, [r0, #0xbc8]
+#endif
 	mov r0, r5
 	bl EntityIsValid__022E1A1C
 	cmp r0, #0
 	bne _022E23FC
+#ifdef JAPAN
+	mov r1, #3
+	str r1, [r5]
+	ldr r0, _022E2410 ; =DUNGEON_PTR
+	mov r1, #6
+	ldr r0, [r0]
+	mov r2, #0
+	add r0, r0, #0x19c
+	add r0, r0, #0x3c00
+	mla r0, r4, r1, r0
+#else
 	ldr r0, _022E2410 ; =DUNGEON_PTR
 	mov r1, #3
 	str r1, [r5]
@@ -727,10 +825,13 @@ _022E2368:
 	mov r0, #6
 	add r1, r1, #0x3e40
 	mla r0, r4, r0, r1
+#endif
 	str r0, [r5, #0xb4]
 	ldrh r0, [r6]
 	mov r1, #0x18
+#ifndef JAPAN
 	mov r2, #0
+#endif
 	strh r0, [r5, #4]
 	ldrh r3, [r6, #2]
 	mov r0, r5
@@ -774,7 +875,11 @@ ov29_022E2418: ; 0x022E2418
 	ldr r0, [r0]
 	mov r2, #0
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xd24]
+#else
 	ldr r0, [r0, #0xdc8]
+#endif
 	str r1, [r0]
 	str r2, [r0, #0x1c]
 	strb r2, [r0, #0x22]
@@ -823,7 +928,11 @@ _022E24C0:
 	ldr r2, [r5, #0xb4]
 	ldr r0, [r0]
 	ldrb r1, [r2, #6]
+#ifdef JAPAN
+	add r0, r0, #0x178
+#else
 	add r0, r0, #0x21c
+#endif
 	add r4, r0, #0x1a000
 	ldr r0, [r4, #0x10]
 	cmp r1, #0
@@ -868,6 +977,11 @@ _022E2570: .word DUNGEON_PTR
 
 	arm_func_start ShouldDisplayEntity
 ShouldDisplayEntity: ; 0x022E2574
+#ifdef JAPAN
+#define SHOULD_DISPLAY_ENTITY -0xA4
+#else
+#define SHOULD_DISPLAY_ENTITY 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldrb r5, [r0, #0x20]
 	cmp r5, #0
@@ -914,7 +1028,7 @@ _022E2600:
 	addle r2, r6, #0xc0
 	cmple r7, r2
 	bgt _022E271C
-	add r2, r4, #0x21c
+	add r2, r4, #0x21c + SHOULD_DISPLAY_ENTITY
 	cmp lr, #6
 	add r6, r2, #0x1a000
 	addls pc, pc, lr, lsl #2
@@ -945,7 +1059,7 @@ _022E267C:
 	moveq r0, #1
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	add r2, r4, #0x1a000
-	ldrb r2, [r2, #0x244]
+	ldrb r2, [r2, #0x244 + SHOULD_DISPLAY_ENTITY]
 	cmp r2, #0
 	ldreqb r2, [r3, #0xef]
 	cmpeq r2, #1
@@ -971,7 +1085,7 @@ _022E26DC:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _022E26F0:
 	add r0, r4, #0x1a000
-	ldrb r0, [r0, #0x244]
+	ldrb r0, [r0, #0x244 + SHOULD_DISPLAY_ENTITY]
 	cmp r0, #0
 	cmpeq r5, #0
 	bne _022E2714
@@ -1174,6 +1288,11 @@ CanTargetPosition: ; 0x022E2954
 
 	arm_func_start ov29_022E2978
 ov29_022E2978: ; 0x022E2978
+#ifdef JAPAN
+#define OV29_022E2978_OFFSET -0xA4
+#else
+#define OV29_022E2978_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, #0
 	ldr r6, _022E2A34 ; =DUNGEON_PTR
@@ -1182,7 +1301,7 @@ _022E2988:
 	ldr r0, [r6]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb28]
+	ldr r7, [r0, #0xb28 + OV29_022E2978_OFFSET]
 	mov r0, r7
 	bl EntityIsValid__022E1A1C
 	cmp r0, #0
@@ -1190,7 +1309,7 @@ _022E2988:
 	add r4, r4, #1
 	addne r0, r0, r5, lsl #2
 	addne r0, r0, #0x12000
-	strne r7, [r0, #0xb78]
+	strne r7, [r0, #0xb78 + OV29_022E2978_OFFSET]
 	addne r5, r5, #1
 	cmp r4, #4
 	blt _022E2988
@@ -1200,7 +1319,7 @@ _022E29CC:
 	ldr r0, [r6]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb38]
+	ldr r7, [r0, #0xb38 + OV29_022E2978_OFFSET]
 	mov r0, r7
 	bl EntityIsValid__022E1A1C
 	cmp r0, #0
@@ -1208,7 +1327,7 @@ _022E29CC:
 	add r4, r4, #1
 	addne r0, r0, r5, lsl #2
 	addne r0, r0, #0x12000
-	strne r7, [r0, #0xb78]
+	strne r7, [r0, #0xb78 + OV29_022E2978_OFFSET]
 	addne r5, r5, #1
 	cmp r4, #0x10
 	blt _022E29CC
@@ -1219,7 +1338,7 @@ _022E2A14:
 	ldr r0, [r1]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	str r2, [r0, #0xb78]
+	str r2, [r0, #0xb78 + OV29_022E2978_OFFSET]
 	add r5, r5, #1
 _022E2A28:
 	cmp r5, #0x14
@@ -1238,7 +1357,11 @@ GetTeamMemberIndex: ; 0x022E2A38
 _022E2A48:
 	add r1, r3, r2, lsl #2
 	add r1, r1, #0x12000
+#ifdef JAPAN
+	ldr r1, [r1, #0xa84]
+#else
 	ldr r1, [r1, #0xb28]
+#endif
 	cmp r0, r1
 	moveq r0, r2
 	bxeq lr
@@ -1281,7 +1404,11 @@ _022E2ABC:
 	bl strcpy
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+_022E2AD4: .word 0x00000B42
+#else
 _022E2AD4: .word 0x00000A42
+#endif
 	arm_func_end ov29_022E2A78
 
 	arm_func_start SubstitutePlaceholderStringTags
@@ -1326,7 +1453,11 @@ _022E2B50:
 	str r0, [r1, #0x38]
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef JAPAN
+_022E2B64: .word 0x00000B42
+#else
 _022E2B64: .word 0x00000A42
+#endif
 	arm_func_end SubstitutePlaceholderStringTags
 
 #ifdef EUROPE
@@ -1362,7 +1493,11 @@ ov29_022E2B68: ; 0x022E2B68
 	movs r5, r0
 	ldr r2, [r1]
 	mov r1, #0
+#ifdef JAPAN
+	add r0, r2, #0x178
+#else
 	add r0, r2, #0x21c
+#endif
 	add r4, r0, #0x1a000
 	strh r1, [r4, #8]
 	ldr r0, _022E2C60 ; =0x0001A21C
@@ -1413,7 +1548,11 @@ _022E2BF4:
 	ldr r0, _022E2C5C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x28000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x624]
+#else
 	ldrb r0, [r0, #0x6c8]
+#endif
 	ands r0, r0, #3
 	strb r0, [r4, #0x21]
 	moveq r0, #1
@@ -1431,7 +1570,11 @@ ov29_022E2C6C: ; 0x022E2C6C
 	ldr r0, _022E2C9C ; =DUNGEON_PTR
 	mvn r1, #0
 	ldr r0, [r0]
+#ifdef JAPAN
+	add r0, r0, #0x178
+#else
 	add r0, r0, #0x21c
+#endif
 	add r0, r0, #0x1a000
 	strh r1, [r0, #0x3c]
 	strh r1, [r0, #0x3e]
@@ -1453,7 +1596,11 @@ ov29_022E2CA0: ; 0x022E2CA0
 	ldr r0, _022E2D38 ; =0x0001A21C
 	ldrsh r1, [r4]
 	ldrsh r2, [r3, r0]
+#ifdef JAPAN
+	add r0, r3, #0x178
+#else
 	add r0, r3, #0x21c
+#endif
 	add r5, r0, #0x1a000
 	sub r0, r2, r1
 	ldr r6, [r5, #0x10]
@@ -1498,7 +1645,11 @@ ov29_022E2D3C: ; 0x022E2D3C
 	ldr r0, _022E2DD4 ; =0x0001A21C
 	ldrsh r1, [r4]
 	ldrsh r2, [r3, r0]
+#ifdef JAPAN
+	add r0, r3, #0x178
+#else
 	add r0, r3, #0x21c
+#endif
 	add r5, r0, #0x1a000
 	sub r0, r2, r1
 	ldr r6, [r5, #0x10]
@@ -1531,9 +1682,14 @@ _022E2DC8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022E2DD0: .word DUNGEON_PTR
+#ifdef JAPAN
+_022E2DD4: .word 0x0001A178
+#else
 _022E2DD4: .word 0x0001A21C
+#endif
 	arm_func_end ov29_022E2D3C
 
+#ifndef JAPAN
 	arm_func_start UpdateMapSurveyorFlag
 UpdateMapSurveyorFlag: ; 0x022E2DD8
 #ifdef EUROPE
@@ -1569,6 +1725,7 @@ UpdateMapSurveyorFlag: ; 0x022E2DD8
 	.align 2, 0
 _022E2DF8: .word DUNGEON_PTR
 	arm_func_end UpdateMapSurveyorFlag
+#endif
 
 	arm_func_start ov29_022E2DFC
 ov29_022E2DFC: ; 0x022E2DFC
@@ -1576,7 +1733,11 @@ ov29_022E2DFC: ; 0x022E2DFC
 	ldr r1, _022E2E50 ; =DUNGEON_PTR
 	cmp r0, #0
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0x178
+#else
 	add r1, r1, #0x21c
+#endif
 	add r1, r1, #0x1a000
 	str r0, [r1, #0x10]
 	moveq r0, #0
@@ -1605,7 +1766,11 @@ PointCameraToMonster: ; 0x022E2E54
 	mov r4, r1
 	ldr r1, [r2]
 	cmp r0, #0
+#ifdef JAPAN
+	add r1, r1, #0x178
+#else
 	add r1, r1, #0x21c
+#endif
 	add r2, r1, #0x1a000
 	moveq r1, #0
 	streqb r1, [r2, #0x2f]
@@ -1634,6 +1799,11 @@ _022E2EC0: .word DUNGEON_PTR
 
 	arm_func_start UpdateCamera
 UpdateCamera: ; 0x022E2EC4
+#ifdef JAPAN
+#define UPDATE_CAMERA_OFFSET -0xA4
+#else
+#define UPDATE_CAMERA_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	ldr r1, _022E32DC ; =DUNGEON_PTR
@@ -1641,7 +1811,7 @@ UpdateCamera: ; 0x022E2EC4
 	ldr r0, [r1]
 	cmp r0, #0
 	beq _022E32D4
-	add r0, r0, #0x21c
+	add r0, r0, #0x21c + UPDATE_CAMERA_OFFSET
 	add r4, r0, #0x1a000
 	ldr r5, [r4, #0x10]
 	cmp r5, #0
@@ -1772,7 +1942,7 @@ _022E30A8:
 	ldreq r0, _022E32DC ; =DUNGEON_PTR
 	ldreq r0, [r0]
 	addeq r0, r0, #0x2c000
-	ldreqb r0, [r0, #0xb10]
+	ldreqb r0, [r0, #0xb10 + UPDATE_CAMERA_OFFSET]
 	cmpeq r0, #0
 	beq _022E3108
 	bl ov29_023047DC
@@ -1781,7 +1951,7 @@ _022E30A8:
 	ldr r0, [r0]
 	mov r7, #1
 	add r0, r0, #0x2c000
-	strb r1, [r0, #0xb10]
+	strb r1, [r0, #0xb10 + UPDATE_CAMERA_OFFSET]
 _022E3108:
 	mov r0, r5
 	ldrb r8, [r4, #0x28]
@@ -1877,7 +2047,7 @@ _022E3250:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb78]
+	ldr r7, [r0, #0xb78 + UPDATE_CAMERA_OFFSET]
 	mov r0, r7
 	bl EntityIsValid__022E32E8
 	cmp r0, #0
@@ -1898,7 +2068,7 @@ _022E3298:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r6, [r0, #0xbc8]
+	ldr r6, [r0, #0xbc8 + UPDATE_CAMERA_OFFSET]
 	mov r0, r6
 	bl EntityIsValid__022E32E8
 	cmp r0, #0

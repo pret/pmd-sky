@@ -39837,7 +39837,9 @@ _022FD540:
 	ldr r1, [sl, #0x1c]
 	add r1, r2, r1
 	str r1, [sp, #0x10]
+#ifndef JAPAN
 	ldrsh r1, [r0, #0xe6]
+#endif
 	ldr r6, [sl, #0x144]
 	ldr r5, [sl, #0x148]
 #ifdef JAPAN
@@ -65485,8 +65487,8 @@ ov11_02312264: ; 0x02312264
 	ldr r0, [r0, #4]
 	mov r2, #0
 	add r0, r0, #0xf4
-#endif
 	bl SetAnimDataFields2
+#endif
 	bl ov11_02312398
 	mov r0, #1
 	ldmia sp!, {r3, pc}

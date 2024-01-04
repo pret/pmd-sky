@@ -16,10 +16,17 @@ DoMoveRebound: ; 0x0232C524
 DoMoveSwitchPositions: ; 0x0232C538
 	stmdb sp!, {r3, lr}
 	ldr r3, [r0, #0xb4]
+#ifdef JAPAN
+	ldrb r2, [r3, #0x107]
+	cmp r2, #1
+	movlo r2, #1
+	strlob r2, [r3, #0x107]
+#else
 	ldrb r2, [r3, #0x108]
 	cmp r2, #1
 	movlo r2, #1
 	strlob r2, [r3, #0x108]
+#endif
 	mov r2, #1
 	bl TrySwitchPlace
 	mov r0, #1
@@ -79,7 +86,11 @@ _0232C604:
 	ldr r0, [r4]
 	add r0, r0, r8, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xa84]
+#else
 	ldr r7, [r0, #0xb28]
+#endif
 	mov r0, r7
 	bl EntityIsValidMoveEffects__0232C500
 	cmp r0, #0
@@ -112,9 +123,15 @@ _0232C66C:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _0232C698
 _0232C688:
+#ifdef JAPAN
+	ldr r2, _0232DAF8 ; =0x00000C42
+	mov r0, sl
+	mov r1, sb
+#else
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0xf00
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _0232C698:
 	bl ov29_022E8104
@@ -124,7 +141,12 @@ _0232C698:
 	.align 2, 0
 _0232C6A8: .word BAG_ITEMS_PTR_MIRROR
 _0232C6AC: .word DUNGEON_PTR
+#ifdef JAPAN
+_0232C6B0: .word 0x00000C41
+_0232DAF8: .word 0x00000C42
+#else
 _0232C6B0: .word 0x00000EFF
+#endif
 	arm_func_end DoMoveCleanse
 
 	arm_func_start DoMoveSiesta
@@ -377,8 +399,13 @@ _0232CA04:
 	mov r0, fp
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0232CA0C: .word 0x00000C44
+_0232CA10: .word 0x00000C43
+#else
 _0232CA0C: .word 0x00000F02
 _0232CA10: .word 0x00000F01
+#endif
 	arm_func_end DoMoveTransfer
 
 	arm_func_start DoMoveSlowDown
@@ -466,8 +493,13 @@ _0232CAF4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232CAFC: .word DUNGEON_PTR
+#ifdef JAPAN
+_0232CB00: .word 0x00000C46
+_0232CB04: .word 0x00000C45
+#else
 _0232CB00: .word 0x00000F04
 _0232CB04: .word 0x00000F03
+#endif
 	arm_func_end DoMoveEscape
 
 	arm_func_start DoMoveDrought
@@ -518,7 +550,11 @@ _0232CB94:
 	ldrb r2, [r4, #7]
 	ldr r0, [r0]
 	mov r1, #0x1c
+#ifdef JAPAN
+	add r0, r0, #0x244
+#else
 	add r0, r0, #0x2e8
+#endif
 	add r0, r0, #0xec00
 	mla r0, r2, r1, r0
 	ldrsh r3, [r0, #2]
@@ -595,11 +631,16 @@ _0232CCA8:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0232CCB0: .word 0x00000F07
+#ifdef JAPAN
+#define DO_MOVE_TRAP_BUSTER_OFFSET -0x2Be
+#else
+#define DO_MOVE_TRAP_BUSTER_OFFSET 0
+#endif
+_0232CCB0: .word 0x00000F07 + DO_MOVE_TRAP_BUSTER_OFFSET
 _0232CCB4: .word DUNGEON_PTR
 _0232CCB8: .word ov29_02352B38
-_0232CCBC: .word 0x00000F05
-_0232CCC0: .word 0x00000F06
+_0232CCBC: .word 0x00000F05 + DO_MOVE_TRAP_BUSTER_OFFSET
+_0232CCC0: .word 0x00000F06 + DO_MOVE_TRAP_BUSTER_OFFSET
 	arm_func_end DoMoveTrapBuster
 
 	arm_func_start DoMoveWildCall
@@ -616,11 +657,19 @@ DoMoveWildCall: ; 0x0232CCC4
 	movne r5, #0x10
 	ldrne r0, [r0]
 	moveq r5, #4
+#ifdef JAPAN
+	addne r0, r0, #0x294
+#else
 	addne r0, r0, #0x338
+#endif
 	ldreq r0, _0232CD88 ; =DUNGEON_PTR
 	mov fp, #1
 	ldreq r0, [r0]
+#ifdef JAPAN
+	addeq r0, r0, #0x284
+#else
 	addeq r0, r0, #0x328
+#endif
 	add r7, r0, #0x12800
 	b _0232CD60
 _0232CD10:
@@ -659,7 +708,11 @@ _0232CD80:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0232CD88: .word DUNGEON_PTR
+#ifdef JAPAN
+_0232CD8C: .word 0x00000C4A
+#else
 _0232CD8C: .word 0x00000F08
+#endif
 	arm_func_end DoMoveWildCall
 
 	arm_func_start DoMoveInvisify
@@ -747,7 +800,11 @@ DoMoveReviver: ; 0x0232CE7C
 	mov r0, #0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0232CE90: .word 0x00000C4B
+#else
 _0232CE90: .word 0x00000F09
+#endif
 	arm_func_end DoMoveReviver
 
 	arm_func_start DoMoveShocker
@@ -925,10 +982,17 @@ _0232D0D0:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0232D0E0: .word 0x00000C4D
+_0232D0E4: .word DIRECTIONS_XY
+_0232D0E8: .word ov29_0235171E
+_0232D0EC: .word 0x00000C4C
+#else
 _0232D0E0: .word 0x00000F0B
 _0232D0E4: .word DIRECTIONS_XY
 _0232D0E8: .word ov29_0235171E
 _0232D0EC: .word 0x00000F0A
+#endif
 	arm_func_end DoMoveFillIn
 
 	arm_func_start DoMoveTrapper
@@ -939,8 +1003,13 @@ DoMoveTrapper: ; 0x0232D0F0
 	bl ov29_022ED868
 	cmp r0, #0
 	bne _0232D11C
+#ifdef JAPAN
+	mov r0, r5
+	mov r1, #0xbc0
+#else
 	ldr r1, _0232D144 ; =0x00000E7E
 	mov r0, r5
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -956,7 +1025,9 @@ _0232D11C:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifndef JAPAN
 _0232D144: .word 0x00000E7E
+#endif
 	arm_func_end DoMoveTrapper
 
 	arm_func_start DoMoveItemize
@@ -999,7 +1070,11 @@ _0232D1CC:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0232D1D4: .word 0x00000C4E
+#else
 _0232D1D4: .word 0x00000F0C
+#endif
 _0232D1D8: .word 0x00000257
 	arm_func_end DoMoveItemize
 
@@ -1180,7 +1255,11 @@ DoMoveGuardSwap: ; 0x0232D378
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0232D3D4: .word 0x00002495
+#else
 _0232D3D4: .word 0x00000F2E
+#endif
 	arm_func_end DoMoveGuardSwap
 
 	arm_func_start DoMoveHealOrder
@@ -1291,15 +1370,25 @@ _0232D4FC:
 	ldrsh r3, [r1]
 	ldr r1, [r0]
 	mov r0, #1
+#ifdef JAPAN
+	add r2, r1, #0xcc00
+	mov r1, #0
+	strh r3, [r2, #0x36]
+#else
 	add r2, r1, #0xcd00
 	mov r1, #0
 	strh r3, [r2, #0x3a]
+#endif
 	bl TryActivateWeather
 _0232D548:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0232D550: .word 0x00000C14
+#else
 _0232D550: .word 0x00000ED2
+#endif
 _0232D554: .word SPATK_STAT_IDX
 _0232D558: .word WEATHER_MOVE_TURN_COUNT
 _0232D55C: .word DUNGEON_PTR
@@ -1514,7 +1603,11 @@ DoMoveGyroBall: ; 0x0232D7F8
 	mov r8, r0
 	ldr ip, [r8, #0xb4]
 	mov r7, r1
+#ifdef JAPAN
+	ldr ip, [ip, #0x10c]
+#else
 	ldr ip, [ip, #0x110]
+#endif
 	mov r6, r2
 	cmp ip, #0
 	mov r5, r3
@@ -1536,7 +1629,11 @@ _0232D830:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0232D85C: .word 0x00000C4F
+#else
 _0232D85C: .word 0x00000F0D
+#endif
 	arm_func_end DoMoveGyroBall
 
 	arm_func_start DoMoveShadowForce
@@ -1582,7 +1679,11 @@ _0232D8EC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0232D8F4: .word SHADOW_FORCE_DAMAGE_MULTIPLIER
+#ifdef JAPAN
+_0232D8F8: .word 0x00000A17
+#else
 _0232D8F8: .word 0x00000CD7
+#endif
 	arm_func_end DoMoveShadowForce
 
 	arm_func_start DoMoveGravity
@@ -1595,6 +1696,19 @@ DoMoveGravity: ; 0x0232D8FC
 
 	arm_func_start DoMoveStealthRock
 DoMoveStealthRock: ; 0x0232D90C
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, lr}
+	mov r6, r0
+	ldr r0, [r6, #0xb4]
+	mov r5, r1
+	ldrb r0, [r0, #6]
+	mov r4, #0
+	mov r1, #0x14
+	cmp r0, #0
+	movne r2, #2
+	moveq r2, #1
+	add r0, r6, #4
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	ldr r0, [r7, #0xb4]
@@ -1610,6 +1724,7 @@ DoMoveStealthRock: ; 0x0232D90C
 	mov r2, r5
 	add r0, r7, #4
 	mov r1, #0x14
+#endif
 	mov r3, #0
 	bl TrySpawnTrap
 	cmp r0, #0
@@ -1617,15 +1732,26 @@ DoMoveStealthRock: ; 0x0232D90C
 	bne _0232D96C
 _0232D95C:
 	ldr r2, _0232D978 ; =0x00000EEF
+#ifdef JAPAN
+	mov r0, r6
+	mov r1, r5
+#else
 	mov r0, r7
 	mov r1, r6
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _0232D96C:
 	bl UpdateTrapsVisibility
 	mov r0, r4
+#ifdef JAPAN
+	ldmia sp!, {r4, r5, r6, pc}
+	.align 2, 0
+_0232D978: .word 0x00000C31
+#else
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0232D978: .word 0x00000EEF
+#endif
 	arm_func_end DoMoveStealthRock
 
 	arm_func_start DoMoveChargeBeam
@@ -1675,11 +1801,13 @@ DoMoveDamageEatItem: ; 0x0232D9E4
 	mov r0, r5
 	bl ov29_022E34A8_EU
 #else
+#ifndef JAPAN
 	ldr r0, _0232DACC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	bne _0232DAC4
+#endif
 	cmp r5, #0
 	moveq r0, #0
 	beq _0232DA3C
@@ -1731,7 +1859,7 @@ _0232DAC4:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-#ifndef EUROPE
+#if !defined(EUROPE) && !defined(JAPAN)
 _0232DACC: .word DUNGEON_PTR
 #endif
 	arm_func_end DoMoveDamageEatItem
@@ -1776,9 +1904,15 @@ DoMoveAcupressure: ; 0x0232DAD0
 	mov r1, r4
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
+#ifdef JAPAN
+	mov r0, r5
+	mov r1, r4
+	mov r2, #0xc50
+#else
 	ldr r2, _0232DC48 ; =0x00000F0E
 	mov r0, r5
 	mov r1, r4
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _0232DC38
 _0232DB7C:
@@ -1829,9 +1963,15 @@ _0232DC18:
 	mov r1, r4
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
+#ifdef JAPAN
+	mov r0, r5
+	mov r1, r4
+	mov r2, #0xc50
+#else
 	ldr r2, _0232DC48 ; =0x00000F0E
 	mov r0, r5
 	mov r1, r4
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _0232DC38:
 	mov r0, #1
@@ -1839,7 +1979,9 @@ _0232DC38:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0232DC44: .word ov29_02352B3C
+#ifndef JAPAN
 _0232DC48: .word 0x00000F0E
+#endif
 _0232DC4C: .word ATK_STAT_IDX
 _0232DC50: .word SPATK_STAT_IDX
 	arm_func_end DoMoveAcupressure
@@ -1854,6 +1996,19 @@ DoMoveMagnetRise: ; 0x0232DC54
 
 	arm_func_start DoMoveToxicSpikes
 DoMoveToxicSpikes: ; 0x0232DC64
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, lr}
+	mov r6, r0
+	ldr r0, [r6, #0xb4]
+	mov r5, r1
+	ldrb r0, [r0, #6]
+	mov r4, #0
+	mov r1, #0x15
+	cmp r0, #0
+	movne r2, #2
+	moveq r2, #1
+	add r0, r6, #4
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	ldr r0, [r7, #0xb4]
@@ -1869,6 +2024,7 @@ DoMoveToxicSpikes: ; 0x0232DC64
 	mov r2, r5
 	add r0, r7, #4
 	mov r1, #0x15
+#endif
 	mov r3, #1
 	bl TrySpawnTrap
 	cmp r0, #0
@@ -1876,15 +2032,26 @@ DoMoveToxicSpikes: ; 0x0232DC64
 	bne _0232DCC4
 _0232DCB4:
 	ldr r2, _0232DCD0 ; =0x00000EEF
+#ifdef JAPAN
+	mov r0, r6
+	mov r1, r5
+#else
 	mov r0, r7
 	mov r1, r6
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _0232DCC4:
 	bl UpdateTrapsVisibility
 	mov r0, r4
+#ifdef JAPAN
+	ldmia sp!, {r4, r5, r6, pc}
+	.align 2, 0
+_0232DCD0: .word 0x00000C31
+#else
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0232DCD0: .word 0x00000EEF
+#endif
 	arm_func_end DoMoveToxicSpikes
 
 	arm_func_start DoMoveLastResort
@@ -1916,7 +2083,11 @@ _0232DD10:
 	str r5, [sp]
 	bl DealDamage
 	cmp r0, #0
+#ifdef JAPAN
+	moveq r4, #1
+#else
 	movgt r4, #1
+#endif
 	b _0232DD64
 _0232DD44:
 	mov r1, r7
@@ -1933,7 +2104,11 @@ _0232DD64:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0232DD70: .word LAST_RESORT_DAMAGE_MULT_TABLE
+#ifdef JAPAN
+_0232DD74: .word 0x00000BFE
+#else
 _0232DD74: .word 0x00000EBC
+#endif
 	arm_func_end DoMoveLastResort
 
 	arm_func_start DoMoveTrickRoom
@@ -1960,11 +2135,16 @@ DoMoveDamage__0232DD88: ; 0x0232DD88
 	arm_func_start DoMoveWorrySeed
 DoMoveWorrySeed: ; 0x0232DDAC
 	stmdb sp!, {r4, r5, r6, lr}
+#ifndef JAPAN
 	mov r4, #1
 	mov r3, r4
+#endif
 	mov r2, #0x2a
 	mov r6, r0
 	mov r5, r1
+#ifdef JAPAN
+	mov r4, #1
+#endif
 	bl DefenderAbilityIsActiveMoveEffects__0232DE20
 	cmp r0, #0
 	beq _0232DE00
@@ -1990,7 +2170,11 @@ _0232DE14:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0232DE1C: .word 0x00000C55
+#else
 _0232DE1C: .word 0x00000F13
+#endif
 	arm_func_end DoMoveWorrySeed
 
 	arm_func_start DefenderAbilityIsActiveMoveEffects__0232DE20
@@ -2010,7 +2194,9 @@ DefenderAbilityIsActiveMoveEffects__0232DE20: ; 0x0232DE20
 	and r1, r1, #0xff
 _0232DE54:
 	cmp r1, #0
+#ifndef JAPAN
 	cmpne r3, #0
+#endif
 	beq _0232DE74
 	mov r1, #0x53
 	bl AbilityIsActiveVeneer
@@ -2113,7 +2299,11 @@ DoMoveHeartSwap: ; 0x0232DF38
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0232DFC4: .word 0x00002496
+#else
 _0232DFC4: .word 0x00000F2F
+#endif
 	arm_func_end DoMoveHeartSwap
 
 	arm_func_start DoMoveRoost
@@ -2167,7 +2357,11 @@ _0232E070:
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _0232E07C: .word ROOST_HP_RESTORATION_TABLE
+#ifdef JAPAN
+_0232E080: .word 0x00000A09
+#else
 _0232E080: .word 0x00000CC9
+#endif
 	arm_func_end DoMoveRoost
 
 	arm_func_start DoMovePowerSwap
@@ -2196,7 +2390,11 @@ DoMovePowerSwap: ; 0x0232E084
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0232E0E0: .word 0x00002492
+#else
 _0232E0E0: .word 0x00000F2B
+#endif
 	arm_func_end DoMovePowerSwap
 
 	arm_func_start DoMovePowerTrick

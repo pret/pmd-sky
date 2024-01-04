@@ -65,8 +65,13 @@ _022FCA60:
 	ldreq r0, [r0]
 	ldrnesh r8, [r4, #6]
 	addeq r0, r0, #0xcc00
+#ifdef JAPAN
+	ldreqsh sb, [r0, #0x3c]
+	ldreqsh r8, [r0, #0x3e]
+#else
 	ldreqsh sb, [r0, #0xe0]
 	ldreqsh r8, [r0, #0xe2]
+#endif
 	mov r0, sb
 	mov r1, r8
 	bl GetTile
@@ -244,7 +249,11 @@ _022FCD14:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xa84]
+#else
 	ldr r6, [r0, #0xb28]
+#endif
 	mov r0, r6
 	bl EntityIsValid__022FC99C
 	cmp r0, #0
@@ -329,7 +338,11 @@ _022FCE34:
 	ldr r1, [r0]
 	mov r0, #0x38
 	add r1, r1, #0x3000
+#ifdef JAPAN
+	strb r2, [r1, #0xd95]
+#else
 	strb r2, [r1, #0xe39]
+#endif
 	bl DungeonRandInt
 	mov r6, r0
 	mov r0, #0x20
@@ -431,8 +444,13 @@ _022FCFB4:
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0
+#ifdef JAPAN
+	add r1, r1, #0x3c
+	add r1, r1, #0xcc00
+#else
 	add r1, r1, #0xce0
 	add r1, r1, #0xc000
+#endif
 	bl FindFarthestUnoccupiedTileWithin2
 	cmp r0, #0
 	ldrnesh r1, [sp]
@@ -446,8 +464,13 @@ _022FCFEC:
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0
+#ifdef JAPAN
+	add r1, r1, #0x3c
+	add r1, r1, #0xcc00
+#else
 	add r1, r1, #0xce0
 	add r1, r1, #0xc000
+#endif
 	bl FindClosestUnoccupiedTileWithin2
 	cmp r0, #0
 	ldrnesh r1, [sp]
@@ -488,6 +511,11 @@ _022FD080: .word DUNGEON_PTR
 
 	arm_func_start SpawnMonster
 SpawnMonster: ; 0x022FD084
+#ifdef JAPAN
+#define SPAWN_MONSTER_OFFSET -0xA4
+#else
+#define SPAWN_MONSTER_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
 	mov r7, r0
@@ -549,7 +577,7 @@ _022FD154:
 	bhi _022FD194
 	add r0, r5, #0xe
 	str r0, [sp]
-	add r0, r5, #0x124
+	add r0, r5, #0x124 + SPAWN_MONSTER_OFFSET
 	add r1, r5, #0x12
 	add r2, r5, #0x1a
 	add r3, r5, #0x1c
@@ -560,7 +588,7 @@ _022FD154:
 	b _022FD1F0
 _022FD194:
 	ldrsh r2, [r5, #2]
-	add r0, r5, #0x124
+	add r0, r5, #0x124 + SPAWN_MONSTER_OFFSET
 	add r1, r5, #0x12
 	str r2, [sp]
 	ldrb ip, [r5, #0xa]
@@ -630,7 +658,7 @@ _022FD278:
 	strh r1, [r5, #0x10]
 	ldr r1, [r7, #4]
 	mov r0, r4
-	str r1, [r5, #0x120]
+	str r1, [r5, #0x120 + SPAWN_MONSTER_OFFSET]
 	mov r1, #1
 	bl ov29_022FB83C
 	ldrb r0, [r7, #2]
@@ -660,7 +688,11 @@ _022FD2F8:
 	.align 2, 0
 _022FD300: .word ov29_0237C690
 _022FD304: .word DUNGEON_PTR
+#ifdef JAPAN
+_022FD308: .word 0x0002CA64
+#else
 _022FD308: .word 0x0002CB08
+#endif
 _022FD30C: .word ov10_022C45A4
 _022FD310: .word 0x000003E7
 _022FD314: .word ov10_022C489C
@@ -713,6 +745,11 @@ _022FD3AC:
 
 	arm_func_start InitTeamMember
 InitTeamMember: ; 0x022FD3B4
+#ifdef JAPAN
+#define INIT_TEAM_MEMBER_OFFSET -4
+#else
+#define INIT_TEAM_MEMBER_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x14
 	mov r5, r3
@@ -737,8 +774,13 @@ InitTeamMember: ; 0x022FD3B4
 	cmp r0, #0
 	ldrne r0, _022FD780 ; =DUNGEON_PTR
 	ldrne r0, [r0]
+#ifdef JAPAN
+	addne r0, r0, #0x3d00
+	ldrnesh r7, [r0, #0x96]
+#else
 	addne r0, r0, #0x3e00
 	ldrnesh r7, [r0, #0x3a]
+#endif
 	moveq r7, r1
 _022FD420:
 	ldrb r0, [sp, #0x48]
@@ -816,7 +858,7 @@ _022FD520:
 	strb r0, [r1, #0x1c]
 	blt _022FD520
 	add r3, r5, #0x1c
-	add r2, r8, #0x124
+	add r2, r8, #0x124 + INIT_TEAM_MEMBER_OFFSET
 	mov r1, #0x11
 _022FD550:
 	ldrh r0, [r3], #2
@@ -824,7 +866,7 @@ _022FD550:
 	strh r0, [r2], #2
 	bne _022FD550
 	mov r2, #0
-	add r1, r8, #0x124
+	add r1, r8, #0x124 + INIT_TEAM_MEMBER_OFFSET
 	mov sb, r2
 	mov sl, #1
 _022FD570:
@@ -842,13 +884,13 @@ _022FD570:
 	strneb r3, [r1, r0]
 	cmp r2, #4
 	blt _022FD570
-	ldrb r1, [r8, #0x144]
+	ldrb r1, [r8, #0x144 + INIT_TEAM_MEMBER_OFFSET]
 	add r0, r5, #0x4c
 	add sb, r8, #0x90
 	bic r2, r1, #0x10
 	and r1, r2, #0xff
 	bic r1, r1, #0x20
-	strb r1, [r8, #0x144]
+	strb r1, [r8, #0x144 + INIT_TEAM_MEMBER_OFFSET]
 	ldrb r1, [r5, #2]
 	add r3, r8, #0x100
 	mov r6, #0
@@ -869,13 +911,13 @@ _022FD570:
 	ldrb r1, [r5, #4]
 	strb r1, [r8, #0x49]
 	ldrh r1, [r5, #0x44]
-	strh r1, [r3, #0x46]
+	strh r1, [r3, #0x46 + INIT_TEAM_MEMBER_OFFSET]
 	ldrh r1, [r5, #0x46]
-	strh r1, [r3, #0x48]
+	strh r1, [r3, #0x48 + INIT_TEAM_MEMBER_OFFSET]
 	ldrh r1, [r5, #0x48]
-	strh r1, [r3, #0x4a]
+	strh r1, [r3, #0x4a + INIT_TEAM_MEMBER_OFFSET]
 	ldrh r1, [r5, #0x4a]
-	strh r1, [r3, #0x4c]
+	strh r1, [r3, #0x4c + INIT_TEAM_MEMBER_OFFSET]
 	ldrsh r1, [r5, #0xa]
 	strh r1, [r8, #0xc]
 	ldrh r1, [r5, #0x3e]
@@ -885,9 +927,11 @@ _022FD570:
 	ldrh r1, [r5, #0x42]
 	strh r1, [r8, #0x66]
 	strb r6, [r8, #0xfc]
+#ifndef JAPAN
 	strb r6, [r8, #0x103]
-	strb r6, [r8, #0x23c]
-	strb r6, [r8, #0x23d]
+#endif
+	strb r6, [r8, #0x23c + INIT_TEAM_MEMBER_OFFSET]
+	strb r6, [r8, #0x23d + INIT_TEAM_MEMBER_OFFSET]
 	strh r6, [r8, #0x68]
 	bl ov29_023021F0
 	ldrb r1, [sp, #0x44]
@@ -915,7 +959,7 @@ _022FD570:
 	cmp r1, #0
 	movne r0, #0
 	bne _022FD6D8
-	add r0, r2, #0x228
+	add r0, r2, #0x228 + INIT_TEAM_MEMBER_OFFSET
 	mov r1, #0x61
 	bl ExclusiveItemEffectFlagTest
 _022FD6D8:
@@ -977,6 +1021,11 @@ _022FD79C: .word ov10_022C4858
 
 	arm_func_start ov29_022FD7A0
 ov29_022FD7A0: ; 0x022FD7A0
+#ifdef JAPAN
+#define OV29_022FD7A0_OFFSET -4
+#else
+#define OV29_022FD7A0_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x20
 	mov r7, r0
@@ -1054,10 +1103,10 @@ _022FD864:
 	strh r0, [r7, #0xac]
 	ldr r1, [sp, #0xc]
 	ldr r0, [r7, #0xb4]
-	strb r1, [r0, #0x17a]
+	strb r1, [r0, #0x17a + OV29_022FD7A0_OFFSET]
 	ldr r1, [sp, #8]
 	ldr r0, [r7, #0xb4]
-	strb r1, [r0, #0x17b]
+	strb r1, [r0, #0x17b + OV29_022FD7A0_OFFSET]
 	ldrb r0, [r5, #6]
 	cmp r0, #0
 	beq _022FD904
@@ -1098,7 +1147,7 @@ _022FD94C:
 	mov r3, #0
 	bl InitMonster
 	ldrsh r2, [r5, #2]
-	add r0, r5, #0x124
+	add r0, r5, #0x124 + OV29_022FD7A0_OFFSET
 	add r1, r5, #0x12
 	str r2, [sp]
 	ldrb r4, [r5, #0xa]
@@ -1127,6 +1176,15 @@ _022FD9D0: .word 0x000003E7
 
 	arm_func_start InitMonster
 InitMonster: ; 0x022FD9D4
+#ifdef JAPAN
+#define INIT_MONSTER_OFFSET -0xA4
+#define INIT_MONSTER_OFFSET_2 -4
+#define INIT_MONSTER_OFFSET_3 -1
+#else
+#define INIT_MONSTER_OFFSET 0
+#define INIT_MONSTER_OFFSET_2 0
+#define INIT_MONSTER_OFFSET_3 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0xc
 	ldr r4, _022FDDB0 ; =DUNGEON_PTR
@@ -1173,7 +1231,7 @@ InitMonster: ; 0x022FD9D4
 	cmp r0, #0
 	bne _022FDAAC
 	add r0, r1, #0x4000
-	ldrb r0, [r0, #0xc6]
+	ldrb r0, [r0, #0xc6 + INIT_MONSTER_OFFSET]
 	cmp r0, #0
 	beq _022FDAAC
 	ldrb r0, [r6, #2]
@@ -1192,19 +1250,19 @@ _022FDAB4:
 	moveq r1, #1
 	ldreq r0, [r0]
 	addeq r0, r0, #0x3000
-	streqb r1, [r0, #0xe39]
+	streqb r1, [r0, #0xe39 + INIT_MONSTER_OFFSET]
 _022FDAD4:
 	ldr r1, _022FDDB0 ; =DUNGEON_PTR
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x3000
-	ldr r0, [r0, #0xe2c]
+	ldr r0, [r0, #0xe2c + INIT_MONSTER_OFFSET]
 	str r0, [r4, #0xb0]
 	ldr r0, [r1]
 	add r0, r0, #0x3000
-	ldr r1, [r0, #0xe2c]
+	ldr r1, [r0, #0xe2c + INIT_MONSTER_OFFSET]
 	add r1, r1, #1
-	str r1, [r0, #0xe2c]
+	str r1, [r0, #0xe2c + INIT_MONSTER_OFFSET]
 	str r2, [r4, #0xb4]
 	ldrsh r0, [r6, #8]
 	cmp r0, #0
@@ -1215,7 +1273,7 @@ _022FDB18:
 	strb r0, [r4, #0xa]
 	ldr r0, [r6, #4]
 	mov r2, #1
-	str r0, [r4, #0x120]
+	str r0, [r4, #0x120 + INIT_MONSTER_OFFSET_2]
 	strh r2, [r4, #0xe]
 	ldrsh r1, [r4, #2]
 	add r0, r4, #0x90
@@ -1233,9 +1291,9 @@ _022FDB18:
 	ldrh r0, [sp, #4]
 	add r1, r4, #0x100
 	ldrh r2, [sp, #6]
-	strh r0, [r1, #0x46]
+	strh r0, [r1, #0x46 + INIT_MONSTER_OFFSET_2]
 	mov r0, #0x64
-	strh r2, [r1, #0x48]
+	strh r2, [r1, #0x48 + INIT_MONSTER_OFFSET_2]
 	bl sub_02050FF8
 	strh r0, [sp]
 	mov r0, r0, lsr #0x10
@@ -1243,22 +1301,22 @@ _022FDB18:
 	ldrh r2, [sp]
 	add r0, r4, #0x100
 	ldrh r1, [sp, #2]
-	strh r2, [r0, #0x4a]
+	strh r2, [r0, #0x4a + INIT_MONSTER_OFFSET_2]
 	cmp r5, #0
-	strh r1, [r0, #0x4c]
+	strh r1, [r0, #0x4c + INIT_MONSTER_OFFSET_2]
 	ldrneh r1, [r5]
-	strneh r1, [r0, #0x7e]
+	strneh r1, [r0, #0x7e + INIT_MONSTER_OFFSET_2]
 	ldrneh r1, [r5, #2]
 	moveq r1, #0
-	streqh r1, [r0, #0x7e]
-	strh r1, [r0, #0x80]
+	streqh r1, [r0, #0x7e + INIT_MONSTER_OFFSET_2]
+	strh r1, [r0, #0x80 + INIT_MONSTER_OFFSET_2]
 	mov r3, #0
 	strh r3, [r4]
-	strb r3, [r4, #0x14e]
-	strb r3, [r4, #0x14f]
+	strb r3, [r4, #0x14e + INIT_MONSTER_OFFSET_2]
+	strb r3, [r4, #0x14f + INIT_MONSTER_OFFSET_2]
 	add r0, r4, #0x200
-	strh r3, [r0, #0xc]
-	strh r3, [r0, #0xe]
+	strh r3, [r0, #0xc + INIT_MONSTER_OFFSET_2]
+	strh r3, [r0, #0xe + INIT_MONSTER_OFFSET_2]
 	strb r3, [r4, #0x7c]
 	ldrh r2, [r7, #4]
 	mov r0, r4
@@ -1269,67 +1327,67 @@ _022FDB18:
 	str r3, [r4, #0x84]
 	str r3, [r4, #0x88]
 	strh r3, [r4, #0x80]
-	strb r3, [r4, #0x10b]
-	str r3, [r4, #0x188]
-	strb r3, [r4, #0x10c]
-	strb r3, [r4, #0x23c]
-	strb r3, [r4, #0x23d]
-	strb r3, [r4, #0x23f]
+	strb r3, [r4, #0x10b + INIT_MONSTER_OFFSET_3]
+	str r3, [r4, #0x188 + INIT_MONSTER_OFFSET_2]
+	strb r3, [r4, #0x10c + INIT_MONSTER_OFFSET_3]
+	strb r3, [r4, #0x23c + INIT_MONSTER_OFFSET_2]
+	strb r3, [r4, #0x23d + INIT_MONSTER_OFFSET_2]
+	strb r3, [r4, #0x23f + INIT_MONSTER_OFFSET_2]
 	bl SubInitMonster
 	add r0, r4, #0x62
 	bl ItemZInit
 	mov r2, #0
 	strh r2, [r4, #0x68]
-	str r2, [r4, #0x218]
-	str r2, [r4, #0x21c]
+	str r2, [r4, #0x218 + INIT_MONSTER_OFFSET_2]
+	str r2, [r4, #0x21c + INIT_MONSTER_OFFSET_2]
 	mov r0, #0xff
-	strb r0, [r4, #0x177]
-	strb r0, [r4, #0x178]
-	str r2, [r4, #0x214]
-	strb r2, [r4, #0x151]
-	strb r2, [r4, #0x150]
-	strb r2, [r4, #0x179]
+	strb r0, [r4, #0x177 + INIT_MONSTER_OFFSET_2]
+	strb r0, [r4, #0x178 + INIT_MONSTER_OFFSET_2]
+	str r2, [r4, #0x214 + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x151 + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x150 + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x179 + INIT_MONSTER_OFFSET_2]
 	add r0, r4, #0x200
-	strh r2, [r0, #0x10]
-	strh r2, [r0, #0x12]
-	strb r2, [r4, #0x152]
-	strb r2, [r4, #0x153]
+	strh r2, [r0, #0x10 + INIT_MONSTER_OFFSET_2]
+	strh r2, [r0, #0x12 + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x152 + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x153 + INIT_MONSTER_OFFSET_2]
 	add r0, r4, #0x100
-	strh r2, [r0, #0x92]
-	str r2, [r4, #0x18c]
-	strb r2, [r4, #0x105]
-	strb r2, [r4, #0x104]
-	strb r2, [r4, #0x109]
-	strb r2, [r4, #0x155]
+	strh r2, [r0, #0x92 + INIT_MONSTER_OFFSET_2]
+	str r2, [r4, #0x18c + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x105 + INIT_MONSTER_OFFSET_3]
+	strb r2, [r4, #0x104 + INIT_MONSTER_OFFSET_3]
+	strb r2, [r4, #0x109 + INIT_MONSTER_OFFSET_3]
+	strb r2, [r4, #0x155 + INIT_MONSTER_OFFSET_2]
 	mov r1, #1
-	strb r1, [r4, #0x156]
-	strh r2, [r0, #0x58]
-	strh r2, [r0, #0x5a]
-	strb r2, [r4, #0x15c]
-	strb r2, [r4, #0x15d]
-	strb r2, [r4, #0x15e]
-	strb r2, [r4, #0x15f]
-	strb r2, [r4, #0x17c]
-	strb r2, [r4, #0x106]
-	strb r2, [r4, #0x107]
+	strb r1, [r4, #0x156 + INIT_MONSTER_OFFSET_2]
+	strh r2, [r0, #0x58 + INIT_MONSTER_OFFSET_2]
+	strh r2, [r0, #0x5a + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x15c + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x15d + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x15e + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x15f + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x17c + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x106 + INIT_MONSTER_OFFSET_3]
+	strb r2, [r4, #0x107 + INIT_MONSTER_OFFSET_3]
 	mov r0, #0x63
-	strb r0, [r4, #0x10a]
-	strb r2, [r4, #0x162]
-	strb r2, [r4, #0x163]
-	strb r2, [r4, #0x164]
-	strb r2, [r4, #0x165]
-	strb r2, [r4, #0x170]
+	strb r0, [r4, #0x10a + INIT_MONSTER_OFFSET_3]
+	strb r2, [r4, #0x162 + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x163 + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x164 + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x165 + INIT_MONSTER_OFFSET_2]
+	strb r2, [r4, #0x170 + INIT_MONSTER_OFFSET_2]
 	mov r0, r7
-	strb r2, [r4, #0x171]
+	strb r2, [r4, #0x171 + INIT_MONSTER_OFFSET_2]
 	bl CalcSpeedStageWrapper
 	mov r0, #1
-	strb r0, [r4, #0x160]
+	strb r0, [r4, #0x160 + INIT_MONSTER_OFFSET_2]
 	mov r0, #0
-	strb r0, [r4, #0x172]
-	strb r0, [r4, #0x174]
-	strb r0, [r4, #0x173]
-	strb r0, [r4, #0x175]
-	strb r0, [r4, #0x176]
+	strb r0, [r4, #0x172 + INIT_MONSTER_OFFSET_2]
+	strb r0, [r4, #0x174 + INIT_MONSTER_OFFSET_2]
+	strb r0, [r4, #0x173 + INIT_MONSTER_OFFSET_2]
+	strb r0, [r4, #0x175 + INIT_MONSTER_OFFSET_2]
+	strb r0, [r4, #0x176 + INIT_MONSTER_OFFSET_2]
 	ldrsh r1, [r4, #4]
 	cmp r1, #0x32
 	ldrne r0, _022FDDB8 ; =0x0000028A
@@ -1338,7 +1396,7 @@ _022FDB18:
 	addne r0, r0, #1
 	cmpne r1, r0
 	moveq r0, #0
-	streqb r0, [r4, #0x160]
+	streqb r0, [r4, #0x160 + INIT_MONSTER_OFFSET_2]
 	ldr r1, _022FDDBC ; =ov29_0235276C
 	ldr r0, _022FDDB0 ; =DUNGEON_PTR
 	ldrh r3, [r1]
@@ -1352,7 +1410,7 @@ _022FDB18:
 	strh r1, [sp, #8]
 	ldrsh r1, [r7, #6]
 	strh r1, [sp, #0xa]
-	ldrb r3, [r0, #0x23c]
+	ldrb r3, [r0, #0x23c + INIT_MONSTER_OFFSET]
 	ldrsh r1, [r4, #4]
 	ldr r0, [r4, #0xb0]
 	bl ov29_022DDA54
@@ -1364,17 +1422,17 @@ _022FDB18:
 	bl ov29_022FA1D8
 	mov r1, #0
 	strh r1, [r4, #0xac]
-	str r1, [r4, #0x18c]
+	str r1, [r4, #0x18c + INIT_MONSTER_OFFSET_2]
 	add r0, r4, #0x100
-	strh r1, [r0, #0x90]
-	strb r1, [r4, #0x166]
-	strb r1, [r4, #0x167]
-	strb r1, [r4, #0x221]
-	strh r1, [r0, #0x68]
+	strh r1, [r0, #0x90 + INIT_MONSTER_OFFSET_2]
+	strb r1, [r4, #0x166 + INIT_MONSTER_OFFSET_2]
+	strb r1, [r4, #0x167 + INIT_MONSTER_OFFSET_2]
+	strb r1, [r4, #0x221 + INIT_MONSTER_OFFSET_2]
+	strh r1, [r0, #0x68 + INIT_MONSTER_OFFSET_2]
 	mov r2, #0xff
-	add r0, r4, #0x224
+	add r0, r4, #0x224 + INIT_MONSTER_OFFSET_2
 	mov r1, #0x18
-	strb r2, [r4, #0x16a]
+	strb r2, [r4, #0x16a + INIT_MONSTER_OFFSET_2]
 	bl MemZero
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
@@ -1387,6 +1445,11 @@ _022FDDBC: .word ov29_0235276C
 
 	arm_func_start SubInitMonster
 SubInitMonster: ; 0x022FDDC0
+#ifdef JAPAN
+#define SUB_INIT_MONSTER_OFFSET -4
+#else
+#define SUB_INIT_MONSTER_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
 	mov r2, #0
@@ -1429,15 +1492,15 @@ SubInitMonster: ; 0x022FDDC0
 	strb r2, [sl, #0xfa]
 	strb r2, [sl, #0xfb]
 	mov r0, #0xff
-	strb r0, [sl, #0x177]
+	strb r0, [sl, #0x177 + SUB_INIT_MONSTER_OFFSET]
 	mov sb, r1
-	strb r0, [sl, #0x178]
+	strb r0, [sl, #0x178 + SUB_INIT_MONSTER_OFFSET]
 	mov r6, r2
 _022FDE78:
 	add r0, sl, r2
-	strb r6, [r0, #0x114]
+	strb r6, [r0, #0x114 + SUB_INIT_MONSTER_OFFSET]
 	add r2, r2, #1
-	strb r6, [r0, #0x119]
+	strb r6, [r0, #0x119 + SUB_INIT_MONSTER_OFFSET]
 	cmp r2, #5
 	blt _022FDE78
 	mov r8, r6
@@ -1499,17 +1562,28 @@ _022FDF48:
 	mov r1, #1
 	strb r1, [r0, #0xe]
 	strh r2, [sl, #0x30]
-	strb r2, [sl, #0x11e]
+	strb r2, [sl, #0x11e + SUB_INIT_MONSTER_OFFSET]
+#ifdef JAPAN
+	strb r2, [sl, #0x105]
+	strb r2, [sl, #0x11b]
+	strb r2, [sl, #0xfd]
+	strb r2, [sl, #0x107]
+#else
 	strb r2, [sl, #0x106]
 	strb r2, [sl, #0x11f]
 	strb r2, [sl, #0xfd]
 	strb r2, [sl, #0x108]
+#endif
 	strb r2, [sl, #0xfe]
 	strb r2, [sl, #0xff]
 	strb r2, [sl, #0x100]
+#ifdef JAPAN
+	strb r2, [sl, #0x10a]
+#else
 	mov r0, sl
 	strb r2, [sl, #0x10b]
 	bl ov29_02307DC0
+#endif
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022FDF9C: .word CASTFORM_WEATHER_ATTRIBUTE_TABLE
@@ -1518,6 +1592,11 @@ _022FDFA0: .word DUNGEON_PTR
 
 	arm_func_start ov29_022FDFA4
 ov29_022FDFA4: ; 0x022FDFA4
+#ifdef JAPAN
+#define OV29_022FDFA4_OFFSET -4
+#else
+#define OV29_022FDFA4_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, #0
 	mov r4, r7
@@ -1528,7 +1607,11 @@ _022FDFB8:
 	ldr r0, [r0]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r8, [r0, #0xa84]
+#else
 	ldr r8, [r0, #0xb28]
+#endif
 	mov r0, r8
 	bl EntityIsValid__022FC99C
 	cmp r0, #0
@@ -1540,17 +1623,17 @@ _022FDFB8:
 	mov r8, r6
 _022FDFF0:
 	add r0, r1, r8, lsl #3
-	ldrb r0, [r0, #0x124]
+	ldrb r0, [r0, #0x124 + OV29_022FDFA4_OFFSET]
 	tst r0, #1
 	movne r0, r5
 	moveq r0, r4
 	tst r0, #0xff
 	addne r0, r1, r8, lsl #3
 	addne r0, r0, #0x100
-	ldrneh r2, [r0, #0x26]
+	ldrneh r2, [r0, #0x26 + OV29_022FDFA4_OFFSET]
 	add r8, r8, #1
 	bicne r2, r2, #1
-	strneh r2, [r0, #0x26]
+	strneh r2, [r0, #0x26 + OV29_022FDFA4_OFFSET]
 	cmp r8, #4
 	blt _022FDFF0
 	mov r0, r3, lsl #0x10
@@ -1567,6 +1650,11 @@ _022FE044: .word DUNGEON_PTR
 
 	arm_func_start ov29_022FE048
 ov29_022FE048: ; 0x022FE048
+#ifdef JAPAN
+#define OV29_022FE048_OFFSET -4
+#else
+#define OV29_022FE048_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	bl GetActiveTeamMember
@@ -1607,7 +1695,7 @@ _022FE074:
 	ldrls r0, _022FE18C ; =0x000003D3
 	strlsh r0, [r3, #0xc]
 _022FE0E0:
-	add r5, r4, #0x124
+	add r5, r4, #0x124 + OV29_022FE048_OFFSET
 	add r2, r3, #0x1c
 	mov r1, #0x11
 _022FE0EC:
@@ -1631,13 +1719,13 @@ _022FE0EC:
 	strh r0, [r3, #0x5a]
 	ldrh r0, [r4, #0x46]
 	strh r0, [r3, #0x5c]
-	ldrh r0, [ip, #0x46]
+	ldrh r0, [ip, #0x46 + OV29_022FE048_OFFSET]
 	strh r0, [r3, #0x44]
-	ldrh r0, [ip, #0x48]
+	ldrh r0, [ip, #0x48 + OV29_022FE048_OFFSET]
 	strh r0, [r3, #0x46]
-	ldrh r0, [ip, #0x4a]
+	ldrh r0, [ip, #0x4a + OV29_022FE048_OFFSET]
 	strh r0, [r3, #0x48]
-	ldrh r0, [ip, #0x4c]
+	ldrh r0, [ip, #0x4c + OV29_022FE048_OFFSET]
 	strh r0, [r3, #0x4a]
 	ldrh r0, [r4, #0x62]
 	strh r0, [r3, #0x3e]
