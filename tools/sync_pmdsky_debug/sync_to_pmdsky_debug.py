@@ -83,30 +83,20 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
         symbol_type_key = 'functions'
 
     if address in pmdsky_debug_section:
-        # If the address is already defined in pmdsky-debug, replace the old symbol name with the new one in the YAML and header files.
+        # If the address is already defined in pmdsky-debug, add an alias with the new symbol name from the decomp.
         old_symbol = pmdsky_debug_section[address]
-        base_old_symbol_name = get_base_symbol_name(old_symbol.name)
-        if base_old_symbol_name != base_symbol_name:
-            print(f'Replacing {base_old_symbol_name} with {base_symbol_name}')
+        base_old_symbol_names = [get_base_symbol_name(symbol_name) for symbol_name in old_symbol.get_all_names()]
+        base_old_symbol_name = base_old_symbol_names[0]
+        if base_symbol_name not in base_old_symbol_names:
+            print(f'Adding alias for {base_old_symbol_name}: {base_symbol_name}')
             symbol_array = read_symbol_array(symbol_path, symbol_type_key, yaml_manager)
             for yaml_symbol in symbol_array:
                 if yaml_symbol['name'] == base_old_symbol_name:
-                    yaml_symbol['name'] = base_symbol_name
+                    if 'aliases' in yaml_symbol:
+                        yaml_symbol['aliases'].append(base_symbol_name)
+                    else:
+                        yaml_symbol['aliases'] = [base_symbol_name]
                     break
-
-            header_path = old_symbol.file_path.replace(SYMBOLS_FOLDER, os.path.join('headers', symbol_type_key)).replace('.yml', '.h')
-            with open(header_path, 'r') as header_file:
-                header_contents = header_file.read()
-
-            if symbol.is_data:
-                # Match data symbols by looking for either the end-of-line semicolon or array start bracket.
-                header_contents = re.sub(fr' {base_old_symbol_name}([\[;])', fr' {base_symbol_name}\1', header_contents)
-            else:
-                # Match function symbols by looking for the open parentheses syntax.
-                header_contents = header_contents.replace(f' {base_old_symbol_name}(', f' {base_symbol_name}(')
-
-            with open(header_path, 'w') as header_file:
-                header_file.write(header_contents)
         return
 
     matching_symbol_entry = None
