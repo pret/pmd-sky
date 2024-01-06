@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import List
 
 # Some symbol names in the decomp do not match pmdsky-debug because of naming convention differences.
 # Map these symbol names between the two projects to avoid changes when syncing the projects.
@@ -7,39 +8,7 @@ NONMATCHING_SYMBOLS_ARM9 = {
     '_start_AutoloadDoneCallback': 'StartAutoloadDoneCallback',
     '_start_ModuleParams': 'START_MODULE_PARAMS',
     'CRYPTO_RC4Init': 'Crypto_RC4Init',
-    'Debug_FatalError': 'FatalError',
-    'Debug_GetDebugFlag': 'GetDebugFlag',
-    'Debug_GetLogFlag': 'GetDebugLogFlag',
-    'Debug_Init': 'InitDebug',
-    'Debug_InitDebugFlag': 'InitDebugFlag',
-    'Debug_InitLogFlag': 'InitDebugLogFlag',
-    'Debug_Print': 'DebugPrint',
-    'Debug_Print0': 'DebugPrint0',
-    'Debug_PrintTrace': 'DebugPrintTrace',
-    'Debug_SetDebugFlag': 'SetDebugFlag',
-    'Debug_SetLogFlag': 'SetDebugLogFlag',
-    'Debug_Stripped1': 'InitDebugStripped1',
-    'Debug_Stripped2': 'InitDebugStripped2',
-    'Debug_Stripped3': 'InitDebugStripped3',
-    'Debug_Stripped4': 'InitDebugStripped4',
-    'Debug_Stripped5': 'InitDebugStripped5',
-    'Debug_Stripped6': 'InitDebugStripped6',
-    'DIRECTORY_FILE_TABLE': 'PACK_FILE_PATHS_TABLE',
-    'DIRECTORY_FILES_EXTRACTED': 'PACK_FILES_OPENED',
-    'DirectoryFile_ExtractDirectoryFile': 'OpenPackFile',
-    'DirectoryFile_GetDirectoryFileSize': 'GetFileLengthInPack',
-    'DirectoryFile_LoadDirectoryFile': 'LoadFileInPack',
-    'DirectoryFileMngr_ExtractAllDirectoryFiles': 'OpenAllPackFiles',
-    'DirectoryFileMngr_GetDirectoryFileSize': 'GetFileLengthInPackWithPackNb',
-    'DirectoryFileMngr_LoadDirectoryFile': 'LoadFileInPackWithPackId',
-    'DirectoryFileMngr_OpenDirectoryFile': 'AllocAndLoadFileInPack',
     'disableBankForX_': 'DisableBankForX',
-    'FileRom_HandleOpen': 'FileOpen',
-    'FileRom_HandleRead': 'FileRead',
-    'FileRom_HandleSeek': 'FileSeek',
-    'FileRom_InitDataTransfer': 'DataTransferInit',
-    'FileRom_StopDataTransfer': 'DataTransferStop',
-    'FileRom_Veneer_FileInit': 'FileInitVeneer',
     'FX_AtanIdxTable_': 'FX_ATAN_IDX_TABLE',
     'G2x_ChangeBlendBrightness_': 'G2x_ChangeBlendBrightness',
     'G2x_SetBlendAlpha_': 'G2x_SetBlendAlpha',
@@ -137,3 +106,9 @@ class SymbolDetails:
     name: str
     file_path: str
     is_data: bool
+    aliases: List[str] = field(default_factory=list)
+
+    def get_all_names(self) -> List[str]:
+        all_names = [self.name]
+        all_names.extend(self.aliases)
+        return all_names

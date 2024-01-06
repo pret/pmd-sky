@@ -17,7 +17,6 @@ LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG = {value: key for key, value in LANGUAGE_KEYS
 
 # Symbols with duplicate addresses that should be ignored.
 SYMBOL_BLACKLIST = set([
-    'EXCLUSIVE_ITEM_STAT_BOOST_DATA',
     'GAME_STATE_VALUES',
 ])
 
@@ -83,6 +82,11 @@ def read_pmdsky_debug_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]
                     if symbol_name in SYMBOL_BLACKLIST:
                         continue
 
+                    if 'aliases' in symbol:
+                        aliases = symbol['aliases']
+                    else:
+                        aliases = []
+
                     def add_symbol_address(address: int, symbol_details: SymbolDetails):
                         if address in symbols:
                             print(f'Warning: Duplicate symbols found for address {hex(address)}: {symbols[address].name}, {symbol_details.name}')
@@ -91,11 +95,12 @@ def read_pmdsky_debug_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]
                     if isinstance(addresses, list):
                         if len(addresses) > 1:
                             for address in addresses:
-                                add_symbol_address(address, SymbolDetails(f'{symbol_name}__{address:08X}', full_file_path, is_data))
+                                aliases = [f'{alias}__{address:08X}' for alias in aliases]
+                                add_symbol_address(address, SymbolDetails(f'{symbol_name}__{address:08X}', full_file_path, is_data, aliases))
                         else:
-                            add_symbol_address(addresses[0], SymbolDetails(symbol_name, full_file_path, is_data))
+                            add_symbol_address(addresses[0], SymbolDetails(symbol_name, full_file_path, is_data, aliases))
                     else:
-                        add_symbol_address(addresses, SymbolDetails(symbol_name, full_file_path, is_data))
+                        add_symbol_address(addresses, SymbolDetails(symbol_name, full_file_path, is_data, aliases))
 
         read_symbols_from_array('functions', False)
         read_symbols_from_array('data', True)
