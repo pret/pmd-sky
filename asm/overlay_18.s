@@ -3373,7 +3373,7 @@ _0238CD5C:
 	ldrsb r0, [r0, #0xb]
 	cmp r0, r1
 	beq _0238CD78
-	bl sub_0202BBF0
+	bl ResumeAdvancedMenu
 _0238CD78:
 	mov r0, #0x34
 	bl ov18_0238BE28
@@ -3554,7 +3554,7 @@ _0238CF6C:
 	ldrsb r0, [r0, #0xb]
 	cmp r0, r1
 	beq _0238CF88
-	bl sub_0202BBF0
+	bl ResumeAdvancedMenu
 _0238CF88:
 	mov r0, #0x3c
 	bl ov18_0238BE28

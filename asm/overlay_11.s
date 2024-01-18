@@ -13982,7 +13982,7 @@ _022E8254: .word ov11_02324F9C
 AcceptRandomNpcJob: ; 0x022E8258
 	stmdb sp!, {r3, lr}
 	bl ov11_022E8168
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	cmp r0, #0
 	bne _022E82C0
 	bl sub_0205F5A8
@@ -42897,7 +42897,7 @@ ov11_023001F4:
 	ldr r0, _0230057C ; =ov11_02324D1C
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202BBF0
+	bl ResumeAdvancedMenu
 	ldr r0, _0230057C ; =ov11_02324D1C
 	mov r1, #5
 	ldr r0, [r0, #4]
@@ -44520,7 +44520,7 @@ _023017B4:
 	mov r1, #1
 	mov r0, #0x214
 	str r1, [r2, #0x20]
-	bl sub_020558F4
+	bl GetFirstMatchingMemberIdx
 	mvn r1, #0
 	cmp r0, r1
 	bne _02301804
@@ -44900,7 +44900,7 @@ _02301D30:
 	mov r1, #1
 	mov r0, #0x214
 	str r1, [r2, #0x20]
-	bl sub_020558F4
+	bl GetFirstMatchingMemberIdx
 	mvn r1, #0
 	cmp r0, r1
 	bne _02301D80
@@ -53612,7 +53612,7 @@ _02309538:
 	ldr r0, _02309D80 ; =ov11_02324D90
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl sub_0202A954
+	bl ResumeParentMenu
 	ldr r0, _02309D80 ; =ov11_02324D90
 	mov r1, #1
 	ldr r0, [r0]
@@ -64055,7 +64055,7 @@ ov11_02311D80: ; 0x02311D80
 	stmia lr, {r0, r1, r2, r3}
 	mov r0, ip
 	mov r1, #0
-	bl sub_02069800
+	bl CreateJobSummary
 	ldr r0, _02311E28 ; =ov11_02324E10
 	mov r1, #1
 	ldr r0, [r0, #4]

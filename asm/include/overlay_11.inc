@@ -9,6 +9,7 @@
 .public abs
 .public AddBulkItemToStorage
 .public AddItemToBagNoHeld
+.public AddMissionToJobList
 .public AnimationControlGetAllocForMaxFrame
 .public AnyDungeonRequestsDone
 .public ApplyGummiBoostsToGroundMonster
@@ -45,6 +46,7 @@
 .public CreateCollectionMenu
 .public CreateControlsChart
 .public CreateDialogueBox
+.public CreateJobSummary
 .public CreateMemArena
 .public CreateMonsterSummaryFromTeamMember
 .public CreateParentMenu
@@ -103,6 +105,7 @@
 .public GetExecuteSpecialEpisodeType
 .public GetFadeStatus
 .public GetFirstEmptyMemberIdx
+.public GetFirstMatchingMemberIdx
 .public GetFirstUnequippedItemOfType
 .public GetGameMode
 .public GetHeldButtons
@@ -325,6 +328,8 @@
 .public RemoveItemNoHole
 .public RemoveItemNoHoleCheck
 .public Render3dElement64
+.public ResumeAdvancedMenu
+.public ResumeParentMenu
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueAtIndex
 .public SaveScriptVariableValueBytes
@@ -535,11 +540,9 @@
 .public sub_02028E88
 .public sub_0202A03C
 .public sub_0202A434
-.public sub_0202A954
 .public sub_0202AB80
 .public sub_0202ABB0
 .public sub_0202B030
-.public sub_0202BBF0
 .public sub_0202C620
 .public sub_0202C748
 .public sub_0202C75C
@@ -700,7 +703,6 @@
 .public sub_02055474
 .public sub_020555D0
 .public sub_02055894
-.public sub_020558F4
 .public sub_02055B20
 .public sub_02055CCC
 .public sub_02055D4C
@@ -733,7 +735,6 @@
 .public sub_0205EC38
 .public sub_0205EC50
 .public sub_0205EC78
-.public sub_0205F0B8
 .public sub_0205F0F0
 .public sub_0205F118
 .public sub_0205F2B8
@@ -777,7 +778,6 @@
 .public sub_02067584
 .public sub_02067664
 .public sub_020676AC
-.public sub_02069800
 .public sub_020698B8
 .public sub_02069904
 .public sub_0206A84C

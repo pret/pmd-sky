@@ -481,23 +481,23 @@ _0233D004:
 	ldr r4, [r0]
 	add r0, r4, #0x44
 	add r1, r4, #0x20
-	bl sub_0204DD80
+	bl WonderMailPasswordToMission
 	cmp r0, #0
 	moveq r4, #2
 	beq _0233D110
 	add r0, r4, #0x20
-	bl sub_0205E238
+	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0
 	beq _0233D070
 	mov r0, #2
-	bl sub_0204C94C
+	bl IsSpecialEpisodeOpen
 	cmp r0, #0
 	movne r4, #5
 	moveq r4, #1
 	b _0233D110
 _0233D070:
 	add r0, r4, #0x20
-	bl sub_0205C854
+	bl IsMissionSuspendedAndValid
 	cmp r0, #0
 	moveq r4, #3
 	beq _0233D110
@@ -526,7 +526,7 @@ _0233D0C0:
 	beq _0233D110
 _0233D0D8:
 	add r0, r4, #0x20
-	bl sub_0205EC98
+	bl AlreadyHaveMission
 	cmp r0, #0
 	movne r4, #4
 	bne _0233D110
@@ -535,7 +535,7 @@ _0233D0D8:
 	cmp r0, #0
 	movne r4, #4
 	bne _0233D110
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #8
 	movge r4, #6
 	movlt r4, #0
@@ -584,14 +584,14 @@ _0233D184:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x20
-	bl sub_02069800
+	bl CreateJobSummary
 	ldr r0, _0233D4CC ; =ov06_0233EEC4
 	mov r2, #0x324
 	ldr r1, [r0]
 	str r2, [r1]
 	ldr r0, [r0]
 	add r0, r0, #0x20
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	bl sub_0205F5A8
 	bl sub_0205F710
 	b _0233D4C4
@@ -611,7 +611,7 @@ _0233D1CC:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x20
-	bl sub_02069800
+	bl CreateJobSummary
 	ldr r0, _0233D4CC ; =ov06_0233EEC4
 	mov r1, #0x324
 	ldr r0, [r0]
@@ -788,7 +788,7 @@ _0233D454:
 	ldr r0, _0233D4CC ; =ov06_0233EEC4
 	ldr r0, [r0]
 	add r0, r0, #0x20
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	bl sub_0205F5A8
 	bl sub_0205F710
 #ifdef EUROPE
@@ -803,7 +803,7 @@ _0233D454:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x20
-	bl sub_02069800
+	bl CreateJobSummary
 	ldr r0, _0233D4CC ; =ov06_0233EEC4
 	mov r1, #0x324
 	ldr r0, [r0]
@@ -964,7 +964,7 @@ _0233D690:
 	bne _0233DC68
 	bl ov01_0232F3F4
 	bl ov06_0233CA80
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #0
 	ldreq r0, _0233DC74 ; =ov06_0233EEEC
 	moveq r1, #3
@@ -1701,7 +1701,7 @@ _0233E07C:
 	add r0, sp, #0x30
 	bl sub_020509BC
 	mov r0, r7
-	bl sub_0205E238
+	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0
 	bne _0233E0EC
 	mov r0, r7
@@ -1924,11 +1924,11 @@ _0233E390:
 	ldr r0, [r1, #0x218]
 	add r1, r1, #0x18
 	add r0, r1, r0, lsl #5
-	bl sub_0205E238
+	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0
 	beq _0233E478
 	mov r0, #2
-	bl sub_0204C94C
+	bl IsSpecialEpisodeOpen
 	cmp r0, #0
 	beq _0233E418
 	ldr r0, _0233E8E0 ; =ov06_0233EEC8
@@ -1962,7 +1962,7 @@ _0233E418:
 	ldr r0, [r2, #0x218]
 	add r2, r2, #0x18
 	add r0, r2, r0, lsl #5
-	bl sub_02069800
+	bl CreateJobSummary
 	ldr r0, _0233E8E0 ; =ov06_0233EEC8
 	ldr r3, _0233E920 ; =0x00002A30
 	ldr r2, [r0]
@@ -1977,7 +1977,7 @@ _0233E478:
 	ldr r0, [r1, #0x218]
 	add r1, r1, #0x18
 	add r0, r1, r0, lsl #5
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	cmp r0, #0
 	ldrne r0, _0233E8E0 ; =ov06_0233EEC8
 	movne r1, #8
@@ -1999,7 +1999,7 @@ _0233E478:
 	ldr r0, [r2, #0x218]
 	add r2, r2, #0x18
 	add r0, r2, r0, lsl #5
-	bl sub_02069800
+	bl CreateJobSummary
 	ldr r0, _0233E8E0 ; =ov06_0233EEC8
 	ldr r3, _0233E920 ; =0x00002A30
 	ldr r2, [r0]
@@ -2085,7 +2085,7 @@ _0233E600:
 	ldr r0, [r1, #0x218]
 	add r1, r1, #0x18
 	add r0, r1, r0, lsl #5
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	bl sub_0205F5A8
 	bl sub_0205F710
 	ldr r0, _0233E8E0 ; =ov06_0233EEC8
@@ -2101,7 +2101,7 @@ _0233E600:
 	ldr r0, [r2, #0x218]
 	add r2, r2, #0x18
 	add r0, r2, r0, lsl #5
-	bl sub_02069800
+	bl CreateJobSummary
 	ldr r0, _0233E8E0 ; =ov06_0233EEC8
 	ldr r3, _0233E920 ; =0x00002A30
 	ldr r2, [r0]
@@ -2212,7 +2212,7 @@ _0233E7DC:
 	ldr r0, [r1, #0x218]
 	add r1, r1, #0x18
 	add r0, r1, r0, lsl #5
-	bl sub_0205E238
+	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0
 	mov r0, #0x1c
 	beq _0233E828

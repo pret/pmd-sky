@@ -2213,7 +2213,7 @@ _0233E7F4:
 	strb r0, [r1, #0x7dc]
 	b _0233E878
 _0233E874:
-	bl sub_0202BBF0
+	bl ResumeAdvancedMenu
 _0233E878:
 	ldr r0, _0233EB00 ; =ov05_0233FCA8
 	ldr r1, _0233EB04 ; =0x00003023

@@ -71,6 +71,7 @@
 .public ov01_023398B0
 .public ov01_02339988
 .public PreprocessString
+.public ResumeAdvancedMenu
 .public StrncpySimpleNoPadSafe
 .public sub_02003B94
 .public sub_02003BC8
@@ -79,7 +80,6 @@
 .public sub_0202836C
 .public sub_02029F88
 .public sub_02029FBC
-.public sub_0202BBF0
 .public sub_02046A20
 .public sub_02046A9C
 .public sub_02046B04

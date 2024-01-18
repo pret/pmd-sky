@@ -9609,7 +9609,7 @@ CreateMainMenus: ; 0x023310E4
 	str r6, [r0, #0x114]
 _0233111C:
 	mov r0, r6
-	bl sub_0204C94C
+	bl IsSpecialEpisodeOpen
 	cmp r0, #0
 	beq _02331180
 	ldr r2, [r7]
@@ -10295,7 +10295,7 @@ _02331A78:
 	strb r0, [r1]
 	b _02331AA0
 _02331A9C:
-	bl sub_0202A954
+	bl ResumeParentMenu
 _02331AA0:
 	ldr r0, _02332508 ; =ov01_0233C178
 	mov r1, #3
@@ -13644,7 +13644,7 @@ _023348F8:
 	ldr r0, _02334B90 ; =ov01_0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202BBF0
+	bl ResumeAdvancedMenu
 	b _023349B4
 _0233491C:
 	mov r0, #1
@@ -13659,7 +13659,7 @@ _0233491C:
 	ldr r0, _02334B90 ; =ov01_0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202BBF0
+	bl ResumeAdvancedMenu
 	b _023349B4
 _02334954:
 	ldr r0, _02334B90 ; =ov01_0233C1A0
@@ -13681,7 +13681,7 @@ _02334954:
 	ldr r0, _02334B90 ; =ov01_0233C1A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202BBF0
+	bl ResumeAdvancedMenu
 	b _023349B4
 _023349A8:
 	mov r0, #4

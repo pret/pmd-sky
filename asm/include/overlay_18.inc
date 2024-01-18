@@ -40,6 +40,7 @@
 .public PortraitBoxNeedsUpdate
 .public PreprocessString
 .public PrintIqSkillsMenu
+.public ResumeAdvancedMenu
 .public SetAdvancedTextBoxState5
 .public SetPortraitEmotion
 .public SetPortraitLayout
@@ -52,7 +53,6 @@
 .public sub_02017C80
 .public sub_02026268
 .public sub_02027B1C
-.public sub_0202BBF0
 .public sub_0202BC60
 .public sub_0202C1E4
 .public sub_0202F334

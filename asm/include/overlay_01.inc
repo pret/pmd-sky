@@ -85,6 +85,7 @@
 .public IsMovesetValid
 .public IsParentMenuActive
 .public IsSimpleMenuActive
+.public IsSpecialEpisodeOpen
 .public IsTextBoxActive
 .public LoadScriptVariableValueAtIndex
 .public LoadWanTableEntry
@@ -231,6 +232,8 @@
 .public PreprocessStringFromId
 .public PrintClearMark
 .public RandInt
+.public ResumeAdvancedMenu
+.public ResumeParentMenu
 .public SetAdvancedTextBoxState5
 .public SetAnimationForAnimationControl
 .public SetIrqFlag
@@ -285,11 +288,9 @@
 .public sub_02029FBC
 .public sub_0202A2A4
 .public sub_0202A40C
-.public sub_0202A954
 .public sub_0202AB80
 .public sub_0202ABB0
 .public sub_0202B0A4
-.public sub_0202BBF0
 .public sub_0202BC28
 .public sub_0202BC60
 .public sub_0202BD48
@@ -330,7 +331,6 @@
 .public sub_0204AE60
 .public sub_0204C918
 .public sub_0204C928
-.public sub_0204C94C
 .public sub_0204C9A0
 .public sub_0204C9C8
 .public sub_0204CA1C
