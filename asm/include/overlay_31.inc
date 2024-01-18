@@ -169,6 +169,7 @@
 .public PreprocessString
 .public PreprocessStringFromId
 .public PrintIqSkillsMenu
+.public ResumeParentMenu
 .public SetAdvancedTextBoxField0x1C2
 .public SetAdvancedTextBoxField0x1C4
 .public SetAdvancedTextBoxState5
@@ -192,7 +193,6 @@
 .public sub_0202812C
 .public sub_020282F4
 .public sub_02028354
-.public sub_0202A954
 .public sub_0202A98C
 .public sub_0202AB80
 .public sub_0202AB94

@@ -38705,8 +38705,8 @@ _0202A94C: .word UpdateParentMenu
 _0202A950: .word PARENT_MENU_DEFAULT_WINDOW_PARAMS
 	arm_func_end CreateParentMenuInternal
 
-	arm_func_start sub_0202A954
-sub_0202A954: ; 0x0202A954
+	arm_func_start ResumeParentMenu
+ResumeParentMenu: ; 0x0202A954
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	mov r1, #1
@@ -38721,7 +38721,7 @@ sub_0202A954: ; 0x0202A954
 	add r0, r0, #4
 	bl sub_02032984
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202A954
+	arm_func_end ResumeParentMenu
 
 	arm_func_start sub_0202A98C
 sub_0202A98C: ; 0x0202A98C
@@ -39554,8 +39554,8 @@ _0202B488: .word UpdateSimpleMenu
 _0202B48C: .word SIMPLE_MENU_DEFAULT_WINDOW_PARAMS
 	arm_func_end CreateSimpleMenuInternal
 
-	arm_func_start sub_0202B490
-sub_0202B490: ; 0x0202B490
+	arm_func_start ResumeSimpleMenu
+ResumeSimpleMenu: ; 0x0202B490
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	mov r1, #1
@@ -39569,7 +39569,7 @@ sub_0202B490: ; 0x0202B490
 	add r0, r0, #4
 	bl sub_02032984
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202B490
+	arm_func_end ResumeSimpleMenu
 
 	arm_func_start CloseSimpleMenu
 CloseSimpleMenu: ; 0x0202B4C4
@@ -40116,8 +40116,8 @@ _0202BBE8: .word ADVANCED_MENU_DEFAULT_WINDOW_PARAMS
 _0202BBEC: .word UpdateAdvancedMenu
 	arm_func_end CreateAdvancedMenu
 
-	arm_func_start sub_0202BBF0
-sub_0202BBF0: ; 0x0202BBF0
+	arm_func_start ResumeAdvancedMenu
+ResumeAdvancedMenu: ; 0x0202BBF0
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	mov r1, #1
@@ -40132,7 +40132,7 @@ sub_0202BBF0: ; 0x0202BBF0
 	add r0, r0, #4
 	bl sub_02032984
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202BBF0
+	arm_func_end ResumeAdvancedMenu
 
 	arm_func_start sub_0202BC28
 sub_0202BC28: ; 0x0202BC28
@@ -66605,7 +66605,7 @@ _02041DF0:
 	ldr r0, _020420BC ; =_020AFE90
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202BBF0
+	bl ResumeAdvancedMenu
 	ldr r0, _020420BC ; =_020AFE90
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -66654,7 +66654,7 @@ _02041E98:
 	ldr r0, _020420BC ; =_020AFE90
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202BBF0
+	bl ResumeAdvancedMenu
 	ldr r0, _020420BC ; =_020AFE90
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -79747,8 +79747,8 @@ GetSpecialEpisodeType: ; 0x0204C8EC
 _0204C8FC: .word LoadScriptVariableValue
 	arm_func_end GetSpecialEpisodeType
 
-	arm_func_start sub_0204C900
-sub_0204C900: ; 0x0204C900
+	arm_func_start SetSpecialEpisodeType
+SetSpecialEpisodeType: ; 0x0204C900
 	ldr ip, _0204C914 ; =SaveScriptVariableValue
 	mov r2, r0
 	mov r0, #0
@@ -79756,7 +79756,7 @@ sub_0204C900: ; 0x0204C900
 	bx ip
 	.align 2, 0
 _0204C914: .word SaveScriptVariableValue
-	arm_func_end sub_0204C900
+	arm_func_end SetSpecialEpisodeType
 
 	arm_func_start sub_0204C918
 sub_0204C918: ; 0x0204C918
@@ -79786,8 +79786,8 @@ GetExecuteSpecialEpisodeType: ; 0x0204C938
 _0204C948: .word LoadScriptVariableValue
 	arm_func_end GetExecuteSpecialEpisodeType
 
-	arm_func_start sub_0204C94C
-sub_0204C94C: ; 0x0204C94C
+	arm_func_start IsSpecialEpisodeOpen
+IsSpecialEpisodeOpen: ; 0x0204C94C
 	stmdb sp!, {r3, lr}
 	mov r0, r0, lsl #0x10
 	mov r2, r0, lsr #0x10
@@ -79799,7 +79799,7 @@ sub_0204C94C: ; 0x0204C94C
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0204C94C
+	arm_func_end IsSpecialEpisodeOpen
 
 	arm_func_start sub_0204C978
 sub_0204C978: ; 0x0204C978
@@ -81404,8 +81404,8 @@ _0204DD50:
 _0204DD7C: .word ARM9_UNKNOWN_TABLE__NA_209E12C
 	arm_func_end sub_0204DCA0
 
-	arm_func_start sub_0204DD80
-sub_0204DD80: ; 0x0204DD80
+	arm_func_start WonderMailPasswordToMission
+WonderMailPasswordToMission: ; 0x0204DD80
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x6c
 	mov r2, r0
@@ -81475,7 +81475,7 @@ _0204DE6C:
 	.align 2, 0
 _0204DE74: .word WONDER_MAIL_BITS_SWAP
 _0204DE78: .word _0209E264
-	arm_func_end sub_0204DD80
+	arm_func_end WonderMailPasswordToMission
 
 	arm_func_start sub_0204DE7C
 sub_0204DE7C: ; 0x0204DE7C

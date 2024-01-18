@@ -1043,8 +1043,8 @@ _020558EC: .word TEAM_MEMBER_TABLE_PTR
 _020558F0: .word 0x0000022B
 	arm_func_end sub_02055894
 
-	arm_func_start sub_020558F4
-sub_020558F4: ; 0x020558F4
+	arm_func_start GetFirstMatchingMemberIdx
+GetFirstMatchingMemberIdx: ; 0x020558F4
 	stmdb sp!, {r4, lr}
 	ldr r1, _0205595C ; =TEAM_MEMBER_TABLE_PTR
 	mov r4, #5
@@ -1077,7 +1077,7 @@ _0205594C:
 	.align 2, 0
 _0205595C: .word TEAM_MEMBER_TABLE_PTR
 _02055960: .word 0x0000022B
-	arm_func_end sub_020558F4
+	arm_func_end GetFirstMatchingMemberIdx
 
 	arm_func_start GetFirstEmptyMemberIdx
 GetFirstEmptyMemberIdx: ; 0x02055964
@@ -9395,20 +9395,20 @@ _0205C734:
 	arm_func_start sub_0205C73C
 sub_0205C73C: ; 0x0205C73C
 	ldr r1, _0205C750 ; =_022B6F10
-	ldr r0, _0205C754 ; =_020B0A60
+	ldr r0, _0205C754 ; =MISSION_DELIVER_LIST_PTR
 	ldr ip, _0205C758 ; =sub_020600CC
 	str r1, [r0, #0x18]
 	bx ip
 	.align 2, 0
 _0205C750: .word _022B6F10
-_0205C754: .word _020B0A60
+_0205C754: .word MISSION_DELIVER_LIST_PTR
 _0205C758: .word sub_020600CC
 	arm_func_end sub_0205C73C
 
 	arm_func_start sub_0205C75C
 sub_0205C75C: ; 0x0205C75C
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r4, _0205C850 ; =_020B0A60
+	ldr r4, _0205C850 ; =MISSION_DELIVER_LIST_PTR
 	mov r5, #0
 _0205C768:
 	ldr r1, [r4, #0x18]
@@ -9418,7 +9418,7 @@ _0205C768:
 	add r5, r5, #1
 	cmp r5, #8
 	blt _0205C768
-	ldr r4, _0205C850 ; =_020B0A60
+	ldr r4, _0205C850 ; =MISSION_DELIVER_LIST_PTR
 	mov r5, #0
 _0205C78C:
 	ldr r1, [r4, #0x18]
@@ -9429,7 +9429,7 @@ _0205C78C:
 	add r5, r5, #1
 	cmp r5, #8
 	blt _0205C78C
-	ldr r4, _0205C850 ; =_020B0A60
+	ldr r4, _0205C850 ; =MISSION_DELIVER_LIST_PTR
 	mov r5, #0
 _0205C7B4:
 	ldr r1, [r4, #0x18]
@@ -9440,16 +9440,16 @@ _0205C7B4:
 	add r5, r5, #1
 	cmp r5, #8
 	blt _0205C7B4
-	ldr r0, _0205C850 ; =_020B0A60
+	ldr r0, _0205C850 ; =MISSION_DELIVER_LIST_PTR
 	ldr r0, [r0, #0x18]
 	add r0, r0, #0x300
 	bl ClearMissionData
-	ldr r0, _0205C850 ; =_020B0A60
+	ldr r0, _0205C850 ; =MISSION_DELIVER_LIST_PTR
 	ldr r0, [r0, #0x18]
 	add r0, r0, #0x320
 	bl ClearMissionData
 	mov r0, #0
-	ldr r2, _0205C850 ; =_020B0A60
+	ldr r2, _0205C850 ; =MISSION_DELIVER_LIST_PTR
 	mov lr, #0xff
 	mov ip, #1
 	mov r4, r0
@@ -9473,11 +9473,11 @@ _0205C80C:
 	blt _0205C80C
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0205C850: .word _020B0A60
+_0205C850: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205C75C
 
-	arm_func_start sub_0205C854
-sub_0205C854: ; 0x0205C854
+	arm_func_start IsMissionSuspendedAndValid
+IsMissionSuspendedAndValid: ; 0x0205C854
 	stmdb sp!, {r3, lr}
 	ldrb r1, [r0]
 	cmp r1, #4
@@ -9485,7 +9485,7 @@ sub_0205C854: ; 0x0205C854
 	ldmneia sp!, {r3, pc}
 	bl IsMissionValid
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0205C854
+	arm_func_end IsMissionSuspendedAndValid
 
 	arm_func_start sub_0205C870
 sub_0205C870: ; 0x0205C870
@@ -9551,8 +9551,8 @@ _0205C92C:
 	bx lr
 	arm_func_end sub_0205C8E0
 
-	arm_func_start sub_0205C934
-sub_0205C934: ; 0x0205C934
+	arm_func_start AreMissionsEquivalent
+AreMissionsEquivalent: ; 0x0205C934
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -9620,7 +9620,7 @@ sub_0205C934: ; 0x0205C934
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0205C934
+	arm_func_end AreMissionsEquivalent
 
 	arm_func_start IsMissionValid
 IsMissionValid: ; 0x0205CA40
@@ -10210,7 +10210,7 @@ GenerateMission: ; 0x0205D224
 	mov sb, r0
 	add r0, sp, #0x10
 	mov r8, r1
-	bl sub_0205F738
+	bl GetAllPossibleMonsters
 	str r0, [sp]
 	cmp r0, #0
 	bne _0205D258
@@ -10245,7 +10245,7 @@ _0205D298:
 	cmp r0, #0
 	bne _0205D2C8
 	and r0, r1, #0xff
-	bl sub_02062BB8
+	bl CanDungeonBeUsedForMission
 	cmp r0, #0
 	moveq r5, #1
 	beq _0205D51C
@@ -10340,7 +10340,7 @@ _0205D3E4:
 	strb r0, [r8, #5]
 	b _0205D51C
 _0205D414:
-	ldr r0, _0205DFA4 ; =_020B0A60
+	ldr r0, _0205DFA4 ; =MISSION_DELIVER_LIST_PTR
 	mov r5, #1
 	ldr r6, [r0, #0xc]
 	ldr r7, [r0, #8]
@@ -10581,7 +10581,7 @@ _0205D770:
 	b _0205D7E4
 _0205D77C:
 	add r0, sp, #8
-	bl sub_0205F738
+	bl GetAllPossibleMonsters
 	cmp r0, #0
 	moveq r4, #2
 	beq _0205DB40
@@ -10811,7 +10811,7 @@ _0205DAB0:
 	b _0205DB30
 _0205DAC0:
 	add r0, sp, #8
-	bl sub_0205F738
+	bl GetAllPossibleMonsters
 	cmp r0, #0
 	moveq r4, #2
 	beq _0205DB40
@@ -10950,7 +10950,7 @@ _0205DC74:
 	strh r4, [r8, #0x14]
 	b _0205DD34
 _0205DCB8:
-	ldr r1, _0205DFA4 ; =_020B0A60
+	ldr r1, _0205DFA4 ; =MISSION_DELIVER_LIST_PTR
 	ldr r0, [r1, #4]
 	ldr r4, [r1]
 	cmp r0, #0
@@ -11166,7 +11166,7 @@ _0205DF9C:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0205DFA4: .word _020B0A60
+_0205DFA4: .word MISSION_DELIVER_LIST_PTR
 _0205DFA8: .word 0x000001EA
 	arm_func_end GenerateMission
 
@@ -11247,7 +11247,7 @@ sub_0205E090: ; 0x0205E090
 	mov r5, r1
 	mov r4, r2
 	mov r8, #0
-	ldr r7, _0205E1E4 ; =_020B0A60
+	ldr r7, _0205E1E4 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E0D4
 _0205E0AC:
 	ldr r0, [r7, #0x18]
@@ -11264,7 +11264,7 @@ _0205E0D4:
 	cmp r8, #8
 	blt _0205E0AC
 	mov r8, #0
-	ldr r7, _0205E1E4 ; =_020B0A60
+	ldr r7, _0205E1E4 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E114
 _0205E0E8:
 	ldr r0, [r7, #0x18]
@@ -11282,7 +11282,7 @@ _0205E114:
 	cmp r8, #8
 	blt _0205E0E8
 	mov r8, #0
-	ldr r7, _0205E1E4 ; =_020B0A60
+	ldr r7, _0205E1E4 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E154
 _0205E128:
 	ldr r0, [r7, #0x18]
@@ -11300,7 +11300,7 @@ _0205E154:
 	cmp r8, #8
 	blt _0205E128
 	mov r8, #0
-	ldr r7, _0205E1E4 ; =_020B0A60
+	ldr r7, _0205E1E4 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E194
 _0205E168:
 	ldr r0, [r7, #0x18]
@@ -11318,7 +11318,7 @@ _0205E194:
 	cmp r8, #1
 	blt _0205E168
 	mov r8, #0
-	ldr r7, _0205E1E4 ; =_020B0A60
+	ldr r7, _0205E1E4 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E1D4
 _0205E1A8:
 	ldr r0, [r7, #0x18]
@@ -11338,7 +11338,7 @@ _0205E1D4:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0205E1E4: .word _020B0A60
+_0205E1E4: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205E090
 
 	arm_func_start sub_0205E1E8
@@ -11368,8 +11368,8 @@ _0205E22C:
 _0205E234: .word 0x00002383
 	arm_func_end sub_0205E1E8
 
-	arm_func_start sub_0205E238
-sub_0205E238: ; 0x0205E238
+	arm_func_start IsMissionTypeSpecialEpisode
+IsMissionTypeSpecialEpisode: ; 0x0205E238
 	ldrb r1, [r0, #1]
 	cmp r1, #0xe
 	ldreqb r0, [r0, #2]
@@ -11378,7 +11378,7 @@ sub_0205E238: ; 0x0205E238
 	movne r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end sub_0205E238
+	arm_func_end IsMissionTypeSpecialEpisode
 
 	arm_func_start sub_0205E258
 sub_0205E258: ; 0x0205E258
@@ -11419,7 +11419,7 @@ sub_0205E2B8: ; 0x0205E2B8
 	mov r5, r0
 	mov r4, r1
 	mov r7, #0
-	ldr r6, _0205E3F4 ; =_020B0A60
+	ldr r6, _0205E3F4 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E2F4
 _0205E2D0:
 	ldr r0, [r6, #0x18]
@@ -11435,7 +11435,7 @@ _0205E2F4:
 	cmp r7, #8
 	blt _0205E2D0
 	mov r7, #0
-	ldr r6, _0205E3F4 ; =_020B0A60
+	ldr r6, _0205E3F4 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E330
 _0205E308:
 	ldr r0, [r6, #0x18]
@@ -11452,7 +11452,7 @@ _0205E330:
 	cmp r7, #8
 	blt _0205E308
 	mov r7, #0
-	ldr r6, _0205E3F4 ; =_020B0A60
+	ldr r6, _0205E3F4 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E36C
 _0205E344:
 	ldr r0, [r6, #0x18]
@@ -11469,7 +11469,7 @@ _0205E36C:
 	cmp r7, #8
 	blt _0205E344
 	mov r7, #0
-	ldr r6, _0205E3F4 ; =_020B0A60
+	ldr r6, _0205E3F4 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E3A8
 _0205E380:
 	ldr r0, [r6, #0x18]
@@ -11486,7 +11486,7 @@ _0205E3A8:
 	cmp r7, #1
 	blt _0205E380
 	mov r7, #0
-	ldr r6, _0205E3F4 ; =_020B0A60
+	ldr r6, _0205E3F4 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E3E4
 _0205E3BC:
 	ldr r0, [r6, #0x18]
@@ -11505,7 +11505,7 @@ _0205E3E4:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0205E3F4: .word _020B0A60
+_0205E3F4: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205E2B8
 
 	arm_func_start sub_0205E3F8
@@ -11676,7 +11676,7 @@ GenerateDailyMissions: ; 0x0205E5D0
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r2, #0
-	ldr r0, _0205E948 ; =_020B0A60
+	ldr r0, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	mov r3, r2
 _0205E610:
 	ldr r1, [r0, #0x18]
@@ -11684,7 +11684,7 @@ _0205E610:
 	add r2, r2, #1
 	cmp r2, #8
 	blt _0205E610
-	ldr r0, _0205E948 ; =_020B0A60
+	ldr r0, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	mov r2, #0
 _0205E62C:
 	ldr r1, [r0, #0x18]
@@ -11693,7 +11693,7 @@ _0205E62C:
 	strb r2, [r1, #0x200]
 	cmp r3, #8
 	blt _0205E62C
-	ldr r0, _0205E948 ; =_020B0A60
+	ldr r0, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r0, #0x18]
 	strb r2, [r1, #0x300]
 	ldr r0, [r0, #0x18]
@@ -11714,7 +11714,7 @@ _0205E62C:
 	mov r6, #0x1e
 	mov fp, sl
 	mov r5, #1
-	ldr r4, _0205E948 ; =_020B0A60
+	ldr r4, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E704
 _0205E6A0:
 	ldr r0, [r4, #0x18]
@@ -11757,7 +11757,7 @@ _0205E70C:
 	mov sb, #0
 	mov sl, #0x1e
 	mov r5, fp
-	ldr r4, _0205E948 ; =_020B0A60
+	ldr r4, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E7A4
 _0205E738:
 	ldr r0, [r4, #0x18]
@@ -11802,7 +11802,7 @@ _0205E7AC:
 	mov sl, #0x1e
 	mov fp, sb
 	mov r5, #1
-	ldr r4, _0205E948 ; =_020B0A60
+	ldr r4, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E838
 _0205E7D8:
 	ldr r0, [r4, #0x18]
@@ -11845,7 +11845,7 @@ _0205E840:
 	mov r5, sb
 	mov fp, sb
 	mov r6, #1
-	ldr r4, _0205E948 ; =_020B0A60
+	ldr r4, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	b _0205E8D4
 _0205E870:
 	ldr r0, [r4, #0x18]
@@ -11883,22 +11883,22 @@ _0205E8DC:
 	bl DeleteAllPossibleMonstersList
 	bl DeleteAllPossibleDungeonsList
 	bl DeleteAllPossibleDeliverList
-	ldr r1, _0205E948 ; =_020B0A60
+	ldr r1, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	mov r0, #8
 	ldr r1, [r1, #0x18]
 	bl sub_0205E48C
 	mov r0, #8
-	ldr r1, _0205E948 ; =_020B0A60
+	ldr r1, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	ldr r2, _0205E94C ; =sub_0205E9A8
 	ldr r1, [r1, #0x18]
 	bl sub_0205E50C
 	mov r0, #8
-	ldr r1, _0205E948 ; =_020B0A60
+	ldr r1, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x200
 	bl sub_0205E48C
 	mov r0, #8
-	ldr r1, _0205E948 ; =_020B0A60
+	ldr r1, _0205E948 ; =MISSION_DELIVER_LIST_PTR
 	ldr r2, _0205E950 ; =sub_0205EB28
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x200
@@ -11907,36 +11907,36 @@ _0205E8DC:
 	bl sub_020634F4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0205E948: .word _020B0A60
+_0205E948: .word MISSION_DELIVER_LIST_PTR
 _0205E94C: .word sub_0205E9A8
 _0205E950: .word sub_0205EB28
 	arm_func_end GenerateDailyMissions
 
 	arm_func_start sub_0205E954
 sub_0205E954: ; 0x0205E954
-	ldr r1, _0205E968 ; =_020B0A60
+	ldr r1, _0205E968 ; =MISSION_DELIVER_LIST_PTR
 	ldr ip, _0205E96C ; =sub_0205E448
 	mov r0, #8
 	ldr r1, [r1, #0x18]
 	bx ip
 	.align 2, 0
-_0205E968: .word _020B0A60
+_0205E968: .word MISSION_DELIVER_LIST_PTR
 _0205E96C: .word sub_0205E448
 	arm_func_end sub_0205E954
 
 	arm_func_start sub_0205E970
 sub_0205E970: ; 0x0205E970
-	ldr r1, _0205E980 ; =_020B0A60
+	ldr r1, _0205E980 ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r0, r1, r0, lsl #5
 	bx lr
 	.align 2, 0
-_0205E980: .word _020B0A60
+_0205E980: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205E970
 
 	arm_func_start sub_0205E984
 sub_0205E984: ; 0x0205E984
-	ldr r1, _0205E9A4 ; =_020B0A60
+	ldr r1, _0205E9A4 ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	ldrb r0, [r1, r0, lsl #5]
 	cmp r0, #0
@@ -11945,7 +11945,7 @@ sub_0205E984: ; 0x0205E984
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0205E9A4: .word _020B0A60
+_0205E9A4: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205E984
 
 	arm_func_start sub_0205E9A8
@@ -12032,31 +12032,31 @@ _0205EAC0:
 
 	arm_func_start sub_0205EAC8
 sub_0205EAC8: ; 0x0205EAC8
-	ldr r1, _0205EAE0 ; =_020B0A60
+	ldr r1, _0205EAE0 ; =MISSION_DELIVER_LIST_PTR
 	ldr ip, _0205EAE4 ; =sub_0205E448
 	ldr r1, [r1, #0x18]
 	mov r0, #8
 	add r1, r1, #0x200
 	bx ip
 	.align 2, 0
-_0205EAE0: .word _020B0A60
+_0205EAE0: .word MISSION_DELIVER_LIST_PTR
 _0205EAE4: .word sub_0205E448
 	arm_func_end sub_0205EAC8
 
 	arm_func_start sub_0205EAE8
 sub_0205EAE8: ; 0x0205EAE8
-	ldr r1, _0205EAFC ; =_020B0A60
+	ldr r1, _0205EAFC ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x200
 	add r0, r1, r0, lsl #5
 	bx lr
 	.align 2, 0
-_0205EAFC: .word _020B0A60
+_0205EAFC: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205EAE8
 
 	arm_func_start sub_0205EB00
 sub_0205EB00: ; 0x0205EB00
-	ldr r1, _0205EB24 ; =_020B0A60
+	ldr r1, _0205EB24 ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r0, r1, r0, lsl #5
 	ldrb r0, [r0, #0x200]
@@ -12066,7 +12066,7 @@ sub_0205EB00: ; 0x0205EB00
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0205EB24: .word _020B0A60
+_0205EB24: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205EB00
 
 	arm_func_start sub_0205EB28
@@ -12099,7 +12099,7 @@ sub_0205EB5C: ; 0x0205EB5C
 	mov r1, #0
 	add r0, sp, #0
 	str r1, [sp]
-	bl sub_0205F738
+	bl GetAllPossibleMonsters
 	mov r5, r0
 	cmp r5, #0
 	ldmleia sp!, {r3, r4, r5, pc}
@@ -12128,18 +12128,18 @@ _0205EBCC:
 
 	arm_func_start sub_0205EBD8
 sub_0205EBD8: ; 0x0205EBD8
-	ldr r1, _0205EBEC ; =_020B0A60
+	ldr r1, _0205EBEC ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x300
 	add r0, r1, r0, lsl #5
 	bx lr
 	.align 2, 0
-_0205EBEC: .word _020B0A60
+_0205EBEC: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205EBD8
 
 	arm_func_start sub_0205EBF0
 sub_0205EBF0: ; 0x0205EBF0
-	ldr r1, _0205EC14 ; =_020B0A60
+	ldr r1, _0205EC14 ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r0, r1, r0, lsl #5
 	ldrb r0, [r0, #0x300]
@@ -12149,36 +12149,36 @@ sub_0205EBF0: ; 0x0205EBF0
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0205EC14: .word _020B0A60
+_0205EC14: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205EBF0
 
 	arm_func_start sub_0205EC18
 sub_0205EC18: ; 0x0205EC18
-	ldr r1, _0205EC30 ; =_020B0A60
+	ldr r1, _0205EC30 ; =MISSION_DELIVER_LIST_PTR
 	ldr ip, _0205EC34 ; =ClearMissionData
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x300
 	add r0, r1, r0, lsl #5
 	bx ip
 	.align 2, 0
-_0205EC30: .word _020B0A60
+_0205EC30: .word MISSION_DELIVER_LIST_PTR
 _0205EC34: .word ClearMissionData
 	arm_func_end sub_0205EC18
 
 	arm_func_start sub_0205EC38
 sub_0205EC38: ; 0x0205EC38
-	ldr r1, _0205EC4C ; =_020B0A60
+	ldr r1, _0205EC4C ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x320
 	add r0, r1, r0, lsl #5
 	bx lr
 	.align 2, 0
-_0205EC4C: .word _020B0A60
+_0205EC4C: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205EC38
 
 	arm_func_start sub_0205EC50
 sub_0205EC50: ; 0x0205EC50
-	ldr r1, _0205EC74 ; =_020B0A60
+	ldr r1, _0205EC74 ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r0, r1, r0, lsl #5
 	ldrb r0, [r0, #0x320]
@@ -12188,28 +12188,28 @@ sub_0205EC50: ; 0x0205EC50
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0205EC74: .word _020B0A60
+_0205EC74: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205EC50
 
 	arm_func_start sub_0205EC78
 sub_0205EC78: ; 0x0205EC78
-	ldr r1, _0205EC90 ; =_020B0A60
+	ldr r1, _0205EC90 ; =MISSION_DELIVER_LIST_PTR
 	ldr ip, _0205EC94 ; =ClearMissionData
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x320
 	add r0, r1, r0, lsl #5
 	bx ip
 	.align 2, 0
-_0205EC90: .word _020B0A60
+_0205EC90: .word MISSION_DELIVER_LIST_PTR
 _0205EC94: .word ClearMissionData
 	arm_func_end sub_0205EC78
 
-	arm_func_start sub_0205EC98
-sub_0205EC98: ; 0x0205EC98
+	arm_func_start AlreadyHaveMission
+AlreadyHaveMission: ; 0x0205EC98
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	mov r5, #0
-	ldr r4, _0205ECF0 ; =_020B0A60
+	ldr r4, _0205ECF0 ; =MISSION_DELIVER_LIST_PTR
 	b _0205ECE0
 _0205ECAC:
 	ldr r0, [r4, #0x18]
@@ -12220,7 +12220,7 @@ _0205ECAC:
 	beq _0205ECDC
 	mov r0, r6
 	add r1, r2, r1
-	bl sub_0205C934
+	bl AreMissionsEquivalent
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -12232,8 +12232,8 @@ _0205ECE0:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0205ECF0: .word _020B0A60
-	arm_func_end sub_0205EC98
+_0205ECF0: .word MISSION_DELIVER_LIST_PTR
+	arm_func_end AlreadyHaveMission
 
 	arm_func_start sub_0205ECF4
 sub_0205ECF4: ; 0x0205ECF4
@@ -12242,7 +12242,7 @@ sub_0205ECF4: ; 0x0205ECF4
 	ldrb r5, [r4, #4]
 	ldrb r6, [r4, #5]
 	mov r7, #0
-	bl sub_0205C854
+	bl IsMissionSuspendedAndValid
 	cmp r0, #0
 	moveq r0, r7
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
@@ -12251,7 +12251,7 @@ sub_0205ECF4: ; 0x0205ECF4
 	cmp r0, #0
 	movne r7, #1
 	mov r4, #0
-	ldr r8, _0205ED80 ; =_020B0A60
+	ldr r8, _0205ED80 ; =MISSION_DELIVER_LIST_PTR
 	b _0205ED70
 _0205ED34:
 	ldr r1, [r8, #0x18]
@@ -12276,26 +12276,26 @@ _0205ED70:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0205ED80: .word _020B0A60
+_0205ED80: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205ECF4
 
-	arm_func_start sub_0205ED84
-sub_0205ED84: ; 0x0205ED84
-	ldr r1, _0205ED9C ; =_020B0A60
+	arm_func_start CountJobListMissions
+CountJobListMissions: ; 0x0205ED84
+	ldr r1, _0205ED9C ; =MISSION_DELIVER_LIST_PTR
 	ldr ip, _0205EDA0 ; =sub_0205E448
 	ldr r1, [r1, #0x18]
 	mov r0, #8
 	add r1, r1, #0x100
 	bx ip
 	.align 2, 0
-_0205ED9C: .word _020B0A60
+_0205ED9C: .word MISSION_DELIVER_LIST_PTR
 _0205EDA0: .word sub_0205E448
-	arm_func_end sub_0205ED84
+	arm_func_end CountJobListMissions
 
 	arm_func_start DungeonRequestsDone
 DungeonRequestsDone: ; 0x0205EDA4
 	stmdb sp!, {r4, lr}
-	ldr r2, _0205EE0C ; =_020B0A60
+	ldr r2, _0205EE0C ; =MISSION_DELIVER_LIST_PTR
 	mov ip, #0
 	ldr r2, [r2, #0x18]
 	mov lr, ip
@@ -12324,7 +12324,7 @@ _0205EDF8:
 	mov r0, ip
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0205EE0C: .word _020B0A60
+_0205EE0C: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end DungeonRequestsDone
 
 	arm_func_start DungeonRequestsDoneWrapper
@@ -12378,7 +12378,7 @@ _0205EE98:
 	strh r5, [sl]
 	strh r5, [sb]
 _0205EEA4:
-	ldr r1, _0205F004 ; =_020B0A60
+	ldr r1, _0205F004 ; =MISSION_DELIVER_LIST_PTR
 	mov r0, r5, lsl #0x18
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x100
@@ -12478,7 +12478,7 @@ _0205EFFC:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0205F004: .word _020B0A60
+_0205F004: .word MISSION_DELIVER_LIST_PTR
 _0205F008: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end sub_0205EE40
 
@@ -12486,7 +12486,7 @@ _0205F008: .word TEAM_MEMBER_TABLE_PTR
 sub_0205F00C: ; 0x0205F00C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
-	ldr r2, _0205F0B4 ; =_020B0A60
+	ldr r2, _0205F0B4 ; =MISSION_DELIVER_LIST_PTR
 	mov ip, #0
 	ldr r2, [r2, #0x18]
 	add r3, r2, #0x100
@@ -12532,36 +12532,36 @@ _0205F0AC:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0205F0B4: .word _020B0A60
+_0205F0B4: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205F00C
 
-	arm_func_start sub_0205F0B8
-sub_0205F0B8: ; 0x0205F0B8
-	ldr r2, _0205F0D0 ; =_020B0A60
+	arm_func_start AddMissionToJobList
+AddMissionToJobList: ; 0x0205F0B8
+	ldr r2, _0205F0D0 ; =MISSION_DELIVER_LIST_PTR
 	ldr ip, _0205F0D4 ; =sub_0205E3F8
 	ldr r2, [r2, #0x18]
 	mov r1, #8
 	add r2, r2, #0x100
 	bx ip
 	.align 2, 0
-_0205F0D0: .word _020B0A60
+_0205F0D0: .word MISSION_DELIVER_LIST_PTR
 _0205F0D4: .word sub_0205E3F8
-	arm_func_end sub_0205F0B8
+	arm_func_end AddMissionToJobList
 
 	arm_func_start GetAcceptedMission
 GetAcceptedMission: ; 0x0205F0D8
-	ldr r1, _0205F0EC ; =_020B0A60
+	ldr r1, _0205F0EC ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x100
 	add r0, r1, r0, lsl #5
 	bx lr
 	.align 2, 0
-_0205F0EC: .word _020B0A60
+_0205F0EC: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end GetAcceptedMission
 
 	arm_func_start sub_0205F0F0
 sub_0205F0F0: ; 0x0205F0F0
-	ldr r1, _0205F114 ; =_020B0A60
+	ldr r1, _0205F114 ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	add r0, r1, r0, lsl #5
 	ldrb r0, [r0, #0x100]
@@ -12571,7 +12571,7 @@ sub_0205F0F0: ; 0x0205F0F0
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0205F114: .word _020B0A60
+_0205F114: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205F0F0
 
 	arm_func_start sub_0205F118
@@ -12765,7 +12765,7 @@ _0205F388:
 	arm_func_start GetMissionByTypeAndDungeon
 GetMissionByTypeAndDungeon: ; 0x0205F3AC
 	stmdb sp!, {r4, lr}
-	ldr ip, _0205F460 ; =_020B0A60
+	ldr ip, _0205F460 ; =MISSION_DELIVER_LIST_PTR
 	ldr r4, [ip, #0x18]
 	add r4, r4, #0x100
 	b _0205F450
@@ -12816,7 +12816,7 @@ _0205F450:
 	mvn r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0205F460: .word _020B0A60
+_0205F460: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end GetMissionByTypeAndDungeon
 
 	arm_func_start sub_0205F464
@@ -12829,7 +12829,7 @@ sub_0205F464: ; 0x0205F464
 	mov r0, #0
 	bl GetMissionByTypeAndDungeon
 	cmp r0, #0
-	ldrge r1, _0205F4A0 ; =_020B0A60
+	ldrge r1, _0205F4A0 ; =MISSION_DELIVER_LIST_PTR
 	movlt r0, #0
 	ldrge r1, [r1, #0x18]
 	movge r0, r0, lsl #0x18
@@ -12837,13 +12837,13 @@ sub_0205F464: ; 0x0205F464
 	addge r0, r1, r0, asr #19
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0205F4A0: .word _020B0A60
+_0205F4A0: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205F464
 
 	arm_func_start CheckAcceptedMissionByTypeAndDungeon
 CheckAcceptedMissionByTypeAndDungeon: ; 0x0205F4A4
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r7, _0205F500 ; =_020B0A60
+	ldr r7, _0205F500 ; =MISSION_DELIVER_LIST_PTR
 	mov r6, r0
 	mov r5, r1
 	mov r4, r2
@@ -12867,13 +12867,13 @@ _0205F4BC:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0205F500: .word _020B0A60
+_0205F500: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end CheckAcceptedMissionByTypeAndDungeon
 
 	arm_func_start sub_0205F504
 sub_0205F504: ; 0x0205F504
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r5, _0205F580 ; =_020B0A60
+	ldr r5, _0205F580 ; =MISSION_DELIVER_LIST_PTR
 	mov r4, #0
 	ldr r0, [r5, #0x18]
 	add r6, r0, #0x100
@@ -12893,12 +12893,12 @@ _0205F540:
 	cmp r4, #8
 	add r6, r6, #0x20
 	blt _0205F518
-	ldr r1, _0205F580 ; =_020B0A60
+	ldr r1, _0205F580 ; =MISSION_DELIVER_LIST_PTR
 	mov r0, #8
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x100
 	bl sub_0205E48C
-	ldr r0, _0205F580 ; =_020B0A60
+	ldr r0, _0205F580 ; =MISSION_DELIVER_LIST_PTR
 	ldr r2, _0205F584 ; =sub_0205F5C8
 	ldr r1, [r0, #0x18]
 	mov r0, #8
@@ -12906,33 +12906,33 @@ _0205F540:
 	bl sub_0205E50C
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0205F580: .word _020B0A60
+_0205F580: .word MISSION_DELIVER_LIST_PTR
 _0205F584: .word sub_0205F5C8
 	arm_func_end sub_0205F504
 
 	arm_func_start sub_0205F588
 sub_0205F588: ; 0x0205F588
-	ldr r1, _0205F5A0 ; =_020B0A60
+	ldr r1, _0205F5A0 ; =MISSION_DELIVER_LIST_PTR
 	ldr ip, _0205F5A4 ; =ClearMissionData
 	ldr r1, [r1, #0x18]
 	add r1, r1, #0x100
 	add r0, r1, r0, lsl #5
 	bx ip
 	.align 2, 0
-_0205F5A0: .word _020B0A60
+_0205F5A0: .word MISSION_DELIVER_LIST_PTR
 _0205F5A4: .word ClearMissionData
 	arm_func_end sub_0205F588
 
 	arm_func_start sub_0205F5A8
 sub_0205F5A8: ; 0x0205F5A8
-	ldr r1, _0205F5C0 ; =_020B0A60
+	ldr r1, _0205F5C0 ; =MISSION_DELIVER_LIST_PTR
 	ldr ip, _0205F5C4 ; =sub_0205E48C
 	ldr r1, [r1, #0x18]
 	mov r0, #8
 	add r1, r1, #0x100
 	bx ip
 	.align 2, 0
-_0205F5C0: .word _020B0A60
+_0205F5C0: .word MISSION_DELIVER_LIST_PTR
 _0205F5C4: .word sub_0205E48C
 	arm_func_end sub_0205F5A8
 
@@ -13032,7 +13032,7 @@ _0205F708:
 
 	arm_func_start sub_0205F710
 sub_0205F710: ; 0x0205F710
-	ldr r0, _0205F72C ; =_020B0A60
+	ldr r0, _0205F72C ; =MISSION_DELIVER_LIST_PTR
 	ldr ip, _0205F730 ; =sub_0205E50C
 	ldr r1, [r0, #0x18]
 	ldr r2, _0205F734 ; =sub_0205F5C8
@@ -13040,23 +13040,23 @@ sub_0205F710: ; 0x0205F710
 	add r1, r1, #0x100
 	bx ip
 	.align 2, 0
-_0205F72C: .word _020B0A60
+_0205F72C: .word MISSION_DELIVER_LIST_PTR
 _0205F730: .word sub_0205E50C
 _0205F734: .word sub_0205F5C8
 	arm_func_end sub_0205F710
 
-	arm_func_start sub_0205F738
-sub_0205F738: ; 0x0205F738
+	arm_func_start GetAllPossibleMonsters
+GetAllPossibleMonsters: ; 0x0205F738
 	cmp r0, #0
-	ldrne r1, _0205F754 ; =_020B0A60
+	ldrne r1, _0205F754 ; =MISSION_DELIVER_LIST_PTR
 	ldrne r1, [r1, #0x10]
 	strne r1, [r0]
-	ldr r0, _0205F754 ; =_020B0A60
+	ldr r0, _0205F754 ; =MISSION_DELIVER_LIST_PTR
 	ldr r0, [r0, #0x14]
 	bx lr
 	.align 2, 0
-_0205F754: .word _020B0A60
-	arm_func_end sub_0205F738
+_0205F754: .word MISSION_DELIVER_LIST_PTR
+	arm_func_end GetAllPossibleMonsters
 
 	arm_func_start GenerateAllPossibleMonstersList
 GenerateAllPossibleMonstersList: ; 0x0205F758
@@ -13079,7 +13079,7 @@ _0205F774:
 	cmp r6, #0x218
 	blt _0205F774
 	cmp r4, #0
-	ldrne r0, _0205F7C0 ; =_020B0A60
+	ldrne r0, _0205F7C0 ; =MISSION_DELIVER_LIST_PTR
 	strne r5, [r0, #0x10]
 	strne r4, [r0, #0x14]
 	bne _0205F7B8
@@ -13089,24 +13089,24 @@ _0205F7B8:
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0205F7C0: .word _020B0A60
+_0205F7C0: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end GenerateAllPossibleMonstersList
 
 	arm_func_start DeleteAllPossibleMonstersList
 DeleteAllPossibleMonstersList: ; 0x0205F7C4
 	stmdb sp!, {r3, lr}
-	ldr r0, _0205F7F0 ; =_020B0A60
+	ldr r0, _0205F7F0 ; =MISSION_DELIVER_LIST_PTR
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _0205F7F0 ; =_020B0A60
+	ldr r0, _0205F7F0 ; =MISSION_DELIVER_LIST_PTR
 	mov r1, #0
 	str r1, [r0, #0x14]
 	str r1, [r0, #0x10]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0205F7F0: .word _020B0A60
+_0205F7F0: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end DeleteAllPossibleMonstersList
 
 	arm_func_start GenerateAllPossibleDungeonsList
@@ -13130,7 +13130,7 @@ _0205F81C:
 	add r6, sp, #0
 _0205F834:
 	and r0, r8, #0xff
-	bl sub_02062BB8
+	bl CanDungeonBeUsedForMission
 	cmp r0, #0
 	strneb r7, [r6, r8]
 	add r8, r8, #1
@@ -13147,7 +13147,7 @@ _0205F858:
 	cmp r2, #0xb4
 	blt _0205F858
 	cmp r5, #0
-	ldrne r0, _0205F89C ; =_020B0A60
+	ldrne r0, _0205F89C ; =MISSION_DELIVER_LIST_PTR
 	strne r4, [r0, #8]
 	strne r5, [r0, #0xc]
 	bne _0205F890
@@ -13158,24 +13158,24 @@ _0205F890:
 	add sp, sp, #0xb4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_0205F89C: .word _020B0A60
+_0205F89C: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end GenerateAllPossibleDungeonsList
 
 	arm_func_start DeleteAllPossibleDungeonsList
 DeleteAllPossibleDungeonsList: ; 0x0205F8A0
 	stmdb sp!, {r3, lr}
-	ldr r0, _0205F8CC ; =_020B0A60
+	ldr r0, _0205F8CC ; =MISSION_DELIVER_LIST_PTR
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _0205F8CC ; =_020B0A60
+	ldr r0, _0205F8CC ; =MISSION_DELIVER_LIST_PTR
 	mov r1, #0
 	str r1, [r0, #0xc]
 	str r1, [r0, #8]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0205F8CC: .word _020B0A60
+_0205F8CC: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end DeleteAllPossibleDungeonsList
 
 	arm_func_start GenerateAllPossibleDeliverList
@@ -13187,7 +13187,7 @@ GenerateAllPossibleDeliverList: ; 0x0205F8D0
 	mov r4, r0
 	bl GetAvailableItemDeliveryList
 	movs r5, r0
-	ldrne r0, _0205F908 ; =_020B0A60
+	ldrne r0, _0205F908 ; =MISSION_DELIVER_LIST_PTR
 	stmneia r0, {r4, r5}
 	bne _0205F900
 	mov r0, r4
@@ -13196,24 +13196,24 @@ _0205F900:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0205F908: .word _020B0A60
+_0205F908: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end GenerateAllPossibleDeliverList
 
 	arm_func_start DeleteAllPossibleDeliverList
 DeleteAllPossibleDeliverList: ; 0x0205F90C
 	stmdb sp!, {r3, lr}
-	ldr r0, _0205F938 ; =_020B0A60
+	ldr r0, _0205F938 ; =MISSION_DELIVER_LIST_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _0205F938 ; =_020B0A60
+	ldr r0, _0205F938 ; =MISSION_DELIVER_LIST_PTR
 	mov r1, #0
 	str r1, [r0, #4]
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0205F938: .word _020B0A60
+_0205F938: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end DeleteAllPossibleDeliverList
 
 	arm_func_start sub_0205F93C
@@ -13265,7 +13265,7 @@ ClearMissionData: ; 0x0205F9B8
 	arm_func_start sub_0205F9D4
 sub_0205F9D4: ; 0x0205F9D4
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _0205FA34 ; =_020B0A60
+	ldr r1, _0205FA34 ; =MISSION_DELIVER_LIST_PTR
 	mov r5, r0
 	ldr r4, [r1, #0x18]
 	mov lr, #0xf
@@ -13285,12 +13285,12 @@ _0205F9EC:
 	str r2, [r4, #0x340]
 	str r1, [r4, #0x344]
 	bl sub_0205F93C
-	ldr r1, _0205FA34 ; =_020B0A60
+	ldr r1, _0205FA34 ; =MISSION_DELIVER_LIST_PTR
 	ldr r1, [r1, #0x18]
 	str r0, [r1, #0x348]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0205FA34: .word _020B0A60
+_0205FA34: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205F9D4
 
 	arm_func_start sub_0205FA38
@@ -13298,7 +13298,7 @@ sub_0205FA38: ; 0x0205FA38
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	bl sub_0205F93C
-	ldr r2, _0205FAAC ; =_020B0A60
+	ldr r2, _0205FAAC ; =MISSION_DELIVER_LIST_PTR
 	mov r1, #0
 	ldr r2, [r2, #0x18]
 	add r5, r2, #0x340
@@ -13327,7 +13327,7 @@ _0205FA9C:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0205FAAC: .word _020B0A60
+_0205FAAC: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205FA38
 
 	arm_func_start sub_0205FAB0
@@ -13340,7 +13340,7 @@ sub_0205FAB0: ; 0x0205FAB0
 	mov r1, r3
 	bl sub_02050974
 	mov r7, #0
-	ldr r4, _0205FC1C ; =_020B0A60
+	ldr r4, _0205FC1C ; =MISSION_DELIVER_LIST_PTR
 	add r6, sp, #0
 	mov r5, r7
 _0205FADC:
@@ -13353,7 +13353,7 @@ _0205FADC:
 	cmp r7, #8
 	blt _0205FADC
 	mov r7, #0
-	ldr r4, _0205FC1C ; =_020B0A60
+	ldr r4, _0205FC1C ; =MISSION_DELIVER_LIST_PTR
 	add r6, sp, #0
 	mov r5, r7
 _0205FB0C:
@@ -13367,7 +13367,7 @@ _0205FB0C:
 	cmp r7, #8
 	blt _0205FB0C
 	mov r7, #0
-	ldr r4, _0205FC1C ; =_020B0A60
+	ldr r4, _0205FC1C ; =MISSION_DELIVER_LIST_PTR
 	add r6, sp, #0
 	mov r5, r7
 _0205FB40:
@@ -13380,19 +13380,19 @@ _0205FB40:
 	add r7, r7, #1
 	cmp r7, #8
 	blt _0205FB40
-	ldr r1, _0205FC1C ; =_020B0A60
+	ldr r1, _0205FC1C ; =MISSION_DELIVER_LIST_PTR
 	add r0, sp, #0
 	ldr r1, [r1, #0x18]
 	mov r2, #0
 	add r1, r1, #0x300
 	bl sub_0205FD88
-	ldr r1, _0205FC1C ; =_020B0A60
+	ldr r1, _0205FC1C ; =MISSION_DELIVER_LIST_PTR
 	add r0, sp, #0
 	ldr r1, [r1, #0x18]
 	mov r2, #0
 	add r1, r1, #0x320
 	bl sub_0205FD88
-	ldr sl, _0205FC1C ; =_020B0A60
+	ldr sl, _0205FC1C ; =MISSION_DELIVER_LIST_PTR
 	mov r8, #0
 	add r6, sp, #0
 	mov r5, #0x20
@@ -13428,7 +13428,7 @@ _0205FBAC:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0205FC1C: .word _020B0A60
+_0205FC1C: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205FAB0
 
 	arm_func_start sub_0205FC20
@@ -13441,7 +13441,7 @@ sub_0205FC20: ; 0x0205FC20
 	mov r1, r3
 	bl sub_02050990
 	mov r7, #0
-	ldr r4, _0205FD84 ; =_020B0A60
+	ldr r4, _0205FD84 ; =MISSION_DELIVER_LIST_PTR
 	add r6, sp, #0
 	mov r5, r7
 _0205FC4C:
@@ -13454,7 +13454,7 @@ _0205FC4C:
 	cmp r7, #8
 	blt _0205FC4C
 	mov r7, #0
-	ldr r4, _0205FD84 ; =_020B0A60
+	ldr r4, _0205FD84 ; =MISSION_DELIVER_LIST_PTR
 	add r6, sp, #0
 	mov r5, r7
 _0205FC7C:
@@ -13468,7 +13468,7 @@ _0205FC7C:
 	cmp r7, #8
 	blt _0205FC7C
 	mov r7, #0
-	ldr r4, _0205FD84 ; =_020B0A60
+	ldr r4, _0205FD84 ; =MISSION_DELIVER_LIST_PTR
 	add r6, sp, #0
 	mov r5, r7
 _0205FCB0:
@@ -13481,19 +13481,19 @@ _0205FCB0:
 	add r7, r7, #1
 	cmp r7, #8
 	blt _0205FCB0
-	ldr r1, _0205FD84 ; =_020B0A60
+	ldr r1, _0205FD84 ; =MISSION_DELIVER_LIST_PTR
 	add r0, sp, #0
 	ldr r1, [r1, #0x18]
 	mov r2, #0
 	add r1, r1, #0x300
 	bl sub_0205FE80
-	ldr r1, _0205FD84 ; =_020B0A60
+	ldr r1, _0205FD84 ; =MISSION_DELIVER_LIST_PTR
 	add r0, sp, #0
 	ldr r1, [r1, #0x18]
 	mov r2, #0
 	add r1, r1, #0x320
 	bl sub_0205FE80
-	ldr sl, _0205FD84 ; =_020B0A60
+	ldr sl, _0205FD84 ; =MISSION_DELIVER_LIST_PTR
 	mov r8, #0
 	add r6, sp, #0
 	mov r5, #0x20
@@ -13527,7 +13527,7 @@ _0205FD1C:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0205FD84: .word _020B0A60
+_0205FD84: .word MISSION_DELIVER_LIST_PTR
 	arm_func_end sub_0205FC20
 
 	arm_func_start sub_0205FD88
@@ -13814,7 +13814,7 @@ sub_02060150: ; 0x02060150
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_0205E238
+	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0
 	strne r5, [r4, #0x5c]
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -16597,7 +16597,7 @@ _020626AC:
 	beq _02062754
 _020626C0:
 	ldrsh r0, [r4, #0x12]
-	bl sub_020558F4
+	bl GetFirstMatchingMemberIdx
 	mvn r1, #0
 	cmp r0, r1
 	movne r0, #0
@@ -17003,8 +17003,8 @@ _02062BB0: .word 0x00000217
 _02062BB4: .word 0x00000117
 	arm_func_end sub_02062B64
 
-	arm_func_start sub_02062BB8
-sub_02062BB8: ; 0x02062BB8
+	arm_func_start CanDungeonBeUsedForMission
+CanDungeonBeUsedForMission: ; 0x02062BB8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl DungeonSwapIdToIdx
@@ -17045,7 +17045,7 @@ _02062C1C:
 _02062C44:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02062BB8
+	arm_func_end CanDungeonBeUsedForMission
 
 	arm_func_start sub_02062C4C
 sub_02062C4C: ; 0x02062C4C
@@ -21271,7 +21271,7 @@ _0206617C:
 	b _02065F20
 _020661B0:
 	bl sub_0204C918
-	bl sub_0204C900
+	bl SetSpecialEpisodeType
 	mov r0, #3
 	bl sub_0204B018
 	bl sub_02048644
@@ -21608,7 +21608,7 @@ _020665B4:
 	ldreq r0, [r0, #4]
 	streqb r1, [r0, #0xa4]
 _020665D8:
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #0
 	ldreq r0, _02066874 ; =_020B0B24
 	moveq r1, #3
@@ -22077,7 +22077,7 @@ _02066BE8:
 	sub r1, r2, #0xa
 	cmp r1, #3
 	bhi _02066CF4
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #8
 	bge _02066CEC
 	ldr r1, _020674A0 ; =_020B0B2C
@@ -22125,7 +22125,7 @@ _02066CB4:
 	mov r0, r0, asr #0x18
 	bl sub_0205EC38
 _02066CCC:
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	bl sub_020686F4
 	bl sub_0206937C
 	ldr r0, _020674A0 ; =_020B0B2C
@@ -22228,7 +22228,7 @@ _02066E00:
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl sub_0205E970
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	b _02066EC0
 _02066E3C:
 	cmp r0, #0xb
@@ -22239,7 +22239,7 @@ _02066E3C:
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl sub_0205EAE8
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	b _02066EC0
 _02066E64:
 	cmp r0, #0xc
@@ -22250,7 +22250,7 @@ _02066E64:
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl sub_0205EBD8
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	b _02066EC0
 _02066E8C:
 	cmp r0, #0xd
@@ -22261,7 +22261,7 @@ _02066E8C:
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl sub_0205EC38
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	b _02066EC0
 _02066EB4:
 	cmp r0, #0x14
@@ -22341,7 +22341,7 @@ _02066FB4:
 	mov r0, r0, asr #0x18
 	bl sub_0205F588
 	bl sub_0205F5A8
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #0
 	bne _02066FFC
 	bl sub_020692B4
@@ -22627,7 +22627,7 @@ _02067398:
 	mov r0, r0, asr #0x18
 	bl sub_0205F588
 	bl sub_0205F5A8
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #0
 	bne _0206740C
 	bl sub_020692B4
@@ -22803,7 +22803,7 @@ _02067604:
 	bl sub_0204E210
 	cmp r0, #1
 	bne _02067638
-	bl sub_0205ED84
+	bl CountJobListMissions
 	mov r4, r0
 	bl GetAdventureLogDungeonFloor
 	ldrb r0, [r0]
@@ -22814,7 +22814,7 @@ _02067604:
 	and r0, r0, #0xff
 	b _0206765C
 _02067638:
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -22931,10 +22931,10 @@ _02067794:
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl sub_0205E970
-	bl sub_0205EC98
+	bl AlreadyHaveMission
 	cmp r0, #0
 	bne _020677C4
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #8
 	blt _020677CC
 _020677C4:
@@ -22957,10 +22957,10 @@ _020677F0:
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl sub_0205EAE8
-	bl sub_0205EC98
+	bl AlreadyHaveMission
 	cmp r0, #0
 	bne _02067820
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #8
 	blt _02067828
 _02067820:
@@ -22983,10 +22983,10 @@ _0206784C:
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl sub_0205EBD8
-	bl sub_0205EC98
+	bl AlreadyHaveMission
 	cmp r0, #0
 	bne _0206787C
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #8
 	blt _02067884
 _0206787C:
@@ -23009,10 +23009,10 @@ _020678A8:
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl sub_0205EC38
-	bl sub_0205EC98
+	bl AlreadyHaveMission
 	cmp r0, #0
 	bne _020678D8
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #8
 	blt _020678E0
 _020678D8:
@@ -23721,7 +23721,7 @@ _02068260:
 	cmp r1, #0xc
 	beq _020682B8
 	ldrb r0, [r4, #4]
-	bl sub_02062BB8
+	bl CanDungeonBeUsedForMission
 	cmp r0, #0
 	bne _020682B8
 	bl sub_020692B4
@@ -24764,11 +24764,11 @@ _02069070: .word _020B0B2C
 sub_02069074: ; 0x02069074
 	stmdb sp!, {r4, lr}
 	mov r4, r1
-	bl sub_0205EC98
+	bl AlreadyHaveMission
 	cmp r0, #0
 	movne r0, #3
 	strneb r0, [r4]
-	bl sub_0205ED84
+	bl CountJobListMissions
 	cmp r0, #8
 	ldrgeb r0, [r4]
 	orrge r0, r0, #1
@@ -24781,7 +24781,7 @@ sub_020690A4: ; 0x020690A4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_0205EC98
+	bl AlreadyHaveMission
 	cmp r0, #0
 	bne _020690CC
 	mov r0, r5
@@ -24964,7 +24964,7 @@ sub_020692FC: ; 0x020692FC
 	bhi _02069328
 	bl sub_02069444
 	mov r1, #1
-	bl sub_02069800
+	bl CreateJobSummary
 	ldmia sp!, {r3, pc}
 _02069328:
 	cmp r1, #0xa
@@ -24978,7 +24978,7 @@ _02069328:
 _02069348:
 	bl sub_02069444
 	mov r1, #0
-	bl sub_02069800
+	bl CreateJobSummary
 	ldmia sp!, {r3, pc}
 _02069358:
 	cmp r1, #0x13
@@ -25247,7 +25247,7 @@ sub_02069660: ; 0x02069660
 	ldr r0, [r0, #0xe0]
 	cmp r0, #0
 	beq _020696C4
-	bl sub_0205E238
+	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0
 	beq _020696C4
 	mov r0, r5
@@ -25274,7 +25274,7 @@ sub_020696E8: ; 0x020696E8
 	mov r4, r0
 	add r0, sp, #0x104
 	bl InitPreprocessorArgs
-	bl sub_0205ED84
+	bl CountJobListMissions
 	str r0, [sp, #0x128]
 	mov r0, #8
 	str r0, [sp, #0x12c]
@@ -25360,8 +25360,8 @@ _020697F8: .word JOB_WINDOW_PARAMS_2
 _020697FC: .word sub_02069AEC
 	arm_func_end sub_02069790
 
-	arm_func_start sub_02069800
-sub_02069800: ; 0x02069800
+	arm_func_start CreateJobSummary
+CreateJobSummary: ; 0x02069800
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -25391,7 +25391,7 @@ sub_02069800: ; 0x02069800
 _02069864: .word _020B0B44
 _02069868: .word JOB_WINDOW_PARAMS_2
 _0206986C: .word sub_02069CC0
-	arm_func_end sub_02069800
+	arm_func_end CreateJobSummary
 
 	arm_func_start sub_02069870
 sub_02069870: ; 0x02069870
@@ -25734,7 +25734,7 @@ sub_02069CC0: ; 0x02069CC0
 	ldr r4, [r0, #4]
 	ldrb r5, [r0, #0x10]
 	mov r0, r4
-	bl sub_0205E238
+	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0
 	beq _02069CFC
 	mov r0, r6
@@ -26058,11 +26058,11 @@ _0206A15C:
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r0, [r0]
 	add r0, r0, #0x70
-	bl sub_0205E238
+	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0
 	beq _0206A244
 	mov r0, #2
-	bl sub_0204C94C
+	bl IsSpecialEpisodeOpen
 	cmp r0, #0
 	beq _0206A1B0
 	ldr r1, _0206A5F8 ; =0x000037A8
@@ -26107,7 +26107,7 @@ _0206A204:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x70
-	bl sub_02069800
+	bl CreateJobSummary
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0x2000
 	ldr r0, [r0]
@@ -26117,7 +26117,7 @@ _0206A244:
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r0, [r0]
 	add r0, r0, #0x70
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	cmp r0, #0
 	bne _0206A2EC
 	bl sub_0205F5A8
@@ -26152,7 +26152,7 @@ _0206A2AC:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x70
-	bl sub_02069800
+	bl CreateJobSummary
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0x2000
 	ldr r0, [r0]
@@ -26219,7 +26219,7 @@ _0206A3A0:
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r0, [r0]
 	add r0, r0, #0x70
-	bl sub_0205F0B8
+	bl AddMissionToJobList
 	bl sub_0205F5A8
 	bl sub_0205F710
 	add r0, sp, #0
@@ -26250,7 +26250,7 @@ _0206A410:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x70
-	bl sub_02069800
+	bl CreateJobSummary
 	ldr r0, _0206A5E0 ; =_020B0B48
 	mov r1, #0x2000
 	ldr r0, [r0]
@@ -26314,7 +26314,7 @@ _0206A4F8:
 	ldr r0, _0206A5E0 ; =_020B0B48
 	ldr r0, [r0]
 	add r0, r0, #0x70
-	bl sub_0205E238
+	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0
 	mov r0, #0x1c
 	beq _0206A53C
@@ -26415,7 +26415,7 @@ sub_0206A628: ; 0x0206A628
 	movne r0, #2
 	ldmneia sp!, {r4, pc}
 	add r0, r4, #0x18
-	bl sub_0205E238
+	bl IsMissionTypeSpecialEpisode
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r4, pc}
@@ -26449,7 +26449,7 @@ _0206A6CC:
 	ldmeqia sp!, {r4, pc}
 _0206A6E4:
 	add r0, r4, #0x18
-	bl sub_0205EC98
+	bl AlreadyHaveMission
 	cmp r0, #0
 	movne r0, #4
 	ldmneia sp!, {r4, pc}

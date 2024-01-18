@@ -109,7 +109,6 @@
 .public _020AFC70
 .public _020B0A4C
 .public _020B0A54
-.public _020B0A60
 .public _020B0AD8
 .public _020B0AFC
 .public _020B0B04
@@ -299,6 +298,7 @@
 .public IsMovesetValid
 .public IsMovesetValidInTimeDarkness
 .public IsSkyExclusiveDungeon
+.public IsSpecialEpisodeOpen
 .public IsStorableItem
 .public IsThrownItem
 .public IsUnown
@@ -339,6 +339,7 @@
 .public MemZero
 .public MISSION_BANNED_MONSTERS
 .public MISSION_BANNED_STORY_MONSTERS
+.public MISSION_DELIVER_LIST_PTR
 .public MISSION_DUNGEON_UNLOCK_TABLE
 .public MISSION_MENU_STRING_IDS_1
 .public MISSION_MENU_STRING_IDS_2
@@ -394,6 +395,7 @@
 .public SetPokemonJoined
 .public SetQuestionMarks
 .public SetScenarioScriptVar
+.public SetSpecialEpisodeType
 .public SetSpriteIdForAnimationControl
 .public ShowPortraitInPortraitBox
 .public ShuffleHiddenPower
@@ -539,9 +541,7 @@
 .public sub_0204AF98
 .public sub_0204B018
 .public sub_0204C6C8
-.public sub_0204C900
 .public sub_0204C918
-.public sub_0204C94C
 .public sub_0204C978
 .public sub_0204CA1C
 .public sub_0204D018

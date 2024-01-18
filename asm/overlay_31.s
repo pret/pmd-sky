@@ -6896,11 +6896,11 @@ ov31_023886DC: ; 0x023886DC
 
 	arm_func_start ov31_023886F4
 ov31_023886F4: ; 0x023886F4
-	ldr ip, _02388700 ; =sub_0202A954
+	ldr ip, _02388700 ; =ResumeParentMenu
 	ldrsb r0, [r0]
 	bx ip
 	.align 2, 0
-_02388700: .word sub_0202A954
+_02388700: .word ResumeParentMenu
 	arm_func_end ov31_023886F4
 
 	arm_func_start ov31_02388704
@@ -7760,7 +7760,7 @@ _02389298:
 	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202A954
+	bl ResumeParentMenu
 	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	mov r1, #1
 	ldr r0, [r0]
@@ -8075,7 +8075,7 @@ _023896F0:
 	add r0, r5, #1
 	bl ov29_0234E988
 	ldrsb r0, [r5]
-	bl sub_0202A954
+	bl ResumeParentMenu
 	b _023898AC
 _0238970C:
 	ldr r0, [r5, #0x4e8]
@@ -8101,7 +8101,7 @@ _02389748:
 	add r0, r5, #1
 	bl ov29_0234E988
 	ldrsb r0, [r5]
-	bl sub_0202A954
+	bl ResumeParentMenu
 	ldrsb r0, [r5]
 	add r1, r5, #0xc4
 	bl sub_0202A98C
@@ -8118,7 +8118,7 @@ _02389780:
 	add r0, r5, #1
 	bl ov29_0234E988
 	ldrsb r0, [r5]
-	bl sub_0202A954
+	bl ResumeParentMenu
 	b _023898AC
 _023897A8:
 	ldrsb r1, [r5]
@@ -8557,7 +8557,7 @@ _02389D1C:
 	cmp r4, #0
 	beq _02389D6C
 	mov r0, r5
-	bl sub_0202A954
+	bl ResumeParentMenu
 _02389D6C:
 	add sp, sp, #0x5c
 	ldmia sp!, {r4, r5, r6, r7, pc}

@@ -41,6 +41,7 @@
 .public PlaySeVolumeWrapper
 .public PreprocessStringFromId
 .public Rand16Bit
+.public ResumeSimpleMenu
 .public SetCollectionMenuField0x1A0
 .public SetCollectionMenuField0x1A4
 .public SetCollectionMenuField0x1C8
@@ -79,7 +80,6 @@
 .public sub_02025D50
 .public sub_02027B1C
 .public sub_0202A03C
-.public sub_0202B490
 .public sub_0202B530
 .public sub_0202B544
 .public sub_0202B568

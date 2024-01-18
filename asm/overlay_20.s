@@ -2311,7 +2311,7 @@ _0238BFDC:
 	cmpne r2, #2
 	bne _0238C048
 	ldrsb r0, [r0, #4]
-	bl sub_0202B490
+	bl ResumeSimpleMenu
 	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	bl ov20_0238C2B8
