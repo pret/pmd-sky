@@ -1,6 +1,6 @@
 #include "dc_lfo_2.h"
 
-extern s32 SoundUtil_GetRandomNumber();
+extern s32 DseUtil_GetRandomNumber();
 
 void SoundLfoBank_SetConstEnvelopes(struct dse_lfo_bank *lfo_bank, s8 level)
 {
@@ -222,7 +222,7 @@ s32 SoundLfoWave_HalfNoiseFunc(struct dse_lfo *lfo)
     if (lfo->ticks_until_phase_change == 0)
     {
         lfo->ticks_until_phase_change = lfo->ticks_per_phase_change;
-        random = SoundUtil_GetRandomNumber();
+        random = DseUtil_GetRandomNumber();
         lfo->current_output = (s32)((lfo->amplitude >> 0x10) * random);
     }
     lfo->ticks_until_phase_change--;
@@ -238,7 +238,7 @@ s32 SoundLfoWave_FullNoiseFunc(struct dse_lfo *lfo)
     {
         lfo->ticks_until_phase_change = lfo->ticks_per_phase_change;
         amplitude = lfo->amplitude;
-        random = SoundUtil_GetRandomNumber();
+        random = DseUtil_GetRandomNumber();
         lfo->current_output = (s32)((amplitude >> 0xf) * random - (amplitude >> 1));
     }
     lfo->ticks_until_phase_change--;

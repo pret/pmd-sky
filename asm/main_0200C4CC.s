@@ -16314,7 +16314,7 @@ InitSoundSystem: ; 0x02018C28
 	mov r1, #0
 	bl sub_0207C9C4
 	add r0, sp, #0x10
-	bl sub_0206C1C0
+	bl DseDriver_LoadDefaultSettings
 	mov r0, #0x10000
 	mov r1, #2
 	bl MemAlloc
@@ -16330,7 +16330,7 @@ InitSoundSystem: ; 0x02018C28
 	str r0, [r1, #4]
 	ldr r1, [r1]
 	add r0, sp, #0x10
-	bl sub_0206C33C
+	bl DseDriver_ConfigureHeap
 	add r0, sp, #0x10
 	mov r1, #0
 	mov r2, #4
@@ -16340,14 +16340,14 @@ InitSoundSystem: ; 0x02018C28
 	mov r2, #0xf
 	bl sub_0206C39C
 	add r0, sp, #0x10
-	bl sub_0206C3E0
+	bl DseDriver_Init
 	ldr r1, _02018E50 ; =_0209939C
 	add r0, sp, #8
 	bl sub_02019314
 	mov r1, #0
 	ldr r0, [sp, #8]
 	mov r2, r1
-	bl sub_0206D108
+	bl DseSwd_LoadBank
 	mov r1, r0
 	ldr r2, _02018E54 ; =_022A4E58
 	ldr r0, _02018E58 ; =_020993B4
@@ -16357,7 +16357,7 @@ InitSoundSystem: ; 0x02018C28
 	add r0, sp, #8
 	bl sub_02019314
 	ldr r0, [sp, #8]
-	bl sub_0206EA18
+	bl DseSe_Load
 	mov r1, r0
 	ldr r0, _02018E54 ; =_022A4E58
 	str r1, [r0, #0x7c]
@@ -16369,7 +16369,7 @@ InitSoundSystem: ; 0x02018C28
 	mov r1, #0
 	ldr r0, [sp]
 	mov r2, r1
-	bl sub_0206D108
+	bl DseSwd_LoadBank
 	mov r1, r0
 	ldr r2, _02018E54 ; =_022A4E58
 	ldr r0, _02018E68 ; =_02099418
@@ -16379,7 +16379,7 @@ InitSoundSystem: ; 0x02018C28
 	add r0, sp, #0
 	bl sub_02019314
 	ldr r0, [sp]
-	bl sub_0206EA18
+	bl DseSe_Load
 	mov r1, r0
 	ldr r2, _02018E54 ; =_022A4E58
 	ldr r0, _02018E70 ; =_02099448
@@ -16431,7 +16431,7 @@ _02018E04:
 	ldr r0, _02018EA0 ; =_020AFB4C
 	mov r2, r1
 	mov r3, r1
-	bl sub_0206CED0
+	bl DseSwd_LoadMainBank
 	ldr r1, _02018E54 ; =_022A4E58
 	str r0, [r1, #4]
 	ldr r0, _02018E44 ; =_020AFB28
@@ -16479,7 +16479,7 @@ ManipBgmPlayback: ; 0x02018EA4
 	cmp r1, #2
 	bne _02018F0C
 	ldr r0, [r0]
-	bl sub_0206D9A4
+	bl DseBgm_IsPlaying
 	cmp r0, #0
 	bne _02018F0C
 	ldr r0, _02019050 ; =_022A4E58
@@ -16499,7 +16499,7 @@ _02018F0C:
 	cmp r1, #2
 	bne _0201903C
 	ldr r0, [r0, #8]
-	bl sub_0206D9A4
+	bl DseBgm_IsPlaying
 	cmp r0, #0
 	bne _0201903C
 	ldr r0, _02019050 ; =_022A4E58
@@ -16520,7 +16520,7 @@ _02018F5C:
 	cmpeq r1, #2
 	bne _0201903C
 	ldr r0, [r0, #0x10]
-	bl sub_0206D9A4
+	bl DseBgm_IsPlaying
 	cmp r0, #0
 	bne _0201903C
 	bl sub_02019508
@@ -16600,7 +16600,7 @@ sub_0201906C: ; 0x0201906C
 	bne _020190B4
 	ldr r0, [r0, #0xdc]
 	mov r1, #0
-	bl sub_0206ED30
+	bl DseSe_HasPlayingInstances
 	cmp r0, #0
 	bne _020190B4
 	bl sub_02019790
@@ -16646,13 +16646,13 @@ _0201910C:
 	bne _02019174
 	ldr r0, _02019254 ; =_022A4E58
 	ldr r0, [r0, #0x10]
-	bl sub_0206D9A4
+	bl DseBgm_IsPlaying
 	cmp r0, #0
 	ble _02019174
 	ldr r0, _02019254 ; =_022A4E58
 	mov r1, #0
 	ldr r0, [r0, #0x10]
-	bl sub_0206DA9C
+	bl DseBgm_Stop
 	ldr r5, _0201924C ; =_020AFB28
 	ldr r4, _02019254 ; =_022A4E58
 	b _02019164
@@ -16664,7 +16664,7 @@ _02019150:
 	bl sub_02002CB4
 _02019164:
 	ldr r0, [r4, #0x10]
-	bl sub_0206D9A4
+	bl DseBgm_IsPlaying
 	cmp r0, #0
 	bne _02019150
 _02019174:
@@ -16686,9 +16686,9 @@ _020191A0:
 	bne _020191D4
 	ldr r0, [sb]
 	mov r1, r8
-	bl sub_0206DA9C
+	bl DseBgm_Stop
 	ldr r0, [sb]
-	bl sub_0206D9A4
+	bl DseBgm_IsPlaying
 	cmp r0, #0
 	bne _020191D4
 	bl sub_02019408
@@ -16700,9 +16700,9 @@ _020191D4:
 	bne _02019208
 	ldr r0, [sb, #8]
 	mov r1, r5
-	bl sub_0206DA9C
+	bl DseBgm_Stop
 	ldr r0, [sb, #8]
-	bl sub_0206D9A4
+	bl DseBgm_IsPlaying
 	cmp r0, #0
 	bne _02019208
 	bl sub_02019488
@@ -16880,12 +16880,12 @@ sub_02019408: ; 0x02019408
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02019480 ; =_022A4E58
 	ldr r0, [r0]
-	bl sub_0206D90C
+	bl DseBgm_Unload
 	ldr r0, _02019480 ; =_022A4E58
 	ldr r0, [r0, #4]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0206D4E4
+	bl DseSwd_Unload
 	ldr r0, _02019484 ; =_022A4E50
 	ldr r1, _02019480 ; =_022A4E58
 	ldr r0, [r0, #4]
@@ -16917,12 +16917,12 @@ sub_02019488: ; 0x02019488
 	ldmneia sp!, {r3, pc}
 	ldr r0, _02019500 ; =_022A4E58
 	ldr r0, [r0, #8]
-	bl sub_0206D90C
+	bl DseBgm_Unload
 	ldr r0, _02019500 ; =_022A4E58
 	ldr r0, [r0, #0xc]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0206D4E4
+	bl DseSwd_Unload
 	ldr r0, _02019504 ; =_022A4E50
 	ldr r1, _02019500 ; =_022A4E58
 	ldr r0, [r0, #4]
@@ -16954,12 +16954,12 @@ sub_02019508: ; 0x02019508
 	ldmneia sp!, {r3, pc}
 	ldr r0, _0201956C ; =_022A4E58
 	ldr r0, [r0, #0x10]
-	bl sub_0206D90C
+	bl DseBgm_Unload
 	ldr r0, _0201956C ; =_022A4E58
 	ldr r0, [r0, #0x14]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0206D4E4
+	bl DseSwd_Unload
 	ldr r0, _02019570 ; =_022A4E50
 	ldr r1, _0201956C ; =_022A4E58
 	ldr r0, [r0, #4]
@@ -17026,14 +17026,14 @@ _020195C8:
 	bl sub_02002CB4
 	ldr r0, _02019760 ; =_022A4E58
 	ldr r0, [r0, #0x9c]
-	bl sub_0206EA18
+	bl DseSe_Load
 	ldr r2, _02019760 ; =_022A4E58
 	add r1, sp, #4
 	str r0, [r2, #0xc8]
 	add r0, r0, r5, lsl #16
 	str r0, [r2, #0xdc]
 	mov r2, #4
-	bl sub_0206EC5C
+	bl DseSe_GetUsedBankIDs
 	mov r7, r0
 	ldr r1, _02019778 ; =_020994D8
 	mov r2, r6
@@ -17078,7 +17078,7 @@ _02019684:
 	mov r1, #0
 	ldr r0, [r0, #0xa4]
 	mov r2, r1
-	bl sub_0206D108
+	bl DseSwd_LoadBank
 	add r1, r4, r8, lsl #2
 	str r0, [r1, #0xcc]
 	add r8, r8, #1
@@ -17096,7 +17096,7 @@ _0201970C:
 	ldr r0, [r0, #0xc8]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0206EBCC
+	bl DseSe_Unload
 	ldr r0, _0201978C ; =_022A4E50
 	ldr r1, _02019760 ; =_022A4E58
 	ldr r0, [r0, #4]
@@ -17137,7 +17137,7 @@ _020197B4:
 	ldr r0, [r0, #0xcc]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0206D4E4
+	bl DseSwd_Unload
 	add r1, r4, r6, lsl #3
 	ldr r0, [r7, #4]
 	ldr r1, [r1, #0xa4]
@@ -17150,7 +17150,7 @@ _020197DC:
 	ldr r0, [r0, #0xc8]
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0206EBCC
+	bl DseSe_Unload
 	ldr r0, _02019820 ; =_022A4E50
 	ldr r1, _0201981C ; =_022A4E58
 	ldr r0, [r0, #4]
@@ -17298,13 +17298,13 @@ _02019970:
 	mov r1, #0
 	ldr r0, [r0, #0x24]
 	mov r2, r1
-	bl sub_0206D108
+	bl DseSwd_LoadBank
 	ldr r2, _02019B08 ; =_022A4E58
 	mov r1, r0, lsl #0x10
 	str r0, [r2, #4]
 	mov r0, r1, lsr #0x10
 	mov r1, #0
-	bl sub_0206D328
+	bl DseSwd_LoadBankWavesFromMainBank
 	mov r1, r0
 	ldr r0, _02019B20 ; =_022A4E50
 	ldr r2, _02019B08 ; =_022A4E58
@@ -17323,7 +17323,7 @@ _02019970:
 	ldr r1, [r0, #0x2c]
 	mov r0, r2, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0206D328
+	bl DseSwd_LoadBankWavesFromMainBank
 _02019A5C:
 	bl sub_02003AB0
 	bl sub_0206D30C
@@ -17334,12 +17334,12 @@ _02019A5C:
 	bl sub_02002CB4
 	ldr r0, _02019B08 ; =_022A4E58
 	ldr r0, [r0, #0x34]
-	bl sub_0206D808
+	bl DseBgm_Load
 	ldr r3, _02019B08 ; =_022A4E58
 	ldr r1, _02019B24 ; =sub_0201AABC
 	mov r2, #0
 	str r0, [r3]
-	bl sub_0206D944
+	bl DseBgm_SetSignalCallback
 	mov r0, #0x3e8
 	mov r1, #4
 	str r1, [sp, #4]
@@ -17418,7 +17418,7 @@ _02019B78:
 	ldr r2, _02019C44 ; =_022A4E58
 	mov r1, r1, lsr #0x10
 	ldr r0, [r2]
-	bl sub_0206DA9C
+	bl DseBgm_Stop
 	ldr r0, _02019C44 ; =_022A4E58
 	str r4, [sp]
 	ldrh r3, [r0, #0x20]
@@ -17444,7 +17444,7 @@ _02019BF0:
 	bl sub_02002CB4
 _02019C04:
 	ldr r0, [r4]
-	bl sub_0206D9A4
+	bl DseBgm_IsPlaying
 	cmp r0, #0
 	bne _02019BF0
 	bl sub_02019408
@@ -17503,7 +17503,7 @@ ChangeBgm: ; 0x02019C50
 	add r1, sp, #0
 	str r3, [sp, #0xc]
 	str r2, [sp]
-	bl sub_0206DB3C
+	bl DseBgm_SetFades
 _02019CE0:
 	ldr r0, _02019D00 ; =_022A4E58
 	strh r4, [r0, #0x22]
@@ -17644,13 +17644,13 @@ _02019E3C:
 	mov r1, #0
 	ldr r0, [r0, #0x4c]
 	mov r2, r1
-	bl sub_0206D108
+	bl DseSwd_LoadBank
 	ldr r2, _02019FC8 ; =_022A4E58
 	mov r1, r0, lsl #0x10
 	str r0, [r2, #0xc]
 	mov r0, r1, lsr #0x10
 	mov r1, #0
-	bl sub_0206D328
+	bl DseSwd_LoadBankWavesFromMainBank
 	mov r1, r0
 	ldr r0, _02019FE0 ; =_022A4E50
 	ldr r2, _02019FC8 ; =_022A4E58
@@ -17669,7 +17669,7 @@ _02019E3C:
 	ldr r1, [r0, #0x54]
 	mov r0, r2, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_0206D328
+	bl DseSwd_LoadBankWavesFromMainBank
 _02019F1C:
 	bl sub_02003AB0
 	bl sub_0206D30C
@@ -17680,12 +17680,12 @@ _02019F1C:
 	bl sub_02002CB4
 	ldr r0, _02019FC8 ; =_022A4E58
 	ldr r0, [r0, #0x5c]
-	bl sub_0206D808
+	bl DseBgm_Load
 	ldr r3, _02019FC8 ; =_022A4E58
 	ldr r1, _02019FE4 ; =sub_0201AABC
 	mov r2, #0
 	str r0, [r3, #8]
-	bl sub_0206D944
+	bl DseBgm_SetSignalCallback
 	mov r0, #0x3e8
 	mov r1, #4
 	str r1, [sp, #4]
@@ -17763,7 +17763,7 @@ _0201A034:
 	ldr r2, _0201A0E0 ; =_022A4E58
 	mov r1, r1, lsr #0x10
 	ldr r0, [r2, #8]
-	bl sub_0206DA9C
+	bl DseBgm_Stop
 	cmp r4, #0
 	beq _0201A084
 	ldr r0, _0201A0E0 ; =_022A4E58
@@ -17782,7 +17782,7 @@ _0201A090:
 	bl sub_02002CB4
 _0201A0A4:
 	ldr r0, [r4, #8]
-	bl sub_0206D9A4
+	bl DseBgm_IsPlaying
 	cmp r0, #0
 	bne _0201A090
 	bl sub_02019488
@@ -17839,7 +17839,7 @@ ChangeBgm2: ; 0x0201A0E8
 	add r1, sp, #0
 	str r3, [sp, #0xc]
 	str r2, [sp]
-	bl sub_0206DB3C
+	bl DseBgm_SetFades
 _0201A178:
 	ldr r0, _0201A198 ; =_022A4E58
 	strh r4, [r0, #0x4a]
@@ -17905,7 +17905,7 @@ _0201A228:
 	ldr r0, _0201A3F8 ; =_022A4E58
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0206DA9C
+	bl DseBgm_Stop
 	b _0201A268
 _0201A250:
 	mov r0, r8
@@ -17926,7 +17926,7 @@ _0201A270:
 	ldr r0, _0201A3F8 ; =_022A4E58
 	mov r1, #0
 	ldr r0, [r0, #8]
-	bl sub_0206DA9C
+	bl DseBgm_Stop
 	b _0201A304
 _0201A298:
 	mov r0, r8
@@ -17955,7 +17955,7 @@ _0201A2DC:
 	bl sub_02002CB4
 _0201A2F0:
 	ldr r0, [r7, #0x10]
-	bl sub_0206D9A4
+	bl DseBgm_IsPlaying
 	cmp r0, #0
 	bne _0201A2DC
 	bl sub_02019508
@@ -17986,11 +17986,11 @@ _0201A304:
 	mov r1, #0
 	ldr r0, [r0, #0x6c]
 	mov r2, r1
-	bl sub_0206D108
+	bl DseSwd_LoadBank
 	ldr r1, _0201A3F8 ; =_022A4E58
 	str r0, [r1, #0x14]
 	ldr r0, [r1, #0x74]
-	bl sub_0206D808
+	bl DseBgm_Load
 	ldr r1, _0201A3F8 ; =_022A4E58
 	mov r2, #4
 	str r0, [r1, #0x10]
@@ -18053,7 +18053,7 @@ StopME: ; 0x0201A40C
 	ldr r2, _0201A47C ; =_022A4E58
 	mov r1, r1, lsr #0x10
 	ldr r0, [r2, #0x10]
-	bl sub_0206DA9C
+	bl DseBgm_Stop
 _0201A468:
 	ldr r0, _0201A474 ; =_020AFB28
 	bl sub_02002E98
@@ -18083,7 +18083,7 @@ sub_0201A480: ; 0x0201A480
 	mov r1, r5, lsl #0x10
 	ldr r0, [r0, #0x88]
 	mov r1, r1, lsr #0x10
-	bl sub_0206ED30
+	bl DseSe_HasPlayingInstances
 	cmp r0, #0
 	movgt r6, #1
 	b _0201A4E4
@@ -18133,7 +18133,7 @@ PlaySe: ; 0x0201A4FC
 	mov r1, #0
 	add r0, r0, r4, lsl #16
 	str r0, [r3, #0x84]
-	bl sub_0206EDFC
+	bl DseSe_Play
 	b _0201A650
 _0201A578:
 	cmp r6, #1
@@ -18144,7 +18144,7 @@ _0201A578:
 	mov r1, #0
 	add r0, r0, r4, lsl #16
 	str r0, [r3, #0x90]
-	bl sub_0206EDFC
+	bl DseSe_Play
 	b _0201A650
 _0201A5A0:
 	ldr r0, _0201A668 ; =_022A4E58
@@ -18159,7 +18159,7 @@ _0201A5A0:
 	mov r1, #0
 	ldr r0, [r0, #0xdc]
 	mov r2, r1
-	bl sub_0206F38C
+	bl DseSe_Stop
 	ldr r8, _0201A660 ; =_020AFB28
 	mov r7, #0
 	ldr r6, _0201A668 ; =_022A4E58
@@ -18173,7 +18173,7 @@ _0201A5E4:
 _0201A5F8:
 	ldr r0, [r6, #0xdc]
 	mov r1, r7
-	bl sub_0206ED30
+	bl DseSe_HasPlayingInstances
 	cmp r0, #0
 	bgt _0201A5E4
 _0201A60C:
@@ -18193,7 +18193,7 @@ _0201A60C:
 	add r2, sp, #0
 	add r0, r0, r4, lsl #16
 	str r0, [r3, #0xdc]
-	bl sub_0206EDFC
+	bl DseSe_Play
 _0201A650:
 	ldr r0, _0201A660 ; =_020AFB28
 	bl sub_02002E98
@@ -18255,7 +18255,7 @@ PlaySeFullSpec: ; 0x0201A66C
 	mov r1, #0
 	add r0, r0, r5, lsl #16
 	str r0, [r3, #0x84]
-	bl sub_0206EDFC
+	bl DseSe_Play
 	b _0201A80C
 _0201A734:
 	cmp r4, #1
@@ -18266,7 +18266,7 @@ _0201A734:
 	mov r1, #0
 	add r0, r0, r5, lsl #16
 	str r0, [r3, #0x90]
-	bl sub_0206EDFC
+	bl DseSe_Play
 	b _0201A80C
 _0201A75C:
 	ldr r0, _0201A824 ; =_022A4E58
@@ -18281,7 +18281,7 @@ _0201A75C:
 	mov r1, #0
 	ldr r0, [r0, #0xdc]
 	mov r2, r1
-	bl sub_0206F38C
+	bl DseSe_Stop
 	ldr r7, _0201A81C ; =_020AFB28
 	mov r6, #0
 	ldr r4, _0201A824 ; =_022A4E58
@@ -18295,7 +18295,7 @@ _0201A7A0:
 _0201A7B4:
 	ldr r0, [r4, #0xdc]
 	mov r1, r6
-	bl sub_0206ED30
+	bl DseSe_HasPlayingInstances
 	cmp r0, #0
 	bgt _0201A7A0
 _0201A7C8:
@@ -18315,7 +18315,7 @@ _0201A7C8:
 	add r2, sp, #8
 	add r0, r0, r5, lsl #16
 	str r0, [r3, #0xdc]
-	bl sub_0206EDFC
+	bl DseSe_Play
 _0201A80C:
 	ldr r0, _0201A81C ; =_020AFB28
 	bl sub_02002E98
@@ -18470,7 +18470,7 @@ StopSe: ; 0x0201A9E4
 	cmp r7, #0x3f00
 	bne _0201AA2C
 	mov r0, #0
-	bl sub_0206F4E0
+	bl DseSe_StopAll
 	b _0201AA88
 _0201AA2C:
 	cmp r4, #0
@@ -18496,7 +18496,7 @@ _0201AA64:
 	mov r2, r1, lsr #0x10
 	mov r0, r4
 	mov r1, #0
-	bl sub_0206F38C
+	bl DseSe_Stop
 _0201AA88:
 	ldr r0, _0201AA94 ; =_020AFB28
 	bl sub_02002E98
