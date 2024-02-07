@@ -28738,7 +28738,7 @@ _0206C5A4:
 	strb r1, [r0, #0x40]
 	bl DseDriver_StartMainThread
 	ldrb r0, [r4, #0x12]
-	bl sub_0206CD9C
+	bl DseSwd_SysInit
 	ldr r0, _0206C5F8 ; =DRIVER_WORK
 	mov r1, #1
 	strb r1, [r0]
@@ -28770,7 +28770,7 @@ sub_0206C620: ; 0x0206C620
 	cmp r0, #0
 	mvneq r0, #0xc0
 	ldmeqia sp!, {r3, pc}
-	bl sub_0206CE28
+	bl DseSwd_SysQuit
 	mov r0, #0
 	bl sub_0206C7F4
 	bl sub_020756E8
@@ -28893,7 +28893,7 @@ sub_0206C754: ; 0x0206C754
 	ldr r0, _0206C7F0 ; =DRIVER_WORK
 	mov r1, #0
 	strb r1, [r0, #1]
-	bl sub_02070EDC
+	bl DseDriver_StartTickTimer
 	mov r0, #0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -28924,13 +28924,13 @@ sub_0206C814: ; 0x0206C814
 	str r2, [r1, #0x660]
 	str r2, [r1, #0x664]
 	str r2, [r1, #0x668]
-	ldr ip, _0206C850 ; =sub_0206E8AC
+	ldr ip, _0206C850 ; =DseBgm_SysSetupNoteList
 	str r2, [r1, #0x66c]
 	bx ip
 	.align 2, 0
 _0206C848: .word DRIVER_WORK
 _0206C84C: .word _022B8330
-_0206C850: .word sub_0206E8AC
+_0206C850: .word DseBgm_SysSetupNoteList
 	arm_func_end sub_0206C814
 
 	arm_func_start Dse_SetError
@@ -29134,8 +29134,8 @@ _0206CAC4: .word DRIVER_WORK
 _0206CAC8: .word 0x04000208
 	arm_func_end DseMem_Allocate
 
-	arm_func_start DseMem_Alloc2
-DseMem_Alloc2: ; 0x0206CACC
+	arm_func_start DseMem_AllocateThreadStack
+DseMem_AllocateThreadStack: ; 0x0206CACC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r3, _0206CC0C ; =DRIVER_WORK
 	mov r6, r0
@@ -29224,7 +29224,7 @@ _0206CB9C:
 	.align 2, 0
 _0206CC0C: .word DRIVER_WORK
 _0206CC10: .word 0x04000208
-	arm_func_end DseMem_Alloc2
+	arm_func_end DseMem_AllocateThreadStack
 
 	arm_func_start DseMem_Free
 DseMem_Free: ; 0x0206CC14
@@ -29348,8 +29348,8 @@ _0206CD80:
 _0206CD98: .word DRIVER_WORK
 	arm_func_end DseFile_CheckHeader
 
-	arm_func_start sub_0206CD9C
-sub_0206CD9C: ; 0x0206CD9C
+	arm_func_start DseSwd_SysInit
+DseSwd_SysInit: ; 0x0206CD9C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
 	ldr r3, _0206CE18 ; =_022B8330
@@ -29366,7 +29366,7 @@ sub_0206CD9C: ; 0x0206CD9C
 	mov r0, #0x800
 	mov r1, #0x10
 	strb ip, [r3, #0xdef]
-	bl DseMem_Alloc2
+	bl DseMem_AllocateThreadStack
 	ldr r1, _0206CE18 ; =_022B8330
 	mov r2, #0x800
 	str r0, [r1, #0xeb0]
@@ -29374,7 +29374,7 @@ sub_0206CD9C: ; 0x0206CD9C
 	ldr r2, [r1, #0xeb0]
 	ldr r0, _0206CE20 ; =_022B9120
 	add r3, r2, #0x800
-	ldr r1, _0206CE24 ; =sub_0206CE68
+	ldr r1, _0206CE24 ; =DseSwd_SampleLoaderMain
 	mov r2, #0
 	bl StartThread
 	ldr r0, _0206CE20 ; =_022B9120
@@ -29385,11 +29385,11 @@ sub_0206CD9C: ; 0x0206CD9C
 _0206CE18: .word _022B8330
 _0206CE1C: .word 0x72727473
 _0206CE20: .word _022B9120
-_0206CE24: .word sub_0206CE68
-	arm_func_end sub_0206CD9C
+_0206CE24: .word DseSwd_SampleLoaderMain
+	arm_func_end DseSwd_SysInit
 
-	arm_func_start sub_0206CE28
-sub_0206CE28: ; 0x0206CE28
+	arm_func_start DseSwd_SysQuit
+DseSwd_SysQuit: ; 0xDseSwd_SysQuit
 	stmdb sp!, {r3, lr}
 	ldr r1, _0206CE60 ; =_022B8330
 	mov r2, #0
@@ -29407,10 +29407,10 @@ sub_0206CE28: ; 0x0206CE28
 	.align 2, 0
 _0206CE60: .word _022B8330
 _0206CE64: .word _022B9120
-	arm_func_end sub_0206CE28
+	arm_func_end DseSwd_SysQuit
 
-	arm_func_start sub_0206CE68
-sub_0206CE68: ; 0x0206CE68
+	arm_func_start DseSwd_SampleLoaderMain
+DseSwd_SampleLoaderMain: ; 0x0206CE68
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r5, _0206CEC4 ; =_022B8330
 	mov r6, #0
@@ -29430,7 +29430,7 @@ _0206CE84:
 	cmp r0, #0
 	beq _0206CE84
 	ldr r1, [r5, #0xeb8]
-	bl DseSwd_LoadWaves
+	bl DseSwd_LoadWavesInternal
 	str r6, [r5, #0xeb4]
 	str r6, [r5, #0xeb8]
 	b _0206CE84
@@ -29438,7 +29438,7 @@ _0206CEC0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0206CEC4: .word _022B8330
-	arm_func_end sub_0206CE68
+	arm_func_end DseSwd_SampleLoaderMain
 
 	arm_func_start DseSwd_MainBankDummyCallback
 DseSwd_MainBankDummyCallback: ; 0x0206CEC8
@@ -29727,7 +29727,7 @@ _0206D2A0:
 	beq _0206D2DC
 	ldrh r0, [sb, #4]
 	ldr r1, [sp]
-	bl DseSwd_LoadBankWavesFromMainBank
+	bl DseSwd_LoadWaves
 _0206D2DC:
 	ldrh r0, [sb, #4]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -29744,8 +29744,8 @@ _0206D304: .word 0x04000208
 _0206D308: .word _022B7990
 	arm_func_end DseSwd_LoadBank
 
-	arm_func_start sub_0206D30C
-sub_0206D30C: ; 0x0206D30C
+	arm_func_start DseSwd_IsBankLoading
+DseSwd_IsBankLoading: ; 0x0206D30C
 	ldr r0, _0206D324 ; =_022B8330
 	ldr r0, [r0, #0xeb4]
 	cmp r0, #0
@@ -29754,10 +29754,10 @@ sub_0206D30C: ; 0x0206D30C
 	bx lr
 	.align 2, 0
 _0206D324: .word _022B8330
-	arm_func_end sub_0206D30C
+	arm_func_end DseSwd_IsBankLoading
 
-	arm_func_start DseSwd_LoadBankWavesFromMainBank
-DseSwd_LoadBankWavesFromMainBank: ; 0x0206D328
+	arm_func_start DseSwd_LoadWaves
+DseSwd_LoadWaves: ; 0x0206D328
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r6, r1
@@ -29791,7 +29791,7 @@ _0206D390:
 	bne _0206D3AC
 	mov r0, r4
 	mov r1, #0
-	bl DseSwd_LoadWaves
+	bl DseSwd_LoadWavesInternal
 	mov r5, r0
 _0206D3AC:
 	cmp r6, #0
@@ -29807,10 +29807,10 @@ _0206D3C8:
 	.align 2, 0
 _0206D3D0: .word _022B8330
 _0206D3D4: .word _022B9120
-	arm_func_end DseSwd_LoadBankWavesFromMainBank
+	arm_func_end DseSwd_LoadWaves
 
-	arm_func_start DseSwd_LoadWaves
-DseSwd_LoadWaves: ; 0x0206D3D8
+	arm_func_start DseSwd_LoadWavesInternal
+DseSwd_LoadWavesInternal: ; 0x0206D3D8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x1c
 	mov sl, r0
@@ -29883,7 +29883,7 @@ _0206D4D4:
 	str r6, [sl, #0x20]
 	add sp, sp, #0x1c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end DseSwd_LoadWaves
+	arm_func_end DseSwd_LoadWavesInternal
 
 	arm_func_start DseSwd_Unload
 DseSwd_Unload: ; 0x0206D4E4
@@ -30778,8 +30778,8 @@ _0206E05C: .word DRIVER_WORK
 _0206E060: .word 0x03938700
 	arm_func_end DseSequence_SetFades
 
-	arm_func_start sub_0206E064
-sub_0206E064: ; 0x0206E064
+	arm_func_start DseSequence_GetParameter
+DseSequence_GetParameter: ; 0x0206E064
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
@@ -30845,7 +30845,7 @@ _0206E114:
 	ldr r1, [r4, #0x38]
 	mov r0, r4
 	str r1, [r6, #8]
-	bl sub_0206E218
+	bl DseSequence_GetSmallestNumLoops
 	strh r0, [r6, #0xc]
 	ldrb r0, [r4, #0x17]
 	strb r0, [r6, #0xf]
@@ -30865,7 +30865,7 @@ _0206E18C:
 	str r0, [r6]
 	b _0206E20C
 _0206E198:
-	bl sub_0206E218
+	bl DseSequence_GetSmallestNumLoops
 	str r0, [r6]
 	b _0206E20C
 _0206E1A4:
@@ -30905,10 +30905,10 @@ _0206E20C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0206E214: .word DRIVER_WORK
-	arm_func_end sub_0206E064
+	arm_func_end DseSequence_GetParameter
 
-	arm_func_start sub_0206E218
-sub_0206E218: ; 0x0206E218
+	arm_func_start DseSequence_GetSmallestNumLoops
+DseSequence_GetSmallestNumLoops: ; 0x0206E218
 	ldrb ip, [r0, #0xf]
 	add r2, r0, #0xa8
 	ldr r0, _0206E268 ; =0x0000FFFF
@@ -30934,7 +30934,7 @@ _0206E258:
 	bx lr
 	.align 2, 0
 _0206E268: .word 0x0000FFFF
-	arm_func_end sub_0206E218
+	arm_func_end DseSequence_GetSmallestNumLoops
 
 	arm_func_start DseSequence_Reset
 DseSequence_Reset: ; 0x0206E26C
@@ -31397,8 +31397,8 @@ _0206E874:
 	bx lr
 	arm_func_end DseSequence_InitTracks
 
-	arm_func_start sub_0206E8AC
-sub_0206E8AC: ; 0x0206E8AC
+	arm_func_start DseBgm_SysSetupNoteList
+DseBgm_SysSetupNoteList: ; 0x0206E8AC
 	stmdb sp!, {r3, lr}
 	ldr r2, _0206E914 ; =DRIVER_WORK
 	mov r1, #0
@@ -31431,7 +31431,7 @@ _0206E8E0:
 _0206E914: .word DRIVER_WORK
 _0206E918: .word _022B7380
 _0206E91C: .word _022B7388
-	arm_func_end sub_0206E8AC
+	arm_func_end DseBgm_SysSetupNoteList
 
 	arm_func_start DseSe_SysReset
 DseSe_SysReset: ; 0x0206E920
@@ -33361,7 +33361,7 @@ sub_020701F8: ; 0x020701F8
 	mov r0, #0x400
 	mov r1, #0x10
 	strb ip, [r3, #0x26]
-	bl DseMem_Alloc2
+	bl DseMem_AllocateThreadStack
 	ldr r2, _02070278 ; =_022B9484
 	mov r1, #0x400
 	str r0, [r2, #0x34]
@@ -34243,7 +34243,7 @@ DseDriver_StartMainThread: ; 0x02070E0C
 	mov r0, #0x800
 	mov r1, #0x10
 	strb ip, [r3, #0xd13]
-	bl DseMem_Alloc2
+	bl DseMem_AllocateThreadStack
 	ldr r2, _02070E90 ; =_022B8330
 	mov r1, #0x800
 	str r0, [r2, #0xdd4]
@@ -34258,7 +34258,7 @@ DseDriver_StartMainThread: ; 0x02070E0C
 	bl StartThread
 	ldr r0, _02070E98 ; =_022B9044
 	bl sub_02079940
-	bl sub_02070EDC
+	bl DseDriver_StartTickTimer
 _02070E84:
 	mov r0, #0
 	add sp, sp, #8
@@ -34290,8 +34290,8 @@ _02070ED4: .word _022B8330
 _02070ED8: .word _022B9044
 	arm_func_end sub_02070EA0
 
-	arm_func_start sub_02070EDC
-sub_02070EDC: ; 0x02070EDC
+	arm_func_start DseDriver_StartTickTimer
+DseDriver_StartTickTimer: ; 0x02070EDC
 	stmdb sp!, {r3, lr}
 	ldr r0, _02070F3C ; =_022B8330
 	add r0, r0, #0xd00
@@ -34300,7 +34300,7 @@ sub_02070EDC: ; 0x02070EDC
 	bne _02070F34
 	ldr r1, _02070F40 ; =0x00001474
 	ldr ip, _02070F44 ; =DRIVER_WORK
-	ldr r3, _02070F48 ; =sub_02070FD4
+	ldr r3, _02070F48 ; =DseDriver_NotifyTick
 	mov r2, r1
 	mov r0, #0
 	str ip, [sp]
@@ -34321,8 +34321,8 @@ _02070F34:
 _02070F3C: .word _022B8330
 _02070F40: .word 0x00001474
 _02070F44: .word DRIVER_WORK
-_02070F48: .word sub_02070FD4
-	arm_func_end sub_02070EDC
+_02070F48: .word DseDriver_NotifyTick
+	arm_func_end DseDriver_StartTickTimer
 
 	arm_func_start sub_02070F4C
 sub_02070F4C: ; 0x02070F4C
@@ -34364,8 +34364,8 @@ _02070FCC: .word _022B7A30
 _02070FD0: .word DRIVER_WORK
 	arm_func_end sub_02070F4C
 
-	arm_func_start sub_02070FD4
-sub_02070FD4: ; 0x02070FD4
+	arm_func_start DseDriver_NotifyTick
+DseDriver_NotifyTick: ; 0x02070FD4
 	stmdb sp!, {r3, lr}
 	ldr r1, _0207100C ; =_022B8330
 	add r0, r1, #0xd00
@@ -34383,7 +34383,7 @@ sub_02070FD4: ; 0x02070FD4
 	.align 2, 0
 _0207100C: .word _022B8330
 _02071010: .word _022B9044
-	arm_func_end sub_02070FD4
+	arm_func_end DseDriver_NotifyTick
 
 	arm_func_start DseDriver_Main
 DseDriver_Main: ; 0x02071014
@@ -34627,7 +34627,7 @@ _02071318:
 	b _02071398
 _0207136C:
 	mov r0, r4
-	bl DseChannel_ReleaseNote2
+	bl DseChannel_ReleaseNote
 	mov r2, #0
 	add r1, sp, #0
 	mov r0, r4
@@ -36661,7 +36661,7 @@ _02072C8C:
 	bne _02072D7C
 	mov r0, sl
 	mov r1, r7
-	bl DseChannel_ReleaseNote
+	bl DseChannel_ReleaseNoteInternal
 	b _02072D7C
 _02072CC0:
 	ldrb r0, [sp, #0xb]
@@ -36674,7 +36674,7 @@ _02072CC0:
 	mov r0, sl
 	mov r1, r7
 	strb r5, [sp]
-	bl DseChannel_ReleaseNote2
+	bl DseChannel_ReleaseNote
 	mov r0, sl
 	mov r1, r7
 	bl DseChannel_AllocateNote
@@ -36690,7 +36690,7 @@ _02072D0C:
 	bne _02072D7C
 	mov r0, sl
 	mov r1, r7
-	bl DseChannel_ReleaseNote
+	bl DseChannel_ReleaseNoteInternal
 	b _02072D7C
 _02072D2C:
 	ldrb r0, [sp, #0xa]
@@ -38058,8 +38058,8 @@ _02073D18:
 _02073D64: .word DRIVER_WORK
 	arm_func_end DseChannel_AllocateNote
 
-	arm_func_start DseChannel_ReleaseNote
-DseChannel_ReleaseNote: ; 0x02073D68
+	arm_func_start DseChannel_ReleaseNoteInternal
+DseChannel_ReleaseNoteInternal: ; 0x02073D68
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, r0
 	ldr r4, [r7, #0xb8]
@@ -38109,7 +38109,7 @@ _02073DE4:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02073E0C: .word DRIVER_WORK
-	arm_func_end DseChannel_ReleaseNote
+	arm_func_end DseChannel_ReleaseNoteInternal
 
 	arm_func_start DseChannel_ChangeNote
 DseChannel_ChangeNote: ; 0x02073E10
@@ -38156,8 +38156,8 @@ _02073E90:
 	ldmia sp!, {r4, pc}
 	arm_func_end DseChannel_ChangeNote
 
-	arm_func_start DseChannel_ReleaseNote2
-DseChannel_ReleaseNote2: ; 0x02073EA0
+	arm_func_start DseChannel_ReleaseNote
+DseChannel_ReleaseNote: ; 0x02073EA0
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #0xb8]
 	cmp r2, #0
@@ -38168,14 +38168,14 @@ _02073EB4:
 	cmp r1, r3
 	bne _02073ECC
 	mov r1, r2
-	bl DseChannel_ReleaseNote
+	bl DseChannel_ReleaseNoteInternal
 	ldmia sp!, {r3, pc}
 _02073ECC:
 	ldr r2, [r2, #8]
 	cmp r2, #0
 	bne _02073EB4
 	ldmia sp!, {r3, pc}
-	arm_func_end DseChannel_ReleaseNote2
+	arm_func_end DseChannel_ReleaseNote
 
 	arm_func_start DseVoice_PlayNote
 DseVoice_PlayNote: ; 0x02073EDC
@@ -38853,7 +38853,7 @@ _0207480C:
 	bgt _02074840
 	mov r0, r7
 	mov r1, r4
-	bl DseChannel_ReleaseNote
+	bl DseChannel_ReleaseNoteInternal
 	ldr r0, [r8, #0x650]
 	str r0, [r4, #8]
 	str r4, [r8, #0x650]
