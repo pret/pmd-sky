@@ -1,5 +1,6 @@
 import os
 import re
+from dataclasses import dataclass
 from typing import Any, Dict, List
 from ruamel.yaml.comments import CommentedMap
 from ruamel.yaml.scalarint import HexCapsInt
@@ -7,7 +8,7 @@ from ruamel.yaml.scalarint import HexCapsInt
 from pmdsky_debug_reader import LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG, SYMBOLS_FOLDER, get_pmdsky_debug_location, read_pmdsky_debug_symbols
 from symbol_details import NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_OFFSET, SymbolDetails
 from xmap_reader import HEADER_FOLDER, read_xmap_symbols
-from yaml_writer import YamlManager
+from yaml_writer import YamlManager, yaml
 
 # Syncs symbols from the decomp to a local clone of pmdsky-debug (https://github.com/UsernameFodder/pmdsky-debug).
 # To use this script, you will need:
@@ -37,6 +38,13 @@ def find_symbol_in_header(symbol_name: str, is_data: bool, header_contents: List
         if is_data and re.search(fr' {symbol_name}[\[;]', line) or not is_data and f' {symbol_name}(' in line:
             return i
     return None
+
+@dataclass
+class SubsymbolDir:
+    file_path: str
+    addresses: Dict[str, int]
+
+subsymbol_dirs = {}
 
 def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_manager: YamlManager, pmdsky_debug_section: Dict[int, SymbolDetails]):
     if default_symbol_name.match(symbol.name):
@@ -76,6 +84,30 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
             base_symbol_path = f'overlay{int(section_name):02d}.yml'
 
         symbol_path = os.path.join(path_prefix, base_symbol_path)
+
+        # Look through subdirectories to see if the symbol address is within range of them.
+        subsymbol_dir = symbol_path[:-4]
+        if subsymbol_dir not in subsymbol_dirs:
+            subsymbol_dirs[subsymbol_dir] = []
+            if os.path.exists(subsymbol_dir):
+                for root, _, files in os.walk(subsymbol_dir):
+                    for file in files:
+                        if file == 'itcm.yml' or not file.endswith('.yml'):
+                            continue
+
+                        file_path = os.path.join(root, file)
+                        with open(file_path, 'r') as yaml_file:
+                            yaml_contents = yaml.load(yaml_file)
+                            subsymbol_dirs[subsymbol_dir].append(SubsymbolDir(file_path, yaml_contents[file[:-4]]['address']))
+
+        if subsymbol_dirs[subsymbol_dir] is not None:
+            matching_subsymbol_file = None
+            for file in subsymbol_dirs[subsymbol_dir]:
+                if address > file.addresses[language_key] and (matching_subsymbol_file is None or file.addresses[language_key] > matching_subsymbol_file.addresses[language_key]):
+                    matching_subsymbol_file = file
+            if matching_subsymbol_file is not None:
+                symbol_path = matching_subsymbol_file.file_path
+
 
     if symbol.is_data:
         symbol_type_key = 'data'

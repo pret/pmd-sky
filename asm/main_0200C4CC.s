@@ -17195,7 +17195,7 @@ IsSongOver: ; 0x02019850
 	ldr r0, [r0]
 	add r2, sp, #0
 	mov r1, #0xa
-	bl sub_0206E064
+	bl DseSequence_GetParameter
 	ldr r0, _020198B4 ; =_022A4E58
 	ldr r2, [sp]
 	ldr r1, [r0, #0x40]
@@ -17304,7 +17304,7 @@ _02019970:
 	str r0, [r2, #4]
 	mov r0, r1, lsr #0x10
 	mov r1, #0
-	bl DseSwd_LoadBankWavesFromMainBank
+	bl DseSwd_LoadWaves
 	mov r1, r0
 	ldr r0, _02019B20 ; =_022A4E50
 	ldr r2, _02019B08 ; =_022A4E58
@@ -17323,10 +17323,10 @@ _02019970:
 	ldr r1, [r0, #0x2c]
 	mov r0, r2, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl DseSwd_LoadBankWavesFromMainBank
+	bl DseSwd_LoadWaves
 _02019A5C:
 	bl sub_02003AB0
-	bl sub_0206D30C
+	bl DseSwd_IsBankLoading
 	cmp r0, #0
 	bne _02019A5C
 	bl FileRom_StopDataTransfer
@@ -17650,7 +17650,7 @@ _02019E3C:
 	str r0, [r2, #0xc]
 	mov r0, r1, lsr #0x10
 	mov r1, #0
-	bl DseSwd_LoadBankWavesFromMainBank
+	bl DseSwd_LoadWaves
 	mov r1, r0
 	ldr r0, _02019FE0 ; =_022A4E50
 	ldr r2, _02019FC8 ; =_022A4E58
@@ -17669,10 +17669,10 @@ _02019E3C:
 	ldr r1, [r0, #0x54]
 	mov r0, r2, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl DseSwd_LoadBankWavesFromMainBank
+	bl DseSwd_LoadWaves
 _02019F1C:
 	bl sub_02003AB0
-	bl sub_0206D30C
+	bl DseSwd_IsBankLoading
 	cmp r0, #0
 	bne _02019F1C
 	bl FileRom_StopDataTransfer

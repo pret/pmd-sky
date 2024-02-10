@@ -803,9 +803,11 @@
 .public DseSe_Stop
 .public DseSe_StopAll
 .public DseSe_Unload
+.public DseSequence_GetParameter
+.public DseSwd_IsBankLoading
 .public DseSwd_LoadBank
-.public DseSwd_LoadBankWavesFromMainBank
 .public DseSwd_LoadMainBank
+.public DseSwd_LoadWaves
 .public DseSwd_Unload
 .public DUNGEON_DATA_LIST
 .public DUNGEON_MOVE_TABLES
@@ -1124,8 +1126,6 @@
 .public sub_0206C620
 .public sub_0206C6BC
 .public sub_0206C754
-.public sub_0206D30C
-.public sub_0206E064
 .public sub_0206F5C8
 .public sub_02079094
 .public sub_0207A2DC
