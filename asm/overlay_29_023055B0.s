@@ -53,11 +53,11 @@ _023055C4:
 	and r1, sb, #7
 	mov r0, r7
 	strb r1, [r8, #0x4c]
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r7
 	mov r2, sb
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 _02305680:
 	add r6, r6, #1
 _02305684:

@@ -1,6 +1,7 @@
 #pragma once
 .public AbilityIsActiveVeneer
 .public CalcSpeedStageWrapper
+.public ChangeMonsterAnimation
 .public DUNGEON_PTR
 .public EndBlinkerClassStatus
 .public EndBurnClassStatus
@@ -15,8 +16,8 @@
 .public EntityIsValid__0230558C
 .public EntityIsValid__02305C04
 .public GetDirectionTowardsPosition
+.public GetIdleAnimationId
 .public GetLeader
-.public GetSleepAnimationId
 .public GetTileAtEntity
 .public GetTrapInfo
 .public HasHeldItem
@@ -41,7 +42,6 @@
 .public ov29_022EA370
 .public ov29_022FBE04
 .public ov29_02300818
-.public ov29_023049A8
 .public ov29_02337D68
 .public ov29_02353318
 .public SubstitutePlaceholderStringTags

@@ -19,10 +19,10 @@
 .public EntityIsValid__02337CA8
 .public GetApparentWeather
 .public GetBgRegionArea
+.public GetIdleAnimationId
 .public GetLanguage
 .public GetLeader
 .public GetMonsterApparentId
-.public GetSleepAnimationId
 .public GetType
 .public GetVisibilityRange
 .public GetWeatherColorTable

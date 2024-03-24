@@ -1264,11 +1264,11 @@ _022F16A4:
 	mov r0, #1
 	str r0, [sp, #0x4c]
 	mov r0, r6
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r6
 	mov r2, #4
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 _022F16F4:
 	bl sub_0204AF10
 	cmp r0, #0
@@ -1930,11 +1930,11 @@ _022F2058:
 	ldr r1, [r6, #0xb4]
 	mov r0, r6
 	strb r2, [r1, #0x4c]
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r2, r8
 	mov r1, r0
 	mov r0, r6
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	b _022F2098
 _022F208C:
 	add fp, fp, #1
@@ -2236,11 +2236,11 @@ _022F24AC:
 	beq _022F251C
 	mov r0, r6
 	strb r7, [r5, #0x36]
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r2, r7
 	mov r0, r6
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x100
@@ -2436,11 +2436,11 @@ _022F27C8:
 	cmp r0, #0
 	beq _022F2804
 	mov r0, r6
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r2, r7
 	mov r1, r0
 	mov r0, r6
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 _022F2804:
 	tst r8, #2
 	bne _022F2910
@@ -4006,11 +4006,11 @@ _022F3E28:
 	and r1, r7, #7
 	mov r0, sl
 	strb r1, [sb, #0x4c]
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, sl
 	mov r2, r7
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, #0x62
 	bl AdvanceFrame
 	mov r0, #1

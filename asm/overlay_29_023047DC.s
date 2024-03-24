@@ -18,7 +18,7 @@ _023047E8:
 	cmp r0, #0
 	beq _0230481C
 	mov r0, r6
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r6
 	bl ov29_02304830
@@ -127,7 +127,7 @@ _02304960:
 	cmp r0, #0
 	beq _02304994
 	mov r0, r6
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r6
 	bl ov29_02304830
@@ -140,8 +140,8 @@ _02304994:
 _023049A4: .word DUNGEON_PTR
 	arm_func_end ov29_02304954
 
-	arm_func_start ov29_023049A8
-ov29_023049A8: ; 0x023049A8
+	arm_func_start ChangeMonsterAnimation
+ChangeMonsterAnimation: ; 0x023049A8
 	ldr r3, [r0]
 	cmp r3, #1
 	bxne lr
@@ -153,7 +153,7 @@ ov29_023049A8: ; 0x023049A8
 	cmp r2, #8
 	strltb r2, [r0, #0xb0]
 	bx lr
-	arm_func_end ov29_023049A8
+	arm_func_end ChangeMonsterAnimation
 
 	arm_func_start ov29_023049D4
 ov29_023049D4: ; 0x023049D4
@@ -166,7 +166,7 @@ ov29_023049D4: ; 0x023049D4
 	ldreqb r3, [r0, #0xb1]
 	cmpeq r3, r2
 	ldmeqia sp!, {r3, pc}
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_023049D4
 
@@ -178,7 +178,7 @@ ov29_02304A00: ; 0x02304A00
 	mov r4, r1
 	cmp r2, #1
 	ldmneia sp!, {r3, r4, r5, pc}
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	strb r0, [r5, #0xae]
 	mov r0, #0
 	strb r0, [r5, #0x28]
@@ -200,7 +200,7 @@ ov29_02304A48: ; 0x02304A48
 	mov r4, r1
 	cmp r2, #1
 	ldmneia sp!, {r3, r4, r5, pc}
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	strb r0, [r5, #0xae]
 	mov r0, #0
 	strb r0, [r5, #0x28]
@@ -227,8 +227,8 @@ ov29_02304A84: ; 0x02304A84
 	bx lr
 	arm_func_end ov29_02304A84
 
-	arm_func_start GetSleepAnimationId
-GetSleepAnimationId: ; 0x02304AB4
+	arm_func_start GetIdleAnimationId
+GetIdleAnimationId: ; 0x02304AB4
 	ldr r1, [r0, #0xb4]
 	ldrb r0, [r1, #0xbd]
 	cmp r0, #1
@@ -248,7 +248,7 @@ _02304AE8:
 	moveq r0, #0xb
 	movne r0, #7
 	bx lr
-	arm_func_end GetSleepAnimationId
+	arm_func_end GetIdleAnimationId
 
 	arm_func_start ov29_02304AFC
 ov29_02304AFC: ; 0x02304AFC

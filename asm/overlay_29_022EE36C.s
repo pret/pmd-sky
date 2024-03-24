@@ -726,7 +726,7 @@ ApplyTripTrapEffect: ; 0x022EED2C
 	mov r0, r5
 	mov r1, #6
 	mov r2, #8
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, #0x10
 	mov r1, #0x55
 	bl ov29_022EA370

@@ -640,7 +640,7 @@ _0230A318:
 	mov r0, sb
 	ldrb r2, [r1, #0x4c]
 	mov r1, #6
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, sb
 	mov r1, r5
 	bl ov29_022E5478
@@ -792,7 +792,7 @@ _0230A54C:
 	mov r0, sb
 	ldrb r2, [r1, #0x4c]
 	mov r1, #6
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, sb
 	mov r1, r5
 	bl ov29_022E5478
@@ -1050,7 +1050,7 @@ _0230A8FC:
 	mov r0, sb
 	bl RestorePpAllMovesSetFlags
 	mov r0, sb
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, sb
 	bl ov29_02304830
@@ -1720,7 +1720,7 @@ _023098EC:
 	mov r0, r7
 	ldrb r2, [r1, #0x4c]
 	mov r1, #6
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, r7
 	mov r1, r6
 	bl ov29_022E5478
@@ -1872,7 +1872,7 @@ _02309B20:
 	mov r0, r7
 	ldrb r2, [r1, #0x4c]
 	mov r1, #6
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, r7
 	mov r1, r6
 	bl ov29_022E5478
@@ -2133,7 +2133,7 @@ _02309EDC:
 	mov r0, r7
 	bl RestorePpAllMovesSetFlags
 	mov r0, r7
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r7
 	bl ov29_02304830
@@ -2326,7 +2326,7 @@ _0230ABC8:
 	mov r0, sb
 	bl RestorePpAllMovesSetFlags
 	mov r0, sb
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, sb
 	bl ov29_02304830
@@ -2486,7 +2486,7 @@ _0230AE24:
 	mov r0, sb
 	bl RestorePpAllMovesSetFlags
 	mov r0, sb
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, sb
 	bl ov29_02304830
@@ -2551,7 +2551,7 @@ _0230AEEC:
 	mov r0, #1
 	strb r0, [r7, #0x23d]
 	mov r0, sb
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, sb
 	bl ov29_02304830
@@ -2945,7 +2945,7 @@ _0230A1AC:
 	mov r0, r7
 	bl RestorePpAllMovesSetFlags
 	mov r0, r7
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r7
 	bl ov29_02304830
@@ -3099,7 +3099,7 @@ _0230A3F4:
 	mov r0, r7
 	bl RestorePpAllMovesSetFlags
 	mov r0, r7
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r7
 	bl ov29_02304830
@@ -3156,7 +3156,7 @@ _0230A4A0:
 	mov r0, #1
 	strb r0, [r4, #0x23d]
 	mov r0, r7
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r7
 	bl ov29_02304830

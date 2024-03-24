@@ -808,12 +808,12 @@ _022E41D8: .word ov29_022E56A0
 
 	arm_func_start ov29_022E41DC
 ov29_022E41DC: ; 0x022E41DC
-	ldr ip, _022E41EC ; =ov29_023049A8
+	ldr ip, _022E41EC ; =ChangeMonsterAnimation
 	mov r1, #0xa
 	mov r2, #8
 	bx ip
 	.align 2, 0
-_022E41EC: .word ov29_023049A8
+_022E41EC: .word ChangeMonsterAnimation
 	arm_func_end ov29_022E41DC
 
 	arm_func_start ov29_022E41F0
@@ -2766,7 +2766,7 @@ _022E596C:
 	mov r0, sl
 	mov r1, r5
 	mov r2, r8
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, fp
 	mov r1, #0x33
 	bl ov29_022EA370
@@ -3144,7 +3144,7 @@ ov29_022E5E84: ; 0x022E5E84
 	mov r1, #8
 	mov r2, r1
 	mov r6, r0
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r5, #0
 	mov r4, #0x51
 	b _022E5EC4
@@ -5916,7 +5916,7 @@ ov29_022E8270: ; 0x022E8270
 	cmp r3, #0
 	beq _022E83F4
 	ldr r8, [sl, #0xb4]
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	ldr r1, _022E8400 ; =DUNGEON_PTR
 	mov r4, r0
 	ldr r1, [r1]
@@ -6801,7 +6801,7 @@ _022E8D30:
 	cmp sl, fp
 	mov r0, r6
 	movgt sl, fp
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	ldrb r3, [r7, #0xa]
 	mov r1, sl, lsl #0x10
 	mov r1, r1, asr #0x10

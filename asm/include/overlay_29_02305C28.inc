@@ -11,8 +11,8 @@
 .public EntityIsValid__02305C04
 .public EntityIsValid__02307EF8
 .public FreeOtherWrappedMonsters
+.public GetIdleAnimationId
 .public GetMonsterApparentId
-.public GetSleepAnimationId
 .public GetType
 .public IsProtectedFromNegativeStatus
 .public ItemIsActive__02307F1C

@@ -4,6 +4,7 @@
 .public AdvanceFrame
 .public CalcDamageFixedNoCategory
 .public CanSeeTarget
+.public ChangeMonsterAnimation
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -21,7 +22,6 @@
 .public ov29_022EACCC
 .public ov29_022FF764
 .public ov29_0230175C
-.public ov29_023049A8
 .public ov29_02304A48
 .public ov29_0232033C
 .public ov29_02321238

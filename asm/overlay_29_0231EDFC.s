@@ -352,7 +352,7 @@ _0231F294:
 	mov r0, r4
 	mov r1, #6
 	mov r2, r8
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	add r8, r8, #1
 _0231F308:
 	mov r0, #0x800

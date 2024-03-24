@@ -8,6 +8,7 @@
 .public AreEntitiesAdjacent
 .public BoostSpeedOneStage
 .public CalcStatusDuration
+.public ChangeMonsterAnimation
 .public DETECT_BAND_MOVE_ACCURACY_DROP
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
@@ -104,7 +105,6 @@
 .public ov29_02300DCC
 .public ov29_0230175C
 .public ov29_023024E0
-.public ov29_023049A8
 .public ov29_02304A48
 .public ov29_02304B14
 .public ov29_02318D58

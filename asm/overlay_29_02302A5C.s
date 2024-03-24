@@ -1528,7 +1528,7 @@ ov29_02303F18: ; 0x02303F18
 	cmp r6, #0
 	beq _02304044
 	mov r0, r7
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r3, #1
 	strb r3, [r7, #0x21]
 	ldrb r1, [r5, #0x10a]
@@ -2083,7 +2083,7 @@ _0230474C:
 	mov r1, r7
 	sub r2, r2, #1
 	and r2, r2, #7
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 _023047A4:
 	add r5, r5, #1
 	cmp r5, #0x14

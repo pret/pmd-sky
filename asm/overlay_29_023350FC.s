@@ -139,7 +139,7 @@ _023352C0:
 	bl DungeonGetSpriteIndex
 	strh r0, [sl, #0xa8]
 	mov r0, sl
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, sl
 	bl ov29_02304830
@@ -222,7 +222,7 @@ _023353F0:
 	bl DungeonGetSpriteIndex
 	strh r0, [sl, #0xa8]
 	mov r0, sl
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, sl
 	bl ov29_02304830

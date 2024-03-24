@@ -13,6 +13,7 @@
 .public CalcDamage
 .public CalcDamageFixedWrapper
 .public CalcRecoilDamageFixed
+.public ChangeMonsterAnimation
 .public DealDamage
 .public DIVE_DAMAGE_MULTIPLIER
 .public DoMoveTakeaway
@@ -57,7 +58,6 @@
 .public ov29_022ECAFC
 .public ov29_022F9EA0
 .public ov29_0230040C
-.public ov29_023049A8
 .public ov29_0230D4A4
 .public ov29_02318A90
 .public ov29_02318AD4

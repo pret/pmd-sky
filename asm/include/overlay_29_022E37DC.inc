@@ -5,6 +5,7 @@
 .public AnimationHasMoreFrames
 .public CanMonsterSpawn
 .public ChangeDungeonMusic
+.public ChangeMonsterAnimation
 .public CheckActiveChallengeRequest
 .public CheckSpawnThreshold
 .public CloseTextBox2
@@ -25,6 +26,7 @@
 .public FloorNumberIsEven
 .public GetEffectAnimationField0x19
 .public GetFloorType
+.public GetIdleAnimationId
 .public GetItemCategoryVeneer
 .public GetKecleonIdToSpawnByFloor
 .public GetMonsterGenderVeneer
@@ -34,7 +36,6 @@
 .public GetNbPrecedingFloors
 .public GetNbRecruited
 .public GetSecondFormIfValid
-.public GetSleepAnimationId
 .public GetSpriteFileSize
 .public GetSpriteSize
 .public GetTile
@@ -94,7 +95,6 @@
 .public ov29_022ED0F4
 .public ov29_022F42D8
 .public ov29_0230027C
-.public ov29_023049A8
 .public ov29_0230D618
 .public ov29_02339138
 .public ov29_02339148

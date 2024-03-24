@@ -337,7 +337,7 @@ _0231B5A0:
 	bl sub_0201CF80
 _0231B5F4:
 	mov r0, r8
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r8
 	bl ov29_02304830

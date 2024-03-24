@@ -6,6 +6,7 @@
 .public ATK_STAT_IDX
 .public BAG_ITEMS_PTR_MIRROR
 .public CalcStatusDuration
+.public ChangeMonsterAnimation
 .public DIRECTIONS_XY
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DrawMinimapTile
@@ -55,7 +56,6 @@
 .public ov29_022FA574
 .public ov29_022FB920
 .public ov29_022FBD80
-.public ov29_023049A8
 .public ov29_02304A48
 .public ov29_02344B44
 .public ov29_02346344

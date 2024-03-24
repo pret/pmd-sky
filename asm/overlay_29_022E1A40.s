@@ -134,7 +134,7 @@ _022E1BB4:
 	cmp r8, #0
 	beq _022E1BD8
 	mov r0, r7
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r7
 	bl ov29_02304830
@@ -445,7 +445,7 @@ _022E1FC0:
 	cmp r8, #0
 	beq _022E1FE4
 	mov r0, r7
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r7
 	bl ov29_02304830
