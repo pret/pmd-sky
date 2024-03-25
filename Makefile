@@ -73,8 +73,8 @@ compare: @$(MAKE) COMPARE=1
 install_toolchain:
 	rm -rf toolchain_tmp
 	mkdir -p toolchain_tmp
-	wget https://cdn.discordapp.com/attachments/698589325620936736/845499146982129684/mwccarm.zip -O toolchain_tmp/mwccarm.zip
-	wget https://cdn.discordapp.com/attachments/855279572651868170/875195363261292604/NitroSDK-4_2-071210-jp.7z -O toolchain_tmp/NitroSDK-4_2-071210-jp.7z
+	wget https://github.com/pret/pmd-sky/raw/workflows/assets/mwccarm.zip -O toolchain_tmp/mwccarm.zip
+	wget https://github.com/pret/pmd-sky/raw/workflows/assets/NitroSDK-4_2-071210-jp.7z -O toolchain_tmp/NitroSDK-4_2-071210-jp.7z
 	unzip -o toolchain_tmp/mwccarm.zip -d tools
 	7z x toolchain_tmp/NitroSDK-4_2-071210-jp.7z -otoolchain_tmp/nitro_sdk -y
 	mv toolchain_tmp/nitro_sdk/tools/bin/* tools/bin

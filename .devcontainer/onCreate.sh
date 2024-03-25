@@ -6,7 +6,7 @@ WORKSPACE="$1"
 cd /tmp
 
 if [ ! -d "$WORKSPACE/tools/mwccarm" ]; then
-    wget https://cdn.discordapp.com/attachments/698589325620936736/845499146982129684/mwccarm.zip
+    wget https://github.com/pret/pmd-sky/raw/workflows/assets/mwccarm.zip
     unzip mwccarm.zip
     mv -v mwccarm "$WORKSPACE/tools"
 fi
@@ -15,7 +15,7 @@ if [ ! -d "$WORKSPACE/tools/bin" \
      -o ! -f "$WORKSPACE/sub/ARM7-TS.lcf.template" \
      -o ! -f "$WORKSPACE/ARM9-TS.lcf.template" \
      -o ! -f "$WORKSPACE/mwldarm.response.template" ]; then
-    wget https://cdn.discordapp.com/attachments/698589325620936736/722822401963851797/NitroSDK-3_2-060901.7z
+    wget https://github.com/pret/pmd-sky/raw/workflows/assets/NitroSDK-4_2-071210-jp.7z
     7z x NitroSDK-3_2-060901.7z
     rm -rf "$WORKSPACE/tools/bin"
     mv -v NitroSDK-3_2-060901/tools/bin "$WORKSPACE/tools"
