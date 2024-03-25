@@ -65,7 +65,7 @@
                           25](IsFloorOver,func) found in global overlay_29_022EC62C.o
                            26](GetMonsterName,func) found in global overlay_29_02300108.o
                             27](ov29_02302C04,func) found in global overlay_29_02302A5C.o
-                             28](ov29_023049A8,func) found in global overlay_29_023047DC.o
+                             28](ChangeMonsterAnimation,func) found in global overlay_29_023047DC.o
                               29](ov29_022EF9BC,func) found in global overlay_29_022EF7C4.o
                                30](EntityIsValid__022F0590,func) found in global overlay_29_022F0590.o
                                30](ov29_022EA370,func) found in global overlay_29_022E9618.o
@@ -35372,12 +35372,12 @@
   02304954 00000054 .text   ov29_02304954	(overlay_29_023047DC.o)
   023049A4 00000000 .text   $d	(overlay_29_023047DC.o)
   023049A8 00000000 .text   $a	(overlay_29_023047DC.o)
-  023049A8 0000002C .text   ov29_023049A8	(overlay_29_023047DC.o)
+  023049A8 0000002C .text   ChangeMonsterAnimation	(overlay_29_023047DC.o)
   023049D4 0000002C .text   ov29_023049D4	(overlay_29_023047DC.o)
   02304A00 00000048 .text   ov29_02304A00	(overlay_29_023047DC.o)
   02304A48 0000003C .text   ov29_02304A48	(overlay_29_023047DC.o)
   02304A84 00000030 .text   ov29_02304A84	(overlay_29_023047DC.o)
-  02304AB4 00000048 .text   GetSleepAnimationId	(overlay_29_023047DC.o)
+  02304AB4 00000048 .text   GetIdleAnimationId	(overlay_29_023047DC.o)
   02304AFC 00000018 .text   ov29_02304AFC	(overlay_29_023047DC.o)
   02304B10 00000000 .text   $d	(overlay_29_023047DC.o)
   02304B14 00000050 .text   ov29_02304B14	(overlay_29_023047DC.o)
@@ -39838,5 +39838,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Feb 10 23:09:55 2024
-# Link end time: Sat Feb 10 23:09:56 2024
+# Link start time: Mon Mar 25 00:44:03 2024
+# Link end time: Mon Mar 25 00:44:04 2024
