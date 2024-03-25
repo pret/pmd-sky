@@ -1416,7 +1416,7 @@ DoMoveSeismicToss: ; 0x02329258
 	mov r3, r2, lsr #0x1f
 	rsb r2, r3, r2, lsl #29
 	add r2, r3, r2, ror #29
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, r5
 	mov r1, #1
 	bl ov29_02318A90
@@ -1437,7 +1437,7 @@ DoMoveSeismicToss: ; 0x02329258
 	mov r3, r2, lsr #0x1f
 	rsb r2, r3, r2, lsl #29
 	add r2, r3, r2, ror #29
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, r5
 	bl ov29_02318B48
 	mov r0, r5

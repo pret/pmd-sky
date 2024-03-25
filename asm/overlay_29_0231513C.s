@@ -1059,7 +1059,7 @@ _02315F78:
 	bl ov29_022E81F8
 _02315FCC:
 	mov r0, sb
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, sb
 	bl ov29_02304830
@@ -2426,7 +2426,7 @@ _02317350:
 	mov r0, sb
 	bl ov29_022E47C4
 	mov r0, sb
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, sb
 	bl ov29_02304830

@@ -19,13 +19,13 @@
 .public EntityIsValid__02318D34
 .public ExclusiveItemEffectIsActiveWithLogging
 .public GetFloorType
+.public GetIdleAnimationId
 .public GetMaxPp
 .public GetMaxPpWrapper
 .public GetMobilityType
 .public GetMonsterApparentId
 .public GetMonsterIdFromSpawnEntry
 .public GetNameWithGender
-.public GetSleepAnimationId
 .public GravityIsActive
 .public HasHeldItem
 .public HasTypeAffectedByGravity

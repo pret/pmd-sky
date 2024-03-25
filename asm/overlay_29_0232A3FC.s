@@ -402,7 +402,7 @@ DoMoveSplash: ; 0x0232A8EC
 	mov r2, #8
 	mov r7, r3
 	strh r4, [sp, #0x26]
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r4, #3
 	mov r5, #0
 	mov fp, r4

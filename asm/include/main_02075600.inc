@@ -1770,6 +1770,7 @@
 .public DseTrackEvent_WaitDelta
 .public DseTrackEvent_WaitSame
 .public DseTrackEvent_WaitUntilFadeout
+.public DseUtil_GetRandomNumber
 .public DTCM_BSS
 .public FX_AtanIdxTable_
 .public GetKeyM2N
@@ -1814,7 +1815,6 @@
 .public SoundLfoWave_InvalidFunc
 .public SoundLfoWave_ReverseSawFunc
 .public SoundLfoWave_SawFunc
-.public DseUtil_GetRandomNumber
 .public sSubBGExtPltt
 .public sTexPlttStartAddrTable
 .public sTexStartAddrTable

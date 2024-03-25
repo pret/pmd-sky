@@ -14,6 +14,7 @@
 .public CanSeeTarget
 .public CASTFORM_WEATHER_ATTRIBUTE_TABLE
 .public CeilFixedPoint
+.public ChangeMonsterAnimation
 .public CheckTeamMemberIdx
 .public Conversion2IsActive
 .public DeleteWanTableEntryVeneer
@@ -53,6 +54,7 @@
 .public GetExplorerMazeMonster
 .public GetFloorType
 .public GetForcedLossReason
+.public GetIdleAnimationId
 .public GetLeader
 .public GetLearnableIqSkills
 .public GetLvlUpEntry
@@ -77,7 +79,6 @@
 .public GetOutlawSpawnData
 .public GetScenarioBalance
 .public GetScenarioBalanceVeneer
-.public GetSleepAnimationId
 .public GetSpawnThreshold
 .public GetSpriteFileSize
 .public GetSpriteIndex__020526EC
@@ -162,7 +163,6 @@
 .public ov29_023018AC
 .public ov29_023021F0
 .public ov29_02304830
-.public ov29_023049A8
 .public ov29_02304A48
 .public ov29_02304BAC
 .public ov29_02307CE0

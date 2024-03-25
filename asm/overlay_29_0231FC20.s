@@ -64,7 +64,7 @@ _0231FCE4:
 	mov r0, sl
 	mov r1, #6
 	mov r2, r5
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	ldr r1, _0231FDDC ; =DIRECTIONS_XY
 	mov r2, r5, lsl #2
 	add r0, r1, r5, lsl #2
@@ -202,7 +202,7 @@ _0231FED4:
 	mov r0, sb
 	mov r1, #6
 	strb r2, [r3, #0x4c]
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	ldr r1, _02320164 ; =0x00000212
 	mov r0, sb
 	bl ov29_022E56A0

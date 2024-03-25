@@ -3,6 +3,7 @@
 .public AdvanceFrame
 .public AreTileJumpsAllowed
 .public CalcDamageFixedNoCategory
+.public ChangeMonsterAnimation
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public EnsureCanStandCurrentTile
@@ -17,7 +18,6 @@
 .public ov29_022E56A0
 .public ov29_022F9C74
 .public ov29_022FFB90
-.public ov29_023049A8
 .public ov29_02307BDC
 .public ov29_0232033C
 .public ov29_02321238

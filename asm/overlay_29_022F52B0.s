@@ -343,7 +343,7 @@ _022F5744:
 	mov r0, sb
 	mov r1, r5
 	mov r2, r7
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, r4
 	mov r1, sl
 	bl ov29_022EA370

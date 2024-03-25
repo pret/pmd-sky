@@ -1,5 +1,6 @@
 #pragma once
 .public _020AFC4C
+.public ChangeMonsterAnimation
 .public DIRECTIONS_XY
 .public DisplayMessage
 .public DisplayMessage2
@@ -10,13 +11,13 @@
 .public EntityIsValid__023047B8
 .public FormatMoveString
 .public GetEncodedHalfword
+.public GetIdleAnimationId
 .public GetLeader
 .public GetLoadedAttackSpriteId
 .public GetLvlUpEntry
 .public GetMonsterName
 .public GetMovesetLevelUpPtr
 .public GetPersonalityIndex
-.public GetSleepAnimationId
 .public GetStringFromFileVeneer
 .public GetTalkLine
 .public GetTile
@@ -48,7 +49,6 @@
 .public ov29_023009CC
 .public ov29_023021F0
 .public ov29_02304830
-.public ov29_023049A8
 .public ov29_02318D58
 .public ov29_0231EA04
 .public ov29_02338988

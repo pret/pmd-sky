@@ -17,6 +17,7 @@
 .public CanSeeTarget
 .public CeilFixedPoint
 .public ChangeDungeonMusic
+.public ChangeMonsterAnimation
 .public ClampedLn
 .public CLOUDY_DAMAGE_MULTIPLIER
 .public DAMAGE_FORMULA_AT_PREFACTOR
@@ -67,6 +68,7 @@
 .public GetEquivItemIndex
 .public GetExp
 .public GetFirstEmptyMemberIdx
+.public GetIdleAnimationId
 .public GetItemAtIdx
 .public GetKecleonIdToSpawnByFloor
 .public GetMonsterGenderVeneer
@@ -77,7 +79,6 @@
 .public GetRandomMovementChance
 .public GetRecruitRate1
 .public GetRecruitRate2
-.public GetSleepAnimationId
 .public GetTile
 .public GetTileAtEntity
 .public GravityIsActive
@@ -183,7 +184,6 @@
 .public ov29_0230040C
 .public ov29_02303E0C
 .public ov29_02304830
-.public ov29_023049A8
 .public ov29_02304A48
 .public ov29_02305F60
 .public ov29_02307BDC

@@ -4497,7 +4497,7 @@ _02325394:
 	mov r0, sl
 	mov r1, r6
 	mov r2, r8
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, r5
 	mov r1, r4
 	bl ov29_022EA370
@@ -4527,7 +4527,7 @@ _02325408:
 	mov r0, sl
 	mov r1, r6
 	mov r2, r7
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	mov r0, r5
 	mov r1, r4
 	bl ov29_022EA370
@@ -4607,7 +4607,7 @@ _02325530:
 	ldrb r2, [r7, #0x4c]
 	mov r0, sl
 	mov r1, r4
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	ldrb r1, [sl, #0xae]
 	mov r0, r5
 	bl WanTableSpriteHasAnimationGroup

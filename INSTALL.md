@@ -11,9 +11,9 @@ To install the compiler and SDK needed for this project, run `make install_toolc
 If you have issues with the `make` command above, you can also install the compiler and SDK manually.
 
 ### Manual installation
-The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. Join the pret Discord, download the pinned `mwccarm.zip` zip in `#pokediamond`, and extract it to `tools/`. At the end of this operation, you should have the file `tools/mwccarm/2.0/sp2p2/mwccarm.exe`.
+The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. Download [mwccarm.zip](https://github.com/pret/pmd-sky/raw/workflows/assets/mwccarm.zip), and extract it to `tools/`. At the end of this operation, you should have the file `tools/mwccarm/2.0/sp2p2/mwccarm.exe`.
 
-For Nitro SDK, download the `NitroSDK-4_2-071210-jp.7z` file pinned in the pret Discord in `#pokeheartgold`. Extract and copy the folder `tools/bin` from the Nitro SDK into the folder `tools` in your `pmd-sky` clone. At the end of this operation, you should have the file `tools/bin/makelcf.exe` inside your `pmd-sky` clone. Finally, copy `include/nitro/specfiles/ARM7-TS.lcf.template` into the subdirectory `sub`, and `include/nitro/specfiles/ARM9-TS.lcf.template` and `include/nitro/specfiles/mwldarm.response.template` into the project root.
+For Nitro SDK, download [NitroSDK-4_2-071210-jp.7z](https://github.com/pret/pmd-sky/raw/workflows/assets/NitroSDK-4_2-071210-jp.7z). Extract and copy the folder `tools/bin` from the Nitro SDK into the folder `tools` in your `pmd-sky` clone. At the end of this operation, you should have the file `tools/bin/makelcf.exe` inside your `pmd-sky` clone. Finally, copy `include/nitro/specfiles/ARM7-TS.lcf.template` into the subdirectory `sub`, and `include/nitro/specfiles/ARM9-TS.lcf.template` and `include/nitro/specfiles/mwldarm.response.template` into the project root.
 
 ## 2. Dependencies
 

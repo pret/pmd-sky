@@ -14,6 +14,7 @@
 .public CalcDamageFixedWrapper
 .public CalcStatusDuration
 .public CeilFixedPoint
+.public ChangeMonsterAnimation
 .public CRUSH_CLAW_LOWER_DEFENSE_CHANCE
 .public DealDamage
 .public DefenderAbilityIsActiveMoveEffects__02329F14
@@ -69,7 +70,6 @@
 .public ov29_022F9EA0
 .public ov29_022FFB90
 .public ov29_0230175C
-.public ov29_023049A8
 .public ov29_02318BBC
 .public ov29_02318D58
 .public ov29_02321164

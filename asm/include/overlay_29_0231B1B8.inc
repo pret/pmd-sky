@@ -43,8 +43,8 @@
 .public FemaleToMaleForm
 .public GEO_PEBBLE_DAMAGE
 .public GetActiveTeamMember
+.public GetIdleAnimationId
 .public GetItemCategoryVeneer
-.public GetSleepAnimationId
 .public GOLD_FANG_POWER
 .public GOLD_THORN_POWER
 .public GRAVELEROCK_DAMAGE

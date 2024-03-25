@@ -8,9 +8,9 @@
 .public EntityIsValid__022E1A1C
 .public EntityIsValid__022E32E8
 .public GetForcedLossReason
+.public GetIdleAnimationId
 .public GetMonsterApparentId
 .public GetMonsterName
-.public GetSleepAnimationId
 .public GetSpriteSize
 .public GetTileSafe
 .public HasDropeyeStatus

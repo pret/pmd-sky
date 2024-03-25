@@ -12,6 +12,7 @@
 .public CanMonsterMoveInDirection
 .public CanSeeTarget
 .public CeilFixedPoint
+.public ChangeMonsterAnimation
 .public CheckTeamItemsFlags
 .public CheckTouchscreenArea
 .public CloseTextBox
@@ -28,6 +29,7 @@
 .public GetEntityMoveTargetAndRange
 .public GetEquippedThrowableItem
 .public GetHero
+.public GetIdleAnimationId
 .public GetItemCategoryVeneer
 .public GetItemIndex
 .public GetItemInfo
@@ -37,7 +39,6 @@
 .public GetMoneyCarried
 .public GetMonsterGenderVeneer
 .public GetPressedButtons
-.public GetSleepAnimationId
 .public GetTeamMemberIndex
 .public GetTile
 .public GetTileAtEntity
@@ -113,7 +114,6 @@
 .public ov29_0230105C
 .public ov29_02301158
 .public ov29_0230175C
-.public ov29_023049A8
 .public ov29_023055B0
 .public ov29_02321164
 .public ov29_02322DDC

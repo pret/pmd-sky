@@ -4,6 +4,7 @@
 .public ApplyItemEffect
 .public AreMovesEnabled
 .public CanMonsterUseItem
+.public ChangeMonsterAnimation
 .public CheckTeamMemberIdxVeneer
 .public DecrementStackItem
 .public DIRECTIONS_XY
@@ -55,7 +56,6 @@
 .public ov29_02300818
 .public ov29_023009CC
 .public ov29_0230175C
-.public ov29_023049A8
 .public ov29_02304A48
 .public ov29_02304AFC
 .public ov29_02307BDC

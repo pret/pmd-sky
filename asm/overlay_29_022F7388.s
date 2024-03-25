@@ -3680,11 +3680,11 @@ ov29_022FA360: ; 0x022FA360
 	and r1, r5, #7
 	mov r0, r6
 	strb r1, [r4, #0x4c]
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	ldrb r2, [r4, #0x4c]
 	mov r0, r6
-	bl ov29_023049A8
+	bl ChangeMonsterAnimation
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov29_022FA360
 
@@ -5542,7 +5542,7 @@ _022FBB38:
 	add r0, r8, #0x2c
 	bl SetSpriteIdForAnimationControl
 	mov r0, r8
-	bl GetSleepAnimationId
+	bl GetIdleAnimationId
 	mov r1, r0
 	mov r0, r8
 	bl ov29_02304830
