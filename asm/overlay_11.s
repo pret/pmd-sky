@@ -1408,7 +1408,7 @@ _022DD414:
 	b _022DDD00
 _022DD424:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	add r1, sp, #8
 	bl ov11_022E68E4
 	cmp r0, #0
@@ -1426,13 +1426,13 @@ _022DD424:
 	b _022DDD00
 _022DD468:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r8, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	str r5, [sp]
 	mov r0, #2
@@ -1476,7 +1476,7 @@ _022DD50C:
 	b _022DDD00
 _022DD524:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F25A4
@@ -1485,7 +1485,7 @@ _022DD524:
 	b _022DDD00
 _022DD544:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mvn r1, #0
 	cmp r1, r0, asr #16
@@ -1610,16 +1610,16 @@ _022DD6D0:
 	b _022DDD00
 _022DD700:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r8, r0
 	ldrh r0, [r6, #8]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, _022DDD18 ; =ov11_02324E80
 	mov r6, r0
 	strh r7, [r1, #6]
@@ -1634,11 +1634,11 @@ _022DD700:
 _022DD758:
 	mov r0, r8, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov r1, r6, lsl #0x10
 	str r0, [sp, #0xc]
 	mov r0, r1, lsr #0x10
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [sp, #0x10]
 	add r2, sp, #0xc
 	mov r0, #0
@@ -1714,7 +1714,7 @@ _022DD860:
 _022DD880:
 	ldrh r0, [r6, #2]
 	add r8, r6, #2
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldrsh r1, [r4, #0x44]
 	add r6, r6, #6
 	cmp r0, r1
@@ -1809,7 +1809,7 @@ _022DD990:
 	cmp r7, #0xab
 	addeq r6, r6, #2
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldrh r0, [r6, #4]
 	ldr r2, [r4, #0x14]
 	ldr r1, _022DDD54 ; =ov11_023193BC
@@ -1965,7 +1965,7 @@ _022DDBE8:
 	cmp r0, #1
 	bne _022DDC18
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	bl ov11_022E9558
 	mov r0, r4
 	mov r1, #0
@@ -1990,7 +1990,7 @@ _022DDC18:
 	b _022DDD00
 _022DDC4C:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	bl ov11_022E958C
 	mov r0, r4
 	mov r1, #1
@@ -1999,10 +1999,10 @@ _022DDC4C:
 	b _022DDD00
 _022DDC6C:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r2, r0
 	ldr r1, _022DDD5C ; =ov11_023193D4
 	add r0, sp, #0x20
@@ -2091,7 +2091,7 @@ RunNextOpcode: ; 0x022DDD64
 	addge r0, r1, r0, lsl #1
 	bge _022DDDCC
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r2, [r4, #0x38]
 	add r1, r0, #2
 	add r2, r2, #2
@@ -2488,7 +2488,7 @@ _022DE3AC: ; 0x022DE3AC
 	addge r0, r2, r0, lsl #1
 	bge _022DE3E4
 	ldrh r0, [r2, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4, #0x1c]
 	add r0, r0, #2
 	add r0, r1, r0, lsl #1
@@ -2498,7 +2498,7 @@ _022DE3E4:
 	b _022E2478
 _022DE3F0: ; 0x022DE3F0
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldr r1, _022DED10 ; =ov11_023193EC
 	mov r2, r5
@@ -2526,11 +2526,11 @@ _022DE448: ; 0x022DE448
 	b _022E2478
 _022DE458: ; 0x022DE458
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	ldrh r0, [r6, #2]
 	mov r4, r1, asr #0x10
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r2, r0
 	mov r0, r4
 	mov r1, #0
@@ -2538,14 +2538,14 @@ _022DE458: ; 0x022DE458
 	b _022E2474
 _022DE484: ; 0x022DE484
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	ldrh r0, [r6, #2]
 	mov r5, r1, asr #0x10
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0
 	mov r0, r5
 	mov r2, r4
@@ -2553,7 +2553,7 @@ _022DE484: ; 0x022DE484
 	b _022E2474
 _022DE4BC: ; 0x022DE4BC
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r4, r0, asr #0x10
 	mov r2, r4
@@ -2571,7 +2571,7 @@ _022DE4BC: ; 0x022DE4BC
 	b _022E2474
 _022DE500:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, _022DED18 ; =ov11_02324E80
 	strh r0, [r1, #8]
 	ldrsh r2, [r1, #8]
@@ -2620,7 +2620,7 @@ _022DE554:
 	b _022E2478
 _022DE5BC:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
 	bl ov11_022E7E84
@@ -2628,7 +2628,7 @@ _022DE5BC:
 	b _022E2478
 _022DE5D8:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, _022DED18 ; =ov11_02324E80
 	strh r0, [r1, #2]
 	ldrsh r2, [r1, #2]
@@ -2660,7 +2660,7 @@ _022DE62C:
 	b _022E2478
 _022DE650:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	bl ov11_022F1710
 	ldr r1, _022DED18 ; =ov11_02324E80
@@ -2688,7 +2688,7 @@ _022DE6AC:
 	b _022E2478
 _022DE6B4:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0
 	mov r0, #1
 	bl ov11_022E7F28
@@ -2701,10 +2701,10 @@ _022DE6D0:
 	str r1, [sp, #0x154]
 	str r0, [sp, #0x150]
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	str r0, [sp, #0x150]
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	str r0, [sp, #0x154]
 	cmp r5, #0x13
 	bgt _022DE728
@@ -2739,7 +2739,7 @@ _022DE758:
 	b _022E2474
 _022DE764:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	and r0, r4, #0xff
 	bl ov11_022F1DA8
@@ -2760,23 +2760,23 @@ _022DE794:
 	b _022E2474
 _022DE7B0:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0
 	mov r0, #2
 	bl ov11_022E7F28
 	b _022E2474
 _022DE7C8:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	and r0, r0, #0xff
 	bl ov11_022F26DC
 	b _022E2474
 _022DE7DC:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r4, lsl #0x10
 	mov r2, r0
 	mov r1, r1, lsr #0x10
@@ -2785,10 +2785,10 @@ _022DE7DC:
 	b _022E2474
 _022DE808:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r4, lsl #0x10
 	mov r2, r0
 	mov r1, r1, lsr #0x10
@@ -2797,7 +2797,7 @@ _022DE808:
 	b _022E2474
 _022DE834: ; 0x022DE834
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x18
 	mvn r1, #0
 	cmp r1, r0, asr #24
@@ -2872,7 +2872,7 @@ _022DE928:
 	b _022E2474
 _022DE934: ; 0x022DE934
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	mov r1, #0
@@ -2908,7 +2908,7 @@ _022DE9B0: ; 0x022DE9B0
 	b _022E2478
 _022DE9B8: ; 0x022DE9B8
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mvn r1, #0
 	cmp r1, r0, asr #16
@@ -2930,11 +2930,11 @@ _022DE9E8:
 	b _022E2478
 _022DEA08: ; 0x022DEA08
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0, lsl #0x10
 	ldrh r0, [r6, #2]
 	mov r6, r7, asr #0x10
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mvn r1, #0
 	mov r0, r0, lsl #0x18
 	cmp r1, r7, asr #16
@@ -2979,7 +2979,7 @@ _022DEAA0:
 	b _022E2478
 _022DEAC4: ; 0x022DEAC4
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov sb, r0, lsl #0x10
 	ldrh r1, [r6, #2]
 	add r0, r4, #0x14
@@ -2987,7 +2987,7 @@ _022DEAC4: ; 0x022DEAC4
 	bl ov11_022E4248
 	mov r8, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x18
 	mvn r1, #0
 	cmp r1, sb, asr #16
@@ -3037,7 +3037,7 @@ _022DEB80:
 	b _022E2478
 _022DEBA4: ; 0x022DEBA4
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov sb, r0, lsl #0x10
 	ldrh r1, [r6, #2]
 	add r0, r4, #0x14
@@ -3045,7 +3045,7 @@ _022DEBA4: ; 0x022DEBA4
 	bl ov11_022E4248
 	mov r8, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x18
 	mvn r1, #0
 	cmp r1, sb, asr #16
@@ -3092,7 +3092,7 @@ _022DEBA4: ; 0x022DEBA4
 	b _022E2478
 _022DEC7C: ; 0x022DEC7C
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0, lsl #0x10
 	ldrh r1, [r6, #2]
 	add r0, r4, #0x14
@@ -3117,7 +3117,7 @@ _022DEC7C: ; 0x022DEC7C
 	b _022E2478
 _022DECDC: ; 0x022DECDC
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r1, r0, asr #0x10
 	mov r0, r4
@@ -3146,14 +3146,14 @@ _022DED40: .word 0x00000133
 _022DED44: .word 0x0000012D
 _022DED48: ; 0x022DED48
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl UnlockScriptingLock
 	b _022E2474
 _022DED60: ; 0x022DED60
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	add r0, r4, #0x6c
 	mov r1, r1, asr #0x10
@@ -3161,7 +3161,7 @@ _022DED60: ; 0x022DED60
 	b _022E2474
 _022DED7C: ; 0x022DED7C
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	add r0, r4, #0x6c
 	mov r1, r1, asr #0x10
@@ -3169,10 +3169,10 @@ _022DED7C: ; 0x022DED7C
 	b _022E2474
 _022DED98: ; 0x022DED98
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r5, lsl #0x10
 	mov r2, r0
 	add r0, r4, #0x6c
@@ -3181,13 +3181,13 @@ _022DED98: ; 0x022DED98
 	b _022E2474
 _022DEDC4: ; 0x022DEDC4
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r1, r1, asr #0x10
 	mov r3, r5
@@ -3197,13 +3197,13 @@ _022DEDC4: ; 0x022DEDC4
 	b _022E2474
 _022DEE00: ; 0x022DEE00
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r1, r1, asr #0x10
 	mov r3, r5
@@ -3215,13 +3215,13 @@ _022DEE00: ; 0x022DEE00
 	b _022E2474
 _022DEE44: ; 0x022DEE44
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r1, r1, asr #0x10
 	mov r2, r5, lsl #0x10
@@ -3232,13 +3232,13 @@ _022DEE44: ; 0x022DEE44
 	b _022E2474
 _022DEE84: ; 0x022DEE84
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r5, lsl #0x10
 	mov r2, r0
 	mov r1, r4
@@ -3247,7 +3247,7 @@ _022DEE84: ; 0x022DEE84
 	b _022E2474
 _022DEEBC: ; 0x022DEEBC
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r1, #0
 	mov r2, r1
@@ -3256,10 +3256,10 @@ _022DEEBC: ; 0x022DEEBC
 	b _022E2474
 _022DEEDC: ; 0x022DEEDC
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0
 	mov r0, r4
 	and r1, r1, #0xff
@@ -3277,10 +3277,10 @@ _022DEF04: ; 0x022DEF04
 	b _022E2474
 _022DEF28: ; 0x022DEF28
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	mov r2, r7
 	add r0, r4, #0x6c
@@ -3293,10 +3293,10 @@ _022DEF28: ; 0x022DEF28
 	b _022E2474
 _022DEF64: ; 0x022DEF64
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r2, r4, lsl #0x10
 	mov r1, r0
 	mov r0, r2, asr #0x10
@@ -3304,7 +3304,7 @@ _022DEF64: ; 0x022DEF64
 	b _022E2474
 _022DEF8C: ; 0x022DEF8C
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	cmp r4, #0x3e8
 	blt _022DEFC0
@@ -3323,10 +3323,10 @@ _022DEFC0:
 	b _022E2474
 _022DEFD0:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r5, lsl #0x10
 	mov r2, r0
 	add r0, r4, #0x6c
@@ -3341,13 +3341,13 @@ _022DEFD0:
 	b _022E2474
 _022DF014:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r2, r0
 	mov r1, r1, asr #0x10
@@ -3362,13 +3362,13 @@ _022DF014:
 	b _022E2474
 _022DF064:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r0, r0, lsl #0x10
 	mov r2, r0, asr #0x10
@@ -3384,10 +3384,10 @@ _022DF064:
 	b _022E2474
 _022DF0B8:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r2, r0, lsl #0x10
 	mov r1, r5, lsl #0x10
 	add r0, r4, #0x6c
@@ -3402,13 +3402,13 @@ _022DF0B8:
 	b _022E2474
 _022DF0FC:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r5, lsl #0x10
 	mov r5, r0
 	mov r1, r1, asr #0x10
@@ -3425,13 +3425,13 @@ _022DF0FC:
 	b _022E2474
 _022DF154:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r2, r0
 	mov r0, r1, asr #0x10
@@ -3445,13 +3445,13 @@ _022DF154:
 	b _022E2474
 _022DF1A0:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r2, r0
 	mov r0, r1, asr #0x10
@@ -3465,13 +3465,13 @@ _022DF1A0:
 	b _022E2474
 _022DF1EC:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r2, r0
 	mov r0, r1, asr #0x10
@@ -3485,13 +3485,13 @@ _022DF1EC:
 	b _022E2474
 _022DF238:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r2, r0
 	mov r0, r1, asr #0x10
@@ -3505,13 +3505,13 @@ _022DF238:
 	b _022E2474
 _022DF284:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r2, r0
 	mov r0, r1, asr #0x10
@@ -3525,10 +3525,10 @@ _022DF284:
 	b _022E2474
 _022DF2D0:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	mov r0, r7
 	bl GetPerformanceFlagWithChecks
@@ -3540,7 +3540,7 @@ _022DF2D0:
 	b _022E2474
 _022DF308:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r0, #0
 	ldreqh r0, [r6, #2]
 	ldreq r1, [r4, #0x14]
@@ -3549,7 +3549,7 @@ _022DF308:
 	b _022E2474
 _022DF328:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r0, #0
 	ldreqh r0, [r6, #2]
 	ldreq r1, [r4, #0x14]
@@ -3558,7 +3558,7 @@ _022DF328:
 	b _022E2474
 _022DF348:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	mov r0, #0xb
 	bl Debug_GetDebugFlag
@@ -3590,7 +3590,7 @@ _022DF388: ; jump table
 	b _022DF424 ; case 12
 _022DF3BC:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	add r0, r4, #0x6c
 	mov r1, r1, asr #0x10
@@ -3599,13 +3599,13 @@ _022DF3BC:
 	b _022DF6FC
 _022DF3DC:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r5, lsl #0x10
 	mov r5, r0
 	add r0, r4, #0x6c
@@ -3618,13 +3618,13 @@ _022DF3DC:
 	b _022DF6FC
 _022DF424:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r5, lsl #0x10
 	mov r5, r0
 	add r0, r4, #0x6c
@@ -3643,7 +3643,7 @@ _022DF424:
 	b _022DF6FC
 _022DF484:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	bl RandInt
 	mov r7, r0
 	b _022DF6FC
@@ -3652,7 +3652,7 @@ _022DF498:
 	b _022DF6FC
 _022DF4A0:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	mov r0, #0
 	mov r2, r0
@@ -3662,7 +3662,7 @@ _022DF4A0:
 	b _022DF6FC
 _022DF4C4:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r1, r0, asr #0x10
 	mov r0, #0
@@ -3672,7 +3672,7 @@ _022DF4C4:
 	b _022DF6FC
 _022DF4E8:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl GetDungeonMode
@@ -3680,7 +3680,7 @@ _022DF4E8:
 	b _022DF6FC
 _022DF504:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_02065974
@@ -3721,7 +3721,7 @@ _022DF53C:
 	b _022DF6FC
 _022DF59C:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7E10
@@ -3764,7 +3764,7 @@ _022DF638:
 	b _022DF6FC
 _022DF640:
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7E10
@@ -3834,7 +3834,7 @@ _022DF728: ; 0x022DF728
 	b _022E2474
 _022DF740: ; 0x022DF740
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	orr r2, r0, #0x10000
 	ldr r1, _022DFE18 ; =ov11_02324ECC
 	ldr r0, _022DFE1C ; =ov11_02324EA4
@@ -3843,13 +3843,13 @@ _022DF740: ; 0x022DF740
 	b _022E2474
 _022DF760: ; 0x022DF760
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r7, lsl #0x10
 	mov r4, r0
 	mov r0, r1, asr #0x10
@@ -3871,13 +3871,13 @@ _022DF760: ; 0x022DF760
 	b _022E2474
 _022DF7CC: ; 0x022DF7CC
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r4, lsl #0x10
 	mov r4, r0
 	ldr r2, _022DFE18 ; =ov11_02324ECC
@@ -3898,13 +3898,13 @@ _022DF7CC: ; 0x022DF7CC
 	b _022E2474
 _022DF834: ; 0x022DF834
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r4, lsl #0x10
 	mov r4, r0
 	ldr r2, _022DFE18 ; =ov11_02324ECC
@@ -3925,7 +3925,7 @@ _022DF834: ; 0x022DF834
 	b _022E2474
 _022DF89C: ; 0x022DF89C
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	and r1, r1, #0xff
@@ -3938,10 +3938,10 @@ _022DF8B8: ; 0x022DF8B8
 	str r1, [sp, #0xd4]
 	str r0, [sp, #0xd0]
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	str r0, [sp, #0xd0]
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	str r0, [sp, #0xd4]
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	add r1, sp, #0xd0
@@ -3949,11 +3949,11 @@ _022DF8B8: ; 0x022DF8B8
 	b _022E2474
 _022DF8F4: ; 0x022DF8F4
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, _022DED18 ; =ov11_02324E80
 	str r0, [r1, #0xc]
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r2, _022DED18 ; =ov11_02324E80
 	mov r1, r0
 	str r1, [r2, #0x10]
@@ -4060,7 +4060,7 @@ _022DFA50: ; 0x022DFA50
 	b _022E2478
 _022DFA78: ; 0x022DFA78
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r1, [r6, #2]
 	add r0, r4, #0x14
@@ -4074,7 +4074,7 @@ _022DFA78: ; 0x022DFA78
 	b _022E2478
 _022DFAAC: ; 0x022DFAAC
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldr r1, _022DFE28 ; =ov11_023194C0
 	mov r0, #2
@@ -4206,7 +4206,7 @@ _022DFC64:
 _022DFC94: ; 0x022DFC94
 	ldrh r0, [r6]
 	ldr r5, [r4, #0x1c]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	mov r1, r6, lsl #0x10
 	add r0, r4, #0x6c
@@ -4223,7 +4223,7 @@ _022DFC94: ; 0x022DFC94
 	b _022DFD0C
 _022DFCD8:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r8, r0
 	mov r0, r7
 	mov r1, r6
@@ -4265,7 +4265,7 @@ _022DFD44: ; 0x022DFD44
 	str r2, [r0, #4]
 	bne _022DFD88
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r8, r0, asr #0x10
 _022DFD88:
@@ -4326,7 +4326,7 @@ _022DFE50: .word ov11_02319534
 _022DFE54: .word ov11_02319554
 _022DFE58:
 	ldrh r0, [r7, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	add sl, sp, #0x178
 	mov r1, r0
 	mov r0, sl
@@ -4376,10 +4376,10 @@ _022DFED8:
 	cmp r1, #0
 	ble _022DFFAC
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldr r1, _022DFE54 ; =ov11_02319554
 	mov r2, r5
@@ -4420,10 +4420,10 @@ _022DFFAC:
 	b _022E2474
 _022DFFC0: ; 0x022DFFC0
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	bl ov11_022E9B0C
 	cmp r4, #0
 	beq _022E2474
@@ -4431,10 +4431,10 @@ _022DFFC0: ; 0x022DFFC0
 	b _022E2478
 _022DFFE8: ; 0x022DFFE8
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r5, #0xdb
 	bne _022E000C
 	bl ov11_022E9B24
@@ -4448,16 +4448,16 @@ _022E0010:
 	b _022E2478
 _022E0020: ; 0x022E0020
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r8, r0
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r5, #0xd7
 	bne _022E0078
 	sub r1, r8, #0x100
@@ -4485,10 +4485,10 @@ _022E0098:
 	b _022E2478
 _022E00A8: ; 0x022E00A8
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	bl ov11_022E9B84
 	cmp r4, #0
 	beq _022E2474
@@ -4496,10 +4496,10 @@ _022E00A8: ; 0x022E00A8
 	b _022E2478
 _022E00D0: ; 0x022E00D0
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r5, #0xdc
 	bne _022E00F4
 	bl ov11_022E9BD0
@@ -4513,16 +4513,16 @@ _022E00F8:
 	b _022E2478
 _022E0108: ; 0x022E0108
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r8, r0
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r5, #0xd8
 	bne _022E0160
 	sub r1, r8, #0x100
@@ -4550,10 +4550,10 @@ _022E0180:
 	b _022E2478
 _022E0190: ; 0x022E0190
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	bl ov11_022E9C98
 	cmp r4, #0
 	beq _022E2474
@@ -4561,10 +4561,10 @@ _022E0190: ; 0x022E0190
 	b _022E2478
 _022E01B8: ; 0x022E01B8
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r5, #0xea
 	bne _022E01DC
 	bl ov11_022E9CB0
@@ -4578,16 +4578,16 @@ _022E01E0:
 	b _022E2478
 _022E01F0: ; 0x022E01F0
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r8, r0
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r5, #0xe6
 	bne _022E0248
 	sub r1, r8, #0x100
@@ -4615,22 +4615,22 @@ _022E0268:
 	b _022E2478
 _022E0278: ; 0x022E0278
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r8, r0
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov sb, r0
 	ldrh r0, [r6, #8]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov sl, r0
 	ldrh r0, [r6, #0xa]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r6, _022E1218 ; =ov11_02316A44
 	add r3, sp, #0xcc
 	mov r2, #4
@@ -4687,16 +4687,16 @@ _022E0368:
 	b _022E2478
 _022E0378: ; 0x022E0378
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strh r0, [r4, #0x46]
 	mov r0, #3
 	b _022E2478
 _022E038C: ; 0x022E038C
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	sub r0, r0, r5
 	bl RandInt
 	add r0, r5, r0
@@ -4748,7 +4748,7 @@ _022E0424:
 	stmia r5, {r0, r1, r2, r3}
 _022E0434: ; 0x022E0434
 	ldrh r0, [r6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldr r1, _022E121C ; =ov11_0231956C
 	mov r2, r5
@@ -5103,7 +5103,7 @@ _022E091C:
 	b _022E199C
 _022E092C:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r2, [r4]
 	mov r1, r0
 	ldr r0, [r4, #4]
@@ -5112,7 +5112,7 @@ _022E092C:
 	b _022E246C
 _022E094C:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	tst r5, #0x10
 	beq _022E0974
@@ -5130,7 +5130,7 @@ _022E0974:
 	b _022E246C
 _022E098C:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r0
 	ldr r1, [r4]
 	ldr r0, [r4, #4]
@@ -5140,7 +5140,7 @@ _022E098C:
 	b _022E246C
 _022E09B0:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r0
 	ldr r1, [r4]
 	ldr r0, [r4, #4]
@@ -5150,7 +5150,7 @@ _022E09B0:
 	b _022E246C
 _022E09D4:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r0
 	ldr r1, [r4]
 	ldr r0, [r4, #4]
@@ -5160,7 +5160,7 @@ _022E09D4:
 	b _022E246C
 _022E09F8:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r0
 	ldr r1, [r4]
 	ldr r0, [r4, #4]
@@ -5170,7 +5170,7 @@ _022E09F8:
 	b _022E246C
 _022E0A1C:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r0
 	ldr r1, [r4]
 	ldr r0, [r4, #4]
@@ -5180,7 +5180,7 @@ _022E0A1C:
 	b _022E246C
 _022E0A40:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r0
 	ldr r1, [r4]
 	ldr r0, [r4, #4]
@@ -5190,7 +5190,7 @@ _022E0A40:
 	b _022E246C
 _022E0A64:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0x14]
@@ -5208,13 +5208,13 @@ _022E0A64:
 	b _022E246C
 _022E0AA8:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4]
 	mov r6, r0
 	ldr r2, [r1, #0x38]
@@ -5264,10 +5264,10 @@ _022E0B5C:
 	b _022E2478
 _022E0B78:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r2, r0
 	cmp r2, #0
 	ldr r1, [r4]
@@ -5295,10 +5295,10 @@ _022E0BC8:
 	b _022E246C
 _022E0BEC:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r0
 	cmp r5, #0
 	beq _022E0C2C
@@ -5321,7 +5321,7 @@ _022E0C2C:
 	b _022E246C
 _022E0C4C:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	ldr r2, [r4]
 	ldr r0, [r4, #4]
@@ -5333,7 +5333,7 @@ _022E0C4C:
 	b _022E246C
 _022E0C78:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	ldr r2, [r4]
 	ldr r0, [r4, #4]
@@ -5363,7 +5363,7 @@ _022E0CA4:
 	b _022E246C
 _022E0CE8:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, _022E122C ; =ov11_02316A44
 	mov r5, r0
 	mov r0, r5, lsl #0x10
@@ -5414,7 +5414,7 @@ _022E0CE8:
 	b _022E246C
 _022E0DB0:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0xc]
@@ -5477,10 +5477,10 @@ _022E0E8C:
 	str r1, [sp, #0x44]
 	str r0, [sp, #0x40]
 	ldrh r0, [r6, #2]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [sp, #0x40]
 	ldrh r0, [r6, #4]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [sp, #0x44]
 	ldr r1, [r4]
 	ldr r0, [r4, #4]
@@ -5495,10 +5495,10 @@ _022E0ED0:
 	str r1, [sp, #0x4c]
 	str r0, [sp, #0x48]
 	ldrh r0, [r6, #2]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [sp, #0x48]
 	ldrh r0, [r6, #4]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [sp, #0x4c]
 	ldr r1, [r4]
 	ldr r0, [r4, #4]
@@ -5513,10 +5513,10 @@ _022E0F14:
 	ldr r1, [r1, #0x30]
 	str r2, [sp, #0x50]
 	str r1, [sp, #0x54]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	str r0, [sp, #0x50]
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, _022E122C ; =ov11_02316A44
 	str r0, [sp, #0x54]
 	ldr r2, [r1, #0x48]
@@ -5539,7 +5539,7 @@ _022E0F14:
 	b _022E246C
 _022E0F8C:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7E10
@@ -5570,7 +5570,7 @@ _022E0FC8:
 	b _022E246C
 _022E1000:
 	ldrh r0, [r6, #2]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	ldr r2, [r4]
 	mov r1, r0
 	ldr r0, [r4, #4]
@@ -5582,7 +5582,7 @@ _022E1020:
 	add r0, r1, #2
 	str r0, [r4, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [r4, #0x4c]
 	ldrsh r2, [r4, #0x3c]
 	mvn r1, #0
@@ -5598,7 +5598,7 @@ _022E105C:
 	add r0, r1, #2
 	str r0, [r4, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [r4, #0x4c]
 	ldrsh r2, [r4, #0x3c]
 	mov r1, #0
@@ -5613,7 +5613,7 @@ _022E1094:
 	add r0, r1, #2
 	str r0, [r4, #0x38]
 	ldrh r0, [r1]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strh r0, [r4, #0x46]
 	ldrsh r2, [r4, #0x3c]
 	mov r1, #0x100
@@ -5626,7 +5626,7 @@ _022E1094:
 	b _022E2478
 _022E10D0:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strb r0, [r4, #0x42]
 	ldr r2, [r4]
 	ldrsb r1, [r4, #0x42]
@@ -5636,14 +5636,14 @@ _022E10D0:
 	b _022E246C
 _022E10F4:
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7E10
 	movs r7, r0
 	bmi _022E246C
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	add r1, sp, #9
 	mov r0, r7
@@ -5660,7 +5660,7 @@ _022E10F4:
 	b _022E246C
 _022E1150:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0x14]
@@ -5689,7 +5689,7 @@ _022E1198:
 	b _022E126C
 _022E11BC:
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7E10
@@ -5739,7 +5739,7 @@ _022E126C:
 	cmp r5, #0
 	beq _022E246C
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0xc]
@@ -5789,7 +5789,7 @@ _022E130C:
 	b _022E246C
 _022E1334:
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strb r0, [r4, #0x69]
 	mov r0, #0
 	strh r0, [r4, #0x46]
@@ -5797,7 +5797,7 @@ _022E1334:
 	b _022E2478
 _022E1350:
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0x14]
@@ -5824,13 +5824,13 @@ _022E13A0:
 	b _022E2478
 _022E13B0:
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r8, r0
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #8]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0x14]
@@ -5853,7 +5853,7 @@ _022E13B0:
 	b _022E2478
 _022E1420:
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strb r0, [r4, #0x42]
 	ldr r2, [r4]
 	ldrsb r1, [r4, #0x42]
@@ -5861,16 +5861,16 @@ _022E1420:
 	ldr r2, [r2, #0x2c]
 	blx r2
 	ldrh r0, [r6, #4]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [r4, #0x4c]
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strh r0, [r4, #0x46]
 	mov r0, #3
 	b _022E2478
 _022E1460:
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0x14]
@@ -5887,19 +5887,19 @@ _022E1460:
 	ldr r2, [r2, #0x2c]
 	blx r2
 	ldrh r0, [r6, #4]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [r4, #0x4c]
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strh r0, [r4, #0x46]
 	mov r0, #3
 	b _022E2478
 _022E14C4:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #8]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	mov r0, r4
 	strh r5, [r4, #0x46]
@@ -5910,10 +5910,10 @@ _022E14C4:
 	b _022E2478
 _022E14F8:
 	ldrh r0, [r6, #4]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [r4, #0x64]
 	ldrh r0, [r6, #2]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [r4, #0x4c]
 	mvn r0, #0
 	strh r0, [r4, #0x46]
@@ -5921,13 +5921,13 @@ _022E14F8:
 	b _022E2478
 _022E1520:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	and r1, r7, #0xff
 	mov r2, r5
 	mov r3, r0
@@ -5937,13 +5937,13 @@ _022E1520:
 	b _022E2478
 _022E155C:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r6, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r6, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r0
 	cmp r7, #0x49
 	moveq r0, #0
@@ -6024,7 +6024,7 @@ _022E1674:
 	blx r1
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov r3, r0
 	mov r0, r5
 	mov r1, r7
@@ -6034,7 +6034,7 @@ _022E1674:
 	b _022E2478
 _022E16C4:
 	ldrh r0, [r6, #2]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov r3, r0
 	cmp r7, #0x43
 	moveq r0, #0
@@ -6046,7 +6046,7 @@ _022E16C4:
 	b _022E2478
 _022E16F0:
 	ldrh r0, [r6, #2]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0xc]
@@ -6067,7 +6067,7 @@ _022E1734:
 	add r0, r1, #2
 	str r0, [r4, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [r4, #0x4c]
 	ldrsh r1, [r4, #0x3c]
 	mov r0, #3
@@ -6087,7 +6087,7 @@ _022E1760:
 	blx r1
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov r3, r0
 	mov r0, r5
 	mov r1, r7
@@ -6097,7 +6097,7 @@ _022E1760:
 	b _022E2478
 _022E17B0:
 	ldrh r0, [r6, #2]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov r3, r0
 	cmp r7, #0x39
 	moveq r0, #0
@@ -6109,7 +6109,7 @@ _022E17B0:
 	b _022E2478
 _022E17DC:
 	ldrh r0, [r6, #2]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0xc]
@@ -6130,7 +6130,7 @@ _022E1820:
 	add r0, r1, #2
 	str r0, [r4, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [r4, #0x4c]
 	ldrsh r2, [r4, #0x3c]
 	mov r1, #0
@@ -6153,7 +6153,7 @@ _022E1858:
 	blx r1
 	mov r4, r0
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r0
 	mov r0, r5
 	mov r1, r7
@@ -6163,7 +6163,7 @@ _022E1858:
 	b _022E2478
 _022E18A8:
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r0
 	cmp r7, #0x3e
 	moveq r0, #0
@@ -6179,7 +6179,7 @@ _022E18D4:
 	ldr r1, [r1, #4]
 	blx r1
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0xc]
@@ -6201,7 +6201,7 @@ _022E1928:
 	ldr r1, [r1, #4]
 	blx r1
 	ldrh r0, [r6, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [r4]
 	mov r5, r0
 	ldr r2, [r1, #0xc]
@@ -6396,11 +6396,11 @@ _022E1BD0:
 	b _022E2464
 _022E1BE0:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0, lsl #0x10
 	ldrh r0, [r5, #4]
 	mov r5, r6, asr #0x10
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mvn r1, #0
 	mov r7, r0
 	cmp r1, r6, asr #16
@@ -6441,11 +6441,11 @@ _022E1C5C:
 	b _022E2464
 _022E1C88:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0, lsl #0x10
 	ldrh r0, [r5, #4]
 	mov r8, r7, asr #0x10
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mvn r0, #0
 	cmp r0, r7, asr #16
 	bne _022E1CF8
@@ -6554,7 +6554,7 @@ _022E1E20:
 	b _022E2478
 _022E1E28:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	mov r0, r4
 	mov r1, #1
@@ -6565,12 +6565,12 @@ _022E1E28:
 	b _022E2464
 _022E1E50:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	bl WorldMapSetMode
 	b _022E2464
 _022E1E60:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	mov r0, r4, lsl #0x18
 	mov r0, r0, asr #0x18
@@ -6581,7 +6581,7 @@ _022E1E60:
 	b _022E2464
 _022E1E88:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	mov r0, r4, lsl #0x18
 	mov r0, r0, asr #0x18
@@ -6592,7 +6592,7 @@ _022E1E88:
 	b _022E2464
 _022E1EB0:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	mov r0, r4, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -6604,7 +6604,7 @@ _022E1EB0:
 	b _022E2464
 _022E1EDC:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	mov r0, r4, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -6616,7 +6616,7 @@ _022E1EDC:
 	b _022E2464
 _022E1F08:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_0230F1EC
@@ -6627,14 +6627,14 @@ _022E1F20:
 	b _022E2464
 _022E1F2C:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl WorldMapSetCamera
 	b _022E2464
 _022E1F44:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_0230F0EC
@@ -6645,20 +6645,20 @@ _022E1F5C:
 	b _022E2464
 _022E1F68:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_0230F21C
 	b _022E2464
 _022E1F80:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r2, r6, lsl #0x10
 	strh r0, [sp, #0xca]
 	add r1, sp, #0xc8
@@ -6671,10 +6671,10 @@ _022E1FBC:
 	b _022E2478
 _022E1FC4:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	mov r1, r5, lsl #0x10
 	add r0, r4, #0x6c
@@ -6695,10 +6695,10 @@ _022E1FC4:
 	b _022E2464
 _022E2020:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r2, r6, lsl #0x10
 	mov r5, r0
 	add r1, sp, #0xc0
@@ -6722,7 +6722,7 @@ _022E207C:
 	b _022E2464
 _022E2084:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r0, #0
 	movlt r0, #0x1e
 	mov r0, r0, lsl #0x10
@@ -6731,7 +6731,7 @@ _022E2084:
 	b _022E2464
 _022E20A4:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	ldr r1, _022E229C ; =0x000003E7
 	mov r0, r0, lsr #0x10
@@ -6744,13 +6744,13 @@ _022E20C8:
 	b _022E2464
 _022E20D0:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r6, lsl #0x10
 	mov r3, r0
 	ldr r2, _022E229C ; =0x000003E7
@@ -6771,7 +6771,7 @@ _022E2128:
 	b _022E2464
 _022E2130:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r0, #0
 	movlt r0, #0x1e
 	mov r0, r0, lsl #0x10
@@ -6780,10 +6780,10 @@ _022E2130:
 	b _022E2464
 _022E2150:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r4, lsl #0x10
 	mov r2, r0, lsl #0x10
 	mov r0, r1, lsr #0x10
@@ -6792,7 +6792,7 @@ _022E2150:
 	b _022E2464
 _022E217C:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	ldr r1, _022E229C ; =0x000003E7
 	mov r0, r0, lsr #0x10
@@ -6805,13 +6805,13 @@ _022E21A0:
 	b _022E2464
 _022E21A8:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r6, lsl #0x10
 	mov r3, r0
 	ldr r2, _022E229C ; =0x000003E7
@@ -6832,7 +6832,7 @@ _022E2200:
 	b _022E2464
 _022E2208:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r0, #0
 	movlt r0, #0x1e
 	mov r0, r0, lsl #0x10
@@ -6841,10 +6841,10 @@ _022E2208:
 	b _022E2464
 _022E2228:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r4, lsl #0x10
 	mov r2, r0, lsl #0x10
 	mov r0, r1, lsr #0x10
@@ -6853,7 +6853,7 @@ _022E2228:
 	b _022E2464
 _022E2254:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017C50
@@ -6875,17 +6875,17 @@ _022E2298: .word 0x00000295
 _022E229C: .word 0x000003E7
 _022E22A0:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017C80
 	b _022E2464
 _022E22B8:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r4, lsl #0x10
 	mov r2, r0, lsl #0x10
 	mov r0, r1, lsr #0x10
@@ -6894,10 +6894,10 @@ _022E22B8:
 	b _022E2464
 _022E22E4:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r2, r0, lsl #0x10
 	mov r1, r4, lsl #0x10
 	mov r0, r1, lsr #0x10
@@ -6908,13 +6908,13 @@ _022E22E4:
 	b _022E2464
 _022E2318:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r6, lsl #0x10
 	mov r2, r4, lsl #0x10
 	mov r2, r2, lsr #0x10
@@ -6927,13 +6927,13 @@ _022E2318:
 	b _022E2464
 _022E2360:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r6, lsl #0x10
 	mov r3, r0, lsl #0x10
 	mov r2, r4, lsl #0x10
@@ -6944,13 +6944,13 @@ _022E2360:
 	b _022E2464
 _022E23A0:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r6, lsl #0x10
 	mov r3, r0, lsl #0x10
 	mov r2, r4, lsl #0x10
@@ -6961,17 +6961,17 @@ _022E23A0:
 	b _022E2464
 _022E23E0:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017CB4
 	b _022E2464
 _022E23F8:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r4, r0
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	cmp r0, #0
 	movlt r0, #0x1e
 	mov r1, r4, lsl #0x10
@@ -6988,7 +6988,7 @@ _022E242C:
 	b _022E2464
 _022E2440:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl sub_0206C0EC
@@ -7325,7 +7325,7 @@ _022E2690: ; jump table
 	b _022E2BF0 ; case 162
 _022E291C:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	mov r0, r6, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -7365,7 +7365,7 @@ _022E29A8:
 	b _022E3C5C
 _022E29B4:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	mov r0, r6, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -7393,7 +7393,7 @@ _022E2A10:
 	b _022E3C5C
 _022E2A1C:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	mov r0, r6, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -7486,7 +7486,7 @@ _022E2B30:
 	b _022E3C5C
 _022E2B60:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017B18
@@ -7497,7 +7497,7 @@ _022E2B60:
 	b _022E3C5C
 _022E2B88:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017B94
@@ -7515,7 +7515,7 @@ _022E2BB0:
 	b _022E3C5C
 _022E2BC8:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017C10
@@ -7526,7 +7526,7 @@ _022E2BC8:
 	b _022E3C5C
 _022E2BF0:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl sub_02017C68
@@ -7688,7 +7688,7 @@ _022E2E30:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	ldr r1, [sb, #0x50]
 	add r0, r1, r0
 	str r0, [sb, #0x58]
@@ -7696,7 +7696,7 @@ _022E2E30:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	ldr r1, [sb, #0x54]
 	add r0, r1, r0
 	str r0, [sb, #0x5c]
@@ -7724,13 +7724,13 @@ _022E2EB8:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [sb, #0x58]
 	ldr r1, [sb, #0x38]
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [sb, #0x5c]
 	ldrsh r0, [sb, #0x3c]
 	sub r0, r0, #2
@@ -7741,7 +7741,7 @@ _022E2EF8:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7E10
@@ -7760,7 +7760,7 @@ _022E2F40:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7E10
@@ -7777,7 +7777,7 @@ _022E2F40:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strh r0, [sb, #0x46]
 	b _022E2FE4
 _022E2FA0:
@@ -7793,7 +7793,7 @@ _022E2FA0:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strh r0, [sb, #0x46]
 	ldrsh r0, [sb, #0x3c]
 	sub r0, r0, #5
@@ -7967,7 +7967,7 @@ _022E3238:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	ldr r1, [sb, #0x50]
 	add r0, r1, r0
 	str r0, [sb, #0x58]
@@ -7975,7 +7975,7 @@ _022E3238:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	ldr r1, [sb, #0x54]
 	add r0, r1, r0
 	str r0, [sb, #0x5c]
@@ -8003,13 +8003,13 @@ _022E32C0:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [sb, #0x58]
 	ldr r1, [sb, #0x38]
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	str r0, [sb, #0x5c]
 	ldrsh r0, [sb, #0x3c]
 	sub r0, r0, #2
@@ -8020,13 +8020,13 @@ _022E3300:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [sb, #0x38]
 	mov r6, r0
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [sb]
 	mov r4, r0
 	ldr r0, [sb, #4]
@@ -8053,7 +8053,7 @@ _022E3380:
 	add r0, r1, #2
 	str r0, [sb, #0x38]
 	ldrh r0, [r1]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7E10
@@ -8141,7 +8141,7 @@ _022E34C8:
 	b _022E3564
 _022E34D0:
 	ldrh r0, [r4, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7E10
@@ -8211,7 +8211,7 @@ _022E35BC:
 	streqh r0, [sb, #0xe]
 	beq _022E3C5C
 	ldrh r0, [r4, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r2, r0
 	ldrsb r0, [sp, #0xc]
 	mov r1, r6
@@ -8224,7 +8224,7 @@ _022E35BC:
 	ldr r2, [r2, #0x2c]
 	blx r2
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strh r0, [sb, #0x46]
 	b _022E3C5C
 _022E361C:
@@ -8235,10 +8235,10 @@ _022E361C:
 	movgt r5, #0
 	bgt _022E3C5C
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r4, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r1, [sb]
 	mov r4, r0
 	ldr r2, [r1, #0x14]
@@ -8321,7 +8321,7 @@ _022E376C:
 	cmp r0, #0
 	bgt _022E3884
 	ldrh r0, [r4, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F7E10
@@ -8387,7 +8387,7 @@ _022E3840:
 	blx r2
 _022E3874:
 	ldrh r0, [r4, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strh r0, [sb, #0x48]
 	b _022E388C
 _022E3884:
@@ -8452,13 +8452,13 @@ _022E3938:
 	b _022E3C5C
 _022E395C:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r7, r0
 	ldrh r0, [r4, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r4, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	ldr r2, [sb]
 	mov r4, r0
 	ldr r0, [sb, #4]
@@ -8776,13 +8776,13 @@ _022E3DC0:
 	cmp r0, #0
 	bne _022E3E18
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r4, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r4, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r6, lsl #0x10
 	mov r2, r0
 	mov r1, r5
@@ -8812,13 +8812,13 @@ _022E3E38:
 	cmp r0, #0
 	bne _022E3E9C
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [r4, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r4, #6]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r3, r6, lsl #0x10
 	mov r2, r0
 	mov r1, r5
@@ -8853,7 +8853,7 @@ _022E3ED4:
 	b _022E4238
 _022E3EEC:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F88A0
@@ -8864,7 +8864,7 @@ _022E3EEC:
 	b _022E4238
 _022E3F14:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022FC67C
@@ -8875,7 +8875,7 @@ _022E3F14:
 	b _022E4238
 _022E3F3C:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022FDE1C
@@ -8886,7 +8886,7 @@ _022E3F3C:
 	b _022E4238
 _022E3F64:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
 	bl ov11_022F75F0
@@ -8897,10 +8897,10 @@ _022E3F64:
 	b _022E4238
 _022E3F8C:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r4, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r1, r5, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -8913,10 +8913,10 @@ _022E3F8C:
 	b _022E4238
 _022E3FC8:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r4, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r1, r5, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -8929,10 +8929,10 @@ _022E3FC8:
 	b _022E4238
 _022E4004:
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r4, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r1, r5, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -8973,7 +8973,7 @@ _022E4078:
 	cmp r5, #5
 	bne _022E40D4
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r1, [r4, #4]
 	add r0, r7, #0x14
@@ -8986,17 +8986,17 @@ _022E40D4:
 	cmp r5, #8
 	ldrh r0, [r4, #2]
 	bne _022E4104
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r4, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	and r0, r5, #0xff
 	mov r1, r1, asr #0x10
 	bl ov11_022F2790
 	b _022E4124
 _022E4104:
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r1, [r4, #4]
 	add r0, r7, #0x14
@@ -9028,7 +9028,7 @@ _022E4140:
 	strneh r0, [r7, #0xe]
 	bne _022E4238
 	ldrh r0, [r4, #0xa]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r1, [r4, #0xc]
 	add r0, r7, #0x14
@@ -9053,7 +9053,7 @@ _022E41A8:
 	cmp r0, #2
 	bne _022E421C
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r1, [r4, #4]
 	add r0, r7, #0x14
@@ -9110,7 +9110,7 @@ ov11_022E425C: ; 0x022E425C
 	cmp r0, #0x72
 	bne _022E42BC
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r0, r0, lsl #0x18
 	mov r4, r0, asr #0x18
 	mov r0, r7
@@ -9127,7 +9127,7 @@ _022E42BC:
 	cmp r0, #0x73
 	bne _022E430C
 	ldrh r0, [r4, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r1, r0, lsl #0x10
 	mov r0, r7
 	mov r1, r1, asr #0x10
@@ -9135,7 +9135,7 @@ _022E42BC:
 	cmp r0, #0
 	beq _022E4344
 	ldrh r0, [r4, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	strb r0, [r7, #0x16]
 	ldrsh r1, [r8, #0x10]
 	mov r0, #1
@@ -9241,7 +9241,7 @@ _022E442C: ; jump table
 	b _022E4514 ; case 6
 _022E4448:
 	ldrh r0, [r5, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov sb, r0
 	mov r0, r4
 	mov r1, sl
@@ -9268,7 +9268,7 @@ _022E44A0:
 	b _022E4418
 _022E44AC:
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov sb, r0
 	ldrh r2, [r5, #2]
 	ldr r1, _022E45B4 ; =ov11_02319640
@@ -9296,7 +9296,7 @@ _022E4508:
 	b _022E4418
 _022E4514:
 	ldrh r0, [r5, #4]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov sb, r0
 	ldrh r2, [r5, #2]
 	ldr r1, _022E45B8 ; =ov11_02319658
@@ -9607,8 +9607,8 @@ _022E48A4: .word ov11_02319694
 _022E48A8: .word ov11_02324F70
 	arm_func_end SsbLoad2
 
-	arm_func_start ProcessScriptParam
-ProcessScriptParam: ; 0x022E48AC
+	arm_func_start ScriptParamToInt
+ScriptParamToInt: ; 0x022E48AC
 	tst r0, #0x4000
 	movne r1, #0x8000
 	rsbne r1, r1, #0
@@ -9623,10 +9623,10 @@ ProcessScriptParam: ; 0x022E48AC
 	bx lr
 	.align 2, 0
 _022E48DC: .word 0x00003FFF
-	arm_func_end ProcessScriptParam
+	arm_func_end ScriptParamToInt
 
-	arm_func_start ov11_022E48E0
-ov11_022E48E0: ; 0x022E48E0
+	arm_func_start ScriptParamToFixedPoint16
+ScriptParamToFixedPoint16: ; 0x022E48E0
 	tst r0, #0x4000
 	movne r1, #0x8000
 	rsbne r1, r1, #0
@@ -9639,7 +9639,7 @@ ov11_022E48E0: ; 0x022E48E0
 	bx lr
 	.align 2, 0
 _022E4908: .word 0x00003FFF
-	arm_func_end ov11_022E48E0
+	arm_func_end ScriptParamToFixedPoint16
 
 	arm_func_start ov11_022E490C
 ov11_022E490C: ; 0x022E490C
@@ -9647,15 +9647,15 @@ ov11_022E490C: ; 0x022E490C
 	mov r7, r0
 	ldrh r0, [r7]
 	mov r4, r1
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [r7, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	tst r5, #4
 	bne _022E4958
 	ldrh r0, [r7, #4]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov r0, r0, lsl #3
 	str r0, [r4]
 	tst r5, #2
@@ -9666,7 +9666,7 @@ _022E4958:
 	tst r6, #4
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldrh r0, [r7, #6]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov r0, r0, lsl #3
 	str r0, [r4, #4]
 	tst r6, #2
@@ -9684,21 +9684,21 @@ ov11_022E4984: ; 0x022E4984
 	mov sb, r1
 	mov r8, r2
 	mov r7, r3
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r5, r0
 	ldrh r0, [sl, #2]
-	bl ProcessScriptParam
+	bl ScriptParamToInt
 	mov r6, r0
 	ldrh r0, [sl, #8]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov r4, r0
 	ldrh r0, [sl, #0xa]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov fp, r0
 	tst r5, #4
 	bne _022E49F4
 	ldrh r0, [sl, #4]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov r0, r0, lsl #3
 	str r0, [sb]
 	tst r5, #2
@@ -9716,7 +9716,7 @@ _022E49FC:
 	str r0, [r8]
 	bne _022E4A34
 	ldrh r0, [sl, #6]
-	bl ov11_022E48E0
+	bl ScriptParamToFixedPoint16
 	mov r0, r0, lsl #3
 	str r0, [sb, #4]
 	tst r6, #2

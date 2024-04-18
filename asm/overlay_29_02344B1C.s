@@ -519,7 +519,7 @@ _0234515C:
 	mov r0, r4
 	bl LogMessageByIdWithPopupCheckUser
 	ldrsh r0, [r5, #4]
-	bl ov29_0234CCB4
+	bl DisplayItemTip
 	b _02345508
 _023451EC:
 	ldr r0, _02345524 ; =DUNGEON_PTR
@@ -627,7 +627,7 @@ _02345360:
 	bl LogMessageByIdWithPopupCheckUser
 _0234536C:
 	ldrsh r0, [r5, #4]
-	bl ov29_0234CCB4
+	bl DisplayItemTip
 	b _02345508
 _02345378:
 	mov r8, #0
@@ -736,7 +736,7 @@ _023454BC:
 	bne _02345508
 _02345500:
 	ldrsh r0, [r5, #4]
-	bl ov29_0234CCB4
+	bl DisplayItemTip
 _02345508:
 	add sp, sp, #0x198
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}

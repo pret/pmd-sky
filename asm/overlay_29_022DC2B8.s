@@ -4043,7 +4043,7 @@ _022DF8E4:
 	bl ov29_022F62CC
 	b _022DF9B0
 _022DF90C:
-	bl ov29_0234CB88
+	bl DisplayFloorTip
 	bl ov29_022EF9B8
 	ldr r0, _022DFF40 ; =DUNGEON_PTR
 	ldr r1, [r0]

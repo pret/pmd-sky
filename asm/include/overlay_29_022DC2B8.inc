@@ -13,6 +13,7 @@
 .public DIRECTIONS_XY
 .public DirectoryFileMngr_OpenDirectoryFile
 .public DisplayFloorCard
+.public DisplayFloorTip
 .public DisplayMessage
 .public DisplayMessage2
 .public DrawTeamStats
@@ -225,7 +226,6 @@
 .public ov29_0234CA84
 .public ov29_0234CB34
 .public ov29_0234CB54
-.public ov29_0234CB88
 .public ov29_0234FD04
 .public ov29_0234FD14
 .public ov29_0234FD48
