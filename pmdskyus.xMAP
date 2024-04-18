@@ -26424,11 +26424,11 @@
   022E46FC 000001B0 .text   SsbLoad2	(overlay_11.o)
   022E46FC 00000000 .text   $a	(overlay_11.o)
   022E48A4 00000000 .text   $d	(overlay_11.o)
-  022E48AC 00000034 .text   ProcessScriptParam	(overlay_11.o)
+  022E48AC 00000034 .text   ScriptParamToInt	(overlay_11.o)
   022E48AC 00000000 .text   $a	(overlay_11.o)
   022E48DC 00000000 .text   $d	(overlay_11.o)
   022E48E0 00000000 .text   $a	(overlay_11.o)
-  022E48E0 0000002C .text   ov11_022E48E0	(overlay_11.o)
+  022E48E0 0000002C .text   ScriptParamToFixedPoint16	(overlay_11.o)
   022E4908 00000000 .text   $d	(overlay_11.o)
   022E490C 00000000 .text   $a	(overlay_11.o)
   022E490C 00000078 .text   ov11_022E490C	(overlay_11.o)
@@ -38291,9 +38291,9 @@
   0234CB54 00000034 .text   ov29_0234CB54	(overlay_29_023498A0.o)
   0234CB84 00000000 .text   $d	(overlay_29_023498A0.o)
   0234CB88 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234CB88 0000012C .text   ov29_0234CB88	(overlay_29_023498A0.o)
+  0234CB88 0000012C .text   DisplayFloorTip	(overlay_29_023498A0.o)
   0234CC88 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234CCB4 0000023C .text   ov29_0234CCB4	(overlay_29_023498A0.o)
+  0234CCB4 0000023C .text   DisplayItemTip	(overlay_29_023498A0.o)
   0234CCB4 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CEA4 00000000 .text   $d	(overlay_29_023498A0.o)
   0234CEF0 00000000 .text   $a	(overlay_29_023498A0.o)
@@ -39838,5 +39838,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Mar 25 00:44:03 2024
-# Link end time: Mon Mar 25 00:44:04 2024
+# Link start time: Thu Apr 18 03:55:39 2024
+# Link end time: Thu Apr 18 03:55:39 2024
