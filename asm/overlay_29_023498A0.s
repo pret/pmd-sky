@@ -3913,8 +3913,8 @@ _0234CB70:
 _0234CB84: .word ov29_023537E4
 	arm_func_end ov29_0234CB54
 
-	arm_func_start ov29_0234CB88
-ov29_0234CB88: ; 0x0234CB88
+	arm_func_start DisplayFloorTip
+DisplayFloorTip: ; 0x0234CB88
 	stmdb sp!, {r3, lr}
 	bl GetLeader
 	ldr r2, _0234CC88 ; =DUNGEON_PTR
@@ -3991,10 +3991,10 @@ _0234CCA4: .word ov29_02353290
 _0234CCA8: .word ov29_02353278
 _0234CCAC: .word ov29_02353238
 _0234CCB0: .word ov29_023532E0
-	arm_func_end ov29_0234CB88
+	arm_func_end DisplayFloorTip
 
-	arm_func_start ov29_0234CCB4
-ov29_0234CCB4: ; 0x0234CCB4
+	arm_func_start DisplayItemTip
+DisplayItemTip: ; 0x0234CCB4
 	stmdb sp!, {r4, lr}
 	ldr r2, _0234CEA4 ; =DUNGEON_PTR
 	mvn r3, #0
@@ -4155,7 +4155,7 @@ _0234CEE0: .word ov29_02353260
 _0234CEE4: .word ov29_02353308
 _0234CEE8: .word 0xFFFFFED2
 _0234CEEC: .word ov29_02353310
-	arm_func_end ov29_0234CCB4
+	arm_func_end DisplayItemTip
 
 	arm_func_start DisplayDungeonTip
 DisplayDungeonTip: ; 0x0234CEF0

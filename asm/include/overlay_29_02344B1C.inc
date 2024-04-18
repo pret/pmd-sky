@@ -3,6 +3,7 @@
 .public AddItemToBagNoHeld
 .public AddMoneyCarried
 .public AdvanceFrame
+.public DisplayItemTip
 .public DUNGEON_PTR
 .public DungeonRand16Bit
 .public DungeonRandInt
@@ -35,7 +36,6 @@
 .public ov29_02348DD8
 .public ov29_02348ECC
 .public ov29_0234B084
-.public ov29_0234CCB4
 .public ov29_023531A0
 .public ov29_023531A4
 .public ov29_023531BC
