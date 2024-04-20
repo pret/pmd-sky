@@ -61,7 +61,11 @@ _02345784:
 	ldr r0, [r5]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xb24]
+#else
 	ldr r0, [r0, #0xbc8]
+#endif
 	bl EntityIsValid__02345698
 	cmp r0, #0
 	addne r4, r7, #1
@@ -72,7 +76,11 @@ _02345784:
 	mov r0, #1
 	ldr r1, [r1]
 	add r1, r1, #0x3f00
+#ifdef JAPAN
+	strh r4, [r1, #0x1c]
+#else
 	strh r4, [r1, #0xc0]
+#endif
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _023457C4: .word DUNGEON_PTR
@@ -115,7 +123,11 @@ _02345830:
 	add r0, r2, #0x1a000
 	ldr sl, [r7, #0x10]
 	ldr sb, [r7, #0x1c]
+#ifdef JAPAN
+	ldr r0, [r0, #0x18c]
+#else
 	ldr r0, [r0, #0x230]
+#endif
 	rsb r8, r1, sl, asr #8
 	add r8, r0, r8
 	sub sb, sl, sb
@@ -237,7 +249,11 @@ _02345A18:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _02345A20: .word DUNGEON_PTR
+#ifdef JAPAN
+_02345A24: .word 0x0001A180
+#else
 _02345A24: .word 0x0001A224
+#endif
 _02345A28: .word ov29_0237C864
 _02345A2C: .word ov29_023537BC
 _02345A30: .word ov29_023537B4
@@ -467,14 +483,19 @@ _02345D5C:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02345D64: .word 0x00000BD8
+#ifdef JAPAN
+#define SPAWN_DROPPED_ITEM_OFFSET -0x2C1
+#else
+#define SPAWN_DROPPED_ITEM_OFFSET 0
+#endif
+_02345D64: .word 0x00000BD8 + SPAWN_DROPPED_ITEM_OFFSET
 _02345D68: .word DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 _02345D6C: .word ov29_023531BC
-_02345D70: .word 0x00000BD9
-_02345D74: .word 0x00000BDA
-_02345D78: .word 0x00000BDB
-_02345D7C: .word 0x00000BDF
-_02345D80: .word 0x00000BDC
+_02345D70: .word 0x00000BD9 + SPAWN_DROPPED_ITEM_OFFSET
+_02345D74: .word 0x00000BDA + SPAWN_DROPPED_ITEM_OFFSET
+_02345D78: .word 0x00000BDB + SPAWN_DROPPED_ITEM_OFFSET
+_02345D7C: .word 0x00000BDF + SPAWN_DROPPED_ITEM_OFFSET
+_02345D80: .word 0x00000BDC + SPAWN_DROPPED_ITEM_OFFSET
 	arm_func_end SpawnDroppedItem
 
 	arm_func_start ov29_02345D84
@@ -492,7 +513,11 @@ ov29_02345D84: ; 0x02345D84
 	ldr r0, [r0]
 	ldr r1, _0234604C ; =SECONDARY_TERRAIN_TYPES
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrsh r0, [r0, #0x30]
+#else
 	ldrsh r0, [r0, #0xd4]
+#endif
 	mov r7, r4
 	mov r8, r4
 	ldrb r0, [r1, r0]
@@ -558,7 +583,11 @@ _02345E90:
 	add r0, r3, #0x1a000
 	add r2, r2, #4
 	add r1, r1, #4
+#ifdef JAPAN
+	ldrb fp, [r0, #0x1a1]
+#else
 	ldrb fp, [r0, #0x245]
+#endif
 	mov r5, #0x10000
 	mov r7, r2, lsl #8
 	mov r8, r1, lsl #8
@@ -672,8 +701,13 @@ _02346048: .word DUNGEON_PTR
 _0234604C: .word SECONDARY_TERRAIN_TYPES
 _02346050: .word DISPLACEMENTS_WITHIN_3
 _02346054: .word ov29_023531BC
+#ifdef JAPAN
+_02346058: .word 0x00000885
+_0234605C: .word 0x00000886
+#else
 _02346058: .word 0x00000B74
 _0234605C: .word 0x00000B75
+#endif
 	arm_func_end ov29_02345D84
 
 	arm_func_start TryGenerateUnownStoneDrop
@@ -1092,7 +1126,11 @@ _0234662C:
 	ldr r0, [r0]
 	mov fp, r6
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x1a1]
+#else
 	ldrb r0, [r0, #0x245]
+#endif
 	mov r5, r6
 	str r0, [sp, #0x10]
 _0234664C:
@@ -1183,11 +1221,13 @@ _02346784:
 	add r0, r6, r8, lsl #2
 	mov r2, #1
 	bl SpawnItem
+#ifndef JAPAN
 	mov r0, r8, lsl #2
 	add r1, r6, r8, lsl #2
 	ldrsh r0, [r6, r0]
 	ldrsh r1, [r1, #2]
 	bl DrawMinimapTile
+#endif
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
 	mov r4, r0, asr #0x10
@@ -1202,10 +1242,15 @@ _023467C4:
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023467D0: .word 0x00000BDD
+#ifdef JAPAN
+#define OV29_02346344_OFFSET -0x2C1
+#else
+#define OV29_02346344_OFFSET 0
+#endif
+_023467D0: .word 0x00000BDD + OV29_02346344_OFFSET
 _023467D4: .word ov29_023531BC
-_023467D8: .word 0x00000BDC
-_023467DC: .word 0x00000BDE
+_023467D8: .word 0x00000BDC + OV29_02346344_OFFSET
+_023467DC: .word 0x00000BDE + OV29_02346344_OFFSET
 _023467E0: .word DUNGEON_PTR
 	arm_func_end ov29_02346344
 
@@ -1279,9 +1324,15 @@ ov29_02346888: ; 0x02346888
 	cmp r1, #1
 	cmpeq r4, #0
 	bne _023468F0
+#ifdef JAPAN
+	ldr r1, _02347CAC ; =0x0000091F
+	mov r2, r0
+	mov r3, r0
+#else
 	mov r2, r0
 	mov r3, r0
 	mov r1, #0xbe0
+#endif
 	str r0, [sp]
 	bl YesNoMenu
 	cmp r0, #1
@@ -1294,6 +1345,9 @@ _023468F0:
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _023468F8: .word DUNGEON_PTR
+#ifdef JAPAN
+_02347CAC: .word 0x0000091F
+#endif
 	arm_func_end ov29_02346888
 
 	arm_func_start ov29_023468FC
@@ -1322,7 +1376,11 @@ _0234694C:
 	ldr r0, [r4]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr sl, [r0, #0xa84]
+#else
 	ldr sl, [r0, #0xb28]
+#endif
 	mov r0, sl
 	bl EntityIsValid__02345698
 	cmp r0, #0
@@ -1416,7 +1474,11 @@ _02346A78:
 	ldr r0, [r5]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r8, [r0, #0xa84]
+#else
 	ldr r8, [r0, #0xb28]
+#endif
 	mov r0, r8
 	bl EntityIsValid__02345698
 	cmp r0, #0
@@ -1555,7 +1617,11 @@ _02346C54:
 	ldr r0, [r6]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr sb, [r0, #0xa84]
+#else
 	ldr sb, [r0, #0xb28]
+#endif
 	mov r0, sb
 	bl EntityIsValid__02345698
 	cmp r0, #0
@@ -1703,7 +1769,13 @@ _02346E30:
 	arm_func_start ov29_02346E48
 ov29_02346E48: ; 0x02346E48
 	stmdb sp!, {r3, lr}
+#ifdef JAPAN
+	bl IsMarowakTrainingMaze
+	cmp r0, #0
+	beq _02348210
+#endif
 	bl ov29_02346CBC
+_02348210:
 	bl sub_02057CE8
 	bl CleanStickyItemsInBag
 	ldmia sp!, {r3, pc}
@@ -1746,10 +1818,27 @@ ov29_02346EBC: ; 0x02346EBC
 	cmp r1, #0
 	bne _02346F04
 	ldr r1, _02346F0C ; =DUNGEON_PTR
+#ifdef JAPAN
+	mov ip, #0
+#else
 	mov r3, #0
+#endif
 	ldr r1, [r1]
 	add r1, r1, #0x3f4
 	add r2, r1, #0x400
+#ifdef JAPAN
+	mov r1, #0x23c
+	b _023482BC
+_02346EE0:
+	mla r3, ip, r1, r2
+	cmp r3, r0
+	ldreq r0, _02346F10 ; =ov29_023531C8
+	ldreqb r0, [r0, ip]
+	bxeq lr
+	add ip, ip, #1
+_023482BC:
+	cmp ip, #4
+#else
 	b _02346EFC
 _02346EE0:
 	add r1, r3, r3, lsl #3
@@ -1761,6 +1850,7 @@ _02346EE0:
 	add r3, r3, #1
 _02346EFC:
 	cmp r3, #4
+#endif
 	blt _02346EE0
 _02346F04:
 	mov r0, #0
@@ -1822,10 +1912,30 @@ _02346FB4: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_start ov29_02346FB8
 ov29_02346FB8: ; 0x02346FB8
 	ldr r1, _02346FFC ; =DUNGEON_PTR
+#ifdef JAPAN
+	mov ip, #0
+#else
 	mov r3, #0
+#endif
 	ldr r1, [r1]
 	add r1, r1, #0x56
 	add r2, r1, #0x800
+#ifdef JAPAN
+	mov r1, #0x23c
+	b _023483A4
+_02348394:
+	mla r3, ip, r1, r2
+	cmp r3, r0
+	beq _023483AC
+	add ip, ip, #1
+_023483A4:
+	cmp ip, #4
+	blt _02348394
+_023483AC:
+	cmp ip, #4
+	mvneq r0, #0
+	movne r0, ip
+#else
 	b _02346FE4
 _02346FD0:
 	add r1, r3, r3, lsl #3
@@ -1840,6 +1950,7 @@ _02346FEC:
 	cmp r3, #4
 	mvneq r0, #0
 	movne r0, r3
+#endif
 	bx lr
 	.align 2, 0
 _02346FFC: .word DUNGEON_PTR
@@ -1900,7 +2011,11 @@ _0234705C:
 	ldr r0, [r5]
 	add r0, r0, r1, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr sb, [r0, #0xa80]
+#else
 	ldr sb, [r0, #0xb24]
+#endif
 	mov r0, sb
 	bl EntityIsValid__02345698
 	cmp r0, #0
@@ -2032,6 +2147,23 @@ _02347224:
 	mov r0, r1, lsl #0x10
 	add r1, sp, #0
 	mov r0, r0, asr #0x10
+#ifdef JAPAN
+	ldr r4, [r1, r0, lsl #2]
+	ldrb r0, [r4]
+	orr r0, r0, #8
+	strb r0, [r4]
+	ldrb r0, [r4, #1]
+	cmp r0, #0
+	beq _023472B4
+	sub r2, r0, #1
+	mov r0, #0x23c
+	ldr r1, _023472C0 ; =DUNGEON_PTR
+	mul r3, r2, r0
+	ldr r0, [r1]
+	add r0, r0, #0x56
+	add r1, r0, #0x800
+	ldrb r0, [r1, r3]
+#else
 	ldr r3, [r1, r0, lsl #2]
 	ldrb r0, [r3]
 	orr r0, r0, #8
@@ -2047,15 +2179,24 @@ _02347224:
 	add r2, r0, #0x800
 	ldrb r0, [r2, r1, lsl #6]
 	mov r1, r1, lsl #6
+#endif
 	tst r0, #1
 	movne r0, #1
 	moveq r0, #0
 	tst r0, #0xff
+#ifdef JAPAN
+	ldrneb r0, [r1, r3]
+	orrne r0, r0, #8
+	strneb r0, [r1, r3]
+_023472B4:
+	ldrsh r0, [r4, #4]
+#else
 	ldrneb r0, [r2, r1]
 	orrne r0, r0, #8
 	strneb r0, [r2, r1]
 _023472B4:
 	ldrsh r0, [r3, #4]
+#endif
 _023472B8:
 	add sp, sp, #0xc8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -2083,7 +2224,11 @@ GenerateItem: ; 0x023472C4
 	ldr r1, _02347374 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x28000
+#ifdef JAPAN
+	ldrb r1, [r1, #0x618]
+#else
 	ldrb r1, [r1, #0x6bc]
+#endif
 	cmp r0, r1
 	movlt r6, #1
 	b _02347324
@@ -2104,7 +2249,11 @@ _02347324:
 	ldr r0, [r1, #0x7cc]
 	cmp r0, #0
 	add r0, r1, #0x28000
+#ifdef JAPAN
+	ldrb r2, [r0, #0x625]
+#else
 	ldrb r2, [r0, #0x6c9]
+#endif
 	moveq r3, #5
 	movne r3, #0x28
 	mul r1, r2, r3
@@ -2124,11 +2273,19 @@ ov29_02347378: ; 0x02347378
 	ldr r0, [r3]
 	cmp r2, #0
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldrb fp, [r0, #0x1a1]
+#else
 	ldrb fp, [r0, #0x245]
+#endif
 	beq _023473B0
 	cmp r2, #0
 	beq _023473B8
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19a]
+#else
 	ldrb r0, [r0, #0x23e]
+#endif
 	cmp r0, #0
 	bne _023473B8
 _023473B0:
@@ -2240,7 +2397,11 @@ ov29_02347518: ; 0x02347518
 	ldr r4, [r4]
 	mov r6, #3
 	add r0, r4, #0x1a000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x1a1]
+#else
 	ldrb r0, [r0, #0x245]
+#endif
 	mov r5, #0
 	mov sb, r3
 	str r0, [sp, #0x20]
@@ -2252,6 +2413,16 @@ ov29_02347518: ; 0x02347518
 	mov r0, r1
 	str r0, [r4, #0x180]
 	str r5, [r4, #0xe8]
+#ifdef JAPAN
+	ldrh r5, [r2]
+	str r1, [sp, #8]
+	mov r1, #0x18
+	strh r5, [r4, #0xd0]
+	ldrh r5, [r2, #2]
+	add r0, r4, #0xcc
+	ldr r8, [sp, #0x270]
+	strh r5, [r4, #0xd2]
+#else
 	ldrh r6, [r2]
 	str r1, [sp, #8]
 	mov r1, #0x18
@@ -2260,6 +2431,7 @@ ov29_02347518: ; 0x02347518
 	add r0, r4, #0xcc
 	ldr r8, [sp, #0x270]
 	strh r6, [r4, #0xd2]
+#endif
 	ldrsh r3, [r2]
 	ldrsh r2, [r2, #2]
 	smulbb r3, r3, r1
@@ -2268,7 +2440,11 @@ ov29_02347518: ; 0x02347518
 	mov r1, r1, lsl #8
 	mov r2, r2, lsl #8
 	bl ov29_022E1A84
+#ifdef JAPAN
+	mov r0, #0
+#else
 	mov r0, r5
+#endif
 	str r0, [sp, #0x1c]
 	strh r0, [r4, #0xf2]
 	ldr r0, [sl]
@@ -2281,10 +2457,16 @@ ov29_02347518: ; 0x02347518
 	movne r0, #1
 	strne r0, [sp, #0x1c]
 _023475D4:
+#ifdef JAPAN
+	mov r0, #1
+	ldrsh fp, [r8, #2]
+	mov r5, #0
+#else
 	ldrsh r1, [r8, #2]
 	mov r0, #1
 	mov r6, #0
 	str r1, [sp, #0x24]
+#endif
 	bl ov29_0234B4CC
 _023475E8:
 	ldrh r2, [r4, #0xd0]
@@ -2300,23 +2482,48 @@ _023475E8:
 	ldr r1, _02347B40 ; =DIRECTIONS_XY
 	mov r2, sb, lsl #2
 	add r0, r1, sb, lsl #2
+#ifdef JAPAN
+	ldrsh r6, [r4, #0xd0]
+#else
 	ldrsh r7, [r4, #0xd0]
+#endif
 	ldrsh r3, [r1, r2]
 	ldrsh r2, [r4, #0xd2]
 	ldrsh r1, [r0, #2]
+#ifdef JAPAN
+	add r0, r6, r3
+#else
 	add r0, r7, r3
+#endif
 	add r1, r2, r1
 	bl GetTile
 	ldrh r0, [r0]
 	tst r0, #3
 	bne _023476BC
 	ldrsh r0, [sp, #0x46]
+#ifdef JAPAN
+	mov r6, #0
+#else
 	mov r7, #0
+#endif
 	str r0, [sp, #0x10]
 	ldrsh r0, [sp, #0x44]
 	str r0, [sp, #0xc]
 	ldr r0, _02347B44 ; =ov29_023516FC
 	add r0, r0, sb, lsl #2
+#ifdef JAPAN
+	str r0, [sp, #0x24]
+	b _023476B4
+_02347668:
+	ldr r0, [sp, #0x24]
+	ldrb r7, [r6, r0]
+	cmp r7, #8
+	bge _023476B0
+	ldr r0, _02347B40 ; =DIRECTIONS_XY
+	mov r1, r7, lsl #2
+	ldrsh r1, [r0, r1]
+	add r0, r0, r7, lsl #2
+#else
 	str r0, [sp, #0x28]
 	b _023476B4
 _02347668:
@@ -2328,6 +2535,7 @@ _02347668:
 	mov r1, fp, lsl #2
 	ldrsh r1, [r0, r1]
 	add r0, r0, fp, lsl #2
+#endif
 	ldrsh r2, [r0, #2]
 	ldr r0, [sp, #0xc]
 	add r0, r0, r1
@@ -2336,12 +2544,21 @@ _02347668:
 	bl GetTile
 	ldrh r0, [r0]
 	tst r0, #3
+#ifdef JAPAN
+	movne sb, r7
+	bne _023476BC
+_023476B0:
+	add r6, r6, #1
+_023476B4:
+	cmp r6, #4
+#else
 	movne sb, fp
 	bne _023476BC
 _023476B0:
 	add r7, r7, #1
 _023476B4:
 	cmp r7, #4
+#endif
 	blt _02347668
 _023476BC:
 	mov r0, sb, lsl #0x10
@@ -2370,25 +2587,42 @@ _023476BC:
 	cmplt r1, #0x20
 	blt _02347728
 _02347720:
+#ifdef JAPAN
+	mov r6, #2
+#else
 	mov r7, #2
+#endif
 	b _02347978
 _02347728:
 	mov r2, sb, lsl #2
 	add r1, r0, sb, lsl #2
 	ldrsh r0, [r0, r2]
 	ldrsh r1, [r1, #2]
+#ifdef JAPAN
+	mov r6, #0
+#else
 	mov r7, #0
+#endif
 	mov r0, r0, lsl #0xa
 	str r0, [sp, #0x14]
 	and r0, sb, #0xff
+#ifdef JAPAN
+	mov r7, r1, lsl #0xa
+	str r0, [sp, #0x28]
+#else
 	mov fp, r1, lsl #0xa
 	str r0, [sp, #0x2c]
+#endif
 _02347750:
 	mov r0, #0
 	str r0, [sp, #0x18]
 	ldr r1, [sp, #0x14]
 	add r0, r4, #0xcc
+#ifdef JAPAN
+	mov r2, r7
+#else
 	mov r2, fp
+#endif
 	bl ov29_022E1A90
 	bl IsWaterTileset
 	cmp r0, #0
@@ -2407,7 +2641,11 @@ _02347750:
 	mov r0, #1
 	str r0, [sp]
 	ldr r1, [sp, #0x20]
+#ifdef JAPAN
+	ldr r3, [sp, #0x28]
+#else
 	ldr r3, [sp, #0x2c]
+#endif
 	add r0, r4, #0xcc
 	mov r2, #0
 	bl ov29_023457C8
@@ -2420,30 +2658,52 @@ _02347750:
 	mov r0, #0x12
 	bl AdvanceFrame
 _023477DC:
+#ifdef JAPAN
+	add r6, r6, #1
+	cmp r6, #6
+#else
 	add r7, r7, #1
 	cmp r7, #6
+#endif
 	blt _02347750
 	ldrsh r0, [r4, #0xd0]
 	ldrsh r1, [r4, #0xd2]
 	bl GetTile
+#ifdef JAPAN
+	mov r6, r0
+	ldrh r0, [r6]
+#else
 	mov r7, r0
 	ldrh r0, [r7]
+#endif
 	tst r0, #3
 	ldreqb r0, [r8]
 	cmpeq r0, #0
 	bne _02347824
 	ldrh r1, [sp, #0x44]
 	ldrh r0, [sp, #0x46]
+#ifdef JAPAN
+	mov r6, #1
+#else
 	mov r7, #1
+#endif
 	strh r1, [r4, #0xd0]
 	strh r0, [r4, #0xd2]
 	b _02347978
 _02347824:
+#ifdef JAPAN
+	ldr r0, [r6, #0xc]
+#else
 	ldr r0, [r7, #0xc]
+#endif
 	cmp r0, #0
 	beq _02347960
 	ldrb r1, [r8]
+#ifdef JAPAN
+	mov r7, #0
+#else
 	mov fp, #0
+#endif
 	cmp r1, #0
 	ldreq r1, [r0]
 	cmpeq r1, #1
@@ -2458,6 +2718,16 @@ _02347824:
 	cmp r0, #0
 	beq _02347870
 _0234786C:
+#ifdef JAPAN
+	mov r7, #1
+_02347870:
+	cmp r7, #0
+	addne r0, sb, #4
+	andne sb, r0, #7
+	bne _02347960
+	ldr r0, [r6, #0xc]
+	mov r7, #1
+#else
 	mov fp, #1
 _02347870:
 	cmp fp, #0
@@ -2472,20 +2742,31 @@ _02347870:
 _02347894:
 	ldr r0, [r7, #0xc]
 	mov fp, #1
+#endif
 	ldr r0, [r0]
 	cmp r0, #1
 	bne _0234791C
 	add r0, sp, #0x34
+#ifdef JAPAN
+	add r1, r7, #0x194
+	bl InitMove
+	ldr r0, [r6, #0xc]
+#else
 	add r1, fp, #0x194
 	bl InitMove
 	ldr r0, [r7, #0xc]
+#endif
 	add r1, sp, #0x34
 	bl TwoTurnMoveForcedMiss
 	cmp r0, #0
 	ldr r0, [sp, #8]
 	mov r1, #1
 	ldrsh r0, [r0, #4]
+#ifdef JAPAN
+	movne r7, #0
+#else
 	movne fp, #0
+#endif
 	bl TestItemAiFlag
 	cmp r0, #0
 	bne _0234791C
@@ -2500,10 +2781,31 @@ _02347894:
 	cmp r0, #0
 	beq _0234791C
 _02347908:
+#ifdef JAPAN
+	ldr r1, [r6, #0xc]
+#else
 	ldr r1, [r7, #0xc]
+#endif
 	mov r0, sl
 	bl ov29_022FAFD4
 	cmp r0, #0
+#ifdef JAPAN
+	movne r7, #0
+_0234791C:
+	cmp r7, #0
+	beq _02347960
+	cmp r5, #0x40
+	bge _02347950
+	ldr r1, [r6, #0xc]
+	add r2, sp, #0x48
+	mov r0, sl
+	str r1, [r2, r5, lsl #3]
+	bl DoesProjectileHitTarget
+	add r1, sp, #0x48
+	add r1, r1, r5, lsl #3
+	strb r0, [r1, #4]
+	add r5, r5, #1
+#else
 	movne fp, #0
 _0234791C:
 	cmp fp, #0
@@ -2519,9 +2821,43 @@ _0234791C:
 	add r1, r1, r6, lsl #3
 	strb r0, [r1, #4]
 	add r6, r6, #1
+#endif
 _02347950:
 	ldrb r0, [r8]
 	cmp r0, #0
+#ifdef JAPAN
+	moveq r6, #0
+	beq _02347978
+_02347960:
+	sub fp, fp, #1
+	cmp fp, #0
+	bgt _023475E8
+	mov r6, #1
+_02347978:
+	mov r0, #0
+	bl ov29_0234B4CC
+	ldr r0, _02348EF8 ; =0x00000922
+	mov fp, #0
+	sub r0, r0, #1
+	str r0, [sp, #0x2c]
+	b _02347A94
+_02347988:
+	add r0, sp, #0x48
+	ldr r7, [r0, fp, lsl #3]
+	cmp r7, #0
+	moveq r0, #0
+	beq _02348D5C
+	ldr r0, [r7]
+	cmp r0, #0
+	movne r0, #1
+	moveq r0, #0
+	and r0, r0, #0xff
+_02348D5C:
+	cmp r0, #0
+	beq _02347A90
+	add r0, sp, #0x48
+	add r0, r0, fp, lsl #3
+#else
 	moveq r7, #0
 	beq _02347978
 _02347960:
@@ -2549,22 +2885,36 @@ _02347988:
 	beq _02347A90
 	add r0, sp, #0x48
 	add r0, r0, r5, lsl #3
+#endif
 	ldrb r0, [r0, #4]
 	cmp r0, #0
 	beq _02347A38
 	mov r0, #0
+#ifdef JAPAN
+	mov r1, r7
+#else
 	mov r1, fp
+#endif
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
 	ldr r1, [sp, #8]
 	mov r0, #0
 	bl ov29_02344B70
+#ifdef JAPAN
+	mov r0, sl
+	mov r1, r7
+	mov r2, #0x920
+	bl LogMessageByIdWithPopupCheckUserTarget
+	mov r0, sl
+	mov r1, r7
+#else
 	ldr r2, _02347B48 ; =0x00000BE1
 	mov r0, sl
 	mov r1, fp
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, sl
 	mov r1, fp
+#endif
 	bl ov29_02307BDC
 	mov r2, r0
 	ldr r0, [sp, #0x1c]
@@ -2576,39 +2926,70 @@ _02347988:
 	moveq r0, #0
 	and r1, r0, #0xff
 	ldr r0, [sp, #8]
+#ifdef JAPAN
+	str r7, [sp]
+#else
 	str fp, [sp]
+#endif
 	str r0, [sp, #4]
 	mov r0, #1
 	bl ApplyItemEffect
 	b _02347A90
 _02347A38:
 	ldrb r0, [r8]
+#ifdef JAPAN
+	mov r1, r7
+	cmp r0, #0
+	mov r0, #0
+	cmpeq r5, #1
+	mov r2, r0
+	moveq r6, #1
+#else
 	mov r1, fp
 	cmp r0, #0
 	mov r0, #0
 	cmpeq r6, #1
 	mov r2, r0
 	moveq r7, #1
+#endif
 	bl SubstitutePlaceholderStringTags
 	ldr r1, [sp, #8]
 	mov r0, #0
 	bl ov29_02344B44
 	ldrb r0, [r8]
+#ifdef JAPAN
+	mov r1, r7
+#else
 	mov r1, fp
 	ldr r2, _02347B48 ; =0x00000BE1
+#endif
 	cmp r0, #0
 	mov r0, sl
 	beq _02347A88
+#ifdef JAPAN
+	ldr r2, [sp, #0x2c]
+#else
 	add r2, r2, #1
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _02347A90
 _02347A88:
+#ifdef JAPAN
+	ldr r2, _02348EF8 ; =0x00000922
+#else
 	add r2, r2, #2
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _02347A90:
+#ifdef JAPAN
+	add fp, fp, #1
+_02347A94:
+	cmp fp, r5
+#else
 	add r5, r5, #1
 _02347A94:
 	cmp r5, r6
+#endif
 	blt _02347988
 _02347A9C:
 	mov r0, sb, lsl #0x10
@@ -2618,7 +2999,11 @@ _02347A9C:
 	add r0, r1, r0, lsl #2
 	ldrh r1, [r1, r2]
 	ldrh r0, [r0, #2]
+#ifdef JAPAN
+	cmp r6, #0
+#else
 	cmp r7, #0
+#endif
 	strh r1, [sp, #0x30]
 	strh r0, [sp, #0x32]
 	ldrsh r1, [sp, #0x30]
@@ -2628,9 +3013,15 @@ _02347A9C:
 	strh r1, [sp, #0x40]
 	strh r0, [sp, #0x42]
 	beq _02347B34
+#ifdef JAPAN
+	cmp r6, #1
+	beq _02347AF4
+	cmp r6, #2
+#else
 	cmp r7, #1
 	beq _02347AF4
 	cmp r7, #2
+#endif
 	beq _02347B1C
 	b _02347B34
 _02347AF4:
@@ -2658,8 +3049,13 @@ _02347B34:
 _02347B3C: .word DUNGEON_PTR
 _02347B40: .word DIRECTIONS_XY
 _02347B44: .word ov29_023516FC
+#ifdef JAPAN
+_02348EF8: .word 0x00000922
+_02347B4C: .word 0x00000924
+#else
 _02347B48: .word 0x00000BE1
 _02347B4C: .word 0x00000BE5
+#endif
 	arm_func_end ov29_02347518
 
 	arm_func_start ItemIsActive__02347B50
@@ -2686,7 +3082,11 @@ ExclusiveItemEffectIsActive__02347B80: ; 0x02347B80
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
+#ifdef JAPAN
+	add r0, r2, #0x224
+#else
 	add r0, r2, #0x228
+#endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__02347B80

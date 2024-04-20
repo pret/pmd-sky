@@ -12,7 +12,11 @@ ov29_02347BC8: ; 0x02347BC8
 	ldr r4, [r4]
 	mov r6, #3
 	add r0, r4, #0x1a000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x1a1]
+#else
 	ldrb r0, [r0, #0x245]
+#endif
 	mov r5, #0
 	mov sb, r3
 	str r0, [sp, #0x30]
@@ -236,9 +240,15 @@ _02347F10:
 	mov r0, r5
 	mov r1, #8
 	bl ov29_02304A84
+#ifdef JAPAN
+	mov r0, sl
+	mov r1, r5
+	mov r2, #0x920
+#else
 	ldr r2, _02348014 ; =0x00000BE1
 	mov r0, sl
 	mov r1, r5
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, sl
 	mov r1, r5
@@ -296,9 +306,14 @@ _02348004:
 	.align 2, 0
 _0234800C: .word DUNGEON_PTR
 _02348010: .word 0x00000195
+#ifdef JAPAN
+_02348018: .word 0x00000923
+_0234801C: .word 0x00000922
+#else
 _02348014: .word 0x00000BE1
 _02348018: .word 0x00000BE4
 _0234801C: .word 0x00000BE3
+#endif
 	arm_func_end ov29_02347BC8
 
 	arm_func_start DoesProjectileHitTarget
@@ -371,6 +386,11 @@ ov29_023480FC: ; 0x023480FC
 
 	arm_func_start ov29_02348100
 ov29_02348100: ; 0x02348100
+#ifdef JAPAN
+#define OV29_02348100_OFFSET -4
+#else
+#define OV29_02348100_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	movs r4, r0
 	moveq r0, #0
@@ -390,7 +410,7 @@ _02348124:
 	ldrsh r1, [r7, #4]
 	ldrb r2, [r7, #0x5e]
 	ldrb r3, [r7, #0x5f]
-	add r0, r7, #0x224
+	add r0, r7, #0x224 + OV29_02348100_OFFSET
 	bl sub_02011220
 	mov r0, r4
 	mov r1, #0x4c
@@ -435,47 +455,47 @@ _023481C4:
 	cmp r0, #0
 	movne r6, #1
 	mov r8, #0
-	add r4, r7, #0x124
+	add r4, r7, #0x124 + OV29_02348100_OFFSET
 _023481FC:
 	add r0, r7, r8, lsl #3
 	cmp r5, #0
 	addne r0, r0, #0x100
-	ldrneh r1, [r0, #0x26]
+	ldrneh r1, [r0, #0x26 + OV29_02348100_OFFSET]
 	orrne r1, r1, #0x200
-	strneh r1, [r0, #0x26]
+	strneh r1, [r0, #0x26 + OV29_02348100_OFFSET]
 	bne _02348248
 	add r1, r0, #0x100
-	ldrh r2, [r1, #0x26]
+	ldrh r2, [r1, #0x26 + OV29_02348100_OFFSET]
 	add r0, r4, r8, lsl #3
 	bic r2, r2, #0x200
-	strh r2, [r1, #0x26]
+	strh r2, [r1, #0x26 + OV29_02348100_OFFSET]
 	bl GetMaxPp
 	add r2, r7, r8, lsl #3
 	mov r0, r0, lsl #0x10
-	ldrb r1, [r2, #0x12a]
+	ldrb r1, [r2, #0x12a + OV29_02348100_OFFSET]
 	mov r3, r0, asr #0x10
 	cmp r1, r0, asr #16
-	strgtb r3, [r2, #0x12a]
+	strgtb r3, [r2, #0x12a + OV29_02348100_OFFSET]
 _02348248:
 	add r0, r7, r8, lsl #3
 	cmp r6, #0
 	addne r0, r0, #0x100
-	ldrneh r1, [r0, #0x26]
+	ldrneh r1, [r0, #0x26 + OV29_02348100_OFFSET]
 	orrne r1, r1, #0x400
-	strneh r1, [r0, #0x26]
+	strneh r1, [r0, #0x26 + OV29_02348100_OFFSET]
 	bne _02348294
 	add r1, r0, #0x100
-	ldrh r2, [r1, #0x26]
+	ldrh r2, [r1, #0x26 + OV29_02348100_OFFSET]
 	add r0, r4, r8, lsl #3
 	bic r2, r2, #0x400
-	strh r2, [r1, #0x26]
+	strh r2, [r1, #0x26 + OV29_02348100_OFFSET]
 	bl GetMaxPp
 	add r2, r7, r8, lsl #3
 	mov r0, r0, lsl #0x10
-	ldrb r1, [r2, #0x12a]
+	ldrb r1, [r2, #0x12a + OV29_02348100_OFFSET]
 	mov r3, r0, asr #0x10
 	cmp r1, r0, asr #16
-	strgtb r3, [r2, #0x12a]
+	strgtb r3, [r2, #0x12a + OV29_02348100_OFFSET]
 _02348294:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -658,12 +678,28 @@ ov29_023484A0: ; 0x023484A0
 	ldr r4, _02348804 ; =DUNGEON_PTR
 	b _02348798
 _023484FC:
+#ifdef JAPAN
+	mov r0, r8
+	bl GetAcceptedMission
+	mov sb, r0
+	ldrb r0, [sb]
+	cmp r0, #5
+	ldreqb r1, [r7]
+	ldreqb r0, [sb, #4]
+	cmpeq r1, r0
+	ldreqb r1, [r7, #1]
+	ldreqb r0, [sb, #5]
+	cmpeq r1, r0
+	movne r0, #0
+	bne _02348784
+#else
 	mov r0, r7
 	mov r1, r8
 	bl ov29_02349790
 	movs sb, r0
 	moveq r0, #0
 	beq _02348784
+#endif
 	strb r6, [r7, #0x18]
 	ldrb r0, [sb, #1]
 	strb r0, [r7, #0x19]
@@ -881,6 +917,7 @@ _02348804: .word DUNGEON_PTR
 _02348808: .word ov10_022C48E4
 	arm_func_end ov29_023484A0
 
+#ifndef JAPAN
 	arm_func_start ov29_0234880C
 ov29_0234880C: ; 0x0234880C
 	stmdb sp!, {r3, r4, r5, lr}
@@ -922,6 +959,7 @@ ov29_02348850: ; 0x02348850
 	.align 2, 0
 _02348884: .word DUNGEON_PTR
 	arm_func_end ov29_02348850
+#endif
 
 	arm_func_start ov29_02348888
 ov29_02348888: ; 0x02348888
@@ -1098,7 +1136,11 @@ _02348A90:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02348AB8: .word 0x00000B65
+#else
 _02348AB8: .word 0x00000E24
+#endif
 	arm_func_end ov29_02348A18
 
 	arm_func_start ov29_02348ABC
@@ -1130,7 +1172,11 @@ ov29_02348ABC: ; 0x02348ABC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02348B20: .word DUNGEON_PTR
+#ifdef JAPAN
+_02348B24: .word 0x00000B63
+#else
 _02348B24: .word 0x00000E22
+#endif
 	arm_func_end ov29_02348ABC
 
 	arm_func_start ov29_02348B28
@@ -1164,8 +1210,13 @@ ov29_02348B28: ; 0x02348B28
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02348B94: .word DUNGEON_PTR
+#ifdef JAPAN
+_02348B98: .word 0x00000B58
+_02348B9C: .word 0x00000B85
+#else
 _02348B98: .word 0x00000E17
 _02348B9C: .word 0x00000E44
+#endif
 	arm_func_end ov29_02348B28
 
 	arm_func_start ov29_02348BA0
@@ -1224,9 +1275,14 @@ _02348C50:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02348C58: .word 0x00000E3B
-_02348C5C: .word 0x00000E3C
-_02348C60: .word 0x00000E3D
+#ifdef JAPAN
+#define OV29_02348BE8_OFFSET -0x2BF
+#else
+#define OV29_02348BE8_OFFSET 0
+#endif
+_02348C58: .word 0x00000E3B + OV29_02348BE8_OFFSET
+_02348C5C: .word 0x00000E3C + OV29_02348BE8_OFFSET
+_02348C60: .word 0x00000E3D + OV29_02348BE8_OFFSET
 	arm_func_end ov29_02348BE8
 
 	arm_func_start ov29_02348C64
@@ -1413,7 +1469,11 @@ _02348EAC:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02348EC8: .word 0x00000911
+#else
 _02348EC8: .word 0x00000BD2
+#endif
 	arm_func_end ov29_02348DD8
 
 	arm_func_start ov29_02348ECC
@@ -2197,6 +2257,7 @@ _02349788:
 	bx lr
 	arm_func_end FloorHasMissionMonster
 
+#ifndef JAPAN
 	arm_func_start ov29_02349790
 ov29_02349790: ; 0x02349790
 	stmdb sp!, {r4, lr}
@@ -2214,6 +2275,7 @@ ov29_02349790: ; 0x02349790
 	movne r0, #0
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_02349790
+#endif
 
 	arm_func_start ov29_023497C8
 ov29_023497C8: ; 0x023497C8

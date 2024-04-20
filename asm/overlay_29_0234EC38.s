@@ -50,7 +50,11 @@ _0234ECCC:
 	mov r0, r7
 	ldr r5, [r7, #0xb4]
 	bl ov29_02347100
+#ifdef JAPAN
+	strb r0, [r5, #0x15d]
+#else
 	strb r0, [r5, #0x161]
+#endif
 _0234ECE4:
 	ldrsh r0, [r4, #0xc]
 	ldr r5, [r8, #0x88]
@@ -62,7 +66,11 @@ _0234ECE4:
 	strb r0, [sl, #4]
 	str r7, [sl, #0x1c]
 	str r6, [sb, r5, lsl #5]
+#ifdef JAPAN
+	ldrb r0, [r4, #0x15d]
+#else
 	ldrb r0, [r4, #0x161]
+#endif
 	ldr r1, [r8, #0x88]
 	cmp r0, #0
 	movne r2, #0
@@ -148,7 +156,11 @@ ov29_0234EE10: ; 0x0234EE10
 	mov r3, #1
 	ldr r1, [r7, #0xb4]
 	rsb r0, r3, #0x3e8
+#ifdef JAPAN
+	strb r3, [r1, #0x15d]
+#else
 	strb r3, [r1, #0x161]
+#endif
 	ldr ip, [r7, #0xb4]
 	ldrsh r2, [ip, #0x12]
 	ldrsh r1, [ip, #0x16]
@@ -594,7 +606,11 @@ _0234F3D8:
 	add sp, sp, #0xa4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0234F3E0: .word 0x00001D35
+#else
 _0234F3E0: .word 0x000008DD
+#endif
 _0234F3E4: .word ov29_023533E0
 _0234F3E8: .word 0x00001813
 _0234F3EC: .word ov29_023533C0
@@ -697,8 +713,12 @@ _0234F508:
 	cmp r0, #1
 	beq _0234F578
 	ldrb r0, [r4, #1]
+#ifdef JAPAN
+	add r0, r0, #0x2c8
+#else
 	add r0, r0, #0x278
 	add r0, r0, #0x800
+#endif
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	bl StringFromId
@@ -846,7 +866,11 @@ _0234F75C:
 _0234F764: .word ov29_023533F0
 _0234F768: .word ov29_023533F8
 _0234F76C: .word DUNGEON_PTR
+#ifdef JAPAN
+_0234F770: .word 0x00001D36
+#else
 _0234F770: .word 0x000008DE
+#endif
 _0234F774: .word ov29_02353404
 _0234F778: .word ov29_0235340C
 	arm_func_end ov29_0234F430
@@ -1029,7 +1053,11 @@ _0234F9C0:
 _0234F9C8: .word ov29_0235383C
 _0234F9CC: .word ov29_0235343C
 _0234F9D0: .word ov29_02353474
+#ifdef JAPAN
+_0234F9D4: .word 0x00001D11
+#else
 _0234F9D4: .word 0x000008B9
+#endif
 _0234F9D8: .word ov29_0235341C
 _0234F9DC: .word 0x00001A33
 _0234F9E0: .word ov29_0234F77C
@@ -1201,7 +1229,11 @@ _0234FBE4:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xa84]
+#else
 	ldr r0, [r0, #0xb28]
+#endif
 	bl ov29_0234FB60
 	cmp r0, #0
 	movne r0, #1

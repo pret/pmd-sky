@@ -7190,7 +7190,9 @@ _02388AA8:
 	movgt r1, r0
 	strh r1, [r4, #0x10]
 _02388AF8:
+#ifndef JAPAN
 	bl UpdateMapSurveyorFlag
+#endif
 	add r0, sp, #0xc
 	mov r1, #0x39
 	bl IqSkillFlagTest
