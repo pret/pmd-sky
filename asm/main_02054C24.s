@@ -6880,7 +6880,11 @@ CopyTacticString: ; 0x0205A430
 	mov r1, r1, lsl #1
 	ldrh r1, [r2, r1]
 	ldr ip, _0205A44C ; =CopyNStringFromId
+#ifdef JAPAN
+	mov r2, #0x28
+#else
 	mov r2, #0x40
+#endif
 	bx ip
 	.align 2, 0
 _0205A448: .word TACTIC_NAME_STRING_IDS
@@ -15806,7 +15810,7 @@ _020619E0:
 	mov r0, r8
 	mov r2, r6
 	mov r3, r5
-	mov r1, #0x42
+	mov r1, SUB_02060FD8_ARG
 	bl DrawTextInWindow
 	b _02061BA4
 _02061A0C:
@@ -16093,8 +16097,10 @@ _02061DC4: .word 0x00003C31
 
 	arm_func_start sub_02061DC8
 sub_02061DC8: ; 0x02061DC8
-#ifdef EUROPE
+#if defined(EUROPE)
 #define SUB_02061DC8_WORD_OFFSET 2
+#elif defined(JAPAN)
+#define SUB_02061DC8_WORD_OFFSET -0x3C2
 #else
 #define SUB_02061DC8_WORD_OFFSET 0
 #endif
@@ -16214,7 +16220,7 @@ _02061F0C: .word 0x00003C3A + SUB_02061DC8_WORD_OFFSET
 _02061F10: .word 0x00003C39 + SUB_02061DC8_WORD_OFFSET
 _02061F14: .word 0x00003C3B + SUB_02061DC8_WORD_OFFSET
 #ifndef EUROPE
-_02061F18: .word 0x00003C3E
+_02061F18: .word 0x00003C3E + SUB_02061DC8_WORD_OFFSET
 #endif
 _02061F1C: .word 0x00003C3F + SUB_02061DC8_WORD_OFFSET
 #if defined(EUROPE)

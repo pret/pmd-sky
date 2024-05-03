@@ -61,6 +61,8 @@ _02301574:
 	mov r0, r4
 	bl CopyStringFromId
 	ldmia sp!, {r4, pc}
+_02300190:
+	ldr r0, [r1, #0xd8]
 #else
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
@@ -73,8 +75,8 @@ _02301574:
 	mov r0, r5
 	bl CopyStringFromId
 	ldmia sp!, {r3, r4, r5, pc}
-#endif
 _02300190:
+#endif
 	cmp r0, #2
 	bne _023001A8
 	ldr r1, _02300278 ; =0x00000C32

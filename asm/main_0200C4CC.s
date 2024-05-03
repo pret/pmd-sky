@@ -72857,7 +72857,7 @@ _02044ACC:
 	.align 2, 0
 _02044ADC: .word DUNGEON_PTR
 #ifdef JAPAN
-_02044AE0: .word 0x00000873
+_02044AE0: .word 0x00000878
 _02044AE4: .word 0x00000872
 #else
 _02044AE0: .word 0x00000A3D
@@ -73779,12 +73779,15 @@ _02045688:
 	ldr r3, [r0]
 #ifdef JAPAN
 	ldr r2, _02045D9C ; =0x00002FC5
+	str r4, [r3, #8]
+	ldr r3, [r0]
+	mov r1, #8
 #else
 	mov r1, #8
-#endif
 	str r4, [r3, #8]
 	ldr r3, [r0]
 	add r2, r4, #0x2c0
+#endif
 	ldrsb r0, [r3, #0x14]
 	add r3, r3, #0x1c
 	bl ShowStringIdInDialogueBox
@@ -74008,7 +74011,11 @@ _02045D9C: .word 0x00002FC5
 _02045A3C: .word 0x00300033
 _02045A40: .word _0209CC48
 _02045A44: .word 0x00001013
-_02045A48: .word 0x000008E4 + SUB_020454E0_OFFSET
+#ifdef JAPAN
+_02045A48: .word 0x00001D3C
+#else
+_02045A48: .word 0x000008E4
+#endif
 _02045A4C: .word _0209CC28
 _02045A50: .word 0x000002D6 + SUB_020454E0_OFFSET
 _02045A54: .word _0209CC18
@@ -74410,7 +74417,11 @@ _02046318: .word 0x00002FC5
 _02045FB0: .word 0x00300033
 _02045FB4: .word _0209CC48
 _02045FB8: .word 0x00001013
-_02045FBC: .word 0x000008E4 + SUB_02045A5C_OFFSET
+#ifdef JAPAN
+_02045FBC: .word 0x00001D3C
+#else
+_02045FBC: .word 0x000008E4
+#endif
 _02045FC0: .word _0209CC28
 _02045FC4: .word 0x000002D6 + SUB_02045A5C_OFFSET
 _02045FC8: .word _0209CC18
@@ -90384,7 +90395,7 @@ _020524B0:
 	bl SprintfStatic__02052418
 	ldmia sp!, {r4, r5, r6, pc}
 _020524D4:
-	ldr r1, _02052838 ; =_020A45C8_JP
+	ldr r1, _02052838_JP ; =_020A45C8_JP
 	mov r0, r6
 	mov r2, r4
 	bl SprintfStatic__02052418
