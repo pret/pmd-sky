@@ -3099,10 +3099,11 @@ _01FFA7C0:
 	ldrsh r2, [r7, #6]
 	add r0, r1, #0x2a8 + AI_MOVEMENT_OFFSET_2
 	add r1, r1, r5, lsl #1
-	add r1, r1, #0xf200
 #ifdef JAPAN
+	add r1, r1, #0xf100
 	ldrsh r1, [r1, #0xc4]
 #else
+	add r1, r1, #0xf200
 	ldrsh r1, [r1, #0x68]
 #endif
 	add r3, r0, #0xf000
