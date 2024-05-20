@@ -1859,7 +1859,7 @@ _0232DAC4:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-#if !defined(EUROPE) && !defined(JAPAN)
+#if defined(NORTH_AMERICA)
 _0232DACC: .word DUNGEON_PTR
 #endif
 	arm_func_end DoMoveDamageEatItem

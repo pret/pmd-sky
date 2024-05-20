@@ -57450,11 +57450,20 @@ MISSION_DELIVER_LIST_PTR:
 REMOTE_STRING_PTR_TABLE:
 	.word REMOTE_STRINGS
 	.word _020A3B4C
+#ifdef JAPAN
 	.word _020A3B44
 	.word _020A3B64
+#else
+	.word _020A3B64
+	.word _020A3B44
+#endif
 	.word _020A3B5C
 	.word _020A3B54
+#ifdef JAPAN
 	.word _020A3B44
+#else
+	.word _020A3B64
+#endif
 	.global RANK_STRING_PTR_TABLE
 RANK_STRING_PTR_TABLE:
 	.word RANK_STRINGS_2

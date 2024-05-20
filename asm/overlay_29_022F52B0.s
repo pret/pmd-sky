@@ -1000,7 +1000,7 @@ _022F5E84:
 	mov r1, #0x25c
 	mov r2, #0
 	bl HandleFaint
-#if !defined(EUROPE) && !defined(JAPAN)
+#if defined(NORTH_AMERICA)
 	bl UpdateMapSurveyorFlag
 #endif
 	bl ov29_022E8104

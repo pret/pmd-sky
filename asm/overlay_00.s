@@ -165,8 +165,10 @@ _022BCC64:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022BCC88: .word ov00_023187A0
-#ifdef EUROPE
+#if defined(EUROPE)
 _022BD5D8: .word ov00_02318758_EU
+#elif defined(JAPAN)
+_022BCC8C: .word 0x5946594A
 #else
 _022BCC8C: .word 0x59465945
 #endif
@@ -606,13 +608,14 @@ ov00_022BD0D4: ; 0x022BD0D4
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
-	ldr r1, _022BD104 ; =ov00_023187A0
 #ifdef JAPAN
+	ldr r0, _022BD104 ; =ov00_023187A0
 	add r1, r4, r4, lsl #2
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x40
 	add r0, r0, r1
 #else
+	ldr r1, _022BD104 ; =ov00_023187A0
 	mov r0, #0xa
 	ldr r1, [r1, #0xc]
 	add r1, r1, #0x40
