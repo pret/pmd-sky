@@ -16163,10 +16163,10 @@ _02061E74:
 	b _02061EE8
 _02061E80:
 	str r6, [sp, #4]
-#if defined(EUROPE) || defined(JAPAN)
-	ldr r2, _02062298 ; =0x00003C42
-#else
+#ifdef NORTH_AMERICA
 	mov r2, #0x3c40
+#else
+	ldr r2, _02062298 ; =0x00003C42
 #endif
 	b _02061EE8
 _02061E8C:
@@ -23380,10 +23380,10 @@ _02067AF8:
 	ldr r5, _02067C68 ; =JOB_MENU_ITEMS_6
 	str r1, [r4, #0xe48]
 	str r0, [r4, #0xef4]
-#if defined(EUROPE) || defined(JAPAN)
-	ldr r6, _02067FF0 ; =0x0000380F
-#else
+#ifdef NORTH_AMERICA
 	rsb r6, r8, #0x3a40
+#else
+	ldr r6, _02067FF0 ; =0x0000380F
 #endif
 	mov r7, sb
 	b _02067BC4
@@ -23431,10 +23431,10 @@ _02067BA0:
 	ldr r1, [r1, r2, lsl #3]
 	ldr r5, _02067C88 ; =JOB_MENU_ITEMS_8
 	str r1, [r4, #0xe48]
-#if defined(EUROPE) || defined(JAPAN)
-	ldr r6, _02068014 ; =0x000037B5
-#else
+#ifdef NORTH_AMERICA
 	add r6, r8, #0x3580
+#else
+	ldr r6, _02068014 ; =0x000037B5
 #endif
 	str r0, [r4, #0xef4]
 	mov r7, sb
@@ -23663,12 +23663,12 @@ _02067E70:
 	add r0, r0, #0x2e4
 	add r0, r0, #0xc00
 	bl sub_02047150
-#if defined(EUROPE) || defined(JAPAN)
-	ldr r1, _02068678 ; =0x00003826
-	mov r0, #0x1c
-#else
+#ifdef NORTH_AMERICA
 	mov r0, #0x1c
 	rsb r1, r0, #0x3840
+#else
+	ldr r1, _02068678 ; =0x00003826
+	mov r0, #0x1c
 #endif
 	mov r2, #0
 	bl sub_02046BE8

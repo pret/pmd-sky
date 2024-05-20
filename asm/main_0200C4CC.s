@@ -33200,10 +33200,10 @@ _02025B7C: .word _020AFD04
 	arm_func_start sub_02025B80
 sub_02025B80: ; 0x02025B80
 	ldr r1, _02025B8C ; =_020AFD04
-#if defined(EUROPE) || defined(JAPAN)
-	str r0, [r1, #4]
-#else
+#ifdef NORTH_AMERICA
 	str r0, [r1, #8]
+#else
+	str r0, [r1, #4]
 #endif
 	bx lr
 	.align 2, 0
@@ -33842,10 +33842,10 @@ sub_02026020: ; 0x02026020
 	arm_func_start sub_02026038
 sub_02026038: ; 0x02026038
 	ldr r1, _02026044 ; =_020AFD04
-#if defined(EUROPE) || defined(JAPAN)
-	str r0, [r1, #4]
-#else
+#ifdef NORTH_AMERICA
 	str r0, [r1, #8]
+#else
+	str r0, [r1, #4]
 #endif
 	bx lr
 	.align 2, 0
@@ -34308,10 +34308,10 @@ sub_0202654C: ; 0x0202654C
 	stmdb sp!, {r3, lr}
 	ldr r1, _02026590 ; =_020AFD04
 	mov r3, r0
-#if defined(EUROPE) || defined(JAPAN)
-	ldr r1, [r1, #4]
-#else
+#ifdef NORTH_AMERICA
 	ldr r1, [r1, #8]
+#else
+	ldr r1, [r1, #4]
 #endif
 	cmp r1, #2
 	blt _0202657C
@@ -35433,10 +35433,10 @@ sub_02026C68: ; 0x02026C68
 	bhi _02026CA4
 	ldr ip, _02026E38 ; =_020AFD04
 	sub r3, r3, #0x40
-#if defined(EUROPE) || defined(JAPAN)
-	ldr ip, [ip, #4]
-#else
+#ifdef NORTH_AMERICA
 	ldr ip, [ip, #8]
+#else
+	ldr ip, [ip, #4]
 #endif
 	mov r3, r3, lsl #0x10
 	mov r3, r3, asr #0x10
@@ -35447,10 +35447,10 @@ sub_02026C68: ; 0x02026C68
 	b _02026E18
 _02026CA4:
 	ldr ip, _02026E38 ; =_020AFD04
-#if defined(EUROPE) || defined(JAPAN)
-	ldr ip, [ip, #4]
-#else
+#ifdef NORTH_AMERICA
 	ldr ip, [ip, #8]
+#else
+	ldr ip, [ip, #4]
 #endif
 	cmp ip, #3
 	bne _02026D40

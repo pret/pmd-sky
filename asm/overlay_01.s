@@ -4585,7 +4585,7 @@ _0232CD80:
 	add r1, r7, #0x20
 	mov r2, #0x14
 #ifdef JAPAN
-	bl StrncpyName
+	bl sub_020253E0_JP
 #else
 	bl sub_0202544C
 #endif
@@ -4770,7 +4770,7 @@ ov01_0232CF84: ; 0x0232CF84
 	add r1, r5, #0x20
 	mov r2, #0x14
 #ifdef JAPAN
-	bl StrncpyName
+	bl sub_020253E0_JP
 #else
 	bl sub_0202544C
 #endif
@@ -4942,7 +4942,7 @@ ov01_0232D1F4: ; 0x0232D1F4
 	add r1, r5, #0x20
 	mov r2, #0x14
 #ifdef JAPAN
-	bl StrncpyName
+	bl sub_020253E0_JP
 #else
 	bl sub_0202544C
 #endif
@@ -5283,7 +5283,7 @@ ov01_0232D664: ; 0x0232D664
 	add r1, r5, #0x38
 	mov r2, #0x14
 #ifdef JAPAN
-	bl StrncpyName
+	bl sub_020253E0_JP
 #else
 	bl sub_0202544C
 #endif
@@ -5751,7 +5751,7 @@ _0232DD2C:
 	add r1, sl, #8
 	mov r2, #0x14
 #ifdef JAPAN
-	bl StrncpyName
+	bl sub_020253E0_JP
 #else
 	bl sub_0202544C
 #endif
@@ -5891,7 +5891,7 @@ ov01_0232DF18: ; 0x0232DF18
 	add r1, r5, #8
 	mov r2, #0x14
 #ifdef JAPAN
-	bl StrncpyName
+	bl sub_020253E0_JP
 #else
 	bl sub_0202544C
 #endif
@@ -6010,7 +6010,7 @@ ov01_0232E0A4: ; 0x0232E0A4
 	add r1, r5, #8
 	mov r2, #0x14
 #ifdef JAPAN
-	bl StrncpyName
+	bl sub_020253E0_JP
 #else
 	bl sub_0202544C
 #endif
@@ -6447,7 +6447,7 @@ _0232E72C:
 	add r0, r5, #0x42
 	mov r2, #0xa
 #ifdef JAPAN
-	bl StrncpyName
+	bl sub_020253E0_JP
 #else
 	bl sub_0202544C
 #endif
@@ -20028,12 +20028,12 @@ _0233933C:
 	ldrb r0, [r4, #0x28 + OV01_02338EC4_LOAD_OFFSET_2]
 	cmp r0, #0
 	bne _023397F8
-#if defined(EUROPE) || defined(JAPAN)
-	ldr r1, _02339F74 ; =0x00003766
-	mov r0, #0x1c
-#else
+#ifdef NORTH_AMERICA
 	mov r0, #0x1c
 	rsb r1, r0, #0x3780
+#else
+	ldr r1, _02339F74 ; =0x00003766
+	mov r0, #0x1c
 #endif
 	mov r2, #0
 	bl sub_02046BE8
@@ -22010,10 +22010,10 @@ _0233ABC4:
 	bgt _0233ABE4
 	sub r0, r0, #0x63
 	cmp r5, r0
-#if defined(EUROPE) || defined(JAPAN)
-	ldrge r0, _0233B4F8 ; =0x00003782
-#else
+#ifdef NORTH_AMERICA
 	movge r0, #0x3780
+#else
+	ldrge r0, _0233B4F8 ; =0x00003782
 #endif
 	ldmgeia sp!, {r3, r4, r5, pc}
 _0233ABE4:

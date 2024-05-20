@@ -2452,12 +2452,12 @@ _0233EABC: ; jump table
 	b _0233ED28 ; case 9
 	b _0233ED5C ; case 10
 _0233EAE8:
-#if defined(EUROPE) || defined(JAPAN)
-	ldr r1, _0233F5DC ; =0x00003882
-	mov r0, #0x1c
-#else
+#ifdef NORTH_AMERICA
 	mov r0, #0x1c
 	mov r1, #0x3880
+#else
+	ldr r1, _0233F5DC ; =0x00003882
+	mov r0, #0x1c
 #endif
 	bl sub_02066468
 	ldr r0, _0233EE08 ; =ov03_02346BC0
@@ -2625,12 +2625,12 @@ _0233ED28:
 	str r1, [r0]
 	b _0233F2C4
 _0233ED5C:
-#if defined(EUROPE) || defined(JAPAN)
-	ldr r1, _0233F604 ; =0x000038A6
-	mov r0, #0x1c
-#else
+#ifdef NORTH_AMERICA
 	mov r0, #0x1c
 	rsb r1, r0, #0x38c0
+#else
+	ldr r1, _0233F604 ; =0x000038A6
+	mov r0, #0x1c
 #endif
 	bl sub_02066468
 	ldr r0, _0233EE08 ; =ov03_02346BC0
@@ -2714,7 +2714,7 @@ _0233EE54: .word 0x00000321
 _0233EE58: .word 0x00000323
 _0233EE5C: .word ov03_02346A64
 _0233EE60: .word ov03_02346A68
-#if defined(EUROPE) || defined(JAPAN)
+#ifndef NORTH_AMERICA
 _0233F5DC: .word 0x00003880 + OV03_0233DE58_OFFSET
 #endif
 _0233EE64: .word 0x00003853 + OV03_0233DE58_OFFSET
@@ -2726,7 +2726,7 @@ _0233EE78: .word 0x000003F3
 _0233EE7C: .word 0x000038A1 + OV03_0233DE58_OFFSET
 _0233EE80: .word 0x000038A3 + OV03_0233DE58_OFFSET
 _0233EE84: .word 0x000003F5
-#if defined(EUROPE) || defined(JAPAN)
+#ifndef NORTH_AMERICA
 _0233F604: .word 0x000038A4 + OV03_0233DE58_OFFSET
 #endif
 _0233EE88: .word 0x000003F6
@@ -5476,12 +5476,12 @@ _02341478:
 	bl sub_0205B6CC
 	cmp r0, #0
 	bne _023414B4
-#ifdef EUROPE
-	ldr r1, _023424E0 ; =0x0000389E
-	mov r0, #0x1c
-#else
+#ifdef NORTH_AMERICA
 	mov r0, #0x1c
 	add r1, r0, #0x3880
+#else
+	ldr r1, _023424E0 ; =0x0000389E
+	mov r0, #0x1c
 #endif
 	bl sub_02066468
 	mov r0, r4
@@ -6106,7 +6106,7 @@ _02341D50: .word 0x0000385E + OV03_02340DB4_OFFSET
 _02341D54: .word 0x0000386F + OV03_02340DB4_OFFSET
 _02341D58: .word 0x00003870 + OV03_02340DB4_OFFSET
 _02341D5C: .word 0x00001004
-#if defined(EUROPE) || defined(JAPAN)
+#ifndef NORTH_AMERICA
 _023424E0: .word 0x0000389C + OV03_02340DB4_OFFSET
 #endif
 _02341D60: .word 0x0000389D + OV03_02340DB4_OFFSET
@@ -8478,7 +8478,7 @@ _02343FA8: .word 0x0000388A + OV03_02340DB4_OFFSET
 _02343FAC: .word 0x00005112
 _02343FB0: .word 0x0000511A
 #ifndef EUROPE
-_02343FB4: .word 0x000038A2
+_02343FB4: .word 0x000038A2 + OV03_02340DB4_OFFSET
 #endif
 _02343FB8: .word 0x00005013
 _02343FBC: .word 0x0000388B + OV03_02340DB4_OFFSET
@@ -9015,12 +9015,12 @@ _02344674:
 	str r0, [sp]
 	mov r0, #0
 	ldr r2, _023446FC ; =ov03_023467A4
-#if defined(EUROPE) || defined(JAPAN)
-	ldr r3, _02344E7C ; =0x000038C2
-	mov r1, r0
-#else
+#ifdef NORTH_AMERICA
 	mov r1, r0
 	mov r3, #0x38c0
+#else
+	ldr r3, _02344E7C ; =0x000038C2
+	mov r1, r0
 #endif
 	bl sub_020663C8
 	mov r0, #0xb
@@ -9049,8 +9049,11 @@ _023446E0:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 _023446E8: .word ov03_02346BD4
-#ifdef EUROPE
+#if defined(EUROPE)
 _023446EC: .word 0x000038BF
+#elif defined(JAPAN)
+_023446EC: .word 0x000034FB
+_023446F0: .word 0x000034FC
 #else
 _023446EC: .word 0x000038BD
 _023446F0: .word 0x000038BE

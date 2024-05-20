@@ -1221,10 +1221,10 @@ _022F80F4:
 	cmp r0, #3
 	cmpne r0, #2
 	beq _022F8234
-#if defined(EUROPE) || defined(JAPAN)
-	cmp r1, #0
-#else
+#ifdef NORTH_AMERICA
 	cmp r2, #0
+#else
+	cmp r1, #0
 #endif
 	ble _022F8220
 	mov r0, r4
