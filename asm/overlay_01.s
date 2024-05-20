@@ -8885,12 +8885,12 @@ ov01_02330644: ; 0x02330644
 	str r1, [r2, #0x48]
 	ldr r0, [r0]
 	add r0, r0, #0x10
-	bl ov03_0233D964
+	bl ov09_0233D964
 	ldr r0, _023306D8 ; =ov01_0233C164
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x4c
-	bl ov03_0233D964
+	bl ov09_0233D964
 	ldr r0, _023306D8 ; =ov01_0233C164
 	mov r2, #0
 	ldr r1, [r0]
@@ -9477,7 +9477,7 @@ _02330E8C:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x10
-	bl ov03_0233D964
+	bl ov09_0233D964
 _02330EA0:
 	ldr r0, _02330EB4 ; =ov01_0233C164
 	mov r1, #1

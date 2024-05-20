@@ -34,7 +34,11 @@ ov09_0233CA80: ; 0x0233CA80
 	mov r2, r1
 _0233CAEC:
 	mov r4, r1, lsl #1
+#ifdef JAPAN
+	add r0, r1, #0x148
+#else
 	add r0, r1, #0xfe
+#endif
 	add r5, r0, #0x400
 	ldrh r0, [r3, r4]
 	strh r5, [r6]
@@ -93,7 +97,11 @@ _0233CB90:
 _0233CBB8: .word ov09_0233F7E0
 _0233CBBC: .word ov09_0233F61C
 _0233CBC0: .word ov09_0233F664
+#ifdef JAPAN
+_0233CBC4: .word 0x00000547
+#else
 _0233CBC4: .word 0x000004FD
+#endif
 	arm_func_end ov09_0233CA80
 
 	arm_func_start ov09_0233CBC8
@@ -115,6 +123,11 @@ _0233CBF4: .word ov09_0233F7E0
 
 	arm_func_start ov09_0233CBF8
 ov09_0233CBF8: ; 0x0233CBF8
+#ifdef JAPAN
+#define OV09_0233CBF8_OFFSET 0x4A
+#else
+#define OV09_0233CBF8_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x18
 	sub sp, sp, #0x1000
@@ -270,7 +283,11 @@ _0233CDB4:
 	ldr r3, _0233D928 ; =ov09_0233F7E0
 	ldr r1, _0233D940 ; =0x00000404
 	ldr ip, [r3]
+#ifdef JAPAN
+	ldr r2, _0233F164 ; =0x0000053B
+#else
 	add r2, r1, #0xed
+#endif
 	strb r0, [ip, #1]
 	ldr r0, [r3]
 	mov r3, #0
@@ -291,9 +308,15 @@ _0233CE78:
 	beq _0233CEB8
 	cmp r0, #0
 	bgt _0233CEE4
+#ifdef JAPAN
+	ldrsb r0, [r3, #1]
+	ldr r1, _0233D940 ; =0x00000404
+	ldr r2, _0233F164 ; =0x0000053B
+#else
 	ldr r1, _0233D940 ; =0x00000404
 	ldrsb r0, [r3, #1]
 	add r2, r1, #0xed
+#endif
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
@@ -306,7 +329,7 @@ _0233CEB8:
 	ble _0233CEE4
 	ldr r1, _0233D940 ; =0x00000404
 	ldrsb r0, [r3, #1]
-	add r2, r1, #0xee
+	add r2, r1, #0xee + OV09_0233CBF8_OFFSET
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
@@ -419,9 +442,15 @@ _0233D050:
 	beq _0233D098
 	cmp r0, #0
 	bgt _0233D918
+#ifdef JAPAN
+	ldrsb r0, [r2, #1]
+	ldr r1, _0233D940 ; =0x00000404
+	ldr r2, _0233F164 ; =0x0000053B
+#else
 	ldr r1, _0233D940 ; =0x00000404
 	ldrsb r0, [r2, #1]
 	add r2, r1, #0xed
+#endif
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
@@ -434,7 +463,7 @@ _0233D098:
 	ble _0233D918
 	ldr r1, _0233D940 ; =0x00000404
 	ldrsb r0, [r2, #1]
-	add r2, r1, #0xee
+	add r2, r1, #0xee + OV09_0233CBF8_OFFSET
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
@@ -524,7 +553,7 @@ _0233D148:
 	str r3, [sp, #0xe24]
 	str r2, [lr, #0x38]
 	ldr r0, [r0]
-	add r2, r1, #0xf6
+	add r2, r1, #0xf6 + OV09_0233CBF8_OFFSET
 	ldrsb r0, [r0, #3]
 	add r3, sp, #0xe00
 	bl ShowStringIdInDialogueBox
@@ -536,6 +565,7 @@ _0233D148:
 	mov r1, #0x100
 	bl PreprocessStringFromId
 	add r0, sp, #0xa00
+#ifndef JAPAN
 	b _0233D248
 _0233D238:
 	cmp r1, #0x5d
@@ -547,6 +577,7 @@ _0233D248:
 	cmp r1, #0
 	bne _0233D238
 _0233D254:
+#endif
 	bl sub_020265A8
 	ldr r1, _0233D928 ; =ov09_0233F7E0
 	mov r3, #0
@@ -695,7 +726,11 @@ _0233D454:
 	ldr r0, [r0]
 	ldr r1, _0233D940 ; =0x00000404
 	ldrsb r0, [r0, #3]
+#ifdef JAPAN
+	ldr r2, _0233F184 ; =0x00000545
+#else
 	add r2, r1, #0xf7
+#endif
 	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r3, #0
@@ -736,7 +771,7 @@ _0233D494:
 	ldr r0, [r0]
 	add r3, sp, #0x9b0
 	ldrsb r0, [r0, #3]
-	add r2, r1, #0xf6
+	add r2, r1, #0xf6 + OV09_0233CBF8_OFFSET
 	bl ShowStringIdInDialogueBox
 	add r1, sp, #0x9b0
 	str r1, [sp]
@@ -746,6 +781,7 @@ _0233D494:
 	mov r1, #0x100
 	bl PreprocessStringFromId
 	add r0, sp, #0x5b0
+#ifndef JAPAN
 	b _0233D54C
 _0233D53C:
 	cmp r1, #0x5d
@@ -757,6 +793,7 @@ _0233D54C:
 	cmp r1, #0
 	bne _0233D53C
 _0233D558:
+#endif
 	bl sub_020265A8
 	ldr r1, _0233D928 ; =ov09_0233F7E0
 	ldr r1, [r1]
@@ -829,7 +866,11 @@ _0233D64C:
 	ldr r0, [r0]
 	ldr r1, _0233D940 ; =0x00000404
 	ldrsb r0, [r0, #3]
+#ifdef JAPAN
+	ldr r2, _0233F184 ; =0x00000545
+#else
 	add r2, r1, #0xf7
+#endif
 	bl ShowStringIdInDialogueBox
 	ldr r0, _0233D928 ; =ov09_0233F7E0
 	mvn r3, #0
@@ -872,7 +913,7 @@ _0233D68C:
 	add r3, sp, #0x400
 	ldrsb r0, [r0, #3]
 	add r3, r3, #0xc8
-	add r2, r1, #0xf6
+	add r2, r1, #0xf6 + OV09_0233CBF8_OFFSET
 	bl ShowStringIdInDialogueBox
 	add r1, sp, #0x400
 	add r1, r1, #0xc8
@@ -883,6 +924,7 @@ _0233D68C:
 	mov r1, #0x100
 	bl PreprocessStringFromId
 	add r0, sp, #0xc8
+#ifndef JAPAN
 	b _0233D750
 _0233D740:
 	cmp r1, #0x5d
@@ -894,6 +936,7 @@ _0233D750:
 	cmp r1, #0
 	bne _0233D740
 _0233D75C:
+#endif
 	bl sub_020265A8
 	ldr r1, _0233D928 ; =ov09_0233F7E0
 	ldr r1, [r1]
@@ -1022,18 +1065,27 @@ _0233D91C:
 _0233D928: .word ov09_0233F7E0
 	arm_func_end ov09_0233CBF8
 _0233D92C: .word ov09_0233F780
-_0233D930: .word 0x000004EF
+_0233D930: .word 0x000004EF + OV09_0233CBF8_OFFSET
 _0233D934: .word ov09_0233F58C
 _0233D938: .word 0x00401A13
 _0233D93C: .word ov09_0233F59C
 _0233D940: .word 0x00000404
-_0233D944: .word 0x000004FC
+#ifdef JAPAN
+_0233F164: .word 0x0000053B
+#endif
+_0233D944: .word 0x000004FC + OV09_0233CBF8_OFFSET
 _0233D948: .word ov09_0233F56C
 _0233D94C: .word ov09_0233F5AC
 _0233D950: .word ov09_0233F5E4
 _0233D954: .word 0x00400033
+#ifdef JAPAN
+_0233D958: .word 0x0000053A
+_0233D95C: .word 0x0000C402
+_0233F184: .word 0x00000545
+#else
 _0233D958: .word 0x000004FA
 _0233D95C: .word 0x0000C402
+#endif
 _0233D960: .word ov09_0233F57C
 
 	arm_func_start ov09_0233D964
@@ -2157,10 +2209,17 @@ _0233E88C:
 	str r6, [sp, #0x13c]
 	add r0, sp, #0x104
 	str r0, [sp]
+#ifdef JAPAN
+	ldr r2, _0234013C ; =0x0000053A
+	ldr r3, _0233E914 ; =0x0000C402
+	add r0, sp, #4
+	mov r1, #0x100
+#else
 	ldr r3, _0233E914 ; =0x0000C402
 	add r0, sp, #4
 	mov r1, #0x100
 	mov r2, #0x4f0
+#endif
 	bl PreprocessStringFromId
 	add r0, r4, #8
 	mov r1, r7
@@ -2189,6 +2248,9 @@ _0233E8EC:
 	add sp, sp, #0x154
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0234013C: .word 0x0000053A
+#endif
 _0233E914: .word 0x0000C402
 	arm_func_end ov09_0233E7F4
 
@@ -3113,16 +3175,38 @@ ov09_0233F59C:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x14, 0x1C, 0x02, 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov09_0233F5AC
 ov09_0233F5AC:
-	.byte 0xF3, 0x04, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xF5, 0x04, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
-	.byte 0xF6, 0x04, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0xF7, 0x04, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
-	.byte 0xF8, 0x04, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0xF9, 0x04, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
+#ifdef JAPAN
+#define OV09_DATA_OFFSET 0x4A
+#else
+#define OV09_DATA_OFFSET 0
+#endif
+	.word 0x4F3 + OV09_DATA_OFFSET
+	.byte 0x02, 0x00, 0x00, 0x00
+	.word 0x4F5 + OV09_DATA_OFFSET
+	.byte 0x04, 0x00, 0x00, 0x00
+	.word 0x4F6 + OV09_DATA_OFFSET
+	.byte 0x05, 0x00, 0x00, 0x00
+	.word 0x4F7 + OV09_DATA_OFFSET
+	.byte 0x06, 0x00, 0x00, 0x00
+	.word 0x4F8 + OV09_DATA_OFFSET
+	.byte 0x07, 0x00, 0x00, 0x00
+	.word 0x4F9 + OV09_DATA_OFFSET
+	.byte 0x08, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global ov09_0233F5E4
 ov09_0233F5E4:
-	.byte 0xF4, 0x04, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
-	.byte 0xF5, 0x04, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xF6, 0x04, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
-	.byte 0xF7, 0x04, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0xF8, 0x04, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
-	.byte 0xF9, 0x04, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.word 0x4F4 + OV09_DATA_OFFSET
+	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x4F5 + OV09_DATA_OFFSET
+	.byte 0x04, 0x00, 0x00, 0x00
+	.word 0x4F6 + OV09_DATA_OFFSET
+	.byte 0x05, 0x00, 0x00, 0x00
+	.word 0x4F7 + OV09_DATA_OFFSET
+	.byte 0x06, 0x00, 0x00, 0x00
+	.word 0x4F8 + OV09_DATA_OFFSET
+	.byte 0x07, 0x00, 0x00, 0x00
+	.word 0x4F9 + OV09_DATA_OFFSET
+	.byte 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global ov09_0233F61C
 ov09_0233F61C:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x66, 0x00, 0x00, 0x00, 0x6B, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
