@@ -227,8 +227,10 @@ _0233CD34:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-#ifdef EUROPE
+#if defined(EUROPE)
 #define OV06_0233CB3C_OFFSET 2
+#elif defined(JAPAN)
+#define OV06_0233CB3C_OFFSET -0x37E
 #else
 #define OV06_0233CB3C_OFFSET 0
 #endif
@@ -572,7 +574,7 @@ _0233D164: ; jump table
 	b _0233D280 ; case 6
 	b _0233D4C4 ; case 7
 _0233D184:
-#ifdef EUROPE
+#ifndef NORTH_AMERICA
 	ldr r1, _0233DC64 ; =0x0000379E
 	mov r0, #0x1c
 #else
@@ -599,7 +601,7 @@ _0233D1CC:
 	mov r0, #2
 	mov r1, #1
 	bl sub_0204C978
-#ifdef EUROPE
+#ifndef NORTH_AMERICA
 	ldr r1, _0233DC64 ; =0x0000379E
 	mov r0, #0x1c
 #else
@@ -670,7 +672,11 @@ _0233D298:
 	str r1, [r0]
 	b _0233D4C4
 _0233D2C4:
+#ifdef JAPAN
+	add r1, r1, #0xcb
+#else
 	ldr r1, _0233D4FC ; =0x0000023B
+#endif
 	mov r0, #0
 	bl ov06_0233CDC8
 	ldr r0, _0233D4CC ; =ov06_0233EEC4
@@ -700,8 +706,13 @@ _0233D318:
 	bl sub_02029FBC
 	cmp r4, #0
 	bne _0233D354
+#ifdef JAPAN
+	ldr r1, _0233ED84 ; =0x000004CD
+	mov r0, #0x1c
+#else
 	mov r0, #0x1c
 	mov r1, #0x23c
+#endif
 	bl ov06_0233CDC8
 	ldr r0, _0233D4CC ; =ov06_0233EEC4
 	ldr r1, _0233D504 ; =0x00000403
@@ -791,7 +802,7 @@ _0233D454:
 	bl AddMissionToJobList
 	bl sub_0205F5A8
 	bl sub_0205F710
-#ifdef EUROPE
+#ifndef NORTH_AMERICA
 	ldr r1, _0233DC64 ; =0x0000379E
 	mov r0, #0x1c
 #else
@@ -819,8 +830,10 @@ _0233D4C4:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-#ifdef EUROPE
+#if defined(EUROPE)
 #define OV06_0233CE60_OFFSET 2
+#elif defined(JAPAN)
+#define OV06_0233CE60_OFFSET -0x37E
 #else
 #define OV06_0233CE60_OFFSET 0
 #endif
@@ -830,8 +843,8 @@ _0233D4D4: .word 0x00000321
 _0233D4D8: .word 0x00000323
 _0233D4DC: .word ov06_0233EDCC
 _0233D4E0: .word ov06_0233EDD0
-#ifdef EUROPE
-_0233DC64: .word 0x0000379E
+#ifndef NORTH_AMERICA
+_0233DC64: .word 0x0000379C + OV06_0233CE60_OFFSET
 #endif
 _0233D4E4: .word ov06_0233ED04
 _0233D4E8: .word 0x00003799 + OV06_0233CE60_OFFSET
@@ -839,10 +852,17 @@ _0233D4EC: .word 0x000003F2
 _0233D4F0: .word 0x000037A7 + OV06_0233CE60_OFFSET
 _0233D4F4: .word 0x0000032A
 _0233D4F8: .word 0x000037A8 + OV06_0233CE60_OFFSET
+#ifdef JAPAN
+_0233D500: .word 0x00000402
+_0233ED84: .word 0x000004CD
+_0233D504: .word 0x00000403
+_0233D508: .word 0x000004CA
+#else
 _0233D4FC: .word 0x0000023B
 _0233D500: .word 0x00000402
 _0233D504: .word 0x00000403
 _0233D508: .word 0x00000239
+#endif
 _0233D50C: .word 0x00000404
 _0233D510: .word 0x0000379E + OV06_0233CE60_OFFSET
 _0233D514: .word 0x0000379D + OV06_0233CE60_OFFSET
@@ -1372,8 +1392,10 @@ _0233DC6C:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-#ifdef EUROPE
+#if defined(EUROPE)
 #define OV06_0233D5A4_OFFSET 2
+#elif defined(JAPAN)
+#define OV06_0233D5A4_OFFSET -0x37E
 #else
 #define OV06_0233D5A4_OFFSET 0
 #endif
@@ -1802,9 +1824,12 @@ _0233E1F4: ; jump table
 	b _0233E5E8 ; case 8
 	b _0233E600 ; case 9
 _0233E21C:
-#ifdef EUROPE
+#if defined(EUROPE)
 	mov r0, #0x1c
 	rsb r1, r0, #0x37c0
+#elif defined(JAPAN)
+	mov r0, #0x1c
+	rsb r1, r0, #0x3440
 #else
 	ldr r1, _0233E91C ; =0x000037A2
 	mov r0, #0x1c
@@ -1858,7 +1883,7 @@ _0233E2D0:
 	mov r4, #1
 	b _0233E6A0
 _0233E2D8:
-#ifdef EUROPE
+#ifndef NORTH_AMERICA
 	ldr r1, _0233F0AC ; =0x000037A5
 #else
 	sub r1, r1, #0x860
@@ -2180,8 +2205,13 @@ _0233E768:
 	bl sub_02029FBC
 	cmp r4, #0
 	bne _0233E7B0
+#ifdef JAPAN
+	ldr r1, _023401C8 ; =0x000004CD
+	mov r0, #0x1c
+#else
 	mov r0, #0x1c
 	mov r1, #0x23c
+#endif
 	bl ov06_0233CDC8
 	ldr r0, _0233E8E0 ; =ov06_0233EEC8
 	ldr r3, _0233E8E4 ; =0x00004003
@@ -2279,8 +2309,10 @@ _0233E8D8:
 	add sp, sp, #0x40
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-#ifdef EUROPE
+#if defined(EUROPE)
 #define OV06_0233DD7C_OFFSET 2
+#elif defined(JAPAN)
+#define OV06_0233DD7C_OFFSET -0x37E
 #else
 #define OV06_0233DD7C_OFFSET 0
 #endif
@@ -2299,9 +2331,9 @@ _0233E90C: .word ov06_0233EDFC
 _0233E910: .word ov06_0233EE24
 _0233E914: .word ov06_0233EE4C
 _0233E918: .word ov06_0233EE84
-#ifdef EUROPE
+#ifndef NORTH_AMERICA
 _0233E920: .word 0x00002A30
-_0233F0AC: .word 0x000037A5
+_0233F0AC: .word 0x000037A3 + OV06_0233DD7C_OFFSET
 #else
 _0233E91C: .word 0x000037A2
 _0233E920: .word 0x00002A30
@@ -2311,10 +2343,19 @@ _0233E928: .word 0x000037A4 + OV06_0233DD7C_OFFSET
 _0233E92C: .word 0x000037A8 + OV06_0233DD7C_OFFSET
 _0233E930: .word 0x000037A5 + OV06_0233DD7C_OFFSET
 _0233E934: .word 0x00001004
+#ifdef JAPAN
+_0233E938: .word 0x000004CC
+#else
 _0233E938: .word 0x0000023B
+#endif
 _0233E93C: .word 0x00004002
 _0233E940: .word 0x00004001
+#ifdef JAPAN
+_023401C8: .word 0x000004CD
+_0233E944: .word 0x000004CA
+#else
 _0233E944: .word 0x00000239
+#endif
 _0233E948: .word 0x00004004
 _0233E94C: .word 0x0000379E + OV06_0233DD7C_OFFSET
 _0233E950: .word 0x000037A6 + OV06_0233DD7C_OFFSET
@@ -2569,14 +2610,18 @@ _0233ECB4:
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0233ECBC: .word ov06_0233EEF0
-#ifdef EUROPE
-_0233ECC0: .word 0x00003F1B
-_0233ECC4: .word ov01_02337B68
+#if defined(EUROPE)
+#define OV06_0233EEF0_OFFSET 2
+#elif defined(JAPAN)
+#define OV06_0233EEF0_OFFSET -0xAD8
 #else
-_0233ECC0: .word 0x00003F19
+#define OV06_0233EEF0_OFFSET 0
+#endif
+_0233ECBC: .word ov06_0233EEF0
+_0233ECC0: .word 0x00003F19 + OV06_0233EEF0_OFFSET
 _0233ECC4: .word ov01_02337B68
-_0233ECC8: .word 0x00003F1A
+#ifndef EUROPE
+_0233ECC8: .word 0x00003F1A + OV06_0233EEF0_OFFSET
 #endif
 	arm_func_end ov06_0233EA1C
 
@@ -2602,40 +2647,65 @@ _0233ED00: .word ov06_0233EEF0
 
 	.global ov06_0233ED04
 ov06_0233ED04:
-#ifdef EUROPE
+#if defined(EUROPE)
 #define OV06_DATA_OFFSET 2
+#elif defined(JAPAN)
+#define OV06_DATA_OFFSET -0x37E
 #else
 #define OV06_DATA_OFFSET 0
 #endif
-	.byte 0x9A + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x9B + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00
+	.word 0x379A + OV06_DATA_OFFSET
+	.byte 0x10, 0x00, 0x00, 0x00
+	.word 0x379B + OV06_DATA_OFFSET
+	.byte 0x12, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global ov06_0233ED1C
 ov06_0233ED1C:
-	.byte 0xAA + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
-	.byte 0xAB + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x37AA + OV06_DATA_OFFSET
+	.byte 0x10, 0x00, 0x00, 0x00
+	.word 0x37AB + OV06_DATA_OFFSET
+	.byte 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global ov06_0233ED34
 ov06_0233ED34:
-	.byte 0xAD + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0xAE + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00
+	.word 0x37AD + OV06_DATA_OFFSET
+	.byte 0x10, 0x00, 0x00, 0x00
+	.word 0x37AE + OV06_DATA_OFFSET
+	.byte 0x11, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global ov06_0233ED4C
 ov06_0233ED4C:
-	.byte 0x5A + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
-	.byte 0x5B + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x375A + OV06_DATA_OFFSET
+	.byte 0x10, 0x00, 0x00, 0x00
+	.word 0x375B + OV06_DATA_OFFSET
+	.byte 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global ov06_0233ED64
 ov06_0233ED64:
-	.byte 0x88 + OV06_DATA_OFFSET, 0x37, 0x00, 0x00
+	.word 0x3788 + OV06_DATA_OFFSET
 	.global ov06_0233ED68
 ov06_0233ED68:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x89 + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.byte 0x86 + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0x01, 0x00, 0x00, 0x00
+	.word 0x3789 + OV06_DATA_OFFSET
+	.byte 0x02, 0x00, 0x00, 0x00
+	.word 0x3786 + OV06_DATA_OFFSET
+	.byte 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global ov06_0233ED84
 ov06_0233ED84:
-	.byte 0x8C + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x8D + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00
-	.byte 0x8E + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x378C + OV06_DATA_OFFSET
+	.byte 0x0D, 0x00, 0x00, 0x00
+	.word 0x378D + OV06_DATA_OFFSET
+	.byte 0x0F, 0x00, 0x00, 0x00
+	.word 0x378E + OV06_DATA_OFFSET
+	.byte 0x12, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global ov06_0233EDA4
 ov06_0233EDA4:
-	.byte 0x95 + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00, 0x97 + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00
-	.byte 0x96 + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x98 + OV06_DATA_OFFSET, 0x37, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00
+	.word 0x3795 + OV06_DATA_OFFSET
+	.byte 0x0D, 0x00, 0x00, 0x00
+	.word 0x3797 + OV06_DATA_OFFSET
+	.byte 0x0F, 0x00, 0x00, 0x00
+	.word 0x3796 + OV06_DATA_OFFSET
+	.byte 0x0E, 0x00, 0x00, 0x00
+	.word 0x3798 + OV06_DATA_OFFSET
+	.byte 0x12, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global ov06_0233EDCC
 ov06_0233EDCC:

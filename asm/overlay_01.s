@@ -14628,7 +14628,7 @@ _02334FF8:
 	ldrh r1, [fp, r0]
 	ldr r0, _023368E0 ; =0x00008140
 	cmp r1, r0
-	beq _0233688C
+	beq _02335034
 	mov r1, #0xc
 	mul r1, r8, r1
 #else
@@ -20417,7 +20417,7 @@ _023397FC:
 #if defined(EUROPE)
 #define OV01_02338EC4_DATA_OFFSET 2
 #elif defined(JAPAN)
-#define OV01_02338EC4_DATA_OFFSET 0x37E
+#define OV01_02338EC4_DATA_OFFSET -0x37E
 #else
 #define OV01_02338EC4_DATA_OFFSET 0
 #endif
