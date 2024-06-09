@@ -711,7 +711,7 @@
 .public _022A8994
 .public _022A92B4_JP
 .public _022A92B8_JP
-.public _022A92C4_JP
+.public _022A92C4
 .public _022A9A5C
 .public _022AA35C
 .public _022AAC64

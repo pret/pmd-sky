@@ -58984,8 +58984,8 @@ _022A92B8_JP:
 	.global _022A7A54
 _022A7A54:
 	.space 0x4
-	.global _022A92C4_JP
-_022A92C4_JP:
+	.global _022A92C4
+_022A92C4:
 	.space 0x4
 #if defined(EUROPE)
 	.global _022A7A64

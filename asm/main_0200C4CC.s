@@ -33112,7 +33112,7 @@ sub_02025AD8: ; 0x02025AD8
 	mov r2, #1
 	bl LoadFileFromRom
 	ldr r1, [sp]
-	ldr r0, _02025B3C ; =_022A92C4_JP
+	ldr r0, _02025B3C ; =_022A92C4
 	bl HandleSir0Translation
 	ldr r1, _02025B40 ; =_0209AC18
 	add r0, sp, #0
@@ -33184,7 +33184,7 @@ sub_02025AD8: ; 0x02025AD8
 _02025B6C: .word _0209B548_JP
 _02025B34: .word _022A7A54
 _02025B38: .word _0209AC04
-_02025B3C: .word _022A92C4_JP
+_02025B3C: .word _022A92C4
 _02025B40: .word _0209AC18
 _02025B44: .word _020AFD04
 _02025B48: .word _022A92B4_JP
