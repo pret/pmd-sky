@@ -4326,8 +4326,9 @@ _022DFE28: .word ov11_023194C0
 _022DFE2C: .word 0x0001002F
 #ifdef JAPAN
 _022E14D4: .word 0x00003008
-#endif
+#else
 _022DFE30: .word 0x0000025E
+#endif
 _022DFE34: .word ov11_023194D8
 _022DFE38: .word ov11_023194F4
 _022DFE3C: .word ov11_02319504
@@ -6561,7 +6562,9 @@ _022E1D70:
 #endif
 _022E1DD0:
 	mov r0, r5
-#ifndef JAPAN
+#ifdef JAPAN
+	bl SetEnterDungeon
+#else
 	bl CheckMissionRestrictions
 	tst r0, #0x20
 	movne r1, #7
@@ -11608,7 +11611,11 @@ _022E6294:
 	bl PreprocessStringFromId
 	add r0, sp, #0xa0
 	add r1, sp, #0x60
+#ifdef JAPAN
+	bl sub_02025304_JP
+#else
 	bl StrcpyName
+#endif
 	add r1, sp, #0xa0
 	mov r0, #1
 	mov r2, r1
@@ -23468,29 +23475,29 @@ _022F097C:
 	sub r3, r0, #0x53
 	cmp r1, r3
 	blt _022F1410_JP
-	beq _022F1644
+	beq _022EFFF4
 	sub r0, r0, #0x52
 	cmp r1, r0
-	beq _022F19DC
+	beq _022F038C
 	b _022F03A8
 _022F1410_JP:
 	cmp r1, #0xdc
 	bgt _022F1440
-	bge _022F1644
+	bge _022EFFF4
 	cmp r1, #0x85
 	bgt _022F1434
-	bge _022F1644
+	bge _022EFFF4
 	cmp r1, #8
 	beq _022F0008
 	b _022F03A8
 _022F1434:
 	cmp r1, #0xd4
-	beq _022F1644
+	beq _022EFFF4
 	b _022F03A8
 _022F1440:
 	cmp r1, #0x10c
 	bgt _022F1470
-	bge _022F1A00
+	bge _022F03B0
 	cmp r1, #0xf5
 	bgt _022F03A8
 	cmp r1, #0xf3
@@ -23515,7 +23522,7 @@ _022F1480:
 	b _022F14D0
 _022F149C: ; jump table
 	b _022F0048 ; case 0
-	b _022F1688 ; case 1
+	b _022F0038 ; case 1
 	b _022F03A8 ; case 2
 	b _022F03A8 ; case 3
 	b _022F0054 ; case 4
@@ -23533,7 +23540,7 @@ _022F14D0:
 	bge _022F0054
 	ldr r0, _022F1A0C_JP ; =0x00000127
 	cmp r1, r0
-	beq _022F1688
+	beq _022F0038
 	b _022F03A8
 _022F14EC:
 	ldr r0, _022F1A10 ; =0x00000129
@@ -23550,7 +23557,7 @@ _022F14FC:
 	b _022F03A8
 _022F1518:
 	cmp r1, #0x164
-	beq _022F170C
+	beq _022F00BC
 	b _022F03A8
 _022F1524:
 	add r3, r0, #0x35
@@ -23558,11 +23565,11 @@ _022F1524:
 	bgt _022F15A4
 	mov r2, r3
 	cmp r1, r2
-	bge _022F1644
+	bge _022EFFF4
 	add r2, r0, #0x18
 	cmp r1, r2
 	bgt _022F1578
-	bge _022F1644
+	bge _022EFFF4
 	cmp r1, #0x174
 	bgt _022F1568
 	bge _022F0028
@@ -23578,7 +23585,7 @@ _022F1568:
 _022F1578:
 	cmp r1, #0x18c
 	bgt _022F1594
-	bge _022F1644
+	bge _022EFFF4
 	add r0, r0, #0x22
 	cmp r1, r0
 	beq _022F0028
@@ -23591,19 +23598,19 @@ _022F1594:
 _022F15A4:
 	cmp r1, #0x1b0
 	bgt _022F15E0
-	bge _022F1688
+	bge _022F0038
 	add r2, r0, #0x41
 	cmp r1, r2
 	bgt _022F15D0
-	bge _022F1688
+	bge _022F0038
 	add r0, r0, #0x40
 	cmp r1, r0
-	beq _022F1688
+	beq _022F0038
 	b _022F03A8
 _022F15D0:
 	add r0, r0, #0x45
 	cmp r1, r0
-	beq _022F1644
+	beq _022EFFF4
 	b _022F03A8
 _022F15E0:
 	add r3, r0, #0x50
@@ -23614,7 +23621,7 @@ _022F15E0:
 	bge _022F01D0
 	add r0, r0, #0x4c
 	cmp r1, r0
-	beq _022F1688
+	beq _022F0038
 	b _022F03A8
 _022F1608:
 	add r0, r0, #0x51
@@ -24179,7 +24186,7 @@ _022F04A8:
 #if defined(EUROPE)
 	sub r1, r0, #0x6a
 #elif defined(JAPAN)
-	sub r1, r0, #0x53
+	sub r1, r0, #0x5e
 #else
 	sub r1, r0, #0x59
 #endif
@@ -24188,7 +24195,7 @@ _022F04A8:
 #if defined(EUROPE)
 	sub r0, r0, #0x6a
 #elif defined(JAPAN)
-	sub r1, r0, #0x53
+	sub r0, r0, #0x5e
 #else
 	sub r0, r0, #0x59
 #endif
@@ -41390,21 +41397,25 @@ _022FE8FC:
 	ldr r1, [sl, #0x1c]
 	add r1, r2, r1
 	str r1, [sp, #0x10]
-	ldrsh r1, [r0, #0xe2]
+#ifdef JAPAN
 	ldr r6, [sl, #0x140]
 	ldr r5, [sl, #0x144]
-#ifdef JAPAN
 	bl ov11_022F5FE8_JP
 	cmp r0, #0
 	beq _022FE970
+	strb fp, [sl, #0x148]
+	add r0, sl, #0x100
 #else
+	ldrsh r1, [r0, #0xe2]
+	ldr r6, [sl, #0x140]
+	ldr r5, [sl, #0x144]
 	cmp r1, #0
 	bge _022FE970
 	ldrsh r1, [r0, #0xdc]
 	cmp r1, #0
 	ble _022FE970
-#endif
 	strb fp, [sl, #0x148]
+#endif
 	ldrsh r1, [r0, #0x4a]
 	mov r2, fp
 	add r0, sl, #0x150

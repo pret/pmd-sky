@@ -524,6 +524,7 @@
 .public sub_0201F36C
 .public sub_0201F464
 .public sub_020236FC
+.public sub_02025304_JP
 .public sub_02026268
 .public sub_020262E0
 .public sub_020265A8
