@@ -6054,9 +6054,11 @@ _022C182C:
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _022C1834: .word ov10_022DC1D0
-_022C1838: .word ov10_022DC02C
 #ifdef JAPAN
+_022C1838: .word ov10_022DC00C
 _022C2FA4: .word ov10_022DC014
+#else
+_022C1838: .word ov10_022DC02C
 #endif
 	arm_func_end ProcessTeamStatsLvHp
 
