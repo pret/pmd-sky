@@ -574,12 +574,12 @@ _0233D164: ; jump table
 	b _0233D280 ; case 6
 	b _0233D4C4 ; case 7
 _0233D184:
-#ifndef NORTH_AMERICA
-	ldr r1, _0233DC64 ; =0x0000379E
-	mov r0, #0x1c
-#else
+#ifdef NORTH_AMERICA
 	mov r0, #0x1c
 	add r1, r0, #0x3780
+#else
+	ldr r1, _0233DC64 ; =0x0000379E
+	mov r0, #0x1c
 #endif
 	bl ov06_0233CDC8
 	ldr r0, _0233D4CC ; =ov06_0233EEC4
@@ -601,12 +601,12 @@ _0233D1CC:
 	mov r0, #2
 	mov r1, #1
 	bl sub_0204C978
-#ifndef NORTH_AMERICA
-	ldr r1, _0233DC64 ; =0x0000379E
-	mov r0, #0x1c
-#else
+#ifdef NORTH_AMERICA
 	mov r0, #0x1c
 	add r1, r0, #0x3780
+#else
+	ldr r1, _0233DC64 ; =0x0000379E
+	mov r0, #0x1c
 #endif
 	bl ov06_0233CDC8
 	ldr r0, _0233D4CC ; =ov06_0233EEC4
@@ -802,12 +802,12 @@ _0233D454:
 	bl AddMissionToJobList
 	bl sub_0205F5A8
 	bl sub_0205F710
-#ifndef NORTH_AMERICA
-	ldr r1, _0233DC64 ; =0x0000379E
-	mov r0, #0x1c
-#else
+#ifdef NORTH_AMERICA
 	mov r0, #0x1c
 	add r1, r0, #0x3780
+#else
+	ldr r1, _0233DC64 ; =0x0000379E
+	mov r0, #0x1c
 #endif
 	bl ov06_0233CDC8
 	ldr r0, _0233D4CC ; =ov06_0233EEC4
@@ -1883,10 +1883,10 @@ _0233E2D0:
 	mov r4, #1
 	b _0233E6A0
 _0233E2D8:
-#ifndef NORTH_AMERICA
-	ldr r1, _0233F0AC ; =0x000037A5
-#else
+#ifdef NORTH_AMERICA
 	sub r1, r1, #0x860
+#else
+	ldr r1, _0233F0AC ; =0x000037A5
 #endif
 	mov r0, #0x1c
 	bl ov06_0233CDC8
@@ -2331,12 +2331,12 @@ _0233E90C: .word ov06_0233EDFC
 _0233E910: .word ov06_0233EE24
 _0233E914: .word ov06_0233EE4C
 _0233E918: .word ov06_0233EE84
-#ifndef NORTH_AMERICA
-_0233E920: .word 0x00002A30
-_0233F0AC: .word 0x000037A3 + OV06_0233DD7C_OFFSET
-#else
+#ifdef NORTH_AMERICA
 _0233E91C: .word 0x000037A2
 _0233E920: .word 0x00002A30
+#else
+_0233E920: .word 0x00002A30
+_0233F0AC: .word 0x000037A3 + OV06_0233DD7C_OFFSET
 #endif
 _0233E924: .word ov06_0233ED4C
 _0233E928: .word 0x000037A4 + OV06_0233DD7C_OFFSET
