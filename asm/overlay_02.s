@@ -20,9 +20,12 @@ ov02_02329520: ; 0x02329520
 #endif
 	add r0, r4, #0x1f
 	bic r0, r0, #0x1f
-#ifndef EUROPE
+#if defined(NORTH_AMERICA)
 	mov r1, #1
 	mov r2, #0
+#elif defined(JAPAN)
+	mov r1, #0
+	mov r2, #0x10
 #endif
 	bl ov02_023388B4
 	mov r0, r4
