@@ -235,10 +235,6 @@ _0238A448:
 	str r2, [sp]
 	ldr r0, [r0]
 	add r2, r1, #0xb8
-	arm_func_end ov27_0238A3A4
-
-	arm_func_start ov27_0238A468
-ov27_0238A468: ; 0x0238A468
 	add r0, r0, #0x38
 	bl PreprocessStringFromId
 	ldr r0, _0238A8DC ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
@@ -557,6 +553,7 @@ _0238A8DC: .word OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 _0238A8E0: .word 0x00000408
 _0238A8E4: .word 0x00000618
 _0238A8E8: .word ov11_02324DB8
+	arm_func_end ov27_0238A3A4
 
 	arm_func_start ov27_0238A8EC
 ov27_0238A8EC: ; 0x0238A8EC
@@ -911,10 +908,6 @@ _0238AD8C:
 	ldrsb r0, [r3, #0x8d]
 	add r3, r3, #0x94
 	bl ShowStringIdInDialogueBox
-	arm_func_end ov27_0238A998
-
-	arm_func_start ov27_0238ADFC
-ov27_0238ADFC: ; 0x0238ADFC
 	b _0238BA74
 _0238AE00:
 	ldr r0, _0238B968 ; =ov27_0238CB64
@@ -1759,7 +1752,7 @@ _0238BA2C:
 _0238BA74:
 	add sp, sp, #0x30c
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end ov27_0238ADFC
+	arm_func_end ov27_0238A998
 
 	arm_func_start ov27_0238BA7C
 ov27_0238BA7C: ; 0x0238BA7C

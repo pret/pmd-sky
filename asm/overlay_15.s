@@ -920,10 +920,6 @@ ov15_0238ADC4: ; 0x0238ADC4
 	add r0, sp, #4
 	mov r1, #0x100
 	str ip, [sp]
-	arm_func_end ov15_0238ADC4
-
-	arm_func_start ov15_0238ADFC
-ov15_0238ADFC: ; 0x0238ADFC
 	bl PreprocessStringFromId
 	add r3, sp, #4
 	mov r0, r4
@@ -953,7 +949,7 @@ ov15_0238ADFC: ; 0x0238ADFC
 	.align 2, 0
 _0238AE64: .word 0x00000373
 _0238AE68: .word 0x0000C402
-	arm_func_end ov15_0238ADFC
+	arm_func_end ov15_0238ADC4
 
 	arm_func_start ov15_0238AE6C
 ov15_0238AE6C: ; 0x0238AE6C

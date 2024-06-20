@@ -218,10 +218,6 @@ _0238A3E8:
 	bl InitAnimDataFromOtherAnimDataVeneer
 	ldr r0, [r4]
 	mov r1, r5
-	arm_func_end SentrySetupState
-
-	arm_func_start ov14_0238A468
-ov14_0238A468: ; 0x0238A468
 	add r0, r0, #0x3ec
 	add r0, r0, #0x1800
 	add r0, r0, r8
@@ -268,7 +264,7 @@ _0238A504: .word 0x000038D4
 _0238A508: .word SENTRY_DUTY_PTR
 _0238A50C: .word 0x88080000
 _0238A510: .word 0xC8100000
-	arm_func_end ov14_0238A468
+	arm_func_end SentrySetupState
 
 	arm_func_start ov14_0238A514
 ov14_0238A514: ; 0x0238A514

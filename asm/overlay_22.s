@@ -245,10 +245,6 @@ _0238A40C:
 	strb r0, [r1, #0x368]
 _0238A464:
 	ldr r2, [r4, #4]
-	arm_func_end ov22_0238A320
-
-	arm_func_start ov22_0238A468
-ov22_0238A468: ; 0x0238A468
 	add r0, r2, #0xe8
 	add r1, r0, sb
 	add r0, r2, sl, lsl #3
@@ -276,7 +272,7 @@ _0238A488:
 _0238A4C0: .word OVERLAY22_UNKNOWN_POINTER__NA_238EC60
 _0238A4C4: .word ov22_0238E82C
 _0238A4C8: .word ov22_0238E834
-	arm_func_end ov22_0238A468
+	arm_func_end ov22_0238A320
 
 	arm_func_start ov22_0238A4CC
 ov22_0238A4CC: ; 0x0238A4CC
@@ -1020,10 +1016,6 @@ ov22_0238ADD8: ; 0x0238ADD8
 	ldr r0, [r2, #0x10]
 	cmp r0, #0x30
 	addls pc, pc, r0, lsl #2
-	arm_func_end ov22_0238ADD8
-
-	arm_func_start ov22_0238ADFC
-ov22_0238ADFC: ; 0x0238ADFC
 	b _0238C16C
 _0238AE00: ; jump table
 	b _0238AEC4 ; case 0
@@ -2349,7 +2341,7 @@ _0238C174: .word ov22_0238EC00
 _0238C178: .word ov22_0238EC10
 _0238C17C: .word ov22_0238EC24
 _0238C180: .word ov22_0238EC38
-	arm_func_end ov22_0238ADFC
+	arm_func_end ov22_0238ADD8
 
 	arm_func_start ov22_0238C184
 ov22_0238C184: ; 0x0238C184

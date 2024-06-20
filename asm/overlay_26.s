@@ -223,10 +223,6 @@ _0238A458:
 _0238A460:
 	ldr r0, _0238A530 ; =OVERLAY26_UNKNOWN_POINTER__NA_238AF60
 	mov r1, #0
-	arm_func_end ov26_0238A140
-
-	arm_func_start ov26_0238A468
-ov26_0238A468: ; 0x0238A468
 	ldr r0, [r0]
 	ldr r0, [r0, #0x90]
 	ldrsh r0, [r0, #0xe]
@@ -297,7 +293,7 @@ _0238A558: .word ov26_0238AE9E
 _0238A55C: .word OVERLAY26_UNKNOWN_TABLE__NA_238AE20
 _0238A560: .word 0x000001E3
 _0238A564: .word ov26_0238AE26
-	arm_func_end ov26_0238A468
+	arm_func_end ov26_0238A140
 
 	arm_func_start ov26_0238A568
 ov26_0238A568: ; 0x0238A568

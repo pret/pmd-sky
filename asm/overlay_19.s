@@ -938,10 +938,6 @@ _0238ADE4:
 	bne _0238AE14
 	ldrsh r2, [r8, #0xd8]
 	add r0, r8, #0xda
-	arm_func_end ov19_0238A4A4
-
-	arm_func_start ov19_0238ADFC
-ov19_0238ADFC: ; 0x0238ADFC
 	mov r1, #4
 	mov r3, #1
 	bl sub_020417A8
@@ -2613,7 +2609,7 @@ _0238C59C:
 	add sp, sp, #0x308
 	add sp, sp, #0x800
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov19_0238ADFC
+	arm_func_end ov19_0238A4A4
 
 	arm_func_start ov19_0238C5A8
 ov19_0238C5A8: ; 0x0238C5A8

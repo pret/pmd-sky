@@ -939,10 +939,6 @@ _0238ADDC:
 	str r0, [sb, #0xc]
 	bl sub_02046D20
 	bl sub_020037A4
-	arm_func_end ov20_0238A1B0
-
-	arm_func_start ov20_0238ADFC
-ov20_0238ADFC: ; 0x0238ADFC
 	add r0, r0, #0xa
 	str r0, [sb, #0xac]
 	b _0238B05C
@@ -1295,7 +1291,7 @@ _0238B288:
 _0238B28C:
 	add sp, sp, #0xb0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov20_0238ADFC
+	arm_func_end ov20_0238A1B0
 
 	arm_func_start ov20_0238B294
 ov20_0238B294: ; 0x0238B294

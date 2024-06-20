@@ -247,8 +247,6 @@
 .public ov11_022E03F0
 .public ov11_022E0434
 .public ov11_0230DB58
-.public ov13_0238A468
-.public ov13_0238ADFC
 .public ov14_0238B708
 .public ov15_0238AE88
 .public ov15_0238AE98
@@ -312,6 +310,7 @@
 .public ov27_0238BB54
 .public ov27_0238BB80
 .public ov28_0238A140
+.public ov28_0238A468
 .public OverlayIsLoaded
 .public PlayBgmByIdVeneer
 .public PlayBgmByIdVolumeVeneer
@@ -334,6 +333,7 @@
 .public SaveScriptVariableValueAtIndex
 .public SaveScriptVariableValueBytes
 .public SentryRunState
+.public SentryUpdateDisplay
 .public SetActorTalkMain
 .public SetActorTalkMainAndActorTalkSub
 .public SetActorTalkSub

@@ -227,10 +227,6 @@ _0238A43C:
 	b _0238A604
 _0238A464:
 	cmp r0, #1
-	arm_func_end ov24_0238A140
-
-	arm_func_start ov24_0238A468
-ov24_0238A468: ; 0x0238A468
 	bne _0238A604
 	ldr r0, _0238A60C ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	mov r2, #0x21
@@ -349,7 +345,7 @@ _0238A604:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238A60C: .word OVERLAY24_UNKNOWN_POINTER__NA_238C600
-	arm_func_end ov24_0238A468
+	arm_func_end ov24_0238A140
 
 	arm_func_start ov24_0238A610
 ov24_0238A610: ; 0x0238A610
@@ -882,10 +878,6 @@ _0238ADB8:
 	ldr r0, [r2]
 	strb r4, [r0, #0x1be]
 	ldr r0, [r2]
-	arm_func_end ov24_0238A610
-
-	arm_func_start ov24_0238ADFC
-ov24_0238ADFC: ; 0x0238ADFC
 	str r3, [r0, #0x1c4]
 	bl sub_0201077C
 	mov r1, r0
@@ -1287,7 +1279,7 @@ _0238B3E8: .word EGG_STAT_BONUSES
 _0238B3EC: .word _020A18E0
 _0238B3F0: .word 0x00000399
 _0238B3F4: .word 0x000003A3
-	arm_func_end ov24_0238ADFC
+	arm_func_end ov24_0238A610
 
 	arm_func_start ov24_0238B3F8
 ov24_0238B3F8: ; 0x0238B3F8

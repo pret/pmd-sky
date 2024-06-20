@@ -224,10 +224,6 @@ _0238A404:
 	b _0238A674
 _0238A464:
 	add r0, r2, #0x100
-	arm_func_end ov25_0238A140
-
-	arm_func_start ov25_0238A468
-ov25_0238A468: ; 0x0238A468
 	ldrsb r0, [r0, #0x3a]
 	bl GetSimpleMenuResult
 	cmp r0, #1
@@ -382,7 +378,7 @@ _0238A684: .word 0x00001308
 _0238A688: .word 0x00003008
 _0238A68C: .word 0x000003E2
 _0238A690: .word 0x00003018
-	arm_func_end ov25_0238A468
+	arm_func_end ov25_0238A140
 
 	arm_func_start ov25_0238A694
 ov25_0238A694: ; 0x0238A694
@@ -878,10 +874,6 @@ _0238ADC0:
 	add ip, r0, #0x28
 	add r0, r0, #0x78
 	str ip, [sp]
-	arm_func_end ov25_0238A694
-
-	arm_func_start ov25_0238ADFC
-ov25_0238ADFC: ; 0x0238ADFC
 	bl PreprocessString
 	add r0, sp, #0x18
 	bl InitPreprocessorArgs
@@ -1102,7 +1094,7 @@ _0238B124: .word APPRAISAL_WINDOW_PARAMS_7
 _0238B128: .word 0x0000018F
 _0238B12C: .word OVERLAY25_UNKNOWN_STRUCT__NA_238B498
 _0238B130: .word 0x000003E1
-	arm_func_end ov25_0238ADFC
+	arm_func_end ov25_0238A694
 
 	arm_func_start ov25_0238B134
 ov25_0238B134: ; 0x0238B134

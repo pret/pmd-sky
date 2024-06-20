@@ -11988,7 +11988,7 @@ _022E67A4:
 _022E67AC:
 	mov r0, #0
 _022E67B0:
-	bl ov13_0238A468
+	bl ov28_0238A468
 	b _022E68AC
 _022E67B8:
 	mov r0, #0x20
@@ -37812,15 +37812,17 @@ _022FBB20:
 #ifdef JAPAN
 	add r0, sl, #0x18c
 	bl ov11_022F5FE8_JP
+	cmp r0, #0
+	beq _022FBB54
 #else
 	add r0, sl, #0x200
 	ldrsh r1, [r0, #0x1e]
 	cmp r1, #0
 	bge _022FBB54
 	ldrsh r0, [r0, #0x18]
-#endif
 	cmp r0, #0
 	ble _022FBB54
+#endif
 	strb fp, [sl, #0x174]
 	add r0, sl, #0x100
 	ldrsh r1, [r0, #0x80]
@@ -42391,7 +42393,7 @@ _022FF558:
 	strb r0, [r2], #1
 	bne _022FF558
 #ifdef JAPAN
-	ldr r1, _022FF57C ; =ov11_02324D14
+	ldr r0, _022FF57C ; =ov11_02324D14
 	mov r1, #0x1b4
 	strh r1, [r0, #2]
 	mov r0, #1
@@ -43443,7 +43445,7 @@ _02300340:
 	strh r0, [r1, #2]
 	bl DungeonSwapIdxToId
 #ifdef JAPAN
-	ldr r1, _0230057C ; =ov11_02324D1C
+	ldr r2, _0230057C ; =ov11_02324D1C
 	ldr r1, _02300590 ; =0x00000408
 	ldr r2, [r2, #4]
 	str r0, [sp, #0x18]
@@ -45028,7 +45030,11 @@ _0230180C:
 	add r0, r1, #0x6e
 	add r0, r0, #0x100
 	add r1, r1, #0x5a
+#ifdef JAPAN
+	bl sub_02025304_JP
+#else
 	bl StrcpyName
+#endif
 	ldr r0, _02301A10 ; =ov11_02324D48
 	mov r2, #0
 	ldr r0, [r0]
@@ -45069,7 +45075,11 @@ _0230187C:
 	add r0, r1, #0x6e
 	add r0, r0, #0x100
 	add r1, r1, #0x5a
+#ifdef JAPAN
+	bl sub_02025304_JP
+#else
 	bl StrcpyName
+#endif
 	ldr r0, _02301A10 ; =ov11_02324D48
 	mov r2, #0
 	ldr r0, [r0]
@@ -45428,7 +45438,11 @@ _02301D88:
 	add r0, r1, #0x6e
 	add r0, r0, #0x100
 	add r1, r1, #0x5a
+#ifdef JAPAN
+	bl sub_02025304_JP
+#else
 	bl StrcpyName
+#endif
 	ldr r0, _02301F8C ; =ov11_02324D48
 	mov r2, #0
 	ldr r0, [r0]
@@ -45469,7 +45483,11 @@ _02301DF8:
 	add r0, r1, #0x6e
 	add r0, r0, #0x100
 	add r1, r1, #0x5a
+#ifdef JAPAN
+	bl sub_02025304_JP
+#else
 	bl StrcpyName
+#endif
 	ldr r0, _02301F8C ; =ov11_02324D48
 	mov r2, #0
 	ldr r0, [r0]
@@ -45766,7 +45784,11 @@ _0230221C:
 	add r0, r1, #0x6e
 	add r0, r0, #0x100
 	add r1, r1, #0x5a
+#ifdef JAPAN
+	bl sub_02025304_JP
+#else
 	bl StrcpyName
+#endif
 	ldr r0, _023025E4 ; =ov11_02324D48
 	mov r2, #0
 	ldr r0, [r0]
@@ -48051,7 +48073,11 @@ _02303FD0:
 	bl GetNameRaw
 	add r0, sp, #0x94
 	mov r1, r0
+#ifdef JAPAN
+	bl sub_02025304_JP
+#else
 	bl StrcpyName
+#endif
 	mov r3, #0
 	ldr r0, _02304298 ; =ov11_02324D58
 	str r3, [sp]
@@ -49642,11 +49668,13 @@ _02305460: .word ov11_02322BA8
 _02305464: .word 0x00001013
 #ifdef JAPAN
 _02305468: .word 0x00001D3C
+_0230546C: .word 0x00002FB3
+_02305470: .word 0x00002FCA
 #else
 _02305468: .word 0x000008E4
+_0230546C: .word 0x000002DF
+_02305470: .word 0x000002D6
 #endif
-_0230546C: .word 0x000002DF + OV11_02304DC8_OFFSET
-_02305470: .word 0x000002D6 + OV11_02304DC8_OFFSET
 _02305474: .word 0x000002DE + OV11_02304DC8_OFFSET
 _02305478: .word ov11_02322BB8
 _0230547C: .word ov11_02322BE0
@@ -50139,11 +50167,13 @@ _02305B18: .word ov11_02322BA8
 _02305B1C: .word 0x00001013
 #ifdef JAPAN
 _02305B20: .word 0x00001D3C
+_02305B24: .word 0x00002FB3
+_02305B28: .word 0x00002FCA
 #else
 _02305B20: .word 0x000008E4
+_02305B24: .word 0x000002DF
+_02305B28: .word 0x000002D6
 #endif
-_02305B24: .word 0x000002DF + OV11_02305488_OFFSET
-_02305B28: .word 0x000002D6 + OV11_02305488_OFFSET
 _02305B2C: .word 0x000002DE + OV11_02305488_OFFSET
 _02305B30: .word ov11_02322BB8
 _02305B34: .word ov11_02322BE0
@@ -50949,7 +50979,7 @@ _02306538:
 	str r3, [ip, #0x30 + OV11_023062BC_OFFSET]
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x21]
-	add r3, r3, #0x30
+	add r3, r3, #0x30 + OV11_023062BC_OFFSET
 	bl ShowStringIdInDialogueBox
 	ldr r0, _02306768 ; =ov11_02324D88
 	ldr r0, [r0]
@@ -51402,7 +51432,7 @@ _02306B0C:
 	b _02306C30
 _02306B3C:
 #ifdef JAPAN
-	ldr r0, _02306C38 ; =ov11_02324D88
+	ldr r0, _02306C5C ; =TEAM_MEMBER_TABLE_PTR
 	ldrsh r2, [r2, #0xc]
 	ldr r1, [r0]
 	mov r0, #0x44
@@ -53461,11 +53491,13 @@ _023087A0:
 	ldr r0, _023082B4 ; =ov11_02324D8C
 #ifdef JAPAN
 	ldr r2, _0230A2B0_JP ; =0x0000248F
+	ldr r0, [r0]
+	mov r1, #0x18
 #else
 	mov r1, #0x18
-#endif
 	ldr r0, [r0]
 	add r2, r1, #0xf10
+#endif
 	ldrsb r0, [r0, #8]
 	mov r3, #0
 	bl ShowStringIdInDialogueBox
@@ -54137,7 +54169,11 @@ ov11_02309040: ; 0x02309040
 	movne r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0230907C: .word 0x00000774
+#else
 _0230907C: .word 0x00000794
+#endif
 _02309080: .word ov11_02324D90
 	arm_func_end ov11_02309040
 
@@ -54173,7 +54209,11 @@ ov11_02309084: ; 0x02309084
 #endif
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+_023090D4: .word 0x00000774
+#else
 _023090D4: .word 0x00000794
+#endif
 _023090D8: .word ov11_02324D90
 	arm_func_end ov11_02309084
 
@@ -65583,7 +65623,11 @@ ov11_02312398: ; 0x02312398
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02312414: .word ov11_02324E18
+#ifdef JAPAN
+_02312418: .word ov11_02323BD8
+#else
 _02312418: .word ov11_02323BE0
+#endif
 	arm_func_end ov11_02312398
 
 	arm_func_start ov11_0231241C
@@ -65818,7 +65862,11 @@ _0231271C: .word EVENTS
 _02312720: .word ov11_02323C54
 _02312724: .word ov11_02323BD0
 _02312728: .word ov11_02323CAC
+#ifdef JAPAN
+_0231272C: .word ov11_02323BE0
+#else
 _0231272C: .word ov11_02323BD0
+#endif
 	arm_func_end ov11_02312540
 
 	arm_func_start ov11_02312730
@@ -66853,7 +66901,7 @@ _02313518:
 	beq _023135DC
 	b _02313784
 _02313534:
-	bl ov13_0238ADFC
+	bl SentryUpdateDisplay
 	b _02313784
 _0231353C:
 	bl ov11_0231474C

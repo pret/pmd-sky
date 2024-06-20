@@ -226,10 +226,6 @@ ov18_0238A42C: ; 0x0238A42C
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A48C
-	arm_func_end ov18_0238A42C
-
-	arm_func_start ov18_0238A468
-ov18_0238A468: ; 0x0238A468
 	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0]
@@ -670,7 +666,7 @@ _0238AAB4:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238AABC: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
-	arm_func_end ov18_0238A468
+	arm_func_end ov18_0238A42C
 
 	arm_func_start ov18_0238AAC0
 ov18_0238AAC0: ; 0x0238AAC0
@@ -915,10 +911,6 @@ _0238ADD0:
 _0238ADF4:
 	mla r3, r1, r5, r8
 	ldrb r2, [r3, #0x22]
-	arm_func_end ov18_0238ADA8
-
-	arm_func_start ov18_0238ADFC
-ov18_0238ADFC: ; 0x0238ADFC
 	tst r2, #1
 	beq _0238AE24
 	ldrh r2, [r3, #0x24]
@@ -986,7 +978,7 @@ _0238AEE0:
 	.align 2, 0
 _0238AEE8: .word TEAM_MEMBER_TABLE_PTR
 _0238AEEC: .word 0x00000216
-	arm_func_end ov18_0238ADFC
+	arm_func_end ov18_0238ADA8
 
 	arm_func_start ov18_0238AEF0
 ov18_0238AEF0: ; 0x0238AEF0

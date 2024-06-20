@@ -213,10 +213,6 @@ _0238A44C:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	arm_func_end ov21_0238A140
-
-	arm_func_start ov21_0238A468
-ov21_0238A468: ; 0x0238A468
 	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
@@ -862,10 +858,6 @@ _0238ADE4:
 	cmp r0, #0
 	movne r0, #0x19
 	strne r0, [r1, #4]
-	arm_func_end ov21_0238A468
-
-	arm_func_start ov21_0238ADFC
-ov21_0238ADFC: ; 0x0238ADFC
 	moveq r0, #1
 	streq r0, [r1, #4]
 	b _0238B7B8
@@ -1547,7 +1539,7 @@ _0238B7D0: .word 0x000003CB
 _0238B7D4: .word SWAP_SHOP_SUBMENU_ITEMS_1
 _0238B7D8: .word 0x000003B9
 _0238B7DC: .word 0x000003C9
-	arm_func_end ov21_0238ADFC
+	arm_func_end ov21_0238A140
 
 	arm_func_start ov21_0238B7E0
 ov21_0238B7E0: ; 0x0238B7E0
