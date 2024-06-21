@@ -201,7 +201,11 @@ _0238A3E0:
 	ldr r3, [r0]
 	ldr r1, _0238B094 ; =0x00003008
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	ldr r2, _0238C620 ; =0x000032AF
+#else
 	mov r2, #0x3d0
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -243,7 +247,11 @@ _0238A478:
 	ldr r3, [r0]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	add r2, r1, #0x28c
+#else
 	ldr r2, _0238B0D0 ; =0x000003C5
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -252,12 +260,21 @@ _0238A4EC:
 	bl Debug_Print0
 	mov r0, r4
 	ldr r2, [r0]
+#ifdef JAPAN
+	mov r3, #2
+	str r3, [r2, #4]
+#else
 	mov r4, #2
 	str r4, [r2, #4]
+#endif
 	ldr r3, [r0]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	ldr r2, _0238C634 ; =0x000032A5
+#else
 	add r2, r4, #0x3c4
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -314,7 +331,11 @@ _0238A594:
 	ldr r3, [r0]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	ldr r2, _0238C640 ; =0x000032A7
+#else
 	mov r2, #0x3c8
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -402,7 +423,11 @@ _0238A6DC:
 	ldr r3, [r0]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	ldr r2, _0238C654 ; =0x00003293
+#else
 	mov r2, #0x3b4
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -435,7 +460,11 @@ _0238A750:
 	ldr r3, [r0]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	add r2, r1, #0x27c
+#else
 	ldr r2, _0238B0F0 ; =0x000003B5
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -465,7 +494,11 @@ _0238A7D0:
 	ldr r3, [r0]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	ldr r2, _0238C660 ; =0x000032A3
+#else
 	mov r2, #0x3c4
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -503,7 +536,11 @@ _0238A854:
 	ldr r3, [r0]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	ldr r2, _0238C66C ; =0x00003297
+#else
 	mov r2, #0x3b8
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -624,12 +661,16 @@ _0238AA1C:
 	ldrsh r2, [r3, #0xe]
 	add r3, r3, #0x30
 	ldr r1, _0238B134 ; =0x00001013
-#ifdef EUROPE
+#if defined(EUROPE)
 	add r2, r2, #0xd3
+	add r2, r2, #0x2900
+#elif defined(JAPAN)
+	add r2, r2, #0xce
+	add r2, r2, #0x4100
 #else
 	add r2, r2, #0xd1
-#endif
 	add r2, r2, #0x2900
+#endif
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	stmib sp, {r2, r3}
@@ -687,9 +728,15 @@ _0238AAC0:
 	ldrh r0, [r3, #0xd8]
 	cmp r0, #0
 	beq _0238AB90
+#ifdef JAPAN
+	ldr r1, _0238B094 ; =0x00003008
+	ldrsb r0, [r3, #0x80]
+	add r2, r1, #0x294
+#else
 	ldrsb r0, [r3, #0x80]
 	ldr r1, _0238B094 ; =0x00003008
 	ldr r2, _0238B140 ; =0x000003BD
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -700,7 +747,11 @@ _0238AB90:
 	ldr r1, _0238B094 ; =0x00003008
 	bne _0238ABC0
 	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+#ifdef JAPAN
+	ldr r2, _0238C6B0 ; =0x0000329B
+#else
 	mov r2, #0x3bc
+#endif
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x30
@@ -795,11 +846,19 @@ _0238ACC0:
 _0238AD04:
 	mov r1, #1
 	str r1, [r0, #4]
+#ifdef JAPAN
+	ldr r3, [r4]
+	ldr r1, _0238B0CC ; =0x00003018
+	ldrsb r0, [r3, #0x80]
+	ldr r2, _0238C660 ; =0x000032A3
+	add r3, r3, #0x30
+#else
 	ldr r2, [r4]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r2, #0x80]
 	add r3, r2, #0x30
 	mov r2, #0x3c4
+#endif
 	bl ShowStringIdInDialogueBox
 	mov r0, r4
 	ldr r1, [r0]
@@ -826,10 +885,17 @@ _0238AD64:
 	ldr r1, [r0]
 	mov r3, #9
 	str r3, [r1, #0x58]
+#ifdef JAPAN
+	ldr r3, [r0]
+	ldr r2, _0238C6CC ; =0x000032A2
+	ldrsb r0, [r3, #0x80]
+	mov r1, #0x18
+#else
 	rsb r2, r3, #0x3cc
 	ldr r3, [r0]
 	mov r1, #0x18
 	ldrsb r0, [r3, #0x80]
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	mov r0, r4
@@ -879,7 +945,11 @@ _0238AE08:
 	b _0238AE54
 _0238AE44:
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	ldr r2, _0238C6D4 ; =0x0000329F
+#else
 	mov r2, #0x3c0
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 _0238AE54:
@@ -928,6 +998,18 @@ _0238AEF4:
 	ldr r0, _0238B164 ; =ov21_0238CED0
 	bl Debug_Print0
 	mov r0, r4
+#ifdef JAPAN
+	mov r3, #0x13
+	ldr r1, [r0]
+	add r2, r3, #0x1dc
+	str r3, [r1, #4]
+	ldr r1, [r0]
+	ldr r3, _0238B168 ; =0x00001311
+	str r2, [r1, #0x30]
+	ldr r1, [r0]
+	ldr r2, _0238C6E4 ; =0x0000329E
+	str r3, [r1, #0x54]
+#else
 	mov r2, #0x13
 	ldr r1, [r0]
 	add r3, r2, #0x1dc
@@ -938,12 +1020,17 @@ _0238AEF4:
 	ldr r3, [r0]
 	add r2, r2, #0x3ac
 	str r4, [r3, #0x54]
+#endif
 	ldr r3, [r0]
 	mov r1, #8
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
+#ifdef JAPAN
+	mov r0, r4
+#else
 	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+#endif
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x81]
 	bl HidePortraitBox
@@ -1038,10 +1125,15 @@ _0238B064:
 	mov r1, #1
 	b _0238B188
 	.align 2, 0
+#ifdef JAPAN
+#define OV21_238A140_OFFSET 0x2EDF
+#else
+#define OV21_238A140_OFFSET 0
+#endif
 _0238B08C: .word OVERLAY21_UNKNOWN_POINTER__NA_238CF40
 _0238B090: .word ov21_0238CBB8
 _0238B094: .word 0x00003008
-_0238B098: .word 0x000003B2
+_0238B098: .word 0x000003B2 + OV21_238A140_OFFSET
 _0238B09C: .word 0x000001EF
 _0238B0A0: .word ov21_0238CBD4
 _0238B0A4: .word SWAP_SHOP_WINDOW_PARAMS_1
@@ -1050,25 +1142,45 @@ _0238B0AC: .word 0x00300013
 _0238B0B0: .word SWAP_SHOP_MAIN_MENU_ITEMS_2
 _0238B0B4: .word SWAP_SHOP_WINDOW_PARAMS_5
 _0238B0B8: .word ov21_0238CBF8
-_0238B0BC: .word 0x000003B3
+_0238B0BC: .word 0x000003B3 + OV21_238A140_OFFSET
+#ifdef JAPAN
+_0238C620: .word 0x000032AF
+#endif
 _0238B0C0: .word SWAP_SHOP_WINDOW_PARAMS_7
 _0238B0C4: .word SWAP_SHOP_SUBMENU_ITEMS_2
 _0238B0C8: .word ov21_0238CC18
 _0238B0CC: .word 0x00003018
+#ifdef JAPAN
+_0238C634: .word 0x000032A5
+#else
 _0238B0D0: .word 0x000003C5
-_0238B0D4: .word 0x000003C7
+#endif
+_0238B0D4: .word 0x000003C7 + OV21_238A140_OFFSET
 _0238B0D8: .word ov21_0238CC3C
-_0238B0DC: .word 0x000003B7
+#ifdef JAPAN
+_0238C640: .word 0x000032A7
+#endif
+_0238B0DC: .word 0x000003B7 + OV21_238A140_OFFSET
 _0238B0E0: .word ov21_0238CC5C
-_0238B0E4: .word 0x000003B6
+_0238B0E4: .word 0x000003B6 + OV21_238A140_OFFSET
 _0238B0E8: .word ov21_0238CC7C
+#ifdef JAPAN
+_0238C654: .word 0x00003293
+_0238B0EC: .word ov21_0238CC9C
+_0238B0F4: .word ov21_0238CCC0
+_0238C660: .word 0x000032A3
+#else
 _0238B0EC: .word ov21_0238CC9C
 _0238B0F0: .word 0x000003B5
 _0238B0F4: .word ov21_0238CCC0
+#endif
 _0238B0F8: .word ov21_0238CCE4
 _0238B0FC: .word ov21_0238CD00
+#ifdef JAPAN
+_0238C66C: .word 0x00003297
+#endif
 _0238B100: .word ov21_0238CD24
-_0238B104: .word 0x000003C2
+_0238B104: .word 0x000003C2 + OV21_238A140_OFFSET
 _0238B108: .word ov21_0238CD44
 _0238B10C: .word ov21_0238CD68
 _0238B110: .word ov21_0238CD8C
@@ -1081,19 +1193,35 @@ _0238B128: .word ov21_0238CE00
 _0238B12C: .word 0x0000C402
 _0238B130: .word SWAP_SHOP_WINDOW_PARAMS_8
 _0238B134: .word 0x00001013
+#ifdef JAPAN
+_0238B138: .word 0x00003203
+_0238B13C: .word ov21_0238CE0C
+_0238C6B0: .word 0x0000329B
+#else
 _0238B138: .word 0x0000033E
 _0238B13C: .word ov21_0238CE0C
 _0238B140: .word 0x000003BD
-_0238B144: .word 0x000003BB
+#endif
+_0238B144: .word 0x000003BB + OV21_238A140_OFFSET
 _0238B148: .word ov21_0238CE34
 _0238B14C: .word SWAP_SHOP_MENU_ITEMS_CONFIRM
 _0238B150: .word ov21_0238CE4C
 _0238B154: .word ov21_0238CE78
 _0238B158: .word ov21_0238CEA4
+#ifdef JAPAN
+_0238C6CC: .word 0x000032A2
+_0238B15C: .word 0x000032A0
+_0238C6D4: .word 0x0000329F
+_0238B160: .word 0x00003299
+#else
 _0238B15C: .word 0x000003C1
 _0238B160: .word 0x000003BA
+#endif
 _0238B164: .word ov21_0238CED0
 _0238B168: .word 0x00001311
+#ifdef JAPAN
+_0238C6E4: .word 0x0000329E
+#endif
 _0238B16C: .word ov21_0238CEF8
 _0238B170:
 	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
@@ -1310,12 +1438,16 @@ _0238B434:
 	ldrsh r2, [r4, #0xe]
 	ldr r1, _0238B134 ; =0x00001013
 	ldr r3, _0238B138 ; =0x0000033E
-#ifdef EUROPE
+#if defined(EUROPE)
 	add r2, r2, #0xd3
+	add r2, r2, #0x2900
+#elif defined(JAPAN)
+	add r2, r2, #0xce
+	add r2, r2, #0x4100
 #else
 	add r2, r2, #0xd1
-#endif
 	add r2, r2, #0x2900
+#endif
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	str r2, [sp, #4]
@@ -1351,7 +1483,11 @@ _0238B4CC:
 	ldr r3, [r0]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	add r2, r1, #0x280
+#else
 	ldr r2, _0238B7D8 ; =0x000003B9
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -1379,7 +1515,11 @@ _0238B538:
 	ldr r3, [r0]
 	ldr r1, _0238B094 ; =0x00003008
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	ldr r2, _0238CD54 ; =0x000032AB
+#else
 	mov r2, #0x3cc
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -1420,7 +1560,11 @@ _0238B5D0:
 	ldr r3, [r0]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	add r2, r1, #0x290
+#else
 	ldr r2, _0238B7DC ; =0x000003C9
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -1469,7 +1613,11 @@ _0238B68C:
 	ldr r3, [r0]
 	ldr r1, _0238B0CC ; =0x00003018
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	add r2, r1, #0x280
+#else
 	ldr r2, _0238B7D8 ; =0x000003B9
+#endif
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
@@ -1511,12 +1659,16 @@ _0238B724:
 	ldrsh r2, [r4, #0x18]
 	ldr r1, _0238B134 ; =0x00001013
 	ldr r3, _0238B138 ; =0x0000033E
-#ifdef EUROPE
+#if defined(EUROPE)
 	add r2, r2, #0xd3
+	add r2, r2, #0x2900
+#elif defined(JAPAN)
+	add r2, r2, #0xce
+	add r2, r2, #0x4100
 #else
 	add r2, r2, #0xd1
-#endif
 	add r2, r2, #0x2900
+#endif
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	str r2, [sp, #4]
@@ -1531,14 +1683,18 @@ _0238B7B8:
 	add sp, sp, #0x180
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0238B7C0: .word 0x000003BE
-_0238B7C4: .word 0x000003CA
+_0238B7C0: .word 0x000003BE + OV21_238A140_OFFSET
+_0238B7C4: .word 0x000003CA + OV21_238A140_OFFSET
 _0238B7C8: .word SWAP_SHOP_WINDOW_PARAMS_9
 _0238B7CC: .word SWAP_SHOP_SUBMENU_ITEMS_3
-_0238B7D0: .word 0x000003CB
+_0238B7D0: .word 0x000003CB + OV21_238A140_OFFSET
 _0238B7D4: .word SWAP_SHOP_SUBMENU_ITEMS_1
+#ifdef JAPAN
+_0238CD54: .word 0x000032AB
+#else
 _0238B7D8: .word 0x000003B9
 _0238B7DC: .word 0x000003C9
+#endif
 	arm_func_end ov21_0238A140
 
 	arm_func_start ov21_0238B7E0
@@ -1970,7 +2126,11 @@ _0238BDB8:
 	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
 	ldr r1, _0238C8DC ; =0x00003018
 	ldr r3, [r0]
+#ifdef JAPAN
+	add r2, r1, #0x280
+#else
 	ldr r2, _0238C8E0 ; =0x000003B9
+#endif
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
@@ -2743,7 +2903,9 @@ _0238C8D0: .word OVERLAY21_UNKNOWN_POINTER__NA_238CF40
 _0238C8D4: .word 0x00003F02
 _0238C8D8: .word 0x00001308
 _0238C8DC: .word 0x00003018
+#ifndef JAPAN
 _0238C8E0: .word 0x000003B9
+#endif
 _0238C8E4: .word OVERLAY21_JP_STRING
 _0238C8E8:
 	bl ov11_022E6EC8
@@ -2821,10 +2983,17 @@ ov21_0238C9A4: ; 0x0238C9A4
 	mov r1, #0x100
 	str ip, [sp]
 	bl PreprocessString
+#ifdef JAPAN
+	mov r1, #4
+	mov r0, r4
+	mov r2, #2
+	rsb r3, r1, #0x430
+#else
 	ldr r3, _0238CA24 ; =0x00000225
 	mov r0, r4
 	mov r1, #4
 	mov r2, #2
+#endif
 	bl sub_02026268
 	mov r0, r4
 	mov r1, #0x16
@@ -2839,43 +3008,80 @@ ov21_0238C9A4: ; 0x0238C9A4
 	.align 2, 0
 _0238CA1C: .word ov21_0238CF24
 _0238CA20: .word 0x0000C402
+#ifndef JAPAN
 _0238CA24: .word 0x00000225
+#endif
 	arm_func_end ov21_0238C9A4
 	; 0x0238CA28
 
 	.global SWAP_SHOP_WINDOW_PARAMS_1
 SWAP_SHOP_WINDOW_PARAMS_1:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x04, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifdef JAPAN
+#define OV21_DATA_OFFSET 0x2EDF
+#define OV21_DATA_OFFSET_2 0x2D00
+#else
+#define OV21_DATA_OFFSET 0
+#define OV21_DATA_OFFSET_2 0
+#endif
+		.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x02, 0x08, 0x04, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global SWAP_SHOP_MENU_ITEMS_CONFIRM
 SWAP_SHOP_MENU_ITEMS_CONFIRM:
-	.byte 0xAB, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0xAC, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
+	.word 0x3AB + OV21_DATA_OFFSET
+	.byte 0x04, 0x00, 0x00, 0x00
+	.word 0x3AC + OV21_DATA_OFFSET
+	.byte 0x05, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global SWAP_SHOP_SUBMENU_ITEMS_1
 SWAP_SHOP_SUBMENU_ITEMS_1:
-	.byte 0xB0, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
-	.byte 0xAD, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.word 0x3B0 + OV21_DATA_OFFSET
+	.byte 0x06, 0x00, 0x00, 0x00
+	.word 0x3AD + OV21_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global SWAP_SHOP_SUBMENU_ITEMS_2
 SWAP_SHOP_SUBMENU_ITEMS_2:
-	.byte 0xCD, 0x03, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0xCE, 0x03, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00
-	.byte 0xCF, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.word 0x3CD + OV21_DATA_OFFSET
+	.byte 0x0C, 0x00, 0x00, 0x00
+	.word 0x3CE + OV21_DATA_OFFSET
+	.byte 0x0D, 0x00, 0x00, 0x00
+	.word 0x3CF + OV21_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global SWAP_SHOP_MAIN_MENU_ITEMS_1
 SWAP_SHOP_MAIN_MENU_ITEMS_1:
-	.byte 0xAE, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0xB0, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
-	.byte 0xB1, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.word 0x3AE + OV21_DATA_OFFSET
+	.byte 0x07, 0x00, 0x00, 0x00
+	.word 0x3B0 + OV21_DATA_OFFSET
+	.byte 0x06, 0x00, 0x00, 0x00
+	.word 0x3B1 + OV21_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global SWAP_SHOP_MAIN_MENU_ITEMS_2
 SWAP_SHOP_MAIN_MENU_ITEMS_2:
-	.byte 0xAE, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0xAF, 0x03, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
-	.byte 0xB0, 0x03, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0xAD, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.word 0x3AE + OV21_DATA_OFFSET
+	.byte 0x07, 0x00, 0x00, 0x00
+	.word 0x3AF + OV21_DATA_OFFSET
+	.byte 0x08, 0x00, 0x00, 0x00
+	.word 0x3B0 + OV21_DATA_OFFSET
+	.byte 0x06, 0x00, 0x00, 0x00
+	.word 0x3AD + OV21_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.global SWAP_SHOP_SUBMENU_ITEMS_3
 SWAP_SHOP_SUBMENU_ITEMS_3:
-	.byte 0xAF, 0x03, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
-	.byte 0xED, 0x02, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0xEE, 0x02, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
-	.byte 0xEF, 0x02, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00, 0xB1, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xB2, 0x03, 0xB3, 0x03, 0xC5, 0x03, 0xC8, 0x03
-	.byte 0xB6, 0x03, 0xB9, 0x03, 0xB4, 0x03, 0xB5, 0x03, 0xBB, 0x03, 0xBC, 0x03, 0xB8, 0x03, 0xBE, 0x03
-	.byte 0xC2, 0x03, 0xC3, 0x03, 0xBF, 0x03, 0xC0, 0x03, 0xC1, 0x03, 0xBA, 0x03, 0xC4, 0x03, 0xC6, 0x03
-	.byte 0xCA, 0x03, 0xCB, 0x03, 0xCC, 0x03, 0xB7, 0x03, 0xBD, 0x03, 0xD0, 0x03, 0xC7, 0x03, 0x00, 0x00
+	.word 0x3AF + OV21_DATA_OFFSET
+	.byte 0x08, 0x00, 0x00, 0x00
+	.word 0x2ED + OV21_DATA_OFFSET_2
+	.byte 0x09, 0x00, 0x00, 0x00
+	.word 0x2EE + OV21_DATA_OFFSET_2
+	.byte 0x0A, 0x00, 0x00, 0x00
+	.word 0x2EF + OV21_DATA_OFFSET_2
+	.byte 0x0B, 0x00, 0x00, 0x00
+	.word 0x3B1 + OV21_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.hword 0x3B2 + OV21_DATA_OFFSET, 0x3B3 + OV21_DATA_OFFSET, 0x3C5 + OV21_DATA_OFFSET, 0x3C8 + OV21_DATA_OFFSET
+	.hword 0x3B6 + OV21_DATA_OFFSET, 0x3B9 + OV21_DATA_OFFSET, 0x3B4 + OV21_DATA_OFFSET, 0x3B5 + OV21_DATA_OFFSET, 0x3BB + OV21_DATA_OFFSET, 0x3BC + OV21_DATA_OFFSET, 0x3B8 + OV21_DATA_OFFSET, 0x3BE + OV21_DATA_OFFSET
+	.hword 0x3C2 + OV21_DATA_OFFSET, 0x3C3 + OV21_DATA_OFFSET, 0x3BF + OV21_DATA_OFFSET, 0x3C0 + OV21_DATA_OFFSET, 0x3C1 + OV21_DATA_OFFSET, 0x3BA + OV21_DATA_OFFSET, 0x3C4 + OV21_DATA_OFFSET, 0x3C6 + OV21_DATA_OFFSET
+	.hword 0x3CA + OV21_DATA_OFFSET, 0x3CB + OV21_DATA_OFFSET, 0x3CC + OV21_DATA_OFFSET, 0x3B7 + OV21_DATA_OFFSET, 0x3BD + OV21_DATA_OFFSET, 0x3D0 + OV21_DATA_OFFSET, 0x3C7 + OV21_DATA_OFFSET
+	.byte 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x12, 0x10, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x0A, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x16, 0x0F, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
