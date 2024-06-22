@@ -57,6 +57,7 @@
 .public sub_02017C10
 .public sub_02017C50
 .public sub_02017CB4
+.public sub_02025304_JP
 .public sub_0202836C
 .public sub_0202F2C4
 .public sub_02037468
