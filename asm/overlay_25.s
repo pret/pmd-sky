@@ -345,7 +345,11 @@ _0238A5F8:
 	ldr r1, _0238A690 ; =0x00003018
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
+#ifdef JAPAN
+	ldr r2, _0238BBF4 ; =0x000032C7
+#else
 	rsb r2, r2, #0x3e4
+#endif
 	add r3, r3, #0x28
 	bl ShowStringIdInDialogueBox
 	ldr r0, _0238A67C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
@@ -376,8 +380,14 @@ _0238A67C: .word OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 _0238A680: .word 0x00003F02
 _0238A684: .word 0x00001308
 _0238A688: .word 0x00003008
+#ifdef JAPAN
+_0238A68C: .word 0x000032C6
+_0238A690: .word 0x00003018
+_0238BBF4: .word 0x000032C7
+#else
 _0238A68C: .word 0x000003E2
 _0238A690: .word 0x00003018
+#endif
 	arm_func_end ov25_0238A140
 
 	arm_func_start ov25_0238A694
@@ -537,7 +547,11 @@ _0238A890:
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
+#ifdef JAPAN
+	add r2, r1, #0x2b0
+#else
 	mov r2, #0x3e4
+#endif
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
@@ -594,7 +608,11 @@ _0238A96C:
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
+#ifdef JAPAN
+	add r2, r1, #0x2a4
+#else
 	mov r2, #0x3d8
+#endif
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
@@ -684,7 +702,11 @@ _0238AAC8:
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
+#ifdef JAPAN
+	add r2, r1, #0x2ac
+#else
 	mov r2, #0x3e0
+#endif
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
@@ -717,7 +739,11 @@ _0238AB3C:
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0F4 ; =0x00003018
 	ldr r3, [r0]
+#ifdef JAPAN
+	add r2, r1, #0x2ac
+#else
 	mov r2, #0x3e0
+#endif
 	add r0, r3, #0x100
 	ldrsb r0, [r0, #0x38]
 	add r3, r3, #0x28
@@ -887,12 +913,16 @@ _0238ADC0:
 	ldrsh r2, [ip, #0xc]
 	ldr r1, _0238B118 ; =0x00001013
 	ldr r3, _0238B11C ; =0x0000033E
-#ifdef EUROPE
+#if defined(EUROPE)
 	add r2, r2, #0xd3
+	add r2, r2, #0x2900
+#elif defined(JAPAN)
+	add r2, r2, #0xce
+	add r2, r2, #0x4100
 #else
 	add r2, r2, #0xd1
-#endif
 	add r2, r2, #0x2900
+#endif
 	mov r2, r2, lsl #0x10
 	mov r2, r2, lsr #0x10
 	str r2, [sp, #4]
@@ -928,7 +958,11 @@ _0238AE64:
 	ldr r0, _0238B0D0 ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldr r1, _0238B0D4 ; =0x00003008
 	ldr ip, [r0]
+#ifdef JAPAN
+	mov r2, #0x32c0
+#else
 	mov r2, #0x3dc
+#endif
 	ldrsh r3, [ip, #0xc]
 	str r3, [ip, #0x3c]
 	ldr ip, [r0]
@@ -1069,31 +1103,40 @@ _0238B0C8:
 	add sp, sp, #0x68
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define OV25_0238A694_OFFSET 0x2EE4
+#else
+#define OV25_0238A694_OFFSET 0
+#endif
 _0238B0D0: .word OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 _0238B0D4: .word 0x00003008
-_0238B0D8: .word 0x000003D7
+_0238B0D8: .word 0x000003D7 + OV25_0238A694_OFFSET
 _0238B0DC: .word APPRAISAL_WINDOW_PARAMS_1
 _0238B0E0: .word ov25_0238B414
 _0238B0E4: .word 0x00300013
 _0238B0E8: .word APPRAISAL_MAIN_MENU_ITEMS
 _0238B0EC: .word APPRAISAL_WINDOW_PARAMS_5
-_0238B0F0: .word 0x000003DD
+_0238B0F0: .word 0x000003DD + OV25_0238A694_OFFSET
 _0238B0F4: .word 0x00003018
-_0238B0F8: .word 0x000003E5
-_0238B0FC: .word 0x000003D9
-_0238B100: .word 0x000003DF
+_0238B0F8: .word 0x000003E5 + OV25_0238A694_OFFSET
+_0238B0FC: .word 0x000003D9 + OV25_0238A694_OFFSET
+_0238B100: .word 0x000003DF + OV25_0238A694_OFFSET
 _0238B104: .word APPRAISAL_WINDOW_PARAMS_6
 _0238B108: .word APPRAISAL_SUBMENU_ITEMS
 _0238B10C: .word ov25_0238B5A4
 _0238B110: .word 0x0000C402
 _0238B114: .word APPRAISAL_WINDOW_PARAMS_8
 _0238B118: .word 0x00001013
+#ifdef JAPAN
+_0238B11C: .word 0x00003203
+#else
 _0238B11C: .word 0x0000033E
+#endif
 _0238B120: .word APPRAISAL_MENU_ITEMS_CONFIRM
 _0238B124: .word APPRAISAL_WINDOW_PARAMS_7
 _0238B128: .word 0x0000018F
 _0238B12C: .word OVERLAY25_UNKNOWN_STRUCT__NA_238B498
-_0238B130: .word 0x000003E1
+_0238B130: .word 0x000003E1 + OV25_0238A694_OFFSET
 	arm_func_end ov25_0238A694
 
 	arm_func_start ov25_0238B134
@@ -1328,10 +1371,17 @@ ov25_0238B414: ; 0x0238B414
 	mov r1, #0x100
 	str ip, [sp]
 	bl PreprocessString
+#ifdef JAPAN
+	mov r1, #4
+	mov r0, r4
+	mov r2, #2
+	rsb r3, r1, #0x430
+#else
 	ldr r3, _0238B494 ; =0x00000225
 	mov r0, r4
 	mov r1, #4
 	mov r2, #2
+#endif
 	bl sub_02026268
 	mov r1, #0x10
 	mov r0, r4
@@ -1346,7 +1396,9 @@ ov25_0238B414: ; 0x0238B414
 	.align 2, 0
 _0238B48C: .word ov25_0238B5B0
 _0238B490: .word 0x0000C402
+#ifndef JAPAN
 _0238B494: .word 0x00000225
+#endif
 	arm_func_end ov25_0238B414
 	; 0x0238B498
 
@@ -1359,21 +1411,38 @@ APPRAISAL_WINDOW_PARAMS_1:
 	.byte 0x16, 0x02, 0x08, 0x04, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global APPRAISAL_MENU_ITEMS_CONFIRM
 APPRAISAL_MENU_ITEMS_CONFIRM:
-	.byte 0xD1, 0x03, 0x00, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00, 0xD2, 0x03, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+#ifdef JAPAN
+#define OV25_DATA_OFFSET 0x2EE4
+#else
+#define OV25_DATA_OFFSET 0
+#endif
+	.word 0x3D1 + OV25_DATA_OFFSET
+	.byte 0x04, 0x00, 0x00, 0x00
+	.word 0x3D2 + OV25_DATA_OFFSET
+	.byte 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
 	.global APPRAISAL_MAIN_MENU_ITEMS
 APPRAISAL_MAIN_MENU_ITEMS:
-	.byte 0xD3, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0xD5, 0x03, 0x00, 0x00
-	.byte 0x06, 0x00, 0x00, 0x00, 0xD6, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x3D3 + OV25_DATA_OFFSET
+	.byte 0x07, 0x00, 0x00, 0x00
+	.word 0x3D5 + OV25_DATA_OFFSET
+	.byte 0x06, 0x00, 0x00, 0x00
+	.word 0x3D6 + OV25_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
 	.global APPRAISAL_SUBMENU_ITEMS
 APPRAISAL_SUBMENU_ITEMS:
-	.byte 0xDA, 0x03, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0xD5, 0x03, 0x00, 0x00
-	.byte 0x06, 0x00, 0x00, 0x00, 0xE6, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0xD3, 0x03, 0xD4, 0x03, 0xD5, 0x03, 0xD6, 0x03, 0xD7, 0x03, 0xD8, 0x03
-	.byte 0xD9, 0x03, 0xDA, 0x03, 0xDB, 0x03, 0xDC, 0x03, 0xDD, 0x03, 0xDE, 0x03, 0xDF, 0x03, 0xE0, 0x03
-	.byte 0xE1, 0x03, 0xE4, 0x03, 0xE5, 0x03, 0xE2, 0x03, 0xE3, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x3DA + OV25_DATA_OFFSET
+	.byte 0x07, 0x00, 0x00, 0x00
+	.word 0x3D5 + OV25_DATA_OFFSET
+	.byte 0x06, 0x00, 0x00, 0x00
+	.word 0x3E6 + OV25_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x00, 0x00, 0x00
+	.hword 0x3D3 + OV25_DATA_OFFSET, 0x3D4 + OV25_DATA_OFFSET, 0x3D5 + OV25_DATA_OFFSET, 0x3D6 + OV25_DATA_OFFSET, 0x3D7 + OV25_DATA_OFFSET, 0x3D8 + OV25_DATA_OFFSET
+	.hword 0x3D9 + OV25_DATA_OFFSET, 0x3DA + OV25_DATA_OFFSET, 0x3DB + OV25_DATA_OFFSET, 0x3DC + OV25_DATA_OFFSET, 0x3DD + OV25_DATA_OFFSET, 0x3DE + OV25_DATA_OFFSET, 0x3DF + OV25_DATA_OFFSET, 0x3E0 + OV25_DATA_OFFSET
+	.hword 0x3E1 + OV25_DATA_OFFSET, 0x3E4 + OV25_DATA_OFFSET, 0x3E5 + OV25_DATA_OFFSET, 0x3E2 + OV25_DATA_OFFSET, 0x3E3 + OV25_DATA_OFFSET
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x02, 0x12, 0x10, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x0A, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x16, 0x0F, 0x08, 0x03, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
