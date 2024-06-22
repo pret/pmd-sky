@@ -590,10 +590,10 @@ _0238A924:
 	add r0, sb, #0x30
 	bl InitPreprocessorArgs
 	ldr r1, [sb, #0x84]
-#ifdef EUROPE
-	add r0, r6, #0xc
-#else
+#ifdef NORTH_AMERICA
 	mov r0, #0x4600
+#else
+	add r0, r6, #0xc
 #endif
 	ldrsh r1, [r1]
 	str r1, [sb, #0x40]
@@ -761,7 +761,11 @@ _0238AB4C:
 	moveq r7, #0
 	b _0238B05C
 _0238AB70:
+#ifdef JAPAN
+	mov r0, #0x1cc0
+#else
 	add r0, r6, #0x10
+#endif
 	bl ov20_0238B340
 	mov r0, #0x1e
 	str r0, [sb, #0xc]
@@ -1179,30 +1183,25 @@ _0238B130:
 	str r0, [r8]
 	b _0238B288
 	.align 2, 0
-_0238B144: .word OVERLAY20_UNKNOWN_POINTER__NA_238D120
-#ifdef EUROPE
-_0238B148: .word 0x0000460D
-_0238B14C: .word RECYCLE_MAIN_MENU_ITEMS_1
-_0238B150: .word 0x0000460C
-_0238B154: .word 0x00004613
+#if defined(EUROPE)
+#define OV20_0238A1B0_OFFSET 0x1F
+#elif defined(JAPAN)
+#define OV20_0238A1B0_OFFSET -0x2944
 #else
-_0238B148: .word 0x000045EE
-_0238B14C: .word RECYCLE_MAIN_MENU_ITEMS_1
-_0238B150: .word 0x000045ED
-_0238B154: .word 0x000045F4
+#define OV20_0238A1B0_OFFSET 0
 #endif
+_0238B144: .word OVERLAY20_UNKNOWN_POINTER__NA_238D120
+_0238B148: .word 0x000045EE + OV20_0238A1B0_OFFSET
+_0238B14C: .word RECYCLE_MAIN_MENU_ITEMS_1
+_0238B150: .word 0x000045ED + OV20_0238A1B0_OFFSET
+_0238B154: .word 0x000045F4 + OV20_0238A1B0_OFFSET
 _0238B158: .word RECYCLE_MENU_ITEMS_CONFIRM_1
 _0238B15C: .word RECYCLE_SUBMENU_ITEMS_2
 _0238B160: .word OVERLAY20_UNKNOWN_POINTER__NA_238CF7C
 _0238B164: .word RECYCLE_MENU_ITEMS_CONFIRM_2
 _0238B168: .word RECYCLE_SUBMENU_ITEMS_1
-#ifdef EUROPE
-_0238B16C: .word 0x00004632
-_0238B170: .word 0x00004633
-#else
-_0238B16C: .word 0x00004613
-_0238B170: .word 0x00004614
-#endif
+_0238B16C: .word 0x00004613 + OV20_0238A1B0_OFFSET
+_0238B170: .word 0x00004614 + OV20_0238A1B0_OFFSET
 _0238B174:
 	add r0, sp, #0x18
 	bl ov11_0230CCF0
@@ -1875,14 +1874,16 @@ _0238BA14:
 	add sp, sp, #0x154
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0238BA30: .word OVERLAY20_UNKNOWN_POINTER__NA_238D124
-#ifdef EUROPE
-_0238BA34: .word 0x00004637
-_0238BA38: .word 0x0000463B
+#if defined(EUROPE)
+#define OV20_0238B8CC_OFFSET 0x1F
+#elif defined(JAPAN)
+#define OV20_0238B8CC_OFFSET -0x2944
 #else
-_0238BA34: .word 0x00004618
-_0238BA38: .word 0x0000461C
+#define OV20_0238B8CC_OFFSET 0
 #endif
+_0238BA30: .word OVERLAY20_UNKNOWN_POINTER__NA_238D124
+_0238BA34: .word 0x00004618 + OV20_0238B8CC_OFFSET
+_0238BA38: .word 0x0000461C + OV20_0238B8CC_OFFSET
 _0238BA3C: .word 0x00000578
 	arm_func_end ov20_0238B8CC
 
@@ -1917,8 +1918,10 @@ ov20_0238BA40: ; 0x0238BA40
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _0238BAAC: .word OVERLAY20_UNKNOWN_POINTER__NA_238D124
-#ifdef EUROPE
+#if defined(EUROPE)
 _0238BAB0: .word 0x00004636
+#elif defined(JAPAN)
+_0238BAB0: .word 0x00001CD3
 #else
 _0238BAB0: .word 0x00004617
 #endif
@@ -1968,13 +1971,15 @@ ov20_0238BAB4: ; 0x0238BAB4
 	add sp, sp, #0x154
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-#ifdef EUROPE
-_0238BB58: .word 0x0000463D
-_0238BB5C: .word 0x0000463E
+#if defined(EUROPE)
+#define OV20_0238BAB4_OFFSET 0x1F
+#elif defined(JAPAN)
+#define OV20_0238BAB4_OFFSET -0x2944
 #else
-_0238BB58: .word 0x0000461E
-_0238BB5C: .word 0x0000461F
+#define OV20_0238BAB4_OFFSET 0
 #endif
+_0238BB58: .word 0x0000461E + OV20_0238BAB4_OFFSET
+_0238BB5C: .word 0x0000461F + OV20_0238BAB4_OFFSET
 	arm_func_end ov20_0238BAB4
 
 	arm_func_start ov20_0238BB60
@@ -2119,16 +2124,17 @@ _0238BCEC:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0238BD80: .word OVERLAY20_UNKNOWN_POINTER__NA_238D128
-#ifdef EUROPE
-_0238BD84: .word 0x00004641
-_0238BD88: .word 0x00004640
-_0238BD8C: .word 0x0000463F
+#if defined(EUROPE)
+#define OV20_0238BB60_OFFSET 0x1F
+#elif defined(JAPAN)
+#define OV20_0238BB60_OFFSET -0x2944
 #else
-_0238BD84: .word 0x00004622
-_0238BD88: .word 0x00004621
-_0238BD8C: .word 0x00004620
+#define OV20_0238BB60_OFFSET 0
 #endif
+_0238BD80: .word OVERLAY20_UNKNOWN_POINTER__NA_238D128
+_0238BD84: .word 0x00004622 + OV20_0238BB60_OFFSET
+_0238BD88: .word 0x00004621 + OV20_0238BB60_OFFSET
+_0238BD8C: .word 0x00004620 + OV20_0238BB60_OFFSET
 	arm_func_end ov20_0238BB60
 
 	arm_func_start ov20_0238BD90
@@ -2344,12 +2350,16 @@ _0238C07C:
 	ldrsh r4, [r1]
 	bl InitPreprocessorArgs
 	mov r2, #0
-#ifdef EUROPE
+#if defined(EUROPE)
 	add r0, r4, #0xd3
+	add r0, r0, #0x2900
+#elif defined(JAPAN)
+	add r0, r4, #0xce
+	add r0, r0, #0x4100
 #else
 	add r0, r4, #0xd1
-#endif
 	add r0, r0, #0x2900
+#endif
 	mov r0, r0, lsl #0x10
 	mov r1, r0, lsr #0x10
 	str r4, [sp, #0x1c]
@@ -2435,7 +2445,11 @@ _0238C1DC: .word RECYCLE_WINDOW_PARAMS_6
 _0238C1E0: .word RECYCLE_MAIN_MENU_ITEMS_2
 _0238C1E4: .word RECYCLE_WINDOW_PARAMS_4
 _0238C1E8: .word 0x00001013
+#ifdef JAPAN
+_0238C1EC: .word 0x00001D3C
+#else
 _0238C1EC: .word 0x000008E4
+#endif
 	arm_func_end ov20_0238BD90
 
 	arm_func_start ov20_0238C1F0
@@ -2660,7 +2674,11 @@ _0238C3C0:
 _0238C4D8: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 _0238C4DC: .word ov20_0238D140
 _0238C4E0: .word 0x0000041A
+#ifdef JAPAN
+_0238C4E4: .word 0x000031F4
+#else
 _0238C4E4: .word 0x0000032F
+#endif
 	arm_func_end ov20_0238C2E0
 
 	arm_func_start ov20_0238C4E8
@@ -2931,6 +2949,15 @@ _0238C860:
 	bl ov20_0238CB84
 	add r0, sp, #0xc
 	bl InitPreprocessorArgs
+#ifdef JAPAN
+	mov r1, #0
+	sub r0, r1, #1
+	cmp r5, r0
+	add r0, r4, #0xce
+	str r1, [sp, #0x30]
+	addne r1, r5, #0xbc
+	add r0, r0, #0x4100
+#else
 	ldr r0, _0238C9FC ; =0x0000FFFF
 	mov r1, #0
 	cmp r5, r0
@@ -2942,6 +2969,7 @@ _0238C860:
 	str r1, [sp, #0x30]
 	addne r1, r5, #0xbc
 	add r0, r0, #0x2900
+#endif
 	mov r2, #0
 	str r4, [sp, #0x1c]
 	mov r0, r0, lsl #0x10
@@ -3024,10 +3052,16 @@ _0238C9EC: .word RECYCLE_WINDOW_PARAMS_7
 _0238C9F0: .word ov20_0238CF20
 _0238C9F4: .word RECYCLE_WINDOW_PARAMS_10
 _0238C9F8: .word RECYCLE_MAIN_MENU_ITEMS_3
+#ifndef JAPAN
 _0238C9FC: .word 0x0000FFFF
+#endif
 _0238CA00: .word RECYCLE_WINDOW_PARAMS_9
 _0238CA04: .word 0x00001013
+#ifdef JAPAN
+_0238CA08: .word 0x00001D3C
+#else
 _0238CA08: .word 0x000008E4
+#endif
 	arm_func_end ov20_0238C50C
 
 	arm_func_start ov20_0238CA0C
@@ -3393,10 +3427,14 @@ _0238CE80:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238CE90: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
+#if defined(EUROPE)
 _0238CE94: .word 0x0000032F
-#ifdef EUROPE
 _0238CE98: .word 0x00004642
+#elif defined(JAPAN)
+_0238CE94: .word 0x000031F4
+_0238CE98: .word 0x00001CDF
 #else
+_0238CE94: .word 0x0000032F
 _0238CE98: .word 0x00004623
 #endif
 	arm_func_end ov20_0238CE3C
@@ -3436,8 +3474,10 @@ ov20_0238CE9C: ; 0x0238CE9C
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
 _0238CF18: .word OVERLAY20_UNKNOWN_POINTER__NA_238D12C
-#ifdef EUROPE
+#if defined(EUROPE)
 _0238CF1C: .word 0x00004646
+#elif defined(JAPAN)
+_0238CF1C: .word 0x00001CE3
 #else
 _0238CF1C: .word 0x00004627
 #endif
@@ -3468,8 +3508,10 @@ ov20_0238CF20: ; 0x0238CF20
 	add sp, sp, #0x154
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-#ifdef EUROPE
+#if defined(EUROPE)
 _0238CF78: .word 0x00004647
+#elif defined(JAPAN)
+_0238CF78: .word 0x00001CE4
 #else
 _0238CF78: .word 0x00004628
 #endif
@@ -3478,8 +3520,10 @@ _0238CF78: .word 0x00004628
 
 	.global OVERLAY20_UNKNOWN_POINTER__NA_238CF7C
 OVERLAY20_UNKNOWN_POINTER__NA_238CF7C:
-#ifdef EUROPE
+#if defined(EUROPE)
 #define OV20_DATA_OFFSET 0x1F
+#elif defined(JAPAN)
+#define OV20_DATA_OFFSET -0x2944
 #else
 #define OV20_DATA_OFFSET 0
 #endif
@@ -3487,34 +3531,41 @@ OVERLAY20_UNKNOWN_POINTER__NA_238CF7C:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global RECYCLE_MENU_ITEMS_CONFIRM_1
 RECYCLE_MENU_ITEMS_CONFIRM_1:
-	.byte 0x15 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
-	.byte 0x16 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x4615 + OV20_DATA_OFFSET
+	.byte 0x06, 0x00, 0x00, 0x00
+	.word 0x4616 + OV20_DATA_OFFSET
+	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global RECYCLE_MENU_ITEMS_CONFIRM_2
 RECYCLE_MENU_ITEMS_CONFIRM_2:
-	.byte 0x15 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x16 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00
+	.word 0x4615 + OV20_DATA_OFFSET
+	.byte 0x08, 0x00, 0x00, 0x00
+	.word 0x4616 + OV20_DATA_OFFSET
+	.byte 0x09, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global RECYCLE_SUBMENU_ITEMS_1
 RECYCLE_SUBMENU_ITEMS_1:
-	.byte 0x07 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00
-	.byte 0x08 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x4607 + OV20_DATA_OFFSET
+	.byte 0x08, 0x00, 0x00, 0x00
+	.word 0x4608 + OV20_DATA_OFFSET
+	.byte 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global RECYCLE_SUBMENU_ITEMS_2
 RECYCLE_SUBMENU_ITEMS_2:
-	.hword 0x45F7 + OV20_DATA_OFFSET
-	.byte 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
-	.hword 0x45F9 + OV20_DATA_OFFSET
-	.byte 0x00, 0x00, 0x06, 0x00, 0x00, 0x00
-	.hword 0x45FA + OV20_DATA_OFFSET
-	.byte 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x45F7 + OV20_DATA_OFFSET
+	.byte 0x04, 0x00, 0x00, 0x00
+	.word 0x45F9 + OV20_DATA_OFFSET
+	.byte 0x06, 0x00, 0x00, 0x00
+	.word 0x45FA + OV20_DATA_OFFSET
+	.byte 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global RECYCLE_MAIN_MENU_ITEMS_1
 RECYCLE_MAIN_MENU_ITEMS_1:
-	.hword 0x45EF + OV20_DATA_OFFSET
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.hword 0x45F0 + OV20_DATA_OFFSET
-	.byte 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.hword 0x45F1 + OV20_DATA_OFFSET
-	.byte 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.hword 0x45F2 + OV20_DATA_OFFSET
-	.byte 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.word 0x45EF + OV20_DATA_OFFSET
+	.byte 0x00, 0x00, 0x00, 0x00
+	.word 0x45F0 + OV20_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00
+	.word 0x45F1 + OV20_DATA_OFFSET
+	.byte 0x02, 0x00, 0x00, 0x00
+	.word 0x45F2 + OV20_DATA_OFFSET
+	.byte 0x03, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
 	.global OVERLAY20_UNKNOWN_TABLE__NA_238D014
 OVERLAY20_UNKNOWN_TABLE__NA_238D014:
@@ -3546,8 +3597,11 @@ RECYCLE_WINDOW_PARAMS_6:
 	.byte 0x16, 0x02, 0x08, 0x05, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global RECYCLE_MAIN_MENU_ITEMS_2
 RECYCLE_MAIN_MENU_ITEMS_2:
-	.byte 0x24 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x25 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x26 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00
+	.word 0x4624 + OV20_DATA_OFFSET
+	.byte 0x00, 0x00, 0x00, 0x00
+	.word 0x4625 + OV20_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00
+	.word 0x4626 + OV20_DATA_OFFSET
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.global RECYCLE_WINDOW_PARAMS_7
 RECYCLE_WINDOW_PARAMS_7:
@@ -3571,8 +3625,10 @@ RECYCLE_WINDOW_PARAMS_11:
 	.byte 0x02, 0x02, 0x12, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global RECYCLE_MAIN_MENU_ITEMS_3
 RECYCLE_MAIN_MENU_ITEMS_3:
-	.byte 0x25 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0x26 + OV20_DATA_OFFSET, 0x46, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x4625 + OV20_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00,
+	.word 0x4626 + OV20_DATA_OFFSET
+	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x02, 0x00, 0x00, 0x00
 
 	.data
