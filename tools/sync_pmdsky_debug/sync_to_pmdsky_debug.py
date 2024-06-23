@@ -1,5 +1,6 @@
 import os
 import re
+from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any, Dict, List
 from ruamel.yaml.comments import CommentedMap
@@ -46,7 +47,7 @@ class SubsymbolDir:
 
 subsymbol_dirs = {}
 
-def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_manager: YamlManager, pmdsky_debug_section: Dict[int, SymbolDetails]):
+def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section_name: str, yaml_manager: YamlManager, pmdsky_debug_section: Dict[int, SymbolDetails]):
     if default_symbol_name.match(symbol.name):
         return
 
@@ -68,8 +69,8 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
         address -= WRAM_OFFSET
 
     path_prefix = os.path.join(pmdsky_debug_location, SYMBOLS_FOLDER)
-    if base_symbol_name in symbol_file_paths:
-        symbol_path = symbol_file_paths[base_symbol_name]
+    if base_symbol_name in symbol_file_paths[section_name]:
+        symbol_path = symbol_file_paths[section_name][base_symbol_name]
         base_symbol_path = symbol_path[len(path_prefix) + 1:]
     else:
         if section_name == 'main':
@@ -119,7 +120,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
         old_symbol = pmdsky_debug_section[address]
         base_old_symbol_names = [get_base_symbol_name(symbol_name) for symbol_name in old_symbol.get_all_names()]
         base_old_symbol_name = base_old_symbol_names[0]
-        if base_symbol_name not in base_old_symbol_names:
+        if base_symbol_name not in base_old_symbol_names and base_symbol_name not in symbol_file_paths[section_name]:
             print(f'Adding alias for {base_old_symbol_name}: {base_symbol_name}')
             symbol_array = read_symbol_array(symbol_path, symbol_type_key, yaml_manager)
             for yaml_symbol in symbol_array:
@@ -138,6 +139,8 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     # Add the symbol to the correspond header file.
     base_symbol_path = base_symbol_path.replace('.yml', '.h')
     header_path = symbol_path.replace(SYMBOLS_FOLDER, os.path.join('headers', symbol_type_key)).replace('.yml', '.h')
+    if not os.path.exists(header_path):
+        return
     with open(header_path, 'r') as header_file:
         header_contents = header_file.readlines()
 
@@ -160,9 +163,8 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
                 current_symbol_address: int | List[int] = symbol_entry['address'][language_key]
                 if isinstance(current_symbol_address, list):
                     current_symbol_address = current_symbol_address[0]
-                if current_symbol_address > address:
+                if current_symbol_address > address and insert_index is not None:
                     insert_index = i
-                    break
     if not matching_symbol_entry:
         matching_symbol_entry = {
             'name': base_symbol_name,
@@ -184,8 +186,8 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
     symbol_entry_addresses: int | List[int] = symbol_entry_language_addresses[language_key]
 
 
-    # If needed, reorder language addresses within the YAML for consistency with existing pmdsky-debug entries.
     hex_address = HexCapsInt(address)
+    # When adding a new EU address, reorder it to the first key in the YAML for consistency with existing pmdsky-debug entries.
     reorder_languages = language_key == 'EU' and len(symbol_entry_language_addresses) > 1 and not symbol_entry_language_addresses[language_key]
     if multiple_symbol_suffix.search(symbol.name):
         if symbol_entry_addresses is None:
@@ -193,8 +195,13 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
             if reorder_languages:
                 symbol_entry_language_addresses.move_to_end(language_key, last=False)
         else:
+            if isinstance(symbol_entry_addresses, HexCapsInt):
+                print(f'Converting single address into array for {base_symbol_name}.')
+                symbol_entry_addresses = [symbol_entry_addresses]
+                symbol_entry_language_addresses[language_key] = symbol_entry_addresses
             if address not in symbol_entry_addresses:
                 symbol_entry_addresses.append(hex_address)
+                symbol_entry_addresses.sort()
             return
     else:
         symbol_entry_language_addresses[language_key] = HexCapsInt(hex_address)
@@ -272,12 +279,12 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, yaml_ma
         header_file.writelines(header_contents)
 
 # Extract all pmdsky-debug file paths for symbols between all languages.
-symbol_file_paths: Dict[str, str] = {}
+symbol_file_paths: Dict[str, Dict[str, str]] = defaultdict(dict)
 for language, pmdsky_debug_language_symbols in pmdsky_debug_symbols.items():
     for section_name, pmdsky_debug_section in pmdsky_debug_language_symbols.items():
         for address, symbol in pmdsky_debug_section.items():
             base_symbol_name = get_base_symbol_name(symbol.name)
-            symbol_file_paths[base_symbol_name] = symbol.file_path
+            symbol_file_paths[section_name][base_symbol_name] = symbol.file_path
 
 with YamlManager() as yaml_manager:
     for language, xmap_language_symbols in xmap_symbols.items():
@@ -289,4 +296,4 @@ with YamlManager() as yaml_manager:
                 pmdsky_debug_section = {}
 
             for address, symbol in xmap_section.items():
-                sync_xmap_symbol(address, symbol, language, yaml_manager, pmdsky_debug_section)
+                sync_xmap_symbol(address, symbol, language, section_name, yaml_manager, pmdsky_debug_section)

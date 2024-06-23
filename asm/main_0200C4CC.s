@@ -86739,31 +86739,31 @@ _0204F9B4: .word 0x000042BA
 
 	arm_func_start sub_0204F9B8
 sub_0204F9B8: ; 0x0204F9B8
-	ldr ip, _0204F9C4 ; =sub_02050E08
+	ldr ip, _0204F9C4 ; =ResetPlayTimer
 	ldr r0, _0204F9C8 ; =_022AB694
 	bx ip
 	.align 2, 0
-_0204F9C4: .word sub_02050E08
+_0204F9C4: .word ResetPlayTimer
 _0204F9C8: .word _022AB694
 	arm_func_end sub_0204F9B8
 
 	arm_func_start sub_0204F9CC
 sub_0204F9CC: ; 0x0204F9CC
-	ldr ip, _0204F9D8 ; =sub_02050E18
+	ldr ip, _0204F9D8 ; =PlayTimerTick
 	ldr r0, _0204F9DC ; =_022AB694
 	bx ip
 	.align 2, 0
-_0204F9D8: .word sub_02050E18
+_0204F9D8: .word PlayTimerTick
 _0204F9DC: .word _022AB694
 	arm_func_end sub_0204F9CC
 
 	arm_func_start sub_0204F9E0
 sub_0204F9E0: ; 0x0204F9E0
-	ldr ip, _0204F9EC ; =sub_02050E54
+	ldr ip, _0204F9EC ; =GetPlayTimeSeconds
 	ldr r0, _0204F9F0 ; =_022AB694
 	bx ip
 	.align 2, 0
-_0204F9EC: .word sub_02050E54
+_0204F9EC: .word GetPlayTimeSeconds
 _0204F9F0: .word _022AB694
 	arm_func_end sub_0204F9E0
 
@@ -88501,16 +88501,16 @@ _02050E00: .word _022AB924
 _02050E04: .word _022AB918
 	arm_func_end sub_02050D84
 
-	arm_func_start sub_02050E08
-sub_02050E08: ; 0x02050E08
+	arm_func_start ResetPlayTimer
+ResetPlayTimer: ; 0x02050E08
 	mov r1, #0
 	strb r1, [r0, #4]
 	str r1, [r0]
 	bx lr
-	arm_func_end sub_02050E08
+	arm_func_end ResetPlayTimer
 
-	arm_func_start sub_02050E18
-sub_02050E18: ; 0x02050E18
+	arm_func_start PlayTimerTick
+PlayTimerTick: ; 0x02050E18
 	ldrb r1, [r0, #4]
 	add r2, r1, #1
 	and r1, r2, #0xff
@@ -88527,13 +88527,13 @@ sub_02050E18: ; 0x02050E18
 	bx lr
 	.align 2, 0
 _02050E50: .word 0x022550FF
-	arm_func_end sub_02050E18
+	arm_func_end PlayTimerTick
 
-	arm_func_start sub_02050E54
-sub_02050E54: ; 0x02050E54
+	arm_func_start GetPlayTimeSeconds
+GetPlayTimeSeconds: ; 0x02050E54
 	ldr r0, [r0]
 	bx lr
-	arm_func_end sub_02050E54
+	arm_func_end GetPlayTimeSeconds
 
 	arm_func_start sub_02050E5C
 sub_02050E5C: ; 0x02050E5C
