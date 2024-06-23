@@ -2571,7 +2571,11 @@ _022F92C0:
 	blt _022F925C
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+_022F92D0: .word 0x00000956
+#else
 _022F92D0: .word 0x00000C17
+#endif
 _022F92D4: .word DUNGEON_PTR
 	arm_func_end TryActivateSlowStart
 

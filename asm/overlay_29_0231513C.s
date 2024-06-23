@@ -1960,10 +1960,10 @@ TryDecreaseBelly: ; 0x023168D8
 	bl CeilFixedPoint
 	add r1, r4, #0x100
 	mov r4, r0
-	ldrh r0, [r1, #0x4a]
+	ldrh r0, [r1, #0x4a + TRY_DECREASE_BELLY_OFFSET]
 	sub r2, sp, #4
 	strh r0, [r2]
-	ldrh r0, [r1, #0x4c]
+	ldrh r0, [r1, #0x4c + TRY_DECREASE_BELLY_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
@@ -4058,7 +4058,11 @@ TryInflictLuckyChantStatus: ; 0x02318508
 _02318584:
 	mov r0, r6
 	mov r1, r5
+#ifdef JAPAN
+	mov r2, #0xac0
+#else
 	mov r2, #0xd80
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _02318594:
 	mov r0, r5

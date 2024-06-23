@@ -106,7 +106,11 @@ _022EC750:
 	beq _022EC7C8
 	ldr r0, [sb, #0xb4]
 	mov r1, #0x3f
-	strb r7, [r0, #0x152 + TRY_SPAWN_MONSTER_AND_ACTIVATE_PLUS_MINUS_OFFSET]
+#ifdef JAPAN
+	strb r7, [r0, #0x14e]
+#else
+	strb r7, [r0, #0x152]
+#endif
 	ldrb r0, [r0, #6]
 	cmp r0, #0
 	moveq sl, fp

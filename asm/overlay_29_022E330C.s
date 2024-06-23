@@ -411,5 +411,9 @@ _022E37A8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022E37B0: .word DUNGEON_PTR
+#ifdef JAPAN
+_022E37B4: .word 0x0001A182
+#else
 _022E37B4: .word 0x0001A226
+#endif
 	arm_func_end PlayEffectAnimationEntity

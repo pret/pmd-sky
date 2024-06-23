@@ -472,10 +472,10 @@ _022EE8AC:
 	beq _022EE90C
 	mov r2, #1
 #ifdef JAPAN
-	strb r2, [r5, #0x16e]
+	strb r2, [r8, #0x16e]
 	mov r0, #0x28
 	mov r1, #0x4b
-	strb r2, [r5, #0x170]
+	strb r2, [r8, #0x170]
 	bl ov29_022EA370
 	ldr r1, _022EE988 ; =ov10_022C44E4
 	mov r0, r6

@@ -442,7 +442,7 @@ _0230A034:
 	bl ov29_022E576C
 	b _0230A06C
 _0230A044:
-	ldrb r0, [r7, #0x15c]
+	ldrb r0, [r7, #0x15c + APPLY_DAMAGE_OFFSET]
 	cmp r0, #0
 	bne _0230A060
 	ldr r2, _02309FC4 ; =0x00000C47
@@ -1546,7 +1546,7 @@ _02309608:
 	bl ov29_022E576C
 	b _02309640
 _02309618:
-	ldrb r0, [r4, #0x15c]
+	ldrb r0, [r4, #0x15c + APPLY_DAMAGE_OFFSET]
 	cmp r0, #0
 	bne _02309634
 	ldr r2, _02309FC4 ; =0x00000C47
@@ -2259,7 +2259,7 @@ _0230A024:
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r6, [r0, #0xb28 + APPLY_DAMAGE_OFFSET_2]
+	ldr r6, [r0, #0xb28]
 	mov r0, r6
 	bl EntityIsValid__02308FBC
 	cmp r0, #0
@@ -2324,14 +2324,14 @@ _0230AAB4:
 	strh r1, [r7, #0x10]
 	bl ov29_022E66D8
 	mov r2, #0
-	strb r2, [r7, #0x162 + APPLY_DAMAGE_OFFSET]
+	strb r2, [r7, #0x162]
 	mov r0, #1
-	strb r0, [r7, #0x156 + APPLY_DAMAGE_OFFSET]
+	strb r0, [r7, #0x156]
 	add r0, r7, #0x100
-	ldrh r1, [r0, #0x4a + APPLY_DAMAGE_OFFSET]
-	strh r1, [r0, #0x46 + APPLY_DAMAGE_OFFSET]
-	ldrh r1, [r0, #0x4c + APPLY_DAMAGE_OFFSET]
-	strh r1, [r0, #0x48 + APPLY_DAMAGE_OFFSET]
+	ldrh r1, [r0, #0x4a]
+	strh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x4c]
+	strh r1, [r0, #0x48]
 	ldrb r0, [r7, #7]
 	cmp r0, #0
 	ldrne r0, _02309FFC ; =DUNGEON_PTR
@@ -2878,7 +2878,7 @@ _0230B338:
 	ldr r0, [r6]
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x12000
-	ldr sl, [r0, #0xb28]
+	ldr sl, [r0, #0xb28 + APPLY_DAMAGE_OFFSET_2]
 	mov r0, sl
 	bl EntityIsValid__02308FBC
 	cmp r0, #0
@@ -2943,14 +2943,14 @@ _0230A098:
 	strh r1, [r4, #0x10]
 	bl ov29_022E66D8
 	mov r2, #0
-	strb r2, [r4, #0x162]
+	strb r2, [r4, #0x162 + APPLY_DAMAGE_OFFSET]
 	mov r0, #1
-	strb r0, [r4, #0x156]
+	strb r0, [r4, #0x156 + APPLY_DAMAGE_OFFSET]
 	add r0, r4, #0x100
-	ldrh r1, [r0, #0x4a]
-	strh r1, [r0, #0x46]
-	ldrh r1, [r0, #0x4c]
-	strh r1, [r0, #0x48]
+	ldrh r1, [r0, #0x4a + APPLY_DAMAGE_OFFSET]
+	strh r1, [r0, #0x46 + APPLY_DAMAGE_OFFSET]
+	ldrh r1, [r0, #0x4c + APPLY_DAMAGE_OFFSET]
+	strh r1, [r0, #0x48 + APPLY_DAMAGE_OFFSET]
 	ldrb r0, [r4, #7]
 	cmp r0, #0
 	ldrne r0, _02309FFC ; =DUNGEON_PTR
@@ -4615,7 +4615,7 @@ _0230B7A8: .word DAMAGE_MULTIPLIER_0_5
 _0230B7AC: .word TECHNICIAN_MOVE_POWER_THRESHOLD
 _0230B7B0: .word DAMAGE_MULTIPLIER_1_5
 _0230B7B4: .word 0x00000C3E + CALC_TYPE_BASED_DAMAGE_EFFECTS_OFFSET
-_0230B7B8: .word 0x000003E7 + CALC_TYPE_BASED_DAMAGE_EFFECTS_OFFSET
+_0230B7B8: .word 0x000003E7
 _0230B7BC: .word DAMAGE_MULTIPLIER_2
 _0230B7C0: .word 0x00000C4F + CALC_TYPE_BASED_DAMAGE_EFFECTS_OFFSET
 #ifdef JAPAN
@@ -5744,7 +5744,11 @@ _0230C76C:
 	ldr r0, [sp, #0x14]
 	add r0, r1, r0
 	add r0, r0, #0x3000
-	ldrb r0, [r0, #0xe36 + CALC_DAMAGE_OFFSET]
+#ifdef JAPAN
+	ldrb r0, [r0, #0xd92]
+#else
+	ldrb r0, [r0, #0xe36]
+#endif
 	cmp r0, #0
 	movne r0, #0xa
 	mulne r0, fp, r0
@@ -5764,7 +5768,11 @@ _0230C7D4:
 	ldr r0, [sp, #0x14]
 	add r0, r1, r0
 	add r0, r0, #0x3000
-	ldrb r0, [r0, #0xe34 + CALC_DAMAGE_OFFSET]
+#ifdef JAPAN
+	ldrb r0, [r0, #0xd90]
+#else
+	ldrb r0, [r0, #0xe34]
+#endif
 	cmp r0, #0
 	movne r0, #0xa
 	mulne r0, fp, r0
@@ -7694,7 +7702,7 @@ _0230E218:
 	bl GetNameString
 	mov r1, r0
 	add r0, sp, #0x100
-	add r0, r0, #0xa
+	add r0, r0, #0xa + TRY_RECRUIT_OFFSET
 	mov r2, #0xa
 	bl StrncpyName
 	ldrsh r1, [sp, #0xb8 + TRY_RECRUIT_OFFSET]
@@ -7704,11 +7712,14 @@ _0230E218:
 	add r1, sp, #0x100
 	add r0, sp, #0x98
 	add r1, r1, #0xa + TRY_RECRUIT_OFFSET
-#ifndef JAPAN
+#ifdef JAPAN
+	add r4, sp, #0x18
+	bl StrcpySimple
+#else
 	mov r2, #0xa
-#endif
 	add r4, sp, #0x18
 	bl StrncpySimpleNoPad
+#endif
 	bl ov29_022EACAC
 	bl ov29_0234B034
 	mov r1, r0
@@ -7906,7 +7917,11 @@ _0230E540:
 _0230E550:
 	mov r0, r4
 	add sp, sp, #0x114 + TRY_RECRUIT_OFFSET
+#ifdef JAPAN
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+#else
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+#endif
 	.align 2, 0
 _0230E55C: .word 0x00000C77 + TRY_RECRUIT_OFFSET_2
 _0230E560: .word DUNGEON_PTR

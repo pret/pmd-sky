@@ -6,7 +6,7 @@
 	arm_func_start ov29_023055B0
 ov29_023055B0: ; 0x023055B0
 #ifdef JAPAN
-#define OV29_023055B0_OFFSET 4
+#define OV29_023055B0_OFFSET -4
 #else
 #define OV29_023055B0_OFFSET 0
 #endif

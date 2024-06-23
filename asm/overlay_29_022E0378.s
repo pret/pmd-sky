@@ -1424,9 +1424,9 @@ _022E142C:
 	strh r3, [r2, r0]
 	cmp r4, #9
 	blt _022E142C
-	ldr r3, _022E1504 ; =0x0000F2F0
-	ldr r1, _022E14F8 ; =DUNGEON_PTR
 #ifdef JAPAN
+	ldr r2, _022E1504 ; =0x0000F2F0
+	ldr r1, _022E14F8 ; =DUNGEON_PTR
 	mov r7, #0x2f0
 	mov r3, #0
 _022E2AE4:
@@ -1470,6 +1470,8 @@ _022E2B44:
 	add r8, r8, #1
 	cmp r8, #3
 #else
+	ldr r3, _022E1504 ; =0x0000F2F0
+	ldr r1, _022E14F8 ; =DUNGEON_PTR
 	ldr r0, _022E1508 ; =0x0001212C
 	mov r6, #0x2f0
 	mov r4, #0
@@ -1761,8 +1763,13 @@ _022E1770:
 	mov r3, #0xb8
 _022E1798:
 	ldr r6, [r4]
+#ifdef JAPAN
+	add r2, r6, #0x388
+	add r2, r2, #0x13800
+#else
 	add r2, r6, #0x2c
 	add r2, r2, #0x13c00
+#endif
 	mla r5, r0, r3, r2
 	add r2, r6, r0, lsl #2
 	add r2, r2, #0x12000

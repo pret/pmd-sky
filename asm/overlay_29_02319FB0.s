@@ -973,7 +973,7 @@ _0231AC88:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	.align 2, 0
 #ifdef JAPAN
-#define OV29_0231A9F8_OFFSET -0xC20
+#define OV29_0231A9F8_OFFSET -0x2C0
 #else
 #define OV29_0231A9F8_OFFSET 0
 #endif

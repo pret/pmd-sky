@@ -2967,7 +2967,11 @@ _022E5BC8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022E5BD0: .word DUNGEON_PTR
+#ifdef JAPAN
+_022E5BD4: .word 0x0001A182
+#else
 _022E5BD4: .word 0x0001A226
+#endif
 	arm_func_end ov29_022E5AE4
 
 	arm_func_start ov29_022E5BD8
@@ -5165,7 +5169,7 @@ _022E77D4:
 	add r0, r4, #0x164
 	add r0, r0, #0x2c800
 #endif
-	ldrb r2, [r2, #0xda]
+	ldrb r2, [r2, #0xda + LOAD_MAPPA_FILE_ATTRIBUTES_OFFSET]
 	ldrsh r3, [r4, r3]
 	add r0, r0, r8, lsl #3
 	bl LoadFixedRoom

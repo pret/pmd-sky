@@ -62,7 +62,7 @@ _02301574:
 	bl CopyStringFromId
 	ldmia sp!, {r4, pc}
 _02300190:
-	ldr r0, [r1, #0xd8]
+	ldrb r0, [r1, #0xd8]
 #else
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
@@ -3369,7 +3369,7 @@ ItemIsActive__023026CC: ; 0x023026CC
 	arm_func_start EnemyEvolution
 EnemyEvolution: ; 0x023026FC
 #ifdef JAPAN
-#define ENEMY_EVOLUTION_OFFSET -0xA4
+#define ENEMY_EVOLUTION_OFFSET -4
 #else
 #define ENEMY_EVOLUTION_OFFSET 0
 #endif

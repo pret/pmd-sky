@@ -1878,14 +1878,14 @@ _02304310:
 	ldr r2, [r1]
 	add r1, sp, #0x18
 	add r2, r2, #0x1a000
-	ldrb r3, [r2, #0x23c]
+	ldrb r3, [r2, #0x23c + OV29_02303F18_OFFSET_2]
 	add r2, sp, #0x28
 	bl ov29_022DDB98
 	add r0, sp, #0x10
 	mov r1, r7
 	bl ov29_022E3A40
 	cmp r4, #0
-	ldrneb r0, [r5, #0x156]
+	ldrneb r0, [r5, #0x156 + OV29_02303F18_OFFSET]
 	cmpne r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -1906,7 +1906,7 @@ _02304310:
 	ldr r0, [r7, #0xb4]
 	ldr r1, _023046C8 ; =DUNGEON_PTR
 	ldr r3, _023046E0 ; =0x0000F3FF
-	ldrb r6, [r0, #0x220]
+	ldrb r6, [r0, #0x220 + OV29_02303F18_OFFSET]
 	mov r0, #0
 	ldr r1, [r1]
 	add r2, r3, #0xc00
@@ -1916,7 +1916,7 @@ _02304310:
 	strh r0, [sp, #0x22]
 	strh r0, [sp, #0x24]
 	add r2, r1, #0x1a000
-	ldrb r2, [r2, #0x23c]
+	ldrb r2, [r2, #0x23c + OV29_02303F18_OFFSET_2]
 	mov r2, r2, lsl #0xa
 	strh r2, [sp, #0x26]
 	ldrb r2, [r5, #6]

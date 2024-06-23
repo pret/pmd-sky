@@ -817,7 +817,7 @@ _02305258:
 	cmp r0, #0
 	bne _02305304
 	add r2, sb, #0x200
-	ldrsh r0, [r2, #0xe]
+	ldrsh r0, [r2, #0xe + DISPLAY_ACTIONS_OFFSET]
 	add r0, r0, #1
 	strh r0, [r2, #0xe + DISPLAY_ACTIONS_OFFSET]
 	ldrsh r1, [r2, #0xe + DISPLAY_ACTIONS_OFFSET]

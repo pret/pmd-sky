@@ -3800,11 +3800,13 @@ _022DF4E4:
 	ldrsh r3, [r2, r3]
 #ifdef JAPAN
 	add r0, r0, #0x3d00
+	mov r2, #0
+	strh r3, [r0, #0x96]
 #else
 	add r0, r0, #0x3e00
-#endif
 	mov r2, #0
 	strh r3, [r0, #0x3a + RUN_DUNGEON_OFFSET]
+#endif
 	ldr r0, [r1]
 	add r0, r0, #0x3000
 	strb r2, [r0, #0xe39 + RUN_DUNGEON_OFFSET]

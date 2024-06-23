@@ -550,7 +550,7 @@ _0230F718:
 	arm_func_start ov29_0230F728
 ov29_0230F728: ; 0x0230F728
 #ifdef JAPAN
-#define OV29_0230F728_OFFSET -0xA4
+#define OV29_0230F728_OFFSET -4
 #else
 #define OV29_0230F728_OFFSET 0
 #endif
@@ -956,7 +956,7 @@ _0230FBB8:
 	strhsb r0, [r4, #0x107 + TICK_NO_SLIP_CAP_OFFSET]
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldrb r2, [r4, #0x107]
+	ldrb r2, [r4, #0x107 + TICK_NO_SLIP_CAP_OFFSET]
 	ldr r1, _0230FC20 ; =ov10_022C4BE4
 	mov r2, r2, lsl #1
 	ldrsh r1, [r1, r2]
@@ -976,9 +976,11 @@ ov29_0230FC24: ; 0x0230FC24
 #ifdef JAPAN
 #define OV29_0230FC24_OFFSET -4
 #define OV29_0230FC24_OFFSET_2 -0xA4
+#define OV29_0230FC24_OFFSET_3 -1
 #else
 #define OV29_0230FC24_OFFSET 0
 #define OV29_0230FC24_OFFSET_2 0
+#define OV29_0230FC24_OFFSET_3 0
 #endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x34
@@ -2176,21 +2178,13 @@ _02310DC4:
 	cmp r0, #0
 	bne _02310FF4
 _02310DE0:
-#ifdef JAPAN
-	ldrb r0, [r4, #0x105]
-#else
-	ldrb r0, [r4, #0x106]
-#endif
+	ldrb r0, [r4, #0x106 + OV29_0230FC24_OFFSET_3]
 	cmp r0, #0
 	beq _02310E9C
-	add r0, r4, #6
+	add r0, r4, #6 + OV29_0230FC24_OFFSET_3
 	add r0, r0, #0x100
 	bl TickStatusTurnCounter
-#ifdef JAPAN
-	ldrb r0, [r4, #0x105]
-#else
-	ldrb r0, [r4, #0x106]
-#endif
+	ldrb r0, [r4, #0x106 + OV29_0230FC24_OFFSET_3]
 	cmp r0, #0
 	bne _02310E9C
 	mov r0, #0

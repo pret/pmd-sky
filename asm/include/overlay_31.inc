@@ -63,6 +63,7 @@
 .public GetRecruitRate2
 .public GetSpeciesString
 .public GetStringFromFileVeneer
+.public GetTeamMember
 .public GetTeamMemberIndex
 .public GetTile
 .public GetTrapInfo
@@ -241,6 +242,7 @@
 .public sub_02054F44
 .public sub_02056228
 .public sub_020585B4
+.public TeamMemberHasEnabledIqSkill
 .public TryPointCameraToMonster
 .public UpdateMapSurveyorFlag
 .public UpdateWindow

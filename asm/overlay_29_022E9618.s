@@ -1503,7 +1503,11 @@ _022EA954:
 	.align 2, 0
 _022EA95C: .word ov29_0237C850
 _022EA960: .word DUNGEON_PTR
+#ifdef JAPAN
+_022EA964: .word 0x0001A180
+#else
 _022EA964: .word 0x0001A224
+#endif
 	arm_func_end ov29_022EA80C
 
 	arm_func_start SetDungeonRngPreseed23Bit

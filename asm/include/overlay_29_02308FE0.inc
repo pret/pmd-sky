@@ -259,6 +259,7 @@
 .public SpawnDroppedItemWrapper
 .public SpawnMonster
 .public SPECIAL_BAND_STAT_BOOST
+.public StrcpySimple
 .public StringFromId
 .public StrncpyName
 .public StrncpySimpleNoPad

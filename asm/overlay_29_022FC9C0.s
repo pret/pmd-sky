@@ -513,8 +513,10 @@ _022FD080: .word DUNGEON_PTR
 SpawnMonster: ; 0x022FD084
 #ifdef JAPAN
 #define SPAWN_MONSTER_OFFSET -0xA4
+#define SPAWN_MONSTER_OFFSET_2 -4
 #else
 #define SPAWN_MONSTER_OFFSET 0
+#define SPAWN_MONSTER_OFFSET_2 0
 #endif
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
@@ -577,7 +579,7 @@ _022FD154:
 	bhi _022FD194
 	add r0, r5, #0xe
 	str r0, [sp]
-	add r0, r5, #0x124 + SPAWN_MONSTER_OFFSET
+	add r0, r5, #0x124 + SPAWN_MONSTER_OFFSET_2
 	add r1, r5, #0x12
 	add r2, r5, #0x1a
 	add r3, r5, #0x1c
@@ -588,7 +590,7 @@ _022FD154:
 	b _022FD1F0
 _022FD194:
 	ldrsh r2, [r5, #2]
-	add r0, r5, #0x124 + SPAWN_MONSTER_OFFSET
+	add r0, r5, #0x124 + SPAWN_MONSTER_OFFSET_2
 	add r1, r5, #0x12
 	str r2, [sp]
 	ldrb ip, [r5, #0xa]
@@ -658,7 +660,7 @@ _022FD278:
 	strh r1, [r5, #0x10]
 	ldr r1, [r7, #4]
 	mov r0, r4
-	str r1, [r5, #0x120 + SPAWN_MONSTER_OFFSET]
+	str r1, [r5, #0x120 + SPAWN_MONSTER_OFFSET_2]
 	mov r1, #1
 	bl ov29_022FB83C
 	ldrb r0, [r7, #2]

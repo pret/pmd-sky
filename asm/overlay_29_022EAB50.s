@@ -285,7 +285,11 @@ ov29_022EAE40: ; 0x022EAE40
 	ldr r0, [lr]
 	sub r2, r2, #2
 	add r0, r0, #0x2c000
+#ifdef JAPAN
+	str r3, [r0, #0xa54]
+#else
 	str r3, [r0, #0xaf8]
+#endif
 	ldr r0, [lr]
 	mov r3, #0
 	strh r3, [r0, r2]

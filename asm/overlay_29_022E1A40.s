@@ -978,9 +978,9 @@ _022E2570: .word DUNGEON_PTR
 	arm_func_start ShouldDisplayEntity
 ShouldDisplayEntity: ; 0x022E2574
 #ifdef JAPAN
-#define SHOULD_DISPLAY_ENTITY -0xA4
+#define SHOULD_DISPLAY_ENTITY_OFFSET -0xA4
 #else
-#define SHOULD_DISPLAY_ENTITY 0
+#define SHOULD_DISPLAY_ENTITY_OFFSET 0
 #endif
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldrb r5, [r0, #0x20]
@@ -1028,7 +1028,7 @@ _022E2600:
 	addle r2, r6, #0xc0
 	cmple r7, r2
 	bgt _022E271C
-	add r2, r4, #0x21c + SHOULD_DISPLAY_ENTITY
+	add r2, r4, #0x21c + SHOULD_DISPLAY_ENTITY_OFFSET
 	cmp lr, #6
 	add r6, r2, #0x1a000
 	addls pc, pc, lr, lsl #2
@@ -1059,7 +1059,7 @@ _022E267C:
 	moveq r0, #1
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	add r2, r4, #0x1a000
-	ldrb r2, [r2, #0x244 + SHOULD_DISPLAY_ENTITY]
+	ldrb r2, [r2, #0x244 + SHOULD_DISPLAY_ENTITY_OFFSET]
 	cmp r2, #0
 	ldreqb r2, [r3, #0xef]
 	cmpeq r2, #1
@@ -1085,7 +1085,7 @@ _022E26DC:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _022E26F0:
 	add r0, r4, #0x1a000
-	ldrb r0, [r0, #0x244 + SHOULD_DISPLAY_ENTITY]
+	ldrb r0, [r0, #0x244 + SHOULD_DISPLAY_ENTITY_OFFSET]
 	cmp r0, #0
 	cmpeq r5, #0
 	bne _022E2714
@@ -1102,7 +1102,7 @@ _022E271C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022E2724: .word DUNGEON_PTR
-_022E2728: .word 0x0001A224
+_022E2728: .word 0x0001A224 + SHOULD_DISPLAY_ENTITY_OFFSET
 	arm_func_end ShouldDisplayEntity
 
 	arm_func_start ShouldDisplayEntityWrapper
@@ -1488,16 +1488,17 @@ _022E34E8: .word 0x02354138
 
 	arm_func_start ov29_022E2B68
 ov29_022E2B68: ; 0x022E2B68
+#ifdef JAPAN
+#define OV29_022E2B68_OFFSET -0xA4
+#else
+#define OV29_022E2B68_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _022E2C5C ; =DUNGEON_PTR
 	movs r5, r0
 	ldr r2, [r1]
 	mov r1, #0
-#ifdef JAPAN
-	add r0, r2, #0x178
-#else
-	add r0, r2, #0x21c
-#endif
+	add r0, r2, #0x21c + OV29_022E2B68_OFFSET
 	add r4, r0, #0x1a000
 	strh r1, [r4, #8]
 	ldr r0, _022E2C60 ; =0x0001A21C
@@ -1548,11 +1549,7 @@ _022E2BF4:
 	ldr r0, _022E2C5C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x28000
-#ifdef JAPAN
-	ldrb r0, [r0, #0x624]
-#else
-	ldrb r0, [r0, #0x6c8]
-#endif
+	ldrb r0, [r0, #0x6c8 + OV29_022E2B68_OFFSET]
 	ands r0, r0, #3
 	strb r0, [r4, #0x21]
 	moveq r0, #1
@@ -1560,7 +1557,7 @@ _022E2BF4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022E2C5C: .word DUNGEON_PTR
-_022E2C60: .word 0x0001A21C
+_022E2C60: .word 0x0001A21C + OV29_022E2B68_OFFSET
 _022E2C64: .word 0x0000FFFF
 _022E2C68: .word ov29_0237C84C
 	arm_func_end ov29_022E2B68
@@ -1633,7 +1630,11 @@ _022E2D2C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022E2D34: .word DUNGEON_PTR
+#ifdef JAPAN
+_022E2D38: .word 0x0001A178
+#else
 _022E2D38: .word 0x0001A21C
+#endif
 	arm_func_end ov29_022E2CA0
 
 	arm_func_start ov29_022E2D3C

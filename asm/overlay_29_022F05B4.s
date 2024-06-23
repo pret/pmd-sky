@@ -2050,7 +2050,11 @@ _022F2180:
 	ldr r0, _022F1DDC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
-	ldrb r0, [r0, #0x23e + SET_LEADER_ACTION_OFFSET]
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19a]
+#else
+	ldrb r0, [r0, #0x23e]
+#endif
 	cmp r0, #0
 	bne _022F21B4
 	ldr r0, _022F1DF0 ; =ov29_0237C694
@@ -5071,14 +5075,15 @@ _022F4B24:
 	movlt r0, #0
 	strltb r0, [r6, #1]
 	blt _022F4B70
-	ldr r2, _022F4BD0 ; =DUNGEON_PTR
 #ifdef JAPAN
+	ldr r1, _022F4BD0 ; =DUNGEON_PTR
 	mov r2, #0x23c
 	ldr r1, [r1]
 	add r1, r1, #0x3f4
 	add r1, r1, #0x400
 	mla r0, r2, r0, r1
 #else
+	ldr r2, _022F4BD0 ; =DUNGEON_PTR
 	add r1, r0, r0, lsl #3
 	ldr r0, [r2]
 	add r0, r0, #0x3f4
@@ -5414,8 +5419,8 @@ _022F4F94:
 	bl ov29_02346FB8
 	cmp r0, #0
 	blt _022F4FD0
-	ldr r1, _022F5050 ; =DUNGEON_PTR
 #ifdef JAPAN
+	ldr r2, _022F5050 ; =DUNGEON_PTR
 	mov r1, #0x23c
 	ldr r3, [r2]
 	ldrh r2, [sp]
@@ -5423,6 +5428,7 @@ _022F4F94:
 	add r0, r1, #0x800
 	strh r2, [r0, #0x56]
 #else
+	ldr r1, _022F5050 ; =DUNGEON_PTR
 	add r0, r0, r0, lsl #3
 	ldr r2, [r1]
 	ldrh r1, [sp]

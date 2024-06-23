@@ -913,9 +913,9 @@ _02308C0C:
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
-	ldrlth r1, [r0, #0x92]
+	ldrlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 	orrlt r1, r1, #1
-	strlth r1, [r0, #0x92]
+	strlth r1, [r0, #0x92 + APPLY_DAMAGE_AND_EFFECTS_OFFSET]
 _02308C38:
 	mov r0, sl
 	mov r1, sb
@@ -1164,7 +1164,11 @@ _02308F70: .word ATK_STAT_IDX
 _02308F74: .word ov10_022C442C
 _02308F78: .word ov10_022C44C0
 _02308F7C: .word ov10_022C4464
+#ifdef JAPAN
+_02308F80: .word 0x0000097E
+#else
 _02308F80: .word 0x00000C3F
+#endif
 _02308F84: .word ov10_022C45B4
 _02308F88: .word ov29_023535DC
 _02308F8C: .word ov10_022C45B0

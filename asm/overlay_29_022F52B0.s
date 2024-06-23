@@ -1011,7 +1011,11 @@ _022F5E84:
 	mov r1, r6
 	mov r0, #0
 	mov r2, #1
+#ifdef JAPAN
+	bl DisplayMessage2
+#else
 	bl DisplayMessage
+#endif
 _022F5F04:
 	add sp, sp, #0x44
 	ldmia sp!, {r4, r5, r6, r7, pc}
