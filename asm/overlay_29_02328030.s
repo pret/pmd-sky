@@ -628,7 +628,6 @@ DoMoveSketch: ; 0x02328794
 #else
 #define DO_MOVE_SKETCH_OFFSET 0
 #endif
-
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov r4, #0
@@ -652,7 +651,7 @@ _023287CC:
 	tst r0, #0xff
 	beq _0232881C
 	ldr r1, [sp, #4]
-	add r0, r5, #0x124
+	add r0, r5, #0x124 + DO_MOVE_SKETCH_OFFSET
 	add r1, r1, r7, lsl #3
 	bl IsSameMove
 	cmp r0, #0
@@ -827,7 +826,7 @@ DoMoveSandstorm: ; 0x023289F8
 	mov r5, r0
 	mov r4, r1
 #ifdef JAPAN
-	add r2, r2, #0xcd00
+	add r2, r2, #0xcc00
 	mov r0, #1
 	mov r1, #0
 	strh r3, [r2, #0x9a]

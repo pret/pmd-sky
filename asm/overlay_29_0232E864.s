@@ -738,10 +738,10 @@ _0232F270:
 	cmpne r1, r0
 	mov r0, sb
 	mov r1, r4
-	mov r3, #1
 #ifndef JAPAN
-	moveq sl, #0
+	mov r3, #1
 #endif
+	moveq sl, #0
 	bl DefenderAbilityIsActive__02332A0C
 	cmp r0, #0
 	beq _0232F2F0

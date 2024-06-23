@@ -2712,7 +2712,11 @@ _02347824:
 	bl ItemIsActive__02347B50
 	cmp r0, #0
 	bne _0234786C
+#ifdef JAPAN
+	ldr r0, [r6, #0xc]
+#else
 	ldr r0, [r7, #0xc]
+#endif
 	mov r1, #0x54
 	bl ExclusiveItemEffectIsActive__02347B80
 	cmp r0, #0

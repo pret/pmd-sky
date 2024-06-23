@@ -515,7 +515,11 @@ ExclusiveItemEffectIsActive__023482B0: ; 0x023482B0
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
+#ifdef JAPAN
+	add r0, r2, #0x224
+#else
 	add r0, r2, #0x228
+#endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__023482B0
@@ -654,6 +658,11 @@ _0234849C: .word ov29_0237C694
 
 	arm_func_start ov29_023484A0
 ov29_023484A0: ; 0x023484A0
+#ifdef JAPAN
+#define OV29_023484A0_OFFSET -0xA4
+#else
+#define OV29_023484A0_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r0, _02348804 ; =DUNGEON_PTR
 	ldr r0, [r0]
@@ -904,13 +913,13 @@ _023487D4:
 	ldrb r2, [r4, #0x776]
 	ldr r0, [r1]
 	add r0, r0, #0x4000
-	strb r2, [r0, #0xda]
+	strb r2, [r0, #0xda + OV29_023484A0_OFFSET]
 	ldr r0, [r1]
 	add r0, r0, #0x4000
-	ldrb r1, [r0, #0xda]
+	ldrb r1, [r0, #0xda + OV29_023484A0_OFFSET]
 	cmp r1, #0x95
 	moveq r1, #0xc6
-	streqh r1, [r0, #0xd4]
+	streqh r1, [r0, #0xd4 + OV29_023484A0_OFFSET]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02348804: .word DUNGEON_PTR

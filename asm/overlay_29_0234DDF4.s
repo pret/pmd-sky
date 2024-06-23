@@ -1027,12 +1027,13 @@ ov29_0234EBAC: ; 0x0234EBAC
 #ifdef JAPAN
 	add r0, r5, #0x10
 	mov r4, r2
+	bl StrcpySimple
 #else
 	mov r4, r2
 	add r0, r5, #0x10
 	mov r2, #0xa
-#endif
 	bl StrncpySimple
+#endif
 	strb r4, [r5, #0x1a]
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_0234EBAC

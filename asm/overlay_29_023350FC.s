@@ -1809,7 +1809,7 @@ IsCurrentTilesetBackground: ; 0x02336204
 	ldr r0, [r0]
 	add r0, r0, #0x4000
 #ifdef JAPAN
-	ldrsh r0, [r0, #0x36]
+	ldrsh r0, [r0, #0x30]
 #else
 	ldrsh r0, [r0, #0xd4]
 #endif

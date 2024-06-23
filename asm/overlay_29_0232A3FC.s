@@ -1010,7 +1010,7 @@ DoMoveBeatUp: ; 0x0232B024
 	addne r0, r0, #0x294
 	ldreq r0, _0232B110 ; =DUNGEON_PTR
 	ldreq r0, [r0]
-	addeq r0, r0, #0x294
+	addeq r0, r0, #0x284
 #else
 	addne r0, r0, #0x338
 	ldreq r0, _0232B110 ; =DUNGEON_PTR

@@ -1373,7 +1373,7 @@ _0232D4FC:
 #ifdef JAPAN
 	add r2, r1, #0xcc00
 	mov r1, #0
-	strh r3, [r2, #0x36]
+	strh r3, [r2, #0x96]
 #else
 	add r2, r1, #0xcd00
 	mov r1, #0

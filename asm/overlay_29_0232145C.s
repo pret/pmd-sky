@@ -890,11 +890,11 @@ _02321FF8:
 	mov r2, #1
 	bl TryInflictFrozenStatus
 _02322030:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x1000
 	beq _0232206C
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322284 ; =0x00000E9B
@@ -2939,7 +2939,11 @@ _02323C30: .word DIRECTIONS_XY
 _02323C34: .word ov29_0235171E
 _02323C38: .word ov29_02352A8C
 _02323C3C: .word DUNGEON_PTR
+#ifdef JAPAN
+_02323C40: .word 0x0001A182
+#else
 _02323C40: .word 0x0001A226
+#endif
 _02323C44: .word 0x00000232
 	arm_func_end ov29_0232393C
 

@@ -516,7 +516,7 @@ _0231F53C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 #ifdef JAPAN
-#define OV29_0231EDFC_OFFSET -0xA4
+#define OV29_0231EDFC_OFFSET -0x2BF
 #else
 #define OV29_0231EDFC_OFFSET 0
 #endif

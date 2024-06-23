@@ -9751,13 +9751,13 @@ _0233FE64:
 	ldr r0, [r8, #0xd14 + GENERATE_KECLEON_SHOP_OFFSET]
 	cmp r0, r4
 	strgt r4, [r8, #0xd14 + GENERATE_KECLEON_SHOP_OFFSET]
-	ldr r0, [r8, #0xd18]
+	ldr r0, [r8, #0xd18 + GENERATE_KECLEON_SHOP_OFFSET]
 	cmp r0, r5
 	strgt r5, [r8, #0xd18 + GENERATE_KECLEON_SHOP_OFFSET]
-	ldr r0, [r8, #0xd1c]
+	ldr r0, [r8, #0xd1c + GENERATE_KECLEON_SHOP_OFFSET]
 	cmp r0, r4
 	strlt r4, [r8, #0xd1c + GENERATE_KECLEON_SHOP_OFFSET]
-	ldr r0, [r8, #0xd20]
+	ldr r0, [r8, #0xd20 + GENERATE_KECLEON_SHOP_OFFSET]
 	cmp r0, r5
 	strlt r5, [r8, #0xd20 + GENERATE_KECLEON_SHOP_OFFSET]
 	add r5, r5, #1
@@ -12739,7 +12739,7 @@ _02342648:
 _02342714:
 	ldr r0, [sp, #0x14]
 	strb ip, [r7, #7]
-	strb ip, [r0, #0x2e0]
+	strb ip, [r0, #0x2e0 + OV29_02342594_OFFSET]
 	add r5, r5, #1
 	add r4, r4, #1
 _02342728:

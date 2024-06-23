@@ -6,7 +6,7 @@
 	arm_func_start ov29_02333FD0
 ov29_02333FD0: ; 0x02333FD0
 #ifdef JAPAN
-#define OV29_02333FD0_OFFSET -0xA4
+#define OV29_02333FD0_OFFSET -4
 #else
 #define OV29_02333FD0_OFFSET 0
 #endif
@@ -1056,7 +1056,6 @@ ov29_02334DA8: ; 0x02334DA8
 #else
 #define OV29_02334DA8_OFFSET 0
 #endif
-
 	ldr r3, _02334E6C ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r2, [r3]
@@ -1074,8 +1073,8 @@ _02334DDC:
 	ldr r2, [r3]
 	add r2, r2, r1, lsl #1
 #ifdef JAPAN
-	add r2, r2, #0xcd00
-	strh r0, [r2, #0x3a]
+	add r2, r2, #0xcc00
+	strh r0, [r2, #0x96]
 	ldr r2, [r3]
 	add r2, r2, r1, lsl #1
 	add r2, r2, #0xcc00
