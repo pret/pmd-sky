@@ -11,7 +11,11 @@ TryDrought: ; 0x0231F594
 	ldr r0, [r1]
 	mov r6, #0
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	bl AreOrbsAllowedVeneer
 	cmp r0, #0
 	bne _0231F5CC
@@ -96,25 +100,41 @@ _0231F6B4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0231F6D4: .word DUNGEON_PTR
+#ifdef JAPAN
+_0231F6D8: .word 0x00000947
+_0231F6DC: .word 0x00000948
+_0231F6E0: .word 0x00000946
+#else
 _0231F6D8: .word 0x00000C08
 _0231F6DC: .word 0x00000C09
 _0231F6E0: .word 0x00000C07
+#endif
 	arm_func_end TryDrought
 
 	arm_func_start ov29_0231F6E4
 ov29_0231F6E4: ; 0x0231F6E4
+#ifdef JAPAN
+#define OV29_0231F6E4_OFFSET -0xA4
+#else
+#define OV29_0231F6E4_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x38
 	ldr r1, _0231FBE4 ; =DUNGEON_PTR
 	mov sl, r0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
-	ldrb r0, [r0, #0xda]
+	ldrb r0, [r0, #0xda + OV29_0231F6E4_OFFSET]
 	bl AreTrawlOrbsAllowed
 	cmp r0, #0
 	bne _0231F71C
+#ifdef JAPAN
+	ldr r1, _02321094 ; =0x0000090F
+	mov r0, sl
+#else
 	mov r0, sl
 	mov r1, #0xbd0
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	b _0231FBDC
 _0231F71C:
@@ -133,7 +153,7 @@ _0231F71C:
 _0231F74C:
 	add r0, r1, r8, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xbc8]
+	ldr r7, [r0, #0xbc8 + OV29_0231F6E4_OFFSET]
 	mov r0, r7
 	bl EntityIsValid__0231FBFC
 	cmp r0, #0
@@ -193,15 +213,27 @@ _0231F7A0:
 	ldr r2, [r1]
 	mov r1, #6
 	mla r1, r8, r1, r2
+#ifdef JAPAN
+	add r1, r1, #0x3d00
+	ldrh r2, [r1, #0x9c]
+#else
 	add r1, r1, #0x3e00
 	ldrh r2, [r1, #0x40]
+#endif
 	add r0, r0, #0x1100
 	add r5, r5, #0xb8
 	strh r2, [r0, #0xf8]
+#ifdef JAPAN
+	ldrh r2, [r1, #0x9e]
+	add r6, r6, #1
+	strh r2, [r0, #0xfa]
+	ldrh r1, [r1, #0xa0]
+#else
 	ldrh r2, [r1, #0x42]
 	add r6, r6, #1
 	strh r2, [r0, #0xfa]
 	ldrh r1, [r1, #0x44]
+#endif
 	strh r1, [r0, #0xfc]
 _0231F868:
 	add r8, r8, #1
@@ -209,7 +241,7 @@ _0231F86C:
 	ldr r0, _0231FBE4 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x3f00
-	ldrsh r0, [r0, #0xc0]
+	ldrsh r0, [r0, #0xc0 + OV29_0231F6E4_OFFSET]
 	cmp r8, r0
 	blt _0231F74C
 _0231F884:
@@ -351,7 +383,7 @@ _0231FA58:
 	ldr r0, [r0]
 	mov r8, r7
 	add r0, r0, #0x1a000
-	ldrb r0, [r0, #0x245]
+	ldrb r0, [r0, #0x245 + OV29_0231F6E4_OFFSET]
 	mov r5, r7
 	str r0, [sp, #8]
 _0231FA8C:
@@ -434,8 +466,13 @@ _0231FB9C:
 	ldr r0, [sp, #0xc]
 	cmp r0, #0
 	beq _0231FBC0
+#ifdef JAPAN
+	mov r0, sl
+	mov r1, #0x910
+#else
 	ldr r1, _0231FBF8 ; =0x00000BD1
 	mov r0, sl
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	b _0231FBCC
 _0231FBC0:
@@ -453,9 +490,17 @@ _0231FBDC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0231FBE4: .word DUNGEON_PTR
+#ifdef JAPAN
+_02321094: .word 0x0000090F
+_0231FBE8: .word 0x000013BC
+_0231FBEC: .word 0x0000090E
+#else
 _0231FBE8: .word 0x000013BC
 _0231FBEC: .word 0x00000BCF
+#endif
 _0231FBF0: .word DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 _0231FBF4: .word 0x00000222
+#ifndef JAPAN
 _0231FBF8: .word 0x00000BD1
+#endif
 	arm_func_end ov29_0231F6E4

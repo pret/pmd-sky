@@ -72,11 +72,16 @@ _023119B0:
 	bl TryActivateQuickFeet
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_023119D0: .word 0x00000D09
-_023119D4: .word 0x00000D0A
-_023119D8: .word 0x00000D06
-_023119DC: .word 0x00000D07
-_023119E0: .word 0x00000D04
+#ifdef JAPAN
+#define TRY_INFLICT_SLEEP_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_SLEEP_STATUS_OFFSET 0
+#endif
+_023119D0: .word 0x00000D09 + TRY_INFLICT_SLEEP_STATUS_OFFSET
+_023119D4: .word 0x00000D0A + TRY_INFLICT_SLEEP_STATUS_OFFSET
+_023119D8: .word 0x00000D06 + TRY_INFLICT_SLEEP_STATUS_OFFSET
+_023119DC: .word 0x00000D07 + TRY_INFLICT_SLEEP_STATUS_OFFSET
+_023119E0: .word 0x00000D04 + TRY_INFLICT_SLEEP_STATUS_OFFSET
 	arm_func_end TryInflictSleepStatus
 
 	arm_func_start IsProtectedFromSleepClassStatus
@@ -135,7 +140,9 @@ _02311AA0:
 	mov r0, r8
 	mov r1, r7
 	mov r2, #0x36
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _02311ADC
@@ -152,7 +159,9 @@ _02311ADC:
 	mov r0, r8
 	mov r1, r7
 	mov r2, #0x49
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _02311B18
@@ -196,11 +205,16 @@ _02311B78:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02311B80: .word 0x00000DA4
-_02311B84: .word 0x00000DA5
-_02311B88: .word 0x00000DA6
-_02311B8C: .word 0x00000DB1
-_02311B90: .word 0x00000DC2
+#ifdef JAPAN
+#define IS_PROTECTED_FROM_SLEEP_CLASS_STATUS_OFFSET -0x2C0
+#else
+#define IS_PROTECTED_FROM_SLEEP_CLASS_STATUS_OFFSET 0
+#endif
+_02311B80: .word 0x00000DA4 + IS_PROTECTED_FROM_SLEEP_CLASS_STATUS_OFFSET
+_02311B84: .word 0x00000DA5 + IS_PROTECTED_FROM_SLEEP_CLASS_STATUS_OFFSET
+_02311B88: .word 0x00000DA6 + IS_PROTECTED_FROM_SLEEP_CLASS_STATUS_OFFSET
+_02311B8C: .word 0x00000DB1 + IS_PROTECTED_FROM_SLEEP_CLASS_STATUS_OFFSET
+_02311B90: .word 0x00000DC2 + IS_PROTECTED_FROM_SLEEP_CLASS_STATUS_OFFSET
 	arm_func_end IsProtectedFromSleepClassStatus
 
 	arm_func_start DefenderAbilityIsActive__02311B94
@@ -220,7 +234,9 @@ DefenderAbilityIsActive__02311B94: ; 0x02311B94
 	and r1, r1, #0xff
 _02311BC8:
 	cmp r1, #0
+#ifndef JAPAN
 	cmpne r3, #0
+#endif
 	beq _02311BE8
 	mov r1, #0x53
 	bl AbilityIsActiveVeneer
@@ -289,7 +305,9 @@ TryInflictNightmareStatus: ; 0x02311C4C
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x2f
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	strb r8, [r5, #0xbe]
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
@@ -338,9 +356,15 @@ _02311D4C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02311D54: .word 0x00000A4D
+_02311D58: .word 0x00000A4C
+_02311D5C: .word 0x00000A4E
+#else
 _02311D54: .word 0x00000D0D
 _02311D58: .word 0x00000D0C
 _02311D5C: .word 0x00000D0E
+#endif
 	arm_func_end TryInflictNightmareStatus
 
 	arm_func_start TryInflictNappingStatus
@@ -371,7 +395,9 @@ TryInflictNappingStatus: ; 0x02311D60
 	mov r0, r8
 	mov r1, r7
 	mov r2, #0x2f
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	strb r6, [r5, #0xbe]
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
@@ -417,9 +443,15 @@ _02311E5C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02311E64: .word 0x00000A48
+_02311E68: .word 0x00000A45
+_02311E6C: .word 0x00000A4B
+#else
 _02311E64: .word 0x00000D08
 _02311E68: .word 0x00000D05
 _02311E6C: .word 0x00000D0B
+#endif
 	arm_func_end TryInflictNappingStatus
 
 	arm_func_start TryInflictYawningStatus
@@ -470,7 +502,11 @@ _02311F10:
 	bne _02311F2C
 	mov r0, r6
 	mov r1, r5
+#ifdef JAPAN
+	mov r2, #0xa50
+#else
 	mov r2, #0xd10
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _02311F64
 _02311F2C:
@@ -496,9 +532,15 @@ _02311F6C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02311F74: .word 0x00000A4F
+_02311F78: .word 0x00000A52
+_02311F7C: .word 0x00000A51
+#else
 _02311F74: .word 0x00000D0F
 _02311F78: .word 0x00000D12
 _02311F7C: .word 0x00000D11
+#endif
 	arm_func_end TryInflictYawningStatus
 
 	arm_func_start TryInflictSleeplessStatus
@@ -533,9 +575,15 @@ TryInflictSleeplessStatus: ; 0x02311F80
 	add r0, r0, #1
 	strb r0, [r5, #0xbe]
 	mov r1, #0xff
+#ifdef JAPAN
+	strb r1, [r5, #0x174]
+	mov r0, r6
+	strb r1, [r5, #0x173]
+#else
 	strb r1, [r5, #0x178]
 	mov r0, r6
 	strb r1, [r5, #0x177]
+#endif
 	bl ov29_022E4BB4
 	mov r0, r6
 	mov r1, #8
@@ -563,9 +611,15 @@ _02312050:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0231205C: .word ov10_022C4728
+#ifdef JAPAN
+_02312060: .word 0x00000A53
+_02312064: .word 0x00000A55
+_02312068: .word 0x00000A54
+#else
 _02312060: .word 0x00000D13
 _02312064: .word 0x00000D15
 _02312068: .word 0x00000D14
+#endif
 	arm_func_end TryInflictSleeplessStatus
 
 	arm_func_start TryInflictPausedStatus
@@ -653,10 +707,15 @@ _0231218C:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0231219C: .word 0x00000D16
-_023121A0: .word 0x00000D18
-_023121A4: .word 0x00000D17
-_023121A8: .word 0x00000D19
+#ifdef JAPAN
+#define TRY_INFLICT_PAUSED_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_PAUSED_STATUS_OFFSET 0
+#endif
+_0231219C: .word 0x00000D16 + TRY_INFLICT_PAUSED_STATUS_OFFSET
+_023121A0: .word 0x00000D18 + TRY_INFLICT_PAUSED_STATUS_OFFSET
+_023121A4: .word 0x00000D17 + TRY_INFLICT_PAUSED_STATUS_OFFSET
+_023121A8: .word 0x00000D19 + TRY_INFLICT_PAUSED_STATUS_OFFSET
 	arm_func_end TryInflictPausedStatus
 
 	arm_func_start TryInflictInfatuatedStatus
@@ -690,7 +749,9 @@ TryInflictInfatuatedStatus: ; 0x023121AC
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x29
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _02312260
@@ -761,11 +822,16 @@ _0231231C:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02312324: .word 0x00000DA3
-_02312328: .word 0x00000DBB
+#ifdef JAPAN
+#define TRY_INFLICT_INFATUATED_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_INFATUATED_STATUS_OFFSET 0
+#endif
+_02312324: .word 0x00000DA3 + TRY_INFLICT_INFATUATED_STATUS_OFFSET
+_02312328: .word 0x00000DBB + TRY_INFLICT_INFATUATED_STATUS_OFFSET
 _0231232C: .word ov10_022C4804
-_02312330: .word 0x00000D1A
-_02312334: .word 0x00000D1B
+_02312330: .word 0x00000D1A + TRY_INFLICT_INFATUATED_STATUS_OFFSET
+_02312334: .word 0x00000D1B + TRY_INFLICT_INFATUATED_STATUS_OFFSET
 	arm_func_end TryInflictInfatuatedStatus
 
 	arm_func_start TryInflictBurnStatus
@@ -804,7 +870,9 @@ TryInflictBurnStatus: ; 0x02312338
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x42
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _023123F0
@@ -843,7 +911,11 @@ _02312424:
 	ldr r1, _023125FC ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrsh r0, [r0, #0x30]
+#else
 	ldrsh r0, [r0, #0xd4]
+#endif
 	ldrb r0, [r1, r0]
 	cmp r0, #1
 	beq _0231247C
@@ -958,16 +1030,21 @@ _023125E8:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023125F0: .word 0x00000DAB
-_023125F4: .word 0x00000DAC
+#ifdef JAPAN
+#define TRY_INFLICT_BURN_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_BURN_STATUS_OFFSET 0
+#endif
+_023125F0: .word 0x00000DAB + TRY_INFLICT_BURN_STATUS_OFFSET
+_023125F4: .word 0x00000DAC + TRY_INFLICT_BURN_STATUS_OFFSET
 _023125F8: .word DUNGEON_PTR
 _023125FC: .word SECONDARY_TERRAIN_TYPES
-_02312600: .word 0x00000DB9
+_02312600: .word 0x00000DB9 + TRY_INFLICT_BURN_STATUS_OFFSET
 _02312604: .word ov10_022C4874
-_02312608: .word 0x00000D1C
-_0231260C: .word 0x00000D1D
+_02312608: .word 0x00000D1C + TRY_INFLICT_BURN_STATUS_OFFSET
+_0231260C: .word 0x00000D1D + TRY_INFLICT_BURN_STATUS_OFFSET
 _02312610: .word DIRECTIONS_XY
-_02312614: .word 0x00000DC5
+_02312614: .word 0x00000DC5 + TRY_INFLICT_BURN_STATUS_OFFSET
 	arm_func_end TryInflictBurnStatus
 
 	arm_func_start TryInflictBurnStatusWholeTeam
@@ -983,7 +1060,11 @@ _0231262C:
 	add r0, r0, r7, lsl #2
 	str r6, [sp]
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xa84]
+#else
 	ldr r0, [r0, #0xb28]
+#endif
 	mov r3, r5
 	mov r1, r0
 	bl TryInflictBurnStatus
@@ -997,6 +1078,11 @@ _02312660: .word DUNGEON_PTR
 
 	arm_func_start TryInflictPoisonedStatus
 TryInflictPoisonedStatus: ; 0x02312664
+#ifdef JAPAN
+#define TRY_INFLICT_POISONED_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_POISONED_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sb, r1
 	mov sl, r0
@@ -1037,7 +1123,7 @@ TryInflictPoisonedStatus: ; 0x02312664
 	beq _0231270C
 	mov r0, sl
 	mov r1, sb
-	mov r2, #0xdb0
+	mov r2, #0xdb0 + TRY_INFLICT_POISONED_STATUS_OFFSET
 	bl LogMessageByIdWithPopupCheckUserTarget
 _0231270C:
 	mov r0, #0
@@ -1046,7 +1132,9 @@ _02312714:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x45
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _02312750
@@ -1117,13 +1205,13 @@ _02312798:
 _0231281C:
 	mov r0, sl
 	mov r1, sb
-	mov r2, #0xd20
+	mov r2, #0xd20 + TRY_INFLICT_POISONED_STATUS_OFFSET
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _02312840
 _02312830:
 	mov r0, sl
 	mov r1, sb
-	add r2, r4, #0xd20
+	add r2, r4, #0xd20 + TRY_INFLICT_POISONED_STATUS_OFFSET
 	bl LogMessageByIdWithPopupCheckUserTarget
 _02312840:
 	mov r0, sb
@@ -1188,16 +1276,21 @@ _02312914:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02312924: .word 0x00000DAD
-_02312928: .word 0x00000DAE
+_02312924: .word 0x00000DAD + TRY_INFLICT_POISONED_STATUS_OFFSET
+_02312928: .word 0x00000DAE + TRY_INFLICT_POISONED_STATUS_OFFSET
 _0231292C: .word ov10_022C4878
-_02312930: .word 0x00000D1E
+_02312930: .word 0x00000D1E + TRY_INFLICT_POISONED_STATUS_OFFSET
 _02312934: .word DIRECTIONS_XY
-_02312938: .word 0x00000DC5
+_02312938: .word 0x00000DC5 + TRY_INFLICT_POISONED_STATUS_OFFSET
 	arm_func_end TryInflictPoisonedStatus
 
 	arm_func_start TryInflictBadlyPoisonedStatus
 TryInflictBadlyPoisonedStatus: ; 0x0231293C
+#ifdef JAPAN
+#define TRY_INFLICT_BADLY_POISONED_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_BADLY_POISONED_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sb, r1
 	mov sl, r0
@@ -1238,7 +1331,7 @@ TryInflictBadlyPoisonedStatus: ; 0x0231293C
 	beq _023129E4
 	mov r0, sl
 	mov r1, sb
-	mov r2, #0xdb0
+	mov r2, #0xdb0 + TRY_INFLICT_BADLY_POISONED_STATUS_OFFSET
 	bl LogMessageByIdWithPopupCheckUserTarget
 _023129E4:
 	mov r0, #0
@@ -1247,7 +1340,9 @@ _023129EC:
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x45
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _02312A28
@@ -1316,7 +1411,7 @@ _02312A70:
 _02312AEC:
 	mov r0, sl
 	mov r1, sb
-	add r2, r4, #0xd20
+	add r2, r4, #0xd20 + TRY_INFLICT_BADLY_POISONED_STATUS_OFFSET
 	bl LogMessageByIdWithPopupCheckUserTarget
 _02312AFC:
 	mov r0, sb
@@ -1381,16 +1476,21 @@ _02312BD0:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02312BE0: .word 0x00000DAD
-_02312BE4: .word 0x00000DAE
+_02312BE0: .word 0x00000DAD + TRY_INFLICT_BADLY_POISONED_STATUS_OFFSET
+_02312BE4: .word 0x00000DAE + TRY_INFLICT_BADLY_POISONED_STATUS_OFFSET
 _02312BE8: .word ov10_022C4880
-_02312BEC: .word 0x00000D1F
+_02312BEC: .word 0x00000D1F + TRY_INFLICT_BADLY_POISONED_STATUS_OFFSET
 _02312BF0: .word DIRECTIONS_XY
-_02312BF4: .word 0x00000DC5
+_02312BF4: .word 0x00000DC5 + TRY_INFLICT_BADLY_POISONED_STATUS_OFFSET
 	arm_func_end TryInflictBadlyPoisonedStatus
 
 	arm_func_start TryInflictFrozenStatus
 TryInflictFrozenStatus: ; 0x02312BF8
+#ifdef JAPAN
+#define TRY_INFLICT_FROZEN_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_FROZEN_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r7, r0
@@ -1423,7 +1523,7 @@ TryInflictFrozenStatus: ; 0x02312BF8
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	rsb r3, ip, #0xdc0
+	rsb r3, ip, #0xdc0 + TRY_INFLICT_FROZEN_STATUS_OFFSET
 	str ip, [sp]
 	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
@@ -1431,7 +1531,9 @@ TryInflictFrozenStatus: ; 0x02312BF8
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x41
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _02312CC4
@@ -1466,7 +1568,11 @@ _02312CF4:
 	ldr r1, _02312E0C ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrsh r0, [r0, #0x30]
+#else
 	ldrsh r0, [r0, #0xd4]
+#endif
 	ldrb r0, [r1, r0]
 	cmp r0, #1
 	bne _02312D48
@@ -1482,7 +1588,7 @@ _02312D48:
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5
-	rsb r3, ip, #0xdc0
+	rsb r3, ip, #0xdc0 + TRY_INFLICT_FROZEN_STATUS_OFFSET
 	str ip, [sp]
 	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
@@ -1526,14 +1632,14 @@ _02312D88:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02312E00: .word 0x00000DA8
-_02312E04: .word 0x00000DA9
+_02312E00: .word 0x00000DA8 + TRY_INFLICT_FROZEN_STATUS_OFFSET
+_02312E04: .word 0x00000DA9 + TRY_INFLICT_FROZEN_STATUS_OFFSET
 _02312E08: .word DUNGEON_PTR
 _02312E0C: .word SECONDARY_TERRAIN_TYPES
-_02312E10: .word 0x00000DAA
+_02312E10: .word 0x00000DAA + TRY_INFLICT_FROZEN_STATUS_OFFSET
 _02312E14: .word ov10_022C4870
-_02312E18: .word 0x00000D22
-_02312E1C: .word 0x00000D23
+_02312E18: .word 0x00000D22 + TRY_INFLICT_FROZEN_STATUS_OFFSET
+_02312E1C: .word 0x00000D23 + TRY_INFLICT_FROZEN_STATUS_OFFSET
 	arm_func_end TryInflictFrozenStatus
 
 	arm_func_start TryInflictConstrictionStatus
@@ -1625,10 +1731,15 @@ _02312F58:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02312F68: .word 0x00000C9B
+#ifdef JAPAN
+#define TRY_INFLICT_CONSTRICTION_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_CONSTRICTION_STATUS_OFFSET 0
+#endif
+_02312F68: .word 0x00000C9B + TRY_INFLICT_CONSTRICTION_STATUS_OFFSET
 _02312F6C: .word ov10_022C48A0
-_02312F70: .word 0x00000D24
-_02312F74: .word 0x00000D25
+_02312F70: .word 0x00000D24 + TRY_INFLICT_CONSTRICTION_STATUS_OFFSET
+_02312F74: .word 0x00000D25 + TRY_INFLICT_CONSTRICTION_STATUS_OFFSET
 	arm_func_end TryInflictConstrictionStatus
 
 	arm_func_start TryInflictShadowHoldStatus
@@ -1659,7 +1770,9 @@ TryInflictShadowHoldStatus: ; 0x02312F78
 	mov r0, r6
 	mov r1, r5
 	mov r2, #0x2b
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _0231302C
@@ -1745,11 +1858,16 @@ _0231310C:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0231311C: .word 0x00000D28
-_02313120: .word 0x00000C9B
+#ifdef JAPAN
+#define TRY_INFLICT_SHADOW_HOLD_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_SHADOW_HOLD_STATUS_OFFSET 0
+#endif
+_0231311C: .word 0x00000D28 + TRY_INFLICT_SHADOW_HOLD_STATUS_OFFSET
+_02313120: .word 0x00000C9B + TRY_INFLICT_SHADOW_HOLD_STATUS_OFFSET
 _02313124: .word ov10_022C4898
-_02313128: .word 0x00000D26
-_0231312C: .word 0x00000D27
+_02313128: .word 0x00000D26 + TRY_INFLICT_SHADOW_HOLD_STATUS_OFFSET
+_0231312C: .word 0x00000D27 + TRY_INFLICT_SHADOW_HOLD_STATUS_OFFSET
 	arm_func_end TryInflictShadowHoldStatus
 
 	arm_func_start TryInflictIngrainStatus
@@ -1805,12 +1923,22 @@ _023131DC:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023131E8: .word ov10_022C48B8
+#ifdef JAPAN
+_023131EC: .word 0x00000A69
+_023131F0: .word 0x00000A6A
+#else
 _023131EC: .word 0x00000D29
 _023131F0: .word 0x00000D2A
+#endif
 	arm_func_end TryInflictIngrainStatus
 
 	arm_func_start TryInflictWrappedStatus
 TryInflictWrappedStatus: ; 0x023131F4
+#ifdef JAPAN
+#define TRY_INFLICT_WRAPPED_STATUS_OFFSET -0xA4
+#else
+#define TRY_INFLICT_WRAPPED_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r7, r0
@@ -1859,18 +1987,18 @@ TryInflictWrappedStatus: ; 0x023131F4
 	ldr r1, [r3]
 	mov r0, r7
 	add r1, r1, #0x3000
-	ldr r2, [r1, #0xe30]
+	ldr r2, [r1, #0xe30 + TRY_INFLICT_WRAPPED_STATUS_OFFSET]
 	mov r1, r6
 	str r2, [r4, #0xb4]
 	ldr r2, [r3]
 	add r2, r2, #0x3000
-	ldr r2, [r2, #0xe30]
+	ldr r2, [r2, #0xe30 + TRY_INFLICT_WRAPPED_STATUS_OFFSET]
 	str r2, [r5, #0xb4]
 	ldr r2, [r3]
 	add r2, r2, #0x3000
-	ldr r3, [r2, #0xe30]
+	ldr r3, [r2, #0xe30 + TRY_INFLICT_WRAPPED_STATUS_OFFSET]
 	add r3, r3, #1
-	str r3, [r2, #0xe30]
+	str r3, [r2, #0xe30 + TRY_INFLICT_WRAPPED_STATUS_OFFSET]
 	bl ov29_022E4290
 	mov r0, #0
 	mov r1, r6
@@ -1939,11 +2067,16 @@ _023133D0:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define TRY_INFLICT_WRAPPED_STATUS_DATA_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_WRAPPED_STATUS_DATA_OFFSET 0
+#endif
 _023133DC: .word ov10_022C48AC
 _023133E0: .word DUNGEON_PTR
-_023133E4: .word 0x00000D2B
-_023133E8: .word 0x00000D2C
-_023133EC: .word 0x00000D2D
+_023133E4: .word 0x00000D2B + TRY_INFLICT_WRAPPED_STATUS_DATA_OFFSET
+_023133E8: .word 0x00000D2C + TRY_INFLICT_WRAPPED_STATUS_DATA_OFFSET
+_023133EC: .word 0x00000D2D + TRY_INFLICT_WRAPPED_STATUS_DATA_OFFSET
 	arm_func_end TryInflictWrappedStatus
 
 	arm_func_start FreeOtherWrappedMonsters
@@ -1958,7 +2091,11 @@ _02313408:
 	ldr r0, [r7]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r5, [r0, #0xad4]
+#else
 	ldr r5, [r0, #0xb78]
+#endif
 	mov r0, r5
 	bl EntityIsValid__023118B4
 	cmp r0, #0
@@ -2068,7 +2205,11 @@ _0231358C:
 	ldr r0, [r6]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr sb, [r0, #0xa84]
+#else
 	ldr sb, [r0, #0xb28]
+#endif
 	mov r0, sb
 	bl EntityIsValid__023118B4
 	cmp r0, #0
@@ -2093,8 +2234,13 @@ _023135DC:
 	.align 2, 0
 _023135E8: .word ov10_022C479C
 _023135EC: .word ov10_022C47A0
+#ifdef JAPAN
+_023135F0: .word 0x00000A72
+_023135F4: .word 0x00000A73
+#else
 _023135F0: .word 0x00000D32
 _023135F4: .word 0x00000D33
+#endif
 _023135F8: .word DUNGEON_PTR
 	arm_func_end TryInflictPetrifiedStatus
 
@@ -2160,7 +2306,9 @@ _023136D4:
 	mov r0, r8
 	mov r1, r7
 	mov r2, #9
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _02313720
@@ -2236,18 +2384,28 @@ _023137E8:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_023137F4: .word 0x00000DCB
-_023137F8: .word 0x00000DCA
-_023137FC: .word 0x00000DB2
-_02313800: .word 0x00000D9E
-_02313804: .word 0x00000DCD
-_02313808: .word 0x00000DCC
-_0231380C: .word 0x00000D91
-_02313810: .word 0x00000DD9
+#ifdef JAPAN
+#define LOWER_OFFENSIVE_STAT_OFFSET -0x2C0
+#else
+#define LOWER_OFFENSIVE_STAT_OFFSET 0
+#endif
+_023137F4: .word 0x00000DCB + LOWER_OFFENSIVE_STAT_OFFSET
+_023137F8: .word 0x00000DCA + LOWER_OFFENSIVE_STAT_OFFSET
+_023137FC: .word 0x00000DB2 + LOWER_OFFENSIVE_STAT_OFFSET
+_02313800: .word 0x00000D9E + LOWER_OFFENSIVE_STAT_OFFSET
+_02313804: .word 0x00000DCD + LOWER_OFFENSIVE_STAT_OFFSET
+_02313808: .word 0x00000DCC + LOWER_OFFENSIVE_STAT_OFFSET
+_0231380C: .word 0x00000D91 + LOWER_OFFENSIVE_STAT_OFFSET
+_02313810: .word 0x00000DD9 + LOWER_OFFENSIVE_STAT_OFFSET
 	arm_func_end LowerOffensiveStat
 
 	arm_func_start LowerDefensiveStat
 LowerDefensiveStat: ; 0x02313814
+#ifdef JAPAN
+#define LOWER_DEFENSIVE_STAT_OFFSET -0x2C0
+#else
+#define LOWER_DEFENSIVE_STAT_OFFSET 0
+#endif
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r7, r1
@@ -2333,7 +2491,7 @@ _0231392C:
 	add r3, r6, r1, lsl #1
 	mov r0, r8
 	mov r1, r7
-	mov r2, #0xd90
+	mov r2, #0xd90 + LOWER_DEFENSIVE_STAT_OFFSET
 	strh r4, [r3, #0x28]
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _02313974
@@ -2350,11 +2508,11 @@ _0231397C:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_02313988: .word 0x00000DC9
-_0231398C: .word 0x00000DC8
-_02313990: .word 0x00000DCD
-_02313994: .word 0x00000DCC
-_02313998: .word 0x00000DD7
+_02313988: .word 0x00000DC9 + LOWER_DEFENSIVE_STAT_OFFSET
+_0231398C: .word 0x00000DC8 + LOWER_DEFENSIVE_STAT_OFFSET
+_02313990: .word 0x00000DCD + LOWER_DEFENSIVE_STAT_OFFSET
+_02313994: .word 0x00000DCC + LOWER_DEFENSIVE_STAT_OFFSET
+_02313998: .word 0x00000DD7 + LOWER_DEFENSIVE_STAT_OFFSET
 	arm_func_end LowerDefensiveStat
 
 	arm_func_start BoostOffensiveStat
@@ -2452,12 +2610,17 @@ _02313AE4:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_02313AF0: .word 0x00000DCB
-_02313AF4: .word 0x00000DCA
-_02313AF8: .word 0x00000DCD
-_02313AFC: .word 0x00000DCC
-_02313B00: .word 0x00000D8F
-_02313B04: .word 0x00000DD8
+#ifdef JAPAN
+#define BOOST_OFFENSIVE_STAT_OFFSET -0x2C0
+#else
+#define BOOST_OFFENSIVE_STAT_OFFSET 0
+#endif
+_02313AF0: .word 0x00000DCB + BOOST_OFFENSIVE_STAT_OFFSET
+_02313AF4: .word 0x00000DCA + BOOST_OFFENSIVE_STAT_OFFSET
+_02313AF8: .word 0x00000DCD + BOOST_OFFENSIVE_STAT_OFFSET
+_02313AFC: .word 0x00000DCC + BOOST_OFFENSIVE_STAT_OFFSET
+_02313B00: .word 0x00000D8F + BOOST_OFFENSIVE_STAT_OFFSET
+_02313B04: .word 0x00000DD8 + BOOST_OFFENSIVE_STAT_OFFSET
 	arm_func_end BoostOffensiveStat
 
 	arm_func_start BoostDefensiveStat
@@ -2555,12 +2718,17 @@ _02313C50:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_02313C5C: .word 0x00000DC9
-_02313C60: .word 0x00000DC8
-_02313C64: .word 0x00000DCD
-_02313C68: .word 0x00000DCC
-_02313C6C: .word 0x00000D8E
-_02313C70: .word 0x00000DD6
+#ifdef JAPAN
+#define BOOST_DEFENSIVE_STAT_OFFSET -0x2C0
+#else
+#define BOOST_DEFENSIVE_STAT_OFFSET 0
+#endif
+_02313C5C: .word 0x00000DC9 + BOOST_DEFENSIVE_STAT_OFFSET
+_02313C60: .word 0x00000DC8 + BOOST_DEFENSIVE_STAT_OFFSET
+_02313C64: .word 0x00000DCD + BOOST_DEFENSIVE_STAT_OFFSET
+_02313C68: .word 0x00000DCC + BOOST_DEFENSIVE_STAT_OFFSET
+_02313C6C: .word 0x00000D8E + BOOST_DEFENSIVE_STAT_OFFSET
+_02313C70: .word 0x00000DD6 + BOOST_DEFENSIVE_STAT_OFFSET
 	arm_func_end BoostDefensiveStat
 
 	arm_func_start FlashFireShouldActivate
@@ -2582,7 +2750,9 @@ FlashFireShouldActivate: ; 0x02313C74
 	mov r0, r5
 	mov r1, r4
 	mov r2, #0x48
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	moveq r0, #0
@@ -2625,6 +2795,11 @@ _02313D34:
 
 	arm_func_start ApplyOffensiveStatMultiplier
 ApplyOffensiveStatMultiplier: ; 0x02313D40
+#ifdef JAPAN
+#define APPLY_OFFENSIVE_STAT_MULTIPLIER_OFFSET -0x2C0
+#else
+#define APPLY_OFFENSIVE_STAT_MULTIPLIER_OFFSET 0
+#endif
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r1
@@ -2683,7 +2858,9 @@ _02313E0C:
 	mov r0, sb
 	mov r1, r8
 	mov r2, #9
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _02313E6C
@@ -2751,7 +2928,7 @@ _02313F0C:
 	bge _02313F24
 	mov r0, sb
 	mov r1, r8
-	mov r2, #0xdd0
+	mov r2, #0xdd0 + APPLY_OFFENSIVE_STAT_MULTIPLIER_OFFSET
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _02313F34
 _02313F24:
@@ -2767,13 +2944,13 @@ _02313F3C:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_02313F48: .word 0x00000DCB
-_02313F4C: .word 0x00000DCA
-_02313F50: .word 0x00000DB2
-_02313F54: .word 0x00000D9E
+_02313F48: .word 0x00000DCB + APPLY_OFFENSIVE_STAT_MULTIPLIER_OFFSET
+_02313F4C: .word 0x00000DCA + APPLY_OFFENSIVE_STAT_MULTIPLIER_OFFSET
+_02313F50: .word 0x00000DB2 + APPLY_OFFENSIVE_STAT_MULTIPLIER_OFFSET
+_02313F54: .word 0x00000D9E + APPLY_OFFENSIVE_STAT_MULTIPLIER_OFFSET
 _02313F58: .word 0x000063FD
-_02313F5C: .word 0x00000DD1
-_02313F60: .word 0x00000DD3
+_02313F5C: .word 0x00000DD1 + APPLY_OFFENSIVE_STAT_MULTIPLIER_OFFSET
+_02313F60: .word 0x00000DD3 + APPLY_OFFENSIVE_STAT_MULTIPLIER_OFFSET
 	arm_func_end ApplyOffensiveStatMultiplier
 
 	arm_func_start ApplyDefensiveStatMultiplier
@@ -2878,12 +3055,17 @@ _023140C0:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_023140CC: .word 0x00000DC9
-_023140D0: .word 0x00000DC8
+#ifdef JAPAN
+#define APPLY_DEFENSIVE_STAT_MULTIPLIER_OFFSET -0x2C0
+#else
+#define APPLY_DEFENSIVE_STAT_MULTIPLIER_OFFSET 0
+#endif
+_023140CC: .word 0x00000DC9 + APPLY_DEFENSIVE_STAT_MULTIPLIER_OFFSET
+_023140D0: .word 0x00000DC8 + APPLY_DEFENSIVE_STAT_MULTIPLIER_OFFSET
 _023140D4: .word 0x000063FD
-_023140D8: .word 0x00000DCF
-_023140DC: .word 0x00000DCE
-_023140E0: .word 0x00000DD2
+_023140D8: .word 0x00000DCF + APPLY_DEFENSIVE_STAT_MULTIPLIER_OFFSET
+_023140DC: .word 0x00000DCE + APPLY_DEFENSIVE_STAT_MULTIPLIER_OFFSET
+_023140E0: .word 0x00000DD2 + APPLY_DEFENSIVE_STAT_MULTIPLIER_OFFSET
 	arm_func_end ApplyDefensiveStatMultiplier
 
 	arm_func_start BoostHitChanceStat
@@ -2972,11 +3154,16 @@ _0231420C:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_02314218: .word 0x00000DC7
-_0231421C: .word 0x00000DC6
-_02314220: .word 0x00000D95
-_02314224: .word 0x00000D93
-_02314228: .word 0x00000DD5
+#ifdef JAPAN
+#define BOOST_HIT_CHANCE_STAT_OFFSET -0x2C0
+#else
+#define BOOST_HIT_CHANCE_STAT_OFFSET 0
+#endif
+_02314218: .word 0x00000DC7 + BOOST_HIT_CHANCE_STAT_OFFSET
+_0231421C: .word 0x00000DC6 + BOOST_HIT_CHANCE_STAT_OFFSET
+_02314220: .word 0x00000D95 + BOOST_HIT_CHANCE_STAT_OFFSET
+_02314224: .word 0x00000D93 + BOOST_HIT_CHANCE_STAT_OFFSET
+_02314228: .word 0x00000DD5 + BOOST_HIT_CHANCE_STAT_OFFSET
 	arm_func_end BoostHitChanceStat
 
 	arm_func_start LowerHitChanceStat
@@ -3020,7 +3207,9 @@ _0231429C:
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x1e
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _02314308
@@ -3094,12 +3283,17 @@ _023143C4:
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_023143D0: .word 0x00000DC7
-_023143D4: .word 0x00000DC6
-_023143D8: .word 0x00000D9F
-_023143DC: .word 0x00000D94
-_023143E0: .word 0x00000D92
-_023143E4: .word 0x00000DD4
+#ifdef JAPAN
+#define LOWER_HIT_CHANCE_STAT_OFFSET -0x2C0
+#else
+#define LOWER_HIT_CHANCE_STAT_OFFSET 0
+#endif
+_023143D0: .word 0x00000DC7 + LOWER_HIT_CHANCE_STAT_OFFSET
+_023143D4: .word 0x00000DC6 + LOWER_HIT_CHANCE_STAT_OFFSET
+_023143D8: .word 0x00000D9F + LOWER_HIT_CHANCE_STAT_OFFSET
+_023143DC: .word 0x00000D94 + LOWER_HIT_CHANCE_STAT_OFFSET
+_023143E0: .word 0x00000D92 + LOWER_HIT_CHANCE_STAT_OFFSET
+_023143E4: .word 0x00000DD4 + LOWER_HIT_CHANCE_STAT_OFFSET
 	arm_func_end LowerHitChanceStat
 
 	arm_func_start TryInflictCringeStatus
@@ -3132,7 +3326,9 @@ TryInflictCringeStatus: ; 0x023143E8
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x1f
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _02314498
@@ -3192,14 +3388,24 @@ _02314524:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02314534: .word 0x00000DA2
+#ifdef JAPAN
+#define TRY_INFLICT_CRINGE_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_CRINGE_STATUS_OFFSET 0
+#endif
+_02314534: .word 0x00000DA2 + TRY_INFLICT_CRINGE_STATUS_OFFSET
 _02314538: .word ov10_022C4884
-_0231453C: .word 0x00000D02
-_02314540: .word 0x00000D03
+_0231453C: .word 0x00000D02 + TRY_INFLICT_CRINGE_STATUS_OFFSET
+_02314540: .word 0x00000D03 + TRY_INFLICT_CRINGE_STATUS_OFFSET
 	arm_func_end TryInflictCringeStatus
 
 	arm_func_start TryInflictParalysisStatus
 TryInflictParalysisStatus: ; 0x02314544
+#ifdef JAPAN
+#define TRY_INFLICT_PARALYSIS_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_PARALYSIS_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	mov sb, r1
@@ -3228,7 +3434,9 @@ TryInflictParalysisStatus: ; 0x02314544
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x16
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02311B94
 	cmp r0, #0
 	beq _023145F4
@@ -3240,7 +3448,7 @@ TryInflictParalysisStatus: ; 0x02314544
 	beq _023145EC
 	mov r0, sl
 	mov r1, sb
-	mov r2, #0xda0
+	mov r2, #0xda0 + TRY_INFLICT_PARALYSIS_STATUS_OFFSET
 	bl LogMessageByIdWithPopupCheckUserTarget
 _023145EC:
 	mov r0, #0
@@ -3296,7 +3504,7 @@ _02314654:
 	strb r4, [r7, #0xc1]
 	mov r0, sl
 	mov r1, sb
-	mov r2, #0xd00
+	mov r2, #0xd00 + TRY_INFLICT_PARALYSIS_STATUS_OFFSET
 	strb r4, [r7, #0xc2]
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, sb
@@ -3377,11 +3585,11 @@ _023147D0:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023147D8: .word 0x00000DA1
+_023147D8: .word 0x00000DA1 + TRY_INFLICT_PARALYSIS_STATUS_OFFSET
 _023147DC: .word ov10_022C4894
-_023147E0: .word 0x00000D01
+_023147E0: .word 0x00000D01 + TRY_INFLICT_PARALYSIS_STATUS_OFFSET
 _023147E4: .word DIRECTIONS_XY
-_023147E8: .word 0x00000DC5
+_023147E8: .word 0x00000DC5 + TRY_INFLICT_PARALYSIS_STATUS_OFFSET
 	arm_func_end TryInflictParalysisStatus
 
 	arm_func_start ExclusiveItemEffectIsActive__023147EC
@@ -3392,13 +3600,22 @@ ExclusiveItemEffectIsActive__023147EC: ; 0x023147EC
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
+#ifdef JAPAN
+	add r0, r2, #0x224
+#else
 	add r0, r2, #0x228
+#endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__023147EC
 
 	arm_func_start BoostSpeed
 BoostSpeed: ; 0x02314810
+#ifdef JAPAN
+#define BOOST_SPEED_OFFSET -4
+#else
+#define BOOST_SPEED_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, r1
 	mov sb, r0
@@ -3440,9 +3657,9 @@ _0231489C:
 	b _023148BC
 _023148A4:
 	add r1, r5, r2
-	ldrb r0, [r1, #0x114]
+	ldrb r0, [r1, #0x114 + BOOST_SPEED_OFFSET]
 	cmp r0, #0
-	streqb r6, [r1, #0x114]
+	streqb r6, [r1, #0x114 + BOOST_SPEED_OFFSET]
 	beq _023148C4
 	add r2, r2, #1
 _023148BC:
@@ -3472,15 +3689,20 @@ _023148F0:
 	mov r0, #1
 	strb r0, [r5, #0x101]
 	mov r0, #0
-	strb r0, [r5, #0x152]
+	strb r0, [r5, #0x152 + BOOST_SPEED_OFFSET]
 _02314920:
 	mov r0, r8
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0231492C: .word SPEED_BOOST_TURN_RANGE
+#ifdef JAPAN
+_02314930: .word 0x00000B1B
+_02314934: .word 0x00000B1A
+#else
 _02314930: .word 0x00000DDB
 _02314934: .word 0x00000DDA
+#endif
 _02314938: .word ov29_02353318
 	arm_func_end BoostSpeed
 
@@ -3541,7 +3763,11 @@ _023149F0:
 	b _02314A28
 _023149F8:
 	add r6, r4, r1
+#ifdef JAPAN
+	ldrb r0, [r6, #0x115]
+#else
 	ldrb r0, [r6, #0x119]
+#endif
 	cmp r0, #0
 	bne _02314A24
 	ldr r1, _02314AB0 ; =ov10_022C488C
@@ -3549,7 +3775,11 @@ _023149F8:
 	mov r2, #1
 	bl CalcStatusDuration
 	add r0, r0, #1
+#ifdef JAPAN
+	strb r0, [r6, #0x115]
+#else
 	strb r0, [r6, #0x119]
+#endif
 	b _02314A30
 _02314A24:
 	add r1, r1, #1
@@ -3592,9 +3822,15 @@ _02314AA0:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02314AAC: .word 0x00000B1C
+_02314AB0: .word ov10_022C488C
+_02314AB4: .word 0x00000B1A
+#else
 _02314AAC: .word 0x00000DDC
 _02314AB0: .word ov10_022C488C
 _02314AB4: .word 0x00000DDA
+#endif
 _02314AB8: .word ov29_02353318
 	arm_func_end LowerSpeed
 
@@ -3622,7 +3858,11 @@ TrySealMove: ; 0x02314ABC
 	bne _02314C18
 	ldr r0, [r7, #0xb4]
 	mov r4, r5
+#ifdef JAPAN
+	add ip, r0, #0x120
+#else
 	add ip, r0, #0x124
+#endif
 	mov lr, r4
 	mov r2, r5
 	mov r3, #1
@@ -3697,9 +3937,15 @@ _02314C18:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02314C20: .word 0x00000AFE
+_02314C24: .word 0x00000B23
+_02314C28: .word 0x00000B24
+#else
 _02314C20: .word 0x00000DBE
 _02314C24: .word 0x00000DE3
 _02314C28: .word 0x00000DE4
+#endif
 	arm_func_end TrySealMove
 
 	arm_func_start BoostOrLowerSpeed
@@ -3770,7 +4016,11 @@ _02314CF4:
 	beq _02314D20
 	mov r0, r6
 	mov r1, r5
+#ifdef JAPAN
+	mov r2, #0xaa0
+#else
 	mov r2, #0xd60
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _02314D30
 _02314D20:
@@ -3783,7 +4033,11 @@ _02314D30:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02314D3C: .word 0x00000AA1
+#else
 _02314D3C: .word 0x00000D61
+#endif
 	arm_func_end ResetHitChanceStat
 
 	arm_func_start ExclusiveItemEffectIsActiveWithLogging
@@ -3882,9 +4136,15 @@ TryInflictTerrifiedStatus: ; 0x02314E60
 	mov r3, #1
 	mov r5, r0
 	ldrsh r1, [r2]
+#ifdef JAPAN
+	strb r3, [ip, #0x103]
+	mov r0, r4
+	strb r1, [ip, #0x104]
+#else
 	strb r3, [ip, #0x104]
 	mov r0, r4
 	strb r1, [ip, #0x105]
+#endif
 	bl ov29_022E60E4
 	mov r0, #0
 	mov r1, r4
@@ -3897,7 +4157,11 @@ TryInflictTerrifiedStatus: ; 0x02314E60
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02314EB0: .word ov10_022C4618
+#ifdef JAPAN
+_02314EB4: .word 0x00000B25
+#else
 _02314EB4: .word 0x00000DE5
+#endif
 	arm_func_end TryInflictTerrifiedStatus
 
 	arm_func_start TryInflictGrudgeStatus
@@ -3928,15 +4192,26 @@ _02314F04:
 	bl UpdateStatusIconFlags
 	cmp r6, #0
 	beq _02314F2C
+#ifdef JAPAN
+	ldr r2, _0231640C ; =0x00000C12
+	mov r0, r8
+	mov r1, r7
+#else
 	mov r0, r8
 	mov r1, r7
 	mov r2, #0xed0
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _02314F2C:
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02314F34: .word 0x00000C13
+_0231640C: .word 0x00000C12
+#else
 _02314F34: .word 0x00000ED1
+#endif
 	arm_func_end TryInflictGrudgeStatus
 
 	arm_func_start TryInflictConfusedStatus
@@ -4065,10 +4340,15 @@ _023150F0:
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02315100: .word 0x00000DAF
-_02315104: .word 0x00000DBA
-_02315108: .word 0x00000DA7
+#ifdef JAPAN
+#define TRY_INFLICT_CONFUSED_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_CONFUSED_STATUS_OFFSET 0
+#endif
+_02315100: .word 0x00000DAF + TRY_INFLICT_CONFUSED_STATUS_OFFSET
+_02315104: .word 0x00000DBA + TRY_INFLICT_CONFUSED_STATUS_OFFSET
+_02315108: .word 0x00000DA7 + TRY_INFLICT_CONFUSED_STATUS_OFFSET
 _0231510C: .word ov10_022C4890
-_02315110: .word 0x00000CFE
-_02315114: .word 0x00000CFF
+_02315110: .word 0x00000CFE + TRY_INFLICT_CONFUSED_STATUS_OFFSET
+_02315114: .word 0x00000CFF + TRY_INFLICT_CONFUSED_STATUS_OFFSET
 	arm_func_end TryInflictConfusedStatus

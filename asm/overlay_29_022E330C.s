@@ -24,7 +24,11 @@ GetVisibilityRange: ; 0x022E333C
 	ldr r0, _022E3358 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x199]
+#else
 	ldrb r0, [r0, #0x23d]
+#endif
 	cmp r0, #0
 	moveq r0, #2
 	bx lr
@@ -34,13 +38,18 @@ _022E3358: .word DUNGEON_PTR
 
 	arm_func_start ov29_022E335C
 ov29_022E335C: ; 0x022E335C
+#ifdef JAPAN
+#define OV29_022E335C_OFFSET -0xA4
+#else
+#define OV29_022E335C_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _022E3428 ; =DUNGEON_PTR
 	mov r5, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
-	ldrb r1, [r0, #0x24d]
-	ldr r4, [r0, #0x22c]
+	ldrb r1, [r0, #0x24d + OV29_022E335C_OFFSET]
+	ldr r4, [r0, #0x22c + OV29_022E335C_OFFSET]
 	cmp r1, #0
 	bne _022E33A0
 	bl ov10_022BFD20
@@ -59,7 +68,7 @@ _022E33A0:
 _022E33B0:
 	ldr r0, _022E3428 ; =DUNGEON_PTR
 	ldr r0, [r0]
-	add r0, r0, #0x21c
+	add r0, r0, #0x21c + OV29_022E335C_OFFSET
 	add r4, r0, #0x1a000
 	ldr r0, [r4, #0x10]
 	ldr r5, [r0, #0xb4]
@@ -101,7 +110,11 @@ RevealWholeFloor: ; 0x022E3430
 	mov r4, r0
 	mov r2, #1
 	add r0, r1, #0x1a000
+#ifdef JAPAN
+	strb r2, [r0, #0x19b]
+#else
 	strb r2, [r0, #0x23f]
+#endif
 	mov r5, r7
 _022E3454:
 	mov r6, r5
@@ -128,7 +141,11 @@ _022E3458:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022E34A8: .word DUNGEON_PTR
+#ifdef JAPAN
+_022E34AC: .word 0x00000888
+#else
 _022E34AC: .word 0x00000B77
+#endif
 	arm_func_end RevealWholeFloor
 
 	arm_func_start ov29_022E34B0
@@ -136,7 +153,11 @@ ov29_022E34B0: ; 0x022E34B0
 	ldr r1, _022E34C4 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
+#ifdef JAPAN
+	strb r0, [r1, #0x1a8]
+#else
 	strb r0, [r1, #0x24c]
+#endif
 	bx lr
 	.align 2, 0
 _022E34C4: .word DUNGEON_PTR
@@ -144,10 +165,15 @@ _022E34C4: .word DUNGEON_PTR
 
 	arm_func_start ov29_022E34C8
 ov29_022E34C8: ; 0x022E34C8
+#ifdef JAPAN
+#define OV29_022E34C8_OFFSET -0xA4
+#else
+#define OV29_022E34C8_OFFSET 0
+#endif
 	ldr r0, _022E352C ; =DUNGEON_PTR
 	ldr r3, [r0]
 	add r0, r3, #0x1a000
-	ldr r2, [r0, #0x234]
+	ldr r2, [r0, #0x234 + OV29_022E34C8_OFFSET]
 	cmp r2, #0
 	bxeq lr
 	ldr r1, _022E3530 ; =ov29_0235110C
@@ -156,18 +182,18 @@ ov29_022E34C8: ; 0x022E34C8
 	ldr r2, [r1, r2, lsl #2]
 	add r0, r3, #0x1a000
 	ldr r1, _022E352C ; =DUNGEON_PTR
-	str r2, [r0, #0x230]
+	str r2, [r0, #0x230 + OV29_022E34C8_OFFSET]
 	ldr r0, [r1]
 	add r0, r0, #0x1a000
-	ldr r2, [r0, #0x234]
+	ldr r2, [r0, #0x234 + OV29_022E34C8_OFFSET]
 	sub r2, r2, #1
-	str r2, [r0, #0x234]
+	str r2, [r0, #0x234 + OV29_022E34C8_OFFSET]
 	ldr r0, [r1]
 	add r0, r0, #0x1a000
-	ldr r1, [r0, #0x234]
+	ldr r1, [r0, #0x234 + OV29_022E34C8_OFFSET]
 	cmp r1, #0
-	ldreq r1, [r0, #0x238]
-	streq r1, [r0, #0x234]
+	ldreq r1, [r0, #0x238 + OV29_022E34C8_OFFSET]
+	streq r1, [r0, #0x234 + OV29_022E34C8_OFFSET]
 	bx lr
 	.align 2, 0
 _022E352C: .word DUNGEON_PTR
@@ -262,7 +288,11 @@ PlayEffectAnimationEntity: ; 0x022E35E4
 	beq _022E37A8
 	ldrb r0, [sp, #0x4c]
 	cmp r0, #0
+#ifdef JAPAN
+	ldreqb r0, [r6, #0x10a]
+#else
 	ldreqb r0, [r6, #0x10b]
+#endif
 	cmpeq r0, #2
 	mvneq r0, #0
 	beq _022E37A8
@@ -284,13 +314,21 @@ _022E365C:
 	ldrnesh r2, [sp, #2]
 	cmpne r2, #0x63
 	ldreq r1, [r8, #0x10]
+#ifdef JAPAN
+	ldreq r0, [r6, #0x184]
+#else
 	ldreq r0, [r6, #0x188]
+#endif
 	ldreq r7, [r8, #0xc]
 	subeq r8, r1, r0
 	beq _022E36A8
 	ldr r1, [r8, #0x10]
 	ldr r3, [r8, #0xc]
+#ifdef JAPAN
+	ldr r0, [r6, #0x184]
+#else
 	ldr r0, [r6, #0x188]
+#endif
 	add r2, r1, r2, lsl #8
 	add r7, r3, r7, lsl #8
 	sub r8, r2, r0
@@ -373,5 +411,9 @@ _022E37A8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022E37B0: .word DUNGEON_PTR
+#ifdef JAPAN
+_022E37B4: .word 0x0001A182
+#else
 _022E37B4: .word 0x0001A226
+#endif
 	arm_func_end PlayEffectAnimationEntity

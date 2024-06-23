@@ -5,6 +5,11 @@
 
 	arm_func_start OpenMenu
 OpenMenu: ; 0x0234DDF4
+#ifdef JAPAN
+#define OPEN_MENU_OFFSET -0xA4
+#else
+#define OPEN_MENU_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x38
 	mov r0, #0x22
@@ -301,7 +306,7 @@ _0234E214:
 	ldr r0, [r0]
 	add r0, r0, r8, lsl #2
 	add r0, r0, #0x12000
-	ldr r0, [r0, #0xb28]
+	ldr r0, [r0, #0xb28 + OPEN_MENU_OFFSET]
 	str r0, [sp, #4]
 	bl EntityIsValid__0234DDD0
 	cmp r0, #0
@@ -360,7 +365,7 @@ _0234E2E0:
 	ldr r0, [r0]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
-	ldr sb, [r0, #0xb28]
+	ldr sb, [r0, #0xb28 + OPEN_MENU_OFFSET]
 	mov r0, sb
 	bl EntityIsValid__0234DDD0
 	cmp r0, #0
@@ -384,7 +389,7 @@ _0234E334:
 	ldr r0, [r0]
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x12000
-	ldr r0, [r0, #0xb28]
+	ldr r0, [r0, #0xb28 + OPEN_MENU_OFFSET]
 	str r0, [sp, #0xc]
 	bl ov29_02302388
 	cmp r0, #0
@@ -483,9 +488,13 @@ _0234E48C:
 	ldrb r1, [r0, #0xa]
 	add r0, r3, r2, lsl #2
 	add r0, r0, #0x12000
-	ldr r0, [r0, #0xb28]
+	ldr r0, [r0, #0xb28 + OPEN_MENU_OFFSET]
 	ldr r2, [r0, #0xb4]
+#ifdef JAPAN
+	add r2, r2, #0x120
+#else
 	add r2, r2, #0x124
+#endif
 	add r1, r2, r1, lsl #3
 	bl ov29_022F0C3C
 	cmp r0, #0
@@ -706,7 +715,11 @@ _0234E7C0:
 	mov r2, #0
 	bl ov29_022E2A78
 	mov r0, #0
+#ifdef JAPAN
+	mov r1, #0x870
+#else
 	ldr r1, _0234E8F4 ; =0x00000B6A
+#endif
 	mov r2, #1
 	bl DisplayMessage
 _0234E7F8:
@@ -784,7 +797,9 @@ _0234E8E0:
 _0234E8E8: .word DUNGEON_PTR
 _0234E8EC: .word ov29_02382804
 _0234E8F0: .word ov29_0235352C
+#ifndef JAPAN
 _0234E8F4: .word 0x00000B6A
+#endif
 	arm_func_end OpenMenu
 
 	arm_func_start ov29_0234E8F8
@@ -907,7 +922,11 @@ _0234EA5C:
 	mov r0, sl
 	add r1, r1, r4, lsl #2
 	add r1, r1, #0x12000
+#ifdef JAPAN
+	ldr r1, [r1, #0xa84]
+#else
 	ldr r1, [r1, #0xb28]
+#endif
 	mov r2, r4
 	mov r3, r8
 	bl ov29_0234EC38
@@ -1005,10 +1024,16 @@ _0234EBA4:
 ov29_0234EBAC: ; 0x0234EBAC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
+#ifdef JAPAN
+	add r0, r5, #0x10
+	mov r4, r2
+	bl StrcpySimple
+#else
 	mov r4, r2
 	add r0, r5, #0x10
 	mov r2, #0xa
 	bl StrncpySimple
+#endif
 	strb r4, [r5, #0x1a]
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_0234EBAC
@@ -1023,13 +1048,21 @@ _0234EBDC:
 	ldr r0, [r4]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xa84]
+#else
 	ldr r7, [r0, #0xb28]
+#endif
 	mov r0, r7
 	bl EntityIsValid__0234EC14
 	cmp r0, #0
 	ldrne r0, [r7, #0xb4]
 	add r6, r6, #1
+#ifdef JAPAN
+	strneb r5, [r0, #0x15d]
+#else
 	strneb r5, [r0, #0x161]
+#endif
 	cmp r6, #4
 	blt _0234EBDC
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}

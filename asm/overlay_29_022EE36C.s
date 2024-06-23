@@ -74,9 +74,15 @@ ApplyStickyTrapEffect: ; 0x022EE434
 	bl ItemIsActive__022EE318
 	cmp r0, #0
 	beq _022EE470
+#ifdef JAPAN
+	ldr r2, _022EFC78 ; =0x00000BA2
+	mov r0, sl
+	mov r1, sb
+#else
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0xe60
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _022EE610
 _022EE470:
@@ -171,6 +177,18 @@ _022EE574:
 	bl SetFlagsForHeldItemInBag
 	b _022EE5E8
 _022EE5C4:
+#ifdef JAPAN
+	sub r2, r0, #1
+	mov r0, #0x23c
+	ldr r1, _022EE620 ; =DUNGEON_PTR
+	mul r3, r2, r0
+	ldr r0, [r1]
+	add r0, r0, #0x56
+	add r1, r0, #0x800
+	ldrb r0, [r1, r3]
+	orr r0, r0, #8
+	strb r0, [r1, r3]
+#else
 	ldr r1, _022EE620 ; =DUNGEON_PTR
 	sub r0, r0, #1
 	ldr r2, [r1]
@@ -180,6 +198,7 @@ _022EE5C4:
 	ldrb r0, [r2, r1, lsl #6]
 	orr r0, r0, #8
 	strb r0, [r2, r1, lsl #6]
+#endif
 _022EE5E8:
 #ifdef EUROPE
 	mov r0, #0
@@ -188,9 +207,15 @@ _022EE5E8:
 	ldr r1, _022EE624 ; =0x00000309
 	mov r0, sb
 	bl ov29_022E56A0
+#ifdef JAPAN
+	mov r0, sl
+	mov r1, sb
+	mov r2, #0xba0
+#else
 	ldr r2, _022EE628 ; =0x00000E5E
 	mov r0, sl
 	mov r1, sb
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	bl ov29_022E8104
 	bl ov29_022E81F8
@@ -198,15 +223,28 @@ _022EE610:
 	add sp, sp, #0xcc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+_022EFC78: .word 0x00000BA2
+_022EE618: .word BAG_ITEMS_PTR_MIRROR
+_022EE61C: .word 0x00000BA1
+_022EE620: .word DUNGEON_PTR
+_022EE624: .word 0x00000309
+#else
 _022EE618: .word BAG_ITEMS_PTR_MIRROR
 _022EE61C: .word 0x00000E5F
 _022EE620: .word DUNGEON_PTR
 _022EE624: .word 0x00000309
 _022EE628: .word 0x00000E5E
+#endif
 	arm_func_end ApplyStickyTrapEffect
 
 	arm_func_start ApplyGrimyTrapEffect
 ApplyGrimyTrapEffect: ; 0x022EE62C
+#ifdef JAPAN
+#define APPLY_GRIMY_TRAP_EFFECT_OFFSET 4
+#else
+#define APPLY_GRIMY_TRAP_EFFECT_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xd8
 	movs sl, r1
@@ -299,15 +337,21 @@ _022EE77C:
 	ldr r0, _022EE810 ; =DUNGEON_PTR
 	ldrb r2, [r8, #1]
 	ldr r3, [r0]
+#ifdef JAPAN
+	mov r0, #0x23c
+	mla r0, r2, r0, r3
+	ldrh r1, [r8]
+#else
 	ldrh r1, [r8]
 	add r0, r2, r2, lsl #3
 	add r0, r3, r0, lsl #6
+#endif
 	add r0, r0, #0x600
-	strh r1, [r0, #0x16]
+	strh r1, [r0, #0x16 + APPLY_GRIMY_TRAP_EFFECT_OFFSET]
 	ldrh r1, [r8, #2]
-	strh r1, [r0, #0x18]
+	strh r1, [r0, #0x18 + APPLY_GRIMY_TRAP_EFFECT_OFFSET]
 	ldrh r1, [r8, #4]
-	strh r1, [r0, #0x1a]
+	strh r1, [r0, #0x1a + APPLY_GRIMY_TRAP_EFFECT_OFFSET]
 _022EE7AC:
 	add sb, sb, #1
 _022EE7B0:
@@ -340,32 +384,63 @@ _022EE800:
 _022EE808: .word BAG_ITEMS_PTR_MIRROR
 _022EE80C: .word ov10_022C4434
 _022EE810: .word DUNGEON_PTR
+#ifdef JAPAN
+_022EE814: .word 0x00000BA5
+_022EE818: .word 0x00000BA3
+_022EE81C: .word 0x00000BA4
+#else
 _022EE814: .word 0x00000E63
 _022EE818: .word 0x00000E61
 _022EE81C: .word 0x00000E62
+#endif
 	arm_func_end ApplyGrimyTrapEffect
 
 	arm_func_start ApplyPitfallTrapEffect
 ApplyPitfallTrapEffect: ; 0x022EE820
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+#ifdef JAPAN
+	movs r6, r1
+	mov r7, r0
+	mov r5, r2
+#else
 	movs r7, r1
 	mov r8, r0
 	mov r6, r2
 	mov r5, r3
+#endif
 	mov r4, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	ldr r0, _022EE980 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	bl AreLateGameTrapsEnabled
 	cmp r0, #0
 	bne _022EE868
 	ldr r1, _022EE984 ; =0x00000E64
+#ifdef JAPAN
+	mov r0, r7
+#else
 	mov r0, r8
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _022EE868:
+#ifdef JAPAN
+	mov r0, r6
+	ldr r8, [r6, #0xb4]
+	bl ShouldDisplayEntityWrapper
+	cmp r0, #0
+	beq _022EE8AC
+	mov r0, r5
+	mov r1, #0x20
+	bl ov29_022EF478
+	mov r0, r6
+#else
 	cmp r5, #0
 	ldr r5, [r7, #0xb4]
 	bne _022EE8AC
@@ -377,6 +452,7 @@ _022EE868:
 	mov r1, #0x20
 	bl ov29_022EF478
 	mov r0, r7
+#endif
 	mov r1, #0x308
 	mov r4, #1
 	bl ov29_022E56A0
@@ -384,13 +460,26 @@ _022EE868:
 	mov r1, #0x48
 	bl ov29_022EA370
 _022EE8AC:
+#ifdef JAPAN
+	ldrb r0, [r8, #7]
+#else
 	ldrb r0, [r5, #7]
+#endif
 	cmp r0, #0
 	beq _022EE91C
 	bl GetFloorType
 	cmp r0, #2
 	beq _022EE90C
 	mov r2, #1
+#ifdef JAPAN
+	strb r2, [r8, #0x16e]
+	mov r0, #0x28
+	mov r1, #0x4b
+	strb r2, [r8, #0x170]
+	bl ov29_022EA370
+	ldr r1, _022EE988 ; =ov10_022C44E4
+	mov r0, r6
+#else
 	strb r2, [r5, #0x172]
 	mov r0, #0x28
 	mov r1, #0x4b
@@ -398,6 +487,7 @@ _022EE8AC:
 	bl ov29_022EA370
 	ldr r1, _022EE988 ; =ov10_022C44E4
 	mov r0, r7
+#endif
 	ldrsh r1, [r1]
 	mov r2, #0x11
 	mov r3, #0x254
@@ -410,44 +500,77 @@ _022EE8AC:
 	b _022EE968
 _022EE90C:
 	ldr r1, _022EE98C ; =0x00000E66
+#ifdef JAPAN
+	mov r0, r7
+#else
 	mov r0, r8
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	b _022EE968
 _022EE91C:
 	mov r0, #0
+#ifdef JAPAN
+	mov r1, r6
+	mov r2, r0
+	bl SubstitutePlaceholderStringTags
+	ldrb r0, [r8, #6]
+#else
 	mov r1, r7
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
 	ldrb r0, [r5, #6]
+#endif
 	cmp r0, #0
 	beq _022EE94C
 	ldr r2, _022EE990 ; =0x00000E65
+#ifdef JAPAN
+	mov r0, r7
+	mov r1, r6
+#else
 	mov r0, r8
 	mov r1, r7
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _022EE958
 _022EE94C:
 	ldr r1, _022EE990 ; =0x00000E65
+#ifdef JAPAN
+	mov r0, r7
+	bl LogMessageByIdWithPopup
+_022EE958:
+	mov r0, r6
+	mov r2, r7
+#else
 	mov r0, r8
 	bl LogMessageByIdWithPopup
 _022EE958:
 	mov r0, r7
 	mov r2, r8
+#endif
 	mov r1, #0x254
 	bl HandleFaint
 _022EE968:
 	cmp r4, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
+#ifdef JAPAN
+	mov r0, r5
+#else
 	mov r0, r6
+#endif
 	mov r1, #5
 	bl ov29_022EF478
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define APPLY_PITFALL_TRAP_EFFECT_OFFSET -0x2BE
+#else
+#define APPLY_PITFALL_TRAP_EFFECT_OFFSET 0
+#endif
 _022EE980: .word DUNGEON_PTR
-_022EE984: .word 0x00000E64
+_022EE984: .word 0x00000E64 + APPLY_PITFALL_TRAP_EFFECT_OFFSET
 _022EE988: .word ov10_022C44E4
-_022EE98C: .word 0x00000E66
-_022EE990: .word 0x00000E65
+_022EE98C: .word 0x00000E66 + APPLY_PITFALL_TRAP_EFFECT_OFFSET
+_022EE990: .word 0x00000E65 + APPLY_PITFALL_TRAP_EFFECT_OFFSET
 	arm_func_end ApplyPitfallTrapEffect
 
 	arm_func_start ApplySummonTrapEffect
@@ -461,7 +584,11 @@ ApplySummonTrapEffect: ; 0x022EE994
 	mov r4, r0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	bl AreLateGameTrapsEnabled
 	cmp r0, #0
 	bne _022EE9D8
@@ -491,9 +618,15 @@ _022EEA10:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022EEA20: .word DUNGEON_PTR
+#ifdef JAPAN
+_022EEA24: .word 0x00000BAA
+_022EEA28: .word 0x0000030F
+_022EEA2C: .word 0x00000BA9
+#else
 _022EEA24: .word 0x00000E68
 _022EEA28: .word 0x0000030F
 _022EEA2C: .word 0x00000E67
+#endif
 	arm_func_end ApplySummonTrapEffect
 
 	arm_func_start ApplyPpZeroTrapEffect
@@ -506,7 +639,11 @@ ApplyPpZeroTrapEffect: ; 0x022EEA30
 	beq _022EEB08
 	ldr r1, [r4, #0xb4]
 	mov r0, r8
+#ifdef JAPAN
+	add lr, r1, #0x120
+#else
 	add lr, r1, #0x124
+#endif
 	mov r7, r8
 	mov r6, r8
 	mov ip, #1
@@ -559,8 +696,13 @@ _022EEB08:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
+#ifdef JAPAN
+_022EEB10: .word 0x00000BAB
+_022EEB14: .word 0x00000BAC
+#else
 _022EEB10: .word 0x00000E69
 _022EEB14: .word 0x00000E6A
+#endif
 	arm_func_end ApplyPpZeroTrapEffect
 
 	arm_func_start ApplyPokemonTrapEffect
@@ -575,7 +717,11 @@ ApplyPokemonTrapEffect: ; 0x022EEB18
 	mov r5, r0
 	ldr r0, [r1]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	bl AreLateGameTrapsEnabled
 	cmp r0, #0
 	bne _022EEB60
@@ -601,7 +747,11 @@ _022EEB94:
 	ldr r0, _022EED1C ; =DUNGEON_PTR
 	mov r1, #0x1c
 	ldr r0, [r0]
+#ifdef JAPAN
+	add r0, r0, #0x244
+#else
 	add r0, r0, #0x2e8
+#endif
 	add r0, r0, #0xec00
 	mla r0, r2, r1, r0
 	ldrsh r3, [r0, #2]
@@ -711,9 +861,15 @@ _022EED14:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022EED1C: .word DUNGEON_PTR
+#ifdef JAPAN
+_022EED20: .word 0x00000BAD
+_022EED24: .word 0x00000BAE
+_022EED28: .word 0x00000BAF
+#else
 _022EED20: .word 0x00000E6B
 _022EED24: .word 0x00000E6C
 _022EED28: .word 0x00000E6D
+#endif
 	arm_func_end ApplyPokemonTrapEffect
 
 	arm_func_start ApplyTripTrapEffect
@@ -798,9 +954,16 @@ _022EEE4C: .word DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 
 	arm_func_start ApplyStealthRockTrapEffect
 ApplyStealthRockTrapEffect: ; 0x022EEE50
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, lr}
+	movs r4, r1
+	mov r6, r0
+	ldmeqia sp!, {r4, r5, r6, pc}
+#else
 	stmdb sp!, {r3, r4, r5, lr}
 	movs r4, r1
 	ldmeqia sp!, {r3, r4, r5, pc}
+#endif
 	mov r0, r4
 	mov r1, #0xd
 	ldr r5, [r4, #0xb4]
@@ -824,6 +987,18 @@ ApplyStealthRockTrapEffect: ; 0x022EEE50
 	mov r1, r1, asr #8
 	mov r2, #0x16
 	bl ApplyDamageAndEffectsWrapper
+#ifdef JAPAN
+	ldmia sp!, {r4, r5, r6, pc}
+_022EEEBC:
+	mov r0, #0
+	mov r1, r6
+	mov r2, r0
+	bl SubstitutePlaceholderStringTags
+	mov r0, r6
+	mov r1, #0xbb0
+	bl LogMessageByIdWithPopupCheckUser
+	ldmia sp!, {r4, r5, r6, pc}
+#else
 	ldmia sp!, {r3, r4, r5, pc}
 _022EEEBC:
 	mov r0, #0
@@ -834,13 +1009,17 @@ _022EEEBC:
 	mov r0, r4
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r3, r4, r5, pc}
+#endif
 	.align 2, 0
 _022EEEDC: .word 0x000003E7
 _022EEEE0: .word ov10_022C4770
 _022EEEE4: .word 0x0000026D
+#ifndef JAPAN
 _022EEEE8: .word 0x00000E6E
+#endif
 	arm_func_end ApplyStealthRockTrapEffect
 
+#ifndef JAPAN
 	arm_func_start ApplyToxicSpikesTrapEffect
 ApplyToxicSpikesTrapEffect: ; 0x022EEEEC
 	stmdb sp!, {r3, r4, r5, lr}
@@ -866,15 +1045,25 @@ ApplyToxicSpikesTrapEffect: ; 0x022EEEEC
 	.align 2, 0
 _022EEF3C: .word ov10_022C45CC
 	arm_func_end ApplyToxicSpikesTrapEffect
+#endif
 
 	arm_func_start ApplyRandomTrapEffect
 ApplyRandomTrapEffect: ; 0x022EEF40
+#ifdef JAPAN
+#define APPLY_RANDOM_TRAP_EFFECT_OFFSET -4
+#else
+#define APPLY_RANDOM_TRAP_EFFECT_OFFSET 0
+#endif
+#ifdef JAPAN
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+#else
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	sub sp, sp, #0x64
+#endif
+	sub sp, sp, #0x64 + APPLY_RANDOM_TRAP_EFFECT_OFFSET
 	movs sb, r2
-	str r0, [sp, #0xc]
+	str r0, [sp, #0xc + APPLY_RANDOM_TRAP_EFFECT_OFFSET]
 	mov sl, r1
-	str r3, [sp, #0x10]
+	str r3, [sp, #0x10 + APPLY_RANDOM_TRAP_EFFECT_OFFSET]
 	ldr r8, [sp, #0x88]
 	beq _022EF064
 	bl ov29_022E7A8C
@@ -888,27 +1077,33 @@ ApplyRandomTrapEffect: ; 0x022EEF40
 	mov r2, r4
 	bl ov29_022E58B0
 	str r8, [sp]
+#ifndef JAPAN
 	str r4, [sp, #4]
 	mov r4, #1
-	ldr r0, [sp, #0xc]
-	ldr r3, [sp, #0x10]
+#endif
+	ldr r0, [sp, #0xc + APPLY_RANDOM_TRAP_EFFECT_OFFSET]
+	ldr r3, [sp, #0x10 + APPLY_RANDOM_TRAP_EFFECT_OFFSET]
 	mov r1, sl
 	mov r2, sb
-	str r4, [sp, #8]
+	str r4, [sp, #8 + APPLY_RANDOM_TRAP_EFFECT_OFFSET]
 	bl ApplyTrapEffect
 	b _022EF064
 _022EEFB0:
 	ldr r0, [sb, #0xb4]
 	mov r5, #0
 	ldrb fp, [r0, #6]
-	str sb, [sp, #0x14]
+	str sb, [sp, #0x14 + APPLY_RANDOM_TRAP_EFFECT_OFFSET]
 	add r7, r5, #1
 _022EEFC4:
 	ldr r0, _022EF070 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xad4]
+#else
 	ldr r6, [r0, #0xb78]
+#endif
 	mov r0, r6
 	bl EntityIsValid__022EE348
 	cmp r0, #0
@@ -917,7 +1112,7 @@ _022EEFC4:
 	ldr r0, [r6, #0xb4]
 	ldrb r0, [r0, #6]
 	cmp fp, r0
-	addeq r0, sp, #0x14
+	addeq r0, sp, #0x14 + APPLY_RANDOM_TRAP_EFFECT_OFFSET
 	streq r6, [r0, r7, lsl #2]
 	addeq r7, r7, #1
 _022EF004:
@@ -925,7 +1120,7 @@ _022EF004:
 	cmp r5, #0x14
 	blt _022EEFC4
 	mov sb, #0
-	add r5, sp, #0x14
+	add r5, sp, #0x14 + APPLY_RANDOM_TRAP_EFFECT_OFFSET
 	mov fp, #1
 	b _022EF05C
 _022EF020:
@@ -935,21 +1130,31 @@ _022EF020:
 	add r1, r6, #4
 	bl ov29_022E58B0
 	str r8, [sp]
-	ldr r0, [sp, #0xc]
-	ldr r3, [sp, #0x10]
+	ldr r0, [sp, #0xc + APPLY_RANDOM_TRAP_EFFECT_OFFSET]
+	ldr r3, [sp, #0x10 + APPLY_RANDOM_TRAP_EFFECT_OFFSET]
 	mov r2, r6
 	mov r1, sl
+#ifdef JAPAN
+	str r4, [sp, #4]
+	bl ApplyTrapEffect
+	mov r0, fp
+#else
 	stmib sp, {r4, fp}
 	bl ApplyTrapEffect
 	mov r0, #1
+#endif
 	bl AnimationDelayOrSomething
 	add sb, sb, #1
 _022EF05C:
 	cmp sb, r7
 	blt _022EF020
 _022EF064:
-	add sp, sp, #0x64
+	add sp, sp, #0x64 + APPLY_RANDOM_TRAP_EFFECT_OFFSET
+#ifdef JAPAN
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+#else
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+#endif
 	.align 2, 0
 _022EF06C: .word ov10_022C4B18
 _022EF070: .word DUNGEON_PTR
@@ -958,12 +1163,20 @@ _022EF070: .word DUNGEON_PTR
 	arm_func_start ApplyGrudgeTrapEffect
 ApplyGrudgeTrapEffect: ; 0x022EF074
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
+#ifdef JAPAN
+	mov r6, r0
+#else
 	mov sl, r0
+#endif
 	mov r0, #3
 	mov r4, r1
 	bl DungeonRandInt
 	mov r2, r0
+#ifdef JAPAN
+	mov r0, r6
+#else
 	mov r0, sl
+#endif
 	mov r1, r4
 	add r2, r2, #2
 	bl ov29_022EF4B4
@@ -973,6 +1186,37 @@ ApplyGrudgeTrapEffect: ; 0x022EF074
 	mov r0, r4
 	bl ov29_022E56D4
 _022EF0B0:
+#ifdef JAPAN
+	mov r4, #0
+	ldr r7, _022EF14C ; =DUNGEON_PTR
+	mov r5, r4
+	mov r8, #1
+	mov sb, r4
+_022F06BC:
+	ldr r0, [r7]
+	add r0, r0, r5, lsl #2
+	add r0, r0, #0x12000
+	ldr sl, [r0, #0xa94]
+	mov r0, sl
+	bl EntityIsValid__022EE348
+	cmp r0, #0
+	beq _022F06F4
+	mov r0, sl
+	mov r1, sl
+	mov r2, sb
+	bl TryInflictGrudgeStatus
+	cmp r0, #0
+	movne r4, r8
+_022F06F4:
+	add r5, r5, #1
+	cmp r5, #0x10
+	blt _022F06BC
+	cmp r4, #0
+	ldrne r0, _022F0728 ; =0x00000BB1
+	ldreq r0, _022F072C ; =0x00000BB2
+	mov r1, r0, lsl #0x10
+	mov r0, r6
+#else
 	mov r7, #0
 	ldr r4, _022EF14C ; =DUNGEON_PTR
 	mov r8, r7
@@ -1010,13 +1254,19 @@ _022EF11C:
 	moveq r0, #0xe70
 	mov r1, r0, lsl #0x10
 	mov r0, sl
+#endif
 	mov r1, r1, lsr #0x10
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _022EF148: .word 0x0000030F
 _022EF14C: .word DUNGEON_PTR
+#ifdef JAPAN
+_022F0728: .word 0x00000BB1
+_022F072C: .word 0x00000BB2
+#else
 _022EF150: .word 0x00000E6F
+#endif
 	arm_func_end ApplyGrudgeTrapEffect
 
 	arm_func_start ApplyTrapEffect
@@ -1088,10 +1338,16 @@ _022EF234:
 	mov r4, #1
 	b _022EF454
 _022EF248:
+#ifdef JAPAN
+	mov r0, r6
+	mov r1, r5
+	mov r2, r3
+#else
 	mov r2, r3
 	ldrb r3, [sp, #0x28]
 	mov r0, r6
 	mov r1, r5
+#endif
 	bl ApplyPitfallTrapEffect
 	b _022EF454
 _022EF260:
@@ -1220,9 +1476,25 @@ _022EF408:
 	bl ApplyStealthRockTrapEffect
 	b _022EF454
 _022EF418:
+#ifdef JAPAN
+	cmp r5, #0
+	beq _022EF454
+	ldr r1, _022F0A78 ; =0x022C5CB4
+	mov r0, r5
+	ldrsh r1, [r1]
+	mov r2, #0x15
+	mov r3, #0x26c
+	bl ApplyDamageAndEffectsWrapper
+	mov r0, r6
+	mov r1, r5
+	mov r2, #1
+	mov r3, r4
+	bl TryInflictPoisonedStatus
+#else
 	mov r0, r6
 	mov r1, r5
 	bl ApplyToxicSpikesTrapEffect
+#endif
 	b _022EF454
 _022EF428:
 	mov r0, r6
@@ -1249,6 +1521,9 @@ _022EF468: .word ov10_022C45C8
 _022EF46C: .word 0x00000252
 _022EF470: .word ov10_022C4418
 _022EF474: .word 0x00000245
+#ifdef JAPAN
+_022F0A78: .word ov10_022C45CC
+#endif
 	arm_func_end ApplyTrapEffect
 
 	arm_func_start ov29_022EF478
@@ -1400,7 +1675,11 @@ _022EF65C:
 	ldr r0, _022EF6F4 ; =DUNGEON_PTR
 	mov r1, #0x1c
 	ldr r0, [r0]
+#ifdef JAPAN
+	add r0, r0, #0x244
+#else
 	add r0, r0, #0x2e8
+#endif
 	add r0, r0, #0xec00
 	mla r4, r7, r1, r0
 	ldrsh r0, [r4, #4]
@@ -1443,8 +1722,13 @@ _022EF6E4:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022EF6F4: .word DUNGEON_PTR
+#ifdef JAPAN
+_022EF6F8: .word 0x00000B43
+_022EF6FC: .word 0x00000B44
+#else
 _022EF6F8: .word 0x00000E02
 _022EF6FC: .word 0x00000E03
+#endif
 	arm_func_end RevealTrapsNearby
 
 	arm_func_start ov29_022EF700
@@ -1468,6 +1752,11 @@ _022EF730:
 
 	arm_func_start ov29_022EF738
 ov29_022EF738: ; 0x022EF738
+#ifdef JAPAN
+#define OV29_022EF738_OFFSET -0xA4
+#else
+#define OV29_022EF738_OFFSET 0
+#endif
 	stmdb sp!, {r3, lr}
 	bl IsFullFloorFixedRoom
 	cmp r0, #0
@@ -1477,21 +1766,21 @@ ov29_022EF738: ; 0x022EF738
 	ldr r0, [r0]
 	ldr r2, _022EF79C ; =ov10_022C6C7A
 	add r0, r0, #0x4000
-	ldrb r3, [r0, #0xda]
+	ldrb r3, [r0, #0xda + OV29_022EF738_OFFSET]
 	smulbb r1, r3, r1
 	ldrb r1, [r2, r1]
 	cmp r1, #0
 	movne r1, #2
-	strneb r1, [r0, #0xca]
+	strneb r1, [r0, #0xca + OV29_022EF738_OFFSET]
 	moveq r1, #1
-	streqb r1, [r0, #0xca]
+	streqb r1, [r0, #0xca + OV29_022EF738_OFFSET]
 	ldmia sp!, {r3, pc}
 _022EF780:
 	ldr r0, _022EF798 ; =DUNGEON_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x4000
-	strb r1, [r0, #0xca]
+	strb r1, [r0, #0xca + OV29_022EF738_OFFSET]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022EF798: .word DUNGEON_PTR

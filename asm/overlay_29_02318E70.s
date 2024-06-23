@@ -46,8 +46,13 @@ _02318EF8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02318F04: .word ov10_022C4734
+#ifdef JAPAN
+_02318F08: .word 0x00000A2E
+_02318F0C: .word 0x00000A2F
+#else
 _02318F08: .word 0x00000CEE
 _02318F0C: .word 0x00000CEF
+#endif
 	arm_func_end TryInflictSafeguardStatus
 
 	arm_func_start TryInflictMistStatus
@@ -79,7 +84,11 @@ TryInflictMistStatus: ; 0x02318F10
 	bl ov29_022E3F78
 	mov r0, r6
 	mov r1, r5
+#ifdef JAPAN
+	mov r2, #0xa30
+#else
 	mov r2, #0xcf0
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _02318F98
 _02318F88:
@@ -93,7 +102,11 @@ _02318F98:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02318FA4: .word ov10_022C4738
+#ifdef JAPAN
+_02318FA8: .word 0x00000A31
+#else
 _02318FA8: .word 0x00000CF1
+#endif
 	arm_func_end TryInflictMistStatus
 
 	arm_func_start TryInflictWishStatus
@@ -139,8 +152,13 @@ _02319034:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02319040: .word ov10_022C4794
+#ifdef JAPAN
+_02319044: .word 0x00000A1E
+_02319048: .word 0x00000A1F
+#else
 _02319044: .word 0x00000CDE
 _02319048: .word 0x00000CDF
+#endif
 	arm_func_end TryInflictWishStatus
 
 	arm_func_start TryInflictMagicCoatStatus
@@ -186,8 +204,13 @@ _023190D4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023190E0: .word ov10_022C4740
+#ifdef JAPAN
+_023190E4: .word 0x00000A27
+_023190E8: .word 0x00000A28
+#else
 _023190E4: .word 0x00000CE7
 _023190E8: .word 0x00000CE8
+#endif
 	arm_func_end TryInflictMagicCoatStatus
 
 	arm_func_start TryInflictLightScreenStatus
@@ -233,8 +256,13 @@ _02319174:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02319180: .word ov10_022C4730
+#ifdef JAPAN
+_02319184: .word 0x00000A34
+_02319188: .word 0x00000A35
+#else
 _02319184: .word 0x00000CF4
 _02319188: .word 0x00000CF5
+#endif
 	arm_func_end TryInflictLightScreenStatus
 
 	arm_func_start TryInflictReflectStatus
@@ -280,8 +308,13 @@ _02319214:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02319220: .word ov10_022C472C
+#ifdef JAPAN
+_02319224: .word 0x00000A36
+_02319228: .word 0x00000A37
+#else
 _02319224: .word 0x00000CF6
 _02319228: .word 0x00000CF7
+#endif
 	arm_func_end TryInflictReflectStatus
 
 	arm_func_start TryInflictProtectStatus
@@ -331,8 +364,13 @@ _023192C4:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023192D0: .word ov10_022C47B8
+#ifdef JAPAN
+_023192D4: .word 0x00000A87
+_023192D8: .word 0x00000A88
+#else
 _023192D4: .word 0x00000D47
 _023192D8: .word 0x00000D48
+#endif
 	arm_func_end TryInflictProtectStatus
 
 	arm_func_start TryInflictMirrorCoatStatus
@@ -370,7 +408,11 @@ TryInflictMirrorCoatStatus: ; 0x023192DC
 _02319354:
 	mov r0, r6
 	mov r1, r5
+#ifdef JAPAN
+	mov r2, #0xA90
+#else
 	mov r2, #0xd50
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _02319364:
 	mov r0, r5
@@ -378,7 +420,11 @@ _02319364:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02319370: .word ov10_022C47CC
+#ifdef JAPAN
+_02319374: .word 0x00000A8F
+#else
 _02319374: .word 0x00000D4F
+#endif
 	arm_func_end TryInflictMirrorCoatStatus
 
 	arm_func_start TryInflictEndureStatus
@@ -424,8 +470,13 @@ _02319400:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0231940C: .word ov10_022C47F4
+#ifdef JAPAN
+_02319410: .word 0x00000A98
+_02319414: .word 0x00000A99
+#else
 _02319410: .word 0x00000D58
 _02319414: .word 0x00000D59
+#endif
 	arm_func_end TryInflictEndureStatus
 
 	arm_func_start TryInflictMirrorMoveStatus
@@ -471,8 +522,13 @@ _023194A0:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023194AC: .word ov10_022C4840
+#ifdef JAPAN
+_023194B0: .word 0x00000A9A
+_023194B4: .word 0x00000A9B
+#else
 _023194B0: .word 0x00000D5A
 _023194B4: .word 0x00000D5B
+#endif
 	arm_func_end TryInflictMirrorMoveStatus
 
 	arm_func_start TryInflictConversion2Status
@@ -528,10 +584,15 @@ _02319568:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319574: .word 0x00000DC4
+#ifdef JAPAN
+#define TRY_INFLICT_CONVERSION2_STATUS_OFFSET -0x2C0
+#else
+#define TRY_INFLICT_CONVERSION2_STATUS_OFFSET 0
+#endif
+_02319574: .word 0x00000DC4 + TRY_INFLICT_CONVERSION2_STATUS_OFFSET
 _02319578: .word ov10_022C4854
-_0231957C: .word 0x00000D5C
-_02319580: .word 0x00000D5D
+_0231957C: .word 0x00000D5C + TRY_INFLICT_CONVERSION2_STATUS_OFFSET
+_02319580: .word 0x00000D5D + TRY_INFLICT_CONVERSION2_STATUS_OFFSET
 	arm_func_end TryInflictConversion2Status
 
 	arm_func_start TryInflictVitalThrowStatus
@@ -577,8 +638,13 @@ _0231960C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02319618: .word ov10_022C485C
+#ifdef JAPAN
+_0231961C: .word 0x00000A9E
+_02319620: .word 0x00000A9F
+#else
 _0231961C: .word 0x00000D5E
 _02319620: .word 0x00000D5F
+#endif
 	arm_func_end TryInflictVitalThrowStatus
 
 	arm_func_start TryResetStatChanges
@@ -648,7 +714,11 @@ _023196FC:
 	beq _02319728
 	mov r0, r7
 	mov r1, r6
+#ifdef JAPAN
+	mov r2, #0xaa0
+#else
 	mov r2, #0xd60
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _02319738
 _02319728:
@@ -661,7 +731,11 @@ _02319738:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02319744: .word 0x00000AA1
+#else
 _02319744: .word 0x00000D61
+#endif
 	arm_func_end TryResetStatChanges
 
 	arm_func_start MirrorMoveIsActive
@@ -702,7 +776,11 @@ ExclusiveItemEffectIsActive__023197A8: ; 0x023197A8
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
+#ifdef JAPAN
+	add r0, r2, #0x224
+#else
 	add r0, r2, #0x228
+#endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__023197A8
@@ -770,6 +848,11 @@ _0231987C: .word ov29_0237CA18
 
 	arm_func_start AiConsiderMove
 AiConsiderMove: ; 0x02319880
+#ifdef JAPAN
+#define AI_CONSIDER_MOVE_OFFSET -0xA4
+#else
+#define AI_CONSIDER_MOVE_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x2c
 	mov sl, r1
@@ -903,7 +986,7 @@ _02319A64:
 	ldr r0, [r7]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
-	ldr r8, [r0, #0xb78]
+	ldr r8, [r0, #0xb78 + AI_CONSIDER_MOVE_OFFSET]
 	mov r0, r8
 	bl EntityIsValid__02319F8C
 	cmp r0, #0
@@ -1011,7 +1094,7 @@ _02319BF0:
 	ldr r0, [sp, #0x20]
 	add r0, r1, r0, lsl #2
 	add r0, r0, #0x12000
-	ldr r0, [r0, #0xb78]
+	ldr r0, [r0, #0xb78 + AI_CONSIDER_MOVE_OFFSET]
 	str r0, [sp, #0x18]
 	bl EntityIsValid__02319F8C
 	cmp r0, #0
@@ -1155,7 +1238,7 @@ _02319E10:
 	ldr r0, [r7]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
-	ldr r8, [r0, #0xb78]
+	ldr r8, [r0, #0xb78 + AI_CONSIDER_MOVE_OFFSET]
 	mov r0, r8
 	bl EntityIsValid__02319F8C
 	cmp r0, #0

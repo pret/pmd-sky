@@ -13,7 +13,11 @@ ov29_022EF7C4: ; 0x022EF7C4
 	ldr r4, _022EF89C ; =DUNGEON_PTR
 	ldr r0, [r4]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x26]
+#else
 	ldrb r0, [r0, #0xca]
+#endif
 	cmp r0, #0
 	cmpne r0, #1
 	cmpne r0, #3
@@ -25,7 +29,11 @@ _022EF804:
 	ldr r0, [r4]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr sb, [r0, #0xa94]
+#else
 	ldr sb, [r0, #0xb38]
+#endif
 	cmp r8, sb
 	beq _022EF840
 	mov r0, sb
@@ -71,6 +79,11 @@ _022EF8A0: .word 0x000003E7
 
 	arm_func_start ov29_022EF8A4
 ov29_022EF8A4: ; 0x022EF8A4
+#ifdef JAPAN
+#define OV29_022EF8A4_OFFSET -0xA4
+#else
+#define OV29_022EF8A4_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, #1
 	ldr r5, _022EF934 ; =DUNGEON_PTR
@@ -81,7 +94,7 @@ _022EF8BC:
 	ldr r0, [r5]
 	add r0, r0, r8, lsl #2
 	add r0, r0, #0x12000
-	ldr sb, [r0, #0xb28]
+	ldr sb, [r0, #0xb28 + OV29_022EF8A4_OFFSET]
 	cmp sb, #0
 	beq _022EF918
 	mov r0, sb
@@ -90,9 +103,9 @@ _022EF8BC:
 	ldrne r0, [r5]
 	addne r0, r0, r8, lsl #2
 	addne r0, r0, #0xcc00
-	ldrnesh r1, [r0, #0xec]
+	ldrnesh r1, [r0, #0xec + OV29_022EF8A4_OFFSET]
 	cmpne r1, r4
-	ldrnesh r2, [r0, #0xee]
+	ldrnesh r2, [r0, #0xee + OV29_022EF8A4_OFFSET]
 	cmpne r2, r4
 	beq _022EF918
 	mov r0, sb
@@ -123,7 +136,11 @@ _022EF948:
 	ldr r0, [r5]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xa84]
+#else
 	ldr r7, [r0, #0xb28]
+#endif
 	cmp r7, #0
 	beq _022EF99C
 	mov r0, r7
@@ -133,7 +150,11 @@ _022EF948:
 	ldr r0, [r5]
 	add r0, r0, r4
 	add r0, r0, #0xc000
+#ifdef JAPAN
+	ldrb r1, [r0, #0xc68]
+#else
 	ldrb r1, [r0, #0xd0c]
+#endif
 	mov r0, r7
 	cmp r1, #0xff
 	beq _022EF994
@@ -260,7 +281,11 @@ _022EFAD8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022EFAE0: .word DUNGEON_PTR
+#ifdef JAPAN
+_022EFAE4: .word 0x0002862C
+#else
 _022EFAE4: .word 0x000286D0
+#endif
 	arm_func_end TryActivateIqBooster
 
 	arm_func_start ov29_022EFAE8
@@ -978,7 +1003,11 @@ ov29_022F04F0: ; 0x022F04F0
 	cmp r0, #0
 	movne r0, #1
 	strneb r0, [r5, #0xb3]
+#ifdef JAPAN
+	strneb r0, [r4, #0x16d]
+#else
 	strneb r0, [r4, #0x171]
+#endif
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022F04F0
 
@@ -988,7 +1017,11 @@ ov29_022F0518: ; 0x022F0518
 	mov r1, #0
 	ldr ip, _022F0530 ; =sub_0201D198
 	add r0, r0, #0x2c
+#ifdef JAPAN
+	strb r1, [r2, #0x16d]
+#else
 	strb r1, [r2, #0x171]
+#endif
 	bx ip
 	.align 2, 0
 _022F0530: .word sub_0201D198
@@ -1004,7 +1037,11 @@ _022F0544:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xad4]
+#else
 	ldr r6, [r0, #0xb78]
+#endif
 	mov r0, r6
 	bl EntityIsValid__022F0590
 	cmp r0, #0

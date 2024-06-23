@@ -55,6 +55,7 @@
 .public ov31_02387688
 .public OverlayIsLoaded
 .public RestMenu
+.public StrcpySimple
 .public StrncpySimple
 .public sub_0200B330
 .public sub_0200B3D4

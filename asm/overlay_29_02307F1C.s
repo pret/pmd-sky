@@ -46,10 +46,17 @@ TryTriggerMonsterHouse: ; 0x02307F4C
 	strb r1, [r2, #0x793]
 	ldr r1, [r0]
 	add r0, r1, #0x4000
+#ifdef JAPAN
+	ldrb r2, [r0, #0x25]
+	cmp r2, #0xff
+	beq _02308268
+	add r0, r1, #0x244
+#else
 	ldrb r2, [r0, #0xc9]
 	cmp r2, #0xff
 	beq _02308268
 	add r0, r1, #0x2e8
+#endif
 	add r1, r0, #0xec00
 	mov r0, #0x1c
 	mla r1, r2, r0, r1

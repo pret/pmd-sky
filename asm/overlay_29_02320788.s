@@ -22,7 +22,11 @@ _023207BC:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xad4]
+#else
 	ldr r6, [r0, #0xb78]
+#endif
 	mov r0, r6
 	bl EntityIsValid__02320764
 	cmp r0, #0
@@ -220,8 +224,13 @@ _02320A84:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02320A8C: .word DUNGEON_PTR
+#ifdef JAPAN
+_02320A90: .word 0x0000093B
+_02320A94: .word 0x0000093A
+#else
 _02320A90: .word 0x00000BFC
 _02320A94: .word 0x00000BFB
+#endif
 _02320A98: .word ov29_023529B8
 _02320A9C: .word ov29_02353700
 _02320AA0: .word 0x0000026F
@@ -275,7 +284,11 @@ _02320B44:
 	mov r0, r8
 	mov r1, r7
 	mov r2, #1
+#ifdef JAPAN
+	mov r3, #0xb00
+#else
 	mov r3, #0xdc0
+#endif
 	str ip, [sp]
 	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
@@ -285,7 +298,11 @@ _02320B44:
 	mov ip, #6
 	mov r0, r8
 	mov r1, r7
+#ifdef JAPAN
+	rsb r3, r2, #0xb00
+#else
 	rsb r3, r2, #0xdc0
+#endif
 	str ip, [sp]
 	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
@@ -358,7 +375,11 @@ _02320C6C:
 	mov r0, sb
 	mov r1, r8
 	mov r2, #1
+#ifdef JAPAN
+	mov r3, #0xb00
+#else
 	mov r3, #0xdc0
+#endif
 	str ip, [sp]
 	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
@@ -368,7 +389,11 @@ _02320C6C:
 	mov ip, #6
 	mov r0, sb
 	mov r1, r8
+#ifdef JAPAN
+	rsb r3, r2, #0xb00
+#else
 	rsb r3, r2, #0xdc0
+#endif
 	str ip, [sp]
 	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
@@ -400,6 +425,12 @@ _02320D04: .word 0x00000163
 
 	arm_func_start TryWarp
 TryWarp: ; 0x02320D08
+
+#ifdef JAPAN
+#define TRY_WARP_OFFSET -0xA4
+#else
+#define TRY_WARP_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, #0
 	mov sb, r0
@@ -445,7 +476,7 @@ _02320DA0:
 	ldr r0, _023210EC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
-	ldrb r0, [r0, #0xda]
+	ldrb r0, [r0, #0xda + TRY_WARP_OFFSET]
 	bl AreTileJumpsAllowed
 	cmp r0, #0
 	bne _02320DD0
@@ -461,9 +492,9 @@ _02320DD0:
 	ldrsh r1, [r8, #4]
 	ldr r0, [r0]
 	add r0, r0, #0xcc00
-	ldrsh r2, [r0, #0xe4]
+	ldrsh r2, [r0, #0xe4 + TRY_WARP_OFFSET]
 	cmp r2, r1
-	ldreqsh r1, [r0, #0xe6]
+	ldreqsh r1, [r0, #0xe6 + TRY_WARP_OFFSET]
 	ldreqsh r0, [r8, #6]
 	cmpeq r1, r0
 	bne _02320E20
@@ -539,8 +570,13 @@ _02320EF4:
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #0
+#ifdef JAPAN
+	add r1, r1, #0xc40
+	add r1, r1, #0xc000
+#else
 	add r1, r1, #0xe4
 	add r1, r1, #0xcc00
+#endif
 	bl FindClosestUnoccupiedTileWithin2
 	cmp r0, #0
 	bne _02321008
@@ -574,8 +610,13 @@ _02320F74:
 	add r0, sp, #0
 	ldr r1, [r1]
 	mov r2, #1
+#ifdef JAPAN
+	add r1, r1, #0xc40
+	add r1, r1, #0xc000
+#else
 	add r1, r1, #0xe4
 	add r1, r1, #0xcc00
+#endif
 	bl FindUnoccupiedTileWithin3
 	cmp r0, #0
 	bne _02321008
@@ -672,13 +713,18 @@ _023210DC:
 	bl ov29_02321238
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_023210E8: .word 0x00000E74
+#ifdef JAPAN
+#define TRY_WARP_DATA_OFFSET -0x2BE
+#else
+#define TRY_WARP_DATA_OFFSET 0
+#endif
+_023210E8: .word 0x00000E74 + TRY_WARP_DATA_OFFSET
 _023210EC: .word DUNGEON_PTR
-_023210F0: .word 0x00000E72
-_023210F4: .word 0x00000E73
-_023210F8: .word 0x00000E71
+_023210F0: .word 0x00000E72 + TRY_WARP_DATA_OFFSET
+_023210F4: .word 0x00000E73 + TRY_WARP_DATA_OFFSET
+_023210F8: .word 0x00000E71 + TRY_WARP_DATA_OFFSET
 _023210FC: .word ov29_0237C850
-_02321100: .word 0x00000E75
+_02321100: .word 0x00000E75 + TRY_WARP_DATA_OFFSET
 	arm_func_end TryWarp
 
 	arm_func_start EnsureCanStandCurrentTile
@@ -772,7 +818,11 @@ _02321210:
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x4000
+#ifdef JAPAN
+	ldrb r1, [r1, #0x20]
+#else
 	ldrb r1, [r1, #0xc4]
+#endif
 	bl ov29_02305814
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -889,7 +939,11 @@ _02321360:
 	mov r0, sl
 	bl ov29_022E4CD4
 	mov r0, #1
+#ifdef JAPAN
+	strb r0, [r5, #0x21d]
+#else
 	strb r0, [r5, #0x221]
+#endif
 	mov r0, #0
 	mov r1, sl
 	mov r2, r0
@@ -909,7 +963,11 @@ _02321360:
 	bl ov29_02322374
 	mov r4, r0
 	mov r0, #0
+#ifdef JAPAN
+	strb r0, [r5, #0x21d]
+#else
 	strb r0, [r5, #0x221]
+#endif
 	b _02321408
 _023213E4:
 	ldr r1, [sp, #0x30]
@@ -935,6 +993,11 @@ _02321428:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02321430: .word 0x00000C53
+_02321434: .word 0x00000C54
+#else
 _02321430: .word 0x00000F11
 _02321434: .word 0x00000F12
+#endif
 	arm_func_end ov29_02321288

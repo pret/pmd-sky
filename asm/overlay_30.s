@@ -73,7 +73,11 @@ _023828FC:
 	mov r2, #0
 	bne _02382928
 	ldr r0, _0238297C ; =0x0000040C
+#ifdef JAPAN
+	add r1, r0, #0xcc
+#else
 	ldr r1, _02382980 ; =0x00000247
+#endif
 	bl sub_02034EB4
 	ldr r0, _02382974 ; =ov30_023860A0
 	mov r1, #2
@@ -105,11 +109,18 @@ _0238296C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02382974: .word ov30_023860A0
+#ifdef JAPAN
+_02382978: .word 0x20111122
+_0238297C: .word 0x0000040C
+_02382984: .word 0x0000061C
+_02382988: .word 0x000004DE
+#else
 _02382978: .word 0x21061522
 _0238297C: .word 0x0000040C
 _02382980: .word 0x00000247
 _02382984: .word 0x0000061C
 _02382988: .word 0x0000024D
+#endif
 	arm_func_end ov30_02382874
 
 	arm_func_start ov30_0238298C
@@ -166,7 +177,11 @@ ov30_023829CC: ; 0x023829CC
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02382A2C: .word ov30_023860A4
+#ifdef JAPAN
+_02382A30: .word 0x20111122
+#else
 _02382A30: .word 0x21061522
+#endif
 	arm_func_end ov30_023829CC
 
 	arm_func_start ov30_02382A34
@@ -191,11 +206,19 @@ _02382A68:
 	cmp r0, #0
 	ldr r0, _02382C10 ; =0x00000408
 	beq _02382A88
+#ifdef JAPAN
+	add r1, r0, #0xca
+#else
 	ldr r1, _02382C14 ; =0x00000241
+#endif
 	bl sub_02034EB4
 	b _02382A90
 _02382A88:
+#ifdef JAPAN
+	add r1, r0, #0xcb
+#else
 	ldr r1, _02382C18 ; =0x00000242
+#endif
 	bl sub_02034EB4
 _02382A90:
 	ldr r0, _02382C0C ; =ov30_023860A4
@@ -257,8 +280,13 @@ _02382B40:
 	b _02382BB0
 _02382B68:
 	ldr r0, _02382C24 ; =0x0000041C
+#ifdef JAPAN
+	mov r2, #0
+	add r1, r0, #0xb9
+#else
 	mov r1, #0x244
 	mov r2, #0
+#endif
 	bl sub_02034EB4
 	ldr r0, _02382C0C ; =ov30_023860A4
 	mov r1, #3
@@ -267,8 +295,13 @@ _02382B68:
 	b _02382C04
 _02382B8C:
 	ldr r0, _02382C28 ; =0x0000040C
+#ifdef JAPAN
+	mov r2, #0
+	add r1, r0, #0xbd
+#else
 	mov r1, #0x238
 	mov r2, #0
+#endif
 	bl sub_02034EB4
 	ldr r0, _02382C0C ; =ov30_023860A4
 	mov r1, #4
@@ -277,8 +310,13 @@ _02382B8C:
 	b _02382C04
 _02382BB0:
 	ldr r0, _02382C24 ; =0x0000041C
+#ifdef JAPAN
+	mov r2, #0
+	add r1, r0, #0xae
+#else
 	ldr r1, _02382C2C ; =0x00000239
 	mov r2, #0
+#endif
 	bl sub_02034EB4
 	ldr r0, _02382C0C ; =ov30_023860A4
 	mov r1, #3
@@ -305,13 +343,17 @@ _02382C04:
 	.align 2, 0
 _02382C0C: .word ov30_023860A4
 _02382C10: .word 0x00000408
+#ifndef JAPAN
 _02382C14: .word 0x00000241
 _02382C18: .word 0x00000242
+#endif
 _02382C1C: .word 0x000F1209
 _02382C20: .word 0x000F1207
 _02382C24: .word 0x0000041C
 _02382C28: .word 0x0000040C
+#ifndef JAPAN
 _02382C2C: .word 0x00000239
+#endif
 	arm_func_end ov30_02382A34
 
 	arm_func_start ov30_02382C30
@@ -404,8 +446,13 @@ _02382CF8:
 	.align 2, 0
 _02382D6C: .word OVERLAY30_JP_STRING_1
 _02382D70: .word DUNGEON_PTR
+#ifdef JAPAN
+_02382D74: .word 0x0002C942
+_02382D78: .word 0x0002C946
+#else
 _02382D74: .word 0x0002C9E6
 _02382D78: .word 0x0002C9EA
+#endif
 _02382D7C: .word OVERLAY30_JP_STRING_2
 	arm_func_end WriteQuicksaveData
 
@@ -435,7 +482,11 @@ _02382DC8:
 	mov r1, r7
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r8, [r0, #0xb24]
+#else
 	ldr r8, [r0, #0xbc8]
+#endif
 	cmp r8, #0
 	beq _02382E60
 	ldr r0, [r8]
@@ -513,7 +564,11 @@ _02382EDC:
 	mov r1, r7
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r8, [r0, #0xc24]
+#else
 	ldr r8, [r0, #0xcc8]
+#endif
 	cmp r8, #0
 	beq _02382F84
 	ldr r0, [r8]
@@ -576,8 +631,13 @@ ov30_02382FB8: ; 0x02382FB8
 	ldr r1, _02383080 ; =OVERLAY30_JP_STRING_1
 	ldr r2, [r2]
 	mov r5, r0
+#ifdef JAPAN
+	add r2, r2, #0x388
+	add r4, r2, #0x19400
+#else
 	add r2, r2, #0x2c
 	add r4, r2, #0x19800
+#endif
 	bl ov30_02385CE0
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -628,6 +688,11 @@ _02383080: .word OVERLAY30_JP_STRING_1
 
 	arm_func_start ov30_02383084
 ov30_02383084: ; 0x02383084
+#ifdef JAPAN
+#define OV30_02383084_OFFSET -0xA4
+#else
+#define OV30_02383084_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _023831E0 ; =OVERLAY30_JP_STRING_1
 	mov r4, r0
@@ -636,61 +701,66 @@ ov30_02383084: ; 0x02383084
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	ldr r1, [r1, #0xe2c]
+	ldr r1, [r1, #0xe2c + OV30_02383084_OFFSET]
 	bl ov30_02385D74
 	ldr r1, _023831E4 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	ldr r1, [r1, #0xe30]
+	ldr r1, [r1, #0xe30 + OV30_02383084_OFFSET]
 	bl ov30_02385D74
 	ldr r1, _023831E4 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	ldrb r1, [r1, #0xe34]
+	ldrb r1, [r1, #0xe34 + OV30_02383084_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _023831E4 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	ldrb r1, [r1, #0xe35]
+	ldrb r1, [r1, #0xe35 + OV30_02383084_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _023831E4 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	ldrb r1, [r1, #0xe36]
+	ldrb r1, [r1, #0xe36 + OV30_02383084_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _023831E4 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	ldrb r1, [r1, #0xe37]
+	ldrb r1, [r1, #0xe37 + OV30_02383084_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _023831E4 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	ldrb r1, [r1, #0xe38]
+	ldrb r1, [r1, #0xe38 + OV30_02383084_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _023831E4 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	ldrb r1, [r1, #0xe39]
+	ldrb r1, [r1, #0xe39 + OV30_02383084_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _023831E4 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	ldrb r1, [r1, #0xe3c]
+	ldrb r1, [r1, #0xe3c + OV30_02383084_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _023831E4 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0x3d00
+	ldrh r1, [r1, #0x96]
+#else
 	add r1, r1, #0x3e00
-	ldrh r1, [r1, #0x3a]
+	ldrh r1, [r1, #0x3a + OV30_02383084_OFFSET]
+#endif
 	bl ov30_02385D14
 	ldr r5, _023831E4 ; =DUNGEON_PTR
 	mov r6, #0
@@ -699,7 +769,7 @@ _0238318C:
 	mov r0, r4
 	add r1, r1, r6, lsl #2
 	add r1, r1, #0x12000
-	ldr r1, [r1, #0xb28]
+	ldr r1, [r1, #0xb28 + OV30_02383084_OFFSET]
 	bl ov30_023831E8
 	add r6, r6, #1
 	cmp r6, #4
@@ -711,7 +781,7 @@ _023831B8:
 	mov r0, r4
 	add r1, r1, r6, lsl #2
 	add r1, r1, #0x12000
-	ldr r1, [r1, #0xb38]
+	ldr r1, [r1, #0xb38 + OV30_02383084_OFFSET]
 	bl ov30_023831E8
 	add r6, r6, #1
 	cmp r6, #0x10
@@ -724,8 +794,17 @@ _023831E4: .word DUNGEON_PTR
 
 	arm_func_start ov30_023831E8
 ov30_023831E8: ; 0x023831E8
+#ifdef JAPAN
+#define OV30_023831E8_OFFSET -4
+#else
+#define OV30_023831E8_OFFSET 0
+#endif
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
-	sub sp, sp, #0x25c
+#endif
+	sub sp, sp, #0x25c + OV30_023831E8_OFFSET
 	mov r4, r1
 	mov r3, #0
 	mov r2, #1
@@ -773,7 +852,7 @@ _0238323C:
 _0238329C:
 	add r0, sp, #0x1c
 	mov r1, #0
-	mov r2, #0x240
+	mov r2, #0x240 + OV30_023831E8_OFFSET
 	bl memset
 	add r1, sp, #0x18
 	mov r0, r8
@@ -851,10 +930,6 @@ _02383300:
 	bl ov30_02385D34
 	ldrsh r1, [r6, #0x14]
 	mov r0, r8
-	arm_func_end ov30_023831E8
-
-	arm_func_start ov30_023833D8
-ov30_023833D8: ; 0x023833D8
 	bl ov30_02385D34
 	ldrb r1, [r6, #0x1a]
 	mov r0, r8
@@ -878,10 +953,6 @@ ov30_023833D8: ; 0x023833D8
 	mov r0, r8
 	bl ov30_02385D34
 	ldrsh r1, [r6, #0x28]
-	arm_func_end ov30_023833D8
-
-	arm_func_start ov30_02383434
-ov30_02383434: ; 0x02383434
 	mov r0, r8
 	bl ov30_02385D34
 	ldrsh r1, [r6, #0x2a]
@@ -1029,10 +1100,6 @@ _02383558:
 	bl ov30_02385D54
 	ldrb r1, [r6, #0xc1]
 	mov r0, r8
-	arm_func_end ov30_02383434
-
-	arm_func_start ov30_0238367C
-ov30_0238367C: ; 0x0238367C
 	bl ov30_02385D54
 	ldrb r1, [r6, #0xc2]
 	mov r0, r8
@@ -1168,6 +1235,79 @@ ov30_0238367C: ; 0x0238367C
 	ldrb r1, [r6, #0xfc]
 	bl ov30_02385DD4
 	mov r0, r8
+#ifdef JAPAN
+	ldrb r1, [r6, #0xfd]
+	bl ov30_02385DD4
+	mov r0, r8
+	ldrb r1, [r6, #0x107]
+	bl ov30_02385D54
+	mov r0, r8
+	ldrb r1, [r6, #0xfe]
+	bl ov30_02385DD4
+	mov r0, r8
+	ldrb r1, [r6, #0xff]
+	bl ov30_02385DD4
+	mov r0, r8
+	ldrb r1, [r6, #0x100]
+	bl ov30_02385DD4
+	mov r0, r8
+	ldrb r1, [r6, #0x103]
+	bl ov30_02385D54
+	mov r0, r8
+	ldrb r1, [r6, #0x104]
+	bl ov30_02385D54
+	mov r0, r8
+	ldrb r1, [r6, #0x108]
+	bl ov30_02385DD4
+	ldrb r1, [r6, #0x105]
+	mov r0, r8
+	bl ov30_02385D54
+	ldrb r1, [r6, #0x106]
+	mov r0, r8
+	bl ov30_02385D54
+	ldrb r1, [r6, #0x109]
+	mov r0, r8
+	bl ov30_02385D54
+	ldrb r2, [r6, #0x10a]
+	add r1, sp, #1
+	mov r0, r8
+	strb r2, [sp, #1]
+	mov r2, #1
+	bl ov30_02385C54
+	ldrb r2, [r6, #0x10b]
+	mov r0, r8
+	add r1, sp, #0
+	strb r2, [sp]
+	mov r2, #1
+	bl ov30_02385C54
+	ldr r1, [r6, #0x10c]
+	mov r0, r8
+	str r1, [sp, #0x10]
+	add r1, sp, #0x10
+	mov r2, #4
+	bl ov30_02385C54
+	mov r0, r8
+	add r1, r6, #0x110
+	mov r2, #5
+	bl ov30_02385EB8
+	add r1, r6, #0x15
+	mov r0, r8
+	add r1, r1, #0x100
+	mov r2, #5
+	bl ov30_02385EB8
+	ldrb r1, [r6, #0x11a]
+	mov r0, r8
+	bl ov30_02385D54
+	ldrb r1, [r6, #0x11b]
+	mov r0, r8
+	bl ov30_02385D54
+	ldr r1, [r6, #0x11c]
+	mov r0, r8
+	and r1, r1, #0xff
+	bl ov30_02385D54
+	mov r7, #0
+	add r5, r6, #0x120
+#else
 	ldrb r1, [r6, #0x103]
 	bl ov30_02385DD4
 	mov r0, r8
@@ -1187,10 +1327,6 @@ ov30_0238367C: ; 0x0238367C
 	bl ov30_02385DD4
 	mov r0, r8
 	ldrb r1, [r6, #0x104]
-	arm_func_end ov30_0238367C
-
-	arm_func_start ov30_023838E4
-ov30_023838E4: ; 0x023838E4
 	bl ov30_02385D54
 	mov r0, r8
 	ldrb r1, [r6, #0x105]
@@ -1246,15 +1382,16 @@ ov30_023838E4: ; 0x023838E4
 	bl ov30_02385D54
 	mov r7, #0
 	add r5, r6, #0x124
+#endif
 	mov r4, #2
 _023839C4:
 	add r0, r6, r7, lsl #3
-	ldrb r1, [r0, #0x124]
+	ldrb r1, [r0, #0x124 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D54
 	add r0, r6, r7, lsl #3
 	add r0, r0, #0x100
-	ldrh r1, [r0, #0x26]
+	ldrh r1, [r0, #0x26 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	and r1, r1, #0xff
 	bl ov30_02385D54
@@ -1264,166 +1401,175 @@ _023839C4:
 	add r1, r1, #4
 	bl ov30_02385C54
 	add r0, r6, r7, lsl #3
-	ldrb r1, [r0, #0x12a]
+	ldrb r1, [r0, #0x12a + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D54
 	mov r0, r8
 	add r1, r6, r7, lsl #3
-	ldrb r1, [r1, #0x12b]
+	ldrb r1, [r1, #0x12b + OV30_023831E8_OFFSET]
 	bl ov30_02385D54
 	add r7, r7, #1
 	cmp r7, #4
 	blt _023839C4
-	ldrb r1, [r6, #0x144]
+	ldrb r1, [r6, #0x144 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D54
 	add r0, r6, #0x100
-	ldrsh r1, [r0, #0x46]
+	ldrsh r1, [r0, #0x46 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D34
 	add r0, r6, #0x100
-	ldrsh r1, [r0, #0x48]
+	ldrsh r1, [r0, #0x48 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D34
 	add r0, r6, #0x100
-	ldrsh r1, [r0, #0x4a]
+	ldrsh r1, [r0, #0x4a + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D34
 	add r0, r6, #0x100
-	ldrsh r1, [r0, #0x4c]
+	ldrsh r1, [r0, #0x4c + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D34
-	ldrb r1, [r6, #0x14e]
+	ldrb r1, [r6, #0x14e + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x14f]
+	ldrb r1, [r6, #0x14f + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x151]
+	ldrb r1, [r6, #0x151 + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x150]
+	ldrb r1, [r6, #0x150 + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x152]
+	ldrb r1, [r6, #0x152 + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x153]
+	ldrb r1, [r6, #0x153 + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x154]
+	ldrb r1, [r6, #0x154 + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x155]
+	ldrb r1, [r6, #0x155 + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x156]
+	ldrb r1, [r6, #0x156 + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
 	add r1, r6, #0x100
-	ldrh r1, [r1, #0x58]
+	ldrh r1, [r1, #0x58 + OV30_023831E8_OFFSET]
 	bl ov30_02385D14
 	mov r0, r8
 	add r1, r6, #0x100
-	ldrh r1, [r1, #0x5a]
+	ldrh r1, [r1, #0x5a + OV30_023831E8_OFFSET]
 	bl ov30_02385D14
 	mov r0, r8
-	ldrb r1, [r6, #0x15c]
+	ldrb r1, [r6, #0x15c + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x15d]
+	ldrb r1, [r6, #0x15d + OV30_023831E8_OFFSET]
 	bl ov30_02385D54
 	mov r0, r8
-	ldrb r1, [r6, #0x15e]
+	ldrb r1, [r6, #0x15e + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x15f]
+	ldrb r1, [r6, #0x15f + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x160]
+	ldrb r1, [r6, #0x160 + OV30_023831E8_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r8
-	ldrb r1, [r6, #0x177]
+	ldrb r1, [r6, #0x177 + OV30_023831E8_OFFSET]
 	bl ov30_02385D54
 	mov r0, r8
-	ldrb r1, [r6, #0x178]
+	ldrb r1, [r6, #0x178 + OV30_023831E8_OFFSET]
 	bl ov30_02385D54
 	mov r0, r8
-	ldrb r1, [r6, #0x179]
+	ldrb r1, [r6, #0x179 + OV30_023831E8_OFFSET]
 	bl ov30_02385D54
 	mov r0, r8
-	ldrb r1, [r6, #0x17a]
+	ldrb r1, [r6, #0x17a + OV30_023831E8_OFFSET]
 	bl ov30_02385D54
 	mov r0, r8
-	ldrb r1, [r6, #0x17b]
+	ldrb r1, [r6, #0x17b + OV30_023831E8_OFFSET]
 	bl ov30_02385D54
-	ldrb r1, [r6, #0x17c]
+	ldrb r1, [r6, #0x17c + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D54
-	add r1, r6, #0x7e
+	add r1, r6, #0x7e + OV30_023831E8_OFFSET
 	mov r0, r8
 	add r1, r1, #0x100
 	bl ov30_02385DF8
-	ldr r1, [r6, #0x188]
+	ldr r1, [r6, #0x188 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385DB4
 	add r0, r6, #0x100
-	ldrh r1, [r0, #0x92]
+	ldrh r1, [r0, #0x92 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D14
-	ldr r1, [r6, #0x18c]
+	ldr r1, [r6, #0x18c + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D94
 	add r0, r6, #0x100
-	ldrh r1, [r0, #0x90]
+	ldrh r1, [r0, #0x90 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D14
 	add r1, r6, #0x200
-	ldrsh r1, [r1, #0x10]
+	ldrsh r1, [r1, #0x10 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D34
 	add r1, r6, #0x200
-	ldrsh r1, [r1, #0x12]
+	ldrsh r1, [r1, #0x12 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D34
-	ldr r1, [r6, #0x214]
+	ldr r1, [r6, #0x214 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D74
 	ldrb r1, [r6, #0xbc]
 	mov r0, r8
 	bl ov30_02385D54
-	ldrb r1, [r6, #0x166]
+	ldrb r1, [r6, #0x166 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D54
-	ldrb r1, [r6, #0x167]
+	ldrb r1, [r6, #0x167 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D54
 	add r1, r6, #0x100
-	ldrsh r1, [r1, #0x68]
+	ldrsh r1, [r1, #0x68 + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D34
 	ldrsh r1, [r6, #0xac]
 	mov r0, r8
 	bl ov30_02385D34
-	ldrb r1, [r6, #0x16a]
+	ldrb r1, [r6, #0x16a + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D54
 	mov r4, #0
 _02383C4C:
 	add r0, r6, r4
-	ldrb r1, [r0, #0x16b]
+	ldrb r1, [r0, #0x16b + OV30_023831E8_OFFSET]
 	mov r0, r8
 	bl ov30_02385D54
 	add r4, r4, #1
 	cmp r4, #5
 	blt _02383C4C
-	add sp, sp, #0x25c
+	add sp, sp, #0x25c + OV30_023831E8_OFFSET
+#ifdef JAPAN
+	ldmia sp!, {r4, r5, r6, r7, r8, pc}
+#else
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-	arm_func_end ov30_023838E4
+#endif
+	arm_func_end ov30_023831E8
 
 	arm_func_start ov30_02383C70
 ov30_02383C70: ; 0x02383C70
+#ifdef JAPAN
+#define OV30_02383C70_OFFSET -0xA4
+#else
+#define OV30_02383C70_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r1, _02384090 ; =OVERLAY30_JP_STRING_1
 	mov sl, r0
@@ -1432,87 +1578,87 @@ ov30_02383C70: ; 0x02383C70
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrb r1, [r1, #0xc4]
+	ldrb r1, [r1, #0xc4 + OV30_02383C70_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrb r1, [r1, #0xc5]
+	ldrb r1, [r1, #0xc5 + OV30_02383C70_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrb r1, [r1, #0xc6]
+	ldrb r1, [r1, #0xc6 + OV30_02383C70_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrb r1, [r1, #0xc7]
+	ldrb r1, [r1, #0xc7 + OV30_02383C70_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrb r1, [r1, #0xc8]
+	ldrb r1, [r1, #0xc8 + OV30_02383C70_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrb r1, [r1, #0xc9]
+	ldrb r1, [r1, #0xc9 + OV30_02383C70_OFFSET]
 	bl ov30_02385D54
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrb r1, [r1, #0xca]
+	ldrb r1, [r1, #0xca + OV30_02383C70_OFFSET]
 	bl ov30_02385D54
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldr r1, [r1, #0xcc]
+	ldr r1, [r1, #0xcc + OV30_02383C70_OFFSET]
 	and r1, r1, #0xff
 	bl ov30_02385D54
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldr r1, [r1, #0xd0]
+	ldr r1, [r1, #0xd0 + OV30_02383C70_OFFSET]
 	and r1, r1, #0xff
 	bl ov30_02385D54
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrsh r1, [r1, #0xd4]
+	ldrsh r1, [r1, #0xd4 + OV30_02383C70_OFFSET]
 	bl ov30_02385D34
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrsh r1, [r1, #0xd6]
+	ldrsh r1, [r1, #0xd6 + OV30_02383C70_OFFSET]
 	bl ov30_02385D34
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrsh r1, [r1, #0xd8]
+	ldrsh r1, [r1, #0xd8 + OV30_02383C70_OFFSET]
 	bl ov30_02385D34
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrb r1, [r1, #0xda]
+	ldrb r1, [r1, #0xda + OV30_02383C70_OFFSET]
 	bl ov30_02385D34
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	ldrsh r1, [r1, #0xde]
+	ldrsh r1, [r1, #0xde + OV30_02383C70_OFFSET]
 	bl ov30_02385D34
 	mov r8, #0
 	ldr r6, _02384094 ; =DUNGEON_PTR
@@ -1525,7 +1671,7 @@ _02383DEC:
 _02383DF4:
 	ldr r1, [r6]
 	mov r0, sl
-	add r1, r1, #0xe0
+	add r1, r1, #0xe0 + OV30_02383C70_OFFSET
 	add r1, r1, #0x4000
 	add r1, r1, sb
 	mla r1, r7, r4, r1
@@ -1539,22 +1685,32 @@ _02383DF4:
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0x3c
+	add r1, r1, #0xcc00
+#else
 	add r1, r1, #0xce0
 	add r1, r1, #0xc000
+#endif
 	bl ov30_02385DF8
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0xc40
+	add r1, r1, #0xc000
+#else
 	add r1, r1, #0xe4
 	add r1, r1, #0xcc00
+#endif
 	bl ov30_02385DF8
 	ldr r0, _02384094 ; =DUNGEON_PTR
 	mvn r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xcc00
-	ldrh r2, [r0, #0xe8]
+	ldrh r2, [r0, #0xe8 + OV30_02383C70_OFFSET]
 	strh r2, [sp]
-	ldrh r2, [r0, #0xea]
+	ldrh r2, [r0, #0xea + OV30_02383C70_OFFSET]
 	ldrsh r0, [sp]
 	strh r2, [sp, #2]
 	cmp r0, r1
@@ -1573,7 +1729,7 @@ _02383DF4:
 _02383EB0:
 	ldr r1, [r4]
 	mov r0, sl
-	add r1, r1, #0xec
+	add r1, r1, #0xec + OV30_02383C70_OFFSET
 	add r1, r1, #0xcc00
 	add r1, r1, r5, lsl #2
 	bl ov30_02385E20
@@ -1587,7 +1743,7 @@ _02383EDC:
 	mov r0, sl
 	add r1, r1, r5
 	add r1, r1, #0xc000
-	ldrb r1, [r1, #0xd0c]
+	ldrb r1, [r1, #0xd0c + OV30_02383C70_OFFSET]
 	bl ov30_02385D54
 	add r5, r5, #1
 	cmp r5, #8
@@ -1595,20 +1751,35 @@ _02383EDC:
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0xc70
+	add r1, r1, #0xc000
+#else
 	add r1, r1, #0x114
 	add r1, r1, #0xcc00
+#endif
 	bl ov30_02385E48
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0xc80
+	add r1, r1, #0xc000
+#else
 	add r1, r1, #0x124
 	add r1, r1, #0xcc00
+#endif
 	bl ov30_02385E48
 	ldr r1, _02384094 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0xc90
+	add r1, r1, #0xc000
+#else
 	add r1, r1, #0x134
 	add r1, r1, #0xcc00
+#endif
 	bl ov30_02385E90
 	mov r8, #0
 	ldr r6, _02384094 ; =DUNGEON_PTR
@@ -1621,8 +1792,13 @@ _02383F5C:
 _02383F64:
 	ldr r1, [r6]
 	mov r0, sl
+#ifdef JAPAN
+	add r1, r1, #0xbc
+	add r1, r1, #0xcc00
+#else
 	add r1, r1, #0xd60
 	add r1, r1, #0xc000
+#endif
 	add r1, r1, r7
 	mla r1, sb, r4, r1
 	bl ov30_023842B0
@@ -1630,8 +1806,13 @@ _02383F64:
 	mov r0, sl
 	add r1, r1, r8, lsl #4
 	add r1, r1, sb, lsl #1
+#ifdef JAPAN
+	add r1, r1, #0xd100
+	ldrsh r1, [r1, #0xbc]
+#else
 	add r1, r1, #0xd200
 	ldrsh r1, [r1, #0x60]
+#endif
 	bl ov30_02385D34
 	add sb, sb, #1
 	cmp sb, #8
@@ -1643,7 +1824,7 @@ _02383F64:
 	mov r0, sl
 	ldr r1, [r1]
 	mov r2, #1
-	add r1, r1, #0x138
+	add r1, r1, #0x138 + OV30_02383C70_OFFSET
 	add r4, r1, #0xcc00
 	mov r1, r4
 	bl ov30_02385C54
@@ -1680,7 +1861,7 @@ _02383FE8:
 	mov r0, sl
 	ldr r1, [r1]
 	mov r2, #1
-	add r1, r1, #0x2fc
+	add r1, r1, #0x2fc + OV30_02383C70_OFFSET
 	add r4, r1, #0x12800
 	mov r1, r4
 	bl ov30_02385C54
@@ -1698,11 +1879,16 @@ _02383FE8:
 	.align 2, 0
 _02384090: .word OVERLAY30_JP_STRING_1
 _02384094: .word DUNGEON_PTR
-_02384098: .word 0x00012AFE
+_02384098: .word 0x00012AFE + OV30_02383C70_OFFSET
 	arm_func_end ov30_02383C70
 
 	arm_func_start ov30_0238409C
 ov30_0238409C: ; 0x0238409C
+#ifdef JAPAN
+#define OV30_0238409C_OFFSET -0xA4
+#else
+#define OV30_0238409C_OFFSET 0
+#endif
 	stmdb sp!, {r4, lr}
 	ldr r1, _02384200 ; =OVERLAY30_JP_STRING_1
 	mov r4, r0
@@ -1711,85 +1897,85 @@ ov30_0238409C: ; 0x0238409C
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x23c]
+	ldrb r1, [r1, #0x23c + OV30_0238409C_OFFSET]
 	bl ov30_02385D54
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x23d]
+	ldrb r1, [r1, #0x23d + OV30_0238409C_OFFSET]
 	bl ov30_02385D54
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x23e]
+	ldrb r1, [r1, #0x23e + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x23f]
+	ldrb r1, [r1, #0x23f + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x240]
+	ldrb r1, [r1, #0x240 + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x242]
+	ldrb r1, [r1, #0x242 + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x24f]
+	ldrb r1, [r1, #0x24f + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x243]
+	ldrb r1, [r1, #0x243 + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x24e]
+	ldrb r1, [r1, #0x24e + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x250]
+	ldrb r1, [r1, #0x250 + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x244]
+	ldrb r1, [r1, #0x244 + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x245]
+	ldrb r1, [r1, #0x245 + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x246]
+	ldrb r1, [r1, #0x246 + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	mov r0, r4
 	ldr r1, _02384204 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	ldrb r1, [r1, #0x248]
+	ldrb r1, [r1, #0x248 + OV30_0238409C_OFFSET]
 	bl ov30_02385DD4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1820,10 +2006,15 @@ ov30_02384208: ; 0x02384208
 	bl ov30_02385D34
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define OV30_02384208_OFFSET -0xA4
+#else
+#define OV30_02384208_OFFSET 0
+#endif
 _02384258: .word DUNGEON_PTR
-_0238425C: .word 0x0002CB02
-_02384260: .word 0x0002CB04
-_02384264: .word 0x0002CB06
+_0238425C: .word 0x0002CB02 + OV30_02384208_OFFSET
+_02384260: .word 0x0002CB04 + OV30_02384208_OFFSET
+_02384264: .word 0x0002CB06 + OV30_02384208_OFFSET
 	arm_func_end ov30_02384208
 
 	arm_func_start ov30_02384268
@@ -1941,12 +2132,21 @@ _02384378:
 	.align 2, 0
 _023843F0: .word OVERLAY30_JP_STRING_1
 _023843F4: .word DUNGEON_PTR
+#ifdef JAPAN
+_023843F8: .word 0x0002C942
+#else
 _023843F8: .word 0x0002C9E6
+#endif
 _023843FC: .word OVERLAY30_JP_STRING_2
 	arm_func_end ov30_023842F4
 
 	arm_func_start ov30_02384400
 ov30_02384400: ; 0x02384400
+#ifdef JAPAN
+#define OV30_02384400_OFFSET -0xA4
+#else
+#define OV30_02384400_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	ldr r1, _02384830 ; =OVERLAY30_JP_STRING_1
 	mov sl, r0
@@ -1956,79 +2156,79 @@ ov30_02384400: ; 0x02384400
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strb r0, [r1, #0xc4]
+	strb r0, [r1, #0xc4 + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strb r0, [r1, #0xc5]
+	strb r0, [r1, #0xc5 + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strb r0, [r1, #0xc6]
+	strb r0, [r1, #0xc6 + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strb r0, [r1, #0xc7]
+	strb r0, [r1, #0xc7 + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strb r0, [r1, #0xc8]
+	strb r0, [r1, #0xc8 + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strb r0, [r1, #0xc9]
+	strb r0, [r1, #0xc9 + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strb r0, [r1, #0xca]
+	strb r0, [r1, #0xca + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	str r0, [r1, #0xcc]
+	str r0, [r1, #0xcc + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	str r0, [r1, #0xd0]
+	str r0, [r1, #0xd0 + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strh r0, [r1, #0xd4]
+	strh r0, [r1, #0xd4 + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strh r0, [r1, #0xd6]
+	strh r0, [r1, #0xd6 + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strh r0, [r1, #0xd8]
+	strh r0, [r1, #0xd8 + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
-	strb r0, [r1, #0xda]
+	strb r0, [r1, #0xda + OV30_02384400_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	ldr r6, _02384834 ; =DUNGEON_PTR
@@ -2036,7 +2236,7 @@ ov30_02384400: ; 0x02384400
 	ldr r1, [r6]
 	mov fp, r8
 	add r1, r1, #0x4000
-	strh r0, [r1, #0xde]
+	strh r0, [r1, #0xde + OV30_02384400_OFFSET]
 	mov r4, #0x14
 	mov r5, #0x460
 _02384570:
@@ -2045,7 +2245,7 @@ _02384570:
 _02384578:
 	ldr r1, [r6]
 	mov r0, sl
-	add r1, r1, #0xe0
+	add r1, r1, #0xe0 + OV30_02384400_OFFSET
 	add r1, r1, #0x4000
 	add r1, r1, sb
 	mla r1, r7, r4, r1
@@ -2059,19 +2259,29 @@ _02384578:
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0x3c
+	add r1, r1, #0xcc00
+#else
 	add r1, r1, #0xce0
 	add r1, r1, #0xc000
+#endif
 	bl ov30_02385F7C
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0xc40
+	add r1, r1, #0xc000
+#else
 	add r1, r1, #0xe4
 	add r1, r1, #0xcc00
+#endif
 	bl ov30_02385F7C
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
-	add r1, r1, #0xe8
+	add r1, r1, #0xe8 + OV30_02384400_OFFSET
 	add r1, r1, #0xcc00
 	bl ov30_02385F7C
 	ldr r0, _02384834 ; =DUNGEON_PTR
@@ -2079,21 +2289,21 @@ _02384578:
 	ldr r0, [r0]
 	mov r5, #0
 	add r0, r0, #0xcc00
-	ldrsh r1, [r0, #0xe8]
+	ldrsh r1, [r0, #0xe8 + OV30_02384400_OFFSET]
 	cmp r1, #0xff
 	mvneq r1, #0
-	streqh r1, [r0, #0xe8]
+	streqh r1, [r0, #0xe8 + OV30_02384400_OFFSET]
 	ldr r0, _02384834 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xcc00
-	ldrsh r1, [r0, #0xea]
+	ldrsh r1, [r0, #0xea + OV30_02384400_OFFSET]
 	cmp r1, #0xff
 	mvneq r1, #0
-	streqh r1, [r0, #0xea]
+	streqh r1, [r0, #0xea + OV30_02384400_OFFSET]
 _02384634:
 	ldr r1, [r4]
 	mov r0, sl
-	add r1, r1, #0xec
+	add r1, r1, #0xec + OV30_02384400_OFFSET
 	add r1, r1, #0xcc00
 	add r1, r1, r5, lsl #2
 	bl ov30_02385FB0
@@ -2109,26 +2319,41 @@ _02384660:
 	add r1, r1, r5
 	add r1, r1, #0xc000
 	add r5, r5, #1
-	strb r0, [r1, #0xd0c]
+	strb r0, [r1, #0xd0c + OV30_02384400_OFFSET]
 	cmp r5, #8
 	blt _02384660
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0xc70
+	add r1, r1, #0xc000
+#else
 	add r1, r1, #0x114
 	add r1, r1, #0xcc00
+#endif
 	bl ov30_02385FE4
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0xc80
+	add r1, r1, #0xc000
+#else
 	add r1, r1, #0x124
 	add r1, r1, #0xcc00
+#endif
 	bl ov30_02385FE4
 	ldr r1, _02384834 ; =DUNGEON_PTR
 	mov r0, sl
 	ldr r1, [r1]
+#ifdef JAPAN
+	add r1, r1, #0xc90
+	add r1, r1, #0xc000
+#else
 	add r1, r1, #0x134
 	add r1, r1, #0xcc00
+#endif
 	bl ov30_02386040
 	mov r8, #0
 	ldr r6, _02384834 ; =DUNGEON_PTR
@@ -2141,8 +2366,13 @@ _023846E0:
 _023846E8:
 	ldr r1, [r6]
 	mov r0, sl
+#ifdef JAPAN
+	add r1, r1, #0xbc
+	add r1, r1, #0xcc00
+#else
 	add r1, r1, #0xd60
 	add r1, r1, #0xc000
+#endif
 	add r1, r1, r7
 	mla r1, sb, r4, r1
 	bl ov30_0238483C
@@ -2151,9 +2381,15 @@ _023846E8:
 	ldr r1, [r6]
 	add r1, r1, r8, lsl #4
 	add r1, r1, sb, lsl #1
+#ifdef JAPAN
+	add r1, r1, #0xd100
+	add sb, sb, #1
+	strh r0, [r1, #0xbc]
+#else
 	add r1, r1, #0xd200
 	add sb, sb, #1
 	strh r0, [r1, #0x60]
+#endif
 	cmp sb, #8
 	blt _023846E8
 	add r8, r8, #1
@@ -2163,7 +2399,7 @@ _023846E8:
 	mov r1, #0
 	ldr r0, [r0]
 	mov r2, #0x26
-	add r0, r0, #0x138
+	add r0, r0, #0x138 + OV30_02384400_OFFSET
 	add r4, r0, #0xcc00
 	mov r0, r4
 	bl memset
@@ -2203,7 +2439,7 @@ _0238477C:
 	ldr r0, _02384834 ; =DUNGEON_PTR
 	mov r1, #2
 	ldr r0, [r0]
-	add r0, r0, #0x2fc
+	add r0, r0, #0x2fc + OV30_02384400_OFFSET
 	add r4, r0, #0x12800
 	mov r0, r4
 	bl MemZero
@@ -2225,11 +2461,12 @@ _0238477C:
 	.align 2, 0
 _02384830: .word OVERLAY30_JP_STRING_1
 _02384834: .word DUNGEON_PTR
-_02384838: .word 0x00012AFE
+_02384838: .word 0x00012AFE + OV30_02384400_OFFSET
 	arm_func_end ov30_02384400
 
 	arm_func_start ov30_0238483C
 ov30_0238483C: ; 0x0238483C
+
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -2259,6 +2496,11 @@ ov30_0238483C: ; 0x0238483C
 
 	arm_func_start ov30_023848A0
 ov30_023848A0: ; 0x023848A0
+#ifdef JAPAN
+#define OV30_023848A0_OFFSET -0xA4
+#else
+#define OV30_023848A0_OFFSET 0
+#endif
 	stmdb sp!, {r4, lr}
 	ldr r1, _02384A18 ; =OVERLAY30_JP_STRING_1
 	mov r4, r0
@@ -2268,90 +2510,90 @@ ov30_023848A0: ; 0x023848A0
 	ldr r1, [r1]
 	mov r2, #0
 	add r1, r1, #0x1a000
-	str r2, [r1, #0x22c]
+	str r2, [r1, #0x22c + OV30_023848A0_OFFSET]
 	bl ov30_02385EF4
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x23c]
+	strb r0, [r1, #0x23c + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385EF4
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x23d]
+	strb r0, [r1, #0x23d + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x23e]
+	strb r0, [r1, #0x23e + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x23f]
+	strb r0, [r1, #0x23f + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x240]
+	strb r0, [r1, #0x240 + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x242]
+	strb r0, [r1, #0x242 + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x24f]
+	strb r0, [r1, #0x24f + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x243]
+	strb r0, [r1, #0x243 + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x24e]
+	strb r0, [r1, #0x24e + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x250]
+	strb r0, [r1, #0x250 + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x244]
+	strb r0, [r1, #0x244 + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x245]
+	strb r0, [r1, #0x245 + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x246]
+	strb r0, [r1, #0x246 + OV30_023848A0_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384A1C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
-	strb r0, [r1, #0x248]
+	strb r0, [r1, #0x248 + OV30_023848A0_OFFSET]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02384A18: .word OVERLAY30_JP_STRING_1
@@ -2385,10 +2627,15 @@ ov30_02384A20: ; 0x02384A20
 	strh r3, [r2, r0]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define OV30_02384A20_OFFSET -0xA4
+#else
+#define OV30_02384A20_OFFSET 0
+#endif
 _02384A80: .word DUNGEON_PTR
-_02384A84: .word 0x0002CB02
-_02384A88: .word 0x0002CB04
-_02384A8C: .word 0x0002CB06
+_02384A84: .word 0x0002CB02 + OV30_02384A20_OFFSET
+_02384A88: .word 0x0002CB04 + OV30_02384A20_OFFSET
+_02384A8C: .word 0x0002CB06 + OV30_02384A20_OFFSET
 _02384A90: .word 0x000003E7
 	arm_func_end ov30_02384A20
 
@@ -2551,7 +2798,11 @@ ov30_02384C6C: ; 0x02384C6C
 	ldr r0, _02384CD0 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x19000
+#ifdef JAPAN
+	strb r4, [r0, #0x7a8]
+#else
 	strb r4, [r0, #0x84c]
+#endif
 _02384CC4:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
@@ -2562,6 +2813,11 @@ _02384CD0: .word DUNGEON_PTR
 
 	arm_func_start ov30_02384CD4
 ov30_02384CD4: ; 0x02384CD4
+#ifdef JAPAN
+#define OV30_02384CD4_OFFSET -0xA4
+#else
+#define OV30_02384CD4_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _02384E20 ; =OVERLAY30_JP_STRING_1
 	mov r4, r0
@@ -2571,63 +2827,68 @@ ov30_02384CD4: ; 0x02384CD4
 	ldr r1, _02384E24 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	str r0, [r1, #0xe2c]
+	str r0, [r1, #0xe2c + OV30_02384CD4_OFFSET]
 	mov r0, r4
 	bl ov30_02385F0C
 	ldr r1, _02384E24 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	str r0, [r1, #0xe30]
+	str r0, [r1, #0xe30 + OV30_02384CD4_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384E24 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	strb r0, [r1, #0xe34]
+	strb r0, [r1, #0xe34 + OV30_02384CD4_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384E24 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	strb r0, [r1, #0xe35]
+	strb r0, [r1, #0xe35 + OV30_02384CD4_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384E24 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	strb r0, [r1, #0xe36]
+	strb r0, [r1, #0xe36 + OV30_02384CD4_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384E24 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	strb r0, [r1, #0xe37]
+	strb r0, [r1, #0xe37 + OV30_02384CD4_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384E24 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	strb r0, [r1, #0xe38]
+	strb r0, [r1, #0xe38 + OV30_02384CD4_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384E24 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	strb r0, [r1, #0xe39]
+	strb r0, [r1, #0xe39 + OV30_02384CD4_OFFSET]
 	mov r0, r4
 	bl ov30_02385F54
 	ldr r1, _02384E24 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	strb r0, [r1, #0xe3c]
+	strb r0, [r1, #0xe3c + OV30_02384CD4_OFFSET]
 	mov r0, r4
 	bl ov30_02385EC4
 	ldr r1, _02384E24 ; =DUNGEON_PTR
 	mov r6, #0
 	ldr r1, [r1]
 	mov r5, #1
+#ifdef JAPAN
+	add r1, r1, #0x3d00
+	strh r0, [r1, #0x96]
+#else
 	add r1, r1, #0x3e00
 	strh r0, [r1, #0x3a]
+#endif
 _02384DDC:
 	mov r0, r4
 	mov r1, r5
@@ -2654,14 +2915,25 @@ _02384E24: .word DUNGEON_PTR
 
 	arm_func_start ov30_02384E28
 ov30_02384E28: ; 0x02384E28
+#ifdef JAPAN
+#define OV30_02384E28_OFFSET -4
+#define OV30_02384E28_OFFSET_2 -1
+#else
+#define OV30_02384E28_OFFSET 0
+#define OV30_02384E28_OFFSET_2 0
+#endif
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	sub sp, sp, #0x258
+#endif
+	sub sp, sp, #0x258 + OV30_02384E28_OFFSET
 	mov sl, r0
 	mov sb, r1
 	mov r8, r2
 	add r0, sp, #0x18
 	mov r1, #0
-	mov r2, #0x240
+	mov r2, #0x240 + OV30_02384E28_OFFSET
 	bl memset
 	mov r0, sl
 	bl ov30_02385EF4
@@ -3085,13 +3357,15 @@ _02385158:
 	strb r0, [sp, #0x114]
 	mov r0, sl
 	bl ov30_02385F54
+#ifndef JAPAN
 	strb r0, [sp, #0x11b]
 	mov r0, sl
 	bl ov30_02385F54
+#endif
 	strb r0, [sp, #0x115]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x120]
+	strb r0, [sp, #0x120 + OV30_02384E28_OFFSET_2]
 	mov r0, sl
 	bl ov30_02385F54
 	strb r0, [sp, #0x116]
@@ -3103,6 +3377,20 @@ _02385158:
 	strb r0, [sp, #0x118]
 	mov r0, sl
 	bl ov30_02385EF4
+#ifdef JAPAN
+	strb r0, [sp, #0x11b]
+	mov r0, sl
+	bl ov30_02385EF4
+	strb r0, [sp, #0x11c]
+	mov r0, sl
+	bl ov30_02385F54
+	strb r0, [sp, #0x120]
+	mov r0, sl
+	bl ov30_02385EF4
+	strb r0, [sp, #0x11d]
+	mov r0, sl
+	bl ov30_02385EF4
+#else
 	strb r0, [sp, #0x11c]
 	mov r0, sl
 	bl ov30_02385EF4
@@ -3112,13 +3400,16 @@ _02385158:
 	strb r0, [sp, #0x121]
 	mov r0, sl
 	bl ov30_02385EF4
+#endif
 	strb r0, [sp, #0x11e]
 	mov r0, sl
 	bl ov30_02385EF4
+#ifndef JAPAN
 	strb r0, [sp, #0x11f]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x122]
+#endif
+	strb r0, [sp, #0x122 + OV30_02384E28_OFFSET_2]
 	add r0, sp, #2
 	mov r1, #0
 	mov r2, #1
@@ -3131,7 +3422,7 @@ _02385158:
 	add r0, sp, #1
 	mov r1, #0
 	mov r2, #1
-	strb r3, [sp, #0x123]
+	strb r3, [sp, #0x123 + OV30_02384E28_OFFSET_2]
 	bl memset
 	add r1, sp, #1
 	mov r0, sl
@@ -3140,7 +3431,7 @@ _02385158:
 	ldrb r2, [sp, #1]
 	add r0, sp, #0x10
 	mov r1, #0
-	strb r2, [sp, #0x124]
+	strb r2, [sp, #0x124 + OV30_02384E28_OFFSET_2]
 	mov r2, #4
 	bl memset
 	mov r0, sl
@@ -3149,37 +3440,37 @@ _02385158:
 	bl ov30_02385CA4
 	ldr r1, [sp, #0x10]
 	mov r0, sl
-	str r1, [sp, #0x128]
-	add r1, sp, #0x12c
+	str r1, [sp, #0x128 + OV30_02384E28_OFFSET]
+	add r1, sp, #0x12c + OV30_02384E28_OFFSET
 	mov r2, #5
 	bl ov30_02386074
 	add r1, sp, #0x100
 	mov r0, sl
-	add r1, r1, #0x31
+	add r1, r1, #0x31 + OV30_02384E28_OFFSET
 	mov r2, #5
 	bl ov30_02386074
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x136]
+	strb r0, [sp, #0x136 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x137]
+	strb r0, [sp, #0x137 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
-	str r0, [sp, #0x138]
+	str r0, [sp, #0x138 + OV30_02384E28_OFFSET]
 	mov r7, #0
 	add r4, sp, #0x18
 _02385630:
 	mov r0, sl
 	bl ov30_02385EF4
 	add r1, r4, r7, lsl #3
-	strb r0, [r1, #0x124]
+	strb r0, [r1, #0x124 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
 	add r1, r4, r7, lsl #3
 	add r1, r1, #0x100
-	strh r0, [r1, #0x26]
-	add r1, sp, #0x13c
+	strh r0, [r1, #0x26 + OV30_02384E28_OFFSET]
+	add r1, sp, #0x13c + OV30_02384E28_OFFSET
 	add r1, r1, r7, lsl #3
 	mov r0, sl
 	add r1, r1, #4
@@ -3188,130 +3479,130 @@ _02385630:
 	mov r0, sl
 	bl ov30_02385EF4
 	add r1, r4, r7, lsl #3
-	strb r0, [r1, #0x12a]
+	strb r0, [r1, #0x12a + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
 	add r1, r4, r7, lsl #3
 	add r7, r7, #1
-	strb r0, [r1, #0x12b]
+	strb r0, [r1, #0x12b + OV30_02384E28_OFFSET]
 	cmp r7, #4
 	blt _02385630
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x15c]
+	strb r0, [sp, #0x15c + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	add r1, sp, #0x100
-	strh r0, [r1, #0x5e]
+	strh r0, [r1, #0x5e + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	add r1, sp, #0x100
-	strh r0, [r1, #0x60]
+	strh r0, [r1, #0x60 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	add r1, sp, #0x100
-	strh r0, [r1, #0x62]
+	strh r0, [r1, #0x62 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	add r1, sp, #0x100
-	strh r0, [r1, #0x64]
+	strh r0, [r1, #0x64 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x166]
+	strb r0, [sp, #0x166 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x167]
+	strb r0, [sp, #0x167 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x169]
+	strb r0, [sp, #0x169 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x168]
+	strb r0, [sp, #0x168 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x16a]
+	strb r0, [sp, #0x16a + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x16b]
+	strb r0, [sp, #0x16b + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x16c]
+	strb r0, [sp, #0x16c + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x16d]
+	strb r0, [sp, #0x16d + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x16e]
+	strb r0, [sp, #0x16e + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EC4
 	add r1, sp, #0x100
-	strh r0, [r1, #0x70]
+	strh r0, [r1, #0x70 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EC4
 	add r1, sp, #0x100
-	strh r0, [r1, #0x72]
+	strh r0, [r1, #0x72 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x174]
+	strb r0, [sp, #0x174 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x175]
+	strb r0, [sp, #0x175 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x176]
+	strb r0, [sp, #0x176 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x177]
+	strb r0, [sp, #0x177 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F54
-	strb r0, [sp, #0x178]
+	strb r0, [sp, #0x178 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x18f]
+	strb r0, [sp, #0x18f + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x190]
+	strb r0, [sp, #0x190 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x191]
+	strb r0, [sp, #0x191 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x192]
+	strb r0, [sp, #0x192 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x193]
+	strb r0, [sp, #0x193 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
 	add r1, sp, #0x100
-	strb r0, [sp, #0x194]
+	strb r0, [sp, #0x194 + OV30_02384E28_OFFSET]
 	mov r0, sl
-	add r1, r1, #0x96
+	add r1, r1, #0x96 + OV30_02384E28_OFFSET
 	bl ov30_02385F7C
 	mov r0, sl
 	bl ov30_02385F3C
-	str r0, [sp, #0x1a0]
+	str r0, [sp, #0x1a0 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EC4
 	add r1, sp, #0x100
-	strh r0, [r1, #0xaa]
+	strh r0, [r1, #0xaa + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F24
-	str r0, [sp, #0x1a4]
+	str r0, [sp, #0x1a4 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EC4
 	add r1, sp, #0x100
-	strh r0, [r1, #0xa8]
+	strh r0, [r1, #0xa8 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	add r1, sp, #0x200
-	strh r0, [r1, #0x28]
+	strh r0, [r1, #0x28 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	add r1, sp, #0x200
-	strh r0, [r1, #0x2a]
+	strh r0, [r1, #0x2a + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385F0C
-	str r0, [sp, #0x22c]
+	str r0, [sp, #0x22c + OV30_02384E28_OFFSET]
 	add r0, sp, #0
 	mov r1, #0
 	mov r2, #1
@@ -3324,20 +3615,20 @@ _02385630:
 	mov r0, sl
 	strb r1, [sp, #0xd4]
 	bl ov30_02385EF4
-	strb r0, [sp, #0x17e]
+	strb r0, [sp, #0x17e + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x17f]
+	strb r0, [sp, #0x17f + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	add r1, sp, #0x100
-	strh r0, [r1, #0x80]
+	strh r0, [r1, #0x80 + OV30_02384E28_OFFSET]
 	mov r0, sl
 	bl ov30_02385EDC
 	strh r0, [sp, #0xc4]
 	mov r0, sl
 	bl ov30_02385EF4
-	strb r0, [sp, #0x182]
+	strb r0, [sp, #0x182 + OV30_02384E28_OFFSET]
 	mov r4, #0
 	add r7, sp, #0x18
 _023858D8:
@@ -3345,7 +3636,7 @@ _023858D8:
 	bl ov30_02385EF4
 	add r1, r7, r4
 	add r4, r4, #1
-	strb r0, [r1, #0x16b]
+	strb r0, [r1, #0x16b + OV30_02384E28_OFFSET]
 	cmp r4, #5
 	blt _023858D8
 	ldr r0, _023859D8 ; =LEADER_PTR
@@ -3378,7 +3669,7 @@ _02385934:
 	mov sb, r4
 	strh r1, [r7, #8]
 	ldrh r1, [sp, #0x16]
-	mov r8, #0x24
+	mov r8, #0x24 + OV30_02384E28_OFFSET_2
 	strh r1, [r7, #0xa]
 	ldrh r1, [sp, #0x14]
 	strh r1, [r7, #4]
@@ -3392,6 +3683,10 @@ _02385988:
 	stmia sb!, {r0, r1, r2, r3}
 	subs r8, r8, #1
 	bne _02385988
+#ifdef JAPAN
+	ldmia sl, {r0, r1, r2}
+	stmia sb, {r0, r1, r2}
+#endif
 	ldr r0, _023859D8 ; =LEADER_PTR
 	mov r1, #0
 	str r1, [r0]
@@ -3408,8 +3703,12 @@ _023859BC:
 	mov r1, #0
 	bl UpdateEntityPixelPos
 _023859D0:
-	add sp, sp, #0x258
+	add sp, sp, #0x258 + OV30_02384E28_OFFSET
+#ifdef JAPAN
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+#else
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+#endif
 	.align 2, 0
 _023859D8: .word LEADER_PTR
 	arm_func_end ov30_02384E28
@@ -3439,18 +3738,32 @@ ov30_023859DC: ; 0x023859DC
 	ldr r2, _02385B0C ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r0, [r2]
+#ifdef JAPAN
+	mov r3, #0x23c
+	add r0, r0, r7, lsl #2
+	add r0, r0, #0x12000
+	ldr r6, [r0, #0xa84]
+#else
 	add r3, r7, r7, lsl #3
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
 	ldr r6, [r0, #0xb28]
+#endif
 	mov r0, #0
 	str r1, [r6]
 	strb r7, [r6, #0x24]
 	ldr r2, [r2]
+#ifdef JAPAN
+	mov ip, #7
+	add r2, r2, #0x3f4
+	add r2, r2, #0x400
+	mla r2, r7, r3, r2
+#else
 	mov r7, #7
 	add r2, r2, #0x3f4
 	add r2, r2, #0x400
 	add r2, r2, r3, lsl #6
+#endif
 	str r2, [r6, #0xb4]
 	strh sb, [r2, #2]
 	ldr r3, [r6, #0xb4]
@@ -3464,7 +3777,11 @@ ov30_023859DC: ; 0x023859DC
 	ldr r3, [sp, #8]
 	add r3, r3, #0x1a
 	strh r3, [r6, #0xac]
+#ifdef JAPAN
+	strb ip, [r6, #0xae]
+#else
 	strb r7, [r6, #0xae]
+#endif
 	strb r0, [r6, #0xb0]
 	strb r2, [r6, #0xaf]
 	strb r1, [r6, #0xb1]
@@ -3473,10 +3790,17 @@ ov30_023859DC: ; 0x023859DC
 	bl ov29_022E2978
 	ldr r1, [sp, #8]
 	ldr r0, [r6, #0xb4]
+#ifdef JAPAN
+	strb r1, [r0, #0x176]
+	ldr r1, [sp, #4]
+	ldr r0, [r6, #0xb4]
+	strb r1, [r0, #0x177]
+#else
 	strb r1, [r0, #0x17a]
 	ldr r1, [sp, #4]
 	ldr r0, [r6, #0xb4]
 	strb r1, [r0, #0x17b]
+#endif
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
 	mov r0, r0, lsl #0x10
@@ -3522,18 +3846,32 @@ ov30_02385B10: ; 0x02385B10
 	ldr ip, _02385C38 ; =DUNGEON_PTR
 	mov r1, #1
 	ldr r2, [ip]
+#ifdef JAPAN
+	mov r3, #0x23c
+	add r2, r2, r7, lsl #2
+	add r2, r2, #0x12000
+	ldr r6, [r2, #0xa94]
+#else
 	add r3, r7, r7, lsl #3
 	add r2, r2, r7, lsl #2
 	add r2, r2, #0x12000
 	ldr r6, [r2, #0xb38]
+#endif
 	str r1, [r6]
 	strb r7, [r6, #0x24]
 	strb r0, [r6, #0x22]
 	ldr r2, [ip]
+#ifdef JAPAN
+	mov ip, #7
+	add r2, r2, #0xe4
+	add r2, r2, #0x1000
+	mla r2, r7, r3, r2
+#else
 	mov r7, #7
 	add r2, r2, #0xf4
 	add r2, r2, #0x1000
 	add r2, r2, r3, lsl #6
+#endif
 	str r2, [r6, #0xb4]
 	strh sb, [r2, #2]
 	ldr r3, [r6, #0xb4]
@@ -3545,7 +3883,11 @@ ov30_02385B10: ; 0x02385B10
 	ldr r3, [sp, #8]
 	add r3, r3, #0x62
 	strh r3, [r6, #0xac]
+#ifdef JAPAN
+	strb ip, [r6, #0xae]
+#else
 	strb r7, [r6, #0xae]
+#endif
 	strb r0, [r6, #0xb0]
 	strb r2, [r6, #0xaf]
 	strb r1, [r6, #0xb1]
@@ -3553,10 +3895,17 @@ ov30_02385B10: ; 0x02385B10
 	str r0, [r6, #0x1c]
 	ldr r1, [sp, #8]
 	ldr r0, [r6, #0xb4]
+#ifdef JAPAN
+	strb r1, [r0, #0x176]
+	ldr r1, [sp, #4]
+	ldr r0, [r6, #0xb4]
+	strb r1, [r0, #0x177]
+#else
 	strb r1, [r0, #0x17a]
 	ldr r1, [sp, #4]
 	ldr r0, [r6, #0xb4]
 	strb r1, [r0, #0x17b]
+#endif
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
 	mov r0, r0, lsl #0x10

@@ -286,8 +286,13 @@ ov15_0238A4E8: ; 0x0238A4E8
 	ldr r1, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r2, [r1]
 	str r0, [r2, #4]
+#ifdef JAPAN
+	ldr r2, [r1]
+	ldr r0, [r2, #4]
+#else
 	ldr r3, [r1]
 	ldr r0, [r3, #4]
+#endif
 	cmp r0, #0xd
 	addls pc, pc, r0, lsl #2
 	b _0238AD08
@@ -307,17 +312,30 @@ _0238A510: ; jump table
 	b _0238AC80 ; case 12
 	b _0238AD00 ; case 13
 _0238A548:
+#ifdef JAPAN
+	mov r0, #1
+	str r0, [r2, #8]
+#else
 	mov r2, #1
 	str r2, [r3, #8]
+#endif
 	ldr r3, [r1]
 	ldr r1, _0238AD14 ; =0x00003008
 	ldrsb r0, [r3, #0x80]
+#ifdef JAPAN
+	ldr r2, _0238C278 ; =0x0000323A
+#else
 	add r2, r2, #0x374
+#endif
 	add r3, r3, #0x88
 	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A56C:
+#ifdef JAPAN
+	ldrsb r1, [r2, #0x68]
+#else
 	ldrsb r1, [r3, #0x68]
+#endif
 	mvn r0, #1
 	cmp r1, r0
 	beq _0238A5CC
@@ -325,7 +343,11 @@ _0238A56C:
 	beq _0238A5CC
 	ldr r0, _0238AD18 ; =ov15_0238B0D4
 	and r1, r1, #0x1f
+#ifdef JAPAN
+	strb r1, [r2, #0x68]
+#else
 	strb r1, [r3, #0x68]
+#endif
 	bl Debug_Print0
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
@@ -362,7 +384,11 @@ _0238A608:
 	ldr r3, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r1, _0238AD14 ; =0x00003008
 	ldr ip, [r3]
+#ifdef JAPAN
+	add r2, r1, #0x234
+#else
 	ldr r2, _0238AD20 ; =0x00000377
+#endif
 	str r0, [ip, #0xac]
 	ldr r3, [r3]
 	ldrsb r0, [r3, #0x80]
@@ -417,7 +443,11 @@ _0238A68C:
 	ldr r1, _0238AD14 ; =0x00003008
 	strb r3, [r2, #0x82]
 	ldr r3, [r0]
+#ifdef JAPAN
+	ldr r2, _0238C2A0_JP ; =0x0000323D
+#else
 	mov r2, #0x378
+#endif
 	str ip, [r3, #8]
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
@@ -427,7 +457,11 @@ _0238A68C:
 _0238A708:
 	ldr r0, _0238AD3C ; =ov15_0238B0E8
 	mov r1, #6
+#ifdef JAPAN
+	str r1, [r2, #8]
+#else
 	str r1, [r3, #8]
+#endif
 	bl Debug_Print0
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
@@ -488,7 +522,11 @@ _0238A7AC:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r1, _0238AD14 ; =0x00003008
 	ldr ip, [r0]
+#ifdef JAPAN
+	mov r2, #0x3240
+#else
 	ldr r2, _0238AD50 ; =0x0000037B
+#endif
 	ldrsb r3, [ip, #0x68]
 	orr r3, r3, #0x80
 	strb r3, [ip, #0x68]
@@ -524,7 +562,11 @@ _0238A820:
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r1, _0238AD14 ; =0x00003008
 	ldr r3, [r0]
+#ifdef JAPAN
+	ldr r2, _0238C2B4 ; =0x00003241
+#else
 	mov r2, #0x37c
+#endif
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
 	bl ShowStringIdInDialogueBox
@@ -539,12 +581,21 @@ _0238A8AC:
 	cmp r0, r1
 	blt _0238A8E8
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
+#ifdef JAPAN
+	mov r3, #1
+	ldr r2, [r0]
+	ldr r1, _0238AD14 ; =0x00003008
+	str r3, [r2, #8]
+	ldr r3, [r0]
+	ldr r2, _0238C2BC ; =0x00003242
+#else
 	mov ip, #1
 	ldr r2, [r0]
 	ldr r1, _0238AD14 ; =0x00003008
 	str ip, [r2, #8]
 	ldr r3, [r0]
 	add r2, ip, #0x37c
+#endif
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
 	bl ShowStringIdInDialogueBox
@@ -562,7 +613,11 @@ _0238A8E8:
 	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238A914:
+#ifdef JAPAN
+	ldrsb r0, [r2, #0x80]
+#else
 	ldrsb r0, [r3, #0x80]
+#endif
 	bl ShowDialogueBox
 	bl GetMoneyStored
 	ldr r2, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
@@ -637,7 +692,11 @@ _0238A95C:
 	bl ov15_0238AD78
 	b _0238AD08
 _0238AA08:
+#ifdef JAPAN
+	ldrsb r0, [r2, #0x80]
+#else
 	ldrsb r0, [r3, #0x80]
+#endif
 	bl ShowDialogueBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
@@ -656,7 +715,11 @@ _0238AA08:
 	ldr lr, [r0]
 	ldr r1, _0238AD14 ; =0x00003008
 	ldrsb r3, [lr, #0x68]
+#ifdef JAPAN
+	add r2, r1, #0x23c
+#else
 	rsb r2, ip, #0x380
+#endif
 	orr r3, r3, #0x80
 	strb r3, [lr, #0x68]
 	ldr r3, [r0]
@@ -703,7 +766,11 @@ _0238AA88:
 	ldr r1, _0238AD14 ; =0x00003008
 	str r3, [r2, #8]
 	ldr r3, [r0]
+#ifdef JAPAN
+	ldr r2, _0238C2D8 ; =0x00003245
+#else
 	mov r2, #0x380
+#endif
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
 	bl ShowStringIdInDialogueBox
@@ -713,12 +780,21 @@ _0238AB20:
 	cmp r0, #0
 	bne _0238AB58
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
+#ifdef JAPAN
+	mov r3, #1
+	ldr r2, [r0]
+	ldr r1, _0238AD14 ; =0x00003008
+	str r3, [r2, #8]
+	ldr r3, [r0]
+	ldr r2, _0238C2DC ; =0x00003246
+#else
 	mov ip, #1
 	ldr r2, [r0]
 	ldr r1, _0238AD14 ; =0x00003008
 	str ip, [r2, #8]
 	ldr r3, [r0]
 	add r2, ip, #0x380
+#endif
 	ldrsb r0, [r3, #0x80]
 	add r3, r3, #0x88
 	bl ShowStringIdInDialogueBox
@@ -813,7 +889,11 @@ _0238ABD4:
 	bl ov15_0238AD78
 	b _0238AD08
 _0238AC80:
+#ifdef JAPAN
+	ldrsb r0, [r2, #0x80]
+#else
 	ldrsb r0, [r3, #0x80]
+#endif
 	bl ShowDialogueBox
 	ldr r0, _0238AD10 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldr r0, [r0]
@@ -832,7 +912,11 @@ _0238AC80:
 	ldr lr, [r0]
 	ldr r1, _0238AD14 ; =0x00003008
 	ldrsb r3, [lr, #0x68]
+#ifdef JAPAN
+	add r2, r1, #0x240
+#else
 	rsb r2, ip, #0x384
+#endif
 	orr r3, r3, #0x80
 	strb r3, [lr, #0x68]
 	ldr r3, [r0]
@@ -846,17 +930,31 @@ _0238AC80:
 	bl ShowStringIdInDialogueBox
 	b _0238AD08
 _0238AD00:
+#ifdef JAPAN
+	ldrsb r0, [r2, #0x82]
+#else
 	ldrsb r0, [r3, #0x82]
+#endif
 	bl sub_0202F954
 _0238AD08:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define OV15_0238A4E8_OFFSET 0x2EC5
+#else
+#define OV15_0238A4E8_OFFSET 0
+#endif
 _0238AD10: .word OVERLAY15_UNKNOWN_POINTER__NA_238B180
 _0238AD14: .word 0x00003008
+#ifdef JAPAN
+_0238C278: .word 0x0000323A
+#endif
 _0238AD18: .word ov15_0238B0D4
-_0238AD1C: .word 0x00000376
+_0238AD1C: .word 0x00000376 + OV15_0238A4E8_OFFSET
+#ifndef JAPAN
 _0238AD20: .word 0x00000377
+#endif
 _0238AD24: .word BANK_WINDOW_PARAMS_2
 _0238AD28: .word ov15_0238ADC4
 _0238AD2C: .word ov15_0238B0E0
@@ -864,19 +962,32 @@ _0238AD30: .word BANK_WINDOW_PARAMS_4
 _0238AD34: .word 0x00300013
 _0238AD38: .word BANK_MAIN_MENU_ITEMS
 _0238AD3C: .word ov15_0238B0E8
+#ifdef JAPAN
+_0238C2A0_JP: .word 0x0000323D
+#endif
 _0238AD40: .word 0x00003018
-_0238AD44: .word 0x00000379
-_0238AD48: .word 0x0000037A
+_0238AD44: .word 0x00000379 + OV15_0238A4E8_OFFSET
+_0238AD48: .word 0x0000037A + OV15_0238A4E8_OFFSET
 _0238AD4C: .word ov15_0238B0F4
+#ifdef JAPAN
+_0238C2B4: .word 0x00003241
+_0238AD54: .word 0x0098967F
+_0238C2BC: .word 0x00003242
+#else
 _0238AD50: .word 0x0000037B
 _0238AD54: .word 0x0098967F
-_0238AD58: .word 0x0000037E
+#endif
+_0238AD58: .word 0x0000037E + OV15_0238A4E8_OFFSET
 _0238AD5C: .word ov15_0238B10C
 _0238AD60: .word 0x00001017
 _0238AD64: .word BANK_WINDOW_PARAMS_3
 _0238AD68: .word ov15_0238AE6C
 _0238AD6C: .word 0x0001869F
-_0238AD70: .word 0x00000382
+#ifdef JAPAN
+_0238C2D8: .word 0x00003245
+_0238C2DC: .word 0x00003246
+#endif
+_0238AD70: .word 0x00000382 + OV15_0238A4E8_OFFSET
 _0238AD74: .word ov15_0238B114
 	arm_func_end ov15_0238A4E8
 
@@ -884,7 +995,11 @@ _0238AD74: .word ov15_0238B114
 ov15_0238AD78: ; 0x0238AD78
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
+#ifdef JAPAN
+	ldrne r0, _0238C32C ; =0x00003249
+#else
 	movne r0, #0x384
+#endif
 	ldr r1, _0238ADBC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	ldreq r0, _0238ADC0 ; =0x00000385
 	ldr r1, [r1]
@@ -900,8 +1015,14 @@ ov15_0238AD78: ; 0x0238AD78
 	bl sub_02039B0C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0238C32C: .word 0x00003249
+_0238ADBC: .word OVERLAY15_UNKNOWN_POINTER__NA_238B180
+_0238ADC0: .word 0x0000324A
+#else
 _0238ADBC: .word OVERLAY15_UNKNOWN_POINTER__NA_238B180
 _0238ADC0: .word 0x00000385
+#endif
 	arm_func_end ov15_0238AD78
 
 	arm_func_start ov15_0238ADC4
@@ -920,10 +1041,6 @@ ov15_0238ADC4: ; 0x0238ADC4
 	add r0, sp, #4
 	mov r1, #0x100
 	str ip, [sp]
-	arm_func_end ov15_0238ADC4
-
-	arm_func_start ov15_0238ADFC
-ov15_0238ADFC: ; 0x0238ADFC
 	bl PreprocessStringFromId
 	add r3, sp, #4
 	mov r0, r4
@@ -935,10 +1052,17 @@ ov15_0238ADFC: ; 0x0238ADFC
 	str r0, [sp, #0x428]
 	add r1, r1, #4
 	str r1, [sp]
+#ifdef JAPAN
+	ldr r2, _0238C3E0 ; =0x00003239
+	ldr r3, _0238AE68 ; =0x0000C402
+	add r0, sp, #4
+	mov r1, #0x100
+#else
 	ldr r3, _0238AE68 ; =0x0000C402
 	add r0, sp, #4
 	mov r1, #0x100
 	mov r2, #0x374
+#endif
 	bl PreprocessStringFromId
 	mov r0, r4
 	mov r1, #0x74
@@ -951,9 +1075,15 @@ ov15_0238ADFC: ; 0x0238ADFC
 	add sp, sp, #0x400
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0238AE64: .word 0x00003238
+_0238AE68: .word 0x0000C402
+_0238C3E0: .word 0x00003239
+#else
 _0238AE64: .word 0x00000373
 _0238AE68: .word 0x0000C402
-	arm_func_end ov15_0238ADFC
+#endif
+	arm_func_end ov15_0238ADC4
 
 	arm_func_start ov15_0238AE6C
 ov15_0238AE6C: ; 0x0238AE6C
@@ -1110,8 +1240,19 @@ _0238B050: .word OVERLAY15_UNKNOWN_POINTER__NA_238B180
 
 	.global BANK_MAIN_MENU_ITEMS
 BANK_MAIN_MENU_ITEMS:
-	.byte 0x6F, 0x03, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x70, 0x03, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
-	.byte 0x71, 0x03, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x72, 0x03, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+#ifdef JAPAN
+#define OV15_DATA_OFFSET 0x2EC5
+#else
+#define OV15_DATA_OFFSET 0
+#endif
+	.word 0x36F + OV15_DATA_OFFSET
+	.byte 0x02, 0x00, 0x00, 0x00
+	.word 0x370 + OV15_DATA_OFFSET
+	.byte 0x03, 0x00, 0x00, 0x00
+	.word 0x371 + OV15_DATA_OFFSET
+	.byte 0x04, 0x00, 0x00, 0x00
+	.word 0x372 + OV15_DATA_OFFSET
+	.byte 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x12, 0x1E, 0x05
 	.byte 0x00, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global BANK_WINDOW_PARAMS_2

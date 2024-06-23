@@ -96,8 +96,13 @@ _02302BA8:
 	mov r3, r8
 	bl ov29_02302C04
 	mov r0, #0
+#ifdef JAPAN
+	str r0, [r5, #0x210]
+	strb r0, [r5, #0x14f]
+#else
 	str r0, [r5, #0x214]
 	strb r0, [r5, #0x153]
+#endif
 	cmp r4, #0
 	bne _02302BF4
 	cmp r8, #0
@@ -114,7 +119,11 @@ _02302BF4:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02302BFC: .word 0x000003E7
+#ifdef JAPAN
+_02302C00: .word 0x00002484
+#else
 _02302C00: .word 0x00000F1D
+#endif
 	arm_func_end LevelUpItemEffect
 
 	arm_func_start ov29_02302C04
@@ -171,7 +180,11 @@ _02302CB8:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02302CC0: .word DUNGEON_PTR
+#ifdef JAPAN
+_02302CC4: .word 0x00002491
+#else
 _02302CC4: .word 0x00000F2A
+#endif
 	arm_func_end ov29_02302C04
 
 	arm_func_start ov29_02302CC8
@@ -277,7 +290,11 @@ _02302E18:
 	ldr r1, [r1, r2, lsl #2]
 	bl strcat
 _02302E44:
+#ifdef JAPAN
+	mov r0, #0x2480
+#else
 	ldr r0, _02302F78 ; =0x00000F19
+#endif
 	bl StringFromId
 	mov r1, r0
 	mov r0, r5
@@ -358,15 +375,22 @@ _02302F4C:
 	add sp, sp, #0x58
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define OV29_02302CC8_OFFSET 0x1567
+#else
+#define OV29_02302CC8_OFFSET 0
+#endif
 _02302F64: .word DUNGEON_PTR
-_02302F68: .word 0x00000F27
-_02302F6C: .word 0x00000F18
+_02302F68: .word 0x00000F27 + OV29_02302CC8_OFFSET
+_02302F6C: .word 0x00000F18 + OV29_02302CC8_OFFSET
 _02302F70: .word ov29_023527F0
 _02302F74: .word ov29_023535C8
+#ifndef JAPAN
 _02302F78: .word 0x00000F19
-_02302F7C: .word 0x00000F1A
-_02302F80: .word 0x00000F1B
-_02302F84: .word 0x00000F1C
+#endif
+_02302F7C: .word 0x00000F1A + OV29_02302CC8_OFFSET
+_02302F80: .word 0x00000F1B + OV29_02302CC8_OFFSET
+_02302F84: .word 0x00000F1C + OV29_02302CC8_OFFSET
 	arm_func_end ov29_02302CC8
 
 	arm_func_start TryDecreaseLevel
@@ -403,8 +427,13 @@ TryDecreaseLevel: ; 0x02302F88
 	orr r4, r4, r0
 _02303000:
 	mov r0, #0
+#ifdef JAPAN
+	str r0, [r5, #0x210]
+	strb r0, [r5, #0x14f]
+#else
 	str r0, [r5, #0x214]
 	strb r0, [r5, #0x153]
+#endif
 	cmp r4, #0
 	bne _02303030
 	mov r1, r7
@@ -418,7 +447,11 @@ _02303030:
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02303038: .word 0x00002485
+#else
 _02303038: .word 0x00000F1E
+#endif
 	arm_func_end TryDecreaseLevel
 
 	arm_func_start LevelUp
@@ -479,8 +512,13 @@ _023030F0:
 	mov r3, r1
 	str r1, [sp]
 	bl ov29_0230040C
+#ifdef JAPAN
+	ldr r1, _023047C0 ; =0x00002487
+	mov r0, sl
+#else
 	mov r0, sl
 	mov r1, #0xf20
+#endif
 	bl ov29_0234D484
 	b _02303160
 _02303124:
@@ -497,8 +535,13 @@ _02303130:
 	mov r3, r1
 	str r1, [sp]
 	bl ov29_0230040C
+#ifdef JAPAN
+	ldr r1, _023047C0 ; =0x00002487
+	mov r0, sl
+#else
 	mov r0, sl
 	mov r1, #0xf20
+#endif
 	bl LogMessageByIdWithPopup
 _02303160:
 	ldrh r1, [sp, #0x10]
@@ -575,6 +618,9 @@ _02303268:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02303270: .word ov29_0237C9C4
+#ifdef JAPAN
+_023047C0: .word 0x00002487
+#endif
 _02303274: .word 0x000003E7
 _02303278: .word ov29_0237C9C8
 _0230327C: .word ov29_0237C9C9
@@ -743,12 +789,22 @@ _023034C8: .word 0x000003E7
 _023034CC: .word ov29_0237C9C8
 _023034D0: .word ov29_0237C9C9
 _023034D4: .word ov29_0237C9C5
+#ifdef JAPAN
+_023034D8: .word 0x00002489
+_023034DC: .word 0x00002488
+#else
 _023034D8: .word 0x00000F22
 _023034DC: .word 0x00000F21
+#endif
 	arm_func_end ov29_02303284
 
 	arm_func_start ov29_023034E0
 ov29_023034E0: ; 0x023034E0
+#ifdef JAPAN
+#define OV29_023034E0_OFFSET -4
+#else
+#define OV29_023034E0_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x78
 	mov sb, r1
@@ -770,7 +826,7 @@ ov29_023034E0: ; 0x023034E0
 	cmp r6, r0
 	addne r0, r5, r6, lsl #3
 	addne r0, r0, #0x100
-	ldrneh r7, [r0, #0x28]
+	ldrneh r7, [r0, #0x28 + OV29_023034E0_OFFSET]
 	mov ip, sl
 	mov lr, sl
 	moveq r7, #0
@@ -778,7 +834,7 @@ ov29_023034E0: ; 0x023034E0
 	add r0, sp, #0x10
 _0230354C:
 	add r1, r5, ip, lsl #3
-	ldrb r1, [r1, #0x124]
+	ldrb r1, [r1, #0x124 + OV29_023034E0_OFFSET]
 	tst r1, #1
 	movne r1, r3
 	moveq r1, lr
@@ -786,7 +842,7 @@ _0230354C:
 	beq _02303588
 	add r1, r5, ip, lsl #3
 	add r1, r1, #0x100
-	ldrh r2, [r1, #0x28]
+	ldrh r2, [r1, #0x28 + OV29_023034E0_OFFSET]
 	mov r1, sl, lsl #1
 	add sl, sl, #1
 	strh r2, [r0, r1]
@@ -820,7 +876,7 @@ _023035C0:
 	bl sub_02053904
 	mov sl, r0
 	add r0, sp, #0x18
-	add r1, r5, #0x124
+	add r1, r5, #0x124 + OV29_023034E0_OFFSET
 	bl sub_020149C0
 	cmp sl, #0
 	beq _02303670
@@ -879,7 +935,7 @@ _0230367C:
 _023036B4:
 	add r1, r5, ip, lsl #3
 	add r0, sp, #0x18
-	add r2, r1, #0x124
+	add r2, r1, #0x124 + OV29_023034E0_OFFSET
 	add r3, r0, ip, lsl #3
 	mov r1, #4
 _023036C8:
@@ -889,12 +945,12 @@ _023036C8:
 	bne _023036C8
 	add r0, r5, ip, lsl #3
 	add r0, r0, #0x100
-	ldrh r1, [r0, #0x26]
+	ldrh r1, [r0, #0x26 + OV29_023034E0_OFFSET]
 	add ip, ip, #1
 	tst r1, #4
 	bicne r1, r1, #4
-	strneh r1, [r0, #0x26]
-	ldrneh r4, [r0, #0x28]
+	strneh r1, [r0, #0x26 + OV29_023034E0_OFFSET]
+	ldrneh r4, [r0, #0x28 + OV29_023034E0_OFFSET]
 	movne sl, #1
 _023036FC:
 	cmp ip, lr
@@ -903,7 +959,7 @@ _023036FC:
 	b _02303718
 _0230370C:
 	add r0, r5, ip, lsl #3
-	strb r1, [r0, #0x124]
+	strb r1, [r0, #0x124 + OV29_023034E0_OFFSET]
 	add ip, ip, #1
 _02303718:
 	cmp ip, #4
@@ -987,7 +1043,7 @@ _02303818:
 	b _0230389C
 _02303840:
 	add r3, r5, r4, lsl #3
-	ldrb r3, [r3, #0x124]
+	ldrb r3, [r3, #0x124 + OV29_023034E0_OFFSET]
 	tst r3, #1
 	movne r3, r1
 	moveq r3, r0
@@ -995,7 +1051,7 @@ _02303840:
 	beq _02303870
 	add r3, r5, r4, lsl #3
 	add r3, r3, #0x100
-	ldrh r3, [r3, #0x28]
+	ldrh r3, [r3, #0x28 + OV29_023034E0_OFFSET]
 	cmp r7, r3
 	beq _023038A4
 _02303870:
@@ -1020,19 +1076,30 @@ _023038A4:
 	beq _023038BC
 _023038B4:
 	mov r0, #1
-	strb r0, [r5, #0x23e]
+	strb r0, [r5, #0x23e + OV29_023034E0_OFFSET]
 _023038BC:
 	add sp, sp, #0x78
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _023038C4: .word 0x0000131B
+#ifdef JAPAN
+_023038C8: .word 0x0000248A
+_023038CC: .word 0xFFFFFE5E
+_023038D0: .word 0x0000248C
+#else
 _023038C8: .word 0x00000F23
 _023038CC: .word 0xFFFFFE5E
 _023038D0: .word 0x00000F25
+#endif
 	arm_func_end ov29_023034E0
 
 	arm_func_start ov29_023038D4
 ov29_023038D4: ; 0x023038D4
+#ifdef JAPAN
+#define OV29_023038D4_OFFSET -4
+#else
+#define OV29_023038D4_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xa4
 	mov sl, r0
@@ -1040,7 +1107,7 @@ ov29_023038D4: ; 0x023038D4
 	mov r6, r1
 	mov r5, #0
 	add r0, sp, #0
-	add r1, r8, #0x124
+	add r1, r8, #0x124 + OV29_023038D4_OFFSET
 	mov r7, r5
 	bl sub_020149C0
 	mov r4, r5
@@ -1092,13 +1159,13 @@ _02303978:
 	cmp r6, #4
 	bgt _02303A84
 	mov sb, #0
-	add r4, r8, #0x124
+	add r4, r8, #0x124 + OV29_023038D4_OFFSET
 	add fp, sp, #0
 	b _02303A14
 _023039B4:
 	add r0, r8, sb, lsl #3
 	add r3, fp, sb, lsl #3
-	add r2, r0, #0x124
+	add r2, r0, #0x124 + OV29_023038D4_OFFSET
 	mov r1, #4
 _023039C4:
 	ldrh r0, [r3], #2
@@ -1107,18 +1174,18 @@ _023039C4:
 	bne _023039C4
 	add r0, r8, sb, lsl #3
 	add r3, r0, #0x100
-	ldrh r0, [r3, #0x26]
+	ldrh r0, [r3, #0x26 + OV29_023038D4_OFFSET]
 	tst r0, #4
 	beq _02303A10
 	bic r5, r0, #4
 	add r0, sp, #0x40
 	mov r2, #0
 	add r1, r4, sb, lsl #3
-	strh r5, [r3, #0x26]
+	strh r5, [r3, #0x26 + OV29_023038D4_OFFSET]
 	bl FormatMoveString
 	add r0, r8, sb, lsl #3
 	add r0, r0, #0x100
-	ldrh r5, [r0, #0x28]
+	ldrh r5, [r0, #0x28 + OV29_023038D4_OFFSET]
 	mov r7, #1
 _02303A10:
 	add sb, sb, #1
@@ -1129,7 +1196,7 @@ _02303A14:
 	b _02303A30
 _02303A24:
 	add r0, r8, sb, lsl #3
-	strb r1, [r0, #0x124]
+	strb r1, [r0, #0x124 + OV29_023038D4_OFFSET]
 	add sb, sb, #1
 _02303A30:
 	cmp sb, #4
@@ -1194,9 +1261,15 @@ _02303B00:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02303B08: .word 0x0000131B
+#ifdef JAPAN
+_02303B0C: .word 0x0000248A
+_02303B10: .word 0x0000248F
+_02303B14: .word 0x0000248B
+#else
 _02303B0C: .word 0x00000F23
 _02303B10: .word 0x00000F28
 _02303B14: .word 0x00000F24
+#endif
 	arm_func_end ov29_023038D4
 
 	arm_func_start GetMonsterMoves
@@ -1411,7 +1484,11 @@ _02303DF4:
 	add sp, sp, #0x20
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02303DFC: .word 0x00002490
+#else
 _02303DFC: .word 0x00000F29
+#endif
 _02303E00: .word 0x0000013F
 _02303E04: .word DIRECTIONS_XY
 _02303E08: .word ov29_0235171E
@@ -1497,6 +1574,13 @@ _02303F14: .word _020AFC4C
 
 	arm_func_start ov29_02303F18
 ov29_02303F18: ; 0x02303F18
+#ifdef JAPAN
+#define OV29_02303F18_OFFSET -4
+#define OV29_02303F18_OFFSET_2 -0xA4
+#else
+#define OV29_02303F18_OFFSET 0
+#define OV29_02303F18_OFFSET_2 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x38
 	ldr r1, _023046C8 ; =DUNGEON_PTR
@@ -1504,10 +1588,10 @@ ov29_02303F18: ; 0x02303F18
 	ldr r0, [r1]
 	ldr r5, [r7, #0xb4]
 	add r0, r0, #0x1a000
-	ldr r1, [r0, #0x22c]
+	ldr r1, [r0, #0x22c + OV29_02303F18_OFFSET_2]
 	cmp r1, r7
 	moveq r4, #0
-	ldrneb r4, [r0, #0x245]
+	ldrneb r4, [r0, #0x245 + OV29_02303F18_OFFSET_2]
 	ldrb r0, [r5, #0xd8]
 	ldrb r1, [r7, #0xaf]
 	cmp r0, #2
@@ -1531,7 +1615,11 @@ ov29_02303F18: ; 0x02303F18
 	bl GetIdleAnimationId
 	mov r3, #1
 	strb r3, [r7, #0x21]
+#ifdef JAPAN
+	ldrb r1, [r5, #0x109]
+#else
 	ldrb r1, [r5, #0x10a]
+#endif
 	cmp r1, #0x63
 	bne _02303FF4
 	ldrb r6, [r7, #0xaf]
@@ -1565,7 +1653,7 @@ _02303FF4:
 	and r2, r2, #7
 	strb r2, [r7, #0xb0]
 	strb r1, [r7, #0xb3]
-	ldrb r1, [r5, #0x23d]
+	ldrb r1, [r5, #0x23d + OV29_02303F18_OFFSET]
 	cmp r1, #0
 	ldreqb r1, [r7, #0xae]
 	cmpeq r1, #6
@@ -1636,7 +1724,7 @@ _023040EC:
 	add r0, r7, #0x2c
 	mov r3, r3, asr #0x10
 	bl SetAndPlayAnimationForAnimationControl
-	ldrb r0, [r5, #0x171]
+	ldrb r0, [r5, #0x171 + OV29_02303F18_OFFSET]
 	cmp r0, #0
 	beq _023041E4
 	add r0, r7, #0x2c
@@ -1716,12 +1804,12 @@ _0230422C:
 	ldrsh r4, [r8, r1]
 	ldr r6, [r7, #0x10]
 	ldr r3, [r7, #0x1c]
-	ldrb r2, [r5, #0x160]
+	ldrb r2, [r5, #0x160 + OV29_02303F18_OFFSET]
 	rsb r1, r4, r6, asr #8
 	ldrsh r8, [r8, r0]
 	add r1, r1, r1, lsr #31
 	ldr sb, [r7, #0xc]
-	ldr r0, [r5, #0x188]
+	ldr r0, [r5, #0x188 + OV29_02303F18_OFFSET]
 	sub r3, r6, r3
 	sub r0, r3, r0
 	rsb r8, r8, sb, asr #8
@@ -1739,18 +1827,18 @@ _0230422C:
 	moveq r0, #2
 	add r8, r8, r0
 _023042B0:
-	ldrb r0, [r5, #0x172]
+	ldrb r0, [r5, #0x172 + OV29_02303F18_OFFSET]
 	cmp r0, #0
 	bne _023042D8
 	mov r0, r7
 	bl ov29_022E273C
-	ldrb r1, [r5, #0x170]
+	ldrb r1, [r5, #0x170 + OV29_02303F18_OFFSET]
 	mov r4, r0
 	cmp r1, #0
 	movne r4, #0
 	b _02304310
 _023042D8:
-	ldrb r0, [r5, #0x173]
+	ldrb r0, [r5, #0x173 + OV29_02303F18_OFFSET]
 	cmp r0, #0
 	beq _023042FC
 	ldr r0, _023046D8 ; =ov29_0237C850
@@ -1760,7 +1848,7 @@ _023042D8:
 	mvneq r0, #0
 	add r8, r8, r0
 _023042FC:
-	ldrb r0, [r5, #0x174]
+	ldrb r0, [r5, #0x174 + OV29_02303F18_OFFSET]
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -1779,7 +1867,7 @@ _02304310:
 	strh r3, [sp, #0x18]
 	ldr ip, [r7, #0x10]
 	ldr r6, [r7, #0x1c]
-	ldr r3, [r5, #0x188]
+	ldr r3, [r5, #0x188 + OV29_02303F18_OFFSET]
 	sub r6, ip, r6
 	sub r3, r6, r3
 	mov r3, r3, asr #8
@@ -1790,14 +1878,14 @@ _02304310:
 	ldr r2, [r1]
 	add r1, sp, #0x18
 	add r2, r2, #0x1a000
-	ldrb r3, [r2, #0x23c]
+	ldrb r3, [r2, #0x23c + OV29_02303F18_OFFSET_2]
 	add r2, sp, #0x28
 	bl ov29_022DDB98
 	add r0, sp, #0x10
 	mov r1, r7
 	bl ov29_022E3A40
 	cmp r4, #0
-	ldrneb r0, [r5, #0x156]
+	ldrneb r0, [r5, #0x156 + OV29_02303F18_OFFSET]
 	cmpne r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -1818,7 +1906,7 @@ _02304310:
 	ldr r0, [r7, #0xb4]
 	ldr r1, _023046C8 ; =DUNGEON_PTR
 	ldr r3, _023046E0 ; =0x0000F3FF
-	ldrb r6, [r0, #0x220]
+	ldrb r6, [r0, #0x220 + OV29_02303F18_OFFSET]
 	mov r0, #0
 	ldr r1, [r1]
 	add r2, r3, #0xc00
@@ -1828,7 +1916,7 @@ _02304310:
 	strh r0, [sp, #0x22]
 	strh r0, [sp, #0x24]
 	add r2, r1, #0x1a000
-	ldrb r2, [r2, #0x23c]
+	ldrb r2, [r2, #0x23c + OV29_02303F18_OFFSET_2]
 	mov r2, r2, lsl #0xa
 	strh r2, [sp, #0x26]
 	ldrb r2, [r5, #6]
@@ -1853,7 +1941,7 @@ _02304458:
 	ldrb r2, [r5, #0xef]
 	cmp r2, #1
 	addeq r1, r1, #0x1a000
-	ldreqb r1, [r1, #0x244]
+	ldreqb r1, [r1, #0x244 + OV29_02303F18_OFFSET_2]
 	cmpeq r1, #0
 	moveq r0, #1
 	cmp r0, #0
@@ -1903,7 +1991,11 @@ _02304510:
 	strh sl, [r7, #0x64]
 	strh r8, [r7, #0x48]
 	strh sb, [r7, #0x4a]
+#ifdef JAPAN
+	ldrb r0, [r5, #0x10a]
+#else
 	ldrb r0, [r5, #0x10b]
+#endif
 	cmp r0, #2
 	beq _02304590
 	ldrb r1, [r5, #0xc4]
@@ -1938,23 +2030,23 @@ _02304590:
 	ldrsh r2, [r7, #0x50]
 	add r1, r5, #0x100
 	ldr r0, _023046D4 ; =0x0001A224
-	strh r2, [r1, #0x82]
+	strh r2, [r1, #0x82 + OV29_02303F18_OFFSET]
 	ldrsh r8, [r7, #0x52]
 	ldr r3, _023046C8 ; =DUNGEON_PTR
 	add r2, r0, #2
-	strh r8, [r1, #0x84]
-	ldrsh sb, [r1, #0x82]
+	strh r8, [r1, #0x84 + OV29_02303F18_OFFSET]
+	ldrsh sb, [r1, #0x82 + OV29_02303F18_OFFSET]
 	ldr r8, [r7, #0xc]
 	add r8, sb, r8, asr #8
-	strh r8, [r1, #0x82]
-	ldrsh sb, [r1, #0x84]
+	strh r8, [r1, #0x82 + OV29_02303F18_OFFSET]
+	ldrsh sb, [r1, #0x84 + OV29_02303F18_OFFSET]
 	ldr r8, [r7, #0x10]
 	add r8, sb, r8, asr #8
-	strh r8, [r1, #0x84]
+	strh r8, [r1, #0x84 + OV29_02303F18_OFFSET]
 	ldr sb, [r3]
-	ldrsh r8, [r1, #0x82]
+	ldrsh r8, [r1, #0x82 + OV29_02303F18_OFFSET]
 	ldrsh r0, [sb, r0]
-	ldrsh r3, [r1, #0x84]
+	ldrsh r3, [r1, #0x84 + OV29_02303F18_OFFSET]
 	ldrsh r1, [sb, r2]
 	sub r0, r8, r0
 	mov r0, r0, lsl #0x10
@@ -1978,7 +2070,7 @@ _02304628:
 	cmp r0, #0
 	bne _0230464C
 	str sb, [sp]
-	ldrb r0, [r5, #0x160]
+	ldrb r0, [r5, #0x160 + OV29_02303F18_OFFSET]
 	mov r1, r6
 	mov r2, r4
 	mov r3, r8
@@ -2007,7 +2099,7 @@ _02304690:
 	cmpne r0, #7
 	bne _023046B8
 	ldr r0, [r7, #0xb4]
-	ldr r0, [r0, #0x110]
+	ldr r0, [r0, #0x110 + OV29_02303F18_OFFSET]
 	cmp r0, #1
 	ble _023046B8
 	add r0, r7, #0x2c
@@ -2022,7 +2114,7 @@ _023046C0:
 _023046C8: .word DUNGEON_PTR
 _023046CC: .word ov29_02352810
 _023046D0: .word 0x00000229
-_023046D4: .word 0x0001A224
+_023046D4: .word 0x0001A224 + OV29_02303F18_OFFSET_2
 _023046D8: .word ov29_0237C850
 _023046DC: .word ov29_0235280C
 _023046E0: .word 0x0000F3FF
@@ -2031,27 +2123,36 @@ _023046E4: .word 0xFFFFFE5D
 
 	arm_func_start ov29_023046E8
 ov29_023046E8: ; 0x023046E8
+#ifdef JAPAN
+#define OV29_023046E8_OFFSET -4
+#else
+#define OV29_023046E8_OFFSET 0
+#endif
 	ldr r1, [r0, #0xb4]
-	ldrb r0, [r1, #0x172]
+	ldrb r0, [r1, #0x172 + OV29_023046E8_OFFSET]
 	cmp r0, #0
 	bxne lr
+#ifdef JAPAN
+	ldrb r0, [r1, #0x10a]
+#else
 	ldrb r0, [r1, #0x10b]
+#endif
 	cmp r0, #1
-	ldr r0, [r1, #0x188]
+	ldr r0, [r1, #0x188 + OV29_023046E8_OFFSET]
 	bne _02304728
 	cmp r0, #0xc800
 	bxge lr
 	add r0, r0, #0x800
-	str r0, [r1, #0x188]
+	str r0, [r1, #0x188 + OV29_023046E8_OFFSET]
 	cmp r0, #0xc800
 	movgt r0, #0xc800
-	strgt r0, [r1, #0x188]
+	strgt r0, [r1, #0x188 + OV29_023046E8_OFFSET]
 	bx lr
 _02304728:
 	subs r0, r0, #0xc00
-	str r0, [r1, #0x188]
+	str r0, [r1, #0x188 + OV29_023046E8_OFFSET]
 	movmi r0, #0
-	strmi r0, [r1, #0x188]
+	strmi r0, [r1, #0x188 + OV29_023046E8_OFFSET]
 	bx lr
 	arm_func_end ov29_023046E8
 
@@ -2065,17 +2166,29 @@ _0230474C:
 	ldr r0, [r6]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r4, [r0, #0xad4]
+#else
 	ldr r4, [r0, #0xb78]
+#endif
 	mov r0, r4
 	bl EntityIsValid__023047B8
 	cmp r0, #0
 	ldrne r2, [r4, #0xb4]
+#ifdef JAPAN
+	ldrneb r0, [r2, #0x175]
+#else
 	ldrneb r0, [r2, #0x179]
+#endif
 	cmpne r0, #0
 	beq _023047A4
 	sub r1, r0, #1
 	and r0, r1, #0xff
+#ifdef JAPAN
+	strb r1, [r2, #0x175]
+#else
 	strb r1, [r2, #0x179]
+#endif
 	tst r0, #1
 	bne _023047A4
 	ldrb r2, [r2, #0x4c]

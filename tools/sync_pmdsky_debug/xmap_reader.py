@@ -22,7 +22,7 @@ Dictionary format:
 """
 def read_xmap_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]]:
     xmap_symbols: Dict[str, Dict[str, Dict[int, SymbolDetails]]] = {}
-    for language in ['us', 'eu']:
+    for language in ['us', 'eu', 'jp']:
         xmap_symbols[language] = read_xmap_symbols_for_language(language)
     return xmap_symbols
 

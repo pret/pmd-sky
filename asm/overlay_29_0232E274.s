@@ -245,7 +245,9 @@ DoMoveCaptivate: ; 0x0232E560
 	mov r0, r6
 	mov r1, r5
 	mov r2, #0x29
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActiveMoveEffects__0232DE20
 	cmp r0, #0
 	bne _0232E5D4
@@ -282,7 +284,11 @@ _0232E614:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0232E61C: .word SPATK_STAT_IDX
+#ifdef JAPAN
+_0232E620: .word 0x00000C51
+#else
 _0232E620: .word 0x00000F0F
+#endif
 	arm_func_end DoMoveCaptivate
 
 	arm_func_start DoMoveLeafStorm
@@ -414,6 +420,11 @@ DoMoveTag0x1A6: ; 0x0232E750
 
 	arm_func_start DoMoveTag0x1A7
 DoMoveTag0x1A7: ; 0x0232E794
+#ifdef JAPAN
+#define DO_MOVE_TAG_0X147_OFFSET -4
+#else
+#define DO_MOVE_TAG_0X147_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -436,10 +447,10 @@ DoMoveTag0x1A7: ; 0x0232E794
 	ldr r1, [r4, #0xb4]
 	mov r0, #0
 	add r1, r1, #0x100
-	ldrh r2, [r1, #0x4a]
-	strh r2, [r1, #0x46]
-	ldrh r2, [r1, #0x4c]
-	strh r2, [r1, #0x48]
+	ldrh r2, [r1, #0x4a + DO_MOVE_TAG_0X147_OFFSET]
+	strh r2, [r1, #0x46 + DO_MOVE_TAG_0X147_OFFSET]
+	ldrh r2, [r1, #0x4c + DO_MOVE_TAG_0X147_OFFSET]
+	strh r2, [r1, #0x48 + DO_MOVE_TAG_0X147_OFFSET]
 	bl ov29_0234AFFC
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}

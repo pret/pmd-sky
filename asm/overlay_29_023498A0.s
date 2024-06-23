@@ -13,6 +13,7 @@ GenerateMissionEggMonster: ; 0x023498A0
 	bne _02349A54
 	bl GetRandomSpawnMonsterID
 	mov sb, r0
+#ifndef JAPAN
 	bl IsCastform
 	cmp r0, #0
 	mov r0, sb
@@ -32,6 +33,7 @@ _023498E4:
 	moveq sb, #0x1cc
 	ldrne sb, _02349A64 ; =0x00000424
 _02349904:
+#endif
 	ldr r0, _02349A68 ; =0x000001C1
 	sub r0, r0, #2
 	str r0, [sp, #8]
@@ -126,9 +128,11 @@ _02349A54:
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifndef JAPAN
 _02349A5C: .word 0x0000017B
 _02349A60: .word 0x000003D3
 _02349A64: .word 0x00000424
+#endif
 _02349A68: .word 0x000001C1
 _02349A6C: .word 0x00000418
 	arm_func_end GenerateMissionEggMonster
@@ -143,7 +147,11 @@ _02349A80:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xa84]
+#else
 	ldr r6, [r0, #0xb28]
+#endif
 	mov r0, r6
 	bl EntityIsValid__0234987C
 	cmp r0, #0
@@ -385,8 +393,13 @@ _02349DC8:
 	mov r0, #1
 	mov r2, #0
 	bl SubstitutePlaceholderStringTags
+#ifdef JAPAN
+	ldr r1, _0234B4B4 ; =0x00000B71
+	mov r0, #0
+#else
 	mov r0, #0
 	mov r1, #0xe30
+#endif
 	mov r2, #1
 	bl DisplayMessage
 	ldrsh r4, [r4, #0xa]
@@ -430,8 +443,13 @@ _02349E6C:
 	mov r1, r5
 	mov r2, #0
 	bl SubstitutePlaceholderStringTags
+#ifdef JAPAN
+	ldr r1, _0234B4B4 ; =0x00000B71
+	mov r0, #0
+#else
 	mov r0, #0
 	mov r1, #0xe30
+#endif
 	mov r2, #1
 	bl DisplayMessage
 	ldrsh r4, [r4, #0xa]
@@ -573,8 +591,13 @@ _0234A088:
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
+#ifdef JAPAN
+	add r0, sp, #0x40
+	mov r1, #0xb50
+#else
 	ldr r1, _0234A238 ; =0x00000E0F
 	add r0, sp, #0x40
+#endif
 	mov r2, #1
 	bl DisplayMessage
 	b _0234A1D4
@@ -593,8 +616,13 @@ _0234A0D4:
 	mov r1, r4
 	mov r0, #1
 	bl ov29_0234B0CC
+#ifdef JAPAN
+	ldr r1, _0234B4DC_2 ; =0x00000B51
+	add r0, sp, #0x30
+#else
 	add r0, sp, #0x30
 	mov r1, #0xe10
+#endif
 	mov r2, #1
 	bl DisplayMessage
 	b _0234A1D4
@@ -665,23 +693,35 @@ _0234A1F8:
 	add sp, sp, #0xa0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define OV29_02349C84_OFFSET -0x2BF
+#else
+#define OV29_02349C84_OFFSET 0
+#endif
 _0234A200: .word ov29_023537C8
-_0234A204: .word 0x00000E11
-_0234A208: .word 0x00000E04
-_0234A20C: .word 0x00000E34
-_0234A210: .word 0x00000E35
-_0234A214: .word 0x00000E31
-_0234A218: .word 0x00000E32
+_0234A204: .word 0x00000E11 + OV29_02349C84_OFFSET
+_0234A208: .word 0x00000E04 + OV29_02349C84_OFFSET
+_0234A20C: .word 0x00000E34 + OV29_02349C84_OFFSET
+_0234A210: .word 0x00000E35 + OV29_02349C84_OFFSET
+#ifdef JAPAN
+_0234B4B4: .word 0x00000B71
+#endif
+_0234A214: .word 0x00000E31 + OV29_02349C84_OFFSET
+_0234A218: .word 0x00000E32 + OV29_02349C84_OFFSET
 _0234A21C: .word DUNGEON_PTR
-_0234A220: .word 0x00000E33
-_0234A224: .word 0x00000E0A
-_0234A228: .word 0x00000E0B
-_0234A22C: .word 0x00000E0C
-_0234A230: .word 0x00000E0D
-_0234A234: .word 0x00000E0E
+_0234A220: .word 0x00000E33 + OV29_02349C84_OFFSET
+_0234A224: .word 0x00000E0A + OV29_02349C84_OFFSET
+_0234A228: .word 0x00000E0B + OV29_02349C84_OFFSET
+_0234A22C: .word 0x00000E0C + OV29_02349C84_OFFSET
+_0234A230: .word 0x00000E0D + OV29_02349C84_OFFSET
+_0234A234: .word 0x00000E0E + OV29_02349C84_OFFSET
+#ifdef JAPAN
+_0234B4DC_2: .word 0x00000B51
+#else
 _0234A238: .word 0x00000E0F
-_0234A23C: .word 0x00000E09
-_0234A240: .word 0x00000E07
+#endif
+_0234A23C: .word 0x00000E09 + OV29_02349C84_OFFSET
+_0234A240: .word 0x00000E07 + OV29_02349C84_OFFSET
 	arm_func_end ov29_02349C84
 
 	arm_func_start ov29_0234A244
@@ -705,8 +745,13 @@ _0234A26C:
 	bl ov29_023009CC
 	cmp r0, #0
 	bne _0234A2A0
+#ifdef JAPAN
+	mov r0, #0
+	mov r1, #0xb70
+#else
 	ldr r1, _0234A2CC ; =0x00000E2F
 	mov r0, #0
+#endif
 	mov r2, #1
 	bl DisplayMessage2
 	ldmia sp!, {r3, r4, r5, pc}
@@ -722,9 +767,14 @@ _0234A2A0:
 	bl DisplayMessage2
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0234A2C8: .word 0x00000B6E
+_0234A2D0: .word 0x00000B6D
+#else
 _0234A2C8: .word 0x00000E2D
 _0234A2CC: .word 0x00000E2F
 _0234A2D0: .word 0x00000E2C
+#endif
 	arm_func_end ov29_0234A244
 
 	arm_func_start ov29_0234A2D4
@@ -828,7 +878,11 @@ _0234A40C:
 	ldr r0, [r0]
 	add r0, r0, r1, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r1, [r0, #0xa84]
+#else
 	ldr r1, [r0, #0xb28]
+#endif
 	cmp r1, #0
 	moveq r0, #0
 	beq _0234A468
@@ -872,15 +926,25 @@ _0234A47C:
 	add r0, sp, #0x14
 	mov r2, #1
 	bl DisplayMessage
+#ifdef JAPAN
+	mov r0, #0
+	mov r1, #0xb60
+#else
 	ldr r1, _0234A5CC ; =0x00000E1F
 	mov r0, #0
+#endif
 	mov r2, #1
 	bl DisplayMessage
 	ldr r4, _0234A5D0 ; =0x00000E44
 	b _0234A570
 _0234A504:
+#ifdef JAPAN
+	ldr r1, _0234B870 ; =0x00000B61
+	mov r2, r0
+#else
 	mov r2, r0
 	mov r1, #0xe20
+#endif
 	str r0, [sp]
 	bl YesNoMenu
 	cmp r0, #1
@@ -925,19 +989,29 @@ _0234A5A8:
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0234A5B0: .word 0x00000E27
-_0234A5B4: .word 0x00000E21
+#ifdef JAPAN
+#define OV29_0234A2D4_OFFSET -0x2BF
+#else
+#define OV29_0234A2D4_OFFSET 0
+#endif
+_0234A5B0: .word 0x00000E27 + OV29_0234A2D4_OFFSET
+_0234A5B4: .word 0x00000E21 + OV29_0234A2D4_OFFSET
 _0234A5B8: .word BAG_ITEMS_PTR_MIRROR
-_0234A5BC: .word 0x00000E26
+_0234A5BC: .word 0x00000E26 + OV29_0234A2D4_OFFSET
 _0234A5C0: .word DUNGEON_PTR
-_0234A5C4: .word 0x00000E1D
-_0234A5C8: .word 0x00000E1E
+_0234A5C4: .word 0x00000E1D + OV29_0234A2D4_OFFSET
+_0234A5C8: .word 0x00000E1E + OV29_0234A2D4_OFFSET
+#ifndef JAPAN
 _0234A5CC: .word 0x00000E1F
-_0234A5D0: .word 0x00000E44
-_0234A5D4: .word 0x00000E1A
-_0234A5D8: .word 0x00000E1B
-_0234A5DC: .word 0x00000E1C
-_0234A5E0: .word 0x00000E23
+#endif
+_0234A5D0: .word 0x00000E44 + OV29_0234A2D4_OFFSET
+#ifdef JAPAN
+_0234B870: .word 0x00000B61
+#endif
+_0234A5D4: .word 0x00000E1A + OV29_0234A2D4_OFFSET
+_0234A5D8: .word 0x00000E1B + OV29_0234A2D4_OFFSET
+_0234A5DC: .word 0x00000E1C + OV29_0234A2D4_OFFSET
+_0234A5E0: .word 0x00000E23 + OV29_0234A2D4_OFFSET
 	arm_func_end ov29_0234A2D4
 
 	arm_func_start ov29_0234A5E4
@@ -982,8 +1056,13 @@ _0234A65C:
 	bl ov29_023009CC
 	cmp r0, #0
 	bne _0234A690
+#ifdef JAPAN
+	mov r0, #0
+	mov r1, #0xb70
+#else
 	ldr r1, _0234A748 ; =0x00000E2F
 	mov r0, #0
+#endif
 	mov r2, #1
 	bl DisplayMessage2
 	b _0234A738
@@ -1035,17 +1114,25 @@ _0234A738:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0234A740: .word 0x00000E2E
-_0234A744: .word 0x00000E2D
+#ifdef JAPAN
+#define OV29_0234A5E4_OFFSET -0x2BF
+#else
+#define OV29_0234A5E4_OFFSET 0
+#endif
+_0234A740: .word 0x00000E2E + OV29_0234A5E4_OFFSET
+_0234A744: .word 0x00000E2D + OV29_0234A5E4_OFFSET
+#ifndef JAPAN
 _0234A748: .word 0x00000E2F
-_0234A74C: .word 0x00000E2C
-_0234A750: .word 0x00000E28
-_0234A754: .word 0x00000E29
-_0234A758: .word 0x00000E2A
+#endif
+_0234A74C: .word 0x00000E2C + OV29_0234A5E4_OFFSET
+_0234A750: .word 0x00000E28 + OV29_0234A5E4_OFFSET
+_0234A754: .word 0x00000E29 + OV29_0234A5E4_OFFSET
+_0234A758: .word 0x00000E2A + OV29_0234A5E4_OFFSET
 _0234A75C: .word DUNGEON_PTR
-_0234A760: .word 0x00000E2B
+_0234A760: .word 0x00000E2B + OV29_0234A5E4_OFFSET
 	arm_func_end ov29_0234A5E4
 
+#ifndef JAPAN
 	arm_func_start ov29_0234A764
 ov29_0234A764: ; 0x0234A764
 	stmdb sp!, {r3, lr}
@@ -1060,15 +1147,22 @@ ov29_0234A764: ; 0x0234A764
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_0234A764
+#endif
 
 	arm_func_start ov29_0234A790
 ov29_0234A790: ; 0x0234A790
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	mov r7, r0
+#ifdef JAPAN
+	bl GetLeader
+	cmp r0, #0
+	beq _0234A8A4
+#else
 	bl ov29_0234A764
 	cmp r0, #0
 	bne _0234A8A4
+#endif
 	mov r0, #0xa
 	mov r1, #4
 	bl IsCurrentMissionTypeExact
@@ -1140,19 +1234,30 @@ _0234A8A4:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0234A8AC: .word 0x00000E14
-_0234A8B0: .word 0x00000E18
+#ifdef JAPAN
+#define OV29_0234A790_OFFSET -0x2BF
+#else
+#define OV29_0234A790_OFFSET 0
+#endif
+_0234A8AC: .word 0x00000E14 + OV29_0234A790_OFFSET
+_0234A8B0: .word 0x00000E18 + OV29_0234A790_OFFSET
 _0234A8B4: .word DUNGEON_PTR
-_0234A8B8: .word 0x00000E44
+_0234A8B8: .word 0x00000E44 + OV29_0234A790_OFFSET
 	arm_func_end ov29_0234A790
 
 	arm_func_start ov29_0234A8BC
 ov29_0234A8BC: ; 0x0234A8BC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
+#ifdef JAPAN
+	bl GetLeader
+	cmp r0, #0
+	ldmeqia sp!, {r4, pc}
+#else
 	bl ov29_0234A764
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
+#endif
 	bl IsDestinationFloorWithHiddenOutlaw
 	cmp r0, #0
 	beq _0234A928
@@ -1199,8 +1304,13 @@ _0234A958:
 	bl ov29_022EA428
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0234A978: .word 0x00000B57
+_0234A97C: .word 0x00000B56
+#else
 _0234A978: .word 0x00000E16
 _0234A97C: .word 0x00000E15
+#endif
 	arm_func_end ov29_0234A8BC
 
 	arm_func_start ov29_0234A980
@@ -1272,12 +1382,17 @@ _0234AA78:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0234AA80: .word 0x00000E39
-_0234AA84: .word 0x00000E36
-_0234AA88: .word 0x00000E37
-_0234AA8C: .word 0x00000E38
+#ifdef JAPAN
+#define OV29_0234A980_OFFSET -0x2BF
+#else
+#define OV29_0234A980_OFFSET 0
+#endif
+_0234AA80: .word 0x00000E39 + OV29_0234A980_OFFSET
+_0234AA84: .word 0x00000E36 + OV29_0234A980_OFFSET
+_0234AA88: .word 0x00000E37 + OV29_0234A980_OFFSET
+_0234AA8C: .word 0x00000E38 + OV29_0234A980_OFFSET
 _0234AA90: .word DUNGEON_PTR
-_0234AA94: .word 0x00000E3A
+_0234AA94: .word 0x00000E3A + OV29_0234A980_OFFSET
 	arm_func_end ov29_0234A980
 
 	arm_func_start ov29_0234AA98
@@ -1307,8 +1422,13 @@ _0234AAC4:
 	mov r1, r0
 	mov r0, #1
 	bl ov29_0234B084
+#ifdef JAPAN
+	mov r0, #0
+	mov r1, #0xb80
+#else
 	ldr r1, _0234ABA0 ; =0x00000E3F
 	mov r0, #0
+#endif
 	mov r2, #1
 	bl DisplayMessage
 	ldr r1, [r4, #0xb4]
@@ -1320,8 +1440,13 @@ _0234AAC4:
 	mov r1, r5
 	mov r0, #1
 	bl ov29_0234B0CC
+#ifdef JAPAN
+	ldr r1, _0234BE10 ; =0x00000B81
+	add r0, sp, #0
+#else
 	add r0, sp, #0
 	mov r1, #0xe40
+#endif
 	mov r2, #1
 	bl DisplayMessage
 	ldr r1, _0234ABA4 ; =0x00000E41
@@ -1350,20 +1475,35 @@ _0234AB94:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_0234AB9C: .word 0x00000E2D
+#ifdef JAPAN
+#define OV29_0234AA98_OFFSET -0x2BF
+#else
+#define OV29_0234AA98_OFFSET 0
+#endif
+_0234AB9C: .word 0x00000E2D + OV29_0234AA98_OFFSET
+#ifdef JAPAN
+_0234BE10: .word 0x00000B81
+#else
 _0234ABA0: .word 0x00000E3F
-_0234ABA4: .word 0x00000E41
+#endif
+_0234ABA4: .word 0x00000E41 + OV29_0234AA98_OFFSET
 _0234ABA8: .word DUNGEON_PTR
-_0234ABAC: .word 0x00000E42
+_0234ABAC: .word 0x00000E42 + OV29_0234AA98_OFFSET
 	arm_func_end ov29_0234AA98
 
 	arm_func_start ov29_0234ABB0
 ov29_0234ABB0: ; 0x0234ABB0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
+#ifdef JAPAN
+	bl GetLeader
+	cmp r0, #0
+	ldmeqia sp!, {r4, pc}
+#else
 	bl ov29_0234A764
 	cmp r0, #0
 	ldmneia sp!, {r4, pc}
+#endif
 	bl GetLeader
 	mov r1, r0
 	mov r0, #0
@@ -1390,7 +1530,11 @@ ov29_0234ABB0: ; 0x0234ABB0
 	ldr r0, _0234AC84 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrsh r0, [r0, #0x32]
+#else
 	ldrsh r0, [r0, #0xd6]
+#endif
 	bl MusicTableIdxToMusicId
 	bl ChangeDungeonMusic
 _0234AC38:
@@ -1416,9 +1560,15 @@ _0234AC70:
 	bl ov29_022EA428
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0234AC80: .word 0x00000B54
+_0234AC84: .word DUNGEON_PTR
+_0234AC88: .word 0x00000B84
+#else
 _0234AC80: .word 0x00000E13
 _0234AC84: .word DUNGEON_PTR
 _0234AC88: .word 0x00000E43
+#endif
 	arm_func_end ov29_0234ABB0
 
 	arm_func_start ov29_0234AC8C
@@ -1457,8 +1607,13 @@ _0234ACE0:
 	bl ov29_02348A18
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0234AD08: .word 0x00000B53
+_0234AD0C: .word 0x00000B84
+#else
 _0234AD08: .word 0x00000E12
 _0234AD0C: .word 0x00000E43
+#endif
 	arm_func_end ov29_0234AC8C
 
 	arm_func_start ov29_0234AD10
@@ -1511,7 +1666,11 @@ _0234AD44:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234ADC4: .word 0x0000025B
+#ifdef JAPAN
+_0234ADC8: .word 0x00000B5A
+#else
 _0234ADC8: .word 0x00000E19
+#endif
 	arm_func_end ov29_0234AD10
 
 	arm_func_start ov29_0234ADCC
@@ -1547,8 +1706,13 @@ _0234AE1C:
 	bl DisplayMessage
 	ldmia sp!, {r3, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0234AE38: .word 0x00000B45
+_0234AE3C: .word 0x00000B46
+#else
 _0234AE38: .word 0x00000E04
 _0234AE3C: .word 0x00000E05
+#endif
 	arm_func_end ov29_0234ADCC
 
 	arm_func_start ov29_0234AE40
@@ -1576,7 +1740,11 @@ ov29_0234AE40: ; 0x0234AE40
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0234AE98: .word 0x00000B47
+#else
 _0234AE98: .word 0x00000E06
+#endif
 _0234AE9C: .word ov29_0234AEA4
 _0234AEA0: .word ov29_023537C8
 	arm_func_end ov29_0234AE40
@@ -1616,7 +1784,11 @@ ov29_0234AEE8: ; 0x0234AEE8
 	ldr r0, _0234AF30 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrsh r0, [r0, #0x32]
+#else
 	ldrsh r0, [r0, #0xd6]
+#endif
 	bl MusicTableIdxToMusicId
 	bl ChangeDungeonMusic
 _0234AF24:
@@ -2429,9 +2601,11 @@ _0234B8A0:
 	bl ov10_022BFD20
 	cmp r0, #0
 	bne _0234B9C8
+#ifndef JAPAN
 	bl sub_02001808
 	cmp r0, #0x3000
 	blt _0234B9C8
+#endif
 	ldr r0, _0234BA14 ; =ov29_023537CC
 	mvn r1, #1
 	ldr r0, [r0, #4]
@@ -3150,8 +3324,13 @@ _0234C1F4:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0234C230
+#ifdef JAPAN
+	add r0, r0, #0x2180
+	add r0, r0, #0x18000
+#else
 	add r0, r0, #0x224
 	add r0, r0, #0x1a000
+#endif
 	bl ov10_022BF764
 	bl ov29_022E6DD0
 	b _0234C238
@@ -4121,7 +4300,11 @@ _0234CE60:
 	ldr r0, _0234CEA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x748]
+#ifdef JAPAN
+	cmp r0, #0x7a
+#else
 	cmp r0, #0x7b
+#endif
 	ldmneia sp!, {r4, pc}
 	ldr r0, _0234CEE8 ; =0xFFFFFED2
 	add r0, r4, r0
@@ -4289,8 +4472,23 @@ _0234D04C:
 	b _0234D1E0
 _0234D0A0:
 	cmp r0, #0xda
+#ifdef JAPAN
+	bne _0234E334
+	ldr r0, _0234D204 ; =DUNGEON_PTR
+	ldr r0, [r0]
+	ldrb r0, [r0, #0x748]
+	bl IsFutureDungeon
+	cmp r0, #0
+	ldrne r0, _0234E48C ; =0x000004BC
+	ldreq r0, _0234D200 ; =0x000004B3
+	mov r0, r0, lsl #0x10
+	mov r4, r0, asr #0x10
+	b _0234D1E0
+_0234E334:
+#else
 	ldreq r4, _0234D200 ; =0x000004B3
 	beq _0234D1E0
+#endif
 	cmp r0, #0xed
 	bne _0234D148
 	ldr r0, _0234D204 ; =DUNGEON_PTR
@@ -4385,8 +4583,14 @@ _0234D1F0: .word 0x000001B2
 _0234D1F4: .word 0x000004CD
 _0234D1F8: .word 0x000004CF
 _0234D1FC: .word 0x000004D1
+#ifdef JAPAN
+_0234D204: .word DUNGEON_PTR
+_0234E48C: .word 0x000004BC
+_0234D200: .word 0x000004B3
+#else
 _0234D200: .word 0x000004B3
 _0234D204: .word DUNGEON_PTR
+#endif
 _0234D208: .word 0x000004C4
 _0234D20C: .word 0x000004C6
 _0234D210: .word 0x000004C7

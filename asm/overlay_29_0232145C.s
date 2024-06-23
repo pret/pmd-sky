@@ -5,6 +5,11 @@
 
 	arm_func_start ov29_0232145C
 ov29_0232145C: ; 0x0232145C
+#ifdef JAPAN
+#define OV29_0232145C_OFFSET -4
+#else
+#define OV29_0232145C_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x34
 	mov sb, r1
@@ -19,7 +24,7 @@ ov29_0232145C: ; 0x0232145C
 	bge _02321A40
 	bl ov29_022FBAB4
 	mov r0, #0
-	strb r0, [r5, #0x163]
+	strb r0, [r5, #0x163 + OV29_0232145C_OFFSET]
 	ldrb r1, [r5, #0xd0]
 	cmp r1, #1
 	bne _023214C4
@@ -64,7 +69,7 @@ _0232152C:
 	add r1, r5, r0, lsl #1
 	add r1, r1, #0x100
 	add r0, r0, #1
-	strh r2, [r1, #0x94]
+	strh r2, [r1, #0x94 + OV29_0232145C_OFFSET]
 	cmp r0, #4
 	blt _0232152C
 	mov r1, r2
@@ -75,7 +80,7 @@ _0232154C:
 	add r2, r2, #1
 	bge _02321578
 	add r0, r5, r4, lsl #3
-	ldrb r0, [r0, #0x124]
+	ldrb r0, [r0, #0x124 + OV29_0232145C_OFFSET]
 	tst r0, #2
 	beq _02321578
 	add r1, r1, #1
@@ -87,7 +92,7 @@ _02321578:
 	movge r6, #1
 	movlt r6, #0
 _02321584:
-	add r1, r5, #0x124
+	add r1, r5, #0x124 + OV29_0232145C_OFFSET
 	mov r0, sl
 	add r4, r1, sb, lsl #3
 	bl EntityIsValid__02321438
@@ -103,8 +108,13 @@ _02321584:
 	bl IsTrappingMove
 	cmp r0, #0
 	beq _023215D8
+#ifdef JAPAN
+	mov r0, sl
+	mov r1, #0xbc0
+#else
 	ldr r1, _02321A58 ; =0x00000E7E
 	mov r0, sl
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, #0
 	b _02321A40
@@ -173,7 +183,7 @@ _023216AC:
 	mov r0, #0
 	str r0, [sp, #0x10]
 	ldr r0, [r1, #0x18]
-	strb fp, [r5, #0x163]
+	strb fp, [r5, #0x163 + OV29_0232145C_OFFSET]
 	ldrh r1, [r4, #4]
 	str r0, [sp, #0xc]
 	cmp r1, #0xe5
@@ -200,8 +210,13 @@ _02321700:
 	add r2, sp, #0x2c
 	mov r3, r1
 	bl FormatMoveStringMore
+#ifdef JAPAN
+	ldr r1, _02322F08 ; =0x00000BC2
+	mov r0, sl
+#else
 	mov r0, sl
 	mov r1, #0xe80
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	str r6, [sp]
 	add r1, sp, #0x2c
@@ -291,7 +306,7 @@ _02321848:
 	cmp sb, #4
 	bge _02321888
 	add r0, r5, sb, lsl #3
-	ldrb r0, [r0, #0x124]
+	ldrb r0, [r0, #0x124 + OV29_0232145C_OFFSET]
 	tst r0, #2
 	bne _02321584
 _02321888:
@@ -303,10 +318,10 @@ _02321888:
 _0232189C:
 	add r0, r5, sb, lsl #1
 	add r0, r0, #0x100
-	ldrh r1, [r0, #0x94]
+	ldrh r1, [r0, #0x94 + OV29_0232145C_OFFSET]
 	cmp r1, #0
 	beq _02321994
-	ldrh r1, [r0, #0x94]
+	ldrh r1, [r0, #0x94 + OV29_0232145C_OFFSET]
 	add r4, sp, #0x24
 	mov r0, r4
 	bl InitMoveCheckId
@@ -334,8 +349,13 @@ _023218EC:
 	add r2, sp, #0x1c
 	mov r3, r1
 	bl FormatMoveStringMore
+#ifdef JAPAN
+	ldr r1, _02322F08 ; =0x00000BC2
+	mov r0, sl
+#else
 	mov r0, sl
 	mov r1, #0xe80
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	str r6, [sp]
 	add r1, sp, #0x1c
@@ -407,32 +427,54 @@ _023219A0:
 	mov r1, sl
 	mov r2, #1
 	bl TryInflictPausedStatus
+#ifdef JAPAN
+	ldrb r0, [r4, #0x107]
+	cmp r0, #1
+	movlo r0, #1
+	strlob r0, [r4, #0x107]
+#else
 	ldrb r0, [r4, #0x108]
 	cmp r0, #1
 	movlo r0, #1
 	strlob r0, [r4, #0x108]
+#endif
 _02321A3C:
 	mov r0, #1
 _02321A40:
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02321A48: .word 0x00000E7C
-_02321A4C: .word 0x00000E7D
-_02321A50: .word 0x00000E78
+#ifdef JAPAN
+#define OV29_0232145C_DATA_OFFSET -0x2BE
+#else
+#define OV29_0232145C_DATA_OFFSET 0
+#endif
+_02321A48: .word 0x00000E7C + OV29_0232145C_DATA_OFFSET
+_02321A4C: .word 0x00000E7D + OV29_0232145C_DATA_OFFSET
+_02321A50: .word 0x00000E78 + OV29_0232145C_DATA_OFFSET
 _02321A54: .word ov29_0237CA68
+#ifdef JAPAN
+_02321A5C: .word 0x00000BC1
+_02322F08: .word 0x00000BC2
+#else
 _02321A58: .word 0x00000E7E
 _02321A5C: .word 0x00000E7F
-_02321A60: .word 0x00000E81
-_02321A64: .word 0x00000E79
+#endif
+_02321A60: .word 0x00000E81 + OV29_0232145C_DATA_OFFSET
+_02321A64: .word 0x00000E79 + OV29_0232145C_DATA_OFFSET
 _02321A68: .word 0x000001D1
-_02321A6C: .word 0x00000E76
-_02321A70: .word 0x00000E77
+_02321A6C: .word 0x00000E76 + OV29_0232145C_DATA_OFFSET
+_02321A70: .word 0x00000E77 + OV29_0232145C_DATA_OFFSET
 _02321A74: .word ov10_022C4714
 	arm_func_end ov29_0232145C
 
 	arm_func_start TryActivateNondamagingDefenderAbility
 TryActivateNondamagingDefenderAbility: ; 0x02321A78
+#ifdef JAPAN
+#define TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET -4
+#else
+#define TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EntityIsValid__02321438
@@ -440,7 +482,7 @@ TryActivateNondamagingDefenderAbility: ; 0x02321A78
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r4, [r5, #0xb4]
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #1
 	beq _02321ABC
 	ldr r1, _02321CC0 ; =0x00000E82
@@ -452,7 +494,7 @@ TryActivateNondamagingDefenderAbility: ; 0x02321A78
 	bl TryInflictShadowHoldStatus
 _02321ABC:
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #2
 	beq _02321AE8
 	ldr r1, _02321CC4 ; =0x00000E83
@@ -464,7 +506,7 @@ _02321ABC:
 	bl TryInflictShadowHoldStatus
 _02321AE8:
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #4
 	beq _02321B14
 	ldr r1, _02321CC8 ; =0x00000E84
@@ -476,7 +518,7 @@ _02321AE8:
 	bl TryInflictShadowHoldStatus
 _02321B14:
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #8
 	beq _02321B44
 	ldr r1, _02321CCC ; =0x00000E85
@@ -489,7 +531,7 @@ _02321B14:
 	bl TryInflictParalysisStatus
 _02321B44:
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #0x10
 	beq _02321B74
 	ldr r1, _02321CD0 ; =0x00000E86
@@ -502,7 +544,7 @@ _02321B44:
 	bl TryInflictParalysisStatus
 _02321B74:
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #0x20
 	beq _02321BA4
 	ldr r1, _02321CD4 ; =0x00000E87
@@ -515,7 +557,7 @@ _02321B74:
 	bl TryInflictPoisonedStatus
 _02321BA4:
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #0x40
 	beq _02321BD4
 	ldr r1, _02321CD8 ; =0x00000E88
@@ -528,7 +570,7 @@ _02321BA4:
 	bl TryInflictPoisonedStatus
 _02321BD4:
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #0x80
 	beq _02321C14
 	ldr r1, _02321CDC ; =0x00000E89
@@ -545,7 +587,7 @@ _02321BD4:
 	bl TryInflictSleepStatus
 _02321C14:
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #0x100
 	beq _02321C4C
 	ldr r1, _02321CE4 ; =0x00000E8A
@@ -560,7 +602,7 @@ _02321C14:
 	bl TryInflictBurnStatus
 _02321C4C:
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #0x200
 	beq _02321C7C
 	ldr r1, _02321CE8 ; =0x00000E8B
@@ -573,7 +615,7 @@ _02321C4C:
 	bl TryInflictInfatuatedStatus
 _02321C7C:
 	add r0, r4, #0x100
-	ldrh r0, [r0, #0x92]
+	ldrh r0, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	tst r0, #0x400
 	beq _02321CB0
 	mov r0, #0
@@ -588,25 +630,35 @@ _02321C7C:
 _02321CB0:
 	add r0, r4, #0x100
 	mov r1, #0
-	strh r1, [r0, #0x92]
+	strh r1, [r0, #0x92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_OFFSET]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02321CC0: .word 0x00000E82
-_02321CC4: .word 0x00000E83
-_02321CC8: .word 0x00000E84
-_02321CCC: .word 0x00000E85
-_02321CD0: .word 0x00000E86
-_02321CD4: .word 0x00000E87
-_02321CD8: .word 0x00000E88
-_02321CDC: .word 0x00000E89
+#ifdef JAPAN
+#define TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET -0x2BE
+#else
+#define TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET 0
+#endif
+_02321CC0: .word 0x00000E82 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
+_02321CC4: .word 0x00000E83 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
+_02321CC8: .word 0x00000E84 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
+_02321CCC: .word 0x00000E85 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
+_02321CD0: .word 0x00000E86 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
+_02321CD4: .word 0x00000E87 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
+_02321CD8: .word 0x00000E88 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
+_02321CDC: .word 0x00000E89 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
 _02321CE0: .word SLEEP_TURN_RANGE
-_02321CE4: .word 0x00000E8A
-_02321CE8: .word 0x00000E8B
-_02321CEC: .word 0x00000E8C
+_02321CE4: .word 0x00000E8A + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
+_02321CE8: .word 0x00000E8B + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
+_02321CEC: .word 0x00000E8C + TRY_ACTIVATE_NONDAMAGING_DEFENDER_ABILITY_DATA_OFFSET
 	arm_func_end TryActivateNondamagingDefenderAbility
 
 	arm_func_start TryActivateNondamagingDefenderExclusiveItem
 TryActivateNondamagingDefenderExclusiveItem: ; 0x02321CF0
+#ifdef JAPAN
+#define TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET -4
+#else
+#define TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r6, r0
@@ -615,11 +667,11 @@ TryActivateNondamagingDefenderExclusiveItem: ; 0x02321CF0
 	cmp r0, #0
 	beq _02322244
 	ldr r4, [r6, #0xb4]
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #1
 	beq _02321D48
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _0232224C ; =0x00000E8D
@@ -630,26 +682,31 @@ TryActivateNondamagingDefenderExclusiveItem: ; 0x02321CF0
 	mov r2, #0
 	bl TryInflictShadowHoldStatus
 _02321D48:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #2
 	beq _02321D80
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
+#ifdef JAPAN
+	mov r0, r6
+	mov r1, #0xbd0
+#else
 	ldr r1, _02322250 ; =0x00000E8E
 	mov r0, r6
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, r6
 	mov r1, r6
 	mov r2, #0
 	bl TryInflictShadowHoldStatus
 _02321D80:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #4
 	beq _02321DB8
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322254 ; =0x00000E8F
@@ -660,11 +717,11 @@ _02321D80:
 	mov r2, #0
 	bl TryInflictShadowHoldStatus
 _02321DB8:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x80000
 	beq _02321E00
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322258 ; =0x00000EA3
@@ -679,15 +736,20 @@ _02321DB8:
 	mov r1, r6
 	bl TryInflictNightmareStatus
 _02321E00:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #8
 	beq _02321E3C
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
+#ifdef JAPAN
+	ldr r1, _02323708 ; =0x00000BD2
+	mov r0, r6
+#else
 	mov r0, r6
 	mov r1, #0xe90
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, r6
 	mov r1, r6
@@ -695,11 +757,11 @@ _02321E00:
 	mov r3, #0
 	bl TryInflictParalysisStatus
 _02321E3C:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x10
 	beq _02321E78
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322260 ; =0x00000E91
@@ -711,11 +773,11 @@ _02321E3C:
 	mov r3, #0
 	bl TryInflictParalysisStatus
 _02321E78:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x20
 	beq _02321EB4
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322264 ; =0x00000E92
@@ -727,11 +789,11 @@ _02321E78:
 	mov r3, #0
 	bl TryInflictPoisonedStatus
 _02321EB4:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x40
 	beq _02321EF0
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322268 ; =0x00000E93
@@ -743,11 +805,11 @@ _02321EB4:
 	mov r3, #0
 	bl TryInflictPoisonedStatus
 _02321EF0:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x80
 	beq _02321F3C
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _0232226C ; =0x00000E94
@@ -763,11 +825,11 @@ _02321EF0:
 	mov r3, #1
 	bl TryInflictSleepStatus
 _02321F3C:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x100
 	beq _02321F80
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322274 ; =0x00000E95
@@ -781,11 +843,11 @@ _02321F3C:
 	mov r3, r2
 	bl TryInflictBurnStatus
 _02321F80:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x200
 	beq _02321FBC
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322278 ; =0x00000E96
@@ -797,11 +859,11 @@ _02321F80:
 	mov r3, #0
 	bl TryInflictInfatuatedStatus
 _02321FBC:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x800
 	beq _02321FF8
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _0232227C ; =0x00000E98
@@ -813,11 +875,11 @@ _02321FBC:
 	mov r3, r2
 	bl TryInflictConfusedStatus
 _02321FF8:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x100000
 	beq _02322030
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322280 ; =0x00000E99
@@ -828,11 +890,11 @@ _02321FF8:
 	mov r2, #1
 	bl TryInflictFrozenStatus
 _02322030:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x1000
 	beq _0232206C
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322284 ; =0x00000E9B
@@ -844,11 +906,11 @@ _02322030:
 	mov r3, #1
 	bl TryInflictConstrictionStatus
 _0232206C:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x2000
 	beq _023220A8
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322288 ; =0x00000E9A
@@ -860,11 +922,11 @@ _0232206C:
 	mov r3, #0
 	bl TryInflictCringeStatus
 _023220A8:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x4000
 	beq _023220E4
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _0232228C ; =0x00000E9C
@@ -876,11 +938,11 @@ _023220A8:
 	mov r3, r2
 	bl TryInflictBlinkerStatus
 _023220E4:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x8000
 	beq _0232211C
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322290 ; =0x00000E9D
@@ -891,25 +953,30 @@ _023220E4:
 	mov r2, #0
 	bl TrySealMove
 _0232211C:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x10000
 	beq _02322150
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
+#ifdef JAPAN
+	mov r0, r6
+	mov r1, #0xbe0
+#else
 	ldr r1, _02322294 ; =0x00000E9E
 	mov r0, r6
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, r5
 	mov r1, r5
 	bl TryInflictInvisibleStatus
 _02322150:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x20000
 	beq _0232218C
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _02322298 ; =0x00000E9F
@@ -921,26 +988,31 @@ _02322150:
 	mov r3, #1
 	bl BoostSpeedOneStage
 _0232218C:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x200000
 	beq _023221C4
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
+#ifdef JAPAN
+	ldr r1, _02323744 ; =0x00000BE2
+	mov r0, r6
+#else
 	mov r0, r6
 	mov r1, #0xea0
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, r6
 	mov r1, r6
 	mov r2, #0
 	bl TryInflictPerishSongStatus
 _023221C4:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x400000
 	beq _02322200
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _0232229C ; =0x00000EA1
@@ -952,11 +1024,11 @@ _023221C4:
 	mov r3, r2
 	bl LowerSpeed
 _02322200:
-	ldr r0, [r4, #0x18c]
+	ldr r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	tst r0, #0x40000
 	beq _0232223C
 	add r0, r4, #0x100
-	ldrsh r1, [r0, #0x90]
+	ldrsh r1, [r0, #0x90 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 	mov r0, #0
 	bl ov29_02344B9C
 	ldr r1, _023222A0 ; =0x00000EA2
@@ -969,33 +1041,48 @@ _02322200:
 	bl TryWarp
 _0232223C:
 	mov r0, #0
-	str r0, [r4, #0x18c]
+	str r0, [r4, #0x18c + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_OFFSET]
 _02322244:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_0232224C: .word 0x00000E8D
+#ifdef JAPAN
+#define TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET -0x2BE
+#else
+#define TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET 0
+#endif
+_0232224C: .word 0x00000E8D + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+#ifndef JAPAN
 _02322250: .word 0x00000E8E
-_02322254: .word 0x00000E8F
-_02322258: .word 0x00000EA3
+#endif
+_02322254: .word 0x00000E8F + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_02322258: .word 0x00000EA3 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
 _0232225C: .word NIGHTMARE_TURN_RANGE
-_02322260: .word 0x00000E91
-_02322264: .word 0x00000E92
-_02322268: .word 0x00000E93
-_0232226C: .word 0x00000E94
+#ifdef JAPAN
+_02323708: .word 0x00000BD2
+#endif
+_02322260: .word 0x00000E91 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_02322264: .word 0x00000E92 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_02322268: .word 0x00000E93 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_0232226C: .word 0x00000E94 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
 _02322270: .word SLEEP_TURN_RANGE
-_02322274: .word 0x00000E95
-_02322278: .word 0x00000E96
-_0232227C: .word 0x00000E98
-_02322280: .word 0x00000E99
-_02322284: .word 0x00000E9B
-_02322288: .word 0x00000E9A
-_0232228C: .word 0x00000E9C
-_02322290: .word 0x00000E9D
+_02322274: .word 0x00000E95 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_02322278: .word 0x00000E96 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_0232227C: .word 0x00000E98 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_02322280: .word 0x00000E99 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_02322284: .word 0x00000E9B + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_02322288: .word 0x00000E9A + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_0232228C: .word 0x00000E9C + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_02322290: .word 0x00000E9D + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+#ifndef JAPAN
 _02322294: .word 0x00000E9E
-_02322298: .word 0x00000E9F
-_0232229C: .word 0x00000EA1
-_023222A0: .word 0x00000EA2
+#endif
+_02322298: .word 0x00000E9F + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+#ifdef JAPAN
+_02323744: .word 0x00000BE2
+#endif
+_0232229C: .word 0x00000EA1 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
+_023222A0: .word 0x00000EA2 + TRY_ACTIVATE_NONDAMAGING_DEFENDER_EXCLUSIVE_ITEM_DATA_OFFSET
 	arm_func_end TryActivateNondamagingDefenderExclusiveItem
 
 	arm_func_start GetMoveRangeDistance
@@ -1059,6 +1146,13 @@ _0232236C:
 
 	arm_func_start ov29_02322374
 ov29_02322374: ; 0x02322374
+#ifdef JAPAN
+#define OV29_02322374_OFFSET -4
+#define OV29_02322374_OFFSET_2 -1
+#else
+#define OV29_02322374_OFFSET 0
+#define OV29_02322374_OFFSET_2 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x13c
 	ldr sl, [sp, #0x164]
@@ -1174,7 +1268,7 @@ _023224C4:
 	ldr r1, [r6, #0xb4]
 	mov r2, #0
 	str r0, [sp, #0x20]
-	strb r2, [r1, #0x10b]
+	strb r2, [r1, #0x10b + OV29_02322374_OFFSET_2]
 	cmpne sl, r8
 	beq _02322598
 	mov r0, r6
@@ -1301,10 +1395,10 @@ _023226D0:
 	cmp r4, #0
 	beq _02322714
 	ldr r1, [r6, #0xb4]
-	ldrb r0, [r1, #0x15d]
+	ldrb r0, [r1, #0x15d + OV29_02322374_OFFSET]
 	cmp r0, #4
 	addlo r0, r0, #1
-	strlob r0, [r1, #0x15d]
+	strlob r0, [r1, #0x15d + OV29_02322374_OFFSET]
 _02322714:
 	ldrh r1, [r8, #4]
 	ldr r0, _02322D48 ; =0x00000163
@@ -1397,7 +1491,7 @@ _0232284C:
 	bne _02322C98
 _02322860:
 	mov r0, #0
-	strb r0, [sl, #0x154]
+	strb r0, [sl, #0x154 + OV29_02322374_OFFSET]
 	bl GravityIsActive
 	cmp r0, #0
 	beq _023228A4
@@ -1470,7 +1564,9 @@ _02322928:
 	mov r0, sl
 	mov r1, r6
 	mov r2, #0x1f
+#ifndef JAPAN
 	mov r3, #0
+#endif
 	bl DefenderAbilityIsActive__02322D64
 	cmp r0, #0
 	bne _02322A54
@@ -1562,8 +1658,8 @@ _02322AC0:
 	cmpne r0, #4
 	addne r0, r1, #0x100
 	movne r1, #0
-	strneh r1, [r0, #0x7e]
-	strneh r1, [r0, #0x80]
+	strneh r1, [r0, #0x7e + OV29_02322374_OFFSET]
+	strneh r1, [r0, #0x80 + OV29_02322374_OFFSET]
 	ldr r0, _02322D44 ; =ov29_0237CA68
 	cmp fp, #0
 	ldr r1, [r0, #0x10]
@@ -1588,7 +1684,7 @@ _02322B24:
 	cmp r1, r0
 	ldreq r0, [r6, #0xb4]
 	moveq r1, #1
-	streqb r1, [r0, #0x170]
+	streqb r1, [r0, #0x170 + OV29_02322374_OFFSET]
 	add r0, sp, #0x38
 	mov r1, r6
 	mov r3, r5
@@ -1641,7 +1737,7 @@ _02322BE8:
 	bl IqSkillIsEnabled
 	cmp r0, #0
 	ldrne r1, [r6, #0xb4]
-	ldrneb r0, [r1, #0x154]
+	ldrneb r0, [r1, #0x154 + OV29_02322374_OFFSET]
 	cmpne r0, #0
 	ldrneb r0, [r1, #0xd2]
 	cmpne r0, #1
@@ -1651,10 +1747,14 @@ _02322BE8:
 	strb r2, [r1, #0xd3]
 	ldr r1, [r6, #0xb4]
 	ldr r0, _02322D44 ; =ov29_0237CA68
-	strb r2, [r1, #0x154]
+	strb r2, [r1, #0x154 + OV29_02322374_OFFSET]
 	ldr r1, [r6, #0xb4]
 	sub r7, r7, #1
+#ifdef JAPAN
+	strb r2, [r1, #0x10a]
+#else
 	strb r2, [r1, #0x10b]
+#endif
 	ldr r1, [r0, #0x18]
 	mov r2, #0
 	sub r1, r1, #1
@@ -1670,12 +1770,12 @@ _02322BE8:
 	b _02322C88
 _02322C68:
 	ldr r2, [r6, #0xb4]
-	ldrb r0, [r2, #0x154]
+	ldrb r0, [r2, #0x154 + OV29_02322374_OFFSET]
 	cmp r0, #0
 	bne _02322C88
 	mov r1, #0
 	mov r0, r6
-	strb r1, [r2, #0x154]
+	strb r1, [r2, #0x154 + OV29_02322374_OFFSET]
 	bl ov29_02318D58
 _02322C88:
 	add r7, r7, #1
@@ -1710,61 +1810,88 @@ _02322CC4:
 	mov r1, r6
 	mov r3, r2
 	bl TryInflictConfusedStatus
-	ldrb r0, [r4, #0x108]
+	ldrb r0, [r4, #0x108 + OV29_02322374_OFFSET_2]
 	cmp r0, #1
 	movlo r0, #1
-	strlob r0, [r4, #0x108]
+	strlob r0, [r4, #0x108 + OV29_02322374_OFFSET_2]
 _02322D0C:
 	mov r0, #1
 _02322D10:
 	add sp, sp, #0x13c
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define OV29_02322374_DATA_OFFSET -0x2BE
+#else
+#define OV29_02322374_DATA_OFFSET 0
+#endif
 _02322D18: .word 0x0000014A
 _02322D1C: .word ov29_0237CA88
 _02322D20: .word METRONOME_TABLE
-_02322D24: .word 0x00000EA4
+_02322D24: .word 0x00000EA4 + OV29_02322374_DATA_OFFSET
 _02322D28: .word NATURE_POWER_TABLE
-_02322D2C: .word 0x00000EA5
-_02322D30: .word 0x00000EA6
-_02322D34: .word 0x00000EA7
-_02322D38: .word 0x00000E7B
-_02322D3C: .word 0x00000E79
-_02322D40: .word 0x00000E7A
+_02322D2C: .word 0x00000EA5 + OV29_02322374_DATA_OFFSET
+_02322D30: .word 0x00000EA6 + OV29_02322374_DATA_OFFSET
+_02322D34: .word 0x00000EA7 + OV29_02322374_DATA_OFFSET
+_02322D38: .word 0x00000E7B + OV29_02322374_DATA_OFFSET
+_02322D3C: .word 0x00000E79 + OV29_02322374_DATA_OFFSET
+_02322D40: .word 0x00000E7A + OV29_02322374_DATA_OFFSET
 _02322D44: .word ov29_0237CA68
 _02322D48: .word 0x00000163
 _02322D4C: .word ov10_022C4584
 _02322D50: .word INTIMIDATOR_ACTIVATION_CHANCE
 _02322D54: .word 0x000001ED
 _02322D58: .word ov29_0235370C
-_02322D5C: .word 0x00000EA9
+_02322D5C: .word 0x00000EA9 + OV29_02322374_DATA_OFFSET
 _02322D60: .word 0x000001F6
 	arm_func_end ov29_02322374
 
 	arm_func_start DefenderAbilityIsActive__02322D64
 DefenderAbilityIsActive__02322D64: ; 0x02322D64
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, lr}
+	mov r6, r0
+	mov r5, r1
+	mov r4, r2
+	cmp r6, r5
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
 	cmp r7, r6
+#endif
 	beq _02322DA8
 	bl IsMonster__02322DB8
 	cmp r0, #0
+#ifdef JAPAN
+	beq _02322DA8
+	mov r0, r6
+#else
 	cmpne r4, #0
 	beq _02322DA8
 	mov r0, r7
+#endif
 	mov r1, #0x53
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	movne r0, #0
+#ifdef JAPAN
+	ldmneia sp!, {r4, r5, r6, pc}
+_02322DA8:
+	mov r0, r5
+	mov r1, r4
+	bl AbilityIsActiveVeneer
+	ldmia sp!, {r4, r5, r6, pc}
+#else
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 _02322DA8:
 	mov r0, r6
 	mov r1, r5
 	bl AbilityIsActiveVeneer
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+#endif
 	arm_func_end DefenderAbilityIsActive__02322D64
 
 	arm_func_start IsMonster__02322DB8
@@ -1911,7 +2038,11 @@ ov29_02322F78: ; 0x02322F78
 	ldr r0, [r4]
 	mov r6, r1
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19a]
+#else
 	ldrb r0, [r0, #0x23e]
+#endif
 	mov r5, r2
 	mov r8, r3
 	cmp r0, #0
@@ -2253,7 +2384,11 @@ _0232347C:
 	ldr r0, _0232390C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19a]
+#else
 	ldrb r0, [r0, #0x23e]
+#endif
 	cmp r0, #0
 	bne _02323740
 	ldrsh r0, [sp, #0xa0]
@@ -2562,7 +2697,11 @@ _02323900: .word ov29_0235175C
 _02323904: .word 0x00000FFF
 _02323908: .word ov29_02352A6C
 _0232390C: .word DUNGEON_PTR
+#ifdef JAPAN
+_02323910: .word 0x0001A182
+#else
 _02323910: .word 0x0001A226
+#endif
 _02323914: .word 0x000001E5
 	arm_func_end ov29_023230FC
 
@@ -2574,7 +2713,11 @@ ExclusiveItemEffectIsActive__02323918: ; 0x02323918
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
+#ifdef JAPAN
+	add r0, r2, #0x224
+#else
 	add r0, r2, #0x228
+#endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__02323918
@@ -2686,7 +2829,11 @@ _02323A6C:
 	ldr r0, _02323C3C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19a]
+#else
 	ldrb r0, [r0, #0x23e]
+#endif
 	cmp r0, #0
 	bne _02323BB0
 	ldrsh r2, [sp, #0x30]
@@ -2776,7 +2923,11 @@ _02323BE0:
 	cmp r1, r0
 	ldreq r0, [sp, #0x18]
 	moveq r1, #0
+#ifdef JAPAN
+	streqb r1, [r0, #0x16c]
+#else
 	streqb r1, [r0, #0x170]
+#endif
 	mov r0, sl
 	mov r2, sb
 	mov r1, #0
@@ -2788,7 +2939,11 @@ _02323C30: .word DIRECTIONS_XY
 _02323C34: .word ov29_0235171E
 _02323C38: .word ov29_02352A8C
 _02323C3C: .word DUNGEON_PTR
+#ifdef JAPAN
+_02323C40: .word 0x0001A182
+#else
 _02323C40: .word 0x0001A226
+#endif
 _02323C44: .word 0x00000232
 	arm_func_end ov29_0232393C
 
@@ -2917,7 +3072,9 @@ _02323DDC:
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x1d
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02322D64
 	cmp r0, #0
 	addne r4, r4, #2
@@ -2956,7 +3113,9 @@ _02323E94:
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x62
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	subne r4, r4, #1
 	bl DefenderAbilityIsActive__02322D64
 	cmp r0, #0
@@ -2970,7 +3129,9 @@ _02323ED8:
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x77
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02322D64
 	cmp r0, #0
 	beq _02323F18
@@ -3006,7 +3167,9 @@ _02323F44:
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x6a
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	movne sl, sb
 	bl DefenderAbilityIsActive__02322D64
 	cmp r0, #0
@@ -3173,7 +3336,11 @@ _023241B8:
 	ldr r0, [r0]
 	add r0, r0, fp, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xad4]
+#else
 	ldr r7, [r0, #0xb78]
+#endif
 	mov r0, r7
 	bl EntityIsValid__02321438
 	cmp r0, #0
@@ -3268,7 +3435,11 @@ _02324318:
 	ldr r0, [r0]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr fp, [r0, #0xad4]
+#else
 	ldr fp, [r0, #0xb78]
+#endif
 	mov r0, fp
 	bl EntityIsValid__02321438
 	cmp r0, #0
@@ -3541,14 +3712,22 @@ _023246B0:
 	ldr r0, [fp]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr sb, [r0, #0xad4]
+#else
 	ldr sb, [r0, #0xb78]
+#endif
 	mov r0, sb
 	bl EntityIsValid__02321438
 	cmp r0, #0
 	beq _0232470C
 	ldr r0, [sb, #0xb4]
 	mov r8, #0
+#ifdef JAPAN
+	add r5, r0, #0x120
+#else
 	add r5, r0, #0x124
+#endif
 _023246DC:
 	add sl, r5, r8, lsl #3
 	mov r0, sb
@@ -3628,7 +3807,11 @@ ov29_023247B4: ; 0x023247B4
 	ldr r0, [r8, #0xb4]
 	mov r7, #0
 	mov r6, r7
+#ifdef JAPAN
+	add r5, r0, #0x120
+#else
 	add r5, r0, #0x124
+#endif
 	add r4, sp, #0
 _023247D4:
 	add sb, r5, r6, lsl #3
@@ -3671,7 +3854,11 @@ _0232484C:
 TwoTurnMoveForcedMiss: ; 0x02324854
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #0xb4]
+#ifdef JAPAN
+	ldrb r0, [r2, #0x10a]
+#else
 	ldrb r0, [r2, #0x10b]
+#endif
 	cmp r0, #1
 	bne _023248A4
 	ldrh r0, [r1, #4]
@@ -3753,7 +3940,11 @@ DungeonRandOutcomeUserTargetInteraction: ; 0x02324934
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	ldr r1, [r5, #0xb4]
+#ifdef JAPAN
+	ldrb r0, [r1, #0x15e]
+#else
 	ldrb r0, [r1, #0x162]
+#endif
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -3786,7 +3977,9 @@ _023249E0:
 	mov r0, r6
 	mov r1, r5
 	mov r2, #0x4c
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02322D64
 	cmp r0, #0
 	beq _02324A18
@@ -3831,7 +4024,11 @@ CanAiUseMove: ; 0x02324A74
 	mov r6, r0
 	ldr r3, [r6, #0xb4]
 	mov r5, r2
+#ifdef JAPAN
+	add r0, r3, #0x120
+#else
 	add r0, r3, #0x124
+#endif
 	ldrb r2, [r0, r1, lsl #3]
 	add r4, r0, r1, lsl #3
 	tst r2, #1
@@ -3851,7 +4048,11 @@ CanAiUseMove: ; 0x02324A74
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r8, #0
+#ifdef JAPAN
+	add r7, r3, #0x140
+#else
 	add r7, r3, #0x144
+#endif
 	b _02324B14
 _02324ADC:
 	mov r0, r6
@@ -3916,7 +4117,11 @@ _02324BA0:
 	ldrh r0, [r5, #4]
 	cmp r0, #0x160
 	bne _02324BCC
+#ifdef JAPAN
+	ldrb r0, [r4, #0x140]
+#else
 	ldrb r0, [r4, #0x144]
+#endif
 	tst r0, #0x10
 	bne _02324BDC
 	mov r0, #0
@@ -3969,7 +4174,11 @@ _02324C54:
 	ldrh r0, [r5, #4]
 	cmp r0, #0x160
 	bne _02324C80
+#ifdef JAPAN
+	ldrb r0, [r4, #0x140]
+#else
 	ldrb r0, [r4, #0x144]
+#endif
 	tst r0, #0x10
 	bne _02324C90
 	mov r0, #0
@@ -4077,7 +4286,11 @@ UpdateMovePp: ; 0x02324D8C
 	ldr r0, [r5, #0xb4]
 	mov r1, #0
 _02324DAC:
+#ifdef JAPAN
+	add r2, r0, #0x120
+#else
 	add r2, r0, #0x124
+#endif
 	ldrb r3, [r2, r1, lsl #3]
 	add r2, r2, r1, lsl #3
 	tst r3, #1
@@ -4308,6 +4521,11 @@ _023250D0: .word ov29_02352AD8
 
 	arm_func_start ov29_023250D4
 ov29_023250D4: ; 0x023250D4
+#ifdef JAPAN
+#define OV29_023250D4_OFFSET -0xA4
+#else
+#define OV29_023250D4_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	mov sl, r0
@@ -4387,14 +4605,14 @@ _023251E8:
 	ldrne r0, _0232560C ; =DUNGEON_PTR
 	ldrne r0, [r0]
 	addne r0, r0, #0x1a000
-	ldrne r5, [r0, #0x22c]
+	ldrne r5, [r0, #0x22c + OV29_023250D4_OFFSET]
 	bne _02325228
 	ldrh r0, [sb, #4]
 	cmp r0, #0x52
 	ldreq r0, _0232560C ; =DUNGEON_PTR
 	ldreq r0, [r0]
 	addeq r0, r0, #0x1a000
-	ldreq r5, [r0, #0x22c]
+	ldreq r5, [r0, #0x22c + OV29_023250D4_OFFSET]
 	movne r5, sl
 _02325228:
 	mov r0, r5
@@ -4428,12 +4646,12 @@ _02325228:
 	ldr r6, [r6, r0, lsl #2]
 	str r0, [r2]
 	add r0, r3, #0x1a000
-	str r6, [r0, #0x234]
+	str r6, [r0, #0x234 + OV29_023250D4_OFFSET]
 	ldr r1, [r1]
 	mov r0, #0
 	add r1, r1, #0x1a000
-	ldr r3, [r1, #0x234]
-	str r3, [r1, #0x238]
+	ldr r3, [r1, #0x234 + OV29_023250D4_OFFSET]
+	str r3, [r1, #0x238 + OV29_023250D4_OFFSET]
 	ldr r1, [r2]
 	add r1, r1, #4
 	bl ov29_0234B09C
@@ -4452,12 +4670,12 @@ _023252E4:
 	ldr r1, [r2]
 	mov r0, r5
 	add r1, r1, #0x1a000
-	str r3, [r1, #0x234]
+	str r3, [r1, #0x234 + OV29_023250D4_OFFSET]
 	ldr r2, [r2]
 	mov r1, #0x214
 	add r2, r2, #0x1a000
-	ldr r3, [r2, #0x234]
-	str r3, [r2, #0x238]
+	ldr r3, [r2, #0x234 + OV29_023250D4_OFFSET]
+	str r3, [r2, #0x238 + OV29_023250D4_OFFSET]
 	bl ov29_022E56A0
 _0232531C:
 	mov r0, sl
@@ -4545,9 +4763,9 @@ _0232543C:
 	ldr r0, _0232560C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
-	ldr r1, [r0, #0x22c]
+	ldr r1, [r0, #0x22c + OV29_023250D4_OFFSET]
 	cmp r1, sl
-	ldrneb r0, [r0, #0x245]
+	ldrneb r0, [r0, #0x245 + OV29_023250D4_OFFSET]
 	cmpne r0, #0
 	movne fp, #1
 _02325470:
@@ -4560,7 +4778,7 @@ _02325480:
 	ldr r0, [r0]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r6, [r0, #0xb78]
+	ldr r6, [r0, #0xb78 + OV29_023250D4_OFFSET]
 	mov r0, r6
 	bl EntityIsValid__02325620
 	cmp r0, #0
@@ -4668,6 +4886,10 @@ _02325608: .word ov29_02352AD8
 _0232560C: .word DUNGEON_PTR
 _02325610: .word ov29_02352B1C
 _02325614: .word ov29_0237CA84
+#ifdef JAPAN
+_02325618: .word 0x00000BEC
+#else
 _02325618: .word 0x00000EAA
+#endif
 _0232561C: .word 0x00000229
 	arm_func_end ov29_023250D4

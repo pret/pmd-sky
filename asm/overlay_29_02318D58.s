@@ -16,8 +16,13 @@ ov29_02318D58: ; 0x02318D58
 	cmpne r0, #0xc
 	movne r0, #0
 	strneb r0, [r1, #0xd2]
+#ifdef JAPAN
+	strneb r0, [r1, #0x150]
+	strneb r0, [r1, #0x10a]
+#else
 	strneb r0, [r1, #0x154]
 	strneb r0, [r1, #0x10b]
+#endif
 	mov r0, r4
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, pc}
@@ -70,7 +75,13 @@ _02318E20:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02318E40: .word 0x00000A33
+_02318E44: .word ov10_022C4750
+_02318E48: .word 0x00000A32
+#else
 _02318E40: .word 0x00000CF3
 _02318E44: .word ov10_022C4750
 _02318E48: .word 0x00000CF2
+#endif
 	arm_func_end ov29_02318D98

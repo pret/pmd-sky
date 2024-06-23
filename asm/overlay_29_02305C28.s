@@ -14,6 +14,13 @@ EndNegativeStatusConditionWrapper: ; 0x02305C28
 
 	arm_func_start TransferNegativeStatusCondition
 TransferNegativeStatusCondition: ; 0x02305C3C
+#ifdef JAPAN
+#define TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET -1
+#define TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET_2 -4
+#else
+#define TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET 0
+#define TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET_2 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0xb8
 	mov sb, r0
@@ -74,7 +81,7 @@ TransferNegativeStatusCondition: ; 0x02305C3C
 	bl ov29_02307B0C
 	orr r5, r5, r0
 _02305D28:
-	ldrb r0, [r6, #0x106]
+	ldrb r0, [r6, #0x106 + TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET]
 	cmp r0, #0
 	beq _02305D68
 	mov r0, sb
@@ -82,14 +89,14 @@ _02305D28:
 	mov r2, #1
 	bl TryInflictPerishSongStatus
 	cmp r0, #0
-	ldrneb r1, [r6, #0x106]
+	ldrneb r1, [r6, #0x106 + TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET]
 	orrne r0, r5, #0x11
 	andne r5, r0, #0xff
 	orreq r0, r5, #1
 	andeq r5, r0, #0xff
-	strneb r1, [r7, #0x106]
+	strneb r1, [r7, #0x106 + TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET]
 	mov r0, #0
-	strb r0, [r6, #0x106]
+	strb r0, [r6, #0x106 + TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET]
 _02305D68:
 	ldrb r0, [r6, #0xfe]
 	cmp r0, #0
@@ -124,10 +131,10 @@ _02305DAC:
 	mov r2, #0
 _02305DE0:
 	add r0, r6, r2
-	ldrb r0, [r0, #0x119]
+	ldrb r0, [r0, #0x119 + TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET_2]
 	add r1, r7, r2
 	add r2, r2, #1
-	strb r0, [r1, #0x119]
+	strb r0, [r1, #0x119 + TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET_2]
 	cmp r0, #0
 	orrne r0, r5, #0x11
 	andne r5, r0, #0xff
@@ -142,7 +149,7 @@ _02305E08:
 _02305E1C:
 	add r0, r6, r2
 	add r2, r2, #1
-	strb r1, [r0, #0x119]
+	strb r1, [r0, #0x119 + TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET_2]
 	cmp r2, #5
 	blt _02305E1C
 	mov r0, sb
@@ -151,7 +158,7 @@ _02305E1C:
 	orrne r0, r5, #1
 	andne r5, r0, #0xff
 	mov r0, #0
-	add r6, r6, #0x124
+	add r6, r6, #0x124 + TRANSFER_NEGATIVE_STATUS_CONDITION_OFFSET_2
 	mov r3, r0
 	mov r4, #1
 _02305E54:
@@ -228,9 +235,15 @@ _02305F4C:
 	add sp, sp, #0xb8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02305F54: .word 0x00000A0C
+_02305F58: .word 0x00000A0B
+_02305F5C: .word 0x00000A0A
+#else
 _02305F54: .word 0x00000CCC
 _02305F58: .word 0x00000CCB
 _02305F5C: .word 0x00000CCA
+#endif
 	arm_func_end TransferNegativeStatusCondition
 
 	arm_func_start ov29_02305F60
@@ -246,9 +259,15 @@ ov29_02305F60: ; 0x02305F60
 	mov r0, r5
 	bl SubInitMonster
 	mov ip, #0
+#ifdef JAPAN
+	strb ip, [r5, #0x105]
+	strb ip, [r5, #0xfe]
+	add r3, r5, #0x120
+#else
 	strb ip, [r5, #0x106]
 	strb ip, [r5, #0xfe]
 	add r3, r5, #0x124
+#endif
 	mov r1, ip
 	mov r2, #1
 _02305FA0:
@@ -315,7 +334,11 @@ _02306070:
 	mov r4, #1
 	mov r0, sb
 	mov r1, r8
+#ifdef JAPAN
+	rsb r2, r4, #0x9d0
+#else
 	rsb r2, r4, #0xc90
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	cmp r6, #0
 	beq _02306164
@@ -329,7 +352,11 @@ _02306070:
 _023060A8:
 	mov r0, sb
 	mov r1, r8
+#ifdef JAPAN
+	mov r2, #0x9d0
+#else
 	mov r2, #0xc90
+#endif
 	mov r4, #1
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldrb r0, [sp, #0x20]
@@ -389,13 +416,18 @@ _02306164:
 	bl ov29_02304A48
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0230618C: .word 0x00000C8D
-_02306190: .word 0x00000C8E
+#ifdef JAPAN
+#define END_SLEEP_CLASS_STATUS_OFFSET -0x2C0
+#else
+#define END_SLEEP_CLASS_STATUS_OFFSET 0
+#endif
+_0230618C: .word 0x00000C8D + END_SLEEP_CLASS_STATUS_OFFSET
+_02306190: .word 0x00000C8E + END_SLEEP_CLASS_STATUS_OFFSET
 _02306194: .word ov10_022C45A8
 _02306198: .word 0x0000024E
 _0230619C: .word ov10_022C45A0
 _023061A0: .word ov10_022C4868
-_023061A4: .word 0x00000C91
+_023061A4: .word 0x00000C91 + END_SLEEP_CLASS_STATUS_OFFSET
 	arm_func_end EndSleepClassStatus
 
 	arm_func_start EndBurnClassStatus
@@ -447,9 +479,15 @@ _02306238:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_0230624C: .word 0x000009DE
+_02306250: .word 0x000009DC
+_02306254: .word 0x000009DD
+#else
 _0230624C: .word 0x00000C9E
 _02306250: .word 0x00000C9C
 _02306254: .word 0x00000C9D
+#endif
 	arm_func_end EndBurnClassStatus
 
 	arm_func_start EndFrozenClassStatus
@@ -478,7 +516,11 @@ _023062A0: ; jump table
 	b _02306300 ; case 2
 	b _02306338 ; case 3
 	b _0230635C ; case 4
+#ifdef JAPAN
+	b _02306300 ; case 5
+#else
 	b _0230631C ; case 5
+#endif
 	b _02306380 ; case 6
 	b _023062E4 ; case 7
 	b _02306398 ; case 8
@@ -508,6 +550,7 @@ _02306300:
 	mov r1, r7
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _02306398
+#ifndef JAPAN
 _0230631C:
 	cmp r6, #0
 	beq _02306398
@@ -516,6 +559,7 @@ _0230631C:
 	mov r1, r7
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _02306398
+#endif
 _02306338:
 	cmp r6, #0
 	beq _02306350
@@ -556,16 +600,28 @@ _02306398:
 	bl ov29_022E6798
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_023063BC: .word 0x00000C9F
-_023063C0: .word 0x00000C99
-_023063C4: .word 0x00000C9A
+#ifdef JAPAN
+#define END_FROZEN_CLASS_STATUS_OFFSET -0x2C0
+#else
+#define END_FROZEN_CLASS_STATUS_OFFSET 0
+#endif
+_023063BC: .word 0x00000C9F + END_FROZEN_CLASS_STATUS_OFFSET
+_023063C0: .word 0x00000C99 + END_FROZEN_CLASS_STATUS_OFFSET
+_023063C4: .word 0x00000C9A + END_FROZEN_CLASS_STATUS_OFFSET
+#ifndef JAPAN
 _023063C8: .word 0x00000C9B
-_023063CC: .word 0x00000C98
-_023063D0: .word 0x00000CBB
+#endif
+_023063CC: .word 0x00000C98 + END_FROZEN_CLASS_STATUS_OFFSET
+_023063D0: .word 0x00000CBB + END_FROZEN_CLASS_STATUS_OFFSET
 	arm_func_end EndFrozenClassStatus
 
 	arm_func_start EndCringeClassStatus
 EndCringeClassStatus: ; 0x023063D4
+#ifdef JAPAN
+#define END_CRINGE_CLASS_STATUS_OFFSET -0x2C0
+#else
+#define END_CRINGE_CLASS_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
@@ -625,7 +681,7 @@ _02306488:
 _0230649C:
 	mov r0, r6
 	mov r1, r5
-	mov r2, #0xcb0
+	mov r2, #0xcb0 + END_CRINGE_CLASS_STATUS_OFFSET
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _023064C0
 _023064B0:
@@ -642,16 +698,21 @@ _023064C0:
 	bl CalcSpeedStageWrapper
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023064DC: .word 0x00000C97
-_023064E0: .word 0x00000CA4
-_023064E4: .word 0x00000CA7
-_023064E8: .word 0x00000CBD
-_023064EC: .word 0x00000CB7
-_023064F0: .word 0x00000CBC
+_023064DC: .word 0x00000C97 + END_CRINGE_CLASS_STATUS_OFFSET
+_023064E0: .word 0x00000CA4 + END_CRINGE_CLASS_STATUS_OFFSET
+_023064E4: .word 0x00000CA7 + END_CRINGE_CLASS_STATUS_OFFSET
+_023064E8: .word 0x00000CBD + END_CRINGE_CLASS_STATUS_OFFSET
+_023064EC: .word 0x00000CB7 + END_CRINGE_CLASS_STATUS_OFFSET
+_023064F0: .word 0x00000CBC + END_CRINGE_CLASS_STATUS_OFFSET
 	arm_func_end EndCringeClassStatus
 
 	arm_func_start EndReflectClassStatus
 EndReflectClassStatus: ; 0x023064F4
+#ifdef JAPAN
+#define END_REFLECT_CLASS_STATUS_OFFSET -0x2C0
+#else
+#define END_REFLECT_CLASS_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r0, r5
@@ -763,7 +824,7 @@ _0230665C:
 	b _02306688
 _0230666C:
 	mov r0, r5
-	mov r1, #0xcc0
+	mov r1, #0xcc0 + END_REFLECT_CLASS_STATUS_OFFSET
 	bl LogMessageByIdWithPopupCheckUser
 	b _02306688
 _0230667C:
@@ -777,21 +838,21 @@ _02306688:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0230669C: .word 0x00000C87
-_023066A0: .word 0x00000C8A
-_023066A4: .word 0x00000C88
-_023066A8: .word 0x00000C89
-_023066AC: .word 0x00000C8B
-_023066B0: .word 0x00000C8C
-_023066B4: .word 0x00000CA6
-_023066B8: .word 0x00000CAE
-_023066BC: .word 0x00000CB1
-_023066C0: .word 0x00000CB2
-_023066C4: .word 0x00000CB3
-_023066C8: .word 0x00000CB4
-_023066CC: .word 0x00000CB5
-_023066D0: .word 0x00000CBE
-_023066D4: .word 0x00000CC1
+_0230669C: .word 0x00000C87 + END_REFLECT_CLASS_STATUS_OFFSET
+_023066A0: .word 0x00000C8A + END_REFLECT_CLASS_STATUS_OFFSET
+_023066A4: .word 0x00000C88 + END_REFLECT_CLASS_STATUS_OFFSET
+_023066A8: .word 0x00000C89 + END_REFLECT_CLASS_STATUS_OFFSET
+_023066AC: .word 0x00000C8B + END_REFLECT_CLASS_STATUS_OFFSET
+_023066B0: .word 0x00000C8C + END_REFLECT_CLASS_STATUS_OFFSET
+_023066B4: .word 0x00000CA6 + END_REFLECT_CLASS_STATUS_OFFSET
+_023066B8: .word 0x00000CAE + END_REFLECT_CLASS_STATUS_OFFSET
+_023066BC: .word 0x00000CB1 + END_REFLECT_CLASS_STATUS_OFFSET
+_023066C0: .word 0x00000CB2 + END_REFLECT_CLASS_STATUS_OFFSET
+_023066C4: .word 0x00000CB3 + END_REFLECT_CLASS_STATUS_OFFSET
+_023066C8: .word 0x00000CB4 + END_REFLECT_CLASS_STATUS_OFFSET
+_023066CC: .word 0x00000CB5 + END_REFLECT_CLASS_STATUS_OFFSET
+_023066D0: .word 0x00000CBE + END_REFLECT_CLASS_STATUS_OFFSET
+_023066D4: .word 0x00000CC1 + END_REFLECT_CLASS_STATUS_OFFSET
 	arm_func_end EndReflectClassStatus
 
 	arm_func_start TryRemoveSnatchedMonsterFromDungeonStruct
@@ -810,10 +871,17 @@ TryRemoveSnatchedMonsterFromDungeonStruct: ; 0x023066D8
 	mov r2, #0
 	ldr r0, [r1]
 	add r0, r0, #0x19000
+#ifdef JAPAN
+	str r2, [r0, #0x860]
+	ldr r0, [r1]
+	add r0, r0, #0x19000
+	str r2, [r0, #0x868]
+#else
 	str r2, [r0, #0x904]
 	ldr r0, [r1]
 	add r0, r0, #0x19000
 	str r2, [r0, #0x90c]
+#endif
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02306724: .word DUNGEON_PTR
@@ -881,7 +949,11 @@ _023067D4:
 	ldr r1, [r1]
 	cmp r6, #2
 	add r1, r1, #0x3000
+#ifdef JAPAN
+	strb r0, [r1, #0xd94]
+#else
 	strb r0, [r1, #0xe38]
+#endif
 	beq _02306894
 	mov r1, r7
 	mov r2, r0
@@ -928,13 +1000,18 @@ _02306894:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_023068A8: .word 0x00000C95
-_023068AC: .word 0x00000C96
+#ifdef JAPAN
+#define END_CURSE_CLASS_OFFSET -0x2C0
+#else
+#define END_CURSE_CLASS_OFFSET 0
+#endif
+_023068A8: .word 0x00000C95 + END_CURSE_CLASS_OFFSET
+_023068AC: .word 0x00000C96 + END_CURSE_CLASS_OFFSET
 _023068B0: .word DUNGEON_PTR
-_023068B4: .word 0x00000CA5
-_023068B8: .word 0x00000CBF
-_023068BC: .word 0x00000CC2
-_023068C0: .word 0x00000CC3
+_023068B4: .word 0x00000CA5 + END_CURSE_CLASS_OFFSET
+_023068B8: .word 0x00000CBF + END_CURSE_CLASS_OFFSET
+_023068BC: .word 0x00000CC2 + END_CURSE_CLASS_OFFSET
+_023068C0: .word 0x00000CC3 + END_CURSE_CLASS_OFFSET
 	arm_func_end EndCurseClassStatus
 
 	arm_func_start EndLeechSeedClassStatus
@@ -977,12 +1054,22 @@ _0230692C:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02306948: .word 0x000009D4
+_0230694C: .word 0x000009EF
+#else
 _02306948: .word 0x00000C94
 _0230694C: .word 0x00000CAF
+#endif
 	arm_func_end EndLeechSeedClassStatus
 
 	arm_func_start EndSureShotClassStatus
 EndSureShotClassStatus: ; 0x02306950
+#ifdef JAPAN
+#define END_SURE_SHOT_CLASS_STATUS_OFFSET -0x2C0
+#else
+#define END_SURE_SHOT_CLASS_STATUS_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	mov r0, r5
@@ -1007,7 +1094,7 @@ _0230698C: ; jump table
 	b _023069E0 ; case 5
 _023069A4:
 	mov r0, r5
-	mov r1, #0xca0
+	mov r1, #0xca0 + END_SURE_SHOT_CLASS_STATUS_OFFSET
 	bl LogMessageByIdWithPopupCheckUser
 	b _023069E0
 _023069B4:
@@ -1031,9 +1118,9 @@ _023069E0:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023069F4: .word 0x00000CA1
-_023069F8: .word 0x00000CA2
-_023069FC: .word 0x00000CA3
+_023069F4: .word 0x00000CA1 + END_SURE_SHOT_CLASS_STATUS_OFFSET
+_023069F8: .word 0x00000CA2 + END_SURE_SHOT_CLASS_STATUS_OFFSET
+_023069FC: .word 0x00000CA3 + END_SURE_SHOT_CLASS_STATUS_OFFSET
 	arm_func_end EndSureShotClassStatus
 
 	arm_func_start EndInvisibleClassStatus
@@ -1117,10 +1204,15 @@ _02306AFC:
 	bl EnsureCanStandCurrentTile
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02306B18: .word 0x00000CA8
-_02306B1C: .word 0x00000CB8
-_02306B20: .word 0x00000CB6
-_02306B24: .word 0x00000CAC
+#ifdef JAPAN
+#define END_INVISIBLE_CLASS_OFFSET -0x2C0
+#else
+#define END_INVISIBLE_CLASS_OFFSET 0
+#endif
+_02306B18: .word 0x00000CA8 + END_INVISIBLE_CLASS_OFFSET
+_02306B1C: .word 0x00000CB8 + END_INVISIBLE_CLASS_OFFSET
+_02306B20: .word 0x00000CB6 + END_INVISIBLE_CLASS_OFFSET
+_02306B24: .word 0x00000CAC + END_INVISIBLE_CLASS_OFFSET
 	arm_func_end EndInvisibleClassStatus
 
 	arm_func_start EndBlinkerClassStatus
@@ -1180,10 +1272,15 @@ _02306BB8:
 	bl UpdateMinimap
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02306BE8: .word 0x00000CA9
-_02306BEC: .word 0x00000CAA
-_02306BF0: .word 0x00000CAB
-_02306BF4: .word 0x00000CAD
+#ifdef JAPAN
+#define END_BLINKER_CLASS_OFFSET -0x2C0
+#else
+#define END_BLINKER_CLASS_OFFSET 0
+#endif
+_02306BE8: .word 0x00000CA9 + END_BLINKER_CLASS_OFFSET
+_02306BEC: .word 0x00000CAA + END_BLINKER_CLASS_OFFSET
+_02306BF0: .word 0x00000CAB + END_BLINKER_CLASS_OFFSET
+_02306BF4: .word 0x00000CAD + END_BLINKER_CLASS_OFFSET
 	arm_func_end EndBlinkerClassStatus
 
 	arm_func_start EndMuzzledStatus
@@ -1217,7 +1314,11 @@ _02306C4C:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02306C60: .word 0x000009F9
+#else
 _02306C60: .word 0x00000CB9
+#endif
 	arm_func_end EndMuzzledStatus
 
 	arm_func_start EndMiracleEyeStatus
@@ -1251,7 +1352,11 @@ _02306CB8:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02306CCC: .word 0x00000A04
+#else
 _02306CCC: .word 0x00000CC4
+#endif
 	arm_func_end EndMiracleEyeStatus
 
 	arm_func_start EndMagnetRiseStatus
@@ -1291,7 +1396,11 @@ _02306D2C:
 	bl ov29_02321134
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02306D50: .word 0x00000A05
+#else
 _02306D50: .word 0x00000CC5
+#endif
 	arm_func_end EndMagnetRiseStatus
 
 	arm_func_start ov29_02306D54
@@ -1307,7 +1416,11 @@ _02306D70:
 	ldr r0, [r4]
 	add r0, r0, r8, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r1, [r0, #0xad4]
+#else
 	ldr r1, [r0, #0xb78]
+#endif
 	cmp r1, #0
 	moveq r0, r7
 	beq _02306DA0
@@ -2045,7 +2158,11 @@ _02307794:
 	ldr r1, [r2]
 	add r1, r1, r0, lsl #2
 	add r1, r1, #0x12000
+#ifdef JAPAN
+	ldr r1, [r1, #0xad4]
+#else
 	ldr r1, [r1, #0xb78]
+#endif
 	cmp sb, r1
 	streqb r0, [r7, #0xe8]
 	ldreq r1, [sb, #0xb4]
@@ -2429,7 +2546,11 @@ EndFrozenStatus: ; 0x02307C78
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02307CDC: .word 0x000009DF
+#else
 _02307CDC: .word 0x00000C9F
+#endif
 	arm_func_end EndFrozenStatus
 
 	arm_func_start ov29_02307CE0
@@ -2498,14 +2619,25 @@ TryRestoreRoostTyping: ; 0x02307D54
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02307DBC: .word 0x00000A08
+#else
 _02307DBC: .word 0x00000CC8
+#endif
 	arm_func_end TryRestoreRoostTyping
 
 	arm_func_start ov29_02307DC0
 ov29_02307DC0: ; 0x02307DC0
+#ifdef JAPAN
+	ldr r1, [r0, #0xb4]
+	mov r0, #0
+	strb r0, [r1, #0x103]
+	strb r0, [r1, #0x104]
+#else
 	mov r1, #0
 	strb r1, [r0, #0x104]
 	strb r1, [r0, #0x105]
+#endif
 	bx lr
 	arm_func_end ov29_02307DC0
 
@@ -2518,7 +2650,11 @@ _02307DD8:
 	ldr r0, [r0]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xa94]
+#else
 	ldr r6, [r0, #0xb38]
+#endif
 	mov r0, r6
 	bl EntityIsValid__02307EF8
 	cmp r0, #0
@@ -2539,7 +2675,11 @@ _02307E2C:
 	ldr r0, [fp]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr sb, [r0, #0xa84]
+#else
 	ldr sb, [r0, #0xb28]
+#endif
 	mov r0, sb
 	bl EntityIsValid__02307EF8
 	cmp r0, #0

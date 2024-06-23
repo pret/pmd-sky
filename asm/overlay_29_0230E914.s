@@ -12,9 +12,15 @@ ov29_0230E914: ; 0x0230E914
 	bl ov29_02300B40
 	cmp r0, #0
 	movne r0, #0
+#ifdef JAPAN
+	strneb r0, [r7, #0x108]
+	bne _0230ED98
+	ldrb r0, [r7, #0x108]
+#else
 	strneb r0, [r7, #0x109]
 	bne _0230ED98
 	ldrb r0, [r7, #0x109]
+#endif
 	cmp r0, #0
 	beq _0230EAF0
 	ldrb r0, [r7, #0x62]
@@ -353,7 +359,11 @@ _0230EDF4:
 	ldr r0, [r0]
 	add r0, r0, fp, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r4, [r0, #0xad4]
+#else
 	ldr r4, [r0, #0xb78]
+#endif
 	mov r0, r4
 	bl EntityIsValid__0230F008
 	cmp r0, #0

@@ -22,7 +22,11 @@ _0231B1EC:
 	ldr r0, [r4]
 	add r0, r0, r7, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r8, [r0, #0xad4]
+#else
 	ldr r8, [r0, #0xb78]
+#endif
 	mov r0, r8
 	bl IsMonster__0231B318
 	cmp r0, #0
@@ -124,8 +128,13 @@ ActivateStench: ; 0x0231B33C
 	ldr r0, _0231B360 ; =ov10_022C457C
 	mov r1, #2
 	ldrsh r0, [r0]
+#ifdef JAPAN
+	strb r1, [r4, #0x103]
+	strb r0, [r4, #0x104]
+#else
 	strb r1, [r4, #0x104]
 	strb r0, [r4, #0x105]
+#endif
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0231B360: .word ov10_022C457C
@@ -237,7 +246,11 @@ ov29_0231B490: ; 0x0231B490
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3000
+#ifdef JAPAN
+	strb r1, [r0, #0xd98]
+#else
 	strb r1, [r0, #0xe3c]
+#endif
 	bx lr
 	.align 2, 0
 _0231B4A8: .word DUNGEON_PTR
@@ -250,7 +263,11 @@ ov29_0231B4AC: ; 0x0231B4AC
 	ldreq r0, _0231B4E8 ; =DUNGEON_PTR
 	ldreq r0, [r0]
 	addeq r0, r0, #0x3000
+#ifdef JAPAN
+	ldreqb r0, [r0, #0xd98]
+#else
 	ldreqb r0, [r0, #0xe3c]
+#endif
 	ldmeqia sp!, {r3, pc}
 	cmp r0, #1
 	movne r0, #0
@@ -355,7 +372,11 @@ _0231B5F4:
 	movne r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x3000
+#ifdef JAPAN
+	strb r1, [r0, #0xd98]
+#else
 	strb r1, [r0, #0xe3c]
+#endif
 	bl sub_020017EC
 	bl ov29_022E81F8
 	mov r0, #1
@@ -365,7 +386,11 @@ _0231B5F4:
 	beq _0231B678
 	mov r0, r8
 	bl ov29_022F04F0
+#ifdef JAPAN
+	mov r0, #2
+#else
 	mov r0, #1
+#endif
 	bl AnimationDelayOrSomething
 	mov r0, r8
 	bl ov29_022F0518
@@ -1521,14 +1546,19 @@ _0231C6B0:
 	bl TryInflictDropeyeStatus
 	b _0231CB14
 	.align 2, 0
+#ifdef JAPAN
+#define APPLY_ITEM_EFFECT_OFFSET -0x2C1
+#else
+#define APPLY_ITEM_EFFECT_OFFSET 0
+#endif
 _0231C6C0: .word 0x000001AB
 _0231C6C4: .word 0x00001317
-_0231C6C8: .word 0x00000BE6
-_0231C6CC: .word 0x00000BE7
+_0231C6C8: .word 0x00000BE6 + APPLY_ITEM_EFFECT_OFFSET
+_0231C6CC: .word 0x00000BE7 + APPLY_ITEM_EFFECT_OFFSET
 _0231C6D0: .word ov10_022C4574
 _0231C6D4: .word 0x00000256
 _0231C6D8: .word ov10_022C4558
-_0231C6DC: .word 0x00000BE8
+_0231C6DC: .word 0x00000BE8 + APPLY_ITEM_EFFECT_OFFSET
 _0231C6E0: .word 0x0000016B
 _0231C6E4: .word 0x00000192
 _0231C6E8: .word 0x00000196
@@ -1555,7 +1585,7 @@ _0231C738: .word SITRUS_BERRY_HP_RESTORATION
 _0231C73C: .word SITRUS_BERRY_FULL_HP_BOOST
 _0231C740: .word LIFE_SEED_HP_BOOST
 _0231C744: .word SLEEP_TURN_RANGE
-_0231C748: .word 0x00000BE9
+_0231C748: .word 0x00000BE9 + APPLY_ITEM_EFFECT_OFFSET
 _0231C74C: .word 0x000003E7
 _0231C750: .word PROTEIN_STAT_BOOST
 _0231C754: .word CALCIUM_STAT_BOOST
@@ -1832,7 +1862,11 @@ _0231CB14:
 	cmp r0, #0
 	movne r0, #0
 	bne _0231CB48
+#ifdef JAPAN
+	add r0, r1, #0x224
+#else
 	add r0, r1, #0x228
+#endif
 	mov r1, #0x5d
 	bl ExclusiveItemEffectFlagTest
 _0231CB48:
@@ -1871,10 +1905,10 @@ _0231CBA4:
 	add sp, sp, #0x5c
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_0231CBAC: .word 0x00000C75
+_0231CBAC: .word 0x00000C75 + APPLY_ITEM_EFFECT_OFFSET
 _0231CBB0: .word OREN_BERRY_DAMAGE
-_0231CBB4: .word 0x00000C67
-_0231CBB8: .word 0x00000C76
+_0231CBB4: .word 0x00000C67 + APPLY_ITEM_EFFECT_OFFSET
+_0231CBB8: .word 0x00000C76 + APPLY_ITEM_EFFECT_OFFSET
 _0231CBBC: .word ov10_022C44EC
 _0231CBC0: .word APPLES_AND_BERRIES_ITEM_IDS
 _0231CBC4: .word ov10_022C4864

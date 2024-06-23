@@ -73,7 +73,11 @@ _0231EEE0:
 	ldr r0, [r0]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr sb, [r0, #0xad4]
+#else
 	ldr sb, [r0, #0xb78]
+#endif
 	mov r0, sb
 	bl EntityIsValid__0231F570
 	cmp r0, #0
@@ -511,12 +515,17 @@ _0231F53C:
 	add sp, sp, #0xf4
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0231F544: .word 0x00000E45
-_0231F548: .word 0x00000E46
+#ifdef JAPAN
+#define OV29_0231EDFC_OFFSET -0x2BF
+#else
+#define OV29_0231EDFC_OFFSET 0
+#endif
+_0231F544: .word 0x00000E45 + OV29_0231EDFC_OFFSET
+_0231F548: .word 0x00000E46 + OV29_0231EDFC_OFFSET
 _0231F54C: .word DIRECTIONS_XY
 _0231F550: .word DUNGEON_PTR
-_0231F554: .word 0x00000E48
-_0231F558: .word 0x00000E47
+_0231F554: .word 0x00000E48 + OV29_0231EDFC_OFFSET
+_0231F558: .word 0x00000E47 + OV29_0231EDFC_OFFSET
 _0231F55C: .word 0x00000212
 _0231F560: .word ov29_0235171E
 _0231F564: .word 0x00000163

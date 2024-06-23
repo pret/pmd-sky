@@ -165,8 +165,10 @@ _022BCC64:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022BCC88: .word ov00_023187A0
-#ifdef EUROPE
+#if defined(EUROPE)
 _022BD5D8: .word ov00_02318758_EU
+#elif defined(JAPAN)
+_022BCC8C: .word 0x5946594A
 #else
 _022BCC8C: .word 0x59465945
 #endif
@@ -290,6 +292,11 @@ _022BCDB8: .word ov00_022DB9EC
 
 	arm_func_start ov00_022BCDBC
 ov00_022BCDBC: ; 0x022BCDBC
+#ifdef JAPAN
+#define OV00_022BCDBC_OFFSET -0x50
+#else
+#define OV00_022BCDBC_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	movs sl, r0
@@ -323,20 +330,20 @@ _022BCE2C:
 	mul r8, r5, r0
 	ldr r0, _022BCF10 ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
-	add r0, r0, #0xe0
+	add r0, r0, #0xe0 + OV00_022BCDBC_OFFSET
 	add r0, r0, r8
 	bl ov00_022DB78C
 	cmp r0, #0
 	beq _022BCEA4
 	ldr r0, _022BCF10 ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
-	add r1, r0, #0xe0
+	add r1, r0, #0xe0 + OV00_022BCDBC_OFFSET
 	add r1, r1, r8
 	bl ov00_022DB98C
 	ldr r1, _022BCF10 ; =ov00_023187A0
 	mov r4, r0
 	ldr r1, [r1, #0xc]
-	add r0, r1, #0xe0
+	add r0, r1, #0xe0 + OV00_022BCDBC_OFFSET
 	add r1, r0, r8
 	mov r0, sl
 	bl ov00_022DBAF8
@@ -390,6 +397,25 @@ _022BCF10: .word ov00_023187A0
 	arm_func_start ov00_022BCF14
 ov00_022BCF14: ; 0x022BCF14
 	stmdb sp!, {r4, lr}
+#ifdef JAPAN
+	mov r4, r1
+	cmp r0, #0x10
+	mov lr, r2
+	movhs r0, #0
+	ldmhsia sp!, {r4, pc}
+	ldr r2, _022BCF68 ; =ov00_023187A0
+	mov r1, #0xc
+	ldr ip, [r2, #0xc]
+	add r3, r0, r0, lsl #2
+	mla r1, r0, r1, ip
+	add r0, r1, #0x90
+	ldmia r0, {r0, r1, r2}
+	stmia r4, {r0, r1, r2}
+	add r1, ip, #0x40
+	mov r0, lr
+	add r1, r1, r3
+	mov r2, #5
+#else
 	mov r4, r0
 	cmp r4, #0x10
 	mov lr, r1
@@ -407,6 +433,7 @@ ov00_022BCF14: ; 0x022BCF14
 	mov r2, #0xa
 	mla r1, r4, r2, r0
 	mov r0, ip
+#endif
 	bl MemcpySimple
 	mov r0, #1
 	ldmia sp!, {r4, pc}
@@ -417,6 +444,28 @@ _022BCF68: .word ov00_023187A0
 	arm_func_start ov00_022BCF6C
 ov00_022BCF6C: ; 0x022BCF6C
 	stmdb sp!, {r4, lr}
+#ifdef JAPAN
+	mov r4, r2
+	cmp r0, #0x10
+	movhs r0, #0
+	ldmhsia sp!, {r4, pc}
+	cmp r4, #0
+	cmpne r1, #0
+	moveq r0, #0
+	ldmeqia sp!, {r4, pc}
+	ldr r3, _022BCFCC ; =ov00_023187A0
+	mov r2, #0xc
+	ldr lr, [r3, #0xc]
+	add r3, r0, r0, lsl #2
+	mla r2, r0, r2, lr
+	add ip, r2, #0x90
+	ldmia r1, {r0, r1, r2}
+	stmia ip, {r0, r1, r2}
+	add r0, lr, #0x40
+	mov r1, r4
+	add r0, r0, r3
+	mov r2, #5
+#else
 	mov r4, r0
 	cmp r4, #0x10
 	mov lr, r2
@@ -437,6 +486,7 @@ ov00_022BCF6C: ; 0x022BCF6C
 	mov r2, #0xa
 	mla r0, r4, r2, r0
 	mov r1, lr
+#endif
 	bl MemcpySimple
 	mov r0, #1
 	ldmia sp!, {r4, pc}
@@ -462,11 +512,20 @@ _022BCFFC:
 	ldmia sp!, {r3, r4, r5, pc}
 _022BD004:
 	ldr r0, _022BD028 ; =ov00_023187A0
+#ifdef JAPAN
+	add r2, r5, r5, lsl #2
+#else
 	mov r2, #0xa
+#endif
 	ldr r0, [r0, #0xc]
 	mov r1, r4
 	add r0, r0, #0x40
+#ifdef JAPAN
+	add r0, r0, r2
+	mov r2, #5
+#else
 	mla r0, r5, r2, r0
+#endif
 	bl MemcpySimple
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
@@ -485,14 +544,22 @@ ov00_022BD02C: ; 0x022BD02C
 _022BD044:
 	ldr r0, [r8, #0xc]
 	smulbb r5, r4, r7
+#ifdef JAPAN
+	add r0, r0, #0x90
+#else
 	add r0, r0, #0xe0
+#endif
 	add r0, r0, r5
 	bl ov00_022DB78C
 	cmp r0, #0
 	beq _022BD080
 	ldr r1, [r8, #0xc]
 	mov r0, r6
+#ifdef JAPAN
+	add r1, r1, #0x90
+#else
 	add r1, r1, #0xe0
+#endif
 	add r1, r1, r5
 	bl ov00_022DBAF8
 	cmp r0, #0
@@ -520,7 +587,11 @@ ov00_022BD0A0: ; 0x022BD0A0
 	ldr r2, _022BD0D0 ; =ov00_023187A0
 	mov r1, #0xc
 	ldr r2, [r2, #0xc]
+#ifdef JAPAN
+	add r2, r2, #0x90
+#else
 	add r2, r2, #0xe0
+#endif
 	mla r0, r1, r0, r2
 	bl ov00_022DB78C
 	and r0, r0, #0xff
@@ -537,11 +608,19 @@ ov00_022BD0D4: ; 0x022BD0D4
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
+#ifdef JAPAN
+	ldr r0, _022BD104 ; =ov00_023187A0
+	add r1, r4, r4, lsl #2
+	ldr r0, [r0, #0xc]
+	add r0, r0, #0x40
+	add r0, r0, r1
+#else
 	ldr r1, _022BD104 ; =ov00_023187A0
 	mov r0, #0xa
 	ldr r1, [r1, #0xc]
 	add r1, r1, #0x40
 	mla r0, r4, r0, r1
+#endif
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022BD104: .word ov00_023187A0
@@ -557,7 +636,11 @@ ov00_022BD108: ; 0x022BD108
 	ldr r2, _022BD138 ; =ov00_023187A0
 	mov r1, #0xc
 	ldr r2, [r2, #0xc]
+#ifdef JAPAN
+	add r2, r2, #0x90
+#else
 	add r2, r2, #0xe0
+#endif
 	mla r0, r1, r0, r2
 	bl ov00_022DB964
 	ldmia sp!, {r3, pc}
@@ -575,7 +658,11 @@ ov00_022BD13C: ; 0x022BD13C
 	ldr r0, _022BD16C ; =ov00_023187A0
 	mov r1, #0xc
 	ldr r0, [r0, #0xc]
+#ifdef JAPAN
+	add r2, r0, #0x90
+#else
 	add r2, r0, #0xe0
+#endif
 	mla r1, r3, r1, r2
 	bl ov00_022DB98C
 	ldmia sp!, {r3, pc}
@@ -592,7 +679,11 @@ ov00_022BD170: ; 0x022BD170
 	ldr r2, _022BD19C ; =ov00_023187A0
 	mov r1, #0xc
 	ldr r2, [r2, #0xc]
+#ifdef JAPAN
+	add r2, r2, #0x90
+#else
 	add r2, r2, #0xe0
+#endif
 	mla r0, r1, r0, r2
 	bl ov00_022DB254
 	ldmia sp!, {r3, pc}
@@ -694,7 +785,11 @@ ov00_022BD284: ; 0x022BD284
 	movhs r0, #0
 	ldrlo r1, [r1, #0xc]
 	addlo r0, r1, r0
+#ifdef JAPAN
+	ldrlob r0, [r0, #0x150]
+#else
 	ldrlob r0, [r0, #0x1a0]
+#endif
 	bx lr
 	.align 2, 0
 _022BD2A0: .word ov00_023187A0
@@ -706,7 +801,11 @@ ov00_022BD2A4: ; 0x022BD2A4
 	ldrlo r2, _022BD2BC ; =ov00_023187A0
 	ldrlo r2, [r2, #0xc]
 	addlo r0, r2, r0
+#ifdef JAPAN
+	strlob r1, [r0, #0x150]
+#else
 	strlob r1, [r0, #0x1a0]
+#endif
 	bx lr
 	.align 2, 0
 _022BD2BC: .word ov00_023187A0
@@ -721,7 +820,11 @@ ov00_022BD2C0: ; 0x022BD2C0
 	ldr r2, _022BD2F0 ; =ov00_023187A0
 	mov r1, #0xc
 	ldr r2, [r2, #0xc]
+#ifdef JAPAN
+	add r2, r2, #0x90
+#else
 	add r2, r2, #0xe0
+#endif
 	mla r0, r1, r0, r2
 	bl ov00_022DB1B4
 	and r0, r0, #0xff
@@ -739,7 +842,11 @@ ov00_022BD2F4: ; 0x022BD2F4
 	mov r4, #0xc
 _022BD308:
 	ldr r0, [r5, #0xc]
+#ifdef JAPAN
+	add r0, r0, #0x90
+#else
 	add r0, r0, #0xe0
+#endif
 	mla r0, r6, r4, r0
 	bl ov00_022DB78C
 	cmp r0, #0
@@ -763,13 +870,21 @@ ov00_022BD338: ; 0x022BD338
 _022BD34C:
 	mul r6, r4, r7
 	ldr r0, [r8, #0xc]
+#ifdef JAPAN
+	add r0, r0, #0x90
+#else
 	add r0, r0, #0xe0
+#endif
 	add r0, r0, r6
 	bl ov00_022DB78C
 	cmp r0, #0
 	beq _022BD380
 	ldr r0, [r8, #0xc]
+#ifdef JAPAN
+	add r0, r0, #0x90
+#else
 	add r0, r0, #0xe0
+#endif
 	add r0, r0, r6
 	bl ov00_022DB1B4
 	cmp r0, #0
@@ -800,15 +915,27 @@ ov00_022BD3B4: ; 0x022BD3B4
 	stmdb sp!, {r4, lr}
 	ldr r1, _022BD3F0 ; =ov00_023187A0
 	mov r4, r0
+#ifdef JAPAN
+	ldr r1, [r1, #0xc]
+	add r0, r4, r4, lsl #2
+	add r1, r1, #0x40
+	add r0, r1, r0
+	mov r1, #5
+#else
 	ldr r0, [r1, #0xc]
 	mov r1, #0xa
 	add r0, r0, #0x40
 	mla r0, r4, r1, r0
+#endif
 	bl MemZero
 	ldr r1, _022BD3F0 ; =ov00_023187A0
 	mov r0, #0xc
 	ldr r1, [r1, #0xc]
+#ifdef JAPAN
+	add r1, r1, #0x90
+#else
 	add r1, r1, #0xe0
+#endif
 	mla r0, r4, r0, r1
 	bl ov00_022E3680
 	ldmia sp!, {r4, pc}
@@ -824,7 +951,11 @@ ov00_022BD3F4: ; 0x022BD3F4
 	mov r4, #0xc
 _022BD404:
 	ldr r0, [r5, #0xc]
+#ifdef JAPAN
+	add r0, r0, #0x90
+#else
 	add r0, r0, #0xe0
+#endif
 	mla r0, r6, r4, r0
 	bl ov00_022DB78C
 	cmp r0, #0
@@ -902,31 +1033,36 @@ _022BD4E8: .word ov00_0231D420
 
 	arm_func_start ov00_022BD4EC
 ov00_022BD4EC: ; 0x022BD4EC
+#ifdef JAPAN
+#define OV00_022BD4EC_OFFSET -0x50
+#else
+#define OV00_022BD4EC_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _022BD570 ; =ov00_023187A0
 	mov r1, #0x36
 	ldr r0, [r0, #0xc]
-	add r0, r0, #0x1b0
+	add r0, r0, #0x1b0 + OV00_022BD4EC_OFFSET
 	bl MemZero
 	ldr r1, _022BD570 ; =ov00_023187A0
 	ldr r3, _022BD574 ; =0x00003FFF
 	ldr r0, [r1, #0xc]
 	mov r4, #0
 	add r0, r0, #0x100
-	strh r3, [r0, #0xe6]
+	strh r3, [r0, #0xe6 + OV00_022BD4EC_OFFSET]
 	ldr r0, [r1, #0xc]
 	mov r2, #1
 	add r0, r0, #0x100
-	strh r3, [r0, #0xe8]
+	strh r3, [r0, #0xe8 + OV00_022BD4EC_OFFSET]
 	ldr r0, [r1, #0xc]
 	mov r5, r4
-	strb r2, [r0, #0x1ea]
+	strb r2, [r0, #0x1ea + OV00_022BD4EC_OFFSET]
 	ldr r0, [r1, #0xc]
-	strb r2, [r0, #0x1eb]
+	strb r2, [r0, #0x1eb + OV00_022BD4EC_OFFSET]
 	ldr r0, [r1, #0xc]
-	strb r2, [r0, #0x1ec]
+	strb r2, [r0, #0x1ec + OV00_022BD4EC_OFFSET]
 	ldr r0, [r1, #0xc]
-	strb r4, [r0, #0x1ed]
+	strb r4, [r0, #0x1ed + OV00_022BD4EC_OFFSET]
 _022BD550:
 	mov r0, r4, lsl #0x10
 	mov r1, r5
@@ -947,7 +1083,11 @@ ov00_022BD578: ; 0x022BD578
 	ldr r1, _022BD59C ; =ov00_023187A0
 	mov r2, #0x27
 	ldr r1, [r1, #0xc]
+#ifdef JAPAN
+	add r3, r1, #0x150
+#else
 	add r3, r1, #0x1a0
+#endif
 _022BD588:
 	ldrh r1, [r3], #2
 	subs r2, r2, #1
@@ -963,7 +1103,11 @@ ov00_022BD5A0: ; 0x022BD5A0
 	ldr r1, _022BD5C4 ; =ov00_023187A0
 	mov r2, #0x27
 	ldr r1, [r1, #0xc]
+#ifdef JAPAN
+	add r3, r1, #0x150
+#else
 	add r3, r1, #0x1a0
+#endif
 _022BD5B0:
 	ldrh r1, [r0], #2
 	subs r2, r2, #1
@@ -979,7 +1123,11 @@ _022BD5C4: .word ov00_023187A0
 ov00_022BD5C8: ; 0x022BD5C8
 	ldr r0, _022BD5E8 ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
+#ifdef JAPAN
+	ldrb r0, [r0, #0x160]
+#else
 	ldrb r0, [r0, #0x1b0]
+#endif
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -993,7 +1141,11 @@ _022BD5E8: .word ov00_023187A0
 ov00_022BD5EC: ; 0x022BD5EC
 	ldr r0, _022BD5FC ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
+#ifdef JAPAN
+	add r0, r0, #0x160
+#else
 	add r0, r0, #0x1b0
+#endif
 	bx lr
 	.align 2, 0
 _022BD5FC: .word ov00_023187A0
@@ -1006,7 +1158,11 @@ ov00_022BD600: ; 0x022BD600
 	ldr r1, _022BD62C ; =0x00002710
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x100
+#ifdef JAPAN
+	ldrh r0, [r0, #0x96]
+#else
 	ldrh r0, [r0, #0xe6]
+#endif
 	cmp r0, r1
 	movlo r0, #1
 	movhs r0, #0
@@ -1022,7 +1178,11 @@ ov00_022BD630: ; 0x022BD630
 	ldr r0, _022BD644 ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x100
+#ifdef JAPAN
+	ldrh r0, [r0, #0x96]
+#else
 	ldrh r0, [r0, #0xe6]
+#endif
 	bx lr
 	.align 2, 0
 _022BD644: .word ov00_023187A0
@@ -1033,7 +1193,11 @@ ov00_022BD648: ; 0x022BD648
 	ldr r1, _022BD65C ; =ov00_023187A0
 	ldr r1, [r1, #0xc]
 	add r1, r1, #0x100
+#ifdef JAPAN
+	strh r0, [r1, #0x96]
+#else
 	strh r0, [r1, #0xe6]
+#endif
 	bx lr
 	.align 2, 0
 _022BD65C: .word ov00_023187A0
@@ -1046,7 +1210,11 @@ ov00_022BD660: ; 0x022BD660
 	ldr r1, _022BD68C ; =0x00002710
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x100
+#ifdef JAPAN
+	ldrh r0, [r0, #0x98]
+#else
 	ldrh r0, [r0, #0xe8]
+#endif
 	cmp r0, r1
 	movlo r0, #1
 	movhs r0, #0
@@ -1062,7 +1230,11 @@ ov00_022BD690: ; 0x022BD690
 	ldr r0, _022BD6A4 ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x100
+#ifdef JAPAN
+	ldrh r0, [r0, #0x98]
+#else
 	ldrh r0, [r0, #0xe8]
+#endif
 	bx lr
 	.align 2, 0
 _022BD6A4: .word ov00_023187A0
@@ -1074,7 +1246,11 @@ ov00_022BD6A8: ; 0x022BD6A8
 	ldr r1, _022BD6BC ; =ov00_023187A0
 	ldr r1, [r1, #0xc]
 	add r1, r1, #0x100
+#ifdef JAPAN
+	strh r0, [r1, #0x98]
+#else
 	strh r0, [r1, #0xe8]
+#endif
 	bx lr
 	.align 2, 0
 _022BD6BC: .word ov00_023187A0
@@ -1086,7 +1262,11 @@ ov00_022BD6C0: ; 0x022BD6C0
 	ldr r1, _022BD6DC ; =0x00003FFF
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x100
+#ifdef JAPAN
+	strh r1, [r0, #0x98]
+#else
 	strh r1, [r0, #0xe8]
+#endif
 	bx lr
 	.align 2, 0
 _022BD6D8: .word ov00_023187A0
@@ -1098,7 +1278,11 @@ _022BD6DC: .word 0x00003FFF
 ov00_022BD6E0: ; 0x022BD6E0
 	ldr r0, _022BD6F0 ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19a]
+#else
 	ldrb r0, [r0, #0x1ea]
+#endif
 	bx lr
 	.align 2, 0
 _022BD6F0: .word ov00_023187A0
@@ -1108,7 +1292,11 @@ _022BD6F0: .word ov00_023187A0
 ov00_022BD6F4: ; 0x022BD6F4
 	ldr r0, _022BD704 ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19b]
+#else
 	ldrb r0, [r0, #0x1eb]
+#endif
 	bx lr
 	.align 2, 0
 _022BD704: .word ov00_023187A0
@@ -1118,7 +1306,11 @@ _022BD704: .word ov00_023187A0
 ov00_022BD708: ; 0x022BD708
 	ldr r0, _022BD718 ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19c]
+#else
 	ldrb r0, [r0, #0x1ec]
+#endif
 	bx lr
 	.align 2, 0
 _022BD718: .word ov00_023187A0
@@ -1128,7 +1320,11 @@ _022BD718: .word ov00_023187A0
 ov00_022BD71C: ; 0x022BD71C
 	ldr r0, _022BD72C ; =ov00_023187A0
 	ldr r0, [r0, #0xc]
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19d]
+#else
 	ldrb r0, [r0, #0x1ed]
+#endif
 	bx lr
 	.align 2, 0
 _022BD72C: .word ov00_023187A0
@@ -1139,7 +1335,11 @@ _022BD72C: .word ov00_023187A0
 ov00_022BD730: ; 0x022BD730
 	ldr r1, _022BD740 ; =ov00_023187A0
 	ldr r1, [r1, #0xc]
+#ifdef JAPAN
+	strb r0, [r1, #0x19a]
+#else
 	strb r0, [r1, #0x1ea]
+#endif
 	bx lr
 	.align 2, 0
 _022BD740: .word ov00_023187A0
@@ -1149,7 +1349,11 @@ _022BD740: .word ov00_023187A0
 ov00_022BD744: ; 0x022BD744
 	ldr r1, _022BD754 ; =ov00_023187A0
 	ldr r1, [r1, #0xc]
+#ifdef JAPAN
+	strb r0, [r1, #0x19b]
+#else
 	strb r0, [r1, #0x1eb]
+#endif
 	bx lr
 	.align 2, 0
 _022BD754: .word ov00_023187A0
@@ -1159,7 +1363,11 @@ _022BD754: .word ov00_023187A0
 ov00_022BD758: ; 0x022BD758
 	ldr r1, _022BD768 ; =ov00_023187A0
 	ldr r1, [r1, #0xc]
+#ifdef JAPAN
+	strb r0, [r1, #0x19c]
+#else
 	strb r0, [r1, #0x1ec]
+#endif
 	bx lr
 	.align 2, 0
 _022BD768: .word ov00_023187A0
@@ -1169,7 +1377,11 @@ _022BD768: .word ov00_023187A0
 ov00_022BD76C: ; 0x022BD76C
 	ldr r1, _022BD77C ; =ov00_023187A0
 	ldr r1, [r1, #0xc]
+#ifdef JAPAN
+	strb r0, [r1, #0x19d]
+#else
 	strb r0, [r1, #0x1ed]
+#endif
 	bx lr
 	.align 2, 0
 _022BD77C: .word ov00_023187A0
@@ -1281,7 +1493,11 @@ ov00_022BD870: ; 0x022BD870
 	str r2, [sp]
 	str r0, [sp, #4]
 	str r0, [sp, #8]
+#ifdef JAPAN
+	add ip, r1, #0x90
+#else
 	add ip, r1, #0xe0
+#endif
 	ldr r0, _022BD8E8 ; =ov00_0231D490
 	ldr r2, _022BD8EC ; =0x00002B1A
 	ldr r3, _022BD8F0 ; =ov00_02317F44
@@ -2151,7 +2367,11 @@ _022BE268:
 _022BE278:
 	cmp sl, #5
 	bne _022BE29C
+#ifdef JAPAN
+	ldr r0, _022BFB70 ; =0x000004D9
+#else
 	mov r0, #0x248
+#endif
 	mov r1, #0x100
 	add r2, sp, #0x98
 	str r7, [sp, #0x11c]
@@ -2243,6 +2463,9 @@ _022BE3B8: .word ov00_0231E2A0
 _022BE3BC: .word ov00_023187EC
 _022BE3C0: .word ov00_022BE3CC
 _022BE3C4: .word ov00_022BE4C8
+#ifdef JAPAN
+_022BFB70: .word 0x000004D9
+#endif
 _022BE3C8: .word 0x04000208
 	arm_func_end ov00_022BE0C8
 
@@ -108525,7 +108748,7 @@ ov00_023181D0:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.word ov00_02318B00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00,  0x61, 0x61, 0x61
+	.byte 0x00, 0x00, 0x00, 0x00, 0x61, 0x61, 0x61
 	.global ov00_0231822B
 ov00_0231822B:
 	.byte 0x17, 0x14, 0x11, 0x0d, 0x0b, 0x06, 0x0f, 0x0e, 0x09
@@ -108717,16 +108940,21 @@ ov00_023187C4:
 	.word ov00_02318780
 	.global ov00_023187D0
 ov00_023187D0:
-#ifdef EUROPE
+#if defined(EUROPE)
 	.byte 0x43, 0x32, 0x53, 0x50
+#elif defined(JAPAN)
+	.byte 0x43, 0x32, 0x53, 0x4A
 #else
 	.byte 0x43, 0x32, 0x53, 0x45
 #endif
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov00_023187D8
 ov00_023187D8:
-#ifdef EUROPE
+#if defined(EUROPE)
 	.byte 0x41, 0x79, 0x43, 0x75, 0x48, 0x72, 0x47, 0x53, 0x4A, 0x4D, 0x4B, 0x56, 0x34, 0x71, 0x6A, 0x61
+#elif defined(JAPAN)
+	.byte 0x36, 0x77, 0x42, 0x79, 0x66, 0x52, 0x33, 0x71
+	.byte 0x4D, 0x64, 0x56, 0x37, 0x7A, 0x74, 0x73, 0x68
 #else
 	.byte 0x48, 0x61, 0x75, 0x5a, 0x6e, 0x37, 0x78, 0x32, 0x51, 0x6a, 0x41, 0x4a
 	.byte 0x47, 0x7a, 0x50, 0x43

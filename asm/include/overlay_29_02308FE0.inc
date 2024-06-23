@@ -188,6 +188,7 @@
 .public ov29_02305F60
 .public ov29_02307BDC
 .public ov29_02307C48
+.public ov29_02307DC0
 .public ov29_023159D4
 .public ov29_02337EC0
 .public ov29_0233847C
@@ -258,6 +259,7 @@
 .public SpawnDroppedItemWrapper
 .public SpawnMonster
 .public SPECIAL_BAND_STAT_BOOST
+.public StrcpySimple
 .public StringFromId
 .public StrncpyName
 .public StrncpySimpleNoPad

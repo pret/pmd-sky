@@ -326,9 +326,12 @@
 .public _0209B30C
 .public _0209B31C
 .public _0209B32C
+.public _0209B32C_JP
 .public _0209B32E
 .public _0209B3B4
 .public _0209B3B6
+.public _0209B408_JP
+.public _0209B488
 .public _0209B48C
 .public _0209B4A4
 .public _0209B4AC
@@ -339,6 +342,10 @@
 .public _0209B4E4
 .public _0209B4FC
 .public _0209B50C
+.public _0209B548_JP
+.public _0209C29C_JP
+.public _0209C29D_JP
+.public _0209C29E_JP
 .public _0209C5C0
 .public _0209C5D0
 .public _0209C5E0
@@ -528,6 +535,7 @@
 .public _020A32D4
 .public _020A32F8
 .public _020A3330
+.public _020A45C8_JP
 .public _020AF6C4
 .public _020AF6C8
 .public _020AF6D0
@@ -637,8 +645,11 @@
 .public _020B09C0
 .public _020B09C8
 .public _020B09D0
+.public _020B112C_JP
+.public _020B12A0_JP
 .public _020B12F4_EU
 .public _020B1308_EU
+.public _022550FF_JP
 .public _022A3824
 .public _022A4BD8
 .public _022A4BE8
@@ -692,11 +703,15 @@
 .public _022A88E4
 .public _022A88F0
 .public _022A88F8
+.public _022A88FC
 .public _022A8908
 .public _022A8990
 .public _022A8991
 .public _022A8992
 .public _022A8994
+.public _022A92B4_JP
+.public _022A92B8_JP
+.public _022A92C4
 .public _022A9A5C
 .public _022AA35C
 .public _022AAC64
@@ -998,6 +1013,7 @@
 .public sub_01FF8F28
 .public sub_01FF905C
 .public sub_01FF9128
+.public sub_01FF9130_JP
 .public sub_01FF929C
 .public sub_02001808
 .public sub_02002580

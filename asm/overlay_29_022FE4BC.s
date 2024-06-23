@@ -5,6 +5,11 @@
 
 	arm_func_start ExecuteMonsterAction
 ExecuteMonsterAction: ; 0x022FE4BC
+#ifdef JAPAN
+#define EXECUTE_MONSTER_ACTION_OFFSET -4
+#else
+#define EXECUTE_MONSTER_ACTION_OFFSET 0
+#endif
 #ifdef EUROPE
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #4
@@ -642,12 +647,18 @@ _022FF7B4:
 	mov sb, r0
 	mov r0, #1
 	bl AnimationDelayOrSomething
+#ifndef JAPAN
 	bl ov29_022FBD08
+#endif
 	mov r0, #1
 	bl ov29_0234B024
 	ldr r6, [sb, #0xb4]
 	mov r1, #0
+#ifdef JAPAN
+	strb r1, [r6, #0x108]
+#else
 	strb r1, [r6, #0x109]
+#endif
 	ldr r0, _022FED70 ; =DUNGEON_PTR
 	strb r1, [r6, #0xfc]
 	ldr r1, [r0]
@@ -685,7 +696,7 @@ _022FE538:
 	bl ov29_02318D58
 _022FE568:
 	mov r4, #0
-	add r3, r6, #0x124
+	add r3, r6, #0x124 + EXECUTE_MONSTER_ACTION_OFFSET
 	mov r1, r4
 	mov r2, #1
 _022FE578:
@@ -732,7 +743,7 @@ _022FE608:
 	mov r0, #0xa
 	bl ov29_0234BA54
 _022FE61C:
-	ldrb r0, [r6, #0x23c]
+	ldrb r0, [r6, #0x23c + EXECUTE_MONSTER_ACTION_OFFSET]
 	cmp r0, #0
 	bne _022FE630
 	mov r0, sb
@@ -742,7 +753,7 @@ _022FE630:
 	bl AdvanceFrame
 _022FE638:
 	mov r0, #0
-	strb r0, [r6, #0x23c]
+	strb r0, [r6, #0x23c + EXECUTE_MONSTER_ACTION_OFFSET]
 	ldrh r0, [r6, #0x4a]
 	mov r4, #0
 	ldr r1, _022FED80 ; =ov29_0237CA6C
@@ -751,13 +762,15 @@ _022FE638:
 	cmpne r0, #4
 	cmpne r0, #2
 	movne r0, #1
-	strneb r0, [r6, #0x152]
-	strb r4, [r6, #0x154]
+	strneb r0, [r6, #0x152 + EXECUTE_MONSTER_ACTION_OFFSET]
+	strb r4, [r6, #0x154 + EXECUTE_MONSTER_ACTION_OFFSET]
 	ldr r0, _022FED84 ; =ov29_0237CA68
 	strb r4, [r1]
 	strb r4, [r0]
+#ifndef JAPAN
 	mov r1, #1
 	strb r1, [r6, #0x103]
+#endif
 	ldrh r0, [r6, #0x4a]
 	cmp r0, #0x42
 	addls pc, pc, r0, lsl #2
@@ -843,7 +856,7 @@ _022FE7B8:
 	mov r0, #0
 	strh r0, [r6, #0x4a]
 	mov r0, #1
-	strb r0, [r6, #0x151]
+	strb r0, [r6, #0x151 + EXECUTE_MONSTER_ACTION_OFFSET]
 	ldrb r0, [r6, #7]
 	cmp r0, #0
 	beq _022FEBB4
@@ -894,7 +907,7 @@ _022FE870:
 	mov r0, #0
 	strh r0, [r6, #0x4a]
 	mov r0, #1
-	strb r0, [r6, #0x151]
+	strb r0, [r6, #0x151 + EXECUTE_MONSTER_ACTION_OFFSET]
 	ldrb r0, [r6, #7]
 	cmp r0, #0
 	beq _022FEBB4
@@ -1007,10 +1020,20 @@ _022FEA14:
 	bl ov29_0231A9F8
 	b _022FEBB4
 _022FEA20:
+#ifdef JAPAN
+	mov r0, #1
+	strh r0, [r6, #0x4a]
+#else
 	strh r1, [r6, #0x4a]
+#endif
 	b _022FEBB4
 _022FEA28:
+#ifdef JAPAN
+	mov r0, #1
+	strh r0, [r6, #0x4a]
+#else
 	strh r1, [r6, #0x4a]
+#endif
 	b _022FEBB4
 _022FEA30:
 	mov r0, sb
@@ -1034,10 +1057,16 @@ _022FEA60:
 	b _022FEBB4
 _022FEA6C:
 	mov r0, sb
+#ifdef JAPAN
+	mov r1, #1
+#endif
 	bl ov29_022F4370
 	b _022FEBB4
 _022FEA78:
 	mov r0, sb
+#ifdef JAPAN
+	mov r1, #1
+#endif
 	bl ov29_022F44F0
 	b _022FEBB4
 _022FEA84:
@@ -1046,7 +1075,11 @@ _022FEA84:
 	ldr r2, [r0]
 	add r0, r2, r1, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xa84]
+#else
 	ldr r0, [r0, #0xb28]
+#endif
 	str r0, [r2, #0xc8]
 	b _022FEBB4
 _022FEAA4:
@@ -1077,7 +1110,11 @@ _022FEAEC:
 	mov r2, r0
 	bl SubstitutePlaceholderStringTags
 	mov r0, sb
+#ifdef JAPAN
+	mov r1, #0xb30
+#else
 	mov r1, #0xdf0
+#endif
 	bl LogMessageByIdWithPopupCheckUser
 	b _022FEBB4
 _022FEB0C:
@@ -1094,8 +1131,13 @@ _022FEB24:
 	bl ov29_022F6058
 	b _022FEBB4
 _022FEB34:
+#ifdef JAPAN
+	ldr r1, _0230017C ; =0x00000163
+	mov r0, sb
+#else
 	mov r0, sb
 	rsb r1, r1, #0x164
+#endif
 	bl ov29_022F6058
 	b _022FEBB4
 _022FEB44:
@@ -1142,12 +1184,12 @@ _022FEBB4:
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldr r2, [sb, #0xb4]
-	ldrb r0, [r2, #0x154]
+	ldrb r0, [r2, #0x154 + EXECUTE_MONSTER_ACTION_OFFSET]
 	cmp r0, #0
 	bne _022FEBF0
 	mov r1, #0
 	mov r0, sb
-	strb r1, [r2, #0x154]
+	strb r1, [r2, #0x154 + EXECUTE_MONSTER_ACTION_OFFSET]
 	bl ov29_02318D58
 _022FEBF0:
 	mov r0, #0
@@ -1158,14 +1200,14 @@ _022FEBF0:
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	bl ov29_022EF9BC
-	ldrb r0, [r6, #0x155]
+	ldrb r0, [r6, #0x155 + EXECUTE_MONSTER_ACTION_OFFSET]
 	cmp r0, #0
 	beq _022FEC88
 	mov ip, #0
 	mov r5, #1
 	mov r8, ip
-	strb ip, [r6, #0x155]
-	add r7, r6, #0x124
+	strb ip, [r6, #0x155 + EXECUTE_MONSTER_ACTION_OFFSET]
+	add r7, r6, #0x124 + EXECUTE_MONSTER_ACTION_OFFSET
 	mov r3, ip
 	mov r1, ip
 	mov r0, r5
@@ -1220,7 +1262,7 @@ _022FECD8:
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	ldrb r0, [r6, #0x14e]
+	ldrb r0, [r6, #0x14e + EXECUTE_MONSTER_ACTION_OFFSET]
 	cmp r0, #0
 	cmpeq r4, #0
 	bne _022FED68
@@ -1229,7 +1271,7 @@ _022FECD8:
 	bl CannotStandOnTile
 	cmp r0, #0
 	beq _022FED58
-	ldr r0, [r6, #0x110]
+	ldr r0, [r6, #0x110 + EXECUTE_MONSTER_ACTION_OFFSET]
 	cmp r0, #1
 	ble _022FED50
 	mov r0, #0
@@ -1265,6 +1307,12 @@ _022FED80: .word ov29_0237CA6C
 _022FED84: .word ov29_0237CA68
 _022FED88: .word DIRECTIONS_XY
 _022FED8C: .word ov29_0235171E
+#ifdef JAPAN
+_0230017C: .word 0x00000163
+_022FED90: .word 0x00000B31
+_022FED94: .word 0x00000B32
+#else
 _022FED90: .word 0x00000DF1
 _022FED94: .word 0x00000DF2
+#endif
 	arm_func_end ExecuteMonsterAction

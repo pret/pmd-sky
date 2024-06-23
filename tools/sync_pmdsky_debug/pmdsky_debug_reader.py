@@ -11,6 +11,7 @@ pmdsky_debug_path = None
 LANGUAGE_KEYS_PMDSKY_DEBUG_TO_XMAP = {
     'NA': 'us',
     'EU': 'eu',
+    'JP': 'jp',
 }
 
 LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG = {value: key for key, value in LANGUAGE_KEYS_PMDSKY_DEBUG_TO_XMAP.items()}

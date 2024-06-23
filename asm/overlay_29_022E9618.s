@@ -259,9 +259,15 @@ _022E9920:
 	ldr r2, _022E99EC ; =DUNGEON_PTR
 	ldr r2, [r2]
 	add r2, r2, #0xcc00
+#ifdef JAPAN
+	ldrsh r3, [r2, #0x40]
+	cmp r3, fp
+	ldreqsh r2, [r2, #0x42]
+#else
 	ldrsh r3, [r2, #0xe4]
 	cmp r3, fp
 	ldreqsh r2, [r2, #0xe6]
+#endif
 	cmpeq r2, r5
 	beq _022E99CC
 _022E99A0:
@@ -360,6 +366,11 @@ _022E9A98: .word 0x00007530
 
 	arm_func_start ov29_022E9A9C
 ov29_022E9A9C: ; 0x022E9A9C
+#ifdef JAPAN
+#define OV29_022E9A9C_OFFSET -0xA4
+#else
+#define OV29_022E9A9C_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	mov sb, r1
@@ -397,7 +408,7 @@ _022E9B00:
 	ldr r1, [r0]
 	ldr r4, _022E9CAC ; =ov29_0235179C
 	add r0, r1, #0x3000
-	ldrb r0, [r0, #0xe38]
+	ldrb r0, [r0, #0xe38 + OV29_022E9A9C_OFFSET]
 	ldr r3, _022E9CB0 ; =ov29_023517A0
 	mov r5, r6, lsl #3
 	cmp r0, #0
@@ -412,7 +423,7 @@ _022E9B00:
 	ldrsh r0, [sb, #6]
 	str r0, [sp, #8]
 	beq _022E9B80
-	add r0, r1, #0x378
+	add r0, r1, #0x378 + OV29_022E9A9C_OFFSET
 	add r0, r0, #0x12800
 	str r0, [sp, #4]
 	mov r0, #0x14
@@ -422,14 +433,14 @@ _022E9B80:
 	ldrb r0, [r8, #6]
 	cmp r0, #0
 	bne _022E9BA4
-	add r0, r1, #0x338
+	add r0, r1, #0x338 + OV29_022E9A9C_OFFSET
 	add r0, r0, #0x12800
 	str r0, [sp, #4]
 	mov r0, #0x10
 	str r0, [sp]
 	b _022E9C44
 _022E9BA4:
-	add r0, r1, #0x328
+	add r0, r1, #0x328 + OV29_022E9A9C_OFFSET
 	add r0, r0, #0x12800
 	str r0, [sp, #4]
 	mov r0, #4
@@ -684,11 +695,19 @@ ov29_022E9F18: ; 0x022E9F18
 	ldr r0, [r2]
 	ldr r1, _022E9F74 ; =ov29_0237C850
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	strb r3, [r0, #0x1a8]
+#else
 	strb r3, [r0, #0x24c]
+#endif
 	ldr r0, [r2]
 	mov r2, #0
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	strb r3, [r0, #0x1a9]
+#else
 	strb r3, [r0, #0x24d]
+#endif
 	str r2, [r1, #0xc]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -760,6 +779,11 @@ _022EA004: .word ov29_02353560
 
 	arm_func_start ov29_022EA008
 ov29_022EA008: ; 0x022EA008
+#ifdef JAPAN
+#define OV29_022EA008_OFFSET -0xA4
+#else
+#define OV29_022EA008_OFFSET 0
+#endif
 	stmdb sp!, {r3, lr}
 	ldr r0, _022EA290 ; =DUNGEON_PTR
 	ldr r0, [r0]
@@ -783,7 +807,7 @@ ov29_022EA008: ; 0x022EA008
 	add r1, r0, #2
 	add r2, ip, #0x1a000
 	ldrsh r3, [ip, r1]
-	ldr r1, [r2, #0x230]
+	ldr r1, [r2, #0x230 + OV29_022EA008_OFFSET]
 	ldrsh r0, [ip, r0]
 	sub r1, r3, r1
 	mov r1, r1, lsl #0x10
@@ -794,17 +818,17 @@ ov29_022EA008: ; 0x022EA008
 	ldr r1, _022EA290 ; =DUNGEON_PTR
 	ldr r0, [r1]
 	add ip, r0, #0x1a000
-	ldrb r0, [ip, #0x251]
+	ldrb r0, [ip, #0x251 + OV29_022EA008_OFFSET]
 	cmp r0, #0
 	beq _022EA0DC
 	mov r0, #2
-	strb r0, [ip, #0x23c]
+	strb r0, [ip, #0x23c + OV29_022EA008_OFFSET]
 	ldr r0, _022EA298 ; =0x0001A224
 	ldr ip, [r1]
 	add r1, r0, #2
 	add r2, ip, #0x1a000
 	ldrsh r3, [ip, r1]
-	ldr r1, [r2, #0x230]
+	ldr r1, [r2, #0x230 + OV29_022EA008_OFFSET]
 	mov r2, #0
 	sub r1, r3, r1
 	mov r1, r1, lsl #0x10
@@ -819,7 +843,7 @@ _022EA0DC:
 	mov r1, r0
 	mov r2, r0
 	mov r3, r0
-	strb lr, [ip, #0x23c]
+	strb lr, [ip, #0x23c + OV29_022EA008_OFFSET]
 	bl sub_02051E20
 _022EA0F8:
 	bl ov29_0230473C
@@ -857,7 +881,7 @@ _022EA154:
 	ldr r0, _022EA290 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
-	ldrb r2, [r0, #0x24a]
+	ldrb r2, [r0, #0x24a + OV29_022EA008_OFFSET]
 	cmp r2, #0
 	beq _022EA1B8
 	bl ov29_022DE11C
@@ -868,7 +892,7 @@ _022EA154:
 	ldr r0, [r0]
 	ldr r1, _022EA294 ; =ov29_02353560
 	add r0, r0, #0x1a000
-	strb r2, [r0, #0x24a]
+	strb r2, [r0, #0x24a + OV29_022EA008_OFFSET]
 	ldr r0, [r1, #8]
 	str r0, [r1, #0xc]
 	b _022EA1D0
@@ -878,12 +902,12 @@ _022EA1B8:
 	str r2, [r1, #0xc]
 	cmp r2, #0
 	movle r1, #1
-	strleb r1, [r0, #0x24a]
+	strleb r1, [r0, #0x24a + OV29_022EA008_OFFSET]
 _022EA1D0:
 	ldr r0, _022EA290 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
-	ldrb r0, [r0, #0x24a]
+	ldrb r0, [r0, #0x24a + OV29_022EA008_OFFSET]
 	cmp r0, #0
 	beq _022EA214
 	bl ov29_0234B4F4
@@ -911,9 +935,9 @@ _022EA214:
 	ldrb r1, [r0, #7]
 	ldr r2, [r2]
 	cmp r2, #0
-	addne r0, r2, #0xc4
+	addne r0, r2, #0xc4 + OV29_022EA008_OFFSET
 	addne r0, r0, #0x4000
-	add r2, r2, #0x21c
+	add r2, r2, #0x21c + OV29_022EA008_OFFSET
 	moveq r0, #0
 	add r2, r2, #0x1a000
 	bl ov29_022ED800
@@ -922,8 +946,13 @@ _022EA260:
 	bl ov29_022E8C10
 	ldr r0, _022EA290 ; =DUNGEON_PTR
 	ldr r0, [r0]
+#ifdef JAPAN
+	add r0, r0, #0x2180
+	add r0, r0, #0x18000
+#else
 	add r0, r0, #0x224
 	add r0, r0, #0x1a000
+#endif
 	bl ov29_022DD8B4
 _022EA27C:
 	ldr r0, _022EA29C ; =ov29_0237C850
@@ -934,9 +963,9 @@ _022EA27C:
 	.align 2, 0
 _022EA290: .word DUNGEON_PTR
 _022EA294: .word ov29_02353560
-_022EA298: .word 0x0001A224
+_022EA298: .word 0x0001A224 + OV29_022EA008_OFFSET
 _022EA29C: .word ov29_0237C850
-_022EA2A0: .word 0x0001A21C
+_022EA2A0: .word 0x0001A21C + OV29_022EA008_OFFSET
 	arm_func_end ov29_022EA008
 
 	arm_func_start ov29_022EA2A4
@@ -961,7 +990,11 @@ _022EA2C0:
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	strb r1, [r0, #0x1a4]
+#else
 	strb r1, [r0, #0x248]
+#endif
 	bl InitWeirdMinimapMatrix
 	ldr r0, _022EA31C ; =ov29_02353560
 	ldrb r0, [r0, #6]
@@ -1308,7 +1341,11 @@ DisplayAnimatedNumbers: ; 0x022EA718
 	ldr r0, _022EA7FC ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19a]
+#else
 	ldrb r0, [r0, #0x23e]
+#endif
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r6, #0
@@ -1412,8 +1449,13 @@ _022EA848:
 	ldr r4, [r5, #0xb4]
 	ldr ip, [r1]
 	add r1, r4, #0x100
+#ifdef JAPAN
+	ldrsh r5, [r1, #0x7e]
+	ldrsh r4, [r1, #0x80]
+#else
 	ldrsh r5, [r1, #0x82]
 	ldrsh r4, [r1, #0x84]
+#endif
 	ldr r1, [r3, #0x30]
 	ldrsh r0, [ip, r0]
 	add r5, r5, r1, asr #8
@@ -1461,7 +1503,11 @@ _022EA954:
 	.align 2, 0
 _022EA95C: .word ov29_0237C850
 _022EA960: .word DUNGEON_PTR
+#ifdef JAPAN
+_022EA964: .word 0x0001A180
+#else
 _022EA964: .word 0x0001A224
+#endif
 	arm_func_end ov29_022EA80C
 
 	arm_func_start SetDungeonRngPreseed23Bit

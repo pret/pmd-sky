@@ -211,7 +211,6 @@
 .public ov03_0233CB08
 .public ov03_0233CB94
 .public ov03_0233CF9C
-.public ov03_0233D964
 .public ov04_0233CBB8
 .public ov04_0233CC4C
 .public ov04_0233D1A0
@@ -227,6 +226,7 @@
 .public ov07_0233F6E0
 .public ov07_0233F758
 .public ov07_0233FCD8
+.public ov09_0233D964
 .public PlaySeVolumeWrapper
 .public PreprocessString
 .public PreprocessStringFromId
@@ -246,6 +246,7 @@
 .public sprintf
 .public strcmp
 .public strcpy
+.public StrcpyName
 .public StrcpySimple
 .public StringFromId
 .public StrncmpSimple
@@ -274,6 +275,7 @@
 .public sub_0202065C
 .public sub_0202380C_EU
 .public sub_020245D0
+.public sub_020253E0_JP
 .public sub_02025404
 .public sub_0202544C
 .public sub_02025480

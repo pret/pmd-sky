@@ -3,6 +3,7 @@
 
 	.text
 
+#ifndef JAPAN
 	arm_func_start GetMonsterDisplayNameType
 GetMonsterDisplayNameType: ; 0x02300108
 	ldr r1, _02300160 ; =DUNGEON_PTR
@@ -32,9 +33,37 @@ _0230014C:
 	.align 2, 0
 _02300160: .word DUNGEON_PTR
 	arm_func_end GetMonsterDisplayNameType
+#endif
 
 	arm_func_start GetMonsterName
 GetMonsterName: ; 0x02300164
+#ifdef JAPAN
+	stmdb sp!, {r4, lr}
+	ldr r2, _02301678 ; =DUNGEON_PTR
+	mov r4, r0
+	ldr r0, [r2]
+	add r0, r0, #0x1a000
+	ldrb r2, [r0, #0x19a]
+	cmp r2, #0
+	ldreqb r2, [r0, #0x1a1]
+	cmpeq r2, #0
+	bne _02301574
+	ldrb r0, [r0, #0x1a0]
+	cmp r0, #0
+	ldreqb r0, [r1, #0xef]
+	cmpeq r0, #1
+	bne _02300190
+_02301574:
+	ldrb r0, [r1, #6]
+	cmp r0, #0
+	beq _02300190
+	ldr r1, _02300274 ; =0x00000C34
+	mov r0, r4
+	bl CopyStringFromId
+	ldmia sp!, {r4, pc}
+_02300190:
+	ldrb r0, [r1, #0xd8]
+#else
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
@@ -47,9 +76,20 @@ GetMonsterName: ; 0x02300164
 	bl CopyStringFromId
 	ldmia sp!, {r3, r4, r5, pc}
 _02300190:
+#endif
 	cmp r0, #2
 	bne _023001A8
 	ldr r1, _02300278 ; =0x00000C32
+#ifdef JAPAN
+	mov r0, r4
+	bl CopyStringFromId
+	ldmia sp!, {r4, pc}
+_023001A8:
+	ldrb r0, [r1, #6]
+	cmp r0, #0
+	beq _0230025C
+	ldrb r0, [r1, #0xbc]
+#else
 	mov r0, r5
 	bl CopyStringFromId
 	ldmia sp!, {r3, r4, r5, pc}
@@ -58,41 +98,86 @@ _023001A8:
 	cmp r0, #0
 	beq _0230025C
 	ldrb r0, [r4, #0xbc]
+#endif
 	cmp r0, #0xb
 	bne _023001DC
 	mov r0, #0
 	bl GetExplorerMazeMonster
 	mov r1, r0
+#ifdef JAPAN
+	mov r0, r4
+	mov r2, #0x4e
+	bl sub_02056084
+	ldmia sp!, {r4, pc}
+#else
 	mov r0, r5
 	mov r2, #0x4e
 	bl sub_02056084
 	ldmia sp!, {r3, r4, r5, pc}
+#endif
 _023001DC:
 	cmp r0, #0xc
 	bne _02300200
 	mov r0, #1
 	bl GetExplorerMazeMonster
 	mov r1, r0
+#ifdef JAPAN
+	mov r0, r4
+	mov r2, #0x4e
+	bl sub_02056084
+	ldmia sp!, {r4, pc}
+#else
 	mov r0, r5
 	mov r2, #0x4e
 	bl sub_02056084
 	ldmia sp!, {r3, r4, r5, pc}
+#endif
 _02300200:
 	cmp r0, #0xd
 	bne _02300224
 	mov r0, #2
 	bl GetExplorerMazeMonster
 	mov r1, r0
+#ifdef JAPAN
+	mov r0, r4
+	mov r2, #0x4e
+	bl sub_02056084
+	ldmia sp!, {r4, pc}
+#else
 	mov r0, r5
 	mov r2, #0x4e
 	bl sub_02056084
 	ldmia sp!, {r3, r4, r5, pc}
+#endif
 _02300224:
 	cmp r0, #0xe
 	bne _02300248
 	mov r0, #3
 	bl GetExplorerMazeMonster
 	mov r1, r0
+#ifdef JAPAN
+	mov r0, r4
+	mov r2, #0x4e
+	bl sub_02056084
+	ldmia sp!, {r4, pc}
+_02300248:
+	ldrsh r1, [r1, #4]
+	mov r0, r4
+	mov r2, #0x4e
+	bl GetNameWithGender
+	ldmia sp!, {r4, pc}
+_0230025C:
+	ldrsh r0, [r1, #0xc]
+	bl GetActiveTeamMember
+	mov r1, r0
+	mov r0, r4
+	bl sub_020585B4
+	ldmia sp!, {r4, pc}
+	.align 2, 0
+_02301678: .word DUNGEON_PTR
+_02300274: .word 0x00000973
+_02300278: .word 0x00000971
+#else
 	mov r0, r5
 	mov r2, #0x4e
 	bl sub_02056084
@@ -113,6 +198,7 @@ _0230025C:
 	.align 2, 0
 _02300274: .word 0x00000C34
 _02300278: .word 0x00000C32
+#endif
 	arm_func_end GetMonsterName
 
 	arm_func_start ov29_0230027C
@@ -137,7 +223,11 @@ _023002B8:
 	add sp, sp, #0x100
 	ldmia sp!, {r4, pc}
 	.align 2, 0
+#ifdef JAPAN
+_023002C0: .word 0x00000971
+#else
 _023002C0: .word 0x00000C32
+#endif
 _023002C4: .word ov29_023527C0
 	arm_func_end ov29_0230027C
 
@@ -184,7 +274,11 @@ _02300344:
 	bl sub_02058534
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02300350: .word 0x00000972
+#else
 _02300350: .word 0x00000C33
+#endif
 _02300354: .word ov29_023527D0
 	arm_func_end ov29_023002F0
 
@@ -195,9 +289,15 @@ ov29_02300358: ; 0x02300358
 	mov r4, r0
 	ldr r0, [r2]
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldrb r2, [r0, #0x19a]
+	cmp r2, #0
+	ldreqb r0, [r0, #0x1a1]
+#else
 	ldrb r2, [r0, #0x23e]
 	cmp r2, #0
 	ldreqb r0, [r0, #0x245]
+#endif
 	cmpeq r0, #0
 	bne _0230038C
 	ldrb r0, [r1, #0xef]
@@ -238,8 +338,13 @@ _023003F0:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02300400: .word DUNGEON_PTR
+#ifdef JAPAN
+_02300404: .word 0x00000974
+_02300408: .word 0x00000972
+#else
 _02300404: .word 0x00000C35
 _02300408: .word 0x00000C33
+#endif
 	arm_func_end ov29_02300358
 
 	arm_func_start ov29_0230040C
@@ -264,20 +369,26 @@ _02300448:
 	bl GetMonsterName
 	b _02300490
 _02300454:
+#ifdef JAPAN
+	ldrsh r1, [r5, #4]
+#else
 	mov r0, r5
 	bl GetMonsterDisplayNameType
 	cmp r0, #0
 	bne _02300478
 	ldrsh r1, [r5, #4]
 	mov r0, r4
+#endif
 	mov r2, #0x6a
 	bl GetNameWithGender
 	b _02300490
+#ifndef JAPAN
 _02300478:
 	mov r0, r4
 	mov r1, r5
 	bl GetMonsterName
 	b _02300490
+#endif
 _02300488:
 	mov r1, r5
 	bl ov29_02300358
@@ -489,12 +600,20 @@ MonsterHasNegativeStatus: ; 0x02300634
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r4, r5, r6, pc}
+#ifdef JAPAN
+	ldrb r0, [r4, #0x105]
+#else
 	ldrb r0, [r4, #0x106]
+#endif
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov ip, #0
+#ifdef JAPAN
+	add r3, r4, #0x120
+#else
 	add r3, r4, #0x124
+#endif
 	mov r1, ip
 	mov r2, #1
 	b _02300770
@@ -519,7 +638,11 @@ _02300770:
 	b _02300798
 _02300780:
 	add r0, r4, r1
+#ifdef JAPAN
+	ldrb r0, [r0, #0x115]
+#else
 	ldrb r0, [r0, #0x119]
+#endif
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -614,7 +737,11 @@ _02300840:
 	cmp r0, #6
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, pc}
+#ifdef JAPAN
+	ldrb r0, [r4, #0x104]
+#else
 	ldrb r0, [r4, #0x105]
+#endif
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -668,7 +795,11 @@ _02300904:
 	cmp r0, #6
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, pc}
+#ifdef JAPAN
+	ldrb r0, [r4, #0x104]
+#else
 	ldrb r0, [r4, #0x105]
+#endif
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -1059,11 +1190,43 @@ CanMonsterMoveInDirection: ; 0x02300E78
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
+#ifdef JAPAN
+	bl IsCurrentTilesetBackground
+	cmp r0, #0
+	bne _02302330
+	ldr r0, [r6, #0xb4]
+	ldrb r0, [r0, #0xef]
+	cmp r0, #3
+	moveq r4, #3
+	beq _02302330
+	mov r0, r6
+	mov r1, #0x10
+	bl ItemIsActive__022FF898
+	cmp r0, #0
+	movne r4, #3
+	bne _02302330
+	mov r0, r6
+	mov r1, #0xc
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r4, #2
+	bne _02302330
+	mov r0, r6
+	mov r1, #0xd
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	beq _02302330
+	tst r5, #1
+	movne r4, #2
+	moveq r4, #3
+_02302330:
+#else
 	mov r0, r6
 	mov r1, r4
 	and r2, r5, #0xff
 	bl GetDirectionalMobilityType
 	mov r4, r0
+#endif
 	ldrsh r0, [r6, #4]
 	ldrsh r1, [r6, #6]
 	bl GetTile
@@ -1083,6 +1246,7 @@ _02300F28: .word ov29_0235171E
 _02300F2C: .word ov29_02352798
 	arm_func_end CanMonsterMoveInDirection
 
+#ifndef JAPAN
 	arm_func_start GetDirectionalMobilityType
 GetDirectionalMobilityType: ; 0x02300F30
 	stmdb sp!, {r4, r5, r6, lr}
@@ -1127,6 +1291,7 @@ _02300FC4:
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end GetDirectionalMobilityType
+#endif
 
 	arm_func_start ov29_02300FCC
 ov29_02300FCC: ; 0x02300FCC
@@ -1198,11 +1363,43 @@ ov29_0230105C: ; 0x0230105C
 	cmpne r0, #1
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
+#ifdef JAPAN
+	bl IsCurrentTilesetBackground
+	cmp r0, #0
+	bne _023024DC_JP
+	ldr r0, [r6, #0xb4]
+	ldrb r0, [r0, #0xef]
+	cmp r0, #3
+	moveq r4, #3
+	beq _023024DC_JP
+	mov r0, r6
+	mov r1, #0x10
+	bl ItemIsActive__022FF898
+	cmp r0, #0
+	movne r4, #3
+	bne _023024DC_JP
+	mov r0, r6
+	mov r1, #0xc
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r4, #2
+	bne _023024DC_JP
+	mov r0, r6
+	mov r1, #0xd
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	beq _023024DC_JP
+	tst r5, #1
+	movne r4, #2
+	moveq r4, #3
+_023024DC_JP:
+#else
 	mov r0, r6
 	mov r1, r4
 	and r2, r5, #0xff
 	bl GetDirectionalMobilityType
 	mov r4, r0
+#endif
 	ldrsh r0, [r6, #4]
 	ldrsh r1, [r6, #6]
 	bl GetTile
@@ -1212,8 +1409,14 @@ ov29_0230105C: ; 0x0230105C
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
 	tst r1, r0
+#ifdef JAPAN
+	movne r0, #1
+	moveq r0, #0
+	and r0, r0, #0xff
+#else
 	moveq r0, #0
 	movne r0, #1
+#endif
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _0230110C: .word DIRECTIONS_XY
@@ -1280,11 +1483,43 @@ ov29_02301158: ; 0x02301158
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 _023011E0:
+#ifdef JAPAN
+	bl IsCurrentTilesetBackground
+	cmp r0, #0
+	bne _02302654
+	ldr r0, [r6, #0xb4]
+	ldrb r0, [r0, #0xef]
+	cmp r0, #3
+	moveq r4, #3
+	beq _02302654
+	mov r0, r6
+	mov r1, #0x10
+	bl ItemIsActive__022FF898
+	cmp r0, #0
+	movne r4, #3
+	bne _02302654
+	mov r0, r6
+	mov r1, #0xc
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r4, #2
+	bne _02302654
+	mov r0, r6
+	mov r1, #0xd
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	beq _02302654
+	tst r5, #1
+	movne r4, #2
+	moveq r4, #3
+_02302654:
+#else
 	mov r0, r6
 	mov r1, r4
 	and r2, r5, #0xff
 	bl GetDirectionalMobilityType
 	mov r4, r0
+#endif
 	ldrsh r0, [r6, #4]
 	ldrsh r1, [r6, #6]
 	bl GetTile
@@ -1335,11 +1570,43 @@ CanAttackInDirection: ; 0x02301234
 	cmpne r0, #1
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
+#ifdef JAPAN
+	bl IsCurrentTilesetBackground
+	cmp r0, #0
+	bne _02302778
+	ldr r0, [r6, #0xb4]
+	ldrb r0, [r0, #0xef]
+	cmp r0, #3
+	moveq r4, #3
+	beq _02302778
+	mov r0, r6
+	mov r1, #0x10
+	bl ItemIsActive__022FF898
+	cmp r0, #0
+	movne r4, #3
+	bne _02302778
+	mov r0, r6
+	mov r1, #0xc
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r4, #2
+	bne _02302778
+	mov r0, r6
+	mov r1, #0xd
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	beq _02302778
+	tst r5, #1
+	movne r4, #2
+	moveq r4, #3
+_02302778:
+#else
 	mov r0, r6
 	mov r1, r4
 	and r2, r5, #0xff
 	bl GetDirectionalMobilityType
 	mov r4, r0
+#endif
 	ldrsh r0, [r6, #4]
 	ldrsh r1, [r6, #6]
 	bl GetTile
@@ -1349,8 +1616,14 @@ CanAttackInDirection: ; 0x02301234
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
 	tst r1, r0
+#ifdef JAPAN
+	movne r0, #1
+	moveq r0, #0
+	and r0, r0, #0xff
+#else
 	moveq r0, #0
 	movne r0, #1
+#endif
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _023012EC: .word DIRECTIONS_XY
@@ -1430,7 +1703,11 @@ _023013E4:
 	ldr r1, _02301490 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrsh r0, [r0, #0x30]
+#else
 	ldrsh r0, [r0, #0xd4]
+#endif
 	ldrb r0, [r1, r0]
 	cmp r0, #1
 	bne _0230142C
@@ -1441,11 +1718,43 @@ _023013E4:
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 _0230142C:
+#ifdef JAPAN
+	bl IsCurrentTilesetBackground
+	cmp r0, #0
+	bne _0230295C
+	ldr r0, [r8, #0xb4]
+	ldrb r0, [r0, #0xef]
+	cmp r0, #3
+	moveq r5, #3
+	beq _0230295C
+	mov r0, r8
+	mov r1, #0x10
+	bl ItemIsActive__022FF898
+	cmp r0, #0
+	movne r5, #3
+	bne _0230295C
+	mov r0, r8
+	mov r1, #0xc
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r5, #2
+	bne _0230295C
+	mov r0, r8
+	mov r1, #0xd
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	beq _0230295C
+	tst r7, #1
+	movne r5, #2
+	moveq r5, #3
+_0230295C:
+#else
 	mov r0, r8
 	mov r1, r5
 	and r2, r7, #0xff
 	bl GetDirectionalMobilityType
 	mov r5, r0
+#endif
 	ldrsh r0, [r8, #4]
 	ldrsh r1, [r8, #6]
 	bl GetTile
@@ -1473,29 +1782,64 @@ _02301494: .word ov29_02352770
 
 	arm_func_start ov29_02301498
 ov29_02301498: ; 0x02301498
+#ifdef JAPAN
+#define OV29_02301498_OFFSET -4
+#else
+#define OV29_02301498_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r1, [r5, #0xb4]
 	ldrsh r1, [r1, #2]
 	bl GetMobilityTypeCheckSlipAndFloating
+#ifdef JAPAN
+	mov r4, r0
+	bl IsCurrentTilesetBackground
+	cmp r0, #0
+	bne _02302A30_JP
+	ldr r0, [r5, #0xb4]
+	ldrb r0, [r0, #0xef]
+	cmp r0, #3
+	moveq r4, #3
+	beq _02302A30_JP
+	mov r0, r5
+	mov r1, #0x10
+	bl ItemIsActive__022FF898
+	cmp r0, #0
+	movne r4, #3
+	bne _02302A30_JP
+	mov r0, r5
+	mov r1, #0xc
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r4, #2
+	bne _02302A30_JP
+	mov r0, r5
+	mov r1, #0xd
+	bl IqSkillIsEnabled
+	cmp r0, #0
+	movne r4, #3
+_02302A30_JP:
+#else
 	mov r1, r0
 	mov r0, r5
 	mov r2, #0xff
 	bl GetDirectionalMobilityType
 	mov r4, r0
+#endif
 	cmp r4, #3
 	bne _023014FC
 	ldr r4, [r5, #0xb4]
 	mov r0, #0x64
 	bl DungeonRandInt
 	add r1, r4, #0x200
-	ldrsh r2, [r1, #0x12]
+	ldrsh r2, [r1, #0x12 + OV29_02301498_OFFSET]
 	add r0, r2, r0
-	strh r0, [r1, #0x12]
-	ldrsh r0, [r1, #0x12]
+	strh r0, [r1, #0x12 + OV29_02301498_OFFSET]
+	ldrsh r0, [r1, #0x12 + OV29_02301498_OFFSET]
 	cmp r0, #0xc8
 	mov r0, #0
-	strgeh r0, [r1, #0x12]
+	strgeh r0, [r1, #0x12 + OV29_02301498_OFFSET]
 	movge r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 _023014FC:
@@ -1503,7 +1847,11 @@ _023014FC:
 	ldr r1, _02301590 ; =SECONDARY_TERRAIN_TYPES
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrsh r0, [r0, #0x30]
+#else
 	ldrsh r0, [r0, #0xd4]
+#endif
 	ldrb r0, [r1, r0]
 	cmp r0, #1
 	cmpeq r4, #1
@@ -1563,9 +1911,15 @@ ShouldMonsterRunAway: ; 0x023015B8
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r4, [r5, #0xb4]
+#ifdef JAPAN
+	ldrb r0, [r4, #0x103]
+	cmp r0, #0
+	ldrneb r0, [r4, #0x104]
+#else
 	ldrb r0, [r4, #0x104]
 	cmp r0, #0
 	ldrneb r0, [r4, #0x105]
+#endif
 	cmpne r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -1713,7 +2067,11 @@ _023017C4:
 	moveq r0, #2
 	ldmeqia sp!, {r3, r4, r5, pc}
 _023017E4:
+#ifdef JAPAN
+	ldrb r0, [r4, #0x10b]
+#else
 	ldrb r0, [r4, #0x10c]
+#endif
 	cmp r0, #0
 	bne _02301804
 	ldrb r0, [r4, #7]
@@ -1788,7 +2146,9 @@ ov29_023018AC: ; 0x023018AC
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldrb r0, [r4, #9]
 	cmp r0, #0
+#ifndef JAPAN
 	cmpne r0, #3
+#endif
 	movne r0, #2
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldrb r0, [r5, #0xbc]
@@ -1802,7 +2162,9 @@ ov29_023018AC: ; 0x023018AC
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldrb r0, [r5, #9]
 	cmp r0, #0
+#ifndef JAPAN
 	cmpne r0, #3
+#endif
 	movne r0, #2
 	ldmneia sp!, {r3, r4, r5, pc}
 	ldrb r1, [r4, #6]
@@ -1810,6 +2172,9 @@ ov29_023018AC: ; 0x023018AC
 	cmp r1, r0
 	movne r0, #1
 	moveq r0, #0
+#ifdef JAPAN
+	and r0, r0, #0xff
+#endif
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_023018AC
 
@@ -1838,7 +2203,11 @@ _02301988:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02301990: .word 0x00000975
+#else
 _02301990: .word 0x00000C36
+#endif
 	arm_func_end SafeguardIsActive
 
 	arm_func_start LeafGuardIsActive
@@ -1854,7 +2223,9 @@ LeafGuardIsActive: ; 0x02301994
 	mov r0, r6
 	mov r1, r5
 	mov r2, #0x7b
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02301A0C
 	cmp r0, #0
 	beq _02301A00
@@ -1875,33 +2246,59 @@ _02301A00:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02301A08: .word 0x00000976
+#else
 _02301A08: .word 0x00000C37
+#endif
 	arm_func_end LeafGuardIsActive
 
 	arm_func_start DefenderAbilityIsActive__02301A0C
 DefenderAbilityIsActive__02301A0C: ; 0x02301A0C
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, lr}
+	mov r6, r0
+	mov r5, r1
+	mov r4, r2
+	cmp r6, r5
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
 	cmp r7, r6
+#endif
 	beq _02301A50
 	bl IsMonster__02301A60
 	cmp r0, #0
+#ifdef JAPAN
+	beq _02301A50
+	mov r0, r6
+#else
 	cmpne r4, #0
 	beq _02301A50
 	mov r0, r7
+#endif
 	mov r1, #0x53
 	bl AbilityIsActive
 	cmp r0, #0
 	movne r0, #0
+#ifdef JAPAN
+	ldmneia sp!, {r4, r5, r6, pc}
+_02301A50:
+	mov r0, r5
+	mov r1, r4
+	bl AbilityIsActive
+	ldmia sp!, {r4, r5, r6, pc}
+#else
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 _02301A50:
 	mov r0, r6
 	mov r1, r5
 	bl AbilityIsActive
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
+#endif
 	arm_func_end DefenderAbilityIsActive__02301A0C
 
 	arm_func_start IsMonster__02301A60
@@ -1963,7 +2360,11 @@ _02301B18:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02301B24: .word EXCL_ITEM_EFFECTS_WEATHER_NO_STATUS
+#ifdef JAPAN
+_02301B28: .word 0x00000978
+#else
 _02301B28: .word 0x00000C39
+#endif
 	arm_func_end ov29_02301A84
 
 	arm_func_start IsProtectedFromStatDrops
@@ -2007,14 +2408,18 @@ _02301BB0:
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0xf
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02301A0C
 	cmp r0, #0
 	bne _02301BE8
 	mov r0, r7
 	mov r1, r6
 	mov r2, #0x18
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02301A0C
 	cmp r0, #0
 	beq _02301C18
@@ -2036,9 +2441,15 @@ _02301C18:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
+#ifdef JAPAN
+_02301C20: .word 0x00000977
+_02301C24: .word 0x00000978
+_02301C28: .word 0x00000979
+#else
 _02301C20: .word 0x00000C38
 _02301C24: .word 0x00000C39
 _02301C28: .word 0x00000C3A
+#endif
 	arm_func_end IsProtectedFromStatDrops
 
 	arm_func_start ov29_02301C2C
@@ -2054,7 +2465,11 @@ ov29_02301C2C: ; 0x02301C2C
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r6, #0
+#ifdef JAPAN
+	add r5, r8, #0x120
+#else
 	add r5, r8, #0x124
+#endif
 	mov fp, r6
 	mov r4, #1
 	b _02301CCC
@@ -2151,6 +2566,45 @@ _02301D80: .word AbilityIsActive
 
 	arm_func_start OtherMonsterAbilityIsActive
 OtherMonsterAbilityIsActive: ; 0x02301D84
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	mov r5, r0
+	mov r4, r1
+	mov r7, #0
+	ldr r6, _02301E14 ; =DUNGEON_PTR
+	b _02303354
+_023032F4:
+	ldr r0, [r6]
+	add r0, r0, r7, lsl #2
+	add r0, r0, #0x12000
+	ldr r8, [r0, #0xad4]
+	mov r0, r8
+	bl EntityIsValid__023000E4
+	cmp r0, #0
+	cmpne r5, r8
+	beq _02303348
+	mov r0, r5
+	mov r1, r8
+	bl ov29_022FAFD4
+	cmp r0, #0
+	beq _02303348
+	mov r0, r5
+	mov r1, r8
+	mov r2, r4
+	bl DefenderAbilityIsActive__02301A0C
+	cmp r0, #0
+	movne r0, #1
+	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
+_02303348:
+	add r0, r7, #1
+	mov r0, r0, lsl #0x10
+	mov r7, r0, asr #0x10
+_02303354:
+	cmp r7, #0x14
+	blt _023032F4
+	mov r0, #0
+	ldmia sp!, {r4, r5, r6, r7, r8, pc}
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r0
 	mov r6, r1
@@ -2190,6 +2644,7 @@ _02301E04:
 	blt _02301DA0
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+#endif
 	.align 2, 0
 _02301E14: .word DUNGEON_PTR
 	arm_func_end OtherMonsterAbilityIsActive
@@ -2527,7 +2982,11 @@ _02302228:
 	mov r0, r4
 	add r1, r1, r6, lsl #2
 	add r1, r1, #0x12000
+#ifdef JAPAN
+	ldr r7, [r1, #0xa84]
+#else
 	ldr r7, [r1, #0xb28]
+#endif
 	bl EntityIsValid__023000E4
 	cmp r0, #0
 	cmpne r4, r7
@@ -2653,29 +3112,34 @@ _023023B8:
 
 	arm_func_start UpdateStateFlags
 UpdateStateFlags: ; 0x023023C0
+#ifdef JAPAN
+#define UPDATE_STATE_FLAGS_OFFSET -4
+#else
+#define UPDATE_STATE_FLAGS_OFFSET 0
+#endif
 	stmdb sp!, {r3, lr}
 	add r3, r0, #0x100
-	ldrh ip, [r3, #0x58]
+	ldrh ip, [r3, #0x58 + UPDATE_STATE_FLAGS_OFFSET]
 	tst ip, r1
-	ldrneh ip, [r3, #0x5a]
-	ldreqh lr, [r3, #0x5a]
+	ldrneh ip, [r3, #0x5a + UPDATE_STATE_FLAGS_OFFSET]
+	ldreqh lr, [r3, #0x5a + UPDATE_STATE_FLAGS_OFFSET]
 	orrne ip, ip, r1
 	mvneq ip, r1
 	andeq ip, lr, ip
 	cmp r2, #0
 	add r2, r0, #0x100
-	strh ip, [r3, #0x5a]
-	ldrneh r3, [r2, #0x58]
-	ldreqh ip, [r2, #0x58]
+	strh ip, [r3, #0x5a + UPDATE_STATE_FLAGS_OFFSET]
+	ldrneh r3, [r2, #0x58 + UPDATE_STATE_FLAGS_OFFSET]
+	ldreqh ip, [r2, #0x58 + UPDATE_STATE_FLAGS_OFFSET]
 	add r0, r0, #0x100
 	orrne r3, r3, r1
 	mvneq r3, r1
 	andeq r3, ip, r3
-	strh r3, [r2, #0x58]
-	ldrh r2, [r0, #0x5a]
+	strh r3, [r2, #0x58 + UPDATE_STATE_FLAGS_OFFSET]
+	ldrh r2, [r0, #0x5a + UPDATE_STATE_FLAGS_OFFSET]
 	tst r2, r1
 	bne _02302428
-	ldrh r0, [r0, #0x58]
+	ldrh r0, [r0, #0x58 + UPDATE_STATE_FLAGS_OFFSET]
 	tst r0, r1
 	movne r0, #1
 	ldmneia sp!, {r3, pc}
@@ -2733,7 +3197,11 @@ _023024D4:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
+#ifdef JAPAN
+_023024DC: .word 0x00000978
+#else
 _023024DC: .word 0x00000C39
+#endif
 	arm_func_end IsProtectedFromNegativeStatus
 
 	arm_func_start ov29_023024E0
@@ -2768,6 +3236,11 @@ _02302534:
 
 	arm_func_start AddExpSpecial
 AddExpSpecial: ; 0x0230253C
+#ifdef JAPAN
+#define ADD_EXP_SPECIAL_OFFSET -4
+#else
+#define ADD_EXP_SPECIAL_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	ldr r5, [r7, #0xb4]
@@ -2838,7 +3311,7 @@ _02302630:
 	cmp r0, #0
 	movne r0, #0
 	bne _02302650
-	add r0, r1, #0x228
+	add r0, r1, #0x228 + ADD_EXP_SPECIAL_OFFSET
 	mov r1, #0x4f
 	bl ExclusiveItemEffectFlagTest
 _02302650:
@@ -2860,10 +3333,10 @@ _0230267C:
 	ldr r0, [r5, #0x20]
 	subs r2, r4, r0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	ldr r1, [r5, #0x214]
+	ldr r1, [r5, #0x214 + ADD_EXP_SPECIAL_OFFSET]
 	ldr r0, _023026B4 ; =DUNGEON_PTR
 	add r1, r1, r2
-	str r1, [r5, #0x214]
+	str r1, [r5, #0x214 + ADD_EXP_SPECIAL_OFFSET]
 	ldr r0, [r0]
 	mov r1, #1
 	strb r1, [r0, #0xf]
@@ -2895,6 +3368,11 @@ ItemIsActive__023026CC: ; 0x023026CC
 
 	arm_func_start EnemyEvolution
 EnemyEvolution: ; 0x023026FC
+#ifdef JAPAN
+#define ENEMY_EVOLUTION_OFFSET -4
+#else
+#define ENEMY_EVOLUTION_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x168
 	mov sl, r0
@@ -2936,7 +3414,11 @@ _02302780:
 	ldr r2, [sp, #0x18]
 	add r0, r0, r4, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r5, [r0, #0xad4]
+#else
 	ldr r5, [r0, #0xb78]
+#endif
 	ldr r1, [sp, #0xc]
 	ldr r0, [sp, #0x10]
 	mov r6, #0
@@ -2959,7 +3441,7 @@ _02302780:
 	movne r0, r6
 	strneb r0, [sb, #0x102]
 	bne _02302A08
-	ldr fp, [sb, #0x214]
+	ldr fp, [sb, #0x214 + ENEMY_EVOLUTION_OFFSET]
 	cmp fp, #0
 	beq _023028C4
 	ldrb r0, [sb, #7]
@@ -3013,7 +3495,7 @@ _02302818:
 	bl LevelUp
 	orr r6, r6, r0
 _023028C4:
-	ldrb r0, [sb, #0x153]
+	ldrb r0, [sb, #0x153 + ENEMY_EVOLUTION_OFFSET]
 	cmp r0, #0
 	beq _02302968
 	ldrsh r0, [sb, #2]
@@ -3103,8 +3585,8 @@ _023029EC:
 	bl ov29_02302C04
 _02302A08:
 	mov r0, #0
-	str r0, [sb, #0x214]
-	strb r0, [sb, #0x153]
+	str r0, [sb, #0x214 + ENEMY_EVOLUTION_OFFSET]
+	strb r0, [sb, #0x153 + ENEMY_EVOLUTION_OFFSET]
 _02302A14:
 	add r4, r4, #1
 	cmp r4, #0x14
@@ -3116,5 +3598,9 @@ _02302A20:
 _02302A28: .word DUNGEON_PTR
 _02302A2C: .word ov29_023527F8
 _02302A30: .word 0x000003E7
+#ifdef JAPAN
+_02302A34: .word 0x00002486
+#else
 _02302A34: .word 0x00000F1F
+#endif
 	arm_func_end EnemyEvolution

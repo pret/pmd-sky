@@ -5,6 +5,11 @@
 
 	arm_func_start ov29_023055B0
 ov29_023055B0: ; 0x023055B0
+#ifdef JAPAN
+#define OV29_023055B0_OFFSET -4
+#else
+#define OV29_023055B0_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r6, #0
 	mov r5, #1
@@ -14,7 +19,11 @@ _023055C4:
 	ldr r0, [r4]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xad4]
+#else
 	ldr r7, [r0, #0xb78]
+#endif
 	mov r0, r7
 	bl EntityIsValid__0230558C
 	cmp r0, #0
@@ -28,15 +37,15 @@ _023055C4:
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	add r0, r8, #0x100
-	ldrsh r1, [r0, #0x7e]
+	ldrsh r1, [r0, #0x7e + OV29_023055B0_OFFSET]
 	cmp r1, #0
-	ldreqsh r0, [r0, #0x80]
+	ldreqsh r0, [r0, #0x80 + OV29_023055B0_OFFSET]
 	cmpeq r0, #0
 	beq _02305680
 	ldrsh r0, [r7, #4]
 	cmp r1, r0
 	addeq r0, r8, #0x100
-	ldreqsh r1, [r0, #0x80]
+	ldreqsh r1, [r0, #0x80 + OV29_023055B0_OFFSET]
 	ldreqsh r0, [r7, #6]
 	cmpeq r1, r0
 	beq _02305680
@@ -45,7 +54,7 @@ _023055C4:
 	bl ov29_02300818
 	cmp r0, #0
 	bne _02305680
-	add r1, r8, #0x7e
+	add r1, r8, #0x7e + OV29_023055B0_OFFSET
 	add r0, r7, #4
 	add r1, r1, #0x100
 	bl GetDirectionTowardsPosition
@@ -223,11 +232,20 @@ ov29_02305814: ; 0x02305814
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023058BC: .word DUNGEON_PTR
+#ifdef JAPAN
+_023058C0: .word 0x000009C2
+#else
 _023058C0: .word 0x00000C82
+#endif
 	arm_func_end ov29_02305814
 
 	arm_func_start EndNegativeStatusCondition
 EndNegativeStatusCondition: ; 0x023058C4
+#ifdef JAPAN
+#define END_NEGATIVE_STATUS_CONDITION_OFFSET -4
+#else
+#define END_NEGATIVE_STATUS_CONDITION_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, #0
 	mov sb, r1
@@ -354,14 +372,22 @@ _02305A74:
 	mov r1, sb
 	bl EndMiracleEyeStatus
 _02305A90:
+#ifdef JAPAN
+	ldrb r0, [r6, #0x105]
+#else
 	ldrb r0, [r6, #0x106]
+#endif
 	cmp r0, #0
 	beq _02305AB4
 	ldr r2, _02305BF0 ; =0x00000C83
 	mov r3, #0
 	mov r0, sl
 	mov r1, sb
+#ifdef JAPAN
+	strb r3, [r6, #0x105]
+#else
 	strb r3, [r6, #0x106]
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _02305AB4:
 	ldrb r0, [r6, #0xfe]
@@ -382,7 +408,7 @@ _02305AD8:
 _02305AEC:
 	add r0, r6, r2
 	add r2, r2, #1
-	strb r1, [r0, #0x119]
+	strb r1, [r0, #0x119 + END_NEGATIVE_STATUS_CONDITION_OFFSET]
 	cmp r2, #5
 	blt _02305AEC
 	mov r0, sb
@@ -394,7 +420,7 @@ _02305AEC:
 	mov r2, r0
 	mov r4, #1
 	bl SubstitutePlaceholderStringTags
-	ldr r1, [r6, #0x110]
+	ldr r1, [r6, #0x110 + END_NEGATIVE_STATUS_CONDITION_OFFSET]
 	ldr r0, _02305BF8 ; =ov29_02353318
 	mov r1, r1, lsl #1
 	ldrh r2, [r0, r1]
@@ -404,7 +430,7 @@ _02305AEC:
 _02305B40:
 	mov fp, #0
 	mov r1, #1
-	add r2, r6, #0x124
+	add r2, r6, #0x124 + END_NEGATIVE_STATUS_CONDITION_OFFSET
 	mov r0, fp
 	mov ip, r1
 _02305B54:
@@ -452,9 +478,14 @@ _02305BE0:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02305BF0: .word 0x00000C83
-_02305BF4: .word 0x00000C84
+#ifdef JAPAN
+#define END_NEGATIVE_STATUS_CONDITION_DATA_OFFSET -0x2C0
+#else
+#define END_NEGATIVE_STATUS_CONDITION_DATA_OFFSET 0
+#endif
+_02305BF0: .word 0x00000C83 + END_NEGATIVE_STATUS_CONDITION_DATA_OFFSET
+_02305BF4: .word 0x00000C84 + END_NEGATIVE_STATUS_CONDITION_DATA_OFFSET
 _02305BF8: .word ov29_02353318
-_02305BFC: .word 0x00000C85
-_02305C00: .word 0x00000C86
+_02305BFC: .word 0x00000C85 + END_NEGATIVE_STATUS_CONDITION_DATA_OFFSET
+_02305C00: .word 0x00000C86 + END_NEGATIVE_STATUS_CONDITION_DATA_OFFSET
 	arm_func_end EndNegativeStatusCondition

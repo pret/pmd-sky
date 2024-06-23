@@ -10,7 +10,11 @@ ov29_022ECDE4: ; 0x022ECDE4
 	mov r6, r1
 	ldr r1, [r4]
 	mov sb, r0
+#ifdef JAPAN
+	add r1, r1, #0x168
+#else
 	add r1, r1, #0x20c
+#endif
 	mov r0, r6
 	mov r8, r2
 	mov r7, r3
@@ -97,7 +101,11 @@ _022ECE94:
 	.align 2, 0
 _022ECF34: .word DUNGEON_PTR
 _022ECF38: .word ov29_0237C974
+#ifdef JAPAN
+_022ECF3C: .word 0x00000889
+#else
 _022ECF3C: .word 0x00000A41
+#endif
 _022ECF40: .word 0x000003E7
 	arm_func_end ov29_022ECDE4
 
@@ -115,7 +123,11 @@ ov29_022ECF44: ; 0x022ECF44
 	bx lr
 	.align 2, 0
 _022ECF6C: .word DUNGEON_PTR
+#ifdef JAPAN
+_022ECF70: .word 0x0002C9C2
+#else
 _022ECF70: .word 0x0002CA66
+#endif
 _022ECF74: .word 0x00000279
 	arm_func_end ov29_022ECF44
 
@@ -136,7 +148,11 @@ ov29_022ECF78: ; 0x022ECF78
 	bx lr
 	.align 2, 0
 _022ECFAC: .word DUNGEON_PTR
+#ifdef JAPAN
+_022ECFB0: .word 0x0002C9C2
+#else
 _022ECFB0: .word 0x0002CA66
+#endif
 _022ECFB4: .word 0x0000027A
 	arm_func_end ov29_022ECF78
 
@@ -148,7 +164,11 @@ ov29_022ECFB8: ; 0x022ECFB8
 	ldr r1, [r1]
 	cmp r1, #0
 	beq _022ECFF8
+#ifdef JAPAN
+	add r0, r1, #0x168
+#else
 	add r0, r1, #0x20c
+#endif
 	add lr, r0, #0x2c800
 	mov ip, #0xe
 _022ECFDC:
@@ -219,7 +239,11 @@ ov29_022ED030: ; 0x022ED030
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022ED0A0: .word ov29_02352690
+#ifdef JAPAN
+_022ED0A4: .word 0x000003F5
+#else
 _022ED0A4: .word 0x00000401
+#endif
 _022ED0A8: .word ov29_0237C99C
 _022ED0AC: .word ov29_0235359C
 	arm_func_end ov29_022ED030
@@ -751,12 +775,16 @@ ov29_022ED800: ; 0x022ED800
 	arm_func_start ov29_022ED82C
 ov29_022ED82C: ; 0x022ED82C
 	stmdb sp!, {r4, lr}
-#ifdef EUROPE
+#if defined(EUROPE)
 	add r1, r1, #0xc3
+	add r1, r1, #0x3400
+#elif defined(JAPAN)
+	add r1, r1, #0x46
+	add r1, r1, #0x4700
 #else
 	add r1, r1, #0xc1
-#endif
 	add r1, r1, #0x3400
+#endif
 	mov r1, r1, lsl #0x10
 	mov r4, r0
 	mov r0, r1, lsr #0x10
@@ -781,7 +809,11 @@ ov29_022ED868: ; 0x022ED868
 	ldr ip, _022ED884 ; =AreLateGameTrapsEnabled
 	ldr r0, [r0]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	bx ip
 	.align 2, 0
 _022ED880: .word DUNGEON_PTR
@@ -887,6 +919,11 @@ _022ED9C8:
 
 	arm_func_start ov29_022ED9D0
 ov29_022ED9D0: ; 0x022ED9D0
+#ifdef JAPAN
+#define OV29_022ED9D0_OFFSET -0xA4
+#else
+#define OV29_022ED9D0_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	ldr r0, _022EDBB8 ; =DUNGEON_PTR
@@ -894,7 +931,7 @@ ov29_022ED9D0: ; 0x022ED9D0
 	ldr r0, [r0]
 	ldrsh r2, [r0, r1]
 	add r1, r0, #0x1a000
-	ldrb r8, [r1, #0x244]
+	ldrb r8, [r1, #0x244 + OV29_022ED9D0_OFFSET]
 	sub sb, r2, #5
 	b _022EDB9C
 _022ED9F8:
@@ -1017,8 +1054,8 @@ _022EDB9C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022EDBB8: .word DUNGEON_PTR
-_022EDBBC: .word 0x0001A21E
-_022EDBC0: .word 0x0001A21C
+_022EDBBC: .word 0x0001A21E + OV29_022ED9D0_OFFSET
+_022EDBC0: .word 0x0001A21C + OV29_022ED9D0_OFFSET
 _022EDBC4: .word 0x0000013E
 _022EDBC8: .word ov29_0237C864
 _022EDBCC: .word 0xFFFF000F
@@ -1027,6 +1064,11 @@ _022EDBD0: .word _020AFC4C
 
 	arm_func_start PrepareTrapperTrap
 PrepareTrapperTrap: ; 0x022EDBD4
+#ifdef JAPAN
+#define PREPARE_TRAPPER_TRAP_OFFSET -0xA4
+#else
+#define PREPARE_TRAPPER_TRAP_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr lr, _022EDC28 ; =DUNGEON_PTR
 	ldrsh r5, [r0]
@@ -1040,17 +1082,17 @@ PrepareTrapperTrap: ; 0x022EDBD4
 	strh r4, [r0, ip]
 	ldr r0, [lr]
 	add r0, r0, #0x12000
-	strb r1, [r0, #0xaae]
+	strb r1, [r0, #0xaae + PREPARE_TRAPPER_TRAP_OFFSET]
 	ldr r0, [lr]
 	add r0, r0, #0x12000
-	strb r2, [r0, #0xaaf]
+	strb r2, [r0, #0xaaf + PREPARE_TRAPPER_TRAP_OFFSET]
 	ldr r0, [lr]
 	add r0, r0, #0x12000
-	strb r3, [r0, #0xaa8]
+	strb r3, [r0, #0xaa8 + PREPARE_TRAPPER_TRAP_OFFSET]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022EDC28: .word DUNGEON_PTR
-_022EDC2C: .word 0x00012AAA
+_022EDC2C: .word 0x00012AAA + PREPARE_TRAPPER_TRAP_OFFSET
 	arm_func_end PrepareTrapperTrap
 
 	arm_func_start ov29_022EDC30
@@ -1174,22 +1216,27 @@ _022EDDA0:
 
 	arm_func_start TrySpawnTrapperTrap
 TrySpawnTrapperTrap: ; 0x022EDDD4
+#ifdef JAPAN
+#define TRY_SPAWN_TRAPPER_TRAP_OFFSET -0xA4
+#else
+#define TRY_SPAWN_TRAPPER_TRAP_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _022EDE6C ; =DUNGEON_PTR
 	mov r5, r0
 	ldr r0, [r1]
 	add r0, r0, #0x12000
-	ldrb r2, [r0, #0xaa8]
+	ldrb r2, [r0, #0xaa8 + TRY_SPAWN_TRAPPER_TRAP_OFFSET]
 	cmp r2, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r2, #0
-	strb r2, [r0, #0xaa8]
+	strb r2, [r0, #0xaa8 + TRY_SPAWN_TRAPPER_TRAP_OFFSET]
 	ldr r3, [r1]
 	ldr r0, _022EDE70 ; =0x00012AAA
 	add r2, r3, #0x12000
-	ldrb r1, [r2, #0xaae]
-	ldrb r2, [r2, #0xaaf]
+	ldrb r1, [r2, #0xaae + TRY_SPAWN_TRAPPER_TRAP_OFFSET]
+	ldrb r2, [r2, #0xaaf + TRY_SPAWN_TRAPPER_TRAP_OFFSET]
 	add r0, r3, r0
 	mov r3, #1
 	bl TrySpawnTrap
@@ -1216,9 +1263,14 @@ _022EDE60:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022EDE6C: .word DUNGEON_PTR
-_022EDE70: .word 0x00012AAA
+_022EDE70: .word 0x00012AAA + TRY_SPAWN_TRAPPER_TRAP_OFFSET
+#ifdef JAPAN
+_022EDE74: .word 0x00000B99
+_022EDE78: .word 0x00000B9A
+#else
 _022EDE74: .word 0x00000E57
 _022EDE78: .word 0x00000E58
+#endif
 	arm_func_end TrySpawnTrapperTrap
 
 	arm_func_start ov29_022EDE7C
@@ -1320,8 +1372,17 @@ ov29_022EDF7C: ; 0x022EDF7C
 
 	arm_func_start TryTriggerTrap
 TryTriggerTrap: ; 0x022EDFA0
+#ifdef JAPAN
+#define TRY_TRIGGER_TRAP_OFFSET -4
+#else
+#define TRY_TRIGGER_TRAP_OFFSET 0
+#endif
+#ifdef JAPAN
+	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
+#else
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	sub sp, sp, #0x14
+#endif
+	sub sp, sp, #0x14 + TRY_TRIGGER_TRAP_OFFSET
 	mov sb, r1
 	mov sl, r0
 	ldrsh r0, [sb]
@@ -1330,7 +1391,7 @@ TryTriggerTrap: ; 0x022EDFA0
 	mov r7, r3
 	bl GetTileSafe
 	ldr r4, [r0, #0x10]
-	str r0, [sp, #0x10]
+	str r0, [sp, #0x10 + TRY_TRIGGER_TRAP_OFFSET]
 	cmp r4, #0
 	beq _022EE2F4
 	ldr r0, [r4]
@@ -1342,7 +1403,7 @@ TryTriggerTrap: ; 0x022EDFA0
 	ldrb r1, [r6]
 	mov r0, #0
 	bl ov29_022EDF5C
-	ldr r0, [sp, #0x10]
+	ldr r0, [sp, #0x10 + TRY_TRIGGER_TRAP_OFFSET]
 	ldr r5, [r0, #0xc]
 	cmp r5, #0
 	ldrne r0, [r5]
@@ -1350,7 +1411,7 @@ TryTriggerTrap: ; 0x022EDFA0
 	ldrb r0, [r4, #0x20]
 	movne r5, #0
 	cmp r5, #0
-	str r0, [sp, #0xc]
+	str r0, [sp, #0xc + TRY_TRIGGER_TRAP_OFFSET]
 	mov r0, #1
 	strb r0, [r4, #0x20]
 	beq _022EE1D8
@@ -1396,13 +1457,17 @@ _022EE05C:
 	bl ov29_022EDE7C
 	ldr r8, _022EE304 ; =0x00000E5A
 _022EE0C8:
-	ldr r0, [sp, #0xc]
+	ldr r0, [sp, #0xc + TRY_TRIGGER_TRAP_OFFSET]
 	cmp r0, #1
 	beq _022EE0EC
 	ldr r0, _022EE308 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x1a0]
+#else
 	ldrb r0, [r0, #0x244]
+#endif
 	cmp r0, #0
 	beq _022EE100
 _022EE0EC:
@@ -1493,7 +1558,11 @@ _022EE1D8:
 	ldr r0, _022EE308 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x19a]
+#else
 	ldrb r0, [r0, #0x23e]
+#endif
 	cmp r0, #0
 	beq _022EE248
 	ldr r1, _022EE314 ; =0x00000E5D
@@ -1503,8 +1572,13 @@ _022EE1D8:
 _022EE248:
 	ldrb r1, [r6]
 	mov r0, sl
+#ifdef JAPAN
+	add r1, r1, #0x53
+	add r1, r1, #0x600
+#else
 	add r1, r1, #0x51
 	add r1, r1, #0xb00
+#endif
 	mov r1, r1, lsl #0x10
 	mov r1, r1, lsr #0x10
 	bl LogMessageByIdWithPopupCheckUser
@@ -1527,13 +1601,20 @@ _022EE288:
 _022EE29C:
 	str sb, [sp]
 	ldrb r6, [r6]
+#ifdef JAPAN
+	ldr r3, [sp, #0xc]
+	mov r0, r4
+#else
 	mov r0, r4
 	ldr r3, [sp, #0x10]
+#endif
 	mov r1, sl
 	mov r2, r5
 	str r6, [sp, #4]
+#ifndef JAPAN
 	mov r4, #0
 	str r4, [sp, #8]
+#endif
 	bl ApplyTrapEffect
 	mov r4, r0
 	mov r0, r5
@@ -1549,16 +1630,25 @@ _022EE2E0:
 	mov r1, #1
 	bl ov29_022EDE7C
 _022EE2F4:
-	add sp, sp, #0x14
+	add sp, sp, #0x14 + TRY_TRIGGER_TRAP_OFFSET
+#ifdef JAPAN
+	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
+#else
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
+#endif
 	.align 2, 0
-_022EE2FC: .word 0x00000E59
-_022EE300: .word 0x00000E5B
-_022EE304: .word 0x00000E5A
+#ifdef JAPAN
+#define TRY_TRIGGER_TRAP_DATA_OFFSET -0x2BE
+#else
+#define TRY_TRIGGER_TRAP_DATA_OFFSET 0
+#endif
+_022EE2FC: .word 0x00000E59 + TRY_TRIGGER_TRAP_DATA_OFFSET
+_022EE300: .word 0x00000E5B + TRY_TRIGGER_TRAP_DATA_OFFSET
+_022EE304: .word 0x00000E5A + TRY_TRIGGER_TRAP_DATA_OFFSET
 _022EE308: .word DUNGEON_PTR
-_022EE30C: .word 0x00000E5C
+_022EE30C: .word 0x00000E5C + TRY_TRIGGER_TRAP_DATA_OFFSET
 _022EE310: .word ov10_022C445C
-_022EE314: .word 0x00000E5D
+_022EE314: .word 0x00000E5D + TRY_TRIGGER_TRAP_DATA_OFFSET
 	arm_func_end TryTriggerTrap
 
 	arm_func_start ItemIsActive__022EE318

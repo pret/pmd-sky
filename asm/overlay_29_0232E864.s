@@ -5,6 +5,13 @@
 
 	arm_func_start ExecuteMoveEffect
 ExecuteMoveEffect: ; 0x0232E864
+#ifdef JAPAN
+#define EXECUTE_MOVE_EFFECT_OFFSET -4
+#define EXECUTE_MOVE_EFFECT_OFFSET_2 -1
+#else
+#define EXECUTE_MOVE_EFFECT_OFFSET 0
+#define EXECUTE_MOVE_EFFECT_OFFSET_2 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xf0
 	ldr fp, _0232F7AC ; =ov10_022C45F8
@@ -83,7 +90,7 @@ _0232E92C:
 	ldr sl, [r4, #0xb4]
 	cmp sb, r4
 	str r0, [sp, #0x38]
-	strb r0, [sl, #0x164]
+	strb r0, [sl, #0x164 + EXECUTE_MOVE_EFFECT_OFFSET]
 	bne _0232E9B0
 	mov r0, r6
 	bl IsHealingWishOrLunarDance
@@ -100,7 +107,11 @@ _0232E9B0:
 	ldrne r0, _0232F7D8 ; =DUNGEON_PTR
 	ldrne r0, [r0]
 	addne r0, r0, #0x19000
+#ifdef JAPAN
+	ldrne r5, [r0, #0x860]
+#else
 	ldrne r5, [r0, #0x904]
+#endif
 	cmpne r5, #0
 	beq _0232EA2C
 	ldr r1, [r5]
@@ -108,11 +119,15 @@ _0232E9B0:
 	bne _0232EE54
 	cmp r5, sb
 	beq _0232EE54
+#ifdef JAPAN
+	ldr r1, [r0, #0x868]
+#else
 	ldr r1, [r0, #0x90c]
+#endif
 	ldr r0, [r5, #0xb4]
 	ldr r0, [r0, #0xb0]
 	cmp r1, r0
-	ldreqb r0, [sl, #0x10b]
+	ldreqb r0, [sl, #0x10b + EXECUTE_MOVE_EFFECT_OFFSET_2]
 	cmpeq r0, #0
 	bne _0232EE54
 	mov r0, sb
@@ -186,17 +201,17 @@ _0232EAEC:
 	tst r0, #0xf0
 	bne _0232ED9C
 	add r0, sl, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + EXECUTE_MOVE_EFFECT_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + EXECUTE_MOVE_EFFECT_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
 	ldr r1, [sp, #0x34]
 	cmp r0, r1
 	blt _0232ED9C
-	ldrb r0, [sl, #0x10b]
+	ldrb r0, [sl, #0x10b + EXECUTE_MOVE_EFFECT_OFFSET_2]
 	cmp r0, #0
 	bne _0232EE54
 	ldrb r5, [sl, #0x4c]
@@ -206,7 +221,11 @@ _0232EAEC:
 	beq _0232EB78
 	mov r0, sb
 	mov r1, r4
+#ifdef JAPAN
+	ldr r2, _02330BE0 ; =0x00000BF2
+#else
 	mov r2, #0xeb0
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _0232EE54
 _0232EB78:
@@ -296,11 +315,11 @@ _0232ECA0:
 	mov r0, r0, lsr #0x10
 	strh r0, [sp, #0x9a]
 	add r0, sl, #0x100
-	ldrh r5, [r0, #0x46]
+	ldrh r5, [r0, #0x46 + EXECUTE_MOVE_EFFECT_OFFSET]
 	sub r1, sp, #4
 	ldrh r3, [sp, #0x98]
 	strh r5, [r1]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + EXECUTE_MOVE_EFFECT_OFFSET]
 	ldrh r2, [sp, #0x9a]
 	strh r0, [r1, #2]
 	ldr r0, [r1]
@@ -314,19 +333,32 @@ _0232ECA0:
 	ldrh r3, [sp, #0x94]
 	add r1, sl, #0x100
 	ldrh r2, [sp, #0x96]
-	strh r3, [r1, #0x46]
+	strh r3, [r1, #0x46 + EXECUTE_MOVE_EFFECT_OFFSET]
 	ldr r0, _0232F7EC ; =0x00000163
-	strh r2, [r1, #0x48]
+	strh r2, [r1, #0x48 + EXECUTE_MOVE_EFFECT_OFFSET]
 	ldrh r1, [r8, #4]
 	cmp r1, r0
+#ifdef JAPAN
+	bne _0232ED2C
+	add r2, r0, #0xa90
+	mov r0, sb
+	mov r1, r4
+#else
 	mov r0, sb
 	mov r1, r4
 	bne _0232ED2C
 	ldr r2, _0232F7F0 ; =0x00000EB1
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _0232ED34
 _0232ED2C:
+#ifdef JAPAN
+	mov r0, sb
+	mov r1, r4
+	mov r2, #0xbf0
+#else
 	ldr r2, _0232F7F4 ; =0x00000EAE
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _0232ED34:
 	str r4, [sp, #0x6c]
@@ -386,7 +418,7 @@ _0232ED9C:
 	bl ov29_02300DC0
 	cmp r0, #0
 	ldreq r0, [r5, #0xb4]
-	ldreqb r0, [r0, #0x10b]
+	ldreqb r0, [r0, #0x10b + EXECUTE_MOVE_EFFECT_OFFSET_2]
 	cmpeq r0, #0
 	bne _0232EE54
 	mov sl, r4
@@ -404,7 +436,11 @@ _0232ED9C:
 	bl SubstitutePlaceholderStringTags
 	mov r1, r5
 	mov r0, sb
+#ifdef JAPAN
+	ldr r2, _02330BF4 ; =0x00000C02
+#else
 	mov r2, #0xec0
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 _0232EE54:
 	ldr r1, _0232F800 ; =ov29_0237CA80
@@ -417,14 +453,14 @@ _0232EE54:
 	str r1, [r0]
 	ldr r5, [r4, #0xb4]
 	mov r0, #0
-	strb r0, [r5, #0x164]
+	strb r0, [r5, #0x164 + EXECUTE_MOVE_EFFECT_OFFSET]
 	ldrb r0, [r5, #6]
 	cmp r0, #0
 	ldrneh r1, [sb, #4]
 	addne r0, r5, #0x100
-	strneh r1, [r0, #0x7e]
+	strneh r1, [r0, #0x7e + EXECUTE_MOVE_EFFECT_OFFSET]
 	ldrneh r1, [sb, #6]
-	strneh r1, [r0, #0x80]
+	strneh r1, [r0, #0x80 + EXECUTE_MOVE_EFFECT_OFFSET]
 	mov r0, r4
 	bl ov29_022F9840
 	mov r0, sb
@@ -553,7 +589,7 @@ _0232F060:
 	bl ov29_02333044
 	ldr r5, [sb, #0xb4]
 	mov r0, #0
-	strb r0, [r5, #0x164]
+	strb r0, [r5, #0x164 + EXECUTE_MOVE_EFFECT_OFFSET]
 	mov r0, #1
 	mov r4, sb
 	str r0, [sp, #0x60]
@@ -617,7 +653,7 @@ _0232F154:
 	bl ov29_02333044
 	ldr r5, [sb, #0xb4]
 	mov r0, #0
-	strb r0, [r5, #0x164]
+	strb r0, [r5, #0x164 + EXECUTE_MOVE_EFFECT_OFFSET]
 	mov r0, #1
 	mov r4, sb
 	cmp r6, #0x42
@@ -666,7 +702,9 @@ _0232F204:
 	mov r0, sb
 	mov r1, r4
 	mov r2, #0x3c
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02332A0C
 	cmp r0, #0
 	beq _0232F270
@@ -700,7 +738,9 @@ _0232F270:
 	cmpne r1, r0
 	mov r0, sb
 	mov r1, r4
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	moveq sl, #0
 	bl DefenderAbilityIsActive__02332A0C
 	cmp r0, #0
@@ -846,7 +886,7 @@ _0232F498:
 	ldr r0, _0232F7EC ; =0x00000163
 	cmp r1, r0
 	movne r0, #1
-	strneb r0, [r2, #0x166]
+	strneb r0, [r2, #0x166 + EXECUTE_MOVE_EFFECT_OFFSET]
 	ldrb r0, [r2, #7]
 	cmp r0, #0
 	mov r0, sb
@@ -888,7 +928,11 @@ _0232F550:
 	beq _0232F570
 	mov r0, sb
 	mov r1, r4
+#ifdef JAPAN
+	mov r2, #0xc00
+#else
 	ldr r2, _0232F84C ; =0x00000EBE
+#endif
 	bl LogMessageByIdWithPopupCheckUserTarget
 	b _0232F598
 _0232F570:
@@ -946,7 +990,7 @@ _0232F608:
 	b _02332818
 _0232F62C:
 	mov sl, #1
-	ldrb fp, [r5, #0x108]
+	ldrb fp, [r5, #0x108 + EXECUTE_MOVE_EFFECT_OFFSET_2]
 	ldrb r0, [r5, #6]
 	cmp r0, #0
 	beq _0232F670
@@ -957,14 +1001,14 @@ _0232F62C:
 	cmp r7, #0
 	bne _0232F660
 	cmp fp, #1
-	strlob sl, [r5, #0x108]
+	strlob sl, [r5, #0x108 + EXECUTE_MOVE_EFFECT_OFFSET_2]
 _0232F660:
 	ldr r0, [sp, #0x118]
 	cmp r0, #1
 	moveq r0, #2
-	streqb r0, [r5, #0x108]
+	streqb r0, [r5, #0x108 + EXECUTE_MOVE_EFFECT_OFFSET_2]
 _0232F670:
-	ldrb r0, [r5, #0x177]
+	ldrb r0, [r5, #0x177 + EXECUTE_MOVE_EFFECT_OFFSET]
 	cmp r0, #0xff
 	bne _0232F6A0
 	mov r0, r4
@@ -975,9 +1019,9 @@ _0232F670:
 	add r0, r4, #4
 	add r1, sb, #4
 	bl GetDirectionTowardsPosition
-	strb r0, [r5, #0x177]
+	strb r0, [r5, #0x177 + EXECUTE_MOVE_EFFECT_OFFSET]
 _0232F6A0:
-	ldrb r0, [r5, #0x178]
+	ldrb r0, [r5, #0x178 + EXECUTE_MOVE_EFFECT_OFFSET]
 	cmp r0, #0xff
 	bne _0232F6D0
 	mov r0, r4
@@ -988,7 +1032,7 @@ _0232F6A0:
 	add r0, r4, #4
 	add r1, sb, #4
 	bl GetDirectionTowardsPosition
-	strb r0, [r5, #0x178]
+	strb r0, [r5, #0x178 + EXECUTE_MOVE_EFFECT_OFFSET]
 _0232F6D0:
 	mov r0, sb
 	mov r1, r8
@@ -1001,7 +1045,7 @@ _0232F6D0:
 	ldrneh r0, [r2, #0xac]
 	cmpne r1, r0
 	beq _0232F708
-	ldrb r0, [r2, #0x23f]
+	ldrb r0, [r2, #0x23f + EXECUTE_MOVE_EFFECT_OFFSET]
 	cmp r0, #0
 	beq _0232F70C
 _0232F708:
@@ -1012,7 +1056,9 @@ _0232F70C:
 	mov r0, sb
 	mov r1, r4
 	mov r2, #0x39
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	bl DefenderAbilityIsActive__02332A0C
 	cmp r0, #0
 	beq _0232F87C
@@ -1049,6 +1095,11 @@ _0232F79C:
 	strh r0, [r8, #2]
 	b _0232F87C
 	.align 2, 0
+#ifdef JAPAN
+#define EXECUTE_MOVE_EFFECT_DATA_OFFSET -0x2BE
+#else
+#define EXECUTE_MOVE_EFFECT_DATA_OFFSET 0
+#endif
 _0232F7AC: .word ov10_022C45F8
 _0232F7B0: .word SPATK_STAT_IDX
 _0232F7B4: .word ov10_022C483C
@@ -1061,37 +1112,47 @@ _0232F7CC: .word ov10_022C4508
 _0232F7D0: .word ov29_02353718
 _0232F7D4: .word ov10_022C4504
 _0232F7D8: .word DUNGEON_PTR
-_0232F7DC: .word 0x00000EAB
-_0232F7E0: .word 0x00000EAC
-_0232F7E4: .word 0x00000EAD
+_0232F7DC: .word 0x00000EAB + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+_0232F7E0: .word 0x00000EAC + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+_0232F7E4: .word 0x00000EAD + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+#ifdef JAPAN
+_02330BE0: .word 0x00000BF2
+#endif
 _0232F7E8: .word DIRECTIONS_XY
 _0232F7EC: .word 0x00000163
+#ifndef JAPAN
 _0232F7F0: .word 0x00000EB1
 _0232F7F4: .word 0x00000EAE
-_0232F7F8: .word 0x00000EB2
-_0232F7FC: .word 0x00000EAF
+#endif
+_0232F7F8: .word 0x00000EB2 + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+_0232F7FC: .word 0x00000EAF + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+#ifdef JAPAN
+_02330BF4: .word 0x00000C02
+#endif
 _0232F800: .word ov29_0237CA80
 _0232F804: .word ov29_0237CA74
-_0232F808: .word 0x00000EB3
-_0232F80C: .word 0x00000EB5
-_0232F810: .word 0x00000EB4
-_0232F814: .word 0x00000EB7
-_0232F818: .word 0x00000EB6
+_0232F808: .word 0x00000EB3 + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+_0232F80C: .word 0x00000EB5 + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+_0232F810: .word 0x00000EB4 + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+_0232F814: .word 0x00000EB7 + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+_0232F818: .word 0x00000EB6 + EXECUTE_MOVE_EFFECT_DATA_OFFSET
 _0232F81C: .word 0x000001DD
-_0232F820: .word 0x00000EB8
-_0232F824: .word 0x00000EB9
+_0232F820: .word 0x00000EB8 + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+_0232F824: .word 0x00000EB9 + EXECUTE_MOVE_EFFECT_DATA_OFFSET
 _0232F828: .word 0x00000131
-_0232F82C: .word 0x00000EBA
+_0232F82C: .word 0x00000EBA + EXECUTE_MOVE_EFFECT_DATA_OFFSET
 _0232F830: .word 0x000001F6
 _0232F834: .word 0x00000232
 _0232F838: .word ov29_0237CA69
 _0232F83C: .word 0x00001307
 _0232F840: .word 0x00001306
-_0232F844: .word 0x00000EBC
-_0232F848: .word 0x00000EBD
+_0232F844: .word 0x00000EBC + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+_0232F848: .word 0x00000EBD + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+#ifndef JAPAN
 _0232F84C: .word 0x00000EBE
-_0232F850: .word 0x00000EBF
-_0232F854: .word 0x00000EBB
+#endif
+_0232F850: .word 0x00000EBF + EXECUTE_MOVE_EFFECT_DATA_OFFSET
+_0232F854: .word 0x00000EBB + EXECUTE_MOVE_EFFECT_DATA_OFFSET
 _0232F858: .word 0x0000270F
 _0232F85C: .word 0x0000021E
 _0232F860:
@@ -1116,7 +1177,7 @@ _0232F87C:
 _0232F8A0:
 	ldr r0, _0232F85C ; =0x0000021E
 	mov r1, #1
-	strb r1, [r5, #0x162]
+	strb r1, [r5, #0x162 + EXECUTE_MOVE_EFFECT_OFFSET]
 	cmp r6, r0
 	addls pc, pc, r6, lsl #2
 	b _023326C8
@@ -4447,7 +4508,7 @@ _0233275C:
 	cmp r0, #0
 	ldrneb r0, [r5, #6]
 	cmpne r0, #0
-	strneb fp, [r5, #0x108]
+	strneb fp, [r5, #0x108 + EXECUTE_MOVE_EFFECT_OFFSET_2]
 	b _023327C8
 _02332790:
 	mov r0, r8
@@ -4469,7 +4530,7 @@ _023327C8:
 	bl EntityIsValid__0232E840
 	cmp r0, #0
 	movne r0, #1
-	strneb r0, [r5, #0x162]
+	strneb r0, [r5, #0x162 + EXECUTE_MOVE_EFFECT_OFFSET]
 	cmp r6, #0x89
 	beq _02332818
 	mov r0, sb
@@ -4502,8 +4563,8 @@ _02332830:
 	cmp r0, #0
 	ldrne r1, [sb, #0xb4]
 	movne r0, #0
-	strneb r0, [r1, #0x166]
-	strneb r0, [r1, #0x167]
+	strneb r0, [r1, #0x166 + EXECUTE_MOVE_EFFECT_OFFSET]
+	strneb r0, [r1, #0x167 + EXECUTE_MOVE_EFFECT_OFFSET]
 _02332858:
 	mov r0, r6
 	bl IsHealingWishOrLunarDance
@@ -4568,14 +4629,14 @@ _02332930:
 	bl EntityIsValid__0232E840
 	cmp r0, #0
 	ldrne r4, [sb, #0xb4]
-	ldrneb r0, [r4, #0x15e]
+	ldrneb r0, [r4, #0x15e + EXECUTE_MOVE_EFFECT_OFFSET]
 	cmpne r0, #0
 	beq _02332970
 	mov r2, #0
 	mov r0, sb
 	mov r1, sb
 	mov r3, r2
-	strb r2, [r4, #0x15e]
+	strb r2, [r4, #0x15e + EXECUTE_MOVE_EFFECT_OFFSET]
 	bl TryWarp
 _02332970:
 	mov r0, sb
@@ -4583,12 +4644,12 @@ _02332970:
 	cmp r0, #0
 	beq _023329CC
 	ldr r4, [sb, #0xb4]
-	ldrb r0, [r4, #0x15f]
+	ldrb r0, [r4, #0x15f + EXECUTE_MOVE_EFFECT_OFFSET]
 	cmp r0, #0
 	beq _023329B8
 	add r0, sp, #0x9c
 	mov r5, #0
-	strb r5, [r4, #0x15f]
+	strb r5, [r4, #0x15f + EXECUTE_MOVE_EFFECT_OFFSET]
 	ldr r2, [r0]
 	str r5, [sp]
 	mov r0, sb
@@ -4601,7 +4662,7 @@ _023329B8:
 	ldr r0, _023329D8 ; =0x000001F6
 	cmp r1, r0
 	moveq r0, #0
-	streqb r0, [r4, #0x170]
+	streqb r0, [r4, #0x170 + EXECUTE_MOVE_EFFECT_OFFSET]
 _023329CC:
 	add sp, sp, #0xf0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -4610,7 +4671,7 @@ _023329D4: .word ov29_02353718
 _023329D8: .word 0x000001F6
 _023329DC: .word ov29_0237CA68
 _023329E0: .word 0x0000023A
-_023329E4: .word 0x00000EC2
+_023329E4: .word 0x00000EC2 + EXECUTE_MOVE_EFFECT_DATA_OFFSET
 	arm_func_end ExecuteMoveEffect
 
 	arm_func_start ExclusiveItemEffectIsActive__023329E8
@@ -4621,7 +4682,11 @@ ExclusiveItemEffectIsActive__023329E8: ; 0x023329E8
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
+#ifdef JAPAN
+	add r0, r2, #0x224
+#else
 	add r0, r2, #0x228
+#endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__023329E8
@@ -4643,7 +4708,9 @@ DefenderAbilityIsActive__02332A0C: ; 0x02332A0C
 	and r1, r1, #0xff
 _02332A40:
 	cmp r1, #0
+#ifndef JAPAN
 	cmpne r3, #0
+#endif
 	beq _02332A60
 	mov r1, #0x53
 	bl AbilityIsActiveVeneer
@@ -4870,6 +4937,11 @@ DealDamageWithType: ; 0x02332CDC
 
 	arm_func_start PerformDamageSequence
 PerformDamageSequence: ; 0x02332D6C
+#ifdef JAPAN
+#define PERFORM_DAMAGE_SEQUENCE_OFFSET -4
+#else
+#define PERFORM_DAMAGE_SEQUENCE_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x10
 	mov r8, r0
@@ -4889,7 +4961,9 @@ PerformDamageSequence: ; 0x02332D6C
 	moveq r5, #1
 	mov r0, r8
 	mov r1, r7
+#ifndef JAPAN
 	mov r3, #1
+#endif
 	movne r5, #0
 	bl DefenderAbilityIsActive__02332A0C
 	cmp r0, #0
@@ -4901,11 +4975,19 @@ PerformDamageSequence: ; 0x02332D6C
 	strh r2, [r0, #0x82]
 	ldr r0, [r1]
 	add r0, r0, #0x19000
+#ifdef JAPAN
+	str r7, [r0, #0x864]
+#else
 	str r7, [r0, #0x908]
+#endif
 	ldr r0, [r1]
 	ldrh r1, [r7, #0x26]
 	add r0, r0, #0x19000
+#ifdef JAPAN
+	str r1, [r0, #0x86c]
+#else
 	str r1, [r0, #0x910]
+#endif
 _02332DFC:
 	ldrsh r0, [sp, #0x28]
 	mov ip, #1
@@ -4920,8 +5002,8 @@ _02332DFC:
 	str r5, [sp, #0xc]
 	bl ApplyDamageAndEffects
 	mov r0, r5
-	strb r0, [r4, #0x166]
-	strb r0, [r4, #0x167]
+	strb r0, [r4, #0x166 + PERFORM_DAMAGE_SEQUENCE_OFFSET]
+	strb r0, [r4, #0x167 + PERFORM_DAMAGE_SEQUENCE_OFFSET]
 	b _02332ED0
 _02332E3C:
 	bl ov29_0234B034
@@ -4962,7 +5044,7 @@ _02332EB8:
 	ldrh r1, [r5, #4]
 	rsb r0, r2, #0x164
 	cmp r1, r0
-	strneb r2, [r4, #0x166]
+	strneb r2, [r4, #0x166 + PERFORM_DAMAGE_SEQUENCE_OFFSET]
 _02332ED0:
 	ldrb r0, [r6, #0x10]
 	cmp r0, #0
@@ -4973,7 +5055,7 @@ _02332ED0:
 	cmp r0, #0
 	ldrne r0, [r7, #0xb4]
 	movne r1, #1
-	strneb r1, [r0, #0x164]
+	strneb r1, [r0, #0x164 + PERFORM_DAMAGE_SEQUENCE_OFFSET]
 	ldr r0, [r6]
 _02332EFC:
 	add sp, sp, #0x10
@@ -4983,7 +5065,11 @@ _02332F04: .word 0x0000013A
 _02332F08: .word DUNGEON_PTR
 _02332F0C: .word 0x000003E7
 _02332F10: .word 0x0000270F
+#ifdef JAPAN
+_02332F14: .word 0x00000C05
+#else
 _02332F14: .word 0x00000EC3
+#endif
 	arm_func_end PerformDamageSequence
 
 	arm_func_start ov29_02332F18
@@ -5028,7 +5114,11 @@ ov29_02332F18: ; 0x02332F18
 	cmp r0, #0
 	ldrne r0, [r7, #0xb4]
 	movne r1, #1
+#ifdef JAPAN
+	strneb r1, [r0, #0x160]
+#else
 	strneb r1, [r0, #0x164]
+#endif
 	ldr r0, [sp, #0x10]
 _02332FC0:
 	add sp, sp, #0x24
@@ -5090,6 +5180,13 @@ ov29_02333044: ; 0x02333044
 
 	arm_func_start StatusCheckerCheck
 StatusCheckerCheck: ; 0x02333074
+#ifdef JAPAN
+#define STATUS_CHECKER_CHECK_OFFSET -4
+#define STATUS_CHECKER_CHECK_OFFSET_2 -0xA4
+#else
+#define STATUS_CHECKER_CHECK_OFFSET 0
+#define STATUS_CHECKER_CHECK_OFFSET_2 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldrh r2, [r1, #4]
 	ldr r1, _02333F98 ; =0x00000109
@@ -5542,10 +5639,10 @@ _02333674:
 	cmp r0, #0x13
 	bgt _023336A8
 	add r0, r3, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + STATUS_CHECKER_CHECK_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + STATUS_CHECKER_CHECK_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
@@ -5573,7 +5670,7 @@ _023336D8:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _023336EC:
-	ldr r0, [r3, #0x110]
+	ldr r0, [r3, #0x110 + STATUS_CHECKER_CHECK_OFFSET]
 	cmp r0, #3
 	ble _02333F90
 	mov r0, #0
@@ -5649,14 +5746,14 @@ _023337D4:
 	ldrsh r0, [r3, #0x10]
 	cmp r2, r0
 	ble _02333804
-	ldrb r0, [r3, #0x11e]
+	ldrb r0, [r3, #0x11e + STATUS_CHECKER_CHECK_OFFSET]
 	cmp r0, #0
 	bne _02333F90
 _02333804:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0233380C:
-	ldrb r0, [r3, #0x11e]
+	ldrb r0, [r3, #0x11e + STATUS_CHECKER_CHECK_OFFSET]
 	cmp r0, #0
 	bne _02333F90
 	mov r0, #0
@@ -5681,7 +5778,11 @@ _02333850:
 	ldr r1, [r1]
 	ldr r3, _02333FA8 ; =ov10_022C6322
 	add r1, r1, #0x4000
+#ifdef JAPAN
+	ldrsh r1, [r1, #0x30]
+#else
 	ldrsh r1, [r1, #0xd4]
+#endif
 	smulbb r1, r1, r2
 	ldrb r1, [r3, r1]
 	bl MonsterIsType
@@ -5716,7 +5817,7 @@ _023338C0:
 _023338D4:
 	ldrsh r0, [r3, #0x24]
 	cmp r0, #0x13
-	ldrgt r0, [r3, #0x110]
+	ldrgt r0, [r3, #0x110 + STATUS_CHECKER_CHECK_OFFSET]
 	cmpgt r0, #3
 	ble _02333F90
 	mov r0, #0
@@ -5824,7 +5925,7 @@ _02333A44:
 	ldr r0, _02333FA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
-	ldrb r0, [r0, #0xd5b]
+	ldrb r0, [r0, #0xd5b + STATUS_CHECKER_CHECK_OFFSET_2]
 	cmp r0, #0
 	beq _02333F90
 	mov r0, #0
@@ -5833,7 +5934,7 @@ _02333A64:
 	ldr r0, _02333FA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
-	ldrb r0, [r0, #0xd5c]
+	ldrb r0, [r0, #0xd5c + STATUS_CHECKER_CHECK_OFFSET_2]
 	cmp r0, #0
 	beq _02333F90
 	mov r0, #0
@@ -5848,13 +5949,13 @@ _02333A98:
 	ldr r0, _02333FA4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
-	ldrb r0, [r0, #0xe38]
+	ldrb r0, [r0, #0xe38 + STATUS_CHECKER_CHECK_OFFSET_2]
 	cmp r0, #0
 	beq _02333F90
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333AB8:
-	ldrb r0, [r3, #0x11e]
+	ldrb r0, [r3, #0x11e + STATUS_CHECKER_CHECK_OFFSET]
 	cmp r0, #3
 	blo _02333F90
 	mov r0, #0
@@ -5955,7 +6056,7 @@ _02333C0C:
 	ldr r0, [r6]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb38]
+	ldr r7, [r0, #0xb38 + STATUS_CHECKER_CHECK_OFFSET_2]
 	mov r0, r7
 	bl EntityIsValid__02333FAC
 	cmp r0, #0
@@ -5989,7 +6090,7 @@ _02333C80:
 	ldr r0, [r6]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb28]
+	ldr r7, [r0, #0xb28 + STATUS_CHECKER_CHECK_OFFSET_2]
 	mov r0, r7
 	bl EntityIsValid__02333FAC
 	cmp r0, #0
@@ -6033,7 +6134,7 @@ _02333D18:
 	ldr r0, [r6]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb38]
+	ldr r7, [r0, #0xb38 + STATUS_CHECKER_CHECK_OFFSET_2]
 	mov r0, r7
 	bl EntityIsValid__02333FAC
 	cmp r0, #0
@@ -6064,7 +6165,7 @@ _02333D80:
 	ldr r0, [r6]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb28]
+	ldr r7, [r0, #0xb28 + STATUS_CHECKER_CHECK_OFFSET_2]
 	mov r0, r7
 	bl EntityIsValid__02333FAC
 	cmp r0, #0
@@ -6106,7 +6207,7 @@ _02333E10:
 	ldr r0, [r6]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb38]
+	ldr r7, [r0, #0xb38 + STATUS_CHECKER_CHECK_OFFSET_2]
 	mov r0, r7
 	bl EntityIsValid__02333FAC
 	cmp r0, #0
@@ -6144,7 +6245,7 @@ _02333E94:
 	ldr r0, [r6]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb28]
+	ldr r7, [r0, #0xb28 + STATUS_CHECKER_CHECK_OFFSET_2]
 	mov r0, r7
 	bl EntityIsValid__02333FAC
 	cmp r0, #0
@@ -6182,7 +6283,7 @@ _02333F10:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333F24:
-	ldr r0, [r3, #0x110]
+	ldr r0, [r3, #0x110 + STATUS_CHECKER_CHECK_OFFSET]
 	cmp r0, #1
 	ble _02333F90
 	mov r0, #0

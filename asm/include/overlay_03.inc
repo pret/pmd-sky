@@ -118,6 +118,7 @@
 .public RandInt
 .public SetQuestionMarks
 .public ShowKeyboard
+.public StrcpyName
 .public StringFromId
 .public StrncpySimpleNoPadSafe
 .public sub_02003B94

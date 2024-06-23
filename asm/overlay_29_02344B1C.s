@@ -127,6 +127,11 @@ _02344C48: .word ov29_023531CC
 
 	arm_func_start ov29_02344C4C
 ov29_02344C4C: ; 0x02344C4C
+#ifdef JAPAN
+#define OV29_02344C4C_OFFSET -0xA4
+#else
+#define OV29_02344C4C_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x20
 	mov sb, #0
@@ -152,7 +157,7 @@ ov29_02344C4C: ; 0x02344C4C
 	ldr r1, [r1]
 	ldr r2, _02344E84 ; =ov29_023531A0
 	add r1, r1, #0x3f00
-	strh r5, [r1, #0xc0]
+	strh r5, [r1, #0xc0 + OV29_02344C4C_OFFSET]
 	ldrh r3, [r2]
 	ldrh r1, [r2, #2]
 	mov r7, r0
@@ -268,15 +273,15 @@ _02344E40:
 	ldr r0, _02344E7C ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3f00
-	ldrsh r2, [r0, #0xc0]
-	ldrsh r1, [r0, #0xc2]
+	ldrsh r2, [r0, #0xc0 + OV29_02344C4C_OFFSET]
+	ldrsh r1, [r0, #0xc2 + OV29_02344C4C_OFFSET]
 	add r1, r2, r1
-	strh r1, [r0, #0xc0]
+	strh r1, [r0, #0xc0 + OV29_02344C4C_OFFSET]
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02344E7C: .word DUNGEON_PTR
-_02344E80: .word 0x0002C9E8
+_02344E80: .word 0x0002C9E8 + OV29_02344C4C_OFFSET
 _02344E84: .word ov29_023531A0
 	arm_func_end ov29_02344C4C
 
@@ -741,16 +746,21 @@ _02345508:
 	add sp, sp, #0x198
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
+#ifdef JAPAN
+#define TRY_LEADER_ITEM_PICK_UP_OFFSET -0x2C1
+#else
+#define TRY_LEADER_ITEM_PICK_UP_OFFSET 0
+#endif
 _02345510: .word ov29_023531BC
-_02345514: .word 0x00000BD2
-_02345518: .word 0x00000BD3
+_02345514: .word 0x00000BD2 + TRY_LEADER_ITEM_PICK_UP_OFFSET
+_02345518: .word 0x00000BD3 + TRY_LEADER_ITEM_PICK_UP_OFFSET
 _0234551C: .word 0x00001308
-_02345520: .word 0x00000BD6
+_02345520: .word 0x00000BD6 + TRY_LEADER_ITEM_PICK_UP_OFFSET
 _02345524: .word DUNGEON_PTR
 _02345528: .word 0x00001304
-_0234552C: .word 0x00000BD4
-_02345530: .word 0x00000BD5
-_02345534: .word 0x00000BD7
+_0234552C: .word 0x00000BD4 + TRY_LEADER_ITEM_PICK_UP_OFFSET
+_02345530: .word 0x00000BD5 + TRY_LEADER_ITEM_PICK_UP_OFFSET
+_02345534: .word 0x00000BD7 + TRY_LEADER_ITEM_PICK_UP_OFFSET
 	arm_func_end TryLeaderItemPickUp
 
 	arm_func_start SpawnItem
@@ -830,7 +840,11 @@ _02345648:
 	ldr r0, [r5]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r0, [r0, #0xb24]
+#else
 	ldr r0, [r0, #0xbc8]
+#endif
 	bl EntityIsValid__02345698
 	cmp r0, #0
 	addne r4, r6, #1
@@ -840,7 +854,11 @@ _02345648:
 	ldr r0, _02345694 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3f00
+#ifdef JAPAN
+	strh r4, [r0, #0x1c]
+#else
 	strh r4, [r0, #0xc0]
+#endif
 	bl RemoveEmptyItemsInBag
 #ifdef EUROPE
 	mov r0, #0

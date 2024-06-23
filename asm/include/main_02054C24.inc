@@ -489,6 +489,7 @@
 .public sub_020205F8
 .public sub_02024934
 .public sub_020251F0
+.public sub_02025304_JP
 .public sub_0202568C
 .public sub_02025888
 .public sub_02025AD8

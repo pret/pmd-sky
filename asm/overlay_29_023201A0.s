@@ -215,7 +215,11 @@ _0232047C:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xad4]
+#else
 	ldr r6, [r0, #0xb78]
+#endif
 	mov r0, r6
 	bl EntityIsValid__02320764
 	cmp r0, #0
@@ -413,8 +417,13 @@ _02320744:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0232074C: .word DUNGEON_PTR
+#ifdef JAPAN
+_02320750: .word 0x0000093B
+_02320754: .word 0x0000093A
+#else
 _02320750: .word 0x00000BFC
 _02320754: .word 0x00000BFB
+#endif
 _02320758: .word ov29_023529B8
 _0232075C: .word ov29_02353700
 _02320760: .word 0x0000026F

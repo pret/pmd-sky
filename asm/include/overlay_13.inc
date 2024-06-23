@@ -60,6 +60,7 @@
 .public sub_02017C74
 .public sub_02017CB4
 .public sub_0201F2E4
+.public sub_02025304_JP
 .public sub_02027B1C
 .public sub_0202836C
 .public sub_02028770

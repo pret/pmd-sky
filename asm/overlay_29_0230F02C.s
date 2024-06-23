@@ -18,7 +18,11 @@ _0230F04C:
 	ldr r0, [r0]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xad4]
+#else
 	ldr r7, [r0, #0xb78]
+#endif
 	mov r0, r7
 	bl EntityIsValid__0230F008
 	cmp r0, #0
@@ -322,13 +326,23 @@ _0230F408:
 	ldr r0, [r0, r7, lsl #2]
 	cmp r0, #0
 	bge _0230F4A0
+#ifdef JAPAN
+	ldr r1, _02310B84 ; =0x0000099F
+	mov r0, r8
+#else
 	mov r0, r8
 	mov r1, #0xc60
+#endif
 	bl LogMessageByIdWithPopup
 	b _0230F624
 _0230F4A0:
+#ifdef JAPAN
+	mov r0, r8
+	mov r1, #0x9a0
+#else
 	ldr r1, _0230F648 ; =0x00000C61
 	mov r0, r8
+#endif
 	bl LogMessageByIdWithPopup
 	b _0230F624
 _0230F4B0:
@@ -402,8 +416,13 @@ _0230F564:
 	add r0, r8, #4
 	mov r1, #1
 	bl RemoveGroundItem
+#ifdef JAPAN
+	ldr r1, _02310B84 ; =0x0000099F
+	mov r0, r8
+#else
 	mov r0, r8
 	mov r1, #0xc60
+#endif
 	bl LogMessageByIdWithPopup
 	b _0230F624
 _0230F5BC:
@@ -428,8 +447,13 @@ _0230F5F8:
 	add r0, r8, #4
 	mov r1, #1
 	bl RemoveGroundItem
+#ifdef JAPAN
+	mov r0, r8
+	mov r1, #0x9a0
+#else
 	ldr r1, _0230F648 ; =0x00000C61
 	mov r0, r8
+#endif
 	bl LogMessageByIdWithPopup
 	mov r0, r4
 	mov r1, r5
@@ -438,16 +462,25 @@ _0230F624:
 	add sp, sp, #0x198
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0230F62C: .word 0x00000C5E
+#ifdef JAPAN
+#define TRY_NON_LEADER_ITEM_PICK_UP_OFFSET -0x2C1
+#else
+#define TRY_NON_LEADER_ITEM_PICK_UP_OFFSET 0
+#endif
+_0230F62C: .word 0x00000C5E + TRY_NON_LEADER_ITEM_PICK_UP_OFFSET
 _0230F630: .word 0x00001305
 _0230F634: .word 0x00001308
-_0230F638: .word 0x00000C5F
+_0230F638: .word 0x00000C5F + TRY_NON_LEADER_ITEM_PICK_UP_OFFSET
 _0230F63C: .word DUNGEON_PTR
 _0230F640: .word BAG_ITEMS_PTR_MIRROR
 _0230F644: .word 0x00001304
+#ifdef JAPAN
+_02310B84: .word 0x0000099F
+#else
 _0230F648: .word 0x00000C61
-_0230F64C: .word 0x00000C62
-_0230F650: .word 0x00000C63
+#endif
+_0230F64C: .word 0x00000C62 + TRY_NON_LEADER_ITEM_PICK_UP_OFFSET
+_0230F650: .word 0x00000C63 + TRY_NON_LEADER_ITEM_PICK_UP_OFFSET
 	arm_func_end TryNonLeaderItemPickUp
 
 	arm_func_start ov29_0230F654
@@ -516,6 +549,11 @@ _0230F718:
 
 	arm_func_start ov29_0230F728
 ov29_0230F728: ; 0x0230F728
+#ifdef JAPAN
+#define OV29_0230F728_OFFSET -4
+#else
+#define OV29_0230F728_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0xc
 	ldr ip, [r1, #0xb4]
@@ -528,12 +566,12 @@ ov29_0230F728: ; 0x0230F728
 	ldrb r3, [ip, #0x5e]
 	add r0, sp, #4
 	bl GetExclusiveItemForMonsterFromBag
-	ldr r1, [r4, #0x18c]
+	ldr r1, [r4, #0x18c + OV29_0230F728_OFFSET]
 	add r0, r4, #0x100
 	orr r1, r1, r5
-	str r1, [r4, #0x18c]
+	str r1, [r4, #0x18c + OV29_0230F728_OFFSET]
 	ldrsh r1, [sp, #8]
-	strh r1, [r0, #0x90]
+	strh r1, [r0, #0x90 + OV29_0230F728_OFFSET]
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, pc}
 	arm_func_end ov29_0230F728
@@ -542,7 +580,11 @@ ov29_0230F728: ; 0x0230F728
 ExclusiveItemOffenseBoost: ; 0x0230F778
 	ldr r0, [r0, #0xb4]
 	add r0, r0, r1
+#ifdef JAPAN
+	ldrb r0, [r0, #0x220]
+#else
 	ldrb r0, [r0, #0x224]
+#endif
 	bx lr
 	arm_func_end ExclusiveItemOffenseBoost
 
@@ -550,7 +592,11 @@ ExclusiveItemOffenseBoost: ; 0x0230F778
 ExclusiveItemDefenseBoost: ; 0x0230F788
 	ldr r0, [r0, #0xb4]
 	add r0, r0, r1
+#ifdef JAPAN
+	ldrb r0, [r0, #0x222]
+#else
 	ldrb r0, [r0, #0x226]
+#endif
 	bx lr
 	arm_func_end ExclusiveItemDefenseBoost
 
@@ -566,7 +612,11 @@ _0230F7B0:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xa84]
+#else
 	ldr r7, [r0, #0xb28]
+#endif
 	mov r0, r7
 	bl EntityIsValid__0230F008
 	cmp r0, #0
@@ -618,7 +668,11 @@ _0230F854:
 	ldr r0, [r5]
 	add r0, r0, r6, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r7, [r0, #0xa84]
+#else
 	ldr r7, [r0, #0xb28]
+#endif
 	mov r0, r7
 	bl EntityIsValid__0230F008
 	cmp r0, #0
@@ -650,7 +704,11 @@ ExclusiveItemEffectIsActive__0230F8AC: ; 0x0230F8AC
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, pc}
+#ifdef JAPAN
+	add r0, r2, #0x224
+#else
 	add r0, r2, #0x228
+#endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
 	arm_func_end ExclusiveItemEffectIsActive__0230F8AC
@@ -858,11 +916,20 @@ ov29_0230FB30: ; 0x0230FB30
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0230FB88: .word ov29_023529A8
+#ifdef JAPAN
+_0230FB8C: .word 0x000009B6
+#else
 _0230FB8C: .word 0x00000F62
+#endif
 	arm_func_end ov29_0230FB30
 
 	arm_func_start TickNoSlipCap
 TickNoSlipCap: ; 0x0230FB90
+#ifdef JAPAN
+#define TICK_NO_SLIP_CAP_OFFSET -1
+#else
+#define TICK_NO_SLIP_CAP_OFFSET 0
+#endif
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r1, #0x6f
 	mov r5, r0
@@ -880,16 +947,16 @@ _0230FBB8:
 	ldrb r0, [r4, #6]
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r4, #0x107]
+	ldrb r0, [r4, #0x107 + TICK_NO_SLIP_CAP_OFFSET]
 	add r1, r0, #1
 	and r0, r1, #0xff
 	cmp r0, #0x14
-	strb r1, [r4, #0x107]
+	strb r1, [r4, #0x107 + TICK_NO_SLIP_CAP_OFFSET]
 	movhs r0, #0x13
-	strhsb r0, [r4, #0x107]
+	strhsb r0, [r4, #0x107 + TICK_NO_SLIP_CAP_OFFSET]
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldrb r2, [r4, #0x107]
+	ldrb r2, [r4, #0x107 + TICK_NO_SLIP_CAP_OFFSET]
 	ldr r1, _0230FC20 ; =ov10_022C4BE4
 	mov r2, r2, lsl #1
 	ldrsh r1, [r1, r2]
@@ -898,7 +965,7 @@ _0230FBB8:
 	mov r0, r5
 	bl ov29_0230FB30
 	mov r0, #0
-	strb r0, [r4, #0x107]
+	strb r0, [r4, #0x107 + TICK_NO_SLIP_CAP_OFFSET]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0230FC20: .word ov10_022C4BE4
@@ -906,6 +973,15 @@ _0230FC20: .word ov10_022C4BE4
 
 	arm_func_start ov29_0230FC24
 ov29_0230FC24: ; 0x0230FC24
+#ifdef JAPAN
+#define OV29_0230FC24_OFFSET -4
+#define OV29_0230FC24_OFFSET_2 -0xA4
+#define OV29_0230FC24_OFFSET_3 -1
+#else
+#define OV29_0230FC24_OFFSET 0
+#define OV29_0230FC24_OFFSET_2 0
+#define OV29_0230FC24_OFFSET_3 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x34
 	movs r5, r0
@@ -919,7 +995,7 @@ ov29_0230FC24: ; 0x0230FC24
 	ldr r4, [r5, #0xb4]
 	mov r1, #0
 	mov r0, r5
-	strb r1, [r4, #0x150]
+	strb r1, [r4, #0x150 + OV29_0230FC24_OFFSET]
 	bl ov29_022FB718
 	bl ov29_0234B294
 	mov r0, r5
@@ -929,16 +1005,16 @@ ov29_0230FC24: ; 0x0230FC24
 	bl ItemIsActive__02311034
 	cmp r0, #0
 	beq _0230FD0C
-	ldrb r0, [r4, #0x17c]
+	ldrb r0, [r4, #0x17c + OV29_0230FC24_OFFSET]
 	add r1, r0, #1
 	and r0, r1, #0xff
 	cmp r0, #0x14
-	strb r1, [r4, #0x17c]
+	strb r1, [r4, #0x17c + OV29_0230FC24_OFFSET]
 	movhs r0, #0x13
-	strhsb r0, [r4, #0x17c]
+	strhsb r0, [r4, #0x17c + OV29_0230FC24_OFFSET]
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldrb r2, [r4, #0x17c]
+	ldrb r2, [r4, #0x17c + OV29_0230FC24_OFFSET]
 	ldr r1, _02310A6C ; =ov10_022C4BBC
 	mov r2, r2, lsl #1
 	ldrsh r1, [r1, r2]
@@ -946,7 +1022,7 @@ ov29_0230FC24: ; 0x0230FC24
 	bge _0230FD0C
 	mov r1, #0
 	mov r0, r5
-	strb r1, [r4, #0x17c]
+	strb r1, [r4, #0x17c + OV29_0230FC24_OFFSET]
 	bl ov29_022EC62C
 	mov r0, #0
 	bl DisplayActions
@@ -1028,7 +1104,7 @@ _0230FD0C:
 	str r3, [sp, #0x28]
 	add r2, r2, r7, lsl #3
 	bl MultiplyFixedPoint64
-	ldrb r2, [r4, #0x15d]
+	ldrb r2, [r4, #0x15d + OV29_0230FC24_OFFSET]
 	cmp r2, #1
 	ldrhi r0, _02310A78 ; =ov10_022C4A5C
 	ldrhi r1, [sp, #0x30]
@@ -1036,10 +1112,10 @@ _0230FD0C:
 	addhi r0, r1, r0, lsl #16
 	strhi r0, [sp, #0x30]
 	mov r0, #0
-	strb r0, [r4, #0x15d]
+	strb r0, [r4, #0x15d + OV29_0230FC24_OFFSET]
 	add r0, r4, #0x100
-	ldrh r2, [r0, #0x46]
-	ldrh r1, [r0, #0x48]
+	ldrh r2, [r0, #0x46 + OV29_0230FC24_OFFSET]
+	ldrh r1, [r0, #0x48 + OV29_0230FC24_OFFSET]
 	add r0, sp, #0x2c
 	strh r2, [sp, #0x20]
 	strh r1, [sp, #0x22]
@@ -1048,11 +1124,11 @@ _0230FD0C:
 	mov r0, r0, lsr #0x10
 	add r1, r4, #0x100
 	strh r0, [sp, #0x16]
-	ldrh r0, [r1, #0x46]
+	ldrh r0, [r1, #0x46 + OV29_0230FC24_OFFSET]
 	sub r3, sp, #4
 	ldrh r2, [sp, #0x14]
 	strh r0, [r3]
-	ldrh r0, [r1, #0x48]
+	ldrh r0, [r1, #0x48 + OV29_0230FC24_OFFSET]
 	ldrh r1, [sp, #0x16]
 	strh r0, [r3, #2]
 	ldr r0, [r3]
@@ -1066,9 +1142,9 @@ _0230FD0C:
 	ldrh r1, [sp, #0x10]
 	add r0, r4, #0x100
 	ldrh r3, [sp, #0x12]
-	strh r1, [r0, #0x46]
+	strh r1, [r0, #0x46 + OV29_0230FC24_OFFSET]
 	ldrh r2, [sp, #0x20]
-	strh r3, [r0, #0x48]
+	strh r3, [r0, #0x48 + OV29_0230FC24_OFFSET]
 	sub r0, sp, #4
 	ldrh r1, [sp, #0x22]
 	strh r2, [r0]
@@ -1080,10 +1156,10 @@ _0230FD0C:
 	cmp r0, #0x14
 	blt _0230FEFC
 	add r0, r4, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + OV29_0230FC24_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + OV29_0230FC24_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
@@ -1100,10 +1176,10 @@ _0230FEFC:
 	cmp r0, #0xa
 	blt _0230FF48
 	add r0, r4, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + OV29_0230FC24_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + OV29_0230FC24_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
@@ -1111,10 +1187,10 @@ _0230FEFC:
 	ldrlt r6, _02310A80 ; =0x00000DE7
 _0230FF48:
 	add r0, r4, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + OV29_0230FC24_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + OV29_0230FC24_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
@@ -1128,14 +1204,14 @@ _0230FF48:
 	ldrh r2, [sp, #0xc]
 	add r0, r4, #0x100
 	ldrh r1, [sp, #0xe]
-	strh r2, [r0, #0x46]
-	strh r1, [r0, #0x48]
+	strh r2, [r0, #0x46 + OV29_0230FC24_OFFSET]
+	strh r1, [r0, #0x48 + OV29_0230FC24_OFFSET]
 _0230FF98:
 	add r0, r4, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + OV29_0230FC24_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + OV29_0230FC24_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
@@ -1149,14 +1225,14 @@ _0230FF98:
 	ldrh r2, [sp, #8]
 	add r0, r4, #0x100
 	ldrh r1, [sp, #0xa]
-	strh r2, [r0, #0x46]
-	strh r1, [r0, #0x48]
+	strh r2, [r0, #0x46 + OV29_0230FC24_OFFSET]
+	strh r1, [r0, #0x48 + OV29_0230FC24_OFFSET]
 _0230FFE8:
 	add r0, r4, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + OV29_0230FC24_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + OV29_0230FC24_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
@@ -1200,12 +1276,12 @@ _0230FFE8:
 	mov r3, #0x250
 	bl ApplyDamageAndEffectsWrapper
 	mov r0, #1
-	strb r0, [r4, #0x150]
+	strb r0, [r4, #0x150 + OV29_0230FC24_OFFSET]
 	add r0, r4, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + OV29_0230FC24_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + OV29_0230FC24_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
@@ -1222,9 +1298,12 @@ _023100E8:
 	beq _0231013C
 	cmp r7, #0
 	beq _02310124
-#ifdef EUROPE
+#if defined(EUROPE)
 	mov r0, r5
 	bl ov29_022E34A8_EU
+#elif defined(JAPAN)
+	mov r0, r5
+	bl EntityIsValid__02311010
 #else
 	ldr r0, _02310A84 ; =DUNGEON_PTR
 	ldr r0, [r0]
@@ -1256,7 +1335,7 @@ _0231013C:
 	ldr r0, _02310A84 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xc000
-	ldrb r0, [r0, #0xd5a]
+	ldrb r0, [r0, #0xd5a + OV29_0230FC24_OFFSET_2]
 	cmp r0, #0
 	bne _0231037C
 	mov r0, r5
@@ -1464,19 +1543,19 @@ _02310474:
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
 	beq _023104C0
-	ldrb r1, [r4, #0x11f]
+	ldrb r1, [r4, #0x11f + OV29_0230FC24_OFFSET]
 	ldr r0, _02310AA8 ; =SPEED_BOOST_TURNS
 	add r2, r1, #1
 	ldrsh r0, [r0]
 	and r1, r2, #0xff
-	strb r2, [r4, #0x11f]
+	strb r2, [r4, #0x11f + OV29_0230FC24_OFFSET]
 	cmp r1, r0
 	blt _023104C0
 	mov r3, #0
 	mov r0, r5
 	mov r1, r5
 	mov r2, #0x7f
-	strb r3, [r4, #0x11f]
+	strb r3, [r4, #0x11f + OV29_0230FC24_OFFSET]
 	bl BoostSpeedOneStage
 _023104C0:
 	ldrb r0, [r4, #0xbd]
@@ -1621,7 +1700,7 @@ _023106C8:
 	ldr r0, [r6]
 	add r0, r0, sb, lsl #2
 	add r0, r0, #0x12000
-	ldr r8, [r0, #0xb28]
+	ldr r8, [r0, #0xb28 + OV29_0230FC24_OFFSET_2]
 	mov r0, r8
 	bl EntityIsValid__02311010
 	cmp r0, #0
@@ -1863,18 +1942,23 @@ _02310A4C:
 	beq _02310B6C
 	b _02310FF4
 	.align 2, 0
+#ifdef JAPAN
+#define OV29_0230FC24_DATA_OFFSET -0x2C0
+#else
+#define OV29_0230FC24_DATA_OFFSET 0
+#endif
 _02310A6C: .word ov10_022C4BBC
 _02310A70: .word 0x0000199A
 _02310A74: .word ov10_022C4FC4
 _02310A78: .word ov10_022C4A5C
-_02310A7C: .word 0x00000DE6
-_02310A80: .word 0x00000DE7
+_02310A7C: .word 0x00000DE6 + OV29_0230FC24_DATA_OFFSET
+_02310A80: .word 0x00000DE7 + OV29_0230FC24_DATA_OFFSET
 _02310A84: .word DUNGEON_PTR
-_02310A88: .word 0x00000DE8
-_02310A8C: .word 0x00000DE9
-_02310A90: .word 0x00000DEA
+_02310A88: .word 0x00000DE8 + OV29_0230FC24_DATA_OFFSET
+_02310A8C: .word 0x00000DE9 + OV29_0230FC24_DATA_OFFSET
+_02310A90: .word 0x00000DEA + OV29_0230FC24_DATA_OFFSET
 _02310A94: .word 0x00001303
-_02310A98: .word 0x00000DBD
+_02310A98: .word 0x00000DBD + OV29_0230FC24_DATA_OFFSET
 _02310A9C: .word ov10_022C46EC
 _02310AA0: .word 0x0000025F
 _02310AA4: .word ov10_022C46A0
@@ -1994,7 +2078,7 @@ _02310C28:
 	ldr r1, _02310AF0 ; =LEECH_SEED_DAMAGE_COOLDOWN
 	add r0, r0, r2, lsl #2
 	add r0, r0, #0x12000
-	ldr r7, [r0, #0xb78]
+	ldr r7, [r0, #0xb78 + OV29_0230FC24_OFFSET_2]
 	ldrsh r1, [r1]
 	ldr r0, _02310AF4 ; =LEECH_SEED_HP_DRAIN
 	cmp r7, #0
@@ -2094,13 +2178,13 @@ _02310DC4:
 	cmp r0, #0
 	bne _02310FF4
 _02310DE0:
-	ldrb r0, [r4, #0x106]
+	ldrb r0, [r4, #0x106 + OV29_0230FC24_OFFSET_3]
 	cmp r0, #0
 	beq _02310E9C
-	add r0, r4, #6
+	add r0, r4, #6 + OV29_0230FC24_OFFSET_3
 	add r0, r0, #0x100
 	bl TickStatusTurnCounter
-	ldrb r0, [r4, #0x106]
+	ldrb r0, [r4, #0x106 + OV29_0230FC24_OFFSET_3]
 	cmp r0, #0
 	bne _02310E9C
 	mov r0, #0
@@ -2217,7 +2301,7 @@ _02310F70:
 	strb r0, [r4, #0xd2]
 	mov r1, r5
 	mov r2, r0
-	strb r0, [r4, #0x154]
+	strb r0, [r4, #0x154 + OV29_0230FC24_OFFSET]
 	bl SubstitutePlaceholderStringTags
 	ldr r1, _0231100C ; =0x00000CBA
 	mov r0, r5
@@ -2236,9 +2320,9 @@ _02310FF4:
 	add sp, sp, #0x34
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02310FFC: .word 0x00000DEB
-_02311000: .word 0x00000DEC
+_02310FFC: .word 0x00000DEB + OV29_0230FC24_DATA_OFFSET
+_02311000: .word 0x00000DEC + OV29_0230FC24_DATA_OFFSET
 _02311004: .word 0x0000270F
 _02311008: .word 0x00000165
-_0231100C: .word 0x00000CBA
+_0231100C: .word 0x00000CBA + OV29_0230FC24_DATA_OFFSET
 	arm_func_end ov29_0230FC24

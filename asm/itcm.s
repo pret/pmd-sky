@@ -1090,6 +1090,46 @@ _01FF8F24: .word RENDER_3D
 
 	arm_func_start sub_01FF8F28
 sub_01FF8F28: ; 0x01FF8F28
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, lr}
+	ldr lr, _01FF8FAC ; =0x0209A138
+	mov r4, #0
+_01FF8F34:
+	cmp r4, #0
+	ldrb r5, [r0, r4]
+	ldreqb r6, [r1, r4]
+	beq _01FF8F70
+	add r3, r0, r4
+	cmp r5, #0xff
+	ldreqb r3, [r3, #-1]
+	ldrb r6, [r1, r4]
+	addeq r3, lr, r3, lsl #1
+	ldreqb r5, [r3, #1]
+	add r3, r1, r4
+	cmp r6, #0xff
+	ldreqb r3, [r3, #-1]
+	addeq r3, lr, r3, lsl #1
+	ldreqb r6, [r3, #1]
+_01FF8F70:
+	ldrb ip, [lr, r5, lsl #1]
+	ldrb r3, [lr, r6, lsl #1]
+	add r4, r4, #1
+	cmp ip, r3
+	beq _01FF8F90
+	mvnlo r0, #0
+	movhs r0, #1
+	ldmia sp!, {r4, r5, r6, pc}
+_01FF8F90:
+	cmp r5, #0
+	moveq r0, #0
+	ldmeqia sp!, {r4, r5, r6, pc}
+	cmp r4, r2
+	blt _01FF8F34
+	mov r0, #0
+	ldmia sp!, {r4, r5, r6, pc}
+	.align 2, 0
+_01FF8FAC: .word _02099E44
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, #0
 	str sl, [sp]
@@ -1175,10 +1215,115 @@ _01FF904C:
 	.align 2, 0
 _01FF9054: .word _02099E44
 _01FF9058: .word 0x0000FFFE
+#endif
 	arm_func_end sub_01FF8F28
 
 	arm_func_start sub_01FF905C
 sub_01FF905C: ; 0x01FF905C
+#ifdef JAPAN
+	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
+	mov sb, r1
+	mov sl, r0
+	mov r8, r2
+	mov r4, r3
+	bl sub_0202796C_JP
+	cmp sb, #0
+	mov r6, r0
+	cmpge r8, #0
+	ldmltia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
+	mov r0, r8, asr #2
+	add r5, r8, r0, lsr #29
+	mov r0, sl
+	mov r7, r5, asr #3
+	bl GetWindow
+	ldrb r1, [r0, #6]
+	mov r0, sb, asr #2
+	mov r2, r8, lsr #0x1f
+	mul r1, r7, r1
+	add r0, sb, r0, lsr #29
+	add r3, r1, r0, asr #3
+	rsb r1, r2, r8, lsl #29
+	mov r0, sl
+	add r3, r6, r3, lsl #6
+	add r1, r2, r1, ror #29
+	add r6, r3, r1, lsl #3
+	bl GetWindow
+	ldrb r0, [r0, #7]
+	cmp r0, r5, asr #3
+	cmpgt r4, #0
+	ldmleia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
+	mov r1, sb, lsr #0x1f
+	rsb r0, r1, sb, lsl #29
+	add r1, r1, r0, ror #29
+	ldr r2, _01FF912C ; =0x0209B488
+	mov r0, #0x18
+	mla r2, r1, r0, r2
+	ldr ip, [sp, #0x20]
+	mov r1, #8
+	mov r0, #0
+	b _01FF9120
+_01FF9054:
+	mov r8, r4
+	cmp r4, #8
+	movge r8, r1
+	mov r5, r0
+	mov r3, r0
+	mov r7, r0
+	b _01FF9084
+_01FF9070:
+	mov r3, r3, lsl #8
+	orr r3, r3, r5, lsr #24
+	orr r3, r3, ip, asr #31
+	orr r5, ip, r5, lsl #8
+	add r7, r7, #1
+_01FF9084:
+	cmp r7, r8
+	blt _01FF9070
+	cmp r3, #0
+	cmpeq r5, #0
+	beq _01FF9118
+	ldr r7, [r2, #4]
+	ldr r8, [r2, #0x10]
+	and sb, r3, r7
+	ldr r7, [r2]
+	mov sl, sb, lsl r8
+	and sb, r5, r7
+	rsb r7, r8, #0x20
+	ldr lr, [r6]
+	orr sl, sl, sb, lsr r7
+	sub r7, r8, #0x20
+	orr lr, lr, sb, lsl r8
+	ldr r8, [r6, #4]
+	orr sl, sl, sb, lsl r7
+	str lr, [r6]
+	orr r7, r8, sl
+	str r7, [r6, #4]
+	ldr r7, [r2, #0x14]
+	ldr sb, [r2, #8]
+	ldr r8, [r2, #0xc]
+	and r5, r5, sb
+	mov sb, r5, lsr r7
+	and r5, r3, r8
+	rsb r3, r7, #0x20
+	ldr r8, [r6, #0x44]
+	orr sb, sb, r5, lsl r3
+	sub r3, r7, #0x20
+	orr r7, r8, r5, lsr r7
+	orr sb, sb, r5, lsr r3
+	ldr r3, [r6, #0x40]
+	orr r3, r3, sb
+	str r3, [r6, #0x40]
+	str r7, [r6, #0x44]
+_01FF9118:
+	add r6, r6, #0x40
+	sub r4, r4, #8
+_01FF9120:
+	cmp r4, #0
+	bgt _01FF9054
+	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
+	.align 2, 0
+_01FF912C: .word 0x0209B488
+#else
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov sb, r0
 	ldr r4, [sp, #0x20]
@@ -1234,7 +1379,39 @@ _01FF911C:
 	cmp r6, r1
 	ble _01FF90F8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
+#endif
 	arm_func_end sub_01FF905C
+
+#ifdef JAPAN
+	arm_func_start sub_01FF9130_JP
+sub_01FF9130_JP: ; 0x01FF9130
+	stmdb sp!, {r4, r5, r6, r7, r8, lr}
+	mov r5, #0
+	mov r4, r5
+	mov r6, r5
+	mov r8, r5
+	mov r7, #0xff
+	mov r3, r5
+	mov r2, r5
+_01FF9150:
+	and ip, r6, r1
+	and lr, r7, r0
+	cmp ip, r3
+	cmpeq lr, r2
+	orreq r4, r4, r6
+	moveq r6, r6, lsl #8
+	movne r6, r6, lsl #8
+	add r8, r8, #1
+	orreq r5, r5, r7
+	orr r6, r6, r7, lsr #24
+	mov r7, r7, lsl #8
+	cmp r8, #8
+	blt _01FF9150
+	mov r0, r5
+	mov r1, r4
+	ldmia sp!, {r4, r5, r6, r7, r8, pc}
+	arm_func_end sub_01FF9130_JP
+#endif
 
 	arm_func_start sub_01FF9128
 sub_01FF9128: ; 0x01FF9128
@@ -2635,6 +2812,13 @@ _01FFA3BC:
 
 	arm_func_start AiMovement
 AiMovement: ; 0x01FFA3C4
+#ifdef JAPAN
+#define AI_MOVEMENT_OFFSET -4
+#define AI_MOVEMENT_OFFSET_2 -0xA4
+#else
+#define AI_MOVEMENT_OFFSET 0
+#define AI_MOVEMENT_OFFSET_2 0
+#endif
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x88
 	mov r4, r0
@@ -2679,10 +2863,10 @@ _01FFA458:
 	cmp r0, #0
 	bne _01FFA494
 	add r0, r8, #0x100
-	ldrh r1, [r0, #0x46]
+	ldrh r1, [r0, #0x46 + AI_MOVEMENT_OFFSET]
 	sub r2, sp, #4
 	strh r1, [r2]
-	ldrh r0, [r0, #0x48]
+	ldrh r0, [r0, #0x48 + AI_MOVEMENT_OFFSET]
 	strh r0, [r2, #2]
 	ldr r0, [r2]
 	bl CeilFixedPoint
@@ -2702,10 +2886,10 @@ _01FFA494:
 	strb r0, [r8, #0x4c]
 	ldrsh r1, [r4, #4]
 	add r0, r8, #0x100
-	strh r1, [r0, #0x7e]
+	strh r1, [r0, #0x7e + AI_MOVEMENT_OFFSET]
 	ldrsh r1, [r4, #6]
 	sub r1, r1, #1
-	strh r1, [r0, #0x80]
+	strh r1, [r0, #0x80 + AI_MOVEMENT_OFFSET]
 	b _01FFB2A4
 _01FFA4D4:
 	ldr r1, [sp]
@@ -2728,25 +2912,25 @@ _01FFA4D4:
 	ldr r1, [r3]
 	mov r0, #1
 	add r1, r1, #0xcc00
-	ldrh r5, [r1, #0xe4]
+	ldrh r5, [r1, #0xe4 + AI_MOVEMENT_OFFSET_2]
 	strh r5, [sb, #0x8c]
-	ldrh r1, [r1, #0xe6]
+	ldrh r1, [r1, #0xe6 + AI_MOVEMENT_OFFSET_2]
 	strh r1, [sb, #0x8e]
 	ldr r1, [r3]
 	add r1, r1, #0xcc00
-	ldrh r3, [r1, #0xe4]
-	strh r3, [r2, #0x7e]
-	ldrh r1, [r1, #0xe6]
-	strh r1, [r2, #0x80]
+	ldrh r3, [r1, #0xe4 + AI_MOVEMENT_OFFSET_2]
+	strh r3, [r2, #0x7e + AI_MOVEMENT_OFFSET]
+	ldrh r1, [r1, #0xe6 + AI_MOVEMENT_OFFSET_2]
+	strh r1, [r2, #0x80 + AI_MOVEMENT_OFFSET]
 	b _01FFAF28
 _01FFA550:
 	ldr r0, _01FFB2B4 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x3000
-	ldrb r0, [r0, #0xe38]
+	ldrb r0, [r0, #0xe38 + AI_MOVEMENT_OFFSET_2]
 	cmp r0, #0
 	beq _01FFA580
-	add r0, r1, #0x378
+	add r0, r1, #0x378 + AI_MOVEMENT_OFFSET_2
 	add r0, r0, #0x12800
 	str r0, [sp, #0x2c]
 	mov r0, #0x14
@@ -2759,14 +2943,14 @@ _01FFA580:
 	ldrb r0, [sb, #8]
 	cmp r0, #0
 	bne _01FFA5B0
-	add r0, r1, #0x328
+	add r0, r1, #0x328 + AI_MOVEMENT_OFFSET_2
 	add r0, r0, #0x12800
 	str r0, [sp, #0x2c]
 	mov r0, #4
 	str r0, [sp, #0x28]
 	b _01FFA5C4
 _01FFA5B0:
-	add r0, r1, #0x338
+	add r0, r1, #0x338 + AI_MOVEMENT_OFFSET_2
 	add r0, r0, #0x12800
 	str r0, [sp, #0x2c]
 	mov r0, #0x10
@@ -2794,7 +2978,7 @@ _01FFA5E0:
 	ldr r0, _01FFB2B4 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x3000
-	ldrb r0, [r0, #0xe38]
+	ldrb r0, [r0, #0xe38 + AI_MOVEMENT_OFFSET_2]
 	cmp r0, #0
 	beq _01FFA640
 	mov r0, r4
@@ -2820,9 +3004,9 @@ _01FFA640:
 	strh r0, [sb, #0x8e]
 	ldrh r1, [r6, #4]
 	ldr r0, [sp, #0x4c]
-	strh r1, [r0, #0x7e]
+	strh r1, [r0, #0x7e + AI_MOVEMENT_OFFSET]
 	ldrh r1, [r6, #6]
-	strh r1, [r0, #0x80]
+	strh r1, [r0, #0x80 + AI_MOVEMENT_OFFSET]
 _01FFA688:
 	add sl, sl, #1
 _01FFA68C:
@@ -2913,10 +3097,15 @@ _01FFA7C0:
 	ldrsh sl, [r4, #6]
 	ldr r1, [r0]
 	ldrsh r2, [r7, #6]
-	add r0, r1, #0x2a8
+	add r0, r1, #0x2a8 + AI_MOVEMENT_OFFSET_2
 	add r1, r1, r5, lsl #1
+#ifdef JAPAN
+	add r1, r1, #0xf100
+	ldrsh r1, [r1, #0xc4]
+#else
 	add r1, r1, #0xf200
 	ldrsh r1, [r1, #0x68]
+#endif
 	add r3, r0, #0xf000
 	sub r0, r2, sl
 	str r1, [sp, #0x30]
@@ -3123,9 +3312,9 @@ _01FFAAB8:
 	ldr r0, _01FFB2B4 ; =DUNGEON_PTR
 	ldr r1, [r0]
 	add r0, r1, #0x3000
-	ldrb r0, [r0, #0xe38]
+	ldrb r0, [r0, #0xe38 + AI_MOVEMENT_OFFSET_2]
 	cmp r0, #0
-	addne r0, r1, #0x378
+	addne r0, r1, #0x378 + AI_MOVEMENT_OFFSET_2
 	addne sb, r0, #0x12800
 	movne fp, #0x14
 	bne _01FFAB30
@@ -3134,12 +3323,12 @@ _01FFAAB8:
 	beq _01FFAB24
 	ldrb r0, [sl, #8]
 	cmp r0, #0
-	addeq r0, r1, #0x328
+	addeq r0, r1, #0x328 + AI_MOVEMENT_OFFSET_2
 	addeq sb, r0, #0x12800
 	moveq fp, #4
 	beq _01FFAB30
 _01FFAB24:
-	add r0, r1, #0x338
+	add r0, r1, #0x338 + AI_MOVEMENT_OFFSET_2
 	add sb, r0, #0x12800
 	mov fp, #0x10
 _01FFAB30:
@@ -3164,7 +3353,7 @@ _01FFAB50:
 	ldr r1, _01FFB2B4 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
-	ldrb r1, [r1, #0xe38]
+	ldrb r1, [r1, #0xe38 + AI_MOVEMENT_OFFSET_2]
 	cmp r1, #0
 	beq _01FFABAC
 	mov r0, r4
@@ -3249,7 +3438,7 @@ _01FFAC6C:
 	ldrh r5, [r5, #0x26]
 	strh r5, [sl, #0x80]
 	strb r2, [sl, #0x7e]
-	str r3, [sl, #0x120]
+	str r3, [sl, #0x120 + AI_MOVEMENT_OFFSET]
 	bl ov29_02301F20
 	cmp r0, #0
 	beq _01FFAD0C
@@ -3299,7 +3488,7 @@ _01FFAD14:
 	str r5, [sl, #0x84]
 	ldrh r2, [r5, #0x26]
 	strh r2, [sl, #0x80]
-	str r1, [sl, #0x120]
+	str r1, [sl, #0x120 + AI_MOVEMENT_OFFSET]
 	b _01FFAF28
 _01FFAD7C:
 	ldrb r0, [sl, #7]
@@ -3323,7 +3512,7 @@ _01FFADC0:
 	ldr r0, _01FFB2B4 ; =DUNGEON_PTR
 	mov r1, #0x1c
 	ldr r0, [r0]
-	add r0, r0, #0x2e8
+	add r0, r0, #0x2e8 + AI_MOVEMENT_OFFSET_2
 	add r0, r0, #0xec00
 	mla r0, r2, r1, r0
 	ldrsh r3, [r0, #2]
@@ -3355,7 +3544,7 @@ _01FFAE04:
 	mov r0, #0
 	str r0, [sl, #0x84]
 	strh r0, [sl, #0x80]
-	str r0, [sl, #0x120]
+	str r0, [sl, #0x120 + AI_MOVEMENT_OFFSET]
 	mov r0, #1
 	b _01FFAF28
 _01FFAE50:
@@ -3403,7 +3592,7 @@ _01FFAEB8:
 	strh r2, [sl, #0x8c]
 	ldrh r2, [r3, #0x6c]
 	strh r2, [sl, #0x8e]
-	str r1, [sl, #0x120]
+	str r1, [sl, #0x120 + AI_MOVEMENT_OFFSET]
 	b _01FFAF28
 _01FFAEF8:
 	add r6, r6, #1
@@ -3429,9 +3618,9 @@ _01FFAF28:
 	ldr sb, [r4, #0xb4]
 	ldrh r1, [sb, #0x8c]
 	add r0, sb, #0x100
-	strh r1, [r0, #0x7e]
+	strh r1, [r0, #0x7e + AI_MOVEMENT_OFFSET]
 	ldrh r1, [sb, #0x8e]
-	strh r1, [r0, #0x80]
+	strh r1, [r0, #0x80 + AI_MOVEMENT_OFFSET]
 	ldrsh r1, [r4, #4]
 	ldrsh r0, [sb, #0x8c]
 	cmp r1, r0
@@ -3502,16 +3691,16 @@ _01FFB040:
 	beq _01FFB0DC
 	ldrb r0, [sb, #6]
 	cmp r0, #0
-	ldreqb r0, [sb, #0x14f]
+	ldreqb r0, [sb, #0x14f + AI_MOVEMENT_OFFSET]
 	cmpeq r0, #0
 	bne _01FFB080
 	mov r1, #1
 	strb r1, [sb, #0x7d]
 	add r0, sb, #0x4a
-	strb r1, [sb, #0x14e]
+	strb r1, [sb, #0x14e + AI_MOVEMENT_OFFSET]
 	bl SetMonsterActionFields
 	mov r0, #1
-	strb r0, [sb, #0x151]
+	strb r0, [sb, #0x151 + AI_MOVEMENT_OFFSET]
 	b _01FFB2A4
 _01FFB080:
 	ldr r0, _01FFB2B8 ; =DIRECTIONS_XY
@@ -3533,7 +3722,7 @@ _01FFB080:
 	mov r1, #1
 	bl SetMonsterActionFields
 	mov r0, #1
-	strb r0, [sb, #0x151]
+	strb r0, [sb, #0x151 + AI_MOVEMENT_OFFSET]
 	b _01FFB2A4
 _01FFB0D4:
 	mov r0, #1
@@ -3650,16 +3839,16 @@ _01FFB264:
 	mov r1, #1
 	bl SetMonsterActionFields
 	mov r1, #1
-	strb r1, [sb, #0x151]
+	strb r1, [sb, #0x151 + AI_MOVEMENT_OFFSET]
 	ldrb r0, [sb, #7]
 	cmp r0, #0
 	movne r0, #0
 	strneb r0, [sb, #0x7d]
-	strneb r0, [sb, #0x14e]
+	strneb r0, [sb, #0x14e + AI_MOVEMENT_OFFSET]
 	bne _01FFB2A4
 	ldrb r0, [sb, #0x7d]
 	cmp r0, #0
-	strneb r1, [sb, #0x14e]
+	strneb r1, [sb, #0x14e + AI_MOVEMENT_OFFSET]
 _01FFB2A4:
 	add sp, sp, #0x88
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -3681,7 +3870,11 @@ CalculateAiTargetPos: ; 0x01FFB2C8
 	ldr r0, [r1]
 	ldr sb, [sl, #0xb4]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	ldrb r4, [sl, #0x25]
 	mov r5, #0
 	cmp r0, #0xa5
@@ -3759,6 +3952,17 @@ _01FFB3E4:
 	b _01FFB5D8
 _01FFB3F0:
 	ldr r0, _01FFB61C ; =DUNGEON_PTR
+#ifdef JAPAN
+	ldr r1, [sb, #0x11c]
+	ldr r2, [r0]
+	cmp r1, #0
+	add r0, r2, r4, lsl #1
+	add r1, r2, #0x204
+	add r0, r0, #0xf100
+	add r1, r1, #0xf000
+	add r6, r1, r4, lsl #7
+	ldrsh r5, [r0, #0xc4]
+#else
 	ldr r1, [sb, #0x120]
 	ldr r2, [r0]
 	cmp r1, #0
@@ -3768,6 +3972,7 @@ _01FFB3F0:
 	add r1, r1, #0xf000
 	add r6, r1, r4, lsl #7
 	ldrsh r5, [r0, #0x68]
+#endif
 	beq _01FFB460
 	mov r0, #8
 	bl DungeonRandInt
@@ -3933,6 +4138,11 @@ _01FFB654:
 
 	arm_func_start ChooseAiMove
 ChooseAiMove: ; 0x01FFB658
+#ifdef JAPAN
+#define CHOOSE_AI_MOVE_OFFSET -4
+#else
+#define CHOOSE_AI_MOVE_OFFSET 0
+#endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
 	ldr r1, _01FFBD14 ; =DUNGEON_PTR
@@ -3940,7 +4150,11 @@ ChooseAiMove: ; 0x01FFB658
 	ldr r0, [r1]
 	ldr r7, [sl, #0xb4]
 	add r0, r0, #0x4000
+#ifdef JAPAN
+	ldrb r0, [r0, #0x36]
+#else
 	ldrb r0, [r0, #0xda]
+#endif
 	bl AreMovesEnabled
 	cmp r0, #0
 	beq _01FFBD0C
@@ -3981,7 +4195,7 @@ _01FFB700:
 	cmp r0, #0
 	beq _01FFB7A8
 	mov r8, #0
-	add r6, r7, #0x124
+	add r6, r7, #0x124 + CHOOSE_AI_MOVE_OFFSET
 	mov r4, r8
 	mov r5, #1
 	b _01FFB7A0
@@ -4004,7 +4218,7 @@ _01FFB720:
 	b _01FFB774
 _01FFB760:
 	add r0, r7, r8, lsl #3
-	ldrb r0, [r0, #0x124]
+	ldrb r0, [r0, #0x124 + CHOOSE_AI_MOVE_OFFSET]
 	tst r0, #2
 	beq _01FFB77C
 	sub r8, r8, #1
@@ -4029,7 +4243,7 @@ _01FFB7A8:
 	mov r5, #0
 	str r5, [sp]
 	mov r0, r5
-	add r4, r7, #0x124
+	add r4, r7, #0x124 + CHOOSE_AI_MOVE_OFFSET
 	mov r2, r5
 	mov r3, #1
 _01FFB7C0:
@@ -4097,7 +4311,7 @@ _01FFB88C:
 	mov r2, #0
 	mov r3, r2
 	mov r4, #0x63
-	add r0, r7, #0x124
+	add r0, r7, #0x124 + CHOOSE_AI_MOVE_OFFSET
 	mov sb, r2
 	add r6, sp, #0xc
 	mov lr, #1
@@ -4154,7 +4368,7 @@ _01FFB964:
 	cmp r2, r3
 	blt _01FFB95C
 _01FFB96C:
-	add r0, r7, #0x124
+	add r0, r7, #0x124 + CHOOSE_AI_MOVE_OFFSET
 	mov sb, #0
 	str r0, [sp, #8]
 	add r4, sp, #0x1c
@@ -4366,7 +4580,7 @@ _01FFBC54:
 	bl UpdateAiTargetPos
 	b _01FFBD0C
 _01FFBC78:
-	add r3, r7, #0x124
+	add r3, r7, #0x124 + CHOOSE_AI_MOVE_OFFSET
 	mov r1, sl
 	add r2, r3, r2
 	bl AiConsiderMove
@@ -4378,7 +4592,7 @@ _01FFBC78:
 	b _01FFBCB4
 _01FFBCA0:
 	add r0, r7, r1, lsl #3
-	ldrb r0, [r0, #0x124]
+	ldrb r0, [r0, #0x124 + CHOOSE_AI_MOVE_OFFSET]
 	tst r0, #2
 	beq _01FFBCBC
 	sub r1, r1, #1
@@ -4442,8 +4656,13 @@ _01FFBD60:
 	mov r0, r6
 	ldr r2, [r1]
 	mov r1, #0x32
+#ifdef JAPAN
+	add r2, r2, #0x1840
+	add r2, r2, #0x18000
+#else
 	add r2, r2, #0xe4
 	add r2, r2, #0x19800
+#endif
 	add r4, r2, r3, lsl #4
 	bl AbilityIsActiveVeneer
 	cmp r0, #0
@@ -4494,7 +4713,11 @@ _01FFBE18:
 	ldr r0, [r4]
 	add r0, r0, r5, lsl #2
 	add r0, r0, #0x12000
+#ifdef JAPAN
+	ldr r6, [r0, #0xad4]
+#else
 	ldr r6, [r0, #0xb78]
+#endif
 	mov r0, r6
 	bl EntityIsValid__02319F8C
 	cmp r0, #0
@@ -4526,8 +4749,13 @@ LightningRodStormDrainCheck: ; 0x01FFBE5C
 _01FFBE80:
 	ldr r1, [fp]
 	mov r0, sl
+#ifdef JAPAN
+	add r1, r1, #0x1840
+	add r1, r1, #0x18000
+#else
 	add r1, r1, #0xe4
 	add r1, r1, #0x19800
+#endif
 	add r6, r1, r5, lsl #4
 	mov r1, #0x53
 	bl AbilityIsActiveVeneer
@@ -4565,10 +4793,17 @@ _01FFBE80:
 	bne _01FFBF4C
 	ldr r0, [sb, #0xb4]
 	ldr r2, [r6, r7, lsl #3]
+#ifdef JAPAN
+	ldrb r0, [r0, #0x10a]
+	ldr r1, [r2, #0xb4]
+	cmp r0, #0
+	ldreqb r0, [r1, #0x10a]
+#else
 	ldrb r0, [r0, #0x10b]
 	ldr r1, [r2, #0xb4]
 	cmp r0, #0
 	ldreqb r0, [r1, #0x10b]
+#endif
 	cmpeq r0, #0
 	beq _01FFBF44
 	cmp sb, r2
