@@ -2738,7 +2738,7 @@ DoMoveDamageWeightDependent: ; 0x023277B8
 	ldrsh r0, [r1, #4]
 	mov r5, r2
 	mov r4, r3
-	bl GetLowKickMultiplier
+	bl GetWeightMultiplier
 	mov r3, r0
 	mov r0, r7
 	mov r1, r6

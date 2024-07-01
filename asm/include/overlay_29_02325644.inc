@@ -41,11 +41,11 @@
 .public GetApparentWeather
 .public GetDamageSourceWrapper
 .public GetEffectAnimation
-.public GetLowKickMultiplier
 .public GetMoveAnimation
 .public GetMoveCategory
 .public GetMoveType
 .public GetTileAtEntity
+.public GetWeightMultiplier
 .public InitMove
 .public IRON_TAIL_LOWER_DEFENSE_CHANCE
 .public IsChargingTwoTurnMove

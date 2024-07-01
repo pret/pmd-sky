@@ -90797,8 +90797,8 @@ GetChanceAsleep: ; 0x020528E0
 _020528F8: .word _020B09B4
 	arm_func_end GetChanceAsleep
 
-	arm_func_start GetLowKickMultiplier
-GetLowKickMultiplier: ; 0x020528FC
+	arm_func_start GetWeightMultiplier
+GetWeightMultiplier: ; 0x020528FC
 	ldr r2, _02052914 ; =_020B09B4
 	mov r1, #0x44
 	ldr r2, [r2]
@@ -90807,7 +90807,7 @@ GetLowKickMultiplier: ; 0x020528FC
 	bx lr
 	.align 2, 0
 _02052914: .word _020B09B4
-	arm_func_end GetLowKickMultiplier
+	arm_func_end GetWeightMultiplier
 
 	arm_func_start GetSize
 GetSize: ; 0x02052918
