@@ -6067,7 +6067,7 @@
   02052C18 0000001C .text   GetChanceAsleep	(main_0200C4CC.o)
   02052C30 00000000 .text   $d	(main_0200C4CC.o)
   02052C34 00000000 .text   $a	(main_0200C4CC.o)
-  02052C34 0000001C .text   GetLowKickMultiplier	(main_0200C4CC.o)
+  02052C34 0000001C .text   GetWeightMultiplier	(main_0200C4CC.o)
   02052C4C 00000000 .text   $d	(main_0200C4CC.o)
   02052C50 00000000 .text   $a	(main_0200C4CC.o)
   02052C50 0000001C .text   GetSize	(main_0200C4CC.o)
@@ -39842,5 +39842,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Jun 23 23:18:55 2024
-# Link end time: Sun Jun 23 23:18:56 2024
+# Link start time: Mon Jul 01 04:13:49 2024
+# Link end time: Mon Jul 01 04:13:50 2024
