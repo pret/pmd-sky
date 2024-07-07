@@ -12,6 +12,7 @@
 .public CreateTextBox
 .public Debug_GetDebugFlag
 .public DrawTextInWindow
+.public ExitOverlay13
 .public FemaleToMaleForm
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
@@ -40,6 +41,7 @@
 .public ov11_023039D4
 .public ov11_02303D80
 .public ov11_0230D71C
+.public Overlay13SwitchFunctionNa238A1C8
 .public PreprocessString
 .public PreprocessStringFromId
 .public RandInt
