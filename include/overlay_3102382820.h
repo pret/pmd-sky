@@ -1,0 +1,6 @@
+#ifndef PMDSKY_OVERLAY_3102382820_H
+#define PMDSKY_OVERLAY_3102382820_H
+
+void EntryOverlay31(void);
+
+#endif //PMDSKY_OVERLAY_3102382820_H

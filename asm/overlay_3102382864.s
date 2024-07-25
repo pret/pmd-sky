@@ -1,29 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_31.inc"
+	.include "overlay_3102382864.inc"
 
 	.text
-
-	arm_func_start EntryOverlay31
-EntryOverlay31: ; 0x02382820
-	stmdb sp!, {r3, lr}
-	ldr r0, _0238285C ; =DUNGEON_WINDOW_PARAMS_3
-	bl sub_020348E4
-	cmp r0, #0
-	ldmeqia sp!, {r3, pc}
-	mov r0, #0x10
-	mov r1, #8
-	bl MemAlloc
-	ldr r1, _02382860 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	mov r2, #0
-	str r0, [r1]
-	str r2, [r0, #4]
-	mov r0, #0xa
-	str r0, [r1, #4]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0238285C: .word DUNGEON_WINDOW_PARAMS_3
-_02382860: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	arm_func_end EntryOverlay31
 
 	arm_func_start DrawDungeonMenuStatusWindow
 DrawDungeonMenuStatusWindow: ; 0x02382864
