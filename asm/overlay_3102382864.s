@@ -192,7 +192,7 @@ DungeonMenuSwitch: ; 0x02382AC0
 	str r0, [sp, #0x28]
 	bl sub_02025888
 	add r5, sp, #4
-	ldr r2, _02382B50 ; =ov31_02389E14
+	ldr r2, _02382B50 ; =DUNGEON_MENU_SWITCH_STR1
 	mov r1, #0x400
 	mov r3, #0
 	mov r6, r0
@@ -217,7 +217,7 @@ DungeonMenuSwitch: ; 0x02382AC0
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
 _02382B4C: .word DUNGEON_PTR
-_02382B50: .word ov31_02389E14
+_02382B50: .word DUNGEON_MENU_SWITCH_STR1
 	arm_func_end DungeonMenuSwitch
 
 	arm_func_start ov31_02382B54
@@ -9468,8 +9468,8 @@ DUNGEON_MAIN_MENU_ITEMS:
 	.byte 0x05, 0x00, 0x00, 0x00
 	.word 0x8B4 + OV31_DATA_OFFSET
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
-	.global ov31_02389E14
-ov31_02389E14:
+	.global DUNGEON_MENU_SWITCH_STR1
+DUNGEON_MENU_SWITCH_STR1:
 	.byte 0x5B, 0x64, 0x75, 0x6E, 0x67, 0x65, 0x6F, 0x6E, 0x3A, 0x30, 0x5D, 0x00
 	.global OVERLAY31_UNKNOWN_STRING_IDS
 OVERLAY31_UNKNOWN_STRING_IDS:
