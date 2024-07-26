@@ -6,7 +6,7 @@ struct PPStrValues {
     u32 field_0x4;
     u32 field_0x8;
     u32 field_0xB;
-    u8* dungeon_0;  // 0xC
+    u32 dungeon_0;  // 0xC
     u32 field_0x10;
     u32 field_0x14;
     u32 field_0x18;

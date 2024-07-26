@@ -29,6 +29,7 @@ void EntryOverlay31(void);
 #define LINE_HEIGHT 12
 #define X_OFFSET 115
 void DrawDungeonMenuStatusWindow(struct Window* window);
+u32 DungeonMenuSwitch(struct Window* window);
 
 
 

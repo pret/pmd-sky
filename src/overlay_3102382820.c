@@ -4,20 +4,33 @@ extern u32 DUNGEON_WINDOW_PARAMS_3[];
 extern struct {u32* a; u32 b;} OVERLAY31_UNKNOWN_POINTER__NA_238A260;
 extern struct dungeon* DUNGEON_PTR;
 
+extern const u8 DUNGEON_MENU_SWITCH_STR1[];// = "[dungeon:0]";
+
 extern void* MemAlloc(u32 len, u32 flags);
 extern void* sub_020348E4(u32*);
 
-struct entity* GetLeader(void);
-s32 CeilFixedPoint(struct fixed_point);
-u32 GetMoneyCarried(void);
-void* GetApparentWeather(u32);
-u32 sub_0204F9E0(void);
-void ov29_022E2A78(u8*, void*, u32); // The third argument isn't actually used in the
+
+struct Window {
+    u8 PAD[6];
+    u8 width; // 0x6: Window width in multiples of 8 pixels
+};
+
+
+extern struct entity* GetLeader(void);
+extern s32 CeilFixedPoint(struct fixed_point);
+extern u32 GetMoneyCarried(void);
+extern void* GetApparentWeather(u32);
+extern u32 sub_0204F9E0(void);
+extern void ov29_022E2A78(u8*, void*, u32); // The third argument isn't actually used in the
                                      // function (../asm/overlay_29_022E1A40.s#L1378)
-u8* StringFromId(u32);
-void PreprocessString(u8* dst, u32 dsize, const u8* src, u32 flags, struct PPStrValues* ptr);
-void DrawTextInWindow(struct Window*, u32, u32, u8*);
-void UpdateWindow(struct Window*);
+extern u8* StringFromId(u32);
+extern void PreprocessString(u8* dst, u32 dsize, const u8* src, u32 flags, struct PPStrValues* ptr);
+extern void DrawTextInWindow(struct Window*, u32, u32, u8*);
+extern void UpdateWindow(struct Window*);
+
+extern u8* sub_02025888(void);
+extern struct Window* GetWindow(struct Window*);
+extern s32 sub_020265A8(u8*); // Measures the text's width in pixels
 
 void EntryOverlay31(void) {
     u32* r0 = (u32*)sub_020348E4(DUNGEON_WINDOW_PARAMS_3);
@@ -96,5 +109,19 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
         }
     }
     
+    UpdateWindow(window);
+}
+
+u32 DungeonMenuSwitch(struct Window* window)
+{
+    struct PPStrValues str_values;
+    str_values.dungeon_0 = DUNGEON_PTR->dungeon | 0x40000;
+    str_values.digits_0 = DUNGEON_PTR->floor;
+    u8* str_buff = sub_02025888();
+    PreprocessString(str_buff, 0x400, DUNGEON_MENU_SWITCH_STR1, 0, &str_values);
+    struct Window* window2 = GetWindow(window);
+    s32 text_width = sub_020265A8(str_buff);
+    s32 x_offset = (window2->width * 8 - text_width) / 2;
+    DrawTextInWindow(window, x_offset, 2, str_buff);
     UpdateWindow(window);
 }

@@ -30,7 +30,6 @@
 .public CreateTextBox
 .public CreateTextBoxWithArg
 .public DUNGEON_MAIN_MENU_ITEMS
-.public DUNGEON_MENU_SWITCH_STR1
 .public DUNGEON_PTR
 .public DUNGEON_SUBMENU_ITEMS_1
 .public DUNGEON_SUBMENU_ITEMS_5
@@ -72,6 +71,7 @@
 .public DrawDungeonMenuStatusWindow
 .public DrawTextInWindow
 .public DrawTileGrid
+.public DungeonMenuSwitch
 .public FormatMoveString
 .public FormatMoveStringMore
 .public GetActiveTeamMember
@@ -101,7 +101,6 @@
 .public GetTile
 .public GetTrapInfo
 .public GetUnlockedTactics
-.public GetWindow
 .public GetWindowRectangle
 .public HideTileGrid
 .public InitPreprocessorArgs
@@ -264,8 +263,6 @@
 .public sub_0200D894
 .public sub_02017C74
 .public sub_02017C80
-.public sub_02025888
-.public sub_020265A8
 .public sub_02027B1C
 .public sub_0202810C
 .public sub_0202812C

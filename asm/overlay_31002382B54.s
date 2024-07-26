@@ -1,49 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_31002382AC0.inc"
+	.include "overlay_31002382B54.inc"
 
 	.text
-
-	arm_func_start DungeonMenuSwitch
-DungeonMenuSwitch: ; 0x02382AC0
-	stmdb sp!, {r3, r4, r5, r6, lr}
-	sub sp, sp, #0x54
-	ldr r1, _02382B4C ; =DUNGEON_PTR
-	mov r4, r0
-	ldr r1, [r1]
-	ldrb r0, [r1, #0x748]
-	orr r0, r0, #0x40000
-	str r0, [sp, #0x14]
-	ldrb r0, [r1, #0x749]
-	str r0, [sp, #0x28]
-	bl sub_02025888
-	add r5, sp, #4
-	ldr r2, _02382B50 ; =DUNGEON_MENU_SWITCH_STR1
-	mov r1, #0x400
-	mov r3, #0
-	mov r6, r0
-	str r5, [sp]
-	bl PreprocessString
-	mov r0, r4
-	bl GetWindow
-	mov r5, r0
-	mov r0, r6
-	bl sub_020265A8
-	ldrb r1, [r5, #6]
-	mov r3, r6
-	mov r2, #2
-	rsb r0, r0, r1, lsl #3
-	add r0, r0, r0, lsr #31
-	mov r1, r0, asr #1
-	mov r0, r4
-	bl DrawTextInWindow
-	mov r0, r4
-	bl UpdateWindow
-	add sp, sp, #0x54
-	ldmia sp!, {r3, r4, r5, r6, pc}
-	.align 2, 0
-_02382B4C: .word DUNGEON_PTR
-_02382B50: .word DUNGEON_MENU_SWITCH_STR1
-	arm_func_end DungeonMenuSwitch
 
 	arm_func_start ov31_02382B54
 ov31_02382B54: ; 0x02382B54
