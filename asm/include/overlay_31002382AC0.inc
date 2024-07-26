@@ -10,7 +10,6 @@
 .public BaseFormsEqual
 .public CanAiUseMove
 .public CanMonsterSpawn
-.public CeilFixedPoint
 .public CheckTeamMemberIdxVeneer
 .public CloseAdvancedTextBox
 .public CloseAdvancedTextBox2
@@ -31,6 +30,7 @@
 .public CreateTextBox
 .public CreateTextBoxWithArg
 .public DUNGEON_MAIN_MENU_ITEMS
+.public DUNGEON_MENU_SWITCH_STR1
 .public DUNGEON_PTR
 .public DUNGEON_SUBMENU_ITEMS_1
 .public DUNGEON_SUBMENU_ITEMS_5
@@ -69,12 +69,12 @@
 .public Debug_Print0
 .public DisableDungeonSubMenuOption
 .public DisplayMessage
+.public DrawDungeonMenuStatusWindow
 .public DrawTextInWindow
 .public DrawTileGrid
 .public FormatMoveString
 .public FormatMoveStringMore
 .public GetActiveTeamMember
-.public GetApparentWeather
 .public GetCurrentBagCapacity
 .public GetDexNumber
 .public GetFloorType
@@ -89,7 +89,6 @@
 .public GetLeaderChangeFlag
 .public GetLeaderMonster
 .public GetMaxPp
-.public GetMoneyCarried
 .public GetMonsterIdFromSpawnEntry
 .public GetMonsterName
 .public GetNbItemsInBag
@@ -233,7 +232,6 @@
 .public ov29_0235352C
 .public ov29_0237C91C
 .public ov29_0238280C
-.public DUNGEON_MENU_SWITCH_STR1
 .public ov31_02389E22
 .public ov31_02389F5C
 .public ov31_0238A044
@@ -315,7 +313,6 @@
 .public sub_020420F4
 .public sub_0204AEA0
 .public sub_0204F10C
-.public sub_0204F9E0
 .public sub_02053CA0
 .public sub_02054F44
 .public sub_02056228

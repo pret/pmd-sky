@@ -1,6 +1,7 @@
 #ifndef PMDSKY_DUNGEON_MODE_H
 #define PMDSKY_DUNGEON_MODE_H
 
+#include "util.h"
 #include "graphics.h"
 
 // Used in various contexts, like with entity positions in the dungeon
@@ -14,6 +15,19 @@ struct position {
 struct pixel_position {
     u32 x;
     u32 y;
+};
+
+// Dungeon data
+struct dungeon {
+    u8 PAD1[1864];
+    u8 dungeon;  // 0x748
+    u8 floor;    // 0x749
+    u8 PAD2[74554];
+#ifndef JAPAN
+    u32 PAD3[41];
+#endif
+    struct entity* party_members[4]; // 0x4800
+    // Possibly more stuff
 };
 
 // Entity type. This is used to tag generic entity pointers.
@@ -66,6 +80,27 @@ struct entity {
     u8 field_0xb2;
     u8 field_0xb3;
     void* info; // 0xB4: Points to info struct for monster/item/trap
+};
+
+// Info struct for leader
+struct leader_info {
+    u8 PAD[322];
+#ifndef JAPAN
+    u8 PAD2[4];
+#endif
+    struct fixed_point belly;     // 0x146
+    struct fixed_point max_belly; // 0x14a
+    // Possibly more stuff
+};
+
+// Info struct for party members
+struct party_member_info {
+    u8 PAD[16];
+    s16 hp_left; // 0x10
+    s16 hp_max_1; // 0x12
+    s16 field_0x14;
+    s16 hp_max_2; // 0x16
+    // Possibly more stuff
 };
 
 #endif //PMDSKY_DUNGEON_MODE_H
