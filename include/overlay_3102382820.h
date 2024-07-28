@@ -5,7 +5,10 @@
 #include "preprocessString.h"
 #include "dungeon_mode.h"
 
-struct Window;
+struct Window {
+    u8 PAD[6];
+    u8 width; // 0x6: Window width in multiples of 8 pixels
+};
 
 void EntryOverlay31(void);
 
@@ -29,7 +32,26 @@ void EntryOverlay31(void);
 #define LINE_HEIGHT 12
 #define X_OFFSET 115
 void DrawDungeonMenuStatusWindow(struct Window* window);
-u32 DungeonMenuSwitch(struct Window* window);
+void DungeonMenuSwitch(struct Window* window);
+
+struct struct_1 {
+    union {  // 0x0
+        s8 f[4];
+        s32 d;
+    };
+    u32 a;   // 0x4
+    u8 b[7]; // 0x8
+};
+
+struct struct_2 {
+    u32 b;        // 0x0
+    u8 PAD1[92];
+    u8* c;        // 0x60
+    u8 PAD2[50];
+};
+
+#define OV31_02382B54_CONST_1 (0x00000233)
+u32 ov31_02382B54(void);
 
 
 

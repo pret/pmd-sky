@@ -29,12 +29,10 @@
 .public CreateScrollBoxSingle
 .public CreateTextBox
 .public CreateTextBoxWithArg
-.public DUNGEON_MAIN_MENU_ITEMS
 .public DUNGEON_PTR
 .public DUNGEON_SUBMENU_ITEMS_1
 .public DUNGEON_SUBMENU_ITEMS_5
 .public DUNGEON_SUBMENU_ITEMS_6
-.public DUNGEON_WINDOW_PARAMS_1
 .public DUNGEON_WINDOW_PARAMS_10
 .public DUNGEON_WINDOW_PARAMS_11
 .public DUNGEON_WINDOW_PARAMS_12
@@ -45,7 +43,6 @@
 .public DUNGEON_WINDOW_PARAMS_17
 .public DUNGEON_WINDOW_PARAMS_18
 .public DUNGEON_WINDOW_PARAMS_19
-.public DUNGEON_WINDOW_PARAMS_2
 .public DUNGEON_WINDOW_PARAMS_20
 .public DUNGEON_WINDOW_PARAMS_21
 .public DUNGEON_WINDOW_PARAMS_22
@@ -59,7 +56,6 @@
 .public DUNGEON_WINDOW_PARAMS_30
 .public DUNGEON_WINDOW_PARAMS_31
 .public DUNGEON_WINDOW_PARAMS_32
-.public DUNGEON_WINDOW_PARAMS_4
 .public DUNGEON_WINDOW_PARAMS_5
 .public DUNGEON_WINDOW_PARAMS_6
 .public DUNGEON_WINDOW_PARAMS_7
@@ -68,10 +64,8 @@
 .public Debug_Print0
 .public DisableDungeonSubMenuOption
 .public DisplayMessage
-.public DrawDungeonMenuStatusWindow
 .public DrawTextInWindow
 .public DrawTileGrid
-.public DungeonMenuSwitch
 .public FormatMoveString
 .public FormatMoveStringMore
 .public GetActiveTeamMember
@@ -152,7 +146,6 @@
 .public SetAdvancedTextBoxField0x1C4
 .public SetAdvancedTextBoxState5
 .public SetMonsterActionFields
-.public ShouldMonsterRunAwayVariation
 .public ShowStringInDialogueBox
 .public SortItemsInBag
 .public SpecificRecruitCheck
@@ -231,6 +224,7 @@
 .public ov29_0235352C
 .public ov29_0237C91C
 .public ov29_0238280C
+.public ov31_02382B54
 .public ov31_02389E22
 .public ov31_02389F5C
 .public ov31_0238A044

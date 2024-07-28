@@ -1,20 +1,19 @@
 #include "overlay_3102382820.h"
 
-extern u32 DUNGEON_WINDOW_PARAMS_3[];
-extern struct {u32* a; u32 b;} OVERLAY31_UNKNOWN_POINTER__NA_238A260;
 extern struct dungeon* DUNGEON_PTR;
 
 extern const u8 DUNGEON_MENU_SWITCH_STR1[];// = "[dungeon:0]";
 
+extern struct struct_1* OVERLAY31_UNKNOWN_POINTER__NA_238A260[2];
+extern u32 DUNGEON_WINDOW_PARAMS_1;
+extern u32 DUNGEON_WINDOW_PARAMS_2;
+extern u32 DUNGEON_WINDOW_PARAMS_3;
+extern u32 DUNGEON_WINDOW_PARAMS_4;
+extern u32 DUNGEON_MAIN_MENU_ITEMS;
+
+
 extern void* MemAlloc(u32 len, u32 flags);
-extern void* sub_020348E4(u32*);
-
-
-struct Window {
-    u8 PAD[6];
-    u8 width; // 0x6: Window width in multiples of 8 pixels
-};
-
+extern struct struct_1* sub_020348E4(u32*);
 
 extern struct entity* GetLeader(void);
 extern s32 CeilFixedPoint(struct fixed_point);
@@ -32,15 +31,29 @@ extern u8* sub_02025888(void);
 extern struct Window* GetWindow(struct Window*);
 extern s32 sub_020265A8(u8*); // Measures the text's width in pixels
 
+extern u32 ShouldMonsterRunAwayVariation(struct entity*, u32);
+extern u32 Arm9LoadUnkFieldNa0x2029EC8(u32, u8*);
+extern u8 CreateParentMenuFromStringIds(u32*, u32, struct struct_2*, u32*);
+extern u8 CreateTextBox(u32*, void (*fun)(struct Window*));
+extern u32 IsParentMenuActive(s8);
+extern u32 sub_0202AB80(s8);
+extern void Arm9StoreUnkFieldNa0x2029ED8(u32, u8);
+extern u32 GetPressedButtons(u32, u16*);
+extern u32 ShouldMonsterRunAwayVariation(struct entity*, u32);
+extern void sub_0202AB94(s8, u32);
+extern void sub_0202B030(s8);
+extern void sub_0202F954(s8);
+extern struct struct_1* sub_0202ABB0(s8);
+
 void EntryOverlay31(void) {
-    u32* r0 = (u32*)sub_020348E4(DUNGEON_WINDOW_PARAMS_3);
+    struct struct_1* r0 = sub_020348E4(&DUNGEON_WINDOW_PARAMS_3);
     if (r0 == NULL) {
         return;
     }
-    r0 = (u32*)MemAlloc(16, 0x8);
-    OVERLAY31_UNKNOWN_POINTER__NA_238A260.a = r0;
-    r0[1] = 0;
-    OVERLAY31_UNKNOWN_POINTER__NA_238A260.b = 0xa;
+    r0 = (struct struct_1*)MemAlloc(16, 0x8);
+    OVERLAY31_UNKNOWN_POINTER__NA_238A260[0] = r0;
+    r0->d = 0;
+    OVERLAY31_UNKNOWN_POINTER__NA_238A260[1] = (struct struct_1*)0xa;
 }
 
 
@@ -112,7 +125,7 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
     UpdateWindow(window);
 }
 
-u32 DungeonMenuSwitch(struct Window* window)
+void DungeonMenuSwitch(struct Window* window)
 {
     struct PPStrValues str_values;
     str_values.dungeon_0 = DUNGEON_PTR->dungeon | 0x40000;
@@ -124,4 +137,77 @@ u32 DungeonMenuSwitch(struct Window* window)
     s32 x_offset = (window2->width * 8 - text_width) / 2;
     DrawTextInWindow(window, x_offset, 2, str_buff);
     UpdateWindow(window);
+}
+
+u32 ov31_02382B54(void)
+{
+    u16 pressed_buttons;
+    struct struct_2 sp;
+    struct entity* leader;
+    
+    switch (OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a) {
+        case 0:
+            OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a++;
+            break;
+        
+        case 1:
+            for (int i = 0; i<7; i++) {
+                OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b[i] = 0;
+            }
+            leader = GetLeader();
+            if (ShouldMonsterRunAwayVariation(leader, 1)) {
+                OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b[0] = 3;
+                OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b[1] = 3;
+                OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b[2] = 3;
+                OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b[4] = 3;
+            }
+            sp.c = OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b;
+            sp.b = Arm9LoadUnkFieldNa0x2029EC8(5, sp.c);
+
+            OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0] = CreateParentMenuFromStringIds(&DUNGEON_WINDOW_PARAMS_1, OV31_02382B54_CONST_1, &sp, &DUNGEON_MAIN_MENU_ITEMS);
+
+            OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[2] = CreateTextBox(&DUNGEON_WINDOW_PARAMS_4, DrawDungeonMenuStatusWindow);
+            OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[1] = CreateTextBox(&DUNGEON_WINDOW_PARAMS_2, DungeonMenuSwitch);
+            OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a++;
+            break;
+        
+        case 2:
+            if (IsParentMenuActive(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0])) {
+                u8 tmp4 = sub_0202AB80(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0]);
+
+                Arm9StoreUnkFieldNa0x2029ED8(5, tmp4);
+
+                GetPressedButtons(0, &pressed_buttons);
+                if ((pressed_buttons & 0x400) == 0)
+                    break;
+                
+                struct entity* leader = GetLeader();
+
+                if (ShouldMonsterRunAwayVariation(leader, 1))
+                    break;
+
+                sub_0202AB94(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0], 0);
+
+                sub_0202B030(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0]);
+
+                sub_0202F954(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[1]);
+
+                sub_0202F954(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[2]);
+
+                OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a++;
+            } else {
+                sub_0202F954(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[1]);
+
+                sub_0202F954(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[2]);
+                OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a++;
+            }
+            break;
+        
+        case 3:
+            OVERLAY31_UNKNOWN_POINTER__NA_238A260[1] = sub_0202ABB0(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0]);
+            OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a++;
+            return 4;
+            break;
+    }
+    return 1;
 }
