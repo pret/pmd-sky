@@ -1,16 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_31002382E08.inc"
+	.include "overlay_31002382E18.inc"
 
 	.text
-
-	arm_func_start ov31_02382E08
-ov31_02382E08: ; 0x02382E08
-	ldr r0, _02382E14 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	ldr r0, [r0, #4]
-	bx lr
-	.align 2, 0
-_02382E14: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	arm_func_end ov31_02382E08
 
 	arm_func_start ov31_02382E18
 ov31_02382E18: ; 0x02382E18
