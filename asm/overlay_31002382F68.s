@@ -1,50 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_31002382ED4.inc"
+	.include "overlay_31002382F68.inc"
 
 	.text
-
-	arm_func_start ov31_02382ED4
-ov31_02382ED4: ; 0x02382ED4
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	ldr r0, _02382F60 ; =OVERLAY31_UNKNOWN_STRUCT__NA_2389E30
-	bl sub_020348E4
-	cmp r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-	mov r0, #0x18
-	mov r1, #8
-	bl MemAlloc
-	ldr r1, _02382F64 ; =ov31_0238A2A0
-	mov r2, #0
-	str r0, [r1, #4]
-	str r2, [r0, #4]
-	ldr r0, [r1, #4]
-	str r5, [r0, #8]
-	ldr r0, [r1, #4]
-	str r2, [r0, #0xc]
-	ldr r0, [r1, #4]
-	str r2, [r0, #0x10]
-	bl GetFloorType
-	mov r4, #0
-	cmp r0, #2
-	moveq r4, #2
-	beq _02382F50
-	cmp r0, #1
-	moveq r4, #1
-	beq _02382F50
-	add r0, r5, #4
-	bl ov29_02338708
-	cmp r0, #0
-	movne r4, #3
-_02382F50:
-	ldr r0, _02382F64 ; =ov31_0238A2A0
-	ldr r0, [r0, #4]
-	str r4, [r0, #0x14]
-	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
-_02382F60: .word OVERLAY31_UNKNOWN_STRUCT__NA_2389E30
-_02382F64: .word ov31_0238A2A0
-	arm_func_end ov31_02382ED4
 
 	arm_func_start ov31_02382F68
 ov31_02382F68: ; 0x02382F68

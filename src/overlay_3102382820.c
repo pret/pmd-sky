@@ -7,15 +7,17 @@ extern const u8 DUNGEON_MENU_SWITCH_STR1[];// = "[dungeon:0]";
 extern struct struct_1* OVERLAY31_UNKNOWN_POINTER__NA_238A260[2];
 extern u32 DUNGEON_WINDOW_PARAMS_1;
 extern u32 DUNGEON_WINDOW_PARAMS_2;
-extern u32 DUNGEON_WINDOW_PARAMS_3;
+extern struct struct_1 DUNGEON_WINDOW_PARAMS_3;
 extern u32 DUNGEON_WINDOW_PARAMS_4;
 extern u32 DUNGEON_MAIN_MENU_ITEMS;
 
-extern u32 ov31_0238A2A0[2];
+extern struct struct_3* ov31_0238A2A0[2];
+
+extern struct struct_1 OVERLAY31_UNKNOWN_STRUCT__NA_2389E30;
 
 
-extern void* MemAlloc(u32 len, u32 flags);
-extern struct struct_1* sub_020348E4(u32*);
+extern void* MemAlloc(u32 size, u32 nmemb);
+//extern u32 sub_020348E4(struct struct_1*);
 
 extern struct entity* GetLeader(void);
 extern s32 CeilFixedPoint(struct fixed_point);
@@ -53,13 +55,15 @@ extern void MemFree(void*);
 
 extern void ov29_022EA428(u32, u32);
 extern void AdvanceFrame(u8);
-extern void ov31_02382ED4(u32);
 extern u32 ov29_022F0B9C(void);
 extern void ov29_022E0C2C(u32);
 
+extern u32 GetFloorType(void);
+extern u32 ov29_02338708(u32*);
+
 void EntryOverlay31(void) {
-    struct struct_1* r0 = sub_020348E4(&DUNGEON_WINDOW_PARAMS_3);
-    if (r0 == NULL) {
+    struct struct_1* r0;
+    if (sub_020348E4(&DUNGEON_WINDOW_PARAMS_3) == 0) {
         return;
     }
     r0 = (struct struct_1*)MemAlloc(16, 0x8);
@@ -241,14 +245,14 @@ struct struct_1* ov31_02382E08(void)
     return OVERLAY31_UNKNOWN_POINTER__NA_238A260[1];
 }
 
-void ov31_02382E18(u32 arg_1, u32 arg_2)
+void ov31_02382E18(u32* arg_1, u32 arg_2)
 {
     ov29_022EA428(6, 0);
     AdvanceFrame(0x62);
     AdvanceFrame(0x62);
     ov31_02382ED4(arg_1);
 
-    while ((u8)(ov31_0238A2A0[1] != 0)) {
+    while ((u8)(ov31_0238A2A0[1] != NULL)) {
         AdvanceFrame(0x62);
     }
     
@@ -262,4 +266,30 @@ void ov31_02382E18(u32 arg_1, u32 arg_2)
         ov29_022EA428(0, 0);
     }
     ov29_022E0C2C(1);
+}
+
+void ov31_02382ED4(u32* arg_1)
+{
+    struct struct_3* tmp1;
+    if (sub_020348E4(&OVERLAY31_UNKNOWN_STRUCT__NA_2389E30) == 0)
+        return;
+
+    tmp1 = MemAlloc(sizeof(struct struct_3), 8);
+    ov31_0238A2A0[1] = tmp1;
+    ov31_0238A2A0[1]->field_0x4 = 0;
+    ov31_0238A2A0[1]->a = arg_1;
+    ov31_0238A2A0[1]->b = 0;    
+    ov31_0238A2A0[1]->c = 0;    
+
+    u32 floor_type = GetFloorType();
+    u32 r4 = 0;
+    if (floor_type == 2) {
+        r4 = 2;
+    } else if (floor_type == 1) {
+        r4 = 1;
+    } else if (ov29_02338708(arg_1+1)) {
+        r4 = 3;
+    }
+
+    ov31_0238A2A0[1]->d = r4;
 }

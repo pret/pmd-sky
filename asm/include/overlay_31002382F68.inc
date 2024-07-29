@@ -71,7 +71,6 @@
 .public GetActiveTeamMember
 .public GetCurrentBagCapacity
 .public GetDexNumber
-.public GetFloorType
 .public GetItemAction
 .public GetItemCategoryVeneer
 .public GetItemInfo
@@ -128,7 +127,6 @@
 .public OVERLAY31_UNKNOWN_POINTER__NA_238A288
 .public OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 .public OVERLAY31_UNKNOWN_STRING_IDS
-.public OVERLAY31_UNKNOWN_STRUCT__NA_2389E30
 .public OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0
 .public OVERLAY31_UNKNOWN_STRUCT__NA_2389FE8
 .public OVERLAY31_UNKNOWN_STRUCT__NA_238A144
@@ -204,7 +202,6 @@
 .public ov29_023021F0
 .public ov29_02302368
 .public ov29_02302388
-.public ov29_02338708
 .public ov29_0233A0E8
 .public ov29_023468FC
 .public ov29_02346E5C

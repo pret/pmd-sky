@@ -1,6 +1,7 @@
 #ifndef PMDSKY_OVERLAY_3102382820_H
 #define PMDSKY_OVERLAY_3102382820_H
 
+#include "main_020348E4.h"
 #include "util.h"
 #include "preprocessString.h"
 #include "dungeon_mode.h"
@@ -34,12 +35,6 @@ void EntryOverlay31(void);
 void DrawDungeonMenuStatusWindow(struct Window* window);
 void DungeonMenuSwitch(struct Window* window);
 
-struct struct_1 {
-    s8 f[4]; // 0x0
-    u32 a;   // 0x4
-    u8 b[7]; // 0x8
-};
-
 struct struct_2 {
     u32 b;        // 0x0
     u8 PAD1[92];
@@ -47,11 +42,21 @@ struct struct_2 {
     u8 PAD2[50];
 };
 
+struct struct_3 {
+    u32 field_0x0;
+    u32 field_0x4;
+    u32* a; // 0x8
+    u32 b;  // 0xC
+    u32 c;  // 0x10
+    u32 d;  // 0x14
+};
+
 #define OV31_02382B54_CONST_1 (0x00000233)
 u32 ov31_02382B54(void);
 void ov31_02382DAC(void);
 struct struct_1* ov31_02382E08(void);
-void ov31_02382E18(u32 arg_1, u32 arg_2);
+void ov31_02382E18(u32* arg_1, u32 arg_2);
+void ov31_02382ED4(u32* arg_1);
 
 
 
