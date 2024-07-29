@@ -1,35 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_31002382DAC.inc"
+	.include "overlay_31002382E08.inc"
 
 	.text
-
-	arm_func_start ov31_02382DAC
-ov31_02382DAC: ; 0x02382DAC
-	stmdb sp!, {r3, lr}
-	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	ldr r0, [r0]
-	cmp r0, #0
-	ldmeqia sp!, {r3, pc}
-	ldrsb r0, [r0, #1]
-	bl CloseTextBox
-	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	ldr r0, [r0]
-	ldrsb r0, [r0, #2]
-	bl CloseTextBox
-	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	ldr r0, [r0]
-	ldrsb r0, [r0]
-	bl CloseParentMenu
-	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	ldr r0, [r0]
-	bl MemFree
-	ldr r0, _02382E04 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	mov r1, #0
-	str r1, [r0]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_02382E04: .word OVERLAY31_UNKNOWN_POINTER__NA_238A260
-	arm_func_end ov31_02382DAC
 
 	arm_func_start ov31_02382E08
 ov31_02382E08: ; 0x02382E08

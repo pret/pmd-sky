@@ -45,6 +45,10 @@ extern void sub_0202B030(s8);
 extern void sub_0202F954(s8);
 extern struct struct_1* sub_0202ABB0(s8);
 
+extern void CloseTextBox(s8);
+extern void CloseParentMenu(s8);
+extern void MemFree(void*);
+
 void EntryOverlay31(void) {
     struct struct_1* r0 = sub_020348E4(&DUNGEON_WINDOW_PARAMS_3);
     if (r0 == NULL) {
@@ -210,4 +214,16 @@ u32 ov31_02382B54(void)
             break;
     }
     return 1;
+}
+
+void ov31_02382DAC(void)
+{
+    if (OVERLAY31_UNKNOWN_POINTER__NA_238A260[0] == NULL)
+        return;
+
+    CloseTextBox(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[1]);
+    CloseTextBox(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[2]);
+    CloseParentMenu(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0]);
+    MemFree(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]);
+    OVERLAY31_UNKNOWN_POINTER__NA_238A260[0] = NULL;
 }

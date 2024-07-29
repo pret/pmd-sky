@@ -225,6 +225,7 @@
 .public ov29_0237C91C
 .public ov29_0238280C
 .public ov31_02382B54
+.public ov31_02382DAC
 .public ov31_02389E22
 .public ov31_02389F5C
 .public ov31_0238A044
