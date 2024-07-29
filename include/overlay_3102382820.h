@@ -35,10 +35,7 @@ void DrawDungeonMenuStatusWindow(struct Window* window);
 void DungeonMenuSwitch(struct Window* window);
 
 struct struct_1 {
-    union {  // 0x0
-        s8 f[4];
-        s32 d;
-    };
+    s8 f[4]; // 0x0
     u32 a;   // 0x4
     u8 b[7]; // 0x8
 };

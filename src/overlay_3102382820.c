@@ -52,7 +52,7 @@ void EntryOverlay31(void) {
     }
     r0 = (struct struct_1*)MemAlloc(16, 0x8);
     OVERLAY31_UNKNOWN_POINTER__NA_238A260[0] = r0;
-    r0->d = 0;
+    r0->a = 0;
     OVERLAY31_UNKNOWN_POINTER__NA_238A260[1] = (struct struct_1*)0xa;
 }
 
