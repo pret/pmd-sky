@@ -51,6 +51,7 @@ struct struct_2 {
 u32 ov31_02382B54(void);
 void ov31_02382DAC(void);
 struct struct_1* ov31_02382E08(void);
+void ov31_02382E18(u32 arg_1, u32 arg_2);
 
 
 

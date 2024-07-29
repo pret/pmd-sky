@@ -1,64 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_31002382E18.inc"
+	.include "overlay_31002382ED4.inc"
 
 	.text
-
-	arm_func_start ov31_02382E18
-ov31_02382E18: ; 0x02382E18
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	mov r4, r0
-	mov r8, r1
-	mov r0, #6
-	mov r1, #0
-	bl ov29_022EA428
-	mov r0, #0x62
-	bl AdvanceFrame
-	mov r0, #0x62
-	bl AdvanceFrame
-	mov r0, r4
-	bl ov31_02382ED4
-	mov r5, #0
-	mov r6, #1
-	mov r7, #0x62
-	ldr r4, _02382ED0 ; =ov31_0238A2A0
-	b _02382E64
-_02382E5C:
-	mov r0, r7
-	bl AdvanceFrame
-_02382E64:
-	ldr r0, [r4, #4]
-	cmp r0, #0
-	movne r0, r6
-	moveq r0, r5
-	tst r0, #0xff
-	bne _02382E5C
-	mov r0, #0x62
-	bl AdvanceFrame
-	bl ov29_022F0B9C
-	cmp r0, #0
-	beq _02382EA0
-	mov r0, #0xb
-	mov r1, #0
-	bl ov29_022EA428
-	b _02382EC4
-_02382EA0:
-	cmp r8, #0
-	beq _02382EB8
-	mov r0, #0xb
-	mov r1, #0
-	bl ov29_022EA428
-	b _02382EC4
-_02382EB8:
-	mov r0, #0
-	mov r1, r0
-	bl ov29_022EA428
-_02382EC4:
-	mov r0, #1
-	bl ov29_022E0C2C
-	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	.align 2, 0
-_02382ED0: .word ov31_0238A2A0
-	arm_func_end ov31_02382E18
 
 	arm_func_start ov31_02382ED4
 ov31_02382ED4: ; 0x02382ED4

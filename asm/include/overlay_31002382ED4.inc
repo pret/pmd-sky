@@ -168,7 +168,6 @@
 .public ov10_022BD394
 .public ov10_022BD474
 .public ov29_022E08F4
-.public ov29_022E0C2C
 .public ov29_022E1618
 .public ov29_022E1620
 .public ov29_022E2A78

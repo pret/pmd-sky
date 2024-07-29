@@ -11,6 +11,8 @@ extern u32 DUNGEON_WINDOW_PARAMS_3;
 extern u32 DUNGEON_WINDOW_PARAMS_4;
 extern u32 DUNGEON_MAIN_MENU_ITEMS;
 
+extern u32 ov31_0238A2A0[2];
+
 
 extern void* MemAlloc(u32 len, u32 flags);
 extern struct struct_1* sub_020348E4(u32*);
@@ -48,6 +50,12 @@ extern struct struct_1* sub_0202ABB0(s8);
 extern void CloseTextBox(s8);
 extern void CloseParentMenu(s8);
 extern void MemFree(void*);
+
+extern void ov29_022EA428(u32, u32);
+extern void AdvanceFrame(u8);
+extern void ov31_02382ED4(u32);
+extern u32 ov29_022F0B9C(void);
+extern void ov29_022E0C2C(u32);
 
 void EntryOverlay31(void) {
     struct struct_1* r0 = sub_020348E4(&DUNGEON_WINDOW_PARAMS_3);
@@ -231,4 +239,27 @@ void ov31_02382DAC(void)
 struct struct_1* ov31_02382E08(void)
 {
     return OVERLAY31_UNKNOWN_POINTER__NA_238A260[1];
+}
+
+void ov31_02382E18(u32 arg_1, u32 arg_2)
+{
+    ov29_022EA428(6, 0);
+    AdvanceFrame(0x62);
+    AdvanceFrame(0x62);
+    ov31_02382ED4(arg_1);
+
+    while ((u8)(ov31_0238A2A0[1] != 0)) {
+        AdvanceFrame(0x62);
+    }
+    
+    AdvanceFrame(0x62);
+
+    if (ov29_022F0B9C()) {
+        ov29_022EA428(11, 0);
+    } else if (arg_2) {
+        ov29_022EA428(11, 0);
+    } else {
+        ov29_022EA428(0, 0);
+    }
+    ov29_022E0C2C(1);
 }
