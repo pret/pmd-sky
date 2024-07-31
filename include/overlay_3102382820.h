@@ -57,6 +57,7 @@ void ov31_02382DAC(void);
 struct struct_1* ov31_02382E08(void);
 void ov31_02382E18(u32* arg_1, u32 arg_2);
 void ov31_02382ED4(u32* arg_1);
+void ov31_02382F68(struct Window* window);
 
 
 

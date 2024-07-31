@@ -1,33 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_31002382F68.inc"
+	.include "overlay_31002382FBC.inc"
 
 	.text
-
-	arm_func_start ov31_02382F68
-ov31_02382F68: ; 0x02382F68
-	stmdb sp!, {r4, lr}
-	ldr r1, _02382FB4 ; =ov31_0238A2A0
-	ldr r2, _02382FB8 ; =ov31_02389E22
-	ldr r1, [r1, #4]
-	mov r4, r0
-	ldr r0, [r1, #0x14]
-	mov r0, r0, lsl #2
-	ldrh r0, [r2, r0]
-	bl StringFromId
-	mov r3, r0
-	ldr ip, _02382FB4 ; =ov31_0238A2A0
-	mov r0, r4
-	mov r1, #0x10
-	mov r2, #0x12
-	str r3, [ip]
-	bl DrawTextInWindow
-	mov r0, r4
-	bl UpdateWindow
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_02382FB4: .word ov31_0238A2A0
-_02382FB8: .word ov31_02389E22
-	arm_func_end ov31_02382F68
 
 	arm_func_start ov31_02382FBC
 ov31_02382FBC: ; 0x02382FBC

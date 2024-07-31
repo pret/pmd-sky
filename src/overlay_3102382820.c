@@ -11,9 +11,11 @@ extern struct struct_1 DUNGEON_WINDOW_PARAMS_3;
 extern u32 DUNGEON_WINDOW_PARAMS_4;
 extern u32 DUNGEON_MAIN_MENU_ITEMS;
 
-extern struct struct_3* ov31_0238A2A0[2];
+extern struct {u8* str; struct struct_3* st3;} ov31_0238A2A0;
 
 extern struct struct_1 OVERLAY31_UNKNOWN_STRUCT__NA_2389E30;
+
+extern u16 ov31_02389E22[];
 
 
 extern void* MemAlloc(u32 size, u32 nmemb);
@@ -252,7 +254,7 @@ void ov31_02382E18(u32* arg_1, u32 arg_2)
     AdvanceFrame(0x62);
     ov31_02382ED4(arg_1);
 
-    while ((u8)(ov31_0238A2A0[1] != NULL)) {
+    while ((u8)(ov31_0238A2A0.st3 != NULL)) {
         AdvanceFrame(0x62);
     }
     
@@ -275,11 +277,11 @@ void ov31_02382ED4(u32* arg_1)
         return;
 
     tmp1 = MemAlloc(sizeof(struct struct_3), 8);
-    ov31_0238A2A0[1] = tmp1;
-    ov31_0238A2A0[1]->field_0x4 = 0;
-    ov31_0238A2A0[1]->a = arg_1;
-    ov31_0238A2A0[1]->b = 0;    
-    ov31_0238A2A0[1]->c = 0;    
+    ov31_0238A2A0.st3 = tmp1;
+    ov31_0238A2A0.st3->field_0x4 = 0;
+    ov31_0238A2A0.st3->a = arg_1;
+    ov31_0238A2A0.st3->b = 0;    
+    ov31_0238A2A0.st3->c = 0;    
 
     u32 floor_type = GetFloorType();
     u32 r4 = 0;
@@ -291,5 +293,14 @@ void ov31_02382ED4(u32* arg_1)
         r4 = 3;
     }
 
-    ov31_0238A2A0[1]->d = r4;
+    ov31_0238A2A0.st3->d = r4;
+}
+
+void ov31_02382F68(struct Window* window)
+{
+    u8* str = StringFromId(ov31_02389E22[ov31_0238A2A0.st3->d * 2]);
+
+    ov31_0238A2A0.str = str;
+    DrawTextInWindow(window, 16, 18, str);
+    UpdateWindow(window);
 }
