@@ -11,7 +11,7 @@ extern struct struct_1 DUNGEON_WINDOW_PARAMS_3;
 extern u32 DUNGEON_WINDOW_PARAMS_4;
 extern u32 DUNGEON_MAIN_MENU_ITEMS;
 
-extern struct {u8* str; struct struct_3* st3;} ov31_0238A2A0;
+extern struct struct_4 ov31_0238A2A0;
 
 extern struct struct_1 OVERLAY31_UNKNOWN_STRUCT__NA_2389E30;
 
@@ -61,7 +61,7 @@ extern u32 ov29_022F0B9C(void);
 extern void ov29_022E0C2C(u32);
 
 extern u32 GetFloorType(void);
-extern u32 ov29_02338708(u32*);
+extern u32 ov29_02338708(struct position*);
 
 void EntryOverlay31(void) {
     struct struct_1* r0;
@@ -81,14 +81,15 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
     u8 str_buff[DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE];
     u8 member_name_buffer[256];
     struct entity* leader;
-    struct leader_info* leader_info;
+    struct monster* leader_info;
     u8* str;
     s32 line_offset;
     u8 is_valid_member;
     s32 i;
     
     leader = GetLeader();
-    leader_info = (struct leader_info*)leader->info;
+    leader_info = (struct monster*)leader->info;
+    //str_values.dungeon_0 = leader_info->roost;
     
     str_values.digits_0 = CeilFixedPoint(leader_info->belly);
     str_values.digits_1 = CeilFixedPoint(leader_info->max_belly);
@@ -121,13 +122,14 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
             is_valid_member = (party_member->type != ENTITY_NOTHING);
         }
         if (is_valid_member) {
-            struct party_member_info* member_info = party_member->info;
+            struct monster* member_info = party_member->info;
             ov29_022E2A78(member_name_buffer, party_member, 0);
 
             str_values.string0 = member_name_buffer;
-            str_values.value_0 = member_info->hp_left;
+            str_values.value_0 = member_info->hp;
 
-            str_values.value_1 = MIN(member_info->hp_max_1 + member_info->hp_max_2, DRAW_DUNGEON_MENU_STATUS_WINDOW_CONST_2);
+            str_values.value_1 = MIN(member_info->max_hp_stat + member_info->max_hp_boost,
+                                     DRAW_DUNGEON_MENU_STATUS_WINDOW_CONST_2);
         
             str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_5);
             PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
@@ -247,7 +249,7 @@ struct struct_1* ov31_02382E08(void)
     return OVERLAY31_UNKNOWN_POINTER__NA_238A260[1];
 }
 
-void ov31_02382E18(u32* arg_1, u32 arg_2)
+void ov31_02382E18(struct entity* arg_1, u32 arg_2)
 {
     ov29_022EA428(6, 0);
     AdvanceFrame(0x62);
@@ -270,7 +272,7 @@ void ov31_02382E18(u32* arg_1, u32 arg_2)
     ov29_022E0C2C(1);
 }
 
-void ov31_02382ED4(u32* arg_1)
+void ov31_02382ED4(struct entity* arg_1)
 {
     struct struct_3* tmp1;
     if (sub_020348E4(&OVERLAY31_UNKNOWN_STRUCT__NA_2389E30) == 0)
@@ -278,7 +280,7 @@ void ov31_02382ED4(u32* arg_1)
 
     tmp1 = MemAlloc(sizeof(struct struct_3), 8);
     ov31_0238A2A0.st3 = tmp1;
-    ov31_0238A2A0.st3->field_0x4 = 0;
+    ov31_0238A2A0.st3->f = 0;
     ov31_0238A2A0.st3->a = arg_1;
     ov31_0238A2A0.st3->b = 0;    
     ov31_0238A2A0.st3->c = 0;    
@@ -289,7 +291,7 @@ void ov31_02382ED4(u32* arg_1)
         r4 = 2;
     } else if (floor_type == 1) {
         r4 = 1;
-    } else if (ov29_02338708(arg_1+1)) {
+    } else if (ov29_02338708(&(arg_1->pos))) {
         r4 = 3;
     }
 

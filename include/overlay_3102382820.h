@@ -5,6 +5,7 @@
 #include "util.h"
 #include "preprocessString.h"
 #include "dungeon_mode.h"
+#include "dungeon.h"
 
 struct Window {
     u8 PAD[6];
@@ -43,20 +44,47 @@ struct struct_2 {
 };
 
 struct struct_3 {
+    s8                e[4]; // 0x0
+    u32               f;    // 0x4
+    struct entity*    a;    // 0x8
+    u32               b;    // 0xC
+    u32               c;    // 0x10
+    u32               d;    // 0x14
+};
+
+struct struct_5 {
     u32 field_0x0;
     u32 field_0x4;
-    u32* a; // 0x8
-    u32 b;  // 0xC
-    u32 c;  // 0x10
-    u32 d;  // 0x14
+    u8 PAD1[172];
+    struct struct_6* a; // 0xB4
+};
+
+struct struct_6 {
+    u8  PAD[74];
+    u16 a;   // 0x4A
+    u16 field_0x4c;
+    u8  b;   // 0x4E
+    u8  field_0x4f;
+    u16 c;   // 0x50
+    u16 d;   // 0x52
+    u8  e;   // 0x54
+    u8  field_0x55;
+    u16 f;   // 0x56
+    u16 g;   // 0x58
+};
+
+struct struct_4 {
+    u8* str;
+    struct struct_3* st3;
 };
 
 #define OV31_02382B54_CONST_1 (0x00000233)
+    
 u32 ov31_02382B54(void);
 void ov31_02382DAC(void);
 struct struct_1* ov31_02382E08(void);
-void ov31_02382E18(u32* arg_1, u32 arg_2);
-void ov31_02382ED4(u32* arg_1);
+void ov31_02382E18(struct entity* arg_1, u32 arg_2);
+void ov31_02382ED4(struct entity* arg_1);
 void ov31_02382F68(struct Window* window);
 
 
