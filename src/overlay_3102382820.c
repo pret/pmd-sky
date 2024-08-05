@@ -148,7 +148,7 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
 void DungeonMenuSwitch(struct Window* window)
 {
     struct PPStrValues str_values;
-    str_values.dungeon_0 = DUNGEON_PTR->dungeon | 0x40000;
+    str_values.dungeon_0 = DUNGEON_PTR->id | 0x40000;
     str_values.digits_0 = DUNGEON_PTR->floor;
     u8* str_buff = sub_02025888();
     PreprocessString(str_buff, 0x400, DUNGEON_MENU_SWITCH_STR1, 0, &str_values);

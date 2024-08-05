@@ -20,17 +20,17 @@ struct pixel_position {
 };
 
 // Dungeon data
-struct dungeon {
-    u8 PAD1[1864];
-    u8 dungeon;  // 0x748
-    u8 floor;    // 0x749
-    u8 PAD2[74554];
-#ifndef JAPAN
-    u8 PAD3[164];
-#endif
-    struct entity* party_members[4]; // 0x12B28
-    // Possibly more stuff
-};
+/* struct dungeon { */
+/*     u8 PAD1[1864]; */
+/*     u8 dungeon;  // 0x748 */
+/*     u8 floor;    // 0x749 */
+/*     u8 PAD2[74554]; */
+/* #ifndef JAPAN */
+/*     u8 PAD3[164]; */
+/* #endif */
+/*     struct entity* party_members[4]; // 0x12B28 */
+/*     // Possibly more stuff */
+/* }; */
 
 // Item info
 struct item {
@@ -930,6 +930,555 @@ struct monster_summary {
     // While in ground mode, it's always filled with STATUS_NONE.
     enum status_id active_statuses[30];
     undefined2 _padding_0x76;
+};
+
+// Info about a mission destination floor
+struct mission_destination_info {
+    bool is_destination_floor;  // 0x0: Whether or not the current floor is a mission destination
+    enum mission_type type; // 0x1:
+    // 0x2: The meaning of this field depends on the type field; see union mission_subtype.
+    u8 subtype;
+    // 0x3: The index of the mission in the job list?
+    u8 mission_job_list_idx;
+    // 0x4: Item to retrieve, if this is an item-retrieval mission
+    enum item_id item_to_retrieve;
+    enum item_id item_to_deliver;     // 0x6: Item to deliver to the client, if relevant
+    enum item_id special_target_item; // 0x8: For Sealed Chamber and Treasure Memo missions
+    enum monster_id client;           // 0xA: The client on the mission listing
+    enum monster_id rescue_target;    // 0xC: The monster to be rescued
+    // 0xE: Usually just the target to defeat. If an outlaw has minions, the monster IDs will be
+    // listed in subsequent entries. Note that there can be multiple minions of the same species,
+    // which is not reflected here.
+    enum monster_id enemy_species[3];
+    u8 n_enemy_species; // 0x14: Length of the preceding array
+    undefined field_0x15;
+    // 0x16: Fixed room ID of the destination floor, if relevant
+    // (e.g., Chambers, Challenge Letters, etc.)
+    enum fixed_room_id fixed_room_id;
+    // 0x17: Related to missions where you have to obtain an item? Possibly related to the item
+    // being picked up and/or destroyed?
+    bool unk_mission_item_tracker1;
+    undefined field_0x18;
+    undefined field_0x19;
+    // 0x1A: Related to missions where you have to obtain an item? Possibly related to the item
+    // being picked up and/or destroyed?
+    bool unk_mission_item_tracker2;
+    // 0x1B: Will be set after the target enemy has been defeated.
+    // If there are minions, this flag applies just to the main outlaw.
+    bool target_enemy_is_defeated;
+};
+
+// Contains data about a monster that spawns in a dungeon
+struct monster_spawn_entry {
+    u16 level_mult_512; // 0x0: Spawn level << 9
+    // 0x2: Incremental spawn weight of this entry for normal spawns
+    u16 incremental_spawn_weight;
+    // 0x4: Incremental spawn weight of this entry for monster house spawns
+    u16 incremental_spawn_weight_monster_house;
+    // 0x6: Monster id. Depending on where this struct is used, it can have values above 600
+    // to list secondary gender entries.
+    enum monster_id id;
+};
+
+// Dungeon floor properties
+struct floor_properties {
+    enum floor_layout layout; // 0x0
+    // 0x1: Affects the number of rooms to be generated. If it's positive, a slight random variation
+    // (between -2 and +1) is applied to the value (the final value must be at least 1). If it's
+    // negative, its absolute value is used without adding a random variation.
+    s8 room_density;
+    u8 tileset; // 0x2
+    // 0x3: Indexes into the music ID table in overlay 10 to determine the floor's music track.
+    // See the relevant descriptions in the overlay 10 symbols for more information.
+    u8 music_table_idx;
+    enum weather_id weather; // 0x4
+    // 0x5: Controls how many connections will be made between grid cells
+    u8 floor_connectivity;
+    // 0x6: Controls how many enemies will be spawned. If 0, no enemies will spawn, even as the
+    // player walks.
+    // The final value will be 0 in the special case that density is 0. Otherwise, the final value
+    // will be randomized between density / 2 and density - 1, but no lower than 1.
+    // The code seems to imply that the value was meant to be signed, since it contains a section
+    // that takes the absolute value of the density while skipping the random variation, similar to
+    // room_density.
+    u8 enemy_density;
+    u8 kecleon_shop_spawn_chance;  // 0x7: Percentage chance from 0-100
+    u8 monster_house_spawn_chance; // 0x8: Percentage chance from 0-100
+    u8 maze_room_chance;           // 0x9: Percentage chance from 0-100
+    u8 sticky_item_chance;         // 0xA
+    // 0xB: Whether or not dead ends are allowed in the floor layout. If false, dead ends will be
+    // corrected during floor generation (or rather, they should be, but the implementation is
+    // buggy)
+    bool allow_dead_ends;
+    // 0xC: Maximum number of secondary structures that can be generated on the floor
+    u8 max_secondary_structures;
+    // 0xD: room_flags: 1-byte bitfield
+    bool f_secondary_structures : 1; // Whether secondary structures are allowed
+    u8 room_flags_unk1 : 1;
+    bool f_room_imperfections : 1; // Whether room imperfections are allowed
+    u8 room_flags_unk3 : 5;
+
+    undefined field_0xe;
+    u8 item_density; // 0xF: Controls how many items will be spawned
+    u8 trap_density; // 0x10: Controls how many traps will be spawned
+    u8 floor_number; // 0x11: The current floor number within the overall dungeon
+    enum fixed_room_id fixed_room_id; // 0x12
+    u8 extra_hallways;               // 0x13: Number of extra hallways to generate
+    u8 buried_item_density; // 0x14: Controls how many buried items (in walls) will be spawned
+    // 0x15: Controls how much secondary terrain (water, lava, and this actually applies to chasms
+    // too) will be spawned
+    u8 secondary_terrain_density;
+    // 0x16: Vision range (in tiles) when standing on a hallway.
+    // A value of 0 means no limit, a value > 0 enables darkness on the floor.
+    u8 visibility_range;
+    u8 max_money_amount_div_5; // 0x17: 1/5 the maximum amount for Poké spawns
+    // 0x18: Chance of an item spawning on each tile in a Kecleon shop
+    enum shop_item_positions shop_item_positions;
+    // 0x19: Chance that a Monster House will be an itemless one
+    u8 itemless_monster_house_chance;
+    // 0x1A: Values are shifted relative to enum hidden_stairs_type.
+    // 0 means HIDDEN_STAIRS_SECRET_BAZAAR, 1 means HIDDEN_STAIRS_SECRET_ROOM, and
+    // 255 still means HIDDEN_STAIRS_RANDOM_SECRET_BAZAAR_OR_SECRET_ROOM.
+    u8 hidden_stairs_type;
+    u8 hidden_stairs_spawn_chance; // 0x1B
+    u8 enemy_iq;                   // 0x1C: IQ stat of enemies
+    u8 iq_booster_value; // 0x1E: IQ increase from the IQ booster item upon entering the floor
+};
+
+// Contains the data required to display a tile on the minimap
+struct minimap_display_tile {
+    undefined4 field_0x0;
+    undefined4 field_0x4;
+    undefined4 field_0x8;
+    undefined4 field_0x0C;
+    undefined4 field_0x10;
+    undefined4 field_0x14;
+    undefined4 field_0x18;
+    undefined4 field_0x1C;
+    undefined4 field_0x20;
+    undefined4 field_0x24;
+    undefined4 field_0x28;
+    undefined4 field_0x2C;
+    undefined4 field_0x30;
+    undefined4 field_0x34;
+    undefined4 field_0x38;
+    undefined4 field_0x3C;
+};
+
+// Contains the graphical representation of minimap tiles
+struct minimap_display_data {
+    // 0x0: Matrix that contains tile display data. Each chunk of 4x4 tiles shares
+    // a single entry in this matrix. (To calculate which entry corresponds to a
+    // given (x,y) coordinate, simply divide both x and y by 2 and drop decimals)
+    struct minimap_display_tile tile_matrix_1[16][28];
+    // 0x7000: Another matrix just like the first one
+    struct minimap_display_tile tile_matrix_2[16][28];
+    // 0xE000: Weird byte matrix.
+    // The code that initializes this matrix fills 56 bytes
+    // per row, which seems like an oversight.
+    // On top of that, starting at 0xE1C0 there's a pointer table that gets overwritten every time
+    // this matrix is rebuilt, only to be restored later. There's probably
+    // an union involved somewhere, but right now there's not enough information
+    // to know where exactly.
+    undefined field_0xE000[32][28];
+    undefined overwritten_extra_bytes[28]; // 0xE380
+    undefined4 field_0xE39C[41];           // 0xE39C: Array of pointers
+    undefined4 field_0xE440;
+    undefined field_0xE444;
+    undefined field_0xE445;
+    undefined field_0xE446;
+    undefined field_0xE447;
+    undefined field_0xE448;
+    // Padding?
+    undefined field_0xE449;
+    undefined field_0xE44A;
+    undefined field_0xE44B;
+};
+
+// Struct that seems to hold data related to the map, the camera and the touchscreen numbers
+struct display_data {
+    struct position camera_pos; // 0x0: Position of the tile the camera is currently pointing to
+    // 0x4: Copy of 0x0. Used to detect changes in the camera's position.
+    struct position camera_pos_mirror;
+    // 0x8: Pixel position of the tile the camera is currently pointing to
+    struct position camera_pixel_pos;
+    struct position camera_pixel_pos_mirror; // 0xC: Mirror of 0x8
+    // 0x10: Entity currently being pointed by the camera, mostly used to
+    // control rendering of the dungeon, GUI, minimap, etc.
+    struct entity* camera_target;
+    // 0x14: Appears to be used to determine the offset to render the screen from normal when
+    // shaking.
+    u32 screen_shake_offset;
+    // 0x18: Appears to be the intensity value for when the screen shakes. Decremented by
+    // 0x1 until 0x0.
+    u32 screen_shake_intensity;
+    // 0x1C: Appears to be the value to set to display_data::screen_shake_intensity when it
+    // reaches 0x0. (This number is usually 0x0 so the screen stops shaking after.)
+    u32 screen_shake_intensity_reset;
+    undefined field_0x20; // 0x20: Initialized to 0x3.
+    // 0x21: Same as floor_properties::visibility_range
+    // Affects the number of map tiles around the player's position that get marked as
+    // "visited" while exploring, as well as how far away you can see enemies under non-illuminated
+    // conditions (outside of this range, enemies will not be visible on screen).
+    u8 visibility_range;
+    // 0x22: True if the pokémon currently pointed by the camera has
+    // the status_id::STATUS_BLINKER effect
+    bool blinded;
+    // 0x23: True after using a Luminous Orb or in floors where darkness is forcefully disabled
+    bool luminous;
+    // 0x24: If false and luminous is false as well, darkness will be displayed graphically.
+    // This is set in dungeons that aren't naturally dark, and also in some fixed room floors.
+    bool natural_lighting;
+    // 0x25: True if the pokémon currently pointed by the camera has the Map Surveyor IQ skill
+    // active
+    bool map_surveyor;
+    // 0x26: True if enemies should be shown on the map.
+    // Seems to be a dependent property computed as
+    // (leader has Power Ears status OR leader has X-Ray Specs equipped).
+    // This is NOT affected by the luminous flag.
+    bool can_see_enemies;
+    // 0x27: True if items are being shown on the map. Similar to can_see_enemies.
+    bool can_see_items;
+    // 0x28: True if traps are being shown on the map. Similar to can_see_enemies.
+    bool can_see_traps;
+    // 0x29: True if the pokémon currently pointed by the camera has the
+    // status_id::STATUS_CROSS_EYED effect.
+    // Causes all entities to be displayed as green circles on the map.
+    bool hallucinating;
+    bool can_see_stairs;  // 0x2A: True if stairs are being shown on the map
+    undefined field_0x2B; // 0x2B: Initialized to 0
+    undefined field_0x2C;
+    bool darkness;        // 0x2D: True if there's darkness on the floor
+    undefined field_0x2E; // 0x2E: Initialized to 1
+    // 0x2F: True if the leader is being pointed by the camera right now. If false, UI digits will
+    // be displayed in green.
+    bool leader_pointed;
+    undefined field_0x30; // 0x30: Initialized to 1
+    // 0x31: Set to 1 when losing in a dungeon. Seems to cause display_data::0x38 to
+    // display_data::leader_max_hp_touch_screen to become 0xFFFF (-1).
+    bool unk_fade_to_black_tracker;
+    undefined field_0x32;   // 0x32: Initialized to 0
+    undefined field_0x33;   // 0x33: Initialized to 0
+    undefined field_0x34;   // 0x34: Is used, related to lighting?
+    bool team_menu_or_grid; // 0x35: True when the team menu is opened or while Y is being held
+    // Derived from internal direction in leader info block
+    enum direction_id leader_target_direction;        // 0x36
+    enum direction_id leader_target_direction_mirror; // 0x37
+    undefined2 field_0x38;                                // 0x38: Initialized to 0xFFFF (-1).
+    undefined2 field_0x3A;                                // 0x3A: Initialized to 0xFFFF (-1).
+    s16 floor_touch_screen;         // 0x3C: Floor number displayed on the touch screen
+    s16 leader_level_touch_screen;  // 0x3E: Leader's level displayed on the touch screen
+    s16 leader_hp_touch_screen;     // 0x40: Leader's current HP displayed on the touch screen
+    s16 leader_max_hp_touch_screen; // 0x42: Leader's max HP displayed on the touch screen
+    undefined2 field_0x44;
+    // Padding?
+    undefined field_0x46;
+    undefined field_0x47;
+};
+
+// Used during floor generation to keep track of what entities should be spawned where
+struct spawn_flags {
+    u16 flags;
+    //bool f_stairs : 1;
+    //bool f_item : 1;
+    //bool f_trap : 1;
+    //bool f_monster : 1;
+    //u16 spawn_flags_unk4 : 12;
+};
+
+// Used during dungeon play to record the visibility of a tile.
+struct visibility_flags {
+    u16 flags;
+    // If f_revealed == true and f_visited == false, the tile will appear as gray on the map.
+    // This happens, e.g., when a Luminous Orb is used.
+    //bool f_revealed : 1; // Revealed on the map.
+    //bool f_visited : 1;  // Visited by the player
+    //u16 visibility_flags_unk2 : 14;
+};
+
+// These flags seem to occupy the same memory location, so the meaning is context-dependent.
+union spawn_or_visibility_flags {
+    struct spawn_flags spawn;
+    struct visibility_flags visibility;
+};
+
+// Information about the rooms on the current floor
+struct room_data {
+    u8 room_id;
+    undefined field_0x1;                 // Initialized to 0
+    struct position bottom_right_corner; // 0x2
+    struct position top_left_corner;     // 0x6
+    undefined field_0xa;                 // Doesn't get initialized, likely padding
+    undefined field_0xb;                 // Doesn't get initialized, likely padding
+    undefined4 field_0xc;                // Initialized to (bottom_right_corner.x - 1) * 0x1C
+    undefined4 field_0x10;               // Initialized to (bottom_right_corner.y - 1) * 0x1C
+    undefined4 field_0x14;               // Initialized to (top_left_corner.x + 1) * 0x1C
+    undefined4 field_0x18;               // Initialized to (top_left_corner.y + 1) * 0x1C
+};
+
+// Tile data
+struct tile {
+    // 0x0: terrain_flags: 2-byte bitfield
+    u16 terrain_flags;
+    //enum terrain_type terrain_type : 2;
+    // This tile can be corner-cut when walking. Seemingly only used during dungeon generation.
+    //bool f_corner_cuttable : 1;
+    // Includes room tiles right next to a hallway, and branching points within corridors.
+    // Only applies to natural halls, not ones made by Absolute Mover, not "hallways" made of
+    // secondary terrain, etc. Used by the AI for navigation.
+    //bool f_natural_junction : 1;
+    // This tile is impassable, even with Absolute Mover/Mobile Scarf. Used for the map border,
+    // key chamber walls, walls in boss battle rooms, etc.
+    //bool f_impassable_wall : 1;
+    //bool f_in_kecleon_shop : 1;  // In a Kecleon Shop
+    //bool f_in_monster_house : 1; // In a Monster House
+    //uint16_t terrain_flags_unk7 : 1;
+    // Cannot be broken by Absolute Mover. Set naturally on key doors.
+    //bool f_unbreakable : 1;
+    // Tile is any type of "stairs" (normal stairs, Hidden Stairs, Warp Zone)
+    //bool f_stairs : 1;
+    //uint16_t terrain_flags_unk10 : 1;
+    //bool f_key_door : 1;            // Tile is a key door
+    //bool f_key_door_key_locked : 1; // Key door is locked and requires a Key to open
+    // Key door is locked and requires an escort to open (for Sealed Chamber missions)
+    //bool f_key_door_escort_locked : 1;
+    //uint16_t terrain_flags_unk14 : 1;
+    // Tile is open terrain but unreachable from the stairs spawn point. Only set during dungeon
+    // generation.
+    //bool f_unreachable_from_stairs : 1;
+
+    // 0x2: Seems to be used for spawning entities during dungeon generation, and for visibility
+    // during dungeon play
+    union spawn_or_visibility_flags spawn_or_visibility_flags;
+    u16 texture_id; // 0x4: Maybe? Changing this causes the tile texture to change
+    undefined field_0x6;
+    // 0x7: Room index. 0xFF if not in a room, 0xFE on junctions during map generation (it gets set
+    // to 0xFF later).
+    u8 room;
+    // 0x8: Where a monster standing on this tile is allowed to move.
+    // Each element is a bitflag that corresponds to one of the first four values of
+    // enum mobility_type. Each bit in the bitflag corresponds to the values of enum direction,
+    // where 1 means a monster with that mobility type is allowed to walk in that direction.
+    u8 walkable_neighbor_flags[4];
+    struct entity* monster; // 0xC: Pointer to a monster on this tile, if any
+    // 0x10: Pointer to an entity other than a monster on this tile (item/trap)
+    struct entity* object;
+};
+
+// Data related to dungeon generation
+struct dungeon_generation_info {
+    // 0x0: Set if the floor layout is guaranteed to be a Monster House, or the dungeon generation
+    // algorithm fails
+    bool force_create_monster_house;
+    // 0x1: Set if the locked door on the floor has already been opened.
+    bool locked_door_opened;
+    // 0x2: Set if a kecleon shop was properly spawned.
+    bool kecleon_shop_spawned;
+    // 0x3: When a non-zero value, the one-room orb will fail.
+    undefined unk_one_room_flag;
+    bool dough_seed_extra_poke_flag;
+    // 0x5: Room index of Monster House on the floor. 0xFF if there's no Monster House
+    u8 monster_house_room;
+    // 0x6: Related to when a monster from a fixed room faints. Maybe to check if the floor
+    // should be over after knocking them out?
+    undefined unk_fixed_room_static_monster_tracker;
+    undefined field_0x7;
+    // 0x8: The type of the hidden stairs on the current floor.
+    enum hidden_stairs_type hidden_stairs_type;
+    // 0xC: Used to check to load the corresponding hidden fixed room and information for
+    // the corresponding type of hidden floor.
+    enum hidden_stairs_type hidden_floor_type;
+    s16 tileset_id; // 0x10
+    // 0x12: Music table index (see the same field in struct floor_properties)
+    u16 music_table_idx;
+    // 0x14: Controls which trap graphics to use for the staircase. Usually 0x2B (27) and
+    // 0x2C (28) for down and up respectively.
+    u16 staircase_visual_idx;
+    enum fixed_room_id fixed_room_id; // 0x16
+    undefined field_0x17;
+    undefined field_0x18;
+    undefined field_0x19;
+    u16 floor_generation_attempts; // 0x1A: Number of attempts at floor layout generation
+    struct tile tiles[32][56];          // 0x1C
+    struct position team_spawn_pos;     // 0x8C1C: Position of the team spawn
+    struct position stairs_pos;         // 0x8C20: Position of the stairs spawn
+    // 0x8C24: Position of the Hidden Stairs spawn, or (-1, -1) if no Hidden Stairs
+    struct position hidden_stairs_pos;
+    // 0x8C28: Spawn position of each of the team members
+    struct position individual_team_spawn_positions[4];
+    // There's another 6 words that look like spawn positions right after these 4
+};
+
+// Trap info
+struct trap {
+    enum trap_id id;
+    // If 0 or 2, the trap will activate only when a team member steps on it. If 1, the trap will
+    // activate only when an enemy steps on it. Naturally, this seems to be 0 for traps and 2 for
+    // Wonder Tiles
+    u8 team;
+
+    // 0x2: flags: 1-byte bitfield
+    u8 flags;
+    //bool f_unbreakable : 1; // If true, the trap can't be broken (for example, using a Trapbust Orb)
+    //u8 flags_unk1 : 7;
+
+    undefined field_0x3;
+};
+
+// Struct that contains some data used when spawning new enemies
+struct enemy_spawn_stats {
+    enum monster_id id; // 0x0
+    u16 level;          // 0x2
+    // 0x4: Spawn moves. Useless since each individual enemy gets its own when spawning.
+    enum move_id moves[4];
+    u16 max_hp; // 0xC
+    u8 atk;     // 0xE
+    u8 def;     // 0xF
+    u8 sp_atk;  // 0x10
+    u8 sp_def;  // 0x11
+};
+
+// Contains the necessary information to spawn a Kecleon shopkeeper.
+struct spawned_shopkeeper_data {
+    enum monster_id monster_id;    // 0x0: The id of the monster to spawn
+    enum monster_behavior behavior; // 0x2: NPC behavior of the monster
+    bool valid;                         // 0x3: Indicates that this spawn data is valid
+    u8 pos_x;                      // 0x4
+    u8 pos_y;                      // 0x5
+};
+
+// Appears to contain diagnostic information related to the damage calculation routines.
+struct damage_calc_diag {
+    enum type_id move_type; // 0x0: The type of the last move used
+    undefined field_0x1;
+    undefined field_0x2;
+    undefined field_0x3;
+    enum move_category move_category; // 0x4: The category of the last move used
+    // 0x8: The type matchup of the last move used against the individual types of the defender
+    enum type_matchup move_indiv_type_matchups[2];
+    // 0xA: The modified offensive stat stage of the attacker for the last move used
+    u8 offensive_stat_stage;
+    // 0xB: The modified defensive stat stage of the defender for the last move used
+    u8 defensive_stat_stage;
+    // 0xC: The base offensive stat of the attacker for the last move used
+    u16 offensive_stat;
+    // 0xE: The base defensive stat of the defender for the last move used
+    u16 defensive_stat;
+    // 0x10: The Flash Fire boost of the attacker when a Fire move was last used
+    u16 flash_fire_boost;
+    // 0x12: The modified offense value calculated for the attacker for the last move used,
+    // prior to being clamped between 0 and 999
+    u16 offense_calc;
+    // 0x14: The modified defense value calculated for the defender for the last move used
+    u16 defense_calc;
+    u16 attacker_level; // 0x16: The level of the attacker for the last move used
+    // 0x18: The intermediate quantity in the damage calculation called "AT" in debug logging,
+    // which corresponds to: round[ min(max(offense_calc, 0), 999) + power_calc ],
+    // where power_calc is a modified move power calculated as (intermediate rounding omitted):
+    // GetMovePower(...) * (offensive stat stage multipliers) * (offensive multipliers)
+    u16 damage_calc_at;
+    // 0x1A: An identical copy of defense_calc. This is probably a relic of development,
+    // when the final defense contribution to the damage formula might have been a different
+    // quantity computed from defense_calc, like how damage_calc_at is computed
+    // from offense_calc
+    u16 damage_calc_def;
+    // 0x1C: The intermediate quantity in the damage calculation called "FLV" in debug logging
+    // (effective level?), which corresponds to: round[ (offense_calc - defense_calc)/8 + level ]
+    u16 damage_calc_flv;
+    undefined field_0x1e;
+    undefined field_0x1f;
+    // 0x20: The result of the damage calculation after multiplying the base value by multipliers,
+    // but before applying random variation. There are also a couple stray multipliers applied
+    // after this result, including multipliers specific to the projectile move (the static 50%,
+    // and the Power Pitcher multiplier) and the Air Blade multiplier.
+    int damage_calc;
+    // 0x24: The intermediate quantity in the damage calculation resulting from the "base" damage
+    // calculation: the sum of the power, attack, defense, and level terms, modified by the
+    // non-team-member multiplier if relevant, and clamped between 1 and 999.
+    int damage_calc_base;
+    // 0x28: The random multiplier applied to the result of the damage calculation, as a
+    // percentage (so the actual factor, multiplied by 100), rounded to an integer.
+    int damage_calc_random_mult_pct;
+    // 0x2C: The calculated "static" damage multiplier applied to the output of the base damage
+    // calculation. "Static" in the sense that this part of the multiplier doesn't depend on
+    // variables like type-based effects, critical hits, and Reflect/Light Screen. Factors in
+    // the static damage multiplier include the argument to CalcDamage, the multiplier due to
+    // monster::me_first_flag, Reckless, and Iron Fist.
+    int static_damage_mult;
+    // 0x30: The net number of attack boosts to an attacker due to a Power Band or Munch Belt.
+    // It seems like there's a bug in the code; aura bows do not contribute to this field.
+    s8 item_atk_modifier;
+    // 0x31: The net number of special attack boosts to an attacker due to a Special Band,
+    // Munch Belt, or aura bow. It seems like there's a bug in the code; physical attack boosts
+    // from aura bows also contribute to this field.
+    s8 item_sp_atk_modifier;
+    // 0x32: The net number of offense boosts to an attacker due to Download, Rivalry,
+    // Flower Gift, and Solar Power
+    s8 ability_offense_modifier;
+    // 0x33: The net number of defense boosts to a defender due to Flower Gift
+    s8 ability_defense_modifier;
+    // 0x34: The net number of offense boosts to an attacker due to Aggressor, Defender, and
+    // Practice Swinger
+    s8 iq_skill_offense_modifier;
+    // 0x35: The net number of defense boosts to a defender due to Counter Basher, Aggressor, and
+    // Defender
+    s8 iq_skill_defense_modifier;
+    // 0x36: The net number of defense boosts to a defender due to a Def Scarf or aura bow.
+    // It seems like there's a bug in the code; special defense boosts from aura bows also
+    // contribute to this field.
+    s8 item_def_modifier;
+    // 0x37: The net number of special defense boosts to a defender due to a Zinc Band.
+    // It seems like there's a bug in the code; aura bows do not contribute to this field.
+    s8 item_sp_def_modifier;
+    // 0x38: Whether or not Scope Lens or Sharpshooter boosted the critical hit rate of a move
+    bool scope_lens_or_sharpshooter_activated;
+    // 0x39: Whether or not the Patsy Band boosted the critical hit rate of a move
+    bool patsy_band_activated;
+    // 0x3A: Whether or not Reflect or the Time Shield halved the damage from a physical move
+    bool half_physical_damage_activated;
+    // 0x3B: Whether or not Light Screen or the Aqua Mantle halved the damage from a special move
+    bool half_special_damage_activated;
+    // 0x3C: Whether or not the Enhanced critical-hit rate status maxed out the critical hit rate
+    // of a move
+    bool focus_energy_activated;
+    // 0x3D: Whether or not Type-Advantage Master boosted the critical hit rate of a move
+    bool type_advantage_master_activated;
+    // 0x3E: Whether or not a non-Normal-type move was dampened by Cloudy weather
+    bool cloudy_drop_activated;
+    // 0x3F: Whether or not a Fire or Water move was affected by Rainy weather
+    bool rain_multiplier_activated;
+    // 0x40: Whether or not a Fire or Water move was affected by Sunny weather
+    bool sunny_multiplier_activated;
+    // 0x41: Whether or a Fire move was dampened by Thick Fat or Heatproof
+    bool fire_move_ability_drop_activated;
+    // 0x42: Whether or not Flash Fire was activated at some point for Fire immunity
+    bool flash_fire_activated;
+    // 0x43: Whether or not Levitate was activated at some point for Ground immunity
+    bool levitate_activated;
+    bool torrent_boost_activated;  // 0x44: Whether or not a Water move was boosted by Torrent
+    bool overgrow_boost_activated; // 0x45: Whether or not a Grass move was boosted by Overgrow
+    bool swarm_boost_activated;    // 0x46: Whether or not a Bug move was boosted by Swarm
+    // 0x47: Whether or not a Fire move was boosted by either Blaze or Dry Skin
+    bool fire_move_ability_boost_activated;
+    // 0x48: Whether or not Scrappy was activated at some point to bypass immunity
+    bool scrappy_activated;
+    // 0x49: Whether or not Super Luck boosted the critical hit rate for a move
+    bool super_luck_activated;
+    // 0x4A: Whether or not Sniper boosted the critical hit damage multiplier for a move
+    bool sniper_activated;
+    bool stab_boost_activated; // 0x4B: Whether or not STAB was activated for a move
+    // 0x4C: Whether or not an Electric move was dampened by either Mud Sport or Fog
+    bool electric_move_dampened;
+    // 0x4D: Whether or not Water Sport was activated by a Fire move
+    bool water_sport_drop_activated;
+    bool charge_boost_activated; // 0x4E: Whether or not Charge was activated by an Electric move
+    undefined field_0x4f;
+    // 0x50: Whether or not a Ghost type's immunity to Normal/Fighting was activated at some point
+    bool ghost_immunity_activated;
+    // 0x51: Whether or not a defender took less damage due to the Charging Skull Bash status
+    bool skull_bash_defense_boost_activated;
+    undefined field_0x52;
+    undefined field_0x53;
 };
 
 
