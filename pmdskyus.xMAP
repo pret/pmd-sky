@@ -26067,7 +26067,7 @@
   022C47C4 00000000 .text   SMOKESCREEN_TURN_RANGE	(overlay_10.o)
   022C47C8 00000000 .text   ov10_022C47C8	(overlay_10.o)
   022C47CC 00000000 .text   ov10_022C47CC	(overlay_10.o)
-  022C47D0 00000000 .text   ov10_022C47D0	(overlay_10.o)
+  022C47D0 00000000 .text   PERISH_SONG_TURN_RANGE	(overlay_10.o)
   022C47D4 00000000 .text   ov10_022C47D4	(overlay_10.o)
   022C47D8 00000000 .text   ov10_022C47D8	(overlay_10.o)
   022C47DC 00000000 .text   SHADOW_FORCE_DAMAGE_MULTIPLIER	(overlay_10.o)
@@ -39808,5 +39808,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Jul 01 04:13:04 2024
-# Link end time: Mon Jul 01 04:13:05 2024
+# Link start time: Wed Aug 14 22:34:39 2024
+# Link end time: Wed Aug 14 22:34:40 2024
