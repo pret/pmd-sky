@@ -1683,7 +1683,7 @@ TryInflictPerishSongStatus: ; 0x0231662C
 #endif
 	cmp r0, #0
 	bne _023166F4
-	ldr r1, _02316714 ; =ov10_022C47D0
+	ldr r1, _02316714 ; =PERISH_SONG_TURN_RANGE
 	mov r0, r5
 	mov r2, #0
 	bl CalcStatusDuration
@@ -1712,7 +1712,7 @@ _02316704:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02316714: .word ov10_022C47D0
+_02316714: .word PERISH_SONG_TURN_RANGE
 #ifdef JAPAN
 _02316718: .word 0x00000A91
 _0231671C: .word 0x00000A92

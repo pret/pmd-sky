@@ -66,7 +66,7 @@ You will still require the following packages:
 
 Install them using either the Cygwin package manager or using pacman on Msys2.
 
-**NOTE FOR MSYS2:** You will need to compile and install [libpng](https://www.libpng.org/pub/png/libpng.html) from source.
+**NOTE FOR MSYS2:** You will need to compile and install [libpng](http://www.libpng.org/pub/png/libpng.html) from source.
 
 ### macOS
 

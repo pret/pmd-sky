@@ -62,7 +62,6 @@
 .public ov10_022C47B4
 .public ov10_022C47BC
 .public ov10_022C47C8
-.public ov10_022C47D0
 .public ov10_022C47D4
 .public ov10_022C47D8
 .public ov10_022C47FC
@@ -119,6 +118,7 @@
 .public ov29_02304BAC
 .public ov29_0234B09C
 .public ov29_0234B0B4
+.public PERISH_SONG_TURN_RANGE
 .public SafeguardIsActive
 .public ShouldDisplayEntityWrapper
 .public ShowPpRestoreEffect
