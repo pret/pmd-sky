@@ -15,6 +15,14 @@ enum direction_id {
     DIR_CURRENT = 8, // Current direction of an entity. Used as a special value in some functions
 };
 
+// Terrain type for a tile
+enum terrain_type {
+    TERRAIN_WALL = 0,
+    TERRAIN_NORMAL = 1,
+    TERRAIN_SECONDARY = 2, // Water or lava
+    TERRAIN_CHASM = 3,
+};
+
 // Tactic ID. These are usually encoded as bitvectors.
 enum tactic_id {
     TACTIC_LETS_GO_TOGETHER = 0,

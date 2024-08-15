@@ -35,20 +35,20 @@ struct pixel_position {
 // Item info
 struct item {
     // 0x0: flags: 1-byte bitfield
-    u8 flags_0x0;
-    /* bool f_exists : 1;  // Validity flag */
-    /* bool f_in_shop : 1; // In a Kecleon Shop */
-    /* bool f_unpaid : 1;  // Picked up from a Kecleon Shop but not paid for yet */
-    /* bool f_sticky : 1;  // Sticky */
-    /* bool f_set : 1;     // Usable by L+R */
-    /* bool flag_unk5 : 1; */
-    /* // For stolen items to recover from outlaws (has red X)? Could be for other items for other */
-    /* // types of missions? (Uncertain) */
-    /* bool f_unk_mission_item1 : 1; */
-    /* // For stolen items to recover from outlaws (has red X)? Could be for other items for other */
-    /* // types of missions? (Uncertain) Definitely used temporarily when sorting the items in */
-    /* // storage. */
-    /* bool f_unk_mission_item2 : 1; */
+    //u8 flags_0x0;
+    bool f_exists : 1;  // Validity flag
+    bool f_in_shop : 1; // In a Kecleon Shop
+    bool f_unpaid : 1;  // Picked up from a Kecleon Shop but not paid for yet
+    bool f_sticky : 1;  // Sticky
+    bool f_set : 1;     // Usable by L+R
+    bool flag_unk5 : 1;
+    // For stolen items to recover from outlaws (has red X)? Could be for other items for other
+    // types of missions? (Uncertain)
+    bool f_unk_mission_item1 : 1;
+    // For stolen items to recover from outlaws (has red X)? Could be for other items for other
+    // types of missions? (Uncertain) Definitely used temporarily when sorting the items in
+    // storage.
+    bool f_unk_mission_item2 : 1;
     // 0x1: For bag items. 0 for none, 1 if held by the leader, 2 for the second party member, etc.
     u8 held_by;
     // 0x2: Only for stackable items. Will be 0 if unapplicable. For Poké, this is an "amount code"
@@ -303,20 +303,21 @@ struct action_data {
     s16 field_0x12;
 };
 
+
 // Monster info
 struct monster {
     // 0x0: flags: 2-byte bitfield
     // If true, the AI will skip this monster's turn. There's also an unresearched
     // check related to constriction that reads this flag
-    u16 flags_0x0;
-    //bool f_ai_unk : 1;
-    //bool f_ai_skip_turn : 1; // If true, the AI will skip this monster's turn and reset the flag.
-    //u16 flags_unk2 : 3;
-    //bool f_swapping_places : 1; // Swapping places with another monster
-    //u16 flags_unk6 : 3;
-    //bool f_walking : 1; // Walking (but not dashing)
-    //u16 flags_unk10 : 5;
-    //bool f_swapping_places_petrified_ally : 1; // Swapping places with a petrified ally
+    bool f_ai_unk : 1;
+    bool f_ai_skip_turn : 1; // If true, the AI will skip this monster's turn and reset the flag.
+    u8 flags_unk2 : 3;
+    bool f_swapping_places : 1; // Swapping places with another monster
+    u8 flags_unk6 : 2;
+    bool flags_unk8 : 1;
+    bool f_walking : 1; // Walking (but not dashing)
+    u8 flags_unk10 : 5;
+    bool f_swapping_places_petrified_ally : 1; // Swapping places with a petrified ally
 
     enum monster_id id : 16;          // 0x2:
     enum monster_id apparent_id : 16; // 0x4: What's outwardly displayed if Transformed
@@ -1178,22 +1179,22 @@ struct display_data {
 
 // Used during floor generation to keep track of what entities should be spawned where
 struct spawn_flags {
-    u16 flags;
-    //bool f_stairs : 1;
-    //bool f_item : 1;
-    //bool f_trap : 1;
-    //bool f_monster : 1;
-    //u16 spawn_flags_unk4 : 12;
+    bool f_stairs : 1;
+    bool f_item : 1;
+    bool f_trap : 1;
+    bool f_monster : 1;
+    u8 spawn_flags_unk4 : 4;
+    u8 spawn_flags_unk8 : 8;
 };
 
 // Used during dungeon play to record the visibility of a tile.
 struct visibility_flags {
-    u16 flags;
     // If f_revealed == true and f_visited == false, the tile will appear as gray on the map.
     // This happens, e.g., when a Luminous Orb is used.
-    //bool f_revealed : 1; // Revealed on the map.
-    //bool f_visited : 1;  // Visited by the player
-    //u16 visibility_flags_unk2 : 14;
+    bool f_revealed : 1; // Revealed on the map.
+    bool f_visited : 1;  // Visited by the player
+    u8 visibility_flags_unk2 : 6;
+    u8 visibility_flags_unk8 : 8;
 };
 
 // These flags seem to occupy the same memory location, so the meaning is context-dependent.
@@ -1219,33 +1220,33 @@ struct room_data {
 // Tile data
 struct tile {
     // 0x0: terrain_flags: 2-byte bitfield
-    u16 terrain_flags;
-    //enum terrain_type terrain_type : 2;
+    //u16 terrain_flags;
+    enum terrain_type terrain_type : 2;
     // This tile can be corner-cut when walking. Seemingly only used during dungeon generation.
-    //bool f_corner_cuttable : 1;
+    bool f_corner_cuttable : 1;
     // Includes room tiles right next to a hallway, and branching points within corridors.
     // Only applies to natural halls, not ones made by Absolute Mover, not "hallways" made of
     // secondary terrain, etc. Used by the AI for navigation.
-    //bool f_natural_junction : 1;
+    bool f_natural_junction : 1;
     // This tile is impassable, even with Absolute Mover/Mobile Scarf. Used for the map border,
     // key chamber walls, walls in boss battle rooms, etc.
-    //bool f_impassable_wall : 1;
-    //bool f_in_kecleon_shop : 1;  // In a Kecleon Shop
-    //bool f_in_monster_house : 1; // In a Monster House
-    //uint16_t terrain_flags_unk7 : 1;
+    bool f_impassable_wall : 1;
+    bool f_in_kecleon_shop : 1;  // In a Kecleon Shop
+    bool f_in_monster_house : 1; // In a Monster House
+    bool terrain_flags_unk7 : 1;
     // Cannot be broken by Absolute Mover. Set naturally on key doors.
-    //bool f_unbreakable : 1;
+    bool f_unbreakable : 1;
     // Tile is any type of "stairs" (normal stairs, Hidden Stairs, Warp Zone)
-    //bool f_stairs : 1;
-    //uint16_t terrain_flags_unk10 : 1;
-    //bool f_key_door : 1;            // Tile is a key door
-    //bool f_key_door_key_locked : 1; // Key door is locked and requires a Key to open
+    bool f_stairs : 1;
+    bool terrain_flags_unk10 : 1;
+    bool f_key_door : 1;            // Tile is a key door
+    bool f_key_door_key_locked : 1; // Key door is locked and requires a Key to open
     // Key door is locked and requires an escort to open (for Sealed Chamber missions)
-    //bool f_key_door_escort_locked : 1;
-    //uint16_t terrain_flags_unk14 : 1;
+    bool f_key_door_escort_locked : 1;
+    bool terrain_flags_unk14 : 1;
     // Tile is open terrain but unreachable from the stairs spawn point. Only set during dungeon
     // generation.
-    //bool f_unreachable_from_stairs : 1;
+    bool f_unreachable_from_stairs : 1;
 
     // 0x2: Seems to be used for spawning entities during dungeon generation, and for visibility
     // during dungeon play
@@ -1318,9 +1319,9 @@ struct trap {
     u8 team;
 
     // 0x2: flags: 1-byte bitfield
-    u8 flags;
-    //bool f_unbreakable : 1; // If true, the trap can't be broken (for example, using a Trapbust Orb)
-    //u8 flags_unk1 : 7;
+    //u8 flags;
+    bool f_unbreakable : 1; // If true, the trap can't be broken (for example, using a Trapbust Orb)
+    u8 flags_unk1 : 7;
 
     undefined field_0x3;
 };
