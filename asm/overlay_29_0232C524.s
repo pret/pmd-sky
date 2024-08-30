@@ -683,7 +683,7 @@ _0232CD10:
 	mov r1, r8
 	mov r2, fp
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	bne _0232CD5C
 	mov r0, sl

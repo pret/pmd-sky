@@ -13,6 +13,8 @@
 .public CanMonsterSpawn
 .public CeilFixedPoint
 .public CheckTeamMemberIdxVeneer
+.public CheckVariousConditions
+.public CheckVariousStatuses2
 .public CloseAdvancedTextBox
 .public CloseAdvancedTextBox2
 .public CloseDialogueBox
@@ -93,6 +95,7 @@
 .public MemFree
 .public memset
 .public MemZero
+.public MonsterCanThrowItems
 .public MonsterHasEmbargoStatus
 .public ov10_022BCC60
 .public ov10_022BCC7C
@@ -137,11 +140,8 @@
 .public ov29_022F0B9C
 .public ov29_022F9C34
 .public ov29_023002F0
-.public ov29_02300818
-.public ov29_02300B40
 .public ov29_02300BF8
 .public ov29_023021F0
-.public ov29_02302368
 .public ov29_02302388
 .public ov29_02338708
 .public ov29_0233A0E8

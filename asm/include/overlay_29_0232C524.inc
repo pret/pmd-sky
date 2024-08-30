@@ -41,6 +41,7 @@
 .public GetTileAtEntity
 .public GetTileSafe
 .public GetTrapInfo
+.public GetTreatmentBetweenMonsters
 .public GetVisibilityRange
 .public HandleFaint
 .public HasDropeyeStatus
@@ -75,7 +76,6 @@
 .public ov29_022FBDE0
 .public ov29_022FBDF0
 .public ov29_022FD7A0
-.public ov29_0230175C
 .public ov29_02304B64
 .public ov29_0230D874
 .public ov29_0230D8E8

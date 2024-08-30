@@ -465,7 +465,7 @@ _0231B74C:
 	mov r4, r0
 _0231B768:
 	mov r0, r7
-	bl ov29_02300B40
+	bl CheckVariousConditions
 	cmp r0, #0
 	movne r4, #0
 	cmp r4, #0

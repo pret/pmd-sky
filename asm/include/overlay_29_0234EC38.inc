@@ -3,6 +3,7 @@
 .public Arm9LoadUnkFieldNa0x2029EC8
 .public Arm9StoreUnkFieldNa0x2029ED8
 .public CheckTeamMemberIdx
+.public CheckVariousStatuses2
 .public CloseAdvancedTextBox
 .public CloseParentMenu
 .public CloseTextBox
@@ -65,7 +66,6 @@
 .public ov29_022EA428
 .public ov29_022F0C98
 .public ov29_022F9C34
-.public ov29_02300818
 .public ov29_0230D704
 .public ov29_0230D70C
 .public ov29_0230D738

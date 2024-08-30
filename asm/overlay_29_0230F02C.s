@@ -3,10 +3,10 @@
 
 	.text
 
-	arm_func_start ov29_0230F02C
-ov29_0230F02C: ; 0x0230F02C
+	arm_func_start GetPossibleAiArcItemTargets
+GetPossibleAiArcItemTargets: ; 0x0230F02C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	ldr r4, _0230F138 ; =ov29_023536FC
+	ldr r4, _0230F138 ; =AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 	mov r6, #0
 	mov sl, r0
 	mov fp, r1
@@ -37,7 +37,7 @@ _0230F04C:
 	mov r1, r7
 	mov r2, #0
 	mov r3, #1
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	bne _0230F128
 	ldrsh r1, [r7, #6]
@@ -58,7 +58,7 @@ _0230F04C:
 	mov r0, r7
 	mov r1, fp
 	mov r2, #1
-	bl ov29_0231E05C
+	bl GetAiUseItemProbability
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
 	beq _0230F128
@@ -80,9 +80,9 @@ _0230F128:
 	blt _0230F04C
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0230F138: .word ov29_023536FC
+_0230F138: .word AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 _0230F13C: .word DUNGEON_PTR
-	arm_func_end ov29_0230F02C
+	arm_func_end GetPossibleAiArcItemTargets
 
 	arm_func_start ov29_0230F140
 ov29_0230F140: ; 0x0230F140
@@ -2239,7 +2239,7 @@ _02310E9C:
 	mov r1, #0
 	mov r0, r5
 	strb r1, [r4, #0xd2]
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	cmp r0, #0
 	bne _02310F70
 	mov r0, r5
@@ -2248,7 +2248,7 @@ _02310E9C:
 	cmp r0, #0
 	bne _02310F70
 	mov r0, r5
-	bl ov29_02300CB0
+	bl CheckVariousStatuses
 	cmp r0, #0
 	bne _02310F70
 	mov r0, #0

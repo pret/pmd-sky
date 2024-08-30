@@ -2,6 +2,7 @@
 .public AbilityIsActiveVeneer
 .public abs
 .public AddMoneyCarried
+.public AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 .public ApplyDamageAndEffectsWrapper
 .public BAD_POISON_DAMAGE_COOLDOWN
 .public BAD_POISON_DAMAGE_TABLE
@@ -12,6 +13,8 @@
 .public BURN_DAMAGE_COOLDOWN
 .public CanSeeTarget
 .public CeilFixedPoint
+.public CheckVariousStatuses
+.public CheckVariousStatuses2
 .public DIRECTIONS_XY
 .public DisplayActions
 .public DUNGEON_PTR
@@ -28,6 +31,7 @@
 .public ExclusiveItemEffectIsActive__02311064
 .public ExclusiveItemEffectIsActiveWithLogging
 .public GenerateStandardItem
+.public GetAiUseItemProbability
 .public GetApparentWeather
 .public GetCurrentBagCapacity
 .public GetExclusiveItemForMonsterFromBag
@@ -35,6 +39,7 @@
 .public GetItemInfo
 .public GetTile
 .public GetTileAtEntity
+.public GetTreatmentBetweenMonsters
 .public GravityIsActive
 .public HasHeldItem
 .public InitMove
@@ -79,12 +84,8 @@
 .public ov29_022F52BC
 .public ov29_022F9EA0
 .public ov29_022FB718
-.public ov29_02300818
-.public ov29_02300CB0
 .public ov29_02300DCC
-.public ov29_0230175C
 .public ov29_02307BDC
-.public ov29_0231E05C
 .public ov29_02322374
 .public ov29_02337E2C
 .public ov29_02344B44
@@ -101,7 +102,6 @@
 .public ov29_0234B084
 .public ov29_0234B294
 .public ov29_023529A8
-.public ov29_023536FC
 .public POISON_DAMAGE
 .public POISON_DAMAGE_COOLDOWN
 .public RemoveGroundItem

@@ -25,6 +25,7 @@
 .public GetNumberOfAttacks
 .public GetTile
 .public GetTreasureBoxChances
+.public GetTreatmentBetweenMonsters
 .public HasHeldItem
 .public InitMove
 .public IqSkillIsEnabled
@@ -46,7 +47,6 @@
 .public ov29_022FB9E0
 .public ov29_022FBAB4
 .public ov29_023007DC
-.public ov29_0230175C
 .public ov29_0230B7D4
 .public ov29_0230F8D0
 .public ov29_02321274

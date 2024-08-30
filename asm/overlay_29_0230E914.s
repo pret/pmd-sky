@@ -3,13 +3,13 @@
 
 	.text
 
-	arm_func_start ov29_0230E914
-ov29_0230E914: ; 0x0230E914
+	arm_func_start AiDecideUseItem
+AiDecideUseItem: ; 0x0230E914
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x50
 	mov sl, r0
 	ldr r7, [sl, #0xb4]
-	bl ov29_02300B40
+	bl CheckVariousConditions
 	cmp r0, #0
 	movne r0, #0
 #ifdef JAPAN
@@ -37,10 +37,10 @@ ov29_0230E914: ; 0x0230E914
 	add r2, r7, #0x62
 	mov r1, #2
 	mov r3, #1
-	bl ov29_0230EDB0
+	bl GetPossibleAiThrownItemDirections
 	mov r4, #0
 	ldr r6, _0230EDA0 ; =ov29_0237C9D8
-	ldr r5, _0230EDA4 ; =ov29_023536FC
+	ldr r5, _0230EDA4 ; =AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 	b _0230E9DC
 _0230E990:
 	ldr r0, [r6, r4, lsl #2]
@@ -68,7 +68,7 @@ _0230E9DC:
 	cmp r4, r0
 	blt _0230E990
 _0230E9E8:
-	ldr r0, _0230EDA4 ; =ov29_023536FC
+	ldr r0, _0230EDA4 ; =AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 	ldr r0, [r0]
 	cmp r4, r0
 	bne _0230ED98
@@ -83,8 +83,8 @@ _0230EA08:
 	mov r0, sl
 	add r1, r7, #0x62
 	mov r3, #1
-	bl ov29_0230F02C
-	ldr r0, _0230EDA4 ; =ov29_023536FC
+	bl GetPossibleAiArcItemTargets
+	ldr r0, _0230EDA4 ; =AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0230EA9C
@@ -201,7 +201,7 @@ _0230EB84:
 	mov r0, sl
 	mov r1, r8
 	mov r2, #2
-	bl ov29_0231E05C
+	bl GetAiUseItemProbability
 	movs r4, r0
 	beq _0230EC4C
 	ldrsh r0, [r8, #4]
@@ -233,11 +233,11 @@ _0230EC34:
 	b _0230ED98
 _0230EC4C:
 	mov r0, r7
-	bl ov29_02302368
+	bl MonsterCanThrowItems
 	cmp r0, #0
 	beq _0230ED8C
 	mov r4, #1
-	ldr fp, _0230EDA4 ; =ov29_023536FC
+	ldr fp, _0230EDA4 ; =AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 	b _0230ED84
 _0230EC68:
 	ldrsh r0, [r8, #4]
@@ -253,11 +253,11 @@ _0230EC68:
 	bne _0230ED14
 	mov r1, r8
 	add r2, sp, #0
-	bl ov29_0230F02C
+	bl GetPossibleAiArcItemTargets
 	ldr r0, [fp]
 	cmp r0, #0
 	beq _0230ED80
-	ldr r0, _0230EDA4 ; =ov29_023536FC
+	ldr r0, _0230EDA4 ; =AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 	ldr r0, [r0]
 	bl DungeonRandInt
 	mov r4, r0
@@ -286,7 +286,7 @@ _0230EC68:
 _0230ED14:
 	mov r1, r4
 	mov r2, r8
-	bl ov29_0230EDB0
+	bl GetPossibleAiThrownItemDirections
 	mov sb, #0
 	b _0230ED74
 _0230ED28:
@@ -329,16 +329,16 @@ _0230ED98:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0230EDA0: .word ov29_0237C9D8
-_0230EDA4: .word ov29_023536FC
+_0230EDA4: .word AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 _0230EDA8: .word ov29_0237C9F8
 _0230EDAC: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end ov29_0230E914
+	arm_func_end AiDecideUseItem
 
-	arm_func_start ov29_0230EDB0
-ov29_0230EDB0: ; 0x0230EDB0
+	arm_func_start GetPossibleAiThrownItemDirections
+GetPossibleAiThrownItemDirections: ; 0x0230EDB0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x14
-	ldr r4, _0230EFF4 ; =ov29_023536FC
+	ldr r4, _0230EFF4 ; =AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 	mov r5, #0
 	mov sl, r0
 	str r3, [sp, #8]
@@ -376,7 +376,7 @@ _0230EDF4:
 	mov r1, r4
 	bne _0230EE50
 	mov r3, r2
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	bne _0230EFE0
 	mov r0, #3
@@ -384,7 +384,7 @@ _0230EDF4:
 	b _0230EE68
 _0230EE50:
 	mov r3, #1
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	bne _0230EFE0
 	mov r0, #1
@@ -474,7 +474,7 @@ _0230EF54:
 	strb r1, [r0, r5]
 	ldr r0, [sp, #8]
 	cmp r0, #0
-	ldr r0, _0230EFF4 ; =ov29_023536FC
+	ldr r0, _0230EFF4 ; =AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 	ldr r1, [r0]
 	ldr r0, _0230F000 ; =ov29_0237C9F8
 	str r5, [r0, r1, lsl #2]
@@ -483,13 +483,13 @@ _0230EF54:
 	ldr r2, [sp, #0xc]
 	ldr r1, [sp, #4]
 	mov r0, r4
-	bl ov29_0231E05C
+	bl GetAiUseItemProbability
 _0230EFC4:
-	ldr r1, _0230EFF4 ; =ov29_023536FC
+	ldr r1, _0230EFF4 ; =AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 	ldr r2, [r1]
 	ldr r1, _0230F004 ; =ov29_0237C9D8
 	str r0, [r1, r2, lsl #2]
-	ldr r0, _0230EFF4 ; =ov29_023536FC
+	ldr r0, _0230EFF4 ; =AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 	add r1, r2, #1
 	str r1, [r0]
 _0230EFE0:
@@ -499,9 +499,9 @@ _0230EFE0:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0230EFF4: .word ov29_023536FC
+_0230EFF4: .word AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 _0230EFF8: .word ov29_0237C9D0
 _0230EFFC: .word DUNGEON_PTR
 _0230F000: .word ov29_0237C9F8
 _0230F004: .word ov29_0237C9D8
-	arm_func_end ov29_0230EDB0
+	arm_func_end GetPossibleAiThrownItemDirections

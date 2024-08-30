@@ -614,7 +614,7 @@ _0232F090:
 	bne _0232F188
 	mov r0, r4
 	mov r1, #1
-	bl ov29_0232461C
+	bl IsChargingAnyTwoTurnMove
 	cmp r0, #0
 	bne _0232F188
 	ldr r0, [sp, #0x84]
@@ -914,7 +914,7 @@ _0232F4F4:
 _0232F528:
 	mov r2, #1
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	bne _0232F550
 	mov r0, sb
@@ -1066,7 +1066,7 @@ _0232F70C:
 	mov r1, r4
 	mov r2, #1
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	bne _0232F87C
 	ldrh r1, [r8, #4]

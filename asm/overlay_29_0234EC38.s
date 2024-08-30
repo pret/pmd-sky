@@ -1176,11 +1176,11 @@ _0234FB48:
 
 	arm_func_start ov29_0234FB50
 ov29_0234FB50: ; 0x0234FB50
-	ldr ip, _0234FB5C ; =ov29_02300818
+	ldr ip, _0234FB5C ; =CheckVariousStatuses2
 	mov r1, #1
 	bx ip
 	.align 2, 0
-_0234FB5C: .word ov29_02300818
+_0234FB5C: .word CheckVariousStatuses2
 	arm_func_end ov29_0234FB50
 
 	arm_func_start ov29_0234FB60
@@ -1208,7 +1208,7 @@ _0234FB84:
 	bne _0234FBC4
 	mov r0, r4
 	mov r1, #1
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	cmp r0, #0
 	beq _0234FBCC
 _0234FBC4:
@@ -4621,8 +4621,8 @@ ov29_023535DC:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word ov29_0230D704
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov29_023536FC
-ov29_023536FC:
+	.global AI_THROWN_ITEM_ACTION_CHOICE_COUNT
+AI_THROWN_ITEM_ACTION_CHOICE_COUNT:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.global ov29_02353700
 ov29_02353700:

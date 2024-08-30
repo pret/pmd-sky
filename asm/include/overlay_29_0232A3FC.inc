@@ -34,6 +34,7 @@
 .public GetMoveCategory
 .public GetMoveType
 .public GetTileSafe
+.public GetTreatmentBetweenMonsters
 .public IMPRISON_TURN_RANGE
 .public InitMove
 .public InitStandardItem
@@ -69,7 +70,6 @@
 .public ov29_022F8FF8
 .public ov29_022F9EA0
 .public ov29_022FFB90
-.public ov29_0230175C
 .public ov29_02318BBC
 .public ov29_02318D58
 .public ov29_02321164

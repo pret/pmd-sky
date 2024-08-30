@@ -54,7 +54,7 @@ _022FEF64:
 	beq _022FEF94
 	mov r0, r6
 	mov r1, #1
-	bl ov29_0232461C
+	bl IsChargingAnyTwoTurnMove
 	cmp r0, #0
 	beq _022FEF94
 	mov r0, r6
@@ -439,7 +439,7 @@ _022FF4E8:
 	b _022FF5E0
 _022FF4F4:
 	mov r0, r5
-	bl ov29_02302368
+	bl MonsterCanThrowItems
 	cmp r0, #0
 	beq _022FF518
 	mov r0, r6
@@ -689,7 +689,7 @@ _022FE538:
 	beq _022FE568
 	mov r0, sb
 	mov r1, #1
-	bl ov29_0232461C
+	bl IsChargingAnyTwoTurnMove
 	cmp r0, #0
 	beq _022FE568
 	mov r0, sb
@@ -1096,7 +1096,7 @@ _022FEABC:
 	b _022FEBB4
 _022FEAC8:
 	mov r0, r6
-	bl ov29_02302368
+	bl MonsterCanThrowItems
 	cmp r0, #0
 	beq _022FEAEC
 	mov r0, sb

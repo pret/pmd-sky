@@ -779,7 +779,7 @@ SetLeaderAction: ; 0x022F0EDC
 	bl TryPointCameraToMonster
 #ifndef JAPAN
 	bl GetLeader
-	bl ov29_022FB538
+	bl SetDecoyAiTracker
 #endif
 	bl GetLeader
 	bl ov29_022FF3F4
@@ -2376,7 +2376,7 @@ _022F25D8:
 	bne _022F2748
 	ldr r0, [sp, #0x14]
 	mov r1, #0
-	bl ov29_0232461C
+	bl IsChargingAnyTwoTurnMove
 	cmp r0, #0
 	movne r0, #0
 	bne _022F2748
@@ -3648,7 +3648,7 @@ _022F3850:
 	mov r0, r7
 	mov r1, r5
 	mov r3, r2
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	movne r0, r6
 	moveq r0, #0

@@ -379,7 +379,7 @@ ov29_022E9A9C: ; 0x022E9A9C
 	mov r0, sb
 	mov r1, #1
 	ldrb r4, [r8, #0x4c]
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	cmp r0, #0
 	beq _022E9B00
 	ldr r0, _022E9CA0 ; =DIRECTIONS_XY
@@ -472,7 +472,7 @@ _022E9BE0:
 	mov r1, r7
 	mov r0, sb
 	mov r3, r2
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	streqh fp, [sl]
 	streqh r5, [sl, #2]

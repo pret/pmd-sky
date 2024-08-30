@@ -1,5 +1,6 @@
 #pragma once
 .public abs
+.public AiDecideUseItem
 .public AiMovement
 .public ApplyDamage
 .public ApplyDamageAndEffectsWrapper
@@ -8,6 +9,7 @@
 .public CanSeeTarget
 .public CanTargetEntity
 .public CategoryIsNotPhysical
+.public CheckVariousConditions
 .public ChooseAiMove
 .public ClearMonsterActionFields
 .public DefenderAbilityIsActive__0230A940
@@ -19,6 +21,7 @@
 .public ExclusiveItemEffectIsActive__0230A9B8
 .public GetCanMoveFlag
 .public GetLeader
+.public GetTreatmentBetweenMonsters
 .public GravityIsActive
 .public HasLowHealth
 .public HasStatusThatPreventsActing
@@ -47,12 +50,8 @@
 .public ov29_022E45D0
 .public ov29_022E57D4
 .public ov29_022E5E84
-.public ov29_022FB538
-.public ov29_02300B40
 .public ov29_02300D50
-.public ov29_0230175C
 .public ov29_0230D654
-.public ov29_0230E914
 .public ov29_0230F728
 .public ov29_0231EDFC
 .public ov29_023380FC
@@ -60,6 +59,7 @@
 .public ov29_0237CA6D
 .public ResetDamageData
 .public SetActionPassTurnOrWalk
+.public SetDecoyAiTracker
 .public ShouldRunMonsterAi
 .public sub_02054EC8
 .public SubstitutePlaceholderStringTags

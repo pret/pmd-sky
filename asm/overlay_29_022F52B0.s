@@ -655,14 +655,14 @@ _022F5A90:
 	mov r1, sl
 	mov r2, #1
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	beq _022F5D84
 	mov r0, sl
 	mov r1, r6
 	mov r2, #1
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	beq _022F5D84
 _022F5ADC:
@@ -691,7 +691,7 @@ _022F5ADC:
 	beq _022F5B4C
 	mov r0, sl
 	mov r1, #1
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	cmp r0, #0
 	beq _022F5B78
 _022F5B4C:
