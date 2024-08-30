@@ -39,6 +39,7 @@
 .public HasHeldItem
 .public IqSkillFlagTest
 .public IsBlinded
+.public IsChargingAnyTwoTurnMove
 .public IsCurrentTilesetBackground
 .public IsExpEnabledInDungeon
 .public IsExperienceLocked
@@ -61,7 +62,6 @@
 .public ov29_02302CC8
 .public ov29_0230F654
 .public ov29_02314DC4
-.public ov29_0232461C
 .public ov29_02324BE8
 .public ov29_02344B44
 .public ov29_0234B034

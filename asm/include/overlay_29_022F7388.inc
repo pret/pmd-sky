@@ -16,6 +16,8 @@
 .public CeilFixedPoint
 .public ChangeMonsterAnimation
 .public CheckTeamMemberIdx
+.public CheckVariousStatuses
+.public CheckVariousStatuses2
 .public Conversion2IsActive
 .public DeleteWanTableEntryVeneer
 .public DIRECTIONS_XY
@@ -88,6 +90,7 @@
 .public GetTile
 .public GetTileAtEntity
 .public GetTileSafe
+.public GetTreatmentBetweenMonsters
 .public GetTurnLimit
 .public GetType
 .public GetTypeMatchupBothTypes
@@ -157,9 +160,6 @@
 .public ov29_022FE048
 .public ov29_022FFB90
 .public ov29_0230040C
-.public ov29_02300818
-.public ov29_02300CB0
-.public ov29_0230175C
 .public ov29_023018AC
 .public ov29_023021F0
 .public ov29_02304830

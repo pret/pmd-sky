@@ -691,8 +691,8 @@ ov29_023007DC: ; 0x023007DC
 _02300814: .word 0x000003E7
 	arm_func_end ov29_023007DC
 
-	arm_func_start ov29_02300818
-ov29_02300818: ; 0x02300818
+	arm_func_start CheckVariousStatuses2
+CheckVariousStatuses2: ; 0x02300818
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	cmp r1, #0
@@ -729,7 +729,7 @@ _02300840:
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl ov29_02300CB0
+	bl CheckVariousStatuses
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -747,7 +747,7 @@ _02300840:
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02300818
+	arm_func_end CheckVariousStatuses2
 
 	arm_func_start ov29_023008DC
 ov29_023008DC: ; 0x023008DC
@@ -812,13 +812,13 @@ ov29_023009A0: ; 0x023009A0
 	stmdb sp!, {r4, lr}
 	mov r1, #0
 	mov r4, r0
-	bl ov29_0232461C
+	bl IsChargingAnyTwoTurnMove
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
 	mov r1, #0
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_023009A0
 
@@ -828,7 +828,7 @@ ov29_023009CC: ; 0x023009CC
 	mov r5, r0
 	ldr r4, [r5, #0xb4]
 	mov r1, #0
-	bl ov29_0232461C
+	bl IsChargingAnyTwoTurnMove
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -925,8 +925,8 @@ _02300B38:
 	bx lr
 	arm_func_end ov29_02300B04
 
-	arm_func_start ov29_02300B40
-ov29_02300B40: ; 0x02300B40
+	arm_func_start CheckVariousConditions
+CheckVariousConditions: ; 0x02300B40
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xb4]
@@ -950,18 +950,18 @@ ov29_02300B40: ; 0x02300B40
 _02300B90:
 	mov r0, r5
 	mov r1, #0
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl ov29_02300CB0
+	bl CheckVariousStatuses
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, #0
-	bl ov29_0232461C
+	bl IsChargingAnyTwoTurnMove
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -974,7 +974,7 @@ _02300B90:
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02300B40
+	arm_func_end CheckVariousConditions
 
 	arm_func_start ov29_02300BF8
 ov29_02300BF8: ; 0x02300BF8
@@ -1012,7 +1012,7 @@ _02300C48:
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
 	mov r1, #0
-	bl ov29_0232461C
+	bl IsChargingAnyTwoTurnMove
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -1027,8 +1027,8 @@ _02300C48:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_02300BF8
 
-	arm_func_start ov29_02300CB0
-ov29_02300CB0: ; 0x02300CB0
+	arm_func_start CheckVariousStatuses
+CheckVariousStatuses: ; 0x02300CB0
 	ldr r1, [r0, #0xb4]
 	ldrb r0, [r1, #0xbd]
 	cmp r0, #2
@@ -1049,7 +1049,7 @@ ov29_02300CB0: ; 0x02300CB0
 	movne r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end ov29_02300CB0
+	arm_func_end CheckVariousStatuses
 
 	arm_func_start ov29_02300D00
 ov29_02300D00: ; 0x02300D00
@@ -1103,7 +1103,7 @@ ov29_02300D50: ; 0x02300D50
 	cmp r2, #1
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl ov29_02300CB0
+	bl CheckVariousStatuses
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_02300D50
 
@@ -1478,7 +1478,7 @@ ov29_02301158: ; 0x02301158
 	mov r0, r6
 	mov r2, #1
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -2029,8 +2029,8 @@ ov29_023016D8: ; 0x023016D8
 _02301758: .word 0x000003E7
 	arm_func_end ov29_023016D8
 
-	arm_func_start ov29_0230175C
-ov29_0230175C: ; 0x0230175C
+	arm_func_start GetTreatmentBetweenMonsters
+GetTreatmentBetweenMonsters: ; 0x0230175C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r4, [r0, #0xb4]
 	ldr r5, [r1, #0xb4]
@@ -2128,7 +2128,7 @@ _0230187C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023018A8: .word ov29_023527A0
-	arm_func_end ov29_0230175C
+	arm_func_end GetTreatmentBetweenMonsters
 
 	arm_func_start ov29_023018AC
 ov29_023018AC: ; 0x023018AC
@@ -3079,8 +3079,8 @@ GetMovePower: ; 0x0230231C
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end GetMovePower
 
-	arm_func_start ov29_02302368
-ov29_02302368: ; 0x02302368
+	arm_func_start MonsterCanThrowItems
+MonsterCanThrowItems: ; 0x02302368
 	stmdb sp!, {r3, lr}
 	ldrsh r0, [r0, #2]
 	bl CanThrowItems
@@ -3089,7 +3089,7 @@ ov29_02302368: ; 0x02302368
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02302368
+	arm_func_end MonsterCanThrowItems
 
 	arm_func_start ov29_02302388
 ov29_02302388: ; 0x02302388

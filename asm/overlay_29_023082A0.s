@@ -37,7 +37,7 @@ ov29_023082C4: ; 0x023082C4
 	mov r0, r5
 	mov r1, r4
 	mov r3, r2
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -84,7 +84,7 @@ _023098C8:
 	cmpne r0, #0
 	beq _02309924
 	mov r0, sl
-	bl ov29_02300B40
+	bl CheckVariousConditions
 	cmp r0, #0
 	beq _02309910
 	mov r0, #0
@@ -98,7 +98,7 @@ _023098C8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02309910:
 	mov r0, sl
-	bl ov29_0230E914
+	bl AiDecideUseItem
 	ldrh r0, [sb, #0x4a]
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -176,7 +176,7 @@ _023099E4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02309A2C:
 	mov r0, sl
-	bl ov29_0230E914
+	bl AiDecideUseItem
 	ldrh r0, [sb, #0x4a]
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -311,7 +311,7 @@ _02308394:
 	cmpne r0, #0
 	beq _023083F0
 	mov r0, r5
-	bl ov29_02300B40
+	bl CheckVariousConditions
 	cmp r0, #0
 	beq _023083DC
 	mov r0, #0
@@ -325,7 +325,7 @@ _02308394:
 	ldmia sp!, {r3, r4, r5, pc}
 _023083DC:
 	mov r0, r5
-	bl ov29_0230E914
+	bl AiDecideUseItem
 	ldrh r0, [r4, #0x4a]
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -335,7 +335,7 @@ _023083F0:
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl ov29_022FB538
+	bl SetDecoyAiTracker
 	add r0, r4, #0x4a
 	bl ClearMonsterActionFields
 	ldrb r0, [r4, #0xbc]
@@ -356,7 +356,7 @@ _023083F0:
 	ldmia sp!, {r3, r4, r5, pc}
 _02308450:
 	mov r0, r5
-	bl ov29_0230E914
+	bl AiDecideUseItem
 	ldrh r0, [r4, #0x4a]
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, pc}

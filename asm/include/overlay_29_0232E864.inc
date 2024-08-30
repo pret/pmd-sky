@@ -349,10 +349,12 @@
 .public GetMoveTypeForMonster
 .public GetTile
 .public GetTileAtEntity
+.public GetTreatmentBetweenMonsters
 .public HasHeldItem
 .public HasLowHealth
 .public HasSuperEffectiveMoveAgainstUser
 .public IqSkillIsEnabled
+.public IsChargingAnyTwoTurnMove
 .public IsChargingTwoTurnMove
 .public IsCurrentFixedRoomBossFight
 .public IsFloorOver
@@ -395,7 +397,6 @@
 .public ov29_02300D50
 .public ov29_02300DC0
 .public ov29_02300DCC
-.public ov29_0230175C
 .public ov29_02301C2C
 .public ov29_02304A48
 .public ov29_02304C3C
@@ -406,7 +407,6 @@
 .public ov29_0231AD38
 .public ov29_023201D0
 .public ov29_0232393C
-.public ov29_0232461C
 .public ov29_02324D60
 .public ov29_023258EC
 .public ov29_0232E744

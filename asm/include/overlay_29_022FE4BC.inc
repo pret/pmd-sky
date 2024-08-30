@@ -12,8 +12,10 @@
 .public EntityIsValid__022FED98
 .public HasHeldItem
 .public IqSkillIsEnabled
+.public IsChargingAnyTwoTurnMove
 .public IsFloorOver
 .public LogMessageByIdWithPopupCheckUser
+.public MonsterCanThrowItems
 .public MoveMonsterToPos
 .public ov10_022C4F3C
 .public ov10_022C4F3D
@@ -44,7 +46,6 @@
 .public ov29_022FEDBC
 .public ov29_022FEFC8
 .public ov29_02300DCC
-.public ov29_02302368
 .public ov29_02304D20
 .public ov29_023085DC
 .public ov29_0230F140
@@ -54,7 +55,6 @@
 .public ov29_02318D58
 .public ov29_0231A8A0
 .public ov29_0231A9F8
-.public ov29_0232461C
 .public ov29_02337CCC
 .public ov29_02338708
 .public ov29_02338850

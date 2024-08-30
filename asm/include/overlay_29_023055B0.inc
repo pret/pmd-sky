@@ -2,6 +2,7 @@
 .public AbilityIsActiveVeneer
 .public CalcSpeedStageWrapper
 .public ChangeMonsterAnimation
+.public CheckVariousStatuses2
 .public DUNGEON_PTR
 .public EndBlinkerClassStatus
 .public EndBurnClassStatus
@@ -41,7 +42,6 @@
 .public ov29_022E543C
 .public ov29_022EA370
 .public ov29_022FBE04
-.public ov29_02300818
 .public ov29_02337D68
 .public ov29_02353318
 .public SubstitutePlaceholderStringTags

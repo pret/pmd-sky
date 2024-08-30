@@ -695,11 +695,11 @@ _02305020:
 	beq _02305160
 	mov r0, r8
 	mov r1, #1
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	cmp r0, #0
 	beq _023050C0
 	mov r0, r8
-	bl ov29_02300CB0
+	bl CheckVariousStatuses
 	cmp r0, #0
 	bne _02305160
 _023050C0:

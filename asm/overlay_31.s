@@ -2379,7 +2379,7 @@ _02384804:
 	bl AddDungeonSubMenuOption
 _02384840:
 	mov r0, sl
-	bl ov29_02300B40
+	bl CheckVariousConditions
 	cmp r0, #0
 	beq _02384860
 	mov r0, #0x37
@@ -2461,7 +2461,7 @@ _02384948:
 	bl AddDungeonSubMenuOption
 _02384950:
 	ldr r0, [sp, #0x14]
-	bl ov29_02302368
+	bl MonsterCanThrowItems
 	cmp r0, #0
 	bne _02384978
 	mov r0, #0x27
@@ -2522,7 +2522,7 @@ _023849F4:
 	ldr r4, [sp, #0x24]
 	mov r1, r0
 	ldr fp, [r1, #0xb4]
-	bl ov29_02300B40
+	bl CheckVariousConditions
 	cmp r0, #0
 	movne r0, #1
 	strne r0, [sp, #0x24]
@@ -2620,7 +2620,7 @@ _02384B7C:
 	bl AddDungeonSubMenuOption
 _02384B98:
 	ldr r0, [sp, #0x14]
-	bl ov29_02302368
+	bl MonsterCanThrowItems
 	cmp r0, #0
 	bne _02384BB8
 	mov r0, #0x27
@@ -5735,7 +5735,7 @@ _02387278:
 _023872FC:
 	mov r0, r4
 	mov r1, #0
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	cmp r0, #0
 	movne r6, #0
 	cmp r6, #0

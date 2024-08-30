@@ -2985,7 +2985,7 @@ _01FFA5E0:
 	mov r1, r6
 	mov r2, #0
 	mov r3, #1
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	bne _01FFA688
 _01FFA640:
@@ -3233,7 +3233,7 @@ _01FFA9A8:
 	moveq r0, #0
 	beq _01FFAAB8
 	mov r0, r4
-	bl ov29_02300B40
+	bl CheckVariousConditions
 	cmp r0, #0
 	movne r0, #0
 	bne _01FFAAB8
@@ -3360,7 +3360,7 @@ _01FFAB50:
 	mov r1, r5
 	mov r2, #0
 	mov r3, #1
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	bne _01FFAC60
 	b _01FFABC0
@@ -4788,7 +4788,7 @@ _01FFBE80:
 	mov r1, sl
 	mov r2, #1
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	bne _01FFBF4C
 	ldr r0, [sb, #0xb4]

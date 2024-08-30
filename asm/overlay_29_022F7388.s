@@ -3906,11 +3906,11 @@ _022FA27C:
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r6
 	mov r1, #1
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	cmp r0, #0
 	beq _022FA2B8
 	mov r0, r6
-	bl ov29_02300CB0
+	bl CheckVariousStatuses
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 _022FA2B8:
@@ -5040,7 +5040,7 @@ ov29_022FAFD4: ; 0x022FAFD4
 	stmdb sp!, {r3, lr}
 	mov r2, #1
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -5479,8 +5479,8 @@ ov29_022FB51C: ; 0x022FB51C
 	arm_func_end ov29_022FB51C
 
 #ifndef JAPAN
-	arm_func_start ov29_022FB538
-ov29_022FB538: ; 0x022FB538
+	arm_func_start SetDecoyAiTracker
+SetDecoyAiTracker: ; 0x022FB538
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
 	bl EntityIsValid__022F7364
@@ -5530,7 +5530,7 @@ _022FB5DC:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022FB5E8: .word DUNGEON_PTR
-	arm_func_end ov29_022FB538
+	arm_func_end SetDecoyAiTracker
 #endif
 
 	arm_func_start CheckSpawnThreshold

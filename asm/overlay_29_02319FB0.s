@@ -85,7 +85,7 @@ IsAiTargetEligible: ; 0x0231A0A4
 	mov r0, r7
 	mov r1, r6
 	mov r3, #1
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	moveq r4, #1
 	b _0231A1B8
@@ -95,7 +95,7 @@ _0231A0E4:
 	mov r0, r7
 	mov r1, r6
 	mov r3, #1
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	moveq r4, #1
 	b _0231A1B8
@@ -139,7 +139,7 @@ _0231A17C:
 	mov r0, r7
 	mov r1, r6
 	mov r3, #1
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	moveq r4, #1
 	b _0231A1B8
@@ -414,7 +414,7 @@ _0231A4FC:
 	mov r0, sl
 	mov r1, r8
 	mov r2, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	bne _0231A5C4
 	ldr r0, [sp, #4]

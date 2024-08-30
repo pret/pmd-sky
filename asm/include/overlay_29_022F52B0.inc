@@ -6,6 +6,7 @@
 .public CanMonsterUseItem
 .public ChangeMonsterAnimation
 .public CheckTeamMemberIdxVeneer
+.public CheckVariousStatuses2
 .public DecrementStackItem
 .public DIRECTIONS_XY
 .public DisplayMessage
@@ -26,6 +27,7 @@
 .public GetPersonalityIndex
 .public GetStringFromFileVeneer
 .public GetTalkLine
+.public GetTreatmentBetweenMonsters
 .public HandleFaint
 .public HasHeldItem
 .public HasLowHealth
@@ -53,9 +55,7 @@
 .public ov29_022F87C0
 .public ov29_022FA574
 .public ov29_0230040C
-.public ov29_02300818
 .public ov29_023009CC
-.public ov29_0230175C
 .public ov29_02304A48
 .public ov29_02304AFC
 .public ov29_02307BDC

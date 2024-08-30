@@ -51,7 +51,7 @@ _023055C4:
 	beq _02305680
 	mov r0, r7
 	mov r1, r5
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	cmp r0, #0
 	bne _02305680
 	add r1, r8, #0x7e + OV29_023055B0_OFFSET

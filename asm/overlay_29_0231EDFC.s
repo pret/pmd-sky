@@ -95,12 +95,12 @@ _0231EEE0:
 	mov r1, sb
 	mov r3, #1
 	bne _0231EF48
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	bne _0231F080
 	b _0231EF54
 _0231EF48:
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	bne _0231F080
 _0231EF54:

@@ -1030,7 +1030,7 @@ _0232B06C:
 	mov r0, sl
 	mov r1, sb
 	mov r3, r2
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	bne _0232B0E4
 	ldr r0, [sb, #0xb4]

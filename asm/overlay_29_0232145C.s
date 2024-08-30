@@ -3513,7 +3513,7 @@ ov29_023243B4: ; 0x023243B4
 	mov r1, r5
 	mov r2, #1
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	moveq r4, #1
 	b _023244C0
@@ -3524,7 +3524,7 @@ _02324440:
 	mov r1, r5
 	mov r2, #1
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	moveq r4, #1
 	b _023244C0
@@ -3544,7 +3544,7 @@ _02324488:
 	mov r1, r5
 	mov r2, #1
 	mov r3, #0
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #0
 	bne _023244C0
 	cmp r6, r5
@@ -3661,8 +3661,8 @@ _02324608:
 _02324618: .word TWO_TURN_MOVES_AND_STATUSES
 	arm_func_end IsChargingTwoTurnMove
 
-	arm_func_start ov29_0232461C
-ov29_0232461C: ; 0x0232461C
+	arm_func_start IsChargingAnyTwoTurnMove
+IsChargingAnyTwoTurnMove: ; 0x0232461C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -3698,7 +3698,7 @@ _0232468C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02324694: .word ov29_02352A60
-	arm_func_end ov29_0232461C
+	arm_func_end IsChargingAnyTwoTurnMove
 
 	arm_func_start ov29_02324698
 ov29_02324698: ; 0x02324698

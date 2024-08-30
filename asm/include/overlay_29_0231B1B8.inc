@@ -31,6 +31,7 @@
 .public CalcDamageFixedNoCategory
 .public CALCIUM_STAT_BOOST
 .public CalcStatusDuration
+.public CheckVariousConditions
 .public CORSOLA_TWIG_POWER
 .public DealDamageProjectile
 .public DUNGEON_PTR
@@ -83,7 +84,6 @@
 .public ov29_022F9EA0
 .public ov29_022FB920
 .public ov29_022FB9BC
-.public ov29_02300B40
 .public ov29_02304830
 .public ov29_02304BAC
 .public ov29_02307BDC

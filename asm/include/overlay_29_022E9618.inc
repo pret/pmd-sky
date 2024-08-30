@@ -2,6 +2,7 @@
 .public _020AFC4C
 .public _s32_div_f
 .public abs
+.public CheckVariousStatuses2
 .public DIRECTIONS_XY
 .public DISPLACEMENTS_WITHIN_2_LARGEST_FIRST
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
@@ -13,6 +14,7 @@
 .public EntityIsValid__022E95F4
 .public GetLeader
 .public GetTile
+.public GetTreatmentBetweenMonsters
 .public HandleTopScreenFades
 .public InitWeirdMinimapMatrix
 .public MemAlloc
@@ -26,8 +28,6 @@
 .public ov29_022E335C
 .public ov29_022E8C10
 .public ov29_022ED800
-.public ov29_02300818
-.public ov29_0230175C
 .public ov29_0230473C
 .public ov29_02335F40
 .public ov29_02338AC4

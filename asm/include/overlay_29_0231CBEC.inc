@@ -9,6 +9,7 @@
 .public CeilFixedPoint
 .public ChangeDungeonMusic
 .public ChangeShayminForme
+.public CheckVariousStatuses2
 .public ClearMonsterActionFields
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
@@ -35,6 +36,7 @@
 .public GetPerformanceFlagWithChecks
 .public GetTile
 .public GetTileSafe
+.public GetTreatmentBetweenMonsters
 .public GetWeatherColorTable
 .public GINSENG_CHANCE_3
 .public GUMMI_BELLY_RESTORE_TABLE
@@ -93,10 +95,8 @@
 .public ov29_022F9C74
 .public ov29_022FA02C
 .public ov29_022FBA54
-.public ov29_02300818
 .public ov29_023008DC
 .public ov29_023009A0
-.public ov29_0230175C
 .public ov29_023021F0
 .public ov29_023038D4
 .public ov29_02304B64

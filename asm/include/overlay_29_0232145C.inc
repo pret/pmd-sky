@@ -40,6 +40,7 @@
 .public GetNaturePowerVariant
 .public GetSpriteIndex__02052708
 .public GetTile
+.public GetTreatmentBetweenMonsters
 .public GravityIsActive
 .public HasHeldItem
 .public InitMove
@@ -103,7 +104,6 @@
 .public ov29_022FBAB4
 .public ov29_0230040C
 .public ov29_02300DCC
-.public ov29_0230175C
 .public ov29_023024E0
 .public ov29_02304A48
 .public ov29_02304B14

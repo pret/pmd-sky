@@ -44,6 +44,7 @@
 .public GetTileAtEntity
 .public GetTileSafe
 .public GetTrapInfo
+.public GetTreatmentBetweenMonsters
 .public HasHeldItem
 .public HiddenStairsTrigger
 .public HideTileGrid
@@ -52,6 +53,7 @@
 .public InitPreprocessorArgs
 .public IqSkillIsEnabled
 .public IsBlinded
+.public IsChargingAnyTwoTurnMove
 .public IsExperienceLocked
 .public IsFloorOver
 .public IsGoldenChamber
@@ -102,7 +104,6 @@
 .public ov29_022F9EA0
 .public ov29_022FA2F0
 .public ov29_022FA360
-.public ov29_022FB538
 .public ov29_022FB920
 .public ov29_022FBAB4
 .public ov29_022FBDF0
@@ -113,11 +114,9 @@
 .public ov29_02300FCC
 .public ov29_0230105C
 .public ov29_02301158
-.public ov29_0230175C
 .public ov29_023055B0
 .public ov29_02321164
 .public ov29_02322DDC
-.public ov29_0232461C
 .public ov29_02337D68
 .public ov29_02338F58
 .public ov29_02339190
@@ -174,6 +173,7 @@
 .public RemoveGroundItem
 .public RemoveHolderForItemInBag
 .public SetActionUseMovePlayer
+.public SetDecoyAiTracker
 .public SetHolderForItemInBag
 .public SetLeaderActionFields
 .public SetMonsterActionFields

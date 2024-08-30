@@ -1356,7 +1356,7 @@ _0231DC60:
 _0231DCAC:
 	mov r0, r7
 	mov r1, #0
-	bl ov29_02300818
+	bl CheckVariousStatuses2
 	cmp r0, #0
 	ldrb r0, [r8, #0xbc]
 	movne r6, #0
@@ -1651,8 +1651,8 @@ _0231E058: .word 0x00000BF5
 #endif
 	arm_func_end ov29_0231DD60
 
-	arm_func_start ov29_0231E05C
-ov29_0231E05C: ; 0x0231E05C
+	arm_func_start GetAiUseItemProbability
+GetAiUseItemProbability: ; 0x0231E05C
 #ifdef JAPAN
 #define OV29_0231E05C_OFFSET -4
 #else
@@ -1876,7 +1876,7 @@ _0231E354:
 	cmp r5, #0
 	bne _0231E3B4
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x64
 	moveq r4, #0x32
@@ -1960,7 +1960,7 @@ _0231E4B4:
 	movne r4, #0
 	bne _0231E8E0
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0xa
 	moveq r4, #0x64
@@ -1972,7 +1972,7 @@ _0231E4D8:
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #5
@@ -1983,7 +1983,7 @@ _0231E504:
 	movgt r0, #0
 	ldmgtia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #5
@@ -1994,7 +1994,7 @@ _0231E52C:
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #5
@@ -2005,7 +2005,7 @@ _0231E554:
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #0x1e
@@ -2016,7 +2016,7 @@ _0231E57C:
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #0xf
@@ -2028,7 +2028,7 @@ _0231E5A4:
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x64
 	moveq r4, #0x32
@@ -2041,7 +2041,7 @@ _0231E5D0:
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #5
@@ -2050,7 +2050,7 @@ _0231E600:
 	cmp r0, #0
 	bne _0231E620
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x28
 	moveq r4, #5
@@ -2069,7 +2069,7 @@ _0231E620:
 	cmp r5, #0
 	bne _0231E668
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x64
 	moveq r4, #0x32
@@ -2089,7 +2089,7 @@ _0231E670:
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #5
@@ -2143,14 +2143,14 @@ _0231E744:
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #5
 	b _0231E8E0
 _0231E76C:
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #0x1e
@@ -2174,7 +2174,7 @@ _0231E798:
 	moveq r4, #0
 	beq _0231E8E0
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0xa
 	moveq r4, #0x64
@@ -2185,7 +2185,7 @@ _0231E7DC:
 	moveq r4, #0
 	beq _0231E8E0
 	mov r0, r7
-	bl ov29_0231E8F0
+	bl IsAdjacentToEnemy
 	cmp r0, #0
 	movne r4, #0x50
 	moveq r4, #0
@@ -2261,10 +2261,10 @@ _0231E8E0:
 	.align 2, 0
 _0231E8E8: .word 0x0000014F
 _0231E8EC: .word 0x000003E7
-	arm_func_end ov29_0231E05C
+	arm_func_end GetAiUseItemProbability
 
-	arm_func_start ov29_0231E8F0
-ov29_0231E8F0: ; 0x0231E8F0
+	arm_func_start IsAdjacentToEnemy
+IsAdjacentToEnemy: ; 0x0231E8F0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov r5, #0
 	mov sl, #1
@@ -2296,7 +2296,7 @@ _0231E914:
 	mov r0, r6
 	mov r2, r8
 	mov r3, r7
-	bl ov29_0230175C
+	bl GetTreatmentBetweenMonsters
 	cmp r0, #1
 	moveq r0, #1
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
@@ -2309,7 +2309,7 @@ _0231E97C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _0231E98C: .word DIRECTIONS_XY
-	arm_func_end ov29_0231E8F0
+	arm_func_end IsAdjacentToEnemy
 
 	arm_func_start ShouldTryEatItem
 ShouldTryEatItem: ; 0x0231E990
