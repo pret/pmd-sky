@@ -168,7 +168,7 @@
                                                 47](ov29_0232033C,func) found in global overlay_29_023201A0.o
                                                  48](EntityIsValid__0232017C,func) found in global overlay_29_0232017C.o
                                                46](EntityIsValid__02308FBC,func) found in global overlay_29_02308FBC.o
-                                               46](ov29_0230E914,func) found in global overlay_29_0230E914.o
+                                               46](AiDecideUseItem,func) found in global overlay_29_0230E914.o
                                                 47](EntityIsValid__0230F008,func) found in global overlay_29_0230F008.o
                                               45](DoMoveTag0x1A7,func) found in global overlay_29_0232E274.o
                                                46](DoMoveCleanse,func) found in global overlay_29_0232C524.o
@@ -35008,7 +35008,7 @@
   022FBF1C 00000000 .text   $d	(overlay_29_022F7388.o)
   022FBF28 00000000 .text   $a	(overlay_29_022F7388.o)
   022FBF28 0000001C .text   ov29_022FB51C	(overlay_29_022F7388.o)
-  022FBF44 000000B4 .text   ov29_022FB538	(overlay_29_022F7388.o)
+  022FBF44 000000B4 .text   SetDecoyAiTracker	(overlay_29_022F7388.o)
   022FBFF4 00000000 .text   $d	(overlay_29_022F7388.o)
   022FBFF8 00000024 .text   CheckSpawnThreshold	(overlay_29_022F7388.o)
   022FBFF8 00000000 .text   $a	(overlay_29_022F7388.o)
@@ -35222,14 +35222,14 @@
   02301208 0000003C .text   ov29_023007DC	(overlay_29_02300108.o)
   02301240 00000000 .text   $d	(overlay_29_02300108.o)
   02301244 00000000 .text   $a	(overlay_29_02300108.o)
-  02301244 000000C4 .text   ov29_02300818	(overlay_29_02300108.o)
+  02301244 000000C4 .text   CheckVariousStatuses2	(overlay_29_02300108.o)
   02301308 000000C4 .text   ov29_023008DC	(overlay_29_02300108.o)
   023013CC 0000002C .text   ov29_023009A0	(overlay_29_02300108.o)
   023013F8 00000138 .text   ov29_023009CC	(overlay_29_02300108.o)
   02301530 0000003C .text   ov29_02300B04	(overlay_29_02300108.o)
-  0230156C 000000B8 .text   ov29_02300B40	(overlay_29_02300108.o)
+  0230156C 000000B8 .text   CheckVariousConditions	(overlay_29_02300108.o)
   02301624 000000B8 .text   ov29_02300BF8	(overlay_29_02300108.o)
-  023016DC 00000050 .text   ov29_02300CB0	(overlay_29_02300108.o)
+  023016DC 00000050 .text   CheckVariousStatuses	(overlay_29_02300108.o)
   0230172C 00000050 .text   ov29_02300D00	(overlay_29_02300108.o)
   0230177C 00000070 .text   ov29_02300D50	(overlay_29_02300108.o)
   023017EC 0000000C .text   ov29_02300DC0	(overlay_29_02300108.o)
@@ -35266,7 +35266,7 @@
   023020D4 00000030 .text   ShouldMonsterRunAwayVariation	(overlay_29_02300108.o)
   02302104 00000084 .text   ov29_023016D8	(overlay_29_02300108.o)
   02302184 00000000 .text   $d	(overlay_29_02300108.o)
-  02302188 00000150 .text   ov29_0230175C	(overlay_29_02300108.o)
+  02302188 00000150 .text   GetTreatmentBetweenMonsters	(overlay_29_02300108.o)
   02302188 00000000 .text   $a	(overlay_29_02300108.o)
   023022D4 00000000 .text   $d	(overlay_29_02300108.o)
   023022D8 00000094 .text   ov29_023018AC	(overlay_29_02300108.o)
@@ -35317,7 +35317,7 @@
   02302D44 00000000 .text   $d	(overlay_29_02300108.o)
   02302D48 00000000 .text   $a	(overlay_29_02300108.o)
   02302D48 0000004C .text   GetMovePower	(overlay_29_02300108.o)
-  02302D94 00000020 .text   ov29_02302368	(overlay_29_02300108.o)
+  02302D94 00000020 .text   MonsterCanThrowItems	(overlay_29_02300108.o)
   02302DB4 00000038 .text   ov29_02302388	(overlay_29_02300108.o)
   02302DEC 00000070 .text   UpdateStateFlags	(overlay_29_02300108.o)
   02302E5C 000000B0 .text   IsProtectedFromNegativeStatus	(overlay_29_02300108.o)
@@ -35628,16 +35628,16 @@
   0230F364 00000024 .text   EntityIsValid__0230E8F0	(overlay_29_0230E8F0.o)
   0230F364 00000000 .text   $a	(overlay_29_0230E8F0.o)
   0230F388 000006F4 .text   .text	(overlay_29_0230E914.o)
-  0230F388 0000049C .text   ov29_0230E914	(overlay_29_0230E914.o)
+  0230F388 0000049C .text   AiDecideUseItem	(overlay_29_0230E914.o)
   0230F388 00000000 .text   $a	(overlay_29_0230E914.o)
   0230F814 00000000 .text   $d	(overlay_29_0230E914.o)
   0230F824 00000000 .text   $a	(overlay_29_0230E914.o)
-  0230F824 00000258 .text   ov29_0230EDB0	(overlay_29_0230E914.o)
+  0230F824 00000258 .text   GetPossibleAiThrownItemDirections	(overlay_29_0230E914.o)
   0230FA68 00000000 .text   $d	(overlay_29_0230E914.o)
   0230FA7C 00000024 .text   EntityIsValid__0230F008	(overlay_29_0230F008.o)
   0230FA7C 00000000 .text   $a	(overlay_29_0230F008.o)
   0230FAA0 00000000 .text   $a	(overlay_29_0230F02C.o)
-  0230FAA0 00000114 .text   ov29_0230F02C	(overlay_29_0230F02C.o)
+  0230FAA0 00000114 .text   GetPossibleAiArcItemTargets	(overlay_29_0230F02C.o)
   0230FAA0 00001FD0 .text   .text	(overlay_29_0230F02C.o)
   0230FBAC 00000000 .text   $d	(overlay_29_0230F02C.o)
   0230FBB4 0000000C .text   ov29_0230F140	(overlay_29_0230F02C.o)
@@ -36194,10 +36194,10 @@
   0231E7C8 000002FC .text   ov29_0231DD60	(overlay_29_0231CBEC.o)
   0231EAB4 00000000 .text   $d	(overlay_29_0231CBEC.o)
   0231EAC4 00000000 .text   $a	(overlay_29_0231CBEC.o)
-  0231EAC4 00000894 .text   ov29_0231E05C	(overlay_29_0231CBEC.o)
+  0231EAC4 00000894 .text   GetAiUseItemProbability	(overlay_29_0231CBEC.o)
   0231F350 00000000 .text   $d	(overlay_29_0231CBEC.o)
   0231F358 00000000 .text   $a	(overlay_29_0231CBEC.o)
-  0231F358 000000A0 .text   ov29_0231E8F0	(overlay_29_0231CBEC.o)
+  0231F358 000000A0 .text   IsAdjacentToEnemy	(overlay_29_0231CBEC.o)
   0231F3F4 00000000 .text   $d	(overlay_29_0231CBEC.o)
   0231F3F8 00000000 .text   $a	(overlay_29_0231CBEC.o)
   0231F3F8 00000060 .text   ShouldTryEatItem	(overlay_29_0231CBEC.o)
@@ -36330,7 +36330,7 @@
   0232500C 00000000 .text   $a	(overlay_29_0232145C.o)
   02325080 00000000 .text   $d	(overlay_29_0232145C.o)
   02325084 00000000 .text   $a	(overlay_29_0232145C.o)
-  02325084 0000007C .text   ov29_0232461C	(overlay_29_0232145C.o)
+  02325084 0000007C .text   IsChargingAnyTwoTurnMove	(overlay_29_0232145C.o)
   023250FC 00000000 .text   $d	(overlay_29_0232145C.o)
   02325100 00000000 .text   $a	(overlay_29_0232145C.o)
   02325100 000000B0 .text   ov29_02324698	(overlay_29_0232145C.o)
@@ -38949,7 +38949,7 @@
   023541C8 00000000 .data   ov29_023535C8	(overlay_29_0234EC38.o)
   023541D4 00000000 .data   ov29_023535D4	(overlay_29_0234EC38.o)
   023541DC 00000000 .data   ov29_023535DC	(overlay_29_0234EC38.o)
-  023542FC 00000000 .data   ov29_023536FC	(overlay_29_0234EC38.o)
+  023542FC 00000000 .data   AI_THROWN_ITEM_ACTION_CHOICE_COUNT	(overlay_29_0234EC38.o)
   02354300 00000000 .data   ov29_02353700	(overlay_29_0234EC38.o)
   0235430C 00000000 .data   ov29_0235370C	(overlay_29_0234EC38.o)
   02354310 00000000 .data   EXCL_ITEM_EFFECTS_EVASION_BOOST	(overlay_29_0234EC38.o)
@@ -39842,5 +39842,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Aug 14 22:35:24 2024
-# Link end time: Wed Aug 14 22:35:25 2024
+# Link start time: Fri Aug 30 03:47:54 2024
+# Link end time: Fri Aug 30 03:47:54 2024
