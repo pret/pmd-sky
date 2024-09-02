@@ -343,6 +343,7 @@
 .public GetDamageSourceWrapper
 .public GetDirectionTowardsPosition
 .public GetEntityMoveTargetAndRange
+.public GetExclusiveItemWithEffectFromBag
 .public GetMoveCategory
 .public GetMoveCritChance
 .public GetMovePower
@@ -402,7 +403,6 @@
 .public ov29_02304C3C
 .public ov29_02307BDC
 .public ov29_0230D088
-.public ov29_0230F654
 .public ov29_02314DC4
 .public ov29_0231AD38
 .public ov29_023201D0

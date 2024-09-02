@@ -483,8 +483,8 @@ _0230F64C: .word 0x00000C62 + TRY_NON_LEADER_ITEM_PICK_UP_OFFSET
 _0230F650: .word 0x00000C63 + TRY_NON_LEADER_ITEM_PICK_UP_OFFSET
 	arm_func_end TryNonLeaderItemPickUp
 
-	arm_func_start ov29_0230F654
-ov29_0230F654: ; 0x0230F654
+	arm_func_start GetExclusiveItemWithEffectFromBag
+GetExclusiveItemWithEffectFromBag: ; 0x0230F654
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0xc
 	mov r6, r0
@@ -515,7 +515,7 @@ ov29_0230F654: ; 0x0230F654
 _0230F6C0:
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end ov29_0230F654
+	arm_func_end GetExclusiveItemWithEffectFromBag
 
 	arm_func_start AuraBowIsActive
 AuraBowIsActive: ; 0x0230F6C8

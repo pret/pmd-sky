@@ -3468,7 +3468,7 @@ _023145F4:
 	add r2, sp, #4
 	mov r0, sb
 	mov r1, #1
-	bl ov29_0230F654
+	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #4
 	mov r0, #1
 	bl ov29_02344B44
@@ -4062,7 +4062,7 @@ ExclusiveItemEffectIsActiveWithLogging: ; 0x02314D40
 	ldrb r1, [sp, #0x20]
 	add r2, sp, #0
 	mov r0, r6
-	bl ov29_0230F654
+	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #0
 	mov r0, #1
 	bl ov29_02344B44
@@ -4094,7 +4094,7 @@ ov29_02314DC4: ; 0x02314DC4
 	add r2, sp, #0
 	mov r0, r6
 	mov r1, r4
-	bl ov29_0230F654
+	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #0
 	mov r0, #1
 	bl ov29_02344B44

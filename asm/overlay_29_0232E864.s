@@ -556,7 +556,7 @@ _0232EFDC:
 	beq _0232F188
 	mov r0, sb
 	mov r1, r4
-	bl ov29_02332FC8
+	bl CanHitWithRegularAttack
 	cmp r0, #0
 	beq _0232F188
 	ldr r0, [sp, #0x40]
@@ -565,7 +565,7 @@ _0232EFDC:
 	mov r0, r4
 	mov r1, #0x21
 	add r2, sp, #0xac
-	bl ov29_0230F654
+	bl GetExclusiveItemWithEffectFromBag
 	cmp r0, #0
 	beq _0232F060
 	mov r0, #0
@@ -625,7 +625,7 @@ _0232F090:
 	bne _0232F188
 	mov r0, sb
 	mov r1, r4
-	bl ov29_02332FC8
+	bl CanHitWithRegularAttack
 	cmp r0, #0
 	beq _0232F188
 	mov r0, r4
@@ -5125,8 +5125,8 @@ _02332FC0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end ov29_02332F18
 
-	arm_func_start ov29_02332FC8
-ov29_02332FC8: ; 0x02332FC8
+	arm_func_start CanHitWithRegularAttack
+CanHitWithRegularAttack: ; 0x02332FC8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -5160,7 +5160,7 @@ _02333018:
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02332FC8
+	arm_func_end CanHitWithRegularAttack
 
 	arm_func_start ov29_02333044
 ov29_02333044: ; 0x02333044

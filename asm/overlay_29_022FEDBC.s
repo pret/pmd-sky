@@ -1608,7 +1608,7 @@ _02300068:
 	add r2, sp, #0
 	mov r0, sl
 	mov r1, r7
-	bl ov29_0230F654
+	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #0
 	mov r0, #0
 	bl ov29_02344B44

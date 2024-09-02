@@ -12,6 +12,7 @@
 .public EntityIsValid__023118B4
 .public EntityIsValid__02315118
 .public ExclusiveItemEffectFlagTest
+.public GetExclusiveItemWithEffectFromBag
 .public GetTile
 .public GetTileAtEntity
 .public HasHeldItem
@@ -78,7 +79,6 @@
 .public ov29_023018AC
 .public ov29_02304A48
 .public ov29_02304A84
-.public ov29_0230F654
 .public ov29_02344B44
 .public ov29_0234B034
 .public ov29_0234B084

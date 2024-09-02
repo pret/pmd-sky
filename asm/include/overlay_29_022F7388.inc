@@ -52,6 +52,7 @@
 .public GetConversion2ConvertToType
 .public GetDefensiveStatAtLevel
 .public GetDirectionTowardsPosition
+.public GetExclusiveItemWithEffectFromBag
 .public GetExp
 .public GetExplorerMazeMonster
 .public GetFloorType
@@ -167,7 +168,6 @@
 .public ov29_02304BAC
 .public ov29_02307CE0
 .public ov29_02307DD0
-.public ov29_0230F654
 .public ov29_0230F9A4
 .public ov29_023159D4
 .public ov29_02337EC0

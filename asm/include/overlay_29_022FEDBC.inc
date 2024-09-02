@@ -12,6 +12,7 @@
 .public EXCL_ITEM_EFFECTS_WEATHER_MOVE_SPEED_BOOST
 .public ExclusiveItemEffectFlagTest
 .public GetApparentWeather
+.public GetExclusiveItemWithEffectFromBag
 .public GetMobilityType
 .public GetSpeedStatus
 .public GetTile
@@ -28,7 +29,6 @@
 .public ov29_022E655C
 .public ov29_022FAA04
 .public ov29_02300DCC
-.public ov29_0230F654
 .public ov29_02318D58
 .public ov29_02322374
 .public ov29_02344B44
