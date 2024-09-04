@@ -23,6 +23,7 @@
 .public GetEntityNaturalGiftInfo
 .public GetEntityWeatherBallType
 .public GetEvolutions
+.public GetExclusiveItemWithEffectFromBag
 .public GetExplorerMazeMonster
 .public GetForcedLossReason
 .public GetMobilityTypeCheckSlipAndFloating
@@ -60,7 +61,6 @@
 .public ov29_022FBDE0
 .public ov29_02302C04
 .public ov29_02302CC8
-.public ov29_0230F654
 .public ov29_02314DC4
 .public ov29_02324BE8
 .public ov29_02344B44

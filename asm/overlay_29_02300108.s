@@ -2344,7 +2344,7 @@ ov29_02301A84: ; 0x02301A84
 	add r2, sp, #0
 	mov r0, r4
 	mov r1, r6
-	bl ov29_0230F654
+	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #0
 	mov r0, #1
 	bl ov29_02344B44
@@ -3173,7 +3173,7 @@ IsProtectedFromNegativeStatus: ; 0x02302430
 	add r2, sp, #0
 	mov r0, r5
 	mov r1, #0x59
-	bl ov29_0230F654
+	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #0
 	mov r0, #1
 	bl ov29_02344B44

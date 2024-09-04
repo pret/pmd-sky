@@ -358,21 +358,21 @@ _022FF3D4:
 	ldrb r2, [r5, #0x4c]
 	add r0, r6, #4
 	strb r2, [r1]
-	bl ov29_02338708
+	bl PositionIsOnHiddenStairs
 	cmp r0, #0
 	beq _022FF5E0
-	bl ov29_02338850
+	bl GetHiddenStairsField
 	cmp r0, #1
 	bne _022FF41C
 	mov r0, #1
-	bl ov29_02338898
+	bl SetHiddenFloorField
 	b _022FF5E0
 _022FF41C:
-	bl ov29_02338850
+	bl GetHiddenStairsField
 	cmp r0, #2
 	bne _022FF5E0
 	mov r0, #2
-	bl ov29_02338898
+	bl SetHiddenFloorField
 	b _022FF5E0
 _022FF434:
 	mov r0, r6
@@ -995,21 +995,21 @@ _022FE9A8:
 	ldrb r2, [r6, #0x4c]
 	add r0, sb, #4
 	strb r2, [r1]
-	bl ov29_02338708
+	bl PositionIsOnHiddenStairs
 	cmp r0, #0
 	beq _022FEBB4
-	bl ov29_02338850
+	bl GetHiddenStairsField
 	cmp r0, #1
 	bne _022FE9F0
 	mov r0, #1
-	bl ov29_02338898
+	bl SetHiddenFloorField
 	b _022FEBB4
 _022FE9F0:
-	bl ov29_02338850
+	bl GetHiddenStairsField
 	cmp r0, #2
 	bne _022FEBB4
 	mov r0, #2
-	bl ov29_02338898
+	bl SetHiddenFloorField
 	b _022FEBB4
 _022FEA08:
 	mov r0, sb

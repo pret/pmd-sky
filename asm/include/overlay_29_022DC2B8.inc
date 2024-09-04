@@ -34,11 +34,11 @@
 .public GetApparentWeather
 .public GetBgRegionArea
 .public GetDefaultTileTextureId
-.public GetDungeonGenInfoUnk0C
 .public GetDungeonMode
 .public GetDungeonRngPreseed
 .public GetFloorType
 .public GetForcedLossReason
+.public GetHiddenFloorField
 .public GetLeader
 .public GetMaxReachedFloor
 .public GetMaxRescueAttempts
@@ -170,8 +170,6 @@
 .public ov29_0233785C
 .public ov29_0233845C
 .public ov29_0233873C
-.public ov29_02338868
-.public ov29_02338898
 .public ov29_023388B0
 .public ov29_023389C4
 .public ov29_02338A4C
@@ -271,6 +269,8 @@
 .public SetDungeonRngPreseed
 .public SetDungeonRngPreseed23Bit
 .public SetForcedLossReason
+.public SetHiddenFloorField
+.public SetHiddenStairsField
 .public SetMaxReachedFloor
 .public SetMinimapDataE447
 .public SpawnInitialMonsters

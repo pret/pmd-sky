@@ -4728,7 +4728,7 @@ _022FAC04:
 	mov r0, sb
 	mov r1, #0x47
 	add r2, sp, #0xc
-	bl ov29_0230F654
+	bl GetExclusiveItemWithEffectFromBag
 	mov r0, #1
 	add r1, sp, #0xc
 	bl ov29_02344B44
