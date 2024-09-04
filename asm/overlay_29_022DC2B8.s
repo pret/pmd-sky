@@ -3160,7 +3160,7 @@ ov29_022DEBBC: ; 0x022DEBBC
 #endif
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl GetDungeonGenInfoUnk0C
+	bl GetHiddenFloorField
 	mov r4, r0
 	mov r0, #0
 	bl SetForcedLossReason
@@ -3226,7 +3226,7 @@ ov29_022DEBBC: ; 0x022DEBBC
 	cmp r5, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, #0
-	bl ov29_02338868
+	bl SetHiddenStairsField
 	bl ov29_02349188
 	ldr r2, _022DEF2C ; =DUNGEON_PTR
 	mov r0, #0
@@ -3382,7 +3382,7 @@ _022DEF08:
 	streqb r1, [r0, #0xda + OV29_022DEBBC_OFFSET]
 _022DEF20:
 	mov r0, #0
-	bl ov29_02338898
+	bl SetHiddenFloorField
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022DEF2C: .word DUNGEON_PTR
@@ -3753,7 +3753,7 @@ _022DF460:
 	ldr r0, _022DFF54 ; =LEADER_PTR
 	mov r1, #0
 	str r1, [r0]
-	bl GetDungeonGenInfoUnk0C
+	bl GetHiddenFloorField
 	mov r6, r0
 	bl SetBothScreensWindowColorToDefault
 	ldr r1, _022DFF40 ; =DUNGEON_PTR
@@ -3769,7 +3769,7 @@ _022DF460:
 	mov r1, #0xa
 	add r0, r0, #0x700
 	strh r1, [r0, #0x88]
-	bl GetDungeonGenInfoUnk0C
+	bl GetHiddenFloorField
 	cmp r0, #0
 	bne _022DF4E4
 	bl GenerateDungeonRngSeed
@@ -4621,7 +4621,7 @@ _022E008C:
 	bl ov29_022ECDE4
 	b _022E00EC
 _022E00C8:
-	bl GetDungeonGenInfoUnk0C
+	bl GetHiddenFloorField
 	cmp r0, #0
 	bne _022DF428
 	ldr r0, _022DFF40 ; =DUNGEON_PTR

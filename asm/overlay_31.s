@@ -531,7 +531,7 @@ ov31_02382ED4: ; 0x02382ED4
 	moveq r4, #1
 	beq _02382F50
 	add r0, r5, #4
-	bl ov29_02338708
+	bl PositionIsOnHiddenStairs
 	cmp r0, #0
 	movne r4, #3
 _02382F50:

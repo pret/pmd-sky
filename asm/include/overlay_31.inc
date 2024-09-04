@@ -143,7 +143,6 @@
 .public ov29_02300BF8
 .public ov29_023021F0
 .public ov29_02302388
-.public ov29_02338708
 .public ov29_0233A0E8
 .public ov29_023468FC
 .public ov29_02346E5C
@@ -167,6 +166,7 @@
 .public PlayWindowInputSound
 .public PopInventoryMenuField0x1A3
 .public PositionHasItem
+.public PositionIsOnHiddenStairs
 .public PreprocessString
 .public PreprocessStringFromId
 .public PrintIqSkillsMenu

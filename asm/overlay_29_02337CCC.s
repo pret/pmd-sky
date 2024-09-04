@@ -644,7 +644,7 @@ ov29_02338430: ; 0x02338430
 	mov r1, #1
 	bl ov29_022EDEDC
 	mov r0, r4
-	bl ov29_02338708
+	bl PositionIsOnHiddenStairs
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, #1
@@ -974,8 +974,8 @@ HiddenStairsPresent: ; 0x023386D8
 _02338704: .word DUNGEON_PTR
 	arm_func_end HiddenStairsPresent
 
-	arm_func_start ov29_02338708
-ov29_02338708: ; 0x02338708
+	arm_func_start PositionIsOnHiddenStairs
+PositionIsOnHiddenStairs: ; 0x02338708
 	ldr r1, _02338738 ; =DUNGEON_PTR
 	ldrsh r2, [r0]
 	ldr r1, [r1]
@@ -996,7 +996,7 @@ ov29_02338708: ; 0x02338708
 	bx lr
 	.align 2, 0
 _02338738: .word DUNGEON_PTR
-	arm_func_end ov29_02338708
+	arm_func_end PositionIsOnHiddenStairs
 
 	arm_func_start ov29_0233873C
 ov29_0233873C: ; 0x0233873C
@@ -1095,8 +1095,8 @@ _0233884C: .word 0x00000F31
 #endif
 	arm_func_end HiddenStairsTrigger
 
-	arm_func_start ov29_02338850
-ov29_02338850: ; 0x02338850
+	arm_func_start GetHiddenStairsField
+GetHiddenStairsField: ; 0x02338850
 	ldr r0, _02338864 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -1108,10 +1108,10 @@ ov29_02338850: ; 0x02338850
 	bx lr
 	.align 2, 0
 _02338864: .word DUNGEON_PTR
-	arm_func_end ov29_02338850
+	arm_func_end GetHiddenStairsField
 
-	arm_func_start ov29_02338868
-ov29_02338868: ; 0x02338868
+	arm_func_start SetHiddenStairsField
+SetHiddenStairsField: ; 0x02338868
 	ldr r1, _0233887C ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
@@ -1123,10 +1123,10 @@ ov29_02338868: ; 0x02338868
 	bx lr
 	.align 2, 0
 _0233887C: .word DUNGEON_PTR
-	arm_func_end ov29_02338868
+	arm_func_end SetHiddenStairsField
 
-	arm_func_start GetDungeonGenInfoUnk0C
-GetDungeonGenInfoUnk0C: ; 0x02338880
+	arm_func_start GetHiddenFloorField
+GetHiddenFloorField: ; 0x02338880
 	ldr r0, _02338894 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x4000
@@ -1138,10 +1138,10 @@ GetDungeonGenInfoUnk0C: ; 0x02338880
 	bx lr
 	.align 2, 0
 _02338894: .word DUNGEON_PTR
-	arm_func_end GetDungeonGenInfoUnk0C
+	arm_func_end GetHiddenFloorField
 
-	arm_func_start ov29_02338898
-ov29_02338898: ; 0x02338898
+	arm_func_start SetHiddenFloorField
+SetHiddenFloorField: ; 0x02338898
 	ldr r1, _023388AC ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x4000
@@ -1153,7 +1153,7 @@ ov29_02338898: ; 0x02338898
 	bx lr
 	.align 2, 0
 _023388AC: .word DUNGEON_PTR
-	arm_func_end ov29_02338898
+	arm_func_end SetHiddenFloorField
 
 	arm_func_start ov29_023388B0
 ov29_023388B0: ; 0x023388B0

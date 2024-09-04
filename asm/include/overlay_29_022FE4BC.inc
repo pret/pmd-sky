@@ -10,6 +10,7 @@
 .public EnemyEvolution
 .public EnsureCanStandCurrentTile
 .public EntityIsValid__022FED98
+.public GetHiddenStairsField
 .public HasHeldItem
 .public IqSkillIsEnabled
 .public IsChargingAnyTwoTurnMove
@@ -56,9 +57,6 @@
 .public ov29_0231A8A0
 .public ov29_0231A9F8
 .public ov29_02337CCC
-.public ov29_02338708
-.public ov29_02338850
-.public ov29_02338898
 .public ov29_02346888
 .public ov29_0234B024
 .public ov29_0234BA54
@@ -66,6 +64,8 @@
 .public ov29_0237C9C0
 .public ov29_0237CA68
 .public ov29_0237CA6C
+.public PositionIsOnHiddenStairs
+.public SetHiddenFloorField
 .public SubstitutePlaceholderStringTags
 .public TryActivateFlashFireOnAllMonsters
 .public TrySpawnTrapperTrap
