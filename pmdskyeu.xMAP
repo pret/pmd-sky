@@ -101,7 +101,7 @@
                                         39](EntityIsValid__022E0354,func) found in global dg.o
                                         39](CalcSpeedStageWrapper,func) found in global overlay_29_022FEDBC.o
                                          40](ov29_02344B44,func) found in global overlay_29_02344B1C.o
-                                         40](ov29_0230F654,func) found in global overlay_29_0230F02C.o
+                                         40](GetExclusiveItemWithEffectFromBag,func) found in global overlay_29_0230F02C.o
                                           41](EntityIsValid__02311010,func) found in global overlay_29_02311010.o
                                           41](ov29_02322374,func) found in global overlay_29_0232145C.o
                                            42](ov29_02325644,func) found in global overlay_29_02325644.o
@@ -35653,7 +35653,7 @@
   0230FBD8 00000000 .text   $a	(overlay_29_0230F02C.o)
   023100A0 00000000 .text   $d	(overlay_29_0230F02C.o)
   023100C8 00000000 .text   $a	(overlay_29_0230F02C.o)
-  023100C8 00000074 .text   ov29_0230F654	(overlay_29_0230F02C.o)
+  023100C8 00000074 .text   GetExclusiveItemWithEffectFromBag	(overlay_29_0230F02C.o)
   0231013C 00000060 .text   AuraBowIsActive	(overlay_29_0230F02C.o)
   0231019C 00000050 .text   ov29_0230F728	(overlay_29_0230F02C.o)
   023101EC 00000010 .text   ExclusiveItemOffenseBoost	(overlay_29_0230F02C.o)
@@ -37152,7 +37152,7 @@
   02333944 00000000 .text   $d	(overlay_29_0232E864.o)
   02333958 00000000 .text   $a	(overlay_29_0232E864.o)
   02333958 000000B0 .text   ov29_02332F18	(overlay_29_0232E864.o)
-  02333A08 0000007C .text   ov29_02332FC8	(overlay_29_0232E864.o)
+  02333A08 0000007C .text   CanHitWithRegularAttack	(overlay_29_0232E864.o)
   02333A84 00000030 .text   ov29_02333044	(overlay_29_0232E864.o)
   02333AB4 00000F38 .text   StatusCheckerCheck	(overlay_29_0232E864.o)
   023349D8 00000000 .text   $d	(overlay_29_0232E864.o)
@@ -37397,7 +37397,7 @@
   02339280 00000028 .text   GetCurrentHiddenStairsType	(overlay_29_02337CCC.o)
   023392A8 00000030 .text   HiddenStairsPresent	(overlay_29_02337CCC.o)
   023392D4 00000000 .text   $d	(overlay_29_02337CCC.o)
-  023392D8 00000034 .text   ov29_02338708	(overlay_29_02337CCC.o)
+  023392D8 00000034 .text   PositionIsOnHiddenStairs	(overlay_29_02337CCC.o)
   023392D8 00000000 .text   $a	(overlay_29_02337CCC.o)
   02339308 00000000 .text   $d	(overlay_29_02337CCC.o)
   0233930C 0000002C .text   ov29_0233873C	(overlay_29_02337CCC.o)
@@ -37408,15 +37408,15 @@
   02339364 000000BC .text   HiddenStairsTrigger	(overlay_29_02337CCC.o)
   02339418 00000000 .text   $d	(overlay_29_02337CCC.o)
   02339420 00000000 .text   $a	(overlay_29_02337CCC.o)
-  02339420 00000018 .text   ov29_02338850	(overlay_29_02337CCC.o)
+  02339420 00000018 .text   GetHiddenStairsField	(overlay_29_02337CCC.o)
   02339434 00000000 .text   $d	(overlay_29_02337CCC.o)
-  02339438 00000018 .text   ov29_02338868	(overlay_29_02337CCC.o)
+  02339438 00000018 .text   SetHiddenStairsField	(overlay_29_02337CCC.o)
   02339438 00000000 .text   $a	(overlay_29_02337CCC.o)
   0233944C 00000000 .text   $d	(overlay_29_02337CCC.o)
-  02339450 00000018 .text   GetDungeonGenInfoUnk0C	(overlay_29_02337CCC.o)
+  02339450 00000018 .text   GetHiddenFloorField	(overlay_29_02337CCC.o)
   02339450 00000000 .text   $a	(overlay_29_02337CCC.o)
   02339464 00000000 .text   $d	(overlay_29_02337CCC.o)
-  02339468 00000018 .text   ov29_02338898	(overlay_29_02337CCC.o)
+  02339468 00000018 .text   SetHiddenFloorField	(overlay_29_02337CCC.o)
   02339468 00000000 .text   $a	(overlay_29_02337CCC.o)
   0233947C 00000000 .text   $d	(overlay_29_02337CCC.o)
   02339480 000000D8 .text   ov29_023388B0	(overlay_29_02337CCC.o)
@@ -39842,5 +39842,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri Aug 30 03:47:54 2024
-# Link end time: Fri Aug 30 03:47:54 2024
+# Link start time: Wed Sep 04 01:17:19 2024
+# Link end time: Wed Sep 04 01:17:20 2024
