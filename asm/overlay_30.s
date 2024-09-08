@@ -3787,7 +3787,7 @@ ov30_023859DC: ; 0x023859DC
 	strb r1, [r6, #0xb1]
 	strb r1, [r6, #0xb3]
 	str r0, [r6, #0x1c]
-	bl ov29_022E2978
+	bl PopulateActiveMonsterPtrs
 	ldr r1, [sp, #8]
 	ldr r0, [r6, #0xb4]
 #ifdef JAPAN
@@ -3913,7 +3913,7 @@ ov30_02385B10: ; 0x02385B10
 	mov r0, r0, lsr #0x10
 	mov r1, r1, lsr #0x10
 	bl ov29_022E1EC4
-	bl ov29_022E2978
+	bl PopulateActiveMonsterPtrs
 	and r0, r5, #0xff
 	strb r5, [r6, #0xaa]
 	bl ov29_022DE9F8

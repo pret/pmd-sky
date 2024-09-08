@@ -1594,7 +1594,7 @@ _022F8594:
 	mov r1, #1
 	strb r1, [r0, #0xe]
 	str r2, [sl]
-	bl ov29_022E2978
+	bl PopulateActiveMonsterPtrs
 #ifdef EUROPE
 	mov r0, r5
 	mov r1, #0
@@ -6414,7 +6414,7 @@ InitEnemySpawnStats: ; 0x022FBF58
 	bl ov29_022FBF08
 	add r0, sp, #0x16
 	mov r1, #0
-	bl ov29_022E7BE8
+	bl CopySpawnEntriesMaster
 	mov r4, r0
 	mov r6, #0
 	b _022FC028

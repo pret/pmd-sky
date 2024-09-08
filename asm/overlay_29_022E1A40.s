@@ -357,7 +357,7 @@ _022E1D90:
 	strb r0, [r7, #0xb1]
 	strb r0, [r7, #0xb3]
 	str r1, [r7, #0x1c]
-	bl ov29_022E2978
+	bl PopulateActiveMonsterPtrs
 	ldr r1, [sp, #8]
 	ldr r0, [r7, #0xb4]
 #ifdef JAPAN
@@ -681,7 +681,7 @@ _022E211C:
 	mov r0, r0, lsr #0x10
 	mov r1, r1, lsr #0x10
 	bl ov29_022E1EC4
-	bl ov29_022E2978
+	bl PopulateActiveMonsterPtrs
 	ldr r1, _022E225C ; =DUNGEON_PTR
 	mov r0, r7
 	ldr r1, [r1]
@@ -1286,8 +1286,8 @@ CanTargetPosition: ; 0x022E2954
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end CanTargetPosition
 
-	arm_func_start ov29_022E2978
-ov29_022E2978: ; 0x022E2978
+	arm_func_start PopulateActiveMonsterPtrs
+PopulateActiveMonsterPtrs: ; 0x022E2978
 #ifdef JAPAN
 #define OV29_022E2978_OFFSET -0xA4
 #else
@@ -1346,7 +1346,7 @@ _022E2A28:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022E2A34: .word DUNGEON_PTR
-	arm_func_end ov29_022E2978
+	arm_func_end PopulateActiveMonsterPtrs
 
 	arm_func_start GetTeamMemberIndex
 GetTeamMemberIndex: ; 0x022E2A38
