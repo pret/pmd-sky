@@ -19,6 +19,7 @@
 .public CheckVariousStatuses
 .public CheckVariousStatuses2
 .public Conversion2IsActive
+.public CopySpawnEntriesMaster
 .public DeleteWanTableEntryVeneer
 .public DIRECTIONS_XY
 .public DirectoryFileMngr_GetDirectoryFileSize
@@ -140,7 +141,6 @@
 .public ov29_022E0A04
 .public ov29_022E1C0C
 .public ov29_022E2470
-.public ov29_022E2978
 .public ov29_022E2A78
 .public ov29_022E4160
 .public ov29_022E576C
@@ -149,7 +149,6 @@
 .public ov29_022E68BC
 .public ov29_022E68D8
 .public ov29_022E6928
-.public ov29_022E7BE8
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
@@ -188,6 +187,7 @@
 .public ov29_02351E28
 .public ov29_0237C9B0
 .public PointCameraToMonster
+.public PopulateActiveMonsterPtrs
 .public RandInt
 .public RemoveEquivItem
 .public RemoveHolderForItemInBag

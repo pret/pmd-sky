@@ -5502,8 +5502,8 @@ ov29_022E7BD0: ; 0x022E7BD0
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022E7BD0
 
-	arm_func_start ov29_022E7BE8
-ov29_022E7BE8: ; 0x022E7BE8
+	arm_func_start CopySpawnEntriesMaster
+CopySpawnEntriesMaster: ; 0x022E7BE8
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r0
 	mov r5, r1
@@ -5549,7 +5549,7 @@ _022E7C54:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _022E7C5C: .word DUNGEON_PTR
-	arm_func_end ov29_022E7BE8
+	arm_func_end CopySpawnEntriesMaster
 
 	arm_func_start MonsterSpawnListPartialCopy
 MonsterSpawnListPartialCopy: ; 0x022E7C60
@@ -5643,7 +5643,7 @@ ov29_022E7CFC: ; 0x022E7CFC
 	add r0, r0, #0x174
 #endif
 	add r0, r0, #0x3800
-	bl ov29_022E7BE8
+	bl CopySpawnEntriesMaster
 	ldr r1, _022E7D48 ; =DUNGEON_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x3000
