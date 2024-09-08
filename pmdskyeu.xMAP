@@ -33533,7 +33533,7 @@
   022E3214 0000005C .text   ov29_022E28D4	(overlay_29_022E1A40.o)
   022E3270 00000024 .text   ov29_022E2930	(overlay_29_022E1A40.o)
   022E3294 00000024 .text   CanTargetPosition	(overlay_29_022E1A40.o)
-  022E32B8 000000C0 .text   ov29_022E2978	(overlay_29_022E1A40.o)
+  022E32B8 000000C0 .text   PopulateActiveMonsterPtrs	(overlay_29_022E1A40.o)
   022E3374 00000000 .text   $d	(overlay_29_022E1A40.o)
   022E3378 00000040 .text   GetTeamMemberIndex	(overlay_29_022E1A40.o)
   022E3378 00000000 .text   $a	(overlay_29_022E1A40.o)
@@ -33977,7 +33977,7 @@
   022E8568 00000018 .text   ov29_022E7BB8	(overlay_29_022E37DC.o)
   022E8568 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E8580 00000018 .text   ov29_022E7BD0	(overlay_29_022E37DC.o)
-  022E8598 00000078 .text   ov29_022E7BE8	(overlay_29_022E37DC.o)
+  022E8598 00000078 .text   CopySpawnEntriesMaster	(overlay_29_022E37DC.o)
   022E860C 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E8610 00000000 .text   $a	(overlay_29_022E37DC.o)
   022E8610 0000009C .text   MonsterSpawnListPartialCopy	(overlay_29_022E37DC.o)
@@ -39842,5 +39842,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Sep 04 01:17:19 2024
-# Link end time: Wed Sep 04 01:17:20 2024
+# Link start time: Sun Sep 08 16:55:34 2024
+# Link end time: Sun Sep 08 16:55:35 2024
