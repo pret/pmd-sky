@@ -51,6 +51,7 @@ NTR_FILE_EXT := bin NCGR NCLR NCER NSCR NSBMD NSBCA NSBTA
 .PHONY: filesystem clean-filesystem clean-fs
 
 filesystem: $(NITROFS_FILES) clean-language-specific-files
+ifeq ($(SKIP_COPY_NITROFS),)
 	cp -r files/language-specific/$(LANGUAGE_SPECIFIC_DIR)/SCRIPT files/SCRIPT
 	cp files/language-specific/$(LANGUAGE_SPECIFIC_DIR)/FONT/banner.bin files/FONT/banner.bin
 	cp files/language-specific/$(LANGUAGE_SPECIFIC_DIR)/FONT/banner_c.bin files/FONT/banner_c.bin
@@ -98,6 +99,7 @@ filesystem: $(NITROFS_FILES) clean-language-specific-files
 	cp files/language-specific/$(JP_SPECIFIC_DIR)/SYSTEM/168.srl files/SYSTEM/168.srl
 	cp files/language-specific/$(JP_SPECIFIC_DIR)/SYSTEM/169.srl files/SYSTEM/169.srl
 	cp files/language-specific/$(JP_SPECIFIC_DIR)/SYSTEM/170.srl files/SYSTEM/170.srl
+endif
 
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) --quiet -c $(WORK_DIR)/$(buildname)/filesystem.sha1
@@ -109,6 +111,7 @@ clean-filesystem: clean-language-specific-files
 	$(RM) -r $(FS_CLEAN_TARGETS)
 
 clean-language-specific-files:
+ifeq ($(SKIP_COPY_NITROFS),)
 	$(RM) -r files/DWC
 	$(RM) -r files/SCRIPT
 	$(RM) files/BALANCE/item_p.bin
@@ -154,3 +157,4 @@ clean-language-specific-files:
 	$(RM) files/SYSTEM/168.srl
 	$(RM) files/SYSTEM/169.srl
 	$(RM) files/SYSTEM/170.srl
+endif
