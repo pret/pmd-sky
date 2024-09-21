@@ -103,6 +103,7 @@ jobs:
           mkdir -p xmap
           cp build/pmdsky.us/*.xMAP xmap/pmdskyus.xMAP
           cp build/pmdsky.eu/*.xMAP xmap/pmdskyeu.xMAP
+          cp build/pmdsky.jp/*.xMAP xmap/pmdskyjp.xMAP
           echo "XMAP_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
 
       - name: Update xMAP
