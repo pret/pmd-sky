@@ -15,9 +15,9 @@
 .public ov10_022BF8E8
 .public ov10_022BFD20
 .public ov29_022E2C6C
-.public ov29_022E5ED0
 .public ov29_0235110C
 .public ov29_0235354C
+.public ShouldDisplayEntityAdvanced
 .public sub_0201C000
 .public sub_0201CF90
 .public UpdateCamera

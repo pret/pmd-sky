@@ -1504,7 +1504,7 @@ DoMoveSeismicToss: ; 0x02329258
 	mov sl, r3
 	ldr r7, [r5, #0xb4]
 	ldrb sb, [r1, #0xa]
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	beq _02329350
 	ldrb r2, [r7, #0x4c]

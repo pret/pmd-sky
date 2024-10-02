@@ -282,7 +282,7 @@ PlayEffectAnimationEntity: ; 0x022E35E4
 	beq _022E37A8
 	mov r0, r8
 	ldr r6, [r8, #0xb4]
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	mvneq r0, #0
 	beq _022E37A8

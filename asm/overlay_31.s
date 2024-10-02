@@ -457,7 +457,7 @@ ov31_02382E18: ; 0x02382E18
 	mov r0, #0x62
 	bl AdvanceFrame
 	mov r0, r4
-	bl ov31_02382ED4
+	bl CreateStairsMenuState
 	mov r5, #0
 	mov r6, #1
 	mov r7, #0x62
@@ -501,8 +501,8 @@ _02382EC4:
 _02382ED0: .word ov31_0238A2A0
 	arm_func_end ov31_02382E18
 
-	arm_func_start ov31_02382ED4
-ov31_02382ED4: ; 0x02382ED4
+	arm_func_start CreateStairsMenuState
+CreateStairsMenuState: ; 0x02382ED4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, _02382F60 ; =OVERLAY31_UNKNOWN_STRUCT__NA_2389E30
@@ -542,10 +542,10 @@ _02382F50:
 	.align 2, 0
 _02382F60: .word OVERLAY31_UNKNOWN_STRUCT__NA_2389E30
 _02382F64: .word ov31_0238A2A0
-	arm_func_end ov31_02382ED4
+	arm_func_end CreateStairsMenuState
 
-	arm_func_start ov31_02382F68
-ov31_02382F68: ; 0x02382F68
+	arm_func_start StairsSubheadingCallback
+StairsSubheadingCallback: ; 0x02382F68
 	stmdb sp!, {r4, lr}
 	ldr r1, _02382FB4 ; =ov31_0238A2A0
 	ldr r2, _02382FB8 ; =ov31_02389E22
@@ -568,10 +568,10 @@ ov31_02382F68: ; 0x02382F68
 	.align 2, 0
 _02382FB4: .word ov31_0238A2A0
 _02382FB8: .word ov31_02389E22
-	arm_func_end ov31_02382F68
+	arm_func_end StairsSubheadingCallback
 
-	arm_func_start ov31_02382FBC
-ov31_02382FBC: ; 0x02382FBC
+	arm_func_start HandleStairsMenu
+HandleStairsMenu: ; 0x02382FBC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x138
 	ldr r0, _02383218 ; =ov31_0238A2A0
@@ -610,7 +610,7 @@ _02382FF4:
 	ldr r1, _02383230 ; =0x80000813
 	strh r3, [sp, #0xa8]
 	str r4, [sp]
-	ldr r3, _02383234 ; =ov31_02382F68
+	ldr r3, _02383234 ; =StairsSubheadingCallback
 	add r2, sp, #0xa0
 	str r4, [sp, #4]
 	bl CreateAdvancedTextBox
@@ -742,12 +742,12 @@ _02383224: .word 0x00400013
 _02383228: .word ov31_02389E22
 _0238322C: .word DUNGEON_WINDOW_PARAMS_6
 _02383230: .word 0x80000813
-_02383234: .word ov31_02382F68
+_02383234: .word StairsSubheadingCallback
 _02383238: .word ov29_0237C91C
 _0238323C: .word DUNGEON_WINDOW_PARAMS_5
 _02383240: .word 0x00001812
 _02383244: .word ov31_02383248
-	arm_func_end ov31_02382FBC
+	arm_func_end HandleStairsMenu
 
 	arm_func_start ov31_02383248
 ov31_02383248: ; 0x02383248
@@ -9510,7 +9510,7 @@ OVERLAY31_UNKNOWN_STRUCT__NA_2389E30:
 	.byte 0x0E, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.word ov31_023832F0
-	.word ov31_02382FBC
+	.word HandleStairsMenu
 	.global DUNGEON_WINDOW_PARAMS_5
 DUNGEON_WINDOW_PARAMS_5:
 	.byte 0x00, 0x00, 0x00, 0x00

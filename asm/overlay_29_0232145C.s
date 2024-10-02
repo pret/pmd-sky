@@ -4380,7 +4380,7 @@ ov29_02324E78: ; 0x02324E78
 	bl GetMoveAnimation
 	ldrsh r5, [r0]
 	mov r0, r7
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	moveq r0, sl
 	beq _023250C8
@@ -4626,7 +4626,7 @@ _02325228:
 	ldr r1, [r5, #0x10]
 	mov r1, r1, asr #8
 	strh r1, [sp, #0xa]
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	beq _02325600
 	mov r0, sl
@@ -4696,7 +4696,7 @@ _02325354:
 	cmp r4, #0x63
 	bne _023253C8
 	mov r0, r5
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	beq _02325600
 	mov r3, r8
@@ -4727,7 +4727,7 @@ _023253C8:
 	cmp r4, #0x62
 	bne _0232543C
 	mov r0, r5
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	beq _02325600
 	add r0, sp, #4
