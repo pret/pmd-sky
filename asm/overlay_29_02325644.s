@@ -64,7 +64,7 @@ PlayMoveAnimation: ; 0x023256B4
 	beq _02325730
 	mov r0, sb
 	ldr r6, [sb, #0xb4]
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	bne _02325740
 	b _023258E0
@@ -225,11 +225,11 @@ _02325958:
 	mov r0, r5
 	ldr r8, [r5, #0xb4]
 	ldr sb, [r4, #0xb4]
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	beq _02325B04
 	mov r0, r4
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	beq _02325B04
 	mov r0, r5

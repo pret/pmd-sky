@@ -87,7 +87,6 @@
 .public ov29_022E3560
 .public ov29_022E56A0
 .public ov29_022E5864
-.public ov29_022E5ED0
 .public ov29_022E65A8
 .public ov29_022E6D68
 .public ov29_022EA370
@@ -134,6 +133,7 @@
 .public PositionHasMonster
 .public QUICK_DODGER_MOVE_ACCURACY_DROP
 .public SetAndLoadCurrentAttackAnimation
+.public ShouldDisplayEntityAdvanced
 .public ShouldDisplayEntityWrapper
 .public ShouldMovePlayAlternativeAnimation
 .public SLEEP_TURN_RANGE

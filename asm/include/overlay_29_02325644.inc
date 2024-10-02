@@ -67,7 +67,6 @@
 .public ov10_022C4C0E
 .public ov29_022E2CA0
 .public ov29_022E5474
-.public ov29_022E5ED0
 .public ov29_022E6D68
 .public ov29_022EA428
 .public ov29_02318BBC
@@ -88,6 +87,7 @@
 .public REVERSAL_DAMAGE_MULT_TABLE
 .public ROCK_SLIDE_CRINGE_CHANCE
 .public ROLLOUT_DAMAGE_MULT_TABLE
+.public ShouldDisplayEntityAdvanced
 .public SILVER_WIND_BOOST_CHANCE
 .public SKY_ATTACK_CRINGE_CHANCE
 .public SKY_ATTACK_DAMAGE_MULTIPLIER

@@ -1281,7 +1281,7 @@ ov29_022E46D0: ; 0x022E46D0
 ov29_022E46D4: ; 0x022E46D4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	ldr r0, [r4, #0xb4]
@@ -2572,7 +2572,7 @@ ov29_022E56A0: ; 0x022E56A0
 	bl ov29_022EACCC
 	ldmia sp!, {r4, pc}
 _022E56BC:
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
@@ -2602,7 +2602,7 @@ ov29_022E56F4: ; 0x022E56F4
 	bl ov29_022EACE4
 	ldmia sp!, {r4, pc}
 _022E5710:
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
@@ -2838,7 +2838,7 @@ ov29_022E5A00: ; 0x022E5A00
 	sub sp, sp, #0x18
 	mov r5, r0
 	mov r4, r1
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	beq _022E5AD4
 	ldrb r0, [r4]
@@ -2907,7 +2907,7 @@ ov29_022E5AE4: ; 0x022E5AE4
 	sub sp, sp, #0x18
 	mov r5, r0
 	mov r4, r1
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	beq _022E5BC8
 	ldrb r0, [r4]
@@ -3201,8 +3201,8 @@ _022E5EC4:
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov29_022E5E84
 
-	arm_func_start ov29_022E5ED0
-ov29_022E5ED0: ; 0x022E5ED0
+	arm_func_start ShouldDisplayEntityAdvanced
+ShouldDisplayEntityAdvanced: ; 0x022E5ED0
 	stmdb sp!, {r3, lr}
 	ldrb r1, [r0, #0x20]
 	cmp r1, #0
@@ -3232,7 +3232,7 @@ _022E5F14:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E5F1C: .word DUNGEON_PTR
-	arm_func_end ov29_022E5ED0
+	arm_func_end ShouldDisplayEntityAdvanced
 
 	arm_func_start ov29_022E5F20
 ov29_022E5F20: ; 0x022E5F20
@@ -3952,7 +3952,7 @@ ov29_022E67E4: ; 0x022E67E4
 	mov r0, r6
 	mov r4, r2
 	mov r5, #0x200
-	bl ov29_022E5ED0
+	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	beq _022E68AC
 	mov r0, r7
