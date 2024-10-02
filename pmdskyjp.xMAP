@@ -34102,7 +34102,7 @@
   022E74EC 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E74F4 0000004C .text   ov29_022E5E84	(overlay_29_022E37DC.o)
   022E74F4 00000000 .text   $a	(overlay_29_022E37DC.o)
-  022E7540 00000050 .text   ov29_022E5ED0	(overlay_29_022E37DC.o)
+  022E7540 00000050 .text   ShouldDisplayEntityAdvanced	(overlay_29_022E37DC.o)
   022E758C 00000000 .text   $d	(overlay_29_022E37DC.o)
   022E7590 000000C8 .text   ov29_022E5F20	(overlay_29_022E37DC.o)
   022E7590 00000000 .text   $a	(overlay_29_022E37DC.o)
@@ -39467,13 +39467,13 @@
   02384098 00000000 .text   $a	(overlay_31.o)
   02384150 00000000 .text   $d	(overlay_31.o)
   02384154 00000000 .text   $a	(overlay_31.o)
-  02384154 00000094 .text   ov31_02382ED4	(overlay_31.o)
+  02384154 00000094 .text   CreateStairsMenuState	(overlay_31.o)
   023841E0 00000000 .text   $d	(overlay_31.o)
   023841E8 00000000 .text   $a	(overlay_31.o)
-  023841E8 00000054 .text   ov31_02382F68	(overlay_31.o)
+  023841E8 00000054 .text   StairsSubheadingCallback	(overlay_31.o)
   02384234 00000000 .text   $d	(overlay_31.o)
   0238423C 00000000 .text   $a	(overlay_31.o)
-  0238423C 0000028C .text   ov31_02382FBC	(overlay_31.o)
+  0238423C 0000028C .text   HandleStairsMenu	(overlay_31.o)
   02384498 00000000 .text   $d	(overlay_31.o)
   023844C8 00000000 .text   $a	(overlay_31.o)
   023844C8 00000044 .text   ov31_02383248	(overlay_31.o)
@@ -40055,5 +40055,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Sep 21 04:04:19 2024
-# Link end time: Sat Sep 21 04:04:20 2024
+# Link start time: Wed Oct 02 22:59:39 2024
+# Link end time: Wed Oct 02 22:59:39 2024
