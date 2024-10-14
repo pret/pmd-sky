@@ -1,47 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022E1A40.inc"
+	.include "overlay_29_022E1AAC.inc"
 
 	.text
-
-	arm_func_start UpdateEntityPixelPos
-UpdateEntityPixelPos: ; 0x022E1A40
-	cmp r1, #0
-	ldrne r2, [r1]
-	strne r2, [r0, #0xc]
-	ldrne r1, [r1, #4]
-	bne _022E1A7C
-	ldrsh r2, [r0, #4]
-	mov r1, #0x18
-	smulbb r2, r2, r1
-	add r2, r2, #0xc
-	mov r2, r2, lsl #8
-	str r2, [r0, #0xc]
-	ldrsh r2, [r0, #6]
-	smulbb r1, r2, r1
-	add r1, r1, #0x10
-	mov r1, r1, lsl #8
-_022E1A7C:
-	str r1, [r0, #0x10]
-	bx lr
-	arm_func_end UpdateEntityPixelPos
-
-	arm_func_start ov29_022E1A84
-ov29_022E1A84: ; 0x022E1A84
-	str r1, [r0, #0xc]
-	str r2, [r0, #0x10]
-	bx lr
-	arm_func_end ov29_022E1A84
-
-	arm_func_start ov29_022E1A90
-ov29_022E1A90: ; 0x022E1A90
-	ldr r3, [r0, #0xc]
-	add r1, r3, r1
-	str r1, [r0, #0xc]
-	ldr r1, [r0, #0x10]
-	add r1, r1, r2
-	str r1, [r0, #0x10]
-	bx lr
-	arm_func_end ov29_022E1A90
 
 	arm_func_start ov29_022E1AAC
 ov29_022E1AAC: ; 0x022E1AAC

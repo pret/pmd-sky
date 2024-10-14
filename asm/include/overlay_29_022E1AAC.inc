@@ -1,9 +1,7 @@
 #pragma once
-.public _020A1AE8
-.public abs
 .public CanSeeInvisibleMonsters
-.public DrawMinimapTile
 .public DUNGEON_PTR
+.public DrawMinimapTile
 .public DungeonGetSpriteIndex
 .public EntityIsValid__022E1A1C
 .public EntityIsValid__022E32E8
@@ -19,6 +17,12 @@
 .public IsPositionActuallyInSight
 .public IsPositionInSight
 .public ItemIsActive__022E330C
+.public SECONDARY_TERRAIN_TYPES
+.public StringFromId
+.public TeamMemberHasEnabledIqSkill
+.public UpdateMinimap
+.public UpdateTrapsVisibility
+.public abs
 .public ov29_022DE954
 .public ov29_022DE9F8
 .public ov29_022DEA10
@@ -39,11 +43,6 @@
 .public ov29_0237C754
 .public ov29_0237C79C
 .public ov29_0237C84C
-.public SECONDARY_TERRAIN_TYPES
 .public strcpy
-.public StringFromId
 .public sub_02009194
 .public sub_020091B0
-.public TeamMemberHasEnabledIqSkill
-.public UpdateMinimap
-.public UpdateTrapsVisibility
