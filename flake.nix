@@ -17,6 +17,8 @@
           pkgs.python3
           pkgs.pkg-config
           pkgs.pkgsCross.arm-embedded.stdenv.cc.bintools # binutils
+          pkgs.unzip
+          pkgs.p7zip
         ];
 
         buildInputs = [
