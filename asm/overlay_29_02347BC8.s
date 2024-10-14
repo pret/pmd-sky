@@ -44,7 +44,7 @@ ov29_02347BC8: ; 0x02347BC8
 	add r3, r3, #4
 	mov r1, r3, lsl #8
 	mov r2, r2, lsl #8
-	bl ov29_022E1A84
+	bl SetEntityPixelPosXY
 	mov r0, r5
 	str r0, [sp, #0x2c]
 	strh r0, [r4, #0xf2]
@@ -137,7 +137,7 @@ _02347D84:
 	add r8, r8, r0
 	add r0, r4, #0xcc
 	mov fp, r6, asr #8
-	bl ov29_022E1A84
+	bl SetEntityPixelPosXY
 	bl IsWaterTileset
 	cmp r0, #0
 	ldr r1, [sp, #0x34]

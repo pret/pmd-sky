@@ -41,7 +41,7 @@
 .public ov29_022E0DE4
 .public ov29_022E0DFC
 .public ov29_022E0E44
-.public ov29_022E1A84
+.public SetEntityPixelPosXY
 .public ov29_022E2CA0
 .public ov29_022E9488
 .public ov29_022FB9BC

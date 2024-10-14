@@ -63,8 +63,8 @@
 .public ov10_022C5DE0
 .public ov10_022C6321
 .public ov10_022C6322
-.public ov29_022E1A84
-.public ov29_022E1A90
+.public SetEntityPixelPosXY
+.public IncrementEntityPixelPosXY
 .public ov29_022E2CA0
 .public ov29_022ED868
 .public ov29_022F8FF8

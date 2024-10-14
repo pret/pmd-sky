@@ -16,8 +16,8 @@
 .public LogMessageByIdWithPopupCheckUser
 .public MemAlloc
 .public MemFree
-.public ov29_022E1A84
-.public ov29_022E1A90
+.public SetEntityPixelPosXY
+.public IncrementEntityPixelPosXY
 .public ov29_022E56A0
 .public ov29_022F62CC
 .public ov29_02304B64

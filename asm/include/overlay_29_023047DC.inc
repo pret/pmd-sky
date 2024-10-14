@@ -17,7 +17,7 @@
 .public GetTileAtEntity
 .public IsFloorOver
 .public IsWaterTileset
-.public ov29_022E1A90
+.public IncrementEntityPixelPosXY
 .public ov29_022E8104
 .public ov29_022EA370
 .public ov29_022EF9BC

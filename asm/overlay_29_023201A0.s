@@ -89,7 +89,7 @@ _023202C4:
 	mov r0, sl
 	mov r1, r6
 	mov r2, r7
-	bl ov29_022E1A90
+	bl IncrementEntityPixelPosXY
 	mov r0, sl
 	bl ShouldDisplayEntityWrapper
 	cmp r0, #0

@@ -418,7 +418,7 @@ ov29_0232A834: ; 0x0232A834
 	add r3, r3, #4
 	mov r1, r3, lsl #8
 	mov r2, r2, lsl #8
-	bl ov29_022E1A84
+	bl SetEntityPixelPosXY
 	mov r0, #0
 	add r1, sp, #8
 	mov r2, r0
@@ -528,7 +528,7 @@ _0232AA28:
 	mov r0, sb
 	mov r1, r5
 	mov r2, r4
-	bl ov29_022E1A90
+	bl IncrementEntityPixelPosXY
 	mov r0, fp
 	bl AdvanceFrame
 	add r6, r6, #1
@@ -627,7 +627,7 @@ _0232ABA0:
 	mov r0, sb
 	mov r1, r5
 	mov r2, r6
-	bl ov29_022E1A90
+	bl IncrementEntityPixelPosXY
 	mov r0, r4
 	bl AdvanceFrame
 	add r7, r7, #1

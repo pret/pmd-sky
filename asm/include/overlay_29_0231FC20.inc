@@ -14,7 +14,7 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MoveMonsterToPos
 .public ov10_022C4570
-.public ov29_022E1A90
+.public IncrementEntityPixelPosXY
 .public ov29_022E56A0
 .public ov29_022F9C74
 .public ov29_022FFB90

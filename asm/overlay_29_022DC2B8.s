@@ -4164,7 +4164,7 @@ _022DF9B0:
 	add r0, sp, #0x18
 	mov r1, r1, lsl #8
 	mov r2, r2, lsl #8
-	bl ov29_022E1A84
+	bl SetEntityPixelPosXY
 	mov r3, #0
 	mov r0, r4
 	add r1, sp, #0x18

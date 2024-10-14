@@ -23,13 +23,13 @@ void UpdateEntityPixelPos(struct entity *entity, struct pixel_position *pixel_po
     }
 }
 
-void ov29_022E1A84(struct entity *entity, u32 x, u32 y)
+void SetEntityPixelPosXY(struct entity *entity, u32 x, u32 y)
 {
     entity->pixel_pos.x = x;
     entity->pixel_pos.y = y;
 }
 
-void ov29_022E1A84(struct entity *entity, u32 x, u32 y)
+void IncrementEntityPixelPosXY(struct entity *entity, u32 x, u32 y)
 {
     entity->pixel_pos.x += x;
     entity->pixel_pos.y += y;
