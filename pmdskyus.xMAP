@@ -3090,7 +3090,7 @@
   02024AA8 0000004C .text   sub_02024AA8	(main_0200C4CC.o)
   02024AA8 00000000 .text   $a	(main_0200C4CC.o)
   02024AF0 00000000 .text   $d	(main_0200C4CC.o)
-  02024AF4 00000054 .text   sub_02024AF4	(main_0200C4CC.o)
+  02024AF4 00000054 .text   GetRankString	(main_0200C4CC.o)
   02024AF4 00000000 .text   $a	(main_0200C4CC.o)
   02024B40 00000000 .text   $d	(main_0200C4CC.o)
   02024B48 0000004C .text   sub_02024B48	(main_0200C4CC.o)
@@ -3579,8 +3579,8 @@
   0202A3E4 00000028 .text   PrintClearMark	(main_0200C4CC.o)
   0202A3E4 00000000 .text   $a	(main_0200C4CC.o)
   0202A40C 00000028 .text   sub_0202A40C	(main_0200C4CC.o)
-  0202A434 00000028 .text   sub_0202A434	(main_0200C4CC.o)
-  0202A45C 00000170 .text   sub_0202A45C	(main_0200C4CC.o)
+  0202A434 00000028 .text   PrintBadgeMark	(main_0200C4CC.o)
+  0202A45C 00000170 .text   PrintMark	(main_0200C4CC.o)
   0202A5C0 00000000 .text   $d	(main_0200C4CC.o)
   0202A5CC 00000000 .text   $a	(main_0200C4CC.o)
   0202A5CC 000000A0 .text   CreateParentMenuFromStringIds	(main_0200C4CC.o)
@@ -39814,5 +39814,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Tue Oct 15 02:56:33 2024
-# Link end time: Tue Oct 15 02:56:34 2024
+# Link start time: Tue Oct 15 03:11:43 2024
+# Link end time: Tue Oct 15 03:11:44 2024
