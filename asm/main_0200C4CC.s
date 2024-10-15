@@ -28947,7 +28947,7 @@ _02022E30:
 	add r0, r8, r0, lsl #2
 	ldr r1, [r0, #0x10]
 	add r0, sp, #0x1c8
-	bl sub_02024AF4
+	bl GetRankString
 	mov r7, r0
 	b _020232F0
 _02022E64:
@@ -31430,8 +31430,8 @@ _02024AE8:
 _02024AF0: .word _02099D50
 	arm_func_end sub_02024AA8
 
-	arm_func_start sub_02024AF4
-sub_02024AF4: ; 0x02024AF4
+	arm_func_start GetRankString
+GetRankString: ; 0x02024AF4
 	stmdb sp!, {r4, lr}
 	mov r2, r1, lsl #0x10
 	mov r4, r0
@@ -31460,7 +31460,7 @@ _02024B38:
 	.align 2, 0
 _02024B40: .word _02099E08
 _02024B44: .word _02099D50
-	arm_func_end sub_02024AF4
+	arm_func_end GetRankString
 
 	arm_func_start sub_02024B48
 sub_02024B48: ; 0x02024B48
@@ -39992,7 +39992,7 @@ PrintClearMark: ; 0x0202A3E4
 	mov r2, lr
 	mov r3, ip
 	mov r0, #0
-	bl sub_0202A45C
+	bl PrintMark
 	ldmia sp!, {r3, pc}
 	arm_func_end PrintClearMark
 
@@ -40006,12 +40006,12 @@ sub_0202A40C: ; 0x0202A40C
 	mov r2, lr
 	mov r3, ip
 	mov r0, #1
-	bl sub_0202A45C
+	bl PrintMark
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202A40C
 
-	arm_func_start sub_0202A434
-sub_0202A434: ; 0x0202A434
+	arm_func_start PrintBadgeMark
+PrintBadgeMark: ; 0x0202A434
 	stmdb sp!, {r3, lr}
 	mov lr, r1
 	mov ip, r2
@@ -40020,12 +40020,12 @@ sub_0202A434: ; 0x0202A434
 	mov r2, lr
 	mov r3, ip
 	mov r0, #2
-	bl sub_0202A45C
+	bl PrintMark
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202A434
+	arm_func_end PrintBadgeMark
 
-	arm_func_start sub_0202A45C
-sub_0202A45C: ; 0x0202A45C
+	arm_func_start PrintMark
+PrintMark: ; 0x0202A45C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x70
 	mov sl, r0
@@ -40122,7 +40122,7 @@ _0202A5B4:
 _0202A5C0: .word _020AFDAC
 _0202A5C4: .word _0209AE44
 _0202A5C8: .word _0209AE34
-	arm_func_end sub_0202A45C
+	arm_func_end PrintMark
 
 	arm_func_start CreateParentMenuFromStringIds
 CreateParentMenuFromStringIds: ; 0x0202A5CC
