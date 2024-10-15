@@ -319,6 +319,7 @@
 .public PopInventoryMenuField0x1A3
 .public PreprocessString
 .public PreprocessStringFromId
+.public PrintBadgeMark
 .public PrintIqSkillsMenu
 .public RandInt
 .public RandomizeDemoActors
@@ -540,7 +541,6 @@
 .public sub_02028E40
 .public sub_02028E88
 .public sub_0202A03C
-.public sub_0202A434
 .public sub_0202AB80
 .public sub_0202ABB0
 .public sub_0202B030

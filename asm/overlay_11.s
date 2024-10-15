@@ -42022,7 +42022,7 @@ _022FF0F8:
 	mov r1, #3
 	mov r3, r1
 	mov r2, #0x12
-	bl sub_0202A434
+	bl PrintBadgeMark
 	strb r0, [r6, #4]
 	ldrsb r0, [r8, #0x10]
 	bl UpdateWindow
