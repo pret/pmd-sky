@@ -78,7 +78,7 @@
                                   33](EnemyEvolution,func) found in global overlay_29_02300108.o
                                   33](TryIncreaseHp,func) found in global overlay_29_0231513C.o
                                    34](CalcStatusDuration,func) found in global overlay_29_022EAB50.o
-                                   34](SubstitutePlaceholderStringTags,func) found in global overlay_29_022E1A40.o
+                                   34](SubstitutePlaceholderStringTags,func) found in global overlay_29_022E1AAC.o
                                     35](ov29_022E34C8,func) found in global overlay_29_022E330C.o
                                     35](EntityIsValid__022E32E8,func) found in global dg_camera.o
                                     35](ov29_023047DC,func) found in global overlay_29_023047DC.o
@@ -88,7 +88,7 @@
                                       37](ov29_02344B70,func) found in global overlay_29_02344B1C.o
                                        38](ov29_022FB920,func) found in global overlay_29_022F7388.o
                                        38](EntityIsValid__02345698,func) found in global overlay_29_02345698.o
-                                       38](SpawnItemEntity,func) found in global overlay_29_022E1A40.o
+                                       38](SpawnItemEntity,func) found in global overlay_29_022E1AAC.o
                                        38](RemoveGroundItem,func) found in global overlay_29_023456BC.o
                                        38](ov29_02348D3C,func) found in global overlay_29_02347BC8.o
                                        38](GetItemInfo,func) found in global overlay_29_022E0378.o
@@ -147,6 +147,7 @@
                                                      52](InflictSleepStatusSingle,func) found in global overlay_29_02311034.o
                                                       53](EndMagnetRiseStatus,func) found in global overlay_29_02305C28.o
                                                     51](EntityIsValid__022FED98,func) found in global overlay_29_022FED98.o
+                                                   50](UpdateEntityPixelPos,func) found in global dg_object.o
                                                    50](ov29_022EFAE8,func) found in global overlay_29_022EF7C4.o
                                                  48](EntityIsValid__02305C04,func) found in global overlay_29_02305C04.o
                                                  48](ov29_02321134,func) found in global overlay_29_02320788.o
@@ -162,6 +163,7 @@
                                                 47](EntityIsValid__0231F570,func) found in global overlay_29_0231F570.o
                                                 47](ov29_0232033C,func) found in global overlay_29_023201A0.o
                                                  48](EntityIsValid__02320764,func) found in global overlay_29_02320764.o
+                                                 48](IncrementEntityPixelPosXY,func) found in global dg_object.o
                                                  48](EntityIsValid__0232017C,func) found in global overlay_29_0232017C.o
                                                46](EntityIsValid__02308FBC,func) found in global overlay_29_02308FBC.o
                                                46](AiDecideUseItem,func) found in global overlay_29_0230E914.o
@@ -170,6 +172,7 @@
                                                 47](EntityIsValidMoveEffects__0232E250,func) found in global overlay_29_0232E250.o
                                                 47](TryDrought,func) found in global overlay_29_0231F594.o
                                                  48](EntityIsValid__0231FBFC,func) found in global overlay_29_0231FBFC.o
+                                                 48](SetEntityPixelPosXY,func) found in global dg_object.o
                                                 47](TryPounce,func) found in global overlay_29_0231FC20.o
                                               45](DoMoveCopycat,func) found in global overlay_29_0232A3FC.o
                                               45](DoMoveConversion2,func) found in global overlay_29_02328030.o
@@ -33721,102 +33724,105 @@
   022E30A8 00000000 .text   $d	(overlay_29_022E0378.o)
   022E30AC 00000024 .text   EntityIsValid__022E1A1C	(dg_object.o)
   022E30AC 00000000 .text   $a	(dg_object.o)
-  022E30D0 00001888 .text   .text	(overlay_29_022E1A40.o)
-  022E30D0 00000044 .text   UpdateEntityPixelPos	(overlay_29_022E1A40.o)
-  022E30D0 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3114 0000000C .text   ov29_022E1A84	(overlay_29_022E1A40.o)
-  022E3120 0000001C .text   ov29_022E1A90	(overlay_29_022E1A40.o)
-  022E313C 00000028 .text   ov29_022E1AAC	(overlay_29_022E1A40.o)
-  022E3164 00000020 .text   ov29_022E1AD4	(overlay_29_022E1A40.o)
-  022E3184 00000034 .text   ov29_022E1AF4	(overlay_29_022E1A40.o)
-  022E31B4 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E31B8 000000E4 .text   ov29_022E1B28	(overlay_29_022E1A40.o)
-  022E31B8 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3294 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E329C 00000078 .text   ov29_022E1C0C	(overlay_29_022E1A40.o)
-  022E329C 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E330C 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E3314 000000A8 .text   ov29_022E1C84	(overlay_29_022E1A40.o)
-  022E3314 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E33B8 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E33BC 00000198 .text   ov29_022E1D2C	(overlay_29_022E1A40.o)
-  022E33BC 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3550 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E3554 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3554 00000034 .text   ov29_022E1EC4	(overlay_29_022E1A40.o)
-  022E3584 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E3588 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3588 0000003C .text   ov29_022E1EF8	(overlay_29_022E1A40.o)
-  022E35C0 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E35C4 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E35C4 000000E4 .text   ov29_022E1F34	(overlay_29_022E1A40.o)
-  022E36A0 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E36A8 000000A8 .text   ov29_022E2018	(overlay_29_022E1A40.o)
-  022E36A8 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E374C 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E3750 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3750 000001A0 .text   CreateEnemyEntity	(overlay_29_022E1A40.o)
-  022E38EC 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E38F0 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E38F0 000000B4 .text   SpawnTrap	(overlay_29_022E1A40.o)
-  022E39A0 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E39A4 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E39A4 00000108 .text   SpawnItemEntity	(overlay_29_022E1A40.o)
-  022E3AA4 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E3AAC 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3AAC 00000058 .text   ov29_022E2418	(overlay_29_022E1A40.o)
-  022E3B00 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E3B04 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3B04 00000028 .text   ov29_022E2470	(overlay_29_022E1A40.o)
-  022E3B2C 000000DC .text   ShouldMinimapDisplayEntity	(overlay_29_022E1A40.o)
-  022E3C04 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E3C08 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3C08 000001B8 .text   ShouldDisplayEntity	(overlay_29_022E1A40.o)
-  022E3DB8 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E3DC0 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3DC0 00000010 .text   ShouldDisplayEntityWrapper	(overlay_29_022E1A40.o)
-  022E3DCC 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E3DD0 00000010 .text   ov29_022E273C	(overlay_29_022E1A40.o)
-  022E3DD0 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3DDC 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E3DE0 000000C4 .text   CanSeeTarget	(overlay_29_022E1A40.o)
-  022E3DE0 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E3EA4 000000C4 .text   CanTargetEntity	(overlay_29_022E1A40.o)
-  022E3F68 0000005C .text   ov29_022E28D4	(overlay_29_022E1A40.o)
-  022E3FC4 00000024 .text   ov29_022E2930	(overlay_29_022E1A40.o)
-  022E3FE8 00000024 .text   CanTargetPosition	(overlay_29_022E1A40.o)
-  022E400C 000000C0 .text   PopulateActiveMonsterPtrs	(overlay_29_022E1A40.o)
-  022E40C8 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E40CC 00000040 .text   GetTeamMemberIndex	(overlay_29_022E1A40.o)
-  022E40CC 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E4108 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E410C 00000060 .text   ov29_022E2A78	(overlay_29_022E1A40.o)
-  022E410C 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E4168 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E416C 00000090 .text   SubstitutePlaceholderStringTags	(overlay_29_022E1A40.o)
-  022E416C 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E41F8 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E41FC 00000104 .text   ov29_022E2B68	(overlay_29_022E1A40.o)
-  022E41FC 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E42F0 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E4300 00000034 .text   ov29_022E2C6C	(overlay_29_022E1A40.o)
-  022E4300 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E4330 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E4334 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E4334 0000009C .text   ov29_022E2CA0	(overlay_29_022E1A40.o)
-  022E43C8 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E43D0 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E43D0 0000009C .text   ov29_022E2D3C	(overlay_29_022E1A40.o)
-  022E4464 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E446C 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E446C 00000058 .text   ov29_022E2DFC	(overlay_29_022E1A40.o)
-  022E44C0 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E44C4 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E44C4 00000070 .text   PointCameraToMonster	(overlay_29_022E1A40.o)
-  022E4530 00000000 .text   $d	(overlay_29_022E1A40.o)
-  022E4534 00000000 .text   $a	(overlay_29_022E1A40.o)
-  022E4534 00000424 .text   UpdateCamera	(overlay_29_022E1A40.o)
-  022E494C 00000000 .text   $d	(overlay_29_022E1A40.o)
+  022E30D0 00000044 .text   UpdateEntityPixelPos	(dg_object.o)
+  022E30D0 00000000 .text   $a	(dg_object.o)
+  022E3114 0000000C .text   SetEntityPixelPosXY	(dg_object.o)
+  022E3114 00000000 .text   $a	(dg_object.o)
+  022E3120 0000001C .text   IncrementEntityPixelPosXY	(dg_object.o)
+  022E3120 00000000 .text   $a	(dg_object.o)
+  022E313C 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E313C 00000028 .text   ov29_022E1AAC	(overlay_29_022E1AAC.o)
+  022E313C 0000181C .text   .text	(overlay_29_022E1AAC.o)
+  022E3164 00000020 .text   ov29_022E1AD4	(overlay_29_022E1AAC.o)
+  022E3184 00000034 .text   ov29_022E1AF4	(overlay_29_022E1AAC.o)
+  022E31B4 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E31B8 000000E4 .text   ov29_022E1B28	(overlay_29_022E1AAC.o)
+  022E31B8 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E3294 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E329C 00000078 .text   ov29_022E1C0C	(overlay_29_022E1AAC.o)
+  022E329C 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E330C 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E3314 000000A8 .text   ov29_022E1C84	(overlay_29_022E1AAC.o)
+  022E3314 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E33B8 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E33BC 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E33BC 00000198 .text   ov29_022E1D2C	(overlay_29_022E1AAC.o)
+  022E3550 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E3554 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E3554 00000034 .text   ov29_022E1EC4	(overlay_29_022E1AAC.o)
+  022E3584 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E3588 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E3588 0000003C .text   ov29_022E1EF8	(overlay_29_022E1AAC.o)
+  022E35C0 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E35C4 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E35C4 000000E4 .text   ov29_022E1F34	(overlay_29_022E1AAC.o)
+  022E36A0 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E36A8 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E36A8 000000A8 .text   ov29_022E2018	(overlay_29_022E1AAC.o)
+  022E374C 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E3750 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E3750 000001A0 .text   CreateEnemyEntity	(overlay_29_022E1AAC.o)
+  022E38EC 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E38F0 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E38F0 000000B4 .text   SpawnTrap	(overlay_29_022E1AAC.o)
+  022E39A0 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E39A4 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E39A4 00000108 .text   SpawnItemEntity	(overlay_29_022E1AAC.o)
+  022E3AA4 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E3AAC 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E3AAC 00000058 .text   ov29_022E2418	(overlay_29_022E1AAC.o)
+  022E3B00 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E3B04 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E3B04 00000028 .text   ov29_022E2470	(overlay_29_022E1AAC.o)
+  022E3B2C 000000DC .text   ShouldMinimapDisplayEntity	(overlay_29_022E1AAC.o)
+  022E3C04 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E3C08 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E3C08 000001B8 .text   ShouldDisplayEntity	(overlay_29_022E1AAC.o)
+  022E3DB8 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E3DC0 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E3DC0 00000010 .text   ShouldDisplayEntityWrapper	(overlay_29_022E1AAC.o)
+  022E3DCC 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E3DD0 00000010 .text   ov29_022E273C	(overlay_29_022E1AAC.o)
+  022E3DD0 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E3DDC 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E3DE0 000000C4 .text   CanSeeTarget	(overlay_29_022E1AAC.o)
+  022E3DE0 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E3EA4 000000C4 .text   CanTargetEntity	(overlay_29_022E1AAC.o)
+  022E3F68 0000005C .text   ov29_022E28D4	(overlay_29_022E1AAC.o)
+  022E3FC4 00000024 .text   ov29_022E2930	(overlay_29_022E1AAC.o)
+  022E3FE8 00000024 .text   CanTargetPosition	(overlay_29_022E1AAC.o)
+  022E400C 000000C0 .text   PopulateActiveMonsterPtrs	(overlay_29_022E1AAC.o)
+  022E40C8 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E40CC 00000040 .text   GetTeamMemberIndex	(overlay_29_022E1AAC.o)
+  022E40CC 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E4108 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E410C 00000060 .text   ov29_022E2A78	(overlay_29_022E1AAC.o)
+  022E410C 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E4168 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E416C 00000090 .text   SubstitutePlaceholderStringTags	(overlay_29_022E1AAC.o)
+  022E416C 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E41F8 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E41FC 00000104 .text   ov29_022E2B68	(overlay_29_022E1AAC.o)
+  022E41FC 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E42F0 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E4300 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E4300 00000034 .text   ov29_022E2C6C	(overlay_29_022E1AAC.o)
+  022E4330 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E4334 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E4334 0000009C .text   ov29_022E2CA0	(overlay_29_022E1AAC.o)
+  022E43C8 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E43D0 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E43D0 0000009C .text   ov29_022E2D3C	(overlay_29_022E1AAC.o)
+  022E4464 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E446C 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E446C 00000058 .text   ov29_022E2DFC	(overlay_29_022E1AAC.o)
+  022E44C0 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E44C4 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E44C4 00000070 .text   PointCameraToMonster	(overlay_29_022E1AAC.o)
+  022E4530 00000000 .text   $d	(overlay_29_022E1AAC.o)
+  022E4534 00000000 .text   $a	(overlay_29_022E1AAC.o)
+  022E4534 00000424 .text   UpdateCamera	(overlay_29_022E1AAC.o)
+  022E494C 00000000 .text   $d	(overlay_29_022E1AAC.o)
   022E4958 00000024 .text   EntityIsValid__022E32E8	(dg_camera.o)
   022E4958 00000000 .text   $a	(dg_camera.o)
   022E497C 00000030 .text   ItemIsActive__022E330C	(overlay_29_022E330C.o)
@@ -40055,5 +40061,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Oct 02 22:59:39 2024
-# Link end time: Wed Oct 02 22:59:39 2024
+# Link start time: Tue Oct 15 02:55:22 2024
+# Link end time: Tue Oct 15 02:55:23 2024
