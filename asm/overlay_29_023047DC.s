@@ -792,7 +792,7 @@ _023051C4:
 	mov r0, r7
 	ldr r1, [r8, #0x10]
 	ldr r2, [r8, #0x14]
-	bl ov29_022E1A90
+	bl IncrementEntityPixelPosXY
 	ldrb r0, [sb, #7]
 	cmp r0, #0
 	beq _02305258

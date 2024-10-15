@@ -259,7 +259,7 @@ _0231FF84:
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
 	mov r0, sb
-	bl ov29_022E1A90
+	bl IncrementEntityPixelPosXY
 	mov r0, sb
 	bl ShouldDisplayEntityWrapper
 	cmp r0, #0

@@ -91,7 +91,7 @@
 .public ov29_022E15C8
 .public ov29_022E1604
 .public ov29_022E1640
-.public ov29_022E1A84
+.public SetEntityPixelPosXY
 .public ov29_022E2B68
 .public ov29_022E2DFC
 .public ov29_022E34B0

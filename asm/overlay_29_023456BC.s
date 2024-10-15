@@ -290,7 +290,7 @@ SpawnDroppedItemWrapper: ; 0x02345A3C
 	add r3, r3, #4
 	mov r1, r3, lsl #8
 	mov r2, r2, lsl #8
-	bl ov29_022E1A84
+	bl SetEntityPixelPosXY
 	mov r0, #0
 	strh r0, [sp, #0x2e]
 	str r0, [sp]
@@ -595,7 +595,7 @@ _02345E90:
 	mov r1, r7
 	mov r2, r8
 	str r5, [sl, #0x1c]
-	bl ov29_022E1A84
+	bl SetEntityPixelPosXY
 	mov r6, #0
 _02345EE0:
 	sub r5, r5, #0x800
@@ -614,7 +614,7 @@ _02345EE0:
 	mov r0, sl
 	mov r1, r7
 	mov r2, r8
-	bl ov29_022E1A84
+	bl SetEntityPixelPosXY
 	mov r2, #0
 	str r2, [sl, #0x1c]
 	mov r0, sl
@@ -1057,7 +1057,7 @@ _023464C4:
 	add r2, r2, #4
 	mov r1, r1, lsl #8
 	mov r2, r2, lsl #8
-	bl ov29_022E1A84
+	bl SetEntityPixelPosXY
 	mov r0, #0
 	strh r0, [r6, #0x26]
 	mov r0, r8, lsl #2
@@ -1156,7 +1156,7 @@ _0234665C:
 	ldr r1, [r1, r8, lsl #3]
 	ldr r2, [r2, #4]
 	str r0, [sp, #0xc]
-	bl ov29_022E1A90
+	bl IncrementEntityPixelPosXY
 	mov r0, fp
 	bl sub_020018D0
 	mov r1, #0xc
@@ -2368,7 +2368,7 @@ _023474CC:
 	mov r0, sl
 	mov r1, r8
 	mov r2, sb
-	bl ov29_022E1A84
+	bl SetEntityPixelPosXY
 	mov r5, #0
 	str r5, [sl, #0x1c]
 	cmp r4, #0
@@ -2439,7 +2439,7 @@ ov29_02347518: ; 0x02347518
 	add r1, r3, #4
 	mov r1, r1, lsl #8
 	mov r2, r2, lsl #8
-	bl ov29_022E1A84
+	bl SetEntityPixelPosXY
 #ifdef JAPAN
 	mov r0, #0
 #else
@@ -2623,7 +2623,7 @@ _02347750:
 #else
 	mov r2, fp
 #endif
-	bl ov29_022E1A90
+	bl IncrementEntityPixelPosXY
 	bl IsWaterTileset
 	cmp r0, #0
 	ldr r0, [r4, #0xd8]
