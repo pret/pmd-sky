@@ -1,9 +1,14 @@
 #include "main_02008254.h"
+#include <file_rom.h>
+#include "main_02003D2C.h"
+#include "main_0207F818.h"
 
-s32 sub_0207F818(struct file_stream* file, u8* buf, s32 size);
-void CardPullOutWithStatus(u32 status);
+u32 FileGetSize(struct file_stream* file)
+{
+    return file->end_address - file->start_address;
+}
 
-s32 FileRom_HandleRead(struct file_stream* file, u8* buf, s32 size) {
+s32 FileRom_HandleRead(struct file_stream* file, void* buf, s32 size) {
     s32 total_bytes_read = 0;
     while (size>total_bytes_read) {
         s32 bytes_read = sub_0207F818(file,buf,size-total_bytes_read);
@@ -15,4 +20,15 @@ s32 FileRom_HandleRead(struct file_stream* file, u8* buf, s32 size) {
         }
     }
     return total_bytes_read;
+}
+
+u32 FileRom_HandleSeek(struct file_stream* file, s32 offset, s32 whence)
+{
+    u32 res = sub_0207F828(file,offset,whence);
+    if (res != 0) {
+        return res;
+    } else {
+        CardPullOutWithStatus(1);
+        return;
+    }
 }

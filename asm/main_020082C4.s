@@ -1,18 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_020082A8.inc"
+	.include "main_020082C4.inc"
 
 	.text
-
-	arm_func_start FileRom_HandleSeek
-FileRom_HandleSeek: ; 0x020082A8
-	stmdb sp!, {r3, lr}
-	bl sub_0207F828
-	cmp r0, #0
-	ldmneia sp!, {r3, pc}
-	mov r0, #1
-	bl CardPullOutWithStatus
-	ldmia sp!, {r3, pc}
-	arm_func_end FileRom_HandleSeek
 
 	arm_func_start FileClose
 FileClose: ; 0x020082C4

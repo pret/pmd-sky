@@ -10,12 +10,16 @@ Static main
 	Address 0x02000000
 	StackSize 0 2048
 	Object asm/main_02000C6C.o
+	Object src/main_02003D2C.o
+	Object asm/main_02003DB8.o
 	Object src/main_02008254.o
-	Object asm/main_020082A8.o
+	Object asm/main_020082C4.o
 	Object src/debug.o
 	Object src/directory_file_mngr.o
 	Object src/directory_file.o
 	Object asm/main_0200C4CC.o
+	Object src/main_02025788.o
+	Object asm/main_020257FC.o
 	Object src/main_02054BE0.o
 	Object asm/main_02054C24.o
 	Object lib/DSE/src/dc_envelope.o
@@ -23,6 +27,8 @@ Static main
 	Object lib/DSE/asm/dc_lfo_1.o
 	Object lib/DSE/src/dc_lfo_2.o
 	Object asm/main_02075600.o
+	Object src/main_0207F818.o
+	Object asm/main_0207F894.o
 }
 
 Autoload ITCM
