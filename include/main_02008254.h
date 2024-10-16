@@ -3,6 +3,6 @@
 
 #include <file.h>
 
-s32 FileRom_HandleRead(struct file_stream* file, u8* buf, s32 size);
+u32 FileGetSize(struct file_stream* file);
 
 #endif //PMDSKY_MAIN_02008254_H

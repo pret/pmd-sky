@@ -176,5 +176,4 @@
 .public sub_0207A2DC
 .public sub_0207C164
 .public sub_0207F70C
-.public sub_0207F828
 .public sub_02082420
