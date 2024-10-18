@@ -45,6 +45,8 @@ if function_location.startswith('main'):
     file_prefix = 'main_'
 else:
     file_prefix = function_location[:len('overlay_00_')]
+    if file_prefix[-1] != '_':
+        file_prefix += '_'
 
 function_start_line = None
 function_end_line = None

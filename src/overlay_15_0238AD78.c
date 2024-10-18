@@ -1,0 +1,18 @@
+#include "overlay_15_0238AD78.h"
+
+extern unkStruct_ov15_0238AD78* OVERLAY15_UNKNOWN_POINTER__NA_238B180;
+
+extern void sub_02026268(u32, u32, u32, u16);
+extern void sub_02039B0C(u32*);
+
+void ov15_0238AD78(u32 r0) {
+    u32 uVar1;
+    if (r0 != 0)
+        uVar1 = 900;
+    else
+        uVar1 = 901;
+
+    sub_02026268(OVERLAY15_UNKNOWN_POINTER__NA_238B180->unk68, 2, 0, uVar1);
+    sub_02039B0C(&OVERLAY15_UNKNOWN_POINTER__NA_238B180->unk54);
+    return;
+}
