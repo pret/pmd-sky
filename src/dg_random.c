@@ -2,7 +2,29 @@
 
 // file starts at 0x022ea968
 
-extern s32 DungeonRand16Bit(void);
+extern s16 DungeonRand16Bit(void);
+
+s32 DungeonRandInt(s32 end)
+{
+    s32 entropy = DungeonRand16Bit();
+    entropy &= 0xffff;
+    entropy *= end;
+    return (((s32) entropy) >> 0x10) & 0xffff;
+}
+
+s32 DungeonRandRange(s32 from, s32 to)
+{
+    s32 entropy;
+    if (from == to) {
+        return from;
+    } else if (from<to) {
+        entropy = DungeonRand16Bit();
+        return from + ((s32)((entropy & 0xffff) * (to - from)) >> 0x10 & 0xffffU);
+    } else {
+        entropy = DungeonRand16Bit();
+        return to + ((s32)((entropy & 0xffff) * (from - to)) >> 0x10 & 0xffffU);
+    }
+}
 
 u8 DungeonRandOutcome__022EAB20(s32 percentChance)
 {
