@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/Yyyxj
 	arm_func_start ov15_0238ADC4
 ov15_0238ADC4: ; 0x0238ADC4
 	stmdb sp!, {r3, r4, lr}

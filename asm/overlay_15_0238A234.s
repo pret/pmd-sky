@@ -1,73 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_15.inc"
+	.include "overlay_15_0238A234.inc"
 
 	.text
-
-	arm_func_start ov15_0238A140
-ov15_0238A140: ; 0x0238A140
-	stmdb sp!, {r3, lr}
-	mov r0, #0xec
-	mov r1, #8
-	bl MemAlloc
-	ldr r1, _0238A228 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	str r0, [r1]
-	add r0, r0, #0x88
-	bl InitPreprocessorArgs
-	mov r0, #0
-	bl CreateDialogueBox
-	ldr r2, _0238A228 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	mov r1, #3
-	ldr r3, [r2]
-	mov r2, #1
-	strb r0, [r3, #0x80]
-	mov r0, #0
-	bl CreatePortraitBox
-	ldr r2, _0238A228 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	mvn r3, #1
-	ldr r1, [r2]
-	mov ip, #0
-	strb r0, [r1, #0x81]
-	ldr r0, [r2]
-	ldr r1, _0238A22C ; =0x00000183
-	strb r3, [r0, #0x68]
-	ldr r0, [r2]
-	ldr r3, _0238A230 ; =0x0000270F
-	str ip, [r0, #0x10]
-	ldr r0, [r2]
-	str r1, [r0, #0x88]
-	ldr r0, [r2]
-	str r3, [r0, #0xac]
-	ldr r0, [r2]
-	str r1, [r0, #0xd4]
-	ldr r0, [r2]
-	str ip, [r0]
-	ldr r0, [r2]
-	add r0, r0, #0xdc
-	bl InitPortraitParamsWithMonsterId
-	ldr r0, _0238A228 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	mov r1, #0
-	ldr r0, [r0]
-	add r0, r0, #0xdc
-	bl SetPortraitLayout
-	ldr r0, _0238A228 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	mov r1, #0
-	ldr r0, [r0]
-	add r0, r0, #0xdc
-	bl SetPortraitEmotion
-	ldr r0, _0238A228 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	ldr r1, [r0]
-	ldrsb r0, [r1, #0x81]
-	add r1, r1, #0xdc
-	bl ShowPortraitInPortraitBox
-	mov r0, #0
-	bl ov15_0238A4E8
-	mov r0, #1
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0238A228: .word OVERLAY15_UNKNOWN_POINTER__NA_238B180
-_0238A22C: .word 0x00000183
-_0238A230: .word 0x0000270F
-	arm_func_end ov15_0238A140
 
 	arm_func_start ov15_0238A234
 ov15_0238A234: ; 0x0238A234
