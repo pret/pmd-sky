@@ -16,6 +16,8 @@ if len(sys.argv) != 3:
 _, function_location, function_header = sys.argv
 if function_location.endswith('.s'):
     function_location = function_location[:-2]
+if function_location.startswith("./asm/"):
+    function_location = function_location[6:]
 if function_header.endswith(';'):
     function_header = function_header[:-1]
 

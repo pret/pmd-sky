@@ -22,6 +22,8 @@ Static main
 	Object asm/main_0200ED1C.o
 	Object src/main_02025788.o
 	Object asm/main_020257FC.o
+	Object src/main_020348E4.o
+	Object asm/main_02034974.o
 	Object src/main_02054BE0.o
 	Object asm/main_02054C24.o
 	Object lib/DSE/src/dc_envelope.o
@@ -326,7 +328,8 @@ Overlay OVY_30
 Overlay OVY_31
 {
 	After OVY_29
-	Object asm/overlay_31.o
+	Object src/overlay_31_02382820.o
+	Object asm/overlay_31_02382FBC.o
 }
 Overlay OVY_32
 {
