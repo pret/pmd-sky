@@ -194,7 +194,7 @@ ov29_02302CC8: ; 0x02302CC8
 	mov sb, r0
 	mov r8, r1
 	mov r4, #0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r5, r0
 	ldr r7, [sb, #0xb4]
 	mov r0, sb

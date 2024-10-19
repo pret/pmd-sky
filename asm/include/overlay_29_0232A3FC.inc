@@ -92,7 +92,7 @@
 .public SpawnDroppedItem
 .public STEEL_WING_BOOST_DEFENSE_CHANCE
 .public StringFromId
-.public sub_02025888
+.public AllocateTemp1024ByteBufferFromPool
 .public sub_02050FF8
 .public sub_02054EC8
 .public SubstitutePlaceholderStringTags

@@ -15001,7 +15001,7 @@ _0233540C:
 	add r1, r0, #0xfc
 	cmp r5, r1
 	bge _02335488
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldr r1, _023355C4 ; =ov01_0233C1A0
 	sub r2, r5, #0xfc
 	ldr r3, [r1, #4]

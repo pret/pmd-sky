@@ -366,7 +366,7 @@ _0200C984:
 	moveq r0, #0
 	tst r0, #0xff
 	beq _0200C9EC
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldr r2, _0200CA48 ; =_02094C0C
 	add r1, r5, #0x5e
 	str r0, [sp, #0x3c]

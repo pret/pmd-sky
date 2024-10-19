@@ -680,7 +680,7 @@
 .public sub_02024D7C
 .public sub_020251F0
 .public sub_02025304_JP
-.public sub_02025888
+.public AllocateTemp1024ByteBufferFromPool
 .public sub_02025C7C
 .public sub_02025D50
 .public sub_02025E84

@@ -7134,7 +7134,7 @@ _0205A7D0:
 	moveq r0, #0
 	tst r0, #0xff
 	beq _0205A820
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldr r2, _0205ADD0 ; =_020A34B8
 	add r1, r6, #0x1c
 	mov r7, r0
@@ -7194,7 +7194,7 @@ _0205A83C:
 	ldrb r0, [r6, #0x38]
 	cmp r0, #0
 	bne _0205AD98
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldrb r1, [r6, #0x54]
 	mov r6, r0
 	bl sub_02058C30
@@ -7291,7 +7291,7 @@ _0205AA04:
 	cmp r0, #0
 	beq _0205AA94
 	mov fp, #1
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldrb r1, [sb, #0x58]
 	str r0, [sp, #8]
 	mov r2, #0x50
@@ -7360,7 +7360,7 @@ _0205AB08:
 	cmp r0, #0
 	beq _0205ABD8
 	mov sb, #1
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	str r0, [sp, #0xc]
 	ldrb r0, [fp, r8]
 	bl GetIqSkillStringId
@@ -7375,7 +7375,7 @@ _0205AB08:
 	bl IqSkillFlagTest
 	cmp r0, #0
 	beq _0205AB80
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldr r1, _0205ADF8 ; =_020A3514
 	str r0, [sp, #0x10]
 	bl strcpy
@@ -7383,7 +7383,7 @@ _0205AB08:
 	str r0, [sp, #0xa4]
 	b _0205AB98
 _0205AB80:
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldr r1, _0205ADFC ; =_020A351C
 	str r0, [sp, #0x14]
 	bl strcpy
@@ -7423,7 +7423,7 @@ _0205ABEC:
 	bl sub_02026268
 	b _0205AD98
 _0205AC0C:
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldrsh r1, [r6]
 	mov r5, r0
 	bl GetNameRaw
@@ -7477,7 +7477,7 @@ _0205AC5C:
 	mov r2, #0x2b
 	add r3, sp, #0xbc
 	bl DrawTextInWindow
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r5, r0
 	ldrsh r0, [r6]
 	bl GetCategoryString
@@ -7984,7 +7984,7 @@ sub_0205B39C: ; 0x0205B39C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	mov r5, r1
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r7, r0
 	b _0205B3C0
 _0205B3B4:

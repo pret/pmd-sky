@@ -38057,7 +38057,7 @@ _02052758: .word _020B09B4
 GetCategoryString: ; 0x0205275C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r4, r0
 	mov r0, r5
 	mov r1, #0x258

@@ -3376,7 +3376,7 @@ EnemyEvolution: ; 0x023026FC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x168
 	mov sl, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldr r0, _02302A28 ; =DUNGEON_PTR
 	ldr r2, [r0]
 	ldrb r1, [r2, #0xf]

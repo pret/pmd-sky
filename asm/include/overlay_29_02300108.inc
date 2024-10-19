@@ -82,7 +82,7 @@
 .public strcpy
 .public StringFromId
 .public sub_02024FB8
-.public sub_02025888
+.public AllocateTemp1024ByteBufferFromPool
 .public sub_02056084
 .public sub_02058534
 .public sub_0205858C

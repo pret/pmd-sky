@@ -685,9 +685,9 @@ _0233D244:
 	cmp r4, #3
 	moveq r0, #0
 	beq _0233D3F8
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r6, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldr r1, _0233D400 ; =ov08_0233EC28
 	mov r5, r0
 	ldr r1, [r1, #4]
