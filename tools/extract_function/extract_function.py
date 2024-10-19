@@ -16,6 +16,8 @@ if len(sys.argv) != 3:
 _, function_location, function_header = sys.argv
 if function_location.endswith('.s'):
     function_location = function_location[:-2]
+if function_location.startswith("./asm/"):
+    function_location = function_location[6:]
 if function_header.endswith(';'):
     function_header = function_header[:-1]
 
@@ -45,6 +47,8 @@ if function_location.startswith('main'):
     file_prefix = 'main_'
 else:
     file_prefix = function_location[:len('overlay_00_')]
+    if file_prefix[-1] != '_':
+        file_prefix += '_'
 
 function_start_line = None
 function_end_line = None
