@@ -1396,7 +1396,7 @@ DoMoveCamouflage: ; 0x0232B518
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldr r0, _0232B5B8 ; =DUNGEON_PTR
 	mov r2, #0xc
 	ldr r0, [r0]

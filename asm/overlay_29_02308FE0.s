@@ -8006,7 +8006,7 @@ _0230E64C:
 ov29_0230E658: ; 0x0230E658
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r5, r0
 	mov r0, r4
 	bl StringFromId

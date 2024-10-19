@@ -2251,9 +2251,9 @@ LowerOffensiveStat: ; 0x023135FC
 	mov r7, r1
 	mov r5, r3
 	mov r8, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r6, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r4, r0
 	mov r1, r5, lsl #0x10
 	mov r0, r7
@@ -2411,9 +2411,9 @@ LowerDefensiveStat: ; 0x02313814
 	mov r7, r1
 	mov r5, r3
 	mov r8, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r6, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r4, r0
 	mov r1, r5, lsl #0x10
 	mov r0, r7
@@ -2522,9 +2522,9 @@ BoostOffensiveStat: ; 0x0231399C
 	mov r8, r1
 	mov r6, r3
 	mov sb, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r4, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r5, r0
 	mov r1, r6, lsl #0x10
 	mov r0, r8
@@ -2630,9 +2630,9 @@ BoostDefensiveStat: ; 0x02313B08
 	mov r8, r1
 	mov r6, r3
 	mov sb, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r4, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r5, r0
 	mov r1, r6, lsl #0x10
 	mov r0, r8
@@ -2805,7 +2805,7 @@ ApplyOffensiveStatMultiplier: ; 0x02313D40
 	mov r8, r1
 	mov sb, r0
 	mov r7, r3
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r4, r0
 	mov r0, r8
 	bl EntityIsValid__023118B4
@@ -2960,7 +2960,7 @@ ApplyDefensiveStatMultiplier: ; 0x02313F64
 	mov r8, r1
 	mov sb, r0
 	mov r7, r3
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r4, r0
 	mov r0, r8
 	bl EntityIsValid__023118B4
@@ -3074,7 +3074,7 @@ BoostHitChanceStat: ; 0x023140E4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r1
 	mov r7, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r8, r0
 	mov r0, r6
 	mov r4, #1
@@ -3173,7 +3173,7 @@ LowerHitChanceStat: ; 0x0231422C
 	mov r6, r1
 	mov r7, r0
 	mov r8, r3
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r5, r0
 	mov r0, r6
 	mov r4, #1
@@ -3303,7 +3303,7 @@ TryInflictCringeStatus: ; 0x023143E8
 	mov r7, r0
 	mov r5, r2
 	mov r4, r3
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r0, r6
 	bl EntityIsValid__023118B4
 	cmp r0, #0

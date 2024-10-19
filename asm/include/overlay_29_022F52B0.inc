@@ -96,7 +96,7 @@
 .public strncpy
 .public sub_02020880
 .public sub_02024FB8
-.public sub_02025888
+.public AllocateTemp1024ByteBufferFromPool
 .public SubstitutePlaceholderStringTags
 .public TryActivateTruant
 .public TryTriggerMonsterHouse

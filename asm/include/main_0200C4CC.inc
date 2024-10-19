@@ -65,7 +65,7 @@
 .public sub_02010590
 .public sub_02011AB8
 .public sub_020238E0
-.public sub_02025888
+.public AllocateTemp1024ByteBufferFromPool
 .public sub_020265A8
 .public sub_02050974
 .public sub_02050990

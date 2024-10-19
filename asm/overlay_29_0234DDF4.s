@@ -706,7 +706,7 @@ _0234E78C:
 _0234E7C0:
 	bl GetLeader
 	mov r7, r0
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	mov r5, r0
 	bl ov29_0234B034
 	mov r1, r7

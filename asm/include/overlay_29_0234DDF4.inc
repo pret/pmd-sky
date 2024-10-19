@@ -59,7 +59,7 @@
 .public StrncpySimple
 .public sub_0200B330
 .public sub_0200B3D4
-.public sub_02025888
+.public AllocateTemp1024ByteBufferFromPool
 .public sub_020282F4
 .public sub_0202AAE8
 .public sub_0204AF20

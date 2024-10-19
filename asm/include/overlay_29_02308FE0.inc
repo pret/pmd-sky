@@ -263,7 +263,7 @@
 .public StringFromId
 .public StrncpyName
 .public StrncpySimpleNoPad
-.public sub_02025888
+.public AllocateTemp1024ByteBufferFromPool
 .public sub_0204AF00
 .public sub_020534BC
 .public sub_02054EC8

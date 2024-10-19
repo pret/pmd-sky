@@ -491,7 +491,7 @@
 .public sub_020251F0
 .public sub_02025304_JP
 .public sub_0202568C
-.public sub_02025888
+.public AllocateTemp1024ByteBufferFromPool
 .public sub_02025AD8
 .public sub_02026268
 .public sub_02026358

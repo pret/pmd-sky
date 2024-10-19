@@ -782,7 +782,7 @@ _022F5C3C:
 	moveq r4, #1
 	movne r4, #2
 _022F5C84:
-	bl sub_02025888
+	bl AllocateTemp1024ByteBufferFromPool
 	ldrb r1, [sb, #0x48]
 	mov r5, r0
 	cmp r1, #0xd6

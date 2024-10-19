@@ -32,7 +32,7 @@ extern void PreprocessString(u8* dst, u32 dsize, const u8* src, u32 flags, struc
 extern void DrawTextInWindow(struct Window*, u32, u32, u8*);
 extern void UpdateWindow(struct Window*);
 
-extern u8* sub_02025888(void);
+extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern struct Window* GetWindow(struct Window*);
 extern s32 sub_020265A8(u8*); // Measures the text's width in pixels
 
@@ -148,7 +148,7 @@ void DungeonMenuSwitch(struct Window* window)
     struct PPStrValues str_values;
     str_values.dungeon_0 = DUNGEON_PTR->id | 0x40000;
     str_values.digits_0 = DUNGEON_PTR->floor;
-    u8* str_buff = sub_02025888();
+    u8* str_buff = AllocateTemp1024ByteBufferFromPool();
     PreprocessString(str_buff, 0x400, DUNGEON_MENU_SWITCH_STR1, 0, &str_values);
     struct Window* window2 = GetWindow(window);
     s32 text_width = sub_020265A8(str_buff);
