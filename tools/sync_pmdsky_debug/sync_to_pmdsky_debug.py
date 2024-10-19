@@ -157,13 +157,13 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
             # Keep track of the symbol directly before the target symbol.
             # This will be used as an anchor when appending to the header file.
             symbol_header_line = find_symbol_in_header(symbol_entry['name'], symbol.is_data, header_contents)
-            if symbol_header_line is not None:
+            if symbol_header_line is not None and insert_index is None:
                 target_header_line = symbol_header_line
             if language_key in symbol_entry['address']:
                 current_symbol_address: int | List[int] = symbol_entry['address'][language_key]
                 if isinstance(current_symbol_address, list):
                     current_symbol_address = current_symbol_address[0]
-                if current_symbol_address > address and insert_index is not None:
+                if current_symbol_address > address and insert_index is None:
                     insert_index = i
     if not matching_symbol_entry:
         matching_symbol_entry = {
@@ -273,7 +273,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
     else:
         symbol_header = f'void {base_symbol_name}(void);\n'
 
-    header_contents[target_header_line - 1] += symbol_header
+    header_contents[target_header_line] += symbol_header
 
     with open(header_path, 'w') as header_file:
         header_file.writelines(header_contents)
