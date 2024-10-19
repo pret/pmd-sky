@@ -1,4 +1,4 @@
-#include "overlay_3102382820.h"
+#include "overlay_31_02382820.h"
 
 extern struct dungeon* DUNGEON_PTR;
 
@@ -61,7 +61,7 @@ extern u32 ov29_022F0B9C(void);
 extern void ov29_022E0C2C(u32);
 
 extern u32 GetFloorType(void);
-extern u32 ov29_02338708(struct position*);
+extern u32 PositionIsOnHiddenStairs(struct position*);
 
 void EntryOverlay31(void) {
     struct struct_1* r0;
@@ -86,28 +86,28 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
     s32 line_offset;
     u8 is_valid_member;
     s32 i;
-    
+
     leader = GetLeader();
     leader_info = (struct monster*)leader->info;
     //str_values.dungeon_0 = leader_info->roost;
-    
+
     str_values.digits_0 = CeilFixedPoint(leader_info->belly);
     str_values.digits_1 = CeilFixedPoint(leader_info->max_belly);
-    
+
     str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_1);
     PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
     DrawTextInWindow(window, X_OFFSET, 0, str_buff);
-    
+
     str_values.gold_left_0 = GetMoneyCarried();
     str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_2);
     PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
     DrawTextInWindow(window, X_OFFSET, LINE_HEIGHT, str_buff);
-    
+
     str_values.weather_0 = GetApparentWeather(0);
     str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_3);
     PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
     DrawTextInWindow(window, X_OFFSET, LINE_HEIGHT * 2, str_buff);
-    
+
     str_values.time_0 = sub_0204F9E0();
     str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_4);
     PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, DRAW_DUNGEON_MENU_STATUS_WINDOW_CONST_1, &str_values);
@@ -130,18 +130,18 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
 
             str_values.value_1 = MIN(member_info->max_hp_stat + member_info->max_hp_boost,
                                      DRAW_DUNGEON_MENU_STATUS_WINDOW_CONST_2);
-        
+
             str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_5);
             PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
             DrawTextInWindow(window, 4, line_offset, str_buff);
-        
+
             line_offset += 12;
             if (line_offset >= 0x30) {
                 break;
             }
         }
     }
-    
+
     UpdateWindow(window);
 }
 
@@ -164,12 +164,12 @@ u32 ov31_02382B54(void)
     u16 pressed_buttons;
     struct struct_2 sp;
     struct entity* leader;
-    
+
     switch (OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a) {
         case 0:
             OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a++;
             break;
-        
+
         case 1:
             for (int i = 0; i<7; i++) {
                 OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b[i] = 0;
@@ -190,7 +190,7 @@ u32 ov31_02382B54(void)
             OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[1] = CreateTextBox(&DUNGEON_WINDOW_PARAMS_2, DungeonMenuSwitch);
             OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a++;
             break;
-        
+
         case 2:
             if (IsParentMenuActive(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0])) {
                 u8 tmp4 = sub_0202AB80(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0]);
@@ -200,7 +200,7 @@ u32 ov31_02382B54(void)
                 GetPressedButtons(0, &pressed_buttons);
                 if ((pressed_buttons & 0x400) == 0)
                     break;
-                
+
                 struct entity* leader = GetLeader();
 
                 if (ShouldMonsterRunAwayVariation(leader, 1))
@@ -222,7 +222,7 @@ u32 ov31_02382B54(void)
                 OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a++;
             }
             break;
-        
+
         case 3:
             OVERLAY31_UNKNOWN_POINTER__NA_238A260[1] = sub_0202ABB0(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0]);
             OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a++;
@@ -259,7 +259,7 @@ void ov31_02382E18(struct entity* arg_1, u32 arg_2)
     while ((u8)(ov31_0238A2A0.st3 != NULL)) {
         AdvanceFrame(0x62);
     }
-    
+
     AdvanceFrame(0x62);
 
     if (ov29_022F0B9C()) {
@@ -282,8 +282,8 @@ void ov31_02382ED4(struct entity* arg_1)
     ov31_0238A2A0.st3 = tmp1;
     ov31_0238A2A0.st3->f = 0;
     ov31_0238A2A0.st3->a = arg_1;
-    ov31_0238A2A0.st3->b = 0;    
-    ov31_0238A2A0.st3->c = 0;    
+    ov31_0238A2A0.st3->b = 0;
+    ov31_0238A2A0.st3->c = 0;
 
     u32 floor_type = GetFloorType();
     u32 r4 = 0;
@@ -291,14 +291,14 @@ void ov31_02382ED4(struct entity* arg_1)
         r4 = 2;
     } else if (floor_type == 1) {
         r4 = 1;
-    } else if (ov29_02338708(&(arg_1->pos))) {
+    } else if (PositionIsOnHiddenStairs(&(arg_1->pos))) {
         r4 = 3;
     }
 
     ov31_0238A2A0.st3->d = r4;
 }
 
-void ov31_02382F68(struct Window* window)
+void StairsSubheadingCallback(struct Window* window)
 {
     u8* str = StringFromId(ov31_02389E22[ov31_0238A2A0.st3->d * 2]);
 

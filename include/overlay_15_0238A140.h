@@ -1,7 +1,6 @@
 #ifndef PMDSKY_OVERLAY_15_0238A140_H
 #define PMDSKY_OVERLAY_15_0238A140_H
 
-#include "monster_id.h"
 #include "window.h"
 
 // Represents arguments that might be passed to the PreprocessString function
@@ -27,7 +26,7 @@ typedef struct {
     s8 unk80;
     s8 unk81;
     u8 fill88[0x88 - 0x82];
-    enum monster_id unk88; //wrong probably
+    u32 unk88;
     u8 fillAC[0xAC - 0x8C];
     u32 unkAC;
     u8 fillD4[0xD4 - 0xB0];

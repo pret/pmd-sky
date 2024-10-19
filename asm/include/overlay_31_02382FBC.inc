@@ -221,7 +221,6 @@
 .public ov29_0238280C
 .public ov31_02382B54
 .public ov31_02382DAC
-.public ov31_02382F68
 .public ov31_02389E22
 .public ov31_02389F5C
 .public ov31_0238A044
@@ -247,6 +246,7 @@
 .public ov31_0238A23C
 .public ov31_0238A2A0
 .public ov31_0238A2A8
+.public StairsSubheadingCallback
 .public strcpy
 .public sub_02001808
 .public sub_0200B3D4

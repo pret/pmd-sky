@@ -1,7 +1,7 @@
 #ifndef PMDSKY_WINDOW_H
 #define PMDSKY_WINDOW_H
 
-#include "monster_id.h"
+#include "enums.h"
 
 // Represents the state of a portrait to be displayed inside a window
 typedef struct {

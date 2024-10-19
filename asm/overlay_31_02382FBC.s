@@ -1,10 +1,11 @@
 	.include "asm/macros.inc"
-	.include "overlay_31002382FBC.inc"
+	.include "overlay_31_02382FBC.inc"
 
 	.text
 
-	arm_func_start ov31_02382FBC
-ov31_02382FBC: ; 0x02382FBC
+; https://decomp.me/scratch/D2RFJ
+	arm_func_start HandleStairsMenu
+HandleStairsMenu: ; 0x02382FBC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x138
 	ldr r0, _02383218 ; =ov31_0238A2A0
