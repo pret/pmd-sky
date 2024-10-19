@@ -19,7 +19,6 @@ extern u16 ov31_02389E22[];
 
 
 extern void* MemAlloc(u32 size, u32 nmemb);
-//extern u32 sub_020348E4(struct struct_1*);
 
 extern struct entity* GetLeader(void);
 extern s32 CeilFixedPoint(struct fixed_point);
@@ -89,7 +88,6 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
 
     leader = GetLeader();
     leader_info = (struct monster*)leader->info;
-    //str_values.dungeon_0 = leader_info->roost;
 
     str_values.digits_0 = CeilFixedPoint(leader_info->belly);
     str_values.digits_1 = CeilFixedPoint(leader_info->max_belly);

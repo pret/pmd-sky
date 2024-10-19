@@ -19,19 +19,6 @@ struct pixel_position {
     u32 y;
 };
 
-// Dungeon data
-/* struct dungeon { */
-/*     u8 PAD1[1864]; */
-/*     u8 dungeon;  // 0x748 */
-/*     u8 floor;    // 0x749 */
-/*     u8 PAD2[74554]; */
-/* #ifndef JAPAN */
-/*     u8 PAD3[164]; */
-/* #endif */
-/*     struct entity* party_members[4]; // 0x12B28 */
-/*     // Possibly more stuff */
-/* }; */
-
 // Item info
 struct item {
     // 0x0: flags: 1-byte bitfield
@@ -64,8 +51,8 @@ struct monster_stat_modifiers {
     s16 defensive_stages[2];  // 0x4: {def, sp_def}
     s16 hit_chance_stages[2]; // 0x8: {accuracy, evasion}
     s16 flash_fire_boost;     // 0xC: can be 0, 1, or 2
-    undefined field_0xe;
-    undefined field_0xf;
+    u8 field_0xe;
+    u8 field_0xf;
     // Some moves like Screech affect the damage calculation differently than, e.g., Leer
     // 0x10: binary fixed-point (8 fraction bits), {atk, sp_atk}; from Charm, Memento, etc.
     fx32_8 offensive_multipliers[2];
@@ -84,9 +71,9 @@ struct statuses {
     enum type_id original_types[2];
     // 0x3: The move id to be used if statuses::bide is 1.
     u8 bide_move_id;
-    undefined field_0x4;
-    undefined field_0x5;
-    undefined field_0x6;
+    u8 field_0x4;
+    u8 field_0x5;
+    u8 field_0x6;
     // 0x7: Unique number given to the monster when spawning to differentiate it from other
     // monsters and to properly keep track of a monster. Likely used because a monster could be
     // spawned into the same slot as an old monster and using a pointer alone could cause some
@@ -108,11 +95,11 @@ struct statuses {
     // will deal. There is no noticable difference because the table this value is looked up
     // on is filled with 0x6
     u8 badly_poisoned_damage_count;
-    undefined field_0x1a;
+    u8 field_0x1a;
     u8 freeze; // 0x1B: STATUS_FROZEN if 1
-    undefined field_0x1c;
-    undefined field_0x1d;
-    undefined field_0x1e;
+    u8 field_0x1c;
+    u8 field_0x1d;
+    u8 field_0x1e;
     // 0x1F: Controls the animation that plays when taking damage from the constriction status.
     // For some reason this is initalized to 0x22 (34)? Which is the animation used by
     // the exclusive item Nether Veil.
@@ -120,8 +107,8 @@ struct statuses {
     u8 freeze_turns; // 0x23: Turns left for the status in statuses::freeze
     // 0x24: Turns left until residual damage for the status in statuses::freeze, if applicable
     u8 freeze_damage_countdown;
-    undefined field_0x25;
-    undefined field_0x26;
+    u8 field_0x25;
+    u8 field_0x26;
     u8 cringe;         // 0x27: STATUS_CRINGE if 1
     u8 cringe_turns;   // 0x28: Turns left for the status in statuses::cringe
     u8 bide;           // 0x29: STATUS_BIDE if 1
@@ -135,17 +122,17 @@ struct statuses {
     // 0x30: Set to monster::is_not_team_member of the attacker (the one causing the decoy status).
     u8 curse_applier_non_team_member_flag;
     // 0x31: Set to 1 on a Pokemon when inflicted with the Decoy status.
-    undefined unk_decoy_tracker;
+    u8 unk_decoy_tracker;
     u8 curse_turns; // 0x32: Turns left for the status in statuses::curse
     // 0x33: Turns left until residual damage for the status in statuses::curse, if applicable
     u8 curse_damage_countdown;
-    undefined field_0x34;
-    undefined field_0x35;
-    undefined field_0x36;
+    u8 field_0x34;
+    u8 field_0x35;
+    u8 field_0x36;
     u8 leech_seed; // 0x37: STATUS_LEECH_SEED if 1
-    undefined field_0x38;
-    undefined field_0x39;
-    undefined field_0x3a;
+    u8 field_0x38;
+    u8 field_0x39;
+    u8 field_0x3a;
     // 0x3B: Used to track the statuses::statuses_unique_id of the relevant monster for
     // statuses like Leech Seed and Destiny Bond.
     u32 statuses_applier_id;
@@ -156,7 +143,7 @@ struct statuses {
     // 0x41: Turns left until residual damage for the status in statuses::leech_seed, if applicable.
     // Behaves weirdly without an afflictor
     u8 leech_seed_damage_countdown;
-    undefined field_0x42;
+    u8 field_0x42;
     u8 sure_shot;         // 0x43: STATUS_SURE_SHOT if 1
     u8 sure_shot_turns;   // 0x44: Turns left for the status in statuses::sure_shot
     u8 long_toss;         // 0x45: STATUS_LONG_TOSS if 1
@@ -182,12 +169,12 @@ struct statuses {
     // 0x58: Appears to be a flag for when a monster increasces their speed. Maybe only used
     // by the RunLeaderTurn function to know if the leader has changed their speed stage partway
     // through the function?
-    undefined unk_sped_up_tracker;
+    u8 unk_sped_up_tracker;
     // 0x59: Maybe related to being a team member and new recruit? Set to 1 in TryRecruit
     // and 0 in SpawnTeam. Also checked in EnemyEvolution to be 0 before evolving. Maybe to
     // prevent a recently recruited ally from evolving after and or to add a monster to the
     // assembly after the completion of a dungeon?
-    undefined field_0x59;
+    u8 field_0x59;
 #ifndef JAPAN
     // 0x5A: Possibly a flag while in action. Could also be a flag to cause the burn from
     // lava, heal a burn from water, and decrease hunger in the walls.
@@ -210,7 +197,7 @@ struct statuses {
     // 0x61: Is initalized to 0x63 (99). Changing it from this value causes the monster to
     // begin rendering differently? For example, it causes entity::0xB3 to be 1 and forces
     // entity::0x28 to be 0.
-    undefined field_0x61;
+    u8 field_0x61;
     // 0x62: Flag for two-turn moves that haven't concluded yet. This is also a graphical flag.
     // A value of 1 mean "high up" (Fly/Bounce). A value of 2 means some other condition like
     // Dig, Shadow Force, etc. Other values are treated as invalid. Also used for the move
@@ -218,14 +205,14 @@ struct statuses {
     u8 two_turn_move_invincible;
     // 0x63: Related to handling AI when a decoy is present on the floor?
     // Seems to only be 0, 1, 2
-    undefined decoy_ai_tracker;
+    u8 decoy_ai_tracker;
 #ifndef JAPAN
-    undefined field_0x64;
-    undefined field_0x65;
-    undefined field_0x66;
+    u8 field_0x64;
+    u8 field_0x65;
+    u8 field_0x66;
 #endif
     // 0x67: 1 means normal. 0 means half speed. 2, 3, and 4 mean 2x, 3x, and 4x speed.
-    int speed_stage;
+    s32 speed_stage;
     // Each counter ticks down to 0 turn by turn. The current speed_stage is calculated as:
     // min(max({# nonzero speed_up_counters} - {# nonzero speed_down_counters}, 0), 4)
     u8 speed_up_counters[5];   // 0x6B
@@ -278,9 +265,9 @@ struct status_icon_flags {
     // flags (see UpdateStatusIconBitfield).
     bool f_freeze : 1; // Ice block
     u8 flags_unk2 : 7;
-    undefined field_0x5;
-    undefined field_0x6;
-    undefined field_0x7;
+    u8 field_0x5;
+    u8 field_0x6;
+    u8 field_0x7;
 };
 
 // Stores a parameter for an action taken by a monster
@@ -289,7 +276,7 @@ struct action_parameter {
     // E.g., this is the monster index when taking an action on a monster, the move index when
     // using a move or a union item_index value when using an item.
     u8 action_use_idx;
-    undefined field_0x1;
+    u8 field_0x1;
     struct position item_pos; // 0x2: Position of the item to use when using an item on the floor
 };
 
@@ -297,7 +284,7 @@ struct action_parameter {
 struct action_data {
     enum action action_id;      // 0x0: Action ID
     enum direction_id direction : 8; // 0x2: Direction in which the action will be performed
-    undefined field_0x3;
+    u8 field_0x3;
     struct action_parameter action_parameters[2]; // 0x4: Parameters for the action
     s16 field_0x10;
     s16 field_0x12;
@@ -327,16 +314,16 @@ struct monster {
     bool is_ally;
     enum shopkeeper_mode shopkeeper : 8; // 0x9
     u8 level;                       // 0xA
-    undefined field_0xb;
+    u8 field_0xb;
     s16 team_index;  // 0xC: In order by team lineup
     s16 iq;          // 0xE
     s16 hp;          // 0x10: Current HP
     s16 max_hp_stat; // 0x12: Add to max_hp_boost for the actual max HP
-    undefined field_0x14;
-    undefined field_0x15;
+    u8 field_0x14;
+    u8 field_0x15;
     s16 max_hp_boost; // 0x16: From Life Seeds, Sitrus Berries, etc.
-    undefined field_0x18;
-    undefined field_0x19;
+    u8 field_0x18;
+    u8 field_0x19;
     u8 offensive_stats[2]; // 0x1A: {atk, sp_atk}
     u8 defensive_stats[2]; // 0x1C: {def, sp_def}
     u8 field_0x1e;
@@ -345,7 +332,7 @@ struct monster {
     struct monster_stat_modifiers stat_modifiers; // 0x24
     s16 hidden_power_base_power;              // 0x44
     enum type_id hidden_power_type : 8;           // 0x46
-    undefined field_0x47;
+    u8 field_0x47;
     enum dungeon_id joined_at : 8; // 0x48: Also used as a unique identifier for special monsters
     u8 joined_at_floor;       // 0x49: Floor number of recruitment. 0 for special recruits
     struct action_data action;     // 0x4A: Determines the action the monster will take on this turn
@@ -360,21 +347,21 @@ struct monster {
     struct position prev_pos2; // 0x6E: Position 2 turns ago
     struct position prev_pos3; // 0x72: Position 3 turns ago
     struct position prev_pos4; // 0x76: Position 4 turns ago
-    undefined field_0x7a;
-    undefined field_0x7b;
+    u8 field_0x7a;
+    u8 field_0x7b;
     enum ai_objective ai_objective : 8; // 0x7C
     bool ai_not_next_to_target;         // 0x7D: This NPC monster is not next to its current target
     bool ai_targeting_enemy;            // 0x7E: This NPC monster is targeting an enemy monster
     bool ai_turning_around;             // 0x7F: This NPC monster has decided to turn around
     // 0x80: entity::spawn_genid of the entity currently being targeted
     u16 ai_target_spawn_genid;
-    undefined field_0x82;
-    undefined field_0x83;
+    u8 field_0x82;
+    u8 field_0x83;
     struct entity* ai_target; // 0x84: Current or most recent AI target
-    undefined field_0x88;
-    undefined field_0x89;
-    undefined field_0x8a;
-    undefined field_0x8b;
+    u8 field_0x88;
+    u8 field_0x89;
+    u8 field_0x8a;
+    u8 field_0x8b;
     struct position ai_target_pos; // 0x8C: Position of the entity currently being targeted
     // 0x90: Work array while updating skills in the menu. Same meaning as iq_skill_flags.
     u32 iq_skill_menu_flags[3];
@@ -390,9 +377,9 @@ struct monster {
     enum type_id original_types[2];
     // 0xAC / 0x3: The move id to be used if statuses::bide is 1.
     u8 bide_move_id;
-    undefined field_0xad;
-    undefined field_0xae;
-    undefined field_0xaf;
+    u8 field_0xad;
+    u8 field_0xae;
+    u8 field_0xaf;
     // 0xB0 / 0x7: Unique number given to the monster when spawning to differentiate it from other
     // monsters and to properly keep track of a monster. Likely used because a monster could be
     // spawned into the same slot as an old monster and using a pointer alone could cause some
@@ -414,11 +401,11 @@ struct monster {
     // will deal. There is no noticable difference because the table this value is looked up
     // on is filled with 0x6
     u8 badly_poisoned_damage_count;
-    undefined field_0xc3;
+    u8 field_0xc3;
     u8 freeze; // 0xc4 / 0x1B: STATUS_FROZEN if 1
-    undefined field_0xc5;
-    undefined field_0xc6;
-    undefined field_0xc7;
+    u8 field_0xc5;
+    u8 field_0xc6;
+    u8 field_0xc7;
     // 0xC8 / 0x1F: Controls the animation that plays when taking damage from the constriction status.
     // For some reason this is initalized to 0x22 (34)? Which is the animation used by
     // the exclusive item Nether Veil.
@@ -426,8 +413,8 @@ struct monster {
     u8 freeze_turns; // 0xCC / 0x23: Turns left for the status in statuses::freeze
     // 0xCD / 0x24: Turns left until residual damage for the status in statuses::freeze, if applicable
     u8 freeze_damage_countdown;
-    undefined field_0xCE;
-    undefined field_0xCF;
+    u8 field_0xCE;
+    u8 field_0xCF;
     u8 cringe;         // 0xD0 / 0x27: STATUS_CRINGE if 1
     u8 cringe_turns;   // 0xD1 / 0x28: Turns left for the status in statuses::cringe
     u8 bide;           // 0xD2 / 0x29: STATUS_BIDE if 1
@@ -441,17 +428,17 @@ struct monster {
     // 0xD9 / 0x30: Set to monster::is_not_team_member of the attacker (the one causing the decoy status).
     u8 curse_applier_non_team_member_flag;
     // 0xDA / 0x31: Set to 1 on a Pokemon when inflicted with the Decoy status.
-    undefined unk_decoy_tracker;
+    u8 unk_decoy_tracker;
     u8 curse_turns; // 0xDB / 0x32: Turns left for the status in statuses::curse
     // 0xDC / 0x33: Turns left until residual damage for the status in statuses::curse, if applicable
     u8 curse_damage_countdown;
-    undefined field_0xdd;
-    undefined field_0xde;
-    undefined field_0xdf;
+    u8 field_0xdd;
+    u8 field_0xde;
+    u8 field_0xdf;
     u8 leech_seed; // 0xE0 / 0x37: STATUS_LEECH_SEED if 1
-    undefined field_0xe1;
-    undefined field_0xe2;
-    undefined field_0xe3;
+    u8 field_0xe1;
+    u8 field_0xe2;
+    u8 field_0xe3;
     // 0xE4 / 0x3B: Used to track the statuses::statuses_unique_id of the relevant monster for
     // statuses like Leech Seed and Destiny Bond.
     u32 statuses_applier_id;
@@ -462,7 +449,7 @@ struct monster {
     // 0xEA / 0x41: Turns left until residual damage for the status in statuses::leech_seed, if applicable.
     // Behaves weirdly without an afflictor
     u8 leech_seed_damage_countdown;
-    undefined field_0xEB;
+    u8 field_0xEB;
     u8 sure_shot;         // 0xEC / 0x43: STATUS_SURE_SHOT if 1
     u8 sure_shot_turns;   // 0xED / 0x44: Turns left for the status in statuses::sure_shot
     u8 long_toss;         // 0xEE / 0x45: STATUS_LONG_TOSS if 1
@@ -488,12 +475,12 @@ struct monster {
     // 0x101 / 0x58: Appears to be a flag for when a monster increasces their speed. Maybe only used
     // by the RunLeaderTurn function to know if the leader has changed their speed stage partway
     // through the function?
-    undefined unk_sped_up_tracker;
+    u8 unk_sped_up_tracker;
     // 0x102 / 0x59: Maybe related to being a team member and new recruit? Set to 1 in TryRecruit
     // and 0 in SpawnTeam. Also checked in EnemyEvolution to be 0 before evolving. Maybe to
     // prevent a recently recruited ally from evolving after and or to add a monster to the
     // assembly after the completion of a dungeon?
-    undefined field_0x102;
+    u8 field_0x102;
 #ifndef JAPAN
     // 0x103 / 0x5A: Possibly a flag while in action. Could also be a flag to cause the burn from
     // lava, heal a burn from water, and decrease hunger in the walls.
@@ -516,7 +503,7 @@ struct monster {
     // 0x10A / 0x61: Is initalized to 0x63 (99). Changing it from this value causes the monster to
     // begin rendering differently? For example, it causes entity::0xB3 to be 1 and forces
     // entity::0x28 to be 0.
-    undefined field_0x10a;
+    u8 field_0x10a;
     // 0x10B / 0x62: Flag for two-turn moves that haven't concluded yet. This is also a graphical flag.
     // A value of 1 mean "high up" (Fly/Bounce). A value of 2 means some other condition like
     // Dig, Shadow Force, etc. Other values are treated as invalid. Also used for the move
@@ -524,14 +511,14 @@ struct monster {
     u8 two_turn_move_invincible;
     // 0x10C / 0x63: Related to handling AI when a decoy is present on the floor?
     // Seems to only be 0, 1, 2
-    undefined decoy_ai_tracker;
+    u8 decoy_ai_tracker;
 #ifndef JAPAN
-    undefined field_0x10d;
-    undefined field_0x10e;
-    undefined field_0x10f;
+    u8 field_0x10d;
+    u8 field_0x10e;
+    u8 field_0x10f;
 #endif
     // 0x110 / 0x67: 1 means normal. 0 means half speed. 2, 3, and 4 mean 2x, 3x, and 4x speed.
-    int speed_stage;
+    s32 speed_stage;
     // Each counter ticks down to 0 turn by turn. The current speed_stage is calculated as:
     // min(max({# nonzero speed_up_counters} - {# nonzero speed_down_counters}, 0), 4)
     u8 speed_up_counters[5];   // 0x114 / 0x6B
@@ -539,13 +526,13 @@ struct monster {
     u8 stockpile_stage;        // 0x11E / 0x75: Goes from 0-3. STATUS_STOCKPILING if nonzero
 
 
-    undefined field_0x11f;
+    u8 field_0x11f;
     // 0x120: If zero, when the monster is standing in a room, the AI will make it head towards a
     // random exit. If nonzero, the monster will instead move in a random direction every turn.
-    int random_movement;
+    s32 random_movement;
     struct move moves[4]; // 0x124
     u8 move_flags;   // 0x144: 1-byte bitfield
-    undefined field_0x145;
+    u8 field_0x145;
     struct fixed_point belly;         // 0x146
     struct fixed_point max_belly;     // 0x14A:
     // 0x14E: If true and the monster is an ally, the AI will skip it. False for enemies.
@@ -553,7 +540,7 @@ struct monster {
     bool ai_next_to_target; // 0x14F: This NPC monster is next to its current target
     // 0x150: Set if monster::is_team_leader is true and belly is empty.
     bool famished;
-    undefined field_0x151;
+    u8 field_0x151;
     // 0x152: Seems to be true if the monster has already acted this turn: attacked, used an item,
     // or seemingly anything other than moving/resting. Also true when the monster faints.
     bool already_acted;
@@ -564,8 +551,8 @@ struct monster {
     bool using_charged_move;
     // 0x155: True if the target attacked a Pokemon that has STATUS_GRUDGE.
     bool hit_grudge_monster;
-    undefined field_0x156; // 0 when the monster faints
-    undefined field_0x157;
+    u8 field_0x156; // 0 when the monster faints
+    u8 field_0x157;
     // 0x158: General-purpose bitflags tracking different bits of volatile state.
     // Together with prev_state_bitflags, this is typically used to determine whether
     // to log a message on a state change.
@@ -605,18 +592,18 @@ struct monster {
     // 0x167: Set to true when the monster receives a critical hit. If true when the monster
     // attacks, Anger Point will activate. Set to false after the monster attacks.
     bool anger_point_flag;
-    undefined field_0x168;
-    undefined field_0x169;
+    u8 field_0x168;
+    u8 field_0x169;
     // 0x16A: When not DIR_NONE, monster will turn in the specified direction and
     // its AI will be forced to target the tile next to it in that direction.
     // Used to prevent bosses from turning towards team members the moment the boss fight
     // starts (which would override their intended starting facing direction).
     enum direction_id force_turn : 8;
-    undefined field_0x16b;
-    undefined field_0x16c;
-    undefined field_0x16d;
-    undefined field_0x16e;
-    undefined field_0x16f;
+    u8 field_0x16b;
+    u8 field_0x16c;
+    u8 field_0x16d;
+    u8 field_0x16e;
+    u8 field_0x16f;
     // 0x170: Set to make the monster disappear when using the move U-turn.
     bool uturn_hide_monster_flag;
     // 0x171: Some kind of visual flag? Gets set to 0 temporarily when changing Shaymin form
@@ -629,8 +616,8 @@ struct monster {
     bool field_0x173;
     // 0x174: Set when the leader and falling through a pitfall trap.
     bool pitfall_trap_flag_0x174;
-    undefined field_0x175;
-    undefined field_0x176;
+    u8 field_0x175;
+    u8 field_0x176;
     // 0x177: Appears to be the direction for using sleep talk? Set to DIR_NONE when awake.
     enum direction_id sleep_talk_direction : 8;
     // 0x178: Appears to be the direction for using snore? Set to DIR_NONE when awake.
@@ -639,19 +626,19 @@ struct monster {
     // related to direction somehow. Checked in a loop for every monster.
     u8 field_0x179;
     // 0x17A: Somehow related to sprite size?
-    undefined field_0x17a;
+    u8 field_0x17a;
     // 0x17B: Somehow related to sprite size?
-    undefined field_0x17b;
-    undefined field_0x17c;
-    undefined field_0x17d;
+    u8 field_0x17b;
+    u8 field_0x17c;
+    u8 field_0x17d;
     struct position target_pos; // 0x17E: The AI's target's position on screen
     struct position pixel_pos;  // 0x182: The monster's graphical position on screen?
-    undefined field_0x186;
-    undefined field_0x187;
-    undefined field_0x188;
-    undefined field_0x189;
-    undefined field_0x18a;
-    undefined field_0x18b;
+    u8 field_0x186;
+    u8 field_0x187;
+    u8 field_0x188;
+    u8 field_0x189;
+    u8 field_0x18a;
+    u8 field_0x18b;
     // 0x18C: Bitflags that cause non-damaging exclusive items to trigger on the
     // attacker after they have completed their move. For example, the Eclipse Robe
     // (Darkrai exclusive item) may afflict attacking enemies with the nightmare
@@ -665,130 +652,130 @@ struct monster {
     // static, and flame body. (Only uses first 11 bits). One exception is the move
     // Rapid Spin which sets one of the flags for the user.
     u16 contact_ability_trigger_bitflags;
-    undefined field_0x194;
-    undefined field_0x195;
-    undefined field_0x196;
-    undefined field_0x197;
-    undefined field_0x198;
-    undefined field_0x199;
-    undefined field_0x19a;
-    undefined field_0x19b;
+    u8 field_0x194;
+    u8 field_0x195;
+    u8 field_0x196;
+    u8 field_0x197;
+    u8 field_0x198;
+    u8 field_0x199;
+    u8 field_0x19a;
+    u8 field_0x19b;
     struct position pos; // 0x19C: Mirror of the position on the entity struct
-    undefined field_0x1a0;
-    undefined field_0x1a1;
-    undefined field_0x1a2;
-    undefined field_0x1a3;
-    undefined field_0x1a4;
-    undefined field_0x1a5;
-    undefined field_0x1a6;
-    undefined field_0x1a7;
-    undefined field_0x1a8;
-    undefined field_0x1a9;
-    undefined field_0x1aa;
-    undefined field_0x1ab;
-    undefined field_0x1ac;
-    undefined field_0x1ad;
-    undefined field_0x1ae;
-    undefined field_0x1af;
-    undefined field_0x1b0;
-    undefined field_0x1b1;
-    undefined field_0x1b2;
-    undefined field_0x1b3;
+    u8 field_0x1a0;
+    u8 field_0x1a1;
+    u8 field_0x1a2;
+    u8 field_0x1a3;
+    u8 field_0x1a4;
+    u8 field_0x1a5;
+    u8 field_0x1a6;
+    u8 field_0x1a7;
+    u8 field_0x1a8;
+    u8 field_0x1a9;
+    u8 field_0x1aa;
+    u8 field_0x1ab;
+    u8 field_0x1ac;
+    u8 field_0x1ad;
+    u8 field_0x1ae;
+    u8 field_0x1af;
+    u8 field_0x1b0;
+    u8 field_0x1b1;
+    u8 field_0x1b2;
+    u8 field_0x1b3;
     u16 walk_anim_frames_left; // 0x1B4: Number of frames left in walking animation?
-    undefined field_0x1b6;
-    undefined field_0x1b7;
-    undefined field_0x1b8;
-    undefined field_0x1b9;
-    undefined field_0x1ba;
-    undefined field_0x1bb;
-    undefined field_0x1bc;
-    undefined field_0x1bd;
-    undefined field_0x1be;
-    undefined field_0x1bf;
-    undefined field_0x1c0;
-    undefined field_0x1c1;
-    undefined field_0x1c2;
-    undefined field_0x1c3;
-    undefined field_0x1c4;
-    undefined field_0x1c5;
-    undefined field_0x1c6;
-    undefined field_0x1c7;
-    undefined field_0x1c8;
-    undefined field_0x1c9;
-    undefined field_0x1ca;
-    undefined field_0x1cb;
-    undefined field_0x1cc;
-    undefined field_0x1cd;
-    undefined field_0x1ce;
-    undefined field_0x1cf;
-    undefined field_0x1d0;
-    undefined field_0x1d1;
-    undefined field_0x1d2;
-    undefined field_0x1d3;
-    undefined field_0x1d4;
-    undefined field_0x1d5;
-    undefined field_0x1d6;
-    undefined field_0x1d7;
-    undefined field_0x1d8;
-    undefined field_0x1d9;
-    undefined field_0x1da;
-    undefined field_0x1db;
-    undefined field_0x1dc;
-    undefined field_0x1dd;
-    undefined field_0x1de;
-    undefined field_0x1df;
-    undefined field_0x1e0;
-    undefined field_0x1e1;
-    undefined field_0x1e2;
-    undefined field_0x1e3;
-    undefined field_0x1e4;
-    undefined field_0x1e5;
-    undefined field_0x1e6;
-    undefined field_0x1e7;
-    undefined field_0x1e8;
-    undefined field_0x1e9;
-    undefined field_0x1ea;
-    undefined field_0x1eb;
-    undefined field_0x1ec;
-    undefined field_0x1ed;
-    undefined field_0x1ee;
-    undefined field_0x1ef;
-    undefined field_0x1f0;
-    undefined field_0x1f1;
-    undefined field_0x1f2;
-    undefined field_0x1f3;
-    undefined field_0x1f4;
-    undefined field_0x1f5;
-    undefined field_0x1f6;
-    undefined field_0x1f7;
-    undefined field_0x1f8;
-    undefined field_0x1f9;
-    undefined field_0x1fa;
-    undefined field_0x1fb;
-    undefined field_0x1fc;
-    undefined field_0x1fd;
-    undefined field_0x1fe;
-    undefined field_0x1ff;
-    undefined field_0x200;
-    undefined field_0x201;
-    undefined field_0x202;
-    undefined field_0x203;
-    undefined field_0x204;
-    undefined field_0x205;
-    undefined field_0x206;
-    undefined field_0x207;
-    undefined field_0x208;
-    undefined field_0x209;
-    undefined field_0x20a;
-    undefined field_0x20b;
-    undefined field_0x20c;
-    undefined field_0x20d;
-    undefined field_0x20e;
-    undefined field_0x20f;
+    u8 field_0x1b6;
+    u8 field_0x1b7;
+    u8 field_0x1b8;
+    u8 field_0x1b9;
+    u8 field_0x1ba;
+    u8 field_0x1bb;
+    u8 field_0x1bc;
+    u8 field_0x1bd;
+    u8 field_0x1be;
+    u8 field_0x1bf;
+    u8 field_0x1c0;
+    u8 field_0x1c1;
+    u8 field_0x1c2;
+    u8 field_0x1c3;
+    u8 field_0x1c4;
+    u8 field_0x1c5;
+    u8 field_0x1c6;
+    u8 field_0x1c7;
+    u8 field_0x1c8;
+    u8 field_0x1c9;
+    u8 field_0x1ca;
+    u8 field_0x1cb;
+    u8 field_0x1cc;
+    u8 field_0x1cd;
+    u8 field_0x1ce;
+    u8 field_0x1cf;
+    u8 field_0x1d0;
+    u8 field_0x1d1;
+    u8 field_0x1d2;
+    u8 field_0x1d3;
+    u8 field_0x1d4;
+    u8 field_0x1d5;
+    u8 field_0x1d6;
+    u8 field_0x1d7;
+    u8 field_0x1d8;
+    u8 field_0x1d9;
+    u8 field_0x1da;
+    u8 field_0x1db;
+    u8 field_0x1dc;
+    u8 field_0x1dd;
+    u8 field_0x1de;
+    u8 field_0x1df;
+    u8 field_0x1e0;
+    u8 field_0x1e1;
+    u8 field_0x1e2;
+    u8 field_0x1e3;
+    u8 field_0x1e4;
+    u8 field_0x1e5;
+    u8 field_0x1e6;
+    u8 field_0x1e7;
+    u8 field_0x1e8;
+    u8 field_0x1e9;
+    u8 field_0x1ea;
+    u8 field_0x1eb;
+    u8 field_0x1ec;
+    u8 field_0x1ed;
+    u8 field_0x1ee;
+    u8 field_0x1ef;
+    u8 field_0x1f0;
+    u8 field_0x1f1;
+    u8 field_0x1f2;
+    u8 field_0x1f3;
+    u8 field_0x1f4;
+    u8 field_0x1f5;
+    u8 field_0x1f6;
+    u8 field_0x1f7;
+    u8 field_0x1f8;
+    u8 field_0x1f9;
+    u8 field_0x1fa;
+    u8 field_0x1fb;
+    u8 field_0x1fc;
+    u8 field_0x1fd;
+    u8 field_0x1fe;
+    u8 field_0x1ff;
+    u8 field_0x200;
+    u8 field_0x201;
+    u8 field_0x202;
+    u8 field_0x203;
+    u8 field_0x204;
+    u8 field_0x205;
+    u8 field_0x206;
+    u8 field_0x207;
+    u8 field_0x208;
+    u8 field_0x209;
+    u8 field_0x20a;
+    u8 field_0x20b;
+    u8 field_0x20c;
+    u8 field_0x20d;
+    u8 field_0x20e;
+    u8 field_0x20f;
     u8 hp_fractional; // 0x210: 200 * fractional_part(HP)
-    undefined field_0x211;
-    undefined field_0x212;
-    undefined field_0x213;
+    u8 field_0x211;
+    u8 field_0x212;
+    u8 field_0x213;
     // 0x214: Somehow related to gaining exp through a joy ribbon. Set to 0 after
     // gaining or losing a level. Also checked and set to 0 when an enemy evolves.
     // Maybe for a specific scenario of leveling up with exp from a joy ribbon?
@@ -800,8 +787,8 @@ struct monster {
     u8 water_shadow_ripple_tracker;
     // 0x221: Set if the current move being used was copied by Me First
     bool me_first_flag;
-    undefined field_0x222;
-    undefined field_0x223;
+    u8 field_0x222;
+    u8 field_0x223;
     // Stat boosts from exclusive items with EXCLUSIVE_EFF_STAT_BOOST
     u8 exclusive_item_offense_boosts[2]; // 0x224: {atk, sp_atk}
     u8 exclusive_item_defense_boosts[2]; // 0x226: {def, sp_def}
@@ -816,7 +803,7 @@ struct monster {
     // 0x23E: Gets set to 0 before using an attack and gets set to 1 in LevelUp. Seems to stop
     // the rest of the attacks (ie from Swift Swim) from continuing. Possibly to avoid the
     // the monster leveling up and trying to use a move that was just overwritten by a new move?
-    undefined field_0x23e;
+    u8 field_0x23e;
     // 0x23F: Gets set to 1 when the move used won't use up any PP. Used to check if the
     // monster should lose extra PP from the ability Pressure.
     bool should_not_lose_pp;
@@ -880,23 +867,23 @@ struct entity {
 struct monster_summary {
     enum monster_id id; // 0x0
     u8 monster_name[10];   // 0x2
-    undefined field_0xC;
-    undefined field_0xD;
-    undefined field_0xE;
-    undefined field_0xF;
-    undefined field_0x10;
-    undefined field_0x11;
-    undefined field_0x12;
-    undefined field_0x13;
-    undefined field_0x14;
-    undefined field_0x15;
+    u8 field_0xC;
+    u8 field_0xD;
+    u8 field_0xE;
+    u8 field_0xF;
+    u8 field_0x10;
+    u8 field_0x11;
+    u8 field_0x12;
+    u8 field_0x13;
+    u8 field_0x14;
+    u8 field_0x15;
     enum type_id types[2];        // 0x16
     enum ability_id abilities[2]; // 0x18
     enum dungeon_id joined_at;    // 0x1A
     u8 joined_at_floor;          // 0x1B
     struct item held_item;            // 0x1C
-    undefined field_0x22;
-    undefined field_0x23;
+    u8 field_0x22;
+    u8 field_0x23;
     s32 hp;                    // 0x24: Current HP
     s32 max_hp;                // 0x28: Actual max HP (hp + hp boost)
     u32 level;                // 0x2C
@@ -908,10 +895,10 @@ struct monster_summary {
     u8 special_attack_boost;  // 0x3A
     u8 defense_boost;         // 0x3B
     u8 special_defense_boost; // 0x3C
-    undefined field_0x3D;
+    u8 field_0x3D;
     s16 iq; // 0x3E
-    undefined field_0x40;
-    undefined field_0x41;
+    u8 field_0x40;
+    u8 field_0x41;
     // 0x42: Level upon first evolution. Set to 0 in dungeon mode.
     u8 level_at_first_evo;
     // 0x43: Level upon first evolution. Set to 0 in dungeon mode.
@@ -919,18 +906,18 @@ struct monster_summary {
     // 0x44: Evolution status. In ground_mode, accounts for luminous spring being unlocked.
     u8 evo_status;
     bool inflicted_with_gastro_acid; // 0x45
-    undefined field_0x46;
-    undefined field_0x47;
+    u8 field_0x46;
+    u8 field_0x47;
     u32 iq_skill_flags[3]; // 0x48
     enum tactic_id tactic;  // 0x54
-    undefined field_0x55;
-    undefined field_0x56;
-    undefined field_0x57;
+    u8 field_0x55;
+    u8 field_0x56;
+    u8 field_0x57;
     // 0x58: Appears to be a list of all the currently inflicted statues in their enum form. The
     // last entry (30th) appears to always be STATUS_NONE to serve as a terminator for the list.
     // While in ground mode, it's always filled with STATUS_NONE.
     enum status_id active_statuses[30];
-    undefined2 _padding_0x76;
+    u16 _padding_0x76;
 };
 
 // Info about a mission destination floor
@@ -952,15 +939,15 @@ struct mission_destination_info {
     // which is not reflected here.
     enum monster_id enemy_species[3];
     u8 n_enemy_species; // 0x14: Length of the preceding array
-    undefined field_0x15;
+    u8 field_0x15;
     // 0x16: Fixed room ID of the destination floor, if relevant
     // (e.g., Chambers, Challenge Letters, etc.)
     enum fixed_room_id fixed_room_id;
     // 0x17: Related to missions where you have to obtain an item? Possibly related to the item
     // being picked up and/or destroyed?
     bool unk_mission_item_tracker1;
-    undefined field_0x18;
-    undefined field_0x19;
+    u8 field_0x18;
+    u8 field_0x19;
     // 0x1A: Related to missions where you have to obtain an item? Possibly related to the item
     // being picked up and/or destroyed?
     bool unk_mission_item_tracker2;
@@ -1019,7 +1006,7 @@ struct floor_properties {
     bool f_room_imperfections : 1; // Whether room imperfections are allowed
     u8 room_flags_unk3 : 5;
 
-    undefined field_0xe;
+    u8 field_0xe;
     u8 item_density; // 0xF: Controls how many items will be spawned
     u8 trap_density; // 0x10: Controls how many traps will be spawned
     u8 floor_number; // 0x11: The current floor number within the overall dungeon
@@ -1048,22 +1035,22 @@ struct floor_properties {
 
 // Contains the data required to display a tile on the minimap
 struct minimap_display_tile {
-    undefined4 field_0x0;
-    undefined4 field_0x4;
-    undefined4 field_0x8;
-    undefined4 field_0x0C;
-    undefined4 field_0x10;
-    undefined4 field_0x14;
-    undefined4 field_0x18;
-    undefined4 field_0x1C;
-    undefined4 field_0x20;
-    undefined4 field_0x24;
-    undefined4 field_0x28;
-    undefined4 field_0x2C;
-    undefined4 field_0x30;
-    undefined4 field_0x34;
-    undefined4 field_0x38;
-    undefined4 field_0x3C;
+    u32 field_0x0;
+    u32 field_0x4;
+    u32 field_0x8;
+    u32 field_0x0C;
+    u32 field_0x10;
+    u32 field_0x14;
+    u32 field_0x18;
+    u32 field_0x1C;
+    u32 field_0x20;
+    u32 field_0x24;
+    u32 field_0x28;
+    u32 field_0x2C;
+    u32 field_0x30;
+    u32 field_0x34;
+    u32 field_0x38;
+    u32 field_0x3C;
 };
 
 // Contains the graphical representation of minimap tiles
@@ -1081,19 +1068,19 @@ struct minimap_display_data {
     // this matrix is rebuilt, only to be restored later. There's probably
     // an union involved somewhere, but right now there's not enough information
     // to know where exactly.
-    undefined field_0xE000[32][28];
-    undefined overwritten_extra_bytes[28]; // 0xE380
-    undefined4 field_0xE39C[41];           // 0xE39C: Array of pointers
-    undefined4 field_0xE440;
-    undefined field_0xE444;
-    undefined field_0xE445;
-    undefined field_0xE446;
-    undefined field_0xE447;
-    undefined field_0xE448;
+    u8 field_0xE000[32][28];
+    u8 overwritten_extra_bytes[28]; // 0xE380
+    u32 field_0xE39C[41];           // 0xE39C: Array of pointers
+    u32 field_0xE440;
+    u8 field_0xE444;
+    u8 field_0xE445;
+    u8 field_0xE446;
+    u8 field_0xE447;
+    u8 field_0xE448;
     // Padding?
-    undefined field_0xE449;
-    undefined field_0xE44A;
-    undefined field_0xE44B;
+    u8 field_0xE449;
+    u8 field_0xE44A;
+    u8 field_0xE44B;
 };
 
 // Struct that seems to hold data related to the map, the camera and the touchscreen numbers
@@ -1116,7 +1103,7 @@ struct display_data {
     // 0x1C: Appears to be the value to set to display_data::screen_shake_intensity when it
     // reaches 0x0. (This number is usually 0x0 so the screen stops shaking after.)
     u32 screen_shake_intensity_reset;
-    undefined field_0x20; // 0x20: Initialized to 0x3.
+    u8 field_0x20; // 0x20: Initialized to 0x3.
     // 0x21: Same as floor_properties::visibility_range
     // Affects the number of map tiles around the player's position that get marked as
     // "visited" while exploring, as well as how far away you can see enemies under non-illuminated
@@ -1147,34 +1134,34 @@ struct display_data {
     // Causes all entities to be displayed as green circles on the map.
     bool hallucinating;
     bool can_see_stairs;  // 0x2A: True if stairs are being shown on the map
-    undefined field_0x2B; // 0x2B: Initialized to 0
-    undefined field_0x2C;
+    u8 field_0x2B; // 0x2B: Initialized to 0
+    u8 field_0x2C;
     bool darkness;        // 0x2D: True if there's darkness on the floor
-    undefined field_0x2E; // 0x2E: Initialized to 1
+    u8 field_0x2E; // 0x2E: Initialized to 1
     // 0x2F: True if the leader is being pointed by the camera right now. If false, UI digits will
     // be displayed in green.
     bool leader_pointed;
-    undefined field_0x30; // 0x30: Initialized to 1
+    u8 field_0x30; // 0x30: Initialized to 1
     // 0x31: Set to 1 when losing in a dungeon. Seems to cause display_data::0x38 to
     // display_data::leader_max_hp_touch_screen to become 0xFFFF (-1).
     bool unk_fade_to_black_tracker;
-    undefined field_0x32;   // 0x32: Initialized to 0
-    undefined field_0x33;   // 0x33: Initialized to 0
-    undefined field_0x34;   // 0x34: Is used, related to lighting?
+    u8 field_0x32;   // 0x32: Initialized to 0
+    u8 field_0x33;   // 0x33: Initialized to 0
+    u8 field_0x34;   // 0x34: Is used, related to lighting?
     bool team_menu_or_grid; // 0x35: True when the team menu is opened or while Y is being held
     // Derived from internal direction in leader info block
     enum direction_id leader_target_direction;        // 0x36
     enum direction_id leader_target_direction_mirror; // 0x37
-    undefined2 field_0x38;                                // 0x38: Initialized to 0xFFFF (-1).
-    undefined2 field_0x3A;                                // 0x3A: Initialized to 0xFFFF (-1).
+    u16 field_0x38;                                // 0x38: Initialized to 0xFFFF (-1).
+    u16 field_0x3A;                                // 0x3A: Initialized to 0xFFFF (-1).
     s16 floor_touch_screen;         // 0x3C: Floor number displayed on the touch screen
     s16 leader_level_touch_screen;  // 0x3E: Leader's level displayed on the touch screen
     s16 leader_hp_touch_screen;     // 0x40: Leader's current HP displayed on the touch screen
     s16 leader_max_hp_touch_screen; // 0x42: Leader's max HP displayed on the touch screen
-    undefined2 field_0x44;
+    u16 field_0x44;
     // Padding?
-    undefined field_0x46;
-    undefined field_0x47;
+    u8 field_0x46;
+    u8 field_0x47;
 };
 
 // Used during floor generation to keep track of what entities should be spawned where
@@ -1206,15 +1193,15 @@ union spawn_or_visibility_flags {
 // Information about the rooms on the current floor
 struct room_data {
     u8 room_id;
-    undefined field_0x1;                 // Initialized to 0
+    u8 field_0x1;                 // Initialized to 0
     struct position bottom_right_corner; // 0x2
     struct position top_left_corner;     // 0x6
-    undefined field_0xa;                 // Doesn't get initialized, likely padding
-    undefined field_0xb;                 // Doesn't get initialized, likely padding
-    undefined4 field_0xc;                // Initialized to (bottom_right_corner.x - 1) * 0x1C
-    undefined4 field_0x10;               // Initialized to (bottom_right_corner.y - 1) * 0x1C
-    undefined4 field_0x14;               // Initialized to (top_left_corner.x + 1) * 0x1C
-    undefined4 field_0x18;               // Initialized to (top_left_corner.y + 1) * 0x1C
+    u8 field_0xa;                 // Doesn't get initialized, likely padding
+    u8 field_0xb;                 // Doesn't get initialized, likely padding
+    u32 field_0xc;                // Initialized to (bottom_right_corner.x - 1) * 0x1C
+    u32 field_0x10;               // Initialized to (bottom_right_corner.y - 1) * 0x1C
+    u32 field_0x14;               // Initialized to (top_left_corner.x + 1) * 0x1C
+    u32 field_0x18;               // Initialized to (top_left_corner.y + 1) * 0x1C
 };
 
 // Tile data
@@ -1252,7 +1239,7 @@ struct tile {
     // during dungeon play
     union spawn_or_visibility_flags spawn_or_visibility_flags;
     u16 texture_id; // 0x4: Maybe? Changing this causes the tile texture to change
-    undefined field_0x6;
+    u8 field_0x6;
     // 0x7: Room index. 0xFF if not in a room, 0xFE on junctions during map generation (it gets set
     // to 0xFF later).
     u8 room;
@@ -1276,14 +1263,14 @@ struct dungeon_generation_info {
     // 0x2: Set if a kecleon shop was properly spawned.
     bool kecleon_shop_spawned;
     // 0x3: When a non-zero value, the one-room orb will fail.
-    undefined unk_one_room_flag;
+    u8 unk_one_room_flag;
     bool dough_seed_extra_poke_flag;
     // 0x5: Room index of Monster House on the floor. 0xFF if there's no Monster House
     u8 monster_house_room;
     // 0x6: Related to when a monster from a fixed room faints. Maybe to check if the floor
     // should be over after knocking them out?
-    undefined unk_fixed_room_static_monster_tracker;
-    undefined field_0x7;
+    u8 unk_fixed_room_static_monster_tracker;
+    u8 field_0x7;
     // 0x8: The type of the hidden stairs on the current floor.
     enum hidden_stairs_type hidden_stairs_type;
     // 0xC: Used to check to load the corresponding hidden fixed room and information for
@@ -1296,9 +1283,9 @@ struct dungeon_generation_info {
     // 0x2C (28) for down and up respectively.
     u16 staircase_visual_idx;
     enum fixed_room_id fixed_room_id; // 0x16
-    undefined field_0x17;
-    undefined field_0x18;
-    undefined field_0x19;
+    u8 field_0x17;
+    u8 field_0x18;
+    u8 field_0x19;
     u16 floor_generation_attempts; // 0x1A: Number of attempts at floor layout generation
     struct tile tiles[32][56];          // 0x1C
     struct position team_spawn_pos;     // 0x8C1C: Position of the team spawn
@@ -1323,7 +1310,7 @@ struct trap {
     bool f_unbreakable : 1; // If true, the trap can't be broken (for example, using a Trapbust Orb)
     u8 flags_unk1 : 7;
 
-    undefined field_0x3;
+    u8 field_0x3;
 };
 
 // Struct that contains some data used when spawning new enemies
@@ -1351,9 +1338,9 @@ struct spawned_shopkeeper_data {
 // Appears to contain diagnostic information related to the damage calculation routines.
 struct damage_calc_diag {
     enum type_id move_type; // 0x0: The type of the last move used
-    undefined field_0x1;
-    undefined field_0x2;
-    undefined field_0x3;
+    u8 field_0x1;
+    u8 field_0x2;
+    u8 field_0x3;
     enum move_category move_category; // 0x4: The category of the last move used
     // 0x8: The type matchup of the last move used against the individual types of the defender
     enum type_matchup move_indiv_type_matchups[2];
@@ -1386,26 +1373,26 @@ struct damage_calc_diag {
     // 0x1C: The intermediate quantity in the damage calculation called "FLV" in debug logging
     // (effective level?), which corresponds to: round[ (offense_calc - defense_calc)/8 + level ]
     u16 damage_calc_flv;
-    undefined field_0x1e;
-    undefined field_0x1f;
+    u8 field_0x1e;
+    u8 field_0x1f;
     // 0x20: The result of the damage calculation after multiplying the base value by multipliers,
     // but before applying random variation. There are also a couple stray multipliers applied
     // after this result, including multipliers specific to the projectile move (the static 50%,
     // and the Power Pitcher multiplier) and the Air Blade multiplier.
-    int damage_calc;
+    s32 damage_calc;
     // 0x24: The intermediate quantity in the damage calculation resulting from the "base" damage
     // calculation: the sum of the power, attack, defense, and level terms, modified by the
     // non-team-member multiplier if relevant, and clamped between 1 and 999.
-    int damage_calc_base;
+    s32 damage_calc_base;
     // 0x28: The random multiplier applied to the result of the damage calculation, as a
     // percentage (so the actual factor, multiplied by 100), rounded to an integer.
-    int damage_calc_random_mult_pct;
+    s32 damage_calc_random_mult_pct;
     // 0x2C: The calculated "static" damage multiplier applied to the output of the base damage
     // calculation. "Static" in the sense that this part of the multiplier doesn't depend on
     // variables like type-based effects, critical hits, and Reflect/Light Screen. Factors in
     // the static damage multiplier include the argument to CalcDamage, the multiplier due to
     // monster::me_first_flag, Reckless, and Iron Fist.
-    int static_damage_mult;
+    s32 static_damage_mult;
     // 0x30: The net number of attack boosts to an attacker due to a Power Band or Munch Belt.
     // It seems like there's a bug in the code; aura bows do not contribute to this field.
     s8 item_atk_modifier;
@@ -1473,13 +1460,13 @@ struct damage_calc_diag {
     // 0x4D: Whether or not Water Sport was activated by a Fire move
     bool water_sport_drop_activated;
     bool charge_boost_activated; // 0x4E: Whether or not Charge was activated by an Electric move
-    undefined field_0x4f;
+    u8 field_0x4f;
     // 0x50: Whether or not a Ghost type's immunity to Normal/Fighting was activated at some point
     bool ghost_immunity_activated;
     // 0x51: Whether or not a defender took less damage due to the Charging Skull Bash status
     bool skull_bash_defense_boost_activated;
-    undefined field_0x52;
-    undefined field_0x53;
+    u8 field_0x52;
+    u8 field_0x53;
 };
 
 
