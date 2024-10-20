@@ -1,6 +1,6 @@
 #include "overlay_31_02382820.h"
 
-extern struct dungeon* DUNGEON_PTR;
+extern struct dungeon* DUNGEON_PTR[];
 
 extern const u8 DUNGEON_MENU_SWITCH_STR1[];// = "[dungeon:0]";
 
@@ -113,7 +113,7 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
 
     line_offset = 0;
     for (i = 0; i < 4; i++) {
-        struct entity* party_member = DUNGEON_PTR->party_members[i];
+        struct entity* party_member = DUNGEON_PTR[0]->party_members[i];
         if (party_member == NULL) {
             is_valid_member = FALSE;
         } else {
@@ -146,8 +146,8 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
 void DungeonMenuSwitch(struct Window* window)
 {
     struct PPStrValues str_values;
-    str_values.dungeon_0 = DUNGEON_PTR->id | 0x40000;
-    str_values.digits_0 = DUNGEON_PTR->floor;
+    str_values.dungeon_0 = DUNGEON_PTR[0]->id | 0x40000;
+    str_values.digits_0 = DUNGEON_PTR[0]->floor;
     u8* str_buff = AllocateTemp1024ByteBufferFromPool();
     PreprocessString(str_buff, 0x400, DUNGEON_MENU_SWITCH_STR1, 0, &str_values);
     struct Window* window2 = GetWindow(window);
