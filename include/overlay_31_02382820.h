@@ -4,7 +4,6 @@
 #include "main_020348E4.h"
 #include "util.h"
 #include "preprocessString.h"
-#include "dungeon_mode.h"
 #include "dungeon.h"
 
 struct Window {

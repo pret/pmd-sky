@@ -2,6 +2,7 @@
 #define HEADERS_TYPES_DUNGEON_MODE_DUNGEON_H_
 
 #include "enums.h"
+#include "dungeon_mode.h"
 
 // Dungeon state
 struct dungeon {
