@@ -893,7 +893,7 @@ ApplyDoughSeedEffect: ; 0x0231D6E0
 	ldrb r0, [r0, #6]
 	cmp r0, #0
 	bne _0231D730
-	bl ov29_02338530
+	bl GetDoughSeedFlag
 	cmp r0, #0
 	bne _0231D730
 	mov r0, #1

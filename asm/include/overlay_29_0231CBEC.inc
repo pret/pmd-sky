@@ -103,7 +103,7 @@
 .public ov29_02305814
 .public ov29_0233665C
 .public ov29_0233785C
-.public ov29_02338530
+.public GetDoughSeedFlag
 .public ov29_02339FF4
 .public ov29_0233FB1C
 .public ov29_02344B44

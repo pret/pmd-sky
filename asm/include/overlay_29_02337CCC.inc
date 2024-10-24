@@ -12,7 +12,6 @@
 .public GetVictoriesOnOneFloor
 .public HiddenStairsTrigger
 .public IqSkillIsEnabled
-.public IsFullFloorFixedRoom
 .public LogMessageByIdWithPopupCheckUser
 .public MemAlloc
 .public MemFree
@@ -21,7 +20,6 @@
 .public RandInt
 .public SECONDARY_TERRAIN_TYPES
 .public SetVictoriesOnOneFloor
-.public TeamMemberHasExclusiveItemEffectActive
 .public UpdateTrapsVisibility
 .public ov10_022C6327
 .public ov29_022E66C4
@@ -30,5 +28,3 @@
 .public ov29_02304BAC
 .public ov29_02306D54
 .public ov29_02336694
-.public ov29_02344E88
-.public ov29_02352B5C
