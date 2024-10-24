@@ -44,6 +44,7 @@ def find_symbol_in_header(symbol_name: str, is_data: bool, header_contents: List
 class SubsymbolDir:
     file_path: str
     addresses: Dict[str, int]
+    length: Dict[str, int]
 
 subsymbol_dirs = {}
 
@@ -99,12 +100,13 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
                         file_path = os.path.join(root, file)
                         with open(file_path, 'r') as yaml_file:
                             yaml_contents = yaml.load(yaml_file)
-                            subsymbol_dirs[subsymbol_dir].append(SubsymbolDir(file_path, yaml_contents[file[:-4]]['address']))
+                            subsymbol_dirs[subsymbol_dir].append(SubsymbolDir(file_path, yaml_contents[file[:-4]]['address'], yaml_contents[file[:-4]]['length']))
 
         if subsymbol_dirs[subsymbol_dir] is not None:
             matching_subsymbol_file = None
             for file in subsymbol_dirs[subsymbol_dir]:
-                if address > file.addresses[language_key] and (matching_subsymbol_file is None or file.addresses[language_key] > matching_subsymbol_file.addresses[language_key]):
+                file_address = file.addresses[language_key]
+                if address > file_address and address < file_address + file.length[language_key] and (matching_subsymbol_file is None or file_address > matching_subsymbol_file.addresses[language_key]):
                     matching_subsymbol_file = file
             if matching_subsymbol_file is not None:
                 symbol_path = matching_subsymbol_file.file_path
@@ -158,7 +160,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
             # This will be used as an anchor when appending to the header file.
             symbol_header_line = find_symbol_in_header(symbol_entry['name'], symbol.is_data, header_contents)
             if symbol_header_line is not None and insert_index is None:
-                target_header_line = symbol_header_line
+                target_header_line = symbol_header_line - 1
             if language_key in symbol_entry['address']:
                 current_symbol_address: int | List[int] = symbol_entry['address'][language_key]
                 if isinstance(current_symbol_address, list):
@@ -175,10 +177,6 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
         else:
             symbol_array.insert(insert_index, matching_symbol_entry)
 
-    if symbol_preexisting:
-        print(f'Updating address of {base_symbol_name} in {base_symbol_path}')
-    else:
-        print(f'Adding {base_symbol_name} to {base_symbol_path}')
 
     symbol_entry_language_addresses: Dict[str, Any] = matching_symbol_entry['address']
     if language_key not in symbol_entry_language_addresses:
@@ -212,6 +210,11 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
             symbol_entry_language_addresses[language_key + '-WRAM'] = HexCapsInt(wram_address)
             if reorder_languages:
                 symbol_entry_language_addresses.move_to_end('NA-WRAM')
+
+    if symbol_preexisting:
+        print(f'Updating address of {base_symbol_name} (region {language_key}) in {symbol_path}')
+    else:
+        print(f'Adding {base_symbol_name} (region {language_key}) to {symbol_path}')
 
     if symbol_preexisting:
         return
@@ -274,6 +277,8 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
         symbol_header = f'void {base_symbol_name}(void);\n'
 
     header_contents[target_header_line] += symbol_header
+
+    print(f'Adding {base_symbol_name} to {header_path}')
 
     with open(header_path, 'w') as header_file:
         header_file.writelines(header_contents)
