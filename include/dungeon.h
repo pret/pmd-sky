@@ -1016,6 +1016,10 @@ struct dungeon {
     u8 field_0x3b1c;
     u8 field_0x3b1d;
     u8 field_0x3b1e;
+    // TODO Something is omitted from the dungeon struct in JP, but it is not known what is missing.
+    // For the time being, take out these unknown fields from JP to allow JP usage of this struct to match.
+    // As more functions are decomped, move this conditional up the struct until we find where the actual difference is in the struct.
+#ifndef JAPAN
     u8 field_0x3b1f;
     u8 field_0x3b20;
     u8 field_0x3b21;
@@ -1101,6 +1105,7 @@ struct dungeon {
     u8 field_0x3b71;
     u8 field_0x3b72;
     u8 field_0x3b73;
+#endif
     // 0x3B74: Unknown array, likely one entry per monster species. This might be related to
     // the IQ skill Exp. Go-Getter so the AI knows which monsters to prioritize.
     u8 unknown_array_0x3B74[600];
@@ -1372,11 +1377,7 @@ struct dungeon {
 
     // TODO Something is omitted from the dungeon struct in JP, but it is not known what is missing.
     // For the time being, take some bytes out of this array to allow JP usage of this struct to match.
-#ifdef JAPAN
-    u8 unknown_file_buffer_0x12162[2268];
-#else
     u8 unknown_file_buffer_0x12162[2352];
-#endif
     // 0x12A92: Unknown array, probably related to unknown_tile_matrix
     // since they get initialized together.
     u16 unknown_array_0x12A92[9];
