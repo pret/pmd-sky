@@ -1,18 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_03.inc"
+	.include "overlay_03_0233CA98.inc"
 
 	.text
-
-	arm_func_start ov03_0233CA80
-ov03_0233CA80: ; 0x0233CA80
-	ldr ip, _0233CA90 ; =MemZero
-	ldr r0, _0233CA94 ; =ov03_02346BE0
-	mov r1, #0x10
-	bx ip
-	.align 2, 0
-_0233CA90: .word MemZero
-_0233CA94: .word ov03_02346BE0
-	arm_func_end ov03_0233CA80
 
 	arm_func_start ov03_0233CA98
 ov03_0233CA98: ; 0x0233CA98
@@ -11773,9 +11762,6 @@ ov03_02346BDC:
 	.byte 0x00, 0x00, 0x00, 0x00
 
 	.bss
-	.global ov03_02346BE0
-ov03_02346BE0:
-	.space 0x10
 	.global ov03_02346BF0
 ov03_02346BF0:
 	.space 0x10
