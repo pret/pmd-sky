@@ -1,7 +1,5 @@
 #pragma once
 .public AbilityIsActiveVeneer
-.public ATK_STAT_IDX
-.public BoostDefensiveStat
 .public BoostOffensiveStat
 .public BoostSpeedOneStage
 .public CalcRecoilDamageFixed
@@ -13,20 +11,16 @@
 .public EndFrozenStatus
 .public EndNegativeStatusConditionWrapper
 .public EndSleepClassStatus
-.public EntityIsValid__0232E840
 .public EntityIsValidMoveEffects__0232E250
+.public EntityIsValid__0232E840
 .public FIRE_FANG_CRINGE_CHANCE
 .public FLARE_BLITZ_BURN_CHANCE
 .public HEALING_WISH_HP_RESTORATION
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerOffensiveStat
-.public ov29_02318D98
-.public ov29_0234AFFC
-.public ov29_02353718
 .public ResetHitChanceStat
 .public RestoreAllMovePP
 .public SPATK_STAT_IDX
-.public sub_02054EC8
 .public SubstitutePlaceholderStringTags
 .public TryIncreaseHp
 .public TryInflictBurnStatus
@@ -34,3 +28,7 @@
 .public TryInflictMiracleEyeStatus
 .public TryInflictTerrifiedStatus
 .public TryRestoreHp
+.public ov29_02318D98
+.public ov29_0234AFFC
+.public ov29_02353718
+.public sub_02054EC8
