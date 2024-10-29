@@ -5221,25 +5221,3 @@ FileRom_Veneer_FileInit: ; 0x02008204
 	.align 2, 0
 _0200820C: .word FileInit
 	arm_func_end FileRom_Veneer_FileInit
-
-	arm_func_start FileRom_HandleOpen
-FileRom_HandleOpen: ; 0x02008210
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r6, r0
-	mov r5, r1
-	mov r4, #1
-_02008220:
-	mov r0, r6
-	mov r1, r5
-	bl sub_0207F6C4
-	cmp r0, #0
-	ldmneia sp!, {r4, r5, r6, pc}
-	mov r0, r4
-	bl CardPullOutWithStatus
-	b _02008220
-	arm_func_end FileRom_HandleOpen
-
-	arm_func_start sub_02008240
-sub_02008240: ; 0x02008240
-	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end sub_02008240
