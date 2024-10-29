@@ -122,6 +122,7 @@ Overlay OVY_12
 Overlay OVY_13
 {
 	After OVY_11
+	Object src/overlay_13_EntryOverlay13.o
 	Object asm/overlay_13.o
 }
 Overlay OVY_14
