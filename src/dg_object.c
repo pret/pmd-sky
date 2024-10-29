@@ -2,6 +2,9 @@
 
 // file starts at 0x022e1608
 
+extern s32 GetSpriteSize(u32);
+extern s32 ov29_022DE954(u32);
+
 bool8 EntityIsValid__022E1A1C(struct entity *entity)
 {
     if (entity == NULL)
@@ -33,4 +36,14 @@ void IncrementEntityPixelPosXY(struct entity *entity, u32 x, u32 y)
 {
     entity->pixel_pos.x += x;
     entity->pixel_pos.y += y;
+}
+
+u32 ov29_022E1AAC(u32 param_0, u32 param_1) {
+    s32 iVar1;
+
+    iVar1 = GetSpriteSize(param_0);
+    if (ov29_022DE954(param_1) != 0) {
+        iVar1 = iVar1 << 1;
+    }
+    return iVar1;
 }

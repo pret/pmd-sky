@@ -1,21 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022E1AAC.inc"
+	.include "overlay_29_022E1AD4.inc"
 
 	.text
-
-	arm_func_start ov29_022E1AAC
-ov29_022E1AAC: ; 0x022E1AAC
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r1
-	bl GetSpriteSize
-	mov r4, r0
-	mov r0, r5
-	bl ov29_022DE954
-	cmp r0, #0
-	movne r4, r4, lsl #1
-	mov r0, r4
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022E1AAC
 
 	arm_func_start ov29_022E1AD4
 ov29_022E1AD4: ; 0x022E1AD4
