@@ -126,7 +126,7 @@ BRANCH_INSTRUCTION = '\tb '
 WORD_KEY = '.word '
 WORD_PLUS_OFFSET = ' + 0x'
 """
-Searches through an ASM file's contents for all external symbosl, then populates a .inc file with all the necessary .public definitions.
+Searches through an ASM file's contents for all external symbols, then populates a .inc file with all the necessary .public definitions.
 """
 def write_inc_file(lines: List[str], file_path: str):
     defined_functions = set()
@@ -152,9 +152,12 @@ def write_inc_file(lines: List[str], file_path: str):
             if word_index >= 0 and f'{WORD_KEY}0x' not in line:
                 word_plus_offset_index = line.find(WORD_PLUS_OFFSET)
                 if word_plus_offset_index >= 0:
-                    used_functions.add(line[word_index + len(WORD_KEY) : word_plus_offset_index])
+                    new_word = line[word_index + len(WORD_KEY) : word_plus_offset_index]
                 else:
-                    used_functions.add(line[word_index + len(WORD_KEY) : -1])
+                    new_word = line[word_index + len(WORD_KEY) : -1]
+
+                if new_word[0] < '0' or new_word > '9':
+                    used_functions.add(new_word)
 
     for function in defined_functions:
         if function in used_functions:
