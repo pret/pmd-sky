@@ -46,6 +46,8 @@ Static main
 	Object asm/main_0207F894.o
 	Object src/main_02089678.o
 	Object asm/main_02089694.o
+	Object src/main_020897AC.o
+	Object asm/main_020897DC.o
 }
 
 Autoload ITCM
