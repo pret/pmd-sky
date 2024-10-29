@@ -1,37 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022DC2B8.inc"
+	.include "overlay_29_022DC314.inc"
 
 	.text
-
-	arm_func_start ov29_022DC2B8
-ov29_022DC2B8: ; 0x022DC2B8
-	stmdb sp!, {r3, lr}
-	ldr r1, _022DC30C ; =0x00019628
-	mov ip, #0
-	strh ip, [r0, r1]
-	add r2, r1, #0xa
-	add r1, r1, #0xc
-	ldrsh r2, [r0, r2]
-	ldrsh r1, [r0, r1]
-	mov lr, ip
-	smulbb r1, r2, r1
-	mov r3, r1, lsl #0x10
-	ldr r1, _022DC310 ; =0x00017704
-	b _022DC300
-_022DC2EC:
-	add r2, ip, #1
-	add ip, r0, ip, lsl #1
-	mov r2, r2, lsl #0x10
-	strh lr, [ip, r1]
-	mov ip, r2, asr #0x10
-_022DC300:
-	cmp ip, r3, asr #16
-	blt _022DC2EC
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_022DC30C: .word 0x00019628
-_022DC310: .word 0x00017704
-	arm_func_end ov29_022DC2B8
 
 	arm_func_start ov29_022DC314
 ov29_022DC314: ; 0x022DC314
