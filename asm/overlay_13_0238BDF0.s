@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/nfhAP
 	arm_func_start GetOptionStringFromID
 GetOptionStringFromID: ; 0x0238BDF0
 	stmdb sp!, {r3, r4, lr}

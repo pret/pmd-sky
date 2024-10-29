@@ -53,4 +53,10 @@ typedef int BOOL;
 
 #define SDK_FORCE_EXPORT __declspec(force_export)
 #endif //SDK_ASM
+
+#define HW_REG_BASE                0x04000000
+#define REG_IME_OFFSET             0x208
+#define REG_IME_ADDR               (HW_REG_BASE + REG_IME_OFFSET)
+#define reg_OS_IME                 (*(REGType16v *)REG_IME_ADDR)
+
 #endif //NITRO_TYPES_H_
