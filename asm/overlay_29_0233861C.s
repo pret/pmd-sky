@@ -9957,6 +9957,7 @@ _02340C84:
 _02340CA8: .word DUNGEON_PTR
 	arm_func_end ResetFloor
 
+; https://decomp.me/scratch/8KLd6
 	arm_func_start PosIsOutOfBounds
 PosIsOutOfBounds: ; 0x02340CAC
 	cmp r0, #0

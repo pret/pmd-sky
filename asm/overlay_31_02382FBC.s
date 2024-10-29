@@ -317,6 +317,7 @@ _023833C4:
 _023833D4: .word OVERLAY31_UNKNOWN_POINTER__NA_238A268
 	arm_func_end ov31_023833B4
 
+; https://decomp.me/scratch/Q183B
 	arm_func_start ov31_023833D8
 ov31_023833D8: ; 0x023833D8
 	stmdb sp!, {r3, lr}
@@ -672,6 +673,7 @@ _02383820:
 _02383850: .word OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	arm_func_end ov31_023837C8
 
+; https://decomp.me/scratch/VL6fa
 	arm_func_start ov31_02383854
 ov31_02383854: ; 0x02383854
 	stmdb sp!, {r4, lr}

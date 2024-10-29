@@ -2846,14 +2846,14 @@ _0200A6D0:
 	strb r1, [ip], #1
 	bne _0200A6D0
 	mov r2, #0
-	ldr r1, _0200A6FC ; =sub_0200AE38
+	ldr r1, _0200A6FC ; =TransformPaletteDataWithFlushDivideFade
 	str r2, [r0, #0x10]
 	str r1, [r0, #0x14]
 	mov r1, #1
 	strb r1, [r0, #8]
 	bx lr
 	.align 2, 0
-_0200A6FC: .word sub_0200AE38
+_0200A6FC: .word TransformPaletteDataWithFlushDivideFade
 	arm_func_end sub_0200A6C4
 
 	arm_func_start sub_0200A700
@@ -3389,8 +3389,9 @@ _0200AE30:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0200ACB0
 
-	arm_func_start sub_0200AE38
-sub_0200AE38: ; 0x0200AE38
+; https://decomp.me/scratch/VDRBP
+	arm_func_start TransformPaletteDataWithFlushDivideFade
+TransformPaletteDataWithFlushDivideFade: ; 0x0200AE38
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	mov sl, r0
@@ -3559,7 +3560,7 @@ _0200B098:
 _0200B0A4:
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_0200AE38
+	arm_func_end TransformPaletteDataWithFlushDivideFade
 
 	arm_func_start sub_0200B0AC
 sub_0200B0AC: ; 0x0200B0AC

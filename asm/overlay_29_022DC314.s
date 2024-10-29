@@ -396,6 +396,7 @@ _022DC7D0:
 _022DC7E0: .word ov29_02353518
 	arm_func_end ov29_022DC78C
 
+; https://decomp.me/scratch/qiwjF
 	arm_func_start ov29_022DC7E4
 ov29_022DC7E4: ; 0x022DC7E4
 	stmdb sp!, {r3, lr}

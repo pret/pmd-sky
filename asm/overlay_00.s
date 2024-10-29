@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/rqTSp
 	arm_func_start ov00_022BCA80
 ov00_022BCA80: ; 0x022BCA80
 	stmdb sp!, {r4, r5, r6, lr}

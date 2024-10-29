@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/SGR0O
 	arm_func_start ov29_022E0378
 ov29_022E0378: ; 0x022E0378
 	ldr r1, _022E03A8 ; =ov29_0237CFC0

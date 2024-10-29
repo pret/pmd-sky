@@ -12335,6 +12335,7 @@ _02089A60:
 	ldmia sp!, {r4, pc}
 	arm_func_end strcspn
 
+; https://decomp.me/scratch/QV4rQ
 	arm_func_start strstr
 strstr: ; 0x02089A70
 	stmdb sp!, {r4, lr}
