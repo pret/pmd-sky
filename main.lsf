@@ -9,7 +9,8 @@ Static main
 {
 	Address 0x02000000
 	StackSize 0 2048
-	Object asm/main_02000C6C.o
+	Object src/main_02000C6C.o
+	Object asm/main_02000DE0.o
 	Object src/main_02003D2C.o
 	Object asm/main_02003DB8.o
 	Object src/main_02008254.o
@@ -73,7 +74,8 @@ Overlay OVY_2
 Overlay OVY_3
 {
 	After OVY_1
-	Object asm/overlay_03.o
+	Object src/overlay_03_0233CA80.o
+	Object asm/overlay_03_0233CA98.o
 }
 Overlay OVY_4
 {
@@ -124,6 +126,10 @@ Overlay OVY_13
 	After OVY_11
 	Object src/overlay_13_EntryOverlay13.o
 	Object asm/overlay_13.o
+	Object src/overlay_13_0238BDA8.o
+	Object asm/overlay_13_0238BDF0.o
+	Object src/overlay_13_0238BE4C.o
+	Object asm/overlay_13_0238BE6C.o
 }
 Overlay OVY_14
 {
