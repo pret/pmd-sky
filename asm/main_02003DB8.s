@@ -5150,6 +5150,7 @@ _02008160:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02008138
 
+; https://decomp.me/scratch/w0Zq6
 	arm_func_start FileRom_InitDataTransfer
 FileRom_InitDataTransfer: ; 0x02008168
 	stmdb sp!, {r3, lr}

@@ -230,6 +230,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022E37DC.o
 	Object src/dg_uty.o
 	Object asm/overlay_29_022E9618.o
+	Object src/overlay_29_022EA9EC.o
+	Object asm/overlay_29_022EAA20.o
 	Object src/dg_random.o
 	Object asm/overlay_29_022EAB50.o
 	Object src/overlay_29_022EC608.o
