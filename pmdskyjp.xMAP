@@ -296,8 +296,12 @@
                        22](SentryRunState,func) found in global overlay_14.o
                         23](.data,section) found in local overlay_14.o
                          24](.text,section) found in local overlay_14.o
-                       22](EntryOverlay13,func) found in global overlay_13.o
-                        23](.data,section) found in local overlay_13.o
+                       22](EntryOverlay13,func) found in global overlay_13_EntryOverlay13.o
+                        23](OVERLAY13_UNKNOWN_POINTER__NA_238CEA0,notype) found in global overlay_13.o
+                        23](OVERLAY13_UNKNOWN_STRUCT__NA_238C024,notype) found in global overlay_13.o
+                         24](Overlay13SwitchFunctionNa238A1C8,func) found in global overlay_13_EntryOverlay13.o
+                          25](Overlay13SwitchFunctionNa238A574,func) found in global overlay_13.o
+                         24](ExitOverlay13,func) found in global overlay_13_EntryOverlay13.o
                        22](Debug_GetLogFlag,func) found in global debug.o
                        22](ov28_0238A468,func) found in global overlay_28.o
                         23](.data,section) found in local overlay_28.o
@@ -31501,18 +31505,18 @@
 #>0000000D          SDK_OVERLAY.OVY_13.ID (linker command file)
 #>0238B6A0          SDK_OVERLAY.OVY_13.START (linker command file)
 #>0238B6A0          SDK_OVERLAY.OVY_13.TEXT_START (linker command file)
-  0238B6A0 00000050 .text   EntryOverlay13	(overlay_13.o)
-  0238B6A0 00000000 .text   $a	(overlay_13.o)
-  0238B6A0 00002D58 .text   .text	(overlay_13.o)
-  0238B6E4 00000000 .text   $d	(overlay_13.o)
-  0238B6F0 00000038 .text   ExitOverlay13	(overlay_13.o)
-  0238B6F0 00000000 .text   $a	(overlay_13.o)
-  0238B724 00000000 .text   $d	(overlay_13.o)
-  0238B728 000003AC .text   Overlay13SwitchFunctionNa238A1C8	(overlay_13.o)
-  0238B728 00000000 .text   $a	(overlay_13.o)
-  0238BAD0 00000000 .text   $d	(overlay_13.o)
-  0238BAD4 00000000 .text   $a	(overlay_13.o)
+  0238B6A0 00000000 .text   $a	(overlay_13_EntryOverlay13.o)
+  0238B6A0 00000050 .text   EntryOverlay13	(overlay_13_EntryOverlay13.o)
+  0238B6E4 00000000 .text   $d	(overlay_13_EntryOverlay13.o)
+  0238B6F0 00000000 .text   $a	(overlay_13_EntryOverlay13.o)
+  0238B6F0 00000038 .text   ExitOverlay13	(overlay_13_EntryOverlay13.o)
+  0238B724 00000000 .text   $d	(overlay_13_EntryOverlay13.o)
+  0238B728 00000000 .text   $a	(overlay_13_EntryOverlay13.o)
+  0238B728 000003AC .text   Overlay13SwitchFunctionNa238A1C8	(overlay_13_EntryOverlay13.o)
+  0238BAD0 00000000 .text   $d	(overlay_13_EntryOverlay13.o)
   0238BAD4 00001838 .text   Overlay13SwitchFunctionNa238A574	(overlay_13.o)
+  0238BAD4 00000000 .text   $a	(overlay_13.o)
+  0238BAD4 00002924 .text   .text	(overlay_13.o)
   0238CA58 00000000 .text   $d	(overlay_13.o)
   0238CABC 00000000 .text   $a	(overlay_13.o)
   0238D2E0 00000000 .text   $d	(overlay_13.o)
@@ -31525,8 +31529,8 @@
   0238D3B0 00000000 .text   $a	(overlay_13.o)
   0238D3B0 00000020 .text   WaitForNextStep	(overlay_13.o)
   0238D3CC 00000000 .text   $d	(overlay_13.o)
-  0238D3D0 000001A8 .text   ov13_0238BE6C	(overlay_13.o)
   0238D3D0 00000000 .text   $a	(overlay_13.o)
+  0238D3D0 000001A8 .text   ov13_0238BE6C	(overlay_13.o)
   0238D560 00000000 .text   $d	(overlay_13.o)
   0238D578 00000000 .text   QUIZ_BORDER_COLOR_TABLE	(overlay_13.o)
   0238D57C 00000000 .text   PORTRAIT_ATTRIBUTES	(overlay_13.o)
@@ -40178,5 +40182,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Tue Oct 29 02:57:47 2024
-# Link end time: Tue Oct 29 02:57:48 2024
+# Link start time: Tue Oct 29 03:36:43 2024
+# Link end time: Tue Oct 29 03:36:44 2024
