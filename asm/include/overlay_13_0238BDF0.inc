@@ -1,0 +1,11 @@
+#pragma once
+.public DrawTextInWindow
+.public ExitOverlay13
+.public InitPreprocessorArgs
+.public OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+.public Overlay13SwitchFunctionNa238A1C8
+.public PreprocessString
+.public PreprocessStringFromId
+.public UpdateWindow
+.public ov13_0238CE70
+.public sub_02027B1C
