@@ -91,6 +91,7 @@ sub_02003ECC: ; 0x02003ECC
 	bx lr
 	arm_func_end sub_02003ECC
 
+; https://decomp.me/scratch/uxxU8
 	arm_func_start OverlayIsLoaded
 OverlayIsLoaded: ; 0x02003ED0
 	stmdb sp!, {r3, lr}

@@ -21,6 +21,7 @@ _0200C4DC:
 _0200C4F8: .word _02094C18
 	arm_func_end sub_0200C4CC
 
+; https://decomp.me/scratch/28S9i
 	arm_func_start GetDungeonResultMsg
 GetDungeonResultMsg: ; 0x0200C4FC
 	stmdb sp!, {r3, r4, r5, r6, lr}

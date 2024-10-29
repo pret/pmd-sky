@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/0mvHa
 	arm_func_start TrySpawnDoughSeedPoke
 TrySpawnDoughSeedPoke: ; 0x02338560
 	stmdb sp!, {r3, lr}
