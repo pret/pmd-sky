@@ -14061,6 +14061,7 @@ _022E824C:
 _022E8254: .word ov11_02324F9C
 	arm_func_end GetRandomNpcJobStillAvailable
 
+; https://decomp.me/scratch/bAiXn
 	arm_func_start AcceptRandomNpcJob
 AcceptRandomNpcJob: ; 0x022E8258
 	stmdb sp!, {r3, lr}
@@ -30927,6 +30928,7 @@ _022F5D48:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 	arm_func_end ov11_022F5C94
 
+; https://decomp.me/scratch/OsJD0
 	arm_func_start GetIdleAnimationType
 GetIdleAnimationType: ; 0x022F5D50
 	ldr r2, _022F6CF4 ; =0x000002C6

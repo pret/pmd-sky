@@ -136,6 +136,7 @@ _022BCC58: .word INVENTORY_MENU_DEFAULT_WINDOW_PARAMS
 _022BCC5C: .word UpdateInventoryMenu
 	arm_func_end CreateInventoryMenu
 
+; https://decomp.me/scratch/V74kd
 	arm_func_start ov10_022BCC60
 ov10_022BCC60: ; 0x022BCC60
 	stmdb sp!, {r4, lr}
@@ -982,6 +983,7 @@ ov10_022BD718: ; 0x022BD718
 _022BD740: .word ov10_022DC220
 	arm_func_end ov10_022BD718
 
+; https://decomp.me/scratch/bBFFj
 	arm_func_start ov10_022BD744
 ov10_022BD744: ; 0x022BD744
 	ldr r0, _022BD758 ; =ov10_022DC1C0

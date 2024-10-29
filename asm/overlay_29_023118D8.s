@@ -2623,6 +2623,7 @@ _02313B00: .word 0x00000D8F + BOOST_OFFENSIVE_STAT_OFFSET
 _02313B04: .word 0x00000DD8 + BOOST_OFFENSIVE_STAT_OFFSET
 	arm_func_end BoostOffensiveStat
 
+; https://decomp.me/scratch/90P8f
 	arm_func_start BoostDefensiveStat
 BoostDefensiveStat: ; 0x02313B08
 	stmdb sp!, {r0, r1, r2, r3}

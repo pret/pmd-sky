@@ -3198,6 +3198,7 @@ _020032E4:
 	bgt _020032D8
 	bx lr
 
+; https://decomp.me/scratch/qcRwD
 	arm_func_start Memcpy16
 Memcpy16: ; 0x020032F0
 	b _02003300
@@ -3211,6 +3212,7 @@ _02003300:
 	bgt _020032F4
 	bx lr
 
+; https://decomp.me/scratch/edLa8
 	arm_func_start Memcpy32
 Memcpy32: ; 0x0200330C
 	b _0200331C

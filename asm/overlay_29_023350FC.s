@@ -1706,6 +1706,7 @@ _023360F0:
 _023360F8: .word ov29_0237CA8C
 	arm_func_end ov29_02335F40
 
+; https://decomp.me/scratch/OBj9L
 	arm_func_start GetTile
 GetTile: ; 0x023360FC
 	cmp r0, #0

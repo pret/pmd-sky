@@ -94,6 +94,7 @@ _0207F538:
 _0207F54C: .word _022BB5EC
 	arm_func_end sub_0207F40C
 
+; https://decomp.me/scratch/ioqaD
 	arm_func_start sub_0207F550
 sub_0207F550: ; 0x0207F550
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}

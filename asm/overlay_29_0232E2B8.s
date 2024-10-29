@@ -1,29 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0232E274.inc"
+	.include "overlay_29_0232E2B8.inc"
 
 	.text
-
-	arm_func_start DoMoveDefendOrder
-DoMoveDefendOrder: ; 0x0232E274
-	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _0232E2B0 ; =ATK_STAT_IDX
-	mov r3, #1
-	ldr r2, [r2]
-	mov r5, r0
-	mov r4, r1
-	bl BoostDefensiveStat
-	ldr r1, _0232E2B4 ; =SPATK_STAT_IDX
-	mov r0, r5
-	ldr r2, [r1]
-	mov r1, r4
-	mov r3, #1
-	bl BoostDefensiveStat
-	mov r0, #1
-	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
-_0232E2B0: .word ATK_STAT_IDX
-_0232E2B4: .word SPATK_STAT_IDX
-	arm_func_end DoMoveDefendOrder
 
 	arm_func_start DoMoveFireFang
 DoMoveFireFang: ; 0x0232E2B8

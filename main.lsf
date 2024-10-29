@@ -208,7 +208,7 @@ Overlay OVY_29
 {
 	After OVY_10
 	Object src/poly_text.o
-	Object asm/overlay_29_022DC2B8.o
+	Object asm/overlay_29_022DC314.o
 	Object src/overlay_29_022DEAB0.o
 	Object asm/overlay_29_022DEADC.o
 	Object src/dg.o
@@ -302,7 +302,7 @@ Overlay OVY_29
 	Object src/overlay_29_0232C500.o
 	Object asm/overlay_29_0232C524.o
 	Object src/overlay_29_0232E250.o
-	Object asm/overlay_29_0232E274.o
+	Object asm/overlay_29_0232E2B8.o
 	Object src/overlay_29_0232E840.o
 	Object asm/overlay_29_0232E864.o
 	Object src/overlay_29_02333FAC.o

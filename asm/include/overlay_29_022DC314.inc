@@ -26,6 +26,7 @@
 .public ov10_022C159C
 .public ov10_022C22A0
 .public ov29_022DC240
+.public ov29_022DC2B8
 .public ov29_0234FD04
 .public ov29_0234FD14
 .public ov29_0234FD48
