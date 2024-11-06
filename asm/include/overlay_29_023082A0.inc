@@ -19,6 +19,7 @@
 .public EndFrozenClassStatus
 .public EntityIsValid__02308FBC
 .public ExclusiveItemEffectIsActive__0230A9B8
+.public GendersNotEqualNotGenderless
 .public GetCanMoveFlag
 .public GetLeader
 .public GetTreatmentBetweenMonsters
@@ -61,6 +62,5 @@
 .public SetActionPassTurnOrWalk
 .public SetDecoyAiTracker
 .public ShouldRunMonsterAi
-.public sub_02054EC8
 .public SubstitutePlaceholderStringTags
 .public UpdateAiTargetPos

@@ -1,8 +1,8 @@
 #pragma once
-.public DIRECTIONS_XY
-.public DUNGEON_PTR
 .public DetermineTileWalkableNeighbors
+.public DIRECTIONS_XY
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandRange
 .public EntityIsValid__02337CA8
@@ -16,11 +16,6 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
-.public PositionIsOnHiddenStairs
-.public RandInt
-.public SECONDARY_TERRAIN_TYPES
-.public SetVictoriesOnOneFloor
-.public UpdateTrapsVisibility
 .public ov10_022C6327
 .public ov29_022E66C4
 .public ov29_022EDEDC
@@ -28,3 +23,8 @@
 .public ov29_02304BAC
 .public ov29_02306D54
 .public ov29_02336694
+.public PositionIsOnHiddenStairs
+.public RandInt
+.public SECONDARY_TERRAIN_TYPES
+.public SetVictoriesOnOneFloor
+.public UpdateTrapsVisibility

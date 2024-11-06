@@ -1,8 +1,11 @@
 #pragma once
-.public DUNGEON_PTR
+.public _020AFC4C
+.public _020AFC70
+.public _s32_div_f
 .public Debug_Print0
 .public DirectoryFileMngr_OpenDirectoryFile
 .public DrawTeamStats
+.public DUNGEON_PTR
 .public FreeMapAndTeam
 .public FreeTeamStats
 .public GetDefaultTileTextureId
@@ -12,11 +15,6 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
-.public UnloadFile
-.public UpdateTeamStats
-.public _020AFC4C
-.public _020AFC70
-.public _s32_div_f
 .public ov10_022C0814
 .public ov10_022C096C
 .public ov10_022C0998
@@ -97,3 +95,5 @@
 .public sub_02063734
 .public sub_02063770
 .public sub_02063830
+.public UnloadFile
+.public UpdateTeamStats

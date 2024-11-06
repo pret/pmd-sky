@@ -6909,7 +6909,7 @@ _0230D7A0:
 	ldr r1, [r5, #0xb4]
 	ldrsh r0, [r0, #2]
 	ldrsh r1, [r1, #2]
-	bl sub_02054EC8
+	bl GendersNotEqualNotGenderless
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}

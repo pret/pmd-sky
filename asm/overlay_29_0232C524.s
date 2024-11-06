@@ -600,7 +600,7 @@ _0232CBFC:
 	mov r1, #0
 	strh r2, [sp, #8]
 	strh r6, [sp, #0xa]
-	bl ov29_022EDE7C
+	bl TryRemoveTrap
 	mov r7, #1
 _0232CC58:
 	add r6, r6, #1

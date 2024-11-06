@@ -11,13 +11,17 @@
 .public EndFrozenStatus
 .public EndNegativeStatusConditionWrapper
 .public EndSleepClassStatus
-.public EntityIsValidMoveEffects__0232E250
 .public EntityIsValid__0232E840
+.public EntityIsValidMoveEffects__0232E250
 .public FIRE_FANG_CRINGE_CHANCE
 .public FLARE_BLITZ_BURN_CHANCE
+.public GendersNotEqualNotGenderless
 .public HEALING_WISH_HP_RESTORATION
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerOffensiveStat
+.public ov29_02318D98
+.public ov29_0234AFFC
+.public ov29_02353718
 .public ResetHitChanceStat
 .public RestoreAllMovePP
 .public SPATK_STAT_IDX
@@ -28,7 +32,3 @@
 .public TryInflictMiracleEyeStatus
 .public TryInflictTerrifiedStatus
 .public TryRestoreHp
-.public ov29_02318D98
-.public ov29_0234AFFC
-.public ov29_02353718
-.public sub_02054EC8

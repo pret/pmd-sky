@@ -252,7 +252,7 @@ void ov31_02382E18(struct entity* arg_1, u32 arg_2)
     ov29_022EA428(6, 0);
     AdvanceFrame(0x62);
     AdvanceFrame(0x62);
-    ov31_02382ED4(arg_1);
+    CreateStairsMenuState(arg_1);
 
     while ((u8)(ov31_0238A2A0.st3 != NULL)) {
         AdvanceFrame(0x62);
@@ -270,7 +270,7 @@ void ov31_02382E18(struct entity* arg_1, u32 arg_2)
     ov29_022E0C2C(1);
 }
 
-void ov31_02382ED4(struct entity* arg_1)
+void CreateStairsMenuState(struct entity* arg_1)
 {
     struct struct_3* tmp1;
     if (sub_020348E4(&OVERLAY31_UNKNOWN_STRUCT__NA_2389E30) == 0)

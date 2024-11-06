@@ -1,4 +1,5 @@
 #pragma once
+.public _s32_div_f
 .public CloseAdvancedMenu
 .public CloseDialogueBox
 .public ClosePortraitBox
@@ -31,6 +32,11 @@
 .public IsAdvancedMenuActive
 .public IsDialogueBoxActive
 .public IsSimpleMenuActive
+.public ov11_022EB3C8
+.public ov11_023039D4
+.public ov11_02303D80
+.public ov11_0230D71C
+.public ov13_0238BE6C
 .public OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 .public PORTRAIT_ATTRIBUTES
 .public QUIZ_ANSWER_POINTS
@@ -48,10 +54,6 @@
 .public QUIZ_WINDOW_PARAMS_5
 .public QUIZ_WINDOW_PARAMS_6
 .public RandInt
-.public STARTERS_HERO_IDS
-.public STARTERS_PARTNER_IDS
-.public STARTERS_STRINGS
-.public STARTERS_TYPE_INCOMPATIBILITY_TABLE
 .public SaveScriptVariableValue
 .public SetBothScreensWindowsColor
 .public SetPortraitEmotion
@@ -61,16 +63,13 @@
 .public ShowKeyboard
 .public ShowPortraitInPortraitBox
 .public ShowStringIdInDialogueBox
+.public STARTERS_HERO_IDS
+.public STARTERS_PARTNER_IDS
+.public STARTERS_STRINGS
+.public STARTERS_TYPE_INCOMPATIBILITY_TABLE
 .public StrcpyName
 .public StrcpySimple
 .public StrncpySimpleNoPadSafe
-.public WaitForNextStep
-.public _s32_div_f
-.public ov11_022EB3C8
-.public ov11_023039D4
-.public ov11_02303D80
-.public ov11_0230D71C
-.public ov13_0238BE6C
 .public sub_02004F74
 .public sub_02017B7C
 .public sub_02017C74
@@ -87,3 +86,4 @@
 .public sub_02048764
 .public sub_02048794
 .public sub_0204A198
+.public WaitForNextStep

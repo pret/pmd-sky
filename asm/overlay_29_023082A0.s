@@ -1069,7 +1069,7 @@ _02308E20:
 	ldr r1, [sb, #0xb4]
 	ldrsh r0, [r6, #2]
 	ldrsh r1, [r1, #2]
-	bl sub_02054EC8
+	bl GendersNotEqualNotGenderless
 	cmp r0, #0
 	beq _02308E80
 	cmp r4, #0

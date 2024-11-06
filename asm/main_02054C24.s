@@ -199,8 +199,8 @@ _02054EC0:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end GendersEqualNotGenderless
 
-	arm_func_start sub_02054EC8
-sub_02054EC8: ; 0x02054EC8
+	arm_func_start GendersNotEqualNotGenderless
+GendersNotEqualNotGenderless: ; 0x02054EC8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
@@ -222,7 +222,7 @@ sub_02054EC8: ; 0x02054EC8
 _02054F10:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02054EC8
+	arm_func_end GendersNotEqualNotGenderless
 
 	arm_func_start sub_02054F18
 sub_02054F18: ; 0x02054F18

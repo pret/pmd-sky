@@ -4,6 +4,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public _ull_mod
+.public AllocateTemp1024ByteBufferFromPool
 .public ArrayCopy32
 .public BAG_ITEMS_PTR_MIRROR
 .public CardBackupError
@@ -279,7 +280,6 @@
 .public sub_02025404
 .public sub_0202544C
 .public sub_02025480
-.public AllocateTemp1024ByteBufferFromPool
 .public sub_02025D50
 .public sub_02026268
 .public sub_0202676C

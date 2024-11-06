@@ -4,6 +4,7 @@
 .public _020A2C44
 .public _020A2C54
 .public _020A2C64
+.public AllocateTemp1024ByteBufferFromPool
 .public Debug_Print0
 .public DS_DOWNLOAD_TEAMS
 .public FileInit
@@ -55,7 +56,6 @@
 .public sub_02003BFC
 .public sub_020255D8
 .public sub_020256FC
-.public AllocateTemp1024ByteBufferFromPool
 .public sub_020467F0
 .public sub_02046A9C
 .public sub_02046B04
