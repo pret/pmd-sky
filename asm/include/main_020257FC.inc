@@ -1,4 +1,8 @@
 #pragma once
+.public _020AFCEC
+.public _020AFCF0
+.public _022A59B8
+.public _022A59C0
 .public FileClose
 .public FileRom_HandleOpen
 .public FileRom_InitDataTransfer
@@ -6,7 +10,3 @@
 .public FileRom_Veneer_FileInit
 .public GetLanguage
 .public MemZero
-.public _020AFCEC
-.public _020AFCF0
-.public _022A59B8
-.public _022A59C0

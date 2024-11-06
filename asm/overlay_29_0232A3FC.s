@@ -1853,7 +1853,7 @@ DoMoveAttract: ; 0x0232B9D0
 	ldrsh r0, [r0, #2]
 	ldrsh r1, [r1, #2]
 	mov r4, #0
-	bl sub_02054EC8
+	bl GendersNotEqualNotGenderless
 	cmp r0, #0
 	beq _0232BA14
 	mov r4, #1

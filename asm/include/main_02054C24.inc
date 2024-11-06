@@ -189,6 +189,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public AddMoneyCarried
+.public AllocateTemp1024ByteBufferFromPool
 .public ARM9_UNKNOWN_FUNCTION_TABLE__NA_20A3CF4
 .public ARM9_UNKNOWN_TABLE__NA_20A3CC8
 .public ARM9_UNKNOWN_TABLE__NA_20A3CE4
@@ -491,7 +492,6 @@
 .public sub_020251F0
 .public sub_02025304_JP
 .public sub_0202568C
-.public AllocateTemp1024ByteBufferFromPool
 .public sub_02025AD8
 .public sub_02026268
 .public sub_02026358

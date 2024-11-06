@@ -1,6 +1,7 @@
 #pragma once
 .public _s32_div_f
 .public AbilityIsActiveVeneer
+.public AllocateTemp1024ByteBufferFromPool
 .public ApplyItemEffect
 .public AreMovesEnabled
 .public CanMonsterUseItem
@@ -96,7 +97,6 @@
 .public strncpy
 .public sub_02020880
 .public sub_02024FB8
-.public AllocateTemp1024ByteBufferFromPool
 .public SubstitutePlaceholderStringTags
 .public TryActivateTruant
 .public TryTriggerMonsterHouse

@@ -1,13 +1,16 @@
 #pragma once
+.public _020AFC4C
+.public _s32_div_f
+.public abs
 .public CheckVariousStatuses2
 .public DIRECTIONS_XY
 .public DISPLACEMENTS_WITHIN_2_LARGEST_FIRST
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DISPLACEMENTS_WITHIN_3
+.public DisplayUi
 .public DUNGEON_PRNG_STATE
 .public DUNGEON_PRNG_STATE_SECONDARY_VALUES
 .public DUNGEON_PTR
-.public DisplayUi
 .public DungeonRandInt
 .public EntityIsValid__022E95F4
 .public GetLeader
@@ -17,11 +20,6 @@
 .public InitWeirdMinimapMatrix
 .public MemAlloc
 .public MemFree
-.public UpdateCamera
-.public UpdateMinimap
-.public _020AFC4C
-.public _s32_div_f
-.public abs
 .public ov29_022DD8B4
 .public ov29_022DDEF8
 .public ov29_022DE11C
@@ -55,3 +53,5 @@
 .public sub_0204AEA0
 .public sub_0204AEC0
 .public sub_02051E20
+.public UpdateCamera
+.public UpdateMinimap

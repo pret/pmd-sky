@@ -38,6 +38,7 @@
 .public GetTile
 .public GetTileSafe
 .public GetTreasureBoxChances
+.public IncrementEntityPixelPosXY
 .public InitMove
 .public InitStandardItem
 .public IqSkillIsEnabled
@@ -62,8 +63,6 @@
 .public ov10_022C48EC
 .public ov10_022C4CD8
 .public ov29_022E09E8
-.public SetEntityPixelPosXY
-.public IncrementEntityPixelPosXY
 .public ov29_022E563C
 .public ov29_022E9488
 .public ov29_022EACBC
@@ -91,6 +90,7 @@
 .public RemoveEmptyItemsInBag
 .public RetrieveFromItemList1
 .public SECONDARY_TERRAIN_TYPES
+.public SetEntityPixelPosXY
 .public SetItemAcquired
 .public ShouldDisplayEntityWrapper
 .public SpawnItem

@@ -8,6 +8,7 @@
 .public AdvanceFrame
 .public AFTERMATH_CHANCE
 .public AIR_BLADE_DAMAGE_MULTIPLIER
+.public AllocateTemp1024ByteBufferFromPool
 .public ApplyDamageAndEffects
 .public AURA_BOW_STAT_BOOST
 .public AuraBowIsActive
@@ -61,6 +62,7 @@
 .public FlashFireShouldActivate
 .public FreeOtherWrappedMonsters
 .public GendersEqualNotGenderless
+.public GendersNotEqualNotGenderless
 .public GenerateStandardItem
 .public GetActiveTeamMember
 .public GetApparentWeather
@@ -263,10 +265,8 @@
 .public StringFromId
 .public StrncpyName
 .public StrncpySimpleNoPad
-.public AllocateTemp1024ByteBufferFromPool
 .public sub_0204AF00
 .public sub_020534BC
-.public sub_02054EC8
 .public sub_02055CCC
 .public sub_02055D7C
 .public sub_02056698

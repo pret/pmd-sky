@@ -83,7 +83,7 @@ u32 ov31_02382B54(void);
 void ov31_02382DAC(void);
 struct struct_1* ov31_02382E08(void);
 void ov31_02382E18(struct entity* arg_1, u32 arg_2);
-void ov31_02382ED4(struct entity* arg_1);
+void CreateStairsMenuState(struct entity* arg_1);
 void StairsSubheadingCallback(struct Window* window);
 
 

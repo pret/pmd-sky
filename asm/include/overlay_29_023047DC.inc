@@ -15,9 +15,9 @@
 .public GetDirectionTowardsPosition
 .public GetShadowSize
 .public GetTileAtEntity
+.public IncrementEntityPixelPosXY
 .public IsFloorOver
 .public IsWaterTileset
-.public IncrementEntityPixelPosXY
 .public ov29_022E8104
 .public ov29_022EA370
 .public ov29_022EF9BC

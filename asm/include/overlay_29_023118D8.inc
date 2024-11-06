@@ -1,5 +1,6 @@
 #pragma once
 .public AbilityIsActiveVeneer
+.public AllocateTemp1024ByteBufferFromPool
 .public CalcSpeedStage
 .public CalcSpeedStageWrapper
 .public CalcStatusDuration
@@ -87,7 +88,6 @@
 .public SafeguardIsActive
 .public SECONDARY_TERRAIN_TYPES
 .public SPEED_BOOST_TURN_RANGE
-.public AllocateTemp1024ByteBufferFromPool
 .public SubstitutePlaceholderStringTags
 .public TryActivateSteadfast
 .public UpdateStatusIconFlags

@@ -12,11 +12,11 @@
 .public GetApparentWeather
 .public GetTile
 .public GetTileSafe
+.public IncrementEntityPixelPosXY
 .public IsFloorOver
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MoveMonsterToPos
-.public IncrementEntityPixelPosXY
 .public ov29_022E5560
 .public ov29_022E55F0
 .public ov29_022E56A0

@@ -9,12 +9,12 @@
 .public EnsureCanStandCurrentTile
 .public EntityIsValid__0232017C
 .public GetTile
+.public IncrementEntityPixelPosXY
 .public InitMove
 .public IsFloorOver
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MoveMonsterToPos
 .public ov10_022C4570
-.public IncrementEntityPixelPosXY
 .public ov29_022E56A0
 .public ov29_022F9C74
 .public ov29_022FFB90

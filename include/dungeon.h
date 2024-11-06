@@ -4,6 +4,9 @@
 #include "enums.h"
 #include "dungeon_mode.h"
 
+#define MAX_TEAM_MEMBERS 4
+#define DUNGEON_MAX_POKEMON 20
+
 // Dungeon state
 struct dungeon {
     u8 field_0x0; // 0x0: Initialized to 0x0.
@@ -1524,11 +1527,11 @@ struct dungeon {
     // The pointers point into the entities array
     // 0x12B28 / 0x0: A list of all monster pointers, whether they're used or not
     union {
-        struct entity* party_members[4];
-        struct entity* monster_slot_ptrs[20];
+        struct entity* party_members[MAX_TEAM_MEMBERS];
+        struct entity* monster_slot_ptrs[DUNGEON_MAX_POKEMON];
     };
     // 0x12B78 / 0x50: Null-terminated array of pointers to actually active monsters
-    struct entity* active_monster_ptrs[20];
+    struct entity* active_monster_ptrs[DUNGEON_MAX_POKEMON];
     struct entity* item_ptrs[64];     // 0x12BC8 / 0xA0
     struct entity* trap_ptrs[64];     // 0x12CC8 / 0x1A0
     struct entity* hidden_stairs_ptr; // 0x12DC8 / 0x2A0

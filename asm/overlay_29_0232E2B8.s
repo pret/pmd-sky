@@ -217,7 +217,7 @@ DoMoveCaptivate: ; 0x0232E560
 	ldrsh r0, [r0, #2]
 	ldrsh r1, [r1, #2]
 	mov r4, #0
-	bl sub_02054EC8
+	bl GendersNotEqualNotGenderless
 	cmp r0, #0
 	beq _0232E5D4
 	mov r0, r6
