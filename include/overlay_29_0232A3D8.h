@@ -6,6 +6,6 @@
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 // entity: entity pointer
 // return: bool
-bool EntityIsValidMoveEffects__0232A3D8(struct entity *entity);
+bool8 EntityIsValidMoveEffects__0232A3D8(struct entity *entity);
 
 #endif //PMDSKY_OVERLAY_29_0232A3D8_H

@@ -11,22 +11,22 @@
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern void EndFrozenClassStatus(struct entity * pokemon, struct entity *target, bool log);
-extern bool ShouldRunMonsterAi(struct entity *pokemon);
-extern bool CheckVariousConditions(struct entity *pokemon);
+extern void EndFrozenClassStatus(struct entity * pokemon, struct entity *target, bool8 log);
+extern bool8 ShouldRunMonsterAi(struct entity *pokemon);
+extern bool8 CheckVariousConditions(struct entity *pokemon);
 extern void SubstitutePlaceholderStringTags(u8 *buffer, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *pokemon, u32 message_id);
 extern void AiDecideUseItem(struct entity *pokemon);
-extern bool HasStatusThatPreventsActing(struct entity *pokemon);
+extern bool8 HasStatusThatPreventsActing(struct entity *pokemon);
 extern void ClearMonsterActionFields(struct action_data *action_pointer);
 extern void SetActionPassTurnOrWalk(struct action_data *action_pointer, s16 species);
 extern u32 DungeonRandInt(u32 cap);
-extern bool IqSkillIsEnabled(struct entity *pokemon, enum iq_skill_id iq_skill);
+extern bool8 IqSkillIsEnabled(struct entity *pokemon, enum iq_skill_id iq_skill);
 extern void ChooseAiMove(struct entity *pokemon);
-extern bool GetCanMoveFlag(s16 index);
-extern void AiMovement(struct entity *pokemon, bool show_run_away_effect);
+extern bool8 GetCanMoveFlag(s16 index);
+extern void AiMovement(struct entity *pokemon, bool8 show_run_away_effect);
 extern void SetDecoyAiTracker(struct entity* entity);
-extern bool CanSeeTarget(struct entity *entity, struct entity *target_entity);
+extern bool8 CanSeeTarget(struct entity *entity, struct entity *target_entity);
 
 static inline struct monster *GetEntInfo(struct entity *ent)
 {
@@ -70,7 +70,7 @@ void RunMonsterAi(struct entity *pokemon, u32 unused)
                 for (s32 i = 0; i < DUNGEON_MAX_POKEMON; i++)
                 {
                     struct entity *target = DUNGEON_PTR[0]->active_monster_ptrs[i];
-                    bool entity_is_valid;
+                    bool8 entity_is_valid;
                     if (target == NULL)
                     {
                         entity_is_valid = FALSE;

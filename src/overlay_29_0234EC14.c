@@ -1,6 +1,6 @@
 #include "overlay_29_0234EC14.h"
 
-bool EntityIsValid__0234EC14(struct entity *entity)
+bool8 EntityIsValid__0234EC14(struct entity *entity)
 {
     if (entity == NULL)
     {

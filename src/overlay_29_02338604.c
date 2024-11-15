@@ -4,18 +4,18 @@
 
 extern struct dungeon* DUNGEON_PTR[];
 
-bool IsSecretBazaar()
+bool8 IsSecretBazaar()
 {
     return DUNGEON_PTR[0]->gen_info.fixed_room_id==FIXED_SECRET_BAZAAR;
 }
 
 
-bool ShouldBoostHiddenStairsSpawnChance()
+bool8 ShouldBoostHiddenStairsSpawnChance()
 {
     return DUNGEON_PTR[0]->boost_hidden_stairs_spawn_chance;
 }
 
-void SetShouldBoostHiddenStairsSpawnChance(bool should_boost)
+void SetShouldBoostHiddenStairsSpawnChance(bool8 should_boost)
 {
     DUNGEON_PTR[0]->boost_hidden_stairs_spawn_chance=should_boost;
 }
