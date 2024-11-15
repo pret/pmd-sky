@@ -177,7 +177,7 @@
                                                          56](StatusCheckerCheck,func) found in global overlay_29_0232E864.o
                                                          56](EntityIsValid__02318E4C,func) found in global overlay_29_02318E4C.o
                                                         55](EntityIsValid__0232E840,func) found in global overlay_29_0232E840.o
-                                                        55](ApplyDamageAndEffects,func) found in global overlay_29_023082A0.o
+                                                        55](ApplyDamageAndEffects,func) found in global overlay_29_023085DC.o
                                                          56](ResetDamageData,func) found in global overlay_29_022F62CC.o
                                                          56](ov29_0231EDFC,func) found in global overlay_29_0231EDFC.o
                                                           57](EntityIsValid__0231F570,func) found in global overlay_29_0231F570.o
@@ -188,9 +188,6 @@
                                                            58](EntityIsValid__0232017C,func) found in global overlay_29_0232017C.o
                                                           57](DungeonRandRange,func) found in global dg_random.o
                                                          56](EntityIsValid__02308FBC,func) found in global overlay_29_02308FBC.o
-                                                         56](AiDecideUseItem,func) found in global overlay_29_0230E914.o
-                                                          57](EntityIsValid__0230F008,func) found in global overlay_29_0230F008.o
-                                                         56](ShouldRunMonsterAi,func) found in global overlay_29_022EF7C4.o
                                                         55](DoMoveTag0x1A7,func) found in global overlay_29_0232E2B8.o
                                                          56](DoMoveCleanse,func) found in global overlay_29_0232C524.o
                                                           57](EntityIsValidMoveEffects__0232E250,func) found in global overlay_29_0232E250.o
@@ -210,6 +207,7 @@
                                                           57](ov29_0232A834,func) found in global overlay_29_0232A3FC.o
                                                           57](EntityIsValidMoveEffects__0232800C,func) found in global overlay_29_0232800C.o
                                                         55](DoMoveSnore,func) found in global overlay_29_02325644.o
+                                                       54](ov29_022F0518,func) found in global overlay_29_022EF7C4.o
                                                        54](EntityIsValid__0231B194,func) found in global overlay_29_0231B194.o
                                                       53](EntityIsValid__022F62A8,func) found in global overlay_29_022F62A8.o
                                                       53](ov29_022F6210,func) found in global overlay_29_022F52B0.o
@@ -233,11 +231,14 @@
                                                      52](StairsSubheadingCallback,func) found in global overlay_31_02382820.o
                                                     51](SetDoughSeedFlag,func) found in global overlay_29_02338548.o
                                                     51](GetDoughSeedFlag,func) found in global overlay_29_02338548.o
+                                                  49](EntityIsValid__0230F008,func) found in global overlay_29_0230F008.o
                                                  48](EntityIsValid__023000E4,func) found in global overlay_29_023000E4.o
                                                  48](EntityIsValid__022FED98,func) found in global overlay_29_022FED98.o
                                              44](EntityIsValid__02337CA8,func) found in global overlay_29_02337CA8.o
                                        38](EntityIsValid__022EC608,func) found in global overlay_29_022EC608.o
                                        38](ExecuteMonsterAction,func) found in global overlay_29_022FE4BC.o
+                                       38](RunMonsterAi,func) found in global overlay_29_02308340.o
+                                        39](AiDecideUseItem,func) found in global overlay_29_0230E914.o
                                      36](DirectoryFileMngr_GetDirectoryFileSize,func) found in global directory_file_mngr.o
                                     35](EntityIsValid__0234987C,func) found in global overlay_29_0234987C.o
                                   33](EntityIsValid__02344AF8,func) found in global overlay_29_02344AF8.o
@@ -328,6 +329,7 @@
               13](TrySpawnDoughSeedPoke,func) found in global overlay_29_02338560.o
              12](GetDungeonPtrMaster,func) found in global overlay_29_022DEAB0.o
            10](EntityIsValid__0230827C,func) found in global overlay_29_0230827C.o
+           10](ov29_023082C4,func) found in global overlay_29_023082A0.o
            10](DTCM_BSS,notype) found in global dtcm.o
         7](SoundEnvelope_Stop,func) found in global dc_envelope.o
         7](SoundEnvelope_Release,func) found in global dc_envelope.o
@@ -35871,16 +35873,18 @@
   023097A4 00000000 .text   $d	(overlay_29_02307F1C.o)
   023097B0 00000024 .text   EntityIsValid__0230827C	(overlay_29_0230827C.o)
   023097B0 00000000 .text   $a	(overlay_29_0230827C.o)
-  023097D4 00000024 .text   ShouldMonsterFollowLeader	(overlay_29_023082A0.o)
   023097D4 00000000 .text   $a	(overlay_29_023082A0.o)
-  023097D4 00000DA0 .text   .text	(overlay_29_023082A0.o)
+  023097D4 00000024 .text   ShouldMonsterFollowLeader	(overlay_29_023082A0.o)
+  023097D4 000000A0 .text   .text	(overlay_29_023082A0.o)
   023097F8 0000007C .text   ov29_023082C4	(overlay_29_023082A0.o)
-  02309874 00000348 .text   RunMonsterAi	(overlay_29_023082A0.o)
-  02309BB0 00000000 .text   $d	(overlay_29_023082A0.o)
-  02309BBC 00000000 .text   $a	(overlay_29_023082A0.o)
-  02309BBC 00000060 .text   ov29_023085DC	(overlay_29_023082A0.o)
-  02309C1C 00000958 .text   ApplyDamageAndEffects	(overlay_29_023082A0.o)
-  0230A528 00000000 .text   $d	(overlay_29_023082A0.o)
+  02309874 00000000 .text   $a	(overlay_29_02308340.o)
+  02309874 00000348 .text   RunMonsterAi	(overlay_29_02308340.o)
+  02309BB0 00000000 .text   $d	(overlay_29_02308340.o)
+  02309BBC 00000000 .text   $a	(overlay_29_023085DC.o)
+  02309BBC 000009B8 .text   .text	(overlay_29_023085DC.o)
+  02309BBC 00000060 .text   ov29_023085DC	(overlay_29_023085DC.o)
+  02309C1C 00000958 .text   ApplyDamageAndEffects	(overlay_29_023085DC.o)
+  0230A528 00000000 .text   $d	(overlay_29_023085DC.o)
   0230A574 00000024 .text   EntityIsValid__02308FBC	(overlay_29_02308FBC.o)
   0230A574 00000000 .text   $a	(overlay_29_02308FBC.o)
   0230A598 0000192C .text   ApplyDamage	(overlay_29_02308FE0.o)
@@ -40192,5 +40196,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Nov 06 01:43:21 2024
-# Link end time: Wed Nov 06 01:43:21 2024
+# Link start time: Fri Nov 15 05:58:13 2024
+# Link end time: Fri Nov 15 05:58:14 2024
