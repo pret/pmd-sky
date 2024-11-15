@@ -3,7 +3,7 @@
 
 typedef s32 fx32_8;        // 32-bit signed fixed-point number with 8 fraction bits
 typedef u32 ufx32_8;  // 32-bit unsigned fixed-point number with 8 fraction bits
-typedef u8 bool;
+typedef u8 bool8;
 
 // RGBA8 structure. Sometimes alpha is ignored and only used for padding
 struct rgba {

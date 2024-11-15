@@ -3,14 +3,14 @@
 #include "dungeon.h"
 
 extern struct dungeon* DUNGEON_PTR[];
-bool TeamMemberHasExclusiveItemEffectActive(u8);
+bool8 TeamMemberHasExclusiveItemEffectActive(u8);
 
-bool ShouldBoostKecleonShopSpawnChance(void)
+bool8 ShouldBoostKecleonShopSpawnChance(void)
 {
     return DUNGEON_PTR[0]->boost_kecleon_shop_spawn_chance;
 }
 
-void SetShouldBoostKecleonShopSpawnChance(bool boost)
+void SetShouldBoostKecleonShopSpawnChance(bool8 boost)
 {
     DUNGEON_PTR[0]->boost_kecleon_shop_spawn_chance=boost;
 }
@@ -23,13 +23,13 @@ void UpdateShouldBoostKecleonShopSpawnChance(void)
     }
 }
 
-bool GetDoughSeedFlag(void)
+bool8 GetDoughSeedFlag(void)
 {
     return DUNGEON_PTR[0]->gen_info.dough_seed_extra_poke_flag;
 }
 
 
-void SetDoughSeedFlag(bool flag)
+void SetDoughSeedFlag(bool8 flag)
 {
     DUNGEON_PTR[0]->gen_info.dough_seed_extra_poke_flag=flag;
 }

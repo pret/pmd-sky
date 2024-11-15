@@ -270,7 +270,7 @@ void ov31_02382E18(struct entity* arg_1, u32 arg_2)
     ov29_022E0C2C(1);
 }
 
-void CreateStairsMenuState(struct entity* arg_1)
+void CreateStairsMenuState(struct entity* entity)
 {
     struct struct_3* tmp1;
     if (sub_020348E4(&OVERLAY31_UNKNOWN_STRUCT__NA_2389E30) == 0)
@@ -279,7 +279,7 @@ void CreateStairsMenuState(struct entity* arg_1)
     tmp1 = MemAlloc(sizeof(struct struct_3), 8);
     ov31_0238A2A0.st3 = tmp1;
     ov31_0238A2A0.st3->f = 0;
-    ov31_0238A2A0.st3->a = arg_1;
+    ov31_0238A2A0.st3->a = entity;
     ov31_0238A2A0.st3->b = 0;
     ov31_0238A2A0.st3->c = 0;
 
@@ -289,7 +289,7 @@ void CreateStairsMenuState(struct entity* arg_1)
         r4 = 2;
     } else if (floor_type == 1) {
         r4 = 1;
-    } else if (PositionIsOnHiddenStairs(&(arg_1->pos))) {
+    } else if (PositionIsOnHiddenStairs(&(entity->pos))) {
         r4 = 3;
     }
 

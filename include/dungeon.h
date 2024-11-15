@@ -13,25 +13,25 @@ struct dungeon {
     // 0x1: Set to true with mission_destination_info::target_enemy_is_defeated. Used to ensure
     // the mission complete message only shows once (ie: "Yes! Knocked out challenger
     // [string:1]!". Set to false after the message is shown.
-    bool target_enemy_defeated_message;
+    bool8 target_enemy_defeated_message;
     // 0x2: Set to true when the hidden outlaw mission item is dropped. Appears to be used to check
     // if the message "Huh?[K] [item:] was dropped![P]Yes![K][string:1] was the outlaw!" should
     // be shown when target_enemy_defeated_message is true.
-    bool hidden_outlaw_defeated_message;
+    bool8 hidden_outlaw_defeated_message;
     // 0x3: If true and there's an active mission on the floor, the message
     // "You've reached a destination floor! But where is the target pokémon..." will be displayed.
-    bool target_monster_not_found_flag;
+    bool8 target_monster_not_found_flag;
     u8 field_0x4;
-    bool stepped_on_stairs; // 0x5: True if the leader just stepped on the stairs.
+    bool8 stepped_on_stairs; // 0x5: True if the leader just stepped on the stairs.
     // 0x6: If equal to 1 or 2, the floor will be advanced at the end of the turn,
     // unless the leader fainted. 2 is used for the leader falling through a pitfall
     // trap.
     u8 end_floor_flag;
     // 0x7: If set in tandem with either end_floor_flag or end_floor_no_death_check_flag,
     // a quicksave will occur instead of a floor advance.
-    bool quicksave_flag;
+    bool8 quicksave_flag;
     // 0x8: The floor will be advanced at the end of the turn. Set when quicksaving.
-    bool end_floor_no_death_check_flag;
+    bool8 end_floor_no_death_check_flag;
     // 0x9: If this is 0x0 (maybe false), appears to not initialize certain parts of the dungeon.
     // Possibly a boolean for when loading from a quicksave or resuming after being rescued?
     u8 field_0x9;
@@ -41,17 +41,17 @@ struct dungeon {
     u8 field_0xd; // 0xD: Initialized to 0x0
     // 0xE: If true, artificial weather abilities will be activated on this turn.
     // Set to false by TryActivateArtificialWeatherAbilities
-    bool activate_artificial_weather_flag;
+    bool8 activate_artificial_weather_flag;
     // 0xF: True if an enemy has defeated an ally on this turn and should evolve as a result
     // May also have a niche usage if an enemy gets enough experience to level up through
     // something like the Joy Ribbon?
-    bool should_enemy_evolve;
+    bool8 should_enemy_evolve;
     u8 field_0x10; // 0x10: Initialized to 0x0.
     // 0x11: True if the leader isn't doing anything right now. False if it's currently performing
     // an action (such as walking or attacking)
-    bool no_action_in_progress;
-    bool iq_disabled;                 // 0x12: IQ skills won't work in the dungeon.
-    bool regular_attack_reveal_traps; // 0x13: Regular attacks will reveal traps.
+    bool8 no_action_in_progress;
+    bool8 iq_disabled;                 // 0x12: IQ skills won't work in the dungeon.
+    bool8 regular_attack_reveal_traps; // 0x13: Regular attacks will reveal traps.
     // 0x14: If > 0, you get kicked out of the dungeon, usually because an important team member
     // (such as your client) fainted.
     enum forced_loss_reason forced_loss_reason;
@@ -543,7 +543,7 @@ struct dungeon {
     u32 prng_preseed_23_bit;
     // 0x758: Whether the current floor should continue or end and why
     enum floor_loop_status floor_loop_status;
-    bool recruiting_enabled; // 0x759: Recruitment is allowed in this dungeon
+    bool8 recruiting_enabled; // 0x759: Recruitment is allowed in this dungeon
     // 0x75A: If this is 0, the game wont use GetMonsterEvoStatus when gathering information for
     // the monster's summary (in stuff like the team menu).
     u8 field_0x75a;
@@ -552,23 +552,23 @@ struct dungeon {
     // but monsters are still alloweed to hold onto items normally. However, it does not seem to
     // properly add items picked up by team members to the treasure bag (making it impossible to
     // remove through the item menu). Additionally, items already in the bag can be used normally?
-    bool bag_enabled;
-    bool nonstory_flag;      // 0x75C: Allows leader changing and continuing without the partner
-    bool send_home_disabled; // 0x75D: Sending teammates home is not allowed in this dungeon
+    bool8 bag_enabled;
+    bool8 nonstory_flag;      // 0x75C: Allows leader changing and continuing without the partner
+    bool8 send_home_disabled; // 0x75D: Sending teammates home is not allowed in this dungeon
     // 0x75E: Disables sending home/leader changing, lose if partner faints. Set for dungeons
     // between DUNGEON_HIDDEN_LAND and DUNGEON_TEMPORAL_PINNACLE.
-    bool hidden_land_flag;
+    bool8 hidden_land_flag;
     // 0x75F: If true, the message log won't be shown and the yellow beam animation won't
     // appear over team members after the leader faints. It's enabled for dungeons where you don't
     // get penalized for fainting, but it's not used to perform that check.
-    bool skip_faint_animation_flag;
+    bool8 skip_faint_animation_flag;
     // 0x760: Info about the next mission destination floor, if applicable
     struct mission_destination_info mission_destination;
     u8 field_0x77c;
     u8 field_0x77d;
     // 0x77E: Appears to track if the player has already been healed by Mime Jr. to change
     // the dialogue. Initialized to 0 using MemZero?
-    bool bazaar_mime_jr_heal;
+    bool8 bazaar_mime_jr_heal;
     u8 field_0x77f;
     // 0x780: Controls when a monster at a certain speed stage is able to act.
     // Increased by 1-4 each turn, depending on the team leader's speed level:
@@ -586,26 +586,26 @@ struct dungeon {
     u8 field_0x78a; // 0x78A: Initialized to 0x0.
     // 0x78B: True if the leader is running. Causes the leader's action for the next turn
     // to be set to action::ACTION_WALK until it hits an obstacle.
-    bool leader_running;
+    bool8 leader_running;
     // 0x78C: Likely related to the actions of the leader because it is set to 0 in
     // SetLeaderAction and this value gets bitwise or'd with 0x78B and then saved back to here.
     u8 field_0x78c;
     // 0x78D: This flag is set by the move 0x189 ("HP Gauge") which is the
     // effect of the Identify Orb. If true, monsters not in the team that are
     // holding an item will be marked by a blue exclamation mark icon.
-    bool identify_orb_flag;
-    bool pass_turn;        // 0x78E: True if the leader has chosen to pass its turn
-    bool drought_orb_flag; // 0x78F: True if a drought orb has been used.
-    bool thief_alert;      // 0x790: If you've stolen from Kecleon (actual dungeon state)
+    bool8 identify_orb_flag;
+    bool8 pass_turn;        // 0x78E: True if the leader has chosen to pass its turn
+    bool8 drought_orb_flag; // 0x78F: True if a drought orb has been used.
+    bool8 thief_alert;      // 0x790: If you've stolen from Kecleon (actual dungeon state)
     // 0x791: If you've stolen from Kecleon (triggers music and other events?)
-    bool thief_alert_event;
+    bool8 thief_alert_event;
     // 0x792: Can only be 0,1,2,3,4. Controls when to play certain special music tracks 0x7C
     // (1), 0x7D (2), 0xA8 (3), 0xA9 (4). Used by the Gone Pebbble to play track 0xA8,
     // challenge letter missions to play track 0x7C and dungeon failure to play 0xA9?
     u8 unk_music_flag;
-    bool monster_house_triggered; // 0x793: You Entered a Monster House (actual dungeon state)
+    bool8 monster_house_triggered; // 0x793: You Entered a Monster House (actual dungeon state)
     // 0x794: You entered a Monster House (triggers music and other events?)
-    bool monster_house_triggered_event;
+    bool8 monster_house_triggered_event;
     u8 field_0x795;
     // 0x796: Seems to often be 0x3E7 (999)? Somehow related to controlling or managing the
     // playing music?
@@ -655,9 +655,9 @@ struct dungeon {
     // dungeon::poke_buy_kecleon_shop.
     u32 unk_poke_kecleon_shop_tracker;
     // 0x7C8: Leader standing on a Kecleon shop tile?
-    bool leader_standing_in_kecleon_shop;
+    bool8 leader_standing_in_kecleon_shop;
     // 0x7C9: You entered a Kecleon Shop (triggers music and maybe more?)
-    bool standing_in_kecleon_shop;
+    bool8 standing_in_kecleon_shop;
     u8 field_0x7ca;
     u8 field_0x7cb;
     // 0x7CC: Controls which mappa file (Time/Darkness/Sky) to load for a dungeon. When time and
@@ -1126,7 +1126,7 @@ struct dungeon {
     u8 field_0x3e27;
     // 0x3E28: Related in some way to the spawn entries on the floor. Does something about them
     // if false, then set to true.
-    bool unk_spawn_entry_id_check;
+    bool8 unk_spawn_entry_id_check;
     u8 field_0x3e29;
     u8 field_0x3e2a;
     u8 field_0x3e2b;
@@ -1138,17 +1138,17 @@ struct dungeon {
     // out which pair of wrapper and wrapped are connected. This number is saved into
     // statuses::wrap_pair_unique_id. Initialized to 0xA (10)
     u32 monster_unique_wrap_counter;
-    bool plus_is_active[2];  // 0x3E34: A monster on the {enemy, team} side has the ability Plus
-    bool minus_is_active[2]; // 0x3E36: A monster on the {enemy, team} side has the ability Minus
+    bool8 plus_is_active[2];  // 0x3E34: A monster on the {enemy, team} side has the ability Plus
+    bool8 minus_is_active[2]; // 0x3E36: A monster on the {enemy, team} side has the ability Minus
     // 0x3E38: If true, a monster on the floor is a decoy.
-    bool decoy_is_active;
+    bool8 decoy_is_active;
     // 0x3E39: If true, a monster with id 0x97 (Mew) cannot be spawned on the floor.
-    bool mew_cannot_spawn;
+    bool8 mew_cannot_spawn;
     // 0x3E3A: Holds the monster ID for the Deoxys form randomly selected for this floor.
     enum monster_id deoxys_floor_id;
     // 0x3E3C: Gets set to true in ChangeShayminForme. Seems to also control which sprite to
     // load for a Shaymin on the team?
-    bool shaymin_sky_form_loaded;
+    bool8 shaymin_sky_form_loaded;
     u8 field_0x3e3d;
     u8 field_0x3e3e;
     u8 field_0x3e3f;
@@ -1212,7 +1212,7 @@ struct dungeon {
     u8 weather_damage_counter;
     u8 mud_sport_turns;   // 0xCD5B: Number of turns left for the Mud Sport condition
     u8 water_sport_turns; // 0xCD5C: Number of turns left for the Water Sport condition
-    bool nullify_weather;      // 0xCD5D: Cloud Nine/Air Lock is in effect
+    bool8 nullify_weather;      // 0xCD5D: Cloud Nine/Air Lock is in effect
     u8 field_0xcd5e;
     u8 field_0xcd5f;
     // 0xCD60: Seems to be tile data for tiles within fixed rooms
@@ -1390,7 +1390,7 @@ struct dungeon {
     u8* unk_fixed_room_pointer;
     // 0x12AA8: This flag is set by the move 0x191 ("Trapper") which is the effect
     // of the Trapper Orb. If true, the game will try to spawn a trap.
-    bool trapper_orb_flag;
+    bool8 trapper_orb_flag;
     u8 field_0x12aa9; // Likely padding
     // 0x12AAA: Location to spawn the trap by trapper_orb_flag.
     struct position trapper_orb_trap_pos;
@@ -1476,7 +1476,7 @@ struct dungeon {
     // 0x12AFA: Number of normal item spawns. Does not include monster held items and additional
     // items in walls or Monster Houses
     u16 n_normal_item_spawns;
-    bool gravity; // 0x12AFC: Gravity is in effect
+    bool8 gravity; // 0x12AFC: Gravity is in effect
     u8 field_0x12afd;
     // 0x12AFE: Victories on one floor counter.
     s16 victory_counter;
@@ -1516,10 +1516,10 @@ struct dungeon {
     // loaded.
     u32 fixed_room_monster_sprite_counter;
     // 0x12B24: Whether or not the kecleon shop spawn chance be boosted for the floor
-    bool boost_kecleon_shop_spawn_chance;
+    bool8 boost_kecleon_shop_spawn_chance;
     // 0x12B25: Whether or not the hidden stairs spawn chance be boosted for the floor
     // (by 20%; see HIDDEN_STAIRS_SPAWN_CHANCE_MULTIPLIER)
-    bool boost_hidden_stairs_spawn_chance;
+    bool8 boost_hidden_stairs_spawn_chance;
     u8 field_0x12b26;
     u8 field_0x12b27;
 
@@ -1745,7 +1745,7 @@ struct dungeon {
     // 0x2CB10: Somehow related to display_data::hallucinating and seems to maybe control
     // the sleeping animations when the camera is pointed away from a hallucinating monster?
     // Initialized to 0x1.
-    bool unk_camera_tracker;
+    bool8 unk_camera_tracker;
     u8 field_0x2cb11;
     u8 field_0x2cb12;
     u8 field_0x2cb13;

@@ -1,4 +1,4 @@
-#include "overlay13_EntryOverlay13.h"
+#include "overlay_13_EntryOverlay13.h"
 
 extern void* MemAlloc(u32 len, u32 flags);
 extern void* MemFree(void *);
@@ -26,8 +26,8 @@ extern struct Overlay13Main *OVERLAY13_UNKNOWN_POINTER__NA_238CEA0;
 
 extern const u8 OVERLAY13_UNKNOWN_STRUCT__NA_238C024[];
 
-void EntryOverlay13(void) 
-{   
+void EntryOverlay13(void)
+{
     sub_0201F2E4();
     OVERLAY13_UNKNOWN_POINTER__NA_238CEA0 = MemAlloc(sizeof(struct Overlay13Main), 8);
     OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0;
@@ -36,7 +36,7 @@ void EntryOverlay13(void)
     sub_020348E4(OVERLAY13_UNKNOWN_STRUCT__NA_238C024);
 }
 
-void ExitOverlay13(void) 
+void ExitOverlay13(void)
 {
     if(OVERLAY13_UNKNOWN_POINTER__NA_238CEA0)
     {
@@ -68,7 +68,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
             }
-            break;     
+            break;
         case 0xF:
              if(ov11_022E6EC8())
             {
@@ -76,7 +76,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
             }
-            break; 
+            break;
         case 0xE:
              if(ov11_022E6EC8())
             {
@@ -84,7 +84,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
             }
-            break; 
+            break;
         case 0x11:
              if(ov11_022E6EC8())
             {
@@ -92,7 +92,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
             }
-            break; 
+            break;
         case 0x12:
              if(ov11_022E6EC8())
             {
@@ -100,7 +100,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
             }
-            break; 
+            break;
         case 3:
              if(ov11_022E6EC8())
             {
@@ -108,7 +108,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
             }
-            break;  
+            break;
        case 8:
              if(ov11_022E6EC8())
             {
@@ -130,7 +130,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
             }
-            break; 
+            break;
        case 4:
              if(ov11_022E6EC8())
             {
@@ -138,7 +138,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
             }
-            break;   
+            break;
         case 0x10:
              if(ov11_022E6EC8())
             {
@@ -146,7 +146,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0xC;
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
             }
-            break; 
+            break;
         case 5:
              if(ov11_022E6EC8())
             {
@@ -167,7 +167,7 @@ u32 Overlay13SwitchFunctionNa238A1C8(void) {
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1;
                 OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk1 = 0xD;
             }
-            break; 
+            break;
         case 10:
             break;
         case 11:

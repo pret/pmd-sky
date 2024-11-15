@@ -32,6 +32,7 @@ void EntryOverlay31(void);
 
 #define LINE_HEIGHT 12
 #define X_OFFSET 115
+// Draws the contents shown in the main dungeon menu status window showing the player's belly, money, play time, etc.
 void DrawDungeonMenuStatusWindow(struct Window* window);
 void DungeonMenuSwitch(struct Window* window);
 
@@ -83,7 +84,11 @@ u32 ov31_02382B54(void);
 void ov31_02382DAC(void);
 struct struct_1* ov31_02382E08(void);
 void ov31_02382E18(struct entity* arg_1, u32 arg_2);
-void CreateStairsMenuState(struct entity* arg_1);
+// Called when the leader steps on any stairs tile (regular, warp zone, rescue point, hidden stairs).
+// Allocates a stairs_menu struct on the heap with information for HandleStairsMenu, which will be pointed to by STAIRS_MENU_PTR.
+// r0: Entity pointer (in practice, always the leader)
+void CreateStairsMenuState(struct entity* entity);
+// Callback function passed to CreateAdvancedTextBox for creating the subheading for the stairs menu.
 void StairsSubheadingCallback(struct Window* window);
 
 

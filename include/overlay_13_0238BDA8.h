@@ -47,6 +47,9 @@ struct Overlay13Main
     u16 unk426;
 };
 
+// Returns the personality obtained after answering all the questions.
+// The value to return is determined by checking the points obtained for each the personalities and returning the one with the highest amount of points.
+// return: Personality (0-15)
 s32 GetPersonality(void);
 
 #endif //PMDSKY_OVERLAY_13_0238BDA8_H

@@ -1,11 +1,11 @@
 #include "overlay_29_0232E250.h"
 
-extern u32 *ATK_STAT_IDX;
-extern u32 *SPATK_STAT_IDX;
+extern s32 ATK_STAT_IDX;
+extern s32 SPATK_STAT_IDX;
 
-extern void BoostDefensiveStat(s32 param_1, s32 param_2, s32 *param_3, BOOL param_4);
+extern void BoostDefensiveStat(struct entity* user, struct entity* target, s32 stat_idx, s16 n_stages);
 
-u8 EntityIsValidMoveEffects__0232E250(struct entity *entity)
+bool8 EntityIsValidMoveEffects__0232E250(struct entity *entity)
 {
     if (entity == NULL)
     {
@@ -14,10 +14,10 @@ u8 EntityIsValidMoveEffects__0232E250(struct entity *entity)
     return entity->type != ENTITY_NOTHING;
 }
 
-BOOL DoMoveDefendOrder(s32 param_1, s32 param_2, s32 param_3, s32 param_4)
+bool8 DoMoveDefendOrder(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id)
 {
-    BoostDefensiveStat(param_1, param_2, ATK_STAT_IDX, TRUE);
-    BoostDefensiveStat(param_1, param_2, SPATK_STAT_IDX, TRUE);
+    BoostDefensiveStat(attacker, defender, ATK_STAT_IDX, 1);
+    BoostDefensiveStat(attacker, defender, SPATK_STAT_IDX, 1);
 
     return TRUE;
 }

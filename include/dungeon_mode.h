@@ -23,19 +23,19 @@ struct pixel_position {
 struct item {
     // 0x0: flags: 1-byte bitfield
     //u8 flags_0x0;
-    bool f_exists : 1;  // Validity flag
-    bool f_in_shop : 1; // In a Kecleon Shop
-    bool f_unpaid : 1;  // Picked up from a Kecleon Shop but not paid for yet
-    bool f_sticky : 1;  // Sticky
-    bool f_set : 1;     // Usable by L+R
-    bool flag_unk5 : 1;
+    bool8 f_exists : 1;  // Validity flag
+    bool8 f_in_shop : 1; // In a Kecleon Shop
+    bool8 f_unpaid : 1;  // Picked up from a Kecleon Shop but not paid for yet
+    bool8 f_sticky : 1;  // Sticky
+    bool8 f_set : 1;     // Usable by L+R
+    bool8 flag_unk5 : 1;
     // For stolen items to recover from outlaws (has red X)? Could be for other items for other
     // types of missions? (Uncertain)
-    bool f_unk_mission_item1 : 1;
+    bool8 f_unk_mission_item1 : 1;
     // For stolen items to recover from outlaws (has red X)? Could be for other items for other
     // types of missions? (Uncertain) Definitely used temporarily when sorting the items in
     // storage.
-    bool f_unk_mission_item2 : 1;
+    bool8 f_unk_mission_item2 : 1;
     // 0x1: For bag items. 0 for none, 1 if held by the leader, 2 for the second party member, etc.
     u8 held_by;
     // 0x2: Only for stackable items. Will be 0 if unapplicable. For Poké, this is an "amount code"
@@ -65,7 +65,7 @@ struct monster_stat_modifiers {
 // by the FIRST status in the list (when the index is 1, since 0 usually means no status). For other
 // statuses in the group, see the subsequent enum values in enum status_id after the first status.
 struct statuses {
-    bool roost;
+    bool8 roost;
     // 0x1: The typing in entity::types before the flying type is removed for statuses::roost
     // and restored to entity::types after statuses::roost ends.
     enum type_id original_types[2];
@@ -121,8 +121,8 @@ struct statuses {
     u8 curse; // 0x2F: STATUS_CURSED if 1
     // 0x30: Set to monster::is_not_team_member of the attacker (the one causing the decoy status).
     u8 curse_applier_non_team_member_flag;
-    // 0x31: Set to 1 on a Pokemon when inflicted with the Decoy status.
-    u8 unk_decoy_tracker;
+    // 0x31: True if the Pokémon is a decoy and a wild Pokémon (i.e., not an allied Pokémon).
+    bool8 enemy_decoy;
     u8 curse_turns; // 0x32: Turns left for the status in statuses::curse
     // 0x33: Turns left until residual damage for the status in statuses::curse, if applicable
     u8 curse_damage_countdown;
@@ -157,15 +157,15 @@ struct statuses {
     u8 miracle_eye_turns; // 0x4D: Turns left for the status in statuses::miracle_eye
     u8 magnet_rise;       // 0x4E: STATUS_MAGNET_RISE if 1
     u8 magnet_rise_turns; // 0x4F: Turns left for the status in statuses::magnet_rise
-    bool power_ears;           // 0x50: STATUS_POWER_EARS
-    bool scanning;             // 0x51: STATUS_SCANNING
-    bool stair_spotter;        // 0x52: STATUS_STAIR_SPOTTER
+    bool8 power_ears;           // 0x50: STATUS_POWER_EARS
+    bool8 scanning;             // 0x51: STATUS_SCANNING
+    bool8 stair_spotter;        // 0x52: STATUS_STAIR_SPOTTER
     // 0x53: Set when initally spawning a team member with the ability Pickup.
-    bool pickup_flag;
-    bool grudge;       // 0x54: STATUS_GRUDGE
-    bool exposed;      // 0x55: STATUS_EXPOSED (Foresight/Odor Sleuth)
-    bool type_changed; // 0x56: Flag for if the monster's type has been changed
-    bool boss_flag;    // 0x57: Seems to be true for boss monsters
+    bool8 pickup_flag;
+    bool8 grudge;       // 0x54: STATUS_GRUDGE
+    bool8 exposed;      // 0x55: STATUS_EXPOSED (Foresight/Odor Sleuth)
+    bool8 type_changed; // 0x56: Flag for if the monster's type has been changed
+    bool8 boss_flag;    // 0x57: Seems to be true for boss monsters
     // 0x58: Appears to be a flag for when a monster increasces their speed. Maybe only used
     // by the RunLeaderTurn function to know if the leader has changed their speed stage partway
     // through the function?
@@ -178,7 +178,7 @@ struct statuses {
 #ifndef JAPAN
     // 0x5A: Possibly a flag while in action. Could also be a flag to cause the burn from
     // lava, heal a burn from water, and decrease hunger in the walls.
-    bool in_action;
+    bool8 in_action;
 #endif
     // 0x5B: STATUS_TERRIFIED, interestingly, appears to use 0x1 for the Foe-Fear Orb but
     // 0x2 for the ability Stench. The distinction only seems to exist for the game to use
@@ -193,7 +193,7 @@ struct statuses {
     // 0 = 0.5x, 1 = 1.0x, 2 = 1.5x
     u8 exp_yield;
     // 0x60: Appears to be set when the held item of the monster is going to be used?
-    bool unk_item_use_action;
+    bool8 unk_item_use_action;
     // 0x61: Is initalized to 0x63 (99). Changing it from this value causes the monster to
     // begin rendering differently? For example, it causes entity::0xB3 to be 1 and forces
     // entity::0x28 to be 0.
@@ -205,7 +205,7 @@ struct statuses {
     u8 two_turn_move_invincible;
     // 0x63: Related to handling AI when a decoy is present on the floor?
     // Seems to only be 0, 1, 2
-    u8 decoy_ai_tracker;
+    enum decoy_ai decoy_ai_tracker;
 #ifndef JAPAN
     u8 field_0x64;
     u8 field_0x65;
@@ -223,47 +223,47 @@ struct statuses {
 // A bitfield where every bit controls one of the icons that can appear on top of a monster's sprite
 // to represent status effects. If multiple bits are set, the shown icon cycles through them.
 struct status_icon_flags {
-    bool f_sleepless : 1; // Blue eye blinking yellow
-    bool f_burn : 1;      // Red flame
-    bool f_poison : 1;    // White skull
-    bool f_toxic : 1;     // Purple skull
-    bool f_confused : 1;  // Yellow birds
-    bool f_cowering : 1;  // 2 green lines in circle (same as whiffer)
-    bool f_taunt : 1;     // Fist icon
-    bool f_encore : 1;    // Blue exclamation mark (same as low HP)
+    bool8 f_sleepless : 1; // Blue eye blinking yellow
+    bool8 f_burn : 1;      // Red flame
+    bool8 f_poison : 1;    // White skull
+    bool8 f_toxic : 1;     // Purple skull
+    bool8 f_confused : 1;  // Yellow birds
+    bool8 f_cowering : 1;  // 2 green lines in circle (same as whiffer)
+    bool8 f_taunt : 1;     // Fist icon
+    bool8 f_encore : 1;    // Blue exclamation mark (same as low HP)
     // Blue shield with white sparks. Also for counter, mini counter, mist,
     // metal burst, aqua ring, and lucky chant
-    bool f_reflect : 1;
-    bool f_safeguard : 1;            // Pink shield. Also for mirror coat
-    bool f_light_screen : 1;         // Golden shield. Also for magic coat
-    bool f_protect : 1;              // Green shield. Also for mirror move and vital throw
-    bool f_endure : 1;               // Blue shield with red sparks
-    bool f_low_hp : 1;               // Blue exclamation mark (same as encore)
-    bool f_curse : 1;                // Red skull
-    bool f_embargo : 1;              // Yellow exclamation mark. Also for gastro acid and snatch
-    bool f_sure_shot : 1;            // Blue sword blinking yellow
-    bool f_whiffer : 1;              // 2 green lines in circle (same as cowering)
-    bool f_set_damage : 1;           // Blue sword blinking red
-    bool f_focus_energy : 1;         // Red sword blinking yellow
-    bool f_blinded : 1;              // Blue eye with an X
-    bool f_cross_eyed : 1;           // Blue question mark
-    bool f_eyedrops : 1;             // Blue eye blinking yellow with a circular wave
-    bool f_muzzled : 1;              // Blinking red cross
-    bool f_grudge : 1;               // Purple shield
-    bool f_exposed : 1;              // Blue eye blinking red with a circular wave
-    bool f_sleep : 1;                // Red Z's
-    bool f_lowered_stat : 1;         // Yellow arrow pointing down
-    bool f_heal_block : 1;           // Blinking green cross
-    bool f_miracle_eye : 1;          // Blinking orange cross
-    bool f_red_exclamation_mark : 1; // Probably unused
-    bool f_magnet_rise : 1;          // Purple arrow pointing up
+    bool8 f_reflect : 1;
+    bool8 f_safeguard : 1;            // Pink shield. Also for mirror coat
+    bool8 f_light_screen : 1;         // Golden shield. Also for magic coat
+    bool8 f_protect : 1;              // Green shield. Also for mirror move and vital throw
+    bool8 f_endure : 1;               // Blue shield with red sparks
+    bool8 f_low_hp : 1;               // Blue exclamation mark (same as encore)
+    bool8 f_curse : 1;                // Red skull
+    bool8 f_embargo : 1;              // Yellow exclamation mark. Also for gastro acid and snatch
+    bool8 f_sure_shot : 1;            // Blue sword blinking yellow
+    bool8 f_whiffer : 1;              // 2 green lines in circle (same as cowering)
+    bool8 f_set_damage : 1;           // Blue sword blinking red
+    bool8 f_focus_energy : 1;         // Red sword blinking yellow
+    bool8 f_blinded : 1;              // Blue eye with an X
+    bool8 f_cross_eyed : 1;           // Blue question mark
+    bool8 f_eyedrops : 1;             // Blue eye blinking yellow with a circular wave
+    bool8 f_muzzled : 1;              // Blinking red cross
+    bool8 f_grudge : 1;               // Purple shield
+    bool8 f_exposed : 1;              // Blue eye blinking red with a circular wave
+    bool8 f_sleep : 1;                // Red Z's
+    bool8 f_lowered_stat : 1;         // Yellow arrow pointing down
+    bool8 f_heal_block : 1;           // Blinking green cross
+    bool8 f_miracle_eye : 1;          // Blinking orange cross
+    bool8 f_red_exclamation_mark : 1; // Probably unused
+    bool8 f_magnet_rise : 1;          // Purple arrow pointing up
 
     // The following 4 bytes appear to have a different meaning, maybe they are intended to
     // represent icons that are always displayed and do not cycle (inferred from the difference
     // between the ice block and the other icons). Except for the first bit, the others do not
     // seem to have an effect, but the code stores the full 4 bytes as a bitwise OR of some of the
     // flags (see UpdateStatusIconBitfield).
-    bool f_freeze : 1; // Ice block
+    bool8 f_freeze : 1; // Ice block
     u8 flags_unk2 : 7;
     u8 field_0x5;
     u8 field_0x6;
@@ -283,7 +283,7 @@ struct action_parameter {
 // Contains data used to describe an action taken by a monster.
 struct action_data {
     enum action action_id;      // 0x0: Action ID
-    enum direction_id direction : 8; // 0x2: Direction in which the action will be performed
+    enum direction_id direction; // 0x2: Direction in which the action will be performed
     u8 field_0x3;
     struct action_parameter action_parameters[2]; // 0x4: Parameters for the action
     s16 field_0x10;
@@ -294,24 +294,14 @@ struct action_data {
 // Monster info
 struct monster {
     // 0x0: flags: 2-byte bitfield
-    // If true, the AI will skip this monster's turn. There's also an unresearched
-    // check related to constriction that reads this flag
-    bool f_ai_unk : 1;
-    bool f_ai_skip_turn : 1; // If true, the AI will skip this monster's turn and reset the flag.
-    u8 flags_unk2 : 3;
-    bool f_swapping_places : 1; // Swapping places with another monster
-    u8 flags_unk6 : 2;
-    bool flags_unk8 : 1;
-    bool f_walking : 1; // Walking (but not dashing)
-    u8 flags_unk10 : 5;
-    bool f_swapping_places_petrified_ally : 1; // Swapping places with a petrified ally
+    u16 flags;
 
-    enum monster_id id : 16;          // 0x2:
+    enum monster_id id;          // 0x2:
     enum monster_id apparent_id : 16; // 0x4: What's outwardly displayed if Transformed
-    bool is_not_team_member; // 0x6: true for enemies and allied NPCs that aren't on the team
-    bool is_team_leader;     // 0x7
+    bool8 is_not_team_member; // 0x6: true for enemies and allied NPCs that aren't on the team
+    bool8 is_team_leader;     // 0x7
     // 0x8: An ally is an NPC that isn't a normal team member, e.g. for story boss battles
-    bool is_ally;
+    bool8 is_ally;
     enum shopkeeper_mode shopkeeper : 8; // 0x9
     u8 level;                       // 0xA
     u8 field_0xb;
@@ -350,9 +340,9 @@ struct monster {
     u8 field_0x7a;
     u8 field_0x7b;
     enum ai_objective ai_objective : 8; // 0x7C
-    bool ai_not_next_to_target;         // 0x7D: This NPC monster is not next to its current target
-    bool ai_targeting_enemy;            // 0x7E: This NPC monster is targeting an enemy monster
-    bool ai_turning_around;             // 0x7F: This NPC monster has decided to turn around
+    bool8 ai_not_next_to_target;         // 0x7D: This NPC monster is not next to its current target
+    bool8 ai_targeting_enemy;            // 0x7E: This NPC monster is targeting an enemy monster
+    bool8 ai_turning_around;             // 0x7F: This NPC monster has decided to turn around
     // 0x80: entity::spawn_genid of the entity currently being targeted
     u16 ai_target_spawn_genid;
     u8 field_0x82;
@@ -371,7 +361,7 @@ struct monster {
     enum tactic_id tactic : 8; // 0xA8
 
     //struct statuses statuses;  // 0xA9 / Need to be inline for alignment
-    bool roost;
+    bool8 roost;
     // 0xAA / 0x1: The typing in entity::types before the flying type is removed for statuses::roost
     // and restored to entity::types after statuses::roost ends.
     enum type_id original_types[2];
@@ -463,15 +453,15 @@ struct monster {
     u8 miracle_eye_turns; // 0xF6 / 0x4D: Turns left for the status in statuses::miracle_eye
     u8 magnet_rise;       // 0xF7 / 0x4E: STATUS_MAGNET_RISE if 1
     u8 magnet_rise_turns; // 0xF8 / 0x4F: Turns left for the status in statuses::magnet_rise
-    bool power_ears;           // 0xF9 / 0x50: STATUS_POWER_EARS
-    bool scanning;             // 0xFA / 0x51: STATUS_SCANNING
-    bool stair_spotter;        // 0xFB / 0x52: STATUS_STAIR_SPOTTER
+    bool8 power_ears;           // 0xF9 / 0x50: STATUS_POWER_EARS
+    bool8 scanning;             // 0xFA / 0x51: STATUS_SCANNING
+    bool8 stair_spotter;        // 0xFB / 0x52: STATUS_STAIR_SPOTTER
     // 0xFC / 0x53: Set when initally spawning a team member with the ability Pickup.
-    bool pickup_flag;
-    bool grudge;       // 0xFD / 0x54: STATUS_GRUDGE
-    bool exposed;      // 0xFE / 0x55: STATUS_EXPOSED (Foresight/Odor Sleuth)
-    bool type_changed; // 0xFF / 0x56: Flag for if the monster's type has been changed
-    bool boss_flag;    // 0x100 / 0x57: Seems to be true for boss monsters
+    bool8 pickup_flag;
+    bool8 grudge;       // 0xFD / 0x54: STATUS_GRUDGE
+    bool8 exposed;      // 0xFE / 0x55: STATUS_EXPOSED (Foresight/Odor Sleuth)
+    bool8 type_changed; // 0xFF / 0x56: Flag for if the monster's type has been changed
+    bool8 boss_flag;    // 0x100 / 0x57: Seems to be true for boss monsters
     // 0x101 / 0x58: Appears to be a flag for when a monster increasces their speed. Maybe only used
     // by the RunLeaderTurn function to know if the leader has changed their speed stage partway
     // through the function?
@@ -484,7 +474,7 @@ struct monster {
 #ifndef JAPAN
     // 0x103 / 0x5A: Possibly a flag while in action. Could also be a flag to cause the burn from
     // lava, heal a burn from water, and decrease hunger in the walls.
-    bool in_action;
+    bool8 in_action;
 #endif
     // 0x104 / 0x5B: STATUS_TERRIFIED, interestingly, appears to use 0x1 for the Foe-Fear Orb but
     // 0x2 for the ability Stench. The distinction only seems to exist for the game to use
@@ -499,7 +489,7 @@ struct monster {
     // 0 = 0.5x, 1 = 1.0x, 2 = 1.5x
     u8 exp_yield;
     // 0x109 / 0x60: Appears to be set when the held item of the monster is going to be used?
-    bool unk_item_use_action;
+    bool8 use_held_item;
     // 0x10A / 0x61: Is initalized to 0x63 (99). Changing it from this value causes the monster to
     // begin rendering differently? For example, it causes entity::0xB3 to be 1 and forces
     // entity::0x28 to be 0.
@@ -536,21 +526,21 @@ struct monster {
     struct fixed_point belly;         // 0x146
     struct fixed_point max_belly;     // 0x14A:
     // 0x14E: If true and the monster is an ally, the AI will skip it. False for enemies.
-    bool ai_ally_skip;
-    bool ai_next_to_target; // 0x14F: This NPC monster is next to its current target
+    bool8 ai_ally_skip;
+    bool8 ai_next_to_target; // 0x14F: This NPC monster is next to its current target
     // 0x150: Set if monster::is_team_leader is true and belly is empty.
-    bool famished;
-    u8 field_0x151;
+    bool8 famished;
+    bool8 waiting;
     // 0x152: Seems to be true if the monster has already acted this turn: attacked, used an item,
     // or seemingly anything other than moving/resting. Also true when the monster faints.
-    bool already_acted;
+    bool8 already_acted;
     // 0x153: True if this enemy should evolve. It is not enough to set this flag to evolve
     // an enemy monster. You also need to set dungeon::should_enemy_evolve.
-    bool should_evolve;
+    bool8 should_evolve;
     // 0x154: True if using a charged move. Changed together with statuses::bide.
-    bool using_charged_move;
+    bool8 using_charged_move;
     // 0x155: True if the target attacked a Pokemon that has STATUS_GRUDGE.
-    bool hit_grudge_monster;
+    bool8 hit_grudge_monster;
     u8 field_0x156; // 0 when the monster faints
     u8 field_0x157;
     // 0x158: General-purpose bitflags tracking different bits of volatile state.
@@ -560,38 +550,38 @@ struct monster {
     // 0x15A: The previous value of state_bitflags before the last update
     u16 prev_state_flags;
     // 0x15C: Appears to control if flash fire should activate.
-    bool apply_flash_fire_boost;
+    bool8 apply_flash_fire_boost;
     // 0x15D: Appears to be a counter for how many times rollout has hit. Likely to be able to
     // determine how much extra damage consecutive rollout hits should deal.
     u8 rollout_hit_counter;
     // 0x15E: If true, the monster is warped after completing its move.
-    bool memento_warp_flag;
+    bool8 memento_warp_flag;
     // 0x15F: If true, the monster's special attack is dropped after the completing its move.
-    bool overheat_special_attack_drop_flag;
+    bool8 overheat_special_attack_drop_flag;
     // 0x160: If true, the monster's shadow is drawn. This value is initalized to 1 for every
     // monster except Diglett and Dugtrio.
-    bool display_shadow;
+    bool8 display_shadow;
     // 0x161: If true, prevents giving items to this monster. Might have a broader meaning,
     // such as whether the monster is a guest pokémon.
-    bool cannot_give_items;
+    bool8 cannot_give_items;
     // 0x162: Related to using a move and either missing or fainting. Set to 1 right before
     // the function for a move is called and set to 0 (sometimes) in ApplyDamage. Gets set
     // when the monster faints sometimes with field 0x156. When false, causes random
     // outcomes with the monster to fail.
-    bool field_0x162;
+    bool8 field_0x162;
     // 0x163: Related to controlling the number of attacks per move use. Possibly to account
     // for two-turn moves?
-    bool field_0x163;
-    bool took_damage_flag; // 0x164: Set after the monster took damage.
+    bool8 field_0x163;
+    bool8 took_damage_flag; // 0x164: Set after the monster took damage.
     // 0x165: Appears to be some sort of validity check? Where 0 is valid and 1 is invalid.
     // HandleFaint sets this number to 1. Also set to 1 if IsMonsterIdInNormalRange is false.
-    bool field_0x165;
+    bool8 field_0x165;
     // 0x166: Set after the monster attacks (true if the attack missed, false otherwise). If true
     // when the monster attacks, Practice Swinger will activate.
-    bool practice_swinger_flag;
+    bool8 practice_swinger_flag;
     // 0x167: Set to true when the monster receives a critical hit. If true when the monster
     // attacks, Anger Point will activate. Set to false after the monster attacks.
-    bool anger_point_flag;
+    bool8 anger_point_flag;
     u8 field_0x168;
     u8 field_0x169;
     // 0x16A: When not DIR_NONE, monster will turn in the specified direction and
@@ -605,17 +595,17 @@ struct monster {
     u8 field_0x16e;
     u8 field_0x16f;
     // 0x170: Set to make the monster disappear when using the move U-turn.
-    bool uturn_hide_monster_flag;
+    bool8 uturn_hide_monster_flag;
     // 0x171: Some kind of visual flag? Gets set to 0 temporarily when changing Shaymin form
     // or when using the Gone Pebble? Also hardcoded to be set to 0 for monsters that generally
     // tend to float? Otherwise 1?
-    bool field_0x171;
+    bool8 field_0x171;
     // 0x172: Set when the leader and falling through a pitfall trap.
-    bool pitfall_trap_flag_0x172;
+    bool8 pitfall_trap_flag_0x172;
     // 0x173: Some kind of visual flag?
-    bool field_0x173;
+    bool8 field_0x173;
     // 0x174: Set when the leader and falling through a pitfall trap.
-    bool pitfall_trap_flag_0x174;
+    bool8 pitfall_trap_flag_0x174;
     u8 field_0x175;
     u8 field_0x176;
     // 0x177: Appears to be the direction for using sleep talk? Set to DIR_NONE when awake.
@@ -786,7 +776,7 @@ struct monster {
     // probably controls when the ripple effect when standing on water.
     u8 water_shadow_ripple_tracker;
     // 0x221: Set if the current move being used was copied by Me First
-    bool me_first_flag;
+    bool8 me_first_flag;
     u8 field_0x222;
     u8 field_0x223;
     // Stat boosts from exclusive items with EXCLUSIVE_EFF_STAT_BOOST
@@ -796,17 +786,17 @@ struct monster {
     u32 exclusive_item_effect_flags[5];
     // 0x23C: Initialized to 0. Probably menu related only, seems to be set to true through the
     // menu.
-    bool field_0x23c;
+    bool8 field_0x23c;
     // 0x23F: When reviving a monster, temporarily set to true. Probably a visual indicator
     // of some kind?
-    bool unk_revive_visual_tracker;
+    bool8 unk_revive_visual_tracker;
     // 0x23E: Gets set to 0 before using an attack and gets set to 1 in LevelUp. Seems to stop
     // the rest of the attacks (ie from Swift Swim) from continuing. Possibly to avoid the
     // the monster leveling up and trying to use a move that was just overwritten by a new move?
     u8 field_0x23e;
     // 0x23F: Gets set to 1 when the move used won't use up any PP. Used to check if the
     // monster should lose extra PP from the ability Pressure.
-    bool should_not_lose_pp;
+    bool8 should_not_lose_pp;
 };
 
 
@@ -890,7 +880,7 @@ struct monster_summary {
     s32 exp;                       // 0x30
     u8 offensive_stats[2];    // 0x34: {atk, sp_atk}
     u8 defensive_stats[2];    // 0x36: {def, sp_def}
-    bool is_team_leader;           // 0x38
+    bool8 is_team_leader;           // 0x38
     u8 attack_boost;          // 0x39: from things like Power Band, Munch Belt
     u8 special_attack_boost;  // 0x3A
     u8 defense_boost;         // 0x3B
@@ -905,7 +895,7 @@ struct monster_summary {
     u8 level_at_second_evo;
     // 0x44: Evolution status. In ground_mode, accounts for luminous spring being unlocked.
     u8 evo_status;
-    bool inflicted_with_gastro_acid; // 0x45
+    bool8 inflicted_with_gastro_acid; // 0x45
     u8 field_0x46;
     u8 field_0x47;
     u32 iq_skill_flags[3]; // 0x48
@@ -922,7 +912,7 @@ struct monster_summary {
 
 // Info about a mission destination floor
 struct mission_destination_info {
-    bool is_destination_floor;  // 0x0: Whether or not the current floor is a mission destination
+    bool8 is_destination_floor;  // 0x0: Whether or not the current floor is a mission destination
     enum mission_type type; // 0x1:
     // 0x2: The meaning of this field depends on the type field; see union mission_subtype.
     u8 subtype;
@@ -945,15 +935,15 @@ struct mission_destination_info {
     enum fixed_room_id fixed_room_id;
     // 0x17: Related to missions where you have to obtain an item? Possibly related to the item
     // being picked up and/or destroyed?
-    bool unk_mission_item_tracker1;
+    bool8 unk_mission_item_tracker1;
     u8 field_0x18;
     u8 field_0x19;
     // 0x1A: Related to missions where you have to obtain an item? Possibly related to the item
     // being picked up and/or destroyed?
-    bool unk_mission_item_tracker2;
+    bool8 unk_mission_item_tracker2;
     // 0x1B: Will be set after the target enemy has been defeated.
     // If there are minions, this flag applies just to the main outlaw.
-    bool target_enemy_is_defeated;
+    bool8 target_enemy_is_defeated;
 };
 
 // Contains data about a monster that spawns in a dungeon
@@ -997,13 +987,13 @@ struct floor_properties {
     // 0xB: Whether or not dead ends are allowed in the floor layout. If false, dead ends will be
     // corrected during floor generation (or rather, they should be, but the implementation is
     // buggy)
-    bool allow_dead_ends;
+    bool8 allow_dead_ends;
     // 0xC: Maximum number of secondary structures that can be generated on the floor
     u8 max_secondary_structures;
     // 0xD: room_flags: 1-byte bitfield
-    bool f_secondary_structures : 1; // Whether secondary structures are allowed
+    bool8 f_secondary_structures : 1; // Whether secondary structures are allowed
     u8 room_flags_unk1 : 1;
-    bool f_room_imperfections : 1; // Whether room imperfections are allowed
+    bool8 f_room_imperfections : 1; // Whether room imperfections are allowed
     u8 room_flags_unk3 : 5;
 
     u8 field_0xe;
@@ -1111,44 +1101,44 @@ struct display_data {
     u8 visibility_range;
     // 0x22: True if the pokémon currently pointed by the camera has
     // the status_id::STATUS_BLINKER effect
-    bool blinded;
+    bool8 blinded;
     // 0x23: True after using a Luminous Orb or in floors where darkness is forcefully disabled
-    bool luminous;
+    bool8 luminous;
     // 0x24: If false and luminous is false as well, darkness will be displayed graphically.
     // This is set in dungeons that aren't naturally dark, and also in some fixed room floors.
-    bool natural_lighting;
+    bool8 natural_lighting;
     // 0x25: True if the pokémon currently pointed by the camera has the Map Surveyor IQ skill
     // active
-    bool map_surveyor;
+    bool8 map_surveyor;
     // 0x26: True if enemies should be shown on the map.
     // Seems to be a dependent property computed as
     // (leader has Power Ears status OR leader has X-Ray Specs equipped).
     // This is NOT affected by the luminous flag.
-    bool can_see_enemies;
+    bool8 can_see_enemies;
     // 0x27: True if items are being shown on the map. Similar to can_see_enemies.
-    bool can_see_items;
+    bool8 can_see_items;
     // 0x28: True if traps are being shown on the map. Similar to can_see_enemies.
-    bool can_see_traps;
+    bool8 can_see_traps;
     // 0x29: True if the pokémon currently pointed by the camera has the
     // status_id::STATUS_CROSS_EYED effect.
     // Causes all entities to be displayed as green circles on the map.
-    bool hallucinating;
-    bool can_see_stairs;  // 0x2A: True if stairs are being shown on the map
+    bool8 hallucinating;
+    bool8 can_see_stairs;  // 0x2A: True if stairs are being shown on the map
     u8 field_0x2B; // 0x2B: Initialized to 0
     u8 field_0x2C;
-    bool darkness;        // 0x2D: True if there's darkness on the floor
+    bool8 darkness;        // 0x2D: True if there's darkness on the floor
     u8 field_0x2E; // 0x2E: Initialized to 1
     // 0x2F: True if the leader is being pointed by the camera right now. If false, UI digits will
     // be displayed in green.
-    bool leader_pointed;
+    bool8 leader_pointed;
     u8 field_0x30; // 0x30: Initialized to 1
     // 0x31: Set to 1 when losing in a dungeon. Seems to cause display_data::0x38 to
     // display_data::leader_max_hp_touch_screen to become 0xFFFF (-1).
-    bool unk_fade_to_black_tracker;
+    bool8 unk_fade_to_black_tracker;
     u8 field_0x32;   // 0x32: Initialized to 0
     u8 field_0x33;   // 0x33: Initialized to 0
     u8 field_0x34;   // 0x34: Is used, related to lighting?
-    bool team_menu_or_grid; // 0x35: True when the team menu is opened or while Y is being held
+    bool8 team_menu_or_grid; // 0x35: True when the team menu is opened or while Y is being held
     // Derived from internal direction in leader info block
     enum direction_id leader_target_direction;        // 0x36
     enum direction_id leader_target_direction_mirror; // 0x37
@@ -1166,10 +1156,10 @@ struct display_data {
 
 // Used during floor generation to keep track of what entities should be spawned where
 struct spawn_flags {
-    bool f_stairs : 1;
-    bool f_item : 1;
-    bool f_trap : 1;
-    bool f_monster : 1;
+    bool8 f_stairs : 1;
+    bool8 f_item : 1;
+    bool8 f_trap : 1;
+    bool8 f_monster : 1;
     u8 spawn_flags_unk4 : 4;
     u8 spawn_flags_unk8 : 8;
 };
@@ -1178,8 +1168,8 @@ struct spawn_flags {
 struct visibility_flags {
     // If f_revealed == true and f_visited == false, the tile will appear as gray on the map.
     // This happens, e.g., when a Luminous Orb is used.
-    bool f_revealed : 1; // Revealed on the map.
-    bool f_visited : 1;  // Visited by the player
+    bool8 f_revealed : 1; // Revealed on the map.
+    bool8 f_visited : 1;  // Visited by the player
     u8 visibility_flags_unk2 : 6;
     u8 visibility_flags_unk8 : 8;
 };
@@ -1210,30 +1200,30 @@ struct tile {
     //u16 terrain_flags;
     enum terrain_type terrain_type : 2;
     // This tile can be corner-cut when walking. Seemingly only used during dungeon generation.
-    bool f_corner_cuttable : 1;
+    bool8 f_corner_cuttable : 1;
     // Includes room tiles right next to a hallway, and branching points within corridors.
     // Only applies to natural halls, not ones made by Absolute Mover, not "hallways" made of
     // secondary terrain, etc. Used by the AI for navigation.
-    bool f_natural_junction : 1;
+    bool8 f_natural_junction : 1;
     // This tile is impassable, even with Absolute Mover/Mobile Scarf. Used for the map border,
     // key chamber walls, walls in boss battle rooms, etc.
-    bool f_impassable_wall : 1;
-    bool f_in_kecleon_shop : 1;  // In a Kecleon Shop
-    bool f_in_monster_house : 1; // In a Monster House
-    bool terrain_flags_unk7 : 1;
+    bool8 f_impassable_wall : 1;
+    bool8 f_in_kecleon_shop : 1;  // In a Kecleon Shop
+    bool8 f_in_monster_house : 1; // In a Monster House
+    bool8 terrain_flags_unk7 : 1;
     // Cannot be broken by Absolute Mover. Set naturally on key doors.
-    bool f_unbreakable : 1;
+    bool8 f_unbreakable : 1;
     // Tile is any type of "stairs" (normal stairs, Hidden Stairs, Warp Zone)
-    bool f_stairs : 1;
-    bool terrain_flags_unk10 : 1;
-    bool f_key_door : 1;            // Tile is a key door
-    bool f_key_door_key_locked : 1; // Key door is locked and requires a Key to open
+    bool8 f_stairs : 1;
+    bool8 terrain_flags_unk10 : 1;
+    bool8 f_key_door : 1;            // Tile is a key door
+    bool8 f_key_door_key_locked : 1; // Key door is locked and requires a Key to open
     // Key door is locked and requires an escort to open (for Sealed Chamber missions)
-    bool f_key_door_escort_locked : 1;
-    bool terrain_flags_unk14 : 1;
+    bool8 f_key_door_escort_locked : 1;
+    bool8 terrain_flags_unk14 : 1;
     // Tile is open terrain but unreachable from the stairs spawn point. Only set during dungeon
     // generation.
-    bool f_unreachable_from_stairs : 1;
+    bool8 f_unreachable_from_stairs : 1;
 
     // 0x2: Seems to be used for spawning entities during dungeon generation, and for visibility
     // during dungeon play
@@ -1257,14 +1247,14 @@ struct tile {
 struct dungeon_generation_info {
     // 0x0: Set if the floor layout is guaranteed to be a Monster House, or the dungeon generation
     // algorithm fails
-    bool force_create_monster_house;
+    bool8 force_create_monster_house;
     // 0x1: Set if the locked door on the floor has already been opened.
-    bool locked_door_opened;
+    bool8 locked_door_opened;
     // 0x2: Set if a kecleon shop was properly spawned.
-    bool kecleon_shop_spawned;
+    bool8 kecleon_shop_spawned;
     // 0x3: When a non-zero value, the one-room orb will fail.
     u8 unk_one_room_flag;
-    bool dough_seed_extra_poke_flag;
+    bool8 dough_seed_extra_poke_flag;
     // 0x5: Room index of Monster House on the floor. 0xFF if there's no Monster House
     u8 monster_house_room;
     // 0x6: Related to when a monster from a fixed room faints. Maybe to check if the floor
@@ -1307,7 +1297,7 @@ struct trap {
 
     // 0x2: flags: 1-byte bitfield
     //u8 flags;
-    bool f_unbreakable : 1; // If true, the trap can't be broken (for example, using a Trapbust Orb)
+    bool8 f_unbreakable : 1; // If true, the trap can't be broken (for example, using a Trapbust Orb)
     u8 flags_unk1 : 7;
 
     u8 field_0x3;
@@ -1330,7 +1320,7 @@ struct enemy_spawn_stats {
 struct spawned_shopkeeper_data {
     enum monster_id monster_id;    // 0x0: The id of the monster to spawn
     enum monster_behavior behavior; // 0x2: NPC behavior of the monster
-    bool valid;                         // 0x3: Indicates that this spawn data is valid
+    bool8 valid;                         // 0x3: Indicates that this spawn data is valid
     u8 pos_x;                      // 0x4
     u8 pos_y;                      // 0x5
 };
@@ -1419,55 +1409,54 @@ struct damage_calc_diag {
     // It seems like there's a bug in the code; aura bows do not contribute to this field.
     s8 item_sp_def_modifier;
     // 0x38: Whether or not Scope Lens or Sharpshooter boosted the critical hit rate of a move
-    bool scope_lens_or_sharpshooter_activated;
+    bool8 scope_lens_or_sharpshooter_activated;
     // 0x39: Whether or not the Patsy Band boosted the critical hit rate of a move
-    bool patsy_band_activated;
+    bool8 patsy_band_activated;
     // 0x3A: Whether or not Reflect or the Time Shield halved the damage from a physical move
-    bool half_physical_damage_activated;
+    bool8 half_physical_damage_activated;
     // 0x3B: Whether or not Light Screen or the Aqua Mantle halved the damage from a special move
-    bool half_special_damage_activated;
+    bool8 half_special_damage_activated;
     // 0x3C: Whether or not the Enhanced critical-hit rate status maxed out the critical hit rate
     // of a move
-    bool focus_energy_activated;
+    bool8 focus_energy_activated;
     // 0x3D: Whether or not Type-Advantage Master boosted the critical hit rate of a move
-    bool type_advantage_master_activated;
+    bool8 type_advantage_master_activated;
     // 0x3E: Whether or not a non-Normal-type move was dampened by Cloudy weather
-    bool cloudy_drop_activated;
+    bool8 cloudy_drop_activated;
     // 0x3F: Whether or not a Fire or Water move was affected by Rainy weather
-    bool rain_multiplier_activated;
+    bool8 rain_multiplier_activated;
     // 0x40: Whether or not a Fire or Water move was affected by Sunny weather
-    bool sunny_multiplier_activated;
+    bool8 sunny_multiplier_activated;
     // 0x41: Whether or a Fire move was dampened by Thick Fat or Heatproof
-    bool fire_move_ability_drop_activated;
+    bool8 fire_move_ability_drop_activated;
     // 0x42: Whether or not Flash Fire was activated at some point for Fire immunity
-    bool flash_fire_activated;
+    bool8 flash_fire_activated;
     // 0x43: Whether or not Levitate was activated at some point for Ground immunity
-    bool levitate_activated;
-    bool torrent_boost_activated;  // 0x44: Whether or not a Water move was boosted by Torrent
-    bool overgrow_boost_activated; // 0x45: Whether or not a Grass move was boosted by Overgrow
-    bool swarm_boost_activated;    // 0x46: Whether or not a Bug move was boosted by Swarm
+    bool8 levitate_activated;
+    bool8 torrent_boost_activated;  // 0x44: Whether or not a Water move was boosted by Torrent
+    bool8 overgrow_boost_activated; // 0x45: Whether or not a Grass move was boosted by Overgrow
+    bool8 swarm_boost_activated;    // 0x46: Whether or not a Bug move was boosted by Swarm
     // 0x47: Whether or not a Fire move was boosted by either Blaze or Dry Skin
-    bool fire_move_ability_boost_activated;
+    bool8 fire_move_ability_boost_activated;
     // 0x48: Whether or not Scrappy was activated at some point to bypass immunity
-    bool scrappy_activated;
+    bool8 scrappy_activated;
     // 0x49: Whether or not Super Luck boosted the critical hit rate for a move
-    bool super_luck_activated;
+    bool8 super_luck_activated;
     // 0x4A: Whether or not Sniper boosted the critical hit damage multiplier for a move
-    bool sniper_activated;
-    bool stab_boost_activated; // 0x4B: Whether or not STAB was activated for a move
+    bool8 sniper_activated;
+    bool8 stab_boost_activated; // 0x4B: Whether or not STAB was activated for a move
     // 0x4C: Whether or not an Electric move was dampened by either Mud Sport or Fog
-    bool electric_move_dampened;
+    bool8 electric_move_dampened;
     // 0x4D: Whether or not Water Sport was activated by a Fire move
-    bool water_sport_drop_activated;
-    bool charge_boost_activated; // 0x4E: Whether or not Charge was activated by an Electric move
+    bool8 water_sport_drop_activated;
+    bool8 charge_boost_activated; // 0x4E: Whether or not Charge was activated by an Electric move
     u8 field_0x4f;
     // 0x50: Whether or not a Ghost type's immunity to Normal/Fighting was activated at some point
-    bool ghost_immunity_activated;
+    bool8 ghost_immunity_activated;
     // 0x51: Whether or not a defender took less damage due to the Charging Skull Bash status
-    bool skull_bash_defense_boost_activated;
+    bool8 skull_bash_defense_boost_activated;
     u8 field_0x52;
     u8 field_0x53;
 };
-
 
 #endif //PMDSKY_DUNGEON_MODE_H
