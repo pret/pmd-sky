@@ -3,10 +3,17 @@
 
 #include "util.h"
 
+// Gets the boost_kecleon_shop_spawn_chance field on the dungeon struct.
+// return: bool
 bool ShouldBoostKecleonShopSpawnChance(void);
+// Sets the boost_kecleon_shop_spawn_chance field on the dungeon struct to the given value.
+// boost: bool to set the flag to
 void SetShouldBoostKecleonShopSpawnChance(bool boost);
+// Sets the boost_kecleon_shop_spawn_chance field on the dungeon struct depending on if a team member has the exclusive item effect for more kecleon shops.
 void UpdateShouldBoostKecleonShopSpawnChance(void);
+// Gets the dough_seed_extra_money_flag field on the dungeon struct.
 bool GetDoughSeedFlag(void);
+// Sets the dough_seed_extra_money_flag field on the dungeon struct to the given value.
 void SetDoughSeedFlag(bool flag);
 
 #endif //PMDSKY_OVERLAY_29_02338548_H

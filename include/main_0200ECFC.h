@@ -8,6 +8,8 @@ typedef struct {
     u32 maybeMoney[]; // Unknown size, but indexed with an u8
 } bag_items;
 
+// Gets the amount of money the player is carrying.
+// return: value
 u32 GetMoneyCarried(void);
 
 #endif //PMDSKY_MAIN_0200ECFC_H
