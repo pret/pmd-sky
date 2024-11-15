@@ -121,8 +121,8 @@ struct statuses {
     u8 curse; // 0x2F: STATUS_CURSED if 1
     // 0x30: Set to monster::is_not_team_member of the attacker (the one causing the decoy status).
     u8 curse_applier_non_team_member_flag;
-    // 0x31: Set to 1 on a Pokemon when inflicted with the Decoy status.
-    u8 unk_decoy_tracker;
+    // 0x31: True if the Pokémon is a decoy and a wild Pokémon (i.e., not an allied Pokémon).
+    bool enemy_decoy;
     u8 curse_turns; // 0x32: Turns left for the status in statuses::curse
     // 0x33: Turns left until residual damage for the status in statuses::curse, if applicable
     u8 curse_damage_countdown;
@@ -205,7 +205,7 @@ struct statuses {
     u8 two_turn_move_invincible;
     // 0x63: Related to handling AI when a decoy is present on the floor?
     // Seems to only be 0, 1, 2
-    u8 decoy_ai_tracker;
+    enum decoy_ai decoy_ai_tracker;
 #ifndef JAPAN
     u8 field_0x64;
     u8 field_0x65;
@@ -283,7 +283,7 @@ struct action_parameter {
 // Contains data used to describe an action taken by a monster.
 struct action_data {
     enum action action_id;      // 0x0: Action ID
-    enum direction_id direction : 8; // 0x2: Direction in which the action will be performed
+    enum direction_id direction; // 0x2: Direction in which the action will be performed
     u8 field_0x3;
     struct action_parameter action_parameters[2]; // 0x4: Parameters for the action
     s16 field_0x10;
@@ -294,19 +294,9 @@ struct action_data {
 // Monster info
 struct monster {
     // 0x0: flags: 2-byte bitfield
-    // If true, the AI will skip this monster's turn. There's also an unresearched
-    // check related to constriction that reads this flag
-    bool f_ai_unk : 1;
-    bool f_ai_skip_turn : 1; // If true, the AI will skip this monster's turn and reset the flag.
-    u8 flags_unk2 : 3;
-    bool f_swapping_places : 1; // Swapping places with another monster
-    u8 flags_unk6 : 2;
-    bool flags_unk8 : 1;
-    bool f_walking : 1; // Walking (but not dashing)
-    u8 flags_unk10 : 5;
-    bool f_swapping_places_petrified_ally : 1; // Swapping places with a petrified ally
+    u16 flags;
 
-    enum monster_id id : 16;          // 0x2:
+    enum monster_id id;          // 0x2:
     enum monster_id apparent_id : 16; // 0x4: What's outwardly displayed if Transformed
     bool is_not_team_member; // 0x6: true for enemies and allied NPCs that aren't on the team
     bool is_team_leader;     // 0x7
@@ -499,7 +489,7 @@ struct monster {
     // 0 = 0.5x, 1 = 1.0x, 2 = 1.5x
     u8 exp_yield;
     // 0x109 / 0x60: Appears to be set when the held item of the monster is going to be used?
-    bool unk_item_use_action;
+    bool use_held_item;
     // 0x10A / 0x61: Is initalized to 0x63 (99). Changing it from this value causes the monster to
     // begin rendering differently? For example, it causes entity::0xB3 to be 1 and forces
     // entity::0x28 to be 0.
@@ -540,7 +530,7 @@ struct monster {
     bool ai_next_to_target; // 0x14F: This NPC monster is next to its current target
     // 0x150: Set if monster::is_team_leader is true and belly is empty.
     bool famished;
-    u8 field_0x151;
+    bool waiting;
     // 0x152: Seems to be true if the monster has already acted this turn: attacked, used an item,
     // or seemingly anything other than moving/resting. Also true when the monster faints.
     bool already_acted;
@@ -1468,6 +1458,5 @@ struct damage_calc_diag {
     u8 field_0x52;
     u8 field_0x53;
 };
-
 
 #endif //PMDSKY_DUNGEON_MODE_H

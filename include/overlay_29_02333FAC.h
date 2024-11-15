@@ -6,6 +6,6 @@
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 // entity: entity pointer
 // return: bool
-u8 EntityIsValid__02333FAC(struct entity *entity);
+bool EntityIsValid__02333FAC(struct entity *entity);
 
 #endif //PMDSKY_OVERLAY_29_02333FAC_H

@@ -5,7 +5,7 @@ extern u32 *SPATK_STAT_IDX;
 
 extern void BoostDefensiveStat(s32 param_1, s32 param_2, s32 *param_3, BOOL param_4);
 
-u8 EntityIsValidMoveEffects__0232E250(struct entity *entity)
+bool EntityIsValidMoveEffects__0232E250(struct entity *entity)
 {
     if (entity == NULL)
     {

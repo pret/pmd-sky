@@ -2,7 +2,7 @@
 
 // file starts at 0x022e26b68
 
-u8 EntityIsValid__022E32E8(struct entity *entity)
+bool EntityIsValid__022E32E8(struct entity *entity)
 {
     if (entity == NULL)
     {
