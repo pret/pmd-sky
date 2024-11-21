@@ -33,7 +33,7 @@ void RunMonsterAi(struct entity *pokemon, u32 unused)
     struct monster *pokemon_info = GetEntInfo(pokemon);
     if (pokemon_info->flags & MOVEMENT_FLAG_SWAPPING_PLACES_PETRIFIED_ALLY)
     {
-        if (pokemon_info->frozen_class_status.freeze == STATUS_INDEX_PETRIFIED)
+        if (pokemon_info->frozen_class_status.freeze == FREEZE_STATUS_PETRIFIED)
         {
             EndFrozenClassStatus(pokemon, pokemon, TRUE);
         }
@@ -75,7 +75,7 @@ void RunMonsterAi(struct entity *pokemon, u32 unused)
                         entity_is_valid = target->type != ENTITY_NOTHING;
                     }
                     if (entity_is_valid &&
-                        GetEntInfo(target)->curse_class_status.curse == STATUS_INDEX_DECOY &&
+                        GetEntInfo(target)->curse_class_status.curse == CURSED_STATUS_DECOY &&
                         CanSeeTarget(pokemon, target))
                     {
                         pokemon_info->decoy_ai_tracker = GetEntInfo(target)->curse_class_status.curse_applier_non_team_member_flag ? DECOY_AI_WILD : DECOY_AI_TEAM;
@@ -105,7 +105,7 @@ void RunMonsterAi(struct entity *pokemon, u32 unused)
                     {
                         return;
                     }
-                    if (pokemon_info->cringe_class_status.cringe == STATUS_INDEX_CONFUSED)
+                    if (pokemon_info->cringe_class_status.cringe == CRINGE_STATUS_CONFUSED)
                     {
                         SetActionPassTurnOrWalk(&pokemon_info->action, pokemon_info->id);
                     }
@@ -124,7 +124,7 @@ void RunMonsterAi(struct entity *pokemon, u32 unused)
                     }
                     return;
                 }
-                if (pokemon_info->cringe_class_status.cringe == STATUS_INDEX_CONFUSED)
+                if (pokemon_info->cringe_class_status.cringe == CRINGE_STATUS_CONFUSED)
                 {
                     SetActionPassTurnOrWalk(&pokemon_info->action, pokemon_info->id);
                     return;
