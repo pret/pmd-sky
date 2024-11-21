@@ -1,5 +1,5 @@
-#include "overlay_29_02308340.h"
-#include "dungeon.h"
+#include "dungeon_ai.h"
+#include "dungeon_util.h"
 
 #ifdef JAPAN
 #define CANNOT_USE_ITEM_MESSAGE 0xB2D
@@ -27,11 +27,6 @@ extern bool8 GetCanMoveFlag(s16 index);
 extern void AiMovement(struct entity *pokemon, bool8 show_run_away_effect);
 extern void SetDecoyAiTracker(struct entity* entity);
 extern bool8 CanSeeTarget(struct entity *entity, struct entity *target_entity);
-
-static inline struct monster *GetEntInfo(struct entity *ent)
-{
-    return ent->info;
-}
 
 void RunMonsterAi(struct entity *pokemon, u32 unused)
 {

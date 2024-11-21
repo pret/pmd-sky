@@ -1,5 +1,5 @@
-#ifndef PMDSKY_OVERLAY_29_02308340_H
-#define PMDSKY_OVERLAY_29_02308340_H
+#ifndef PMDSKY_DUNGEON_AI_H
+#define PMDSKY_DUNGEON_AI_H
 
 #include "dungeon_mode.h"
 
@@ -9,4 +9,4 @@
 // unused: Unused
 void RunMonsterAi(struct entity *pokemon, u32 unused);
 
-#endif //PMDSKY_OVERLAY_29_02308340_H
+#endif //PMDSKY_DUNGEON_AI_H
