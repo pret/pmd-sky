@@ -7,13 +7,18 @@ from typing import List
 # If the function is in the middle, the assembly file is split in two. If the function is at either end, it is added to the next/previous source file.
 # This is intended for use after decompiling a function, so that you can place the decompiled C code in the placeholder after running the script.
 # Since this script updates files, it's recommended to have no uncommitted changes when running this script, in case something goes wrong and needs a revert.
-# Example usage: python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)"
+# Example usage (auto-generated file name): python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)"
+# Example usage (custom file name): python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)" my_new_file
 
-if len(sys.argv) != 3:
-    print('Usage: python extract_function.py <asm_file> <function_header>')
+if len(sys.argv) < 3 or len(sys.argv) > 4:
+    print('Usage: python extract_function.py <asm_file> <function_header> <extract_file_name>')
     exit(1)
 
-_, function_location, function_header = sys.argv
+_, function_location, function_header = sys.argv[0:3]
+extract_file_name = None
+if len(sys.argv) == 4:
+    extract_file_name = sys.argv[3]
+
 if function_location.endswith('.s'):
     function_location = function_location[:-2]
 if function_location.startswith("./asm/"):
@@ -80,16 +85,18 @@ if function_start_line is None or function_end_line is None or extract_function_
     print(f'Failed to find function. Start line {function_start_line}, end line {function_end_line}, extract address {extract_function_address}, new address {new_file_address}.')
     exit(1)
 
+new_asm_base_name = f"{file_prefix}{new_file_address}"
+
 remove_orig_file = first_function_start_line == function_start_line
 include_new_asm_file = new_file_address is not None
 
-new_inc_file_name = f"{file_prefix}{new_file_address}.inc"
+new_inc_file_name = f"{new_asm_base_name}.inc"
 new_asm_header = f"""\t.include "asm/macros.inc"
 \t.include "{new_inc_file_name}"
 
 \t.text
 """
-new_asm_name = f'{file_prefix}{new_file_address}.s'
+new_asm_name = f'{new_asm_base_name}.s'
 
 new_asm_lines = original_lines[function_end_line + 1:]
 original_asm_lines = original_lines[:function_start_line - 1]
@@ -97,7 +104,8 @@ original_asm_lines = original_lines[:function_start_line - 1]
 with open(LSF_FILE_PATH, 'r') as lsf_file:
     lsf_lines = lsf_file.readlines()
 
-extract_file_name = f'{file_prefix}{extract_function_address}'
+if extract_file_name is None:
+    extract_file_name = f'{file_prefix}{extract_function_address}'
 
 # If needed, add the extracted function's new .o file to main.lsf.
 merge_prev_file = None
@@ -117,7 +125,7 @@ for i, line in enumerate(lsf_lines):
         if merge_prev_file is None and merge_next_file is None:
             lsf_lines[i] += f'\tObject src/{extract_file_name}.o\n'
         if include_new_asm_file:
-            lsf_lines[i] += f'\tObject asm/{file_prefix}{new_file_address}.o\n'
+            lsf_lines[i] += f'\tObject asm/{new_asm_base_name}.o\n'
         break
 
 BRANCH_LINK_INSTRUCTION = '\tbl '
@@ -193,7 +201,7 @@ if include_new_asm_file:
         new_asm_file.write(new_asm_header)
         new_asm_file.writelines(new_asm_lines)
 
-    new_asm_inc_path = os.path.join(INCLUDE_FOLDER, f'{file_prefix}{new_file_address}.inc')
+    new_asm_inc_path = os.path.join(INCLUDE_FOLDER, f'{new_asm_base_name}.inc')
     print('Creating', new_asm_inc_path)
     write_inc_file(new_asm_lines, new_asm_inc_path)
 
@@ -245,7 +253,7 @@ else:
     header_file_path = os.path.join(HEADER_FOLDER, f'{extract_file_name}.h')
     print('Creating', header_file_path)
     with open(header_file_path, 'w') as new_header_file:
-        file_guard = f'PMDSKY_{(file_prefix + extract_function_address).upper()}_H'
+        file_guard = f'PMDSKY_{extract_file_name.upper()}_H'
         new_header_file.write(f'#ifndef {file_guard}\n#define {file_guard}\n\n')
         new_header_file.write(f'{function_header};\n\n')
         new_header_file.write(f'#endif //{file_guard}\n')

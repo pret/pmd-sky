@@ -60,166 +60,6 @@ struct monster_stat_modifiers {
     fx32_8 defensive_multipliers[2];
 };
 
-// Monster statuses
-// Many fields are indexes that select from a group of status conditions. These fields are named
-// by the FIRST status in the list (when the index is 1, since 0 usually means no status). For other
-// statuses in the group, see the subsequent enum values in enum status_id after the first status.
-struct statuses {
-    bool8 roost;
-    // 0x1: The typing in entity::types before the flying type is removed for statuses::roost
-    // and restored to entity::types after statuses::roost ends.
-    enum type_id original_types[2];
-    // 0x3: The move id to be used if statuses::bide is 1.
-    u8 bide_move_id;
-    u8 field_0x4;
-    u8 field_0x5;
-    u8 field_0x6;
-    // 0x7: Unique number given to the monster when spawning to differentiate it from other
-    // monsters and to properly keep track of a monster. Likely used because a monster could be
-    // spawned into the same slot as an old monster and using a pointer alone could cause some
-    // issues. Used for Leech Seed, Destiny Bond, Storm Drain, Lightning Rod (probably more).
-    u32 unique_id;
-    // 0xB: Unique number between the wrapped and wrapping target to connect them.
-    u32 wrap_pair_unique_id;
-    // 0xF: Tracks the damage taken to deal when bide status ends. Max 0x3E7 (999).
-    u32 bide_damage_tally;
-    enum monster_behavior monster_behavior : 8; // 0x13
-    u8 sleep;                              // 0x14: STATUS_SLEEP if 1
-    u8 sleep_turns; // 0x15: Turns left for the status in statuses::sleep
-    u8 burn;        // 0x16: STATUS_BURN if 1
-    u8 burn_turns;  // 0x17: Turns left for the status in statuses::burn
-    // 0x18: Turns left until residual damage for the status in statuses::burn, if applicable
-    u8 burn_damage_countdown;
-    // 0x19: The number of times the statuses::burn_damage_countdown has reached 0. Only used
-    // when badly poisoned. Determines how much damage the badly poisoned status condition
-    // will deal. There is no noticable difference because the table this value is looked up
-    // on is filled with 0x6
-    u8 badly_poisoned_damage_count;
-    u8 field_0x1a;
-    u8 freeze; // 0x1B: STATUS_FROZEN if 1
-    u8 field_0x1c;
-    u8 field_0x1d;
-    u8 field_0x1e;
-    // 0x1F: Controls the animation that plays when taking damage from the constriction status.
-    // For some reason this is initalized to 0x22 (34)? Which is the animation used by
-    // the exclusive item Nether Veil.
-    u32 constriction_animation;
-    u8 freeze_turns; // 0x23: Turns left for the status in statuses::freeze
-    // 0x24: Turns left until residual damage for the status in statuses::freeze, if applicable
-    u8 freeze_damage_countdown;
-    u8 field_0x25;
-    u8 field_0x26;
-    u8 cringe;         // 0x27: STATUS_CRINGE if 1
-    u8 cringe_turns;   // 0x28: Turns left for the status in statuses::cringe
-    u8 bide;           // 0x29: STATUS_BIDE if 1
-    u8 bide_turns;     // 0x2A: Turns left for the status in statuses::bide
-    u8 bide_move_slot; // 0x2B: Slot in the user's move list
-    u8 reflect;        // 0x2C: STATUS_REFLECT if 1
-    u8 reflect_turns;  // 0x2D: Turns left for the status in statuses::reflect
-    // 0x2E: Turns left until residual healing for the status in statuses::reflect, if applicable
-    u8 reflect_damage_countdown;
-    u8 curse; // 0x2F: STATUS_CURSED if 1
-    // 0x30: Set to monster::is_not_team_member of the attacker (the one causing the decoy status).
-    u8 curse_applier_non_team_member_flag;
-    // 0x31: True if the Pokémon is a decoy and a wild Pokémon (i.e., not an allied Pokémon).
-    bool8 enemy_decoy;
-    u8 curse_turns; // 0x32: Turns left for the status in statuses::curse
-    // 0x33: Turns left until residual damage for the status in statuses::curse, if applicable
-    u8 curse_damage_countdown;
-    u8 field_0x34;
-    u8 field_0x35;
-    u8 field_0x36;
-    u8 leech_seed; // 0x37: STATUS_LEECH_SEED if 1
-    u8 field_0x38;
-    u8 field_0x39;
-    u8 field_0x3a;
-    // 0x3B: Used to track the statuses::statuses_unique_id of the relevant monster for
-    // statuses like Leech Seed and Destiny Bond.
-    u32 statuses_applier_id;
-    // 0x3F: Index into entity_table_hdr::monster_slot_ptrs in the dungeon that the user
-    // (drainer) is held.
-    u8 leech_seed_source_monster_index;
-    u8 leech_seed_turns; // 0x40: Turns left for the status in statuses::leech_seed
-    // 0x41: Turns left until residual damage for the status in statuses::leech_seed, if applicable.
-    // Behaves weirdly without an afflictor
-    u8 leech_seed_damage_countdown;
-    u8 field_0x42;
-    u8 sure_shot;         // 0x43: STATUS_SURE_SHOT if 1
-    u8 sure_shot_turns;   // 0x44: Turns left for the status in statuses::sure_shot
-    u8 long_toss;         // 0x45: STATUS_LONG_TOSS if 1
-    u8 invisible;         // 0x46: STATUS_INVISIBLE if 1
-    u8 invisible_turns;   // 0x47: Turns left for the status in statuses::invisible
-    u8 blinded;           // 0x48: STATUS_BLINKER if 1
-    u8 blinded_turns;     // 0x49: Turns left for the status in statuses::blinded
-    u8 muzzled;           // 0x4A: STATUS_MUZZLED if 1
-    u8 muzzled_turns;     // 0x4B: Turns left for the status in statuses::muzzled
-    u8 miracle_eye;       // 0x4C: STATUS_MIRACLE_EYE if 1
-    u8 miracle_eye_turns; // 0x4D: Turns left for the status in statuses::miracle_eye
-    u8 magnet_rise;       // 0x4E: STATUS_MAGNET_RISE if 1
-    u8 magnet_rise_turns; // 0x4F: Turns left for the status in statuses::magnet_rise
-    bool8 power_ears;           // 0x50: STATUS_POWER_EARS
-    bool8 scanning;             // 0x51: STATUS_SCANNING
-    bool8 stair_spotter;        // 0x52: STATUS_STAIR_SPOTTER
-    // 0x53: Set when initally spawning a team member with the ability Pickup.
-    bool8 pickup_flag;
-    bool8 grudge;       // 0x54: STATUS_GRUDGE
-    bool8 exposed;      // 0x55: STATUS_EXPOSED (Foresight/Odor Sleuth)
-    bool8 type_changed; // 0x56: Flag for if the monster's type has been changed
-    bool8 boss_flag;    // 0x57: Seems to be true for boss monsters
-    // 0x58: Appears to be a flag for when a monster increasces their speed. Maybe only used
-    // by the RunLeaderTurn function to know if the leader has changed their speed stage partway
-    // through the function?
-    u8 unk_sped_up_tracker;
-    // 0x59: Maybe related to being a team member and new recruit? Set to 1 in TryRecruit
-    // and 0 in SpawnTeam. Also checked in EnemyEvolution to be 0 before evolving. Maybe to
-    // prevent a recently recruited ally from evolving after and or to add a monster to the
-    // assembly after the completion of a dungeon?
-    u8 field_0x59;
-#ifndef JAPAN
-    // 0x5A: Possibly a flag while in action. Could also be a flag to cause the burn from
-    // lava, heal a burn from water, and decrease hunger in the walls.
-    bool8 in_action;
-#endif
-    // 0x5B: STATUS_TERRIFIED, interestingly, appears to use 0x1 for the Foe-Fear Orb but
-    // 0x2 for the ability Stench. The distinction only seems to exist for the game to use
-    // a special message for when terrified from stench ends.
-    u8 terrified;
-    u8 terrified_turns;   // 0x5C: Turns left for the terrified status
-    u8 perish_song_turns; // 0x5D: Turns left before Perish Song takes effect
-    // 0x5E: Increases progressively while the No-Slip Cap is held. Capped at 0x13
-    // Used to calculate the chance of an item becoming sticky, resets to 0 when that happens
-    u8 no_slip_cap_counter;
-    // 0x5F: Determines how much experience the monster will reward after being defeated
-    // 0 = 0.5x, 1 = 1.0x, 2 = 1.5x
-    u8 exp_yield;
-    // 0x60: Appears to be set when the held item of the monster is going to be used?
-    bool8 unk_item_use_action;
-    // 0x61: Is initalized to 0x63 (99). Changing it from this value causes the monster to
-    // begin rendering differently? For example, it causes entity::0xB3 to be 1 and forces
-    // entity::0x28 to be 0.
-    u8 field_0x61;
-    // 0x62: Flag for two-turn moves that haven't concluded yet. This is also a graphical flag.
-    // A value of 1 mean "high up" (Fly/Bounce). A value of 2 means some other condition like
-    // Dig, Shadow Force, etc. Other values are treated as invalid. Also used for the move
-    // Seismic Toss when throwing up the target.
-    u8 two_turn_move_invincible;
-    // 0x63: Related to handling AI when a decoy is present on the floor?
-    // Seems to only be 0, 1, 2
-    enum decoy_ai decoy_ai_tracker;
-#ifndef JAPAN
-    u8 field_0x64;
-    u8 field_0x65;
-    u8 field_0x66;
-#endif
-    // 0x67: 1 means normal. 0 means half speed. 2, 3, and 4 mean 2x, 3x, and 4x speed.
-    s32 speed_stage;
-    // Each counter ticks down to 0 turn by turn. The current speed_stage is calculated as:
-    // min(max({# nonzero speed_up_counters} - {# nonzero speed_down_counters}, 0), 4)
-    u8 speed_up_counters[5];   // 0x6B
-    u8 speed_down_counters[5]; // 0x70
-    u8 stockpile_stage;        // 0x75: Goes from 0-3. STATUS_STOCKPILING if nonzero
-};
-
 // A bitfield where every bit controls one of the icons that can appear on top of a monster's sprite
 // to represent status effects. If multiple bits are set, the shown icon cycles through them.
 struct status_icon_flags {
@@ -290,6 +130,32 @@ struct action_data {
     s16 field_0x12;
 };
 
+struct frozen_class_status {
+    u8 freeze; // 0x0: STATUS_FROZEN if 1
+    // 0x4: Controls the animation that plays when taking damage from the constriction status.
+    // For some reason this is initalized to 0x22 (34)? Which is the animation used by
+    // the exclusive item Nether Veil.
+    u32 constriction_animation;
+    u8 freeze_turns; // 0x8: Turns left for the status in statuses::freeze
+    // 0x9: Turns left until residual damage for the status in statuses::freeze, if applicable
+    u8 freeze_damage_countdown;
+};
+
+struct cringe_class_status {
+    u8 cringe;         // 0x0: STATUS_CRINGE if 1
+    u8 cringe_turns;   // 0x1: Turns left for the status in statuses::cringe
+};
+
+struct curse_class_status {
+    u8 curse; // 0x0: STATUS_CURSED if 1
+    // 0x1: Set to monster::is_not_team_member of the attacker (the one causing the decoy status).
+    u8 curse_applier_non_team_member_flag;
+    // 0x2: Set to 1 on a Pokemon when inflicted with the Decoy status.
+    u8 dec;
+    u8 curse_turns; // 0x3: Turns left for the status in statuses::curse
+    // 0x4: Turns left until residual damage for the status in statuses::curse, if applicable
+    u8 curse_damage_countdown;
+};
 
 // Monster info
 struct monster {
@@ -360,146 +226,125 @@ struct monster {
     u32 iq_skill_flags[3];
     enum tactic_id tactic : 8; // 0xA8
 
-    //struct statuses statuses;  // 0xA9 / Need to be inline for alignment
+    // 0xA9
     bool8 roost;
-    // 0xAA / 0x1: The typing in entity::types before the flying type is removed for statuses::roost
+    // 0xAA: The typing in entity::types before the flying type is removed for statuses::roost
     // and restored to entity::types after statuses::roost ends.
     enum type_id original_types[2];
-    // 0xAC / 0x3: The move id to be used if statuses::bide is 1.
+    // 0xAC: The move id to be used if statuses::bide is 1.
     u8 bide_move_id;
     u8 field_0xad;
     u8 field_0xae;
     u8 field_0xaf;
-    // 0xB0 / 0x7: Unique number given to the monster when spawning to differentiate it from other
+    // 0xB0: Unique number given to the monster when spawning to differentiate it from other
     // monsters and to properly keep track of a monster. Likely used because a monster could be
     // spawned into the same slot as an old monster and using a pointer alone could cause some
     // issues. Used for Leech Seed, Destiny Bond, Storm Drain, Lightning Rod (probably more).
     u32 unique_id;
-    // 0xB4 / 0xB: Unique number between the wrapped and wrapping target to connect them.
+    // 0xB4: Unique number between the wrapped and wrapping target to connect them.
     u32 wrap_pair_unique_id;
-    // 0xB8 / 0xF: Tracks the damage taken to deal when bide status ends. Max 0x3E7 (999).
+    // 0xB8: Tracks the damage taken to deal when bide status ends. Max 0x3E7 (999).
     u32 bide_damage_tally;
-    enum monster_behavior monster_behavior : 8; // 0xBC / 0x13
-    u8 sleep;                              // 0xBD / 0x14: STATUS_SLEEP if 1
-    u8 sleep_turns; // 0xBE / 0x15: Turns left for the status in statuses::sleep
-    u8 burn;        // 0xBF / 0x16: STATUS_BURN if 1
-    u8 burn_turns;  // 0xC0 / 0x17: Turns left for the status in statuses::burn
-    // 0xC1 / 0x18: Turns left until residual damage for the status in statuses::burn, if applicable
+    enum monster_behavior monster_behavior : 8; // 0xBC
+    u8 sleep;                              // 0xBD: STATUS_SLEEP if 1
+    u8 sleep_turns; // 0xBE: Turns left for the status in statuses::sleep
+    u8 burn;        // 0xBF: STATUS_BURN if 1
+    u8 burn_turns;  // 0xC0: Turns left for the status in statuses::burn
+    // 0xC1: Turns left until residual damage for the status in statuses::burn, if applicable
     u8 burn_damage_countdown;
-    // 0xC2 / 0x19: The number of times the statuses::burn_damage_countdown has reached 0. Only used
+    // 0xC2: The number of times the statuses::burn_damage_countdown has reached 0. Only used
     // when badly poisoned. Determines how much damage the badly poisoned status condition
     // will deal. There is no noticable difference because the table this value is looked up
     // on is filled with 0x6
     u8 badly_poisoned_damage_count;
-    u8 field_0xc3;
-    u8 freeze; // 0xc4 / 0x1B: STATUS_FROZEN if 1
-    u8 field_0xc5;
-    u8 field_0xc6;
-    u8 field_0xc7;
-    // 0xC8 / 0x1F: Controls the animation that plays when taking damage from the constriction status.
-    // For some reason this is initalized to 0x22 (34)? Which is the animation used by
-    // the exclusive item Nether Veil.
-    u32 constriction_animation;
-    u8 freeze_turns; // 0xCC / 0x23: Turns left for the status in statuses::freeze
-    // 0xCD / 0x24: Turns left until residual damage for the status in statuses::freeze, if applicable
-    u8 freeze_damage_countdown;
-    u8 field_0xCE;
-    u8 field_0xCF;
-    u8 cringe;         // 0xD0 / 0x27: STATUS_CRINGE if 1
-    u8 cringe_turns;   // 0xD1 / 0x28: Turns left for the status in statuses::cringe
-    u8 bide;           // 0xD2 / 0x29: STATUS_BIDE if 1
-    u8 bide_turns;     // 0xD3 / 0x2A: Turns left for the status in statuses::bide
-    u8 bide_move_slot; // 0xD4 / 0x2B: Slot in the user's move list
-    u8 reflect;        // 0xD5 / 0x2C: STATUS_REFLECT if 1
-    u8 reflect_turns;  // 0xD6 / 0x2D: Turns left for the status in statuses::reflect
-    // 0xD7 / 0x2E: Turns left until residual healing for the status in statuses::reflect, if applicable
+    // 0xC4
+    struct frozen_class_status frozen_class_status;
+    // 0xD0
+    struct cringe_class_status cringe_class_status;
+    u8 bide;           // 0xD2: STATUS_BIDE if 1
+    u8 bide_turns;     // 0xD3: Turns left for the status in statuses::bide
+    u8 bide_move_slot; // 0xD4: Slot in the user's move list
+    u8 reflect;        // 0xD5: STATUS_REFLECT if 1
+    u8 reflect_turns;  // 0xD6: Turns left for the status in statuses::reflect
+    // 0xD7: Turns left until residual healing for the status in statuses::reflect, if applicable
     u8 reflect_damage_countdown;
-    u8 curse; // 0xD8 / 0x2F: STATUS_CURSED if 1
-    // 0xD9 / 0x30: Set to monster::is_not_team_member of the attacker (the one causing the decoy status).
-    u8 curse_applier_non_team_member_flag;
-    // 0xDA / 0x31: Set to 1 on a Pokemon when inflicted with the Decoy status.
-    u8 unk_decoy_tracker;
-    u8 curse_turns; // 0xDB / 0x32: Turns left for the status in statuses::curse
-    // 0xDC / 0x33: Turns left until residual damage for the status in statuses::curse, if applicable
-    u8 curse_damage_countdown;
-    u8 field_0xdd;
-    u8 field_0xde;
-    u8 field_0xdf;
-    u8 leech_seed; // 0xE0 / 0x37: STATUS_LEECH_SEED if 1
+    // 0xD8
+    struct curse_class_status curse_class_status;
+    u8 leech_seed; // 0xE0: STATUS_LEECH_SEED if 1
     u8 field_0xe1;
     u8 field_0xe2;
     u8 field_0xe3;
-    // 0xE4 / 0x3B: Used to track the statuses::statuses_unique_id of the relevant monster for
+    // 0xE4: Used to track the statuses::statuses_unique_id of the relevant monster for
     // statuses like Leech Seed and Destiny Bond.
     u32 statuses_applier_id;
-    // 0xE8 / 0x3F: Index into entity_table_hdr::monster_slot_ptrs in the dungeon that the user
+    // 0xE8: Index into entity_table_hdr::monster_slot_ptrs in the dungeon that the user
     // (drainer) is held.
     u8 leech_seed_source_monster_index;
-    u8 leech_seed_turns; // 0xE9 / 0x40: Turns left for the status in statuses::leech_seed
-    // 0xEA / 0x41: Turns left until residual damage for the status in statuses::leech_seed, if applicable.
+    u8 leech_seed_turns; // 0xE9: Turns left for the status in statuses::leech_seed
+    // 0xEA: Turns left until residual damage for the status in statuses::leech_seed, if applicable.
     // Behaves weirdly without an afflictor
     u8 leech_seed_damage_countdown;
     u8 field_0xEB;
-    u8 sure_shot;         // 0xEC / 0x43: STATUS_SURE_SHOT if 1
-    u8 sure_shot_turns;   // 0xED / 0x44: Turns left for the status in statuses::sure_shot
-    u8 long_toss;         // 0xEE / 0x45: STATUS_LONG_TOSS if 1
-    u8 invisible;         // 0xEF / 0x46: STATUS_INVISIBLE if 1
-    u8 invisible_turns;   // 0xF0 / 0x47: Turns left for the status in statuses::invisible
-    u8 blinded;           // 0xF1 / 0x48: STATUS_BLINKER if 1
-    u8 blinded_turns;     // 0xF2 / 0x49: Turns left for the status in statuses::blinded
-    u8 muzzled;           // 0xF3 / 0x4A: STATUS_MUZZLED if 1
-    u8 muzzled_turns;     // 0xF4 / 0x4B: Turns left for the status in statuses::muzzled
-    u8 miracle_eye;       // 0xF5 / 0x4C: STATUS_MIRACLE_EYE if 1
-    u8 miracle_eye_turns; // 0xF6 / 0x4D: Turns left for the status in statuses::miracle_eye
-    u8 magnet_rise;       // 0xF7 / 0x4E: STATUS_MAGNET_RISE if 1
-    u8 magnet_rise_turns; // 0xF8 / 0x4F: Turns left for the status in statuses::magnet_rise
-    bool8 power_ears;           // 0xF9 / 0x50: STATUS_POWER_EARS
-    bool8 scanning;             // 0xFA / 0x51: STATUS_SCANNING
-    bool8 stair_spotter;        // 0xFB / 0x52: STATUS_STAIR_SPOTTER
-    // 0xFC / 0x53: Set when initally spawning a team member with the ability Pickup.
+    u8 sure_shot;         // 0xEC: STATUS_SURE_SHOT if 1
+    u8 sure_shot_turns;   // 0xED: Turns left for the status in statuses::sure_shot
+    u8 long_toss;         // 0xEE: STATUS_LONG_TOSS if 1
+    u8 invisible;         // 0xEF: STATUS_INVISIBLE if 1
+    u8 invisible_turns;   // 0xF0: Turns left for the status in statuses::invisible
+    u8 blinded;           // 0xF1: STATUS_BLINKER if 1
+    u8 blinded_turns;     // 0xF2: Turns left for the status in statuses::blinded
+    u8 muzzled;           // 0xF3: STATUS_MUZZLED if 1
+    u8 muzzled_turns;     // 0xF4: Turns left for the status in statuses::muzzled
+    u8 miracle_eye;       // 0xF5: STATUS_MIRACLE_EYE if 1
+    u8 miracle_eye_turns; // 0xF6: Turns left for the status in statuses::miracle_eye
+    u8 magnet_rise;       // 0xF7: STATUS_MAGNET_RISE if 1
+    u8 magnet_rise_turns; // 0xF8: Turns left for the status in statuses::magnet_rise
+    bool8 power_ears;           // 0xF9: STATUS_POWER_EARS
+    bool8 scanning;             // 0xFA: STATUS_SCANNING
+    bool8 stair_spotter;        // 0xFB: STATUS_STAIR_SPOTTER
+    // 0xFC: Set when initally spawning a team member with the ability Pickup.
     bool8 pickup_flag;
-    bool8 grudge;       // 0xFD / 0x54: STATUS_GRUDGE
-    bool8 exposed;      // 0xFE / 0x55: STATUS_EXPOSED (Foresight/Odor Sleuth)
-    bool8 type_changed; // 0xFF / 0x56: Flag for if the monster's type has been changed
-    bool8 boss_flag;    // 0x100 / 0x57: Seems to be true for boss monsters
-    // 0x101 / 0x58: Appears to be a flag for when a monster increasces their speed. Maybe only used
+    bool8 grudge;       // 0xFD: STATUS_GRUDGE
+    bool8 exposed;      // 0xFE: STATUS_EXPOSED (Foresight/Odor Sleuth)
+    bool8 type_changed; // 0xFF: Flag for if the monster's type has been changed
+    bool8 boss_flag;    // 0x100: Seems to be true for boss monsters
+    // 0x101: Appears to be a flag for when a monster increasces their speed. Maybe only used
     // by the RunLeaderTurn function to know if the leader has changed their speed stage partway
     // through the function?
     u8 unk_sped_up_tracker;
-    // 0x102 / 0x59: Maybe related to being a team member and new recruit? Set to 1 in TryRecruit
+    // 0x102: Maybe related to being a team member and new recruit? Set to 1 in TryRecruit
     // and 0 in SpawnTeam. Also checked in EnemyEvolution to be 0 before evolving. Maybe to
     // prevent a recently recruited ally from evolving after and or to add a monster to the
     // assembly after the completion of a dungeon?
     u8 field_0x102;
 #ifndef JAPAN
-    // 0x103 / 0x5A: Possibly a flag while in action. Could also be a flag to cause the burn from
+    // 0x103: Possibly a flag while in action. Could also be a flag to cause the burn from
     // lava, heal a burn from water, and decrease hunger in the walls.
     bool8 in_action;
 #endif
-    // 0x104 / 0x5B: STATUS_TERRIFIED, interestingly, appears to use 0x1 for the Foe-Fear Orb but
+    // 0x104: STATUS_TERRIFIED, interestingly, appears to use 0x1 for the Foe-Fear Orb but
     // 0x2 for the ability Stench. The distinction only seems to exist for the game to use
     // a special message for when terrified from stench ends.
     u8 terrified;
-    u8 terrified_turns;   // 0x105 / 0x5C: Turns left for the terrified status
-    u8 perish_song_turns; // 0x106 / 0x5D: Turns left before Perish Song takes effect
-    // 0x107 / 0x5E: Increases progressively while the No-Slip Cap is held. Capped at 0x13
+    u8 terrified_turns;   // 0x105: Turns left for the terrified status
+    u8 perish_song_turns; // 0x106: Turns left before Perish Song takes effect
+    // 0x107: Increases progressively while the No-Slip Cap is held. Capped at 0x13
     // Used to calculate the chance of an item becoming sticky, resets to 0 when that happens
     u8 no_slip_cap_counter;
-    // 0x108 / 0x5F: Determines how much experience the monster will reward after being defeated
+    // 0x108: Determines how much experience the monster will reward after being defeated
     // 0 = 0.5x, 1 = 1.0x, 2 = 1.5x
     u8 exp_yield;
-    // 0x109 / 0x60: Appears to be set when the held item of the monster is going to be used?
+    // 0x109: Appears to be set when the held item of the monster is going to be used?
     bool8 use_held_item;
-    // 0x10A / 0x61: Is initalized to 0x63 (99). Changing it from this value causes the monster to
+    // 0x10A: Is initalized to 0x63 (99). Changing it from this value causes the monster to
     // begin rendering differently? For example, it causes entity::0xB3 to be 1 and forces
     // entity::0x28 to be 0.
     u8 field_0x10a;
-    // 0x10B / 0x62: Flag for two-turn moves that haven't concluded yet. This is also a graphical flag.
+    // 0x10B: Flag for two-turn moves that haven't concluded yet. This is also a graphical flag.
     // A value of 1 mean "high up" (Fly/Bounce). A value of 2 means some other condition like
     // Dig, Shadow Force, etc. Other values are treated as invalid. Also used for the move
     // Seismic Toss when throwing up the target.
     u8 two_turn_move_invincible;
-    // 0x10C / 0x63: Related to handling AI when a decoy is present on the floor?
+    // 0x10C: Related to handling AI when a decoy is present on the floor?
     // Seems to only be 0, 1, 2
     u8 decoy_ai_tracker;
 #ifndef JAPAN
@@ -507,13 +352,13 @@ struct monster {
     u8 field_0x10e;
     u8 field_0x10f;
 #endif
-    // 0x110 / 0x67: 1 means normal. 0 means half speed. 2, 3, and 4 mean 2x, 3x, and 4x speed.
+    // 0x110: 1 means normal. 0 means half speed. 2, 3, and 4 mean 2x, 3x, and 4x speed.
     s32 speed_stage;
     // Each counter ticks down to 0 turn by turn. The current speed_stage is calculated as:
     // min(max({# nonzero speed_up_counters} - {# nonzero speed_down_counters}, 0), 4)
-    u8 speed_up_counters[5];   // 0x114 / 0x6B
-    u8 speed_down_counters[5]; // 0x119 / 0x70
-    u8 stockpile_stage;        // 0x11E / 0x75: Goes from 0-3. STATUS_STOCKPILING if nonzero
+    u8 speed_up_counters[5];   // 0x114
+    u8 speed_down_counters[5]; // 0x119
+    u8 stockpile_stage;        // 0x11E: Goes from 0-3. STATUS_STOCKPILING if nonzero
 
 
     u8 field_0x11f;

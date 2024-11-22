@@ -3625,6 +3625,14 @@ enum status_id {
     STATUS_STAIR_SPOTTER = 101,  // Can locate stairs
 };
 
+#define FREEZE_STATUS_WRAP (STATUS_PETRIFIED - STATUS_WRAP + 1)         // 3
+#define FREEZE_STATUS_WRAPPED (STATUS_PETRIFIED - STATUS_WRAPPED + 1)   // 4
+#define FREEZE_STATUS_PETRIFIED (STATUS_PETRIFIED - STATUS_FROZEN + 1)  // 6
+
+#define CRINGE_STATUS_CONFUSED (STATUS_CONFUSED - STATUS_CRINGE + 1)    // 2
+
+#define CURSED_STATUS_DECOY (STATUS_DECOY - STATUS_CURSED + 1)  // 2
+
 // Mission type on a floor
 enum mission_type {
     MISSION_RESCUE_CLIENT = 0,
@@ -4200,12 +4208,6 @@ enum movement_flag
     MOVEMENT_FLAG_UNK_14 = 1 << 14,
     MOVEMENT_FLAG_SWAPPING_PLACES_PETRIFIED_ALLY = 1 << 15, // Set if the Pokémon is petrified and the leader cures them by swapping places.
 };
-
-#define STATUS_INDEX_PETRIFIED 6
-
-#define STATUS_INDEX_CONFUSED 2
-
-#define STATUS_INDEX_DECOY 2
 
 enum decoy_ai
 {
