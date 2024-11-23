@@ -123,13 +123,13 @@
 .public GetVisibilityRange
 .public GetWindow
 .public HasDropeyeStatus
-.public HasTactic
 .public InitMove
 .public IqSkillIsEnabled
 .public IsBagFull
 .public IsChargingTwoTurnMove
 .public IsMonster__0231A9D4
 .public IsMonsterCornered
+.public IsTacticSet
 .public MemcpyFast
 .public MemsetFast
 .public OS_IRQTable

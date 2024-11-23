@@ -765,8 +765,8 @@ CanSeeInvisibleMonsters: ; 0x02301EEC
 	ldmia sp!, {r3, pc}
 	arm_func_end CanSeeInvisibleMonsters
 
-	arm_func_start HasTactic
-HasTactic: ; 0x02301F20
+	arm_func_start IsTacticSet
+IsTacticSet: ; 0x02301F20
 	ldr r2, [r0, #0xb4]
 	ldrb r0, [r2, #7]
 	cmp r0, #0
@@ -781,7 +781,7 @@ _02301F40:
 	movne r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end HasTactic
+	arm_func_end IsTacticSet
 
 	arm_func_start HasDropeyeStatus
 HasDropeyeStatus: ; 0x02301F50

@@ -3,7 +3,7 @@
 #include "overlay_29_023000E4.h"
 
 extern bool8 AbilityIsActive(struct entity *entity, enum ability_id ability_id);
-extern bool8 HasTactic(struct entity *entity, enum tactic_id tactic);
+extern bool8 IsTacticSet(struct entity *entity, enum tactic_id tactic);
 
 bool8 ShouldMonsterRunAway(struct entity *pokemon)
 {
@@ -28,10 +28,10 @@ bool8 ShouldMonsterRunAway(struct entity *pokemon)
                 return TRUE;
         }
 
-        if (HasTactic(pokemon, TACTIC_GET_AWAY_FROM_HERE))
+        if (IsTacticSet(pokemon, TACTIC_GET_AWAY_FROM_HERE))
             return TRUE;
 
-        if (HasTactic(pokemon, TACTIC_AVOID_TROUBLE))
+        if (IsTacticSet(pokemon, TACTIC_AVOID_TROUBLE))
         {
             s32 max_hp = pokemon_info->max_hp_stat + pokemon_info->max_hp_boost;
             if (max_hp > 999)
