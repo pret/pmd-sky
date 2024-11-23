@@ -24806,6 +24806,7 @@ _020223E8: .word _02099A28
 _020223EC: .word _020999F0
 	arm_func_end sub_02022118
 
+; https://decomp.me/scratch/Qhonx
 	arm_func_start PreprocessString
 PreprocessString: ; 0x020223F0
 	stmdb sp!, {r0, r1, r2, r3}

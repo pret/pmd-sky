@@ -13,6 +13,8 @@ Static main
 	Object asm/main_02000DE0.o
 	Object src/main_02003D2C.o
 	Object asm/main_02003DB8.o
+	Object src/main_02008210.o
+	Object asm/main_02008240.o
 	Object src/main_02008254.o
 	Object asm/main_020082C4.o
 	Object src/debug.o
@@ -42,6 +44,10 @@ Static main
 	Object asm/main_0207F40C.o
 	Object src/main_0207F818.o
 	Object asm/main_0207F894.o
+	Object src/main_02089678.o
+	Object asm/main_02089694.o
+	Object src/main_020897AC.o
+	Object asm/main_020897DC.o
 }
 
 Autoload ITCM
@@ -221,13 +227,15 @@ Overlay OVY_29
 	Object src/dg.o
 	Object asm/overlay_29_022E0378.o
 	Object src/dg_object.o
-	Object asm/overlay_29_022E1AAC.o
+	Object asm/overlay_29_022E1AD4.o
 	Object src/dg_camera.o
 	Object asm/overlay_29_022E330C.o
 	Object src/dg_effect.o
 	Object asm/overlay_29_022E37DC.o
 	Object src/dg_uty.o
 	Object asm/overlay_29_022E9618.o
+	Object src/overlay_29_022EA9EC.o
+	Object asm/overlay_29_022EAA20.o
 	Object src/dg_random.o
 	Object asm/overlay_29_022EAB50.o
 	Object src/overlay_29_022EC608.o

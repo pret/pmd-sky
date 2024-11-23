@@ -9,7 +9,6 @@
 .public DISPLACEMENTS_WITHIN_3
 .public DisplayUi
 .public DUNGEON_PRNG_STATE
-.public DUNGEON_PRNG_STATE_SECONDARY_VALUES
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__022E95F4

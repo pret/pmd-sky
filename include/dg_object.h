@@ -10,5 +10,6 @@ bool8 EntityIsValid__022E1A1C(struct entity *entity);
 void UpdateEntityPixelPos(struct entity *entity, struct pixel_position *pixel_pos);
 void SetEntityPixelPosXY(struct entity *entity, u32 x, u32 y);
 void IncrementEntityPixelPosXY(struct entity *entity, u32 x, u32 y);
+u32 ov29_022E1AAC(u32 param_0, u32 param_1);
 
 #endif //PMDSKY_OVERLAY_29_022E1A1C_H

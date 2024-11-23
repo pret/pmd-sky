@@ -1,0 +1,6 @@
+#ifndef PMDSKY_OVERLAY_29_022EA9EC_H
+#define PMDSKY_OVERLAY_29_022EA9EC_H
+
+void InitDungeonRng(u32 seed);
+
+#endif //PMDSKY_OVERLAY_29_022EA9EC_H

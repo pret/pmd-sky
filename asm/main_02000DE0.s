@@ -1942,6 +1942,7 @@ _020025F0: .word _0229AFC0
 _020025F4: .word _0229AFE4
 	arm_func_end sub_02002580
 
+; https://decomp.me/scratch/mYHOs
 	arm_func_start sub_020025F8
 sub_020025F8: ; 0x020025F8
 	stmdb sp!, {r4, lr}
