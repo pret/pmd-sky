@@ -1,8 +1,8 @@
 #include "dungeon_capabilities.h"
+#include "dungeon_ai_targeting.h"
 #include "dungeon_util.h"
+#include "joined_at_checks.h"
 
-extern bool8 IsExperienceLocked(struct monster *pokemon_info);
-extern bool8 ShouldMonsterRunAway(struct entity *pokemon);
 extern bool8 CheckVariousStatuses2(struct entity *pokemon, bool8 check_blinker);
 extern bool8 CheckVariousStatuses(struct entity *pokemon);
 extern bool8 IsChargingAnyTwoTurnMove(struct entity *pokemon, bool8 check_charge);

@@ -2829,7 +2829,7 @@ AiMovement: ; 0x01FFA3C4
 	strb r2, [r8, #0x7e]
 	mov r1, #7
 	strb r2, [r8, #0x7f]
-	bl ov29_02301F20
+	bl HasTactic
 	cmp r0, #0
 	beq _01FFA428
 	ldrsh r2, [r8, #0x12]
@@ -2847,7 +2847,7 @@ AiMovement: ; 0x01FFA3C4
 _01FFA428:
 	mov r0, r4
 	mov r1, #9
-	bl ov29_02301F20
+	bl HasTactic
 	cmp r0, #0
 	bne _01FFA44C
 	mov r0, r4
@@ -3439,7 +3439,7 @@ _01FFAC6C:
 	strh r5, [sl, #0x80]
 	strb r2, [sl, #0x7e]
 	str r3, [sl, #0x120 + AI_MOVEMENT_OFFSET]
-	bl ov29_02301F20
+	bl HasTactic
 	cmp r0, #0
 	beq _01FFAD0C
 	mov r0, r4
@@ -3466,7 +3466,7 @@ _01FFAD0C:
 _01FFAD14:
 	mov r0, r4
 	mov r1, #1
-	bl ov29_02301F20
+	bl HasTactic
 	cmp r0, #0
 	bne _01FFAD7C
 	ldrb r0, [sl, #6]
@@ -4179,7 +4179,7 @@ ChooseAiMove: ; 0x01FFB658
 _01FFB6CC:
 	mov r0, sl
 	mov r1, #8
-	bl ov29_02301F20
+	bl HasTactic
 	cmp r0, #0
 	bne _01FFBD0C
 	ldrb r0, [r7, #0xd0]

@@ -1,5 +1,7 @@
 #include "dungeon_ai.h"
+#include "dg_random.h"
 #include "dungeon_util.h"
+#include "dungeon_capabilities.h"
 
 #ifdef JAPAN
 #define CANNOT_USE_ITEM_MESSAGE 0xB2D
@@ -13,14 +15,12 @@ extern struct dungeon *DUNGEON_PTR[];
 
 extern void EndFrozenClassStatus(struct entity *pokemon, struct entity *target, bool8 log);
 extern bool8 ShouldRunMonsterAi(struct entity *pokemon);
-extern bool8 CheckVariousConditions(struct entity *pokemon);
 extern void SubstitutePlaceholderStringTags(u8 *buffer, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *pokemon, u32 message_id);
 extern void AiDecideUseItem(struct entity *pokemon);
 extern bool8 HasStatusThatPreventsActing(struct entity *pokemon);
 extern void ClearMonsterActionFields(struct action_data *action_pointer);
 extern void SetActionPassTurnOrWalk(struct action_data *action_pointer, s16 species);
-extern u32 DungeonRandInt(u32 cap);
 extern bool8 IqSkillIsEnabled(struct entity *pokemon, enum iq_skill_id iq_skill);
 extern void ChooseAiMove(struct entity *pokemon);
 extern bool8 GetCanMoveFlag(s16 index);
