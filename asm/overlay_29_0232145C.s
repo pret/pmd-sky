@@ -101,7 +101,7 @@ _02321584:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02321888
-	bl ov29_022ED868
+	bl AreLateGameTrapsEnabledWrapper
 	cmp r0, #0
 	bne _023215D8
 	ldrh r0, [r4, #4]

@@ -359,7 +359,7 @@ _0231B5F4:
 	mov r0, r8
 	bl ov29_02304830
 	mov r0, r8
-	bl ov29_02304BAC
+	bl DetermineMonsterShadow
 	mov r0, r8
 	bl SetMonsterTypeAndAbility
 	mov r0, #1

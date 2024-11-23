@@ -144,7 +144,7 @@ _023352C0:
 	mov r0, sl
 	bl ov29_02304830
 	mov r0, sl
-	bl ov29_02304BAC
+	bl DetermineMonsterShadow
 	mov r5, #1
 	b _02335420
 _023352FC:
@@ -3843,7 +3843,7 @@ _02337C5C:
 	cmp r0, #0
 	beq _02337C84
 	mov r0, r7
-	bl ov29_02304BAC
+	bl DetermineMonsterShadow
 _02337C84:
 	add r6, r6, #1
 	cmp r6, #0x14

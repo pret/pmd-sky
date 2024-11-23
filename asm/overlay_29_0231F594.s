@@ -94,7 +94,7 @@ _0231F6B4:
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x78f]
-	bl ov29_02304B64
+	bl DetermineAllMonsterShadow
 	bl UpdateMinimap
 	bl UpdateTrapsVisibility
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}

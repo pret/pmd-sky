@@ -2594,7 +2594,7 @@ _0231ED08:
 	bl ov29_0233FB1C
 	bl ov29_0233785C
 	bl ov29_0233665C
-	bl ov29_02304B64
+	bl DetermineAllMonsterShadow
 	bl UpdateMinimap
 	bl UpdateTrapsVisibility
 	ldr r1, _0231EDD4 ; =0x00000DFE

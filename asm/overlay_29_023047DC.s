@@ -300,8 +300,8 @@ _02304B58:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov29_02304B14
 
-	arm_func_start ov29_02304B64
-ov29_02304B64: ; 0x02304B64
+	arm_func_start DetermineAllMonsterShadow
+DetermineAllMonsterShadow: ; 0x02304B64
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r4, _02304BA8 ; =DUNGEON_PTR
 	mov r5, #0
@@ -319,7 +319,7 @@ _02304B70:
 	cmp r0, #0
 	beq _02304B98
 	mov r0, r6
-	bl ov29_02304BAC
+	bl DetermineMonsterShadow
 _02304B98:
 	add r5, r5, #1
 	cmp r5, #0x14
@@ -327,10 +327,10 @@ _02304B98:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02304BA8: .word DUNGEON_PTR
-	arm_func_end ov29_02304B64
+	arm_func_end DetermineAllMonsterShadow
 
-	arm_func_start ov29_02304BAC
-ov29_02304BAC: ; 0x02304BAC
+	arm_func_start DetermineMonsterShadow
+DetermineMonsterShadow: ; 0x02304BAC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	bl GetTileAtEntity
@@ -378,7 +378,7 @@ _02304C24:
 _02304C30: .word ov29_02352808
 _02304C34: .word DUNGEON_PTR
 _02304C38: .word SECONDARY_TERRAIN_TYPES
-	arm_func_end ov29_02304BAC
+	arm_func_end DetermineMonsterShadow
 
 	arm_func_start ov29_02304C3C
 ov29_02304C3C: ; 0x02304C3C

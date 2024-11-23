@@ -4,6 +4,7 @@
 .public AdvanceFrame
 .public AreOrbsAllowedVeneer
 .public AreTrawlOrbsAllowed
+.public DetermineAllMonsterShadow
 .public DetermineTileWalkableNeighbors
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 .public DrawMinimapTile
@@ -19,7 +20,6 @@
 .public MemFree
 .public ov29_022E56A0
 .public ov29_022F62CC
-.public ov29_02304B64
 .public ov29_02336694
 .public ov29_023457C8
 .public RemoveGroundItem

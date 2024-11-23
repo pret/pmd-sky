@@ -881,7 +881,7 @@ _022DF6F8:
 	bl ClearHiddenStairs
 	b _022DF750
 _022DF74C:
-	bl ov29_022F9970
+	bl ReevaluateSnatchMonster
 _022DF750:
 	bl ov29_022F7EAC
 	bl ov29_0233665C
@@ -894,7 +894,7 @@ _022DF750:
 	bl ov29_022FA2F0
 	b _022DF780
 _022DF778:
-	bl ov29_02304B64
+	bl DetermineAllMonsterShadow
 	bl ov29_022FA524
 _022DF780:
 	mov r0, #1
@@ -1585,7 +1585,7 @@ _022E00EC:
 _022E0150:
 	cmp sl, #0
 	beq _022E026C
-	bl ov29_022ECF44
+	bl IsDungeonEndReasonFailure
 	cmp r0, #0
 	beq _022E01D8
 	ldr r0, _022DFF40 ; =DUNGEON_PTR

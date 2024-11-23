@@ -946,7 +946,7 @@ _0232D038:
 	cmp r4, #1
 	ble _0232D034
 	mov r4, #1
-	bl ov29_02304B64
+	bl DetermineAllMonsterShadow
 _0232D06C:
 	mov r8, #0
 	mov r5, r8
@@ -1000,7 +1000,7 @@ DoMoveTrapper: ; 0x0232D0F0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl ov29_022ED868
+	bl AreLateGameTrapsEnabledWrapper
 	cmp r0, #0
 	bne _0232D11C
 #ifdef JAPAN
@@ -1718,7 +1718,7 @@ DoMoveStealthRock: ; 0x0232D90C
 	cmp r0, #0
 	movne r5, #2
 	moveq r5, #1
-	bl ov29_022ED868
+	bl AreLateGameTrapsEnabledWrapper
 	cmp r0, #0
 	beq _0232D95C
 	mov r2, r5
@@ -2018,7 +2018,7 @@ DoMoveToxicSpikes: ; 0x0232DC64
 	cmp r0, #0
 	movne r5, #2
 	moveq r5, #1
-	bl ov29_022ED868
+	bl AreLateGameTrapsEnabledWrapper
 	cmp r0, #0
 	beq _0232DCB4
 	mov r2, r5

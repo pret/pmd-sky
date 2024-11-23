@@ -9,6 +9,7 @@
 .public BoostOffensiveStat
 .public CalcStatusDuration
 .public CeilFixedPoint
+.public DetermineMonsterShadow
 .public DisplayAnimatedNumbers
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
@@ -115,7 +116,6 @@
 .public ov29_022EACCC
 .public ov29_022FB984
 .public ov29_02304830
-.public ov29_02304BAC
 .public ov29_0234B09C
 .public ov29_0234B0B4
 .public PERISH_SONG_TURN_RANGE

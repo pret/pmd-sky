@@ -1564,7 +1564,7 @@ DoMoveSpikes: ; 0x0232B6C8
 	cmp r0, #0
 	movne r5, #2
 	moveq r5, #1
-	bl ov29_022ED868
+	bl AreLateGameTrapsEnabledWrapper
 	cmp r0, #0
 	beq _0232B718
 	mov r2, r5

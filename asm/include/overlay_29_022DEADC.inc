@@ -6,6 +6,7 @@
 .public CountItemsOnFloorForAcuteSniffer
 .public Debug_Print0
 .public DeleteAllMonsterSpriteFiles
+.public DetermineAllMonsterShadow
 .public DetermineAllTilesWalkableNeighbors
 .public DIRECTIONS_XY
 .public DisplayFloorCard
@@ -39,6 +40,7 @@
 .public InitDungeonRng
 .public InitEnemySpawnStats
 .public IsBossFight
+.public IsDungeonEndReasonFailure
 .public IsFloorOver
 .public IsIqEnabled
 .public IsLevelResetDungeon
@@ -100,7 +102,6 @@
 .public ov29_022EAF34
 .public ov29_022EAF48
 .public ov29_022ECDE4
-.public ov29_022ECF44
 .public ov29_022ECF78
 .public ov29_022ECFB8
 .public ov29_022ED030
@@ -119,7 +120,6 @@
 .public ov29_022F7BF4
 .public ov29_022F7E34
 .public ov29_022F7EAC
-.public ov29_022F9970
 .public ov29_022FA2F0
 .public ov29_022FA418
 .public ov29_022FA524
@@ -135,7 +135,6 @@
 .public ov29_022FDFA4
 .public ov29_022FE2E4
 .public ov29_022FE4A8
-.public ov29_02304B64
 .public ov29_02305814
 .public ov29_0231AFB4
 .public ov29_0231B39C
@@ -213,6 +212,7 @@
 .public ov29_023510C8
 .public ov29_02353563
 .public Rand16Bit
+.public ReevaluateSnatchMonster
 .public RefillTeam
 .public ResetGravity
 .public RunFractionalTurn

@@ -2607,7 +2607,7 @@ _02317350:
 	strh r5, [r8, #4]
 	mov r0, sb
 	strh r4, [sb, #0xa8]
-	bl ov29_02304BAC
+	bl DetermineMonsterShadow
 	mov r0, sb
 	bl ov29_022E47C4
 	mov r0, sb

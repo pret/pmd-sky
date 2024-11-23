@@ -109,8 +109,8 @@ _022ECF3C: .word 0x00000A41
 _022ECF40: .word 0x000003E7
 	arm_func_end ov29_022ECDE4
 
-	arm_func_start ov29_022ECF44
-ov29_022ECF44: ; 0x022ECF44
+	arm_func_start IsDungeonEndReasonFailure
+IsDungeonEndReasonFailure: ; 0x022ECF44
 	ldr r1, _022ECF6C ; =DUNGEON_PTR
 	ldr r0, _022ECF70 ; =0x0002CA66
 	ldr r2, [r1]
@@ -129,7 +129,7 @@ _022ECF70: .word 0x0002C9C2
 _022ECF70: .word 0x0002CA66
 #endif
 _022ECF74: .word 0x00000279
-	arm_func_end ov29_022ECF44
+	arm_func_end IsDungeonEndReasonFailure
 
 	arm_func_start ov29_022ECF78
 ov29_022ECF78: ; 0x022ECF78
@@ -803,8 +803,8 @@ BindTrapToTile: ; 0x022ED858
 	bx lr
 	arm_func_end BindTrapToTile
 
-	arm_func_start ov29_022ED868
-ov29_022ED868: ; 0x022ED868
+	arm_func_start AreLateGameTrapsEnabledWrapper
+AreLateGameTrapsEnabledWrapper: ; 0x022ED868
 	ldr r0, _022ED880 ; =DUNGEON_PTR
 	ldr ip, _022ED884 ; =AreLateGameTrapsEnabled
 	ldr r0, [r0]
@@ -818,7 +818,7 @@ ov29_022ED868: ; 0x022ED868
 	.align 2, 0
 _022ED880: .word DUNGEON_PTR
 _022ED884: .word AreLateGameTrapsEnabled
-	arm_func_end ov29_022ED868
+	arm_func_end AreLateGameTrapsEnabledWrapper
 
 	arm_func_start ov29_022ED888
 ov29_022ED888: ; 0x022ED888

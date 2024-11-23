@@ -6,6 +6,7 @@
 .public AnimationDelayOrSomething
 .public AnimationHasMoreFrames
 .public AreEntitiesAdjacent
+.public AreLateGameTrapsEnabledWrapper
 .public BoostSpeedOneStage
 .public CalcStatusDuration
 .public ChangeMonsterAnimation
@@ -93,7 +94,6 @@
 .public ov29_022EACCC
 .public ov29_022ED0C4
 .public ov29_022ED0D4
-.public ov29_022ED868
 .public ov29_022F87C0
 .public ov29_022F8830
 .public ov29_022F88C0

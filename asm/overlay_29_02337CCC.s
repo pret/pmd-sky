@@ -98,7 +98,7 @@ _02337DE4:
 	cmp r0, #0
 	beq _02337E0C
 	mov r0, r6
-	bl ov29_02304BAC
+	bl DetermineMonsterShadow
 _02337E0C:
 	add r5, r5, #1
 	cmp r5, #0x14
