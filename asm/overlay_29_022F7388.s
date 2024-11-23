@@ -5975,16 +5975,3 @@ ov29_022FBAB4: ; 0x022FBAB4
 #endif
 	bx lr
 	arm_func_end ov29_022FBAB4
-
-	arm_func_start IsSpecialStoryAlly
-IsSpecialStoryAlly: ; 0x022FBAD0
-	ldrb r0, [r0, #0x48]
-	cmp r0, #0xd9
-	blo _022FBAE8
-	cmp r0, #0xe4
-	movlo r0, #1
-	bxlo lr
-_022FBAE8:
-	mov r0, #0
-	bx lr
-	arm_func_end IsSpecialStoryAlly

@@ -246,7 +246,7 @@ Overlay OVY_29
 	Object asm/overlay_29_022F62CC.o
 	Object src/overlay_29_022F7364.o
 	Object asm/overlay_29_022F7388.o
-	Object src/overlay_29_022FBAF0.o
+	Object src/joined_at_checks.o
 	Object asm/overlay_29_022FBB1C.o
 	Object src/overlay_29_022FC99C.o
 	Object asm/overlay_29_022FC9C0.o
