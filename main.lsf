@@ -254,6 +254,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022F62CC.o
 	Object src/overlay_29_022F7364.o
 	Object asm/overlay_29_022F7388.o
+	Object src/joined_at_checks.o
+	Object asm/overlay_29_022FBB1C.o
 	Object src/overlay_29_022FC99C.o
 	Object asm/overlay_29_022FC9C0.o
 	Object src/overlay_29_022FEEB8_eu.o
@@ -264,6 +266,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02300108.o
 	Object src/dungeon_capabilities.o
 	Object asm/overlay_29_02300BF8.o
+	Object src/dungeon_ai_targeting.o
+	Object asm/overlay_29_023016A8.o
 	Object src/overlay_29_02302A38.o
 	Object asm/overlay_29_02302A5C.o
 	Object src/overlay_29_023047B8.o
