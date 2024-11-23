@@ -1746,7 +1746,7 @@ _022F87A8:
 	ldrb r1, [r4, #7]
 	mov r0, sb
 	strb r1, [sb, #0x25]
-	bl ov29_02304BAC
+	bl DetermineMonsterShadow
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _022F87BC: .word DUNGEON_PTR
@@ -3136,8 +3136,8 @@ ov29_022F996C: ; 0x022F996C
 	bx lr
 	arm_func_end ov29_022F996C
 
-	arm_func_start ov29_022F9970
-ov29_022F9970: ; 0x022F9970
+	arm_func_start ReevaluateSnatchMonster
+ReevaluateSnatchMonster: ; 0x022F9970
 #ifdef JAPAN
 #define OV29_022F9970_OFFSET -0xA4
 #else
@@ -3178,10 +3178,10 @@ _022F99DC:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022F99E8: .word DUNGEON_PTR
-	arm_func_end ov29_022F9970
+	arm_func_end ReevaluateSnatchMonster
 
-	arm_func_start ov29_022F99EC
-ov29_022F99EC: ; 0x022F99EC
+	arm_func_start GetRandomExplorerMazeMonster
+GetRandomExplorerMazeMonster: ; 0x022F99EC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x40
 	mov r4, #0
@@ -3224,7 +3224,7 @@ _022F9A68:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022F9A70: .word DUNGEON_PTR
-	arm_func_end ov29_022F99EC
+	arm_func_end GetRandomExplorerMazeMonster
 
 	arm_func_start RestorePpAllMovesSetFlags
 RestorePpAllMovesSetFlags: ; 0x022F9A74

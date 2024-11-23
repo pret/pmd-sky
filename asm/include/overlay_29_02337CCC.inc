@@ -1,4 +1,5 @@
 #pragma once
+.public DetermineMonsterShadow
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
 .public DrawMinimapTile
@@ -20,7 +21,6 @@
 .public ov29_022E66C4
 .public ov29_022EDEDC
 .public ov29_022FAFD4
-.public ov29_02304BAC
 .public ov29_02306D54
 .public ov29_02336694
 .public PositionIsOnHiddenStairs

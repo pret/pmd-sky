@@ -4696,7 +4696,7 @@ _0234D334:
 	bl FixedRoomIsSubstituteRoom
 	cmp r0, #0
 	beq _0234D3BC
-	bl ov29_022F99EC
+	bl GetRandomExplorerMazeMonster
 	cmp r0, #0
 	moveq r1, #0
 	beq _0234D38C

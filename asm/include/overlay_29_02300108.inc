@@ -9,13 +9,13 @@
 .public GetNameWithGender
 .public IsBlinded
 .public IsChargingAnyTwoTurnMove
-.public ShouldMonsterRunAway
-.public StringFromId
 .public ov29_02300D00
 .public ov29_0234B0B4
 .public ov29_023527C0
 .public ov29_023527D0
+.public ShouldMonsterRunAway
 .public strcpy
+.public StringFromId
 .public sub_02024FB8
 .public sub_02056084
 .public sub_02058534

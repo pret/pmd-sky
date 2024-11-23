@@ -9,6 +9,7 @@
 .public Conversion2IsActive
 .public Debug_Print0
 .public DEFAULT_TILE
+.public DetermineMonsterShadow
 .public DIRECTIONS_XY
 .public DisplayCharTextureUi
 .public DrawMinimapTile
@@ -52,7 +53,6 @@
 .public ov29_022E9F80
 .public ov29_022FF958
 .public ov29_02304830
-.public ov29_02304BAC
 .public ov29_02334E70
 .public ov29_02352B4C
 .public ov29_02352B60

@@ -34,6 +34,7 @@
 .public CheckVariousConditions
 .public CORSOLA_TWIG_POWER
 .public DealDamageProjectile
+.public DetermineMonsterShadow
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
 .public EndNegativeStatusConditionWrapper
@@ -85,7 +86,6 @@
 .public ov29_022FB920
 .public ov29_022FB9BC
 .public ov29_02304830
-.public ov29_02304BAC
 .public ov29_02307BDC
 .public ov29_0230F9A4
 .public ov29_02344B44

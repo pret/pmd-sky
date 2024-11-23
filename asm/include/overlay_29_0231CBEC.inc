@@ -11,6 +11,7 @@
 .public ChangeShayminForme
 .public CheckVariousStatuses2
 .public ClearMonsterActionFields
+.public DetermineAllMonsterShadow
 .public DetermineTileWalkableNeighbors
 .public DIRECTIONS_XY
 .public DirectoryFileMngr_OpenDirectoryFile
@@ -100,7 +101,6 @@
 .public ov29_023009A0
 .public ov29_023021F0
 .public ov29_023038D4
-.public ov29_02304B64
 .public ov29_02305814
 .public ov29_0233665C
 .public ov29_0233785C

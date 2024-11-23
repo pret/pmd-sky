@@ -21,6 +21,7 @@
 .public Conversion2IsActive
 .public CopySpawnEntriesMaster
 .public DeleteWanTableEntryVeneer
+.public DetermineMonsterShadow
 .public DIRECTIONS_XY
 .public DirectoryFileMngr_GetDirectoryFileSize
 .public DiscoverMinimap
@@ -164,7 +165,6 @@
 .public ov29_023021F0
 .public ov29_02304830
 .public ov29_02304A48
-.public ov29_02304BAC
 .public ov29_02307CE0
 .public ov29_02307DD0
 .public ov29_0230F9A4

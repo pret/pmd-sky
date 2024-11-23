@@ -41,6 +41,7 @@
 .public GetMonsterPreEvolution
 .public GetName
 .public GetPerformanceFlagWithChecks
+.public GetRandomExplorerMazeMonster
 .public GetRandomSpawnMonsterID
 .public GetSecondFormIfValid
 .public GetSpecialTargetItem
@@ -119,7 +120,6 @@
 .public ov29_022EAFB0
 .public ov29_022F2FE4
 .public ov29_022F42D8
-.public ov29_022F99EC
 .public ov29_022FA3D4
 .public ov29_022FBA54
 .public ov29_022FBBEC

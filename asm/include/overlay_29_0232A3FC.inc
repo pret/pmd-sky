@@ -6,6 +6,7 @@
 .public AllocateTemp1024ByteBufferFromPool
 .public AnimationDelayOrSomething
 .public ApplyDamageAndEffectsWrapper
+.public AreLateGameTrapsEnabledWrapper
 .public ATK_STAT_IDX
 .public BAG_ITEMS_PTR_MIRROR
 .public BLAZE_KICK_BURN_CHANCE
@@ -67,7 +68,6 @@
 .public ov10_022C6321
 .public ov10_022C6322
 .public ov29_022E2CA0
-.public ov29_022ED868
 .public ov29_022F8FF8
 .public ov29_022F9EA0
 .public ov29_022FFB90

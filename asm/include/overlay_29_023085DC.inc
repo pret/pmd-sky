@@ -1,11 +1,12 @@
 #pragma once
-.public ATK_STAT_IDX
+.public abs
 .public ApplyDamage
 .public ApplyDamageAndEffectsWrapper
+.public ATK_STAT_IDX
 .public BoostOffensiveStat
 .public CategoryIsNotPhysical
-.public DUNGEON_PTR
 .public DefenderAbilityIsActive__0230A940
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__02308FBC
 .public ExclusiveItemEffectIsActive__0230A9B8
@@ -17,9 +18,6 @@
 .public LevitateIsActive
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MonsterIsType
-.public ResetDamageData
-.public UpdateAiTargetPos
-.public abs
 .public ov10_022C442C
 .public ov10_022C4460
 .public ov10_022C4464
@@ -46,3 +44,5 @@
 .public ov29_023380FC
 .public ov29_023535DC
 .public ov29_0237CA6D
+.public ResetDamageData
+.public UpdateAiTargetPos
