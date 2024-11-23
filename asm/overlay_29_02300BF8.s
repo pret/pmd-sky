@@ -921,7 +921,7 @@ ov29_02301594: ; 0x02301594
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	mov r1, #3
-	bl HasTactic
+	bl IsTacticSet
 	cmp r0, #0
 	cmpne r4, #0
 	movne r0, #1
