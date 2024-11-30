@@ -1,7 +1,8 @@
 #include "dungeon_ai.h"
 #include "dg_random.h"
-#include "dungeon_util.h"
 #include "dungeon_capabilities.h"
+#include "dungeon_util.h"
+#include "dungeon_util_1.h"
 
 #ifdef JAPAN
 #define CANNOT_USE_ITEM_MESSAGE 0xB2D
@@ -14,7 +15,6 @@
 extern struct dungeon *DUNGEON_PTR[];
 
 extern void EndFrozenClassStatus(struct entity *pokemon, struct entity *target, bool8 log);
-extern bool8 ShouldRunMonsterAi(struct entity *pokemon);
 extern void SubstitutePlaceholderStringTags(u8 *buffer, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *pokemon, u32 message_id);
 extern void AiDecideUseItem(struct entity *pokemon);
