@@ -1,8 +1,8 @@
 #include "dungeon_ai_targeting.h"
+#include "dungeon_pokemon_attributes.h"
 #include "dungeon_util.h"
 #include "overlay_29_023000E4.h"
 
-extern bool8 AbilityIsActive(struct entity *entity, enum ability_id ability_id);
 extern bool8 IsTacticSet(struct entity *entity, enum tactic_id tactic);
 
 bool8 ShouldMonsterRunAway(struct entity *pokemon)
