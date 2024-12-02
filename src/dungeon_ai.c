@@ -1,6 +1,6 @@
 #include "dungeon_ai.h"
 #include "dg_random.h"
-#include "dungeon_capabilities.h"
+#include "dungeon_capabilities_1.h"
 #include "dungeon_util.h"
 #include "dungeon_util_1.h"
 

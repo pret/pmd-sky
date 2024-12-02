@@ -5,8 +5,6 @@
 #include "dungeon_mode_common.h"
 
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
-// entity: entity pointer
-// return: bool
 bool8 EntityIsValidMoveEffects__0232E250(struct entity *entity);
 // Move effect: Defend Order
 // attacker: attacker pointer

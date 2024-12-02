@@ -1,5 +1,4 @@
 #pragma once
-.public CheckVariousStatuses
 .public CopyStringFromId
 .public DUNGEON_PTR
 .public GetActiveTeamMember
@@ -8,14 +7,11 @@
 .public GetNameRaw
 .public GetNameWithGender
 .public IsBlinded
-.public IsChargingAnyTwoTurnMove
-.public ov29_02300D00
+.public StringFromId
 .public ov29_0234B0B4
 .public ov29_023527C0
 .public ov29_023527D0
-.public ShouldMonsterRunAway
 .public strcpy
-.public StringFromId
 .public sub_02024FB8
 .public sub_02056084
 .public sub_02058534

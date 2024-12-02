@@ -130,6 +130,11 @@ struct action_data {
     s16 field_0x12;
 };
 
+struct sleep_class_status {
+    u8 sleep;       // 0xBD: STATUS_SLEEP if 1
+    u8 sleep_turns; // 0xBE: Turns left for the status in statuses::sleep
+};
+
 struct frozen_class_status {
     u8 freeze; // 0x0: STATUS_FROZEN if 1
     // 0x4: Controls the animation that plays when taking damage from the constriction status.
@@ -155,6 +160,11 @@ struct curse_class_status {
     u8 curse_turns; // 0x3: Turns left for the status in statuses::curse
     // 0x4: Turns left until residual damage for the status in statuses::curse, if applicable
     u8 curse_damage_countdown;
+};
+
+struct blinker_class_status {
+    u8 blinded;           // 0x0: STATUS_BLINKER if 1
+    u8 blinded_turns;     // 0x1: Turns left for the status in statuses::blinded
 };
 
 // Monster info
@@ -224,7 +234,7 @@ struct monster {
     // 0x9C: First 9 bytes contain bitfield data; the rest is presumably padding.
     // Bitvector. See enum iq_skill_id for the meaning of each bit.
     u32 iq_skill_flags[3];
-    enum tactic_id tactic : 8; // 0xA8
+    enum tactic_id tactic; // 0xA8
 
     // 0xA9
     bool8 roost;
@@ -246,8 +256,7 @@ struct monster {
     // 0xB8: Tracks the damage taken to deal when bide status ends. Max 0x3E7 (999).
     u32 bide_damage_tally;
     enum monster_behavior monster_behavior : 8; // 0xBC
-    u8 sleep;                              // 0xBD: STATUS_SLEEP if 1
-    u8 sleep_turns; // 0xBE: Turns left for the status in statuses::sleep
+    struct sleep_class_status sleep_class_status; // 0xBD
     u8 burn;        // 0xBF: STATUS_BURN if 1
     u8 burn_turns;  // 0xC0: Turns left for the status in statuses::burn
     // 0xC1: Turns left until residual damage for the status in statuses::burn, if applicable
@@ -257,10 +266,8 @@ struct monster {
     // will deal. There is no noticable difference because the table this value is looked up
     // on is filled with 0x6
     u8 badly_poisoned_damage_count;
-    // 0xC4
-    struct frozen_class_status frozen_class_status;
-    // 0xD0
-    struct cringe_class_status cringe_class_status;
+    struct frozen_class_status frozen_class_status; // 0xC4
+    struct cringe_class_status cringe_class_status; // 0xD0
     u8 bide;           // 0xD2: STATUS_BIDE if 1
     u8 bide_turns;     // 0xD3: Turns left for the status in statuses::bide
     u8 bide_move_slot; // 0xD4: Slot in the user's move list
@@ -268,8 +275,7 @@ struct monster {
     u8 reflect_turns;  // 0xD6: Turns left for the status in statuses::reflect
     // 0xD7: Turns left until residual healing for the status in statuses::reflect, if applicable
     u8 reflect_damage_countdown;
-    // 0xD8
-    struct curse_class_status curse_class_status;
+    struct curse_class_status curse_class_status; // 0xD8
     u8 leech_seed; // 0xE0: STATUS_LEECH_SEED if 1
     u8 field_0xe1;
     u8 field_0xe2;
@@ -290,8 +296,7 @@ struct monster {
     u8 long_toss;         // 0xEE: STATUS_LONG_TOSS if 1
     u8 invisible;         // 0xEF: STATUS_INVISIBLE if 1
     u8 invisible_turns;   // 0xF0: Turns left for the status in statuses::invisible
-    u8 blinded;           // 0xF1: STATUS_BLINKER if 1
-    u8 blinded_turns;     // 0xF2: Turns left for the status in statuses::blinded
+    struct blinker_class_status blinker_class_status; // 0xF1
     u8 muzzled;           // 0xF3: STATUS_MUZZLED if 1
     u8 muzzled_turns;     // 0xF4: Turns left for the status in statuses::muzzled
     u8 miracle_eye;       // 0xF5: STATUS_MIRACLE_EYE if 1
