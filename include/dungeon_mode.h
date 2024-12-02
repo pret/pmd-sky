@@ -224,7 +224,7 @@ struct monster {
     // 0x9C: First 9 bytes contain bitfield data; the rest is presumably padding.
     // Bitvector. See enum iq_skill_id for the meaning of each bit.
     u32 iq_skill_flags[3];
-    enum tactic_id tactic : 8; // 0xA8
+    enum tactic_id tactic; // 0xA8
 
     // 0xA9
     bool8 roost;
