@@ -1,7 +1,7 @@
 #include "dungeon_capabilities.h"
+#include "dungeon_statuses.h"
 #include "dungeon_util.h"
 
-extern bool8 IsBlinded(struct entity *entity, bool8 check_held_item);
 extern bool8 CheckVariousStatuses(struct entity *entity);
 
 bool8 CheckVariousStatuses2(struct entity *entity, bool8 blind_check)

@@ -310,6 +310,8 @@ Overlay OVY_29
 	Object asm/overlay_29_023118D8.o
 	Object src/overlay_29_02315118.o
 	Object asm/overlay_29_0231513C.o
+	Object src/dungeon_statuses.o
+	Object asm/overlay_29_02317844.o
 	Object src/overlay_29_02318AB0.o
 	Object asm/overlay_29_02318AD4.o
 	Object src/overlay_29_02318D34.o
