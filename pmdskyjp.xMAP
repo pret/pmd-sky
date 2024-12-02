@@ -32,382 +32,411 @@
         7](sub_0207B854,func) found in global main_0207B854.o
          8](sub_01FF97CC,func) found in global itcm.o
           9](TryAddTargetToAiTargetList,func) found in global overlay_29_02319FB0.o
-           10](LogMessageByIdWithPopupCheckUserTarget,func) found in global overlay_29_023498A0.o
-            11](UnloadOverlay,func) found in global main_02003DB8.o
-             12](sub_02002E10,func) found in global main_02000DE0.o
-              13](sub_02018024,func) found in global main_0200ED1C.o
-               14](sub_02025C7C,func) found in global main_0202598C.o
-                15](sub_020469BC,func) found in global main_02034974.o
-                 16](Debug_Print0,func) found in global debug.o
-                 16](GetKeyN2MSwitch,func) found in global itcm.o
-                 16](MemAlloc,func) found in global main_02000DE0.o
-                 16](IsValidTeamMember,func) found in global main_02054C24.o
-                  17](SoundEnvelope_Stop,func) found in global dc_envelope.o
-                  17](SoundEnvelope_Release,func) found in global dc_envelope.o
-                   18](SoundEnvelope_SetSlide,func) found in global dc_envelope.o
-                  17](UpdateTrackVolumeEnvelopes,func) found in global dc_envelope.o
-                  17](SoundEnvelope_Stop2,func) found in global dc_envelope.o
-                  17](SoundLfoBank_Tick,func) found in global dc_lfo_2.o
-                  17](SoundEnvelope_Tick,func) found in global dc_envelope.o
-                  17](SoundLfoBank_Reset,func) found in global dc_lfo.o
-                  17](SoundEnvelope_Reset,func) found in global dc_envelope.o
-                  17](SoundEnvelope_SetParameters,func) found in global dc_envelope.o
-                  17](SoundLfoBank_Set,func) found in global dc_lfo_1.o
-                  17](SoundLfoBank_SetConstEnvelopes,func) found in global dc_lfo_2.o
-                  17](SoundEnvelopeParameters_Reset,func) found in global dc_envelope.o
-                  17](SoundEnvelopeParameters_CheckValidity,func) found in global dc_envelope.o
-                  17](SoundEnvelope_ForceVolume,func) found in global dc_envelope.o
-                  17](sub_0207F828,func) found in global main_0207F818.o
-                  17](ov10_022C24DC,func) found in global overlay_10.o
-                   18](DoMoveDamageConfuse10,func) found in global overlay_29_02325644.o
-                    19](CalcRecoilDamageFixed,func) found in global overlay_29_02308FE0.o
-                     20](SPAWN_CAP_WITH_MONSTER_HOUSE,notype) found in global overlay_10.o
-                     20](DUNGEON_PTR,notype) found in global overlay_29_0234EC38.o
-                      21](ov29_0230D704,func) found in global overlay_29_02308FE0.o
-                      21](.text,section) found in local overlay_29_0234EC38.o
-                       22](.data,section) found in local overlay_29_0234EC38.o
-                       22](CloseTextBox,func) found in global main_0202598C.o
-                       22](StringFromId,func) found in global main_0202593C.o
-                        23](AllocateTemp1024ByteBufferFromPool,func) found in global main_0202593C.o
-                        23](GetStringFromFile,func) found in global main_02025788.o
-                         24](FileRom_InitDataTransfer,func) found in global main_02003DB8.o
-                         24](FileRom_HandleSeek,func) found in global main_02008254.o
-                          25](CardPullOutWithStatus,func) found in global main_02003D2C.o
-                         24](FileRom_HandleRead,func) found in global main_02008254.o
-                       22](CheckVariousStatuses2,func) found in global overlay_29_02300108.o
-                        23](IsBlinded,func) found in global overlay_29_0231513C.o
-                         24](UpdateStatusIconFlags,func) found in global overlay_29_022E37DC.o
-                          25](EntityIsValid__022E95F4,func) found in global dg_uty.o
-                          25](ov29_0237C888,notype) found in global overlay_29_0234EC38.o
-                          25](sub_0201B9F8,func) found in global main_0200ED1C.o
-                          25](GetTile,func) found in global overlay_29_023350FC.o
-                           26](ov29_022E66C4,func) found in global overlay_29_022E37DC.o
-                           26](DetermineMonsterShadow,func) found in global overlay_29_023047DC.o
-                            27](ov29_022EF9BC,func) found in global overlay_29_022EF7C4.o
-                             28](IsFloorOver,func) found in global overlay_29_022EC62C.o
-                              29](GetMonsterName,func) found in global overlay_29_02300108.o
-                              29](EntityIsValid__022ECDC0,func) found in global overlay_29_022ECDC0.o
-                              29](HandleFaint,func) found in global overlay_29_022F7388.o
-                               30](IsSecretBazaarNpcBehavior,func) found in global overlay_29_022EFA6C.o
-                                31](EntityIsValid__022F0590,func) found in global overlay_29_022F0590.o
-                                31](ov29_022EA370,func) found in global overlay_29_022E9618.o
-                                 32](ov29_02335F40,func) found in global overlay_29_023350FC.o
-                                 32](ov29_0234B1A4,func) found in global overlay_29_023498A0.o
-                                 32](ov29_02339FF4,func) found in global overlay_29_0233861C.o
-                                  33](ov29_022F0848,func) found in global overlay_29_022F05B4.o
-                                   34](ov29_02348ECC,func) found in global overlay_29_02347BC8.o
-                                    35](LoadMonsterSprite,func) found in global overlay_29_022F7388.o
-                                    35](GetSpriteFileSize,func) found in global main_02034974.o
-                                    35](CheckAcceptedMissionByTypeAndDungeon,func) found in global main_02054C24.o
-                                    35](ov29_02344B44,func) found in global overlay_29_02344B1C.o
-                                     36](EntityIsValid__02345698,func) found in global overlay_29_02345698.o
-                                     36](GetActualSellPrice,func) found in global main_0200C4CC.o
-                                      37](LoadFileFromRom,func) found in global main_020082C4.o
-                                       38](Debug_FatalError,func) found in global debug.o
-                                        39](Debug_PrintTrace,func) found in global debug.o
-                                         40](AppendProgPos,func) found in global debug.o
-                                        39](strcat,func) found in global main_020897AC.o
-                                        39](DebugDisplay,func) found in global debug.o
-                                      37](GetStringFromFileVeneer,func) found in global main_0202593C.o
-                                     36](SpawnItemEntity,func) found in global overlay_29_022E1AD4.o
-                                      37](ov29_022E34C8,func) found in global overlay_29_022E330C.o
-                                       38](AdvanceFrame,func) found in global overlay_29_022E9618.o
-                                       38](EntityIsValid__022E37B8,func) found in global dg_effect.o
-                                       38](ov29_0235110C,notype) found in global overlay_29_0234EC38.o
-                                       38](UpdateMinimap,func) found in global overlay_29_0233861C.o
-                                       38](UpdateCamera,func) found in global overlay_29_022E1AD4.o
-                                       38](HasHeldItem,func) found in global overlay_29_023456BC.o
-                                        39](AbilityIsActiveVeneer,func) found in global overlay_29_02301D78.o
-                                         40](ov29_02302C04,func) found in global overlay_29_02302A5C.o
-                                          41](ChangeMonsterAnimation,func) found in global overlay_29_023047DC.o
-                                          41](EntityIsValid__023047B8,func) found in global overlay_29_023047B8.o
-                                          41](ov29_022ECB38,func) found in global overlay_29_022EC62C.o
-                                          41](IsExperienceLocked,func) found in global joined_at_checks.o
-                                           42](IsSpecialStoryAlly,func) found in global joined_at_checks.o
-                                          41](ov29_022E3570,func) found in global overlay_29_022E330C.o
-                                          41](ov29_022DD7D8,func) found in global overlay_29_022DC314.o
-                                           42](DirectoryFileMngr_OpenDirectoryFile,func) found in global directory_file_mngr.o
-                                            43](DirectoryFile_GetDirectoryFileSize,func) found in global directory_file.o
-                                            43](DirectoryFile_LoadDirectoryFile,func) found in global directory_file.o
-                                           42](ov29_022DC2B8,func) found in global poly_text.o
-                                           42](ov29_022DC240,func) found in global poly_text.o
-                                          41](GetLoadedAttackSpriteId,func) found in global overlay_29_022F62CC.o
-                                           42](EntityIsValid__022F7364,func) found in global overlay_29_022F7364.o
-                                           42](ov29_0231B4AC,func) found in global overlay_29_0231B1B8.o
-                                            43](EnemyEvolution,func) found in global overlay_29_02301D78.o
-                                            43](TryIncreaseHp,func) found in global overlay_29_0231513C.o
-                                            43](EntityIsValid__0231CBC8,func) found in global overlay_29_0231CBC8.o
-                                            43](ApplyGracideaEffect,func) found in global overlay_29_0231CBEC.o
-                                             44](EnsureCanStandCurrentTile,func) found in global overlay_29_02320788.o
-                                              45](EntityIsValid__02321438,func) found in global overlay_29_02321438.o
-                                              45](ov29_02322374,func) found in global overlay_29_0232145C.o
-                                               46](ov29_02325644,func) found in global overlay_29_02325644.o
-                                               46](SetAndLoadCurrentAttackAnimation,func) found in global overlay_29_022F62CC.o
-                                               46](EntityIsValid__02325620,func) found in global overlay_29_02325620.o
-                                               46](ov29_022EACCC,func) found in global overlay_29_022EAB50.o
-                                                47](ChangeLeader,func) found in global overlay_29_022F05B4.o
-                                                47](TryForcedLoss,func) found in global overlay_29_022E0378.o
-                                                 48](ov29_022ED9D0,func) found in global overlay_29_022ECDE4.o
-                                                  49](EntityIsValid__022EE348,func) found in global overlay_29_022EE348.o
-                                                  49](ApplyTrapEffect,func) found in global overlay_29_022EE36C.o
-                                                   50](SpawnMonster,func) found in global overlay_29_022FC9C0.o
-                                                    51](IsDestinationFloorWithFleeingOutlaw,func) found in global overlay_29_02347BC8.o
-                                                    51](ov29_022FBF30,func) found in global overlay_29_022FBB1C.o
-                                                     52](DungeonRngSetPrimary,func) found in global overlay_29_022EAB50.o
-                                                     52](EntityIsValid__022FC99C,func) found in global overlay_29_022FC99C.o
-                                                     52](ov29_022FCD04,func) found in global overlay_29_022FC9C0.o
-                                                     52](IsInvalidSpawnTile,func) found in global overlay_29_022FEDBC.o
-                                                      53](GetExclusiveItemWithEffectFromBag,func) found in global overlay_29_0230F02C.o
-                                                       54](EntityIsValid__02311010,func) found in global overlay_29_02311010.o
-                                                       54](CheckVariousStatuses,func) found in global overlay_29_02300BF8.o
-                                                        55](DungeonRandInt,func) found in global dg_random.o
-                                                         56](DungeonRand16Bit,func) found in global overlay_29_022EAA20.o
-                                                        55](ItemIsActive__022FF898,func) found in global overlay_29_022FEDBC.o
-                                                        55](GetTreatmentBetweenMonsters,func) found in global overlay_29_023016A8.o
-                                                         56](ov29_02324BE8,func) found in global overlay_29_0232145C.o
-                                                         56](ov29_02314DC4,func) found in global overlay_29_023118D8.o
-                                                          57](SafeguardIsActive,func) found in global overlay_29_023016A8.o
-                                                          57](EntityIsValid__02315118,func) found in global overlay_29_02315118.o
-                                                          57](EntityIsValid__023118B4,func) found in global overlay_29_023118B4.o
-                                                          57](DungeonRandOutcome__022EAB20,func) found in global dg_random.o
-                                                          57](TryActivateSteadfast,func) found in global overlay_29_0231B1B8.o
-                                                          57](CopyStringFromId,func) found in global main_0202593C.o
-                                                          57](GetTileAtEntity,func) found in global overlay_29_022E0378.o
-                                                          57](InflictSleepStatusSingle,func) found in global overlay_29_02311034.o
-                                                           58](EndMagnetRiseStatus,func) found in global overlay_29_02305C28.o
-                                                            59](ItemIsActive__02307F1C,func) found in global overlay_29_02307F1C.o
-                                                             60](EntityIsValid__02307EF8,func) found in global overlay_29_02307EF8.o
-                                                             60](DungeonRandRange,func) found in global dg_random.o
-                                                            59](EntityIsValid__02305C04,func) found in global overlay_29_02305C04.o
-                                                            59](TryInflictCringeStatus,func) found in global overlay_29_023118D8.o
-                                                            59](ov29_02321134,func) found in global overlay_29_02320788.o
-                                                            59](EndNegativeStatusCondition,func) found in global overlay_29_023055B0.o
-                                                             60](EndMiracleEyeStatus,func) found in global overlay_29_02305C28.o
-                                                             60](EntityIsValid__0230558C,func) found in global overlay_29_0230558C.o
-                                                             60](TryNonLeaderItemPickUp,func) found in global overlay_29_0230F02C.o
-                                                             60](TryTriggerTrap,func) found in global overlay_29_022ECDE4.o
-                                                             60](ov29_02337D68,func) found in global overlay_29_02337CCC.o
-                                                              61](EntityIsValid__02337CA8,func) found in global overlay_29_02337CA8.o
-                                                             60](ov29_022FBE04,func) found in global overlay_29_022FBB1C.o
-                                                           58](GetApparentWeather,func) found in global overlay_29_02333FD0.o
-                                                            59](EntityIsValid__023350D8,func) found in global overlay_29_023350D8.o
-                                                         56](MistIsActive,func) found in global overlay_29_02318E70.o
-                                                          57](EntityIsValid__02319F8C,func) found in global overlay_29_02319F8C.o
-                                                          57](ov29_0231A364,func) found in global overlay_29_02319FB0.o
-                                                          57](CanAttackInDirection,func) found in global overlay_29_02300BF8.o
-                                                          57](StatusCheckerCheck,func) found in global overlay_29_0232E864.o
-                                                           58](EntityIsValid__02333FAC,func) found in global overlay_29_02333FAC.o
-                                                           58](Conversion2IsActive,func) found in global overlay_29_02318E70.o
-                                                           58](EntityIsValid__0232E840,func) found in global overlay_29_0232E840.o
-                                                           58](ApplyDamageAndEffects,func) found in global overlay_29_023085DC.o
-                                                            59](CategoryIsNotPhysical,func) found in global overlay_29_0231CBEC.o
-                                                            59](ov29_0231EDFC,func) found in global overlay_29_0231EDFC.o
-                                                             60](EntityIsValid__0231F570,func) found in global overlay_29_0231F570.o
-                                                             60](ov29_0232033C,func) found in global overlay_29_023201A0.o
-                                                              61](RemoveGroundItem,func) found in global overlay_29_023456BC.o
-                                                              61](EntityIsValid__02320764,func) found in global overlay_29_02320764.o
-                                                              61](UpdateEntityPixelPos,func) found in global dg_object.o
-                                                              61](IncrementEntityPixelPosXY,func) found in global dg_object.o
-                                                              61](EntityIsValid__0232017C,func) found in global overlay_29_0232017C.o
-                                                            59](EntityIsValid__02308FBC,func) found in global overlay_29_02308FBC.o
-                                                           58](DoMoveTag0x1A7,func) found in global overlay_29_0232E2B8.o
-                                                            59](DoMoveCleanse,func) found in global overlay_29_0232C524.o
-                                                             60](EntityIsValidMoveEffects__0232E250,func) found in global overlay_29_0232E250.o
-                                                             60](DealDamage,func) found in global overlay_29_0232E864.o
-                                                             60](ov29_02318D58,func) found in global overlay_29_02318D58.o
-                                                              61](EntityIsValid__02318E4C,func) found in global overlay_29_02318E4C.o
-                                                              61](EntityIsValid__02318D34,func) found in global overlay_29_02318D34.o
-                                                             60](GenerateStandardItem,func) found in global overlay_29_02344B1C.o
-                                                             60](EntityIsValidMoveEffects__0232C500,func) found in global overlay_29_0232C500.o
-                                                             60](TryDrought,func) found in global overlay_29_0231F594.o
-                                                              61](EntityIsValid__0231FBFC,func) found in global overlay_29_0231FBFC.o
-                                                              61](SetEntityPixelPosXY,func) found in global dg_object.o
-                                                             60](TryPounce,func) found in global overlay_29_0231FC20.o
-                                                             60](ov29_022E1AAC,func) found in global dg_object.o
-                                                           58](DoMoveDefendOrder,func) found in global overlay_29_0232E250.o
-                                                           58](DoMoveCopycat,func) found in global overlay_29_0232A3FC.o
-                                                            59](RevealTrapsNearby,func) found in global overlay_29_022EE36C.o
-                                                            59](EntityIsValidMoveEffects__0232A3D8,func) found in global overlay_29_0232A3D8.o
-                                                            59](DefenderAbilityIsActiveMoveEffects__02329F14,func) found in global overlay_29_02328030.o
-                                                             60](ov29_0232A834,func) found in global overlay_29_0232A3FC.o
-                                                             60](EntityIsValidMoveEffects__0232800C,func) found in global overlay_29_0232800C.o
-                                                         56](AbilityIsActive,func) found in global dungeon_pokemon_attributes.o
-                                                         56](ShouldMonsterRunAway,func) found in global dungeon_ai_targeting.o
-                                                          57](EntityIsValid__023000E4,func) found in global overlay_29_023000E4.o
-                                                       54](EntityIsValid__0230F008,func) found in global overlay_29_0230F008.o
-                                                       54](UseThrowableItem,func) found in global overlay_29_022F52B0.o
-                                                        55](EntityIsValid__022F62A8,func) found in global overlay_29_022F62A8.o
-                                                        55](EntityIsValid__022F528C,func) found in global overlay_29_022F528C.o
-                                                      53](EntityIsValid__022FED98,func) found in global overlay_29_022FED98.o
-                                                     52](GetMonsterMoves,func) found in global overlay_29_02302A5C.o
-                                                     52](ov29_022EFAE8,func) found in global overlay_29_022EFA6C.o
-                                                   50](FemaleToMaleForm,func) found in global main_02054BE0.o
-                                                 48](EntityIsValid__022E1A1C,func) found in global dg_object.o
-                                                 48](EntityIsValid__022E0354,func) found in global dg.o
-                                                47](ExecuteMonsterAction,func) found in global overlay_29_022FE4BC.o
-                                                47](RunMonsterAi,func) found in global dungeon_ai.o
-                                                 48](ShouldRunMonsterAi,func) found in global dungeon_util_1.o
-                                                 48](CheckVariousConditions,func) found in global dungeon_capabilities.o
-                                                 48](AiDecideUseItem,func) found in global overlay_29_0230E914.o
-                                                47](EntityIsValid__022EC608,func) found in global overlay_29_022EC608.o
-                                                47](ov29_022EF9C8,func) found in global overlay_29_022EF7C4.o
-                                               46](DungeonRandOutcome__022EAB50,func) found in global dg_random.o
-                                             44](EntityIsValid__0231EDD8,func) found in global overlay_29_0231EDD8.o
-                                             44](ov31_0238619C,func) found in global overlay_31_02382FBC.o
-                                              45](ov31_02382B54,func) found in global overlay_31_02382820.o
-                                               46](OVERLAY31_UNKNOWN_POINTER__NA_238A260,notype) found in global overlay_31_02382FBC.o
-                                               46](DUNGEON_WINDOW_PARAMS_1,notype) found in global overlay_31_02382FBC.o
-                                               46](DrawDungeonMenuStatusWindow,func) found in global overlay_31_02382820.o
-                                                47](GetMoneyCarried,func) found in global main_0200ECFC.o
-                                               46](DungeonMenuSwitch,func) found in global overlay_31_02382820.o
-                                              45](ov31_02382DAC,func) found in global overlay_31_02382820.o
-                                              45](ov29_0234E988,func) found in global overlay_29_0234DDF4.o
-                                               46](EntityIsValid__0234EC14,func) found in global overlay_29_0234EC14.o
-                                               46](ov31_02382E18,func) found in global overlay_31_02382820.o
-                                                47](CreateStairsMenuState,func) found in global overlay_31_02382820.o
-                                                 48](sub_020348E4,func) found in global main_020348E4.o
-                                                 48](ov31_0238A2A0,notype) found in global overlay_31_02382FBC.o
-                                               46](EntityIsValid__0234DDD0,func) found in global overlay_29_0234DDD0.o
-                                               46](ov31_02382E08,func) found in global overlay_31_02382820.o
-                                               46](EntryOverlay31,func) found in global overlay_31_02382820.o
-                                              45](StairsSubheadingCallback,func) found in global overlay_31_02382820.o
-                                             44](SetDoughSeedFlag,func) found in global overlay_29_02338548.o
-                                             44](GetDoughSeedFlag,func) found in global overlay_29_02338548.o
-                                            43](EntityIsValid__0231B194,func) found in global overlay_29_0231B194.o
-                                          41](EntityIsValid__02302A38,func) found in global overlay_29_02302A38.o
-                                      37](EntityIsValid__022E32E8,func) found in global dg_camera.o
-                                    35](EntityIsValid__0234987C,func) found in global overlay_29_0234987C.o
-                                  33](EntityIsValid__02344AF8,func) found in global overlay_29_02344AF8.o
-                                  33](IsSecretBazaar,func) found in global overlay_29_02338604.o
-                                  33](SetShouldBoostKecleonShopSpawnChance,func) found in global overlay_29_02338548.o
-                                  33](ShouldBoostKecleonShopSpawnChance,func) found in global overlay_29_02338548.o
-                                  33](SetShouldBoostHiddenStairsSpawnChance,func) found in global overlay_29_02338604.o
-                                  33](ShouldBoostHiddenStairsSpawnChance,func) found in global overlay_29_02338604.o
-                               30](DirectoryFileMngr_GetDirectoryFileSize,func) found in global directory_file_mngr.o
-                             28](EntityIsValid__022EF7A0,func) found in global overlay_29_022EF7A0.o
-                     20](EntityIsValid__0230E8F0,func) found in global overlay_29_0230E8F0.o
-                   18](.data,section) found in local overlay_10.o
-                   18](ExplorersOfSkyMain,func) found in global overlay_34.o
-                    19](.data,section) found in local overlay_34.o
-                    19](Debug_GetDebugFlag,func) found in global debug.o
-                    19](.bss,section) found in local overlay_34.o
-                   18](GroundMainLoop,func) found in global overlay_11.o
-                    19](ov27_0238BB80,func) found in global overlay_27.o
-                     20](.data,section) found in local overlay_27.o
-                     20](ov11_022E6E68,func) found in global overlay_11.o
-                     20](ov11_02324DB8,notype) found in global overlay_11.o
-                    19](ov26_0238AD3C,func) found in global overlay_26.o
-                     20](.data,section) found in local overlay_26.o
-                    19](ov25_0238B1F8,func) found in global overlay_25.o
-                     20](.data,section) found in local overlay_25.o
-                    19](ov24_0238C36C,func) found in global overlay_24.o
-                     20](.data,section) found in local overlay_24.o
-                    19](ov23_0238C474,func) found in global overlay_23.o
-                     20](.data,section) found in local overlay_23.o
-                     20](ov11_0238A134,notype) found in global overlay_11.o
-                    19](ov22_0238D800,func) found in global overlay_22.o
-                     20](.data,section) found in local overlay_22.o
-                    19](ov21_0238B928,func) found in global overlay_21.o
-                     20](.data,section) found in local overlay_21.o
-                    19](ov20_0238A1B0,func) found in global overlay_20.o
-                     20](.data,section) found in local overlay_20.o
-                     20](.bss,section) found in local overlay_20.o
-                    19](ov19_0238D698,func) found in global overlay_19.o
-                     20](.data,section) found in local overlay_19.o
-                    19](ov18_0238B01C,func) found in global overlay_18.o
-                     20](.data,section) found in local overlay_18.o
-                    19](ov17_0238A754,func) found in global overlay_17.o
-                     20](.data,section) found in local overlay_17.o
-                    19](ov16_0238C1F8,func) found in global overlay_16.o
-                     20](.data,section) found in local overlay_16.o
-                    19](ov15_0238AF54,func) found in global overlay_15_0238AE98.o
-                     20](.data,section) found in local overlay_15_0238AE98.o
-                     20](ov15_0238A234,func) found in global overlay_15_0238A234.o
-                      21](ov15_0238B114,notype) found in global overlay_15_0238AE98.o
-                      21](ov15_0238AE6C,func) found in global overlay_15_0238AE6C.o
-                       22](ov15_0238AD78,func) found in global overlay_15_0238AD78.o
-                      21](ov15_0238ADC4,func) found in global overlay_15_0238ADC4.o
-                    19](ov15_0238AE88,func) found in global overlay_15_0238AE6C.o
-                     20](ov15_0238A140,func) found in global overlay_15_0238A140.o
-                    19](SentryRunState,func) found in global overlay_14.o
-                     20](.data,section) found in local overlay_14.o
-                      21](.text,section) found in local overlay_14.o
-                    19](Debug_Print,func) found in global debug.o
-                    19](EntryOverlay13,func) found in global overlay_13_EntryOverlay13.o
-                     20](OVERLAY13_UNKNOWN_POINTER__NA_238CEA0,notype) found in global overlay_13_0238BE6C.o
-                     20](OVERLAY13_UNKNOWN_STRUCT__NA_238C024,notype) found in global overlay_13_0238BE6C.o
-                      21](Overlay13SwitchFunctionNa238A1C8,func) found in global overlay_13_EntryOverlay13.o
-                       22](Overlay13SwitchFunctionNa238A574,func) found in global overlay_13.o
-                        23](PORTRAIT_ATTRIBUTES,notype) found in global overlay_13_0238BE6C.o
-                        23](GetOptionStringFromID,func) found in global overlay_13_0238BDF0.o
-                        23](GetPersonality,func) found in global overlay_13_0238BDA8.o
-                        23](WaitForNextStep,func) found in global overlay_13_0238BE4C.o
-                      21](ExitOverlay13,func) found in global overlay_13_EntryOverlay13.o
-                    19](Debug_GetLogFlag,func) found in global debug.o
-                    19](FileRom_HandleOpen,func) found in global main_02008210.o
-                    19](ov28_0238A468,func) found in global overlay_28.o
-                     20](.data,section) found in local overlay_28.o
-                     20](.bss,section) found in local overlay_28.o
-                   18](.bss,section) found in local overlay_10.o
-                  17](ov01_02337B3C,func) found in global overlay_01.o
-                   18](ov07_0233F758,func) found in global overlay_07.o
-                    19](.data,section) found in local overlay_07.o
-                    19](ov01_02335FA8,func) found in global overlay_01.o
-                    19](ov00_022BD630,func) found in global overlay_00.o
-                     20](.data,section) found in local overlay_00.o
-                      21](.text,section) found in local overlay_00.o
-                     20](ov09_0233CBF8,func) found in global overlay_09.o
-                      21](.data,section) found in local overlay_09.o
-                     20](ov08_0233E2BC,func) found in global overlay_08.o
-                      21](.bss,section) found in local overlay_08.o
-                      21](.data,section) found in local overlay_08.o
-                      21](sub_0207B9EC,func) found in global main_0207B854.o
-                     20](.bss,section) found in local overlay_00.o
-                     20](_02000C34,notype) found in global crt0.o
-                     20](GetProcessorMode,func) found in global main_0207B848.o
-                     20](ov02_02329520,func) found in global overlay_02.o
-                      21](.bss,section) found in local overlay_02.o
-                      21](ClearIrqFlag,func) found in global main_0207B848.o
-                      21](.data,section) found in local overlay_02.o
-                    19](.bss,section) found in local overlay_07.o
-                   18](ov05_0233CC10,func) found in global overlay_05.o
-                    19](.data,section) found in local overlay_05.o
-                    19](.bss,section) found in local overlay_05.o
-                   18](ov04_0233CC4C,func) found in global overlay_04.o
-                    19](.data,section) found in local overlay_04.o
-                    19](ov01_0233C1DC,notype) found in global overlay_01.o
-                    19](.bss,section) found in local overlay_04.o
-                   18](ov06_0233EA1C,func) found in global overlay_06.o
-                    19](.bss,section) found in local overlay_06.o
-                    19](.data,section) found in local overlay_06.o
-                   18](ov03_0233CB94,func) found in global overlay_03_0233CA98.o
-                    19](.data,section) found in local overlay_03_0233CA98.o
-                     20](.text,section) found in local overlay_03_0233CA98.o
-                    19](.bss,section) found in local overlay_03_0233CA98.o
-                    19](ov03_0233CA80,func) found in global overlay_03_0233CA80.o
-                     20](ov03_02346BE0,object) found in global overlay_03_0233CA80.o
-                   18](.bss,section) found in local overlay_01.o
-                   18](CardBackupError,func) found in global main_02003D2C.o
-                  17](DirectoryFileMngr_ExtractAllDirectoryFiles,func) found in global directory_file_mngr.o
-                   18](DirectoryFile_ExtractDirectoryFile,func) found in global directory_file.o
-                  17](LoadTblTalk,func) found in global main_0202593C.o
-                  17](CopyNStringFromId,func) found in global main_0202593C.o
-                 16](Debug_SetLogFlag,func) found in global debug.o
-                 16](Debug_SetDebugFlag,func) found in global debug.o
-               14](LoadStringFile,func) found in global main_020257FC.o
-               14](DirectoryFileMngr_LoadDirectoryFile,func) found in global directory_file_mngr.o
-               14](FileGetSize,func) found in global main_02008254.o
-              13](CardPullOut,func) found in global main_02003D2C.o
-            11](ov30_023842F4,func) found in global overlay_30.o
-             12](.data,section) found in local overlay_30.o
-            11](DungeonFree,func) found in global overlay_29_022DEAB0.o
-            11](DungeonZInit,func) found in global overlay_29_022DEAB0.o
-            11](DungeonAlloc,func) found in global overlay_29_022DEAB0.o
-            11](RunDungeon,func) found in global overlay_29_022DEADC.o
-             12](UpdateShouldBoostKecleonShopSpawnChance,func) found in global overlay_29_02338548.o
-             12](TrySpawnDoughSeedPoke,func) found in global overlay_29_02338560.o
-             12](InitDungeonRng,func) found in global overlay_29_022EA9EC.o
-            11](GetDungeonPtrMaster,func) found in global overlay_29_022DEAB0.o
+           10](DUNGEON_PTR,notype) found in global overlay_29_0234EC38.o
+            11](ov29_0230D704,func) found in global overlay_29_0230A9B8.o
+             12](SPAWN_CAP_WITH_MONSTER_HOUSE,notype) found in global overlay_10.o
+              13](DoMoveDamageConfuse10,func) found in global overlay_29_02325644.o
+               14](CalcRecoilDamageFixed,func) found in global overlay_29_0230A9B8.o
+               14](DungeonRandOutcomeUserAction,func) found in global overlay_29_02322DDC.o
+                15](ov29_0237CA84,notype) found in global overlay_29_0234EC38.o
+                15](ov29_02352B1C,notype) found in global overlay_29_0234EC38.o
+                 16](ov10_022C4814,notype) found in global overlay_10.o
+                 16](.data,section) found in local overlay_29_0234EC38.o
+                 16](MemFree,func) found in global main_02000DE0.o
+                  17](sub_02018024,func) found in global main_0200ED1C.o
+                   18](sub_02025C7C,func) found in global main_0202598C.o
+                    19](UnloadOverlay,func) found in global main_02003DB8.o
+                     20](sub_02002E10,func) found in global main_02000DE0.o
+                     20](CardPullOutWithStatus,func) found in global main_02003D2C.o
+                      21](Debug_Print0,func) found in global debug.o
+                      21](sub_020081DC,func) found in global main_02003DB8.o
+                     20](sub_0207F828,func) found in global main_0207F818.o
+                     20](Debug_Print,func) found in global debug.o
+                     20](sub_0200846C,func) found in global main_020082C4.o
+                      21](DecompressAtFromMemoryPointer,func) found in global main_0200ED1C.o
+                      21](Debug_FatalError,func) found in global debug.o
+                       22](Debug_PrintTrace,func) found in global debug.o
+                        23](AppendProgPos,func) found in global debug.o
+                       22](strcat,func) found in global main_020897AC.o
+                       22](DebugDisplay,func) found in global debug.o
+                     20](sub_0207BA08,func) found in global main_0207B854.o
+                    19](sub_020469BC,func) found in global main_02034974.o
+                     20](GetKeyN2MSwitch,func) found in global itcm.o
+                     20](IsValidTeamMember,func) found in global main_02054C24.o
+                      21](SoundEnvelope_Stop,func) found in global dc_envelope.o
+                      21](SoundEnvelope_Release,func) found in global dc_envelope.o
+                       22](SoundEnvelope_SetSlide,func) found in global dc_envelope.o
+                      21](UpdateTrackVolumeEnvelopes,func) found in global dc_envelope.o
+                      21](SoundEnvelope_Stop2,func) found in global dc_envelope.o
+                      21](SoundLfoBank_Tick,func) found in global dc_lfo_2.o
+                      21](SoundEnvelope_Tick,func) found in global dc_envelope.o
+                      21](SoundLfoBank_Reset,func) found in global dc_lfo.o
+                      21](SoundEnvelope_Reset,func) found in global dc_envelope.o
+                      21](SoundEnvelope_SetParameters,func) found in global dc_envelope.o
+                      21](SoundLfoBank_Set,func) found in global dc_lfo_1.o
+                      21](SoundLfoBank_SetConstEnvelopes,func) found in global dc_lfo_2.o
+                      21](SoundEnvelopeParameters_Reset,func) found in global dc_envelope.o
+                      21](SoundEnvelopeParameters_CheckValidity,func) found in global dc_envelope.o
+                      21](SoundEnvelope_ForceVolume,func) found in global dc_envelope.o
+                      21](GetExecuteSpecialEpisodeType,func) found in global main_02034974.o
+                      21](ov01_02337B3C,func) found in global overlay_01.o
+                       22](ov07_0233F758,func) found in global overlay_07.o
+                        23](.data,section) found in local overlay_07.o
+                        23](UpdateWindow,func) found in global main_0202598C.o
+                        23](ov01_02335FA8,func) found in global overlay_01.o
+                        23](ov00_022BD630,func) found in global overlay_00.o
+                         24](.data,section) found in local overlay_00.o
+                          25](.text,section) found in local overlay_00.o
+                         24](ov09_0233CBF8,func) found in global overlay_09.o
+                          25](GetStringFromFileVeneer,func) found in global main_0202593C.o
+                           26](GetStringFromFile,func) found in global main_02025788.o
+                            27](FileRom_HandleSeek,func) found in global main_02008254.o
+                            27](FileRom_HandleRead,func) found in global main_02008254.o
+                          25](.data,section) found in local overlay_09.o
+                         24](ov08_0233E2BC,func) found in global overlay_08.o
+                          25](.bss,section) found in local overlay_08.o
+                          25](.data,section) found in local overlay_08.o
+                          25](AllocateTemp1024ByteBufferFromPool,func) found in global main_0202593C.o
+                         24](.bss,section) found in local overlay_00.o
+                         24](_02000C34,notype) found in global crt0.o
+                         24](GetProcessorMode,func) found in global main_0207B848.o
+                         24](Debug_GetDebugFlag,func) found in global debug.o
+                         24](ov02_02329520,func) found in global overlay_02.o
+                          25](.bss,section) found in local overlay_02.o
+                          25](ClearIrqFlag,func) found in global main_0207B848.o
+                          25](.data,section) found in local overlay_02.o
+                         24](sub_020590DC,func) found in global main_02054C24.o
+                         24](sub_020348E4,func) found in global main_020348E4.o
+                        23](.bss,section) found in local overlay_07.o
+                       22](ov05_0233CC10,func) found in global overlay_05.o
+                        23](.data,section) found in local overlay_05.o
+                        23](.bss,section) found in local overlay_05.o
+                       22](ov04_0233CC4C,func) found in global overlay_04.o
+                        23](.data,section) found in local overlay_04.o
+                        23](IsItemInTimeDarkness,func) found in global main_0200C4CC.o
+                         24](StringFromId,func) found in global main_0202593C.o
+                        23](ov01_0233C1DC,notype) found in global overlay_01.o
+                        23](.bss,section) found in local overlay_04.o
+                       22](ov06_0233EA1C,func) found in global overlay_06.o
+                        23](.bss,section) found in local overlay_06.o
+                        23](.data,section) found in local overlay_06.o
+                       22](ov03_0233CB94,func) found in global overlay_03_0233CA98.o
+                        23](.data,section) found in local overlay_03_0233CA98.o
+                         24](.text,section) found in local overlay_03_0233CA98.o
+                        23](.bss,section) found in local overlay_03_0233CA98.o
+                        23](ov03_0233CA80,func) found in global overlay_03_0233CA80.o
+                         24](ov03_02346BE0,object) found in global overlay_03_0233CA80.o
+                       22](.bss,section) found in local overlay_01.o
+                       22](CardBackupError,func) found in global main_02003D2C.o
+                       22](FemaleToMaleForm,func) found in global main_02054BE0.o
+                      21](ExplorersOfSkyMain,func) found in global overlay_34.o
+                       22](.data,section) found in local overlay_34.o
+                       22](.bss,section) found in local overlay_34.o
+                      21](ov11_022E82CC,func) found in global overlay_11.o
+                       22](ov27_0238BB80,func) found in global overlay_27.o
+                        23](.data,section) found in local overlay_27.o
+                        23](ov11_022E6E68,func) found in global overlay_11.o
+                        23](ov11_02324DB8,notype) found in global overlay_11.o
+                        23](GetMoneyCarried,func) found in global main_0200ECFC.o
+                       22](ov26_0238AD3C,func) found in global overlay_26.o
+                        23](.data,section) found in local overlay_26.o
+                       22](ov25_0238B1F8,func) found in global overlay_25.o
+                        23](.data,section) found in local overlay_25.o
+                       22](ov24_0238C36C,func) found in global overlay_24.o
+                        23](.data,section) found in local overlay_24.o
+                       22](ov23_0238C474,func) found in global overlay_23.o
+                        23](.data,section) found in local overlay_23.o
+                        23](ov11_0238A134,notype) found in global overlay_11.o
+                       22](ov22_0238D800,func) found in global overlay_22.o
+                        23](.data,section) found in local overlay_22.o
+                       22](ov21_0238B928,func) found in global overlay_21.o
+                        23](.data,section) found in local overlay_21.o
+                       22](ov20_0238A1B0,func) found in global overlay_20.o
+                        23](.data,section) found in local overlay_20.o
+                        23](.bss,section) found in local overlay_20.o
+                       22](ov19_0238D698,func) found in global overlay_19.o
+                        23](.data,section) found in local overlay_19.o
+                       22](ov18_0238B01C,func) found in global overlay_18.o
+                        23](.data,section) found in local overlay_18.o
+                       22](ov17_0238A754,func) found in global overlay_17.o
+                        23](.data,section) found in local overlay_17.o
+                       22](ov16_0238C1F8,func) found in global overlay_16.o
+                        23](.data,section) found in local overlay_16.o
+                       22](ov15_0238AF54,func) found in global overlay_15_0238AE98.o
+                        23](.data,section) found in local overlay_15_0238AE98.o
+                        23](ov15_0238A234,func) found in global overlay_15_0238A234.o
+                         24](ov15_0238B114,notype) found in global overlay_15_0238AE98.o
+                         24](ov15_0238AE6C,func) found in global overlay_15_0238AE6C.o
+                          25](ov15_0238AD78,func) found in global overlay_15_0238AD78.o
+                         24](ov15_0238ADC4,func) found in global overlay_15_0238ADC4.o
+                       22](ov15_0238AE88,func) found in global overlay_15_0238AE6C.o
+                        23](ov15_0238A140,func) found in global overlay_15_0238A140.o
+                       22](SentryRunState,func) found in global overlay_14.o
+                        23](.data,section) found in local overlay_14.o
+                         24](.text,section) found in local overlay_14.o
+                       22](EntryOverlay13,func) found in global overlay_13_EntryOverlay13.o
+                        23](OVERLAY13_UNKNOWN_POINTER__NA_238CEA0,notype) found in global overlay_13_0238BE6C.o
+                        23](OVERLAY13_UNKNOWN_STRUCT__NA_238C024,notype) found in global overlay_13_0238BE6C.o
+                         24](Overlay13SwitchFunctionNa238A1C8,func) found in global overlay_13_EntryOverlay13.o
+                          25](Overlay13SwitchFunctionNa238A574,func) found in global overlay_13.o
+                           26](PORTRAIT_ATTRIBUTES,notype) found in global overlay_13_0238BE6C.o
+                           26](GetOptionStringFromID,func) found in global overlay_13_0238BDF0.o
+                           26](GetPersonality,func) found in global overlay_13_0238BDA8.o
+                           26](WaitForNextStep,func) found in global overlay_13_0238BE4C.o
+                         24](ExitOverlay13,func) found in global overlay_13_EntryOverlay13.o
+                       22](Debug_GetLogFlag,func) found in global debug.o
+                       22](FileRom_HandleOpen,func) found in global main_02008210.o
+                       22](ov28_0238A468,func) found in global overlay_28.o
+                        23](.data,section) found in local overlay_28.o
+                        23](.bss,section) found in local overlay_28.o
+                      21](DirectoryFileMngr_ExtractAllDirectoryFiles,func) found in global directory_file_mngr.o
+                       22](DirectoryFile_ExtractDirectoryFile,func) found in global directory_file.o
+                      21](LoadTblTalk,func) found in global main_0202593C.o
+                      21](DirectoryFileMngr_OpenDirectoryFile,func) found in global directory_file_mngr.o
+                       22](DirectoryFile_GetDirectoryFileSize,func) found in global directory_file.o
+                       22](DirectoryFile_LoadDirectoryFile,func) found in global directory_file.o
+                      21](CopyNStringFromId,func) found in global main_0202593C.o
+                     20](ov29_022EA62C,func) found in global overlay_29_022E9618.o
+                      21](ov29_02335F40,func) found in global overlay_29_023350FC.o
+                       22](ov29_022E66C4,func) found in global overlay_29_022E37DC.o
+                        23](EntityIsValid__022E95F4,func) found in global dg_uty.o
+                        23](GetTile,func) found in global overlay_29_023350FC.o
+                        23](GetVisibilityRange,func) found in global overlay_29_022E330C.o
+                         24](AdvanceFrame,func) found in global overlay_29_022E9618.o
+                         24](AnimationDelayOrSomething,func) found in global overlay_29_022E37DC.o
+                         24](EntityIsValid__022E37B8,func) found in global dg_effect.o
+                         24](ov29_0235110C,notype) found in global overlay_29_0234EC38.o
+                         24](LogMessageByIdWithPopupCheckUser,func) found in global overlay_29_023498A0.o
+                          25](ov29_0234D5D0,func) found in global overlay_29_0234D484.o
+                           26](ov29_0234B4CC,func) found in global overlay_29_023498A0.o
+                           26](ov29_022E0B44,func) found in global overlay_29_022E0378.o
+                            27](ov29_022ED9D0,func) found in global overlay_29_022ECDE4.o
+                             28](HasHeldItem,func) found in global overlay_29_023456BC.o
+                              29](AbilityIsActiveVeneer,func) found in global overlay_29_02301D78.o
+                               30](ItemIsActive__022FF898,func) found in global overlay_29_022FEDBC.o
+                                31](ov29_02344B44,func) found in global overlay_29_02344B1C.o
+                                 32](ov29_022FB920,func) found in global overlay_29_022F9744.o
+                                  33](IsMonster__022F9720,func) found in global overlay_29_022F9720.o
+                                  33](IsSecretBazaarNpcBehavior,func) found in global overlay_29_022EFA6C.o
+                                   34](EntityIsValid__022F0590,func) found in global overlay_29_022F0590.o
+                                   34](ov29_0234D8A0,func) found in global overlay_29_0234D484.o
+                                   34](ov29_022DE5F0,func) found in global overlay_29_022DC314.o
+                                    35](ov29_022DC2B8,func) found in global poly_text.o
+                                    35](ov29_022DC240,func) found in global poly_text.o
+                                   34](BoostIQ,func) found in global overlay_29_022F9744.o
+                                   34](TeamMemberHasItemActive,func) found in global overlay_29_0230F02C.o
+                                    35](IsMonster__0230F980,func) found in global overlay_29_0230F980.o
+                                    35](EntityIsValid__0230F008,func) found in global overlay_29_0230F008.o
+                                    35](ov29_02348ECC,func) found in global overlay_29_02347BC8.o
+                                     36](LoadMonsterSprite,func) found in global overlay_29_022F7388.o
+                                      37](SubstitutePlaceholderStringTags,func) found in global overlay_29_022E1AD4.o
+                                       38](ov29_022E34C8,func) found in global overlay_29_022E330C.o
+                                       38](DrawMinimapTile,func) found in global overlay_29_0233861C.o
+                                        39](ov29_022F0848,func) found in global overlay_29_022F05B4.o
+                                         40](TryTriggerMonsterHouse,func) found in global overlay_29_02307F1C.o
+                                          41](EntityIsValid__02307EF8,func) found in global overlay_29_02307EF8.o
+                                          41](SpawnMonster,func) found in global overlay_29_022FC9C0.o
+                                           42](IsDestinationFloorWithFleeingOutlaw,func) found in global overlay_29_02347BC8.o
+                                           42](ov29_022FBF30,func) found in global overlay_29_022FBB1C.o
+                                            43](DungeonRngSetPrimary,func) found in global overlay_29_022EAB50.o
+                                             44](ChangeLeader,func) found in global overlay_29_022F05B4.o
+                                             44](IsFloorOver,func) found in global overlay_29_022EC62C.o
+                                              45](GetMonsterName,func) found in global overlay_29_02300108.o
+                                               46](IsBlinded,func) found in global dungeon_statuses.o
+                                                47](EntityIsValid__02315118,func) found in global overlay_29_02315118.o
+                                                47](ItemIsActive__0231513C,func) found in global overlay_29_0231513C.o
+                                                 48](TryActivateQuickFeet,func) found in global overlay_29_023118D8.o
+                                                  49](CalcStatusDuration,func) found in global overlay_29_022EAB50.o
+                                                  49](IsProtectedFromNegativeStatus,func) found in global overlay_29_02301F50.o
+                                                   50](ov29_02302C04,func) found in global overlay_29_02302A5C.o
+                                                    51](ChangeMonsterAnimation,func) found in global overlay_29_023047DC.o
+                                                     52](ov29_022EF9BC,func) found in global overlay_29_022EF7C4.o
+                                                      53](EntityIsValid__022EF7A0,func) found in global overlay_29_022EF7A0.o
+                                                      53](ov29_023444D4,func) found in global overlay_29_0233861C.o
+                                                      53](UpdateEntityPixelPos,func) found in global dg_object.o
+                                                      53](MoveMonsterToPos,func) found in global overlay_29_022F7388.o
+                                                     52](EnsureCanStandCurrentTile,func) found in global overlay_29_02320788.o
+                                                      53](EntityIsValid__02321438,func) found in global overlay_29_02321438.o
+                                                      53](ov29_02322374,func) found in global overlay_29_0232145C.o
+                                                       54](IsMonster__02322DB8,func) found in global overlay_29_02322DB8.o
+                                                       54](TryInflictConfusedStatus,func) found in global overlay_29_023118D8.o
+                                                       54](EndLeechSeedClassStatus,func) found in global overlay_29_02305C28.o
+                                                        55](ItemIsActive__02307F1C,func) found in global overlay_29_02307F1C.o
+                                                        55](EntityIsValid__02305C04,func) found in global overlay_29_02305C04.o
+                                                        55](TryInflictMiracleEyeStatus,func) found in global overlay_29_02317844.o
+                                                         56](IsMonster__02318AB0,func) found in global overlay_29_02318AB0.o
+                                                         56](GravityIsActive,func) found in global overlay_29_02337CCC.o
+                                                          57](ov29_022EDEDC,func) found in global overlay_29_022ECDE4.o
+                                                          57](ov29_02306D54,func) found in global overlay_29_02305C28.o
+                                                          57](EntityIsValid__02337CA8,func) found in global overlay_29_02337CA8.o
+                                                          57](IqSkillIsEnabled,func) found in global overlay_29_02301F50.o
+                                                          57](DungeonRandInt,func) found in global dg_random.o
+                                                           58](DungeonRand16Bit,func) found in global overlay_29_022EAA20.o
+                                                          57](DungeonRandRange,func) found in global dg_random.o
+                                                          57](DetermineMonsterShadow,func) found in global overlay_29_023047DC.o
+                                                         56](HasTypeAffectedByGravity,func) found in global overlay_29_02301D78.o
+                                                         56](SafeguardIsActive,func) found in global overlay_29_023016A8.o
+                                                          57](AbilityIsActive,func) found in global dungeon_pokemon_attributes.o
+                                                           58](IsMonster__02301A60,func) found in global overlay_29_02301A60.o
+                                                           58](NoGastroAcidStatus,func) found in global dungeon_pokemon_attributes.o
+                                                          57](GetApparentWeather,func) found in global overlay_29_02333FD0.o
+                                                           58](EntityIsValid__023350D8,func) found in global overlay_29_023350D8.o
+                                                           58](IsMonsterSleeping,func) found in global overlay_29_02300108.o
+                                                          57](IsExperienceLocked,func) found in global joined_at_checks.o
+                                                           58](IsSpecialStoryAlly,func) found in global joined_at_checks.o
+                                                          57](ShouldMonsterRunAway,func) found in global dungeon_ai_targeting.o
+                                                           58](EntityIsValid__023000E4,func) found in global overlay_29_023000E4.o
+                                                           58](IsTacticSet,func) found in global dungeon_pokemon_attributes_1.o
+                                                         56](TryIncreaseHp,func) found in global overlay_29_0231513C.o
+                                                         56](GetMaxPpWrapper,func) found in global overlay_29_0231CBEC.o
+                                                          57](EntityIsValid__0231EDD8,func) found in global overlay_29_0231EDD8.o
+                                                          57](ov29_02305814,func) found in global overlay_29_023055B0.o
+                                                           58](CalcSpeedStageWrapper,func) found in global overlay_29_022FEDBC.o
+                                                           58](ov29_022E2CA0,func) found in global overlay_29_022E1AD4.o
+                                                           58](GetTileAtEntity,func) found in global overlay_29_022E0378.o
+                                                           58](EntityIsValid__0230558C,func) found in global overlay_29_0230558C.o
+                                                           58](TryNonLeaderItemPickUp,func) found in global overlay_29_0230F02C.o
+                                                           58](CheckVariousStatuses2,func) found in global dungeon_capabilities.o
+                                                            59](CheckVariousStatuses,func) found in global overlay_29_02300BF8.o
+                                                             60](IsChargingAnyTwoTurnMove,func) found in global overlay_29_02322DDC.o
+                                                             60](ov29_023008DC,func) found in global overlay_29_023008DC.o
+                                                              61](ov29_02300D00,func) found in global overlay_29_02300BF8.o
+                                                           58](ov29_022FBE04,func) found in global overlay_29_022FBB1C.o
+                                                          57](ov31_0238619C,func) found in global overlay_31_02382FBC.o
+                                                           58](ov31_02382B54,func) found in global overlay_31_02382820.o
+                                                            59](OVERLAY31_UNKNOWN_POINTER__NA_238A260,notype) found in global overlay_31_02382FBC.o
+                                                            59](DUNGEON_WINDOW_PARAMS_1,notype) found in global overlay_31_02382FBC.o
+                                                            59](DrawDungeonMenuStatusWindow,func) found in global overlay_31_02382820.o
+                                                            59](DungeonMenuSwitch,func) found in global overlay_31_02382820.o
+                                                           58](ov31_02382DAC,func) found in global overlay_31_02382820.o
+                                                           58](ov29_0234E988,func) found in global overlay_29_0234DDF4.o
+                                                            59](EntityIsValid__0234EC14,func) found in global overlay_29_0234EC14.o
+                                                            59](ov31_02382E18,func) found in global overlay_31_02382820.o
+                                                             60](CreateStairsMenuState,func) found in global overlay_31_02382820.o
+                                                              61](ov31_0238A2A0,notype) found in global overlay_31_02382FBC.o
+                                                            59](ov29_0231DD60,func) found in global overlay_29_0231CBEC.o
+                                                            59](EntityIsValid__0234DDD0,func) found in global overlay_29_0234DDD0.o
+                                                            59](ov29_022F5DC0,func) found in global overlay_29_022F52B0.o
+                                                             60](EntityIsValid__022F62A8,func) found in global overlay_29_022F62A8.o
+                                                             60](EntityIsValid__022F528C,func) found in global overlay_29_022F528C.o
+                                                             60](ov29_0232145C,func) found in global overlay_29_0232145C.o
+                                                             60](ShouldUsePp,func) found in global overlay_29_02319FB0.o
+                                                             60](ov29_0231AE3C,func) found in global overlay_29_0231A9F8.o
+                                                              61](ov29_0232E80C,func) found in global overlay_29_0232E2B8.o
+                                                               62](EntityIsValid__0232E840,func) found in global overlay_29_0232E840.o
+                                                               62](RestoreAllMovePP,func) found in global overlay_29_02317844.o
+                                                               62](DoMoveCleanse,func) found in global overlay_29_0232C524.o
+                                                                63](EntityIsValidMoveEffects__0232E250,func) found in global overlay_29_0232E250.o
+                                                                63](DealDamage,func) found in global overlay_29_0232E864.o
+                                                                 64](EntityIsValid__02333FAC,func) found in global overlay_29_02333FAC.o
+                                                                 64](Conversion2IsActive,func) found in global overlay_29_02318E70.o
+                                                                  65](EntityIsValid__02319F8C,func) found in global overlay_29_02319F8C.o
+                                                                  65](StatusCheckerCheck,func) found in global overlay_29_0232E864.o
+                                                                  65](GetEntityMoveTargetAndRange,func) found in global overlay_29_0231A9F8.o
+                                                                  65](EntityIsValid__02318E4C,func) found in global overlay_29_02318E4C.o
+                                                                  65](DungeonRandOutcome__022EAB20,func) found in global dg_random.o
+                                                                 64](ApplyDamageAndEffects,func) found in global overlay_29_023085DC.o
+                                                                  65](DefenderAbilityIsActive__0230A940,func) found in global overlay_29_02308FE0.o
+                                                                   66](IsMonster__0230A994,func) found in global overlay_29_0230A994.o
+                                                                   66](ov29_022ECD84,func) found in global overlay_29_022EC62C.o
+                                                                   66](EntityIsValid__02308FBC,func) found in global overlay_29_02308FBC.o
+                                                                   66](ov29_02303E0C,func) found in global overlay_29_02302A5C.o
+                                                                   66](TrySpawnEnemyItemDrop,func) found in global overlay_29_0230F9A4.o
+                                                                    67](EntityIsValid__02311010,func) found in global overlay_29_02311010.o
+                                                                    67](ExclusiveItemEffectIsActive__02311064,func) found in global overlay_29_02311034.o
+                                                                     68](EntityIsValid__023118B4,func) found in global overlay_29_023118B4.o
+                                                                    67](TryActivateBadDreams,func) found in global overlay_29_0231B1B8.o
+                                                                     68](EntityIsValid__0231B194,func) found in global overlay_29_0231B194.o
+                                                                     68](IsMonster__0231B318,func) found in global overlay_29_0231B318.o
+                                                                    67](TryWarp,func) found in global overlay_29_02320788.o
+                                                                    67](ov29_02344B9C,func) found in global overlay_29_02344B1C.o
+                                                                    67](ov29_02347184,func) found in global overlay_29_023456BC.o
+                                                                   66](ov29_022F0534,func) found in global overlay_29_022EFA6C.o
+                                                                   66](SubInitMonster,func) found in global overlay_29_022FC9C0.o
+                                                                  65](ResetDamageData,func) found in global overlay_29_022F62CC.o
+                                                                   66](EntityIsValid__022F7364,func) found in global overlay_29_022F7364.o
+                                                                   66](ov29_0231B4AC,func) found in global overlay_29_0231B33C.o
+                                                                    67](EntityIsValid__0231CBC8,func) found in global overlay_29_0231CBC8.o
+                                                                    67](CheckVariousConditions,func) found in global dungeon_capabilities_1.o
+                                                                   66](ov29_022F6210,func) found in global overlay_29_022F52B0.o
+                                                                  65](ov29_0231EDFC,func) found in global overlay_29_0231EDFC.o
+                                                                   66](EntityIsValid__0231F570,func) found in global overlay_29_0231F570.o
+                                                                   66](ov29_0232033C,func) found in global overlay_29_023201A0.o
+                                                                    67](EntityIsValid__02320764,func) found in global overlay_29_02320764.o
+                                                                    67](IncrementEntityPixelPosXY,func) found in global dg_object.o
+                                                                    67](EntityIsValid__0232017C,func) found in global overlay_29_0232017C.o
+                                                                 64](DoMoveTag0x1A7,func) found in global overlay_29_0232E2B8.o
+                                                                 64](DoMoveDefendOrder,func) found in global overlay_29_0232E250.o
+                                                                 64](DoMoveFlareBlitz,func) found in global overlay_29_0232C524.o
+                                                                 64](DoMoveCopycat,func) found in global overlay_29_0232A3FC.o
+                                                                  65](EntityIsValidMoveEffects__0232C500,func) found in global overlay_29_0232C500.o
+                                                                  65](RevealTrapsNearby,func) found in global overlay_29_022EE36C.o
+                                                                   66](EntityIsValid__022EE348,func) found in global overlay_29_022EE348.o
+                                                                   66](TryBlowAway,func) found in global overlay_29_0231FC20.o
+                                                                  65](ov29_02318BBC,func) found in global overlay_29_02318AD4.o
+                                                                   66](EntityIsValid__02318D34,func) found in global overlay_29_02318D34.o
+                                                                  65](ov29_02318D58,func) found in global overlay_29_02318D58.o
+                                                                  65](EntityIsValidMoveEffects__0232A3D8,func) found in global overlay_29_0232A3D8.o
+                                                                  65](SetEntityPixelPosXY,func) found in global dg_object.o
+                                                                  65](DefenderAbilityIsActiveMoveEffects__02329F14,func) found in global overlay_29_02328030.o
+                                                                   66](ov29_0232A834,func) found in global overlay_29_0232A3FC.o
+                                                                   66](EntityIsValidMoveEffects__0232800C,func) found in global overlay_29_0232800C.o
+                                                                 64](DoMoveSnore,func) found in global overlay_29_02325644.o
+                                                                 64](ov29_02301C2C,func) found in global overlay_29_02301A84.o
+                                                                63](TryDrought,func) found in global overlay_29_0231F594.o
+                                                                 64](EntityIsValid__0231FBFC,func) found in global overlay_29_0231FBFC.o
+                                                                63](ov29_022E1AAC,func) found in global dg_object.o
+                                                              61](IsMonster__0231A9D4,func) found in global overlay_29_0231A9D4.o
+                                                            59](ov31_02382E08,func) found in global overlay_31_02382820.o
+                                                            59](EntryOverlay31,func) found in global overlay_31_02382820.o
+                                                           58](StairsSubheadingCallback,func) found in global overlay_31_02382820.o
+                                                          57](SetDoughSeedFlag,func) found in global overlay_29_02338548.o
+                                                          57](GetDoughSeedFlag,func) found in global overlay_29_02338548.o
+                                                     52](EntityIsValid__023047B8,func) found in global overlay_29_023047B8.o
+                                                    51](EntityIsValid__02302A38,func) found in global overlay_29_02302A38.o
+                                                  49](CopyStringFromId,func) found in global main_0202593C.o
+                                              45](EntityIsValid__022ECDC0,func) found in global overlay_29_022ECDC0.o
+                                              45](EntityIsValid__022EC608,func) found in global overlay_29_022EC608.o
+                                              45](ExecuteMonsterAction,func) found in global overlay_29_022FE4BC.o
+                                               46](EntityIsValid__022FED98,func) found in global overlay_29_022FED98.o
+                                              45](RunMonsterAi,func) found in global dungeon_ai.o
+                                               46](ShouldRunMonsterAi,func) found in global dungeon_util_1.o
+                                               46](AiDecideUseItem,func) found in global overlay_29_0230E914.o
+                                            43](EntityIsValid__022FC99C,func) found in global overlay_29_022FC99C.o
+                                        39](EntityIsValid__02344AF8,func) found in global overlay_29_02344AF8.o
+                                        39](IsSecretBazaar,func) found in global overlay_29_02338604.o
+                                        39](SetShouldBoostKecleonShopSpawnChance,func) found in global overlay_29_02338548.o
+                                        39](ShouldBoostKecleonShopSpawnChance,func) found in global overlay_29_02338548.o
+                                        39](SetShouldBoostHiddenStairsSpawnChance,func) found in global overlay_29_02338604.o
+                                        39](ShouldBoostHiddenStairsSpawnChance,func) found in global overlay_29_02338604.o
+                                       38](EntityIsValid__022E32E8,func) found in global dg_camera.o
+                                       38](EntityIsValid__022E1A1C,func) found in global dg_object.o
+                                      37](DirectoryFileMngr_GetDirectoryFileSize,func) found in global directory_file_mngr.o
+                                     36](EntityIsValid__0234987C,func) found in global overlay_29_0234987C.o
+                                 32](EntityIsValid__02345698,func) found in global overlay_29_02345698.o
+                            27](EntityIsValid__022E0354,func) found in global dg.o
+                          25](IsMonster__0234D460,func) found in global overlay_29_0234D460.o
+                          25](ov30_023842F4,func) found in global overlay_30.o
+                           26](.data,section) found in local overlay_30.o
+                          25](DungeonFree,func) found in global overlay_29_022DEAB0.o
+                          25](DungeonZInit,func) found in global overlay_29_022DEAB0.o
+                          25](DungeonAlloc,func) found in global overlay_29_022DEAB0.o
+                          25](RunDungeon,func) found in global overlay_29_022DEADC.o
+                           26](UpdateShouldBoostKecleonShopSpawnChance,func) found in global overlay_29_02338548.o
+                           26](TrySpawnDoughSeedPoke,func) found in global overlay_29_02338560.o
+                           26](InitDungeonRng,func) found in global overlay_29_022EA9EC.o
+                          25](GetDungeonPtrMaster,func) found in global overlay_29_022DEAB0.o
+                     20](Debug_SetLogFlag,func) found in global debug.o
+                     20](Debug_SetDebugFlag,func) found in global debug.o
+                   18](LoadStringFile,func) found in global main_020257FC.o
+                   18](DirectoryFileMngr_LoadDirectoryFile,func) found in global directory_file_mngr.o
+                   18](FileGetSize,func) found in global main_02008254.o
+                  17](CardPullOut,func) found in global main_02003D2C.o
+                15](EntityIsValid__02325620,func) found in global overlay_29_02325620.o
+                15](DungeonRandOutcome__022EAB50,func) found in global dg_random.o
+              13](.data,section) found in local overlay_10.o
+              13](.bss,section) found in local overlay_10.o
+             12](EntityIsValid__0230E8F0,func) found in global overlay_29_0230E8F0.o
           9](EntityIsValid__0230827C,func) found in global overlay_29_0230827C.o
           9](ov29_023082C4,func) found in global overlay_29_023082A0.o
           9](DTCM_BSS,notype) found in global dtcm.o
@@ -35238,36 +35267,36 @@
   022F892C 00000000 .text   $d	(overlay_29_022F62CC.o)
   022F8930 00000024 .text   EntityIsValid__022F7364	(overlay_29_022F7364.o)
   022F8930 00000000 .text   $a	(overlay_29_022F7364.o)
-  022F8954 00004650 .text   .text	(overlay_29_022F7388.o)
-  022F8954 0000001C .text   DungeonGetSpriteIndex	(overlay_29_022F7388.o)
   022F8954 00000000 .text   $a	(overlay_29_022F7388.o)
+  022F8954 0000001C .text   DungeonGetSpriteIndex	(overlay_29_022F7388.o)
+  022F8954 00002384 .text   .text	(overlay_29_022F7388.o)
   022F896C 00000000 .text   $d	(overlay_29_022F7388.o)
-  022F8970 0000000C .text   JoinedAtRangeCheck2Veneer	(overlay_29_022F7388.o)
   022F8970 00000000 .text   $a	(overlay_29_022F7388.o)
+  022F8970 0000000C .text   JoinedAtRangeCheck2Veneer	(overlay_29_022F7388.o)
   022F8978 00000000 .text   $d	(overlay_29_022F7388.o)
   022F897C 00000038 .text   FloorNumberIsEven	(overlay_29_022F7388.o)
   022F897C 00000000 .text   $a	(overlay_29_022F7388.o)
   022F89B0 00000000 .text   $d	(overlay_29_022F7388.o)
-  022F89B4 00000020 .text   GetKecleonIdToSpawnByFloor	(overlay_29_022F7388.o)
   022F89B4 00000000 .text   $a	(overlay_29_022F7388.o)
+  022F89B4 00000020 .text   GetKecleonIdToSpawnByFloor	(overlay_29_022F7388.o)
   022F89CC 00000000 .text   $d	(overlay_29_022F7388.o)
   022F89D4 000000C8 .text   StoreSpriteFileIndexBothGenders	(overlay_29_022F7388.o)
   022F89D4 00000000 .text   $a	(overlay_29_022F7388.o)
   022F8A98 00000000 .text   $d	(overlay_29_022F7388.o)
-  022F8A9C 000000FC .text   LoadMonsterSpriteInner	(overlay_29_022F7388.o)
   022F8A9C 00000000 .text   $a	(overlay_29_022F7388.o)
+  022F8A9C 000000FC .text   LoadMonsterSpriteInner	(overlay_29_022F7388.o)
   022F8B8C 00000000 .text   $d	(overlay_29_022F7388.o)
-  022F8B98 00000080 .text   SwapMonsterWanFileIndex	(overlay_29_022F7388.o)
   022F8B98 00000000 .text   $a	(overlay_29_022F7388.o)
+  022F8B98 00000080 .text   SwapMonsterWanFileIndex	(overlay_29_022F7388.o)
   022F8C10 00000000 .text   $d	(overlay_29_022F7388.o)
-  022F8C18 00000000 .text   $a	(overlay_29_022F7388.o)
   022F8C18 00000114 .text   LoadMonsterSprite	(overlay_29_022F7388.o)
+  022F8C18 00000000 .text   $a	(overlay_29_022F7388.o)
   022F8D0C 00000000 .text   $d	(overlay_29_022F7388.o)
   022F8D2C 00000098 .text   DeleteMonsterSpriteFile	(overlay_29_022F7388.o)
   022F8D2C 00000000 .text   $a	(overlay_29_022F7388.o)
   022F8DB8 00000000 .text   $d	(overlay_29_022F7388.o)
-  022F8DC4 00000030 .text   DeleteAllMonsterSpriteFiles	(overlay_29_022F7388.o)
   022F8DC4 00000000 .text   $a	(overlay_29_022F7388.o)
+  022F8DC4 00000030 .text   DeleteAllMonsterSpriteFiles	(overlay_29_022F7388.o)
   022F8DF0 00000000 .text   $d	(overlay_29_022F7388.o)
   022F8DF4 00000000 .text   $a	(overlay_29_022F7388.o)
   022F8DF4 000000DC .text   ov29_022F7834	(overlay_29_022F7388.o)
@@ -35276,12 +35305,12 @@
   022F91B4 00000000 .text   $a	(overlay_29_022F7388.o)
   022F91B4 00000240 .text   ov29_022F7BF4	(overlay_29_022F7388.o)
   022F93D8 00000000 .text   $d	(overlay_29_022F7388.o)
-  022F93F4 00000078 .text   ov29_022F7E34	(overlay_29_022F7388.o)
   022F93F4 00000000 .text   $a	(overlay_29_022F7388.o)
+  022F93F4 00000078 .text   ov29_022F7E34	(overlay_29_022F7388.o)
   022F946C 0000005C .text   ov29_022F7EAC	(overlay_29_022F7388.o)
   022F94C4 00000000 .text   $d	(overlay_29_022F7388.o)
-  022F94C8 00000028 .text   ov29_022F7F08	(overlay_29_022F7388.o)
   022F94C8 00000000 .text   $a	(overlay_29_022F7388.o)
+  022F94C8 00000028 .text   ov29_022F7F08	(overlay_29_022F7388.o)
   022F94F0 000006C4 .text   HandleFaint	(overlay_29_022F7388.o)
   022F9B90 00000000 .text   $d	(overlay_29_022F7388.o)
   022F9BB4 00000000 .text   $a	(overlay_29_022F7388.o)
@@ -35293,11 +35322,11 @@
   022F9DF4 00000090 .text   ov29_022F8830	(overlay_29_022F7388.o)
   022F9DF4 00000000 .text   $a	(overlay_29_022F7388.o)
   022F9E7C 00000000 .text   $d	(overlay_29_022F7388.o)
-  022F9E84 00000000 .text   $a	(overlay_29_022F7388.o)
   022F9E84 000000EC .text   ov29_022F88C0	(overlay_29_022F7388.o)
+  022F9E84 00000000 .text   $a	(overlay_29_022F7388.o)
   022F9F68 00000000 .text   $d	(overlay_29_022F7388.o)
-  022F9F70 00000000 .text   $a	(overlay_29_022F7388.o)
   022F9F70 00000020 .text   ov29_022F89AC	(overlay_29_022F7388.o)
+  022F9F70 00000000 .text   $a	(overlay_29_022F7388.o)
   022F9F90 0000062C .text   CreateMonsterSummaryFromMonster	(overlay_29_022F7388.o)
   022FA5B4 00000000 .text   $d	(overlay_29_022F7388.o)
   022FA5BC 00000000 .text   $a	(overlay_29_022F7388.o)
@@ -35324,131 +35353,134 @@
   022FAC7C 00000000 .text   $d	(overlay_29_022F7388.o)
   022FAC8C 00000000 .text   $a	(overlay_29_022F7388.o)
   022FAC8C 0000004C .text   DefenderAbilityIsActive__022F96CC	(overlay_29_022F7388.o)
-  022FACD8 00000024 .text   IsMonster__022F9720	(overlay_29_022F7388.o)
-  022FACFC 000000AC .text   TryActivateConversion2	(overlay_29_022F7388.o)
-  022FADA4 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FADA8 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FADA8 00000050 .text   TryActivateTruant	(overlay_29_022F7388.o)
-  022FADF8 00000074 .text   ov29_022F9840	(overlay_29_022F7388.o)
-  022FAE6C 000000B8 .text   TryPointCameraToMonster	(overlay_29_022F7388.o)
-  022FAF20 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FAF24 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FAF24 00000004 .text   ov29_022F996C	(overlay_29_022F7388.o)
-  022FAF28 0000007C .text   ReevaluateSnatchMonster	(overlay_29_022F7388.o)
-  022FAFA0 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FAFA4 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FAFA4 00000088 .text   GetRandomExplorerMazeMonster	(overlay_29_022F7388.o)
-  022FB028 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB02C 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB02C 00000080 .text   RestorePpAllMovesSetFlags	(overlay_29_022F7388.o)
-  022FB0AC 00000098 .text   ov29_022F9AF4	(overlay_29_022F7388.o)
-  022FB144 000000A8 .text   ov29_022F9B8C	(overlay_29_022F7388.o)
-  022FB1EC 0000000C .text   ov29_022F9C34	(overlay_29_022F7388.o)
-  022FB1F4 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB1F8 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB1F8 0000000C .text   CheckTeamMemberIdxVeneer	(overlay_29_022F7388.o)
-  022FB200 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB204 0000001C .text   ov29_022F9C4C	(overlay_29_022F7388.o)
-  022FB204 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB220 0000000C .text   IsMonsterIdInNormalRangeVeneer	(overlay_29_022F7388.o)
-  022FB228 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB22C 0000021C .text   ov29_022F9C74	(overlay_29_022F7388.o)
-  022FB22C 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB430 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB448 0000018C .text   ov29_022F9EA0	(overlay_29_022F7388.o)
-  022FB448 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB5D0 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB5D4 00000118 .text   ov29_022FA02C	(overlay_29_022F7388.o)
-  022FB5D4 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB6E8 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB6EC 00000094 .text   BoostIQ	(overlay_29_022F7388.o)
-  022FB6EC 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB774 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB780 00000118 .text   ov29_022FA1D8	(overlay_29_022F7388.o)
-  022FB780 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB890 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB898 00000070 .text   ov29_022FA2F0	(overlay_29_022F7388.o)
-  022FB898 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB904 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB908 00000040 .text   ov29_022FA360	(overlay_29_022F7388.o)
-  022FB908 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB948 00000034 .text   ov29_022FA3A0	(overlay_29_022F7388.o)
-  022FB97C 00000044 .text   ov29_022FA3D4	(overlay_29_022F7388.o)
-  022FB9BC 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FB9C0 00000018 .text   ov29_022FA418	(overlay_29_022F7388.o)
-  022FB9C0 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FB9D8 000000F4 .text   ShouldMonsterHeadToStairs	(overlay_29_022F7388.o)
-  022FBAC4 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FBACC 00000050 .text   ov29_022FA524	(overlay_29_022F7388.o)
-  022FBACC 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FBB18 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FBB1C 0000007C .text   ov29_022FA574	(overlay_29_022F7388.o)
-  022FBB1C 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FBB8C 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FBB98 00000058 .text   MewSpawnCheck	(overlay_29_022F7388.o)
-  022FBB98 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FBBEC 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FBBF0 00000108 .text   ov29_022FA648	(overlay_29_022F7388.o)
-  022FBBF0 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FBCF4 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FBCF8 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FBCF8 0000008C .text   ov29_022FA750	(overlay_29_022F7388.o)
-  022FBD80 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FBD84 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FBD84 00000208 .text   TryEndStatusWithAbility	(overlay_29_022F7388.o)
-  022FBF8C 00000054 .text   ov29_022FAA04	(overlay_29_022F7388.o)
-  022FBFE0 00000244 .text   ov29_022FAA58	(overlay_29_022F7388.o)
-  022FC218 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FC224 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FC224 00000024 .text   ExclusiveItemEffectIsActive__022FAC98	(overlay_29_022F7388.o)
-  022FC248 00000090 .text   ov29_022FACBC	(overlay_29_022F7388.o)
-  022FC2D0 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FC2D8 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FC2D8 000001B8 .text   ov29_022FAD4C	(overlay_29_022F7388.o)
-  022FC48C 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FC490 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FC490 000000CC .text   ov29_022FAF08	(overlay_29_022F7388.o)
-  022FC550 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FC55C 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FC55C 00000024 .text   ov29_022FAFD4	(overlay_29_022F7388.o)
-  022FC580 0000006C .text   GetTeamMemberWithIqSkill	(overlay_29_022F7388.o)
-  022FC5E8 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FC5EC 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FC5EC 0000001C .text   TeamMemberHasEnabledIqSkill	(overlay_29_022F7388.o)
-  022FC608 00000028 .text   TeamLeaderIqSkillIsEnabled	(overlay_29_022F7388.o)
-  022FC630 00000064 .text   CountMovesOutOfPp	(overlay_29_022F7388.o)
-  022FC694 0000009C .text   HasSuperEffectiveMoveAgainstUser	(overlay_29_022F7388.o)
-  022FC730 0000006C .text   ov29_022FB1A8	(overlay_29_022F7388.o)
-  022FC79C 00000308 .text   TryEatItem	(overlay_29_022F7388.o)
-  022FCA98 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FCAA4 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FCAA4 0000001C .text   ov29_022FB51C	(overlay_29_022F7388.o)
-  022FCAC0 00000024 .text   CheckSpawnThreshold	(overlay_29_022F7388.o)
-  022FCAE4 00000068 .text   HasLowHealth	(overlay_29_022F7388.o)
-  022FCB48 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FCB4C 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FCB4C 0000006C .text   AreEntitiesAdjacent	(overlay_29_022F7388.o)
-  022FCBB4 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FCBB8 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FCBB8 00000034 .text   ov29_022FB6E4	(overlay_29_022F7388.o)
-  022FCBEC 00000124 .text   ov29_022FB718	(overlay_29_022F7388.o)
-  022FCD08 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FCD10 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FCD10 000000E4 .text   ov29_022FB83C	(overlay_29_022F7388.o)
-  022FCDF0 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FCDF4 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FCDF4 00000064 .text   ov29_022FB920	(overlay_29_022F7388.o)
-  022FCE54 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FCE58 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FCE58 00000008 .text   ov29_022FB984	(overlay_29_022F7388.o)
-  022FCE60 00000030 .text   ov29_022FB98C	(overlay_29_022F7388.o)
-  022FCE8C 00000000 .text   $d	(overlay_29_022F7388.o)
-  022FCE90 00000000 .text   $a	(overlay_29_022F7388.o)
-  022FCE90 00000024 .text   ov29_022FB9BC	(overlay_29_022F7388.o)
-  022FCEB4 00000074 .text   ov29_022FB9E0	(overlay_29_022F7388.o)
-  022FCF28 0000001C .text   ov29_022FBA54	(overlay_29_022F7388.o)
-  022FCF44 00000044 .text   ov29_022FBA70	(overlay_29_022F7388.o)
-  022FCF88 0000001C .text   ov29_022FBAB4	(overlay_29_022F7388.o)
+  022FACD8 00000024 .text   IsMonster__022F9720	(overlay_29_022F9720.o)
+  022FACD8 00000000 .text   $a	(overlay_29_022F9720.o)
+  022FACFC 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FACFC 000000AC .text   TryActivateConversion2	(overlay_29_022F9744.o)
+  022FACFC 000022A8 .text   .text	(overlay_29_022F9744.o)
+  022FADA4 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FADA8 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FADA8 00000050 .text   TryActivateTruant	(overlay_29_022F9744.o)
+  022FADF8 00000074 .text   ov29_022F9840	(overlay_29_022F9744.o)
+  022FAE6C 000000B8 .text   TryPointCameraToMonster	(overlay_29_022F9744.o)
+  022FAF20 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FAF24 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FAF24 00000004 .text   ov29_022F996C	(overlay_29_022F9744.o)
+  022FAF28 0000007C .text   ReevaluateSnatchMonster	(overlay_29_022F9744.o)
+  022FAFA0 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FAFA4 00000088 .text   GetRandomExplorerMazeMonster	(overlay_29_022F9744.o)
+  022FAFA4 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB028 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB02C 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB02C 00000080 .text   RestorePpAllMovesSetFlags	(overlay_29_022F9744.o)
+  022FB0AC 00000098 .text   ov29_022F9AF4	(overlay_29_022F9744.o)
+  022FB144 000000A8 .text   ov29_022F9B8C	(overlay_29_022F9744.o)
+  022FB1EC 0000000C .text   ov29_022F9C34	(overlay_29_022F9744.o)
+  022FB1F4 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB1F8 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB1F8 0000000C .text   CheckTeamMemberIdxVeneer	(overlay_29_022F9744.o)
+  022FB200 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB204 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB204 0000001C .text   ov29_022F9C4C	(overlay_29_022F9744.o)
+  022FB220 0000000C .text   IsMonsterIdInNormalRangeVeneer	(overlay_29_022F9744.o)
+  022FB228 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB22C 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB22C 0000021C .text   ov29_022F9C74	(overlay_29_022F9744.o)
+  022FB430 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB448 0000018C .text   ov29_022F9EA0	(overlay_29_022F9744.o)
+  022FB448 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB5D0 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB5D4 00000118 .text   ov29_022FA02C	(overlay_29_022F9744.o)
+  022FB5D4 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB6E8 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB6EC 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB6EC 00000094 .text   BoostIQ	(overlay_29_022F9744.o)
+  022FB774 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB780 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB780 00000118 .text   ov29_022FA1D8	(overlay_29_022F9744.o)
+  022FB890 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB898 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB898 00000070 .text   ov29_022FA2F0	(overlay_29_022F9744.o)
+  022FB904 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB908 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB908 00000040 .text   ov29_022FA360	(overlay_29_022F9744.o)
+  022FB948 00000034 .text   ov29_022FA3A0	(overlay_29_022F9744.o)
+  022FB97C 00000044 .text   ov29_022FA3D4	(overlay_29_022F9744.o)
+  022FB9BC 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FB9C0 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FB9C0 00000018 .text   ov29_022FA418	(overlay_29_022F9744.o)
+  022FB9D8 000000F4 .text   ShouldMonsterHeadToStairs	(overlay_29_022F9744.o)
+  022FBAC4 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FBACC 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FBACC 00000050 .text   ov29_022FA524	(overlay_29_022F9744.o)
+  022FBB18 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FBB1C 0000007C .text   ov29_022FA574	(overlay_29_022F9744.o)
+  022FBB1C 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FBB8C 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FBB98 00000058 .text   MewSpawnCheck	(overlay_29_022F9744.o)
+  022FBB98 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FBBEC 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FBBF0 00000108 .text   ov29_022FA648	(overlay_29_022F9744.o)
+  022FBBF0 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FBCF4 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FBCF8 0000008C .text   ov29_022FA750	(overlay_29_022F9744.o)
+  022FBCF8 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FBD80 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FBD84 00000208 .text   TryEndStatusWithAbility	(overlay_29_022F9744.o)
+  022FBD84 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FBF8C 00000054 .text   ov29_022FAA04	(overlay_29_022F9744.o)
+  022FBFE0 00000244 .text   ov29_022FAA58	(overlay_29_022F9744.o)
+  022FC218 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FC224 00000024 .text   ExclusiveItemEffectIsActive__022FAC98	(overlay_29_022F9744.o)
+  022FC224 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FC248 00000090 .text   ov29_022FACBC	(overlay_29_022F9744.o)
+  022FC2D0 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FC2D8 000001B8 .text   ov29_022FAD4C	(overlay_29_022F9744.o)
+  022FC2D8 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FC48C 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FC490 000000CC .text   ov29_022FAF08	(overlay_29_022F9744.o)
+  022FC490 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FC550 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FC55C 00000024 .text   ov29_022FAFD4	(overlay_29_022F9744.o)
+  022FC55C 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FC580 0000006C .text   GetTeamMemberWithIqSkill	(overlay_29_022F9744.o)
+  022FC5E8 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FC5EC 0000001C .text   TeamMemberHasEnabledIqSkill	(overlay_29_022F9744.o)
+  022FC5EC 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FC608 00000028 .text   TeamLeaderIqSkillIsEnabled	(overlay_29_022F9744.o)
+  022FC630 00000064 .text   CountMovesOutOfPp	(overlay_29_022F9744.o)
+  022FC694 0000009C .text   HasSuperEffectiveMoveAgainstUser	(overlay_29_022F9744.o)
+  022FC730 0000006C .text   ov29_022FB1A8	(overlay_29_022F9744.o)
+  022FC79C 00000308 .text   TryEatItem	(overlay_29_022F9744.o)
+  022FCA98 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FCAA4 0000001C .text   ov29_022FB51C	(overlay_29_022F9744.o)
+  022FCAA4 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FCAC0 00000024 .text   CheckSpawnThreshold	(overlay_29_022F9744.o)
+  022FCAE4 00000068 .text   HasLowHealth	(overlay_29_022F9744.o)
+  022FCB48 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FCB4C 0000006C .text   AreEntitiesAdjacent	(overlay_29_022F9744.o)
+  022FCB4C 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FCBB4 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FCBB8 00000034 .text   ov29_022FB6E4	(overlay_29_022F9744.o)
+  022FCBB8 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FCBEC 00000124 .text   ov29_022FB718	(overlay_29_022F9744.o)
+  022FCD08 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FCD10 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FCD10 000000E4 .text   ov29_022FB83C	(overlay_29_022F9744.o)
+  022FCDF0 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FCDF4 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FCDF4 00000064 .text   ov29_022FB920	(overlay_29_022F9744.o)
+  022FCE54 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FCE58 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FCE58 00000008 .text   ov29_022FB984	(overlay_29_022F9744.o)
+  022FCE60 00000030 .text   ov29_022FB98C	(overlay_29_022F9744.o)
+  022FCE8C 00000000 .text   $d	(overlay_29_022F9744.o)
+  022FCE90 00000024 .text   ov29_022FB9BC	(overlay_29_022F9744.o)
+  022FCE90 00000000 .text   $a	(overlay_29_022F9744.o)
+  022FCEB4 00000074 .text   ov29_022FB9E0	(overlay_29_022F9744.o)
+  022FCF28 0000001C .text   ov29_022FBA54	(overlay_29_022F9744.o)
+  022FCF44 00000044 .text   ov29_022FBA70	(overlay_29_022F9744.o)
+  022FCF88 0000001C .text   ov29_022FBAB4	(overlay_29_022F9744.o)
   022FCFA4 00000020 .text   IsSpecialStoryAlly	(joined_at_checks.o)
   022FCFA4 00000000 .text   $a	(joined_at_checks.o)
   022FCFC4 0000002C .text   IsExperienceLocked	(joined_at_checks.o)
@@ -35595,11 +35627,11 @@
   02301514 00000024 .text   EntityIsValid__023000E4	(overlay_29_023000E4.o)
   02301514 00000000 .text   $a	(overlay_29_023000E4.o)
   02301538 0000014C .text   GetMonsterName	(overlay_29_02300108.o)
-  02301538 000009EC .text   .text	(overlay_29_02300108.o)
   02301538 00000000 .text   $a	(overlay_29_02300108.o)
+  02301538 000006C4 .text   .text	(overlay_29_02300108.o)
   02301678 00000000 .text   $d	(overlay_29_02300108.o)
-  02301684 0000004C .text   ov29_0230027C	(overlay_29_02300108.o)
   02301684 00000000 .text   $a	(overlay_29_02300108.o)
+  02301684 0000004C .text   ov29_0230027C	(overlay_29_02300108.o)
   023016C8 00000000 .text   $d	(overlay_29_02300108.o)
   023016D0 00000000 .text   $a	(overlay_29_02300108.o)
   023016D0 00000028 .text   SprintfStatic	(overlay_29_02300108.o)
@@ -35624,14 +35656,16 @@
   02301B8C 00000034 .text   IsMonsterSleeping	(overlay_29_02300108.o)
   02301BC0 0000003C .text   ov29_023007DC	(overlay_29_02300108.o)
   02301BF8 00000000 .text   $d	(overlay_29_02300108.o)
-  02301BFC 00000000 .text   $a	(overlay_29_02300108.o)
-  02301BFC 000000C4 .text   CheckVariousStatuses2	(overlay_29_02300108.o)
-  02301CC0 000000C4 .text   ov29_023008DC	(overlay_29_02300108.o)
-  02301D84 0000002C .text   ov29_023009A0	(overlay_29_02300108.o)
-  02301DB0 00000138 .text   ov29_023009CC	(overlay_29_02300108.o)
-  02301EE8 0000003C .text   ov29_02300B04	(overlay_29_02300108.o)
-  02301F24 000000B8 .text   CheckVariousConditions	(dungeon_capabilities.o)
-  02301F24 00000000 .text   $a	(dungeon_capabilities.o)
+  02301BFC 000000C4 .text   CheckVariousStatuses2	(dungeon_capabilities.o)
+  02301BFC 00000000 .text   $a	(dungeon_capabilities.o)
+  02301CC0 00000264 .text   .text	(overlay_29_023008DC.o)
+  02301CC0 00000000 .text   $a	(overlay_29_023008DC.o)
+  02301CC0 000000C4 .text   ov29_023008DC	(overlay_29_023008DC.o)
+  02301D84 0000002C .text   ov29_023009A0	(overlay_29_023008DC.o)
+  02301DB0 00000138 .text   ov29_023009CC	(overlay_29_023008DC.o)
+  02301EE8 0000003C .text   ov29_02300B04	(overlay_29_023008DC.o)
+  02301F24 000000B8 .text   CheckVariousConditions	(dungeon_capabilities_1.o)
+  02301F24 00000000 .text   $a	(dungeon_capabilities_1.o)
   02301FDC 00000B4C .text   .text	(overlay_29_02300BF8.o)
   02301FDC 000000B8 .text   ov29_02300BF8	(overlay_29_02300BF8.o)
   02301FDC 00000000 .text   $a	(overlay_29_02300BF8.o)
@@ -35668,78 +35702,85 @@
   02302B28 00000000 .text   $a	(dungeon_ai_targeting.o)
   02302B28 000000F0 .text   ShouldMonsterRunAway	(dungeon_ai_targeting.o)
   02302C14 00000000 .text   $d	(dungeon_ai_targeting.o)
-  02302C18 00000000 .text   $a	(overlay_29_023016A8.o)
+  02302C18 000003A8 .text   .text	(overlay_29_023016A8.o)
   02302C18 00000030 .text   ShouldMonsterRunAwayVariation	(overlay_29_023016A8.o)
-  02302C18 00000650 .text   .text	(overlay_29_023016A8.o)
+  02302C18 00000000 .text   $a	(overlay_29_023016A8.o)
   02302C48 00000084 .text   ov29_023016D8	(overlay_29_023016A8.o)
   02302CC8 00000000 .text   $d	(overlay_29_023016A8.o)
-  02302CCC 00000000 .text   $a	(overlay_29_023016A8.o)
   02302CCC 00000150 .text   GetTreatmentBetweenMonsters	(overlay_29_023016A8.o)
+  02302CCC 00000000 .text   $a	(overlay_29_023016A8.o)
   02302E18 00000000 .text   $d	(overlay_29_023016A8.o)
-  02302E1C 00000000 .text   $a	(overlay_29_023016A8.o)
   02302E1C 00000090 .text   ov29_023018AC	(overlay_29_023016A8.o)
+  02302E1C 00000000 .text   $a	(overlay_29_023016A8.o)
   02302EAC 00000054 .text   SafeguardIsActive	(overlay_29_023016A8.o)
   02302EFC 00000000 .text   $d	(overlay_29_023016A8.o)
   02302F00 00000000 .text   $a	(overlay_29_023016A8.o)
   02302F00 00000074 .text   LeafGuardIsActive	(overlay_29_023016A8.o)
   02302F70 00000000 .text   $d	(overlay_29_023016A8.o)
-  02302F74 0000004C .text   DefenderAbilityIsActive__02301A0C	(overlay_29_023016A8.o)
   02302F74 00000000 .text   $a	(overlay_29_023016A8.o)
-  02302FC0 00000024 .text   IsMonster__02301A60	(overlay_29_023016A8.o)
-  02302FE4 000000A8 .text   ov29_02301A84	(overlay_29_023016A8.o)
-  02303084 00000000 .text   $d	(overlay_29_023016A8.o)
-  0230308C 000000F8 .text   IsProtectedFromStatDrops	(overlay_29_023016A8.o)
-  0230308C 00000000 .text   $a	(overlay_29_023016A8.o)
-  02303178 00000000 .text   $d	(overlay_29_023016A8.o)
-  02303184 00000000 .text   $a	(overlay_29_023016A8.o)
-  02303184 000000B0 .text   ov29_02301C2C	(overlay_29_023016A8.o)
-  02303234 00000034 .text   NoGastroAcidStatus	(overlay_29_023016A8.o)
+  02302F74 0000004C .text   DefenderAbilityIsActive__02301A0C	(overlay_29_023016A8.o)
+  02302FC0 00000024 .text   IsMonster__02301A60	(overlay_29_02301A60.o)
+  02302FC0 00000000 .text   $a	(overlay_29_02301A60.o)
+  02302FE4 00000000 .text   $a	(overlay_29_02301A84.o)
+  02302FE4 00000250 .text   .text	(overlay_29_02301A84.o)
+  02302FE4 000000A8 .text   ov29_02301A84	(overlay_29_02301A84.o)
+  02303084 00000000 .text   $d	(overlay_29_02301A84.o)
+  0230308C 00000000 .text   $a	(overlay_29_02301A84.o)
+  0230308C 000000F8 .text   IsProtectedFromStatDrops	(overlay_29_02301A84.o)
+  02303178 00000000 .text   $d	(overlay_29_02301A84.o)
+  02303184 00000000 .text   $a	(overlay_29_02301A84.o)
+  02303184 000000B0 .text   ov29_02301C2C	(overlay_29_02301A84.o)
+  02303234 00000034 .text   NoGastroAcidStatus	(dungeon_pokemon_attributes.o)
+  02303234 00000000 .text   $a	(dungeon_pokemon_attributes.o)
   02303268 00000068 .text   AbilityIsActive	(dungeon_pokemon_attributes.o)
   02303268 00000000 .text   $a	(dungeon_pokemon_attributes.o)
-  023032D0 00000000 .text   $a	(overlay_29_02301D78.o)
   023032D0 0000000C .text   AbilityIsActiveVeneer	(overlay_29_02301D78.o)
-  023032D0 00000CB8 .text   .text	(overlay_29_02301D78.o)
+  023032D0 000001A0 .text   .text	(overlay_29_02301D78.o)
+  023032D0 00000000 .text   $a	(overlay_29_02301D78.o)
   023032D8 00000000 .text   $d	(overlay_29_02301D78.o)
-  023032DC 0000008C .text   OtherMonsterAbilityIsActive	(overlay_29_02301D78.o)
   023032DC 00000000 .text   $a	(overlay_29_02301D78.o)
+  023032DC 0000008C .text   OtherMonsterAbilityIsActive	(overlay_29_02301D78.o)
   02303364 00000000 .text   $d	(overlay_29_02301D78.o)
-  02303368 00000038 .text   LevitateIsActive	(overlay_29_02301D78.o)
   02303368 00000000 .text   $a	(overlay_29_02301D78.o)
+  02303368 00000038 .text   LevitateIsActive	(overlay_29_02301D78.o)
   023033A0 00000038 .text   MonsterIsType	(overlay_29_02301D78.o)
   023033D8 00000024 .text   IsTypeAffectedByGravity	(overlay_29_02301D78.o)
   023033FC 00000040 .text   HasTypeAffectedByGravity	(overlay_29_02301D78.o)
   0230343C 00000034 .text   CanSeeInvisibleMonsters	(overlay_29_02301D78.o)
-  02303470 00000030 .text   IsTacticSet	(overlay_29_02301D78.o)
-  023034A0 00000030 .text   HasDropeyeStatus	(overlay_29_02301D78.o)
-  023034D0 0000003C .text   IqSkillIsEnabled	(overlay_29_02301D78.o)
-  02303508 00000000 .text   $d	(overlay_29_02301D78.o)
-  0230350C 00000000 .text   $a	(overlay_29_02301D78.o)
-  0230350C 00000234 .text   UpdateIqSkills	(overlay_29_02301D78.o)
-  02303738 00000000 .text   $d	(overlay_29_02301D78.o)
-  02303740 00000000 .text   $a	(overlay_29_02301D78.o)
-  02303740 00000010 .text   ov29_023021F0	(overlay_29_02301D78.o)
-  0230374C 00000000 .text   $d	(overlay_29_02301D78.o)
-  02303750 00000000 .text   $a	(overlay_29_02301D78.o)
-  02303750 0000007C .text   ov29_02302200	(overlay_29_02301D78.o)
-  023037C8 00000000 .text   $d	(overlay_29_02301D78.o)
-  023037CC 00000000 .text   $a	(overlay_29_02301D78.o)
-  023037CC 000000A0 .text   GetMoveTypeForMonster	(overlay_29_02301D78.o)
-  02303868 00000000 .text   $d	(overlay_29_02301D78.o)
-  0230386C 00000000 .text   $a	(overlay_29_02301D78.o)
-  0230386C 0000004C .text   GetMovePower	(overlay_29_02301D78.o)
-  023038B8 00000020 .text   MonsterCanThrowItems	(overlay_29_02301D78.o)
-  023038D8 00000038 .text   ov29_02302388	(overlay_29_02301D78.o)
-  02303910 00000070 .text   UpdateStateFlags	(overlay_29_02301D78.o)
-  02303980 000000B0 .text   IsProtectedFromNegativeStatus	(overlay_29_02301D78.o)
-  02303A2C 00000000 .text   $d	(overlay_29_02301D78.o)
-  02303A30 0000005C .text   ov29_023024E0	(overlay_29_02301D78.o)
-  02303A30 00000000 .text   $a	(overlay_29_02301D78.o)
-  02303A8C 00000190 .text   AddExpSpecial	(overlay_29_02301D78.o)
-  02303C04 00000000 .text   $d	(overlay_29_02301D78.o)
-  02303C1C 00000030 .text   ItemIsActive__023026CC	(overlay_29_02301D78.o)
-  02303C1C 00000000 .text   $a	(overlay_29_02301D78.o)
-  02303C4C 0000033C .text   EnemyEvolution	(overlay_29_02301D78.o)
-  02303F78 00000000 .text   $d	(overlay_29_02301D78.o)
+  02303470 00000030 .text   IsTacticSet	(dungeon_pokemon_attributes_1.o)
+  02303470 00000000 .text   $a	(dungeon_pokemon_attributes_1.o)
+  023034A0 00000030 .text   HasDropeyeStatus	(overlay_29_02301F50.o)
+  023034A0 00000000 .text   $a	(overlay_29_02301F50.o)
+  023034A0 00000AE8 .text   .text	(overlay_29_02301F50.o)
+  023034D0 0000003C .text   IqSkillIsEnabled	(overlay_29_02301F50.o)
+  02303508 00000000 .text   $d	(overlay_29_02301F50.o)
+  0230350C 00000000 .text   $a	(overlay_29_02301F50.o)
+  0230350C 00000234 .text   UpdateIqSkills	(overlay_29_02301F50.o)
+  02303738 00000000 .text   $d	(overlay_29_02301F50.o)
+  02303740 00000000 .text   $a	(overlay_29_02301F50.o)
+  02303740 00000010 .text   ov29_023021F0	(overlay_29_02301F50.o)
+  0230374C 00000000 .text   $d	(overlay_29_02301F50.o)
+  02303750 00000000 .text   $a	(overlay_29_02301F50.o)
+  02303750 0000007C .text   ov29_02302200	(overlay_29_02301F50.o)
+  023037C8 00000000 .text   $d	(overlay_29_02301F50.o)
+  023037CC 000000A0 .text   GetMoveTypeForMonster	(overlay_29_02301F50.o)
+  023037CC 00000000 .text   $a	(overlay_29_02301F50.o)
+  02303868 00000000 .text   $d	(overlay_29_02301F50.o)
+  0230386C 0000004C .text   GetMovePower	(overlay_29_02301F50.o)
+  0230386C 00000000 .text   $a	(overlay_29_02301F50.o)
+  023038B8 00000020 .text   MonsterCanThrowItems	(overlay_29_02301F50.o)
+  023038D8 00000038 .text   ov29_02302388	(overlay_29_02301F50.o)
+  02303910 00000070 .text   UpdateStateFlags	(overlay_29_02301F50.o)
+  02303980 000000B0 .text   IsProtectedFromNegativeStatus	(overlay_29_02301F50.o)
+  02303A2C 00000000 .text   $d	(overlay_29_02301F50.o)
+  02303A30 0000005C .text   ov29_023024E0	(overlay_29_02301F50.o)
+  02303A30 00000000 .text   $a	(overlay_29_02301F50.o)
+  02303A8C 00000190 .text   AddExpSpecial	(overlay_29_02301F50.o)
+  02303C04 00000000 .text   $d	(overlay_29_02301F50.o)
+  02303C1C 00000030 .text   ItemIsActive__023026CC	(overlay_29_02301F50.o)
+  02303C1C 00000000 .text   $a	(overlay_29_02301F50.o)
+  02303C4C 0000033C .text   EnemyEvolution	(overlay_29_02301F50.o)
+  02303F78 00000000 .text   $d	(overlay_29_02301F50.o)
   02303F88 00000024 .text   EntityIsValid__02302A38	(overlay_29_02302A38.o)
   02303F88 00000000 .text   $a	(overlay_29_02302A38.o)
   02303FAC 000001A8 .text   LevelUpItemEffect	(overlay_29_02302A5C.o)
@@ -35935,110 +35976,113 @@
   0230A528 00000000 .text   $d	(overlay_29_023085DC.o)
   0230A574 00000024 .text   EntityIsValid__02308FBC	(overlay_29_02308FBC.o)
   0230A574 00000000 .text   $a	(overlay_29_02308FBC.o)
-  0230A598 0000192C .text   ApplyDamage	(overlay_29_02308FE0.o)
-  0230A598 00005894 .text   .text	(overlay_29_02308FE0.o)
   0230A598 00000000 .text   $a	(overlay_29_02308FE0.o)
+  0230A598 00001978 .text   .text	(overlay_29_02308FE0.o)
+  0230A598 0000192C .text   ApplyDamage	(overlay_29_02308FE0.o)
   0230B530 00000000 .text   $d	(overlay_29_02308FE0.o)
   0230B5BC 00000000 .text   $a	(overlay_29_02308FE0.o)
   0230BEA4 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230BEC4 0000004C .text   DefenderAbilityIsActive__0230A940	(overlay_29_02308FE0.o)
   0230BEC4 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230BF10 00000024 .text   IsMonster__0230A994	(overlay_29_02308FE0.o)
-  0230BF34 00000024 .text   ExclusiveItemEffectIsActive__0230A9B8	(overlay_29_02308FE0.o)
-  0230BF58 00000030 .text   ItemIsActive__0230A9DC	(overlay_29_02308FE0.o)
-  0230BF88 0000007C .text   AftermathCheck	(overlay_29_02308FE0.o)
-  0230BFFC 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230C004 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230C004 000000CC .text   GetTypeMatchupBothTypes	(overlay_29_02308FE0.o)
-  0230C0C4 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230C0D0 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230C0D0 00000098 .text   ScrappyShouldActivate	(overlay_29_02308FE0.o)
-  0230C164 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230C168 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230C168 00000014 .text   IsTypeIneffectiveAgainstGhost	(overlay_29_02308FE0.o)
-  0230C17C 00000054 .text   GhostImmunityIsActive	(overlay_29_02308FE0.o)
-  0230C1D0 000000AC .text   GetTypeMatchup	(overlay_29_02308FE0.o)
-  0230C278 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230C27C 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230C27C 00000AB8 .text   CalcTypeBasedDamageEffects	(overlay_29_02308FE0.o)
-  0230CCD4 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230CD34 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230CD34 000003CC .text   ov29_0230B7D4	(overlay_29_02308FE0.o)
-  0230D0F4 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230D100 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230D100 000014C8 .text   CalcDamage	(overlay_29_02308FE0.o)
-  0230D9A0 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230DA28 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230E59C 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230E5C8 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230E5C8 00000094 .text   ov29_0230D088	(overlay_29_02308FE0.o)
-  0230E658 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230E65C 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230E65C 00000070 .text   ApplyDamageAndEffectsWrapper	(overlay_29_02308FE0.o)
-  0230E6CC 000000B4 .text   CalcRecoilDamageFixed	(overlay_29_02308FE0.o)
-  0230E780 00000164 .text   CalcDamageFixed	(overlay_29_02308FE0.o)
-  0230E8D8 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230E8E4 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230E8E4 0000004C .text   CalcDamageFixedNoCategory	(overlay_29_02308FE0.o)
-  0230E930 0000004C .text   CalcDamageFixedWrapper	(overlay_29_02308FE0.o)
-  0230E97C 0000003C .text   UpdateShopkeeperModeAfterAttack	(overlay_29_02308FE0.o)
-  0230E9B8 00000028 .text   UpdateShopkeeperModeAfterTrap	(overlay_29_02308FE0.o)
-  0230E9E0 00000084 .text   ov29_0230D4A4	(overlay_29_02308FE0.o)
-  0230EA64 000000F0 .text   ResetDamageCalcDiagnostics	(overlay_29_02308FE0.o)
-  0230EB50 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230EB54 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230EB54 00000010 .text   ov29_0230D618	(overlay_29_02308FE0.o)
-  0230EB60 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230EB64 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230EB64 0000002C .text   ov29_0230D628	(overlay_29_02308FE0.o)
-  0230EB8C 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230EB90 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230EB90 00000034 .text   ov29_0230D654	(overlay_29_02308FE0.o)
-  0230EBC4 0000007C .text   ov29_0230D688	(overlay_29_02308FE0.o)
-  0230EC40 00000008 .text   ov29_0230D704	(overlay_29_02308FE0.o)
-  0230EC48 0000002C .text   ov29_0230D70C	(overlay_29_02308FE0.o)
-  0230EC70 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230EC74 00000034 .text   ov29_0230D738	(overlay_29_02308FE0.o)
-  0230EC74 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230ECA4 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230ECA8 00000068 .text   ov29_0230D76C	(overlay_29_02308FE0.o)
-  0230ECA8 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230ED10 000000A0 .text   ov29_0230D7D4	(overlay_29_02308FE0.o)
-  0230EDAC 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230EDB0 00000074 .text   ov29_0230D874	(overlay_29_02308FE0.o)
-  0230EDB0 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230EE20 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230EE24 00000074 .text   ov29_0230D8E8	(overlay_29_02308FE0.o)
-  0230EE24 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230EE94 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230EE98 00000074 .text   ov29_0230D95C	(overlay_29_02308FE0.o)
-  0230EE98 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230EF08 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230EF0C 00000074 .text   ov29_0230D9D0	(overlay_29_02308FE0.o)
-  0230EF0C 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230EF7C 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230EF80 00000074 .text   ov29_0230DA44	(overlay_29_02308FE0.o)
-  0230EF80 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230EFF0 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230EFF4 00000060 .text   ov29_0230DAB8	(overlay_29_02308FE0.o)
-  0230EFF4 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230F050 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230F054 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230F054 000000BC .text   SpecificRecruitCheck	(overlay_29_02308FE0.o)
-  0230F108 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230F110 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230F110 00000494 .text   RecruitCheck	(overlay_29_02308FE0.o)
-  0230F564 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230F5A4 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230F5A4 00000510 .text   TryRecruit	(overlay_29_02308FE0.o)
-  0230FA98 00000000 .text   $d	(overlay_29_02308FE0.o)
-  0230FAB4 00000000 .text   $a	(overlay_29_02308FE0.o)
-  0230FAB4 00000030 .text   ItemIsActive__0230E578	(overlay_29_02308FE0.o)
-  0230FAE4 00000054 .text   ov29_0230E5A8	(overlay_29_02308FE0.o)
-  0230FB38 0000005C .text   ov29_0230E5FC	(overlay_29_02308FE0.o)
-  0230FB94 00000064 .text   ov29_0230E658	(overlay_29_02308FE0.o)
-  0230FBF8 00000234 .text   TrySpawnMonsterAndTickSpawnCounter	(overlay_29_02308FE0.o)
-  0230FE14 00000000 .text   $d	(overlay_29_02308FE0.o)
+  0230BEC4 0000004C .text   DefenderAbilityIsActive__0230A940	(overlay_29_02308FE0.o)
+  0230BF10 00000024 .text   IsMonster__0230A994	(overlay_29_0230A994.o)
+  0230BF10 00000000 .text   $a	(overlay_29_0230A994.o)
+  0230BF34 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230BF34 00000024 .text   ExclusiveItemEffectIsActive__0230A9B8	(overlay_29_0230A9B8.o)
+  0230BF34 00003EF8 .text   .text	(overlay_29_0230A9B8.o)
+  0230BF58 00000030 .text   ItemIsActive__0230A9DC	(overlay_29_0230A9B8.o)
+  0230BF88 0000007C .text   AftermathCheck	(overlay_29_0230A9B8.o)
+  0230BFFC 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230C004 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230C004 000000CC .text   GetTypeMatchupBothTypes	(overlay_29_0230A9B8.o)
+  0230C0C4 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230C0D0 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230C0D0 00000098 .text   ScrappyShouldActivate	(overlay_29_0230A9B8.o)
+  0230C164 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230C168 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230C168 00000014 .text   IsTypeIneffectiveAgainstGhost	(overlay_29_0230A9B8.o)
+  0230C17C 00000054 .text   GhostImmunityIsActive	(overlay_29_0230A9B8.o)
+  0230C1D0 000000AC .text   GetTypeMatchup	(overlay_29_0230A9B8.o)
+  0230C278 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230C27C 00000AB8 .text   CalcTypeBasedDamageEffects	(overlay_29_0230A9B8.o)
+  0230C27C 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230CCD4 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230CD34 000003CC .text   ov29_0230B7D4	(overlay_29_0230A9B8.o)
+  0230CD34 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230D0F4 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230D100 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230D100 000014C8 .text   CalcDamage	(overlay_29_0230A9B8.o)
+  0230D9A0 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230DA28 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230E59C 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230E5C8 00000094 .text   ov29_0230D088	(overlay_29_0230A9B8.o)
+  0230E5C8 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230E658 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230E65C 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230E65C 00000070 .text   ApplyDamageAndEffectsWrapper	(overlay_29_0230A9B8.o)
+  0230E6CC 000000B4 .text   CalcRecoilDamageFixed	(overlay_29_0230A9B8.o)
+  0230E780 00000164 .text   CalcDamageFixed	(overlay_29_0230A9B8.o)
+  0230E8D8 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230E8E4 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230E8E4 0000004C .text   CalcDamageFixedNoCategory	(overlay_29_0230A9B8.o)
+  0230E930 0000004C .text   CalcDamageFixedWrapper	(overlay_29_0230A9B8.o)
+  0230E97C 0000003C .text   UpdateShopkeeperModeAfterAttack	(overlay_29_0230A9B8.o)
+  0230E9B8 00000028 .text   UpdateShopkeeperModeAfterTrap	(overlay_29_0230A9B8.o)
+  0230E9E0 00000084 .text   ov29_0230D4A4	(overlay_29_0230A9B8.o)
+  0230EA64 000000F0 .text   ResetDamageCalcDiagnostics	(overlay_29_0230A9B8.o)
+  0230EB50 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230EB54 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230EB54 00000010 .text   ov29_0230D618	(overlay_29_0230A9B8.o)
+  0230EB60 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230EB64 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230EB64 0000002C .text   ov29_0230D628	(overlay_29_0230A9B8.o)
+  0230EB8C 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230EB90 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230EB90 00000034 .text   ov29_0230D654	(overlay_29_0230A9B8.o)
+  0230EBC4 0000007C .text   ov29_0230D688	(overlay_29_0230A9B8.o)
+  0230EC40 00000008 .text   ov29_0230D704	(overlay_29_0230A9B8.o)
+  0230EC48 0000002C .text   ov29_0230D70C	(overlay_29_0230A9B8.o)
+  0230EC70 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230EC74 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230EC74 00000034 .text   ov29_0230D738	(overlay_29_0230A9B8.o)
+  0230ECA4 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230ECA8 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230ECA8 00000068 .text   ov29_0230D76C	(overlay_29_0230A9B8.o)
+  0230ED10 000000A0 .text   ov29_0230D7D4	(overlay_29_0230A9B8.o)
+  0230EDAC 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230EDB0 00000074 .text   ov29_0230D874	(overlay_29_0230A9B8.o)
+  0230EDB0 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230EE20 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230EE24 00000074 .text   ov29_0230D8E8	(overlay_29_0230A9B8.o)
+  0230EE24 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230EE94 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230EE98 00000074 .text   ov29_0230D95C	(overlay_29_0230A9B8.o)
+  0230EE98 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230EF08 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230EF0C 00000074 .text   ov29_0230D9D0	(overlay_29_0230A9B8.o)
+  0230EF0C 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230EF7C 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230EF80 00000074 .text   ov29_0230DA44	(overlay_29_0230A9B8.o)
+  0230EF80 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230EFF0 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230EFF4 00000060 .text   ov29_0230DAB8	(overlay_29_0230A9B8.o)
+  0230EFF4 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230F050 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230F054 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230F054 000000BC .text   SpecificRecruitCheck	(overlay_29_0230A9B8.o)
+  0230F108 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230F110 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230F110 00000494 .text   RecruitCheck	(overlay_29_0230A9B8.o)
+  0230F564 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230F5A4 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230F5A4 00000510 .text   TryRecruit	(overlay_29_0230A9B8.o)
+  0230FA98 00000000 .text   $d	(overlay_29_0230A9B8.o)
+  0230FAB4 00000000 .text   $a	(overlay_29_0230A9B8.o)
+  0230FAB4 00000030 .text   ItemIsActive__0230E578	(overlay_29_0230A9B8.o)
+  0230FAE4 00000054 .text   ov29_0230E5A8	(overlay_29_0230A9B8.o)
+  0230FB38 0000005C .text   ov29_0230E5FC	(overlay_29_0230A9B8.o)
+  0230FB94 00000064 .text   ov29_0230E658	(overlay_29_0230A9B8.o)
+  0230FBF8 00000234 .text   TrySpawnMonsterAndTickSpawnCounter	(overlay_29_0230A9B8.o)
+  0230FE14 00000000 .text   $d	(overlay_29_0230A9B8.o)
   0230FE2C 00000024 .text   EntityIsValid__0230E8F0	(overlay_29_0230E8F0.o)
   0230FE2C 00000000 .text   $a	(overlay_29_0230E8F0.o)
   0230FE50 000006F4 .text   .text	(overlay_29_0230E914.o)
@@ -36050,15 +36094,15 @@
   02310530 00000000 .text   $d	(overlay_29_0230E914.o)
   02310544 00000024 .text   EntityIsValid__0230F008	(overlay_29_0230F008.o)
   02310544 00000000 .text   $a	(overlay_29_0230F008.o)
+  02310568 00000954 .text   .text	(overlay_29_0230F02C.o)
   02310568 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310568 00000114 .text   GetPossibleAiArcItemTargets	(overlay_29_0230F02C.o)
-  02310568 00001FD0 .text   .text	(overlay_29_0230F02C.o)
   02310674 00000000 .text   $d	(overlay_29_0230F02C.o)
   0231067C 0000000C .text   ov29_0230F140	(overlay_29_0230F02C.o)
   0231067C 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310684 00000000 .text   $d	(overlay_29_0230F02C.o)
-  02310688 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310688 0000000C .text   ov29_0230F14C	(overlay_29_0230F02C.o)
+  02310688 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310690 00000000 .text   $d	(overlay_29_0230F02C.o)
   02310694 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310694 0000000C .text   ov29_0230F158	(overlay_29_0230F02C.o)
@@ -36066,38 +36110,40 @@
   023106A0 000004F0 .text   TryNonLeaderItemPickUp	(overlay_29_0230F02C.o)
   023106A0 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310B68 00000000 .text   $d	(overlay_29_0230F02C.o)
-  02310B90 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310B90 00000074 .text   GetExclusiveItemWithEffectFromBag	(overlay_29_0230F02C.o)
+  02310B90 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310C04 00000060 .text   AuraBowIsActive	(overlay_29_0230F02C.o)
   02310C64 00000050 .text   ov29_0230F728	(overlay_29_0230F02C.o)
   02310CB4 00000010 .text   ExclusiveItemOffenseBoost	(overlay_29_0230F02C.o)
   02310CC4 00000010 .text   ExclusiveItemDefenseBoost	(overlay_29_0230F02C.o)
   02310CD4 00000078 .text   TeamMemberHasItemActive	(overlay_29_0230F02C.o)
   02310D48 00000000 .text   $d	(overlay_29_0230F02C.o)
-  02310D4C 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310D4C 00000030 .text   ItemIsActive__0230F810	(overlay_29_0230F02C.o)
+  02310D4C 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310D7C 0000006C .text   TeamMemberHasExclusiveItemEffectActive	(overlay_29_0230F02C.o)
   02310DE4 00000000 .text   $d	(overlay_29_0230F02C.o)
-  02310DE8 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310DE8 00000024 .text   ExclusiveItemEffectIsActive__0230F8AC	(overlay_29_0230F02C.o)
+  02310DE8 00000000 .text   $a	(overlay_29_0230F02C.o)
   02310E0C 000000B0 .text   ov29_0230F8D0	(overlay_29_0230F02C.o)
   02310EB8 00000000 .text   $d	(overlay_29_0230F02C.o)
-  02310EBC 00000024 .text   IsMonster__0230F980	(overlay_29_0230F02C.o)
-  02310EBC 00000000 .text   $a	(overlay_29_0230F02C.o)
-  02310EE0 00000034 .text   ov29_0230F9A4	(overlay_29_0230F02C.o)
-  02310F14 00000158 .text   TrySpawnEnemyItemDrop	(overlay_29_0230F02C.o)
-  02311064 00000000 .text   $d	(overlay_29_0230F02C.o)
-  0231106C 00000060 .text   ov29_0230FB30	(overlay_29_0230F02C.o)
-  0231106C 00000000 .text   $a	(overlay_29_0230F02C.o)
-  023110C4 00000000 .text   $d	(overlay_29_0230F02C.o)
-  023110CC 00000094 .text   TickNoSlipCap	(overlay_29_0230F02C.o)
-  023110CC 00000000 .text   $a	(overlay_29_0230F02C.o)
-  0231115C 00000000 .text   $d	(overlay_29_0230F02C.o)
-  02311160 000013D8 .text   ov29_0230FC24	(overlay_29_0230F02C.o)
-  02311160 00000000 .text   $a	(overlay_29_0230F02C.o)
-  02311F94 00000000 .text   $d	(overlay_29_0230F02C.o)
-  02312020 00000000 .text   $a	(overlay_29_0230F02C.o)
-  02312524 00000000 .text   $d	(overlay_29_0230F02C.o)
+  02310EBC 00000024 .text   IsMonster__0230F980	(overlay_29_0230F980.o)
+  02310EBC 00000000 .text   $a	(overlay_29_0230F980.o)
+  02310EE0 00000034 .text   ov29_0230F9A4	(overlay_29_0230F9A4.o)
+  02310EE0 00000000 .text   $a	(overlay_29_0230F9A4.o)
+  02310EE0 00001658 .text   .text	(overlay_29_0230F9A4.o)
+  02310F14 00000158 .text   TrySpawnEnemyItemDrop	(overlay_29_0230F9A4.o)
+  02311064 00000000 .text   $d	(overlay_29_0230F9A4.o)
+  0231106C 00000060 .text   ov29_0230FB30	(overlay_29_0230F9A4.o)
+  0231106C 00000000 .text   $a	(overlay_29_0230F9A4.o)
+  023110C4 00000000 .text   $d	(overlay_29_0230F9A4.o)
+  023110CC 00000094 .text   TickNoSlipCap	(overlay_29_0230F9A4.o)
+  023110CC 00000000 .text   $a	(overlay_29_0230F9A4.o)
+  0231115C 00000000 .text   $d	(overlay_29_0230F9A4.o)
+  02311160 00000000 .text   $a	(overlay_29_0230F9A4.o)
+  02311160 000013D8 .text   ov29_0230FC24	(overlay_29_0230F9A4.o)
+  02311F94 00000000 .text   $d	(overlay_29_0230F9A4.o)
+  02312020 00000000 .text   $a	(overlay_29_0230F9A4.o)
+  02312524 00000000 .text   $d	(overlay_29_0230F9A4.o)
   02312538 00000024 .text   EntityIsValid__02311010	(overlay_29_02311010.o)
   02312538 00000000 .text   $a	(overlay_29_02311010.o)
   0231255C 00000870 .text   .text	(overlay_29_02311034.o)
@@ -36232,13 +36278,13 @@
   023165D8 00000000 .text   $d	(overlay_29_023118D8.o)
   023165F0 00000024 .text   EntityIsValid__02315118	(overlay_29_02315118.o)
   023165F0 00000000 .text   $a	(overlay_29_02315118.o)
-  02316614 00003BF0 .text   .text	(overlay_29_0231513C.o)
   02316614 00000000 .text   $a	(overlay_29_0231513C.o)
+  02316614 000026A0 .text   .text	(overlay_29_0231513C.o)
   02316614 00000030 .text   ItemIsActive__0231513C	(overlay_29_0231513C.o)
   02316644 00000100 .text   TryInflictCoweringStatus	(overlay_29_0231513C.o)
   02316738 00000000 .text   $d	(overlay_29_0231513C.o)
-  02316744 00000078 .text   TryRestoreHp	(overlay_29_0231513C.o)
   02316744 00000000 .text   $a	(overlay_29_0231513C.o)
+  02316744 00000078 .text   TryRestoreHp	(overlay_29_0231513C.o)
   023167B8 00000000 .text   $d	(overlay_29_0231513C.o)
   023167BC 00000000 .text   $a	(overlay_29_0231513C.o)
   023167BC 0000032C .text   TryIncreaseHp	(overlay_29_0231513C.o)
@@ -36249,8 +36295,8 @@
   02316B78 00000000 .text   $a	(overlay_29_0231513C.o)
   02316B78 000000BC .text   RevealStairs	(overlay_29_0231513C.o)
   02316C28 00000000 .text   $d	(overlay_29_0231513C.o)
-  02316C34 00000000 .text   $a	(overlay_29_0231513C.o)
   02316C34 00000090 .text   RevealEnemies	(overlay_29_0231513C.o)
+  02316C34 00000000 .text   $a	(overlay_29_0231513C.o)
   02316CBC 00000000 .text   $d	(overlay_29_0231513C.o)
   02316CC4 00000000 .text   $a	(overlay_29_0231513C.o)
   02316CC4 000001E8 .text   TryInflictLeechSeedStatus	(overlay_29_0231513C.o)
@@ -36264,14 +36310,14 @@
   02317048 00000000 .text   $a	(overlay_29_0231513C.o)
   02317048 00000090 .text   TryInflictSureShotStatus	(overlay_29_0231513C.o)
   023170D0 00000000 .text   $d	(overlay_29_0231513C.o)
-  023170D8 000000E8 .text   TryInflictWhifferStatus	(overlay_29_0231513C.o)
   023170D8 00000000 .text   $a	(overlay_29_0231513C.o)
+  023170D8 000000E8 .text   TryInflictWhifferStatus	(overlay_29_0231513C.o)
   023171BC 00000000 .text   $d	(overlay_29_0231513C.o)
   023171C0 00000000 .text   $a	(overlay_29_0231513C.o)
   023171C0 0000009C .text   TryInflictSetDamageStatus	(overlay_29_0231513C.o)
   02317254 00000000 .text   $d	(overlay_29_0231513C.o)
-  0231725C 000000A0 .text   TryInflictFocusEnergyStatus	(overlay_29_0231513C.o)
   0231725C 00000000 .text   $a	(overlay_29_0231513C.o)
+  0231725C 000000A0 .text   TryInflictFocusEnergyStatus	(overlay_29_0231513C.o)
   023172F0 00000000 .text   $d	(overlay_29_0231513C.o)
   023172FC 00000000 .text   $a	(overlay_29_0231513C.o)
   023172FC 000002B8 .text   TryInflictDecoyStatus	(overlay_29_0231513C.o)
@@ -36285,8 +36331,8 @@
   02317880 0000012C .text   TryInflictTauntStatus	(overlay_29_0231513C.o)
   02317880 00000000 .text   $a	(overlay_29_0231513C.o)
   023179A0 00000000 .text   $d	(overlay_29_0231513C.o)
-  023179AC 00000000 .text   $a	(overlay_29_0231513C.o)
   023179AC 000000A4 .text   TryInflictStockpileStatus	(overlay_29_0231513C.o)
+  023179AC 00000000 .text   $a	(overlay_29_0231513C.o)
   02317A48 00000000 .text   $d	(overlay_29_0231513C.o)
   02317A50 000000B0 .text   TryInflictInvisibleStatus	(overlay_29_0231513C.o)
   02317A50 00000000 .text   $a	(overlay_29_0231513C.o)
@@ -36294,8 +36340,8 @@
   02317B00 000000F4 .text   TryInflictPerishSongStatus	(overlay_29_0231513C.o)
   02317B00 00000000 .text   $a	(overlay_29_0231513C.o)
   02317BE8 00000000 .text   $d	(overlay_29_0231513C.o)
-  02317BF4 000001B4 .text   TryInflictEncoreStatus	(overlay_29_0231513C.o)
   02317BF4 00000000 .text   $a	(overlay_29_0231513C.o)
+  02317BF4 000001B4 .text   TryInflictEncoreStatus	(overlay_29_0231513C.o)
   02317D98 00000000 .text   $d	(overlay_29_0231513C.o)
   02317DA8 00000000 .text   $a	(overlay_29_0231513C.o)
   02317DA8 000002D8 .text   TryDecreaseBelly	(overlay_29_0231513C.o)
@@ -36321,83 +36367,88 @@
   02318B9C 00000000 .text   $a	(overlay_29_0231513C.o)
   02318B9C 00000118 .text   TryInflictBlinkerStatus	(overlay_29_0231513C.o)
   02318CA8 00000000 .text   $d	(overlay_29_0231513C.o)
-  02318CB4 00000000 .text   $a	(overlay_29_0231513C.o)
-  02318CB4 00000060 .text   IsBlinded	(overlay_29_0231513C.o)
-  02318D14 00000118 .text   TryInflictCrossEyedStatus	(overlay_29_0231513C.o)
-  02318E20 00000000 .text   $d	(overlay_29_0231513C.o)
-  02318E2C 00000000 .text   $a	(overlay_29_0231513C.o)
-  02318E2C 000000B0 .text   TryInflictEyedropStatus	(overlay_29_0231513C.o)
-  02318ED0 00000000 .text   $d	(overlay_29_0231513C.o)
-  02318EDC 00000000 .text   $a	(overlay_29_0231513C.o)
-  02318EDC 000000E8 .text   TryInflictSlipStatus	(overlay_29_0231513C.o)
-  02318FB8 00000000 .text   $d	(overlay_29_0231513C.o)
-  02318FC4 0000012C .text   TryInflictDropeyeStatus	(overlay_29_0231513C.o)
-  02318FC4 00000000 .text   $a	(overlay_29_0231513C.o)
-  023190DC 00000000 .text   $d	(overlay_29_0231513C.o)
-  023190F0 00000138 .text   RestoreAllMovePP	(overlay_29_0231513C.o)
-  023190F0 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319220 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319228 00000130 .text   RestoreOneMovePP	(overlay_29_0231513C.o)
-  02319228 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319350 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319358 000000C8 .text   RestoreRandomMovePP	(overlay_29_0231513C.o)
-  02319358 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319420 00000094 .text   ApplyProteinEffect	(overlay_29_0231513C.o)
-  023194AC 00000000 .text   $d	(overlay_29_0231513C.o)
-  023194B4 00000000 .text   $a	(overlay_29_0231513C.o)
-  023194B4 00000094 .text   ApplyCalciumEffect	(overlay_29_0231513C.o)
-  02319540 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319548 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319548 00000094 .text   ApplyIronEffect	(overlay_29_0231513C.o)
-  023195D4 00000000 .text   $d	(overlay_29_0231513C.o)
-  023195DC 00000000 .text   $a	(overlay_29_0231513C.o)
-  023195DC 00000094 .text   ApplyZincEffect	(overlay_29_0231513C.o)
-  02319668 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319670 00000070 .text   TryInflictLongTossStatus	(overlay_29_0231513C.o)
-  02319670 00000000 .text   $a	(overlay_29_0231513C.o)
-  023196D8 00000000 .text   $d	(overlay_29_0231513C.o)
-  023196E0 00000000 .text   $a	(overlay_29_0231513C.o)
-  023196E0 0000006C .text   TryInflictPierceStatus	(overlay_29_0231513C.o)
-  02319748 00000000 .text   $d	(overlay_29_0231513C.o)
-  0231974C 00000000 .text   $a	(overlay_29_0231513C.o)
-  0231974C 00000144 .text   TryInflictGastroAcidStatus	(overlay_29_0231513C.o)
-  02319880 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319890 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319890 00000028 .text   SetAquaRingHealingCountdownTo4	(overlay_29_0231513C.o)
-  023198B4 00000000 .text   $d	(overlay_29_0231513C.o)
-  023198B8 00000000 .text   $a	(overlay_29_0231513C.o)
-  023198B8 00000074 .text   ApplyAquaRingHealing	(overlay_29_0231513C.o)
-  02319924 00000000 .text   $d	(overlay_29_0231513C.o)
-  0231992C 00000000 .text   $a	(overlay_29_0231513C.o)
-  0231992C 000000AC .text   TryInflictAquaRingStatus	(overlay_29_0231513C.o)
-  023199CC 00000000 .text   $d	(overlay_29_0231513C.o)
-  023199D8 00000000 .text   $a	(overlay_29_0231513C.o)
-  023199D8 000000A0 .text   TryInflictLuckyChantStatus	(overlay_29_0231513C.o)
-  02319A70 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319A78 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319A78 00000124 .text   TryInflictHealBlockStatus	(overlay_29_0231513C.o)
-  02319B90 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319B9C 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319B9C 00000034 .text   MonsterHasEmbargoStatus	(overlay_29_0231513C.o)
-  02319BD0 0000002C .text   LogItemBlockedByEmbargo	(overlay_29_0231513C.o)
-  02319BF8 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319BFC 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319BFC 00000124 .text   TryInflictEmbargoStatus	(overlay_29_0231513C.o)
-  02319D14 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319D20 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319D20 00000134 .text   TryInflictMiracleEyeStatus	(overlay_29_0231513C.o)
-  02319E44 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319E54 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319E54 000000C8 .text   TryInflictMagnetRiseStatus	(overlay_29_0231513C.o)
-  02319F0C 00000000 .text   $d	(overlay_29_0231513C.o)
-  02319F1C 00000000 .text   $a	(overlay_29_0231513C.o)
-  02319F1C 00000044 .text   IsFloating	(overlay_29_0231513C.o)
-  02319F60 00000020 .text   ov29_02318A90	(overlay_29_0231513C.o)
-  02319F80 00000024 .text   IsMonster__02318AB0	(overlay_29_0231513C.o)
-  02319FA4 00000074 .text   ov29_02318AD4	(overlay_29_0231513C.o)
-  0231A018 00000074 .text   ov29_02318B48	(overlay_29_0231513C.o)
-  0231A08C 00000178 .text   ov29_02318BBC	(overlay_29_0231513C.o)
-  0231A1F0 00000000 .text   $d	(overlay_29_0231513C.o)
+  02318CB4 00000060 .text   IsBlinded	(dungeon_statuses.o)
+  02318CB4 00000000 .text   $a	(dungeon_statuses.o)
+  02318D14 0000126C .text   .text	(overlay_29_02317844.o)
+  02318D14 00000118 .text   TryInflictCrossEyedStatus	(overlay_29_02317844.o)
+  02318D14 00000000 .text   $a	(overlay_29_02317844.o)
+  02318E20 00000000 .text   $d	(overlay_29_02317844.o)
+  02318E2C 00000000 .text   $a	(overlay_29_02317844.o)
+  02318E2C 000000B0 .text   TryInflictEyedropStatus	(overlay_29_02317844.o)
+  02318ED0 00000000 .text   $d	(overlay_29_02317844.o)
+  02318EDC 000000E8 .text   TryInflictSlipStatus	(overlay_29_02317844.o)
+  02318EDC 00000000 .text   $a	(overlay_29_02317844.o)
+  02318FB8 00000000 .text   $d	(overlay_29_02317844.o)
+  02318FC4 0000012C .text   TryInflictDropeyeStatus	(overlay_29_02317844.o)
+  02318FC4 00000000 .text   $a	(overlay_29_02317844.o)
+  023190DC 00000000 .text   $d	(overlay_29_02317844.o)
+  023190F0 00000000 .text   $a	(overlay_29_02317844.o)
+  023190F0 00000138 .text   RestoreAllMovePP	(overlay_29_02317844.o)
+  02319220 00000000 .text   $d	(overlay_29_02317844.o)
+  02319228 00000000 .text   $a	(overlay_29_02317844.o)
+  02319228 00000130 .text   RestoreOneMovePP	(overlay_29_02317844.o)
+  02319350 00000000 .text   $d	(overlay_29_02317844.o)
+  02319358 000000C8 .text   RestoreRandomMovePP	(overlay_29_02317844.o)
+  02319358 00000000 .text   $a	(overlay_29_02317844.o)
+  02319420 00000094 .text   ApplyProteinEffect	(overlay_29_02317844.o)
+  023194AC 00000000 .text   $d	(overlay_29_02317844.o)
+  023194B4 00000094 .text   ApplyCalciumEffect	(overlay_29_02317844.o)
+  023194B4 00000000 .text   $a	(overlay_29_02317844.o)
+  02319540 00000000 .text   $d	(overlay_29_02317844.o)
+  02319548 00000000 .text   $a	(overlay_29_02317844.o)
+  02319548 00000094 .text   ApplyIronEffect	(overlay_29_02317844.o)
+  023195D4 00000000 .text   $d	(overlay_29_02317844.o)
+  023195DC 00000000 .text   $a	(overlay_29_02317844.o)
+  023195DC 00000094 .text   ApplyZincEffect	(overlay_29_02317844.o)
+  02319668 00000000 .text   $d	(overlay_29_02317844.o)
+  02319670 00000000 .text   $a	(overlay_29_02317844.o)
+  02319670 00000070 .text   TryInflictLongTossStatus	(overlay_29_02317844.o)
+  023196D8 00000000 .text   $d	(overlay_29_02317844.o)
+  023196E0 0000006C .text   TryInflictPierceStatus	(overlay_29_02317844.o)
+  023196E0 00000000 .text   $a	(overlay_29_02317844.o)
+  02319748 00000000 .text   $d	(overlay_29_02317844.o)
+  0231974C 00000000 .text   $a	(overlay_29_02317844.o)
+  0231974C 00000144 .text   TryInflictGastroAcidStatus	(overlay_29_02317844.o)
+  02319880 00000000 .text   $d	(overlay_29_02317844.o)
+  02319890 00000028 .text   SetAquaRingHealingCountdownTo4	(overlay_29_02317844.o)
+  02319890 00000000 .text   $a	(overlay_29_02317844.o)
+  023198B4 00000000 .text   $d	(overlay_29_02317844.o)
+  023198B8 00000074 .text   ApplyAquaRingHealing	(overlay_29_02317844.o)
+  023198B8 00000000 .text   $a	(overlay_29_02317844.o)
+  02319924 00000000 .text   $d	(overlay_29_02317844.o)
+  0231992C 000000AC .text   TryInflictAquaRingStatus	(overlay_29_02317844.o)
+  0231992C 00000000 .text   $a	(overlay_29_02317844.o)
+  023199CC 00000000 .text   $d	(overlay_29_02317844.o)
+  023199D8 000000A0 .text   TryInflictLuckyChantStatus	(overlay_29_02317844.o)
+  023199D8 00000000 .text   $a	(overlay_29_02317844.o)
+  02319A70 00000000 .text   $d	(overlay_29_02317844.o)
+  02319A78 00000000 .text   $a	(overlay_29_02317844.o)
+  02319A78 00000124 .text   TryInflictHealBlockStatus	(overlay_29_02317844.o)
+  02319B90 00000000 .text   $d	(overlay_29_02317844.o)
+  02319B9C 00000000 .text   $a	(overlay_29_02317844.o)
+  02319B9C 00000034 .text   MonsterHasEmbargoStatus	(overlay_29_02317844.o)
+  02319BD0 0000002C .text   LogItemBlockedByEmbargo	(overlay_29_02317844.o)
+  02319BF8 00000000 .text   $d	(overlay_29_02317844.o)
+  02319BFC 00000000 .text   $a	(overlay_29_02317844.o)
+  02319BFC 00000124 .text   TryInflictEmbargoStatus	(overlay_29_02317844.o)
+  02319D14 00000000 .text   $d	(overlay_29_02317844.o)
+  02319D20 00000000 .text   $a	(overlay_29_02317844.o)
+  02319D20 00000134 .text   TryInflictMiracleEyeStatus	(overlay_29_02317844.o)
+  02319E44 00000000 .text   $d	(overlay_29_02317844.o)
+  02319E54 00000000 .text   $a	(overlay_29_02317844.o)
+  02319E54 000000C8 .text   TryInflictMagnetRiseStatus	(overlay_29_02317844.o)
+  02319F0C 00000000 .text   $d	(overlay_29_02317844.o)
+  02319F1C 00000000 .text   $a	(overlay_29_02317844.o)
+  02319F1C 00000044 .text   IsFloating	(overlay_29_02317844.o)
+  02319F60 00000020 .text   ov29_02318A90	(overlay_29_02317844.o)
+  02319F80 00000024 .text   IsMonster__02318AB0	(overlay_29_02318AB0.o)
+  02319F80 00000000 .text   $a	(overlay_29_02318AB0.o)
+  02319FA4 00000000 .text   $a	(overlay_29_02318AD4.o)
+  02319FA4 00000260 .text   .text	(overlay_29_02318AD4.o)
+  02319FA4 00000074 .text   ov29_02318AD4	(overlay_29_02318AD4.o)
+  0231A018 00000074 .text   ov29_02318B48	(overlay_29_02318AD4.o)
+  0231A08C 00000178 .text   ov29_02318BBC	(overlay_29_02318AD4.o)
+  0231A1F0 00000000 .text   $d	(overlay_29_02318AD4.o)
   0231A204 00000024 .text   EntityIsValid__02318D34	(overlay_29_02318D34.o)
   0231A204 00000000 .text   $a	(overlay_29_02318D34.o)
   0231A228 00000000 .text   $a	(overlay_29_02318D58.o)
@@ -36463,19 +36514,19 @@
   0231B45C 00000000 .text   $a	(overlay_29_02319F8C.o)
   0231B480 000000F4 .text   TryAddTargetToAiTargetList	(overlay_29_02319FB0.o)
   0231B480 00000000 .text   $a	(overlay_29_02319FB0.o)
-  0231B480 000011E0 .text   .text	(overlay_29_02319FB0.o)
+  0231B480 00000A24 .text   .text	(overlay_29_02319FB0.o)
   0231B564 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231B574 000002C0 .text   IsAiTargetEligible	(overlay_29_02319FB0.o)
   0231B574 00000000 .text   $a	(overlay_29_02319FB0.o)
+  0231B574 000002C0 .text   IsAiTargetEligible	(overlay_29_02319FB0.o)
   0231B830 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231B834 000000FC .text   ov29_0231A364	(overlay_29_02319FB0.o)
   0231B834 00000000 .text   $a	(overlay_29_02319FB0.o)
+  0231B834 000000FC .text   ov29_0231A364	(overlay_29_02319FB0.o)
   0231B92C 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231B930 00000234 .text   ov29_0231A460	(overlay_29_02319FB0.o)
   0231B930 00000000 .text   $a	(overlay_29_02319FB0.o)
+  0231B930 00000234 .text   ov29_0231A460	(overlay_29_02319FB0.o)
   0231BB60 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231BB64 00000000 .text   $a	(overlay_29_02319FB0.o)
   0231BB64 0000010C .text   IsTargetInRange	(overlay_29_02319FB0.o)
+  0231BB64 00000000 .text   $a	(overlay_29_02319FB0.o)
   0231BC68 00000000 .text   $d	(overlay_29_02319FB0.o)
   0231BC70 00000000 .text   $a	(overlay_29_02319FB0.o)
   0231BC70 000000DC .text   ShouldUsePp	(overlay_29_02319FB0.o)
@@ -36484,64 +36535,68 @@
   0231BD4C 00000024 .text   ExclusiveItemEffectIsActive__0231A87C	(overlay_29_02319FB0.o)
   0231BD70 00000134 .text   ov29_0231A8A0	(overlay_29_02319FB0.o)
   0231BE9C 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231BEA4 00000000 .text   $a	(overlay_29_02319FB0.o)
-  0231BEA4 00000024 .text   IsMonster__0231A9D4	(overlay_29_02319FB0.o)
-  0231BEC8 000002B4 .text   ov29_0231A9F8	(overlay_29_02319FB0.o)
-  0231C160 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231C17C 0000008C .text   GetEntityMoveTargetAndRange	(overlay_29_02319FB0.o)
-  0231C17C 00000000 .text   $a	(overlay_29_02319FB0.o)
-  0231C204 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231C208 00000070 .text   ov29_0231AD38	(overlay_29_02319FB0.o)
-  0231C208 00000000 .text   $a	(overlay_29_02319FB0.o)
-  0231C278 00000094 .text   ov29_0231ADA8	(overlay_29_02319FB0.o)
-  0231C30C 00000054 .text   ov29_0231AE3C	(overlay_29_02319FB0.o)
-  0231C360 0000007C .text   GetEntityNaturalGiftInfo	(overlay_29_02319FB0.o)
-  0231C3D8 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231C3DC 00000018 .text   GetEntityWeatherBallType	(overlay_29_02319FB0.o)
-  0231C3DC 00000000 .text   $a	(overlay_29_02319FB0.o)
-  0231C3F0 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231C3F4 00000000 .text   $a	(overlay_29_02319FB0.o)
-  0231C3F4 00000090 .text   ov29_0231AF24	(overlay_29_02319FB0.o)
-  0231C484 00000054 .text   ov29_0231AFB4	(overlay_29_02319FB0.o)
-  0231C4D4 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231C4D8 00000000 .text   $a	(overlay_29_02319FB0.o)
-  0231C4D8 00000058 .text   ov29_0231B008	(overlay_29_02319FB0.o)
-  0231C52C 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231C530 00000000 .text   $a	(overlay_29_02319FB0.o)
-  0231C530 00000040 .text   ActivateMotorDrive	(overlay_29_02319FB0.o)
-  0231C570 000000F0 .text   TryActivateFrisk	(overlay_29_02319FB0.o)
-  0231C658 00000000 .text   $d	(overlay_29_02319FB0.o)
+  0231BEA4 00000024 .text   IsMonster__0231A9D4	(overlay_29_0231A9D4.o)
+  0231BEA4 00000000 .text   $a	(overlay_29_0231A9D4.o)
+  0231BEC8 00000798 .text   .text	(overlay_29_0231A9F8.o)
+  0231BEC8 00000000 .text   $a	(overlay_29_0231A9F8.o)
+  0231BEC8 000002B4 .text   ov29_0231A9F8	(overlay_29_0231A9F8.o)
+  0231C160 00000000 .text   $d	(overlay_29_0231A9F8.o)
+  0231C17C 00000000 .text   $a	(overlay_29_0231A9F8.o)
+  0231C17C 0000008C .text   GetEntityMoveTargetAndRange	(overlay_29_0231A9F8.o)
+  0231C204 00000000 .text   $d	(overlay_29_0231A9F8.o)
+  0231C208 00000000 .text   $a	(overlay_29_0231A9F8.o)
+  0231C208 00000070 .text   ov29_0231AD38	(overlay_29_0231A9F8.o)
+  0231C278 00000094 .text   ov29_0231ADA8	(overlay_29_0231A9F8.o)
+  0231C30C 00000054 .text   ov29_0231AE3C	(overlay_29_0231A9F8.o)
+  0231C360 0000007C .text   GetEntityNaturalGiftInfo	(overlay_29_0231A9F8.o)
+  0231C3D8 00000000 .text   $d	(overlay_29_0231A9F8.o)
+  0231C3DC 00000000 .text   $a	(overlay_29_0231A9F8.o)
+  0231C3DC 00000018 .text   GetEntityWeatherBallType	(overlay_29_0231A9F8.o)
+  0231C3F0 00000000 .text   $d	(overlay_29_0231A9F8.o)
+  0231C3F4 00000090 .text   ov29_0231AF24	(overlay_29_0231A9F8.o)
+  0231C3F4 00000000 .text   $a	(overlay_29_0231A9F8.o)
+  0231C484 00000054 .text   ov29_0231AFB4	(overlay_29_0231A9F8.o)
+  0231C4D4 00000000 .text   $d	(overlay_29_0231A9F8.o)
+  0231C4D8 00000058 .text   ov29_0231B008	(overlay_29_0231A9F8.o)
+  0231C4D8 00000000 .text   $a	(overlay_29_0231A9F8.o)
+  0231C52C 00000000 .text   $d	(overlay_29_0231A9F8.o)
+  0231C530 00000000 .text   $a	(overlay_29_0231A9F8.o)
+  0231C530 00000040 .text   ActivateMotorDrive	(overlay_29_0231A9F8.o)
+  0231C570 000000F0 .text   TryActivateFrisk	(overlay_29_0231A9F8.o)
+  0231C658 00000000 .text   $d	(overlay_29_0231A9F8.o)
   0231C660 00000024 .text   EntityIsValid__0231B194	(overlay_29_0231B194.o)
   0231C660 00000000 .text   $a	(overlay_29_0231B194.o)
   0231C684 00000000 .text   $a	(overlay_29_0231B1B8.o)
+  0231C684 00000160 .text   .text	(overlay_29_0231B1B8.o)
   0231C684 00000160 .text   TryActivateBadDreams	(overlay_29_0231B1B8.o)
-  0231C684 00001A10 .text   .text	(overlay_29_0231B1B8.o)
   0231C7D8 00000000 .text   $d	(overlay_29_0231B1B8.o)
-  0231C7E4 00000000 .text   $a	(overlay_29_0231B1B8.o)
-  0231C7E4 00000024 .text   IsMonster__0231B318	(overlay_29_0231B1B8.o)
-  0231C808 00000028 .text   ActivateStench	(overlay_29_0231B1B8.o)
-  0231C82C 00000000 .text   $d	(overlay_29_0231B1B8.o)
-  0231C830 00000000 .text   $a	(overlay_29_0231B1B8.o)
-  0231C830 00000038 .text   TryActivateSteadfast	(overlay_29_0231B1B8.o)
-  0231C868 00000030 .text   ov29_0231B39C	(overlay_29_0231B1B8.o)
-  0231C898 00000030 .text   ov29_0231B3CC	(overlay_29_0231B1B8.o)
-  0231C8C8 00000064 .text   IsInSpawnList	(overlay_29_0231B1B8.o)
-  0231C92C 00000030 .text   ov29_0231B460	(overlay_29_0231B1B8.o)
-  0231C958 00000000 .text   $d	(overlay_29_0231B1B8.o)
-  0231C95C 00000000 .text   $a	(overlay_29_0231B1B8.o)
-  0231C95C 0000001C .text   ov29_0231B490	(overlay_29_0231B1B8.o)
-  0231C974 00000000 .text   $d	(overlay_29_0231B1B8.o)
-  0231C978 00000040 .text   ov29_0231B4AC	(overlay_29_0231B1B8.o)
-  0231C978 00000000 .text   $a	(overlay_29_0231B1B8.o)
-  0231C9B4 00000000 .text   $d	(overlay_29_0231B1B8.o)
-  0231C9B8 000001A0 .text   ChangeShayminForme	(overlay_29_0231B1B8.o)
-  0231C9B8 00000000 .text   $a	(overlay_29_0231B1B8.o)
-  0231CB4C 00000000 .text   $d	(overlay_29_0231B1B8.o)
-  0231CB58 0000153C .text   ApplyItemEffect	(overlay_29_0231B1B8.o)
-  0231CB58 00000000 .text   $a	(overlay_29_0231B1B8.o)
-  0231DB8C 00000000 .text   $d	(overlay_29_0231B1B8.o)
-  0231DC34 00000000 .text   $a	(overlay_29_0231B1B8.o)
-  0231E078 00000000 .text   $d	(overlay_29_0231B1B8.o)
+  0231C7E4 00000024 .text   IsMonster__0231B318	(overlay_29_0231B318.o)
+  0231C7E4 00000000 .text   $a	(overlay_29_0231B318.o)
+  0231C808 00000028 .text   ActivateStench	(overlay_29_0231B33C.o)
+  0231C808 0000188C .text   .text	(overlay_29_0231B33C.o)
+  0231C808 00000000 .text   $a	(overlay_29_0231B33C.o)
+  0231C82C 00000000 .text   $d	(overlay_29_0231B33C.o)
+  0231C830 00000000 .text   $a	(overlay_29_0231B33C.o)
+  0231C830 00000038 .text   TryActivateSteadfast	(overlay_29_0231B33C.o)
+  0231C868 00000030 .text   ov29_0231B39C	(overlay_29_0231B33C.o)
+  0231C898 00000030 .text   ov29_0231B3CC	(overlay_29_0231B33C.o)
+  0231C8C8 00000064 .text   IsInSpawnList	(overlay_29_0231B33C.o)
+  0231C92C 00000030 .text   ov29_0231B460	(overlay_29_0231B33C.o)
+  0231C958 00000000 .text   $d	(overlay_29_0231B33C.o)
+  0231C95C 0000001C .text   ov29_0231B490	(overlay_29_0231B33C.o)
+  0231C95C 00000000 .text   $a	(overlay_29_0231B33C.o)
+  0231C974 00000000 .text   $d	(overlay_29_0231B33C.o)
+  0231C978 00000000 .text   $a	(overlay_29_0231B33C.o)
+  0231C978 00000040 .text   ov29_0231B4AC	(overlay_29_0231B33C.o)
+  0231C9B4 00000000 .text   $d	(overlay_29_0231B33C.o)
+  0231C9B8 000001A0 .text   ChangeShayminForme	(overlay_29_0231B33C.o)
+  0231C9B8 00000000 .text   $a	(overlay_29_0231B33C.o)
+  0231CB4C 00000000 .text   $d	(overlay_29_0231B33C.o)
+  0231CB58 0000153C .text   ApplyItemEffect	(overlay_29_0231B33C.o)
+  0231CB58 00000000 .text   $a	(overlay_29_0231B33C.o)
+  0231DB8C 00000000 .text   $d	(overlay_29_0231B33C.o)
+  0231DC34 00000000 .text   $a	(overlay_29_0231B33C.o)
+  0231E078 00000000 .text   $d	(overlay_29_0231B33C.o)
   0231E094 00000024 .text   EntityIsValid__0231CBC8	(overlay_29_0231CBC8.o)
   0231E094 00000000 .text   $a	(overlay_29_0231CBC8.o)
   0231E0B8 00000000 .text   $a	(overlay_29_0231CBEC.o)
@@ -36696,83 +36751,86 @@
   023228DC 00000000 .text   $d	(overlay_29_02320788.o)
   023228E4 00000024 .text   EntityIsValid__02321438	(overlay_29_02321438.o)
   023228E4 00000000 .text   $a	(overlay_29_02321438.o)
-  02322908 00000000 .text   $a	(overlay_29_0232145C.o)
-  02322908 000041A4 .text   .text	(overlay_29_0232145C.o)
+  02322908 00001950 .text   .text	(overlay_29_0232145C.o)
   02322908 0000061C .text   ov29_0232145C	(overlay_29_0232145C.o)
+  02322908 00000000 .text   $a	(overlay_29_0232145C.o)
   02322EF4 00000000 .text   $d	(overlay_29_0232145C.o)
   02322F24 00000278 .text   TryActivateNondamagingDefenderAbility	(overlay_29_0232145C.o)
   02322F24 00000000 .text   $a	(overlay_29_0232145C.o)
   0232316C 00000000 .text   $d	(overlay_29_0232145C.o)
-  0232319C 000005B4 .text   TryActivateNondamagingDefenderExclusiveItem	(overlay_29_0232145C.o)
   0232319C 00000000 .text   $a	(overlay_29_0232145C.o)
+  0232319C 000005B4 .text   TryActivateNondamagingDefenderExclusiveItem	(overlay_29_0232145C.o)
   023236F8 00000000 .text   $d	(overlay_29_0232145C.o)
   02323750 000000D0 .text   GetMoveRangeDistance	(overlay_29_0232145C.o)
   02323750 00000000 .text   $a	(overlay_29_0232145C.o)
   02323820 000009EC .text   ov29_02322374	(overlay_29_0232145C.o)
   023241C0 00000000 .text   $d	(overlay_29_0232145C.o)
-  0232420C 0000004C .text   DefenderAbilityIsActive__02322D64	(overlay_29_0232145C.o)
   0232420C 00000000 .text   $a	(overlay_29_0232145C.o)
-  02324258 00000024 .text   IsMonster__02322DB8	(overlay_29_0232145C.o)
-  0232427C 0000019C .text   ov29_02322DDC	(overlay_29_0232145C.o)
-  02324414 00000000 .text   $d	(overlay_29_0232145C.o)
-  02324418 00000184 .text   ov29_02322F78	(overlay_29_0232145C.o)
-  02324418 00000000 .text   $a	(overlay_29_0232145C.o)
-  02324594 00000000 .text   $d	(overlay_29_0232145C.o)
-  0232459C 0000081C .text   ov29_023230FC	(overlay_29_0232145C.o)
-  0232459C 00000000 .text   $a	(overlay_29_0232145C.o)
-  02324D94 00000000 .text   $d	(overlay_29_0232145C.o)
-  02324DB8 00000000 .text   $a	(overlay_29_0232145C.o)
-  02324DB8 00000024 .text   ExclusiveItemEffectIsActive__02323918	(overlay_29_0232145C.o)
-  02324DDC 0000030C .text   ov29_0232393C	(overlay_29_0232145C.o)
-  023250D0 00000000 .text   $d	(overlay_29_0232145C.o)
-  023250E8 000003D8 .text   MoveHitCheck	(overlay_29_0232145C.o)
-  023250E8 00000000 .text   $a	(overlay_29_0232145C.o)
-  023254A0 00000000 .text   $d	(overlay_29_0232145C.o)
-  023254C0 00000384 .text   ov29_02324030	(overlay_29_0232145C.o)
-  023254C0 00000000 .text   $a	(overlay_29_0232145C.o)
-  0232583C 00000000 .text   $d	(overlay_29_0232145C.o)
-  02325844 00000000 .text   $a	(overlay_29_0232145C.o)
-  02325844 00000160 .text   ov29_023243B4	(overlay_29_0232145C.o)
-  023259A0 00000000 .text   $d	(overlay_29_0232145C.o)
-  023259A4 00000000 .text   $a	(overlay_29_0232145C.o)
-  023259A4 00000020 .text   ov29_02324514	(overlay_29_0232145C.o)
-  023259C4 00000070 .text   IsHyperBeamVariant	(overlay_29_0232145C.o)
-  02325A30 00000000 .text   $d	(overlay_29_0232145C.o)
-  02325A34 00000078 .text   IsChargingTwoTurnMove	(overlay_29_0232145C.o)
-  02325A34 00000000 .text   $a	(overlay_29_0232145C.o)
-  02325AA8 00000000 .text   $d	(overlay_29_0232145C.o)
-  02325AAC 00000000 .text   $a	(overlay_29_0232145C.o)
-  02325AAC 0000007C .text   IsChargingAnyTwoTurnMove	(overlay_29_0232145C.o)
-  02325B24 00000000 .text   $d	(overlay_29_0232145C.o)
-  02325B28 00000000 .text   $a	(overlay_29_0232145C.o)
-  02325B28 000000B0 .text   ov29_02324698	(overlay_29_0232145C.o)
-  02325BD0 00000000 .text   $d	(overlay_29_0232145C.o)
-  02325BD8 00000000 .text   $a	(overlay_29_0232145C.o)
-  02325BD8 00000050 .text   ov29_02324748	(overlay_29_0232145C.o)
-  02325C28 0000001C .text   HasMaxGinsengBoost99	(overlay_29_0232145C.o)
-  02325C44 000000A0 .text   ov29_023247B4	(overlay_29_0232145C.o)
-  02325CE4 000000E0 .text   TwoTurnMoveForcedMiss	(overlay_29_0232145C.o)
-  02325DC0 00000000 .text   $d	(overlay_29_0232145C.o)
-  02325DC4 00000000 .text   $a	(overlay_29_0232145C.o)
-  02325DC4 000000E8 .text   DungeonRandOutcomeUserTargetInteraction	(overlay_29_0232145C.o)
-  02325EAC 00000054 .text   DungeonRandOutcomeUserAction	(overlay_29_0232145C.o)
-  02325F00 000000B0 .text   CanAiUseMove	(overlay_29_0232145C.o)
-  02325FB0 000000C4 .text   CanMonsterUseMove	(overlay_29_0232145C.o)
-  02326070 00000000 .text   $d	(overlay_29_0232145C.o)
-  02326074 00000000 .text   $a	(overlay_29_0232145C.o)
-  02326074 000000B4 .text   ov29_02324BE8	(overlay_29_0232145C.o)
-  02326124 00000000 .text   $d	(overlay_29_0232145C.o)
-  02326128 00000000 .text   $a	(overlay_29_0232145C.o)
-  02326128 000000C4 .text   ov29_02324C9C	(overlay_29_0232145C.o)
-  023261EC 0000002C .text   ov29_02324D60	(overlay_29_0232145C.o)
-  02326218 000000B8 .text   UpdateMovePp	(overlay_29_0232145C.o)
-  023262D0 00000020 .text   GetDamageSourceWrapper	(overlay_29_0232145C.o)
-  023262F0 00000014 .text   LowerSshort	(overlay_29_0232145C.o)
-  02326304 0000025C .text   ov29_02324E78	(overlay_29_0232145C.o)
-  0232655C 00000000 .text   $d	(overlay_29_0232145C.o)
-  02326560 00000000 .text   $a	(overlay_29_0232145C.o)
-  02326560 0000054C .text   ov29_023250D4	(overlay_29_0232145C.o)
-  02326A94 00000000 .text   $d	(overlay_29_0232145C.o)
+  0232420C 0000004C .text   DefenderAbilityIsActive__02322D64	(overlay_29_0232145C.o)
+  02324258 00000024 .text   IsMonster__02322DB8	(overlay_29_02322DB8.o)
+  02324258 00000000 .text   $a	(overlay_29_02322DB8.o)
+  0232427C 00000000 .text   $a	(overlay_29_02322DDC.o)
+  0232427C 00002830 .text   .text	(overlay_29_02322DDC.o)
+  0232427C 0000019C .text   ov29_02322DDC	(overlay_29_02322DDC.o)
+  02324414 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02324418 00000184 .text   ov29_02322F78	(overlay_29_02322DDC.o)
+  02324418 00000000 .text   $a	(overlay_29_02322DDC.o)
+  02324594 00000000 .text   $d	(overlay_29_02322DDC.o)
+  0232459C 00000000 .text   $a	(overlay_29_02322DDC.o)
+  0232459C 0000081C .text   ov29_023230FC	(overlay_29_02322DDC.o)
+  02324D94 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02324DB8 00000024 .text   ExclusiveItemEffectIsActive__02323918	(overlay_29_02322DDC.o)
+  02324DB8 00000000 .text   $a	(overlay_29_02322DDC.o)
+  02324DDC 0000030C .text   ov29_0232393C	(overlay_29_02322DDC.o)
+  023250D0 00000000 .text   $d	(overlay_29_02322DDC.o)
+  023250E8 000003D8 .text   MoveHitCheck	(overlay_29_02322DDC.o)
+  023250E8 00000000 .text   $a	(overlay_29_02322DDC.o)
+  023254A0 00000000 .text   $d	(overlay_29_02322DDC.o)
+  023254C0 00000384 .text   ov29_02324030	(overlay_29_02322DDC.o)
+  023254C0 00000000 .text   $a	(overlay_29_02322DDC.o)
+  0232583C 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02325844 00000160 .text   ov29_023243B4	(overlay_29_02322DDC.o)
+  02325844 00000000 .text   $a	(overlay_29_02322DDC.o)
+  023259A0 00000000 .text   $d	(overlay_29_02322DDC.o)
+  023259A4 00000000 .text   $a	(overlay_29_02322DDC.o)
+  023259A4 00000020 .text   ov29_02324514	(overlay_29_02322DDC.o)
+  023259C4 00000070 .text   IsHyperBeamVariant	(overlay_29_02322DDC.o)
+  02325A30 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02325A34 00000078 .text   IsChargingTwoTurnMove	(overlay_29_02322DDC.o)
+  02325A34 00000000 .text   $a	(overlay_29_02322DDC.o)
+  02325AA8 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02325AAC 0000007C .text   IsChargingAnyTwoTurnMove	(overlay_29_02322DDC.o)
+  02325AAC 00000000 .text   $a	(overlay_29_02322DDC.o)
+  02325B24 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02325B28 000000B0 .text   ov29_02324698	(overlay_29_02322DDC.o)
+  02325B28 00000000 .text   $a	(overlay_29_02322DDC.o)
+  02325BD0 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02325BD8 00000050 .text   ov29_02324748	(overlay_29_02322DDC.o)
+  02325BD8 00000000 .text   $a	(overlay_29_02322DDC.o)
+  02325C28 0000001C .text   HasMaxGinsengBoost99	(overlay_29_02322DDC.o)
+  02325C44 000000A0 .text   ov29_023247B4	(overlay_29_02322DDC.o)
+  02325CE4 000000E0 .text   TwoTurnMoveForcedMiss	(overlay_29_02322DDC.o)
+  02325DC0 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02325DC4 000000E8 .text   DungeonRandOutcomeUserTargetInteraction	(overlay_29_02322DDC.o)
+  02325DC4 00000000 .text   $a	(overlay_29_02322DDC.o)
+  02325EAC 00000054 .text   DungeonRandOutcomeUserAction	(overlay_29_02322DDC.o)
+  02325F00 000000B0 .text   CanAiUseMove	(overlay_29_02322DDC.o)
+  02325FB0 000000C4 .text   CanMonsterUseMove	(overlay_29_02322DDC.o)
+  02326070 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02326074 000000B4 .text   ov29_02324BE8	(overlay_29_02322DDC.o)
+  02326074 00000000 .text   $a	(overlay_29_02322DDC.o)
+  02326124 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02326128 00000000 .text   $a	(overlay_29_02322DDC.o)
+  02326128 000000C4 .text   ov29_02324C9C	(overlay_29_02322DDC.o)
+  023261EC 0000002C .text   ov29_02324D60	(overlay_29_02322DDC.o)
+  02326218 000000B8 .text   UpdateMovePp	(overlay_29_02322DDC.o)
+  023262D0 00000020 .text   GetDamageSourceWrapper	(overlay_29_02322DDC.o)
+  023262F0 00000014 .text   LowerSshort	(overlay_29_02322DDC.o)
+  02326304 0000025C .text   ov29_02324E78	(overlay_29_02322DDC.o)
+  0232655C 00000000 .text   $d	(overlay_29_02322DDC.o)
+  02326560 0000054C .text   ov29_023250D4	(overlay_29_02322DDC.o)
+  02326560 00000000 .text   $a	(overlay_29_02322DDC.o)
+  02326A94 00000000 .text   $d	(overlay_29_02322DDC.o)
   02326AAC 00000024 .text   EntityIsValid__02325620	(overlay_29_02325620.o)
   02326AAC 00000000 .text   $a	(overlay_29_02325620.o)
   02326AD0 000029C4 .text   .text	(overlay_29_02325644.o)
@@ -38458,9 +38516,9 @@
   0234AB08 00000064 .text   ov29_02349818	(overlay_29_02347BC8.o)
   0234AB6C 00000024 .text   EntityIsValid__0234987C	(overlay_29_0234987C.o)
   0234AB6C 00000000 .text   $a	(overlay_29_0234987C.o)
-  0234AB90 000044CC .text   .text	(overlay_29_023498A0.o)
-  0234AB90 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234AB90 00003B5C .text   .text	(overlay_29_023498A0.o)
   0234AB90 00000180 .text   GenerateMissionEggMonster	(overlay_29_023498A0.o)
+  0234AB90 00000000 .text   $a	(overlay_29_023498A0.o)
   0234AD08 00000000 .text   $d	(overlay_29_023498A0.o)
   0234AD10 00000000 .text   $a	(overlay_29_023498A0.o)
   0234AD10 00000064 .text   ov29_02349A70	(overlay_29_023498A0.o)
@@ -38468,11 +38526,11 @@
   0234AD74 000001B0 .text   ov29_02349AD4	(overlay_29_023498A0.o)
   0234AD74 00000000 .text   $a	(overlay_29_023498A0.o)
   0234AF20 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234AF24 000005C4 .text   ov29_02349C84	(overlay_29_023498A0.o)
   0234AF24 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234AF24 000005C4 .text   ov29_02349C84	(overlay_29_023498A0.o)
   0234B4A0 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234B4E8 00000000 .text   $a	(overlay_29_023498A0.o)
   0234B4E8 0000008C .text   ov29_0234A244	(overlay_29_023498A0.o)
+  0234B4E8 00000000 .text   $a	(overlay_29_023498A0.o)
   0234B56C 00000000 .text   $d	(overlay_29_023498A0.o)
   0234B574 00000000 .text   $a	(overlay_29_023498A0.o)
   0234B574 00000310 .text   ov29_0234A2D4	(overlay_29_023498A0.o)
@@ -38480,39 +38538,39 @@
   0234B884 00000000 .text   $a	(overlay_29_023498A0.o)
   0234B884 0000017C .text   ov29_0234A5E4	(overlay_29_023498A0.o)
   0234B9E0 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234BA00 0000012C .text   ov29_0234A790	(overlay_29_023498A0.o)
   0234BA00 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234BA00 0000012C .text   ov29_0234A790	(overlay_29_023498A0.o)
   0234BB1C 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234BB2C 000000C4 .text   ov29_0234A8BC	(overlay_29_023498A0.o)
   0234BB2C 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234BB2C 000000C4 .text   ov29_0234A8BC	(overlay_29_023498A0.o)
   0234BBE8 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BBF0 00000118 .text   ov29_0234A980	(overlay_29_023498A0.o)
   0234BBF0 00000000 .text   $a	(overlay_29_023498A0.o)
   0234BCF0 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234BD08 00000118 .text   ov29_0234AA98	(overlay_29_023498A0.o)
   0234BD08 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234BD08 00000118 .text   ov29_0234AA98	(overlay_29_023498A0.o)
   0234BE0C 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234BE20 000000DC .text   ov29_0234ABB0	(overlay_29_023498A0.o)
   0234BE20 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234BE20 000000DC .text   ov29_0234ABB0	(overlay_29_023498A0.o)
   0234BEF0 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234BEFC 00000000 .text   $a	(overlay_29_023498A0.o)
   0234BEFC 00000084 .text   ov29_0234AC8C	(overlay_29_023498A0.o)
+  0234BEFC 00000000 .text   $a	(overlay_29_023498A0.o)
   0234BF78 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234BF80 00000000 .text   $a	(overlay_29_023498A0.o)
   0234BF80 000000BC .text   ov29_0234AD10	(overlay_29_023498A0.o)
+  0234BF80 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C034 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C03C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C03C 00000074 .text   ov29_0234ADCC	(overlay_29_023498A0.o)
+  0234C03C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C0A8 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C0B0 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C0B0 00000064 .text   ov29_0234AE40	(overlay_29_023498A0.o)
+  0234C0B0 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C108 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C114 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C114 00000044 .text   ov29_0234AEA4	(overlay_29_023498A0.o)
+  0234C114 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C158 0000004C .text   ov29_0234AEE8	(overlay_29_023498A0.o)
   0234C1A0 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C1A4 00000070 .text   ov29_0234AF34	(overlay_29_023498A0.o)
   0234C1A4 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234C1A4 00000070 .text   ov29_0234AF34	(overlay_29_023498A0.o)
   0234C210 00000000 .text   $d	(overlay_29_023498A0.o)
   0234C214 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C214 0000002C .text   ov29_0234AFA4	(overlay_29_023498A0.o)
@@ -38520,14 +38578,14 @@
   0234C240 0000002C .text   ov29_0234AFD0	(overlay_29_023498A0.o)
   0234C240 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C268 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C26C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C26C 00000014 .text   ov29_0234AFFC	(overlay_29_023498A0.o)
+  0234C26C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C27C 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C280 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C280 00000014 .text   ov29_0234B010	(overlay_29_023498A0.o)
+  0234C280 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C290 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C294 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C294 00000010 .text   ov29_0234B024	(overlay_29_023498A0.o)
+  0234C294 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C2A0 00000000 .text   $d	(overlay_29_023498A0.o)
   0234C2A4 00000018 .text   ov29_0234B034	(overlay_29_023498A0.o)
   0234C2A4 00000000 .text   $a	(overlay_29_023498A0.o)
@@ -38538,8 +38596,8 @@
   0234C2DC 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C2DC 00000018 .text   ov29_0234B06C	(overlay_29_023498A0.o)
   0234C2F0 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C2F4 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C2F4 00000018 .text   ov29_0234B084	(overlay_29_023498A0.o)
+  0234C2F4 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C308 00000000 .text   $d	(overlay_29_023498A0.o)
   0234C30C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C30C 00000018 .text   ov29_0234B09C	(overlay_29_023498A0.o)
@@ -38547,20 +38605,20 @@
   0234C324 00000018 .text   ov29_0234B0B4	(overlay_29_023498A0.o)
   0234C324 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C338 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C33C 00000038 .text   ov29_0234B0CC	(overlay_29_023498A0.o)
   0234C33C 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234C33C 00000038 .text   ov29_0234B0CC	(overlay_29_023498A0.o)
   0234C370 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C374 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C374 00000014 .text   ov29_0234B104	(overlay_29_023498A0.o)
+  0234C374 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C384 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C388 00000018 .text   ov29_0234B118	(overlay_29_023498A0.o)
   0234C388 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234C388 00000018 .text   ov29_0234B118	(overlay_29_023498A0.o)
   0234C39C 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C3A0 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C3A0 00000074 .text   ov29_0234B130	(overlay_29_023498A0.o)
+  0234C3A0 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C410 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C414 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C414 000000AC .text   ov29_0234B1A4	(overlay_29_023498A0.o)
+  0234C414 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C4BC 00000000 .text   $d	(overlay_29_023498A0.o)
   0234C4C0 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C4C0 00000044 .text   LogMessageByIdWithPopupCheckParticipants	(overlay_29_023498A0.o)
@@ -38574,25 +38632,25 @@
   0234C58C 00000024 .text   LogMessageByIdQuiet	(overlay_29_023498A0.o)
   0234C5B0 00000010 .text   LogMessageQuiet	(overlay_29_023498A0.o)
   0234C5BC 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C5C0 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C5C0 00000054 .text   LogMessageByIdWithPopupCheckUserTarget	(overlay_29_023498A0.o)
+  0234C5C0 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C614 0000004C .text   LogMessageWithPopupCheckUserTarget	(overlay_29_023498A0.o)
   0234C660 00000054 .text   LogMessageByIdQuietCheckUserTarget	(overlay_29_023498A0.o)
   0234C6B4 00000054 .text   LogMessageByIdWithPopupCheckUserUnknown	(overlay_29_023498A0.o)
   0234C708 00000024 .text   LogMessageByIdWithPopup	(overlay_29_023498A0.o)
   0234C72C 00000010 .text   LogMessageWithPopup	(overlay_29_023498A0.o)
   0234C738 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C73C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C73C 00000014 .text   ov29_0234B4CC	(overlay_29_023498A0.o)
+  0234C73C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C74C 00000000 .text   $d	(overlay_29_023498A0.o)
   0234C750 00000014 .text   ov29_0234B4E0	(overlay_29_023498A0.o)
   0234C750 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C760 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C764 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C764 00000014 .text   ov29_0234B4F4	(overlay_29_023498A0.o)
+  0234C764 00000000 .text   $a	(overlay_29_023498A0.o)
   0234C774 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234C778 0000020C .text   LogMessage	(overlay_29_023498A0.o)
   0234C778 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234C778 0000020C .text   LogMessage	(overlay_29_023498A0.o)
   0234C978 00000000 .text   $d	(overlay_29_023498A0.o)
   0234C984 00000028 .text   LogMessageById	(overlay_29_023498A0.o)
   0234C984 00000000 .text   $a	(overlay_29_023498A0.o)
@@ -38610,49 +38668,49 @@
   0234CC7C 0000003C .text   ov29_0234BA18	(overlay_29_023498A0.o)
   0234CC7C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CCB4 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234CCB8 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CCB8 0000006C .text   ov29_0234BA54	(overlay_29_023498A0.o)
+  0234CCB8 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CD1C 00000000 .text   $d	(overlay_29_023498A0.o)
   0234CD24 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CD24 00000050 .text   InitPortraitDungeon	(overlay_29_023498A0.o)
   0234CD74 00000010 .text   ov29_0234BB10	(overlay_29_023498A0.o)
   0234CD80 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234CD84 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CD84 0000000C .text   ov29_0234BB20	(overlay_29_023498A0.o)
+  0234CD84 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CD8C 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234CD90 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CD90 0000000C .text   ov29_0234BB2C	(overlay_29_023498A0.o)
+  0234CD90 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CD98 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234CD9C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CD9C 0000000C .text   ov29_0234BB38	(overlay_29_023498A0.o)
+  0234CD9C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CDA4 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234CDA8 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CDA8 0000000C .text   ov29_0234BB44	(overlay_29_023498A0.o)
+  0234CDA8 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CDB0 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234CDB4 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CDB4 0000000C .text   ov29_0234BB50	(overlay_29_023498A0.o)
+  0234CDB4 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CDBC 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234CDC0 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CDC0 00000080 .text   OpenMessageLog	(overlay_29_023498A0.o)
+  0234CDC0 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CE40 0000000C .text   ov29_0234BBDC	(overlay_29_023498A0.o)
   0234CE48 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234CE4C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234CE4C 000002F8 .text   ov29_0234BBE8	(overlay_29_023498A0.o)
+  0234CE4C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234D138 00000000 .text   $d	(overlay_29_023498A0.o)
   0234D144 00000000 .text   $a	(overlay_29_023498A0.o)
   0234D144 00000024 .text   ov29_0234BEE0	(overlay_29_023498A0.o)
   0234D160 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234D168 00000000 .text   $a	(overlay_29_023498A0.o)
   0234D168 00000024 .text   ov29_0234BF04	(overlay_29_023498A0.o)
+  0234D168 00000000 .text   $a	(overlay_29_023498A0.o)
   0234D184 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234D18C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234D18C 000002B0 .text   RunDungeonMode	(overlay_29_023498A0.o)
+  0234D18C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234D42C 00000000 .text   $d	(overlay_29_023498A0.o)
   0234D43C 00000000 .text   $a	(overlay_29_023498A0.o)
   0234D43C 0000011C .text   ov29_0234C1D8	(overlay_29_023498A0.o)
   0234D550 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234D558 00000000 .text   $a	(overlay_29_023498A0.o)
   0234D558 00000060 .text   ov29_0234C2F4	(overlay_29_023498A0.o)
+  0234D558 00000000 .text   $a	(overlay_29_023498A0.o)
   0234D5B8 0000004C .text   ov29_0234C354	(overlay_29_023498A0.o)
   0234D604 00000068 .text   ov29_0234C3A0	(overlay_29_023498A0.o)
   0234D66C 000000F0 .text   StartFadeDungeon	(overlay_29_023498A0.o)
@@ -38702,8 +38760,8 @@
   0234DD64 00000000 .text   $a	(overlay_29_023498A0.o)
   0234DD64 00000034 .text   ov29_0234CB00	(overlay_29_023498A0.o)
   0234DD8C 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234DD98 00000020 .text   ov29_0234CB34	(overlay_29_023498A0.o)
   0234DD98 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234DD98 00000020 .text   ov29_0234CB34	(overlay_29_023498A0.o)
   0234DDB0 00000000 .text   $d	(overlay_29_023498A0.o)
   0234DDB8 00000000 .text   $a	(overlay_29_023498A0.o)
   0234DDB8 00000034 .text   ov29_0234CB54	(overlay_29_023498A0.o)
@@ -38714,8 +38772,8 @@
   0234DF18 00000000 .text   $a	(overlay_29_023498A0.o)
   0234DF18 0000023C .text   DisplayItemTip	(overlay_29_023498A0.o)
   0234E108 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234E154 00000070 .text   DisplayDungeonTip	(overlay_29_023498A0.o)
   0234E154 00000000 .text   $a	(overlay_29_023498A0.o)
+  0234E154 00000070 .text   DisplayDungeonTip	(overlay_29_023498A0.o)
   0234E1C4 00000040 .text   SetBothScreensWindowColorToDefault	(overlay_29_023498A0.o)
   0234E204 0000004C .text   ov29_0234CFA0	(overlay_29_023498A0.o)
   0234E24C 00000000 .text   $d	(overlay_29_023498A0.o)
@@ -38728,68 +38786,70 @@
   0234E538 00000058 .text   DisplayMessage2	(overlay_29_023498A0.o)
   0234E590 0000015C .text   ov29_0234D304	(overlay_29_023498A0.o)
   0234E6E0 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234E6EC 00000024 .text   IsMonster__0234D460	(overlay_29_023498A0.o)
-  0234E6EC 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234E710 00000038 .text   ov29_0234D484	(overlay_29_023498A0.o)
-  0234E748 0000005C .text   ov29_0234D4BC	(overlay_29_023498A0.o)
-  0234E7A4 00000040 .text   YesNoMenu	(overlay_29_023498A0.o)
-  0234E7E4 00000038 .text   ov29_0234D558	(overlay_29_023498A0.o)
-  0234E81C 00000040 .text   DisplayMessageInternal	(overlay_29_023498A0.o)
-  0234E85C 00000060 .text   ov29_0234D5D0	(overlay_29_023498A0.o)
-  0234E8BC 00000020 .text   ov29_0234D630	(overlay_29_023498A0.o)
-  0234E8DC 0000000C .text   ov29_0234D650	(overlay_29_023498A0.o)
-  0234E8E4 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234E8E8 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234E8E8 0000000C .text   ov29_0234D65C	(overlay_29_023498A0.o)
-  0234E8F0 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234E8F4 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234E8F4 00000028 .text   ov29_0234D668	(overlay_29_023498A0.o)
-  0234E918 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234E91C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234E91C 00000038 .text   ov29_0234D690	(overlay_29_023498A0.o)
-  0234E954 00000044 .text   ov29_0234D6C8	(overlay_29_023498A0.o)
-  0234E998 00000044 .text   ov29_0234D70C	(overlay_29_023498A0.o)
-  0234E9DC 00000070 .text   ov29_0234D750	(overlay_29_023498A0.o)
-  0234EA48 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234EA4C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234EA4C 00000078 .text   ov29_0234D7C0	(overlay_29_023498A0.o)
-  0234EAC0 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234EAC4 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234EAC4 00000028 .text   ov29_0234D838	(overlay_29_023498A0.o)
-  0234EAE8 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234EAEC 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234EAEC 00000018 .text   ov29_0234D860	(overlay_29_023498A0.o)
-  0234EB04 00000014 .text   ov29_0234D878	(overlay_29_023498A0.o)
-  0234EB14 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234EB18 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234EB18 00000014 .text   ov29_0234D88C	(overlay_29_023498A0.o)
-  0234EB28 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234EB2C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234EB2C 00000014 .text   ov29_0234D8A0	(overlay_29_023498A0.o)
-  0234EB3C 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234EB40 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234EB40 0000010C .text   ov29_0234D8B4	(overlay_29_023498A0.o)
-  0234EC48 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234EC4C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234EC4C 00000198 .text   ov29_0234D9C0	(overlay_29_023498A0.o)
-  0234EDDC 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234EDE4 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234EDE4 00000088 .text   ov29_0234DB58	(overlay_29_023498A0.o)
-  0234EE64 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234EE6C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234EE6C 0000005C .text   ov29_0234DBE0	(overlay_29_023498A0.o)
-  0234EEC4 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234EEC8 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234EEC8 00000154 .text   ov29_0234DC3C	(overlay_29_023498A0.o)
-  0234F014 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234F01C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234F01C 00000010 .text   ov29_0234DD90	(overlay_29_023498A0.o)
-  0234F028 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234F02C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234F02C 00000010 .text   ov29_0234DDA0	(overlay_29_023498A0.o)
-  0234F038 00000000 .text   $d	(overlay_29_023498A0.o)
-  0234F03C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234F03C 00000020 .text   ov29_0234DDB0	(overlay_29_023498A0.o)
+  0234E6EC 00000024 .text   IsMonster__0234D460	(overlay_29_0234D460.o)
+  0234E6EC 00000000 .text   $a	(overlay_29_0234D460.o)
+  0234E710 00000038 .text   ov29_0234D484	(overlay_29_0234D484.o)
+  0234E710 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234E710 0000094C .text   .text	(overlay_29_0234D484.o)
+  0234E748 0000005C .text   ov29_0234D4BC	(overlay_29_0234D484.o)
+  0234E7A4 00000040 .text   YesNoMenu	(overlay_29_0234D484.o)
+  0234E7E4 00000038 .text   ov29_0234D558	(overlay_29_0234D484.o)
+  0234E81C 00000040 .text   DisplayMessageInternal	(overlay_29_0234D484.o)
+  0234E85C 00000060 .text   ov29_0234D5D0	(overlay_29_0234D484.o)
+  0234E8BC 00000020 .text   ov29_0234D630	(overlay_29_0234D484.o)
+  0234E8DC 0000000C .text   ov29_0234D650	(overlay_29_0234D484.o)
+  0234E8E4 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234E8E8 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234E8E8 0000000C .text   ov29_0234D65C	(overlay_29_0234D484.o)
+  0234E8F0 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234E8F4 00000028 .text   ov29_0234D668	(overlay_29_0234D484.o)
+  0234E8F4 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234E918 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234E91C 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234E91C 00000038 .text   ov29_0234D690	(overlay_29_0234D484.o)
+  0234E954 00000044 .text   ov29_0234D6C8	(overlay_29_0234D484.o)
+  0234E998 00000044 .text   ov29_0234D70C	(overlay_29_0234D484.o)
+  0234E9DC 00000070 .text   ov29_0234D750	(overlay_29_0234D484.o)
+  0234EA48 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234EA4C 00000078 .text   ov29_0234D7C0	(overlay_29_0234D484.o)
+  0234EA4C 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234EAC0 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234EAC4 00000028 .text   ov29_0234D838	(overlay_29_0234D484.o)
+  0234EAC4 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234EAE8 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234EAEC 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234EAEC 00000018 .text   ov29_0234D860	(overlay_29_0234D484.o)
+  0234EB04 00000014 .text   ov29_0234D878	(overlay_29_0234D484.o)
+  0234EB14 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234EB18 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234EB18 00000014 .text   ov29_0234D88C	(overlay_29_0234D484.o)
+  0234EB28 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234EB2C 00000014 .text   ov29_0234D8A0	(overlay_29_0234D484.o)
+  0234EB2C 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234EB3C 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234EB40 0000010C .text   ov29_0234D8B4	(overlay_29_0234D484.o)
+  0234EB40 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234EC48 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234EC4C 00000198 .text   ov29_0234D9C0	(overlay_29_0234D484.o)
+  0234EC4C 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234EDDC 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234EDE4 00000088 .text   ov29_0234DB58	(overlay_29_0234D484.o)
+  0234EDE4 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234EE64 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234EE6C 0000005C .text   ov29_0234DBE0	(overlay_29_0234D484.o)
+  0234EE6C 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234EEC4 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234EEC8 00000154 .text   ov29_0234DC3C	(overlay_29_0234D484.o)
+  0234EEC8 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234F014 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234F01C 00000010 .text   ov29_0234DD90	(overlay_29_0234D484.o)
+  0234F01C 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234F028 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234F02C 00000000 .text   $a	(overlay_29_0234D484.o)
+  0234F02C 00000010 .text   ov29_0234DDA0	(overlay_29_0234D484.o)
+  0234F038 00000000 .text   $d	(overlay_29_0234D484.o)
+  0234F03C 00000020 .text   ov29_0234DDB0	(overlay_29_0234D484.o)
+  0234F03C 00000000 .text   $a	(overlay_29_0234D484.o)
   0234F05C 00000024 .text   EntityIsValid__0234DDD0	(overlay_29_0234DDD0.o)
   0234F05C 00000000 .text   $a	(overlay_29_0234DDD0.o)
   0234F080 00000000 .text   $a	(overlay_29_0234DDF4.o)
@@ -40244,5 +40304,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Dec 01 05:49:46 2024
-# Link end time: Sun Dec 01 05:49:47 2024
+# Link start time: Mon Dec 02 06:16:55 2024
+# Link end time: Mon Dec 02 06:16:56 2024
