@@ -256,6 +256,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022F62CC.o
 	Object src/overlay_29_022F7364.o
 	Object asm/overlay_29_022F7388.o
+	Object src/overlay_29_022F9720.o
+	Object asm/overlay_29_022F9744.o
 	Object src/joined_at_checks.o
 	Object asm/overlay_29_022FBB1C.o
 	Object src/overlay_29_022FC99C.o
@@ -270,6 +272,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02300BF8.o
 	Object src/dungeon_ai_targeting.o
 	Object asm/overlay_29_023016A8.o
+	Object src/overlay_29_02301A60.o
+	Object asm/overlay_29_02301A84.o
 	Object src/dungeon_pokemon_attributes.o
 	Object asm/overlay_29_02301D78.o
 	Object src/overlay_29_02302A38.o
@@ -288,24 +292,34 @@ Overlay OVY_29
 	Object asm/overlay_29_023085DC.o
 	Object src/overlay_29_02308FBC.o
 	Object asm/overlay_29_02308FE0.o
+	Object src/overlay_29_0230A994.o
+	Object asm/overlay_29_0230A9B8.o
 	Object src/overlay_29_0230E8F0.o
 	Object asm/overlay_29_0230E914.o
 	Object src/overlay_29_0230F008.o
 	Object asm/overlay_29_0230F02C.o
+	Object src/overlay_29_0230F980.o
+	Object asm/overlay_29_0230F9A4.o
 	Object src/overlay_29_02311010.o
 	Object asm/overlay_29_02311034.o
 	Object src/overlay_29_023118B4.o
 	Object asm/overlay_29_023118D8.o
 	Object src/overlay_29_02315118.o
 	Object asm/overlay_29_0231513C.o
+	Object src/overlay_29_02318AB0.o
+	Object asm/overlay_29_02318AD4.o
 	Object src/overlay_29_02318D34.o
 	Object asm/overlay_29_02318D58.o
 	Object src/overlay_29_02318E4C.o
 	Object asm/overlay_29_02318E70.o
 	Object src/overlay_29_02319F8C.o
 	Object asm/overlay_29_02319FB0.o
+	Object src/overlay_29_0231A9D4.o
+	Object asm/overlay_29_0231A9F8.o
 	Object src/overlay_29_0231B194.o
 	Object asm/overlay_29_0231B1B8.o
+	Object src/overlay_29_0231B318.o
+	Object asm/overlay_29_0231B33C.o
 	Object src/overlay_29_0231CBC8.o
 	Object asm/overlay_29_0231CBEC.o
 	Object src/overlay_29_0231EDD8.o
@@ -320,6 +334,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02320788.o
 	Object src/overlay_29_02321438.o
 	Object asm/overlay_29_0232145C.o
+	Object src/overlay_29_02322DB8.o
+	Object asm/overlay_29_02322DDC.o
 	Object src/overlay_29_02325620.o
 	Object asm/overlay_29_02325644.o
 	Object src/overlay_29_0232800C.o
@@ -350,6 +366,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02347BC8.o
 	Object src/overlay_29_0234987C.o
 	Object asm/overlay_29_023498A0.o
+	Object src/overlay_29_0234D460.o
+	Object asm/overlay_29_0234D484.o
 	Object src/overlay_29_0234DDD0.o
 	Object asm/overlay_29_0234DDF4.o
 	Object src/overlay_29_0234EC14.o

@@ -1,0 +1,12 @@
+#pragma once
+.public AdvanceFrame
+.public CalcStatusDuration
+.public EntityIsValid__02318D34
+.public IsMonster__02318AB0
+.public LogMessageByIdWithPopupCheckUserTarget
+.public LogMessageWithPopupCheckUserTarget
+.public SubstitutePlaceholderStringTags
+.public UpdateStatusIconFlags
+.public ov10_022C4754
+.public ov10_022C475C
+.public ov29_022E41B0

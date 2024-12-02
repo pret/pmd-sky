@@ -1,0 +1,13 @@
+#pragma once
+.public DefenderAbilityIsActive__02301A0C
+.public EXCL_ITEM_EFFECTS_WEATHER_NO_STATUS
+.public ExclusiveItemEffectIsActive__022FFF28
+.public GetApparentWeather
+.public GetExclusiveItemWithEffectFromBag
+.public IsMonster__02301A60
+.public LogMessageByIdWithPopupCheckUserTarget
+.public MistIsActive
+.public SubstitutePlaceholderStringTags
+.public ov29_02314DC4
+.public ov29_02324BE8
+.public ov29_02344B44
