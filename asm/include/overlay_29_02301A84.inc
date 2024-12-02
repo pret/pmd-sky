@@ -4,7 +4,6 @@
 .public ExclusiveItemEffectIsActive__022FFF28
 .public GetApparentWeather
 .public GetExclusiveItemWithEffectFromBag
-.public IsMonster__02301A60
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MistIsActive
 .public SubstitutePlaceholderStringTags

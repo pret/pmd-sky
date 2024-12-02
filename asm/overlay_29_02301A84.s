@@ -196,20 +196,3 @@ _02301CCC:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end ov29_02301C2C
-
-	arm_func_start NoGastroAcidStatus
-NoGastroAcidStatus: ; 0x02301CDC
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl IsMonster__02301A60
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r4, pc}
-	ldr r0, [r4, #0xb4]
-	ldrb r0, [r0, #0xd8]
-	cmp r0, #4
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r4, pc}
-	arm_func_end NoGastroAcidStatus

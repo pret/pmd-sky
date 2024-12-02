@@ -3632,6 +3632,7 @@ enum status_id {
 #define CRINGE_STATUS_CONFUSED (STATUS_CONFUSED - STATUS_CRINGE + 1)    // 2
 
 #define CURSED_STATUS_DECOY (STATUS_DECOY - STATUS_CURSED + 1)  // 2
+#define CURSED_STATUS_GASTRO_ACID (STATUS_GASTRO_ACID - STATUS_CURSED + 1)  // 4
 
 // Mission type on a floor
 enum mission_type {

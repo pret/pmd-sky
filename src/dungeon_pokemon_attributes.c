@@ -2,7 +2,16 @@
 #include "dungeon_util.h"
 #include "overlay_29_02301A60.h"
 
-extern bool8 NoGastroAcidStatus(struct entity *pokemon, enum ability_id ability);
+bool8 NoGastroAcidStatus(struct entity *entity, enum ability_id ability)
+{
+    if (!IsMonster__02301A60(entity))
+        return FALSE;
+
+    if (GetEntInfo(entity)->curse_class_status.curse == CURSED_STATUS_GASTRO_ACID)
+        return FALSE;
+
+    return TRUE;
+}
 
 bool8 AbilityIsActive(struct entity *pokemon, enum ability_id ability)
 {
