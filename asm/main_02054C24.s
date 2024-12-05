@@ -20015,7 +20015,7 @@ _02064EB0:
 	add r0, sp, #0x10
 	strh r2, [sp, #0x32]
 	strh r1, [sp, #0x34]
-	bl sub_01FF8CDC
+	bl EnqueueRender3dTiling
 	add r0, sb, #1
 	mov r0, r0, lsl #0x10
 	mov sb, r0, asr #0x10

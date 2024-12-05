@@ -15,6 +15,7 @@
 .public FindUnoccupiedTileWithin3
 .public GetApparentWeather
 .public GetLeader
+.public GetRandomTile
 .public GetTileSafe
 .public InitMove
 .public IsFloorOver
@@ -26,7 +27,6 @@
 .public ov29_022E5560
 .public ov29_022E55F0
 .public ov29_022E5650
-.public ov29_022E9628
 .public ov29_022F42F8
 .public ov29_022F62CC
 .public ov29_022F87C0

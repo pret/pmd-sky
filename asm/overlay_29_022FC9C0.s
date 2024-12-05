@@ -194,7 +194,7 @@ _022FCC48:
 _022FCC60:
 	mov r0, r5
 	mov r1, fp
-	bl ov29_022E9628
+	bl GetRandomTile
 	cmp r0, #0
 	beq _022FCCC4
 	ldrsh r0, [sp, #0x14]

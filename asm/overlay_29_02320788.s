@@ -556,7 +556,7 @@ _02320EB0: ; jump table
 _02320EC8:
 	add r0, sp, #0
 	mov r1, #1
-	bl ov29_022E9628
+	bl GetRandomTile
 	cmp r0, #0
 	bne _02321008
 	ldrh r0, [r8, #4]
@@ -643,7 +643,7 @@ _02320FB0:
 _02320FE4:
 	add r0, sp, #0
 	mov r1, #1
-	bl ov29_022E9628
+	bl GetRandomTile
 	cmp r0, #0
 	ldreqh r0, [r8, #4]
 	moveq r4, #1

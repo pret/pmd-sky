@@ -7,7 +7,7 @@ from ruamel.yaml.comments import CommentedMap
 from ruamel.yaml.scalarint import HexCapsInt
 
 from pmdsky_debug_reader import LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG, SYMBOLS_FOLDER, get_pmdsky_debug_location, read_pmdsky_debug_symbols
-from symbol_details import NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_OFFSET, SymbolDetails
+from symbol_details import ITCM_RAM_START_ADDRESSES, NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_OFFSET, SymbolDetails
 from xmap_reader import HEADER_FOLDER, read_xmap_symbols
 from yaml_writer import YamlManager, yaml
 
@@ -202,9 +202,14 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
                 symbol_entry_addresses.sort()
             return
     else:
-        symbol_entry_language_addresses[language_key] = HexCapsInt(hex_address)
-        if reorder_languages:
-            symbol_entry_language_addresses.move_to_end(language_key, last=False)
+        if section_name == 'ITCM':
+            # ITCM needs to be handled specially to add both ROM and RAM addresses.
+            symbol_entry_language_addresses[language_key] = HexCapsInt(ITCM_RAM_START_ADDRESSES[language_key] + (hex_address - 0x1FF8000))
+            symbol_entry_language_addresses[f'{language_key}-ITCM'] = hex_address
+        else:
+            symbol_entry_language_addresses[language_key] = HexCapsInt(hex_address)
+            if reorder_languages:
+                symbol_entry_language_addresses.move_to_end(language_key, last=False)
 
         if wram_address is not None:
             symbol_entry_language_addresses[language_key + '-WRAM'] = HexCapsInt(wram_address)

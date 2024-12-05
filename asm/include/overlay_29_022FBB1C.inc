@@ -1,4 +1,5 @@
 #pragma once
+.public _s32_div_f
 .public CopySpawnEntriesMaster
 .public DUNGEON_PTR
 .public DungeonRngSetPrimary
@@ -23,10 +24,10 @@
 .public GetTileSafe
 .public GetTurnLimit
 .public GroundToDungeonMoveset
-.public IQ_SKILLS
 .public InitAnimationControlWithSet__0201C0CC
 .public InitMoveCheckId
 .public InitTeamMember
+.public IQ_SKILLS
 .public IsCurrentMissionType
 .public IsDestinationFloorWithFixedRoom
 .public IsDestinationFloorWithMonster
@@ -36,10 +37,6 @@
 .public IsSecretBazaarNpcBehavior
 .public JoinedAtRangeCheck2Veneer
 .public LoadWazaP2
-.public SetMonsterLevelAndId
-.public SetSpriteIdForAnimationControl
-.public UnloadCurrentWazaP
-.public _s32_div_f
 .public ov29_022DDA54
 .public ov29_022EFAE8
 .public ov29_022FB83C
@@ -47,4 +44,7 @@
 .public ov29_023021F0
 .public ov29_02304830
 .public ov29_02351E28
+.public SetMonsterLevelAndId
+.public SetSpriteIdForAnimationControl
 .public sub_0200F9B4
+.public UnloadCurrentWazaP

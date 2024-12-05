@@ -14,11 +14,6 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
-.public OverlayIsLoaded
-.public ShowPortraitInPortraitBox
-.public ShowStringInDialogueBox
-.public StringFromId
-.public UnloadOverlay
 .public ov29_022E0B44
 .public ov29_022EA370
 .public ov29_022EA428
@@ -31,9 +26,14 @@
 .public ov29_0234D304
 .public ov29_02353398
 .public ov29_02382800
+.public OverlayIsLoaded
+.public ShowPortraitInPortraitBox
+.public ShowStringInDialogueBox
+.public StringFromId
 .public sub_02006B70
 .public sub_020282F4
 .public sub_0202AB94
 .public sub_0202ABB0
 .public sub_0202F334
 .public sub_0202F474
+.public UnloadOverlay

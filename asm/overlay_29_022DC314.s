@@ -77,10 +77,10 @@ ov29_022DC33C: ; 0x022DC33C
 	ldr r4, [r3, #0xe0]
 	add r0, sp, #0
 	mov r1, #0x1b000
-	bl sub_01FF8130
+	bl Render3dSetTextureParams
 	add r0, sp, #0
 	add r1, r4, #0x3c00
-	bl sub_01FF81CC
+	bl Render3dSetPaletteBase
 	ldr r0, _022DC53C ; =0x00018304
 	mov r5, #0
 	ldr r4, _022DC530 ; =ov29_02353880
@@ -136,7 +136,7 @@ _022DC454:
 	strh r3, [r4, #0x12]
 	strh r2, [r4, #0x22]
 	strh r1, [r4]
-	bl sub_01FF8C60
+	bl Render3dTextureNoSetup
 _022DC50C:
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10

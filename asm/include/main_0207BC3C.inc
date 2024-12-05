@@ -18,8 +18,8 @@
 .public ARM9_UNKNOWN_TABLE__NA_20AE924
 .public EnableIrqFlag
 .public FileInit
+.public InitDmaTransfer_Standard
 .public SetIrqFlag
-.public sub_01FF9A68
 .public sub_01FF9AA8
 .public sub_01FF9B18
 .public sub_01FF9B3C

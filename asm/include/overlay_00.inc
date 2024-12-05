@@ -35,6 +35,7 @@
 .public GetFadeStatus
 .public GetLanguage
 .public GetProcessorMode
+.public HardwareInterrupt
 .public LoadOverlay
 .public MemAlloc
 .public memcmp
@@ -87,7 +88,6 @@
 .public strncmp
 .public strncpy
 .public strstr
-.public sub_01FF95E8
 .public sub_02002448
 .public sub_020024B0
 .public sub_020024C0

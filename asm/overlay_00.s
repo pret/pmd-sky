@@ -32294,7 +32294,7 @@ ov00_022D73E0: ; 0x022D73E0
 	ldr r2, [r0, #8]
 	cmp r2, #0
 	bne _022D7408
-	ldr r1, _022D742C ; =sub_01FF95E8
+	ldr r1, _022D742C ; =HardwareInterrupt
 	str r1, [r0, #8]
 	ldr r1, [r0, #0xc]
 	add r1, r1, #1
@@ -32302,7 +32302,7 @@ ov00_022D73E0: ; 0x022D73E0
 	mov r0, #1
 	bx lr
 _022D7408:
-	ldr r1, _022D742C ; =sub_01FF95E8
+	ldr r1, _022D742C ; =HardwareInterrupt
 	cmp r2, r1
 	movne r0, #0
 	bxne lr
@@ -32312,14 +32312,14 @@ _022D7408:
 	mov r0, #1
 	bx lr
 	.align 2, 0
-_022D742C: .word sub_01FF95E8
+_022D742C: .word HardwareInterrupt
 	arm_func_end ov00_022D73E0
 
 	arm_func_start ov00_022D7430
 ov00_022D7430: ; 0x022D7430
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #8]
-	ldr r1, _022D7464 ; =sub_01FF95E8
+	ldr r1, _022D7464 ; =HardwareInterrupt
 	cmp r2, r1
 	ldmneia sp!, {r3, pc}
 	ldr r1, [r0, #0xc]
@@ -32331,7 +32331,7 @@ ov00_022D7430: ; 0x022D7430
 	bl sub_020798D8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022D7464: .word sub_01FF95E8
+_022D7464: .word HardwareInterrupt
 	arm_func_end ov00_022D7430
 
 	arm_func_start ov00_022D7468

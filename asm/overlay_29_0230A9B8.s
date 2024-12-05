@@ -4585,7 +4585,7 @@ _0230E844:
 	beq _0230E8D0
 	add r0, sp, #0xa
 	mov r1, #0
-	bl ov29_022E9628
+	bl GetRandomTile
 	cmp r0, #0
 	beq _0230E8D0
 	mov r1, #0

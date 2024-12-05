@@ -6,7 +6,7 @@
 .public GetExclusiveItemWithEffectFromBag
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MistIsActive
-.public SubstitutePlaceholderStringTags
 .public ov29_02314DC4
 .public ov29_02324BE8
 .public ov29_02344B44
+.public SubstitutePlaceholderStringTags

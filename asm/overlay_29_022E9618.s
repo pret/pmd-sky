@@ -11,8 +11,8 @@ GetLeaderMonster: ; 0x022E9618
 	ldmia sp!, {r3, pc}
 	arm_func_end GetLeaderMonster
 
-	arm_func_start ov29_022E9628
-ov29_022E9628: ; 0x022E9628
+	arm_func_start GetRandomTile
+GetRandomTile: ; 0x022E9628
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xe20
 	mov sl, r0
@@ -165,7 +165,7 @@ _022E9830:
 _022E983C:
 	add sp, sp, #0xe20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end ov29_022E9628
+	arm_func_end GetRandomTile
 
 	arm_func_start FindNearbyUnoccupiedTile
 FindNearbyUnoccupiedTile: ; 0x022E9844

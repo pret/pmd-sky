@@ -5,8 +5,8 @@
 .public IsExperienceLocked
 .public IsMonster__02301A60
 .public LogMessageByIdWithPopupCheckUserTarget
+.public ov29_022E62A8
+.public ov29_023527A0
 .public ShouldMonsterRunAway
 .public SubstitutePlaceholderStringTags
 .public UpdateStateFlags
-.public ov29_022E62A8
-.public ov29_023527A0

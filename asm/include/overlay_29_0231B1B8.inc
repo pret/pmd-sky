@@ -2,8 +2,8 @@
 .public ApplyDamageAndEffectsWrapper
 .public DUNGEON_PTR
 .public EntityIsValid__0231B194
-.public IsMonsterSleeping
 .public IsMonster__0231B318
+.public IsMonsterSleeping
 .public ov10_022C4530
 .public ov29_022E28D4
 .public ov29_02307BDC
