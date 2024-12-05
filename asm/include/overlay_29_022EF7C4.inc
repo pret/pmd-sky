@@ -4,8 +4,8 @@
 .public EntityIsValid__022EF7A0
 .public IsFloorOver
 .public MoveMonsterToPos
-.public UpdateEntityPixelPos
 .public ov29_022FA360
 .public ov29_023444D4
 .public ov29_02348F20
 .public ov29_0234BA54
+.public UpdateEntityPixelPos

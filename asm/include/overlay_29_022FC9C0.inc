@@ -34,6 +34,7 @@
 .public GetMonsterApparentId
 .public GetMonsterIdToSpawn
 .public GetMonsterLevelToSpawn
+.public GetRandomTile
 .public GetTile
 .public GetType
 .public InflictSleepStatusSingle
@@ -73,7 +74,6 @@
 .public ov29_022E2018
 .public ov29_022E2DFC
 .public ov29_022E6644
-.public ov29_022E9628
 .public ov29_022EFAE8
 .public ov29_022F9EA0
 .public ov29_022FA1D8

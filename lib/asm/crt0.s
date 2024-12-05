@@ -76,7 +76,7 @@ _020008D4:
 	ldr r1, _02000930 ; =OS_IRQTable
 	add r1, r1, #0x3fc0
 	add r1, r1, #0x3c
-	ldr r0, _02000948 ; =sub_01FF95E8
+	ldr r0, _02000948 ; =HardwareInterrupt
 	str r0, [r1]
 	bl _fp_init
 	bl sub_02000B98
@@ -97,7 +97,7 @@ _02000938: .word 0x05000000
 _0200093C: .word 0x07000000
 _02000940: .word _start_ModuleParams
 _02000944: .word 0x027FFF9C
-_02000948: .word sub_01FF95E8
+_02000948: .word HardwareInterrupt
 _0200094C: .word NitroMain
 _02000950: .word 0xFFFF0000
 	arm_func_end _start

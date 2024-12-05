@@ -300,6 +300,7 @@
 .public BAG_ITEMS_PTR_MIRROR
 .public BulkItemToItem
 .public CALCIUM_STAT_BOOST
+.public CopyAndInterleave
 .public CopyBitsFrom
 .public CopyBitsTo
 .public CopyStringFromId
@@ -335,6 +336,7 @@
 .public DUNGEON_MOVE_TABLES
 .public DungeonGoesUp
 .public DungeonSwapIdxToId
+.public EnqueueRender3dTexture
 .public ENTITIES
 .public EXCLUSIVE_ITEM_ATTACK_BOOSTS
 .public EXCLUSIVE_ITEM_DEFENSE_BOOSTS
@@ -437,6 +439,10 @@
 .public MOVE_ACCURACY_STARS_TABLE
 .public MOVE_POWER_STARS_TABLE
 .public MultiplyByFixedPoint
+.public NewRender3dQuadrilateral
+.public NewRender3dRectangle
+.public NewRender3dTexture
+.public NewRender3dTiling
 .public ov10_022BDADC
 .public ov10_022C2528
 .public PointsToZero
@@ -449,7 +455,7 @@
 .public RECOIL_MOVE_LIST
 .public RECYCLE_SHOP_ITEM_LIST
 .public RemoveEmptyItems
-.public Render3dStack
+.public Render3dProcessQueue
 .public RENDER_3D
 .public RENDER_3D_FUNCTIONS_64
 .public ResumeBgm
@@ -467,13 +473,7 @@
 .public strlen
 .public strncmp
 .public strstr
-.public sub_01FF8000
 .public sub_01FF80B0
-.public sub_01FF8CAC
-.public sub_01FF8D0C
-.public sub_01FF8D3C
-.public sub_01FF8D6C
-.public sub_01FF8D9C
 .public sub_01FF8F04
 .public sub_02002778
 .public sub_020027E8

@@ -1,5 +1,6 @@
 #pragma once
 .public _fp_init
+.public HardwareInterrupt
 .public NitroMain
 .public OS_IRQTable
 .public SDK_AUTOLOAD_LIST
@@ -7,5 +8,4 @@
 .public SDK_AUTOLOAD_START
 .public SDK_STATIC_BSS_END
 .public SDK_STATIC_BSS_START
-.public sub_01FF95E8
 .public sub_020908A8

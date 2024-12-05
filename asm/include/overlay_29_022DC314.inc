@@ -59,9 +59,9 @@
 .public ov29_02373690
 .public ov29_0237C6D4
 .public ov29_0237C714
-.public sub_01FF8130
-.public sub_01FF81CC
-.public sub_01FF8C60
+.public Render3dSetPaletteBase
+.public Render3dSetTextureParams
+.public Render3dTextureNoSetup
 .public sub_01FF9BA0
 .public sub_01FF9E14
 .public sub_01FF9F80

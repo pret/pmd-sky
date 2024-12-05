@@ -3,8 +3,8 @@
 
 	.section .itcm,4,1,4
 
-	arm_func_start sub_01FF8000
-sub_01FF8000: ; 0x01FF8000
+	arm_func_start CopyAndInterleave
+CopyAndInterleave: ; 0x01FF8000
 	stmdb sp!, {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	and r3, r3, #0xf
 	mov r6, #0
@@ -55,7 +55,7 @@ _01FF8090:
 	blt _01FF8014
 _01FF80AC:
 	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_01FF8000
+	arm_func_end CopyAndInterleave
 
 	arm_func_start sub_01FF80B0
 sub_01FF80B0: ; 0x01FF80B0
@@ -91,13 +91,13 @@ _01FF811C:
 	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_01FF80B0
 _01FF8120:
-	.word sub_01FF8224
-	.word sub_01FF849C
-	.word sub_01FF8728
-	.word sub_01FF8C28
+	.word Render3dRectangle
+	.word Render3dQuadrilateral
+	.word Render3dTiling
+	.word Render3dTexture
 
-	arm_func_start sub_01FF8130
-sub_01FF8130: ; 0x01FF8130
+	arm_func_start Render3dSetTextureParams
+Render3dSetTextureParams: ; 0x01FF8130
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	ldr r2, _01FF81B8 ; =RENDER_3D
@@ -139,10 +139,10 @@ _01FF81BC: .word _02099734
 _01FF81C0: .word _02099744
 _01FF81C4: .word _02099764
 _01FF81C8: .word _02099784
-	arm_func_end sub_01FF8130
+	arm_func_end Render3dSetTextureParams
 
-	arm_func_start sub_01FF81CC
-sub_01FF81CC: ; 0x01FF81CC
+	arm_func_start Render3dSetPaletteBase
+Render3dSetPaletteBase: ; 0x01FF81CC
 	ldr r2, _01FF8218 ; =RENDER_3D
 	ldr r2, [r2, #4]
 	cmp r2, r1
@@ -166,10 +166,10 @@ sub_01FF81CC: ; 0x01FF81CC
 _01FF8218: .word RENDER_3D
 _01FF821C: .word _02099744
 _01FF8220: .word 0x040004AC
-	arm_func_end sub_01FF81CC
+	arm_func_end Render3dSetPaletteBase
 
-	arm_func_start sub_01FF8224
-sub_01FF8224: ; 0x01FF8224
+	arm_func_start Render3dRectangle
+Render3dRectangle: ; 0x01FF8224
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x40
 	mov r4, r0
@@ -209,7 +209,7 @@ sub_01FF8224: ; 0x01FF8224
 	str r0, [sp, #0x3c]
 	ldrb r0, [r4, #0x22]
 	ldrb r1, [r4, #0x23]
-	bl sub_01FF8480
+	bl GeomSetPolygonAttributes
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -323,10 +323,10 @@ _01FF8470: .word 0x04000444
 _01FF8474: .word 0x0400046C
 _01FF8478: .word 0x04000500
 _01FF847C: .word 0x0400048C
-	arm_func_end sub_01FF8224
+	arm_func_end Render3dRectangle
 
-	arm_func_start sub_01FF8480
-sub_01FF8480: ; 0x01FF8480
+	arm_func_start GeomSetPolygonAttributes
+GeomSetPolygonAttributes: ; 0x01FF8480
 	mov r0, r0, lsl #0x18
 	orr r2, r0, #0xc0
 	ldr r0, _01FF8498 ; =0x040004A4
@@ -335,10 +335,10 @@ sub_01FF8480: ; 0x01FF8480
 	bx lr
 	.align 2, 0
 _01FF8498: .word 0x040004A4
-	arm_func_end sub_01FF8480
+	arm_func_end GeomSetPolygonAttributes
 
-	arm_func_start sub_01FF849C
-sub_01FF849C: ; 0x01FF849C
+	arm_func_start Render3dQuadrilateral
+Render3dQuadrilateral: ; 0x01FF849C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x48
 	mov r4, r0
@@ -372,7 +372,7 @@ sub_01FF849C: ; 0x01FF849C
 	str r1, [sp, #0x44]
 	ldrb r1, [r4, #0x23]
 	str ip, [sp, #0x14]
-	bl sub_01FF8480
+	bl GeomSetPolygonAttributes
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -504,10 +504,10 @@ _01FF8718: .word 0x04000444
 _01FF871C: .word 0x0400046C
 _01FF8720: .word 0x04000500
 _01FF8724: .word 0x0400048C
-	arm_func_end sub_01FF849C
+	arm_func_end Render3dQuadrilateral
 
-	arm_func_start sub_01FF8728
-sub_01FF8728: ; 0x01FF8728
+	arm_func_start Render3dTiling
+Render3dTiling: ; 0x01FF8728
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x4c
 	mov sl, r0
@@ -521,10 +521,10 @@ sub_01FF8728: ; 0x01FF8728
 	add r0, sl, #0x14
 	str r3, [sp, #0x14]
 	str r2, [sp, #0x18]
-	bl sub_01FF8130
+	bl Render3dSetTextureParams
 	ldr r1, [sl, #8]
 	add r0, sl, #0x14
-	bl sub_01FF81CC
+	bl Render3dSetPaletteBase
 	ldrsh r7, [sl, #0xc]
 	ldrsh r0, [sl, #0x10]
 	ldrsh r6, [sl, #0xe]
@@ -580,7 +580,7 @@ sub_01FF8728: ; 0x01FF8728
 	str r0, [sp, #0x48]
 	ldrb r0, [sl, #0x30]
 	ldrb r1, [sl, #0x31]
-	bl sub_01FF8480
+	bl GeomSetPolygonAttributes
 	ldr r1, _01FF89F8 ; =0x04000444
 	mov r2, #0
 	add r0, sp, #0x1c
@@ -696,10 +696,10 @@ _01FF8A00: .word 0x04000500
 _01FF8A04: .word 0x04000488
 _01FF8A08: .word 0x04000480
 _01FF8A0C: .word 0x04000504
-	arm_func_end sub_01FF8728
+	arm_func_end Render3dTiling
 
-	arm_func_start sub_01FF8A10
-sub_01FF8A10: ; 0x01FF8A10
+	arm_func_start Render3dTextureInternal
+Render3dTextureInternal: ; 0x01FF8A10
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x30
 	mov r8, r0
@@ -746,7 +746,7 @@ sub_01FF8A10: ; 0x01FF8A10
 	str r0, [sp, #0x2c]
 	ldrb r0, [r8, #0x26]
 	ldrb r1, [r8, #0x27]
-	bl sub_01FF8480
+	bl GeomSetPolygonAttributes
 	ldr r1, _01FF8C20 ; =0x04000444
 	mov r2, #0
 	add r0, sp, #0
@@ -835,10 +835,10 @@ sub_01FF8A10: ; 0x01FF8A10
 _01FF8C1C: .word TRIG_TABLE
 _01FF8C20: .word 0x04000444
 _01FF8C24: .word 0x0400046C
-	arm_func_end sub_01FF8A10
+	arm_func_end Render3dTextureInternal
 
-	arm_func_start sub_01FF8C28
-sub_01FF8C28: ; 0x01FF8C28
+	arm_func_start Render3dTexture
+Render3dTexture: ; 0x01FF8C28
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldrb r0, [r4, #0x27]
@@ -846,27 +846,27 @@ sub_01FF8C28: ; 0x01FF8C28
 	ldmeqia sp!, {r4, pc}
 	ldr r1, [r4, #4]
 	add r0, r4, #0x14
-	bl sub_01FF8130
+	bl Render3dSetTextureParams
 	ldr r1, [r4, #8]
 	add r0, r4, #0x14
-	bl sub_01FF81CC
+	bl Render3dSetPaletteBase
 	mov r0, r4
-	bl sub_01FF8A10
+	bl Render3dTextureInternal
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_01FF8C28
+	arm_func_end Render3dTexture
 
-	arm_func_start sub_01FF8C60
-sub_01FF8C60: ; 0x01FF8C60
+	arm_func_start Render3dTextureNoSetup
+Render3dTextureNoSetup: ; 0x01FF8C60
 	stmdb sp!, {r3, lr}
 	ldrb r1, [r0, #0x27]
 	cmp r1, #0
 	ldmeqia sp!, {r3, pc}
-	bl sub_01FF8A10
+	bl Render3dTextureInternal
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_01FF8C60
+	arm_func_end Render3dTextureNoSetup
 
-	arm_func_start AllocateRender3dElement
-AllocateRender3dElement: ; 0x01FF8C78
+	arm_func_start NewRender3dElement
+NewRender3dElement: ; 0x01FF8C78
 	ldr r0, _01FF8CA8 ; =RENDER_3D
 	ldrsh r2, [r0]
 	ldrsh r1, [r0, #2]
@@ -881,13 +881,13 @@ AllocateRender3dElement: ; 0x01FF8C78
 	bx lr
 	.align 2, 0
 _01FF8CA8: .word RENDER_3D
-	arm_func_end AllocateRender3dElement
+	arm_func_end NewRender3dElement
 
-	arm_func_start sub_01FF8CAC
-sub_01FF8CAC: ; 0x01FF8CAC
+	arm_func_start EnqueueRender3dTexture
+EnqueueRender3dTexture: ; 0x01FF8CAC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl AllocateRender3dElement
+	bl NewRender3dElement
 	movs r4, r0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -897,13 +897,13 @@ sub_01FF8CAC: ; 0x01FF8CAC
 	mov r0, #3
 	strh r0, [r4]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_01FF8CAC
+	arm_func_end EnqueueRender3dTexture
 
-	arm_func_start sub_01FF8CDC
-sub_01FF8CDC: ; 0x01FF8CDC
+	arm_func_start EnqueueRender3dTiling
+EnqueueRender3dTiling: ; 0x01FF8CDC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl AllocateRender3dElement
+	bl NewRender3dElement
 	movs r4, r0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -913,12 +913,12 @@ sub_01FF8CDC: ; 0x01FF8CDC
 	mov r0, #2
 	strh r0, [r4]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_01FF8CDC
+	arm_func_end EnqueueRender3dTiling
 
-	arm_func_start sub_01FF8D0C
-sub_01FF8D0C: ; 0x01FF8D0C
+	arm_func_start NewRender3dRectangle
+NewRender3dRectangle: ; 0x01FF8D0C
 	stmdb sp!, {r4, lr}
-	bl AllocateRender3dElement
+	bl NewRender3dElement
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -929,12 +929,12 @@ sub_01FF8D0C: ; 0x01FF8D0C
 	mov r0, r4
 	strh r1, [r4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_01FF8D0C
+	arm_func_end NewRender3dRectangle
 
-	arm_func_start sub_01FF8D3C
-sub_01FF8D3C: ; 0x01FF8D3C
+	arm_func_start NewRender3dQuadrilateral
+NewRender3dQuadrilateral: ; 0x01FF8D3C
 	stmdb sp!, {r4, lr}
-	bl AllocateRender3dElement
+	bl NewRender3dElement
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -945,12 +945,12 @@ sub_01FF8D3C: ; 0x01FF8D3C
 	mov r0, r4
 	strh r1, [r4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_01FF8D3C
+	arm_func_end NewRender3dQuadrilateral
 
-	arm_func_start sub_01FF8D6C
-sub_01FF8D6C: ; 0x01FF8D6C
+	arm_func_start NewRender3dTexture
+NewRender3dTexture: ; 0x01FF8D6C
 	stmdb sp!, {r4, lr}
-	bl AllocateRender3dElement
+	bl NewRender3dElement
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -961,12 +961,12 @@ sub_01FF8D6C: ; 0x01FF8D6C
 	mov r0, r4
 	strh r1, [r4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_01FF8D6C
+	arm_func_end NewRender3dTexture
 
-	arm_func_start sub_01FF8D9C
-sub_01FF8D9C: ; 0x01FF8D9C
+	arm_func_start NewRender3dTiling
+NewRender3dTiling: ; 0x01FF8D9C
 	stmdb sp!, {r4, lr}
-	bl AllocateRender3dElement
+	bl NewRender3dElement
 	movs r4, r0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -977,10 +977,10 @@ sub_01FF8D9C: ; 0x01FF8D9C
 	mov r0, r4
 	strh r1, [r4]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_01FF8D9C
+	arm_func_end NewRender3dTiling
 
-	arm_func_start Render3dStack
-Render3dStack: ; 0x01FF8DCC
+	arm_func_start Render3dProcessQueue
+Render3dProcessQueue: ; 0x01FF8DCC
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x200
 	ldr r0, _01FF8EFC ; =RENDER_3D
@@ -1072,7 +1072,7 @@ _01FF8EF4:
 	.align 2, 0
 _01FF8EFC: .word RENDER_3D
 _01FF8F00: .word _01FF8120
-	arm_func_end Render3dStack
+	arm_func_end Render3dProcessQueue
 
 	arm_func_start sub_01FF8F04
 sub_01FF8F04: ; 0x01FF8F04
@@ -1785,8 +1785,8 @@ _01FF95D8:
 _01FF95E4: .word 0x00000483
 	arm_func_end GetKeyM2NBaseForm
 
-	arm_func_start sub_01FF95E8
-sub_01FF95E8: ; 0x01FF95E8
+	arm_func_start HardwareInterrupt
+HardwareInterrupt: ; 0x01FF95E8
 	stmdb sp!, {lr}
 	mov ip, #0x4000000
 	add ip, ip, #0x210
@@ -1814,15 +1814,15 @@ _01FF9620:
 	rsbs r0, r0, #0x1f
 	ldr r1, _01FF9648 ; =OS_IRQTable
 	ldr r0, [r1, r0, lsl #2]
-	ldr lr, _01FF964C ; =sub_01FF9650
+	ldr lr, _01FF964C ; =ReturnFromInterrupt
 	bx r0
 	.align 2, 0
 _01FF9648: .word OS_IRQTable
-_01FF964C: .word sub_01FF9650
-	arm_func_end sub_01FF95E8
+_01FF964C: .word ReturnFromInterrupt
+	arm_func_end HardwareInterrupt
 
-	arm_func_start sub_01FF9650
-sub_01FF9650: ; 0x01FF9650
+	arm_func_start ReturnFromInterrupt
+ReturnFromInterrupt: ; 0x01FF9650
 	ldr ip, _01FF97BC ; =DTCM_BSS
 	mov r3, #0
 	ldr ip, [ip]
@@ -1934,7 +1934,7 @@ _01FF97BC: .word DTCM_BSS
 _01FF97C0: .word _022B966C
 _01FF97C4: .word sub_02080EF0
 _01FF97C8: .word sub_02080F30
-	arm_func_end sub_01FF9650
+	arm_func_end ReturnFromInterrupt
 
 	arm_func_start sub_01FF97CC
 sub_01FF97CC: ; 0x01FF97CC
@@ -2140,8 +2140,8 @@ _01FF9A60: .word 0x040001A1
 _01FF9A64: .word 0x04100010
 	arm_func_end sub_01FF9990
 
-	arm_func_start sub_01FF9A68
-sub_01FF9A68: ; 0x01FF9A68
+	arm_func_start InitDmaTransfer_Standard
+InitDmaTransfer_Standard: ; 0x01FF9A68
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 	mov r6, r1
@@ -2158,7 +2158,7 @@ sub_01FF9A68: ; 0x01FF9A68
 	str r4, [r1, #8]
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_01FF9A68
+	arm_func_end InitDmaTransfer_Standard
 
 	arm_func_start sub_01FF9AA8
 sub_01FF9AA8: ; 0x01FF9AA8

@@ -5369,7 +5369,7 @@ _02083ED4:
 	cmp r1, #0
 	beq _02083F28
 	bl sub_0207AACC
-	ldr r1, _02084018 ; =sub_01FF8000
+	ldr r1, _02084018 ; =CopyAndInterleave
 	add r3, sb, r5
 	cmp r3, r1
 	mov r1, #1
@@ -5459,7 +5459,7 @@ _0208400C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02084014: .word _022BB7E0
-_02084018: .word sub_01FF8000
+_02084018: .word CopyAndInterleave
 _0208401C: .word 0x000001FF
 _02084020: .word _020B2ED0
 _02084024: .word sub_02083DCC

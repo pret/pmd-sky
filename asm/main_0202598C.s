@@ -849,7 +849,7 @@ sub_02026020: ; 0x02026020
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
-	bl sub_020265C4
+	bl GetColorCodePaletteOffset
 	str r0, [r4, #0x110]
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02026020
@@ -1308,7 +1308,7 @@ sub_020264F8: ; 0x020264F8
 	addlo r6, r6, r0, asr #1
 #endif
 	ldrb r0, [sp, #0x18]
-	bl sub_020265C4
+	bl GetColorCodePaletteOffset
 	str r0, [sp]
 	mov r0, r7
 	mov r1, r6
@@ -1378,8 +1378,8 @@ _020265BC: .word sub_0202654C
 _020265C0: .word sub_02026594
 	arm_func_end sub_020265A8
 
-	arm_func_start sub_020265C4
-sub_020265C4: ; 0x020265C4
+	arm_func_start GetColorCodePaletteOffset
+GetColorCodePaletteOffset: ; 0x020265C4
 	sub r0, r0, #0x41
 	cmp r0, #0x31
 	addls pc, pc, r0, lsl #2
@@ -1513,7 +1513,7 @@ _0202675C:
 _02026764:
 	mov r0, #0x17
 	bx lr
-	arm_func_end sub_020265C4
+	arm_func_end GetColorCodePaletteOffset
 
 	arm_func_start sub_0202676C
 sub_0202676C: ; 0x0202676C

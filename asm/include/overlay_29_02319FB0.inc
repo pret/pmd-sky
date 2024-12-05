@@ -1,5 +1,7 @@
 #pragma once
+.public _s32_div_f
 .public AbilityIsActiveVeneer
+.public abs
 .public AreMovesEnabled
 .public CanAttackInDirection
 .public DIRECTIONS_XY
@@ -18,15 +20,10 @@
 .public IqSkillIsEnabled
 .public IsBlinded
 .public IsFloorOver
-.public IsMonsterSleeping
 .public IsMonster__0231A9D4
+.public IsMonsterSleeping
 .public LogMessageByIdWithPopupCheckUser
 .public MonsterHasNegativeStatus
-.public SubstitutePlaceholderStringTags
-.public TryActivateTruant
-.public UpdateMovePp
-.public _s32_div_f
-.public abs
 .public ov10_022C459C
 .public ov29_022E3ED0
 .public ov29_022FA574
@@ -40,3 +37,6 @@
 .public ov29_0237CA20
 .public ov29_0237CA28
 .public ov29_0237CA48
+.public SubstitutePlaceholderStringTags
+.public TryActivateTruant
+.public UpdateMovePp

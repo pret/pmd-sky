@@ -204,7 +204,7 @@ _0207BEAC:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, #0xc4000000
-	bl sub_01FF9A68
+	bl InitDmaTransfer_Standard
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207BEE8:
 	mov r3, r5, lsr #2
@@ -212,7 +212,7 @@ _0207BEE8:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, #0x84000000
-	bl sub_01FF9A68
+	bl InitDmaTransfer_Standard
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0207BE6C
 
@@ -249,7 +249,7 @@ _0207BF44:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, r5, lsr #2
-	bl sub_01FF9A68
+	bl InitDmaTransfer_Standard
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207BF84:
 	ldr r3, _0207BFA0 ; =0x84400000
@@ -257,7 +257,7 @@ _0207BF84:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, r5, lsr #2
-	bl sub_01FF9A68
+	bl InitDmaTransfer_Standard
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0207BFA0: .word 0x84400000
@@ -295,7 +295,7 @@ _0207BFE4:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, #0xc0000000
-	bl sub_01FF9A68
+	bl InitDmaTransfer_Standard
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207C020:
 	mov r3, r5, lsr #1
@@ -303,7 +303,7 @@ _0207C020:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, #0x80000000
-	bl sub_01FF9A68
+	bl InitDmaTransfer_Standard
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0207BFA4
 
@@ -340,7 +340,7 @@ _0207C07C:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, r5, lsr #1
-	bl sub_01FF9A68
+	bl InitDmaTransfer_Standard
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _0207C0BC:
 	ldr r3, _0207C0D8 ; =0x80400000
@@ -348,7 +348,7 @@ _0207C0BC:
 	mov r1, r7
 	mov r2, r6
 	orr r3, r3, r5, lsr #1
-	bl sub_01FF9A68
+	bl InitDmaTransfer_Standard
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0207C0D8: .word 0x80400000
@@ -957,7 +957,7 @@ _0207C79C:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_01FF9A68
+	bl InitDmaTransfer_Standard
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0207C7C0: .word 0xAF000001

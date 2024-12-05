@@ -101,6 +101,12 @@ NONMATCHING_SYMBOLS_ARM7 = {
 
 WRAM_OFFSET = 0x1477E18
 
+ITCM_RAM_START_ADDRESSES = {
+    'NA': 0x20B3380,
+    'EU': 0x20B3CC0,
+    'JP': 0x20B4BE0
+}
+
 @dataclass
 class SymbolDetails:
     name: str

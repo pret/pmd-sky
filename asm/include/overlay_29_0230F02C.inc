@@ -1,7 +1,8 @@
 #pragma once
-.public AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 .public AbilityIsActiveVeneer
+.public abs
 .public AddMoneyCarried
+.public AI_THROWN_ITEM_ACTION_CHOICE_COUNT
 .public BAG_ITEMS_PTR_MIRROR
 .public CanSeeTarget
 .public DIRECTIONS_XY
@@ -24,11 +25,6 @@
 .public IsFloorOver
 .public IsMonster__0230F980
 .public LogMessageByIdWithPopup
-.public RemoveGroundItem
-.public ShouldMonsterRunAwayVariation
-.public SubstitutePlaceholderStringTags
-.public UseThrowableItem
-.public abs
 .public ov29_022EACCC
 .public ov29_022F52BC
 .public ov29_022F9EA0
@@ -39,4 +35,8 @@
 .public ov29_02348D3C
 .public ov29_02348DD8
 .public ov29_02348ECC
+.public RemoveGroundItem
+.public ShouldMonsterRunAwayVariation
 .public sub_0200D8AC
+.public SubstitutePlaceholderStringTags
+.public UseThrowableItem

@@ -220,6 +220,7 @@
 .public DRIVER_WORK
 .public DUNGEON_SWAP_ID_TABLE
 .public DungeonGoesUp
+.public EnqueueRender3dTiling
 .public ENTITIES
 .public EVENTS
 .public ExplorersOfSkyMain
@@ -428,7 +429,6 @@
 .public StrncpyName
 .public StrncpySimple
 .public StrncpySimpleNoPadSafe
-.public sub_01FF8CDC
 .public sub_020018D0
 .public sub_02001980
 .public sub_02001AB0

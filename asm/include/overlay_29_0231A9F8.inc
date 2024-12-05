@@ -22,12 +22,6 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MonsterIsType
 .public NATURAL_GIFT_ITEM_TABLE
-.public RemoveUsedItem
-.public SetActionUseMoveAi
-.public SubstitutePlaceholderStringTags
-.public TryActivateTruant
-.public UpdateAiTargetPos
-.public WEATHER_BALL_TYPE_TABLE
 .public ov29_022E4110
 .public ov29_022EB4E8
 .public ov29_022FB9E0
@@ -37,3 +31,9 @@
 .public ov29_02322374
 .public ov29_0232E80C
 .public ov29_02344B44
+.public RemoveUsedItem
+.public SetActionUseMoveAi
+.public SubstitutePlaceholderStringTags
+.public TryActivateTruant
+.public UpdateAiTargetPos
+.public WEATHER_BALL_TYPE_TABLE

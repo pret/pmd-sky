@@ -15492,7 +15492,7 @@ _0201AB40:
 	ldrh r3, [ip, #0xc]
 	ldr r0, [ip, #8]
 	mov r2, r2, asr #1
-	bl sub_01FF8000
+	bl CopyAndInterleave
 	ldmia sp!, {r3, pc}
 _0201AB60:
 	cmp r0, #2
@@ -17104,11 +17104,11 @@ _0201BFEC: .word _020AFC4C
 
 	arm_func_start sub_0201BFF0
 sub_0201BFF0: ; 0x0201BFF0
-	ldr ip, _0201BFFC ; =sub_01FF8000
+	ldr ip, _0201BFFC ; =CopyAndInterleave
 	mov r2, r2, asr #1
 	bx ip
 	.align 2, 0
-_0201BFFC: .word sub_01FF8000
+_0201BFFC: .word CopyAndInterleave
 	arm_func_end sub_0201BFF0
 
 	arm_func_start sub_0201C000
@@ -17779,7 +17779,7 @@ _0201C860:
 	tst r0, #2
 	bne _0201C910
 	add r0, sp, #0x5c
-	bl sub_01FF8CAC
+	bl EnqueueRender3dTexture
 _0201C910:
 	ldrb r0, [sb, #0x22]
 	cmp r0, #0
@@ -20043,7 +20043,7 @@ _0201E5AC: .word 0x040004A4
 sub_0201E5B0: ; 0x0201E5B0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
-	bl Render3dStack
+	bl Render3dProcessQueue
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -20244,7 +20244,7 @@ sub_0201E7D8: ; 0x0201E7D8
 Render3d64Texture0x7: ; 0x0201E844
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, r0
-	bl sub_01FF8D6C
+	bl NewRender3dTexture
 	ldrsh r1, [r4]
 	mov r5, #0
 	strh r1, [r0, #0x16]
@@ -20535,7 +20535,7 @@ _0201EA04:
 EnqueueRender3d64Tiling: ; 0x0201EC9C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_01FF8D9C
+	bl NewRender3dTiling
 	ldrsh r2, [r4]
 	mov r1, #0
 	strh r2, [r0, #0x16]
@@ -20600,7 +20600,7 @@ _0201ED74:
 Render3d64Tiling: ; 0x0201ED88
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_01FF8D9C
+	bl NewRender3dTiling
 	mov r1, #0
 _0201ED98:
 	mov r2, r1, lsl #2
@@ -20656,7 +20656,7 @@ _0201EE3C:
 Render3d64Quadrilateral: ; 0x0201EE50
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_01FF8D3C
+	bl NewRender3dQuadrilateral
 	mov r1, #0
 _0201EE60:
 	mov r2, r1, lsl #2
@@ -20701,7 +20701,7 @@ _0201EE60:
 Render3d64RectangleMulticolor: ; 0x0201EEF0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_01FF8D0C
+	bl NewRender3dRectangle
 	ldrh r1, [r4]
 	strh r1, [r0, #4]
 	ldrh r1, [r4, #2]
@@ -20797,7 +20797,7 @@ _0201F034:
 Render3d64Rectangle: ; 0x0201F05C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_01FF8D0C
+	bl NewRender3dRectangle
 	ldrh r1, [r4]
 	mov r2, #0
 	strh r1, [r0, #4]
@@ -20849,7 +20849,7 @@ Render3d64Nothing: ; 0x0201F108
 Render3d64Texture: ; 0x0201F10C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_01FF8D6C
+	bl NewRender3dTexture
 	ldrsh r1, [r4]
 	add ip, r4, #0x16
 	add r3, r0, #0xc

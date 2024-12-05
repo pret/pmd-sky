@@ -19,6 +19,7 @@ LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG = {value: key for key, value in LANGUAGE_KEYS
 # Symbols with duplicate addresses that should be ignored.
 SYMBOL_BLACKLIST = set([
     'GAME_STATE_VALUES',
+    'MEMORY_ALLOCATION_TABLE'
 ])
 
 """
