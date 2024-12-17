@@ -3389,7 +3389,7 @@ _0200AE30:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0200ACB0
 
-; https://decomp.me/scratch/VDRBP
+; https://decomp.me/scratch/xdMiD
 	arm_func_start TransformPaletteDataWithFlushDivideFade
 TransformPaletteDataWithFlushDivideFade: ; 0x0200AE38
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
