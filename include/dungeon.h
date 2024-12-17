@@ -6,6 +6,8 @@
 
 #define MAX_TEAM_MEMBERS 4
 #define DUNGEON_MAX_POKEMON 20
+#define DUNGEON_MAX_SIZE_X 56
+#define DUNGEON_MAX_SIZE_Y 32
 
 // Dungeon state
 struct dungeon {
