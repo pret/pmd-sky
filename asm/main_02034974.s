@@ -40977,6 +40977,7 @@ _02054B6C: .word 0x000001CD
 _02054B70: .word 0xFFFFFBDC
 	arm_func_end IsCherrim
 
+; https://decomp.me/scratch/IvDKt
 	arm_func_start IsDeoxys
 IsDeoxys: ; 0x02054B74
 	ldr r1, _02054BA0 ; =0xFFFFFE5E
