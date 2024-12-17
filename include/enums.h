@@ -2599,9 +2599,11 @@ enum shopkeeper_mode {
     SHOPKEEPER_MODE_ATTACK_TEAM = 3,
 };
 
+#define MONSTER_GENDER_ID_OFFSET 600
+
 // Some macro shenanigans to define the monster secondary gender labels neatly.
 #define _MONSTER_ID_GENDERED(name, base_value)                                                     \
-    MONSTER_##name = base_value, MONSTER_##name##_SECONDARY = base_value + 600
+    MONSTER_##name = base_value, MONSTER_##name##_SECONDARY = base_value + MONSTER_GENDER_ID_OFFSET
 
 // Monster ID. Add 600 to the base value to get secondary genders (typically female).
 enum monster_id {

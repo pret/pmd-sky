@@ -40993,23 +40993,3 @@ IsDeoxys: ; 0x02054B74
 	.align 2, 0
 _02054BA0: .word 0xFFFFFE5E
 	arm_func_end IsDeoxys
-
-	arm_func_start GetSecondFormIfValid
-GetSecondFormIfValid: ; 0x02054BA4
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	bl GetMonsterGender
-	cmp r0, #1
-	bne _02054BD8
-	add r4, r5, #0x258
-	mov r0, r4, lsl #0x10
-	mov r0, r0, asr #0x10
-	bl GetMonsterGender
-	cmp r0, #2
-	moveq r0, r4, lsl #0x10
-	moveq r0, r0, asr #0x10
-	ldmeqia sp!, {r3, r4, r5, pc}
-_02054BD8:
-	mov r0, r5
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end GetSecondFormIfValid
