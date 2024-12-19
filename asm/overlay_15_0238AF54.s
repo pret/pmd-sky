@@ -1,63 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_15_0238AE98.inc"
+	.include "overlay_15_0238AF54.inc"
 
 	.text
-
-	arm_func_start ov15_0238AE98
-ov15_0238AE98: ; 0x0238AE98
-	stmdb sp!, {r3, lr}
-	ldr r0, _0238AF40 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	ldr r0, [r0]
-	cmp r0, #0
-	ldmeqia sp!, {r3, pc}
-	ldrsb r1, [r0, #0x80]
-	mvn r0, #1
-	cmp r1, r0
-	beq _0238AEC4
-	ldr r0, _0238AF44 ; =ov15_0238B11C
-	bl Debug_Print0
-_0238AEC4:
-	ldr r1, _0238AF40 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	mvn r0, #1
-	ldr r1, [r1]
-	ldrsb r1, [r1, #0x82]
-	cmp r1, r0
-	beq _0238AEE4
-	ldr r0, _0238AF48 ; =ov15_0238B12C
-	bl Debug_Print0
-_0238AEE4:
-	ldr r1, _0238AF40 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	mvn r0, #1
-	ldr r1, [r1]
-	ldrsb r1, [r1, #0x83]
-	cmp r1, r0
-	beq _0238AF04
-	ldr r0, _0238AF4C ; =ov15_0238B13C
-	bl Debug_Print0
-_0238AF04:
-	ldr r1, _0238AF40 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	mvn r0, #1
-	ldr r1, [r1]
-	ldrsb r1, [r1, #0x84]
-	cmp r1, r0
-	beq _0238AF24
-	ldr r0, _0238AF50 ; =ov15_0238B150
-	bl Debug_Print0
-_0238AF24:
-	ldr r0, _0238AF40 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	ldr r0, [r0]
-	bl MemFree
-	ldr r0, _0238AF40 ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
-	mov r1, #0
-	str r1, [r0]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0238AF40: .word OVERLAY15_UNKNOWN_POINTER__NA_238B180
-_0238AF44: .word ov15_0238B11C
-_0238AF48: .word ov15_0238B12C
-_0238AF4C: .word ov15_0238B13C
-_0238AF50: .word ov15_0238B150
-	arm_func_end ov15_0238AE98
 
 	arm_func_start ov15_0238AF54
 ov15_0238AF54: ; 0x0238AF54
@@ -191,23 +135,6 @@ ov15_0238B10C:
 	.global ov15_0238B114
 ov15_0238B114:
 	.byte 0x47, 0x2D, 0x4F, 0x70, 0x65, 0x6E, 0x0A, 0x00
-	.global ov15_0238B11C
-ov15_0238B11C:
-	.byte 0x6D, 0x65, 0x73, 0x20, 0x6E, 0x6F, 0x74, 0x20
-	.byte 0x63, 0x6C, 0x6F, 0x73, 0x65, 0x0A, 0x00, 0x00
-	.global ov15_0238B12C
-ov15_0238B12C:
-	.byte 0x73, 0x75, 0x62, 0x20, 0x6E, 0x6F, 0x74, 0x20
-	.byte 0x63, 0x6C, 0x6F, 0x73, 0x65, 0x0A, 0x00, 0x00
-	.global ov15_0238B13C
-ov15_0238B13C:
-	.byte 0x73, 0x65, 0x6C, 0x65, 0x63, 0x74, 0x20, 0x6E
-	.byte 0x6F, 0x74, 0x20, 0x63, 0x6C, 0x6F, 0x73, 0x65, 0x0A, 0x00, 0x00, 0x00
-	.global ov15_0238B150
-ov15_0238B150:
-	.byte 0x49, 0x6E, 0x70, 0x75
-	.byte 0x74, 0x20, 0x6E, 0x6F, 0x74, 0x20, 0x63, 0x6C, 0x6F, 0x73, 0x65, 0x0A, 0x00, 0x00, 0x00, 0x00
-
 	.data
 	.global OVERLAY15_UNKNOWN_POINTER__NA_238B180
 OVERLAY15_UNKNOWN_POINTER__NA_238B180:

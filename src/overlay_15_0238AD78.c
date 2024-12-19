@@ -5,7 +5,7 @@ extern unkStruct_ov15_0238AD78* OVERLAY15_UNKNOWN_POINTER__NA_238B180;
 extern void sub_02026268(u32, u32, u32, u16);
 extern void sub_02039B0C(u32*);
 
-void ov15_0238AD78(u32 r0) {
+void ov15_0238AD78(u8 r0) {
     #ifdef JAPAN
     u32 uVar1 = r0 != 0 ? 12873 : 12874;
     #else

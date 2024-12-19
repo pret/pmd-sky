@@ -8,6 +8,6 @@ typedef struct {
     s8 unk68;
 } unkStruct_ov15_0238AD78;
 
-void ov15_0238AD78(u32 r0);
+void ov15_0238AD78(u8 r0);
 
 #endif //PMDSKY_OVERLAY_15_0238AD78_H
