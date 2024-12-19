@@ -151,6 +151,12 @@ struct cringe_class_status {
     u8 cringe_turns;   // 0x1: Turns left for the status in statuses::cringe
 };
 
+struct bide_class_status {
+    u8 bide;           // 0x0: STATUS_BIDE if 1
+    u8 bide_turns;     // 0x1: Turns left for the status in statuses::bide
+    u8 bide_move_slot; // 0x2: Slot in the user's move list
+};
+
 struct curse_class_status {
     u8 curse; // 0x0: STATUS_CURSED if 1
     // 0x1: Set to monster::is_not_team_member of the attacker (the one causing the decoy status).
@@ -268,9 +274,7 @@ struct monster {
     u8 badly_poisoned_damage_count;
     struct frozen_class_status frozen_class_status; // 0xC4
     struct cringe_class_status cringe_class_status; // 0xD0
-    u8 bide;           // 0xD2: STATUS_BIDE if 1
-    u8 bide_turns;     // 0xD3: Turns left for the status in statuses::bide
-    u8 bide_move_slot; // 0xD4: Slot in the user's move list
+    struct bide_class_status bide_class_status;
     u8 reflect;        // 0xD5: STATUS_REFLECT if 1
     u8 reflect_turns;  // 0xD6: Turns left for the status in statuses::reflect
     // 0xD7: Turns left until residual healing for the status in statuses::reflect, if applicable
