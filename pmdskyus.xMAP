@@ -305,10 +305,7 @@
                                                             59](EntityIsValid__0230558C,func) found in global overlay_29_0230558C.o
                                                             59](TryNonLeaderItemPickUp,func) found in global overlay_29_0230F02C.o
                                                             59](CheckVariousStatuses2,func) found in global dungeon_capabilities.o
-                                                             60](CheckVariousStatuses,func) found in global overlay_29_02300BF8.o
-                                                              61](IsChargingAnyTwoTurnMove,func) found in global overlay_29_02322DDC.o
-                                                              61](ov29_023008DC,func) found in global overlay_29_023008DC.o
-                                                               62](ov29_02300D00,func) found in global overlay_29_02300BF8.o
+                                                             60](CheckVariousStatuses,func) found in global dungeon_capabilities_2.o
                                                             59](ov29_022FBE04,func) found in global overlay_29_022FBB1C.o
                                                            58](ov31_0238619C,func) found in global overlay_31_02382FBC.o
                                                             59](ov31_02382B54,func) found in global overlay_31_02382820.o
@@ -325,6 +322,9 @@
                                                              60](ov29_0231DD60,func) found in global overlay_29_0231CBEC.o
                                                              60](EntityIsValid__0234DDD0,func) found in global overlay_29_0234DDD0.o
                                                              60](ov29_022F5DC0,func) found in global overlay_29_022F52B0.o
+                                                              61](ov29_023009CC,func) found in global overlay_29_023008DC.o
+                                                               62](IsChargingAnyTwoTurnMove,func) found in global overlay_29_02322DDC.o
+                                                               62](ov29_02300D00,func) found in global overlay_29_02300D00.o
                                                               61](EntityIsValid__022F62A8,func) found in global overlay_29_022F62A8.o
                                                               61](EntityIsValid__022F528C,func) found in global overlay_29_022F528C.o
                                                               61](ov29_0232145C,func) found in global overlay_29_0232145C.o
@@ -397,6 +397,7 @@
                                                                62](IsMonster__0231A9D4,func) found in global overlay_29_0231A9D4.o
                                                              60](ov31_02382E08,func) found in global overlay_31_02382820.o
                                                              60](EntryOverlay31,func) found in global overlay_31_02382820.o
+                                                            59](ov29_02300BF8,func) found in global overlay_29_02300BF8.o
                                                             59](StairsSubheadingCallback,func) found in global overlay_31_02382820.o
                                                            58](SetDoughSeedFlag,func) found in global overlay_29_02338548.o
                                                            58](GetDoughSeedFlag,func) found in global overlay_29_02338548.o
@@ -35408,40 +35409,43 @@
   02300B04 0000003C .text   ov29_02300B04	(overlay_29_023008DC.o)
   02300B40 000000B8 .text   CheckVariousConditions	(dungeon_capabilities_1.o)
   02300B40 00000000 .text   $a	(dungeon_capabilities_1.o)
-  02300BF8 000009C0 .text   .text	(overlay_29_02300BF8.o)
-  02300BF8 00000000 .text   $a	(overlay_29_02300BF8.o)
+  02300BF8 000000B8 .text   .text	(overlay_29_02300BF8.o)
   02300BF8 000000B8 .text   ov29_02300BF8	(overlay_29_02300BF8.o)
-  02300CB0 00000050 .text   CheckVariousStatuses	(overlay_29_02300BF8.o)
-  02300D00 00000050 .text   ov29_02300D00	(overlay_29_02300BF8.o)
-  02300D50 00000070 .text   ov29_02300D50	(overlay_29_02300BF8.o)
-  02300DC0 0000000C .text   ov29_02300DC0	(overlay_29_02300BF8.o)
-  02300DC8 00000000 .text   $d	(overlay_29_02300BF8.o)
-  02300DCC 00000000 .text   $a	(overlay_29_02300BF8.o)
-  02300DCC 000000AC .text   ov29_02300DCC	(overlay_29_02300BF8.o)
-  02300E78 000000B8 .text   CanMonsterMoveInDirection	(overlay_29_02300BF8.o)
-  02300F24 00000000 .text   $d	(overlay_29_02300BF8.o)
-  02300F30 00000000 .text   $a	(overlay_29_02300BF8.o)
-  02300F30 0000009C .text   GetDirectionalMobilityType	(overlay_29_02300BF8.o)
-  02300FCC 00000090 .text   ov29_02300FCC	(overlay_29_02300BF8.o)
-  02301050 00000000 .text   $d	(overlay_29_02300BF8.o)
-  0230105C 00000000 .text   $a	(overlay_29_02300BF8.o)
-  0230105C 000000BC .text   ov29_0230105C	(overlay_29_02300BF8.o)
-  0230110C 00000000 .text   $d	(overlay_29_02300BF8.o)
-  02301118 00000040 .text   IsMonsterCornered	(overlay_29_02300BF8.o)
-  02301118 00000000 .text   $a	(overlay_29_02300BF8.o)
-  02301158 000000DC .text   ov29_02301158	(overlay_29_02300BF8.o)
-  02301228 00000000 .text   $d	(overlay_29_02300BF8.o)
-  02301234 000000C4 .text   CanAttackInDirection	(overlay_29_02300BF8.o)
-  02301234 00000000 .text   $a	(overlay_29_02300BF8.o)
-  023012EC 00000000 .text   $d	(overlay_29_02300BF8.o)
-  023012F8 00000000 .text   $a	(overlay_29_02300BF8.o)
-  023012F8 000001A0 .text   CanAiMonsterMoveInDirection	(overlay_29_02300BF8.o)
-  02301484 00000000 .text   $d	(overlay_29_02300BF8.o)
-  02301498 00000000 .text   $a	(overlay_29_02300BF8.o)
-  02301498 000000FC .text   ov29_02301498	(overlay_29_02300BF8.o)
-  0230158C 00000000 .text   $d	(overlay_29_02300BF8.o)
-  02301594 00000024 .text   ov29_02301594	(overlay_29_02300BF8.o)
-  02301594 00000000 .text   $a	(overlay_29_02300BF8.o)
+  02300BF8 00000000 .text   $a	(overlay_29_02300BF8.o)
+  02300CB0 00000050 .text   CheckVariousStatuses	(dungeon_capabilities_2.o)
+  02300CB0 00000000 .text   $a	(dungeon_capabilities_2.o)
+  02300D00 00000050 .text   ov29_02300D00	(overlay_29_02300D00.o)
+  02300D00 000008B8 .text   .text	(overlay_29_02300D00.o)
+  02300D00 00000000 .text   $a	(overlay_29_02300D00.o)
+  02300D50 00000070 .text   ov29_02300D50	(overlay_29_02300D00.o)
+  02300DC0 0000000C .text   ov29_02300DC0	(overlay_29_02300D00.o)
+  02300DC8 00000000 .text   $d	(overlay_29_02300D00.o)
+  02300DCC 00000000 .text   $a	(overlay_29_02300D00.o)
+  02300DCC 000000AC .text   ov29_02300DCC	(overlay_29_02300D00.o)
+  02300E78 000000B8 .text   CanMonsterMoveInDirection	(overlay_29_02300D00.o)
+  02300F24 00000000 .text   $d	(overlay_29_02300D00.o)
+  02300F30 00000000 .text   $a	(overlay_29_02300D00.o)
+  02300F30 0000009C .text   GetDirectionalMobilityType	(overlay_29_02300D00.o)
+  02300FCC 00000090 .text   ov29_02300FCC	(overlay_29_02300D00.o)
+  02301050 00000000 .text   $d	(overlay_29_02300D00.o)
+  0230105C 000000BC .text   ov29_0230105C	(overlay_29_02300D00.o)
+  0230105C 00000000 .text   $a	(overlay_29_02300D00.o)
+  0230110C 00000000 .text   $d	(overlay_29_02300D00.o)
+  02301118 00000040 .text   IsMonsterCornered	(overlay_29_02300D00.o)
+  02301118 00000000 .text   $a	(overlay_29_02300D00.o)
+  02301158 000000DC .text   ov29_02301158	(overlay_29_02300D00.o)
+  02301228 00000000 .text   $d	(overlay_29_02300D00.o)
+  02301234 000000C4 .text   CanAttackInDirection	(overlay_29_02300D00.o)
+  02301234 00000000 .text   $a	(overlay_29_02300D00.o)
+  023012EC 00000000 .text   $d	(overlay_29_02300D00.o)
+  023012F8 000001A0 .text   CanAiMonsterMoveInDirection	(overlay_29_02300D00.o)
+  023012F8 00000000 .text   $a	(overlay_29_02300D00.o)
+  02301484 00000000 .text   $d	(overlay_29_02300D00.o)
+  02301498 000000FC .text   ov29_02301498	(overlay_29_02300D00.o)
+  02301498 00000000 .text   $a	(overlay_29_02300D00.o)
+  0230158C 00000000 .text   $d	(overlay_29_02300D00.o)
+  02301594 00000000 .text   $a	(overlay_29_02300D00.o)
+  02301594 00000024 .text   ov29_02301594	(overlay_29_02300D00.o)
   023015B8 00000000 .text   $a	(dungeon_ai_targeting.o)
   023015B8 000000F0 .text   ShouldMonsterRunAway	(dungeon_ai_targeting.o)
   023016A4 00000000 .text   $d	(dungeon_ai_targeting.o)
@@ -40067,5 +40071,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri Dec 20 05:03:52 2024
-# Link end time: Fri Dec 20 05:03:53 2024
+# Link start time: Fri Dec 20 05:25:00 2024
+# Link end time: Fri Dec 20 05:25:00 2024
