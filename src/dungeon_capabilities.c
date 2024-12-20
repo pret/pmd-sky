@@ -20,13 +20,13 @@ bool8 CheckVariousStatuses2(struct entity *entity, bool8 blind_check)
         return TRUE;
     if (pokemon_info->cringe_class_status.cringe == CRINGE_STATUS_INFATUATED)
         return TRUE;
-    if (pokemon_info->frozen_class_status.freeze == FREEZE_STATUS_WRAPPED)
+    if (pokemon_info->frozen_class_status.freeze == FROZEN_STATUS_WRAP)
         return TRUE;
-    if (pokemon_info->frozen_class_status.freeze == FREEZE_STATUS_WRAP)
+    if (pokemon_info->frozen_class_status.freeze == FROZEN_STATUS_WRAPPED)
         return TRUE;
     if (CheckVariousStatuses(entity))
         return TRUE;
-    if (pokemon_info->frozen_class_status.freeze == FREEZE_STATUS_PETRIFIED)
+    if (pokemon_info->frozen_class_status.freeze == FROZEN_STATUS_PETRIFIED)
         return TRUE;
     if (pokemon_info->terrified_turns != 0)
         return TRUE;

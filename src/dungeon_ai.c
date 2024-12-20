@@ -33,7 +33,7 @@ void RunMonsterAi(struct entity *pokemon, u32 unused)
     struct monster *pokemon_info = GetEntInfo(pokemon);
     if (pokemon_info->flags & MOVEMENT_FLAG_SWAPPING_PLACES_PETRIFIED_ALLY)
     {
-        if (pokemon_info->frozen_class_status.freeze == FREEZE_STATUS_PETRIFIED)
+        if (pokemon_info->frozen_class_status.freeze == FROZEN_STATUS_PETRIFIED)
         {
             EndFrozenClassStatus(pokemon, pokemon, TRUE);
         }
