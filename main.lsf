@@ -150,7 +150,7 @@ Overlay OVY_15
 	Object src/overlay_15_0238AD78.o
 	Object asm/overlay_15_0238ADC4.o
 	Object src/overlay_15_0238AE6C.o
-	Object asm/overlay_15_0238AF54.o
+	Object asm/overlay_15_0238B054.o
 }
 Overlay OVY_16
 {
