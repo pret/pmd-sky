@@ -163,11 +163,11 @@
                         23](.data,section) found in local overlay_17.o
                        22](ov16_0238C1F8,func) found in global overlay_16.o
                         23](.data,section) found in local overlay_16.o
-                       22](ov15_0238AF54,func) found in global overlay_15_0238AF54.o
-                        23](.data,section) found in local overlay_15_0238AF54.o
+                       22](ov15_0238AF54,func) found in global overlay_15_0238AE6C.o
                         23](ov15_0238A234,func) found in global overlay_15_0238A234.o
-                         24](ov15_0238B114,notype) found in global overlay_15_0238AF54.o
+                         24](ov15_0238B114,notype) found in global overlay_15_0238B054.o
                          24](ov15_0238AE6C,func) found in global overlay_15_0238AE6C.o
+                          25](OVERLAY15_UNKNOWN_POINTER__NA_238B180,notype) found in global overlay_15_0238B054.o
                           25](ov15_0238AD78,func) found in global overlay_15_0238AD78.o
                          24](ov15_0238ADC4,func) found in global overlay_15_0238ADC4.o
                        22](ov15_0238AE98,func) found in global overlay_15_0238AE6C.o
@@ -31874,21 +31874,22 @@
   0238C410 00000000 .text   $a	(overlay_15_0238AE6C.o)
   0238C410 000000BC .text   ov15_0238AE98	(overlay_15_0238AE6C.o)
   0238C4B8 00000000 .text   $d	(overlay_15_0238AE6C.o)
-  0238C4CC 00000100 .text   ov15_0238AF54	(overlay_15_0238AF54.o)
-  0238C4CC 000001C8 .text   .text	(overlay_15_0238AF54.o)
-  0238C4CC 00000000 .text   $a	(overlay_15_0238AF54.o)
-  0238C5C8 00000000 .text   $d	(overlay_15_0238AF54.o)
-  0238C5CC 00000000 .text   BANK_MAIN_MENU_ITEMS	(overlay_15_0238AF54.o)
-  0238C604 00000000 .text   BANK_WINDOW_PARAMS_2	(overlay_15_0238AF54.o)
-  0238C614 00000000 .text   BANK_WINDOW_PARAMS_3	(overlay_15_0238AF54.o)
-  0238C624 00000000 .text   BANK_WINDOW_PARAMS_4	(overlay_15_0238AF54.o)
-  0238C644 00000000 .text   ov15_0238B0CC	(overlay_15_0238AF54.o)
-  0238C64C 00000000 .text   ov15_0238B0D4	(overlay_15_0238AF54.o)
-  0238C658 00000000 .text   ov15_0238B0E0	(overlay_15_0238AF54.o)
-  0238C660 00000000 .text   ov15_0238B0E8	(overlay_15_0238AF54.o)
-  0238C66C 00000000 .text   ov15_0238B0F4	(overlay_15_0238AF54.o)
-  0238C684 00000000 .text   ov15_0238B10C	(overlay_15_0238AF54.o)
-  0238C68C 00000000 .text   ov15_0238B114	(overlay_15_0238AF54.o)
+  0238C4CC 00000000 .text   $a	(overlay_15_0238AE6C.o)
+  0238C4CC 00000100 .text   ov15_0238AF54	(overlay_15_0238AE6C.o)
+  0238C5C8 00000000 .text   $d	(overlay_15_0238AE6C.o)
+  0238C5CC 000000C8 .text   .text	(overlay_15_0238B054.o)
+  0238C5CC 00000000 .text   $d	(overlay_15_0238B054.o)
+  0238C5CC 00000000 .text   BANK_MAIN_MENU_ITEMS	(overlay_15_0238B054.o)
+  0238C604 00000000 .text   BANK_WINDOW_PARAMS_2	(overlay_15_0238B054.o)
+  0238C614 00000000 .text   BANK_WINDOW_PARAMS_3	(overlay_15_0238B054.o)
+  0238C624 00000000 .text   BANK_WINDOW_PARAMS_4	(overlay_15_0238B054.o)
+  0238C644 00000000 .text   ov15_0238B0CC	(overlay_15_0238B054.o)
+  0238C64C 00000000 .text   ov15_0238B0D4	(overlay_15_0238B054.o)
+  0238C658 00000000 .text   ov15_0238B0E0	(overlay_15_0238B054.o)
+  0238C660 00000000 .text   ov15_0238B0E8	(overlay_15_0238B054.o)
+  0238C66C 00000000 .text   ov15_0238B0F4	(overlay_15_0238B054.o)
+  0238C684 00000000 .text   ov15_0238B10C	(overlay_15_0238B054.o)
+  0238C68C 00000000 .text   ov15_0238B114	(overlay_15_0238B054.o)
   0238C694 0000000F .rodata ov15_0238B11C	(overlay_15_0238AE6C.o)
   0238C6A4 0000000F .rodata ov15_0238B12C	(overlay_15_0238AE6C.o)
   0238C6B4 00000012 .rodata ov15_0238B13C	(overlay_15_0238AE6C.o)
@@ -31897,8 +31898,8 @@
 #>0238C6E0          SDK_OVERLAY.OVY_15.SINIT_END (linker command file)
 #>0238C6E0          SDK_OVERLAY.OVY_15.TEXT_END (linker command file)
 #>0238C6E0          SDK_OVERLAY.OVY_15.DATA_START (linker command file)
-  0238C6E0 00000000 .data   OVERLAY15_UNKNOWN_POINTER__NA_238B180	(overlay_15_0238AF54.o)
-  0238C6E0 0000000C .data   .data	(overlay_15_0238AF54.o)
+  0238C6E0 00000000 .data   OVERLAY15_UNKNOWN_POINTER__NA_238B180	(overlay_15_0238B054.o)
+  0238C6E0 0000000C .data   .data	(overlay_15_0238B054.o)
 #>0238C700          SDK_OVERLAY.OVY_15.DATA_END (linker command file)
 #>0238C700          SDK_OVERLAY.OVY_15.END (linker command file)
 #>00001040          SDK_OVERLAY.OVY_15.TEXT_SIZE (linker command file)
@@ -40319,5 +40320,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri Dec 20 05:26:52 2024
-# Link end time: Fri Dec 20 05:26:53 2024
+# Link start time: Sat Dec 21 22:59:30 2024
+# Link end time: Sat Dec 21 22:59:31 2024
