@@ -5536,7 +5536,7 @@ _02340FFC:
 	bne _023410A0
 	add r0, r4, #0x200
 	ldrsb r0, [r0, #0xb8]
-	bl sub_0202D5E4
+	bl GetOptionsMenuResult
 	cmp r0, #0
 	beq _02341098
 	ldr r0, [r4, #0x2bc]

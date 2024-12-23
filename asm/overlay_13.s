@@ -101,7 +101,7 @@ _0238A6B4:
 	b _0238A6F4
 _0238A6E0:
 	add r0, sp, #0xd4
-	bl sub_02004F74
+	bl GetDsFirmwareUserSettingsVeneer
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldrb r1, [sp, #0xd5]
 	ldr r0, [r0]

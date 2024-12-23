@@ -873,7 +873,7 @@ sub_02026048: ; 0x02026048
 	ldr ip, [r0, #0x110]
 	str ip, [sp]
 	ldrsb r0, [r0]
-	bl sub_0202676C
+	bl DrawChar
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02026048
 
@@ -1314,12 +1314,12 @@ sub_020264F8: ; 0x020264F8
 	mov r1, r6
 	mov r2, r5
 	mov r3, r4
-	bl sub_0202676C
+	bl DrawChar
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020264F8
 
-	arm_func_start sub_0202654C
-sub_0202654C: ; 0x0202654C
+	arm_func_start GetCharWidth
+GetCharWidth: ; 0x0202654C
 	stmdb sp!, {r3, lr}
 	ldr r1, _02026590 ; =_020AFD04
 	mov r3, r0
@@ -1348,7 +1348,7 @@ _0202657C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02026590: .word _020AFD04
-	arm_func_end sub_0202654C
+	arm_func_end GetCharWidth
 
 	arm_func_start sub_02026594
 sub_02026594: ; 0x02026594
@@ -1369,12 +1369,12 @@ _020265A4: .word _020AFD04
 	arm_func_start sub_020265A8
 sub_020265A8: ; 0x020265A8
 	ldr ip, _020265B8 ; =sub_02022118
-	ldr r1, _020265BC ; =sub_0202654C
+	ldr r1, _020265BC ; =GetCharWidth
 	ldr r2, _020265C0 ; =sub_02026594
 	bx ip
 	.align 2, 0
 _020265B8: .word sub_02022118
-_020265BC: .word sub_0202654C
+_020265BC: .word GetCharWidth
 _020265C0: .word sub_02026594
 	arm_func_end sub_020265A8
 
@@ -1515,8 +1515,8 @@ _02026764:
 	bx lr
 	arm_func_end GetColorCodePaletteOffset
 
-	arm_func_start sub_0202676C
-sub_0202676C: ; 0x0202676C
+	arm_func_start DrawChar
+DrawChar: ; 0x0202676C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 #ifdef JAPAN
 	sub sp, sp, #0x34
@@ -2252,7 +2252,7 @@ _02026B0C:
 _02026B14: .word _020AFD04
 _02026B18: .word _022A7A5C
 #endif
-	arm_func_end sub_0202676C
+	arm_func_end DrawChar
 
 	arm_func_start sub_02026B1C
 sub_02026B1C: ; 0x02026B1C
@@ -10759,8 +10759,8 @@ sub_0202D59C: ; 0x0202D59C
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202D59C
 
-	arm_func_start sub_0202D5B0
-sub_0202D5B0: ; 0x0202D5B0
+	arm_func_start GetOptionsMenuStates
+GetOptionsMenuStates: ; 0x0202D5B0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r1
 	bl GetWindowContents
@@ -10776,10 +10776,10 @@ _0202D5D0:
 	cmp r0, #0
 	beq _0202D5C4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0202D5B0
+	arm_func_end GetOptionsMenuStates
 
-	arm_func_start sub_0202D5E4
-sub_0202D5E4: ; 0x0202D5E4
+	arm_func_start GetOptionsMenuResult
+GetOptionsMenuResult: ; 0x0202D5E4
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	ldrb r1, [r0, #0x1a4]
@@ -10794,7 +10794,7 @@ sub_0202D5E4: ; 0x0202D5E4
 _0202D610:
 	mov r0, #0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202D5E4
+	arm_func_end GetOptionsMenuResult
 
 	arm_func_start UpdateOptionsMenu
 UpdateOptionsMenu: ; 0x0202D618

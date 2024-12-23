@@ -32,6 +32,7 @@
 .public EnableIrqFlag
 .public FileInit
 .public G3X_Reset
+.public GetDsFirmwareUserSettings
 .public GetFadeStatus
 .public GetLanguage
 .public GetProcessorMode
@@ -185,7 +186,6 @@
 .public sub_0207B1E8
 .public sub_0207B854
 .public sub_0207B9EC
-.public sub_0207BA08
 .public sub_0207BB50
 .public sub_0207BC4C
 .public sub_0207BD3C

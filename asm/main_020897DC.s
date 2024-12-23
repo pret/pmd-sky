@@ -13208,7 +13208,7 @@ _0209AB9C:
 	.word sub_02026000
 	.word sub_02026020
 	.word sub_02026038
-	.word sub_0202654C
+	.word GetCharWidth
 	.word sub_02026594
 	.word sub_02026048
 	.word sub_02026060
@@ -13544,7 +13544,7 @@ _0209AB9C:
 	.word sub_02026000
 	.word sub_02026020
 	.word sub_02026038
-	.word sub_0202654C
+	.word GetCharWidth
 	.word sub_02026594
 	.word sub_02026048
 	.word sub_02026060

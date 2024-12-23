@@ -82,6 +82,7 @@
 .public CART_REMOVED_IMG_DATA
 .public Debug_FatalError
 .public Debug_Print0
+.public DebugPrintSystemClock
 .public DecompressAtFromMemoryPointer
 .public G2x_SetBlendAlpha_
 .public G3X_ClearFifo
@@ -152,7 +153,6 @@
 .public sub_02005D30
 .public sub_02005E10
 .public sub_02006ED4
-.public sub_02006EF8
 .public sub_02007004
 .public sub_02007380
 .public sub_02007384

@@ -10,8 +10,6 @@
 .public IsCurrentTilesetBackground
 .public IsTacticSet
 .public ItemIsActive__022FF898
-.public SECONDARY_TERRAIN_TYPES
-.public ShouldMonsterRunAway
 .public ov29_0235171E
 .public ov29_02352770
 .public ov29_02352778
@@ -19,3 +17,5 @@
 .public ov29_02352788
 .public ov29_02352790
 .public ov29_02352798
+.public SECONDARY_TERRAIN_TYPES
+.public ShouldMonsterRunAway

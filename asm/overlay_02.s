@@ -41171,7 +41171,7 @@ ov02_02346174: ; 0x02346174
 	mov r0, #2
 	bl ov02_02334DE8
 	add r0, sp, #0x16
-	bl sub_0207BA08
+	bl GetDsFirmwareUserSettings
 	add r1, sp, #0
 	mov r0, #0
 	mov r2, #0x16
@@ -44617,7 +44617,7 @@ _02348D3C:
 	add r1, r1, #0x1300
 	strh r0, [r1, #0x7c]
 	add r0, sp, #0
-	bl sub_0207BA08
+	bl GetDsFirmwareUserSettings
 	ldr r1, _02348E1C ; =ov02_0235AB58
 	ldr r0, _02348E28 ; =ov02_02352E04
 	ldr r1, [r1]
@@ -45928,7 +45928,7 @@ ov02_02349F3C: ; 0x02349F3C
 	mov r5, r0
 	add r0, sp, #0x28
 	mov r4, r1
-	bl sub_0207BA08
+	bl GetDsFirmwareUserSettings
 	ldrb r2, [sp, #0x12]
 	ldrb r1, [sp, #0x29]
 	ldrh r3, [sp, #0x42]

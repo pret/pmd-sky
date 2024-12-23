@@ -75,7 +75,7 @@ _02008388:
 	blt _02008388
 	mov r0, r8
 	bl sub_02007004
-	bl sub_02006EF8
+	bl DebugPrintSystemClock
 	bl sub_02007380
 	bl sub_02007384
 	ldr r0, _02008434 ; =_0209297C

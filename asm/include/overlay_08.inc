@@ -8,6 +8,7 @@
 .public Debug_Print0
 .public DS_DOWNLOAD_TEAMS
 .public FileInit
+.public GetDsFirmwareUserSettings
 .public GetLanguage
 .public GetPressedButtons
 .public InitPreprocessorArgs
@@ -63,7 +64,6 @@
 .public sub_02046C78
 .public sub_02046D20
 .public sub_0207B9EC
-.public sub_0207BA08
 .public sub_0207F6C4
 .public sub_0207F70C
 .public WaitForever2

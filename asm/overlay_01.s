@@ -14588,7 +14588,7 @@ _02334F74:
 	mov r2, r5
 #endif
 	str r6, [sp]
-	bl sub_0202676C
+	bl DrawChar
 _02334F94:
 	add r8, r8, #1
 	add r7, r7, #2
@@ -14642,7 +14642,7 @@ _02334FF8:
 	str r0, [sp]
 	mov r0, sl
 	add r2, r4, #0x14
-	bl sub_0202676C
+	bl DrawChar
 _02335034:
 	add r0, r6, #1
 	mov r0, r0, lsl #0x10

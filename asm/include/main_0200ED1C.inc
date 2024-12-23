@@ -362,6 +362,7 @@
 .public GetBagCapacity
 .public GetBagCapacitySpecialEpisode
 .public GetBaseFormCastformDeoxysCherrim
+.public GetDsFirmwareUserSettingsVeneer
 .public GetExclusiveItem
 .public GetExclusiveItemParameter
 .public GetExclusiveItemType
@@ -491,7 +492,6 @@
 .public sub_0200302C
 .public sub_020030FC
 .public sub_02003AB0
-.public sub_02004F74
 .public sub_02006220
 .public sub_020063A0
 .public sub_020063D4
