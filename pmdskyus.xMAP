@@ -58,7 +58,7 @@
                         23](AppendProgPos,func) found in global debug.o
                        22](strcat,func) found in global main_020897AC.o
                        22](DebugDisplay,func) found in global debug.o
-                     20](sub_0207BA08,func) found in global main_0207B854.o
+                     20](GetDsFirmwareUserSettings,func) found in global main_0207B854.o
                     19](sub_020469BC,func) found in global main_02034974.o
                      20](GetKeyN2MSwitch,func) found in global itcm.o
                      20](IsValidTeamMember,func) found in global main_02054C24.o
@@ -901,7 +901,7 @@
   02004868 0000070C .text   UnloadOverlay	(main_02003DB8.o)
   02004ED8 00000000 .text   $d	(main_02003DB8.o)
   02004F74 00000000 .text   $a	(main_02003DB8.o)
-  02004F74 0000000C .text   sub_02004F74	(main_02003DB8.o)
+  02004F74 0000000C .text   GetDsFirmwareUserSettingsVeneer	(main_02003DB8.o)
   02004F7C 00000000 .text   $d	(main_02003DB8.o)
   02004F80 0000004C .text   sub_02004F80	(main_02003DB8.o)
   02004F80 00000000 .text   $a	(main_02003DB8.o)
@@ -1040,12 +1040,12 @@
   02006ED0 00000000 .text   $d	(main_02003DB8.o)
   02006ED4 00000024 .text   sub_02006ED4	(main_02003DB8.o)
   02006ED4 00000000 .text   $a	(main_02003DB8.o)
-  02006EF8 00000044 .text   sub_02006EF8	(main_02003DB8.o)
+  02006EF8 00000044 .text   DebugPrintSystemClock	(main_02003DB8.o)
   02006F34 00000000 .text   $d	(main_02003DB8.o)
   02006F3C 0000002C .text   sub_02006F3C	(main_02003DB8.o)
   02006F3C 00000000 .text   $a	(main_02003DB8.o)
-  02006F68 00000050 .text   sub_02006F68	(main_02003DB8.o)
-  02006FB8 0000004C .text   sub_02006FB8	(main_02003DB8.o)
+  02006F68 00000050 .text   GetSystemClock	(main_02003DB8.o)
+  02006FB8 0000004C .text   SprintfSystemClock	(main_02003DB8.o)
   02007000 00000000 .text   $d	(main_02003DB8.o)
   02007004 00000080 .text   sub_02007004	(main_02003DB8.o)
   02007004 00000000 .text   $a	(main_02003DB8.o)
@@ -3463,7 +3463,7 @@
   020264F4 00000000 .text   $d	(main_0202598C.o)
   020264F8 00000000 .text   $a	(main_0202598C.o)
   020264F8 00000054 .text   sub_020264F8	(main_0202598C.o)
-  0202654C 00000048 .text   sub_0202654C	(main_0202598C.o)
+  0202654C 00000048 .text   GetCharWidth	(main_0202598C.o)
   02026590 00000000 .text   $d	(main_0202598C.o)
   02026594 00000014 .text   sub_02026594	(main_0202598C.o)
   02026594 00000000 .text   $a	(main_0202598C.o)
@@ -3473,7 +3473,7 @@
   020265B8 00000000 .text   $d	(main_0202598C.o)
   020265C4 000001A8 .text   GetColorCodePaletteOffset	(main_0202598C.o)
   020265C4 00000000 .text   $a	(main_0202598C.o)
-  0202676C 000003B0 .text   sub_0202676C	(main_0202598C.o)
+  0202676C 000003B0 .text   DrawChar	(main_0202598C.o)
   02026B14 00000000 .text   $d	(main_0202598C.o)
   02026B1C 0000014C .text   sub_02026B1C	(main_0202598C.o)
   02026B1C 00000000 .text   $a	(main_0202598C.o)
@@ -3852,8 +3852,8 @@
   0202D55C 00000020 .text   IsOptionsMenuActive	(main_0202598C.o)
   0202D57C 00000020 .text   CheckOptionsMenuField0x1A4	(main_0202598C.o)
   0202D59C 00000014 .text   sub_0202D59C	(main_0202598C.o)
-  0202D5B0 00000034 .text   sub_0202D5B0	(main_0202598C.o)
-  0202D5E4 00000034 .text   sub_0202D5E4	(main_0202598C.o)
+  0202D5B0 00000034 .text   GetOptionsMenuStates	(main_0202598C.o)
+  0202D5E4 00000034 .text   GetOptionsMenuResult	(main_0202598C.o)
   0202D618 0000044C .text   UpdateOptionsMenu	(main_0202598C.o)
   0202DA64 000001EC .text   sub_0202DA64	(main_0202598C.o)
   0202DC38 00000000 .text   $d	(main_0202598C.o)
@@ -9124,7 +9124,7 @@
   0207B9EC 00000000 .text   $a	(main_0207B854.o)
   0207B9EC 0000001C .text   sub_0207B9EC	(main_0207B854.o)
   0207BA00 00000000 .text   $d	(main_0207B854.o)
-  0207BA08 00000084 .text   sub_0207BA08	(main_0207B854.o)
+  0207BA08 00000084 .text   GetDsFirmwareUserSettings	(main_0207B854.o)
   0207BA08 00000000 .text   $a	(main_0207B854.o)
   0207BA88 00000000 .text   $d	(main_0207B854.o)
   0207BA8C 00000008 .text   CountLeadingZeros	(main_0207B854.o)
@@ -40072,5 +40072,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Dec 21 22:57:40 2024
-# Link end time: Sat Dec 21 22:57:41 2024
+# Link start time: Mon Dec 23 05:10:11 2024
+# Link end time: Mon Dec 23 05:10:12 2024
