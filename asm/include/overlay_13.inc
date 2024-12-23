@@ -14,6 +14,7 @@
 .public FemaleToMaleForm
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
+.public GetDsFirmwareUserSettingsVeneer
 .public GetKeyboardStatus
 .public GetKeyboardStringResult
 .public GetMonsterGenderVeneer
@@ -70,7 +71,6 @@
 .public StrcpyName
 .public StrcpySimple
 .public StrncpySimpleNoPadSafe
-.public sub_02004F74
 .public sub_02017B7C
 .public sub_02017C74
 .public sub_02017CB4

@@ -148,8 +148,8 @@ _0207BA00: .word MemcpyFast
 _0207BA04: .word 0x027FFCF4
 	arm_func_end sub_0207B9EC
 
-	arm_func_start sub_0207BA08
-sub_0207BA08: ; 0x0207BA08
+	arm_func_start GetDsFirmwareUserSettings
+GetDsFirmwareUserSettings: ; 0x0207BA08
 	stmdb sp!, {r4, lr}
 	ldr ip, _0207BA88 ; =0x027FFC80
 	mov r4, r0
@@ -184,7 +184,7 @@ sub_0207BA08: ; 0x0207BA08
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207BA88: .word 0x027FFC80
-	arm_func_end sub_0207BA08
+	arm_func_end GetDsFirmwareUserSettings
 
 	arm_func_start CountLeadingZeros
 CountLeadingZeros: ; 0x0207BA8C

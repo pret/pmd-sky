@@ -21,6 +21,7 @@
 .public G2S_GetBG0ScrPtr
 .public G2x_ChangeBlendBrightness_
 .public G2x_SetBlendBrightness_
+.public GetDsFirmwareUserSettings
 .public GetLanguage
 .public GX_DisableBankForARM7
 .public GX_DisableBankForBG
@@ -200,7 +201,6 @@
 .public sub_0207B854
 .public sub_0207B860
 .public sub_0207B9EC
-.public sub_0207BA08
 .public sub_0207C650
 .public sub_0207C7DC
 .public sub_0207C7FC

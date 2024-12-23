@@ -13,6 +13,7 @@
 .public GetKeyboardStringResult
 .public GetLanguageType
 .public GetMainTeamNameWithCheck
+.public GetOptionsMenuResult
 .public GetStringFromFileVeneer
 .public InitPreprocessorArgs
 .public IsCollectionMenuActive
@@ -126,7 +127,6 @@
 .public sub_0202C75C
 .public sub_0202D07C
 .public sub_0202D59C
-.public sub_0202D5E4
 .public sub_0202F954
 .public sub_02037468
 .public sub_0203909C

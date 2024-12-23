@@ -22364,7 +22364,7 @@ sub_0202057C: ; 0x0202057C
 	stmdb sp!, {lr}
 	sub sp, sp, #0x54
 	add r0, sp, #0
-	bl sub_02004F74
+	bl GetDsFirmwareUserSettingsVeneer
 	ldrsb r0, [sp]
 	bl sub_020205C0
 #ifdef EUROPE

@@ -497,7 +497,7 @@ _0233CF8C:
 	cmp r6, #3
 	blt _0233CF8C
 	add r0, sp, #0
-	bl sub_0207BA08
+	bl GetDsFirmwareUserSettings
 	ldr r0, _0233D0E0 ; =ov08_0233EC28
 	ldrb r1, [sp, #1]
 	ldr r4, [r0, #4]

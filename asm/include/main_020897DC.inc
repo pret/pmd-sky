@@ -1952,6 +1952,7 @@
 .public DseTrackEvent_WaitDelta
 .public DseTrackEvent_WaitSame
 .public DseTrackEvent_WaitUntilFadeout
+.public GetCharWidth
 .public GetKeyM2N
 .public GetKeyM2NBaseForm
 .public GetKeyN2M
@@ -2036,7 +2037,6 @@
 .public sub_02026070
 .public sub_020260B4
 .public sub_020260C4
-.public sub_0202654C
 .public sub_02026594
 .public sub_020350D4
 .public sub_02035154

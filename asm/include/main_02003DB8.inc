@@ -53,6 +53,7 @@
 .public Debug_Print
 .public Debug_Print0
 .public FileInit
+.public GetDsFirmwareUserSettings
 .public GetOverlayInfo
 .public GX_BeginLoadBGExtPltt
 .public GX_BeginLoadOBJExtPltt
@@ -102,7 +103,6 @@
 .public sub_02079888
 .public sub_0207A270
 .public sub_0207A324
-.public sub_0207BA08
 .public sub_0207BE6C
 .public sub_0207BF04
 .public sub_0207BFA4

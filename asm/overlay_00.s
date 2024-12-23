@@ -39108,7 +39108,7 @@ _022DCBB8:
 	add r8, r8, #2
 	blt _022DCBB8
 	add r0, sp, #0x38
-	bl sub_0207BA08
+	bl GetDsFirmwareUserSettings
 	ldrb r0, [sp, #0x38]
 	ldr r2, _022DCD80 ; =ov00_02318D08
 	mov r1, #3

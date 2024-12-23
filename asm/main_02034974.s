@@ -1192,7 +1192,7 @@ _02035920:
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202D5E4
+	bl GetOptionsMenuResult
 	ldr r1, _02035CCC ; =_020AFDD0
 	tst r0, #0xff
 	strb r0, [r1, #1]
@@ -1644,7 +1644,7 @@ _02035F64:
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202D5E4
+	bl GetOptionsMenuResult
 	ldr r1, _0203630C ; =_020AFDD8
 	tst r0, #0xff
 	strb r0, [r1]
@@ -1679,7 +1679,7 @@ _02035FE8:
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r1, [r0, #4]
 	ldrsb r0, [r1], #0xb0
-	bl sub_0202D5B0
+	bl GetOptionsMenuStates
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	add r0, r0, r4, lsl #2

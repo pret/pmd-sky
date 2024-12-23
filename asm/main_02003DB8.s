@@ -1282,13 +1282,13 @@ _02004F6C: .word 0x00000020
 _02004F70: .word 0x00000021
 	arm_func_end UnloadOverlay
 
-	arm_func_start sub_02004F74
-sub_02004F74: ; 0x02004F74
-	ldr ip, _02004F7C ; =sub_0207BA08
+	arm_func_start GetDsFirmwareUserSettingsVeneer
+GetDsFirmwareUserSettingsVeneer: ; 0x02004F74
+	ldr ip, _02004F7C ; =GetDsFirmwareUserSettings
 	bx ip
 	.align 2, 0
-_02004F7C: .word sub_0207BA08
-	arm_func_end sub_02004F74
+_02004F7C: .word GetDsFirmwareUserSettings
+	arm_func_end GetDsFirmwareUserSettingsVeneer
 
 	arm_func_start sub_02004F80
 sub_02004F80: ; 0x02004F80
@@ -3693,17 +3693,17 @@ sub_02006ED4: ; 0x02006ED4
 	bx lr
 	arm_func_end sub_02006ED4
 
-	arm_func_start sub_02006EF8
-sub_02006EF8: ; 0x02006EF8
+	arm_func_start DebugPrintSystemClock
+DebugPrintSystemClock: ; 0x02006EF8
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x3c
 	bl sub_0208266C
 	add r0, sp, #0x20
-	bl sub_02006F68
+	bl GetSystemClock
 	add r0, sp, #0x20
 	add r1, sp, #0
 	ldr r4, _02006F34 ; =_0209277C
-	bl sub_02006FB8
+	bl SprintfSystemClock
 	ldr r0, _02006F38 ; =_0209278C
 	add r2, sp, #0
 	mov r1, r4
@@ -3713,7 +3713,7 @@ sub_02006EF8: ; 0x02006EF8
 	.align 2, 0
 _02006F34: .word _0209277C
 _02006F38: .word _0209278C
-	arm_func_end sub_02006EF8
+	arm_func_end DebugPrintSystemClock
 
 	arm_func_start sub_02006F3C
 sub_02006F3C: ; 0x02006F3C
@@ -3730,8 +3730,8 @@ sub_02006F3C: ; 0x02006F3C
 	bx lr
 	arm_func_end sub_02006F3C
 
-	arm_func_start sub_02006F68
-sub_02006F68: ; 0x02006F68
+	arm_func_start GetSystemClock
+GetSystemClock: ; 0x02006F68
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x28
 	mov r4, r0
@@ -3752,10 +3752,10 @@ sub_02006F68: ; 0x02006F68
 	bl sub_02006F3C
 	add sp, sp, #0x28
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02006F68
+	arm_func_end GetSystemClock
 
-	arm_func_start sub_02006FB8
-sub_02006FB8: ; 0x02006FB8
+	arm_func_start SprintfSystemClock
+SprintfSystemClock: ; 0x02006FB8
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #0x10
 	mov r3, r0
@@ -3776,7 +3776,7 @@ sub_02006FB8: ; 0x02006FB8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02007000: .word _02092798
-	arm_func_end sub_02006FB8
+	arm_func_end SprintfSystemClock
 
 	arm_func_start sub_02007004
 sub_02007004: ; 0x02007004
