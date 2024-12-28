@@ -2,10 +2,9 @@
 #include "dungeon_ai_targeting.h"
 #include "dungeon_capabilities.h"
 #include "dungeon_capabilities_2.h"
+#include "dungeon_move.h"
 #include "dungeon_util.h"
 #include "joined_at_checks.h"
-
-extern bool8 IsChargingAnyTwoTurnMove(struct entity *pokemon, bool8 check_charge);
 
 bool8 CheckVariousConditions(struct entity *pokemon)
 {

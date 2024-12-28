@@ -6307,6 +6307,7 @@ _023418B8: .word ov07_02341B78
 	; 0x023418BC
 #endif
 
+	.rodata
 	.global ov07_023418BC
 ov07_023418BC:
 #if defined(EUROPE)

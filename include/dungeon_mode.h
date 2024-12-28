@@ -274,7 +274,7 @@ struct monster {
     u8 badly_poisoned_damage_count;
     struct frozen_class_status frozen_class_status; // 0xC4
     struct cringe_class_status cringe_class_status; // 0xD0
-    struct bide_class_status bide_class_status;
+    struct bide_class_status bide_class_status; // 0xD2
     u8 reflect;        // 0xD5: STATUS_REFLECT if 1
     u8 reflect_turns;  // 0xD6: Turns left for the status in statuses::reflect
     // 0xD7: Turns left until residual healing for the status in statuses::reflect, if applicable

@@ -2805,6 +2805,7 @@ _0233E8A4:
 	arm_func_end ov08_0233E874
 	; 0x0233E8AC
 
+	.rodata
 #ifdef EUROPE
 	.global _0233F038_EU
 _0233F038_EU:

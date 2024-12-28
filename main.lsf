@@ -149,8 +149,8 @@ Overlay OVY_15
 	Object asm/overlay_15_0238A234.o
 	Object src/overlay_15_0238AD78.o
 	Object asm/overlay_15_0238ADC4.o
-	Object src/overlay_15_0238AE6C.o
 	Object asm/overlay_15_0238B054.o
+	Object src/overlay_15_0238AE6C.o
 }
 Overlay OVY_16
 {
@@ -344,6 +344,9 @@ Overlay OVY_29
 	Object asm/overlay_29_0232145C.o
 	Object src/overlay_29_02322DB8.o
 	Object asm/overlay_29_02322DDC.o
+	Object asm/overlay_29_02352A54.o
+	Object src/dungeon_move.o
+	Object asm/overlay_29_02324698.o
 	Object src/overlay_29_02325620.o
 	Object asm/overlay_29_02325644.o
 	Object src/overlay_29_0232800C.o
@@ -382,6 +385,7 @@ Overlay OVY_29
 	Object asm/overlay_29_0234DDF4.o
 	Object src/overlay_29_0234EC14.o
 	Object asm/overlay_29_0234EC38.o
+	Object asm/overlay_29_0238280C.o
 }
 Overlay OVY_30
 {
