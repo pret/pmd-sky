@@ -27568,6 +27568,7 @@ _027F7174:
 	arm_func_end sub_027F70BC
 	; 0x027F7184
 
+	.rodata
 	.global _027F7184
 _027F7184:
 	.word sub_027E29F0
