@@ -855,6 +855,7 @@ _0238ACF8: .word ov28_0238AD80
 	arm_func_end ov28_0238ABD4
 	; 0x0238ACFC
 
+	.rodata
 	.global ov28_0238ACFC
 ov28_0238ACFC:
 	.byte 0x0D, 0x00, 0x00, 0x00

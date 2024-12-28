@@ -202,6 +202,7 @@
 .public CloseCollectionMenu
 .public ClosePortraitBox
 .public Copy16BitsFrom
+.public CopyAndInterleaveWrapper
 .public CopyBitsFrom
 .public CopyBitsTo
 .public CopyMovesetFrom
@@ -466,7 +467,6 @@
 .public sub_0201B43C
 .public sub_0201B9F8
 .public sub_0201BB3C
-.public sub_0201BFF0
 .public sub_0201CF5C
 .public sub_0201D12C
 .public sub_0201D7A8

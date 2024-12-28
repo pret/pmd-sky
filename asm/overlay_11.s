@@ -70761,6 +70761,7 @@ _02316A38: .word 0x000008DF
 #endif
 	arm_func_end ov11_023168E0
 
+	.rodata
 	.global ov11_02316A3C
 ov11_02316A3C:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

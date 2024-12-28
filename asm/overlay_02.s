@@ -53081,6 +53081,7 @@ _0234FBC4: .word ov02_0235ABE8
 	arm_func_end ov02_0234FBB0
 	; 0x0234FBC8
 
+	.rodata
 #ifdef EUROPE
 	.global ov02_023503F4_EU
 ov02_023503F4_EU:

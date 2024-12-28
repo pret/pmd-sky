@@ -11428,6 +11428,7 @@ _02346734: .word ov03_02346BDC
 	arm_func_end ov03_023466E8
 	; 0x02346738
 
+	.rodata
 	.global ov03_02346738
 ov03_02346738:
 	.byte 0x00, 0x00, 0x00, 0x00

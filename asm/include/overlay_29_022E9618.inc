@@ -12,6 +12,7 @@
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__022E95F4
+.public FlashLeaderIcon
 .public GetLeader
 .public GetTile
 .public GetTreatmentBetweenMonsters
@@ -30,8 +31,6 @@
 .public ov29_022ED800
 .public ov29_0230473C
 .public ov29_02335F40
-.public ov29_02338AC4
-.public ov29_02339A24
 .public ov29_02339FF4
 .public ov29_0233A248
 .public ov29_0234B1A4
@@ -48,6 +47,7 @@
 .public ov29_0237C694
 .public ov29_0237C850
 .public ov29_0237C888
+.public RenderWeather3D
 .public sub_0201BAC8
 .public sub_0204AEA0
 .public sub_0204AEC0

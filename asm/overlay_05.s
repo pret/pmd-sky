@@ -3604,6 +3604,7 @@ _0233FB48: .word ov05_0233FC6C
 	arm_func_end ov05_0233FA74
 	; 0x0233FB4C
 
+	.rodata
 	.global ov05_0233FB4C
 ov05_0233FB4C:
 #if defined(EUROPE)

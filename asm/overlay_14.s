@@ -4222,6 +4222,7 @@ _0238D968: .word 0x0000080F
 	arm_func_end ov14_0238D828
 	; 0x0238D96C
 
+	.rodata
 	.global ov14_0238D96C
 ov14_0238D96C:
 	.byte 0x03, 0x03, 0x03, 0x03

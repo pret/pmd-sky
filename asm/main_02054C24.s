@@ -4808,7 +4808,7 @@ sub_0205882C: ; 0x0205882C
 	add r1, r5, #4
 	mov r2, #0x40
 	mov r3, #9
-	bl sub_0201BFF0
+	bl CopyAndInterleaveWrapper
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -4817,7 +4817,7 @@ sub_0205882C: ; 0x0205882C
 	add r1, r5, #0x24
 	mov r2, #0x80
 	mov r3, #9
-	bl sub_0201BFF0
+	bl CopyAndInterleaveWrapper
 	add r0, r4, #2
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
@@ -4826,7 +4826,7 @@ sub_0205882C: ; 0x0205882C
 	add r1, r5, #0x64
 	mov r2, #0x100
 	mov r3, #9
-	bl sub_0201BFF0
+	bl CopyAndInterleaveWrapper
 	add r0, sp, #0x14
 	bl UnloadFile
 	mov lr, #0

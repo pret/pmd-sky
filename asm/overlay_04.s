@@ -3211,6 +3211,7 @@ _0233F564: .word ov04_0233F644
 	arm_func_end ov04_0233F534
 	; 0x0233F568
 
+	.rodata
 	.global ov04_0233F568
 ov04_0233F568:
 #if defined(EUROPE)

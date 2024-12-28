@@ -4,6 +4,7 @@
 	.text
 	; 0x0238B054
 
+	.rodata
 	.global BANK_MAIN_MENU_ITEMS
 BANK_MAIN_MENU_ITEMS:
 #ifdef JAPAN

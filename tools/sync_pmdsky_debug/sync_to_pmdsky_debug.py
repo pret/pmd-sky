@@ -272,12 +272,13 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
                 symbol_header = line
                 break
         # Match the typedefs used in pmdsky-debug.
-        symbol_header = symbol_header.replace('u32', 'uint32_t')
-        symbol_header = symbol_header.replace('u16', 'uint16_t')
-        symbol_header = symbol_header.replace('u8', 'uint8_t')
-        symbol_header = symbol_header.replace('s32', 'int')
-        symbol_header = symbol_header.replace('s16', 'int16_t')
-        symbol_header = symbol_header.replace('s8', 'int8_t')
+        if symbol_header is not None:
+            symbol_header = symbol_header.replace('u32', 'uint32_t')
+            symbol_header = symbol_header.replace('u16', 'uint16_t')
+            symbol_header = symbol_header.replace('u8', 'uint8_t')
+            symbol_header = symbol_header.replace('s32', 'int')
+            symbol_header = symbol_header.replace('s16', 'int16_t')
+            symbol_header = symbol_header.replace('s8', 'int8_t')
     else:
         symbol_header = f'void {base_symbol_name}(void);\n'
 

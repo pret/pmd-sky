@@ -50,6 +50,7 @@
 .public LEADER_PTR
 .public LoadMappaFileAttributes
 .public LoadScriptVariableValue
+.public LoadWeather3DFiles
 .public MemZero
 .public OpenFixedBin
 .public ov10_022BDAB0
@@ -154,7 +155,6 @@
 .public ov29_0233785C
 .public ov29_0233845C
 .public ov29_0233873C
-.public ov29_023388B0
 .public ov29_023389C4
 .public ov29_02338A4C
 .public ov29_02338D30

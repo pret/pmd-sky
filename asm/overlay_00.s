@@ -108621,6 +108621,7 @@ _02317F3C:
 	arm_func_end ov00_02317EF8
 	; 0x02317F44
 
+	.rodata
 #ifdef EUROPE
 	.global ov00_02318758_EU
 ov00_02318758_EU:
