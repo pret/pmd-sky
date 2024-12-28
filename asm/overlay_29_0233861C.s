@@ -286,8 +286,8 @@ SetHiddenFloorField: ; 0x02338898
 _023388AC: .word DUNGEON_PTR
 	arm_func_end SetHiddenFloorField
 
-	arm_func_start ov29_023388B0
-ov29_023388B0: ; 0x023388B0
+	arm_func_start LoadWeather3DFiles
+LoadWeather3DFiles: ; 0x023388B0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	ldr r0, _02338974 ; =ov29_02352F1C
@@ -344,7 +344,7 @@ _02338978: .word ov29_02352F40
 _0233897C: .word ov29_0237CACC
 _02338980: .word ov29_0237CD40
 _02338984: .word ov29_02352F7C
-	arm_func_end ov29_023388B0
+	arm_func_end LoadWeather3DFiles
 
 	arm_func_start ov29_02338988
 ov29_02338988: ; 0x02338988
@@ -445,8 +445,8 @@ _02338ABC: .word ov29_0235372C
 _02338AC0: .word ov29_0237CACC
 	arm_func_end ov29_02338A4C
 
-	arm_func_start ov29_02338AC4
-ov29_02338AC4: ; 0x02338AC4
+	arm_func_start RenderWeather3D
+RenderWeather3D: ; 0x02338AC4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r5, #0
 _02338ACC:
@@ -615,7 +615,7 @@ _02338D18:
 	.align 2, 0
 _02338D28: .word ov29_0237CACC
 _02338D2C: .word 0x00000FFF
-	arm_func_end ov29_02338AC4
+	arm_func_end RenderWeather3D
 
 	arm_func_start ov29_02338D30
 ov29_02338D30: ; 0x02338D30
@@ -1623,8 +1623,8 @@ _02339A1C: .word DUNGEON_PTR
 _02339A20: .word ov29_0237CFB8
 	arm_func_end ov29_0233992C
 
-	arm_func_start ov29_02339A24
-ov29_02339A24: ; 0x02339A24
+	arm_func_start FlashLeaderIcon
+FlashLeaderIcon: ; 0x02339A24
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #8
 	ldr r1, _02339CB8 ; =DUNGEON_PTR
@@ -1804,7 +1804,7 @@ _02339CC4: .word _020AFC4C
 _02339CC8: .word 0xFFFF000F
 _02339CCC: .word 0x0000013F
 _02339CD0: .word 0x000001DD
-	arm_func_end ov29_02339A24
+	arm_func_end FlashLeaderIcon
 
 	arm_func_start ov29_02339CD4
 ov29_02339CD4: ; 0x02339CD4

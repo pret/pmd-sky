@@ -5,7 +5,7 @@ import sys
 from write_inc_file import write_inc_file
 
 # Use this script to split a data file at a certain symbol.
-# Example usage: python split_data.py overlay_29_0234EC38 MULTI_TURN_BIDE_CLASS_STATUSES
+# Example usage: python split_data.py overlay_29_0234EC38 TWO_TURN_STATUSES
 
 if len(sys.argv) != 3:
     print('Usage: python extract_function.py <asm_file> <split_symbol_name>')

@@ -862,14 +862,14 @@ _022EA0F8:
 	cmpne r0, #0xc
 	bne _022EA140
 	mov r0, #0
-	bl ov29_02339A24
+	bl FlashLeaderIcon
 	b _022EA154
 _022EA140:
 	bl sub_0204AEA0
 	cmp r0, #3
 	bne _022EA154
 	mov r0, #1
-	bl ov29_02339A24
+	bl FlashLeaderIcon
 _022EA154:
 	bl ov29_022EA64C
 	bl ov29_022EA80C
@@ -942,7 +942,7 @@ _022EA214:
 	add r2, r2, #0x1a000
 	bl ov29_022ED800
 _022EA260:
-	bl ov29_02338AC4
+	bl RenderWeather3D
 	bl ov29_022E8C10
 	ldr r0, _022EA290 ; =DUNGEON_PTR
 	ldr r0, [r0]

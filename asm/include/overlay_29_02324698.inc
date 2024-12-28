@@ -4,8 +4,8 @@
 .public AnimationDelayOrSomething
 .public AnimationHasMoreFrames
 .public ChangeMonsterAnimation
-.public DUNGEON_PTR
 .public DefenderAbilityIsActive__02322D64
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB50
 .public EntityIsValid__02321438
@@ -23,10 +23,6 @@
 .public IsFloorOver
 .public LogMessageByIdWithPopupCheckUser
 .public NATURE_POWER_TABLE
-.public SetAndLoadCurrentAttackAnimation
-.public ShouldDisplayEntityAdvanced
-.public ShouldMovePlayAlternativeAnimation
-.public WanTableSpriteHasAnimationGroup
 .public ov10_022BF01C
 .public ov10_022BF0F4
 .public ov10_022BF1FC
@@ -54,5 +50,9 @@
 .public ov29_02352AD8
 .public ov29_02352B1C
 .public ov29_0237CA84
+.public SetAndLoadCurrentAttackAnimation
+.public ShouldDisplayEntityAdvanced
+.public ShouldMovePlayAlternativeAnimation
 .public sub_0201CF90
 .public sub_0201D1D4
+.public WanTableSpriteHasAnimationGroup

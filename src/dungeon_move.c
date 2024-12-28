@@ -2,7 +2,7 @@
 #include "dungeon_util.h"
 #include "overlay_29_02321438.h"
 
-const u8 MULTI_TURN_BIDE_CLASS_STATUSES[11] =
+const u8 TWO_TURN_STATUSES[11] =
 {
     BIDE_STATUS_SOLARBEAM,
     BIDE_STATUS_SKY_ATTACK,
@@ -25,14 +25,14 @@ bool8 IsChargingAnyTwoTurnMove(struct entity *pokemon, bool8 check_charge)
     struct monster *pokemon_info = GetEntInfo(pokemon);
     for (s32 i = 0; i < 100; i++)
     {
-        if (MULTI_TURN_BIDE_CLASS_STATUSES[i] == STATUS_NONE)
+        if (TWO_TURN_STATUSES[i] == STATUS_NONE)
             return FALSE;
 
-        if (pokemon_info->bide_class_status.bide == MULTI_TURN_BIDE_CLASS_STATUSES[i])
+        if (pokemon_info->bide_class_status.bide == TWO_TURN_STATUSES[i])
             return TRUE;
     }
 
-    // BUG: This condition is never reached because the for loop terminates by returning FALSE at the end of the MULTI_TURN_BIDE_CLASS_STATUSES array.
+    // BUG: This condition is never reached because the for loop terminates by returning FALSE at the end of the TWO_TURN_STATUSES array.
     if (check_charge && pokemon_info->bide_class_status.bide == BIDE_STATUS_CHARGING)
         return TRUE;
     return FALSE;

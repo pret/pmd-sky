@@ -1142,7 +1142,7 @@ _022E1038:
 	ldr r1, [sp, #0x10]
 	mov r3, r4
 	mov r2, r8, lsl #1
-	bl sub_0201BFF0
+	bl CopyAndInterleaveWrapper
 	mov r0, r8, asr #1
 	add r0, r8, r0, lsr #30
 	add r7, r7, #1
@@ -1383,7 +1383,7 @@ _022E134C:
 	ldmia r4, {r1, r2}
 	mov r2, r2, lsl #8
 	mov r3, #0xd
-	bl sub_0201BFF0
+	bl CopyAndInterleaveWrapper
 	add r0, sp, #8
 	bl UnloadFile
 	bl ov29_022E11F8

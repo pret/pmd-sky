@@ -431,7 +431,7 @@ _022DF0AC:
 	bl ov29_022DE904
 	bl ov29_022F6E40
 	bl ov29_022ED030
-	bl ov29_023388B0
+	bl LoadWeather3DFiles
 	bl ov29_02338F10
 	bl sub_02017B00
 	mov r1, r5

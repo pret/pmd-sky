@@ -17102,14 +17102,14 @@ sub_0201BFAC: ; 0x0201BFAC
 _0201BFEC: .word _020AFC4C
 	arm_func_end sub_0201BFAC
 
-	arm_func_start sub_0201BFF0
-sub_0201BFF0: ; 0x0201BFF0
+	arm_func_start CopyAndInterleaveWrapper
+CopyAndInterleaveWrapper: ; 0x0201BFF0
 	ldr ip, _0201BFFC ; =CopyAndInterleave
 	mov r2, r2, asr #1
 	bx ip
 	.align 2, 0
 _0201BFFC: .word CopyAndInterleave
-	arm_func_end sub_0201BFF0
+	arm_func_end CopyAndInterleaveWrapper
 
 	arm_func_start sub_0201C000
 sub_0201C000: ; 0x0201C000
