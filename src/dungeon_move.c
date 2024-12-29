@@ -2,19 +2,19 @@
 #include "dungeon_util.h"
 #include "overlay_29_02321438.h"
 
-const u8 TWO_TURN_STATUSES[11] =
+const enum status_two_turn_id TWO_TURN_STATUSES[11] =
 {
-    BIDE_STATUS_SOLARBEAM,
-    BIDE_STATUS_SKY_ATTACK,
-    BIDE_STATUS_RAZOR_WIND,
-    BIDE_STATUS_FOCUS_PUNCH,
-    BIDE_STATUS_SKULL_BASH,
-    BIDE_STATUS_FLYING,
-    BIDE_STATUS_BOUNCING,
-    BIDE_STATUS_DIVING,
-    BIDE_STATUS_DIGGING,
-    BIDE_STATUS_SHADOW_FORCE,
-    STATUS_NONE
+    STATUS_TWO_TURN_SOLARBEAM,
+    STATUS_TWO_TURN_SKY_ATTACK,
+    STATUS_TWO_TURN_RAZOR_WIND,
+    STATUS_TWO_TURN_FOCUS_PUNCH,
+    STATUS_TWO_TURN_SKULL_BASH,
+    STATUS_TWO_TURN_FLYING,
+    STATUS_TWO_TURN_BOUNCING,
+    STATUS_TWO_TURN_DIVING,
+    STATUS_TWO_TURN_DIGGING,
+    STATUS_TWO_TURN_SHADOW_FORCE,
+    STATUS_TWO_TURN_NONE
 };
 
 bool8 IsChargingAnyTwoTurnMove(struct entity *pokemon, bool8 check_charge)
@@ -33,7 +33,7 @@ bool8 IsChargingAnyTwoTurnMove(struct entity *pokemon, bool8 check_charge)
     }
 
     // BUG: This condition is never reached because the for loop terminates by returning FALSE at the end of the TWO_TURN_STATUSES array.
-    if (check_charge && pokemon_info->bide_class_status.bide == BIDE_STATUS_CHARGING)
+    if (check_charge && pokemon_info->bide_class_status.bide == STATUS_TWO_TURN_CHARGING)
         return TRUE;
     return FALSE;
 }

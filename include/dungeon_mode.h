@@ -22,7 +22,7 @@ struct pixel_position {
 // Item info
 struct item {
     // 0x0: flags: 1-byte bitfield
-    //u8 flags_0x0;
+    //u8 flags;
     bool8 f_exists : 1;  // Validity flag
     bool8 f_in_shop : 1; // In a Kecleon Shop
     bool8 f_unpaid : 1;  // Picked up from a Kecleon Shop but not paid for yet
@@ -116,7 +116,6 @@ struct action_parameter {
     // E.g., this is the monster index when taking an action on a monster, the move index when
     // using a move or a union item_index value when using an item.
     u8 action_use_idx;
-    u8 field_0x1;
     struct position item_pos; // 0x2: Position of the item to use when using an item on the floor
 };
 
@@ -131,12 +130,14 @@ struct action_data {
 };
 
 struct sleep_class_status {
-    u8 sleep;       // 0xBD: STATUS_SLEEP if 1
-    u8 sleep_turns; // 0xBE: Turns left for the status in statuses::sleep
+    // 0x0: If non-zero, the corresponding status in status_sleep_id is active.
+    enum status_sleep_id sleep;
+    u8 sleep_turns; // 0x1: Turns left for the status in statuses::sleep
 };
 
 struct frozen_class_status {
-    u8 freeze; // 0x0: STATUS_FROZEN if 1
+    // 0x0: If non-zero, the corresponding status in status_frozen_id is active.
+    enum status_frozen_id freeze;
     // 0x4: Controls the animation that plays when taking damage from the constriction status.
     // For some reason this is initalized to 0x22 (34)? Which is the animation used by
     // the exclusive item Nether Veil.
@@ -147,18 +148,21 @@ struct frozen_class_status {
 };
 
 struct cringe_class_status {
-    u8 cringe;         // 0x0: STATUS_CRINGE if 1
+    // 0x0: If non-zero, the corresponding status in status_cringe_id is active.
+    enum status_cringe_id cringe;
     u8 cringe_turns;   // 0x1: Turns left for the status in statuses::cringe
 };
 
 struct bide_class_status {
-    u8 bide;           // 0x0: STATUS_BIDE if 1
+    // 0x0: If non-zero, the corresponding status in status_two_turn_id is active.
+    enum status_two_turn_id bide;
     u8 bide_turns;     // 0x1: Turns left for the status in statuses::bide
     u8 bide_move_slot; // 0x2: Slot in the user's move list
 };
 
 struct curse_class_status {
-    u8 curse; // 0x0: STATUS_CURSED if 1
+    // 0x0: If non-zero, the corresponding status in status_curse_id is active.
+    enum status_curse_id curse;
     // 0x1: Set to monster::is_not_team_member of the attacker (the one causing the decoy status).
     u8 curse_applier_non_team_member_flag;
     // 0x2: Set to 1 on a Pokemon when inflicted with the Decoy status.

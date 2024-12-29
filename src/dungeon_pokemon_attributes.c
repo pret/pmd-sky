@@ -7,7 +7,7 @@ bool8 NoGastroAcidStatus(struct entity *entity, enum ability_id ability)
     if (!IsMonster__02301A60(entity))
         return FALSE;
 
-    if (GetEntInfo(entity)->curse_class_status.curse == CURSED_STATUS_GASTRO_ACID)
+    if (GetEntInfo(entity)->curse_class_status.curse == STATUS_CURSE_GASTRO_ACID)
         return FALSE;
 
     return TRUE;
