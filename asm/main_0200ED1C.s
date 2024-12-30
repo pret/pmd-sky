@@ -12666,7 +12666,7 @@ sub_020184CC: ; 0x020184CC
 	mov r2, r1
 	bl sub_02002A9C
 	mov r2, #0
-	ldr r1, _020185DC ; =_022A4C50
+	ldr r1, _020185DC ; =AUDIO_COMMANDS_BUFFER
 	mov r0, r2
 _02018510:
 	add r2, r2, #1
@@ -12721,7 +12721,7 @@ _020185CC: .word _020AF7C0
 _020185D0: .word _022A4C00
 _020185D4: .word _022A4C28
 _020185D8: .word _020AF7E4
-_020185DC: .word _022A4C50
+_020185DC: .word AUDIO_COMMANDS_BUFFER
 _020185E0: .word _020AF780
 _020185E4: .word 0x00000701
 _020185E8: .word _020AF7AC
@@ -13086,7 +13086,7 @@ sub_02018A78: ; 0x02018A78
 	ldr r1, _02018ADC ; =_020AF7E4
 	bl sub_02002D14
 	mov r1, #0
-	ldr r4, _02018AE0 ; =_022A4C50
+	ldr r4, _02018AE0 ; =AUDIO_COMMANDS_BUFFER
 	b _02018AC0
 _02018A98:
 	ldr r0, [r4]
@@ -13110,7 +13110,7 @@ _02018AC0:
 	.align 2, 0
 _02018AD8: .word _020AF7C0
 _02018ADC: .word _020AF7E4
-_02018AE0: .word _022A4C50
+_02018AE0: .word AUDIO_COMMANDS_BUFFER
 	arm_func_end sub_02018A78
 
 	arm_func_start SendAudioCommand2
@@ -13161,7 +13161,7 @@ _02018B68: .word _020AF7E4
 	arm_func_start AllocAudioCommand
 AllocAudioCommand: ; 0x02018B6C
 	mov r3, #0
-	ldr r2, _02018BA4 ; =_022A4C50
+	ldr r2, _02018BA4 ; =AUDIO_COMMANDS_BUFFER
 	b _02018B94
 _02018B78:
 	ldr r1, [r2]
@@ -13177,7 +13177,7 @@ _02018B94:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_02018BA4: .word _022A4C50
+_02018BA4: .word AUDIO_COMMANDS_BUFFER
 	arm_func_end AllocAudioCommand
 
 	arm_func_start SendAudioCommand

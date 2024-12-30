@@ -49,6 +49,7 @@
 .public LowerOffensiveStat
 .public MOONLIGHT_HP_RESTORATION_TABLE
 .public MUDDY_WATER_LOWER_ACCURACY_CHANCE
+.public MULTIHIT_MOVE_SUCCESSIVE_HITS
 .public NATURE_POWER_TABLE
 .public ov10_022C4E44
 .public ov10_022C6324
@@ -69,9 +70,6 @@
 .public ov29_0234B084
 .public ov29_0234C738
 .public ov29_02352B18
-.public ov29_0237CA6B
-.public ov29_0237CA78
-.public ov29_0237CA7C
 .public POISON_FANG_POISON_CHANCE
 .public POISON_STING_POISON_CHANCE
 .public RemoveEmptyItemsInBagWrapper
@@ -89,6 +87,7 @@
 .public THUNDERBOLT_PARALYZE_CHANCE
 .public THUNDERSHOCK_PARALYZE_CHANCE
 .public TRI_ATTACK_STATUS_CHANCE
+.public TRIPLE_KICK_SUCCESSIVE_HITS
 .public TryActivateWeather
 .public TryEndStatusWithAbility
 .public TryExplosion
@@ -108,6 +107,7 @@
 .public TryInflictTauntStatus
 .public TryInflictWishStatus
 .public TryWarp
+.public TWINEEDLE_HIT_TRACKER
 .public TWINEEDLE_POISON_CHANCE
 .public TWISTER_CRINGE_CHANCE
 .public WATERFALL_CRINGE_CHANCE

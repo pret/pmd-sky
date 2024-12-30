@@ -445,7 +445,7 @@ _0200CA88: .word 0x00000263
 	arm_func_start sub_0200CA8C
 sub_0200CA8C: ; 0x0200CA8C
 	stmdb sp!, {r3, lr}
-	ldr r1, _0200CAB4 ; =_022A3824
+	ldr r1, _0200CAB4 ; =BAG_ITEMS
 	ldr r0, _0200CAB8 ; =BAG_ITEMS_PTR_MIRROR
 	str r1, [r0]
 	bl LoadItemPspi2n
@@ -455,7 +455,7 @@ sub_0200CA8C: ; 0x0200CA8C
 	bl sub_02011AB8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0200CAB4: .word _022A3824
+_0200CAB4: .word BAG_ITEMS
 _0200CAB8: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_0200CA8C
 

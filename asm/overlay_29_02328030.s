@@ -1422,14 +1422,14 @@ DoMoveTwineedle: ; 0x0232915C
 	mov r4, #0
 	bl DealDamage
 	cmp r0, #0
-	ldrne r0, _023291E8 ; =ov29_0237CA6B
+	ldrne r0, _023291E8 ; =TWINEEDLE_HIT_TRACKER
 	movne r4, #1
 	strneb r4, [r0]
-	ldr r0, _023291E8 ; =ov29_0237CA6B
+	ldr r0, _023291E8 ; =TWINEEDLE_HIT_TRACKER
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _023291DC
-	ldr r0, _023291EC ; =ov29_0237CA78
+	ldr r0, _023291EC ; =MULTIHIT_MOVE_SUCCESSIVE_HITS
 	ldr r0, [r0]
 	cmp r0, #2
 	bne _023291DC
@@ -1450,8 +1450,8 @@ _023291DC:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_023291E8: .word ov29_0237CA6B
-_023291EC: .word ov29_0237CA78
+_023291E8: .word TWINEEDLE_HIT_TRACKER
+_023291EC: .word MULTIHIT_MOVE_SUCCESSIVE_HITS
 _023291F0: .word TWINEEDLE_POISON_CHANCE
 	arm_func_end DoMoveTwineedle
 
@@ -2538,7 +2538,7 @@ _02329F68:
 	arm_func_start DoMoveTripleKick
 DoMoveTripleKick: ; 0x02329F78
 	stmdb sp!, {r3, lr}
-	ldr ip, _02329FB0 ; =ov29_0237CA7C
+	ldr ip, _02329FB0 ; =TRIPLE_KICK_SUCCESSIVE_HITS
 	ldr lr, [ip]
 	add lr, lr, #1
 	str lr, [ip]
@@ -2552,7 +2552,7 @@ DoMoveTripleKick: ; 0x02329F78
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02329FB0: .word ov29_0237CA7C
+_02329FB0: .word TRIPLE_KICK_SUCCESSIVE_HITS
 	arm_func_end DoMoveTripleKick
 
 	arm_func_start DoMoveSport

@@ -14187,19 +14187,19 @@ _0203FD10: .word _022AAE58
 sub_0203FD14: ; 0x0203FD14
 	ldr ip, _0203FD24 ; =InitMove
 	mov r1, r0
-	ldr r0, _0203FD28 ; =_022AAE4C
+	ldr r0, _0203FD28 ; =LAST_NEW_MOVE
 	bx ip
 	.align 2, 0
 _0203FD24: .word InitMove
-_0203FD28: .word _022AAE4C
+_0203FD28: .word LAST_NEW_MOVE
 	arm_func_end sub_0203FD14
 
 	arm_func_start sub_0203FD2C
 sub_0203FD2C: ; 0x0203FD2C
-	ldr r0, _0203FD34 ; =_022AAE4C
+	ldr r0, _0203FD34 ; =LAST_NEW_MOVE
 	bx lr
 	.align 2, 0
-_0203FD34: .word _022AAE4C
+_0203FD34: .word LAST_NEW_MOVE
 	arm_func_end sub_0203FD2C
 
 	arm_func_start sub_0203FD38
@@ -14886,7 +14886,7 @@ _02040634:
 	str r2, [sp]
 	strb r2, [sp, #8]
 	strb r2, [sp, #9]
-	ldr r2, _020407BC ; =_022AAE4C
+	ldr r2, _020407BC ; =LAST_NEW_MOVE
 	cmp r0, #0
 	ldrb r0, [r2]
 	mov r1, #0x6a
@@ -14969,7 +14969,7 @@ _020407AC: .word _020AFE7C
 _020407B0: .word _022AAE00
 _020407B4: .word _022AAE2A
 _020407B8: .word _022AADFC
-_020407BC: .word _022AAE4C
+_020407BC: .word LAST_NEW_MOVE
 	arm_func_end PrintMoveOptionMenu
 
 	arm_func_start sub_020407C0
@@ -28301,7 +28301,7 @@ _0204B048: .word _0209CF0C
 InitScriptVariableValues: ; 0x0204B04C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r1, #0
-	ldr r0, _0204B2F8 ; =_022AB0AC
+	ldr r0, _0204B2F8 ; =SCRIPT_VARS_VALUES
 	mov r7, r1
 _0204B05C:
 	strb r7, [r0, r1]
@@ -28495,7 +28495,7 @@ _0204B118:
 	bl InitDungeonListScriptVars
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0204B2F8: .word _022AB0AC
+_0204B2F8: .word SCRIPT_VARS_VALUES
 _0204B2FC: .word SCRIPT_VARS
 #if defined(EUROPE)
 _0204B300: .word 0x00000143
@@ -28646,7 +28646,7 @@ LoadScriptVariableRaw: ; 0x0204B49C
 	cmp r2, #0x400
 	bge _0204B4C0
 	ldr r1, _0204B4E0 ; =SCRIPT_VARS
-	ldr r3, _0204B4E4 ; =_022AB0AC
+	ldr r3, _0204B4E4 ; =SCRIPT_VARS_VALUES
 	add r1, r1, r2, lsl #4
 	str r1, [r0]
 	ldrsh r1, [r1, #4]
@@ -28664,7 +28664,7 @@ _0204B4D8:
 	bx lr
 	.align 2, 0
 _0204B4E0: .word SCRIPT_VARS
-_0204B4E4: .word _022AB0AC
+_0204B4E4: .word SCRIPT_VARS_VALUES
 _0204B4E8: .word SCRIPT_VARS_LOCALS
 	arm_func_end LoadScriptVariableRaw
 
@@ -29838,14 +29838,14 @@ DumpScriptVariableValues: ; 0x0204C408
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EventFlagBackup
-	ldr r1, _0204C42C ; =_022AB0AC
+	ldr r1, _0204C42C ; =SCRIPT_VARS_VALUES
 	mov r0, r4
 	mov r2, #0x400
 	bl MemcpySimple
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0204C42C: .word _022AB0AC
+_0204C42C: .word SCRIPT_VARS_VALUES
 	arm_func_end DumpScriptVariableValues
 
 	arm_func_start RestoreScriptVariableValues
@@ -29857,7 +29857,7 @@ RestoreScriptVariableValues: ; 0x0204C430
 	add r0, sp, #0
 	mov r2, r1
 	bl LoadScriptVariableRaw
-	ldr r0, _0204C484 ; =_022AB0AC
+	ldr r0, _0204C484 ; =SCRIPT_VARS_VALUES
 	mov r1, r4
 	mov r2, #0x400
 	bl MemcpySimple
@@ -29872,7 +29872,7 @@ RestoreScriptVariableValues: ; 0x0204C430
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0204C484: .word _022AB0AC
+_0204C484: .word SCRIPT_VARS_VALUES
 	arm_func_end RestoreScriptVariableValues
 
 	arm_func_start InitScenarioScriptVars
@@ -30221,20 +30221,20 @@ _0204C914: .word SaveScriptVariableValue
 
 	arm_func_start sub_0204C918
 sub_0204C918: ; 0x0204C918
-	ldr r0, _0204C924 ; =_022AB4AC
+	ldr r0, _0204C924 ; =DEBUG_SPECIAL_EPISODE_NUMBER
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
-_0204C924: .word _022AB4AC
+_0204C924: .word DEBUG_SPECIAL_EPISODE_NUMBER
 	arm_func_end sub_0204C918
 
 	arm_func_start sub_0204C928
 sub_0204C928: ; 0x0204C928
-	ldr r1, _0204C934 ; =_022AB4AC
+	ldr r1, _0204C934 ; =DEBUG_SPECIAL_EPISODE_NUMBER
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0204C934: .word _022AB4AC
+_0204C934: .word DEBUG_SPECIAL_EPISODE_NUMBER
 	arm_func_end sub_0204C928
 
 	arm_func_start GetExecuteSpecialEpisodeType
@@ -31394,12 +31394,12 @@ CopyProgressInfoFromScratchFrom: ; 0x0204D748
 InitKaomadoStream: ; 0x0204D780
 	stmdb sp!, {r3, lr}
 	bl FileRom_InitDataTransfer
-	ldr r0, _0204D798 ; =_022AB4B0
+	ldr r0, _0204D798 ; =KAOMADO_STREAM
 	bl FileRom_Veneer_FileInit
 	bl FileRom_StopDataTransfer
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204D798: .word _022AB4B0
+_0204D798: .word KAOMADO_STREAM
 	arm_func_end InitKaomadoStream
 
 	arm_func_start InitPortraitParams
@@ -31513,7 +31513,7 @@ LoadPortrait: ; 0x0204D8BC
 	ldrsh r7, [sl]
 	ldrsb r8, [sl, #2]
 	bl FileRom_InitDataTransfer
-	ldr r0, _0204DA14 ; =_022AB4B0
+	ldr r0, _0204DA14 ; =KAOMADO_STREAM
 	ldr r1, _0204DA18 ; =KAOMADO_FILEPATH
 	bl FileRom_HandleOpen
 	mov fp, #0
@@ -31525,11 +31525,11 @@ _0204D8F4:
 	mul r0, r7, r0
 	add r0, r0, r8, lsl #1
 	mov r1, r0, lsl #2
-	ldr r0, _0204DA14 ; =_022AB4B0
+	ldr r0, _0204DA14 ; =KAOMADO_STREAM
 	mov r2, #0
 	sub r7, r7, #0x258
 	bl FileRom_HandleSeek
-	ldr r0, _0204DA14 ; =_022AB4B0
+	ldr r0, _0204DA14 ; =KAOMADO_STREAM
 	add r1, sp, #0
 	mov r2, #0xc
 	bl FileRom_HandleRead
@@ -31570,15 +31570,15 @@ _0204D99C:
 	ble _0204D9DC
 	cmp sb, #0
 	beq _0204D9C8
-	ldr r0, _0204DA14 ; =_022AB4B0
+	ldr r0, _0204DA14 ; =KAOMADO_STREAM
 	mov r2, #0
 	bl FileRom_HandleSeek
-	ldr r0, _0204DA14 ; =_022AB4B0
+	ldr r0, _0204DA14 ; =KAOMADO_STREAM
 	mov r1, sb
 	mov r2, r6
 	bl FileRom_HandleRead
 _0204D9C8:
-	ldr r0, _0204DA14 ; =_022AB4B0
+	ldr r0, _0204DA14 ; =KAOMADO_STREAM
 	bl FileClose
 	bl FileRom_StopDataTransfer
 	mov r0, #1
@@ -31592,7 +31592,7 @@ _0204D9DC:
 	movne r8, #0
 	ldrnesh r7, [sl]
 	bne _0204D9DC
-	ldr r0, _0204DA14 ; =_022AB4B0
+	ldr r0, _0204DA14 ; =KAOMADO_STREAM
 	bl FileClose
 	bl FileRom_StopDataTransfer
 	mov r0, #0
@@ -31600,7 +31600,7 @@ _0204DA0C:
 	add sp, sp, #0xc
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0204DA14: .word _022AB4B0
+_0204DA14: .word KAOMADO_STREAM
 _0204DA18: .word KAOMADO_FILEPATH
 	arm_func_end LoadPortrait
 
@@ -32627,17 +32627,17 @@ _0204E6F8: .word 0x000F1207
 
 	arm_func_start sub_0204E6FC
 sub_0204E6FC: ; 0x0204E6FC
-	ldr r0, _0204E708 ; =_022AB4FC
+	ldr r0, _0204E708 ; =PENDING_DUNGEON_ID
 	ldrsb r0, [r0, #0xd]
 	bx lr
 	.align 2, 0
-_0204E708: .word _022AB4FC
+_0204E708: .word PENDING_DUNGEON_ID
 	arm_func_end sub_0204E6FC
 
 	arm_func_start sub_0204E70C
 sub_0204E70C: ; 0x0204E70C
 	stmdb sp!, {r4, lr}
-	ldr r0, _0204E75C ; =_022AB4FC
+	ldr r0, _0204E75C ; =PENDING_DUNGEON_ID
 	ldrsb r4, [r0, #0xd]
 	and r1, r4, #0xff
 	cmp r1, #1
@@ -32660,40 +32660,40 @@ _0204E754:
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0204E75C: .word _022AB4FC
+_0204E75C: .word PENDING_DUNGEON_ID
 	arm_func_end sub_0204E70C
 
 	arm_func_start sub_0204E760
 sub_0204E760: ; 0x0204E760
-	ldr r0, _0204E76C ; =_022AB4FC
+	ldr r0, _0204E76C ; =PENDING_DUNGEON_ID
 	ldrsh r0, [r0, #2]
 	bx lr
 	.align 2, 0
-_0204E76C: .word _022AB4FC
+_0204E76C: .word PENDING_DUNGEON_ID
 	arm_func_end sub_0204E760
 
 	arm_func_start sub_0204E770
 sub_0204E770: ; 0x0204E770
-	ldr r0, _0204E77C ; =_022AB4FC
+	ldr r0, _0204E77C ; =PENDING_DUNGEON_ID
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_0204E77C: .word _022AB4FC
+_0204E77C: .word PENDING_DUNGEON_ID
 	arm_func_end sub_0204E770
 
 	arm_func_start sub_0204E780
 sub_0204E780: ; 0x0204E780
-	ldr r0, _0204E78C ; =_022AB4FC
+	ldr r0, _0204E78C ; =PENDING_DUNGEON_ID
 	ldrb r0, [r0, #0x14]
 	bx lr
 	.align 2, 0
-_0204E78C: .word _022AB4FC
+_0204E78C: .word PENDING_DUNGEON_ID
 	arm_func_end sub_0204E780
 
 	arm_func_start sub_0204E790
 sub_0204E790: ; 0x0204E790
 	stmdb sp!, {r4, lr}
-	ldr lr, _0204E7B4 ; =_022AB4FC
+	ldr lr, _0204E7B4 ; =PENDING_DUNGEON_ID
 	mov r4, r0
 	mov ip, #0xb
 _0204E7A0:
@@ -32703,23 +32703,23 @@ _0204E7A0:
 	bne _0204E7A0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0204E7B4: .word _022AB4FC
+_0204E7B4: .word PENDING_DUNGEON_ID
 	arm_func_end sub_0204E790
 
 	arm_func_start sub_0204E7B8
 sub_0204E7B8: ; 0x0204E7B8
 	stmdb sp!, {r3, lr}
-	ldr r1, _0204E8E0 ; =_022AB4FC
+	ldr r1, _0204E8E0 ; =PENDING_DUNGEON_ID
 	mov r0, #0
 	ldrsb r2, [r1, #0xd]
 	mov r1, #0x28
 	bl SaveScriptVariableValue
-	ldr r1, _0204E8E0 ; =_022AB4FC
+	ldr r1, _0204E8E0 ; =PENDING_DUNGEON_ID
 	mov r0, #0
 	ldrsh r2, [r1, #2]
 	mov r1, #0x27
 	bl SaveScriptVariableValue
-	ldr r1, _0204E8E0 ; =_022AB4FC
+	ldr r1, _0204E8E0 ; =PENDING_DUNGEON_ID
 	mov r0, #0
 	ldrsh r2, [r1, #2]
 	mov r1, #0x29
@@ -32732,7 +32732,7 @@ sub_0204E7B8: ; 0x0204E7B8
 	mov r1, #0x2b
 	mov r2, #6
 	bl SaveScriptVariableValue
-	ldr r0, _0204E8E0 ; =_022AB4FC
+	ldr r0, _0204E8E0 ; =PENDING_DUNGEON_ID
 	ldrsb r0, [r0, #0xd]
 	cmp r0, #3
 	addls pc, pc, r0, lsl #2
@@ -32747,13 +32747,13 @@ _0204E83C:
 	mov r1, #0x27
 	mov r2, #0xd7
 	bl SaveScriptVariableValue
-	ldr r0, _0204E8E0 ; =_022AB4FC
+	ldr r0, _0204E8E0 ; =PENDING_DUNGEON_ID
 	ldr r1, _0204E8E4 ; =_022AB518
 	ldrb r0, [r0]
 	bl sub_0205F00C
 	cmp r0, #0
 	beq _0204E8D4
-	ldr r1, _0204E8E0 ; =_022AB4FC
+	ldr r1, _0204E8E0 ; =PENDING_DUNGEON_ID
 	ldrb r1, [r1, #0x1d]
 	cmp r1, #0
 	beq _0204E8A0
@@ -32762,14 +32762,14 @@ _0204E83C:
 	ldr r1, _0204E8E8 ; =CLIENT_LEVEL_TABLE
 	mov r0, r0, lsl #1
 	ldrsh r1, [r1, r0]
-	ldr r3, _0204E8E0 ; =_022AB4FC
+	ldr r3, _0204E8E0 ; =PENDING_DUNGEON_ID
 	mov ip, #1
 	ldr r0, _0204E8E4 ; =_022AB518
 	mov r2, #0
 	strb ip, [r3, #0x1d]
 	bl sub_020544C8
 _0204E8A0:
-	ldr r0, _0204E8E0 ; =_022AB4FC
+	ldr r0, _0204E8E0 ; =PENDING_DUNGEON_ID
 	mov r1, #1
 	strb r1, [r0, #0xf]
 	b _0204E8D4
@@ -32778,17 +32778,17 @@ _0204E8B0:
 	mov r1, #0x27
 	mov r2, #0xd6
 	bl SaveScriptVariableValue
-	ldr r1, _0204E8E0 ; =_022AB4FC
+	ldr r1, _0204E8E0 ; =PENDING_DUNGEON_ID
 	mov r0, #0
 	ldrsb r2, [r1, #0x12]
 	mov r1, #0x29
 	bl SaveScriptVariableValue
 _0204E8D4:
-	ldr r0, _0204E8E0 ; =_022AB4FC
+	ldr r0, _0204E8E0 ; =PENDING_DUNGEON_ID
 	ldrsb r0, [r0, #0xd]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204E8E0: .word _022AB4FC
+_0204E8E0: .word PENDING_DUNGEON_ID
 _0204E8E4: .word _022AB518
 _0204E8E8: .word CLIENT_LEVEL_TABLE
 	arm_func_end sub_0204E7B8
@@ -32798,7 +32798,7 @@ sub_0204E8EC: ; 0x0204E8EC
 	stmdb sp!, {r4, lr}
 	movs r4, r0
 	beq _0204E920
-	ldr lr, _0204E944 ; =_022AB4FC
+	ldr lr, _0204E944 ; =PENDING_DUNGEON_ID
 	mov ip, #0xb
 _0204E900:
 	ldmia r4!, {r0, r1, r2, r3}
@@ -32811,7 +32811,7 @@ _0204E900:
 	ldmia sp!, {r4, pc}
 _0204E920:
 	mov r3, #0
-	ldr r0, _0204E944 ; =_022AB4FC
+	ldr r0, _0204E944 ; =PENDING_DUNGEON_ID
 	sub r2, r3, #1
 	strb r2, [r0, #0xd]
 	ldr r1, _0204E948 ; =_022AB4F8
@@ -32820,7 +32820,7 @@ _0204E920:
 	strh r2, [r0, #2]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0204E944: .word _022AB4FC
+_0204E944: .word PENDING_DUNGEON_ID
 _0204E948: .word _022AB4F8
 	arm_func_end sub_0204E8EC
 
@@ -32828,14 +32828,14 @@ _0204E948: .word _022AB4F8
 SetEnterDungeon: ; 0x0204E94C
 	stmdb sp!, {r3, lr}
 	mov r1, r0
-	ldr r0, _0204E96C ; =_022AB4FC
+	ldr r0, _0204E96C ; =PENDING_DUNGEON_ID
 	bl InitDungeonInit
 	ldr r0, _0204E970 ; =_022AB4F8
 	mov r1, #1
 	strb r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204E96C: .word _022AB4FC
+_0204E96C: .word PENDING_DUNGEON_ID
 _0204E970: .word _022AB4F8
 	arm_func_end SetEnterDungeon
 
@@ -32844,7 +32844,7 @@ sub_0204E974: ; 0x0204E974
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl sub_0205B77C
-	ldr r2, _0204EA4C ; =_022AB4FC
+	ldr r2, _0204EA4C ; =PENDING_DUNGEON_ID
 	mov r1, #2
 	mov r4, r0
 	strb r1, [r2, #0xd]
@@ -32859,7 +32859,7 @@ sub_0204E974: ; 0x0204E974
 	ldr r0, _0204EA54 ; =_022AB5A8
 	mov r1, r5
 	bl sub_0205BD14
-	ldr r1, _0204EA4C ; =_022AB4FC
+	ldr r1, _0204EA4C ; =PENDING_DUNGEON_ID
 	mov r2, #0
 	strb r2, [r1, #0xf]
 	strb r2, [r1, #0x10]
@@ -32867,17 +32867,17 @@ sub_0204E974: ; 0x0204E974
 	mov r0, #7
 	strb r2, [r1, #0x11]
 	bl GetPerformanceFlagWithChecks
-	ldr r1, _0204EA4C ; =_022AB4FC
+	ldr r1, _0204EA4C ; =PENDING_DUNGEON_ID
 	mov r2, #0
 	strb r0, [r1, #5]
 	mov r0, #6
 	strb r2, [r1, #6]
 	bl GetPerformanceFlagWithChecks
-	ldr r1, _0204EA4C ; =_022AB4FC
+	ldr r1, _0204EA4C ; =PENDING_DUNGEON_ID
 	strb r0, [r1, #8]
 	mov r0, #1
 	bl GetPerformanceFlagWithChecks
-	ldr r1, _0204EA4C ; =_022AB4FC
+	ldr r1, _0204EA4C ; =PENDING_DUNGEON_ID
 	mov r2, #0
 	strb r0, [r1, #9]
 	strb r2, [r1, #0xa]
@@ -32896,7 +32896,7 @@ sub_0204E974: ; 0x0204E974
 	strb r1, [r0]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0204EA4C: .word _022AB4FC
+_0204EA4C: .word PENDING_DUNGEON_ID
 _0204EA50: .word _022AB510
 _0204EA54: .word _022AB5A8
 _0204EA58: .word _022AB4F8
@@ -33336,11 +33336,11 @@ _0204F01C:
 
 	arm_func_start sub_0204F024
 sub_0204F024: ; 0x0204F024
-	ldr r1, _0204F030 ; =_022AB4FC
+	ldr r1, _0204F030 ; =PENDING_DUNGEON_ID
 	strb r0, [r1, #0xe]
 	bx lr
 	.align 2, 0
-_0204F030: .word _022AB4FC
+_0204F030: .word PENDING_DUNGEON_ID
 	arm_func_end sub_0204F024
 
 	arm_func_start sub_0204F034
@@ -34162,53 +34162,53 @@ _0204F9B4: .word 0x000042BA
 	arm_func_start sub_0204F9B8
 sub_0204F9B8: ; 0x0204F9B8
 	ldr ip, _0204F9C4 ; =ResetPlayTimer
-	ldr r0, _0204F9C8 ; =_022AB694
+	ldr r0, _0204F9C8 ; =PLAY_TIME_SECONDS
 	bx ip
 	.align 2, 0
 _0204F9C4: .word ResetPlayTimer
-_0204F9C8: .word _022AB694
+_0204F9C8: .word PLAY_TIME_SECONDS
 	arm_func_end sub_0204F9B8
 
 	arm_func_start sub_0204F9CC
 sub_0204F9CC: ; 0x0204F9CC
 	ldr ip, _0204F9D8 ; =PlayTimerTick
-	ldr r0, _0204F9DC ; =_022AB694
+	ldr r0, _0204F9DC ; =PLAY_TIME_SECONDS
 	bx ip
 	.align 2, 0
 _0204F9D8: .word PlayTimerTick
-_0204F9DC: .word _022AB694
+_0204F9DC: .word PLAY_TIME_SECONDS
 	arm_func_end sub_0204F9CC
 
 	arm_func_start sub_0204F9E0
 sub_0204F9E0: ; 0x0204F9E0
 	ldr ip, _0204F9EC ; =GetPlayTimeSeconds
-	ldr r0, _0204F9F0 ; =_022AB694
+	ldr r0, _0204F9F0 ; =PLAY_TIME_SECONDS
 	bx ip
 	.align 2, 0
 _0204F9EC: .word GetPlayTimeSeconds
-_0204F9F0: .word _022AB694
+_0204F9F0: .word PLAY_TIME_SECONDS
 	arm_func_end sub_0204F9E0
 
 	arm_func_start sub_0204F9F4
 sub_0204F9F4: ; 0x0204F9F4
 	ldr ip, _0204FA04 ; =sub_02050E5C
 	mov r1, r0
-	ldr r0, _0204FA08 ; =_022AB694
+	ldr r0, _0204FA08 ; =PLAY_TIME_SECONDS
 	bx ip
 	.align 2, 0
 _0204FA04: .word sub_02050E5C
-_0204FA08: .word _022AB694
+_0204FA08: .word PLAY_TIME_SECONDS
 	arm_func_end sub_0204F9F4
 
 	arm_func_start sub_0204FA0C
 sub_0204FA0C: ; 0x0204FA0C
 	ldr ip, _0204FA1C ; =sub_02050E8C
 	mov r1, r0
-	ldr r0, _0204FA20 ; =_022AB694
+	ldr r0, _0204FA20 ; =PLAY_TIME_SECONDS
 	bx ip
 	.align 2, 0
 _0204FA1C: .word sub_02050E8C
-_0204FA20: .word _022AB694
+_0204FA20: .word PLAY_TIME_SECONDS
 	arm_func_end sub_0204FA0C
 
 	arm_func_start SetAdventureLogStructLocation
@@ -35599,7 +35599,7 @@ StoreDefaultTeamData: ; 0x02050ACC
 	mov r1, #0x234
 #endif
 	bl GetStringFromFileVeneer
-	ldr r0, _02050B08 ; =_022AB918
+	ldr r0, _02050B08 ; =TEAM_NAME
 	add r1, sp, #0
 #ifdef JAPAN
 	mov r2, #5
@@ -35607,7 +35607,7 @@ StoreDefaultTeamData: ; 0x02050ACC
 	mov r2, #0xa
 #endif
 	bl StrncpyName
-	ldr r0, _02050B0C ; =_022AB918
+	ldr r0, _02050B0C ; =TEAM_NAME
 	mov r1, #0
 #ifdef JAPAN
 	str r1, [r0, #8]
@@ -35622,8 +35622,8 @@ StoreDefaultTeamData: ; 0x02050ACC
 #ifdef JAPAN
 _02050E54: .word 0x000004C5
 #endif
-_02050B08: .word _022AB918
-_02050B0C: .word _022AB918
+_02050B08: .word TEAM_NAME
+_02050B0C: .word TEAM_NAME
 	arm_func_end StoreDefaultTeamData
 
 	arm_func_start GetMainTeamNameWithCheck
@@ -35634,11 +35634,11 @@ GetMainTeamNameWithCheck: ; 0x02050B10
 	mov r0, #1
 	bl GetPerformanceFlagWithChecks
 	cmp r0, #0
-	ldrne r0, _02050B70 ; =_022AB918
+	ldrne r0, _02050B70 ; =TEAM_NAME
 	ldrneb r0, [r0]
 	cmpne r0, #0
 	beq _02050B4C
-	ldr r1, _02050B74 ; =_022AB918
+	ldr r1, _02050B74 ; =TEAM_NAME
 	mov r0, r4
 #ifdef JAPAN
 	mov r2, #5
@@ -35663,8 +35663,8 @@ _02050B68:
 	add sp, sp, #0x40
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02050B70: .word _022AB918
-_02050B74: .word _022AB918
+_02050B70: .word TEAM_NAME
+_02050B74: .word TEAM_NAME
 #ifdef JAPAN
 _02050B78: .word 0x000004C8
 #else
@@ -35675,7 +35675,7 @@ _02050B78: .word 0x00000237
 	arm_func_start GetMainTeamName
 GetMainTeamName: ; 0x02050B7C
 	ldr ip, _02050B8C ; =StrncpySimpleNoPadSafe
-	ldr r1, _02050B90 ; =_022AB918
+	ldr r1, _02050B90 ; =TEAM_NAME
 #ifdef JAPAN
 	mov r2, #5
 #else
@@ -35684,12 +35684,12 @@ GetMainTeamName: ; 0x02050B7C
 	bx ip
 	.align 2, 0
 _02050B8C: .word StrncpySimpleNoPadSafe
-_02050B90: .word _022AB918
+_02050B90: .word TEAM_NAME
 	arm_func_end GetMainTeamName
 
 	arm_func_start SetMainTeamName
 SetMainTeamName: ; 0x02050B94
-	ldr r1, _02050BB4 ; =_022AB918
+	ldr r1, _02050BB4 ; =TEAM_NAME
 	mov r3, #0
 _02050B9C:
 	ldrb r2, [r0], #1
@@ -35703,7 +35703,7 @@ _02050B9C:
 	blt _02050B9C
 	bx lr
 	.align 2, 0
-_02050BB4: .word _022AB918
+_02050BB4: .word TEAM_NAME
 	arm_func_end SetMainTeamName
 
 	arm_func_start GetRankupPoints
@@ -35726,7 +35726,7 @@ _02050BE4:
 _02050BF0:
 	mov r0, r4
 	bl GetRankUpEntry
-	ldr r1, _02050C0C ; =_022AB918
+	ldr r1, _02050C0C ; =TEAM_NAME
 	ldr r2, [r0, #4]
 #ifdef JAPAN
 	ldr r0, [r1, #8]
@@ -35736,7 +35736,7 @@ _02050BF0:
 	sub r0, r2, r0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02050C0C: .word _022AB918
+_02050C0C: .word TEAM_NAME
 	arm_func_end GetRankupPoints
 
 	arm_func_start sub_02050C10
@@ -35747,7 +35747,7 @@ sub_02050C10: ; 0x02050C10
 #define SUB_02050C10_OFFSET #0xc
 #endif
 	stmdb sp!, {r3, lr}
-	ldr r1, _02050C6C ; =_022AB918
+	ldr r1, _02050C6C ; =TEAM_NAME
 	ldr r2, [r1, SUB_02050C10_OFFSET]
 	add r2, r2, r0
 	mov r0, #0x16
@@ -35755,7 +35755,7 @@ sub_02050C10: ; 0x02050C10
 	bl GetPerformanceFlagWithChecks
 	cmp r0, #0
 	beq _02050C4C
-	ldr r0, _02050C6C ; =_022AB918
+	ldr r0, _02050C6C ; =TEAM_NAME
 	ldr r1, _02050C70 ; =0x05F5E0FF
 	ldr r2, [r0, SUB_02050C10_OFFSET]
 	cmp r2, r1
@@ -35764,14 +35764,14 @@ sub_02050C10: ; 0x02050C10
 _02050C4C:
 	mov r0, #7
 	bl GetRankUpEntry
-	ldr r1, _02050C6C ; =_022AB918
+	ldr r1, _02050C6C ; =TEAM_NAME
 	ldr r2, [r0, #4]
 	ldr r0, [r1, SUB_02050C10_OFFSET]
 	cmp r0, r2
 	strgt r2, [r1, SUB_02050C10_OFFSET]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02050C6C: .word _022AB918
+_02050C6C: .word TEAM_NAME
 _02050C70: .word 0x05F5E0FF
 	arm_func_end sub_02050C10
 
@@ -35779,7 +35779,7 @@ _02050C70: .word 0x05F5E0FF
 GetRank: ; 0x02050C74
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #0
-	ldr r4, _02050CCC ; =_022AB918
+	ldr r4, _02050CCC ; =TEAM_NAME
 	b _02050CA4
 _02050C84:
 	mov r0, r5
@@ -35808,7 +35808,7 @@ _02050CC4:
 	mov r0, r5
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02050CCC: .word _022AB918
+_02050CCC: .word TEAM_NAME
 	arm_func_end GetRank
 
 	arm_func_start sub_02050CD0
@@ -35838,7 +35838,7 @@ sub_02050CF8: ; 0x02050CF8
 	add r0, sp, #0
 	mov r1, r3
 	bl sub_02050990
-	ldr r1, _02050D70 ; =_022AB918
+	ldr r1, _02050D70 ; =TEAM_NAME
 	add r0, sp, #0
 #ifdef JAPAN
 	mov r2, #0x28
@@ -35852,7 +35852,7 @@ sub_02050CF8: ; 0x02050CF8
 	bl CopyBitsTo
 	mov r0, #1
 	bl GetPerformanceFlagWithChecks
-	ldr r1, _02050D78 ; =_022AB918
+	ldr r1, _02050D78 ; =TEAM_NAME
 	tst r0, #0xff
 #ifdef JAPAN
 	strb r0, [r1, #0xc]
@@ -35870,9 +35870,9 @@ sub_02050CF8: ; 0x02050CF8
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02050D70: .word _022AB918
+_02050D70: .word TEAM_NAME
 _02050D74: .word _022AB924
-_02050D78: .word _022AB918
+_02050D78: .word TEAM_NAME
 _02050D7C: .word ARM9_UNKNOWN_DATA__NA_209E6BC
 _02050D80: .word _0209E6BD
 	arm_func_end sub_02050CF8
@@ -35886,7 +35886,7 @@ sub_02050D84: ; 0x02050D84
 	add r0, sp, #4
 	mov r1, r3
 	bl sub_02050974
-	ldr r1, _02050DFC ; =_022AB918
+	ldr r1, _02050DFC ; =TEAM_NAME
 	add r0, sp, #4
 #ifdef JAPAN
 	mov r2, #0x28
@@ -35903,7 +35903,7 @@ sub_02050D84: ; 0x02050D84
 	mov r2, #1
 	bl CopyBitsFrom
 	ldrb r0, [sp]
-	ldr r1, _02050E04 ; =_022AB918
+	ldr r1, _02050E04 ; =TEAM_NAME
 	tst r0, #1
 	movne r2, #1
 	moveq r2, #0
@@ -35918,9 +35918,9 @@ sub_02050D84: ; 0x02050D84
 	add sp, sp, #0x14
 	ldmia sp!, {pc}
 	.align 2, 0
-_02050DFC: .word _022AB918
+_02050DFC: .word TEAM_NAME
 _02050E00: .word _022AB924
-_02050E04: .word _022AB918
+_02050E04: .word TEAM_NAME
 	arm_func_end sub_02050D84
 
 	arm_func_start ResetPlayTimer
@@ -38582,20 +38582,20 @@ _02052C38: .word _020A322C
 	arm_func_start sub_02052C3C
 sub_02052C3C: ; 0x02052C3C
 	stmdb sp!, {r3, lr}
-	ldr r1, _02052C68 ; =_022ABDE0
+	ldr r1, _02052C68 ; =TEAM_MEMBER_TABLE
 	ldr r0, _02052C6C ; =TEAM_MEMBER_TABLE_PTR
 	str r1, [r0]
 	bl LoadMonsterMd
-	ldr r0, _02052C70 ; =_022AB92C
+	ldr r0, _02052C70 ; =LEVEL_UP_DATA_MONSTER_ID
 	mov r1, #0
 	strh r1, [r0]
 	bl sub_020550DC
 	bl sub_020560B8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02052C68: .word _022ABDE0
+_02052C68: .word TEAM_MEMBER_TABLE
 _02052C6C: .word TEAM_MEMBER_TABLE_PTR
-_02052C70: .word _022AB92C
+_02052C70: .word LEVEL_UP_DATA_MONSTER_ID
 	arm_func_end sub_02052C3C
 
 	arm_func_start sub_02052C74
@@ -39452,7 +39452,7 @@ GetLvlUpEntry: ; 0x0205379C
 	mov r1, #0x258
 	mov r4, r2
 	bl _s32_div_f
-	ldr r0, _02053844 ; =_022AB92C
+	ldr r0, _02053844 ; =LEVEL_UP_DATA_MONSTER_ID
 	ldrsh r0, [r0]
 	cmp r0, r1
 	beq _02053820
@@ -39460,7 +39460,7 @@ GetLvlUpEntry: ; 0x0205379C
 	mov r1, #0x258
 	bl _s32_div_f
 	sub r0, r1, #1
-	ldr r2, _02053844 ; =_022AB92C
+	ldr r2, _02053844 ; =LEVEL_UP_DATA_MONSTER_ID
 	mov r0, r0, lsl #0x10
 	strh r1, [r2]
 	mov r1, r0, lsr #0x10
@@ -39472,14 +39472,14 @@ GetLvlUpEntry: ; 0x0205379C
 	add r0, sp, #0
 	bl HandleSir0Translation
 	ldr r2, [sp]
-	ldr r0, _02053848 ; =_022AB930
+	ldr r0, _02053848 ; =LEVEL_UP_DATA_DECOMPRESS_BUFFER
 	mov r1, #0
 	bl DecompressAtNormalVeneer
 	add r0, sp, #4
 	bl UnloadFile
 _02053820:
 	subs r4, r4, #1
-	ldr r1, _02053848 ; =_022AB930
+	ldr r1, _02053848 ; =LEVEL_UP_DATA_DECOMPRESS_BUFFER
 	movmi r4, #0
 	mov r0, #0xc
 	mla r0, r4, r0, r1
@@ -39488,8 +39488,8 @@ _02053820:
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, r5, r6, pc}
 	.align 2, 0
-_02053844: .word _022AB92C
-_02053848: .word _022AB930
+_02053844: .word LEVEL_UP_DATA_MONSTER_ID
+_02053848: .word LEVEL_UP_DATA_DECOMPRESS_BUFFER
 	arm_func_end GetLvlUpEntry
 
 	arm_func_start GetEncodedHalfword

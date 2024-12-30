@@ -10,6 +10,7 @@
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandRange
+.public FLOOR_GENERATION_STATUS
 .public GenerateSecondaryTerrainFormations
 .public GetFinalKecleonShopSpawnChance
 .public GetFloorType
@@ -69,7 +70,6 @@
 .public ov29_0237CACC
 .public ov29_0237CD40
 .public ov29_0237CFB8
-.public ov29_0237CFBC
 .public PlaceFixedRoomTile
 .public PlayEffectAnimationPos
 .public PosIsOutOfBounds

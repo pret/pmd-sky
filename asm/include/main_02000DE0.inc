@@ -25,7 +25,6 @@
 .public _020B3384
 .public _020B33A0
 .public _020B33C0
-.public _020B4BC0
 .public _0229AFC0
 .public _0229AFCC
 .public _0229AFE4
@@ -47,6 +46,7 @@
 .public CardPullOut
 .public Debug_FatalError
 .public Debug_Print0
+.public DEFAULT_MEMORY_ARENA_MEMORY
 .public GetHeldButtons
 .public GetReleasedStylus
 .public GX_DispOff

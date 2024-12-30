@@ -11,7 +11,7 @@ GetPossibleAiThrownItemDirections: ; 0x0230EDB0
 	mov r5, #0
 	mov sl, r0
 	str r3, [sp, #8]
-	ldr r0, _0230EFF8 ; =ov29_0237C9D0
+	ldr r0, _0230EFF8 ; =AI_THROWN_ITEM_DIRECTION_IS_USED
 	str r1, [sp]
 	str r2, [sp, #4]
 	str r5, [r4]
@@ -127,7 +127,7 @@ _0230EF44:
 _0230EF54:
 	cmp r5, #0
 	blt _0230EFE0
-	ldr r0, _0230EFF8 ; =ov29_0237C9D0
+	ldr r0, _0230EFF8 ; =AI_THROWN_ITEM_DIRECTION_IS_USED
 	ldrb r0, [r0, r5]
 	cmp r0, #0
 	bne _0230EFE0
@@ -138,7 +138,7 @@ _0230EF54:
 	bl IsTargetInRange
 	cmp r0, #0
 	beq _0230EFE0
-	ldr r0, _0230EFF8 ; =ov29_0237C9D0
+	ldr r0, _0230EFF8 ; =AI_THROWN_ITEM_DIRECTION_IS_USED
 	mov r1, #1
 	strb r1, [r0, r5]
 	ldr r0, [sp, #8]
@@ -169,7 +169,7 @@ _0230EFE0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0230EFF4: .word AI_THROWN_ITEM_ACTION_CHOICE_COUNT
-_0230EFF8: .word ov29_0237C9D0
+_0230EFF8: .word AI_THROWN_ITEM_DIRECTION_IS_USED
 _0230EFFC: .word DUNGEON_PTR
 _0230F000: .word AI_THROWN_ITEM_DIRECTIONS
 _0230F004: .word AI_THROWN_ITEM_PROBABILITIES

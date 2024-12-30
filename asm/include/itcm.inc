@@ -25,7 +25,6 @@
 .public _022A3538
 .public _022A353C
 .public _022A3554
-.public _022A35DC
 .public _022A35E8
 .public _022A3614
 .public _022A3620
@@ -81,7 +80,6 @@
 .public _022A3804
 .public _022A3805
 .public _022A3806
-.public _022A88DC
 .public _022A88F0
 .public _022A88FC
 .public _022B966C
@@ -175,7 +173,9 @@
 .public sub_02080EF0
 .public sub_02080F30
 .public sub_02080F30
+.public TOUCHSCREEN_STATUS
 .public TRIG_TABLE
 .public TryAddTargetToAiTargetList
 .public UpdateAiTargetPos
 .public UpdateWindow
+.public WINDOW_LIST

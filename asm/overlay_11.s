@@ -393,7 +393,7 @@ ov11_022DC718: ; 0x022DC718
 	strh r1, [r0, #2]
 	strh r1, [r0, #4]
 	strb r3, [r0, #1]
-	ldr r1, _022DC798 ; =ov11_02324EB4
+	ldr r1, _022DC798 ; =LOCK_NOTIFY_ARRAY
 	ldr r0, _022DC79C ; =ov11_02324F1C
 	mov r2, r3
 _022DC770:
@@ -408,7 +408,7 @@ _022DC788: .word ov11_02324E94
 _022DC78C: .word ov11_02324EA4
 _022DC790: .word ov11_02324ECC
 _022DC794: .word ov11_02324E80
-_022DC798: .word ov11_02324EB4
+_022DC798: .word LOCK_NOTIFY_ARRAY
 _022DC79C: .word ov11_02324F1C
 	arm_func_end ov11_022DC718
 
@@ -1183,7 +1183,7 @@ _022DD128:
 	arm_func_start UnlockScriptingLock
 UnlockScriptingLock: ; 0x022DD130
 	stmdb sp!, {r3, lr}
-	ldr ip, _022DD158 ; =ov11_02324EB4
+	ldr ip, _022DD158 ; =LOCK_NOTIFY_ARRAY
 	mov lr, #1
 	ldr r1, _022DD15C ; =ov11_02324E80
 	ldr r2, _022DD160 ; =ov11_02324F1C
@@ -1193,7 +1193,7 @@ UnlockScriptingLock: ; 0x022DD130
 	strb lr, [r1, #1]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022DD158: .word ov11_02324EB4
+_022DD158: .word LOCK_NOTIFY_ARRAY
 _022DD15C: .word ov11_02324E80
 _022DD160: .word ov11_02324F1C
 	arm_func_end UnlockScriptingLock
@@ -9228,7 +9228,7 @@ HandleUnlocks: ; 0x022E4350
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r8, #0
 	ldr r5, _022E43E0 ; =ov11_023195EC
-	ldr r7, _022E43E4 ; =ov11_02324EB4
+	ldr r7, _022E43E4 ; =LOCK_NOTIFY_ARRAY
 	strb r8, [r0, #1]
 	mov r6, #2
 	mov r4, r8
@@ -9261,7 +9261,7 @@ _022E43CC:
 	.align 2, 0
 _022E43DC: .word ov11_02324E80
 _022E43E0: .word ov11_023195EC
-_022E43E4: .word ov11_02324EB4
+_022E43E4: .word LOCK_NOTIFY_ARRAY
 	arm_func_end HandleUnlocks
 
 	arm_func_start ov11_022E43E8
@@ -14490,7 +14490,7 @@ GroundMainLoop: ; 0x022E8774
 	mov r3, #1
 	bl MemArenaAlloc
 	ldr r1, _022E91F0 ; =ov11_02324CB0
-	ldr r2, _022E91F4 ; =ov11_02324FC0
+	ldr r2, _022E91F4 ; =GROUND_MEMORY_ARENA_1
 	str r0, [r1, #8]
 	mov r0, #0x64000
 	str r0, [sp, #0xc]
@@ -15189,7 +15189,7 @@ _022E91E0:
 _022E91E8: .word ov11_02324FA0
 _022E91EC: .word ov11_023209B0
 _022E91F0: .word ov11_02324CB0
-_022E91F4: .word ov11_02324FC0
+_022E91F4: .word GROUND_MEMORY_ARENA_1
 _022E91F8: .word GetFreeArenaGround
 _022E91FC: .word GetAllocArenaGround
 _022E9200: .word ov11_022E9258
@@ -83138,8 +83138,8 @@ ov11_02324E94:
 	.global ov11_02324EA4
 ov11_02324EA4:
 	.space 0x10
-	.global ov11_02324EB4
-ov11_02324EB4:
+	.global LOCK_NOTIFY_ARRAY
+LOCK_NOTIFY_ARRAY:
 	.space 0x18
 	.global ov11_02324ECC
 ov11_02324ECC:
@@ -83171,8 +83171,8 @@ ov11_02324F9C:
 	.global ov11_02324FA0
 ov11_02324FA0:
 	.space 0x20
-	.global ov11_02324FC0
-ov11_02324FC0:
+	.global GROUND_MEMORY_ARENA_1
+GROUND_MEMORY_ARENA_1:
 	.space 0x64000
 	.global ov11_02388FC0
 ov11_02388FC0:

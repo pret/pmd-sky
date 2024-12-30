@@ -610,7 +610,7 @@ _02325E60: .word ATK_STAT_IDX
 DoMoveDamageMultihitUntilMiss: ; 0x02325E64
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
-	ldr ip, _02325EB8 ; =ov29_0237CA70
+	ldr ip, _02325EB8 ; =ROLLOUT_ICE_BALL_SUCCESSIVE_HITS
 	str r3, [sp]
 	ldr ip, [ip]
 	ldr r3, _02325EBC ; =ROLLOUT_DAMAGE_MULT_TABLE
@@ -618,10 +618,10 @@ DoMoveDamageMultihitUntilMiss: ; 0x02325E64
 	ldr r3, [r3, ip, lsl #2]
 	bl DealDamage
 	cmp r0, #0
-	ldreq r0, _02325EC0 ; =ov29_0237CA69
+	ldreq r0, _02325EC0 ; =ROLLOUT_ICE_BALL_MISSED
 	moveq r1, #1
 	streqb r1, [r0]
-	ldr r1, _02325EB8 ; =ov29_0237CA70
+	ldr r1, _02325EB8 ; =ROLLOUT_ICE_BALL_SUCCESSIVE_HITS
 	movne r4, #1
 	ldr r2, [r1]
 	mov r0, r4
@@ -630,9 +630,9 @@ DoMoveDamageMultihitUntilMiss: ; 0x02325E64
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_02325EB8: .word ov29_0237CA70
+_02325EB8: .word ROLLOUT_ICE_BALL_SUCCESSIVE_HITS
 _02325EBC: .word ROLLOUT_DAMAGE_MULT_TABLE
-_02325EC0: .word ov29_0237CA69
+_02325EC0: .word ROLLOUT_ICE_BALL_MISSED
 	arm_func_end DoMoveDamageMultihitUntilMiss
 
 	arm_func_start DoMoveYawn
@@ -2719,14 +2719,14 @@ DoMoveDamageMultihitFatigue: ; 0x0232776C
 	mov r4, #1
 	bl DungeonRandOutcomeUserAction
 	cmp r0, #0
-	ldrne r0, _023277B4 ; =ov29_0237CA6A
+	ldrne r0, _023277B4 ; =MULTIHIT_FATIGUE_MOVE_USED
 	movne r1, r4
 	strneb r1, [r0]
 _023277AC:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023277B4: .word ov29_0237CA6A
+_023277B4: .word MULTIHIT_FATIGUE_MOVE_USED
 	arm_func_end DoMoveDamageMultihitFatigue
 
 	arm_func_start DoMoveDamageWeightDependent
@@ -2877,17 +2877,17 @@ DoMoveRapidSpin: ; 0x02327940
 	ldrh r0, [r0, #0x92]
 #endif
 	tst r0, #2
-	ldrne r0, _023279A8 ; =ov29_0237CA6D
+	ldrne r0, _023279A8 ; =RAPID_SPIN_BINDING_REMOVAL
 	movne r1, #0
 	strneb r1, [r0]
-	ldreq r0, _023279A8 ; =ov29_0237CA6D
+	ldreq r0, _023279A8 ; =RAPID_SPIN_BINDING_REMOVAL
 	moveq r1, r4
 	streqb r1, [r0]
 _023279A0:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_023279A8: .word ov29_0237CA6D
+_023279A8: .word RAPID_SPIN_BINDING_REMOVAL
 	arm_func_end DoMoveRapidSpin
 
 	arm_func_start DoMoveSureShot

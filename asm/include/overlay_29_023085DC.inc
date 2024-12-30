@@ -43,6 +43,6 @@
 .public ov29_0231EDFC
 .public ov29_023380FC
 .public ov29_023535DC
-.public ov29_0237CA6D
+.public RAPID_SPIN_BINDING_REMOVAL
 .public ResetDamageData
 .public UpdateAiTargetPos

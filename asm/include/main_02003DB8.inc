@@ -35,7 +35,6 @@
 .public _022A3538
 .public _022A353C
 .public _022A3554
-.public _022A35DC
 .public _022A35E8
 .public _022A3614
 .public _022A3620
@@ -124,3 +123,4 @@
 .public sub_020845F8
 .public sub_020850B4
 .public sub_02085180
+.public TOUCHSCREEN_STATUS

@@ -104,7 +104,7 @@ _02340DF4:
 	add r1, r1, #0x4000
 	mov r2, #0
 	bl SpawnStairs
-	ldr r0, _0234145C ; =ov29_0237CFBC
+	ldr r0, _0234145C ; =FLOOR_GENERATION_STATUS
 	ldr r0, [r0, #0x2c]
 	cmp r0, #0
 	beq _02340EC8
@@ -122,7 +122,7 @@ _02340E6C:
 	cmp r4, r0
 	blt _02340E54
 	ldr r0, _02341458 ; =DUNGEON_PTR
-	ldr r1, _0234145C ; =ov29_0237CFBC
+	ldr r1, _0234145C ; =FLOOR_GENERATION_STATUS
 	ldr r2, [r0]
 	ldr r4, [r1, #0x2c]
 	add r0, r2, #0x2c000
@@ -502,7 +502,7 @@ _0234137C:
 	tst r0, #1
 	bne _0234140C
 _023413E8:
-	ldr r0, _0234145C ; =ov29_0237CFBC
+	ldr r0, _0234145C ; =FLOOR_GENERATION_STATUS
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	ldrneb r0, [r4, #0xc9 + MARK_NON_ENEMY_SPAWNS_OFFSET]
@@ -534,7 +534,7 @@ _02341450:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02341458: .word DUNGEON_PTR
-_0234145C: .word ov29_0237CFBC
+_0234145C: .word FLOOR_GENERATION_STATUS
 _02341460: .word 0x0002C9E8 + MARK_NON_ENEMY_SPAWNS_OFFSET
 _02341464: .word 0x00012AFA + MARK_NON_ENEMY_SPAWNS_OFFSET
 _02341468: .word MONSTER_HOUSE_MAX_NON_MONSTER_SPAWNS
@@ -603,7 +603,7 @@ _023414D4:
 	ldreqsh r0, [r4, #0xe2 + MARK_ENEMY_SPAWNS_OFFSET]
 	cmpeq r7, r0
 	beq _0234156C
-	ldr r0, _02341764 ; =ov29_0237CFBC
+	ldr r0, _02341764 ; =FLOOR_GENERATION_STATUS
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	beq _02341558
@@ -753,7 +753,7 @@ _02341754:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02341760: .word DUNGEON_PTR
-_02341764: .word ov29_0237CFBC
+_02341764: .word FLOOR_GENERATION_STATUS
 _02341768: .word MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 	arm_func_end MarkEnemySpawns
 
@@ -1318,7 +1318,7 @@ _02341EF4:
 	cmpeq r0, r6
 	movne r0, #0
 	bne _0234216C
-	ldr r0, _02342178 ; =ov29_0237CFBC
+	ldr r0, _02342178 ; =FLOOR_GENERATION_STATUS
 	mov r4, #0
 	str r4, [r0, #0x24]
 _02341F50:
@@ -1436,7 +1436,7 @@ _023420D0:
 	blt _02341F64
 	cmp r3, #0
 	bne _02341F50
-	ldr r0, _02342178 ; =ov29_0237CFBC
+	ldr r0, _02342178 ; =FLOOR_GENERATION_STATUS
 	mov r8, #0
 	str r4, [r0, #0x24]
 	add r6, sp, #0
@@ -1477,7 +1477,7 @@ _0234216C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _02342174: .word DUNGEON_PTR
-_02342178: .word ov29_0237CFBC
+_02342178: .word FLOOR_GENERATION_STATUS
 	arm_func_end StairsAlwaysReachable
 
 	arm_func_start ov29_0234217C
@@ -1712,7 +1712,7 @@ _023424CC: .word 0x000001C2
 
 	arm_func_start GetNextFixedRoomAction
 GetNextFixedRoomAction: ; 0x023424D0
-	ldr r1, _02342510 ; =ov29_0237CFBC
+	ldr r1, _02342510 ; =FLOOR_GENERATION_STATUS
 	ldrh r0, [r1, #0xa]
 	cmp r0, #0
 	subne r0, r0, #1
@@ -1730,7 +1730,7 @@ _02342504:
 	ldrh r0, [r1, #0xe]
 	bx lr
 	.align 2, 0
-_02342510: .word ov29_0237CFBC
+_02342510: .word FLOOR_GENERATION_STATUS
 _02342514: .word HIDDEN_STAIRS_SPAWN_BLOCKED
 	arm_func_end GetNextFixedRoomAction
 
@@ -1787,7 +1787,7 @@ ov29_02342594: ; 0x02342594
 	ldr r2, _023427D8 ; =DUNGEON_PTR
 	ldr r4, _023427DC ; =HIDDEN_STAIRS_SPAWN_BLOCKED
 	ldr sb, [r2]
-	ldr r3, _023427E0 ; =ov29_0237CFBC
+	ldr r3, _023427E0 ; =FLOOR_GENERATION_STATUS
 	add r2, sb, #0x12000
 	ldr r5, [r2, #0xaa4 + OV29_02342594_OFFSET]
 	mov r6, #0
@@ -1957,7 +1957,7 @@ _023427D0:
 	.align 2, 0
 _023427D8: .word DUNGEON_PTR
 _023427DC: .word HIDDEN_STAIRS_SPAWN_BLOCKED
-_023427E0: .word ov29_0237CFBC
+_023427E0: .word FLOOR_GENERATION_STATUS
 	arm_func_end ov29_02342594
 
 	arm_func_start ov29_023427E4
@@ -1970,7 +1970,7 @@ ov29_023427E4: ; 0x023427E4
 	mov r5, #0
 	mov sb, r6
 	mov r4, r6
-	ldr r8, _02342B74 ; =ov29_0237CFBC
+	ldr r8, _02342B74 ; =FLOOR_GENERATION_STATUS
 	b _0234283C
 _0234280C:
 	ldr r2, [r8, #0x38]
@@ -1992,7 +1992,7 @@ _02342844:
 	mov sb, #3
 	mov r5, #0
 	mov r4, sb
-	ldr r8, _02342B74 ; =ov29_0237CFBC
+	ldr r8, _02342B74 ; =FLOOR_GENERATION_STATUS
 	b _02342888
 _02342858:
 	ldr r2, [r8, #0x3c]
@@ -2018,7 +2018,7 @@ _02342890:
 	mov r4, #0
 	b _0234295C
 _023428A8:
-	ldr r0, _02342B74 ; =ov29_0237CFBC
+	ldr r0, _02342B74 ; =FLOOR_GENERATION_STATUS
 	ldr r1, [r0, #0x38]
 	ldr r0, [r0, #0x30]
 	sub r0, r1, r0
@@ -2028,7 +2028,7 @@ _023428A8:
 	bl DungeonRandInt
 	cmp r0, #0x32
 	bge _02342918
-	ldr sb, _02342B74 ; =ov29_0237CFBC
+	ldr sb, _02342B74 ; =FLOOR_GENERATION_STATUS
 	ldr r8, [sb, #0x34]
 	b _023428F8
 _023428DC:
@@ -2043,13 +2043,13 @@ _023428F8:
 	ldr r0, [sb, #0x3c]
 	cmp r8, r0
 	blt _023428DC
-	ldr r0, _02342B74 ; =ov29_0237CFBC
+	ldr r0, _02342B74 ; =FLOOR_GENERATION_STATUS
 	ldr r1, [r0, #0x30]
 	add r1, r1, #1
 	str r1, [r0, #0x30]
 	b _02342958
 _02342918:
-	ldr sb, _02342B74 ; =ov29_0237CFBC
+	ldr sb, _02342B74 ; =FLOOR_GENERATION_STATUS
 	ldr r0, [sb, #0x38]
 	sub r0, r0, #1
 	str r0, [sb, #0x38]
@@ -2076,7 +2076,7 @@ _02342964:
 	mov r6, #0
 	b _02342A20
 _0234296C:
-	ldr r0, _02342B74 ; =ov29_0237CFBC
+	ldr r0, _02342B74 ; =FLOOR_GENERATION_STATUS
 	ldr r1, [r0, #0x3c]
 	ldr r0, [r0, #0x34]
 	sub r0, r1, r0
@@ -2086,7 +2086,7 @@ _0234296C:
 	bl DungeonRandInt
 	cmp r0, #0x32
 	bge _023429DC
-	ldr r8, _02342B74 ; =ov29_0237CFBC
+	ldr r8, _02342B74 ; =FLOOR_GENERATION_STATUS
 	ldr r4, [r8, #0x30]
 	b _023429BC
 _023429A0:
@@ -2101,13 +2101,13 @@ _023429BC:
 	ldr r0, [r8, #0x38]
 	cmp r4, r0
 	blt _023429A0
-	ldr r0, _02342B74 ; =ov29_0237CFBC
+	ldr r0, _02342B74 ; =FLOOR_GENERATION_STATUS
 	ldr r1, [r0, #0x34]
 	add r1, r1, #1
 	str r1, [r0, #0x34]
 	b _02342A1C
 _023429DC:
-	ldr r8, _02342B74 ; =ov29_0237CFBC
+	ldr r8, _02342B74 ; =FLOOR_GENERATION_STATUS
 	ldr r0, [r8, #0x3c]
 	sub r0, r0, #1
 	str r0, [r8, #0x3c]
@@ -2131,7 +2131,7 @@ _02342A20:
 	cmp r6, r5
 	blt _0234296C
 _02342A28:
-	ldr r4, _02342B74 ; =ov29_0237CFBC
+	ldr r4, _02342B74 ; =FLOOR_GENERATION_STATUS
 	ldr r6, [r4, #0x30]
 	b _02342A74
 _02342A34:
@@ -2158,7 +2158,7 @@ _02342A74:
 	ldr r3, [r4, #0x38]
 	cmp r6, r3
 	blt _02342A34
-	ldr r0, _02342B74 ; =ov29_0237CFBC
+	ldr r0, _02342B74 ; =FLOOR_GENERATION_STATUS
 	mov r7, #0
 	ldr r1, [r0, #0x30]
 	ldr r2, [r0, #0x34]
@@ -2225,7 +2225,7 @@ _02342B6C:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_02342B74: .word ov29_0237CFBC
+_02342B74: .word FLOOR_GENERATION_STATUS
 _02342B78: .word SHOP_ITEM_CHANCES
 	arm_func_end ov29_023427E4
 
@@ -2271,7 +2271,7 @@ ov29_02342BEC: ; 0x02342BEC
 	mov r0, r5, lsl #1
 	mul r0, r6, r0
 	ldr r3, _02342C60 ; =HIDDEN_STAIRS_SPAWN_BLOCKED
-	ldr r2, _02342C64 ; =ov29_0237CFBC
+	ldr r2, _02342C64 ; =FLOOR_GENERATION_STATUS
 	mov r1, #0
 	str r4, [r3, #4]
 	strh r1, [r2, #0xa]
@@ -2299,7 +2299,7 @@ _02342C50:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _02342C60: .word HIDDEN_STAIRS_SPAWN_BLOCKED
-_02342C64: .word ov29_0237CFBC
+_02342C64: .word FLOOR_GENERATION_STATUS
 	arm_func_end ov29_02342BEC
 
 	arm_func_start ResetImportantSpawnPositions
@@ -2335,7 +2335,7 @@ SpawnStairs: ; 0x02342C8C
 	ldrb r1, [r6]
 	ldrb r0, [r0]
 	cmp r0, #0
-	ldrne r0, _02342D98 ; =ov29_0237CFBC
+	ldrne r0, _02342D98 ; =FLOOR_GENERATION_STATUS
 	strneh r1, [r0, #0x1c]
 	ldrneb r1, [r6, #1]
 	strneh r1, [r0, #0x1e]
@@ -2349,7 +2349,7 @@ SpawnStairs: ; 0x02342C8C
 _02342D00:
 	ldrb r2, [r6]
 	add r0, r8, #0x8c00
-	ldr r1, _02342D98 ; =ov29_0237CFBC
+	ldr r1, _02342D98 ; =FLOOR_GENERATION_STATUS
 	strh r2, [r0, #0x20]
 	ldrb r2, [r6, #1]
 	strh r2, [r0, #0x22]
@@ -2389,7 +2389,7 @@ _02342D44:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _02342D94: .word HIDDEN_STAIRS_SPAWN_BLOCKED
-_02342D98: .word ov29_0237CFBC
+_02342D98: .word FLOOR_GENERATION_STATUS
 	arm_func_end SpawnStairs
 
 	arm_func_start GetHiddenStairsType
@@ -2510,7 +2510,7 @@ _02342F04: .word KECLEON_SHOP_BOOST_CHANCE_MULTIPLIER
 
 	arm_func_start ResetHiddenStairsSpawn
 ResetHiddenStairsSpawn: ; 0x02342F08
-	ldr r1, _02342F28 ; =ov29_0237CFBC
+	ldr r1, _02342F28 ; =FLOOR_GENERATION_STATUS
 	mvn r2, #0
 	strh r2, [r1, #0x1c]
 	ldr r0, _02342F2C ; =HIDDEN_STAIRS_SPAWN_BLOCKED
@@ -2519,7 +2519,7 @@ ResetHiddenStairsSpawn: ; 0x02342F08
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_02342F28: .word ov29_0237CFBC
+_02342F28: .word FLOOR_GENERATION_STATUS
 _02342F2C: .word HIDDEN_STAIRS_SPAWN_BLOCKED
 	arm_func_end ResetHiddenStairsSpawn
 

@@ -269,7 +269,6 @@
 .public _022A4BEC
 .public _022A4C00
 .public _022A4C28
-.public _022A4C50
 .public _022A4E50
 .public _022A4E58
 .public _022A4E7C
@@ -297,6 +296,7 @@
 .public AreItemsEquivalent
 .public ArrayCopy32
 .public ArrayFill32
+.public AUDIO_COMMANDS_BUFFER
 .public BAG_ITEMS_PTR_MIRROR
 .public BulkItemToItem
 .public CALCIUM_STAT_BOOST

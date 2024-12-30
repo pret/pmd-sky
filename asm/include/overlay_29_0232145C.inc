@@ -35,6 +35,7 @@
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageWithPopupCheckUser
 .public LowerSpeed
+.public METRONOME_NEXT_INDEX
 .public METRONOME_TABLE
 .public NATURE_POWER_TABLE
 .public NIGHTMARE_TURN_RANGE
@@ -64,7 +65,6 @@
 .public ov29_0234B084
 .public ov29_0235370C
 .public ov29_0237CA68
-.public ov29_0237CA88
 .public SLEEP_TURN_RANGE
 .public StringFromId
 .public sub_0201D1B0

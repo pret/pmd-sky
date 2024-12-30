@@ -2634,7 +2634,7 @@ GenerateFloor: ; 0x0233A6D8
 	bl LoadFixedRoomDataVeneer
 	bl ov29_02343DC4
 	ldr r1, _0233AE64 ; =DUNGEON_PTR
-	ldr r2, _0233AE6C ; =ov29_0237CFBC
+	ldr r2, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	ldr r1, [r1]
 	mov r3, r8
 	add r1, r1, #0x12000
@@ -2645,7 +2645,7 @@ GenerateFloor: ; 0x0233A6D8
 	bl ResetHiddenStairsSpawn
 	bl IsOutlawMonsterHouseFloor
 	ldr r1, _0233AE64 ; =DUNGEON_PTR
-	ldr r3, _0233AE6C ; =ov29_0237CFBC
+	ldr r3, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	ldr r2, [r1]
 	mov r1, sb
 	add r2, r2, #0xc4 + GENERATE_FLOOR_OFFSET
@@ -2653,7 +2653,7 @@ GenerateFloor: ; 0x0233A6D8
 	add r0, r2, #0x4000
 	bl GetHiddenStairsType
 	ldr r1, _0233AE64 ; =DUNGEON_PTR
-	ldr r2, _0233AE6C ; =ov29_0237CFBC
+	ldr r2, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	ldr r1, [r1]
 	str r0, [r2, #0x2c]
 	add r0, r1, #0x4000
@@ -2663,7 +2663,7 @@ GenerateFloor: ; 0x0233A6D8
 	mov r1, #0xff
 	cmp r0, #2
 	moveq r2, #1
-	ldr r0, _0233AE6C ; =ov29_0237CFBC
+	ldr r0, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	movne r2, r8
 	strb r2, [r0, #4]
 	strb r1, [r0, #2]
@@ -2671,7 +2671,7 @@ GenerateFloor: ; 0x0233A6D8
 	strb r1, [r0, #6]
 	ldrb r0, [sb, #7]
 	bl GetFinalKecleonShopSpawnChance
-	ldr r1, _0233AE6C ; =ov29_0237CFBC
+	ldr r1, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	strh r0, [r1, #0xc]
 	ldrb r0, [sb, #8]
 	strh r0, [r1, #0x10]
@@ -2679,7 +2679,7 @@ GenerateFloor: ; 0x0233A6D8
 	cmp r0, #0
 	movne r0, #0x64
 	strneh r0, [r1, #0x10]
-	ldr r0, _0233AE6C ; =ov29_0237CFBC
+	ldr r0, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	mov r1, #1
 	strb r1, [r0]
 	sub r1, r1, #2
@@ -2712,7 +2712,7 @@ _0233A828:
 	add r0, r0, #0x4000
 	strb r7, [r0, #0xc5 + GENERATE_FLOOR_OFFSET]
 	ldr r0, [r3]
-	ldr r2, _0233AE6C ; =ov29_0237CFBC
+	ldr r2, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	add r0, r0, #0x4000
 	strb r7, [r0, #0xc6 + GENERATE_FLOOR_OFFSET]
 	ldr r0, [r3]
@@ -2752,10 +2752,10 @@ _0233A8C8:
 	cmp r6, #1
 	add r0, r0, #0x4000
 	strh r6, [r0, #0xde + GENERATE_FLOOR_OFFSET]
-	ldrge r0, _0233AE6C ; =ov29_0237CFBC
+	ldrge r0, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	movge r1, #0
 	strge r1, [r0, #0x18]
-	ldr r0, _0233AE6C ; =ov29_0237CFBC
+	ldr r0, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	mov r1, #0
 	strb r1, [r0, #5]
 	strh r5, [r0, #0x20]
@@ -2844,7 +2844,7 @@ _0233A9E4:
 	add r2, r1, #0x4000
 	mov r1, #0xff
 	strb r1, [r2, #0xc9 + GENERATE_FLOOR_OFFSET]
-	ldr r1, _0233AE6C ; =ov29_0237CFBC
+	ldr r1, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	strle r0, [sp, #4]
 	and r0, sl, #0xf
 	cmp r0, #0xb
@@ -2867,7 +2867,7 @@ _0233AA4C: ; jump table
 _0233AA7C:
 	mov r0, #2
 	bl DungeonRandInt
-	ldr r1, _0233AE6C ; =ov29_0237CFBC
+	ldr r1, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	mov r2, #1
 	strb r2, [r1, #6]
 	add r1, r0, #2
@@ -2879,7 +2879,7 @@ _0233AA7C:
 _0233AAA8:
 	mov r0, #2
 	bl DungeonRandInt
-	ldr r1, _0233AE6C ; =ov29_0237CFBC
+	ldr r1, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	mov r2, #2
 	strb r2, [r1, #6]
 	add r1, r0, #2
@@ -2941,7 +2941,7 @@ _0233AB64:
 _0233AB78:
 	bl ResetInnerBoundaryTileRows
 	bl EnsureImpassableTilesAreWalls
-	ldr r0, _0233AE6C ; =ov29_0237CFBC
+	ldr r0, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	ldrb r0, [r0, #5]
 	cmp r0, #0
 	bne _0233AC4C
@@ -3005,7 +3005,7 @@ _0233AC50:
 _0233AC58:
 	cmp r6, #0xa
 	bne _0233AC88
-	ldr r0, _0233AE6C ; =ov29_0237CFBC
+	ldr r0, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	mvn r1, #0
 	strh r1, [r0, #0x20]
 	strh r1, [r0, #0x22]
@@ -3069,7 +3069,7 @@ _0233AD3C:
 _0233AD44:
 	cmp r7, #0xa
 	bne _0233AD98
-	ldr r0, _0233AE6C ; =ov29_0237CFBC
+	ldr r0, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	mvn r1, #0
 	strh r1, [r0, #0x20]
 	strh r1, [r0, #0x22]
@@ -3089,21 +3089,21 @@ _0233AD44:
 	bl MarkEnemySpawns
 	bl ResolveInvalidSpawns
 _0233AD98:
-	ldr r0, _0233AE6C ; =ov29_0237CFBC
+	ldr r0, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	ldrsh r1, [r0, #0x20]
 	cmp r1, #0
 	ldrgesh r0, [r0, #0x22]
 	cmpge r0, #0
 	blt _0233ADCC
 	bl GetKecleonIdToSpawnByFloor
-	ldr r1, _0233AE6C ; =ov29_0237CFBC
+	ldr r1, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	mov r2, r0
 	ldrsh r0, [r1, #0x20]
 	ldrsh r1, [r1, #0x22]
 	mov r3, #0
 	bl MarkShopkeeperSpawn
 _0233ADCC:
-	ldr r0, _0233AE6C ; =ov29_0237CFBC
+	ldr r0, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	ldr r0, [r0, #0x30]
 	cmp r0, #0
 	ldrlt r0, _0233AE64 ; =DUNGEON_PTR
@@ -3122,7 +3122,7 @@ _0233ADF4:
 	mov r1, r0
 	mov r3, #0x20
 	bl FlagHallwayJunctions
-	ldr r0, _0233AE6C ; =ov29_0237CFBC
+	ldr r0, _0233AE6C ; =FLOOR_GENERATION_STATUS
 	ldrb r0, [r0, #4]
 	cmp r0, #0
 	beq _0233AE28
@@ -3147,7 +3147,7 @@ _0233AE58:
 	.align 2, 0
 _0233AE64: .word DUNGEON_PTR
 _0233AE68: .word 0x000286B2 + GENERATE_FLOOR_OFFSET
-_0233AE6C: .word ov29_0237CFBC
+_0233AE6C: .word FLOOR_GENERATION_STATUS
 _0233AE70: .word SECONDARY_TERRAIN_TYPES
 _0233AE74: .word 0x00012AFA + GENERATE_FLOOR_OFFSET
 	arm_func_end GenerateFloor
@@ -3175,7 +3175,7 @@ ClearHiddenStairs: ; 0x0233AE94
 	ldrb r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r1, _0233AF08 ; =ov29_0237CFBC
+	ldr r1, _0233AF08 ; =FLOOR_GENERATION_STATUS
 	mvn r2, #0
 	ldrsh r0, [r1, #0x1c]
 	cmp r0, r2
@@ -3185,7 +3185,7 @@ ClearHiddenStairs: ; 0x0233AE94
 	bl GetTileSafe
 	mov r2, #0
 	strh r2, [r0]
-	ldr r1, _0233AF08 ; =ov29_0237CFBC
+	ldr r1, _0233AF08 ; =FLOOR_GENERATION_STATUS
 	strh r2, [r0, #2]
 	ldrsh r0, [r1, #0x1c]
 	ldrsh r1, [r1, #0x1e]
@@ -3201,7 +3201,7 @@ _0233AEFC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0233AF04: .word HIDDEN_STAIRS_SPAWN_BLOCKED
-_0233AF08: .word ov29_0237CFBC
+_0233AF08: .word FLOOR_GENERATION_STATUS
 	arm_func_end ClearHiddenStairs
 
 	arm_func_start FlagHallwayJunctions
@@ -3351,13 +3351,13 @@ GenerateStandardFloor: ; 0x0233B028
 	mov r1, r6
 	mov r2, r5
 	bl GenerateMazeRoom
-	ldr r3, _0233B18C ; =ov29_0237CFBC
+	ldr r3, _0233B18C ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x80
 	ldrsh r3, [r3, #0xc]
 	mov r1, r6
 	mov r2, r5
 	bl GenerateKecleonShop
-	ldr r3, _0233B18C ; =ov29_0237CFBC
+	ldr r3, _0233B18C ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x80
 	ldrsh r3, [r3, #0x10]
 	mov r1, r6
@@ -3380,7 +3380,7 @@ GenerateStandardFloor: ; 0x0233B028
 	add sp, sp, #0x1000
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0233B18C: .word ov29_0237CFBC
+_0233B18C: .word FLOOR_GENERATION_STATUS
 	arm_func_end GenerateStandardFloor
 
 	arm_func_start GenerateOuterRingFloor
@@ -3661,13 +3661,13 @@ _0233B4A0:
 	mov r2, #4
 	add r3, sp, #0x58
 	bl EnsureConnectedGrid
-	ldr r1, _0233B618 ; =ov29_0237CFBC
+	ldr r1, _0233B618 ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x94
 	ldrsh r3, [r1, #0xc]
 	mov r1, #6
 	mov r2, #4
 	bl GenerateKecleonShop
-	ldr r1, _0233B618 ; =ov29_0237CFBC
+	ldr r1, _0233B618 ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x94
 	ldrsh r3, [r1, #0x10]
 	mov r1, #6
@@ -3688,7 +3688,7 @@ _0233B4A0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233B614: .word 0x000001C2
-_0233B618: .word ov29_0237CFBC
+_0233B618: .word FLOOR_GENERATION_STATUS
 	arm_func_end GenerateOuterRingFloor
 
 	arm_func_start GenerateCrossroadsFloor
@@ -3962,13 +3962,13 @@ _0233B9B0:
 	mov r2, #4
 	str r4, [sp]
 	bl EnsureConnectedGrid
-	ldr r1, _0233BA78 ; =ov29_0237CFBC
+	ldr r1, _0233BA78 ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x98
 	ldrsh r3, [r1, #0xc]
 	mov r1, #5
 	mov r2, #4
 	bl GenerateKecleonShop
-	ldr r1, _0233BA78 ; =ov29_0237CFBC
+	ldr r1, _0233BA78 ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x98
 	ldrsh r3, [r1, #0x10]
 	mov r1, #5
@@ -3989,7 +3989,7 @@ _0233B9B0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233BA74: .word 0x000001C2
-_0233BA78: .word ov29_0237CFBC
+_0233BA78: .word FLOOR_GENERATION_STATUS
 	arm_func_end GenerateCrossroadsFloor
 
 	arm_func_start GenerateLineFloor
@@ -4057,13 +4057,13 @@ GenerateLineFloor: ; 0x0233BA7C
 	mov r2, #1
 	add r3, sp, #0x44
 	bl EnsureConnectedGrid
-	ldr r3, _0233BBD8 ; =ov29_0237CFBC
+	ldr r3, _0233BBD8 ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x80
 	ldrsh r3, [r3, #0xc]
 	mov r1, #5
 	mov r2, #1
 	bl GenerateKecleonShop
-	ldr r1, _0233BBD8 ; =ov29_0237CFBC
+	ldr r1, _0233BBD8 ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x80
 	ldrsh r3, [r1, #0x10]
 	mov r1, #5
@@ -4082,7 +4082,7 @@ GenerateLineFloor: ; 0x0233BA7C
 	add sp, sp, #0x1000
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0233BBD8: .word ov29_0237CFBC
+_0233BBD8: .word FLOOR_GENERATION_STATUS
 	arm_func_end GenerateLineFloor
 
 	arm_func_start GenerateCrossFloor
@@ -4165,13 +4165,13 @@ _0233BC58:
 	mov r2, r1
 	str ip, [sp]
 	bl EnsureConnectedGrid
-	ldr r1, _0233BD70 ; =ov29_0237CFBC
+	ldr r1, _0233BD70 ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x80
 	ldrsh r3, [r1, #0xc]
 	mov r1, #3
 	mov r2, r1
 	bl GenerateKecleonShop
-	ldr r3, _0233BD70 ; =ov29_0237CFBC
+	ldr r3, _0233BD70 ; =FLOOR_GENERATION_STATUS
 	mov r1, #3
 	ldrsh r3, [r3, #0x10]
 	add r0, sp, #0x80
@@ -4191,7 +4191,7 @@ _0233BC58:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0233BD6C: .word 0x000001C2
-_0233BD70: .word ov29_0237CFBC
+_0233BD70: .word FLOOR_GENERATION_STATUS
 	arm_func_end GenerateCrossFloor
 
 	arm_func_start GenerateBeetleFloor
@@ -4284,13 +4284,13 @@ _0233BE48:
 	mov r2, r1
 	add r3, sp, #0x44
 	bl EnsureConnectedGrid
-	ldr r3, _0233BF2C ; =ov29_0237CFBC
+	ldr r3, _0233BF2C ; =FLOOR_GENERATION_STATUS
 	mov r1, #3
 	ldrsh r3, [r3, #0xc]
 	add r0, sp, #0x80
 	mov r2, r1
 	bl GenerateKecleonShop
-	ldr r3, _0233BF2C ; =ov29_0237CFBC
+	ldr r3, _0233BF2C ; =FLOOR_GENERATION_STATUS
 	mov r1, #3
 	ldrsh r3, [r3, #0x10]
 	add r0, sp, #0x80
@@ -4310,7 +4310,7 @@ _0233BE48:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0233BF28: .word 0x000001C2
-_0233BF2C: .word ov29_0237CFBC
+_0233BF2C: .word FLOOR_GENERATION_STATUS
 	arm_func_end GenerateBeetleFloor
 
 	arm_func_start MergeRoomsVertically
@@ -4553,13 +4553,13 @@ _0233C23C:
 	mov r1, r6
 	mov r2, r5
 	bl GenerateMazeRoom
-	ldr r3, _0233C30C ; =ov29_0237CFBC
+	ldr r3, _0233C30C ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x80
 	ldrsh r3, [r3, #0xc]
 	mov r1, r6
 	mov r2, r5
 	bl GenerateKecleonShop
-	ldr r3, _0233C30C ; =ov29_0237CFBC
+	ldr r3, _0233C30C ; =FLOOR_GENERATION_STATUS
 	add r0, sp, #0x80
 	ldrsh r3, [r3, #0x10]
 	mov r1, r6
@@ -4583,7 +4583,7 @@ _0233C23C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233C308: .word 0x000001C2
-_0233C30C: .word ov29_0237CFBC
+_0233C30C: .word FLOOR_GENERATION_STATUS
 	arm_func_end GenerateOuterRoomsFloor
 
 	arm_func_start IsNotFullFloorFixedRoom
@@ -4630,7 +4630,7 @@ _0233C374:
 #ifdef JAPAN
 	ldr r2, _0233C768 ; =HIDDEN_STAIRS_SPAWN_BLOCKED
 	ldr r4, [r0]
-	ldr r1, _0233C76C ; =ov29_0237CFBC
+	ldr r1, _0233C76C ; =FLOOR_GENERATION_STATUS
 	add r0, r4, #0x12000
 	ldr r3, [r0, #0xa00]
 	add r4, r4, #0xcc00
@@ -4652,7 +4652,7 @@ _0233C374:
 #else
 	ldr r4, _0233C768 ; =HIDDEN_STAIRS_SPAWN_BLOCKED
 	ldr r0, [r0]
-	ldr r3, _0233C76C ; =ov29_0237CFBC
+	ldr r3, _0233C76C ; =FLOOR_GENERATION_STATUS
 	add r2, r0, #0x12000
 	ldr r5, [r2, #0xaa4]
 	add r1, r0, #0xcd00
@@ -4724,7 +4724,7 @@ _0233C450:
 	blt _0233C3E0
 	mov r8, #0
 	add r4, r6, #5
-	ldr sb, _0233C76C ; =ov29_0237CFBC
+	ldr sb, _0233C76C ; =FLOOR_GENERATION_STATUS
 	add r5, r7, #5
 	mov r6, r8
 _0233C46C:
@@ -4940,7 +4940,7 @@ _0233C758:
 	.align 2, 0
 _0233C764: .word DUNGEON_PTR
 _0233C768: .word HIDDEN_STAIRS_SPAWN_BLOCKED
-_0233C76C: .word ov29_0237CFBC
+_0233C76C: .word FLOOR_GENERATION_STATUS
 _0233C770: .word 0x000001C2
 	arm_func_end GenerateFixedRoom
 
@@ -5475,7 +5475,7 @@ _0233CE7C:
 	cmp r8, #0x20
 	and r6, r6, #6
 	blt _0233CF2C
-	ldr r0, _0233CF80 ; =ov29_0237CFBC
+	ldr r0, _0233CF80 ; =FLOOR_GENERATION_STATUS
 	ldrb r0, [r0, #6]
 	cmp r0, #1
 	cmpeq r6, #2
@@ -5483,7 +5483,7 @@ _0233CE7C:
 _0233CF2C:
 	cmp r8, #0x30
 	blt _0233CF48
-	ldr r0, _0233CF80 ; =ov29_0237CFBC
+	ldr r0, _0233CF80 ; =FLOOR_GENERATION_STATUS
 	ldrb r0, [r0, #6]
 	cmp r0, #2
 	cmpeq r6, #2
@@ -5507,7 +5507,7 @@ _0233CF70:
 	.align 2, 0
 _0233CF78: .word 0x000001C2
 _0233CF7C: .word DIRECTIONS_XY
-_0233CF80: .word ov29_0237CFBC
+_0233CF80: .word FLOOR_GENERATION_STATUS
 	arm_func_end GenerateExtraHallways
 
 	arm_func_start GetGridPositions
@@ -5569,7 +5569,7 @@ _0233D020:
 	mov lr, r8
 	b _0233D0E4
 _0233D040:
-	ldr sl, _0233D100 ; =ov29_0237CFBC
+	ldr sl, _0233D100 ; =FLOOR_GENERATION_STATUS
 	ldrb sl, [sl, #6]
 	cmp sl, #1
 	bne _0233D064
@@ -5623,7 +5623,7 @@ _0233D0F0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233D0FC: .word 0x000001C2
-_0233D100: .word ov29_0237CFBC
+_0233D100: .word FLOOR_GENERATION_STATUS
 	arm_func_end InitDungeonGrid
 
 	arm_func_start AssignRooms
@@ -5674,7 +5674,7 @@ _0233D178:
 	strb r1, [r4, r5]
 	strb r2, [r4, r0]
 	blt _0233D178
-	ldr r0, _0233D310 ; =ov29_0237CFBC
+	ldr r0, _0233D310 ; =FLOOR_GENERATION_STATUS
 	mov fp, #0
 	sub r1, sb, #1
 	str fp, [r0, #0x14]
@@ -5688,7 +5688,7 @@ _0233D1D0:
 	ldr r1, _0233D314 ; =0x000001C2
 	mov r4, #0
 	mla r6, r3, r1, sl
-	ldr r1, _0233D310 ; =ov29_0237CFBC
+	ldr r1, _0233D310 ; =FLOOR_GENERATION_STATUS
 	b _0233D250
 _0233D1E4:
 	mov r7, #0x1e
@@ -5728,7 +5728,7 @@ _0233D250:
 _0233D25C:
 	cmp r3, sb
 	blt _0233D1D0
-	ldr r0, _0233D310 ; =ov29_0237CFBC
+	ldr r0, _0233D310 ; =FLOOR_GENERATION_STATUS
 	ldr r0, [r0, #0x14]
 	cmp r0, #2
 	bge _0233D308
@@ -5775,14 +5775,14 @@ _0233D2F4:
 	cmp r4, #0xc8
 	blt _0233D27C
 _0233D2FC:
-	ldr r0, _0233D310 ; =ov29_0237CFBC
+	ldr r0, _0233D310 ; =FLOOR_GENERATION_STATUS
 	mov r1, #0
 	strb r1, [r0]
 _0233D308:
 	add sp, sp, #0x104
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0233D310: .word ov29_0237CFBC
+_0233D310: .word FLOOR_GENERATION_STATUS
 _0233D314: .word 0x000001C2
 	arm_func_end AssignRooms
 
@@ -5921,7 +5921,7 @@ _0233D4F0:
 	movlt r0, r5
 	movge r0, #0
 	and r6, r0, #0xff
-	ldr r0, _0233D670 ; =ov29_0237CFBC
+	ldr r0, _0233D670 ; =FLOOR_GENERATION_STATUS
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	ldr r0, [sp, #0x14]
@@ -6014,7 +6014,7 @@ _0233D658:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233D66C: .word 0x000001C2
-_0233D670: .word ov29_0237CFBC
+_0233D670: .word FLOOR_GENERATION_STATUS
 	arm_func_end CreateRoomsAndAnchors
 
 	arm_func_start GenerateSecondaryStructures
@@ -6069,12 +6069,12 @@ _0233D714: ; jump table
 	b _0233D938 ; case 4
 	b _0233D72C ; case 5
 _0233D72C:
-	ldr r0, _0233E058 ; =ov29_0237CFBC
+	ldr r0, _0233E058 ; =FLOOR_GENERATION_STATUS
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	beq _0233E014
 	sub r1, r0, #1
-	ldr r0, _0233E058 ; =ov29_0237CFBC
+	ldr r0, _0233E058 ; =FLOOR_GENERATION_STATUS
 	str r1, [r0, #0x18]
 	add r0, sl, sb
 	add r0, r0, r7
@@ -6233,7 +6233,7 @@ _0233D938:
 	add r0, r4, r3
 	add r0, r0, r0, lsr #31
 	mov r5, r0, asr #1
-	ldr r0, _0233E058 ; =ov29_0237CFBC
+	ldr r0, _0233E058 ; =FLOOR_GENERATION_STATUS
 	add r1, r2, r1
 	ldr r0, [r0, #0x18]
 	add r1, r1, r1, lsr #31
@@ -6241,7 +6241,7 @@ _0233D938:
 	cmp r0, #0
 	beq _0233E014
 	sub r1, r0, #1
-	ldr r0, _0233E058 ; =ov29_0237CFBC
+	ldr r0, _0233E058 ; =FLOOR_GENERATION_STATUS
 	str r1, [r0, #0x18]
 	add r0, sl, sb
 	add r0, r0, r7
@@ -6471,12 +6471,12 @@ _0233DC9C:
 	sub r1, r1, #3
 	bl DungeonRandRange
 	mov fp, r0
-	ldr r0, _0233E058 ; =ov29_0237CFBC
+	ldr r0, _0233E058 ; =FLOOR_GENERATION_STATUS
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	beq _0233E014
 	sub r1, r0, #1
-	ldr r0, _0233E058 ; =ov29_0237CFBC
+	ldr r0, _0233E058 ; =FLOOR_GENERATION_STATUS
 	str r1, [r0, #0x18]
 	add r0, sl, sb
 	add r0, r0, r7
@@ -6528,12 +6528,12 @@ _0233DDC8:
 	ldrsh r0, [r2, #2]
 	sub r0, r1, r0
 	tst r0, #1
-	ldrne r0, _0233E058 ; =ov29_0237CFBC
+	ldrne r0, _0233E058 ; =FLOOR_GENERATION_STATUS
 	ldrne r0, [r0, #0x18]
 	cmpne r0, #0
 	beq _0233E014
 	sub r1, r0, #1
-	ldr r0, _0233E058 ; =ov29_0237CFBC
+	ldr r0, _0233E058 ; =FLOOR_GENERATION_STATUS
 	str r1, [r0, #0x18]
 	add r0, sl, sb
 	add r0, r0, r7
@@ -6572,12 +6572,12 @@ _0233DE7C:
 	strb r0, [r8, #9]
 	b _0233E014
 _0233DE94:
-	ldr r0, _0233E058 ; =ov29_0237CFBC
+	ldr r0, _0233E058 ; =FLOOR_GENERATION_STATUS
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	beq _0233E014
 	sub r1, r0, #1
-	ldr r0, _0233E058 ; =ov29_0237CFBC
+	ldr r0, _0233E058 ; =FLOOR_GENERATION_STATUS
 	str r1, [r0, #0x18]
 	mov r0, r8
 	ldrsh r2, [r0, #4]
@@ -6693,7 +6693,7 @@ _0233E03C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233E054: .word 0x000001C2
-_0233E058: .word ov29_0237CFBC
+_0233E058: .word FLOOR_GENERATION_STATUS
 	arm_func_end GenerateSecondaryStructures
 
 	arm_func_start AssignGridCellConnections
@@ -8704,7 +8704,7 @@ GenerateKecleonShop: ; 0x0233FBE8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x44
 	ldr r5, _0233FF8C ; =DUNGEON_PTR
-	ldr r4, _0233FF90 ; =ov29_0237CFBC
+	ldr r4, _0233FF90 ; =FLOOR_GENERATION_STATUS
 	mvn r7, #0
 	ldr r6, [r5]
 	strh r7, [r4, #0x20]
@@ -8829,7 +8829,7 @@ _0233FD34:
 	bl abs
 	cmp r0, #4
 	blt _0233FF6C
-	ldr r0, _0233FF90 ; =ov29_0237CFBC
+	ldr r0, _0233FF90 ; =FLOOR_GENERATION_STATUS
 	add r1, sl, fp
 	mov r3, #1
 	strb r3, [r0, #3]
@@ -8857,12 +8857,12 @@ _0233FD34:
 	str r1, [r0, #0xd18 + GENERATE_KECLEON_SHOP_OFFSET]
 	rsb r2, r1, #0
 	str r2, [r0, #0xd1c + GENERATE_KECLEON_SHOP_OFFSET]
-	ldr r1, _0233FF90 ; =ov29_0237CFBC
+	ldr r1, _0233FF90 ; =FLOOR_GENERATION_STATUS
 	str r2, [r0, #0xd20 + GENERATE_KECLEON_SHOP_OFFSET]
 	ldr r4, [r1, #0x30]
 	b _0233FED8
 _0233FE54:
-	ldr sl, _0233FF90 ; =ov29_0237CFBC
+	ldr sl, _0233FF90 ; =FLOOR_GENERATION_STATUS
 	add r8, r6, #0xc000
 	ldr r5, [sl, #0x34]
 	b _0233FEC8
@@ -8898,7 +8898,7 @@ _0233FEC8:
 	blt _0233FE64
 	add r4, r4, #1
 _0233FED8:
-	ldr r0, _0233FF90 ; =ov29_0237CFBC
+	ldr r0, _0233FF90 ; =FLOOR_GENERATION_STATUS
 	ldr r0, [r0, #0x38]
 	cmp r4, r0
 	blt _0233FE54
@@ -8925,7 +8925,7 @@ _0233FF28:
 	ldrsh r0, [r4, #4]
 	cmp r5, r0
 	blt _0233FEF4
-	ldr r1, _0233FF90 ; =ov29_0237CFBC
+	ldr r1, _0233FF90 ; =FLOOR_GENERATION_STATUS
 	ldr r2, [r1, #0x30]
 	ldr r0, [r1, #0x38]
 	add r0, r2, r0
@@ -8954,7 +8954,7 @@ _0233FF84:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0233FF8C: .word DUNGEON_PTR
-_0233FF90: .word ov29_0237CFBC
+_0233FF90: .word FLOOR_GENERATION_STATUS
 _0233FF94: .word 0x000001C2
 _0233FF98: .word 0x0000270F
 	arm_func_end GenerateKecleonShop
@@ -8974,7 +8974,7 @@ GenerateMonsterHouse: ; 0x0233FF9C
 	bl DungeonRandInt
 	cmp r5, r0
 	ble _02340210
-	ldr r0, _0234021C ; =ov29_0237CFBC
+	ldr r0, _0234021C ; =FLOOR_GENERATION_STATUS
 	ldrb r0, [r0, #3]
 	cmp r0, #0
 	bne _02340210
@@ -9090,7 +9090,7 @@ _02340118:
 	ldrb r0, [fp, r7]
 	cmp r0, #0
 	beq _023401F4
-	ldr r0, _0234021C ; =ov29_0237CFBC
+	ldr r0, _0234021C ; =FLOOR_GENERATION_STATUS
 	add r2, sl, r3
 	mov r3, #1
 	strb r3, [r0, #1]
@@ -9145,7 +9145,7 @@ _02340210:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02340218: .word DUNGEON_PTR
-_0234021C: .word ov29_0237CFBC
+_0234021C: .word FLOOR_GENERATION_STATUS
 _02340220: .word 0x000001C2
 	arm_func_end GenerateMonsterHouse
 
@@ -9317,7 +9317,7 @@ _02340454: .word 0x000001C2
 GenerateMaze: ; 0x02340458
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x10
-	ldr r2, _023406D0 ; =ov29_0237CFBC
+	ldr r2, _023406D0 ; =FLOOR_GENERATION_STATUS
 	mov r3, #1
 	mov r5, r0
 	strb r3, [r2, #7]
@@ -9493,7 +9493,7 @@ _023406B8:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_023406D0: .word ov29_0237CFBC
+_023406D0: .word FLOOR_GENERATION_STATUS
 	arm_func_end GenerateMaze
 
 	arm_func_start GenerateMazeLine
