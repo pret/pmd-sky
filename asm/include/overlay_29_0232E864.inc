@@ -418,10 +418,10 @@
 .public ov29_0234B034
 .public ov29_02353718
 .public ov29_0237CA68
-.public ov29_0237CA69
 .public ov29_0237CA74
 .public ov29_0237CA80
 .public PlayMoveAnimation
+.public ROLLOUT_ICE_BALL_MISSED
 .public ShouldDisplayEntityWrapper
 .public SPATK_STAT_IDX
 .public sub_02050FF8

@@ -46,10 +46,6 @@ for language, pmdsky_debug_language_symbols in pmdsky_debug_symbols.items():
         continue
     xmap_language_symbols = xmap_symbols[language]
     for section_name, pmdsky_debug_section in pmdsky_debug_language_symbols.items():
-        if section_name == 'ram':
-            # We can't distinguish between different types of RAM symbols.
-            # E.g., they could be in the BSS, heap, etc.
-            continue
         if section_name in xmap_language_symbols:
             xmap_section = xmap_language_symbols[section_name]
         else:

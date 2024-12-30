@@ -3,7 +3,7 @@
 #include "dungeon_capabilities.h"
 #include "dungeon_capabilities_2.h"
 #include "dungeon_move.h"
-#include "dungeon_util.h"
+#include "dungeon_util_static.h"
 #include "joined_at_checks.h"
 
 bool8 CheckVariousConditions(struct entity *pokemon)
@@ -28,10 +28,10 @@ bool8 CheckVariousConditions(struct entity *pokemon)
     if (IsChargingAnyTwoTurnMove(pokemon, FALSE))
         return TRUE;
 
-    if (pokemon_info->frozen_class_status.freeze == FROZEN_STATUS_WRAP)
+    if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_WRAP)
         return TRUE;
 
-    if (pokemon_info->frozen_class_status.freeze == FROZEN_STATUS_WRAPPED)
+    if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_WRAPPED)
         return TRUE;
 
     return FALSE;

@@ -56,6 +56,7 @@
 .public LowerSpeed
 .public LUSTER_PURGE_LOWER_SPECIAL_DEFENSE_CHANCE
 .public METAL_CLAW_BOOST_ATTACK_CHANCE
+.public METRONOME_NEXT_INDEX
 .public METRONOME_TABLE
 .public MIST_BALL_LOWER_SPECIAL_ATTACK_CHANCE
 .public MoveMonsterToPos
@@ -81,7 +82,6 @@
 .public ov29_0235171E
 .public ov29_02352B1C
 .public ov29_0237CA84
-.public ov29_0237CA88
 .public POISON_TAIL_POISON_CHANCE
 .public RemoveEquivItem
 .public REST_TURN_RANGE

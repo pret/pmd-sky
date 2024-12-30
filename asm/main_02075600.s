@@ -4884,13 +4884,13 @@ _0207914C: .word sub_02085BD4
 
 	arm_func_start IncrementThreadCount
 IncrementThreadCount: ; 0x02079150
-	ldr r1, _02079164 ; =_022B9648
+	ldr r1, _02079164 ; =THREAD_INFO_STRUCT
 	ldr r0, [r1, #0x20]
 	add r0, r0, #1
 	str r0, [r1, #0x20]
 	bx lr
 	.align 2, 0
-_02079164: .word _022B9648
+_02079164: .word THREAD_INFO_STRUCT
 	arm_func_end IncrementThreadCount
 
 	arm_func_start sub_02079168
@@ -4997,7 +4997,7 @@ _02079290:
 	arm_func_start InsertThreadIntoList
 InsertThreadIntoList: ; 0x02079298
 	stmdb sp!, {r3, lr}
-	ldr r1, _020792F4 ; =_022B9648
+	ldr r1, _020792F4 ; =THREAD_INFO_STRUCT
 	mov ip, #0
 	ldr lr, [r1, #0x2c]
 	mov r3, lr
@@ -5018,17 +5018,17 @@ _020792D0:
 	strne r1, [r0, #0x68]
 	strne r0, [ip, #0x68]
 	ldmneia sp!, {r3, pc}
-	ldr r1, _020792F4 ; =_022B9648
+	ldr r1, _020792F4 ; =THREAD_INFO_STRUCT
 	str lr, [r0, #0x68]
 	str r0, [r1, #0x2c]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020792F4: .word _022B9648
+_020792F4: .word THREAD_INFO_STRUCT
 	arm_func_end InsertThreadIntoList
 
 	arm_func_start sub_020792F8
 sub_020792F8: ; 0x020792F8
-	ldr r1, _0207933C ; =_022B9648
+	ldr r1, _0207933C ; =THREAD_INFO_STRUCT
 	mov r2, #0
 	ldr r1, [r1, #0x2c]
 	b _02079310
@@ -5044,17 +5044,17 @@ _02079310:
 	strne r0, [r2, #0x68]
 	bxne lr
 	ldr r1, [r0, #0x68]
-	ldr r0, _0207933C ; =_022B9648
+	ldr r0, _0207933C ; =THREAD_INFO_STRUCT
 	str r1, [r0, #0x2c]
 	bx lr
 	.align 2, 0
-_0207933C: .word _022B9648
+_0207933C: .word THREAD_INFO_STRUCT
 	arm_func_end sub_020792F8
 
 	arm_func_start sub_02079340
 sub_02079340: ; 0x02079340
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r0, _02079400 ; =_022B9648
+	ldr r0, _02079400 ; =THREAD_INFO_STRUCT
 	ldr r1, [r0, #4]
 	cmp r1, #0
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -5070,7 +5070,7 @@ _02079370:
 	strh r0, [r4]
 	ldmia sp!, {r4, r5, r6, pc}
 _0207937C:
-	ldr r0, _02079400 ; =_022B9648
+	ldr r0, _02079400 ; =THREAD_INFO_STRUCT
 	ldr r0, [r0, #8]
 	ldr r6, [r0]
 	bl sub_02079968
@@ -5086,7 +5086,7 @@ _0207937C:
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 _020793B8:
-	ldr r0, _02079400 ; =_022B9648
+	ldr r0, _02079400 ; =THREAD_INFO_STRUCT
 	ldr r2, [r0]
 	cmp r2, #0
 	beq _020793D4
@@ -5101,13 +5101,13 @@ _020793D4:
 	mov r1, r5
 	blx r2
 _020793EC:
-	ldr r1, _02079400 ; =_022B9648
+	ldr r1, _02079400 ; =THREAD_INFO_STRUCT
 	mov r0, r5
 	str r5, [r1, #0x28]
 	bl sub_02079D54
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02079400: .word _022B9648
+_02079400: .word THREAD_INFO_STRUCT
 _02079404: .word _022B966C
 	arm_func_end sub_02079340
 
@@ -5115,7 +5115,7 @@ _02079404: .word _022B966C
 sub_02079408: ; 0x02079408
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r0, _02079518 ; =_022B9648
+	ldr r0, _02079518 ; =THREAD_INFO_STRUCT
 	ldr r1, [r0, #0xc]
 	cmp r1, #0
 	addne sp, sp, #8
@@ -5147,7 +5147,7 @@ _0207947C:
 	sub ip, r0, r2
 	add r2, r1, #0x3f80
 	ldr r0, _02079530 ; =0x00000800
-	ldr r1, _02079518 ; =_022B9648
+	ldr r1, _02079518 ; =THREAD_INFO_STRUCT
 	sub r3, r2, r0
 	str r3, [r1, #0x188]
 	str ip, [r1, #0x184]
@@ -5175,7 +5175,7 @@ _0207947C:
 	mov r2, #0
 	str ip, [sp, #4]
 	bl StartThread
-	ldr r0, _02079518 ; =_022B9648
+	ldr r0, _02079518 ; =THREAD_INFO_STRUCT
 	mov r1, #0x20
 	str r1, [r0, #0xa4]
 	mov r1, #1
@@ -5183,7 +5183,7 @@ _0207947C:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02079518: .word _022B9648
+_02079518: .word THREAD_INFO_STRUCT
 _0207951C: .word _022B9670
 _02079520: .word 0x00000000
 _02079524: .word _022B973C
@@ -5280,19 +5280,19 @@ _02079658: .word ThreadExit
 ThreadExit: ; 0x0207965C
 	stmdb sp!, {r3, lr}
 	bl EnableIrqFlag
-	ldr r0, _02079678 ; =_022B9648
+	ldr r0, _02079678 ; =THREAD_INFO_STRUCT
 	mov r1, #0
 	ldr r0, [r0, #0x28]
 	bl sub_0207967C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02079678: .word _022B9648
+_02079678: .word THREAD_INFO_STRUCT
 	arm_func_end ThreadExit
 
 	arm_func_start sub_0207967C
 sub_0207967C: ; 0x0207967C
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _020796D0 ; =_022B9648
+	ldr r2, _020796D0 ; =THREAD_INFO_STRUCT
 	mov r5, r0
 	ldr r2, [r2, #0x1c]
 	mov r4, r1
@@ -5314,14 +5314,14 @@ _020796C4:
 	bl sub_020796D8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020796D0: .word _022B9648
+_020796D0: .word THREAD_INFO_STRUCT
 _020796D4: .word sub_020796D8
 	arm_func_end sub_0207967C
 
 	arm_func_start sub_020796D8
 sub_020796D8: ; 0x020796D8
 	stmdb sp!, {r3, lr}
-	ldr r1, _0207970C ; =_022B9648
+	ldr r1, _0207970C ; =THREAD_INFO_STRUCT
 	ldr r1, [r1, #8]
 	ldr r3, [r1]
 	ldr r2, [r3, #0xb4]
@@ -5335,13 +5335,13 @@ _02079704:
 	bl sub_02079710
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0207970C: .word _022B9648
+_0207970C: .word THREAD_INFO_STRUCT
 	arm_func_end sub_020796D8
 
 	arm_func_start sub_02079710
 sub_02079710: ; 0x02079710
 	stmdb sp!, {r4, lr}
-	ldr r0, _02079768 ; =_022B9648
+	ldr r0, _02079768 ; =THREAD_INFO_STRUCT
 	ldr r0, [r0, #8]
 	ldr r4, [r0]
 	bl sub_02079C14
@@ -5364,7 +5364,7 @@ _02079740:
 	bl WaitForever2
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02079768: .word _022B9648
+_02079768: .word THREAD_INFO_STRUCT
 	arm_func_end sub_02079710
 
 	arm_func_start sub_0207976C
@@ -5372,7 +5372,7 @@ sub_0207976C: ; 0x0207976C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
-	ldr r1, _020797E4 ; =_022B9648
+	ldr r1, _020797E4 ; =THREAD_INFO_STRUCT
 	mov r4, r0
 	ldr r0, [r1, #0x28]
 	cmp r0, r5
@@ -5402,7 +5402,7 @@ _020797B8:
 	bl sub_02079990
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_020797E4: .word _022B9648
+_020797E4: .word THREAD_INFO_STRUCT
 	arm_func_end sub_0207976C
 
 	arm_func_start sub_020797E8
@@ -5468,7 +5468,7 @@ sub_02079888: ; 0x02079888
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	bl EnableIrqFlag
-	ldr r1, _020798D4 ; =_022B9648
+	ldr r1, _020798D4 ; =THREAD_INFO_STRUCT
 	mov r4, r0
 	ldr r0, [r1, #8]
 	cmp r6, #0
@@ -5486,7 +5486,7 @@ _020798BC:
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_020798D4: .word _022B9648
+_020798D4: .word THREAD_INFO_STRUCT
 	arm_func_end sub_02079888
 
 	arm_func_start sub_020798D8
@@ -5538,7 +5538,7 @@ sub_02079940: ; 0x02079940
 
 	arm_func_start sub_02079968
 sub_02079968: ; 0x02079968
-	ldr r0, _0207998C ; =_022B9648
+	ldr r0, _0207998C ; =THREAD_INFO_STRUCT
 	ldr r0, [r0, #0x2c]
 	b _02079978
 _02079974:
@@ -5550,7 +5550,7 @@ _02079978:
 	bne _02079974
 	bx lr
 	.align 2, 0
-_0207998C: .word _022B9648
+_0207998C: .word THREAD_INFO_STRUCT
 	arm_func_end sub_02079968
 
 	arm_func_start sub_02079990
@@ -5567,13 +5567,13 @@ sub_02079990: ; 0x02079990
 	arm_func_start sub_020799AC
 sub_020799AC: ; 0x020799AC
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r0, _02079A60 ; =_022B9648
+	ldr r0, _02079A60 ; =THREAD_INFO_STRUCT
 	mov r4, #0
 	mov r5, r4
 	mov r6, r4
 	ldr r8, [r0, #0x28]
 	bl EnableIrqFlag
-	ldr r1, _02079A60 ; =_022B9648
+	ldr r1, _02079A60 ; =THREAD_INFO_STRUCT
 	mov r7, r0
 	ldr r1, [r1, #0x2c]
 	mov r0, r4
@@ -5606,7 +5606,7 @@ _02079A28:
 	strne r0, [r4, #0x68]
 	bne _02079A44
 	ldr r1, [r8, #0x68]
-	ldr r0, _02079A60 ; =_022B9648
+	ldr r0, _02079A60 ; =THREAD_INFO_STRUCT
 	str r1, [r0, #0x2c]
 _02079A44:
 	ldr r0, [r5, #0x68]
@@ -5617,13 +5617,13 @@ _02079A44:
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02079A60: .word _022B9648
+_02079A60: .word THREAD_INFO_STRUCT
 	arm_func_end sub_020799AC
 
 	arm_func_start sub_02079A64
 sub_02079A64: ; 0x02079A64
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	ldr r2, _02079B04 ; =_022B9648
+	ldr r2, _02079B04 ; =THREAD_INFO_STRUCT
 	mov r7, r0
 	mov r6, r1
 	ldr r8, [r2, #0x2c]
@@ -5655,7 +5655,7 @@ _02079ABC:
 	strne r0, [r4, #0x68]
 	bne _02079AE4
 	ldr r1, [r7, #0x68]
-	ldr r0, _02079B04 ; =_022B9648
+	ldr r0, _02079B04 ; =THREAD_INFO_STRUCT
 	str r1, [r0, #0x2c]
 _02079AE4:
 	mov r0, r7
@@ -5668,7 +5668,7 @@ _02079AF4:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02079B04: .word _022B9648
+_02079B04: .word THREAD_INFO_STRUCT
 _02079B08: .word _022B967C
 	arm_func_end sub_02079A64
 
@@ -5685,7 +5685,7 @@ sub_02079B14: ; 0x02079B14
 	mov r4, r0
 	add r0, sp, #8
 	bl sub_0207B040
-	ldr r0, _02079BB0 ; =_022B9648
+	ldr r0, _02079BB0 ; =THREAD_INFO_STRUCT
 	ldr r0, [r0, #8]
 	ldr r0, [r0]
 	str r0, [sp, #4]
@@ -5722,7 +5722,7 @@ _02079BA0:
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, pc}
 	.align 2, 0
-_02079BB0: .word _022B9648
+_02079BB0: .word THREAD_INFO_STRUCT
 _02079BB4: .word 0x000082EA
 _02079BB8: .word sub_02079BBC
 	arm_func_end sub_02079B14
@@ -5745,14 +5745,14 @@ sub_02079BDC: ; 0x02079BDC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
-	ldr r1, _02079C00 ; =_022B9648
+	ldr r1, _02079C00 ; =THREAD_INFO_STRUCT
 	ldr r4, [r1, #0x30]
 	str r5, [r1, #0x30]
 	bl SetIrqFlag
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02079C00: .word _022B9648
+_02079C00: .word THREAD_INFO_STRUCT
 	arm_func_end sub_02079BDC
 
 	arm_func_start sub_02079C04
@@ -5768,7 +5768,7 @@ _02079C0C:
 sub_02079C14: ; 0x02079C14
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
-	ldr r2, _02079C44 ; =_022B9648
+	ldr r2, _02079C44 ; =THREAD_INFO_STRUCT
 	mvn r1, #0
 	ldr r3, [r2, #4]
 	cmp r3, r1
@@ -5779,14 +5779,14 @@ sub_02079C14: ; 0x02079C14
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02079C44: .word _022B9648
+_02079C44: .word THREAD_INFO_STRUCT
 	arm_func_end sub_02079C14
 
 	arm_func_start sub_02079C48
 sub_02079C48: ; 0x02079C48
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
-	ldr r1, _02079C78 ; =_022B9648
+	ldr r1, _02079C78 ; =THREAD_INFO_STRUCT
 	mov r4, #0
 	ldr r3, [r1, #4]
 	cmp r3, #0
@@ -5797,7 +5797,7 @@ sub_02079C48: ; 0x02079C48
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02079C78: .word _022B9648
+_02079C78: .word THREAD_INFO_STRUCT
 	arm_func_end sub_02079C48
 
 	arm_func_start SetThreadField0xB4

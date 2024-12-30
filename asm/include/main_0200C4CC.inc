@@ -27,11 +27,11 @@
 .public _020AF6C4
 .public _020AF6C8
 .public _020AFF88_EU
-.public _022A3824
 .public AllKecleonShopsZInit
 .public AllocateTemp1024ByteBufferFromPool
 .public ARM9_UNKNOWN_TABLE__NA_2097FF8
 .public AVAILABLE_ITEMS_IN_GROUP_TABLE
+.public BAG_ITEMS
 .public BAG_ITEMS_PTR_MIRROR
 .public CopyBitsFrom
 .public CopyBitsTo

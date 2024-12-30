@@ -1,5 +1,5 @@
-#include "dungeon_util_1.h"
 #include "dungeon_util.h"
+#include "dungeon_util_static.h"
 
 bool8 ShouldRunMonsterAi(struct entity *pokemon)
 {

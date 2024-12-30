@@ -1,7 +1,7 @@
 #include "dungeon_ai_targeting.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
-#include "dungeon_util.h"
+#include "dungeon_util_static.h"
 #include "overlay_29_023000E4.h"
 
 bool8 ShouldMonsterRunAway(struct entity *pokemon)

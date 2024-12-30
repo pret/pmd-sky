@@ -2078,7 +2078,7 @@ DoMoveLeechSeed: ; 0x0232BC34
 DoMoveMetronome: ; 0x0232BC64
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
-	ldr r2, _0232BCB8 ; =ov29_0237CA88
+	ldr r2, _0232BCB8 ; =METRONOME_NEXT_INDEX
 	mov r5, r0
 	ldr r6, [r2]
 	ldr r0, _0232BCBC ; =METRONOME_TABLE
@@ -2098,7 +2098,7 @@ DoMoveMetronome: ; 0x0232BC64
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0232BCB8: .word ov29_0237CA88
+_0232BCB8: .word METRONOME_NEXT_INDEX
 _0232BCBC: .word METRONOME_TABLE
 _0232BCC0: .word ov10_022C5DE0
 	arm_func_end DoMoveMetronome

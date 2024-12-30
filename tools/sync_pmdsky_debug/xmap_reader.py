@@ -26,6 +26,9 @@ def read_xmap_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]]:
         xmap_symbols[language] = read_xmap_symbols_for_language(language)
     return xmap_symbols
 
+def line_is_data(line: str) -> bool:
+    return '.rodata' in line or '.data' in line or '.bss' in line
+
 def read_xmap_symbols_for_language(language: str) -> Dict[str, Dict[int, SymbolDetails]]:
     xmap_path = os.path.join('build', f'pmdsky.{language}', 'main.nef.xMAP')
     remote_xmap_url = f'https://raw.githubusercontent.com/pret/pmd-sky/xmap/pmdsky{language}.xMAP'
@@ -72,11 +75,11 @@ def read_xmap_symbols_for_language(language: str) -> Dict[str, Dict[int, SymbolD
                 if current_section is not None and current_section not in xmap_symbols:
                     xmap_symbols[current_section] = {}
 
-            elif current_section is not None and line.startswith('  ') and ('.text' in line or '.rodata' in line or '.data' in line or '.bss' in line or '.itcm' in line) and len(line) > 28 and line[28] not in NON_FUNCTION_SYMBOLS:
+            elif current_section is not None and line.startswith('  ') and ('.text' in line or '.itcm' in line or line_is_data(line)) and len(line) > 28 and line[28] not in NON_FUNCTION_SYMBOLS:
                 symbol_split = line[28:-1].split('\t')
                 symbol_name = symbol_split[0]
                 symbol_address = int(line[2:10], 16)
-                if '00000000' in line:
+                if line_is_data(line):
                     if not symbol_name.startswith('$'):
                         xmap_symbols[current_section][symbol_address] = SymbolDetails(symbol_name, symbol_split[1][1:-1], True)
                 else:

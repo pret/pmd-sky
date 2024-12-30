@@ -887,11 +887,11 @@ ov29_022F6E40: ; 0x022F6E40
 	ldr r0, _022F6ED8 ; =0x0001A002
 	mov r1, #0
 	bl MemAlloc
-	ldr r2, _022F6EDC ; =ov29_0237C9AC
+	ldr r2, _022F6EDC ; =LOADED_ATTACK_SPRITE_DATA
 	ldr r1, _022F6ED8 ; =0x0001A002
 	str r0, [r2]
 	bl MemZero
-	ldr r0, _022F6EDC ; =ov29_0237C9AC
+	ldr r0, _022F6EDC ; =LOADED_ATTACK_SPRITE_DATA
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
@@ -931,7 +931,7 @@ _022F6EC0:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022F6ED8: .word 0x0001A002
-_022F6EDC: .word ov29_0237C9AC
+_022F6EDC: .word LOADED_ATTACK_SPRITE_DATA
 _022F6EE0: .word ov29_0237C9B0
 _022F6EE4: .word 0x00000216
 _022F6EE8: .word 0x00000217
@@ -957,7 +957,7 @@ _022F6F0C: .word LOADED_ATTACK_SPRITE_FILE_INDEX
 FreeLoadedAttackSpriteAndMore: ; 0x022F6F10
 	stmdb sp!, {r4, r5, r6, lr}
 	bl ClearLoadedAttackSprite
-	ldr r0, _022F6F60 ; =ov29_0237C9AC
+	ldr r0, _022F6F60 ; =LOADED_ATTACK_SPRITE_DATA
 	ldr r0, [r0]
 	bl MemFree
 	mov r6, #0
@@ -973,12 +973,12 @@ _022F6F44:
 	add r6, r6, #1
 	cmp r6, #2
 	blt _022F6F30
-	ldr r0, _022F6F60 ; =ov29_0237C9AC
+	ldr r0, _022F6F60 ; =LOADED_ATTACK_SPRITE_DATA
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022F6F60: .word ov29_0237C9AC
+_022F6F60: .word LOADED_ATTACK_SPRITE_DATA
 _022F6F64: .word ov29_0237C9B0
 	arm_func_end FreeLoadedAttackSpriteAndMore
 
@@ -993,7 +993,7 @@ SetAndLoadCurrentAttackAnimation: ; 0x022F6F68
 	ldreqh r0, [r2]
 	cmpeq r0, r4
 	beq _022F6FE8
-	ldr r0, _022F7000 ; =ov29_0237C9AC
+	ldr r0, _022F7000 ; =LOADED_ATTACK_SPRITE_DATA
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrsh r0, [r0]
@@ -1004,13 +1004,13 @@ _022F6FA8:
 	mov r1, #1
 	ldr r0, _022F7004 ; =WAN_TABLE
 	str r1, [sp]
-	ldr r1, _022F7000 ; =ov29_0237C9AC
+	ldr r1, _022F7000 ; =LOADED_ATTACK_SPRITE_DATA
 	ldr r0, [r0]
 	ldr r3, [r1]
 	mov r1, r5
 	mov r2, r4
 	bl LoadWanTableEntryFromPackUseProvidedMemory
-	ldr r1, _022F7000 ; =ov29_0237C9AC
+	ldr r1, _022F7000 ; =LOADED_ATTACK_SPRITE_DATA
 	ldr r2, _022F6FFC ; =LOADED_ATTACK_SPRITE_FILE_INDEX
 	ldr r1, [r1]
 	add r1, r1, #0x1a000
@@ -1018,21 +1018,21 @@ _022F6FA8:
 	strh r5, [r2, #2]
 	strh r4, [r2]
 _022F6FE8:
-	ldr r0, _022F7000 ; =ov29_0237C9AC
+	ldr r0, _022F7000 ; =LOADED_ATTACK_SPRITE_DATA
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrsh r0, [r0]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F6FFC: .word LOADED_ATTACK_SPRITE_FILE_INDEX
-_022F7000: .word ov29_0237C9AC
+_022F7000: .word LOADED_ATTACK_SPRITE_DATA
 _022F7004: .word WAN_TABLE
 	arm_func_end SetAndLoadCurrentAttackAnimation
 
 	arm_func_start ClearLoadedAttackSprite
 ClearLoadedAttackSprite: ; 0x022F7008
 	stmdb sp!, {r3, lr}
-	ldr r0, _022F7048 ; =ov29_0237C9AC
+	ldr r0, _022F7048 ; =LOADED_ATTACK_SPRITE_DATA
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrsh r1, [r0]
@@ -1041,26 +1041,26 @@ ClearLoadedAttackSprite: ; 0x022F7008
 	ldr r0, _022F704C ; =WAN_TABLE
 	ldr r0, [r0]
 	bl DeleteWanTableEntryVeneer
-	ldr r0, _022F7048 ; =ov29_0237C9AC
+	ldr r0, _022F7048 ; =LOADED_ATTACK_SPRITE_DATA
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	strh r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022F7048: .word ov29_0237C9AC
+_022F7048: .word LOADED_ATTACK_SPRITE_DATA
 _022F704C: .word WAN_TABLE
 	arm_func_end ClearLoadedAttackSprite
 
 	arm_func_start GetLoadedAttackSpriteId
 GetLoadedAttackSpriteId: ; 0x022F7050
-	ldr r0, _022F7064 ; =ov29_0237C9AC
+	ldr r0, _022F7064 ; =LOADED_ATTACK_SPRITE_DATA
 	ldr r0, [r0]
 	add r0, r0, #0x1a000
 	ldrsh r0, [r0]
 	bx lr
 	.align 2, 0
-_022F7064: .word ov29_0237C9AC
+_022F7064: .word LOADED_ATTACK_SPRITE_DATA
 	arm_func_end GetLoadedAttackSpriteId
 
 	arm_func_start DungeonGetTotalSpriteFileSize

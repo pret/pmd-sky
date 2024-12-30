@@ -7,7 +7,7 @@
 InitMemAllocTable: ; 0x02000DE0
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
-	ldr r1, _02000E54 ; =_020B4BC0
+	ldr r1, _02000E54 ; =DEFAULT_MEMORY_ARENA_MEMORY
 	ldr r3, _02000E58 ; =0x001E6400
 	ldr r0, _02000E5C ; =_02090B70
 	mov r2, r1
@@ -35,7 +35,7 @@ InitMemAllocTable: ; 0x02000DE0
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02000E54: .word _020B4BC0
+_02000E54: .word DEFAULT_MEMORY_ARENA_MEMORY
 _02000E58: .word 0x001E6400
 _02000E5C: .word _02090B70
 _02000E60: .word _020B3380

@@ -26,7 +26,7 @@ s32 DungeonRandRange(s32 from, s32 to)
     }
 }
 
-u8 DungeonRandOutcome__022EAB20(s32 percentChance)
+bool8 DungeonRandOutcome__022EAB20(s32 percentChance)
 {
     if ((((DungeonRand16Bit() & 0xFFFF) * 100) >> 16) < percentChance)
     {
@@ -35,7 +35,7 @@ u8 DungeonRandOutcome__022EAB20(s32 percentChance)
     return FALSE;
 }
 
-u8 DungeonRandOutcome__022EAB50(s32 percentChance)
+bool8 DungeonRandOutcome__022EAB50(s32 percentChance)
 {
     if ((((DungeonRand16Bit() & 0xFFFF) * 100) >> 16) < percentChance)
     {

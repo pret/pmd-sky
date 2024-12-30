@@ -27,6 +27,7 @@
 .public IsFloorOver
 .public IsShaymin
 .public IsShoppableItem
+.public LOADED_ATTACK_SPRITE_DATA
 .public LOADED_ATTACK_SPRITE_FILE_INDEX
 .public LoadMissionMonsterSprites
 .public LoadMonsterSprite
@@ -48,7 +49,6 @@
 .public ov29_0234B09C
 .public ov29_02352760
 .public ov29_023535A8
-.public ov29_0237C9AC
 .public ov29_0237C9B0
 .public RemoveGroundItem
 .public SpawnItem

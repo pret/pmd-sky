@@ -2677,7 +2677,7 @@ sub_02026E78: ; 0x02026E78
 	stmdb sp!, {r3, lr}
 	ldr r3, _02026FEC ; =_020AFD4C
 	mov ip, #1
-	ldr r0, _02026FF0 ; =_022A88DC
+	ldr r0, _02026FF0 ; =WINDOW_LIST
 	mov r1, #0
 	mov r2, #0x1180
 	strb ip, [r3, #4]
@@ -2692,7 +2692,7 @@ sub_02026E78: ; 0x02026E78
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r3, _02026FEC ; =_020AFD4C
 	mov r4, #1
-	ldr r0, _02026FF0 ; =_022A88DC
+	ldr r0, _02026FF0 ; =WINDOW_LIST
 	mov r1, #0
 	mov r2, #0x1180
 	strb r4, [r3, #2]
@@ -2825,7 +2825,7 @@ _02026EB0:
 #endif
 	.align 2, 0
 _02026FEC: .word _020AFD4C
-_02026FF0: .word _022A88DC
+_02026FF0: .word WINDOW_LIST
 #ifndef JAPAN
 _02026FF4: .word _022A7A6C
 #endif
@@ -3318,12 +3318,12 @@ _020275F4: .word _022A7A8C
 
 	arm_func_start GetWindow
 GetWindow: ; 0x020275F8
-	ldr r2, _02027608 ; =_022A88DC
+	ldr r2, _02027608 ; =WINDOW_LIST
 	mov r1, #0xe0
 	mla r0, r1, r0, r2
 	bx lr
 	.align 2, 0
-_02027608: .word _022A88DC
+_02027608: .word WINDOW_LIST
 	arm_func_end GetWindow
 
 	arm_func_start sub_0202760C
@@ -3356,7 +3356,7 @@ _02027980: .word _022A88F0
 
 	arm_func_start sub_02027624
 sub_02027624: ; 0x02027624
-	ldr r2, _02027644 ; =_022A88DC
+	ldr r2, _02027644 ; =WINDOW_LIST
 	mov r1, #0xe0
 	mla r2, r0, r1, r2
 	ldrb r1, [r2, #6]
@@ -3365,14 +3365,14 @@ sub_02027624: ; 0x02027624
 	mov r0, r0, lsl #5
 	bx lr
 	.align 2, 0
-_02027644: .word _022A88DC
+_02027644: .word WINDOW_LIST
 	arm_func_end sub_02027624
 
 	arm_func_start NewWindowScreenCheck
 NewWindowScreenCheck: ; 0x02027648
 	stmdb sp!, {r4, lr}
 	mov r4, #0
-	ldr ip, _020276B8 ; =_022A88DC
+	ldr ip, _020276B8 ; =WINDOW_LIST
 	mov lr, r4
 	mov r3, r4
 _0202765C:
@@ -3401,7 +3401,7 @@ _02027678:
 	bl NewWindow
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020276B8: .word _022A88DC
+_020276B8: .word WINDOW_LIST
 _020276BC: .word _022A7A6C
 	arm_func_end NewWindowScreenCheck
 
@@ -3410,7 +3410,7 @@ NewWindow: ; 0x020276C0
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
-	ldr r5, _02027898 ; =_022A88DC
+	ldr r5, _02027898 ; =WINDOW_LIST
 	ldr r6, _0202789C ; =_022A7B1C
 	mov r4, #0
 	b _020276FC
@@ -3533,7 +3533,7 @@ _02027704:
 	strb r1, [r6, #0x2a]
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_02027898: .word _022A88DC
+_02027898: .word WINDOW_LIST
 _0202789C: .word _022A7B1C
 _020278A0: .word _022A7A74
 _020278A4: .word _022A7A6C
@@ -3576,7 +3576,7 @@ sub_020278C4: ; 0x020278C4
 	streqb r3, [r1, r2]
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov ip, r1
-	ldr r5, _02027970 ; =_022A88DC
+	ldr r5, _02027970 ; =WINDOW_LIST
 	mov lr, #0xe0
 	b _02027924
 _0202790C:
@@ -3612,7 +3612,7 @@ _0202792C:
 _02027964: .word _022A7A6C
 _02027968: .word _022A8990
 _0202796C: .word _022A8991
-_02027970: .word _022A88DC
+_02027970: .word WINDOW_LIST
 	arm_func_end sub_020278C4
 
 	arm_func_start sub_02027974
@@ -3626,7 +3626,7 @@ sub_02027974: ; 0x02027974
 	ldrsb r4, [r1, #3]
 #endif
 	mov r1, r5
-	ldr ip, _02027A00 ; =_022A88DC
+	ldr ip, _02027A00 ; =WINDOW_LIST
 	mov r2, #0xe0
 	b _020279AC
 _02027994:
@@ -3666,7 +3666,7 @@ _020279F4:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020279FC: .word _022A7A6C
-_02027A00: .word _022A88DC
+_02027A00: .word WINDOW_LIST
 _02027A04: .word _022A8991
 	arm_func_end sub_02027974
 
@@ -3757,7 +3757,7 @@ _02027AEC: .word _020AFD94
 
 	arm_func_start UpdateWindow
 UpdateWindow: ; 0x02027AF0
-	ldr r2, _02027B18 ; =_022A88DC
+	ldr r2, _02027B18 ; =WINDOW_LIST
 	mov r1, #0xe0
 	mla r1, r0, r1, r2
 	ldr r0, [r1, #0x14]
@@ -3768,7 +3768,7 @@ UpdateWindow: ; 0x02027AF0
 	str r0, [r1, #0x2c]
 	bx lr
 	.align 2, 0
-_02027B18: .word _022A88DC
+_02027B18: .word WINDOW_LIST
 	arm_func_end UpdateWindow
 
 	arm_func_start sub_02027B1C
@@ -3820,7 +3820,7 @@ sub_02027B88: ; 0x02027B88
 #endif
 	b _02027E00
 _02027B9C:
-	ldr r1, _02027E18 ; =_022A88DC
+	ldr r1, _02027E18 ; =WINDOW_LIST
 	mov r0, #0xe0
 	mla r4, r2, r0, r1
 	ldrb r0, [r4, #8]
@@ -3995,7 +3995,7 @@ _02027E00:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
 _02027E14: .word _022A7A6C
-_02027E18: .word _022A88DC
+_02027E18: .word WINDOW_LIST
 _02027E1C: .word _0209AC64
 _02027E20: .word _020AFD98
 _02027E24: .word _0209ACAC
@@ -4007,7 +4007,7 @@ _02027E2C: .word _020AFD4C
 sub_02027E30: ; 0x02027E30
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
-	ldr r3, _02028070 ; =_022A88DC
+	ldr r3, _02028070 ; =WINDOW_LIST
 	mov r2, #0xe0
 	mla r7, r0, r2, r3
 	ldrsb r0, [r7, #9]
@@ -4024,7 +4024,7 @@ sub_02027E30: ; 0x02027E30
 	cmp r1, #0
 	bne _02027F20
 	ldrsb r1, [r7, #0x10]
-	ldr r2, _02028070 ; =_022A88DC
+	ldr r2, _02028070 ; =WINDOW_LIST
 	mov r0, #0xe0
 	mla r0, r1, r0, r2
 	add r0, r0, #0xbc
@@ -4141,7 +4141,7 @@ _02027FFC:
 	b _02028064
 _0202801C:
 	ldrsb r1, [r7, #0x10]
-	ldr r2, _02028070 ; =_022A88DC
+	ldr r2, _02028070 ; =WINDOW_LIST
 	mov r0, #0xe0
 	mla r0, r1, r0, r2
 	add r0, r0, #0xbc
@@ -4163,7 +4163,7 @@ _02028064:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02028070: .word _022A88DC
+_02028070: .word WINDOW_LIST
 _02028074: .word _0209AC64
 _02028078: .word _022A7AE4
 _0202807C: .word _020AFD4C
@@ -4172,7 +4172,7 @@ _0202807C: .word _020AFD4C
 	arm_func_start sub_02028080
 sub_02028080: ; 0x02028080
 	stmdb sp!, {r4, lr}
-	ldr r3, _020280B8 ; =_022A88DC
+	ldr r3, _020280B8 ; =WINDOW_LIST
 	mov r2, #0xe0
 	mla r4, r0, r2, r3
 	strb r1, [r4, #9]
@@ -4186,7 +4186,7 @@ sub_02028080: ; 0x02028080
 	str r1, [r0, #8]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020280B8: .word _022A88DC
+_020280B8: .word WINDOW_LIST
 _020280BC: .word _020AFD4C
 	arm_func_end sub_02028080
 
@@ -4266,12 +4266,12 @@ _02028190: .word _020AFD4C
 	arm_func_start DeleteWindow
 DeleteWindow: ; 0x02028194
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _02028224 ; =_022A88DC
+	ldr r2, _02028224 ; =WINDOW_LIST
 	mov r1, #0xe0
 	mla r4, r0, r1, r2
 	bl sub_0202812C
 	ldrb r5, [r4, #8]
-	ldr lr, _02028224 ; =_022A88DC
+	ldr lr, _02028224 ; =WINDOW_LIST
 	mov ip, #1
 	mov r3, #0
 _020281B8:
@@ -4304,14 +4304,14 @@ _020281EC:
 	strb r0, [r4, #0xb6]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_02028224: .word _022A88DC
+_02028224: .word WINDOW_LIST
 _02028228: .word _022A7A74
 	arm_func_end DeleteWindow
 
 	arm_func_start sub_0202822C
 sub_0202822C: ; 0x0202822C
 	stmdb sp!, {r4, lr}
-	ldr r2, _02028258 ; =_022A88DC
+	ldr r2, _02028258 ; =WINDOW_LIST
 	mov r1, #0xe0
 	mla r4, r0, r1, r2
 	ldr r0, [r4, #0x14]
@@ -4322,7 +4322,7 @@ sub_0202822C: ; 0x0202822C
 	strb r0, [r4, #0xb6]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02028258: .word _022A88DC
+_02028258: .word WINDOW_LIST
 	arm_func_end sub_0202822C
 
 	arm_func_start sub_0202825C
@@ -4347,7 +4347,7 @@ _02028280: .word _022A7A74
 
 	arm_func_start GetWindowRectangle
 GetWindowRectangle: ; 0x02028284
-	ldr r3, _020282C4 ; =_022A88DC
+	ldr r3, _020282C4 ; =WINDOW_LIST
 	mov r2, #0xe0
 	mla r3, r0, r2, r3
 	ldrb r0, [r3, #5]
@@ -4364,12 +4364,12 @@ GetWindowRectangle: ; 0x02028284
 	str r0, [r1, #0xc]
 	bx lr
 	.align 2, 0
-_020282C4: .word _022A88DC
+_020282C4: .word WINDOW_LIST
 	arm_func_end GetWindowRectangle
 
 	arm_func_start sub_020282C8
 sub_020282C8: ; 0x020282C8
-	ldr r3, _020282F0 ; =_022A88DC
+	ldr r3, _020282F0 ; =WINDOW_LIST
 	mov r2, #0xe0
 	mla r2, r0, r2, r3
 	ldrb r0, [r2, #7]
@@ -4380,7 +4380,7 @@ sub_020282C8: ; 0x020282C8
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_020282F0: .word _022A88DC
+_020282F0: .word WINDOW_LIST
 	arm_func_end sub_020282C8
 
 	arm_func_start sub_020282F4
@@ -4418,13 +4418,13 @@ _02028338: .word _022A88E4
 
 	arm_func_start GetWindowContents
 GetWindowContents: ; 0x0202833C
-	ldr r2, _02028350 ; =_022A88DC
+	ldr r2, _02028350 ; =WINDOW_LIST
 	mov r1, #0xe0
 	mla r1, r0, r1, r2
 	ldr r0, [r1, #0xc]
 	bx lr
 	.align 2, 0
-_02028350: .word _022A88DC
+_02028350: .word WINDOW_LIST
 	arm_func_end GetWindowContents
 
 	arm_func_start sub_02028354
@@ -4442,7 +4442,7 @@ _02028368: .word _022A8992
 sub_0202836C: ; 0x0202836C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #8
-	ldr r2, _02028438 ; =_022A88DC
+	ldr r2, _02028438 ; =WINDOW_LIST
 	mov r1, #0xe0
 	mla r6, r0, r1, r2
 	ldrb r0, [r6, #8]
@@ -4498,7 +4498,7 @@ _02028428:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_02028438: .word _022A88DC
+_02028438: .word WINDOW_LIST
 	arm_func_end sub_0202836C
 
 	arm_func_start sub_0202843C
@@ -4520,7 +4520,7 @@ _02028460: .word _022A7AC8
 sub_02028464: ; 0x02028464
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x14
-	ldr r3, _02028768 ; =_022A88DC
+	ldr r3, _02028768 ; =WINDOW_LIST
 	mov r2, #0xe0
 	mla r4, r0, r2, r3
 	ldrsb r0, [r4, #9]
@@ -4735,7 +4735,7 @@ _02028758:
 	add sp, sp, #0x14
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_02028768: .word _022A88DC
+_02028768: .word WINDOW_LIST
 _0202876C: .word _0209AC64
 	arm_func_end sub_02028464
 
@@ -4743,7 +4743,7 @@ _0202876C: .word _0209AC64
 sub_02028770: ; 0x02028770
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r2, _020287C0 ; =_022A88DC
+	ldr r2, _020287C0 ; =WINDOW_LIST
 	mov r5, r0
 	mov r1, #0xe0
 	mla r4, r5, r1, r2
@@ -4762,7 +4762,7 @@ sub_02028770: ; 0x02028770
 	add sp, sp, #0x10
 	bx lr
 	.align 2, 0
-_020287C0: .word _022A88DC
+_020287C0: .word WINDOW_LIST
 	arm_func_end sub_02028770
 
 	arm_func_start sub_020287C4
@@ -4789,7 +4789,7 @@ sub_020287E0: ; 0x020287E0
 #endif
 	mov r1, #0
 	mov sb, #1
-	ldr r4, _02028844 ; =_022A88DC
+	ldr r4, _02028844 ; =WINDOW_LIST
 	mov r8, #0xe0
 	mvn r7, #1
 	b _0202882C
@@ -4812,14 +4812,14 @@ _0202882C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02028840: .word _022A7A6C
-_02028844: .word _022A88DC
+_02028844: .word WINDOW_LIST
 	arm_func_end sub_020287E0
 
 	arm_func_start sub_02028848
 sub_02028848: ; 0x02028848
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	ldr r0, _020288D0 ; =_022A7A6C
-	ldr r6, _020288D4 ; =_022A88DC
+	ldr r6, _020288D4 ; =WINDOW_LIST
 #ifdef JAPAN
 	ldrsb r0, [r0, #1]
 #else
@@ -4862,20 +4862,20 @@ _020288C0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020288D0: .word _022A7A6C
-_020288D4: .word _022A88DC
+_020288D4: .word WINDOW_LIST
 _020288D8: .word _020AFD4C
 	arm_func_end sub_02028848
 
 	arm_func_start sub_020288DC
 sub_020288DC: ; 0x020288DC
-	ldr r2, _020288F4 ; =_022A88DC
+	ldr r2, _020288F4 ; =WINDOW_LIST
 	mov r1, #0xe0
 	mla r1, r0, r1, r2
 	ldr ip, _020288F8 ; =InitWindowTrailer
 	add r0, r1, #0xbc
 	bx ip
 	.align 2, 0
-_020288F4: .word _022A88DC
+_020288F4: .word WINDOW_LIST
 _020288F8: .word InitWindowTrailer
 	arm_func_end sub_020288DC
 
@@ -4883,7 +4883,7 @@ _020288F8: .word InitWindowTrailer
 sub_020288FC: ; 0x020288FC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
-	ldr lr, _02028944 ; =_022A88DC
+	ldr lr, _02028944 ; =WINDOW_LIST
 	mov ip, #0xe0
 	mla r4, r0, ip, lr
 	ldr lr, [r4, #0xb8]
@@ -4900,13 +4900,13 @@ sub_020288FC: ; 0x020288FC
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02028944: .word _022A88DC
+_02028944: .word WINDOW_LIST
 	arm_func_end sub_020288FC
 
 	arm_func_start sub_02028948
 sub_02028948: ; 0x02028948
 	stmdb sp!, {r3, lr}
-	ldr r3, _0202897C ; =_022A88DC
+	ldr r3, _0202897C ; =WINDOW_LIST
 	mov r2, #0xe0
 	mla ip, r0, r2, r3
 	ldr r3, [ip, #0xb8]
@@ -4919,13 +4919,13 @@ sub_02028948: ; 0x02028948
 	bl sub_02029758
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0202897C: .word _022A88DC
+_0202897C: .word WINDOW_LIST
 	arm_func_end sub_02028948
 
 	arm_func_start sub_02028980
 sub_02028980: ; 0x02028980
 	stmdb sp!, {r3, lr}
-	ldr r3, _020289B4 ; =_022A88DC
+	ldr r3, _020289B4 ; =WINDOW_LIST
 	mov r2, #0xe0
 	mla ip, r0, r2, r3
 	ldr r3, [ip, #0xb8]
@@ -4938,14 +4938,14 @@ sub_02028980: ; 0x02028980
 	bl sub_02029828
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020289B4: .word _022A88DC
+_020289B4: .word WINDOW_LIST
 	arm_func_end sub_02028980
 
 	arm_func_start sub_020289B8
 sub_020289B8: ; 0x020289B8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #8
-	ldr lr, _02028A04 ; =_022A88DC
+	ldr lr, _02028A04 ; =WINDOW_LIST
 	mov ip, #0xe0
 	mla r4, r0, ip, lr
 	ldr lr, [r4, #0xb8]
@@ -4963,14 +4963,14 @@ sub_020289B8: ; 0x020289B8
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02028A04: .word _022A88DC
+_02028A04: .word WINDOW_LIST
 	arm_func_end sub_020289B8
 
 	arm_func_start sub_02028A08
 sub_02028A08: ; 0x02028A08
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
-	ldr lr, _02028A60 ; =_022A88DC
+	ldr lr, _02028A60 ; =WINDOW_LIST
 	mov ip, #0xe0
 	mla r4, r0, ip, lr
 	sub r0, ip, #0xe1
@@ -4991,7 +4991,7 @@ sub_02028A08: ; 0x02028A08
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02028A60: .word _022A88DC
+_02028A60: .word WINDOW_LIST
 	arm_func_end sub_02028A08
 
 	arm_func_start sub_02028A64
@@ -5017,7 +5017,7 @@ sub_02028A64: ; 0x02028A64
 	strh r1, [r0, #6]
 	b _02028BF4
 _02028A94:
-	ldr r1, _02028DF0 ; =_022A88DC
+	ldr r1, _02028DF0 ; =WINDOW_LIST
 	mov r0, #0xe0
 	mla r6, r3, r0, r1
 	ldrsb r1, [r6, #0xb6]
@@ -5181,7 +5181,7 @@ _02028C40:
 	bl sub_0200A174
 _02028C60:
 	mov r8, #0
-	ldr r7, _02028DF0 ; =_022A88DC
+	ldr r7, _02028DF0 ; =WINDOW_LIST
 	mov r6, r8
 	mov r5, #0xe0
 _02028C70:
@@ -5265,7 +5265,7 @@ _02028D30:
 _02028D58:
 	ldr r0, _02028DEC ; =_022A7A6C
 #ifdef JAPAN
-	ldr r6, _02028DF0 ; =_022A88DC
+	ldr r6, _02028DF0 ; =WINDOW_LIST
 	ldrsb r2, [r0, #1]
 	ldr r5, _02028DF4 ; =_022A7B1C
 	mov sb, #0xe0
@@ -5329,7 +5329,7 @@ _02028DD4:
 	.align 2, 0
 _02028DE8: .word _020AFD4C
 _02028DEC: .word _022A7A6C
-_02028DF0: .word _022A88DC
+_02028DF0: .word WINDOW_LIST
 _02028DF4: .word _022A7B1C
 _02028DF8: .word _020AFD98
 _02028DFC: .word _0209ACA8
@@ -5864,7 +5864,7 @@ sub_02029478: ; 0x02029478
 	mov r0, #4
 	str r0, [sp, #4]
 	mov r2, #1
-	ldr r0, _02029504 ; =_022AAC80
+	ldr r0, _02029504 ; =CURSOR_ANIMATION_CONTROL
 	str r2, [sp, #8]
 	mov r2, #0
 	mov r3, #0x3f8
@@ -5878,7 +5878,7 @@ _020294D0:
 	str r0, [sp, #4]
 	mov ip, #1
 	str ip, [sp, #8]
-	ldr r0, _02029508 ; =_022AACFC
+	ldr r0, _02029508 ; =CURSOR_16_ANIMATION_CONTROL
 	mov r2, #0
 	mov r3, #0x7c
 	str ip, [sp, #0xc]
@@ -5887,8 +5887,8 @@ _020294FC:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_02029504: .word _022AAC80
-_02029508: .word _022AACFC
+_02029504: .word CURSOR_ANIMATION_CONTROL
+_02029508: .word CURSOR_16_ANIMATION_CONTROL
 	arm_func_end sub_02029478
 
 	arm_func_start LoadCursors
@@ -5904,14 +5904,14 @@ LoadCursors: ; 0x0202950C
 	ldr r0, [r0]
 	mov r2, #0
 	bl LoadWanTableEntry
-	ldr r2, _02029660 ; =_022AAC64
+	ldr r2, _02029660 ; =CURSOR_16_SPRITE_ID
 	ldr r1, _02029658 ; =WAN_TABLE
 	strh r0, [r2, #2]
 	ldr r0, [r1]
 	ldr r1, _02029664 ; =_0209AE08
 	mov r2, #0
 	bl LoadWanTableEntry
-	ldr r1, _02029660 ; =_022AAC64
+	ldr r1, _02029660 ; =CURSOR_16_SPRITE_ID
 	mov r3, #1
 	strh r0, [r1]
 	str r3, [sp]
@@ -5924,15 +5924,15 @@ LoadCursors: ; 0x0202950C
 	mov r3, #1
 	str r3, [sp]
 	str r3, [sp, #4]
-	ldr r0, _02029660 ; =_022AAC64
+	ldr r0, _02029660 ; =CURSOR_16_SPRITE_ID
 	mov r1, #0x7c
 	ldrsh r0, [r0]
 	mov r2, #0xe
 	bl sub_0201D9C8
-	ldr r0, _02029668 ; =_022AAC80
+	ldr r0, _02029668 ; =CURSOR_ANIMATION_CONTROL
 	bl InitAnimationControlWithSet__0201C0B0
-	ldr r0, _02029668 ; =_022AAC80
-	ldr r1, _02029660 ; =_022AAC64
+	ldr r0, _02029668 ; =CURSOR_ANIMATION_CONTROL
+	ldr r1, _02029660 ; =CURSOR_16_SPRITE_ID
 	ldrsh r1, [r1, #2]
 	bl SetSpriteIdForAnimationControl
 	mov r0, #0xf
@@ -5943,18 +5943,18 @@ LoadCursors: ; 0x0202950C
 	str r0, [sp, #8]
 	mov r1, #0
 	str r1, [sp, #0xc]
-	ldr r0, _02029668 ; =_022AAC80
+	ldr r0, _02029668 ; =CURSOR_ANIMATION_CONTROL
 	mov r2, r1
 	mov r3, #0x3f8
 	bl SetAnimationForAnimationControl
 	mov r1, #0
-	ldr r0, _02029668 ; =_022AAC80
+	ldr r0, _02029668 ; =CURSOR_ANIMATION_CONTROL
 	strh r1, [r0, #0x38]
 	bl sub_0201C108
-	ldr r0, _0202966C ; =_022AACFC
+	ldr r0, _0202966C ; =CURSOR_16_ANIMATION_CONTROL
 	bl InitAnimationControlWithSet__0201C0B0
-	ldr r0, _0202966C ; =_022AACFC
-	ldr r1, _02029660 ; =_022AAC64
+	ldr r0, _0202966C ; =CURSOR_16_ANIMATION_CONTROL
+	ldr r1, _02029660 ; =CURSOR_16_SPRITE_ID
 	ldrsh r1, [r1]
 	bl SetSpriteIdForAnimationControl
 	mov r0, #0xe
@@ -5964,12 +5964,12 @@ LoadCursors: ; 0x0202950C
 	mov r0, #1
 	str r0, [sp, #8]
 	str r0, [sp, #0xc]
-	ldr r0, _0202966C ; =_022AACFC
+	ldr r0, _0202966C ; =CURSOR_16_ANIMATION_CONTROL
 	mov r1, #0
 	mov r2, r1
 	mov r3, #0x7c
 	bl SetAnimationForAnimationControl
-	ldr r0, _0202966C ; =_022AACFC
+	ldr r0, _0202966C ; =CURSOR_16_ANIMATION_CONTROL
 	mov r1, #0
 	strh r1, [r0, #0x38]
 	bl sub_0201C108
@@ -5979,10 +5979,10 @@ LoadCursors: ; 0x0202950C
 _02029654: .word _022AAC68
 _02029658: .word WAN_TABLE
 _0202965C: .word _0209ADF0
-_02029660: .word _022AAC64
+_02029660: .word CURSOR_16_SPRITE_ID
 _02029664: .word _0209AE08
-_02029668: .word _022AAC80
-_0202966C: .word _022AACFC
+_02029668: .word CURSOR_ANIMATION_CONTROL
+_0202966C: .word CURSOR_16_ANIMATION_CONTROL
 	arm_func_end LoadCursors
 
 	arm_func_start InitWindowTrailer
@@ -6364,14 +6364,14 @@ _02029B70:
 	ldr r1, [r4, #8]
 	cmp r0, #0
 	bne _02029BA4
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	strh r1, [r0, #0x1e]
 	bl sub_0201CF5C
 	b _02029EB0
 _02029BA4:
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	strh r1, [r0, #0x1e]
@@ -6385,14 +6385,14 @@ _02029BBC:
 	ldr r1, [r4, #8]
 	cmp r0, #0
 	bne _02029BF0
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	strh r1, [r0, #0x1e]
 	bl sub_0201CF5C
 	b _02029EB0
 _02029BF0:
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	strh r1, [r0, #0x1e]
@@ -6406,7 +6406,7 @@ _02029C08:
 	ldr r1, [r4, #8]
 	cmp r0, #0
 	bne _02029C44
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	sub r1, r1, #4
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
@@ -6415,7 +6415,7 @@ _02029C08:
 	bl sub_0201CF5C
 	b _02029EB0
 _02029C44:
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	sub r1, r1, #4
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
@@ -6441,39 +6441,39 @@ _02029C64:
 	add r1, sp, #0x18
 	cmp r0, #0
 	bne _02029CF0
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	ldrh r2, [r0, #2]
 	orr r2, r2, #0x20
 	strh r2, [r0, #2]
 	bl sub_0201D110
 	ldr r1, [r4, #8]
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	sub r1, r1, #4
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #0x10
 	strh r1, [r0, #0x1e]
 	bl sub_0201CF5C
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	ldrh r1, [r0, #2]
 	bic r1, r1, #0x20
 	strh r1, [r0, #2]
 	b _02029EB0
 _02029CF0:
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	ldrh r2, [r0, #2]
 	orr r2, r2, #0x20
 	strh r2, [r0, #2]
 	bl sub_0201D110
 	ldr r1, [r4, #8]
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	sub r1, r1, #4
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #0x10
 	strh r1, [r0, #0x1e]
 	bl sub_0201CF5C
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	ldrh r1, [r0, #2]
 	bic r1, r1, #0x20
 	strh r1, [r0, #2]
@@ -6486,7 +6486,7 @@ _02029D38:
 	ldr r1, [r4, #8]
 	cmp r0, #0
 	bne _02029D74
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	sub r1, r1, #4
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
@@ -6495,7 +6495,7 @@ _02029D38:
 	bl sub_0201CF5C
 	b _02029EB0
 _02029D74:
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	sub r1, r1, #4
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
@@ -6511,7 +6511,7 @@ _02029D94:
 	ldr r1, [r4, #8]
 	cmp r0, #0
 	bne _02029DD0
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	sub r1, r1, #4
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0x14]
@@ -6520,7 +6520,7 @@ _02029D94:
 	bl sub_0201CF5C
 	b _02029DEC
 _02029DD0:
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	sub r1, r1, #4
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0x14]
@@ -6542,39 +6542,39 @@ _02029DEC:
 	add r1, sp, #0xc
 	cmp r0, #0
 	bne _02029E6C
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	ldrh r2, [r0, #2]
 	orr r2, r2, #0x20
 	strh r2, [r0, #2]
 	bl sub_0201D110
 	ldr r1, [r4, #8]
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	sub r1, r1, #4
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #0x10
 	strh r1, [r0, #0x1e]
 	bl sub_0201CF5C
-	ldr r0, _02029EB8 ; =_022AAC80
+	ldr r0, _02029EB8 ; =CURSOR_ANIMATION_CONTROL
 	ldrh r1, [r0, #2]
 	bic r1, r1, #0x20
 	strh r1, [r0, #2]
 	b _02029EB0
 _02029E6C:
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	ldrh r2, [r0, #2]
 	orr r2, r2, #0x20
 	strh r2, [r0, #2]
 	bl sub_0201D110
 	ldr r1, [r4, #8]
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	sub r1, r1, #4
 	strh r1, [r0, #0x1c]
 	ldr r1, [r4, #0xc]
 	sub r1, r1, #0x10
 	strh r1, [r0, #0x1e]
 	bl sub_0201CF5C
-	ldr r0, _02029EBC ; =_022AACFC
+	ldr r0, _02029EBC ; =CURSOR_16_ANIMATION_CONTROL
 	ldrh r1, [r0, #2]
 	bic r1, r1, #0x20
 	strh r1, [r0, #2]
@@ -6582,8 +6582,8 @@ _02029EB0:
 	add sp, sp, #0x24
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_02029EB8: .word _022AAC80
-_02029EBC: .word _022AACFC
+_02029EB8: .word CURSOR_ANIMATION_CONTROL
+_02029EBC: .word CURSOR_16_ANIMATION_CONTROL
 _02029EC0: .word 0x0000FFFF
 	arm_func_end sub_02029B0C
 
@@ -6619,12 +6619,12 @@ LoadAlert: ; 0x02029EE8
 	ldr r0, [r0]
 	mov r2, #0
 	bl LoadWanTableEntry
-	ldr r1, _02029F7C ; =_022AAD78
+	ldr r1, _02029F7C ; =ALERT_SPRITE_ID
 	strh r0, [r1]
-	ldr r0, _02029F80 ; =_022AAD7C
+	ldr r0, _02029F80 ; =ALERT_ANIMATION_CONTROL
 	bl InitAnimationControlWithSet__0201C0B0
-	ldr r1, _02029F7C ; =_022AAD78
-	ldr r0, _02029F80 ; =_022AAD7C
+	ldr r1, _02029F7C ; =ALERT_SPRITE_ID
+	ldr r0, _02029F80 ; =ALERT_ANIMATION_CONTROL
 	ldrsh r1, [r1]
 	bl SetSpriteIdForAnimationControl
 	mov r1, #0
@@ -6632,12 +6632,12 @@ LoadAlert: ; 0x02029EE8
 	stmia sp, {r0, r1}
 	mov r0, #1
 	str r0, [sp, #8]
-	ldr r0, _02029F80 ; =_022AAD7C
+	ldr r0, _02029F80 ; =ALERT_ANIMATION_CONTROL
 	mov r2, r1
 	mov r3, #0x3e4
 	str r1, [sp, #0xc]
 	bl SetAnimationForAnimationControl
-	ldr r0, _02029F80 ; =_022AAD7C
+	ldr r0, _02029F80 ; =ALERT_ANIMATION_CONTROL
 	mov r1, #0
 	strh r1, [r0, #0x38]
 	bl sub_02029FBC
@@ -6650,14 +6650,14 @@ LoadAlert: ; 0x02029EE8
 	.align 2, 0
 _02029F74: .word WAN_TABLE
 _02029F78: .word _0209AE20
-_02029F7C: .word _022AAD78
-_02029F80: .word _022AAD7C
+_02029F7C: .word ALERT_SPRITE_ID
+_02029F80: .word ALERT_ANIMATION_CONTROL
 _02029F84: .word _020AFDA0
 	arm_func_end LoadAlert
 
 	arm_func_start sub_02029F88
 sub_02029F88: ; 0x02029F88
-	ldr ip, _02029FB4 ; =_022AAD7C
+	ldr ip, _02029FB4 ; =ALERT_ANIMATION_CONTROL
 	ldr r3, _02029FB8 ; =_020AFDA0
 	strh r0, [ip, #0x1c]
 	strh r1, [ip, #0x1e]
@@ -6669,13 +6669,13 @@ sub_02029F88: ; 0x02029F88
 	strb r2, [r3]
 	bx lr
 	.align 2, 0
-_02029FB4: .word _022AAD7C
+_02029FB4: .word ALERT_ANIMATION_CONTROL
 _02029FB8: .word _020AFDA0
 	arm_func_end sub_02029F88
 
 	arm_func_start sub_02029FBC
 sub_02029FBC: ; 0x02029FBC
-	ldr r1, _02029FE0 ; =_022AAD7C
+	ldr r1, _02029FE0 ; =ALERT_ANIMATION_CONTROL
 	ldr r0, _02029FE4 ; =_020AFDA0
 	ldrh r3, [r1, #2]
 	mov r2, #0
@@ -6685,14 +6685,14 @@ sub_02029FBC: ; 0x02029FBC
 	strb r2, [r0]
 	bx lr
 	.align 2, 0
-_02029FE0: .word _022AAD7C
+_02029FE0: .word ALERT_ANIMATION_CONTROL
 _02029FE4: .word _020AFDA0
 	arm_func_end sub_02029FBC
 
 	arm_func_start sub_02029FE8
 sub_02029FE8: ; 0x02029FE8
 	stmdb sp!, {r3, lr}
-	ldr r0, _0202A034 ; =_022AAD7C
+	ldr r0, _0202A034 ; =ALERT_ANIMATION_CONTROL
 	ldrh r1, [r0, #2]
 	tst r1, #2
 	ldmneia sp!, {r3, pc}
@@ -6712,7 +6712,7 @@ _0202A02C:
 	bl sub_0201CF5C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0202A034: .word _022AAD7C
+_0202A034: .word ALERT_ANIMATION_CONTROL
 _0202A038: .word _020AFDA0
 	arm_func_end sub_02029FE8
 

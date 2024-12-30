@@ -1,5 +1,5 @@
-#ifndef PMDSKY_OVERLAY_3102382820_H
-#define PMDSKY_OVERLAY_3102382820_H
+#ifndef PMDSKY_OVERLAY_31_02382820_H
+#define PMDSKY_OVERLAY_31_02382820_H
 
 #include "main_020348E4.h"
 #include "util.h"
@@ -94,4 +94,4 @@ void StairsSubheadingCallback(struct Window* window);
 
 
 
-#endif //PMDSKY_OVERLAY_3102382820_H
+#endif //PMDSKY_OVERLAY_31_02382820_H

@@ -14,6 +14,7 @@
 .public FIXED_ROOM_DATA_PTR
 .public FIXED_ROOM_ENTITY_SPAWN_TABLE
 .public FIXED_ROOM_MONSTER_SPAWN_STATS_TABLE
+.public FLOOR_GENERATION_STATUS
 .public GenerateCleanItem
 .public GenerateStandardItem
 .public GetActiveTeamMember
@@ -98,7 +99,6 @@
 .public ov29_02353110
 .public ov29_023534F0
 .public ov29_02353798
-.public ov29_0237CFBC
 .public ov29_0237CFC0
 .public ov29_0237CFFC
 .public PointsToZero

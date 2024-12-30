@@ -2974,7 +2974,7 @@ _02006560: .word _022A35E8
 
 	arm_func_start sub_02006564
 sub_02006564: ; 0x02006564
-	ldr r0, _020065A4 ; =_022A35DC
+	ldr r0, _020065A4 ; =TOUCHSCREEN_STATUS
 	mvn r1, #0
 	str r1, [r0]
 	str r1, [r0, #4]
@@ -2992,7 +2992,7 @@ _02006584:
 	blt _02006584
 	bx lr
 	.align 2, 0
-_020065A4: .word _022A35DC
+_020065A4: .word TOUCHSCREEN_STATUS
 _020065A8: .word _022A3614
 	arm_func_end sub_02006564
 
@@ -3017,7 +3017,7 @@ _020065D8:
 	sub ip, ip, #0xc
 	bpl _020065D8
 	ldrh r1, [sp, #0x26]
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	tst r1, #1
 	mvnne r2, #0
 	ldreqh r2, [sp, #0x20]
@@ -3026,12 +3026,12 @@ _020065D8:
 	str r2, [r0, #0x38]
 	mvnne r2, #0
 	ldreqh r2, [sp, #0x22]
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	cmp r1, #1
 	str r2, [r0, #0x3c]
 	moveq r1, #1
 	movne r1, #0
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	tst r1, #0xff
 	strb r1, [r0, #0x40]
 	ldreqb r1, [r0, #0x4c]
@@ -3076,11 +3076,11 @@ _020066BC:
 	ldrge r0, [sp, #0x38]
 	cmpge r0, #0
 	addge r0, sp, #0x34
-	ldrge r3, _02006B50 ; =_022A35DC
+	ldrge r3, _02006B50 ; =TOUCHSCREEN_STATUS
 	ldmgeia r0, {r0, r1, r2}
 	stmgeia r3, {r0, r1, r2}
 	bge _02006710
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	mvn r1, #0
 	str r1, [r0]
 	str r1, [r0, #4]
@@ -3094,12 +3094,12 @@ _020066FC:
 	mov r1, #0
 	strb r1, [r0, #8]
 _02006710:
-	ldr r0, _02006B50 ; =_022A35DC
+	ldr r0, _02006B50 ; =TOUCHSCREEN_STATUS
 	add r3, sp, #0x28
 	ldmia r0, {r0, r1, r2}
 	stmia r3, {r0, r1, r2}
 	ldr r3, [sp, #0x28]
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	ldr r2, [sp, #0x2c]
 	str r3, [r0, #0x18]
 	str r2, [r0, #0x1c]
@@ -3124,7 +3124,7 @@ _02006760:
 	moveq r1, #0
 _0200677C:
 	streqh r1, [r0, #0xe]
-	ldr r1, _02006B44 ; =_022A35DC
+	ldr r1, _02006B44 ; =TOUCHSCREEN_STATUS
 	ldrh ip, [r1, #0xc]
 	cmp ip, #6
 	addls pc, pc, ip, lsl #2
@@ -3184,12 +3184,12 @@ _020067FC:
 	ldr r0, [sp, #4]
 	bl abs
 	cmp r0, #8
-	ldrlt r0, _02006B44 ; =_022A35DC
+	ldrlt r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	ldrlth r1, [r0, #0xe]
 	orrlt r1, r1, #0x400
 	strlth r1, [r0, #0xe]
 _02006874:
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	mov r1, #4
 	ldrh r2, [r0, #0xe]
 	orr r2, r2, #0x2000
@@ -3228,7 +3228,7 @@ _020068B0:
 	bl abs
 	cmp r0, #8
 	bge _02006934
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	mov r1, #3
 	ldr r3, [r0, #0x18]
 	ldr r2, [r0, #0x1c]
@@ -3242,7 +3242,7 @@ _020068B0:
 _02006934:
 	ldr r3, [sp, #0x28]
 	ldr r2, [sp, #0x2c]
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	mov r1, #1
 	str r3, [r0, #0x28]
 	str r2, [r0, #0x2c]
@@ -3289,12 +3289,12 @@ _02006988:
 	ldr r0, [sp, #0x14]
 	bl abs
 	cmp r0, #8
-	ldrlt r0, _02006B44 ; =_022A35DC
+	ldrlt r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	ldrlth r1, [r0, #0xe]
 	orrlt r1, r1, #0x800
 	strlth r1, [r0, #0xe]
 _02006A00:
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	mov r1, #5
 	ldrh r2, [r0, #0xe]
 	orr r2, r2, #0x4000
@@ -3320,12 +3320,12 @@ _02006A1C:
 	ldr r0, [sp, #0x1c]
 	bl abs
 	cmp r0, #8
-	ldrlt r0, _02006B44 ; =_022A35DC
+	ldrlt r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	ldrlth r1, [r0, #0xe]
 	orrlt r1, r1, #0x20
 	strlth r1, [r0, #0xe]
 _02006A74:
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	mov r1, #0
 	strh r1, [r0, #0xc]
 	b _02006B2C
@@ -3342,7 +3342,7 @@ _02006A84:
 	orreq r0, r3, #0x140
 	orrne r0, r3, #0x280
 	strh r0, [r1, #0xe]
-	ldr r0, _02006B44 ; =_022A35DC
+	ldr r0, _02006B44 ; =TOUCHSCREEN_STATUS
 	ldr r1, [r0, #0x10]
 	cmp r1, #0x3c
 	ldrgth r1, [r0, #0xe]
@@ -3383,10 +3383,10 @@ _02006B34:
 	.align 2, 0
 _02006B3C: .word _020AF288
 _02006B40: .word _022A362C
-_02006B44: .word _022A35DC
+_02006B44: .word TOUCHSCREEN_STATUS
 _02006B48: .word _022A3614
 _02006B4C: .word _022A3620
-_02006B50: .word _022A35DC
+_02006B50: .word TOUCHSCREEN_STATUS
 	arm_func_end sub_020065AC
 
 	arm_func_start sub_02006B54
@@ -3420,7 +3420,7 @@ sub_02006B98: ; 0x02006B98
 	stmdb sp!, {r3, lr}
 	ldr r0, _02006BEC ; =_020AF288
 	bl sub_02002CB4
-	ldr r0, _02006BF0 ; =_022A35DC
+	ldr r0, _02006BF0 ; =TOUCHSCREEN_STATUS
 	ldrb r1, [r0, #8]
 	cmp r1, #0
 	beq _02006BD8
@@ -3442,7 +3442,7 @@ _02006BE0:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02006BEC: .word _020AF288
-_02006BF0: .word _022A35DC
+_02006BF0: .word TOUCHSCREEN_STATUS
 _02006BF4: .word 0x00001101
 _02006BF8: .word _022A35E8
 	arm_func_end sub_02006B98
@@ -3465,7 +3465,7 @@ GetReleasedStylus: ; 0x02006C1C
 	mov r4, r0
 	ldr r0, _02006C84 ; =_020AF288
 	bl sub_02002CB4
-	ldr r1, _02006C88 ; =_022A35DC
+	ldr r1, _02006C88 ; =TOUCHSCREEN_STATUS
 	ldr r0, _02006C84 ; =_020AF288
 	ldrh r2, [r1, #0xe]
 	strh r2, [r4]
@@ -3489,7 +3489,7 @@ GetReleasedStylus: ; 0x02006C1C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02006C84: .word _020AF288
-_02006C88: .word _022A35DC
+_02006C88: .word TOUCHSCREEN_STATUS
 	arm_func_end GetReleasedStylus
 
 	arm_func_start sub_02006C8C

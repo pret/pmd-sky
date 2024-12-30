@@ -1419,7 +1419,7 @@ sub_01FF9128: ; 0x01FF9128
 	sub sp, sp, #0x14
 	mov r1, #0xe0
 	mul r3, r0, r1
-	ldr r1, _01FF9290 ; =_022A88DC
+	ldr r1, _01FF9290 ; =WINDOW_LIST
 	add r1, r1, r3
 	str r1, [sp]
 	ldrb r1, [r1, #7]
@@ -1511,7 +1511,7 @@ _01FF9288:
 	add sp, sp, #0x14
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FF9290: .word _022A88DC
+_01FF9290: .word WINDOW_LIST
 _01FF9294: .word _022A88FC
 _01FF9298: .word _022A88F0
 	arm_func_end sub_01FF9128
@@ -1522,7 +1522,7 @@ sub_01FF929C: ; 0x01FF929C
 	sub sp, sp, #0x20
 	mov r1, #0xe0
 	mul r4, r0, r1
-	ldr r1, _01FF9428 ; =_022A88DC
+	ldr r1, _01FF9428 ; =WINDOW_LIST
 	add r1, r1, r4
 	str r1, [sp, #8]
 	ldrb r1, [r1, #7]
@@ -1623,7 +1623,7 @@ _01FF9420:
 	add sp, sp, #0x20
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_01FF9428: .word _022A88DC
+_01FF9428: .word WINDOW_LIST
 _01FF942C: .word _022A88FC
 _01FF9430: .word _022A88F0
 	arm_func_end sub_01FF929C

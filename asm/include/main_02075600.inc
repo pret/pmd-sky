@@ -23,7 +23,6 @@
 .public _022B9618
 .public _022B961C
 .public _022B9644
-.public _022B9648
 .public _022B9654
 .public _022B966C
 .public _022B9670
@@ -91,5 +90,6 @@
 .public sub_02084A4C
 .public sub_02085BD4
 .public SVC_WaitByLoop
+.public THREAD_INFO_STRUCT
 .public WaitForever2
 .public WaitForInterrupt
