@@ -3,7 +3,7 @@
 #include "dungeon_capabilities.h"
 #include "dungeon_capabilities_2.h"
 #include "dungeon_move.h"
-#include "dungeon_util.h"
+#include "dungeon_util_static.h"
 #include "joined_at_checks.h"
 
 bool8 CheckVariousConditions(struct entity *pokemon)

@@ -1,5 +1,5 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02352A54.inc"
+	.include "overlay_29_rodata_0234FD04.inc"
 
 	.rodata
 	.global ov29_0234FD04

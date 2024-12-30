@@ -1,0 +1,12 @@
+#pragma once
+.public AI_THROWN_ITEM_ACTION_CHOICE_COUNT
+.public CanSeeTarget
+.public DUNGEON_PTR
+.public EntityIsValid__0230F008
+.public GetAiUseItemProbability
+.public GetTreatmentBetweenMonsters
+.public IsTargetInRange
+.public abs
+.public ov29_0237C9D0
+.public AI_THROWN_ITEM_PROBABILITIES
+.public AI_THROWN_ITEM_DIRECTIONS

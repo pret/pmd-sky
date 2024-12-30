@@ -30,12 +30,16 @@ SYMBOL_START = '\t.global '
 symbol_line = None
 new_symbol_address = None
 hex_regex = re.compile('_[0-9A-F]{8}$')
+data_type = None
 for i, line in enumerate(original_lines):
     if line.startswith(f'{SYMBOL_START}{symbol_name}'):
         symbol_line = i
+    elif line.startswith('\t.data') or line.startswith('\t.rodata') or line.startswith('\t.bss'):
+        data_type = line[line.index('.') + 1:].rstrip()
 
     if symbol_line is not None and line.startswith(SYMBOL_START) and hex_regex.search(line) is not None:
         new_symbol_address = line[-9:-1]
+        break
 
 if symbol_line is None:
     print(f'Failed to find symbol {symbol_name}.')
@@ -55,9 +59,7 @@ LSF_FILE_PATH = 'main.lsf'
 with open(LSF_FILE_PATH, 'r') as lsf_file:
     lsf_lines = lsf_file.readlines()
 
-    extract_file_name = f'{file_prefix}{new_symbol_address}'
-
-new_asm_base_name = f"{file_prefix}{new_symbol_address}"
+new_asm_base_name = f"{file_prefix}{data_type}_{new_symbol_address}"
 
 # If needed, add the extracted function's new .o file to main.lsf.
 merge_prev_file = None
@@ -82,7 +84,7 @@ new_asm_name = f'{new_asm_base_name}.s'
 new_asm_header = f"""\t.include "asm/macros.inc"
 \t.include "{new_inc_file_name}"
 
-\t.rodata
+\t.{data_type}
 """
 new_asm_file_path = os.path.join(ASM_FOLDER, new_asm_name)
 print('Creating', new_asm_file_path)

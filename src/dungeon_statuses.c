@@ -1,5 +1,6 @@
 #include "dungeon_statuses.h"
-#include "dungeon_util.h"
+#include "dungeon_util_static.h"
+#include "item.h"
 #include "overlay_29_02315118.h"
 
 extern bool8 ItemIsActive__0231513C(struct entity *entity, enum item_id item_id);

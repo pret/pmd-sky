@@ -1,8 +1,9 @@
 #ifndef HEADERS_TYPES_DUNGEON_MODE_DUNGEON_H_
 #define HEADERS_TYPES_DUNGEON_MODE_DUNGEON_H_
 
-#include "enums.h"
 #include "dungeon_mode.h"
+#include "enums.h"
+#include "item.h"
 
 #define MAX_TEAM_MEMBERS 4
 #define DUNGEON_MAX_POKEMON 20

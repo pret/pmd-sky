@@ -1,5 +1,5 @@
 #include "dungeon_pokemon_attributes_1.h"
-#include "dungeon_util.h"
+#include "dungeon_util_static.h"
 
 bool8 IsTacticSet(struct entity *pokemon, enum tactic_id tactic_id)
 {

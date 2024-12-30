@@ -1,6 +1,6 @@
 #include "dungeon_capabilities.h"
 #include "dungeon_statuses.h"
-#include "dungeon_util.h"
+#include "dungeon_util_static.h"
 
 extern bool8 CheckVariousStatuses(struct entity *entity);
 

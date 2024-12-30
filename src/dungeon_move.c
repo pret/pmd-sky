@@ -1,5 +1,5 @@
 #include "dungeon_move.h"
-#include "dungeon_util.h"
+#include "dungeon_util_static.h"
 #include "overlay_29_02321438.h"
 
 const enum status_two_turn_id TWO_TURN_STATUSES[11] =

@@ -1,5 +1,5 @@
 #include "dungeon_capabilities_2.h"
-#include "dungeon_util.h"
+#include "dungeon_util_static.h"
 
 bool8 CheckVariousStatuses(struct entity *pokemon)
 {

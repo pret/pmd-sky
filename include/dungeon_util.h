@@ -1,11 +1,8 @@
 #ifndef PMDSKY_DUNGEON_UTIL_H
 #define PMDSKY_DUNGEON_UTIL_H
 
-#include "dungeon.h"
+#include "dungeon_mode.h"
 
-static inline struct monster *GetEntInfo(struct entity *ent)
-{
-    return ent->info;
-}
+bool8 ShouldRunMonsterAi(struct entity *pokemon);
 
-#endif // PMDSKY_DUNGEON_UTIL_H
+#endif //PMDSKY_DUNGEON_UTIL_H

@@ -3,6 +3,7 @@
 
 #include "dungeon_mode.h"
 #include "dungeon_mode_common.h"
+#include "item.h"
 
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 bool8 EntityIsValidMoveEffects__0232E250(struct entity *entity);

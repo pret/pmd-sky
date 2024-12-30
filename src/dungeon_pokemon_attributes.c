@@ -1,5 +1,5 @@
 #include "dungeon_pokemon_attributes.h"
-#include "dungeon_util.h"
+#include "dungeon_util_static.h"
 #include "overlay_29_02301A60.h"
 
 bool8 NoGastroAcidStatus(struct entity *entity, enum ability_id ability)
