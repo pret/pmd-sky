@@ -596,7 +596,7 @@ _022DF31C:
 	cmp r0, #0
 	beq _022DF34C
 	mov r0, r4
-	bl sub_02052EFC
+	bl SetBaseStatsMovesGroundMonster
 _022DF34C:
 	mov r0, r4
 	bl ov29_022F7910
@@ -613,7 +613,7 @@ _022DF36C:
 	cmp r0, #0
 	beq _022DF384
 	smlabb r0, r6, fp, r4
-	bl sub_02052EFC
+	bl SetBaseStatsMovesGroundMonster
 _022DF384:
 	mov r0, #0x44
 	smlabb r0, r6, r0, r4

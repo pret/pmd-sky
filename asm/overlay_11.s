@@ -464,8 +464,8 @@ ov11_022DC81C: ; 0x022DC81C
 _022DC82C: .word ov11_02324E80
 	arm_func_end ov11_022DC81C
 
-	arm_func_start ov11_022DC830
-ov11_022DC830: ; 0x022DC830
+	arm_func_start InitScriptRoutineState
+InitScriptRoutineState: ; 0x022DC830
 	mvn r1, #0
 	mov r3, #0
 	strh r1, [r0]
@@ -494,7 +494,7 @@ _022DC884:
 	cmp r3, #4
 	blt _022DC884
 	bx lr
-	arm_func_end ov11_022DC830
+	arm_func_end InitScriptRoutineState
 
 	arm_func_start ov11_022DC89C
 ov11_022DC89C: ; 0x022DC89C
@@ -517,14 +517,14 @@ ov11_022DC8C0: ; 0x022DC8C0
 	str r1, [r4]
 	add r0, r4, #0xc
 	str r1, [r4, #4]
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	ldmia sp!, {r4, pc}
 	arm_func_end ov11_022DC8C0
 
-	arm_func_start ov11_022DC8E8
-ov11_022DC8E8: ; 0x022DC8E8
+	arm_func_start InitScriptRoutine
+InitScriptRoutine: ; 0x022DC8E8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r4, r0
 	mov r6, r1
@@ -545,7 +545,7 @@ ov11_022DC8E8: ; 0x022DC8E8
 _022DC92C:
 	strh r0, [r4, #0xa]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov11_022DC8E8
+	arm_func_end InitScriptRoutine
 
 	arm_func_start ov11_022DC934
 ov11_022DC934: ; 0x022DC934
@@ -699,9 +699,9 @@ ov11_022DCAE0: ; 0x022DCAE0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r0, r4, #0xc
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 	arm_func_end ov11_022DCAE0
@@ -711,9 +711,9 @@ ov11_022DCB00: ; 0x022DCB00
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	add r0, r4, #0xc
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	mov r0, #6
 	strh r0, [r4, #0xe]
 	mov r0, #1
@@ -764,7 +764,7 @@ _022DCBA0:
 	cmp r0, #0
 	beq _022DCC8C
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	b _022DCC8C
 _022DCBB8:
 	ldrsh r0, [r4, #0xc]
@@ -816,7 +816,7 @@ _022DCC4C:
 	b _022DCC8C
 _022DCC60:
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	b _022DCC8C
 _022DCC6C:
 	ldr r1, _022DCCDC ; =ov11_02316A44
@@ -829,7 +829,7 @@ _022DCC6C:
 	bl Debug_FatalError
 _022DCC8C:
 	add r0, r4, #0xc
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	mov r2, #4
 	mov r0, #1
 	strh r2, [r4, #0xc]
@@ -894,7 +894,7 @@ _022DCD60:
 	cmp r0, #0
 	beq _022DCE5C
 	add r0, r5, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	b _022DCE5C
 _022DCD78:
 	ldrsh r0, [r5, #0xc]
@@ -949,7 +949,7 @@ _022DCE18:
 	b _022DCE5C
 _022DCE2C:
 	add r0, r5, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	b _022DCE5C
 _022DCE38:
 	ldr r1, _022DCEDC ; =ov11_02316A44
@@ -963,7 +963,7 @@ _022DCE38:
 	bl Debug_FatalError
 _022DCE5C:
 	add r0, r5, #0xc
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	ldrsh r2, [r4, #0x18]
 	mov r1, #2
 	mov r0, #0
@@ -1003,8 +1003,8 @@ _022DCEE4: .word ov11_02319224
 _022DCEE8: .word ov11_02319240
 	arm_func_end ov11_022DCCEC
 
-	arm_func_start ov11_022DCEEC
-ov11_022DCEEC: ; 0x022DCEEC
+	arm_func_start LockRoutine
+LockRoutine: ; 0x022DCEEC
 	strh r1, [r0, #0x3e]
 	mov r1, #3
 	strh r1, [r0, #0xe]
@@ -1014,7 +1014,7 @@ ov11_022DCEEC: ; 0x022DCEEC
 	bx lr
 	.align 2, 0
 _022DCF08: .word ov11_02324E80
-	arm_func_end ov11_022DCEEC
+	arm_func_end LockRoutine
 
 	arm_func_start ov11_022DCF0C
 ov11_022DCF0C: ; 0x022DCF0C
@@ -1060,12 +1060,12 @@ _022DCF88:
 	blx r2
 _022DCFA4:
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, pc}
 _022DCFB4:
 	add r0, r4, #0xc
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov11_022DCF0C
@@ -1080,9 +1080,9 @@ ov11_022DCFC4: ; 0x022DCFC4
 	cmp r0, #0
 	bne _022DCFF8
 	add r0, r4, #0xc
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _022DCFF8:
@@ -1090,7 +1090,7 @@ _022DCFF8:
 	cmp r0, #0
 	bne _022DD078
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _022DD014:
@@ -1103,7 +1103,7 @@ _022DD014:
 	cmp r0, #2
 	bhi _022DD03C
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 _022DD03C:
 	ldrsh r0, [r4, #0xc]
 	sub r0, r0, #1
@@ -1138,9 +1138,9 @@ ov11_022DD080: ; 0x022DD080
 	cmp r1, #2
 	bhi _022DD0C0
 	add r0, r4, #0xc
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _022DD0C0:
@@ -1157,8 +1157,8 @@ _022DD0C0:
 	ldmia sp!, {r4, pc}
 	arm_func_end ov11_022DD080
 
-	arm_func_start ov11_022DD0EC
-ov11_022DD0EC: ; 0x022DD0EC
+	arm_func_start UnlockRoutine
+UnlockRoutine: ; 0x022DD0EC
 	ldrsh r3, [r0, #0x3e]
 	mov ip, #0
 	sub r2, ip, #1
@@ -1178,7 +1178,7 @@ _022DD10C:
 _022DD128:
 	mov r0, ip
 	bx lr
-	arm_func_end ov11_022DD0EC
+	arm_func_end UnlockRoutine
 
 	arm_func_start UnlockScriptingLock
 UnlockScriptingLock: ; 0x022DD130
@@ -1419,7 +1419,7 @@ _022DD424:
 	bl Debug_Print
 	ldr r1, [sp, #8]
 	mov r0, r4
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	strh r0, [r4, #0xe]
@@ -1457,7 +1457,7 @@ _022DD468:
 	mov r0, r4
 	mov r1, r5
 	strh r2, [r4, #0xe]
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022DDD00
 _022DD4F4:
@@ -1721,7 +1721,7 @@ _022DD880:
 	bne _022DD8B0
 	ldrh r1, [r8, #2]
 	add r0, r4, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	mov r5, r0
 	b _022DD8BC
 _022DD8B0:
@@ -1758,7 +1758,7 @@ _022DD900:
 	str r0, [r4, #0x1c]
 	ldrh r1, [r6, #2]
 	add r0, r4, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	mov r5, r0
 	b _022DD938
 _022DD928:
@@ -1953,7 +1953,7 @@ _022DDBAC:
 _022DDBC4:
 	mov r0, r4
 	mov r1, r5
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	strh r0, [r4, #0xe]
@@ -1969,7 +1969,7 @@ _022DDBE8:
 	bl ov11_022E9558
 	mov r0, r4
 	mov r1, #0
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	strh r0, [r4, #0xe]
@@ -1983,7 +1983,7 @@ _022DDC18:
 	bl SaveScriptVariableValue
 	mov r0, r4
 	mov r1, #1
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	strh r0, [r4, #0xe]
@@ -1994,7 +1994,7 @@ _022DDC4C:
 	bl ov11_022E958C
 	mov r0, r4
 	mov r1, #1
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022DDD00
 _022DDC6C:
@@ -2518,7 +2518,7 @@ _022DE3F0: ; 0x022DE3F0
 	bl Debug_Print
 	ldr r1, [sp, #0x158]
 	mov r0, r4
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2474
 _022DE448: ; 0x022DE448
@@ -2887,7 +2887,7 @@ _022DE934: ; 0x022DE934
 _022DE960: ; 0x022DE960
 	ldrh r1, [r6]
 	add r0, r4, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	mov r1, r0
 	add r0, sp, #0x148
 	bl ov11_022E4600
@@ -2986,7 +2986,7 @@ _022DEAC4: ; 0x022DEAC4
 	ldrh r1, [r6, #2]
 	add r0, r4, #0x14
 	mov r7, sb, asr #0x10
-	bl ov11_022E4248
+	bl GetSsbString
 	mov r8, r0
 	ldrh r0, [r6, #4]
 	bl ScriptParamToInt
@@ -3044,7 +3044,7 @@ _022DEBA4: ; 0x022DEBA4
 	ldrh r1, [r6, #2]
 	add r0, r4, #0x14
 	mov r7, sb, asr #0x10
-	bl ov11_022E4248
+	bl GetSsbString
 	mov r8, r0
 	ldrh r0, [r6, #4]
 	bl ScriptParamToInt
@@ -3099,7 +3099,7 @@ _022DEC7C: ; 0x022DEC7C
 	ldrh r1, [r6, #2]
 	add r0, r4, #0x14
 	mov r6, r5, asr #0x10
-	bl ov11_022E4248
+	bl GetSsbString
 	mvn r2, #0
 	mov r1, r0
 	cmp r2, r5, asr #16
@@ -3124,7 +3124,7 @@ _022DECDC: ; 0x022DECDC
 	mov r1, r0, asr #0x10
 	mov r0, r4
 	strh r1, [r4, #0x44]
-	bl ov11_022DCEEC
+	bl LockRoutine
 	cmp r0, #0
 	beq _022E2474
 	mov r0, #4
@@ -3726,7 +3726,7 @@ _022DF59C:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	movs r5, r0
 	bmi _022DF638
 	ldr r1, [r4]
@@ -3769,7 +3769,7 @@ _022DF640:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	movs r5, r0
 	bmi _022DF6D0
 	ldr r1, [r4]
@@ -3817,7 +3817,7 @@ _022DF6D8:
 _022DF6FC:
 	mov r0, r4
 	mov r1, r7
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2474
 _022DF710: ; 0x022DF710
@@ -3968,7 +3968,7 @@ _022DF924: ; 0x022DF924
 _022DF92C: ; 0x022DF92C
 	ldrh r1, [r6]
 	add r0, r4, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	mov r4, r0
 	ldr r1, _022DFE20 ; =ov11_023194B0
 	mov r0, #2
@@ -4052,7 +4052,7 @@ _022DFA48:
 _022DFA50: ; 0x022DFA50
 	ldrh r1, [r6]
 	add r0, r4, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	ldr r3, _022DED18 ; =ov11_02324E80
 	ldr r1, _022DFE18 ; =ov11_02324ECC
 	ldr r2, [r3, #0xc]
@@ -4066,7 +4066,7 @@ _022DFA78: ; 0x022DFA78
 	mov r5, r0
 	ldrh r1, [r6, #2]
 	add r0, r4, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	ldr r2, _022DED18 ; =ov11_02324E80
 	ldr r1, _022DFE18 ; =ov11_02324ECC
 	ldr r3, [r2, #0xc]
@@ -4197,7 +4197,7 @@ _022DFC44:
 	beq _022E2478
 	mov r0, r4
 	mov r1, r6
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2474
 _022DFC64:
@@ -4310,7 +4310,7 @@ _022DFDE8:
 	bne _022DFE58
 	ldrh r1, [r7, #2]
 	add r0, r4, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	mov sl, r0
 	b _022DFE70
 	.align 2, 0
@@ -5134,7 +5134,7 @@ _022E094C:
 	cmp r0, #0
 	bne _022E0974
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 _022E0974:
 	ldr r1, [r4]
 	ldr r0, [r4, #4]
@@ -5476,7 +5476,7 @@ _022E0E60:
 	cmp r0, #0
 	bne _022E0E74
 	add r0, r4, #0x7c
-	bl ov11_022DC830
+	bl InitScriptRoutineState
 _022E0E74:
 	ldr r1, [r4]
 	ldr r0, [r4, #4]
@@ -5556,7 +5556,7 @@ _022E0F8C:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	cmp r0, #0
 	blt _022E246C
 	add r1, sp, #0x60
@@ -5653,7 +5653,7 @@ _022E10F4:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	movs r7, r0
 	bmi _022E246C
 	ldrh r0, [r6, #2]
@@ -5706,7 +5706,7 @@ _022E11BC:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	movs r8, r0
 	bmi _022E126C
 	add r1, sp, #0x78
@@ -5919,7 +5919,7 @@ _022E14C4:
 	strh r5, [r4, #0x46]
 	mov r1, r1, asr #0x10
 	strh r1, [r4, #0x44]
-	bl ov11_022DCEEC
+	bl LockRoutine
 	mov r0, #3
 	b _022E2478
 _022E14F8:
@@ -6432,13 +6432,13 @@ _022E1BE0:
 	bl ov11_022E958C
 	mov r0, r4
 	mov r1, #1
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2464
 _022E1C48:
 	mov r0, r4
 	mov r1, #0
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2464
 _022E1C5C:
@@ -6450,7 +6450,7 @@ _022E1C5C:
 	bl SetEnterDungeon
 	mov r0, r4
 	mov r1, #1
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2464
 _022E1C88:
@@ -6580,7 +6580,7 @@ _022E1DD0:
 	movne r1, #0x13
 _022E1E08:
 	mov r0, r4
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2464
 _022E1E18:
@@ -6596,7 +6596,7 @@ _022E1E28:
 	mov r5, r0
 	mov r0, r4
 	mov r1, #1
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	mov r0, r5
 	bl ov11_022E958C
@@ -7382,7 +7382,7 @@ _022E291C:
 	mov r6, r0
 	mov r0, r6, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	mov r7, r0
 	ldrh r2, [r4, #4]
 	mov r0, #2
@@ -7797,7 +7797,7 @@ _022E2EF8:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	ldrsh r1, [sb, #0x3c]
 	cmp r0, #0
 	movlt r0, #2
@@ -7816,7 +7816,7 @@ _022E2F40:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	ldrsh r1, [sb, #0x3c]
 	cmp r0, #0
 	movlt r0, #2
@@ -8109,7 +8109,7 @@ _022E3380:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	cmp r0, #0
 	movlt r0, #2
 	strlth r0, [sb, #0xe]
@@ -8197,7 +8197,7 @@ _022E34D0:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	movs sl, r0
 	bmi _022E3564
 	add r1, sp, #0x5c
@@ -8377,7 +8377,7 @@ _022E376C:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	movs r5, r0
 	bmi _022E3874
 	ldr r1, [sb]
@@ -9006,7 +9006,7 @@ _022E4040:
 	ldr r1, _022E4244 ; =ov11_02324F1C
 	mov r0, r7
 	ldr r1, [r1, r2, lsl #2]
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r7, #0x1c]
 	mov r0, #2
 	strh r0, [r7, #0xe]
@@ -9030,7 +9030,7 @@ _022E4078:
 	mov r5, r0
 	ldrh r1, [r4, #4]
 	add r0, r7, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	mov r1, r0
 	mov r0, r5
 	bl ov11_022F2748
@@ -9053,7 +9053,7 @@ _022E4104:
 	mov r5, r0
 	ldrh r1, [r4, #4]
 	add r0, r7, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	mov r1, r0
 	mov r0, r5
 	bl ov11_022F276C
@@ -9085,7 +9085,7 @@ _022E4140:
 	mov r5, r0
 	ldrh r1, [r4, #0xc]
 	add r0, r7, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	mov r1, r0
 	mov r0, r5
 	bl ov11_022F2748
@@ -9110,7 +9110,7 @@ _022E41A8:
 	mov r6, r0
 	ldrh r1, [r4, #4]
 	add r0, r7, #0x14
-	bl ov11_022E4248
+	bl GetSsbString
 	mov r1, r0
 	mov r0, r6
 	bl ov11_022F27B4
@@ -9141,14 +9141,14 @@ _022E4240: .word 0x00000162
 _022E4244: .word ov11_02324F1C
 	arm_func_end ov11_022E3C68
 
-	arm_func_start ov11_022E4248
-ov11_022E4248: ; 0x022E4248
+	arm_func_start GetSsbString
+GetSsbString: ; 0x022E4248
 	ldr r2, [r0, #0xc]
 	mov r0, r1, lsl #1
 	ldrh r0, [r2, r0]
 	add r0, r2, r0
 	bx lr
-	arm_func_end ov11_022E4248
+	arm_func_end GetSsbString
 
 	arm_func_start ov11_022E425C
 ov11_022E425C: ; 0x022E425C
@@ -9242,16 +9242,16 @@ _022E437C:
 	bl Debug_Print
 	mov r0, r8, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F7650
+	bl UnlockMainRoutine
 	mov r0, r8, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022F9018
+	bl UnlockActorRoutines
 	mov r0, r8, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022FCC44
+	bl UnlockObjectRoutines
 	mov r0, r8, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl ov11_022FE354
+	bl UnlockPerformerRoutines
 	strb r4, [r7, r8]
 _022E43CC:
 	add r8, r8, #1
@@ -9264,8 +9264,8 @@ _022E43E0: .word ov11_023195EC
 _022E43E4: .word LOCK_NOTIFY_ARRAY
 	arm_func_end HandleUnlocks
 
-	arm_func_start ov11_022E43E8
-ov11_022E43E8: ; 0x022E43E8
+	arm_func_start ScriptCaseProcess
+ScriptCaseProcess: ; 0x022E43E8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, r1
 	mov r8, r0
@@ -9395,7 +9395,7 @@ _022E45B4: .word ov11_02319640
 _022E45B8: .word ov11_02319658
 _022E45BC: .word ov11_02318614
 _022E45C0: .word ov11_02319674
-	arm_func_end ov11_022E43E8
+	arm_func_end ScriptCaseProcess
 
 	arm_func_start ov11_022E45C4
 ov11_022E45C4: ; 0x022E45C4
@@ -11576,13 +11576,13 @@ _022E624C:
 	mov r0, #0
 	mov r1, r0
 	mov r2, r0
-	bl sub_020367B4
+	bl SetupAndShowKeyboard
 	b _022E68AC
 _022E6260:
 	mov r1, #0
 	mov r2, r1
 	mov r0, #3
-	bl sub_020367B4
+	bl SetupAndShowKeyboard
 	b _022E68AC
 _022E6274:
 	add r0, sp, #0xc0
@@ -11591,7 +11591,7 @@ _022E6274:
 	add r1, sp, #0xc0
 	mov r0, #2
 	mov r2, r1
-	bl sub_020367B4
+	bl SetupAndShowKeyboard
 	b _022E68AC
 _022E6294:
 	bl ov11_02310BDC
@@ -11619,7 +11619,7 @@ _022E6294:
 	add r1, sp, #0xa0
 	mov r0, #1
 	mov r2, r1
-	bl sub_020367B4
+	bl SetupAndShowKeyboard
 	b _022E68AC
 _022E62D4:
 	mov r0, #0
@@ -13639,10 +13639,10 @@ _022E7D88:
 	cmp r0, #3
 	bne _022E7E74
 	mov r0, #0x2e
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	mov r4, r0
 	mov r0, #0x2f
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	ldrsh r1, [r8, #0xa]
 	mvn r5, #0
 	cmp r1, r0
@@ -13924,7 +13924,7 @@ ov11_022E8090: ; 0x022E8090
 	mov r2, #0xa
 	bl StrncpyName
 	mov r0, r4
-	bl sub_02052EFC
+	bl SetBaseStatsMovesGroundMonster
 	ldr r0, _022E810C ; =ov11_02324F98
 	ldr r2, _022E8114 ; =RECRUITMENT_TABLE_LEVELS
 	ldrsh r3, [r0]
@@ -32349,7 +32349,7 @@ ov11_022F709C: ; 0x022F709C
 	ldr r1, _022F70CC ; =ov11_02321414
 	mov r2, #0
 	str r0, [r3]
-	bl ov11_022DC8E8
+	bl InitScriptRoutine
 	bl ov11_022F7104
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -32797,17 +32797,17 @@ ov11_022F7628: ; 0x022F7628
 _022F764C: .word GROUND_STATE_PTRS
 	arm_func_end ov11_022F7628
 
-	arm_func_start ov11_022F7650
-ov11_022F7650: ; 0x022F7650
+	arm_func_start UnlockMainRoutine
+UnlockMainRoutine: ; 0x022F7650
 	ldr r2, _022F7664 ; =GROUND_STATE_PTRS
-	ldr ip, _022F7668 ; =ov11_022DD0EC
+	ldr ip, _022F7668 ; =UnlockRoutine
 	mov r1, r0
 	ldr r0, [r2]
 	bx ip
 	.align 2, 0
 _022F7664: .word GROUND_STATE_PTRS
-_022F7668: .word ov11_022DD0EC
-	arm_func_end ov11_022F7650
+_022F7668: .word UnlockRoutine
+	arm_func_end UnlockMainRoutine
 
 	arm_func_start ov11_022F766C
 ov11_022F766C: ; 0x022F766C
@@ -33360,8 +33360,8 @@ ov11_022F7DD4: ; 0x022F7DD4
 _022F7E0C: .word ov11_02324CF8
 	arm_func_end ov11_022F7DD4
 
-	arm_func_start ov11_022F7E10
-ov11_022F7E10: ; 0x022F7E10
+	arm_func_start GetLiveActorIdxFromScriptEntityId
+GetLiveActorIdxFromScriptEntityId: ; 0x022F7E10
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r0, sp, #8
@@ -33393,7 +33393,7 @@ _022F7E68:
 	bx lr
 	.align 2, 0
 _022F7E74: .word ov11_02324CF8
-	arm_func_end ov11_022F7E10
+	arm_func_end GetLiveActorIdxFromScriptEntityId
 
 	arm_func_start ov11_022F7E78
 ov11_022F7E78: ; 0x022F7E78
@@ -33459,7 +33459,7 @@ _022F7F44:
 	cmp r1, #1
 	mvneq r0, #0
 	beq _022F83D8
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	mov sb, r0
 	b _022F7F94
 _022F7F68:
@@ -33469,11 +33469,11 @@ _022F7F68:
 	cmp r1, #4
 	mvneq r0, #0
 	beq _022F83D8
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	mov sb, r0
 	b _022F7F94
 _022F7F8C:
-	bl ov11_022F7E10
+	bl GetLiveActorIdxFromScriptEntityId
 	mov sb, r0
 _022F7F94:
 	cmp sb, #0
@@ -33734,10 +33734,10 @@ _022F82D4:
 	ldr r2, [r7, #0x128]
 	add r0, r7, #0x18c
 	bl ov11_022F5BBC
-	ldr r1, _022F8400 ; =ov11_0232187C
+	ldr r1, _022F8400 ; =ACTOR_FUNCTION_TABLE
 	mov r2, r7
 	add r0, r7, #0x38
-	bl ov11_022DC8E8
+	bl InitScriptRoutine
 _022F8354:
 	ldr r0, [r7, #0x160]
 	ldr r1, _022F8404 ; =ov11_023219E8
@@ -33786,7 +33786,7 @@ _022F83F0: .word 0x03000743
 _022F83F4: .word 0x03000002
 _022F83F8: .word 0x03002358
 _022F83FC: .word 0x00000807
-_022F8400: .word ov11_0232187C
+_022F8400: .word ACTOR_FUNCTION_TABLE
 _022F8404: .word ov11_023219E8
 	arm_func_end ov11_022F7E78
 
@@ -34019,8 +34019,8 @@ _022F8724: .word ov11_02324CF8
 _022F8728: .word ov11_02321A40
 	arm_func_end ov11_022F85C0
 
-	arm_func_start ov11_022F872C
-ov11_022F872C: ; 0x022F872C
+	arm_func_start SetAttributeBitfieldLiveActor
+SetAttributeBitfieldLiveActor: ; 0x022F872C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _022F87B4 ; =ov11_02324CF8
 	mov r2, #0x250
@@ -34059,10 +34059,10 @@ _022F879C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F87B4: .word ov11_02324CF8
-	arm_func_end ov11_022F872C
+	arm_func_end SetAttributeBitfieldLiveActor
 
-	arm_func_start ov11_022F87B8
-ov11_022F87B8: ; 0x022F87B8
+	arm_func_start ResetAttributeBitfieldLiveActor
+ResetAttributeBitfieldLiveActor: ; 0x022F87B8
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _022F8818 ; =ov11_02324CF8
 	mov r2, #0x250
@@ -34090,7 +34090,7 @@ _022F87FC:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F8818: .word ov11_02324CF8
-	arm_func_end ov11_022F87B8
+	arm_func_end ResetAttributeBitfieldLiveActor
 
 	arm_func_start ov11_022F881C
 ov11_022F881C: ; 0x022F881C
@@ -34700,8 +34700,8 @@ _022F8FF4:
 _022F9014: .word ov11_02324CF8
 	arm_func_end ov11_022F8FC4
 
-	arm_func_start ov11_022F9018
-ov11_022F9018: ; 0x022F9018
+	arm_func_start UnlockActorRoutines
+UnlockActorRoutines: ; 0x022F9018
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r1, _022F9070 ; =ov11_02324CF8
 	mov r5, #0
@@ -34715,7 +34715,7 @@ _022F9034:
 	beq _022F9050
 	mov r1, r6
 	add r0, r4, #0x38
-	bl ov11_022DD0EC
+	bl UnlockRoutine
 	orr r5, r5, r0
 _022F9050:
 	add r0, r8, #1
@@ -34728,7 +34728,7 @@ _022F9050:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022F9070: .word ov11_02324CF8
-	arm_func_end ov11_022F9018
+	arm_func_end UnlockActorRoutines
 
 	arm_func_start ov11_022F9074
 ov11_022F9074: ; 0x022F9074
@@ -34818,8 +34818,8 @@ ov11_022F9148: ; 0x022F9148
 _022F917C: .word ov11_02324CF8
 	arm_func_end ov11_022F9148
 
-	arm_func_start ov11_022F9180
-ov11_022F9180: ; 0x022F9180
+	arm_func_start GetCollidingActorId
+GetCollidingActorId: ; 0x022F9180
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r4, _022F9218 ; =ov11_02324CF8
 	mov ip, #0
@@ -34863,7 +34863,7 @@ _022F9208:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022F9218: .word ov11_02324CF8
-	arm_func_end ov11_022F9180
+	arm_func_end GetCollidingActorId
 
 	arm_func_start ov11_022F921C
 ov11_022F921C: ; 0x022F921C
@@ -34948,7 +34948,7 @@ _022F933C:
 	mov r2, r5
 	mov r3, r4
 	mov r1, #0x100
-	bl ov11_022F9180
+	bl GetCollidingActorId
 	cmp r0, #0
 	movge r0, #0x100
 	bge _022F93BC
@@ -34959,7 +34959,7 @@ _022F9368:
 	mov r1, r5
 	mov r2, r4
 	mov r0, #0x100
-	bl ov11_022FCD18
+	bl GetCollidingObjectId
 	cmp r0, #0
 	movge r0, #0x200
 	bge _022F93BC
@@ -34970,7 +34970,7 @@ _022F9390:
 	mov r1, r5
 	mov r2, r4
 	mov r0, #0x1000
-	bl ov11_022FEDF8
+	bl GetCollidingEventId
 	cmp r0, #0
 	movge r0, #0x400
 	bge _022F93BC
@@ -35084,8 +35084,8 @@ _022F9520: .word 0x00000807
 _022F9524: .word SETANIMATION_TABLE
 	arm_func_end ChangeActorAnimation
 
-	arm_func_start ov11_022F9528
-ov11_022F9528: ; 0x022F9528
+	arm_func_start SetPositionLiveActor
+SetPositionLiveActor: ; 0x022F9528
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	ldr r2, _022F9634 ; =ov11_02321684
@@ -35159,7 +35159,7 @@ _022F962C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022F9634: .word ov11_02321684
-	arm_func_end ov11_022F9528
+	arm_func_end SetPositionLiveActor
 
 	arm_func_start ov11_022F9638
 ov11_022F9638: ; 0x022F9638
@@ -35296,7 +35296,7 @@ _022F9818:
 	add r2, sp, #0x24
 	add r3, sp, #0x1c
 	mov r1, #0x1100
-	bl ov11_022F9180
+	bl GetCollidingActorId
 	movs r1, r0
 	bmi _022F9878
 	ldr r2, _022F99C8 ; =ov11_02324CF8
@@ -35321,7 +35321,7 @@ _022F9878:
 	add r1, sp, #0x24
 	add r2, sp, #0x1c
 	mov r0, #0x1100
-	bl ov11_022FCD18
+	bl GetCollidingObjectId
 	movs r4, r0
 	bmi _022F98D0
 	add r1, sp, #0x18
@@ -35345,7 +35345,7 @@ _022F98D0:
 	add r1, sp, #0x24
 	add r2, sp, #0x1c
 	mov r0, #0x1000
-	bl ov11_022FEDF8
+	bl GetCollidingEventId
 	movs r1, r0
 	bmi _022F990C
 	ldrsh r0, [r6]
@@ -35373,7 +35373,7 @@ _022F9910:
 	add r1, sp, #0x24
 	add r2, sp, #0x1c
 	mov r0, #0x800
-	bl ov11_022FEDF8
+	bl GetCollidingEventId
 	movs r4, r0
 	bmi _022F999C
 	ldrb r0, [r6, #0x152]
@@ -35454,7 +35454,7 @@ ov11_022F99CC: ; 0x022F99CC
 	mov r1, #0x2000
 	str ip, [sp, #8]
 	str r7, [sp, #0xc]
-	bl ov11_022F9180
+	bl GetCollidingActorId
 	cmp r0, #0
 	blt _022F9A88
 	cmp r5, r0
@@ -35465,7 +35465,7 @@ _022F9A88:
 	add r1, sp, #0x20
 	add r2, sp, #0x18
 	mov r0, #0x2000
-	bl ov11_022FCD18
+	bl GetCollidingObjectId
 	cmp r0, #0
 	blt _022F9AB0
 	cmp r4, r0
@@ -35941,7 +35941,7 @@ ov11_022FA0BC: ; 0x022FA0BC
 	beq _022FA184
 	ldrsh r0, [r5]
 	mov r1, #0x2000
-	bl ov11_022F9180
+	bl GetCollidingActorId
 	movs r1, r0
 	bmi _022FA184
 	ldrsh r0, [r5]
@@ -35955,7 +35955,7 @@ _022FA184:
 	add r1, sp, #0x20
 	add r2, sp, #0x18
 	mov r0, #0x2000
-	bl ov11_022FCD18
+	bl GetCollidingObjectId
 	movs r1, r0
 	bmi _022FA1B8
 	ldrsh r0, [r5]
@@ -36030,7 +36030,7 @@ _022FA27C:
 	beq _022FA93C
 	ldrsh r0, [r4]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 	b _022FA93C
 _022FA2A4:
 	mov r0, #0
@@ -36041,7 +36041,7 @@ _022FA2A4:
 	beq _022FA93C
 	ldrsh r0, [r4]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 	b _022FA93C
 _022FA2CC:
 	mvn r0, #0
@@ -36144,14 +36144,14 @@ _022FA410:
 	beq _022FA93C
 	ldrsh r0, [r4]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 	b _022FA93C
 _022FA438:
 	tst r0, #0x20
 	beq _022FA93C
 	ldrsh r0, [r4]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 	b _022FA93C
 _022FA450:
 	mov r0, #0
@@ -36163,7 +36163,7 @@ _022FA450:
 	beq _022FA93C
 	ldrsh r0, [r4]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 	b _022FA93C
 _022FA47C:
 	ldrsh r0, [r4, #2]
@@ -36185,7 +36185,7 @@ _022FA4A4:
 	beq _022FA4C8
 	ldrsh r0, [r4]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 _022FA4C8:
 	add r1, sp, #0x10
 	mov r0, r5
@@ -36495,7 +36495,7 @@ _022FA924:
 	beq _022FA93C
 	ldrsh r0, [r4]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 _022FA93C:
 	mvn r0, #0
 	cmp r7, r0
@@ -36552,23 +36552,23 @@ _022FA9FC: .word ov11_02321D48
 _022FAA00: .word ov11_02321D6C
 	arm_func_end ov11_022FA1DC
 
-	arm_func_start ov11_022FAA04
-ov11_022FAA04: ; 0x022FAA04
+	arm_func_start GetIdLiveActor
+GetIdLiveActor: ; 0x022FAA04
 	ldrsh r0, [r0]
 	bx lr
-	arm_func_end ov11_022FAA04
+	arm_func_end GetIdLiveActor
 
-	arm_func_start ov11_022FAA0C
-ov11_022FAA0C: ; 0x022FAA0C
+	arm_func_start GetCollisionBoxLiveActor
+GetCollisionBoxLiveActor: ; 0x022FAA0C
 	ldr r2, [r0, #0xc]
 	ldr r0, [r0, #0x10]
 	str r2, [r1]
 	str r0, [r1, #4]
 	bx lr
-	arm_func_end ov11_022FAA0C
+	arm_func_end GetCollisionBoxLiveActor
 
-	arm_func_start ov11_022FAA20
-ov11_022FAA20: ; 0x022FAA20
+	arm_func_start SetPositionInitialLiveActor
+SetPositionInitialLiveActor: ; 0x022FAA20
 	cmp r1, #0
 	beq _022FAA6C
 	ldr r3, [r1]
@@ -36617,10 +36617,10 @@ _022FAA6C:
 	ldrsb r1, [r0, #0x1c]
 	strb r1, [r0, #0x15a]
 	bx lr
-	arm_func_end ov11_022FAA20
+	arm_func_end SetPositionInitialLiveActor
 
-	arm_func_start ov11_022FAADC
-ov11_022FAADC: ; 0x022FAADC
+	arm_func_start SetMovementRangeLiveActor
+SetMovementRangeLiveActor: ; 0x022FAADC
 	ldr r3, [r1]
 	ldr r1, [r1, #4]
 	str r3, [r0, #0x28]
@@ -36630,10 +36630,10 @@ ov11_022FAADC: ; 0x022FAADC
 	str r3, [r0, #0x30]
 	str r1, [r0, #0x34]
 	bx lr
-	arm_func_end ov11_022FAADC
+	arm_func_end SetMovementRangeLiveActor
 
-	arm_func_start ov11_022FAB00
-ov11_022FAB00: ; 0x022FAB00
+	arm_func_start GetCollisionBoxCenterLiveActor
+GetCollisionBoxCenterLiveActor: ; 0x022FAB00
 	ldr r3, [r0, #0x15c]
 	ldr r2, [r0, #0x14]
 	add r2, r3, r2
@@ -36643,41 +36643,41 @@ ov11_022FAB00: ; 0x022FAB00
 	add r0, r2, r0
 	str r0, [r1, #4]
 	bx lr
-	arm_func_end ov11_022FAB00
+	arm_func_end GetCollisionBoxCenterLiveActor
 
-	arm_func_start ov11_022FAB24
-ov11_022FAB24: ; 0x022FAB24
-	ldr ip, _022FAB2C ; =ov11_022F9528
+	arm_func_start SetPositionLiveActorVeneer
+SetPositionLiveActorVeneer: ; 0x022FAB24
+	ldr ip, _022FAB2C ; =SetPositionLiveActor
 	bx ip
 	.align 2, 0
-_022FAB2C: .word ov11_022F9528
-	arm_func_end ov11_022FAB24
+_022FAB2C: .word SetPositionLiveActor
+	arm_func_end SetPositionLiveActorVeneer
 
-	arm_func_start ov11_022FAB30
-ov11_022FAB30: ; 0x022FAB30
+	arm_func_start GetHeightLiveActor
+GetHeightLiveActor: ; 0x022FAB30
 	ldr r3, [r0, #0x16c]
 	str r3, [r1]
 	ldr r0, [r0, #0x170]
 	str r0, [r2]
 	bx lr
-	arm_func_end ov11_022FAB30
+	arm_func_end GetHeightLiveActor
 
-	arm_func_start ov11_022FAB44
-ov11_022FAB44: ; 0x022FAB44
+	arm_func_start SetHeightLiveActor
+SetHeightLiveActor: ; 0x022FAB44
 	str r1, [r0, #0x16c]
 	bx lr
-	arm_func_end ov11_022FAB44
+	arm_func_end SetHeightLiveActor
 
-	arm_func_start ov11_022FAB4C
-ov11_022FAB4C: ; 0x022FAB4C
+	arm_func_start GetDirectionLiveActor
+GetDirectionLiveActor: ; 0x022FAB4C
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x5a]
 	strb r0, [r1]
 	bx lr
-	arm_func_end ov11_022FAB4C
+	arm_func_end GetDirectionLiveActor
 
-	arm_func_start ov11_022FAB5C
-ov11_022FAB5C: ; 0x022FAB5C
+	arm_func_start SetDirectionLiveActor
+SetDirectionLiveActor: ; 0x022FAB5C
 	mvn r2, #0
 	cmp r1, r2
 	strneb r1, [r0, #0x15a]
@@ -36688,10 +36688,10 @@ ov11_022FAB5C: ; 0x022FAB5C
 	movne r1, #1
 	strneb r1, [r0, #0x174]
 	bx lr
-	arm_func_end ov11_022FAB5C
+	arm_func_end SetDirectionLiveActor
 
-	arm_func_start ov11_022FAB84
-ov11_022FAB84: ; 0x022FAB84
+	arm_func_start SetAnimationLiveActor
+SetAnimationLiveActor: ; 0x022FAB84
 	ldrh r2, [r0]
 	cmp r2, #2
 	bhi _022FABC0
@@ -36713,19 +36713,19 @@ _022FABC0:
 	.align 2, 0
 _022FABC8: .word 0x00000119
 _022FABCC: .word ChangeActorAnimation
-	arm_func_end ov11_022FAB84
+	arm_func_end SetAnimationLiveActor
 
-	arm_func_start ov11_022FABD0
-ov11_022FABD0: ; 0x022FABD0
+	arm_func_start SetEffectLiveActor
+SetEffectLiveActor: ; 0x022FABD0
 	add ip, r0, #0x100
 	strh r1, [ip, #0x82]
 	strh r2, [ip, #0x84]
 	str r3, [r0, #0x188]
 	bx lr
-	arm_func_end ov11_022FABD0
+	arm_func_end SetEffectLiveActor
 
-	arm_func_start ov11_022FABE4
-ov11_022FABE4: ; 0x022FABE4
+	arm_func_start GetAnimationStatusLiveActor
+GetAnimationStatusLiveActor: ; 0x022FABE4
 	stmdb sp!, {r3, lr}
 	ldrb r1, [r0, #0x174]
 	cmp r1, #0
@@ -36734,10 +36734,10 @@ ov11_022FABE4: ; 0x022FABE4
 	add r0, r0, #0x18c
 	bl ov11_022F4990
 	ldmia sp!, {r3, pc}
-	arm_func_end ov11_022FABE4
+	arm_func_end GetAnimationStatusLiveActor
 
-	arm_func_start ov11_022FAC04
-ov11_022FAC04: ; 0x022FAC04
+	arm_func_start GetEffectStatusLiveActor
+GetEffectStatusLiveActor: ; 0x022FAC04
 	stmdb sp!, {r3, lr}
 	add r1, r0, #0x100
 	ldrsh r1, [r1, #0x84]
@@ -36747,44 +36747,44 @@ ov11_022FAC04: ; 0x022FAC04
 	add r0, r0, #0x18c
 	bl ov11_022F49B0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov11_022FAC04
+	arm_func_end GetEffectStatusLiveActor
 
-	arm_func_start ov11_022FAC28
-ov11_022FAC28: ; 0x022FAC28
+	arm_func_start GetAttributeBitfieldLiveActor
+GetAttributeBitfieldLiveActor: ; 0x022FAC28
 	ldr r0, [r0, #0x128]
 	str r0, [r1]
 	bx lr
-	arm_func_end ov11_022FAC28
+	arm_func_end GetAttributeBitfieldLiveActor
 
-	arm_func_start ov11_022FAC34
-ov11_022FAC34: ; 0x022FAC34
-	ldr ip, _022FAC40 ; =ov11_022F872C
+	arm_func_start SetAttributeBitfieldLiveActorWrapper
+SetAttributeBitfieldLiveActorWrapper: ; 0x022FAC34
+	ldr ip, _022FAC40 ; =SetAttributeBitfieldLiveActor
 	ldrsh r0, [r0]
 	bx ip
 	.align 2, 0
-_022FAC40: .word ov11_022F872C
-	arm_func_end ov11_022FAC34
+_022FAC40: .word SetAttributeBitfieldLiveActor
+	arm_func_end SetAttributeBitfieldLiveActorWrapper
 
-	arm_func_start ov11_022FAC44
-ov11_022FAC44: ; 0x022FAC44
-	ldr ip, _022FAC50 ; =ov11_022F87B8
+	arm_func_start ResetAttributeBitfieldLiveActorWrapper
+ResetAttributeBitfieldLiveActorWrapper: ; 0x022FAC44
+	ldr ip, _022FAC50 ; =ResetAttributeBitfieldLiveActor
 	ldrsh r0, [r0]
 	bx ip
 	.align 2, 0
-_022FAC50: .word ov11_022F87B8
-	arm_func_end ov11_022FAC44
+_022FAC50: .word ResetAttributeBitfieldLiveActor
+	arm_func_end ResetAttributeBitfieldLiveActorWrapper
 
-	arm_func_start ov11_022FAC54
-ov11_022FAC54: ; 0x022FAC54
+	arm_func_start SetBlinkLiveActor
+SetBlinkLiveActor: ; 0x022FAC54
 	ldr ip, _022FAC60 ; =ov11_022F4984
 	add r0, r0, #0x18c
 	bx ip
 	.align 2, 0
 _022FAC60: .word ov11_022F4984
-	arm_func_end ov11_022FAC54
+	arm_func_end SetBlinkLiveActor
 
-	arm_func_start ov11_022FAC64
-ov11_022FAC64: ; 0x022FAC64
+	arm_func_start SetPositionOffsetLiveActor
+SetPositionOffsetLiveActor: ; 0x022FAC64
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	ldr r2, _022FAE54 ; =ov11_02321684
@@ -36875,7 +36875,7 @@ _022FAD90:
 	beq _022FAE48
 	ldrsh r0, [r5]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 	b _022FAE48
 _022FADC4:
 	ldr r1, [sp]
@@ -36893,7 +36893,7 @@ _022FADC4:
 	beq _022FAE04
 	ldrsh r0, [r5]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 _022FAE04:
 	mov r6, #0x40
 	b _022FAE48
@@ -36912,7 +36912,7 @@ _022FAE2C:
 	beq _022FAE44
 	ldrsh r0, [r5]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 _022FAE44:
 	mov r6, #0
 _022FAE48:
@@ -36921,7 +36921,7 @@ _022FAE48:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022FAE54: .word ov11_02321684
-	arm_func_end ov11_022FAC64
+	arm_func_end SetPositionOffsetLiveActor
 
 	arm_func_start ov11_022FAE58
 ov11_022FAE58: ; 0x022FAE58
@@ -37550,7 +37550,7 @@ _022FB700:
 _022FB75C:
 	add r1, sp, #0x3c
 	mov r0, r5
-	bl ov11_022F9528
+	bl SetPositionLiveActor
 	cmp r0, #0
 	bne _022FB864
 	ldr r3, [sp, #0x3c]
@@ -37584,7 +37584,7 @@ _022FB75C:
 	beq _022FB818
 	ldrsh r0, [r5]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 	b _022FB818
 _022FB7F4:
 	mov r0, #0
@@ -37595,7 +37595,7 @@ _022FB7F4:
 	beq _022FB818
 	ldrsh r0, [r5]
 	mov r1, #0x1000000
-	bl ov11_022F872C
+	bl SetAttributeBitfieldLiveActor
 _022FB818:
 	ldrb r0, [r5, #0x174]
 	cmp r0, #0
@@ -38041,7 +38041,7 @@ _022FBE18:
 	cmp r0, r4
 	beq _022FBE2C
 	mov r0, r5
-	bl ov11_022FC44C
+	bl DeleteLiveObject
 _022FBE2C:
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10
@@ -38362,10 +38362,10 @@ _022FC1C8:
 	ldr r2, [r6, #0x12c]
 	add r0, r6, #0x154
 	bl LoadObjectAnimData
-	ldr r1, _022FC2D8 ; =ov11_02321DFC
+	ldr r1, _022FC2D8 ; =OBJECT_FUNCTION_TABLE
 	mov r2, r6
 	add r0, r6, #0x3c
-	bl ov11_022DC8E8
+	bl InitScriptRoutine
 	ldrsh r0, [r5]
 	cmp r0, #0x10
 	bne _022FC2A0
@@ -38389,7 +38389,7 @@ _022FC2C8: .word ov11_02321E4C
 _022FC2CC: .word 0x02006100
 _022FC2D0: .word 0x02003100
 _022FC2D4: .word 0x02006140
-_022FC2D8: .word ov11_02321DFC
+_022FC2D8: .word OBJECT_FUNCTION_TABLE
 	arm_func_end ov11_022FBEC4
 
 	arm_func_start ov11_022FC2DC
@@ -38437,7 +38437,7 @@ _022FC338:
 	cmpne sb, r0
 	bne _022FC388
 	mov r0, r8
-	bl ov11_022FC44C
+	bl DeleteLiveObject
 _022FC388:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -38471,14 +38471,14 @@ _022FC3C0:
 	cmpne sb, r0
 	bne _022FC41C
 	mov r0, r8
-	bl ov11_022FC44C
+	bl DeleteLiveObject
 	b _022FC41C
 _022FC408:
 	ldrsh r0, [sl, #0xa]
 	cmp r0, r4
 	bne _022FC41C
 	mov r0, r8
-	bl ov11_022FC44C
+	bl DeleteLiveObject
 _022FC41C:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -38496,8 +38496,8 @@ _022FC444: .word ov11_02321EC4
 _022FC448: .word ov11_02321EF0
 	arm_func_end ov11_022FC2DC
 
-	arm_func_start ov11_022FC44C
-ov11_022FC44C: ; 0x022FC44C
+	arm_func_start DeleteLiveObject
+DeleteLiveObject: ; 0x022FC44C
 	stmdb sp!, {r4, lr}
 	ldr r1, _022FC48C ; =ov11_02324D00
 	mov r2, r0
@@ -38517,7 +38517,7 @@ ov11_022FC44C: ; 0x022FC44C
 	.align 2, 0
 _022FC48C: .word ov11_02324D00
 _022FC490: .word ov11_02321F10
-	arm_func_end ov11_022FC44C
+	arm_func_end DeleteLiveObject
 
 	arm_func_start ov11_022FC494
 ov11_022FC494: ; 0x022FC494
@@ -38619,8 +38619,8 @@ _022FC5F0: .word ov11_02324D00
 _022FC5F4: .word ov11_02321EC4
 	arm_func_end ov11_022FC494
 
-	arm_func_start ov11_022FC5F8
-ov11_022FC5F8: ; 0x022FC5F8
+	arm_func_start SetAttributeBitfieldLiveObject
+SetAttributeBitfieldLiveObject: ; 0x022FC5F8
 	stmdb sp!, {r3, lr}
 	ldr r3, _022FC634 ; =ov11_02324D00
 	mov r2, #0x218
@@ -38638,10 +38638,10 @@ ov11_022FC5F8: ; 0x022FC5F8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FC634: .word ov11_02324D00
-	arm_func_end ov11_022FC5F8
+	arm_func_end SetAttributeBitfieldLiveObject
 
-	arm_func_start ov11_022FC638
-ov11_022FC638: ; 0x022FC638
+	arm_func_start ResetAttributeBitfieldLiveObject
+ResetAttributeBitfieldLiveObject: ; 0x022FC638
 	stmdb sp!, {r3, lr}
 	ldr r3, _022FC678 ; =ov11_02324D00
 	mov r2, #0x218
@@ -38660,7 +38660,7 @@ ov11_022FC638: ; 0x022FC638
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FC678: .word ov11_02324D00
-	arm_func_end ov11_022FC638
+	arm_func_end ResetAttributeBitfieldLiveObject
 
 	arm_func_start ov11_022FC67C
 ov11_022FC67C: ; 0x022FC67C
@@ -39100,8 +39100,8 @@ _022FCC20:
 _022FCC40: .word ov11_02324D00
 	arm_func_end ov11_022FCBF0
 
-	arm_func_start ov11_022FCC44
-ov11_022FCC44: ; 0x022FCC44
+	arm_func_start UnlockObjectRoutines
+UnlockObjectRoutines: ; 0x022FCC44
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r1, _022FCC9C ; =ov11_02324D00
 	mov r5, #0
@@ -39115,7 +39115,7 @@ _022FCC60:
 	beq _022FCC7C
 	mov r1, r6
 	add r0, r4, #0x3c
-	bl ov11_022DD0EC
+	bl UnlockRoutine
 	orr r5, r5, r0
 _022FCC7C:
 	add r0, r8, #1
@@ -39128,7 +39128,7 @@ _022FCC7C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022FCC9C: .word ov11_02324D00
-	arm_func_end ov11_022FCC44
+	arm_func_end UnlockObjectRoutines
 
 	arm_func_start ov11_022FCCA0
 ov11_022FCCA0: ; 0x022FCCA0
@@ -39171,8 +39171,8 @@ _022FCD08:
 _022FCD14: .word ov11_02324D00
 	arm_func_end ov11_022FCCC4
 
-	arm_func_start ov11_022FCD18
-ov11_022FCD18: ; 0x022FCD18
+	arm_func_start GetCollidingObjectId
+GetCollidingObjectId: ; 0x022FCD18
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr ip, _022FCDAC ; =ov11_02324D00
 	mov r3, #0
@@ -39215,7 +39215,7 @@ _022FCD9C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022FCDAC: .word ov11_02324D00
-	arm_func_end ov11_022FCD18
+	arm_func_end GetCollidingObjectId
 
 	arm_func_start ov11_022FCDB0
 ov11_022FCDB0: ; 0x022FCDB0
@@ -39332,7 +39332,7 @@ _022FCF34:
 	mov r3, r4
 	mvn r0, #0
 	mov r1, #0x100
-	bl ov11_022F9180
+	bl GetCollidingActorId
 	cmp r0, #0
 	movge r0, #0x100
 	bge _022FCF64
@@ -39345,8 +39345,8 @@ _022FCF64:
 _022FCF6C: .word ov11_02321D88
 	arm_func_end ov11_022FCE48
 
-	arm_func_start ov11_022FCF70
-ov11_022FCF70: ; 0x022FCF70
+	arm_func_start SetPositionLiveObject
+SetPositionLiveObject: ; 0x022FCF70
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	ldr r5, _022FD05C ; =ov11_02321D88
@@ -39411,25 +39411,25 @@ _022FD054:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022FD05C: .word ov11_02321D88
-	arm_func_end ov11_022FCF70
+	arm_func_end SetPositionLiveObject
 
-	arm_func_start ov11_022FD060
-ov11_022FD060: ; 0x022FD060
+	arm_func_start GetIdLiveObject
+GetIdLiveObject: ; 0x022FD060
 	ldrsh r0, [r0, #4]
 	bx lr
-	arm_func_end ov11_022FD060
+	arm_func_end GetIdLiveObject
 
-	arm_func_start ov11_022FD068
-ov11_022FD068: ; 0x022FD068
+	arm_func_start GetCollisionBoxLiveObject
+GetCollisionBoxLiveObject: ; 0x022FD068
 	ldr r2, [r0, #0x10]
 	ldr r0, [r0, #0x14]
 	str r2, [r1]
 	str r0, [r1, #4]
 	bx lr
-	arm_func_end ov11_022FD068
+	arm_func_end GetCollisionBoxLiveObject
 
-	arm_func_start ov11_022FD07C
-ov11_022FD07C: ; 0x022FD07C
+	arm_func_start SetPositionInitialLiveObject
+SetPositionInitialLiveObject: ; 0x022FD07C
 	cmp r1, #0
 	beq _022FD0C8
 	ldr r3, [r1]
@@ -39478,10 +39478,10 @@ _022FD0C8:
 	ldrsb r1, [r0, #0x20]
 	strb r1, [r0, #0x130]
 	bx lr
-	arm_func_end ov11_022FD07C
+	arm_func_end SetPositionInitialLiveObject
 
-	arm_func_start ov11_022FD138
-ov11_022FD138: ; 0x022FD138
+	arm_func_start SetMovementRangeLiveObject
+SetMovementRangeLiveObject: ; 0x022FD138
 	ldr r3, [r1]
 	ldr r1, [r1, #4]
 	str r3, [r0, #0x2c]
@@ -39491,10 +39491,10 @@ ov11_022FD138: ; 0x022FD138
 	str r3, [r0, #0x34]
 	str r1, [r0, #0x38]
 	bx lr
-	arm_func_end ov11_022FD138
+	arm_func_end SetMovementRangeLiveObject
 
-	arm_func_start ov11_022FD15C
-ov11_022FD15C: ; 0x022FD15C
+	arm_func_start GetCollisionBoxCenterLiveObject
+GetCollisionBoxCenterLiveObject: ; 0x022FD15C
 	ldr r3, [r0, #0x134]
 	ldr r2, [r0, #0x18]
 	add r2, r3, r2
@@ -39504,49 +39504,49 @@ ov11_022FD15C: ; 0x022FD15C
 	add r0, r2, r0
 	str r0, [r1, #4]
 	bx lr
-	arm_func_end ov11_022FD15C
+	arm_func_end GetCollisionBoxCenterLiveObject
 
-	arm_func_start ov11_022FD180
-ov11_022FD180: ; 0x022FD180
-	ldr ip, _022FD188 ; =ov11_022FCF70
+	arm_func_start SetPositionLiveObjectVeneer
+SetPositionLiveObjectVeneer: ; 0x022FD180
+	ldr ip, _022FD188 ; =SetPositionLiveObject
 	bx ip
 	.align 2, 0
-_022FD188: .word ov11_022FCF70
-	arm_func_end ov11_022FD180
+_022FD188: .word SetPositionLiveObject
+	arm_func_end SetPositionLiveObjectVeneer
 
-	arm_func_start ov11_022FD18C
-ov11_022FD18C: ; 0x022FD18C
+	arm_func_start GetHeightLiveObject
+GetHeightLiveObject: ; 0x022FD18C
 	ldr r3, [r0, #0x144]
 	str r3, [r1]
 	ldr r0, [r0, #0x148]
 	str r0, [r2]
 	bx lr
-	arm_func_end ov11_022FD18C
+	arm_func_end GetHeightLiveObject
 
-	arm_func_start ov11_022FD1A0
-ov11_022FD1A0: ; 0x022FD1A0
+	arm_func_start SetHeightLiveObject
+SetHeightLiveObject: ; 0x022FD1A0
 	str r1, [r0, #0x144]
 	bx lr
-	arm_func_end ov11_022FD1A0
+	arm_func_end SetHeightLiveObject
 
-	arm_func_start GetDirectionLiveActor
-GetDirectionLiveActor: ; 0x022FD1A8
+	arm_func_start GetDirectionLiveObject
+GetDirectionLiveObject: ; 0x022FD1A8
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x30]
 	strb r0, [r1]
 	bx lr
-	arm_func_end GetDirectionLiveActor
+	arm_func_end GetDirectionLiveObject
 
-	arm_func_start SetDirectionLiveActor
-SetDirectionLiveActor: ; 0x022FD1B8
+	arm_func_start SetDirectionLiveObject
+SetDirectionLiveObject: ; 0x022FD1B8
 	mvn r2, #0
 	cmp r1, r2
 	strneb r1, [r0, #0x130]
 	bx lr
-	arm_func_end SetDirectionLiveActor
+	arm_func_end SetDirectionLiveObject
 
-	arm_func_start ov11_022FD1C8
-ov11_022FD1C8: ; 0x022FD1C8
+	arm_func_start SetAnimationLiveObject
+SetAnimationLiveObject: ; 0x022FD1C8
 	and r2, r1, #0x700
 	mov r2, r2, lsl #0x10
 	and r3, r1, #0xff
@@ -39600,18 +39600,18 @@ _022FD258:
 	bx lr
 	.align 2, 0
 _022FD284: .word ov11_02321DC8
-	arm_func_end ov11_022FD1C8
+	arm_func_end SetAnimationLiveObject
 
-	arm_func_start ov11_022FD288
-ov11_022FD288: ; 0x022FD288
+	arm_func_start SetEffectLiveObject
+SetEffectLiveObject: ; 0x022FD288
 	add r0, r0, #0x100
 	strh r1, [r0, #0x50]
 	strh r2, [r0, #0x52]
 	bx lr
-	arm_func_end ov11_022FD288
+	arm_func_end SetEffectLiveObject
 
-	arm_func_start ov11_022FD298
-ov11_022FD298: ; 0x022FD298
+	arm_func_start GetAnimationStatusLiveObject
+GetAnimationStatusLiveObject: ; 0x022FD298
 	stmdb sp!, {r3, lr}
 	ldrb r1, [r0, #0x14c]
 	cmp r1, #0
@@ -39620,10 +39620,10 @@ ov11_022FD298: ; 0x022FD298
 	add r0, r0, #0x154
 	bl ov11_022F4990
 	ldmia sp!, {r3, pc}
-	arm_func_end ov11_022FD298
+	arm_func_end GetAnimationStatusLiveObject
 
-	arm_func_start ov11_022FD2B8
-ov11_022FD2B8: ; 0x022FD2B8
+	arm_func_start GetEffectStatusLiveObject
+GetEffectStatusLiveObject: ; 0x022FD2B8
 	stmdb sp!, {r3, lr}
 	add r1, r0, #0x100
 	ldrsh r1, [r1, #0x52]
@@ -39633,44 +39633,44 @@ ov11_022FD2B8: ; 0x022FD2B8
 	add r0, r0, #0x154
 	bl ov11_022F49B0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov11_022FD2B8
+	arm_func_end GetEffectStatusLiveObject
 
-	arm_func_start ov11_022FD2DC
-ov11_022FD2DC: ; 0x022FD2DC
+	arm_func_start GetAttributeBitfieldLiveObject
+GetAttributeBitfieldLiveObject: ; 0x022FD2DC
 	ldr r0, [r0, #0x12c]
 	str r0, [r1]
 	bx lr
-	arm_func_end ov11_022FD2DC
+	arm_func_end GetAttributeBitfieldLiveObject
 
-	arm_func_start ov11_022FD2E8
-ov11_022FD2E8: ; 0x022FD2E8
-	ldr ip, _022FD2F4 ; =ov11_022FC5F8
+	arm_func_start SetAttributeBitfieldLiveObjectWrapper
+SetAttributeBitfieldLiveObjectWrapper: ; 0x022FD2E8
+	ldr ip, _022FD2F4 ; =SetAttributeBitfieldLiveObject
 	ldrsh r0, [r0, #4]
 	bx ip
 	.align 2, 0
-_022FD2F4: .word ov11_022FC5F8
-	arm_func_end ov11_022FD2E8
+_022FD2F4: .word SetAttributeBitfieldLiveObject
+	arm_func_end SetAttributeBitfieldLiveObjectWrapper
 
-	arm_func_start ov11_022FD2F8
-ov11_022FD2F8: ; 0x022FD2F8
-	ldr ip, _022FD304 ; =ov11_022FC638
+	arm_func_start ResetAttributeBitfieldLiveObjectWrapper
+ResetAttributeBitfieldLiveObjectWrapper: ; 0x022FD2F8
+	ldr ip, _022FD304 ; =ResetAttributeBitfieldLiveObject
 	ldrsh r0, [r0, #4]
 	bx ip
 	.align 2, 0
-_022FD304: .word ov11_022FC638
-	arm_func_end ov11_022FD2F8
+_022FD304: .word ResetAttributeBitfieldLiveObject
+	arm_func_end ResetAttributeBitfieldLiveObjectWrapper
 
-	arm_func_start ov11_022FD308
-ov11_022FD308: ; 0x022FD308
+	arm_func_start SetBlinkLiveObject
+SetBlinkLiveObject: ; 0x022FD308
 	ldr ip, _022FD314 ; =ov11_022F4984
 	add r0, r0, #0x154
 	bx ip
 	.align 2, 0
 _022FD314: .word ov11_022F4984
-	arm_func_end ov11_022FD308
+	arm_func_end SetBlinkLiveObject
 
-	arm_func_start ov11_022FD318
-ov11_022FD318: ; 0x022FD318
+	arm_func_start SetPositionOffsetLiveObject
+SetPositionOffsetLiveObject: ; 0x022FD318
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	ldr r2, _022FD478 ; =ov11_02321D88
@@ -39766,7 +39766,7 @@ _022FD470:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022FD478: .word ov11_02321D88
-	arm_func_end ov11_022FD318
+	arm_func_end SetPositionOffsetLiveObject
 
 	arm_func_start ov11_022FD47C
 ov11_022FD47C: ; 0x022FD47C
@@ -39789,7 +39789,7 @@ _022FD494:
 	cmp r0, #6
 	bne _022FD4CC
 	mov r0, r4
-	bl ov11_022FC44C
+	bl DeleteLiveObject
 	b _022FD4F0
 _022FD4CC:
 	ldrb r0, [r5, #0x14c]
@@ -39941,7 +39941,7 @@ _022FD680:
 	cmp r0, r4
 	beq _022FD694
 	mov r0, r5
-	bl ov11_022FDBEC
+	bl DeleteLivePerformer
 _022FD694:
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10
@@ -40214,10 +40214,10 @@ _022FD994:
 	ldr r2, [r5, #0x128]
 	add r0, r5, #0x150
 	bl ov11_022F6F4C
-	ldr r1, _022FDA78 ; =ov11_02322110
+	ldr r1, _022FDA78 ; =PERFORMER_FUNCTION_TABLE
 	mov r2, r5
 	add r0, r5, #0x3c
-	bl ov11_022DC8E8
+	bl InitScriptRoutine
 _022FDA54:
 	mov r1, #1
 	mov r0, sb
@@ -40230,7 +40230,7 @@ _022FDA68: .word ov11_02320858
 _022FDA6C: .word ov11_02324D04
 _022FDA70: .word ov11_02322160
 _022FDA74: .word 0x02020000
-_022FDA78: .word ov11_02322110
+_022FDA78: .word PERFORMER_FUNCTION_TABLE
 	arm_func_end ov11_022FD72C
 
 	arm_func_start ov11_022FDA7C
@@ -40278,7 +40278,7 @@ _022FDAD8:
 	cmpne sb, r0
 	bne _022FDB28
 	mov r0, r8
-	bl ov11_022FDBEC
+	bl DeleteLivePerformer
 _022FDB28:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -40312,14 +40312,14 @@ _022FDB60:
 	cmpne sb, r0
 	bne _022FDBBC
 	mov r0, r8
-	bl ov11_022FDBEC
+	bl DeleteLivePerformer
 	b _022FDBBC
 _022FDBA8:
 	ldrsh r0, [sl, #0xa]
 	cmp r0, r4
 	bne _022FDBBC
 	mov r0, r8
-	bl ov11_022FDBEC
+	bl DeleteLivePerformer
 _022FDBBC:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -40337,8 +40337,8 @@ _022FDBE4: .word ov11_023221D8
 _022FDBE8: .word ov11_02322204
 	arm_func_end ov11_022FDA7C
 
-	arm_func_start ov11_022FDBEC
-ov11_022FDBEC: ; 0x022FDBEC
+	arm_func_start DeleteLivePerformer
+DeleteLivePerformer: ; 0x022FDBEC
 	stmdb sp!, {r4, lr}
 	ldr r1, _022FDC2C ; =ov11_02324D04
 	mov r2, r0
@@ -40358,7 +40358,7 @@ ov11_022FDBEC: ; 0x022FDBEC
 	.align 2, 0
 _022FDC2C: .word ov11_02324D04
 _022FDC30: .word ov11_02322224
-	arm_func_end ov11_022FDBEC
+	arm_func_end DeleteLivePerformer
 
 	arm_func_start ov11_022FDC34
 ov11_022FDC34: ; 0x022FDC34
@@ -40460,8 +40460,8 @@ _022FDD90: .word ov11_02324D04
 _022FDD94: .word ov11_023221D8
 	arm_func_end ov11_022FDC34
 
-	arm_func_start ov11_022FDD98
-ov11_022FDD98: ; 0x022FDD98
+	arm_func_start SetAttributeBitfieldLivePerformer
+SetAttributeBitfieldLivePerformer: ; 0x022FDD98
 	stmdb sp!, {r3, lr}
 	ldr r3, _022FDDD4 ; =ov11_02324D04
 	mov r2, #0x214
@@ -40479,10 +40479,10 @@ ov11_022FDD98: ; 0x022FDD98
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FDDD4: .word ov11_02324D04
-	arm_func_end ov11_022FDD98
+	arm_func_end SetAttributeBitfieldLivePerformer
 
-	arm_func_start ov11_022FDDD8
-ov11_022FDDD8: ; 0x022FDDD8
+	arm_func_start ResetAttributeBitfieldLivePerformer
+ResetAttributeBitfieldLivePerformer: ; 0x022FDDD8
 	stmdb sp!, {r3, lr}
 	ldr r3, _022FDE18 ; =ov11_02324D04
 	mov r2, #0x214
@@ -40501,7 +40501,7 @@ ov11_022FDDD8: ; 0x022FDDD8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FDE18: .word ov11_02324D04
-	arm_func_end ov11_022FDDD8
+	arm_func_end ResetAttributeBitfieldLivePerformer
 
 	arm_func_start ov11_022FDE1C
 ov11_022FDE1C: ; 0x022FDE1C
@@ -40900,8 +40900,8 @@ _022FE330:
 _022FE350: .word ov11_02324D04
 	arm_func_end ov11_022FE300
 
-	arm_func_start ov11_022FE354
-ov11_022FE354: ; 0x022FE354
+	arm_func_start UnlockPerformerRoutines
+UnlockPerformerRoutines: ; 0x022FE354
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r1, _022FE3AC ; =ov11_02324D04
 	mov r5, #0
@@ -40915,7 +40915,7 @@ _022FE370:
 	beq _022FE38C
 	mov r1, r6
 	add r0, r4, #0x3c
-	bl ov11_022DD0EC
+	bl UnlockRoutine
 	orr r5, r5, r0
 _022FE38C:
 	add r0, r8, #1
@@ -40928,7 +40928,7 @@ _022FE38C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022FE3AC: .word ov11_02324D04
-	arm_func_end ov11_022FE354
+	arm_func_end UnlockPerformerRoutines
 
 	arm_func_start ov11_022FE3B0
 ov11_022FE3B0: ; 0x022FE3B0
@@ -40957,8 +40957,8 @@ _022FE3F4:
 _022FE400: .word ov11_02324D04
 	arm_func_end ov11_022FE3B0
 
-	arm_func_start ov11_022FE404
-ov11_022FE404: ; 0x022FE404
+	arm_func_start SetPositionLivePerformer
+SetPositionLivePerformer: ; 0x022FE404
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	ldr r5, [r0, #0x18]
@@ -40997,25 +40997,25 @@ _022FE474:
 _022FE488:
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov11_022FE404
+	arm_func_end SetPositionLivePerformer
 
-	arm_func_start ov11_022FE490
-ov11_022FE490: ; 0x022FE490
+	arm_func_start GetIdLivePerformer
+GetIdLivePerformer: ; 0x022FE490
 	ldrsh r0, [r0, #4]
 	bx lr
-	arm_func_end ov11_022FE490
+	arm_func_end GetIdLivePerformer
 
-	arm_func_start ov11_022FE498
-ov11_022FE498: ; 0x022FE498
+	arm_func_start GetCollisionBoxLivePerformer
+GetCollisionBoxLivePerformer: ; 0x022FE498
 	ldr r2, [r0, #0x10]
 	ldr r0, [r0, #0x14]
 	str r2, [r1]
 	str r0, [r1, #4]
 	bx lr
-	arm_func_end ov11_022FE498
+	arm_func_end GetCollisionBoxLivePerformer
 
-	arm_func_start ov11_022FE4AC
-ov11_022FE4AC: ; 0x022FE4AC
+	arm_func_start SetPositionInitialLivePerformer
+SetPositionInitialLivePerformer: ; 0x022FE4AC
 	cmp r1, #0
 	beq _022FE4F8
 	ldr r3, [r1]
@@ -41064,10 +41064,10 @@ _022FE4F8:
 	ldrsb r1, [r0, #0x20]
 	strb r1, [r0, #0x12c]
 	bx lr
-	arm_func_end ov11_022FE4AC
+	arm_func_end SetPositionInitialLivePerformer
 
-	arm_func_start ov11_022FE568
-ov11_022FE568: ; 0x022FE568
+	arm_func_start SetMovementRangeLivePerformer
+SetMovementRangeLivePerformer: ; 0x022FE568
 	ldr r3, [r1]
 	ldr r1, [r1, #4]
 	str r3, [r0, #0x2c]
@@ -41077,10 +41077,10 @@ ov11_022FE568: ; 0x022FE568
 	str r3, [r0, #0x34]
 	str r1, [r0, #0x38]
 	bx lr
-	arm_func_end ov11_022FE568
+	arm_func_end SetMovementRangeLivePerformer
 
-	arm_func_start ov11_022FE58C
-ov11_022FE58C: ; 0x022FE58C
+	arm_func_start GetCollisionBoxCenterLivePerformer
+GetCollisionBoxCenterLivePerformer: ; 0x022FE58C
 	ldr r3, [r0, #0x130]
 	ldr r2, [r0, #0x18]
 	add r2, r3, r2
@@ -41090,49 +41090,49 @@ ov11_022FE58C: ; 0x022FE58C
 	add r0, r2, r0
 	str r0, [r1, #4]
 	bx lr
-	arm_func_end ov11_022FE58C
+	arm_func_end GetCollisionBoxCenterLivePerformer
 
-	arm_func_start ov11_022FE5B0
-ov11_022FE5B0: ; 0x022FE5B0
-	ldr ip, _022FE5B8 ; =ov11_022FE404
+	arm_func_start SetPositionLivePerformerVeneer
+SetPositionLivePerformerVeneer: ; 0x022FE5B0
+	ldr ip, _022FE5B8 ; =SetPositionLivePerformer
 	bx ip
 	.align 2, 0
-_022FE5B8: .word ov11_022FE404
-	arm_func_end ov11_022FE5B0
+_022FE5B8: .word SetPositionLivePerformer
+	arm_func_end SetPositionLivePerformerVeneer
 
-	arm_func_start ov11_022FE5BC
-ov11_022FE5BC: ; 0x022FE5BC
+	arm_func_start GetHeightLivePerformer
+GetHeightLivePerformer: ; 0x022FE5BC
 	ldr r3, [r0, #0x140]
 	str r3, [r1]
 	ldr r0, [r0, #0x144]
 	str r0, [r2]
 	bx lr
-	arm_func_end ov11_022FE5BC
+	arm_func_end GetHeightLivePerformer
 
-	arm_func_start ov11_022FE5D0
-ov11_022FE5D0: ; 0x022FE5D0
+	arm_func_start SetHeightLivePerformer
+SetHeightLivePerformer: ; 0x022FE5D0
 	str r1, [r0, #0x140]
 	bx lr
-	arm_func_end ov11_022FE5D0
+	arm_func_end SetHeightLivePerformer
 
-	arm_func_start ov11_022FE5D8
-ov11_022FE5D8: ; 0x022FE5D8
+	arm_func_start GetDirectionLivePerformer
+GetDirectionLivePerformer: ; 0x022FE5D8
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x2c]
 	strb r0, [r1]
 	bx lr
-	arm_func_end ov11_022FE5D8
+	arm_func_end GetDirectionLivePerformer
 
-	arm_func_start ov11_022FE5E8
-ov11_022FE5E8: ; 0x022FE5E8
+	arm_func_start SetDirectionLivePerformer
+SetDirectionLivePerformer: ; 0x022FE5E8
 	mvn r2, #0
 	cmp r1, r2
 	strneb r1, [r0, #0x12c]
 	bx lr
-	arm_func_end ov11_022FE5E8
+	arm_func_end SetDirectionLivePerformer
 
-	arm_func_start ov11_022FE5F8
-ov11_022FE5F8: ; 0x022FE5F8
+	arm_func_start SetAnimationLivePerformer
+SetAnimationLivePerformer: ; 0x022FE5F8
 	and r2, r1, #0x700
 	mov r2, r2, lsl #0x10
 	and r3, r1, #0xff
@@ -41186,18 +41186,18 @@ _022FE688:
 	bx lr
 	.align 2, 0
 _022FE6B4: .word ov11_023220DC
-	arm_func_end ov11_022FE5F8
+	arm_func_end SetAnimationLivePerformer
 
-	arm_func_start ov11_022FE6B8
-ov11_022FE6B8: ; 0x022FE6B8
+	arm_func_start SetEffectLivePerformer
+SetEffectLivePerformer: ; 0x022FE6B8
 	add r0, r0, #0x100
 	strh r1, [r0, #0x4c]
 	strh r2, [r0, #0x4e]
 	bx lr
-	arm_func_end ov11_022FE6B8
+	arm_func_end SetEffectLivePerformer
 
-	arm_func_start ov11_022FE6C8
-ov11_022FE6C8: ; 0x022FE6C8
+	arm_func_start GetAnimationStatusLivePerformer
+GetAnimationStatusLivePerformer: ; 0x022FE6C8
 	stmdb sp!, {r3, lr}
 	ldrb r1, [r0, #0x148]
 	cmp r1, #0
@@ -41206,10 +41206,10 @@ ov11_022FE6C8: ; 0x022FE6C8
 	add r0, r0, #0x150
 	bl ov11_022F4990
 	ldmia sp!, {r3, pc}
-	arm_func_end ov11_022FE6C8
+	arm_func_end GetAnimationStatusLivePerformer
 
-	arm_func_start ov11_022FE6E8
-ov11_022FE6E8: ; 0x022FE6E8
+	arm_func_start GetEffectStatusLivePerformer
+GetEffectStatusLivePerformer: ; 0x022FE6E8
 	stmdb sp!, {r3, lr}
 	add r1, r0, #0x100
 	ldrsh r3, [r1, #0x4c]
@@ -41224,44 +41224,44 @@ ov11_022FE6E8: ; 0x022FE6E8
 	add r0, r0, #0x150
 	bl ov11_022F49B0
 	ldmia sp!, {r3, pc}
-	arm_func_end ov11_022FE6E8
+	arm_func_end GetEffectStatusLivePerformer
 
-	arm_func_start ov11_022FE720
-ov11_022FE720: ; 0x022FE720
+	arm_func_start GetAttributeBitfieldLivePerformer
+GetAttributeBitfieldLivePerformer: ; 0x022FE720
 	ldr r0, [r0, #0x128]
 	str r0, [r1]
 	bx lr
-	arm_func_end ov11_022FE720
+	arm_func_end GetAttributeBitfieldLivePerformer
 
-	arm_func_start ov11_022FE72C
-ov11_022FE72C: ; 0x022FE72C
-	ldr ip, _022FE738 ; =ov11_022FDD98
+	arm_func_start SetAttributeBitfieldLivePerformerWrapper
+SetAttributeBitfieldLivePerformerWrapper: ; 0x022FE72C
+	ldr ip, _022FE738 ; =SetAttributeBitfieldLivePerformer
 	ldrsh r0, [r0, #4]
 	bx ip
 	.align 2, 0
-_022FE738: .word ov11_022FDD98
-	arm_func_end ov11_022FE72C
+_022FE738: .word SetAttributeBitfieldLivePerformer
+	arm_func_end SetAttributeBitfieldLivePerformerWrapper
 
-	arm_func_start ov11_022FE73C
-ov11_022FE73C: ; 0x022FE73C
-	ldr ip, _022FE748 ; =ov11_022FDDD8
+	arm_func_start ResetAttributeBitfieldLivePerformerWrapper
+ResetAttributeBitfieldLivePerformerWrapper: ; 0x022FE73C
+	ldr ip, _022FE748 ; =ResetAttributeBitfieldLivePerformer
 	ldrsh r0, [r0, #4]
 	bx ip
 	.align 2, 0
-_022FE748: .word ov11_022FDDD8
-	arm_func_end ov11_022FE73C
+_022FE748: .word ResetAttributeBitfieldLivePerformer
+	arm_func_end ResetAttributeBitfieldLivePerformerWrapper
 
-	arm_func_start ov11_022FE74C
-ov11_022FE74C: ; 0x022FE74C
+	arm_func_start SetBlinkLivePerformer
+SetBlinkLivePerformer: ; 0x022FE74C
 	ldr ip, _022FE758 ; =ov11_022F4984
 	add r0, r0, #0x150
 	bx ip
 	.align 2, 0
 _022FE758: .word ov11_022F4984
-	arm_func_end ov11_022FE74C
+	arm_func_end SetBlinkLivePerformer
 
-	arm_func_start ov11_022FE75C
-ov11_022FE75C: ; 0x022FE75C
+	arm_func_start SetPositionOffsetLivePerformer
+SetPositionOffsetLivePerformer: ; 0x022FE75C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	ldr ip, [r1]
@@ -41319,7 +41319,7 @@ _022FE80C:
 	mov r0, #0
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
-	arm_func_end ov11_022FE75C
+	arm_func_end SetPositionOffsetLivePerformer
 
 	arm_func_start ov11_022FE838
 ov11_022FE838: ; 0x022FE838
@@ -41342,7 +41342,7 @@ _022FE850:
 	cmp r0, #6
 	bne _022FE888
 	mov r0, r4
-	bl ov11_022FDBEC
+	bl DeleteLivePerformer
 	b _022FE8AC
 _022FE888:
 	ldrb r0, [r5, #0x148]
@@ -41494,7 +41494,7 @@ _022FEA3C:
 	cmp r0, r4
 	beq _022FEA50
 	mov r0, r5
-	bl ov11_022FEC68
+	bl DeleteLiveEvent
 _022FEA50:
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10
@@ -41648,7 +41648,7 @@ _022FEC18:
 	cmpne r6, r0
 	bne _022FEC48
 	mov r0, r5
-	bl ov11_022FEC68
+	bl DeleteLiveEvent
 _022FEC48:
 	add r0, r5, #1
 	mov r0, r0, lsl #0x10
@@ -41661,8 +41661,8 @@ _022FEC48:
 _022FEC64: .word ov11_02324D08
 	arm_func_end ov11_022FEBFC
 
-	arm_func_start ov11_022FEC68
-ov11_022FEC68: ; 0x022FEC68
+	arm_func_start DeleteLiveEvent
+DeleteLiveEvent: ; 0x022FEC68
 	stmdb sp!, {r4, lr}
 	ldr r1, _022FEC94 ; =ov11_02324D08
 	mov r2, r0
@@ -41677,7 +41677,7 @@ ov11_022FEC68: ; 0x022FEC68
 	.align 2, 0
 _022FEC94: .word ov11_02324D08
 _022FEC98: .word ov11_023223A4
-	arm_func_end ov11_022FEC68
+	arm_func_end DeleteLiveEvent
 
 	arm_func_start ov11_022FEC9C
 ov11_022FEC9C: ; 0x022FEC9C
@@ -41724,7 +41724,7 @@ _022FECF8:
 	cmpne sb, r0
 	bne _022FED48
 	mov r0, r8
-	bl ov11_022FEC68
+	bl DeleteLiveEvent
 _022FED48:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10
@@ -41783,8 +41783,8 @@ _022FEDF0: .word ov11_02324D08
 _022FEDF4: .word ov11_02322418
 	arm_func_end ov11_022FED74
 
-	arm_func_start ov11_022FEDF8
-ov11_022FEDF8: ; 0x022FEDF8
+	arm_func_start GetCollidingEventId
+GetCollidingEventId: ; 0x022FEDF8
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr ip, _022FEE8C ; =ov11_02324D08
 	mov r3, #0
@@ -41827,7 +41827,7 @@ _022FEE7C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022FEE8C: .word ov11_02324D08
-	arm_func_end ov11_022FEDF8
+	arm_func_end GetCollidingEventId
 
 	arm_func_start ov11_022FEE90
 ov11_022FEE90: ; 0x022FEE90
@@ -45044,7 +45044,7 @@ _0230180C:
 	ldr r0, [r0, #0x248]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldr r0, _02301A10 ; =ov11_02324D48
 	mov r1, #0x11
 	ldr r0, [r0]
@@ -45089,7 +45089,7 @@ _0230187C:
 	ldr r0, [r0, #0x248]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldr r0, _02301A10 ; =ov11_02324D48
 	mov r1, #0x11
 	ldr r0, [r0]
@@ -45452,7 +45452,7 @@ _02301D88:
 	ldr r0, [r0, #0x248]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldr r0, _02301F8C ; =ov11_02324D48
 	mov r1, #0x11
 	ldr r0, [r0]
@@ -45497,7 +45497,7 @@ _02301DF8:
 	ldr r0, [r0, #0x248]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldr r0, _02301F8C ; =ov11_02324D48
 	mov r1, #0x11
 	ldr r0, [r0]
@@ -45798,7 +45798,7 @@ _0230221C:
 	ldr r0, [r0, #0x248]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldr r0, _023025E4 ; =ov11_02324D48
 	mov r2, #0
 	ldr r1, [r0]
@@ -80639,28 +80639,28 @@ ov11_02321838:
 	.byte 0xAC, 0x05, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0xAC, 0x05, 0x00, 0x00, 0x19, 0x00, 0x34, 0x00
 	.byte 0x85, 0x00, 0x48, 0x01, 0x07, 0x00, 0x9E, 0x00, 0x1E, 0x01, 0x36, 0x00, 0x04, 0x00, 0x1B, 0x01
 	.byte 0x9B, 0x00, 0x68, 0x00, 0x42, 0x00, 0x01, 0x00, 0x98, 0x00, 0x18, 0x01, 0x00, 0x00, 0x00, 0x00
-	.global ov11_0232187C
-ov11_0232187C:
+	.global ACTOR_FUNCTION_TABLE
+ACTOR_FUNCTION_TABLE:
 	.byte 0x03, 0x00, 0x00, 0x00
-	.word ov11_022FAA04
-	.word ov11_022FAA0C
-	.word ov11_022FAB00
-	.word ov11_022FAB30
-	.word ov11_022FAB4C
-	.word ov11_022FAC28
-	.word ov11_022FAA20
-	.word ov11_022FAADC
-	.word ov11_022FAB24
-	.word ov11_022FAB44
-	.word ov11_022FAB5C
-	.word ov11_022FAB84
-	.word ov11_022FABD0
-	.word ov11_022FAC34
-	.word ov11_022FAC44
-	.word ov11_022FAC54
-	.word ov11_022FAC64
-	.word ov11_022FABE4
-	.word ov11_022FAC04
+	.word GetIdLiveActor
+	.word GetCollisionBoxLiveActor
+	.word GetCollisionBoxCenterLiveActor
+	.word GetHeightLiveActor
+	.word GetDirectionLiveActor
+	.word GetAttributeBitfieldLiveActor
+	.word SetPositionInitialLiveActor
+	.word SetMovementRangeLiveActor
+	.word SetPositionLiveActorVeneer
+	.word SetHeightLiveActor
+	.word SetDirectionLiveActor
+	.word SetAnimationLiveActor
+	.word SetEffectLiveActor
+	.word SetAttributeBitfieldLiveActorWrapper
+	.word ResetAttributeBitfieldLiveActorWrapper
+	.word SetBlinkLiveActor
+	.word SetPositionOffsetLiveActor
+	.word GetAnimationStatusLiveActor
+	.word GetEffectStatusLiveActor
 	.global SETANIMATION_TABLE
 SETANIMATION_TABLE:
 	.byte 0xFF, 0xFF, 0x00, 0x08, 0x00, 0x03, 0x00, 0x03, 0x07, 0x08, 0x00, 0x08, 0x05, 0x08, 0x02, 0x03
@@ -80824,28 +80824,28 @@ ov11_02321DC8:
 	.byte 0x01, 0x08, 0x02, 0x08, 0x03, 0x08, 0x04, 0x08, 0x05, 0x08, 0x06, 0x08, 0x07, 0x08, 0x00, 0x03
 	.byte 0x01, 0x03, 0x02, 0x03, 0x03, 0x03, 0x04, 0x03, 0x05, 0x03, 0x06, 0x03, 0x07, 0x03, 0x00, 0x10
 	.byte 0x01, 0x10, 0x02, 0x10, 0x03, 0x10, 0x04, 0x10, 0x05, 0x10, 0x06, 0x10, 0x07, 0x10, 0x00, 0x00
-	.global ov11_02321DFC
-ov11_02321DFC:
+	.global OBJECT_FUNCTION_TABLE
+OBJECT_FUNCTION_TABLE:
 	.byte 0x04, 0x00, 0x00, 0x00
-	.word ov11_022FD060
-	.word ov11_022FD068
-	.word ov11_022FD15C
-	.word ov11_022FD18C
-	.word GetDirectionLiveActor
-	.word ov11_022FD2DC
-	.word ov11_022FD07C
-	.word ov11_022FD138
-	.word ov11_022FD180
-	.word ov11_022FD1A0
-	.word SetDirectionLiveActor
-	.word ov11_022FD1C8
-	.word ov11_022FD288
-	.word ov11_022FD2E8
-	.word ov11_022FD2F8
-	.word ov11_022FD308
-	.word ov11_022FD318
-	.word ov11_022FD298
-	.word ov11_022FD2B8
+	.word GetIdLiveObject
+	.word GetCollisionBoxLiveObject
+	.word GetCollisionBoxCenterLiveObject
+	.word GetHeightLiveObject
+	.word GetDirectionLiveObject
+	.word GetAttributeBitfieldLiveObject
+	.word SetPositionInitialLiveObject
+	.word SetMovementRangeLiveObject
+	.word SetPositionLiveObjectVeneer
+	.word SetHeightLiveObject
+	.word SetDirectionLiveObject
+	.word SetAnimationLiveObject
+	.word SetEffectLiveObject
+	.word SetAttributeBitfieldLiveObjectWrapper
+	.word ResetAttributeBitfieldLiveObjectWrapper
+	.word SetBlinkLiveObject
+	.word SetPositionOffsetLiveObject
+	.word GetAnimationStatusLiveObject
+	.word GetEffectStatusLiveObject
 	.global ov11_02321E4C
 ov11_02321E4C:
 	.byte 0x47, 0x72, 0x6F, 0x75, 0x6E, 0x64, 0x4F, 0x62, 0x6A, 0x65, 0x63, 0x74, 0x20, 0x41, 0x64, 0x64
@@ -80930,28 +80930,28 @@ ov11_023220DC:
 	.byte 0x07, 0x08, 0x00, 0x03, 0x01, 0x03, 0x02, 0x03, 0x03, 0x03, 0x04, 0x03, 0x05, 0x03, 0x06, 0x03
 	.byte 0x07, 0x03, 0x00, 0x10, 0x01, 0x10, 0x02, 0x10, 0x03, 0x10, 0x04, 0x10, 0x05, 0x10, 0x06, 0x10
 	.byte 0x07, 0x10, 0x00, 0x00
-	.global ov11_02322110
-ov11_02322110:
+	.global PERFORMER_FUNCTION_TABLE
+PERFORMER_FUNCTION_TABLE:
 	.byte 0x05, 0x00, 0x00, 0x00
-	.word ov11_022FE490
-	.word ov11_022FE498
-	.word ov11_022FE58C
-	.word ov11_022FE5BC
-	.word ov11_022FE5D8
-	.word ov11_022FE720
-	.word ov11_022FE4AC
-	.word ov11_022FE568
-	.word ov11_022FE5B0
-	.word ov11_022FE5D0
-	.word ov11_022FE5E8
-	.word ov11_022FE5F8
-	.word ov11_022FE6B8
-	.word ov11_022FE72C
-	.word ov11_022FE73C
-	.word ov11_022FE74C
-	.word ov11_022FE75C
-	.word ov11_022FE6C8
-	.word ov11_022FE6E8
+	.word GetIdLivePerformer
+	.word GetCollisionBoxLivePerformer
+	.word GetCollisionBoxCenterLivePerformer
+	.word GetHeightLivePerformer
+	.word GetDirectionLivePerformer
+	.word GetAttributeBitfieldLivePerformer
+	.word SetPositionInitialLivePerformer
+	.word SetMovementRangeLivePerformer
+	.word SetPositionLivePerformerVeneer
+	.word SetHeightLivePerformer
+	.word SetDirectionLivePerformer
+	.word SetAnimationLivePerformer
+	.word SetEffectLivePerformer
+	.word SetAttributeBitfieldLivePerformerWrapper
+	.word ResetAttributeBitfieldLivePerformerWrapper
+	.word SetBlinkLivePerformer
+	.word SetPositionOffsetLivePerformer
+	.word GetAnimationStatusLivePerformer
+	.word GetEffectStatusLivePerformer
 	.global ov11_02322160
 ov11_02322160:
 	.byte 0x47, 0x72, 0x6F, 0x75, 0x6E, 0x64, 0x50, 0x65, 0x72, 0x66, 0x6F, 0x72
