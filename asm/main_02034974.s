@@ -2262,8 +2262,8 @@ _020367A8:
 _020367B0: .word _020AFDE8
 	arm_func_end sub_020366C0
 
-	arm_func_start sub_020367B4
-sub_020367B4: ; 0x020367B4
+	arm_func_start SetupAndShowKeyboard
+SetupAndShowKeyboard: ; 0x020367B4
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldr r0, _020367EC ; =_0209B298
@@ -2280,7 +2280,7 @@ sub_020367B4: ; 0x020367B4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020367EC: .word _0209B298
-	arm_func_end sub_020367B4
+	arm_func_end SetupAndShowKeyboard
 
 	arm_func_start ShowKeyboard
 ShowKeyboard: ; 0x020367F0
@@ -11744,7 +11744,7 @@ _0203DBB0:
 	ldr r0, [r4, #0x3b8]
 	mov r1, r1, asr #0x10
 	mov r2, #1
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 _0203DBD0:
 	ldr r0, _0203E4B0 ; =_020AFE74
 	ldr r2, [r0]
@@ -25080,7 +25080,7 @@ _02048828:
 	mov r0, r4
 	mov r1, #5
 	mov r2, #0
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	mov r0, r4
 	bl sub_02053568
 	mov r4, #1
@@ -25109,7 +25109,7 @@ _02048898:
 	mov r0, r4
 	mov r1, #5
 	mov r2, #0
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	mov r0, r4
 	bl sub_02053568
 	mov r4, #1
@@ -25275,7 +25275,7 @@ sub_02048AC4: ; 0x02048AC4
 	ldrsh r1, [r5, #0xe]
 	ldrb r2, [r5, #0xc]
 	mov r4, r0
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldrsh r0, [r5, #0x12]
 	cmp r0, #0
 	strneh r0, [r4, #0xa]
@@ -32767,7 +32767,7 @@ _0204E83C:
 	ldr r0, _0204E8E4 ; =_022AB518
 	mov r2, #0
 	strb ip, [r3, #0x1d]
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 _0204E8A0:
 	ldr r0, _0204E8E0 ; =PENDING_DUNGEON_ID
 	mov r1, #1
@@ -38792,8 +38792,8 @@ GuestMonsterToGroundMonster: ; 0x02052E50
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end GuestMonsterToGroundMonster
 
-	arm_func_start sub_02052EFC
-sub_02052EFC: ; 0x02052EFC
+	arm_func_start SetBaseStatsMovesGroundMonster
+SetBaseStatsMovesGroundMonster: ; 0x02052EFC
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
@@ -38830,7 +38830,7 @@ sub_02052EFC: ; 0x02052EFC
 	mov r2, #0
 	bl sub_02053F10
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_02052EFC
+	arm_func_end SetBaseStatsMovesGroundMonster
 
 	arm_func_start sub_02052F8C
 sub_02052F8C: ; 0x02052F8C
@@ -40449,8 +40449,8 @@ GetMonsterLevelFromSpawnEntry: ; 0x020544B8
 	bx lr
 	arm_func_end GetMonsterLevelFromSpawnEntry
 
-	arm_func_start sub_020544C8
-sub_020544C8: ; 0x020544C8
+	arm_func_start ApplyLevelUpBoostsToGroundMonster
+ApplyLevelUpBoostsToGroundMonster: ; 0x020544C8
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x4c
 	mov sl, r0
@@ -40607,7 +40607,7 @@ _020546DC:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020546E4: .word 0x000003E7
-	arm_func_end sub_020544C8
+	arm_func_end ApplyLevelUpBoostsToGroundMonster
 
 	arm_func_start sub_020546E8
 sub_020546E8: ; 0x020546E8

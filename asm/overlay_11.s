@@ -1419,7 +1419,7 @@ _022DD424:
 	bl Debug_Print
 	ldr r1, [sp, #8]
 	mov r0, r4
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	strh r0, [r4, #0xe]
@@ -1457,7 +1457,7 @@ _022DD468:
 	mov r0, r4
 	mov r1, r5
 	strh r2, [r4, #0xe]
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022DDD00
 _022DD4F4:
@@ -1953,7 +1953,7 @@ _022DDBAC:
 _022DDBC4:
 	mov r0, r4
 	mov r1, r5
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	strh r0, [r4, #0xe]
@@ -1969,7 +1969,7 @@ _022DDBE8:
 	bl ov11_022E9558
 	mov r0, r4
 	mov r1, #0
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	strh r0, [r4, #0xe]
@@ -1983,7 +1983,7 @@ _022DDC18:
 	bl SaveScriptVariableValue
 	mov r0, r4
 	mov r1, #1
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	mov r0, #2
 	strh r0, [r4, #0xe]
@@ -1994,7 +1994,7 @@ _022DDC4C:
 	bl ov11_022E958C
 	mov r0, r4
 	mov r1, #1
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022DDD00
 _022DDC6C:
@@ -2518,7 +2518,7 @@ _022DE3F0: ; 0x022DE3F0
 	bl Debug_Print
 	ldr r1, [sp, #0x158]
 	mov r0, r4
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2474
 _022DE448: ; 0x022DE448
@@ -3817,7 +3817,7 @@ _022DF6D8:
 _022DF6FC:
 	mov r0, r4
 	mov r1, r7
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2474
 _022DF710: ; 0x022DF710
@@ -4197,7 +4197,7 @@ _022DFC44:
 	beq _022E2478
 	mov r0, r4
 	mov r1, r6
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2474
 _022DFC64:
@@ -6432,13 +6432,13 @@ _022E1BE0:
 	bl ov11_022E958C
 	mov r0, r4
 	mov r1, #1
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2464
 _022E1C48:
 	mov r0, r4
 	mov r1, #0
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2464
 _022E1C5C:
@@ -6450,7 +6450,7 @@ _022E1C5C:
 	bl SetEnterDungeon
 	mov r0, r4
 	mov r1, #1
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2464
 _022E1C88:
@@ -6580,7 +6580,7 @@ _022E1DD0:
 	movne r1, #0x13
 _022E1E08:
 	mov r0, r4
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	b _022E2464
 _022E1E18:
@@ -6596,7 +6596,7 @@ _022E1E28:
 	mov r5, r0
 	mov r0, r4
 	mov r1, #1
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r4, #0x1c]
 	mov r0, r5
 	bl ov11_022E958C
@@ -9006,7 +9006,7 @@ _022E4040:
 	ldr r1, _022E4244 ; =ov11_02324F1C
 	mov r0, r7
 	ldr r1, [r1, r2, lsl #2]
-	bl ov11_022E43E8
+	bl ScriptCaseProcess
 	str r0, [r7, #0x1c]
 	mov r0, #2
 	strh r0, [r7, #0xe]
@@ -9264,8 +9264,8 @@ _022E43E0: .word ov11_023195EC
 _022E43E4: .word LOCK_NOTIFY_ARRAY
 	arm_func_end HandleUnlocks
 
-	arm_func_start ov11_022E43E8
-ov11_022E43E8: ; 0x022E43E8
+	arm_func_start ScriptCaseProcess
+ScriptCaseProcess: ; 0x022E43E8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r7, r1
 	mov r8, r0
@@ -9395,7 +9395,7 @@ _022E45B4: .word ov11_02319640
 _022E45B8: .word ov11_02319658
 _022E45BC: .word ov11_02318614
 _022E45C0: .word ov11_02319674
-	arm_func_end ov11_022E43E8
+	arm_func_end ScriptCaseProcess
 
 	arm_func_start ov11_022E45C4
 ov11_022E45C4: ; 0x022E45C4
@@ -11576,13 +11576,13 @@ _022E624C:
 	mov r0, #0
 	mov r1, r0
 	mov r2, r0
-	bl sub_020367B4
+	bl SetupAndShowKeyboard
 	b _022E68AC
 _022E6260:
 	mov r1, #0
 	mov r2, r1
 	mov r0, #3
-	bl sub_020367B4
+	bl SetupAndShowKeyboard
 	b _022E68AC
 _022E6274:
 	add r0, sp, #0xc0
@@ -11591,7 +11591,7 @@ _022E6274:
 	add r1, sp, #0xc0
 	mov r0, #2
 	mov r2, r1
-	bl sub_020367B4
+	bl SetupAndShowKeyboard
 	b _022E68AC
 _022E6294:
 	bl ov11_02310BDC
@@ -11619,7 +11619,7 @@ _022E6294:
 	add r1, sp, #0xa0
 	mov r0, #1
 	mov r2, r1
-	bl sub_020367B4
+	bl SetupAndShowKeyboard
 	b _022E68AC
 _022E62D4:
 	mov r0, #0
@@ -13924,7 +13924,7 @@ ov11_022E8090: ; 0x022E8090
 	mov r2, #0xa
 	bl StrncpyName
 	mov r0, r4
-	bl sub_02052EFC
+	bl SetBaseStatsMovesGroundMonster
 	ldr r0, _022E810C ; =ov11_02324F98
 	ldr r2, _022E8114 ; =RECRUITMENT_TABLE_LEVELS
 	ldrsh r3, [r0]
@@ -45044,7 +45044,7 @@ _0230180C:
 	ldr r0, [r0, #0x248]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldr r0, _02301A10 ; =ov11_02324D48
 	mov r1, #0x11
 	ldr r0, [r0]
@@ -45089,7 +45089,7 @@ _0230187C:
 	ldr r0, [r0, #0x248]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldr r0, _02301A10 ; =ov11_02324D48
 	mov r1, #0x11
 	ldr r0, [r0]
@@ -45452,7 +45452,7 @@ _02301D88:
 	ldr r0, [r0, #0x248]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldr r0, _02301F8C ; =ov11_02324D48
 	mov r1, #0x11
 	ldr r0, [r0]
@@ -45497,7 +45497,7 @@ _02301DF8:
 	ldr r0, [r0, #0x248]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldr r0, _02301F8C ; =ov11_02324D48
 	mov r1, #0x11
 	ldr r0, [r0]
@@ -45798,7 +45798,7 @@ _0230221C:
 	ldr r0, [r0, #0x248]
 	mov r1, r1, lsl #0x10
 	mov r1, r1, asr #0x10
-	bl sub_020544C8
+	bl ApplyLevelUpBoostsToGroundMonster
 	ldr r0, _023025E4 ; =ov11_02324D48
 	mov r2, #0
 	ldr r1, [r0]

@@ -216,6 +216,7 @@
 .public RefillTeam
 .public ResetGravity
 .public RunFractionalTurn
+.public SetBaseStatsMovesGroundMonster
 .public SetBothScreensWindowColorToDefault
 .public SetDungeonRngPreseed
 .public SetDungeonRngPreseed23Bit
@@ -239,7 +240,6 @@
 .public sub_02051134
 .public sub_02051DFC
 .public sub_02051ED4
-.public sub_02052EFC
 .public sub_02057E90
 .public sub_02057EF4
 .public sub_02058644

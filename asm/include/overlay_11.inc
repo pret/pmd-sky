@@ -14,6 +14,7 @@
 .public AnyDungeonRequestsDone
 .public ApplyGummiBoostsToGroundMonster
 .public ApplyGummiBoostsToTeamMember
+.public ApplyLevelUpBoostsToGroundMonster
 .public BAG_ITEMS_PTR_MIRROR
 .public CheckInventoryMenuField0x1A0
 .public CheckMissionRestrictions
@@ -341,6 +342,7 @@
 .public SetAdventureLogCompleted
 .public SetAnimationForAnimationControl
 .public SetAreaNameBoxState3
+.public SetBaseStatsMovesGroundMonster
 .public SetCollectionMenuField0x1A4
 .public SetCollectionMenuField0x1C8
 .public SetDungeonConquest
@@ -357,6 +359,7 @@
 .public SetSpriteIdForAnimationControl
 .public SetTeamSetupHeroAndPartnerOnly
 .public SetTeamSetupHeroOnly
+.public SetupAndShowKeyboard
 .public ShowDialogueBox
 .public ShowKeyboard
 .public ShowPortraitInPortraitBox
@@ -577,7 +580,6 @@
 .public sub_02035098
 .public sub_0203559C
 .public sub_02035CE4
-.public sub_020367B4
 .public sub_02037468
 .public sub_0203909C
 .public sub_02039218
@@ -693,11 +695,9 @@
 .public sub_0204F488
 .public sub_0204F9CC
 .public sub_02052E2C
-.public sub_02052EFC
 .public sub_02053A0C
 .public sub_02053CA0
 .public sub_02053D1C
-.public sub_020544C8
 .public sub_020546E8
 .public sub_02054F44
 .public sub_02055410
