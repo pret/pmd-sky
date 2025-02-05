@@ -290,8 +290,8 @@ _0234EFD4:
 _0234F004: .word ov29_023533B0
 	arm_func_end ov29_0234EF24
 
-	arm_func_start ov29_0234F008
-ov29_0234F008: ; 0x0234F008
+	arm_func_start DungeonModeSetupAndShowNameKeyboard
+DungeonModeSetupAndShowNameKeyboard: ; 0x0234F008
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	sub sp, sp, #0x40
 	mov r4, #0
@@ -426,7 +426,7 @@ _0234F1CC:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _0234F1D8: .word ov29_0235352C
-	arm_func_end ov29_0234F008
+	arm_func_end DungeonModeSetupAndShowNameKeyboard
 
 	arm_func_start ov29_0234F1DC
 ov29_0234F1DC: ; 0x0234F1DC

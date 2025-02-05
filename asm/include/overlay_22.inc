@@ -41,6 +41,8 @@
 .public PreprocessString
 .public RemoveEmptyItemsInBag
 .public RemoveItem
+.public RemoveItemFromKecleonShop1
+.public RemoveItemFromKecleonShop2
 .public RemoveItemNoHoleCheck
 .public SetCollectionMenuVoidFn
 .public SetCollectionMenuWidth
@@ -55,11 +57,9 @@
 .public sub_0200D65C
 .public sub_0200D670
 .public sub_02010830
-.public sub_0201086C
 .public sub_02010898
 .public sub_020108B4
 .public sub_02010B3C
-.public sub_02010B78
 .public sub_02010BA4
 .public sub_02010BC0
 .public sub_02017C74

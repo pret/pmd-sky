@@ -2285,8 +2285,8 @@ _02010848:
 _02010868: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010830
 
-	arm_func_start sub_0201086C
-sub_0201086C: ; 0x0201086C
+	arm_func_start RemoveItemFromKecleonShop1
+RemoveItemFromKecleonShop1: ; 0x0201086C
 	ldr r1, _02010894 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, r0, lsl #2
 	ldr r1, [r1]
@@ -2299,7 +2299,7 @@ sub_0201086C: ; 0x0201086C
 	bx lr
 	.align 2, 0
 _02010894: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_0201086C
+	arm_func_end RemoveItemFromKecleonShop1
 
 	arm_func_start sub_02010898
 sub_02010898: ; 0x02010898
@@ -2354,7 +2354,7 @@ _0201092C:
 	b _020108E8
 _02010938:
 	and r0, r4, #0xff
-	bl sub_0201086C
+	bl RemoveItemFromKecleonShop1
 	add r4, r4, #1
 _02010944:
 	cmp r4, #8
@@ -2443,7 +2443,7 @@ GenerateKecleonItems1: ; 0x02010A4C
 	mov r4, #0
 _02010A58:
 	and r0, r4, #0xff
-	bl sub_0201086C
+	bl RemoveItemFromKecleonShop1
 	add r4, r4, #1
 	cmp r4, #8
 	blt _02010A58
@@ -2461,7 +2461,7 @@ _02010A7C:
 	mov r0, r6
 	mov r1, r4
 	bl GetItemIdFromList
-	bl sub_02010AC8
+	bl AddItemToKecleonShop1
 	add r7, r7, #1
 	cmp r7, #8
 	blt _02010A7C
@@ -2474,8 +2474,8 @@ _02010AC0: .word KECLEON_SHOP_ITEM_TABLE_LISTS_1
 _02010AC4: .word 0x0000270F
 	arm_func_end GenerateKecleonItems1
 
-	arm_func_start sub_02010AC8
-sub_02010AC8: ; 0x02010AC8
+	arm_func_start AddItemToKecleonShop1
+AddItemToKecleonShop1: ; 0x02010AC8
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	add r0, sp, #0
@@ -2509,7 +2509,7 @@ _02010B28:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02010B38: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010AC8
+	arm_func_end AddItemToKecleonShop1
 
 	arm_func_start sub_02010B3C
 sub_02010B3C: ; 0x02010B3C
@@ -2532,8 +2532,8 @@ _02010B54:
 _02010B74: .word BAG_ITEMS_PTR_MIRROR
 	arm_func_end sub_02010B3C
 
-	arm_func_start sub_02010B78
-sub_02010B78: ; 0x02010B78
+	arm_func_start RemoveItemFromKecleonShop2
+RemoveItemFromKecleonShop2: ; 0x02010B78
 	ldr r1, _02010BA0 ; =BAG_ITEMS_PTR_MIRROR
 	mov r3, r0, lsl #2
 	ldr r1, [r1]
@@ -2546,7 +2546,7 @@ sub_02010B78: ; 0x02010B78
 	bx lr
 	.align 2, 0
 _02010BA0: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010B78
+	arm_func_end RemoveItemFromKecleonShop2
 
 	arm_func_start sub_02010BA4
 sub_02010BA4: ; 0x02010BA4
@@ -2601,7 +2601,7 @@ _02010C38:
 	b _02010BF4
 _02010C44:
 	and r0, r4, #0xff
-	bl sub_02010B78
+	bl RemoveItemFromKecleonShop2
 	add r4, r4, #1
 _02010C50:
 	cmp r4, #4
@@ -2690,7 +2690,7 @@ GenerateKecleonItems2: ; 0x02010D58
 	mov r4, #0
 _02010D64:
 	and r0, r4, #0xff
-	bl sub_02010B78
+	bl RemoveItemFromKecleonShop2
 	add r4, r4, #1
 	cmp r4, #4
 	blt _02010D64
@@ -2708,7 +2708,7 @@ _02010D88:
 	mov r0, r6
 	mov r1, r4
 	bl GetItemIdFromList
-	bl sub_02010DCC
+	bl AddItemToKecleonShop2
 	add r7, r7, #1
 	cmp r7, #4
 	blt _02010D88
@@ -2719,8 +2719,8 @@ _02010DC4: .word KECLEON_SHOP_ITEM_TABLE_LISTS_2
 _02010DC8: .word 0x0000270F
 	arm_func_end GenerateKecleonItems2
 
-	arm_func_start sub_02010DCC
-sub_02010DCC: ; 0x02010DCC
+	arm_func_start AddItemToKecleonShop2
+AddItemToKecleonShop2: ; 0x02010DCC
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	add r0, sp, #0
@@ -2754,7 +2754,7 @@ _02010E2C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02010E3C: .word BAG_ITEMS_PTR_MIRROR
-	arm_func_end sub_02010DCC
+	arm_func_end AddItemToKecleonShop2
 
 	arm_func_start GetExclusiveItemOffset
 GetExclusiveItemOffset: ; 0x02010E40
