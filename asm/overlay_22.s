@@ -354,7 +354,7 @@ ov22_0238A588: ; 0x0238A588
 	bl sub_02010898
 	bl SpecialProcAddItemToBag
 	and r0, r4, #0xff
-	bl sub_0201086C
+	bl RemoveItemFromKecleonShop1
 	ldr r0, _0238A5C8 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC60
 	ldr r0, [r0, #4]
 	add r0, r0, r4, lsl #2
@@ -388,7 +388,7 @@ _0238A5E0:
 	add r1, r1, r5, lsl #2
 	ldr r1, [r1, #0x370]
 	add r4, r4, r1
-	bl sub_0201086C
+	bl RemoveItemFromKecleonShop1
 _0238A614:
 	add r5, r5, #1
 _0238A618:
@@ -859,7 +859,7 @@ ov22_0238ABD4: ; 0x0238ABD4
 	bl sub_02010BA4
 	bl SpecialProcAddItemToBag
 	and r0, r4, #0xff
-	bl sub_02010B78
+	bl RemoveItemFromKecleonShop2
 	ldr r0, _0238AC14 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC68
 	ldr r0, [r0, #4]
 	add r0, r0, r4, lsl #2
@@ -893,7 +893,7 @@ _0238AC2C:
 	add r1, r1, r5, lsl #2
 	ldr r1, [r1, #0x210]
 	add r4, r4, r1
-	bl sub_02010B78
+	bl RemoveItemFromKecleonShop2
 _0238AC60:
 	add r5, r5, #1
 _0238AC64:

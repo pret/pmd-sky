@@ -4165,7 +4165,7 @@ _0230E2BC:
 	mov r0, r6
 	add r1, sp, #0x98
 	mov r2, #0
-	bl ov29_0234F008
+	bl DungeonModeSetupAndShowNameKeyboard
 	cmp r0, #0
 	beq _0230E2BC
 _0230E2D4:

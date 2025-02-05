@@ -35,6 +35,7 @@
 .public DEFENSIVE_STAT_STAGE_MULTIPLIERS
 .public DivideFixedPoint64
 .public DUNGEON_PTR
+.public DungeonModeSetupAndShowNameKeyboard
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EnableAllLearnableIqSkills
@@ -152,7 +153,6 @@
 .public ov29_0234D838
 .public ov29_0234D8A0
 .public ov29_0234EE10
-.public ov29_0234F008
 .public ov29_02352838
 .public ov29_02352884
 .public ov29_02352894
