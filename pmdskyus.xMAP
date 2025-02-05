@@ -1983,7 +1983,7 @@
   02010830 0000003C .text   sub_02010830	(main_0200ED1C.o)
   02010830 00000000 .text   $a	(main_0200ED1C.o)
   02010868 00000000 .text   $d	(main_0200ED1C.o)
-  0201086C 0000002C .text   sub_0201086C	(main_0200ED1C.o)
+  0201086C 0000002C .text   RemoveItemFromKecleonShop1	(main_0200ED1C.o)
   0201086C 00000000 .text   $a	(main_0200ED1C.o)
   02010894 00000000 .text   $d	(main_0200ED1C.o)
   02010898 00000000 .text   $a	(main_0200ED1C.o)
@@ -1998,13 +1998,13 @@
   02010A4C 0000007C .text   GenerateKecleonItems1	(main_0200ED1C.o)
   02010A4C 00000000 .text   $a	(main_0200ED1C.o)
   02010AC0 00000000 .text   $d	(main_0200ED1C.o)
-  02010AC8 00000074 .text   sub_02010AC8	(main_0200ED1C.o)
+  02010AC8 00000074 .text   AddItemToKecleonShop1	(main_0200ED1C.o)
   02010AC8 00000000 .text   $a	(main_0200ED1C.o)
   02010B38 00000000 .text   $d	(main_0200ED1C.o)
   02010B3C 0000003C .text   sub_02010B3C	(main_0200ED1C.o)
   02010B3C 00000000 .text   $a	(main_0200ED1C.o)
   02010B74 00000000 .text   $d	(main_0200ED1C.o)
-  02010B78 0000002C .text   sub_02010B78	(main_0200ED1C.o)
+  02010B78 0000002C .text   RemoveItemFromKecleonShop2	(main_0200ED1C.o)
   02010B78 00000000 .text   $a	(main_0200ED1C.o)
   02010BA0 00000000 .text   $d	(main_0200ED1C.o)
   02010BA4 0000001C .text   sub_02010BA4	(main_0200ED1C.o)
@@ -2020,7 +2020,7 @@
   02010D58 00000074 .text   GenerateKecleonItems2	(main_0200ED1C.o)
   02010DC4 00000000 .text   $d	(main_0200ED1C.o)
   02010DCC 00000000 .text   $a	(main_0200ED1C.o)
-  02010DCC 00000074 .text   sub_02010DCC	(main_0200ED1C.o)
+  02010DCC 00000074 .text   AddItemToKecleonShop2	(main_0200ED1C.o)
   02010E3C 00000000 .text   $d	(main_0200ED1C.o)
   02010E40 00000000 .text   $a	(main_0200ED1C.o)
   02010E40 00000024 .text   GetExclusiveItemOffset	(main_0200ED1C.o)
@@ -38710,7 +38710,7 @@
   0234EF24 00000000 .text   $a	(overlay_29_0234EC38.o)
   0234EF24 000000E4 .text   ov29_0234EF24	(overlay_29_0234EC38.o)
   0234F004 00000000 .text   $d	(overlay_29_0234EC38.o)
-  0234F008 000001D4 .text   ov29_0234F008	(overlay_29_0234EC38.o)
+  0234F008 000001D4 .text   DungeonModeSetupAndShowNameKeyboard	(overlay_29_0234EC38.o)
   0234F008 00000000 .text   $a	(overlay_29_0234EC38.o)
   0234F1D8 00000000 .text   $d	(overlay_29_0234EC38.o)
   0234F1DC 00000000 .text   $a	(overlay_29_0234EC38.o)
@@ -40151,5 +40151,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Jan 13 01:32:03 2025
-# Link end time: Mon Jan 13 01:32:04 2025
+# Link start time: Wed Feb 05 15:06:42 2025
+# Link end time: Wed Feb 05 15:06:43 2025
