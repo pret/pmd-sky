@@ -35,6 +35,7 @@
 .public GetNbFloorsPlusOne
 .public GetNbPrecedingFloors
 .public GetNbRecruited
+.public GetPlayerGender
 .public GetSecondFormIfValid
 .public GetSpriteFileSize
 .public GetSpriteSize
@@ -93,7 +94,6 @@
 .public ov29_022EACCC
 .public ov29_022EACE4
 .public ov29_022ED0F4
-.public ov29_022F42D8
 .public ov29_0230027C
 .public ov29_0230D618
 .public ov29_02339138

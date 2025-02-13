@@ -20,6 +20,7 @@
 .public EnemyEvolution
 .public EntityIsValid__022E0354
 .public FadeToBlack
+.public FillMissionDestinationInfo
 .public FIXED_ROOM_REVISIT_OVERRIDES
 .public FreeLoadedAttackSpriteAndMore
 .public FreeTopScreenStatus
@@ -178,7 +179,6 @@
 .public ov29_02346DA4
 .public ov29_02346E48
 .public ov29_023480FC
-.public ov29_023484A0
 .public ov29_02348850
 .public ov29_02348894
 .public ov29_023488C8

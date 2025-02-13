@@ -2121,8 +2121,6 @@
 .public sub_02060680
 .public sub_020606E4
 .public sub_0206074C
-.public sub_02060804
-.public sub_02060904
 .public sub_02072D9C
 .public sub_02072DBC
 .public sub_02072DDC
@@ -2208,5 +2206,7 @@
 .public UpdateSimpleMenu
 .public UpdateTeamSelectionMenu
 .public UpdateTextBox
+.public ValidateLegendaryChallengeMission
+.public ValidateNormalChallengeMission
 .public vsprintf
 .public wcstombs

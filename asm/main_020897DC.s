@@ -20337,8 +20337,8 @@ ARM9_UNKNOWN_FUNCTION_TABLE__NA_20A3CF4:
 	.word sub_02060680
 	.word sub_020606E4
 	.word sub_0206074C
-	.word sub_02060804
-	.word sub_02060904
+	.word ValidateNormalChallengeMission
+	.word ValidateLegendaryChallengeMission
 	.global MISSION_BANNED_STORY_MONSTERS
 MISSION_BANNED_STORY_MONSTERS:
 	.byte 0x6D, 0x00, 0x29, 0x00, 0xDD, 0x01, 0x83, 0x01, 0x69, 0x00, 0x71, 0x00, 0x73, 0x00, 0xB2, 0x00

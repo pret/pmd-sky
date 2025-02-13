@@ -1,6 +1,14 @@
 #ifndef PMDSKY_ITEM_H
 #define PMDSKY_ITEM_H
 
+#include "util.h"
+
+#ifdef EUROPE
+#define ITEM_DATA_TABLE_PTRS_INDEX 0
+#else
+#define ITEM_DATA_TABLE_PTRS_INDEX 1
+#endif
+
 // Item ID
 enum item_id {
     ITEM_NOTHING = 0,
@@ -1481,6 +1489,14 @@ struct bag_items_inner {
 struct bag_items {
     u8 fill0[0x384];
     /* 0x384 */ struct bag_items_inner *bag_items;
+};
+
+struct item_data_entry
+{
+    /* 0x0 */ u8 *name;
+    /* 0x4 */ enum item_category category;
+    u8 fill5[0xE - 0x5];
+    /* 0xE */ bool8 valid;
 };
 
 #endif //PMDSKY_ITEM_H

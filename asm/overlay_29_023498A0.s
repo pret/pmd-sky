@@ -4384,7 +4384,7 @@ SetBothScreensWindowColorToDefault: ; 0x0234CF60
 	bl SetBothScreensWindowsColor
 	ldmia sp!, {r3, pc}
 _0234CF7C:
-	bl ov29_022F42D8
+	bl GetPlayerGender
 	cmp r0, #1
 	bne _0234CF94
 	mov r0, #0
