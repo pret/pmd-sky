@@ -1,29 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0200E828.inc"
+	.include "main_0200E864.inc"
 
 	.text
-
-	arm_func_start EnsureValidItem
-EnsureValidItem: ; 0x0200E828
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	cmp r4, #0
-	ble _0200E844
-	ldr r1, _0200E860 ; =0x00000578
-	cmp r4, r1
-	blt _0200E84C
-_0200E844:
-	mov r0, #0x55
-	ldmia sp!, {r4, pc}
-_0200E84C:
-	bl IsItemValid
-	cmp r0, #0
-	moveq r4, #0x55
-	mov r0, r4
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_0200E860: .word 0x00000578
-	arm_func_end EnsureValidItem
 
 	arm_func_start GetItemName
 GetItemName: ; 0x0200E864
