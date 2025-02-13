@@ -5890,7 +5890,7 @@ ov29_022E7F94: ; 0x022E7F94
 	strb r0, [r1]
 	bl SetMinimapDataE448
 	bl ov29_022E8104
-	bl ov29_022F42D8
+	bl GetPlayerGender
 	cmp r0, #2
 	ldr r0, _022E8014 ; =TOP_SCREEN_STATUS_PTR
 	moveq r1, #1
@@ -6010,7 +6010,7 @@ InitializeTeamStats: ; 0x022E8130
 	mov r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x24]
-	bl ov29_022F42D8
+	bl GetPlayerGender
 	cmp r0, #2
 	ldr r0, _022E818C ; =TOP_SCREEN_STATUS_PTR
 	moveq r1, #1

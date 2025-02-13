@@ -273,7 +273,7 @@ _022DEE78:
 	addne r0, r0, #0x4000
 	strneb r1, [r0, #0xda + OV29_022DEBBC_OFFSET]
 _022DEEA4:
-	bl ov29_023484A0
+	bl FillMissionDestinationInfo
 	cmp r4, #1
 	bne _022DEF08
 	ldr r1, _022DEF2C ; =DUNGEON_PTR

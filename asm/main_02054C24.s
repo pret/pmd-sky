@@ -14444,8 +14444,8 @@ _020607FC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_0206074C
 
-	arm_func_start sub_02060804
-sub_02060804: ; 0x02060804
+	arm_func_start ValidateNormalChallengeMission
+ValidateNormalChallengeMission: ; 0x02060804
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
@@ -14516,10 +14516,10 @@ _020608E0:
 _020608FC:
 	and r0, r4, #0xff
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_02060804
+	arm_func_end ValidateNormalChallengeMission
 
-	arm_func_start sub_02060904
-sub_02060904: ; 0x02060904
+	arm_func_start ValidateLegendaryChallengeMission
+ValidateLegendaryChallengeMission: ; 0x02060904
 	stmdb sp!, {r3, lr}
 	ldrb r3, [r0, #0x20]
 	ldrb r2, [r1, #1]
@@ -14548,7 +14548,7 @@ _02060948:
 _02060964:
 	and r0, ip, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_02060904
+	arm_func_end ValidateLegendaryChallengeMission
 
 	arm_func_start sub_0206096C
 sub_0206096C: ; 0x0206096C
@@ -16037,7 +16037,7 @@ sub_02061CC8: ; 0x02061CC8
 	add r0, sp, #4
 	mov r1, r4
 	add sb, sb, #0xd
-	bl sub_0204DE7C
+	bl MissionToWonderMailPassword
 	mov r7, #0
 	mov fp, #0x44
 	add r6, sp, #4

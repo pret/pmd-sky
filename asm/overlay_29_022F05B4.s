@@ -4429,8 +4429,8 @@ ov29_022F426C: ; 0x022F426C
 _022F42D4: .word DUNGEON_PTR
 	arm_func_end ov29_022F426C
 
-	arm_func_start ov29_022F42D8
-ov29_022F42D8: ; 0x022F42D8
+	arm_func_start GetPlayerGender
+GetPlayerGender: ; 0x022F42D8
 	stmdb sp!, {r3, lr}
 	bl GetHero
 	cmp r0, #0
@@ -4439,7 +4439,7 @@ ov29_022F42D8: ; 0x022F42D8
 	ldrsh r0, [r0, #4]
 	bl GetMonsterGenderVeneer
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022F42D8
+	arm_func_end GetPlayerGender
 
 	arm_func_start ov29_022F42F8
 ov29_022F42F8: ; 0x022F42F8

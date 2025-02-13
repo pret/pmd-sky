@@ -656,8 +656,8 @@ _02348498: .word ov29_023537C4
 _0234849C: .word ov29_0237C694
 	arm_func_end HandleFloorCard
 
-	arm_func_start ov29_023484A0
-ov29_023484A0: ; 0x023484A0
+	arm_func_start FillMissionDestinationInfo
+FillMissionDestinationInfo: ; 0x023484A0
 #ifdef JAPAN
 #define OV29_023484A0_OFFSET -0xA4
 #else
@@ -704,7 +704,7 @@ _023484FC:
 #else
 	mov r0, r7
 	mov r1, r8
-	bl ov29_02349790
+	bl GetMissionIfActiveOnFloor
 	movs sb, r0
 	moveq r0, #0
 	beq _02348784
@@ -924,7 +924,7 @@ _023487D4:
 	.align 2, 0
 _02348804: .word DUNGEON_PTR
 _02348808: .word ov10_022C48E4
-	arm_func_end ov29_023484A0
+	arm_func_end FillMissionDestinationInfo
 
 #ifndef JAPAN
 	arm_func_start ov29_0234880C
@@ -936,7 +936,7 @@ ov29_0234880C: ; 0x0234880C
 _0234881C:
 	mov r0, r5
 	mov r1, r4
-	bl ov29_02349790
+	bl GetMissionIfActiveOnFloor
 	cmp r0, #0
 	movne r0, r4
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -2267,8 +2267,8 @@ _02349788:
 	arm_func_end FloorHasMissionMonster
 
 #ifndef JAPAN
-	arm_func_start ov29_02349790
-ov29_02349790: ; 0x02349790
+	arm_func_start GetMissionIfActiveOnFloor
+GetMissionIfActiveOnFloor: ; 0x02349790
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, r1
@@ -2283,7 +2283,7 @@ ov29_02349790: ; 0x02349790
 	cmpeq r2, r1
 	movne r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_02349790
+	arm_func_end GetMissionIfActiveOnFloor
 #endif
 
 	arm_func_start ov29_023497C8

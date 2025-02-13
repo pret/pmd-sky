@@ -348,6 +348,7 @@
 .public MISSION_MENU_STRING_IDS_2
 .public MISSION_RANK_POINTS
 .public MISSION_STRING_IDS
+.public MissionToWonderMailPassword
 .public MultiplyByFixedPoint
 .public MUNCH_BELT_STAT_BOOST
 .public NO_SEND_ITEM_TABLE
@@ -546,7 +547,6 @@
 .public sub_0204C978
 .public sub_0204CA1C
 .public sub_0204D018
-.public sub_0204DE7C
 .public sub_0204E210
 .public sub_0204E584
 .public sub_0204E6FC

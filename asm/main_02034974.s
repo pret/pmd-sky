@@ -31938,8 +31938,8 @@ _0204DE74: .word WONDER_MAIL_BITS_SWAP
 _0204DE78: .word _0209E264
 	arm_func_end WonderMailPasswordToMission
 
-	arm_func_start sub_0204DE7C
-sub_0204DE7C: ; 0x0204DE7C
+	arm_func_start MissionToWonderMailPassword
+MissionToWonderMailPassword: ; 0x0204DE7C
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #0x6c
 	mov r2, #0
@@ -31997,7 +31997,7 @@ _0204DF20:
 	.align 2, 0
 _0204DF4C: .word _0209E264
 _0204DF50: .word WONDER_MAIL_BITS_SWAP
-	arm_func_end sub_0204DE7C
+	arm_func_end MissionToWonderMailPassword
 
 	arm_func_start sub_0204DF54
 sub_0204DF54: ; 0x0204DF54

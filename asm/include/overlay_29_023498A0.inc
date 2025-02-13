@@ -36,6 +36,7 @@
 .public GetMonsterPreEvolution
 .public GetName
 .public GetPerformanceFlagWithChecks
+.public GetPlayerGender
 .public GetRandomExplorerMazeMonster
 .public GetRandomSpawnMonsterID
 .public GetSecondFormIfValid
@@ -111,7 +112,6 @@
 .public ov29_022EAF34
 .public ov29_022EAFB0
 .public ov29_022F2FE4
-.public ov29_022F42D8
 .public ov29_022FA3D4
 .public ov29_022FBA54
 .public ov29_022FBBEC
