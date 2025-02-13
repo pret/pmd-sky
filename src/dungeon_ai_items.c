@@ -4,6 +4,7 @@
 #include "dungeon_capabilities_1.h"
 #include "dungeon_util_static.h"
 #include "item.h"
+#include "item_util.h"
 
 #define NUM_POTENTIAL_ROCK_TARGETS 20
 
@@ -18,7 +19,6 @@ extern void SetMonsterActionFields(struct action_data *action_pointer, u16 actio
 extern bool8 IqSkillIsEnabled(struct entity *pokemon, u8 iq_skill);
 extern const struct tile *GetTile(s32 x, s32 y);
 extern bool8 TestItemAiFlag(s16 id, s32 aiFlag);
-extern enum item_category GetItemCategoryVeneer(s16 index);
 extern void GetPossibleAiArcItemTargets(struct entity *pokemon, struct item *item, struct position potential_targets[], bool8 ignore_roll_chance);
 extern s32 GetDirectionTowardsPosition(struct position *origin_pos, struct position *target_pos);
 extern struct item *GetItemInfo(struct entity *entity);
