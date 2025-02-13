@@ -6,6 +6,7 @@
 .public ITEM_DATA_TABLE_PTRS
 .public IsItemValid
 .public ItemZInit
+.public SprintfStatic__0200E808_EU
 .public StringFromId
 .public _0209808C
 .public _0209809C

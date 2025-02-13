@@ -1,14 +1,7 @@
 #include "item_util_2.h"
-#include "util.h"
+#include "item_util_1.h"
 
 extern struct item_data_entry *ITEM_DATA_TABLE_PTRS[3];
-extern bool8 IsItemValid(s16 item_id);
-
-#ifdef EUROPE
-#define ITEM_DATA_TABLE_PTRS_INDEX 0
-#else
-#define ITEM_DATA_TABLE_PTRS_INDEX 1
-#endif
 
 enum item_category GetItemCategory(s16 item_id)
 {

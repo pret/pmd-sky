@@ -16,6 +16,7 @@
 .public HandleSir0Translation
 .public ITEM_DATA_TABLE_PTRS
 .public ITEM_TABLES_PTRS_1
+.public IsItemValid
 .public LoadFileFromRom
 .public MONEY_QUANTITY_TABLE
 .public MemAlloc
