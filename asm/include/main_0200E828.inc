@@ -1,0 +1,15 @@
+#pragma once
+.public ARM9_UNKNOWN_TABLE__NA_2097FF8
+.public BAG_ITEMS_PTR_MIRROR
+.public GET_ITEM_NAME_FORMATTED_SPRINTF
+.public ITEM_DATA_TABLE_PTRS
+.public IsItemValid
+.public ItemZInit
+.public SprintfStatic__0200E808_EU
+.public StringFromId
+.public _0209808C
+.public _0209809C
+.public _020980AC
+.public _020980B0
+.public strcpy
+.public vsprintf

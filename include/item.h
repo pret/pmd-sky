@@ -1483,4 +1483,11 @@ struct bag_items {
     /* 0x384 */ struct bag_items_inner *bag_items;
 };
 
+struct item_data_entry
+{
+    /* 0x0 */ u8 *name;
+    /* 0x4 */ enum item_category category;
+    u8 fill8[8];
+};
+
 #endif //PMDSKY_ITEM_H

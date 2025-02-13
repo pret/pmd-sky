@@ -1,8 +1,7 @@
 #include "item_util.h"
+#include "item_util_2.h"
 
-extern enum item_category GetItemCategory(s16 index);
-
-enum item_category GetItemCategoryVeneer(s16 index)
+enum item_category GetItemCategoryVeneer(s16 item_id)
 {
-    return GetItemCategory(index);
+    return GetItemCategory(item_id);
 }
