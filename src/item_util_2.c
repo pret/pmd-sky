@@ -11,7 +11,7 @@ enum item_category GetItemCategory(s16 item_id)
 
 s16 EnsureValidItem(s16 item_id)
 {
-    if (item_id <= 0 || item_id >= 0x578)
+    if (item_id <= 0 || item_id >= NUM_ITEM_IDS)
         return ITEM_PLAIN_SEED;
 
     if (!IsItemValid(item_id))

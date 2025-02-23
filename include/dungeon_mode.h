@@ -149,6 +149,10 @@ struct curse_class_status {
     u8 curse_damage_countdown;
 };
 
+struct long_toss_class_status {
+    u8 status; // 0x0: STATUS_LONG_TOSS if 1
+};
+
 struct blinker_class_status {
     u8 blinded;           // 0x0: STATUS_BLINKER if 1
     u8 blinded_turns;     // 0x1: Turns left for the status in statuses::blinded
@@ -278,7 +282,7 @@ struct monster {
     u8 field_0xEB;
     u8 sure_shot;         // 0xEC: STATUS_SURE_SHOT if 1
     u8 sure_shot_turns;   // 0xED: Turns left for the status in statuses::sure_shot
-    u8 long_toss;         // 0xEE: STATUS_LONG_TOSS if 1
+    struct long_toss_class_status long_toss_class_status; // 0xEE
     u8 invisible;         // 0xEF: STATUS_INVISIBLE if 1
     u8 invisible_turns;   // 0xF0: Turns left for the status in statuses::invisible
     struct blinker_class_status blinker_class_status; // 0xF1
