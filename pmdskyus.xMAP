@@ -125,6 +125,7 @@
                                             43](ov29_022E34C8,func) found in global overlay_29_022E330C.o
                                             43](EntityIsValid__022E32E8,func) found in global dg_camera.o
                                             43](HasDropeyeStatus,func) found in global overlay_29_02301F50.o
+                                             44](ov29_023527F8,notype) found in global overlay_29_rodata_023527C0.o
                                              44](ov29_02302C04,func) found in global overlay_29_02302A5C.o
                                               45](ChangeMonsterAnimation,func) found in global overlay_29_023047DC.o
                                                46](ov29_022EF9BC,func) found in global overlay_29_022EF7C4.o
@@ -194,15 +195,12 @@
                                                              60](EntityIsValid__023118B4,func) found in global overlay_29_023118B4.o
                                                              60](ApplyAquaRingHealing,func) found in global overlay_29_02317844.o
                                                               61](IsMonster__02318AB0,func) found in global overlay_29_02318AB0.o
-                                                              61](SafeguardIsActive,func) found in global overlay_29_023016A8.o
+                                                              61](SafeguardIsActive,func) found in global overlay_29_023018AC.o
                                                                62](AbilityIsActive,func) found in global dungeon_pokemon_attributes.o
                                                                 63](IsMonster__02301A60,func) found in global overlay_29_02301A60.o
                                                                 63](NoGastroAcidStatus,func) found in global dungeon_pokemon_attributes.o
                                                                62](IsExperienceLocked,func) found in global joined_at_checks.o
                                                                 63](IsSpecialStoryAlly,func) found in global joined_at_checks.o
-                                                               62](ShouldMonsterRunAway,func) found in global dungeon_ai_targeting.o
-                                                                63](EntityIsValid__023000E4,func) found in global overlay_29_023000E4.o
-                                                                63](IsTacticSet,func) found in global dungeon_pokemon_attributes_1.o
                                                               61](TryIncreaseHp,func) found in global overlay_29_0231513C.o
                                                               61](GetMaxPpWrapper,func) found in global overlay_29_0231CBEC.o
                                                                62](EnsureCanStandCurrentTile,func) found in global overlay_29_02320788.o
@@ -213,9 +211,13 @@
                                                                  64](EntityIsValid__0230558C,func) found in global overlay_29_0230558C.o
                                                                  64](TryNonLeaderItemPickUp,func) found in global overlay_29_0230F02C.o
                                                                   65](IsMonster__0230F980,func) found in global overlay_29_0230F980.o
-                                                                  65](EntityIsValid__0230F008,func) found in global overlay_29_0230F008.o
+                                                                  65](EntityIsValid__0230F008,func) found in global dungeon_ai_items_1.o
                                                                   65](ov29_02345004,func) found in global overlay_29_02344B1C.o
                                                                   65](GetItemCategoryVeneer,func) found in global item_util.o
+                                                                  65](ShouldMonsterRunAwayVariation,func) found in global overlay_29_023016A8.o
+                                                                   66](ShouldMonsterRunAway,func) found in global dungeon_ai_targeting.o
+                                                                    67](EntityIsValid__023000E4,func) found in global overlay_29_023000E4.o
+                                                                    67](IsTacticSet,func) found in global dungeon_pokemon_attributes_1.o
                                                                   65](UseThrowableItem,func) found in global overlay_29_022F52B0.o
                                                                    66](ov29_023009CC,func) found in global overlay_29_023008DC.o
                                                                     67](IsChargingAnyTwoTurnMove,func) found in global dungeon_move.o
@@ -223,6 +225,8 @@
                                                                     67](CheckVariousStatuses2,func) found in global dungeon_capabilities.o
                                                                      68](CheckVariousStatuses,func) found in global dungeon_capabilities_2.o
                                                                     67](ov29_02300D00,func) found in global overlay_29_02300D00.o
+                                                                     68](GetTreatmentBetweenMonsters,func) found in global dungeon_ai_targeting_1.o
+                                                                      69](TREATMENT_DATA,object) found in global dungeon_ai_targeting_1.o
                                                                    66](EntityIsValid__022F62A8,func) found in global overlay_29_022F62A8.o
                                                                    66](EntityIsValid__022F528C,func) found in global overlay_29_022F528C.o
                                                                    66](ov29_0232145C,func) found in global overlay_29_0232145C.o
@@ -324,8 +328,9 @@
                                                       53](RunMonsterAi,func) found in global dungeon_ai.o
                                                        54](ShouldRunMonsterAi,func) found in global dungeon_util.o
                                                        54](AiDecideUseItem,func) found in global dungeon_ai_items.o
-                                                        55](GetPossibleAiThrownItemDirections,func) found in global overlay_29_0230EDB0.o
-                                                         56](AI_THROWN_ITEM_PROBABILITIES,object) found in global dungeon_ai_items.o
+                                                        55](GetPossibleAiThrownItemDirections,func) found in global dungeon_ai_items_1.o
+                                                         56](AI_THROWN_ITEM_DIRECTION_IS_USED,object) found in global dungeon_ai_items.o
+                                                         56](AI_THROWN_ITEM_DIRECTIONS,object) found in global dungeon_ai_items.o
                                                       53](EntityIsValid__022EC608,func) found in global overlay_29_022EC608.o
                                                       53](ov29_022EF9C8,func) found in global overlay_29_022EF7C4.o
                                                      52](CopyStringFromId,func) found in global main_0202593C.o
@@ -35530,23 +35535,24 @@
   023015B8 00000000 .text   $a	(dungeon_ai_targeting.o)
   023015B8 000000F0 .text   ShouldMonsterRunAway	(dungeon_ai_targeting.o)
   023016A4 00000000 .text   $d	(dungeon_ai_targeting.o)
-  023016A8 000003B8 .text   .text	(overlay_29_023016A8.o)
-  023016A8 00000030 .text   ShouldMonsterRunAwayVariation	(overlay_29_023016A8.o)
   023016A8 00000000 .text   $a	(overlay_29_023016A8.o)
+  023016A8 000000B4 .text   .text	(overlay_29_023016A8.o)
+  023016A8 00000030 .text   ShouldMonsterRunAwayVariation	(overlay_29_023016A8.o)
   023016D8 00000084 .text   ov29_023016D8	(overlay_29_023016A8.o)
   02301758 00000000 .text   $d	(overlay_29_023016A8.o)
-  0230175C 00000150 .text   GetTreatmentBetweenMonsters	(overlay_29_023016A8.o)
-  0230175C 00000000 .text   $a	(overlay_29_023016A8.o)
-  023018A8 00000000 .text   $d	(overlay_29_023016A8.o)
-  023018AC 00000094 .text   ov29_023018AC	(overlay_29_023016A8.o)
-  023018AC 00000000 .text   $a	(overlay_29_023016A8.o)
-  02301940 00000054 .text   SafeguardIsActive	(overlay_29_023016A8.o)
-  02301990 00000000 .text   $d	(overlay_29_023016A8.o)
-  02301994 00000000 .text   $a	(overlay_29_023016A8.o)
-  02301994 00000078 .text   LeafGuardIsActive	(overlay_29_023016A8.o)
-  02301A08 00000000 .text   $d	(overlay_29_023016A8.o)
-  02301A0C 00000000 .text   $a	(overlay_29_023016A8.o)
-  02301A0C 00000054 .text   DefenderAbilityIsActive__02301A0C	(overlay_29_023016A8.o)
+  0230175C 00000000 .text   $a	(dungeon_ai_targeting_1.o)
+  0230175C 00000150 .text   GetTreatmentBetweenMonsters	(dungeon_ai_targeting_1.o)
+  023018A8 00000000 .text   $d	(dungeon_ai_targeting_1.o)
+  023018AC 00000000 .text   $a	(overlay_29_023018AC.o)
+  023018AC 00000094 .text   ov29_023018AC	(overlay_29_023018AC.o)
+  023018AC 000001B4 .text   .text	(overlay_29_023018AC.o)
+  02301940 00000054 .text   SafeguardIsActive	(overlay_29_023018AC.o)
+  02301990 00000000 .text   $d	(overlay_29_023018AC.o)
+  02301994 00000000 .text   $a	(overlay_29_023018AC.o)
+  02301994 00000078 .text   LeafGuardIsActive	(overlay_29_023018AC.o)
+  02301A08 00000000 .text   $d	(overlay_29_023018AC.o)
+  02301A0C 00000054 .text   DefenderAbilityIsActive__02301A0C	(overlay_29_023018AC.o)
+  02301A0C 00000000 .text   $a	(overlay_29_023018AC.o)
   02301A60 00000024 .text   IsMonster__02301A60	(overlay_29_02301A60.o)
   02301A60 00000000 .text   $a	(overlay_29_02301A60.o)
   02301A84 00000000 .text   $a	(overlay_29_02301A84.o)
@@ -35914,12 +35920,11 @@
   0230E914 00000000 .text   $a	(dungeon_ai_items.o)
   0230E914 0000049C .text   AiDecideUseItem	(dungeon_ai_items.o)
   0230EDA0 00000000 .text   $d	(dungeon_ai_items.o)
-  0230EDB0 00000000 .text   $a	(overlay_29_0230EDB0.o)
-  0230EDB0 00000258 .text   .text	(overlay_29_0230EDB0.o)
-  0230EDB0 00000258 .text   GetPossibleAiThrownItemDirections	(overlay_29_0230EDB0.o)
-  0230EFF4 00000000 .text   $d	(overlay_29_0230EDB0.o)
-  0230F008 00000024 .text   EntityIsValid__0230F008	(overlay_29_0230F008.o)
-  0230F008 00000000 .text   $a	(overlay_29_0230F008.o)
+  0230EDB0 00000000 .text   $a	(dungeon_ai_items_1.o)
+  0230EDB0 00000258 .text   GetPossibleAiThrownItemDirections	(dungeon_ai_items_1.o)
+  0230EFF4 00000000 .text   $d	(dungeon_ai_items_1.o)
+  0230F008 00000024 .text   EntityIsValid__0230F008	(dungeon_ai_items_1.o)
+  0230F008 00000000 .text   $a	(dungeon_ai_items_1.o)
   0230F02C 00000954 .text   .text	(overlay_29_0230F02C.o)
   0230F02C 00000000 .text   $a	(overlay_29_0230F02C.o)
   0230F02C 00000114 .text   GetPossibleAiArcItemTargets	(overlay_29_0230F02C.o)
@@ -38781,7 +38786,7 @@
   0234FCA8 00000000 .text   $a	(overlay_29_0234EC38.o)
   0234FCA8 00000054 .text   ov29_0234FCA8	(overlay_29_0234EC38.o)
   0234FCF8 00000000 .text   $d	(overlay_29_0234EC38.o)
-  0234FD04 00002D5C .rodata .rodata	(overlay_29_rodata_0234FD04.o)
+  0234FD04 00002A9C .rodata .rodata	(overlay_29_rodata_0234FD04.o)
   0234FD04 00000000 .rodata ov29_0234FD04	(overlay_29_rodata_0234FD04.o)
   0234FD14 00000000 .rodata ov29_0234FD14	(overlay_29_rodata_0234FD04.o)
   0234FD28 00000000 .rodata ov29_0234FD28	(overlay_29_rodata_0234FD04.o)
@@ -39091,38 +39096,40 @@
   02352788 00000000 .rodata ov29_02352788	(overlay_29_rodata_0234FD04.o)
   02352790 00000000 .rodata ov29_02352790	(overlay_29_rodata_0234FD04.o)
   02352798 00000000 .rodata ov29_02352798	(overlay_29_rodata_0234FD04.o)
-  023527A0 00000000 .rodata ov29_023527A0	(overlay_29_rodata_0234FD04.o)
-  023527C0 00000000 .rodata ov29_023527C0	(overlay_29_rodata_0234FD04.o)
-  023527D0 00000000 .rodata ov29_023527D0	(overlay_29_rodata_0234FD04.o)
-  023527E0 00000000 .rodata ov29_023527E0	(overlay_29_rodata_0234FD04.o)
-  023527E4 00000000 .rodata ov29_023527E4	(overlay_29_rodata_0234FD04.o)
-  023527E8 00000000 .rodata ov29_023527E8	(overlay_29_rodata_0234FD04.o)
-  023527F0 00000000 .rodata ov29_023527F0	(overlay_29_rodata_0234FD04.o)
-  023527F8 00000000 .rodata ov29_023527F8	(overlay_29_rodata_0234FD04.o)
-  02352808 00000000 .rodata ov29_02352808	(overlay_29_rodata_0234FD04.o)
-  0235280C 00000000 .rodata ov29_0235280C	(overlay_29_rodata_0234FD04.o)
-  02352810 00000000 .rodata ov29_02352810	(overlay_29_rodata_0234FD04.o)
-  02352838 00000000 .rodata ov29_02352838	(overlay_29_rodata_0234FD04.o)
-  0235283C 00000000 .rodata DAMAGE_MULTIPLIER_0_5	(overlay_29_rodata_0234FD04.o)
-  02352844 00000000 .rodata DAMAGE_MULTIPLIER_1_5	(overlay_29_rodata_0234FD04.o)
-  0235284C 00000000 .rodata DAMAGE_MULTIPLIER_2	(overlay_29_rodata_0234FD04.o)
-  0235285C 00000000 .rodata CLOUDY_DAMAGE_MULTIPLIER	(overlay_29_rodata_0234FD04.o)
-  02352864 00000000 .rodata SOLID_ROCK_MULTIPLIER	(overlay_29_rodata_0234FD04.o)
-  0235286C 00000000 .rodata DAMAGE_FORMULA_MAX_BASE	(overlay_29_rodata_0234FD04.o)
-  0235287C 00000000 .rodata DAMAGE_FORMULA_MIN_BASE	(overlay_29_rodata_0234FD04.o)
-  02352884 00000000 .rodata ov29_02352884	(overlay_29_rodata_0234FD04.o)
-  02352894 00000000 .rodata ov29_02352894	(overlay_29_rodata_0234FD04.o)
-  023528A4 00000000 .rodata TYPE_DAMAGE_NEGATING_EXCLUSIVE_ITEM_EFFECTS	(overlay_29_rodata_0234FD04.o)
-  02352984 00000000 .rodata ov29_02352984	(overlay_29_rodata_0234FD04.o)
-  02352990 00000000 .rodata ov29_02352990	(overlay_29_rodata_0234FD04.o)
-  0235299C 00000000 .rodata ov29_0235299C	(overlay_29_rodata_0234FD04.o)
-  023529A8 00000000 .rodata ov29_023529A8	(overlay_29_rodata_0234FD04.o)
-  023529AC 00000000 .rodata ov29_023529AC	(overlay_29_rodata_0234FD04.o)
-  023529B0 00000000 .rodata ov29_023529B0	(overlay_29_rodata_0234FD04.o)
-  023529B8 00000000 .rodata ov29_023529B8	(overlay_29_rodata_0234FD04.o)
-  023529C4 00000000 .rodata ov29_023529C4	(overlay_29_rodata_0234FD04.o)
-  023529EC 00000000 .rodata ov29_023529EC	(overlay_29_rodata_0234FD04.o)
-  02352A54 00000000 .rodata ov29_02352A54	(overlay_29_rodata_0234FD04.o)
+  023527A0 00000020 .rodata TREATMENT_DATA	(dungeon_ai_targeting_1.o)
+  023527A0 00000000 .rodata .rodata	(dungeon_ai_targeting_1.o)
+  023527C0 000002A0 .rodata .rodata	(overlay_29_rodata_023527C0.o)
+  023527C0 00000000 .rodata ov29_023527C0	(overlay_29_rodata_023527C0.o)
+  023527D0 00000000 .rodata ov29_023527D0	(overlay_29_rodata_023527C0.o)
+  023527E0 00000000 .rodata ov29_023527E0	(overlay_29_rodata_023527C0.o)
+  023527E4 00000000 .rodata ov29_023527E4	(overlay_29_rodata_023527C0.o)
+  023527E8 00000000 .rodata ov29_023527E8	(overlay_29_rodata_023527C0.o)
+  023527F0 00000000 .rodata ov29_023527F0	(overlay_29_rodata_023527C0.o)
+  023527F8 00000000 .rodata ov29_023527F8	(overlay_29_rodata_023527C0.o)
+  02352808 00000000 .rodata ov29_02352808	(overlay_29_rodata_023527C0.o)
+  0235280C 00000000 .rodata ov29_0235280C	(overlay_29_rodata_023527C0.o)
+  02352810 00000000 .rodata ov29_02352810	(overlay_29_rodata_023527C0.o)
+  02352838 00000000 .rodata ov29_02352838	(overlay_29_rodata_023527C0.o)
+  0235283C 00000000 .rodata DAMAGE_MULTIPLIER_0_5	(overlay_29_rodata_023527C0.o)
+  02352844 00000000 .rodata DAMAGE_MULTIPLIER_1_5	(overlay_29_rodata_023527C0.o)
+  0235284C 00000000 .rodata DAMAGE_MULTIPLIER_2	(overlay_29_rodata_023527C0.o)
+  0235285C 00000000 .rodata CLOUDY_DAMAGE_MULTIPLIER	(overlay_29_rodata_023527C0.o)
+  02352864 00000000 .rodata SOLID_ROCK_MULTIPLIER	(overlay_29_rodata_023527C0.o)
+  0235286C 00000000 .rodata DAMAGE_FORMULA_MAX_BASE	(overlay_29_rodata_023527C0.o)
+  0235287C 00000000 .rodata DAMAGE_FORMULA_MIN_BASE	(overlay_29_rodata_023527C0.o)
+  02352884 00000000 .rodata ov29_02352884	(overlay_29_rodata_023527C0.o)
+  02352894 00000000 .rodata ov29_02352894	(overlay_29_rodata_023527C0.o)
+  023528A4 00000000 .rodata TYPE_DAMAGE_NEGATING_EXCLUSIVE_ITEM_EFFECTS	(overlay_29_rodata_023527C0.o)
+  02352984 00000000 .rodata ov29_02352984	(overlay_29_rodata_023527C0.o)
+  02352990 00000000 .rodata ov29_02352990	(overlay_29_rodata_023527C0.o)
+  0235299C 00000000 .rodata ov29_0235299C	(overlay_29_rodata_023527C0.o)
+  023529A8 00000000 .rodata ov29_023529A8	(overlay_29_rodata_023527C0.o)
+  023529AC 00000000 .rodata ov29_023529AC	(overlay_29_rodata_023527C0.o)
+  023529B0 00000000 .rodata ov29_023529B0	(overlay_29_rodata_023527C0.o)
+  023529B8 00000000 .rodata ov29_023529B8	(overlay_29_rodata_023527C0.o)
+  023529C4 00000000 .rodata ov29_023529C4	(overlay_29_rodata_023527C0.o)
+  023529EC 00000000 .rodata ov29_023529EC	(overlay_29_rodata_023527C0.o)
+  02352A54 00000000 .rodata ov29_02352A54	(overlay_29_rodata_023527C0.o)
   02352A60 0000000B .rodata TWO_TURN_STATUSES	(dungeon_move.o)
   02352A60 00000000 .rodata .rodata	(dungeon_move.o)
   02352A6C 00000000 .rodata ov29_02352A6C	(overlay_29_rodata_02352A6C.o)
@@ -39298,7 +39305,7 @@
 # .OVY_29.bss
 #>02353860          SDK_OVERLAY.OVY_29.BSS_START (linker command file)
   02353860 00000000 .bss    ov29_02353860	(overlay_29_bss_02353860.o)
-  02353860 00029178 .bss    .bss	(overlay_29_bss_02353860.o)
+  02353860 00029170 .bss    .bss	(overlay_29_bss_02353860.o)
   02353880 00000000 .bss    ov29_02353880	(overlay_29_bss_02353860.o)
   023538B4 00000000 .bss    ov29_023538B4	(overlay_29_bss_02353860.o)
   0236CEF0 00000000 .bss    ov29_0236CEF0	(overlay_29_bss_02353860.o)
@@ -39349,7 +39356,7 @@
   0237C9C8 00000000 .bss    ov29_0237C9C8	(overlay_29_bss_02353860.o)
   0237C9C9 00000000 .bss    ov29_0237C9C9	(overlay_29_bss_02353860.o)
   0237C9CC 00000000 .bss    ov29_0237C9CC	(overlay_29_bss_02353860.o)
-  0237C9D0 00000000 .bss    AI_THROWN_ITEM_DIRECTION_IS_USED	(overlay_29_bss_02353860.o)
+  0237C9D0 00000008 .bss    AI_THROWN_ITEM_DIRECTION_IS_USED	(dungeon_ai_items.o)
   0237C9D8 00000020 .bss    AI_THROWN_ITEM_PROBABILITIES	(dungeon_ai_items.o)
   0237C9D8 00000000 .bss    .bss	(dungeon_ai_items.o)
   0237C9F8 00000020 .bss    AI_THROWN_ITEM_DIRECTIONS	(dungeon_ai_items.o)
@@ -40161,5 +40168,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Feb 13 05:05:53 2025
-# Link end time: Thu Feb 13 05:05:53 2025
+# Link start time: Mon Mar 03 05:41:05 2025
+# Link end time: Mon Mar 03 05:41:05 2025
