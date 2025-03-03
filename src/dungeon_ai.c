@@ -4,6 +4,7 @@
 #include "dungeon_capabilities_1.h"
 #include "dungeon_util_static.h"
 #include "dungeon_util.h"
+#include "targeting.h"
 
 #ifdef JAPAN
 #define CANNOT_USE_ITEM_MESSAGE 0xB2D

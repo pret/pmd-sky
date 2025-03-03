@@ -2309,6 +2309,12 @@ enum status_sure_shot_id {
     STATUS_SURE_SHOT_FOCUS_ENERGY = 4,
 };
 
+enum status_invisible_id {
+    STATUS_INVISIBLE_INVISIBLE = 1,
+    STATUS_INVISIBLE_TRANSFORMED = 2,
+    STATUS_INVISIBLE_MOBILE = 3,
+};
+
 enum status_blinker_id {
     STATUS_BLINKER_NONE = 0,
     STATUS_BLINKER_BLINKER = 1,
@@ -2891,13 +2897,6 @@ enum movement_flag
     MOVEMENT_FLAG_WALKING = 1 << 9,
     MOVEMENT_FLAG_UNK_14 = 1 << 14,
     MOVEMENT_FLAG_SWAPPING_PLACES_PETRIFIED_ALLY = 1 << 15, // Set if the Pokémon is petrified and the leader cures them by swapping places.
-};
-
-enum decoy_ai
-{
-    DECOY_AI_NONE = 0,
-    DECOY_AI_TEAM = 1,
-    DECOY_AI_WILD = 2,
 };
 
 #endif //PMDSKY_ENUMS_H

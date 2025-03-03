@@ -1411,6 +1411,7 @@ enum item_id {
     ITEM_UNNAMED_0x575 = 1397,
     ITEM_UNNAMED_0x576 = 1398,
     ITEM_UNNAMED_0x577 = 1399,
+    NUM_ITEM_IDS = 1400
 };
 
 enum item_category {

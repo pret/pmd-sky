@@ -149,6 +149,16 @@ struct curse_class_status {
     u8 curse_damage_countdown;
 };
 
+struct long_toss_class_status {
+    u8 status; // 0x0: STATUS_LONG_TOSS if 1
+};
+
+struct invisible_class_status
+{
+    u8 status; // 0x0: STATUS_INVISIBLE if 1
+    u8 turns; // 0x1: Turns left for the status in statuses::invisible
+};
+
 struct blinker_class_status {
     u8 blinded;           // 0x0: STATUS_BLINKER if 1
     u8 blinded_turns;     // 0x1: Turns left for the status in statuses::blinded
@@ -165,7 +175,7 @@ struct monster {
     bool8 is_team_leader;     // 0x7
     // 0x8: An ally is an NPC that isn't a normal team member, e.g. for story boss battles
     bool8 is_ally;
-    enum shopkeeper_mode shopkeeper : 8; // 0x9
+    enum shopkeeper_mode shopkeeper; // 0x9
     u8 level;                       // 0xA
     u8 field_0xb;
     s16 team_index;  // 0xC: In order by team lineup
@@ -278,9 +288,8 @@ struct monster {
     u8 field_0xEB;
     u8 sure_shot;         // 0xEC: STATUS_SURE_SHOT if 1
     u8 sure_shot_turns;   // 0xED: Turns left for the status in statuses::sure_shot
-    u8 long_toss;         // 0xEE: STATUS_LONG_TOSS if 1
-    u8 invisible;         // 0xEF: STATUS_INVISIBLE if 1
-    u8 invisible_turns;   // 0xF0: Turns left for the status in statuses::invisible
+    struct long_toss_class_status long_toss_class_status; // 0xEE
+    struct invisible_class_status invisible_class_status; // 0xEF
     struct blinker_class_status blinker_class_status; // 0xF1
     u8 muzzled;           // 0xF3: STATUS_MUZZLED if 1
     u8 muzzled_turns;     // 0xF4: Turns left for the status in statuses::muzzled
