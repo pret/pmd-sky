@@ -2,6 +2,7 @@
 #include "dungeon.h"
 #include "dungeon_ai_attack.h"
 #include "dungeon_ai_items.h"
+#include "dungeon_ai_targeting_1.h"
 #include "dungeon_util_static.h"
 #include "item.h"
 #include "targeting.h"
@@ -12,7 +13,6 @@
 extern s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct dungeon *DUNGEON_PTR[];
 
-extern u8 GetTreatmentBetweenMonsters(struct entity *pokemon, struct entity *target_pokemon, bool8 ignore_invisible, bool8 check_petrified);
 extern bool8 CanSeeTarget(struct entity *entity, struct entity *target_entity);
 extern bool8 IsTargetInRange(struct entity *pokemon, struct entity *target_pokemon, s32 direction, s32 max_range);
 extern u32 GetAiUseItemProbability(struct entity *target_pokemon, struct item *item, u32 item_target_flags);
