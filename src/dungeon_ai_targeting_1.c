@@ -79,6 +79,8 @@ enum monster_treatment GetTreatmentBetweenMonsters(struct entity *pokemon, struc
     if (pokemon_targeting_decoy == DECOY_AI_NONE)
     {
         if (pokemon_info->is_team_leader)
+            // New to Explorers, not in Rescue Team. This allows the leader to do damage to team members
+            // if the team member is turned into a decoy by a wild Pokémon.
             decoy_ai_tracker = DECOY_AI_TREATMENT_NONE_LEADER;
         else
             decoy_ai_tracker = DECOY_AI_TREATMENT_NONE_NONLEADER;
