@@ -28,7 +28,6 @@
 .public LogMessageByIdWithPopupCheckUserUnknown
 .public memset
 .public MemZero
-.public ov10_022C445C
 .public ov29_022E2CA0
 .public ov29_022E56A0
 .public ov29_022E58B0
@@ -51,5 +50,6 @@
 .public sub_0201F2A0
 .public sub_02024FC8
 .public SubstitutePlaceholderStringTags
+.public TRAP_BUSTER_ACTIVATION_CHANCE
 .public UpdateShopkeeperModeAfterTrap
 .public UpdateTrapsVisibility

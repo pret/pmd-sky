@@ -1,11 +1,14 @@
 #pragma once
+.public _02094C0C
+.public _02094C18
+.public _0209E7A6
 .public AllInventoriesZInit
 .public AllKecleonShopsZInit
 .public AllocateTemp1024ByteBufferFromPool
 .public BAG_ITEMS
 .public BAG_ITEMS_PTR_MIRROR
-.public DUNGEON_RETURN_STATUS_TABLE
 .public DrawTextInWindow
+.public DUNGEON_RETURN_STATUS_TABLE
 .public FormatMoveString
 .public GetDungeonResultString
 .public GetItemCategoryVeneer
@@ -19,9 +22,6 @@
 .public SpecialEpisodeInventoryZInit
 .public SpecialEpisodeKecleonShopZInit
 .public StringFromId
-.public _02094C0C
-.public _02094C18
-.public _0209E7A6
 .public sub_0200D670
 .public sub_0200FD38
 .public sub_0200FD3C
