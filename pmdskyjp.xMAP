@@ -26394,7 +26394,7 @@
   022C5B38 00000000 .rodata CRUNCH_LOWER_DEFENSE_CHANCE	(overlay_10.o)
   022C5B3C 00000000 .rodata ov10_022C4454	(overlay_10.o)
   022C5B40 00000000 .rodata ov10_022C4458	(overlay_10.o)
-  022C5B44 00000000 .rodata ov10_022C445C	(overlay_10.o)
+  022C5B44 00000000 .rodata TRAP_BUSTER_ACTIVATION_CHANCE	(overlay_10.o)
   022C5B48 00000000 .rodata ov10_022C4460	(overlay_10.o)
   022C5B4C 00000000 .rodata ov10_022C4464	(overlay_10.o)
   022C5B50 00000000 .rodata FOREWARN_FORCED_MISS_CHANCE	(overlay_10.o)
@@ -40416,5 +40416,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Mar 03 05:42:51 2025
-# Link end time: Mon Mar 03 05:42:52 2025
+# Link start time: Wed Mar 05 05:47:27 2025
+# Link end time: Wed Mar 05 05:47:27 2025

@@ -26137,7 +26137,7 @@
   022C4DA8 00000000 .rodata CRUNCH_LOWER_DEFENSE_CHANCE	(overlay_10.o)
   022C4DAC 00000000 .rodata ov10_022C4454	(overlay_10.o)
   022C4DB0 00000000 .rodata ov10_022C4458	(overlay_10.o)
-  022C4DB4 00000000 .rodata ov10_022C445C	(overlay_10.o)
+  022C4DB4 00000000 .rodata TRAP_BUSTER_ACTIVATION_CHANCE	(overlay_10.o)
   022C4DB8 00000000 .rodata ov10_022C4460	(overlay_10.o)
   022C4DBC 00000000 .rodata ov10_022C4464	(overlay_10.o)
   022C4DC0 00000000 .rodata FOREWARN_FORCED_MISS_CHANCE	(overlay_10.o)
@@ -40203,5 +40203,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Mar 03 05:41:59 2025
-# Link end time: Mon Mar 03 05:42:00 2025
+# Link start time: Wed Mar 05 05:46:34 2025
+# Link end time: Wed Mar 05 05:46:35 2025
