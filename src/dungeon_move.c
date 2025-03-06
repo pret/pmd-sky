@@ -17,12 +17,12 @@ const enum status_two_turn_id TWO_TURN_STATUSES[11] =
     STATUS_TWO_TURN_NONE
 };
 
-bool8 IsChargingAnyTwoTurnMove(struct entity *pokemon, bool8 check_charge)
+bool8 IsChargingAnyTwoTurnMove(struct entity *entity, bool8 charge_check_unused)
 {
-    if (!EntityIsValid__02321438(pokemon))
+    if (!EntityIsValid__02321438(entity))
         return FALSE;
 
-    struct monster *pokemon_info = GetEntInfo(pokemon);
+    struct monster *pokemon_info = GetEntInfo(entity);
     for (s32 i = 0; i < 100; i++)
     {
         if (TWO_TURN_STATUSES[i] == STATUS_NONE)
@@ -33,7 +33,7 @@ bool8 IsChargingAnyTwoTurnMove(struct entity *pokemon, bool8 check_charge)
     }
 
     // BUG: This condition is never reached because the for loop terminates by returning FALSE at the end of the TWO_TURN_STATUSES array.
-    if (check_charge && pokemon_info->bide_class_status.bide == STATUS_TWO_TURN_CHARGING)
+    if (charge_check_unused && pokemon_info->bide_class_status.bide == STATUS_TWO_TURN_CHARGING)
         return TRUE;
     return FALSE;
 }

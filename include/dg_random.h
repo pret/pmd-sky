@@ -3,6 +3,8 @@
 
 #include "util.h"
 
+// Compute a pseudorandom integer under a given maximum value using the dungeon PRNG.
+// pseudorandom integer on the interval [0, end - 1]
 s32 DungeonRandInt(s32 end);
 s32 DungeonRandRange(s32 from, s32 to);
 // Returns the result of a possibly biased coin flip (a Bernoulli random variable) with some success probability p, using the dungeon PRNG.

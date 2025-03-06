@@ -4,19 +4,19 @@
 #include "dungeon_util_static.h"
 #include "overlay_29_023000E4.h"
 
-bool8 ShouldMonsterRunAway(struct entity *pokemon)
+bool8 ShouldMonsterRunAway(struct entity *monster)
 {
-    if (!EntityIsValid__023000E4(pokemon))
+    if (!EntityIsValid__023000E4(monster))
         return FALSE;
 
-    struct monster *pokemon_info = GetEntInfo(pokemon);
+    struct monster *pokemon_info = GetEntInfo(monster);
 
     if (pokemon_info->terrified != 0 && pokemon_info->terrified_turns != 0)
         return TRUE;
 
     if (!pokemon_info->is_team_leader)
     {
-        if (AbilityIsActive(pokemon, ABILITY_RUN_AWAY))
+        if (AbilityIsActive(monster, ABILITY_RUN_AWAY))
         {
             s32 max_hp = pokemon_info->max_hp_stat + pokemon_info->max_hp_boost;
             if (max_hp > 999)
@@ -27,10 +27,10 @@ bool8 ShouldMonsterRunAway(struct entity *pokemon)
                 return TRUE;
         }
 
-        if (IsTacticSet(pokemon, TACTIC_GET_AWAY_FROM_HERE))
+        if (IsTacticSet(monster, TACTIC_GET_AWAY_FROM_HERE))
             return TRUE;
 
-        if (IsTacticSet(pokemon, TACTIC_AVOID_TROUBLE))
+        if (IsTacticSet(monster, TACTIC_AVOID_TROUBLE))
         {
             s32 max_hp = pokemon_info->max_hp_stat + pokemon_info->max_hp_boost;
             if (max_hp > 999)

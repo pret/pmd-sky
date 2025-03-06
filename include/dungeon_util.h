@@ -3,6 +3,6 @@
 
 #include "dungeon_mode.h"
 
-bool8 ShouldRunMonsterAi(struct entity *pokemon);
+bool8 ShouldRunMonsterAi(struct entity *monster);
 
 #endif //PMDSKY_DUNGEON_UTIL_H

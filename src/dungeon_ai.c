@@ -1,6 +1,7 @@
 #include "dungeon_ai.h"
 #include "dg_random.h"
 #include "direction.h"
+#include "dungeon_ai_items.h"
 #include "dungeon_capabilities_1.h"
 #include "dungeon_util_static.h"
 #include "dungeon_util.h"
@@ -16,50 +17,49 @@
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern void EndFrozenClassStatus(struct entity *pokemon, struct entity *target, bool8 log);
-extern void SubstitutePlaceholderStringTags(u8 *buffer, struct entity *entity, u32 param_3);
-extern void LogMessageByIdWithPopupCheckUser(struct entity *pokemon, u32 message_id);
-extern void AiDecideUseItem(struct entity *pokemon);
-extern bool8 HasStatusThatPreventsActing(struct entity *pokemon);
-extern void ClearMonsterActionFields(struct action_data *action_pointer);
-extern void SetActionPassTurnOrWalk(struct action_data *action_pointer, s16 species);
-extern bool8 IqSkillIsEnabled(struct entity *pokemon, enum iq_skill_id iq_skill);
-extern void ChooseAiMove(struct entity *pokemon);
-extern bool8 GetCanMoveFlag(s16 index);
-extern void AiMovement(struct entity *pokemon, bool8 show_run_away_effect);
+extern void EndFrozenClassStatus(struct entity *user, struct entity *target, bool8 log);
+extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
+extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
+extern bool8 HasStatusThatPreventsActing(struct entity *monster);
+extern void ClearMonsterActionFields(struct action_data *monster_action);
+extern void SetActionPassTurnOrWalk(struct action_data *monster_action, s16 monster_id);
+extern bool8 IqSkillIsEnabled(struct entity *entity, enum iq_skill_id iq_id);
+extern void ChooseAiMove(struct entity *monster);
+extern bool8 GetCanMoveFlag(s16 monster_id);
+extern void AiMovement(struct entity *monster, bool8 show_run_away_effect);
 extern void SetDecoyAiTracker(struct entity* entity);
-extern bool8 CanSeeTarget(struct entity *entity, struct entity *target_entity);
+extern bool8 CanSeeTarget(struct entity *user, struct entity *target);
 
-void RunMonsterAi(struct entity *pokemon, u32 unused)
+void RunMonsterAi(struct entity *monster, u32 unused)
 {
-    struct monster *pokemon_info = GetEntInfo(pokemon);
+    struct monster *pokemon_info = GetEntInfo(monster);
     if (pokemon_info->flags & MOVEMENT_FLAG_SWAPPING_PLACES_PETRIFIED_ALLY)
     {
         if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_PETRIFIED)
         {
-            EndFrozenClassStatus(pokemon, pokemon, TRUE);
+            EndFrozenClassStatus(monster, monster, TRUE);
         }
         return;
     }
     pokemon_info->decoy_ai_tracker = DECOY_AI_NONE;
-    if (pokemon_info->monster_behavior <= BEHAVIOR_FIXED_ENEMY || ShouldRunMonsterAi(pokemon))
+    if (pokemon_info->monster_behavior <= BEHAVIOR_FIXED_ENEMY || ShouldRunMonsterAi(monster))
     {
         if (pokemon_info->monster_behavior != BEHAVIOR_RESCUE_TARGET && pokemon_info->use_held_item)
         {
-            if (CheckVariousConditions(pokemon))
+            if (CheckVariousConditions(monster))
             {
                 pokemon_info->use_held_item = FALSE;
-                SubstitutePlaceholderStringTags(0, pokemon, 0);
-                LogMessageByIdWithPopupCheckUser(pokemon, CANNOT_USE_ITEM_MESSAGE);
+                SubstitutePlaceholderStringTags(0, monster, 0);
+                LogMessageByIdWithPopupCheckUser(monster, CANNOT_USE_ITEM_MESSAGE);
                 return;
             }
-            AiDecideUseItem(pokemon);
+            AiDecideUseItem(monster);
             if (pokemon_info->action.action_id != ACTION_NOTHING)
             {
                 return;
             }
         }
-        if (!HasStatusThatPreventsActing(pokemon))
+        if (!HasStatusThatPreventsActing(monster))
         {
             #ifdef JAPAN
             if (DUNGEON_PTR[0]->decoy_is_active)
@@ -78,7 +78,7 @@ void RunMonsterAi(struct entity *pokemon, u32 unused)
                     }
                     if (entity_is_valid &&
                         GetEntInfo(target)->curse_class_status.curse == STATUS_CURSE_DECOY &&
-                        CanSeeTarget(pokemon, target))
+                        CanSeeTarget(monster, target))
                     {
                         pokemon_info->decoy_ai_tracker = GetEntInfo(target)->curse_class_status.curse_applier_non_team_member_flag ? DECOY_AI_WILD : DECOY_AI_TEAM;
                         break;
@@ -86,23 +86,23 @@ void RunMonsterAi(struct entity *pokemon, u32 unused)
                 }
             }
             #else
-            SetDecoyAiTracker(pokemon);
+            SetDecoyAiTracker(monster);
             #endif
             ClearMonsterActionFields(&pokemon_info->action);
             if (pokemon_info->monster_behavior == BEHAVIOR_RESCUE_TARGET)
             {
                 SetActionPassTurnOrWalk(&pokemon_info->action, pokemon_info->id);
                 pokemon_info->action.direction = (enum direction_id) DungeonRandInt(DIR_CURRENT);
-                pokemon_info->target_pos.x = pokemon->pos.x;
-                pokemon_info->target_pos.y = pokemon->pos.y - 1;
+                pokemon_info->target_pos.x = monster->pos.x;
+                pokemon_info->target_pos.y = monster->pos.y - 1;
                 return;
             }
-            AiDecideUseItem(pokemon);
+            AiDecideUseItem(monster);
             if (pokemon_info->action.action_id == ACTION_NOTHING)
             {
-                if (!IqSkillIsEnabled(pokemon, IQ_DEDICATED_TRAVELER))
+                if (!IqSkillIsEnabled(monster, IQ_DEDICATED_TRAVELER))
                 {
-                    ChooseAiMove(pokemon);
+                    ChooseAiMove(monster);
                     if (pokemon_info->action.action_id != ACTION_NOTHING)
                     {
                         return;
@@ -117,11 +117,11 @@ void RunMonsterAi(struct entity *pokemon, u32 unused)
                         {
                             return;
                         }
-                        AiMovement(pokemon, TRUE);
-                        if (pokemon_info->is_not_team_member && IqSkillIsEnabled(pokemon, IQ_EXCLUSIVE_MOVE_USER) && pokemon_info->action.action_id <= ACTION_PASS_TURN)
+                        AiMovement(monster, TRUE);
+                        if (pokemon_info->is_not_team_member && IqSkillIsEnabled(monster, IQ_EXCLUSIVE_MOVE_USER) && pokemon_info->action.action_id <= ACTION_PASS_TURN)
                         {
-                            SubstitutePlaceholderStringTags(0, pokemon, 0);
-                            LogMessageByIdWithPopupCheckUser(pokemon, WATCHING_CAREFULLY_MESSAGE);
+                            SubstitutePlaceholderStringTags(0, monster, 0);
+                            LogMessageByIdWithPopupCheckUser(monster, WATCHING_CAREFULLY_MESSAGE);
                         }
                     }
                     return;
@@ -133,20 +133,20 @@ void RunMonsterAi(struct entity *pokemon, u32 unused)
                 }
                 if (GetCanMoveFlag(pokemon_info->id))
                 {
-                    AiMovement(pokemon, TRUE);
+                    AiMovement(monster, TRUE);
                 }
                 if (pokemon_info->action.action_id != ACTION_NOTHING && pokemon_info->action.action_id != ACTION_PASS_TURN)
                 {
                     return;
                 }
-                ChooseAiMove(pokemon);
+                ChooseAiMove(monster);
                 if (GetCanMoveFlag(pokemon_info->id) &&
                     pokemon_info->is_not_team_member &&
-                    IqSkillIsEnabled(pokemon, IQ_EXCLUSIVE_MOVE_USER) &&
+                    IqSkillIsEnabled(monster, IQ_EXCLUSIVE_MOVE_USER) &&
                     pokemon_info->action.action_id <= ACTION_PASS_TURN)
                 {
-                    SubstitutePlaceholderStringTags(0, pokemon, 0);
-                    LogMessageByIdWithPopupCheckUser(pokemon, WATCHING_CAREFULLY_MESSAGE);
+                    SubstitutePlaceholderStringTags(0, monster, 0);
+                    LogMessageByIdWithPopupCheckUser(monster, WATCHING_CAREFULLY_MESSAGE);
                 }
                 if (pokemon_info->action.action_id != ACTION_NOTHING && pokemon_info->action.action_id != ACTION_PASS_TURN)
                 {
