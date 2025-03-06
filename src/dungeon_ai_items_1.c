@@ -104,8 +104,7 @@ void GetPossibleAiThrownItemDirections(struct entity *entity, s32 ally_or_enemy,
 bool8 EntityIsValid__0230F008(struct entity *entity)
 {
     if (entity == NULL)
-    {
         return FALSE;
-    }
+
     return entity->type != ENTITY_NOTHING;
 }

@@ -29,9 +29,8 @@ extern bool8 MonsterCanThrowItems(struct monster *monster);
 bool8 EntityIsValid__0230E8F0(struct entity *entity)
 {
     if (entity == NULL)
-    {
         return FALSE;
-    }
+
     return entity->type != ENTITY_NOTHING;
 }
 

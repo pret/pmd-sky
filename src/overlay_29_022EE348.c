@@ -14,8 +14,7 @@ bool8 ItemIsActive__022EE318(struct entity *entity, enum item_id item_id)
 bool8 EntityIsValid__022EE348(struct entity *entity)
 {
     if (entity == NULL)
-    {
         return FALSE;
-    }
+
     return entity->type != ENTITY_NOTHING;
 }

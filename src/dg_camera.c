@@ -8,9 +8,8 @@ extern bool8 HasHeldItem(struct entity* entity, enum item_id item_id);
 bool8 EntityIsValid__022E32E8(struct entity *entity)
 {
     if (entity == NULL)
-    {
         return FALSE;
-    }
+
     return entity->type != ENTITY_NOTHING;
 }
 
