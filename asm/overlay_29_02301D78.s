@@ -166,20 +166,3 @@ _02301ED4:
 	bl IsTypeAffectedByGravity
 	ldmia sp!, {r3, pc}
 	arm_func_end HasTypeAffectedByGravity
-
-	arm_func_start CanSeeInvisibleMonsters
-CanSeeInvisibleMonsters: ; 0x02301EEC
-	stmdb sp!, {r3, lr}
-	ldr r1, [r0, #0xb4]
-	ldrb r1, [r1, #0xf1]
-	cmp r1, #3
-	moveq r0, #1
-	ldmeqia sp!, {r3, pc}
-	mov r1, #0x21
-	bl ItemIsActive__022FF898
-	cmp r0, #0
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r3, pc}
-	arm_func_end CanSeeInvisibleMonsters

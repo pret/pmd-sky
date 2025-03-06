@@ -5,6 +5,7 @@
 
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 bool8 EntityIsValid__022E1A1C(struct entity *entity);
+// Updates an entity's pixel_pos field using the specified pixel_position struct, or its own pos field if it's null.
 void UpdateEntityPixelPos(struct entity *entity, struct pixel_position *pixel_pos);
 void SetEntityPixelPosXY(struct entity *entity, u32 x, u32 y);
 void IncrementEntityPixelPosXY(struct entity *entity, u32 x, u32 y);

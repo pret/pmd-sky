@@ -1,9 +1,9 @@
 #include "dungeon_util.h"
 #include "dungeon_util_static.h"
 
-bool8 ShouldRunMonsterAi(struct entity *pokemon)
+bool8 ShouldRunMonsterAi(struct entity *monster)
 {
-    struct monster *pokemon_info = GetEntInfo(pokemon);
+    struct monster *pokemon_info = GetEntInfo(monster);
     switch (pokemon_info->monster_behavior)
     {
         case BEHAVIOR_RESCUE_TARGET:

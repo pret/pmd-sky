@@ -9,12 +9,12 @@
 // The caller function will select the direction to throw the item by iterating through the array(s), rolling the probability, and then throwing in that direction if the roll succeeds.
 // Nothing will be thrown if all rolls fail.
 //
-// pokemon: Entity pointer
-// thrown_ai_flag: Integer in {1, 2}. If 1, target allies; if 2, target enemies.
+// entity: Entity pointer
+// ally_or_enemy: Integer in {1, 2}. If 1, target allies; if 2, target enemies.
 // item: Item struct pointer
-// ignore_roll_chance: If false, will call GetAiUseItemProbability to get the probability of throwing in a certain direction.
+// always_add: If false, will call GetAiUseItemProbability to get the probability of throwing in a certain direction.
 // If true, the added probability will always be 100.
-void GetPossibleAiThrownItemDirections(struct entity *pokemon, s32 thrown_ai_flag, struct item *item, bool8 ignore_roll_chance);
+void GetPossibleAiThrownItemDirections(struct entity *entity, s32 ally_or_enemy, struct item *item, bool8 always_add);
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 bool8 EntityIsValid__0230F008(struct entity *entity);
 

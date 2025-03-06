@@ -1,9 +1,9 @@
 #include "dungeon_capabilities_2.h"
 #include "dungeon_util_static.h"
 
-bool8 CheckVariousStatuses(struct entity *pokemon)
+bool8 CheckVariousStatuses(struct entity *entity)
 {
-    struct monster *pokemon_info = GetEntInfo(pokemon);
+    struct monster *pokemon_info = GetEntInfo(entity);
 
     if (pokemon_info->sleep_class_status.sleep != STATUS_SLEEP_SLEEPLESS &&
         pokemon_info->sleep_class_status.sleep != STATUS_SLEEP_YAWNING &&

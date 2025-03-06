@@ -1,23 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02307F1C.inc"
+	.include "overlay_29_02307F4C.inc"
 
 	.text
-
-	arm_func_start ItemIsActive__02307F1C
-ItemIsActive__02307F1C: ; 0x02307F1C
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r4, r1
-	mov r1, #0x6f
-	mov r5, r0
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	movne r0, #0
-	ldmneia sp!, {r3, r4, r5, pc}
-	mov r0, r5
-	mov r1, r4
-	bl HasHeldItem
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ItemIsActive__02307F1C
 
 	arm_func_start TryTriggerMonsterHouse
 TryTriggerMonsterHouse: ; 0x02307F4C

@@ -1,6 +1,7 @@
 #include "dungeon_ai_items.h"
 #include "dg_random.h"
 #include "direction.h"
+#include "dungeon_ai_items_1.h"
 #include "dungeon_capabilities_1.h"
 #include "dungeon_util_static.h"
 #include "item.h"
@@ -15,34 +16,32 @@ u32 AI_THROWN_ITEM_DIRECTIONS[NUM_DIRECTIONS] = {0};
 extern volatile s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
-extern void GetPossibleAiThrownItemDirections(struct entity *pokemon, s32 thrown_ai_flag, struct item *item, bool8 ignore_roll_chance);
 extern void SetMonsterActionFields(struct action_data *action_pointer, u16 action);
-extern bool8 IqSkillIsEnabled(struct entity *pokemon, u8 iq_skill);
+extern bool8 IqSkillIsEnabled(struct entity *entity, u8 iq_skill);
 extern const struct tile *GetTile(s32 x, s32 y);
-extern bool8 TestItemAiFlag(s16 id, s32 aiFlag);
-extern void GetPossibleAiArcItemTargets(struct entity *pokemon, struct item *item, struct position potential_targets[], bool8 ignore_roll_chance);
-extern s32 GetDirectionTowardsPosition(struct position *origin_pos, struct position *target_pos);
-extern struct item *GetItemInfo(struct entity *entity);
-extern u32 GetAiUseItemProbability(struct entity *target_pokemon, struct item *item, u32 item_target_flags);
-extern bool8 MonsterCanThrowItems(struct monster *pokemon);
+extern bool8 TestItemAiFlag(s16 item_id, s32 flag);
+extern void GetPossibleAiArcItemTargets(struct entity *user, struct item *item, struct position positions[], bool8 always_add_position);
+extern s32 GetDirectionTowardsPosition(struct position *origin, struct position *target);
+extern struct item *GetItemInfo(struct entity *item_entity);
+extern u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32 flags);
+extern bool8 MonsterCanThrowItems(struct monster *monster);
 
 bool8 EntityIsValid__0230E8F0(struct entity *entity)
 {
     if (entity == NULL)
-    {
         return FALSE;
-    }
+
     return entity->type != ENTITY_NOTHING;
 }
 
-void AiDecideUseItem(struct entity *pokemon)
+void AiDecideUseItem(struct entity *entity)
 {
-    struct monster *pokemon_info = GetEntInfo(pokemon);
+    struct monster *pokemon_info = GetEntInfo(entity);
     struct item *item;
     struct position potential_target_positions[NUM_POTENTIAL_ROCK_TARGETS];
     s32 i;
     u32 chosen_target_index;
-    if (CheckVariousConditions(pokemon))
+    if (CheckVariousConditions(entity))
     {
         pokemon_info->use_held_item = FALSE;
         return;
@@ -58,15 +57,15 @@ void AiDecideUseItem(struct entity *pokemon)
         enum item_category item_type = GetItemCategoryVeneer(item->id);
         if (item_type == CATEGORY_THROWN_LINE)
         {
-            GetPossibleAiThrownItemDirections(pokemon, ITEM_AI_FLAG_TARGET_ENEMY, item, TRUE);
+            GetPossibleAiThrownItemDirections(entity, ITEM_AI_FLAG_TARGET_ENEMY, item, TRUE);
             for (i = 0; i < AI_THROWN_ITEM_ACTION_CHOICE_COUNT; i++)
             {
                 if (DungeonRandOutcome__022EAB20(AI_THROWN_ITEM_PROBABILITIES[i]))
                 {
                     SetMonsterActionFields(&pokemon_info->action, ACTION_THROW_ITEM_AI);
                     pokemon_info->action.action_parameters[0].action_use_idx = selected_toolbox_index;
-                    pokemon_info->action.action_parameters[0].item_pos.x = pokemon->pos.x;
-                    pokemon_info->action.action_parameters[0].item_pos.y = pokemon->pos.y;
+                    pokemon_info->action.action_parameters[0].item_pos.x = entity->pos.x;
+                    pokemon_info->action.action_parameters[0].item_pos.y = entity->pos.y;
                     pokemon_info->action.direction = (enum direction_id) (AI_THROWN_ITEM_DIRECTIONS[i] & DIRECTION_MASK);
                     break;
                 }
@@ -78,15 +77,15 @@ void AiDecideUseItem(struct entity *pokemon)
         }
         else if (item_type == CATEGORY_THROWN_ARC)
         {
-            GetPossibleAiArcItemTargets(pokemon, item, potential_target_positions, TRUE);
+            GetPossibleAiArcItemTargets(entity, item, potential_target_positions, TRUE);
             if (AI_THROWN_ITEM_ACTION_CHOICE_COUNT != 0)
             {
                 chosen_target_index = DungeonRandInt(AI_THROWN_ITEM_ACTION_CHOICE_COUNT);
                 SetMonsterActionFields(&pokemon_info->action, ACTION_THROW_ITEM_AI);
                 pokemon_info->action.action_parameters[0].action_use_idx = selected_toolbox_index;
-                pokemon_info->action.action_parameters[0].item_pos.x = pokemon->pos.x;
-                pokemon_info->action.action_parameters[0].item_pos.y = pokemon->pos.y;
-                pokemon_info->action.direction = (enum direction_id) (GetDirectionTowardsPosition(&pokemon->pos, &potential_target_positions[chosen_target_index]) & DIRECTION_MASK);
+                pokemon_info->action.action_parameters[0].item_pos.x = entity->pos.x;
+                pokemon_info->action.action_parameters[0].item_pos.y = entity->pos.y;
+                pokemon_info->action.direction = (enum direction_id) (GetDirectionTowardsPosition(&entity->pos, &potential_target_positions[chosen_target_index]) & DIRECTION_MASK);
                 pokemon_info->action.item_target_position = potential_target_positions[chosen_target_index];
             }
             else
@@ -98,15 +97,15 @@ void AiDecideUseItem(struct entity *pokemon)
         {
             SetMonsterActionFields(&pokemon_info->action, ACTION_EAT_AI);
             pokemon_info->action.action_parameters[0].action_use_idx = selected_toolbox_index;
-            pokemon_info->action.action_parameters[0].item_pos.x = pokemon->pos.x;
-            pokemon_info->action.action_parameters[0].item_pos.y = pokemon->pos.y;
+            pokemon_info->action.action_parameters[0].item_pos.x = entity->pos.x;
+            pokemon_info->action.action_parameters[0].item_pos.y = entity->pos.y;
         }
         else
         {
             SetMonsterActionFields(&pokemon_info->action, ACTION_SECOND_THOUGHTS);
         }
     }
-    else if (IqSkillIsEnabled(pokemon, IQ_ITEM_MASTER))
+    else if (IqSkillIsEnabled(entity, IQ_ITEM_MASTER))
     {
         s32 thrown_ai_flag;
         for (s32 toolbox_index = 1; toolbox_index < INVENTORY_SIZE; toolbox_index++)
@@ -120,7 +119,7 @@ void AiDecideUseItem(struct entity *pokemon)
             else if (toolbox_index == 0)
             {
                 // This seems unused. toolbox_index can never be 0.
-                const struct tile *map_tile = GetTile(pokemon->pos.x, pokemon->pos.y);
+                const struct tile *map_tile = GetTile(entity->pos.x, entity->pos.y);
                 if (map_tile->object != NULL && map_tile->object->type == ENTITY_ITEM)
                 {
                     item = GetItemInfo(map_tile->object);
@@ -150,7 +149,7 @@ void AiDecideUseItem(struct entity *pokemon)
 
             if (TestItemAiFlag(item->id, ITEM_AI_FLAG_TARGET_SELF))
             {
-                u32 item_weight = GetAiUseItemProbability(pokemon, item, ITEM_TARGET_ALLY);
+                u32 item_weight = GetAiUseItemProbability(entity, item, ITEM_TARGET_ALLY);
                 if (item_weight != 0)
                 {
                     enum item_category item_type = GetItemCategoryVeneer(item->id);
@@ -162,8 +161,8 @@ void AiDecideUseItem(struct entity *pokemon)
                             SetMonsterActionFields(&pokemon_info->action, ACTION_EAT_AI);
 
                         pokemon_info->action.action_parameters[0].action_use_idx = selected_toolbox_index;
-                        pokemon_info->action.action_parameters[0].item_pos.x = pokemon->pos.x;
-                        pokemon_info->action.action_parameters[0].item_pos.y = pokemon->pos.y;
+                        pokemon_info->action.action_parameters[0].item_pos.x = entity->pos.x;
+                        pokemon_info->action.action_parameters[0].item_pos.y = entity->pos.y;
                         return;
                     }
                 }
@@ -177,30 +176,30 @@ void AiDecideUseItem(struct entity *pokemon)
                     {
                         if (GetItemCategoryVeneer(item->id) == CATEGORY_THROWN_ARC)
                         {
-                            GetPossibleAiArcItemTargets(pokemon, item, potential_target_positions, FALSE);
+                            GetPossibleAiArcItemTargets(entity, item, potential_target_positions, FALSE);
                             if (AI_THROWN_ITEM_ACTION_CHOICE_COUNT != 0)
                             {
                                 chosen_target_index = DungeonRandInt(AI_THROWN_ITEM_ACTION_CHOICE_COUNT);
                                 SetMonsterActionFields(&pokemon_info->action, ACTION_THROW_ITEM_AI);
                                 pokemon_info->action.action_parameters[0].action_use_idx = selected_toolbox_index;
-                                pokemon_info->action.action_parameters[0].item_pos.x = pokemon->pos.x;
-                                pokemon_info->action.action_parameters[0].item_pos.y = pokemon->pos.y;
-                                pokemon_info->action.direction = (enum direction_id) (GetDirectionTowardsPosition(&pokemon->pos, &potential_target_positions[chosen_target_index]) & DIRECTION_MASK);
+                                pokemon_info->action.action_parameters[0].item_pos.x = entity->pos.x;
+                                pokemon_info->action.action_parameters[0].item_pos.y = entity->pos.y;
+                                pokemon_info->action.direction = (enum direction_id) (GetDirectionTowardsPosition(&entity->pos, &potential_target_positions[chosen_target_index]) & DIRECTION_MASK);
                                 pokemon_info->action.item_target_position = potential_target_positions[chosen_target_index];
                                 return;
                             }
                         }
                         else
                         {
-                            GetPossibleAiThrownItemDirections(pokemon, thrown_ai_flag, item, FALSE);
+                            GetPossibleAiThrownItemDirections(entity, thrown_ai_flag, item, FALSE);
                             for (i = 0; i < AI_THROWN_ITEM_ACTION_CHOICE_COUNT; i++)
                             {
                                 if (DungeonRandOutcome__022EAB20(AI_THROWN_ITEM_PROBABILITIES[i]))
                                 {
                                     SetMonsterActionFields(&pokemon_info->action, ACTION_THROW_ITEM_AI);
                                     pokemon_info->action.action_parameters[0].action_use_idx = selected_toolbox_index;
-                                    pokemon_info->action.action_parameters[0].item_pos.x = pokemon->pos.x;
-                                    pokemon_info->action.action_parameters[0].item_pos.y = pokemon->pos.y;
+                                    pokemon_info->action.action_parameters[0].item_pos.x = entity->pos.x;
+                                    pokemon_info->action.action_parameters[0].item_pos.y = entity->pos.y;
                                     pokemon_info->action.direction = (enum direction_id) (AI_THROWN_ITEM_DIRECTIONS[i] & DIRECTION_MASK);
                                     return;
                                 }

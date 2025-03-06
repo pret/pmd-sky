@@ -8,9 +8,8 @@ extern void BoostDefensiveStat(struct entity* user, struct entity* target, s32 s
 bool8 EntityIsValidMoveEffects__0232E250(struct entity *entity)
 {
     if (entity == NULL)
-    {
         return FALSE;
-    }
+
     return entity->type != ENTITY_NOTHING;
 }
 

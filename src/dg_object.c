@@ -8,9 +8,8 @@ extern s32 ov29_022DE954(u32);
 bool8 EntityIsValid__022E1A1C(struct entity *entity)
 {
     if (entity == NULL)
-    {
         return FALSE;
-    }
+
     return entity->type != ENTITY_NOTHING;
 }
 
