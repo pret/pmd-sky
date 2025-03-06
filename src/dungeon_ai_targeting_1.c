@@ -1,7 +1,7 @@
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_util_static.h"
 
-const enum monster_treatment TREATMENT_DATA[4][2][2][2] = {
+const enum monster_treatment MONSTER_TREATMENT_DATA[4][2][2][2] = {
     {
         {
             {TREATMENT_TREAT_AS_ALLY, TREATMENT_TREAT_AS_ENEMY},
@@ -132,5 +132,5 @@ enum monster_treatment GetTreatmentBetweenMonsters(struct entity *pokemon, struc
     else
         target_is_decoy = FALSE;
 
-    return TREATMENT_DATA[decoy_ai_tracker][pokemon_is_enemy][target_is_enemy][target_is_decoy];
+    return MONSTER_TREATMENT_DATA[decoy_ai_tracker][pokemon_is_enemy][target_is_enemy][target_is_decoy];
 }
