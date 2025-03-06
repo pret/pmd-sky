@@ -1,4 +1,5 @@
 #include "dungeon_ai_targeting_1.h"
+#include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
 
 const enum monster_treatment MONSTER_TREATMENT_DATA[4][2][2][2] = {
@@ -52,13 +53,11 @@ enum decoy_ai_treatment
     DECOY_AI_TREATMENT_WILD = 3,
 };
 
-extern bool8 CanSeeInvisibleMonsters(struct entity *pokemon);
-
-enum monster_treatment GetTreatmentBetweenMonsters(struct entity *pokemon, struct entity *target_pokemon, bool8 ignore_invisible, bool8 check_petrified)
+enum monster_treatment GetTreatmentBetweenMonsters(struct entity *entity1, struct entity *entity2, bool8 see_invisible_targets, bool8 ignore_petrified_targets)
 {
-    struct monster *pokemon_info = GetEntInfo(pokemon);
-    struct monster *target_data = GetEntInfo(target_pokemon);
-    if (pokemon == target_pokemon)
+    struct monster *pokemon_info = GetEntInfo(entity1);
+    struct monster *target_data = GetEntInfo(entity2);
+    if (entity1 == entity2)
         return TREATMENT_TREAT_AS_ALLY;
 
     if (pokemon_info->shopkeeper == SHOPKEEPER_MODE_SHOPKEEPER || target_data->shopkeeper == SHOPKEEPER_MODE_SHOPKEEPER)
@@ -67,10 +66,10 @@ enum monster_treatment GetTreatmentBetweenMonsters(struct entity *pokemon, struc
     if (pokemon_info->monster_behavior == BEHAVIOR_RESCUE_TARGET || target_data->monster_behavior == BEHAVIOR_RESCUE_TARGET)
         return TREATMENT_IGNORE;
 
-    if (check_petrified && !pokemon_info->is_not_team_member && target_data->frozen_class_status.freeze == STATUS_FROZEN_PETRIFIED)
+    if (ignore_petrified_targets && !pokemon_info->is_not_team_member && target_data->frozen_class_status.freeze == STATUS_FROZEN_PETRIFIED)
         return TREATMENT_IGNORE;
 
-    if (!ignore_invisible && target_data->invisible_class_status.status == STATUS_INVISIBLE_INVISIBLE && !CanSeeInvisibleMonsters(pokemon))
+    if (!see_invisible_targets && target_data->invisible_class_status.status == STATUS_INVISIBLE_INVISIBLE && !CanSeeInvisibleMonsters(entity1))
         return TREATMENT_IGNORE;
 
     u8 pokemon_targeting_decoy = pokemon_info->decoy_ai_tracker;
