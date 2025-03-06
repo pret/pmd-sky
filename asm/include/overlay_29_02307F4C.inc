@@ -1,5 +1,4 @@
 #pragma once
-.public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public DUNGEON_PTR
@@ -9,9 +8,8 @@
 .public GetMonsterIdToSpawn
 .public GetTileAtEntity
 .public GetTileSafe
-.public HasHeldItem
-.public MewSpawnCheck
 .public MONSTER_HOUSE_MAX_MONSTER_SPAWNS
+.public MewSpawnCheck
 .public MultiplyByFixedPoint
-.public ov10_022C4560
 .public SpawnMonster
+.public ov10_022C4560

@@ -1,10 +1,10 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0230A9B8.inc"
+	.include "overlay_29_02347B80.inc"
 
 	.text
 
-	arm_func_start ExclusiveItemEffectIsActive__0230A9B8
-ExclusiveItemEffectIsActive__0230A9B8: ; 0x0230A9B8
+	arm_func_start ExclusiveItemEffectIsActive__02347B80
+ExclusiveItemEffectIsActive__02347B80: ; 0x02347B80
 	stmdb sp!, {r3, lr}
 	ldr r2, [r0, #0xb4]
 	ldrb r0, [r2, #6]
@@ -18,4 +18,4 @@ ExclusiveItemEffectIsActive__0230A9B8: ; 0x0230A9B8
 #endif
 	bl ExclusiveItemEffectFlagTest
 	ldmia sp!, {r3, pc}
-	arm_func_end ExclusiveItemEffectIsActive__0230A9B8
+	arm_func_end ExclusiveItemEffectIsActive__02347B80

@@ -1,7 +1,6 @@
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
-
-extern bool8 ItemIsActive__022FF898(struct entity *entity, enum item_id item_id);
+#include "overlay_29_022FF898.h"
 
 bool8 CanSeeInvisibleMonsters(struct entity *entity)
 {

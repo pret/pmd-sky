@@ -3061,36 +3061,3 @@ _02347B48: .word 0x00000BE1
 _02347B4C: .word 0x00000BE5
 #endif
 	arm_func_end ov29_02347518
-
-	arm_func_start ItemIsActive__02347B50
-ItemIsActive__02347B50: ; 0x02347B50
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r4, r1
-	mov r1, #0x6f
-	mov r5, r0
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	movne r0, #0
-	ldmneia sp!, {r3, r4, r5, pc}
-	mov r0, r5
-	mov r1, r4
-	bl HasHeldItem
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ItemIsActive__02347B50
-
-	arm_func_start ExclusiveItemEffectIsActive__02347B80
-ExclusiveItemEffectIsActive__02347B80: ; 0x02347B80
-	stmdb sp!, {r3, lr}
-	ldr r2, [r0, #0xb4]
-	ldrb r0, [r2, #6]
-	cmp r0, #0
-	movne r0, #0
-	ldmneia sp!, {r3, pc}
-#ifdef JAPAN
-	add r0, r2, #0x224
-#else
-	add r0, r2, #0x228
-#endif
-	bl ExclusiveItemEffectFlagTest
-	ldmia sp!, {r3, pc}
-	arm_func_end ExclusiveItemEffectIsActive__02347B80

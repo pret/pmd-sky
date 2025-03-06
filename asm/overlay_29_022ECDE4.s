@@ -1650,19 +1650,3 @@ _022EE30C: .word 0x00000E5C + TRY_TRIGGER_TRAP_DATA_OFFSET
 _022EE310: .word TRAP_BUSTER_ACTIVATION_CHANCE
 _022EE314: .word 0x00000E5D + TRY_TRIGGER_TRAP_DATA_OFFSET
 	arm_func_end TryTriggerTrap
-
-	arm_func_start ItemIsActive__022EE318
-ItemIsActive__022EE318: ; 0x022EE318
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r4, r1
-	mov r1, #0x6f
-	mov r5, r0
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	movne r0, #0
-	ldmneia sp!, {r3, r4, r5, pc}
-	mov r0, r5
-	mov r1, r4
-	bl HasHeldItem
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ItemIsActive__022EE318

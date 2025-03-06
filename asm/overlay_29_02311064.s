@@ -1,23 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02311034.inc"
+	.include "overlay_29_02311064.inc"
 
 	.text
-
-	arm_func_start ItemIsActive__02311034
-ItemIsActive__02311034: ; 0x02311034
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r4, r1
-	mov r1, #0x6f
-	mov r5, r0
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	movne r0, #0
-	ldmneia sp!, {r3, r4, r5, pc}
-	mov r0, r5
-	mov r1, r4
-	bl HasHeldItem
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ItemIsActive__02311034
 
 	arm_func_start ExclusiveItemEffectIsActive__02311064
 ExclusiveItemEffectIsActive__02311064: ; 0x02311064
