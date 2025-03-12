@@ -237,6 +237,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022E0378.o
 	Object src/dg_object.o
 	Object asm/overlay_29_022E1AD4.o
+	Object src/dungeon_visibility.o
+	Object asm/overlay_29_022E2810.o
 	Object src/dg_camera.o
 	Object asm/overlay_29_022E333C.o
 	Object src/dg_effect.o

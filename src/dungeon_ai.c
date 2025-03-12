@@ -5,6 +5,7 @@
 #include "dungeon_capabilities_1.h"
 #include "dungeon_util_static.h"
 #include "dungeon_util.h"
+#include "dungeon_visibility.h"
 #include "targeting.h"
 
 #ifdef JAPAN
@@ -28,7 +29,6 @@ extern void ChooseAiMove(struct entity *monster);
 extern bool8 GetCanMoveFlag(s16 monster_id);
 extern void AiMovement(struct entity *monster, bool8 show_run_away_effect);
 extern void SetDecoyAiTracker(struct entity* entity);
-extern bool8 CanSeeTarget(struct entity *user, struct entity *target);
 
 void RunMonsterAi(struct entity *monster, u32 unused)
 {
