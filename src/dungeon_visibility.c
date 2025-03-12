@@ -4,7 +4,6 @@
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 
-extern bool8 HasDropeyeStatus(struct entity* entity);
 extern bool8 IsPositionActuallyInSight(struct position *pos1, struct position *pos2, bool8 user_has_dropeye);
 
 bool8 CanSeeTarget(struct entity *user, struct entity *target)

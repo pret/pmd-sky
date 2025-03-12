@@ -1,24 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02301F50.inc"
+	.include "overlay_29_02301F80.inc"
 
 	.text
-
-	arm_func_start HasDropeyeStatus
-HasDropeyeStatus: ; 0x02301F50
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl EntityIsValid__023000E4
-	cmp r0, #0
-	beq _02301F78
-	ldr r0, [r4, #0xb4]
-	ldrb r0, [r0, #0xf1]
-	cmp r0, #4
-	moveq r0, #1
-	ldmeqia sp!, {r4, pc}
-_02301F78:
-	mov r0, #0
-	ldmia sp!, {r4, pc}
-	arm_func_end HasDropeyeStatus
 
 	arm_func_start IqSkillIsEnabled
 IqSkillIsEnabled: ; 0x02301F80
