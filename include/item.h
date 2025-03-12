@@ -1461,7 +1461,7 @@ enum item_target_flag {
 // Item info
 struct item {
     // 0x0: flags: 1-byte bitfield
-    volatile u8 flags;
+    u8 flags;
     // bool8 f_exists : 1;  // Validity flag
     // bool8 f_in_shop : 1; // In a Kecleon Shop
     // bool8 f_unpaid : 1;  // Picked up from a Kecleon Shop but not paid for yet
@@ -1479,6 +1479,15 @@ struct item {
     u8 held_by;
     // 0x2: Only for stackable items. Will be 0 if unapplicable. For Poké, this is an "amount code"
     // rather than the literal amount (see MONEY_QUANTITY_TABLE)
+    u16 quantity;
+    s16 id; // 0x4
+};
+
+// The same as the item struct, but with the flags marked as volatile.
+// Needed to match AiDecideUseItem.
+struct item_volatile {
+    volatile u8 flags;
+    u8 held_by;
     u16 quantity;
     enum item_id id; // 0x4
 };

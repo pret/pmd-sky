@@ -237,6 +237,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022E0378.o
 	Object src/dg_object.o
 	Object asm/overlay_29_022E1AD4.o
+	Object src/dungeon_visibility.o
+	Object asm/overlay_29_022E2810.o
 	Object src/dg_camera.o
 	Object asm/overlay_29_022E333C.o
 	Object src/dg_effect.o
@@ -295,9 +297,9 @@ Overlay OVY_29
 	Object src/overlay_29_02301A60.o
 	Object asm/overlay_29_02301A84.o
 	Object src/dungeon_pokemon_attributes.o
-	Object asm/overlay_29_02301D78.o
+	Object asm/overlay_29_02301D84.o
 	Object src/dungeon_pokemon_attributes_1.o
-	Object asm/overlay_29_02301F50.o
+	Object asm/overlay_29_02301F80.o
 	Object src/overlay_29_023026CC.o
 	Object asm/overlay_29_023026FC.o
 	Object src/overlay_29_02302A38.o
@@ -402,6 +404,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02344B1C.o
 	Object src/overlay_29_02345698.o
 	Object asm/overlay_29_023456BC.o
+	Object src/dungeon_items.o
+	Object asm/overlay_29_02346834.o
 	Object src/overlay_29_02347B50.o
 	Object asm/overlay_29_02347B80.o
 	Object src/overlay_29_02347BA4.o

@@ -4,6 +4,7 @@
 #include "dungeon_ai_items.h"
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_util_static.h"
+#include "dungeon_visibility.h"
 #include "item.h"
 #include "targeting.h"
 
@@ -13,7 +14,6 @@
 extern s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct dungeon *DUNGEON_PTR[];
 
-extern bool8 CanSeeTarget(struct entity *user, struct entity *target);
 extern bool8 IsTargetInRange(struct entity *user, struct entity *target, s32 direction, s32 n_tiles);
 extern u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32 flags);
 extern s32 abs(s32 value);

@@ -1,15 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02301D78.inc"
+	.include "overlay_29_02301D84.inc"
 
 	.text
-
-	arm_func_start AbilityIsActiveVeneer
-AbilityIsActiveVeneer: ; 0x02301D78
-	ldr ip, _02301D80 ; =AbilityIsActive
-	bx ip
-	.align 2, 0
-_02301D80: .word AbilityIsActive
-	arm_func_end AbilityIsActiveVeneer
 
 	arm_func_start OtherMonsterAbilityIsActive
 OtherMonsterAbilityIsActive: ; 0x02301D84
