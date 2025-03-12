@@ -30,3 +30,8 @@ bool8 AbilityIsActive(struct entity *entity, enum ability_id ability_id)
 
     return FALSE;
 }
+
+bool8 AbilityIsActiveVeneer(struct entity *entity, enum ability_id ability_id)
+{
+    return AbilityIsActive(entity, ability_id);
+}

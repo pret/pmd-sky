@@ -1,8 +1,7 @@
 #include "dg_camera.h"
+#include "dungeon_pokemon_attributes.h"
 
 // file starts at 0x022e26b68
-
-extern bool8 AbilityIsActiveVeneer(struct entity *entity, enum ability_id ability_id);
 extern bool8 HasHeldItem(struct entity* entity, enum item_id item_id);
 
 bool8 EntityIsValid__022E32E8(struct entity *entity)
