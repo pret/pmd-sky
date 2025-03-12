@@ -1,7 +1,6 @@
 #include "overlay_29_02347B50.h"
+#include "dungeon_items.h"
 #include "dungeon_pokemon_attributes.h"
-
-extern bool8 HasHeldItem(struct entity* entity, enum item_id item_id);
 
 bool8 ItemIsActive__02347B50(struct entity *entity, enum item_id item_id)
 {

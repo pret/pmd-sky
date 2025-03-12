@@ -140,7 +140,8 @@ void AiDecideUseItem(struct entity *entity)
                 return;
             }
 
-            u8 item_flags = item->flags;
+            // Item flags need to be marked as volatile in the struct to match.
+            u8 item_flags = ((struct item_volatile*)item)->flags;
             if (!ItemExists(item_flags) || item->flags & ITEM_FLAG_IN_SHOP)
                 continue;
 
