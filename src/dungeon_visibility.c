@@ -1,10 +1,9 @@
 #include "dungeon_visibility.h"
 #include "dg_object.h"
 #include "dungeon_pokemon_attributes_1.h"
+#include "dungeon_range.h"
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
-
-extern bool8 IsPositionActuallyInSight(struct position *pos1, struct position *pos2, bool8 user_has_dropeye);
 
 bool8 CanSeeTarget(struct entity *user, struct entity *target)
 {

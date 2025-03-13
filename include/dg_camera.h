@@ -7,5 +7,6 @@
 bool8 EntityIsValid__022E32E8(struct entity *entity);
 // Checks if a monster is holding a certain item that isn't disabled by Klutz.
 bool8 ItemIsActive__022E330C(struct entity *entity, enum item_id item_id);
+s16 GetVisibilityRange();
 
 #endif //PMDSKY_OVERLAY_29_022E32E8_H

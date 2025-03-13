@@ -1,24 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022E333C.inc"
+	.include "overlay_29_022E335C.inc"
 
 	.text
-
-	arm_func_start GetVisibilityRange
-GetVisibilityRange: ; 0x022E333C
-	ldr r0, _022E3358 ; =DUNGEON_PTR
-	ldr r0, [r0]
-	add r0, r0, #0x1a000
-#ifdef JAPAN
-	ldrb r0, [r0, #0x199]
-#else
-	ldrb r0, [r0, #0x23d]
-#endif
-	cmp r0, #0
-	moveq r0, #2
-	bx lr
-	.align 2, 0
-_022E3358: .word DUNGEON_PTR
-	arm_func_end GetVisibilityRange
 
 	arm_func_start ov29_022E335C
 ov29_022E335C: ; 0x022E335C
