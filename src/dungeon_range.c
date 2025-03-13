@@ -1,10 +1,10 @@
 #include "dungeon_range.h"
+#include "dg_camera.h"
 #include "dungeon.h"
 #include "map.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern s16 GetVisibilityRange();
 extern struct tile* GetTile(int x, int y);
 extern s32 abs(s32 value);
 
