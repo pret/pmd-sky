@@ -394,6 +394,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02333FD0.o
 	Object src/overlay_29_023350D8.o
 	Object asm/overlay_29_023350FC.o
+	Object src/dungeon_map_access.o
+	Object asm/overlay_29_02336164.o
 	Object src/overlay_29_02337CA8.o
 	Object asm/overlay_29_02337CCC.o
 	Object src/overlay_29_02338548.o
