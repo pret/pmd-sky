@@ -1,11 +1,11 @@
 #include "dungeon_range.h"
 #include "dg_camera.h"
 #include "dungeon.h"
+#include "dungeon_map_access.h"
 #include "map.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern struct tile* GetTile(int x, int y);
 extern s32 abs(s32 value);
 
 bool8 IsPositionActuallyInSight(struct position *origin, struct position *target, bool8 user_has_dropeye)
