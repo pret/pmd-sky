@@ -50,6 +50,8 @@ Static main
 	Object asm/main_0207F40C.o
 	Object src/main_0207F818.o
 	Object asm/main_0207F894.o
+	Object src/main_0208655C.o
+	Object asm/main_02086568.o
 	Object src/main_02089678.o
 	Object asm/main_02089694.o
 	Object src/main_020897AC.o
