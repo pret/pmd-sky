@@ -803,7 +803,7 @@ _022FD420:
 	strh r7, [sp, #4]
 	ldrb r3, [r1]
 	ldr r2, _022FD788 ; =DIRECTIONS_XY
-	ldr r1, _022FD78C ; =ov29_0235171E
+	ldr r1, _022FD78C ; =DIRECTIONS_XY + 2
 	mov r3, r3, lsl #2
 	ldrsh r2, [r2, r3]
 	ldrsh r1, [r1, r3]
@@ -1014,7 +1014,7 @@ _022FD77C: .word 0x000001A2
 _022FD780: .word DUNGEON_PTR
 _022FD784: .word ov29_0237C9C0
 _022FD788: .word DIRECTIONS_XY
-_022FD78C: .word ov29_0235171E
+_022FD78C: .word DIRECTIONS_XY + 2
 _022FD790: .word ov29_0237C690
 _022FD794: .word LEADER_PTR
 _022FD798: .word ov10_022C4520

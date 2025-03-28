@@ -1468,7 +1468,7 @@ _02303D8C:
 	strb r2, [sp, #6]
 	ldrsh r3, [r0, r5]
 	ldrsh r4, [r7, #4]
-	ldr r1, _02303E08 ; =ov29_0235171E
+	ldr r1, _02303E08 ; =DIRECTIONS_XY + 2
 	add r0, sp, #4
 	add r3, r4, r3
 	strh r3, [sp, #0xe]
@@ -1491,7 +1491,7 @@ _02303DFC: .word 0x00000F29
 #endif
 _02303E00: .word 0x0000013F
 _02303E04: .word DIRECTIONS_XY
-_02303E08: .word ov29_0235171E
+_02303E08: .word DIRECTIONS_XY + 2
 	arm_func_end EvolveMonster
 
 	arm_func_start ov29_02303E0C

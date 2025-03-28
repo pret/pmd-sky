@@ -905,7 +905,7 @@ _0232CFB8:
 	ldrsh r3, [r6, #4]
 	mov r1, r1, lsl #2
 	ldrsh r2, [r0, r1]
-	ldr r1, _0232D0E8 ; =ov29_0235171E
+	ldr r1, _0232D0E8 ; =DIRECTIONS_XY + 2
 	add r0, sp, #0
 	add r2, r3, r2
 	strh r2, [sp]
@@ -985,12 +985,12 @@ _0232D0D0:
 #ifdef JAPAN
 _0232D0E0: .word 0x00000C4D
 _0232D0E4: .word DIRECTIONS_XY
-_0232D0E8: .word ov29_0235171E
+_0232D0E8: .word DIRECTIONS_XY + 2
 _0232D0EC: .word 0x00000C4C
 #else
 _0232D0E0: .word 0x00000F0B
 _0232D0E4: .word DIRECTIONS_XY
-_0232D0E8: .word ov29_0235171E
+_0232D0E8: .word DIRECTIONS_XY + 2
 _0232D0EC: .word 0x00000F0A
 #endif
 	arm_func_end DoMoveFillIn

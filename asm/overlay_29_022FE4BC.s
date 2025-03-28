@@ -883,7 +883,7 @@ _022FE818:
 	ldrh r3, [r6]
 	ldr r2, _022FED88 ; =DIRECTIONS_XY
 	mov r8, r1, lsl #2
-	ldr r0, _022FED8C ; =ov29_0235171E
+	ldr r0, _022FED8C ; =DIRECTIONS_XY + 2
 	ldrsh ip, [sb, #4]
 	ldrsh r7, [r2, r8]
 	ldrsh r5, [sb, #6]
@@ -1306,7 +1306,7 @@ _022FED7C: .word ov29_0237C9C0
 _022FED80: .word ov29_0237CA6C
 _022FED84: .word ov29_0237CA68
 _022FED88: .word DIRECTIONS_XY
-_022FED8C: .word ov29_0235171E
+_022FED8C: .word DIRECTIONS_XY + 2
 #ifdef JAPAN
 _0230017C: .word 0x00000163
 _022FED90: .word 0x00000B31

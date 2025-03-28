@@ -1763,7 +1763,7 @@ ov29_022F87C0: ; 0x022F87C0
 	beq _022F8820
 	ldrb r2, [r5, #0x4c]
 	ldr r1, _022F8828 ; =DIRECTIONS_XY
-	ldr r0, _022F882C ; =ov29_0235171E
+	ldr r0, _022F882C ; =DIRECTIONS_XY + 2
 	mov ip, r2, lsl #2
 	ldrsh lr, [r4, #4]
 	ldrsh r3, [r1, ip]
@@ -1783,7 +1783,7 @@ _022F8820:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F8828: .word DIRECTIONS_XY
-_022F882C: .word ov29_0235171E
+_022F882C: .word DIRECTIONS_XY + 2
 	arm_func_end ov29_022F87C0
 
 	arm_func_start ov29_022F8830
@@ -1794,7 +1794,7 @@ ov29_022F8830: ; 0x022F8830
 	ldr r0, _022F88B8 ; =DIRECTIONS_XY
 	ldrb r2, [r5, #0x4c]
 	ldrsh r3, [r4, #4]
-	ldr r1, _022F88BC ; =ov29_0235171E
+	ldr r1, _022F88BC ; =DIRECTIONS_XY + 2
 	mov r2, r2, lsl #2
 	ldrsh r0, [r0, r2]
 	add r0, r3, r0
@@ -1825,7 +1825,7 @@ _022F88B0:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F88B8: .word DIRECTIONS_XY
-_022F88BC: .word ov29_0235171E
+_022F88BC: .word DIRECTIONS_XY + 2
 	arm_func_end ov29_022F8830
 
 	arm_func_start ov29_022F88C0
@@ -1836,7 +1836,7 @@ ov29_022F88C0: ; 0x022F88C0
 	ldr r0, _022F89A4 ; =DIRECTIONS_XY
 	ldrb r2, [r4, #0x4c]
 	ldrsh r3, [r5, #4]
-	ldr r1, _022F89A8 ; =ov29_0235171E
+	ldr r1, _022F89A8 ; =DIRECTIONS_XY + 2
 	mov r2, r2, lsl #2
 	ldrsh r0, [r0, r2]
 	add r0, r3, r0
@@ -1861,7 +1861,7 @@ ov29_022F88C0: ; 0x022F88C0
 	ldrsh r2, [r5, #4]
 	mov r1, r1, lsl #2
 	ldrsh r0, [r0, r1]
-	ldr r1, _022F89A8 ; =ov29_0235171E
+	ldr r1, _022F89A8 ; =DIRECTIONS_XY + 2
 	add r0, r2, r0, lsl #1
 	strh r0, [sp]
 	ldrb r2, [r4, #0x4c]
@@ -1890,7 +1890,7 @@ _022F899C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022F89A4: .word DIRECTIONS_XY
-_022F89A8: .word ov29_0235171E
+_022F89A8: .word DIRECTIONS_XY + 2
 	arm_func_end ov29_022F88C0
 
 	arm_func_start ov29_022F89AC
@@ -2350,7 +2350,7 @@ ov29_022F8FF8: ; 0x022F8FF8
 	ldr ip, _022F9050 ; =DIRECTIONS_XY
 	ldrb lr, [r2, #0x4c]
 	ldrsh r4, [r1, #4]
-	ldr r3, _022F9054 ; =ov29_0235171E
+	ldr r3, _022F9054 ; =DIRECTIONS_XY + 2
 	mov lr, lr, lsl #2
 	ldrsh ip, [ip, lr]
 	add r4, r4, ip
@@ -2369,7 +2369,7 @@ ov29_022F8FF8: ; 0x022F8FF8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022F9050: .word DIRECTIONS_XY
-_022F9054: .word ov29_0235171E
+_022F9054: .word DIRECTIONS_XY + 2
 	arm_func_end ov29_022F8FF8
 
 	arm_func_start ov29_022F9058
@@ -2451,7 +2451,7 @@ UpdateAiTargetPos: ; 0x022F9144
 	add r1, lr, #0x100
 	mov r3, r3, lsl #2
 	ldrsh r3, [r2, r3]
-	ldr r2, _022F9190 ; =ov29_0235171E
+	ldr r2, _022F9190 ; =DIRECTIONS_XY + 2
 	add r3, ip, r3
 #ifdef JAPAN
 	strh r3, [r1, #0x7a]
@@ -2471,7 +2471,7 @@ UpdateAiTargetPos: ; 0x022F9144
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022F918C: .word DIRECTIONS_XY
-_022F9190: .word ov29_0235171E
+_022F9190: .word DIRECTIONS_XY + 2
 	arm_func_end UpdateAiTargetPos
 
 	arm_func_start SetMonsterTypeAndAbility

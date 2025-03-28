@@ -60,7 +60,6 @@
 .public ov29_02344B44
 .public ov29_02346344
 .public ov29_0234B084
-.public ov29_0235171E
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveGroundItem
 .public RemoveHeldItemNoHole

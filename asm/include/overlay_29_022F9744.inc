@@ -94,7 +94,6 @@
 .public ov29_0234B034
 .public ov29_0234B084
 .public ov29_0234B09C
-.public ov29_0235171E
 .public PointCameraToMonster
 .public RandInt
 .public RemoveEquivItem

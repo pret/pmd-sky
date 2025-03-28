@@ -25,7 +25,6 @@
 .public ov29_02320AA4
 .public ov29_02321238
 .public ov29_02336694
-.public ov29_0235171E
 .public ov29_023529B8
 .public ov29_02353700
 .public RemoveGroundItem

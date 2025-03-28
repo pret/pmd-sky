@@ -925,7 +925,7 @@ _022EEDC4:
 	mov r1, r1, lsl #0x1d
 	mov r4, r1, lsr #0x1b
 	ldrsh r2, [r0, r4]
-	ldr r1, _022EEE48 ; =ov29_0235171E
+	ldr r1, _022EEE48 ; =DIRECTIONS_XY + 2
 	mov r0, r6
 	add r2, r3, r2
 	strh r2, [sp, #0xc]
@@ -948,7 +948,7 @@ _022EEE38:
 	.align 2, 0
 _022EEE40: .word 0x0000130F
 _022EEE44: .word DIRECTIONS_XY
-_022EEE48: .word ov29_0235171E
+_022EEE48: .word DIRECTIONS_XY + 2
 _022EEE4C: .word DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST
 	arm_func_end ApplyTripTrapEffect
 

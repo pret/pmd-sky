@@ -3109,7 +3109,7 @@ ShouldLeaderKeepRunning: ; 0x022F308C
 	ldrb r1, [r5, #0x78b]
 	ldr r3, _022F35D8 ; =DIRECTIONS_XY
 	mov r5, r7, lsl #2
-	ldr r2, _022F35DC ; =ov29_0235171E
+	ldr r2, _022F35DC ; =DIRECTIONS_XY + 2
 	ldrsh r6, [r3, r5]
 	mov r8, r0
 	cmp r1, #0
@@ -3187,7 +3187,7 @@ _022F31C4:
 	mov r5, r1, lsr #0x1b
 	mov fp, r0, lsr #0x1b
 	ldrsh r1, [r6, r5]
-	ldr r8, _022F35DC ; =ov29_0235171E
+	ldr r8, _022F35DC ; =DIRECTIONS_XY + 2
 	mov r3, r2, lsr #0x1b
 	add r1, sl, r1
 	ldrsh r2, [r6, r3]
@@ -3462,7 +3462,7 @@ _022F35CC:
 	.align 2, 0
 _022F35D4: .word DUNGEON_PTR
 _022F35D8: .word DIRECTIONS_XY
-_022F35DC: .word ov29_0235171E
+_022F35DC: .word DIRECTIONS_XY + 2
 	arm_func_end ShouldLeaderKeepRunning
 
 	arm_func_start ov29_022F35E0
