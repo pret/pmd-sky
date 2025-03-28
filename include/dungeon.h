@@ -10,6 +10,14 @@
 #define DUNGEON_MAX_SIZE_X 56
 #define DUNGEON_MAX_SIZE_Y 32
 
+enum TerrainType
+{
+    // These 3 seem to indicate the 'main' type of the terrain. See helper functions for how they're set.
+    TERRAIN_TYPE_WALL = 0, // x0 When neither TERRAIN_TYPE_NORMAL nor TERRAIN_TYPE_SECONDARY are set
+    TERRAIN_TYPE_NORMAL = 1 << 0, // x1
+    TERRAIN_TYPE_SECONDARY = 1 << 1, // Water or lava depending on the dungeon. x2
+};
+
 // Dungeon state
 struct dungeon {
     u8 field_0x0; // 0x0: Initialized to 0x0.
