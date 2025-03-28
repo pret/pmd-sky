@@ -299,7 +299,7 @@ _0231F1B0:
 	bl _s32_div_f
 	ldrsh sl, [sp, #0x40]
 	mov r1, #0x18
-	ldr r2, _0231F560 ; =ov29_0235171E
+	ldr r2, _0231F560 ; =DIRECTIONS_XY + 2
 	mov r3, r6, lsl #2
 	smulbb r1, sl, r1
 	add r1, r1, #0xc
@@ -527,7 +527,7 @@ _0231F550: .word DUNGEON_PTR
 _0231F554: .word 0x00000E48 + OV29_0231EDFC_OFFSET
 _0231F558: .word 0x00000E47 + OV29_0231EDFC_OFFSET
 _0231F55C: .word 0x00000212
-_0231F560: .word ov29_0235171E
+_0231F560: .word DIRECTIONS_XY + 2
 _0231F564: .word 0x00000163
 _0231F568: .word ov10_022C4458
 _0231F56C: .word 0x00000259

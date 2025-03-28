@@ -386,7 +386,7 @@ ov29_022E9A9C: ; 0x022E9A9C
 	mov r2, r4, lsl #2
 	ldrsh r1, [r0, r2]
 	ldrsh r3, [sb, #4]
-	ldr r0, _022E9CA4 ; =ov29_0235171E
+	ldr r0, _022E9CA4 ; =DIRECTIONS_XY + 2
 	add r1, r1, r1, lsl #1
 	add r1, r3, r1
 	strh r1, [sl]
@@ -493,7 +493,7 @@ _022E9C44:
 	ldrsh r2, [sb, #4]
 	mov r1, r1, lsl #2
 	ldrsh r1, [r0, r1]
-	ldr r0, _022E9CA4 ; =ov29_0235171E
+	ldr r0, _022E9CA4 ; =DIRECTIONS_XY + 2
 	add r1, r2, r1, lsl #1
 	strh r1, [sl]
 	ldrb r1, [r8, #0x4c]
@@ -512,7 +512,7 @@ _022E9C98:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022E9CA0: .word DIRECTIONS_XY
-_022E9CA4: .word ov29_0235171E
+_022E9CA4: .word DIRECTIONS_XY + 2
 _022E9CA8: .word DUNGEON_PTR
 _022E9CAC: .word ov29_0235179C
 _022E9CB0: .word ov29_023517A0

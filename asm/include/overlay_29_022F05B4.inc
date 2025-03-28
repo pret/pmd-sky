@@ -151,7 +151,6 @@
 .public ov29_0234E8F8
 .public ov29_0234FC50
 .public ov29_0234FCA8
-.public ov29_0235171E
 .public ov29_023526A8
 .public ov29_023526B8
 .public ov29_023526C8

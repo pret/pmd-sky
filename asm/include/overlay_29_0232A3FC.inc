@@ -79,7 +79,6 @@
 .public ov29_02324D60
 .public ov29_02332F18
 .public ov29_0234B084
-.public ov29_0235171E
 .public ov29_02352B1C
 .public ov29_0237CA84
 .public POISON_TAIL_POISON_CHANCE

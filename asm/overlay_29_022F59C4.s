@@ -684,7 +684,7 @@ _022F6198:
 	ldrsh r3, [sl, #4]
 	mov r1, r1, lsl #2
 	ldrsh r2, [r0, r1]
-	ldr r1, _022F620C ; =ov29_0235171E
+	ldr r1, _022F620C ; =DIRECTIONS_XY + 2
 	add r0, sp, #8
 	add r2, r3, r2
 	strh r2, [sp, #8]
@@ -713,7 +713,7 @@ _022F6200: .word 0x00000BCD
 _022F6204: .word 0x00000BCE
 #endif
 _022F6208: .word DIRECTIONS_XY
-_022F620C: .word ov29_0235171E
+_022F620C: .word DIRECTIONS_XY + 2
 	arm_func_end ov29_022F6058
 
 	arm_func_start ov29_022F6210

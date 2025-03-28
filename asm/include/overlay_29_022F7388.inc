@@ -89,7 +89,6 @@
 .public ov29_0234B0B4
 .public ov29_0234B1A4
 .public ov29_0234EF24
-.public ov29_0235171E
 .public ov29_0237C9B0
 .public PopulateActiveMonsterPtrs
 .public RemoveHolderForItemInBag

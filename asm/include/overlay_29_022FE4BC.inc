@@ -60,7 +60,6 @@
 .public ov29_02346888
 .public ov29_0234B024
 .public ov29_0234BA54
-.public ov29_0235171E
 .public ov29_0237C9C0
 .public ov29_0237CA68
 .public ov29_0237CA6C

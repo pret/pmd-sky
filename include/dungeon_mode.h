@@ -1041,33 +1041,33 @@ struct room_data {
 // Tile data
 struct tile {
     // 0x0: terrain_flags: 2-byte bitfield
-    //u16 terrain_flags;
-    enum terrain_type terrain_type : 2;
+    u16 terrain_flags;
+    // enum terrain_type terrain_type : 2;
     // This tile can be corner-cut when walking. Seemingly only used during dungeon generation.
-    bool8 f_corner_cuttable : 1;
+    // bool f_corner_cuttable : 1;
     // Includes room tiles right next to a hallway, and branching points within corridors.
     // Only applies to natural halls, not ones made by Absolute Mover, not "hallways" made of
     // secondary terrain, etc. Used by the AI for navigation.
-    bool8 f_natural_junction : 1;
+    // bool f_natural_junction : 1;
     // This tile is impassable, even with Absolute Mover/Mobile Scarf. Used for the map border,
     // key chamber walls, walls in boss battle rooms, etc.
-    bool8 f_impassable_wall : 1;
-    bool8 f_in_kecleon_shop : 1;  // In a Kecleon Shop
-    bool8 f_in_monster_house : 1; // In a Monster House
-    bool8 terrain_flags_unk7 : 1;
+    // bool f_impassable_wall : 1;
+    // bool f_in_kecleon_shop : 1;  // In a Kecleon Shop
+    // bool f_in_monster_house : 1; // In a Monster House
+    // bool terrain_flags_unk7 : 1;
     // Cannot be broken by Absolute Mover. Set naturally on key doors.
-    bool8 f_unbreakable : 1;
+    // bool f_unbreakable : 1;
     // Tile is any type of "stairs" (normal stairs, Hidden Stairs, Warp Zone)
-    bool8 f_stairs : 1;
-    bool8 terrain_flags_unk10 : 1;
-    bool8 f_key_door : 1;            // Tile is a key door
-    bool8 f_key_door_key_locked : 1; // Key door is locked and requires a Key to open
+    // bool f_stairs : 1;
+    // bool terrain_flags_unk10 : 1;
+    // bool f_key_door : 1;            // Tile is a key door
+    // bool f_key_door_key_locked : 1; // Key door is locked and requires a Key to open
     // Key door is locked and requires an escort to open (for Sealed Chamber missions)
-    bool8 f_key_door_escort_locked : 1;
-    bool8 terrain_flags_unk14 : 1;
+    // bool f_key_door_escort_locked : 1;
+    // bool terrain_flags_unk14 : 1;
     // Tile is open terrain but unreachable from the stairs spawn point. Only set during dungeon
     // generation.
-    bool8 f_unreachable_from_stairs : 1;
+    // bool f_unreachable_from_stairs : 1;
 
     // 0x2: Seems to be used for spawning entities during dungeon generation, and for visibility
     // during dungeon play

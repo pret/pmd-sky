@@ -10,7 +10,6 @@
 .public IsCurrentTilesetBackground
 .public IsTacticSet
 .public ItemIsActive__022FF898
-.public ov29_0235171E
 .public ov29_02352770
 .public ov29_02352778
 .public ov29_02352780

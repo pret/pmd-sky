@@ -25,7 +25,6 @@
 .public ov29_02304A48
 .public ov29_0232033C
 .public ov29_02321238
-.public ov29_0235171E
 .public ShouldDisplayEntityWrapper
 .public sub_020018D0
 .public SubstitutePlaceholderStringTags

@@ -1,6 +1,17 @@
 #include "dungeon_util.h"
 #include "dungeon_util_static.h"
 
+const struct position DIRECTIONS_XY[] = {
+    {0, 1},
+    {1, 1},
+    {1, 0},
+    {1, -1},
+    {0, -1},
+    {-1, -1},
+    {-1, 0},
+    {-1, 1}
+};
+
 bool8 ShouldRunMonsterAi(struct entity *monster)
 {
     struct monster *pokemon_info = GetEntInfo(monster);

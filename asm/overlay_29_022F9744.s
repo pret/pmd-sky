@@ -924,7 +924,7 @@ _022FA210:
 	mov r2, r2, lsl #2
 	ldrsh r3, [r1, r2]
 	ldrsh ip, [r6, #4]
-	ldr r2, _022FA2EC ; =ov29_0235171E
+	ldr r2, _022FA2EC ; =DIRECTIONS_XY + 2
 	mov r1, #0xff
 	add r3, ip, r3
 	strh r3, [r0, #0x7e + OV29_022FA1D8_OFFSET]
@@ -970,7 +970,7 @@ _022FA2B8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _022FA2E8: .word DIRECTIONS_XY
-_022FA2EC: .word ov29_0235171E
+_022FA2EC: .word DIRECTIONS_XY + 2
 	arm_func_end ov29_022FA1D8
 
 	arm_func_start ov29_022FA2F0

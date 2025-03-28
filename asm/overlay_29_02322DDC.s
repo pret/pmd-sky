@@ -266,7 +266,7 @@ ov29_023230FC: ; 0x023230FC
 _02323160:
 	ldrsh r2, [r8, #4]
 	ldr r0, _023238F8 ; =DIRECTIONS_XY
-	ldr r1, _023238FC ; =ov29_0235171E
+	ldr r1, _023238FC ; =DIRECTIONS_XY + 2
 	strh r2, [sp, #0xbc]
 	ldrsh r2, [r8, #6]
 	mov r4, #0
@@ -356,7 +356,7 @@ _02323250:
 	ldr r0, _023238F8 ; =DIRECTIONS_XY
 	strh r2, [sp, #0xb8]
 	ldrsh r2, [r5, #6]
-	ldr r1, _023238FC ; =ov29_0235171E
+	ldr r1, _023238FC ; =DIRECTIONS_XY + 2
 	strh r2, [sp, #0xba]
 	ldrb r2, [sb, #0x4c]
 	add r2, r2, #4
@@ -372,7 +372,7 @@ _023232E4:
 	ldr r3, _023238F8 ; =DIRECTIONS_XY
 	strh r0, [sp, #0xbc]
 	ldrsh r1, [r8, #6]
-	ldr r2, _023238FC ; =ov29_0235171E
+	ldr r2, _023238FC ; =DIRECTIONS_XY + 2
 	mov r0, #0x18
 	strh r1, [sp, #0xbe]
 	ldrb r1, [sb, #0x4c]
@@ -788,7 +788,7 @@ _023238EC:
 	.align 2, 0
 _023238F4: .word ov29_02352A54
 _023238F8: .word DIRECTIONS_XY
-_023238FC: .word ov29_0235171E
+_023238FC: .word DIRECTIONS_XY + 2
 _02323900: .word ov29_0235175C
 _02323904: .word 0x00000FFF
 _02323908: .word ov29_02352A6C
@@ -843,7 +843,7 @@ _02323984:
 	ldr r4, _02323C30 ; =DIRECTIONS_XY
 	ldrb r1, [r0, #0x4c]
 	ldrsh r0, [sl, #4]
-	ldr r5, _02323C34 ; =ov29_0235171E
+	ldr r5, _02323C34 ; =DIRECTIONS_XY + 2
 	add r1, r1, #4
 	strh r0, [sp, #0x34]
 	and r0, r1, #7
@@ -1032,7 +1032,7 @@ _02323BE0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02323C30: .word DIRECTIONS_XY
-_02323C34: .word ov29_0235171E
+_02323C34: .word DIRECTIONS_XY + 2
 _02323C38: .word ov29_02352A8C
 _02323C3C: .word DUNGEON_PTR
 #ifdef JAPAN

@@ -352,7 +352,7 @@ _0232A7B4:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	ldrb r1, [r4, #0x4c]
 	ldr r0, _0232A82C ; =DIRECTIONS_XY
-	ldr r5, _0232A830 ; =ov29_0235171E
+	ldr r5, _0232A830 ; =DIRECTIONS_XY + 2
 	mov r1, r1, lsl #2
 	ldrsh r1, [r0, r1]
 	add r2, sp, #4
@@ -383,7 +383,7 @@ _0232A824: .word 0x00000EE8
 _0232A828: .word 0x00000EE7
 #endif
 _0232A82C: .word DIRECTIONS_XY
-_0232A830: .word ov29_0235171E
+_0232A830: .word DIRECTIONS_XY + 2
 	arm_func_end DoMoveKnockOff
 
 	arm_func_start ov29_0232A834

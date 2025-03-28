@@ -3074,7 +3074,7 @@ _01FFA754:
 	ldr r0, _01FFB2B8 ; =DIRECTIONS_XY
 	ldrsh r5, [r4, #4]
 	ldrsh r2, [r0, r3]
-	ldr r1, _01FFB2BC ; =ov29_0235171E
+	ldr r1, _01FFB2BC ; =DIRECTIONS_XY + 2
 	mov r0, #1
 	add r2, r5, r2
 	strh r2, [sb, #0x8c]
@@ -3711,7 +3711,7 @@ _01FFB080:
 	add r0, r1, r0
 	cmp r3, r0
 	bne _01FFB0D4
-	ldr r0, _01FFB2BC ; =ov29_0235171E
+	ldr r0, _01FFB2BC ; =DIRECTIONS_XY + 2
 	ldrsh r1, [r4, #6]
 	ldrsh r0, [r0, r2]
 	ldrsh r2, [sb, #0x8e]
@@ -3857,7 +3857,7 @@ _01FFB2AC: .word 0x000003E7
 _01FFB2B0: .word 0x000F423F
 _01FFB2B4: .word DUNGEON_PTR
 _01FFB2B8: .word DIRECTIONS_XY
-_01FFB2BC: .word ov29_0235171E
+_01FFB2BC: .word DIRECTIONS_XY + 2
 _01FFB2C0: .word 0xFFF0BDC1
 _01FFB2C4: .word ov29_0235177C
 	arm_func_end AiMovement
@@ -3935,7 +3935,7 @@ _01FFB38C:
 	mov r3, r8, lsl #2
 	ldrsh r2, [r0, r3]
 	ldrsh r4, [sl, #4]
-	ldr r1, _01FFB628 ; =ov29_0235171E
+	ldr r1, _01FFB628 ; =DIRECTIONS_XY + 2
 	mov r0, #1
 	add r2, r4, r2
 	strh r2, [sb, #0x8c]
@@ -3982,7 +3982,7 @@ _01FFB3F0:
 	ldr r0, _01FFB624 ; =DIRECTIONS_XY
 	ldrsh r4, [sl, #4]
 	ldrsh r2, [r0, r3]
-	ldr r1, _01FFB628 ; =ov29_0235171E
+	ldr r1, _01FFB628 ; =DIRECTIONS_XY + 2
 	mov r0, #1
 	add r2, r4, r2
 	strh r2, [sb, #0x8c]
@@ -4005,7 +4005,7 @@ _01FFB460:
 	ldr r0, _01FFB624 ; =DIRECTIONS_XY
 	ldrsh r4, [sl, #4]
 	ldrsh r2, [r0, r3]
-	ldr r1, _01FFB628 ; =ov29_0235171E
+	ldr r1, _01FFB628 ; =DIRECTIONS_XY + 2
 	mov r0, #1
 	add r2, r4, r2
 	strh r2, [sb, #0x8c]
@@ -4104,7 +4104,7 @@ _01FFB5D8:
 	ldr r0, _01FFB624 ; =DIRECTIONS_XY
 	ldrsh r4, [sl, #4]
 	ldrsh r2, [r0, r3]
-	ldr r1, _01FFB628 ; =ov29_0235171E
+	ldr r1, _01FFB628 ; =DIRECTIONS_XY + 2
 	mov r0, #1
 	add r2, r4, r2
 	strh r2, [sb, #0x8c]
@@ -4117,7 +4117,7 @@ _01FFB5D8:
 _01FFB61C: .word DUNGEON_PTR
 _01FFB620: .word ov29_0235177C
 _01FFB624: .word DIRECTIONS_XY
-_01FFB628: .word ov29_0235171E
+_01FFB628: .word DIRECTIONS_XY + 2
 	arm_func_end CalculateAiTargetPos
 
 	arm_func_start sub_01FFB62C

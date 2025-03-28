@@ -93,7 +93,6 @@
 .public ov29_0234B084
 .public ov29_0234B0B4
 .public ov29_0234BA54
-.public ov29_0235171E
 .public ov29_02352B38
 .public ov29_02352B3C
 .public PrepareTrapperTrap

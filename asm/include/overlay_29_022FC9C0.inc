@@ -86,7 +86,6 @@
 .public ov29_023021F0
 .public ov29_02304A48
 .public ov29_02307DC0
-.public ov29_0235171E
 .public ov29_02351E28
 .public ov29_0235276C
 .public ov29_0237C690

@@ -59,7 +59,6 @@
 .public ov29_0234B0B4
 .public ov29_0234CFA0
 .public ov29_0234D304
-.public ov29_0235171E
 .public ov29_02352750
 .public ov29_02352758
 .public ov29_0237CA80
