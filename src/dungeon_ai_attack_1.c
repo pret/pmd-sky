@@ -1,14 +1,13 @@
 #include "dungeon_ai_attack_1.h"
 #include "dungeon.h"
 #include "dungeon_map_access.h"
+#include "dungeon_util.h"
 #include "main_0208655C.h"
 
 static inline s32 Max(s32 x, s32 y)
 {
     return x > y ? x : y;
 }
-
-extern const struct position DIRECTIONS_XY[NUM_DIRECTIONS];
 
 extern bool8 IqSkillIsEnabled(struct entity *entity, u8 iq_skill);
 

@@ -192,6 +192,3 @@
 .public ov29_023502D4
 .public ov29_023502DC
 .public ov29_023502E4
-.public ov29_02351974
-.public ov29_02351B00
-.public ov29_02351C94
