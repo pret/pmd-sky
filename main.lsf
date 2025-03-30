@@ -304,7 +304,7 @@ Overlay OVY_29
 	Object src/dungeon_pokemon_attributes.o
 	Object asm/overlay_29_02301D84.o
 	Object src/dungeon_pokemon_attributes_1.o
-	Object asm/overlay_29_02301F80.o
+	Object asm/overlay_29_02301FBC.o
 	Object src/overlay_29_023026CC.o
 	Object asm/overlay_29_023026FC.o
 	Object src/overlay_29_02302A38.o

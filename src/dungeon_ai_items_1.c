@@ -1,6 +1,7 @@
 #include "dungeon_ai_items_1.h"
 #include "dungeon.h"
 #include "dungeon_ai_attack.h"
+#include "dungeon_ai_attack_1.h"
 #include "dungeon_ai_items.h"
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_util_static.h"
@@ -15,7 +16,6 @@
 extern s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct dungeon *DUNGEON_PTR[];
 
-extern bool8 IsTargetInRange(struct entity *user, struct entity *target, s32 direction, s32 n_tiles);
 extern u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32 flags);
 
 void GetPossibleAiThrownItemDirections(struct entity *entity, s32 ally_or_enemy, struct item *item, bool8 always_add)
@@ -53,7 +53,7 @@ void GetPossibleAiThrownItemDirections(struct entity *entity, s32 ally_or_enemy,
         if (!CanSeeTarget(entity, target_pokemon))
             continue;
 
-        s32 target_direction;
+        enum direction_id target_direction;
         s32 target_pos_x = target_pokemon->pos.x;
         s32 pokemon_pos_x = entity->pos.x;
         s32 distance_x = abs(pokemon_pos_x - target_pos_x);
@@ -67,7 +67,7 @@ void GetPossibleAiThrownItemDirections(struct entity *entity, s32 ally_or_enemy,
                 continue;
         }
 
-        target_direction = -1;
+        target_direction = DIR_NONE;
         if (distance_x == distance_y)
         {
             if (pokemon_pos_x < target_pos_x && pokemon_pos_y < target_pos_y)

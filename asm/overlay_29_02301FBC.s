@@ -1,28 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02301F80.inc"
+	.include "overlay_29_02301FBC.inc"
 
 	.text
-
-	arm_func_start IqSkillIsEnabled
-IqSkillIsEnabled: ; 0x02301F80
-	stmdb sp!, {r3, lr}
-	ldr r2, [r0, #0xb4]
-	ldrb r0, [r2, #6]
-	cmp r0, #0
-	bne _02301FAC
-	ldr r0, _02301FB8 ; =DUNGEON_PTR
-	ldr r0, [r0]
-	ldrb r0, [r0, #0x12]
-	cmp r0, #0
-	movne r0, #0
-	ldmneia sp!, {r3, pc}
-_02301FAC:
-	add r0, r2, #0x9c
-	bl IqSkillFlagTest
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_02301FB8: .word DUNGEON_PTR
-	arm_func_end IqSkillIsEnabled
 
 	arm_func_start UpdateIqSkills
 UpdateIqSkills: ; 0x02301FBC

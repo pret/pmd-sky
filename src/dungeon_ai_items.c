@@ -4,6 +4,8 @@
 #include "dungeon_ai_items_1.h"
 #include "dungeon_capabilities_1.h"
 #include "dungeon_map_access.h"
+#include "dungeon_pokemon_attributes.h"
+#include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
 #include "item.h"
 #include "item_util.h"
@@ -18,7 +20,6 @@ extern volatile s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
 extern void SetMonsterActionFields(struct action_data *action_pointer, u16 action);
-extern bool8 IqSkillIsEnabled(struct entity *entity, u8 iq_skill);
 extern bool8 TestItemAiFlag(s16 item_id, s32 flag);
 extern void GetPossibleAiArcItemTargets(struct entity *user, struct item *item, struct position positions[], bool8 always_add_position);
 extern s32 GetDirectionTowardsPosition(struct position *origin, struct position *target);

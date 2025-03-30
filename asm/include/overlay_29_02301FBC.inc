@@ -19,6 +19,7 @@
 .public GetPerformanceFlagWithChecks
 .public GetSpeciesIqSkill
 .public IqSkillFlagTest
+.public IqSkillIsEnabled
 .public IsBlinded
 .public IsExperienceLocked
 .public IsRegularAttackOrProjectile
