@@ -37,6 +37,8 @@ Static main
 	Object asm/main_02034974.o
 	Object src/main_02054BE0.o
 	Object asm/main_02054C24.o
+	Object src/pokemon.o
+	Object asm/main_02058F24.o
 	Object lib/DSE/src/dc_envelope.o
 	Object lib/DSE/src/dc_lfo.o
 	Object lib/DSE/asm/dc_lfo_1.o
@@ -125,6 +127,8 @@ Overlay OVY_10
 {
 	After main
 	Object asm/overlay_10.o
+	Object src/overlay_10_022BCC60.o
+	Object asm/overlay_10_022BCC7C.o
 }
 Overlay OVY_11
 {
@@ -304,7 +308,7 @@ Overlay OVY_29
 	Object src/dungeon_pokemon_attributes.o
 	Object asm/overlay_29_02301D84.o
 	Object src/dungeon_pokemon_attributes_1.o
-	Object asm/overlay_29_02301F80.o
+	Object asm/overlay_29_02301FBC.o
 	Object src/overlay_29_023026CC.o
 	Object asm/overlay_29_023026FC.o
 	Object src/overlay_29_02302A38.o

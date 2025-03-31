@@ -8,6 +8,8 @@
 #include "graphics.h"
 #include "util.h"
 
+#define NUM_PICKED_IQ_SKILLS 3
+
 // Used in various contexts, like with entity positions in the dungeon
 struct position {
     s16 x;
@@ -164,6 +166,11 @@ struct blinker_class_status {
     u8 blinded_turns;     // 0x1: Turns left for the status in statuses::blinded
 };
 
+struct iq_skill_flags
+{
+    u32 flags[NUM_PICKED_IQ_SKILLS]; /* 0x0 */
+};
+
 // Monster info
 struct monster {
     // 0x0: flags: 2-byte bitfield
@@ -227,10 +234,10 @@ struct monster {
     u8 field_0x8b;
     struct position ai_target_pos; // 0x8C: Position of the entity currently being targeted
     // 0x90: Work array while updating skills in the menu. Same meaning as iq_skill_flags.
-    u32 iq_skill_menu_flags[3];
+    struct iq_skill_flags iq_skill_menu_flags;
     // 0x9C: First 9 bytes contain bitfield data; the rest is presumably padding.
     // Bitvector. See enum iq_skill_id for the meaning of each bit.
-    u32 iq_skill_flags[3];
+    struct iq_skill_flags iq_skill_flags;
     enum tactic_id tactic; // 0xA8
 
     // 0xA9

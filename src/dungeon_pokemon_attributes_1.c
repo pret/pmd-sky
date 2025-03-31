@@ -2,6 +2,9 @@
 #include "dungeon_util_static.h"
 #include "overlay_29_022FF898.h"
 #include "overlay_29_023000E4.h"
+#include "pokemon.h"
+
+extern struct dungeon* DUNGEON_PTR[];
 
 bool8 CanSeeInvisibleMonsters(struct entity *entity)
 {
@@ -29,4 +32,13 @@ bool8 HasDropeyeStatus(struct entity* entity)
         return TRUE;
 
     return FALSE;
+}
+
+bool8 IqSkillIsEnabled(struct entity *entity, enum iq_skill_id iq_skill)
+{
+    struct monster *entity_info = GetEntInfo(entity);
+    if (!entity_info->is_not_team_member && DUNGEON_PTR[0]->iq_disabled)
+        return FALSE;
+
+    return IqSkillFlagTest(&entity_info->iq_skill_flags, iq_skill);
 }

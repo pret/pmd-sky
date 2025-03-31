@@ -10,5 +10,7 @@ bool8 CanSeeInvisibleMonsters(struct entity *entity);
 bool8 IsTacticSet(struct entity *entity, enum tactic_id tactic_id);
 // Returns whether a certain monster is under the effect of status::STATUS_DROPEYE.
 bool8 HasDropeyeStatus(struct entity* entity);
+// Checks if a monster has a certain IQ skill enabled.
+bool8 IqSkillIsEnabled(struct entity *entity, enum iq_skill_id iq_skill);
 
 #endif //PMDSKY_DUNGEON_POKEMON_ATTRIBUTES_1_H

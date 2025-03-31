@@ -3,6 +3,8 @@
 #include "direction.h"
 #include "dungeon_ai_items.h"
 #include "dungeon_capabilities_1.h"
+#include "dungeon_pokemon_attributes.h"
+#include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
 #include "dungeon_util.h"
 #include "dungeon_visibility.h"
@@ -24,7 +26,6 @@ extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id
 extern bool8 HasStatusThatPreventsActing(struct entity *monster);
 extern void ClearMonsterActionFields(struct action_data *monster_action);
 extern void SetActionPassTurnOrWalk(struct action_data *monster_action, s16 monster_id);
-extern bool8 IqSkillIsEnabled(struct entity *entity, enum iq_skill_id iq_id);
 extern void ChooseAiMove(struct entity *monster);
 extern bool8 GetCanMoveFlag(s16 monster_id);
 extern void AiMovement(struct entity *monster, bool8 show_run_away_effect);
