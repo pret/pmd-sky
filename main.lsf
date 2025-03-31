@@ -37,6 +37,8 @@ Static main
 	Object asm/main_02034974.o
 	Object src/main_02054BE0.o
 	Object asm/main_02054C24.o
+	Object src/pokemon.o
+	Object asm/main_02058F24.o
 	Object lib/DSE/src/dc_envelope.o
 	Object lib/DSE/src/dc_lfo.o
 	Object lib/DSE/asm/dc_lfo_1.o

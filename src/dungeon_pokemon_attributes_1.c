@@ -2,10 +2,9 @@
 #include "dungeon_util_static.h"
 #include "overlay_29_022FF898.h"
 #include "overlay_29_023000E4.h"
+#include "pokemon.h"
 
 extern struct dungeon* DUNGEON_PTR[];
-
-extern bool8 IqSkillFlagTest(struct iq_skill_flags *iq_skill_flags, enum iq_skill_id iq_id);
 
 bool8 CanSeeInvisibleMonsters(struct entity *entity)
 {
