@@ -127,6 +127,8 @@ Overlay OVY_10
 {
 	After main
 	Object asm/overlay_10.o
+	Object src/overlay_10_022BCC60.o
+	Object asm/overlay_10_022BCC7C.o
 }
 Overlay OVY_11
 {
