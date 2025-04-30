@@ -1,6 +1,7 @@
 #include "dungeon_ai_items.h"
 #include "dg_random.h"
 #include "direction.h"
+#include "dungeon_ai_item_weight.h"
 #include "dungeon_ai_items_1.h"
 #include "dungeon_capabilities_1.h"
 #include "dungeon_map_access.h"
@@ -24,7 +25,6 @@ extern bool8 TestItemAiFlag(s16 item_id, s32 flag);
 extern void GetPossibleAiArcItemTargets(struct entity *user, struct item *item, struct position positions[], bool8 always_add_position);
 extern s32 GetDirectionTowardsPosition(struct position *origin, struct position *target);
 extern struct item *GetItemInfo(struct entity *item_entity);
-extern u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32 flags);
 extern bool8 MonsterCanThrowItems(struct monster *monster);
 
 bool8 EntityIsValid__0230E8F0(struct entity *entity)

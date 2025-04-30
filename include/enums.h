@@ -2313,6 +2313,7 @@ enum status_invisible_id {
     STATUS_INVISIBLE_INVISIBLE = 1,
     STATUS_INVISIBLE_TRANSFORMED = 2,
     STATUS_INVISIBLE_MOBILE = 3,
+    STATUS_INVISIBLE_SLIP = 4,
 };
 
 enum status_blinker_id {
@@ -2897,6 +2898,30 @@ enum movement_flag
     MOVEMENT_FLAG_WALKING = 1 << 9,
     MOVEMENT_FLAG_UNK_14 = 1 << 14,
     MOVEMENT_FLAG_SWAPPING_PLACES_PETRIFIED_ALLY = 1 << 15, // Set if the Pokémon is petrified and the leader cures them by swapping places.
+};
+
+enum move_flag
+{
+    MOVE_FLAG_EXISTS = 1 << 0,
+    MOVE_FLAG_SUBSEQUENT_IN_LINK_CHAIN = 1 << 1, // This move is linked with the previous move in the Pokémon's moveset.
+    MOVE_FLAG_ENABLED_FOR_AI = 1 << 2, // Enabled for the AI to use.
+    MOVE_FLAG_SET = 1 << 3, // This move can be triggered by pressing L+A instead of having to go to the move menu.
+    MOVE_FLAG_LAST_USED = 1 << 4, // The most recent move used by the Pokémon.
+    MOVE_FLAG_DISABLED = 1 << 5, // Disabled by an effect like Taunt.
+    MOVE_FLAG_INTERNAL_MARKER = 1 << 7     // Possibly some kind of flag used internally to mark a move and find it again
+};
+
+// Mobility types for monsters
+enum mobility_type {
+    MOBILITY_NORMAL = 0,
+    // This is unused within the monster data in monster.md, but is probably used in dungeons
+    // with a meaning that's dependent on what the secondary terrain type is
+    // (either MOBILITY_LAVA or MOBILITY_WATER).
+    MOBILITY_SECONDARY = 1,
+    MOBILITY_HOVERING = 2,
+    MOBILITY_INTANGIBLE = 3,
+    MOBILITY_LAVA = 4,
+    MOBILITY_WATER = 5,
 };
 
 #endif //PMDSKY_ENUMS_H
