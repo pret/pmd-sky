@@ -2,6 +2,7 @@
 #include "dungeon.h"
 #include "dungeon_ai_attack.h"
 #include "dungeon_ai_attack_1.h"
+#include "dungeon_ai_item_weight.h"
 #include "dungeon_ai_items.h"
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_util_static.h"
@@ -15,8 +16,6 @@
 // but AiDecideUseItem needs it to be volatile to match.
 extern s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct dungeon *DUNGEON_PTR[];
-
-extern u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32 flags);
 
 void GetPossibleAiThrownItemDirections(struct entity *entity, s32 ally_or_enemy, struct item *item, bool8 always_add)
 {

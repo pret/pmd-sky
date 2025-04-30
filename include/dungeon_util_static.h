@@ -19,4 +19,6 @@ static inline bool8 ItemExists(u8 flags)
     return !!(flags & ITEM_FLAG_EXISTS);
 }
 
+#define ENTITY_POISONED(entity_info)((entity_info->burn_class_status.burn == STATUS_BURN_POISONED || entity_info->burn_class_status.burn == STATUS_BURN_BADLY_POISONED))
+
 #endif // PMDSKY_DUNGEON_UTIL_STATIC_H

@@ -6,7 +6,7 @@
 // Monster move info
 struct move {
     // 0x0: flags: 1-byte bitfield
-    u8 flags;
+    u8 flags0;
     // bool8 f_exists : 1;                   // This move will show up in the move list
     // bool8 f_subsequent_in_link_chain : 1; // This move is in a link chain, but not the first move
     // bool8 f_enabled_for_ai : 1;           // AI can use this move

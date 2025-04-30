@@ -9,6 +9,8 @@
 #include "util.h"
 
 #define NUM_PICKED_IQ_SKILLS 3
+#define MAX_MON_MOVES 4
+#define MAX_SPEED_STAGE 4
 
 // Used in various contexts, like with entity positions in the dungeon
 struct position {
@@ -114,6 +116,19 @@ struct sleep_class_status {
     u8 sleep_turns; // 0x1: Turns left for the status in statuses::sleep
 };
 
+struct burn_class_status
+{
+    enum status_burn_id burn; // 0x0: STATUS_BURN if 1
+    u8 burn_turns; // 0x1: Turns left for the status in statuses::burn
+    // 0x2: Turns left until residual damage for the status in statuses::burn, if applicable
+    u8 burn_damage_countdown;
+    // 0x3: The number of times the statuses::burn_damage_countdown has reached 0. Only used
+    // when badly poisoned. Determines how much damage the badly poisoned status condition
+    // will deal. There is no noticable difference because the table this value is looked up
+    // on is filled with 0x6
+    u8 badly_poisoned_damage_count;
+};
+
 struct frozen_class_status {
     // 0x0: If non-zero, the corresponding status in status_frozen_id is active.
     enum status_frozen_id freeze;
@@ -137,6 +152,13 @@ struct bide_class_status {
     enum status_two_turn_id bide;
     u8 bide_turns;     // 0x1: Turns left for the status in statuses::bide
     u8 bide_move_slot; // 0x2: Slot in the user's move list
+};
+
+struct reflect_class_status {
+    u8 reflect;        // 0x0: STATUS_REFLECT if 1
+    u8 reflect_turns;  // 0x1: Turns left for the status in statuses::reflect
+    // 0x2: Turns left until residual healing for the status in statuses::reflect, if applicable
+    u8 reflect_damage_countdown;
 };
 
 struct curse_class_status {
@@ -171,13 +193,19 @@ struct iq_skill_flags
     u32 flags[NUM_PICKED_IQ_SKILLS]; /* 0x0 */
 };
 
+struct moves
+{
+    struct move moves[MAX_MON_MOVES]; // 0x0
+    u8 struggle_move_flags; // 0x18
+};
+
 // Monster info
 struct monster {
     // 0x0: flags: 2-byte bitfield
     u16 flags;
 
-    enum monster_id id;          // 0x2:
-    enum monster_id apparent_id : 16; // 0x4: What's outwardly displayed if Transformed
+    s16 id;          // 0x2:
+    s16 apparent_id; // 0x4: What's outwardly displayed if Transformed
     bool8 is_not_team_member; // 0x6: true for enemies and allied NPCs that aren't on the team
     bool8 is_team_leader;     // 0x7
     // 0x8: An ally is an NPC that isn't a normal team member, e.g. for story boss battles
@@ -261,22 +289,11 @@ struct monster {
     u32 bide_damage_tally;
     enum monster_behavior monster_behavior : 8; // 0xBC
     struct sleep_class_status sleep_class_status; // 0xBD
-    u8 burn;        // 0xBF: STATUS_BURN if 1
-    u8 burn_turns;  // 0xC0: Turns left for the status in statuses::burn
-    // 0xC1: Turns left until residual damage for the status in statuses::burn, if applicable
-    u8 burn_damage_countdown;
-    // 0xC2: The number of times the statuses::burn_damage_countdown has reached 0. Only used
-    // when badly poisoned. Determines how much damage the badly poisoned status condition
-    // will deal. There is no noticable difference because the table this value is looked up
-    // on is filled with 0x6
-    u8 badly_poisoned_damage_count;
+    struct burn_class_status burn_class_status; // 0xBF
     struct frozen_class_status frozen_class_status; // 0xC4
     struct cringe_class_status cringe_class_status; // 0xD0
     struct bide_class_status bide_class_status; // 0xD2
-    u8 reflect;        // 0xD5: STATUS_REFLECT if 1
-    u8 reflect_turns;  // 0xD6: Turns left for the status in statuses::reflect
-    // 0xD7: Turns left until residual healing for the status in statuses::reflect, if applicable
-    u8 reflect_damage_countdown;
+    struct reflect_class_status reflect_class_status; // 0xD5
     struct curse_class_status curse_class_status; // 0xD8
     u8 leech_seed; // 0xE0: STATUS_LEECH_SEED if 1
     u8 field_0xe1;
@@ -371,9 +388,7 @@ struct monster {
     // 0x120: If zero, when the monster is standing in a room, the AI will make it head towards a
     // random exit. If nonzero, the monster will instead move in a random direction every turn.
     s32 random_movement;
-    struct move moves[4]; // 0x124
-    u8 move_flags;   // 0x144: 1-byte bitfield
-    u8 field_0x145;
+    struct moves moves; // 0x124
     struct fixed_point belly;         // 0x146
     struct fixed_point max_belly;     // 0x14A:
     // 0x14E: If true and the monster is an ally, the AI will skip it. False for enemies.

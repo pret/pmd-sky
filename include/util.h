@@ -34,4 +34,10 @@ struct fixed_point {
 // Compares two numbers and return the minimum
 #define MIN(A, B) ((A > B) ? B : A)
 
+// Same as MIN macro but as a static inline, since the macro doesn't match in some places.
+static inline s32 Min(s32 a, s32 b)
+{
+    return a < b ? a : b;
+}
+
 #endif //PMDSKY_UTIL_H
