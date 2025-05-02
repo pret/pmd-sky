@@ -27,8 +27,8 @@ struct uvec2_16 {
 
 // a (16b.16b) fixed-point rational
 struct fixed_point {
-    u16 integer;
-    u16 fractional;
+    s16 integer;
+    s16 fractional;
 };
 
 // Compares two numbers and return the minimum

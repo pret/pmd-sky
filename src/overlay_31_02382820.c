@@ -1,4 +1,5 @@
 #include "overlay_31_02382820.h"
+#include "number_util.h"
 
 extern struct dungeon* DUNGEON_PTR[];
 
@@ -21,7 +22,6 @@ extern u16 ov31_02389E22[];
 extern void* MemAlloc(u32 size, u32 nmemb);
 
 extern struct entity* GetLeader(void);
-extern s32 CeilFixedPoint(struct fixed_point);
 extern u32 GetMoneyCarried(void);
 extern void* GetApparentWeather(u32);
 extern u32 sub_0204F9E0(void);
