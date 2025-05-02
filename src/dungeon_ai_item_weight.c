@@ -3,9 +3,9 @@
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 #include "main_02054BE0.h"
+#include "number_util.h"
 #include "util.h"
 
-extern s32 CeilFixedPoint(struct fixed_point val_fp);
 extern bool8 IsAdjacentToEnemy(struct entity *entity);
 extern u8 GetMaxPpWrapper(struct move *move);
 extern bool8 MonsterHasNegativeStatus(struct entity *monster, bool8 check_held_item);
