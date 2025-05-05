@@ -119,6 +119,7 @@
 .public CURSOR_ANIMATION_CONTROL
 .public DEBUG_MENU_DEFAULT_WINDOW_PARAMS
 .public DecompressAtHalf
+.public DelayWteFree
 .public DIALOGUE_BOX_DEFAULT_WINDOW_PARAMS
 .public FileClose
 .public FileRom_HandleOpen
@@ -186,7 +187,6 @@
 .public sub_0201D110
 .public sub_0201D9C8
 .public sub_0201E12C
-.public sub_0201E13C
 .public sub_0201F2A0
 .public sub_02020A9C
 .public sub_02020B14

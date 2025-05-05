@@ -8,8 +8,8 @@
 .public GetMonsterIdToSpawn
 .public GetTileAtEntity
 .public GetTileSafe
-.public MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 .public MewSpawnCheck
+.public MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 .public MultiplyByFixedPoint
-.public SpawnMonster
 .public ov10_022C4560
+.public SpawnMonster

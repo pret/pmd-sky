@@ -57,8 +57,8 @@ _01FF80AC:
 	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, pc}
 	arm_func_end CopyAndInterleave
 
-	arm_func_start sub_01FF80B0
-sub_01FF80B0: ; 0x01FF80B0
+	arm_func_start CopyAndInterleave0
+CopyAndInterleave0: ; 0x01FF80B0
 	stmdb sp!, {r0, r1, r2, r3, r4, r5, r6, r7, lr}
 	and r3, r3, #0xf
 	mov r6, #0
@@ -89,7 +89,7 @@ _01FF80C4:
 	blt _01FF80C4
 _01FF811C:
 	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_01FF80B0
+	arm_func_end CopyAndInterleave0
 _01FF8120:
 	.word Render3dRectangle
 	.word Render3dQuadrilateral

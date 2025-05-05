@@ -2,8 +2,8 @@
 .public ApplyItemEffect
 .public CanMonsterUseItem
 .public ChangeMonsterAnimation
-.public DUNGEON_PTR
 .public DecrementStackItem
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__022F528C
 .public ExclusiveItemEffectFlagTest
@@ -15,14 +15,6 @@
 .public LogItemBlockedByEmbargo
 .public LogMessageByIdWithPopupCheckUser
 .public MonsterHasEmbargoStatus
-.public RemoveEmptyItemsInBagWrapper
-.public RemoveEquivItemNoHole
-.public RemoveGroundItem
-.public RemoveUsedItem
-.public ShouldDisplayEntityWrapper
-.public ShouldMonsterRunAwayVariation
-.public SpawnItem
-.public TryTriggerMonsterHouse
 .public ov29_022E56A0
 .public ov29_022E5728
 .public ov29_022E9A9C
@@ -40,3 +32,11 @@
 .public ov29_02347518
 .public ov29_02347BC8
 .public ov29_0234B034
+.public RemoveEmptyItemsInBagWrapper
+.public RemoveEquivItemNoHole
+.public RemoveGroundItem
+.public RemoveUsedItem
+.public ShouldDisplayEntityWrapper
+.public ShouldMonsterRunAwayVariation
+.public SpawnItem
+.public TryTriggerMonsterHouse

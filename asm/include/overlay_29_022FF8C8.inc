@@ -1,9 +1,9 @@
 #pragma once
 .public AbilityIsActive
 .public DUNGEON_PTR
+.public EntityIsValid__023000E4
 .public EXCL_ITEM_EFFECTS_WEATHER_ATK_SPEED_BOOST
 .public EXCL_ITEM_EFFECTS_WEATHER_MOVE_SPEED_BOOST
-.public EntityIsValid__023000E4
 .public ExclusiveItemEffectFlagTest
 .public GetApparentWeather
 .public GetExclusiveItemWithEffectFromBag
@@ -15,7 +15,7 @@
 .public ItemIsActive__022FF898
 .public LogMessageByIdWithPopupCheckUser
 .public MonsterIsType
-.public SubstitutePlaceholderStringTags
-.public UpdateStateFlags
 .public ov29_022E655C
 .public ov29_02344B44
+.public SubstitutePlaceholderStringTags
+.public UpdateStateFlags

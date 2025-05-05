@@ -301,6 +301,7 @@
 .public BulkItemToItem
 .public CALCIUM_STAT_BOOST
 .public CopyAndInterleave
+.public CopyAndInterleave0
 .public CopyBitsFrom
 .public CopyBitsTo
 .public CopyStringFromId
@@ -474,7 +475,6 @@
 .public strlen
 .public strncmp
 .public strstr
-.public sub_01FF80B0
 .public sub_01FF8F04
 .public sub_02002778
 .public sub_020027E8

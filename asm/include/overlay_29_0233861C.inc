@@ -5,6 +5,7 @@
 .public abs
 .public ConvertWallsToChasms
 .public CORNER_CARDINAL_NEIGHBOR_IS_OPEN
+.public DelayWteFree
 .public DIRECTIONS_XY
 .public DirectoryFileMngr_OpenDirectoryFile
 .public DUNGEON_PTR
@@ -86,7 +87,6 @@
 .public sub_0200B3FC
 .public sub_0200C008
 .public sub_0201B9F8
-.public sub_0201E13C
 .public sub_0201F2A0
 .public sub_0204AEA0
 .public sub_0204AEC0

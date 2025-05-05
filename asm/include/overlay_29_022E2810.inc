@@ -1,7 +1,8 @@
 #pragma once
+.public abs
 .public CanSeeInvisibleMonsters
-.public DUNGEON_PTR
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public EntityIsValid__022E1A1C
 .public EntityIsValid__022E32E8
 .public GetForcedLossReason
@@ -11,11 +12,6 @@
 .public IsPositionActuallyInSight
 .public IsPositionInSight
 .public ItemIsActive__022E330C
-.public StringFromId
-.public TeamMemberHasEnabledIqSkill
-.public UpdateMinimap
-.public UpdateTrapsVisibility
-.public abs
 .public ov29_022E34C8
 .public ov29_022E3534
 .public ov29_022E3A58
@@ -30,5 +26,9 @@
 .public ov29_0234B034
 .public ov29_0237C84C
 .public strcpy
+.public StringFromId
 .public sub_02009194
 .public sub_020091B0
+.public TeamMemberHasEnabledIqSkill
+.public UpdateMinimap
+.public UpdateTrapsVisibility

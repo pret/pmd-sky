@@ -63,6 +63,7 @@
 .public Debug_Print
 .public Debug_Print0
 .public DecompressAtNormalVeneer
+.public DelayWteFree
 .public DeleteWanTableEntryVeneer
 .public DeleteWindow
 .public DrawTeamStats
@@ -519,7 +520,6 @@
 .public sub_0201DF38
 .public sub_0201E020
 .public sub_0201E12C
-.public sub_0201E13C
 .public sub_0201E7D8
 .public sub_0201F2A0
 .public sub_0201F2E4
