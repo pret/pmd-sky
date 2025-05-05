@@ -9,10 +9,10 @@
 .public IsFloorOver
 .public IsMonster__0231A9D4
 .public LogMessageByIdWithPopupCheckUser
-.public SubstitutePlaceholderStringTags
-.public TryActivateTruant
-.public UpdateMovePp
 .public ov10_022C459C
 .public ov29_022E3ED0
 .public ov29_022FA574
 .public ov29_0232145C
+.public SubstitutePlaceholderStringTags
+.public TryActivateTruant
+.public UpdateMovePp

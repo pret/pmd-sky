@@ -1,10 +1,10 @@
 #pragma once
-.public DEFAULT_TILE
-.public DIRECTIONS_XY
-.public DUNGEON_PTR
 .public Debug_Print0
+.public DEFAULT_TILE
 .public DetermineMonsterShadow
+.public DIRECTIONS_XY
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public EntityIsValid__02337CA8
 .public GetBgRegionArea
 .public GetLeader
@@ -15,8 +15,6 @@
 .public IsCurrentFixedRoomBossFight
 .public IsGoldenChamber
 .public IsSecretBazaar
-.public RandIntSafe
-.public SECONDARY_TERRAIN_TYPES
 .public ov10_022C2588
 .public ov10_022C25EC
 .public ov10_022C2638
@@ -39,6 +37,8 @@
 .public ov29_0237CAA0
 .public ov29_0237CAAC
 .public ov29_0237CAB8
+.public RandIntSafe
+.public SECONDARY_TERRAIN_TYPES
 .public sub_0204AED0
 .public sub_02051D8C
 .public sub_02051E60

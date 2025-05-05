@@ -9,8 +9,6 @@
 .public HasDropeyeStatus
 .public HiddenStairsPresent
 .public IsPositionActuallyInSight
-.public PopulateActiveMonsterPtrs
-.public SECONDARY_TERRAIN_TYPES
 .public ov29_022DE954
 .public ov29_022DE9F8
 .public ov29_022DEA10
@@ -20,3 +18,5 @@
 .public ov29_02304830
 .public ov29_0237C754
 .public ov29_0237C79C
+.public PopulateActiveMonsterPtrs
+.public SECONDARY_TERRAIN_TYPES

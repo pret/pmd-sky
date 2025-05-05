@@ -2999,7 +2999,7 @@ _020271C4:
 	strh r2, [ip, #0x58]
 	bl sub_0201E12C
 	add r0, sp, #0
-	bl sub_0201E13C
+	bl DelayWteFree
 	mov r0, r4
 	bl sub_02027228
 	mov r0, r4

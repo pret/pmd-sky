@@ -1,8 +1,8 @@
 #pragma once
-.public DIRECTIONS_XY
-.public DUNGEON_PTR
 .public DetermineAllMonsterShadow
 .public DetermineTileWalkableNeighbors
+.public DIRECTIONS_XY
+.public DUNGEON_PTR
 .public EAT_ITEM_EFFECT_IGNORE_LIST
 .public EnsureCanStandCurrentTile
 .public EntityIsValid__0231EDD8
@@ -15,9 +15,6 @@
 .public IsFullFloorFixedRoom
 .public IsItemValidVeneer
 .public LogMessageByIdWithPopupCheckUser
-.public StairsAlwaysReachable
-.public UpdateMinimap
-.public UpdateTrapsVisibility
 .public ov29_022E0378
 .public ov29_022EA370
 .public ov29_022F9C74
@@ -25,3 +22,6 @@
 .public ov29_0233665C
 .public ov29_0233785C
 .public ov29_0233FB1C
+.public StairsAlwaysReachable
+.public UpdateMinimap
+.public UpdateTrapsVisibility

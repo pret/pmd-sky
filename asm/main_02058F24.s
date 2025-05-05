@@ -21817,7 +21817,7 @@ sub_0206ABB0: ; 0x0206ABB0
 	mov r3, r2
 	bl sub_0201E12C
 	add r0, sp, #8
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r1, [r4, #0x20]
 	add r0, sp, #0x10
 	str r1, [r4, #0x18]
@@ -21837,7 +21837,7 @@ sub_0206ABB0: ; 0x0206ABB0
 	mov r3, #0
 	bl sub_0201E12C
 	add r0, sp, #0x10
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r1, [r4, #0x20]
 	add r0, sp, #0x10
 	str r1, [r4, #8]
@@ -21857,7 +21857,7 @@ sub_0206ABB0: ; 0x0206ABB0
 	mov r3, #0
 	bl sub_0201E12C
 	add r0, sp, #0x10
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r0, [r4, #0x20]
 	mov r2, #0
 	str r0, [r4, #0x10]

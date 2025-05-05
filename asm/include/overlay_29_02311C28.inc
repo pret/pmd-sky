@@ -6,9 +6,9 @@
 .public CalcStatusDuration
 .public ChangeShayminForme
 .public CopyStringFromId
+.public DefenderAbilityIsActive__02311B94
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
-.public DefenderAbilityIsActive__02311B94
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EntityIsValid__023118B4
@@ -25,12 +25,6 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MonsterIsType
 .public MultiplyByFixedPoint
-.public SECONDARY_TERRAIN_TYPES
-.public SPEED_BOOST_TURN_RANGE
-.public SafeguardIsActive
-.public SubstitutePlaceholderStringTags
-.public TryActivateSteadfast
-.public UpdateStatusIconFlags
 .public ov10_022C4618
 .public ov10_022C4728
 .public ov10_022C479C
@@ -90,3 +84,9 @@
 .public ov29_0234B084
 .public ov29_0234B0B4
 .public ov29_02353318
+.public SafeguardIsActive
+.public SECONDARY_TERRAIN_TYPES
+.public SPEED_BOOST_TURN_RANGE
+.public SubstitutePlaceholderStringTags
+.public TryActivateSteadfast
+.public UpdateStatusIconFlags

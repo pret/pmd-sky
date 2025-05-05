@@ -316,7 +316,7 @@ _023388E8:
 	mov r3, fp
 	bl ProcessWte
 	mov r0, r8
-	bl sub_0201E13C
+	bl DelayWteFree
 	add sl, sl, #1
 	cmp sl, #3
 	blt _023388E8
@@ -397,7 +397,7 @@ ov29_023389C4: ; 0x023389C4
 	mov r3, #0
 	bl ProcessWte
 	add r0, sp, #0
-	bl sub_0201E13C
+	bl DelayWteFree
 _02338A34:
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}

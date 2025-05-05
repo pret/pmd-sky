@@ -27121,7 +27121,7 @@ _022F29A4:
 	mov r3, r1
 	bl sub_0201E12C
 	add r0, sp, #0
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r1, _022F2AAC ; =ov11_023212B0
 	add r0, sp, #0
 	mov r2, #0
@@ -27132,7 +27132,7 @@ _022F29A4:
 	mov r3, #0
 	bl sub_0201E12C
 	add r0, sp, #0
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r0, _022F2AB0 ; =ov11_023212C8
 	mov r1, #0
 	bl sub_0201DF38
@@ -27150,7 +27150,7 @@ _022F2A14:
 	mov r3, r1
 	bl sub_0201E12C
 	add r0, sp, #0
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r0, _022F2AB8 ; =ov11_023212F8
 	mov r1, #0
 	bl sub_0201DF38
@@ -27168,7 +27168,7 @@ _022F2A58:
 	mov r3, r1
 	bl sub_0201E12C
 	add r0, sp, #0
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r0, _022F2AC0 ; =ov11_02321328
 	mov r1, #0
 	bl sub_0201DF38
@@ -67833,7 +67833,7 @@ _0231419C:
 	mov r3, r1
 	bl sub_0201E12C
 	add r0, sp, #0
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r0, _02314604 ; =ov11_02324B24
 	mov r1, #0
 	bl sub_0201DF38
@@ -67936,7 +67936,7 @@ _02314320:
 	mov r3, r1
 	bl sub_0201E12C
 	add r0, sp, #0
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r0, _0231462C ; =ov11_02324B54
 	mov r1, #0
 	bl sub_0201DF38
@@ -68058,7 +68058,7 @@ _023144EC:
 	mov r3, r1
 	bl sub_0201E12C
 	add r0, sp, #0
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r0, _02314658 ; =ov11_02324B84
 	mov r1, #0
 	bl sub_0201DF38
@@ -70223,7 +70223,7 @@ ov11_02316330: ; 0x02316330
 	mov r3, #0
 	bl sub_0201E12C
 	add r0, sp, #0
-	bl sub_0201E13C
+	bl DelayWteFree
 	ldr r0, _023163AC ; =ov11_02324BB4
 	mov r1, #0
 	bl sub_0201DF38

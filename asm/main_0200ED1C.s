@@ -15470,8 +15470,8 @@ sub_0201AAD8: ; 0x0201AAD8
 	bx lr
 	arm_func_end sub_0201AAD8
 
-	arm_func_start sub_0201AB0C
-sub_0201AB0C: ; 0x0201AB0C
+	arm_func_start ExecuteCopyToFlatVramCommand
+ExecuteCopyToFlatVramCommand: ; 0x0201AB0C
 	stmdb sp!, {r3, lr}
 	mov ip, r0
 	ldr r1, [ip, #4]
@@ -15500,7 +15500,7 @@ _0201AB60:
 	ldr r2, [ip]
 	ldr r0, [ip, #8]
 	mov r2, r2, asr #1
-	bl sub_01FF80B0
+	bl CopyAndInterleave0
 	ldmia sp!, {r3, pc}
 _0201AB7C:
 	ldr r1, [ip, #8]
@@ -15508,7 +15508,7 @@ _0201AB7C:
 	mov r0, #0
 	bl ArrayFill32
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0201AB0C
+	arm_func_end ExecuteCopyToFlatVramCommand
 
 	arm_func_start sub_0201AB90
 sub_0201AB90: ; 0x0201AB90
@@ -15522,8 +15522,8 @@ sub_0201AB90: ; 0x0201AB90
 _0201ABA8: .word MemZero
 	arm_func_end sub_0201AB90
 
-	arm_func_start sub_0201ABAC
-sub_0201ABAC: ; 0x0201ABAC
+	arm_func_start DecodeFragmentByteAssemblyTable
+DecodeFragmentByteAssemblyTable: ; 0x0201ABAC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	sub sp, sp, #0x18
 	mov r7, #0
@@ -15541,7 +15541,7 @@ _0201ABCC:
 	bl sub_0201AAD8
 	mov r4, r0
 	mov r0, r5
-	bl sub_0201AB0C
+	bl ExecuteCopyToFlatVramCommand
 	add r8, r8, r4
 	add r7, r7, r4
 _0201ABF8:
@@ -15551,7 +15551,7 @@ _0201ABF8:
 	mov r0, r7
 	add sp, sp, #0x18
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_0201ABAC
+	arm_func_end DecodeFragmentByteAssemblyTable
 
 	arm_func_start sub_0201AC10
 sub_0201AC10: ; 0x0201AC10
@@ -15659,7 +15659,7 @@ sub_0201AD44: ; 0x0201AD44
 	b _0201AD70
 _0201AD5C:
 	add r0, r6, r4, lsl #4
-	bl sub_0201AB0C
+	bl ExecuteCopyToFlatVramCommand
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
 	mov r4, r0, asr #0x10
@@ -16115,14 +16115,14 @@ sub_0201B2DC: ; 0x0201B2DC
 	bhs _0201B344
 	mov r2, ip
 	add r1, r5, lr
-	bl sub_0201ABAC
+	bl DecodeFragmentByteAssemblyTable
 	mov ip, r0
 	b _0201B37C
 _0201B344:
 	mov r3, ip
 	add r1, r5, lr
 	mov r2, #2
-	bl sub_0201ABAC
+	bl DecodeFragmentByteAssemblyTable
 	mov ip, r0
 	b _0201B37C
 _0201B35C:
@@ -16132,7 +16132,7 @@ _0201B35C:
 	mov r0, r1
 	mov r2, ip
 	add r1, r5, lr
-	bl sub_0201ABAC
+	bl DecodeFragmentByteAssemblyTable
 	mov ip, r0
 _0201B37C:
 	mov r0, ip
@@ -19428,11 +19428,11 @@ sub_0201DE10: ; 0x0201DE10
 	ldr r0, _0201DE48 ; =_020AFC70
 	ldr r0, [r0]
 	add r0, r0, #0xbc
-	bl sub_0201E230
+	bl PerformPlannedTextureVramTransfer
 	ldr r0, _0201DE48 ; =_020AFC70
 	ldr r0, [r0]
 	add r0, r0, #0xbc
-	bl sub_0201E1D4
+	bl ResetPlannedVramTransfer
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0201DE48: .word _020AFC70
@@ -19606,7 +19606,7 @@ sub_0201E050: ; 0x0201E050
 	mov r1, r0
 	mov r2, lr
 	add r0, ip, #0xbc
-	bl sub_0201E1E0
+	bl PlanCopyTextureToTextureVram
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0201E07C: .word _020AFC70
@@ -19623,7 +19623,7 @@ sub_0201E080: ; 0x0201E080
 	mov r1, r0
 	mov r3, r2
 	add r0, ip, #0xbc
-	bl sub_0201E1E0
+	bl PlanCopyTextureToTextureVram
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0201E0AC: .word _020AFC70
@@ -19647,7 +19647,7 @@ ProcessWte: ; 0x0201E0B0
 	ldr r0, [r0]
 	mov r2, ip
 	add r0, r0, #0xbc
-	bl sub_0201E1E0
+	bl PlanCopyTextureToTextureVram
 _0201E0F4:
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
@@ -19676,8 +19676,8 @@ sub_0201E12C: ; 0x0201E12C
 _0201E138: .word ProcessWte
 	arm_func_end sub_0201E12C
 
-	arm_func_start sub_0201E13C
-sub_0201E13C: ; 0x0201E13C
+	arm_func_start DelayWteFree
+DelayWteFree: ; 0x0201E13C
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #4
 	mov r2, #2
@@ -19689,7 +19689,7 @@ sub_0201E13C: ; 0x0201E13C
 	ldr r1, [r4]
 	mov r3, r2
 	add r0, r0, #0xbc
-	bl sub_0201E1E0
+	bl PlanCopyTextureToTextureVram
 	mov r0, #0
 	str r0, [r4]
 	str r0, [r4, #4]
@@ -19697,7 +19697,7 @@ sub_0201E13C: ; 0x0201E13C
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _0201E180: .word _020AFC70
-	arm_func_end sub_0201E13C
+	arm_func_end DelayWteFree
 
 	arm_func_start sub_0201E184
 sub_0201E184: ; 0x0201E184
@@ -19727,15 +19727,15 @@ sub_0201E190: ; 0x0201E190
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_0201E190
 
-	arm_func_start sub_0201E1D4
-sub_0201E1D4: ; 0x0201E1D4
+	arm_func_start ResetPlannedVramTransfer
+ResetPlannedVramTransfer: ; 0x0201E1D4
 	mov r1, #0
 	strh r1, [r0, #0xc]
 	bx lr
-	arm_func_end sub_0201E1D4
+	arm_func_end ResetPlannedVramTransfer
 
-	arm_func_start sub_0201E1E0
-sub_0201E1E0: ; 0x0201E1E0
+	arm_func_start PlanCopyTextureToTextureVram
+PlanCopyTextureToTextureVram: ; 0x0201E1E0
 	stmdb sp!, {r4, lr}
 	ldrsh r4, [r0, #0xc]
 	cmp r4, #0x80
@@ -19756,10 +19756,10 @@ sub_0201E1E0: ; 0x0201E1E0
 	strh r1, [r0, #0xc]
 	ldrsh r0, [r0, #0xc]
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0201E1E0
+	arm_func_end PlanCopyTextureToTextureVram
 
-	arm_func_start sub_0201E230
-sub_0201E230: ; 0x0201E230
+	arm_func_start PerformPlannedTextureVramTransfer
+PerformPlannedTextureVramTransfer: ; 0x0201E230
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r4, r0
 	ldrsh r7, [r4, #0xc]
@@ -19825,7 +19825,7 @@ _0201E304:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0201E310: .word _022A4F38
-	arm_func_end sub_0201E230
+	arm_func_end PerformPlannedTextureVramTransfer
 
 	arm_func_start sub_0201E314
 sub_0201E314: ; 0x0201E314
@@ -19935,7 +19935,7 @@ _0201E444:
 	mov r3, r8
 	add r1, r1, r5, lsl #9
 	add r2, r2, r5, lsl #9
-	bl sub_0201E1E0
+	bl PlanCopyTextureToTextureVram
 	ldr r0, [r6, #0x1c]
 	strb r7, [r0, r5]
 _0201E47C:
