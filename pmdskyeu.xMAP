@@ -2866,10 +2866,10 @@
   0201AB70 00000000 .text   $d	(main_0200ED1C.o)
   0201AB74 00000034 .text   sub_0201AAD8	(main_0200ED1C.o)
   0201AB74 00000000 .text   $a	(main_0200ED1C.o)
-  0201ABA8 00000084 .text   sub_0201AB0C	(main_0200ED1C.o)
+  0201ABA8 00000084 .text   ExecuteCopyToFlatVramCommand	(main_0200ED1C.o)
   0201AC2C 0000001C .text   sub_0201AB90	(main_0200ED1C.o)
   0201AC44 00000000 .text   $d	(main_0200ED1C.o)
-  0201AC48 00000064 .text   sub_0201ABAC	(main_0200ED1C.o)
+  0201AC48 00000064 .text   DecodeFragmentByteAssemblyTable	(main_0200ED1C.o)
   0201AC48 00000000 .text   $a	(main_0200ED1C.o)
   0201ACAC 00000010 .text   sub_0201AC10	(main_0200ED1C.o)
   0201ACBC 00000044 .text   sub_0201AC20	(main_0200ED1C.o)
@@ -3117,14 +3117,14 @@
   0201E1C8 00000010 .text   sub_0201E12C	(main_0200ED1C.o)
   0201E1D4 00000000 .text   $d	(main_0200ED1C.o)
   0201E1D8 00000000 .text   $a	(main_0200ED1C.o)
-  0201E1D8 00000048 .text   sub_0201E13C	(main_0200ED1C.o)
+  0201E1D8 00000048 .text   DelayWteFree	(main_0200ED1C.o)
   0201E21C 00000000 .text   $d	(main_0200ED1C.o)
   0201E220 0000000C .text   sub_0201E184	(main_0200ED1C.o)
   0201E220 00000000 .text   $a	(main_0200ED1C.o)
   0201E22C 00000044 .text   sub_0201E190	(main_0200ED1C.o)
-  0201E270 0000000C .text   sub_0201E1D4	(main_0200ED1C.o)
-  0201E27C 00000050 .text   sub_0201E1E0	(main_0200ED1C.o)
-  0201E2CC 000000E4 .text   sub_0201E230	(main_0200ED1C.o)
+  0201E270 0000000C .text   ResetPlannedVramTransfer	(main_0200ED1C.o)
+  0201E27C 00000050 .text   PlanCopyTextureToTextureVram	(main_0200ED1C.o)
+  0201E2CC 000000E4 .text   PerformPlannedTextureVramTransfer	(main_0200ED1C.o)
   0201E3AC 00000000 .text   $d	(main_0200ED1C.o)
   0201E3B0 00000000 .text   $a	(main_0200ED1C.o)
   0201E3B0 0000006C .text   sub_0201E314	(main_0200ED1C.o)
@@ -13086,7 +13086,7 @@
   01FF8000 00003FF0 .itcm   .itcm	(itcm.o)
   01FF8000 00000000 .itcm   $a	(itcm.o)
   01FF8000 000000B0 .itcm   CopyAndInterleave	(itcm.o)
-  01FF80B0 00000070 .itcm   sub_01FF80B0	(itcm.o)
+  01FF80B0 00000070 .itcm   CopyAndInterleave0	(itcm.o)
   01FF8120 00000000 .itcm   $d	(itcm.o)
   01FF8130 0000009C .itcm   Render3dSetTextureParams	(itcm.o)
   01FF8130 00000000 .itcm   $a	(itcm.o)
@@ -26170,8 +26170,8 @@
   022C4C4C 00000000 .text   $a	(overlay_10_022BCC7C.o)
   022C4C4C 00000058 .text   ov10_022C42F4	(overlay_10_022BCC7C.o)
   022C4CA4 00000048 .text   ov10_022C434C	(overlay_10_022BCC7C.o)
-  022C4CEC 00000000 .rodata INVENTORY_MENU_DEFAULT_WINDOW_PARAMS	(overlay_10_022BCC7C.o)
   022C4CEC 00017E0C .rodata .rodata	(overlay_10_022BCC7C.o)
+  022C4CEC 00000000 .rodata INVENTORY_MENU_DEFAULT_WINDOW_PARAMS	(overlay_10_022BCC7C.o)
   022C4CFC 00000000 .rodata ov10_022C43A4	(overlay_10_022BCC7C.o)
   022C4D08 00000000 .rodata ov10_022C43B0	(overlay_10_022BCC7C.o)
   022C4D18 00000000 .rodata ov10_022C43C0	(overlay_10_022BCC7C.o)
@@ -40301,5 +40301,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri May 02 05:21:04 2025
-# Link end time: Fri May 02 05:21:05 2025
+# Link start time: Mon May 05 03:02:02 2025
+# Link end time: Mon May 05 03:02:02 2025
