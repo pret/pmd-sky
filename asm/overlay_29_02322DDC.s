@@ -1320,8 +1320,8 @@ _02324028: .word MALE_ACCURACY_STAGE_MULTIPLIERS
 _0232402C: .word MALE_EVASION_STAGE_MULTIPLIERS
 	arm_func_end MoveHitCheck
 
-	arm_func_start ov29_02324030
-ov29_02324030: ; 0x02324030
+	arm_func_start BuildMoveTargetList
+BuildMoveTargetList: ; 0x02324030
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x18
 	mov sb, r1
@@ -1574,7 +1574,7 @@ _0232439C:
 	.align 2, 0
 _023243AC: .word DIRECTIONS_XY
 _023243B0: .word DUNGEON_PTR
-	arm_func_end ov29_02324030
+	arm_func_end BuildMoveTargetList
 
 	arm_func_start ov29_023243B4
 ov29_023243B4: ; 0x023243B4

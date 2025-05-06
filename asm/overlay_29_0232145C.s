@@ -1528,7 +1528,7 @@ _023228CC:
 	add r0, sp, #0x38
 	mov r1, r6
 	mov r2, r8
-	bl ov29_02324030
+	bl BuildMoveTargetList
 	add r0, sp, #0x38
 	mov r1, r6
 	bl ov29_02324C9C
