@@ -6,6 +6,7 @@
 .public AreEntitiesAdjacent
 .public AreLateGameTrapsEnabledWrapper
 .public BoostSpeedOneStage
+.public BuildMoveTargetList
 .public CalcStatusDuration
 .public CanMonsterUseMove
 .public DungeonRandInt
@@ -54,7 +55,6 @@
 .public ov29_02321288
 .public ov29_02322DDC
 .public ov29_023230FC
-.public ov29_02324030
 .public ov29_02324514
 .public ov29_02324698
 .public ov29_02324BE8
