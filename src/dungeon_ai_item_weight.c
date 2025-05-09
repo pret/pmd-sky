@@ -1,5 +1,6 @@
 #include "dungeon_ai_item_weight.h"
 #include "dungeon_ai_targeting_1.h"
+#include "dungeon_logic.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_statuses.h"
@@ -11,7 +12,6 @@
 #include "targeting.h"
 #include "util.h"
 
-extern bool8 MonsterHasNegativeStatus(struct entity *monster, bool8 check_held_item);
 extern enum mobility_type GetMobilityType(s16 monster_id);
 
 u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32 flags)
