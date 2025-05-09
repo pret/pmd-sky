@@ -1,5 +1,5 @@
-#ifndef HEADERS_TYPES_DUNGEON_MODE_DUNGEON_H_
-#define HEADERS_TYPES_DUNGEON_MODE_DUNGEON_H_
+#ifndef PMDSKY_DUNGEON_H
+#define PMDSKY_DUNGEON_H
 
 #include "dungeon_mode.h"
 #include "enums.h"
@@ -1762,5 +1762,4 @@ struct dungeon {
     u8 field_0x2cb13;
 };
 
-
-#endif
+#endif // PMDSKY_DUNGEON_H

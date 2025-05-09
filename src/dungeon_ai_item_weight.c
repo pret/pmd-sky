@@ -1,14 +1,17 @@
 #include "dungeon_ai_item_weight.h"
+#include "dungeon_ai_targeting_1.h"
+#include "dungeon_logic.h"
+#include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_statuses.h"
+#include "dungeon_util.h"
 #include "dungeon_util_static.h"
 #include "main_02054BE0.h"
 #include "number_util.h"
+#include "overlay_29_0231E9F0.h"
+#include "targeting.h"
 #include "util.h"
 
-extern bool8 IsAdjacentToEnemy(struct entity *entity);
-extern u8 GetMaxPpWrapper(struct move *move);
-extern bool8 MonsterHasNegativeStatus(struct entity *monster, bool8 check_held_item);
 extern enum mobility_type GetMobilityType(s16 monster_id);
 
 u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32 flags)
@@ -367,4 +370,19 @@ u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32
             break;
     }
     return item_weight;
+}
+
+bool8 IsAdjacentToEnemy(struct entity *entity)
+{
+    for (s32 direction = 0; direction < NUM_DIRECTIONS; direction++)
+    {
+        struct tile *map_tile = GetTile(entity->pos.x + DIRECTIONS_XY[direction].x, entity->pos.y + DIRECTIONS_XY[direction].y);
+        if (map_tile->monster != NULL)
+        {
+            s32 no_pokemon = map_tile->monster->type == ENTITY_NOTHING;
+            if (no_pokemon != TRUE && GetTreatmentBetweenMonsters(entity, map_tile->monster, FALSE, TRUE) == TREATMENT_TREAT_AS_ENEMY)
+                return TRUE;
+        }
+    }
+    return FALSE;
 }

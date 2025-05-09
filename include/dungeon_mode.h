@@ -2,15 +2,16 @@
 #define PMDSKY_DUNGEON_MODE_H
 
 #include "direction.h"
-#include "dungeon_mode_common.h"
 #include "enums.h"
 #include "item.h"
+#include "move.h"
 #include "graphics.h"
 #include "util.h"
 
 #define NUM_PICKED_IQ_SKILLS 3
 #define MAX_MON_MOVES 4
 #define MAX_SPEED_STAGE 4
+#define NUM_SPEED_COUNTERS 5
 
 // Used in various contexts, like with entity positions in the dungeon
 struct position {
