@@ -1,17 +1,28 @@
-#ifndef HEADERS_TYPES_DUNGEON_MODE_COMMON_H_
-#define HEADERS_TYPES_DUNGEON_MODE_COMMON_H_
+#ifndef PMDSKY_MOVE_H
+#define PMDSKY_MOVE_H
 
 #include "enums.h"
 
-enum move_flags_2
+enum move_flag
 {
-    MOVE_FLAGS_SEALED = 1 << 0,
-    MOVE_FLAGS_CONSUME_PP = 1 << 2,
-    MOVE_FLAGS_CONSUME_2_PP = 1 << 3,
-    MOVE_FLAGS_CONSUME_4_PP = 1 << 5,
-    MOVE_FLAGS_MULTITALENT_PP_BOOST = 1 << 8,
-    MOVE_FLAGS_EXCLUSIVE_ITEM_PP_BOOST = 1 << 9,
-    MOVE_FLAGS_UNKNOWN_PP_BOOST = 1 << 10,
+    MOVE_FLAG_EXISTS = 1 << 0,
+    MOVE_FLAG_SUBSEQUENT_IN_LINK_CHAIN = 1 << 1, // This move is linked with the previous move in the Pokémon's moveset.
+    MOVE_FLAG_ENABLED_FOR_AI = 1 << 2, // Enabled for the AI to use.
+    MOVE_FLAG_SET = 1 << 3, // This move can be triggered by pressing L+A instead of having to go to the move menu.
+    MOVE_FLAG_LAST_USED = 1 << 4, // The most recent move used by the Pokémon.
+    MOVE_FLAG_DISABLED = 1 << 5, // Disabled by an effect like Taunt.
+    MOVE_FLAG_INTERNAL_MARKER = 1 << 7     // Possibly some kind of flag used internally to mark a move and find it again
+};
+
+enum move_flag_2
+{
+    MOVE_FLAG_SEALED = 1 << 0,
+    MOVE_FLAG_CONSUME_PP = 1 << 2,
+    MOVE_FLAG_CONSUME_2_PP = 1 << 3,
+    MOVE_FLAG_CONSUME_4_PP = 1 << 5,
+    MOVE_FLAG_MULTITALENT_PP_BOOST = 1 << 8,
+    MOVE_FLAG_EXCLUSIVE_ITEM_PP_BOOST = 1 << 9,
+    MOVE_FLAG_UNKNOWN_PP_BOOST = 1 << 10,
 };
 
 // Monster move info
@@ -49,4 +60,4 @@ struct move {
     u8 ginseng;      // 0x7: Ginseng boost
 };
 
-#endif
+#endif // PMDSKY_MOVE_H

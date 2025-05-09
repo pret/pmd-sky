@@ -2,7 +2,7 @@
 #define PMDSKY_OVERLAY_29_0232E250_H
 
 #include "dungeon_mode.h"
-#include "dungeon_mode_common.h"
+#include "move.h"
 #include "item.h"
 
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).

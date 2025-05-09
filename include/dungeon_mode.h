@@ -2,9 +2,9 @@
 #define PMDSKY_DUNGEON_MODE_H
 
 #include "direction.h"
-#include "dungeon_mode_common.h"
 #include "enums.h"
 #include "item.h"
+#include "move.h"
 #include "graphics.h"
 #include "util.h"
 

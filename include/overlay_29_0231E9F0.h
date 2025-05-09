@@ -1,7 +1,7 @@
 #ifndef PMDSKY_OVERLAY_29_0231E9F0_H
 #define PMDSKY_OVERLAY_29_0231E9F0_H
 
-#include "dungeon_mode_common.h"
+#include "move.h"
 
 // Gets the maximum PP for a given move. A wrapper around the function in the ARM 9 binary.
 // return: max PP for the given move, capped at 99
