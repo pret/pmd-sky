@@ -6,7 +6,6 @@
 .public GetName
 .public GetNameRaw
 .public GetNameWithGender
-.public IsBlinded
 .public StringFromId
 .public ov29_0234B0B4
 .public ov29_023527C0
