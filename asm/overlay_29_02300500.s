@@ -1,18 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_023004E4.inc"
+	.include "overlay_29_02300500.inc"
 
 	.text
-
-	arm_func_start MonsterHasNonvolatileNonsleepStatus
-MonsterHasNonvolatileNonsleepStatus: ; 0x023004E4
-	ldr r0, [r0, #0xb4]
-	ldrb r0, [r0, #0xbf]
-	cmp r0, #0
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end MonsterHasNonvolatileNonsleepStatus
 
 	arm_func_start MonsterHasImmobilizingStatus
 MonsterHasImmobilizingStatus: ; 0x02300500

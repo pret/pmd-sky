@@ -2,7 +2,6 @@
 #include "dungeon_logic_0.h"
 #include "dungeon_util_static.h"
 
-extern bool8 MonsterHasNonvolatileNonsleepStatus(struct entity *monster);
 extern bool8 MonsterHasImmobilizingStatus(struct entity *monster);
 extern bool8 MonsterHasAttackInterferingStatus(struct entity *monster);
 extern bool8 MonsterHasSkillInterferingStatus(struct entity *monster);

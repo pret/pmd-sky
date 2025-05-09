@@ -15,3 +15,8 @@ bool8 IsMonsterDrowsy(struct entity *monster)
 
     return FALSE;
 }
+
+bool8 MonsterHasNonvolatileNonsleepStatus(struct entity *monster)
+{
+    return GetEntInfo(monster)->burn_class_status.burn != STATUS_BURN_NONE;
+}
