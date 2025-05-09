@@ -1,55 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0231E8F0.inc"
+	.include "overlay_29_0231E990.inc"
 
 	.text
-
-	arm_func_start IsAdjacentToEnemy
-IsAdjacentToEnemy: ; 0x0231E8F0
-	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	mov r5, #0
-	mov sl, #1
-	mov r6, r0
-	mov sb, r5
-	mov r8, r5
-	mov r7, sl
-	ldr r4, _0231E98C ; =DIRECTIONS_XY
-	b _0231E97C
-_0231E914:
-	mov r1, r5, lsl #2
-	add r0, r4, r5, lsl #2
-	ldrsh ip, [r6, #4]
-	ldrsh r3, [r4, r1]
-	ldrsh r2, [r6, #6]
-	ldrsh r1, [r0, #2]
-	add r0, ip, r3
-	add r1, r2, r1
-	bl GetTile
-	ldr r1, [r0, #0xc]
-	cmp r1, #0
-	beq _0231E978
-	ldr r0, [r1]
-	cmp r0, #0
-	moveq r0, sl
-	movne r0, sb
-	cmp r0, #1
-	beq _0231E978
-	mov r0, r6
-	mov r2, r8
-	mov r3, r7
-	bl GetTreatmentBetweenMonsters
-	cmp r0, #1
-	moveq r0, #1
-	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-_0231E978:
-	add r5, r5, #1
-_0231E97C:
-	cmp r5, #8
-	blt _0231E914
-	mov r0, #0
-	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-	.align 2, 0
-_0231E98C: .word DIRECTIONS_XY
-	arm_func_end IsAdjacentToEnemy
 
 	arm_func_start ShouldTryEatItem
 ShouldTryEatItem: ; 0x0231E990
