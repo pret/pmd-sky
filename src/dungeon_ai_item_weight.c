@@ -7,10 +7,10 @@
 #include "dungeon_util_static.h"
 #include "main_02054BE0.h"
 #include "number_util.h"
+#include "overlay_29_0231E9F0.h"
 #include "targeting.h"
 #include "util.h"
 
-extern u8 GetMaxPpWrapper(struct move *move);
 extern bool8 MonsterHasNegativeStatus(struct entity *monster, bool8 check_held_item);
 extern enum mobility_type GetMobilityType(s16 monster_id);
 

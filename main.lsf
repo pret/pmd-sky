@@ -374,6 +374,8 @@ Overlay OVY_29
 	Object asm/overlay_29_0231CBEC.o
 	Object src/dungeon_ai_item_weight.o
 	Object asm/overlay_29_0231E990.o
+	Object src/overlay_29_0231E9F0.o
+	Object asm/overlay_29_0231EA04.o
 	Object src/overlay_29_0231EDD8.o
 	Object asm/overlay_29_0231EDFC.o
 	Object src/overlay_29_0231F570.o
