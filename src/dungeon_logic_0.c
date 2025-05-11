@@ -57,3 +57,8 @@ bool8 MonsterHasSkillInterferingStatus(struct entity *monster)
 
     return FALSE;
 }
+
+bool8 MonsterHasLeechSeedStatus(struct entity *monster)
+{
+    return GetEntInfo(monster)->leech_seed_class_status.leech_seed == STATUS_LEECH_SEED_LEECH_SEED;
+}

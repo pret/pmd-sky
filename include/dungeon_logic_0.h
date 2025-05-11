@@ -15,5 +15,6 @@ bool8 MonsterHasImmobilizingStatus(struct entity *monster);
 bool8 MonsterHasAttackInterferingStatus(struct entity *monster);
 // Checks if a monster has one of the non-self-inflicted statuses in the "curse" group, which loosely includes status conditions that interfere with the monster's skills or ability to do things: STATUS_CURSED, STATUS_DECOY, STATUS_GASTRO_ACID, STATUS_HEAL_BLOCK, STATUS_EMBARGO.
 bool8 MonsterHasSkillInterferingStatus(struct entity *monster);
+bool8 MonsterHasLeechSeedStatus(struct entity *monster);
 
 #endif //PMDSKY_DUNGEON_LOGIC_0_H

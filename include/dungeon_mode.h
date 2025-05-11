@@ -174,6 +174,20 @@ struct curse_class_status {
     u8 curse_damage_countdown;
 };
 
+struct leech_seed_class_status {
+    u8 leech_seed; // 0x0: STATUS_LEECH_SEED if 1
+    // 0x4: Used to track the statuses::statuses_unique_id of the relevant monster for
+    // statuses like Leech Seed and Destiny Bond.
+    u32 statuses_applier_id;
+    // 0x8: Index into entity_table_hdr::monster_slot_ptrs in the dungeon that the user
+    // (drainer) is held.
+    u8 leech_seed_source_monster_index;
+    u8 leech_seed_turns; // 0x9: Turns left for the status in statuses::leech_seed
+    // 0xA: Turns left until residual damage for the status in statuses::leech_seed, if applicable.
+    // Behaves weirdly without an afflictor
+    u8 leech_seed_damage_countdown;
+};
+
 struct long_toss_class_status {
     u8 status; // 0x0: STATUS_LONG_TOSS if 1
 };
@@ -296,21 +310,7 @@ struct monster {
     struct bide_class_status bide_class_status; // 0xD2
     struct reflect_class_status reflect_class_status; // 0xD5
     struct curse_class_status curse_class_status; // 0xD8
-    u8 leech_seed; // 0xE0: STATUS_LEECH_SEED if 1
-    u8 field_0xe1;
-    u8 field_0xe2;
-    u8 field_0xe3;
-    // 0xE4: Used to track the statuses::statuses_unique_id of the relevant monster for
-    // statuses like Leech Seed and Destiny Bond.
-    u32 statuses_applier_id;
-    // 0xE8: Index into entity_table_hdr::monster_slot_ptrs in the dungeon that the user
-    // (drainer) is held.
-    u8 leech_seed_source_monster_index;
-    u8 leech_seed_turns; // 0xE9: Turns left for the status in statuses::leech_seed
-    // 0xEA: Turns left until residual damage for the status in statuses::leech_seed, if applicable.
-    // Behaves weirdly without an afflictor
-    u8 leech_seed_damage_countdown;
-    u8 field_0xEB;
+    struct leech_seed_class_status leech_seed_class_status; // 0xE0
     u8 sure_shot;         // 0xEC: STATUS_SURE_SHOT if 1
     u8 sure_shot_turns;   // 0xED: Turns left for the status in statuses::sure_shot
     struct long_toss_class_status long_toss_class_status; // 0xEE
