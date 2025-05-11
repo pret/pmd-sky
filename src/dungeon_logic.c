@@ -2,7 +2,6 @@
 #include "dungeon_logic_0.h"
 #include "dungeon_util_static.h"
 
-extern bool8 IsMonsterMuzzled(struct entity *monster);
 extern bool8 MonsterHasMiracleEyeStatus(struct entity *monster);
 
 bool8 MonsterHasNegativeStatus(struct entity *monster, bool8 check_held_item)

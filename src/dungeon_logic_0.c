@@ -83,3 +83,11 @@ bool8 IsMonsterVisuallyImpaired(struct entity *monster, bool8 check_held_item)
 
     return FALSE;
 }
+
+bool8 IsMonsterMuzzled(struct entity *monster)
+{
+    if (GetEntInfo(monster)->muzzled == 1)
+        return TRUE;
+
+    return FALSE;
+}

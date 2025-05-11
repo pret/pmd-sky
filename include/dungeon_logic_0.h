@@ -21,5 +21,7 @@ bool8 MonsterHasLeechSeedStatus(struct entity *monster);
 bool8 MonsterHasWhifferStatus(struct entity *monster);
 // Checks if a monster's vision is impaired somehow. This includes the checks in IsBlinded, as well as STATUS_CROSS_EYED and STATUS_DROPEYE.
 bool8 IsMonsterVisuallyImpaired(struct entity *monster, bool8 check_held_item);
+// Checks if a monster has the muzzled status.
+bool8 IsMonsterMuzzled(struct entity *monster);
 
 #endif //PMDSKY_DUNGEON_LOGIC_0_H
