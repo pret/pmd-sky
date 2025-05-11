@@ -10,5 +10,8 @@ bool8 IsMonsterDrowsy(struct entity *monster);
 bool8 MonsterHasNonvolatileNonsleepStatus(struct entity *monster);
 // Checks if a monster has one of the non-self-inflicted statuses in the "freeze" group, which includes status conditions that immobilize the monster: STATUS_FROZEN, STATUS_SHADOW_HOLD, STATUS_WRAPPED, STATUS_PETRIFIED, STATUS_CONSTRICTION, and STATUS_FAMISHED.
 bool8 MonsterHasImmobilizingStatus(struct entity *monster);
+// Checks if a monster has one of the statuses in the "cringe" group, which includes status conditions that interfere with the monster's ability to attack: STATUS_CRINGE, STATUS_CONFUSED, STATUS_PAUSED, STATUS_COWERING, STATUS_TAUNTED, STATUS_ENCORE, STATUS_INFATUATED, and STATUS_DOUBLE_SPEED.
+// STATUS_DOUBLE_SPEED is probably included based on enum status_id? Unless it's handled differently somehow.
+bool8 MonsterHasAttackInterferingStatus(struct entity *monster);
 
 #endif //PMDSKY_DUNGEON_LOGIC_0_H

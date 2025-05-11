@@ -31,3 +31,8 @@ bool8 MonsterHasImmobilizingStatus(struct entity *monster)
 
     return FALSE;
 }
+
+bool8 MonsterHasAttackInterferingStatus(struct entity *monster)
+{
+    return GetEntInfo(monster)->cringe_class_status.cringe != STATUS_NONE;
+}

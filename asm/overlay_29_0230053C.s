@@ -1,18 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02300520.inc"
+	.include "overlay_29_0230053C.inc"
 
 	.text
-
-	arm_func_start MonsterHasAttackInterferingStatus
-MonsterHasAttackInterferingStatus: ; 0x02300520
-	ldr r0, [r0, #0xb4]
-	ldrb r0, [r0, #0xd0]
-	cmp r0, #0
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end MonsterHasAttackInterferingStatus
 
 	arm_func_start MonsterHasSkillInterferingStatus
 MonsterHasSkillInterferingStatus: ; 0x0230053C
