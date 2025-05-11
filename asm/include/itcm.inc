@@ -6,7 +6,7 @@
 .public _02099784
 .public _02099E44
 .public _020A2CF8
-.public _020B09B4
+.public MONSTER_DATA_TABLE_PTR
 .public _0229AFC0
 .public _0229AFCC
 .public _0229AFE4

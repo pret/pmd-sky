@@ -39,6 +39,8 @@ Static main
 	Object asm/main_02034974.o
 	Object src/number_util.o
 	Object asm/main_02051098.o
+	Object src/main_02052874.o
+	Object asm/main_02052890.o
 	Object src/main_02054BE0.o
 	Object asm/main_02054C24.o
 	Object src/pokemon.o
@@ -296,9 +298,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022FF8C8.o
 	Object src/overlay_29_023000E4.o
 	Object asm/overlay_29_02300108.o
-	Object src/dungeon_logic_0.o
-	Object asm/overlay_29_02300500.o
 	Object src/dungeon_logic.o
+	Object src/dungeon_logic_1.o
 	Object asm/overlay_29_023007A8.o
 	Object src/dungeon_capabilities.o
 	Object asm/overlay_29_023008DC.o
