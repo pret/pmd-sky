@@ -296,9 +296,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022FF8C8.o
 	Object src/overlay_29_023000E4.o
 	Object asm/overlay_29_02300108.o
-	Object src/dungeon_logic_0.o
-	Object asm/overlay_29_02300618.o
 	Object src/dungeon_logic.o
+	Object src/dungeon_logic_1.o
 	Object asm/overlay_29_023007A8.o
 	Object src/dungeon_capabilities.o
 	Object asm/overlay_29_023008DC.o
