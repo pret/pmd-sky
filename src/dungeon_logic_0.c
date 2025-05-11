@@ -1,4 +1,5 @@
 #include "dungeon_logic_0.h"
+#include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 
 bool8 IsMonsterDrowsy(struct entity *monster)
@@ -66,4 +67,19 @@ bool8 MonsterHasLeechSeedStatus(struct entity *monster)
 bool8 MonsterHasWhifferStatus(struct entity *monster)
 {
     return GetEntInfo(monster)->sure_shot_class_status.sure_shot == STATUS_SURE_SHOT_WHIFFER;
+}
+
+bool8 IsMonsterVisuallyImpaired(struct entity *monster, bool8 check_held_item)
+{
+    struct monster *pokemon_info = GetEntInfo(monster);
+    if (IsBlinded(monster, check_held_item))
+        return TRUE;
+
+    if (pokemon_info->blinker_class_status.blinded == STATUS_BLINKER_CROSS_EYED)
+        return TRUE;
+
+    if (pokemon_info->blinker_class_status.blinded == STATUS_BLINKER_DROPEYE)
+        return TRUE;
+
+    return FALSE;
 }
