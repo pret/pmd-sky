@@ -6,13 +6,12 @@
 #include "dungeon_statuses.h"
 #include "dungeon_util.h"
 #include "dungeon_util_static.h"
+#include "main_02052874.h"
 #include "main_02054BE0.h"
 #include "number_util.h"
 #include "overlay_29_0231E9F0.h"
 #include "targeting.h"
 #include "util.h"
-
-extern enum mobility_type GetMobilityType(s16 monster_id);
 
 u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32 flags)
 {

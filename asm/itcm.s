@@ -1666,7 +1666,7 @@ _01FF948C:
 	mov r0, #0
 	bx lr
 _01FF9494:
-	ldr r2, _01FF94D0 ; =_020B09B4
+	ldr r2, _01FF94D0 ; =MONSTER_DATA_TABLE_PTR
 	mov r3, r0, lsl #0x1f
 	ldr r2, [r2, #0x14]
 	mov r0, r0, asr #1
@@ -1682,7 +1682,7 @@ _01FF9494:
 	bx lr
 	.align 2, 0
 _01FF94CC: .word 0x0000022B
-_01FF94D0: .word _020B09B4
+_01FF94D0: .word MONSTER_DATA_TABLE_PTR
 	arm_func_end GetKeyN2M
 
 	arm_func_start GetKeyN2MBaseForm
@@ -1743,7 +1743,7 @@ GetKeyM2N: ; 0x01FF9540
 _01FF9564:
 	mov r0, #0
 _01FF9568:
-	ldr r1, _01FF95A4 ; =_020B09B4
+	ldr r1, _01FF95A4 ; =MONSTER_DATA_TABLE_PTR
 	mov r2, r0, lsl #0x1f
 	ldr r3, [r1, #0x1c]
 	mov r1, r0, asr #1
@@ -1759,7 +1759,7 @@ _01FF9568:
 	bx lr
 	.align 2, 0
 _01FF95A0: .word 0x00000483
-_01FF95A4: .word _020B09B4
+_01FF95A4: .word MONSTER_DATA_TABLE_PTR
 _01FF95A8: .word 0x000003FF
 	arm_func_end GetKeyM2N
 
