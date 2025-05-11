@@ -20,3 +20,14 @@ bool8 MonsterHasNonvolatileNonsleepStatus(struct entity *monster)
 {
     return GetEntInfo(monster)->burn_class_status.burn != STATUS_BURN_NONE;
 }
+
+bool8 MonsterHasImmobilizingStatus(struct entity *monster)
+{
+    struct monster *pokemon_info = GetEntInfo(monster);
+    if (pokemon_info->frozen_class_status.freeze != STATUS_FROZEN_WRAP &&
+        pokemon_info->frozen_class_status.freeze != STATUS_FROZEN_INGRAIN &&
+        pokemon_info->frozen_class_status.freeze != STATUS_FROZEN_NONE)
+        return TRUE;
+
+    return FALSE;
+}

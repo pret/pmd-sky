@@ -1,19 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02300500.inc"
+	.include "overlay_29_02300520.inc"
 
 	.text
-
-	arm_func_start MonsterHasImmobilizingStatus
-MonsterHasImmobilizingStatus: ; 0x02300500
-	ldr r0, [r0, #0xb4]
-	ldrb r0, [r0, #0xc4]
-	cmp r0, #3
-	cmpne r0, #5
-	cmpne r0, #0
-	movne r0, #1
-	moveq r0, #0
-	bx lr
-	arm_func_end MonsterHasImmobilizingStatus
 
 	arm_func_start MonsterHasAttackInterferingStatus
 MonsterHasAttackInterferingStatus: ; 0x02300520
