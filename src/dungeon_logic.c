@@ -2,7 +2,6 @@
 #include "dungeon_logic_0.h"
 #include "dungeon_util_static.h"
 
-extern bool8 MonsterHasSkillInterferingStatus(struct entity *monster);
 extern bool8 MonsterHasLeechSeedStatus(struct entity *monster);
 extern bool8 MonsterHasWhifferStatus(struct entity *monster);
 extern bool8 IsMonsterVisuallyImpaired(struct entity *monster, bool8 check_held_item);

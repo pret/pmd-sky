@@ -1,30 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0230053C.inc"
+	.include "overlay_29_02300588.inc"
 
 	.text
-
-	arm_func_start MonsterHasSkillInterferingStatus
-MonsterHasSkillInterferingStatus: ; 0x0230053C
-	ldr r0, [r0, #0xb4]
-	ldrb r0, [r0, #0xd8]
-	cmp r0, #1
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #2
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #4
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #5
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #6
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end MonsterHasSkillInterferingStatus
 
 	arm_func_start MonsterHasLeechSeedStatus
 MonsterHasLeechSeedStatus: ; 0x02300588
