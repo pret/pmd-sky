@@ -1,18 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_023005A4.inc"
+	.include "overlay_29_023005C0.inc"
 
 	.text
-
-	arm_func_start MonsterHasWhifferStatus
-MonsterHasWhifferStatus: ; 0x023005A4
-	ldr r0, [r0, #0xb4]
-	ldrb r0, [r0, #0xec]
-	cmp r0, #2
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end MonsterHasWhifferStatus
 
 	arm_func_start IsMonsterVisuallyImpaired
 IsMonsterVisuallyImpaired: ; 0x023005C0

@@ -188,6 +188,11 @@ struct leech_seed_class_status {
     u8 leech_seed_damage_countdown;
 };
 
+struct sure_shot_class_status {
+    u8 sure_shot;         // 0x0: STATUS_SURE_SHOT if 1
+    u8 sure_shot_turns;   // 0x1: Turns left for the status in statuses::sure_shot
+};
+
 struct long_toss_class_status {
     u8 status; // 0x0: STATUS_LONG_TOSS if 1
 };
@@ -311,8 +316,7 @@ struct monster {
     struct reflect_class_status reflect_class_status; // 0xD5
     struct curse_class_status curse_class_status; // 0xD8
     struct leech_seed_class_status leech_seed_class_status; // 0xE0
-    u8 sure_shot;         // 0xEC: STATUS_SURE_SHOT if 1
-    u8 sure_shot_turns;   // 0xED: Turns left for the status in statuses::sure_shot
+    struct sure_shot_class_status sure_shot_class_status; // 0xEC
     struct long_toss_class_status long_toss_class_status; // 0xEE
     struct invisible_class_status invisible_class_status; // 0xEF
     struct blinker_class_status blinker_class_status; // 0xF1

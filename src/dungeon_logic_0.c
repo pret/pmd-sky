@@ -62,3 +62,8 @@ bool8 MonsterHasLeechSeedStatus(struct entity *monster)
 {
     return GetEntInfo(monster)->leech_seed_class_status.leech_seed == STATUS_LEECH_SEED_LEECH_SEED;
 }
+
+bool8 MonsterHasWhifferStatus(struct entity *monster)
+{
+    return GetEntInfo(monster)->sure_shot_class_status.sure_shot == STATUS_SURE_SHOT_WHIFFER;
+}
