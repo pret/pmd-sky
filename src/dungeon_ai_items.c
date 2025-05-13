@@ -1,6 +1,7 @@
 #include "dungeon_ai_items.h"
 #include "dg_random.h"
 #include "direction.h"
+#include "dungeon_action.h"
 #include "dungeon_ai_item_weight.h"
 #include "dungeon_ai_items_1.h"
 #include "dungeon_capabilities_1.h"
@@ -20,7 +21,6 @@ u32 AI_THROWN_ITEM_DIRECTIONS[NUM_DIRECTIONS] = {0};
 extern volatile s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
-extern void SetMonsterActionFields(struct action_data *action_pointer, u16 action);
 extern bool8 TestItemAiFlag(s16 item_id, s32 flag);
 extern void GetPossibleAiArcItemTargets(struct entity *user, struct item *item, struct position positions[], bool8 always_add_position);
 extern s32 GetDirectionTowardsPosition(struct position *origin, struct position *target);
