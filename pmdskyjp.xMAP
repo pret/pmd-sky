@@ -205,196 +205,200 @@
                                                                62](TryIncreaseHp,func) found in global overlay_29_0231516C.o
                                                                 63](TryActivateQuickFeet,func) found in global overlay_29_02311C28.o
                                                                  64](CalcStatusDuration,func) found in global overlay_29_022EAB50.o
-                                                                  65](FRACTIONAL_TURN_SEQUENCE,notype) found in global overlay_29_rodata_0235173C.o
-                                                                  65](ChangeLeader,func) found in global overlay_29_022F05B4.o
-                                                                   66](TryTriggerMonsterHouse,func) found in global overlay_29_02307F4C.o
-                                                                    67](EntityIsValid__02307EF8,func) found in global overlay_29_02307EF8.o
-                                                                    67](SpawnMonster,func) found in global overlay_29_022FC9C0.o
-                                                                     68](ov29_022FBF30,func) found in global overlay_29_022FBB1C.o
-                                                                      69](DungeonRngSetPrimary,func) found in global overlay_29_022EAB50.o
-                                                                      69](EntityIsValid__022FC99C,func) found in global overlay_29_022FC99C.o
-                                                                      69](ov29_022FCD04,func) found in global overlay_29_022FC9C0.o
-                                                                      69](IsInvalidSpawnTile,func) found in global overlay_29_022FEDBC.o
-                                                                       70](IqSkillIsEnabled,func) found in global dungeon_pokemon_attributes_1.o
-                                                                       70](IsFloating,func) found in global overlay_29_02317844.o
+                                                                  65](ov29_02352030,notype) found in global overlay_29_rodata_0235173C.o
+                                                                  65](ov29_02321260,func) found in global overlay_29_02320788.o
+                                                                  65](UpdateEntityPixelPos,func) found in global dg_object.o
+                                                                  65](IqSkillIsEnabled,func) found in global dungeon_pokemon_attributes_1.o
+                                                                  65](DungeonRandRange,func) found in global dg_random.o
+                                                                 64](IsProtectedFromNegativeStatus,func) found in global overlay_29_02301FBC.o
+                                                                  65](ItemIsActive__023026CC,func) found in global overlay_29_023026CC.o
+                                                                  65](ov29_02301A84,func) found in global overlay_29_02301A84.o
+                                                                   66](ov29_02324BE8,func) found in global overlay_29_02324698.o
+                                                                   66](DefenderAbilityIsActive__02301A0C,func) found in global overlay_29_023018AC.o
+                                                                    67](GetApparentWeather,func) found in global overlay_29_02333FD0.o
+                                                                     68](TryWeatherFormChange,func) found in global overlay_29_023350FC.o
+                                                                     68](EntityIsValid__023350D8,func) found in global overlay_29_023350D8.o
+                                                                     68](GravityIsActive,func) found in global overlay_29_02337CCC.o
+                                                                      69](ov29_02306D54,func) found in global overlay_29_02305C28.o
+                                                                       70](ItemIsActive__02307F1C,func) found in global overlay_29_02307EF8.o
+                                                                       70](EntityIsValid__02307EF8,func) found in global overlay_29_02307EF8.o
+                                                                       70](EntityIsValid__02305C04,func) found in global overlay_29_02305C04.o
+                                                                       70](TryInflictMiracleEyeStatus,func) found in global overlay_29_02317844.o
                                                                         71](IsMonster__02318AB0,func) found in global overlay_29_02318AB0.o
-                                                                        71](GravityIsActive,func) found in global overlay_29_02337CCC.o
-                                                                         72](ov29_02306D54,func) found in global overlay_29_02305C28.o
-                                                                          73](ItemIsActive__02307F1C,func) found in global overlay_29_02307EF8.o
-                                                                          73](EntityIsValid__02305C04,func) found in global overlay_29_02305C04.o
-                                                                          73](TryInflictMiracleEyeStatus,func) found in global overlay_29_02317844.o
-                                                                          73](TryInflictMuzzledStatus,func) found in global overlay_29_0231516C.o
-                                                                          73](CalcSpeedStageWrapper,func) found in global overlay_29_022FF8C8.o
-                                                                           74](GetExclusiveItemWithEffectFromBag,func) found in global overlay_29_0230F02C.o
-                                                                            75](ItemIsActive__0230F810,func) found in global overlay_29_0230F810.o
-                                                                            75](EntityIsValid__0230F008,func) found in global dungeon_ai_items_1.o
-                                                                            75](ov29_02347040,func) found in global overlay_29_02346834.o
-                                                                            75](UseThrowableItem,func) found in global overlay_29_022F52B0.o
-                                                                             76](EntityIsValid__022F528C,func) found in global overlay_29_022F528C.o
-                                                                             76](ItemIsActive__022F5994,func) found in global overlay_29_022F5994.o
-                                                                             76](ov29_0230040C,func) found in global overlay_29_02300108.o
-                                                                             76](ov29_0230F9A4,func) found in global overlay_29_0230F9A4.o
-                                                                              77](EntityIsValid__02311010,func) found in global overlay_29_02311010.o
-                                                                              77](ov29_02322374,func) found in global overlay_29_0232145C.o
-                                                                               78](IsMonster__02322DB8,func) found in global overlay_29_02322DB8.o
-                                                                               78](TryInflictConfusedStatus,func) found in global overlay_29_02311C28.o
-                                                                               78](EntityIsValid__02321438,func) found in global overlay_29_02321438.o
-                                                                               78](EndLeechSeedClassStatus,func) found in global overlay_29_02305C28.o
-                                                                               78](ov29_02318D58,func) found in global overlay_29_02318D58.o
-                                                                                79](EntityIsValid__02318E4C,func) found in global overlay_29_02318E4C.o
-                                                                                79](EntityIsValid__02318D34,func) found in global overlay_29_02318D34.o
-                                                                               78](ExecuteMoveEffect,func) found in global overlay_29_0232E864.o
-                                                                                79](CanSeeTarget,func) found in global dungeon_visibility.o
-                                                                                79](EntityIsValid__02333FAC,func) found in global overlay_29_02333FAC.o
-                                                                                79](MonsterHasNegativeStatus,func) found in global dungeon_logic_1.o
-                                                                                 80](IsMonsterDrowsy,func) found in global dungeon_logic.o
-                                                                                 80](MonsterHasNonvolatileNonsleepStatus,func) found in global dungeon_logic.o
-                                                                                 80](MonsterHasImmobilizingStatus,func) found in global dungeon_logic.o
-                                                                                 80](MonsterHasAttackInterferingStatus,func) found in global dungeon_logic.o
-                                                                                 80](MonsterHasSkillInterferingStatus,func) found in global dungeon_logic.o
-                                                                                 80](MonsterHasLeechSeedStatus,func) found in global dungeon_logic.o
-                                                                                 80](MonsterHasWhifferStatus,func) found in global dungeon_logic.o
-                                                                                 80](IsMonsterVisuallyImpaired,func) found in global dungeon_logic.o
-                                                                                 80](IsMonsterMuzzled,func) found in global dungeon_logic.o
-                                                                                 80](MonsterHasMiracleEyeStatus,func) found in global dungeon_logic.o
-                                                                                79](Conversion2IsActive,func) found in global overlay_29_02318E70.o
-                                                                                 80](EntityIsValid__02319F8C,func) found in global overlay_29_02319F8C.o
-                                                                                 80](ov29_0231A364,func) found in global overlay_29_02319FB0.o
-                                                                                 80](GetMoveTypeForMonster,func) found in global overlay_29_02301FBC.o
-                                                                                  81](ItemIsActive__023026CC,func) found in global overlay_29_023026CC.o
-                                                                                  81](ov29_02301A84,func) found in global overlay_29_02301A84.o
-                                                                                   82](ov29_02324BE8,func) found in global overlay_29_02324698.o
-                                                                                   82](DefenderAbilityIsActive__02301A0C,func) found in global overlay_29_023018AC.o
-                                                                                    83](GetApparentWeather,func) found in global overlay_29_02333FD0.o
-                                                                                     84](TryWeatherFormChange,func) found in global overlay_29_023350FC.o
-                                                                                     84](EntityIsValid__023350D8,func) found in global overlay_29_023350D8.o
-                                                                                     84](MonsterIsType,func) found in global overlay_29_02301D84.o
-                                                                                     84](IsMonsterSleeping,func) found in global overlay_29_023007A8.o
-                                                                                   82](MistIsActive,func) found in global overlay_29_02318E70.o
-                                                                                   82](ExclusiveItemEffectIsActive__022FFF28,func) found in global overlay_29_022FF8C8.o
-                                                                                  81](GetEntityWeatherBallType,func) found in global overlay_29_0231A9F8.o
-                                                                                   82](ov29_0232E80C,func) found in global overlay_29_0232E2B8.o
-                                                                                    83](EntityIsValid__0232E840,func) found in global overlay_29_0232E840.o
-                                                                                    83](DoMoveCleanse,func) found in global overlay_29_0232C524.o
-                                                                                     84](EntityIsValidMoveEffects__0232E250,func) found in global overlay_29_0232E250.o
-                                                                                     84](DealDamage,func) found in global overlay_29_0232E864.o
-                                                                                     84](TryActivateGravity,func) found in global overlay_29_02337CCC.o
-                                                                                     84](ov29_02318BBC,func) found in global overlay_29_02318AD4.o
-                                                                                     84](IsChargingTwoTurnMove,func) found in global overlay_29_02322DDC.o
-                                                                                      85](DungeonRandRange,func) found in global dg_random.o
-                                                                                      85](GetTreatmentBetweenMonsters,func) found in global dungeon_ai_targeting_1.o
-                                                                                       86](MONSTER_TREATMENT_DATA,object) found in global dungeon_ai_targeting_1.o
-                                                                                      85](GetEntityMoveTargetAndRange,func) found in global overlay_29_0231A9F8.o
-                                                                                      85](ov29_023024E0,func) found in global overlay_29_02301FBC.o
-                                                                                      85](DefenderAbilityIsActive__02322D64,func) found in global overlay_29_0232145C.o
-                                                                                      85](MoveIsNotPhysical,func) found in global overlay_29_0231EA04.o
-                                                                                       86](EntityIsValid__0231EDD8,func) found in global overlay_29_0231EDD8.o
-                                                                                       86](ov29_02305814,func) found in global overlay_29_023055B0.o
-                                                                                        87](EntityIsValid__0230558C,func) found in global overlay_29_0230558C.o
-                                                                                        87](TryNonLeaderItemPickUp,func) found in global overlay_29_0230F02C.o
-                                                                                        87](ov29_022FBE04,func) found in global overlay_29_022FBB1C.o
-                                                                                       86](StairsAlwaysReachable,func) found in global overlay_29_02340CE4.o
-                                                                                        87](ov29_022F0848,func) found in global overlay_29_022F05B4.o
-                                                                                        87](ov29_022EFB84,func) found in global overlay_29_022EFA6C.o
-                                                                                        87](GetMoneyCarried,func) found in global main_0200ECFC.o
-                                                                                        87](EntityIsValid__02344AF8,func) found in global overlay_29_02344AF8.o
-                                                                                        87](IsSecretBazaar,func) found in global overlay_29_02338604.o
-                                                                                        87](SetShouldBoostKecleonShopSpawnChance,func) found in global overlay_29_02338548.o
-                                                                                        87](ShouldBoostKecleonShopSpawnChance,func) found in global overlay_29_02338548.o
-                                                                                        87](SetShouldBoostHiddenStairsSpawnChance,func) found in global overlay_29_02338604.o
-                                                                                        87](ShouldBoostHiddenStairsSpawnChance,func) found in global overlay_29_02338604.o
-                                                                                      85](PlayMoveAnimation,func) found in global overlay_29_02325644.o
+                                                                        71](HasTypeAffectedByGravity,func) found in global overlay_29_02301D84.o
+                                                                        71](SafeguardIsActive,func) found in global overlay_29_023018AC.o
+                                                                        71](TryRemoveSnatchedMonsterFromDungeonStruct,func) found in global overlay_29_02305C28.o
+                                                                        71](GetMaxPpWrapper,func) found in global overlay_29_0231E9F0.o
+                                                                        71](GetMobilityType,func) found in global main_02052874.o
+                                                                        71](TryActivateSteadfast,func) found in global overlay_29_0231B33C.o
+                                                                       70](TryInflictMuzzledStatus,func) found in global overlay_29_0231516C.o
+                                                                       70](CalcSpeedStageWrapper,func) found in global overlay_29_022FF8C8.o
+                                                                        71](GetExclusiveItemWithEffectFromBag,func) found in global overlay_29_0230F02C.o
+                                                                         72](ItemIsActive__0230F810,func) found in global overlay_29_0230F810.o
+                                                                         72](EntityIsValid__0230F008,func) found in global dungeon_ai_items_1.o
+                                                                         72](ov29_02347040,func) found in global overlay_29_02346834.o
+                                                                         72](UseThrowableItem,func) found in global overlay_29_022F52B0.o
+                                                                          73](TryTriggerMonsterHouse,func) found in global overlay_29_02307F4C.o
+                                                                           74](SpawnMonster,func) found in global overlay_29_022FC9C0.o
+                                                                            75](ov29_022FBF30,func) found in global overlay_29_022FBB1C.o
+                                                                             76](EntityIsValid__022FC99C,func) found in global overlay_29_022FC99C.o
+                                                                             76](ov29_022FCD04,func) found in global overlay_29_022FC9C0.o
+                                                                             76](IsInvalidSpawnTile,func) found in global overlay_29_022FEDBC.o
+                                                                              77](ov29_02318D58,func) found in global overlay_29_02318D58.o
+                                                                               78](EntityIsValid__02318E4C,func) found in global overlay_29_02318E4C.o
+                                                                               78](EntityIsValid__02318D34,func) found in global overlay_29_02318D34.o
+                                                                              77](SetActionUseMovePlayer,func) found in global overlay_29_022EB41C.o
+                                                                               78](ChangeLeader,func) found in global overlay_29_022F05B4.o
+                                                                                79](GetItemToUse,func) found in global overlay_29_022EB41C.o
+                                                                                79](ov29_022FF958,func) found in global overlay_29_022FF8C8.o
+                                                                                79](ov29_02301158,func) found in global overlay_29_02300D00.o
+                                                                                 80](IsTacticSet,func) found in global dungeon_pokemon_attributes_1.o
+                                                                                 80](GetMobilityTypeCheckSlipAndFloating,func) found in global overlay_29_022FEDBC.o
+                                                                                 80](GetTreatmentBetweenMonsters,func) found in global dungeon_ai_targeting_1.o
+                                                                                  81](MONSTER_TREATMENT_DATA,object) found in global dungeon_ai_targeting_1.o
+                                                                                 80](ShouldMonsterRunAway,func) found in global dungeon_ai_targeting.o
+                                                                                79](GetEntityMoveTargetAndRange,func) found in global overlay_29_0231A9F8.o
+                                                                                 80](ov29_0232E80C,func) found in global overlay_29_0232E2B8.o
+                                                                                  81](EntityIsValid__0232E840,func) found in global overlay_29_0232E840.o
+                                                                                  81](DoMoveCleanse,func) found in global overlay_29_0232C524.o
+                                                                                   82](EntityIsValidMoveEffects__0232E250,func) found in global overlay_29_0232E250.o
+                                                                                   82](TryInflictBurnStatus,func) found in global overlay_29_02311C28.o
+                                                                                   82](DealDamage,func) found in global overlay_29_0232E864.o
+                                                                                    83](CanSeeTarget,func) found in global dungeon_visibility.o
+                                                                                    83](EntityIsValid__02333FAC,func) found in global overlay_29_02333FAC.o
+                                                                                    83](MonsterHasNegativeStatus,func) found in global dungeon_logic_1.o
+                                                                                     84](IsMonsterDrowsy,func) found in global dungeon_logic.o
+                                                                                     84](MonsterHasNonvolatileNonsleepStatus,func) found in global dungeon_logic.o
+                                                                                     84](MonsterHasImmobilizingStatus,func) found in global dungeon_logic.o
+                                                                                     84](MonsterHasAttackInterferingStatus,func) found in global dungeon_logic.o
+                                                                                     84](MonsterHasSkillInterferingStatus,func) found in global dungeon_logic.o
+                                                                                     84](MonsterHasLeechSeedStatus,func) found in global dungeon_logic.o
+                                                                                     84](MonsterHasWhifferStatus,func) found in global dungeon_logic.o
+                                                                                     84](IsMonsterVisuallyImpaired,func) found in global dungeon_logic.o
+                                                                                     84](IsMonsterMuzzled,func) found in global dungeon_logic.o
+                                                                                     84](MonsterHasMiracleEyeStatus,func) found in global dungeon_logic.o
+                                                                                    83](Conversion2IsActive,func) found in global overlay_29_02318E70.o
+                                                                                     84](EntityIsValid__02319F8C,func) found in global overlay_29_02319F8C.o
+                                                                                     84](ov29_0231A364,func) found in global overlay_29_02319FB0.o
+                                                                                     84](GetMoveTypeForMonster,func) found in global overlay_29_02301FBC.o
+                                                                                     84](IsTargetInRange,func) found in global dungeon_ai_attack_1.o
+                                                                                     84](StatusCheckerCheck,func) found in global overlay_29_0232E864.o
+                                                                                     84](DungeonRandOutcome__022EAB20,func) found in global dg_random.o
+                                                                                    83](ov29_02337E2C,func) found in global overlay_29_02337CCC.o
+                                                                                    83](ov29_023007DC,func) found in global overlay_29_023007A8.o
+                                                                                    83](CeilFixedPoint,func) found in global number_util.o
+                                                                                    83](ApplyDamageAndEffects,func) found in global overlay_29_023085DC.o
+                                                                                     84](DefenderAbilityIsActive__0230A940,func) found in global overlay_29_02308FE0.o
+                                                                                      85](IsMonster__0230A994,func) found in global overlay_29_0230A994.o
+                                                                                      85](EntityIsValid__02308FBC,func) found in global overlay_29_02308FBC.o
+                                                                                      85](ov29_02303E0C,func) found in global overlay_29_02302A5C.o
+                                                                                      85](TrySpawnEnemyItemDrop,func) found in global overlay_29_0230F9A4.o
+                                                                                       86](EntityIsValid__02311010,func) found in global overlay_29_02311010.o
+                                                                                       86](ov29_02322374,func) found in global overlay_29_0232145C.o
+                                                                                        87](IsMonster__02322DB8,func) found in global overlay_29_02322DB8.o
+                                                                                        87](EntityIsValid__02321438,func) found in global overlay_29_02321438.o
+                                                                                        87](ov29_023230FC,func) found in global overlay_29_02322DDC.o
+                                                                                         88](DefenderAbilityIsActive__02322D64,func) found in global overlay_29_0232145C.o
+                                                                                         88](MoveIsNotPhysical,func) found in global overlay_29_0231EA04.o
+                                                                                          89](EntityIsValid__0231EDD8,func) found in global overlay_29_0231EDD8.o
+                                                                                          89](ov29_02305814,func) found in global overlay_29_023055B0.o
+                                                                                           90](EntityIsValid__0230558C,func) found in global overlay_29_0230558C.o
+                                                                                           90](TryNonLeaderItemPickUp,func) found in global overlay_29_0230F02C.o
+                                                                                           90](ov29_022FBE04,func) found in global overlay_29_022FBB1C.o
+                                                                                          89](StairsAlwaysReachable,func) found in global overlay_29_02340CE4.o
+                                                                                           90](ov29_022F0848,func) found in global overlay_29_022F05B4.o
+                                                                                           90](ov29_022EFB84,func) found in global overlay_29_022EFA6C.o
+                                                                                           90](GetMoneyCarried,func) found in global main_0200ECFC.o
+                                                                                           90](EntityIsValid__02344AF8,func) found in global overlay_29_02344AF8.o
+                                                                                           90](IsSecretBazaar,func) found in global overlay_29_02338604.o
+                                                                                           90](SetShouldBoostKecleonShopSpawnChance,func) found in global overlay_29_02338548.o
+                                                                                           90](ShouldBoostKecleonShopSpawnChance,func) found in global overlay_29_02338548.o
+                                                                                           90](SetShouldBoostHiddenStairsSpawnChance,func) found in global overlay_29_02338604.o
+                                                                                           90](ShouldBoostHiddenStairsSpawnChance,func) found in global overlay_29_02338604.o
+                                                                                         88](PlayMoveAnimation,func) found in global overlay_29_02325644.o
+                                                                                         88](ov29_0230040C,func) found in global overlay_29_02300108.o
+                                                                                        87](GetNaturePowerVariant,func) found in global overlay_29_02328030.o
+                                                                                         88](ov29_0232A834,func) found in global overlay_29_0232A3FC.o
+                                                                                          89](EntityIsValidMoveEffects__0232C500,func) found in global overlay_29_0232C500.o
+                                                                                          89](RevealTrapsNearby,func) found in global overlay_29_022EE36C.o
+                                                                                           90](EntityIsValid__022EE348,func) found in global overlay_29_022EE348.o
+                                                                                           90](TryExplosion,func) found in global overlay_29_023201A0.o
+                                                                                            91](EntityIsValid__02320764,func) found in global overlay_29_02320764.o
+                                                                                            91](EntityIsValid__0232017C,func) found in global overlay_29_0232017C.o
+                                                                                           90](TryInflictSleepStatus,func) found in global overlay_29_023118D8.o
+                                                                                            91](ItemIsActive__02311BF8,func) found in global overlay_29_02311BF8.o
+                                                                                            91](EntityIsValid__023118B4,func) found in global overlay_29_023118B4.o
+                                                                                            91](InflictSleepStatusSingle,func) found in global overlay_29_02311064.o
+                                                                                             92](ItemIsActive__02311034,func) found in global overlay_29_02311010.o
+                                                                                           90](TryBlowAway,func) found in global overlay_29_0231FC20.o
+                                                                                           90](ItemIsActive__022EE318,func) found in global overlay_29_022EE348.o
+                                                                                          89](ov29_02318BBC,func) found in global overlay_29_02318AD4.o
+                                                                                          89](EntityIsValidMoveEffects__0232A3D8,func) found in global overlay_29_0232A3D8.o
+                                                                                          89](DefenderAbilityIsActiveMoveEffects__02329F14,func) found in global overlay_29_02328030.o
+                                                                                         88](ActivateMotorDrive,func) found in global overlay_29_0231A9F8.o
+                                                                                         88](EntityIsValidMoveEffects__0232800C,func) found in global overlay_29_0232800C.o
+                                                                                       86](TryActivateBadDreams,func) found in global overlay_29_0231B1B8.o
+                                                                                        87](EntityIsValid__0231B194,func) found in global overlay_29_0231B194.o
+                                                                                        87](IsMonster__0231B318,func) found in global overlay_29_0231B318.o
+                                                                                       86](ExclusiveItemEffectIsActive__0230F8AC,func) found in global overlay_29_0230F840.o
+                                                                                        87](IsMonster__0230F980,func) found in global overlay_29_0230F980.o
+                                                                                      85](ExclusiveItemEffectIsActive__0230A9B8,func) found in global overlay_29_0230A9B8.o
+                                                                                      85](ItemIsActive__0230A9DC,func) found in global overlay_29_0230A9DC.o
+                                                                                     84](ResetDamageData,func) found in global overlay_29_022F62CC.o
+                                                                                      85](EntityIsValid__022F7364,func) found in global overlay_29_022F7364.o
+                                                                                      85](EntityIsValid__022F62A8,func) found in global overlay_29_022F62A8.o
+                                                                                      85](YesNoMenu,func) found in global overlay_29_0234D484.o
+                                                                                      85](ov29_022F6210,func) found in global overlay_29_022F59C4.o
+                                                                                       86](ov29_023009CC,func) found in global overlay_29_023008DC.o
+                                                                                        87](IsChargingAnyTwoTurnMove,func) found in global dungeon_move.o
+                                                                                         88](TWO_TURN_STATUSES,object) found in global dungeon_move.o
+                                                                                       86](EntityIsValid__022F528C,func) found in global overlay_29_022F528C.o
+                                                                                       86](ShouldUsePp,func) found in global overlay_29_0231A7A0.o
+                                                                                        87](IsMonster__0231A9D4,func) found in global overlay_29_0231A9D4.o
+                                                                                       86](GetStringFromFileVeneer,func) found in global main_0202593C.o
+                                                                                       86](ov29_022F6748,func) found in global overlay_29_022F62CC.o
                                                                                      84](ov29_0231EDFC,func) found in global overlay_29_0231EDFC.o
-                                                                                      85](ov29_02321238,func) found in global overlay_29_02320788.o
                                                                                       85](EntityIsValid__0231F570,func) found in global overlay_29_0231F570.o
-                                                                                      85](ov29_0232033C,func) found in global overlay_29_023201A0.o
-                                                                                       86](EntityIsValid__02320764,func) found in global overlay_29_02320764.o
-                                                                                       86](UpdateEntityPixelPos,func) found in global dg_object.o
-                                                                                       86](EntityIsValid__0232017C,func) found in global overlay_29_0232017C.o
-                                                                                      85](ov29_022FF764,func) found in global overlay_29_022FEDBC.o
-                                                                                     84](EntityIsValidMoveEffects__0232C500,func) found in global overlay_29_0232C500.o
-                                                                                     84](TryDrought,func) found in global overlay_29_0231F594.o
-                                                                                      85](ov29_022F62CC,func) found in global overlay_29_022F62CC.o
-                                                                                       86](EntityIsValid__022F7364,func) found in global overlay_29_022F7364.o
-                                                                                       86](ov29_0231B4AC,func) found in global overlay_29_0231B33C.o
-                                                                                       86](EntityIsValid__022F62A8,func) found in global overlay_29_022F62A8.o
-                                                                                       86](YesNoMenu,func) found in global overlay_29_0234D484.o
-                                                                                       86](ov29_022F6210,func) found in global overlay_29_022F59C4.o
-                                                                                        87](ov29_023009CC,func) found in global overlay_29_023008DC.o
-                                                                                         88](ShouldMonsterRunAway,func) found in global dungeon_ai_targeting.o
-                                                                                          89](IsTacticSet,func) found in global dungeon_pokemon_attributes_1.o
-                                                                                         88](IsChargingAnyTwoTurnMove,func) found in global dungeon_move.o
-                                                                                          89](TWO_TURN_STATUSES,object) found in global dungeon_move.o
-                                                                                         88](ov29_02300D00,func) found in global overlay_29_02300D00.o
-                                                                                        87](ShouldUsePp,func) found in global overlay_29_0231A7A0.o
-                                                                                         88](IsMonster__0231A9D4,func) found in global overlay_29_0231A9D4.o
-                                                                                         88](DungeonRandOutcome__022EAB20,func) found in global dg_random.o
-                                                                                        87](GetStringFromFileVeneer,func) found in global main_0202593C.o
-                                                                                        87](ov29_022F6748,func) found in global overlay_29_022F62CC.o
-                                                                                      85](EntityIsValid__0231FBFC,func) found in global overlay_29_0231FBFC.o
-                                                                                     84](TryPounce,func) found in global overlay_29_0231FC20.o
-                                                                                     84](ov29_022E1AAC,func) found in global dg_object.o
-                                                                                     84](TryInflictSleepStatus,func) found in global overlay_29_023118D8.o
-                                                                                      85](ItemIsActive__02311BF8,func) found in global overlay_29_02311BF8.o
-                                                                                      85](EntityIsValid__023118B4,func) found in global overlay_29_023118B4.o
-                                                                                      85](InflictSleepStatusSingle,func) found in global overlay_29_02311064.o
-                                                                                       86](ItemIsActive__02311034,func) found in global overlay_29_02311010.o
-                                                                                   82](EntityIsValid__0231B194,func) found in global overlay_29_0231B194.o
-                                                                                 80](IsTargetInRange,func) found in global dungeon_ai_attack_1.o
-                                                                                79](CeilFixedPoint,func) found in global number_util.o
-                                                                                79](ApplyDamageAndEffects,func) found in global overlay_29_023085DC.o
-                                                                                 80](DefenderAbilityIsActive__0230A940,func) found in global overlay_29_02308FE0.o
-                                                                                  81](IsMonster__0230A994,func) found in global overlay_29_0230A994.o
-                                                                                  81](EntityIsValid__02308FBC,func) found in global overlay_29_02308FBC.o
-                                                                                  81](ov29_02303E0C,func) found in global overlay_29_02302A5C.o
-                                                                                  81](TrySpawnEnemyItemDrop,func) found in global overlay_29_0230F9A4.o
-                                                                                  81](ExclusiveItemEffectIsActive__0230A9B8,func) found in global overlay_29_0230A9B8.o
-                                                                                  81](ItemIsActive__0230A9DC,func) found in global overlay_29_0230A9DC.o
-                                                                                79](DoMoveDefendOrder,func) found in global overlay_29_0232E250.o
-                                                                                79](DoMoveCopycat,func) found in global overlay_29_0232A3FC.o
-                                                                                 80](RevealTrapsNearby,func) found in global overlay_29_022EE36C.o
-                                                                                  81](EntityIsValid__022EE348,func) found in global overlay_29_022EE348.o
-                                                                                  81](ItemIsActive__022EE318,func) found in global overlay_29_022EE348.o
-                                                                                 80](EntityIsValidMoveEffects__0232A3D8,func) found in global overlay_29_0232A3D8.o
-                                                                                 80](DefenderAbilityIsActiveMoveEffects__02329F14,func) found in global overlay_29_02328030.o
-                                                                                  81](ov29_0232A834,func) found in global overlay_29_0232A3FC.o
-                                                                                  81](EntityIsValidMoveEffects__0232800C,func) found in global overlay_29_0232800C.o
-                                                                              77](TryActivateBadDreams,func) found in global overlay_29_0231B1B8.o
-                                                                               78](IsMonster__0231B318,func) found in global overlay_29_0231B318.o
-                                                                              77](ExclusiveItemEffectIsActive__0230F8AC,func) found in global overlay_29_0230F840.o
-                                                                               78](IsMonster__0230F980,func) found in global overlay_29_0230F980.o
-                                                                             76](CanMonsterUseItem,func) found in global overlay_29_0231CBEC.o
-                                                                              77](ov31_0238619C,func) found in global overlay_31_02382FBC.o
-                                                                              77](EntityIsValid__0231CBC8,func) found in global overlay_29_0231CBC8.o
-                                                                              77](SetDoughSeedFlag,func) found in global overlay_29_02338548.o
-                                                                              77](GetDoughSeedFlag,func) found in global overlay_29_02338548.o
-                                                                            75](GetAiUseItemProbability,func) found in global dungeon_ai_item_weight.o
-                                                                             76](IsAdjacentToEnemy,func) found in global dungeon_ai_item_weight.o
-                                                                             76](GetMaxPpWrapper,func) found in global overlay_29_0231E9F0.o
-                                                                             76](GetMobilityType,func) found in global main_02052874.o
-                                                                         72](EntityIsValid__02337CA8,func) found in global overlay_29_02337CA8.o
-                                                                       70](EntityIsValid__022FED98,func) found in global overlay_29_022FED98.o
-                                                                   66](OpenMenu,func) found in global overlay_29_0234DDF4.o
-                                                                    67](EntityIsValid__0234EC14,func) found in global overlay_29_0234EC14.o
-                                                                    67](ov31_02382E18,func) found in global overlay_31_02382820.o
-                                                                     68](CreateStairsMenuState,func) found in global overlay_31_02382820.o
-                                                                      69](sub_020348E4,func) found in global main_020348E4.o
-                                                                      69](OVERLAY31_UNKNOWN_STRUCT__NA_2389E30,notype) found in global overlay_31_02382FBC.o
-                                                                      69](ov31_0238A2A0,notype) found in global overlay_31_02382FBC.o
-                                                                    67](EntityIsValid__0234DDD0,func) found in global overlay_29_0234DDD0.o
-                                                                    67](ov31_02382E08,func) found in global overlay_31_02382820.o
-                                                                     68](OVERLAY31_UNKNOWN_POINTER__NA_238A260,notype) found in global overlay_31_02382FBC.o
-                                                                    67](EntryOverlay31,func) found in global overlay_31_02382820.o
-                                                                  65](ExecuteMonsterAction,func) found in global overlay_29_022FE4BC.o
-                                                                  65](RunMonsterAi,func) found in global dungeon_ai.o
-                                                                   66](ShouldRunMonsterAi,func) found in global dungeon_util.o
-                                                                   66](CheckVariousConditions,func) found in global dungeon_capabilities_1.o
-                                                                   66](AiDecideUseItem,func) found in global dungeon_ai_items.o
-                                                                    67](GetPossibleAiThrownItemDirections,func) found in global dungeon_ai_items_1.o
-                                                                     68](AI_THROWN_ITEM_DIRECTION_IS_USED,object) found in global dungeon_ai_items.o
-                                                                     68](AI_THROWN_ITEM_DIRECTIONS,object) found in global dungeon_ai_items.o
-                                                                  65](EntityIsValid__022EC608,func) found in global overlay_29_022EC608.o
-                                                                  65](ov29_022EF9C8,func) found in global overlay_29_022EF7C4.o
+                                                                                    83](DoMoveTag0x1A7,func) found in global overlay_29_0232E2B8.o
+                                                                                    83](DoMoveDefendOrder,func) found in global overlay_29_0232E250.o
+                                                                                    83](DoMoveFlareBlitz,func) found in global overlay_29_0232C524.o
+                                                                                    83](ov29_02301C2C,func) found in global overlay_29_02301A84.o
+                                                                                   82](TryDrought,func) found in global overlay_29_0231F594.o
+                                                                                    83](EntityIsValid__0231FBFC,func) found in global overlay_29_0231FBFC.o
+                                                                                   82](ov29_022E1AAC,func) found in global dg_object.o
+                                                                                79](SetMonsterActionFields,func) found in global dungeon_action.o
+                                                                                79](OpenMenu,func) found in global overlay_29_0234DDF4.o
+                                                                                 80](EntityIsValid__0234EC14,func) found in global overlay_29_0234EC14.o
+                                                                                 80](ov31_02382E18,func) found in global overlay_31_02382820.o
+                                                                                  81](CreateStairsMenuState,func) found in global overlay_31_02382820.o
+                                                                                   82](sub_020348E4,func) found in global main_020348E4.o
+                                                                                   82](OVERLAY31_UNKNOWN_STRUCT__NA_2389E30,notype) found in global overlay_31_02382FBC.o
+                                                                                   82](ov31_0238A2A0,notype) found in global overlay_31_02382FBC.o
+                                                                                 80](RestMenu,func) found in global overlay_31_02382FBC.o
+                                                                                 80](ov29_0231DD60,func) found in global overlay_29_0231CBEC.o
+                                                                                  81](EntityIsValid__0231CBC8,func) found in global overlay_29_0231CBC8.o
+                                                                                  81](SetDoughSeedFlag,func) found in global overlay_29_02338548.o
+                                                                                  81](GetDoughSeedFlag,func) found in global overlay_29_02338548.o
+                                                                                 80](EntityIsValid__0234DDD0,func) found in global overlay_29_0234DDD0.o
+                                                                                 80](ov31_02382E08,func) found in global overlay_31_02382820.o
+                                                                                  81](OVERLAY31_UNKNOWN_POINTER__NA_238A260,notype) found in global overlay_31_02382FBC.o
+                                                                                 80](EntryOverlay31,func) found in global overlay_31_02382820.o
+                                                                               78](ExecuteMonsterAction,func) found in global overlay_29_022FE4BC.o
+                                                                                79](EntityIsValid__022FED98,func) found in global overlay_29_022FED98.o
+                                                                                79](ov29_022F52B0,func) found in global overlay_29_022F52B0.o
+                                                                               78](RunMonsterAi,func) found in global dungeon_ai.o
+                                                                                79](ShouldRunMonsterAi,func) found in global dungeon_util.o
+                                                                                79](CheckVariousConditions,func) found in global dungeon_capabilities_1.o
+                                                                                79](AiDecideUseItem,func) found in global dungeon_ai_items.o
+                                                                                 80](GetPossibleAiThrownItemDirections,func) found in global dungeon_ai_items_1.o
+                                                                                  81](GetAiUseItemProbability,func) found in global dungeon_ai_item_weight.o
+                                                                                   82](IsAdjacentToEnemy,func) found in global dungeon_ai_item_weight.o
+                                                                                  81](AI_THROWN_ITEM_DIRECTION_IS_USED,object) found in global dungeon_ai_items.o
+                                                                                  81](AI_THROWN_ITEM_DIRECTIONS,object) found in global dungeon_ai_items.o
+                                                                               78](EntityIsValid__022EC608,func) found in global overlay_29_022EC608.o
+                                                                               78](ov29_022EF9C8,func) found in global overlay_29_022EF7C4.o
+                                                                          73](ItemIsActive__022F5994,func) found in global overlay_29_022F5994.o
+                                                                      69](EntityIsValid__02337CA8,func) found in global overlay_29_02337CA8.o
                                                                  64](CopyStringFromId,func) found in global main_0202593C.o
                                                               61](ExclusiveItemEffectIsActive__02347B80,func) found in global overlay_29_02347B80.o
                                                               61](ItemIsActive__02347B50,func) found in global overlay_29_02347B50.o
@@ -34900,13 +34904,13 @@
   022EC188 00000000 .text   $a	(dg_random.o)
   022EC1B8 00000030 .text   DungeonRandOutcome__022EAB50	(dg_random.o)
   022EC1B8 00000000 .text   $a	(dg_random.o)
-  022EC1E8 00001A88 .text   .text	(overlay_29_022EAB50.o)
-  022EC1E8 000000B4 .text   CalcStatusDuration	(overlay_29_022EAB50.o)
+  022EC1E8 00000888 .text   .text	(overlay_29_022EAB50.o)
   022EC1E8 00000000 .text   $a	(overlay_29_022EAB50.o)
+  022EC1E8 000000B4 .text   CalcStatusDuration	(overlay_29_022EAB50.o)
   022EC29C 00000018 .text   DungeonRngUnsetSecondary	(overlay_29_022EAB50.o)
   022EC2B0 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022EC2B4 00000018 .text   DungeonRngSetSecondary	(overlay_29_022EAB50.o)
   022EC2B4 00000000 .text   $a	(overlay_29_022EAB50.o)
+  022EC2B4 00000018 .text   DungeonRngSetSecondary	(overlay_29_022EAB50.o)
   022EC2C8 00000000 .text   $d	(overlay_29_022EAB50.o)
   022EC2CC 00000014 .text   DungeonRngSetPrimary	(overlay_29_022EAB50.o)
   022EC2CC 00000000 .text   $a	(overlay_29_022EAB50.o)
@@ -34915,8 +34919,8 @@
   022EC2E0 00000004 .text   ov29_022EAC78	(overlay_29_022EAB50.o)
   022EC2E4 00000010 .text   ov29_022EAC7C	(overlay_29_022EAB50.o)
   022EC2F0 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022EC2F4 00000010 .text   ov29_022EAC8C	(overlay_29_022EAB50.o)
   022EC2F4 00000000 .text   $a	(overlay_29_022EAB50.o)
+  022EC2F4 00000010 .text   ov29_022EAC8C	(overlay_29_022EAB50.o)
   022EC300 00000000 .text   $d	(overlay_29_022EAB50.o)
   022EC304 00000010 .text   ov29_022EAC9C	(overlay_29_022EAB50.o)
   022EC304 00000000 .text   $a	(overlay_29_022EAB50.o)
@@ -34924,11 +34928,11 @@
   022EC314 00000000 .text   $a	(overlay_29_022EAB50.o)
   022EC314 00000010 .text   ov29_022EACAC	(overlay_29_022EAB50.o)
   022EC320 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022EC324 00000010 .text   ov29_022EACBC	(overlay_29_022EAB50.o)
   022EC324 00000000 .text   $a	(overlay_29_022EAB50.o)
+  022EC324 00000010 .text   ov29_022EACBC	(overlay_29_022EAB50.o)
   022EC330 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022EC334 00000000 .text   $a	(overlay_29_022EAB50.o)
   022EC334 00000018 .text   ov29_022EACCC	(overlay_29_022EAB50.o)
+  022EC334 00000000 .text   $a	(overlay_29_022EAB50.o)
   022EC34C 0000001C .text   ov29_022EACE4	(overlay_29_022EAB50.o)
   022EC364 00000000 .text   $d	(overlay_29_022EAB50.o)
   022EC368 00000068 .text   MusicTableIdxToMusicId	(overlay_29_022EAB50.o)
@@ -34943,11 +34947,11 @@
   022EC4A8 00000000 .text   $a	(overlay_29_022EAB50.o)
   022EC4A8 0000006C .text   ov29_022EAE40	(overlay_29_022EAB50.o)
   022EC508 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022EC514 00000044 .text   ov29_022EAEAC	(overlay_29_022EAB50.o)
   022EC514 00000000 .text   $a	(overlay_29_022EAB50.o)
+  022EC514 00000044 .text   ov29_022EAEAC	(overlay_29_022EAB50.o)
   022EC54C 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022EC558 0000000C .text   ov29_022EAEF0	(overlay_29_022EAB50.o)
   022EC558 00000000 .text   $a	(overlay_29_022EAB50.o)
+  022EC558 0000000C .text   ov29_022EAEF0	(overlay_29_022EAB50.o)
   022EC560 00000000 .text   $d	(overlay_29_022EAB50.o)
   022EC564 00000000 .text   $a	(overlay_29_022EAB50.o)
   022EC564 00000024 .text   ov29_022EAEFC	(overlay_29_022EAB50.o)
@@ -34955,17 +34959,17 @@
   022EC588 00000014 .text   ov29_022EAF20	(overlay_29_022EAB50.o)
   022EC588 00000000 .text   $a	(overlay_29_022EAB50.o)
   022EC598 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022EC59C 00000014 .text   ov29_022EAF34	(overlay_29_022EAB50.o)
   022EC59C 00000000 .text   $a	(overlay_29_022EAB50.o)
+  022EC59C 00000014 .text   ov29_022EAF34	(overlay_29_022EAB50.o)
   022EC5AC 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022EC5B0 00000068 .text   ov29_022EAF48	(overlay_29_022EAB50.o)
   022EC5B0 00000000 .text   $a	(overlay_29_022EAB50.o)
+  022EC5B0 00000068 .text   ov29_022EAF48	(overlay_29_022EAB50.o)
   022EC610 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022EC618 000001C8 .text   ov29_022EAFB0	(overlay_29_022EAB50.o)
   022EC618 00000000 .text   $a	(overlay_29_022EAB50.o)
+  022EC618 000001C8 .text   ov29_022EAFB0	(overlay_29_022EAB50.o)
   022EC7D0 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022EC7E0 00000150 .text   TrySwitchPlace	(overlay_29_022EAB50.o)
   022EC7E0 00000000 .text   $a	(overlay_29_022EAB50.o)
+  022EC7E0 00000150 .text   TrySwitchPlace	(overlay_29_022EAB50.o)
   022EC92C 00000000 .text   $d	(overlay_29_022EAB50.o)
   022EC930 00000000 .text   $a	(overlay_29_022EAB50.o)
   022EC930 000000B0 .text   ov29_022EB2C8	(overlay_29_022EAB50.o)
@@ -34977,79 +34981,82 @@
   022ECA00 00000030 .text   ov29_022EB398	(overlay_29_022EAB50.o)
   022ECA30 0000002C .text   SetLeaderActionFields	(overlay_29_022EAB50.o)
   022ECA5C 00000014 .text   ClearMonsterActionFields	(overlay_29_022EAB50.o)
-  022ECA70 00000014 .text   SetMonsterActionFields	(overlay_29_022EAB50.o)
-  022ECA84 00000030 .text   SetActionPassTurnOrWalk	(overlay_29_022EAB50.o)
-  022ECAB4 0000009C .text   GetItemToUseByIndex	(overlay_29_022EAB50.o)
-  022ECB4C 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ECB50 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ECB50 00000064 .text   ov29_022EB4E8	(overlay_29_022EAB50.o)
-  022ECBB4 0000001C .text   GetItemToUse	(overlay_29_022EAB50.o)
-  022ECBD0 0000002C .text   ov29_022EB568	(overlay_29_022EAB50.o)
-  022ECBF8 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ECBFC 00000044 .text   ov29_022EB594	(overlay_29_022EAB50.o)
-  022ECBFC 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ECC40 00000034 .text   GetItemAction	(overlay_29_022EAB50.o)
-  022ECC6C 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ECC74 0000005C .text   RemoveUsedItem	(overlay_29_022EAB50.o)
-  022ECC74 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ECCD0 0000019C .text   ov29_022EB668	(overlay_29_022EAB50.o)
-  022ECE68 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ECE6C 00000018 .text   ov29_022EB804	(overlay_29_022EAB50.o)
-  022ECE6C 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ECE80 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ECE84 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ECE84 00000094 .text   AddDungeonSubMenuOption	(overlay_29_022EAB50.o)
-  022ECF04 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ECF18 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ECF18 00000044 .text   ov29_022EB8B0	(overlay_29_022EAB50.o)
-  022ECF54 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ECF5C 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ECF5C 00000050 .text   DisableDungeonSubMenuOption	(overlay_29_022EAB50.o)
-  022ECFA0 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ECFAC 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ECFAC 0000005C .text   ov29_022EB944	(overlay_29_022EAB50.o)
-  022ED008 000000D0 .text   ov29_022EB9A0	(overlay_29_022EAB50.o)
-  022ED0CC 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED0D8 00000014 .text   ov29_022EBA70	(overlay_29_022EAB50.o)
-  022ED0D8 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED0E8 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED0EC 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED0EC 00000010 .text   ov29_022EBA84	(overlay_29_022EAB50.o)
-  022ED0F8 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED0FC 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED0FC 0000001C .text   ov29_022EBA94	(overlay_29_022EAB50.o)
-  022ED118 0000009C .text   ov29_022EBAB0	(overlay_29_022EAB50.o)
-  022ED1B0 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED1B4 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED1B4 0000001C .text   ov29_022EBB4C	(overlay_29_022EAB50.o)
-  022ED1CC 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED1D0 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED1D0 00000024 .text   ov29_022EBB68	(overlay_29_022EAB50.o)
-  022ED1F0 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED1F4 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED1F4 0000000C .text   ov29_022EBB8C	(overlay_29_022EAB50.o)
-  022ED1FC 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED200 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED200 00000010 .text   ov29_022EBB98	(overlay_29_022EAB50.o)
-  022ED20C 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED210 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED210 00000040 .text   ov29_022EBBA8	(overlay_29_022EAB50.o)
-  022ED24C 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED250 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED250 00000044 .text   ov29_022EBBE8	(overlay_29_022EAB50.o)
-  022ED290 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED294 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED294 00000024 .text   ov29_022EBC2C	(overlay_29_022EAB50.o)
-  022ED2B8 00000024 .text   SetActionRegularAttack	(overlay_29_022EAB50.o)
-  022ED2DC 00000024 .text   ov29_022EBC74	(overlay_29_022EAB50.o)
-  022ED300 00000024 .text   SetActionUseMovePlayer	(overlay_29_022EAB50.o)
-  022ED324 0000002C .text   SetActionUseMoveAi	(overlay_29_022EAB50.o)
-  022ED350 00000020 .text   ov29_022EBCE8	(overlay_29_022EAB50.o)
-  022ED370 00000600 .text   RunFractionalTurn	(overlay_29_022EAB50.o)
-  022ED964 00000000 .text   $d	(overlay_29_022EAB50.o)
-  022ED970 00000000 .text   $a	(overlay_29_022EAB50.o)
-  022ED970 00000300 .text   RunLeaderTurn	(overlay_29_022EAB50.o)
-  022EDC68 00000000 .text   $d	(overlay_29_022EAB50.o)
+  022ECA70 00000014 .text   SetMonsterActionFields	(dungeon_action.o)
+  022ECA70 00000000 .text   $a	(dungeon_action.o)
+  022ECA84 00000030 .text   SetActionPassTurnOrWalk	(overlay_29_022EB41C.o)
+  022ECA84 000011EC .text   .text	(overlay_29_022EB41C.o)
+  022ECA84 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ECAB4 0000009C .text   GetItemToUseByIndex	(overlay_29_022EB41C.o)
+  022ECB4C 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ECB50 00000064 .text   ov29_022EB4E8	(overlay_29_022EB41C.o)
+  022ECB50 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ECBB4 0000001C .text   GetItemToUse	(overlay_29_022EB41C.o)
+  022ECBD0 0000002C .text   ov29_022EB568	(overlay_29_022EB41C.o)
+  022ECBF8 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ECBFC 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ECBFC 00000044 .text   ov29_022EB594	(overlay_29_022EB41C.o)
+  022ECC40 00000034 .text   GetItemAction	(overlay_29_022EB41C.o)
+  022ECC6C 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ECC74 0000005C .text   RemoveUsedItem	(overlay_29_022EB41C.o)
+  022ECC74 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ECCD0 0000019C .text   ov29_022EB668	(overlay_29_022EB41C.o)
+  022ECE68 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ECE6C 00000018 .text   ov29_022EB804	(overlay_29_022EB41C.o)
+  022ECE6C 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ECE80 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ECE84 00000094 .text   AddDungeonSubMenuOption	(overlay_29_022EB41C.o)
+  022ECE84 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ECF04 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ECF18 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ECF18 00000044 .text   ov29_022EB8B0	(overlay_29_022EB41C.o)
+  022ECF54 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ECF5C 00000050 .text   DisableDungeonSubMenuOption	(overlay_29_022EB41C.o)
+  022ECF5C 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ECFA0 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ECFAC 0000005C .text   ov29_022EB944	(overlay_29_022EB41C.o)
+  022ECFAC 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED008 000000D0 .text   ov29_022EB9A0	(overlay_29_022EB41C.o)
+  022ED0CC 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED0D8 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED0D8 00000014 .text   ov29_022EBA70	(overlay_29_022EB41C.o)
+  022ED0E8 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED0EC 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED0EC 00000010 .text   ov29_022EBA84	(overlay_29_022EB41C.o)
+  022ED0F8 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED0FC 0000001C .text   ov29_022EBA94	(overlay_29_022EB41C.o)
+  022ED0FC 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED118 0000009C .text   ov29_022EBAB0	(overlay_29_022EB41C.o)
+  022ED1B0 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED1B4 0000001C .text   ov29_022EBB4C	(overlay_29_022EB41C.o)
+  022ED1B4 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED1CC 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED1D0 00000024 .text   ov29_022EBB68	(overlay_29_022EB41C.o)
+  022ED1D0 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED1F0 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED1F4 0000000C .text   ov29_022EBB8C	(overlay_29_022EB41C.o)
+  022ED1F4 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED1FC 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED200 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED200 00000010 .text   ov29_022EBB98	(overlay_29_022EB41C.o)
+  022ED20C 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED210 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED210 00000040 .text   ov29_022EBBA8	(overlay_29_022EB41C.o)
+  022ED24C 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED250 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED250 00000044 .text   ov29_022EBBE8	(overlay_29_022EB41C.o)
+  022ED290 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED294 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED294 00000024 .text   ov29_022EBC2C	(overlay_29_022EB41C.o)
+  022ED2B8 00000024 .text   SetActionRegularAttack	(overlay_29_022EB41C.o)
+  022ED2DC 00000024 .text   ov29_022EBC74	(overlay_29_022EB41C.o)
+  022ED300 00000024 .text   SetActionUseMovePlayer	(overlay_29_022EB41C.o)
+  022ED324 0000002C .text   SetActionUseMoveAi	(overlay_29_022EB41C.o)
+  022ED350 00000020 .text   ov29_022EBCE8	(overlay_29_022EB41C.o)
+  022ED370 00000600 .text   RunFractionalTurn	(overlay_29_022EB41C.o)
+  022ED964 00000000 .text   $d	(overlay_29_022EB41C.o)
+  022ED970 00000000 .text   $a	(overlay_29_022EB41C.o)
+  022ED970 00000300 .text   RunLeaderTurn	(overlay_29_022EB41C.o)
+  022EDC68 00000000 .text   $d	(overlay_29_022EB41C.o)
   022EDC70 00000024 .text   EntityIsValid__022EC608	(overlay_29_022EC608.o)
   022EDC70 00000000 .text   $a	(overlay_29_022EC608.o)
   022EDC94 000000B0 .text   ov29_022EC62C	(overlay_29_022EC62C.o)
@@ -40553,5 +40560,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun May 11 04:17:30 2025
-# Link end time: Sun May 11 04:17:31 2025
+# Link start time: Tue May 13 04:21:41 2025
+# Link end time: Tue May 13 04:21:42 2025
