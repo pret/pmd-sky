@@ -1442,15 +1442,22 @@ enum item_flag {
 };
 
 enum item_ai_flag {
-    ITEM_AI_FLAG_TARGET_SELF,
-    ITEM_AI_FLAG_TARGET_ALLY,
-    ITEM_AI_FLAG_TARGET_ENEMY,
+    ITEM_FLAG_CONSUMABLE,
+    ITEM_FLAG_THROWABLE_AT_ALLY,
+    ITEM_FLAG_THROWABLE_AT_ENEMY,
     NUM_ITEM_AI_FLAGS
 };
 
 enum item_target_flag {
     ITEM_TARGET_OTHER = 1 << 0,
     ITEM_TARGET_ALLY = 1 << 1
+};
+
+enum item_data_flag {
+    ITEM_DATA_FLAG_VALID = 1 << 0,
+    ITEM_DATA_FLAG_CONSUMABLE = 1 << 5,
+    ITEM_DATA_FLAG_THROWABLE_AT_ALLY = 1 << 6,
+    ITEM_DATA_FLAG_THROWABLE_AT_ENEMY = 1 << 7,
 };
 
 #define GROUND_ITEM_TOOLBOX_INDEX 0x80
@@ -1506,7 +1513,7 @@ struct item_data_entry
     /* 0x0 */ u8 *name;
     /* 0x4 */ enum item_category category;
     u8 fill5[0xE - 0x5];
-    /* 0xE */ bool8 valid;
+    /* 0xE */ u8 flags;
 };
 
 #endif //PMDSKY_ITEM_H

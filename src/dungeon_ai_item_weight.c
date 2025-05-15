@@ -17,8 +17,8 @@ u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32
 {
     u32 item_weight = 0;
     struct monster *pokemon_info = GetEntInfo(item_consumer);
-    bool8 target_other = (flags & 1) != 0;
-    bool8 target_ally = (flags & 2) != 0;
+    bool8 target_other = (flags & ITEM_TARGET_OTHER) != 0;
+    bool8 target_ally = (flags & ITEM_TARGET_ALLY) != 0;
     switch (item->id)
     {
         case ITEM_STICK:

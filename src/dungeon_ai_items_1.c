@@ -37,7 +37,7 @@ void GetPossibleAiThrownItemDirections(struct entity *entity, s32 ally_or_enemy,
             continue;
 
         s32 targeting_flags;
-        if (ally_or_enemy == ITEM_AI_FLAG_TARGET_ALLY)
+        if (ally_or_enemy == ITEM_FLAG_THROWABLE_AT_ALLY)
         {
             if (GetTreatmentBetweenMonsters(entity, target_pokemon, FALSE, FALSE) == TREATMENT_TREAT_AS_ALLY)
                 targeting_flags = ITEM_TARGET_OTHER | ITEM_TARGET_ALLY;
