@@ -99,10 +99,11 @@
                                30](DirectoryFile_LoadDirectoryFile,func) found in global directory_file.o
                               29](GetItemMoveId16,func) found in global main_0200CAFC.o
                                30](IsItemValid,func) found in global item_util_1.o
-                               30](sub_0200EB64,func) found in global main_0200E864.o
+                               30](sub_0200EB64,func) found in global main_0200EB30.o
                                 31](ItemZInit,func) found in global main_0200CAFC.o
-                                31](EnsureValidItem,func) found in global item_util_2.o
                                30](GetItemCategory,func) found in global item_util_2.o
+                                31](EnsureValidItem,func) found in global item_util_2.o
+                               30](GetItemName,func) found in global main_0200E864.o
                               29](SetHolderForItemInBag,func) found in global main_0200ED1C.o
                                30](GetMaxPp,func) found in global moves.o
                                30](GetBaseFormCastformDeoxysCherrim,func) found in global main_02054C24.o
@@ -394,6 +395,7 @@
                                                                                    82](IsAdjacentToEnemy,func) found in global dungeon_ai_item_weight.o
                                                                                   81](AI_THROWN_ITEM_DIRECTION_IS_USED,object) found in global dungeon_ai_items.o
                                                                                   81](AI_THROWN_ITEM_DIRECTIONS,object) found in global dungeon_ai_items.o
+                                                                                 80](TestItemAiFlag,func) found in global item_util_3.o
                                                                                78](EntityIsValid__022EC608,func) found in global overlay_29_022EC608.o
                                                                                78](ov29_022EF9C8,func) found in global overlay_29_022EF7C4.o
                                                                           73](ItemIsActive__022F5994,func) found in global overlay_29_022F5994.o
@@ -1785,16 +1787,16 @@
   0200E8F8 00000000 .text   $a	(item_util_2.o)
   0200E8F8 0000003C .text   EnsureValidItem	(item_util_2.o)
   0200E930 00000000 .text   $d	(item_util_2.o)
-  0200E934 00000000 .text   $a	(main_0200E864.o)
-  0200E934 00000470 .text   .text	(main_0200E864.o)
+  0200E934 00000214 .text   .text	(main_0200E864.o)
   0200E934 00000020 .text   GetItemName	(main_0200E864.o)
+  0200E934 00000000 .text   $a	(main_0200E864.o)
   0200E954 0000010C .text   GetItemNameFormatted	(main_0200E864.o)
   0200EA4C 00000000 .text   $d	(main_0200E864.o)
-  0200EA60 00000020 .text   GetItemBuyPrice	(main_0200E864.o)
   0200EA60 00000000 .text   $a	(main_0200E864.o)
+  0200EA60 00000020 .text   GetItemBuyPrice	(main_0200E864.o)
   0200EA7C 00000000 .text   $d	(main_0200E864.o)
-  0200EA80 00000020 .text   GetItemSellPrice	(main_0200E864.o)
   0200EA80 00000000 .text   $a	(main_0200E864.o)
+  0200EA80 00000020 .text   GetItemSellPrice	(main_0200E864.o)
   0200EA9C 00000000 .text   $d	(main_0200E864.o)
   0200EAA0 00000000 .text   $a	(main_0200E864.o)
   0200EAA0 00000020 .text   GetItemSpriteId	(main_0200E864.o)
@@ -1802,45 +1804,46 @@
   0200EAC0 00000020 .text   GetItemPaletteId	(main_0200E864.o)
   0200EAC0 00000000 .text   $a	(main_0200E864.o)
   0200EADC 00000000 .text   $d	(main_0200E864.o)
-  0200EAE0 00000000 .text   $a	(main_0200E864.o)
   0200EAE0 00000020 .text   GetItemActionName	(main_0200E864.o)
+  0200EAE0 00000000 .text   $a	(main_0200E864.o)
   0200EAFC 00000000 .text   $d	(main_0200E864.o)
-  0200EB00 00000028 .text   GetThrownItemQuantityLimit	(main_0200E864.o)
   0200EB00 00000000 .text   $a	(main_0200E864.o)
+  0200EB00 00000028 .text   GetThrownItemQuantityLimit	(main_0200E864.o)
   0200EB24 00000000 .text   $d	(main_0200E864.o)
   0200EB28 00000000 .text   $a	(main_0200E864.o)
   0200EB28 00000020 .text   GetItemMoveId	(main_0200E864.o)
   0200EB44 00000000 .text   $d	(main_0200E864.o)
-  0200EB48 00000090 .text   TestItemAiFlag	(main_0200E864.o)
-  0200EB48 00000000 .text   $a	(main_0200E864.o)
-  0200EBD4 00000000 .text   $d	(main_0200E864.o)
-  0200EBD8 00000028 .text   IsItemInTimeDarkness	(main_0200E864.o)
-  0200EBD8 00000000 .text   $a	(main_0200E864.o)
-  0200EBFC 00000000 .text   $d	(main_0200E864.o)
-  0200EC00 0000000C .text   IsItemValidVeneer	(main_0200E864.o)
-  0200EC00 00000000 .text   $a	(main_0200E864.o)
-  0200EC08 00000000 .text   $d	(main_0200E864.o)
-  0200EC0C 0000002C .text   sub_0200EB64	(main_0200E864.o)
-  0200EC0C 00000000 .text   $a	(main_0200E864.o)
-  0200EC30 00000000 .text   $d	(main_0200E864.o)
-  0200EC38 0000003C .text   sub_0200EB90	(main_0200E864.o)
-  0200EC38 00000000 .text   $a	(main_0200E864.o)
-  0200EC70 00000000 .text   $d	(main_0200E864.o)
-  0200EC74 00000000 .text   $a	(main_0200E864.o)
-  0200EC74 00000010 .text   SetActiveInventoryToMain	(main_0200E864.o)
-  0200EC80 00000000 .text   $d	(main_0200E864.o)
-  0200EC84 00000000 .text   $a	(main_0200E864.o)
-  0200EC84 0000006C .text   AllInventoriesZInit	(main_0200E864.o)
-  0200ECEC 00000000 .text   $d	(main_0200E864.o)
-  0200ECF0 00000000 .text   $a	(main_0200E864.o)
-  0200ECF0 00000048 .text   SpecialEpisodeInventoryZInit	(main_0200E864.o)
-  0200ED34 00000000 .text   $d	(main_0200E864.o)
-  0200ED38 00000048 .text   RescueInventoryZInit	(main_0200E864.o)
-  0200ED38 00000000 .text   $a	(main_0200E864.o)
-  0200ED7C 00000000 .text   $d	(main_0200E864.o)
-  0200ED80 00000024 .text   SetActiveInventory	(main_0200E864.o)
-  0200ED80 00000000 .text   $a	(main_0200E864.o)
-  0200EDA0 00000000 .text   $d	(main_0200E864.o)
+  0200EB48 00000000 .text   $a	(item_util_3.o)
+  0200EB48 00000090 .text   TestItemAiFlag	(item_util_3.o)
+  0200EBD4 00000000 .text   $d	(item_util_3.o)
+  0200EBD8 00000000 .text   $a	(main_0200EB30.o)
+  0200EBD8 00000028 .text   IsItemInTimeDarkness	(main_0200EB30.o)
+  0200EBD8 000001CC .text   .text	(main_0200EB30.o)
+  0200EBFC 00000000 .text   $d	(main_0200EB30.o)
+  0200EC00 00000000 .text   $a	(main_0200EB30.o)
+  0200EC00 0000000C .text   IsItemValidVeneer	(main_0200EB30.o)
+  0200EC08 00000000 .text   $d	(main_0200EB30.o)
+  0200EC0C 00000000 .text   $a	(main_0200EB30.o)
+  0200EC0C 0000002C .text   sub_0200EB64	(main_0200EB30.o)
+  0200EC30 00000000 .text   $d	(main_0200EB30.o)
+  0200EC38 0000003C .text   sub_0200EB90	(main_0200EB30.o)
+  0200EC38 00000000 .text   $a	(main_0200EB30.o)
+  0200EC70 00000000 .text   $d	(main_0200EB30.o)
+  0200EC74 00000010 .text   SetActiveInventoryToMain	(main_0200EB30.o)
+  0200EC74 00000000 .text   $a	(main_0200EB30.o)
+  0200EC80 00000000 .text   $d	(main_0200EB30.o)
+  0200EC84 0000006C .text   AllInventoriesZInit	(main_0200EB30.o)
+  0200EC84 00000000 .text   $a	(main_0200EB30.o)
+  0200ECEC 00000000 .text   $d	(main_0200EB30.o)
+  0200ECF0 00000048 .text   SpecialEpisodeInventoryZInit	(main_0200EB30.o)
+  0200ECF0 00000000 .text   $a	(main_0200EB30.o)
+  0200ED34 00000000 .text   $d	(main_0200EB30.o)
+  0200ED38 00000000 .text   $a	(main_0200EB30.o)
+  0200ED38 00000048 .text   RescueInventoryZInit	(main_0200EB30.o)
+  0200ED7C 00000000 .text   $d	(main_0200EB30.o)
+  0200ED80 00000024 .text   SetActiveInventory	(main_0200EB30.o)
+  0200ED80 00000000 .text   $a	(main_0200EB30.o)
+  0200EDA0 00000000 .text   $d	(main_0200EB30.o)
   0200EDA4 00000000 .text   $a	(main_0200ECFC.o)
   0200EDA4 00000020 .text   GetMoneyCarried	(main_0200ECFC.o)
   0200EDC0 00000000 .text   $d	(main_0200ECFC.o)
@@ -40346,5 +40349,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Tue May 13 04:20:43 2025
-# Link end time: Tue May 13 04:20:44 2025
+# Link start time: Thu May 15 04:15:20 2025
+# Link end time: Thu May 15 04:15:21 2025
