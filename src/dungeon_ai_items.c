@@ -11,6 +11,7 @@
 #include "dungeon_util_static.h"
 #include "item.h"
 #include "item_util.h"
+#include "item_util_3.h"
 
 #define NUM_POTENTIAL_ROCK_TARGETS 20
 
@@ -21,7 +22,6 @@ u32 AI_THROWN_ITEM_DIRECTIONS[NUM_DIRECTIONS] = {0};
 extern volatile s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
-extern bool8 TestItemAiFlag(s16 item_id, s32 flag);
 extern void GetPossibleAiArcItemTargets(struct entity *user, struct item *item, struct position positions[], bool8 always_add_position);
 extern s32 GetDirectionTowardsPosition(struct position *origin, struct position *target);
 extern struct item *GetItemInfo(struct entity *item_entity);
@@ -58,7 +58,7 @@ void AiDecideUseItem(struct entity *entity)
         enum item_category item_type = GetItemCategoryVeneer(item->id);
         if (item_type == CATEGORY_THROWN_LINE)
         {
-            GetPossibleAiThrownItemDirections(entity, ITEM_AI_FLAG_TARGET_ENEMY, item, TRUE);
+            GetPossibleAiThrownItemDirections(entity, ITEM_FLAG_THROWABLE_AT_ENEMY, item, TRUE);
             for (i = 0; i < AI_THROWN_ITEM_ACTION_CHOICE_COUNT; i++)
             {
                 if (DungeonRandOutcome__022EAB20(AI_THROWN_ITEM_PROBABILITIES[i]))
@@ -149,7 +149,7 @@ void AiDecideUseItem(struct entity *entity)
             if (ItemSticky(item_flags))
                 continue;
 
-            if (TestItemAiFlag(item->id, ITEM_AI_FLAG_TARGET_SELF))
+            if (TestItemAiFlag(item->id, ITEM_FLAG_CONSUMABLE))
             {
                 u32 item_weight = GetAiUseItemProbability(entity, item, ITEM_TARGET_ALLY);
                 if (item_weight != 0)
@@ -172,7 +172,7 @@ void AiDecideUseItem(struct entity *entity)
 
             if (MonsterCanThrowItems(pokemon_info))
             {
-                for (thrown_ai_flag = ITEM_AI_FLAG_TARGET_ALLY; thrown_ai_flag < NUM_ITEM_AI_FLAGS; thrown_ai_flag++)
+                for (thrown_ai_flag = ITEM_FLAG_THROWABLE_AT_ALLY; thrown_ai_flag < NUM_ITEM_AI_FLAGS; thrown_ai_flag++)
                 {
                     if (TestItemAiFlag(item->id, thrown_ai_flag))
                     {
