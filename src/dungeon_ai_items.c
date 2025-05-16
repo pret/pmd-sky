@@ -22,7 +22,6 @@ u32 AI_THROWN_ITEM_DIRECTIONS[NUM_DIRECTIONS] = {0};
 extern volatile s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
-extern void GetPossibleAiArcItemTargets(struct entity *user, struct item *item, struct position positions[], bool8 always_add_position);
 extern s32 GetDirectionTowardsPosition(struct position *origin, struct position *target);
 extern struct item *GetItemInfo(struct entity *item_entity);
 extern bool8 MonsterCanThrowItems(struct monster *monster);
