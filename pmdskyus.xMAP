@@ -395,6 +395,7 @@
                                                                                    82](IsAdjacentToEnemy,func) found in global dungeon_ai_item_weight.o
                                                                                   81](AI_THROWN_ITEM_DIRECTION_IS_USED,object) found in global dungeon_ai_items.o
                                                                                   81](AI_THROWN_ITEM_DIRECTIONS,object) found in global dungeon_ai_items.o
+                                                                                 80](GetPossibleAiArcItemTargets,func) found in global dungeon_ai_items_1.o
                                                                                  80](TestItemAiFlag,func) found in global item_util_3.o
                                                                                78](EntityIsValid__022EC608,func) found in global overlay_29_022EC608.o
                                                                                78](ov29_022EF9C8,func) found in global overlay_29_022EF7C4.o
@@ -36055,21 +36056,21 @@
   0230EFF4 00000000 .text   $d	(dungeon_ai_items_1.o)
   0230F008 00000024 .text   EntityIsValid__0230F008	(dungeon_ai_items_1.o)
   0230F008 00000000 .text   $a	(dungeon_ai_items_1.o)
-  0230F02C 00000000 .text   $a	(overlay_29_0230F02C.o)
-  0230F02C 00000114 .text   GetPossibleAiArcItemTargets	(overlay_29_0230F02C.o)
-  0230F02C 000007E4 .text   .text	(overlay_29_0230F02C.o)
-  0230F138 00000000 .text   $d	(overlay_29_0230F02C.o)
-  0230F140 00000000 .text   $a	(overlay_29_0230F02C.o)
+  0230F02C 00000000 .text   $a	(dungeon_ai_items_1.o)
+  0230F02C 00000114 .text   GetPossibleAiArcItemTargets	(dungeon_ai_items_1.o)
+  0230F138 00000000 .text   $d	(dungeon_ai_items_1.o)
+  0230F140 000006D0 .text   .text	(overlay_29_0230F02C.o)
   0230F140 0000000C .text   ov29_0230F140	(overlay_29_0230F02C.o)
+  0230F140 00000000 .text   $a	(overlay_29_0230F02C.o)
   0230F148 00000000 .text   $d	(overlay_29_0230F02C.o)
-  0230F14C 00000000 .text   $a	(overlay_29_0230F02C.o)
   0230F14C 0000000C .text   ov29_0230F14C	(overlay_29_0230F02C.o)
+  0230F14C 00000000 .text   $a	(overlay_29_0230F02C.o)
   0230F154 00000000 .text   $d	(overlay_29_0230F02C.o)
   0230F158 00000000 .text   $a	(overlay_29_0230F02C.o)
   0230F158 0000000C .text   ov29_0230F158	(overlay_29_0230F02C.o)
   0230F160 00000000 .text   $d	(overlay_29_0230F02C.o)
-  0230F164 00000000 .text   $a	(overlay_29_0230F02C.o)
   0230F164 000004F0 .text   TryNonLeaderItemPickUp	(overlay_29_0230F02C.o)
+  0230F164 00000000 .text   $a	(overlay_29_0230F02C.o)
   0230F62C 00000000 .text   $d	(overlay_29_0230F02C.o)
   0230F654 00000000 .text   $a	(overlay_29_0230F02C.o)
   0230F654 00000074 .text   GetExclusiveItemWithEffectFromBag	(overlay_29_0230F02C.o)
@@ -40315,5 +40316,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu May 15 04:14:20 2025
-# Link end time: Thu May 15 04:14:20 2025
+# Link start time: Fri May 16 04:19:38 2025
+# Link end time: Fri May 16 04:19:38 2025
