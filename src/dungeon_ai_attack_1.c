@@ -5,11 +5,7 @@
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util.h"
 #include "main_0208655C.h"
-
-static inline s32 Max(s32 x, s32 y)
-{
-    return x > y ? x : y;
-}
+#include "util.h"
 
 bool8 IsTargetInRange(struct entity *user, struct entity *target, enum direction_id direction, s32 n_tiles)
 {

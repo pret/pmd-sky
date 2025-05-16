@@ -1,4 +1,5 @@
 #include "dungeon_ai_items_1.h"
+#include "dg_random.h"
 #include "dungeon.h"
 #include "dungeon_ai_attack.h"
 #include "dungeon_ai_attack_1.h"
@@ -10,6 +11,7 @@
 #include "item.h"
 #include "main_0208655C.h"
 #include "targeting.h"
+#include "util.h"
 
 // dungeon_ai_items.c and dungeon_ai_items_1.c are split up to define AI_THROWN_ITEM_ACTION_CHOICE_COUNT differently.
 // This needs to be marked as non-volatile here to match GetPossibleAiThrownItemDirections,
@@ -106,4 +108,33 @@ bool8 EntityIsValid__0230F008(struct entity *entity)
         return FALSE;
 
     return entity->type != ENTITY_NOTHING;
+}
+
+void GetPossibleAiArcItemTargets(struct entity *user, struct item *item, struct position positions[], bool8 always_add_position)
+{
+    AI_THROWN_ITEM_ACTION_CHOICE_COUNT = 0;
+    for (s32 i = 0; i < DUNGEON_MAX_POKEMON; i++)
+    {
+        struct entity *target_pokemon = DUNGEON_PTR[0]->active_monster_ptrs[i];
+        if (EntityIsValid__0230F008(target_pokemon) && user != target_pokemon &&
+            CanSeeTarget(user, target_pokemon) && GetTreatmentBetweenMonsters(user, target_pokemon, FALSE, TRUE) == TREATMENT_TREAT_AS_ENEMY)
+        {
+            s32 distance_y = abs(target_pokemon->pos.y - user->pos.y);
+            s32 distance_x = abs(target_pokemon->pos.x - user->pos.x);
+            if (Max(distance_x, distance_y) <= 10)
+            {
+                if (!always_add_position)
+                {
+                    u32 item_weight = GetAiUseItemProbability(target_pokemon, item, ITEM_TARGET_OTHER);
+                    if (!DungeonRandOutcome__022EAB20(item_weight))
+                    {
+                        continue;
+                    }
+                }
+                positions[AI_THROWN_ITEM_ACTION_CHOICE_COUNT].x = target_pokemon->pos.x;
+                positions[AI_THROWN_ITEM_ACTION_CHOICE_COUNT].y = target_pokemon->pos.y;
+                AI_THROWN_ITEM_ACTION_CHOICE_COUNT++;
+            }
+        }
+    }
 }
