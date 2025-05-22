@@ -12,6 +12,7 @@
 #include "item.h"
 #include "item_util.h"
 #include "item_util_3.h"
+#include "overlay_29_022E1610.h"
 #include "position_util.h"
 
 #define NUM_POTENTIAL_ROCK_TARGETS 20
@@ -23,7 +24,6 @@ u32 AI_THROWN_ITEM_DIRECTIONS[NUM_DIRECTIONS] = {0};
 extern volatile s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
-extern struct item *GetItemInfo(struct entity *item_entity);
 extern bool8 MonsterCanThrowItems(struct monster *monster);
 
 bool8 EntityIsValid__0230E8F0(struct entity *entity)
