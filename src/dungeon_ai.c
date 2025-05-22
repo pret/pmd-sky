@@ -8,6 +8,7 @@
 #include "dungeon_util_static.h"
 #include "dungeon_util.h"
 #include "dungeon_visibility.h"
+#include "status_checks.h"
 #include "targeting.h"
 
 #ifdef JAPAN
@@ -23,7 +24,6 @@ extern struct dungeon *DUNGEON_PTR[];
 extern void EndFrozenClassStatus(struct entity *user, struct entity *target, bool8 log);
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
-extern bool8 HasStatusThatPreventsActing(struct entity *monster);
 extern void ClearMonsterActionFields(struct action_data *monster_action);
 extern void SetActionPassTurnOrWalk(struct action_data *monster_action, s16 monster_id);
 extern void ChooseAiMove(struct entity *monster);

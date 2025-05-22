@@ -104,7 +104,7 @@ struct action_parameter {
 // Contains data used to describe an action taken by a monster.
 struct action_data {
     enum action action_id;      // 0x0: Action ID
-    enum direction_id direction; // 0x2: Direction in which the action will be performed
+    u8 direction; // 0x2: Direction in which the action will be performed
     u8 field_0x3;
     struct action_parameter action_parameters[2]; // 0x4: Parameters for the action
     // 0x10: Position of the target that the Pokémon wants throw an item at.

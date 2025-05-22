@@ -1,0 +1,15 @@
+#pragma once
+.public GetMobilityType
+.public GetMobilityTypeAfterIqSkills
+.public GetTile
+.public IqSkillIsEnabled
+.public IsChargingTwoTurnMove
+.public IsCurrentTilesetBackground
+.public IsFloating
+.public ItemIsActive__022FF898
+.public LogMessageByIdWithPopupCheckUser
+.public SetActionUseMovePlayer
+.public SetMonsterActionFields
+.public SubstitutePlaceholderStringTags
+.public ov29_02318D58
+.public ov29_0237C9B8
