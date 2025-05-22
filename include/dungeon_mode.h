@@ -156,7 +156,7 @@ struct bide_class_status {
 };
 
 struct reflect_class_status {
-    u8 reflect;        // 0x0: STATUS_REFLECT if 1
+    enum status_reflect_id reflect;        // 0x0: STATUS_REFLECT if 1
     u8 reflect_turns;  // 0x1: Turns left for the status in statuses::reflect
     // 0x2: Turns left until residual healing for the status in statuses::reflect, if applicable
     u8 reflect_damage_countdown;
@@ -175,7 +175,7 @@ struct curse_class_status {
 };
 
 struct leech_seed_class_status {
-    u8 leech_seed; // 0x0: STATUS_LEECH_SEED if 1
+    enum status_leech_seed_id leech_seed; // 0x0: STATUS_LEECH_SEED if 1
     // 0x4: Used to track the statuses::statuses_unique_id of the relevant monster for
     // statuses like Leech Seed and Destiny Bond.
     u32 statuses_applier_id;
@@ -189,22 +189,22 @@ struct leech_seed_class_status {
 };
 
 struct sure_shot_class_status {
-    u8 sure_shot;         // 0x0: STATUS_SURE_SHOT if 1
+    enum status_sure_shot_id sure_shot;         // 0x0: STATUS_SURE_SHOT if 1
     u8 sure_shot_turns;   // 0x1: Turns left for the status in statuses::sure_shot
 };
 
 struct long_toss_class_status {
-    u8 status; // 0x0: STATUS_LONG_TOSS if 1
+    enum status_long_toss_id status; // 0x0: STATUS_LONG_TOSS if 1
 };
 
 struct invisible_class_status
 {
-    u8 status; // 0x0: STATUS_INVISIBLE if 1
+    enum status_invisible_id status; // 0x0: STATUS_INVISIBLE if 1
     u8 turns; // 0x1: Turns left for the status in statuses::invisible
 };
 
 struct blinker_class_status {
-    u8 blinded;           // 0x0: STATUS_BLINKER if 1
+    enum status_blinker_id blinded;           // 0x0: STATUS_BLINKER if 1
     u8 blinded_turns;     // 0x1: Turns left for the status in statuses::blinded
 };
 
