@@ -3103,7 +3103,7 @@ _02314498:
 	add r1, r0, #1
 	mov r0, r6
 	strb r1, [r4, #0xd1]
-	bl ov29_022E539C
+	bl PlayExclamationPointEffect__022E5D4C
 	ldr r2, _0231453C ; =0x00000D02
 	mov r0, r7
 	mov r1, r6

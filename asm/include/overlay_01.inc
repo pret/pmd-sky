@@ -84,6 +84,7 @@
 .public IsControlsChartActive
 .public IsDialogueBoxActive
 .public IsItemInTimeDarkness
+.public IsMonsterIllegalForMissions
 .public IsMovesetValid
 .public IsParentMenuActive
 .public IsSimpleMenuActive
@@ -370,7 +371,6 @@
 .public sub_0205B77C
 .public sub_0205B80C
 .public sub_0205BBA4
-.public sub_02062B64
 .public sub_0207A2A4
 .public sub_020851AC
 .public UpdateWindow

@@ -38,6 +38,7 @@
 .public IsAdvancedTextBoxActive
 .public IsItemInTimeDarkness
 .public IsItemValidVeneer
+.public IsMonsterIllegalForMissions
 .public IsRecruitingAllowed
 .public IsScrollBoxActive
 .public ItemZInit
@@ -277,7 +278,6 @@
 .public sub_0205BD78
 .public sub_0205BD90
 .public sub_0205C700
-.public sub_02062B64
 .public sub_02062E34
 .public sub_020630A4
 .public sub_0206351C

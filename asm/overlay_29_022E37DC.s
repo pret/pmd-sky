@@ -459,8 +459,8 @@ _022E3DD0: .word 0x000003E7
 _022E3DD4: .word DUNGEON_PTR
 	arm_func_end UpdateStatusIconFlags
 
-	arm_func_start ov29_022E3DD8
-ov29_022E3DD8: ; 0x022E3DD8
+	arm_func_start PlayQuestionMarkEffect
+PlayQuestionMarkEffect: ; 0x022E3DD8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -480,10 +480,10 @@ ov29_022E3DD8: ; 0x022E3DD8
 	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022E3DD8
+	arm_func_end PlayQuestionMarkEffect
 
-	arm_func_start ov29_022E3E24
-ov29_022E3E24: ; 0x022E3E24
+	arm_func_start PlayExclamationPointEffect__022E47D4
+PlayExclamationPointEffect__022E47D4: ; 0x022E3E24
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -505,7 +505,7 @@ ov29_022E3E24: ; 0x022E3E24
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E3E70: .word 0x00000143
-	arm_func_end ov29_022E3E24
+	arm_func_end PlayExclamationPointEffect__022E47D4
 
 	arm_func_start ov29_022E3E74
 ov29_022E3E74: ; 0x022E3E74
@@ -535,8 +535,8 @@ ov29_022E3E74: ; 0x022E3E74
 _022E3ECC: .word 0x0000030E
 	arm_func_end ov29_022E3E74
 
-	arm_func_start ov29_022E3ED0
-ov29_022E3ED0: ; 0x022E3ED0
+	arm_func_start PlayExclamationPointEffect__022E4880
+PlayExclamationPointEffect__022E4880: ; 0x022E3ED0
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -558,7 +558,7 @@ ov29_022E3ED0: ; 0x022E3ED0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E3F1C: .word 0x00000143
-	arm_func_end ov29_022E3ED0
+	arm_func_end PlayExclamationPointEffect__022E4880
 
 	arm_func_start ov29_022E3F20
 ov29_022E3F20: ; 0x022E3F20
@@ -926,8 +926,8 @@ ov29_022E42E4: ; 0x022E42E4
 	bx lr
 	arm_func_end ov29_022E42E4
 
-	arm_func_start ov29_022E42E8
-ov29_022E42E8: ; 0x022E42E8
+	arm_func_start PlayEffectAnimationEntityStandard
+PlayEffectAnimationEntityStandard: ; 0x022E42E8
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #0x10
 	mov r4, r1
@@ -948,7 +948,7 @@ ov29_022E42E8: ; 0x022E42E8
 	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022E42E8
+	arm_func_end PlayEffectAnimationEntityStandard
 
 	arm_func_start ov29_022E4338
 ov29_022E4338: ; 0x022E4338
@@ -2307,8 +2307,8 @@ _022E5388:
 _022E5398: .word 0x0000018D
 	arm_func_end ov29_022E52F8
 
-	arm_func_start ov29_022E539C
-ov29_022E539C: ; 0x022E539C
+	arm_func_start PlayExclamationPointEffect__022E5D4C
+PlayExclamationPointEffect__022E5D4C: ; 0x022E539C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -2330,7 +2330,7 @@ ov29_022E539C: ; 0x022E539C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E53E8: .word 0x00000143
-	arm_func_end ov29_022E539C
+	arm_func_end PlayExclamationPointEffect__022E5D4C
 
 	arm_func_start ov29_022E53EC
 ov29_022E53EC: ; 0x022E53EC
@@ -7249,55 +7249,3 @@ ov29_022E9014: ; 0x022E9014
 	cmp r0, #0
 	bx lr
 	arm_func_end ov29_022E9014
-
-	arm_func_start GetDirectionTowardsPosition
-GetDirectionTowardsPosition: ; 0x022E9020
-	ldrsh r3, [r1]
-	ldrsh r2, [r0]
-	ldrsh r1, [r1, #2]
-	ldrsh r0, [r0, #2]
-	subs r3, r3, r2
-	sub r2, r1, r0
-	cmpeq r2, #0
-	moveq r0, #0
-	bxeq lr
-	cmp r3, #1
-	movge r3, #1
-	cmp r2, #1
-	mvn r0, #0
-	movge r2, #1
-	cmp r3, r0
-	movle r3, r0
-	mvn r0, #0
-	cmp r2, r0
-	movle r2, r0
-	ldr r1, _022E9088 ; =ov29_02351604
-	add r2, r2, #1
-	mov r0, #0xc
-	mla r0, r2, r0, r1
-	add r1, r3, #1
-	ldr r0, [r0, r1, lsl #2]
-	bx lr
-	.align 2, 0
-_022E9088: .word ov29_02351604
-	arm_func_end GetDirectionTowardsPosition
-
-	arm_func_start GetChebyshevDistance
-GetChebyshevDistance: ; 0x022E908C
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	mov r4, r1
-	ldrsh r1, [r5]
-	ldrsh r0, [r4]
-	sub r0, r1, r0
-	bl abs
-	ldrsh r1, [r4, #2]
-	ldrsh r2, [r5, #2]
-	mov r4, r0
-	sub r0, r2, r1
-	bl abs
-	cmp r4, r0
-	movle r4, r0
-	mov r0, r4
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end GetChebyshevDistance

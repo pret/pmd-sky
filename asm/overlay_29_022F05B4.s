@@ -3811,9 +3811,9 @@ _022F3A6C:
 	bl ov29_022E8104
 	bl ov29_022E81F8
 	mov r0, fp
-	bl ov29_022E3DD8
+	bl PlayQuestionMarkEffect
 	bl GetLeader
-	bl ov29_022E3E24
+	bl PlayExclamationPointEffect__022E47D4
 	mov r0, #0
 	mov r1, r6
 	mov r2, r0

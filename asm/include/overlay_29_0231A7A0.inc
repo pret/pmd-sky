@@ -10,9 +10,9 @@
 .public IsMonster__0231A9D4
 .public LogMessageByIdWithPopupCheckUser
 .public ov10_022C459C
-.public ov29_022E3ED0
 .public ov29_022FA574
 .public ov29_0232145C
+.public PlayExclamationPointEffect__022E4880
 .public SubstitutePlaceholderStringTags
 .public TryActivateTruant
 .public UpdateMovePp

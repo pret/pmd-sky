@@ -1110,7 +1110,7 @@ _0231092C:
 	bl ov29_02307BDC
 	ldr r1, [r4, #0xc8]
 	mov r0, r5
-	bl ov29_022E42E8
+	bl PlayEffectAnimationEntityStandard
 	ldr r1, _02310AD4 ; =ov10_022C446C
 	mov r0, r5
 	ldrsh r1, [r1]

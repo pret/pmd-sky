@@ -2309,7 +2309,14 @@ enum status_sure_shot_id {
     STATUS_SURE_SHOT_FOCUS_ENERGY = 4,
 };
 
+enum status_long_toss_id {
+    STATUS_LONG_TOSS_NONE = 0,
+    STATUS_LONG_TOSS_LONG_TOSS = 1,
+    STATUS_LONG_TOSS_PIERCE = 2
+};
+
 enum status_invisible_id {
+    STATUS_INVISIBLE_NONE = 0,
     STATUS_INVISIBLE_INVISIBLE = 1,
     STATUS_INVISIBLE_TRANSFORMED = 2,
     STATUS_INVISIBLE_MOBILE = 3,

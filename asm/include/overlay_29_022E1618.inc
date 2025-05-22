@@ -1,0 +1,14 @@
+#pragma once
+.public DUNGEON_PTR
+.public EntityIsValid__022E1A1C
+.public GetTileSafe
+.public InitAnimationControlWithSet__0201C0CC
+.public ov29_022DD7D8
+.public ov29_022E3A40
+.public ov29_022E8270
+.public ov29_022ED9D0
+.public ov29_02303F18
+.public ov29_023046E8
+.public ov29_023457C8
+.public ov29_0237C754
+.public ov29_0237C79C

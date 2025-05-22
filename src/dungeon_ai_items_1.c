@@ -61,7 +61,7 @@ void GetPossibleAiThrownItemDirections(struct entity *entity, s32 ally_or_enemy,
         s32 target_pos_y = target_pokemon->pos.y;
         s32 pokemon_pos_y = entity->pos.y;
         s32 distance_y = abs(entity->pos.y - target_pos_y);
-        if (GetEntInfo(entity)->long_toss_class_status.status == STATUS_NONE)
+        if (GetEntInfo(entity)->long_toss_class_status.status == STATUS_LONG_TOSS_NONE)
         {
             s32 distance = distance_x > distance_y ? distance_x : distance_y;
             if (distance > RANGED_ATTACK_RANGE)

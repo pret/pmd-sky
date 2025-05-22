@@ -4630,7 +4630,7 @@ sub_02058644: ; 0x02058644
 _02058650:
 	mov r0, r4
 	mov r1, r5
-	bl sub_02058674
+	bl RevertGiratinaAndShaymin
 	add r0, r4, #1
 	mov r0, r0, lsl #0x10
 	mov r4, r0, asr #0x10
@@ -4639,8 +4639,8 @@ _02058650:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_02058644
 
-	arm_func_start sub_02058674
-sub_02058674: ; 0x02058674
+	arm_func_start RevertGiratinaAndShaymin
+RevertGiratinaAndShaymin: ; 0x02058674
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -4674,7 +4674,7 @@ _020586C8:
 	.align 2, 0
 _020586E8: .word 0x00000211
 _020586EC: .word 0x00000217
-	arm_func_end sub_02058674
+	arm_func_end RevertGiratinaAndShaymin
 
 	arm_func_start sub_020586F0
 sub_020586F0: ; 0x020586F0

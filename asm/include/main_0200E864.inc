@@ -1,12 +1,12 @@
 #pragma once
-.public EnsureValidItem
-.public GET_ITEM_NAME_FORMATTED_SPRINTF
-.public ITEM_DATA_TABLE_PTRS
-.public SprintfStatic__0200E808_EU
-.public StringFromId
 .public _0209808C
 .public _0209809C
 .public _020980AC
 .public _020980B0
+.public EnsureValidItem
+.public GET_ITEM_NAME_FORMATTED_SPRINTF
+.public ITEM_DATA_TABLE_PTRS
+.public SprintfStatic__0200E808_EU
 .public strcpy
+.public StringFromId
 .public vsprintf

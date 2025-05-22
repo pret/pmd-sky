@@ -27,7 +27,7 @@ ShouldUsePp: ; 0x0231A7A0
 	cmp r0, #0
 	beq _0231A81C
 	mov r0, r7
-	bl ov29_022E3ED0
+	bl PlayExclamationPointEffect__022E4880
 	mov r0, #0
 	mov r1, r7
 	mov r2, r0
@@ -47,7 +47,7 @@ _0231A81C:
 	cmp r0, #0
 	beq _0231A868
 	mov r0, r7
-	bl ov29_022E3ED0
+	bl PlayExclamationPointEffect__022E4880
 	mov r0, #0
 	mov r1, r7
 	mov r2, r0

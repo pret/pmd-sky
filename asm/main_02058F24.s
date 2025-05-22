@@ -4665,7 +4665,7 @@ _0205CDB8:
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CDD4:
 	ldrsh r0, [r4, #0x18]
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	beq _0205CDF8
 	ldrsh r1, [r4, #0x18]
@@ -4717,7 +4717,7 @@ _0205CE68:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _0205CE90:
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	beq _0205CEB0
 	ldrsh r1, [r4, #0x1c]
@@ -4858,7 +4858,7 @@ _0205D050:
 	ldmia sp!, {r4, r5, r6, pc}
 _0205D074:
 	mov r0, r5
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	beq _0205D098
 	ldr r0, _0205D114 ; =_020A3A6C
@@ -11849,8 +11849,8 @@ _02062B58:
 _02062B60: .word MISSION_BANNED_STORY_MONSTERS
 	arm_func_end IsMonsterMissionAllowedStory
 
-	arm_func_start sub_02062B64
-sub_02062B64: ; 0x02062B64
+	arm_func_start IsMonsterIllegalForMissions
+IsMonsterIllegalForMissions: ; 0x02062B64
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl IsMonsterValid
@@ -11876,7 +11876,7 @@ _02062BA8:
 	.align 2, 0
 _02062BB0: .word 0x00000217
 _02062BB4: .word 0x00000117
-	arm_func_end sub_02062B64
+	arm_func_end IsMonsterIllegalForMissions
 
 	arm_func_start CanDungeonBeUsedForMission
 CanDungeonBeUsedForMission: ; 0x02062BB8

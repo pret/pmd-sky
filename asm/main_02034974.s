@@ -11367,7 +11367,7 @@ _0203D6E4:
 	ldr r0, _0203E4B0 ; =_020AFE74
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x38]
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	beq _0203D73C
 _0203D718:
