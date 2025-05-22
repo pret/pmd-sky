@@ -71,7 +71,6 @@
 .public ov29_022E51B0
 .public ov29_022E5258
 .public ov29_022E52F8
-.public ov29_022E539C
 .public ov29_022E53EC
 .public ov29_022E543C
 .public ov29_022E60E4
@@ -84,6 +83,7 @@
 .public ov29_0234B084
 .public ov29_0234B0B4
 .public ov29_02353318
+.public PlayExclamationPointEffect__022E5D4C
 .public SafeguardIsActive
 .public SECONDARY_TERRAIN_TYPES
 .public SPEED_BOOST_TURN_RANGE

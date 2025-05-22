@@ -1260,7 +1260,7 @@ _0233DA9C:
 	mul sl, r6, sb
 	add r7, r5, sl
 	ldrsh r0, [r7, #0x20]
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	bne _0233DAF4
 	ldrsh r0, [r7, #0x20]
@@ -2490,7 +2490,7 @@ _0233EC14:
 	beq _0233EC8C
 	ldrsh r0, [sl, #0x20]
 	add r8, r8, #1
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	bne _0233EC88
 	ldrsh r0, [sl, #0x20]
@@ -2765,7 +2765,7 @@ _0233F01C:
 	beq _0233F094
 	ldrsh r0, [sl, #0x20]
 	add r7, r7, #1
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	bne _0233F090
 	ldrsh r0, [sl, #0x20]

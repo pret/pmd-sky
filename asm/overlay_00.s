@@ -2334,7 +2334,7 @@ _022BE1E8:
 	beq _022BE304
 	cmp r0, #2
 	bne _022BE234
-	bl ov00_022BE918
+	bl SelectRandomBackground
 	cmp sl, #1
 	bne _022BE224
 	mov r0, #0
@@ -2920,8 +2920,8 @@ _022BE910: .word ov00_023187F0
 _022BE914: .word ov00_023187F4
 	arm_func_end ov00_022BE8D0
 
-	arm_func_start ov00_022BE918
-ov00_022BE918: ; 0x022BE918
+	arm_func_start SelectRandomBackground
+SelectRandomBackground: ; 0x022BE918
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	mov r0, #7
@@ -2942,7 +2942,7 @@ ov00_022BE918: ; 0x022BE918
 	.align 2, 0
 _022BE95C: .word ov00_023187F0
 _022BE960: .word ov00_023187F4
-	arm_func_end ov00_022BE918
+	arm_func_end SelectRandomBackground
 
 	arm_func_start ov00_022BE964
 ov00_022BE964: ; 0x022BE964

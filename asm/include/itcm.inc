@@ -6,7 +6,6 @@
 .public _02099784
 .public _02099E44
 .public _020A2CF8
-.public MONSTER_DATA_TABLE_PTR
 .public _0229AFC0
 .public _0229AFCC
 .public _0229AFE4
@@ -130,6 +129,7 @@
 .public IsTacticSet
 .public MemcpyFast
 .public MemsetFast
+.public MONSTER_DATA_TABLE_PTR
 .public OS_IRQTable
 .public ov10_022C4580
 .public ov10_022C4900

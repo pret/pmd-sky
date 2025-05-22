@@ -4585,7 +4585,7 @@ _0234087C:
 	cmp r0, #0
 	beq _023408D8
 	ldrsh r0, [r4, #0xd0]
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	bne _023408D0
 	ldrb r0, [r4, #0xc6]
@@ -6149,7 +6149,7 @@ _02341DC4:
 	beq _02341EA0
 	add r0, r2, #0x1600
 	ldrsh r0, [r0, #0x1c]
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	bne _02341E80
 	mov r0, r4
@@ -6483,7 +6483,7 @@ _02342284:
 	beq _02342378
 	add r0, r1, #0x1600
 	ldrsh r0, [r0, #0x1c]
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	bne _02342364
 	ldr r1, _02341D00 ; =ov03_02346BC8
@@ -7092,7 +7092,7 @@ _02342B68:
 	beq _02342C44
 	add r0, r1, #0x1600
 	ldrsh r0, [r0, #0x1c]
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	bne _02342C30
 	ldr r0, _02341D00 ; =ov03_02346BC8

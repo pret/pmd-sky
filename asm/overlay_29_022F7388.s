@@ -1434,7 +1434,7 @@ _022F8330:
 	ldrsh r0, [r5, #0xc]
 #endif
 	mvn r1, #0
-	bl sub_02058674
+	bl RevertGiratinaAndShaymin
 	ldrsh r0, [r4, #8]
 	mov r1, r4
 	bl sub_0205349C
@@ -1536,7 +1536,7 @@ _022F84AC:
 	beq _022F8528
 	ldrsh r0, [r7, #0xc]
 	mvn r1, #0
-	bl sub_02058674
+	bl RevertGiratinaAndShaymin
 	ldrsh r0, [r4, #8]
 	mov r1, r4
 	bl sub_0205349C

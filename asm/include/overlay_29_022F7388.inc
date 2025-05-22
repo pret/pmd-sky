@@ -93,6 +93,7 @@
 .public PopulateActiveMonsterPtrs
 .public RemoveHolderForItemInBag
 .public ReplaceWanFromBinFile
+.public RevertGiratinaAndShaymin
 .public SetForcedLossReason
 .public SetMissionTargetEnemyDefeated
 .public ShouldMonsterRunAway
@@ -102,7 +103,6 @@
 .public sub_02056228
 .public sub_020566C4
 .public sub_020585B4
-.public sub_02058674
 .public SubstitutePlaceholderStringTags
 .public TEAM_MEMBER_TABLE_PTR
 .public TryEndStatusWithAbility

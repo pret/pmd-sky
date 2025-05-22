@@ -5553,7 +5553,7 @@ _0232DAFC:
 	mov r2, r5
 	bl ov01_0232E334
 	ldrsh r0, [r8, #4]
-	bl sub_02062B64
+	bl IsMonsterIllegalForMissions
 	cmp r0, #0
 	bne _0232DB68
 	add r0, r8, #0x22

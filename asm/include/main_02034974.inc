@@ -443,6 +443,7 @@
 .public IsLevelResetDungeon
 .public IsMainCharacter
 .public IsMoneyAllowed
+.public IsMonsterIllegalForMissions
 .public IsMovesetValidInTimeDarkness
 .public IsNot2TurnsMoveOrSketch
 .public IsOptionsMenuActive
@@ -718,7 +719,6 @@
 .public sub_0205FC20
 .public sub_0205FD88
 .public sub_0205FE80
-.public sub_02062B64
 .public sub_0206637C
 .public sub_02079094
 .public sub_0207B9EC

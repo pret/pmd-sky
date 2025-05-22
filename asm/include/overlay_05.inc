@@ -17,6 +17,7 @@
 .public GetTeamMember
 .public InitPreprocessorArgs
 .public IsAdvancedMenuActive2
+.public IsMonsterIllegalForMissions
 .public IsMovesetValid
 .public MemAlloc
 .public MemFree
@@ -106,5 +107,4 @@
 .public sub_020590C0
 .public sub_020590DC
 .public sub_0205BD78
-.public sub_02062B64
 .public UpdateWindow

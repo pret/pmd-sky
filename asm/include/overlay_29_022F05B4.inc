@@ -80,8 +80,6 @@
 .public ov29_022E0DF0
 .public ov29_022E28D4
 .public ov29_022E2CA0
-.public ov29_022E3DD8
-.public ov29_022E3E24
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
@@ -163,6 +161,8 @@
 .public ov29_0237C6A4
 .public ov29_0237C9A4
 .public ov29_0237CFBB
+.public PlayExclamationPointEffect__022E47D4
+.public PlayQuestionMarkEffect
 .public PlaySeVolumeWrapper
 .public PointCameraToMonster
 .public PositionHasMonster

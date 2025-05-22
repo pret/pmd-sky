@@ -120,7 +120,7 @@
 .public ov29_023515CC
 .public ov29_023515E8
 .public ov29_023515F4
-.public ov29_02351604
+.public POSITION_DISPLACEMENT_TO_DIRECTION
 .public ov29_0235352C
 .public ov29_0235354C
 .public ov29_02353558

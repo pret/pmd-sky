@@ -1,7 +1,7 @@
 #pragma once
-.public DUNGEON_PTR
 .public DetermineAllMonsterShadow
 .public DetermineTileWalkableNeighbors
+.public DUNGEON_PTR
 .public EnsureCanStandCurrentTile
 .public EntityIsValid__0231EDD8
 .public GetMoveCategory
@@ -10,9 +10,6 @@
 .public InitMove
 .public IsFullFloorFixedRoom
 .public LogMessageByIdWithPopupCheckUser
-.public StairsAlwaysReachable
-.public UpdateMinimap
-.public UpdateTrapsVisibility
 .public ov29_022E0378
 .public ov29_022EA370
 .public ov29_022F9C74
@@ -20,3 +17,6 @@
 .public ov29_0233665C
 .public ov29_0233785C
 .public ov29_0233FB1C
+.public StairsAlwaysReachable
+.public UpdateMinimap
+.public UpdateTrapsVisibility
