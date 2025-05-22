@@ -43,6 +43,8 @@ Static main
 	Object asm/main_02051098.o
 	Object src/main_02052874.o
 	Object asm/main_02052890.o
+	Object src/main_02052950.o
+	Object asm/main_0205297C.o
 	Object src/main_02054BE0.o
 	Object asm/main_02054C24.o
 	Object src/pokemon.o

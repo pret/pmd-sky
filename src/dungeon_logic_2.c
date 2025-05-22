@@ -1,6 +1,5 @@
 #include "dungeon_logic_2.h"
-
-extern bool8 CanThrowItems(s16 monster_id);
+#include "main_02052950.h"
 
 bool8 MonsterCanThrowItems(struct monster *monster)
 {

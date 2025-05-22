@@ -6,7 +6,9 @@
 struct monster_data {
     u8 fill0[0x16];
     enum mobility_type mobility_type;
-    u8 fill17[0x2D];
+    u8 fill17[0x3];
+    u8 can_throw_items;
+    u8 fill1b[0x29];
 };
 
 struct monster_data_table {
