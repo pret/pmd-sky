@@ -5,6 +5,7 @@
 #include "dungeon_ai_item_weight.h"
 #include "dungeon_ai_items_1.h"
 #include "dungeon_capabilities_1.h"
+#include "dungeon_logic_2.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
@@ -23,8 +24,6 @@ u32 AI_THROWN_ITEM_DIRECTIONS[NUM_DIRECTIONS] = {0};
 
 extern volatile s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
-
-extern bool8 MonsterCanThrowItems(struct monster *monster);
 
 bool8 EntityIsValid__0230E8F0(struct entity *entity)
 {
