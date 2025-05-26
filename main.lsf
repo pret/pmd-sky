@@ -11,6 +11,8 @@ Static main
 	StackSize 0 2048
 	Object src/main_02000C6C.o
 	Object asm/main_02000DE0.o
+	Object src/main_0200330C.o
+	Object asm/main_02003328.o
 	Object src/main_02003D2C.o
 	Object asm/main_02003DB8.o
 	Object src/main_02008210.o
