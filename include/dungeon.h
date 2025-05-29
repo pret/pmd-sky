@@ -16,6 +16,7 @@ enum TerrainType
     TERRAIN_TYPE_WALL = 0, // x0 When neither TERRAIN_TYPE_NORMAL nor TERRAIN_TYPE_SECONDARY are set
     TERRAIN_TYPE_NORMAL = 1 << 0, // x1
     TERRAIN_TYPE_SECONDARY = 1 << 1, // Water or lava depending on the dungeon. x2
+    TERRAIN_TYPE_IMPASSABLE_WALL = 1 << 4, // x10
 };
 
 // Dungeon state
