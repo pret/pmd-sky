@@ -301,6 +301,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022F7388.o
 	Object src/overlay_29_022F9720.o
 	Object asm/overlay_29_022F9744.o
+	Object src/overlay_29_022FB538.o
+	Object asm/overlay_29_022FB5EC.o
 	Object src/joined_at_checks.o
 	Object asm/overlay_29_022FBB1C.o
 	Object src/overlay_29_022FC99C.o

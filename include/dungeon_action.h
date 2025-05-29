@@ -13,6 +13,6 @@ void ClearMonsterActionFields(struct action_data *monster_action);
 //
 // action_pointer: Pointer to the monster's action field
 // action: Value to set monster::action::action_id to.
-void SetMonsterActionFields(struct action_data *monster_action, enum action action);
+void SetMonsterActionFields(struct action_data *monster_action, enum action action_id);
 
 #endif //PMDSKY_DUNGEON_ACTION_H
