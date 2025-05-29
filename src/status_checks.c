@@ -19,7 +19,6 @@
 
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
-extern void SetActionPassTurnOrWalk(struct action_data *monster_action, s16 monster_id);
 extern bool8 CanMonsterMoveInDirection(struct entity *monster, u8 direction);
 extern void ChooseAiMove(struct entity *monster);
 

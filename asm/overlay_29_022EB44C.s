@@ -1,23 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022EB41C.inc"
+	.include "overlay_29_022EB44C.inc"
 
 	.text
-
-	arm_func_start SetActionPassTurnOrWalk
-SetActionPassTurnOrWalk: ; 0x022EB41C
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	mov r0, r1
-	bl GetCanMoveFlag
-	cmp r0, #0
-	movne r0, #2
-	moveq r0, #1
-	strh r0, [r4]
-	mov r0, #0
-	strb r0, [r4, #4]
-	strb r0, [r4, #0xa]
-	ldmia sp!, {r4, pc}
-	arm_func_end SetActionPassTurnOrWalk
 
 	arm_func_start GetItemToUseByIndex
 GetItemToUseByIndex: ; 0x022EB44C

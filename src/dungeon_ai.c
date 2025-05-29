@@ -26,7 +26,6 @@ extern struct dungeon *DUNGEON_PTR[];
 extern void EndFrozenClassStatus(struct entity *user, struct entity *target, bool8 log);
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
-extern void SetActionPassTurnOrWalk(struct action_data *monster_action, s16 monster_id);
 extern void ChooseAiMove(struct entity *monster);
 extern bool8 GetCanMoveFlag(s16 monster_id);
 extern void AiMovement(struct entity *monster, bool8 show_run_away_effect);
