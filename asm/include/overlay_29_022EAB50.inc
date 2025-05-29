@@ -1,5 +1,4 @@
 #pragma once
-.public _s32_div_f
 .public AbilityIsActiveVeneer
 .public AdvanceFrame
 .public DUNGEON_PRNG_STATE
@@ -12,8 +11,16 @@
 .public IqSkillIsEnabled
 .public IsCurrentFixedRoomBossFight
 .public LogMessageByIdWithPopupCheckUserTarget
-.public MoveMonsterToPos
 .public MUSIC_ID_TABLE
+.public MoveMonsterToPos
+.public PlayBgmByIdVeneer
+.public PlayBgmByIdVolumeVeneer
+.public RANDOM_MUSIC_ID_TABLE
+.public RoundUpDiv256
+.public StringFromId
+.public SubstitutePlaceholderStringTags
+.public UpdateEntityPixelPos
+.public _s32_div_f
 .public ov29_022E555C
 .public ov29_02321260
 .public ov29_023516E8
@@ -22,12 +29,7 @@
 .public ov29_02352070
 .public ov29_0237C91C
 .public ov29_0237C91E
-.public PlayBgmByIdVeneer
-.public PlayBgmByIdVolumeVeneer
-.public RANDOM_MUSIC_ID_TABLE
-.public RoundUpDiv256
 .public strcmp
-.public StringFromId
 .public sub_0200D208
 .public sub_02017ACC
 .public sub_02017B18
@@ -37,5 +39,3 @@
 .public sub_02017C68
 .public sub_02017C74
 .public sub_02017D80
-.public SubstitutePlaceholderStringTags
-.public UpdateEntityPixelPos

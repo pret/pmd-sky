@@ -754,12 +754,3 @@ SetLeaderActionFields: ; 0x022EB3C8
 	strh r1, [r0, #0x5c]
 	ldmia sp!, {r4, pc}
 	arm_func_end SetLeaderActionFields
-
-	arm_func_start ClearMonsterActionFields
-ClearMonsterActionFields: ; 0x022EB3F4
-	mov r1, #0
-	strh r1, [r0]
-	strb r1, [r0, #4]
-	strb r1, [r0, #0xa]
-	bx lr
-	arm_func_end ClearMonsterActionFields

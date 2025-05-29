@@ -1,6 +1,7 @@
 #include "dungeon_ai.h"
 #include "dg_random.h"
 #include "direction.h"
+#include "dungeon_action.h"
 #include "dungeon_ai_items.h"
 #include "dungeon_capabilities_1.h"
 #include "dungeon_pokemon_attributes.h"
@@ -24,7 +25,6 @@ extern struct dungeon *DUNGEON_PTR[];
 extern void EndFrozenClassStatus(struct entity *user, struct entity *target, bool8 log);
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
-extern void ClearMonsterActionFields(struct action_data *monster_action);
 extern void SetActionPassTurnOrWalk(struct action_data *monster_action, s16 monster_id);
 extern void ChooseAiMove(struct entity *monster);
 extern bool8 GetCanMoveFlag(s16 monster_id);
