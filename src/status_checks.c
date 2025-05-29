@@ -1,6 +1,7 @@
 #include "status_checks.h"
 #include "dg_random.h"
 #include "dungeon_action.h"
+#include "dungeon_logic_3.h"
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 
@@ -19,7 +20,6 @@
 
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
-extern bool8 CanMonsterMoveInDirection(struct entity *monster, u8 direction);
 extern void ChooseAiMove(struct entity *monster);
 
 bool8 HasStatusThatPreventsActing(struct entity *monster)
