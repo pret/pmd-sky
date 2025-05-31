@@ -2,7 +2,6 @@
 
 extern u16 MUSIC_DURATION_LOOKUP_TABLE_1[128];
 extern u32 MUSIC_DURATION_LOOKUP_TABLE_2[128];
-extern struct driver_work DRIVER_WORK;
 
 void SoundEnvelope_Reset(struct sound_envelope *envelope)
 {

@@ -45,7 +45,13 @@ struct sound_envelope
 struct driver_work {
     u8 fill0[0x27];
     s16 usec_per_sound_driver_tick;
+    u8 fill1[0x6c8];
+    void* heap_start;
+    void* heap_end;
+    void* heap_size;
 };
+
+extern struct driver_work DRIVER_WORK;
 
 void SoundEnvelope_Reset(struct sound_envelope *envelope);
 void SoundEnvelopeParameters_Reset(struct sound_envelope_parameters *parameters);
