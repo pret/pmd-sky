@@ -1,8 +1,7 @@
 #include "overlay_29_02318A4C.h"
 #include "dungeon_util_static.h"
 #include "overlay_29_02315118.h"
-
-extern bool8 GravityIsActive();
+#include "overlay_29_02338390.h"
 
 bool8 IsFloating(struct entity *entity)
 {
