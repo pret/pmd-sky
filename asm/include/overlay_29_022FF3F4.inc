@@ -1,12 +1,6 @@
 #pragma once
 .public GetMobilityType
-.public GetMobilityTypeAfterIqSkills
-.public GetTile
-.public IqSkillIsEnabled
 .public IsChargingTwoTurnMove
-.public IsCurrentTilesetBackground
-.public IsFloating
-.public ItemIsActive__022FF898
 .public LogMessageByIdWithPopupCheckUser
 .public SetActionUseMovePlayer
 .public SetMonsterActionFields

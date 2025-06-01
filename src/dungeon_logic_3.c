@@ -1,5 +1,6 @@
 #include "dungeon_logic_3.h"
 #include "dungeon_map_access.h"
+#include "dungeon_mobility.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util.h"
 #include "dungeon_util_static.h"
@@ -7,7 +8,6 @@
 
 static const u8 DIRECTIONAL_BIT_MASKS[] = {0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80};
 
-extern enum mobility_type GetMobilityTypeCheckSlipAndFloating(struct entity *monster, s16 species);
 extern enum mobility_type GetDirectionalMobilityType(struct entity* monster, enum mobility_type base_mobility, u8 direction);
 extern bool8 IsCurrentTilesetBackground(void);
 
