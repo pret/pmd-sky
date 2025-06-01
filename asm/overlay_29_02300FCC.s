@@ -1,54 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02300F30.inc"
+	.include "overlay_29_02300FCC.inc"
 
 	.text
-
-#ifndef JAPAN
-	arm_func_start GetDirectionalMobilityType
-GetDirectionalMobilityType: ; 0x02300F30
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r6, r0
-	mov r5, r1
-	mov r4, r2
-	bl IsCurrentTilesetBackground
-	cmp r0, #0
-	bne _02300FC4
-	ldr r0, [r6, #0xb4]
-	ldrb r0, [r0, #0xef]
-	cmp r0, #3
-	moveq r5, #3
-	beq _02300FC4
-	mov r0, r6
-	mov r1, #0x10
-	bl ItemIsActive__022FF898
-	cmp r0, #0
-	movne r5, #3
-	bne _02300FC4
-	cmp r5, #3
-	beq _02300F98
-	mov r0, r6
-	mov r1, #0xc
-	bl IqSkillIsEnabled
-	cmp r0, #0
-	movne r5, #2
-	bne _02300FC4
-_02300F98:
-	mov r0, r6
-	mov r1, #0xd
-	bl IqSkillIsEnabled
-	cmp r0, #0
-	beq _02300FC4
-	cmp r4, #0xff
-	moveq r5, #3
-	beq _02300FC4
-	tst r4, #1
-	movne r5, #2
-	moveq r5, #3
-_02300FC4:
-	mov r0, r5
-	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end GetDirectionalMobilityType
-#endif
 
 	arm_func_start ov29_02300FCC
 ov29_02300FCC: ; 0x02300FCC

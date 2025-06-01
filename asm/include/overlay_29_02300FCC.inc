@@ -2,6 +2,7 @@
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public DungeonRandInt
+.public GetDirectionalMobilityType
 .public GetMobilityTypeCheckSlipAndFloating
 .public GetTile
 .public GetTreatmentBetweenMonsters
