@@ -184,27 +184,3 @@ _022FF620: .word 0x00000C2C + OV29_022FF3F4_OFFSET
 _022FF624: .word 0x00000C2D + OV29_022FF3F4_OFFSET
 _022FF628: .word 0x00000C2F + OV29_022FF3F4_OFFSET
 	arm_func_end ov29_022FF3F4
-
-	arm_func_start GetMobilityTypeCheckSlip
-GetMobilityTypeCheckSlip: ; 0x022FF62C
-	stmdb sp!, {r4, lr}
-	mov r4, r1
-	bl GetMobilityType
-	cmp r4, #0
-	beq _022FF660
-	cmp r0, #0
-	cmpne r0, #4
-	moveq r1, #1
-	movne r1, #0
-	tst r1, #0xff
-	ldrne r0, _022FF670 ; =ov29_0237C9B8
-	ldrneb r0, [r0, #5]
-	ldmneia sp!, {r4, pc}
-_022FF660:
-	cmp r0, #4
-	ldrhs r1, _022FF670 ; =ov29_0237C9B8
-	ldrhsb r0, [r1, r0]
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_022FF670: .word ov29_0237C9B8
-	arm_func_end GetMobilityTypeCheckSlip

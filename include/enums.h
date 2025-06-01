@@ -2918,6 +2918,7 @@ enum mobility_type {
     MOBILITY_INTANGIBLE = 3,
     MOBILITY_LAVA = 4,
     MOBILITY_WATER = 5,
+    NUM_MOBILITY_TYPES
 };
 
 #endif //PMDSKY_ENUMS_H

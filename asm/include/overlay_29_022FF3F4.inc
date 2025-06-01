@@ -1,9 +1,7 @@
 #pragma once
-.public GetMobilityType
 .public IsChargingTwoTurnMove
 .public LogMessageByIdWithPopupCheckUser
 .public SetActionUseMovePlayer
 .public SetMonsterActionFields
 .public SubstitutePlaceholderStringTags
 .public ov29_02318D58
-.public ov29_0237C9B8

@@ -33,7 +33,7 @@
 .public ov29_02352B9C
 .public ov29_02352D58
 .public ov29_02352F14
-.public ov29_0237C9B8
+.public MOBILITY_TYPE_TO_DUNGEON_MOBILITY_TYPE
 .public ov29_0237CAA0
 .public ov29_0237CAAC
 .public ov29_0237CAB8
