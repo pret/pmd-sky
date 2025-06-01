@@ -361,7 +361,7 @@ ov29_02336460: ; 0x02336460
 	mov r1, #0x20
 	ldr r0, [r0, #8]
 	bl ov29_022DE0EC
-	ldr r1, _023365B0 ; =ov29_0237C9B8
+	ldr r1, _023365B0 ; =MOBILITY_TYPE_TO_DUNGEON_MOBILITY_TYPE
 	mov r4, #0
 	mov r3, #1
 	strb r4, [r1]
@@ -389,7 +389,7 @@ ov29_02336460: ; 0x02336460
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	cmp r0, #1
-	ldrls r0, _023365B0 ; =ov29_0237C9B8
+	ldrls r0, _023365B0 ; =MOBILITY_TYPE_TO_DUNGEON_MOBILITY_TYPE
 	movls r1, #0
 	strlsb r1, [r0, #4]
 	strlsb r1, [r0, #5]
@@ -403,7 +403,7 @@ _023365A4: .word DEFAULT_TILE
 _023365A8: .word 0x00012162
 #endif
 _023365AC: .word ov29_0237CAA0
-_023365B0: .word ov29_0237C9B8
+_023365B0: .word MOBILITY_TYPE_TO_DUNGEON_MOBILITY_TYPE
 _023365B4: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end ov29_02336460
 

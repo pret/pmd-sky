@@ -1,5 +1,6 @@
 #include "dungeon_logic_3.h"
 #include "dungeon_map_access.h"
+#include "dungeon_mobility.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util.h"
 #include "dungeon_util_static.h"
@@ -7,8 +8,6 @@
 
 static const u8 DIRECTIONAL_BIT_MASKS[] = {0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80};
 
-extern enum mobility_type GetMobilityTypeCheckSlipAndFloating(struct entity *monster, s16 species);
-extern enum mobility_type GetDirectionalMobilityType(struct entity* monster, enum mobility_type base_mobility, u8 direction);
 extern bool8 IsCurrentTilesetBackground(void);
 
 bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction)
@@ -51,3 +50,29 @@ bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction)
 
     return FALSE;
 }
+
+#ifndef JAPAN
+enum mobility_type GetDirectionalMobilityType(struct entity* monster, enum mobility_type base_mobility, u8 direction)
+{
+    enum mobility_type mobility = base_mobility;
+    if (!IsCurrentTilesetBackground())
+    {
+        if (GetEntInfo(monster)->invisible_class_status.status == STATUS_INVISIBLE_MOBILE)
+            mobility = MOBILITY_INTANGIBLE;
+        else if (ItemIsActive__022FF898(monster, ITEM_MOBILE_SCARF))
+            mobility = MOBILITY_INTANGIBLE;
+        else if (mobility != MOBILITY_INTANGIBLE && IqSkillIsEnabled(monster, IQ_ALL_TERRAIN_HIKER))
+            mobility = MOBILITY_HOVERING;
+        else if (IqSkillIsEnabled(monster, IQ_ABSOLUTE_MOVER)) {
+            if (direction == 0xFF)
+                mobility = MOBILITY_INTANGIBLE;
+            else if (direction & 1)
+                // Absolute Mover can't break walls diagonally.
+                mobility = MOBILITY_HOVERING;
+            else
+                mobility = MOBILITY_INTANGIBLE;
+        }
+    }
+    return mobility;
+}
+#endif
