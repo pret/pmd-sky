@@ -5,10 +5,9 @@
 #include "dungeon_util.h"
 #include "dungeon_util_static.h"
 #include "overlay_29_022FF898.h"
+#include "run_dungeon.h"
 
 static const u8 DIRECTIONAL_BIT_MASKS[] = {0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80};
-
-extern bool8 IsCurrentTilesetBackground(void);
 
 bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction)
 {
@@ -31,6 +30,8 @@ bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction)
         else if (ItemIsActive__022FF898(monster, ITEM_MOBILE_SCARF))
             mobility = MOBILITY_INTANGIBLE;
         else if (IqSkillIsEnabled(monster, IQ_ALL_TERRAIN_HIKER))
+            // BUG: If a Pokémon can normally move through walls, All-Terrain Hiker will block them from moving through walls.
+            // This bug is fixed in the NA/EU versions.
             mobility = MOBILITY_HOVERING;
         else if (IqSkillIsEnabled(monster, IQ_ABSOLUTE_MOVER)) {
             if (direction & 1)
