@@ -1,9 +1,8 @@
 #include "run_dungeon.h"
 #include "dungeon.h"
+#include "overlay_10_022C2574.h"
 
 extern struct dungeon *DUNGEON_PTR[];
-
-extern bool8 IsBackgroundTileset(u32 tileset_id);
 
 bool8 IsCurrentTilesetBackground()
 {
