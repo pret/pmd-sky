@@ -21,8 +21,8 @@ enum mobility_type GetMobilityTypeCheckSlip(s16 species, bool8 walk_on_water)
         // Indices 4 and 5 in this array are assigned either MOBILITY_NORMAL or MOBILITY_WATER
         // depending on whether the dungeon's liquid is water or lava.
         // For example, a lava dungeon would have these values:
-        //   WALKABLE_TILE_TO_MOBILITY_TYPE[MOBILITY_LAVA]: MOBILITY_WATER
-        //   WALKABLE_TILE_TO_MOBILITY_TYPE[MOBILITY_WATER]: MOBILITY_NORMAL
+        //   MOBILITY_TYPE_TO_DUNGEON_MOBILITY_TYPE[MOBILITY_LAVA]: MOBILITY_WATER
+        //   MOBILITY_TYPE_TO_DUNGEON_MOBILITY_TYPE[MOBILITY_WATER]: MOBILITY_NORMAL
         // This means a Fire-type can cross the dungeon's liquid, while a Water-type cannot.
         return MOBILITY_TYPE_TO_DUNGEON_MOBILITY_TYPE[mobility_type];
 
