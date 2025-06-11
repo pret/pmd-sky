@@ -10,18 +10,20 @@ from write_inc_file import write_inc_file
 # Example usage (auto-generated file name): python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)"
 # Example usage (custom file name): python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)" my_new_file
 
-if len(sys.argv) < 3 or len(sys.argv) > 4:
-    print('Usage: python extract_function.py <asm_file> <function_header> <extract_file_name>')
+if len(sys.argv) < 3 or len(sys.argv) > 5:
+    print('Usage: python extract_function.py <asm_file> <function_header> <extract_file_name> <nonmatching>')
     exit(1)
 
 _, function_location, function_header = sys.argv[0:3]
 extract_file_name = None
-if len(sys.argv) == 4:
+if len(sys.argv) >= 4 and len(sys.argv[3]) > 0:
     extract_file_name = sys.argv[3]
+
+nonmatching = len(sys.argv) >= 5 and sys.argv[4] == 'nonmatching'
 
 if function_location.endswith('.s'):
     function_location = function_location[:-2]
-if function_location.startswith("./asm/"):
+if function_location.startswith('./asm/'):
     function_location = function_location[6:]
 if function_header.endswith(';'):
     function_header = function_header[:-1]
@@ -104,7 +106,12 @@ new_asm_header = f"""\t.include "asm/macros.inc"
 new_asm_name = f'{new_asm_base_name}.s'
 
 new_asm_lines = original_lines[function_end_line + 1:]
-original_asm_lines = original_lines[:function_start_line - 1]
+if nonmatching:
+    original_asm_lines = original_lines[:function_end_line + 1]
+    original_asm_lines.append('#endif\n')
+    original_asm_lines[function_start_line] = '#ifndef NONMATCHING\n' + original_asm_lines[function_start_line]
+else:
+    original_asm_lines = original_lines[:function_start_line - 1]
 
 with open(LSF_FILE_PATH, 'r') as lsf_file:
     lsf_lines = lsf_file.readlines()
@@ -167,6 +174,10 @@ function_body = f"""{function_header}
 {{
 
 }}"""
+if nonmatching:
+    function_body = f"""#ifdef NONMATCHING
+{function_body}
+#endif"""
 
 # Add the extracted function to a .h and .c file.
 # If there is an existing C file adjacent to the extracted function, add the function to that file.
