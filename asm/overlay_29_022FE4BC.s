@@ -49,7 +49,7 @@ _022FEF54:
 _022FEF64:
 	mov r0, r6
 	mov r1, #0
-	bl ov29_02300DCC
+	bl MonsterCannotAttack
 	cmp r0, #0
 	beq _022FEF94
 	mov r0, r6
@@ -684,7 +684,7 @@ _022FE528:
 _022FE538:
 	mov r0, sb
 	mov r1, #0
-	bl ov29_02300DCC
+	bl MonsterCannotAttack
 	cmp r0, #0
 	beq _022FE568
 	mov r0, sb

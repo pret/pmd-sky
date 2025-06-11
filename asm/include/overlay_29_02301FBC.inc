@@ -2,8 +2,8 @@
 .public AbilityIsActive
 .public CanLearnIqSkill
 .public CanSeeTarget
-.public DUNGEON_PTR
 .public DisableIqSkill
+.public DUNGEON_PTR
 .public EnableIqSkill
 .public EntityIsValid__023000E4
 .public GetEntityNaturalGiftInfo

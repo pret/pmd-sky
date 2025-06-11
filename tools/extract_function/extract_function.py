@@ -10,21 +10,25 @@ from write_inc_file import write_inc_file
 # Example usage (auto-generated file name): python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)"
 # Example usage (custom file name): python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)" my_new_file
 
-if len(sys.argv) < 3 or len(sys.argv) > 4:
-    print('Usage: python extract_function.py <asm_file> <function_header> <extract_file_name>')
+if len(sys.argv) < 3 or len(sys.argv) > 5:
+    print('Usage: python extract_function.py <asm_file> <function_header> <extract_file_name> <nonmatching>')
     exit(1)
 
 _, function_location, function_header = sys.argv[0:3]
 extract_file_name = None
-if len(sys.argv) == 4:
+if len(sys.argv) >= 4 and len(sys.argv[3]) > 0:
     extract_file_name = sys.argv[3]
+
+nonmatching = len(sys.argv) >= 5 and sys.argv[4] == 'nonmatching'
 
 if function_location.endswith('.s'):
     function_location = function_location[:-2]
-if function_location.startswith("./asm/"):
+if function_location.startswith('./asm/'):
     function_location = function_location[6:]
 if function_header.endswith(';'):
     function_header = function_header[:-1]
+
+is_itcm = function_location.startswith('itcm')
 
 # Extract the function name from the function header argument.
 left_parentheses_index = function_header.find('(')
@@ -91,15 +95,23 @@ remove_orig_file = first_function_start_line == function_start_line
 include_new_asm_file = new_file_address is not None
 
 new_inc_file_name = f"{new_asm_base_name}.inc"
+section_name = 'text'
+if is_itcm:
+    section_name = 'itcm,4,1,4'
 new_asm_header = f"""\t.include "asm/macros.inc"
 \t.include "{new_inc_file_name}"
 
-\t.text
+\t.{section_name}
 """
 new_asm_name = f'{new_asm_base_name}.s'
 
 new_asm_lines = original_lines[function_end_line + 1:]
-original_asm_lines = original_lines[:function_start_line - 1]
+if nonmatching:
+    original_asm_lines = original_lines[:function_end_line + 1]
+    original_asm_lines.append('#endif\n')
+    original_asm_lines[function_start_line] = '#ifndef NONMATCHING\n' + original_asm_lines[function_start_line]
+else:
+    original_asm_lines = original_lines[:function_start_line - 1]
 
 with open(LSF_FILE_PATH, 'r') as lsf_file:
     lsf_lines = lsf_file.readlines()
@@ -110,9 +122,12 @@ if extract_file_name is None:
 # If needed, add the extracted function's new .o file to main.lsf.
 merge_prev_file = None
 merge_next_file = None
+lsf_suffix = ''
+if is_itcm:
+    lsf_suffix = ' (.itcm)'
 SRC_LSF_PREFIX = '\tObject src/'
 for i, line in enumerate(lsf_lines):
-    if line.endswith(f'{function_location}.o\n'):
+    if line.endswith(f'{function_location}.o{lsf_suffix}\n'):
         if remove_orig_file:
             lsf_lines[i] = ''
             prev_line = lsf_lines[i - 1]
@@ -123,9 +138,9 @@ for i, line in enumerate(lsf_lines):
             if next_line.startswith(SRC_LSF_PREFIX):
                 merge_next_file = next_line[len(SRC_LSF_PREFIX) : -3]
         if merge_prev_file is None and merge_next_file is None:
-            lsf_lines[i] += f'\tObject src/{extract_file_name}.o\n'
+            lsf_lines[i] += f'\tObject src/{extract_file_name}.o{lsf_suffix}\n'
         if include_new_asm_file:
-            lsf_lines[i] += f'\tObject asm/{new_asm_base_name}.o\n'
+            lsf_lines[i] += f'\tObject asm/{new_asm_base_name}.o{lsf_suffix}\n'
         break
 
 print('Updating', LSF_FILE_PATH)
@@ -159,6 +174,10 @@ function_body = f"""{function_header}
 {{
 
 }}"""
+if nonmatching:
+    function_body = f"""#ifdef NONMATCHING
+{function_body}
+#endif"""
 
 # Add the extracted function to a .h and .c file.
 # If there is an existing C file adjacent to the extracted function, add the function to that file.

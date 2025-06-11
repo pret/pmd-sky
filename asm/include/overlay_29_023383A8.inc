@@ -4,7 +4,7 @@
 .public GetVictoriesOnOneFloor
 .public HiddenStairsTrigger
 .public LogMessageByIdWithPopupCheckUser
-.public PositionIsOnHiddenStairs
-.public SetVictoriesOnOneFloor
 .public ov29_022EDEDC
 .public ov29_02306D54
+.public PositionIsOnHiddenStairs
+.public SetVictoriesOnOneFloor

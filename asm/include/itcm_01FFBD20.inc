@@ -1,0 +1,14 @@
+#pragma once
+.public _01FFB654
+.public AbilityIsActiveVeneer
+.public CanSeeTarget
+.public DUNGEON_PTR
+.public EntityIsValid__02319F8C
+.public GetEntityMoveTargetAndRange
+.public GetMoveTypeForMonster
+.public GetTreatmentBetweenMonsters
+.public InitMove
+.public IsMonster__0231A9D4
+.public ov29_0231985C
+.public ov29_0231B008
+.public TryAddTargetToAiTargetList

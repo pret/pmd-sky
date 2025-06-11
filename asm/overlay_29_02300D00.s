@@ -67,8 +67,8 @@ ov29_02300DC0: ; 0x02300DC0
 _02300DC8: .word ov29_02300D50
 	arm_func_end ov29_02300DC0
 
-	arm_func_start ov29_02300DCC
-ov29_02300DCC: ; 0x02300DCC
+	arm_func_start MonsterCannotAttack
+MonsterCannotAttack: ; 0x02300DCC
 	stmdb sp!, {r3, lr}
 	cmp r1, #0
 	ldr r2, [r0, #0xb4]
@@ -113,4 +113,4 @@ _02300DF4:
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02300DCC
+	arm_func_end MonsterCannotAttack

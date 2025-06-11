@@ -1,15 +1,4 @@
 #pragma once
-.public CardPullOut
-.public DEFAULT_MEMORY_ARENA_MEMORY
-.public Debug_FatalError
-.public Debug_Print0
-.public GX_DispOff
-.public MEMORY_ALLOCATION_ARENA_GETTERS
-.public NATURAL_LOG_VALUE_TABLE
-.public OS_GetLockID
-.public PRNG_SEQUENCE_NUM
-.public StartThread
-.public WaitForInterrupt
 .public _02090B40
 .public _02090B70
 .public _02090BA0
@@ -35,6 +24,16 @@
 .public _0229B110
 .public _0229B114
 .public _022B966C
+.public CardPullOut
+.public Debug_FatalError
+.public Debug_Print0
+.public DEFAULT_MEMORY_ARENA_MEMORY
+.public GX_DispOff
+.public MEMORY_ALLOCATION_ARENA_GETTERS
+.public NATURAL_LOG_VALUE_TABLE
+.public OS_GetLockID
+.public PRNG_SEQUENCE_NUM
+.public StartThread
 .public sub_02003AD0
 .public sub_020059A8
 .public sub_02079844
@@ -56,3 +55,4 @@
 .public sub_0208346C
 .public sub_0208347C
 .public sub_020845D8
+.public WaitForInterrupt

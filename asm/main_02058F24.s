@@ -8597,8 +8597,8 @@ _02060148: .word _020B0AFC
 _0206014C: .word _020A462C
 	arm_func_end sub_020600CC
 
-	arm_func_start sub_02060150
-sub_02060150: ; 0x02060150
+	arm_func_start GenerateMissionDetailsStruct
+GenerateMissionDetailsStruct: ; 0x02060150
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -8679,7 +8679,7 @@ _02060264:
 	mov r0, #0
 	str r0, [r4, #0x64]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02060150
+	arm_func_end GenerateMissionDetailsStruct
 
 	arm_func_start sub_02060274
 sub_02060274: ; 0x02060274
@@ -9223,7 +9223,7 @@ _02060964:
 	arm_func_start sub_0206096C
 sub_0206096C: ; 0x0206096C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
-	ldr r2, _020609E0 ; =ARM9_UNKNOWN_FUNCTION_TABLE__NA_20A3CF4
+	ldr r2, _020609E0 ; =MISSION_VALIDATION_FUNCTION_LIST
 	mov r8, r0
 	mov r7, r1
 	ldr r5, [r2, r8, lsl #2]
@@ -9254,7 +9254,7 @@ _020609BC:
 	bl sub_0206096C
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
-_020609E0: .word ARM9_UNKNOWN_FUNCTION_TABLE__NA_20A3CF4
+_020609E0: .word MISSION_VALIDATION_FUNCTION_LIST
 _020609E4: .word _020B0AD8
 	arm_func_end sub_0206096C
 
@@ -9272,8 +9272,8 @@ SprintfStatic__020609E8: ; 0x020609E8
 	bx lr
 	arm_func_end SprintfStatic__020609E8
 
-	arm_func_start sub_02060A10
-sub_02060A10: ; 0x02060A10
+	arm_func_start AppendMissionTitle
+AppendMissionTitle: ; 0x02060A10
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	mov r6, r0
@@ -9337,7 +9337,7 @@ _02060AEC: .word _020A4644
 _02060AF0: .word 0x00000FFF
 _02060AF4: .word MISSION_STRING_IDS
 _02060AF8: .word _020B0AD8
-	arm_func_end sub_02060A10
+	arm_func_end AppendMissionTitle
 
 	arm_func_start sub_02060AFC
 sub_02060AFC: ; 0x02060AFC
@@ -9442,7 +9442,7 @@ _02060C48:
 	mov r0, r6
 	mov r1, r4
 	mov r3, r5
-	bl sub_02060A10
+	bl AppendMissionTitle
 	b _02060D18
 _02060C60:
 	ldrsh ip, [r5, #0x16]
@@ -9451,7 +9451,7 @@ _02060C60:
 	mov r1, r4
 	mov r3, r5
 	str ip, [sp, #0x40]
-	bl sub_02060A10
+	bl AppendMissionTitle
 	b _02060D18
 _02060C80:
 	ldrsh ip, [r5, #0x10]
@@ -9460,7 +9460,7 @@ _02060C80:
 	mov r1, r4
 	mov r3, r5
 	str ip, [sp, #0x30]
-	bl sub_02060A10
+	bl AppendMissionTitle
 	b _02060D18
 _02060CA0:
 	ldrsh ip, [r5, #0x12]
@@ -9469,7 +9469,7 @@ _02060CA0:
 	mov r1, r4
 	mov r3, r5
 	str ip, [sp, #0x30]
-	bl sub_02060A10
+	bl AppendMissionTitle
 	b _02060D18
 _02060CC0:
 	ldr r0, [r5, #8]
@@ -9479,7 +9479,7 @@ _02060CC0:
 	mov r1, r4
 	mov r3, r5
 	str ip, [sp, #0x40]
-	bl sub_02060A10
+	bl AppendMissionTitle
 	b _02060D18
 _02060CE4:
 	ldr r1, [r5, #0x54]
@@ -9626,8 +9626,8 @@ _02060EB0: .word 0x00003C4D
 #endif
 	arm_func_end sub_02060E24
 
-	arm_func_start sub_02060EB4
-sub_02060EB4: ; 0x02060EB4
+	arm_func_start AppendMissionSummary
+AppendMissionSummary: ; 0x02060EB4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	ldr r8, [sp, #0x34]
@@ -9705,7 +9705,7 @@ _02060FA8:
 _02060FCC: .word _020B0AD8
 _02060FD0: .word 0x00000FFF
 _02060FD4: .word MISSION_STRING_IDS
-	arm_func_end sub_02060EB4
+	arm_func_end AppendMissionSummary
 
 	arm_func_start sub_02060FD8
 sub_02060FD8: ; 0x02060FD8
@@ -9867,7 +9867,7 @@ _020611C0:
 	mov r3, r8
 	mov r2, #0x11
 	str sb, [sp, #4]
-	bl sub_02060EB4
+	bl AppendMissionSummary
 	b _020613D4
 _020611E4:
 	ldrsh r2, [sb, #0x16]
@@ -9879,7 +9879,7 @@ _020611E4:
 	mov r3, r8
 	mov r2, #0x11
 	str sb, [sp, #4]
-	bl sub_02060EB4
+	bl AppendMissionSummary
 	b _020613D4
 _02061210:
 	ldrsh r2, [sb, #0x10]
@@ -9891,7 +9891,7 @@ _02061210:
 	mov r3, r8
 	mov r2, #0x11
 	str sb, [sp, #4]
-	bl sub_02060EB4
+	bl AppendMissionSummary
 	b _020613D4
 _0206123C:
 	ldrsh r2, [sb, #0x12]
@@ -9903,7 +9903,7 @@ _0206123C:
 	mov r3, r8
 	mov r2, #0x11
 	str sb, [sp, #4]
-	bl sub_02060EB4
+	bl AppendMissionSummary
 	b _020613D4
 _02061268:
 	ldrsh r1, [sb, #0x12]
@@ -9917,7 +9917,7 @@ _02061268:
 	str r2, [sp]
 	mov r2, #0x11
 	str sb, [sp, #4]
-	bl sub_02060EB4
+	bl AppendMissionSummary
 	b _020613D4
 _0206129C:
 	ldrsh r0, [sb, #0x16]
@@ -9938,7 +9938,7 @@ _0206129C:
 	mov r0, r5
 	mov r1, r4
 	str sb, [sp, #4]
-	bl sub_02060EB4
+	bl AppendMissionSummary
 	b _020613D4
 _020612EC:
 	ldr r0, [sb, #8]
@@ -9951,7 +9951,7 @@ _020612EC:
 	mov r3, r8
 	mov r2, #0x11
 	str sb, [sp, #4]
-	bl sub_02060EB4
+	bl AppendMissionSummary
 	b _020613D4
 _0206131C:
 	ldr r0, [sb, #8]
@@ -9973,7 +9973,7 @@ _0206131C:
 	mov r0, r5
 	mov r1, r4
 	str sb, [sp, #4]
-	bl sub_02060EB4
+	bl AppendMissionSummary
 	b _020613D4
 _02061370:
 	ldr r1, [sb, #0x58]
@@ -12337,7 +12337,7 @@ sub_0206315C: ; 0x0206315C
 	beq _020631B4
 	b _020631F4
 _02063188:
-	ldr r1, _02063230 ; =_020A3CD6
+	ldr r1, _02063230 ; =OUTLAW_MISSION_REWARD_TYPE_WEIGHTS
 	add r0, sp, #0
 	mov r2, #0xe
 	bl MemcpySimple
@@ -12371,11 +12371,11 @@ _020631F4:
 	add r0, sp, #0
 	mov r2, #0xe
 	beq _02063210
-	ldr r1, _02063238 ; =ARM9_UNKNOWN_TABLE__NA_20A3CE4
+	ldr r1, _02063238 ; =DEFAULT_MISSION_REWARD_TYPE_WEIGHTS
 	bl MemcpySimple
 	b _02063218
 _02063210:
-	ldr r1, _0206323C ; =ARM9_UNKNOWN_TABLE__NA_20A3CC8
+	ldr r1, _0206323C ; =CAFE_MISSION_REWARD_TYPE_WEIGHTS
 	bl MemcpySimple
 _02063218:
 	ldrsh r2, [r4, #0xe]
@@ -12386,10 +12386,10 @@ _02063228:
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_02063230: .word _020A3CD6
+_02063230: .word OUTLAW_MISSION_REWARD_TYPE_WEIGHTS
 _02063234: .word 0x0000031E
-_02063238: .word ARM9_UNKNOWN_TABLE__NA_20A3CE4
-_0206323C: .word ARM9_UNKNOWN_TABLE__NA_20A3CC8
+_02063238: .word DEFAULT_MISSION_REWARD_TYPE_WEIGHTS
+_0206323C: .word CAFE_MISSION_REWARD_TYPE_WEIGHTS
 	arm_func_end sub_0206315C
 
 	arm_func_start sub_02063240
@@ -19434,7 +19434,7 @@ _02068D40:
 	mov r1, r5
 	add sl, r2, r0, lsl #5
 	mov r0, sl
-	bl sub_02060150
+	bl GenerateMissionDetailsStruct
 	mov r0, sl
 	mov r1, r4
 	mov r2, fp
@@ -19719,7 +19719,7 @@ _0206910C:
 	add r1, sp, #0
 	add sl, sb, r0, lsl #5
 	mov r0, sl
-	bl sub_02060150
+	bl GenerateMissionDetailsStruct
 	mov r0, sl
 	add r1, sp, #0x47
 	add r2, sp, #0x48
@@ -20652,7 +20652,7 @@ sub_02069CC0: ; 0x02069CC0
 _02069CFC:
 	add r1, sp, #0
 	mov r0, r4
-	bl sub_02060150
+	bl GenerateMissionDetailsStruct
 	add r1, sp, #0x47
 	add r2, sp, #0x48
 	mov r0, r4

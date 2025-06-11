@@ -1469,7 +1469,7 @@ _02310E9C:
 	bne _02310F70
 	mov r0, r5
 	mov r1, #0
-	bl ov29_02300DCC
+	bl MonsterCannotAttack
 	cmp r0, #0
 	bne _02310F70
 	mov r0, r5

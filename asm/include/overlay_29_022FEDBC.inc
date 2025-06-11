@@ -1,14 +1,14 @@
 #pragma once
 .public ActivateFlashFire
 .public CanMonsterUseMove
+.public MonsterCannotAttack
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__022FED98
 .public IsMonsterSleeping
 .public LogMessageByIdWithPopupCheckUser
-.public SubstitutePlaceholderStringTags
-.public TickStatusTurnCounter
 .public ov29_022E56A0
 .public ov29_022FAA04
-.public ov29_02300DCC
 .public ov29_02322374
+.public SubstitutePlaceholderStringTags
+.public TickStatusTurnCounter

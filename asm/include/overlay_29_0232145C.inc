@@ -9,6 +9,7 @@
 .public BuildMoveTargetList
 .public CalcStatusDuration
 .public CanMonsterUseMove
+.public MonsterCannotAttack
 .public DungeonRandInt
 .public EndFrozenClassStatus
 .public EndLeechSeedClassStatus
@@ -49,7 +50,6 @@
 .public ov29_022FAA04
 .public ov29_022FBAB4
 .public ov29_0230040C
-.public ov29_02300DCC
 .public ov29_02304B14
 .public ov29_02318D58
 .public ov29_02321288
