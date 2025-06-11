@@ -1,5 +1,4 @@
 #pragma once
-.public _01FF8120
 .public _02099724
 .public _02099734
 .public _02099744
@@ -71,6 +70,7 @@
 .public ov29_0235177C
 .public ov29_02353530
 .public RENDER_3D
+.public RENDER_3D_FUNCTIONS
 .public Rgb8ToRgb5
 .public SetActionPassTurnOrWalk
 .public SetActionRegularAttack

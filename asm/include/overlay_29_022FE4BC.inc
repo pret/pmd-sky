@@ -3,6 +3,7 @@
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public CanMonsterMoveInDirection
+.public CannotAttack
 .public CannotStandOnTile
 .public DIRECTIONS_XY
 .public DisplayActions
@@ -46,7 +47,6 @@
 .public ov29_022FBD08
 .public ov29_022FEDBC
 .public ov29_022FEFC8
-.public CannotAttack
 .public ov29_02304D20
 .public ov29_023085DC
 .public ov29_0230F140

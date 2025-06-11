@@ -1,8 +1,9 @@
 #pragma once
+.public _020A1870
 .public Conversion2IsActive
 .public DIRECTIONS_XY
-.public DUNGEON_PTR
 .public DisplayAnimatedNumbers
+.public DUNGEON_PTR
 .public EntityIsValid__022F7364
 .public GetMaxPp
 .public GetMoveBasePp
@@ -12,10 +13,9 @@
 .public IqSkillIsEnabled
 .public IsMonster__022F9720
 .public IsSecretBazaarNpcBehavior
-.public TeamMemberHasEnabledIqSkill
-.public UpdateMapSurveyorFlag
-.public UpdateMinimap
-.public _020A1870
 .public ov29_022E576C
 .public ov29_02307CE0
 .public ov29_02348100
+.public TeamMemberHasEnabledIqSkill
+.public UpdateMapSurveyorFlag
+.public UpdateMinimap

@@ -90,7 +90,7 @@ _01FF80C4:
 _01FF811C:
 	ldmia sp!, {r0, r1, r2, r3, r4, r5, r6, r7, pc}
 	arm_func_end CopyAndInterleave0
-_01FF8120:
+RENDER_3D_FUNCTIONS:
 	.word Render3dRectangle
 	.word Render3dQuadrilateral
 	.word Render3dTiling
@@ -1045,7 +1045,7 @@ _01FF8E98:
 	blt _01FF8E54
 	mov r6, #0
 	add r5, sp, #0
-	ldr r4, _01FF8F00 ; =_01FF8120
+	ldr r4, _01FF8F00 ; =RENDER_3D_FUNCTIONS
 	ldr r7, _01FF8EFC ; =RENDER_3D
 	b _01FF8EDC
 _01FF8EB4:
@@ -1071,7 +1071,7 @@ _01FF8EF4:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _01FF8EFC: .word RENDER_3D
-_01FF8F00: .word _01FF8120
+_01FF8F00: .word RENDER_3D_FUNCTIONS
 	arm_func_end Render3dProcessQueue
 
 	arm_func_start sub_01FF8F04

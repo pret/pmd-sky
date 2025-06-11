@@ -9,6 +9,7 @@
 .public CalcDamage
 .public CanAttackInDirection
 .public CanBeSnatched
+.public CannotAttack
 .public CanSeeTarget
 .public CeilFixedPoint
 .public Conversion2IsActive
@@ -397,7 +398,6 @@
 .public ov29_023007DC
 .public ov29_02300D50
 .public ov29_02300DC0
-.public CannotAttack
 .public ov29_02301C2C
 .public ov29_02304A48
 .public ov29_02304C3C

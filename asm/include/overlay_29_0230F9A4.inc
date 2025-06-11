@@ -7,6 +7,7 @@
 .public BoostSpeedOneStage
 .public BURN_DAMAGE
 .public BURN_DAMAGE_COOLDOWN
+.public CannotAttack
 .public CeilFixedPoint
 .public CheckVariousStatuses
 .public CheckVariousStatuses2
@@ -65,7 +66,6 @@
 .public ov29_022F2FE4
 .public ov29_022F42F8
 .public ov29_022FB718
-.public CannotAttack
 .public ov29_02307BDC
 .public ov29_02322374
 .public ov29_02337E2C

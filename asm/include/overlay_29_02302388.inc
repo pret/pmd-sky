@@ -1,10 +1,11 @@
 #pragma once
+.public _s32_div_f
 .public DUNGEON_PTR
-.public EXCLUSIVE_ITEM_EXP_BOOST
-.public EXP_ELITE_EXP_BOOST
 .public EntityIsValid__023000E4
+.public EXCLUSIVE_ITEM_EXP_BOOST
 .public ExclusiveItemEffectFlagTest
 .public ExclusiveItemEffectIsActive__022FFF28
+.public EXP_ELITE_EXP_BOOST
 .public GetExclusiveItemWithEffectFromBag
 .public IqSkillIsEnabled
 .public IsBlinded
@@ -14,8 +15,7 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MIRACLE_CHEST_EXP_BOOST
 .public MultiplyByFixedPoint
-.public SubstitutePlaceholderStringTags
-.public WONDER_CHEST_EXP_BOOST
-.public _s32_div_f
 .public ov29_02301A84
 .public ov29_02344B44
+.public SubstitutePlaceholderStringTags
+.public WONDER_CHEST_EXP_BOOST
