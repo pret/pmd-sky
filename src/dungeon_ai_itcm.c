@@ -8,8 +8,9 @@
 
 #define REGULAR_ATTACK_INDEX 4
 
+const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
+
 extern const s16 AI_CONFUSED_ATTACK_CHANCE;
-extern const s16 AI_REGULAR_ATTACK_WEIGHTS[5];
 
 extern struct dungeon *DUNGEON_PTR[];
 

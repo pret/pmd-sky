@@ -149,6 +149,8 @@ Overlay OVY_10
 	Object asm/overlay_10_022BCC7C.o
 	Object src/overlay_10_022C2574.o
 	Object asm/overlay_10_022C2588.o
+	Object src/dungeon_ai_itcm.o
+	Object asm/overlay_10_rodata_022C490C.o
 }
 Overlay OVY_11
 {
