@@ -26,6 +26,8 @@ if function_location.startswith("./asm/"):
 if function_header.endswith(';'):
     function_header = function_header[:-1]
 
+is_itcm = function_location.startswith('itcm')
+
 # Extract the function name from the function header argument.
 left_parentheses_index = function_header.find('(')
 if left_parentheses_index >= 0:
@@ -91,10 +93,13 @@ remove_orig_file = first_function_start_line == function_start_line
 include_new_asm_file = new_file_address is not None
 
 new_inc_file_name = f"{new_asm_base_name}.inc"
+section_name = 'text'
+if is_itcm:
+    section_name = 'itcm,4,1,4'
 new_asm_header = f"""\t.include "asm/macros.inc"
 \t.include "{new_inc_file_name}"
 
-\t.text
+\t.{section_name}
 """
 new_asm_name = f'{new_asm_base_name}.s'
 
@@ -110,9 +115,12 @@ if extract_file_name is None:
 # If needed, add the extracted function's new .o file to main.lsf.
 merge_prev_file = None
 merge_next_file = None
+lsf_suffix = ''
+if is_itcm:
+    lsf_suffix = ' (.itcm)'
 SRC_LSF_PREFIX = '\tObject src/'
 for i, line in enumerate(lsf_lines):
-    if line.endswith(f'{function_location}.o\n'):
+    if line.endswith(f'{function_location}.o{lsf_suffix}\n'):
         if remove_orig_file:
             lsf_lines[i] = ''
             prev_line = lsf_lines[i - 1]
@@ -123,9 +131,9 @@ for i, line in enumerate(lsf_lines):
             if next_line.startswith(SRC_LSF_PREFIX):
                 merge_next_file = next_line[len(SRC_LSF_PREFIX) : -3]
         if merge_prev_file is None and merge_next_file is None:
-            lsf_lines[i] += f'\tObject src/{extract_file_name}.o\n'
+            lsf_lines[i] += f'\tObject src/{extract_file_name}.o{lsf_suffix}\n'
         if include_new_asm_file:
-            lsf_lines[i] += f'\tObject asm/{new_asm_base_name}.o\n'
+            lsf_lines[i] += f'\tObject asm/{new_asm_base_name}.o{lsf_suffix}\n'
         break
 
 print('Updating', LSF_FILE_PATH)
