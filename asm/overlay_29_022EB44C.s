@@ -707,8 +707,8 @@ SetActionRegularAttack: ; 0x022EBC50
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end SetActionRegularAttack
 
-	arm_func_start ov29_022EBC74
-ov29_022EBC74: ; 0x022EBC74
+	arm_func_start SetActionStruggle
+SetActionStruggle: ; 0x022EBC74
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r1, #0x17
@@ -718,7 +718,7 @@ ov29_022EBC74: ; 0x022EBC74
 	andne r0, r4, #7
 	strneb r0, [r5, #2]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022EBC74
+	arm_func_end SetActionStruggle
 
 	arm_func_start SetActionUseMovePlayer
 SetActionUseMovePlayer: ; 0x022EBC98

@@ -342,8 +342,8 @@ _0231A454:
 _0231A45C: .word DUNGEON_PTR
 	arm_func_end ov29_0231A364
 
-	arm_func_start ov29_0231A460
-ov29_0231A460: ; 0x0231A460
+	arm_func_start TargetRegularAttack
+TargetRegularAttack: ; 0x0231A460
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x48
 	mov sl, r0
@@ -504,4 +504,4 @@ _0231A688:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _0231A690: .word DIRECTIONS_XY
-	arm_func_end ov29_0231A460
+	arm_func_end TargetRegularAttack

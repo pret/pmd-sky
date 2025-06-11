@@ -129,13 +129,13 @@ _023215D8:
 	bne _02321620
 	mov r0, sl
 	mov r1, #1
-	bl ov29_02300DCC
+	bl CannotAttack
 	cmp r0, #0
 	bne _02321888
 	b _02321620
 _02321610:
 	mov r1, #0
-	bl ov29_02300DCC
+	bl CannotAttack
 	cmp r0, #0
 	bne _02321888
 _02321620:
@@ -1479,14 +1479,14 @@ _02322824:
 	bne _02322860
 	mov r0, r6
 	mov r1, #1
-	bl ov29_02300DCC
+	bl CannotAttack
 	cmp r0, #0
 	bne _02322C98
 	b _02322860
 _0232284C:
 	mov r0, r6
 	mov r1, #0
-	bl ov29_02300DCC
+	bl CannotAttack
 	cmp r0, #0
 	bne _02322C98
 _02322860:

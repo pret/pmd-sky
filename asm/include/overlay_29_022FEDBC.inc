@@ -10,5 +10,5 @@
 .public TickStatusTurnCounter
 .public ov29_022E56A0
 .public ov29_022FAA04
-.public ov29_02300DCC
+.public CannotAttack
 .public ov29_02322374

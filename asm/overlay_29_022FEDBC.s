@@ -33,7 +33,7 @@ _022FEDC8:
 	beq _022FEFA4
 	mov r0, r7
 	mov r1, #1
-	bl ov29_02300DCC
+	bl CannotAttack
 	cmp r0, #0
 	movne r0, #0xff
 	strneb r0, [r8, #0x177 + OV29_022FEDBC_OFFSET]
@@ -193,7 +193,7 @@ _022FEFD4:
 	beq _022FF14C
 	mov r0, r8
 	mov r1, #1
-	bl ov29_02300DCC
+	bl CannotAttack
 	cmp r0, #0
 	movne r0, #0xff
 	strneb r0, [sl, #0x178 + OV29_022FEFC8_OFFSET]
