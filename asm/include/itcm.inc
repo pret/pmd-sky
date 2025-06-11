@@ -12,13 +12,13 @@
 .public _022B99D0
 .public AbilityIsActiveVeneer
 .public abs
-.public AI_CONFUSED_ATTACK_CHANCE
+.public AI_CONFUSED_NO_ATTACK_CHANCE
 .public AI_REGULAR_ATTACK_WEIGHTS
 .public AiConsiderMove
 .public AreMovesEnabled
 .public CanAiMonsterMoveInDirection
 .public CanAiUseMove
-.public CannotAttack
+.public MonsterCannotAttack
 .public CanSeeTarget
 .public CanTargetEntity
 .public CanTargetPosition

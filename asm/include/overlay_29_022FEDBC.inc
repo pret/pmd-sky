@@ -1,7 +1,7 @@
 #pragma once
 .public ActivateFlashFire
 .public CanMonsterUseMove
-.public CannotAttack
+.public MonsterCannotAttack
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__022FED98

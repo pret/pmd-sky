@@ -9,7 +9,7 @@
 .public BuildMoveTargetList
 .public CalcStatusDuration
 .public CanMonsterUseMove
-.public CannotAttack
+.public MonsterCannotAttack
 .public DungeonRandInt
 .public EndFrozenClassStatus
 .public EndLeechSeedClassStatus

@@ -4164,7 +4164,7 @@ ChooseAiMove: ; 0x01FFB658
 	beq _01FFBD0C
 	mov r0, sl
 	mov r1, #0
-	bl CannotAttack
+	bl MonsterCannotAttack
 	cmp r0, #0
 	bne _01FFBD0C
 	mov r0, sl
@@ -4189,7 +4189,7 @@ _01FFB6CC:
 	ldrb r0, [r7, #0xd0]
 	cmp r0, #2
 	bne _01FFB700
-	ldr r0, _01FFBD18 ; =AI_CONFUSED_ATTACK_CHANCE
+	ldr r0, _01FFBD18 ; =AI_CONFUSED_NO_ATTACK_CHANCE
 	ldrsh r0, [r0]
 	bl DungeonRandOutcome__022EAB20
 	cmp r0, #0
@@ -4632,7 +4632,7 @@ _01FFBD0C:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FFBD14: .word DUNGEON_PTR
-_01FFBD18: .word AI_CONFUSED_ATTACK_CHANCE
+_01FFBD18: .word AI_CONFUSED_NO_ATTACK_CHANCE
 _01FFBD1C: .word AI_REGULAR_ATTACK_WEIGHTS
 	arm_func_end ChooseAiMove
 #endif

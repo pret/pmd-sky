@@ -191,7 +191,7 @@ _0232EAD0:
 _0232EAEC:
 	mov r0, r4
 	mov r1, #0
-	bl CannotAttack
+	bl MonsterCannotAttack
 	cmp r0, #0
 	bne _0232ED9C
 	mov r0, sb

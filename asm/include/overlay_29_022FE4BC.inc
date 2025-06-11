@@ -3,7 +3,7 @@
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public CanMonsterMoveInDirection
-.public CannotAttack
+.public MonsterCannotAttack
 .public CannotStandOnTile
 .public DIRECTIONS_XY
 .public DisplayActions

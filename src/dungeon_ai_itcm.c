@@ -14,7 +14,7 @@ const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
 extern struct dungeon *DUNGEON_PTR[];
 
 extern bool8 AreMovesEnabled(enum fixed_room_id fixed_room_id);
-extern bool8 CannotAttack(struct entity *pokemon, bool8 skip_sleep);
+extern bool8 MonsterCannotAttack(struct entity *pokemon, bool8 skip_sleep);
 extern u32 ShouldMonsterRunAwayVariation(struct entity *monster, u32 param_2);
 extern bool8 IsMonsterCornered(struct entity *monster);
 extern bool8 IsChargingTwoTurnMove(struct entity *user, struct move *move);
@@ -37,11 +37,11 @@ void ChooseAiMove(struct entity *monster)
     struct monster *pokemon_info = GetEntInfo(monster);
 
     if (!AreMovesEnabled(DUNGEON_PTR[0]->gen_info.fixed_room_id) ||
-        CannotAttack(monster, FALSE) ||
+        MonsterCannotAttack(monster, FALSE) ||
         ShouldMonsterRunAwayVariation(monster, TRUE) ||
         GetEntInfo(monster)->monster_behavior == BEHAVIOR_FLEEING_OUTLAW && IsMonsterCornered(monster) ||
         IsTacticSet(monster, TACTIC_KEEP_YOUR_DISTANCE) ||
-        (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_CONFUSED && DungeonRandOutcome__022EAB20(AI_CONFUSED_ATTACK_CHANCE)))
+        (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_CONFUSED && DungeonRandOutcome__022EAB20(AI_CONFUSED_NO_ATTACK_CHANCE)))
         return;
 
     int i;

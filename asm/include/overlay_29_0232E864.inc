@@ -9,7 +9,7 @@
 .public CalcDamage
 .public CanAttackInDirection
 .public CanBeSnatched
-.public CannotAttack
+.public MonsterCannotAttack
 .public CanSeeTarget
 .public CeilFixedPoint
 .public Conversion2IsActive

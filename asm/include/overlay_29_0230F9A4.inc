@@ -7,7 +7,7 @@
 .public BoostSpeedOneStage
 .public BURN_DAMAGE
 .public BURN_DAMAGE_COOLDOWN
-.public CannotAttack
+.public MonsterCannotAttack
 .public CeilFixedPoint
 .public CheckVariousStatuses
 .public CheckVariousStatuses2
