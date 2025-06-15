@@ -1,13 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0234CA7C.inc"
+	.include "overlay_29_0234CA84.inc"
 
 	.text
-
-	arm_func_start ov29_0234CA7C
-ov29_0234CA7C: ; 0x0234CA7C
-	mov r0, #0x5800
-	bx lr
-	arm_func_end ov29_0234CA7C
 
 	arm_func_start ov29_0234CA84
 ov29_0234CA84: ; 0x0234CA84
