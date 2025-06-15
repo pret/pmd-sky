@@ -1,4 +1,5 @@
 #include "overlay_29_0234BBE8.h"
+#include "main_0204AFF8.h"
 #include "overlay_29_022DC61C.h"
 #include "overlay_29_0234CA68.h"
 #include "util.h"
@@ -19,7 +20,6 @@ typedef struct {
 extern unk_ov29_023537D8_t ov29_023537D8;
 void ov29_022DEBA4(); // thunk_FUN_022deadc
 void ov29_0234CB00();
-bool8 sub_0204AFF8(); // is GAME_MODE rescue?
 void ov30_02382820(s32, s32, s32);
 s32 ov30_02382874();
 void ov29_022DDEF8();
@@ -63,7 +63,7 @@ void ov29_0234BBE8(void)
         ov29_0234CB00(); // do something with overlays
         uVar3 = ov29_0234CA68();
         uVar4 = ov29_0234CA7C();
-        uVar5 = sub_0204AFF8(); // is GAME_MODE rescue?
+        uVar5 = IsGameModeRescue(); // is GAME_MODE rescue?
         ov30_02382820(uVar3,uVar4,uVar5); // alloc these values
         while (iVar6 = ov30_02382874(), iVar6 != 0)
         {
@@ -138,7 +138,7 @@ void ov29_0234BBE8(void)
     ov29_0234C738(0);
     SetAdventureLogDungeonFloor(&(iVar7[12].v4));
     sub_02017B70();
-    if (iVar7[12].v0 != -2 && sub_0204AFF8())
+    if (iVar7[12].v0 != -2 && IsGameModeRescue())
     {
         uVar3 = 1;
     }
