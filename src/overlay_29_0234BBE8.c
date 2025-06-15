@@ -37,7 +37,7 @@ s32 sub_0205BAB0(void *);
 void ov29_022DE418();
 void sub_020091B0(s32, s32);
 void sub_02009194(s32, s32);
-void StartFadeDungeonWrapper(s32,s32,s32);
+void StartFadeDungeonWrapper(s32, s32, s32);
 void ov29_0234C738(s32);
 void SetAdventureLogDungeonFloor(void *);
 void StopBgmCommand();
