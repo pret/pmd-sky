@@ -316,6 +316,7 @@ _022DEF30: .word 0x000003E7
 _022DEF34: .word FIXED_ROOM_REVISIT_OVERRIDES
 	arm_func_end ov29_022DEBBC
 
+; https://decomp.me/scratch/7xQSQ
 	arm_func_start RunDungeon
 RunDungeon: ; 0x022DEF38
 #ifdef JAPAN
