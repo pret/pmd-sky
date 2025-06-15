@@ -1,0 +1,7 @@
+#ifndef PMDSKY_OVERLAY_29_022DC61C_H
+#define PMDSKY_OVERLAY_29_022DC61C_H
+
+// mem init?
+void ov29_022DC61C();
+
+#endif //PMDSKY_OVERLAY_29_022DC61C_H

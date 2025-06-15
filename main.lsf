@@ -261,6 +261,8 @@ Overlay OVY_29
 	Object asm/overlay_29_bss_02353860.o
 	Object src/poly_text.o
 	Object asm/overlay_29_022DC314.o
+	Object src/overlay_29_022DC61C.o
+	Object asm/overlay_29_022DC65C.o
 	Object src/overlay_29_022DEAB0.o
 	Object asm/overlay_29_022DEADC.o
 	Object src/dg.o
