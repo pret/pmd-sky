@@ -1,5 +1,6 @@
 #include "overlay_29_0234BBE8.h"
 #include "overlay_29_022DC61C.h"
+#include "overlay_29_0234CA68.h"
 #include "util.h"
 
 struct unk_ov29_023537DC {
@@ -18,7 +19,6 @@ typedef struct {
 extern unk_ov29_023537D8_t ov29_023537D8;
 void ov29_022DEBA4(); // thunk_FUN_022deadc
 void ov29_0234CB00();
-s32 ov29_0234CA68();
 s32 ov29_0234CA7C();
 bool8 sub_0204AFF8(); // is GAME_MODE rescue?
 void ov30_02382820(s32, s32, s32);
@@ -42,9 +42,6 @@ void StartFadeDungeonWrapper(s32,s32,s32);
 void ov29_0234C738(s32);
 void SetAdventureLogDungeonFloor(void *);
 void StopBgmCommand();
-bool8 sub_0204AFF8();
-s32 ov29_0234CA68();
-s32 ov29_0234CA7C();
 void ov30_023829CC(s32, s32, s32);
 void ov29_022DDE00(s32);
 void ov30_02382C30();
