@@ -1,36 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022DEB40.inc"
+	.include "overlay_29_022DEBA4.inc"
 
 	.text
-
-	arm_func_start ov29_022DEB40
-ov29_022DEB40: ; 0x022DEB40
-	stmdb sp!, {r3, lr}
-	mov r0, #2
-	mov r1, #0x4000
-	mov r2, #0
-	bl StartFadeDungeonWrapper
-	mov r0, #0
-	bl ov29_0234C738
-	mov r0, #1
-	bl ov29_0234C654
-	mov r0, #0
-	mov r1, r0
-	bl sub_020091B0
-	mov r0, #1
-	mov r1, #0
-	bl sub_020091B0
-	mov r0, #2
-	mov r1, #0
-	bl sub_020091B0
-	mov r0, #3
-	mov r1, #0
-	bl sub_020091B0
-	mov r0, #4
-	mov r1, #0
-	bl sub_020091B0
-	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022DEB40
 
 	arm_func_start ov29_022DEBA4
 ov29_022DEBA4: ; 0x022DEBA4

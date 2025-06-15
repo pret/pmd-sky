@@ -57,3 +57,15 @@ void ov29_022DEADC()
     StartFadeDungeonWrapper(1, 0x4000, 0);
     ov29_0234C738(0);
 }
+
+void ov29_022DEB40()
+{
+    StartFadeDungeonWrapper(2, 0x4000, 0);
+    ov29_0234C738(0);
+    ov29_0234C654(1);
+    sub_020091B0(0, 0);
+    sub_020091B0(1, 0);
+    sub_020091B0(2, 0);
+    sub_020091B0(3, 0);
+    sub_020091B0(4, 0);
+}

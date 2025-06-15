@@ -101,6 +101,7 @@
 .public ov29_022DE930
 .public ov29_022DEA34
 .public ov29_022DEADC
+.public ov29_022DEB40
 .public ov29_022E0434
 .public ov29_022E081C
 .public ov29_022E0DFC
