@@ -12,5 +12,7 @@ struct dungeon* GetDungeonPtrMaster(void);
 void DungeonZInit(void);
 // Frees the dungeons struct pointer to by the master dungeon pointer, and nullifies the pointer.
 void DungeonFree(void);
+void ov29_022DEADC();
+void ov29_022DEB40();
 
 #endif //PMDSKY_OVERLAY_29_022DEAB0_H
