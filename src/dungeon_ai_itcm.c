@@ -2,10 +2,14 @@
 #include "dg_random.h"
 #include "direction.h"
 #include "dungeon_action.h"
+#include "dungeon_ai_targeting.h"
+#include "dungeon_logic_3.h"
 #include "dungeon_parameters.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
+#include "fixed_room_data.h"
+#include "overlay_29_02301118.h"
 
 #define REGULAR_ATTACK_INDEX 4
 
@@ -13,17 +17,13 @@ const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern bool8 AreMovesEnabled(enum fixed_room_id fixed_room_id);
-extern bool8 MonsterCannotAttack(struct entity *pokemon, bool8 skip_sleep);
-extern u32 ShouldMonsterRunAwayVariation(struct entity *monster, u32 param_2);
-extern bool8 IsMonsterCornered(struct entity *monster);
 extern bool8 IsChargingTwoTurnMove(struct entity *user, struct move *move);
 extern void SetActionUseMoveAi(struct action_data *monster_action, s16 move_index, u8 direction);
 extern void UpdateAiTargetPos(struct entity *monster);
 extern void InitMove(struct move *move, enum move_id move_id);
 extern u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *monster, struct move *move);
 extern bool8 ov29_02338350(struct entity *monster);
-extern bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 check_petrified);
+extern bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified);
 extern void SetActionRegularAttack(struct action_data *monster_action, u8 direction);
 extern void SetActionStruggle(struct action_data *monster_action, u8 direction);
 extern bool8 CanAiUseMove(struct entity *monster, u32 move_index, bool8 extra_checks);
@@ -38,7 +38,7 @@ void ChooseAiMove(struct entity *monster)
 
     if (!AreMovesEnabled(DUNGEON_PTR[0]->gen_info.fixed_room_id) ||
         MonsterCannotAttack(monster, FALSE) ||
-        ShouldMonsterRunAwayVariation(monster, TRUE) ||
+        ShouldMonsterRunAwayAndShowEffect(monster, TRUE) ||
         GetEntInfo(monster)->monster_behavior == BEHAVIOR_FLEEING_OUTLAW && IsMonsterCornered(monster) ||
         IsTacticSet(monster, TACTIC_KEEP_YOUR_DISTANCE) ||
         (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_CONFUSED && DungeonRandOutcome__022EAB20(AI_CONFUSED_NO_ATTACK_CHANCE)))

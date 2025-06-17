@@ -177,7 +177,7 @@
 .public SetLeaderActionFields
 .public SetMonsterActionFields
 .public ShouldMonsterRunAway
-.public ShouldMonsterRunAwayVariation
+.public ShouldMonsterRunAwayAndShowEffect
 .public SpawnItem
 .public sub_02001AB0
 .public sub_02006B70

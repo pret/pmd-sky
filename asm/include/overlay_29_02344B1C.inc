@@ -44,7 +44,7 @@
 .public RemoveEmptyItemsInBag
 .public RemoveEquivItemNoHole
 .public RemoveGroundItem
-.public ShouldMonsterRunAwayVariation
+.public ShouldMonsterRunAwayAndShowEffect
 .public SpawnItemEntity
 .public sub_0200D8AC
 .public sub_02024FE8

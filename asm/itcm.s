@@ -2792,12 +2792,12 @@ _01FFA37C:
 _01FFA38C: .word ov29_02353530
 	arm_func_end sub_01FF9F80
 
-	arm_func_start ShouldMonsterRunAwayVariationOutlawCheck
-ShouldMonsterRunAwayVariationOutlawCheck: ; 0x01FFA390
+	arm_func_start ShouldMonsterRunAwayAndShowEffectOutlawCheck
+ShouldMonsterRunAwayAndShowEffectOutlawCheck: ; 0x01FFA390
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, #0
 	mov r5, r0
-	bl ShouldMonsterRunAwayVariation
+	bl ShouldMonsterRunAwayAndShowEffect
 	cmp r0, #0
 	movne r4, #1
 	bne _01FFA3BC
@@ -2808,7 +2808,7 @@ ShouldMonsterRunAwayVariationOutlawCheck: ; 0x01FFA390
 _01FFA3BC:
 	mov r0, r4
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ShouldMonsterRunAwayVariationOutlawCheck
+	arm_func_end ShouldMonsterRunAwayAndShowEffectOutlawCheck
 
 	arm_func_start AiMovement
 AiMovement: ; 0x01FFA3C4
@@ -2894,7 +2894,7 @@ _01FFA494:
 _01FFA4D4:
 	ldr r1, [sp]
 	mov r0, r4
-	bl ShouldMonsterRunAwayVariationOutlawCheck
+	bl ShouldMonsterRunAwayAndShowEffectOutlawCheck
 	cmp r0, #0
 	beq _01FFA9A8
 	ldr sb, [r4, #0xb4]
@@ -3775,7 +3775,7 @@ _01FFB16C:
 	movne sl, #5
 	mov r0, r4
 	moveq sl, #3
-	bl ShouldMonsterRunAwayVariationOutlawCheck
+	bl ShouldMonsterRunAwayAndShowEffectOutlawCheck
 	cmp r0, #0
 	ldreqb r0, [sb, #0x7f]
 	mov r8, #1
@@ -4169,7 +4169,7 @@ ChooseAiMove: ; 0x01FFB658
 	bne _01FFBD0C
 	mov r0, sl
 	mov r1, #1
-	bl ShouldMonsterRunAwayVariation
+	bl ShouldMonsterRunAwayAndShowEffect
 	cmp r0, #0
 	bne _01FFBD0C
 	ldr r0, [sl, #0xb4]

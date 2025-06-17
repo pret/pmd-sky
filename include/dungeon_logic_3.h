@@ -3,6 +3,11 @@
 
 #include "dungeon_mode.h"
 
+// Returns false if the entity has any of these conditions: sleep, nightmare, napping, frozen, wrapped/wrapping, petrified, cringe, paused, infatuated, paralysis. Also returns false if ShouldMonsterRunAway returns true.
+// pokemon: Entity pointer
+// skip_sleep: If true, ignore sleep conditions (sleep, nightmare, napping) when checking if the entity cannot attack.
+// return: bool
+bool8 MonsterCannotAttack(struct entity *pokemon, bool8 skip_sleep);
 // Checks if the given monster can move in the specified direction
 // Returns false if any monster is standing on the target tile
 bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction);

@@ -469,7 +469,7 @@ TryLeaderItemPickUp: ; 0x02345058
 	b _02345508
 _02345108:
 	mov r1, #1
-	bl ShouldMonsterRunAwayVariation
+	bl ShouldMonsterRunAwayAndShowEffect
 	cmp r0, #0
 	beq _0234515C
 	cmp sb, #0

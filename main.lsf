@@ -64,6 +64,8 @@ Static main
 	Object asm/main_02075600.o
 	Object src/main_0207B848.o
 	Object asm/main_0207B854.o
+	Object src/main_0207B860.o
+	Object asm/main_0207B87C.o
 	Object src/main_0207BC20.o
 	Object asm/main_0207BC3C.o
 	Object src/main_0207F3E4.o
@@ -344,8 +346,10 @@ Overlay OVY_29
 	Object asm/overlay_29_02300D00.o
 	Object src/dungeon_logic_3.o
 	Object asm/overlay_29_02300FCC.o
+	Object src/overlay_29_02301118.o
+	Object asm/overlay_29_02301158.o
 	Object src/dungeon_ai_targeting.o
-	Object asm/overlay_29_023016A8.o
+	Object asm/overlay_29_023016D8.o
 	Object src/dungeon_ai_targeting_1.o
 	Object asm/overlay_29_rodata_023527C0.o
 	Object asm/overlay_29_023018AC.o
@@ -471,6 +475,8 @@ Overlay OVY_29
 	Object asm/overlay_29_0233861C.o
 	Object src/overlay_29_02340CAC.o
 	Object asm/overlay_29_02340CE4.o
+	Object src/fixed_room_data.o
+	Object asm/overlay_29_02344178.o
 	Object src/overlay_29_02344AF8.o
 	Object asm/overlay_29_02344B1C.o
 	Object src/overlay_29_02345698.o

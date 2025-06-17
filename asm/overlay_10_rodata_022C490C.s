@@ -1043,8 +1043,6 @@ ov10_022C6C74:
 	.global ov10_022C6C75
 ov10_022C6C75:
 	.byte 0x01
-	.global ov10_022C6C76
-ov10_022C6C76:
 	.byte 0x01
 	.global ov10_022C6C77
 ov10_022C6C77:

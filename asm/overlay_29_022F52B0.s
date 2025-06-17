@@ -242,7 +242,7 @@ _022F5578:
 _022F55B8:
 	mov r0, sb
 	mov r1, #1
-	bl ShouldMonsterRunAwayVariation
+	bl ShouldMonsterRunAwayAndShowEffect
 	cmp r0, #0
 	beq _022F55E8
 	ldr r1, _022F5984 ; =0x00000BBE

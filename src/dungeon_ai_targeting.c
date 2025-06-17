@@ -4,6 +4,8 @@
 #include "dungeon_util_static.h"
 #include "overlay_29_023000E4.h"
 
+extern void DisplayRunAwayIfTriggered(struct entity *monster, bool8 show_run_away_effect);
+
 bool8 ShouldMonsterRunAway(struct entity *monster)
 {
     if (!EntityIsValid__023000E4(monster))
@@ -40,5 +42,16 @@ bool8 ShouldMonsterRunAway(struct entity *monster)
                 return TRUE;
         }
     }
+    return FALSE;
+}
+
+bool8 ShouldMonsterRunAwayAndShowEffect(struct entity *monster, bool8 show_run_away_effect)
+{
+    if (ShouldMonsterRunAway(monster))
+    {
+        DisplayRunAwayIfTriggered(monster, show_run_away_effect);
+        return TRUE;
+    }
+
     return FALSE;
 }
