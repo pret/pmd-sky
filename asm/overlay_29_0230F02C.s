@@ -86,7 +86,7 @@ _0230F22C:
 	beq _0230F624
 	mov r0, r8
 	mov r1, #1
-	bl ShouldMonsterRunAwayVariation
+	bl ShouldMonsterRunAwayAndShowEffect
 	cmp r0, #0
 	beq _0230F274
 	mov r1, r4

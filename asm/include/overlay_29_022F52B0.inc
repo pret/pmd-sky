@@ -37,6 +37,6 @@
 .public RemoveGroundItem
 .public RemoveUsedItem
 .public ShouldDisplayEntityWrapper
-.public ShouldMonsterRunAwayVariation
+.public ShouldMonsterRunAwayAndShowEffect
 .public SpawnItem
 .public TryTriggerMonsterHouse

@@ -814,7 +814,7 @@ _022F0F58:
 _022F0FAC:
 	bl GetLeader
 	mov r1, #1
-	bl ShouldMonsterRunAwayVariation
+	bl ShouldMonsterRunAwayAndShowEffect
 	cmp r0, #0
 	bne _022F1000
 	mov r0, #0xa
@@ -1545,7 +1545,7 @@ _022F19DC:
 _022F1A64:
 	mov r0, r6
 	mov r1, #1
-	bl ShouldMonsterRunAwayVariation
+	bl ShouldMonsterRunAwayAndShowEffect
 	cmp r0, #0
 	beq _022F1AA0
 	ldr r1, _022F1DF4 ; =0x00000B9A
@@ -2648,7 +2648,7 @@ _022F2A00:
 	beq _022F2A70
 	bl GetLeader
 	mov r1, #1
-	bl ShouldMonsterRunAwayVariation
+	bl ShouldMonsterRunAwayAndShowEffect
 	cmp r0, #0
 	bne _022F2A70
 	mov r0, #4

@@ -2,6 +2,7 @@
 #include "dg_random.h"
 #include "direction.h"
 #include "dungeon_action.h"
+#include "dungeon_ai_targeting.h"
 #include "dungeon_logic_3.h"
 #include "dungeon_parameters.h"
 #include "dungeon_pokemon_attributes.h"
@@ -15,7 +16,6 @@ const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern u32 ShouldMonsterRunAwayVariation(struct entity *monster, u32 param_2);
 extern bool8 IsMonsterCornered(struct entity *monster);
 extern bool8 IsChargingTwoTurnMove(struct entity *user, struct move *move);
 extern void SetActionUseMoveAi(struct action_data *monster_action, s16 move_index, u8 direction);
@@ -38,7 +38,7 @@ void ChooseAiMove(struct entity *monster)
 
     if (!AreMovesEnabled(DUNGEON_PTR[0]->gen_info.fixed_room_id) ||
         MonsterCannotAttack(monster, FALSE) ||
-        ShouldMonsterRunAwayVariation(monster, TRUE) ||
+        ShouldMonsterRunAwayAndShowEffect(monster, TRUE) ||
         GetEntInfo(monster)->monster_behavior == BEHAVIOR_FLEEING_OUTLAW && IsMonsterCornered(monster) ||
         IsTacticSet(monster, TACTIC_KEEP_YOUR_DISTANCE) ||
         (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_CONFUSED && DungeonRandOutcome__022EAB20(AI_CONFUSED_NO_ATTACK_CHANCE)))

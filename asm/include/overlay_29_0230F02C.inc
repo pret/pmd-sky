@@ -33,7 +33,7 @@
 .public ov29_02348DD8
 .public ov29_02348ECC
 .public RemoveGroundItem
-.public ShouldMonsterRunAwayVariation
+.public ShouldMonsterRunAwayAndShowEffect
 .public sub_0200D8AC
 .public SubstitutePlaceholderStringTags
 .public UseThrowableItem

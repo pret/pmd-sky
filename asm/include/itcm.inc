@@ -81,7 +81,7 @@
 .public SetMonsterActionFields
 .public ShouldMonsterFollowLeader
 .public ShouldMonsterHeadToStairs
-.public ShouldMonsterRunAwayVariation
+.public ShouldMonsterRunAwayAndShowEffect
 .public sub_0201BD50
 .public sub_0201BD80
 .public sub_0202760C

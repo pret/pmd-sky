@@ -1,26 +1,10 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_023016A8.inc"
+	.include "overlay_29_023016D8.inc"
 
 	.text
 
-	arm_func_start ShouldMonsterRunAwayVariation
-ShouldMonsterRunAwayVariation: ; 0x023016A8
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	mov r4, r1
-	bl ShouldMonsterRunAway
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-	mov r0, r5
-	mov r1, r4
-	bl ov29_023016D8
-	mov r0, #1
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ShouldMonsterRunAwayVariation
-
-	arm_func_start ov29_023016D8
-ov29_023016D8: ; 0x023016D8
+	arm_func_start DisplayRunAwayIfTriggered
+DisplayRunAwayIfTriggered: ; 0x023016D8
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldr r4, [r6, #0xb4]
@@ -51,8 +35,8 @@ ov29_023016D8: ; 0x023016D8
 	cmpne r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r6
-	bl ov29_022E62A8
+	bl PlayEffectAnimation0x29
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02301758: .word 0x000003E7
-	arm_func_end ov29_023016D8
+	arm_func_end DisplayRunAwayIfTriggered

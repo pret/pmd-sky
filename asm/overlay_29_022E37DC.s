@@ -3516,8 +3516,8 @@ ov29_022E6260: ; 0x022E6260
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E6260
 
-	arm_func_start ov29_022E62A8
-ov29_022E62A8: ; 0x022E62A8
+	arm_func_start PlayEffectAnimation0x29
+PlayEffectAnimation0x29: ; 0x022E62A8
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -3536,7 +3536,7 @@ ov29_022E62A8: ; 0x022E62A8
 	bl PlayEffectAnimationEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022E62A8
+	arm_func_end PlayEffectAnimation0x29
 
 	arm_func_start ov29_022E62F0
 ov29_022E62F0: ; 0x022E62F0

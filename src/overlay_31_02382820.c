@@ -1,4 +1,5 @@
 #include "overlay_31_02382820.h"
+#include "dungeon_ai_targeting.h"
 #include "number_util.h"
 
 extern struct dungeon* DUNGEON_PTR[];
@@ -36,7 +37,6 @@ extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern struct Window* GetWindow(struct Window*);
 extern s32 sub_020265A8(u8*); // Measures the text's width in pixels
 
-extern u32 ShouldMonsterRunAwayVariation(struct entity*, u32);
 extern u32 Arm9LoadUnkFieldNa0x2029EC8(u32, u8*);
 extern u8 CreateParentMenuFromStringIds(u32*, u32, struct struct_2*, u32*);
 extern u8 CreateTextBox(u32*, void (*fun)(struct Window*));
@@ -44,7 +44,6 @@ extern u32 IsParentMenuActive(s8);
 extern u32 sub_0202AB80(s8);
 extern void Arm9StoreUnkFieldNa0x2029ED8(u32, u8);
 extern u32 GetPressedButtons(u32, u16*);
-extern u32 ShouldMonsterRunAwayVariation(struct entity*, u32);
 extern void sub_0202AB94(s8, u32);
 extern void sub_0202B030(s8);
 extern void sub_0202F954(s8);
@@ -173,7 +172,7 @@ u32 ov31_02382B54(void)
                 OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b[i] = 0;
             }
             leader = GetLeader();
-            if (ShouldMonsterRunAwayVariation(leader, 1)) {
+            if (ShouldMonsterRunAwayAndShowEffect(leader, 1)) {
                 OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b[0] = 3;
                 OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b[1] = 3;
                 OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->b[2] = 3;
@@ -201,7 +200,7 @@ u32 ov31_02382B54(void)
 
                 struct entity* leader = GetLeader();
 
-                if (ShouldMonsterRunAwayVariation(leader, 1))
+                if (ShouldMonsterRunAwayAndShowEffect(leader, 1))
                     break;
 
                 sub_0202AB94(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0], 0);
