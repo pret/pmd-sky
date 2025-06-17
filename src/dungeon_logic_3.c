@@ -1,4 +1,5 @@
 #include "dungeon_logic_3.h"
+#include "dungeon_ai_targeting.h"
 #include "dungeon_map_access.h"
 #include "dungeon_mobility.h"
 #include "dungeon_pokemon_attributes_1.h"
@@ -8,6 +9,48 @@
 #include "run_dungeon.h"
 
 static const u8 DIRECTIONAL_BIT_MASKS[] = {0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80};
+
+bool8 MonsterCannotAttack(struct entity *pokemon, bool8 skip_sleep)
+{
+    struct monster *pokemon_info = GetEntInfo(pokemon);
+
+    if (!skip_sleep)
+    {
+        if (pokemon_info->sleep_class_status.sleep != STATUS_SLEEP_SLEEPLESS &&
+            pokemon_info->sleep_class_status.sleep != STATUS_SLEEP_YAWNING &&
+            pokemon_info->sleep_class_status.sleep != STATUS_SLEEP_NONE)
+            return TRUE;
+    }
+
+    if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_FROZEN)
+        return TRUE;
+
+    if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_WRAP)
+        return TRUE;
+
+    if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_WRAPPED)
+        return TRUE;
+
+    if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_PETRIFIED)
+        return TRUE;
+
+    if (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_CRINGE)
+        return TRUE;
+
+    if (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_PAUSED)
+        return TRUE;
+
+    if (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_INFATUATED)
+        return TRUE;
+
+    if (pokemon_info->burn_class_status.burn == STATUS_BURN_PARALYSIS)
+        return TRUE;
+
+    if (ShouldMonsterRunAway(pokemon))
+        return TRUE;
+
+    return FALSE;
+}
 
 bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction)
 {

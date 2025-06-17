@@ -3,6 +3,7 @@
 
 #include "dungeon_mode.h"
 
+bool8 MonsterCannotAttack(struct entity *pokemon, bool8 skip_sleep);
 // Checks if the given monster can move in the specified direction
 // Returns false if any monster is standing on the target tile
 bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction);
