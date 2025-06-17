@@ -6,6 +6,7 @@
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
+#include "fixed_room_data.h"
 
 #define REGULAR_ATTACK_INDEX 4
 
@@ -13,7 +14,6 @@ const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern bool8 AreMovesEnabled(enum fixed_room_id fixed_room_id);
 extern bool8 MonsterCannotAttack(struct entity *pokemon, bool8 skip_sleep);
 extern u32 ShouldMonsterRunAwayVariation(struct entity *monster, u32 param_2);
 extern bool8 IsMonsterCornered(struct entity *monster);
