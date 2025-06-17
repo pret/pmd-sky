@@ -9,6 +9,7 @@
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
 #include "fixed_room_data.h"
+#include "overlay_29_02301118.h"
 
 #define REGULAR_ATTACK_INDEX 4
 
@@ -16,7 +17,6 @@ const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern bool8 IsMonsterCornered(struct entity *monster);
 extern bool8 IsChargingTwoTurnMove(struct entity *user, struct move *move);
 extern void SetActionUseMoveAi(struct action_data *monster_action, s16 move_index, u8 direction);
 extern void UpdateAiTargetPos(struct entity *monster);
