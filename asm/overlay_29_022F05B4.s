@@ -4229,7 +4229,7 @@ _022F4020:
 	beq _022F4098
 	mov r0, r5
 	mov r1, r6
-	bl ov29_02301158
+	bl CanMonsterMoveOrSwapWithAllyInDirection
 	cmp r0, #0
 	movne r0, r6
 	bne _022F40A4
@@ -4239,7 +4239,7 @@ _022F4020:
 	sub r1, r6, #1
 	mov r0, r5
 	and r1, r1, #7
-	bl ov29_02301158
+	bl CanMonsterMoveOrSwapWithAllyInDirection
 	cmp r0, #0
 	subne r0, r6, #1
 	andne r0, r0, #7
@@ -4247,7 +4247,7 @@ _022F4020:
 	add r1, r6, #1
 	mov r0, r5
 	and r1, r1, #7
-	bl ov29_02301158
+	bl CanMonsterMoveOrSwapWithAllyInDirection
 	cmp r0, #0
 	addne r0, r6, #1
 	andne r0, r0, #7
@@ -4290,7 +4290,7 @@ ov29_022F40B8: ; 0x022F40B8
 	mov r5, r0
 	mov r0, sl
 	mov r1, r5
-	bl ov29_02301158
+	bl CanMonsterMoveOrSwapWithAllyInDirection
 	cmp r0, #0
 	movne r0, r5
 	bne _022F425C
@@ -4356,7 +4356,7 @@ _022F4198:
 	bgt _022F4208
 	mov r0, sl
 	mov r1, r8
-	bl ov29_02301158
+	bl CanMonsterMoveOrSwapWithAllyInDirection
 	cmp r0, #0
 	movne r0, r8
 	bne _022F425C
@@ -4370,7 +4370,7 @@ _022F4218:
 	sub r1, r5, #1
 	mov r0, sl
 	and r1, r1, #7
-	bl ov29_02301158
+	bl CanMonsterMoveOrSwapWithAllyInDirection
 	cmp r0, #0
 	subne r0, r5, #1
 	andne r0, r0, #7
@@ -4378,7 +4378,7 @@ _022F4218:
 	add r1, r5, #1
 	mov r0, sl
 	and r1, r1, #7
-	bl ov29_02301158
+	bl CanMonsterMoveOrSwapWithAllyInDirection
 	cmp r0, #0
 	addne r0, r5, #1
 	andne r0, r0, #7

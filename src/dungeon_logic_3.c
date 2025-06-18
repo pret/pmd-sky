@@ -1,4 +1,5 @@
 #include "dungeon_logic_3.h"
+#include "directional_bit_masks.h"
 #include "dungeon_ai_targeting.h"
 #include "dungeon_map_access.h"
 #include "dungeon_mobility.h"
@@ -7,8 +8,6 @@
 #include "dungeon_util_static.h"
 #include "overlay_29_022FF898.h"
 #include "run_dungeon.h"
-
-static const u8 DIRECTIONAL_BIT_MASKS[] = {0x1, 0x2, 0x4, 0x8, 0x10, 0x20, 0x40, 0x80};
 
 bool8 MonsterCannotAttack(struct entity *pokemon, bool8 skip_sleep)
 {
@@ -89,7 +88,7 @@ bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction)
     #endif
 
     current_map_tile = GetTile(monster->pos.x, monster->pos.y);
-    if (current_map_tile->walkable_neighbor_flags[mobility] & DIRECTIONAL_BIT_MASKS[direction & DIRECTION_MASK])
+    if (current_map_tile->walkable_neighbor_flags[mobility] & DIRECTIONAL_BIT_MASKS__02352798[direction & DIRECTION_MASK])
         return TRUE;
 
     return FALSE;
