@@ -105,7 +105,6 @@ struct action_parameter {
 struct action_data {
     enum action action_id;      // 0x0: Action ID
     u8 direction; // 0x2: Direction in which the action will be performed
-    u8 field_0x3;
     struct action_parameter action_parameters[2]; // 0x4: Parameters for the action
     // 0x10: Position of the target that the Pokémon wants throw an item at.
     struct position item_target_position;

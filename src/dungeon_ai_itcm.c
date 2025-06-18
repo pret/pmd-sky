@@ -2,6 +2,7 @@
 #include "dg_random.h"
 #include "direction.h"
 #include "dungeon_action.h"
+#include "dungeon_action_helper.h"
 #include "dungeon_ai_targeting.h"
 #include "dungeon_capabilities_3.h"
 #include "dungeon_capabilities_4.h"
@@ -14,11 +15,12 @@
 
 #define REGULAR_ATTACK_INDEX 4
 
+// The weight of the regular attack in the weighted random when the AI is deciding which move to use, depending on how many other attacks the AI can currently use.
+// Each index in the array corresponds to the number of attacks (0-4) the AI can use (i.e., is enabled and has PP remaining).
 const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern void SetActionUseMoveAi(struct action_data *monster_action, s16 move_index, u8 direction);
 extern void UpdateAiTargetPos(struct entity *monster);
 extern void InitMove(struct move *move, enum move_id move_id);
 extern u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *monster, struct move *move);

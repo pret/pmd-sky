@@ -107,7 +107,7 @@ enum mobility_type GetDirectionalMobilityType(struct entity* monster, enum mobil
         else if (mobility != MOBILITY_INTANGIBLE && IqSkillIsEnabled(monster, IQ_ALL_TERRAIN_HIKER))
             mobility = MOBILITY_HOVERING;
         else if (IqSkillIsEnabled(monster, IQ_ABSOLUTE_MOVER)) {
-            if (direction == 0xFF)
+            if (direction == DIR_NONE_UNSIGNED)
                 mobility = MOBILITY_INTANGIBLE;
             else if (direction & 1)
                 // Absolute Mover can't break walls diagonally.

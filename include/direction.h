@@ -17,5 +17,6 @@ enum direction_id {
 
 #define DIRECTION_MASK 7
 #define NUM_DIRECTIONS 8
+#define DIR_NONE_UNSIGNED 0xFF
 
 #endif //PMDSKY_DIRECTION_H
