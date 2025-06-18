@@ -1,100 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02301158.inc"
+	.include "overlay_29_02301234.inc"
 
 	.text
-
-	arm_func_start ov29_02301158
-ov29_02301158: ; 0x02301158
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r6, r0
-	ldr r2, [r6, #0xb4]
-	mov r5, r1
-	ldrsh r1, [r2, #2]
-	bl GetMobilityTypeCheckSlipAndFloating
-	ldr r2, _02301228 ; =DIRECTIONS_XY
-	mov ip, r5, lsl #2
-	ldr r1, _0230122C ; =DIRECTIONS_XY + 2
-	ldrsh r3, [r2, ip]
-	ldrsh lr, [r6, #4]
-	mov r4, r0
-	ldrsh r2, [r6, #6]
-	ldrsh r1, [r1, ip]
-	add r0, lr, r3
-	add r1, r2, r1
-	bl GetTile
-	ldrh r1, [r0]
-	tst r1, #0x10
-	movne r0, #0
-	ldmneia sp!, {r4, r5, r6, pc}
-	ldr r1, [r0, #0xc]
-	cmp r1, #0
-	beq _023011E0
-	ldr r0, [r1]
-	cmp r0, #1
-	bne _023011E0
-	mov r0, r6
-	mov r2, #1
-	mov r3, #0
-	bl GetTreatmentBetweenMonsters
-	cmp r0, #1
-	moveq r0, #0
-	ldmeqia sp!, {r4, r5, r6, pc}
-_023011E0:
-#ifdef JAPAN
-	bl IsCurrentTilesetBackground
-	cmp r0, #0
-	bne _02302654
-	ldr r0, [r6, #0xb4]
-	ldrb r0, [r0, #0xef]
-	cmp r0, #3
-	moveq r4, #3
-	beq _02302654
-	mov r0, r6
-	mov r1, #0x10
-	bl ItemIsActive__022FF898
-	cmp r0, #0
-	movne r4, #3
-	bne _02302654
-	mov r0, r6
-	mov r1, #0xc
-	bl IqSkillIsEnabled
-	cmp r0, #0
-	movne r4, #2
-	bne _02302654
-	mov r0, r6
-	mov r1, #0xd
-	bl IqSkillIsEnabled
-	cmp r0, #0
-	beq _02302654
-	tst r5, #1
-	movne r4, #2
-	moveq r4, #3
-_02302654:
-#else
-	mov r0, r6
-	mov r1, r4
-	and r2, r5, #0xff
-	bl GetDirectionalMobilityType
-	mov r4, r0
-#endif
-	ldrsh r0, [r6, #4]
-	ldrsh r1, [r6, #6]
-	bl GetTile
-	add r0, r0, r4
-	ldr r1, _02301230 ; =ov29_02352780
-	and r2, r5, #7
-	ldrb r1, [r1, r2]
-	ldrb r0, [r0, #8]
-	tst r1, r0
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r4, r5, r6, pc}
-	.align 2, 0
-_02301228: .word DIRECTIONS_XY
-_0230122C: .word DIRECTIONS_XY + 2
-_02301230: .word ov29_02352780
-	arm_func_end ov29_02301158
 
 	arm_func_start CanAttackInDirection
 CanAttackInDirection: ; 0x02301234
@@ -168,7 +75,7 @@ _02302778:
 	ldrsh r1, [r6, #6]
 	bl GetTile
 	add r0, r0, r4
-	ldr r1, _023012F4 ; =ov29_02352778
+	ldr r1, _023012F4 ; =DIRECTIONAL_BIT_MASKS__02352778
 	and r2, r5, #7
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
@@ -185,7 +92,7 @@ _02302778:
 	.align 2, 0
 _023012EC: .word DIRECTIONS_XY
 _023012F0: .word DIRECTIONS_XY + 2
-_023012F4: .word ov29_02352778
+_023012F4: .word DIRECTIONAL_BIT_MASKS__02352778
 	arm_func_end CanAttackInDirection
 
 	arm_func_start CanAiMonsterMoveInDirection
@@ -316,7 +223,7 @@ _0230295C:
 	ldrsh r1, [r8, #6]
 	bl GetTile
 	add r0, r0, r5
-	ldr r1, _02301494 ; =ov29_02352770
+	ldr r1, _02301494 ; =DIRECTIONAL_BIT_MASKS__02352770
 	and r2, r7, #7
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
@@ -334,7 +241,7 @@ _02301484: .word DIRECTIONS_XY
 _02301488: .word DIRECTIONS_XY + 2
 _0230148C: .word DUNGEON_PTR
 _02301490: .word SECONDARY_TERRAIN_TYPES
-_02301494: .word ov29_02352770
+_02301494: .word DIRECTIONAL_BIT_MASKS__02352770
 	arm_func_end CanAiMonsterMoveInDirection
 
 	arm_func_start ov29_02301498

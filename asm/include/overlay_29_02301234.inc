@@ -5,12 +5,10 @@
 .public GetDirectionalMobilityType
 .public GetMobilityTypeCheckSlipAndFloating
 .public GetTile
-.public GetTreatmentBetweenMonsters
 .public IqSkillIsEnabled
 .public IsCurrentTilesetBackground
 .public IsTacticSet
 .public ItemIsActive__022FF898
 .public SECONDARY_TERRAIN_TYPES
-.public ov29_02352770
-.public ov29_02352778
-.public ov29_02352780
+.public DIRECTIONAL_BIT_MASKS__02352770
+.public DIRECTIONAL_BIT_MASKS__02352778

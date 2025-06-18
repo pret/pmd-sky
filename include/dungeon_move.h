@@ -3,6 +3,8 @@
 
 #include "dungeon_mode.h"
 
+// Checks if a monster is currently charging the specified two-turn move.
+bool8 IsChargingTwoTurnMove(struct entity *user, struct move *move);
 // Returns a boolean indicating whether or not the given entity is charging any two-turn move.
 // pokemon: Entity pointer
 // check_charge: Unused boolean which was supposed to make function return true if the entity is under the effect of Charge (the Electric-type move).

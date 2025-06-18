@@ -6,5 +6,5 @@
 .public IqSkillIsEnabled
 .public IsCurrentTilesetBackground
 .public ItemIsActive__022FF898
-.public ov29_02352788
-.public ov29_02352790
+.public DIRECTIONAL_BIT_MASKS__02352788
+.public DIRECTIONAL_BIT_MASKS__02352790

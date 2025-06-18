@@ -29,7 +29,7 @@ ov29_02300FCC: ; 0x02300FCC
 	ldrsh r0, [r5, #4]
 	ldrsh r1, [r5, #6]
 	bl GetTile
-	ldr r1, _02301058 ; =ov29_02352790
+	ldr r1, _02301058 ; =DIRECTIONAL_BIT_MASKS__02352790
 	and r2, r4, #7
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
@@ -41,7 +41,7 @@ ov29_02300FCC: ; 0x02300FCC
 	.align 2, 0
 _02301050: .word DIRECTIONS_XY
 _02301054: .word DIRECTIONS_XY + 2
-_02301058: .word ov29_02352790
+_02301058: .word DIRECTIONAL_BIT_MASKS__02352790
 	arm_func_end ov29_02300FCC
 
 	arm_func_start ov29_0230105C
@@ -114,7 +114,7 @@ _023024DC_JP:
 	ldrsh r1, [r6, #6]
 	bl GetTile
 	add r0, r0, r4
-	ldr r1, _02301114 ; =ov29_02352788
+	ldr r1, _02301114 ; =DIRECTIONAL_BIT_MASKS__02352788
 	and r2, r5, #7
 	ldrb r1, [r1, r2]
 	ldrb r0, [r0, #8]
@@ -131,5 +131,5 @@ _023024DC_JP:
 	.align 2, 0
 _0230110C: .word DIRECTIONS_XY
 _02301110: .word DIRECTIONS_XY + 2
-_02301114: .word ov29_02352788
+_02301114: .word DIRECTIONAL_BIT_MASKS__02352788
 	arm_func_end ov29_0230105C

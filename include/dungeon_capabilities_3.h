@@ -1,5 +1,5 @@
-#ifndef PMDSKY_DUNGEON_LOGIC_3_H
-#define PMDSKY_DUNGEON_LOGIC_3_H
+#ifndef PMDSKY_DUNGEON_CAPABILITIES_3_H
+#define PMDSKY_DUNGEON_CAPABILITIES_3_H
 
 #include "dungeon_mode.h"
 
@@ -22,4 +22,4 @@ bool8 CanMonsterMoveInDirection(struct entity *monster, u16 direction);
 enum mobility_type GetDirectionalMobilityType(struct entity *monster, enum mobility_type base_mobility, u8 direction);
 #endif
 
-#endif //PMDSKY_DUNGEON_LOGIC_3_H
+#endif //PMDSKY_DUNGEON_CAPABILITIES_3_H

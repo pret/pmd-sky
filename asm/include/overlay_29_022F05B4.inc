@@ -111,7 +111,7 @@
 .public ov29_023009CC
 .public ov29_02300FCC
 .public ov29_0230105C
-.public ov29_02301158
+.public CanMonsterMoveOrSwapWithAllyInDirection
 .public ov29_023055B0
 .public ov29_02321164
 .public ov29_02322DDC
