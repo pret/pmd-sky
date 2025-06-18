@@ -1,7 +1,9 @@
 #include "dungeon_move.h"
 #include "dungeon_util_static.h"
 #include "overlay_29_02321438.h"
+#include "two_turn_moves_and_statuses.h"
 
+// Lists all status IDs that are for two-turn moves. The last entry is null.
 const enum status_two_turn_id TWO_TURN_STATUSES[11] =
 {
     STATUS_TWO_TURN_SOLARBEAM,
@@ -16,6 +18,24 @@ const enum status_two_turn_id TWO_TURN_STATUSES[11] =
     STATUS_TWO_TURN_SHADOW_FORCE,
     STATUS_TWO_TURN_NONE
 };
+
+bool8 IsChargingTwoTurnMove(struct entity *user, struct move *move)
+{
+    if (!EntityIsValid__02321438(user))
+        return FALSE;
+
+    struct monster *pokemon_info = GetEntInfo(user);
+    for (s32 i = 0; i < 100; i++)
+    {
+        if (TWO_TURN_MOVES_AND_STATUSES[i].move == MOVE_NOTHING)
+            return FALSE;
+
+        if (move->id == TWO_TURN_MOVES_AND_STATUSES[i].move &&
+            pokemon_info->bide_class_status.bide == TWO_TURN_MOVES_AND_STATUSES[i].status)
+            return TRUE;
+    }
+    return FALSE;
+}
 
 bool8 IsChargingAnyTwoTurnMove(struct entity *entity, bool8 charge_check_unused)
 {

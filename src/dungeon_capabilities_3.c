@@ -1,4 +1,4 @@
-#include "dungeon_logic_3.h"
+#include "dungeon_capabilities_3.h"
 #include "directional_bit_masks.h"
 #include "dungeon_ai_targeting.h"
 #include "dungeon_map_access.h"

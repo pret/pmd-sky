@@ -3,13 +3,14 @@
 #include "direction.h"
 #include "dungeon_action.h"
 #include "dungeon_ai_targeting.h"
-#include "dungeon_logic_3.h"
+#include "dungeon_capabilities_3.h"
+#include "dungeon_capabilities_4.h"
+#include "dungeon_mode.h"
 #include "dungeon_parameters.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
 #include "fixed_room_data.h"
-#include "overlay_29_02301118.h"
 
 #define REGULAR_ATTACK_INDEX 4
 
@@ -17,7 +18,6 @@ const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern bool8 IsChargingTwoTurnMove(struct entity *user, struct move *move);
 extern void SetActionUseMoveAi(struct action_data *monster_action, s16 move_index, u8 direction);
 extern void UpdateAiTargetPos(struct entity *monster);
 extern void InitMove(struct move *move, enum move_id move_id);

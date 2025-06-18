@@ -2,7 +2,7 @@
 #include "dg_random.h"
 #include "dungeon_action.h"
 #include "dungeon_ai_itcm.h"
-#include "dungeon_logic_3.h"
+#include "dungeon_capabilities_3.h"
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 

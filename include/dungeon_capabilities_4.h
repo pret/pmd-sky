@@ -1,5 +1,5 @@
-#ifndef PMDSKY_OVERLAY_29_02301118_H
-#define PMDSKY_OVERLAY_29_02301118_H
+#ifndef PMDSKY_DUNGEON_CAPABILITIES_4_H
+#define PMDSKY_DUNGEON_CAPABILITIES_4_H
 
 #include "dungeon_mode.h"
 
@@ -9,4 +9,4 @@ bool8 IsMonsterCornered(struct entity *monster);
 // Returns false if an enemy monster is standing on the target tile
 bool8 CanMonsterMoveOrSwapWithAllyInDirection(struct entity *monster, s32 direction);
 
-#endif //PMDSKY_OVERLAY_29_02301118_H
+#endif //PMDSKY_DUNGEON_CAPABILITIES_4_H
