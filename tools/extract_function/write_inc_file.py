@@ -46,7 +46,8 @@ def write_inc_file(lines: List[str], file_path: str):
 
     write_lines = ['#pragma once\n']
     for function in sorted(used_functions):
-        write_lines.append(f'.public {function}\n')
+        if ' ' not in function:
+            write_lines.append(f'.public {function}\n')
 
     with open(file_path, 'w') as inc_file:
         inc_file.writelines(write_lines)
