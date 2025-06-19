@@ -33,6 +33,8 @@ Static main
 	Object asm/main_0200EB30.o
 	Object src/main_0200ECFC.o
 	Object asm/main_0200ED1C.o
+	Object src/moves_1.o
+	Object asm/main_020137E8.o
 	Object src/moves.o
 	Object asm/main_02013AD0.o
 	Object src/main_020251AC.o
@@ -317,6 +319,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022F62CC.o
 	Object src/overlay_29_022F7364.o
 	Object asm/overlay_29_022F7388.o
+	Object src/dungeon_misc.o
+	Object asm/overlay_29_022F9194.o
 	Object src/overlay_29_022F9720.o
 	Object asm/overlay_29_022F9744.o
 	Object src/overlay_29_022FB538.o

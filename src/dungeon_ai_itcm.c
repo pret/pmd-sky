@@ -6,12 +6,14 @@
 #include "dungeon_ai_targeting.h"
 #include "dungeon_capabilities_3.h"
 #include "dungeon_capabilities_4.h"
+#include "dungeon_misc.h"
 #include "dungeon_mode.h"
 #include "dungeon_parameters.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
 #include "fixed_room_data.h"
+#include "moves_1.h"
 
 #define REGULAR_ATTACK_INDEX 4
 
@@ -21,8 +23,6 @@ const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern void UpdateAiTargetPos(struct entity *monster);
-extern void InitMove(struct move *move, enum move_id move_id);
 extern u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *monster, struct move *move);
 extern bool8 ov29_02338350(struct entity *monster);
 extern bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified);
