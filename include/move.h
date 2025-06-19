@@ -37,8 +37,6 @@ struct move {
     // bool8 f_disabled : 1;  // For Torment (and maybe others)
     // u8 flags_unk6 : 2;
 
-    u8 field_0x1;
-
     // 0x2: flags2: 2-byte bitfield
     u16 flags2;
     // bool8 f_sealed : 1; // Sealed by a Seal Trap. Also prevents AI from using this move
