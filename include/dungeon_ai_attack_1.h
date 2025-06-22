@@ -10,6 +10,6 @@
 // target: target pointer
 // direction: direction ID
 // n_tiles: move range (in number of tiles)
-bool8 IsTargetInRange(struct entity *user, struct entity *target, enum direction_id direction, s32 n_tiles);
+bool8 IsTargetInRange(struct entity *user, struct entity *target, s32 direction, s32 n_tiles);
 
 #endif //PMDSKY_DUNGEON_AI_ATTACK_1_H

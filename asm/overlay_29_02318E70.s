@@ -834,7 +834,7 @@ _02319854:
 	arm_func_start ov29_0231985C
 ov29_0231985C: ; 0x0231985C
 	mov r2, #0
-	ldr r0, _0231987C ; =ov29_0237CA18
+	ldr r0, _0231987C ; =CAN_ATTACK_IN_DIRECTION
 	mov r1, r2
 _02319868:
 	strb r1, [r0, r2]
@@ -843,9 +843,11 @@ _02319868:
 	blt _02319868
 	bx lr
 	.align 2, 0
-_0231987C: .word ov29_0237CA18
+_0231987C: .word CAN_ATTACK_IN_DIRECTION
 	arm_func_end ov29_0231985C
 
+; https://decomp.me/scratch/jVfou
+#ifndef NONMATCHING
 	arm_func_start AiConsiderMove
 AiConsiderMove: ; 0x02319880
 #ifdef JAPAN
@@ -921,13 +923,13 @@ _02319958:
 	cmp r0, #0
 	beq _023199C0
 	ldrb r6, [r6, #0x4c]
-	ldr r4, _02319F70 ; =ov29_0237CA18
+	ldr r4, _02319F70 ; =CAN_ATTACK_IN_DIRECTION
 	ldrb r0, [r4, r6]
 	cmp r0, #0
 	bne _02319E88
-	ldr r1, _02319F74 ; =ov29_0237CA20
+	ldr r1, _02319F74 ; =POTENTIAL_ATTACK_TARGET_DIRECTIONS
 	mov r3, #1
-	ldr r0, _02319F78 ; =ov29_0237CA28
+	ldr r0, _02319F78 ; =POTENTIAL_ATTACK_TARGET_WEIGHTS
 	mov r2, #0x63
 	strb r3, [r4, r6]
 	strb r6, [r1]
@@ -1105,7 +1107,7 @@ _02319BF0:
 	add r0, sl, #4
 	add r1, r1, #4
 	bl GetDirectionTowardsPosition
-	ldr r1, _02319F70 ; =ov29_0237CA18
+	ldr r1, _02319F70 ; =CAN_ATTACK_IN_DIRECTION
 	str r0, [sp, #0x1c]
 	ldrb r0, [r1, r0]
 	cmp r0, #0
@@ -1201,12 +1203,12 @@ _02319D50:
 	bl IsTargetInRange
 	cmp r0, #0
 	beq _02319DE8
-	ldr r1, _02319F70 ; =ov29_0237CA18
+	ldr r1, _02319F70 ; =CAN_ATTACK_IN_DIRECTION
 	ldr r0, [sp, #0x1c]
 	mov r2, #1
 	strb r2, [r1, r0]
 	mov r1, r0
-	ldr r0, _02319F74 ; =ov29_0237CA20
+	ldr r0, _02319F74 ; =POTENTIAL_ATTACK_TARGET_DIRECTIONS
 	strb r1, [r0, r5]
 	mov r0, sl
 	mov r1, sb
@@ -1215,11 +1217,11 @@ _02319D50:
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x18]
 	mov r0, sl
-	bl ov29_0231A364
-	ldr r1, _02319F84 ; =ov29_0237CA28
+	bl WeightMove
+	ldr r1, _02319F84 ; =POTENTIAL_ATTACK_TARGET_WEIGHTS
 	str r0, [r1, r5, lsl #2]
 	ldr r1, [sp, #0x18]
-	ldr r0, _02319F88 ; =ov29_0237CA48
+	ldr r0, _02319F88 ; =POTENTIAL_TARGETS
 	str r1, [r0, r5, lsl #2]
 	add r5, r5, #1
 _02319DE8:
@@ -1276,7 +1278,7 @@ _02319E88:
 	mov r0, #0
 	str r0, [sp, #0x14]
 	mov r4, r0
-	ldr r3, _02319F84 ; =ov29_0237CA28
+	ldr r3, _02319F84 ; =POTENTIAL_ATTACK_TARGET_WEIGHTS
 	b _02319EC4
 _02319EB0:
 	ldr r2, [r3, r4, lsl #2]
@@ -1289,7 +1291,7 @@ _02319EC4:
 	blt _02319EB0
 	mov r6, #0
 	mov r2, r6
-	ldr r4, _02319F84 ; =ov29_0237CA28
+	ldr r4, _02319F84 ; =POTENTIAL_ATTACK_TARGET_WEIGHTS
 	b _02319EF0
 _02319EDC:
 	ldr r3, [r4, r6, lsl #2]
@@ -1301,7 +1303,7 @@ _02319EF0:
 	cmp r6, r5
 	blt _02319EDC
 	mov r3, #0
-	ldr r2, _02319F84 ; =ov29_0237CA28
+	ldr r2, _02319F84 ; =POTENTIAL_ATTACK_TARGET_WEIGHTS
 	b _02319F10
 _02319F04:
 	ldr r1, [r2, r3, lsl #2]
@@ -1312,7 +1314,7 @@ _02319F10:
 	blt _02319F04
 	bl DungeonRandInt
 	mov r3, #0
-	ldr r2, _02319F84 ; =ov29_0237CA28
+	ldr r2, _02319F84 ; =POTENTIAL_ATTACK_TARGET_WEIGHTS
 	b _02319F38
 _02319F28:
 	ldr r1, [r2, r3, lsl #2]
@@ -1323,7 +1325,7 @@ _02319F38:
 	cmp r3, r5
 	blt _02319F28
 _02319F40:
-	ldr r1, _02319F74 ; =ov29_0237CA20
+	ldr r1, _02319F74 ; =POTENTIAL_ATTACK_TARGET_DIRECTIONS
 	ldr r0, [sp, #8]
 	mov r2, #1
 	strb r2, [r0]
@@ -1338,11 +1340,12 @@ _02319F64:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _02319F6C: .word 0x00000273
-_02319F70: .word ov29_0237CA18
-_02319F74: .word ov29_0237CA20
-_02319F78: .word ov29_0237CA28
+_02319F70: .word CAN_ATTACK_IN_DIRECTION
+_02319F74: .word POTENTIAL_ATTACK_TARGET_DIRECTIONS
+_02319F78: .word POTENTIAL_ATTACK_TARGET_WEIGHTS
 _02319F7C: .word DIRECTIONS_XY
 _02319F80: .word DUNGEON_PTR
-_02319F84: .word ov29_0237CA28
-_02319F88: .word ov29_0237CA48
+_02319F84: .word POTENTIAL_ATTACK_TARGET_WEIGHTS
+_02319F88: .word POTENTIAL_TARGETS
 	arm_func_end AiConsiderMove
+#endif

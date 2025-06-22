@@ -7,7 +7,7 @@
 #include "main_0208655C.h"
 #include "util.h"
 
-bool8 IsTargetInRange(struct entity *user, struct entity *target, enum direction_id direction, s32 n_tiles)
+bool8 IsTargetInRange(struct entity *user, struct entity *target, s32 direction, s32 n_tiles)
 {
     s32 effective_max_range = Max(abs(user->pos.x - target->pos.x), abs(user->pos.y - target->pos.y));
 

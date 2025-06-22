@@ -1,6 +1,6 @@
 #pragma once
 .public AbilityIsActiveVeneer
-.public abs
+.public CAN_ATTACK_IN_DIRECTION
 .public CalcStatusDuration
 .public CanAttackInDirection
 .public CanSeeTarget
@@ -22,6 +22,15 @@
 .public IsBlinded
 .public IsTargetInRange
 .public LogMessageByIdWithPopupCheckUserTarget
+.public POTENTIAL_ATTACK_TARGET_DIRECTIONS
+.public POTENTIAL_ATTACK_TARGET_WEIGHTS
+.public POTENTIAL_TARGETS
+.public StatusCheckerCheck
+.public SubstitutePlaceholderStringTags
+.public TryAddTargetToAiTargetList
+.public UpdateStatusIconFlags
+.public WeightMove
+.public abs
 .public ov10_022C4648
 .public ov10_022C472C
 .public ov10_022C4730
@@ -48,12 +57,3 @@
 .public ov29_022E415C
 .public ov29_022E41AC
 .public ov29_022E543C
-.public ov29_0231A364
-.public ov29_0237CA18
-.public ov29_0237CA20
-.public ov29_0237CA28
-.public ov29_0237CA48
-.public StatusCheckerCheck
-.public SubstitutePlaceholderStringTags
-.public TryAddTargetToAiTargetList
-.public UpdateStatusIconFlags

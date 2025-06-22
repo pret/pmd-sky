@@ -40,6 +40,8 @@ static inline s32 Min(s32 a, s32 b)
     return a < b ? a : b;
 }
 
+#define MAX(A, B) ((A > B) ? A : B)
+
 static inline s32 Max(s32 a, s32 b)
 {
     return a > b ? a : b;

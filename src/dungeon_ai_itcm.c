@@ -3,6 +3,7 @@
 #include "direction.h"
 #include "dungeon_action.h"
 #include "dungeon_action_helper.h"
+#include "dungeon_ai_attack.h"
 #include "dungeon_ai_targeting.h"
 #include "dungeon_capabilities_3.h"
 #include "dungeon_capabilities_4.h"
@@ -23,7 +24,6 @@ const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *monster, struct move *move);
 extern bool8 ov29_02338350(struct entity *monster);
 extern bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified);
 extern void SetActionRegularAttack(struct action_data *monster_action, u8 direction);
