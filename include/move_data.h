@@ -54,6 +54,8 @@ enum move_ai_condition
     AI_CONDITION_HP_25_OR_STATUS = 0x600, // Target has HP <= 25% or a negative status condition
 };
 
+#define MOVE_RANGE_STRING_USER 19
+
 // Data for a single move
 struct move_data
 {
