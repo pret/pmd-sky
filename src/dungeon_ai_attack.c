@@ -10,6 +10,7 @@
 #include "dungeon_visibility.h"
 #include "main_0208655C.h"
 #include "move_data.h"
+#include "overlay_29_0231ACAC.h"
 #include "position_util.h"
 
 extern struct dungeon *DUNGEON_PTR[];
@@ -18,7 +19,6 @@ extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
 extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
 extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
-extern u16 GetEntityMoveTargetAndRange(struct entity *entity, struct move *move, bool8 is_ai);
 extern bool8 IsAffectedByTaunt(struct move *move);
 extern bool8 StatusCheckerCheck(struct entity *attacker, struct move *move);
 extern u16 GetMoveTargetAndRange(struct move *move, bool8 is_ai);
@@ -47,7 +47,7 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
     if (has_status_checker && !StatusCheckerCheck(monster, move))
         return move_weight;
 
-    if (GetMoveTargetAndRange(move, FALSE) == TARGET_USER + RANGE_USER + AI_CONDITION_HP_25)
+    if (GetMoveTargetAndRange(move, FALSE) == TARGET_USER | RANGE_USER | AI_CONDITION_HP_25)
     {
         s32 max_hp = MIN(pokemon_info->max_hp_stat + pokemon_info->max_hp_boost, 999);
         if (pokemon_info->hp == max_hp)
