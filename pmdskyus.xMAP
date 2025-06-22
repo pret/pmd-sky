@@ -305,7 +305,7 @@
                                                                          72](MonsterHasMiracleEyeStatus,func) found in global dungeon_logic.o
                                                                         71](GetDirectionTowardsPosition,func) found in global position_util.o
                                                                          72](POSITION_DISPLACEMENT_TO_DIRECTION,object) found in global position_util.o
-                                                                       70](EntityIsValid__02319F8C,func) found in global overlay_29_02319F8C.o
+                                                                       70](EntityIsValid__02319F8C,func) found in global dungeon_ai_attack.o
                                                                        70](IsTargetInRange,func) found in global dungeon_ai_attack_1.o
                                                                        70](CanSeeTarget,func) found in global dungeon_visibility.o
                                                                        70](StatusCheckerCheck,func) found in global overlay_29_0232E864.o
@@ -36638,8 +36638,8 @@
   02319880 00000000 .text   $a	(overlay_29_02318E70.o)
   02319880 0000070C .text   AiConsiderMove	(overlay_29_02318E70.o)
   02319F6C 00000000 .text   $d	(overlay_29_02318E70.o)
-  02319F8C 00000024 .text   EntityIsValid__02319F8C	(overlay_29_02319F8C.o)
-  02319F8C 00000000 .text   $a	(overlay_29_02319F8C.o)
+  02319F8C 00000024 .text   EntityIsValid__02319F8C	(dungeon_ai_attack.o)
+  02319F8C 00000000 .text   $a	(dungeon_ai_attack.o)
   02319FB0 000000F4 .text   TryAddTargetToAiTargetList	(overlay_29_02319FB0.o)
   02319FB0 00000000 .text   $a	(overlay_29_02319FB0.o)
   02319FB0 000006E4 .text   .text	(overlay_29_02319FB0.o)
@@ -36647,7 +36647,7 @@
   0231A0A4 00000000 .text   $a	(overlay_29_02319FB0.o)
   0231A0A4 000002C0 .text   IsAiTargetEligible	(overlay_29_02319FB0.o)
   0231A360 00000000 .text   $d	(overlay_29_02319FB0.o)
-  0231A364 000000FC .text   ov29_0231A364	(overlay_29_02319FB0.o)
+  0231A364 000000FC .text   WeightMove	(overlay_29_02319FB0.o)
   0231A364 00000000 .text   $a	(overlay_29_02319FB0.o)
   0231A45C 00000000 .text   $d	(overlay_29_02319FB0.o)
   0231A460 00000000 .text   $a	(overlay_29_02319FB0.o)
@@ -39676,10 +39676,10 @@
   0237C9D8 00000000 .bss    .bss	(dungeon_ai_items.o)
   0237C9F8 00000020 .bss    AI_THROWN_ITEM_DIRECTIONS	(dungeon_ai_items.o)
   0237CA18 00005E08 .bss    .bss	(overlay_29_bss_0237CA18.o)
-  0237CA18 00000000 .bss    ov29_0237CA18	(overlay_29_bss_0237CA18.o)
-  0237CA20 00000000 .bss    ov29_0237CA20	(overlay_29_bss_0237CA18.o)
-  0237CA28 00000000 .bss    ov29_0237CA28	(overlay_29_bss_0237CA18.o)
-  0237CA48 00000000 .bss    ov29_0237CA48	(overlay_29_bss_0237CA18.o)
+  0237CA18 00000000 .bss    CAN_ATTACK_IN_DIRECTION	(overlay_29_bss_0237CA18.o)
+  0237CA20 00000000 .bss    POTENTIAL_ATTACK_TARGET_DIRECTIONS	(overlay_29_bss_0237CA18.o)
+  0237CA28 00000000 .bss    POTENTIAL_ATTACK_TARGET_WEIGHTS	(overlay_29_bss_0237CA18.o)
+  0237CA48 00000000 .bss    POTENTIAL_TARGETS	(overlay_29_bss_0237CA18.o)
   0237CA68 00000000 .bss    ov29_0237CA68	(overlay_29_bss_0237CA18.o)
   0237CA69 00000000 .bss    ROLLOUT_ICE_BALL_MISSED	(overlay_29_bss_0237CA18.o)
   0237CA6A 00000000 .bss    MULTIHIT_FATIGUE_MOVE_USED	(overlay_29_bss_0237CA18.o)
@@ -40483,5 +40483,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Jun 19 05:27:05 2025
-# Link end time: Thu Jun 19 05:27:06 2025
+# Link start time: Sun Jun 22 06:03:57 2025
+# Link end time: Sun Jun 22 06:03:58 2025
