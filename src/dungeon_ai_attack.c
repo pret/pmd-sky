@@ -10,6 +10,7 @@
 #include "dungeon_visibility.h"
 #include "main_0208655C.h"
 #include "move_data.h"
+#include "moves_2.h"
 #include "overlay_29_0231ACAC.h"
 #include "position_util.h"
 
@@ -21,7 +22,6 @@ extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
 extern bool8 IsAffectedByTaunt(struct move *move);
 extern bool8 StatusCheckerCheck(struct entity *attacker, struct move *move);
-extern u16 GetMoveTargetAndRange(struct move *move, bool8 is_ai);
 extern bool8 CanAttackInDirection(struct entity *monster, s32 direction);
 extern s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
 extern bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);

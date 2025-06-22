@@ -2,8 +2,8 @@
 #include "dungeon_logic_3.h"
 #include "item.h"
 #include "move_data.h"
+#include "moves_2.h"
 
-extern u16 GetMoveTargetAndRange(struct move *move, bool8 is_ai);
 extern bool8 IsMoveRangeString19(struct move *move);
 bool8 ExclusiveItemEffectIsActive__0231A87C(struct entity *entity, enum exclusive_item_effect_id effect_id);
 
@@ -12,7 +12,7 @@ u32 GetEntityMoveTargetAndRange(struct entity *entity, struct move *move, bool8 
     if (move->id == MOVE_CURSE && !is_ai && !MonsterIsType(entity, TYPE_GHOST))
         return TARGET_USER | RANGE_USER;
 
-    u16 move_target_and_range = GetMoveTargetAndRange(move, is_ai);
+    s16 move_target_and_range = GetMoveTargetAndRange(move, is_ai);
 
     if (IsMoveRangeString19(move) && ExclusiveItemEffectIsActive__0231A87C(entity, EXCLUSIVE_EFF_EXTEND_SELF_EFFECTS_TO_TEAM))
     {
