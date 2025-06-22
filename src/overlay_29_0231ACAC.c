@@ -1,8 +1,8 @@
 #include "overlay_29_0231ACAC.h"
+#include "dungeon_logic_3.h"
 #include "item.h"
 #include "move_data.h"
 
-extern bool8 MonsterIsType(struct entity *entity, enum type_id type_id);
 extern u16 GetMoveTargetAndRange(struct move *move, bool8 is_ai);
 extern bool8 IsMoveRangeString19(struct move *move);
 bool8 ExclusiveItemEffectIsActive__0231A87C(struct entity *entity, enum exclusive_item_effect_id effect_id);
