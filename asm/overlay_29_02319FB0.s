@@ -30,7 +30,7 @@ TryAddTargetToAiTargetList: ; 0x02319FB0
 	bl GetDirectionTowardsPosition
 	mov r5, r0
 _0231A010:
-	ldr r4, _0231A094 ; =ov29_0237CA18
+	ldr r4, _0231A094 ; =CAN_ATTACK_IN_DIRECTION
 	ldrb r0, [r4, r5]
 	cmp r0, #0
 	movne r0, sb
@@ -44,7 +44,7 @@ _0231A010:
 	bl IsAiTargetEligible
 	cmp r0, #0
 	beq _0231A08C
-	ldr r2, _0231A098 ; =ov29_0237CA20
+	ldr r2, _0231A098 ; =POTENTIAL_ATTACK_TARGET_DIRECTIONS
 	mov r3, #1
 	ldr r1, [sp, #0x20]
 	mov r0, r7
@@ -55,9 +55,9 @@ _0231A010:
 	mov r0, r7
 	mov r1, r8
 	mov r2, r6
-	bl ov29_0231A364
-	ldr r2, _0231A09C ; =ov29_0237CA28
-	ldr r1, _0231A0A0 ; =ov29_0237CA48
+	bl WeightMove
+	ldr r2, _0231A09C ; =POTENTIAL_ATTACK_TARGET_WEIGHTS
+	ldr r1, _0231A0A0 ; =POTENTIAL_TARGETS
 	str r0, [r2, sb, lsl #2]
 	str r6, [r1, sb, lsl #2]
 	add sb, sb, #1
@@ -65,10 +65,10 @@ _0231A08C:
 	mov r0, sb
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
-_0231A094: .word ov29_0237CA18
-_0231A098: .word ov29_0237CA20
-_0231A09C: .word ov29_0237CA28
-_0231A0A0: .word ov29_0237CA48
+_0231A094: .word CAN_ATTACK_IN_DIRECTION
+_0231A098: .word POTENTIAL_ATTACK_TARGET_DIRECTIONS
+_0231A09C: .word POTENTIAL_ATTACK_TARGET_WEIGHTS
+_0231A0A0: .word POTENTIAL_TARGETS
 	arm_func_end TryAddTargetToAiTargetList
 
 	arm_func_start IsAiTargetEligible
@@ -266,8 +266,8 @@ _0231A358:
 _0231A360: .word 0x000001B7
 	arm_func_end IsAiTargetEligible
 
-	arm_func_start ov29_0231A364
-ov29_0231A364: ; 0x0231A364
+	arm_func_start WeightMove
+WeightMove: ; 0x0231A364
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r7, r2
 	mov sb, r0
@@ -340,7 +340,7 @@ _0231A454:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _0231A45C: .word DUNGEON_PTR
-	arm_func_end ov29_0231A364
+	arm_func_end WeightMove
 
 	arm_func_start TargetRegularAttack
 TargetRegularAttack: ; 0x0231A460
@@ -431,7 +431,7 @@ _0231A58C:
 	mov r2, r8
 	mov r0, sl
 	mov r3, r1
-	bl ov29_0231A364
+	bl WeightMove
 	add r1, sp, #8
 	cmp fp, #0
 	str r0, [r1, r4, lsl #2]

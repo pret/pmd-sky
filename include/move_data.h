@@ -21,21 +21,21 @@ enum move_target
 // In the move data, this is the upper 4 bits of the joint Range + Target bitfield
 enum move_range
 {
-    RANGE_FRONT = 0,           // 1 tile in front
-    RANGE_FRONT_AND_SIDES = 1, // also cuts corners
-    RANGE_NEARBY = 2,          // the 8 surrounding tiles
-    RANGE_ROOM = 3,            // the whole room
-    RANGE_FRONT_2 = 4,  // 2 tiles in front, also cuts corners but the AI doesn't account for that
-    RANGE_FRONT_10 = 5, // 10 tiles in front
-    RANGE_FLOOR = 6,    // the whole floor
+    RANGE_FRONT = 0,              // 1 tile in front
+    RANGE_FRONT_AND_SIDES = 0x10, // also cuts corners
+    RANGE_NEARBY = 0x20,          // the 8 surrounding tiles
+    RANGE_ROOM = 0x30,            // the whole room
+    RANGE_FRONT_2 = 0x40,  // 2 tiles in front, also cuts corners but the AI doesn't account for that
+    RANGE_FRONT_10 = 0x50, // 10 tiles in front
+    RANGE_FLOOR = 0x60,    // the whole floor
     // Depends on the move:
     // - if the target is the user, then the range is also just the user
     // - if the target is enemies after charging, the range is front or front with corner cutting,
     //   depending on the move
-    RANGE_USER = 7,
-    RANGE_FRONT_WITH_CORNER_CUTTING = 8, // same as RANGE_FRONT but cuts corners
+    RANGE_USER = 0x70,
+    RANGE_FRONT_WITH_CORNER_CUTTING = 0x80, // same as RANGE_FRONT but cuts corners
     // same as RANGE_FRONT_2 but the AI accounts for corner-cutting
-    RANGE_FRONT_2_WITH_CORNER_CUTTING = 9,
+    RANGE_FRONT_2_WITH_CORNER_CUTTING = 0x90,
     RANGE_SPECIAL = 15, // for weird moves
 };
 
@@ -46,32 +46,23 @@ enum move_ai_condition
     AI_CONDITION_NONE = 0,
     // The AI will consider a target elegible wirh a chance equal to the
     // move's "ai_condition_random_chance" value
-    AI_CONDITION_RANDOM = 1,
-    AI_CONDITION_HP_25 = 2,           // Target has HP <= 25%
-    AI_CONDITION_STATUS = 3,          // Target has a negative status condition
-    AI_CONDITION_ASLEEP = 4,          // Target is asleep, napping or in a nightmare
-    AI_CONDITION_GHOST = 5,           // Target is ghost-type and not exposed
-    AI_CONDITION_HP_25_OR_STATUS = 6, // Target has HP <= 25% or a negative status condition
-};
-
-// In the move data, the target and range are encoded together in the first byte of a single
-// two-byte field. The target is the lower half, and the range is the upper half.
-struct move_target_and_range
-{
-    enum move_target target : 4;
-    enum move_range range : 4;
-    enum move_ai_condition ai_condition : 4;
+    AI_CONDITION_RANDOM = 0x100,
+    AI_CONDITION_HP_25 = 0x200,           // Target has HP <= 25%
+    AI_CONDITION_STATUS = 0x300,          // Target has a negative status condition
+    AI_CONDITION_ASLEEP = 0x400,          // Target is asleep, napping or in a nightmare
+    AI_CONDITION_GHOST = 0x500,           // Target is ghost-type and not exposed
+    AI_CONDITION_HP_25_OR_STATUS = 0x600, // Target has HP <= 25% or a negative status condition
 };
 
 // Data for a single move
 struct move_data
 {
-    u16 base_power;                               // 0x0
-    u8 type;                                      // 0x2
-    u8 category;                                  // 0x3
-    struct move_target_and_range target_range;    // 0x4
-    struct move_target_and_range ai_target_range; // 0x6: Target/range as seen by the AI
-    u8 pp;                                        // 0x8
+    u16 base_power;      // 0x0
+    u8 type;             // 0x2
+    u8 category;         // 0x3
+    u16 target_range;    // 0x4
+    u16 ai_target_range; // 0x6: Target/range as seen by the AI
+    u8 pp;               // 0x8
     u8 ai_weight; // 0x9: Possibly. Weight for AI's random move selection
     // 0xA: Both accuracy values are used to calculate the move's actual accuracy.
     // See the PMD Info Spreadsheet.
