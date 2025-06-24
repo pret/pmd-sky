@@ -4,8 +4,7 @@
 #include "main_02013C04.h"
 #include "move_data.h"
 #include "moves_2.h"
-
-bool8 ExclusiveItemEffectIsActive__0231A87C(struct entity *entity, enum exclusive_item_effect_id effect_id);
+#include "overlay_29_0231A87C.h"
 
 u32 GetEntityMoveTargetAndRange(struct entity *entity, struct move *move, bool8 is_ai)
 {

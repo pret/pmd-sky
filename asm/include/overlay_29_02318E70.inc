@@ -3,7 +3,7 @@
 .public CalcStatusDuration
 .public DungeonRandOutcome__022EAB20
 .public EntityIsValid__02318E4C
-.public ExclusiveItemEffectFlagTest
+.public ExclusiveItemEffectIsActive__023197A8
 .public LogMessageByIdWithPopupCheckUserTarget
 .public SubstitutePlaceholderStringTags
 .public UpdateStatusIconFlags
