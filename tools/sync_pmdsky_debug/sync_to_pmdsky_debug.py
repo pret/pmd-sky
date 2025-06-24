@@ -128,7 +128,8 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
             for yaml_symbol in symbol_array:
                 if yaml_symbol['name'] == base_old_symbol_name:
                     if 'aliases' in yaml_symbol:
-                        yaml_symbol['aliases'].append(base_symbol_name)
+                        if base_symbol_name not in yaml_symbol['aliases']:
+                            yaml_symbol['aliases'].append(base_symbol_name)
                     else:
                         yaml_symbol['aliases'] = [base_symbol_name]
                     break

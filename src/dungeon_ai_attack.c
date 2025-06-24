@@ -1,6 +1,7 @@
 #include "dungeon_ai_attack.h"
 #include "dg_random.h"
 #include "dungeon_ai_attack_1.h"
+#include "dungeon_ai_attack_2.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_statuses.h"
@@ -9,24 +10,23 @@
 #include "dungeon_visibility.h"
 #include "main_0208655C.h"
 #include "move_data.h"
+#include "moves_2.h"
+#include "overlay_29_0231ACAC.h"
 #include "position_util.h"
 
 extern struct dungeon *DUNGEON_PTR[];
-extern bool8 CAN_ATTACK_IN_DIRECTION[NUM_DIRECTIONS];
-extern u8 POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
-extern s32 POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
-extern struct entity *POTENTIAL_TARGETS[NUM_DIRECTIONS];
+extern bool8 AI_CAN_ATTACK_IN_DIRECTION[NUM_DIRECTIONS];
+extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
+extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
+extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
-extern void ov29_0231985C();
-extern u16 GetEntityMoveTargetAndRange(struct entity *entity, struct move *move, bool8 is_ai);
 extern bool8 IsAffectedByTaunt(struct move *move);
 extern bool8 StatusCheckerCheck(struct entity *attacker, struct move *move);
-extern u16 GetMoveTargetAndRange(struct move *move, bool8 is_ai);
 extern bool8 CanAttackInDirection(struct entity *monster, s32 direction);
 extern s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
 extern bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
 extern enum type_id GetMoveTypeForMonster(struct entity *entity, struct move *move);
-extern s32 WeightMove(struct entity *user, s32 targeting_flags, struct entity *target, enum type_id move_type);
+extern s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity *target, enum type_id move_type);
 
 // https://decomp.me/scratch/jVfou
 #ifdef NONMATCHING
@@ -36,9 +36,9 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
     s32 move_weight = 1;
     bool8 has_status_checker;
     s32 num_potential_targets = 0;
-    ov29_0231985C();
+    ResetAiCanAttackInDirection();
 
-    s32 targeting_flags = GetEntityMoveTargetAndRange(monster, move, TRUE);
+    s32 move_target_and_range = GetEntityMoveTargetAndRange(monster, move, TRUE);
     has_status_checker = IqSkillIsEnabled(monster, IQ_STATUS_CHECKER);
     ai_possible_move->can_be_used = FALSE;
     if (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_TAUNTED && !IsAffectedByTaunt(move))
@@ -47,7 +47,7 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
     if (has_status_checker && !StatusCheckerCheck(monster, move))
         return move_weight;
 
-    if (GetMoveTargetAndRange(move, FALSE) == TARGET_USER + RANGE_USER + AI_CONDITION_HP_25)
+    if (GetMoveTargetAndRange(move, FALSE) == TARGET_USER | RANGE_USER | AI_CONDITION_HP_25)
     {
         s32 max_hp = MIN(pokemon_info->max_hp_stat + pokemon_info->max_hp_boost, 999);
         if (pokemon_info->hp == max_hp)
@@ -55,20 +55,20 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
     }
 
     s32 i;
-    s32 range_targeting_flags = targeting_flags & 0xF0;
-    if (range_targeting_flags == RANGE_FRONT ||
-        range_targeting_flags == RANGE_FRONT_AND_SIDES ||
-        range_targeting_flags == RANGE_NEARBY)
+    s32 move_range = move_target_and_range & 0xF0;
+    if (move_range == RANGE_FRONT ||
+        move_range == RANGE_FRONT_AND_SIDES ||
+        move_range == RANGE_NEARBY)
     {
         if (IsBlinded(monster, TRUE))
         {
             u8 direction = pokemon_info->action.direction;
-            if (!CAN_ATTACK_IN_DIRECTION[direction])
+            if (!AI_CAN_ATTACK_IN_DIRECTION[direction])
             {
-                CAN_ATTACK_IN_DIRECTION[direction] = TRUE;
-                POTENTIAL_ATTACK_TARGET_DIRECTIONS[num_potential_targets] = direction;
-                POTENTIAL_ATTACK_TARGET_WEIGHTS[num_potential_targets] = 99;
-                POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS] = 0;
+                AI_CAN_ATTACK_IN_DIRECTION[direction] = TRUE;
+                AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[num_potential_targets] = direction;
+                AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[num_potential_targets] = 99;
+                AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS] = 0;
                 num_potential_targets++;
             }
         }
@@ -79,25 +79,25 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
                 struct entity *adjacent_monster = GetTile(monster->pos.x + DIRECTIONS_XY[i].x, monster->pos.y + DIRECTIONS_XY[i].y)->monster;
                 if (adjacent_monster != NULL &&
                     adjacent_monster->type == ENTITY_MONSTER &&
-                    (range_targeting_flags == RANGE_FRONT_AND_SIDES ||
-                    range_targeting_flags == RANGE_NEARBY ||
+                    (move_range == RANGE_FRONT_AND_SIDES ||
+                    move_range == RANGE_NEARBY ||
                     CanAttackInDirection(monster, i)))
                 {
-                    num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, targeting_flags, monster, adjacent_monster, move, has_status_checker);
+                    num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, move_target_and_range, monster, adjacent_monster, move, has_status_checker);
                 }
             }
         }
     }
-    else if (range_targeting_flags == RANGE_ROOM)
+    else if (move_range == RANGE_ROOM)
     {
         for (i = 0; i < DUNGEON_MAX_POKEMON; i++)
         {
             struct entity *target = DUNGEON_PTR[0]->active_monster_ptrs[i];
             if (EntityIsValid__02319F8C(target) && CanSeeTarget(monster, target))
-                num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, targeting_flags, monster, target, move, has_status_checker);
+                num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, move_target_and_range, monster, target, move, has_status_checker);
         }
     }
-    else if (range_targeting_flags == RANGE_FRONT_2)
+    else if (move_range == RANGE_FRONT_2)
     {
         for (i = 0; i < NUM_DIRECTIONS; i++)
         {
@@ -107,27 +107,27 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
                 if (target_tile->monster != NULL && target_tile->monster->type == ENTITY_MONSTER)
                 {
                     s32 prev_num_potential_targets = num_potential_targets;
-                    num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, targeting_flags, monster, target_tile->monster, move, has_status_checker);
+                    num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, move_target_and_range, monster, target_tile->monster, move, has_status_checker);
                     if (prev_num_potential_targets != num_potential_targets)
                         continue;
                 }
 
                 target_tile = GetTile(monster->pos.x + DIRECTIONS_XY[i].x * 2, monster->pos.y + DIRECTIONS_XY[i].y * 2);
                 if (target_tile->monster != NULL && target_tile->monster->type == ENTITY_MONSTER)
-                    num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, targeting_flags, monster, target_tile->monster, move, has_status_checker);
+                    num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, move_target_and_range, monster, target_tile->monster, move, has_status_checker);
             }
         }
     }
-    else if (range_targeting_flags == RANGE_FRONT_10 ||
-        range_targeting_flags == RANGE_FRONT_WITH_CORNER_CUTTING ||
-        range_targeting_flags == RANGE_FRONT_2_WITH_CORNER_CUTTING)
+    else if (move_range == RANGE_FRONT_10 ||
+        move_range == RANGE_FRONT_WITH_CORNER_CUTTING ||
+        move_range == RANGE_FRONT_2_WITH_CORNER_CUTTING)
     {
         s32 max_range;
-        if (range_targeting_flags == RANGE_FRONT_10)
+        if (move_range == RANGE_FRONT_10)
             max_range = RANGED_ATTACK_RANGE;
         else
             max_range = 1;
-        if (range_targeting_flags == RANGE_FRONT_2_WITH_CORNER_CUTTING)
+        if (move_range == RANGE_FRONT_2_WITH_CORNER_CUTTING)
             max_range = 2;
 
         for (s32 i = 0; i < DUNGEON_MAX_POKEMON; i++)
@@ -137,7 +137,7 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
             if (EntityIsValid__02319F8C(target) && monster != target)
             {
                 direction = GetDirectionTowardsPosition(&monster->pos, &target->pos);
-                if (!CAN_ATTACK_IN_DIRECTION[direction] && CanSeeTarget(monster, target))
+                if (!AI_CAN_ATTACK_IN_DIRECTION[direction] && CanSeeTarget(monster, target))
                 {
                     s32 target_pos_x = target->pos.x;
                     s32 monster_pos_x = monster->pos.x;
@@ -183,13 +183,13 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
 
                     if (is_target_in_line_range)
                     {
-                        if (IsAiTargetEligible(targeting_flags, monster, target, move, has_status_checker) &&
+                        if (IsAiTargetEligible(move_target_and_range, monster, target, move, has_status_checker) &&
                             IsTargetInRange(monster, target, direction, max_range))
                         {
-                            CAN_ATTACK_IN_DIRECTION[direction] = TRUE;
-                            POTENTIAL_ATTACK_TARGET_DIRECTIONS[num_potential_targets] = direction;
-                            POTENTIAL_ATTACK_TARGET_WEIGHTS[num_potential_targets] = WeightMove(monster, targeting_flags, target, GetMoveTypeForMonster(monster, move));
-                            POTENTIAL_TARGETS[num_potential_targets] = target;
+                            AI_CAN_ATTACK_IN_DIRECTION[direction] = TRUE;
+                            AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[num_potential_targets] = direction;
+                            AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[num_potential_targets] = WeightMoveWithIqSkills(monster, move_target_and_range, target, GetMoveTypeForMonster(monster, move));
+                            AI_POTENTIAL_ATTACK_TARGETS[num_potential_targets] = target;
                             num_potential_targets++;
                         }
                     }
@@ -197,17 +197,17 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
             }
         }
     }
-    else if (range_targeting_flags == RANGE_FLOOR)
+    else if (move_range == RANGE_FLOOR)
     {
         for (i = 0; i < DUNGEON_MAX_POKEMON; i++)
         {
             struct entity *target = DUNGEON_PTR[0]->active_monster_ptrs[i];
             if (EntityIsValid__02319F8C(target))
-                num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, targeting_flags, monster, target, move, has_status_checker);
+                num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, move_target_and_range, monster, target, move, has_status_checker);
         }
     }
-    else if (range_targeting_flags == RANGE_USER)
-        num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, targeting_flags, monster, monster, move, has_status_checker);
+    else if (move_range == RANGE_USER)
+        num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, move_target_and_range, monster, monster, move, has_status_checker);
 
     if (num_potential_targets == 0)
         ai_possible_move->can_be_used = FALSE;
@@ -217,32 +217,32 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
         s32 max_weight = 0;
         for (i = 0; i < num_potential_targets; i++)
         {
-            if (max_weight < POTENTIAL_ATTACK_TARGET_WEIGHTS[i])
-                max_weight = POTENTIAL_ATTACK_TARGET_WEIGHTS[i];
+            if (max_weight < AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[i])
+                max_weight = AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[i];
         }
 
         for (i = 0; i < num_potential_targets; i++)
         {
-            if (max_weight != POTENTIAL_ATTACK_TARGET_WEIGHTS[i])
-                POTENTIAL_ATTACK_TARGET_WEIGHTS[i] = 0;
+            if (max_weight != AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[i])
+                AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[i] = 0;
         }
 
         move_weight = max_weight;
         for (i = 0; i < num_potential_targets; i++)
         {
-            total_weight += POTENTIAL_ATTACK_TARGET_WEIGHTS[i];
+            total_weight += AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[i];
         }
 
         s32 weight_counter = DungeonRandInt(total_weight);
         for (i = 0; i < num_potential_targets; i++)
         {
-            weight_counter -= POTENTIAL_ATTACK_TARGET_WEIGHTS[i];
+            weight_counter -= AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[i];
             if (weight_counter < 0)
                 break;
         }
 
         ai_possible_move->can_be_used = TRUE;
-        ai_possible_move->direction = POTENTIAL_ATTACK_TARGET_DIRECTIONS[i];
+        ai_possible_move->direction = AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[i];
         ai_possible_move->weight = 8;
     }
 

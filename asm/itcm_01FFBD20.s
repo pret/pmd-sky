@@ -207,7 +207,7 @@ sub_01FFBF78: ; 0x01FFBF78
 	mov r6, r0
 	mov r5, r1
 	mov r4, #0
-	bl ov29_0231985C
+	bl ResetAiCanAttackInDirection
 	mov r0, r6
 	mov r1, r5
 	bl CanSeeTarget

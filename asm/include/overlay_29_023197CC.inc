@@ -1,0 +1,3 @@
+#pragma once
+.public EntityIsValid__02318E4C
+.public ExclusiveItemEffectIsActive__023197A8

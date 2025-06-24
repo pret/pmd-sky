@@ -18,7 +18,7 @@
 .public EndSureShotClassStatus
 .public EntityIsValid__02311010
 .public EntityIsValid__023118B4
-.public ExclusiveItemEffectFlagTest
+.public ExclusiveItemEffectIsActive__02311064
 .public GetApparentWeather
 .public GetRegenSpeed
 .public ICE_BODY_BONUS_REGEN
@@ -26,12 +26,12 @@
 .public IsFloorOver
 .public ItemIsActive__02311034
 .public LogMessageByIdWithPopupCheckUser
-.public ov10_022C4674
-.public ov10_022C46F8
-.public ov29_0234B294
-.public ov29_02353318
 .public RAIN_ABILITY_BONUS_REGEN
 .public SubstitutePlaceholderStringTags
 .public TickStatusTurnCounter
 .public UpdateStatusIconFlags
 .public WISH_BONUS_REGEN
+.public ov10_022C4674
+.public ov10_022C46F8
+.public ov29_0234B294
+.public ov29_02353318
