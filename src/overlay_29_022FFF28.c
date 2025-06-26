@@ -1,7 +1,6 @@
 #include "overlay_29_022FFF28.h"
 #include "dungeon_util_static.h"
-
-extern bool8 ExclusiveItemEffectFlagTest(u32 *effect_flags, enum exclusive_item_effect_id effect_id);
+#include "exclusive_item.h"
 
 bool8 ExclusiveItemEffectIsActive__022FFF28(struct entity *entity, enum exclusive_item_effect_id effect_id)
 {

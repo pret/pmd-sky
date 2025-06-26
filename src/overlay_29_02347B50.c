@@ -2,8 +2,7 @@
 #include "dungeon_items.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
-
-extern bool8 ExclusiveItemEffectFlagTest(u32 *effect_flags, enum exclusive_item_effect_id effect_id);
+#include "exclusive_item.h"
 
 bool8 ItemIsActive__02347B50(struct entity *entity, enum item_id item_id)
 {

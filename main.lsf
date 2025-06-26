@@ -33,6 +33,8 @@ Static main
 	Object asm/main_0200EB30.o
 	Object src/main_0200ECFC.o
 	Object asm/main_0200ED1C.o
+	Object src/exclusive_item.o
+	Object asm/main_02010FC4.o
 	Object src/moves_1.o
 	Object asm/main_020137E8.o
 	Object src/moves_2.o
