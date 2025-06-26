@@ -30,10 +30,10 @@
 .public abs
 .public ov10_022C6322
 .public ov29_022E576C
-.public ov29_022EDC30
+.public CanLayTrap
 .public ov29_0230040C
 .public ov29_023007DC
 .public ov29_02304A48
 .public ov29_0230D088
-.public ov29_02337E2C
+.public IsTileGround
 .public ov29_0234B034

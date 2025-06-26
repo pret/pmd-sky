@@ -111,8 +111,8 @@ _02337E0C:
 _02337E28: .word DUNGEON_PTR
 	arm_func_end ov29_02337D68
 
-	arm_func_start ov29_02337E2C
-ov29_02337E2C: ; 0x02337E2C
+	arm_func_start IsTileGround
+IsTileGround: ; 0x02337E2C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, #0
@@ -147,7 +147,7 @@ _02337E84:
 	.align 2, 0
 _02337E8C: .word DUNGEON_PTR
 _02337E90: .word SECONDARY_TERRAIN_TYPES
-	arm_func_end ov29_02337E2C
+	arm_func_end IsTileGround
 
 	arm_func_start IsWaterTileset
 IsWaterTileset: ; 0x02337E94

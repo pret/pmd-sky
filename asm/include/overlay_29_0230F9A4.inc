@@ -68,7 +68,7 @@
 .public ov29_022FB718
 .public ov29_02307BDC
 .public ov29_02322374
-.public ov29_02337E2C
+.public IsTileGround
 .public ov29_02344B9C
 .public ov29_023460DC
 .public ov29_02347184

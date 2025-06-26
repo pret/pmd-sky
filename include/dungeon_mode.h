@@ -10,8 +10,17 @@
 
 #define NUM_PICKED_IQ_SKILLS 3
 #define MAX_MON_MOVES 4
+#define MAX_STAT_STAGE 20
 #define MAX_SPEED_STAGE 4
 #define NUM_SPEED_COUNTERS 5
+#define MAX_STOCKPILE_STAGE 3
+
+#define STAT_STAGE_ATK 0
+#define STAT_STAGE_SP_ATK 1
+#define STAT_STAGE_DEF 0
+#define STAT_STAGE_SP_DEF 1
+#define STAT_STAGE_ACCURACY 0
+#define STAT_STAGE_EVASION 1
 
 // Used in various contexts, like with entity positions in the dungeon
 struct position {
