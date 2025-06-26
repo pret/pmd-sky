@@ -1095,8 +1095,8 @@ _022EDC28: .word DUNGEON_PTR
 _022EDC2C: .word 0x00012AAA + PREPARE_TRAPPER_TRAP_OFFSET
 	arm_func_end PrepareTrapperTrap
 
-	arm_func_start ov29_022EDC30
-ov29_022EDC30: ; 0x022EDC30
+	arm_func_start CanLayTrap
+CanLayTrap: ; 0x022EDC30
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	ldrsh r0, [r1]
@@ -1133,7 +1133,7 @@ ov29_022EDC30: ; 0x022EDC30
 _022EDCB4:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022EDC30
+	arm_func_end CanLayTrap
 
 	arm_func_start TrySpawnTrap
 TrySpawnTrap: ; 0x022EDCBC

@@ -305,7 +305,7 @@ u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32
                 item_weight = 0;
             break;
         case ITEM_VIOLENT_SEED:
-            if (pokemon_info->stat_modifiers.offensive_stages[1] >= 20)
+            if (pokemon_info->stat_modifiers.offensive_stages[STAT_STAGE_SP_ATK] >= 20)
                 item_weight = 0;
             else
                 item_weight = 80;

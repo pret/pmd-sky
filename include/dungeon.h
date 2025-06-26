@@ -6,16 +6,18 @@
 #include "item.h"
 
 #define MAX_TEAM_MEMBERS 4
+#define DUNGEON_MAX_WILD_POKEMON 16
 #define DUNGEON_MAX_POKEMON 20
 #define DUNGEON_MAX_SIZE_X 56
 #define DUNGEON_MAX_SIZE_Y 32
 
-enum TerrainType
+enum terrain_type
 {
     // These 3 seem to indicate the 'main' type of the terrain. See helper functions for how they're set.
     TERRAIN_TYPE_WALL = 0, // x0 When neither TERRAIN_TYPE_NORMAL nor TERRAIN_TYPE_SECONDARY are set
     TERRAIN_TYPE_NORMAL = 1 << 0, // x1
     TERRAIN_TYPE_SECONDARY = 1 << 1, // Water or lava depending on the dungeon. x2
+    TERRAIN_TYPE_CHASM = 3,
     TERRAIN_TYPE_IMPASSABLE_WALL = 1 << 4, // x10
 };
 

@@ -15,7 +15,7 @@
 .public GetMoveTypeForMonster
 .public GetTile
 .public IqSkillIsEnabled
-.public IsAffectedByTaunt
+.public IsUsableWhileTaunted
 .public IsAiTargetEligible
 .public IsBlinded
 .public IsTargetInRange

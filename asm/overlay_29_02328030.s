@@ -1219,7 +1219,7 @@ DoMoveDive: ; 0x02328ECC
 	mov r5, r3
 	mov r4, #0
 	bl GetTileAtEntity
-	bl ov29_02337E2C
+	bl IsTileGround
 	cmp r0, #0
 	beq _02328F0C
 	ldr r2, _02328F88 ; =0x00000ED8

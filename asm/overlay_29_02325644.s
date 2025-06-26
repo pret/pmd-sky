@@ -514,7 +514,7 @@ ov29_02325D20: ; 0x02325D20
 	cmp r1, #0x9c
 	bne _02325D4C
 	bl GetTileAtEntity
-	bl ov29_02337E2C
+	bl IsTileGround
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -733,7 +733,7 @@ DoMoveDig: ; 0x02325FC4
 	mov r4, #0
 	bl GetTileAtEntity
 	mov sb, r0
-	bl ov29_02337E2C
+	bl IsTileGround
 	cmp r0, #0
 	beq _02326000
 	ldrh r0, [sb]

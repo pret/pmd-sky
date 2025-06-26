@@ -876,7 +876,7 @@ _023105DC:
 _02310614:
 	mov r0, r5
 	bl GetTileAtEntity
-	bl ov29_02337E2C
+	bl IsTileGround
 	cmp r0, #0
 	bne _023106A4
 	ldrsh r2, [r4, #0x12]

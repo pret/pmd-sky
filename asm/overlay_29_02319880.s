@@ -38,7 +38,7 @@ AiConsiderMove: ; 0x02319880
 	cmp r0, #5
 	bne _023198F8
 	mov r0, sb
-	bl IsAffectedByTaunt
+	bl IsUsableWhileTaunted
 	cmp r0, #0
 	moveq r0, #1
 	beq _02319F64

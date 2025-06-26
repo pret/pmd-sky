@@ -1204,7 +1204,7 @@ _023339B0:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _023339D8:
 	bl GetTileAtEntity
-	bl ov29_02337E2C
+	bl IsTileGround
 	cmp r0, #0
 	beq _02333F90
 	mov r0, #0
@@ -1212,7 +1212,7 @@ _023339D8:
 _023339F0:
 	bl GetTileAtEntity
 	mov r4, r0
-	bl ov29_02337E2C
+	bl IsTileGround
 	cmp r0, #0
 	beq _02333A14
 	ldrh r0, [r4]
@@ -1326,7 +1326,7 @@ _02333B60:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02333B84:
 	add r0, r4, #4
-	bl ov29_022EDC30
+	bl CanLayTrap
 	cmp r0, #0
 	bne _02333F90
 	mov r0, #0

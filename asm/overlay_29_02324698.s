@@ -409,7 +409,7 @@ CanMonsterUseMove: ; 0x02324B24
 	cmp r0, #5
 	bne _02324BA0
 	mov r0, r5
-	bl IsAffectedByTaunt
+	bl IsUsableWhileTaunted
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -466,7 +466,7 @@ ov29_02324BE8: ; 0x02324BE8
 	cmp r0, #5
 	bne _02324C54
 	mov r0, r5
-	bl IsAffectedByTaunt
+	bl IsUsableWhileTaunted
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}

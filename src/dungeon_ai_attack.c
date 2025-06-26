@@ -11,6 +11,7 @@
 #include "main_0208655C.h"
 #include "move_data.h"
 #include "moves_2.h"
+#include "moves_3.h"
 #include "overlay_29_0231ACAC.h"
 #include "position_util.h"
 
@@ -20,7 +21,6 @@ extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
 extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
 extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
-extern bool8 IsAffectedByTaunt(struct move *move);
 extern bool8 StatusCheckerCheck(struct entity *attacker, struct move *move);
 extern bool8 CanAttackInDirection(struct entity *monster, s32 direction);
 extern s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
@@ -41,7 +41,7 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
     s32 move_target_and_range = GetEntityMoveTargetAndRange(monster, move, TRUE);
     has_status_checker = IqSkillIsEnabled(monster, IQ_STATUS_CHECKER);
     ai_possible_move->can_be_used = FALSE;
-    if (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_TAUNTED && !IsAffectedByTaunt(move))
+    if (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_TAUNTED && !IsUsableWhileTaunted(move))
         return move_weight;
 
     if (has_status_checker && !StatusCheckerCheck(monster, move))

@@ -1,7 +1,6 @@
 #include "overlay_29_0230A994.h"
 #include "dungeon_util_static.h"
-
-extern bool8 ExclusiveItemEffectFlagTest(u32 *effect_flags, enum exclusive_item_effect_id effect_id);
+#include "exclusive_item.h"
 
 bool8 IsMonster__0230A994(struct entity *entity)
 {

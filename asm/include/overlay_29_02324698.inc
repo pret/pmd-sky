@@ -18,7 +18,7 @@
 .public GetNaturePowerVariant
 .public GetSpriteIndex__02052708
 .public Is2TurnsMove
-.public IsAffectedByTaunt
+.public IsUsableWhileTaunted
 .public IsCopyingMove
 .public IsFloorOver
 .public LogMessageByIdWithPopupCheckUser
