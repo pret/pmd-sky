@@ -23914,6 +23914,7 @@ _0206C8BC: .word DRIVER_WORK
 _0206C8C0: .word _022B7340
 	arm_func_end Dse_SetError2
 
+; https://decomp.me/scratch/C4osO
 	arm_func_start DseUtil_ByteSwap32
 DseUtil_ByteSwap32: ; 0x0206C8C4
 	mov r3, r0, lsr #0x18
@@ -23945,6 +23946,7 @@ _0206C914: .word DRIVER_WORK
 _0206C918: .word 0x00007FFF
 	arm_func_end DseUtil_GetRandomNumber
 
+; https://decomp.me/scratch/KrgBG
 	arm_func_start DseMem_Init
 DseMem_Init: ; 0x0206C91C
 	mov ip, r1

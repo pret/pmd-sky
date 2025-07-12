@@ -65,6 +65,7 @@ _02089754: .word 0xFEFEFEFF
 _02089758: .word 0x80808080
 	arm_func_end strcpy
 
+; https://decomp.me/scratch/QI5Xl
 	arm_func_start strncpy
 strncpy: ; 0x0208975C
 	stmdb sp!, {r3, lr}
