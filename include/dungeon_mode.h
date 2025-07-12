@@ -328,11 +328,11 @@ struct monster {
     struct long_toss_class_status long_toss_class_status; // 0xEE
     struct invisible_class_status invisible_class_status; // 0xEF
     struct blinker_class_status blinker_class_status; // 0xF1
-    u8 muzzled;           // 0xF3: STATUS_MUZZLED if 1
+    bool8 muzzled;           // 0xF3: STATUS_MUZZLED if 1
     u8 muzzled_turns;     // 0xF4: Turns left for the status in statuses::muzzled
-    u8 miracle_eye;       // 0xF5: STATUS_MIRACLE_EYE if 1
+    bool8 miracle_eye;       // 0xF5: STATUS_MIRACLE_EYE if 1
     u8 miracle_eye_turns; // 0xF6: Turns left for the status in statuses::miracle_eye
-    u8 magnet_rise;       // 0xF7: STATUS_MAGNET_RISE if 1
+    bool8 magnet_rise;       // 0xF7: STATUS_MAGNET_RISE if 1
     u8 magnet_rise_turns; // 0xF8: Turns left for the status in statuses::magnet_rise
     bool8 power_ears;           // 0xF9: STATUS_POWER_EARS
     bool8 scanning;             // 0xFA: STATUS_SCANNING
