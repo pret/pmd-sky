@@ -9,6 +9,7 @@
 #include "dungeon_util_static.h"
 #include "dungeon_visibility.h"
 #include "main_0208655C.h"
+#include "move_checks.h"
 #include "move_data.h"
 #include "moves_2.h"
 #include "moves_3.h"
@@ -21,7 +22,6 @@ extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
 extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
 extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
-extern bool8 StatusCheckerCheck(struct entity *attacker, struct move *move);
 extern bool8 CanAttackInDirection(struct entity *monster, s32 direction);
 extern s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
 extern bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);

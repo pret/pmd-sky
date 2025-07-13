@@ -14,6 +14,7 @@
 #define MAX_SPEED_STAGE 4
 #define NUM_SPEED_COUNTERS 5
 #define MAX_STOCKPILE_STAGE 3
+#define NUM_STATS_PER_CATEGORY 2
 
 #define STAT_STAGE_ATK 0
 #define STAT_STAGE_SP_ATK 1
@@ -38,17 +39,17 @@ struct pixel_position {
 // Monster stat modifier info
 struct monster_stat_modifiers {
     // Stages go from 0-20 inclusive, with normal being 10
-    s16 offensive_stages[2];  // 0x0: {atk, sp_atk}
-    s16 defensive_stages[2];  // 0x4: {def, sp_def}
-    s16 hit_chance_stages[2]; // 0x8: {accuracy, evasion}
+    s16 offensive_stages[NUM_STATS_PER_CATEGORY];  // 0x0: {atk, sp_atk}
+    s16 defensive_stages[NUM_STATS_PER_CATEGORY];  // 0x4: {def, sp_def}
+    s16 hit_chance_stages[NUM_STATS_PER_CATEGORY]; // 0x8: {accuracy, evasion}
     s16 flash_fire_boost;     // 0xC: can be 0, 1, or 2
     u8 field_0xe;
     u8 field_0xf;
     // Some moves like Screech affect the damage calculation differently than, e.g., Leer
     // 0x10: binary fixed-point (8 fraction bits), {atk, sp_atk}; from Charm, Memento, etc.
-    fx32_8 offensive_multipliers[2];
+    fx32_8 offensive_multipliers[NUM_STATS_PER_CATEGORY];
     // 0x18: binary fixed-point (8 fraction bits), {def, sp_def}; from Screech, etc.
-    fx32_8 defensive_multipliers[2];
+    fx32_8 defensive_multipliers[NUM_STATS_PER_CATEGORY];
 };
 
 // A bitfield where every bit controls one of the icons that can appear on top of a monster's sprite
@@ -328,11 +329,11 @@ struct monster {
     struct long_toss_class_status long_toss_class_status; // 0xEE
     struct invisible_class_status invisible_class_status; // 0xEF
     struct blinker_class_status blinker_class_status; // 0xF1
-    u8 muzzled;           // 0xF3: STATUS_MUZZLED if 1
+    bool8 muzzled;           // 0xF3: STATUS_MUZZLED if 1
     u8 muzzled_turns;     // 0xF4: Turns left for the status in statuses::muzzled
-    u8 miracle_eye;       // 0xF5: STATUS_MIRACLE_EYE if 1
+    bool8 miracle_eye;       // 0xF5: STATUS_MIRACLE_EYE if 1
     u8 miracle_eye_turns; // 0xF6: Turns left for the status in statuses::miracle_eye
-    u8 magnet_rise;       // 0xF7: STATUS_MAGNET_RISE if 1
+    bool8 magnet_rise;       // 0xF7: STATUS_MAGNET_RISE if 1
     u8 magnet_rise_turns; // 0xF8: Turns left for the status in statuses::magnet_rise
     bool8 power_ears;           // 0xF9: STATUS_POWER_EARS
     bool8 scanning;             // 0xFA: STATUS_SCANNING

@@ -3,6 +3,7 @@
 .public ApplyDamageAndEffects
 .public CalcDamage
 .public CanAttackInDirection
+.public CanLayTrap
 .public CanSeeTarget
 .public CeilFixedPoint
 .public Conversion2IsActive
@@ -19,6 +20,7 @@
 .public GetMoveTypeForMonster
 .public GetTileAtEntity
 .public IsCurrentFixedRoomBossFight
+.public IsTileGround
 .public LogMessageByIdQuietCheckUserTarget
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MirrorMoveIsActive
@@ -30,10 +32,8 @@
 .public abs
 .public ov10_022C6322
 .public ov29_022E576C
-.public CanLayTrap
 .public ov29_0230040C
 .public ov29_023007DC
 .public ov29_02304A48
 .public ov29_0230D088
-.public IsTileGround
 .public ov29_0234B034

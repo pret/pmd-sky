@@ -9,6 +9,7 @@
 #include "dungeon_capabilities_4.h"
 #include "dungeon_misc.h"
 #include "dungeon_mode.h"
+#include "dungeon_move.h"
 #include "dungeon_parameters.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"

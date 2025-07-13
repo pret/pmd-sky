@@ -490,6 +490,8 @@ ov29_02333044: ; 0x02333044
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_02333044
 
+; https://decomp.me/scratch/TnODN
+#ifndef NONMATCHING
 	arm_func_start StatusCheckerCheck
 StatusCheckerCheck: ; 0x02333074
 #ifdef JAPAN
@@ -1638,3 +1640,4 @@ _02333FA0: .word 0x0000021E
 _02333FA4: .word DUNGEON_PTR
 _02333FA8: .word ov10_022C6322
 	arm_func_end StatusCheckerCheck
+#endif

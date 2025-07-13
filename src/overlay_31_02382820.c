@@ -112,7 +112,7 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
 
     line_offset = 0;
     for (i = 0; i < 4; i++) {
-        struct entity* party_member = DUNGEON_PTR[0]->party_members[i];
+        struct entity* party_member = DUNGEON_PTR[0]->monster_slots.party_members[i];
         if (party_member == NULL) {
             is_valid_member = FALSE;
         } else {

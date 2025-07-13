@@ -21,6 +21,11 @@ enum terrain_type
     TERRAIN_TYPE_IMPASSABLE_WALL = 1 << 4, // x10
 };
 
+struct monster_slots {
+    struct entity* party_members[MAX_TEAM_MEMBERS];
+    struct entity* wild_pokemon[DUNGEON_MAX_WILD_POKEMON];
+};
+
 // Dungeon state
 struct dungeon {
     u8 field_0x0; // 0x0: Initialized to 0x0.
@@ -1541,7 +1546,7 @@ struct dungeon {
     // The pointers point into the entities array
     // 0x12B28 / 0x0: A list of all monster pointers, whether they're used or not
     union {
-        struct entity* party_members[MAX_TEAM_MEMBERS];
+        struct monster_slots monster_slots;
         struct entity* monster_slot_ptrs[DUNGEON_MAX_POKEMON];
     };
     // 0x12B78 / 0x50: Null-terminated array of pointers to actually active monsters
