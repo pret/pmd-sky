@@ -448,7 +448,7 @@
                                                                                                 95](IsTargetInRange,func) found in global dungeon_ai_attack_1.o
                                                                                                 95](CanSeeTarget,func) found in global dungeon_visibility.o
                                                                                                 95](StatusCheckerCheck,func) found in global overlay_29_02332A0C.o
-                                                                                                 96](EntityIsValid__02333FAC,func) found in global overlay_29_02333FAC.o
+                                                                                                 96](EntityIsValid__02333FAC,func) found in global move_checks.o
                                                                                                  96](ApplyDamageAndEffects,func) found in global overlay_29_023085DC.o
                                                                                                   97](DefenderAbilityIsActive__0230A940,func) found in global overlay_29_02308FE0.o
                                                                                                    98](IsMonster__0230A994,func) found in global overlay_29_0230A994.o
@@ -37827,8 +37827,8 @@
   02333044 00000030 .text   ov29_02333044	(overlay_29_02332A0C.o)
   02333074 00000F38 .text   StatusCheckerCheck	(overlay_29_02332A0C.o)
   02333F98 00000000 .text   $d	(overlay_29_02332A0C.o)
-  02333FAC 00000024 .text   EntityIsValid__02333FAC	(overlay_29_02333FAC.o)
-  02333FAC 00000000 .text   $a	(overlay_29_02333FAC.o)
+  02333FAC 00000024 .text   EntityIsValid__02333FAC	(move_checks.o)
+  02333FAC 00000000 .text   $a	(move_checks.o)
   02333FD0 00000000 .text   $a	(overlay_29_02333FD0.o)
   02333FD0 00001108 .text   .text	(overlay_29_02333FD0.o)
   02333FD0 00000CDC .text   ov29_02333FD0	(overlay_29_02333FD0.o)
@@ -40546,5 +40546,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Jun 26 04:47:33 2025
-# Link end time: Thu Jun 26 04:47:34 2025
+# Link start time: Sun Jul 13 00:29:19 2025
+# Link end time: Sun Jul 13 00:29:20 2025
