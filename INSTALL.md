@@ -59,7 +59,7 @@ You will still require the following packages:
 
 * make
 * git
-* build-essentials
+* gcc-g++
 * libpng-devel
 * pugixml
 * pkg-config
