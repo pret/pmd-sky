@@ -228,12 +228,8 @@
                                                                 63](NoGastroAcidStatus,func) found in global dungeon_pokemon_attributes.o
                                                               61](IsMonster__022F9720,func) found in global overlay_29_022F9720.o
                                                               61](MonsterIsType,func) found in global dungeon_logic_3.o
-                                                              61](GetApparentWeather,func) found in global overlay_29_02333FD0.o
-                                                               62](EntityIsValid__023350D8,func) found in global overlay_29_023350D8.o
-                                                               62](TryActivateArtificialWeatherAbilities,func) found in global overlay_29_022F9194.o
+                                                              61](GetApparentWeather,func) found in global weather.o
                                                                62](HasHeldItem,func) found in global dungeon_items.o
-                                                               62](GravityIsActive,func) found in global overlay_29_02338390.o
-                                                               62](IsMonsterSleeping,func) found in global overlay_29_023007A8.o
                                                               61](GetMoveTypeForMonster,func) found in global overlay_29_02301FBC.o
                                                                62](ItemIsActive__022FF898,func) found in global overlay_29_022FF898.o
                                                                62](GetEntityWeatherBallType,func) found in global overlay_29_0231AD38.o
@@ -333,11 +329,13 @@
                                                                                        86](GetMobilityTypeCheckSlip,func) found in global dungeon_mobility.o
                                                                                         87](GetMobilityType,func) found in global main_02052874.o
                                                                                        86](IsFloating,func) found in global overlay_29_02318A4C.o
+                                                                                        87](GravityIsActive,func) found in global overlay_29_02338390.o
                                                                                      84](EntityIsValid__0232017C,func) found in global overlay_29_0232017C.o
                                                                                     83](GetEntityMoveTargetAndRange,func) found in global overlay_29_0231ACAC.o
                                                                                      84](GetMoveTargetAndRange,func) found in global moves_2.o
                                                                                      84](IsMoveRangeStringUser,func) found in global main_02013C04.o
                                                                                      84](ExclusiveItemEffectIsActive__0231A87C,func) found in global overlay_29_0231A87C.o
+                                                                                    83](TryActivateTraceAndColorChange,func) found in global overlay_29_022F9194.o
                                                                                     83](TryActivateNondamagingDefenderExclusiveItem,func) found in global overlay_29_0232145C.o
                                                                                     83](IsHyperBeamVariant,func) found in global overlay_29_0232393C.o
                                                                                      84](DungeonRandRange,func) found in global dg_random.o
@@ -391,6 +389,7 @@
                                                                                               93](MonsterCannotAttack,func) found in global dungeon_capabilities_3.o
                                                                                               93](TryActivateBadDreams,func) found in global overlay_29_0231B1B8.o
                                                                                                94](EntityIsValid__0231B194,func) found in global overlay_29_0231B194.o
+                                                                                               94](IsMonsterSleeping,func) found in global overlay_29_023007A8.o
                                                                                                94](IsMonster__0231B318,func) found in global overlay_29_0231B318.o
                                                                                               93](CeilFixedPoint,func) found in global number_util.o
                                                                                               93](DungeonRandOutcome__022EAB20,func) found in global dg_random.o
@@ -446,6 +445,7 @@
                                                                                                  96](DIRECTIONAL_BIT_MASKS__02352770,object) found in global directional_bit_masks.o
                                                                                                  96](DIRECTIONAL_BIT_MASKS__02352778,object) found in global directional_bit_masks.o
                                                                                                 95](ov29_0230F8D0,func) found in global overlay_29_0230F8D0.o
+                                                                                                95](ov29_02333FD0,func) found in global overlay_29_02333FD0.o
                                                                                                94](IsTargetInRange,func) found in global dungeon_ai_attack_1.o
                                                                                                94](CanSeeTarget,func) found in global dungeon_visibility.o
                                                                                                94](StatusCheckerCheck,func) found in global overlay_29_02332A0C.o
@@ -488,6 +488,8 @@
                                                                                             91](EntityIsValid__022EC608,func) found in global overlay_29_022EC608.o
                                                                                             91](ov29_022EF9C8,func) found in global overlay_29_022EF7C4.o
                                                                                             91](sub_01FFBDF4,func) found in global itcm_01FFBD20.o
+                                                                                           90](ov29_02335044,func) found in global overlay_29_02334D58.o
+                                                                                            91](EntityIsValid__023350D8,func) found in global overlay_29_023350D8.o
                                                                                            90](TrySpawnDoughSeedPoke,func) found in global overlay_29_02338560.o
                                                                                            90](IsSecretBazaarVeneer,func) found in global overlay_29_02344178.o
                                                                                            90](ov29_022EF738,func) found in global overlay_29_022EE36C.o
@@ -37866,26 +37868,28 @@
   023349D8 00000000 .text   $d	(overlay_29_02332A0C.o)
   023349EC 00000024 .text   EntityIsValid__02333FAC	(move_checks.o)
   023349EC 00000000 .text   $a	(move_checks.o)
-  02334A10 00000000 .text   $a	(overlay_29_02333FD0.o)
-  02334A10 00001108 .text   .text	(overlay_29_02333FD0.o)
   02334A10 00000CDC .text   ov29_02333FD0	(overlay_29_02333FD0.o)
+  02334A10 00000000 .text   $a	(overlay_29_02333FD0.o)
+  02334A10 00000D38 .text   .text	(overlay_29_02333FD0.o)
   023356E4 00000000 .text   $d	(overlay_29_02333FD0.o)
-  023356EC 00000000 .text   $a	(overlay_29_02333FD0.o)
   023356EC 0000005C .text   ov29_02334CAC	(overlay_29_02333FD0.o)
-  02335748 00000050 .text   GetApparentWeather	(overlay_29_02333FD0.o)
-  02335794 00000000 .text   $d	(overlay_29_02333FD0.o)
-  02335798 00000000 .text   $a	(overlay_29_02333FD0.o)
-  02335798 00000050 .text   ov29_02334D58	(overlay_29_02333FD0.o)
-  023357E4 00000000 .text   $d	(overlay_29_02333FD0.o)
-  023357E8 00000000 .text   $a	(overlay_29_02333FD0.o)
-  023357E8 000000C8 .text   ov29_02334DA8	(overlay_29_02333FD0.o)
-  023358AC 00000000 .text   $d	(overlay_29_02333FD0.o)
-  023358B0 000001D4 .text   ov29_02334E70	(overlay_29_02333FD0.o)
-  023358B0 00000000 .text   $a	(overlay_29_02333FD0.o)
-  02335A7C 00000000 .text   $d	(overlay_29_02333FD0.o)
-  02335A84 00000000 .text   $a	(overlay_29_02333FD0.o)
-  02335A84 00000094 .text   ov29_02335044	(overlay_29_02333FD0.o)
-  02335B14 00000000 .text   $d	(overlay_29_02333FD0.o)
+  023356EC 00000000 .text   $a	(overlay_29_02333FD0.o)
+  02335748 00000000 .text   $a	(weather.o)
+  02335748 00000050 .text   GetApparentWeather	(weather.o)
+  02335794 00000000 .text   $d	(weather.o)
+  02335798 00000050 .text   ov29_02334D58	(overlay_29_02334D58.o)
+  02335798 00000000 .text   $a	(overlay_29_02334D58.o)
+  02335798 00000380 .text   .text	(overlay_29_02334D58.o)
+  023357E4 00000000 .text   $d	(overlay_29_02334D58.o)
+  023357E8 00000000 .text   $a	(overlay_29_02334D58.o)
+  023357E8 000000C8 .text   ov29_02334DA8	(overlay_29_02334D58.o)
+  023358AC 00000000 .text   $d	(overlay_29_02334D58.o)
+  023358B0 000001D4 .text   ov29_02334E70	(overlay_29_02334D58.o)
+  023358B0 00000000 .text   $a	(overlay_29_02334D58.o)
+  02335A7C 00000000 .text   $d	(overlay_29_02334D58.o)
+  02335A84 00000000 .text   $a	(overlay_29_02334D58.o)
+  02335A84 00000094 .text   ov29_02335044	(overlay_29_02334D58.o)
+  02335B14 00000000 .text   $d	(overlay_29_02334D58.o)
   02335B18 00000024 .text   EntityIsValid__023350D8	(overlay_29_023350D8.o)
   02335B18 00000000 .text   $a	(overlay_29_023350D8.o)
   02335B3C 00000074 .text   ov29_023350FC	(overlay_29_023350FC.o)
@@ -40579,5 +40583,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Jul 13 00:30:37 2025
-# Link end time: Sun Jul 13 00:30:37 2025
+# Link start time: Mon Jul 14 22:18:42 2025
+# Link end time: Mon Jul 14 22:18:42 2025
