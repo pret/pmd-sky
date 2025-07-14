@@ -223,11 +223,11 @@ bool8 StatusCheckerCheck(struct entity *attacker, struct move *move)
             break;
         }
         case MOVE_MUD_SPORT:
-            if (DUNGEON_PTR[0]->mud_sport_turns > 0)
+            if (DUNGEON_PTR[0]->weather.mud_sport_turns > 0)
                 return FALSE;
             break;
         case MOVE_WATER_SPORT:
-            if (DUNGEON_PTR[0]->water_sport_turns > 0)
+            if (DUNGEON_PTR[0]->weather.water_sport_turns > 0)
                 return FALSE;
             break;
         case MOVE_GRUDGE:

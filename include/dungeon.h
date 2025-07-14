@@ -26,6 +26,29 @@ struct monster_slots {
     struct entity* wild_pokemon[DUNGEON_MAX_WILD_POKEMON];
 };
 
+struct weather {
+    enum weather_id weather; // 0x0: current weather
+    // 0x1: Default weather on the floor that will be reverted to if the current weather is
+    // artificial and ends
+    enum weather_id natural_weather;
+    // 0x2: Turns left for each weather type in enum weather_id (except WEATHER_RANDOM). If
+    // multiple of these are nonzero, the one with the highest number of turns left is chosen.
+    // Ties are broken in enum order
+    u16 weather_turns[8];
+    // 0x12: Turns left for artificial permaweather from weather-setting abilities like Drought,
+    // Sand Stream, Drizzle, and Snow Warning; one counter for each weather type in enum weather_id
+    // (except WEATHER_RANDOM). Any nonzero value triggers that weather condition (it's usually set
+    // to 1 or 0). If the weather's source is removed, this value becomes the normal number of turns
+    // left for that weather condition. Priority in the event of multiple nonzero counters is the
+    // same as with weather_turns.
+    u16 artificial_permaweather_turns[8];
+    // 0x22: For damaging weather conditions like sandstorm. Counts down from 9-0, damage on 9
+    u8 weather_damage_counter;
+    u8 mud_sport_turns;   // 0x23: Number of turns left for the Mud Sport condition
+    u8 water_sport_turns; // 0x24: Number of turns left for the Water Sport condition
+    bool8 nullify_weather;      // 0x25: Cloud Nine/Air Lock is in effect
+};
+
 // Dungeon state
 struct dungeon {
     u8 field_0x0; // 0x0: Initialized to 0x0.
@@ -1212,28 +1235,7 @@ struct dungeon {
     u16 fixed_room_width;
     // 0xCD36: Height of the generated fixed room?
     u16 fixed_room_height;
-    enum weather_id weather; // 0xCD38: current weather
-    // 0xCD39: Default weather on the floor that will be reverted to if the current weather is
-    // artificial and ends
-    enum weather_id natural_weather;
-    // 0xCD3A: Turns left for each weather type in enum weather_id (except WEATHER_RANDOM). If
-    // multiple of these are nonzero, the one with the highest number of turns left is chosen.
-    // Ties are broken in enum order
-    u16 weather_turns[8];
-    // 0xCD4A: Turns left for artificial permaweather from weather-setting abilities like Drought,
-    // Sand Stream, Drizzle, and Snow Warning; one counter for each weather type in enum weather_id
-    // (except WEATHER_RANDOM). Any nonzero value triggers that weather condition (it's usually set
-    // to 1 or 0). If the weather's source is removed, this value becomes the normal number of turns
-    // left for that weather condition. Priority in the event of multiple nonzero counters is the
-    // same as with weather_turns.
-    u16 artificial_permaweather_turns[8];
-    // 0xCD5A: For damaging weather conditions like sandstorm. Counts down from 9-0, damage on 9
-    u8 weather_damage_counter;
-    u8 mud_sport_turns;   // 0xCD5B: Number of turns left for the Mud Sport condition
-    u8 water_sport_turns; // 0xCD5C: Number of turns left for the Water Sport condition
-    bool8 nullify_weather;      // 0xCD5D: Cloud Nine/Air Lock is in effect
-    u8 field_0xcd5e;
-    u8 field_0xcd5f;
+    struct weather weather; // 0xCD38
     // 0xCD60: Seems to be tile data for tiles within fixed rooms
     struct tile fixed_room_tiles[8][8];
     u8 field_0xd260;
