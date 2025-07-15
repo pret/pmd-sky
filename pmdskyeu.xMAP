@@ -193,8 +193,8 @@
                                                       53](DetermineMonsterShadow,func) found in global overlay_29_023047DC.o
                                                        54](ov29_022EF9BC,func) found in global overlay_29_022EF7C4.o
                                                         55](IsFloorOver,func) found in global overlay_29_022EC62C.o
-                                                         56](GetMonsterName,func) found in global overlay_29_02300108.o
-                                                          57](ov29_023527D0,notype) found in global overlay_29_rodata_023527C0.o
+                                                         56](GetMonsterName,func) found in global overlay_29_023000E4.o
+                                                          57](GetMonsterDisplayNameType,func) found in global overlay_29_023000E4.o
                                                           57](CopyStringFromId,func) found in global main_0202593C.o
                                                          56](EntityIsValid__022ECDC0,func) found in global overlay_29_022ECDC0.o
                                                          56](DisplayActions,func) found in global overlay_29_023047DC.o
@@ -205,6 +205,7 @@
                                                          56](ChangeDungeonMusic,func) found in global overlay_29_022EAB50.o
                                                          56](GetForcedLossReason,func) found in global overlay_29_022ECDE4.o
                                                           57](EnemyEvolution,func) found in global overlay_29_023026FC.o
+                                                           58](ov29_023527F8,notype) found in global overlay_29_rodata_023527C0.o
                                                            58](ov29_02302C04,func) found in global overlay_29_02302A5C.o
                                                             59](EntityIsValid__023047B8,func) found in global overlay_29_023047B8.o
                                                             59](ov29_022ECB38,func) found in global overlay_29_022EC62C.o
@@ -278,6 +279,7 @@
                                                                                 79](ov29_022FB984,func) found in global overlay_29_022FB5EC.o
                                                                                 79](CalcSpeedStageWrapper,func) found in global overlay_29_022FFF4C.o
                                                                                 79](TryInflictCringeStatus,func) found in global overlay_29_02311C28.o
+                                                                                 80](ov29_0230040C,func) found in global overlay_29_0230027C.o
                                                                                  80](EntityIsValid__023118B4,func) found in global overlay_29_023118B4.o
                                                                                  80](ExclusiveItemEffectIsActive__023147EC,func) found in global overlay_29_023147EC.o
                                                                                  80](DefenderAbilityIsActive__02311B94,func) found in global overlay_29_023118D8.o
@@ -35795,25 +35797,25 @@
   02300B08 00000000 .text   $d	(overlay_29_022FFF4C.o)
   02300B10 00000024 .text   EntityIsValid__023000E4	(overlay_29_023000E4.o)
   02300B10 00000000 .text   $a	(overlay_29_023000E4.o)
-  02300B34 0000005C .text   GetMonsterDisplayNameType	(overlay_29_02300108.o)
-  02300B34 000003A8 .text   .text	(overlay_29_02300108.o)
-  02300B34 00000000 .text   $a	(overlay_29_02300108.o)
-  02300B8C 00000000 .text   $d	(overlay_29_02300108.o)
-  02300B90 00000118 .text   GetMonsterName	(overlay_29_02300108.o)
-  02300B90 00000000 .text   $a	(overlay_29_02300108.o)
-  02300CA0 00000000 .text   $d	(overlay_29_02300108.o)
-  02300CA8 0000004C .text   ov29_0230027C	(overlay_29_02300108.o)
-  02300CA8 00000000 .text   $a	(overlay_29_02300108.o)
-  02300CEC 00000000 .text   $d	(overlay_29_02300108.o)
-  02300CF4 00000000 .text   $a	(overlay_29_02300108.o)
-  02300CF4 00000028 .text   SprintfStatic	(overlay_29_02300108.o)
-  02300D1C 00000068 .text   ov29_023002F0	(overlay_29_02300108.o)
-  02300D7C 00000000 .text   $d	(overlay_29_02300108.o)
-  02300D84 00000000 .text   $a	(overlay_29_02300108.o)
-  02300D84 000000B4 .text   ov29_02300358	(overlay_29_02300108.o)
-  02300E2C 00000000 .text   $d	(overlay_29_02300108.o)
-  02300E38 00000000 .text   $a	(overlay_29_02300108.o)
-  02300E38 000000A4 .text   ov29_0230040C	(overlay_29_02300108.o)
+  02300B34 00000000 .text   $a	(overlay_29_023000E4.o)
+  02300B34 0000005C .text   GetMonsterDisplayNameType	(overlay_29_023000E4.o)
+  02300B8C 00000000 .text   $d	(overlay_29_023000E4.o)
+  02300B90 00000000 .text   $a	(overlay_29_023000E4.o)
+  02300B90 00000118 .text   GetMonsterName	(overlay_29_023000E4.o)
+  02300CA0 00000000 .text   $d	(overlay_29_023000E4.o)
+  02300CA8 0000004C .text   ov29_0230027C	(overlay_29_0230027C.o)
+  02300CA8 00000000 .text   $a	(overlay_29_0230027C.o)
+  02300CA8 00000234 .text   .text	(overlay_29_0230027C.o)
+  02300CEC 00000000 .text   $d	(overlay_29_0230027C.o)
+  02300CF4 00000000 .text   $a	(overlay_29_0230027C.o)
+  02300CF4 00000028 .text   SprintfStatic	(overlay_29_0230027C.o)
+  02300D1C 00000068 .text   ov29_023002F0	(overlay_29_0230027C.o)
+  02300D7C 00000000 .text   $d	(overlay_29_0230027C.o)
+  02300D84 000000B4 .text   ov29_02300358	(overlay_29_0230027C.o)
+  02300D84 00000000 .text   $a	(overlay_29_0230027C.o)
+  02300E2C 00000000 .text   $d	(overlay_29_0230027C.o)
+  02300E38 00000000 .text   $a	(overlay_29_0230027C.o)
+  02300E38 000000A4 .text   ov29_0230040C	(overlay_29_0230027C.o)
   02300EDC 00000034 .text   IsMonsterDrowsy	(dungeon_logic.o)
   02300EDC 00000000 .text   $a	(dungeon_logic.o)
   02300F10 0000001C .text   MonsterHasNonvolatileNonsleepStatus	(dungeon_logic.o)
@@ -40583,5 +40585,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Jul 14 22:18:42 2025
-# Link end time: Mon Jul 14 22:18:42 2025
+# Link start time: Tue Jul 15 04:03:28 2025
+# Link end time: Tue Jul 15 04:03:28 2025
