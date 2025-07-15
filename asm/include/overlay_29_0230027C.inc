@@ -3,6 +3,8 @@
 .public DUNGEON_PTR
 .public GetActiveTeamMember
 .public GetExplorerMazeMonster
+.public GetMonsterDisplayNameType
+.public GetMonsterName
 .public GetName
 .public GetNameRaw
 .public GetNameWithGender
