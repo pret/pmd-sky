@@ -1,18 +1,21 @@
 import os
 import re
-import sys
+import argparse
 
 from write_inc_file import write_inc_file
 
 # Use this script to split a data file at a certain symbol.
 # Example usage: python split_data.py overlay_29_0234EC38 TWO_TURN_STATUSES
 
-if len(sys.argv) != 3:
-    print('Usage: python extract_function.py <asm_file> <split_symbol_name>')
-    exit(1)
+parser = argparse.ArgumentParser()
 
-_, symbol_location, symbol_name = sys.argv[0:3]
+parser.add_argument('asm_file')
+parser.add_argument('split_symbol_name')
 
+args = parser.parse_args()
+
+symbol_location = args.asm_file
+symbol_name = args.split_symbol_name
 
 if symbol_location.endswith('.s'):
     symbol_location = symbol_location[:-2]

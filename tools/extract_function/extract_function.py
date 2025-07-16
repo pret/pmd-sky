@@ -1,5 +1,5 @@
 import os
-import sys
+import argparse
 
 from write_inc_file import write_inc_file
 
@@ -8,18 +8,21 @@ from write_inc_file import write_inc_file
 # This is intended for use after decompiling a function, so that you can place the decompiled C code in the placeholder after running the script.
 # Since this script updates files, it's recommended to have no uncommitted changes when running this script, in case something goes wrong and needs a revert.
 # Example usage (auto-generated file name): python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)"
-# Example usage (custom file name): python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)" my_new_file
+# Example usage (custom file name): python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)" -f my_new_file
+# Example usage (nonmatching): python extract_function.py overlay_29_0234EC38 "u8 ov29_0234FCA8(u8 arg0)" -n
 
-if len(sys.argv) < 3 or len(sys.argv) > 5:
-    print('Usage: python extract_function.py <asm_file> <function_header> <extract_file_name> <nonmatching>')
-    exit(1)
+parser = argparse.ArgumentParser()
 
-_, function_location, function_header = sys.argv[0:3]
-extract_file_name = None
-if len(sys.argv) >= 4 and len(sys.argv[3]) > 0:
-    extract_file_name = sys.argv[3]
+parser.add_argument('asm_file')
+parser.add_argument('function_header')
+parser.add_argument('-f', '--extract_file_name')
+parser.add_argument('-n', '--nonmatching', action='store_true')
 
-nonmatching = len(sys.argv) >= 5 and sys.argv[4] == 'nonmatching'
+args = parser.parse_args()
+function_location = args.asm_file
+function_header = args.function_header
+extract_file_name = args.extract_file_name
+nonmatching = args.nonmatching
 
 if function_location.endswith('.s'):
     function_location = function_location[:-2]
