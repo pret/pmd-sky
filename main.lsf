@@ -574,6 +574,8 @@ Overlay OVY_31
 	Object asm/overlay_31_02382FBC.o
 	Object src/overlay_31_02383328.o
 	Object asm/overlay_31_023833D8.o
+	Object src/overlay_31_02383478.o
+	Object asm/overlay_31_02383658.o
 }
 Overlay OVY_32
 {
