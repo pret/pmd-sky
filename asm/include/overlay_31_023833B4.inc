@@ -167,7 +167,6 @@
 .public ov29_022E1618
 .public ov29_022E1620
 .public ov29_022E2A78
-.public ov29_022E87DC
 .public ov29_022EA370
 .public ov29_022EA428
 .public ov29_022EA62C
@@ -217,6 +216,7 @@
 .public ov31_02382DAC
 .public ov31_023832F0
 .public ov31_02383328
+.public ov31_0238335C
 .public ov31_02389F5C
 .public ov31_0238A044
 .public ov31_0238A04C
