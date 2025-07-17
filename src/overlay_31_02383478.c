@@ -11,7 +11,6 @@ extern struct dungeon* DUNGEON_PTR[];
 
 extern void sub_0200D310(char*, struct item*, u32*, u32, u32);
 extern u8* strcpy(u8* dest, const u8* src);
-extern u32 ov31_02383658(struct entity*);
 extern void sub_0200D894(struct item*);
 extern void ov10_022BD394(char*, s32, u32, u32);
 
@@ -48,11 +47,19 @@ char* ov31_02383478(char* arg1, s32 arg2, u32 arg3)
         if (GET_BIT(BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2].flags, 0) &&
             BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2].held_by) {
             u32 r1 = (BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2].held_by - 1);
-            if (ov31_02383658(DUNGEON_PTR[0]->monster_slots.party_members[r1]) == 0) {
+            if (EntityIsValid__02383658(DUNGEON_PTR[0]->monster_slots.party_members[r1]) == 0) {
                 sub_0200D894(&(BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2]));
             }
         }
         ov10_022BD394(arg1, arg2, a, arg3);
     }
     return arg1;
+}
+
+bool8 EntityIsValid__02383658(struct entity *entity)
+{
+    if (entity == NULL)
+        return FALSE;
+
+    return entity->type != ENTITY_NOTHING;
 }

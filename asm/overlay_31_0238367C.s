@@ -1,20 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_31_02383658.inc"
+	.include "overlay_31_0238367C.inc"
 
 	.text
-
-	arm_func_start ov31_02383658
-ov31_02383658: ; 0x02383658
-	cmp r0, #0
-	moveq r0, #0
-	bxeq lr
-	ldr r0, [r0]
-	cmp r0, #0
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end ov31_02383658
 
 	arm_func_start ov31_0238367C
 ov31_0238367C: ; 0x0238367C
@@ -211,7 +198,7 @@ _023838A0:
 #else
 	ldr r0, [r0, #0xb28]
 #endif
-	bl ov31_02383658
+	bl EntityIsValid__02383658
 	cmp r0, #0
 	addeq r0, r7, r5
 	streqb r4, [r0, #1]
@@ -442,7 +429,7 @@ _02383BEC:
 	add r0, r0, #0x12000
 	ldr r8, [r0, #0xb28 + OV31_023838E4_OFFSET]
 	mov r0, r8
-	bl ov31_02383658
+	bl EntityIsValid__02383658
 	cmp r0, #0
 	beq _02383C38
 	ldr r1, [r8, #0xb4]
@@ -953,7 +940,7 @@ _02384320:
 	add r0, r0, #0x12000
 	ldr fp, [r0, #0xb28 + OV31_023838E4_OFFSET]
 	mov r0, fp
-	bl ov31_02383658
+	bl EntityIsValid__02383658
 	cmp r0, #0
 	beq _02384374
 	ldr r1, [fp, #0xb4]
@@ -1248,7 +1235,7 @@ _02384758:
 	add r0, r0, #0x12000
 	ldr r0, [r0, #0xb28 + OV31_023838E4_OFFSET]
 	str r0, [sp, #0x1c]
-	bl ov31_02383658
+	bl EntityIsValid__02383658
 	cmp r0, #0
 	beq _023847A0
 	ldr r0, [sp, #0x1c]
@@ -1447,7 +1434,7 @@ _023849F4:
 	add r0, r0, #0x12000
 	ldr r0, [r0, #0xb28 + OV31_023838E4_OFFSET]
 	str r0, [sp, #0x20]
-	bl ov31_02383658
+	bl EntityIsValid__02383658
 	cmp r0, #0
 	beq _02384C48
 	mov r0, #0

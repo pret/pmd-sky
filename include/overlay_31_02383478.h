@@ -1,6 +1,8 @@
 #ifndef PMDSKY_OVERLAY_31_02383478_H
 #define PMDSKY_OVERLAY_31_02383478_H
 
+#include "dungeon_mode.h"
+
 struct loc_struct {
     u8 PAD_0x0000[4508];
     s16* field_0x119C;
@@ -14,5 +16,7 @@ struct loc_struct {
 };
 
 char* ov31_02383478(char* arg1, s32 arg2, u32 arg3);
+// Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
+bool8 EntityIsValid__02383658(struct entity *entity);
 
 #endif //PMDSKY_OVERLAY_31_02383478_H

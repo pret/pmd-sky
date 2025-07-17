@@ -213,6 +213,7 @@
 .public ov31_02382DAC
 .public ov31_023832F0
 .public ov31_02383478
+.public EntityIsValid__02383658
 .public ov31_02389F5C
 .public ov31_0238A044
 .public ov31_0238A04C
