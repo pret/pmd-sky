@@ -29,3 +29,11 @@ u32 ov31_0238335C(void (*f)(void))
     OVERLAY31_UNKNOWN_POINTER__NA_238A268[1] = 0;
     return 1;
 }
+
+void ov31_023833B4(void(*f)(void))
+{
+    if (f != NULL) {
+        f();
+    }
+    OVERLAY31_UNKNOWN_POINTER__NA_238A268[1] = 0;
+}

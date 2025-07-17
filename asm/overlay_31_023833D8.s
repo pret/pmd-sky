@@ -1,22 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_31_023833B4.inc"
+	.include "overlay_31_023833D8.inc"
 
 	.text
-
-	arm_func_start ov31_023833B4
-ov31_023833B4: ; 0x023833B4
-	stmdb sp!, {r3, lr}
-	cmp r0, #0
-	beq _023833C4
-	blx r0
-_023833C4:
-	ldr r0, _023833D4 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A268
-	mov r1, #0
-	strb r1, [r0, #1]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_023833D4: .word OVERLAY31_UNKNOWN_POINTER__NA_238A268
-	arm_func_end ov31_023833B4
 
 ; https://decomp.me/scratch/Q183B
 	arm_func_start ov31_023833D8
