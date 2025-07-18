@@ -3,7 +3,7 @@
 
 	.text
 
-; https://decomp.me/scratch/Q183B
+; https://decomp.me/scratch/N2omQ
 	arm_func_start ov31_023833D8
 ov31_023833D8: ; 0x023833D8
 	stmdb sp!, {r3, lr}
@@ -32,6 +32,7 @@ _0238342C: .word ov31_0238335C
 _02383430: .word ov31_0238A2A8
 	arm_func_end ov31_023833D8
 
+; https://decomp.me/scratch/6f1zw
 	arm_func_start ov31_02383434
 ov31_02383434: ; 0x02383434
 	stmdb sp!, {r3, lr}

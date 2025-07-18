@@ -214,6 +214,7 @@ _023838A0:
 _023838E0: .word DUNGEON_PTR
 	arm_func_end ov31_02383880
 
+; https://decomp.me/scratch/pyVsB
 	arm_func_start ov31_023838E4
 ov31_023838E4: ; 0x023838E4
 #ifdef JAPAN

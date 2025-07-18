@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/EJVO7
 	arm_func_start ov17_0238A140
 ov17_0238A140: ; 0x0238A140
 	stmdb sp!, {r3, r4, r5, lr}
