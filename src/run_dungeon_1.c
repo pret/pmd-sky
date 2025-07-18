@@ -4,7 +4,12 @@
 
 extern struct dungeon *DUNGEON_PTR[];
 
-extern bool8 IsBossFight(enum fixed_room_id fixed_room_id);
+bool8 IsBossFight(enum fixed_room_id fixed_room_id)
+{
+    if (fixed_room_id != FIXED_NONE && fixed_room_id < FIXED_ZERO_ISLE_NORTH)
+        return TRUE;
+    return FALSE;
+}
 
 bool8 IsCurrentFixedRoomBossFight()
 {

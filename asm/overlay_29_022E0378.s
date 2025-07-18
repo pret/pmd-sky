@@ -449,15 +449,3 @@ _022E083C:
 	.align 2, 0
 _022E0860: .word DUNGEON_PTR
 	arm_func_end ov29_022E081C
-
-	arm_func_start IsBossFight
-IsBossFight: ; 0x022E0864
-	cmp r0, #0
-	beq _022E0878
-	cmp r0, #0x51
-	movlo r0, #1
-	bxlo lr
-_022E0878:
-	mov r0, #0
-	bx lr
-	arm_func_end IsBossFight
