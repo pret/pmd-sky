@@ -1,6 +1,5 @@
 #pragma once
 .public AdvanceFrame
-.public CloseInventoryMenu
 .public CloseScrollBox
 .public CreateScrollBoxSingle
 .public DUNGEON_WINDOW_PARAMS_8
@@ -9,5 +8,3 @@
 .public IsScrollBoxActive
 .public OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 .public PositionHasItem
-.public ov10_022BCD10
-.public sub_020282F4

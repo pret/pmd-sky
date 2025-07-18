@@ -85,33 +85,3 @@ _0238375C:
 	.align 2, 0
 _02383764: .word OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	arm_func_end ov31_0238372C
-
-	arm_func_start ov31_02383768
-ov31_02383768: ; 0x02383768
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r0
-	ldrsb r0, [r7]
-	mvn r1, #1
-	cmp r0, r1
-	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov10_022BCD10
-	cmp r0, #0
-	beq _023837B4
-	mvn r4, #3
-	sub r5, r4, #1
-	mov r6, #0x62
-_02383798:
-	mov r0, r6
-	bl AdvanceFrame
-	ldrsb r0, [r7]
-	bl sub_020282F4
-	cmp r0, r5
-	cmpne r0, r4
-	bne _02383798
-_023837B4:
-	ldrsb r0, [r7]
-	bl CloseInventoryMenu
-	mvn r0, #1
-	strb r0, [r7]
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov31_02383768

@@ -5,6 +5,7 @@ struct window
 {
 };
 
+void ov31_02383768(s8* arg1);
 // Cleans up and frees OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 void ov31_023837C8(void);
 void ov31_02383854(struct window* w);

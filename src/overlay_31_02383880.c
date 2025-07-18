@@ -6,11 +6,32 @@
 extern struct dungeon* DUNGEON_PTR[];
 extern struct loc_struct* OVERLAY31_UNKNOWN_POINTER__NA_238A26C;
 
+extern bool8 ov10_022BCD10(s8);
+extern void AdvanceFrame(u8);
+extern s32 sub_020282F4(s8);
+extern void CloseInventoryMenu(s8);
 extern void ov29_0234E988(u8*);
 extern void CloseTextBox2();
-extern void ov31_02383768(u8*);
 extern void MemFree(void*);
 extern void DrawTextInWindow(struct window*, u32, u32, u8*);
+
+void ov31_02383768(s8* arg1)
+{
+    s32 x;
+
+    if (arg1[0] == -2) {
+        return;
+    }
+
+    if (ov10_022BCD10(arg1[0])) {
+        do {
+            AdvanceFrame(0x62);
+            x = sub_020282F4(arg1[0]);
+        } while (-5 != x && -4 != x);
+    }
+    CloseInventoryMenu(arg1[0]);
+    arg1[0] = -2;
+}
 
 void ov31_023837C8(void)
 {
