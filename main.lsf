@@ -225,6 +225,8 @@ Overlay OVY_17
 {
 	After OVY_11
 	Object asm/overlay_17.o
+	Object src/overlay_17_0238A71C.o
+	Object asm/overlay_17_0238A754.o
 }
 Overlay OVY_18
 {
