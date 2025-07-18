@@ -2,7 +2,7 @@
 #include "dungeon_ai_targeting.h"
 #include "number_util.h"
 
-extern struct dungeon* DUNGEON_PTR[];
+extern struct dungeon *DUNGEON_PTR[];
 
 extern const u8 DUNGEON_MENU_SWITCH_STR1[];// = "[dungeon:0]";
 

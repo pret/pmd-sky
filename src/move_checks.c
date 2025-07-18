@@ -8,7 +8,7 @@
 #include "tileset.h"
 #include "weather.h"
 
-extern struct dungeon* DUNGEON_PTR[];
+extern struct dungeon *DUNGEON_PTR[];
 
 extern bool8 IsCurrentFixedRoomBossFight();
 extern bool8 CanLayTrap(struct position *pos);

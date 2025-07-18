@@ -1,6 +1,6 @@
 #include "overlay_29_022DEAB0.h"
 
-extern struct dungeon* DUNGEON_PTR[];
+extern struct dungeon *DUNGEON_PTR[];
 
 void MemFree(void* ptr);
 void MemZero(void* ptr, u32 len);
