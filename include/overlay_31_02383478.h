@@ -4,9 +4,15 @@
 #include "dungeon_mode.h"
 
 struct loc_struct {
-    u8 PAD_0x0000[4508];
+    u8 PAD_0x0[0x1192];
+    u8 field_0x1192;
+    u8 field_0x1193;
+    s8 field_0x1194;
+    s8 field_0x1195;
+    u8 PAD_0x1196[6];
     s16* field_0x119C;
-    u8 PAD_0x11A0[18];
+    u8 PAD_0x11A0[17];
+    u8 field_0x11b1;
     u8 field_0x11B2;
     u8 field_0x11B3;
     struct item* field_0x11B4;

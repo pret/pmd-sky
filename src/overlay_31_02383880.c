@@ -4,8 +4,25 @@
 #include "overlay_31_02383478.h"
 
 extern struct dungeon* DUNGEON_PTR[];
+extern struct loc_struct* OVERLAY31_UNKNOWN_POINTER__NA_238A26C;
 
+extern void ov29_0234E988(u8*);
+extern void CloseTextBox2();
+extern void ov31_02383768(u8*);
+extern void MemFree(void*);
 extern void DrawTextInWindow(struct window*, u32, u32, u8*);
+
+void ov31_023837C8(void)
+{
+    ov29_0234E988(&(OVERLAY31_UNKNOWN_POINTER__NA_238A26C->field_0x1192));
+    if ((OVERLAY31_UNKNOWN_POINTER__NA_238A26C->field_0x1194) != -2)
+        CloseTextBox2();
+    if ((OVERLAY31_UNKNOWN_POINTER__NA_238A26C->field_0x1195) != -2)
+        CloseTextBox2();
+    ov31_02383768(&(OVERLAY31_UNKNOWN_POINTER__NA_238A26C->field_0x1193));
+    MemFree(OVERLAY31_UNKNOWN_POINTER__NA_238A26C);
+    OVERLAY31_UNKNOWN_POINTER__NA_238A26C = NULL;
+}
 
 void ov31_02383854(struct window* w)
 {
