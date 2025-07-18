@@ -737,33 +737,3 @@ _02319744: .word 0x00000AA1
 _02319744: .word 0x00000D61
 #endif
 	arm_func_end TryResetStatChanges
-
-	arm_func_start MirrorMoveIsActive
-MirrorMoveIsActive: ; 0x02319748
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl EntityIsValid__02318E4C
-	cmp r0, #0
-	beq _0231979C
-	ldr r0, [r4, #0xb4]
-	ldrb r0, [r0, #0xd5]
-	cmp r0, #0xb
-	moveq r0, #1
-	ldmeqia sp!, {r4, pc}
-	mov r0, r4
-	mov r1, #0x25
-	bl ExclusiveItemEffectIsActive__023197A8
-	cmp r0, #0
-	beq _0231979C
-	ldr r0, _023197A4 ; =ov10_022C4648
-	ldrsh r0, [r0]
-	bl DungeonRandOutcome__022EAB20
-	cmp r0, #0
-	movne r0, #2
-	ldmneia sp!, {r4, pc}
-_0231979C:
-	mov r0, #0
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_023197A4: .word ov10_022C4648
-	arm_func_end MirrorMoveIsActive

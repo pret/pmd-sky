@@ -1,13 +1,10 @@
 #pragma once
 .public AbilityIsActiveVeneer
 .public CalcStatusDuration
-.public DungeonRandOutcome__022EAB20
 .public EntityIsValid__02318E4C
-.public ExclusiveItemEffectIsActive__023197A8
 .public LogMessageByIdWithPopupCheckUserTarget
 .public SubstitutePlaceholderStringTags
 .public UpdateStatusIconFlags
-.public ov10_022C4648
 .public ov10_022C472C
 .public ov10_022C4730
 .public ov10_022C4734

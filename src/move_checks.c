@@ -4,14 +4,13 @@
 #include "dungeon_util_static.h"
 #include "dungeon_visibility.h"
 #include "number_util.h"
+#include "overlay_29_023197A8.h"
+#include "run_dungeon_1.h"
 #include "tileset.h"
+#include "weather.h"
 
-extern struct dungeon* DUNGEON_PTR[];
+extern struct dungeon *DUNGEON_PTR[];
 
-extern enum weather_id GetApparentWeather(struct entity *entity);
-extern bool8 MirrorMoveIsActive(struct entity *entity);
-extern bool8 MistIsActive(struct entity *entity);
-extern bool8 IsCurrentFixedRoomBossFight();
 extern bool8 CanLayTrap(struct position *pos);
 extern bool8 Conversion2IsActive(struct entity *entity);
 extern bool8 HasLowHealth(struct entity *entity);

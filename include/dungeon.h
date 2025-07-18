@@ -10,6 +10,7 @@
 #define DUNGEON_MAX_POKEMON 20
 #define DUNGEON_MAX_SIZE_X 56
 #define DUNGEON_MAX_SIZE_Y 32
+#define CORRIDOR_ROOM 0xFF
 
 enum terrain_type
 {
@@ -18,7 +19,10 @@ enum terrain_type
     TERRAIN_TYPE_NORMAL = 1 << 0, // x1
     TERRAIN_TYPE_SECONDARY = 1 << 1, // Water or lava depending on the dungeon. x2
     TERRAIN_TYPE_CHASM = 3,
+    TERRAIN_TYPE_NATURAL_JUNCTION = 1 << 3, // x8
     TERRAIN_TYPE_IMPASSABLE_WALL = 1 << 4, // x10
+    TERRAIN_TYPE_SHOP = 1 << 5, // x20
+    TERRAIN_TYPE_STAIRS = 1 << 9, // x200
 };
 
 struct monster_slots {
