@@ -6,6 +6,7 @@
 extern struct dungeon* DUNGEON_PTR[];
 extern struct loc_struct* OVERLAY31_UNKNOWN_POINTER__NA_238A26C;
 
+extern u8 PositionHasItem(struct position* pos);
 extern bool8 ov10_022BCD10(s8);
 extern void AdvanceFrame(u8);
 extern s32 sub_020282F4(s8);
@@ -14,6 +15,15 @@ extern void ov29_0234E988(u8*);
 extern void CloseTextBox2();
 extern void MemFree(void*);
 extern void DrawTextInWindow(struct window*, u32, u32, u8*);
+
+u8 ov31_0238372C(struct position* x)
+{
+    if (OVERLAY31_UNKNOWN_POINTER__NA_238A26C->field_0x11b1 != 0 &&
+        PositionHasItem(&(x[1]))) {
+        return 1;
+    }
+    return 0;
+}
 
 void ov31_02383768(s8* arg1)
 {

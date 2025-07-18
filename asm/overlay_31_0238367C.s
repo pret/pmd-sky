@@ -64,24 +64,3 @@ _02383724: .word 0x000008E4
 #endif
 _02383728: .word DUNGEON_WINDOW_PARAMS_8
 	arm_func_end ov31_0238367C
-
-	arm_func_start ov31_0238372C
-ov31_0238372C: ; 0x0238372C
-	stmdb sp!, {r3, lr}
-	ldr r1, _02383764 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
-	ldr r1, [r1]
-	add r1, r1, #0x1000
-	ldrb r1, [r1, #0x1b1]
-	cmp r1, #0
-	beq _0238375C
-	add r0, r0, #4
-	bl PositionHasItem
-	cmp r0, #0
-	movne r0, #1
-	ldmneia sp!, {r3, pc}
-_0238375C:
-	mov r0, #0
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_02383764: .word OVERLAY31_UNKNOWN_POINTER__NA_238A26C
-	arm_func_end ov31_0238372C

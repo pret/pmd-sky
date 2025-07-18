@@ -6,5 +6,3 @@
 .public GetItemToUse
 .public GetLeader
 .public IsScrollBoxActive
-.public OVERLAY31_UNKNOWN_POINTER__NA_238A26C
-.public PositionHasItem
