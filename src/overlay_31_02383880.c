@@ -1,8 +1,16 @@
 #include "overlay_31_02383880.h"
 #include "dungeon.h"
+#include "main_0202593C.h"
 #include "overlay_31_02383478.h"
 
 extern struct dungeon* DUNGEON_PTR[];
+
+extern void DrawTextInWindow(struct window*, u32, u32, u8*);
+
+void ov31_02383854(struct window* w)
+{
+    DrawTextInWindow(w, 2, 2, StringFromId(0x08e6));
+}
 
 void ov31_02383880(u8* arg1)
 {

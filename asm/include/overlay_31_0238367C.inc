@@ -5,14 +5,12 @@
 .public CloseTextBox2
 .public CreateScrollBoxSingle
 .public DUNGEON_WINDOW_PARAMS_8
-.public DrawTextInWindow
 .public GetItemToUse
 .public GetLeader
 .public IsScrollBoxActive
 .public MemFree
 .public OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 .public PositionHasItem
-.public StringFromId
 .public ov10_022BCD10
 .public ov29_0234E988
 .public sub_020282F4
