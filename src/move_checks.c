@@ -10,7 +10,6 @@
 
 extern struct dungeon* DUNGEON_PTR[];
 
-extern bool8 MistIsActive(struct entity *entity);
 extern bool8 IsCurrentFixedRoomBossFight();
 extern bool8 CanLayTrap(struct position *pos);
 extern bool8 Conversion2IsActive(struct entity *entity);

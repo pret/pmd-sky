@@ -28,3 +28,17 @@ bool8 ExclusiveItemEffectIsActive__023197A8(struct entity *entity, enum exclusiv
 
     return FALSE;
 }
+
+u8 MistIsActive(struct entity *entity)
+{
+    if (EntityIsValid__02318E4C(entity))
+    {
+        if (GetEntInfo(entity)->reflect_class_status.reflect == STATUS_REFLECT_MIST)
+            return EFFECT_ACTIVE_FROM_STATUS;
+
+        if (ExclusiveItemEffectIsActive__023197A8(entity, EXCLUSIVE_EFF_NO_STAT_DROPS))
+            return EFFECT_ACTIVE_FROM_EXCLUSIVE_ITEM;
+    }
+
+    return EFFECT_INACTIVE;
+}
