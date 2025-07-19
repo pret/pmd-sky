@@ -48,4 +48,6 @@ static inline s32 Max(s32 a, s32 b)
     return a > b ? a : b;
 }
 
+#define ARRAY_COUNT(array) (sizeof(array) / sizeof((array)[0]))
+
 #endif //PMDSKY_UTIL_H

@@ -871,10 +871,11 @@ struct floor_properties {
     // 0xC: Maximum number of secondary structures that can be generated on the floor
     u8 max_secondary_structures;
     // 0xD: room_flags: 1-byte bitfield
-    bool8 f_secondary_structures : 1; // Whether secondary structures are allowed
-    u8 room_flags_unk1 : 1;
-    bool8 f_room_imperfections : 1; // Whether room imperfections are allowed
-    u8 room_flags_unk3 : 5;
+    u8 room_flags;
+    // bool8 f_secondary_structures : 1; // Whether secondary structures are allowed
+    // u8 room_flags_unk1 : 1;
+    // bool8 f_room_imperfections : 1; // Whether room imperfections are allowed
+    // u8 room_flags_unk3 : 5;
 
     u8 field_0xe;
     u8 item_density; // 0xF: Controls how many items will be spawned
@@ -1034,30 +1035,34 @@ struct display_data {
     u8 field_0x47;
 };
 
-// Used during floor generation to keep track of what entities should be spawned where
-struct spawn_flags {
-    bool8 f_stairs : 1;
-    bool8 f_item : 1;
-    bool8 f_trap : 1;
-    bool8 f_monster : 1;
-    u8 spawn_flags_unk4 : 4;
-    u8 spawn_flags_unk8 : 8;
-};
-
-// Used during dungeon play to record the visibility of a tile.
-struct visibility_flags {
-    // If f_revealed == true and f_visited == false, the tile will appear as gray on the map.
-    // This happens, e.g., when a Luminous Orb is used.
-    bool8 f_revealed : 1; // Revealed on the map.
-    bool8 f_visited : 1;  // Visited by the player
-    u8 visibility_flags_unk2 : 6;
-    u8 visibility_flags_unk8 : 8;
+enum spawn_flags
+{
+    SPAWN_FLAG_STAIRS = 1 << 0, // x1 - This tile has the stairs.
+    SPAWN_FLAG_ITEM = 1 << 1, // x2 - This tile has an item on it.
+    SPAWN_FLAG_TRAP = 1 << 2, // x4 - This tile has a trap on it.
+    SPAWN_FLAG_MONSTER = 1 << 3, // x8 - This tile has a monster on it.
+    SPAWN_FLAG_SPECIAL_TILE = 1 << 4, // x10 - This is a special tile, such as for Kecleon Shops, items, and traps.
+    SPAWN_FLAG_UNK5 = 1 << 5, // 0x20 - Not fully understood field relating to Secondary Structures. Set to true for all tiles in secondary structure rooms except for Cross or Dot rooms.
+    SPAWN_FLAG_UNK6 = 1 << 6, // 0x40 - Not fully understood field. In the dungeon algorithm, it is set to true on a Warp tile.
+    SPAWN_FLAG_UNK7 = 1 << 7, // 0x80 - Not fully understood field. In the dungeon algorithm, it is set to true for all tiles in a Divider secondary structure room.
 };
 
 // These flags seem to occupy the same memory location, so the meaning is context-dependent.
 union spawn_or_visibility_flags {
-    struct spawn_flags spawn;
-    struct visibility_flags visibility;
+    u16 spawn;
+    // bool8 f_stairs : 1;
+    // bool8 f_item : 1;
+    // bool8 f_trap : 1;
+    // bool8 f_monster : 1;
+    // u8 spawn_flags_unk4 : 4;
+    // u8 spawn_flags_unk8 : 8;
+    u16 visibility;
+    // If f_revealed == true and f_visited == false, the tile will appear as gray on the map.
+    // This happens, e.g., when a Luminous Orb is used.
+    // bool8 f_revealed : 1; // Revealed on the map.
+    // bool8 f_visited : 1;  // Visited by the player
+    // u8 visibility_flags_unk2 : 6;
+    // u8 visibility_flags_unk8 : 8;
 };
 
 // Information about the rooms on the current floor
