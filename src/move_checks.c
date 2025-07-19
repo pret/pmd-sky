@@ -35,6 +35,7 @@ bool8 StatusCheckerCheck(struct entity *attacker, struct move *move)
                 return FALSE;
             break;
         case MOVE_MIRROR_MOVE:
+            // This check is inconsistent for the Chatot Scarf because it includes RNG.
             if (MirrorMoveIsActive(attacker))
                 return FALSE;
             break;

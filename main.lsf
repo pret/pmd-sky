@@ -378,7 +378,7 @@ Overlay OVY_29
 	Object src/dungeon_capabilities_3.o
 	Object asm/overlay_29_02300FCC.o
 	Object src/dungeon_capabilities_4.o
-	Object asm/overlay_29_02301234.o
+	Object asm/overlay_29_023012F8.o
 	Object src/dungeon_ai_targeting.o
 	Object asm/overlay_29_023016D8.o
 	Object src/dungeon_ai_targeting_1.o
