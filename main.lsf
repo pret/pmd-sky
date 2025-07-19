@@ -533,6 +533,8 @@ Overlay OVY_29
 	Object asm/overlay_29_0233861C.o
 	Object src/overlay_29_02340CAC.o
 	Object asm/overlay_29_02340CE4.o
+	Object src/dungeon_generation.o
+	Object asm/overlay_29_02341E6C.o
 	Object src/fixed_room_data.o
 	Object asm/overlay_29_02344178.o
 	Object src/overlay_29_02344AF8.o
