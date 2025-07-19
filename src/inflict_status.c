@@ -1,4 +1,4 @@
-#include "overlay_29_023197A8.h"
+#include "inflict_status.h"
 #include "dg_random.h"
 #include "dungeon_parameters_1.h"
 #include "dungeon_util_static.h"
@@ -37,6 +37,20 @@ u8 MistIsActive(struct entity *entity)
             return EFFECT_ACTIVE_FROM_STATUS;
 
         if (ExclusiveItemEffectIsActive__023197A8(entity, EXCLUSIVE_EFF_NO_STAT_DROPS))
+            return EFFECT_ACTIVE_FROM_EXCLUSIVE_ITEM;
+    }
+
+    return EFFECT_INACTIVE;
+}
+
+u8 Conversion2IsActive(struct entity *entity)
+{
+    if (EntityIsValid__02318E4C(entity))
+    {
+        if (GetEntInfo(entity)->reflect_class_status.reflect == STATUS_REFLECT_CONVERSION2)
+            return EFFECT_ACTIVE_FROM_STATUS;
+
+        if (ExclusiveItemEffectIsActive__023197A8(entity, EXCLUSIVE_EFF_CONVERSION_2_WHEN_HIT))
             return EFFECT_ACTIVE_FROM_EXCLUSIVE_ITEM;
     }
 
