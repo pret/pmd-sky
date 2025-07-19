@@ -3,7 +3,6 @@
 	(main_02008240.o )	[whole file]
 	.bss	(poly_text.o )
 	unk1962a	(poly_text.o )
-	(trap.o )	[whole file]
 	(overlay_29_022FED98.o )	[whole file]
 
 
@@ -496,6 +495,7 @@
                                                                                      84](CanSeeTarget,func) found in global dungeon_visibility.o
                                                                                      84](EntityIsValid__02333FAC,func) found in global move_checks.o
                                                                                      84](Conversion2IsActive,func) found in global inflict_status.o
+                                                                                     84](CanLayTrap,func) found in global trap.o
                                                                                      84](IsTileGround,func) found in global dungeon_map_access_1.o
                                                                                       85](IsWaterTileset,func) found in global dungeon_map_access_1.o
                                                                                      84](ov29_023007DC,func) found in global overlay_29_023007A8.o
@@ -35070,9 +35070,9 @@
   022ED76C 00000000 .text   $d	(overlay_29_022EC62C.o)
   022ED770 00000024 .text   EntityIsValid__022ECDC0	(overlay_29_022ECDC0.o)
   022ED770 00000000 .text   $a	(overlay_29_022ECDC0.o)
-  022ED794 00000160 .text   ov29_022ECDE4	(overlay_29_022ECDE4.o)
   022ED794 00000000 .text   $a	(overlay_29_022ECDE4.o)
-  022ED794 00000ED8 .text   .text	(overlay_29_022ECDE4.o)
+  022ED794 00000160 .text   ov29_022ECDE4	(overlay_29_022ECDE4.o)
+  022ED794 00000E4C .text   .text	(overlay_29_022ECDE4.o)
   022ED8E4 00000000 .text   $d	(overlay_29_022ECDE4.o)
   022ED8F4 00000034 .text   IsDungeonEndReasonFailure	(overlay_29_022ECDE4.o)
   022ED8F4 00000000 .text   $a	(overlay_29_022ECDE4.o)
@@ -35080,8 +35080,8 @@
   022ED928 00000000 .text   $a	(overlay_29_022ECDE4.o)
   022ED928 00000040 .text   ov29_022ECF78	(overlay_29_022ECDE4.o)
   022ED95C 00000000 .text   $d	(overlay_29_022ECDE4.o)
-  022ED968 00000000 .text   $a	(overlay_29_022ECDE4.o)
   022ED968 00000050 .text   ov29_022ECFB8	(overlay_29_022ECDE4.o)
+  022ED968 00000000 .text   $a	(overlay_29_022ECDE4.o)
   022ED9B4 00000000 .text   $d	(overlay_29_022ECDE4.o)
   022ED9B8 00000000 .text   $a	(overlay_29_022ECDE4.o)
   022ED9B8 00000014 .text   SetForcedLossReason	(overlay_29_022ECDE4.o)
@@ -35123,8 +35123,8 @@
   022EE584 00000000 .text   $a	(overlay_29_022ECDE4.o)
   022EE584 0000005C .text   PrepareTrapperTrap	(overlay_29_022ECDE4.o)
   022EE5D8 00000000 .text   $d	(overlay_29_022ECDE4.o)
-  022EE5E0 0000008C .text   CanLayTrap	(overlay_29_022ECDE4.o)
-  022EE5E0 00000000 .text   $a	(overlay_29_022ECDE4.o)
+  022EE5E0 0000008C .text   CanLayTrap	(trap.o)
+  022EE5E0 00000000 .text   $a	(trap.o)
   022EE66C 0000065C .text   .text	(overlay_29_022EDCBC.o)
   022EE66C 00000000 .text   $a	(overlay_29_022EDCBC.o)
   022EE66C 00000118 .text   TrySpawnTrap	(overlay_29_022EDCBC.o)
@@ -40627,5 +40627,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Jul 19 04:17:34 2025
-# Link end time: Sat Jul 19 04:17:35 2025
+# Link start time: Sat Jul 19 16:03:17 2025
+# Link end time: Sat Jul 19 16:03:17 2025
