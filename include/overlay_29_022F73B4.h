@@ -1,6 +1,8 @@
 #ifndef PMDSKY_OVERLAY_29_022F73B4_H
 #define PMDSKY_OVERLAY_29_022F73B4_H
 
-u32 FloorNumberIsEven();
+#include "util.h"
+
+bool32 FloorNumberIsEven();
 
 #endif //PMDSKY_OVERLAY_29_022F73B4_H
