@@ -3,7 +3,6 @@
 #include "dungeon.h"
 #include "dungeon_map_access.h"
 #include "main_0208655C.h"
-#include "map.h"
 
 extern struct dungeon *DUNGEON_PTR[];
 
