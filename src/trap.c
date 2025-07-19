@@ -1,9 +1,8 @@
 #include "trap.h"
 #include "dungeon.h"
 #include "dungeon_map_access.h"
+#include "dungeon_util_static.h"
 
-// https://decomp.me/scratch/EcuBP
-#ifdef NONMATCHING
 bool8 CanLayTrap(struct position *pos)
 {
     struct tile *tile = GetTileSafe(pos->x, pos->y);
@@ -19,12 +18,11 @@ bool8 CanLayTrap(struct position *pos)
     if (tile->terrain_flags & TERRAIN_TYPE_SHOP)
         return FALSE;
 
-    if ((tile->terrain_flags & (TERRAIN_TYPE_NORMAL | TERRAIN_TYPE_SECONDARY)) != TERRAIN_TYPE_NORMAL)
+    if (GetTerrainType(tile) != TERRAIN_TYPE_NORMAL)
         return FALSE;
 
     if (tile->object != NULL)
-        return tile->object->type == ENTITY_TRAP;
+        return GetEntityType(tile->object) == ENTITY_TRAP;
 
     return TRUE;
 }
-#endif
