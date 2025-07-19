@@ -1,5 +1,11 @@
 #include "main_02054BE0.h"
 #include "enums.h"
+#include "util.h"
+
+bool8 IsDeoxys(s16 monster_id)
+{
+    return (u16)(s16)(monster_id - MONSTER_DEOXYS_NORMAL) <= 3;
+}
 
 extern s16 GetMonsterGender(s16 monster_id);
 
