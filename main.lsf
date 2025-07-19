@@ -88,6 +88,8 @@ Static main
 	Object asm/main_02089694.o
 	Object src/main_020897AC.o
 	Object asm/main_020897DC.o
+	Object src/secondary_terrain_types.o
+	Object asm/main_rodata_020A1BB0.o
 }
 
 Autoload ITCM

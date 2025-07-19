@@ -1,14 +1,6 @@
 #include "dungeon_map_access_1.h"
 #include "dungeon.h"
-
-// Secondary terrain type for a dungeon
-enum secondary_terrain_type {
-    SECONDARY_TERRAIN_WATER = 0,
-    SECONDARY_TERRAIN_LAVA = 1,
-    SECONDARY_TERRAIN_CHASM = 2,
-};
-
-extern const enum secondary_terrain_type SECONDARY_TERRAIN_TYPES[200];
+#include "secondary_terrain_types.h"
 
 extern bool8 IsWaterTileset();
 
