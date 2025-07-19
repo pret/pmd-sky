@@ -4,6 +4,7 @@
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util.h"
+#include "dungeon_util_static.h"
 #include "main_0208655C.h"
 #include "util.h"
 
@@ -35,7 +36,7 @@ bool8 IsTargetInRange(struct entity *user, struct entity *target, s32 direction,
             break;
 
         const struct tile *map_tile = GetTile(current_pos_x, current_pos_y);
-        if (!(map_tile->terrain_flags & (TERRAIN_TYPE_NORMAL | TERRAIN_TYPE_SECONDARY)))
+        if (GetTerrainType(map_tile) == TERRAIN_TYPE_WALL)
             return FALSE;
 
         if (map_tile->monster == target)

@@ -205,7 +205,7 @@ bool8 StatusCheckerCheck(struct entity *attacker, struct move *move)
         case MOVE_DIG:
         {
             struct tile *tile = GetTileAtEntity(attacker);
-            if (!IsTileGround(tile) || (tile->terrain_flags & (TERRAIN_TYPE_NORMAL | TERRAIN_TYPE_SECONDARY)) != TERRAIN_TYPE_NORMAL)
+            if (!IsTileGround(tile) || GetTerrainType(tile) != TERRAIN_TYPE_NORMAL)
                 return FALSE;
             break;
         }
