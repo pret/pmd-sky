@@ -9,7 +9,7 @@ bool8 EntityIsValid__02311010(struct entity *entity)
     if (entity == NULL)
         return FALSE;
 
-    return entity->type != ENTITY_NOTHING;
+    return GetEntityType(entity) != ENTITY_NOTHING;
 }
 
 bool8 ItemIsActive__02311034(struct entity *entity, enum item_id item_id)

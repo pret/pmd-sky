@@ -76,7 +76,7 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
             {
                 struct entity *adjacent_monster = GetTile(monster->pos.x + DIRECTIONS_XY[i].x, monster->pos.y + DIRECTIONS_XY[i].y)->monster;
                 if (adjacent_monster != NULL &&
-                    adjacent_monster->type == ENTITY_MONSTER &&
+                    GetEntityType(adjacent_monster) == ENTITY_MONSTER &&
                     (move_range == RANGE_FRONT_AND_SIDES ||
                     move_range == RANGE_NEARBY ||
                     CanAttackInDirection(monster, i)))
@@ -102,7 +102,7 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
             const struct tile *target_tile = GetTile(monster->pos.x + DIRECTIONS_XY[i].x, monster->pos.y + DIRECTIONS_XY[i].y);
             if (CanAttackInDirection(monster, i))
             {
-                if (target_tile->monster != NULL && target_tile->monster->type == ENTITY_MONSTER)
+                if (target_tile->monster != NULL && GetEntityType(target_tile->monster) == ENTITY_MONSTER)
                 {
                     s32 prev_num_potential_targets = num_potential_targets;
                     num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, move_target_and_range, monster, target_tile->monster, move, has_status_checker);
@@ -111,7 +111,7 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
                 }
 
                 target_tile = GetTile(monster->pos.x + DIRECTIONS_XY[i].x * 2, monster->pos.y + DIRECTIONS_XY[i].y * 2);
-                if (target_tile->monster != NULL && target_tile->monster->type == ENTITY_MONSTER)
+                if (target_tile->monster != NULL && GetEntityType(target_tile->monster) == ENTITY_MONSTER)
                     num_potential_targets = TryAddTargetToAiTargetList(num_potential_targets, move_target_and_range, monster, target_tile->monster, move, has_status_checker);
             }
         }
@@ -253,7 +253,7 @@ bool8 EntityIsValid__02319F8C(struct entity *entity)
     if (entity == NULL)
         return FALSE;
 
-    return entity->type != ENTITY_NOTHING;
+    return GetEntityType(entity) != ENTITY_NOTHING;
 }
 
 s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions)

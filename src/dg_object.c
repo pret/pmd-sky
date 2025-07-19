@@ -1,4 +1,5 @@
 #include "dg_object.h"
+#include "dungeon_util_static.h"
 
 // file starts at 0x022e1608
 
@@ -10,7 +11,7 @@ bool8 EntityIsValid__022E1A1C(struct entity *entity)
     if (entity == NULL)
         return FALSE;
 
-    return entity->type != ENTITY_NOTHING;
+    return GetEntityType(entity) != ENTITY_NOTHING;
 }
 
 void UpdateEntityPixelPos(struct entity *entity, struct pixel_position *pixel_pos)

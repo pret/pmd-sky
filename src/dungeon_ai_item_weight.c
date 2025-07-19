@@ -378,7 +378,7 @@ bool8 IsAdjacentToEnemy(struct entity *entity)
         struct tile *map_tile = GetTile(entity->pos.x + DIRECTIONS_XY[direction].x, entity->pos.y + DIRECTIONS_XY[direction].y);
         if (map_tile->monster != NULL)
         {
-            s32 no_pokemon = map_tile->monster->type == ENTITY_NOTHING;
+            s32 no_pokemon = GetEntityType(map_tile->monster) == ENTITY_NOTHING;
             if (no_pokemon != TRUE && GetTreatmentBetweenMonsters(entity, map_tile->monster, FALSE, TRUE) == TREATMENT_TREAT_AS_ENEMY)
                 return TRUE;
         }

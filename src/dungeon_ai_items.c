@@ -30,7 +30,7 @@ bool8 EntityIsValid__0230E8F0(struct entity *entity)
     if (entity == NULL)
         return FALSE;
 
-    return entity->type != ENTITY_NOTHING;
+    return GetEntityType(entity) != ENTITY_NOTHING;
 }
 
 void AiDecideUseItem(struct entity *entity)
@@ -119,7 +119,7 @@ void AiDecideUseItem(struct entity *entity)
             {
                 // This seems unused. toolbox_index can never be 0.
                 const struct tile *map_tile = GetTile(entity->pos.x, entity->pos.y);
-                if (map_tile->object != NULL && map_tile->object->type == ENTITY_ITEM)
+                if (map_tile->object != NULL && GetEntityType(map_tile->object) == ENTITY_ITEM)
                 {
                     item = GetItemInfo(map_tile->object);
                     selected_toolbox_index = GROUND_ITEM_TOOLBOX_INDEX;

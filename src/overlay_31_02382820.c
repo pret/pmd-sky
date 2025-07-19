@@ -1,5 +1,6 @@
 #include "overlay_31_02382820.h"
 #include "dungeon_ai_targeting.h"
+#include "dungeon_util_static.h"
 #include "number_util.h"
 
 extern const u8 DUNGEON_MENU_SWITCH_STR1[];// = "[dungeon:0]";
@@ -114,7 +115,7 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
         if (party_member == NULL) {
             is_valid_member = FALSE;
         } else {
-            is_valid_member = (party_member->type != ENTITY_NOTHING);
+            is_valid_member = GetEntityType(party_member) != ENTITY_NOTHING;
         }
         if (is_valid_member) {
             struct monster* member_info = party_member->info;
