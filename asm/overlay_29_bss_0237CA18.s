@@ -68,8 +68,8 @@ ov29_0237CAA0:
 	.global ov29_0237CAAC
 ov29_0237CAAC:
 	.space 0xC
-	.global ov29_0237CAB8
-ov29_0237CAB8:
+	.global DEFAULT_TILE_COPY
+DEFAULT_TILE_COPY:
 	.space 0x14
 	.global ov29_0237CACC
 ov29_0237CACC:

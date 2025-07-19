@@ -1,7 +1,6 @@
 #include "overlay_29_022EDC30.h"
 #include "dungeon.h"
-
-extern struct tile* GetTileSafe(s16 x, s16 y);
+#include "dungeon_map_access.h"
 
 // https://decomp.me/scratch/EcuBP
 #ifdef NONMATCHING
