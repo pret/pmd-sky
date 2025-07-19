@@ -7,11 +7,9 @@
 #include "overlay_29_023197A8.h"
 #include "run_dungeon_1.h"
 #include "tileset.h"
+#include "trap.h"
 #include "weather.h"
 
-extern struct dungeon *DUNGEON_PTR[];
-
-extern bool8 CanLayTrap(struct position *pos);
 extern bool8 Conversion2IsActive(struct entity *entity);
 extern bool8 HasLowHealth(struct entity *entity);
 extern struct tile* GetTileAtEntity(struct entity *entity);

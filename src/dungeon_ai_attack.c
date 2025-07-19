@@ -16,7 +16,6 @@
 #include "overlay_29_0231ACAC.h"
 #include "position_util.h"
 
-extern struct dungeon *DUNGEON_PTR[];
 extern bool8 AI_CAN_ATTACK_IN_DIRECTION[NUM_DIRECTIONS];
 extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
 extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];

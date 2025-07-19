@@ -3,8 +3,6 @@
 #include "dungeon_items.h"
 #include "dungeon_pokemon_attributes.h"
 
-extern struct dungeon *DUNGEON_PTR[];
-
 // file starts at 0x022e26b68
 
 bool8 EntityIsValid__022E32E8(struct entity *entity)

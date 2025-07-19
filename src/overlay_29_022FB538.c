@@ -5,8 +5,6 @@
 #include "overlay_29_022F7364.h"
 #include "targeting.h"
 
-extern struct dungeon *DUNGEON_PTR[];
-
 #ifndef JAPAN
 void SetDecoyAiTracker(struct entity* entity)
 {

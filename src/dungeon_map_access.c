@@ -3,7 +3,6 @@
 
 extern struct tile DEFAULT_TILE_COPY;
 extern struct tile* DEFAULT_TILE;
-extern struct dungeon *DUNGEON_PTR[];
 
 struct tile* GetTile(s32 x, s32 y)
 {

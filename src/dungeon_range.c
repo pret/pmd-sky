@@ -4,8 +4,6 @@
 #include "dungeon_map_access.h"
 #include "main_0208655C.h"
 
-extern struct dungeon *DUNGEON_PTR[];
-
 bool8 IsPositionActuallyInSight(struct position *origin, struct position *target, bool8 user_has_dropeye)
 {
     u8 origin_room;

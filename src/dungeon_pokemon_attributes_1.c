@@ -4,8 +4,6 @@
 #include "overlay_29_023000E4.h"
 #include "pokemon.h"
 
-extern struct dungeon *DUNGEON_PTR[];
-
 bool8 CanSeeInvisibleMonsters(struct entity *entity)
 {
     if (GetEntInfo(entity)->blinker_class_status.blinded == STATUS_BLINKER_EYEDROPS)

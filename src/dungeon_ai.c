@@ -22,8 +22,6 @@
 #define WATCHING_CAREFULLY_MESSAGE 0xDEE
 #endif
 
-extern struct dungeon *DUNGEON_PTR[];
-
 extern void EndFrozenClassStatus(struct entity *user, struct entity *target, bool8 log);
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);

@@ -17,7 +17,6 @@
 // This needs to be marked as non-volatile here to match GetPossibleAiThrownItemDirections,
 // but AiDecideUseItem needs it to be volatile to match.
 extern s32 AI_THROWN_ITEM_ACTION_CHOICE_COUNT;
-extern struct dungeon *DUNGEON_PTR[];
 
 void GetPossibleAiThrownItemDirections(struct entity *entity, s32 ally_or_enemy, struct item *item, bool8 always_add)
 {

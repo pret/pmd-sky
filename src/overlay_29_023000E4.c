@@ -8,7 +8,6 @@ bool8 EntityIsValid__023000E4(struct entity *entity)
     return entity->type != ENTITY_NOTHING;
 }
 
-extern struct dungeon *DUNGEON_PTR[];
 #ifndef JAPAN
 enum display_name_type GetMonsterDisplayNameType(struct monster *monster) {
     struct dungeon *dungeon = DUNGEON_PTR[0];
