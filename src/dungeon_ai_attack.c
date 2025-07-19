@@ -2,6 +2,7 @@
 #include "dg_random.h"
 #include "dungeon_ai_attack_1.h"
 #include "dungeon_ai_attack_2.h"
+#include "dungeon_capabilities_4.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_statuses.h"
@@ -21,8 +22,6 @@ extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
 extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
 extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
-extern bool8 CanAttackInDirection(struct entity *monster, s32 direction);
-extern s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
 extern bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
 extern enum type_id GetMoveTypeForMonster(struct entity *entity, struct move *move);
 extern s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity *target, enum type_id move_type);
@@ -255,4 +254,32 @@ bool8 EntityIsValid__02319F8C(struct entity *entity)
         return FALSE;
 
     return entity->type != ENTITY_NOTHING;
+}
+
+s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions)
+{
+    struct monster *user_data = GetEntInfo(user);
+
+    s32 direction;
+    if (user->pos.x == target->pos.x && user->pos.y == target->pos.y)
+        direction = user_data->action.direction;
+    else if ((move_ai_range & 0xF0) == RANGE_ROOM ||
+        (move_ai_range & 0xF0) == RANGE_FLOOR ||
+        (move_ai_range & 0xF0) == RANGE_USER)
+        direction = user_data->action.direction;
+    else
+        direction = GetDirectionTowardsPosition(&user->pos, &target->pos);
+
+    if (AI_CAN_ATTACK_IN_DIRECTION[direction])
+        return current_num_targets;
+
+    if (IsAiTargetEligible(move_ai_range, user, target, move, check_all_conditions))
+    {
+        AI_CAN_ATTACK_IN_DIRECTION[direction] = TRUE;
+        AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[current_num_targets] = direction;
+        AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[current_num_targets] = WeightMoveWithIqSkills(user, move_ai_range, target, GetMoveTypeForMonster(user, move));
+        AI_POTENTIAL_ATTACK_TARGETS[current_num_targets] = target;
+        current_num_targets++;
+    }
+    return current_num_targets;
 }
