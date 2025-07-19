@@ -2913,4 +2913,19 @@ enum mobility_type {
     NUM_MOBILITY_TYPES
 };
 
+enum wan_source_type {
+    WAN_SOURCE_NULL = 0,
+    WAN_SOURCE_FILE = 1, // Directly loaded from a .wan
+    WAN_SOURCE_PACK = 2, // Loaded from a pack file
+};
+
+enum pack_file_id {
+    PACK_ARCHIVE_MONSTER = 0,
+    PACK_ARCHIVE_M_ATTACK = 1,
+    PACK_ARCHIVE_M_GROUND = 2,
+    PACK_ARCHIVE_EFFECT = 3,
+    PACK_ARCHIVE_DUNGEON = 4,
+    PACK_ARCHIVE_M_LEVEL = 5,
+};
+
 #endif //PMDSKY_ENUMS_H
