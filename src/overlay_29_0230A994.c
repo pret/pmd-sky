@@ -7,7 +7,7 @@ bool8 IsMonster__0230A994(struct entity *entity)
     if (entity == NULL)
         return FALSE;
 
-    return entity->type == ENTITY_MONSTER;
+    return GetEntityType(entity) == ENTITY_MONSTER;
 }
 
 bool8 ExclusiveItemEffectIsActive__0230A9B8(struct entity *entity, enum exclusive_item_effect_id effect_id)

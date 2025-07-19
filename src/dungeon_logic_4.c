@@ -7,7 +7,7 @@ bool8 HasLowHealth(struct entity *entity)
     if (!EntityIsValid__022F7364(entity))
         return FALSE;
 
-    if (entity->type != ENTITY_MONSTER)
+    if (GetEntityType(entity) != ENTITY_MONSTER)
         return FALSE;
 
     struct monster *pokemon_info = GetEntInfo(entity);

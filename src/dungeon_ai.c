@@ -70,7 +70,7 @@ void RunMonsterAi(struct entity *monster, u32 unused)
                     if (target == NULL)
                         entity_is_valid = FALSE;
                     else
-                        entity_is_valid = target->type != ENTITY_NOTHING;
+                        entity_is_valid = GetEntityType(target) != ENTITY_NOTHING;
 
                     if (entity_is_valid &&
                         GetEntInfo(target)->curse_class_status.curse == STATUS_CURSE_DECOY &&

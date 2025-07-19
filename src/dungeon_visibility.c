@@ -16,9 +16,9 @@ bool8 CanSeeTarget(struct entity *user, struct entity *target)
     if (!target->is_visible)
         return FALSE;
 
-    if (target->type == ENTITY_MONSTER)
+    if (GetEntityType(target) == ENTITY_MONSTER)
     {
-        if (user->type == ENTITY_MONSTER)
+        if (GetEntityType(user) == ENTITY_MONSTER)
         {
             if (!CanSeeInvisibleMonsters(user) && GetEntInfo(target)->invisible_class_status.status == STATUS_INVISIBLE_INVISIBLE)
                 return FALSE;

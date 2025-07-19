@@ -205,7 +205,7 @@ bool8 StatusCheckerCheck(struct entity *attacker, struct move *move)
         case MOVE_DIG:
         {
             struct tile *tile = GetTileAtEntity(attacker);
-            if (!IsTileGround(tile) || (tile->terrain_flags & (TERRAIN_TYPE_NORMAL | TERRAIN_TYPE_SECONDARY)) != TERRAIN_TYPE_NORMAL)
+            if (!IsTileGround(tile) || GetTerrainType(tile) != TERRAIN_TYPE_NORMAL)
                 return FALSE;
             break;
         }
@@ -214,7 +214,7 @@ bool8 StatusCheckerCheck(struct entity *attacker, struct move *move)
             struct entity *object = GetTileAtEntity(attacker)->object;
             if (object == NULL)
                 return FALSE;
-            if (object->type != ENTITY_TRAP)
+            if (GetEntityType(object) != ENTITY_TRAP)
                 return FALSE;
             break;
         }
@@ -468,5 +468,5 @@ bool8 EntityIsValid__02333FAC(struct entity *entity)
     if (entity == NULL)
         return FALSE;
 
-    return entity->type != ENTITY_NOTHING;
+    return GetEntityType(entity) != ENTITY_NOTHING;
 }

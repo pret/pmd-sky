@@ -1,4 +1,5 @@
 #include "overlay_29_0232E250.h"
+#include "dungeon_util_static.h"
 
 extern s32 ATK_STAT_IDX;
 extern s32 SPATK_STAT_IDX;
@@ -10,7 +11,7 @@ bool8 EntityIsValidMoveEffects__0232E250(struct entity *entity)
     if (entity == NULL)
         return FALSE;
 
-    return entity->type != ENTITY_NOTHING;
+    return GetEntityType(entity) != ENTITY_NOTHING;
 }
 
 bool8 DoMoveDefendOrder(struct entity* attacker, struct entity* defender, struct move* move, enum item_id item_id)

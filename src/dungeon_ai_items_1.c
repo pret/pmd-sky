@@ -106,7 +106,7 @@ bool8 EntityIsValid__0230F008(struct entity *entity)
     if (entity == NULL)
         return FALSE;
 
-    return entity->type != ENTITY_NOTHING;
+    return GetEntityType(entity) != ENTITY_NOTHING;
 }
 
 void GetPossibleAiArcItemTargets(struct entity *user, struct item *item, struct position positions[], bool8 always_add_position)

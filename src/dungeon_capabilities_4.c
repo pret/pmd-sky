@@ -35,7 +35,7 @@ bool8 CanMonsterMoveOrSwapWithAllyInDirection(struct entity *monster, s32 direct
         return FALSE;
 
     if (current_map_tile->monster != NULL &&
-        current_map_tile->monster->type == ENTITY_MONSTER &&
+        GetEntityType(current_map_tile->monster) == ENTITY_MONSTER &&
         GetTreatmentBetweenMonsters(monster, current_map_tile->monster, TRUE, FALSE) == TREATMENT_TREAT_AS_ENEMY)
         return FALSE;
 
@@ -81,7 +81,7 @@ bool8 CanAttackInDirection(struct entity *monster, s32 direction)
     if (current_map_tile->terrain_flags & TERRAIN_TYPE_IMPASSABLE_WALL)
         return FALSE;
 
-    if (current_map_tile->monster != NULL && current_map_tile->monster->type != ENTITY_MONSTER)
+    if (current_map_tile->monster != NULL && GetEntityType(current_map_tile->monster) != ENTITY_MONSTER)
         return FALSE;
 
     #ifdef JAPAN
