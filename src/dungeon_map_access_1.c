@@ -1,6 +1,7 @@
 #include "dungeon_map_access_1.h"
 #include "dungeon.h"
 #include "secondary_terrain_types.h"
+#include "tileset.h"
 
 extern bool8 IsWaterTileset();
 
@@ -20,4 +21,9 @@ bool8 IsTileGround(struct tile *tile)
         is_ground = TRUE;
     }
     return is_ground;
+}
+
+bool8 IsWaterTileset()
+{
+    return TILESET_PROPERTIES[DUNGEON_PTR[0]->gen_info.tileset_id].is_water_tileset;
 }

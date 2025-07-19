@@ -1,27 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02337E94.inc"
+	.include "overlay_29_02337EC0.inc"
 
 	.text
-
-	arm_func_start IsWaterTileset
-IsWaterTileset: ; 0x02337E94
-	ldr r0, _02337EB8 ; =DUNGEON_PTR
-	mov r1, #0xc
-	ldr r0, [r0]
-	ldr r2, _02337EBC ; =ov10_022C6327
-	add r0, r0, #0x4000
-#ifdef JAPAN
-	ldrsh r0, [r0, #0x30]
-#else
-	ldrsh r0, [r0, #0xd4]
-#endif
-	smulbb r0, r0, r1
-	ldrb r0, [r2, r0]
-	bx lr
-	.align 2, 0
-_02337EB8: .word DUNGEON_PTR
-_02337EBC: .word ov10_022C6327
-	arm_func_end IsWaterTileset
 
 	arm_func_start ov29_02337EC0
 ov29_02337EC0: ; 0x02337EC0

@@ -11,5 +11,4 @@
 .public MemFree
 .public MemZero
 .public RandInt
-.public ov10_022C6327
 .public ov29_022FAFD4
