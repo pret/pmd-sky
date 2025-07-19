@@ -1,4 +1,4 @@
-#include "overlay_29_022EDC30.h"
+#include "trap.h"
 #include "dungeon.h"
 #include "dungeon_map_access.h"
 
