@@ -1,0 +1,15 @@
+#pragma once
+.public DIRECTIONS_XY
+.public DUNGEON_PTR
+.public DungeonRandInt
+.public DungeonRandRange
+.public GetMonsterIdFromSpawnEntry
+.public GetTile
+.public GetTileSafe
+.public IqSkillIsEnabled
+.public MemAlloc
+.public MemFree
+.public MemZero
+.public RandInt
+.public ov10_022C6327
+.public ov29_022FAFD4

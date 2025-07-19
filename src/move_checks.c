@@ -2,6 +2,7 @@
 #include "dungeon_logic.h"
 #include "dungeon_logic_3.h"
 #include "dungeon_logic_4.h"
+#include "dungeon_map_access_1.h"
 #include "dungeon_util_1.h"
 #include "dungeon_util_static.h"
 #include "dungeon_visibility.h"
@@ -11,8 +12,6 @@
 #include "tileset.h"
 #include "trap.h"
 #include "weather.h"
-
-extern bool8 IsTileGround(struct tile *tile);
 
 // https://decomp.me/scratch/TnODN
 #ifdef NONMATCHING
