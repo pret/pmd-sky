@@ -12,6 +12,8 @@
 #define DUNGEON_MAX_SIZE_Y 32
 #define CORRIDOR_ROOM 0xFF
 
+extern struct dungeon *DUNGEON_PTR[];
+
 enum terrain_type
 {
     // These 3 seem to indicate the 'main' type of the terrain. See helper functions for how they're set.

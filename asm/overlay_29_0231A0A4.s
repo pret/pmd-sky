@@ -1,75 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02319FB0.inc"
+	.include "overlay_29_0231A0A4.inc"
 
 	.text
-
-	arm_func_start TryAddTargetToAiTargetList
-TryAddTargetToAiTargetList: ; 0x02319FB0
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	mov r7, r2
-	mov r6, r3
-	ldrsh r3, [r7, #4]
-	ldrsh r2, [r6, #4]
-	mov sb, r0
-	mov r8, r1
-	cmp r3, r2
-	ldreqsh r1, [r7, #6]
-	ldreqsh r0, [r6, #6]
-	ldr r2, [r7, #0xb4]
-	cmpeq r1, r0
-	ldreqb r5, [r2, #0x4c]
-	beq _0231A010
-	and r0, r8, #0xf0
-	cmp r0, #0x30
-	cmpne r0, #0x60
-	cmpne r0, #0x70
-	ldreqb r5, [r2, #0x4c]
-	beq _0231A010
-	add r0, r7, #4
-	add r1, r6, #4
-	bl GetDirectionTowardsPosition
-	mov r5, r0
-_0231A010:
-	ldr r4, _0231A094 ; =AI_CAN_ATTACK_IN_DIRECTION
-	ldrb r0, [r4, r5]
-	cmp r0, #0
-	movne r0, sb
-	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	ldrb ip, [sp, #0x24]
-	ldr r3, [sp, #0x20]
-	mov r0, r8
-	mov r1, r7
-	mov r2, r6
-	str ip, [sp]
-	bl IsAiTargetEligible
-	cmp r0, #0
-	beq _0231A08C
-	ldr r2, _0231A098 ; =AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS
-	mov r3, #1
-	ldr r1, [sp, #0x20]
-	mov r0, r7
-	strb r3, [r4, r5]
-	strb r5, [r2, sb]
-	bl GetMoveTypeForMonster
-	mov r3, r0
-	mov r0, r7
-	mov r1, r8
-	mov r2, r6
-	bl WeightMoveWithIqSkills
-	ldr r2, _0231A09C ; =AI_POTENTIAL_ATTACK_TARGET_WEIGHTS
-	ldr r1, _0231A0A0 ; =AI_POTENTIAL_ATTACK_TARGETS
-	str r0, [r2, sb, lsl #2]
-	str r6, [r1, sb, lsl #2]
-	add sb, sb, #1
-_0231A08C:
-	mov r0, sb
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	.align 2, 0
-_0231A094: .word AI_CAN_ATTACK_IN_DIRECTION
-_0231A098: .word AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS
-_0231A09C: .word AI_POTENTIAL_ATTACK_TARGET_WEIGHTS
-_0231A0A0: .word AI_POTENTIAL_ATTACK_TARGETS
-	arm_func_end TryAddTargetToAiTargetList
 
 	arm_func_start IsAiTargetEligible
 IsAiTargetEligible: ; 0x0231A0A4

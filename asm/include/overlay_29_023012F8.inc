@@ -1,4 +1,5 @@
 #pragma once
+.public DIRECTIONAL_BIT_MASKS__02352770
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -10,5 +11,3 @@
 .public IsTacticSet
 .public ItemIsActive__022FF898
 .public SECONDARY_TERRAIN_TYPES
-.public DIRECTIONAL_BIT_MASKS__02352770
-.public DIRECTIONAL_BIT_MASKS__02352778

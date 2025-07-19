@@ -23,8 +23,6 @@
 // Each index in the array corresponds to the number of attacks (0-4) the AI can use (i.e., is enabled and has PP remaining).
 const s16 AI_REGULAR_ATTACK_WEIGHTS[5] = { 100, 20, 30, 40, 50 };
 
-extern struct dungeon *DUNGEON_PTR[];
-
 extern bool8 ov29_02338350(struct entity *monster);
 extern bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified);
 extern void SetActionRegularAttack(struct action_data *monster_action, u8 direction);

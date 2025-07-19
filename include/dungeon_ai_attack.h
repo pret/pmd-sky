@@ -23,5 +23,14 @@ struct ai_possible_move
 u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *monster, struct move *move);
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
 bool8 EntityIsValid__02319F8C(struct entity *entity);
+// Checks if the specified target is eligible to be targeted by the AI and if so adds it to the list of targets. This function also fills an array that seems to contain the directions in which the user should turn to look at each of the targets in the list, as well as a third unknown array.
+// current_num_targets: Number of existing targets in the list
+// move_ai_range: Move's AI range field
+// user: User entity pointer
+// target: Target entity pointer
+// move: Move pointer
+// check_all_conditions: check_all_conditions parameter to pass to IsAiTargetEligible
+// return: New number of targets in the target list
+s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
 
 #endif //PMDSKY_DUNGEON_AI_ATTACK_H

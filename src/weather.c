@@ -3,8 +3,6 @@
 #include "dungeon_items.h"
 #include "dungeon_pokemon_attributes.h"
 
-extern struct dungeon *DUNGEON_PTR[];
-
 enum weather_id GetApparentWeather(struct entity *entity)
 {
     if (entity != NULL)
