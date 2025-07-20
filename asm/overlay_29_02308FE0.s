@@ -49,7 +49,7 @@ _02309A68:
 _02309A88:
 	mov r0, sl
 	mov r1, sb
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r0, sl
 	mov r1, sb
 	bl UpdateShopkeeperModeAfterAttack
@@ -1129,7 +1129,7 @@ _0230903C:
 _0230905C:
 	mov r0, r8
 	mov r1, r7
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r0, r8
 	mov r1, r7
 	bl UpdateShopkeeperModeAfterAttack

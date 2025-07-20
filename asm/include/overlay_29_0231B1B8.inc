@@ -6,5 +6,5 @@
 .public IsMonsterSleeping
 .public ov10_022C4530
 .public ov29_022E28D4
-.public ov29_02307BDC
+.public TryEndPetrifiedOrSleepStatus
 .public ov29_0234B084

@@ -12,7 +12,6 @@ bool8 EntityIsValid__022F7364(struct entity *entity)
     return GetEntityType(entity) != ENTITY_NOTHING;
 }
 
-extern struct dungeon *DUNGEON_PTR[];
 s16 DungeonGetSpriteIndex(s16 monster_id) {
     return DUNGEON_PTR[0]->sprite_indexes[monster_id];
 }

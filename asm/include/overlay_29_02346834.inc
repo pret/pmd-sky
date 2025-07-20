@@ -51,7 +51,7 @@
 .public ov29_022FBA54
 .public ov29_022FBA70
 .public ov29_023009A0
-.public ov29_02307BDC
+.public TryEndPetrifiedOrSleepStatus
 .public ov29_02344B44
 .public ov29_02344B70
 .public ov29_023457C8
@@ -62,7 +62,7 @@
 .public SetEntityPixelPosXY
 .public SetItemAcquired
 .public SpawnDroppedItem
-.public sub_020018D0
+.public sin_4096
 .public sub_0200CF6C
 .public sub_0200D894
 .public sub_0200D8AC

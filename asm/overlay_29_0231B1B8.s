@@ -91,7 +91,7 @@ _0231B27C:
 	beq _0231B2F0
 	mov r0, sl
 	mov r1, sb
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 _0231B2F0:
 	add r0, r8, #1
 	mov r0, r0, lsl #0x10

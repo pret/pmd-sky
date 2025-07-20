@@ -1066,7 +1066,7 @@ _0234744C:
 	add r0, r1, r0
 	str r0, [sp, #0x10]
 	mov r0, r7
-	bl sub_020018D0
+	bl sin_4096
 	mov r1, #0xc
 	mul r1, r0, r1
 	str r1, [sl, #0x1c]
@@ -1644,7 +1644,7 @@ _02347988:
 	mov r0, sl
 	mov r1, fp
 #endif
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r2, r0
 	ldr r0, [sp, #0x1c]
 	mov r3, sl

@@ -1158,7 +1158,7 @@ _0234665C:
 	str r0, [sp, #0xc]
 	bl IncrementEntityPixelPosXY
 	mov r0, fp
-	bl sub_020018D0
+	bl sin_4096
 	mov r1, #0xc
 	mul r1, r0, r1
 	ldr r0, [sp, #0xc]

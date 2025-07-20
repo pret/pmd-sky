@@ -43,6 +43,6 @@
 .public ov29_0235175C
 .public ov29_02352A54
 .public ov29_02352A6C
-.public sub_020018D0
+.public sin_4096
 .public sub_02001980
 .public sub_0201CF90

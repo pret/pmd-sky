@@ -4,8 +4,6 @@
 #include "secondary_terrain_types.h"
 #include "tileset.h"
 
-extern bool8 IsWaterTileset();
-
 bool8 IsTileGround(struct tile *tile)
 {
     bool8 is_ground = FALSE;

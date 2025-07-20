@@ -465,7 +465,7 @@ _0232EE54:
 	bl ov29_022F9840
 	mov r0, sb
 	mov r1, r4
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	ldr r0, [sp, #0x7c]
 	cmp r0, #0
 	ldreq r0, _0232F7EC ; =0x00000163

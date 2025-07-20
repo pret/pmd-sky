@@ -74,7 +74,7 @@
 .public ov29_02303E0C
 .public ov29_02304830
 .public ov29_02304A48
-.public ov29_02307BDC
+.public TryEndPetrifiedOrSleepStatus
 .public ov29_02307C48
 .public ov29_02307DC0
 .public ov29_0230D628

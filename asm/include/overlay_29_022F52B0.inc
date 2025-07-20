@@ -30,7 +30,7 @@
 .public ov29_02346FB8
 .public ov29_02347000
 .public ov29_02347518
-.public ov29_02347BC8
+.public HandleCurvedProjectileThrow
 .public ov29_0234B034
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveEquivItemNoHole

@@ -45,7 +45,7 @@
 .public SetEntityPixelPosXY
 .public ShouldDisplayEntityWrapper
 .public SpawnItem
-.public sub_020018D0
+.public sin_4096
 .public sub_0200D1FC
 .public sub_0201B9F8
 .public sub_02024FE8

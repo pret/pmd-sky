@@ -42,4 +42,4 @@
 .public ov29_0234B4CC
 .public ov29_02352A8C
 .public ov29_0235370C
-.public sub_020018D0
+.public sin_4096
