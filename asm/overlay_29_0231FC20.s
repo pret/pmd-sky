@@ -348,7 +348,7 @@ _0232009C:
 	bne _02320118
 	mov r0, sl
 	mov r1, r4
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _02320170 ; =ov10_022C4570

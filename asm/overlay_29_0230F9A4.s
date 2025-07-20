@@ -494,7 +494,7 @@ _0230FFE8:
 	mov r0, r5
 	ldreq r6, _02310A90 ; =0x00000DEA
 	moveq r7, #0
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r0, r5
 	mov r1, #1
 	mov r2, #0xe
@@ -822,7 +822,7 @@ _023104F8:
 	ldrsh r2, [r1]
 	mov r1, r5
 	strb r2, [r4, #0xc1]
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	ldr r0, _02310AB0 ; =BURN_DAMAGE
 	mov r2, #1
 	ldrsh r1, [r0]
@@ -985,7 +985,7 @@ _02310754:
 	ldrsh r2, [r1]
 	mov r1, r5
 	strb r2, [r4, #0xc1]
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r0, r5
 	mov r1, #0x72
 	bl AbilityIsActiveVeneer
@@ -1050,7 +1050,7 @@ _02310830:
 	bne _02310FF4
 	mov r0, r5
 	mov r1, r5
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r0, r5
 	mov r1, #0x72
 	bl AbilityIsActiveVeneer
@@ -1107,7 +1107,7 @@ _0231092C:
 	ldrsh r2, [r1]
 	mov r1, r5
 	strb r2, [r4, #0xcd]
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	ldr r1, [r4, #0xc8]
 	mov r0, r5
 	bl PlayEffectAnimationEntityStandard
@@ -1150,7 +1150,7 @@ _023109D4:
 	ldrsh r2, [r1]
 	mov r1, r5
 	strb r2, [r4, #0xcd]
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	ldr r0, _02310ADC ; =ov10_022C45D0
 	ldr r3, _02310AE0 ; =0x0000024A
 	ldrsh r1, [r0]
@@ -1272,7 +1272,7 @@ _02310B6C:
 	bne _02310FF4
 	mov r0, r5
 	mov r1, r5
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r2, #7
 	mov r0, r5
 	mov r1, r6
@@ -1364,7 +1364,7 @@ _02310D00:
 	beq _02310DC4
 	mov r0, r5
 	mov r1, r5
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r0, r5
 	mov r1, r6
 	mov r2, #9
@@ -1374,7 +1374,7 @@ _02310D00:
 	beq _02310D94
 	mov r0, r7
 	mov r1, r7
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r2, #0xd
 	mov r0, r7
 	mov r1, r6
@@ -1430,7 +1430,7 @@ _02310DE0:
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, r5
 	mov r1, r5
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #7
 	bne _02310E6C

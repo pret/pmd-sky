@@ -495,7 +495,7 @@ _022F58EC:
 	mov r0, sb
 	add r2, sb, #4
 	str r4, [sp]
-	bl ov29_02347BC8
+	bl HandleCurvedProjectileThrow
 	b _022F5944
 _022F5928:
 	add r0, sp, #8

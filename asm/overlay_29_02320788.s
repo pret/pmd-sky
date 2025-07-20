@@ -513,7 +513,7 @@ _02320E20:
 	bl LogMessageByIdWithPopupCheckUserTarget
 	mov r0, r8
 	mov r1, r8
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r0, sb
 	mov r1, r8
 	bl ov29_022E5650

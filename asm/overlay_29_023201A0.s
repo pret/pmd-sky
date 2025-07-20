@@ -164,7 +164,7 @@ _023203C0:
 	mov r0, r5
 	str r8, [sp, #4]
 	str sb, [sp, #8]
-	bl sub_020018D0
+	bl sin_4096
 	mov r1, #0xc
 	mul r1, r0, r1
 	str r1, [sl, #0x1c]

@@ -859,8 +859,8 @@ _020018C4:
 	bx lr
 	arm_func_end sub_020018A4
 
-	arm_func_start sub_020018D0
-sub_020018D0: ; 0x020018D0
+	arm_func_start sin_4096
+sin_4096: ; 0x020018D0
 	and r1, r0, #0xc00
 	cmp r1, #0x400
 	bgt _020018EC
@@ -913,7 +913,7 @@ _02001970:
 	.align 2, 0
 _02001978: .word _02090C48
 _0200197C: .word 0x000003FF
-	arm_func_end sub_020018D0
+	arm_func_end sin_4096
 
 	arm_func_start sub_02001980
 sub_02001980: ; 0x02001980

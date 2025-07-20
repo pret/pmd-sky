@@ -25,6 +25,6 @@
 .public RemoveGroundItem
 .public SetEntityPixelPosXY
 .public SpawnItem
-.public sub_020018D0
+.public sin_4096
 .public UpdateMinimap
 .public UpdateTrapsVisibility

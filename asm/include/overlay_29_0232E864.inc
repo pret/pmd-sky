@@ -400,7 +400,7 @@
 .public ov29_02301C2C
 .public ov29_02304A48
 .public ov29_02304C3C
-.public ov29_02307BDC
+.public TryEndPetrifiedOrSleepStatus
 .public ov29_02314DC4
 .public ov29_0231AD38
 .public ov29_023201D0

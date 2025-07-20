@@ -66,7 +66,7 @@
 .public ov29_022F2FE4
 .public ov29_022F42F8
 .public ov29_022FB718
-.public ov29_02307BDC
+.public TryEndPetrifiedOrSleepStatus
 .public ov29_02322374
 .public IsTileGround
 .public ov29_02344B9C

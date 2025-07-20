@@ -129,7 +129,7 @@ _022F5ADC:
 	bl ov29_02348C64
 	mov r0, r6
 	mov r1, sl
-	bl ov29_02307BDC
+	bl TryEndPetrifiedOrSleepStatus
 	mov r0, sl
 	bl ov29_023009CC
 	cmp r0, #0

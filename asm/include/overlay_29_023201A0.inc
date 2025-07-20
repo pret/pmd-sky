@@ -29,7 +29,7 @@
 .public ov29_02353700
 .public RemoveGroundItem
 .public ShouldDisplayEntityWrapper
-.public sub_020018D0
+.public sin_4096
 .public SubstitutePlaceholderStringTags
 .public UpdateEntityPixelPos
 .public UpdateMinimap

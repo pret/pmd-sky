@@ -22511,7 +22511,7 @@ _0206B580:
 	bl MultiplyByFixedPoint
 	str r0, [r6, #0x18]
 	ldr r0, [r6, #0x20]
-	bl sub_020018D0
+	bl sin_4096
 	add r1, sl, #0x300
 	rsb r0, r0, #0
 	bl MultiplyByFixedPoint
@@ -23206,7 +23206,7 @@ sub_0206BFA8: ; 0x0206BFA8
 	ldr r1, [r4, #0x30]
 	add r7, r1, r0
 	ldr r0, [r4, #0x20]
-	bl sub_020018D0
+	bl sin_4096
 	ldr r1, [r4, #0x24]
 	rsb r0, r0, #0
 	bl MultiplyByFixedPoint

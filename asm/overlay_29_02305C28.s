@@ -2469,8 +2469,8 @@ _02307BB0:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	arm_func_end ov29_02307B0C
 
-	arm_func_start ov29_02307BDC
-ov29_02307BDC: ; 0x02307BDC
+	arm_func_start TryEndPetrifiedOrSleepStatus
+TryEndPetrifiedOrSleepStatus: ; 0x02307BDC
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #4
 	mov r5, r1
@@ -2500,7 +2500,7 @@ _02307C3C:
 	mov r0, r3
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end ov29_02307BDC
+	arm_func_end TryEndPetrifiedOrSleepStatus
 
 	arm_func_start ov29_02307C48
 ov29_02307C48: ; 0x02307C48

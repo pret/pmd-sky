@@ -18,7 +18,7 @@
 .public ov29_022E56A0
 .public ov29_022F9C74
 .public ov29_022FFB90
-.public ov29_02307BDC
+.public TryEndPetrifiedOrSleepStatus
 .public ov29_0232033C
 .public ov29_02321238
 .public ov29_0232124C
