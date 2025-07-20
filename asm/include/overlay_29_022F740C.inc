@@ -1,7 +1,6 @@
 #pragma once
 .public DUNGEON_PTR
 .public DirectoryFileMngr_GetDirectoryFileSize
-.public FloorNumberIsEven
 .public GendersEqualNotGenderless
 .public GetMonsterGender
 .public GetSpriteFileSize
@@ -10,6 +9,5 @@
 .public LoadWanTableEntryFromPack
 .public LoadWanTableEntryFromPackUseProvidedMemory
 .public MemAlloc
-.public ReplaceWanFromBinFile
 .public WAN_TABLE
 .public ov29_0237C9B0

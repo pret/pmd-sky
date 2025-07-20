@@ -1,0 +1,10 @@
+#pragma once
+.public CopyBitsFrom
+.public CopyBitsTo
+.public DUNGEON_RESTRICTIONS
+.public DungeonFloorToGroupFloor
+.public GetItemIdFromList
+.public GetNbFloorsPlusOne
+.public MISSION_FLOORS_FORBIDDEN
+.public RandIntSafe
+.public _020A1864
