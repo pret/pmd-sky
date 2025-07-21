@@ -45,8 +45,8 @@
 .public UnloadFile
 .public UnloadOverlay
 .public UnloadWte
-.public UpdateInventoryMenu
 .public _020B0A5C
+.public ov10_022C434C
 .public ov10_022DC094
 .public ov10_022DC0B8
 .public ov10_022DC0D4
