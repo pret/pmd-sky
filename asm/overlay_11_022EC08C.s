@@ -1,66 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_11_022EBFC8.inc"
+	.include "overlay_11_022EC08C.inc"
 
 	.text
-
-	arm_func_start ov11_022EBFC8
-ov11_022EBFC8: ; 0x022EBFC8
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	mov r8, r0
-	ldrsh r1, [r8]
-	cmp r1, #3
-	bne _022EBFE4
-	bl ov11_022EBF60
-	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-_022EBFE4:
-	mov r6, #0
-	add r5, r8, #0xc4
-	mov r4, #0x2c
-_022EBFF0:
-	mla r7, r6, r4, r5
-	add r0, r7, #8
-	bl PointsToZero
-	cmp r0, #0
-	bne _022EC00C
-	add r0, r7, #8
-	bl UnloadFile
-_022EC00C:
-	add r6, r6, #1
-	cmp r6, #4
-	blt _022EBFF0
-	add r0, r8, #0x1a0
-	bl sub_0206367C
-	add r0, r8, #0x194
-	bl sub_020635D8
-	add r0, r8, #0x174
-	bl PointsToZero
-	cmp r0, #0
-	bne _022EC040
-	add r0, r8, #0x174
-	bl UnloadFile
-_022EC040:
-	add r0, r8, #0x17c
-	bl PointsToZero
-	cmp r0, #0
-	bne _022EC058
-	add r0, r8, #0x17c
-	bl UnloadFile
-_022EC058:
-	add r0, r8, #0x184
-	bl PointsToZero
-	cmp r0, #0
-	bne _022EC070
-	add r0, r8, #0x184
-	bl UnloadFile
-_022EC070:
-	add r0, r8, #0x18c
-	bl PointsToZero
-	cmp r0, #0
-	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
-	add r0, r8, #0x18c
-	bl UnloadFile
-	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov11_022EBFC8
 
 	arm_func_start ov11_022EC08C
 ov11_022EC08C: ; 0x022EC08C

@@ -128,7 +128,7 @@ struct UnkGroundBg_194
 // size: 0x55C
 typedef struct GroundBg
 {
-    u16 newUnk0; // Not present in Red
+    s16 newUnk0; // Not present in Red
     SubStruct_0 unk0[UNK_0_ARR_COUNT];
     SubStruct_3E0 unk3E0[UNK_3E0_ARR_COUNT]; // 0xc4
     struct iovec bplFile; // 0x174
@@ -216,5 +216,6 @@ void LoadBackgroundAttributes(struct bg_list_entry* entry, int bgId);
 void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1);
 void ov11_022EBEAC(GroundBg *groundBg);
 void ov11_022EBF60(GroundBg *groundBg);
+void ov11_022EBFC8(GroundBg *groundBg);
 
 #endif //PMDSKY_OVERLAY_11_022EBB40_H

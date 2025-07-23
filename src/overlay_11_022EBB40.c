@@ -6,6 +6,9 @@ extern void FileClose(struct file_stream* file);
 extern void ZInit8(struct iovec *dst);
 extern void* MemAlloc(u32 len, u32 flags);
 extern void MemFree(void* ptr);
+extern BOOL PointsToZero(struct iovec* ptr);
+extern void UnloadFile(struct iovec* ptr);
+
 #define FREE_AND_SET_NULL(ptr)          \
 {                                       \
     MemFree(ptr);                       \
@@ -13,6 +16,7 @@ extern void MemFree(void* ptr);
 }
 
 #define TRY_FREE_AND_SET_NULL(ptr) if (ptr != NULL) FREE_AND_SET_NULL(ptr)
+#define TRY_CLOSE_FILE(f) if (!PointsToZero(&f)) {UnloadFile(&f);}
 
 
 extern const char ov11_02320C44[];
@@ -48,8 +52,10 @@ void LoadBackgroundAttributes(struct bg_list_entry* entry, int bgId)
 void ov11_022EBF60(GroundBg *groundBg);
 void *sub_0200B500(void *unk);
 void ov11_022EBFC8(GroundBg *groundBg); // Close Opened Files ?
-void sub_02063600(void *);
+void sub_02063600(struct UnkGroundBg_1A0 *);
+void sub_0206367C(struct UnkGroundBg_1A0 *);
 void sub_020635C8(struct UnkGroundBg_194 *);
+void sub_020635D8(struct UnkGroundBg_194 *);
 
 struct UnkStruct_2324CBC
 {
@@ -202,4 +208,25 @@ void ov11_022EBF60(GroundBg *groundBg)
     ZInit8(&groundBg->unk17C);
     ZInit8(&groundBg->bpcFile);
     ZInit8(&groundBg->bmaFile);
+}
+
+void ov11_022EBFC8(GroundBg *groundBg)
+{
+    s32 i;
+    if (groundBg->newUnk0 == 3) {
+        ov11_022EBF60(groundBg);
+        return;
+    }
+
+    for (i = 0; i < UNK_3E0_ARR_COUNT; i++) {
+        SubStruct_3E0 *unkPtr = &groundBg->unk3E0[i];
+        TRY_CLOSE_FILE(unkPtr->bpaFile);
+    }
+    sub_0206367C(&groundBg->unk1A0);
+    sub_020635D8(&groundBg->unk194);
+
+    TRY_CLOSE_FILE(groundBg->bplFile);
+    TRY_CLOSE_FILE(groundBg->unk17C);
+    TRY_CLOSE_FILE(groundBg->bpcFile);
+    TRY_CLOSE_FILE(groundBg->bmaFile);
 }

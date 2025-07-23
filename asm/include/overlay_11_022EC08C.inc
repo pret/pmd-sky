@@ -325,7 +325,7 @@
 .public ov11_022EBAA0
 .public ov11_022EBC18
 .public ov11_022EBEAC
-.public ov11_022EBF60
+.public ov11_022EBFC8
 .public ov11_02316AFC
 .public ov11_02316B04
 .public ov11_02316B14
@@ -2496,9 +2496,7 @@
 .public sub_02062D9C
 .public sub_02062DB4
 .public sub_0206351C
-.public sub_020635D8
 .public sub_02063628
-.public sub_0206367C
 .public sub_02063734
 .public sub_02063830
 .public sub_02064FFC
