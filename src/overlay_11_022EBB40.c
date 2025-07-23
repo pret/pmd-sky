@@ -1,8 +1,19 @@
 #include "overlay_11_022EBB40.h"
 #include "file_rom.h"
 
+// TODO: Move these to headers
 extern void FileClose(struct file_stream* file);
+extern void ZInit8(struct iovec *dst);
 extern void* MemAlloc(u32 len, u32 flags);
+extern void MemFree(void* ptr);
+#define FREE_AND_SET_NULL(ptr)          \
+{                                       \
+    MemFree(ptr);                       \
+    ptr = NULL;                         \
+}
+
+#define TRY_FREE_AND_SET_NULL(ptr) if (ptr != NULL) FREE_AND_SET_NULL(ptr)
+
 
 extern const char ov11_02320C44[];
 
@@ -36,6 +47,9 @@ void LoadBackgroundAttributes(struct bg_list_entry* entry, int bgId)
 
 void ov11_022EBF60(GroundBg *groundBg);
 void *sub_0200B500(void *unk);
+void ov11_022EBFC8(GroundBg *groundBg); // Close Opened Files ?
+void sub_02063600(void *);
+void sub_020635C8(struct UnkGroundBg_194 *);
 
 struct UnkStruct_2324CBC
 {
@@ -143,4 +157,49 @@ void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1)
     for (i = 0; i < NUM_LAYERS; i++) {
         groundBg->cameraPixelPosition[i] = ov11_02320BE4.sPositionZero;
     }
+}
+
+void ov11_022EBEAC(GroundBg *groundBg)
+{
+    s32 i;
+
+    ov11_022EBFC8(groundBg);
+    TRY_FREE_AND_SET_NULL(groundBg->unk2D8);
+
+    for (i = 0; i < NUM_LAYERS; i++) {
+        if (groundBg->unk2DC[i] != NULL) {
+            if (groundBg->unk52C.unkE[i] > 0) {
+                MemFree(groundBg->unk2DC[i]);
+            }
+            groundBg->unk2DC[i] = NULL;
+        }
+        if (groundBg->unk2EC[i] != NULL) {
+            groundBg->unk2EC[i] = NULL;
+        }
+        if (groundBg->unk2E4[i] != NULL) {
+            if (groundBg->unk52C.unkE[i] > 0) {
+                MemFree(groundBg->unk2E4[i]);
+            }
+            groundBg->unk2E4[i] = NULL;
+        }
+    }
+}
+
+void ov11_022EBF60(GroundBg *groundBg)
+{
+    s32 i;
+
+    for (i = 0; i < UNK_3E0_ARR_COUNT; i++) {
+        SubStruct_3E0 *unkPtr = &groundBg->unk3E0[i];
+        ZInit8(&unkPtr->bpaFile);
+    }
+
+    sub_02063600(&groundBg->unk1A0);
+    sub_020635C8(&groundBg->unk194);
+    groundBg->unk1BC = 0;
+
+    ZInit8(&groundBg->bplFile);
+    ZInit8(&groundBg->unk17C);
+    ZInit8(&groundBg->bpcFile);
+    ZInit8(&groundBg->bmaFile);
 }
