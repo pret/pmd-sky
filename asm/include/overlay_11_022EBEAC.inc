@@ -323,6 +323,7 @@
 .public ov11_022EB2F4
 .public ov11_022EB3C8
 .public ov11_022EBAA0
+.public ov11_022EBC18
 .public ov11_02316AFC
 .public ov11_02316B04
 .public ov11_02316B14
@@ -2322,7 +2323,6 @@
 .public sub_0200B33C
 .public sub_0200B340
 .public sub_0200B3C0
-.public sub_0200B500
 .public sub_0200CF6C
 .public sub_0200D310
 .public sub_0200D65C
