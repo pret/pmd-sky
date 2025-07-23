@@ -1,6 +1,8 @@
 #ifndef PMDSKY_OVERLAY_11_022EBB40_H
 #define PMDSKY_OVERLAY_11_022EBB40_H
 
+#include "util.h"
+
 // TODO: Move these to actual headers later on
 struct iovec
 {
@@ -125,6 +127,18 @@ struct UnkGroundBg_194
     u8 unkB;
 };
 
+typedef struct MapRender
+{
+    s16 chunkDimensions;
+    s16 unk2;
+    s16 numBgs;
+    bool8 wrapAround;
+    s32 widthChunks;
+    s32 heightChunks;
+    PixelPos mapSizePixels;
+    void (*tilemapRenderFunc)(struct MapRender *);
+} MapRender;
+
 // size: 0x55C
 typedef struct GroundBg
 {
@@ -203,7 +217,9 @@ typedef struct GroundBg
     u8 unk1FE;
     u8 unk1FF;
     PixelPos cameraPixelPosition[NUM_LAYERS]; // 0x200
-    u8 fillerForNow2[170];
+    MapRender mapRender[NUM_LAYERS]; // 0x210
+    u8 fillerForNow2[112];
+    s16 unk2B8;
     u8 unk2BA;
     SubStruct_52C unk52C; // 2bc
     u16 *unk2D8;
@@ -217,5 +233,6 @@ void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1);
 void ov11_022EBEAC(GroundBg *groundBg);
 void ov11_022EBF60(GroundBg *groundBg);
 void ov11_022EBFC8(GroundBg *groundBg);
+void ov11_022EC08C(GroundBg *groundBg);
 
 #endif //PMDSKY_OVERLAY_11_022EBB40_H
