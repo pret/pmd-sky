@@ -234,5 +234,6 @@ void ov11_022EBEAC(GroundBg *groundBg);
 void ov11_022EBF60(GroundBg *groundBg);
 void ov11_022EBFC8(GroundBg *groundBg);
 void ov11_022EC08C(GroundBg *groundBg);
+void ov11_022EC240(GroundBg *groundBg, s32 bgId);
 
 #endif //PMDSKY_OVERLAY_11_022EBB40_H

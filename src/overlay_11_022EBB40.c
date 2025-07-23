@@ -329,3 +329,14 @@ void ov11_022EC08C(GroundBg *groundBg)
     groundBg->mapRender[0].tilemapRenderFunc(&groundBg->mapRender[0]);
     groundBg->unk2BA = 1;
 }
+
+void ov11_022EC240(GroundBg *groundBg, s32 bgId)
+{
+    ov11_022EC08C(groundBg);
+    if (bgId != -1) {
+        struct bg_list_entry entry;
+
+        groundBg->unk1BE = bgId;
+        LoadBackgroundAttributes(&entry, groundBg->unk1BE); // This loads bg attributes and doesn't do anything with them.
+    }
+}
