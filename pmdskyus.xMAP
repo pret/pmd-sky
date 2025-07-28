@@ -543,9 +543,10 @@
                                                                                    82](ExclusiveItemEffectIsActive__023329E8,func) found in global overlay_29_023329E8.o
                                                                                    82](LightningRodStormDrainCheck,func) found in global itcm_01FFBD20.o
                                                                                     83](TryAddTargetToAiTargetList,func) found in global dungeon_ai_attack.o
-                                                                                     84](IsAiTargetEligible,func) found in global overlay_29_0231A0A4.o
+                                                                                     84](IsAiTargetEligible,func) found in global dungeon_ai_attack.o
+                                                                                      85](StatusCheckerCheckOnTarget,func) found in global overlay_29_02333FD0.o
+                                                                                     84](WeightMoveWithIqSkills,func) found in global overlay_29_0231A364.o
                                                                                       85](ov29_0230F8D0,func) found in global overlay_29_0230F8D0.o
-                                                                                      85](ov29_02333FD0,func) found in global overlay_29_02333FD0.o
                                                                                     83](ResetAiCanAttackInDirection,func) found in global dungeon_ai_attack_2.o
                                                                                     83](IsMonster__0231A9D4,func) found in global overlay_29_0231A9D4.o
                                                                                     83](EntityIsValid__02319F8C,func) found in global dungeon_ai_attack.o
@@ -36767,16 +36768,16 @@
   02319FB0 00000000 .text   $a	(dungeon_ai_attack.o)
   02319FB0 000000F4 .text   TryAddTargetToAiTargetList	(dungeon_ai_attack.o)
   0231A094 00000000 .text   $d	(dungeon_ai_attack.o)
-  0231A0A4 000005F0 .text   .text	(overlay_29_0231A0A4.o)
-  0231A0A4 00000000 .text   $a	(overlay_29_0231A0A4.o)
-  0231A0A4 000002C0 .text   IsAiTargetEligible	(overlay_29_0231A0A4.o)
-  0231A360 00000000 .text   $d	(overlay_29_0231A0A4.o)
-  0231A364 00000000 .text   $a	(overlay_29_0231A0A4.o)
-  0231A364 000000FC .text   WeightMoveWithIqSkills	(overlay_29_0231A0A4.o)
-  0231A45C 00000000 .text   $d	(overlay_29_0231A0A4.o)
-  0231A460 00000234 .text   TargetRegularAttack	(overlay_29_0231A0A4.o)
-  0231A460 00000000 .text   $a	(overlay_29_0231A0A4.o)
-  0231A690 00000000 .text   $d	(overlay_29_0231A0A4.o)
+  0231A0A4 00000000 .text   $a	(dungeon_ai_attack.o)
+  0231A0A4 000002C0 .text   IsAiTargetEligible	(dungeon_ai_attack.o)
+  0231A360 00000000 .text   $d	(dungeon_ai_attack.o)
+  0231A364 00000330 .text   .text	(overlay_29_0231A364.o)
+  0231A364 000000FC .text   WeightMoveWithIqSkills	(overlay_29_0231A364.o)
+  0231A364 00000000 .text   $a	(overlay_29_0231A364.o)
+  0231A45C 00000000 .text   $d	(overlay_29_0231A364.o)
+  0231A460 00000000 .text   $a	(overlay_29_0231A364.o)
+  0231A460 00000234 .text   TargetRegularAttack	(overlay_29_0231A364.o)
+  0231A690 00000000 .text   $d	(overlay_29_0231A364.o)
   0231A694 00000000 .text   $a	(dungeon_ai_attack_1.o)
   0231A694 0000010C .text   IsTargetInRange	(dungeon_ai_attack_1.o)
   0231A798 00000000 .text   $d	(dungeon_ai_attack_1.o)
@@ -37896,7 +37897,7 @@
   02333F98 00000000 .text   $d	(overlay_29_02332A0C.o)
   02333FAC 00000024 .text   EntityIsValid__02333FAC	(move_checks.o)
   02333FAC 00000000 .text   $a	(move_checks.o)
-  02333FD0 00000CDC .text   ov29_02333FD0	(overlay_29_02333FD0.o)
+  02333FD0 00000CDC .text   StatusCheckerCheckOnTarget	(overlay_29_02333FD0.o)
   02333FD0 00000000 .text   $a	(overlay_29_02333FD0.o)
   02333FD0 00000D38 .text   .text	(overlay_29_02333FD0.o)
   02334CA4 00000000 .text   $d	(overlay_29_02333FD0.o)
@@ -40618,5 +40619,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Jul 21 22:50:45 2025
-# Link end time: Mon Jul 21 22:50:46 2025
+# Link start time: Mon Jul 28 04:47:34 2025
+# Link end time: Mon Jul 28 04:47:35 2025
