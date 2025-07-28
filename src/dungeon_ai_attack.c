@@ -2,7 +2,10 @@
 #include "dg_random.h"
 #include "dungeon_ai_attack_1.h"
 #include "dungeon_ai_attack_2.h"
+#include "dungeon_ai_targeting_1.h"
 #include "dungeon_capabilities_4.h"
+#include "dungeon_logic.h"
+#include "dungeon_logic_4.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_statuses.h"
@@ -22,9 +25,12 @@ extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
 extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
 extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
-extern bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
 extern enum type_id GetMoveTypeForMonster(struct entity *entity, struct move *move);
 extern s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity *target, enum type_id move_type);
+extern bool8 StatusCheckerCheckOnTarget(struct entity *attacker, struct entity *target, struct move *move);
+extern bool8 ov29_023007DC(struct entity *entity);
+extern bool8 IsMonsterSleeping(struct entity *monster);
+extern u8 GetMoveAccuracyOrAiChance(struct move *move, u32 which);
 
 // https://decomp.me/scratch/jVfou
 #ifdef NONMATCHING
@@ -282,4 +288,110 @@ s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struc
         current_num_targets++;
     }
     return current_num_targets;
+}
+
+bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions)
+{
+    bool8 has_target = FALSE;
+    u32 move_ai_target = move_ai_range & 0xF;
+    if (move_ai_target == TARGET_ENEMIES)
+    {
+        if (GetTreatmentBetweenMonsters(user, target, FALSE, TRUE) == TREATMENT_TREAT_AS_ENEMY)
+            has_target = TRUE;
+    }
+    else if (move_ai_target == TARGET_PARTY)
+    {
+        if (GetTreatmentBetweenMonsters(user, target, FALSE, TRUE) == TREATMENT_TREAT_AS_ALLY)
+            has_target = TRUE;
+    }
+    else if (move_ai_target == TARGET_ALL)
+    {
+        struct monster *target_data = target_data = GetEntInfo(target);
+        has_target = TRUE;
+        if (target_data->shopkeeper == SHOPKEEPER_MODE_SHOPKEEPER)
+            return FALSE;
+
+        if (target_data->monster_behavior == BEHAVIOR_RESCUE_TARGET)
+            return FALSE;
+    }
+    else if (move_ai_target == TARGET_ALL_EXCEPT_USER)
+    {
+        struct monster *target_data = target_data = GetEntInfo(target);
+        if (user == target)
+            return FALSE;
+
+        has_target = TRUE;
+        if (target_data->shopkeeper == SHOPKEEPER_MODE_SHOPKEEPER)
+            return FALSE;
+
+        if (target_data->monster_behavior == BEHAVIOR_RESCUE_TARGET)
+            return FALSE;
+    }
+    else if (move_ai_target == TARGET_TEAMMATES)
+    {
+        if (user == target)
+            return FALSE;
+
+        if (GetTreatmentBetweenMonsters(user, target, FALSE, TRUE) == TREATMENT_TREAT_AS_ALLY)
+            has_target = TRUE;
+    }
+    else if (move_ai_target - 3 <= 1) // move_ai_target == TARGET_SPECIAL
+        has_target = TRUE;
+
+    if (has_target)
+    {
+        if (check_all_conditions)
+        {
+            if (!StatusCheckerCheckOnTarget(user, target, move))
+                return FALSE;
+
+            if ((move_ai_range & 0xF00) == AI_CONDITION_RANDOM)
+            {
+                s32 use_chance = GetMoveAccuracyOrAiChance(move, ACCURACY_AI_CONDITION_RANDOM_CHANCE);
+                if (DungeonRandInt(100) >= use_chance)
+                    return FALSE;
+            }
+            else if ((move_ai_range & 0xF00) == AI_CONDITION_HP_25)
+            {
+                if (!ov29_023007DC(target))
+                    return FALSE;
+            }
+            else if ((move_ai_range & 0xF00) == AI_CONDITION_STATUS)
+            {
+                if (!MonsterHasNegativeStatus(target, TRUE))
+                    return FALSE;
+            }
+            else if ((move_ai_range & 0xF00) == AI_CONDITION_ASLEEP)
+            {
+                if (!IsMonsterSleeping(target))
+                    return FALSE;
+            }
+            else if ((move_ai_range & 0xF00) == AI_CONDITION_GHOST)
+            {
+                struct monster *target_data = target_data = GetEntInfo(target);
+                if (target_data->types[0] != TYPE_GHOST && target_data->types[1] != TYPE_GHOST)
+                    return FALSE;
+
+                if (target_data->exposed)
+                    return FALSE;
+            }
+            else if ((move_ai_range & 0xF00) == AI_CONDITION_HP_25_OR_STATUS)
+            {
+                if (move->id == MOVE_HEALING_WISH || move->id == MOVE_LUNAR_DANCE)
+                {
+                    if (!MonsterHasNegativeStatus(target, TRUE) && !ov29_023007DC(target))
+                        return FALSE;
+                }
+                else if (!MonsterHasNegativeStatus(target, TRUE) && !ov29_023007DC(target))
+                    return FALSE;
+            }
+        }
+        else if ((move_ai_range & 0xF00) == AI_CONDITION_RANDOM)
+        {
+            s32 use_chance = GetMoveAccuracyOrAiChance(move, ACCURACY_AI_CONDITION_RANDOM_CHANCE);
+            if (DungeonRandInt(100) >= use_chance)
+                return FALSE;
+        }
+    }
+    return has_target;
 }

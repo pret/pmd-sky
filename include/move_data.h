@@ -50,8 +50,20 @@ enum move_ai_condition
     AI_CONDITION_HP_25 = 0x200,           // Target has HP <= 25%
     AI_CONDITION_STATUS = 0x300,          // Target has a negative status condition
     AI_CONDITION_ASLEEP = 0x400,          // Target is asleep, napping or in a nightmare
-    AI_CONDITION_GHOST = 0x500,           // Target is ghost-type and not exposed
-    AI_CONDITION_HP_25_OR_STATUS = 0x600, // Target has HP <= 25% or a negative status condition
+    AI_CONDITION_HP_25_OR_STATUS = 0x500, // Target has HP <= 25% or a negative status condition
+    AI_CONDITION_GHOST = 0x600,           // Target is ghost-type and not exposed
+};
+
+enum accuracy_type
+{
+    // Accuracy used for all moves.
+    ACCURACY_1,
+    // Multiplied with the global accuracy for offensive moves (i.e., not status moves).
+    ACCURACY_2,
+    // Used by the AI to determine how often to use Spikes.
+    // Values exist for all other moves, though they seem to be unused.
+    ACCURACY_AI_CONDITION_RANDOM_CHANCE,
+    NUM_ACCURACY_TYPES
 };
 
 #define MOVE_RANGE_STRING_USER 19

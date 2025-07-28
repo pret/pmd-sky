@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_02333FD0
-ov29_02333FD0: ; 0x02333FD0
+	arm_func_start StatusCheckerCheckOnTarget
+StatusCheckerCheckOnTarget: ; 0x02333FD0
 #ifdef JAPAN
 #define OV29_02333FD0_OFFSET -4
 #else
@@ -956,7 +956,7 @@ _02334C9C:
 	.align 2, 0
 _02334CA4: .word 0x0000010A
 _02334CA8: .word 0x0000020D
-	arm_func_end ov29_02333FD0
+	arm_func_end StatusCheckerCheckOnTarget
 
 	arm_func_start ov29_02334CAC
 ov29_02334CAC: ; 0x02334CAC

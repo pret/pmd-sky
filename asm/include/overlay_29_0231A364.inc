@@ -4,16 +4,11 @@
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public DungeonRandInt
-.public GetMoveAccuracyOrAiChance
 .public GetTile
 .public GetTreatmentBetweenMonsters
 .public HasHeldItem
 .public IqSkillIsEnabled
 .public IsBlinded
-.public IsMonsterSleeping
-.public MonsterHasNegativeStatus
 .public _s32_div_f
-.public ov29_023007DC
 .public ov29_0230B7D4
 .public ov29_0230F8D0
-.public ov29_02333FD0
