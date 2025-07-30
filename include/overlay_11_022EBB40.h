@@ -139,6 +139,52 @@ typedef struct MapRender
     void (*tilemapRenderFunc)(struct MapRender *);
 } MapRender;
 
+#define MAX_BPA_SLOTS 4
+
+typedef struct LayerSpecs
+{
+    // Not present in pmd-sky
+    // s16 chunkWidth; // Must be 2 or 3
+    // s16 chunkHeight; // Must be 2 or 3
+    s16 numTiles; // The number of tiles stored in the data + 1. The +1 is the null tile at the beginning of tiles.
+    s16 bpaSlotNumTiles[MAX_BPA_SLOTS]; // The number of tiles in the BPA on this slot. 0 if no BPA is assigned.
+    s16 numChunks; // Number of chunks in the tilemap + 1. The +1 is the null chunk at the beginning of tile mappings, that is not stored.
+} LayerSpecs;
+
+typedef struct BmaHeader
+{
+    // Map width/height that the camera in game will travel in tiles. Also the width/height of the collision and unknown data layers! For most maps (Map Width Chunks) * (Tiling Width) = (Map Width Camera).
+    u8 mapWidthTiles;
+    u8 mapHeightTiles;
+
+    // Width/Height of chunks in tiles. Always 3, the value is ignored for these.
+    //u8 tilingWidth;
+    //u8 tilingHeight;
+
+    // Map width/height in chunks. Also the width/height of the chunk mappings.
+    u8 mapWidthChunks;
+    u8 mapHeightChunks;
+
+    u16 numLayers; // Number of layers in this map. Must match BPC layer size. Allowed values are only 1 or 2.
+    u16 hasDataLayer; // Seems to be a boolean flag (0 or 1). If >0, the Unknown Data Layer exists.
+    u16 hasCollision; // Number of Collision layers. 0, 1 or 2.
+} BmaHeader;
+
+typedef struct BplHeader
+{
+    s16 numPalettes;
+    s16 hasPalAnimations;
+    // RGB palettes
+    // Animation Specification array
+    // Animation RGB palettes
+} BplHeader;
+
+typedef struct AnimationSpecification
+{
+    s16 durationPerFrame; // Time in game frames to hold a single palette frame for
+    s16 numFrames; // Number of frames. This is also usually the length of frames in animation palette, but it can also be less.
+} AnimationSpecification;
+
 // size: 0x55C
 typedef struct GroundBg
 {
@@ -162,52 +208,14 @@ typedef struct GroundBg
     u8 unk1C1;
     u8 unk1C2;
     u8 unk1C3;
-    u8 unk1C4;
-    u8 unk1C5;
-    u8 unk1C6;
-    u8 unk1C7;
-    u8 unk1C8;
-    u8 unk1C9;
-    u8 unk1CA;
-    u8 unk1CB;
-    u8 unk1CC;
-    u8 unk1CD;
-    u8 unk1CE;
-    u8 unk1CF;
-    u8 unk1D0;
-    u8 unk1D1;
-    u8 unk1D2;
-    u8 unk1D3;
-    u8 unk1D4;
-    u8 unk1D5;
-    u8 unk1D6;
-    u8 unk1D7;
-    u8 unk1D8;
-    u8 unk1D9;
-    u8 unk1DA;
-    u8 unk1DB;
-    u8 unk1DC;
-    u8 unk1DD;
-    u8 unk1DE;
-    u8 unk1DF;
-    u8 unk1E0;
-    u8 unk1E1;
-    u8 unk1E2;
-    u8 unk1E3;
-    u8 unk1E4;
-    u8 unk1E5;
-    u8 unk1E6;
-    u8 unk1E7;
-    u8 unk1E8;
-    u8 unk1E9;
-    u8 unk1EA;
-    u8 unk1EB;
-    u8 unk1EC;
-    u8 unk1ED;
+    s32 unk1C4;
+    LayerSpecs layerSpecs[NUM_LAYERS]; // 1c8
+    BmaHeader bmaHeader;
+    BplHeader bplHeader;
     u8 unk1EE;
     u8 unk1EF;
-    s32 unk1F0;
-    s32 unk1F4;
+    const void *unk1F0;
+    const AnimationSpecification *animationSpecifications; // 0x1F4
     u8 unk1F8;
     u8 unk1F9;
     u8 unk1FA;
