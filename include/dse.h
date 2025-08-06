@@ -1,6 +1,9 @@
 #ifndef PMDSKY_DSE_H
 #define PMDSKY_DSE_H
 
+#include "file.h"
+#include "thread.h"
+
 struct dse_fade {
     s32 current;
     s32 delta;
@@ -24,20 +27,20 @@ struct dse_lfo {
     u16 lfo_envelope_ticks_left;
     s32 envelope_level;
     s32 envelope_delta;
-    u8 *output_ptr;
-    u8 *waveform_callback;
-    struct dse_lfo *next;
+    u8* output_ptr;
+    u8* waveform_callback;
+    struct dse_lfo* next;
 };
 
 struct dse_lfo_bank {
     s16 outputs[6];
-    struct dse_lfo *lfo_list;
+    struct dse_lfo* lfo_list;
     struct dse_lfo lfos[4];
 };
 
 struct dse_sub_loop {
-    u8 *start;
-    u8 *end;
+    u8* start;
+    u8* end;
     u8 count;
     u8 octave;
     u8 field4_0xa;
@@ -87,7 +90,7 @@ struct dse_track {
     u8* position;
     u8* loop_start;
     struct dse_sub_loop loop_stack[4];
-    struct dse_channel *channel;
+    struct dse_channel* channel;
     u8 field_0x58;
     u8 field_0x59;
     u8 field_0x5a;
@@ -202,7 +205,7 @@ struct dse_channel {
     struct dse_note_list* held_notes_list;
     struct dse_wavebank* wavebank;
     struct dse_instrument* instrument;
-    struct dse_synth *container;
+    struct dse_synth* container;
 };
 
 struct dse_instrument_split {
@@ -254,7 +257,7 @@ struct dse_synth {
     u8 clear_volume_and_timer;
     u8 field_0xA;
     u8 num_voices;
-    struct dse_synth *next;
+    struct dse_synth* next;
     struct dse_channel channels[16]; /* flexible */
 };
 
@@ -268,7 +271,7 @@ struct dse_note_parameters {
 struct dse_note_list {
     struct dse_note_parameters parameters;
     s32 duration;
-    struct dse_note_list *next;
+    struct dse_note_list* next;
 };
 
 struct dse_sequence_unk_0x0 {
@@ -334,6 +337,128 @@ struct dse_sequence {
     void* callback_arg;
     struct dse_sequence* next;
     struct dse_track tracks[16];
+};
+
+struct dse_note {
+    u8 is_note_on;
+    u8 is_held;
+    u8 note_number;
+    s8 volume;
+    s32 duration;
+};
+
+struct dse_note_list_node {
+    struct dse_note note;
+    struct dse_note_list_node* next;
+};
+
+struct dse_se_bank {
+    void* file;
+    s16 field_0x4;
+    u16 id;
+    struct dse_se_bank* next;
+    void* seq_location;
+    void* mcrl_location;
+    void* bnkl_location;
+
+    u8 field_0x18[4];
+};
+
+struct dse_heap_allocator {
+    void* allocate_fun;
+    void* free_fun;
+    void* arg;
+};
+
+struct dse_mainbank {
+    u16 id;
+    u16 num_wavi;
+    u32 pcm_data_offset;
+    void* wavi_data;
+    u32 field_0xC;
+    u32 field_0x10;
+
+    struct file_stream file;
+
+    struct dse_mainbank* next;
+};
+
+struct dse_driver_work {
+    s8 initialized;
+    u8 stopped;
+    u16 unknown_0x2;
+    s32 error_code;
+    u32 error_data;
+    u32 error_data2;
+    s32 error2_code;
+    u32 error2_data;
+    u32 error2_data2;
+    void* error_callback;
+    void* error2_callback;
+    u32 field_0x24;
+    s16 microseconds_per_driver_tick;
+    u16 field_0x2A;
+    s32 total_driver_ticks;
+    s32 driver_tick_rate;
+    u32 current_rng_seed;
+    u8 field_0x38;
+    u8 field_0x39;
+    u8 last_se_bank_num_sequences;
+    u8 last_se_bank_tracks_per_sequence;
+    u8 field_0x3C;
+    s8 field_0x3D;
+    u16 field_0x3E;
+    u8 global_volumes[16];
+    struct dse_note_list_node notes[128];
+    struct dse_note_list_node* free_notes_list;
+    u32 field_0x654;
+    struct dse_synth* synth_list;
+    u32 field_0x65C;
+    struct dse_wavebank* loaded_wavebanks_list;
+    struct dse_sequence* bgm_sequences_list;
+    struct dse_sequence* se_sequences_list;
+    struct dse_se_bank* loaded_effect_banks;
+    u8 field_0x670[132];
+    void* heap_node_list;
+    void* heap_end;
+    s32 heap_size;
+    struct dse_heap_allocator heap_allocator;
+    u8 field_0x70C[36];
+    s16 num_voices;
+    u16 active_voices_bits;
+    u16 start_voices_bits;
+    u16 deactivate_voices_bits;
+    u16 deallocate_voices_bits;
+    u16 field_0x73C;
+
+    struct dse_voice voices[16];
+
+    u16 field_0x1CFC;
+    u16 field_0x1CFE;
+    s32 num_active_voices;
+    s32 prev_nom_active_voices;
+    s32 ticks_until_num_active_voices_timeout;
+    u32 microseconds_per_driver_tick_2;
+    u32 field_1D10;
+    u32 field_1D14;
+
+    struct thread driver_thread;
+    void* driver_stack;
+
+    u32 field_0x1DDC;
+    struct dse_mainbank* loaded_mainbanks;
+    s32 mainbank_max_read_size;
+    void* mainbank_read_callback;
+    void* mainbank_read_callback_param;
+
+    u8 loader_thread_priority;
+    u8 field_0x1DF1;
+    s8 quit_sample_loader;
+    s8 is_sample_loader_sleeping;
+    struct thread sample_loader_thread;
+    void* sample_loader_thread_stack;
+    struct dse_wavebank* loading_bank;
+    void* loading_bank_pcm_data;
 };
 
 #endif //PMDSKY_DSE_H

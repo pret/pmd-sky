@@ -80,7 +80,7 @@ Static main
 	Object src/main_02071A98.o
 	Object asm/main_02071AC0.o
 	Object src/main_02071BF4.o
-	Object asm/main_02071C3C.o
+	Object asm/main_02071CC8.o
 	Object lib/DSE/src/dc_envelope.o
 	Object lib/DSE/src/dc_lfo.o
 	Object lib/DSE/asm/dc_lfo_1.o

@@ -30,7 +30,6 @@
 .public _022B8330
 .public _022B9584
 .public _s32_div_f
-.public _u32_div_f
 .public sub_0207C8B8
 .public sub_0207C8E0
 .public sub_0207CA04

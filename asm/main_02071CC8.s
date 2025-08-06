@@ -1,49 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02071C3C.inc"
+	.include "main_02071CC8.inc"
 
 	.text
-
-	arm_func_start DseTrackEvent_SongVolumeFade
-DseTrackEvent_SongVolumeFade: ; 0x02071C3C
-	stmdb sp!, {r4, r5, r6, lr}
-	mov r5, r0
-	ldrb r2, [r5]
-	ldrb r0, [r5, #1]
-	mov r4, r1
-	add r0, r2, r0, lsl #8
-	mov r0, r0, lsl #0x10
-	movs r1, r0, lsr #0x10
-	moveq r6, #0
-	beq _02071C84
-	mov r0, #0x3e8
-	mul r0, r1, r0
-	ldr r1, _02071CC4 ; =DRIVER_WORK
-	ldrsh r1, [r1, #0x28]
-	bl _u32_div_f
-	mov r0, r0, lsl #0x10
-	movs r6, r0, lsr #0x10
-	moveq r6, #1
-_02071C84:
-	ldrb r0, [r5, #2]
-	cmp r6, #0
-	mov r1, r0, lsl #0x10
-	str r1, [r4, #0x70]
-	streq r1, [r4, #0x68]
-	beq _02071CB8
-	ldr r0, [r4, #0x68]
-	subs r0, r1, r0
-	moveq r6, #0
-	beq _02071CB8
-	mov r1, r6
-	bl _s32_div_f
-	str r0, [r4, #0x6c]
-_02071CB8:
-	strh r6, [r4, #0x74]
-	add r0, r5, #3
-	ldmia sp!, {r4, r5, r6, pc}
-	.align 2, 0
-_02071CC4: .word DRIVER_WORK
-	arm_func_end DseTrackEvent_SongVolumeFade
 
 	arm_func_start DseTrackEvent_RestoreEnvelopeDefaults
 DseTrackEvent_RestoreEnvelopeDefaults: ; 0x02071CC8
