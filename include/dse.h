@@ -74,27 +74,27 @@ struct dse_sound_envelope {
 
 struct dse_track {
     u16 field0_0x0;
-    u8 active;
-    u8 field2_0x3;
-    u8 octave;
-    u8 duration_multiplier;
-    u8 n_sub_loops;
-    u8 field6_0x7;
-    u8 field7_0x8;
-    u8 field8_0x9;
-    u16 maybe_n_reps;
-    u32 current_wait;
-    u32 last_wait;
-    u32 last_duration;
-    u8 *start;
-    u8 *next_event;
-    u8 *loop_start;
-    struct dse_sub_loop sub_loops[4];
+    u8 is_playing;
+    u8 field_0x3;
+    u8 current_octave;
+    u8 note_duration_multiplier;
+    u8 loop_stack_index;
+    u8 previous_note_number;
+    u8 ignore_playnote;
+    u8 field_0x9;
+    u16 main_loop_count;
+    u32 wait_ticks_left;
+    u32 previous_wait_ticks;
+    u32 previous_duration;
+    u8* track_data_location;
+    u8* position;
+    u8* loop_start;
+    struct dse_sub_loop loop_stack[4];
     struct dse_channel *channel;
-    u8 field18_0x58;
-    u8 field19_0x59;
-    u8 field20_0x5a;
-    u8 field21_0x5b;
+    u8 field_0x58;
+    u8 field_0x59;
+    u8 field_0x5a;
+    u8 field_0x5b;
 };
 
 struct dse_voice {
@@ -174,7 +174,7 @@ struct dse_channel {
     u16 jitter_range;
     u8 random_note_min;
     u8 random_note_max;
-    u16 field10_0xe;
+    u16 bank_id;
     u16 field11_0x10;
     u8 field12_0x12;
     u8 field13_0x13;
@@ -321,7 +321,7 @@ struct dse_seq {
     u8 field52_0x99;
     u8 field53_0x9a;
     u8 field54_0x9b;
-    u8 *unk_callback;
+    void (*unk_callback)(u32, u32, u32, u32);
     u32 field56_0xa0;
     struct dse_seq *next;
     struct dse_track tracks[16];
