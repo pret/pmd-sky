@@ -328,6 +328,7 @@
 .public ov11_022EBFC8
 .public ov11_022EC08C
 .public ov11_022EC240
+.public ov11_022EC27C
 .public ov11_02316AFC
 .public ov11_02316B04
 .public ov11_02316B14
@@ -1766,7 +1767,6 @@
 .public ov11_02320C58
 .public ov11_02320C6C
 .public ov11_02320C80
-.public ov11_02320C94
 .public ov11_02320CA8
 .public ov11_02320CB8
 .public ov11_02320CC8

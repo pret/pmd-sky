@@ -48,6 +48,14 @@ typedef struct SubStruct_0
     //u8 fillC; // Filler byte removed in Sky, present in Red
 } SubStruct_0;
 
+struct BpaHeader
+{
+    u8 numTiles; // The number of individual tiles.
+    s16 numFrames; // The number of frames for each tile.
+    s32 durationPerFrame[0]; // Settings for each frame. One entry per frame.
+    // Tiles data below
+};
+
 // Was 0x24 in Red...
 typedef struct SubStruct_3E0
 {
@@ -56,13 +64,12 @@ typedef struct SubStruct_3E0
     s16 unk2;
     s16 unk4;
     struct iovec bpaFile;
-    //const struct BpaHeader *unkC; hm...
-    const void *unk10;
+    const struct BpaHeader *unk10;
     const void *unk14;
     const void *unk18;
     const void *unk1C;
     void *unk20;
-    u32 unk24;
+    void *unk24;
     u32 unk28;
 } SubStruct_3E0;
 
@@ -80,7 +87,7 @@ typedef struct SubStruct_52C
     s16 unk12; // 0x53E
     s16 unk14;
     s16 unk16;
-    void *unk18; // Maybe void (*unk14)(void *, const void *, BmaHeader *, s32); // TODO: fix void * to proper ptr types 0x540
+    void (*unk18)(void *, const void *, void *, s32); // TODO: fix void * to proper ptr types 0x540
 } SubStruct_52C;
 
 struct UnkGroundBg_1A0
@@ -243,5 +250,6 @@ void ov11_022EBF60(GroundBg *groundBg);
 void ov11_022EBFC8(GroundBg *groundBg);
 void ov11_022EC08C(GroundBg *groundBg);
 void ov11_022EC240(GroundBg *groundBg, s32 bgId);
+void ov11_022EC27C(GroundBg *groundBg, s32 bgId);
 
 #endif //PMDSKY_OVERLAY_11_022EBB40_H
