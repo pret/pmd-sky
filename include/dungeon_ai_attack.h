@@ -32,5 +32,13 @@ bool8 EntityIsValid__02319F8C(struct entity *entity);
 // check_all_conditions: check_all_conditions parameter to pass to IsAiTargetEligible
 // return: New number of targets in the target list
 s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
+// Checks if a given target is eligible to be targeted by the AI with a certain move
+// move_ai_range: Move's AI range field
+// user: User entity pointer
+// target: Target entity pointer
+// move: Move pointer
+// check_all_conditions True to check all the possible move_ai_condition values, false to only check for move_ai_condition::AI_CONDITION_RANDOM (if the move has a different ai condition, the result will be false).
+// return: True if the target is eligible, false otherwise
+bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
 
 #endif //PMDSKY_DUNGEON_AI_ATTACK_H
