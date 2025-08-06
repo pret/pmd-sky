@@ -1,5 +1,10 @@
 #include "main_02071BF4.h"
 
+u8* DseTrackEvent_Dummy1Byte(u8 *ptr_next_byte, struct dse_sequence *sequence, struct dse_track *track, struct dse_channel *channel)
+{
+    return ptr_next_byte + 1;
+}
+
 extern u32 DseChannel_SetInstrument(struct dse_channel *channel, u16 instrument_index);
 
 u8* DseTrackEvent_SetInstrument(u8 *ptr_next_byte, struct dse_sequence *sequence, struct dse_track *track, struct dse_channel *channel)

@@ -107,9 +107,3 @@ DseTrackEvent_SetBankLsb: ; 0x02071BBC
 	add r0, r4, #1
 	ldmia sp!, {r4, pc}
 	arm_func_end DseTrackEvent_SetBankLsb
-
-	arm_func_start DseTrackEvent_Dummy1Byte
-DseTrackEvent_Dummy1Byte: ; 0x02071BEC
-	add r0, r0, #1
-	bx lr
-	arm_func_end DseTrackEvent_Dummy1Byte
