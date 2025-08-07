@@ -4618,7 +4618,7 @@ _0238E1C0:
 	bl ov22_0238ABD4
 _0238E1C8:
 	ldr r0, _0238E7A0 ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	bl ov22_0238E7E4
 	mov r0, #0x12
 	bl ov22_0238ADD8
@@ -4657,7 +4657,7 @@ _0238E22C:
 	bl RemoveItemNoHoleCheck
 	bl sub_02042AF8
 	ldr r0, _0238E7A0 ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	bl ov22_0238E7E4
 	mov r0, #0x1e
 	bl ov22_0238ADD8
@@ -4693,7 +4693,7 @@ _0238E2A4:
 	b _0238E734
 _0238E2D8:
 	ldr r0, _0238E7A0 ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	ldr r0, _0238E794 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC70
 	ldr r0, [r0]
 	ldr r0, [r0, #0x28]
@@ -4767,7 +4767,7 @@ _0238E3DC:
 	bl ov22_0238AC18
 _0238E3E0:
 	ldr r0, _0238E7A0 ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	bl ov22_0238E7E4
 	mov r0, #0x1b
 	bl ov22_0238ADD8
@@ -4811,7 +4811,7 @@ _0238E43C:
 	b _0238E734
 _0238E480:
 	ldr r0, _0238E7A0 ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	ldr r0, _0238E794 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC70
 	ldr r0, [r0]
 	ldr r0, [r0, #0x28]

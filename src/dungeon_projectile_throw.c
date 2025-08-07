@@ -28,7 +28,7 @@ extern bool8 ov29_023457C8(struct entity *entity, bool8 hallucinating, u8 a2, u8
 extern void AdvanceFrame(u32);
 extern bool8 TwoTurnMoveForcedMiss(struct entity *target, struct move *move);
 extern bool8 DoesProjectileHitTarget(struct entity *user, struct entity *target);
-extern void ov29_02344B70(u8 *buffer, struct item *item);
+extern void PrepareItemForPrinting__02345754(u8 *buffer, struct item *item);
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
 extern void ov29_02304A84(struct entity *entity, u32 new_dir);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
@@ -192,7 +192,7 @@ void HandleCurvedProjectileThrow(struct entity *thrower, struct item *item, stru
                 hitResult.did_hit = DoesProjectileHitTarget(thrower, hitResult.target);
             }
 
-            ov29_02344B70(0, item);
+            PrepareItemForPrinting__02345754(0, item);
             SubstitutePlaceholderStringTags(0, hitResult.target, 0);
             if (hitResult.did_hit) {
                 bool8 immobiSlpEndMsg;

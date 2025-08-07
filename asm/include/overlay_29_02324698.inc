@@ -18,9 +18,9 @@
 .public GetNaturePowerVariant
 .public GetSpriteIndex__02052708
 .public Is2TurnsMove
-.public IsUsableWhileTaunted
 .public IsCopyingMove
 .public IsFloorOver
+.public IsUsableWhileTaunted
 .public LogMessageByIdWithPopupCheckUser
 .public NATURE_POWER_TABLE
 .public ov10_022BF01C

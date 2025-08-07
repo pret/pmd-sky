@@ -1,10 +1,10 @@
 #pragma once
-.public DUNGEON_PTR
 .public DetermineMonsterShadow
 .public DetermineTileWalkableNeighbors
 .public DrawMinimapTile
+.public DUNGEON_PTR
 .public EntityIsValid__02337CA8
 .public GetTileSafe
-.public UpdateTrapsVisibility
 .public ov29_022E66C4
 .public ov29_02336694
+.public UpdateTrapsVisibility

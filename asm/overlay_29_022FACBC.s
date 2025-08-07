@@ -518,7 +518,7 @@ _022FB24C:
 	bl SubstitutePlaceholderStringTags
 	add r1, r4, #0x62
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r2, _022FB510 ; =0x00000C24
 	mov r0, sl
 	mov r1, sb
@@ -563,7 +563,7 @@ _022FB31C:
 	bl SubstitutePlaceholderStringTags
 	add r1, r4, #0x62
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r2, _022FB510 ; =0x00000C24
 	mov r0, sl
 	mov r1, sb
@@ -654,7 +654,7 @@ _022FB430:
 	bl SubstitutePlaceholderStringTags
 	mov r1, r6
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	mov r0, sl
 	mov r1, sb
 	ldr r2, _022FB518 ; =0x00000C25

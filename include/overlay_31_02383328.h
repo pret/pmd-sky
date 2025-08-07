@@ -1,0 +1,8 @@
+#ifndef PMDSKY_OVERLAY_31_02383328_H
+#define PMDSKY_OVERLAY_31_02383328_H
+
+void ov31_02383328(void (*f)(void));
+u32 ov31_0238335C(void (*f)(void));
+void ov31_023833B4(void(*f)(void));
+
+#endif //PMDSKY_OVERLAY_31_02383328_H

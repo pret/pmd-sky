@@ -6,8 +6,8 @@
 .public IsFloorOver
 .public IsMonster__0231A9D4
 .public LogMessageByIdWithPopupCheckUser
+.public ov29_022FA574
+.public ov29_0232145C
 .public ShouldUsePp
 .public TryActivateTruant
 .public UpdateMovePp
-.public ov29_022FA574
-.public ov29_0232145C

@@ -91,7 +91,7 @@ _0230F22C:
 	beq _0230F274
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	mov r0, #0
 	mov r1, r8
 	mov r2, r0
@@ -130,7 +130,7 @@ _0230F2B0:
 	bl AddMoneyCarried
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	add r0, r8, #4
 	mov r1, #1
 	bl RemoveGroundItem
@@ -235,7 +235,7 @@ _0230F408:
 	bl ov29_02347040
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	add r0, r8, #4
 	mov r1, #1
 	bl RemoveGroundItem
@@ -301,7 +301,7 @@ _0230F508:
 	bne _0230F544
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _0230F64C ; =0x00000C62
 	mov r0, r8
 	bl LogMessageByIdWithPopup
@@ -331,7 +331,7 @@ _0230F564:
 	bl ov29_022F9EA0
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	add r0, r8, #4
 	mov r1, #1
 	bl RemoveGroundItem
@@ -362,7 +362,7 @@ _0230F5BC:
 	b _0230F624
 _0230F5F8:
 	mov r1, r4
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	add r0, r8, #4
 	mov r1, #1
 	bl RemoveGroundItem

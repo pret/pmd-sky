@@ -13,6 +13,8 @@ Static main
 	Object asm/main_02000DE0.o
 	Object src/main_0200330C.o
 	Object asm/main_02003328.o
+	Object src/main_0200383C.o
+	Object asm/main_020038D8.o
 	Object src/main_02003D2C.o
 	Object asm/main_02003DB8.o
 	Object src/main_02008210.o
@@ -53,6 +55,8 @@ Static main
 	Object asm/main_0202598C.o
 	Object src/main_020348E4.o
 	Object asm/main_02034974.o
+	Object src/main_0203C760.o
+	Object asm/main_0203C774.o
 	Object src/main_0204AFF8.o
 	Object asm/main_0204B018.o
 	Object src/number_util.o
@@ -73,6 +77,12 @@ Static main
 	Object asm/main_02058F24.o
 	Object src/main_0206C98C.o
 	Object asm/main_0206C9BC.o
+	Object lib/DSE/src/main_02071A98.o
+	Object lib/DSE/asm/main_02071AC0.o
+	Object lib/DSE/src/main_02071BF4.o
+	Object lib/DSE/asm/main_02071CC8.o
+	Object lib/DSE/src/main_02071E34.o
+	Object lib/DSE/asm/main_02071EB4.o
 	Object lib/DSE/src/dc_envelope.o
 	Object lib/DSE/src/dc_lfo.o
 	Object lib/DSE/asm/dc_lfo_1.o
@@ -223,6 +233,8 @@ Overlay OVY_17
 {
 	After OVY_11
 	Object asm/overlay_17.o
+	Object src/overlay_17_0238A71C.o
+	Object asm/overlay_17_0238A754.o
 }
 Overlay OVY_18
 {
@@ -572,6 +584,12 @@ Overlay OVY_31
 	After OVY_29
 	Object src/overlay_31_02382820.o
 	Object asm/overlay_31_02382FBC.o
+	Object src/overlay_31_02383328.o
+	Object asm/overlay_31_023833D8.o
+	Object src/overlay_31_02383478.o
+	Object asm/overlay_31_0238367C.o
+	Object src/overlay_31_02383880.o
+	Object asm/overlay_31_023838E4.o
 }
 Overlay OVY_32
 {

@@ -1,10 +1,7 @@
 #pragma once
+.public _020AFC70
 .public Debug_Print0
 .public LoadFileFromRom
-.public Render3dSetPaletteBase
-.public Render3dSetTextureParams
-.public Render3dTextureNoSetup
-.public _020AFC70
 .public ov29_0234FD04
 .public ov29_0234FD14
 .public ov29_0234FD48
@@ -13,6 +10,9 @@
 .public ov29_0234FD54
 .public ov29_023534E8
 .public ov29_02353880
+.public Render3dSetPaletteBase
+.public Render3dSetTextureParams
+.public Render3dTextureNoSetup
 .public sub_02008BF4
 .public sub_0201E050
 .public sub_0201E380

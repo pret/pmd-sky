@@ -4144,7 +4144,7 @@ _0230E2D4:
 	bl ov29_0234B0B4
 	mov r0, #1
 	mov r1, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r0, _0230E568 ; =0x00000C7E
 	bl ov29_0230E658
 	ldrsh r1, [r8, #2]

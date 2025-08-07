@@ -121,7 +121,7 @@ _0238A3A0:
 	rsb r0, r0, #0
 	bl AddMoneyCarried
 	ldr r0, _0238A4E0 ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	mov r0, #9
 	bl ov15_0238A4E8
 	b _0238A4D4
@@ -171,7 +171,7 @@ _0238A444:
 	ldr r0, [r0, #0xc]
 	bl AddMoneyCarried
 	ldr r0, _0238A4E0 ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	mov r0, #0xc
 	bl ov15_0238A4E8
 	b _0238A4D4

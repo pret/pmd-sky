@@ -55,7 +55,6 @@
 .public ov29_02338988
 .public ov29_0234B034
 .public ov29_0234B06C
-.public ov29_0234B084
 .public ov29_0234B09C
 .public ov29_0234B4E0
 .public ov29_0234CFA0
@@ -76,6 +75,7 @@
 .public Rand16Bit
 .public SetAndPlayAnimationForAnimationControl
 .public SetMonsterTypeAndAbility
+.public SetPreprocessorArgsIdVal
 .public SetSpriteIdForAnimationControl
 .public SpawnMonster
 .public strcat

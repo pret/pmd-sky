@@ -1431,7 +1431,7 @@ _0232B578:
 	bl SubstitutePlaceholderStringTags
 	mov r1, r6
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 #ifdef JAPAN
 	mov r0, r5
 	mov r1, r4

@@ -1,8 +1,11 @@
 #pragma once
+.public _020AFC28
+.public _020AFC4C
+.public _020AFC70
 .public AnimationDelayOrSomething
 .public CopyAndInterleaveWrapper
-.public DUNGEON_PTR
 .public DirectoryFileMngr_OpenDirectoryFile
+.public DUNGEON_PTR
 .public DungeonGoesUp
 .public GetBgRegionArea
 .public GetFloorType
@@ -16,13 +19,6 @@
 .public LoadWteFromFileDirectory
 .public Memcpy32
 .public Memset32
-.public SetMinimapDataE447
-.public StartFadeDungeonWrapper
-.public UnloadFile
-.public UnloadWte
-.public _020AFC28
-.public _020AFC4C
-.public _020AFC70
 .public ov10_022C4D54
 .public ov29_022DE15C
 .public ov29_022DE854
@@ -46,6 +42,8 @@
 .public ov29_0237C6A4
 .public ov29_0237C6B8
 .public ov29_0237C6D4
+.public SetMinimapDataE447
+.public StartFadeDungeonWrapper
 .public sub_020063F4
 .public sub_02006564
 .public sub_02006BFC
@@ -60,3 +58,5 @@
 .public sub_0201E380
 .public sub_0201F598
 .public sub_0204AE80
+.public UnloadFile
+.public UnloadWte

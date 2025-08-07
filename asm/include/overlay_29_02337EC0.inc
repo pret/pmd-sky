@@ -10,5 +10,5 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
-.public RandInt
 .public ov29_022FAFD4
+.public RandInt

@@ -24,7 +24,7 @@
 .public ov29_023457C8
 .public RemoveGroundItem
 .public SetEntityPixelPosXY
-.public SpawnItem
 .public sin_4096
+.public SpawnItem
 .public UpdateMinimap
 .public UpdateTrapsVisibility

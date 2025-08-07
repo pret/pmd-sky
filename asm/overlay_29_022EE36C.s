@@ -162,7 +162,7 @@ _022EE574:
 	add r1, sp, #0
 	ldr r1, [r1, r5, lsl #2]
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	add r0, sp, #0
 	ldr r1, [r0, r5, lsl #2]
 	ldrb r0, [r1]
@@ -673,7 +673,7 @@ _022EEA68:
 	mov r0, #0
 	strb r0, [r1, #6]
 	ldrh r1, [r1, #4]
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	add r1, sp, #0
 	ldr r1, [r1, r6, lsl #2]
 	mov r0, r4

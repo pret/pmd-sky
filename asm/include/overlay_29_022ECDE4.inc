@@ -1,4 +1,6 @@
 #pragma once
+.public _020AFC4C
+.public _020AFC70
 .public AdvanceFrame
 .public AreLateGameTrapsEnabled
 .public CreateMonsterSummaryFromMonster
@@ -10,13 +12,8 @@
 .public GetTileSafe
 .public InitRender3dElement64
 .public LoadWteFromFileDirectory
-.public MemZero
-.public ProcessWte
-.public SpawnTrap
-.public StringFromId
-.public _020AFC4C
-.public _020AFC70
 .public memset
+.public MemZero
 .public ov29_022E7A30
 .public ov29_02352690
 .public ov29_02352698
@@ -25,7 +22,10 @@
 .public ov29_0237C864
 .public ov29_0237C974
 .public ov29_0237C99C
+.public ProcessWte
+.public SpawnTrap
 .public strcpy
+.public StringFromId
 .public sub_0201B9F8
 .public sub_0201E080
 .public sub_0201F2A0

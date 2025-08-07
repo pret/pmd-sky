@@ -1,4 +1,5 @@
 #pragma once
+.public abs
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public DUNGEON_PTR
@@ -9,11 +10,10 @@
 .public GetWeatherColorTable
 .public IsSecretFloor
 .public LogMessageByIdWithPopupCheckUser
-.public TryActivateArtificialWeatherAbilities
-.public TryActivateWeather
-.public TryWeatherFormChange
-.public abs
 .public ov29_022DE608
 .public ov29_022E5FE8
 .public ov29_02338A4C
 .public ov29_02353562
+.public TryActivateArtificialWeatherAbilities
+.public TryActivateWeather
+.public TryWeatherFormChange

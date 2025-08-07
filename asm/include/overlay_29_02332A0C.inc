@@ -1,5 +1,6 @@
 #pragma once
 .public AbilityIsActiveVeneer
+.public abs
 .public ApplyDamageAndEffects
 .public CalcDamage
 .public CanAttackInDirection
@@ -7,8 +8,8 @@
 .public CanSeeTarget
 .public CeilFixedPoint
 .public Conversion2IsActive
-.public DUNGEON_PTR
 .public DisplayAnimatedNumbers
+.public DUNGEON_PTR
 .public EntityIsValid__0232E840
 .public EntityIsValid__02333FAC
 .public GetApparentWeather
@@ -28,8 +29,6 @@
 .public MonsterHasNegativeStatus
 .public MonsterIsType
 .public MoveHitCheck
-.public ShouldDisplayEntityWrapper
-.public abs
 .public ov10_022C6322
 .public ov29_022E576C
 .public ov29_0230040C
@@ -37,3 +36,4 @@
 .public ov29_02304A48
 .public ov29_0230D088
 .public ov29_0234B034
+.public ShouldDisplayEntityWrapper

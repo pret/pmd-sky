@@ -19,9 +19,6 @@
 .public IsSecretRoom
 .public LoadScriptVariableValue
 .public MemZero
-.public SpawnItem
-.public StartFadeDungeonWrapper
-.public SubstitutePlaceholderStringTags
 .public ov10_022C6C74
 .public ov29_022E7BB8
 .public ov29_022EFB20
@@ -44,4 +41,7 @@
 .public ov29_0234C738
 .public ov29_02353798
 .public ov29_0237CFFC
+.public SpawnItem
+.public StartFadeDungeonWrapper
 .public sub_02056880
+.public SubstitutePlaceholderStringTags

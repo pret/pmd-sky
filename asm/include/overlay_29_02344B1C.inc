@@ -35,7 +35,6 @@
 .public ov29_02348D3C
 .public ov29_02348DD8
 .public ov29_02348ECC
-.public ov29_0234B084
 .public ov29_023531A0
 .public ov29_023531A4
 .public ov29_023531BC
@@ -44,8 +43,9 @@
 .public RemoveEmptyItemsInBag
 .public RemoveEquivItemNoHole
 .public RemoveGroundItem
+.public SetPreprocessorArgsIdVal
 .public ShouldMonsterRunAwayAndShowEffect
 .public SpawnItemEntity
 .public sub_0200D8AC
-.public sub_02024FE8
+.public SubstitutePlaceholderItemTags
 .public SubstitutePlaceholderStringTags

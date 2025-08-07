@@ -9,6 +9,7 @@
 .public ExclusiveItemEffectFlagTest
 .public GetItemCategoryVeneer
 .public GetItemToUse
+.public HandleCurvedProjectileThrow
 .public IqSkillIsEnabled
 .public ItemIsActive__022F5994
 .public ItemZInit
@@ -25,13 +26,12 @@
 .public ov29_02304A48
 .public ov29_0230F9A4
 .public ov29_02343D30
-.public ov29_02344B44
-.public ov29_02344B70
 .public ov29_02346FB8
 .public ov29_02347000
 .public ov29_02347518
-.public HandleCurvedProjectileThrow
 .public ov29_0234B034
+.public PrepareItemForPrinting__02345728
+.public PrepareItemForPrinting__02345754
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveEquivItemNoHole
 .public RemoveGroundItem

@@ -6918,7 +6918,7 @@ _022E22A0:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	b _022E2464
 _022E22B8:
 	ldrh r0, [r5, #2]

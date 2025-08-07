@@ -691,7 +691,7 @@ _02328864:
 	bl InitMove
 	ldrh r1, [r8, #4]
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldrh r1, [r8, #2]
 	ldr r2, _023288C0 ; =0x00000DB7
 	mov r0, sl
@@ -1783,7 +1783,7 @@ _02329604:
 	mov r1, #1
 	strb r1, [r7, #0xff]
 	ldrh r1, [r4, #4]
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02329660 ; =0x00000DB5
 	mov r0, sl
 	mov r1, sb

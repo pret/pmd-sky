@@ -27,13 +27,13 @@
 .public ov15_0238B10C
 .public ov15_0238B114
 .public OVERLAY15_UNKNOWN_POINTER__NA_238B180
+.public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
 .public SetAdvancedTextBoxField0x1C2
 .public SetAdvancedTextBoxField0x1C4
 .public SetAdvancedTextBoxState5
 .public ShowDialogueBox
 .public ShowStringIdInDialogueBox
-.public sub_02017C80
 .public sub_020288DC
 .public sub_0202F954
 .public sub_020395CC

@@ -169,7 +169,7 @@ _02321684:
 	bne _023216AC
 	ldrh r1, [r4, #4]
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r1, _02321A5C ; =0x00000E7F
 	mov r0, sl
 	bl LogMessageByIdWithPopupCheckUser
@@ -1368,7 +1368,7 @@ _02322694:
 	mov r0, r5, lsl #0x10
 	mov r1, r0, asr #0x10
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r1, [sp, #0x20]
 	mov r0, r6
 	bl LogMessageWithPopupCheckUser

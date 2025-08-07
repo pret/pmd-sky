@@ -408,7 +408,7 @@ _022F9658:
 	bl SubstitutePlaceholderStringTags
 	ldrb r1, [r6, #0x5e]
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _022F96C8 ; =0x00000C19
 	mov r0, sb
 	mov r1, r8

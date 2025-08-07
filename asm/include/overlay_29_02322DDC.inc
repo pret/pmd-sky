@@ -1,4 +1,5 @@
 #pragma once
+.public _s32_div_f
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public DIRECTIONS_XY
@@ -18,10 +19,6 @@
 .public IsChargingTwoTurnMove
 .public LogMessageQuiet
 .public LogMessageWithPopup
-.public PlayMoveAnimation
-.public ShouldDisplayEntityWrapper
-.public TwoTurnMoveForcedMiss
-.public _s32_div_f
 .public ov10_022BDE50
 .public ov10_022BE9E8
 .public ov10_022BEB2C
@@ -38,11 +35,14 @@
 .public ov29_02324E78
 .public ov29_023250D4
 .public ov29_0234B034
-.public ov29_0234B084
 .public ov29_0234B4CC
 .public ov29_0235175C
 .public ov29_02352A54
 .public ov29_02352A6C
+.public PlayMoveAnimation
+.public SetPreprocessorArgsIdVal
+.public ShouldDisplayEntityWrapper
 .public sin_4096
 .public sub_02001980
 .public sub_0201CF90
+.public TwoTurnMoveForcedMiss

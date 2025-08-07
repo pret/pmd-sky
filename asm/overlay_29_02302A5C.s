@@ -166,7 +166,7 @@ _02302C6C:
 	bl SubstitutePlaceholderStringTags
 	mov r0, r5
 	and r1, r7, #0xff
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	mov r0, sl
 	mov r1, sb
 	mov r2, r4
@@ -975,7 +975,7 @@ _02303718:
 	bl ov29_0230040C
 	mov r1, r4
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r1, _023038C4 ; =0x0000131B
 	mov r0, sb
 	bl ov29_022E56A0
@@ -1212,7 +1212,7 @@ _02303A30:
 	bl SubstitutePlaceholderStringTags
 	mov r1, r5
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r1, _02303B08 ; =0x0000131B
 	mov r0, sl
 	bl ov29_022E56A0

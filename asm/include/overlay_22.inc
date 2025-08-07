@@ -37,6 +37,7 @@
 .public ov11_022DC504
 .public ov11_022E6E68
 .public ov11_0238A130
+.public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
 .public PreprocessString
 .public RemoveEmptyItemsInBag
@@ -63,7 +64,6 @@
 .public sub_02010BA4
 .public sub_02010BC0
 .public sub_02017C74
-.public sub_02017C80
 .public sub_0202836C
 .public sub_0202C620
 .public sub_0202C748

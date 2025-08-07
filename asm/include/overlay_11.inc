@@ -316,6 +316,7 @@
 .public OverlayIsLoaded
 .public PlayBgmByIdVeneer
 .public PlayBgmByIdVolumeVeneer
+.public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
 .public PointsToZero
 .public PopInventoryMenuField0x1A3
@@ -493,7 +494,6 @@
 .public sub_02017C5C
 .public sub_02017C68
 .public sub_02017C74
-.public sub_02017C80
 .public sub_02017C90
 .public sub_02017C9C
 .public sub_02017CA8

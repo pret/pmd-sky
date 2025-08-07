@@ -57,13 +57,13 @@
 .public ov29_022FB920
 .public ov29_022FBD80
 .public ov29_02304A48
-.public ov29_02344B44
 .public ov29_02346344
-.public ov29_0234B084
+.public PrepareItemForPrinting__02345728
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveGroundItem
 .public RemoveHeldItemNoHole
 .public SetFlagsForHeldItemInBag
+.public SetPreprocessorArgsIdVal
 .public ShouldDisplayEntityWrapper
 .public SLEEP_TURN_RANGE
 .public SPATK_STAT_IDX

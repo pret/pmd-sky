@@ -403,11 +403,11 @@ _02345C3C:
 _02345C44:
 	mov r0, #0
 	mov r1, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02345D6C ; =ov29_023531BC
 	mov r1, r7
 	mov r0, #0
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	cmp r5, #0
 	beq _02345CF4
 	ldrsh r0, [sp, #0xc]
@@ -643,11 +643,11 @@ _02345F74:
 _02345F7C:
 	mov r0, #0
 	mov r1, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02346054 ; =ov29_023531BC
 	ldr r1, [sp, #4]
 	mov r0, #0
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	cmp r4, #0
 	beq _02345FC4
 	bl ov29_022EACBC
@@ -1102,11 +1102,11 @@ _023465B4:
 _023465E4:
 	mov r0, #0
 	mov r1, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _023467D4 ; =ov29_023531BC
 	mov r1, sl
 	mov r0, #0
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	ldr r1, _023467D8 ; =0x00000BDC
 	ldr r0, [sp, #4]
 	bl LogMessageByIdWithPopupCheckUser
@@ -1207,11 +1207,11 @@ _02346724:
 	beq _023467B4
 	mov r0, fp
 	mov r1, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _023467D4 ; =ov29_023531BC
 	mov r0, #0
 	mov r1, sl
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	ldr r0, [sp, #4]
 	ldr r1, _023467D8 ; =0x00000BDC
 	bl LogMessageByIdWithPopupCheckUser

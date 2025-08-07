@@ -9,6 +9,6 @@
 .public GetTreatmentBetweenMonsters
 .public InitMove
 .public IsMonster__0231A9D4
-.public ResetAiCanAttackInDirection
 .public ov29_0231B008
+.public ResetAiCanAttackInDirection
 .public TryAddTargetToAiTargetList

@@ -1,4 +1,6 @@
 #pragma once
+.public DIRECTIONAL_BIT_MASKS__02352788
+.public DIRECTIONAL_BIT_MASKS__02352790
 .public DIRECTIONS_XY
 .public GetDirectionalMobilityType
 .public GetMobilityTypeCheckSlipAndFloating
@@ -6,5 +8,3 @@
 .public IqSkillIsEnabled
 .public IsCurrentTilesetBackground
 .public ItemIsActive__022FF898
-.public DIRECTIONAL_BIT_MASKS__02352788
-.public DIRECTIONAL_BIT_MASKS__02352790

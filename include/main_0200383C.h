@@ -1,0 +1,6 @@
+#ifndef PMDSKY_MAIN_0200383C_H
+#define PMDSKY_MAIN_0200383C_H
+
+void sub_0200383C(s32 arg);
+
+#endif //PMDSKY_MAIN_0200383C_H
