@@ -90,6 +90,7 @@
 .public ov29_022EA428
 .public ov29_0234C584
 .public ov29_0234C5EC
+.public PlaySeByIdVolumeWrapper
 .public PreprocessString
 .public Rand16Bit
 .public SetAndPlayAnimationForAnimationControl
@@ -109,7 +110,6 @@
 .public sub_0200B330
 .public sub_0200B3FC
 .public sub_0200D310
-.public sub_02017C80
 .public sub_0201B43C
 .public sub_0201C108
 .public sub_0201C138

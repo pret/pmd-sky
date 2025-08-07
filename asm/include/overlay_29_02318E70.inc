@@ -3,9 +3,6 @@
 .public CalcStatusDuration
 .public EntityIsValid__02318E4C
 .public LogMessageByIdWithPopupCheckUserTarget
-.public SubstitutePlaceholderStringTags
-.public UpdateStatusIconFlags
-.public ov10_022C472C
 .public ov10_022C4730
 .public ov10_022C4734
 .public ov10_022C4738
@@ -30,3 +27,6 @@
 .public ov29_022E415C
 .public ov29_022E41AC
 .public ov29_022E543C
+.public REFLECT_LIGHT_SCREEN_TURN_RANGE
+.public SubstitutePlaceholderStringTags
+.public UpdateStatusIconFlags

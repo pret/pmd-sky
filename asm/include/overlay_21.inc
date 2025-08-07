@@ -53,6 +53,7 @@
 .public ov11_0230D220
 .public ov11_0230D92C
 .public ov11_02310C2C
+.public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
 .public PreprocessString
 .public PrintIqSkillsMenu
@@ -70,7 +71,6 @@
 .public sub_0201007C
 .public sub_02013150
 .public sub_02017C74
-.public sub_02017C80
 .public sub_02026268
 .public sub_02027B1C
 .public sub_0202836C

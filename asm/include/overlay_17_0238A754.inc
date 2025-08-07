@@ -29,6 +29,10 @@
 .public IsDialogueBoxActive
 .public IsMainCharacter
 .public IsSimpleMenuActive
+.public ov11_022DC504
+.public ov11_022E6E68
+.public ov17_0238A278
+.public ov17_0238A364
 .public OVERLAY17_FUNCTION_POINTER_TABLE
 .public OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 .public PlaySeVolumeWrapper
@@ -38,12 +42,6 @@
 .public ShowDialogueBox
 .public ShowPortraitInPortraitBox
 .public ShowStringIdInDialogueBox
-.public TEAM_MEMBER_TABLE_PTR
-.public TryAddMonsterToActiveTeam
-.public ov11_022DC504
-.public ov11_022E6E68
-.public ov17_0238A278
-.public ov17_0238A364
 .public sub_02017C10
 .public sub_02017C50
 .public sub_020307EC
@@ -89,3 +87,5 @@
 .public sub_02057444
 .public sub_02058138
 .public sub_0205B028
+.public TEAM_MEMBER_TABLE_PTR
+.public TryAddMonsterToActiveTeam

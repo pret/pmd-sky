@@ -67,7 +67,7 @@ _022F5334:
 	mov r4, r0
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	bl ov29_0234B034
 	mov r2, r5
 	mov r1, #0
@@ -205,7 +205,7 @@ _022F550C:
 	beq _022F5558
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _022F5980 ; =0x00000BAE
 	mov r0, sb
 	bl LogMessageByIdWithPopupCheckUser
@@ -231,7 +231,7 @@ _022F5578:
 	beq _022F55B8
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _022F5980 ; =0x00000BAE
 	mov r0, sb
 	bl LogMessageByIdWithPopupCheckUser
@@ -383,7 +383,7 @@ _022F579C:
 _022F57A4:
 	add r1, sp, #0xc
 	mov r0, #0
-	bl ov29_02344B70
+	bl PrepareItemForPrinting__02345754
 	bl ov29_0234B034
 	mov r1, #0
 	mov r2, r8

@@ -5,6 +5,7 @@
 .public DungeonRandInt
 .public EndInvisibleClassStatus
 .public EntityIsValid__02315118
+.public GASTRO_ACID_TURN_RANGE
 .public GetMaxPp
 .public GetMaxPpWrapper
 .public GetMobilityType
@@ -17,7 +18,6 @@
 .public ov10_022C4628
 .public ov10_022C4764
 .public ov10_022C4768
-.public ov10_022C476C
 .public ov10_022C4774
 .public ov10_022C4778
 .public ov10_022C477C

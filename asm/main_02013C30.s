@@ -5496,14 +5496,14 @@ sub_02017C74: ; 0x02017C74
 _02017C7C: .word PlaySeByIdVolume
 	arm_func_end sub_02017C74
 
-	arm_func_start sub_02017C80
-sub_02017C80: ; 0x02017C80
+	arm_func_start PlaySeByIdVolumeWrapper
+PlaySeByIdVolumeWrapper: ; 0x02017C80
 	ldr ip, _02017C8C ; =PlaySeByIdVolume
 	mov r1, #0x100
 	bx ip
 	.align 2, 0
 _02017C8C: .word PlaySeByIdVolume
-	arm_func_end sub_02017C80
+	arm_func_end PlaySeByIdVolumeWrapper
 
 	arm_func_start sub_02017C90
 sub_02017C90: ; 0x02017C90
@@ -17595,7 +17595,7 @@ _0202194C:
 	bl AtoiTag
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	b _02021AA0
 _02021984:
 	ldr r0, _02021ED4 ; =_020997E4
@@ -22104,8 +22104,8 @@ GetDungeonResultString: ; 0x02024FD8
 _02024FE4: .word _022A5268
 	arm_func_end GetDungeonResultString
 
-	arm_func_start sub_02024FE8
-sub_02024FE8: ; 0x02024FE8
+	arm_func_start SubstitutePlaceholderItemTags
+SubstitutePlaceholderItemTags: ; 0x02024FE8
 	stmdb sp!, {r3, r4, r5, lr}
 	cmp r1, #0
 	beq _02025030
@@ -22147,7 +22147,7 @@ _02025068:
 _02025070: .word _022A596A
 _02025074: .word _022A5969
 _02025078: .word _022A5970
-	arm_func_end sub_02024FE8
+	arm_func_end SubstitutePlaceholderItemTags
 
 	arm_func_start sub_0202507C
 sub_0202507C: ; 0x0202507C

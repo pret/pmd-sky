@@ -50,6 +50,7 @@
 .public IRON_TAIL_LOWER_DEFENSE_CHANCE
 .public IsChargingTwoTurnMove
 .public IsMonsterSleeping
+.public IsTileGround
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerDefensiveStat
 .public LowerHitChanceStat
@@ -74,7 +75,6 @@
 .public ov29_02318D58
 .public ov29_02318D98
 .public ov29_02332F18
-.public IsTileGround
 .public ov29_0234B034
 .public ov29_0234BA54
 .public ov29_02352AD8

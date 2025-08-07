@@ -9,7 +9,6 @@
 .public BuildMoveTargetList
 .public CalcStatusDuration
 .public CanMonsterUseMove
-.public MonsterCannotAttack
 .public DungeonRandInt
 .public EndFrozenClassStatus
 .public EndLeechSeedClassStatus
@@ -39,6 +38,7 @@
 .public LowerSpeed
 .public METRONOME_NEXT_INDEX
 .public METRONOME_TABLE
+.public MonsterCannotAttack
 .public NATURE_POWER_TABLE
 .public NIGHTMARE_TURN_RANGE
 .public ov10_022BFD6C
@@ -62,9 +62,9 @@
 .public ov29_023383A8
 .public ov29_02344B9C
 .public ov29_0234B034
-.public ov29_0234B084
 .public ov29_0235370C
 .public ov29_0237CA68
+.public SetPreprocessorArgsIdVal
 .public SLEEP_TURN_RANGE
 .public StringFromId
 .public sub_0201D1B0

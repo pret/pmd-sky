@@ -82,8 +82,8 @@
 .public ov29_022FB9BC
 .public ov29_02304830
 .public ov29_0230F9A4
-.public ov29_02344B44
 .public ov29_0234BA54
+.public PrepareItemForPrinting__02345728
 .public PROTEIN_STAT_BOOST
 .public RARE_FOSSIL_DAMAGE
 .public RestoreAllMovePP

@@ -41,6 +41,7 @@
 .public InitMove
 .public IsChargingTwoTurnMove
 .public IsSameMove
+.public IsTileGround
 .public LevitateIsActive
 .public LICK_PARALYZE_CHANCE
 .public LogMessageByIdWithPopupCheckUserTarget
@@ -65,9 +66,7 @@
 .public ov29_02318BBC
 .public ov29_02318D58
 .public ov29_0232A834
-.public IsTileGround
 .public ov29_0234B034
-.public ov29_0234B084
 .public ov29_0234C738
 .public ov29_02352B18
 .public POISON_FANG_POISON_CHANCE
@@ -75,6 +74,7 @@
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveEquivItemNoHole
 .public SACRED_FIRE_BURN_CHANCE
+.public SetPreprocessorArgsIdVal
 .public SHADOW_BALL_LOWER_SPECIAL_DEFENSE_CHANCE
 .public ShouldDisplayEntityAdvanced
 .public SMOG_POISON_CHANCE

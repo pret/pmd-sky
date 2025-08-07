@@ -1452,7 +1452,7 @@ _0238B574:
 	cmp r0, #3
 	bne _0238B5BC
 	ldr r0, _0238B6D4 ; =0x00002C05
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 _0238B5BC:
 	ldr r6, _0238B694 ; =SENTRY_DUTY_PTR
 	ldr r0, [r6]
@@ -2998,7 +2998,7 @@ _0238CA10:
 	mov r2, #1
 	add r1, r1, #0x3000
 	strb r2, [r1, #0x870]
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	ldr r1, _0238CA54 ; =SENTRY_DUTY_PTR
 	mov r3, #2
 	ldr r0, [r1]
@@ -3129,7 +3129,7 @@ _0238CBEC:
 	mov r2, #0
 	add r1, r1, #0x3000
 	str r2, [r1, #0x8ac]
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	ldr r2, _0238CFA4 ; =SENTRY_DUTY_PTR
 	ldr r1, [r2]
 	add r0, r1, #0x3000
@@ -3156,7 +3156,7 @@ _0238CC5C:
 	cmp r0, #3
 	bne _0238CC7C
 	ldr r0, _0238CFB0 ; =0x00003F03
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	b _0238CCE0
 _0238CC7C:
 	ldr r0, [r1, #0x898]
@@ -3191,7 +3191,7 @@ _0238CCE0:
 	tst r0, #0xf0
 	beq _0238CCF4
 	ldr r0, _0238CFB4 ; =0x00003F01
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 _0238CCF4:
 	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
@@ -3357,7 +3357,7 @@ _0238CF1C:
 	bne _0238CF5C
 	bl ov14_0238AC40
 	ldr r0, _0238CFC0 ; =0x00002C06
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #1
 	ldr r0, [r0]
@@ -3374,7 +3374,7 @@ _0238CF5C:
 	bne _0238CF9C
 	bl ov14_0238AC40
 	ldr r0, _0238CFC0 ; =0x00002C06
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	ldr r0, _0238CFA4 ; =SENTRY_DUTY_PTR
 	mov r1, #1
 	ldr r0, [r0]
@@ -3654,7 +3654,7 @@ SentryState10: ; 0x0238D320
 	bl ClearWindow
 _0238D368:
 	ldr r0, _0238D394 ; =0x00002C08
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	ldr r0, _0238D390 ; =SENTRY_DUTY_PTR
 	mvn r3, #0
 	ldr r2, [r0]
@@ -3738,7 +3738,7 @@ SentryState15: ; 0x0238D428
 	ldmia sp!, {r3, pc}
 _0238D450:
 	mov r0, #0x304
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	mov r0, #0x16
 	bl SentrySetStateIntermediate
 	ldmia sp!, {r3, pc}
@@ -3853,7 +3853,7 @@ SentryState1A: ; 0x0238D588
 	ldmia sp!, {r3, pc}
 _0238D5B0:
 	mov r0, #0x304
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	mov r0, #0x1b
 	bl SentrySetStateIntermediate
 	ldmia sp!, {r3, pc}

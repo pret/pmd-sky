@@ -25,13 +25,13 @@
 .public ov29_022EACCC
 .public ov29_022F52BC
 .public ov29_022F9EA0
-.public ov29_02344B44
 .public ov29_02345004
 .public ov29_02347040
 .public ov29_02348D00
 .public ov29_02348D3C
 .public ov29_02348DD8
 .public ov29_02348ECC
+.public PrepareItemForPrinting__02345728
 .public RemoveGroundItem
 .public ShouldMonsterRunAwayAndShowEffect
 .public sub_0200D8AC

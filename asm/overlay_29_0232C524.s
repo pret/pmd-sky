@@ -2155,7 +2155,7 @@ DoMoveWorrySeed: ; 0x0232DDAC
 	bl SubstitutePlaceholderStringTags
 	mov r0, #1
 	mov r1, #0x2a
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _0232DE1C ; =0x00000F13
 	mov r0, r6
 	mov r1, r5

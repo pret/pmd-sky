@@ -133,7 +133,6 @@
 .public ov29_0230E658
 .public ov29_02337EC0
 .public ov29_0234B034
-.public ov29_0234B084
 .public ov29_0234B0B4
 .public ov29_0234B1A4
 .public ov29_0234BA54
@@ -168,6 +167,7 @@
 .public SCOPE_LENS_CRIT_RATE_BOOST
 .public SetItemAcquired
 .public SetPokemonJoined
+.public SetPreprocessorArgsIdVal
 .public SOLID_ROCK_MULTIPLIER
 .public SPECIAL_BAND_STAT_BOOST
 .public StrcpySimple

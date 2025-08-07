@@ -45,6 +45,7 @@
 .public ov11_022F6FE0
 .public ov11_022F7058
 .public PlayBgmByIdVeneer
+.public PlaySeByIdVolumeWrapper
 .public PortraitBoxNeedsUpdate
 .public PreprocessString
 .public RandRange
@@ -63,7 +64,6 @@
 .public sub_020063F4
 .public sub_02017B70
 .public sub_02017B7C
-.public sub_02017C80
 .public sub_0202BC60
 .public sub_0202F334
 .public sub_0202F954

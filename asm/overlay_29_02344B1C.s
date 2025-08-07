@@ -23,44 +23,44 @@ ov29_02344B30: ; 0x02344B30
 _02344B40: .word ov29_023537B0
 	arm_func_end ov29_02344B30
 
-	arm_func_start ov29_02344B44
-ov29_02344B44: ; 0x02344B44
+	arm_func_start PrepareItemForPrinting__02345728
+PrepareItemForPrinting__02345728: ; 0x02344B44
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	orr r1, r5, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02344B6C ; =ov29_023531BC
 	mov r0, r5
 	mov r1, r4
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02344B6C: .word ov29_023531BC
-	arm_func_end ov29_02344B44
+	arm_func_end PrepareItemForPrinting__02345728
 
-	arm_func_start ov29_02344B70
-ov29_02344B70: ; 0x02344B70
+	arm_func_start PrepareItemForPrinting__02345754
+PrepareItemForPrinting__02345754: ; 0x02344B70
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
 	orr r1, r5, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02344B98 ; =ov29_023531A4
 	mov r0, r5
 	mov r1, r4
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02344B98: .word ov29_023531A4
-	arm_func_end ov29_02344B70
+	arm_func_end PrepareItemForPrinting__02345754
 
 	arm_func_start ov29_02344B9C
 ov29_02344B9C: ; 0x02344B9C
-	ldr ip, _02344BA4 ; =ov29_0234B084
+	ldr ip, _02344BA4 ; =SetPreprocessorArgsIdVal
 	bx ip
 	.align 2, 0
-_02344BA4: .word ov29_0234B084
+_02344BA4: .word SetPreprocessorArgsIdVal
 	arm_func_end ov29_02344B9C
 
 	arm_func_start ov29_02344BA8
@@ -72,7 +72,7 @@ ov29_02344BA8: ; 0x02344BA8
 	mov r1, r2
 	ldr r2, _02344BCC ; =ov29_023531BC
 	str ip, [r3, #0x10]
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02344BCC: .word ov29_023531BC
@@ -454,11 +454,11 @@ TryLeaderItemPickUp: ; 0x02345058
 	beq _02345508
 	mov r0, #0
 	mov r1, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02345510 ; =ov29_023531BC
 	mov r1, r5
 	mov r0, #0
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	mov r0, #0
 	mov r1, r4
 	mov r2, r0
@@ -476,11 +476,11 @@ _02345108:
 	beq _02345508
 	mov r0, #0
 	mov r1, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02345510 ; =ov29_023531BC
 	mov r1, r5
 	mov r0, #0
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	mov r0, #0
 	mov r1, r4
 	mov r2, r0
@@ -512,11 +512,11 @@ _0234515C:
 	bl AddMoneyCarried
 	mov r0, #0
 	mov r1, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02345510 ; =ov29_023531BC
 	mov r0, #0
 	mov r1, r5
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	mov r0, sl
 	mov r1, #1
 	bl RemoveGroundItem
@@ -608,11 +608,11 @@ _023452D8:
 	bl ov29_02347040
 	mov r0, #0
 	mov r1, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02345510 ; =ov29_023531BC
 	mov r1, r5
 	mov r0, #0
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	mov r0, sl
 	mov r1, #1
 	bl RemoveGroundItem
@@ -665,11 +665,11 @@ _023453B4:
 	beq _02345508
 	mov r0, #0
 	mov r1, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02345510 ; =ov29_023531BC
 	mov r1, r5
 	mov r0, #0
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	mov r0, #0
 	mov r1, r4
 	mov r2, r0
@@ -693,11 +693,11 @@ _02345418:
 	strh r2, [r7, #0x64]
 	ldrh r2, [r5, #4]
 	strh r2, [r7, #0x66]
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02345510 ; =ov29_023531BC
 	mov r1, r5
 	mov r0, #0
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	mov r0, sl
 	mov r1, #1
 	bl RemoveGroundItem
@@ -723,11 +723,11 @@ _02345480:
 	b _02345500
 _023454BC:
 	mov r1, #0x40000
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r2, _02345510 ; =ov29_023531BC
 	mov r1, r5
 	mov r0, #0
-	bl sub_02024FE8
+	bl SubstitutePlaceholderItemTags
 	mov r0, sl
 	mov r1, #1
 	bl RemoveGroundItem

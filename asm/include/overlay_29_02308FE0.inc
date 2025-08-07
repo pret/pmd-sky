@@ -74,7 +74,6 @@
 .public ov29_02303E0C
 .public ov29_02304830
 .public ov29_02304A48
-.public TryEndPetrifiedOrSleepStatus
 .public ov29_02307C48
 .public ov29_02307DC0
 .public ov29_0230D628
@@ -110,6 +109,7 @@
 .public sub_0204AF00
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags
+.public TryEndPetrifiedOrSleepStatus
 .public TryIncreaseHp
 .public TryRecruit
 .public TrySpawnEnemyItemDrop

@@ -394,7 +394,7 @@ _022FF45C:
 	b _022FF5E0
 _022FF468:
 	mov r0, r6
-	bl ov29_022F45CC
+	bl HandleHeldItemSwaps
 	b _022FF5E0
 _022FF474:
 	mov r0, r6
@@ -1041,7 +1041,7 @@ _022FEA30:
 	b _022FEBB4
 _022FEA3C:
 	mov r0, sb
-	bl ov29_022F45CC
+	bl HandleHeldItemSwaps
 	b _022FEBB4
 _022FEA48:
 	mov r0, sb

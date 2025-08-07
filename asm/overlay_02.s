@@ -26434,7 +26434,7 @@ ov02_0233A420: ; 0x0233A420
 	ldmneia sp!, {r3, pc}
 	mov r0, #0x1000000
 	bl sub_0207B854
-	bl sub_0208200C
+	bl PM_ForceToPowerOff
 	ldmia sp!, {r3, pc}
 	arm_func_end ov02_0233A420
 
@@ -27739,7 +27739,7 @@ ov02_0233B470: ; 0x0233B470
 	ldmneia sp!, {r3, pc}
 	mov r0, #0x1000000
 	bl sub_0207B854
-	bl sub_0208200C
+	bl PM_ForceToPowerOff
 	ldmia sp!, {r3, pc}
 	arm_func_end ov02_0233B470
 

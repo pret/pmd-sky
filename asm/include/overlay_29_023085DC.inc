@@ -5,6 +5,7 @@
 .public ATK_STAT_IDX
 .public BoostOffensiveStat
 .public CategoryIsNotPhysical
+.public CUTE_CHARM_INFATUATE_CHANCE
 .public DefenderAbilityIsActive__0230A940
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -22,7 +23,6 @@
 .public ov10_022C4460
 .public ov10_022C4464
 .public ov10_022C44C0
-.public ov10_022C4524
 .public ov10_022C4550
 .public ov10_022C4564
 .public ov10_022C45AC

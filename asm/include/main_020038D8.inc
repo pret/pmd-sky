@@ -1,9 +1,4 @@
 #pragma once
-.public Debug_Print0
-.public DisableAllInterrupts
-.public EnableAllInterrupts
-.public PlayBgmById
-.public StopBgmCommand
 .public _020924E8
 .public _020924F8
 .public _020AEF7C
@@ -12,6 +7,11 @@
 .public _020AF050
 .public _0229B21C
 .public _0229B220
+.public Debug_Print0
+.public DisableAllInterrupts
+.public EnableAllInterrupts
+.public PlayBgmById
+.public StopBgmCommand
 .public sub_02002580
 .public sub_020025F8
 .public sub_02002628

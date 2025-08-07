@@ -36,6 +36,7 @@
 .public MemFree
 .public ov11_022E6E68
 .public ov11_0238A090
+.public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
 .public PortraitBoxNeedsUpdate
 .public PreprocessString
@@ -50,7 +51,6 @@
 .public ShowStringIdInDialogueBox
 .public StrncpySimpleNoPadSafe
 .public sub_02017C74
-.public sub_02017C80
 .public sub_02026268
 .public sub_02027B1C
 .public sub_0202BC60

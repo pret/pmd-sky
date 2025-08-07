@@ -2803,7 +2803,7 @@ _0238C5EC:
 	cmp r0, #0
 	bne _0238C614
 	ldr r0, _0238C71C ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	b _0238C620
 _0238C614:
 	ldr r0, _0238C718 ; =0x00003F07
@@ -2851,7 +2851,7 @@ _0238C68C:
 	b _0238C6E4
 _0238C6A8:
 	ldr r0, _0238C718 ; =0x00003F07
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	mov r0, #0x21
 	bl ov18_0238BE28
 	b _0238C6E4

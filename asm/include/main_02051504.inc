@@ -1,4 +1,5 @@
 #pragma once
+.public _020A1864
 .public CopyBitsFrom
 .public CopyBitsTo
 .public DUNGEON_RESTRICTIONS
@@ -7,4 +8,3 @@
 .public GetNbFloorsPlusOne
 .public MISSION_FLOORS_FORBIDDEN
 .public RandIntSafe
-.public _020A1864

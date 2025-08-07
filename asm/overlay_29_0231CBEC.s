@@ -289,7 +289,7 @@ _0231CF18:
 	beq _0231CF64
 	ldrh r1, [r7, #4]
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 #ifdef JAPAN
 	ldr r2, _0231E440 ; =0x0000092F
 	mov r0, sb
@@ -714,7 +714,7 @@ CanMonsterUseItem: ; 0x0231D4A4
 	tst r2, #0xff
 	beq _0231D4E4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _0231D52C ; =0x00000BE7
 	mov r0, r4
 	bl LogMessageByIdWithPopupCheckUser

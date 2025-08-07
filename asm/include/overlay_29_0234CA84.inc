@@ -1,7 +1,7 @@
 #pragma once
-.public DUNGEON_PTR
 .public Debug_Print0
 .public DisplayMessageInternal
+.public DUNGEON_PTR
 .public FixedRoomIsSubstituteRoom
 .public GetDungeonTipShown
 .public GetGameMode
@@ -17,12 +17,6 @@
 .public LoadOverlay
 .public LoadScriptVariableValue
 .public LogMessageByIdQuiet
-.public OverlayIsLoaded
-.public SetBothScreensWindowsColor
-.public SetDungeonTipShown
-.public StringFromId
-.public UnloadOverlay
-.public WriteQuicksaveData
 .public ov29_022EA428
 .public ov29_022EACBC
 .public ov29_0231ADA8
@@ -66,4 +60,10 @@
 .public ov29_023537E8
 .public ov29_0237D000
 .public ov30_023842F4
+.public OverlayIsLoaded
+.public SetBothScreensWindowsColor
+.public SetDungeonTipShown
+.public StringFromId
 .public sub_02025784
+.public UnloadOverlay
+.public WriteQuicksaveData

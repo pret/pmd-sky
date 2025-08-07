@@ -53,7 +53,7 @@ _02322E80:
 	mov r0, r7, lsl #0x10
 	mov r1, r0, asr #0x10
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	b _02322EAC
 _02322E94:
 	cmp r7, #0
@@ -61,7 +61,7 @@ _02322E94:
 	mov r0, r7, lsl #0x10
 	mov r1, r0, asr #0x10
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 _02322EAC:
 	ldrh r1, [sb, #4]
 	ldr r0, _02322F74 ; =0x00000163

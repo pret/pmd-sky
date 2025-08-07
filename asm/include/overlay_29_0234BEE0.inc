@@ -10,8 +10,6 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
-.public OverlayIsLoaded
-.public UnloadOverlay
 .public ov10_022BF764
 .public ov10_022BF7D4
 .public ov29_022DC670
@@ -42,6 +40,7 @@
 .public ov29_023537D8
 .public ov29_023537E4
 .public ov30_02382A34
+.public OverlayIsLoaded
 .public sub_0200383C
 .public sub_020038D8
 .public sub_020038E8
@@ -85,3 +84,4 @@
 .public sub_02034710
 .public sub_02034A80
 .public sub_0204F9CC
+.public UnloadOverlay

@@ -164,6 +164,7 @@
 .public ov00_02318158
 .public ov00_02318160
 .public ov00_023250C8
+.public PM_ForceToPowerOff
 .public SetIrqFlag
 .public StartThread
 .public strcpy
@@ -256,7 +257,6 @@
 .public sub_020818B0
 .public sub_020819D4
 .public sub_020819EC
-.public sub_0208200C
 .public sub_02082420
 .public sub_020824A4
 .public sub_02082514

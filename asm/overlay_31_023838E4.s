@@ -627,7 +627,7 @@ _023841A4:
 	tst r0, #8
 	beq _023842DC
 	ldr r0, _023848D0 ; =0x00003F04
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	ldr r0, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
 	ldr r0, [r0]
 	add r0, r0, #0x1100
@@ -3745,7 +3745,7 @@ _02386950:
 	bl sub_02041154
 	mov r1, r0
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r0, _02386B0C ; =OVERLAY31_UNKNOWN_POINTER__NA_238A270
 	ldr r0, [r0]
 	cmp r0, #4
@@ -7220,7 +7220,7 @@ _0238A838:
 	ldrb r5, [r1, #0xb8]
 	bl ov31_02389D80
 	ldr r0, _02389900 ; =0x00003F02
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	bl ov29_022EBA70
 	mov r0, #0x2f
 	mov r1, #0
@@ -7292,7 +7292,7 @@ _0238A998:
 	cmp r1, r0
 	bne _0238A9AC
 	ldr r0, _02389900 ; =0x00003F02
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 _0238A9AC:
 	cmp r8, #0
 	bge _0238A9C8
@@ -7335,7 +7335,7 @@ _0238AA04:
 	b _0238AB68
 _0238AA3C:
 	ldr r0, _02389900 ; =0x00003F02
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	bl sub_02001808
 	cmp r0, #0xa000
 	bge _0238AA64
@@ -7518,7 +7518,7 @@ _02389578:
 	ldrb r6, [r1, #0xb8]
 	bl ov31_02389D80
 	ldr r0, _02389900 ; =0x00003F02
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	bl ov29_022EBA70
 	mov r0, #0x2f
 	mov r1, #0
@@ -7590,7 +7590,7 @@ _023896DC:
 	cmp r1, r0
 	bne _023896F0
 	ldr r0, _02389900 ; =0x00003F02
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 _023896F0:
 	cmp r8, #0
 	bge _0238970C
@@ -7633,7 +7633,7 @@ _02389748:
 	b _023898AC
 _02389780:
 	ldr r0, _02389900 ; =0x00003F02
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	bl sub_02001808
 	cmp r0, #0xa000
 	bge _023897A8

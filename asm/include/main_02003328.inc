@@ -1,14 +1,4 @@
 #pragma once
-.public Debug_Print0
-.public GX_VBlankIntr
-.public GetHeldButtons
-.public GetReleasedStylus
-.public HaltProcessDisp
-.public KeyWaitInit
-.public MainLoop
-.public OS_IRQTable
-.public Rand16Bit
-.public WaitForever
 .public _020924D8
 .public _020AEF7C
 .public _020AEFB4
@@ -25,6 +15,15 @@
 .public _fadd
 .public _fflt
 .public _fmul
+.public Debug_Print0
+.public GetHeldButtons
+.public GetReleasedStylus
+.public GX_VBlankIntr
+.public HaltProcessDisp
+.public KeyWaitInit
+.public MainLoop
+.public OS_IRQTable
+.public Rand16Bit
 .public sub_02002580
 .public sub_020025F8
 .public sub_02002628
@@ -58,3 +57,4 @@
 .public sub_0207B4B8
 .public sub_020820E8
 .public sub_02082420
+.public WaitForever

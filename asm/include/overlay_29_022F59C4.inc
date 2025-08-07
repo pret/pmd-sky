@@ -39,7 +39,6 @@
 .public ov29_0230040C
 .public ov29_023009CC
 .public ov29_02304AFC
-.public TryEndPetrifiedOrSleepStatus
 .public ov29_0231AE3C
 .public ov29_0232145C
 .public ov29_02322374
@@ -63,6 +62,7 @@
 .public sub_02024FB8
 .public SubstitutePlaceholderStringTags
 .public TryActivateTruant
+.public TryEndPetrifiedOrSleepStatus
 .public UpdateMapSurveyorFlag
 .public UpdateMovePp
 .public YesNoMenu

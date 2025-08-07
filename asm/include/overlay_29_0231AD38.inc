@@ -10,11 +10,11 @@
 .public LogMessageByIdWithPopupCheckParticipants
 .public LogMessageByIdWithPopupCheckUserTarget
 .public NATURAL_GIFT_ITEM_TABLE
-.public SetActionUseMoveAi
-.public SubstitutePlaceholderStringTags
-.public WEATHER_BALL_TYPE_TABLE
 .public ov29_022E4110
 .public ov29_022FB9E0
 .public ov29_0232145C
 .public ov29_0232E80C
-.public ov29_02344B44
+.public PrepareItemForPrinting__02345728
+.public SetActionUseMoveAi
+.public SubstitutePlaceholderStringTags
+.public WEATHER_BALL_TYPE_TABLE

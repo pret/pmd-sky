@@ -5287,7 +5287,7 @@ _02040E34:
 	cmpeq r0, #0
 	bne _02040E6C
 	ldr r0, _02040FA4 ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	b _02040E78
 _02040E6C:
 	ldr r0, _02040F9C ; =0x00003F07
@@ -6486,7 +6486,7 @@ _02041CF8:
 	tst r0, #8
 	beq _02041D54
 	ldr r0, _020420D0 ; =0x00003F04
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	ldr r0, _020420BC ; =_020AFE90
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
@@ -6511,7 +6511,7 @@ _02041D54:
 	cmp r0, #0
 	beq _02041D7C
 	ldr r0, _020420D4 ; =0x00003F03
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	b _020420B0
 _02041D7C:
 	ldrsb r0, [r1]
@@ -6594,7 +6594,7 @@ _02041E84:
 	ldr r0, [r3, #0x790]
 	bl DisableIqSkill
 	ldr r0, _020420D8 ; =0x00003F07
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 _02041E98:
 	ldr r0, _020420BC ; =_020AFE90
 	ldr r0, [r0, #4]

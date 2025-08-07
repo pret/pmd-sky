@@ -35,7 +35,6 @@
 .public ov29_02338430
 .public ov29_02344BF8
 .public ov29_02347378
-.public ov29_0234B084
 .public ov29_023531BC
 .public ov29_023537B4
 .public ov29_023537BC
@@ -43,11 +42,12 @@
 .public RetrieveFromItemList1
 .public SECONDARY_TERRAIN_TYPES
 .public SetEntityPixelPosXY
+.public SetPreprocessorArgsIdVal
 .public ShouldDisplayEntityWrapper
-.public SpawnItem
 .public sin_4096
+.public SpawnItem
 .public sub_0200D1FC
 .public sub_0201B9F8
-.public sub_02024FE8
 .public sub_0204F7A8
+.public SubstitutePlaceholderItemTags
 .public UNOWN_STONE_DROP_CHANCE

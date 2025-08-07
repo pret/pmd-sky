@@ -18,7 +18,6 @@
 .public AreMovesEnabled
 .public CanAiMonsterMoveInDirection
 .public CanAiUseMove
-.public MonsterCannotAttack
 .public CanSeeTarget
 .public CanTargetEntity
 .public CanTargetPosition
@@ -56,6 +55,7 @@
 .public MemcpyFast
 .public MemsetFast
 .public MONSTER_DATA_TABLE_PTR
+.public MonsterCannotAttack
 .public OS_IRQTable
 .public ov29_022E935C
 .public ov29_022FBDF0

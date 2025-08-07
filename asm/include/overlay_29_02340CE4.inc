@@ -1,4 +1,6 @@
 #pragma once
+.public _s32_div_f
+.public abs
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandRange
@@ -12,5 +14,3 @@
 .public MONSTER_HOUSE_MAX_MONSTER_SPAWNS
 .public MONSTER_HOUSE_MAX_NON_MONSTER_SPAWNS
 .public SpawnStairs
-.public _s32_div_f
-.public abs

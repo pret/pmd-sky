@@ -1,8 +1,9 @@
 #pragma once
+.public abs
 .public AI_CAN_ATTACK_IN_DIRECTION
-.public AI_POTENTIAL_ATTACK_TARGETS
 .public AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS
 .public AI_POTENTIAL_ATTACK_TARGET_WEIGHTS
+.public AI_POTENTIAL_ATTACK_TARGETS
 .public CanAttackInDirection
 .public CanSeeTarget
 .public DIRECTIONS_XY
@@ -15,12 +16,11 @@
 .public GetMoveTypeForMonster
 .public GetTile
 .public IqSkillIsEnabled
-.public IsUsableWhileTaunted
 .public IsAiTargetEligible
 .public IsBlinded
 .public IsTargetInRange
+.public IsUsableWhileTaunted
 .public ResetAiCanAttackInDirection
 .public StatusCheckerCheck
 .public TryAddTargetToAiTargetList
 .public WeightMoveWithIqSkills
-.public abs

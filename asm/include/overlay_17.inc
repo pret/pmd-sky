@@ -11,11 +11,11 @@
 .public IsScrollBoxActive
 .public IsSimpleMenuActive
 .public MemAlloc
+.public ov11_0238A08C
 .public OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 .public PortraitBoxNeedsUpdate
 .public SetAdvancedTextBoxState5
 .public SetScrollBoxState7
-.public ov11_0238A08C
 .public sub_0202F334
 .public sub_02034A38
 .public sub_0203A51C
