@@ -57,7 +57,11 @@ void ov31_023837C8(void)
 
 void ov31_02383854(struct window* w)
 {
+    #ifdef JAPAN
+    DrawTextInWindow(w, 2, 2, StringFromId(0x1d3e));
+    #else
     DrawTextInWindow(w, 2, 2, StringFromId(0x08e6));
+    #endif
 }
 
 void ov31_02383880(u8* arg1)
