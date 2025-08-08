@@ -8,6 +8,11 @@ HEADER_FOLDER = 'include'
 XMAP_PATH_ARM7 = os.path.join('sub', 'build', 'arm7.nef.xMAP')
 MAIN_LSF_PATH = 'main.lsf'
 
+# Symbols with duplicate addresses that should be ignored.
+XMAP_SYMBOL_BLACKLIST = set([
+    'AI_POTENTIAL_ATTACK_TARGET_WEIGHTS_2'
+])
+
 """
 Dictionary format:
 {
@@ -78,6 +83,10 @@ def read_xmap_symbols_for_language(language: str) -> Dict[str, Dict[int, SymbolD
             elif current_section is not None and line.startswith('  ') and ('.text' in line or '.itcm' in line or line_is_data(line)) and len(line) > 28 and line[28] not in NON_FUNCTION_SYMBOLS:
                 symbol_split = line[28:-1].split('\t')
                 symbol_name = symbol_split[0]
+
+                if symbol_name in XMAP_SYMBOL_BLACKLIST:
+                    continue
+
                 symbol_address = int(line[2:10], 16)
                 if line_is_data(line):
                     if not symbol_name.startswith('$'):
