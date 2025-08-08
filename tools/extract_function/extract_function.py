@@ -109,12 +109,7 @@ new_asm_header = f"""\t.include "asm/macros.inc"
 new_asm_name = f'{new_asm_base_name}.s'
 
 new_asm_lines = original_lines[function_end_line + 1:]
-if nonmatching:
-    original_asm_lines = original_lines[:function_end_line + 1]
-    original_asm_lines.append('#endif\n')
-    original_asm_lines[function_start_line] = '#ifndef NONMATCHING\n' + original_asm_lines[function_start_line]
-else:
-    original_asm_lines = original_lines[:function_start_line - 1]
+original_asm_lines = original_lines[:function_start_line - 1]
 
 with open(LSF_FILE_PATH, 'r') as lsf_file:
     lsf_lines = lsf_file.readlines()
@@ -177,9 +172,39 @@ function_body = f"""{function_header}
 {{
 
 }}"""
+
 if nonmatching:
+    asm_lines = original_lines[function_start_line + 2 : function_end_line - 1]
+    for i, line in enumerate(asm_lines):
+        # Replace some register mnemonics with numbered registers. These don't work when ASM is embedded in C.
+        if not line.startswith('bl') and line.startswith('\t'):
+            space_index = line.find(' ')
+            line = line[:space_index] + line[space_index:].replace('sb', 'r9').replace('sl', 'r10').replace('fp', 'r11')
+
+        semicolon_index = line.find(';')
+        if semicolon_index >= 0:
+            if 'jump table' in line or 'case' in line:
+                # Jump tables have comments, but semicolons are not recognized as comment markers in embedded ASM, so remove them.
+                line = line[:semicolon_index - 1]
+            else:
+                # Replace word values at the end of the function.
+                # They are conveniently already included within the ASM as comments.
+                line = line[:line.find('_')] + line[semicolon_index + 2:]
+
+        asm_lines[i] = line
+
+    # .align is not needed in embedded ASM
+    if '.align' in asm_lines[-1]:
+        asm_lines = asm_lines[:-1]
+
+    asm_string = str.join('', asm_lines)
+
     function_body = f"""#ifdef NONMATCHING
 {function_body}
+#else
+asm {function_header}
+{{
+{asm_string}}}
 #endif"""
 
 # Add the extracted function to a .h and .c file.

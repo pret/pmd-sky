@@ -1426,7 +1426,7 @@ _0208AAE4:
 	mov r0, r4
 	mov r1, r6
 	mvn r2, #0
-	bl _dgeq
+	bl _dgr
 	bls _0208AB10
 	ldr r0, [sp, #0xd0]
 	mov r2, #1
@@ -1626,7 +1626,7 @@ sub_0208AD28: ; 0x0208AD28
 	mov r0, r6
 	mov r1, r7
 	mvn r2, #0
-	bl _dgeq
+	bl _dgr
 	bls _0208ADEC
 _0208ADE0:
 	ldr r0, _0208AE04 ; =_022BCA70
@@ -2993,7 +2993,7 @@ _0208C104:
 	mov r3, r1
 	mov r0, r4
 	mov r1, sl
-	bl _dgeq
+	bl _dgr
 	bls _0208C238
 	ldr r0, _0208BA48 ; =0x8800759C
 	ldr r1, _0208BA4C ; =0x7E37E43C
@@ -6338,9 +6338,9 @@ sub_0208EED4: ; 0x0208EED4
 	bx lr
 	arm_func_end sub_0208EED4
 
-	; Other names: _d_fge
-	arm_func_start _dgeq
-_dgeq: ; 0x0208EEDC
+	; Other names: _d_fgt
+	arm_func_start _dgr
+_dgr: ; 0x0208EEDC
 	mov ip, #0x200000
 	cmn ip, r1, lsl #1
 	bhs _0208EF50
@@ -6384,7 +6384,7 @@ _0208EF64:
 	cmp r2, #0
 	bhi _0208EF0C
 	b _0208EEF0
-	arm_func_end _dgeq
+	arm_func_end _dgr
 
 	; Other names: _d_fle
 	arm_func_start _dleq
