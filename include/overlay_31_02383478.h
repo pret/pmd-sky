@@ -23,6 +23,6 @@ struct loc_struct {
 
 char* ov31_02383478(char* arg1, s32 arg2, u32 arg3);
 // Checks if an entity pointer points to a valid entity (not entity type 0, which represents no entity).
-bool8 EntityIsValid__02383658(struct entity *entity);
+bool8 EntityIsValidOverlay31(struct entity *entity);
 
 #endif //PMDSKY_OVERLAY_31_02383478_H

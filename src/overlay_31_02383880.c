@@ -70,7 +70,7 @@ void ov31_02383880(u8* arg1)
     arg1[0] = 0;
     count = arg1[0] + 1;
     for (s32 i=0; i < MAX_TEAM_MEMBERS; i++) {
-        u8 test = EntityIsValid__02383658(DUNGEON_PTR[0]->monster_slots.party_members[i]);
+        u8 test = EntityIsValidOverlay31(DUNGEON_PTR[0]->monster_slots.party_members[i]);
         if (!test) {
             arg1[i+1] = 0;
         } else {

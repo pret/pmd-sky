@@ -22,7 +22,7 @@
 
 extern bool8 ov29_022E2CA0(struct position *pos);
 extern void ov29_0234B4CC(bool8 val);
-extern s32 sin_4096(s32 x);
+extern s32 SinAbs4096(s32 x);
 extern bool8 ov29_022E9488(s32 inX, s32 inY, u8 index);
 extern bool8 ov29_023457C8(struct entity *entity, bool8 hallucinating, u8 a2, u8 a3, u8 a4);
 extern void AdvanceFrame(u32);
@@ -32,7 +32,7 @@ extern void PrepareItemForPrinting__02345754(u8 *buffer, struct item *item);
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
 extern void ov29_02304A84(struct entity *entity, u32 new_dir);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
-extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *pokemon, struct entity *target);
+extern bool8 TryEndPetrifiedOrSleepStatus(struct entity *user, struct entity *target);
 extern void ApplyItemEffect(char param_1, u8 param_2, u8 param_3, struct entity *attacker, struct entity *defender, struct item *thrown_item);
 extern void SpawnDroppedItem(struct entity *entity, struct entity *item_entity, struct item *item, bool8 param_4, struct position *dir_xy, u32 param_6);
 
@@ -61,7 +61,7 @@ bool8 EntityIsValid__02347BA4(struct entity *entity)
     return GetEntityType(entity) != ENTITY_NOTHING;
 }
 
-void HandleCurvedProjectileThrow(struct entity *thrower, struct item *item, struct position *start_pos, struct position *target_pos, struct projectile_throw_info *projectile_throw_info)
+void HandleCurvedProjectileThrow(struct entity *user, struct item *item, struct position *start_pos, struct position *target_pos, struct projectile_throw_info *projectile_throw_info)
 {
     struct entity *projectile;
     bool8 r4;
@@ -88,7 +88,7 @@ void HandleCurvedProjectileThrow(struct entity *thrower, struct item *item, stru
 
     throwResult = 1;
     lockOnSpecs = FALSE;
-    if (GetEntityType(thrower) == ENTITY_MONSTER && ItemIsActive__02347B50(thrower, ITEM_LOCKON_SPECS)) {
+    if (GetEntityType(user) == ENTITY_MONSTER && ItemIsActive__02347B50(user, ITEM_LOCKON_SPECS)) {
         lockOnSpecs = TRUE;
     }
 
@@ -140,7 +140,7 @@ void HandleCurvedProjectileThrow(struct entity *thrower, struct item *item, stru
             u8 terrainArg;
 
             runFrameActions = FALSE;
-            sinVal = sin_4096(sinePhase >> 8) * arcHeight;
+            sinVal = SinAbs4096(sinePhase >> 8) * arcHeight;
             displayX = posXFixed + 0x400;
             displayY = posYFixed + 0x400;
 
@@ -189,7 +189,7 @@ void HandleCurvedProjectileThrow(struct entity *thrower, struct item *item, stru
                 hitResult.did_hit = FALSE;
             }
             else {
-                hitResult.did_hit = DoesProjectileHitTarget(thrower, hitResult.target);
+                hitResult.did_hit = DoesProjectileHitTarget(user, hitResult.target);
             }
 
             PrepareItemForPrinting__02345754(0, item);
@@ -198,17 +198,17 @@ void HandleCurvedProjectileThrow(struct entity *thrower, struct item *item, stru
                 bool8 immobiSlpEndMsg;
 
                 ov29_02304A84(hitResult.target, 8);
-                LogMessageByIdWithPopupCheckUserTarget(thrower, hitResult.target, CURVED_PROJECTILE_LOG_MESSAGE_1);
-                immobiSlpEndMsg = TryEndPetrifiedOrSleepStatus(thrower, hitResult.target);
-                ApplyItemEffect(1, (lockOnSpecs || projectile_throw_info->unk0 != 0) ? 1 : 0, immobiSlpEndMsg, thrower, hitResult.target, item);
+                LogMessageByIdWithPopupCheckUserTarget(user, hitResult.target, CURVED_PROJECTILE_LOG_MESSAGE_1);
+                immobiSlpEndMsg = TryEndPetrifiedOrSleepStatus(user, hitResult.target);
+                ApplyItemEffect(1, (lockOnSpecs || projectile_throw_info->unk0 != 0) ? 1 : 0, immobiSlpEndMsg, user, hitResult.target, item);
                 throwResult = 0;
             }
             else {
                 if (hasBounceBand) {
-                    LogMessageByIdWithPopupCheckUserTarget(thrower, hitResult.target, CURVED_PROJECTILE_LOG_MESSAGE_2);
+                    LogMessageByIdWithPopupCheckUserTarget(user, hitResult.target, CURVED_PROJECTILE_LOG_MESSAGE_2);
                 }
                 else {
-                    LogMessageByIdWithPopupCheckUserTarget(thrower, hitResult.target, CURVED_PROJECTILE_LOG_MESSAGE_3);
+                    LogMessageByIdWithPopupCheckUserTarget(user, hitResult.target, CURVED_PROJECTILE_LOG_MESSAGE_3);
                 }
                 throwResult = 1;
             }
@@ -220,7 +220,7 @@ void HandleCurvedProjectileThrow(struct entity *thrower, struct item *item, stru
         case 2:
             break;
         case 1:
-            SpawnDroppedItem(thrower, projectile, item, FALSE, NULL, 0);
+            SpawnDroppedItem(user, projectile, item, FALSE, NULL, 0);
             break;
     }
 }

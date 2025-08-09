@@ -219,7 +219,7 @@ _02383BEC:
 	add r0, r0, #0x12000
 	ldr r8, [r0, #0xb28 + OV31_023838E4_OFFSET]
 	mov r0, r8
-	bl EntityIsValid__02383658
+	bl EntityIsValidOverlay31
 	cmp r0, #0
 	beq _02383C38
 	ldr r1, [r8, #0xb4]
@@ -730,7 +730,7 @@ _02384320:
 	add r0, r0, #0x12000
 	ldr fp, [r0, #0xb28 + OV31_023838E4_OFFSET]
 	mov r0, fp
-	bl EntityIsValid__02383658
+	bl EntityIsValidOverlay31
 	cmp r0, #0
 	beq _02384374
 	ldr r1, [fp, #0xb4]
@@ -1025,7 +1025,7 @@ _02384758:
 	add r0, r0, #0x12000
 	ldr r0, [r0, #0xb28 + OV31_023838E4_OFFSET]
 	str r0, [sp, #0x1c]
-	bl EntityIsValid__02383658
+	bl EntityIsValidOverlay31
 	cmp r0, #0
 	beq _023847A0
 	ldr r0, [sp, #0x1c]
@@ -1224,7 +1224,7 @@ _023849F4:
 	add r0, r0, #0x12000
 	ldr r0, [r0, #0xb28 + OV31_023838E4_OFFSET]
 	str r0, [sp, #0x20]
-	bl EntityIsValid__02383658
+	bl EntityIsValidOverlay31
 	cmp r0, #0
 	beq _02384C48
 	mov r0, #0

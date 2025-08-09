@@ -363,7 +363,7 @@
 .public SetSpecialEpisodeType
 .public SetSpriteIdForAnimationControl
 .public ShowPortraitInPortraitBox
-.public sin_4096
+.public SinAbs4096
 .public SPECIAL_BAND_STAT_BOOST
 .public STATUS_NAME_STRING_IDS
 .public strcat
