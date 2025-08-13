@@ -44,7 +44,7 @@
 .public SetEntityPixelPosXY
 .public SetPreprocessorArgsIdVal
 .public ShouldDisplayEntityWrapper
-.public sin_4096
+.public SinAbs4096
 .public SpawnItem
 .public sub_0200D1FC
 .public sub_0201B9F8

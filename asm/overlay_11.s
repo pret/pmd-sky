@@ -3685,7 +3685,7 @@ _022DF504:
 	bl ScriptParamToInt
 	mov r0, r0, lsl #0x10
 	mov r0, r0, asr #0x10
-	bl sub_02065974
+	bl GetScriptEntityMonsterId
 	mov r7, r0
 	b _022DF6FC
 _022DF520:
@@ -3855,7 +3855,7 @@ _022DF760: ; 0x022DF760
 	mov r1, r7, lsl #0x10
 	mov r4, r0
 	mov r0, r1, asr #0x10
-	bl sub_02065974
+	bl GetScriptEntityMonsterId
 	mov r1, r0, lsl #0x10
 	ldr r2, _022DFE18 ; =ov11_02324ECC
 	orr r3, r7, #0x10000
@@ -3886,7 +3886,7 @@ _022DF7CC: ; 0x022DF7CC
 	mov r3, #0x60000
 	mov r0, r1, asr #0x10
 	str r3, [r2, #0x4c]
-	bl sub_02065974
+	bl GetScriptEntityMonsterId
 	mov r1, r0
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	bl InitPortraitParamsWithMonsterId
@@ -3913,7 +3913,7 @@ _022DF834: ; 0x022DF834
 	mov r3, #0x70000
 	mov r0, r1, asr #0x10
 	str r3, [r2, #0x4c]
-	bl sub_02065974
+	bl GetScriptEntityMonsterId
 	mov r1, r0
 	ldr r0, _022DFE1C ; =ov11_02324EA4
 	bl InitPortraitParamsWithMonsterId
@@ -4170,7 +4170,7 @@ _022DFBDC:
 	b _022E2478
 _022DFBF0:
 	mov r0, #0x2f
-	bl sub_02065974
+	bl GetScriptEntityMonsterId
 	cmp r0, #0
 	mvneq r6, #0
 	beq _022DFC44
@@ -15400,7 +15400,7 @@ _022E9498:
 	mov r0, r4
 	bl GenerateKecleonItems2
 	bl GenerateDailyMissions
-	bl sub_02012B7C
+	bl GenerateCroagunkItems
 	bl sub_0201080C
 	bl sub_02011FA0
 	ldmia sp!, {r4, pc}

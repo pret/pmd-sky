@@ -1066,7 +1066,7 @@ _0234744C:
 	add r0, r1, r0
 	str r0, [sp, #0x10]
 	mov r0, r7
-	bl sin_4096
+	bl SinAbs4096
 	mov r1, #0xc
 	mul r1, r0, r1
 	str r1, [sl, #0x1c]

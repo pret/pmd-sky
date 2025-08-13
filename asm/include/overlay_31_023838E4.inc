@@ -63,7 +63,7 @@
 .public DUNGEON_WINDOW_PARAMS_31
 .public DUNGEON_WINDOW_PARAMS_32
 .public DUNGEON_WINDOW_PARAMS_9
-.public EntityIsValid__02383658
+.public EntityIsValidOverlay31
 .public FormatMoveString
 .public FormatMoveStringMore
 .public GetActiveTeamMember

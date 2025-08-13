@@ -516,7 +516,7 @@ _02338B74:
 	b _02338C48
 _02338BBC:
 	ldr r0, [r6, #0x25c]
-	bl sin_4096
+	bl SinAbs4096
 	ldr r3, [r6, #0x254]
 	mov r2, #0xa
 	mov r1, r0
@@ -526,7 +526,7 @@ _02338BBC:
 	add r0, r1, r0
 	str r0, [r6, #0x24c]
 	ldr r0, [r6, #0x260]
-	bl sin_4096
+	bl SinAbs4096
 	ldr r3, [r6, #0x258]
 	mov r2, #0xa
 	mov r1, r0

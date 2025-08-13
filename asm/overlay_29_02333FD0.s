@@ -411,7 +411,7 @@ _0233454C:
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	add r0, r5, #0x124 + OV29_02333FD0_OFFSET
-	bl ov29_02334CAC
+	bl HasLastUsedMove
 	cmp r0, #0
 	bne _02334C9C
 	mov r0, #0
@@ -459,7 +459,7 @@ _023345F4:
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, r7, r8, pc}
 	add r0, r5, #0x124 + OV29_02333FD0_OFFSET
-	bl ov29_02334CAC
+	bl HasLastUsedMove
 	cmp r0, #0
 	bne _02334C9C
 	mov r0, #0
@@ -757,7 +757,7 @@ _023349E0:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _023349F4:
 	add r0, r5, #0x124 + OV29_02333FD0_OFFSET
-	bl ov29_02334CAC
+	bl HasLastUsedMove
 	cmp r0, #0
 	bne _02334C9C
 	mov r0, #0
@@ -958,8 +958,8 @@ _02334CA4: .word 0x0000010A
 _02334CA8: .word 0x0000020D
 	arm_func_end StatusCheckerCheckOnTarget
 
-	arm_func_start ov29_02334CAC
-ov29_02334CAC: ; 0x02334CAC
+	arm_func_start HasLastUsedMove
+HasLastUsedMove: ; 0x02334CAC
 	stmdb sp!, {r3, lr}
 	mov r3, #0
 	mov r1, r3
@@ -986,4 +986,4 @@ _02334CE8:
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02334CAC
+	arm_func_end HasLastUsedMove

@@ -381,7 +381,7 @@ _0238A678:
 	ldr r1, [r0]
 	mov r0, #0x3c
 	str r2, [r1, #0x54]
-	bl sub_02065974
+	bl GetScriptEntityMonsterId
 	mov r5, r0
 	b _0238A74C
 _0238A698:
@@ -390,7 +390,7 @@ _0238A698:
 	ldr r1, [r0]
 	mov r0, #0x3d
 	str r2, [r1, #0x54]
-	bl sub_02065974
+	bl GetScriptEntityMonsterId
 	mov r5, r0
 	b _0238A74C
 _0238A6B8:
@@ -399,7 +399,7 @@ _0238A6B8:
 	ldr r1, [r0]
 	mov r0, #0x3f
 	str r2, [r1, #0x54]
-	bl sub_02065974
+	bl GetScriptEntityMonsterId
 	mov r5, r0
 	b _0238A74C
 _0238A6D8:

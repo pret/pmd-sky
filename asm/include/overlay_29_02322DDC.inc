@@ -42,7 +42,7 @@
 .public PlayMoveAnimation
 .public SetPreprocessorArgsIdVal
 .public ShouldDisplayEntityWrapper
-.public sin_4096
+.public SinAbs4096
 .public sub_02001980
 .public sub_0201CF90
 .public TwoTurnMoveForcedMiss

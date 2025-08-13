@@ -47,7 +47,7 @@ char* ov31_02383478(char* arg1, s32 arg2, u32 arg3)
         if (GET_BIT(BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2].flags, 0) &&
             BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2].held_by) {
             u32 r1 = (BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2].held_by - 1);
-            if (EntityIsValid__02383658(DUNGEON_PTR[0]->monster_slots.party_members[r1]) == 0) {
+            if (EntityIsValidOverlay31(DUNGEON_PTR[0]->monster_slots.party_members[r1]) == 0) {
                 sub_0200D894(&(BAG_ITEMS_PTR_MIRROR->bag_items->bag_items[arg2]));
             }
         }
@@ -56,7 +56,7 @@ char* ov31_02383478(char* arg1, s32 arg2, u32 arg3)
     return arg1;
 }
 
-bool8 EntityIsValid__02383658(struct entity *entity)
+bool8 EntityIsValidOverlay31(struct entity *entity)
 {
     if (entity == NULL)
         return FALSE;

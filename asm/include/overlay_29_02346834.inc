@@ -60,7 +60,7 @@
 .public RemoveEmptyItemsInBag
 .public SetEntityPixelPosXY
 .public SetItemAcquired
-.public sin_4096
+.public SinAbs4096
 .public SpawnDroppedItem
 .public sub_0200CF6C
 .public sub_0200D894

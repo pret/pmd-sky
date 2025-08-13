@@ -46,10 +46,10 @@ _0200EB88: .word ITEM_DATA_TABLE_PTRS
 _0200EB8C: .word 0x000007FF
 	arm_func_end sub_0200EB64
 
-	arm_func_start sub_0200EB90
-sub_0200EB90: ; 0x0200EB90
+	arm_func_start ReturnEggExclusiveItem
+ReturnEggExclusiveItem: ; 0x0200EB90
 	mov ip, #0
-	ldr r2, _0200EBC8 ; =ARM9_UNKNOWN_TABLE__NA_2097FF8
+	ldr r2, _0200EBC8 ; =BABY_EXCLUSIVE_ITEM_PAIRS
 	b _0200EBB8
 _0200EB9C:
 	add r1, r2, ip, lsl #2
@@ -65,8 +65,8 @@ _0200EBB8:
 	mov r0, #0
 	bx lr
 	.align 2, 0
-_0200EBC8: .word ARM9_UNKNOWN_TABLE__NA_2097FF8
-	arm_func_end sub_0200EB90
+_0200EBC8: .word BABY_EXCLUSIVE_ITEM_PAIRS
+	arm_func_end ReturnEggExclusiveItem
 
 	arm_func_start SetActiveInventoryToMain
 SetActiveInventoryToMain: ; 0x0200EBCC

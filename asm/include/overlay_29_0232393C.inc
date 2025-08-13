@@ -41,5 +41,5 @@
 .public PlayMoveAnimation
 .public PositionHasMonster
 .public QUICK_DODGER_MOVE_ACCURACY_DROP
-.public sin_4096
+.public SinAbs4096
 .public TwoTurnMoveForcedMiss
