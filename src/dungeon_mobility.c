@@ -1,6 +1,6 @@
 #include "dungeon_mobility.h"
 #include "dungeon_util_static.h"
-#include "main_02052874.h"
+#include "main_0205283C.h"
 #include "overlay_29_02318A4C.h"
 
 extern enum mobility_type MOBILITY_TYPE_TO_DUNGEON_MOBILITY_TYPE[NUM_MOBILITY_TYPES];

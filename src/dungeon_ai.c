@@ -10,7 +10,7 @@
 #include "dungeon_util_static.h"
 #include "dungeon_util.h"
 #include "dungeon_visibility.h"
-#include "main_02052874.h"
+#include "main_0205283C.h"
 #include "overlay_29_022FB538.h"
 #include "status_checks.h"
 #include "targeting.h"

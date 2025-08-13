@@ -1,5 +1,5 @@
 #include "dungeon_action.h"
-#include "main_02052874.h"
+#include "main_0205283C.h"
 
 void ClearMonsterActionFields(struct action_data *monster_action)
 {
