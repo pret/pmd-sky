@@ -89,6 +89,7 @@
 .public FreeTeamStats
 .public FX_Atan2Idx
 .public G3X_Reset
+.public GenerateCroagunkItems
 .public GenerateDailyMissions
 .public GenerateKecleonItems1
 .public GenerateKecleonItems2
@@ -137,6 +138,7 @@
 .public GetRankupPoints
 .public GetReleasedStylus
 .public GetScenarioBalance
+.public GetScriptEntityMonsterId
 .public GetSimpleMenuResult
 .public GetSosMailCount
 .public GetSpriteIndex__02052724
@@ -466,7 +468,6 @@
 .public sub_02011420
 .public sub_020114F8
 .public sub_02011FA0
-.public sub_02012B7C
 .public sub_020130B8
 .public sub_02015328
 .public sub_02016300
@@ -762,7 +763,6 @@
 .public sub_02065014
 .public sub_02065050
 .public sub_0206549C
-.public sub_02065974
 .public sub_02065B80
 .public sub_02065BC8
 .public sub_02065BD8

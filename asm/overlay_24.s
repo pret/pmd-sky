@@ -2345,7 +2345,7 @@ _0238C2FC:
 	ldr r0, [r1]
 	strb r2, [r0, #0x21]
 	bl sub_0201077C
-	bl sub_0200EB90
+	bl ReturnEggExclusiveItem
 	ldr r1, _0238C33C ; =OVERLAY24_UNKNOWN_POINTER__NA_238C600
 	ldr r1, [r1]
 	strh r0, [r1, #0x16]

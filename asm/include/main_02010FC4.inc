@@ -85,6 +85,7 @@
 .public RemoveEmptyItemsInBag
 .public RemoveItem
 .public RemoveItemAtIdxInStorage
+.public ReturnEggExclusiveItem
 .public SaveScriptVariableValue
 .public SelectWaza
 .public SetExclusiveItemEffect
@@ -92,7 +93,6 @@
 .public SITRUS_BERRY_FULL_HP_BOOST
 .public StringFromId
 .public sub_0200D1F0
-.public sub_0200EB90
 .public sub_02010044
 .public sub_0201007C
 .public sub_02050974

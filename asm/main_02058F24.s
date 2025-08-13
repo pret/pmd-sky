@@ -15463,8 +15463,8 @@ _0206596C: .word TEAM_MEMBER_TABLE_PTR
 _02065970: .word _020B0B08
 	arm_func_end sub_0206549C
 
-	arm_func_start sub_02065974
-sub_02065974: ; 0x02065974
+	arm_func_start GetScriptEntityMonsterId
+GetScriptEntityMonsterId: ; 0x02065974
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r0, sp, #8
@@ -15474,7 +15474,7 @@ sub_02065974: ; 0x02065974
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end sub_02065974
+	arm_func_end GetScriptEntityMonsterId
 
 	arm_func_start GetActorMatchingStorageId
 GetActorMatchingStorageId: ; 0x02065998

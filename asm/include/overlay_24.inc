@@ -34,6 +34,7 @@
 .public ov11_0230D220
 .public ov11_02310BDC
 .public Rand16Bit
+.public ReturnEggExclusiveItem
 .public SetPokemonJoined
 .public SetPortraitEmotion
 .public SetPortraitLayout
@@ -48,7 +49,6 @@
 .public StrncpySimple
 .public StrncpySimpleNoPadSafe
 .public sub_0200D670
-.public sub_0200EB90
 .public sub_0201077C
 .public sub_02010794
 .public sub_020107AC
