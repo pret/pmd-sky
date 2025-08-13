@@ -1,6 +1,5 @@
 #include "dungeon_action.h"
-
-extern bool8 GetCanMoveFlag(s16 monster_id);
+#include "main_02052874.h"
 
 void ClearMonsterActionFields(struct action_data *monster_action)
 {

@@ -3,6 +3,8 @@
 
 #include "enums.h"
 
+extern struct monster_data_table *MONSTER_DATA_TABLE_PTR;
+
 struct monster_data_table_entry {
     u16 entity_id;                    // 0x0: A entity-unique ID to identify the entity in both of its 2 entries. Seems to match pokedex number.
     u16 unk_0x2;                      // 0x2: Unknown. Pokemon with the same category string have the same value in here.
@@ -25,18 +27,18 @@ struct monster_data_table_entry {
     u8 unk_0x1b;                      // 0x1B: Unknown. Possibly more flags?
     u16 exp_yield;                    // 0x1C: The Exp yield.
     s16 recruit_rate_1;               // 0x1E: Another recruit rate, this one is usually closer to 0 when RecruitRate1 and RecruitRate2 are different!
-    s16 base_hp;                      // 0x20: The HP the Pokemon has at lvl 1.
+    u16 base_hp;                      // 0x20: The HP the Pokemon has at lvl 1.
     s16 recruit_rate_2;               // 0x22: Recruit rate.
     s8 base_atk;                      // 0x24: The attack stat of the Pokemon at lvl 1.
     s8 base_sp_atk;                   // 0x25: The special attack stat of the Pokemon at lvl 1.
     s8 base_def;                      // 0x26: The defense stat of the pokemon at lvl 1.
     s8 base_sp_def;                   // 0x27: The base special defense of the pokemon at lvl 1.
-    s16 weight;                       // 0x28: The weight tier for weight based damages.
-    s16 size;                         // 0x2A: The size tier for size based damages.
+    u16 weight;                       // 0x28: The weight tier for weight based damages.
+    u16 size;                         // 0x2A: The size tier for size based damages.
     s8 unk_0x2c;                      // 0x2C: Unknown. Most of the time 0xA.
     s8 unk_0x2d;                      // 0x2D: Unknown. Most of the time 0xA.
     s8 shadow_size;                   // 0x2E: The size of the Pokemon's shadow.
-    s8 spawn_asleep_chance;           // 0x2F: The percent chance that a Pokemon will spawn asleep. Most of the time 0x8.
+    u8 spawn_asleep_chance;           // 0x2F: The percent chance that a Pokemon will spawn asleep. Most of the time 0x8.
     u8 hp_regeneration;               // 0x30: The rate at which a Pokemon regenerates HP. Always 0x64.
     s8 unk_0x31;                      // 0x31: Unknown.
     s16 base_form_idx;                // 0x32: The base evolutionary stage of the Pokemon. Seems to always be between 0 and 600.
