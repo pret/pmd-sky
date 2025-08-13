@@ -8,8 +8,8 @@ extern struct monster_data_table *MONSTER_DATA_TABLE_PTR;
 struct monster_data_table_entry {
     u16 entity_id;                    // 0x0: A entity-unique ID to identify the entity in both of its 2 entries. Seems to match pokedex number.
     u16 unk_0x2;                      // 0x2: Unknown. Pokemon with the same category string have the same value in here.
-    u16 pokedex_number;               // 0x4: The national Pokedex number, as displayed in Chimecho Assembly.
-    u16 base_movement_speed;          // 0x6: The base movement speed in dungeons.
+    s16 pokedex_number;               // 0x4: The national Pokedex number, as displayed in Chimecho Assembly.
+    s16 base_movement_speed;          // 0x6: The base movement speed in dungeons.
     u16 pre_evolution_idx;            // 0x8: The pre-evolution of the monster. [Enum?]
     u16 evolution_method;             // 0xA: The evolution method required to evolve to this Pokemon from the pre-evo specified in PreEvoIndex. Null if unused.
     u16 evolution_param_1;            // 0xC: The first parameter for the evolution method. Null if unused.
@@ -37,7 +37,7 @@ struct monster_data_table_entry {
     u16 size;                         // 0x2A: The size tier for size based damages.
     s8 unk_0x2c;                      // 0x2C: Unknown. Most of the time 0xA.
     s8 unk_0x2d;                      // 0x2D: Unknown. Most of the time 0xA.
-    s8 shadow_size;                   // 0x2E: The size of the Pokemon's shadow.
+    u8 shadow_size;                   // 0x2E: The size of the Pokemon's shadow.
     u8 spawn_asleep_chance;           // 0x2F: The percent chance that a Pokemon will spawn asleep. Most of the time 0x8.
     u8 hp_regeneration;               // 0x30: The rate at which a Pokemon regenerates HP. Always 0x64.
     s8 unk_0x31;                      // 0x31: Unknown.
