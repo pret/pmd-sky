@@ -637,7 +637,7 @@
                                                                                      84](MonsterCanThrowItems,func) found in global dungeon_logic_2.o
                                                                                       85](CanThrowItems,func) found in global main_0205283C.o
                                                                                      84](CheckVariousConditions,func) found in global dungeon_capabilities_1.o
-                                                                                     84](EntityIsValid__02383658,func) found in global overlay_31_02383478.o
+                                                                                     84](EntityIsValidOverlay31,func) found in global overlay_31_02383478.o
                                                                                      84](ov31_02383854,func) found in global overlay_31_02383880.o
                                                                                      84](ov31_02383478,func) found in global overlay_31_02383478.o
                                                                                      84](ov29_02300BF8,func) found in global overlay_29_02300BF8.o
@@ -977,7 +977,7 @@
   02001888 0000000C .text   sub_02001888	(main_02000DE0.o)
   02001894 00000010 .text   RoundUpDiv256	(main_02000DE0.o)
   020018A4 0000002C .text   sub_020018A4	(main_02000DE0.o)
-  020018D0 000000B0 .text   sin_4096	(main_02000DE0.o)
+  020018D0 000000B0 .text   SinAbs4096	(main_02000DE0.o)
   02001978 00000000 .text   $d	(main_02000DE0.o)
   02001980 00000000 .text   $a	(main_02000DE0.o)
   02001980 000000B0 .text   sub_02001980	(main_02000DE0.o)
@@ -2064,7 +2064,7 @@
   0200EB94 00000000 .text   $a	(main_0200EB30.o)
   0200EB94 0000002C .text   sub_0200EB64	(main_0200EB30.o)
   0200EBB8 00000000 .text   $d	(main_0200EB30.o)
-  0200EBC0 0000003C .text   sub_0200EB90	(main_0200EB30.o)
+  0200EBC0 0000003C .text   ReturnEggExclusiveItem	(main_0200EB30.o)
   0200EBC0 00000000 .text   $a	(main_0200EB30.o)
   0200EBF8 00000000 .text   $d	(main_0200EB30.o)
   0200EBFC 00000010 .text   SetActiveInventoryToMain	(main_0200EB30.o)
@@ -2493,7 +2493,7 @@
   02012B04 00000048 .text   CloseSynthBin	(main_02010FC4.o)
   02012B04 00000000 .text   $a	(main_02010FC4.o)
   02012B44 00000000 .text   $d	(main_02010FC4.o)
-  02012B4C 0000053C .text   sub_02012B7C	(main_02010FC4.o)
+  02012B4C 0000053C .text   GenerateCroagunkItems	(main_02010FC4.o)
   02012B4C 00000000 .text   $a	(main_02010FC4.o)
   02013068 00000000 .text   $d	(main_02010FC4.o)
   02013088 00000098 .text   sub_020130B8	(main_02010FC4.o)
@@ -2512,7 +2512,7 @@
   02013220 00000054 .text   GetSynthItem	(main_02010FC4.o)
   02013270 00000000 .text   $d	(main_02010FC4.o)
   02013274 00000000 .text   $a	(main_02010FC4.o)
-  02013274 00000120 .text   sub_020132A4	(main_02010FC4.o)
+  02013274 00000120 .text   GetValidSynthsForSpecies	(main_02010FC4.o)
   02013394 00000028 .text   LoadWazaP	(main_02010FC4.o)
   020133B8 00000000 .text   $d	(main_02010FC4.o)
   020133BC 00000000 .text   $a	(main_02010FC4.o)
@@ -7870,7 +7870,7 @@
   02065784 000004D8 .text   sub_0206549C	(main_02058F24.o)
   02065784 00000000 .text   $a	(main_02058F24.o)
   02065C4C 00000000 .text   $d	(main_02058F24.o)
-  02065C5C 00000024 .text   sub_02065974	(main_02058F24.o)
+  02065C5C 00000024 .text   GetScriptEntityMonsterId	(main_02058F24.o)
   02065C5C 00000000 .text   $a	(main_02058F24.o)
   02065C80 0000017C .text   GetActorMatchingStorageId	(main_02058F24.o)
   02065DFC 00000028 .text   sub_02065B14	(main_02058F24.o)
@@ -10678,7 +10678,7 @@
   020982AC 00000000 .rodata _02097FB8	(main_020897DC.o)
   020982B8 00000000 .rodata _02097FC4	(main_020897DC.o)
   020982D8 00000000 .rodata _02097FE4	(main_020897DC.o)
-  020982EC 00000000 .rodata ARM9_UNKNOWN_TABLE__NA_2097FF8	(main_020897DC.o)
+  020982EC 00000000 .rodata BABY_EXCLUSIVE_ITEM_PAIRS	(main_020897DC.o)
   0209832C 00000000 .rodata _02098038	(main_020897DC.o)
   02098348 00000000 .rodata _02098054	(main_020897DC.o)
   02098364 00000000 .rodata _02098070	(main_020897DC.o)
@@ -38235,7 +38235,7 @@
   023353BC 00000000 .text   $a	(overlay_29_02333FD0.o)
   023353BC 00000D38 .text   .text	(overlay_29_02333FD0.o)
   02336090 00000000 .text   $d	(overlay_29_02333FD0.o)
-  02336098 0000005C .text   ov29_02334CAC	(overlay_29_02333FD0.o)
+  02336098 0000005C .text   HasLastUsedMove	(overlay_29_02333FD0.o)
   02336098 00000000 .text   $a	(overlay_29_02333FD0.o)
   023360F4 00000000 .text   $a	(weather.o)
   023360F4 00000050 .text   GetApparentWeather	(weather.o)
@@ -40385,7 +40385,7 @@
   023846F8 00000000 .text   $a	(overlay_31_02383478.o)
   023846F8 000001E0 .text   ov31_02383478	(overlay_31_02383478.o)
   023848C4 00000000 .text   $d	(overlay_31_02383478.o)
-  023848D8 00000024 .text   EntityIsValid__02383658	(overlay_31_02383478.o)
+  023848D8 00000024 .text   EntityIsValidOverlay31	(overlay_31_02383478.o)
   023848D8 00000000 .text   $a	(overlay_31_02383478.o)
   023848FC 00000000 .text   $a	(overlay_31_0238367C.o)
   023848FC 000000B0 .text   .text	(overlay_31_0238367C.o)
@@ -40943,5 +40943,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Aug 13 04:41:50 2025
-# Link end time: Wed Aug 13 04:41:51 2025
+# Link start time: Wed Aug 13 22:07:24 2025
+# Link end time: Wed Aug 13 22:07:25 2025
