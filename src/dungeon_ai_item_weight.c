@@ -6,7 +6,7 @@
 #include "dungeon_statuses.h"
 #include "dungeon_util.h"
 #include "dungeon_util_static.h"
-#include "main_02052874.h"
+#include "main_0205283C.h"
 #include "main_02054BE0.h"
 #include "number_util.h"
 #include "overlay_29_0231E9F0.h"
