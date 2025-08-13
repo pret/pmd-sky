@@ -10,17 +10,17 @@ struct monster_data_table_entry {
     u16 unk_0x2;                      // 0x2: Unknown. Pokemon with the same category string have the same value in here.
     s16 pokedex_number;               // 0x4: The national Pokedex number, as displayed in Chimecho Assembly.
     s16 base_movement_speed;          // 0x6: The base movement speed in dungeons.
-    s16 pre_evolution_idx;            // 0x8: The pre-evolution of the monster. [Enum?]
+    s16 pre_evolution_idx;            // 0x8: The pre-evolution of the monster.
     u16 evolution_method;             // 0xA: The evolution method required to evolve to this Pokemon from the pre-evo specified in PreEvoIndex. Null if unused.
     u16 evolution_param_1;            // 0xC: The first parameter for the evolution method. Null if unused.
     u16 evolution_param_2;            // 0xE: The second parameter for the evolution method. Null if unused.
     u16 sprite_index;                 // 0x10: The index of the entity's sprite. It's the index inside the three Pokemon sprite files inside the "/MONSTER/" directory!
-    u8 gender;                        // 0x12: Gender of this particular entity entry. [Enum?]
+    u8 gender;                        // 0x12: Gender of this particular entity entry.
     u8 body_size;                     // 0x13: The body size of the Pokemon. Used when determining how many Pokemon fits in the party.
-    u8 types[2];                      // 0x14: The Pokemon's types. [Enum?]
+    enum type_id types[2];            // 0x14: The Pokemon's types.
     enum mobility_type movement_type; // 0x16: This decides what terrains the entity can move over, and whether its hovering or not.
-    u8 iq_group;                      // 0x17: The IQ group the Pokemon belongs to. [Enum?]
-    u8 abilities[2];                  // 0x18: The Pokemon's abilities. [Enum?]
+    u8 iq_group;                      // 0x17: The IQ group the Pokemon belongs to.
+    enum ability_id abilities[2];     // 0x18: The Pokemon's abilities.
     u8 flags;                         // 0x1A: Stores bitflags. Bits 0-3: Unknown. Bit 4: If false, the Pokemon can't move inside of dungeons. Bit 5: If false, the Pokemon can't throw items. Bit 6: If false, the Pokemon can't evolve at Luminous Spring, even if it has an evolution. Bit 7: If true, the Pokemon requires a special item to spawn.
     u8 unk_0x1b;                      // 0x1B: Unknown. Possibly more flags?
     u16 exp_yield;                    // 0x1C: The Exp yield.
@@ -38,10 +38,10 @@ struct monster_data_table_entry {
     u8 hp_regeneration;               // 0x30: The rate at which a Pokemon regenerates HP. Always 0x64.
     s8 unk_0x31;                      // 0x31: Unknown.
     s16 base_form_idx;                // 0x32: The base evolutionary stage of the Pokemon. Seems to always be between 0 and 600.
-    s16 exclusive_item_1;             // 0x34: The first 1-star exclusive item for this Pokemon. Null if NA. [Enum?]
-    s16 exclusive_item_2;             // 0x36: The second 1-star exclusive item for this Pokemon. Null if NA. [Enum?]
-    s16 exclusive_item_3;             // 0x38: The 2-star exclusive item for this Pokemon. Null if NA. [Enum?]
-    s16 exclusive_item_4;             // 0x3A: The 3-star exclusive item for this Pokemon. Null if NA. [Enum?]
+    s16 exclusive_item_1;             // 0x34: The first 1-star exclusive item for this Pokemon. Null if NA.
+    s16 exclusive_item_2;             // 0x36: The second 1-star exclusive item for this Pokemon. Null if NA.
+    s16 exclusive_item_3;             // 0x38: The 2-star exclusive item for this Pokemon. Null if NA.
+    s16 exclusive_item_4;             // 0x3A: The 3-star exclusive item for this Pokemon. Null if NA.
     s16 unk_0x3c;                     // 0x3C: Unknown.
     s16 unk_0x3e;                     // 0x3E: Unknown. Often 0xF.
     s16 unk_0x40;                     // 0x40: Unknown.

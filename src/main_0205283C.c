@@ -71,12 +71,12 @@ u8 GetBaseDefensiveStat(s16 monster_id, u8 stat_idx)
     return MONSTER_DATA_TABLE_PTR->entries[monster_id].base_def[stat_idx];
 }
 
-u8 GetType(s16 monster_id, u8 type_idx)
+enum type_id GetType(s16 monster_id, u8 type_idx)
 {
     return MONSTER_DATA_TABLE_PTR->entries[monster_id].types[type_idx];
 }
 
-u8 GetAbility(s16 monster_id, u8 ability_idx)
+enum ability_id GetAbility(s16 monster_id, u8 ability_idx)
 {
     return MONSTER_DATA_TABLE_PTR->entries[monster_id].abilities[ability_idx];
 }
