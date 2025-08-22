@@ -36,6 +36,7 @@
 .public GetThrownItemQuantityLimit
 .public HandleSir0Translation
 .public IsItemValid
+.public IsThrownItem
 .public ITEM_DATA_TABLE_PTRS
 .public ITEM_TABLES_PTRS_1
 .public LoadFileFromRom

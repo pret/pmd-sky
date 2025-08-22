@@ -3,38 +3,6 @@
 
 	.text
 
-	arm_func_start GetItemMoveId16
-GetItemMoveId16: ; 0x0200CAFC
-	stmdb sp!, {r3, lr}
-	bl GetItemMoveId
-	mov r0, r0, lsl #0x10
-	mov r0, r0, lsr #0x10
-	ldmia sp!, {r3, pc}
-	arm_func_end GetItemMoveId16
-
-	arm_func_start IsThrownItem
-IsThrownItem: ; 0x0200CB10
-	stmdb sp!, {r3, lr}
-	bl GetItemCategory
-	cmp r0, #1
-	movls r0, #1
-	movhi r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r3, pc}
-	arm_func_end IsThrownItem
-
-	arm_func_start IsNotMoney
-IsNotMoney: ; 0x0200CB2C
-	cmp r0, #0
-	moveq r0, #0
-	bxeq lr
-	cmp r0, #0xb7
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end IsNotMoney
-
 	arm_func_start IsEdible
 IsEdible: ; 0x0200CB4C
 	stmdb sp!, {r3, lr}
