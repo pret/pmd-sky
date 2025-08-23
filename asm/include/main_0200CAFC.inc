@@ -37,6 +37,7 @@
 .public HandleSir0Translation
 .public IsAuraBow
 .public IsItemValid
+.public IsShoppableItem
 .public IsThrownItem
 .public ITEM_DATA_TABLE_PTRS
 .public ITEM_TABLES_PTRS_1

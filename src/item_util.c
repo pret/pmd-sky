@@ -52,10 +52,3 @@ BOOL IsAuraBow(s32 item_id)
 {
     return ((item_id >= ITEM_SILVER_BOW) && (item_id <= ITEM_FUCHSIA_BOW));
 }
-
-// NOTE: why doesn't this match? - Seth
-
-//BOOL IsLosableItem(struct item* item)
-//{
-//    return ((ItemExists(item->flags) && ((!IsAuraBow(item->id)) || (item->flags & ITEM_FLAG_IN_SHOP))));
-//}

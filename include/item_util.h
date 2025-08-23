@@ -14,6 +14,5 @@ u8 IsHM(s16 item_id);
 u8 IsGummi(s16 item_id);
 u8 IsGummi(s16 item_id);
 BOOL IsAuraBow(s32 item_id);
-extern BOOL IsLosableItem(struct item* item);
 
 #endif //PMDSKY_ITEM_UTIL_H
