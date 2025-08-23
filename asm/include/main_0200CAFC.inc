@@ -35,6 +35,7 @@
 .public GetLanguage
 .public GetThrownItemQuantityLimit
 .public HandleSir0Translation
+.public IsAuraBow
 .public IsItemValid
 .public IsThrownItem
 .public ITEM_DATA_TABLE_PTRS
