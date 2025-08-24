@@ -6,12 +6,12 @@ void ZInit8(struct opened_file *ptr)
     ptr->iov_len = 0;
 }
 
-u8 PointsToZero(int* ptr)
+bool8 PointsToZero(struct opened_file *ptr)
 {
-    if (*ptr == 0) {
-        return 1;
+    if (ptr->iov_base == NULL) {
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 

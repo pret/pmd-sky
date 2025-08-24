@@ -124,7 +124,7 @@ struct ground_bg_substruct_52c
 // size: 0x55C
 struct ground_bg
 {
-    u16 unk0; // Not present in Red
+    s16 unk0; // Not present in Red
     struct ground_bg_substruct_2 unk2[UNK_2_ARR_COUNT];
     struct ground_bg_substruct_c4 unkC4[UNK_C4_ARR_COUNT]; // 0xc4
     struct opened_file bpl_file; // 0x174

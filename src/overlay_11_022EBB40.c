@@ -14,6 +14,15 @@ extern void MemFree(void*);
 }
 #define TRY_FREE_AND_SET_NULL(ptr) if (ptr != NULL) FREE_AND_SET_NULL(ptr)
 
+extern bool8 PointsToZero(struct opened_file *ptr);
+extern void UnloadFile(struct opened_file *ptr);
+#define CLOSE_FILE_AND_SET_NULL(f)    \
+{                                           \
+    UnloadFile(&f);                     \
+    f = NULL;                         \
+}
+#define TRY_CLOSE_FILE(f) if (!PointsToZero(&f)) {UnloadFile(&f);}
+
 struct rgb_array
 {
     u8 c[RGB_FIELDS_COUNT];
@@ -50,10 +59,13 @@ extern void FileClose(struct file_stream*);
 extern struct unk_struct_2324CBC *ov11_02324CBC;
 extern const struct const_file_data ov11_02320BE4;
 extern void* MemAlloc(u32 len, u32 flags);
-void* sub_0200B500(struct unk_struct_2324CBC_sub0 *unk);
-void CloseOpenedFiles(struct ground_bg *ground_bg);
-void sub_02063600(void *);
-void sub_020635C8(struct ground_bg_substruct_194 *);
+extern void* sub_0200B500(struct unk_struct_2324CBC_sub0 *unk);
+extern void CloseOpenedFiles(struct ground_bg *ground_bg);
+extern void sub_02063600(void *);
+extern void sub_020635C8(struct ground_bg_substruct_194 *);
+extern void ov11_022EBF60(struct ground_bg *ground_bg);
+extern void sub_0206367C(void *);
+extern void sub_020635D8(struct ground_bg_substruct_194 *);
 
 void LoadBackgroundAttributes(struct bg_list_entry *entry, s32 bg_id)
 {
@@ -214,4 +226,25 @@ void ov11_022EBF60(struct ground_bg *ground_bg)
     ZInit8(&ground_bg->unk17C);
     ZInit8(&ground_bg->bpc_file);
     ZInit8(&ground_bg->bma_file);
+}
+
+void CloseOpenedFiles(struct ground_bg *ground_bg)
+{
+    s32 i;
+    if (ground_bg->unk0 == 3) {
+        ov11_022EBF60(ground_bg);
+        return;
+    }
+
+    for (i = 0; i < UNK_C4_ARR_COUNT; i++) {
+        struct ground_bg_substruct_c4 *unkPtr = &ground_bg->unkC4[i];
+        TRY_CLOSE_FILE(unkPtr->bpa_file);
+    }
+    sub_0206367C(&ground_bg->unk1A0);
+    sub_020635D8(&ground_bg->unk194);
+
+    TRY_CLOSE_FILE(ground_bg->bpl_file);
+    TRY_CLOSE_FILE(ground_bg->unk17C);
+    TRY_CLOSE_FILE(ground_bg->bpc_file);
+    TRY_CLOSE_FILE(ground_bg->bma_file);
 }
