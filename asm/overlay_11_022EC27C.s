@@ -1,27 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_11_022EC240.inc"
+	.include "overlay_11_022EC27C.inc"
 
 	.text
-
-	arm_func_start ov11_022EC240
-ov11_022EC240: ; 0x022EC240
-	stmdb sp!, {r3, r4, r5, lr}
-	sub sp, sp, #0x70
-	mov r5, r0
-	mov r4, r1
-	bl ov11_022EC08C
-	mvn r0, #0
-	cmp r4, r0
-	beq _022EC274
-	add r0, r5, #0x100
-	strh r4, [r0, #0xbe]
-	ldrsh r1, [r0, #0xbe]
-	add r0, sp, #0
-	bl LoadBackgroundAttributes
-_022EC274:
-	add sp, sp, #0x70
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov11_022EC240
 
 	arm_func_start ov11_022EC27C
 ov11_022EC27C: ; 0x022EC27C

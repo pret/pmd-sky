@@ -9,5 +9,6 @@ void GroundBgFreeAll(struct ground_bg *ground_bg);
 void ov11_022EBF60(struct ground_bg *ground_bg);
 void CloseOpenedFiles(struct ground_bg *ground_bg);
 void ov11_022EC08C(struct ground_bg *ground_bg);
+void ov11_022EC240(struct ground_bg *ground_bg, s32 bg_id);
 
 #endif //PMDSKY_OVERLAY_11_022EBB40_H
