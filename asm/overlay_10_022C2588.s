@@ -1432,6 +1432,7 @@ _022C38E8:
 	ldmia sp!, {r4, pc}
 	arm_func_end ov10_022C38D4
 
+; https://decomp.me/scratch/4FYXY
 	arm_func_start ov10_022C3938
 ov10_022C3938: ; 0x022C3938
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
