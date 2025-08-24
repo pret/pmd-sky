@@ -14,8 +14,8 @@ extern void MemFree(void*);
 }
 #define TRY_FREE_AND_SET_NULL(ptr) if (ptr != NULL) FREE_AND_SET_NULL(ptr)
 
-extern bool8 PointsToZero(struct opened_file *ptr);
-extern void UnloadFile(struct opened_file *ptr);
+extern bool8 PointsToZero(struct iovec *ptr);
+extern void UnloadFile(struct iovec *ptr);
 #define CLOSE_FILE_AND_SET_NULL(f)    \
 {                                           \
     UnloadFile(&f);                     \
@@ -64,12 +64,12 @@ extern struct unk_struct_2324CBC *ov11_02324CBC;
 extern const struct const_file_data ov11_02320BE4;
 extern void* MemAlloc(u32 len, u32 flags);
 extern void* sub_0200B500(struct unk_struct_2324CBC_sub0 *unk);
-extern void CloseOpenedFiles(struct ground_bg *ground_bg);
+extern void CloseOpenedGroundBgFiles(struct ground_bg *ground_bg);
 extern void sub_02063600(void *);
-extern void sub_020635C8(struct ground_bg_substruct_194 *);
+extern void sub_020635C8(struct ground_bg_sub_struct_194 *);
 extern void ov11_022EBF60(struct ground_bg *ground_bg);
 extern void sub_0206367C(void *);
-extern void sub_020635D8(struct ground_bg_substruct_194 *);
+extern void sub_020635D8(struct ground_bg_sub_struct_194 *);
 extern void sub_0200A590(struct unk_struct_2324CBC_sub98 *, s32 id, const struct rgb_array *src);
 extern void sub_0200A504(struct unk_struct_2324CBC_sub98 *);
 extern void ov11_022EE620(struct ground_bg *ground_bg, s32 a1);
@@ -100,10 +100,10 @@ void LoadBackgroundAttributes(struct bg_list_entry *entry, s32 bg_id)
     FileRom_StopDataTransfer();
 }
 
-void GroundBgInit(struct ground_bg *ground_bg, const struct ground_bg_substruct_52c *a1)
+void GroundBgInit(struct ground_bg *ground_bg, const struct ground_bg_sub_struct_2bc *a1)
 {
-    struct ground_bg_substruct_2 *unk0Ptr;
-    s32 id, unk0Id, unk3E0Id;
+    struct ground_bg_sub_struct_4 *unk4Ptr;
+    s32 id, unk4Id, unkC4Id;
     s32 i;
     s32 id2;
     s32 memGroup;
@@ -164,15 +164,15 @@ void GroundBgInit(struct ground_bg *ground_bg, const struct ground_bg_substruct_
     ground_bg->unk1FB = 0;
     ground_bg->unk1BC = 0;
 
-    unk0Ptr = &ground_bg->unk2[0];
-    for (unk0Id = 0; unk0Id < UNK_2_ARR_COUNT; unk0Id++, unk0Ptr++) {
-        unk0Ptr->unk0 = 0;
-        unk0Ptr->unk2 = 0;
-        unk0Ptr->unk4 = unk0Ptr->unk8 = 0;
+    unk4Ptr = &ground_bg->unk4[0];
+    for (unk4Id = 0; unk4Id < UNK_4_ARR_COUNT; unk4Id++, unk4Ptr++) {
+        unk4Ptr->unk0 = 0;
+        unk4Ptr->unk2 = 0;
+        unk4Ptr->unk4 = unk4Ptr->unk8 = 0;
     }
 
-    for (unk3E0Id = 0; unk3E0Id < UNK_C4_ARR_COUNT; unk3E0Id++) {
-        struct ground_bg_substruct_c4 *unkPtr = &ground_bg->unkC4[unk3E0Id];
+    for (unkC4Id = 0; unkC4Id < UNK_C4_ARR_COUNT; unkC4Id++) {
+        struct ground_bg_sub_struct_c4 *unkPtr = &ground_bg->unkC4[unkC4Id];
         unkPtr->unk0 = 0;
         unkPtr->unk1 = 0;
         unkPtr->unk2 = 0;
@@ -194,7 +194,7 @@ void GroundBgFreeAll(struct ground_bg *ground_bg)
 {
     s32 i;
 
-    CloseOpenedFiles(ground_bg);
+    CloseOpenedGroundBgFiles(ground_bg);
     TRY_FREE_AND_SET_NULL(ground_bg->unk2D8);
 
     for (i = 0; i < NUM_LAYERS; i++) {
@@ -221,7 +221,7 @@ void ov11_022EBF60(struct ground_bg *ground_bg)
     s32 i;
 
     for (i = 0; i < UNK_C4_ARR_COUNT; i++) {
-        struct ground_bg_substruct_c4 *unkPtr = &ground_bg->unkC4[i];
+        struct ground_bg_sub_struct_c4 *unkPtr = &ground_bg->unkC4[i];
         ZInit8(&unkPtr->bpa_file);
     }
 
@@ -235,7 +235,7 @@ void ov11_022EBF60(struct ground_bg *ground_bg)
     ZInit8(&ground_bg->bma_file);
 }
 
-void CloseOpenedFiles(struct ground_bg *ground_bg)
+void CloseOpenedGroundBgFiles(struct ground_bg *ground_bg)
 {
     s32 i;
     if (ground_bg->unk0 == 3) {
@@ -244,7 +244,7 @@ void CloseOpenedFiles(struct ground_bg *ground_bg)
     }
 
     for (i = 0; i < UNK_C4_ARR_COUNT; i++) {
-        struct ground_bg_substruct_c4 *unkPtr = &ground_bg->unkC4[i];
+        struct ground_bg_sub_struct_c4 *unkPtr = &ground_bg->unkC4[i];
         TRY_CLOSE_FILE(unkPtr->bpa_file);
     }
     sub_0206367C(&ground_bg->unk1A0);
@@ -261,11 +261,11 @@ void ov11_022EC08C(struct ground_bg *ground_bg)
     u8 unkId;
     u16 palId;
     s32 i, j;
-    struct ground_bg_substruct_2 *unk0Ptr;
-    s32 unk0Id, unk3E0Id;
+    struct ground_bg_sub_struct_4 *unk4Ptr;
+    s32 unk4Id, unkC4Id;
     struct unk_struct_2324CBC_sub98 *unkSubPtr;
 
-    CloseOpenedFiles(ground_bg);
+    CloseOpenedGroundBgFiles(ground_bg);
     ground_bg->unk0 = 0;
     ground_bg->unk1C0 = 0;
     ground_bg->unk1BE = -1;
@@ -282,15 +282,15 @@ void ov11_022EC08C(struct ground_bg *ground_bg)
     ground_bg->unk1FB = 0;
     ground_bg->unk1BC = 0;
 
-    unk0Ptr = &ground_bg->unk2[0];
-    for (unk0Id = 0; unk0Id < UNK_2_ARR_COUNT; unk0Id++, unk0Ptr++) {
-        unk0Ptr->unk0 = 0;
-        unk0Ptr->unk2 = 0;
-        unk0Ptr->unk4 = unk0Ptr->unk8 = 0;
+    unk4Ptr = &ground_bg->unk4[0];
+    for (unk4Id = 0; unk4Id < UNK_4_ARR_COUNT; unk4Id++, unk4Ptr++) {
+        unk4Ptr->unk0 = 0;
+        unk4Ptr->unk2 = 0;
+        unk4Ptr->unk4 = unk4Ptr->unk8 = 0;
     }
 
-    for (unk3E0Id = 0; unk3E0Id < UNK_C4_ARR_COUNT; unk3E0Id++) {
-        struct ground_bg_substruct_c4 *unkPtr = &ground_bg->unkC4[unk3E0Id];
+    for (unkC4Id = 0; unkC4Id < UNK_C4_ARR_COUNT; unkC4Id++) {
+        struct ground_bg_sub_struct_c4 *unkPtr = &ground_bg->unkC4[unkC4Id];
         unkPtr->unk0 = 0;
         unkPtr->unk1 = 0;
         unkPtr->unk2 = 0;

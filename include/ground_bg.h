@@ -6,23 +6,23 @@
 
 #define BG_NAME_LEN 8
 #define BPA_MAX_ENTRIES 8
-#define UNK_2_ARR_COUNT 16 // Was 14 in Red
+#define UNK_4_ARR_COUNT 16 // Was 14 in Red
 #define UNK_C4_ARR_COUNT 4 // Was 2 in Red
 #define NUM_LAYERS 2
 
-struct bg_list_entry_substruct {
+struct bg_list_entry_sub_struct {
     char name[BG_NAME_LEN + 2]; // Null-terminated string
 };
 
 // Represents an entry in the bg_list.dat file, after being loaded by LoadBgListEntry
 struct bg_list_entry {
-    struct bg_list_entry_substruct bpl;
-    struct bg_list_entry_substruct bpc;
-    struct bg_list_entry_substruct bma;
-    struct bg_list_entry_substruct others_bpa[BPA_MAX_ENTRIES];
+    struct bg_list_entry_sub_struct bpl;
+    struct bg_list_entry_sub_struct bpc;
+    struct bg_list_entry_sub_struct bma;
+    struct bg_list_entry_sub_struct others_bpa[BPA_MAX_ENTRIES];
 };
 
-struct ground_bg_substruct_2
+struct ground_bg_sub_struct_4
 {
     s16 unk0;
     s16 unk2;
@@ -32,13 +32,13 @@ struct ground_bg_substruct_2
 };
 
 // Was 0x24 in Red...
-struct ground_bg_substruct_c4
+struct ground_bg_sub_struct_c4
 {
     u8 unk0;
     u8 unk1;
     s16 unk2;
     s16 unk4;
-    struct opened_file bpa_file;
+    struct iovec bpa_file;
     const void *unk10;
     const void *unk14;
     const void *unk18;
@@ -48,7 +48,7 @@ struct ground_bg_substruct_c4
     u32 unk28;
 };
 
-struct ground_bg_substruct_194
+struct ground_bg_sub_struct_194
 {
     u8 unk0;
     u8 unk1;
@@ -64,7 +64,7 @@ struct ground_bg_substruct_194
     u8 unkB;
 };
 
-struct ground_bg_substruct_1a0
+struct ground_bg_sub_struct_1a0
 {
     u8 unk0;
     u8 unk1;
@@ -117,7 +117,7 @@ struct bma_header
     u16 has_collision;
 };
 
-struct ground_bg_substruct_52c
+struct ground_bg_sub_struct_2bc
 {
     u8 unk0; // 0x52C
     s16 unk2; // 0x52E
@@ -137,14 +137,14 @@ struct ground_bg_substruct_52c
 struct ground_bg
 {
     s16 unk0; // Not present in Red
-    struct ground_bg_substruct_2 unk2[UNK_2_ARR_COUNT];
-    struct ground_bg_substruct_c4 unkC4[UNK_C4_ARR_COUNT]; // 0xc4
-    struct opened_file bpl_file; // 0x174
-    struct opened_file unk17C; // 0x17C
-    struct opened_file bpc_file; // 0x184
-    struct opened_file bma_file; // 0x18c
-    struct ground_bg_substruct_194 unk194;
-    struct ground_bg_substruct_1a0 unk1A0;
+    struct ground_bg_sub_struct_4 unk4[UNK_4_ARR_COUNT];
+    struct ground_bg_sub_struct_c4 unkC4[UNK_C4_ARR_COUNT]; // 0xc4
+    struct iovec bpl_file; // 0x174
+    struct iovec unk17C; // 0x17C
+    struct iovec bpc_file; // 0x184
+    struct iovec bma_file; // 0x18c
+    struct ground_bg_sub_struct_194 unk194;
+    struct ground_bg_sub_struct_1a0 unk1A0;
     u8 unk1B8;
     u8 unk1B9;
     u8 unk1BA;
@@ -215,7 +215,7 @@ struct ground_bg
     u8 unk248[112];
     s16 unk2B8;
     u8 unk2BA;
-    struct ground_bg_substruct_52c unk52C; // 2bc
+    struct ground_bg_sub_struct_2bc unk52C; // 2bc
     u16 *unk2D8;
     u16 *unk2DC[2];
     u16 *unk2E4[2];

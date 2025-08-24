@@ -22,7 +22,7 @@ ov11_022EC27C: ; 0x022EC27C
 	bl ov11_022EC08C
 	b _022ECCF4
 _022EC2BC:
-	bl CloseOpenedFiles
+	bl CloseOpenedGroundBgFiles
 	mov r0, #1
 	strh r0, [sl]
 	mov r0, #0
@@ -779,7 +779,7 @@ LoadMapType10: ; 0x022ECD24
 _022ECD5C:
 	bl ov11_022EC27C
 	mov r0, sl
-	bl CloseOpenedFiles
+	bl CloseOpenedGroundBgFiles
 	mov r0, #2
 	strh r0, [sl]
 	mov r0, #0
@@ -1129,7 +1129,7 @@ LoadMapType11: ; 0x022ED244
 	bl ov11_022EC08C
 	b _022ED680
 _022ED27C:
-	bl CloseOpenedFiles
+	bl CloseOpenedGroundBgFiles
 	mov r1, #2
 	strh r1, [sl]
 	mov r2, #0
@@ -1428,7 +1428,7 @@ ov11_022ED69C: ; 0x022ED69C
 	mov r0, #0
 	b _022EDCFC
 _022ED6CC:
-	bl CloseOpenedFiles
+	bl CloseOpenedGroundBgFiles
 	ldr r0, [sb, #0x174]
 	add r1, sl, #0x100
 	str r0, [sp, #8]

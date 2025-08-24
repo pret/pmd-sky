@@ -22,7 +22,7 @@ struct file_stream {
     u32 field_0x44;
 };
 
-struct opened_file {
+struct iovec {
     void* iov_base;
     u32 iov_len;
 };

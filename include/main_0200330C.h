@@ -4,8 +4,8 @@
 #include "file.h"
 #include "util.h"
 
-void ZInit8(struct opened_file *ptr);
-bool8 PointsToZero(struct opened_file *ptr);
+void ZInit8(struct iovec *ptr);
+bool8 PointsToZero(struct iovec *ptr);
 void MemZero(u8* ptr, s32 len);
 void MemZero16(u16* ptr, s32 len);
 void MemZero32(u32* ptr, s32 len);

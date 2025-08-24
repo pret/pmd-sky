@@ -1,12 +1,12 @@
 #include "main_0200330C.h"
 
-void ZInit8(struct opened_file *ptr)
+void ZInit8(struct iovec *ptr)
 {
     ptr->iov_base = NULL;
     ptr->iov_len = 0;
 }
 
-bool8 PointsToZero(struct opened_file *ptr)
+bool8 PointsToZero(struct iovec *ptr)
 {
     if (ptr->iov_base == NULL) {
         return TRUE;

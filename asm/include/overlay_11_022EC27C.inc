@@ -1,6 +1,6 @@
 #pragma once
 .public BmaLayerNrlDecompressor
-.public CloseOpenedFiles
+.public CloseOpenedGroundBgFiles
 .public DecompressAtNormalVeneer
 .public GetAtSize
 .public GroundBgInit

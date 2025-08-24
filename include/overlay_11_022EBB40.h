@@ -4,10 +4,10 @@
 #include "ground_bg.h"
 
 void LoadBackgroundAttributes(struct bg_list_entry *entry, s32 bg_id);
-void GroundBgInit(struct ground_bg *ground_bg, const struct ground_bg_substruct_52c *a1);
+void GroundBgInit(struct ground_bg *ground_bg, const struct ground_bg_sub_struct_2bc *a1);
 void GroundBgFreeAll(struct ground_bg *ground_bg);
 void ov11_022EBF60(struct ground_bg *ground_bg);
-void CloseOpenedFiles(struct ground_bg *ground_bg);
+void CloseOpenedGroundBgFiles(struct ground_bg *ground_bg);
 void ov11_022EC08C(struct ground_bg *ground_bg);
 void ov11_022EC240(struct ground_bg *ground_bg, s32 bg_id);
 
