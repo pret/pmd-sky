@@ -358,6 +358,7 @@ extern const char ov11_02320C6C[];
 extern const char ov11_02320C80[];
 extern void *ov11_02320C18[][2]; // Vram ptrs
 
+#ifdef NONMATCHING
 // Regswaps - https://decomp.me/scratch/0bm90
 void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
 {
@@ -772,3 +773,13 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
     TRY_CLOSE_FILE(groundBg->bpcFile);
     TRY_CLOSE_FILE(groundBg->bmaFile);
 }
+
+#else
+__attribute__((naked))
+void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
+{
+    asm(".syntax unified\n"  "\n.syntax divided\n");
+}
+
+#endif
+//
