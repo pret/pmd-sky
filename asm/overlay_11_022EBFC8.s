@@ -1,38 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_11_022EBF60.inc"
+	.include "overlay_11_022EBFC8.inc"
 
 	.text
-
-	arm_func_start ov11_022EBF60
-ov11_022EBF60: ; 0x022EBF60
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r0
-	mov r6, #0
-	add r5, r7, #0xc4
-	mov r4, #0x2c
-_022EBF74:
-	mla r0, r6, r4, r5
-	add r0, r0, #8
-	bl ZInit8
-	add r6, r6, #1
-	cmp r6, #4
-	blt _022EBF74
-	add r0, r7, #0x1a0
-	bl sub_02063600
-	add r0, r7, #0x194
-	bl sub_020635C8
-	mov r1, #0
-	add r0, r7, #0x174
-	strb r1, [r7, #0x1bc]
-	bl ZInit8
-	add r0, r7, #0x17c
-	bl ZInit8
-	add r0, r7, #0x184
-	bl ZInit8
-	add r0, r7, #0x18c
-	bl ZInit8
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov11_022EBF60
 
 	arm_func_start CloseOpenedFiles
 CloseOpenedFiles: ; 0x022EBFC8

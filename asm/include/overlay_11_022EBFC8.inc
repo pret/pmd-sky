@@ -13,6 +13,7 @@
 .public ZInit8
 .public ov10_022C3938
 .public ov10_022C3E8C
+.public ov11_022EBF60
 .public ov11_022EE620
 .public ov11_022EE8CC
 .public ov11_022EE9B0
@@ -38,9 +39,7 @@
 .public sub_020163E4
 .public sub_0201641C
 .public sub_02016468
-.public sub_020635C8
 .public sub_020635D8
-.public sub_02063600
 .public sub_02063628
 .public sub_0206367C
 .public sub_02063734

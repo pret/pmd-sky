@@ -1,9 +1,9 @@
 #include "main_0200330C.h"
 
-void ZInit8(int* ptr)
+void ZInit8(struct opened_file *ptr)
 {
-    ptr[0]=0;
-    ptr[1]=0;
+    ptr->iov_base = NULL;
+    ptr->iov_len = 0;
 }
 
 u8 PointsToZero(int* ptr)

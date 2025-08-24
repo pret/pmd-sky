@@ -1,7 +1,9 @@
 #ifndef PMDSKY_MAIN_0200330C_H
 #define PMDSKY_MAIN_0200330C_H
 
-void ZInit8(int* ptr);
+#include "file.h"
+
+void ZInit8(struct opened_file *ptr);
 u8 PointsToZero(int* ptr);
 void MemZero(u8* ptr, s32 len);
 void MemZero16(u16* ptr, s32 len);

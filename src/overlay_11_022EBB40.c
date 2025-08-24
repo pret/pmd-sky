@@ -1,5 +1,6 @@
 #include "overlay_11_022EBB40.h"
 #include "file_rom.h"
+#include "main_0200330C.h"
 
 #define RGB_FIELDS_COUNT 4
 
@@ -50,8 +51,9 @@ extern struct unk_struct_2324CBC *ov11_02324CBC;
 extern const struct const_file_data ov11_02320BE4;
 extern void* MemAlloc(u32 len, u32 flags);
 void* sub_0200B500(struct unk_struct_2324CBC_sub0 *unk);
-void ov11_022EBF60(struct ground_bg *ground_bg);
 void CloseOpenedFiles(struct ground_bg *ground_bg);
+void sub_02063600(void *);
+void sub_020635C8(struct ground_bg_substruct_194 *);
 
 void LoadBackgroundAttributes(struct bg_list_entry *entry, s32 bg_id)
 {
@@ -193,4 +195,23 @@ void GroundBgFreeAll(struct ground_bg *ground_bg)
             ground_bg->unk2E4[i] = NULL;
         }
     }
+}
+
+void ov11_022EBF60(struct ground_bg *ground_bg)
+{
+    s32 i;
+
+    for (i = 0; i < UNK_C4_ARR_COUNT; i++) {
+        struct ground_bg_substruct_c4 *unkPtr = &ground_bg->unkC4[i];
+        ZInit8(&unkPtr->bpa_file);
+    }
+
+    sub_02063600(&ground_bg->unk1A0);
+    sub_020635C8(&ground_bg->unk194);
+    ground_bg->unk1BC = 0;
+
+    ZInit8(&ground_bg->bpl_file);
+    ZInit8(&ground_bg->unk17C);
+    ZInit8(&ground_bg->bpc_file);
+    ZInit8(&ground_bg->bma_file);
 }

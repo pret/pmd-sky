@@ -38,8 +38,7 @@ struct ground_bg_substruct_c4
     u8 unk1;
     s16 unk2;
     s16 unk4;
-    struct opened_file *bpaFile;
-    const struct bpa_header *unkC;
+    struct opened_file bpa_file;
     const void *unk10;
     const void *unk14;
     const void *unk18;
@@ -47,6 +46,50 @@ struct ground_bg_substruct_c4
     void *unk20;
     u32 unk24;
     u32 unk28;
+};
+
+struct ground_bg_substruct_194
+{
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+};
+
+struct ground_bg_substruct_1a0
+{
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    u8 unkC;
+    u8 unkD;
+    u8 unkE;
+    u8 unkF;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    u8 unk17;
 };
 
 struct bma_header
@@ -84,74 +127,12 @@ struct ground_bg
     u16 unk0; // Not present in Red
     struct ground_bg_substruct_2 unk2[UNK_2_ARR_COUNT];
     struct ground_bg_substruct_c4 unkC4[UNK_C4_ARR_COUNT]; // 0xc4
-    u8 unk174; // 0x174
-    u8 unk175;
-    u8 unk176;
-    u8 unk177;
-    u8 unk178;
-    u8 unk179;
-    u8 unk17A;
-    u8 unk17B;
-    u8 unk17C;
-    u8 unk17D;
-    u8 unk17E;
-    u8 unk17F;
-    u8 unk180;
-    u8 unk181;
-    u8 unk182;
-    u8 unk183;
-    u8 unk184;
-    u8 unk185;
-    u8 unk186;
-    u8 unk187;
-    u8 unk188;
-    u8 unk189;
-    u8 unk18A;
-    u8 unk18B;
-    u8 unk18C;
-    u8 unk18D;
-    u8 unk18E;
-    u8 unk18F;
-    u8 unk190;
-    u8 unk191;
-    u8 unk192;
-    u8 unk193;
-    u8 unk194;
-    u8 unk195;
-    u8 unk196;
-    u8 unk197;
-    u8 unk198;
-    u8 unk199;
-    u8 unk19A;
-    u8 unk19B;
-    u8 unk19C;
-    u8 unk19D;
-    u8 unk19E;
-    u8 unk19F;
-    u8 unk1A0;
-    u8 unk1A1;
-    u8 unk1A2;
-    u8 unk1A3;
-    u8 unk1A4;
-    u8 unk1A5;
-    u8 unk1A6;
-    u8 unk1A7;
-    u8 unk1A8;
-    u8 unk1A9;
-    u8 unk1AA;
-    u8 unk1AB;
-    u8 unk1AC;
-    u8 unk1AD;
-    u8 unk1AE;
-    u8 unk1AF;
-    u8 unk1B0;
-    u8 unk1B1;
-    u8 unk1B2;
-    u8 unk1B3;
-    u8 unk1B4;
-    u8 unk1B5;
-    u8 unk1B6;
-    u8 unk1B7;
+    struct opened_file bpl_file; // 0x174
+    struct opened_file unk17C; // 0x17C
+    struct opened_file bpc_file; // 0x184
+    struct opened_file bma_file; // 0x18c
+    struct ground_bg_substruct_194 unk194;
+    struct ground_bg_substruct_1a0 unk1A0;
     u8 unk1B8;
     u8 unk1B9;
     u8 unk1BA;
