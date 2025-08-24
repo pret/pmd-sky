@@ -15463,8 +15463,8 @@ _0206596C: .word TEAM_MEMBER_TABLE_PTR
 _02065970: .word _020B0B08
 	arm_func_end sub_0206549C
 
-	arm_func_start sub_02065974
-sub_02065974: ; 0x02065974
+	arm_func_start GetScriptEntityMonsterId
+GetScriptEntityMonsterId: ; 0x02065974
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r0, sp, #8
@@ -15474,7 +15474,7 @@ sub_02065974: ; 0x02065974
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end sub_02065974
+	arm_func_end GetScriptEntityMonsterId
 
 	arm_func_start GetActorMatchingStorageId
 GetActorMatchingStorageId: ; 0x02065998
@@ -22511,7 +22511,7 @@ _0206B580:
 	bl MultiplyByFixedPoint
 	str r0, [r6, #0x18]
 	ldr r0, [r6, #0x20]
-	bl sin_4096
+	bl SinAbs4096
 	add r1, sl, #0x300
 	rsb r0, r0, #0
 	bl MultiplyByFixedPoint
@@ -23206,7 +23206,7 @@ sub_0206BFA8: ; 0x0206BFA8
 	ldr r1, [r4, #0x30]
 	add r7, r1, r0
 	ldr r0, [r4, #0x20]
-	bl sin_4096
+	bl SinAbs4096
 	ldr r1, [r4, #0x24]
 	rsb r0, r0, #0
 	bl MultiplyByFixedPoint

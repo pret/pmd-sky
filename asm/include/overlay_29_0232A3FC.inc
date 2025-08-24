@@ -78,7 +78,6 @@
 .public ov29_02321260
 .public ov29_02324D60
 .public ov29_02332F18
-.public ov29_0234B084
 .public ov29_02352B1C
 .public ov29_0237CA84
 .public POISON_TAIL_POISON_CHANCE
@@ -87,6 +86,7 @@
 .public RevealTrapsNearby
 .public SECRET_POWER_EFFECT_CHANCE
 .public SetEntityPixelPosXY
+.public SetPreprocessorArgsIdVal
 .public SKULL_BASH_DAMAGE_MULTIPLIER
 .public SLEEP_TURN_RANGE
 .public SPATK_STAT_IDX

@@ -3,7 +3,6 @@
 .public AdvanceFrame
 .public AnimationDelayOrSomething
 .public CanMonsterMoveInDirection
-.public MonsterCannotAttack
 .public CannotStandOnTile
 .public DIRECTIONS_XY
 .public DisplayActions
@@ -12,11 +11,13 @@
 .public EnsureCanStandCurrentTile
 .public EntityIsValid__022FED98
 .public GetHiddenStairsField
+.public HandleHeldItemSwaps
 .public HasHeldItem
 .public IqSkillIsEnabled
 .public IsChargingAnyTwoTurnMove
 .public IsFloorOver
 .public LogMessageByIdWithPopupCheckUser
+.public MonsterCannotAttack
 .public MonsterCanThrowItems
 .public MoveMonsterToPos
 .public ov10_022C4F3C
@@ -31,7 +32,6 @@
 .public ov29_022F4350
 .public ov29_022F4370
 .public ov29_022F44F0
-.public ov29_022F45CC
 .public ov29_022F48D8
 .public ov29_022F49E0
 .public ov29_022F4BDC

@@ -7,9 +7,9 @@
 .public ChangeDungeonMusic
 .public CloseAlertBox
 .public CreateAlertBox
-.public DUNGEON_PTR
 .public DisplayMessage
 .public DisplayMessage2
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EndNegativeStatusConditionWrapper
 .public EntityIsValid__0234987C
@@ -47,16 +47,6 @@
 .public MemFree
 .public MemZero
 .public MusicTableIdxToMusicId
-.public PositionIsOnStairs
-.public PreprocessString
-.public RemoveEmptyItemsInBagWrapper
-.public RemoveGroundItem
-.public SetPortraitLayout
-.public ShouldDisplayEntityWrapper
-.public ShouldMonsterHeadToStairs
-.public StringFromId
-.public SubstitutePlaceholderStringTags
-.public YesNoMenu
 .public ov10_022BFD20
 .public ov29_022E09E8
 .public ov29_022E0B60
@@ -78,7 +68,6 @@
 .public ov29_02300B04
 .public ov29_0231AF24
 .public ov29_0233A248
-.public ov29_02344B44
 .public ov29_02344B9C
 .public ov29_02348888
 .public ov29_02348A18
@@ -92,6 +81,15 @@
 .public ov29_023537C8
 .public ov29_023537CC
 .public ov29_0237C694
+.public PositionIsOnStairs
+.public PrepareItemForPrinting__02345728
+.public PreprocessString
+.public RemoveEmptyItemsInBagWrapper
+.public RemoveGroundItem
+.public SetPortraitLayout
+.public ShouldDisplayEntityWrapper
+.public ShouldMonsterHeadToStairs
+.public StringFromId
 .public strlen
 .public strncmp
 .public strncpy
@@ -109,3 +107,5 @@
 .public sub_02048240
 .public sub_0204833C
 .public sub_02048360
+.public SubstitutePlaceholderStringTags
+.public YesNoMenu

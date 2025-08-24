@@ -36,7 +36,7 @@ ov29_02301A84: ; 0x02301A84
 	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #0
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r2, _02301B28 ; =0x00000C39
 	mov r0, r5
 	mov r1, r4

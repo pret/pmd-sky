@@ -887,7 +887,7 @@ ov29_02348B28: ; 0x02348B28
 	bl ov29_0234B06C
 	mov r1, r4
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _02348B98 ; =0x00000E17
 	mov r0, #0
 	mov r2, #1
@@ -1147,7 +1147,7 @@ _02348E64:
 	bl SubstitutePlaceholderStringTags
 	mov r1, r5
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _02348EC8 ; =0x00000BD2
 	mov r0, r6
 	bl LogMessageByIdWithPopupCheckUser

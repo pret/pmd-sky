@@ -82,8 +82,6 @@
 .public ov29_023021F0
 .public ov29_023038D4
 .public ov29_02339FF4
-.public ov29_02344B44
-.public ov29_0234B084
 .public ov29_0234B09C
 .public ov29_0234BA54
 .public ov29_023529AC
@@ -94,10 +92,12 @@
 .public ov31_02386204
 .public ov31_02386308
 .public ov31_023877EC
+.public PrepareItemForPrinting__02345728
 .public RemoveUsedItem
 .public RestoreAllMovePP
 .public SetDoughSeedFlag
 .public SetMonsterActionFields
+.public SetPreprocessorArgsIdVal
 .public ShouldDisplayEntityWrapper
 .public SPATK_STAT_IDX
 .public sub_02050FF8

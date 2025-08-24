@@ -6,5 +6,5 @@
 .public IsMonsterSleeping
 .public ov10_022C4530
 .public ov29_022E28D4
+.public SetPreprocessorArgsIdVal
 .public TryEndPetrifiedOrSleepStatus
-.public ov29_0234B084

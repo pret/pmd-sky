@@ -180,7 +180,7 @@ ov29_022F07BC: ; 0x022F07BC
 	rsb r0, r0, #0
 	bl AddMoneyCarried
 	ldr r0, _022F07D4 ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022F07D4: .word 0x00001308
@@ -644,7 +644,7 @@ _022F0D78:
 	tst r3, #6
 	beq _022F0D98
 	ldr r0, _022F0ED8 ; =0x00003F03
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	b _022F0E30
 _022F0D98:
 	ldrb r0, [r5]
@@ -4519,7 +4519,7 @@ _022F43AC:
 	beq _022F440C
 	add r1, r8, r7
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _022F44D8 ; =0x00000BA9
 	mov r0, r6
 	bl LogMessageByIdWithPopupCheckUser
@@ -4535,7 +4535,7 @@ _022F441C:
 	blt _022F43AC
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r0, _022F44DC ; =0x00003F07
 	bl ov29_022EACCC
 	cmp r5, #0
@@ -4575,7 +4575,7 @@ _022F4494:
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _022F44EC ; =0x00000BAE
 	mov r0, r6
 	bl LogMessageByIdWithPopupCheckUser
@@ -4627,7 +4627,7 @@ _022F4518:
 	beq _022F4578
 	add r1, r3, r2
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _022F45C0 ; =0x00000BA9
 	mov r0, sl
 	bl LogMessageByIdWithPopupCheckUser
@@ -4638,7 +4638,7 @@ _022F4578:
 	add r1, r3, r2
 	bic ip, ip, #0x10
 	strb ip, [r3, r2]
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r0, _022F45C4 ; =0x00003F07
 	bl ov29_022EACCC
 	cmp sb, #0
@@ -4665,8 +4665,8 @@ _022F45C8: .word 0x00000BAD
 #endif
 	arm_func_end ov29_022F44F0
 
-	arm_func_start ov29_022F45CC
-ov29_022F45CC: ; 0x022F45CC
+	arm_func_start HandleHeldItemSwaps
+HandleHeldItemSwaps: ; 0x022F45CC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x14
 	mov sl, r0
@@ -4701,7 +4701,7 @@ ov29_022F45CC: ; 0x022F45CC
 	beq _022F4668
 	mov r1, r5
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 #ifdef JAPAN
 	ldr r1, _022F5EB8 ; =0x000008EF
 	mov r0, sl
@@ -4729,7 +4729,7 @@ _022F4668:
 	beq _022F46C0
 	add r1, sb, #0x62
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _022F48C0 ; =0x00000BAF
 	mov r0, sl
 	bl LogMessageByIdWithPopupCheckUser
@@ -4787,10 +4787,10 @@ _022F4770:
 _022F4778:
 	add r1, sp, #6
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	add r1, sp, #0xc
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r0, _022F48C4 ; =0x00001317
 	bl ov29_022EACCC
 	ldr r1, _022F48C8 ; =0x00000BB2
@@ -4837,7 +4837,7 @@ _022F482C:
 _022F4834:
 	add r1, sp, #0
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r0, _022F48C4 ; =0x00001317
 	bl ov29_022EACCC
 	ldr r1, _022F48D0 ; =0x00000BB3
@@ -4891,7 +4891,7 @@ _022F48C8: .word 0x00000BB2 + OV29_022F45CC_OFFSET
 _022F48CC: .word 0x00000BAE + OV29_022F45CC_OFFSET
 _022F48D0: .word 0x00000BB3 + OV29_022F45CC_OFFSET
 _022F48D4: .word DUNGEON_PTR
-	arm_func_end ov29_022F45CC
+	arm_func_end HandleHeldItemSwaps
 
 	arm_func_start ov29_022F48D8
 ov29_022F48D8: ; 0x022F48D8
@@ -4910,7 +4910,7 @@ ov29_022F48D8: ; 0x022F48D8
 	mov r0, #0
 	beq _022F4928
 	add r1, r5, #0x62
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _022F49D0 ; =0x00000BAE
 	mov r0, r6
 	bl LogMessageByIdWithPopupCheckUser
@@ -4926,7 +4926,7 @@ _022F4928:
 	bic r2, r2, #0x10
 	strh r3, [sp, #4]
 	strb r2, [sp]
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	mov r0, #0
 	mov r1, r4
 	mov r2, r0
@@ -4998,7 +4998,7 @@ ov29_022F49E0: ; 0x022F49E0
 	beq _022F4A44
 	add r1, r5, #0x62
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _022F4BCC ; =0x00000BAE
 	mov r0, r7
 	bl LogMessageByIdWithPopupCheckUser
@@ -5015,7 +5015,7 @@ _022F4A44:
 	beq _022F4A84
 	mov r1, r6
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _022F4BCC ; =0x00000BAE
 	mov r0, r7
 	bl LogMessageByIdWithPopupCheckUser
@@ -5029,10 +5029,10 @@ _022F4A84:
 	ldrb r2, [r6]
 	bic r2, r2, #0x10
 	strb r2, [r6]
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	mov r1, r6
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	mov r1, r4
 	mov r0, #1
 	mov r2, #0
@@ -5160,7 +5160,7 @@ ov29_022F4BF8: ; 0x022F4BF8
 	mov r4, r0
 	mov r1, r4
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldrb r1, [r6, #0x4e]
 	cmp r1, #0x80
 	bne _022F4C3C
@@ -5230,7 +5230,7 @@ _022F4D08:
 	mov r0, #0
 	bic r2, r2, #0x10
 	strb r2, [r4]
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	mov r1, r4
 	add r0, r5, #4
 	mov r2, #1
@@ -5316,7 +5316,7 @@ _022F4DFC:
 	beq _022F4E48
 	mov r1, r7
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _022F5040 ; =0x00000BAE
 	mov r0, r8
 	bl LogMessageByIdWithPopupCheckUser
@@ -5332,7 +5332,7 @@ _022F4E48:
 	beq _022F4E84
 	mov r1, r7
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 #ifdef JAPAN
 	mov r0, r8
 	mov r1, #0x8f0
@@ -5448,10 +5448,10 @@ _022F4FDC:
 	bl RemoveEmptyItemsInBagWrapper
 	add r1, sp, #6
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	add r1, sp, #0
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r0, _022F5054 ; =0x00001317
 	bl ov29_022EACCC
 	ldr r1, _022F5058 ; =0x00000BBD
@@ -5509,7 +5509,7 @@ ov29_022F505C: ; 0x022F505C
 	mov r6, r0
 	mov r1, r6
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldrb r1, [r5, #0x4e]
 	cmp r1, #0x33
 	bhs _022F50E8
@@ -5524,7 +5524,7 @@ ov29_022F505C: ; 0x022F505C
 	beq _022F50E8
 	mov r1, r6
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 #ifdef JAPAN
 	mov r0, r7
 	mov r1, #0x8f0
@@ -5567,7 +5567,7 @@ _022F513C:
 	mov r4, r0
 	mov r1, r4
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldrh r2, [r6]
 	add r0, r7, #4
 	mov r1, #1

@@ -53,7 +53,7 @@ _02322E80:
 	mov r0, r7, lsl #0x10
 	mov r1, r0, asr #0x10
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	b _02322EAC
 _02322E94:
 	cmp r7, #0
@@ -61,7 +61,7 @@ _02322E94:
 	mov r0, r7, lsl #0x10
 	mov r1, r0, asr #0x10
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 _02322EAC:
 	ldrh r1, [sb, #4]
 	ldr r0, _02322F74 ; =0x00000163
@@ -532,7 +532,7 @@ _02323538:
 	cmp fp, #1
 	bne _02323564
 	mov r0, sb, asr #8
-	bl sin_4096
+	bl SinAbs4096
 	mul r0, r4, r0
 	str r0, [sp, #0x50]
 	mov r2, #0
@@ -544,13 +544,13 @@ _02323564:
 	movne r2, r0
 	bne _023235B4
 	mov r0, sb, asr #8
-	bl sin_4096
+	bl SinAbs4096
 	ldr r1, [sp, #0x3c]
 	mul r0, r1, r0
 	mov r0, r0, asr #8
 	str r0, [sp, #0x74]
 	ldr r0, [sp, #0x40]
-	bl sin_4096
+	bl SinAbs4096
 	ldr r1, [sp, #0x74]
 	mul r0, r1, r0
 	str r0, [sp, #0x50]
@@ -584,7 +584,7 @@ _02323600:
 	cmp fp, #1
 	bne _0232362C
 	mov r0, sb, asr #8
-	bl sin_4096
+	bl SinAbs4096
 	ldr r1, [sp, #0x34]
 	mov r2, #0
 	mul r0, r1, r0
@@ -597,13 +597,13 @@ _0232362C:
 	strne r0, [sp, #0x4c]
 	bne _0232367C
 	mov r0, sb, asr #8
-	bl sin_4096
+	bl SinAbs4096
 	ldr r1, [sp, #0x3c]
 	mul r0, r1, r0
 	mov r0, r0, asr #8
 	str r0, [sp, #0x70]
 	ldr r0, [sp, #0x30]
-	bl sin_4096
+	bl SinAbs4096
 	ldr r1, [sp, #0x70]
 	mul r0, r1, r0
 	str r0, [sp, #0x4c]

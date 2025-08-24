@@ -41,7 +41,7 @@ TryActivateConversion2: ; 0x022F9744
 	bl SubstitutePlaceholderStringTags
 	mov r1, r4
 	mov r0, #0
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	mov r0, r7
 	mov r1, r6
 	ldr r2, _022F97EC ; =0x00000C16
@@ -822,7 +822,7 @@ _022FA0E4:
 	bl sub_02017C50
 	mov r0, #0
 	and r1, r8, #0xff
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r1, _022FA140 ; =0x00000C1C
 	mov r0, #0
 	bl LogMessageByIdWithPopup
@@ -1715,7 +1715,7 @@ _022FAB58:
 	bl SubstitutePlaceholderStringTags
 	mov r0, #1
 	mov r1, #0x37
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 #ifdef JAPAN
 	ldr r1, _022FC21C ; =0x0000095F
 	mov r0, r5
@@ -1773,7 +1773,7 @@ _022FAC04:
 	bl GetExclusiveItemWithEffectFromBag
 	mov r0, #1
 	add r1, sp, #0xc
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	cmp sl, #0
 	bne _022FAC60
 	ldr r1, _022FAC94 ; =0x00000C23

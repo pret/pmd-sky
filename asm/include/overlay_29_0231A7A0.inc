@@ -3,6 +3,6 @@
 .public ExclusiveItemEffectIsActive__0231A87C
 .public IqSkillIsEnabled
 .public LogMessageByIdWithPopupCheckUser
+.public ov10_022C459C
 .public PlayExclamationPointEffect__022E4880
 .public SubstitutePlaceholderStringTags
-.public ov10_022C459C

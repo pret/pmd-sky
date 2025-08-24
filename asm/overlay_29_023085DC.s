@@ -616,7 +616,7 @@ _02308E20:
 	bne _02308E80
 	mov r0, #0x64
 	bl DungeonRandInt
-	ldr r1, _02308FB0 ; =ov10_022C4524
+	ldr r1, _02308FB0 ; =CUTE_CHARM_INFATUATE_CHANCE
 	ldrsh r1, [r1]
 	cmp r0, r1
 	addlt r0, r6, #0x100
@@ -720,7 +720,7 @@ _02308FA0: .word ov10_022C4550
 _02308FA4: .word ov10_022C45C0
 _02308FA8: .word ov10_022C45AC
 _02308FAC: .word ov10_022C467C
-_02308FB0: .word ov10_022C4524
+_02308FB0: .word CUTE_CHARM_INFATUATE_CHANCE
 _02308FB4: .word ov10_022C4638
 _02308FB8: .word DUNGEON_PTR
 	arm_func_end ApplyDamageAndEffects

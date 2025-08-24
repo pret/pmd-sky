@@ -88,7 +88,7 @@ IsProtectedFromNegativeStatus: ; 0x02302430
 	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #0
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r2, _023024DC ; =0x00000C39
 	mov r0, r6
 	mov r1, r5

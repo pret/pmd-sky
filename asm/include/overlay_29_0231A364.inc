@@ -1,4 +1,5 @@
 #pragma once
+.public _s32_div_f
 .public AbilityIsActiveVeneer
 .public CanAttackInDirection
 .public DIRECTIONS_XY
@@ -9,6 +10,5 @@
 .public HasHeldItem
 .public IqSkillIsEnabled
 .public IsBlinded
-.public _s32_div_f
 .public ov29_0230B7D4
 .public ov29_0230F8D0

@@ -1,15 +1,14 @@
 #pragma once
+.public _022B99A8
+.public _022B99D0
+.public _022B99D4
+.public _022B99D8
 .public ArrayCopy16
 .public EnableIrqFlag
 .public GetTimer0Control
 .public MemcpyFast
 .public OS_GetLockID
 .public SetIrqFlag
-.public WaitForever2
-.public _022B99A8
-.public _022B99D0
-.public _022B99D4
-.public _022B99D8
 .public sub_01FF97CC
 .public sub_02078C3C
 .public sub_02078CC8
@@ -19,3 +18,4 @@
 .public sub_0207DAFC
 .public sub_0207DB20
 .public sub_02083434
+.public WaitForever2

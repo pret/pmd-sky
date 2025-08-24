@@ -38,6 +38,7 @@
 .public ov11_0230BCF8
 .public ov11_0230BD28
 .public ov11_0230C910
+.public PlaySeByIdVolumeWrapper
 .public PreprocessString
 .public RemoveItemByIdAndStackNoHole
 .public SetPortraitEmotion
@@ -47,7 +48,6 @@
 .public ShowStringIdInDialogueBox
 .public sub_0200D670
 .public sub_02017C74
-.public sub_02017C80
 .public sub_02026268
 .public sub_02027B1C
 .public sub_0202836C

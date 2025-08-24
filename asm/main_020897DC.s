@@ -1426,7 +1426,7 @@ _0208AAE4:
 	mov r0, r4
 	mov r1, r6
 	mvn r2, #0
-	bl _dgeq
+	bl _dgr
 	bls _0208AB10
 	ldr r0, [sp, #0xd0]
 	mov r2, #1
@@ -1626,7 +1626,7 @@ sub_0208AD28: ; 0x0208AD28
 	mov r0, r6
 	mov r1, r7
 	mvn r2, #0
-	bl _dgeq
+	bl _dgr
 	bls _0208ADEC
 _0208ADE0:
 	ldr r0, _0208AE04 ; =_022BCA70
@@ -2993,7 +2993,7 @@ _0208C104:
 	mov r3, r1
 	mov r0, r4
 	mov r1, sl
-	bl _dgeq
+	bl _dgr
 	bls _0208C238
 	ldr r0, _0208BA48 ; =0x8800759C
 	ldr r1, _0208BA4C ; =0x7E37E43C
@@ -6338,9 +6338,9 @@ sub_0208EED4: ; 0x0208EED4
 	bx lr
 	arm_func_end sub_0208EED4
 
-	; Other names: _d_fge
-	arm_func_start _dgeq
-_dgeq: ; 0x0208EEDC
+	; Other names: _d_fgt
+	arm_func_start _dgr
+_dgr: ; 0x0208EEDC
 	mov ip, #0x200000
 	cmn ip, r1, lsl #1
 	bhs _0208EF50
@@ -6384,7 +6384,7 @@ _0208EF64:
 	cmp r2, #0
 	bhi _0208EF0C
 	b _0208EEF0
-	arm_func_end _dgeq
+	arm_func_end _dgr
 
 	; Other names: _d_fle
 	arm_func_start _dleq
@@ -11115,8 +11115,8 @@ _02098434:
 	.byte 0x73, 0x74, 0x5F, 0x69, 0x32, 0x6E, 0x5F, 0x66
 	.byte 0x2E, 0x62, 0x69, 0x6E, 0x00, 0x00, 0x00, 0x00
 #endif
-	.global ARM9_UNKNOWN_TABLE__NA_2097FF8
-ARM9_UNKNOWN_TABLE__NA_2097FF8:
+	.global BABY_EXCLUSIVE_ITEM_PAIRS
+BABY_EXCLUSIVE_ITEM_PAIRS:
 	.byte 0xC8, 0x01, 0xAC, 0x00, 0xC9, 0x01, 0xAD, 0x00, 0xCA, 0x01, 0xAE, 0x00
 	.byte 0xCB, 0x01, 0xAF, 0x00, 0xCC, 0x01, 0x07, 0x01, 0xCD, 0x01, 0x09, 0x01, 0xCE, 0x01, 0x0A, 0x01
 	.byte 0xCF, 0x01, 0x0B, 0x01, 0xD0, 0x01, 0x46, 0x01, 0xD1, 0x01, 0x88, 0x01, 0xD2, 0x01, 0xE0, 0x01

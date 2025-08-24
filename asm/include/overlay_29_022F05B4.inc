@@ -10,6 +10,7 @@
 .public AnimationDelayOrSomething
 .public BAG_ITEMS_PTR_MIRROR
 .public CanMonsterMoveInDirection
+.public CanMonsterMoveOrSwapWithAllyInDirection
 .public CanSeeTarget
 .public CeilFixedPoint
 .public ChangeMonsterAnimation
@@ -111,7 +112,6 @@
 .public ov29_023009CC
 .public ov29_02300FCC
 .public ov29_0230105C
-.public CanMonsterMoveOrSwapWithAllyInDirection
 .public ov29_023055B0
 .public ov29_02321164
 .public ov29_02322DDC
@@ -123,7 +123,6 @@
 .public ov29_02339D7C
 .public ov29_0233A0E8
 .public ov29_0233A248
-.public ov29_02344B44
 .public ov29_02346E5C
 .public ov29_02346FB8
 .public ov29_02348D3C
@@ -163,9 +162,11 @@
 .public ov29_0237CFBB
 .public PlayExclamationPointEffect__022E47D4
 .public PlayQuestionMarkEffect
+.public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
 .public PointCameraToMonster
 .public PositionHasMonster
+.public PrepareItemForPrinting__02345728
 .public PreprocessString
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveEquivItemNoHole
@@ -181,7 +182,6 @@
 .public SpawnItem
 .public sub_02001AB0
 .public sub_02006B70
-.public sub_02017C80
 .public sub_0201B9F8
 .public sub_0201CF90
 .public sub_02026268

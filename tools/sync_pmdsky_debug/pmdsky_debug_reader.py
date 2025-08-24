@@ -17,7 +17,7 @@ LANGUAGE_KEYS_PMDSKY_DEBUG_TO_XMAP = {
 LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG = {value: key for key, value in LANGUAGE_KEYS_PMDSKY_DEBUG_TO_XMAP.items()}
 
 # Symbols with duplicate addresses that should be ignored.
-SYMBOL_BLACKLIST = set([
+PMDSKY_DEBUG_SYMBOL_BLACKLIST = set([
     'GAME_STATE_VALUES',
     'MEMORY_ALLOCATION_TABLE'
 ])
@@ -81,7 +81,7 @@ def read_pmdsky_debug_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]
 
                     addresses: int | List[int] = symbol['address'][language]
                     symbol_name: str = symbol['name']
-                    if symbol_name in SYMBOL_BLACKLIST:
+                    if symbol_name in PMDSKY_DEBUG_SYMBOL_BLACKLIST:
                         continue
 
                     if 'aliases' in symbol:

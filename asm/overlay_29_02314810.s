@@ -307,7 +307,7 @@ _02314B74:
 	orr r1, r1, #1
 	strh r1, [r2, #2]
 	ldrh r1, [r2, #4]
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	mov r0, r8
 	mov r1, r7
 	mov r5, #1
@@ -459,7 +459,7 @@ ExclusiveItemEffectIsActiveWithLogging: ; 0x02314D40
 	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #0
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	mov r0, r7
 	mov r1, r6
 	mov r2, r4
@@ -491,7 +491,7 @@ ov29_02314DC4: ; 0x02314DC4
 	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #0
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	mov r0, r7
 	mov r1, r6
 	mov r2, r5

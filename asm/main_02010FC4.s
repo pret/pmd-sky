@@ -2171,8 +2171,8 @@ _02012B74: .word _020AF6D0
 _02012B78: .word _020AF6D4
 	arm_func_end CloseSynthBin
 
-	arm_func_start sub_02012B7C
-sub_02012B7C: ; 0x02012B7C
+	arm_func_start GenerateCroagunkItems
+GenerateCroagunkItems: ; 0x02012B7C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x160
 	bl GetScenarioBalance
@@ -2273,7 +2273,7 @@ _02012CB8:
 	mla r1, r6, r2, r1
 	mov r0, sl
 	add r2, sp, #0x2c
-	bl sub_020132A4
+	bl GetValidSynthsForSpecies
 	cmp r0, #0
 	addne r0, r4, r5, lsl #1
 	addne r0, r0, #0x900
@@ -2347,7 +2347,7 @@ _02012DD4:
 	mla r1, r6, r0, r1
 	add r2, sp, #0x2c
 	mov r0, sb
-	bl sub_020132A4
+	bl GetValidSynthsForSpecies
 	cmp r0, #0
 	addne r0, r4, r5, lsl #1
 	addne r0, r0, #0x900
@@ -2557,7 +2557,7 @@ _020130A8: .word 0x00000229
 _020130AC: .word TYPE_SPECIFIC_EXCLUSIVE_ITEMS
 _020130B0: .word _022A4BD8
 _020130B4: .word _02098D48
-	arm_func_end sub_02012B7C
+	arm_func_end GenerateCroagunkItems
 
 	arm_func_start sub_020130B8
 sub_020130B8: ; 0x020130B8
@@ -2717,8 +2717,8 @@ _0201328C:
 _020132A0: .word _020AF6D0
 	arm_func_end GetSynthItem
 
-	arm_func_start sub_020132A4
-sub_020132A4: ; 0x020132A4
+	arm_func_start GetValidSynthsForSpecies
+GetValidSynthsForSpecies: ; 0x020132A4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	mov sl, r0
 	mov sb, r1
@@ -2759,7 +2759,7 @@ _0201332C:
 	cmp r6, #4
 	blt _020132D0
 	mov r0, sl
-	bl sub_0200EB90
+	bl ReturnEggExclusiveItem
 	cmp r0, #0
 	beq _0201338C
 	bl GetSynthItem
@@ -2794,7 +2794,7 @@ _0201338C:
 	strneb r1, [r8, r0]
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
-	arm_func_end sub_020132A4
+	arm_func_end GetValidSynthsForSpecies
 
 	arm_func_start LoadWazaP
 LoadWazaP: ; 0x020133C4

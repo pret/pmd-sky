@@ -407,7 +407,7 @@ _0231FA9C:
 	str r0, [sp, #4]
 	bl IncrementEntityPixelPosXY
 	mov r0, r8
-	bl sin_4096
+	bl SinAbs4096
 	mov r1, #0xc
 	mul r1, r0, r1
 	ldr r0, [sp, #4]

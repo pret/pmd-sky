@@ -1066,7 +1066,7 @@ _0234744C:
 	add r0, r1, r0
 	str r0, [sp, #0x10]
 	mov r0, r7
-	bl sin_4096
+	bl SinAbs4096
 	mov r1, #0xc
 	mul r1, r0, r1
 	str r1, [sl, #0x1c]
@@ -1628,7 +1628,7 @@ _02347988:
 	bl SubstitutePlaceholderStringTags
 	ldr r1, [sp, #8]
 	mov r0, #0
-	bl ov29_02344B70
+	bl PrepareItemForPrinting__02345754
 #ifdef JAPAN
 	mov r0, sl
 	mov r1, r7
@@ -1684,7 +1684,7 @@ _02347A38:
 	bl SubstitutePlaceholderStringTags
 	ldr r1, [sp, #8]
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldrb r0, [r8]
 #ifdef JAPAN
 	mov r1, r7
@@ -1767,7 +1767,7 @@ _02347AF4:
 _02347B1C:
 	ldr r1, [sp, #8]
 	mov r0, #0
-	bl ov29_02344B70
+	bl PrepareItemForPrinting__02345754
 	ldr r1, _02347B4C ; =0x00000BE5
 	mov r0, sl
 	bl LogMessageByIdWithPopupCheckUser

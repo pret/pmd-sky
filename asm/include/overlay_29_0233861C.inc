@@ -80,8 +80,8 @@
 .public ResetInnerBoundaryTileRows
 .public SECONDARY_TERRAIN_TYPES
 .public ShouldMinimapDisplayEntity
+.public SinAbs4096
 .public StairsAlwaysReachable
-.public sin_4096
 .public sub_0200A174
 .public sub_0200B330
 .public sub_0200B3FC

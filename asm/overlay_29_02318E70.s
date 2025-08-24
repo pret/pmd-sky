@@ -282,7 +282,7 @@ TryInflictReflectStatus: ; 0x0231918C
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #1
 	beq _02319204
-	ldr r1, _02319220 ; =ov10_022C472C
+	ldr r1, _02319220 ; =REFLECT_LIGHT_SCREEN_TURN_RANGE
 	mov r3, #1
 	mov r0, r5
 	mov r2, #0
@@ -307,7 +307,7 @@ _02319214:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319220: .word ov10_022C472C
+_02319220: .word REFLECT_LIGHT_SCREEN_TURN_RANGE
 #ifdef JAPAN
 _02319224: .word 0x00000A36
 _02319228: .word 0x00000A37

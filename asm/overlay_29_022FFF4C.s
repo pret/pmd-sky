@@ -111,7 +111,7 @@ _02300068:
 	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #0
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 #ifdef JAPAN
 	mov r0, sl
 	mov r1, #0x970

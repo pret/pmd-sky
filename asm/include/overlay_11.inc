@@ -35,6 +35,7 @@
 .public FreeTeamStats
 .public G3X_Reset
 .public GROUND_MEMORY_ARENA_1
+.public GenerateCroagunkItems
 .public GenerateDailyMissions
 .public GenerateKecleonItems1
 .public GenerateKecleonItems2
@@ -63,6 +64,7 @@
 .public GetRank
 .public GetReleasedStylus
 .public GetScenarioBalance
+.public GetScriptEntityMonsterId
 .public GetSosMailCount
 .public GetStringFromFileVeneer
 .public GetTalkLine
@@ -102,6 +104,7 @@
 .public OVERLAY11_DEBUG_STRINGS
 .public PlayBgmByIdVeneer
 .public PlayBgmByIdVolumeVeneer
+.public PlaySeByIdVolumeWrapper
 .public PreprocessString
 .public PreprocessStringFromId
 .public RECRUITMENT_TABLE_LEVELS
@@ -565,7 +568,6 @@
 .public sub_0201080C
 .public sub_02011220
 .public sub_02011FA0
-.public sub_02012B7C
 .public sub_02017A68
 .public sub_02017A80
 .public sub_02017AB0
@@ -585,7 +587,6 @@
 .public sub_02017C5C
 .public sub_02017C68
 .public sub_02017C74
-.public sub_02017C80
 .public sub_02017C90
 .public sub_02017C9C
 .public sub_02017CA8
@@ -700,7 +701,6 @@
 .public sub_020630A4
 .public sub_02064FFC
 .public sub_02065050
-.public sub_02065974
 .public sub_02065B80
 .public sub_02065BC8
 .public sub_02065BD8

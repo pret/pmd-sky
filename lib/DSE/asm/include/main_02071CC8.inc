@@ -1,0 +1,5 @@
+#pragma once
+.public DseChannel_SetLfoConstEnvelopeLevel
+.public DseVoice_ReleaseHeld
+.public SoundEnvelopeParameters_CheckValidity
+.public SoundEnvelopeParameters_Reset

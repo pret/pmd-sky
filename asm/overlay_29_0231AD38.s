@@ -362,7 +362,7 @@ _0231B150:
 	bl SubstitutePlaceholderStringTags
 	add r1, r6, #0x62
 	mov r0, #2
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r2, _0231B190 ; =0x00000C3C
 	mov r0, r5
 	mov r1, r4

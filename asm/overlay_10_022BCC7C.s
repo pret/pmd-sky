@@ -3212,7 +3212,7 @@ _022BF6D4:
 	bne _022BF724
 	mov r0, r1, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 _022BF724:
 	mvn r0, #0
 	str r0, [r6, #0x58]

@@ -1519,7 +1519,7 @@ TryInflictShadowHoldStatus: ; 0x02312F78
 	bl SubstitutePlaceholderStringTags
 	mov r0, #1
 	mov r1, #0x2b
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	cmp r4, #0
 	bne _02313024
 	ldr r2, _0231311C ; =0x00000D28
@@ -3209,7 +3209,7 @@ _023145F4:
 	bl GetExclusiveItemWithEffectFromBag
 	add r1, sp, #4
 	mov r0, #1
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r2, _023147D8 ; =0x00000DA1
 	mov r0, sl
 	mov r1, sb

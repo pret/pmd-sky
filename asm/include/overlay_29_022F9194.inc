@@ -15,11 +15,11 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerSpeed
 .public MonsterIsType
-.public SubstitutePlaceholderStringTags
-.public TryEndStatusWithAbility
-.public WEATHER_BALL_TYPE_TABLE
 .public ov10_022C4C6E
 .public ov10_022C4C70
 .public ov29_022E6260
 .public ov29_022E647C
-.public ov29_0234B084
+.public SetPreprocessorArgsIdVal
+.public SubstitutePlaceholderStringTags
+.public TryEndStatusWithAbility
+.public WEATHER_BALL_TYPE_TABLE

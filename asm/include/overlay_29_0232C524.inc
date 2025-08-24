@@ -90,7 +90,6 @@
 .public ov29_0231F6E4
 .public ov29_02332F18
 .public ov29_02336694
-.public ov29_0234B084
 .public ov29_0234B0B4
 .public ov29_0234BA54
 .public ov29_02352B38
@@ -101,6 +100,7 @@
 .public RevealStairs
 .public RevealWholeFloor
 .public ROOST_HP_RESTORATION_TABLE
+.public SetPreprocessorArgsIdVal
 .public SHADOW_FORCE_DAMAGE_MULTIPLIER
 .public SLEEP_TURN_RANGE
 .public SPATK_STAT_IDX

@@ -12,6 +12,8 @@ struct ai_possible_move
     s32 weight;
 };
 
+// Sets all values in AI_CAN_ATTACK_IN_DIRECTION to false.
+void ResetAiCanAttackInDirection();
 // The AI uses this function to check if a move has any potential targets, to calculate the list of potential targets and to calculate the move's special weight. The weight is calculated using WeightMoveWithIqSkills.
 // This function also sets the flag can_be_used on the ai_possible_move struct if it makes sense to use it.
 // The weight returned by this function is not the same as GetMoveAiWeight. If the AI does not have Weak-Type Picker, AiConsiderMove is called after the AI has selected which move it will use (using GetMoveAiWeight). It determines whether it makes sense for the AI to actually use the chosen move (i.e., whether targets are in range), and which direction the AI will use the move in if so. The return value of this function is not used anywhere in this case.

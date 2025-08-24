@@ -54,7 +54,7 @@ _0231B240:
 	blt _0231B1EC
 	mov r0, #2
 	mov r1, #0x69
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r0, _0231B310 ; =ov10_022C4530
 	mov r8, #0
 	ldrsh r7, [r0]

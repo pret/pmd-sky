@@ -10,6 +10,7 @@
 #include "dungeon_util_static.h"
 #include "dungeon_util.h"
 #include "dungeon_visibility.h"
+#include "main_0205283C.h"
 #include "overlay_29_022FB538.h"
 #include "status_checks.h"
 #include "targeting.h"
@@ -25,7 +26,6 @@
 extern void EndFrozenClassStatus(struct entity *user, struct entity *target, bool8 log);
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
-extern bool8 GetCanMoveFlag(s16 monster_id);
 extern void AiMovement(struct entity *monster, bool8 show_run_away_effect);
 
 void RunMonsterAi(struct entity *monster, u32 unused)

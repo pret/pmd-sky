@@ -2953,8 +2953,8 @@ _02081FF0:
 _02082008: .word 0x00996A00
 	arm_func_end sub_02081F60
 
-	arm_func_start sub_0208200C
-sub_0208200C: ; 0x0208200C
+	arm_func_start PM_ForceToPowerOff
+PM_ForceToPowerOff: ; 0x0208200C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02082030 ; =_02081A7C
 	add r1, sp, #0
@@ -2966,7 +2966,7 @@ sub_0208200C: ; 0x0208200C
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02082030: .word sub_02081A7C
-	arm_func_end sub_0208200C
+	arm_func_end PM_ForceToPowerOff
 
 	arm_func_start sub_02082034
 sub_02082034: ; 0x02082034
@@ -3170,7 +3170,7 @@ _020822C4:
 	ldrh r0, [r1]
 	strh r8, [r1]
 	beq _020822F8
-	bl sub_0208200C
+	bl PM_ForceToPowerOff
 _020822F8:
 	ldr r0, _0208230C ; =_022BB6AC
 	ldr r0, [r0, #0x18]
@@ -5952,14 +5952,14 @@ sub_020845F8: ; 0x020845F8
 	and r0, r0, #0x8000
 	movs r0, r0, asr #0xf
 	beq _02084660
-	bl sub_0208200C
+	bl PM_ForceToPowerOff
 	cmp r0, #4
 	bne _02084658
 	ldr r4, _02084680 ; =0x000A3A47
 _02084644:
 	mov r0, r4
 	bl sub_0207B854
-	bl sub_0208200C
+	bl PM_ForceToPowerOff
 	cmp r0, #4
 	beq _02084644
 _02084658:

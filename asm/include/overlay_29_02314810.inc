@@ -12,10 +12,6 @@
 .public IsProtectedFromNegativeStatus
 .public ItemIsActive__0231513C
 .public LogMessageByIdWithPopupCheckUserTarget
-.public SPEED_BOOST_TURN_RANGE
-.public SafeguardIsActive
-.public SubstitutePlaceholderStringTags
-.public UpdateStatusIconFlags
 .public ov10_022C4618
 .public ov10_022C488C
 .public ov10_022C4890
@@ -24,6 +20,10 @@
 .public ov29_022E451C
 .public ov29_022E543C
 .public ov29_022E60E4
-.public ov29_02344B44
-.public ov29_0234B084
 .public ov29_02353318
+.public PrepareItemForPrinting__02345728
+.public SafeguardIsActive
+.public SetPreprocessorArgsIdVal
+.public SPEED_BOOST_TURN_RANGE
+.public SubstitutePlaceholderStringTags
+.public UpdateStatusIconFlags

@@ -26,7 +26,7 @@ ov29_0231A9F8: ; 0x0231A9F8
 	tst r0, #0xff
 	beq _0231AA60
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r1, _0231AC90 ; =0x00000DF8
 	mov r0, r7
 	bl LogMessageByIdWithPopupCheckUser

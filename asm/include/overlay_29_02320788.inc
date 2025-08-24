@@ -35,7 +35,6 @@
 .public ov29_022FF958
 .public ov29_02304A48
 .public ov29_02305814
-.public TryEndPetrifiedOrSleepStatus
 .public ov29_02322374
 .public ov29_023247B4
 .public ov29_02336694
@@ -46,6 +45,7 @@
 .public ShouldDisplayEntityWrapper
 .public sub_01FFB62C
 .public SubstitutePlaceholderStringTags
+.public TryEndPetrifiedOrSleepStatus
 .public TryInflictPetrifiedStatus
 .public TwoTurnMoveForcedMiss
 .public UpdateCamera

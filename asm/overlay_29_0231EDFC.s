@@ -345,7 +345,7 @@ _0231F294:
 	cmp r0, #0
 	beq _0231F308
 	mov r0, r7
-	bl sin_4096
+	bl SinAbs4096
 	mov r0, r0, lsl #5
 	str r0, [r4, #0x1c]
 	mov r0, #0x3b

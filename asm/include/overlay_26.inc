@@ -8,6 +8,7 @@
 .public GetGameMode
 .public GetMaxItemsAllowed
 .public GetOutlawLeaderLevel
+.public GetScriptEntityMonsterId
 .public IncrementExclusiveMonsterCounts
 .public IncrementNbAdventures
 .public IncrementNbDungeonsCleared
@@ -58,4 +59,3 @@
 .public sub_0205F9D4
 .public sub_02062E5C
 .public sub_0206351C
-.public sub_02065974

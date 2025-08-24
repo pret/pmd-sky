@@ -570,7 +570,7 @@ _0232EFDC:
 	beq _0232F060
 	mov r0, #0
 	add r1, sp, #0xac
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r2, _0232F80C ; =0x00000EB5
 	mov r0, sb
 	mov r1, r4

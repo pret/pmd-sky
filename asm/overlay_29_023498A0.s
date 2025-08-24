@@ -913,7 +913,7 @@ _0234A47C:
 	ldr r1, [r1]
 	ldr r1, [r1, #0x384]
 	add r1, r1, r4
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldrsh r4, [sb, #4]
 	add r0, sp, #0x14
 	mov r2, #0
@@ -1421,7 +1421,7 @@ _0234AAC4:
 	bl GetSpecialTargetItem
 	mov r1, r0
 	mov r0, #1
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 #ifdef JAPAN
 	mov r0, #0
 	mov r1, #0xb80
@@ -1930,8 +1930,8 @@ ov29_0234B06C: ; 0x0234B06C
 _0234B080: .word ov29_023537CC
 	arm_func_end ov29_0234B06C
 
-	arm_func_start ov29_0234B084
-ov29_0234B084: ; 0x0234B084
+	arm_func_start SetPreprocessorArgsIdVal
+SetPreprocessorArgsIdVal: ; 0x0234B084
 	ldr r2, _0234B098 ; =ov29_023537CC
 	ldr r2, [r2, #4]
 	add r0, r2, r0, lsl #2
@@ -1939,7 +1939,7 @@ ov29_0234B084: ; 0x0234B084
 	bx lr
 	.align 2, 0
 _0234B098: .word ov29_023537CC
-	arm_func_end ov29_0234B084
+	arm_func_end SetPreprocessorArgsIdVal
 
 	arm_func_start ov29_0234B09C
 ov29_0234B09C: ; 0x0234B09C

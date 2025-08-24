@@ -878,7 +878,7 @@ TryInflictGastroAcidStatus: ; 0x0231827C
 	mov r1, r6
 	bl TryRemoveSnatchedMonsterFromDungeonStruct
 	mov r3, #4
-	ldr r1, _023183B0 ; =ov10_022C476C
+	ldr r1, _023183B0 ; =GASTRO_ACID_TURN_RANGE
 	mov r0, r6
 	mov r2, #1
 	strb r3, [r4, #0xd8]
@@ -917,7 +917,7 @@ _023183A0:
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
-_023183B0: .word ov10_022C476C
+_023183B0: .word GASTRO_ACID_TURN_RANGE
 _023183B4: .word DUNGEON_PTR
 #ifdef JAPAN
 _023183B8: .word 0x00000ABB

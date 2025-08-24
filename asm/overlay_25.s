@@ -187,7 +187,7 @@ _0238A3D8:
 	mov r0, #0x11
 	bl ov25_0238A694
 	ldr r0, _0238A684 ; =0x00001308
-	bl sub_02017C80
+	bl PlaySeByIdVolumeWrapper
 	b _0238A674
 _0238A3EC:
 	bl ov25_0238B380

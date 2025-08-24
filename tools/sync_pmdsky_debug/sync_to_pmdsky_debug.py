@@ -260,6 +260,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
     symbol_header_path = os.path.join(HEADER_FOLDER, symbol.file_path.replace('.o', '.h'))
     if not os.path.exists(symbol_header_path):
         symbol_header_path = os.path.join('lib', 'DSE', symbol_header_path)
+    symbol_header = None
     if symbol.is_data:
         if string_length is not None:
             symbol_header = f'extern char {base_symbol_name}[{string_length}];\n'

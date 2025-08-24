@@ -26,7 +26,7 @@
 .public ov29_0232033C
 .public ov29_02321238
 .public ShouldDisplayEntityWrapper
-.public sin_4096
+.public SinAbs4096
 .public SubstitutePlaceholderStringTags
 .public TryWarp
 .public TwoTurnMoveForcedMiss

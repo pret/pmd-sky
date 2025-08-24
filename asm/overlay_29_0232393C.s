@@ -139,7 +139,7 @@ _02323B14:
 	movne r0, #0
 	bne _02323B3C
 	mov r0, r5, asr #8
-	bl sin_4096
+	bl SinAbs4096
 	ldr r1, [sp, #0x14]
 	mul r0, r1, r0
 _02323B3C:

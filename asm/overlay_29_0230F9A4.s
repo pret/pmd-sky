@@ -658,7 +658,7 @@ _02310298:
 	bne _02310360
 	mov r0, #2
 	mov r1, #0x5a
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r0, _02310A9C ; =ov10_022C46EC
 	mov r2, #0x19
 	ldrsh r1, [r0]
@@ -683,7 +683,7 @@ _02310304:
 	bne _02310360
 	mov r0, #2
 	mov r1, #0x55
-	bl ov29_0234B084
+	bl SetPreprocessorArgsIdVal
 	ldr r0, _02310A9C ; =ov10_022C46EC
 	ldr r3, _02310AA0 ; =0x0000025F
 	ldrsh r1, [r0]

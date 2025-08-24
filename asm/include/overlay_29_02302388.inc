@@ -16,6 +16,6 @@
 .public MIRACLE_CHEST_EXP_BOOST
 .public MultiplyByFixedPoint
 .public ov29_02301A84
-.public ov29_02344B44
+.public PrepareItemForPrinting__02345728
 .public SubstitutePlaceholderStringTags
 .public WONDER_CHEST_EXP_BOOST

@@ -380,7 +380,7 @@ _0231B7D4:
 	bl ov29_022EACCC
 	mov r1, r6
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	mov r0, #0
 	mov r1, r7
 	mov r2, r0
@@ -422,7 +422,7 @@ _0231B860:
 	beq _0231B8E4
 	mov r1, r6
 	mov r0, #0
-	bl ov29_02344B44
+	bl PrepareItemForPrinting__02345728
 	ldr r2, _0231C6CC ; =0x00000BE7
 	mov r0, r8
 	mov r1, r7
