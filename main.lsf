@@ -130,6 +130,8 @@ Overlay OVY_0
 {
 	After main
 	Object asm/overlay_00.o
+	Object src/overlay_00_0230D388.o
+	Object asm/overlay_00_0230D398.o
 }
 Overlay OVY_1
 {
