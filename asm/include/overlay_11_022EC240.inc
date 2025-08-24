@@ -14,6 +14,7 @@
 .public ZInit8
 .public ov10_022C3938
 .public ov10_022C3E8C
+.public ov11_022EC08C
 .public ov11_022EE620
 .public ov11_022EE8CC
 .public ov11_022EE9B0

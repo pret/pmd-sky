@@ -45,6 +45,7 @@ struct unk_struct_2324CBC_sub98
 struct unk_struct_2324CBC
 {
     struct unk_struct_2324CBC_sub0 unk0[2][2];
+    u8 unk70[0x28];
     struct unk_struct_2324CBC_sub98 unk98[2];
 };
 
@@ -55,6 +56,9 @@ struct const_file_data
 };
 
 extern const char ov11_02320C44[];
+extern const struct rgb_array ov11_02320BF4;
+extern const struct rgb_array ov11_02320BE8;
+
 extern void FileClose(struct file_stream*);
 extern struct unk_struct_2324CBC *ov11_02324CBC;
 extern const struct const_file_data ov11_02320BE4;
@@ -66,6 +70,9 @@ extern void sub_020635C8(struct ground_bg_substruct_194 *);
 extern void ov11_022EBF60(struct ground_bg *ground_bg);
 extern void sub_0206367C(void *);
 extern void sub_020635D8(struct ground_bg_substruct_194 *);
+extern void sub_0200A590(struct unk_struct_2324CBC_sub98 *, s32 id, const struct rgb_array *src);
+extern void sub_0200A504(struct unk_struct_2324CBC_sub98 *);
+extern void ov11_022EE620(struct ground_bg *ground_bg, s32 a1);
 
 void LoadBackgroundAttributes(struct bg_list_entry *entry, s32 bg_id)
 {
@@ -247,4 +254,74 @@ void CloseOpenedFiles(struct ground_bg *ground_bg)
     TRY_CLOSE_FILE(ground_bg->unk17C);
     TRY_CLOSE_FILE(ground_bg->bpc_file);
     TRY_CLOSE_FILE(ground_bg->bma_file);
+}
+
+void ov11_022EC08C(struct ground_bg *ground_bg)
+{
+    u8 unkId;
+    u16 palId;
+    s32 i, j;
+    struct ground_bg_substruct_2 *unk0Ptr;
+    s32 unk0Id, unk3E0Id;
+    struct unk_struct_2324CBC_sub98 *unkSubPtr;
+
+    CloseOpenedFiles(ground_bg);
+    ground_bg->unk0 = 0;
+    ground_bg->unk1C0 = 0;
+    ground_bg->unk1BE = -1;
+    ground_bg->unk2B8 = 0;
+    ground_bg->unk1E0 = 0;
+    ground_bg->unk1E1 = 0;
+    ground_bg->unk1E2 = 0;
+    ground_bg->unk1E3 = 0;
+    ground_bg->unk1EE = 0;
+    ground_bg->unk1F4 = 0;
+    ground_bg->unk1F8 = 0;
+    ground_bg->unk1F9 = 0;
+    ground_bg->unk1FA = 0;
+    ground_bg->unk1FB = 0;
+    ground_bg->unk1BC = 0;
+
+    unk0Ptr = &ground_bg->unk2[0];
+    for (unk0Id = 0; unk0Id < UNK_2_ARR_COUNT; unk0Id++, unk0Ptr++) {
+        unk0Ptr->unk0 = 0;
+        unk0Ptr->unk2 = 0;
+        unk0Ptr->unk4 = unk0Ptr->unk8 = 0;
+    }
+
+    for (unk3E0Id = 0; unk3E0Id < UNK_C4_ARR_COUNT; unk3E0Id++) {
+        struct ground_bg_substruct_c4 *unkPtr = &ground_bg->unkC4[unk3E0Id];
+        unkPtr->unk0 = 0;
+        unkPtr->unk1 = 0;
+        unkPtr->unk2 = 0;
+        unkPtr->unk4 = 0;
+        ZInit8(&unkPtr->bpa_file);
+        unkPtr->unk10 = 0;
+        unkPtr->unk18 = 0;
+        unkPtr->unk14 = 0;
+        unkPtr->unk20 = 0;
+        unkPtr->unk1C = 0;
+        unkPtr->unk28 = unkPtr->unk24 = 0;
+    }
+
+    unkId = ground_bg->unk52C.unk0;
+    unkSubPtr = &ov11_02324CBC->unk98[unkId];
+    palId = ground_bg->unk52C.unk6 * 16;
+    for (i = 0; i < ground_bg->unk52C.unk8; i++) {
+        sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
+        for (j = 1; j < 16; j++) {
+            sub_0200A590(unkSubPtr, palId++, &ov11_02320BE8);
+        }
+    }
+    sub_0200A504(unkSubPtr);
+
+    if (ground_bg->unk52C.num_layers > 0) {
+        ov11_022EE620(ground_bg, 1);
+    }
+    else {
+        ov11_022EE620(ground_bg, 0);
+    }
+
+    ground_bg->map_render[0].tilemap_render_func(&ground_bg->map_render[0]);
+    ground_bg->unk2BA = 1;
 }

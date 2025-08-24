@@ -92,6 +92,18 @@ struct ground_bg_substruct_1a0
     u8 unk17;
 };
 
+struct map_render
+{
+    s16 chunk_dimensions;
+    s16 unk2;
+    s16 num_bgs;
+    bool8 wrap_around;
+    s32 width_chunks;
+    s32 height_chunks;
+    struct pixel_position map_size_pixels;
+    void (*tilemap_render_func)(struct map_render *);
+};
+
 struct bma_header
 {
     u8 map_width_tiles;
@@ -199,7 +211,9 @@ struct ground_bg
     u8 unk1FE;
     u8 unk1FF;
     struct pixel_position camera_pixel_position[NUM_LAYERS]; // 0x200
-    u8 unk210[170];
+    struct map_render map_render[NUM_LAYERS]; // 0x210
+    u8 unk248[112];
+    s16 unk2B8;
     u8 unk2BA;
     struct ground_bg_substruct_52c unk52C; // 2bc
     u16 *unk2D8;
