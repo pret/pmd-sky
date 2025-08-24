@@ -12,6 +12,7 @@
 .public ZInit8
 .public ov10_022C3938
 .public ov10_022C3E8C
+.public GroundBgInit
 .public ov11_022EE620
 .public ov11_022EE8CC
 .public ov11_022EE9B0
@@ -31,7 +32,6 @@
 .public sub_0200A504
 .public sub_0200A590
 .public sub_0200A5B0
-.public sub_0200B500
 .public sub_02015328
 .public sub_02016300
 .public sub_02016378

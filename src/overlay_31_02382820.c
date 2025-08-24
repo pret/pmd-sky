@@ -19,7 +19,7 @@ extern struct struct_1 OVERLAY31_UNKNOWN_STRUCT__NA_2389E30;
 extern u16 ov31_02389E22[];
 
 
-extern void* MemAlloc(u32 size, u32 nmemb);
+extern void* MemAlloc(u32 len, u32 flags);
 
 extern struct entity* GetLeader(void);
 extern u32 GetMoneyCarried(void);

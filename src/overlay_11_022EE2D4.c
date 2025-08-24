@@ -1,6 +1,6 @@
 #include "overlay_11_022EE2D4.h"
 
-const u8* BmaLayerNrlDecompressor(u16 **dst_array, const void *bma_data, struct substruct_52c *a2, struct bma_header *bma_header)
+const u8* BmaLayerNrlDecompressor(u16 **dst_array, const void *bma_data, struct ground_bg_substruct_52c *a2, struct bma_header *bma_header)
 {
     s32 i, k, j, l;
     const u8 *src = bma_data;
@@ -72,7 +72,7 @@ const u8* BmaLayerNrlDecompressor(u16 **dst_array, const void *bma_data, struct 
                 *dst++ = 0;
             }
         }
-        for (; j < a2->unk10; j++) {
+        for (; j < a2->unk14; j++) {
             for (k = 0; k < 64; k++) {
                 *dst++ = 0;
             }

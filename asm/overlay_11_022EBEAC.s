@@ -1,193 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_11_022EBC18.inc"
+	.include "overlay_11_022EBEAC.inc"
 
 	.text
-
-	arm_func_start ov11_022EBC18
-ov11_022EBC18: ; 0x022EBC18
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
-	sub sp, sp, #8
-	mov sl, r0
-	mov r5, r1
-	add r4, sl, #0x2bc
-	ldmia r5!, {r0, r1, r2, r3}
-	stmia r4!, {r0, r1, r2, r3}
-	ldmia r5, {r0, r1, r2}
-	stmia r4, {r0, r1, r2}
-	ldrb r0, [sl, #0x2bc]
-	add r4, sl, #0x200
-	mov r6, #0
-	cmp r0, #0
-	moveq sb, #6
-	movne sb, #0xf
-	ldrsh r7, [r4, #0xbe]
-	mov r5, r6
-	mov r8, #0x12
-	b _022EBC9C
-_022EBC64:
-	add r0, sl, r6, lsl #1
-	add r0, r0, #0x200
-	ldrsh r1, [r0, #0xca]
-	cmp r1, #0
-	addle r0, sl, r6, lsl #2
-	strle r5, [r0, #0x2dc]
-	ble _022EBC94
-	mul r0, r1, r8
-	mov r1, sb
-	bl MemAlloc
-	add r1, sl, r6, lsl #2
-	str r0, [r1, #0x2dc]
-_022EBC94:
-	add r6, r6, #1
-	add r7, r7, #1
-_022EBC9C:
-	ldrsh r0, [r4, #0xc0]
-	cmp r6, r0
-	blt _022EBC64
-	mov r1, #0
-	b _022EBCC0
-_022EBCB0:
-	add r0, sl, r6, lsl #2
-	str r1, [r0, #0x2dc]
-	add r6, r6, #1
-	add r7, r7, #1
-_022EBCC0:
-	cmp r6, #2
-	blt _022EBCB0
-	add r4, sl, #0x200
-	mov r7, #0
-	ldrsh r8, [r4, #0xbe]
-	mov r6, r7
-	ldr r5, _022EBEA4 ; =ov11_02324CBC
-	mov fp, #0x1c
-	b _022EBD54
-_022EBCE4:
-	ldrb r0, [sl, #0x2bc]
-	cmp r0, #0
-	ldr r0, [r5]
-	bne _022EBD00
-	mla r0, r8, fp, r0
-	bl sub_0200B500
-	b _022EBD10
-_022EBD00:
-	add r1, r0, #0x38
-	mov r0, #0x1c
-	mla r0, r8, r0, r1
-	bl sub_0200B500
-_022EBD10:
-	add r1, sl, r7, lsl #2
-	str r0, [r1, #0x2ec]
-	add r0, sl, r7, lsl #1
-	add r0, r0, #0x200
-	ldrsh r0, [r0, #0xca]
-	cmp r0, #0
-	addle r0, sl, r7, lsl #2
-	strle r6, [r0, #0x2e4]
-	ble _022EBD4C
-	ldrsh r0, [r4, #0xd0]
-	mov r1, sb
-	mov r0, r0, lsl #7
-	bl MemAlloc
-	add r1, sl, r7, lsl #2
-	str r0, [r1, #0x2e4]
-_022EBD4C:
-	add r7, r7, #1
-	add r8, r8, #1
-_022EBD54:
-	ldrsh r0, [r4, #0xc0]
-	cmp r7, r0
-	blt _022EBCE4
-	mov r1, #0
-	b _022EBD78
-_022EBD68:
-	add r0, sl, r7, lsl #2
-	str r1, [r0, #0x2ec]
-	str r1, [r0, #0x2e4]
-	add r7, r7, #1
-_022EBD78:
-	cmp r7, #2
-	blt _022EBD68
-	ldr r0, [sl, #0x2d4]
-	cmp r0, #0
-	moveq r0, #0
-	beq _022EBDA4
-	add r0, sl, #0x200
-	ldrsh r0, [r0, #0xce]
-	mov r1, sb
-	mov r0, r0, lsl #8
-	bl MemAlloc
-_022EBDA4:
-	str r0, [sl, #0x2d8]
-	mov r0, sl
-	bl ov11_022EBF60
-	mov r2, #0
-	strh r2, [sl]
-	strb r2, [sl, #0x1c0]
-	strb r2, [sl, #0x2ba]
-	sub r1, r2, #1
-	add r0, sl, #0x100
-	strh r1, [r0, #0xbe]
-	str r2, [sl, #0x1f0]
-	strb r2, [sl, #0x1e0]
-	strb r2, [sl, #0x1e1]
-	strb r2, [sl, #0x1e2]
-	strb r2, [sl, #0x1e3]
-	strb r2, [sl, #0x1ee]
-	str r2, [sl, #0x1f4]
-	strb r2, [sl, #0x1f8]
-	strb r2, [sl, #0x1f9]
-	strb r2, [sl, #0x1fa]
-	strb r2, [sl, #0x1fb]
-	strb r2, [sl, #0x1bc]
-	add r0, sl, #4
-	mov r3, r2
-_022EBE04:
-	strh r3, [r0]
-	strh r3, [r0, #2]
-	add r2, r2, #1
-	str r3, [r0, #8]
-	str r3, [r0, #4]
-	cmp r2, #0x10
-	add r0, r0, #0xc
-	blt _022EBE04
-	add r2, sl, #0xc4
-	mov r4, #0
-	mov r0, #0x2c
-_022EBE30:
-	mul r1, r3, r0
-	strb r4, [r2, r1]
-	add r1, r2, r1
-	strb r4, [r1, #1]
-	strh r4, [r1, #2]
-	strh r4, [r1, #4]
-	str r4, [r1, #0x10]
-	str r4, [r1, #0x18]
-	str r4, [r1, #0x14]
-	str r4, [r1, #0x20]
-	str r4, [r1, #0x1c]
-	add r3, r3, #1
-	str r4, [r1, #0x24]
-	str r4, [r1, #0x28]
-	cmp r3, #4
-	blt _022EBE30
-	ldr r0, _022EBEA8 ; =ov11_02320BE4
-	ldr r2, [r0, #0x14]
-	ldr r1, [r0, #0x18]
-	str r2, [sp]
-	str r1, [sp, #4]
-_022EBE84:
-	add r0, sl, r4, lsl #3
-	str r2, [r0, #0x200]
-	add r4, r4, #1
-	str r1, [r0, #0x204]
-	cmp r4, #2
-	blt _022EBE84
-	add sp, sp, #8
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	.align 2, 0
-_022EBEA4: .word ov11_02324CBC
-_022EBEA8: .word ov11_02320BE4
-	arm_func_end ov11_022EBC18
 
 	arm_func_start ov11_022EBEAC
 ov11_022EBEAC: ; 0x022EBEAC
@@ -2615,7 +2429,7 @@ ov11_022EE0C8: ; 0x022EE0C8
 	sub sp, sp, #0xc
 	ldr r1, _022EE12C ; =ov11_02320C28
 	mov r4, r0
-	bl ov11_022EBC18
+	bl GroundBgInit
 	mov r0, r4
 	bl ov11_022EC08C
 	mov r2, #5
@@ -2691,7 +2505,7 @@ ov11_022EE198: ; 0x022EE198
 	mov r4, r1
 	ldr r1, _022EE204 ; =ov11_02320C28
 	mov r5, r0
-	bl ov11_022EBC18
+	bl GroundBgInit
 	mov r0, r5
 	bl ov11_022EC08C
 	mov r2, #6
@@ -2760,7 +2574,7 @@ ov11_022EE268: ; 0x022EE268
 	sub sp, sp, #0xc
 	ldr r1, _022EE2C4 ; =ov11_02320C28
 	mov r4, r0
-	bl ov11_022EBC18
+	bl GroundBgInit
 	mov r0, r4
 	bl ov11_022EC08C
 	mov r2, #5
