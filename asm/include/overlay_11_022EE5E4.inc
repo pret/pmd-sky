@@ -317,7 +317,7 @@
 .public ov11_022EB3C8
 .public ov11_022EBAA0
 .public GroundBgInit
-.public ov11_022EBEAC
+.public GroundBgFreeAll
 .public ov11_022EC240
 .public ov11_022EC27C
 .public ov11_022ED69C

@@ -3818,7 +3818,7 @@ _022F1268:
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _022F12BC ; =GROUND_STATE_MAP
 	ldr r0, [r0]
 	bl MemFree
@@ -5156,7 +5156,7 @@ _022F2344:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _022F239C
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _022F2598 ; =ov11_02324CC8
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -38621,7 +38621,7 @@ ov11_0230DC3C: ; 0x0230DC3C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0230DCA0
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _0230DCB4 ; =ov11_02324DC8
 	ldr r0, [r0]
 	bl MemFree
@@ -38981,7 +38981,7 @@ ov11_0230E0D8: ; 0x0230E0D8
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0230E13C
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _0230E150 ; =ov11_02324DD4
 	ldr r0, [r0]
 	bl MemFree
@@ -39346,7 +39346,7 @@ ov11_0230E578: ; 0x0230E578
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0230E5DC
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _0230E5F0 ; =ov11_02324DDC
 	ldr r0, [r0]
 	bl MemFree
@@ -39885,7 +39885,7 @@ _0230EC68:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _0230ED20 ; =WORLD_MAP_MODE
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -41852,7 +41852,7 @@ ov11_023107BC: ; 0x023107BC
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _02310820
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _02310834 ; =ov11_02324DF0
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -42268,7 +42268,7 @@ ov11_02310CD4: ; 0x02310CD4
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _02310D40 ; =ov11_02324DF8
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -42821,7 +42821,7 @@ ov11_023113E8: ; 0x023113E8
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _02311458 ; =ov11_02324E00
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -43221,7 +43221,7 @@ ov11_023118E8: ; 0x023118E8
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _02311958 ; =ov11_02324E08
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -43669,7 +43669,7 @@ ov11_02311EA4: ; 0x02311EA4
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02311F08
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _02311F1C ; =ov11_02324E10
 	ldr r0, [r0]
 	bl MemFree
@@ -44129,7 +44129,7 @@ ov11_02312398: ; 0x02312398
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _02312414 ; =ov11_02324E18
 	ldr r0, [r0]
 	bl MemFree
@@ -44530,7 +44530,7 @@ ov11_023128C0: ; 0x023128C0
 	ldr r0, [r1]
 	cmp r0, #0
 	beq _0231291C
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _02312974 ; =ov11_02324E20
 	ldr r0, [r0]
 	bl MemFree
@@ -48902,7 +48902,7 @@ ov11_02316528: ; 0x02316528
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0231658C
-	bl ov11_022EBEAC
+	bl GroundBgFreeAll
 	ldr r0, _023165A0 ; =ov11_02324E78
 	ldr r0, [r0, #4]
 	bl MemFree

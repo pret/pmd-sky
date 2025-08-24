@@ -1,8 +1,17 @@
 #include "overlay_11_022EBB40.h"
 #include "file_rom.h"
 
-#define FILE_BG_LIST_ENTRY_SIZE (BG_NAME_LEN * (BPA_MAX_ENTRIES + 3))
 #define RGB_FIELDS_COUNT 4
+
+#define FILE_BG_LIST_ENTRY_SIZE (BG_NAME_LEN * (BPA_MAX_ENTRIES + 3))
+
+extern void MemFree(void*);
+#define FREE_AND_SET_NULL(ptr)          \
+{                                       \
+    MemFree(ptr);                    \
+    ptr = NULL;                         \
+}
+#define TRY_FREE_AND_SET_NULL(ptr) if (ptr != NULL) FREE_AND_SET_NULL(ptr)
 
 struct rgb_array
 {
@@ -42,6 +51,7 @@ extern const struct const_file_data ov11_02320BE4;
 extern void* MemAlloc(u32 len, u32 flags);
 void* sub_0200B500(struct unk_struct_2324CBC_sub0 *unk);
 void ov11_022EBF60(struct ground_bg *ground_bg);
+void CloseOpenedFiles(struct ground_bg *ground_bg);
 
 void LoadBackgroundAttributes(struct bg_list_entry *entry, s32 bg_id)
 {
@@ -156,5 +166,31 @@ void GroundBgInit(struct ground_bg *ground_bg, const struct ground_bg_substruct_
 
     for (i = 0; i < 2; i++) {
         ground_bg->camera_pixel_position[i] = ov11_02320BE4.s_position_zero;
+    }
+}
+
+void GroundBgFreeAll(struct ground_bg *ground_bg)
+{
+    s32 i;
+
+    CloseOpenedFiles(ground_bg);
+    TRY_FREE_AND_SET_NULL(ground_bg->unk2D8);
+
+    for (i = 0; i < NUM_LAYERS; i++) {
+        if (ground_bg->unk2DC[i] != NULL) {
+            if (ground_bg->unk52C.unkE[i] > 0) {
+                MemFree(ground_bg->unk2DC[i]);
+            }
+            ground_bg->unk2DC[i] = NULL;
+        }
+        if (ground_bg->unk2EC[i] != NULL) {
+            ground_bg->unk2EC[i] = NULL;
+        }
+        if (ground_bg->unk2E4[i] != NULL) {
+            if (ground_bg->unk52C.unkE[i] > 0) {
+                MemFree(ground_bg->unk2E4[i]);
+            }
+            ground_bg->unk2E4[i] = NULL;
+        }
     }
 }

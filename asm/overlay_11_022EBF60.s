@@ -1,62 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_11_022EBEAC.inc"
+	.include "overlay_11_022EBF60.inc"
 
 	.text
-
-	arm_func_start ov11_022EBEAC
-ov11_022EBEAC: ; 0x022EBEAC
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	mov r8, r0
-	bl ov11_022EBFC8
-	ldr r0, [r8, #0x2d8]
-	cmp r0, #0
-	beq _022EBED0
-	bl MemFree
-	mov r0, #0
-	str r0, [r8, #0x2d8]
-_022EBED0:
-	mov r7, #0
-	mov r6, r7
-	mov r5, r7
-	mov r4, r7
-_022EBEE0:
-	add r0, r8, r7, lsl #2
-	ldr r0, [r0, #0x2dc]
-	cmp r0, #0
-	beq _022EBF10
-	add r1, r8, r7, lsl #1
-	add r1, r1, #0x200
-	ldrsh r1, [r1, #0xca]
-	cmp r1, #0
-	ble _022EBF08
-	bl MemFree
-_022EBF08:
-	add r0, r8, r7, lsl #2
-	str r6, [r0, #0x2dc]
-_022EBF10:
-	add r1, r8, r7, lsl #2
-	ldr r0, [r1, #0x2ec]
-	cmp r0, #0
-	strne r5, [r1, #0x2ec]
-	add r0, r8, r7, lsl #2
-	ldr r0, [r0, #0x2e4]
-	cmp r0, #0
-	beq _022EBF50
-	add r1, r8, r7, lsl #1
-	add r1, r1, #0x200
-	ldrsh r1, [r1, #0xca]
-	cmp r1, #0
-	ble _022EBF48
-	bl MemFree
-_022EBF48:
-	add r0, r8, r7, lsl #2
-	str r4, [r0, #0x2e4]
-_022EBF50:
-	add r7, r7, #1
-	cmp r7, #2
-	blt _022EBEE0
-	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov11_022EBEAC
 
 	arm_func_start ov11_022EBF60
 ov11_022EBF60: ; 0x022EBF60
@@ -89,8 +34,8 @@ _022EBF74:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov11_022EBF60
 
-	arm_func_start ov11_022EBFC8
-ov11_022EBFC8: ; 0x022EBFC8
+	arm_func_start CloseOpenedFiles
+CloseOpenedFiles: ; 0x022EBFC8
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	ldrsh r1, [r8]
@@ -146,13 +91,13 @@ _022EC070:
 	add r0, r8, #0x18c
 	bl UnloadFile
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov11_022EBFC8
+	arm_func_end CloseOpenedFiles
 
 	arm_func_start ov11_022EC08C
 ov11_022EC08C: ; 0x022EC08C
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
-	bl ov11_022EBFC8
+	bl CloseOpenedFiles
 	mov r2, #0
 	strh r2, [sl]
 	strb r2, [sl, #0x1c0]
@@ -308,7 +253,7 @@ ov11_022EC27C: ; 0x022EC27C
 	bl ov11_022EC08C
 	b _022ECCF4
 _022EC2BC:
-	bl ov11_022EBFC8
+	bl CloseOpenedFiles
 	mov r0, #1
 	strh r0, [sl]
 	mov r0, #0
@@ -1065,7 +1010,7 @@ LoadMapType10: ; 0x022ECD24
 _022ECD5C:
 	bl ov11_022EC27C
 	mov r0, sl
-	bl ov11_022EBFC8
+	bl CloseOpenedFiles
 	mov r0, #2
 	strh r0, [sl]
 	mov r0, #0
@@ -1415,7 +1360,7 @@ LoadMapType11: ; 0x022ED244
 	bl ov11_022EC08C
 	b _022ED680
 _022ED27C:
-	bl ov11_022EBFC8
+	bl CloseOpenedFiles
 	mov r1, #2
 	strh r1, [sl]
 	mov r2, #0
@@ -1714,7 +1659,7 @@ ov11_022ED69C: ; 0x022ED69C
 	mov r0, #0
 	b _022EDCFC
 _022ED6CC:
-	bl ov11_022EBFC8
+	bl CloseOpenedFiles
 	ldr r0, [sb, #0x174]
 	add r1, sl, #0x100
 	str r0, [sp, #8]
