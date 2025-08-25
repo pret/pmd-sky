@@ -10,13 +10,6 @@
 
 #define VRAM      0x6000000
 
-#define SWAP(a, b, temp)    \
-{                           \
-    temp = a;               \
-    a = b;                  \
-    b = temp;               \
-}
-
 typedef struct RGB_Array
 {
     u8 c[RGB_FIELDS_COUNT];
@@ -67,6 +60,11 @@ extern void sub_0200A5B0(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Arr
 #define TRY_CLOSE_FILE(f) if (!PointsToZero(&f)) {UnloadFile(&f);}
 
 extern const char ov11_02320C44[];
+extern const char ov11_02320C58[];
+extern const char ov11_02320C94[];
+extern const char ov11_02320C6C[];
+extern const char ov11_02320C80[];
+extern void *ov11_02320C18[][2]; // Vram ptrs
 
 // Todo: make these static
 const RGB_Array ov11_02320BF4 = {0, 0, 0, 0};
@@ -350,12 +348,6 @@ void ov11_022EC240(GroundBg *groundBg, s32 bgId)
         LoadBackgroundAttributes(&entry, groundBg->unk1BE); // This loads bg attributes and doesn't do anything with them.
     }
 }
-
-extern const char ov11_02320C58[];
-extern const char ov11_02320C94[];
-extern const char ov11_02320C6C[];
-extern const char ov11_02320C80[];
-extern void *ov11_02320C18[][2]; // Vram ptrs
 
 #ifdef NONMATCHING
 // Regswaps - https://decomp.me/scratch/0bm90
