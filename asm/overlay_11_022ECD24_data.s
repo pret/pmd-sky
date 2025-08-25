@@ -1,5 +1,6 @@
 	.include "asm/macros.inc"
 	.include "overlay_11_022ECD24.inc"
+	.include "overlay_11.inc"
 
 .public ov11_022F1800
 .public GetIdLiveActor
@@ -235,6 +236,69 @@
 .public ov11_02316168
 .public ov11_02316168
 .public ov11_023163E0
+.public ov14_0238B708
+.public SentryRunState
+.public ov15_0238AE88
+.public ov15_0238AE98
+.public ov15_0238AF54
+.public ov16_0238C148
+.public ov16_0238C1CC
+.public ov16_0238C1F8
+.public ov17_0238A140
+.public ov17_0238A71C
+.public ov17_0238A754
+.public ov18_0238A140
+.public ov18_0238AFD4
+.public ov18_0238B01C
+.public ov19_0238D5FC
+.public ov19_0238D68C
+.public ov19_0238D698
+.public ov19_0238D56C
+.public ov19_0238D68C
+.public ov19_0238D698
+.public ov20_0238A150
+.public ov20_0238A160
+.public ov20_0238A1B0
+.public ov20_0238A140
+.public ov20_0238A160
+.public ov20_0238A1B0
+.public ov21_0238B848
+.public ov21_0238B8FC
+.public ov21_0238B928
+.public ov22_0238D640
+.public ov22_0238D7B0
+.public ov22_0238D800
+.public ov23_0238C328
+.public ov23_0238C448
+.public ov23_0238C474
+.public ov24_0238C1D4
+.public ov24_0238C340
+.public ov24_0238C36C
+.public ov25_0238B134
+.public ov25_0238B1CC
+.public ov25_0238B1F8
+.public ov26_0238A140
+.public ov26_0238A568
+.public ov26_0238A5A0
+.public ov26_0238A970
+.public ov26_0238A99C
+.public ov26_0238A9C8
+.public ov26_0238AA68
+.public ov26_0238AA94
+.public ov26_0238AAC0
+.public ov26_0238AC14
+.public ov26_0238AC40
+.public ov26_0238AC6C
+.public ov26_0238ACD8
+.public ov26_0238AD10
+.public ov26_0238AD3C
+.public ov27_0238A140
+.public ov27_0238A388
+.public ov27_0238A3A4
+.public ov27_0238BA7C
+.public ov27_0238BB54
+.public ov27_0238BB80
+
 
 	.rodata
     

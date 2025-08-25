@@ -84,7 +84,7 @@ typedef struct SubStruct_52C
 {
     u8 unk0; // 0x52C
     s16 unk2; // 0x52E
-    s16 unk4; // 0x530
+    s16 numLayers; // 0x530
     s16 unk6; // 0x532
     s16 unk8; // 0x534
     s16 unkA; // 0x536
@@ -253,5 +253,6 @@ void ov11_022EC240(GroundBg *groundBg, s32 bgId);
 void ov11_022EC27C(GroundBg *groundBg, s32 bgId);
 void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc, s32 a3);
 void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc, s32 a3);
+const u8 *BmaLayerNrlDecompressor(u16 **dstArray, const void *bmaData, SubStruct_52C *a2, BmaHeader *bmaHeader);
 
 #endif //PMDSKY_GROUND_BG_H

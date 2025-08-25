@@ -112,7 +112,6 @@ void sub_0206367C(struct UnkGroundBg_1A0 *);
 void sub_020635C8(struct UnkGroundBg_194 *);
 void sub_020635D8(struct UnkGroundBg_194 *);
 void ov11_022EE620(GroundBg *groundBg, s32 a1);
-const u8 *BmaLayerNrlDecompressor(u16 **dstArray, const void *bmaData, SubStruct_52C *a2, BmaHeader *bmaHeader);
 
 // GroundBg_Init?
 void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1)
@@ -126,7 +125,7 @@ void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1)
     groundBg->unk52C = *a1;
     memGroup = (groundBg->unk52C.unk0 == 0) ? 6 : 15;
     id2 = groundBg->unk52C.unk2;
-    for (id = 0; id < groundBg->unk52C.unk4; id++, id2++) {
+    for (id = 0; id < groundBg->unk52C.numLayers; id++, id2++) {
         if (groundBg->unk52C.unkE[id] > 0) {
             groundBg->unk2DC[id] = MemAlloc(groundBg->unk52C.unkE[id] * 18u, memGroup);
         }
@@ -139,7 +138,7 @@ void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1)
     }
 
     id = groundBg->unk52C.unk2;
-    for (id2 = 0; id2 < groundBg->unk52C.unk4; id2++, id++) {
+    for (id2 = 0; id2 < groundBg->unk52C.numLayers; id2++, id++) {
 
         if (groundBg->unk52C.unk0 == 0) {
             groundBg->unk2EC[id2] = sub_0200B500(&ov11_02324CBC->unk0[0][id]);
@@ -330,7 +329,7 @@ void ov11_022EC08C(GroundBg *groundBg)
     }
     sub_0200A504(unkSubPtr);
 
-    if (groundBg->unk52C.unk4 > 0) {
+    if (groundBg->unk52C.numLayers > 0) {
         ov11_022EE620(groundBg, 1);
     }
     else {

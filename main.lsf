@@ -201,6 +201,8 @@ Overlay OVY_11
 	Object src/ground_bg.o
     Object asm/overlay_11_022ECD24_data.o
 	Object asm/overlay_11_022ECD24.o
+	Object src/ground_bg_1.o
+	Object asm/overlay_11_022EE5E4.o
 }
 Overlay OVY_12
 {
