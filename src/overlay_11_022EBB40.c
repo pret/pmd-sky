@@ -65,8 +65,14 @@ extern void sub_0200A5B0(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Arr
 #define TRY_CLOSE_FILE(f) if (!PointsToZero(&f)) {UnloadFile(&f);}
 
 extern const char ov11_02320C44[];
-extern const RGB_Array ov11_02320BF4;
-extern const RGB_Array ov11_02320BE8;
+
+// Todo: make these static
+const RGB_Array ov11_02320BF4 = {0, 0, 0, 0};
+const RGB_Array ov11_02320BF0 = {0, 0, 0, 0};
+const PixelPos sPositionZero = {0};
+const RGB_Array ov11_02320BE8 = {0xFF, 0xFF, 0xFF, 0};
+const RGB_Array ov11_02320BEC = {0, 0, 0, 0};
+const RGB_Array ov11_02320BE4 = {0, 0, 0, 0};
 
 #define FILE_BG_LIST_ENTRY_SIZE (BG_NAME_LEN * (BPA_MAX_ENTRIES + 3))
 
@@ -105,14 +111,6 @@ void sub_020635C8(struct UnkGroundBg_194 *);
 void sub_020635D8(struct UnkGroundBg_194 *);
 void ov11_022EE620(GroundBg *groundBg, s32 a1);
 const u8 *ov11_022EE2D4(u16 **dstArray, const void *bmaData, SubStruct_52C *a2, BmaHeader *bmaHeader); // BmaLayerNrlDecompressor
-
-struct ConstFileData
-{
-    u8 otherData[20];
-    const PixelPos sPositionZero;
-};
-
-extern const struct ConstFileData ov11_02320BE4;
 
 // GroundBg_Init?
 void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1)
@@ -201,7 +199,7 @@ void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1)
     }
 
     for (i = 0; i < NUM_LAYERS; i++) {
-        groundBg->cameraPixelPosition[i] = ov11_02320BE4.sPositionZero;
+        groundBg->cameraPixelPosition[i] = sPositionZero;
     }
 }
 
