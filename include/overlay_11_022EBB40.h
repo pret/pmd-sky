@@ -252,5 +252,6 @@ void ov11_022EC08C(GroundBg *groundBg);
 void ov11_022EC240(GroundBg *groundBg, s32 bgId);
 void ov11_022EC27C(GroundBg *groundBg, s32 bgId);
 void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc, s32 a3);
+void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc, s32 a3);
 
 #endif //PMDSKY_OVERLAY_11_022EBB40_H
