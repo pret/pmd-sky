@@ -50,4 +50,11 @@ static inline s32 Max(s32 a, s32 b)
 
 #define ARRAY_COUNT(array) (sizeof(array) / sizeof((array)[0]))
 
+#define SWAP(a, b, temp)    \
+{                           \
+    temp = a;               \
+    a = b;                  \
+    b = temp;               \
+}
+
 #endif //PMDSKY_UTIL_H
