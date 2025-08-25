@@ -16,7 +16,13 @@ typedef struct PixelPos
     /* 0x4 */ s32 y;
 } PixelPos;
 
+typedef struct DungeonLocation
+{
+    /* 0x0 */ u8 id;
+    /* 0x1 */ u8 floor;
+} DungeonLocation;
 
+// Actual file's header starts here
 
 #define BG_NAME_LEN 8
 
@@ -128,10 +134,7 @@ struct UnkGroundBg_194
     u8 unk5;
     u8 unk6;
     u8 unk7;
-    u8 unk8;
-    u8 unk9;
-    u8 unkA;
-    u8 unkB;
+    u32 unk8;
 };
 
 typedef struct MapRender
@@ -204,10 +207,7 @@ typedef struct GroundBg
     struct iovec bmaFile; // 0x18c
     struct UnkGroundBg_194 unk194;
     struct UnkGroundBg_1A0 unk1A0;
-    u8 unk1B8;
-    u8 unk1B9;
-    u8 unk1BA;
-    u8 unk1BB;
+    void *unk1B8;
     u8 unk1BC;
     u8 unk1BD;
     s16 unk1BE;
@@ -251,5 +251,6 @@ void ov11_022EBFC8(GroundBg *groundBg);
 void ov11_022EC08C(GroundBg *groundBg);
 void ov11_022EC240(GroundBg *groundBg, s32 bgId);
 void ov11_022EC27C(GroundBg *groundBg, s32 bgId);
+void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc, s32 a3);
 
 #endif //PMDSKY_OVERLAY_11_022EBB40_H

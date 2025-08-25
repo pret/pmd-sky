@@ -8,6 +8,8 @@
 #define RGB_UNK 3
 #define RGB_FIELDS_COUNT 4
 
+#define VRAM      0x6000000
+
 #define SWAP(a, b, temp)    \
 {                           \
     temp = a;               \
@@ -1520,5 +1522,200 @@ _022ECCF4:
 }
 
 #endif
+
+// TODO: move these to headers.
+struct Unk_022C3938
+{
+    struct iovec unk0;
+    void *unk8;
+};
+
+extern void sub_02063628(struct UnkGroundBg_1A0 * a0, struct UnkStruct_2324CBC_Sub98 *a1, s32 a2);
+extern void sub_02063734(struct UnkGroundBg_1A0 * a0, s32 a1, s32 a2);
+extern void ov10_022C3938(struct Unk_022C3938 *a0,
+                          struct UnkGroundBg_194 *a1,
+                          void *a2,
+                          u16 *a3,
+                          u16 *a4,
+                          const DungeonLocation *a5,
+                          s32 a6,
+                          s32 a7,
+                          s32 a8,
+                          u16 *a9);
+
+
+struct UnkTwoPtrs
+{
+    u16 *ptrs[2];
+};
+
+void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc, s32 a3)
+{
+    BplHeader *bplHeader;
+    LayerSpecs *layerSpecs;
+    BmaHeader *bmaHeader;
+    s32 i;
+    struct bg_list_entry entry;
+    u8 textBuf[0x80];
+    const u16 *bpcData;
+    const void *bmaData;
+    const void *bplData;
+    struct Unk_022C3938 sp2C;
+    SubStruct_0 *sub0Ptr;
+
+    if (bgId == -1 || dungLoc->id == 0xff) {
+        ov11_022EC08C(groundBg);
+        return;
+    }
+
+    ov11_022EC27C(groundBg, bgId);
+    ov11_022EBFC8(groundBg);
+    groundBg->newUnk0 = 2;
+    groundBg->unk1C0 = 0;
+    groundBg->unk1BE = bgId;
+    LoadBackgroundAttributes(&entry, groundBg->unk1BE);
+
+    sprintf(textBuf, ov11_02320C58, entry.bpl.name);
+    LoadFileFromRom(&groundBg->bplFile, textBuf, 6);
+
+    sprintf(textBuf, ov11_02320C6C, entry.bpc.name);
+    LoadFileFromRom(&groundBg->bpcFile, textBuf, 0x30F);
+
+    sprintf(textBuf, ov11_02320C80, entry.bma.name);
+    LoadFileFromRom(&groundBg->bmaFile, textBuf, 6);
+
+    bpcData = groundBg->bpcFile.iov_base;
+    bplData = groundBg->bplFile.iov_base;
+    bmaData = groundBg->bmaFile.iov_base;
+
+    layerSpecs = &groundBg->layerSpecs[0];
+    bmaHeader = &groundBg->bmaHeader;
+    bplHeader = &groundBg->bplHeader;
+
+    bplHeader->numPalettes = *(u8 *)(bplData); bplData += 2;
+    bplHeader->hasPalAnimations = *(u8 *)(bplData); bplData += 2;
+
+    s32 r6;
+
+    layerSpecs->numTiles = *bpcData++;
+    for (r6 = 0; r6 < MAX_BPA_SLOTS; r6++) {
+        layerSpecs->bpaSlotNumTiles[r6] = *bpcData++;
+    }
+    layerSpecs->numChunks = *bpcData++;
+
+    bmaHeader->mapWidthTiles = *(u8 *)(bmaData); bmaData += 1;
+    bmaHeader->mapHeightTiles = *(u8 *)(bmaData); bmaData += 1;
+    /*bmaHeader->tilingWidth* = *(u8 *)(bmaData);*/ bmaData += 1;
+    /*bmaHeader->tilingHeight* = *(u8 *)(bmaData);*/ bmaData += 1;
+    bmaHeader->mapWidthChunks = *(u8 *)(bmaData); bmaData += 1;
+    bmaHeader->mapHeightChunks = *(u8 *)(bmaData); bmaData += 1;
+    bmaHeader->numLayers = *(u8 *)(bmaData); bmaData += 2;
+    bmaHeader->hasDataLayer = *(u8 *)(bmaData); bmaData += 2;
+    bmaHeader->hasCollision = *(u8 *)(bmaData); bmaData += 2;
+
+    {
+        // Needed to match.
+        static const struct UnkTwoPtrs zeros = {0};
+        struct UnkTwoPtrs unkPtrArray = zeros;
+
+        unkPtrArray.ptrs[0] = groundBg->unk2D8;
+        bmaData = ov11_022EE2D4((void *) &unkPtrArray, bmaData, &groundBg->unk52C, &groundBg->bmaHeader);
+    }
+
+    groundBg->unk1F0 = bmaData;
+    ov10_022C3938(&sp2C,
+                &groundBg->unk194,
+                (void *)(VRAM + 0x18000),
+                groundBg->unk2DC[0],
+                groundBg->unk2E4[0],
+                dungLoc,
+                a3,
+                0x40,
+                bmaHeader->mapHeightChunks,
+                groundBg->unk2D8);
+    groundBg->unk17C = sp2C.unk0;
+    groundBg->unk1B8 = sp2C.unk8;
+    groundBg->unk52C.unk18(groundBg->unk2D8, bmaData, bmaHeader, groundBg->unk52C.unk12);
+
+    layerSpecs->numTiles = 512;
+    for (i = 0; i < MAX_BPA_SLOTS; i++) {
+        layerSpecs->bpaSlotNumTiles[i] = 0;
+    }
+
+    layerSpecs->numChunks = 0x190;
+    groundBg->bplHeader.numPalettes = 12;
+    groundBg->bplHeader.hasPalAnimations = FALSE;
+    if (groundBg->unk1B8 != NULL) {
+        const RGB_Array *strPtr = groundBg->unk1B8;
+        struct UnkStruct_2324CBC_Sub98 *unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk52C.unk0];
+        u16 palId = 0;
+        s32 i, j;
+
+        for (i = 0; i < 12 && i < groundBg->unk52C.unk8; i++) {
+            sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
+            strPtr++;
+            for (j = 1; j < 16; j++) {
+                RGB_Array sp20;
+                RGB_Array sp1C = ov11_02320BE4;
+                sp1C.c[0] = strPtr->c[0];
+                sp1C.c[1] = strPtr->c[1];
+                sp1C.c[2] = strPtr->c[2];
+                sp1C.c[3] = strPtr->c[3];
+                sp20 = sp1C;
+                sub_0200A590(unkSubPtr, palId++, &sp20);
+                strPtr++;
+            }
+        }
+
+        for (; i < groundBg->unk52C.unk8; i++) {
+            sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
+            for (j = 1; j < 16; j++) {
+                sub_0200A590(unkSubPtr, palId++, &ov11_02320BE8);
+            }
+        }
+        sub_0200A504(unkSubPtr);
+    }
+
+    groundBg->unk1EE = 0;
+    sub0Ptr = groundBg->unk0;
+    struct UnkStruct_2324CBC_Sub98 *unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk52C.unk0];
+    groundBg->unk1BC = 0;
+    if (groundBg->unk194.unk8 != 0) {
+        sub_02063628(&groundBg->unk1A0, unkSubPtr, 0x20);
+        sub_02063734(&groundBg->unk1A0, groundBg->unk194.unk8, 0x20);
+        groundBg->unk1BC = 1;
+    }
+    groundBg->animationSpecifications = NULL;
+    groundBg->unk1F8 = 0;
+    groundBg->unk1F9 = 0;
+    groundBg->unk1FA = 0;
+    groundBg->unk1FB = 0;
+
+    for (s32 unk0Id = 0; unk0Id < UNK_0_ARR_COUNT; unk0Id++, sub0Ptr++) {
+        sub0Ptr->unk0 = 0;
+        sub0Ptr->unk2 = 0;
+        sub0Ptr->unk4 = sub0Ptr->unk8 = 0;
+    }
+
+    for (s32 unk3E0Id = 0; unk3E0Id < UNK_3E0_ARR_COUNT; unk3E0Id++) {
+        SubStruct_3E0 *sub3E0 = &groundBg->unk3E0[unk3E0Id];
+        sub3E0->unk0 = 0;
+        sub3E0->unk1 = 0;
+        sub3E0->unk4 = 0;
+        sub3E0->unk2 = 0;
+        sub3E0->unk10 = 0;
+        sub3E0->unk18 = 0;
+        sub3E0->unk14 = 0;
+        sub3E0->unk20 = 0;
+        sub3E0->unk24 = sub3E0->unk1C = 0,
+        sub3E0->unk28 = 0;
+    }
+
+    ov11_022EE620(groundBg, 1);
+    groundBg->mapRender[0].tilemapRenderFunc(&groundBg->mapRender[0]);
+    groundBg->unk2BA = 1;
+    TRY_CLOSE_FILE(groundBg->bpcFile);
+    TRY_CLOSE_FILE(groundBg->bmaFile);
+}
 
 //
