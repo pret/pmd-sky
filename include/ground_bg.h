@@ -1,5 +1,5 @@
-#ifndef PMDSKY_OVERLAY_11_022EBB40_H
-#define PMDSKY_OVERLAY_11_022EBB40_H
+#ifndef PMDSKY_GROUND_BG_H
+#define PMDSKY_GROUND_BG_H
 
 #include "util.h"
 
@@ -254,4 +254,4 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId);
 void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc, s32 a3);
 void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc, s32 a3);
 
-#endif //PMDSKY_OVERLAY_11_022EBB40_H
+#endif //PMDSKY_GROUND_BG_H

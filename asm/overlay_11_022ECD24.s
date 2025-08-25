@@ -513,7 +513,7 @@ _022EDD48:
 	strh ip, [r4, #6]
 	ldrb ip, [lr, #0xa]
 	strh ip, [r4, #8]
-	bl ov11_022EE2D4
+	bl BmaLayerNrlDecompressor
 	mov r1, r0
 	str r1, [r5, #0x1f0]
 	ldr r0, [r5, #0x2d8]
@@ -911,8 +911,8 @@ ov11_022EE2D0: ; 0x022EE2D0
 	bx lr
 	arm_func_end ov11_022EE2D0
 
-	arm_func_start ov11_022EE2D4
-ov11_022EE2D4: ; 0x022EE2D4
+	arm_func_start BmaLayerNrlDecompressor
+BmaLayerNrlDecompressor: ; 0x022EE2D4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov r5, #0
@@ -1140,7 +1140,7 @@ _022EE5C8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022EE5E0: .word 0x00000FFF
-	arm_func_end ov11_022EE2D4
+	arm_func_end BmaLayerNrlDecompressor
 
 	arm_func_start ov11_022EE5E4
 ov11_022EE5E4: ; 0x022EE5E4

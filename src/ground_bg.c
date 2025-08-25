@@ -1,4 +1,4 @@
-#include "overlay_11_022EBB40.h"
+#include "ground_bg.h"
 #include "file_rom.h"
 
 // TODO: Move these to headers
@@ -112,7 +112,7 @@ void sub_0206367C(struct UnkGroundBg_1A0 *);
 void sub_020635C8(struct UnkGroundBg_194 *);
 void sub_020635D8(struct UnkGroundBg_194 *);
 void ov11_022EE620(GroundBg *groundBg, s32 a1);
-const u8 *ov11_022EE2D4(u16 **dstArray, const void *bmaData, SubStruct_52C *a2, BmaHeader *bmaHeader); // BmaLayerNrlDecompressor
+const u8 *BmaLayerNrlDecompressor(u16 **dstArray, const void *bmaData, SubStruct_52C *a2, BmaHeader *bmaHeader);
 
 // GroundBg_Init?
 void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1)
@@ -660,7 +660,7 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
         }
     }
 
-    bmaData = ov11_022EE2D4(groundBg->unk2E4, bmaData, &groundBg->unk52C, &groundBg->bmaHeader);
+    bmaData = BmaLayerNrlDecompressor(groundBg->unk2E4, bmaData, &groundBg->unk52C, &groundBg->bmaHeader);
     groundBg->unk1F0 = bmaData;
     if (groundBg->unk2D8 != NULL) {
         groundBg->unk52C.unk18(groundBg->unk2D8, bmaData, bmaHeader, groundBg->unk52C.unk12);
@@ -1296,7 +1296,7 @@ _022EC9A0:
 	add r1, r5, #0xc
 	add r2, r10, #0x2bc
 	add r3, r10, #0x1e0
-	bl ov11_022EE2D4
+	bl BmaLayerNrlDecompressor
 	mov r1, r0
 	str r1, [r10, #0x1f0]
 	ldr r0, [r10, #0x2d8]
@@ -1620,7 +1620,7 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
         struct UnkTwoPtrs unkPtrArray = zeros;
 
         unkPtrArray.ptrs[0] = groundBg->unk2D8;
-        bmaData = ov11_022EE2D4((void *) &unkPtrArray, bmaData, &groundBg->unk52C, &groundBg->bmaHeader);
+        bmaData = BmaLayerNrlDecompressor((void *) &unkPtrArray, bmaData, &groundBg->unk52C, &groundBg->bmaHeader);
     }
 
     groundBg->unk1F0 = bmaData;
