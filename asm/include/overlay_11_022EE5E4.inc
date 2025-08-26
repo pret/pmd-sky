@@ -312,7 +312,7 @@
 .public ov11_022EB2F4
 .public ov11_022EB3C8
 .public ov11_022EBAA0
-.public ov11_022EBC18
+.public GroundBg_Init
 .public ov11_022EBEAC
 .public ov11_022EC240
 .public ov11_022EC27C

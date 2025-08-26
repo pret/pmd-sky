@@ -3852,7 +3852,7 @@ ov11_022F12C0: ; 0x022F12C0
 	bne _022F134C
 	ldr r0, [r2]
 	ldr r1, _022F153C ; =ov11_02320CD8
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	mvn r1, #0
 	ldr r0, [r0]
@@ -3894,7 +3894,7 @@ _022F1370: ; jump table
 _022F13A4:
 	ldr r0, [r2]
 	ldr r1, _022F1544 ; =ov11_02320CF4
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #0
 	bl ov11_022EF53C
 	mov r0, #2
@@ -3930,7 +3930,7 @@ _022F1414:
 	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, _022F154C ; =ov11_02320D10
 	ldr r0, [r0]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #0
 	bl ov11_022EF53C
 	mov r0, #1
@@ -3951,7 +3951,7 @@ _022F146C:
 	ldr r0, _022F1538 ; =GROUND_STATE_MAP
 	ldr r1, _022F153C ; =ov11_02320CD8
 	ldr r0, [r0]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #0
 	bl ov11_022EF53C
 	mov r0, #1
@@ -4044,7 +4044,7 @@ GetSpecialLayoutBackground: ; 0x022F155C
 	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, _022F16F8 ; =ov11_02320CD8
 	ldr r0, [r0]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	mvn r1, #0
 	ldr r0, [r0]
@@ -4081,7 +4081,7 @@ _022F1644:
 	ldr r0, _022F16F4 ; =GROUND_STATE_MAP
 	ldr r1, _022F1708 ; =ov11_02320D10
 	ldr r0, [r0]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #0
 	bl ov11_022EF53C
 	mov r0, #1
@@ -5284,7 +5284,7 @@ _022F2548:
 	ldr r0, _022F2598 ; =ov11_02324CC8
 	ldrne r1, _022F25A0 ; =ov11_0232105C
 	ldr r0, [r0, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _022F2598 ; =ov11_02324CC8
 	mvn r1, #0
 	ldr r0, [r0, #4]
@@ -38790,7 +38790,7 @@ ov11_0230DE84: ; 0x0230DE84
 	ldr r2, _0230DEF0 ; =ov11_02324DC8
 	ldr r1, _0230DEF4 ; =ov11_02323228
 	str r0, [r2]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _0230DEF0 ; =ov11_02324DC8
 	ldr r1, [r0, #4]
 	ldr r0, [r0]
@@ -39164,7 +39164,7 @@ ov11_0230E344: ; 0x0230E344
 	ldr r2, _0230E3D8 ; =ov11_02324DD4
 	ldr r1, _0230E3DC ; =ov11_02323268
 	str r0, [r2]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _0230E3D8 ; =ov11_02324DD4
 	ldr r1, _0230E3E0 ; =ov11_023232A8
 	ldr r0, [r0]
@@ -39560,7 +39560,7 @@ _0230E854:
 	ldr r2, _0230E8C0 ; =ov11_02324DDC
 	ldr r1, _0230E8C8 ; =ov11_023232BC
 	str r0, [r2]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _0230E8C0 ; =ov11_02324DDC
 	ldr r1, _0230E8CC ; =ov11_023232FC
 	ldr r0, [r0]
@@ -41334,7 +41334,7 @@ ov11_02310074: ; 0x02310074
 	bne _02310108
 	ldr r0, [r2, #4]
 	ldr r1, _02310324 ; =ov11_02323394
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	mvn r1, #0
 	ldr r0, [r0, #4]
@@ -41371,7 +41371,7 @@ _0231012C: ; jump table
 _02310160:
 	ldr r0, [r2, #4]
 	ldr r1, _0231032C ; =ov11_023233B0
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_022EF53C
 	b _023101B8
@@ -41390,7 +41390,7 @@ _023101A0:
 	ldr r0, _0231031C ; =WORLD_MAP_MODE
 	ldr r1, _02310324 ; =ov11_02323394
 	ldr r0, [r0, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_023128C0
 _023101B8:
@@ -42048,7 +42048,7 @@ ov11_02310A58: ; 0x02310A58
 	ldr r2, _02310AC0 ; =ov11_02324DF0
 	ldr r1, _02310AC4 ; =ov11_0232376C
 	str r0, [r2, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _02310AC0 ; =ov11_02324DF0
 	ldr r1, _02310AC8 ; =ov11_02323818
 	ldr r0, [r0, #4]
@@ -42565,7 +42565,7 @@ ov11_02311074: ; 0x02311074
 	bne _0231110C
 	ldr r0, [r2, #4]
 	ldr r1, _02311274 ; =ov11_02323920
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _0231126C ; =ov11_02324DF8
 	mvn r1, #0
 	ldr r0, [r0, #4]
@@ -42603,14 +42603,14 @@ _02311130: ; jump table
 _02311164:
 	ldr r0, [r2, #4]
 	ldr r1, _0231127C ; =ov11_0232393C
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_022EF53C
 	b _023111D4
 _0231117C:
 	ldr r0, [r2, #4]
 	ldr r1, _02311280 ; =ov11_02323958
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_023128C0
 	b _023111D4
@@ -42629,7 +42629,7 @@ _023111BC:
 	ldr r0, _0231126C ; =ov11_02324DF8
 	ldr r1, _02311274 ; =ov11_02323920
 	ldr r0, [r0, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_023128C0
 _023111D4:
@@ -42997,7 +42997,7 @@ ov11_023115F4: ; 0x023115F4
 	cmp r4, r1
 	bne _02311684
 	ldr r1, _023117AC ; =ov11_02323A04
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _023117A4 ; =ov11_02324E00
 	mvn r1, #0
 	ldr r0, [r0, #4]
@@ -43032,7 +43032,7 @@ _023116CC:
 	ldr r0, _023117A4 ; =ov11_02324E00
 	ldr r1, _023117B0 ; =ov11_02323A20
 	ldr r0, [r0, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_022EF53C
 	b _02311750
@@ -43040,7 +43040,7 @@ _023116E8:
 	ldr r0, _023117A4 ; =ov11_02324E00
 	ldr r1, _023117B4 ; =ov11_02323A3C
 	ldr r0, [r0, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_022EF53C
 	mov r0, #1
@@ -43060,7 +43060,7 @@ _02311730:
 	ldr r0, _023117A4 ; =ov11_02324E00
 	ldr r1, _023117AC ; =ov11_02323A04
 	ldr r0, [r0, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_022EF53C
 	mov r0, #1
@@ -43397,7 +43397,7 @@ ov11_02311AF4: ; 0x02311AF4
 	cmp r4, r1
 	bne _02311B84
 	ldr r1, _02311CAC ; =ov11_02323AE8
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _02311CA4 ; =ov11_02324E08
 	mvn r1, #0
 	ldr r0, [r0, #4]
@@ -43432,7 +43432,7 @@ _02311BCC:
 	ldr r0, _02311CA4 ; =ov11_02324E08
 	ldr r1, _02311CB0 ; =ov11_02323B04
 	ldr r0, [r0, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_022EF53C
 	b _02311C50
@@ -43440,7 +43440,7 @@ _02311BE8:
 	ldr r0, _02311CA4 ; =ov11_02324E08
 	ldr r1, _02311CB4 ; =ov11_02323B20
 	ldr r0, [r0, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_022EF53C
 	mov r0, #1
@@ -43460,7 +43460,7 @@ _02311C30:
 	ldr r0, _02311CA4 ; =ov11_02324E08
 	ldr r1, _02311CAC ; =ov11_02323AE8
 	ldr r0, [r0, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_022EF53C
 	mov r0, #1
@@ -43847,7 +43847,7 @@ ov11_02312100: ; 0x02312100
 	ldr r2, _02312164 ; =ov11_02324E10
 	ldr r1, _02312168 ; =ov11_02323B7C
 	str r0, [r2]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _02312164 ; =ov11_02324E10
 	ldr r1, _0231216C ; =ov11_02323BBC
 	ldr r0, [r0]
@@ -44268,7 +44268,7 @@ ov11_02312540: ; 0x02312540
 	bne _023125D4
 	ldr r0, [r2]
 	ldr r1, _02312718 ; =ov11_02323C38
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _02312710 ; =ov11_02324E18
 	mvn r1, #0
 	ldr r0, [r0]
@@ -44303,7 +44303,7 @@ _023125F8: ; jump table
 _02312624:
 	ldr r0, [r2]
 	ldr r1, _02312720 ; =ov11_02323C54
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_022EF53C
 	b _0231267C
@@ -44327,7 +44327,7 @@ _02312664:
 	ldr r0, _02312710 ; =ov11_02324E18
 	ldr r1, _02312718 ; =ov11_02323C38
 	ldr r0, [r0]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, #1
 	bl ov11_023128C0
 _0231267C:
@@ -44547,7 +44547,7 @@ _0231291C:
 	ldr r2, _02312974 ; =ov11_02324E20
 	ldr r1, _02312978 ; =ov11_02323CD0
 	str r0, [r2]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _02312974 ; =ov11_02324E20
 	mvn r1, #0
 	ldr r0, [r0]
@@ -49103,7 +49103,7 @@ _023167E0:
 	ldr r2, _02316838 ; =ov11_02324E78
 	ldr r1, _02316844 ; =ov11_02324BDC
 	str r0, [r2, #4]
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	ldr r0, _02316838 ; =ov11_02324E78
 	ldr r1, _02316848 ; =ov11_02324C1C
 	ldr r0, [r0, #4]

@@ -104,15 +104,13 @@ void LoadBackgroundAttributes(struct bg_list_entry* entry, int bgId)
 
 void ov11_022EBF60(GroundBg *groundBg);
 void *sub_0200B500(void *unk);
-void ov11_022EBFC8(GroundBg *groundBg); // Close Opened Files ?
 void sub_02063600(struct UnkGroundBg_1A0 *);
 void sub_0206367C(struct UnkGroundBg_1A0 *);
 void sub_020635C8(struct UnkGroundBg_194 *);
 void sub_020635D8(struct UnkGroundBg_194 *);
 void ov11_022EE620(GroundBg *groundBg, s32 a1);
 
-// GroundBg_Init?
-void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1)
+void GroundBg_Init(GroundBg *groundBg, const SubStruct_52C *a1)
 {
     SubStruct_0 *unk0Ptr;
     s32 id, unk0Id, unk3E0Id;
@@ -206,7 +204,7 @@ void ov11_022EBEAC(GroundBg *groundBg)
 {
     s32 i;
 
-    ov11_022EBFC8(groundBg);
+    GroundBg_CloseOpenedFiles(groundBg);
     TRY_FREE_AND_SET_NULL(groundBg->unk2D8);
 
     for (i = 0; i < NUM_LAYERS; i++) {
@@ -247,7 +245,7 @@ void ov11_022EBF60(GroundBg *groundBg)
     ZInit8(&groundBg->bmaFile);
 }
 
-void ov11_022EBFC8(GroundBg *groundBg)
+void GroundBg_CloseOpenedFiles(GroundBg *groundBg)
 {
     s32 i;
     if (groundBg->newUnk0 == 3) {
@@ -277,7 +275,7 @@ void ov11_022EC08C(GroundBg *groundBg)
     s32 unk0Id, unk3E0Id;
     struct UnkStruct_2324CBC_Sub98 *unkSubPtr;
 
-    ov11_022EBFC8(groundBg);
+    GroundBg_CloseOpenedFiles(groundBg);
     groundBg->newUnk0 = 0;
     groundBg->unk1C0 = 0;
     groundBg->unk1BE = -1;
@@ -377,7 +375,7 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
         ov11_022EC08C(groundBg);
         return;
     }
-    ov11_022EBFC8(groundBg);
+    GroundBg_CloseOpenedFiles(groundBg);
     groundBg->newUnk0 = 1;
     groundBg->unk1C0 = 0;
     groundBg->unk1BE = bgId;
@@ -785,7 +783,7 @@ asm void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
 	bl ov11_022EC08C
 	b _022ECCF4
 _022EC2BC:
-	bl ov11_022EBFC8
+	bl GroundBg_CloseOpenedFiles
 	mov r0, #1
 	strh r0, [r10]
 	mov r0, #0
@@ -1561,7 +1559,7 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
     }
 
     ov11_022EC27C(groundBg, bgId);
-    ov11_022EBFC8(groundBg);
+    GroundBg_CloseOpenedFiles(groundBg);
     groundBg->newUnk0 = 2;
     groundBg->unk1C0 = 0;
     groundBg->unk1BE = bgId;
@@ -1725,7 +1723,7 @@ void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
         return;
     }
 
-    ov11_022EBFC8(groundBg);
+    GroundBg_CloseOpenedFiles(groundBg);
     groundBg->newUnk0 = 2;
     groundBg->unk1C0 = 0;
     groundBg->unk1BE = bgId;

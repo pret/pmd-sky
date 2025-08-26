@@ -21,7 +21,7 @@ ov11_022ED69C: ; 0x022ED69C
 	mov r0, #0
 	b _022EDCFC
 _022ED6CC:
-	bl ov11_022EBFC8
+	bl GroundBg_CloseOpenedFiles
 	ldr r0, [sb, #0x174]
 	add r1, sl, #0x100
 	str r0, [sp, #8]
@@ -736,7 +736,7 @@ ov11_022EE0C8: ; 0x022EE0C8
 	sub sp, sp, #0xc
 	ldr r1, _022EE12C ; =ov11_02320C28
 	mov r4, r0
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, r4
 	bl ov11_022EC08C
 	mov r2, #5
@@ -812,7 +812,7 @@ ov11_022EE198: ; 0x022EE198
 	mov r4, r1
 	ldr r1, _022EE204 ; =ov11_02320C28
 	mov r5, r0
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, r5
 	bl ov11_022EC08C
 	mov r2, #6
@@ -881,7 +881,7 @@ ov11_022EE268: ; 0x022EE268
 	sub sp, sp, #0xc
 	ldr r1, _022EE2C4 ; =ov11_02320C28
 	mov r4, r0
-	bl ov11_022EBC18
+	bl GroundBg_Init
 	mov r0, r4
 	bl ov11_022EC08C
 	mov r2, #5

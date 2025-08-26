@@ -244,10 +244,10 @@ typedef struct GroundBg
 } GroundBg;
 
 void LoadBackgroundAttributes(struct bg_list_entry* entry, int bgId);
-void ov11_022EBC18(GroundBg *groundBg, const SubStruct_52C *a1);
+void GroundBg_Init(GroundBg *groundBg, const SubStruct_52C *a1);
 void ov11_022EBEAC(GroundBg *groundBg);
 void ov11_022EBF60(GroundBg *groundBg);
-void ov11_022EBFC8(GroundBg *groundBg);
+void GroundBg_CloseOpenedFiles(GroundBg *groundBg);
 void ov11_022EC08C(GroundBg *groundBg);
 void ov11_022EC240(GroundBg *groundBg, s32 bgId);
 void ov11_022EC27C(GroundBg *groundBg, s32 bgId);

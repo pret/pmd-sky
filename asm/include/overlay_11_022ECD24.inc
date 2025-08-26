@@ -10,8 +10,8 @@
 .public PointsToZero
 .public UnloadFile
 .public ZInit8
-.public ov11_022EBC18
-.public ov11_022EBFC8
+.public GroundBg_Init
+.public GroundBg_CloseOpenedFiles
 .public ov11_022EC08C
 .public ov11_022EE620
 .public ov11_022EE8CC
