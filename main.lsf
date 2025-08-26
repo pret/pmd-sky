@@ -201,7 +201,7 @@ Overlay OVY_11
 	After OVY_10
 	Object asm/overlay_11.o
 	Object src/ground_bg.o
-    Object asm/overlay_11_022ECD24_data.o
+	Object asm/overlay_11_022ECD24_data.o
 	Object asm/overlay_11_022ECD24.o
 	Object src/ground_bg_1.o
 	Object asm/overlay_11_022EE5E4.o

@@ -1,17 +1,17 @@
 #include "main_0200330C.h"
 
-void ZInit8(int* ptr)
+void ZInit8(struct iovec* ptr)
 {
-    ptr[0]=0;
-    ptr[1]=0;
+    ptr->iov_base = NULL;
+    ptr->iov_len = 0;
 }
 
-u8 PointsToZero(int* ptr)
+bool8 PointsToZero(struct iovec* ptr)
 {
-    if (*ptr == 0) {
-        return 1;
+    if (ptr->iov_base == NULL) {
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 

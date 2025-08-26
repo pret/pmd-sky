@@ -1,5 +1,6 @@
 #include "ground_bg.h"
 #include "file_rom.h"
+#include "main_0200330C.h"
 
 // TODO: Move these to headers
 #define RGB_R 0
@@ -39,10 +40,8 @@ struct UnkStruct_2324CBC
 extern struct UnkStruct_2324CBC *ov11_02324CBC;
 
 extern void FileClose(struct file_stream* file);
-extern void ZInit8(struct iovec *dst);
 extern void* MemAlloc(u32 len, u32 flags);
 extern void MemFree(void* ptr);
-extern BOOL PointsToZero(struct iovec* ptr);
 extern void UnloadFile(struct iovec* ptr);
 extern void sub_0200A590(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Array *src);
 extern void sub_0200A504(struct UnkStruct_2324CBC_Sub98 *);
@@ -69,7 +68,7 @@ extern void *ov11_02320C18[][2]; // Vram ptrs
 // Todo: make these static
 const RGB_Array ov11_02320BF4 = {0, 0, 0, 0};
 const RGB_Array ov11_02320BF0 = {0, 0, 0, 0};
-const PixelPos sPositionZero = {0};
+const PixelPos POSITION_ZERO = {0};
 const RGB_Array ov11_02320BE8 = {0xFF, 0xFF, 0xFF, 0};
 const RGB_Array ov11_02320BEC = {0, 0, 0, 0};
 const RGB_Array ov11_02320BE4 = {0, 0, 0, 0};
@@ -102,7 +101,6 @@ void LoadBackgroundAttributes(struct bg_list_entry* entry, int bgId)
     FileRom_StopDataTransfer();
 }
 
-void ov11_022EBF60(GroundBg *groundBg);
 void *sub_0200B500(void *unk);
 void sub_02063600(struct UnkGroundBg_1A0 *);
 void sub_0206367C(struct UnkGroundBg_1A0 *);
@@ -110,20 +108,20 @@ void sub_020635C8(struct UnkGroundBg_194 *);
 void sub_020635D8(struct UnkGroundBg_194 *);
 void ov11_022EE620(GroundBg *groundBg, s32 a1);
 
-void GroundBg_Init(GroundBg *groundBg, const SubStruct_52C *a1)
+void GroundBg_Init(GroundBg *groundBg, const UnkGroundBg_2BC *a1)
 {
-    SubStruct_0 *unk0Ptr;
-    s32 id, unk0Id, unk3E0Id;
+    UnkGroundBg_4 *unk4Ptr;
+    s32 id, unk4Id, unkC4Id;
     s32 i;
     s32 id2;
     s32 memGroup;
 
-    groundBg->unk52C = *a1;
-    memGroup = (groundBg->unk52C.unk0 == 0) ? 6 : 15;
-    id2 = groundBg->unk52C.unk2;
-    for (id = 0; id < groundBg->unk52C.numLayers; id++, id2++) {
-        if (groundBg->unk52C.unkE[id] > 0) {
-            groundBg->unk2DC[id] = MemAlloc(groundBg->unk52C.unkE[id] * 18u, memGroup);
+    groundBg->unk2BC = *a1;
+    memGroup = (groundBg->unk2BC.unk0 == 0) ? 6 : 15;
+    id2 = groundBg->unk2BC.unk2;
+    for (id = 0; id < groundBg->unk2BC.numLayers; id++, id2++) {
+        if (groundBg->unk2BC.unkE[id] > 0) {
+            groundBg->unk2DC[id] = MemAlloc(groundBg->unk2BC.unkE[id] * 18u, memGroup);
         }
         else {
             groundBg->unk2DC[id] = NULL;
@@ -133,18 +131,18 @@ void GroundBg_Init(GroundBg *groundBg, const SubStruct_52C *a1)
         groundBg->unk2DC[id] = NULL;
     }
 
-    id = groundBg->unk52C.unk2;
-    for (id2 = 0; id2 < groundBg->unk52C.numLayers; id2++, id++) {
+    id = groundBg->unk2BC.unk2;
+    for (id2 = 0; id2 < groundBg->unk2BC.numLayers; id2++, id++) {
 
-        if (groundBg->unk52C.unk0 == 0) {
+        if (groundBg->unk2BC.unk0 == 0) {
             groundBg->unk2EC[id2] = sub_0200B500(&ov11_02324CBC->unk0[0][id]);
         }
         else {
             groundBg->unk2EC[id2] = sub_0200B500(&ov11_02324CBC->unk0[1][id]);
         }
 
-        if (groundBg->unk52C.unkE[id2] > 0) {
-            groundBg->unk2E4[id2] = MemAlloc(groundBg->unk52C.unk14 * 128, memGroup);
+        if (groundBg->unk2BC.unkE[id2] > 0) {
+            groundBg->unk2E4[id2] = MemAlloc(groundBg->unk2BC.unk14 * 128, memGroup);
         }
         else {
             groundBg->unk2E4[id2] = NULL;
@@ -155,7 +153,7 @@ void GroundBg_Init(GroundBg *groundBg, const SubStruct_52C *a1)
         groundBg->unk2E4[id2] = NULL;
     }
 
-    groundBg->unk2D8 = (groundBg->unk52C.unk18 == 0) ? NULL : MemAlloc(groundBg->unk52C.unk12 * 256, memGroup);
+    groundBg->unk2D8 = (groundBg->unk2BC.unk18 == 0) ? NULL : MemAlloc(groundBg->unk2BC.unk12 * 256, memGroup);
     ov11_022EBF60(groundBg);
     groundBg->newUnk0 = 0;
     groundBg->unk1C0 = 0;
@@ -174,15 +172,15 @@ void GroundBg_Init(GroundBg *groundBg, const SubStruct_52C *a1)
     groundBg->unk1FB = 0;
     groundBg->unk1BC = 0;
 
-    unk0Ptr = &groundBg->unk0[0];
-    for (unk0Id = 0; unk0Id < UNK_0_ARR_COUNT; unk0Id++, unk0Ptr++) {
-        unk0Ptr->unk0 = 0;
-        unk0Ptr->unk2 = 0;
-        unk0Ptr->unk4 = unk0Ptr->unk8 = 0;
+    unk4Ptr = &groundBg->unk4[0];
+    for (unk4Id = 0; unk4Id < UNK_4_ARR_COUNT; unk4Id++, unk4Ptr++) {
+        unk4Ptr->unk0 = 0;
+        unk4Ptr->unk2 = 0;
+        unk4Ptr->unk4 = unk4Ptr->unk8 = 0;
     }
 
-    for (unk3E0Id = 0; unk3E0Id < UNK_3E0_ARR_COUNT; unk3E0Id++) {
-        SubStruct_3E0 *unkPtr = &groundBg->unk3E0[unk3E0Id];
+    for (unkC4Id = 0; unkC4Id < UNK_C4_ARR_COUNT; unkC4Id++) {
+        UnkGroundBg_C4 *unkPtr = &groundBg->unkC4[unkC4Id];
         unkPtr->unk0 = 0;
         unkPtr->unk1 = 0;
         unkPtr->unk2 = 0;
@@ -196,11 +194,11 @@ void GroundBg_Init(GroundBg *groundBg, const SubStruct_52C *a1)
     }
 
     for (i = 0; i < NUM_LAYERS; i++) {
-        groundBg->cameraPixelPosition[i] = sPositionZero;
+        groundBg->cameraPixelPosition[i] = POSITION_ZERO;
     }
 }
 
-void ov11_022EBEAC(GroundBg *groundBg)
+void GroundBg_FreeAll(GroundBg *groundBg)
 {
     s32 i;
 
@@ -209,7 +207,7 @@ void ov11_022EBEAC(GroundBg *groundBg)
 
     for (i = 0; i < NUM_LAYERS; i++) {
         if (groundBg->unk2DC[i] != NULL) {
-            if (groundBg->unk52C.unkE[i] > 0) {
+            if (groundBg->unk2BC.unkE[i] > 0) {
                 MemFree(groundBg->unk2DC[i]);
             }
             groundBg->unk2DC[i] = NULL;
@@ -218,7 +216,7 @@ void ov11_022EBEAC(GroundBg *groundBg)
             groundBg->unk2EC[i] = NULL;
         }
         if (groundBg->unk2E4[i] != NULL) {
-            if (groundBg->unk52C.unkE[i] > 0) {
+            if (groundBg->unk2BC.unkE[i] > 0) {
                 MemFree(groundBg->unk2E4[i]);
             }
             groundBg->unk2E4[i] = NULL;
@@ -230,8 +228,8 @@ void ov11_022EBF60(GroundBg *groundBg)
 {
     s32 i;
 
-    for (i = 0; i < UNK_3E0_ARR_COUNT; i++) {
-        SubStruct_3E0 *unkPtr = &groundBg->unk3E0[i];
+    for (i = 0; i < UNK_C4_ARR_COUNT; i++) {
+        UnkGroundBg_C4 *unkPtr = &groundBg->unkC4[i];
         ZInit8(&unkPtr->bpaFile);
     }
 
@@ -253,8 +251,8 @@ void GroundBg_CloseOpenedFiles(GroundBg *groundBg)
         return;
     }
 
-    for (i = 0; i < UNK_3E0_ARR_COUNT; i++) {
-        SubStruct_3E0 *unkPtr = &groundBg->unk3E0[i];
+    for (i = 0; i < UNK_C4_ARR_COUNT; i++) {
+        UnkGroundBg_C4 *unkPtr = &groundBg->unkC4[i];
         TRY_CLOSE_FILE(unkPtr->bpaFile);
     }
     sub_0206367C(&groundBg->unk1A0);
@@ -271,8 +269,8 @@ void ov11_022EC08C(GroundBg *groundBg)
     u8 unkId;
     u16 palId;
     s32 i, j;
-    SubStruct_0 *unk0Ptr;
-    s32 unk0Id, unk3E0Id;
+    UnkGroundBg_4 *unk4Ptr;
+    s32 unk4Id, unkC4Id;
     struct UnkStruct_2324CBC_Sub98 *unkSubPtr;
 
     GroundBg_CloseOpenedFiles(groundBg);
@@ -292,15 +290,15 @@ void ov11_022EC08C(GroundBg *groundBg)
     groundBg->unk1FB = 0;
     groundBg->unk1BC = 0;
 
-    unk0Ptr = &groundBg->unk0[0];
-    for (unk0Id = 0; unk0Id < UNK_0_ARR_COUNT; unk0Id++, unk0Ptr++) {
-        unk0Ptr->unk0 = 0;
-        unk0Ptr->unk2 = 0;
-        unk0Ptr->unk4 = unk0Ptr->unk8 = 0;
+    unk4Ptr = &groundBg->unk4[0];
+    for (unk4Id = 0; unk4Id < UNK_4_ARR_COUNT; unk4Id++, unk4Ptr++) {
+        unk4Ptr->unk0 = 0;
+        unk4Ptr->unk2 = 0;
+        unk4Ptr->unk4 = unk4Ptr->unk8 = 0;
     }
 
-    for (unk3E0Id = 0; unk3E0Id < UNK_3E0_ARR_COUNT; unk3E0Id++) {
-        SubStruct_3E0 *unkPtr = &groundBg->unk3E0[unk3E0Id];
+    for (unkC4Id = 0; unkC4Id < UNK_C4_ARR_COUNT; unkC4Id++) {
+        UnkGroundBg_C4 *unkPtr = &groundBg->unkC4[unkC4Id];
         unkPtr->unk0 = 0;
         unkPtr->unk1 = 0;
         unkPtr->unk2 = 0;
@@ -314,10 +312,10 @@ void ov11_022EC08C(GroundBg *groundBg)
         unkPtr->unk28 = 0;
     }
 
-    unkId = groundBg->unk52C.unk0;
+    unkId = groundBg->unk2BC.unk0;
     unkSubPtr = &ov11_02324CBC->unk98[unkId];
-    palId = groundBg->unk52C.unk6 * 16;
-    for (i = 0; i < groundBg->unk52C.unk8; i++) {
+    palId = groundBg->unk2BC.unk6 * 16;
+    for (i = 0; i < groundBg->unk2BC.unk8; i++) {
         sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
         for (j = 1; j < 16; j++) {
             sub_0200A590(unkSubPtr, palId++, &ov11_02320BE8);
@@ -325,7 +323,7 @@ void ov11_022EC08C(GroundBg *groundBg)
     }
     sub_0200A504(unkSubPtr);
 
-    if (groundBg->unk52C.numLayers > 0) {
+    if (groundBg->unk2BC.numLayers > 0) {
         ov11_022EE620(groundBg, 1);
     }
     else {
@@ -361,16 +359,16 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
     s32 i, j;
     struct UnkStruct_2324CBC_Sub98 *unkSubPtr;
     const RGB_Array *rgbPal;
-    s32 unk0Id;
-    SubStruct_0 *sub0Ptr;
-    s32 unk3E0Id;
+    s32 unk4Id;
+    UnkGroundBg_4 *sub4Ptr;
+    s32 unkC4Id;
     BmaHeader *bmaHeader;
     BplHeader *bplHeader;
     const void *bmaData;
     u16 palId;
     s32 r7;
 
-    flags = (groundBg->unk52C.unk0 == 0) ? 6 : 15;
+    flags = (groundBg->unk2BC.unk0 == 0) ? 6 : 15;
     if (bgId == -1) {
         ov11_022EC08C(groundBg);
         return;
@@ -447,15 +445,15 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
     bmaHeader->hasCollision = *(u8 *)(bmaData); bmaData += 2;
 
     rgbPal = bplData;
-    unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk52C.unk0];
-    palId = groundBg->unk52C.unk6 * 16;
-    for (i = 0; i < bplHeader->numPalettes && i < groundBg->unk52C.unk8; i++) {
+    unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk2BC.unk0];
+    palId = groundBg->unk2BC.unk6 * 16;
+    for (i = 0; i < bplHeader->numPalettes && i < groundBg->unk2BC.unk8; i++) {
         sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
         sub_0200A5B0(unkSubPtr, palId, rgbPal, 15);
         palId += 15;
         rgbPal += 15;
     }
-    for (; i < groundBg->unk52C.unk8; i++) {
+    for (; i < groundBg->unk2BC.unk8; i++) {
         sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
         for (j = 1; j < 16; j++) {
             sub_0200A590(unkSubPtr, palId++, &ov11_02320BE8);
@@ -464,8 +462,8 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
     sub_0200A504(unkSubPtr);
 
     // Bpc decompressor
-    sp20 = groundBg->unk52C.unk2;
-    for (i = 0; i < groundBg->unk52C.unk4; sp20++, i++) {
+    sp20 = groundBg->unk2BC.unk2;
+    for (i = 0; i < groundBg->unk2BC.unk4; sp20++, i++) {
         const u8 *srcStart = sp44[i];
         if (srcStart != NULL) {
             s32 k; // r1
@@ -473,8 +471,8 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
             s32 nbWordsToOutput;
             u16 *tilemapR7, *tilemapR3, *tilemapR12;
             LayerSpecs *layerSpecs = &groundBg->layerSpecs[i]; // r9
-            s32 r3 = groundBg->unk52C.unk0;
-            u16 *dstR11 = ov11_02320C18[r3][sp20] + groundBg->unk52C.unkA * 32; // r11 fp
+            s32 r3 = groundBg->unk2BC.unk0;
+            u16 *dstR11 = ov11_02320C18[r3][sp20] + groundBg->unk2BC.unkA * 32; // r11 fp
             u16 *dstSP10 = ov11_02320C18[r3][sp20] + layerSpecs->numTiles * 32; // sp 10
             const u8 *src = srcStart; // r6
             u16 leftoverVal2 = 0; // r7
@@ -574,13 +572,13 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
             }
 
             // Copy tilemaps
-            for (r7 = layerSpecs->numTiles; r7 < groundBg->unk52C.unkC; r7++) {
+            for (r7 = layerSpecs->numTiles; r7 < groundBg->unk2BC.unkC; r7++) {
                 for (k = 0; k < 16; k++) {
                     *dstR11++ = 0xFFFF;
                 }
             }
 
-            unkOrVal = (groundBg->unk52C.unk6 << 12) | groundBg->unk52C.unkA;
+            unkOrVal = (groundBg->unk2BC.unk6 << 12) | groundBg->unk2BC.unkA;
             tilemapR12 = groundBg->unk2DC[i];
             tilemapR3 = tilemapR12;
             groundBg->unk2B8 = 1;
@@ -649,15 +647,15 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
         }
     }
 
-    bmaData = BmaLayerNrlDecompressor(groundBg->unk2E4, bmaData, &groundBg->unk52C, &groundBg->bmaHeader);
+    bmaData = BmaLayerNrlDecompressor(groundBg->unk2E4, bmaData, &groundBg->unk2BC, &groundBg->bmaHeader);
     groundBg->unk1F0 = bmaData;
     if (groundBg->unk2D8 != NULL) {
-        groundBg->unk52C.unk18(groundBg->unk2D8, bmaData, bmaHeader, groundBg->unk52C.unk12);
+        groundBg->unk2BC.unk18(groundBg->unk2D8, bmaData, bmaHeader, groundBg->unk2BC.unk12);
     }
 
     groundBg->unk1EE = 0;
-    sub0Ptr = groundBg->unk0;
-    unk0Id = 0;
+    sub4Ptr = groundBg->unk4;
+    unk4Id = 0;
 
     if (bplHeader->hasPalAnimations) {
         s32 numPals = bplHeader->numPalettes * 15;
@@ -670,17 +668,17 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
         groundBg->unk1FA = 1;
         groundBg->unk1FB = 1;
         groundBg->unk1BC = 0;
-        for (; unk0Id < bplHeader->numPalettes && unk0Id < groundBg->unk52C.unk8; unk0Id++, sub0Ptr++, animSpecifications++) {
+        for (; unk4Id < bplHeader->numPalettes && unk4Id < groundBg->unk2BC.unk8; unk4Id++, sub4Ptr++, animSpecifications++) {
             if (animSpecifications->numFrames > 0) {
-                sub0Ptr->unk4 = animationPalette;
+                sub4Ptr->unk4 = animationPalette;
                 animationPalette += animSpecifications->numFrames * 15;
             }
             else {
-                sub0Ptr->unk4 = NULL;
+                sub4Ptr->unk4 = NULL;
             }
-            sub0Ptr->unk0 = 0;
-            sub0Ptr->unk2 = 0;
-            sub0Ptr->unk8 = 0;
+            sub4Ptr->unk0 = 0;
+            sub4Ptr->unk2 = 0;
+            sub4Ptr->unk8 = 0;
         }
     }
     else {
@@ -692,33 +690,33 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
         groundBg->unk1BC = 0;
     }
 
-    for (; unk0Id < UNK_0_ARR_COUNT; unk0Id++, sub0Ptr++) {
-        sub0Ptr->unk0 = 0;
-        sub0Ptr->unk2 = 0;
-        sub0Ptr->unk4 = sub0Ptr->unk8 = 0;
+    for (; unk4Id < UNK_4_ARR_COUNT; unk4Id++, sub4Ptr++) {
+        sub4Ptr->unk0 = 0;
+        sub4Ptr->unk2 = 0;
+        sub4Ptr->unk4 = sub4Ptr->unk8 = 0;
     }
 
-    for (unk3E0Id = 0; unk3E0Id < UNK_3E0_ARR_COUNT; unk3E0Id++) {
-        SubStruct_3E0 *sub3E0 = &groundBg->unk3E0[unk3E0Id];
-        sub3E0->unk0 = 0;
-        sub3E0->unk1 = 0;
-        sub3E0->unk4 = 0;
-        sub3E0->unk2 = 0;
-        ZInit8(&sub3E0->bpaFile);
-        sub3E0->unk10 = 0;
-        sub3E0->unk18 = 0;
-        sub3E0->unk14 = 0;
-        sub3E0->unk20 = 0;
-        sub3E0->unk24 = sub3E0->unk1C = 0;
-        sub3E0->unk28 = 0;
+    for (unkC4Id = 0; unkC4Id < UNK_C4_ARR_COUNT; unkC4Id++) {
+        UnkGroundBg_C4 *subC4 = &groundBg->unkC4[unkC4Id];
+        subC4->unk0 = 0;
+        subC4->unk1 = 0;
+        subC4->unk4 = 0;
+        subC4->unk2 = 0;
+        ZInit8(&subC4->bpaFile);
+        subC4->unk10 = 0;
+        subC4->unk18 = 0;
+        subC4->unk14 = 0;
+        subC4->unk20 = 0;
+        subC4->unk24 = subC4->unk1C = 0;
+        subC4->unk28 = 0;
     }
 
-    r7 = groundBg->unk52C.unk2;
+    r7 = groundBg->unk2BC.unk2;
     s32 r5;
-    for (r5 = 0; r5 < groundBg->unk52C.unk4; r5++, r7++) {
+    for (r5 = 0; r5 < groundBg->unk2BC.unk4; r5++, r7++) {
         LayerSpecs *layerSpecs = &groundBg->layerSpecs[r5];
-        s32 vramId = (groundBg->unk52C.unkA + layerSpecs->numTiles);
-        void *vramPtr = ov11_02320C18[groundBg->unk52C.unk0][r7] + (vramId * 32);
+        s32 vramId = (groundBg->unk2BC.unkA + layerSpecs->numTiles);
+        void *vramPtr = ov11_02320C18[groundBg->unk2BC.unk0][r7] + (vramId * 32);
         s32 r8 = (r5 == 0) ? 0 : 2;
         s32 r9 = (r5 == 0) ? 0 : 4;
         layerSpecs = &groundBg->layerSpecs[r5];
@@ -726,32 +724,32 @@ void ov11_022EC27C(GroundBg *groundBg, s32 bgId)
 
         for (r6 = 0; r6 < 2; r6++, r9++, r8++) {
 
-            SubStruct_3E0 *sub3E0 = &groundBg->unk3E0[r8];
-            if (entry.others_bpa[r9].name[0] != '\0' && groundBg->unk52C.unk0 == 0) {
+            UnkGroundBg_C4 *subC4 = &groundBg->unkC4[r8];
+            if (entry.others_bpa[r9].name[0] != '\0' && groundBg->unk2BC.unk0 == 0) {
                 const struct BpaHeader *bpaHeader;
                 const void *r1, *r0;
 
                 sprintf(textBuf, ov11_02320C94, entry.others_bpa[r9].name);
-                LoadFileFromRom(&sub3E0->bpaFile, textBuf, flags);
-                sub3E0->unk0 = 1;
-                sub3E0->unk1 = 1;
-                bpaHeader = sub3E0->bpaFile.iov_base;
-                sub3E0->unk10 = bpaHeader;
+                LoadFileFromRom(&subC4->bpaFile, textBuf, flags);
+                subC4->unk0 = 1;
+                subC4->unk1 = 1;
+                bpaHeader = subC4->bpaFile.iov_base;
+                subC4->unk10 = bpaHeader;
                 r1 = &bpaHeader->durationPerFrame;
                 r0 = r1 + bpaHeader->numFrames * 4;
-                sub3E0->unk14 = sub3E0->unk18 = r1;
-                sub3E0->unk1C = sub3E0->unk20 = r0;
-                sub3E0->unk2 = 0;
-                sub3E0->unk4 = *((u32 *)sub3E0->unk18); // hm...
-                sub3E0->unk24 = vramPtr;
-                sub3E0->unk28 = layerSpecs->bpaSlotNumTiles[r6] * 32;
+                subC4->unk14 = subC4->unk18 = r1;
+                subC4->unk1C = subC4->unk20 = r0;
+                subC4->unk2 = 0;
+                subC4->unk4 = *((u32 *)subC4->unk18); // hm...
+                subC4->unk24 = vramPtr;
+                subC4->unk28 = layerSpecs->bpaSlotNumTiles[r6] * 32;
 
                 vramPtr += layerSpecs->bpaSlotNumTiles[r6] * 32;
             }
         }
     }
 
-    if (groundBg->unk52C.unk4 > 0) {
+    if (groundBg->unk2BC.unk4 > 0) {
         ov11_022EE620(groundBg, 1);
     }
     else {
@@ -1551,7 +1549,7 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
     const void *bmaData;
     const void *bplData;
     struct Unk_022C3938 sp2C;
-    SubStruct_0 *sub0Ptr;
+    UnkGroundBg_4 *sub4Ptr;
 
     if (bgId == -1 || dungLoc->id == 0xff) {
         ov11_022EC08C(groundBg);
@@ -1609,7 +1607,7 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
         struct UnkTwoPtrs unkPtrArray = zeros;
 
         unkPtrArray.ptrs[0] = groundBg->unk2D8;
-        bmaData = BmaLayerNrlDecompressor((void *) &unkPtrArray, bmaData, &groundBg->unk52C, &groundBg->bmaHeader);
+        bmaData = BmaLayerNrlDecompressor((void *) &unkPtrArray, bmaData, &groundBg->unk2BC, &groundBg->bmaHeader);
     }
 
     groundBg->unk1F0 = bmaData;
@@ -1625,7 +1623,7 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
                 groundBg->unk2D8);
     groundBg->unk17C = sp2C.unk0;
     groundBg->unk1B8 = sp2C.unk8;
-    groundBg->unk52C.unk18(groundBg->unk2D8, bmaData, bmaHeader, groundBg->unk52C.unk12);
+    groundBg->unk2BC.unk18(groundBg->unk2D8, bmaData, bmaHeader, groundBg->unk2BC.unk12);
 
     layerSpecs->numTiles = 512;
     for (i = 0; i < MAX_BPA_SLOTS; i++) {
@@ -1637,11 +1635,11 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
     groundBg->bplHeader.hasPalAnimations = FALSE;
     if (groundBg->unk1B8 != NULL) {
         const RGB_Array *strPtr = groundBg->unk1B8;
-        struct UnkStruct_2324CBC_Sub98 *unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk52C.unk0];
+        struct UnkStruct_2324CBC_Sub98 *unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk2BC.unk0];
         u16 palId = 0;
         s32 i, j;
 
-        for (i = 0; i < 12 && i < groundBg->unk52C.unk8; i++) {
+        for (i = 0; i < 12 && i < groundBg->unk2BC.unk8; i++) {
             sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
             strPtr++;
             for (j = 1; j < 16; j++) {
@@ -1657,7 +1655,7 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
             }
         }
 
-        for (; i < groundBg->unk52C.unk8; i++) {
+        for (; i < groundBg->unk2BC.unk8; i++) {
             sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
             for (j = 1; j < 16; j++) {
                 sub_0200A590(unkSubPtr, palId++, &ov11_02320BE8);
@@ -1667,8 +1665,8 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
     }
 
     groundBg->unk1EE = 0;
-    sub0Ptr = groundBg->unk0;
-    struct UnkStruct_2324CBC_Sub98 *unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk52C.unk0];
+    sub4Ptr = groundBg->unk4;
+    struct UnkStruct_2324CBC_Sub98 *unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk2BC.unk0];
     groundBg->unk1BC = 0;
     if (groundBg->unk194.unk8 != 0) {
         sub_02063628(&groundBg->unk1A0, unkSubPtr, 0x20);
@@ -1681,24 +1679,24 @@ void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
     groundBg->unk1FA = 0;
     groundBg->unk1FB = 0;
 
-    for (s32 unk0Id = 0; unk0Id < UNK_0_ARR_COUNT; unk0Id++, sub0Ptr++) {
-        sub0Ptr->unk0 = 0;
-        sub0Ptr->unk2 = 0;
-        sub0Ptr->unk4 = sub0Ptr->unk8 = 0;
+    for (s32 unk4Id = 0; unk4Id < UNK_4_ARR_COUNT; unk4Id++, sub4Ptr++) {
+        sub4Ptr->unk0 = 0;
+        sub4Ptr->unk2 = 0;
+        sub4Ptr->unk4 = sub4Ptr->unk8 = 0;
     }
 
-    for (s32 unk3E0Id = 0; unk3E0Id < UNK_3E0_ARR_COUNT; unk3E0Id++) {
-        SubStruct_3E0 *sub3E0 = &groundBg->unk3E0[unk3E0Id];
-        sub3E0->unk0 = 0;
-        sub3E0->unk1 = 0;
-        sub3E0->unk4 = 0;
-        sub3E0->unk2 = 0;
-        sub3E0->unk10 = 0;
-        sub3E0->unk18 = 0;
-        sub3E0->unk14 = 0;
-        sub3E0->unk20 = 0;
-        sub3E0->unk24 = sub3E0->unk1C = 0,
-        sub3E0->unk28 = 0;
+    for (s32 unkC4Id = 0; unkC4Id < UNK_C4_ARR_COUNT; unkC4Id++) {
+        UnkGroundBg_C4 *subC4 = &groundBg->unkC4[unkC4Id];
+        subC4->unk0 = 0;
+        subC4->unk1 = 0;
+        subC4->unk4 = 0;
+        subC4->unk2 = 0;
+        subC4->unk10 = 0;
+        subC4->unk18 = 0;
+        subC4->unk14 = 0;
+        subC4->unk20 = 0;
+        subC4->unk24 = subC4->unk1C = 0,
+        subC4->unk28 = 0;
     }
 
     ov11_022EE620(groundBg, 1);
@@ -1716,7 +1714,7 @@ void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
     s32 i;
     s32 sp24, sp28;
     struct Unk_022C3938 sp2C;
-    SubStruct_0 *sub0Ptr;
+    UnkGroundBg_4 *sub4Ptr;
 
     if (bgId == -1 || dungLoc->id == 0xff) {
         ov11_022EC08C(groundBg);
@@ -1766,7 +1764,7 @@ void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
                 groundBg->unk2D8);
     groundBg->unk17C = sp2C.unk0;
     groundBg->unk1B8 = sp2C.unk8;
-    groundBg->unk52C.unk18(groundBg->unk2D8, NULL, bmaHeader, groundBg->unk52C.unk12);
+    groundBg->unk2BC.unk18(groundBg->unk2D8, NULL, bmaHeader, groundBg->unk2BC.unk12);
 
     layerSpecs->numTiles = 512;
     for (i = 0; i < MAX_BPA_SLOTS; i++) {
@@ -1778,11 +1776,11 @@ void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
     groundBg->bplHeader.hasPalAnimations = FALSE;
     if (groundBg->unk1B8 != NULL) {
         const RGB_Array *strPtr = groundBg->unk1B8;
-        struct UnkStruct_2324CBC_Sub98 *unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk52C.unk0];
+        struct UnkStruct_2324CBC_Sub98 *unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk2BC.unk0];
         u16 palId = 0;
         s32 i, j;
 
-        for (i = 0; i < 12 && i < groundBg->unk52C.unk8; i++) {
+        for (i = 0; i < 12 && i < groundBg->unk2BC.unk8; i++) {
             sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
             strPtr++;
             for (j = 1; j < 16; j++) {
@@ -1798,7 +1796,7 @@ void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
             }
         }
 
-        for (; i < groundBg->unk52C.unk8; i++) {
+        for (; i < groundBg->unk2BC.unk8; i++) {
             sub_0200A590(unkSubPtr, palId++, &ov11_02320BF4);
             for (j = 1; j < 16; j++) {
                 sub_0200A590(unkSubPtr, palId++, &ov11_02320BE8);
@@ -1808,8 +1806,8 @@ void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
     }
 
     groundBg->unk1EE = 0;
-    sub0Ptr = groundBg->unk0;
-    struct UnkStruct_2324CBC_Sub98 *unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk52C.unk0];
+    sub4Ptr = groundBg->unk4;
+    struct UnkStruct_2324CBC_Sub98 *unkSubPtr = &ov11_02324CBC->unk98[groundBg->unk2BC.unk0];
     groundBg->unk1BC = 0;
     if (groundBg->unk194.unk8 != 0) {
         sub_02063628(&groundBg->unk1A0, unkSubPtr, 0x20);
@@ -1822,24 +1820,24 @@ void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
     groundBg->unk1FA = 0;
     groundBg->unk1FB = 0;
 
-    for (s32 unk0Id = 0; unk0Id < UNK_0_ARR_COUNT; unk0Id++, sub0Ptr++) {
-        sub0Ptr->unk0 = 0;
-        sub0Ptr->unk2 = 0;
-        sub0Ptr->unk4 = sub0Ptr->unk8 = 0;
+    for (s32 unk4Id = 0; unk4Id < UNK_4_ARR_COUNT; unk4Id++, sub4Ptr++) {
+        sub4Ptr->unk0 = 0;
+        sub4Ptr->unk2 = 0;
+        sub4Ptr->unk4 = sub4Ptr->unk8 = 0;
     }
 
-    for (s32 unk3E0Id = 0; unk3E0Id < UNK_3E0_ARR_COUNT; unk3E0Id++) {
-        SubStruct_3E0 *sub3E0 = &groundBg->unk3E0[unk3E0Id];
-        sub3E0->unk0 = 0;
-        sub3E0->unk1 = 0;
-        sub3E0->unk4 = 0;
-        sub3E0->unk2 = 0;
-        sub3E0->unk10 = 0;
-        sub3E0->unk18 = 0;
-        sub3E0->unk14 = 0;
-        sub3E0->unk20 = 0;
-        sub3E0->unk24 = sub3E0->unk1C = 0,
-        sub3E0->unk28 = 0;
+    for (s32 unkC4Id = 0; unkC4Id < UNK_C4_ARR_COUNT; unkC4Id++) {
+        UnkGroundBg_C4 *subC4 = &groundBg->unkC4[unkC4Id];
+        subC4->unk0 = 0;
+        subC4->unk1 = 0;
+        subC4->unk4 = 0;
+        subC4->unk2 = 0;
+        subC4->unk10 = 0;
+        subC4->unk18 = 0;
+        subC4->unk14 = 0;
+        subC4->unk20 = 0;
+        subC4->unk24 = subC4->unk1C = 0,
+        subC4->unk28 = 0;
     }
 
     groundBg->unk2B8 = 1;
@@ -1849,5 +1847,3 @@ void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc,
     TRY_CLOSE_FILE(groundBg->bpcFile);
     TRY_CLOSE_FILE(groundBg->bmaFile);
 }
-
-//

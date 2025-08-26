@@ -2,7 +2,7 @@
 
 // TODO: Merge with ground_bg.c once the functions in the middle are decompiled
 
-const u8 * BmaLayerNrlDecompressor(u16 **dstArray, const void *bmaData, SubStruct_52C *a2, BmaHeader *bmaHeader)
+const u8 * BmaLayerNrlDecompressor(u16 **dstArray, const void *bmaData, UnkGroundBg_2BC *a2, BmaHeader *bmaHeader)
 {
     s32 i, k, j, l;
     const u8 *src = bmaData;

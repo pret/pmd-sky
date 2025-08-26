@@ -3,11 +3,11 @@
 
 	.text
 
-	arm_func_start ov21_0238A140
-ov21_0238A140: ; 0x0238A140
+	arm_func_start SwapShopDialogueManager
+SwapShopDialogueManager: ; 0x0238A140
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #0x180
-	ldr r4, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r4, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r4]
 	str r0, [r1]
 	ldr r0, [r4]
@@ -84,7 +84,7 @@ _0238A168: ; jump table
 	b _0238B7B8 ; case 65
 	b _0238B7B8 ; case 66
 _0238A274:
-	ldr r0, _0238B090 ; =ov21_0238CBB8
+	ldr r0, _0238B090 ; =SWAP_SHOP_TALK_WELCOME_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
@@ -105,36 +105,36 @@ _0238A274:
 	mov r1, #3
 	mov r2, #1
 	bl CreatePortraitBox
-	ldr r2, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r2, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, _0238B09C ; =0x000001EF
 	ldr r3, [r2]
 	strb r0, [r3, #0x81]
 	ldr r0, [r2]
 	add r0, r0, #0xc8
 	bl InitPortraitParamsWithMonsterId
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0xc8
 	bl SetPortraitLayout
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r0]
 	add r0, r1, #0xc8
 	ldr r1, [r1, #0x28]
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
 	bl SetPortraitEmotion
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
 	add r1, r1, #0xc8
 	bl ShowPortraitInPortraitBox
 	b _0238B7B8
 _0238A32C:
-	ldr r0, _0238B0A0 ; =ov21_0238CBD4
+	ldr r0, _0238B0A0 ; =SWAP_SHOP_MAIN_MENU_OPTIONS_DEBUG_STRING
 	bl Debug_Print0
 	ldr r0, _0238B0A4 ; =SWAP_SHOP_WINDOW_PARAMS_1
-	ldr r1, _0238B0A8 ; =ov21_0238C9A4
+	ldr r1, _0238B0A8 ; =SwapShopPrintCurrentGold
 	bl CreateTextBox
 	mov r2, r4
 	ldr r2, [r2]
@@ -146,14 +146,14 @@ _0238A32C:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
 	b _0238B7B8
 _0238A378:
-	ldr r0, _0238B0B8 ; =ov21_0238CBF8
+	ldr r0, _0238B0B8 ; =SWAP_SHOP_TALK_CONTINUE_SWAP_DEBUG_STRING
 	bl Debug_Print0
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r2, #0
@@ -178,7 +178,7 @@ _0238A378:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A3E0:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #0x21
@@ -217,14 +217,14 @@ _0238A44C:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
 	b _0238B7B8
 _0238A478:
-	ldr r0, _0238B0C8 ; =ov21_0238CC18
+	ldr r0, _0238B0C8 ; =SWAP_SHOP_TALK_SUBINFO_DEBUG_STRING
 	bl Debug_Print0
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #0x20
@@ -256,7 +256,7 @@ _0238A478:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A4EC:
-	ldr r0, _0238B0C8 ; =ov21_0238CC18
+	ldr r0, _0238B0C8 ; =SWAP_SHOP_TALK_SUBINFO_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 	ldr r2, [r0]
@@ -279,9 +279,9 @@ _0238A4EC:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A520:
-	ldr r0, _0238B0C8 ; =ov21_0238CC18
+	ldr r0, _0238B0C8 ; =SWAP_SHOP_TALK_SUBINFO_DEBUG_STRING
 	bl Debug_Print0
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #2
@@ -309,9 +309,9 @@ _0238A520:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A594:
-	ldr r0, _0238B0D8 ; =ov21_0238CC3C
+	ldr r0, _0238B0D8 ; =SWAP_SHOP_TALK_COME_AGAIN_DEBUG_STRING
 	bl Debug_Print0
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r2, #4
@@ -340,7 +340,7 @@ _0238A594:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A5FC:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #1
@@ -368,9 +368,9 @@ _0238A5FC:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A668:
-	ldr r0, _0238B0E0 ; =ov21_0238CC5C
+	ldr r0, _0238B0E0 ; =SWAP_SHOP_TALK_LACKING_SWAP_ITEMS_DEBUG_STRING
 	bl Debug_Print0
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #1
@@ -398,9 +398,9 @@ _0238A668:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A6DC:
-	ldr r0, _0238B0E8 ; =ov21_0238CC7C
+	ldr r0, _0238B0E8 ; =SWAP_SHOP_TALK_SWAP_BROKE_DEBUG_STRING
 	bl Debug_Print0
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #1
@@ -432,9 +432,9 @@ _0238A6DC:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A750:
-	ldr r0, _0238B0EC ; =ov21_0238CC9C
+	ldr r0, _0238B0EC ; =SWAP_SHOP_TALK_SWAP_POOR_DEBUG_STRING
 	bl Debug_Print0
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r2, #0x96
@@ -469,9 +469,9 @@ _0238A750:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A7D0:
-	ldr r0, _0238B0F4 ; =ov21_0238CCC0
+	ldr r0, _0238B0F4 ; =SWAP_SHOP_UNK_8_DEBUG_STRING
 	bl Debug_Print0
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #0xd
@@ -503,14 +503,14 @@ _0238A7D0:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A844:
-	ldr r0, _0238B0F8 ; =ov21_0238CCE4
+	ldr r0, _0238B0F8 ; =SWAP_SHOP_CLOSE_SHOP_DEBUG_STRING
 	bl Debug_Print0
 	bl ov11_022DC504
 	b _0238B7B8
 _0238A854:
-	ldr r0, _0238B0FC ; =ov21_0238CD00
+	ldr r0, _0238B0FC ; =SWAP_SHOP_TALK_WHAT_ITEMS_DEBUG_STRING
 	bl Debug_Print0
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r2, #0xb
@@ -545,7 +545,7 @@ _0238A854:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A8D4:
-	ldr r0, _0238B100 ; =ov21_0238CD24
+	ldr r0, _0238B100 ; =SWAP_SHOP_TALK_VALUABLE_SWAP_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
@@ -577,7 +577,7 @@ _0238A8D4:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238A950:
-	ldr r0, _0238B108 ; =ov21_0238CD44
+	ldr r0, _0238B108 ; =SWAP_SHOP_INIT_SWAP_ITEMS_MENU_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 	ldr r0, [r0]
@@ -593,15 +593,15 @@ _0238A950:
 	bl HidePortraitBox
 	b _0238B7B8
 _0238A98C:
-	ldr r0, _0238B10C ; =ov21_0238CD68
+	ldr r0, _0238B10C ; =SWAP_SHOP_SWAP_ITEMS_MENU_DEBUG_STRING
 	bl Debug_Print0
 	bl ov11_0230C910
 	mov r0, #0
 	mov r1, r0
-	bl ov11_0230B20C
+	bl SwapShopInventoryManager
 	b _0238B7B8
 _0238A9A8:
-	ldr r0, _0238B110 ; =ov21_0238CD8C
+	ldr r0, _0238B110 ; =SWAP_SHOP_RETURN_SWAP_ITEMS_MENU_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 	ldr r0, [r0]
@@ -618,7 +618,7 @@ _0238A9A8:
 	bl ov11_0230BB98
 	b _0238B7B8
 _0238A9E8:
-	ldr r0, _0238B114 ; =ov21_0238CDB4
+	ldr r0, _0238B114 ; =SWAP_SHOP_SELECT_SWAP_ITEM_OPTIONS_DEBUG_STRING
 	bl Debug_Print0
 	mov r4, #3
 	ldr r0, _0238B118 ; =SWAP_SHOP_WINDOW_PARAMS_6
@@ -627,16 +627,16 @@ _0238A9E8:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
 	b _0238B7B8
 _0238AA1C:
-	ldr r0, _0238B124 ; =ov21_0238CDDC
+	ldr r0, _0238B124 ; =SWAP_SHOP_SWAP_ITEM_GET_INFO_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 	ldr r5, [r0]
-	ldr r2, _0238B128 ; =ov21_0238CE00
+	ldr r2, _0238B128 ; =SWAP_SHOP_ITEM_ZERO_STRING
 	ldrsh r4, [r5, #0xe]
 	ldr r3, _0238B12C ; =0x0000C402
 	mov r1, #0x400
@@ -651,7 +651,7 @@ _0238AA1C:
 	bl PreprocessString
 	add r0, sp, #0x18
 	bl InitPreprocessorArgs
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	add r1, sp, #0x18
 	ldr r3, [r0]
 	ldr r0, _0238B130 ; =SWAP_SHOP_WINDOW_PARAMS_8
@@ -677,12 +677,12 @@ _0238AA1C:
 	ldr r3, _0238B138 ; =0x0000033E
 	mov r2, #0
 	bl CreateScrollBoxSingle
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x85]
 	b _0238B7B8
 _0238AAC0:
-	ldr r0, _0238B13C ; =ov21_0238CE0C
+	ldr r0, _0238B13C ; =SWAP_SHOP_TALK_CONFIRM_SWAP_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
@@ -711,7 +711,7 @@ _0238AAC0:
 	str r2, [r1, #4]
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0xe]
-	bl ov21_0238B7E0
+	bl GetFirstExclusivePrerequisite
 	mov r1, r4
 	ldr r4, [r1]
 	add r3, r0, #1
@@ -746,7 +746,7 @@ _0238AB90:
 	cmp r0, #3
 	ldr r1, _0238B094 ; =0x00003008
 	bne _0238ABC0
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 #ifdef JAPAN
 	ldr r2, _0238C6B0 ; =0x0000329B
 #else
@@ -758,7 +758,7 @@ _0238AB90:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238ABC0:
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r2, _0238B144 ; =0x000003BB
 	ldr r3, [r0]
 	ldrsb r0, [r3, #0x80]
@@ -766,13 +766,13 @@ _0238ABC0:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238ABDC:
-	ldr r0, _0238B148 ; =ov21_0238CE34
+	ldr r0, _0238B148 ; =SWAP_SHOP_CONFIRM_CHOICE_DEBUG_STRING
 	bl Debug_Print0
 	mov r1, r4
 	ldr r2, [r1]
 	mov r3, #0x96
 	ldr r0, _0238B0A4 ; =SWAP_SHOP_WINDOW_PARAMS_1
-	ldr r1, _0238B0A8 ; =ov21_0238C9A4
+	ldr r1, _0238B0A8 ; =SwapShopPrintCurrentGold
 	str r3, [r2, #0x54]
 	bl CreateTextBox
 	mov r2, r4
@@ -785,12 +785,12 @@ _0238ABDC:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
 	b _0238B7B8
 _0238AC38:
-	ldr r0, _0238B150 ; =ov21_0238CE4C
+	ldr r0, _0238B150 ; =SWAP_SHOP_INIT_SCRIPT_ACTION_1_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
@@ -808,7 +808,7 @@ _0238AC38:
 	bl HidePortraitBox
 	b _0238B7B8
 _0238AC7C:
-	ldr r0, _0238B154 ; =ov21_0238CE78
+	ldr r0, _0238B154 ; =SWAP_SHOP_INIT_SCRIPT_ACTION_2_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
@@ -826,7 +826,7 @@ _0238AC7C:
 	bl HidePortraitBox
 	b _0238B7B8
 _0238ACC0:
-	ldr r0, _0238B158 ; =ov21_0238CEA4
+	ldr r0, _0238B158 ; =SWAP_SHOP_INIT_SCRIPT_ACTION_3_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 	ldr r1, [r0]
@@ -918,7 +918,7 @@ _0238ADB0:
 	ldrsb r0, [r0, #0x81]
 	bl HidePortraitBox
 _0238ADE4:
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r0]
 	ldrb r0, [r1, #0xc]
 	cmp r0, #0
@@ -953,7 +953,7 @@ _0238AE44:
 	add r3, r3, #0x30
 	bl ShowStringIdInDialogueBox
 _0238AE54:
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	str r2, [r1, #0x28]
@@ -963,7 +963,7 @@ _0238AE54:
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
 	bl SetPortraitEmotion
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
 	add r1, r1, #0xc8
@@ -995,7 +995,7 @@ _0238AE94:
 	bl ShowPortraitInPortraitBox
 	b _0238B7B8
 _0238AEF4:
-	ldr r0, _0238B164 ; =ov21_0238CED0
+	ldr r0, _0238B164 ; =SWAP_SHOP_TEXT_PUT_IN_CAULDRON_DEBUG_STRING
 	bl Debug_Print0
 	mov r0, r4
 #ifdef JAPAN
@@ -1029,14 +1029,14 @@ _0238AEF4:
 #ifdef JAPAN
 	mov r0, r4
 #else
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 #endif
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x81]
 	bl HidePortraitBox
 	b _0238B7B8
 _0238AF50:
-	ldr r0, _0238B16C ; =ov21_0238CEF8
+	ldr r0, _0238B16C ; =SWAP_SHOP_DO_SWAP_THEN_TALK_DEBUG_STRING
 	bl Debug_Print0
 	mvn r0, #0x95
 	bl AddMoneyCarried
@@ -1057,7 +1057,7 @@ _0238AF88:
 	cmp r5, r0
 	blt _0238AF78
 	mov r5, #0
-	ldr r4, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r4, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	b _0238AFB8
 _0238AFA4:
 	add r0, r1, r5, lsl #1
@@ -1073,7 +1073,7 @@ _0238AFB8:
 	blt _0238AFA4
 	bl RemoveEmptyItemsInBag
 	bl sub_0201007C
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0xe]
 	bl sub_02013150
@@ -1089,12 +1089,12 @@ _0238AFE8:
 	mov sl, r4
 	mov sb, #1
 	add r7, sp, #0xc
-	ldr r6, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r6, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	b _0238B05C
 _0238B018:
 	ldr r0, [r6]
 	ldrsh r0, [r0, #0xe]
-	bl ov21_0238B7E0
+	bl GetFirstExclusivePrerequisite
 	add r2, r4, r0
 	mov r0, r8
 	mov r1, r7
@@ -1117,11 +1117,11 @@ _0238B064:
 	bl IsBagFull
 	cmp r0, #0
 	beq _0238B170
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe
 	bl AddBulkItemToStorage
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #1
 	b _0238B188
 	.align 2, 0
@@ -1130,25 +1130,25 @@ _0238B064:
 #else
 #define OV21_238A140_OFFSET 0
 #endif
-_0238B08C: .word OVERLAY21_UNKNOWN_POINTER__NA_238CF40
-_0238B090: .word ov21_0238CBB8
+_0238B08C: .word SWAP_SHOP_MENU_DATA_PTR
+_0238B090: .word SWAP_SHOP_TALK_WELCOME_DEBUG_STRING
 _0238B094: .word 0x00003008
 _0238B098: .word 0x000003B2 + OV21_238A140_OFFSET
 _0238B09C: .word 0x000001EF
-_0238B0A0: .word ov21_0238CBD4
+_0238B0A0: .word SWAP_SHOP_MAIN_MENU_OPTIONS_DEBUG_STRING
 _0238B0A4: .word SWAP_SHOP_WINDOW_PARAMS_1
-_0238B0A8: .word ov21_0238C9A4
+_0238B0A8: .word SwapShopPrintCurrentGold
 _0238B0AC: .word 0x00300013
 _0238B0B0: .word SWAP_SHOP_MAIN_MENU_ITEMS_2
 _0238B0B4: .word SWAP_SHOP_WINDOW_PARAMS_5
-_0238B0B8: .word ov21_0238CBF8
+_0238B0B8: .word SWAP_SHOP_TALK_CONTINUE_SWAP_DEBUG_STRING
 _0238B0BC: .word 0x000003B3 + OV21_238A140_OFFSET
 #ifdef JAPAN
 _0238C620: .word 0x000032AF
 #endif
 _0238B0C0: .word SWAP_SHOP_WINDOW_PARAMS_7
 _0238B0C4: .word SWAP_SHOP_SUBMENU_ITEMS_2
-_0238B0C8: .word ov21_0238CC18
+_0238B0C8: .word SWAP_SHOP_TALK_SUBINFO_DEBUG_STRING
 _0238B0CC: .word 0x00003018
 #ifdef JAPAN
 _0238C634: .word 0x000032A5
@@ -1156,58 +1156,58 @@ _0238C634: .word 0x000032A5
 _0238B0D0: .word 0x000003C5
 #endif
 _0238B0D4: .word 0x000003C7 + OV21_238A140_OFFSET
-_0238B0D8: .word ov21_0238CC3C
+_0238B0D8: .word SWAP_SHOP_TALK_COME_AGAIN_DEBUG_STRING
 #ifdef JAPAN
 _0238C640: .word 0x000032A7
 #endif
 _0238B0DC: .word 0x000003B7 + OV21_238A140_OFFSET
-_0238B0E0: .word ov21_0238CC5C
+_0238B0E0: .word SWAP_SHOP_TALK_LACKING_SWAP_ITEMS_DEBUG_STRING
 _0238B0E4: .word 0x000003B6 + OV21_238A140_OFFSET
-_0238B0E8: .word ov21_0238CC7C
+_0238B0E8: .word SWAP_SHOP_TALK_SWAP_BROKE_DEBUG_STRING
 #ifdef JAPAN
 _0238C654: .word 0x00003293
-_0238B0EC: .word ov21_0238CC9C
-_0238B0F4: .word ov21_0238CCC0
+_0238B0EC: .word SWAP_SHOP_TALK_SWAP_POOR_DEBUG_STRING
+_0238B0F4: .word SWAP_SHOP_UNK_8_DEBUG_STRING
 _0238C660: .word 0x000032A3
 #else
-_0238B0EC: .word ov21_0238CC9C
+_0238B0EC: .word SWAP_SHOP_TALK_SWAP_POOR_DEBUG_STRING
 _0238B0F0: .word 0x000003B5
-_0238B0F4: .word ov21_0238CCC0
+_0238B0F4: .word SWAP_SHOP_UNK_8_DEBUG_STRING
 #endif
-_0238B0F8: .word ov21_0238CCE4
-_0238B0FC: .word ov21_0238CD00
+_0238B0F8: .word SWAP_SHOP_CLOSE_SHOP_DEBUG_STRING
+_0238B0FC: .word SWAP_SHOP_TALK_WHAT_ITEMS_DEBUG_STRING
 #ifdef JAPAN
 _0238C66C: .word 0x00003297
 #endif
-_0238B100: .word ov21_0238CD24
+_0238B100: .word SWAP_SHOP_TALK_VALUABLE_SWAP_DEBUG_STRING
 _0238B104: .word 0x000003C2 + OV21_238A140_OFFSET
-_0238B108: .word ov21_0238CD44
-_0238B10C: .word ov21_0238CD68
-_0238B110: .word ov21_0238CD8C
-_0238B114: .word ov21_0238CDB4
+_0238B108: .word SWAP_SHOP_INIT_SWAP_ITEMS_MENU_DEBUG_STRING
+_0238B10C: .word SWAP_SHOP_SWAP_ITEMS_MENU_DEBUG_STRING
+_0238B110: .word SWAP_SHOP_RETURN_SWAP_ITEMS_MENU_DEBUG_STRING
+_0238B114: .word SWAP_SHOP_SELECT_SWAP_ITEM_OPTIONS_DEBUG_STRING
 _0238B118: .word SWAP_SHOP_WINDOW_PARAMS_6
 _0238B11C: .word 0x00400013
 _0238B120: .word SWAP_SHOP_MAIN_MENU_ITEMS_1
-_0238B124: .word ov21_0238CDDC
-_0238B128: .word ov21_0238CE00
+_0238B124: .word SWAP_SHOP_SWAP_ITEM_GET_INFO_DEBUG_STRING
+_0238B128: .word SWAP_SHOP_ITEM_ZERO_STRING
 _0238B12C: .word 0x0000C402
 _0238B130: .word SWAP_SHOP_WINDOW_PARAMS_8
 _0238B134: .word 0x00001013
 #ifdef JAPAN
 _0238B138: .word 0x00003203
-_0238B13C: .word ov21_0238CE0C
+_0238B13C: .word SWAP_SHOP_TALK_CONFIRM_SWAP_DEBUG_STRING
 _0238C6B0: .word 0x0000329B
 #else
 _0238B138: .word 0x0000033E
-_0238B13C: .word ov21_0238CE0C
+_0238B13C: .word SWAP_SHOP_TALK_CONFIRM_SWAP_DEBUG_STRING
 _0238B140: .word 0x000003BD
 #endif
 _0238B144: .word 0x000003BB + OV21_238A140_OFFSET
-_0238B148: .word ov21_0238CE34
+_0238B148: .word SWAP_SHOP_CONFIRM_CHOICE_DEBUG_STRING
 _0238B14C: .word SWAP_SHOP_MENU_ITEMS_CONFIRM
-_0238B150: .word ov21_0238CE4C
-_0238B154: .word ov21_0238CE78
-_0238B158: .word ov21_0238CEA4
+_0238B150: .word SWAP_SHOP_INIT_SCRIPT_ACTION_1_DEBUG_STRING
+_0238B154: .word SWAP_SHOP_INIT_SCRIPT_ACTION_2_DEBUG_STRING
+_0238B158: .word SWAP_SHOP_INIT_SCRIPT_ACTION_3_DEBUG_STRING
 #ifdef JAPAN
 _0238C6CC: .word 0x000032A2
 _0238B15C: .word 0x000032A0
@@ -1217,24 +1217,24 @@ _0238B160: .word 0x00003299
 _0238B15C: .word 0x000003C1
 _0238B160: .word 0x000003BA
 #endif
-_0238B164: .word ov21_0238CED0
+_0238B164: .word SWAP_SHOP_TEXT_PUT_IN_CAULDRON_DEBUG_STRING
 _0238B168: .word 0x00001311
 #ifdef JAPAN
 _0238C6E4: .word 0x0000329E
 #endif
-_0238B16C: .word ov21_0238CEF8
+_0238B16C: .word SWAP_SHOP_DO_SWAP_THEN_TALK_DEBUG_STRING
 _0238B170:
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe
 	bl SpecialProcAddItemToBag
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #0
 _0238B188:
 	ldr r0, [r0]
 	mov r2, #0x12
 	strb r1, [r0, #0xc]
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r0]
 	str r2, [r1, #4]
 	ldr r2, [r0]
@@ -1249,12 +1249,12 @@ _0238B188:
 	mov r1, r1, lsl #0x18
 	mov r1, r1, asr #0x18
 	bl SetPortraitEmotion
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #0x81]
 	add r1, r1, #0xc8
 	bl ShowPortraitInPortraitBox
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, _0238B0CC ; =0x00003018
 	ldr r3, [r0]
 	ldr r2, _0238B7C0 ; =0x000003BE
@@ -1295,7 +1295,7 @@ _0238B260:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
 	b _0238B7B8
@@ -1398,7 +1398,7 @@ _0238B3B8:
 	bl GetTeamMember
 	ldrsh r1, [r0, #4]
 	mov r0, #2
-	bl ov11_0230B20C
+	bl SwapShopInventoryManager
 	b _0238B7B8
 _0238B408:
 	ldr r0, _0238B118 ; =SWAP_SHOP_WINDOW_PARAMS_6
@@ -1408,13 +1408,13 @@ _0238B408:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
 	b _0238B7B8
 _0238B434:
 	ldrsh r1, [r0, #0xe]
-	ldr r2, _0238B128 ; =ov21_0238CE00
+	ldr r2, _0238B128 ; =SWAP_SHOP_ITEM_ZERO_STRING
 	ldr r3, _0238B12C ; =0x0000C402
 	str r1, [r0, #0x40]
 	ldr r5, [r4]
@@ -1428,7 +1428,7 @@ _0238B434:
 	bl PreprocessString
 	add r0, sp, #0xe0
 	bl InitPreprocessorArgs
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	add r1, sp, #0xe0
 	ldr r4, [r0]
 	ldr r0, _0238B130 ; =SWAP_SHOP_WINDOW_PARAMS_8
@@ -1455,12 +1455,12 @@ _0238B434:
 	mov r2, #0
 	str r4, [sp, #8]
 	bl CreateScrollBoxSingle
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x85]
 	b _0238B7B8
 _0238B4CC:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #0x36
@@ -1492,7 +1492,7 @@ _0238B4CC:
 	bl ShowStringIdInDialogueBox
 	b _0238B7B8
 _0238B538:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #0x37
@@ -1531,7 +1531,7 @@ _0238B5A4:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
 	b _0238B7B8
@@ -1584,13 +1584,13 @@ _0238B640:
 	ldr r1, [r1]
 	mov r0, #3
 	ldrh r1, [r1, #0xd8]
-	bl ov11_0230B20C
+	bl SwapShopInventoryManager
 	b _0238B7B8
 _0238B684:
 	bl ov11_0230BB98
 	b _0238B7B8
 _0238B68C:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, r4
 	ldr r1, [r0]
 	mov r3, #1
@@ -1629,13 +1629,13 @@ _0238B6F8:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x83]
 	b _0238B7B8
 _0238B724:
 	ldrsh r1, [r0, #0x18]
-	ldr r2, _0238B128 ; =ov21_0238CE00
+	ldr r2, _0238B128 ; =SWAP_SHOP_ITEM_ZERO_STRING
 	ldr r3, _0238B12C ; =0x0000C402
 	str r1, [r0, #0x40]
 	ldr r5, [r4]
@@ -1649,7 +1649,7 @@ _0238B724:
 	bl PreprocessString
 	add r0, sp, #0x130
 	bl InitPreprocessorArgs
-	ldr r0, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	add r1, sp, #0x130
 	ldr r4, [r0]
 	ldr r0, _0238B130 ; =SWAP_SHOP_WINDOW_PARAMS_8
@@ -1676,7 +1676,7 @@ _0238B724:
 	mov r2, #0
 	str r4, [sp, #8]
 	bl CreateScrollBoxSingle
-	ldr r1, _0238B08C ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B08C ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0x85]
 _0238B7B8:
@@ -1695,10 +1695,10 @@ _0238CD54: .word 0x000032AB
 _0238B7D8: .word 0x000003B9
 _0238B7DC: .word 0x000003C9
 #endif
-	arm_func_end ov21_0238A140
+	arm_func_end SwapShopDialogueManager
 
-	arm_func_start ov21_0238B7E0
-ov21_0238B7E0: ; 0x0238B7E0
+	arm_func_start GetFirstExclusivePrerequisite
+GetFirstExclusivePrerequisite: ; 0x0238B7E0
 	cmp r0, #0x1bc
 	blt _0238B7F8
 	ldr r1, _0238B834 ; =0x000001C3
@@ -1728,15 +1728,15 @@ _0238B838: .word 0x000002FE
 _0238B83C: .word 0x000001C7
 _0238B840: .word 0x00000336
 _0238B844: .word 0xFFFFFE06
-	arm_func_end ov21_0238B7E0
+	arm_func_end GetFirstExclusivePrerequisite
 
-	arm_func_start ov21_0238B848
-ov21_0238B848: ; 0x0238B848
+	arm_func_start SwapShopEntryPoint
+SwapShopEntryPoint: ; 0x0238B848
 	stmdb sp!, {r3, lr}
 	ldr r0, _0238B8F0 ; =0x0000093C
 	mov r1, #6
 	bl MemAlloc
-	ldr r1, _0238B8F4 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238B8F4 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0
 	str r0, [r1]
 	str r3, [r0, #0x1c]
@@ -1756,7 +1756,7 @@ ov21_0238B848: ; 0x0238B848
 	ldr r0, [r1]
 	add r0, r0, #0x30
 	bl InitPreprocessorArgs
-	ldr r0, _0238B8F4 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B8F4 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r3, _0238B8F8 ; =0x000001EF
 	ldr r2, [r0]
 	mov r1, #0
@@ -1766,41 +1766,41 @@ ov21_0238B848: ; 0x0238B848
 	ldr r0, [r0]
 	str r1, [r0, #8]
 	bl ov11_0230C910
-	ldr r0, _0238B8F4 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B8F4 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	mov r0, #0x41
 	str r2, [r1, #0x28]
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0238B8F0: .word 0x0000093C
-_0238B8F4: .word OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+_0238B8F4: .word SWAP_SHOP_MENU_DATA_PTR
 _0238B8F8: .word 0x000001EF
-	arm_func_end ov21_0238B848
+	arm_func_end SwapShopEntryPoint
 
-	arm_func_start ov21_0238B8FC
-ov21_0238B8FC: ; 0x0238B8FC
+	arm_func_start SwapShopDestructor
+SwapShopDestructor: ; 0x0238B8FC
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238B924 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B924 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _0238B924 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238B924 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #0
 	str r1, [r0]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238B924: .word OVERLAY21_UNKNOWN_POINTER__NA_238CF40
-	arm_func_end ov21_0238B8FC
+_0238B924: .word SWAP_SHOP_MENU_DATA_PTR
+	arm_func_end SwapShopDestructor
 
-	arm_func_start ov21_0238B928
-ov21_0238B928: ; 0x0238B928
+	arm_func_start SwapShopMainManager
+SwapShopMainManager: ; 0x0238B928
 	stmdb sp!, {lr}
 	sub sp, sp, #0xc
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r3, [r0]
 	ldr r1, [r3, #0x2c]
 	cmp r1, #8
@@ -1901,8 +1901,8 @@ _0238BA9C:
 	cmp r0, #0
 	bne _0238C7E4
 	mov r0, #0x1b
-	bl ov21_0238A140
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl SwapShopDialogueManager
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
 	bl ShowDialogueBox
@@ -1913,7 +1913,7 @@ _0238BAC8:
 	bne _0238C7E4
 	bl ov11_02310C2C
 	mov r0, #0xc
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238BAE4:
 	bl ov11_0230BA64
@@ -1923,7 +1923,7 @@ _0238BAE4:
 	beq _0238BB28
 	b _0238BB44
 _0238BAFC:
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	mov r3, #0x1f
@@ -1935,12 +1935,12 @@ _0238BAFC:
 	str r1, [r0, #4]
 	b _0238C7E4
 _0238BB28:
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe
 	bl ov11_0230B8C0
 	mov r0, #0xe
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238BB44:
 	bl ov11_0230BD28
@@ -1955,12 +1955,12 @@ _0238BB44:
 	ldr r0, _0238C8D4 ; =0x00003F02
 	mov r1, #0x100
 	bl sub_02017C74
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe
 	bl ov11_0230B8C0
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0xf
 	ldr r2, [r0]
 	mov r1, #0x43
@@ -1980,7 +1980,7 @@ _0238BBA8:
 	bl GetMoneyCarried
 	cmp r0, #0
 	bne _0238BC00
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	mov r3, #0x1f
@@ -1995,7 +1995,7 @@ _0238BC00:
 	bl GetMoneyCarried
 	cmp r0, #0x96
 	bge _0238BC38
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	mov r3, #0x1f
@@ -2010,7 +2010,7 @@ _0238BC38:
 	bl ov11_0230B914
 	cmp r0, #0
 	bne _0238BC78
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov ip, #0
 	ldr r1, [r0]
 	mov r3, #0x1f
@@ -2033,7 +2033,7 @@ _0238BC78:
 	add r1, r2, r1
 	cmp r1, r0
 	bge _0238BCC8
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	mov r3, #0x1f
@@ -2046,7 +2046,7 @@ _0238BC78:
 	b _0238C7E4
 _0238BCC8:
 	bl ov11_0230B958
-	ldr r1, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov ip, #0
 	ldr r2, [r1]
 	mov r3, #0x1f
@@ -2060,8 +2060,8 @@ _0238BCC8:
 	str r2, [r0, #4]
 	b _0238C7E4
 _0238BD00:
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0xf
 	ldr r2, [r0]
 	mov r1, #0x43
@@ -2070,9 +2070,9 @@ _0238BD00:
 	str r1, [r0]
 	b _0238C7E4
 _0238BD24:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	bl ov11_0230BCF8
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #0xd
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2082,16 +2082,16 @@ _0238BD40:
 	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x85]
 	bl CloseScrollBox
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r0, #0xd
 	strb r2, [r1, #0x85]
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238BD7C:
 	ldrsb r0, [r3, #0x83]
@@ -2104,15 +2104,15 @@ _0238BD7C:
 	beq _0238BDB8
 	b _0238C7E4
 _0238BDA0:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, #0x11
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	ldr r0, _0238C8D8 ; =0x00001308
 	bl PlaySeByIdVolumeWrapper
 	b _0238C7E4
 _0238BDB8:
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x1a
 	ldr r1, [r0]
 	mov r2, #0xb
@@ -2123,7 +2123,7 @@ _0238BDB8:
 	ldrsb r0, [r1, #0x81]
 	add r1, r1, #0xc8
 	bl ShowPortraitInPortraitBox
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, _0238C8DC ; =0x00003018
 	ldr r3, [r0]
 #ifdef JAPAN
@@ -2143,18 +2143,18 @@ _0238BE10:
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
 	bl ShowDialogueBox
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r2, #0x44
 	ldr r1, [r0]
 	str r2, [r1]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
 	bl sub_0202F2C4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x81]
 	bl HidePortraitBox
@@ -2163,7 +2163,7 @@ _0238BE60:
 	ldrsb r0, [r3, #0x83]
 	bl GetSimpleMenuResult
 	cmp r0, #1
-	ldrne r1, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldrne r1, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldrne r1, [r1]
 	strne r0, [r1, #0x1c]
 	cmp r0, #8
@@ -2182,31 +2182,31 @@ _0238BE84: ; jump table
 _0238BEA8:
 	ldr r0, _0238C8E4 ; =OVERLAY21_JP_STRING
 	bl Debug_Print0
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	bl ov11_0230B694
 	cmp r0, #0
 	bne _0238BECC
 	mov r0, #0x38
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238BECC:
 	mov r0, #9
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238BED8:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, #0x24
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238BEE8:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, #2
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238BEF8:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, #3
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238BF08:
 	ldr r0, [r3, #8]
@@ -2219,24 +2219,24 @@ _0238BF20:
 	bl ov11_0230D220
 	cmp r0, #0
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #8]
 	add r0, r0, #1
 	str r0, [r1, #8]
 	bl ov11_0230D92C
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	bl ov11_0230B9BC
 	b _0238C7E4
 _0238BF50:
 	bl ov11_0230D220
 	cmp r0, #0
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl ov21_0238A140
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl SwapShopDialogueManager
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -2257,11 +2257,11 @@ _0238BF80:
 	mov r0, #0
 	bl PlaySeVolumeWrapper
 	bl sub_0203AAB0
-	ldr r1, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	str r0, [r1, #0x914]
 	bl sub_0203A5F0
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x27
 	ldr r2, [r0]
 	mov r1, #0x28
@@ -2274,14 +2274,14 @@ _0238BFEC:
 	mvn r1, #0
 	cmp r0, r1
 	beq _0238C014
-	ldr r1, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	str r0, [r1, #0x914]
 	mov r0, #0x26
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C014:
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x27
 	ldr r2, [r0]
 	mov r1, #1
@@ -2309,8 +2309,8 @@ _0238C048: ; jump table
 	b _0238C0C0 ; case 10
 	b _0238C0E4 ; case 11
 _0238C078:
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x27
 	ldr r2, [r0]
 	mov r1, #0x30
@@ -2319,8 +2319,8 @@ _0238C078:
 	str r1, [r0, #4]
 	b _0238C7E4
 _0238C09C:
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x27
 	ldr r2, [r0]
 	mov r1, #0x28
@@ -2329,8 +2329,8 @@ _0238C09C:
 	str r1, [r0, #4]
 	b _0238C7E4
 _0238C0C0:
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x27
 	ldr r2, [r0]
 	mov r1, #0x2a
@@ -2339,8 +2339,8 @@ _0238C0C0:
 	str r1, [r0, #4]
 	b _0238C7E4
 _0238C0E4:
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x27
 	ldr r2, [r0]
 	mov r1, #0x2e
@@ -2349,8 +2349,8 @@ _0238C0E4:
 	str r1, [r0, #4]
 	b _0238C7E4
 _0238C108:
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #0x25
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2360,7 +2360,7 @@ _0238C124:
 	bl sub_0203F398
 	cmp r0, #1
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x29
 	ldr r2, [r0]
 	mov r1, #0x25
@@ -2372,7 +2372,7 @@ _0238C150:
 	bl sub_020407EC
 	cmp r0, #1
 	bne _0238C17C
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x2b
 	ldr r2, [r0]
 	mov r1, #0x25
@@ -2385,7 +2385,7 @@ _0238C17C:
 	cmpne r0, #7
 	bne _0238C7E4
 	bl sub_0203FD38
-	ldr r2, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r2, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, r0
 	ldr r0, [r2]
 	mov r2, #0x20
@@ -2393,7 +2393,7 @@ _0238C17C:
 	add r0, r0, #0x900
 	bl MemcpySimple
 	bl sub_02041094
-	ldr r2, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r2, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov ip, #0x2b
 	ldr r1, [r2]
 	mov r3, #0x2c
@@ -2408,7 +2408,7 @@ _0238C1D8:
 	bl sub_02041A18
 	cmp r0, #1
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x2d
 	ldr r2, [r0]
 	mov r1, #0x2a
@@ -2420,7 +2420,7 @@ _0238C204:
 	bl sub_02041B7C
 	cmp r0, #1
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x2f
 	ldr r2, [r0]
 	mov r1, #0x25
@@ -2436,7 +2436,7 @@ _0238C230:
 	beq _0238C268
 	b _0238C284
 _0238C248:
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x32
 	ldr r2, [r0]
 	mov r1, #0x35
@@ -2445,12 +2445,12 @@ _0238C248:
 	str r1, [r0, #4]
 	b _0238C7E4
 _0238C268:
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe
 	bl ov11_0230B8C0
 	mov r0, #0x33
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C284:
 	bl ov11_0230BD28
@@ -2465,12 +2465,12 @@ _0238C284:
 	ldr r0, _0238C8D4 ; =0x00003F02
 	mov r1, #0x100
 	bl sub_02017C74
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	add r0, r0, #0xe
 	bl ov11_0230B8C0
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x34
 	ldr r2, [r0]
 	mov r1, #0x32
@@ -2485,8 +2485,8 @@ _0238C2E8:
 	beq _0238C324
 	cmp r0, #6
 	bne _0238C7E4
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x32
 	ldr r2, [r0]
 	mov r1, #0x34
@@ -2495,8 +2495,8 @@ _0238C2E8:
 	str r1, [r0, #4]
 	b _0238C7E4
 _0238C324:
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #0x31
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2507,16 +2507,16 @@ _0238C340:
 	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x85]
 	bl CloseScrollBox
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r0, #0x31
 	strb r2, [r1, #0x85]
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C37C:
 	ldrsb r0, [r3, #0x83]
@@ -2529,14 +2529,14 @@ _0238C37C:
 	beq _0238C3B0
 	b _0238C7E4
 _0238C3A0:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, #0x24
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C3B0:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, #1
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C3C0:
 	ldrsb r0, [r3, #0x83]
@@ -2556,19 +2556,19 @@ _0238C3F0:
 	beq _0238C40C
 	b _0238C7E4
 _0238C3FC:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, #0x22
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C40C:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, #0x23
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C41C:
-	bl ov21_0238C920
+	bl CloseTextboxAndSimpleMenu
 	mov r0, #1
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C42C:
 	bl ov11_0230BA64
@@ -2578,7 +2578,7 @@ _0238C42C:
 	beq _0238C464
 	b _0238C4EC
 _0238C444:
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x3c
 	ldr r2, [r0]
 	mov r1, #0x40
@@ -2588,25 +2588,25 @@ _0238C444:
 	b _0238C7E4
 _0238C464:
 	bl ov11_0230B874
-	ldr r1, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r1, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r1, [r1]
 	ldrh r1, [r1, #0xd8]
 	cmp r0, r1
 	bge _0238C4A0
 	mov r0, #0
 	bl PlaySeVolumeWrapper
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x18
 	bl ov11_0230B8C0
 	mov r0, #0x3e
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C4A0:
 	bne _0238C7E4
 	mov r0, #0
 	bl PlaySeVolumeWrapper
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r2, [r0]
 	add r3, r2, #0x42
 	add r0, r2, #0xda
@@ -2614,7 +2614,7 @@ _0238C4A0:
 	add r2, r2, #0x140
 	add r3, r3, #0x100
 	bl ov11_0230C118
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x3c
 	ldr r2, [r0]
 	mov r1, #0x10
@@ -2635,12 +2635,12 @@ _0238C4EC:
 	ldr r0, _0238C8D4 ; =0x00003F02
 	mov r1, #0x100
 	bl sub_02017C74
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x18
 	bl ov11_0230B8C0
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x3f
 	ldr r2, [r0]
 	mov r1, #0x3d
@@ -2655,8 +2655,8 @@ _0238C550:
 	beq _0238C58C
 	cmp r0, #6
 	bne _0238C7E4
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r3, #0x3d
 	ldr r2, [r0]
 	mov r1, #0x3f
@@ -2665,8 +2665,8 @@ _0238C550:
 	str r1, [r0, #4]
 	b _0238C7E4
 _0238C58C:
-	bl ov21_0238C920
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl CloseTextboxAndSimpleMenu
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #0x3a
 	ldr r0, [r0]
 	str r1, [r0]
@@ -2677,16 +2677,16 @@ _0238C5A8:
 	bl IsScrollBoxActive
 	cmp r0, #0
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x85]
 	bl CloseScrollBox
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r0, #0x3b
 	strb r2, [r1, #0x85]
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C5E4:
 	ldr r1, [r3, #8]
@@ -2734,7 +2734,7 @@ _0238C674:
 	b _0238C7E4
 _0238C67C:
 	bl sub_0203F990
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x85]
@@ -2743,22 +2743,22 @@ _0238C694:
 	ldr r0, [r1, #0x914]
 	bl sub_0203FD80
 	bl sub_020407C0
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x82]
 	bl CloseAdvancedTextBox
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x82]
 	b _0238C7E4
 _0238C6C4:
 	bl sub_02041A00
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x85]
 	bl CloseScrollBox
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x85]
@@ -2775,8 +2775,8 @@ _0238C700:
 	b _0238C7E4
 _0238C708:
 	ldr r0, [r1, #4]
-	bl ov21_0238A140
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	bl SwapShopDialogueManager
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #8]
@@ -2785,7 +2785,7 @@ _0238C724:
 	bl ov11_0230D220
 	cmp r0, #0
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r2, [r0]
 	ldr r1, [r2, #8]
 	add r1, r1, #1
@@ -2795,12 +2795,12 @@ _0238C724:
 	cmp r0, #1
 	bne _0238C7E4
 	mov r0, #0x42
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	mvn r0, #0
 	mov r1, #0
 	bl InitRandomNpcJobs
 	bl ov11_0230D92C
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	str r2, [r1, #4]
@@ -2811,45 +2811,45 @@ _0238C788:
 	bl ov11_0230D220
 	cmp r0, #0
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C7A8:
 	ldr r0, [r3, #4]
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 	b _0238C7E4
 _0238C7B4:
 	ldrsb r0, [r3, #0x80]
 	bl IsDialogueBoxActive
 	cmp r0, #0
 	bne _0238C7E4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
 	bl ShowDialogueBox
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl ov21_0238A140
+	bl SwapShopDialogueManager
 _0238C7E4:
 	mov r0, #0
 _0238C7E8:
 	cmp r0, #3
 	bne _0238C914
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r2, #2
 	ldr r1, [r0]
 	str r2, [r1, #0x2c]
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
 	bl sub_0202F2C4
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x81]
 	bl HidePortraitBox
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
 	bl sub_0202836C
@@ -2860,7 +2860,7 @@ _0238C830:
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x80]
 	bl CloseDialogueBox
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x81]
 	bl ClosePortraitBox
@@ -2871,7 +2871,7 @@ _0238C858:
 	beq _0238C914
 	mov r0, #1
 	bl ov11_022E6E8C
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	str r1, [r0, #0x2c]
@@ -2882,7 +2882,7 @@ _0238C880:
 	beq _0238C914
 	mov r0, #2
 	bl ov11_022E6E8C
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	str r1, [r0, #0x2c]
@@ -2893,13 +2893,13 @@ _0238C8A8:
 	beq _0238C914
 	mov r0, #3
 	bl ov11_022E6E8C
-	ldr r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mov r1, #4
 	ldr r0, [r0]
 	str r1, [r0, #0x2c]
 	b _0238C914
 	.align 2, 0
-_0238C8D0: .word OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+_0238C8D0: .word SWAP_SHOP_MENU_DATA_PTR
 _0238C8D4: .word 0x00003F02
 _0238C8D8: .word 0x00001308
 _0238C8DC: .word 0x00003018
@@ -2910,7 +2910,7 @@ _0238C8E4: .word OVERLAY21_JP_STRING
 _0238C8E8:
 	bl ov11_022E6EC8
 	cmp r0, #0
-	ldrne r0, _0238C8D0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldrne r0, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	movne r1, #1
 	ldrne r0, [r0]
 	strne r1, [r0, #0x2c]
@@ -2925,49 +2925,49 @@ _0238C914:
 _0238C918:
 	add sp, sp, #0xc
 	ldmia sp!, {pc}
-	arm_func_end ov21_0238B928
+	arm_func_end SwapShopMainManager
 
-	arm_func_start ov21_0238C920
-ov21_0238C920: ; 0x0238C920
+	arm_func_start CloseTextboxAndSimpleMenu
+CloseTextboxAndSimpleMenu: ; 0x0238C920
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238C9A0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C9A0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x84]
 	cmp r0, r1
 	beq _0238C960
 	bl sub_0202836C
-	ldr r0, _0238C9A0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C9A0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x84]
 	bl CloseTextBox
-	ldr r0, _0238C9A0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C9A0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x84]
 _0238C960:
-	ldr r0, _0238C9A0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C9A0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
 	cmp r0, r1
 	ldmeqia sp!, {r3, pc}
 	bl sub_0202836C
-	ldr r0, _0238C9A0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C9A0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x83]
 	bl CloseSimpleMenu
-	ldr r0, _0238C9A0 ; =OVERLAY21_UNKNOWN_POINTER__NA_238CF40
+	ldr r0, _0238C9A0 ; =SWAP_SHOP_MENU_DATA_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	strb r1, [r0, #0x83]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C9A0: .word OVERLAY21_UNKNOWN_POINTER__NA_238CF40
-	arm_func_end ov21_0238C920
+_0238C9A0: .word SWAP_SHOP_MENU_DATA_PTR
+	arm_func_end CloseTextboxAndSimpleMenu
 
-	arm_func_start ov21_0238C9A4
-ov21_0238C9A4: ; 0x0238C9A4
+	arm_func_start SwapShopPrintCurrentGold
+SwapShopPrintCurrentGold: ; 0x0238C9A4
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x54
 	sub sp, sp, #0x400
@@ -2977,7 +2977,7 @@ ov21_0238C9A4: ; 0x0238C9A4
 	add ip, sp, #0x400
 	str r0, [sp, #0x428]
 	add ip, ip, #4
-	ldr r2, _0238CA1C ; =ov21_0238CF24
+	ldr r2, _0238CA1C ; =SWAP_SHOP_GOLD_STRING
 	ldr r3, _0238CA20 ; =0x0000C402
 	add r0, sp, #4
 	mov r1, #0x100
@@ -3006,12 +3006,12 @@ ov21_0238C9A4: ; 0x0238C9A4
 	add sp, sp, #0x400
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_0238CA1C: .word ov21_0238CF24
+_0238CA1C: .word SWAP_SHOP_GOLD_STRING
 _0238CA20: .word 0x0000C402
 #ifndef JAPAN
 _0238CA24: .word 0x00000225
 #endif
-	arm_func_end ov21_0238C9A4
+	arm_func_end SwapShopPrintCurrentGold
 	; 0x0238CA28
 
 	.rodata
@@ -3101,139 +3101,139 @@ SWAP_SHOP_WINDOW_PARAMS_8:
 	.global SWAP_SHOP_WINDOW_PARAMS_9
 SWAP_SHOP_WINDOW_PARAMS_9:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x14, 0x02, 0x0A, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CBB8
-ov21_0238CBB8:
+	.global SWAP_SHOP_TALK_WELCOME_DEBUG_STRING
+SWAP_SHOP_TALK_WELCOME_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D
 	.byte 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x54, 0x41, 0x52, 0x54, 0x3A, 0x0A, 0x00
-	.global ov21_0238CBD4
-ov21_0238CBD4:
+	.global SWAP_SHOP_MAIN_MENU_OPTIONS_DEBUG_STRING
+SWAP_SHOP_MAIN_MENU_OPTIONS_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55
 	.byte 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F
 	.byte 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x4D, 0x45, 0x4E, 0x55, 0x3A, 0x0A, 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CBF8
-ov21_0238CBF8:
+	.global SWAP_SHOP_TALK_CONTINUE_SWAP_DEBUG_STRING
+SWAP_SHOP_TALK_CONTINUE_SWAP_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D
 	.byte 0x4F, 0x44, 0x45, 0x5F, 0x52, 0x45, 0x53, 0x54, 0x41, 0x52, 0x54, 0x3A, 0x0A, 0x00, 0x00, 0x00
-	.global ov21_0238CC18
-ov21_0238CC18:
+	.global SWAP_SHOP_TALK_SUBINFO_DEBUG_STRING
+SWAP_SHOP_TALK_SUBINFO_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D
 	.byte 0x4F, 0x44, 0x45, 0x5F, 0x45, 0x58, 0x50, 0x4C, 0x41, 0x4E, 0x41, 0x54, 0x49, 0x4F, 0x4E, 0x3A
 	.byte 0x0A, 0x00, 0x00, 0x00
-	.global ov21_0238CC3C
-ov21_0238CC3C:
+	.global SWAP_SHOP_TALK_COME_AGAIN_DEBUG_STRING
+SWAP_SHOP_TALK_COME_AGAIN_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53
 	.byte 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F, 0x54, 0x48, 0x41, 0x4E, 0x4B, 0x53, 0x3A, 0x0A
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CC5C
-ov21_0238CC5C:
+	.global SWAP_SHOP_TALK_LACKING_SWAP_ITEMS_DEBUG_STRING
+SWAP_SHOP_TALK_LACKING_SWAP_ITEMS_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53
 	.byte 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F, 0x49, 0x54, 0x45, 0x4D, 0x5F, 0x4E, 0x4F, 0x4E
 	.byte 0x3A, 0x0A, 0x00, 0x00
-	.global ov21_0238CC7C
-ov21_0238CC7C:
+	.global SWAP_SHOP_TALK_SWAP_BROKE_DEBUG_STRING
+SWAP_SHOP_TALK_SWAP_BROKE_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53
 	.byte 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F, 0x47, 0x4F, 0x4C, 0x44, 0x5F, 0x4E, 0x4F, 0x4E
 	.byte 0x0A, 0x00, 0x00, 0x00
-	.global ov21_0238CC9C
-ov21_0238CC9C:
+	.global SWAP_SHOP_TALK_SWAP_POOR_DEBUG_STRING
+SWAP_SHOP_TALK_SWAP_POOR_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53
 	.byte 0x49, 0x53, 0x5F, 0x47, 0x4F, 0x4C, 0x44, 0x81, 0x51, 0x4E, 0x4F, 0x5F, 0x43, 0x48, 0x41, 0x52
 	.byte 0x47, 0x45, 0x3A, 0x0A, 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CCC0
-ov21_0238CCC0:
+	.global SWAP_SHOP_UNK_8_DEBUG_STRING
+SWAP_SHOP_UNK_8_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E
 	.byte 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45
 	.byte 0x43, 0x54, 0x5F, 0x46, 0x55, 0x4C, 0x4C, 0x3A, 0x0A, 0x00, 0x00, 0x00
-	.global ov21_0238CCE4
-ov21_0238CCE4:
+	.global SWAP_SHOP_CLOSE_SHOP_DEBUG_STRING
+SWAP_SHOP_CLOSE_SHOP_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55
 	.byte 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F
 	.byte 0x51, 0x55, 0x49, 0x54, 0x0A, 0x00, 0x00, 0x00
-	.global ov21_0238CD00
-ov21_0238CD00:
+	.global SWAP_SHOP_TALK_WHAT_ITEMS_DEBUG_STRING
+SWAP_SHOP_TALK_WHAT_ITEMS_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E
 	.byte 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45
 	.byte 0x43, 0x54, 0x5F, 0x53, 0x54, 0x41, 0x52, 0x54, 0x3A, 0x0A, 0x00, 0x00
-	.global ov21_0238CD24
-ov21_0238CD24:
+	.global SWAP_SHOP_TALK_VALUABLE_SWAP_DEBUG_STRING
+SWAP_SHOP_TALK_VALUABLE_SWAP_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55
 	.byte 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F
 	.byte 0x5F, 0x52, 0x45, 0x53, 0x54, 0x41, 0x52, 0x54, 0x3A, 0x0A, 0x00, 0x00
-	.global ov21_0238CD44
-ov21_0238CD44:
+	.global SWAP_SHOP_INIT_SWAP_ITEMS_MENU_DEBUG_STRING
+SWAP_SHOP_INIT_SWAP_ITEMS_MENU_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55
 	.byte 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F
 	.byte 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x49, 0x4E, 0x49, 0x54, 0x3A, 0x0A, 0x00, 0x00, 0x00
-	.global ov21_0238CD68
-ov21_0238CD68:
+	.global SWAP_SHOP_SWAP_ITEMS_MENU_DEBUG_STRING
+SWAP_SHOP_SWAP_ITEMS_MENU_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D
 	.byte 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x53, 0x45, 0x4C, 0x45, 0x43
 	.byte 0x54, 0x3A, 0x0A, 0x00
-	.global ov21_0238CD8C
-ov21_0238CD8C:
+	.global SWAP_SHOP_RETURN_SWAP_ITEMS_MENU_DEBUG_STRING
+SWAP_SHOP_RETURN_SWAP_ITEMS_MENU_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53
 	.byte 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x52
 	.byte 0x45, 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x3A, 0x0A, 0x00, 0x00, 0x00
-	.global ov21_0238CDB4
-ov21_0238CDB4:
+	.global SWAP_SHOP_SELECT_SWAP_ITEM_OPTIONS_DEBUG_STRING
+SWAP_SHOP_SELECT_SWAP_ITEM_OPTIONS_DEBUG_STRING:
 	.byte 0x09, 0x4D, 0x45, 0x4E
 	.byte 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45
 	.byte 0x5F, 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x53, 0x55, 0x42, 0x5F, 0x4D, 0x45, 0x4E, 0x55
 	.byte 0x3A, 0x0A, 0x00, 0x00
-	.global ov21_0238CDDC
-ov21_0238CDDC:
+	.global SWAP_SHOP_SWAP_ITEM_GET_INFO_DEBUG_STRING
+SWAP_SHOP_SWAP_ITEM_GET_INFO_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53
 	.byte 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x45
 	.byte 0x58, 0x50, 0x4C, 0x41, 0x0A, 0x00, 0x00, 0x00
-	.global ov21_0238CE00
-ov21_0238CE00:
+	.global SWAP_SHOP_ITEM_ZERO_STRING
+SWAP_SHOP_ITEM_ZERO_STRING:
 	.byte 0x5B, 0x69, 0x74, 0x65, 0x6D, 0x3A, 0x30, 0x5D
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CE0C
-ov21_0238CE0C:
+	.global SWAP_SHOP_TALK_CONFIRM_SWAP_DEBUG_STRING
+SWAP_SHOP_TALK_CONFIRM_SWAP_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53
 	.byte 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x43
 	.byte 0x4F, 0x4E, 0x46, 0x49, 0x52, 0x4D, 0x5F, 0x31, 0x3A, 0x0A, 0x00, 0x00
-	.global ov21_0238CE34
-ov21_0238CE34:
+	.global SWAP_SHOP_CONFIRM_CHOICE_DEBUG_STRING
+SWAP_SHOP_CONFIRM_CHOICE_DEBUG_STRING:
 	.byte 0x5F, 0x53, 0x45, 0x4C
 	.byte 0x4C, 0x5F, 0x43, 0x4F, 0x4E, 0x46, 0x49, 0x52, 0x4D, 0x20, 0x4E, 0x45, 0x57, 0x5F, 0x31, 0x0A
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov21_0238CE4C
-ov21_0238CE4C:
+	.global SWAP_SHOP_INIT_SCRIPT_ACTION_1_DEBUG_STRING
+SWAP_SHOP_INIT_SCRIPT_ACTION_1_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53
 	.byte 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x54
 	.byte 0x48, 0x41, 0x4E, 0x4B, 0x53, 0x5F, 0x41, 0x43, 0x54, 0x49, 0x4F, 0x4E, 0x3A, 0x0A, 0x00, 0x00
-	.global ov21_0238CE78
-ov21_0238CE78:
+	.global SWAP_SHOP_INIT_SCRIPT_ACTION_2_DEBUG_STRING
+SWAP_SHOP_INIT_SCRIPT_ACTION_2_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D
 	.byte 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x54, 0x48, 0x41, 0x4E, 0x4B
 	.byte 0x53, 0x5F, 0x41, 0x43, 0x54, 0x49, 0x4F, 0x4E, 0x32, 0x3A, 0x0A, 0x00
-	.global ov21_0238CEA4
-ov21_0238CEA4:
+	.global SWAP_SHOP_INIT_SCRIPT_ACTION_3_DEBUG_STRING
+SWAP_SHOP_INIT_SCRIPT_ACTION_3_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55
 	.byte 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F
 	.byte 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x54, 0x48, 0x41, 0x4E, 0x4B, 0x53, 0x5F, 0x41, 0x43
 	.byte 0x54, 0x49, 0x4F, 0x4E, 0x33, 0x3A, 0x0A, 0x00
-	.global ov21_0238CED0
-ov21_0238CED0:
+	.global SWAP_SHOP_TEXT_PUT_IN_CAULDRON_DEBUG_STRING
+SWAP_SHOP_TEXT_PUT_IN_CAULDRON_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E
 	.byte 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D, 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45
 	.byte 0x43, 0x54, 0x5F, 0x54, 0x48, 0x41, 0x4E, 0x4B, 0x53, 0x5F, 0x31, 0x3A, 0x0A, 0x00, 0x00, 0x00
-	.global ov21_0238CEF8
-ov21_0238CEF8:
+	.global SWAP_SHOP_DO_SWAP_THEN_TALK_DEBUG_STRING
+SWAP_SHOP_DO_SWAP_THEN_TALK_DEBUG_STRING:
 	.byte 0x4D, 0x45, 0x4E, 0x55, 0x5F, 0x53, 0x59, 0x4E, 0x54, 0x48, 0x45, 0x53, 0x49, 0x53, 0x5F, 0x4D
 	.byte 0x4F, 0x44, 0x45, 0x5F, 0x53, 0x45, 0x4C, 0x45, 0x43, 0x54, 0x5F, 0x54, 0x48, 0x41, 0x4E, 0x4B
 	.byte 0x53, 0x3A, 0x0A, 0x00
 	.global OVERLAY21_JP_STRING
 OVERLAY21_JP_STRING:
 	.byte 0x8D, 0x87, 0x90, 0xAC, 0x81, 0x46, 0x00, 0x00
-	.global ov21_0238CF24
-ov21_0238CF24:
+	.global SWAP_SHOP_GOLD_STRING
+SWAP_SHOP_GOLD_STRING:
 	.byte 0x5B, 0x43, 0x53, 0x3A
 	.byte 0x56, 0x5D, 0x5B, 0x67, 0x6F, 0x6C, 0x64, 0x3A, 0x30, 0x5D, 0x5B, 0x43, 0x52, 0x5D, 0x00, 0x00
 
 	.data
-	.global OVERLAY21_UNKNOWN_POINTER__NA_238CF40
-OVERLAY21_UNKNOWN_POINTER__NA_238CF40:
+	.global SWAP_SHOP_MENU_DATA_PTR
+SWAP_SHOP_MENU_DATA_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

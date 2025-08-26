@@ -10,7 +10,8 @@ MAIN_LSF_PATH = 'main.lsf'
 
 # Symbols with duplicate addresses that should be ignored.
 XMAP_SYMBOL_BLACKLIST = set([
-    'AI_POTENTIAL_ATTACK_TARGET_WEIGHTS_2'
+    'AI_POTENTIAL_ATTACK_TARGET_WEIGHTS_2',
+    'zeros$498'
 ])
 
 """
