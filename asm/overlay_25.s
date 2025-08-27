@@ -850,7 +850,7 @@ _0238AD04:
 	bl HidePortraitBox
 	mov r0, #1
 	mov r1, #0
-	bl ov11_0230B20C
+	bl SwapShopInventoryManager
 	b _0238B0C8
 _0238AD48:
 	add r0, r1, #0x100
@@ -868,7 +868,7 @@ _0238AD48:
 	bl HidePortraitBox
 	mov r0, #1
 	mov r1, #0
-	bl ov11_0230B20C
+	bl SwapShopInventoryManager
 	b _0238B0C8
 _0238AD8C:
 	mov r2, #0x96

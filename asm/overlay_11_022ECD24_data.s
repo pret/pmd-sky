@@ -262,9 +262,9 @@
 .public ov20_0238A140
 .public ov20_0238A160
 .public ov20_0238A1B0
-.public ov21_0238B848
-.public ov21_0238B8FC
-.public ov21_0238B928
+.public SwapShopEntryPoint
+.public SwapShopDestructor
+.public SwapShopMainManager
 .public ov22_0238D640
 .public ov22_0238D7B0
 .public ov22_0238D800
@@ -1932,9 +1932,9 @@ ov11_023230EC:
 	.global ov11_023230FC
 ov11_023230FC:
 	.byte 0x19, 0x00, 0x00, 0x00
-	.word ov21_0238B848
-	.word ov21_0238B8FC
-	.word ov21_0238B928
+	.word SwapShopEntryPoint
+	.word SwapShopDestructor
+	.word SwapShopMainManager
 	.global ov11_0232310C
 ov11_0232310C:
 	.byte 0x1A, 0x00, 0x00, 0x00
@@ -3085,8 +3085,8 @@ ov11_02324D98:
 	.global ov11_02324DA0
 ov11_02324DA0:
 	.byte 0x00, 0x00, 0x00, 0x00
-	.global ov11_02324DA4
-ov11_02324DA4:
+	.global SWAP_SHOP_INVENTORY_PTRS
+SWAP_SHOP_INVENTORY_PTRS:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.global ov11_02324DAC
 ov11_02324DAC:

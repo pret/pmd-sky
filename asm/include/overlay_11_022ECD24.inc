@@ -2,16 +2,13 @@
 .public BmaLayerNrlDecompressor
 .public DecompressAtNormalVeneer
 .public GetAtSize
+.public GroundBg_CloseOpenedFiles
+.public GroundBg_Init
 .public LoadBackgroundAttributes
 .public LoadFileFromRom
 .public MemAlloc
-.public MemFree
 .public Memcpy16
-.public PointsToZero
-.public UnloadFile
-.public ZInit8
-.public GroundBg_Init
-.public GroundBg_CloseOpenedFiles
+.public MemFree
 .public ov11_022EC08C
 .public ov11_022EE620
 .public ov11_022EE8CC
@@ -23,6 +20,7 @@
 .public ov11_02320C28
 .public ov11_02320C80
 .public ov11_02324CBC
+.public PointsToZero
 .public sprintf
 .public sub_0200A504
 .public sub_0200A590
@@ -33,3 +31,5 @@
 .public sub_020163E4
 .public sub_0201641C
 .public sub_02016468
+.public UnloadFile
+.public ZInit8

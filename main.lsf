@@ -130,6 +130,8 @@ Overlay OVY_0
 {
 	After main
 	Object asm/overlay_00.o
+	Object src/overlay_00_0230D388.o
+	Object asm/overlay_00_0230D398.o
 }
 Overlay OVY_1
 {
@@ -199,7 +201,7 @@ Overlay OVY_11
 	After OVY_10
 	Object asm/overlay_11.o
 	Object src/ground_bg.o
-    Object asm/overlay_11_022ECD24_data.o
+	Object asm/overlay_11_022ECD24_data.o
 	Object asm/overlay_11_022ECD24.o
 	Object src/ground_bg_1.o
 	Object asm/overlay_11_022EE5E4.o

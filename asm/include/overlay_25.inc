@@ -30,7 +30,6 @@
 .public ov11_022E6E68
 .public ov11_022E6E8C
 .public ov11_022E6EC8
-.public ov11_0230B20C
 .public ov11_0230B724
 .public ov11_0230B8C0
 .public ov11_0230B9BC
@@ -52,4 +51,5 @@
 .public sub_02027B1C
 .public sub_0202836C
 .public sub_0202F2C4
+.public SwapShopInventoryManager
 .public UpdateWindow

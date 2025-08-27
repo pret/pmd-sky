@@ -40,19 +40,19 @@ struct bg_list_entry {
     struct bg_list_entry_sub_struct others_bpa[BPA_MAX_ENTRIES];
 };
 
-#define UNK_0_ARR_COUNT 16 // Was 14 in Red
-#define UNK_E0_ARR_COUNT 32
-#define UNK_3E0_ARR_COUNT 4 // Was 2 in Red
+#define UNK_4_ARR_COUNT 16 // Was 14 in Red
+#define UNK_C4_ARR_COUNT 4 // Was 2 in Red
 #define NUM_LAYERS 2
 
-typedef struct SubStruct_0
+// Corresponds with SubStruct_0 in pmd-red.
+typedef struct UnkGroundBg_4
 {
     s16 unk0;
     s16 unk2;
     const void *unk4;
     const void *unk8;
     //u8 fillC; // Filler byte removed in Sky, present in Red
-} SubStruct_0;
+} UnkGroundBg_4;
 
 struct BpaHeader
 {
@@ -62,8 +62,9 @@ struct BpaHeader
     // Tiles data below
 };
 
-// Was 0x24 in Red...
-typedef struct SubStruct_3E0
+// Corresponds with SubStruct_3E0 in pmd-red.
+// Was size 0x24 in Red...
+typedef struct UnkGroundBg_C4
 {
     u8 unk0;
     u8 unk1;
@@ -77,10 +78,11 @@ typedef struct SubStruct_3E0
     void *unk20;
     void *unk24;
     u32 unk28;
-} SubStruct_3E0;
+} UnkGroundBg_C4;
 
+// Corresponds with SubStruct_52C in pmd-red.
 // size: 0x18?
-typedef struct SubStruct_52C
+typedef struct UnkGroundBg_2BC
 {
     u8 unk0; // 0x52C
     s16 unk2; // 0x52E
@@ -94,7 +96,7 @@ typedef struct SubStruct_52C
     s16 unk14;
     s16 unk16;
     void (*unk18)(void *, const void *, void *, s32); // TODO: fix void * to proper ptr types 0x540
-} SubStruct_52C;
+} UnkGroundBg_2BC;
 
 struct UnkGroundBg_1A0
 {
@@ -199,8 +201,8 @@ typedef struct AnimationSpecification
 typedef struct GroundBg
 {
     s16 newUnk0; // Not present in Red
-    SubStruct_0 unk0[UNK_0_ARR_COUNT];
-    SubStruct_3E0 unk3E0[UNK_3E0_ARR_COUNT]; // 0xc4
+    UnkGroundBg_4 unk4[UNK_4_ARR_COUNT];
+    UnkGroundBg_C4 unkC4[UNK_C4_ARR_COUNT]; // 0xc4
     struct iovec bplFile; // 0x174
     struct iovec unk17C; // 0x17C
     struct iovec bpcFile; // 0x184
@@ -236,7 +238,7 @@ typedef struct GroundBg
     u8 fillerForNow2[112];
     s16 unk2B8;
     u8 unk2BA;
-    SubStruct_52C unk52C; // 2bc
+    UnkGroundBg_2BC unk2BC; // 2bc
     u16 *unk2D8;
     u16 *unk2DC[2];
     u16 *unk2E4[2];
@@ -244,8 +246,8 @@ typedef struct GroundBg
 } GroundBg;
 
 void LoadBackgroundAttributes(struct bg_list_entry* entry, int bgId);
-void GroundBg_Init(GroundBg *groundBg, const SubStruct_52C *a1);
-void ov11_022EBEAC(GroundBg *groundBg);
+void GroundBg_Init(GroundBg *groundBg, const UnkGroundBg_2BC *a1);
+void GroundBg_FreeAll(GroundBg *groundBg);
 void ov11_022EBF60(GroundBg *groundBg);
 void GroundBg_CloseOpenedFiles(GroundBg *groundBg);
 void ov11_022EC08C(GroundBg *groundBg);
@@ -253,6 +255,6 @@ void ov11_022EC240(GroundBg *groundBg, s32 bgId);
 void ov11_022EC27C(GroundBg *groundBg, s32 bgId);
 void LoadMapType10(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc, s32 a3);
 void LoadMapType11(GroundBg *groundBg, s32 bgId, const DungeonLocation *dungLoc, s32 a3);
-const u8 *BmaLayerNrlDecompressor(u16 **dstArray, const void *bmaData, SubStruct_52C *a2, BmaHeader *bmaHeader);
+const u8 *BmaLayerNrlDecompressor(u16 **dstArray, const void *bmaData, UnkGroundBg_2BC *a2, BmaHeader *bmaHeader);
 
 #endif //PMDSKY_GROUND_BG_H
