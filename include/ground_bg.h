@@ -44,6 +44,7 @@ struct bg_list_entry {
 #define UNK_C4_ARR_COUNT 4 // Was 2 in Red
 #define NUM_LAYERS 2
 
+// Corresponds with SubStruct_0 in pmd-red.
 typedef struct UnkGroundBg_4
 {
     s16 unk0;
@@ -61,7 +62,8 @@ struct BpaHeader
     // Tiles data below
 };
 
-// Was 0x24 in Red...
+// Corresponds with SubStruct_3E0 in pmd-red.
+// Was size 0x24 in Red...
 typedef struct UnkGroundBg_C4
 {
     u8 unk0;
@@ -78,6 +80,7 @@ typedef struct UnkGroundBg_C4
     u32 unk28;
 } UnkGroundBg_C4;
 
+// Corresponds with SubStruct_52C in pmd-red.
 // size: 0x18?
 typedef struct UnkGroundBg_2BC
 {
