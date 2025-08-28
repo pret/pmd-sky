@@ -3,42 +3,6 @@
 
 	.text
 
-	arm_func_start InitBulkItem
-InitBulkItem: ; 0x0200CF78
-	stmdb sp!, {r4, r5, r6, lr}
-	movs r5, r1
-	mov r6, r0
-	strh r5, [r6]
-	beq _0200CFE4
-	mov r0, r5
-	bl IsThrownItem
-	cmp r0, #0
-	mov r0, r5
-	beq _0200CFC8
-	mov r1, #1
-	bl GetThrownItemQuantityLimit
-	mov r4, r0
-	mov r0, r5
-	mov r1, #0
-	bl GetThrownItemQuantityLimit
-	mov r1, r4
-	bl RandRangeSafe
-	strh r0, [r6, #2]
-	ldmia sp!, {r4, r5, r6, pc}
-_0200CFC8:
-	bl GetItemCategory
-	cmp r0, #6
-	moveq r0, #1
-	streqh r0, [r6, #2]
-	movne r0, #0
-	strneh r0, [r6, #2]
-	ldmia sp!, {r4, r5, r6, pc}
-_0200CFE4:
-	mov r0, #0
-	strh r0, [r6, #2]
-	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end InitBulkItem
-
 	arm_func_start BulkItemToItem
 BulkItemToItem: ; 0x0200CFF0
 	stmdb sp!, {r3, r4, r5, lr}
