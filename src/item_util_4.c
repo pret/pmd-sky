@@ -107,7 +107,7 @@ void InitItem(struct item* item, s16 id, s16 quantity, bool8 isSticky)
     s32 category;
     s32 to;
 
-    if (id != 0) {
+    if (id != ITEM_NOTHING) {
         item->flags = ITEM_FLAG_EXISTS;
         item->id = id;
         item->held_by = 0;
@@ -124,7 +124,7 @@ void InitItem(struct item* item, s16 id, s16 quantity, bool8 isSticky)
                 item->quantity = 0;
             }
         }
-        if (isSticky != 0) {
+        if (isSticky) {
             item->flags |= ITEM_FLAG_STICKY;
         }
         return;
@@ -142,4 +142,25 @@ void InitStandardItem(struct item* item, s16 id, bool8 isSticky)
 void sub_0200CF6C(struct item* item, s16 id, s16 quantity, bool8 isSticky)
 {
     InitItem(item, id, quantity, isSticky);
+}
+
+void InitBulkItem(struct bulk_item* item, s16 id) {
+    s32 to;
+
+    item->id = id;
+    if (id != ITEM_NOTHING) {
+        if (IsThrownItem(id)) {
+            to = GetThrownItemQuantityLimit(id, 1);
+            item->quantity = RandRangeSafe(GetThrownItemQuantityLimit(id, 0), to);
+        }
+        else if (GetItemCategory(id) == CATEGORY_POKE) {
+            item->quantity = 1;
+        } else {
+            item->quantity = 0;
+        }
+    }
+    else
+    {
+        item->quantity = 0;
+    }
 }
