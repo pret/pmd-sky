@@ -35,6 +35,7 @@
 .public GetLanguage
 .public GetThrownItemQuantityLimit
 .public HandleSir0Translation
+.public InitItem
 .public IsAuraBow
 .public IsItemValid
 .public IsShoppableItem
