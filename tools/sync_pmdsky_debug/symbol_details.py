@@ -107,6 +107,17 @@ ITCM_RAM_START_ADDRESSES = {
     'JP': 0x20B4BE0
 }
 
+# Some symbol names are intentionally different between the decomp and pmdsky-debug due to different naming conventions.
+# Map the symbol names here to treat the two names as the same symbol.
+XMAP_TO_PMDSKY_DEBUG_SYMBOL_MAPPING = {
+    'GroundBg_CloseOpenedFiles': 'GroundBgCloseOpenedFiles',
+    'GroundBg_FreeAll': 'GroundBgFreeAll',
+    'GroundBg_Init': 'GroundBgInit',
+    'sPositionZero': 'POSITION_ZERO',
+}
+
+PMDSKY_DEBUG_TO_XMAP_SYMBOL_MAPPING = {pmdsky_debug_name: xmap_name for xmap_name, pmdsky_debug_name in XMAP_TO_PMDSKY_DEBUG_SYMBOL_MAPPING.items()}
+
 @dataclass
 class SymbolDetails:
     name: str
@@ -117,4 +128,11 @@ class SymbolDetails:
     def get_all_names(self) -> List[str]:
         all_names = [self.name]
         all_names.extend(self.aliases)
+
+        if self.name in XMAP_TO_PMDSKY_DEBUG_SYMBOL_MAPPING:
+            all_names.append(XMAP_TO_PMDSKY_DEBUG_SYMBOL_MAPPING[self.name])
+
+        if self.name in PMDSKY_DEBUG_TO_XMAP_SYMBOL_MAPPING:
+            all_names.append(PMDSKY_DEBUG_TO_XMAP_SYMBOL_MAPPING[self.name])
+
         return all_names
