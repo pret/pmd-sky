@@ -10,6 +10,9 @@
 
 #define NUM_PICKED_IQ_SKILLS 3
 #define MAX_MON_MOVES 4
+
+#define STAT_MULTIPLIER_THRESHOLD 0.249 // one tick less than 0.25
+#define DEFAULT_STAT_STAGE 10
 #define MAX_STAT_STAGE 20
 #define MAX_SPEED_STAGE 4
 #define NUM_SPEED_COUNTERS 5
