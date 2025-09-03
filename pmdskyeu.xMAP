@@ -635,7 +635,8 @@
                                                                                            90](LightningRodStormDrainCheck,func) found in global itcm_01FFBD20.o
                                                                                             91](TryAddTargetToAiTargetList,func) found in global dungeon_ai_attack.o
                                                                                              92](IsAiTargetEligible,func) found in global dungeon_ai_attack.o
-                                                                                              93](StatusCheckerCheckOnTarget,func) found in global overlay_29_02333FD0.o
+                                                                                              93](StatusCheckerCheckOnTarget,func) found in global move_checks.o
+                                                                                               94](HasLastUsedMove,func) found in global overlay_29_02334CAC.o
                                                                                              92](WeightMoveWithIqSkills,func) found in global overlay_29_0231A364.o
                                                                                               93](ov29_0230F8D0,func) found in global overlay_29_0230F8D0.o
                                                                                             91](ResetAiCanAttackInDirection,func) found in global dungeon_ai_attack.o
@@ -38041,12 +38042,12 @@
   023349D8 00000000 .text   $d	(move_checks.o)
   023349EC 00000024 .text   EntityIsValid__02333FAC	(move_checks.o)
   023349EC 00000000 .text   $a	(move_checks.o)
-  02334A10 00000CDC .text   StatusCheckerCheckOnTarget	(overlay_29_02333FD0.o)
-  02334A10 00000000 .text   $a	(overlay_29_02333FD0.o)
-  02334A10 00000D38 .text   .text	(overlay_29_02333FD0.o)
-  023356E4 00000000 .text   $d	(overlay_29_02333FD0.o)
-  023356EC 0000005C .text   HasLastUsedMove	(overlay_29_02333FD0.o)
-  023356EC 00000000 .text   $a	(overlay_29_02333FD0.o)
+  02334A10 00000000 .text   $a	(move_checks.o)
+  02334A10 00000CDC .text   StatusCheckerCheckOnTarget	(move_checks.o)
+  023356E4 00000000 .text   $d	(move_checks.o)
+  023356EC 0000005C .text   .text	(overlay_29_02334CAC.o)
+  023356EC 0000005C .text   HasLastUsedMove	(overlay_29_02334CAC.o)
+  023356EC 00000000 .text   $a	(overlay_29_02334CAC.o)
   02335748 00000000 .text   $a	(weather.o)
   02335748 00000050 .text   GetApparentWeather	(weather.o)
   02335794 00000000 .text   $d	(weather.o)
@@ -40765,5 +40766,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Sep 01 02:19:19 2025
-# Link end time: Mon Sep 01 02:19:19 2025
+# Link start time: Wed Sep 03 01:20:17 2025
+# Link end time: Wed Sep 03 01:20:17 2025
