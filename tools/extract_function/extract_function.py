@@ -175,29 +175,32 @@ function_body = f"""{function_header}
 
 if nonmatching:
     asm_lines = original_lines[function_start_line + 2 : function_end_line - 1]
-    for i, line in enumerate(asm_lines):
+    modified_asm_lines = []
+    for line in asm_lines:
+        # .align is not needed in embedded ASM
+        if '.align' in line:
+            continue
+
         # Replace some register mnemonics with numbered registers. These don't work when ASM is embedded in C.
         if not line.startswith('bl') and line.startswith('\t'):
             space_index = line.find(' ')
             line = line[:space_index] + line[space_index:].replace('sb', 'r9').replace('sl', 'r10').replace('fp', 'r11')
+            # Replacing "sl" can corrupt lsl instructions, so correct these.
+            line = line.replace('lr10', 'lsl')
 
         semicolon_index = line.find(';')
         if semicolon_index >= 0:
             if 'jump table' in line or 'case' in line:
                 # Jump tables have comments, but semicolons are not recognized as comment markers in embedded ASM, so remove them.
-                line = line[:semicolon_index - 1]
+                line = line[:semicolon_index - 1] + '\n'
             else:
                 # Replace word values at the end of the function.
                 # They are conveniently already included within the ASM as comments.
                 line = line[:line.find('_')] + line[semicolon_index + 2:]
 
-        asm_lines[i] = line
+        modified_asm_lines.append(line)
 
-    # .align is not needed in embedded ASM
-    if '.align' in asm_lines[-1]:
-        asm_lines = asm_lines[:-1]
-
-    asm_string = str.join('', asm_lines)
+    asm_string = str.join('', modified_asm_lines)
 
     function_body = f"""#ifdef NONMATCHING
 {function_body}
