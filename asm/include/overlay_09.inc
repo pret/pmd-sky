@@ -4,6 +4,9 @@
 .public CreateDialogueBox
 .public DeleteWindow
 .public DrawTextInWindow
+.public GetNumItemsOnPage
+.public GetPageItemYOffset
+.public GetPageStart
 .public GetPressedButtons
 .public GetStringFromFileVeneer
 .public GetWindowContents
@@ -55,12 +58,9 @@
 .public sub_020320C8
 .public sub_02032160
 .public sub_020323F8
-.public sub_02032568
 .public sub_02032578
 .public sub_0203258C
-.public sub_02032594
 .public sub_02032684
-.public sub_020328D8
 .public sub_02032984
 .public sub_02033758
 .public sub_0204CA1C

@@ -2091,7 +2091,7 @@ _023855A0:
 	b _02385680
 _023855A8:
 	ldr r0, [sp, #0x18]
-	bl sub_02030A18
+	bl GetWindowIdPageStart
 	mov r1, #0
 	str r1, [fp]
 	add r1, sp, #0x2c
@@ -6901,11 +6901,11 @@ ov31_0238917C: ; 0x0238917C
 _023891A4: .word OVERLAY31_UNKNOWN_POINTER__NA_238A288
 	arm_func_end ov31_0238917C
 
-	arm_func_start ov31_023891A8
-ov31_023891A8: ; 0x023891A8
+	arm_func_start DrawDungeonHintContents
+DrawDungeonHintContents: ; 0x023891A8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_02030A18
+	bl GetWindowIdPageStart
 	mov r4, r0
 	ldr r0, _023891F8 ; =DUNGEON_SUBMENU_ITEMS_6
 	mov r1, r4, lsl #3
@@ -6933,7 +6933,7 @@ ov31_023891A8: ; 0x023891A8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _023891F8: .word DUNGEON_SUBMENU_ITEMS_6
-	arm_func_end ov31_023891A8
+	arm_func_end DrawDungeonHintContents
 
 	arm_func_start HelpMenuLoop
 HelpMenuLoop: ; 0x023891FC
@@ -7041,7 +7041,7 @@ _02389344:
 	str r2, [sp, #8]
 	str ip, [sp]
 	mov ip, #1
-	ldr r3, _02389418 ; =ov31_023891A8
+	ldr r3, _02389418 ; =DrawDungeonHintContents
 	add r2, sp, #8
 	str ip, [sp, #4]
 	bl CreateAdvancedTextBox
@@ -7091,7 +7091,7 @@ _02389408: .word 0x00401813
 _0238940C: .word DUNGEON_SUBMENU_ITEMS_6
 _02389410: .word DUNGEON_WINDOW_PARAMS_28
 _02389414: .word 0x00009833
-_02389418: .word ov31_023891A8
+_02389418: .word DrawDungeonHintContents
 	arm_func_end HelpMenuLoop
 
 	arm_func_start ov31_0238941C

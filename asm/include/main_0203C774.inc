@@ -262,6 +262,7 @@
 .public GetTime
 .public GetType
 .public GetTypeStringId
+.public GetWindowIdPageStart
 .public HidePortraitBox
 .public InitMove
 .public InitPortraitParams
@@ -448,7 +449,6 @@
 .public sub_02030908
 .public sub_02030940
 .public sub_02030978
-.public sub_02030A18
 .public sub_02030A50
 .public sub_02030A64
 .public sub_02030A74

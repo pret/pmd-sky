@@ -9223,7 +9223,7 @@ _023448F4:
 	cmp r0, #0
 	bne _02344928
 	ldrsb r0, [r4, #5]
-	bl sub_02030A18
+	bl GetWindowIdPageStart
 	str r0, [r4, #8]
 	ldrsb r0, [r4, #5]
 	bl CloseAdvancedTextBox
@@ -9277,7 +9277,7 @@ _0234496C: .word StringFromId
 ov03_02344970: ; 0x02344970
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
-	bl sub_02030A18
+	bl GetWindowIdPageStart
 	mov r5, r0
 #if defined(EUROPE)
 	add r0, r5, #0x52

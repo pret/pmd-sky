@@ -105,6 +105,7 @@
 .public GetStringFromFileVeneer
 .public GetTeamMember
 .public GetWindowContents
+.public GetWindowIdPageStart
 .public GROUND_STATE_MAP
 .public GROUND_STATE_PTRS
 .public GROUND_WEATHER_TABLE
@@ -867,7 +868,6 @@
 .public sub_0202F3F8
 .public sub_0202F954
 .public sub_020307EC
-.public sub_02030A18
 .public sub_02030A2C
 .public sub_02034840
 .public sub_020348E4

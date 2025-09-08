@@ -25,6 +25,7 @@ _0238A17C: .word ov28_0238ADA0
 _0238A180: .word ov28_0238AD28
 	arm_func_end ov28_0238A140
 
+; https://decomp.me/scratch/NY3Ql
 	arm_func_start ov28_0238A184
 ov28_0238A184: ; 0x0238A184
 	stmdb sp!, {r3, r4, r5, lr}

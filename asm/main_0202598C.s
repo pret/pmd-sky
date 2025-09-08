@@ -6070,7 +6070,7 @@ sub_02029758: ; 0x02029758
 	bne _020297C8
 	ldr r1, [r4, #0xbc]
 	mov r0, r4
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	ldr r2, [r4, #8]
 	ldr r1, [r4, #0xb0]
 	mov r3, r6
@@ -7906,7 +7906,7 @@ _0202AFCC:
 	moveq sb, #0x44
 	mov r1, r7
 	add r0, r5, #4
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	and r1, sb, #0xff
 	str r1, [sp]
 	mov r2, r0
@@ -8622,10 +8622,10 @@ sub_0202B934: ; 0x0202B934
 	mov sl, r0
 	ldr r4, [sl, #0xc]
 	add r0, r4, #4
-	bl sub_02032568
+	bl GetPageStart
 	mov r7, r0
 	add r0, r4, #4
-	bl sub_02032594
+	bl GetNumItemsOnPage
 	ldr r2, [r4, #0xfc]
 	mov r5, r0
 	tst r2, #0x200
@@ -8656,7 +8656,7 @@ _0202B9B0:
 	moveq sb, #0x44
 	mov r1, r7
 	add r0, r4, #4
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	and r1, sb, #0xff
 	str r1, [sp]
 	mov r2, r0
@@ -8988,7 +8988,7 @@ _0202BDC8:
 	b _0202C1D8
 _0202BDF0:
 	mov r0, r6
-	bl sub_0202C260
+	bl DrawAdvancedMenu
 	ldr r0, [r4, #0xfc]
 	tst r0, #0x800000
 	beq _0202BE2C
@@ -9063,7 +9063,7 @@ _0202BEE8:
 	orrs r0, r5, r0
 	beq _0202BF14
 	mov r0, r6
-	bl sub_0202C260
+	bl DrawAdvancedMenu
 _0202BF14:
 	ldr r1, [sp, #8]
 	tst r1, #1
@@ -9202,7 +9202,7 @@ _0202C0F8:
 	cmp r0, #0
 	bne _0202C1D8
 	mov r0, r6
-	bl sub_0202C260
+	bl DrawAdvancedMenu
 	ldr r3, [r4, #0x174]
 	cmp r3, #0
 	beq _0202C1D8
@@ -9217,7 +9217,7 @@ _0202C130:
 	cmp r0, #0
 	bne _0202C1D8
 	mov r0, r6
-	bl sub_0202C260
+	bl DrawAdvancedMenu
 	ldr r3, [r4, #0x17c]
 	cmp r3, #0
 	beq _0202C1D8
@@ -9239,7 +9239,7 @@ _0202C178:
 	tst r0, #0x400000
 	beq _0202C1A4
 	mov r0, r6
-	bl sub_0202C260
+	bl DrawAdvancedMenu
 	mov r0, #8
 	str r0, [r4, #0x19c]
 	b _0202C1D8
@@ -9302,18 +9302,18 @@ _0202C24C:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202C1E4
 
-	arm_func_start sub_0202C260
-sub_0202C260: ; 0x0202C260
+	arm_func_start DrawAdvancedMenu
+DrawAdvancedMenu: ; 0x0202C260
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xc
 	sub sp, sp, #0x400
 	mov sl, r0
 	ldr r4, [sl, #0xc]
 	add r0, r4, #4
-	bl sub_02032568
+	bl GetPageStart
 	mov r5, r0
 	add r0, r4, #4
-	bl sub_02032594
+	bl GetNumItemsOnPage
 	ldr r1, [r4, #0xfc]
 	mov r6, r0
 	tst r1, #0x200
@@ -9347,7 +9347,7 @@ _0202C2EC:
 	mov r1, r7
 	add r0, r4, #4
 	beq _0202C334
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	str fp, [sp]
 	mov r2, r0
 	ldr r0, [r4, #0x1a8]
@@ -9360,7 +9360,7 @@ _0202C2EC:
 	bl sub_02026428
 	b _0202C35C
 _0202C334:
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	mov r2, r0
 	ldr r0, [r4, #0x1a8]
 	mov r3, r8
@@ -9385,7 +9385,7 @@ _0202C36C:
 	add sp, sp, #0xc
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	arm_func_end sub_0202C260
+	arm_func_end DrawAdvancedMenu
 
 	arm_func_start sub_0202C38C
 sub_0202C38C: ; 0x0202C38C
@@ -9876,19 +9876,19 @@ _0202C994:
 	str r1, [sp, #8]
 	ldr r8, [r5, #0xc]
 	ldr sb, [r5, #0x10]
-	bl sub_02032568
+	bl GetPageStart
 	mov r1, r0
 	add r0, r5, #4
 	sub r1, r7, r1
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	ldr r1, [r5, #4]
 	add sl, r1, r0
 	add r0, r5, #4
-	bl sub_02032568
+	bl GetPageStart
 	sub r0, r7, r0
 	add r1, r0, #1
 	add r0, r5, #4
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	ldr r2, [r5, #4]
 	mov r1, #6
 	str r1, [r5, #0xdc]
@@ -10226,10 +10226,10 @@ sub_0202CEA0: ; 0x0202CEA0
 	mov r5, r0
 	ldr r6, [r5, #0xc]
 	add r0, r6, #4
-	bl sub_02032568
+	bl GetPageStart
 	mov r7, r0
 	add r0, r6, #4
-	bl sub_02032594
+	bl GetNumItemsOnPage
 	ldr r1, [r6, #0xfc]
 	mov r8, r0
 	tst r1, #0x200
@@ -10262,7 +10262,7 @@ _0202CF24:
 	add r0, r6, #4
 	mov r1, sb
 	beq _0202CF6C
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	str fp, [sp]
 	mov r2, r0
 	ldr r0, [r6, #0x1b4]
@@ -10275,7 +10275,7 @@ _0202CF24:
 	bl sub_02026428
 	b _0202CF94
 _0202CF6C:
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	mov r2, r0
 	ldr r0, [r6, #0x1b4]
 	mov r3, sl
@@ -10299,7 +10299,7 @@ _0202CF94:
 _0202CFBC:
 	add r0, r6, #4
 	mov r1, sb
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	str sl, [sp]
 	mov r1, #0x24
 	str r1, [sp, #4]
@@ -10403,7 +10403,7 @@ sub_0202D0EC: ; 0x0202D0EC
 	bl sub_02032558
 	mov r4, r0
 	add r0, r5, #4
-	bl sub_02032568
+	bl GetPageStart
 	add r0, r4, r0
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0202D0EC
@@ -11109,10 +11109,10 @@ sub_0202DA64: ; 0x0202DA64
 	mov sl, r0
 	ldr r4, [sl, #0xc]
 	add r0, r4, #4
-	bl sub_02032568
+	bl GetPageStart
 	mov r5, r0
 	add r0, r4, #4
-	bl sub_02032594
+	bl GetNumItemsOnPage
 	ldr r2, [r4, #0xfc]
 	str r0, [sp, #0xc]
 	tst r2, #0x200
@@ -11135,7 +11135,7 @@ sub_0202DA64: ; 0x0202DA64
 _0202DAD4:
 	add r0, r4, #4
 	mov r1, r7
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	mov r8, r0
 	mov r0, #1
 	cmp sb, #0
@@ -11718,10 +11718,10 @@ sub_0202E29C: ; 0x0202E29C
 	mov sl, r0
 	ldr r4, [sl, #0xc]
 	add r0, r4, #4
-	bl sub_02032568
+	bl GetPageStart
 	mov r7, r0
 	add r0, r4, #4
-	bl sub_02032594
+	bl GetNumItemsOnPage
 	ldr r1, [r4, #0xfc]
 	mov r5, r0
 	tst r1, #0x200
@@ -11742,7 +11742,7 @@ sub_0202E29C: ; 0x0202E29C
 _0202E304:
 	add r0, r4, #4
 	mov r1, r7
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	str r0, [sp, #4]
 	ldrb r0, [r6, #0x100]
 	mov r1, #0
@@ -12638,7 +12638,7 @@ sub_0202EE88: ; 0x0202EE88
 	bl sub_02025E84
 	add r0, r5, #4
 	mov r1, #0
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	mov r2, r0
 	add r0, sp, #8
 	mov r1, #4
@@ -14754,14 +14754,14 @@ sub_020309B8: ; 0x020309B8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_020309B8
 
-	arm_func_start sub_02030A18
-sub_02030A18: ; 0x02030A18
+	arm_func_start GetWindowIdPageStart
+GetWindowIdPageStart: ; 0x02030A18
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #4
-	bl sub_02032568
+	bl GetPageStart
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_02030A18
+	arm_func_end GetWindowIdPageStart
 
 	arm_func_start sub_02030A2C
 sub_02030A2C: ; 0x02030A2C
@@ -15773,10 +15773,10 @@ sub_0203175C: ; 0x0203175C
 	mov sl, r0
 	ldr r4, [sl, #0xc]
 	add r0, r4, #4
-	bl sub_02032568
+	bl GetPageStart
 	mov r5, r0
 	add r0, r4, #4
-	bl sub_02032594
+	bl GetNumItemsOnPage
 	ldr r1, [r4, #0xfc]
 	mov r6, r0
 	tst r1, #0x200
@@ -15810,7 +15810,7 @@ _020317E8:
 	mov r1, r7
 	add r0, r4, #4
 	beq _02031830
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	str fp, [sp]
 	mov r2, r0
 	ldr r0, [r4, #0x1a8]
@@ -15823,7 +15823,7 @@ _020317E8:
 	bl sub_02026428
 	b _02031858
 _02031830:
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	mov r2, r0
 	ldr r0, [r4, #0x1a8]
 	mov r3, r8
@@ -16850,13 +16850,13 @@ sub_02032560: ; 0x02032560
 	bx lr
 	arm_func_end sub_02032560
 
-	arm_func_start sub_02032568
-sub_02032568: ; 0x02032568
+	arm_func_start GetPageStart
+GetPageStart: ; 0x02032568
 	ldr r1, [r0, #0xc8]
 	ldr r0, [r0, #0xc4]
 	mul r0, r1, r0
 	bx lr
-	arm_func_end sub_02032568
+	arm_func_end GetPageStart
 
 	arm_func_start sub_02032578
 sub_02032578: ; 0x02032578
@@ -16873,11 +16873,11 @@ sub_0203258C: ; 0x0203258C
 	bx lr
 	arm_func_end sub_0203258C
 
-	arm_func_start sub_02032594
-sub_02032594: ; 0x02032594
+	arm_func_start GetNumItemsOnPage
+GetNumItemsOnPage: ; 0x02032594
 	ldr r0, [r0, #0xc0]
 	bx lr
-	arm_func_end sub_02032594
+	arm_func_end GetNumItemsOnPage
 
 	arm_func_start sub_0203259C
 sub_0203259C: ; 0x0203259C
@@ -17159,8 +17159,8 @@ _020328D0:
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_02032894
 
-	arm_func_start sub_020328D8
-sub_020328D8: ; 0x020328D8
+	arm_func_start GetPageItemYOffset
+GetPageItemYOffset: ; 0x020328D8
 	ldr r2, [r0, #0xb8]
 	ldr r3, [r0, #0xb4]
 	mul r2, r1, r2
@@ -17168,7 +17168,7 @@ sub_020328D8: ; 0x020328D8
 	add r0, r2, r0, lsr #24
 	add r0, r3, r0, asr #8
 	bx lr
-	arm_func_end sub_020328D8
+	arm_func_end GetPageItemYOffset
 
 	arm_func_start sub_020328F4
 sub_020328F4: ; 0x020328F4

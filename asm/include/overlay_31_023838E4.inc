@@ -91,6 +91,7 @@
 .public GetTile
 .public GetTrapInfo
 .public GetUnlockedTactics
+.public GetWindowIdPageStart
 .public GetWindowRectangle
 .public HandleStairsMenu
 .public HideTileGrid
@@ -251,7 +252,6 @@
 .public sub_0202F954
 .public sub_0202F9B8
 .public sub_020307EC
-.public sub_02030A18
 .public sub_02030A2C
 .public sub_020348E4
 .public sub_0203F150

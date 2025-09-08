@@ -34,6 +34,7 @@
 .public IsMarowakTrainingMaze
 .public IsMonsterIdInNormalRange
 .public IsNotMoney
+.public IsSpecialStoryAllyOrClient
 .public IsWaterTileset
 .public ItemIsActive__02347B50
 .public ItemZInit
@@ -49,7 +50,6 @@
 .public ov29_022FAFD4
 .public ov29_022FB920
 .public ov29_022FBA54
-.public ov29_022FBA70
 .public ov29_023009A0
 .public ov29_023457C8
 .public ov29_0234B4CC

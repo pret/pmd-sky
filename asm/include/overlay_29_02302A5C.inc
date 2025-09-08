@@ -25,6 +25,7 @@
 .public GetUnlockedTacticFlags
 .public InitPortraitDungeon
 .public IsExperienceLocked
+.public IsHero
 .public IsInvalidSpawnTile
 .public IsOnMonsterSpawnList
 .public IsSpecialEpisodeDungeon
@@ -45,7 +46,6 @@
 .public ov29_022EAC9C
 .public ov29_022EBCE8
 .public ov29_022ECB38
-.public ov29_022FB6E4
 .public ov29_0230040C
 .public ov29_023009CC
 .public ov29_023021F0

@@ -125,7 +125,7 @@ _0234694C:
 	cmp r0, #0
 	movne sb, r5
 	mov r0, sl
-	bl ov29_022FBA70
+	bl IsSpecialStoryAllyOrClient
 	cmp r0, #0
 	movne sb, fp
 	cmp sb, #0

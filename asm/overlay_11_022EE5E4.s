@@ -34078,7 +34078,7 @@ _0230A2CC: .word ov11_0230A2D0
 ov11_0230A2D0: ; 0x0230A2D0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
-	bl sub_02030A18
+	bl GetWindowIdPageStart
 	mov r4, r0
 	ldr r0, _0230A318 ; =ov11_02322EDC
 	mov r1, r4, lsl #3

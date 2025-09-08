@@ -946,7 +946,7 @@ _022FD570:
 	cmp r0, #0
 	bne _022FD760
 	mov r0, r7
-	bl ov29_022FBA70
+	bl IsSpecialStoryAllyOrClient
 	cmp r0, #0
 	bne _022FD760
 	ldrb r0, [r8, #0x60]

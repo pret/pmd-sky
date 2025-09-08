@@ -3594,6 +3594,7 @@ _0204DD50:
 _0204DD7C: .word ARM9_UNKNOWN_TABLE__NA_209E12C
 	arm_func_end sub_0204DCA0
 
+; https://decomp.me/scratch/7hzkc
 	arm_func_start WonderMailPasswordToMission
 WonderMailPasswordToMission: ; 0x0204DD80
 	stmdb sp!, {r4, r5, lr}
