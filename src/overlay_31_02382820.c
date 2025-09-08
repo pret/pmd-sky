@@ -50,7 +50,7 @@ extern struct struct_1* sub_0202ABB0(s8);
 
 extern void CloseTextBox(s8);
 extern void CloseParentMenu(s8);
-extern void MemFree(void*);
+extern void MemFree(void* ptr);
 
 extern void ov29_022EA428(u32, u32);
 extern void AdvanceFrame(u8);

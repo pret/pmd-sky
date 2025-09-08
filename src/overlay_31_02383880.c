@@ -13,7 +13,7 @@ extern s32 sub_020282F4(s8);
 extern void CloseInventoryMenu(s8);
 extern void ov29_0234E988(u8*);
 extern void CloseTextBox2();
-extern void MemFree(void*);
+extern void MemFree(void* ptr);
 extern void DrawTextInWindow(struct window*, u32, u32, u8*);
 
 u8 ov31_0238372C(struct position* x)
