@@ -59,6 +59,8 @@ Static main
 	Object asm/main_0203C774.o
 	Object src/main_0204AFF8.o
 	Object asm/main_0204B018.o
+	Object src/main_0204DD80.o
+	Object asm/main_0204DE7C.o
 	Object src/number_util.o
 	Object asm/main_02051098.o
 	Object src/main_020514CC.o
