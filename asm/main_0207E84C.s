@@ -1,13 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0207E844.inc"
+	.include "main_0207E84C.inc"
 
 	.text
-
-	arm_func_start sub_0207E844
-sub_0207E844: ; 0x0207E844
-	mov r0, #0
-	bx lr
-	arm_func_end sub_0207E844
 
 	arm_func_start sub_0207E84C
 sub_0207E84C: ; 0x0207E84C

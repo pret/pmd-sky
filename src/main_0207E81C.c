@@ -9,3 +9,8 @@ u8 sub_0207E81C(s32 *param_0)
 
     return 0;
 }
+
+u8 sub_0207E844()
+{
+    return 0;
+}
