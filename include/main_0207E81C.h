@@ -1,0 +1,6 @@
+#ifndef PMDSKY_MAIN_0207E81C_H
+#define PMDSKY_MAIN_0207E81C_H
+
+u8 sub_0207E81C(s32 *param_0);
+
+#endif //PMDSKY_MAIN_0207E81C_H
