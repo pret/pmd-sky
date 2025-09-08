@@ -2,6 +2,7 @@
 #include "dg_random.h"
 #include "dungeon_ai_attack_1.h"
 #include "dungeon_ai_targeting_1.h"
+#include "dungeon_capabilities.h"
 #include "dungeon_capabilities_4.h"
 #include "dungeon_logic.h"
 #include "dungeon_logic_4.h"
@@ -26,7 +27,6 @@ extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
 extern enum type_id GetMoveTypeForMonster(struct entity *entity, struct move *move);
 extern s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity *target, enum type_id move_type);
-extern bool8 ov29_023007DC(struct entity *entity);
 extern bool8 IsMonsterSleeping(struct entity *monster);
 extern u8 GetMoveAccuracyOrAiChance(struct move *move, u32 which);
 
@@ -854,7 +854,7 @@ bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *
             }
             else if ((move_ai_range & 0xF00) == AI_CONDITION_HP_25)
             {
-                if (!ov29_023007DC(target))
+                if (!MonsterHasQuarterHp(target))
                     return FALSE;
             }
             else if ((move_ai_range & 0xF00) == AI_CONDITION_STATUS)
@@ -880,10 +880,10 @@ bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *
             {
                 if (move->id == MOVE_HEALING_WISH || move->id == MOVE_LUNAR_DANCE)
                 {
-                    if (!MonsterHasNegativeStatus(target, TRUE) && !ov29_023007DC(target))
+                    if (!MonsterHasNegativeStatus(target, TRUE) && !MonsterHasQuarterHp(target))
                         return FALSE;
                 }
-                else if (!MonsterHasNegativeStatus(target, TRUE) && !ov29_023007DC(target))
+                else if (!MonsterHasNegativeStatus(target, TRUE) && !MonsterHasQuarterHp(target))
                     return FALSE;
             }
         }

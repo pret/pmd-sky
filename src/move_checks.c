@@ -1,4 +1,5 @@
 #include "move_checks.h"
+#include "dungeon_capabilities.h"
 #include "dungeon_logic.h"
 #include "dungeon_logic_3.h"
 #include "dungeon_logic_4.h"
@@ -15,7 +16,6 @@
 #include "trap.h"
 #include "weather.h"
 
-extern bool8 ov29_023007DC(struct entity *entity);
 extern bool8 IsThawingMove(struct move *move);
 extern bool8 IsMonsterSleeping(struct entity* monster);
 extern bool8 HasLastUsedMove(struct move *moves);
@@ -203,7 +203,7 @@ bool8 StatusCheckerCheck(struct entity *attacker, struct move *move)
                 return FALSE;
             break;
         case MOVE_REST:
-            if (!ov29_023007DC(attacker) && !MonsterHasNegativeStatus(attacker, FALSE))
+            if (!MonsterHasQuarterHp(attacker) && !MonsterHasNegativeStatus(attacker, FALSE))
                 return FALSE;
             break;
         case MOVE_DIVE:
@@ -1174,7 +1174,7 @@ _02333990:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _023339B0:
-	bl ov29_023007DC
+	bl MonsterHasQuarterHp
 	cmp r0, #0
 	bne _02333F90
 	mov r0, r4
