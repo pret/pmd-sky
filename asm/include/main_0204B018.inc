@@ -1,5 +1,4 @@
 #pragma once
-.public ARM9_UNKNOWN_TABLE__NA_209E12C
 .public ARM9_UNKNOWN_TABLE__NA_209E164
 .public AddMoneyCarried
 .public CopyBitsFrom
@@ -40,7 +39,6 @@
 .public SetMoneyStored
 .public SetNotifyNote
 .public VERSION_EXCLUSIVE_MONSTERS
-.public WONDER_MAIL_BITS_MAP
 .public _0209CEAC
 .public _0209CF0C
 .public _0209CF28
@@ -55,10 +53,6 @@
 .public _0209E010
 .public _0209E011
 .public _s32_div_f
-.public sub_0204E02C
-.public sub_0204E0A0
 .public sub_02050974
 .public sub_02050990
 .public sub_020509BC
-.public sub_0205C2A4
-.public sub_0205C548
