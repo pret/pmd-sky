@@ -212,7 +212,7 @@ ov29_02302CC8: ; 0x02302CC8
 	beq _02302DBC
 	mov r0, sb
 	mov r6, r4
-	bl ov29_022FB6E4
+	bl IsHero
 	cmp r0, #0
 	bne _02302D40
 	ldrb r0, [r7, #7]

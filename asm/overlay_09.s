@@ -2169,10 +2169,10 @@ ov09_0233E7F4: ; 0x0233E7F4
 	mov sl, r0
 	ldr r4, [sl, #0xc]
 	add r0, r4, #8
-	bl sub_02032568
+	bl GetPageStart
 	mov r5, r0
 	add r0, r4, #8
-	bl sub_02032594
+	bl GetNumItemsOnPage
 	ldr r2, [r4, #0x100]
 	mov fp, r0
 	tst r2, #0x200
@@ -2223,7 +2223,7 @@ _0233E88C:
 	bl PreprocessStringFromId
 	add r0, r4, #8
 	mov r1, r7
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	str r8, [sp]
 	mov r2, r0
 	ldrsb r0, [sl, #0x10]
@@ -2878,7 +2878,7 @@ _0233F188:
 	moveq sb, #0x44
 	mov r1, r7
 	add r0, r4, #8
-	bl sub_020328D8
+	bl GetPageItemYOffset
 	and r1, sb, #0xff
 	str r1, [sp]
 	mov r2, r0

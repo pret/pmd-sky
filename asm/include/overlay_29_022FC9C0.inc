@@ -50,6 +50,7 @@
 .public IsInvalidSpawnTile
 .public IsOutlawMonsterHouseFloor
 .public IsSecretBazaarNpcBehavior
+.public IsSpecialStoryAllyOrClient
 .public ItemZInit
 .public LEADER_PTR
 .public MemZero
@@ -78,7 +79,6 @@
 .public ov29_022F9EA0
 .public ov29_022FA1D8
 .public ov29_022FB83C
-.public ov29_022FBA70
 .public ov29_022FBC4C
 .public ov29_022FBF08
 .public ov29_022FBF30

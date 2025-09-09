@@ -10,8 +10,7 @@ MAIN_LSF_PATH = 'main.lsf'
 
 # Symbols with duplicate addresses that should be ignored.
 XMAP_SYMBOL_BLACKLIST = set([
-    'AI_POTENTIAL_ATTACK_TARGET_WEIGHTS_2',
-    'zeros$498'
+    'AI_POTENTIAL_ATTACK_TARGET_WEIGHTS_2'
 ])
 
 """
@@ -85,7 +84,7 @@ def read_xmap_symbols_for_language(language: str) -> Dict[str, Dict[int, SymbolD
                 symbol_split = line[28:-1].split('\t')
                 symbol_name = symbol_split[0]
 
-                if symbol_name in XMAP_SYMBOL_BLACKLIST:
+                if symbol_name in XMAP_SYMBOL_BLACKLIST or '$' in symbol_name:
                     continue
 
                 symbol_address = int(line[2:10], 16)

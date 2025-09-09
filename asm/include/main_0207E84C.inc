@@ -1,0 +1,16 @@
+#pragma once
+.public EnableIrqFlag
+.public FileInit
+.public MemcpyFast
+.public MemsetFast
+.public SetIrqFlag
+.public _022BB5E8
+.public _022BB5F8
+.public sub_02079888
+.public sub_020798D8
+.public sub_0207DCC0
+.public sub_0207DD1C
+.public sub_0207F60C
+.public sub_0207F70C
+.public sub_0207F818
+.public sub_0207F9DC

@@ -31,6 +31,7 @@
 .public GetSosMailCount
 .public GetStringFromFileVeneer
 .public GetTeamMember
+.public GetWindowIdPageStart
 .public IncrementNbSkyGiftsSent
 .public InitPreprocessorArgs
 .public InitStandardItem
@@ -195,7 +196,6 @@
 .public sub_0202836C
 .public sub_02029F88
 .public sub_02029FBC
-.public sub_02030A18
 .public sub_02030A2C
 .public sub_02037468
 .public sub_02037570

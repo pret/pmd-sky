@@ -1,4 +1,10 @@
 #pragma once
+.public ARM9_UNKNOWN_TABLE__NA_20AE924
+.public EnableIrqFlag
+.public FileInit
+.public InitDmaTransfer_Standard
+.public SetIrqFlag
+.public WaitForever2
 .public _020AEBF8
 .public _020B2BB0
 .public _022B99EC
@@ -13,13 +19,6 @@
 .public _022BB560
 .public _022BB564
 .public _022BB568
-.public _022BB5E8
-.public _022BB5F8
-.public ARM9_UNKNOWN_TABLE__NA_20AE924
-.public EnableIrqFlag
-.public FileInit
-.public InitDmaTransfer_Standard
-.public SetIrqFlag
 .public sub_01FF9AA8
 .public sub_01FF9B18
 .public sub_01FF9B3C
@@ -37,8 +36,3 @@
 .public sub_0207A2C0
 .public sub_0207A2DC
 .public sub_0207B854
-.public sub_0207F60C
-.public sub_0207F70C
-.public sub_0207F818
-.public sub_0207F9DC
-.public WaitForever2

@@ -3,6 +3,8 @@
 
 #include "dungeon_mode.h"
 
+// Checks if a monster has a quarter or less HP remaining.
+bool8 MonsterHasQuarterHp(struct entity *monster);
 // Returns false if none of these conditions holds for the given entity:
 // blinded (checked only if blind_check == true),
 // asleep, frozen, paused, infatuated, wrapping, wrapped, biding, petrified, or terrified.

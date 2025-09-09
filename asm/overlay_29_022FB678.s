@@ -37,8 +37,8 @@ _022FB6D0:
 _022FB6E0: .word DIRECTIONS_XY
 	arm_func_end AreEntitiesAdjacent
 
-	arm_func_start ov29_022FB6E4
-ov29_022FB6E4: ; 0x022FB6E4
+	arm_func_start IsHero
+IsHero: ; 0x022FB6E4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl IsMonster__022F9720
@@ -52,7 +52,7 @@ ov29_022FB6E4: ; 0x022FB6E4
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022FB6E4
+	arm_func_end IsHero
 
 	arm_func_start ov29_022FB718
 ov29_022FB718: ; 0x022FB718
@@ -364,8 +364,8 @@ ov29_022FBA54: ; 0x022FBA54
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_022FBA54
 
-	arm_func_start ov29_022FBA70
-ov29_022FBA70: ; 0x022FBA70
+	arm_func_start IsSpecialStoryAllyOrClient
+IsSpecialStoryAllyOrClient: ; 0x022FBA70
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl IsMonster__022F9720
@@ -384,7 +384,7 @@ ov29_022FBA70: ; 0x022FBA70
 _022FBAAC:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022FBA70
+	arm_func_end IsSpecialStoryAllyOrClient
 
 	arm_func_start ov29_022FBAB4
 ov29_022FBAB4: ; 0x022FBAB4

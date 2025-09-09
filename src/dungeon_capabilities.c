@@ -1,8 +1,19 @@
 #include "dungeon_capabilities.h"
+#include "dungeon_capabilities_2.h"
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 
-extern bool8 CheckVariousStatuses(struct entity *entity);
+bool8 MonsterHasQuarterHp(struct entity *monster)
+{
+    struct monster *entity_data = GetEntInfo(monster);
+    s32 max_hp = entity_data->max_hp_stat + entity_data->max_hp_boost;
+    if (max_hp > 999)
+        max_hp = 999;
+
+    if (entity_data->hp <= max_hp / 4)
+        return TRUE;
+    return FALSE;
+}
 
 bool8 CheckVariousStatuses2(struct entity *entity, bool8 blind_check)
 {

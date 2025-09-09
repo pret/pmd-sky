@@ -3380,7 +3380,7 @@ _0203F464:
 	ldr r0, _0203F8D4 ; =_020AFE78
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_02030A18
+	bl GetWindowIdPageStart
 	ldr r1, _0203F8D4 ; =_020AFE78
 	ldr r2, [r1]
 	strh r0, [r2, #0xc]
@@ -4305,7 +4305,7 @@ _020400FC:
 	ldr r0, _02040154 ; =_020AFE7C
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0]
-	bl sub_02030A18
+	bl GetWindowIdPageStart
 	ldr r1, _02040154 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	add r1, r1, #0x300
@@ -5120,7 +5120,7 @@ _02040C38:
 	ldr r0, _02040F94 ; =_020AFE7C
 	ldr r5, [r0, #8]
 	ldrsb r0, [r5]
-	bl sub_02030A18
+	bl GetWindowIdPageStart
 	add r1, r5, #0x300
 	ldrsh r1, [r1, #0xe8]
 	cmp r1, r0
@@ -5132,7 +5132,7 @@ _02040C38:
 	strh r1, [r0, #2]
 	ldr r0, [r0, #8]
 	ldrsb r0, [r0]
-	bl sub_02030A18
+	bl GetWindowIdPageStart
 	ldr r1, _02040F94 ; =_020AFE7C
 	ldr r1, [r1, #8]
 	add r1, r1, #0x300
@@ -6338,7 +6338,7 @@ PrintIqSkillsMenu: ; 0x02041A40
 	ldr r0, _02041B74 ; =_0209C98C
 	add r2, r2, #0x700
 	ldrsh r6, [r2, #0x8c]
-	ldr r3, _02041B78 ; =sub_0204213C
+	ldr r3, _02041B78 ; =GetCheckIqMenuSkillString
 	add r2, sp, #8
 	str r6, [sp]
 	str r5, [sp, #4]
@@ -6373,7 +6373,7 @@ _02041ED4: .word 0x00001586
 _02041B6C: .word _020AFE90
 _02041B70: .word 0x80401C33
 _02041B74: .word _0209C98C
-_02041B78: .word sub_0204213C
+_02041B78: .word GetCheckIqMenuSkillString
 	arm_func_end PrintIqSkillsMenu
 
 	arm_func_start sub_02041B7C
@@ -6734,7 +6734,7 @@ _02041FE8:
 	ldr r0, _020420EC ; =_0209C98C
 	add r3, r3, #0x700
 	ldrsh lr, [r3, #0x8c]
-	ldr r3, _020420F0 ; =sub_0204213C
+	ldr r3, _020420F0 ; =GetCheckIqMenuSkillString
 	mov ip, #8
 	str lr, [sp]
 	str ip, [sp, #4]
@@ -6772,7 +6772,7 @@ _020420E4: .word 0x00000A77
 #endif
 _020420E8: .word 0x80401C33
 _020420EC: .word _0209C98C
-_020420F0: .word sub_0204213C
+_020420F0: .word GetCheckIqMenuSkillString
 	arm_func_end sub_02041B7C
 
 	arm_func_start sub_020420F4
@@ -6799,8 +6799,8 @@ _0204211C:
 _02042138: .word _020AFE90
 	arm_func_end sub_020420F4
 
-	arm_func_start sub_0204213C
-sub_0204213C: ; 0x0204213C
+	arm_func_start GetCheckIqMenuSkillString
+GetCheckIqMenuSkillString: ; 0x0204213C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x84
 	ldr r2, _02042248 ; =_020AFE90
@@ -6880,7 +6880,7 @@ _02042248: .word _020AFE90
 _0204224C: .word _0209C9CC
 _02042250: .word _0209C9D4
 _02042254: .word _0209C9DC
-	arm_func_end sub_0204213C
+	arm_func_end GetCheckIqMenuSkillString
 
 	arm_func_start sub_02042258
 sub_02042258: ; 0x02042258
