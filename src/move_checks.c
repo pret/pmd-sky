@@ -9,6 +9,7 @@
 #include "dungeon_visibility.h"
 #include "inflict_status.h"
 #include "math.h"
+#include "moves_3.h"
 #include "number_util.h"
 #include "overlay_29_02338390.h"
 #include "run_dungeon_1.h"
@@ -16,7 +17,6 @@
 #include "trap.h"
 #include "weather.h"
 
-extern bool8 IsThawingMove(struct move *move);
 extern bool8 IsMonsterSleeping(struct entity* monster);
 extern bool8 HasLastUsedMove(struct move *moves);
 extern bool8 GendersEqualNotGenderless(s16 monster1, s16 monster2);
