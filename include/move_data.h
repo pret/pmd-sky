@@ -77,13 +77,8 @@ struct move_data
     u16 target_range[2]; // 0x4
     u8 pp;               // 0x8
     u8 ai_weight; // 0x9: Possibly. Weight for AI's random move selection
-    // 0xA: Both accuracy values are used to calculate the move's actual accuracy.
-    // See the PMD Info Spreadsheet.
-    u8 accuracy1;
-    u8 accuracy2; // 0xB
-    // 0xC: If this move has a random chance AI condition (see enum move_ai_condition),
-    // this is the chance that the AI will consider a potential target as elegible
-    u8 ai_condition_random_chance;
+    // There are multiple accuracy values. These are define with the accuracy_type enum.
+    /* 0xE */ u8 accuracy[NUM_ACCURACY_TYPES];
     u8 strikes;                    // 0xD: Number of times the move hits (i.e. for multi-hit moves)
     u8 max_ginseng_boost;          // 0xE: Maximum possible Ginseng boost for this move
     u8 crit_chance;                // 0xF: The base critical hit chance
