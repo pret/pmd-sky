@@ -580,6 +580,7 @@
                                                                                               93](MoveIsNotPhysical,func) found in global overlay_29_0231EA04.o
                                                                                                94](EntityIsValid__0231EDD8,func) found in global overlay_29_0231EDD8.o
                                                                                                94](ov29_022E0378,func) found in global overlay_29_022E0378.o
+                                                                                              93](GetMoveAccuracyOrAiChance,func) found in global moves_4.o
                                                                                               93](PlayMoveAnimation,func) found in global overlay_29_02325644.o
                                                                                               93](ov29_02322F78,func) found in global overlay_29_02322DDC.o
                                                                                                94](ov29_023243B4,func) found in global overlay_29_0232393C.o
@@ -601,7 +602,7 @@
                                                                                                    98](IsWaterTileset,func) found in global dungeon_map_access_1.o
                                                                                                   97](TryActivateBadDreams,func) found in global overlay_29_0231B1B8.o
                                                                                                    98](EntityIsValid__0231B194,func) found in global overlay_29_0231B194.o
-                                                                                                   98](IsMonsterSleeping,func) found in global overlay_29_023007A8.o
+                                                                                                   98](IsMonsterSleeping,func) found in global dungeon_capabilities.o
                                                                                                    98](IsMonster__0231B318,func) found in global overlay_29_0231B318.o
                                                                                                   97](ExclusiveItemEffectIsActive__0230F8AC,func) found in global overlay_29_0230F8AC.o
                                                                                                   97](IsMonster__0230F980,func) found in global overlay_29_0230F980.o
@@ -634,7 +635,8 @@
                                                                                               93](TryAddTargetToAiTargetList,func) found in global dungeon_ai_attack.o
                                                                                                94](IsAiTargetEligible,func) found in global dungeon_ai_attack.o
                                                                                                 95](StatusCheckerCheckOnTarget,func) found in global move_checks.o
-                                                                                                 96](HasLastUsedMove,func) found in global overlay_29_02334CAC.o
+                                                                                                 96](IsThawingMove,func) found in global moves_3.o
+                                                                                                 96](HasLastUsedMove,func) found in global move_checks.o
                                                                                                 95](MonsterHasQuarterHp,func) found in global dungeon_capabilities.o
                                                                                                94](WeightMoveWithIqSkills,func) found in global overlay_29_0231A364.o
                                                                                                 95](ov29_0230F8D0,func) found in global overlay_29_0230F8D0.o
@@ -735,6 +737,7 @@
                                                             59](ov10_022C26A0,func) found in global overlay_10_022C2588.o
                                                            58](ov29_022DC33C,func) found in global overlay_29_022DC314.o
                                                            58](ov29_022DC2B8,func) found in global poly_text.o
+                                                         56](GetMoveBasePp,func) found in global main_02013A30.o
                                                      52](EntityIsValid__022E0354,func) found in global dg.o
                                                     51](Memset32,func) found in global main_0200330C.o
                                                    50](GetMonsterPreEvolution,func) found in global main_0205283C.o
@@ -2572,12 +2575,12 @@
   02013810 00000000 .text   $a	(moves_2.o)
   02013810 00000024 .text   GetMoveTargetAndRange	(moves_2.o)
   02013830 00000000 .text   $d	(moves_2.o)
-  02013834 000001EC .text   .text	(main_02013864.o)
-  02013834 00000020 .text   GetMoveType	(main_02013864.o)
   02013834 00000000 .text   $a	(main_02013864.o)
+  02013834 00000020 .text   GetMoveType	(main_02013864.o)
+  02013834 000001A8 .text   .text	(main_02013864.o)
   02013850 00000000 .text   $d	(main_02013864.o)
-  02013854 00000048 .text   GetMovesetLevelUpPtr	(main_02013864.o)
   02013854 00000000 .text   $a	(main_02013864.o)
+  02013854 00000048 .text   GetMovesetLevelUpPtr	(main_02013864.o)
   02013894 00000000 .text   $d	(main_02013864.o)
   0201389C 00000000 .text   $a	(main_02013864.o)
   0201389C 00000028 .text   IsInvalidMoveset	(main_02013864.o)
@@ -2585,33 +2588,34 @@
   020138C4 0000004C .text   GetMovesetHmTmPtr	(main_02013864.o)
   020138C4 00000000 .text   $a	(main_02013864.o)
   02013908 00000000 .text   $d	(main_02013864.o)
-  02013910 00000000 .text   $a	(main_02013864.o)
   02013910 0000004C .text   GetMovesetEggPtr	(main_02013864.o)
+  02013910 00000000 .text   $a	(main_02013864.o)
   02013954 00000000 .text   $d	(main_02013864.o)
-  0201395C 00000000 .text   $a	(main_02013864.o)
   0201395C 00000020 .text   GetMoveAiWeight	(main_02013864.o)
+  0201395C 00000000 .text   $a	(main_02013864.o)
   02013978 00000000 .text   $d	(main_02013864.o)
   0201397C 00000020 .text   GetMoveNbStrikes	(main_02013864.o)
   0201397C 00000000 .text   $a	(main_02013864.o)
   02013998 00000000 .text   $d	(main_02013864.o)
-  0201399C 00000020 .text   GetMoveBasePower	(main_02013864.o)
   0201399C 00000000 .text   $a	(main_02013864.o)
+  0201399C 00000020 .text   GetMoveBasePower	(main_02013864.o)
   020139B8 00000000 .text   $d	(main_02013864.o)
-  020139BC 00000000 .text   $a	(main_02013864.o)
   020139BC 00000020 .text   GetMoveBasePowerGround	(main_02013864.o)
+  020139BC 00000000 .text   $a	(main_02013864.o)
   020139D8 00000000 .text   $d	(main_02013864.o)
-  020139DC 00000000 .text   $a	(main_02013864.o)
-  020139DC 00000024 .text   GetMoveAccuracyOrAiChance	(main_02013864.o)
-  020139FC 00000000 .text   $d	(main_02013864.o)
-  02013A00 00000000 .text   $a	(main_02013864.o)
-  02013A00 00000020 .text   GetMoveBasePp	(main_02013864.o)
-  02013A1C 00000000 .text   $d	(main_02013864.o)
+  020139DC 00000000 .text   $a	(moves_4.o)
+  020139DC 00000024 .text   GetMoveAccuracyOrAiChance	(moves_4.o)
+  020139FC 00000000 .text   $d	(moves_4.o)
+  02013A00 00000000 .text   $a	(main_02013A30.o)
+  02013A00 00000020 .text   .text	(main_02013A30.o)
+  02013A00 00000020 .text   GetMoveBasePp	(main_02013A30.o)
+  02013A1C 00000000 .text   $d	(main_02013A30.o)
   02013A20 00000000 .text   $a	(moves.o)
   02013A20 00000080 .text   GetMaxPp	(moves.o)
   02013A90 00000000 .text   $d	(moves.o)
-  02013AA0 00000020 .text   GetMoveMaxGinsengBoost	(main_02013AD0.o)
+  02013AA0 00000060 .text   .text	(main_02013AD0.o)
   02013AA0 00000000 .text   $a	(main_02013AD0.o)
-  02013AA0 00000080 .text   .text	(main_02013AD0.o)
+  02013AA0 00000020 .text   GetMoveMaxGinsengBoost	(main_02013AD0.o)
   02013ABC 00000000 .text   $d	(main_02013AD0.o)
   02013AC0 00000000 .text   $a	(main_02013AD0.o)
   02013AC0 00000020 .text   GetMoveMaxGinsengBoostGround	(main_02013AD0.o)
@@ -2619,9 +2623,9 @@
   02013AE0 00000020 .text   GetMoveCritChance	(main_02013AD0.o)
   02013AE0 00000000 .text   $a	(main_02013AD0.o)
   02013AFC 00000000 .text   $d	(main_02013AD0.o)
-  02013B00 00000000 .text   $a	(main_02013AD0.o)
-  02013B00 00000020 .text   IsThawingMove	(main_02013AD0.o)
-  02013B1C 00000000 .text   $d	(main_02013AD0.o)
+  02013B00 00000000 .text   $a	(moves_3.o)
+  02013B00 00000020 .text   IsThawingMove	(moves_3.o)
+  02013B1C 00000000 .text   $d	(moves_3.o)
   02013B20 00000000 .text   $a	(moves_3.o)
   02013B20 00000020 .text   IsUsableWhileTaunted	(moves_3.o)
   02013B3C 00000000 .text   $d	(moves_3.o)
@@ -36256,9 +36260,8 @@
   023019FC 00000000 .text   $a	(dungeon_logic.o)
   02301A18 00000174 .text   MonsterHasNegativeStatus	(dungeon_logic_1.o)
   02301A18 00000000 .text   $a	(dungeon_logic_1.o)
-  02301B8C 00000034 .text   .text	(overlay_29_023007A8.o)
-  02301B8C 00000034 .text   IsMonsterSleeping	(overlay_29_023007A8.o)
-  02301B8C 00000000 .text   $a	(overlay_29_023007A8.o)
+  02301B8C 00000034 .text   IsMonsterSleeping	(dungeon_capabilities.o)
+  02301B8C 00000000 .text   $a	(dungeon_capabilities.o)
   02301BC0 00000000 .text   $a	(dungeon_capabilities.o)
   02301BC0 0000003C .text   MonsterHasQuarterHp	(dungeon_capabilities.o)
   02301BF8 00000000 .text   $d	(dungeon_capabilities.o)
@@ -38290,9 +38293,8 @@
   023353BC 00000000 .text   $a	(move_checks.o)
   023353BC 00000CDC .text   StatusCheckerCheckOnTarget	(move_checks.o)
   02336090 00000000 .text   $d	(move_checks.o)
-  02336098 0000005C .text   .text	(overlay_29_02334CAC.o)
-  02336098 0000005C .text   HasLastUsedMove	(overlay_29_02334CAC.o)
-  02336098 00000000 .text   $a	(overlay_29_02334CAC.o)
+  02336098 0000005C .text   HasLastUsedMove	(move_checks.o)
+  02336098 00000000 .text   $a	(move_checks.o)
   023360F4 00000000 .text   $a	(weather.o)
   023360F4 00000050 .text   GetApparentWeather	(weather.o)
   02336140 00000000 .text   $d	(weather.o)
@@ -40999,5 +41001,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Tue Sep 09 22:46:31 2025
-# Link end time: Tue Sep 09 22:46:32 2025
+# Link start time: Fri Sep 12 04:13:07 2025
+# Link end time: Fri Sep 12 04:13:08 2025
