@@ -17,7 +17,6 @@
 #include "trap.h"
 #include "weather.h"
 
-extern bool8 IsMonsterSleeping(struct entity* monster);
 extern bool8 HasLastUsedMove(struct move *moves);
 extern bool8 GendersEqualNotGenderless(s16 monster1, s16 monster2);
 

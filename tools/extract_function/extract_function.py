@@ -215,15 +215,16 @@ asm {function_header}
 # Otherwise, make a new set of files.
 if merge_prev_file:
     header_file_path = os.path.join(HEADER_FOLDER, f'{merge_prev_file}.h')
-    with open(header_file_path, 'r') as header_file:
-        header_lines = header_file.readlines()
-    for i, line in reversed(list(enumerate(header_lines))):
-        if line != '\n' and not line.startswith('#'):
-            header_lines[i] += f'{function_header};\n'
-            break
-    print('Updating', header_file_path)
-    with open(header_file_path, 'w') as header_file:
-        header_file.writelines(header_lines)
+    if os.path.exists(header_file_path):
+        with open(header_file_path, 'r') as header_file:
+            header_lines = header_file.readlines()
+        for i, line in reversed(list(enumerate(header_lines))):
+            if line != '\n' and not line.startswith('#'):
+                header_lines[i] += f'{function_header};\n'
+                break
+        print('Updating', header_file_path)
+        with open(header_file_path, 'w') as header_file:
+            header_file.writelines(header_lines)
 
     src_file_path = os.path.join(SRC_FOLDER, f'{merge_prev_file}.c')
     print('Updating', src_file_path)

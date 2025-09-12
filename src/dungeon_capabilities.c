@@ -3,6 +3,20 @@
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 
+bool8 IsMonsterSleeping(struct entity *monster)
+{
+    if (GetEntInfo(monster)->sleep_class_status.sleep == STATUS_SLEEP_SLEEP)
+        return TRUE;
+
+    if (GetEntInfo(monster)->sleep_class_status.sleep == STATUS_SLEEP_NAPPING)
+        return TRUE;
+
+    if (GetEntInfo(monster)->sleep_class_status.sleep == STATUS_SLEEP_NIGHTMARE)
+        return TRUE;
+
+    return FALSE;
+}
+
 bool8 MonsterHasQuarterHp(struct entity *monster)
 {
     struct monster *entity_data = GetEntInfo(monster);
