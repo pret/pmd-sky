@@ -41,16 +41,3 @@ GetMoveCritChance: ; 0x02013B10
 	.align 2, 0
 _02013B2C: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveCritChance
-
-	arm_func_start IsThawingMove
-IsThawingMove: ; 0x02013B30
-	ldr r1, _02013B4C ; =DUNGEON_MOVE_TABLES
-	ldrh r2, [r0, #4]
-	ldr r1, [r1, #8]
-	mov r0, #0x1a
-	mla r0, r2, r0, r1
-	ldrb r0, [r0, #0x13]
-	bx lr
-	.align 2, 0
-_02013B4C: .word DUNGEON_MOVE_TABLES
-	arm_func_end IsThawingMove

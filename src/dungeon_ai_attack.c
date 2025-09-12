@@ -17,6 +17,7 @@
 #include "move_data.h"
 #include "moves_2.h"
 #include "moves_3.h"
+#include "moves_4.h"
 #include "overlay_29_0231ACAC.h"
 #include "position_util.h"
 
@@ -27,8 +28,6 @@ extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
 extern enum type_id GetMoveTypeForMonster(struct entity *entity, struct move *move);
 extern s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity *target, enum type_id move_type);
-extern bool8 IsMonsterSleeping(struct entity *monster);
-extern u8 GetMoveAccuracyOrAiChance(struct move *move, u32 which);
 
 void ResetAiCanAttackInDirection()
 {

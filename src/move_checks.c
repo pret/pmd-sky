@@ -9,6 +9,7 @@
 #include "dungeon_visibility.h"
 #include "inflict_status.h"
 #include "math.h"
+#include "moves_3.h"
 #include "number_util.h"
 #include "overlay_29_02338390.h"
 #include "run_dungeon_1.h"
@@ -16,9 +17,6 @@
 #include "trap.h"
 #include "weather.h"
 
-extern bool8 IsThawingMove(struct move *move);
-extern bool8 IsMonsterSleeping(struct entity* monster);
-extern bool8 HasLastUsedMove(struct move *moves);
 extern bool8 GendersEqualNotGenderless(s16 monster1, s16 monster2);
 
 // https://decomp.me/scratch/TnODN
@@ -1784,7 +1782,7 @@ bool8 StatusCheckerCheckOnTarget(struct entity *attacker, struct entity *target,
             break;
         case MOVE_BLOCK:
         case MOVE_MEAN_LOOK:
-        case MOVE_SPIDER_WEB: // Remove?
+        case MOVE_SPIDER_WEB:
             if (target_data->frozen_class_status.freeze == STATUS_FROZEN_SHADOW_HOLD)
                 return FALSE;
             break;
@@ -1823,7 +1821,7 @@ bool8 StatusCheckerCheckOnTarget(struct entity *attacker, struct entity *target,
                 return FALSE;
             break;
         case MOVE_FLASH:
-        case MOVE_KINESIS: // Remove?
+        case MOVE_KINESIS:
         case MOVE_SAND_ATTACK:
             if (target_data->stat_modifiers.hit_chance_stages[STAT_STAGE_ACCURACY] < 1)
                 return FALSE;
@@ -1882,7 +1880,7 @@ bool8 StatusCheckerCheckOnTarget(struct entity *attacker, struct entity *target,
             break;
         case MOVE_COPYCAT:
         case MOVE_MIMIC:
-        case MOVE_SKETCH: // Remove?
+        case MOVE_SKETCH:
             if (!HasLastUsedMove(target_data->moves.moves))
                 return FALSE;
             break;
@@ -2008,3 +2006,17 @@ bool8 StatusCheckerCheckOnTarget(struct entity *attacker, struct entity *target,
     return TRUE;
 }
 
+
+bool8 HasLastUsedMove(struct move *moves)
+{
+    s32 i;
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (MoveExists(&moves[i]) && moves[i].flags0 & MOVE_FLAG_LAST_USED)
+            return TRUE;
+    }
+
+    if (moves[STRUGGLE_MOVE_INDEX].flags0 & MOVE_FLAG_LAST_USED)
+        return TRUE;
+    return FALSE;
+}
