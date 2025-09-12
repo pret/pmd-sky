@@ -16,5 +16,8 @@ bool8 EntityIsValid__02333FAC(struct entity *entity);
 // move: Move pointer
 // return: True if it makes sense to use the move, false if it would be redundant given the effects it causes and the effects that the target already has.
 bool8 StatusCheckerCheckOnTarget(struct entity *attacker, struct entity *target, struct move *move);
+// Determines whether a monster has used any of its moves on this floor.
+// This function takes in the monster's move list and checks if any moves have the f_last_used flag set.
+bool8 HasLastUsedMove(struct move *moves);
 
 #endif //PMDSKY_MOVE_CHECKS_H
