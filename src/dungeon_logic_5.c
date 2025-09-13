@@ -1,9 +1,9 @@
 #include "dungeon_logic_5.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
+#include "main_02014CEC.h"
 #include "overlay_29_023000E4.h"
 
-extern bool8 IsRegularAttackOrProjectile(enum move_id move_id);
 extern struct natural_gift_item_info* GetEntityNaturalGiftInfo(struct entity* entity);
 extern enum type_id GetEntityWeatherBallType(struct entity* entity);
 extern enum type_id GetMoveType(struct move* move);

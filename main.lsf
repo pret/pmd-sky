@@ -49,6 +49,8 @@ Static main
 	Object asm/main_02013B70.o
 	Object src/main_02013C04.o
 	Object asm/main_02013C30.o
+	Object src/main_02014CEC.o
+	Object asm/main_02014D18.o
 	Object src/main_020251AC.o
 	Object asm/main_020251F0.o
 	Object src/main_02025788.o
