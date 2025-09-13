@@ -262,7 +262,7 @@ struct monster {
     s32 exp;                                      // 0x20: Total Exp. Points
     struct monster_stat_modifiers stat_modifiers; // 0x24
     s16 hidden_power_base_power;              // 0x44
-    enum type_id hidden_power_type : 8;           // 0x46
+    enum type_id hidden_power_type;           // 0x46
     u8 field_0x47;
     enum dungeon_id joined_at : 8; // 0x48: Also used as a unique identifier for special monsters
     u8 joined_at_floor;       // 0x49: Floor number of recruitment. 0 for special recruits

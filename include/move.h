@@ -2,6 +2,7 @@
 #define PMDSKY_MOVE_H
 
 #include "enums.h"
+#include "item.h"
 
 enum move_flag
 {
@@ -56,6 +57,15 @@ struct move {
     enum move_id id; // 0x4
     u8 pp;           // 0x6: Current PP
     u8 ginseng;      // 0x7: Ginseng boost
+};
+
+struct natural_gift_item_info
+{
+    enum item_id item_id;
+    enum type_id type_id;
+    // This value is the boost that's added to Natural Gift's default base power of 1
+    // during damage calculation
+    s16 base_power_boost;
 };
 
 #endif // PMDSKY_MOVE_H

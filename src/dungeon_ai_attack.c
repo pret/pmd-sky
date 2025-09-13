@@ -6,6 +6,7 @@
 #include "dungeon_capabilities_4.h"
 #include "dungeon_logic.h"
 #include "dungeon_logic_4.h"
+#include "dungeon_logic_5.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_statuses.h"
@@ -26,7 +27,6 @@ extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
 extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
 extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
-extern enum type_id GetMoveTypeForMonster(struct entity *entity, struct move *move);
 extern s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity *target, enum type_id move_type);
 
 void ResetAiCanAttackInDirection()
