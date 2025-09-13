@@ -8,6 +8,7 @@
 #include "dungeon_ai_targeting.h"
 #include "dungeon_capabilities_3.h"
 #include "dungeon_capabilities_4.h"
+#include "dungeon_logic_5.h"
 #include "dungeon_misc.h"
 #include "dungeon_mode.h"
 #include "dungeon_move.h"
@@ -25,7 +26,6 @@ extern bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 
 extern void SetActionRegularAttack(struct action_data *monster_action, u8 direction);
 extern void SetActionStruggle(struct action_data *monster_action, u8 direction);
 extern bool8 CanAiUseMove(struct entity *monster, u32 move_index, bool8 extra_checks);
-extern enum type_id GetMoveTypeForMonster(struct entity *entity, struct move *move);
 extern u8 GetMoveAiWeight(struct move *move);
 
 #ifdef SDK_ARM9
