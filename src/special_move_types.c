@@ -1,10 +1,9 @@
 #include "special_move_types.h"
+#include "dungeon_parameters_2.h"
 #include "dungeon_util_static.h"
 #include "natural_gift_data.h"
 #include "overlay_29_0231A9D4.h"
 #include "weather.h"
-
-extern enum type_id WEATHER_BALL_TYPE_TABLE[8];
 
 const struct natural_gift_item_info* GetEntityNaturalGiftInfo(struct entity* entity)
 {

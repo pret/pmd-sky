@@ -203,6 +203,8 @@ Overlay OVY_10
 	Object asm/overlay_10_rodata_022C4584.o
 	Object src/dungeon_parameters_1.o
 	Object asm/overlay_10_rodata_022C464C.o
+	Object src/dungeon_parameters_2.o
+	Object asm/overlay_10_rodata_022C48E4.o
 	Object src/dungeon_ai_parameters.o
 	Object asm/overlay_10_rodata_022C490C.o
 	Object src/natural_gift_data.o
