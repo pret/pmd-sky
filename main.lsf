@@ -205,6 +205,8 @@ Overlay OVY_10
 	Object asm/overlay_10_rodata_022C464C.o
 	Object src/dungeon_ai_parameters.o
 	Object asm/overlay_10_rodata_022C490C.o
+	Object src/natural_gift_data.o
+	Object asm/overlay_10_rodata_022C593C.o
 }
 Overlay OVY_11
 {
