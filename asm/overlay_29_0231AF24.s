@@ -1,18 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0231AF0C.inc"
+	.include "overlay_29_0231AF24.inc"
 
 	.text
-
-	arm_func_start GetEntityWeatherBallType
-GetEntityWeatherBallType: ; 0x0231AF0C
-	stmdb sp!, {r3, lr}
-	bl GetApparentWeather
-	ldr r1, _0231AF20 ; =WEATHER_BALL_TYPE_TABLE
-	ldrb r0, [r1, r0]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0231AF20: .word WEATHER_BALL_TYPE_TABLE
-	arm_func_end GetEntityWeatherBallType
 
 	arm_func_start ov29_0231AF24
 ov29_0231AF24: ; 0x0231AF24

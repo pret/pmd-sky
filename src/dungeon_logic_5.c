@@ -2,11 +2,10 @@
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
 #include "main_02014CEC.h"
-#include "natural_gift.h"
 #include "natural_gift_data.h"
 #include "overlay_29_023000E4.h"
+#include "special_move_types.h"
 
-extern enum type_id GetEntityWeatherBallType(struct entity* entity);
 extern enum type_id GetMoveType(struct move* move);
 
 enum type_id GetMoveTypeForMonster(struct entity *entity, struct move *move)
