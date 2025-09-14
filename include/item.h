@@ -1627,13 +1627,13 @@ struct item {
     s16 id; // 0x4
 };
 
-// The same as the item struct, but with the flags marked as volatile.
-// Needed to match AiDecideUseItem.
+// The same as the item struct, but with some fields marked as volatile.
+// Needed to match some functions like AiDecideUseItem.
 struct item_volatile {
     volatile u8 flags;
     u8 held_by;
     u16 quantity;
-    enum item_id id; // 0x4
+    volatile s16 id; // 0x4
 };
 
 struct bag_items_inner {
