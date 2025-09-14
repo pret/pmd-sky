@@ -2,6 +2,7 @@
 #include "dungeon_ai_targeting.h"
 #include "dungeon_util_static.h"
 #include "number_util.h"
+#include "weather.h"
 
 extern const u8 DUNGEON_MENU_SWITCH_STR1[];// = "[dungeon:0]";
 
@@ -23,7 +24,6 @@ extern void* MemAlloc(u32 size, u32 nmemb);
 
 extern struct entity* GetLeader(void);
 extern u32 GetMoneyCarried(void);
-extern void* GetApparentWeather(u32);
 extern u32 sub_0204F9E0(void);
 extern void ov29_022E2A78(u8*, void*, u32); // The third argument isn't actually used in the
                                      // function (../asm/overlay_29_022E1A40.s#L1378)
@@ -99,7 +99,7 @@ void DrawDungeonMenuStatusWindow(struct Window* window)
     PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
     DrawTextInWindow(window, X_OFFSET, LINE_HEIGHT, str_buff);
 
-    str_values.weather_0 = GetApparentWeather(0);
+    str_values.weather_0 = GetApparentWeather(NULL);
     str = StringFromId(DRAW_DUNGEON_MENU_STATUS_WINDOW_STR_ID_3);
     PreprocessString(str_buff, DRAW_DUNGEON_MENU_STATUS_WINDOW_BUFF_SIZE, str, 0, &str_values);
     DrawTextInWindow(window, X_OFFSET, LINE_HEIGHT * 2, str_buff);

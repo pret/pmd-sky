@@ -1,8 +1,10 @@
 #ifndef PREPROCESS_STRING_H
 #define PREPROCESS_STRING_H
 
+#include "enums.h"
+
 struct PPStrValues {
-    u8* weather_0;  // 0x0
+    u32 weather_0;  // 0x0
     u32 field_0x4;
     u32 field_0x8;
     u32 field_0xB;

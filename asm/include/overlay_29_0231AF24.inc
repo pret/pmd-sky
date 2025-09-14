@@ -1,0 +1,15 @@
+#pragma once
+.public BoostSpeedOneStage
+.public DUNGEON_PTR
+.public EntityIsValid__0231B194
+.public GetTreasureBoxChances
+.public IsMonster__0231A9D4
+.public LogMessageByIdWithPopupCheckParticipants
+.public LogMessageByIdWithPopupCheckUserTarget
+.public PrepareItemForPrinting__02345728
+.public SetActionUseMoveAi
+.public SubstitutePlaceholderStringTags
+.public ov29_022E4110
+.public ov29_022FB9E0
+.public ov29_0232145C
+.public ov29_0232E80C

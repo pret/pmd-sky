@@ -203,8 +203,12 @@ Overlay OVY_10
 	Object asm/overlay_10_rodata_022C4584.o
 	Object src/dungeon_parameters_1.o
 	Object asm/overlay_10_rodata_022C464C.o
+	Object src/dungeon_parameters_2.o
+	Object asm/overlay_10_rodata_022C48E4.o
 	Object src/dungeon_ai_parameters.o
 	Object asm/overlay_10_rodata_022C490C.o
+	Object src/natural_gift_data.o
+	Object asm/overlay_10_rodata_022C593C.o
 }
 Overlay OVY_11
 {
@@ -506,6 +510,8 @@ Overlay OVY_29
 	Object asm/overlay_29_0231A9F8.o
 	Object src/overlay_29_0231ACAC.o
 	Object asm/overlay_29_0231AD38.o
+	Object src/special_move_types.o
+	Object asm/overlay_29_0231AF24.o
 	Object src/overlay_29_0231B194.o
 	Object asm/overlay_29_0231B1B8.o
 	Object src/overlay_29_0231B318.o
