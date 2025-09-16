@@ -1022,8 +1022,8 @@ _0230B7CC: .word BURN_DAMAGE_MULTIPLIER
 _0230B7D0: .word CLOUDY_DAMAGE_MULTIPLIER
 	arm_func_end CalcTypeBasedDamageEffects
 
-	arm_func_start ov29_0230B7D4
-ov29_0230B7D4: ; 0x0230B7D4
+	arm_func_start WeightWeakTypePicker
+WeightWeakTypePicker: ; 0x0230B7D4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x24
 	mov sb, r1
@@ -1305,7 +1305,7 @@ _0230BB98:
 _0230BBA0: .word ov29_02352884
 _0230BBA4: .word DUNGEON_PTR
 _0230BBA8: .word 0x000003E7
-	arm_func_end ov29_0230B7D4
+	arm_func_end WeightWeakTypePicker
 
 	arm_func_start CalcDamage
 CalcDamage: ; 0x0230BBAC

@@ -40,7 +40,7 @@ Static main
 	Object src/moves_1.o
 	Object asm/main_020137E8.o
 	Object src/moves_2.o
-	Object asm/main_02013864.o
+	Object asm/main_02013884.o
 	Object src/moves_4.o
 	Object asm/main_02013A30.o
 	Object src/moves.o
@@ -501,7 +501,7 @@ Overlay OVY_29
 	Object asm/overlay_29_02318E70.o
 	Object src/inflict_status.o
 	Object src/dungeon_ai_attack.o
-	Object asm/overlay_29_0231A364.o
+	Object asm/overlay_29_0231A460.o
 	Object src/dungeon_ai_attack_1.o
 	Object asm/overlay_29_0231A7A0.o
 	Object src/overlay_29_0231A87C.o

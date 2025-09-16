@@ -1069,10 +1069,6 @@ struct dungeon {
     u8 field_0x3b1c;
     u8 field_0x3b1d;
     u8 field_0x3b1e;
-    // TODO Something is omitted from the dungeon struct in JP, but it is not known what is missing.
-    // For the time being, take out these unknown fields from JP to allow JP usage of this struct to match.
-    // As more functions are decomped, move this conditional up the struct until we find where the actual difference is in the struct.
-#ifndef JAPAN
     u8 field_0x3b1f;
     u8 field_0x3b20;
     u8 field_0x3b21;
@@ -1158,16 +1154,19 @@ struct dungeon {
     u8 field_0x3b71;
     u8 field_0x3b72;
     u8 field_0x3b73;
-#endif
-    // 0x3B74: Unknown array, likely one entry per monster species. This might be related to
-    // the IQ skill Exp. Go-Getter so the AI knows which monsters to prioritize.
-    u8 unknown_array_0x3B74[600];
+    // 0x3B74: An array containing rankings of Pokémon species by their exp. yield, indexed by Pokémon species ID.
+    // This is used by the IQ skill Exp. Go-Getter so the AI knows which monsters to prioritize.
+    // The species with the highest exp. yield on the floor has the value 0xFF, second-highest has 0xFE, and so on.
+    // Species not on the floor have the value 1.
+    u8 exp_yield_rankings[NUM_SPECIES];
+#ifndef JAPAN
     // 0x3DCC: Appears to be a table that holds the statuses::statuses_unique_id value for
     // the monsters. Maybe just for convenience to avoid loading it from every monster?
     u32 monster_unique_id[20];
     // 0x3E1C: Appears to be be an index inside or length for
     // dungeon::active_monsters_unique_statuses_ids.
     u32 unique_id_index;
+#endif
     // 0x3E20: Number of valid monster spawn entries (see spawn_entries).
     int monster_spawn_entries_length;
     u8 field_0x3e24;

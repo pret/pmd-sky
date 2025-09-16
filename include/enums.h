@@ -1172,7 +1172,8 @@ enum shopkeeper_mode {
     SHOPKEEPER_MODE_ATTACK_TEAM = 3,
 };
 
-#define MONSTER_GENDER_ID_OFFSET 600
+#define NUM_SPECIES 600
+#define MONSTER_GENDER_ID_OFFSET NUM_SPECIES
 
 // Some macro shenanigans to define the monster secondary gender labels neatly.
 #define _MONSTER_ID_GENDERED(name, base_value)                                                     \
