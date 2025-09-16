@@ -4,10 +4,12 @@
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_capabilities.h"
 #include "dungeon_capabilities_4.h"
+#include "dungeon_items.h"
 #include "dungeon_logic.h"
 #include "dungeon_logic_4.h"
 #include "dungeon_logic_5.h"
 #include "dungeon_map_access.h"
+#include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_statuses.h"
 #include "dungeon_util.h"
@@ -27,7 +29,7 @@ extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
 extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
 extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
 
-extern s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity *target, enum type_id move_type);
+extern s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_id move_type);
 
 void ResetAiCanAttackInDirection()
 {
@@ -894,4 +896,36 @@ bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *
         }
     }
     return has_target;
+}
+
+s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity *target, enum type_id move_type)
+{
+    struct monster *target_data = GetEntInfo(target);
+    s32 weight = 1;
+    bool8 has_gaggle_specs;
+    if (AbilityIsActiveVeneer(target, ABILITY_KLUTZ))
+        has_gaggle_specs = FALSE;
+    else
+        has_gaggle_specs = HasHeldItem(target, ITEM_GAGGLE_SPECS);
+
+    if (has_gaggle_specs)
+        return 500;
+
+    if (!target_data->is_not_team_member)
+        return 1;
+
+    if ((move_ai_range & 0xF) != RANGE_FRONT)
+        return 1;
+
+    if (IqSkillIsEnabled(user, IQ_EXP_GO_GETTER))
+        weight = DUNGEON_PTR[0]->exp_yield_rankings[target_data->id % NUM_SPECIES];
+    else if (IqSkillIsEnabled(user, IQ_EFFICIENCY_EXPERT))
+    {
+        weight = 500 - target_data->hp;
+        if (weight < 1)
+            weight = 1;
+    } else if (IqSkillIsEnabled(user, IQ_WEAK_TYPE_PICKER))
+        weight = WeightWeakTypePicker(user, target, move_type) + 1;
+
+    return weight;
 }

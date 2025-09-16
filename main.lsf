@@ -501,7 +501,7 @@ Overlay OVY_29
 	Object asm/overlay_29_02318E70.o
 	Object src/inflict_status.o
 	Object src/dungeon_ai_attack.o
-	Object asm/overlay_29_0231A364.o
+	Object asm/overlay_29_0231A460.o
 	Object src/dungeon_ai_attack_1.o
 	Object asm/overlay_29_0231A7A0.o
 	Object src/overlay_29_0231A87C.o

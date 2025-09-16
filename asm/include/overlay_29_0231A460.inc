@@ -1,14 +1,10 @@
 #pragma once
-.public _s32_div_f
-.public AbilityIsActiveVeneer
 .public CanAttackInDirection
 .public DIRECTIONS_XY
-.public DUNGEON_PTR
 .public DungeonRandInt
 .public GetTile
 .public GetTreatmentBetweenMonsters
-.public HasHeldItem
 .public IqSkillIsEnabled
 .public IsBlinded
-.public ov29_0230B7D4
+.public WeightMoveWithIqSkills
 .public ov29_0230F8D0
