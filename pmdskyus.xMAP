@@ -160,7 +160,7 @@
                                         39](GetDexNumber,func) found in global main_020526EC.o
                                         39](GetSpriteSize,func) found in global main_020527E0.o
                                         39](GetMonsterPreEvolution,func) found in global main_0205283C.o
-                                        39](GetMovesetHmTmPtr,func) found in global main_02013864.o
+                                        39](GetMovesetHmTmPtr,func) found in global main_02013884.o
                                         39](DexNumbersEqual,func) found in global main_02054DC4.o
                                          40](GetBaseFormCastformDeoxysCherrim,func) found in global main_02054C24.o
                                           41](IsUnown,func) found in global main_02054AA4.o
@@ -260,6 +260,7 @@
                                                                62](IsMonster__0231A9D4,func) found in global overlay_29_0231A9D4.o
                                                                62](NATURAL_GIFT_ITEM_TABLE,object) found in global natural_gift_data.o
                                                               61](GetEntityWeatherBallType,func) found in global special_move_types.o
+                                                              61](GetMoveType,func) found in global moves_2.o
                                                              60](EntityIsValid__022F7364,func) found in global overlay_29_022F7364.o
                                                              60](ov10_022C4C70,notype) found in global overlay_10_rodata_022C490C.o
                                                              60](LowerSpeed,func) found in global overlay_29_02314810.o
@@ -654,14 +655,13 @@
                                                                                                 95](IsMonsterSleeping,func) found in global dungeon_capabilities.o
                                                                                                 95](HasLastUsedMove,func) found in global move_checks.o
                                                                                                94](MonsterHasQuarterHp,func) found in global dungeon_capabilities.o
-                                                                                              93](WeightMoveWithIqSkills,func) found in global overlay_29_0231A364.o
-                                                                                               94](ov29_0230F8D0,func) found in global overlay_29_0230F8D0.o
-                                                                                                95](IsMonster__0230F980,func) found in global overlay_29_0230F980.o
+                                                                                              93](WeightMoveWithIqSkills,func) found in global dungeon_ai_attack.o
                                                                                              92](ResetAiCanAttackInDirection,func) found in global dungeon_ai_attack.o
                                                                                              92](EntityIsValid__02319F8C,func) found in global dungeon_ai_attack.o
                                                                                           89](IsTileGround,func) found in global dungeon_map_access_1.o
                                                                                           89](TryActivateBadDreams,func) found in global overlay_29_0231B1B8.o
                                                                                            90](IsMonster__0231B318,func) found in global overlay_29_0231B318.o
+                                                                                          89](IsMonster__0230F980,func) found in global overlay_29_0230F980.o
                                                                                          88](EntityIsValid__022FED98,func) found in global overlay_29_022FED98.o
                                                                                          88](ov29_022FEDBC,func) found in global overlay_29_022FEDBC.o
                                                                                          88](ov29_022F52B0,func) found in global overlay_29_022F52B0.o
@@ -705,6 +705,8 @@
                                                                                            90](IsMonsterCornered,func) found in global dungeon_capabilities_4.o
                                                                                             91](CanMonsterMoveOrSwapWithAllyInDirection,func) found in global dungeon_capabilities_4.o
                                                                                              92](DIRECTIONAL_BIT_MASKS__02352780,object) found in global directional_bit_masks.o
+                                                                                           90](TargetRegularAttack,func) found in global overlay_29_0231A460.o
+                                                                                            91](ov29_0230F8D0,func) found in global overlay_29_0230F8D0.o
                                                                                            90](AI_CONFUSED_NO_ATTACK_CHANCE,object) found in global dungeon_parameters.o
                                                                                            90](AI_REGULAR_ATTACK_WEIGHTS,object) found in global dungeon_ai_parameters.o
                                                                                          88](SetDecoyAiTracker,func) found in global overlay_29_022FB538.o
@@ -2596,34 +2598,34 @@
   02013840 00000000 .text   $a	(moves_2.o)
   02013840 00000024 .text   GetMoveTargetAndRange	(moves_2.o)
   02013860 00000000 .text   $d	(moves_2.o)
-  02013864 00000000 .text   $a	(main_02013864.o)
-  02013864 00000020 .text   GetMoveType	(main_02013864.o)
-  02013864 000001A8 .text   .text	(main_02013864.o)
-  02013880 00000000 .text   $d	(main_02013864.o)
-  02013884 00000000 .text   $a	(main_02013864.o)
-  02013884 00000048 .text   GetMovesetLevelUpPtr	(main_02013864.o)
-  020138C4 00000000 .text   $d	(main_02013864.o)
-  020138CC 00000000 .text   $a	(main_02013864.o)
-  020138CC 00000028 .text   IsInvalidMoveset	(main_02013864.o)
-  020138F0 00000000 .text   $d	(main_02013864.o)
-  020138F4 0000004C .text   GetMovesetHmTmPtr	(main_02013864.o)
-  020138F4 00000000 .text   $a	(main_02013864.o)
-  02013938 00000000 .text   $d	(main_02013864.o)
-  02013940 0000004C .text   GetMovesetEggPtr	(main_02013864.o)
-  02013940 00000000 .text   $a	(main_02013864.o)
-  02013984 00000000 .text   $d	(main_02013864.o)
-  0201398C 00000020 .text   GetMoveAiWeight	(main_02013864.o)
-  0201398C 00000000 .text   $a	(main_02013864.o)
-  020139A8 00000000 .text   $d	(main_02013864.o)
-  020139AC 00000020 .text   GetMoveNbStrikes	(main_02013864.o)
-  020139AC 00000000 .text   $a	(main_02013864.o)
-  020139C8 00000000 .text   $d	(main_02013864.o)
-  020139CC 00000000 .text   $a	(main_02013864.o)
-  020139CC 00000020 .text   GetMoveBasePower	(main_02013864.o)
-  020139E8 00000000 .text   $d	(main_02013864.o)
-  020139EC 00000020 .text   GetMoveBasePowerGround	(main_02013864.o)
-  020139EC 00000000 .text   $a	(main_02013864.o)
-  02013A08 00000000 .text   $d	(main_02013864.o)
+  02013864 00000000 .text   $a	(moves_2.o)
+  02013864 00000020 .text   GetMoveType	(moves_2.o)
+  02013880 00000000 .text   $d	(moves_2.o)
+  02013884 00000188 .text   .text	(main_02013884.o)
+  02013884 00000000 .text   $a	(main_02013884.o)
+  02013884 00000048 .text   GetMovesetLevelUpPtr	(main_02013884.o)
+  020138C4 00000000 .text   $d	(main_02013884.o)
+  020138CC 00000028 .text   IsInvalidMoveset	(main_02013884.o)
+  020138CC 00000000 .text   $a	(main_02013884.o)
+  020138F0 00000000 .text   $d	(main_02013884.o)
+  020138F4 00000000 .text   $a	(main_02013884.o)
+  020138F4 0000004C .text   GetMovesetHmTmPtr	(main_02013884.o)
+  02013938 00000000 .text   $d	(main_02013884.o)
+  02013940 00000000 .text   $a	(main_02013884.o)
+  02013940 0000004C .text   GetMovesetEggPtr	(main_02013884.o)
+  02013984 00000000 .text   $d	(main_02013884.o)
+  0201398C 00000020 .text   GetMoveAiWeight	(main_02013884.o)
+  0201398C 00000000 .text   $a	(main_02013884.o)
+  020139A8 00000000 .text   $d	(main_02013884.o)
+  020139AC 00000020 .text   GetMoveNbStrikes	(main_02013884.o)
+  020139AC 00000000 .text   $a	(main_02013884.o)
+  020139C8 00000000 .text   $d	(main_02013884.o)
+  020139CC 00000000 .text   $a	(main_02013884.o)
+  020139CC 00000020 .text   GetMoveBasePower	(main_02013884.o)
+  020139E8 00000000 .text   $d	(main_02013884.o)
+  020139EC 00000000 .text   $a	(main_02013884.o)
+  020139EC 00000020 .text   GetMoveBasePowerGround	(main_02013884.o)
+  02013A08 00000000 .text   $d	(main_02013884.o)
   02013A0C 00000000 .text   $a	(moves_4.o)
   02013A0C 00000024 .text   GetMoveAccuracyOrAiChance	(moves_4.o)
   02013A2C 00000000 .text   $d	(moves_4.o)
@@ -36397,7 +36399,7 @@
   0230AD04 00000AD0 .text   CalcTypeBasedDamageEffects	(overlay_29_0230AA0C.o)
   0230B774 00000000 .text   $d	(overlay_29_0230AA0C.o)
   0230B7D4 00000000 .text   $a	(overlay_29_0230AA0C.o)
-  0230B7D4 000003D8 .text   ov29_0230B7D4	(overlay_29_0230AA0C.o)
+  0230B7D4 000003D8 .text   WeightWeakTypePicker	(overlay_29_0230AA0C.o)
   0230BBA0 00000000 .text   $d	(overlay_29_0230AA0C.o)
   0230BBAC 000014DC .text   CalcDamage	(overlay_29_0230AA0C.o)
   0230BBAC 00000000 .text   $a	(overlay_29_0230AA0C.o)
@@ -36924,13 +36926,13 @@
   0231A0A4 00000000 .text   $a	(dungeon_ai_attack.o)
   0231A0A4 000002C0 .text   IsAiTargetEligible	(dungeon_ai_attack.o)
   0231A360 00000000 .text   $d	(dungeon_ai_attack.o)
-  0231A364 00000330 .text   .text	(overlay_29_0231A364.o)
-  0231A364 000000FC .text   WeightMoveWithIqSkills	(overlay_29_0231A364.o)
-  0231A364 00000000 .text   $a	(overlay_29_0231A364.o)
-  0231A45C 00000000 .text   $d	(overlay_29_0231A364.o)
-  0231A460 00000000 .text   $a	(overlay_29_0231A364.o)
-  0231A460 00000234 .text   TargetRegularAttack	(overlay_29_0231A364.o)
-  0231A690 00000000 .text   $d	(overlay_29_0231A364.o)
+  0231A364 00000000 .text   $a	(dungeon_ai_attack.o)
+  0231A364 000000FC .text   WeightMoveWithIqSkills	(dungeon_ai_attack.o)
+  0231A45C 00000000 .text   $d	(dungeon_ai_attack.o)
+  0231A460 00000000 .text   $a	(overlay_29_0231A460.o)
+  0231A460 00000234 .text   .text	(overlay_29_0231A460.o)
+  0231A460 00000234 .text   TargetRegularAttack	(overlay_29_0231A460.o)
+  0231A690 00000000 .text   $d	(overlay_29_0231A460.o)
   0231A694 00000000 .text   $a	(dungeon_ai_attack_1.o)
   0231A694 0000010C .text   IsTargetInRange	(dungeon_ai_attack_1.o)
   0231A798 00000000 .text   $d	(dungeon_ai_attack_1.o)
@@ -40780,5 +40782,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Sep 14 04:31:46 2025
-# Link end time: Sun Sep 14 04:31:46 2025
+# Link start time: Tue Sep 16 05:08:10 2025
+# Link end time: Tue Sep 16 05:08:11 2025
