@@ -7,3 +7,8 @@ s16 GetMoveTargetAndRange(struct move *move, bool8 is_ai)
 {
     return DUNGEON_MOVE_TABLES.moves->moves[move->id].target_range[is_ai];
 }
+
+enum type_id GetMoveType(struct move* move)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move->id].type;
+}

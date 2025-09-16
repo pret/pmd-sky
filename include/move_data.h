@@ -72,7 +72,7 @@ enum accuracy_type
 struct move_data
 {
     u16 base_power;      // 0x0
-    u8 type;             // 0x2
+    enum type_id type;   // 0x2
     u8 category;         // 0x3
     u16 target_range[2]; // 0x4
     u8 pp;               // 0x8
