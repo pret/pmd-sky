@@ -1,10 +1,10 @@
 #pragma once
 .public DoMoveCrunch
+.public DoMoveDamage__02325DC0
 .public DoMoveDamageCringe30
 .public DoMoveDamageFreeze15
 .public DoMoveDamageInlined
 .public DoMoveDamageLowerAccuracy40
 .public DoMoveDamageLowerSpeed20
-.public DoMoveDamage__02325DC0
 .public DoMoveEarthquake
 .public DoMoveParalyze__02328230

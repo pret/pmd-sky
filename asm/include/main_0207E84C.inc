@@ -1,11 +1,11 @@
 #pragma once
+.public _022BB5E8
+.public _022BB5F8
 .public EnableIrqFlag
 .public FileInit
 .public MemcpyFast
 .public MemsetFast
 .public SetIrqFlag
-.public _022BB5E8
-.public _022BB5F8
 .public sub_02079888
 .public sub_020798D8
 .public sub_0207DCC0

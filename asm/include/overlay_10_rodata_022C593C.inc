@@ -17,6 +17,10 @@
 .public DoMoveCrunch
 .public DoMoveCrushClaw
 .public DoMoveCurse
+.public DoMoveDamage__02325DC0
+.public DoMoveDamage__0232A500
+.public DoMoveDamage__0232B8B0
+.public DoMoveDamage__0232DD88
 .public DoMoveDamageBoostAllStats
 .public DoMoveDamageBurn10FlameWheel
 .public DoMoveDamageConfuse10
@@ -40,10 +44,6 @@
 .public DoMoveDamageStealItem
 .public DoMoveDamageWeightDependent
 .public DoMoveDamageWithRecoil
-.public DoMoveDamage__02325DC0
-.public DoMoveDamage__0232A500
-.public DoMoveDamage__0232B8B0
-.public DoMoveDamage__0232DD88
 .public DoMoveDefog
 .public DoMoveDestinyBond
 .public DoMoveDoubleEdge
@@ -69,8 +69,8 @@
 .public DoMoveGust
 .public DoMoveGyroBall
 .public DoMoveHammerArm
-.public DoMoveHeadSmash
 .public DoMoveHeadbutt
+.public DoMoveHeadSmash
 .public DoMoveHeartSwap
 .public DoMoveHiddenPower
 .public DoMoveHornDrill
@@ -119,8 +119,8 @@
 .public DoMoveSwapItems
 .public DoMoveTaunt
 .public DoMoveThunderFang
-.public DoMoveThunderWave
 .public DoMoveThundershock
+.public DoMoveThunderWave
 .public DoMoveTickle
 .public DoMoveTorment
 .public DoMoveToxic

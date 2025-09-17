@@ -1,10 +1,10 @@
 #pragma once
+.public _s32_div_f
 .public CopyBitsFrom
 .public CopyBitsTo
 .public DUNGEON_MOVE_TABLES
 .public GetInfoMoveGround
-.public RECOIL_MOVE_LIST
-.public Rand16Bit
-.public StringFromId
-.public _s32_div_f
 .public memset
+.public Rand16Bit
+.public RECOIL_MOVE_LIST
+.public StringFromId

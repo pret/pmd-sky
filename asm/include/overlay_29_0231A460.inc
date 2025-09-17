@@ -6,5 +6,5 @@
 .public GetTreatmentBetweenMonsters
 .public IqSkillIsEnabled
 .public IsBlinded
-.public WeightMoveWithIqSkills
 .public ov29_0230F8D0
+.public WeightMoveWithIqSkills

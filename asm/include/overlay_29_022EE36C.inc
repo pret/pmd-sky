@@ -40,7 +40,6 @@
 .public MultiplyByFixedPoint
 .public ov10_022C4418
 .public ov10_022C4434
-.public ov10_022C44E4
 .public ov10_022C45C8
 .public ov10_022C45CC
 .public ov10_022C4770
@@ -58,6 +57,7 @@
 .public ov29_022FBD80
 .public ov29_02304A48
 .public ov29_02346344
+.public PITFALL_TRAP_DAMAGE
 .public PrepareItemForPrinting__02345728
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveGroundItem
