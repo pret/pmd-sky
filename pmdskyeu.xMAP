@@ -362,8 +362,8 @@
                                                                                78](CheckVariousStatuses2,func) found in global dungeon_capabilities.o
                                                                                 79](CheckVariousStatuses,func) found in global dungeon_capabilities_2.o
                                                                                78](ov29_02300D00,func) found in global overlay_29_02300D00.o
-                                                                              77](ov29_02338430,func) found in global overlay_29_023383A8.o
-                                                                               78](ov29_022EDEDC,func) found in global overlay_29_022EDCBC.o
+                                                                              77](RevealAttackedTile,func) found in global overlay_29_023383A8.o
+                                                                               78](TryRevealAttackedTrap,func) found in global overlay_29_022EDCBC.o
                                                                                 79](EntityIsValid__022EE348,func) found in global overlay_29_022EE348.o
                                                                                 79](ApplyTrapEffect,func) found in global overlay_29_022EE36C.o
                                                                                  80](IsFullFloorFixedRoom,func) found in global overlay_29_023361D4.o
@@ -399,7 +399,7 @@
                                                                                    82](TryInflictMuzzledStatus,func) found in global overlay_29_0231516C.o
                                                                                     83](EndInvisibleClassStatus,func) found in global overlay_29_02305C28.o
                                                                                     83](BoostDefensiveStat,func) found in global overlay_29_02311C28.o
-                                                                                     84](ov29_0230040C,func) found in global overlay_29_0230027C.o
+                                                                                     84](SetPreprocessorArgsStringToName,func) found in global overlay_29_0230027C.o
                                                                                      84](EntityIsValid__023118B4,func) found in global overlay_29_023118B4.o
                                                                                      84](ExclusiveItemEffectIsActive__023147EC,func) found in global overlay_29_023147EC.o
                                                                                      84](DefenderAbilityIsActive__02311B94,func) found in global overlay_29_023118D8.o
@@ -3758,10 +3758,10 @@
   02025100 00000184 .text   sub_02024E34	(main_02014D18.o)
   02025260 00000000 .text   $d	(main_02014D18.o)
   02025284 00000000 .text   $a	(main_02014D18.o)
-  02025284 00000010 .text   sub_02024FB8	(main_02014D18.o)
+  02025284 00000010 .text   GetSize0x80Buffer	(main_02014D18.o)
   02025290 00000000 .text   $d	(main_02014D18.o)
   02025294 00000000 .text   $a	(main_02014D18.o)
-  02025294 00000010 .text   sub_02024FC8	(main_02014D18.o)
+  02025294 00000010 .text   GetSize0x80Buffer2	(main_02014D18.o)
   020252A0 00000000 .text   $d	(main_02014D18.o)
   020252A4 00000000 .text   $a	(main_02014D18.o)
   020252A4 00000010 .text   GetDungeonResultString	(main_02014D18.o)
@@ -26628,7 +26628,7 @@
   022C4E30 00000000 .rodata POISON_DAMAGE	(overlay_10_022C4394.o)
   022C4E34 00000000 .rodata SPAWN_COOLDOWN	(overlay_10_022C4394.o)
   022C4E38 00000000 .rodata MIST_BALL_LOWER_SPECIAL_ATTACK_CHANCE	(overlay_10_022C4394.o)
-  022C4E3C 00000000 .rodata ov10_022C44E4	(overlay_10_022C4394.o)
+  022C4E3C 00000000 .rodata PITFALL_TRAP_DAMAGE	(overlay_10_022C4394.o)
   022C4E40 00000000 .rodata ov10_022C44E8	(overlay_10_022C4394.o)
   022C4E44 00000000 .rodata ov10_022C44EC	(overlay_10_022C4394.o)
   022C4E48 00000000 .rodata CHARGE_BEAM_BOOST_SPECIAL_ATTACK_CHANCE	(overlay_10_022C4394.o)
@@ -35311,11 +35311,11 @@
   022EE81C 00000000 .text   $d	(overlay_29_022EDCBC.o)
   022EE82C 00000000 .text   $a	(overlay_29_022EDCBC.o)
   022EE82C 00000060 .text   TryRemoveTrap	(overlay_29_022EDCBC.o)
-  022EE88C 00000080 .text   ov29_022EDEDC	(overlay_29_022EDCBC.o)
+  022EE88C 00000080 .text   TryRevealAttackedTrap	(overlay_29_022EDCBC.o)
   022EE908 00000000 .text   $d	(overlay_29_022EDCBC.o)
   022EE90C 00000020 .text   ov29_022EDF5C	(overlay_29_022EDCBC.o)
   022EE90C 00000000 .text   $a	(overlay_29_022EDCBC.o)
-  022EE92C 00000024 .text   ov29_022EDF7C	(overlay_29_022EDCBC.o)
+  022EE92C 00000024 .text   SubstitutePlaceholderTrapTags	(overlay_29_022EDCBC.o)
   022EE950 00000378 .text   TryTriggerTrap	(overlay_29_022EDCBC.o)
   022EECAC 00000000 .text   $d	(overlay_29_022EDCBC.o)
   022EECC8 00000030 .text   ItemIsActive__022EE318	(overlay_29_022EE348.o)
@@ -35853,7 +35853,7 @@
   022FC3DC 00000074 .text   ov29_022FB9E0	(overlay_29_022FB678.o)
   022FC450 0000001C .text   ov29_022FBA54	(overlay_29_022FB678.o)
   022FC46C 00000044 .text   IsSpecialStoryAllyOrClient	(overlay_29_022FB678.o)
-  022FC4B0 0000001C .text   ov29_022FBAB4	(overlay_29_022FB678.o)
+  022FC4B0 0000001C .text   ResetTriggerFlags	(overlay_29_022FB678.o)
   022FC4CC 00000020 .text   IsSpecialStoryAlly	(joined_at_checks.o)
   022FC4CC 00000000 .text   $a	(joined_at_checks.o)
   022FC4EC 0000002C .text   IsExperienceLocked	(joined_at_checks.o)
@@ -36035,7 +36035,7 @@
   02300D84 00000000 .text   $a	(overlay_29_0230027C.o)
   02300E2C 00000000 .text   $d	(overlay_29_0230027C.o)
   02300E38 00000000 .text   $a	(overlay_29_0230027C.o)
-  02300E38 000000A4 .text   ov29_0230040C	(overlay_29_0230027C.o)
+  02300E38 000000A4 .text   SetPreprocessorArgsStringToName	(overlay_29_0230027C.o)
   02300EDC 00000034 .text   IsMonsterDrowsy	(dungeon_logic.o)
   02300EDC 00000000 .text   $a	(dungeon_logic.o)
   02300F10 0000001C .text   MonsterHasNonvolatileNonsleepStatus	(dungeon_logic.o)
@@ -38292,7 +38292,7 @@
   02338F8C 00000000 .text   $a	(overlay_29_023383A8.o)
   02338F8C 00000074 .text   TryActivateGravity	(overlay_29_023383A8.o)
   02338FF4 00000000 .text   $d	(overlay_29_023383A8.o)
-  02339000 0000002C .text   ov29_02338430	(overlay_29_023383A8.o)
+  02339000 0000002C .text   RevealAttackedTile	(overlay_29_023383A8.o)
   02339000 00000000 .text   $a	(overlay_29_023383A8.o)
   0233902C 00000020 .text   ov29_0233845C	(overlay_29_023383A8.o)
   02339044 00000000 .text   $d	(overlay_29_023383A8.o)
@@ -38727,7 +38727,7 @@
   02345780 00000000 .text   $a	(overlay_29_02344B1C.o)
   02345780 0000000C .text   ov29_02344B9C	(overlay_29_02344B1C.o)
   02345788 00000000 .text   $d	(overlay_29_02344B1C.o)
-  0234578C 00000028 .text   ov29_02344BA8	(overlay_29_02344B1C.o)
+  0234578C 00000028 .text   PrepareItemForPrinting2	(overlay_29_02344B1C.o)
   0234578C 00000000 .text   $a	(overlay_29_02344B1C.o)
   023457B0 00000000 .text   $d	(overlay_29_02344B1C.o)
   023457B4 00000000 .text   $a	(overlay_29_02344B1C.o)
@@ -39060,10 +39060,10 @@
   0234BB34 00000070 .text   ov29_0234AF34	(overlay_29_023498A0.o)
   0234BBA0 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BBA4 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BBA4 0000002C .text   ov29_0234AFA4	(overlay_29_023498A0.o)
+  0234BBA4 0000002C .text   InitAlertBoxInfo	(overlay_29_023498A0.o)
   0234BBCC 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BBD0 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BBD0 0000002C .text   ov29_0234AFD0	(overlay_29_023498A0.o)
+  0234BBD0 0000002C .text   FreeAlertBoxInfo	(overlay_29_023498A0.o)
   0234BBF8 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BBFC 00000014 .text   ov29_0234AFFC	(overlay_29_023498A0.o)
   0234BBFC 00000000 .text   $a	(overlay_29_023498A0.o)
@@ -39072,34 +39072,34 @@
   0234BC10 00000014 .text   ov29_0234B010	(overlay_29_023498A0.o)
   0234BC20 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BC24 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BC24 00000010 .text   ov29_0234B024	(overlay_29_023498A0.o)
+  0234BC24 00000010 .text   SetMessageLogGroupStartFlag	(overlay_29_023498A0.o)
   0234BC30 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BC34 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BC34 00000018 .text   ov29_0234B034	(overlay_29_023498A0.o)
+  0234BC34 00000018 .text   GetMessageLogPreprocessorArgs	(overlay_29_023498A0.o)
   0234BC48 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BC4C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BC4C 00000020 .text   ov29_0234B04C	(overlay_29_023498A0.o)
+  0234BC4C 00000020 .text   InitMessageLogPreprocessorArgs	(overlay_29_023498A0.o)
   0234BC64 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BC6C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BC6C 00000018 .text   ov29_0234B06C	(overlay_29_023498A0.o)
+  0234BC6C 00000018 .text   SetMessageLogPreprocessorArgsFlagVal	(overlay_29_023498A0.o)
   0234BC80 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BC84 00000000 .text   $a	(overlay_29_023498A0.o)
   0234BC84 00000018 .text   SetPreprocessorArgsIdVal	(overlay_29_023498A0.o)
   0234BC98 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BC9C 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BC9C 00000018 .text   ov29_0234B09C	(overlay_29_023498A0.o)
+  0234BC9C 00000018 .text   SetMessageLogPreprocessorArgsNumberVal	(overlay_29_023498A0.o)
   0234BCB0 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BCB4 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BCB4 00000018 .text   ov29_0234B0B4	(overlay_29_023498A0.o)
+  0234BCB4 00000018 .text   SetMessageLogPreprocessorArgsString	(overlay_29_023498A0.o)
   0234BCC8 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BCCC 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BCCC 00000038 .text   ov29_0234B0CC	(overlay_29_023498A0.o)
+  0234BCCC 00000038 .text   SetMessageLogPreprocessorArgsStringToName	(overlay_29_023498A0.o)
   0234BD00 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BD04 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BD04 00000014 .text   ov29_0234B104	(overlay_29_023498A0.o)
+  0234BD04 00000014 .text   SetMessageLogPreprocessorArgsSpeakerId	(overlay_29_023498A0.o)
   0234BD14 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BD18 00000000 .text   $a	(overlay_29_023498A0.o)
-  0234BD18 00000018 .text   ov29_0234B118	(overlay_29_023498A0.o)
+  0234BD18 00000018 .text   SetMessageLogPreprocessorArgsSpeakerId0x30000	(overlay_29_023498A0.o)
   0234BD2C 00000000 .text   $d	(overlay_29_023498A0.o)
   0234BD30 00000074 .text   ov29_0234B130	(overlay_29_023498A0.o)
   0234BD30 00000000 .text   $a	(overlay_29_023498A0.o)
@@ -39764,7 +39764,7 @@
   02353470 00000000 .rodata SOLID_ROCK_MULTIPLIER	(overlay_29_rodata_023527C0.o)
   02353478 00000000 .rodata DAMAGE_FORMULA_MAX_BASE	(overlay_29_rodata_023527C0.o)
   02353488 00000000 .rodata DAMAGE_FORMULA_MIN_BASE	(overlay_29_rodata_023527C0.o)
-  02353490 00000000 .rodata ov29_02352884	(overlay_29_rodata_023527C0.o)
+  02353490 00000000 .rodata WEAK_TYPE_PICKER_MATCHUP_MULTIPLIERS	(overlay_29_rodata_023527C0.o)
   023534A0 00000000 .rodata ov29_02352894	(overlay_29_rodata_023527C0.o)
   023534B0 00000000 .rodata TYPE_DAMAGE_NEGATING_EXCLUSIVE_ITEM_EFFECTS	(overlay_29_rodata_023527C0.o)
   02353590 00000000 .rodata ov29_02352984	(overlay_29_rodata_023527C0.o)
@@ -39934,7 +39934,7 @@
   023543D4 00000000 .data   ov29_023537BC	(overlay_29_data_02353700.o)
   023543DC 00000000 .data   ov29_023537C4	(overlay_29_data_02353700.o)
   023543E0 00000000 .data   ov29_023537C8	(overlay_29_data_02353700.o)
-  023543E4 00000000 .data   ov29_023537CC	(overlay_29_data_02353700.o)
+  023543E4 00000000 .data   MESSAGE_LOG_INFO	(overlay_29_data_02353700.o)
   023543F0 00000000 .data   ov29_023537D8	(overlay_29_data_02353700.o)
   023543F8 00000000 .data   DUNGEON_FADES_PTR	(overlay_29_data_02353700.o)
   023543FC 00000000 .data   ov29_023537E4	(overlay_29_data_02353700.o)
@@ -40816,5 +40816,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Tue Sep 16 05:09:32 2025
-# Link end time: Tue Sep 16 05:09:32 2025
+# Link start time: Fri Sep 19 04:35:08 2025
+# Link end time: Fri Sep 19 04:35:08 2025
