@@ -1,7 +1,8 @@
 #ifndef PMDSKY_MAIN_0200330C_H
 #define PMDSKY_MAIN_0200330C_H
 
-#include "ground_bg.h"
+#include "util.h"
+#include <file.h>
 
 void ZInit8(struct iovec* ptr);
 bool8 PointsToZero(struct iovec* ptr);
