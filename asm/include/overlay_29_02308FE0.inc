@@ -83,7 +83,6 @@
 .public ov29_0233847C
 .public ov29_02344B9C
 .public ov29_0234969C
-.public ov29_0234B09C
 .public ov29_0234B1A4
 .public ov29_0234BA54
 .public ov29_02353218
@@ -102,6 +101,7 @@
 .public RestorePpAllMovesSetFlags
 .public RestoreRandomMovePP
 .public SET_DAMAGE_STATUS_DAMAGE
+.public SetMessageLogPreprocessorArgsNumberVal
 .public SetMonsterFlag2
 .public SetPokemonBattled
 .public ShouldDisplayEntityWrapper

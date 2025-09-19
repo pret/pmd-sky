@@ -4,6 +4,7 @@
 .public DungeonRandInt
 .public EntityIsValid__0230E8F0
 .public GetKecleonIdToSpawnByFloor
+.public GetMessageLogPreprocessorArgs
 .public GetMonsterIdToSpawn
 .public GetMonsterLevelToSpawn
 .public GetRandomMovementChance
@@ -14,7 +15,6 @@
 .public ov29_022E62F0
 .public ov29_022FBC94
 .public ov29_022FD318
-.public ov29_0234B034
 .public ov29_0234BB50
 .public ov29_0234D6C8
 .public PreprocessString

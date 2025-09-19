@@ -58,13 +58,13 @@
 .public ov29_0231A9F8
 .public ov29_02337CCC
 .public ov29_02346888
-.public ov29_0234B024
 .public ov29_0234BA54
 .public ov29_0237C9C0
 .public ov29_0237CA68
 .public ov29_0237CA6C
 .public PositionIsOnHiddenStairs
 .public SetHiddenFloorField
+.public SetMessageLogGroupStartFlag
 .public SubstitutePlaceholderStringTags
 .public TryActivateFlashFireOnAllMonsters
 .public TrySpawnTrapperTrap

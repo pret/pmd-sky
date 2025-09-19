@@ -884,7 +884,7 @@ ov29_02348B28: ; 0x02348B28
 	mov r0, #0
 	add r1, r1, #0x700
 	ldrsh r1, [r1, #0x6a]
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	mov r1, r4
 	mov r0, #1
 	bl PrepareItemForPrinting__02345728
@@ -1008,14 +1008,14 @@ _02348C84:
 	mov r2, #0x4e
 	bl GetName
 	mov r0, r5
-	bl sub_02024FB8
+	bl GetSize0x80Buffer
 	add r1, sp, #0
 	bl strcpy
 	mov r0, r5
-	bl sub_02024FB8
+	bl GetSize0x80Buffer
 	mov r1, r0
 	mov r0, r5
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02348CF4
 _02348CE8:
 	add r4, r4, #1

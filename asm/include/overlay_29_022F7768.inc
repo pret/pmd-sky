@@ -59,8 +59,6 @@
 .public ov29_02339F88
 .public ov29_02349688
 .public ov29_0234B010
-.public ov29_0234B06C
-.public ov29_0234B0B4
 .public ov29_0234B1A4
 .public ov29_0234EF24
 .public ov29_0237C9B0
@@ -68,6 +66,8 @@
 .public RemoveHolderForItemInBag
 .public RevertGiratinaAndShaymin
 .public SetForcedLossReason
+.public SetMessageLogPreprocessorArgsFlagVal
+.public SetMessageLogPreprocessorArgsString
 .public SetMissionTargetEnemyDefeated
 .public ShouldMonsterRunAway
 .public StoryRestrictionsEnabled

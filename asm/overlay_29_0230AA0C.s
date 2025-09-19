@@ -1105,7 +1105,7 @@ _0230B8E0:
 	mov r1, sb
 	mov r2, r8
 	bl ScrappyShouldActivate
-	ldr r1, _0230BBA0 ; =ov29_02352884
+	ldr r1, _0230BBA0 ; =WEAK_TYPE_PICKER_MATCHUP_MULTIPLIERS
 	str r0, [sp]
 	add ip, sp, #4
 	ldmia r1, {r0, r1, r2, r3}
@@ -1302,7 +1302,7 @@ _0230BB98:
 	add sp, sp, #0x24
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0230BBA0: .word ov29_02352884
+_0230BBA0: .word WEAK_TYPE_PICKER_MATCHUP_MULTIPLIERS
 _0230BBA4: .word DUNGEON_PTR
 _0230BBA8: .word 0x000003E7
 	arm_func_end WeightWeakTypePicker
@@ -3999,23 +3999,23 @@ TryRecruit: ; 0x0230E064
 	bl IsMonsterOnTeam
 	cmp r0, #0
 	beq _0230E0FC
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #1
 	str r1, [sp]
 	mov r1, r5
 	ldr r2, [sb, #0xb4]
 	mov r3, r1
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	b _0230E114
 _0230E0FC:
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r5
 	str r1, [sp]
 	ldr r2, [sb, #0xb4]
 	mov r3, r1
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 _0230E114:
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r0
 	mov r3, #1
 	mov r2, #0
@@ -4115,7 +4115,7 @@ _0230E218:
 	bl StrncpySimpleNoPad
 #endif
 	bl ov29_022EACAC
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r0
 	mov r0, #1
 	str r0, [sp]
@@ -4141,7 +4141,7 @@ _0230E2D4:
 	bl sub_020585B4
 	mov r1, r4
 	mov r0, #0
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	mov r0, #1
 	mov r1, #0
 	bl SetPreprocessorArgsIdVal
@@ -4188,12 +4188,12 @@ _0230E380:
 _0230E38C:
 	mov r0, #0
 	add r1, sp, #0x58
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	mov r0, #1
 	mov r1, sl
 	mov r2, #0
 	bl SubstitutePlaceholderStringTags
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #1
 	mov r2, #0
 	str r1, [sp]

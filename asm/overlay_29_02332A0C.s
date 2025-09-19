@@ -318,12 +318,12 @@ _02332DFC:
 	strb r0, [r4, #0x167 + PERFORM_DAMAGE_SEQUENCE_OFFSET]
 	b _02332ED0
 _02332E3C:
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r3, #0
 	str r3, [sp]
 	ldr r2, [r7, #0xb4]
 	mov r1, #1
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	mov r0, r8
 	bl ShouldDisplayEntityWrapper
 	cmp r0, #0

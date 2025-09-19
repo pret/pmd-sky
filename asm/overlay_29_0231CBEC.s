@@ -638,7 +638,7 @@ _0231D3BC:
 	ble _0231D3E8
 	sub r1, r1, r0
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r2, _0231D494 ; =0x00000BF7
 	mov r0, sl
 	mov r1, sb
@@ -649,7 +649,7 @@ _0231D3E8:
 	ble _0231D410
 	sub r1, r0, fp
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r2, _0231D498 ; =0x00000BF8
 	mov r0, sl
 	mov r1, sb
@@ -660,7 +660,7 @@ _0231D410:
 	ble _0231D438
 	sub r1, r0, r6
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r2, _0231D49C ; =0x00000BF9
 	mov r0, sl
 	mov r1, sb
@@ -671,7 +671,7 @@ _0231D438:
 	ble _0231D460
 	sub r1, r0, r7
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r2, _0231D4A0 ; =0x00000BFA
 	mov r0, sl
 	mov r1, sb

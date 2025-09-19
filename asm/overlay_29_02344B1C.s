@@ -63,8 +63,8 @@ ov29_02344B9C: ; 0x02344B9C
 _02344BA4: .word SetPreprocessorArgsIdVal
 	arm_func_end ov29_02344B9C
 
-	arm_func_start ov29_02344BA8
-ov29_02344BA8: ; 0x02344BA8
+	arm_func_start PrepareItemForPrinting2
+PrepareItemForPrinting2: ; 0x02344BA8
 	stmdb sp!, {r3, lr}
 	add r3, r0, r1, lsl #2
 	orr ip, r1, #0x40000
@@ -76,7 +76,7 @@ ov29_02344BA8: ; 0x02344BA8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02344BCC: .word ov29_023531BC
-	arm_func_end ov29_02344BA8
+	arm_func_end PrepareItemForPrinting2
 
 	arm_func_start GenerateStandardItem
 GenerateStandardItem: ; 0x02344BD0

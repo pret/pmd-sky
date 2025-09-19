@@ -46,11 +46,11 @@
 .public ov29_02325644
 .public ov29_02325D20
 .public ov29_02325D7C
-.public ov29_0234B09C
 .public ov29_02352AD8
 .public ov29_02352B1C
 .public ov29_0237CA84
 .public SetAndLoadCurrentAttackAnimation
+.public SetMessageLogPreprocessorArgsNumberVal
 .public ShouldDisplayEntityAdvanced
 .public ShouldMovePlayAlternativeAnimation
 .public sub_0201CF90

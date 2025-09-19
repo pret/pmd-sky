@@ -172,8 +172,8 @@ _022EDED4:
 	ldmia sp!, {r4, pc}
 	arm_func_end TryRemoveTrap
 
-	arm_func_start ov29_022EDEDC
-ov29_022EDEDC: ; 0x022EDEDC
+	arm_func_start TryRevealAttackedTrap
+TryRevealAttackedTrap: ; 0x022EDEDC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -211,32 +211,32 @@ _022EDF50:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _022EDF58: .word DUNGEON_PTR
-	arm_func_end ov29_022EDEDC
+	arm_func_end TryRevealAttackedTrap
 
 	arm_func_start ov29_022EDF5C
 ov29_022EDF5C: ; 0x022EDF5C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
-	bl sub_02024FC8
-	bl ov29_0234B034
+	bl GetSize0x80Buffer2
+	bl GetMessageLogPreprocessorArgs
 	add r0, r0, r5, lsl #2
 	str r4, [r0, #0x10]
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022EDF5C
 
-	arm_func_start ov29_022EDF7C
-ov29_022EDF7C: ; 0x022EDF7C
+	arm_func_start SubstitutePlaceholderTrapTags
+SubstitutePlaceholderTrapTags: ; 0x022EDF7C
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r1
 	mov r6, r0
 	mov r0, r5
 	mov r4, r2
-	bl sub_02024FC8
+	bl GetSize0x80Buffer2
 	add r0, r6, r5, lsl #2
 	str r4, [r0, #0x10]
 	ldmia sp!, {r4, r5, r6, pc}
-	arm_func_end ov29_022EDF7C
+	arm_func_end SubstitutePlaceholderTrapTags
 
 	arm_func_start TryTriggerTrap
 TryTriggerTrap: ; 0x022EDFA0

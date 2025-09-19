@@ -41,6 +41,7 @@
 .public GetApparentWeather
 .public GetDamageSourceWrapper
 .public GetEffectAnimation
+.public GetMessageLogPreprocessorArgs
 .public GetMoveAnimation
 .public GetMoveCategory
 .public GetMoveType
@@ -75,7 +76,6 @@
 .public ov29_02318D58
 .public ov29_02318D98
 .public ov29_02332F18
-.public ov29_0234B034
 .public ov29_0234BA54
 .public ov29_02352AD8
 .public POWDER_SNOW_FREEZE_CHANCE

@@ -770,12 +770,12 @@ ov29_022FA02C: ; 0x022FA02C
 	add r0, sp, #0x49
 	bl GetLearnableIqSkills
 	mov r7, r0
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, sl
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	mov r8, #1
 	add r5, sp, #4
 	mov r4, r8

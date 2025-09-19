@@ -242,7 +242,7 @@ SubstitutePlaceholderStringTags: ; 0x022E2AD8
 	mov r6, r1
 	mov r7, r0
 	mov r5, r2
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	ldr r1, [r6]
 	mov r4, r0
 	cmp r1, #1
@@ -258,18 +258,18 @@ _022E2B10:
 	ldr r2, [r6, #0xb4]
 	mov r1, r7
 	mov r3, r5
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022E2B2C:
 	ldr r2, [r6, #0xb4]
 	mov r1, r7
-	bl ov29_02344BA8
+	bl PrepareItemForPrinting2
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022E2B3C:
 	ldr r2, [r6, #0xb4]
 	mov r1, r7
 	ldrb r2, [r2]
-	bl ov29_022EDF7C
+	bl SubstitutePlaceholderTrapTags
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022E2B50:
 	ldr r0, _022E2B64 ; =0x00000A42

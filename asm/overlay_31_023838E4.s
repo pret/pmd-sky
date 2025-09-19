@@ -3098,7 +3098,7 @@ _023860F0:
 	strneb r0, [r1, #0x124 + OV31_023860A4_OFFSET]
 	cmp ip, #4
 	blt _023860F0
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	ldrh r1, [r5, #4]
 	cmp r6, #0
 	str r1, [r0, #0x10]
@@ -3157,7 +3157,7 @@ ov31_0238619C: ; 0x0238619C
 	add r5, r7, #0x124
 #endif
 	add r6, r5, r4, lsl #3
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r6
 	mov r3, r1
@@ -3280,7 +3280,7 @@ ov31_02386308: ; 0x02386308
 	mov r8, r1
 	ldr r6, [r4, #0xb4]
 	mov r5, #0
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	add r1, r6, r7, lsl #3
 	add r1, r1, #0x100
 	ldrh r2, [r1, #0x28 + OV31_02386308_OFFSET]

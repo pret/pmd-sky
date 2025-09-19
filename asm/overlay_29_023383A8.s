@@ -65,12 +65,12 @@ _0233842C: .word 0x00000C05
 #endif
 	arm_func_end TryActivateGravity
 
-	arm_func_start ov29_02338430
-ov29_02338430: ; 0x02338430
+	arm_func_start RevealAttackedTile
+RevealAttackedTile: ; 0x02338430
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r1, #1
-	bl ov29_022EDEDC
+	bl TryRevealAttackedTrap
 	mov r0, r4
 	bl PositionIsOnHiddenStairs
 	cmp r0, #0
@@ -78,7 +78,7 @@ ov29_02338430: ; 0x02338430
 	mov r0, #1
 	bl HiddenStairsTrigger
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_02338430
+	arm_func_end RevealAttackedTile
 
 	arm_func_start ov29_0233845C
 ov29_0233845C: ; 0x0233845C

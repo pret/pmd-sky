@@ -390,7 +390,7 @@ _022DF0AC:
 	bl ov29_02338F38
 	mov r0, #1
 	bl ov29_022E2B68
-	bl ov29_0234AFA4
+	bl InitAlertBoxInfo
 	bl ov29_0234BB10
 	bl DungeonRngUnsetSecondary
 	bl GetDungeonRngPreseed
@@ -514,7 +514,7 @@ _022DF2D8:
 	add r0, sb, #0x700
 	ldrsb r1, [r0, #0x9b]
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	add r0, sb, #0x700
 	ldrsb r0, [r0, #0x9b]
 	mov r2, #1
@@ -587,7 +587,7 @@ _022DF3B0:
 	beq _022DF408
 	add r1, r0, #1
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r1, _022DFF4C ; =0x00000B6D
 	mov r0, #0
 	mov r2, #1
@@ -611,7 +611,7 @@ _022DF428:
 	bl ov29_022F6EF4
 	bl ov29_022E8104
 	bl ov29_022E7F7C
-	bl ov29_0234B04C
+	bl InitMessageLogPreprocessorArgs
 	bl ov29_0234BB2C
 	bl ov29_022DE4FC
 	cmp r5, #0
@@ -929,7 +929,7 @@ _022DF82C:
 	bl SetForcedLossReason
 	ldrsh r1, [sl, #0x20]
 	mov r0, #0
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	ldr r1, _022DFF64 ; =0x00000B73
 	mov r0, #0
 	mov r2, #1
@@ -1649,7 +1649,7 @@ _022E02EC:
 _022E030C:
 	bl ov10_022BDC0C
 	bl FreeTopScreenStatus
-	bl ov29_0234AFD0
+	bl FreeAlertBoxInfo
 	bl ov29_0234BB20
 	bl ov29_02338D30
 	bl ov29_022ED0B0

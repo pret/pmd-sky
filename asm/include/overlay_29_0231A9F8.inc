@@ -10,11 +10,11 @@
 .public IsFloorOver
 .public LogMessageByIdWithPopupCheckUser
 .public ov29_022EB4E8
-.public ov29_022FBAB4
 .public ov29_02321274
 .public ov29_02322374
 .public PrepareItemForPrinting__02345728
 .public RemoveUsedItem
+.public ResetTriggerFlags
 .public SubstitutePlaceholderStringTags
 .public TryActivateTruant
 .public UpdateAiTargetPos

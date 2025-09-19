@@ -6,6 +6,7 @@
 .public CreateDialogueBox
 .public CreateParentMenuFromStringIds
 .public CreatePortraitBox
+.public GetMessageLogPreprocessorArgs
 .public HidePortraitBox
 .public InitPreprocessorArgs
 .public IsDialogueBoxActive
@@ -19,7 +20,6 @@
 .public ov29_022EA428
 .public ov29_022F2FE4
 .public ov29_02339148
-.public ov29_0234B034
 .public ov29_0234B1A4
 .public ov29_0234B4CC
 .public ov29_0234B73C

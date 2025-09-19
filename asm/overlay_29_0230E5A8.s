@@ -66,7 +66,7 @@ ov29_0230E658: ; 0x0230E658
 	mov r0, r4
 	bl StringFromId
 	mov r4, r0
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r2, r4
 	str r0, [sp]
 	mov r0, r5
@@ -75,7 +75,7 @@ ov29_0230E658: ; 0x0230E658
 	bl PreprocessString
 	mov r0, r5
 	bl ov29_0234BB50
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r0
 	mov r0, r5
 	mov r2, #1

@@ -20,7 +20,7 @@ ExecuteMonsterAction: ; 0x022FE4BC
 	bl AnimationDelayOrSomething
 	bl ov29_022FBD08
 	mov r0, #1
-	bl ov29_0234B024
+	bl SetMessageLogGroupStartFlag
 	ldr r5, [r6, #0xb4]
 	mov r1, #0
 	strb r1, [r5, #0x109]
@@ -651,7 +651,7 @@ _022FF7B4:
 	bl ov29_022FBD08
 #endif
 	mov r0, #1
-	bl ov29_0234B024
+	bl SetMessageLogGroupStartFlag
 	ldr r6, [sb, #0xb4]
 	mov r1, #0
 #ifdef JAPAN

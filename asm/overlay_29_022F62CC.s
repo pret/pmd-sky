@@ -440,7 +440,7 @@ ov29_022F67D0: ; 0x022F67D0
 _022F6870:
 	mov r1, r4
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	mov r2, #0
 	ldr r1, _022F69FC ; =0x00000E4D
 	add r0, sp, #0x14
@@ -606,7 +606,7 @@ _022F6A80:
 _022F6AAC:
 	mov r1, r6
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	mov r2, #0
 	ldr r1, _022F6C98 ; =0x00000E4C
 	add r0, sp, #4

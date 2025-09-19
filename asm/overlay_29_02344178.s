@@ -376,7 +376,7 @@ _023445E0:
 _02344620:
 	mov r0, #0
 	mov r1, #0x64
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r0, _02344A70 ; =0x00000F4A
 	mov r1, r4
 	mov r2, #0
@@ -452,7 +452,7 @@ _0234471C:
 	bl ov29_022F0654
 	mov r0, #0
 	mov r1, #0x64
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r0, _02344A90 ; =0x00000F33
 	mov r1, r4
 	mov r2, #0
@@ -541,7 +541,7 @@ _0234485C:
 	bl ov29_022F0654
 	mov r0, #0
 	mov r1, #0x64
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r0, _02344AB8 ; =0x00000F54
 	mov r1, r4
 	mov r2, #0
@@ -611,7 +611,7 @@ _02344950:
 	bl ov29_022F0654
 	mov r0, #0
 	mov r1, #0x64
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r0, _02344ADC ; =0x00000F3F
 	mov r1, r4
 	mov r2, #0

@@ -149,14 +149,14 @@ _02300408: .word 0x00000C33
 #endif
 	arm_func_end ov29_02300358
 
-	arm_func_start ov29_0230040C
-ov29_0230040C: ; 0x0230040C
+	arm_func_start SetPreprocessorArgsStringToName
+SetPreprocessorArgsStringToName: ; 0x0230040C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r7, r0
 	mov r0, r6
 	mov r5, r2
-	bl sub_02024FB8
+	bl GetSize0x80Buffer
 	ldrsh r1, [sp, #0x18]
 	mov r4, r0
 	cmp r1, #0
@@ -201,6 +201,6 @@ _02300490:
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	mov r0, r6
 	mov r1, r4
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov29_0230040C
+	arm_func_end SetPreprocessorArgsStringToName

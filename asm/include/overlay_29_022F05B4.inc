@@ -37,6 +37,7 @@
 .public GetItemToUse
 .public GetLeader
 .public GetLeaderMonster
+.public GetMessageLogPreprocessorArgs
 .public GetMoneyCarried
 .public GetMonsterGenderVeneer
 .public GetPressedButtons
@@ -104,7 +105,6 @@
 .public ov29_022FA2F0
 .public ov29_022FA360
 .public ov29_022FB920
-.public ov29_022FBAB4
 .public ov29_022FBDF0
 .public ov29_022FF3F4
 .public ov29_022FF958
@@ -129,10 +129,6 @@
 .public ov29_02348ECC
 .public ov29_023491B8
 .public ov29_0234A980
-.public ov29_0234B034
-.public ov29_0234B0CC
-.public ov29_0234B104
-.public ov29_0234B118
 .public ov29_0234B1A4
 .public ov29_0234B4CC
 .public ov29_0234BA54
@@ -172,10 +168,14 @@
 .public RemoveEquivItemNoHole
 .public RemoveGroundItem
 .public RemoveHolderForItemInBag
+.public ResetTriggerFlags
 .public SetActionUseMovePlayer
 .public SetDecoyAiTracker
 .public SetHolderForItemInBag
 .public SetLeaderActionFields
+.public SetMessageLogPreprocessorArgsSpeakerId
+.public SetMessageLogPreprocessorArgsSpeakerId0x30000
+.public SetMessageLogPreprocessorArgsStringToName
 .public SetMonsterActionFields
 .public ShouldMonsterRunAway
 .public ShouldMonsterRunAwayAndShowEffect

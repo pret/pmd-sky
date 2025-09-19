@@ -630,7 +630,7 @@ DisplayMessage: ; 0x0234D258
 	mov r0, #0xa
 	bl ov29_0234BA54
 	bl ov29_0234D558
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r4
 	mov r2, r6
 	str r0, [sp]
@@ -655,7 +655,7 @@ DisplayMessage2: ; 0x0234D2AC
 	mov r0, #0xa
 	bl ov29_0234BA54
 	bl ov29_0234D558
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r4
 	mov r2, r6
 	str r0, [sp]
@@ -749,7 +749,7 @@ _0234D3F8:
 	bl ov29_0234D5D0
 	b _0234D440
 _0234D41C:
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	str r0, [sp]
 	mov r4, #1
 	mov r0, r6

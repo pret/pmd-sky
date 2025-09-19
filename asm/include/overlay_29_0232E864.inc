@@ -338,6 +338,7 @@
 .public GetDirectionTowardsPosition
 .public GetEntityMoveTargetAndRange
 .public GetExclusiveItemWithEffectFromBag
+.public GetMessageLogPreprocessorArgs
 .public GetMoveCritChance
 .public GetMovePower
 .public GetMoveTypeForMonster
@@ -379,7 +380,6 @@
 .public ov29_022EA370
 .public ov29_022F9840
 .public ov29_022FB1A8
-.public ov29_0230040C
 .public ov29_02300D50
 .public ov29_02300DC0
 .public ov29_02301C2C
@@ -394,7 +394,6 @@
 .public ov29_0232E744
 .public ov29_02333044
 .public ov29_023381C0
-.public ov29_0234B034
 .public ov29_02353718
 .public ov29_0237CA68
 .public ov29_0237CA74
@@ -403,6 +402,7 @@
 .public PlayMoveAnimation
 .public PrepareItemForPrinting__02345728
 .public ROLLOUT_ICE_BALL_MISSED
+.public SetPreprocessorArgsStringToName
 .public ShouldDisplayEntityWrapper
 .public SPATK_STAT_IDX
 .public sub_02050FF8

@@ -14,6 +14,7 @@
 .public GetLeader
 .public GetLeaderAction
 .public GetLeaderMonster
+.public GetMessageLogPreprocessorArgs
 .public GetTile
 .public HandleMovesMenuWrapper0
 .public HideTileGrid
@@ -38,7 +39,6 @@
 .public ov29_0231DA80
 .public ov29_0231DBF0
 .public ov29_0231DD60
-.public ov29_0234B034
 .public ov29_0234B1A4
 .public ov29_0234EC38
 .public ov29_0234ED30

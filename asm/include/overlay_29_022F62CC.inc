@@ -46,11 +46,11 @@
 .public ov29_02304A48
 .public ov29_0231B490
 .public ov29_0231B4AC
-.public ov29_0234B09C
 .public ov29_02352760
 .public ov29_023535A8
 .public ov29_0237C9B0
 .public RemoveGroundItem
+.public SetMessageLogPreprocessorArgsNumberVal
 .public SpawnItem
 .public sub_020018A4
 .public TeamLeaderIqSkillIsEnabled

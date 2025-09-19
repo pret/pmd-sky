@@ -16,6 +16,7 @@
 .public GetLeader
 .public GetLoadedAttackSpriteId
 .public GetLvlUpEntry
+.public GetMessageLogPreprocessorArgs
 .public GetMonsterName
 .public GetMovesetLevelUpPtr
 .public GetPersonalityIndex
@@ -46,16 +47,12 @@
 .public ov29_022EAC9C
 .public ov29_022EBCE8
 .public ov29_022ECB38
-.public ov29_0230040C
 .public ov29_023009CC
 .public ov29_023021F0
 .public ov29_02304830
 .public ov29_02318D58
 .public ov29_0231EA04
 .public ov29_02338988
-.public ov29_0234B034
-.public ov29_0234B06C
-.public ov29_0234B09C
 .public ov29_0234B4E0
 .public ov29_0234CFA0
 .public ov29_0234D234
@@ -74,8 +71,11 @@
 .public ov29_0237C9C9
 .public Rand16Bit
 .public SetAndPlayAnimationForAnimationControl
+.public SetMessageLogPreprocessorArgsFlagVal
+.public SetMessageLogPreprocessorArgsNumberVal
 .public SetMonsterTypeAndAbility
 .public SetPreprocessorArgsIdVal
+.public SetPreprocessorArgsStringToName
 .public SetSpriteIdForAnimationControl
 .public SpawnMonster
 .public strcat

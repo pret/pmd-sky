@@ -19072,7 +19072,7 @@ _02023D0C:
 	b _02023D44
 _02023D14:
 	mov r0, r4
-	bl sub_02024FB8
+	bl GetSize0x80Buffer
 	mov r1, r0
 	mov r0, r5
 	bl strcpy
@@ -19747,7 +19747,7 @@ _0202455C:
 	b _02024584
 _02024564:
 	mov r0, r4
-	bl sub_02024FC8
+	bl GetSize0x80Buffer2
 	mov r1, r0
 	mov r0, r5
 	bl strcpy
@@ -20735,23 +20735,23 @@ _02024FB0: .word _02099E20
 _02024FB4: .word _02099E40
 	arm_func_end sub_02024E34
 
-	arm_func_start sub_02024FB8
-sub_02024FB8: ; 0x02024FB8
+	arm_func_start GetSize0x80Buffer
+GetSize0x80Buffer: ; 0x02024FB8
 	ldr r1, _02024FC4 ; =_022A5468
 	add r0, r1, r0, lsl #7
 	bx lr
 	.align 2, 0
 _02024FC4: .word _022A5468
-	arm_func_end sub_02024FB8
+	arm_func_end GetSize0x80Buffer
 
-	arm_func_start sub_02024FC8
-sub_02024FC8: ; 0x02024FC8
+	arm_func_start GetSize0x80Buffer2
+GetSize0x80Buffer2: ; 0x02024FC8
 	ldr r1, _02024FD4 ; =_022A5068
 	add r0, r1, r0, lsl #7
 	bx lr
 	.align 2, 0
 _02024FD4: .word _022A5068
-	arm_func_end sub_02024FC8
+	arm_func_end GetSize0x80Buffer2
 
 	arm_func_start GetDungeonResultString
 GetDungeonResultString: ; 0x02024FD8
