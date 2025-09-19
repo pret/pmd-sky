@@ -1,0 +1,6 @@
+#ifndef PMDSKY_MAIN_02001894_H
+#define PMDSKY_MAIN_02001894_H
+
+s32 RoundUpDiv256(s32 x);
+
+#endif //PMDSKY_MAIN_02001894_H
