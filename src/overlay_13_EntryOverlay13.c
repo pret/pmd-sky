@@ -1,7 +1,7 @@
 #include "overlay_13_EntryOverlay13.h"
+#include "main_02001188.h"
 
 extern void* MemAlloc(u32 len, u32 flags);
-extern void MemFree(void* ptr);
 void sub_0201F2E4(void);
 void sub_020348E4(const u8 *);
 extern void ov11_022E6E8C(u32);

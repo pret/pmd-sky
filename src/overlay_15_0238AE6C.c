@@ -1,11 +1,11 @@
 #include "overlay_15_0238AE6C.h"
+#include "main_02001188.h"
 
 extern unkStruct_ov15_0238AE6C* OVERLAY15_UNKNOWN_POINTER__NA_238B180;
 
 extern void ov15_0238AD78(u8);
 extern u16 ov15_0238A140(void);
 extern void Debug_Print0(const char* fmt);
-extern void MemFree(void* ptr);
 extern int ov15_0238A234(void);
 extern int IsDialogueBoxActive(s8);
 extern void HidePortraitBox(int);

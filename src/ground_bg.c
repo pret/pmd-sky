@@ -1,6 +1,8 @@
 #include "ground_bg.h"
 #include "file_rom.h"
 #include "main_0200330C.h"
+#include "main_02001188.h"
+#include "main_02008BD4.h"
 
 // TODO: Move these to headers
 #define RGB_R 0
@@ -41,8 +43,6 @@ extern struct UnkStruct_2324CBC *ov11_02324CBC;
 
 extern void FileClose(struct file_stream* file);
 extern void* MemAlloc(u32 len, u32 flags);
-extern void MemFree(void* ptr);
-extern void UnloadFile(struct iovec* ptr);
 extern void sub_0200A590(struct UnkStruct_2324CBC_Sub98 *, s32 id, const RGB_Array *src);
 extern void sub_0200A504(struct UnkStruct_2324CBC_Sub98 *);
 extern s32 sprintf(u8* str, const u8* format, ...);

@@ -11,6 +11,10 @@ Static main
 	StackSize 0 2048
 	Object src/main_02000C6C.o
 	Object asm/main_02000DE0.o
+	Object src/main_02001188.o
+	Object asm/main_0200119C.o
+	Object src/main_02001894.o
+	Object asm/main_020018A4.o
 	Object src/main_0200330C.o
 	Object asm/main_02003328.o
 	Object src/main_0200383C.o
@@ -21,6 +25,8 @@ Static main
 	Object asm/main_02008240.o
 	Object src/main_02008254.o
 	Object asm/main_020082C4.o
+	Object src/main_02008BD4.o
+	Object asm/main_02008BF4.o
 	Object src/debug.o
 	Object src/directory_file_mngr.o
 	Object src/directory_file.o
@@ -57,6 +63,8 @@ Static main
 	Object asm/main_020257FC.o
 	Object src/main_0202593C.o
 	Object asm/main_0202598C.o
+	Object src/main_020265C4.o
+	Object asm/main_0202676C.o
 	Object src/main_020348E4.o
 	Object asm/main_02034974.o
 	Object src/main_0203C760.o

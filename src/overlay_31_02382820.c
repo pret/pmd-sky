@@ -3,6 +3,7 @@
 #include "dungeon_util_static.h"
 #include "number_util.h"
 #include "weather.h"
+#include "main_02001188.h"
 
 extern const u8 DUNGEON_MENU_SWITCH_STR1[];// = "[dungeon:0]";
 
@@ -50,7 +51,6 @@ extern struct struct_1* sub_0202ABB0(s8);
 
 extern void CloseTextBox(s8);
 extern void CloseParentMenu(s8);
-extern void MemFree(void* ptr);
 
 extern void ov29_022EA428(u32, u32);
 extern void AdvanceFrame(u8);

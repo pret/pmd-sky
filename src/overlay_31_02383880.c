@@ -2,6 +2,7 @@
 #include "dungeon.h"
 #include "main_0202593C.h"
 #include "overlay_31_02383478.h"
+#include "main_02001188.h"
 
 extern struct dungeon* DUNGEON_PTR[];
 extern struct loc_struct* OVERLAY31_UNKNOWN_POINTER__NA_238A26C;
@@ -13,7 +14,6 @@ extern s32 sub_020282F4(s8);
 extern void CloseInventoryMenu(s8);
 extern void ov29_0234E988(u8*);
 extern void CloseTextBox2();
-extern void MemFree(void* ptr);
 extern void DrawTextInWindow(struct window*, u32, u32, u8*);
 
 u8 ov31_0238372C(struct position* x)

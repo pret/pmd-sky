@@ -2,13 +2,9 @@
 #define PMDSKY_GROUND_BG_H
 
 #include "util.h"
+#include <file.h>
 
 // TODO: Move these to actual headers later on
-struct iovec
-{
-    void* iov_base;
-    u32 iov_len;
-};
 
 typedef struct PixelPos
 {
