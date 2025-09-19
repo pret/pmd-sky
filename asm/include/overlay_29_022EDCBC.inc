@@ -7,6 +7,8 @@
 .public DungeonRandOutcome__022EAB20
 .public EnemyEvolution
 .public EntityIsValid__022EE348
+.public GetMessageLogPreprocessorArgs
+.public GetSize0x80Buffer2
 .public GetTile
 .public GetTileSafe
 .public GetTrapInfo
@@ -21,9 +23,7 @@
 .public ov29_022E58B0
 .public ov29_022E7A30
 .public ov29_022F9840
-.public ov29_0234B034
 .public SpawnTrap
-.public sub_02024FC8
 .public SubstitutePlaceholderStringTags
 .public TRAP_BUSTER_ACTIVATION_CHANCE
 .public UpdateShopkeeperModeAfterTrap

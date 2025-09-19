@@ -241,7 +241,7 @@ _022FAF7C:
 	cmp r6, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r1, _022FAFD0 ; =0x00000C22
 	mov r0, r4
 	bl LogMessageByIdWithPopupCheckUser

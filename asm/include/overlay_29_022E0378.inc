@@ -8,6 +8,7 @@
 .public GetLeader
 .public GetMaxItemsAllowed
 .public GetMaxPpWrapper
+.public GetMessageLogPreprocessorArgs
 .public GetTileSafe
 .public GetTrapInfo
 .public HandleFaint
@@ -17,10 +18,9 @@
 .public IsMoneyAllowed
 .public ov29_022E0A18
 .public ov29_022E68BC
-.public ov29_0234B034
-.public ov29_0234B0B4
 .public ov29_0237CFC0
 .public RemoveAllItems
 .public SECONDARY_TERRAIN_TYPES
+.public SetMessageLogPreprocessorArgsString
 .public SetMoneyCarried
 .public SubInitMonster

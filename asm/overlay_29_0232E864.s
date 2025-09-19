@@ -898,12 +898,12 @@ _0232F4EC:
 	ldr r1, _0232F840 ; =0x00001306
 	bl ov29_022E56A0
 _0232F4F4:
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r3, #0
 	str r3, [sp]
 	ldr r2, [r4, #0xb4]
 	mov r1, #1
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	cmp sb, r4
 	mov r0, sb
 	mov r1, r4

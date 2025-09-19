@@ -19,6 +19,7 @@
 .public FormatMoveStringMore
 .public GetApparentWeather
 .public GetEntityMoveTargetAndRange
+.public GetMessageLogPreprocessorArgs
 .public GetMoveMessageFromId
 .public GetMoveNbStrikes
 .public GetNaturePowerVariant
@@ -48,8 +49,6 @@
 .public ov29_022EA370
 .public ov29_022F9840
 .public ov29_022FAA04
-.public ov29_022FBAB4
-.public ov29_0230040C
 .public ov29_02304B14
 .public ov29_02318D58
 .public ov29_02321288
@@ -61,10 +60,11 @@
 .public ov29_02324C9C
 .public ov29_023383A8
 .public ov29_02344B9C
-.public ov29_0234B034
 .public ov29_0235370C
 .public ov29_0237CA68
+.public ResetTriggerFlags
 .public SetPreprocessorArgsIdVal
+.public SetPreprocessorArgsStringToName
 .public SLEEP_TURN_RANGE
 .public StringFromId
 .public sub_0201D1B0

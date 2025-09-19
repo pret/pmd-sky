@@ -173,7 +173,7 @@ _022F7958:
 	beq _022F7AA0
 	ldrsh r1, [sl, #4]
 	mov r0, #0
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	ldr r1, _022F7BD4 ; =0x00000C0D
 	mov r0, #0
 	mov r2, #1
@@ -234,7 +234,7 @@ _022F7A14:
 	bl sub_020585B4
 	add r1, sp, #4
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	mov r0, #0
 	mov r3, #1
 	ldr r1, _022F7BD8 ; =0x00000C0E
@@ -262,7 +262,7 @@ _022F7AAC:
 	bne _022F7AD8
 	ldrsh r1, [sl, #4]
 	mov r0, #0
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	ldr r1, _022F7BE0 ; =0x00000C0C
 	mov r0, #0
 	mov r2, #1
@@ -318,7 +318,7 @@ _022F7B70:
 	bl ItemZInit
 	ldrsh r1, [sl, #4]
 	mov r0, #0
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	b _022F7BAC
 _022F7B98:
 	add r0, r4, #1
@@ -330,7 +330,7 @@ _022F7BA4:
 _022F7BAC:
 	ldrsh r1, [sl, #4]
 	mov r0, #0
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	ldr r1, _022F7BF0 ; =0x00000C12
 	mov r0, #0
 	mov r2, #1
@@ -386,7 +386,7 @@ ov29_022F7BF4: ; 0x022F7BF4
 _022F7C5C:
 	ldrsh r1, [r6, #4]
 	mov r0, #0
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	ldr r1, _022F7E1C ; =0x00000C0B
 	mov r0, #0
 	mov r2, #1
@@ -399,7 +399,7 @@ _022F7C7C:
 	beq _022F7CD4
 	ldrsh r1, [r6, #4]
 	mov r0, #0
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	ldrb r0, [r6, #2]
 	cmp r0, #0xd9
 	blo _022F7CC0
@@ -470,7 +470,7 @@ _022F7D6C:
 	bl ItemZInit
 	ldrsh r1, [r6, #4]
 	mov r0, #0
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	ldrb r0, [r6, #2]
 	cmp r0, #0xd9
 	blo _022F7DA4
@@ -496,7 +496,7 @@ _022F7DC4:
 	blt _022F7CE4
 	ldrsh r1, [r6, #4]
 	mov r0, #0
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	ldrb r0, [r6, #2]
 	cmp r0, #0xd9
 	blo _022F7E00

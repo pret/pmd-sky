@@ -30,7 +30,7 @@ ov29_0234D4BC: ; 0x0234D4BC
 	mov r4, r3
 	bl ov29_0234D558
 	bl ov29_0234D630
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r0
 	mov r2, r7
 	mov r3, r5

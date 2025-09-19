@@ -22,6 +22,7 @@
 .public FadeToBlack
 .public FillMissionDestinationInfo
 .public FIXED_ROOM_REVISIT_OVERRIDES
+.public FreeAlertBoxInfo
 .public FreeLoadedAttackSpriteAndMore
 .public FreeTopScreenStatus
 .public GenerateDungeonRngSeed
@@ -38,8 +39,10 @@
 .public GetMaxRescueAttempts
 .public GetTurnLimit
 .public IncrementNbSteals
+.public InitAlertBoxInfo
 .public InitDungeonRng
 .public InitEnemySpawnStats
+.public InitMessageLogPreprocessorArgs
 .public IsBossFight
 .public IsDungeonEndReasonFailure
 .public IsFloorOver
@@ -189,12 +192,7 @@
 .public ov29_02349188
 .public ov29_02349658
 .public ov29_02349C84
-.public ov29_0234AFA4
-.public ov29_0234AFD0
 .public ov29_0234B010
-.public ov29_0234B04C
-.public ov29_0234B06C
-.public ov29_0234B09C
 .public ov29_0234B1A4
 .public ov29_0234B4CC
 .public ov29_0234BA18
@@ -227,6 +225,8 @@
 .public SetHiddenFloorField
 .public SetHiddenStairsField
 .public SetMaxReachedFloor
+.public SetMessageLogPreprocessorArgsFlagVal
+.public SetMessageLogPreprocessorArgsNumberVal
 .public SetMinimapDataE447
 .public SpawnInitialMonsters
 .public SpawnShopkeepers

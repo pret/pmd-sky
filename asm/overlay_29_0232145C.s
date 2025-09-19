@@ -22,7 +22,7 @@ ov29_0232145C: ; 0x0232145C
 	ldr r5, [sl, #0xb4]
 	movge r0, #0
 	bge _02321A40
-	bl ov29_022FBAB4
+	bl ResetTriggerFlags
 	mov r0, #0
 	strb r0, [r5, #0x163 + OV29_0232145C_OFFSET]
 	ldrb r1, [r5, #0xd0]
@@ -205,7 +205,7 @@ _02321700:
 	mov r0, sl
 	bl ov29_02324698
 	strh r0, [sp, #0x30]
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	add r2, sp, #0x2c
 	mov r3, r1
@@ -344,7 +344,7 @@ _023218EC:
 	mov r0, sl
 	bl ov29_02324698
 	strh r0, [sp, #0x20]
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	add r2, sp, #0x1c
 	mov r3, r1
@@ -1246,13 +1246,13 @@ _023224C4:
 	mov r2, #1
 	bl GetMoveRangeDistance
 	and fp, r0, #0xff
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	str r1, [sp]
 	ldr r2, [r6, #0xb4]
 	mov r3, r1
-	bl ov29_0230040C
-	bl ov29_0234B034
+	bl SetPreprocessorArgsStringToName
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r8
 	mov r3, r1
@@ -1341,15 +1341,15 @@ _023225D4:
 _02322630:
 	cmp sb, #0
 	bne _023226D0
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	str r1, [sp]
 	ldr r2, [r6, #0xb4]
 	mov r3, r1
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	cmp r5, #0
 	bne _02322694
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r8
 	mov r3, r1

@@ -957,7 +957,7 @@ _02325228:
 	str r3, [r1, #0x238 + OV29_023250D4_OFFSET]
 	ldr r1, [r2]
 	add r1, r1, #4
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r1, _02325618 ; =0x00000EAA
 	mov r0, r5
 	bl LogMessageByIdWithPopupCheckUser

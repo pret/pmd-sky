@@ -33,7 +33,7 @@ ov29_0231A9F8: ; 0x0231A9F8
 	b _0231AC88
 _0231AA60:
 	mov r0, r7
-	bl ov29_022FBAB4
+	bl ResetTriggerFlags
 	add r2, sp, #0x1e
 	add r3, r5, #0x4a
 	mov r1, #0xa

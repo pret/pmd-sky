@@ -59,6 +59,7 @@
 .public GetEquivItemIndex
 .public GetFirstEmptyMemberIdx
 .public GetItemAtIdx
+.public GetMessageLogPreprocessorArgs
 .public GetMonsterGenderVeneer
 .public GetMoveCategory
 .public GetNameString
@@ -125,15 +126,12 @@
 .public ov29_022E81F8
 .public ov29_022EACAC
 .public ov29_022FBDE0
-.public ov29_0230040C
 .public ov29_02304A48
 .public ov29_02305F60
 .public ov29_0230E5A8
 .public ov29_0230E5FC
 .public ov29_0230E658
 .public ov29_02337EC0
-.public ov29_0234B034
-.public ov29_0234B0B4
 .public ov29_0234B1A4
 .public ov29_0234BA54
 .public ov29_0234D630
@@ -142,7 +140,7 @@
 .public ov29_0234D8A0
 .public ov29_0234EE10
 .public ov29_02352838
-.public ov29_02352884
+.public WEAK_TYPE_PICKER_MATCHUP_MULTIPLIERS
 .public ov29_02352894
 .public ov29_02352984
 .public ov29_02352990
@@ -166,8 +164,10 @@
 .public RoundUpDiv256
 .public SCOPE_LENS_CRIT_RATE_BOOST
 .public SetItemAcquired
+.public SetMessageLogPreprocessorArgsString
 .public SetPokemonJoined
 .public SetPreprocessorArgsIdVal
+.public SetPreprocessorArgsStringToName
 .public SOLID_ROCK_MULTIPLIER
 .public SPECIAL_BAND_STAT_BOOST
 .public StrcpySimple

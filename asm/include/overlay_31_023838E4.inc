@@ -79,6 +79,7 @@
 .public GetLeaderChangeFlag
 .public GetLeaderMonster
 .public GetMaxPp
+.public GetMessageLogPreprocessorArgs
 .public GetMonsterIdFromSpawnEntry
 .public GetMonsterName
 .public GetNbItemsInBag
@@ -164,7 +165,6 @@
 .public ov29_02346E5C
 .public ov29_02347100
 .public ov29_02348D00
-.public ov29_0234B034
 .public ov29_0234E988
 .public ov29_0234EA18
 .public ov29_0234EBCC

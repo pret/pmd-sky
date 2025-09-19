@@ -68,12 +68,12 @@ _022F5334:
 	mov r1, r4
 	mov r0, #0
 	bl PrepareItemForPrinting__02345728
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r2, r5
 	mov r1, #0
 	str r1, [sp]
 	mov r3, r1
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	mov r0, r8
 	mov r1, r4
 	bl CanMonsterUseItem
@@ -384,12 +384,12 @@ _022F57A4:
 	add r1, sp, #0xc
 	mov r0, #0
 	bl PrepareItemForPrinting__02345754
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r8
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldrsh r0, [sp, #0x10]
 	bl GetItemCategoryVeneer
 	cmp r0, #0

@@ -15,6 +15,7 @@
 .public GetApparentWeather
 .public GetDamageSourceWrapper
 .public GetDirectionTowardsPosition
+.public GetMessageLogPreprocessorArgs
 .public GetMoveCategory
 .public GetMoveCritChance
 .public GetMovePower
@@ -27,13 +28,12 @@
 .public MirrorMoveIsActive
 .public MistIsActive
 .public MonsterHasNegativeStatus
+.public MonsterHasQuarterHp
 .public MonsterIsType
 .public MoveHitCheck
 .public ov10_022C6322
 .public ov29_022E576C
-.public ov29_0230040C
-.public MonsterHasQuarterHp
 .public ov29_02304A48
 .public ov29_0230D088
-.public ov29_0234B034
+.public SetPreprocessorArgsStringToName
 .public ShouldDisplayEntityWrapper

@@ -505,13 +505,13 @@ _0230309C:
 _023030F0:
 	mov r0, #0
 	mov r1, r5
-	bl ov29_0234B09C
-	bl ov29_0234B034
+	bl SetMessageLogPreprocessorArgsNumberVal
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r7
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 #ifdef JAPAN
 	ldr r1, _023047C0 ; =0x00002487
 	mov r0, sl
@@ -528,13 +528,13 @@ _02303124:
 _02303130:
 	mov r0, #0
 	mov r1, r5
-	bl ov29_0234B09C
-	bl ov29_0234B034
+	bl SetMessageLogPreprocessorArgsNumberVal
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r7
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 #ifdef JAPAN
 	ldr r1, _023047C0 ; =0x00002487
 	mov r0, sl
@@ -754,12 +754,12 @@ _0230344C:
 _02303450:
 	cmp sb, r4
 	bgt _02303314
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r7
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldrb r1, [r7, #0xa]
 	cmp r1, r6
 	bne _02303494
@@ -771,7 +771,7 @@ _02303450:
 	b _023034BC
 _02303494:
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	mov r0, sl
 	mov r1, #0x204
 	bl ov29_022E56A0
@@ -967,12 +967,12 @@ _02303718:
 	cmp sl, #0
 	cmpne r8, #0
 	beq _02303818
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r5
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	mov r1, r4
 	mov r0, #0
 	bl SetPreprocessorArgsIdVal
@@ -1389,15 +1389,15 @@ EvolveMonster: ; 0x02303C7C
 	ldr r6, [r7, #0xb4]
 	mov r8, r0
 	mov r5, r2
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r6
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	mov r1, r5
 	mov r0, #1
-	bl ov29_0234B06C
+	bl SetMessageLogPreprocessorArgsFlagVal
 	mov r0, r5
 	bl DungeonGetSpriteIndex
 	strh r5, [r6, #4]

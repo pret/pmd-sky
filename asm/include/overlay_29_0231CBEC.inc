@@ -82,7 +82,6 @@
 .public ov29_023021F0
 .public ov29_023038D4
 .public ov29_02339FF4
-.public ov29_0234B09C
 .public ov29_0234BA54
 .public ov29_023529AC
 .public ov29_023529B0
@@ -96,6 +95,7 @@
 .public RemoveUsedItem
 .public RestoreAllMovePP
 .public SetDoughSeedFlag
+.public SetMessageLogPreprocessorArgsNumberVal
 .public SetMonsterActionFields
 .public SetPreprocessorArgsIdVal
 .public ShouldDisplayEntityWrapper

@@ -708,7 +708,7 @@ _0234E7C0:
 	mov r7, r0
 	bl AllocateTemp1024ByteBufferFromPool
 	mov r5, r0
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r7
 	str r5, [r0, #0x38]
 	mov r0, r5

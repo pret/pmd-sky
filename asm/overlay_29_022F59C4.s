@@ -112,19 +112,19 @@ _022F5A90:
 	beq _022F5D84
 _022F5ADC:
 	ldr sb, [sl, #0xb4]
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, sb
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
-	bl ov29_0234B034
+	bl SetPreprocessorArgsStringToName
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	str r1, [sp]
 	mov r1, #1
 	mov r2, sb
 	mov r3, #7
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	mov r0, #3
 	bl ov29_02348C64
 	mov r0, r6
@@ -434,7 +434,7 @@ _022F5E84:
 	mov r0, #0
 	bl ov29_0233A248
 	mov r0, #0
-	bl sub_02024FB8
+	bl GetSize0x80Buffer
 	mov r1, r0
 	add r0, sp, #4
 	mov r2, #0x40
@@ -452,7 +452,7 @@ _022F5E84:
 	bl ov29_022E81F8
 	mov r0, #0
 	add r1, sp, #4
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	mov r1, r6
 	mov r0, #0
 	mov r2, #1
@@ -694,7 +694,7 @@ _022F6198:
 	ldrsh r1, [r1, r2]
 	add r1, r3, r1
 	strh r1, [sp, #0xa]
-	bl ov29_02338430
+	bl RevealAttackedTile
 _022F61E8:
 	mov r0, sl
 	bl EnemyEvolution

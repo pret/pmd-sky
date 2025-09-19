@@ -12,6 +12,7 @@
 .public ExclusiveItemEffectIsActive__023147EC
 .public ExclusiveItemEffectIsActiveWithLogging
 .public GetExclusiveItemWithEffectFromBag
+.public GetMessageLogPreprocessorArgs
 .public GetTile
 .public GetTileAtEntity
 .public IsProtectedFromNegativeStatus
@@ -62,17 +63,16 @@
 .public ov29_022E5258
 .public ov29_022E52F8
 .public ov29_022E53EC
-.public ov29_0230040C
 .public ov29_023018AC
 .public ov29_02304A48
 .public ov29_02304A84
-.public ov29_0234B034
-.public ov29_0234B0B4
 .public PlayExclamationPointEffect__022E5D4C
 .public PrepareItemForPrinting__02345728
 .public SafeguardIsActive
 .public SECONDARY_TERRAIN_TYPES
+.public SetMessageLogPreprocessorArgsString
 .public SetPreprocessorArgsIdVal
+.public SetPreprocessorArgsStringToName
 .public SubstitutePlaceholderStringTags
 .public TryActivateQuickFeet
 .public TryActivateSteadfast

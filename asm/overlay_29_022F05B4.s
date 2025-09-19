@@ -161,7 +161,7 @@ ov29_022F0780: ; 0x022F0780
 	sub sp, sp, #4
 	mov r4, r0
 	bl ov29_0234D668
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r2, #0
 	mov r1, r0
 	mov ip, #1
@@ -342,14 +342,14 @@ ov29_022F0984: ; 0x022F0984
 	mov r2, #0
 	bl SubstitutePlaceholderStringTags
 	ldrsh r0, [r4, #0xc]
-	bl ov29_0234B118
+	bl SetMessageLogPreprocessorArgsSpeakerId0x30000
 	b _022F09F4
 _022F09E0:
 	ldrsh r1, [r4, #2]
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldrsh r0, [r4, #2]
-	bl ov29_0234B104
+	bl SetMessageLogPreprocessorArgsSpeakerId
 _022F09F4:
 	cmp r5, #0
 	beq _022F0A6C
@@ -367,7 +367,7 @@ _022F09F4:
 _022F0A28:
 	add r0, sp, #0xc
 	bl ov29_0234D65C
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r0
 	mov ip, #0
 	add r2, sp, #4
@@ -385,7 +385,7 @@ _022F0A28:
 _022F0A6C:
 	add r0, sp, #0xc
 	bl ov29_0234D65C
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r0
 	mov r3, #1
 	mov r0, r7
@@ -3887,10 +3887,10 @@ ov29_022F3AFC: ; 0x022F3AFC
 
 	arm_func_start ov29_022F3B8C
 ov29_022F3B8C: ; 0x022F3B8C
-	ldr ip, _022F3B94 ; =ov29_022FBAB4
+	ldr ip, _022F3B94 ; =ResetTriggerFlags
 	bx ip
 	.align 2, 0
-_022F3B94: .word ov29_022FBAB4
+_022F3B94: .word ResetTriggerFlags
 	arm_func_end ov29_022F3B8C
 
 	arm_func_start ov29_022F3B98

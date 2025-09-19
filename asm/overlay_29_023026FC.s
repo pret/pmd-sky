@@ -115,13 +115,13 @@ _02302818:
 	add r2, r0, fp
 	mov r0, #0
 	str r2, [sb, #0x20]
-	bl ov29_0234B09C
-	bl ov29_0234B034
+	bl SetMessageLogPreprocessorArgsNumberVal
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	str r1, [sp]
 	mov r2, sb
 	mov r3, r1
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	mov r0, sl
 	ldr r1, _02302A34 ; =0x00000F1F
 	bl LogMessageByIdWithPopup

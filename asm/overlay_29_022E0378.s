@@ -277,7 +277,7 @@ TryForcedLoss: ; 0x022E0620
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r6, #0
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	cmp r5, #0
 	bne _022E0648
 	bl IsFloorOver
@@ -300,7 +300,7 @@ _022E0648:
 	ldr r1, [r1]
 	add r1, r1, #0x248
 	add r1, r1, #0x400
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 #ifdef JAPAN
 	ldr r1, _022E1E90 ; =0x00000881
 	mov r0, #0
@@ -340,7 +340,7 @@ _022E06C8:
 	ldr r1, [r1]
 	add r1, r1, #0x248
 	add r1, r1, #0x400
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	ldr r1, _022E0808 ; =0x00000B71
 	mov r0, #0
 	mov r2, #1
@@ -376,7 +376,7 @@ _022E0774:
 	add r0, r1, #0x248
 	add r1, r0, #0x400
 	mov r0, #0
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	ldr r1, _022E0810 ; =0x00000B72
 	mov r0, #0
 	mov r2, #1

@@ -369,14 +369,14 @@ _0232C978:
 	b _0232CA04
 _0232C99C:
 	mov r0, #1
-	bl sub_02024FB8
+	bl GetSize0x80Buffer
 	mov r5, r0
 	mov r1, r4
 	mov r2, #0x4e
 	bl GetNameWithGender
 	mov r1, r5
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	ldr r2, _0232CA10 ; =0x00000F01
 	mov r0, sb
 	mov r1, r8

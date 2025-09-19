@@ -27,6 +27,7 @@
 .public GetName
 .public GetRandomSpawnMonsterID
 .public GetSecondFormIfValid
+.public GetSize0x80Buffer
 .public GetSpecialTargetItem
 .public GetTargetMonsterNotFoundFlag
 .public HandleFaint
@@ -46,6 +47,7 @@
 .public MemAlloc
 .public MemFree
 .public MemZero
+.public MESSAGE_LOG_INFO
 .public MusicTableIdxToMusicId
 .public ov10_022BFD20
 .public ov29_022E09E8
@@ -79,7 +81,6 @@
 .public ov29_0234D8A0
 .public ov29_02353214
 .public ov29_023537C8
-.public ov29_023537CC
 .public ov29_0237C694
 .public PositionIsOnStairs
 .public PrepareItemForPrinting__02345728
@@ -95,7 +96,6 @@
 .public strncpy
 .public sub_02001808
 .public sub_02017C10
-.public sub_02024FB8
 .public sub_0202836C
 .public sub_0203010C
 .public sub_02030214

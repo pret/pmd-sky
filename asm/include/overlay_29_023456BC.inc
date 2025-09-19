@@ -32,7 +32,6 @@
 .public ov29_022E563C
 .public ov29_022EACBC
 .public ov29_022FB51C
-.public ov29_02338430
 .public ov29_02344BF8
 .public ov29_02347378
 .public ov29_023531BC
@@ -40,6 +39,7 @@
 .public ov29_023537BC
 .public ov29_0237C864
 .public RetrieveFromItemList1
+.public RevealAttackedTile
 .public SECONDARY_TERRAIN_TYPES
 .public SetEntityPixelPosXY
 .public SetPreprocessorArgsIdVal

@@ -386,8 +386,8 @@ _022FBAAC:
 	ldmia sp!, {r4, pc}
 	arm_func_end IsSpecialStoryAllyOrClient
 
-	arm_func_start ov29_022FBAB4
-ov29_022FBAB4: ; 0x022FBAB4
+	arm_func_start ResetTriggerFlags
+ResetTriggerFlags: ; 0x022FBAB4
 	ldr r2, [r0, #0xb4]
 	cmp r2, #0
 	addne r0, r2, #0x100
@@ -400,4 +400,4 @@ ov29_022FBAB4: ; 0x022FBAB4
 	strne r1, [r2, #0x18c]
 #endif
 	bx lr
-	arm_func_end ov29_022FBAB4
+	arm_func_end ResetTriggerFlags

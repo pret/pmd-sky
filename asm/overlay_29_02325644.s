@@ -1138,7 +1138,7 @@ _0232642C:
 	bne _02326494
 	tst r0, #0x10
 	beq _023264A0
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	add r2, r5, r4
 	mov r3, r1
@@ -1172,7 +1172,7 @@ _023264A0:
 	mov r7, #1
 	orr r0, r0, #0x20
 	strb r0, [r8, #0x144 + DO_MOVE_TORMENT_OFFSET]
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	add r2, sp, #0
 	mov r3, r1

@@ -23,6 +23,7 @@
 .public GetMonsterApparentId
 .public GetMonsterIdFromSpawnEntry
 .public GetNameWithGender
+.public GetSize0x80Buffer
 .public HiddenStairsTrigger
 .public IqSkillIsEnabled
 .public IsProtectedFromNegativeStatus
@@ -82,14 +83,13 @@
 .public ov29_022E486C
 .public ov29_022E81F8
 .public ov29_02304830
-.public ov29_0234B09C
-.public ov29_0234B0B4
 .public PERISH_SONG_TURN_RANGE
 .public SafeguardIsActive
+.public SetMessageLogPreprocessorArgsNumberVal
+.public SetMessageLogPreprocessorArgsString
 .public ShouldDisplayEntityWrapper
 .public strcpy
 .public sub_02001888
-.public sub_02024FB8
 .public sub_02050EBC
 .public sub_02050F78
 .public sub_02050FF8

@@ -525,7 +525,7 @@ _0230A160:
 	b _0230A234
 _0230A16C:
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r1, [r5, #4]
 	ldr r2, [r7, #0xb8]
 	cmp r1, #0x1b
@@ -1629,7 +1629,7 @@ _02309734:
 	b _02309808
 _02309740:
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r1, [r6, #4]
 	ldr r2, [r4, #0xb8]
 	cmp r1, #0x1b

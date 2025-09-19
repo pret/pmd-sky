@@ -23,10 +23,10 @@
 .public ov29_022E6928
 .public ov29_022EA370
 .public ov29_0230F9A4
-.public ov29_0234B09C
 .public PrepareItemForPrinting__02345728
 .public RandInt
 .public RemoveEquivItem
+.public SetMessageLogPreprocessorArgsNumberVal
 .public ShouldTryEatItem
 .public SubstitutePlaceholderStringTags
 .public TryIncreaseHp

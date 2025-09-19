@@ -31,6 +31,7 @@
 .public GenerateStandardItem
 .public GetApparentWeather
 .public GetDamageSourceWrapper
+.public GetMessageLogPreprocessorArgs
 .public GetMoveCategory
 .public GetMoveCritChance
 .public GetMovePower
@@ -58,7 +59,6 @@
 .public ov29_022EA370
 .public ov29_022ECAFC
 .public ov29_022F9EA0
-.public ov29_0230040C
 .public ov29_0230D4A4
 .public ov29_02318A90
 .public ov29_02318AD4
@@ -66,7 +66,6 @@
 .public ov29_02318BBC
 .public ov29_02318D58
 .public ov29_0232A834
-.public ov29_0234B034
 .public ov29_0234C738
 .public ov29_02352B18
 .public POISON_FANG_POISON_CHANCE
@@ -75,6 +74,7 @@
 .public RemoveEquivItemNoHole
 .public SACRED_FIRE_BURN_CHANCE
 .public SetPreprocessorArgsIdVal
+.public SetPreprocessorArgsStringToName
 .public SHADOW_BALL_LOWER_SPECIAL_DEFENSE_CHANCE
 .public ShouldDisplayEntityAdvanced
 .public SMOG_POISON_CHANCE

@@ -18,6 +18,7 @@
 .public GetLeader
 .public GetMaxPp
 .public GetName
+.public GetSize0x80Buffer
 .public GetSpriteFileSize
 .public InitPortraitDungeon
 .public IsItemInBag
@@ -45,12 +46,12 @@
 .public ov29_0234AA98
 .public ov29_0234ABB0
 .public ov29_0234AC8C
-.public ov29_0234B06C
-.public ov29_0234B0B4
 .public ov29_0234C738
 .public ov29_023537C4
 .public ov29_0237C694
 .public PrepareItemForPrinting__02345728
+.public SetMessageLogPreprocessorArgsFlagVal
+.public SetMessageLogPreprocessorArgsString
 .public StartFadeDungeonWrapper
 .public strcpy
 .public sub_02011220
@@ -60,7 +61,6 @@
 .public sub_020178A8
 .public sub_02017A00
 .public sub_02017A20
-.public sub_02024FB8
 .public sub_02051DFC
 .public sub_02051EB8
 .public SubstitutePlaceholderStringTags

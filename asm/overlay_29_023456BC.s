@@ -328,7 +328,7 @@ SpawnDroppedItem: ; 0x02345AD8
 	add r1, r8, #4
 	bl ov29_02347378
 	add r0, r8, #4
-	bl ov29_02338430
+	bl RevealAttackedTile
 	ldr r1, _02345D64 ; =0x00000BD8
 	mov r0, sb
 	bl LogMessageByIdWithPopupCheckUser

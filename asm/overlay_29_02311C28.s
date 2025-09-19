@@ -393,12 +393,12 @@ _023120BC:
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r4
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldrb r0, [r4, #0xd0]
 	cmp r0, #3
 	beq _02312160
@@ -519,12 +519,12 @@ _02312260:
 	cmp r7, #0
 	movne r0, #1
 	bne _0231231C
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r6
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldrb r0, [r6, #0xd0]
 	cmp r0, #7
 	beq _02312300
@@ -598,12 +598,12 @@ TryInflictBurnStatus: ; 0x02312338
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r7, [sb, #0xb4]
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r7
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	mov r0, sl
 	mov r1, sb
 	mov r2, #0x42
@@ -736,12 +736,12 @@ _02312534:
 	cmp r5, #0
 	bne _023125AC
 	mov r5, #1
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r7
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldr r2, _02312614 ; =0x00000DC5
 	mov r0, sl
 	mov r1, sb
@@ -845,12 +845,12 @@ TryInflictPoisonedStatus: ; 0x02312664
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r7, [sb, #0xb4]
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r7
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	mov r0, sb
 	mov r1, #0x1b
 	bl ItemIsActive__02311BF8
@@ -982,12 +982,12 @@ _02312868:
 	cmp r5, #0
 	bne _023128E0
 	mov r5, #1
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r7
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldr r2, _02312938 ; =0x00000DC5
 	mov r0, sl
 	mov r1, sb
@@ -1053,12 +1053,12 @@ TryInflictBadlyPoisonedStatus: ; 0x0231293C
 	movne r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r7, [sb, #0xb4]
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r7
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	mov r0, sb
 	mov r1, #0x1b
 	bl ItemIsActive__02311BF8
@@ -1182,12 +1182,12 @@ _02312B24:
 	cmp r5, #0
 	bne _02312B9C
 	mov r5, #1
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r7
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldr r2, _02312BF4 ; =0x00000DC5
 	mov r0, sl
 	mov r1, sb
@@ -2006,7 +2006,7 @@ LowerOffensiveStat: ; 0x023135FC
 	bl CopyStringFromId
 	mov r1, r6
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02313678
 _02313660:
 	ldr r1, _023137F8 ; =0x00000DCA
@@ -2014,7 +2014,7 @@ _02313660:
 	bl CopyStringFromId
 	mov r1, r6
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _02313678:
 	ldrb r0, [sp, #0x28]
 	cmp r0, #0
@@ -2084,7 +2084,7 @@ _02313720:
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #2
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02313798
 _02313780:
 	ldr r1, _02313808 ; =0x00000DCC
@@ -2092,7 +2092,7 @@ _02313780:
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #2
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _02313798:
 	ldr r1, [sp, #0x20]
 	add r0, r6, r1, lsl #1
@@ -2166,7 +2166,7 @@ LowerDefensiveStat: ; 0x02313814
 	bl CopyStringFromId
 	mov r1, r6
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02313890
 _02313878:
 	ldr r1, _0231398C ; =0x00000DC8
@@ -2174,7 +2174,7 @@ _02313878:
 	bl CopyStringFromId
 	mov r1, r6
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _02313890:
 	ldrb r0, [sp, #0x28]
 	cmp r0, #0
@@ -2208,7 +2208,7 @@ _023138B4:
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #2
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _0231392C
 _02313914:
 	ldr r1, _02313994 ; =0x00000DCC
@@ -2216,7 +2216,7 @@ _02313914:
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #2
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _0231392C:
 	ldr r1, [sp, #0x20]
 	add r0, r6, r1, lsl #1
@@ -2286,7 +2286,7 @@ BoostOffensiveStat: ; 0x0231399C
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02313A3C
 _02313A24:
 	ldr r1, _02313AF4 ; =0x00000DCA
@@ -2294,7 +2294,7 @@ _02313A24:
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _02313A3C:
 	mov r0, r8
 	mov r1, #0x61
@@ -2309,7 +2309,7 @@ _02313A3C:
 	bl CopyStringFromId
 	mov r1, r5
 	mov r0, #2
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02313A90
 _02313A78:
 	ldr r1, _02313AFC ; =0x00000DCC
@@ -2317,7 +2317,7 @@ _02313A78:
 	bl CopyStringFromId
 	mov r1, r5
 	mov r0, #2
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _02313A90:
 	ldr r1, [sp, #0x28]
 	add r0, r7, r1, lsl #1
@@ -2395,7 +2395,7 @@ BoostDefensiveStat: ; 0x02313B08
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02313BA8
 _02313B90:
 	ldr r1, _02313C60 ; =0x00000DC8
@@ -2403,7 +2403,7 @@ _02313B90:
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _02313BA8:
 	mov r0, r8
 	mov r1, #0x61
@@ -2418,7 +2418,7 @@ _02313BA8:
 	bl CopyStringFromId
 	mov r1, r5
 	mov r0, #2
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02313BFC
 _02313BE4:
 	ldr r1, _02313C68 ; =0x00000DCC
@@ -2426,7 +2426,7 @@ _02313BE4:
 	bl CopyStringFromId
 	mov r1, r5
 	mov r0, #2
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _02313BFC:
 	ldr r1, [sp, #0x28]
 	add r0, r7, r1, lsl #1
@@ -2557,7 +2557,7 @@ ApplyOffensiveStatMultiplier: ; 0x02313D40
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02313DAC
 _02313D94:
 	ldr r1, _02313F4C ; =0x00000DCA
@@ -2565,7 +2565,7 @@ _02313D94:
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _02313DAC:
 	cmp r7, #0x100
 	bge _02313DCC
@@ -2712,7 +2712,7 @@ ApplyDefensiveStatMultiplier: ; 0x02313F64
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02313FD0
 _02313FB8:
 	ldr r1, _023140D0 ; =0x00000DC8
@@ -2720,7 +2720,7 @@ _02313FB8:
 	bl CopyStringFromId
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _02313FD0:
 	cmp r7, #0x100
 	bge _02313FF0
@@ -2836,7 +2836,7 @@ BoostHitChanceStat: ; 0x023140E4
 	bl CopyStringFromId
 	mov r1, r8
 	mov r0, r4
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _02314174
 _0231415C:
 	ldr r1, _0231421C ; =0x00000DC6
@@ -2844,7 +2844,7 @@ _0231415C:
 	bl CopyStringFromId
 	mov r1, r8
 	mov r0, r4
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _02314174:
 	mov r0, r6
 	mov r1, #0x61
@@ -2926,7 +2926,7 @@ LowerHitChanceStat: ; 0x0231422C
 	bl CopyStringFromId
 	mov r1, r5
 	mov r0, r4
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	b _0231429C
 _02314284:
 	ldr r1, _023143D4 ; =0x00000DC6
@@ -2934,7 +2934,7 @@ _02314284:
 	bl CopyStringFromId
 	mov r1, r5
 	mov r0, r4
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 _0231429C:
 	mov r0, r7
 	mov r1, r6
@@ -3290,12 +3290,12 @@ _02314718:
 	cmp r5, #0
 	bne _02314790
 	mov r5, #1
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, r7
 	mov r3, r1
 	str r1, [sp]
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldr r2, _023147E8 ; =0x00000DC5
 	mov r0, sl
 	mov r1, sb

@@ -35,15 +35,15 @@ _02322E38:
 _02322E40:
 	cmp r5, #0
 	beq _02322E94
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	str r1, [sp]
 	ldr r2, [sl, #0xb4]
 	mov r3, r1
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	cmp r7, #0
 	bne _02322E80
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	mov r2, sb
 	mov r3, r1

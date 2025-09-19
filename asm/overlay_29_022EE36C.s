@@ -477,7 +477,7 @@ _022EE8AC:
 	mov r1, #0x4b
 	strb r2, [r8, #0x170]
 	bl ov29_022EA370
-	ldr r1, _022EE988 ; =ov10_022C44E4
+	ldr r1, _022EE988 ; =PITFALL_TRAP_DAMAGE
 	mov r0, r6
 #else
 	strb r2, [r5, #0x172]
@@ -485,7 +485,7 @@ _022EE8AC:
 	mov r1, #0x4b
 	strb r2, [r5, #0x174]
 	bl ov29_022EA370
-	ldr r1, _022EE988 ; =ov10_022C44E4
+	ldr r1, _022EE988 ; =PITFALL_TRAP_DAMAGE
 	mov r0, r7
 #endif
 	ldrsh r1, [r1]
@@ -568,7 +568,7 @@ _022EE968:
 #endif
 _022EE980: .word DUNGEON_PTR
 _022EE984: .word 0x00000E64 + APPLY_PITFALL_TRAP_EFFECT_OFFSET
-_022EE988: .word ov10_022C44E4
+_022EE988: .word PITFALL_TRAP_DAMAGE
 _022EE98C: .word 0x00000E66 + APPLY_PITFALL_TRAP_EFFECT_OFFSET
 _022EE990: .word 0x00000E65 + APPLY_PITFALL_TRAP_EFFECT_OFFSET
 	arm_func_end ApplyPitfallTrapEffect

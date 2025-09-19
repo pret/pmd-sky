@@ -2108,12 +2108,12 @@ _023299A8:
 	mov r0, r7
 	mov r1, r6
 	bl CalcDamage
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	str r1, [sp]
 	ldr r2, [r7, #0xb4]
 	mov r3, r1
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldr r2, _02329A94 ; =0x00000EDB
 	mov r1, r6
 	mov r0, r7
@@ -2257,12 +2257,12 @@ _02329BA0:
 	mov r0, r7
 	mov r1, r6
 	bl CalcDamage
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, #0
 	str r1, [sp]
 	ldr r2, [r7, #0xb4]
 	mov r3, r1
-	bl ov29_0230040C
+	bl SetPreprocessorArgsStringToName
 	ldr r2, _02329C8C ; =0x00000EDB
 	mov r1, r6
 	mov r0, r7

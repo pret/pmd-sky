@@ -40,6 +40,7 @@
 .public GetMoveType
 .public GetNameWithGender
 .public GetSize
+.public GetSize0x80Buffer
 .public GetTileAtEntity
 .public GetTileSafe
 .public GetTrapInfo
@@ -90,7 +91,6 @@
 .public ov29_0231F6E4
 .public ov29_02332F18
 .public ov29_02336694
-.public ov29_0234B0B4
 .public ov29_0234BA54
 .public ov29_02352B38
 .public ov29_02352B3C
@@ -100,13 +100,13 @@
 .public RevealStairs
 .public RevealWholeFloor
 .public ROOST_HP_RESTORATION_TABLE
+.public SetMessageLogPreprocessorArgsString
 .public SetPreprocessorArgsIdVal
 .public SHADOW_FORCE_DAMAGE_MULTIPLIER
 .public SLEEP_TURN_RANGE
 .public SPATK_STAT_IDX
 .public SpawnDroppedItemWrapper
 .public StringFromId
-.public sub_02024FB8
 .public SubstitutePlaceholderStringTags
 .public THUNDER_FANG_CRINGE_CHANCE
 .public THUNDER_FANG_PARALYZE_CHANCE

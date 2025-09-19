@@ -375,7 +375,7 @@ _02349D38:
 	bl InitPortraitDungeon
 	mov r1, r5
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A210 ; =0x00000E35
 	add r0, sp, #0x10
 	mov r2, #1
@@ -409,7 +409,7 @@ _02349DC8:
 	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A214 ; =0x00000E31
 	add r0, sp, #0
 	mov r2, #1
@@ -459,7 +459,7 @@ _02349E6C:
 	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A214 ; =0x00000E31
 	add r0, sp, #0x20
 	mov r2, #1
@@ -491,7 +491,7 @@ _02349F1C:
 	bl GetMissionTargetEnemy
 	mov r1, r0
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	mov r0, #0
 	ldr r1, _0234A224 ; =0x00000E0A
 	mov r2, #1
@@ -510,7 +510,7 @@ _02349F1C:
 	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A228 ; =0x00000E0B
 	add r0, sp, #0x80
 	mov r2, #1
@@ -530,7 +530,7 @@ _02349FA4:
 	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A22C ; =0x00000E0C
 	add r0, sp, #0x70
 	mov r2, #1
@@ -550,7 +550,7 @@ _02349FF0:
 	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A230 ; =0x00000E0D
 	add r0, sp, #0x60
 	mov r2, #1
@@ -570,7 +570,7 @@ _0234A03C:
 	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A234 ; =0x00000E0E
 	add r0, sp, #0x50
 	mov r2, #1
@@ -590,7 +590,7 @@ _0234A088:
 	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 #ifdef JAPAN
 	add r0, sp, #0x40
 	mov r1, #0xb50
@@ -615,7 +615,7 @@ _0234A0D4:
 	bl SetPortraitLayout
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 #ifdef JAPAN
 	ldr r1, _0234B4DC_2 ; =0x00000B51
 	add r0, sp, #0x30
@@ -651,7 +651,7 @@ _0234A148:
 	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A240 ; =0x00000E07
 	add r0, sp, #0x90
 	mov r2, #1
@@ -921,7 +921,7 @@ _0234A47C:
 	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A5C8 ; =0x00000E1E
 	add r0, sp, #0x14
 	mov r2, #1
@@ -960,7 +960,7 @@ _0234A504:
 	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A5D8 ; =0x00000E1B
 	add r0, sp, #4
 	mov r2, #1
@@ -1087,7 +1087,7 @@ _0234A6B8:
 	bl InitPortraitDungeon
 	mov r1, r5
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A754 ; =0x00000E29
 	add r0, sp, #0
 	mov r2, #1
@@ -1180,7 +1180,7 @@ _0234A7CC:
 	bl SubstitutePlaceholderStringTags
 	mov r1, r7
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A8AC ; =0x00000E14
 	mov r0, #0
 	mov r2, #1
@@ -1191,7 +1191,7 @@ _0234A7CC:
 	ldr r1, [r5, #0xb4]
 	mov r0, #1
 	ldrsh r1, [r1, #2]
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, [r5, #0xb4]
 	add r0, sp, #0
 	ldrsh r6, [r1, #2]
@@ -1200,7 +1200,7 @@ _0234A7CC:
 	bl InitPortraitDungeon
 	mov r1, r6
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A8B0 ; =0x00000E18
 	add r0, sp, #0
 	mov r2, #1
@@ -1208,7 +1208,7 @@ _0234A7CC:
 _0234A84C:
 	mov r1, r7
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	mov r0, r7
 	mov r1, #0
 	bl ov29_02348888
@@ -1270,7 +1270,7 @@ ov29_0234A8BC: ; 0x0234A8BC
 	bl ov29_02344B9C
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A978 ; =0x00000E16
 	mov r0, #0
 	mov r2, #1
@@ -1289,7 +1289,7 @@ _0234A928:
 	bl SubstitutePlaceholderStringTags
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234A97C ; =0x00000E15
 	mov r0, #0
 	mov r2, #1
@@ -1355,7 +1355,7 @@ _0234A9DC:
 	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234AA88 ; =0x00000E37
 	add r0, sp, #0
 	mov r2, #1
@@ -1439,7 +1439,7 @@ _0234AAC4:
 	bl InitPortraitDungeon
 	mov r1, r5
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 #ifdef JAPAN
 	ldr r1, _0234BE10 ; =0x00000B81
 	add r0, sp, #0
@@ -1511,7 +1511,7 @@ ov29_0234ABB0: ; 0x0234ABB0
 	bl SubstitutePlaceholderStringTags
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234AC80 ; =0x00000E13
 	mov r0, #0
 	mov r2, #1
@@ -1579,7 +1579,7 @@ ov29_0234AC8C: ; 0x0234AC8C
 	mov r0, #0
 	bl ov29_02348888
 	bl ov29_0234D630
-	bl ov29_0234B034
+	bl GetMessageLogPreprocessorArgs
 	mov r1, r0
 	mov r0, #1
 	str r0, [sp]
@@ -1657,7 +1657,7 @@ _0234AD44:
 	bl HandleFaint
 	mov r1, r5
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234ADC8 ; =0x00000E19
 	mov r0, #0
 	mov r2, #1
@@ -1729,7 +1729,7 @@ ov29_0234AE40: ; 0x0234AE40
 	bl InitPortraitDungeon
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0CC
+	bl SetMessageLogPreprocessorArgsStringToName
 	ldr r1, _0234AE98 ; =0x00000E06
 	add r0, sp, #0
 	mov r2, #1
@@ -1834,180 +1834,180 @@ _0234AF8C:
 _0234AFA0: .word 0x0000025B
 	arm_func_end ov29_0234AF34
 
-	arm_func_start ov29_0234AFA4
-ov29_0234AFA4: ; 0x0234AFA4
+	arm_func_start InitAlertBoxInfo
+InitAlertBoxInfo: ; 0x0234AFA4
 	stmdb sp!, {r3, lr}
 	mov r0, #0xcf0
 	mov r1, #0
 	bl MemAlloc
-	ldr r2, _0234AFCC ; =ov29_023537CC
+	ldr r2, _0234AFCC ; =MESSAGE_LOG_INFO
 	mov r1, #0xcf0
 	str r0, [r2, #4]
 	bl MemZero
 	bl ov29_0234B130
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234AFCC: .word ov29_023537CC
-	arm_func_end ov29_0234AFA4
+_0234AFCC: .word MESSAGE_LOG_INFO
+	arm_func_end InitAlertBoxInfo
 
-	arm_func_start ov29_0234AFD0
-ov29_0234AFD0: ; 0x0234AFD0
+	arm_func_start FreeAlertBoxInfo
+FreeAlertBoxInfo: ; 0x0234AFD0
 	stmdb sp!, {r3, lr}
-	ldr r0, _0234AFF8 ; =ov29_023537CC
+	ldr r0, _0234AFF8 ; =MESSAGE_LOG_INFO
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _0234AFF8 ; =ov29_023537CC
+	ldr r0, _0234AFF8 ; =MESSAGE_LOG_INFO
 	mov r1, #0
 	str r1, [r0, #4]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234AFF8: .word ov29_023537CC
-	arm_func_end ov29_0234AFD0
+_0234AFF8: .word MESSAGE_LOG_INFO
+	arm_func_end FreeAlertBoxInfo
 
 	arm_func_start ov29_0234AFFC
 ov29_0234AFFC: ; 0x0234AFFC
-	ldr r1, _0234B00C ; =ov29_023537CC
+	ldr r1, _0234B00C ; =MESSAGE_LOG_INFO
 	ldr r1, [r1, #4]
 	strb r0, [r1, #0xced]
 	bx lr
 	.align 2, 0
-_0234B00C: .word ov29_023537CC
+_0234B00C: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234AFFC
 
 	arm_func_start ov29_0234B010
 ov29_0234B010: ; 0x0234B010
-	ldr r1, _0234B020 ; =ov29_023537CC
+	ldr r1, _0234B020 ; =MESSAGE_LOG_INFO
 	ldr r1, [r1, #4]
 	strb r0, [r1, #0xcee]
 	bx lr
 	.align 2, 0
-_0234B020: .word ov29_023537CC
+_0234B020: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B010
 
-	arm_func_start ov29_0234B024
-ov29_0234B024: ; 0x0234B024
-	ldr r1, _0234B030 ; =ov29_023537CC
+	arm_func_start SetMessageLogGroupStartFlag
+SetMessageLogGroupStartFlag: ; 0x0234B024
+	ldr r1, _0234B030 ; =MESSAGE_LOG_INFO
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-_0234B030: .word ov29_023537CC
-	arm_func_end ov29_0234B024
+_0234B030: .word MESSAGE_LOG_INFO
+	arm_func_end SetMessageLogGroupStartFlag
 
-	arm_func_start ov29_0234B034
-ov29_0234B034: ; 0x0234B034
-	ldr r0, _0234B048 ; =ov29_023537CC
+	arm_func_start GetMessageLogPreprocessorArgs
+GetMessageLogPreprocessorArgs: ; 0x0234B034
+	ldr r0, _0234B048 ; =MESSAGE_LOG_INFO
 	ldr r0, [r0, #4]
 	add r0, r0, #0x9c
 	add r0, r0, #0xc00
 	bx lr
 	.align 2, 0
-_0234B048: .word ov29_023537CC
-	arm_func_end ov29_0234B034
+_0234B048: .word MESSAGE_LOG_INFO
+	arm_func_end GetMessageLogPreprocessorArgs
 
-	arm_func_start ov29_0234B04C
-ov29_0234B04C: ; 0x0234B04C
-	ldr r0, _0234B064 ; =ov29_023537CC
+	arm_func_start InitMessageLogPreprocessorArgs
+InitMessageLogPreprocessorArgs: ; 0x0234B04C
+	ldr r0, _0234B064 ; =MESSAGE_LOG_INFO
 	ldr ip, _0234B068 ; =InitPreprocessorArgs
 	ldr r0, [r0, #4]
 	add r0, r0, #0x9c
 	add r0, r0, #0xc00
 	bx ip
 	.align 2, 0
-_0234B064: .word ov29_023537CC
+_0234B064: .word MESSAGE_LOG_INFO
 _0234B068: .word InitPreprocessorArgs
-	arm_func_end ov29_0234B04C
+	arm_func_end InitMessageLogPreprocessorArgs
 
-	arm_func_start ov29_0234B06C
-ov29_0234B06C: ; 0x0234B06C
-	ldr r2, _0234B080 ; =ov29_023537CC
+	arm_func_start SetMessageLogPreprocessorArgsFlagVal
+SetMessageLogPreprocessorArgsFlagVal: ; 0x0234B06C
+	ldr r2, _0234B080 ; =MESSAGE_LOG_INFO
 	ldr r2, [r2, #4]
 	add r0, r2, r0, lsl #2
 	str r1, [r0, #0xc9c]
 	bx lr
 	.align 2, 0
-_0234B080: .word ov29_023537CC
-	arm_func_end ov29_0234B06C
+_0234B080: .word MESSAGE_LOG_INFO
+	arm_func_end SetMessageLogPreprocessorArgsFlagVal
 
 	arm_func_start SetPreprocessorArgsIdVal
 SetPreprocessorArgsIdVal: ; 0x0234B084
-	ldr r2, _0234B098 ; =ov29_023537CC
+	ldr r2, _0234B098 ; =MESSAGE_LOG_INFO
 	ldr r2, [r2, #4]
 	add r0, r2, r0, lsl #2
 	str r1, [r0, #0xcac]
 	bx lr
 	.align 2, 0
-_0234B098: .word ov29_023537CC
+_0234B098: .word MESSAGE_LOG_INFO
 	arm_func_end SetPreprocessorArgsIdVal
 
-	arm_func_start ov29_0234B09C
-ov29_0234B09C: ; 0x0234B09C
-	ldr r2, _0234B0B0 ; =ov29_023537CC
+	arm_func_start SetMessageLogPreprocessorArgsNumberVal
+SetMessageLogPreprocessorArgsNumberVal: ; 0x0234B09C
+	ldr r2, _0234B0B0 ; =MESSAGE_LOG_INFO
 	ldr r2, [r2, #4]
 	add r0, r2, r0, lsl #2
 	str r1, [r0, #0xcc0]
 	bx lr
 	.align 2, 0
-_0234B0B0: .word ov29_023537CC
-	arm_func_end ov29_0234B09C
+_0234B0B0: .word MESSAGE_LOG_INFO
+	arm_func_end SetMessageLogPreprocessorArgsNumberVal
 
-	arm_func_start ov29_0234B0B4
-ov29_0234B0B4: ; 0x0234B0B4
-	ldr r2, _0234B0C8 ; =ov29_023537CC
+	arm_func_start SetMessageLogPreprocessorArgsString
+SetMessageLogPreprocessorArgsString: ; 0x0234B0B4
+	ldr r2, _0234B0C8 ; =MESSAGE_LOG_INFO
 	ldr r2, [r2, #4]
 	add r0, r2, r0, lsl #2
 	str r1, [r0, #0xcd4]
 	bx lr
 	.align 2, 0
-_0234B0C8: .word ov29_023537CC
-	arm_func_end ov29_0234B0B4
+_0234B0C8: .word MESSAGE_LOG_INFO
+	arm_func_end SetMessageLogPreprocessorArgsString
 
-	arm_func_start ov29_0234B0CC
-ov29_0234B0CC: ; 0x0234B0CC
+	arm_func_start SetMessageLogPreprocessorArgsStringToName
+SetMessageLogPreprocessorArgsStringToName: ; 0x0234B0CC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r1
 	mov r5, r0
-	bl sub_02024FB8
+	bl GetSize0x80Buffer
 	mov r1, r4
 	mov r2, #0x4e
 	mov r4, r0
 	bl GetName
-	ldr r0, _0234B100 ; =ov29_023537CC
+	ldr r0, _0234B100 ; =MESSAGE_LOG_INFO
 	ldr r0, [r0, #4]
 	add r0, r0, r5, lsl #2
 	str r4, [r0, #0xcd4]
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0234B100: .word ov29_023537CC
-	arm_func_end ov29_0234B0CC
+_0234B100: .word MESSAGE_LOG_INFO
+	arm_func_end SetMessageLogPreprocessorArgsStringToName
 
-	arm_func_start ov29_0234B104
-ov29_0234B104: ; 0x0234B104
-	ldr r1, _0234B114 ; =ov29_023537CC
+	arm_func_start SetMessageLogPreprocessorArgsSpeakerId
+SetMessageLogPreprocessorArgsSpeakerId: ; 0x0234B104
+	ldr r1, _0234B114 ; =MESSAGE_LOG_INFO
 	ldr r1, [r1, #4]
 	str r0, [r1, #0xce8]
 	bx lr
 	.align 2, 0
-_0234B114: .word ov29_023537CC
-	arm_func_end ov29_0234B104
+_0234B114: .word MESSAGE_LOG_INFO
+	arm_func_end SetMessageLogPreprocessorArgsSpeakerId
 
-	arm_func_start ov29_0234B118
-ov29_0234B118: ; 0x0234B118
-	ldr r1, _0234B12C ; =ov29_023537CC
+	arm_func_start SetMessageLogPreprocessorArgsSpeakerId0x30000
+SetMessageLogPreprocessorArgsSpeakerId0x30000: ; 0x0234B118
+	ldr r1, _0234B12C ; =MESSAGE_LOG_INFO
 	orr r2, r0, #0x30000
 	ldr r0, [r1, #4]
 	str r2, [r0, #0xce8]
 	bx lr
 	.align 2, 0
-_0234B12C: .word ov29_023537CC
-	arm_func_end ov29_0234B118
+_0234B12C: .word MESSAGE_LOG_INFO
+	arm_func_end SetMessageLogPreprocessorArgsSpeakerId0x30000
 
 	arm_func_start ov29_0234B130
 ov29_0234B130: ; 0x0234B130
 	stmdb sp!, {r3, lr}
 	mov r3, #0
-	ldr r1, _0234B1A0 ; =ov29_023537CC
+	ldr r1, _0234B1A0 ; =MESSAGE_LOG_INFO
 	mov r0, r3
 _0234B140:
 	ldr r2, [r1, #4]
@@ -2016,7 +2016,7 @@ _0234B140:
 	strb r0, [r2, #0xc80]
 	cmp r3, #0xa
 	blt _0234B140
-	ldr r1, _0234B1A0 ; =ov29_023537CC
+	ldr r1, _0234B1A0 ; =MESSAGE_LOG_INFO
 	mvn ip, #1
 	ldr r3, [r1, #4]
 	mov r2, #1
@@ -2028,14 +2028,14 @@ _0234B140:
 	str r0, [r1, #8]
 	strb r2, [r1]
 	bl ov29_0234B1A4
-	ldr r0, _0234B1A0 ; =ov29_023537CC
+	ldr r0, _0234B1A0 ; =MESSAGE_LOG_INFO
 	ldr r0, [r0, #4]
 	add r0, r0, #0x9c
 	add r0, r0, #0xc00
 	bl InitPreprocessorArgs
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234B1A0: .word ov29_023537CC
+_0234B1A0: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B130
 
 	arm_func_start ov29_0234B1A4
@@ -2046,7 +2046,7 @@ ov29_0234B1A4: ; 0x0234B1A4
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov ip, #0
-	ldr r2, _0234B24C ; =ov29_023537CC
+	ldr r2, _0234B24C ; =MESSAGE_LOG_INFO
 	mov r0, ip
 _0234B1C4:
 	ldr r3, [r2, #4]
@@ -2055,7 +2055,7 @@ _0234B1C4:
 	strb r0, [r3, r1, lsl #6]
 	cmp ip, #0xa
 	blt _0234B1C4
-	ldr r2, _0234B24C ; =ov29_023537CC
+	ldr r2, _0234B24C ; =MESSAGE_LOG_INFO
 	mov r3, #4
 	ldr r1, [r2, #4]
 	strb r0, [r1, #0xc8b]
@@ -2084,13 +2084,13 @@ _0234B1C4:
 	bl AdvanceFrame
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0234B24C: .word ov29_023537CC
+_0234B24C: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B1A4
 
 	arm_func_start LogMessageByIdWithPopupCheckParticipants
 LogMessageByIdWithPopupCheckParticipants: ; 0x0234B250
 	stmdb sp!, {r3, lr}
-	ldr ip, _0234B290 ; =ov29_023537CC
+	ldr ip, _0234B290 ; =MESSAGE_LOG_INFO
 	cmp r1, #0
 	ldr ip, [ip, #4]
 	ldrsh lr, [sp, #8]
@@ -2107,7 +2107,7 @@ _0234B27C:
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234B290: .word ov29_023537CC
+_0234B290: .word MESSAGE_LOG_INFO
 	arm_func_end LogMessageByIdWithPopupCheckParticipants
 
 	arm_func_start ov29_0234B294
@@ -2301,32 +2301,32 @@ _0234B4C8: .word LogMessage
 
 	arm_func_start ov29_0234B4CC
 ov29_0234B4CC: ; 0x0234B4CC
-	ldr r1, _0234B4DC ; =ov29_023537CC
+	ldr r1, _0234B4DC ; =MESSAGE_LOG_INFO
 	ldr r1, [r1, #4]
 	strb r0, [r1, #0xc8a]
 	bx lr
 	.align 2, 0
-_0234B4DC: .word ov29_023537CC
+_0234B4DC: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B4CC
 
 	arm_func_start ov29_0234B4E0
 ov29_0234B4E0: ; 0x0234B4E0
-	ldr r0, _0234B4F0 ; =ov29_023537CC
+	ldr r0, _0234B4F0 ; =MESSAGE_LOG_INFO
 	ldr r0, [r0, #4]
 	ldrb r0, [r0, #0xc8b]
 	bx lr
 	.align 2, 0
-_0234B4F0: .word ov29_023537CC
+_0234B4F0: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B4E0
 
 	arm_func_start ov29_0234B4F4
 ov29_0234B4F4: ; 0x0234B4F4
-	ldr r0, _0234B504 ; =ov29_023537CC
+	ldr r0, _0234B504 ; =MESSAGE_LOG_INFO
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc98]
 	bx lr
 	.align 2, 0
-_0234B504: .word ov29_023537CC
+_0234B504: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B4F4
 
 	arm_func_start LogMessage
@@ -2338,7 +2338,7 @@ LogMessage: ; 0x0234B508
 #endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x284 + LOG_MESSAGE_STACK_OFFSET
-	ldr r4, _0234B708 ; =ov29_023537CC
+	ldr r4, _0234B708 ; =MESSAGE_LOG_INFO
 	mov fp, r2
 	ldr r3, [r4, #4]
 	ldrb r2, [r3, #0xced]
@@ -2361,7 +2361,7 @@ LogMessage: ; 0x0234B508
 	cmp r2, r0
 	movne sl, #1
 	ldreqb sl, [r4]
-	ldr r2, _0234B708 ; =ov29_023537CC
+	ldr r2, _0234B708 ; =MESSAGE_LOG_INFO
 	mov r6, #1
 	str r0, [r2, #8]
 	strb r7, [r2]
@@ -2373,7 +2373,7 @@ LogMessage: ; 0x0234B508
 	mov r1, #0x140 + LOG_MESSAGE_STACK_OFFSET
 	str r4, [sp]
 	bl PreprocessString
-	ldr r4, _0234B708 ; =ov29_023537CC
+	ldr r4, _0234B708 ; =MESSAGE_LOG_INFO
 	add r5, sp, #0x144
 _0234B5A4:
 	ldr r0, [r4, #4]
@@ -2458,7 +2458,7 @@ _0234B660:
 _0234B6D4:
 	cmp r7, #0
 	beq _0234B700
-	ldr r0, _0234B708 ; =ov29_023537CC
+	ldr r0, _0234B708 ; =MESSAGE_LOG_INFO
 	mov r2, #0xf0
 	strh r2, [r1, #0x90]
 	ldr r1, [r0, #4]
@@ -2471,7 +2471,7 @@ _0234B700:
 	add sp, sp, #0x284 + LOG_MESSAGE_STACK_OFFSET
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_0234B708: .word ov29_023537CC
+_0234B708: .word MESSAGE_LOG_INFO
 _0234B70C: .word DUNGEON_PTR
 _0234B710: .word ov29_02353214
 	arm_func_end LogMessage
@@ -2492,7 +2492,7 @@ LogMessageById: ; 0x0234B714
 
 	arm_func_start ov29_0234B73C
 ov29_0234B73C: ; 0x0234B73C
-	ldr r0, _0234B764 ; =ov29_023537CC
+	ldr r0, _0234B764 ; =MESSAGE_LOG_INFO
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0xc00
@@ -2503,13 +2503,13 @@ ov29_0234B73C: ; 0x0234B73C
 	and r0, r0, #0xff
 	bx lr
 	.align 2, 0
-_0234B764: .word ov29_023537CC
+_0234B764: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B73C
 
 	arm_func_start ov29_0234B768
 ov29_0234B768: ; 0x0234B768
 	stmdb sp!, {r3, lr}
-	ldr r0, _0234B7E8 ; =ov29_023537CC
+	ldr r0, _0234B7E8 ; =MESSAGE_LOG_INFO
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0xc00
@@ -2521,17 +2521,17 @@ ov29_0234B768: ; 0x0234B768
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl sub_0202836C
-	ldr r0, _0234B7E8 ; =ov29_023537CC
+	ldr r0, _0234B7E8 ; =MESSAGE_LOG_INFO
 	ldr r0, [r0, #4]
 	add r0, r0, #0xc00
 	ldrsb r0, [r0, #0xec]
 	bl sub_02030214
-	ldr r0, _0234B7E8 ; =ov29_023537CC
+	ldr r0, _0234B7E8 ; =MESSAGE_LOG_INFO
 	ldr r0, [r0, #4]
 	add r0, r0, #0xc00
 	ldrsb r0, [r0, #0xec]
 	bl CloseAlertBox
-	ldr r0, _0234B7E8 ; =ov29_023537CC
+	ldr r0, _0234B7E8 ; =MESSAGE_LOG_INFO
 	mvn r3, #1
 	ldr r1, [r0, #4]
 	mov r2, #0
@@ -2541,13 +2541,13 @@ ov29_0234B768: ; 0x0234B768
 	str r2, [r1, #0xc98]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234B7E8: .word ov29_023537CC
+_0234B7E8: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B768
 
 	arm_func_start ov29_0234B7EC
 ov29_0234B7EC: ; 0x0234B7EC
 	stmdb sp!, {r3, lr}
-	ldr r0, _0234B850 ; =ov29_023537CC
+	ldr r0, _0234B850 ; =MESSAGE_LOG_INFO
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0xc00
@@ -2558,7 +2558,7 @@ ov29_0234B7EC: ; 0x0234B7EC
 	tst r1, #0xff
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
-	ldr r1, _0234B850 ; =ov29_023537CC
+	ldr r1, _0234B850 ; =MESSAGE_LOG_INFO
 	ldr r1, [r1, #4]
 	add r1, r1, #0xc00
 	ldrsh r2, [r1, #0x8c]
@@ -2573,13 +2573,13 @@ _0234B848:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0234B850: .word ov29_023537CC
+_0234B850: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B7EC
 
 	arm_func_start ov29_0234B854
 ov29_0234B854: ; 0x0234B854
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _0234BA14 ; =ov29_023537CC
+	ldr r0, _0234BA14 ; =MESSAGE_LOG_INFO
 	ldr r1, [r0, #4]
 	cmp r1, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -2587,7 +2587,7 @@ ov29_0234B854: ; 0x0234B854
 	cmp r0, #0
 	movne r0, #0
 	strne r0, [r1, #0xc98]
-	ldr r0, _0234BA14 ; =ov29_023537CC
+	ldr r0, _0234BA14 ; =MESSAGE_LOG_INFO
 	ldr r4, [r0, #4]
 	ldr r0, [r4, #0xc98]
 	cmp r0, #0
@@ -2606,7 +2606,7 @@ _0234B8A0:
 	cmp r0, #0x3000
 	blt _0234B9C8
 #endif
-	ldr r0, _0234BA14 ; =ov29_023537CC
+	ldr r0, _0234BA14 ; =MESSAGE_LOG_INFO
 	mvn r1, #1
 	ldr r0, [r0, #4]
 	add r0, r0, #0xc00
@@ -2618,7 +2618,7 @@ _0234B8A0:
 	bne _0234B900
 	mov r0, #0
 	bl CreateAlertBox
-	ldr r1, _0234BA14 ; =ov29_023537CC
+	ldr r1, _0234BA14 ; =MESSAGE_LOG_INFO
 	mov r2, #0
 	ldr r3, [r1, #4]
 	strb r0, [r3, #0xcec]
@@ -2628,7 +2628,7 @@ _0234B900:
 	mov r0, #2
 	str r0, [r4, #0xc98]
 _0234B908:
-	ldr r0, _0234BA14 ; =ov29_023537CC
+	ldr r0, _0234BA14 ; =MESSAGE_LOG_INFO
 	mvn r2, #1
 	ldr r1, [r0, #4]
 	add r0, r1, #0xc00
@@ -2639,7 +2639,7 @@ _0234B908:
 	tst r2, #0xff
 	moveq r0, #1
 	beq _0234B9BC
-	ldr r3, _0234BA14 ; =ov29_023537CC
+	ldr r3, _0234BA14 ; =MESSAGE_LOG_INFO
 	mov r2, #0x140
 	ldr r5, [r3, #4]
 	add r3, r5, #0xc00
@@ -2700,13 +2700,13 @@ _0234B9C8:
 	bl ov29_022EA428
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0234BA14: .word ov29_023537CC
+_0234BA14: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B854
 
 	arm_func_start ov29_0234BA18
 ov29_0234BA18: ; 0x0234BA18
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r1, _0234BA50 ; =ov29_023537CC
+	ldr r1, _0234BA50 ; =MESSAGE_LOG_INFO
 	mov r5, r0
 	ldr r4, [r1, #4]
 _0234BA28:
@@ -2723,13 +2723,13 @@ _0234BA40:
 _0234BA4C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0234BA50: .word ov29_023537CC
+_0234BA50: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234BA18
 
 	arm_func_start ov29_0234BA54
 ov29_0234BA54: ; 0x0234BA54
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	ldr r1, _0234BAB8 ; =ov29_023537CC
+	ldr r1, _0234BAB8 ; =MESSAGE_LOG_INFO
 	mov r5, r0
 	ldr r6, [r1, #4]
 	bl ov29_0234BA18
@@ -2756,7 +2756,7 @@ _0234BAAC:
 	blt _0234BA78
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0234BAB8: .word ov29_023537CC
+_0234BAB8: .word MESSAGE_LOG_INFO
 _0234BABC: .word ov29_0237C694
 	arm_func_end ov29_0234BA54
 

@@ -233,10 +233,10 @@ _02315464:
 	bl UpdateStatusIconFlags
 	mov r1, sl
 	mov r0, #0
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	mov r0, #1
 	mov r1, r8
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	mov r0, #0
 	mov r1, r6
 	mov r2, r0
@@ -1542,7 +1542,7 @@ TryInflictStockpileStatus: ; 0x023164D8
 	bl ov29_022E46D4
 	ldrb r1, [r5, #0x11e + TRY_INFLICT_STOCKPILE_STATUS_OFFSET]
 	mov r0, r4
-	bl ov29_0234B09C
+	bl SetMessageLogPreprocessorArgsNumberVal
 	ldr r2, _02316574 ; =0x00000D4B
 	mov r0, r7
 	mov r1, r6
@@ -2537,7 +2537,7 @@ _02317260:
 	b _023173F4
 _02317298:
 	mov r0, #0
-	bl sub_02024FB8
+	bl GetSize0x80Buffer
 	mov r1, r0
 	add r0, sp, #0
 	bl strcpy
@@ -2612,17 +2612,17 @@ _02317350:
 	add r0, r0, #1
 	strb r0, [r8, #0xf0]
 	mov r0, #1
-	bl sub_02024FB8
+	bl GetSize0x80Buffer
 	ldrsh r1, [r8, #4]
 	mov r2, #0x4e
 	mov r4, r0
 	bl GetNameWithGender
 	mov r0, #0
 	add r1, sp, #0
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	mov r1, r4
 	mov r0, #1
-	bl ov29_0234B0B4
+	bl SetMessageLogPreprocessorArgsString
 	ldr r2, _02317408 ; =0x00000D6D
 	mov r0, sl
 	mov r1, sb

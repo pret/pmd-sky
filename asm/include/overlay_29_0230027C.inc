@@ -8,12 +8,12 @@
 .public GetName
 .public GetNameRaw
 .public GetNameWithGender
-.public ov29_0234B0B4
+.public GetSize0x80Buffer
 .public ov29_023527C0
 .public ov29_023527D0
+.public SetMessageLogPreprocessorArgsString
 .public strcpy
 .public StringFromId
-.public sub_02024FB8
 .public sub_02056084
 .public sub_02058534
 .public sub_0205858C

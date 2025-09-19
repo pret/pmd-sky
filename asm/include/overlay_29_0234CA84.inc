@@ -7,6 +7,7 @@
 .public GetGameMode
 .public GetItemCategoryVeneer
 .public GetLeader
+.public GetMessageLogPreprocessorArgs
 .public GetPerformanceFlagWithChecks
 .public GetPlayerGender
 .public GetRandomExplorerMazeMonster
@@ -22,7 +23,6 @@
 .public ov29_0231ADA8
 .public ov29_02337EE8
 .public ov29_0233804C
-.public ov29_0234B034
 .public ov29_0234BA54
 .public ov29_0234D558
 .public ov29_0234D5D0
