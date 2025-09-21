@@ -151,7 +151,7 @@ s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_i
     return weight + 2;
 }
 #else
-extern u32 WEAK_TYPE_PICKER_MATCHUP_MULTIPLIERS[NUM_EFFECTIVENESS];
+const u32 WEAK_TYPE_PICKER_MATCHUP_MULTIPLIERS[NUM_EFFECTIVENESS] = {0, 1, 2, 4};
 
 asm s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_id move_type)
 {
