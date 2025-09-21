@@ -16,11 +16,11 @@ extern bool8 ScrappyShouldActivate(struct entity *attacker, struct entity *defen
 
 // https://decomp.me/scratch/j2xpy
 // https://decomp.me/scratch/fk1Fo
-#ifdef NONMATCHING
 s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_id move_type)
 {
     s32 weight = 1;
     bool8 check_exposed = FALSE;
+    s32 i;
     if (!EntityIsValid__02308FBC(target))
         return 1;
 
@@ -43,7 +43,7 @@ s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_i
         return 0;
 
 #ifdef JAPAN
-    if (move_type == TYPE_WATER && DefenderAbilityIsActive__0230A940(user, target, ABILITY_WATER_ABSORB, TRUE))
+    if (move_type == TYPE_WATER && DefenderAbilityIsActive__0230A940(user, target, ABILITY_WATER_ABSORB))
 #else
     if (move_type == TYPE_WATER && DefenderAbilityIsActive__0230A940(user, target, ABILITY_WATER_ABSORB, TRUE))
 #endif
@@ -55,7 +55,7 @@ s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_i
 
     bool8 scrappy_active = ScrappyShouldActivate(user, target, move_type);
 
-    for (s32 i = 0; i < 2; i++)
+    for (i = 0; i < 2; i++)
     {
         s32 effectiveness;
         u32 type_effectiveness_multipliers[NUM_EFFECTIVENESS] = {0, 1, 2, 4};
@@ -80,7 +80,7 @@ s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_i
     }
 
 #ifdef JAPAN
-    if ((move_type == TYPE_FIRE || move_type == TYPE_ICE) && DefenderAbilityIsActive__0230A940(user, target, ABILITY_THICK_FAT, TRUE))
+    if ((move_type == TYPE_FIRE || move_type == TYPE_ICE) && DefenderAbilityIsActive__0230A940(user, target, ABILITY_THICK_FAT))
 #else
     if ((move_type == TYPE_FIRE || move_type == TYPE_ICE) && DefenderAbilityIsActive__0230A940(user, target, ABILITY_THICK_FAT, TRUE))
 #endif
@@ -89,36 +89,28 @@ s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_i
     if (move_type == TYPE_WATER && AbilityIsActiveVeneer(user, ABILITY_TORRENT))
     {
         s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, 999);
-        max_hp_stat += ((u32)(max_hp_stat >> 1) >> 0x1e);
-
-        if (max_hp_stat >> 2 >= user_data->hp)
+        if (max_hp_stat / 4 >= user_data->hp)
             weight *= 2;
     }
 
     if (move_type == TYPE_GRASS && AbilityIsActiveVeneer(user, ABILITY_OVERGROW))
     {
         s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, 999);
-        max_hp_stat += ((u32)(max_hp_stat >> 1) >> 0x1e);
-
-        if (max_hp_stat >> 2 >= user_data->hp)
+        if (max_hp_stat / 4 >= user_data->hp)
             weight *= 2;
     }
 
     if (move_type == TYPE_BUG && AbilityIsActiveVeneer(user, ABILITY_SWARM))
     {
         s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, 999);
-        max_hp_stat += ((u32)(max_hp_stat >> 1) >> 0x1e);
-
-        if (max_hp_stat >> 2 >= user_data->hp)
+        if (max_hp_stat / 4 >= user_data->hp)
             weight *= 2;
     }
 
     if (move_type == TYPE_FIRE && AbilityIsActiveVeneer(user, ABILITY_BLAZE))
     {
         s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, 999);
-        max_hp_stat += ((u32)(max_hp_stat >> 1) >> 0x1e);
-
-        if (max_hp_stat >> 2 >= user_data->hp)
+        if (max_hp_stat / 4 >= user_data->hp)
             weight *= 2;
     }
 
@@ -150,287 +142,3 @@ s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_i
 
     return weight + 2;
 }
-#else
-const u32 WEAK_TYPE_PICKER_MATCHUP_MULTIPLIERS[NUM_EFFECTIVENESS] = {0, 1, 2, 4};
-
-asm s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_id move_type)
-{
-	stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
-	sub sp, sp, #0x24
-	mov r9, r1
-	mov r10, r0
-	mov r0, r9
-	mov r4, #1
-	mov r8, r2
-	mov r11, #0
-	bl EntityIsValid__02308FBC
-	cmp r0, #0
-	moveq r0, r4
-	beq _0230BB98
-	mov r0, r10
-	mov r1, #0x6b
-	ldr r7, [r10, #0xb4]
-	ldr r6, [r9, #0xb4]
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	movne r8, r4
-	cmp r8, #1
-	cmpne r8, #7
-	moveq r11, #1
-	cmp r8, #2
-	bne _0230B84C
-	mov r0, r10
-	mov r1, r9
-	bl FlashFireShouldActivate
-	cmp r0, #0
-	movne r0, #0
-	bne _0230BB98
-_0230B84C:
-	cmp r8, #5
-	bne _0230B874
-	mov r0, r10
-	mov r1, r9
-	mov r2, #0x23
-#ifndef JAPAN
-	mov r3, #1
-#endif
-	bl DefenderAbilityIsActive__0230A940
-	cmp r0, #0
-	movne r0, #0
-	bne _0230BB98
-_0230B874:
-	cmp r8, #3
-	bne _0230B89C
-	mov r0, r10
-	mov r1, r9
-	mov r2, #0x24
-#ifndef JAPAN
-	mov r3, #1
-#endif
-	bl DefenderAbilityIsActive__0230A940
-	cmp r0, #0
-	movne r0, #0
-	bne _0230BB98
-_0230B89C:
-	cmp r8, #9
-	bne _0230B8E0
-	mov r0, r10
-	mov r1, #0x53
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	bne _0230B8C8
-	mov r0, r9
-	bl LevitateIsActive
-	cmp r0, #0
-	bne _0230B8D8
-_0230B8C8:
-	mov r0, r9
-	bl IsFloating
-	cmp r0, #0
-	beq _0230B8E0
-_0230B8D8:
-	mov r0, #1
-	b _0230BB98
-_0230B8E0:
-	mov r0, r10
-	mov r1, r9
-	mov r2, r8
-	bl ScrappyShouldActivate
-	ldr r1, =WEAK_TYPE_PICKER_MATCHUP_MULTIPLIERS
-	str r0, [sp]
-	add ip, sp, #4
-	ldmia r1, {r0, r1, r2, r3}
-	stmia ip, {r0, r1, r2, r3}
-	mov r5, #0
-	b _0230B9A0
-_0230B90C:
-	ldr r0, [sp]
-	add ip, sp, #0x14
-	cmp r0, #0
-	add r0, sp, #4
-	ldmia r0, {r0, r1, r2, r3}
-	stmia ip, {r0, r1, r2, r3}
-	bne _0230B960
-	cmp r11, #0
-	beq _0230B960
-	add r0, r6, r5
-	ldrb r0, [r0, #0x5e]
-	cmp r0, #0xe
-	ldreqb r0, [r6, #0xfe]
-	cmpeq r0, #0
-	bne _0230B960
-	ldr r1, =DUNGEON_PTR
-	mov r0, #0
-	ldr r2, [r1]
-	mov r1, #1
-	strb r1, [r2, #0x1d4]
-	b _0230B978
-_0230B960:
-	mov r0, r10
-	mov r1, r9
-	mov r2, r5, lsl #0x10
-	mov r2, r2, asr #0x10
-	mov r3, r8
-	bl GetTypeMatchup
-_0230B978:
-	cmp r4, #0
-	beq _0230B9A8
-	add r1, sp, #0x14
-	ldr r0, [r1, r0, lsl #2]
-	mul r0, r4, r0
-	add r0, r0, r0, lsr #31
-	movs r4, r0, asr #1
-	moveq r0, #2
-	beq _0230BB98
-	add r5, r5, #1
-_0230B9A0:
-	cmp r5, #2
-	blt _0230B90C
-_0230B9A8:
-	cmp r8, #2
-	cmpne r8, #6
-	bne _0230B9D4
-	mov r0, r10
-	mov r1, r9
-	mov r2, #2
-#ifndef JAPAN
-	mov r3, #1
-#endif
-	bl DefenderAbilityIsActive__0230A940
-	cmp r0, #0
-	movne r0, #2
-	bne _0230BB98
-_0230B9D4:
-	cmp r8, #3
-	bne _0230BA1C
-	mov r0, r10
-	mov r1, #0x10
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	beq _0230BA1C
-	ldrsh r2, [r7, #0x12]
-	ldrsh r1, [r7, #0x16]
-	ldr r0, =0x000003E7
-	add r2, r2, r1
-	cmp r2, r0
-	movgt r2, r0
-	mov r0, r2, asr #1
-	ldrsh r1, [r7, #0x10]
-	add r0, r2, r0, lsr #30
-	cmp r1, r0, asr #2
-	movle r4, r4, lsl #1
-_0230BA1C:
-	cmp r8, #4
-	bne _0230BA64
-	mov r0, r10
-	mov r1, #0x1a
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	beq _0230BA64
-	ldrsh r2, [r7, #0x12]
-	ldrsh r1, [r7, #0x16]
-	ldr r0, =0x000003E7
-	add r2, r2, r1
-	cmp r2, r0
-	movgt r2, r0
-	mov r0, r2, asr #1
-	ldrsh r1, [r7, #0x10]
-	add r0, r2, r0, lsr #30
-	cmp r1, r0, asr #2
-	movle r4, r4, lsl #1
-_0230BA64:
-	cmp r8, #0xc
-	bne _0230BAAC
-	mov r0, r10
-	mov r1, #0x43
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	beq _0230BAAC
-	ldrsh r2, [r7, #0x12]
-	ldrsh r1, [r7, #0x16]
-	ldr r0, =0x000003E7
-	add r2, r2, r1
-	cmp r2, r0
-	movgt r2, r0
-	mov r0, r2, asr #1
-	ldrsh r1, [r7, #0x10]
-	add r0, r2, r0, lsr #30
-	cmp r1, r0, asr #2
-	movle r4, r4, lsl #1
-_0230BAAC:
-	cmp r8, #2
-	bne _0230BAF4
-	mov r0, r10
-	mov r1, #0x46
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	beq _0230BAF4
-	ldrsh r2, [r7, #0x12]
-	ldrsh r1, [r7, #0x16]
-	ldr r0, =0x000003E7
-	add r2, r2, r1
-	cmp r2, r0
-	movgt r2, r0
-	mov r0, r2, asr #1
-	ldrsh r1, [r7, #0x10]
-	add r0, r2, r0, lsr #30
-	cmp r1, r0, asr #2
-	movle r4, r4, lsl #1
-_0230BAF4:
-	cmp r4, #0
-	moveq r0, #2
-	beq _0230BB98
-	mov r0, r10
-	mov r1, r8
-	bl MonsterIsType
-	cmp r0, #0
-	mov r0, r10
-	movne r4, r4, lsl #1
-	bl GetApparentWeather
-	cmp r0, #1
-	bne _0230BB3C
-	cmp r8, #2
-	moveq r4, r4, lsl #1
-	beq _0230BB3C
-	cmp r8, #3
-	moveq r0, #2
-	beq _0230BB98
-_0230BB3C:
-	ldr r0, =DUNGEON_PTR
-	ldr r1, [r0]
-	add r0, r1, #0xc000
-#ifdef JAPAN
-	ldrb r0, [r0, #0xcb7]
-#else
-	ldrb r0, [r0, #0xd5b]
-#endif
-	cmp r0, #0
-	beq _0230BB60
-	cmp r8, #5
-	moveq r0, #2
-	beq _0230BB98
-_0230BB60:
-	add r0, r1, #0xc000
-#ifdef JAPAN
-	ldrb r0, [r0, #0xcb8]
-#else
-	ldrb r0, [r0, #0xd5c]
-#endif
-	cmp r0, #0
-	beq _0230BB7C
-	cmp r8, #2
-	moveq r0, #2
-	beq _0230BB98
-_0230BB7C:
-	cmp r8, #5
-	ldreqb r0, [r7, #0xd2]
-	cmpeq r0, #0xb
-	moveq r4, r4, lsl #1
-	cmp r4, #3
-	movge r4, #3
-	add r0, r4, #2
-_0230BB98:
-	add sp, sp, #0x24
-	ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-}
-#endif
