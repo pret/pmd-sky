@@ -1164,6 +1164,8 @@ enum type_id {
     TYPE_NEUTRAL = 18,
 };
 
+#define NUM_TYPES TYPE_NEUTRAL
+
 // Modes related to shopkeeper behavior
 enum shopkeeper_mode {
     SHOPKEEPER_MODE_NORMAL = 0,

@@ -1,40 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02332A0C.inc"
+	.include "overlay_29_02332A70.inc"
 
 	.text
-
-	arm_func_start DefenderAbilityIsActive__02332A0C
-DefenderAbilityIsActive__02332A0C: ; 0x02332A0C
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r1
-	mov r4, r2
-	cmp r0, r5
-	beq _02332A60
-	cmp r0, #0
-	moveq r1, #0
-	beq _02332A40
-	ldr r1, [r0]
-	cmp r1, #1
-	moveq r1, #1
-	movne r1, #0
-	and r1, r1, #0xff
-_02332A40:
-	cmp r1, #0
-#ifndef JAPAN
-	cmpne r3, #0
-#endif
-	beq _02332A60
-	mov r1, #0x53
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	movne r0, #0
-	ldmneia sp!, {r3, r4, r5, pc}
-_02332A60:
-	mov r0, r5
-	mov r1, r4
-	bl AbilityIsActiveVeneer
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end DefenderAbilityIsActive__02332A0C
 
 	arm_func_start DoMoveDamageInlined
 DoMoveDamageInlined: ; 0x02332A70
