@@ -3,6 +3,7 @@
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
 #include "overlay_29_02308FBC.h"
+#include "overlay_29_0230A994.h"
 #include "overlay_29_02318A4C.h"
 #include "weather.h"
 
@@ -14,11 +15,6 @@ enum flash_fire_status {
     FLASH_FIRE_STATUS_NOT_MAXED = 2
 };
 
-#ifdef JAPAN
-extern bool8 DefenderAbilityIsActive__0230A940(struct entity *attacker, struct entity *defender, enum ability_id ability_id);
-#else
-extern bool8 DefenderAbilityIsActive__0230A940(struct entity *attacker, struct entity *defender, enum ability_id ability_id, bool8 attacker_ability_enabled);
-#endif
 extern enum flash_fire_status FlashFireShouldActivate(struct entity *attacker, struct entity *defender);
 extern enum type_matchup GetTypeMatchup(struct entity *attacker, struct entity *defender, s16 target_type_idx, enum type_id attack_type);
 extern bool8 LevitateIsActive(struct entity* entity);

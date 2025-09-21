@@ -216,36 +216,3 @@ _02311B88: .word 0x00000DA6 + IS_PROTECTED_FROM_SLEEP_CLASS_STATUS_OFFSET
 _02311B8C: .word 0x00000DB1 + IS_PROTECTED_FROM_SLEEP_CLASS_STATUS_OFFSET
 _02311B90: .word 0x00000DC2 + IS_PROTECTED_FROM_SLEEP_CLASS_STATUS_OFFSET
 	arm_func_end IsProtectedFromSleepClassStatus
-
-	arm_func_start DefenderAbilityIsActive__02311B94
-DefenderAbilityIsActive__02311B94: ; 0x02311B94
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r1
-	mov r4, r2
-	cmp r0, r5
-	beq _02311BE8
-	cmp r0, #0
-	moveq r1, #0
-	beq _02311BC8
-	ldr r1, [r0]
-	cmp r1, #1
-	moveq r1, #1
-	movne r1, #0
-	and r1, r1, #0xff
-_02311BC8:
-	cmp r1, #0
-#ifndef JAPAN
-	cmpne r3, #0
-#endif
-	beq _02311BE8
-	mov r1, #0x53
-	bl AbilityIsActiveVeneer
-	cmp r0, #0
-	movne r0, #0
-	ldmneia sp!, {r3, r4, r5, pc}
-_02311BE8:
-	mov r0, r5
-	mov r1, r4
-	bl AbilityIsActiveVeneer
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end DefenderAbilityIsActive__02311B94
