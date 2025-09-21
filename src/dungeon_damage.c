@@ -2,6 +2,7 @@
 #include "dungeon_logic_3.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
+#include "move_orb_effects.h"
 #include "overlay_29_02308FBC.h"
 #include "overlay_29_0230A994.h"
 #include "overlay_29_02318A4C.h"
@@ -9,13 +10,6 @@
 
 #define NUM_EFFECTIVENESS 4
 
-enum flash_fire_status {
-    FLASH_FIRE_STATUS_NONE = 0,
-    FLASH_FIRE_STATUS_MAXED = 1,
-    FLASH_FIRE_STATUS_NOT_MAXED = 2
-};
-
-extern enum flash_fire_status FlashFireShouldActivate(struct entity *attacker, struct entity *defender);
 extern enum type_matchup GetTypeMatchup(struct entity *attacker, struct entity *defender, s16 target_type_idx, enum type_id attack_type);
 extern bool8 LevitateIsActive(struct entity* entity);
 extern bool8 ScrappyShouldActivate(struct entity *attacker, struct entity *defender, enum type_id attack_type);
