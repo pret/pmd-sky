@@ -4,6 +4,7 @@
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_capabilities.h"
 #include "dungeon_capabilities_4.h"
+#include "dungeon_damage.h"
 #include "dungeon_items.h"
 #include "dungeon_logic.h"
 #include "dungeon_logic_4.h"
@@ -28,8 +29,6 @@ extern bool8 AI_CAN_ATTACK_IN_DIRECTION[NUM_DIRECTIONS];
 extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
 extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
 extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
-
-extern s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_id move_type);
 
 void ResetAiCanAttackInDirection()
 {
