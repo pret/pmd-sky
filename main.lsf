@@ -221,6 +221,8 @@ Overlay OVY_10
 	Object asm/overlay_10_rodata_022C490C.o
 	Object src/natural_gift_data.o
 	Object asm/overlay_10_rodata_022C593C.o
+	Object src/type_matchup_table.o
+	Object asm/overlay_10_022C5938.o
 }
 Overlay OVY_11
 {

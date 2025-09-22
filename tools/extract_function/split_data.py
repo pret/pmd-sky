@@ -11,11 +11,13 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('asm_file')
 parser.add_argument('split_symbol_name')
+parser.add_argument('-f', '--split_file_name')
 
 args = parser.parse_args()
 
 symbol_location = args.asm_file
 symbol_name = args.split_symbol_name
+split_file_name = args.split_file_name
 
 if symbol_location.endswith('.s'):
     symbol_location = symbol_location[:-2]
@@ -62,7 +64,10 @@ LSF_FILE_PATH = 'main.lsf'
 with open(LSF_FILE_PATH, 'r') as lsf_file:
     lsf_lines = lsf_file.readlines()
 
-new_asm_base_name = f"{file_prefix}{data_type}_{new_symbol_address}"
+if split_file_name is None:
+    new_asm_base_name = f"{file_prefix}{data_type}_{new_symbol_address}"
+else:
+    new_asm_base_name = split_file_name
 
 # If needed, add the extracted function's new .o file to main.lsf.
 merge_prev_file = None
