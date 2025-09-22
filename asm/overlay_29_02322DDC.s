@@ -555,7 +555,7 @@ _02323564:
 	mul r0, r1, r0
 	str r0, [sp, #0x50]
 	ldr r0, [sp, #0x40]
-	bl sub_02001980
+	bl CosAbs4096
 	ldr r1, [sp, #0x74]
 	mul r2, r1, r0
 _023235B4:
@@ -608,7 +608,7 @@ _0232362C:
 	mul r0, r1, r0
 	str r0, [sp, #0x4c]
 	ldr r0, [sp, #0x30]
-	bl sub_02001980
+	bl CosAbs4096
 	ldr r1, [sp, #0x70]
 	mul r2, r1, r0
 _0232367C:

@@ -43,6 +43,6 @@
 .public SetPreprocessorArgsStringToName
 .public ShouldDisplayEntityWrapper
 .public SinAbs4096
-.public sub_02001980
+.public CosAbs4096
 .public sub_0201CF90
 .public TwoTurnMoveForcedMiss

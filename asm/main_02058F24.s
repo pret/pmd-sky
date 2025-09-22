@@ -22506,7 +22506,7 @@ _0206B580:
 	mov r0, r4, lsl #1
 	str r0, [r6, #0x40]
 	ldr r0, [r6, #0x20]
-	bl sub_02001980
+	bl CosAbs4096
 	add r1, sl, #0x300
 	bl MultiplyByFixedPoint
 	str r0, [r6, #0x18]
@@ -23200,7 +23200,7 @@ sub_0206BFA8: ; 0x0206BFA8
 	bl sub_0201F324
 	mov r5, r0
 	ldr r0, [r4, #0x20]
-	bl sub_02001980
+	bl CosAbs4096
 	ldr r1, [r4, #0x24]
 	bl MultiplyByFixedPoint
 	ldr r1, [r4, #0x30]
