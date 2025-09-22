@@ -18,10 +18,10 @@
 #include "dungeon_util_static.h"
 #include "fixed_room_data.h"
 #include "moves_1.h"
+#include "overlay_29_02338350.h"
 
 #define REGULAR_ATTACK_INDEX 4
 
-extern bool8 ov29_02338350(struct entity *monster);
 extern bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified);
 extern void SetActionRegularAttack(struct action_data *monster_action, u8 direction);
 extern void SetActionStruggle(struct action_data *monster_action, u8 direction);
@@ -46,7 +46,7 @@ void ChooseAiMove(struct entity *monster)
         (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_CONFUSED && DungeonRandOutcome__022EAB20(AI_CONFUSED_NO_ATTACK_CHANCE)))
         return;
 
-    int i;
+    s32 i;
     if (pokemon_info->bide_class_status.bide != STATUS_TWO_TURN_NONE)
     {
         for (i = 0; i < MAX_MON_MOVES; i++)

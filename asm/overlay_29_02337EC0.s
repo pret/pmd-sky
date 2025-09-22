@@ -364,32 +364,3 @@ _0233833C:
 	.align 2, 0
 _0233834C: .word DIRECTIONS_XY
 	arm_func_end ov29_023382A8
-
-	arm_func_start ov29_02338350
-ov29_02338350: ; 0x02338350
-	stmdb sp!, {r3, lr}
-	bl ov29_023382A8
-	cmp r0, #0
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r3, pc}
-	arm_func_end ov29_02338350
-
-	arm_func_start ResetGravity
-ResetGravity: ; 0x0233836C
-	ldr r0, _02338388 ; =DUNGEON_PTR
-	ldr ip, _0233838C ; =MemZero
-	ldr r0, [r0]
-	mov r1, #2
-#ifdef JAPAN
-	add r0, r0, #0x258
-#else
-	add r0, r0, #0x2fc
-#endif
-	add r0, r0, #0x12800
-	bx ip
-	.align 2, 0
-_02338388: .word DUNGEON_PTR
-_0233838C: .word MemZero
-	arm_func_end ResetGravity
