@@ -229,14 +229,14 @@ void ChooseAiMove(struct entity *monster)
 
     bool8 can_target_regular_attack;
     s32 weight_counter = 0;
-    bool8 has_stall = FALSE;
-    if (AbilityIsActiveVeneer(monster, ABILITY_STALL) && !ov29_02338350(monster))
+    bool8 has_stall_with_no_adjacent_enemies = FALSE;
+    if (AbilityIsActiveVeneer(monster, ABILITY_STALL) && !IsAdjacentToEnemyIgnoreTreatment(monster))
     {
-        has_stall = TRUE;
+        has_stall_with_no_adjacent_enemies = TRUE;
         can_target_regular_attack = TargetRegularAttack(monster, &regular_attack_target_dir, TRUE);
     }
 
-    if (!has_stall)
+    if (!has_stall_with_no_adjacent_enemies)
     {
         if (!IqSkillIsEnabled(monster, IQ_EXCLUSIVE_MOVE_USER))
             can_target_regular_attack = TargetRegularAttack(monster, &regular_attack_target_dir, TRUE);
@@ -254,7 +254,7 @@ void ChooseAiMove(struct entity *monster)
             weight_counter += ai_possible_move[i].weight;
             if (weight_counter >= random_weight)
             {
-                if (has_stall || i == REGULAR_ATTACK_INDEX)
+                if (has_stall_with_no_adjacent_enemies || i == REGULAR_ATTACK_INDEX)
                 {
                     if (can_target_regular_attack)
                     {
@@ -683,7 +683,7 @@ _01FFBB80:
 	cmp r0, #0
 	beq _01FFBBD8
 	mov r0, r10
-	bl ov29_02338350
+	bl IsAdjacentToEnemyIgnoreTreatment
 	cmp r0, #0
 	bne _01FFBBD8
 	mov r6, #1

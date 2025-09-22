@@ -3,6 +3,7 @@
 
 #include "dungeon_mode.h"
 
-bool8 ov29_02338350(struct entity *monster);
+struct entity* FindAdjacentEnemy(struct entity *monster);
+bool8 IsAdjacentToEnemyIgnoreTreatment(struct entity *monster);
 
 #endif //PMDSKY_OVERLAY_29_02338350_H
