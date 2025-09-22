@@ -82,9 +82,9 @@ def read_xmap_symbols_for_language(language: str) -> Dict[str, Dict[int, SymbolD
 
             elif current_section is not None and line.startswith('  ') and ('.text' in line or '.itcm' in line or line_is_data(line)) and len(line) > 28 and line[28] not in NON_FUNCTION_SYMBOLS:
                 symbol_split = line[28:-1].split('\t')
-                symbol_name = symbol_split[0]
+                symbol_name: str = symbol_split[0]
 
-                if symbol_name in XMAP_SYMBOL_BLACKLIST or '$' in symbol_name:
+                if symbol_name in XMAP_SYMBOL_BLACKLIST or '$' in symbol_name or symbol_name.startswith('@'):
                     continue
 
                 symbol_address = int(line[2:10], 16)
