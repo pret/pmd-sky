@@ -1,0 +1,2 @@
+#pragma once
+.public ExclusiveItemEffectIsActive__0230A9B8

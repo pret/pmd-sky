@@ -5,13 +5,12 @@
 #include "move_orb_effects.h"
 #include "overlay_29_02308FBC.h"
 #include "overlay_29_0230A994.h"
+#include "overlay_29_0230AB58.h"
 #include "overlay_29_02318A4C.h"
 #include "type_effectiveness.h"
 #include "weather.h"
 
 #define NUM_EFFECTIVENESS 4
-
-extern bool8 ScrappyShouldActivate(struct entity *attacker, struct entity *defender, enum type_id attack_type);
 
 s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_id move_type)
 {
