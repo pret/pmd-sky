@@ -12,6 +12,15 @@ struct ai_possible_move
     s32 weight;
 };
 
+// Stores whether the AI can use an attack in each direction.
+extern bool8 AI_CAN_ATTACK_IN_DIRECTION[NUM_DIRECTIONS];
+// Stores the directions that the AI can use an attack in. Parallel to AI_POTENTIAL_ATTACK_TARGET_WEIGHTS and AI_POTENTIAL_ATTACK_TARGETS.
+extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
+// Stores the targeting weights for each direction the AI can use an attack in. Parallel to AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS and AI_POTENTIAL_ATTACK_TARGETS.
+extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
+// Stores the target entity for each direction the AI can use an attack in. Parallel to AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS and AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS.
+extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
+
 // Sets all values in AI_CAN_ATTACK_IN_DIRECTION to false.
 void ResetAiCanAttackInDirection();
 // The AI uses this function to check if a move has any potential targets, to calculate the list of potential targets and to calculate the move's special weight. The weight is calculated using WeightMoveWithIqSkills.

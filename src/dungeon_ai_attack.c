@@ -25,10 +25,14 @@
 #include "overlay_29_0231ACAC.h"
 #include "position_util.h"
 
-extern bool8 AI_CAN_ATTACK_IN_DIRECTION[NUM_DIRECTIONS];
-extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
-extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
-extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
+bool8 AI_CAN_ATTACK_IN_DIRECTION[NUM_DIRECTIONS] = {0};
+u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS] = {0};
+
+// AI_POTENTIAL_ATTACK_TARGET_WEIGHTS is defined twice within AiConsiderMove, so it needs two separate symbols in ASM until the function is matched.
+#ifdef NONMATCHING
+s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS] = {0};
+struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS] = {0};
+#endif
 
 void ResetAiCanAttackInDirection()
 {
