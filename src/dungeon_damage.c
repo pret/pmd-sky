@@ -6,16 +6,13 @@
 #include "overlay_29_02308FBC.h"
 #include "overlay_29_0230A994.h"
 #include "overlay_29_02318A4C.h"
+#include "type_effectiveness.h"
 #include "weather.h"
 
 #define NUM_EFFECTIVENESS 4
 
-extern enum type_matchup GetTypeMatchup(struct entity *attacker, struct entity *defender, s16 target_type_idx, enum type_id attack_type);
-extern bool8 LevitateIsActive(struct entity* entity);
 extern bool8 ScrappyShouldActivate(struct entity *attacker, struct entity *defender, enum type_id attack_type);
 
-// https://decomp.me/scratch/j2xpy
-// https://decomp.me/scratch/fk1Fo
 s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_id move_type)
 {
     s32 weight = 1;
