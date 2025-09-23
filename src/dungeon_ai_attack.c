@@ -1,6 +1,5 @@
 #include "dungeon_ai_attack.h"
 #include "dg_random.h"
-#include "dungeon_ai_attack_1.h"
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_capabilities.h"
 #include "dungeon_capabilities_4.h"
@@ -33,6 +32,8 @@ u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS] = {0};
 s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS] = {0};
 struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS] = {0};
 #endif
+
+extern enum direction_id ov29_0230F8D0(struct entity *pokemon, s32);
 
 void ResetAiCanAttackInDirection()
 {
@@ -931,4 +932,122 @@ s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity
         weight = WeightWeakTypePicker(user, target, move_type) + 1;
 
     return weight;
+}
+
+bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified)
+{
+    s32 num_potential_targets = 0;
+    s32 i;
+    struct monster *pokemon_info = GetEntInfo(pokemon);
+    s32 direction = pokemon_info->action.direction;
+    s32 face_turn_limit;
+    if (IsBlinded(pokemon, TRUE))
+        face_turn_limit = 1;
+    else
+    {
+        enum direction_id ov29_0230F8D0_result = ov29_0230F8D0(pokemon, 15);
+        face_turn_limit = 8;
+        if (ov29_0230F8D0_result != 0xFF)
+            direction = ov29_0230F8D0_result;
+    }
+
+    s32 potential_attack_target_directions[NUM_DIRECTIONS];
+    s32 potential_attack_target_weights[NUM_DIRECTIONS];
+    bool8 has_targeting_iq = IqSkillIsEnabled(pokemon, IQ_EXP_GO_GETTER) || IqSkillIsEnabled(pokemon, IQ_EFFICIENCY_EXPERT);
+    bool8 has_status_checker = IqSkillIsEnabled(pokemon, IQ_STATUS_CHECKER);
+    for (i = 0; i < face_turn_limit; i++, direction++)
+    {
+        struct entity *target;
+        direction &= DIRECTION_MASK;
+        target = GetTile(pokemon->pos.x + DIRECTIONS_XY[direction].x, pokemon->pos.y + DIRECTIONS_XY[direction].y)->monster;
+        if (target != NULL &&
+            GetEntityType(target) == ENTITY_MONSTER &&
+            CanAttackInDirection(pokemon, direction) &&
+            GetTreatmentBetweenMonsters(pokemon, target, FALSE, skip_petrified) == TREATMENT_TREAT_AS_ENEMY &&
+            (!has_status_checker || GetEntInfo(target)->frozen_class_status.freeze != STATUS_FROZEN_FROZEN))
+        {
+            potential_attack_target_directions[num_potential_targets] = direction;
+            potential_attack_target_weights[num_potential_targets] = WeightMoveWithIqSkills(pokemon, TARGET_ENEMIES, target, TYPE_NONE);
+            if (!has_targeting_iq)
+            {
+                *target_dir = direction;
+                return TRUE;
+            }
+            num_potential_targets++;
+        }
+    }
+
+    if (num_potential_targets == 0)
+        return FALSE;
+
+    s32 total_weight = 0;
+    s32 max_weight = 0;
+    s32 weight_counter;
+    for (i = 0; i < num_potential_targets; i++)
+    {
+        if (max_weight < potential_attack_target_weights[i])
+            max_weight = potential_attack_target_weights[i];
+    }
+
+    for (i = 0; i < num_potential_targets; i++)
+    {
+        if (max_weight != potential_attack_target_weights[i])
+            potential_attack_target_weights[i] = 0;
+    }
+
+    for (i = 0; i < num_potential_targets; i++)
+    {
+        total_weight += potential_attack_target_weights[i];
+    }
+
+    weight_counter = DungeonRandInt(total_weight);
+    for (i = 0; i < num_potential_targets; i++)
+    {
+        weight_counter -= potential_attack_target_weights[i];
+        if (weight_counter < 0)
+            break;
+    }
+
+    *target_dir = potential_attack_target_directions[i];
+    return TRUE;
+}
+
+bool8 IsTargetInRange(struct entity *user, struct entity *target, s32 direction, s32 n_tiles)
+{
+    s32 effective_max_range = Max(abs(user->pos.x - target->pos.x), abs(user->pos.y - target->pos.y));
+
+    if (effective_max_range > n_tiles)
+        effective_max_range = n_tiles;
+
+    if (!IqSkillIsEnabled(user, IQ_COURSE_CHECKER))
+        // BUG: effective_max_range is already capped at max_range, so this condition always evaluates to TRUE.
+        // The AI also has range checks elsewhere, so this doesn't become an issue in most cases.
+        // If the AI has the Long Toss or Pierce statuses and Course Checker is disabled,
+        // this incorrect check causes the AI to throw items at targets further than 10 tiles away.
+        return effective_max_range <= n_tiles;
+
+    s32 i;
+    s32 current_pos_x = user->pos.x;
+    s32 current_pos_y = user->pos.y;
+    s32 adjacent_tile_offset_x = DIRECTIONS_XY[direction].x;
+    s32 adjacent_tile_offset_y = DIRECTIONS_XY[direction].y;
+    for (i = 0; i <= effective_max_range; i++)
+    {
+        current_pos_x += adjacent_tile_offset_x;
+        current_pos_y += adjacent_tile_offset_y;
+        if (current_pos_x < 1 || current_pos_y < 1 ||
+            current_pos_x >= DUNGEON_MAX_SIZE_X - 1 || current_pos_y >= DUNGEON_MAX_SIZE_Y - 1)
+            break;
+
+        const struct tile *map_tile = GetTile(current_pos_x, current_pos_y);
+        if (GetTerrainType(map_tile) == TERRAIN_TYPE_WALL)
+            return FALSE;
+
+        if (map_tile->monster == target)
+            return TRUE;
+
+        if (map_tile->monster != NULL)
+            return FALSE;
+    }
+    return FALSE;
 }

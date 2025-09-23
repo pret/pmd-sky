@@ -22,7 +22,6 @@
 
 #define REGULAR_ATTACK_INDEX 4
 
-extern bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified);
 extern void SetActionRegularAttack(struct action_data *monster_action, u8 direction);
 extern void SetActionStruggle(struct action_data *monster_action, u8 direction);
 extern bool8 CanAiUseMove(struct entity *monster, u32 move_index, bool8 extra_checks);
