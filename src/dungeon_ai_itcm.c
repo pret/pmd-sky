@@ -12,6 +12,7 @@
 #include "dungeon_misc.h"
 #include "dungeon_mode.h"
 #include "dungeon_move.h"
+#include "dungeon_move_util.h"
 #include "dungeon_parameters.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
@@ -23,7 +24,6 @@
 
 #define REGULAR_ATTACK_INDEX 4
 
-extern bool8 CanAiUseMove(struct entity *monster, u32 move_index, bool8 extra_checks);
 extern u8 GetMoveAiWeight(struct move *move);
 
 #ifdef SDK_ARM9
