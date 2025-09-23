@@ -375,7 +375,7 @@
 .public StrncpyName
 .public StrncpySimple
 .public StrncpySimpleNoPadSafe
-.public sub_02001980
+.public CosAbs4096
 .public sub_02001AB0
 .public sub_020022C4
 .public sub_020022D0

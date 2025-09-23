@@ -1,0 +1,7 @@
+#ifndef PMDSKY_MAIN_020018D0_H
+#define PMDSKY_MAIN_020018D0_H
+
+s32 SinAbs4096(s32 x);
+s32 CosAbs4096(s32 x);
+
+#endif //PMDSKY_MAIN_020018D0_H
