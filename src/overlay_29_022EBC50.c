@@ -7,3 +7,10 @@ void SetActionRegularAttack(struct action_data *monster_action, u8 direction)
     if (direction != DIR_NONE_UNSIGNED)
         monster_action->direction = direction & DIRECTION_MASK;
 }
+
+void SetActionStruggle(struct action_data *monster_action, u8 direction)
+{
+    SetMonsterActionFields(monster_action, ACTION_STRUGGLE);
+    if (direction != DIR_NONE_UNSIGNED)
+        monster_action->direction = direction & DIRECTION_MASK;
+}

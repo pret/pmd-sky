@@ -23,7 +23,6 @@
 
 #define REGULAR_ATTACK_INDEX 4
 
-extern void SetActionStruggle(struct action_data *monster_action, u8 direction);
 extern bool8 CanAiUseMove(struct entity *monster, u32 move_index, bool8 extra_checks);
 extern u8 GetMoveAiWeight(struct move *move);
 

@@ -5,5 +5,7 @@
 
 // Sets a monster's action to action::ACTION_REGULAR_ATTACK, with a specified direction.
 void SetActionRegularAttack(struct action_data *monster_action, u8 direction);
+// Sets a monster's action to action::ACTION_STRUGGLE, with a specified direction.
+void SetActionStruggle(struct action_data *monster_action, u8 direction);
 
 #endif //PMDSKY_OVERLAY_29_022EBC50_H
