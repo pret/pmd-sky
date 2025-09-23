@@ -18,11 +18,11 @@
 #include "dungeon_util_static.h"
 #include "fixed_room_data.h"
 #include "moves_1.h"
+#include "overlay_29_022EBC50.h"
 #include "overlay_29_02338350.h"
 
 #define REGULAR_ATTACK_INDEX 4
 
-extern void SetActionRegularAttack(struct action_data *monster_action, u8 direction);
 extern void SetActionStruggle(struct action_data *monster_action, u8 direction);
 extern bool8 CanAiUseMove(struct entity *monster, u32 move_index, bool8 extra_checks);
 extern u8 GetMoveAiWeight(struct move *move);
