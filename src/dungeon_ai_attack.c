@@ -21,6 +21,7 @@
 #include "moves_2.h"
 #include "moves_3.h"
 #include "moves_4.h"
+#include "overlay_29_0230F8AC.h"
 #include "overlay_29_0231ACAC.h"
 #include "position_util.h"
 
@@ -32,8 +33,6 @@ u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS] = {0};
 s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS] = {0};
 struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS] = {0};
 #endif
-
-extern enum direction_id ov29_0230F8D0(struct entity *pokemon, s32);
 
 void ResetAiCanAttackInDirection()
 {
@@ -945,10 +944,10 @@ bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_pe
         face_turn_limit = 1;
     else
     {
-        enum direction_id ov29_0230F8D0_result = ov29_0230F8D0(pokemon, 15);
+        u8 gaggle_specs_direction = FindDirectionOfAdjacentMonsterWithItem(pokemon, ITEM_GAGGLE_SPECS);
         face_turn_limit = 8;
-        if (ov29_0230F8D0_result != 0xFF)
-            direction = ov29_0230F8D0_result;
+        if (gaggle_specs_direction != DIR_NONE_UNSIGNED)
+            direction = gaggle_specs_direction;
     }
 
     s32 potential_attack_target_directions[NUM_DIRECTIONS];
