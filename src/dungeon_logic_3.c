@@ -1,5 +1,18 @@
 #include "dungeon_logic_3.h"
+#include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
+#include "overlay_29_02338390.h"
+
+bool8 LevitateIsActive(struct entity* entity)
+{
+    if (GravityIsActive())
+        return FALSE;
+
+    if (AbilityIsActive(entity, ABILITY_LEVITATE))
+        return TRUE;
+
+    return FALSE;
+}
 
 bool8 MonsterIsType(struct entity *entity, enum type_id type_id)
 {

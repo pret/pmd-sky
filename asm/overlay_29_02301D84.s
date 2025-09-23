@@ -87,21 +87,3 @@ _02301E04:
 	.align 2, 0
 _02301E14: .word DUNGEON_PTR
 	arm_func_end OtherMonsterAbilityIsActive
-
-	arm_func_start LevitateIsActive
-LevitateIsActive: ; 0x02301E18
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl GravityIsActive
-	cmp r0, #0
-	movne r0, #0
-	ldmneia sp!, {r4, pc}
-	mov r0, r4
-	mov r1, #0x37
-	bl AbilityIsActive
-	cmp r0, #0
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r4, pc}
-	arm_func_end LevitateIsActive

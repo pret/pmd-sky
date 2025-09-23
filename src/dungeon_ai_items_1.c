@@ -2,7 +2,6 @@
 #include "dg_random.h"
 #include "dungeon.h"
 #include "dungeon_ai_attack.h"
-#include "dungeon_ai_attack_1.h"
 #include "dungeon_ai_item_weight.h"
 #include "dungeon_ai_items.h"
 #include "dungeon_ai_targeting_1.h"

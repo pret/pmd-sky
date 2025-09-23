@@ -12,20 +12,18 @@
 #include "dungeon_misc.h"
 #include "dungeon_mode.h"
 #include "dungeon_move.h"
+#include "dungeon_move_util.h"
 #include "dungeon_parameters.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
 #include "fixed_room_data.h"
 #include "moves_1.h"
+#include "overlay_29_022EBC50.h"
+#include "overlay_29_02338350.h"
 
 #define REGULAR_ATTACK_INDEX 4
 
-extern bool8 ov29_02338350(struct entity *monster);
-extern bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified);
-extern void SetActionRegularAttack(struct action_data *monster_action, u8 direction);
-extern void SetActionStruggle(struct action_data *monster_action, u8 direction);
-extern bool8 CanAiUseMove(struct entity *monster, u32 move_index, bool8 extra_checks);
 extern u8 GetMoveAiWeight(struct move *move);
 
 #ifdef SDK_ARM9
@@ -46,7 +44,7 @@ void ChooseAiMove(struct entity *monster)
         (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_CONFUSED && DungeonRandOutcome__022EAB20(AI_CONFUSED_NO_ATTACK_CHANCE)))
         return;
 
-    int i;
+    s32 i;
     if (pokemon_info->bide_class_status.bide != STATUS_TWO_TURN_NONE)
     {
         for (i = 0; i < MAX_MON_MOVES; i++)
@@ -229,14 +227,14 @@ void ChooseAiMove(struct entity *monster)
 
     bool8 can_target_regular_attack;
     s32 weight_counter = 0;
-    bool8 has_stall = FALSE;
-    if (AbilityIsActiveVeneer(monster, ABILITY_STALL) && !ov29_02338350(monster))
+    bool8 has_stall_with_no_adjacent_enemies = FALSE;
+    if (AbilityIsActiveVeneer(monster, ABILITY_STALL) && !IsAdjacentToEnemyIgnoreTreatment(monster))
     {
-        has_stall = TRUE;
+        has_stall_with_no_adjacent_enemies = TRUE;
         can_target_regular_attack = TargetRegularAttack(monster, &regular_attack_target_dir, TRUE);
     }
 
-    if (!has_stall)
+    if (!has_stall_with_no_adjacent_enemies)
     {
         if (!IqSkillIsEnabled(monster, IQ_EXCLUSIVE_MOVE_USER))
             can_target_regular_attack = TargetRegularAttack(monster, &regular_attack_target_dir, TRUE);
@@ -254,7 +252,7 @@ void ChooseAiMove(struct entity *monster)
             weight_counter += ai_possible_move[i].weight;
             if (weight_counter >= random_weight)
             {
-                if (has_stall || i == REGULAR_ATTACK_INDEX)
+                if (has_stall_with_no_adjacent_enemies || i == REGULAR_ATTACK_INDEX)
                 {
                     if (can_target_regular_attack)
                     {
@@ -683,7 +681,7 @@ _01FFBB80:
 	cmp r0, #0
 	beq _01FFBBD8
 	mov r0, r10
-	bl ov29_02338350
+	bl IsAdjacentToEnemyIgnoreTreatment
 	cmp r0, #0
 	bne _01FFBBD8
 	mov r6, #1

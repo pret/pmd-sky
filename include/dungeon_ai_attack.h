@@ -12,6 +12,15 @@ struct ai_possible_move
     s32 weight;
 };
 
+// Stores whether the AI can use an attack in each direction.
+extern bool8 AI_CAN_ATTACK_IN_DIRECTION[NUM_DIRECTIONS];
+// Stores the directions that the AI can use an attack in. Parallel to AI_POTENTIAL_ATTACK_TARGET_WEIGHTS and AI_POTENTIAL_ATTACK_TARGETS.
+extern u8 AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS[NUM_DIRECTIONS];
+// Stores the targeting weights for each direction the AI can use an attack in. Parallel to AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS and AI_POTENTIAL_ATTACK_TARGETS.
+extern s32 AI_POTENTIAL_ATTACK_TARGET_WEIGHTS[NUM_DIRECTIONS];
+// Stores the target entity for each direction the AI can use an attack in. Parallel to AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS and AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS.
+extern struct entity *AI_POTENTIAL_ATTACK_TARGETS[NUM_DIRECTIONS];
+
 // Sets all values in AI_CAN_ATTACK_IN_DIRECTION to false.
 void ResetAiCanAttackInDirection();
 // The AI uses this function to check if a move has any potential targets, to calculate the list of potential targets and to calculate the move's special weight. The weight is calculated using WeightMoveWithIqSkills.
@@ -44,5 +53,19 @@ s32 TryAddTargetToAiTargetList(s32 current_num_targets, s32 move_ai_range, struc
 bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *target, struct move *move, bool8 check_all_conditions);
 // Calculates a move weight used for deciding which target the move should be used on. If the user is an ally, the target is an enemy Pokémon, and the user has Exp. Go-Getter, Efficiency Expert, or Weak-Type Picker enabled, this function calculates a move weight based on that IQ skill's functionality. Otherwise, this function returns a weight of 1.
 s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity *target, enum type_id move_type);
+// Decides which direction the AI will use its regular attack in.
+// pokemon: User entity pointer
+// target_dir: [output] direction that the regular attack should be targeted at.
+// skip_petrified: If true, the AI will ignore enemies that are petrified. If false, the AI will include petrified enemies when targeting.
+// return: True if there is a target for the regular attack, false if there is no target.
+bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified);
+// Returns true if the target is within range of the user's move, false otherwise.
+// If the user does not have Course Checker, it simply checks if the distance between user and target is less or equal than the move range.
+// Otherwise, it will iterate through all tiles in the direction specified, checking for walls or other monsters in the way, and return false if they are found.
+// user: user pointer
+// target: target pointer
+// direction: direction ID
+// n_tiles: move range (in number of tiles)
+bool8 IsTargetInRange(struct entity *user, struct entity *target, s32 direction, s32 n_tiles);
 
 #endif //PMDSKY_DUNGEON_AI_ATTACK_H
