@@ -1,68 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02324B24.inc"
+	.include "overlay_29_02324BE8.inc"
 
 	.text
-
-	arm_func_start CanMonsterUseMove
-CanMonsterUseMove: ; 0x02324B24
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r1
-	ldrh r3, [r5, #4]
-	ldr r1, _02324BE4 ; =0x00000163
-	ldr r4, [r0, #0xb4]
-	cmp r3, r1
-	moveq r0, #1
-	ldmeqia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r5]
-	tst r0, #0x20
-	movne r0, #0
-	ldmneia sp!, {r3, r4, r5, pc}
-	ldrh r0, [r5, #2]
-	tst r0, #1
-	movne r0, #0
-	ldmneia sp!, {r3, r4, r5, pc}
-	cmp r2, #0
-	moveq r0, #1
-	ldmeqia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r5, #6]
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r4, #0xd0]
-	cmp r0, #5
-	bne _02324BA0
-	mov r0, r5
-	bl IsUsableWhileTaunted
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-_02324BA0:
-	ldrb r0, [r4, #0xd0]
-	cmp r0, #6
-	bne _02324BDC
-	ldrh r0, [r5, #4]
-	cmp r0, #0x160
-	bne _02324BCC
-#ifdef JAPAN
-	ldrb r0, [r4, #0x140]
-#else
-	ldrb r0, [r4, #0x144]
-#endif
-	tst r0, #0x10
-	bne _02324BDC
-	mov r0, #0
-	ldmia sp!, {r3, r4, r5, pc}
-_02324BCC:
-	ldrb r0, [r5]
-	tst r0, #0x10
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-_02324BDC:
-	mov r0, #1
-	ldmia sp!, {r3, r4, r5, pc}
-	.align 2, 0
-_02324BE4: .word 0x00000163
-	arm_func_end CanMonsterUseMove
 
 	arm_func_start ov29_02324BE8
 ov29_02324BE8: ; 0x02324BE8
