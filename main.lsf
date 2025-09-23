@@ -491,6 +491,8 @@ Overlay OVY_29
 	Object src/dungeon_damage.o
 	Object asm/overlay_29_rodata_02352894.o
 	Object asm/overlay_29_0230BBAC.o
+	Object src/dungeon_recruitment.o
+	Object asm/overlay_29_0230DBD0.o
 	Object src/overlay_29_0230E578.o
 	Object asm/overlay_29_0230E5A8.o
 	Object src/dungeon_ai_items.o
