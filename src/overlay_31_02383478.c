@@ -7,7 +7,6 @@ extern struct loc_struct* OVERLAY31_UNKNOWN_POINTER__NA_238A26C;
 extern struct bag_items* BAG_ITEMS_PTR_MIRROR;
 extern u32 OVERLAY31_UNKNOWN_STRUCT__NA_2389EF0;
 extern u8 ov31_02389F5C[];
-extern struct dungeon* DUNGEON_PTR[];
 
 extern void sub_0200D310(char*, struct item*, u32*, u32, u32);
 extern u8* strcpy(u8* dest, const u8* src);

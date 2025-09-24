@@ -54,11 +54,11 @@ bool8 IsAiTargetEligible(s32 move_ai_range, struct entity *user, struct entity *
 // Calculates a move weight used for deciding which target the move should be used on. If the user is an ally, the target is an enemy Pokémon, and the user has Exp. Go-Getter, Efficiency Expert, or Weak-Type Picker enabled, this function calculates a move weight based on that IQ skill's functionality. Otherwise, this function returns a weight of 1.
 s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity *target, enum type_id move_type);
 // Decides which direction the AI will use its regular attack in.
-// pokemon: User entity pointer
+// user: User entity pointer
 // target_dir: [output] direction that the regular attack should be targeted at.
 // skip_petrified: If true, the AI will ignore enemies that are petrified. If false, the AI will include petrified enemies when targeting.
 // return: True if there is a target for the regular attack, false if there is no target.
-bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified);
+bool8 TargetRegularAttack(struct entity *user, u32 *target_dir, bool8 skip_petrified);
 // Returns true if the target is within range of the user's move, false otherwise.
 // If the user does not have Course Checker, it simply checks if the distance between user and target is less or equal than the move range.
 // Otherwise, it will iterate through all tiles in the direction specified, checking for walls or other monsters in the way, and return false if they are found.

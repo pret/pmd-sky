@@ -1,13 +1,4 @@
 #pragma once
-.public CardPullOut
-.public Debug_Print0
-.public GX_DispOff
-.public InitMemAllocTable
-.public MemAlloc
-.public OS_GetLockID
-.public Rand16Bit
-.public StartThread
-.public WaitForInterrupt
 .public _02092464
 .public _020AEF30
 .public _020AEF58
@@ -22,6 +13,14 @@
 .public _0229B110
 .public _0229B114
 .public _022B966C
+.public CardPullOut
+.public Debug_Print0
+.public GX_DispOff
+.public InitMemAllocTable
+.public MemAlloc
+.public OS_GetLockID
+.public Rand16Bit
+.public StartThread
 .public sub_02003AD0
 .public sub_020059A8
 .public sub_02079844
@@ -43,3 +42,4 @@
 .public sub_0208346C
 .public sub_0208347C
 .public sub_020845D8
+.public WaitForInterrupt
