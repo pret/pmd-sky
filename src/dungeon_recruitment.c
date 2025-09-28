@@ -131,7 +131,7 @@ bool8 RecruitCheck(struct entity* leader, struct entity* target)
     if (abs(leader->pos.x - target->pos.x) > 1 || abs(leader->pos.y - target->pos.y) > 1)
         return FALSE;
 
-    // joined_at identifdies the dungeon a monster joined at, but is also used as a unique identifier for special monsters
+    // joined_at identifies the dungeon a monster joined at, but is also used as a unique identifier for special monsters
     if (target_monster_info->joined_at == DUNGEON_CLIENT || target_monster_info->monster_behavior == BEHAVIOR_RESCUE_TARGET)
         return FALSE;
 
