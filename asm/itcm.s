@@ -3643,7 +3643,7 @@ _01FFAF7C:
 	mov r7, r0
 	ldrb r1, [sb, #0x7e]
 	mov r0, r4
-	bl ov29_02301594
+	bl ShouldAvoidFirstHit
 	cmp r0, #0
 	beq _01FFB000
 	ldrb r0, [sb, #0x7c]
@@ -3651,7 +3651,7 @@ _01FFAF7C:
 	bne _01FFB010
 	add r0, r4, #4
 	add r1, sb, #0x8c
-	bl ov29_022E935C
+	bl IsPositionWithinTwoTiles
 	cmp r0, #0
 	beq _01FFB010
 	add r0, r4, #4
@@ -3782,7 +3782,7 @@ _01FFB16C:
 	mov fp, r8
 	cmpeq r0, #0
 	movne sl, #5
-	ldr r6, _01FFB2C4 ; =ov29_0235177C
+	ldr r6, _01FFB2C4 ; =FACING_DIRECTION_INCREMENTS
 	add r5, sp, #0x58
 	b _01FFB1FC
 _01FFB1B8:
@@ -3859,7 +3859,7 @@ _01FFB2B4: .word DUNGEON_PTR
 _01FFB2B8: .word DIRECTIONS_XY
 _01FFB2BC: .word DIRECTIONS_XY + 2
 _01FFB2C0: .word 0xFFF0BDC1
-_01FFB2C4: .word ov29_0235177C
+_01FFB2C4: .word FACING_DIRECTION_INCREMENTS
 	arm_func_end AiMovement
 
 	arm_func_start CalculateAiTargetPos
@@ -3910,7 +3910,7 @@ _01FFB32C:
 	mov r7, #1
 _01FFB35C:
 	mov r5, #0
-	ldr r4, _01FFB620 ; =ov29_0235177C
+	ldr r4, _01FFB620 ; =FACING_DIRECTION_INCREMENTS
 	add fp, sp, #1
 	b _01FFB3E4
 _01FFB36C:
@@ -4115,7 +4115,7 @@ _01FFB5D8:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _01FFB61C: .word DUNGEON_PTR
-_01FFB620: .word ov29_0235177C
+_01FFB620: .word FACING_DIRECTION_INCREMENTS
 _01FFB624: .word DIRECTIONS_XY
 _01FFB628: .word DIRECTIONS_XY + 2
 	arm_func_end CalculateAiTargetPos
