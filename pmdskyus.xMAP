@@ -629,13 +629,14 @@
                                                                                                     99](GhostImmunityIsActive,func) found in global overlay_29_0230ABF0.o
                                                                                                     99](ScrappyShouldActivate,func) found in global overlay_29_0230AB58.o
                                                                                                    98](EntityIsValid__02308FBC,func) found in global overlay_29_02308FBC.o
-                                                                                                   98](TryRecruit,func) found in global overlay_29_0230DBD0.o
+                                                                                                   98](TryRecruit,func) found in global overlay_29_0230E064.o
                                                                                                     99](ov29_0230E5FC,func) found in global overlay_29_0230E5A8.o
                                                                                                      100](EntityIsValid__0230E8F0,func) found in global dungeon_ai_items.o
-                                                                                                    99](ItemIsActive__0230E578,func) found in global overlay_29_0230E578.o
-                                                                                                    99](GetRecruitRate1,func) found in global main_0205283C.o
-                                                                                                    99](GetRecruitRate2,func) found in global main_0205283C.o
+                                                                                                   98](RecruitCheck,func) found in global dungeon_recruitment.o
                                                                                                     99](SpecificRecruitCheck,func) found in global dungeon_recruitment.o
+                                                                                                    99](GetRecruitRate2,func) found in global main_0205283C.o
+                                                                                                    99](GetRecruitRate1,func) found in global main_0205283C.o
+                                                                                                    99](ItemIsActive__0230E578,func) found in global overlay_29_0230E578.o
                                                                                                    98](TrySpawnEnemyItemDrop,func) found in global overlay_29_0230F9A4.o
                                                                                                    98](ItemIsActive__0230A9DC,func) found in global overlay_29_0230A9DC.o
                                                                                                    98](UpdateAiTargetPos,func) found in global dungeon_misc.o
@@ -26617,10 +26618,10 @@
   022C43F8 00000000 .rodata ov10_022C43F8	(overlay_10_022C4394.o)
   022C4404 00000000 .rodata ov10_022C4404	(overlay_10_022C4394.o)
   022C440C 00000000 .rodata FIRST_DUNGEON_WITH_MONSTER_HOUSE_TRAPS	(overlay_10_022C4394.o)
-  022C4410 00000000 .rodata ov10_022C4410	(overlay_10_022C4394.o)
+  022C4410 00000000 .rodata FIERY_DRUM_RECRUIT_BOOST	(overlay_10_022C4394.o)
   022C4414 00000000 .rodata BAD_POISON_DAMAGE_COOLDOWN	(overlay_10_022C4394.o)
   022C4418 00000000 .rodata ov10_022C4418	(overlay_10_022C4394.o)
-  022C441C 00000000 .rodata ov10_022C441C	(overlay_10_022C4394.o)
+  022C441C 00000000 .rodata ICY_FLUTE_RECRUIT_BOOST	(overlay_10_022C4394.o)
   022C4420 00000000 .rodata PROTEIN_STAT_BOOST	(overlay_10_022C4394.o)
   022C4424 00000000 .rodata WATERFALL_CRINGE_CHANCE	(overlay_10_022C4394.o)
   022C4428 00000000 .rodata AURORA_BEAM_LOWER_ATTACK_CHANCE	(overlay_10_022C4394.o)
@@ -26628,7 +26629,7 @@
   022C4430 00000000 .rodata SPAWN_CAP_NO_MONSTER_HOUSE	(overlay_10_022C4394.o)
   022C4434 00000000 .rodata ov10_022C4434	(overlay_10_022C4394.o)
   022C4438 00000000 .rodata OREN_BERRY_DAMAGE	(overlay_10_022C4394.o)
-  022C443C 00000000 .rodata ov10_022C443C	(overlay_10_022C4394.o)
+  022C443C 00000000 .rodata GOLDEN_MASK_RECRUIT_BOOST	(overlay_10_022C4394.o)
   022C4440 00000000 .rodata IRON_TAIL_LOWER_DEFENSE_CHANCE	(overlay_10_022C4394.o)
   022C4444 00000000 .rodata TWINEEDLE_POISON_CHANCE	(overlay_10_022C4394.o)
   022C4448 00000000 .rodata EXTRASENSORY_CRINGE_CHANCE	(overlay_10_022C4394.o)
@@ -26644,7 +26645,7 @@
   022C4470 00000000 .rodata ov10_022C4470	(overlay_10_022C4394.o)
   022C4474 00000000 .rodata UNOWN_STONE_DROP_CHANCE	(overlay_10_022C4394.o)
   022C4478 00000000 .rodata SITRUS_BERRY_HP_RESTORATION	(overlay_10_022C4394.o)
-  022C447C 00000000 .rodata ov10_022C447C	(overlay_10_022C4394.o)
+  022C447C 00000000 .rodata AMBER_TEAR_RECRUIT_BOOST	(overlay_10_022C4394.o)
   022C4480 00000000 .rodata ov10_022C4480	(overlay_10_022C4394.o)
   022C4484 00000000 .rodata MUDDY_WATER_LOWER_ACCURACY_CHANCE	(overlay_10_022C4394.o)
   022C4488 00000000 .rodata SILVER_WIND_BOOST_CHANCE	(overlay_10_022C4394.o)
@@ -26676,7 +26677,7 @@
   022C44F0 00000000 .rodata CHARGE_BEAM_BOOST_SPECIAL_ATTACK_CHANCE	(overlay_10_022C4394.o)
   022C44F4 00000000 .rodata ORAN_BERRY_FULL_HP_BOOST	(overlay_10_022C4394.o)
   022C44F8 00000000 .rodata LIFE_SEED_HP_BOOST	(overlay_10_022C4394.o)
-  022C44FC 00000000 .rodata ov10_022C44FC	(overlay_10_022C4394.o)
+  022C44FC 00000000 .rodata FRIEND_BOW_FAST_FRIEND_BOOST	(overlay_10_022C4394.o)
   022C4500 00000000 .rodata OCTAZOOKA_LOWER_ACCURACY_CHANCE	(overlay_10_022C4394.o)
   022C4504 00000000 .rodata ov10_022C4504	(overlay_10_022C4394.o)
   022C4508 00000000 .rodata ov10_022C4508	(overlay_10_022C4394.o)
@@ -26808,11 +26809,11 @@
   022C46F0 00000000 .rodata SCOPE_LENS_CRIT_RATE_BOOST	(overlay_10_rodata_022C464C.o)
   022C46F4 00000000 .rodata HEALING_WISH_HP_RESTORATION	(overlay_10_rodata_022C464C.o)
   022C46F8 00000000 .rodata ov10_022C46F8	(overlay_10_rodata_022C464C.o)
-  022C46FC 00000000 .rodata ov10_022C46FC	(overlay_10_rodata_022C464C.o)
-  022C4700 00000000 .rodata ov10_022C4700	(overlay_10_rodata_022C464C.o)
-  022C4704 00000000 .rodata ov10_022C4704	(overlay_10_rodata_022C464C.o)
-  022C4708 00000000 .rodata ov10_022C4708	(overlay_10_rodata_022C464C.o)
-  022C470C 00000000 .rodata ov10_022C470C	(overlay_10_rodata_022C464C.o)
+  022C46FC 00000000 .rodata SKY_MELODICA_RECRUIT_BOOST	(overlay_10_rodata_022C464C.o)
+  022C4700 00000000 .rodata GRASS_CORNET_RECRUIT_BOOST	(overlay_10_rodata_022C464C.o)
+  022C4704 00000000 .rodata ROCK_HORN_RECRUIT_BOOST	(overlay_10_rodata_022C464C.o)
+  022C4708 00000000 .rodata AQUA_MONICA_RECRUIT_BOOST	(overlay_10_rodata_022C464C.o)
+  022C470C 00000000 .rodata TERRA_CYMBAL_RECRUIT_BOOST	(overlay_10_rodata_022C464C.o)
   022C4710 00000000 .rodata ME_FIRST_MULTIPLIER	(overlay_10_rodata_022C464C.o)
   022C4714 00000000 .rodata ov10_022C4714	(overlay_10_rodata_022C464C.o)
   022C4718 00000000 .rodata FACADE_DAMAGE_MULTIPLIER	(overlay_10_rodata_022C464C.o)
@@ -36536,13 +36537,13 @@
   0230DB14 00000000 .text   $a	(dungeon_recruitment.o)
   0230DB14 000000BC .text   SpecificRecruitCheck	(dungeon_recruitment.o)
   0230DBC8 00000000 .text   $d	(dungeon_recruitment.o)
-  0230DBD0 000009A8 .text   .text	(overlay_29_0230DBD0.o)
-  0230DBD0 00000494 .text   RecruitCheck	(overlay_29_0230DBD0.o)
-  0230DBD0 00000000 .text   $a	(overlay_29_0230DBD0.o)
-  0230E024 00000000 .text   $d	(overlay_29_0230DBD0.o)
-  0230E064 00000000 .text   $a	(overlay_29_0230DBD0.o)
-  0230E064 00000514 .text   TryRecruit	(overlay_29_0230DBD0.o)
-  0230E55C 00000000 .text   $d	(overlay_29_0230DBD0.o)
+  0230DBD0 00000000 .text   $a	(dungeon_recruitment.o)
+  0230DBD0 00000494 .text   RecruitCheck	(dungeon_recruitment.o)
+  0230E024 00000000 .text   $d	(dungeon_recruitment.o)
+  0230E064 00000000 .text   $a	(overlay_29_0230E064.o)
+  0230E064 00000514 .text   .text	(overlay_29_0230E064.o)
+  0230E064 00000514 .text   TryRecruit	(overlay_29_0230E064.o)
+  0230E55C 00000000 .text   $d	(overlay_29_0230E064.o)
   0230E578 00000030 .text   ItemIsActive__0230E578	(overlay_29_0230E578.o)
   0230E578 00000000 .text   $a	(overlay_29_0230E578.o)
   0230E5A8 00000000 .text   $a	(overlay_29_0230E5A8.o)
@@ -40868,5 +40869,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Sep 29 01:46:59 2025
-# Link end time: Mon Sep 29 01:46:59 2025
+# Link start time: Mon Sep 29 01:55:12 2025
+# Link end time: Mon Sep 29 01:55:13 2025
