@@ -2345,6 +2345,21 @@ enum mission_type {
     MISSION_SPECIAL_EPISODE = 14,
 };
 
+// Mission subtype for MISSION_ARREST_OUTLAW
+// 0-3 all occur naturally in-game, the distinction is in intensity of the mission.
+// Each uses a different table of outlaws of varying difficulties.
+enum mission_subtype_outlaw {
+    MISSION_OUTLAW_NORMAL_0 = 0, // in mission_template, client is magnezone
+    MISSION_OUTLAW_NORMAL_1 = 1, // in mission_template, client is magnezone
+    MISSION_OUTLAW_NORMAL_2 = 2, // in mission_template, client is magnemite
+    MISSION_OUTLAW_NORMAL_3 = 3, // in mission_template, client is magnemite
+    MISSION_OUTLAW_ESCORT = 4,
+    MISSION_OUTLAW_FLEEING = 5,
+    // One of 30 specific pairings (IE: Vespiquen/Combee, Golduck/Psyduck, Cloyster/Clampearl)
+    MISSION_OUTLAW_HIDEOUT = 6,
+    MISSION_OUTLAW_MONSTER_HOUSE = 7,
+};
+
 // Fixed room ID. Fixed rooms can be full floor layouts, like most end-of-dungeon boss chambers,
 // multi-room layouts in the case of Treasure Memos, or single rooms within a larger floor layout
 // like with key chambers.
