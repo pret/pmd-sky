@@ -150,7 +150,7 @@ void RunMonsterAi(struct entity *monster, u32 unused)
 
                 if (pokemon_info->action.action_id != ACTION_NOTHING && pokemon_info->action.action_id != ACTION_PASS_TURN)
                 {
-                    pokemon_info->ai_not_next_to_target = FALSE;
+                    pokemon_info->ai_target.ai_not_next_to_target = FALSE;
                     pokemon_info->ai_ally_skip = FALSE;
                     pokemon_info->waiting = FALSE;
                 }

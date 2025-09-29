@@ -232,6 +232,22 @@ struct moves
     u8 struggle_move_flags; // 0x18
 };
 
+struct ai_target
+{
+    enum ai_objective ai_objective; // 0x0
+    bool8 ai_not_next_to_target;        // 0x1: This NPC monster is not next to its current target
+    bool8 ai_targeting_enemy;           // 0x2: This NPC monster is targeting an enemy monster
+    bool8 ai_turning_around;            // 0x3: This NPC monster has decided to turn around
+    // 0x4: entity::spawn_genid of the entity currently being targeted
+    u16 ai_target_spawn_genid;
+    struct entity* ai_target; // 0x8: Current or most recent AI target
+    u8 field_0xc;
+    u8 field_0xd;
+    u8 field_0xe;
+    u8 field_0xf;
+    struct position ai_target_pos; // 0x10: Position of the entity currently being targeted
+};
+
 // Monster info
 struct monster {
     // 0x0: flags: 2-byte bitfield
@@ -278,22 +294,7 @@ struct monster {
     struct position prev_pos2; // 0x6E: Position 2 turns ago
     struct position prev_pos3; // 0x72: Position 3 turns ago
     struct position prev_pos4; // 0x76: Position 4 turns ago
-    u8 field_0x7a;
-    u8 field_0x7b;
-    enum ai_objective ai_objective : 8; // 0x7C
-    bool8 ai_not_next_to_target;         // 0x7D: This NPC monster is not next to its current target
-    bool8 ai_targeting_enemy;            // 0x7E: This NPC monster is targeting an enemy monster
-    bool8 ai_turning_around;             // 0x7F: This NPC monster has decided to turn around
-    // 0x80: entity::spawn_genid of the entity currently being targeted
-    u16 ai_target_spawn_genid;
-    u8 field_0x82;
-    u8 field_0x83;
-    struct entity* ai_target; // 0x84: Current or most recent AI target
-    u8 field_0x88;
-    u8 field_0x89;
-    u8 field_0x8a;
-    u8 field_0x8b;
-    struct position ai_target_pos; // 0x8C: Position of the entity currently being targeted
+    struct ai_target ai_target; // 0x7A
     // 0x90: Work array while updating skills in the menu. Same meaning as iq_skill_flags.
     struct iq_skill_flags iq_skill_menu_flags;
     // 0x9C: First 9 bytes contain bitfield data; the rest is presumably padding.
