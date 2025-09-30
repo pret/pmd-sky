@@ -148,6 +148,7 @@
                                 31](GetItemCategoryVeneer,func) found in global item_util.o
                                30](GetMaxPp,func) found in global moves.o
                                30](IsLevelResetDungeon,func) found in global main_02051098.o
+                               30](GetMaxMembersAllowed,func) found in global main_020513C0.o
                                30](GroundToDungeonMoveset,func) found in global main_02013C30.o
                                 31](GetInfoMoveGround,func) found in global main_020137E8.o
                                30](GetBodySize,func) found in global main_020527A8.o
@@ -633,6 +634,7 @@
                                                                                                     99](ov29_0230E5FC,func) found in global overlay_29_0230E5A8.o
                                                                                                      100](EntityIsValid__0230E8F0,func) found in global dungeon_ai_items.o
                                                                                                    98](RecruitCheck,func) found in global dungeon_recruitment.o
+                                                                                                    99](IsRecruitingAllowed,func) found in global dungeon_recruitment_2.o
                                                                                                     99](SpecificRecruitCheck,func) found in global dungeon_recruitment.o
                                                                                                     99](GetRecruitRate2,func) found in global main_0205283C.o
                                                                                                     99](GetRecruitRate1,func) found in global main_0205283C.o
@@ -6546,23 +6548,23 @@
   02051020 00000044 .text   BinToDecFixedPoint	(main_0204DE7C.o)
   02051064 00000034 .text   CeilFixedPoint	(number_util.o)
   02051064 00000000 .text   $a	(number_util.o)
-  02051098 00000418 .text   .text	(main_02051098.o)
   02051098 00000028 .text   sub_02051098	(main_02051098.o)
   02051098 00000000 .text   $a	(main_02051098.o)
+  02051098 00000300 .text   .text	(main_02051098.o)
   020510C0 00000028 .text   sub_020510C0	(main_02051098.o)
   020510E8 0000004C .text   sub_020510E8	(main_02051098.o)
   02051128 00000000 .text   $d	(main_02051098.o)
-  02051134 00000000 .text   $a	(main_02051098.o)
   02051134 00000154 .text   sub_02051134	(main_02051098.o)
+  02051134 00000000 .text   $a	(main_02051098.o)
   0205126C 00000000 .text   $d	(main_02051098.o)
-  02051288 00000028 .text   DungeonGoesUp	(main_02051098.o)
   02051288 00000000 .text   $a	(main_02051098.o)
+  02051288 00000028 .text   DungeonGoesUp	(main_02051098.o)
   020512AC 00000000 .text   $d	(main_02051098.o)
   020512B0 00000018 .text   GetTurnLimit	(main_02051098.o)
   020512B0 00000000 .text   $a	(main_02051098.o)
   020512C4 00000000 .text   $d	(main_02051098.o)
-  020512C8 00000028 .text   DoesNotSaveWhenEntering	(main_02051098.o)
   020512C8 00000000 .text   $a	(main_02051098.o)
+  020512C8 00000028 .text   DoesNotSaveWhenEntering	(main_02051098.o)
   020512EC 00000000 .text   $d	(main_02051098.o)
   020512F0 00000000 .text   $a	(main_02051098.o)
   020512F0 00000028 .text   TreasureBoxDropsEnabled	(main_02051098.o)
@@ -6570,38 +6572,39 @@
   02051318 00000028 .text   IsLevelResetDungeon	(main_02051098.o)
   02051318 00000000 .text   $a	(main_02051098.o)
   0205133C 00000000 .text   $d	(main_02051098.o)
-  02051340 00000000 .text   $a	(main_02051098.o)
   02051340 00000018 .text   GetMaxItemsAllowed	(main_02051098.o)
+  02051340 00000000 .text   $a	(main_02051098.o)
   02051354 00000000 .text   $d	(main_02051098.o)
-  02051358 00000028 .text   IsMoneyAllowed	(main_02051098.o)
   02051358 00000000 .text   $a	(main_02051098.o)
+  02051358 00000028 .text   IsMoneyAllowed	(main_02051098.o)
   0205137C 00000000 .text   $d	(main_02051098.o)
-  02051380 00000018 .text   GetMaxRescueAttempts	(main_02051098.o)
   02051380 00000000 .text   $a	(main_02051098.o)
+  02051380 00000018 .text   GetMaxRescueAttempts	(main_02051098.o)
   02051394 00000000 .text   $d	(main_02051098.o)
-  02051398 00000028 .text   IsRecruitingAllowed	(main_02051098.o)
-  02051398 00000000 .text   $a	(main_02051098.o)
-  020513BC 00000000 .text   $d	(main_02051098.o)
-  020513C0 00000028 .text   GetLeaderChangeFlag	(main_02051098.o)
-  020513C0 00000000 .text   $a	(main_02051098.o)
-  020513E4 00000000 .text   $d	(main_02051098.o)
-  020513E8 00000018 .text   GetRandomMovementChance	(main_02051098.o)
-  020513E8 00000000 .text   $a	(main_02051098.o)
-  020513FC 00000000 .text   $d	(main_02051098.o)
-  02051400 00000000 .text   $a	(main_02051098.o)
-  02051400 00000028 .text   CanEnemyEvolve	(main_02051098.o)
-  02051424 00000000 .text   $d	(main_02051098.o)
-  02051428 00000000 .text   $a	(main_02051098.o)
-  02051428 00000018 .text   GetMaxMembersAllowed	(main_02051098.o)
-  0205143C 00000000 .text   $d	(main_02051098.o)
-  02051440 00000000 .text   $a	(main_02051098.o)
-  02051440 00000028 .text   IsIqEnabled	(main_02051098.o)
-  02051464 00000000 .text   $d	(main_02051098.o)
-  02051468 00000028 .text   IsTrapInvisibleWhenAttacking	(main_02051098.o)
-  02051468 00000000 .text   $a	(main_02051098.o)
-  0205148C 00000000 .text   $d	(main_02051098.o)
-  02051490 00000020 .text   JoinedAtRangeCheck	(main_02051098.o)
-  02051490 00000000 .text   $a	(main_02051098.o)
+  02051398 00000000 .text   $a	(dungeon_recruitment_2.o)
+  02051398 00000028 .text   IsRecruitingAllowed	(dungeon_recruitment_2.o)
+  020513BC 00000000 .text   $d	(dungeon_recruitment_2.o)
+  020513C0 000000F0 .text   .text	(main_020513C0.o)
+  020513C0 00000028 .text   GetLeaderChangeFlag	(main_020513C0.o)
+  020513C0 00000000 .text   $a	(main_020513C0.o)
+  020513E4 00000000 .text   $d	(main_020513C0.o)
+  020513E8 00000000 .text   $a	(main_020513C0.o)
+  020513E8 00000018 .text   GetRandomMovementChance	(main_020513C0.o)
+  020513FC 00000000 .text   $d	(main_020513C0.o)
+  02051400 00000000 .text   $a	(main_020513C0.o)
+  02051400 00000028 .text   CanEnemyEvolve	(main_020513C0.o)
+  02051424 00000000 .text   $d	(main_020513C0.o)
+  02051428 00000000 .text   $a	(main_020513C0.o)
+  02051428 00000018 .text   GetMaxMembersAllowed	(main_020513C0.o)
+  0205143C 00000000 .text   $d	(main_020513C0.o)
+  02051440 00000028 .text   IsIqEnabled	(main_020513C0.o)
+  02051440 00000000 .text   $a	(main_020513C0.o)
+  02051464 00000000 .text   $d	(main_020513C0.o)
+  02051468 00000000 .text   $a	(main_020513C0.o)
+  02051468 00000028 .text   IsTrapInvisibleWhenAttacking	(main_020513C0.o)
+  0205148C 00000000 .text   $d	(main_020513C0.o)
+  02051490 00000000 .text   $a	(main_020513C0.o)
+  02051490 00000020 .text   JoinedAtRangeCheck	(main_020513C0.o)
   020514B0 0000001C .text   IsDojoDungeon	(main_020514CC.o)
   020514B0 00000000 .text   $a	(main_020514CC.o)
   020514CC 0000001C .text   IsFutureDungeon	(main_020514CC.o)
@@ -40869,5 +40872,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Mon Sep 29 01:55:12 2025
-# Link end time: Mon Sep 29 01:55:13 2025
+# Link start time: Tue Sep 30 00:19:32 2025
+# Link end time: Tue Sep 30 00:19:32 2025
