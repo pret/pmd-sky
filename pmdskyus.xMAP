@@ -327,7 +327,7 @@
                                                                         71](CanSeeTarget,func) found in global dungeon_visibility.o
                                                                          72](CanSeeInvisibleMonsters,func) found in global dungeon_pokemon_attributes_1.o
                                                                         71](ov29_022FBDE0,func) found in global overlay_29_022FBB1C.o
-                                                                       70](IsFullFloorFixedRoom,func) found in global overlay_29_023361D4.o
+                                                                       70](IsFullFloorFixedRoom,func) found in global fixed_room_data_1.o
                                                                        70](ov29_022EFAE8,func) found in global overlay_29_022EFA6C.o
                                                                       69](ov29_02307DC0,func) found in global overlay_29_02305C28.o
                                                                        70](ItemIsActive__02307F1C,func) found in global overlay_29_02307EF8.o
@@ -38214,10 +38214,9 @@
   02336164 00000000 .text   $a	(dungeon_map_access.o)
   02336164 00000070 .text   GetTileSafe	(dungeon_map_access.o)
   023361C8 00000000 .text   $d	(dungeon_map_access.o)
-  023361D4 00000000 .text   $a	(overlay_29_023361D4.o)
-  023361D4 00000030 .text   .text	(overlay_29_023361D4.o)
-  023361D4 00000030 .text   IsFullFloorFixedRoom	(overlay_29_023361D4.o)
-  02336200 00000000 .text   $d	(overlay_29_023361D4.o)
+  023361D4 00000000 .text   $a	(fixed_room_data_1.o)
+  023361D4 00000030 .text   IsFullFloorFixedRoom	(fixed_room_data_1.o)
+  02336200 00000000 .text   $d	(fixed_room_data_1.o)
   02336204 00000000 .text   $a	(run_dungeon.o)
   02336204 00000020 .text   IsCurrentTilesetBackground	(run_dungeon.o)
   0233621C 00000000 .text   $d	(run_dungeon.o)
@@ -40872,5 +40871,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Tue Sep 30 00:19:32 2025
-# Link end time: Tue Sep 30 00:19:32 2025
+# Link start time: Wed Oct 01 21:29:56 2025
+# Link end time: Wed Oct 01 21:29:56 2025
