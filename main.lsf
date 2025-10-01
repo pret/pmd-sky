@@ -590,7 +590,7 @@ Overlay OVY_29
 	Object src/overlay_29_023350D8.o
 	Object asm/overlay_29_023350FC.o
 	Object src/dungeon_map_access.o
-	Object asm/overlay_29_023361D4.o
+	Object src/fixed_room_data_1.o
 	Object src/run_dungeon.o
 	Object asm/overlay_29_02336224.o
 	Object src/overlay_29_02337CA8.o
