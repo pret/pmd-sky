@@ -18,17 +18,16 @@
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util_static.h"
 #include "fixed_room_data.h"
+#include "main_0201398C.h"
 #include "moves_1.h"
 #include "overlay_29_022EBC50.h"
 #include "overlay_29_02338350.h"
 
-#define REGULAR_ATTACK_INDEX 4
-
-extern u8 GetMoveAiWeight(struct move *move);
-
 #ifdef SDK_ARM9
 #include <nitro/itcm_begin.h>
 #endif //SDK_ARM9
+
+#define REGULAR_ATTACK_INDEX 4
 
 // https://decomp.me/scratch/zg7V6
 #ifdef NONMATCHING
@@ -44,7 +43,7 @@ void ChooseAiMove(struct entity *monster)
         (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_CONFUSED && DungeonRandOutcome__022EAB20(AI_CONFUSED_NO_ATTACK_CHANCE)))
         return;
 
-    s32 i;
+    int i;
     if (pokemon_info->bide_class_status.bide != STATUS_TWO_TURN_NONE)
     {
         for (i = 0; i < MAX_MON_MOVES; i++)

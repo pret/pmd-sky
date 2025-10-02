@@ -9,9 +9,9 @@
 #include "overlay_29_022FF898.h"
 #include "run_dungeon.h"
 
-bool8 MonsterCannotAttack(struct entity *pokemon, bool8 skip_sleep)
+bool8 MonsterCannotAttack(struct entity *entity, bool8 skip_sleep)
 {
-    struct monster *pokemon_info = GetEntInfo(pokemon);
+    struct monster *pokemon_info = GetEntInfo(entity);
 
     if (!skip_sleep)
     {
@@ -45,7 +45,7 @@ bool8 MonsterCannotAttack(struct entity *pokemon, bool8 skip_sleep)
     if (pokemon_info->burn_class_status.burn == STATUS_BURN_PARALYSIS)
         return TRUE;
 
-    if (ShouldMonsterRunAway(pokemon))
+    if (ShouldMonsterRunAway(entity))
         return TRUE;
 
     return FALSE;

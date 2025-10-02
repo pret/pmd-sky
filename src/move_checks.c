@@ -114,14 +114,14 @@ bool8 StatusCheckerCheck(struct entity *attacker, struct move *move)
             if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_INGRAIN)
                 return FALSE;
 
-            s32 max_hp = Min(999, pokemon_info->max_hp_stat + pokemon_info->max_hp_boost);
+            s32 max_hp = Min(MAX_HP_LIMIT, pokemon_info->max_hp_stat + pokemon_info->max_hp_boost);
             if (max_hp / 2 < pokemon_info->hp)
                 return FALSE;
             break;
         }
         case MOVE_SWALLOW:
         {
-            s32 max_hp = Min(999, pokemon_info->max_hp_stat + pokemon_info->max_hp_boost);
+            s32 max_hp = Min(MAX_HP_LIMIT, pokemon_info->max_hp_stat + pokemon_info->max_hp_boost);
             if (max_hp <= pokemon_info->hp || pokemon_info->stockpile_stage == 0)
                 return FALSE;
             break;

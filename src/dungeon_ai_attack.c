@@ -63,7 +63,7 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
 
     if (GetMoveTargetAndRange(move, FALSE) == TARGET_USER | RANGE_USER | AI_CONDITION_HP_25)
     {
-        s32 max_hp = MIN(pokemon_info->max_hp_stat + pokemon_info->max_hp_boost, 999);
+        s32 max_hp = MIN(pokemon_info->max_hp_stat + pokemon_info->max_hp_boost, MAX_HP_LIMIT);
         if (pokemon_info->hp == max_hp)
             return move_weight;
     }
@@ -933,18 +933,18 @@ s32 WeightMoveWithIqSkills(struct entity *user, s32 move_ai_range, struct entity
     return weight;
 }
 
-bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_petrified)
+bool8 TargetRegularAttack(struct entity *user, u32 *target_dir, bool8 skip_petrified)
 {
     s32 num_potential_targets = 0;
     s32 i;
-    struct monster *pokemon_info = GetEntInfo(pokemon);
+    struct monster *pokemon_info = GetEntInfo(user);
     s32 direction = pokemon_info->action.direction;
     s32 face_turn_limit;
-    if (IsBlinded(pokemon, TRUE))
+    if (IsBlinded(user, TRUE))
         face_turn_limit = 1;
     else
     {
-        u8 gaggle_specs_direction = FindDirectionOfAdjacentMonsterWithItem(pokemon, ITEM_GAGGLE_SPECS);
+        u8 gaggle_specs_direction = FindDirectionOfAdjacentMonsterWithItem(user, ITEM_GAGGLE_SPECS);
         face_turn_limit = 8;
         if (gaggle_specs_direction != DIR_NONE_UNSIGNED)
             direction = gaggle_specs_direction;
@@ -952,21 +952,21 @@ bool8 TargetRegularAttack(struct entity *pokemon, u32 *target_dir, bool8 skip_pe
 
     s32 potential_attack_target_directions[NUM_DIRECTIONS];
     s32 potential_attack_target_weights[NUM_DIRECTIONS];
-    bool8 has_targeting_iq = IqSkillIsEnabled(pokemon, IQ_EXP_GO_GETTER) || IqSkillIsEnabled(pokemon, IQ_EFFICIENCY_EXPERT);
-    bool8 has_status_checker = IqSkillIsEnabled(pokemon, IQ_STATUS_CHECKER);
+    bool8 has_targeting_iq = IqSkillIsEnabled(user, IQ_EXP_GO_GETTER) || IqSkillIsEnabled(user, IQ_EFFICIENCY_EXPERT);
+    bool8 has_status_checker = IqSkillIsEnabled(user, IQ_STATUS_CHECKER);
     for (i = 0; i < face_turn_limit; i++, direction++)
     {
         struct entity *target;
         direction &= DIRECTION_MASK;
-        target = GetTile(pokemon->pos.x + DIRECTIONS_XY[direction].x, pokemon->pos.y + DIRECTIONS_XY[direction].y)->monster;
+        target = GetTile(user->pos.x + DIRECTIONS_XY[direction].x, user->pos.y + DIRECTIONS_XY[direction].y)->monster;
         if (target != NULL &&
             GetEntityType(target) == ENTITY_MONSTER &&
-            CanAttackInDirection(pokemon, direction) &&
-            GetTreatmentBetweenMonsters(pokemon, target, FALSE, skip_petrified) == TREATMENT_TREAT_AS_ENEMY &&
+            CanAttackInDirection(user, direction) &&
+            GetTreatmentBetweenMonsters(user, target, FALSE, skip_petrified) == TREATMENT_TREAT_AS_ENEMY &&
             (!has_status_checker || GetEntInfo(target)->frozen_class_status.freeze != STATUS_FROZEN_FROZEN))
         {
             potential_attack_target_directions[num_potential_targets] = direction;
-            potential_attack_target_weights[num_potential_targets] = WeightMoveWithIqSkills(pokemon, TARGET_ENEMIES, target, TYPE_NONE);
+            potential_attack_target_weights[num_potential_targets] = WeightMoveWithIqSkills(user, TARGET_ENEMIES, target, TYPE_NONE);
             if (!has_targeting_iq)
             {
                 *target_dir = direction;

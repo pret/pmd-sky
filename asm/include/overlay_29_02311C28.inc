@@ -4,9 +4,9 @@
 .public CalcStatusDuration
 .public ChangeShayminForme
 .public CopyStringFromId
+.public DefenderAbilityIsActive__02311B94
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
-.public DefenderAbilityIsActive__02311B94
 .public EntityIsValid__023118B4
 .public ExclusiveItemEffectIsActiveWithLogging
 .public GetMessageLogPreprocessorArgs
@@ -18,14 +18,6 @@
 .public ItemIsActive__02311BF8
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MonsterIsType
-.public SECONDARY_TERRAIN_TYPES
-.public SafeguardIsActive
-.public SetMessageLogPreprocessorArgsString
-.public SetPreprocessorArgsIdVal
-.public SetPreprocessorArgsStringToName
-.public SubstitutePlaceholderStringTags
-.public TryActivateQuickFeet
-.public UpdateStatusIconFlags
 .public ov10_022C4728
 .public ov10_022C479C
 .public ov10_022C47A0
@@ -60,3 +52,11 @@
 .public ov29_023018AC
 .public ov29_02304A48
 .public ov29_02304A84
+.public SafeguardIsActive
+.public SECONDARY_TERRAIN_TYPES
+.public SetMessageLogPreprocessorArgsString
+.public SetPreprocessorArgsIdVal
+.public SetPreprocessorArgsStringToName
+.public SubstitutePlaceholderStringTags
+.public TryActivateQuickFeet
+.public UpdateStatusIconFlags

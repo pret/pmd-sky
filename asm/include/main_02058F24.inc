@@ -155,6 +155,7 @@
 .public CopyMovesetFrom
 .public CopyMovesetTo
 .public CopyNStringFromId
+.public CosAbs4096
 .public CreateCollectionMenu
 .public CreatePortraitBox
 .public Debug_GetDebugFlag
@@ -375,7 +376,6 @@
 .public StrncpyName
 .public StrncpySimple
 .public StrncpySimpleNoPadSafe
-.public CosAbs4096
 .public sub_02001AB0
 .public sub_020022C4
 .public sub_020022D0

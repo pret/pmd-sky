@@ -1,9 +1,4 @@
 #pragma once
-.public CardPullOutWithStatus
-.public DebugPrintSystemClock
-.public Debug_FatalError
-.public Debug_Print0
-.public MemAlloc
 .public _02092908
 .public _02092978
 .public _0209297C
@@ -21,6 +16,11 @@
 .public _022A3698
 .public _022A369C
 .public _022A36C4
+.public CardPullOutWithStatus
+.public Debug_FatalError
+.public Debug_Print0
+.public DebugPrintSystemClock
+.public MemAlloc
 .public strcpy
 .public sub_02002778
 .public sub_020027E8

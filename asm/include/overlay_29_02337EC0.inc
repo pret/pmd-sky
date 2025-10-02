@@ -9,5 +9,5 @@
 .public IqSkillIsEnabled
 .public MemAlloc
 .public MemFree
-.public RandInt
 .public ov29_022FAFD4
+.public RandInt

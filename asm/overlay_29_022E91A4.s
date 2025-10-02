@@ -62,7 +62,7 @@ _022E9230:
 	bne _022E928C
 	mov r0, r5
 	mov r1, r4
-	bl ov29_022E935C
+	bl IsPositionWithinTwoTiles
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -135,8 +135,8 @@ _022E930C:
 _022E9358: .word DUNGEON_PTR
 	arm_func_end ov29_022E9298
 
-	arm_func_start ov29_022E935C
-ov29_022E935C: ; 0x022E935C
+	arm_func_start IsPositionWithinTwoTiles
+IsPositionWithinTwoTiles: ; 0x022E935C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r8, r0
 	mov r7, r1
@@ -218,7 +218,7 @@ _022E9470:
 _022E9480:
 	mov r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end ov29_022E935C
+	arm_func_end IsPositionWithinTwoTiles
 
 	arm_func_start ov29_022E9488
 ov29_022E9488: ; 0x022E9488

@@ -12,8 +12,8 @@ bool8 HasLowHealth(struct entity *entity)
 
     struct monster *pokemon_info = GetEntInfo(entity);
     s32 max_hp = pokemon_info->max_hp_stat + pokemon_info->max_hp_boost;
-    if (max_hp > 999)
-        max_hp = 999;
+    if (max_hp > MAX_HP_LIMIT)
+        max_hp = MAX_HP_LIMIT;
 
     return pokemon_info->hp < max_hp / 4;
 }
