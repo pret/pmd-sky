@@ -2946,4 +2946,19 @@ enum pack_file_id {
     PACK_ARCHIVE_M_LEVEL = 5,
 };
 
+enum dungeon_restriction_flags {
+    DUNGEON_ASCENDS = 1 << 0, // 0 if dungeon goes down, 1 if it goes up
+    ENEMIES_CAN_EVOLVE = 1 << 1,
+    GRANT_XP = 1 << 2, // when defeating enemies
+    ALLOW_RECRUITING = 1 << 3,
+    RESET_TEAM_LEVEL_TO_1 = 1 << 4, // when entering
+    KEEP_MONEY_ON_ENTRY = 1 << 5, // 0 if money is lost when entering
+    ALLOW_LEADER_CHANGE = 1 << 6,
+    NO_SAVE_ON_ENTRY = 1 << 7,
+    DISABLE_IQ_SKILLS = 1 << 8,
+    TRAPS_STAY_HIDDEN_ON_ATTACK  = 1 << 9, // true if traps remain invisible when attacked / item-thrown
+    ENEMIES_DROP_CHESTS = 1 << 10
+    // Remaining flags are unused
+};
+
 #endif //PMDSKY_ENUMS_H

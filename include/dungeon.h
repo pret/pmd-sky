@@ -1779,4 +1779,14 @@ struct dungeon {
     u8 field_0x2cb13;
 };
 
+struct dungeon_restriction {
+    u32 flags;
+    u8 max_rescue_attempts;
+    u8 max_items_allowed;
+    u8 max_party_size;
+    u8 pad;
+    u16 turn_limit_per_floor;
+    u16 random_movement_chance;
+};
+
 #endif // PMDSKY_DUNGEON_H

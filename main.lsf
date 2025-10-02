@@ -83,6 +83,8 @@ Static main
 	Object asm/main_0204DE7C.o
 	Object src/number_util.o
 	Object asm/main_02051098.o
+	Object src/dungeon_recruitment_2.o
+	Object asm/main_020513C0.o
 	Object src/main_020514CC.o
 	Object asm/main_02051504.o
 	Object src/main_02051760.o
@@ -588,7 +590,7 @@ Overlay OVY_29
 	Object src/overlay_29_023350D8.o
 	Object asm/overlay_29_023350FC.o
 	Object src/dungeon_map_access.o
-	Object asm/overlay_29_023361D4.o
+	Object src/fixed_room_data_1.o
 	Object src/run_dungeon.o
 	Object asm/overlay_29_02336224.o
 	Object src/overlay_29_02337CA8.o
