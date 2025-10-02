@@ -23,11 +23,11 @@
 #include "overlay_29_022EBC50.h"
 #include "overlay_29_02338350.h"
 
-#define REGULAR_ATTACK_INDEX 4
-
 #ifdef SDK_ARM9
 #include <nitro/itcm_begin.h>
 #endif //SDK_ARM9
+
+#define REGULAR_ATTACK_INDEX 4
 
 // https://decomp.me/scratch/zg7V6
 #ifdef NONMATCHING

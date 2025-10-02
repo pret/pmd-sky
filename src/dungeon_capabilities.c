@@ -21,8 +21,8 @@ bool8 MonsterHasQuarterHp(struct entity *monster)
 {
     struct monster *entity_data = GetEntInfo(monster);
     s32 max_hp = entity_data->max_hp_stat + entity_data->max_hp_boost;
-    if (max_hp > 999)
-        max_hp = 999;
+    if (max_hp > MAX_HP_LIMIT)
+        max_hp = MAX_HP_LIMIT;
 
     if (entity_data->hp <= max_hp / 4)
         return TRUE;

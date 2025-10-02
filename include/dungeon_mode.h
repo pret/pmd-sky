@@ -16,9 +16,12 @@
 #define DEFAULT_STAT_STAGE 10
 #define MAX_STAT_STAGE 20
 #define MAX_SPEED_STAGE 4
+#define MAX_HP_LIMIT 999
+
 #define NUM_SPEED_COUNTERS 5
 #define MAX_STOCKPILE_STAGE 3
 #define NUM_STATS_PER_CATEGORY 2
+#define NUM_PREV_POS 4
 
 #define STAT_STAGE_ATK 0
 #define STAT_STAGE_SP_ATK 1
@@ -290,10 +293,7 @@ struct monster {
     // in order to update the camera and minimap. Changed to held_item.id after checking.
     enum item_id previous_held_item_id;
     // Previous position data is used by the AI
-    struct position prev_pos;  // 0x6A: Position 1 turn ago
-    struct position prev_pos2; // 0x6E: Position 2 turns ago
-    struct position prev_pos3; // 0x72: Position 3 turns ago
-    struct position prev_pos4; // 0x76: Position 4 turns ago
+    struct position prev_pos[NUM_PREV_POS];  // 0x6A: Position X turns ago
     struct ai_target ai_target; // 0x7A
     // 0x90: Work array while updating skills in the menu. Same meaning as iq_skill_flags.
     struct iq_skill_flags iq_skill_menu_flags;
@@ -321,7 +321,7 @@ struct monster {
     u32 wrap_pair_unique_id;
     // 0xB8: Tracks the damage taken to deal when bide status ends. Max 0x3E7 (999).
     u32 bide_damage_tally;
-    enum monster_behavior monster_behavior : 8; // 0xBC
+    enum monster_behavior monster_behavior; // 0xBC
     struct sleep_class_status sleep_class_status; // 0xBD
     struct burn_class_status burn_class_status; // 0xBF
     struct frozen_class_status frozen_class_status; // 0xC4

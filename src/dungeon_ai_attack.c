@@ -63,7 +63,7 @@ u32 AiConsiderMove(struct ai_possible_move *ai_possible_move, struct entity *mon
 
     if (GetMoveTargetAndRange(move, FALSE) == TARGET_USER | RANGE_USER | AI_CONDITION_HP_25)
     {
-        s32 max_hp = MIN(pokemon_info->max_hp_stat + pokemon_info->max_hp_boost, 999);
+        s32 max_hp = MIN(pokemon_info->max_hp_stat + pokemon_info->max_hp_boost, MAX_HP_LIMIT);
         if (pokemon_info->hp == max_hp)
             return move_weight;
     }
