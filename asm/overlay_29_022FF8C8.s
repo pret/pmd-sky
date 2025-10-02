@@ -26,8 +26,8 @@ _022FF8EC:
 	arm_func_end GetMobilityTypeAfterIqSkills
 #endif
 
-	arm_func_start CanCrossWalls
-CanCrossWalls: ; 0x022FF908
+	arm_func_start CanMoveThroughWalls
+CanMoveThroughWalls: ; 0x022FF908
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xb4]
@@ -48,7 +48,7 @@ CanCrossWalls: ; 0x022FF908
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end CanCrossWalls
+	arm_func_end CanMoveThroughWalls
 
 	arm_func_start ov29_022FF958
 ov29_022FF958: ; 0x022FF958

@@ -42,7 +42,7 @@ _01FFB32C:
 	mov r7, #0
 	add r1, r1, #4
 	and r6, r1, #7
-	bl ov29_02301498
+	bl IsAtJunction
 	cmp r0, #0
 	beq _01FFB35C
 	mov r0, #8

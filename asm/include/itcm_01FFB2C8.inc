@@ -5,4 +5,4 @@
 .public DungeonRandInt
 .public FACING_DIRECTION_INCREMENTS
 .public GetTile
-.public ov29_02301498
+.public IsAtJunction

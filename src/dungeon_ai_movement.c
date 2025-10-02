@@ -38,7 +38,7 @@ struct can_move_in_direction_info
     s32 direction;
 };
 
-extern s32 FACING_DIRECTION_INCREMENTS[];
+const s32 FACING_DIRECTION_INCREMENTS[] = {0, 1, -1, 2, -2, 3, -3, 4};
 
 extern bool8 CalculateAiTargetPos(struct entity *monster);
 extern bool8 CanAiMonsterMoveInDirection(struct entity *monster, s32 direction, bool8 *out_monster_in_target_position);
@@ -52,7 +52,7 @@ extern bool8 ShouldMonsterRunAwayAndShowEffectOutlawCheck(struct entity* monster
 extern bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target);
 extern bool8 ov29_022FBDF0(struct entity*);
 extern s32 ov29_022FBE04(struct monster*);
-extern bool8 CanCrossWalls(struct entity *monster);
+extern bool8 CanMoveThroughWalls(struct entity *monster);
 extern bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 force_avoid);
 extern bool8 CanSeeTeammate(struct entity *monster);
 extern struct entity* GetLeaderIfVisible(struct entity *monster);
@@ -348,7 +348,7 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect)
                         max_possible_targets = DUNGEON_MAX_WILD_POKEMON;
                     }
 
-                    bool8 can_cross_walls = CanCrossWalls(monster);
+                    bool8 can_cross_walls = CanMoveThroughWalls(monster);
                     s32 target_index = -1;
                     s32 target_distance = INFINITY;
                     for (s32 i = 0; i < max_possible_targets; i++)
@@ -1170,7 +1170,7 @@ _01FFAB24:
 	mov r11, #0x10
 _01FFAB30:
 	mov r0, r4
-	bl CanCrossWalls
+	bl CanMoveThroughWalls
 	mvn r6, #0
 	str r0, [sp, #0x20]
 	add r0, r6, #0x3e8
