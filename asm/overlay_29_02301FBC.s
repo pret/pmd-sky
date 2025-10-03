@@ -54,7 +54,7 @@ _02302034:
 	bl DisableIqSkill
 _02302068:
 	mov r0, r4
-	bl ov29_022FBDE0
+	bl IsLoneOutlawVeneer
 	cmp r0, #0
 	bne _0230208C
 	ldr r0, _023021EC ; =MIN_IQ_ITEM_MASTER

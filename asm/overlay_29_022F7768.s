@@ -1115,7 +1115,7 @@ _022F83B4:
 	cmpne sb, r0
 	beq _022F83F4
 	ldrb r0, [r7, #0xbc]
-	bl ov29_022EFAE8
+	bl IsLoneOutlaw
 	cmp r0, #0
 	beq _022F83F4
 	mov r0, #1

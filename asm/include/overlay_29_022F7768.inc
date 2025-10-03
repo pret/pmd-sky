@@ -49,7 +49,7 @@
 .public ov29_022EA370
 .public ov29_022ECDE4
 .public ov29_022EF7C4
-.public ov29_022EFAE8
+.public IsLoneOutlaw
 .public ov29_022F9B8C
 .public ov29_022FE048
 .public ov29_022FFB90

@@ -10,4 +10,4 @@
 .public IqSkillFlagTest
 .public MIN_IQ_EXCLUSIVE_MOVE_USER
 .public MIN_IQ_ITEM_MASTER
-.public ov29_022FBDE0
+.public IsLoneOutlawVeneer

@@ -553,7 +553,7 @@ SpawnMonster: ; 0x022FD084
 	strh r1, [r5, #0xe]
 	bl ov29_023021F0
 	ldrb r0, [r7, #2]
-	bl ov29_022EFAE8
+	bl IsLoneOutlaw
 	cmp r0, #0
 	beq _022FD154
 	mov r0, #9
@@ -616,7 +616,7 @@ _022FD1E8:
 	strb r0, [r5, #8]
 _022FD1F0:
 	ldrb r0, [r7, #2]
-	bl ov29_022EFAE8
+	bl IsLoneOutlaw
 	cmp r0, #0
 	beq _022FD224
 	ldr r0, _022FD30C ; =ov10_022C45A4

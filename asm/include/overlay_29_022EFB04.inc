@@ -1,0 +1,12 @@
+#pragma once
+.public DUNGEON_PTR
+.public EntityIsValid__022F0590
+.public ov29_022DE5F0
+.public ov29_022EA370
+.public ov29_0234B1A4
+.public ov29_0234BA54
+.public ov29_0234D630
+.public ov29_0234D8A0
+.public ov29_023535A4
+.public ov29_0237C9A0
+.public sub_0201D198

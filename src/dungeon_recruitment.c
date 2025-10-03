@@ -9,13 +9,13 @@
 #include "dg_random.h"
 #include "main_0205283C.h" // GetRecruitRate1 and GetRecruitRate2
 #include "overlay_29_0230E578.h" // ItemIsActive__0230E578
+#include "dungeon_logic_7.h"
 
 extern bool8 IsRecruitingAllowed(u8 dungeon_id);
 extern bool8 IsFullFloorFixedRoom(void);
 extern bool8 IsLegendaryChallengeFloor(void);
 extern bool8 IsCurrentMissionTypeExact(u32 mission_type, u32 mission_subtype);
 extern bool8 IsMonsterOnTeam(s16 monsterId, s32 checkType);
-extern bool8 ov29_022FBDE0(struct monster* stats);
 extern void ov29_022E1B28(s32);
 extern void ov29_022E81F8(void);
 extern bool8 HasPlayedOldGame(void);
@@ -122,7 +122,7 @@ bool8 RecruitCheck(struct entity* leader, struct entity* target)
             return FALSE;
     }
 
-    if (ov29_022FBDE0(target_monster_info))
+    if (IsLoneOutlawVeneer(target_monster_info))
         return FALSE;
 
     if (!SpecificRecruitCheck(target_monster_info->id))
