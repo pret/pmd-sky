@@ -1,10 +1,11 @@
 #pragma once
+.public abs
 .public ApplyDamageAndEffects
 .public CalcDamage
 .public CanAttackInDirection
-.public DUNGEON_PTR
 .public DefenderAbilityIsActive__02332A0C
 .public DisplayAnimatedNumbers
+.public DUNGEON_PTR
 .public EntityIsValid__0232E840
 .public GetDamageSourceWrapper
 .public GetDirectionTowardsPosition
@@ -16,9 +17,8 @@
 .public LogMessageByIdQuietCheckUserTarget
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MoveHitCheck
-.public SetPreprocessorArgsStringToName
-.public ShouldDisplayEntityWrapper
-.public abs
 .public ov29_022E576C
 .public ov29_02304A48
 .public ov29_0230D088
+.public SetPreprocessorArgsStringToName
+.public ShouldDisplayEntityWrapper

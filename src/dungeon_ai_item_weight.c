@@ -51,7 +51,7 @@ u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32
         case ITEM_ORAN_BERRY:
         case ITEM_SITRUS_BERRY:
             s32 pokemon_max_hp = pokemon_info->max_hp_stat + pokemon_info->max_hp_boost;
-            if (pokemon_info->hp < Min(999, pokemon_max_hp) && pokemon_info->hp <= Min(999, pokemon_max_hp) / 4)
+            if (pokemon_info->hp < Min(MAX_HP_LIMIT, pokemon_max_hp) && pokemon_info->hp <= Min(MAX_HP_LIMIT, pokemon_max_hp) / 4)
             {
                 if (!target_other)
                     if (IsAdjacentToEnemy(item_consumer))
@@ -203,7 +203,7 @@ u32 GetAiUseItemProbability(struct entity *item_consumer, struct item *item, u32
             else
             {
                 s32 pokemon_max_hp = pokemon_info->max_hp_stat + pokemon_info->max_hp_boost;
-                if (pokemon_info->hp < Min(999, pokemon_max_hp) && pokemon_info->hp < 20)
+                if (pokemon_info->hp < Min(MAX_HP_LIMIT, pokemon_max_hp) && pokemon_info->hp < 20)
                 {
                     if (!target_other)
                         if (IsAdjacentToEnemy(item_consumer))

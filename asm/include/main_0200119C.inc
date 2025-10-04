@@ -1,10 +1,4 @@
 #pragma once
-.public Debug_FatalError
-.public FindAvailableMemBlock
-.public InitMemArena
-.public MEMORY_ALLOCATION_ARENA_GETTERS
-.public MemAllocFlagsToBlockType
-.public SplitMemBlock
 .public _02090B40
 .public _02090BA0
 .public _02090BC8
@@ -13,5 +7,11 @@
 .public _020B3380
 .public _020B3384
 .public _020B33A0
+.public Debug_FatalError
+.public FindAvailableMemBlock
+.public InitMemArena
+.public MemAllocFlagsToBlockType
+.public MEMORY_ALLOCATION_ARENA_GETTERS
+.public SplitMemBlock
 .public sub_02002CB4
 .public sub_02002E98

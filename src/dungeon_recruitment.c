@@ -1,13 +1,14 @@
 #include "dungeon_recruitment.h"
-#include "dungeon.h"
-#include "dungeon_mode.h"
-#include "dungeon_logic_3.h"
-#include "dungeon_pokemon_attributes_1.h"
-#include "main_0208655C.h"
-#include "enums.h"
-#include "dungeon_visibility.h"
 #include "dg_random.h"
+#include "dungeon_logic_3.h"
+#include "dungeon_mode.h"
+#include "dungeon_pokemon_attributes_1.h"
+#include "dungeon_visibility.h"
+#include "dungeon.h"
+#include "enums.h"
 #include "main_0205283C.h" // GetRecruitRate1 and GetRecruitRate2
+#include "main_0208655C.h"
+#include "math.h"
 #include "overlay_29_0230E578.h" // ItemIsActive__0230E578
 #include "dungeon_logic_7.h"
 
@@ -36,7 +37,7 @@ extern const s16 SKY_MELODICA_RECRUIT_BOOST;
 
 extern s16 RECRUITMENT_LEVEL_BOOST_TABLE[];
 
-bool8 SpecificRecruitCheck(u32 monster_id) 
+bool8 SpecificRecruitCheck(u32 monster_id)
 {
     if (DUNGEON_PTR[0]->recruiting_enabled == FALSE) {
         return FALSE;
@@ -83,19 +84,19 @@ bool8 SpecificRecruitCheck(u32 monster_id)
     }
 }
 
-bool8 RecruitCheck(struct entity* leader, struct entity* target) 
+bool8 RecruitCheck(struct entity* leader, struct entity* target)
 {
     s32 random_roll;
     struct monster* leader_monster_info = leader->info;
     struct monster* target_monster_info = target->info;
-    
+
     s32 recruit_rate;
     bool8 already_on_team;
     s16 target_mon_id;
 
-    if (!IsRecruitingAllowed(DUNGEON_PTR[0]->id) || 
-            IsFullFloorFixedRoom() || 
-            IsLegendaryChallengeFloor() || 
+    if (!IsRecruitingAllowed(DUNGEON_PTR[0]->id) ||
+            IsFullFloorFixedRoom() ||
+            IsLegendaryChallengeFloor() ||
             IsCurrentMissionTypeExact(MISSION_ARREST_OUTLAW, MISSION_OUTLAW_HIDEOUT))
         return FALSE;
 
@@ -116,7 +117,7 @@ bool8 RecruitCheck(struct entity* leader, struct entity* target)
         || target_mon_id == MONSTER_LATIAS || target_mon_id == MONSTER_LATIOS
         || target_mon_id == MONSTER_JIRACHI || target_mon_id == MONSTER_RAYQUAZA
         || target_mon_id == MONSTER_DEOXYS_NORMAL || target_mon_id == MONSTER_REGIROCK
-        || target_mon_id == MONSTER_REGICE || target_mon_id == MONSTER_REGISTEEL 
+        || target_mon_id == MONSTER_REGICE || target_mon_id == MONSTER_REGISTEEL
         || (u16)(s16)(target_mon_id - 534) <= 1) {
         if (IsMonsterOnTeam(target_mon_id, 1))
             return FALSE;
@@ -156,9 +157,9 @@ bool8 RecruitCheck(struct entity* leader, struct entity* target)
         recruit_rate = recruit_rate >>= 1;
     }
 
-    if (recruit_rate == -999)
+    if (recruit_rate == -INFINITY)
         return FALSE;
-    
+
     if (ItemIsActive__0230E578(leader, ITEM_FRIEND_BOW)) {
         recruit_rate += FRIEND_BOW_FAST_FRIEND_BOOST;
     } else if (ItemIsActive__0230E578(leader, ITEM_GOLDEN_MASK)) {
@@ -189,16 +190,16 @@ bool8 RecruitCheck(struct entity* leader, struct entity* target)
 
     if (random_roll >= recruit_rate)
         return FALSE;
-    
+
     s32 free_slot_index = GetFirstEmptyMemberIdx(0);
 
     if(free_slot_index < 0) {
         return FALSE;
     }
-    
+
     if(free_slot_index >= 0) {
         return TRUE;
     }
-    
+
     return TRUE;
 }

@@ -175,8 +175,8 @@ ov29_023021F0: ; 0x023021F0
 _023021FC: .word UpdateIqSkills
 	arm_func_end ov29_023021F0
 
-	arm_func_start ov29_02302200
-ov29_02302200: ; 0x02302200
+	arm_func_start CanSeeTeammate
+CanSeeTeammate: ; 0x02302200
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r0
 	ldr r0, [r4, #0xb4]
@@ -216,4 +216,4 @@ _02302268:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02302278: .word DUNGEON_PTR
-	arm_func_end ov29_02302200
+	arm_func_end CanSeeTeammate

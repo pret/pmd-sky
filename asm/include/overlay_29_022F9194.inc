@@ -1,8 +1,8 @@
 #pragma once
 .public AbilityIsActiveVeneer
 .public CASTFORM_WEATHER_ATTRIBUTE_TABLE
-.public DUNGEON_PTR
 .public DefenderAbilityIsActive__022F96CC
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__022F7364
 .public GetAbility
@@ -15,11 +15,11 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerSpeed
 .public MonsterIsType
-.public SetPreprocessorArgsIdVal
-.public SubstitutePlaceholderStringTags
-.public TryEndStatusWithAbility
-.public WEATHER_BALL_TYPE_TABLE
 .public ov10_022C4C6E
 .public ov10_022C4C70
 .public ov29_022E6260
 .public ov29_022E647C
+.public SetPreprocessorArgsIdVal
+.public SubstitutePlaceholderStringTags
+.public TryEndStatusWithAbility
+.public WEATHER_BALL_TYPE_TABLE

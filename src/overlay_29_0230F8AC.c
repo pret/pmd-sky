@@ -15,16 +15,16 @@ bool8 ExclusiveItemEffectIsActive__0230F8AC(struct entity *entity, enum exclusiv
     return FALSE;
 }
 
-u8 FindDirectionOfAdjacentMonsterWithItem(struct entity *pokemon, enum item_id item_id)
+u8 FindDirectionOfAdjacentMonsterWithItem(struct entity *entity, enum item_id item_id)
 {
-    if (!EntityIsValid__0230F008(pokemon))
+    if (!EntityIsValid__0230F008(entity))
         return DIR_NONE_UNSIGNED;
 
     u8 i = 0;
-    u8 direction = GetEntInfo(pokemon)->action.direction;
+    u8 direction = GetEntInfo(entity)->action.direction;
     for (; i < NUM_DIRECTIONS; i++, direction = (u8)(direction + 1) & DIRECTION_MASK)
     {
-        struct entity *monster_in_direction = GetTile(pokemon->pos.x + DIRECTIONS_XY[direction].x, pokemon->pos.y + DIRECTIONS_XY[direction].y)->monster;
+        struct entity *monster_in_direction = GetTile(entity->pos.x + DIRECTIONS_XY[direction].x, entity->pos.y + DIRECTIONS_XY[direction].y)->monster;
         if (monster_in_direction != NULL && IsMonster__0230F980(monster_in_direction) && ItemIsActive__0230F810(monster_in_direction, item_id))
             return direction;
     }

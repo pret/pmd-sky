@@ -142,6 +142,8 @@ Autoload ITCM
 {
 	Address 0x01FF8000
 	Object asm/itcm.o (.itcm)
+	Object src/dungeon_ai_movement.o (.itcm)
+	Object asm/itcm_01FFB62C.o (.itcm)
 	Object src/dungeon_ai_itcm.o (.itcm)
 	Object asm/itcm_01FFBD20.o (.itcm)
 }
@@ -393,6 +395,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022EF7C4.o
 	Object src/dungeon_util.o
 	Object asm/overlay_29_rodata_0235173C.o
+	Object src/dungeon_ai_movement.o
+	Object asm/overlay_29_rodata_0235179C.o
 	Object asm/overlay_29_022EFA6C.o
 	Object src/dungeon_logic_6.o
 	Object asm/overlay_29_022EFB04.o

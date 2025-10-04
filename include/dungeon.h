@@ -1389,7 +1389,7 @@ struct dungeon {
     // 0xEEE8: Array of structs that contain data about the rooms on the current floor
     struct room_data room_data[32];
     // 0xF268: Array that counts the amount of elements on each row of natural_junction_list
-    u16 natural_junction_list_counts[32];
+    s16 natural_junction_list_counts[32];
     // 0xF2A8: Matrix that stores the positions of up to 32 natural junctions
     // for each room on the floor. Each row represents a room.
     struct position natural_junction_list[32][32];

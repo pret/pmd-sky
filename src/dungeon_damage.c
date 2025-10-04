@@ -84,28 +84,28 @@ s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_i
 
     if (move_type == TYPE_WATER && AbilityIsActiveVeneer(user, ABILITY_TORRENT))
     {
-        s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, 999);
+        s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, MAX_HP_LIMIT);
         if (max_hp_stat / 4 >= user_data->hp)
             weight *= 2;
     }
 
     if (move_type == TYPE_GRASS && AbilityIsActiveVeneer(user, ABILITY_OVERGROW))
     {
-        s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, 999);
+        s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, MAX_HP_LIMIT);
         if (max_hp_stat / 4 >= user_data->hp)
             weight *= 2;
     }
 
     if (move_type == TYPE_BUG && AbilityIsActiveVeneer(user, ABILITY_SWARM))
     {
-        s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, 999);
+        s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, MAX_HP_LIMIT);
         if (max_hp_stat / 4 >= user_data->hp)
             weight *= 2;
     }
 
     if (move_type == TYPE_FIRE && AbilityIsActiveVeneer(user, ABILITY_BLAZE))
     {
-        s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, 999);
+        s32 max_hp_stat = MIN(user_data->max_hp_stat + user_data->max_hp_boost, MAX_HP_LIMIT);
         if (max_hp_stat / 4 >= user_data->hp)
             weight *= 2;
     }

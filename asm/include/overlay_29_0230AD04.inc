@@ -5,8 +5,8 @@
 .public DAMAGE_MULTIPLIER_0_5
 .public DAMAGE_MULTIPLIER_1_5
 .public DAMAGE_MULTIPLIER_2
-.public DUNGEON_PTR
 .public DefenderAbilityIsActive__0230A940
+.public DUNGEON_PTR
 .public EntityIsValid__02308FBC
 .public ExclusiveItemEffectIsActive__0230A9B8
 .public FixedPoint32To64
@@ -32,14 +32,14 @@
 .public MATCHUP_SUPER_EFFECTIVE_MULTIPLIER_ERRATIC_PLAYER
 .public MonsterIsType
 .public MultiplyFixedPoint64
+.public ov29_02352838
 .public PlayEffectAnimation0x1A9__022E61C8
 .public PlayEffectAnimation0x1A9__022E6214
 .public PlayEffectAnimation0x1A9__022E64C4
 .public PlayEffectAnimation0x1A9__022E6510
-.public SOLID_ROCK_MULTIPLIER
 .public ScrappyShouldActivate
+.public SOLID_ROCK_MULTIPLIER
 .public TECHNICIAN_MOVE_POWER_THRESHOLD
 .public TINTED_LENS_MULTIPLIER
 .public TYPE_MATCHUP_COMBINATOR_TABLE
 .public UpdateStateFlags
-.public ov29_02352838

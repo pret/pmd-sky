@@ -2,6 +2,7 @@
 .public _s32_div_f
 .public AdvanceFrame
 .public AnimationDelayOrSomething
+.public CosAbs4096
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public EntityIsValid__02321438
@@ -43,6 +44,5 @@
 .public SetPreprocessorArgsStringToName
 .public ShouldDisplayEntityWrapper
 .public SinAbs4096
-.public CosAbs4096
 .public sub_0201CF90
 .public TwoTurnMoveForcedMiss

@@ -152,8 +152,8 @@ _02301490: .word SECONDARY_TERRAIN_TYPES
 _02301494: .word DIRECTIONAL_BIT_MASKS__02352770
 	arm_func_end CanAiMonsterMoveInDirection
 
-	arm_func_start ov29_02301498
-ov29_02301498: ; 0x02301498
+	arm_func_start IsAtJunction
+IsAtJunction: ; 0x02301498
 #ifdef JAPAN
 #define OV29_02301498_OFFSET -4
 #else
@@ -259,10 +259,10 @@ _02301534:
 	.align 2, 0
 _0230158C: .word DUNGEON_PTR
 _02301590: .word SECONDARY_TERRAIN_TYPES
-	arm_func_end ov29_02301498
+	arm_func_end IsAtJunction
 
-	arm_func_start ov29_02301594
-ov29_02301594: ; 0x02301594
+	arm_func_start ShouldAvoidFirstHit
+ShouldAvoidFirstHit: ; 0x02301594
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	mov r1, #3
@@ -272,4 +272,4 @@ ov29_02301594: ; 0x02301594
 	movne r0, #1
 	moveq r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_02301594
+	arm_func_end ShouldAvoidFirstHit

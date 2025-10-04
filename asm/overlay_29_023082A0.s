@@ -16,8 +16,8 @@ ShouldMonsterFollowLeader: ; 0x023082A0
 	ldmia sp!, {r3, pc}
 	arm_func_end ShouldMonsterFollowLeader
 
-	arm_func_start ov29_023082C4
-ov29_023082C4: ; 0x023082C4
+	arm_func_start GetLeaderIfVisible
+GetLeaderIfVisible: ; 0x023082C4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r0, [r5, #0xb4]
@@ -50,4 +50,4 @@ ov29_023082C4: ; 0x023082C4
 _02308338:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_023082C4
+	arm_func_end GetLeaderIfVisible

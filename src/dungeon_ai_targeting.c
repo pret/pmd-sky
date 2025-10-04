@@ -21,8 +21,8 @@ bool8 ShouldMonsterRunAway(struct entity *monster)
         if (AbilityIsActive(monster, ABILITY_RUN_AWAY))
         {
             s32 max_hp = pokemon_info->max_hp_stat + pokemon_info->max_hp_boost;
-            if (max_hp > 999)
-                max_hp = 999;
+            if (max_hp > MAX_HP_LIMIT)
+                max_hp = MAX_HP_LIMIT;
 
             bool8 run_away_active = pokemon_info->hp < max_hp / 2;
             if (run_away_active)
@@ -35,8 +35,8 @@ bool8 ShouldMonsterRunAway(struct entity *monster)
         if (IsTacticSet(monster, TACTIC_AVOID_TROUBLE))
         {
             s32 max_hp = pokemon_info->max_hp_stat + pokemon_info->max_hp_boost;
-            if (max_hp > 999)
-                max_hp = 999;
+            if (max_hp > MAX_HP_LIMIT)
+                max_hp = MAX_HP_LIMIT;
 
             if (pokemon_info->hp <= max_hp / 2)
                 return TRUE;

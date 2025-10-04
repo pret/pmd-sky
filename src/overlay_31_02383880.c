@@ -4,7 +4,6 @@
 #include "overlay_31_02383478.h"
 #include "main_02001188.h"
 
-extern struct dungeon* DUNGEON_PTR[];
 extern struct loc_struct* OVERLAY31_UNKNOWN_POINTER__NA_238A26C;
 
 extern u8 PositionHasItem(struct position* pos);

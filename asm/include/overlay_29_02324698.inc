@@ -1,7 +1,7 @@
 #pragma once
 .public AbilityIsActiveVeneer
-.public DUNGEON_PTR
 .public DefenderAbilityIsActive__02322D64
+.public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB50
 .public EntityIsValid__02321438
