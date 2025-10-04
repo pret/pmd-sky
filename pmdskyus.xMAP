@@ -410,7 +410,7 @@
                                                                                78](CanAiMonsterMoveInDirection,func) found in global overlay_29_023012F8.o
                                                                                 79](GetDirectionalMobilityType,func) found in global dungeon_capabilities_3.o
                                                                                 79](DIRECTIONAL_BIT_MASKS__02352770,object) found in global directional_bit_masks.o
-                                                                               78](CalculateAiTargetPos,func) found in global itcm_01FFB2C8.o
+                                                                               78](CalculateAiTargetPos,func) found in global dungeon_ai_movement.o
                                                                                 79](FACING_DIRECTION_INCREMENTS,object) found in global dungeon_ai_movement.o
                                                                                78](CheckVariousConditions,func) found in global dungeon_capabilities_1.o
                                                                                 79](CheckVariousStatuses2,func) found in global dungeon_capabilities.o
@@ -614,6 +614,7 @@
                                                                                           89](AI_CAN_ATTACK_IN_DIRECTION,object) found in global dungeon_ai_attack.o
                                                                                           89](AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS,object) found in global dungeon_ai_attack.o
                                                                                          88](ResetAiCanAttackInDirection,func) found in global dungeon_ai_attack.o
+                                                                                         88](_01FFB654,notype) found in global itcm_01FFB62C.o
                                                                                          88](EntityIsValid__02319F8C,func) found in global dungeon_ai_attack.o
                                                                                       85](ShouldUsePp,func) found in global overlay_29_0231A7A0.o
                                                                                       85](AreMovesEnabled,func) found in global fixed_room_data.o
@@ -13562,14 +13563,14 @@
   01FFA3C4 00000000 .itcm   $a	(dungeon_ai_movement.o)
   01FFA3C4 00000F04 .itcm   AiMovement	(dungeon_ai_movement.o)
   01FFB2AC 00000000 .itcm   $d	(dungeon_ai_movement.o)
-  01FFB2C8 00000390 .itcm   .itcm	(itcm_01FFB2C8.o)
-  01FFB2C8 00000364 .itcm   CalculateAiTargetPos	(itcm_01FFB2C8.o)
-  01FFB2C8 00000000 .itcm   $a	(itcm_01FFB2C8.o)
-  01FFB61C 00000000 .itcm   $d	(itcm_01FFB2C8.o)
-  01FFB62C 00000000 .itcm   $a	(itcm_01FFB2C8.o)
-  01FFB62C 00000028 .itcm   sub_01FFB62C	(itcm_01FFB2C8.o)
-  01FFB654 00000000 .itcm   _01FFB654	(itcm_01FFB2C8.o)
-  01FFB654 00000000 .itcm   $d	(itcm_01FFB2C8.o)
+  01FFB2C8 00000000 .itcm   $a	(dungeon_ai_movement.o)
+  01FFB2C8 00000364 .itcm   CalculateAiTargetPos	(dungeon_ai_movement.o)
+  01FFB61C 00000000 .itcm   $d	(dungeon_ai_movement.o)
+  01FFB62C 00000000 .itcm   $a	(itcm_01FFB62C.o)
+  01FFB62C 0000002C .itcm   .itcm	(itcm_01FFB62C.o)
+  01FFB62C 00000028 .itcm   sub_01FFB62C	(itcm_01FFB62C.o)
+  01FFB654 00000000 .itcm   _01FFB654	(itcm_01FFB62C.o)
+  01FFB654 00000000 .itcm   $d	(itcm_01FFB62C.o)
   01FFB658 00000000 .itcm   $a	(dungeon_ai_itcm.o)
   01FFB658 000006C8 .itcm   ChooseAiMove	(dungeon_ai_itcm.o)
   01FFBD14 00000000 .itcm   $d	(dungeon_ai_itcm.o)
@@ -40880,5 +40881,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Oct 02 05:02:43 2025
-# Link end time: Thu Oct 02 05:02:44 2025
+# Link start time: Sat Oct 04 00:50:31 2025
+# Link end time: Sat Oct 04 00:50:32 2025
