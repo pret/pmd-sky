@@ -75,7 +75,7 @@
 .public ov29_022E2018
 .public ov29_022E2DFC
 .public ov29_022E6644
-.public ov29_022EFAE8
+.public IsLoneOutlaw
 .public ov29_022F9EA0
 .public ov29_022FA1D8
 .public ov29_022FB83C

@@ -74,7 +74,7 @@
 .public ov29_022E6784
 .public ov29_022E8104
 .public ov29_022E81F8
-.public ov29_022FBDE0
+.public IsLoneOutlawVeneer
 .public ov29_022FBDF0
 .public ov29_022FD7A0
 .public ov29_0230D874
