@@ -40,7 +40,6 @@ struct can_move_in_direction_info
 
 const s32 FACING_DIRECTION_INCREMENTS[] = {0, 1, -1, 2, -2, 3, -3, 4};
 
-extern bool8 CalculateAiTargetPos(struct entity *monster);
 extern bool8 CanAiMonsterMoveInDirection(struct entity *monster, s32 direction, bool8 *out_monster_in_target_position);
 extern bool8 CanTargetEntity(struct entity *user, struct entity *target);
 extern bool8 CanTargetPosition(struct entity *monster, struct position *position);
@@ -57,6 +56,7 @@ extern bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 force_avoid);
 extern bool8 CanSeeTeammate(struct entity *monster);
 extern struct entity* GetLeaderIfVisible(struct entity *monster);
 extern bool8 ov29_02348D00(struct item*);
+extern bool8 IsAtJunction(struct entity *monster);
 
 // https://decomp.me/scratch/2QnEr
 #ifdef NONMATCHING
@@ -1691,3 +1691,124 @@ _01FFB2A4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 }
 #endif
+
+bool8 CalculateAiTargetPos(struct entity *monster)
+{
+    struct monster *pokemon_info = GetEntInfo(monster);
+    enum fixed_room_id fixed_room_id = DUNGEON_PTR[0]->gen_info.fixed_room_id;
+    s32 room = monster->room_idx;
+    bool8 is_sealed_chamber = FALSE;
+    if (fixed_room_id == FIXED_SEALED_CHAMBER ||
+        fixed_room_id >= FIXED_CLEAR_SILK_CHAMBER && fixed_room_id < FIXED_LEGENDARY_EXCLUSIVE_CHAMBER_1)
+    {
+        if (GetTile(monster->pos.x, monster->pos.y)->terrain_flags & TERRAIN_TYPE_UNBREAKABLE)
+            is_sealed_chamber = TRUE;
+    }
+
+    if (is_sealed_chamber || room == CORRIDOR_ROOM)
+    {
+        s32 i;
+        s32 opposite_facing_dir = (pokemon_info->action.direction + NUM_DIRECTIONS / 2) & DIRECTION_MASK;
+        bool8 is_at_junction = FALSE;
+        s32 target_facing_dir;
+        if (IsAtJunction(monster))
+        {
+            pokemon_info->action.direction = DungeonRandInt(NUM_DIRECTIONS);
+            is_at_junction = TRUE;
+        }
+
+        for (i = 0; i < NUM_DIRECTIONS; i++)
+        {
+            bool8 pokemon_in_front;
+            target_facing_dir = (pokemon_info->action.direction + FACING_DIRECTION_INCREMENTS[i]) & DIRECTION_MASK;
+
+            if (is_at_junction && target_facing_dir == opposite_facing_dir)
+            {
+                continue;
+            }
+
+            if (!CanAiMonsterMoveInDirection(monster, target_facing_dir, &pokemon_in_front))
+            {
+                continue;
+            }
+
+            pokemon_info->ai_target.ai_objective = AI_ROAM;
+            pokemon_info->ai_target.ai_target_pos.x = monster->pos.x + DIRECTIONS_XY[target_facing_dir].x;
+            pokemon_info->ai_target.ai_target_pos.y = monster->pos.y + DIRECTIONS_XY[target_facing_dir].y;
+            return TRUE;
+        }
+    }
+    else
+    {
+        s32 i;
+        s32 target_facing_dir;
+        s32 natural_junction_list_counts = DUNGEON_PTR[0]->natural_junction_list_counts[room];
+        struct position *natural_junction_list = DUNGEON_PTR[0]->natural_junction_list[room];
+        if (pokemon_info->random_movement)
+        {
+            target_facing_dir = DungeonRandInt(NUM_DIRECTIONS);
+            pokemon_info->ai_target.ai_objective = AI_STAND_STILL;
+            pokemon_info->ai_target.ai_target_pos.x = monster->pos.x + DIRECTIONS_XY[target_facing_dir].x;
+            pokemon_info->ai_target.ai_target_pos.y = monster->pos.y + DIRECTIONS_XY[target_facing_dir].y;
+            return TRUE;
+        }
+        else
+        {
+            if (pokemon_info->ai_target.ai_objective != AI_LEAVE_ROOM)
+            {
+                if (natural_junction_list_counts == 0)
+                {
+                    target_facing_dir = DungeonRandInt(NUM_DIRECTIONS);
+                    pokemon_info->ai_target.ai_objective = AI_STAND_STILL;
+                    pokemon_info->ai_target.ai_target_pos.x = monster->pos.x + DIRECTIONS_XY[target_facing_dir].x;
+                    pokemon_info->ai_target.ai_target_pos.y = monster->pos.y + DIRECTIONS_XY[target_facing_dir].y;
+                    return TRUE;
+                }
+
+                for (i = 0; i < 10; i++)
+                {
+                    target_facing_dir = DungeonRandInt(natural_junction_list_counts);
+                    if (monster->pos.x != natural_junction_list[target_facing_dir].x ||
+                        monster->pos.y != natural_junction_list[target_facing_dir].y)
+                    {
+                        pokemon_info->ai_target.ai_objective = AI_LEAVE_ROOM;
+                        pokemon_info->ai_target.ai_target_pos.x = natural_junction_list[target_facing_dir].x;
+                        pokemon_info->ai_target.ai_target_pos.y = natural_junction_list[target_facing_dir].y;
+                        return TRUE;
+                    }
+                }
+                // If the AI randomly picks the exit it's standing on 10 times,
+                // it gives up and exits the way it came.
+                // This occurs normally for one-exit rooms, but can happen rarely for multi-exit rooms.
+            }
+            if (GetTile(monster->pos.x, monster->pos.y)->terrain_flags & TERRAIN_TYPE_NATURAL_JUNCTION)
+            {
+                s32 i;
+                target_facing_dir = DungeonRandInt(NUM_DIRECTIONS);
+                for (i = 0; i < NUM_DIRECTIONS; i++, target_facing_dir++)
+                {
+                    bool8 pokemon_in_front;
+                    s32 forward_x, forward_y;
+                    target_facing_dir &= DIRECTION_MASK;
+                    forward_x = monster->pos.x + DIRECTIONS_XY[target_facing_dir].x;
+                    forward_y = monster->pos.y + DIRECTIONS_XY[target_facing_dir].y;
+                    if (GetTile(forward_x, forward_y)->room == CORRIDOR_ROOM &&
+                        CanAiMonsterMoveInDirection(monster, target_facing_dir, &pokemon_in_front))
+                    {
+                        pokemon_info->ai_target.ai_objective = AI_ROAM;
+                        pokemon_info->ai_target.ai_target_pos.x = forward_x;
+                        pokemon_info->ai_target.ai_target_pos.y = forward_y;
+                        return TRUE;
+                    }
+                }
+            }
+            return TRUE;
+        }
+    }
+
+    s32 target_facing_dir = DungeonRandInt(NUM_DIRECTIONS);
+    pokemon_info->ai_target.ai_objective = AI_STAND_STILL;
+    pokemon_info->ai_target.ai_target_pos.x = monster->pos.x + DIRECTIONS_XY[target_facing_dir].x;
+    pokemon_info->ai_target.ai_target_pos.y = monster->pos.y + DIRECTIONS_XY[target_facing_dir].y;
+    return TRUE;
+}

@@ -57,6 +57,8 @@ with open(original_file_path, 'r') as original_file:
 
 if function_location.startswith('main'):
     file_prefix = 'main_'
+elif function_location.startswith('itcm'):
+    file_prefix = 'itcm_'
 else:
     file_prefix = function_location[:len('overlay_00_')]
     if file_prefix[-1] != '_':
@@ -130,7 +132,7 @@ for i, line in enumerate(lsf_lines):
             lsf_lines[i] = ''
             prev_line = lsf_lines[i - 1]
             if prev_line.startswith(SRC_LSF_PREFIX):
-                merge_prev_file = prev_line[len(SRC_LSF_PREFIX) : -3]
+                merge_prev_file = prev_line[len(SRC_LSF_PREFIX):]
         if not include_new_asm_file and merge_prev_file is None:
             next_line = lsf_lines[i + 1]
             if next_line.startswith(SRC_LSF_PREFIX):
@@ -140,6 +142,12 @@ for i, line in enumerate(lsf_lines):
         if include_new_asm_file:
             lsf_lines[i] += f'\tObject asm/{new_asm_base_name}.o{lsf_suffix}\n'
         break
+
+if merge_prev_file is not None:
+    line_end_index = len('.o\n')
+    if merge_prev_file.endswith('.o (.itcm)\n'):
+        line_end_index = len('.o (.itcm)\n')
+    merge_prev_file = merge_prev_file[:-line_end_index]
 
 print('Updating', LSF_FILE_PATH)
 with open(LSF_FILE_PATH, 'w') as lsf_file:
