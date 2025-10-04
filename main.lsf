@@ -143,7 +143,7 @@ Autoload ITCM
 	Address 0x01FF8000
 	Object asm/itcm.o (.itcm)
 	Object src/dungeon_ai_movement.o (.itcm)
-	Object asm/itcm_01FFB2C8.o (.itcm)
+	Object asm/itcm_01FFB62C.o (.itcm)
 	Object src/dungeon_ai_itcm.o (.itcm)
 	Object asm/itcm_01FFBD20.o (.itcm)
 }
