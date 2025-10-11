@@ -2961,4 +2961,8 @@ enum dungeon_restriction_flags {
     // Remaining flags are unused
 };
 
+enum script_variables {
+    PLAYED_OLD_GAME = 0x6f
+};
+
 #endif //PMDSKY_ENUMS_H
