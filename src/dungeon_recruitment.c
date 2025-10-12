@@ -1,27 +1,25 @@
-#include "dungeon_recruitment.h"
-#include "dg_random.h"
+#include "dungeon.h"
 #include "dungeon_logic_3.h"
+#include "dungeon_logic_7.h"
 #include "dungeon_mode.h"
 #include "dungeon_pokemon_attributes_1.h"
+#include "dungeon_recruitment.h"
+#include "dungeon_recruitment_2.h"
+#include "dg_random.h"
 #include "dungeon_visibility.h"
-#include "dungeon.h"
 #include "enums.h"
+#include "fixed_room_data_1.h"
 #include "main_0205283C.h" // GetRecruitRate1 and GetRecruitRate2
 #include "main_0208655C.h"
 #include "math.h"
 #include "overlay_29_0230E578.h" // ItemIsActive__0230E578
-#include "dungeon_logic_7.h"
 
-extern bool8 IsRecruitingAllowed(u8 dungeon_id);
-extern bool8 IsFullFloorFixedRoom(void);
 extern bool8 IsLegendaryChallengeFloor(void);
 extern bool8 IsCurrentMissionTypeExact(u32 mission_type, u32 mission_subtype);
 extern bool8 IsMonsterOnTeam(s16 monsterId, s32 checkType);
 extern void ov29_022E1B28(s32);
 extern void ov29_022E81F8(void);
 extern bool8 HasPlayedOldGame(void);
-extern s16 GetRecruitRate1(s16 monsterId);
-extern s16 GetRecruitRate2(s16 monsterId);
 extern s32 GetFirstEmptyMemberIdx(u32);
 
 extern const s16 FRIEND_BOW_FAST_FRIEND_BOOST;
