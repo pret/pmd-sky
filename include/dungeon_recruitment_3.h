@@ -1,0 +1,8 @@
+#ifndef PMDSKY_DUNGEON_RECRUITMENT_3_H
+#define PMDSKY_DUNGEON_RECRUITMENT_3_H
+
+#include "util.h"
+
+bool8 HasPlayedOldGame();
+
+#endif //PMDSKY_DUNGEON_RECRUITMENT_3_H

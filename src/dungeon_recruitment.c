@@ -5,6 +5,7 @@
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_recruitment.h"
 #include "dungeon_recruitment_2.h"
+#include "dungeon_recruitment_3.h"
 #include "dg_random.h"
 #include "dungeon_visibility.h"
 #include "enums.h"
@@ -19,7 +20,6 @@ extern bool8 IsCurrentMissionTypeExact(u32 mission_type, u32 mission_subtype);
 extern bool8 IsMonsterOnTeam(s16 monsterId, s32 checkType);
 extern void ov29_022E1B28(s32);
 extern void ov29_022E81F8(void);
-extern bool8 HasPlayedOldGame(void);
 extern s32 GetFirstEmptyMemberIdx(u32);
 
 extern const s16 FRIEND_BOW_FAST_FRIEND_BOOST;
