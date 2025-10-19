@@ -41,8 +41,6 @@ Static main
 	Object src/item_util_1.o
 	Object asm/main_0200E7E8.o
 	Object src/item_util_2.o
-	Object asm/main_0200E864.o
-	Object src/item_util_3.o
 	Object asm/main_0200EB30.o
 	Object src/main_0200ECFC.o
 	Object asm/main_0200ED1C.o

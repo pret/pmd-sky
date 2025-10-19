@@ -1,7 +1,19 @@
+#include "debug.h"
 #include "item_util_2.h"
 #include "item_util_1.h"
+#include "main_0202593C.h"
 
 extern struct item_data_entry *ITEM_DATA_TABLE_PTRS[3];
+extern const char ITEM_NAME_FORMAT_CSU;
+extern const char ITEM_NAME_FORMAT_CSZ;
+extern const char ITEM_NAME_FORMAT_PLAIN;
+extern const char ITEM_NAME_FORMAT_CSI;
+
+extern char* SprintfStatic__0200E808_EU(char*, const char*, ...);
+extern u8* strcpy(u8*, u8*);
+extern s32 vsprintf(u8* str, const u8* format, va_list ap);
+
+static void SprintfStatic(char*, const char*, ...);
 
 enum item_category GetItemCategory(s16 item_id)
 {
@@ -18,4 +30,133 @@ s16 EnsureValidItem(s16 item_id)
         return ITEM_PLAIN_SEED;
 
     return item_id;
+}
+
+u8* GetItemName(s16 item_id) {
+    u32 valid_item_id = EnsureValidItem(item_id);
+#ifdef EUROPE
+    return StringFromId((u16)(valid_item_id + 0x1A78));
+#elif JAPAN
+    return StringFromId((u16)(valid_item_id + 0x0D93));
+#else
+    return StringFromId((u16)(valid_item_id + 0x1A76));
+#endif
+}
+
+#ifdef EUROPE
+#define GET_ITEM_NAME_FORMATTED_SPRINTF SprintfStatic__0200E808_EU
+#else
+#define GET_ITEM_NAME_FORMATTED_SPRINTF SprintfStatic
+#endif
+void GetItemNameFormatted(char* name, s16 item_id, s32 flag1, s32 flag2)
+{
+    enum item_category category;
+
+#ifdef EUROPE
+    u8* raw_name = StringFromId((u16) (EnsureValidItem(item_id) + 0x1A78));
+#elif JAPAN
+    u8* raw_name = StringFromId((u16) (EnsureValidItem(item_id) + 0x0D93));
+#else
+    u8* raw_name = StringFromId((u16) (EnsureValidItem(item_id) + 0x1A76));
+#endif
+
+    category = ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][EnsureValidItem(item_id)].category;
+    if ((flag2 != 0) || ((u8)(category + 0xF4) <= 2)) {
+        if (flag1 != 0) {
+            GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_CSU, raw_name);
+            return;
+        }
+        strcpy(name, raw_name);
+        return;
+    }
+    if (category == CATEGORY_EXCLUSIVE_ITEMS) {
+        if (flag1 != 0) {
+            GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_CSZ, raw_name);
+            return;
+        }
+        GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
+        return;
+    }
+    if (flag1 != 0) {
+        GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_CSI, raw_name);
+        return;
+
+    }
+    GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
+    return;
+}
+
+#ifndef EUROPE
+static void SprintfStatic(char* buf, const char* fmt, ...)
+{
+    va_list args;
+    va_start(args, fmt);
+    vsprintf(buf, fmt, args);
+}
+#endif
+
+u16 GetItemBuyPrice(s16 item_id)
+{
+    item_id = EnsureValidItem(item_id);
+    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].buy_price;
+}
+
+u16 GetItemSellPrice(s16 item_id)
+{
+    item_id = EnsureValidItem(item_id);
+    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].sell_price;
+}
+
+u8 GetItemSpriteId(s16 item_id)
+{
+    item_id = EnsureValidItem(item_id);
+    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].sprite_id;
+}
+
+u8 GetItemPaletteId(s16 item_id)
+{
+    item_id = EnsureValidItem(item_id);
+    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].palette_id;
+}
+
+u8 GetItemActionName(s16 item_id)
+{
+    item_id = EnsureValidItem(item_id);
+    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].action_name;
+}
+
+u8 GetThrownItemQuantityLimit(s16 item_id, u8 arg1)
+{
+    item_id = EnsureValidItem(item_id);
+    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].quantity_limit[arg1];
+}
+
+s16 GetItemMoveId(s16 item_id)
+{
+    item_id = EnsureValidItem(item_id);
+    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].move_id;
+}
+
+bool8 TestItemAiFlag(s16 item_id, s32 flag)
+{
+    if (flag == 0)
+    {
+        item_id = EnsureValidItem(item_id);
+        if (ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].flags & ITEM_DATA_FLAG_THROWABLE_AT_ENEMY)
+            return TRUE;
+        return FALSE;
+    }
+
+    if (flag == 1)
+    {
+        item_id = EnsureValidItem(item_id);
+        if (ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].flags & ITEM_DATA_FLAG_THROWABLE_AT_ALLY)
+            return TRUE;
+        return FALSE;
+    }
+
+    item_id = EnsureValidItem(item_id);
+    if (ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].flags & ITEM_DATA_FLAG_CONSUMABLE)
+        return TRUE;
+    return FALSE;
 }
