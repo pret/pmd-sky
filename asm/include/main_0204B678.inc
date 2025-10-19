@@ -11,6 +11,7 @@
 .public GetNotifyNote
 .public GetPartyMembers
 .public LoadScriptVariableRaw
+.public LoadScriptVariableValue
 .public MemcpySimple
 .public RandInt
 .public SCRIPT_VARS_VALUES

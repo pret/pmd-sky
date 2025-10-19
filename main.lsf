@@ -78,7 +78,7 @@ Static main
 	Object src/main_0204AFF8.o
 	Object asm/main_0204B018.o
 	Object src/scripting.o
-	Object asm/main_0204B4EC.o
+	Object asm/main_0204B678.o
 	Object src/dungeon_recruitment_3.o
 	Object asm/main_0204CA94.o
 	Object src/main_0204DA2C.o

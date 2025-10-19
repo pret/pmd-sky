@@ -2961,8 +2961,56 @@ enum dungeon_restriction_flags {
     // Remaining flags are unused
 };
 
-enum script_variables {
-    PLAYED_OLD_GAME = 0x6f
+enum script_var_type {
+    VARTYPE_NONE = 0,
+    VARTYPE_BIT = 1,
+    // VARTYPE_STRING is an array of characters, and implementation-wise are treated exactly the
+    // same way as VARTYPE_UINT8
+    VARTYPE_STRING = 2,
+    VARTYPE_UINT8 = 3,
+    VARTYPE_INT8 = 4,
+    VARTYPE_UINT16 = 5,
+    VARTYPE_INT16 = 6,
+    VARTYPE_UINT32 = 7,
+    VARTYPE_INT32 = 8,
+    VARTYPE_SPECIAL = 9,
+    // This dummy value ensures compilation that matches the original assembly.
+    // Without it, the compiler reads the enum using ldrb instead of ldrsh
+    VARTYPE_DUMMY_PADDING = 256 
+};
+
+enum script_var_id {
+    VAR_FRIEND_SUM = 58,
+    VAR_UNIT_SUM = 59,
+    // The amount of money the player has on hand.
+    VAR_CARRY_GOLD = 60,
+    // The amount of money stored in Duskull Bank.
+    VAR_BANK_GOLD = 61,
+    // The language determined by the NDS firmware. Notably checked in some scripts to display
+    // different backgrounds or objects, such as in the intro.
+    //   0: Japanese
+    //   1: English
+    //   2: French
+    //   3: German
+    //   4: Italian
+    //   5: Spanish
+    PLAYED_OLD_GAME = 0x6f,
+    VAR_LANGUAGE_TYPE = 71,
+    // A value to distinguish the type of game being played. This mainly differentiates between maingame and Special Episodes, and the game
+    // checks for this value in numerous places (not necessarily in scripts) to differentiate
+    // maingame versus Special Episode behavior. 
+    VAR_GAME_MODE = 72,
+    // Used to distinguish which Special Episode is currently being played.
+    VAR_EXECUTE_SPECIAL_EPISODE_TYPE = 73,
+    VAR_NOTE_MODIFY_FLAG = 112,
+};
+
+enum special_episode_type {
+    EPISODE_BIDOOFS_WISH = 0,
+    EPISODE_IGGLYBUFF_THE_PRODIGY = 1,
+    EPISODE_TODAYS_OH_MY_GOSH = 2,
+    EPISODE_HERE_COMES_TEAM_CHARM = 3,
+    EPISODE_IN_THE_FUTURE_OF_DARKNESS = 4,
 };
 
 #endif //PMDSKY_ENUMS_H
