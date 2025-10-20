@@ -4,6 +4,7 @@
 #include "dungeon_action.h"
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_capabilities_1.h"
+#include "dungeon_capabilities_4.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util.h"
@@ -40,7 +41,6 @@ struct can_move_in_direction_info
 
 const s32 FACING_DIRECTION_INCREMENTS[] = {0, 1, -1, 2, -2, 3, -3, 4};
 
-extern bool8 CanAiMonsterMoveInDirection(struct entity *monster, s32 direction, bool8 *out_monster_in_target_position);
 extern bool8 CanTargetEntity(struct entity *user, struct entity *target);
 extern bool8 CanTargetPosition(struct entity *monster, struct position *position);
 extern s32 GetChebyshevDistance(struct position *position_a, struct position *position_b);

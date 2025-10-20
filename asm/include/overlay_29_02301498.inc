@@ -1,6 +1,4 @@
 #pragma once
-.public DIRECTIONAL_BIT_MASKS__02352770
-.public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public GetDirectionalMobilityType
