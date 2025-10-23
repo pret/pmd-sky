@@ -466,7 +466,8 @@ Overlay OVY_29
 	Object asm/overlay_29_023016D8.o
 	Object src/dungeon_ai_targeting_1.o
 	Object asm/overlay_29_rodata_023527C0.o
-	Object asm/overlay_29_023018AC.o
+	Object src/overlay_29_023018AC.o
+	Object asm/overlay_29_02301940.o
 	Object src/overlay_29_02301A60.o
 	Object asm/overlay_29_02301A84.o
 	Object src/dungeon_pokemon_attributes.o

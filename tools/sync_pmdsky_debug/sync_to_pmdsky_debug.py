@@ -281,6 +281,8 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
             symbol_header = symbol_header.replace('s32', 'int')
             symbol_header = symbol_header.replace('s16', 'int16_t')
             symbol_header = symbol_header.replace('s8', 'int8_t')
+            symbol_header = symbol_header.replace('bool8', 'bool')
+            symbol_header = symbol_header.replace(' *', '* ')
     else:
         symbol_header = f'void {base_symbol_name}(void);\n'
 

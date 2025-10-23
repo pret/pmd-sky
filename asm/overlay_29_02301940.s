@@ -1,55 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_023018AC.inc"
+	.include "overlay_29_02301940.inc"
 
 	.text
-
-	arm_func_start ov29_023018AC
-ov29_023018AC: ; 0x023018AC
-	stmdb sp!, {r3, r4, r5, lr}
-	ldr r4, [r0, #0xb4]
-	ldr r5, [r1, #0xb4]
-	ldrb r0, [r4, #0xbc]
-	cmp r0, #7
-	moveq r0, #2
-	ldmeqia sp!, {r3, r4, r5, pc}
-	mov r0, r4
-	bl IsExperienceLocked
-	cmp r0, #0
-	movne r0, #2
-	ldmneia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r4, #9]
-	cmp r0, #0
-#ifndef JAPAN
-	cmpne r0, #3
-#endif
-	movne r0, #2
-	ldmneia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r5, #0xbc]
-	cmp r0, #7
-	moveq r0, #2
-	ldmeqia sp!, {r3, r4, r5, pc}
-	mov r0, r5
-	bl IsExperienceLocked
-	cmp r0, #0
-	movne r0, #2
-	ldmneia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r5, #9]
-	cmp r0, #0
-#ifndef JAPAN
-	cmpne r0, #3
-#endif
-	movne r0, #2
-	ldmneia sp!, {r3, r4, r5, pc}
-	ldrb r1, [r4, #6]
-	ldrb r0, [r5, #6]
-	cmp r1, r0
-	movne r0, #1
-	moveq r0, #0
-#ifdef JAPAN
-	and r0, r0, #0xff
-#endif
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_023018AC
 
 	arm_func_start SafeguardIsActive
 SafeguardIsActive: ; 0x02301940

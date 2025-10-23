@@ -49,7 +49,7 @@
 .public ov29_022E4E74
 .public ov29_022E4F1C
 .public ov29_022E53EC
-.public ov29_023018AC
+.public GetTreatmentBetweenMonstersIgnoreStatus
 .public ov29_02304A48
 .public ov29_02304A84
 .public SafeguardIsActive

@@ -749,7 +749,7 @@ _02312534:
 _023125AC:
 	mov r0, sb
 	mov r1, r6
-	bl ov29_023018AC
+	bl GetTreatmentBetweenMonstersIgnoreStatus
 	cmp r0, #1
 	bne _023125DC
 	mov r2, #0
@@ -995,7 +995,7 @@ _02312868:
 _023128E0:
 	mov r0, sb
 	mov r1, r6
-	bl ov29_023018AC
+	bl GetTreatmentBetweenMonstersIgnoreStatus
 	cmp r0, #1
 	bne _02312908
 	mov r0, sl
@@ -1195,7 +1195,7 @@ _02312B24:
 _02312B9C:
 	mov r0, sb
 	mov r1, r6
-	bl ov29_023018AC
+	bl GetTreatmentBetweenMonstersIgnoreStatus
 	cmp r0, #1
 	bne _02312BC4
 	mov r0, sl
