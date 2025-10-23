@@ -136,18 +136,24 @@ for i, line in enumerate(lsf_lines):
         if not include_new_asm_file and merge_prev_file is None:
             next_line = lsf_lines[i + 1]
             if next_line.startswith(SRC_LSF_PREFIX):
-                merge_next_file = next_line[len(SRC_LSF_PREFIX) : -3]
+                merge_next_file = next_line[len(SRC_LSF_PREFIX):]
         if merge_prev_file is None and merge_next_file is None:
             lsf_lines[i] += f'\tObject src/{extract_file_name}.o{lsf_suffix}\n'
         if include_new_asm_file:
             lsf_lines[i] += f'\tObject asm/{new_asm_base_name}.o{lsf_suffix}\n'
         break
 
-if merge_prev_file is not None:
+def trim_merge_file_name(file_name: str) -> str:
+    if file_name is None:
+        return None
+
     line_end_index = len('.o\n')
-    if merge_prev_file.endswith('.o (.itcm)\n'):
+    if file_name.endswith('.o (.itcm)\n'):
         line_end_index = len('.o (.itcm)\n')
-    merge_prev_file = merge_prev_file[:-line_end_index]
+    return file_name[:-line_end_index]
+
+merge_prev_file = trim_merge_file_name(merge_prev_file)
+merge_next_file = trim_merge_file_name(merge_next_file)
 
 print('Updating', LSF_FILE_PATH)
 with open(LSF_FILE_PATH, 'w') as lsf_file:

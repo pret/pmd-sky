@@ -2791,21 +2791,3 @@ _01FFA37C:
 	.align 2, 0
 _01FFA38C: .word ov29_02353530
 	arm_func_end sub_01FF9F80
-
-	arm_func_start ShouldMonsterRunAwayAndShowEffectOutlawCheck
-ShouldMonsterRunAwayAndShowEffectOutlawCheck: ; 0x01FFA390
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r4, #0
-	mov r5, r0
-	bl ShouldMonsterRunAwayAndShowEffect
-	cmp r0, #0
-	movne r4, #1
-	bne _01FFA3BC
-	ldr r0, [r5, #0xb4]
-	ldrb r0, [r0, #0xbc]
-	cmp r0, #3
-	moveq r4, #1
-_01FFA3BC:
-	mov r0, r4
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ShouldMonsterRunAwayAndShowEffectOutlawCheck

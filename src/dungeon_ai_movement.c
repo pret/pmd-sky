@@ -2,6 +2,7 @@
 #include "dg_camera.h"
 #include "dg_random.h"
 #include "dungeon_action.h"
+#include "dungeon_ai_targeting.h"
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_capabilities_1.h"
 #include "dungeon_capabilities_4.h"
@@ -16,6 +17,7 @@
 #include "math.h"
 #include "number_util.h"
 #include "overlay_29_022E1610.h"
+#include "overlay_29_022FA430.h"
 #include "overlay_29_0230827C.h"
 #include "position_util.h"
 
@@ -47,8 +49,6 @@ extern bool8 CanTargetPosition(struct entity *monster, struct position *position
 extern s32 GetChebyshevDistance(struct position *position_a, struct position *position_b);
 extern bool8 IsBagFull();
 extern bool8 ShouldMonsterFollowLeader(struct entity *monster);
-extern bool8 ShouldMonsterHeadToStairs(struct entity *entity);
-extern bool8 ShouldMonsterRunAwayAndShowEffectOutlawCheck(struct entity* monster, bool8 show_run_away_effect);
 extern bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target);
 extern s32 ov29_022FBE04(struct monster*);
 extern bool8 CanMoveThroughWalls(struct entity *monster);
@@ -57,6 +57,18 @@ extern bool8 CanSeeTeammate(struct entity *monster);
 extern struct entity* GetLeaderIfVisible(struct entity *monster);
 extern bool8 ov29_02348D00(struct item*);
 extern bool8 IsAtJunction(struct entity *monster);
+
+bool8 ShouldMonsterRunAwayAndShowEffectOutlawCheck(struct entity *monster, bool8 show_run_away_effect)
+{
+    bool8 should_run_away = FALSE;
+    if (ShouldMonsterRunAwayAndShowEffect(monster, show_run_away_effect))
+        should_run_away = TRUE;
+    else if (GetEntInfo(monster)->monster_behavior == BEHAVIOR_FLEEING_OUTLAW)
+        should_run_away = TRUE;
+
+    return should_run_away;
+}
+
 
 // https://decomp.me/scratch/2QnEr
 #ifdef NONMATCHING
