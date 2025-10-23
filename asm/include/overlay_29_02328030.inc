@@ -55,7 +55,6 @@
 .public NATURE_POWER_TABLE
 .public ov10_022C4E44
 .public ov10_022C6324
-.public ov29_022E56A0
 .public ov29_022EA370
 .public ov29_022ECAFC
 .public ov29_022F9EA0
@@ -68,6 +67,7 @@
 .public ov29_0232A834
 .public ov29_0234C738
 .public ov29_02352B18
+.public PlaySeByIdIfShouldDisplayEntity
 .public POISON_FANG_POISON_CHANCE
 .public POISON_STING_POISON_CHANCE
 .public RemoveEmptyItemsInBagWrapper

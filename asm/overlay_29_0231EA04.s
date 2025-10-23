@@ -31,8 +31,8 @@ CategoryIsNotPhysical: ; 0x0231EA30
 	bx lr
 	arm_func_end CategoryIsNotPhysical
 
-	arm_func_start ov29_0231EA40
-ov29_0231EA40: ; 0x0231EA40
+	arm_func_start MakeFloorOneRoom
+MakeFloorOneRoom: ; 0x0231EA40
 #ifdef JAPAN
 #define OV29_0231EA40_OFFSET -0xA4
 #else
@@ -299,4 +299,4 @@ _0231EDCC: .word 0x00000E01
 _0231EDD0: .word 0x00000DFF
 _0231EDD4: .word 0x00000DFE
 #endif
-	arm_func_end ov29_0231EA40
+	arm_func_end MakeFloorOneRoom

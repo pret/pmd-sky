@@ -1,13 +1,13 @@
 #pragma once
+.public _0209CF0C
+.public _0209DF70
 .public Debug_Print0
 .public GAME_MODE
 .public InitDungeonListScriptVars
 .public InitScenarioScriptVars
 .public InitWorldMapScriptVars
+.public SaveScriptVariableValue
+.public SaveScriptVariableValueAtIndex
 .public SCRIPT_VARS
 .public SCRIPT_VARS_LOCALS
 .public SCRIPT_VARS_VALUES
-.public SaveScriptVariableValue
-.public SaveScriptVariableValueAtIndex
-.public _0209CF0C
-.public _0209DF70

@@ -2189,13 +2189,13 @@ _02027A64: .word _020AFD4C
 
 	arm_func_start SetScreenWindowsColor
 SetScreenWindowsColor: ; 0x02027A68
-	ldr r2, _02027A7C ; =_020AFD98
+	ldr r2, _02027A7C ; =MENU_CONTROL_PTR
 	cmp r1, #2
 	moveq r1, #1
 	strb r0, [r2, r1]
 	bx lr
 	.align 2, 0
-_02027A7C: .word _020AFD98
+_02027A7C: .word MENU_CONTROL_PTR
 	arm_func_end SetScreenWindowsColor
 
 	arm_func_start SetBothScreensWindowsColor
@@ -2323,7 +2323,7 @@ _02027B9C:
 	ldrsb r0, [r0, r1]
 	cmp r0, #0
 	bne _02027DF0
-	ldr r0, _02027E20 ; =_020AFD98
+	ldr r0, _02027E20 ; =MENU_CONTROL_PTR
 	ldrb r1, [r4, #4]
 	ldrb r3, [r0, #1]
 	ldr r2, _02027E24 ; =_0209ACAC
@@ -2485,7 +2485,7 @@ _02027E00:
 _02027E14: .word _022A7A6C
 _02027E18: .word WINDOW_LIST
 _02027E1C: .word _0209AC64
-_02027E20: .word _020AFD98
+_02027E20: .word MENU_CONTROL_PTR
 _02027E24: .word _0209ACAC
 _02027E28: .word _022A7AE4
 _02027E2C: .word _020AFD4C
@@ -3530,7 +3530,7 @@ _02028A94:
 	strb r1, [r7]
 	cmp r0, #0
 	bne _02028BC4
-	ldr r0, _02028DF8 ; =_020AFD98
+	ldr r0, _02028DF8 ; =MENU_CONTROL_PTR
 	ldrsb r3, [r6, #9]
 	ldrb r2, [r0]
 	ldr r0, _02028DEC ; =_022A7A6C
@@ -3819,7 +3819,7 @@ _02028DE8: .word _020AFD4C
 _02028DEC: .word _022A7A6C
 _02028DF0: .word WINDOW_LIST
 _02028DF4: .word _022A7B1C
-_02028DF8: .word _020AFD98
+_02028DF8: .word MENU_CONTROL_PTR
 _02028DFC: .word _0209ACA8
 _02028E00: .word _0209AC64
 _02028E04: .word _0209AC78
@@ -6067,14 +6067,14 @@ CheckParentMenuField0x1A0: ; 0x0202AB60
 	ldmia sp!, {r3, pc}
 	arm_func_end CheckParentMenuField0x1A0
 
-	arm_func_start sub_0202AB80
-sub_0202AB80: ; 0x0202AB80
+	arm_func_start GetWindowIdSelectedItemOnPage
+GetWindowIdSelectedItemOnPage: ; 0x0202AB80
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #4
-	bl sub_02032558
+	bl GetSelectedItemOnPage
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0202AB80
+	arm_func_end GetWindowIdSelectedItemOnPage
 
 	arm_func_start sub_0202AB94
 sub_0202AB94: ; 0x0202AB94
@@ -6087,8 +6087,8 @@ sub_0202AB94: ; 0x0202AB94
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0202AB94
 
-	arm_func_start sub_0202ABB0
-sub_0202ABB0: ; 0x0202ABB0
+	arm_func_start GetSimpleMenuResult__0202AEA4
+GetSimpleMenuResult__0202AEA4: ; 0x0202ABB0
 	stmdb sp!, {r4, lr}
 	bl GetWindowContents
 	ldrb r1, [r0, #0x1a0]
@@ -6099,10 +6099,10 @@ sub_0202ABB0: ; 0x0202ABB0
 	add r0, r0, #4
 	cmp r1, #0
 	beq _0202ABE0
-	bl sub_0203258C
+	bl GetTotalNumMenuItems
 	b _0202ABE4
 _0202ABE0:
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 _0202ABE4:
 	add r0, r0, r0, lsl #6
 	add r0, r4, r0, lsl #2
@@ -6111,7 +6111,7 @@ _0202ABE4:
 _0202ABF4:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end sub_0202ABB0
+	arm_func_end GetSimpleMenuResult__0202AEA4
 
 	arm_func_start UpdateParentMenu
 UpdateParentMenu: ; 0x0202ABFC
@@ -6243,7 +6243,7 @@ _0202ADAC:
 	orr r5, r5, r0
 _0202ADCC:
 	add r0, r4, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	mov r2, r0
 	ldr r1, [sp, #8]
 	add r0, r4, #4
@@ -6803,7 +6803,7 @@ sub_0202B530: ; 0x0202B530
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #4
-	bl sub_02032558
+	bl GetSelectedItemOnPage
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202B530
 
@@ -6812,7 +6812,7 @@ sub_0202B544: ; 0x0202B544
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #4
-	bl sub_02032560
+	bl GetCurrentPage
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202B544
 
@@ -6829,12 +6829,12 @@ sub_0202B568: ; 0x0202B568
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #4
-	bl sub_0203259C
+	bl GetMaxItemsOnPage
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202B568
 
-	arm_func_start GetSimpleMenuResult
-GetSimpleMenuResult: ; 0x0202B57C
+	arm_func_start GetSimpleMenuResult__0202B870
+GetSimpleMenuResult__0202B870: ; 0x0202B57C
 	stmdb sp!, {r4, lr}
 	bl GetWindowContents
 	ldrb r1, [r0, #0x1a0]
@@ -6845,10 +6845,10 @@ GetSimpleMenuResult: ; 0x0202B57C
 	add r0, r0, #4
 	cmp r1, #0
 	beq _0202B5AC
-	bl sub_0203258C
+	bl GetTotalNumMenuItems
 	b _0202B5B0
 _0202B5AC:
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 _0202B5B0:
 	add r0, r0, r0, lsl #6
 	add r0, r4, r0, lsl #2
@@ -6857,7 +6857,7 @@ _0202B5B0:
 _0202B5C0:
 	mov r0, #0
 	ldmia sp!, {r4, pc}
-	arm_func_end GetSimpleMenuResult
+	arm_func_end GetSimpleMenuResult__0202B870
 
 	arm_func_start UpdateSimpleMenu
 UpdateSimpleMenu: ; 0x0202B5C8
@@ -6990,7 +6990,7 @@ _0202B77C:
 	orr r5, r5, r0
 _0202B79C:
 	add r0, r4, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	mov r2, r0
 	ldr r1, [sp, #8]
 	add r0, r4, #4
@@ -7400,7 +7400,7 @@ GetAdvancedMenuCurrentOption: ; 0x0202BCFC
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldmia sp!, {r3, pc}
 	arm_func_end GetAdvancedMenuCurrentOption
 
@@ -7416,7 +7416,7 @@ GetAdvancedMenuResult: ; 0x0202BD10
 	mvnne r0, #0
 	ldmneia sp!, {r3, pc}
 	add r0, r0, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldmia sp!, {r3, pc}
 _0202BD40:
 	mvn r0, #0
@@ -7542,7 +7542,7 @@ _0202BEC8:
 	orr r5, r5, r0
 _0202BEE8:
 	add r0, r4, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	mov r2, r0
 	ldr r1, [sp, #8]
 	add r0, r4, #4
@@ -8103,7 +8103,7 @@ sub_0202C654: ; 0x0202C654
 	mov r0, r8
 	bl GetWindowContents
 	add r0, r0, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	str r0, [r4, #0x100]
 _0202C6A4:
 	add r1, sp, #8
@@ -8170,7 +8170,7 @@ sub_0202C748: ; 0x0202C748
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202C748
 
@@ -8186,7 +8186,7 @@ sub_0202C75C: ; 0x0202C75C
 	mvnne r0, #0
 	ldmneia sp!, {r3, pc}
 	add r0, r0, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldmia sp!, {r3, pc}
 _0202C78C:
 	mvn r0, #0
@@ -8347,7 +8347,7 @@ _0202C918:
 	cmp r0, #0
 	beq _0202C994
 	add r0, r5, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	cmp r7, r0
 	bne _0202CA54
 _0202C994:
@@ -8419,7 +8419,7 @@ _0202CA70:
 	orr r8, r8, r0
 _0202CA90:
 	add r0, r5, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	mov r2, r0
 	ldr r1, [sp, #8]
 	add r0, r5, #4
@@ -8697,7 +8697,7 @@ _0202CE6C:
 	cmpne r0, #9
 	beq _0202CE94
 	add r0, r5, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldr r1, [r5, #0x1a8]
 	blx r1
 _0202CE94:
@@ -8888,7 +8888,7 @@ sub_0202D0EC: ; 0x0202D0EC
 	bl GetWindowContents
 	mov r5, r0
 	add r0, r5, #4
-	bl sub_02032558
+	bl GetSelectedItemOnPage
 	mov r4, r0
 	add r0, r5, #4
 	bl GetPageStart
@@ -9243,7 +9243,7 @@ sub_0202D59C: ; 0x0202D59C
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #4
-	bl sub_02032558
+	bl GetSelectedItemOnPage
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0202D59C
 
@@ -9410,7 +9410,7 @@ _0202D7C0:
 	orr r5, r5, r0
 _0202D7E0:
 	add r0, r4, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldr r2, [r4, #0xfc]
 	ldr r3, [r4, #0x198]
 	mov r1, #0x10c
@@ -9496,7 +9496,7 @@ _0202D900:
 	bl sub_0202DA64
 _0202D910:
 	add r0, r4, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	mov r2, r0
 	ldr r1, [r4, #0x198]
 	mov r0, #0x10c
@@ -10079,7 +10079,7 @@ _0202E0CC:
 	orr r5, r5, r0
 _0202E0EC:
 	add r0, r4, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldr r1, [r4, #0xfc]
 	ldr r3, [r4, #0x198]
 	tst r1, #0x200
@@ -10732,7 +10732,7 @@ _0202E9C0:
 	bl sub_02031C98
 	mov r7, r0
 	add r0, r5, #4
-	bl sub_02032560
+	bl GetCurrentPage
 	mov fp, r0
 	add r2, r5, #0x1000
 	mov r0, #0
@@ -12552,8 +12552,8 @@ sub_020300C0: ; 0x020300C0
 _02030108: .word 0x0000C402
 	arm_func_end sub_020300C0
 
-	arm_func_start sub_0203010C
-sub_0203010C: ; 0x0203010C
+	arm_func_start AddMessageToAlertBox
+AddMessageToAlertBox: ; 0x0203010C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	mov r6, r2
@@ -12613,7 +12613,7 @@ _02030144:
 	bl sub_0203007C
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_0203010C
+	arm_func_end AddMessageToAlertBox
 
 	arm_func_start IsAlertBoxActive
 IsAlertBoxActive: ; 0x020301F4
@@ -13168,7 +13168,7 @@ sub_02030908: ; 0x02030908
 	mvnne r0, #0
 	ldmneia sp!, {r3, pc}
 	add r0, r0, #4
-	bl sub_02032558
+	bl GetSelectedItemOnPage
 	ldmia sp!, {r3, pc}
 _02030938:
 	mvn r0, #0
@@ -13187,7 +13187,7 @@ sub_02030940: ; 0x02030940
 	mvnne r0, #0
 	ldmneia sp!, {r3, pc}
 	add r0, r0, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldmia sp!, {r3, pc}
 _02030970:
 	mvn r0, #0
@@ -13472,7 +13472,7 @@ _02030CC4:
 	orr r6, r6, r0
 _02030CD8:
 	add r0, r4, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	mov r2, r0
 	ldr r1, [r4, #0x1b0]
 	add r0, r4, #4
@@ -13857,7 +13857,7 @@ sub_020311D4: ; 0x020311D4
 	stmdb sp!, {r3, lr}
 	bl GetWindowContents
 	add r0, r0, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_020311D4
 
@@ -13873,7 +13873,7 @@ sub_020311E8: ; 0x020311E8
 	mvnne r0, #0
 	ldmneia sp!, {r3, pc}
 	add r0, r0, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldmia sp!, {r3, pc}
 _02031218:
 	mvn r0, #0
@@ -14018,7 +14018,7 @@ _020313F0:
 	bl sub_0203175C
 _02031400:
 	add r0, r4, #4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	mov r2, r0
 	ldr r1, [sp, #8]
 	add r0, r4, #4
@@ -15262,7 +15262,7 @@ IsMenuOptionActive: ; 0x02032474
 	bne _020324BC
 	tst r1, #0x200
 	beq _020324B4
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldr r1, [r4, #0xac]
 	ldrb r0, [r1, r0]
 	tst r0, #1
@@ -15286,7 +15286,7 @@ sub_020324C4: ; 0x020324C4
 	beq _02032504
 	tst r1, #0x200
 	beq _020324FC
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldr r1, [r4, #0xac]
 	ldrb r0, [r1, r0]
 	tst r0, #1
@@ -15326,17 +15326,17 @@ _02032550:
 	bx lr
 	arm_func_end sub_0203250C
 
-	arm_func_start sub_02032558
-sub_02032558: ; 0x02032558
+	arm_func_start GetSelectedItemOnPage
+GetSelectedItemOnPage: ; 0x02032558
 	ldr r0, [r0, #0xbc]
 	bx lr
-	arm_func_end sub_02032558
+	arm_func_end GetSelectedItemOnPage
 
-	arm_func_start sub_02032560
-sub_02032560: ; 0x02032560
+	arm_func_start GetCurrentPage
+GetCurrentPage: ; 0x02032560
 	ldr r0, [r0, #0xc8]
 	bx lr
-	arm_func_end sub_02032560
+	arm_func_end GetCurrentPage
 
 	arm_func_start GetPageStart
 GetPageStart: ; 0x02032568
@@ -15346,20 +15346,20 @@ GetPageStart: ; 0x02032568
 	bx lr
 	arm_func_end GetPageStart
 
-	arm_func_start sub_02032578
-sub_02032578: ; 0x02032578
+	arm_func_start GetSelectedMenuItemIdx
+GetSelectedMenuItemIdx: ; 0x02032578
 	ldr r2, [r0, #0xbc]
 	ldr r1, [r0, #0xc8]
 	ldr r0, [r0, #0xc4]
 	mla r0, r1, r0, r2
 	bx lr
-	arm_func_end sub_02032578
+	arm_func_end GetSelectedMenuItemIdx
 
-	arm_func_start sub_0203258C
-sub_0203258C: ; 0x0203258C
+	arm_func_start GetTotalNumMenuItems
+GetTotalNumMenuItems: ; 0x0203258C
 	ldr r0, [r0, #0xd0]
 	bx lr
-	arm_func_end sub_0203258C
+	arm_func_end GetTotalNumMenuItems
 
 	arm_func_start GetNumItemsOnPage
 GetNumItemsOnPage: ; 0x02032594
@@ -15367,17 +15367,17 @@ GetNumItemsOnPage: ; 0x02032594
 	bx lr
 	arm_func_end GetNumItemsOnPage
 
-	arm_func_start sub_0203259C
-sub_0203259C: ; 0x0203259C
+	arm_func_start GetMaxItemsOnPage
+GetMaxItemsOnPage: ; 0x0203259C
 	ldr r0, [r0, #0xc4]
 	bx lr
-	arm_func_end sub_0203259C
+	arm_func_end GetMaxItemsOnPage
 
-	arm_func_start sub_020325A4
-sub_020325A4: ; 0x020325A4
+	arm_func_start GetTotalNumPages
+GetTotalNumPages: ; 0x020325A4
 	ldr r0, [r0, #0xcc]
 	bx lr
-	arm_func_end sub_020325A4
+	arm_func_end GetTotalNumPages
 
 	arm_func_start sub_020325AC
 sub_020325AC: ; 0x020325AC
@@ -16637,11 +16637,11 @@ _020334FC:
 	cmp r0, #0
 	beq _02033598
 	mov r0, r5
-	bl sub_02032560
+	bl GetCurrentPage
 	add r1, r0, #1
 	mov r0, r5
 	str r1, [sp, #0x28]
-	bl sub_020325A4
+	bl GetTotalNumPages
 	str r0, [sp, #0x2c]
 	add r1, sp, #4
 	str r1, [sp]
@@ -17882,7 +17882,7 @@ sub_020346C0: ; 0x020346C0
 	bl MemAlloc
 	mov r4, r0
 	ldr ip, _02034708 ; =_020AFDB8
-	ldr r0, _0203470C ; =_0209B08C
+	ldr r0, _0203470C ; =NULL_OVERLAY_LOAD_ENTRY
 	str r4, [ip]
 	add lr, r4, #0xc4
 	ldmia r0, {r0, r1, r2, r3}
@@ -17896,7 +17896,7 @@ sub_020346C0: ; 0x020346C0
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02034708: .word _020AFDB8
-_0203470C: .word _0209B08C
+_0203470C: .word NULL_OVERLAY_LOAD_ENTRY
 	arm_func_end sub_020346C0
 
 	arm_func_start sub_02034710
@@ -17904,16 +17904,16 @@ sub_02034710: ; 0x02034710
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	sub sp, sp, #0x10
 	ldr r1, _02034798 ; =_020AFDB8
-	ldr r0, _0203479C ; =_0209B08C
+	ldr r0, _0203479C ; =NULL_OVERLAY_LOAD_ENTRY
 	ldr r1, [r1]
 	add r4, r1, #0xc4
 	mov r1, r4
-	bl sub_020347A0
+	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	bne _0203473C
-	bl sub_020347F0
+	bl FreeActiveMenu
 _0203473C:
-	ldr r0, _0203479C ; =_0209B08C
+	ldr r0, _0203479C ; =NULL_OVERLAY_LOAD_ENTRY
 	add r7, sp, #0
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r7, {r0, r1, r2, r3}
@@ -17938,15 +17938,15 @@ _0203473C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02034798: .word _020AFDB8
-_0203479C: .word _0209B08C
+_0203479C: .word NULL_OVERLAY_LOAD_ENTRY
 	arm_func_end sub_02034710
 
-	arm_func_start sub_020347A0
-sub_020347A0: ; 0x020347A0
+	arm_func_start OverlayLoadEntriesEqual
+OverlayLoadEntriesEqual: ; 0x020347A0
 	cmp r0, #0
-	ldreq r0, _020347EC ; =_0209B08C
+	ldreq r0, _020347EC ; =NULL_OVERLAY_LOAD_ENTRY
 	cmp r1, #0
-	ldreq r1, _020347EC ; =_0209B08C
+	ldreq r1, _020347EC ; =NULL_OVERLAY_LOAD_ENTRY
 	ldr r3, [r0]
 	ldr r2, [r1]
 	cmp r3, r2
@@ -17963,11 +17963,11 @@ sub_020347A0: ; 0x020347A0
 	movne r0, #0
 	bx lr
 	.align 2, 0
-_020347EC: .word _0209B08C
-	arm_func_end sub_020347A0
+_020347EC: .word NULL_OVERLAY_LOAD_ENTRY
+	arm_func_end OverlayLoadEntriesEqual
 
-	arm_func_start sub_020347F0
-sub_020347F0: ; 0x020347F0
+	arm_func_start FreeActiveMenu
+FreeActiveMenu: ; 0x020347F0
 	stmdb sp!, {r4, lr}
 	ldr r0, _0203483C ; =_020AFDB8
 	ldr r4, [r0]
@@ -17990,7 +17990,7 @@ _0203480C:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0203483C: .word _020AFDB8
-	arm_func_end sub_020347F0
+	arm_func_end FreeActiveMenu
 
 	arm_func_start sub_02034840
 sub_02034840: ; 0x02034840
@@ -18004,15 +18004,15 @@ sub_02034840: ; 0x02034840
 	cmp r4, #0
 	beq _0203487C
 	add r1, r2, #0x14
-	bl sub_020347A0
+	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	beq _02034894
 	mov r0, #1
 	ldmia sp!, {r4, pc}
 _0203487C:
-	ldr r0, _020348E0 ; =_0209B08C
+	ldr r0, _020348E0 ; =NULL_OVERLAY_LOAD_ENTRY
 	add r1, r2, #0x14
-	bl sub_020347A0
+	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	moveq r0, #1
 	ldmeqia sp!, {r4, pc}
@@ -18023,14 +18023,14 @@ _02034894:
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0xc4
-	bl sub_020347A0
+	bl OverlayLoadEntriesEqual
 	ldmia sp!, {r4, pc}
 _020348B4:
 	ldr r1, _020348DC ; =_020AFDB8
-	ldr r0, _020348E0 ; =_0209B08C
+	ldr r0, _020348E0 ; =NULL_OVERLAY_LOAD_ENTRY
 	ldr r1, [r1]
 	add r1, r1, #0x14
-	bl sub_020347A0
+	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
@@ -18038,5 +18038,5 @@ _020348B4:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _020348DC: .word _020AFDB8
-_020348E0: .word _0209B08C
+_020348E0: .word NULL_OVERLAY_LOAD_ENTRY
 	arm_func_end sub_02034840

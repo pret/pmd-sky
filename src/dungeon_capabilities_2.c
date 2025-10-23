@@ -1,7 +1,7 @@
 #include "dungeon_capabilities_2.h"
 #include "dungeon_util_static.h"
 
-bool8 CheckVariousStatuses(struct entity *entity)
+bool8 CheckVariousStatuses__023016DC(struct entity *entity)
 {
     struct monster *pokemon_info = GetEntInfo(entity);
 

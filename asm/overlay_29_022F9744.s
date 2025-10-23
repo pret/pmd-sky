@@ -948,11 +948,11 @@ _022FA27C:
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r6
 	mov r1, #1
-	bl CheckVariousStatuses2
+	bl CheckVariousStatuses2__02301244
 	cmp r0, #0
 	beq _022FA2B8
 	mov r0, r6
-	bl CheckVariousStatuses
+	bl CheckVariousStatuses__023016DC
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 _022FA2B8:

@@ -77,7 +77,7 @@ _02320294:
 	beq _02320328
 	ldr r1, _02320338 ; =0x00000212
 	mov r0, sl
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	mov r0, sl
 	mov r1, r8
 	bl LogMessageByIdWithPopupCheckUser

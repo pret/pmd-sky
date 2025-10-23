@@ -12,8 +12,9 @@
 .public CanAiUseMove
 .public CanMonsterSpawn
 .public CheckTeamMemberIdxVeneer
-.public CheckVariousConditions
-.public CheckVariousStatuses2
+.public CheckVariousConditions__0230156C
+.public CheckVariousConditions__02301624
+.public CheckVariousStatuses2__02301244
 .public CloseAdvancedTextBox
 .public CloseAdvancedTextBox2
 .public CloseDialogueBox
@@ -63,9 +64,12 @@
 .public DUNGEON_WINDOW_PARAMS_31
 .public DUNGEON_WINDOW_PARAMS_32
 .public DUNGEON_WINDOW_PARAMS_9
+.public DungeonMenuLoop
 .public EntityIsValidOverlay31
 .public FormatMoveString
 .public FormatMoveStringMore
+.public FreeDungeonMenu
+.public FreeStairsMenu
 .public GetActiveTeamMember
 .public GetCurrentBagCapacity
 .public GetDexNumber
@@ -76,6 +80,7 @@
 .public GetKecleonIdToSpawnByFloor
 .public GetLeader
 .public GetLeaderAction
+.public GetLeaderActionId
 .public GetLeaderChangeFlag
 .public GetLeaderMonster
 .public GetMaxPp
@@ -85,6 +90,7 @@
 .public GetNbItemsInBag
 .public GetPressedButtons
 .public GetRecruitRate2
+.public GetSimpleMenuResult__0202AEA4
 .public GetSpeciesString
 .public GetStringFromFileVeneer
 .public GetTeamMember
@@ -93,9 +99,11 @@
 .public GetTrapInfo
 .public GetUnlockedTactics
 .public GetWindowIdPageStart
+.public GetWindowIdSelectedItemOnPage
 .public GetWindowRectangle
 .public HandleStairsMenu
 .public HideTileGrid
+.public InitMenu
 .public InitPreprocessorArgs
 .public IqSkillFlagTest
 .public IsAdvancedTextBoxActive
@@ -136,9 +144,7 @@
 .public ov29_022EA428
 .public ov29_022EA62C
 .public ov29_022EAC78
-.public ov29_022EACCC
 .public ov29_022EB2C8
-.public ov29_022EB398
 .public ov29_022EB804
 .public ov29_022EB8B0
 .public ov29_022EB9A0
@@ -154,10 +160,8 @@
 .public ov29_022EBBE8
 .public ov29_022EBC2C
 .public ov29_022ECDE4
-.public ov29_022F0B9C
 .public ov29_022F9C34
 .public ov29_023002F0
-.public ov29_02300BF8
 .public ov29_023021F0
 .public ov29_02302388
 .public ov29_0233A0E8
@@ -175,9 +179,6 @@
 .public ov29_0235352C
 .public ov29_0237C91C
 .public ov29_0238280C
-.public ov31_02382B54
-.public ov31_02382DAC
-.public ov31_023832F0
 .public ov31_02383478
 .public ov31_0238372C
 .public ov31_02383768
@@ -217,6 +218,7 @@
 .public OVERLAY31_UNKNOWN_STRUCT__NA_2389FE8
 .public OVERLAY31_UNKNOWN_STRUCT__NA_238A144
 .public OVERLAY31_UNKNOWN_STRUCT__NA_238A190
+.public PlaySeByIdIfNotSilence
 .public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
 .public PlayWindowInputSound
@@ -224,6 +226,7 @@
 .public PreprocessString
 .public PreprocessStringFromId
 .public PrintIqSkillsMenu
+.public ResetLeaderActionFields
 .public ResumeParentMenu
 .public SetAdvancedTextBoxField0x1C2
 .public SetAdvancedTextBoxState5
@@ -243,9 +246,7 @@
 .public sub_0202812C
 .public sub_02028354
 .public sub_0202A98C
-.public sub_0202AB80
 .public sub_0202AB94
-.public sub_0202ABB0
 .public sub_0202B030
 .public sub_0202F334
 .public sub_0202F474
@@ -253,7 +254,6 @@
 .public sub_0202F9B8
 .public sub_020307EC
 .public sub_02030A2C
-.public sub_020348E4
 .public sub_0203F150
 .public sub_0203F398
 .public sub_0203F990

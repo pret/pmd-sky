@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_02300D00
-ov29_02300D00: ; 0x02300D00
+	arm_func_start CheckVariousStatuses__0230172C
+CheckVariousStatuses__0230172C: ; 0x02300D00
 	ldr r1, [r0, #0xb4]
 	ldrb r0, [r1, #0xbd]
 	cmp r0, #2
@@ -25,7 +25,7 @@ ov29_02300D00: ; 0x02300D00
 	movne r0, #0
 	and r0, r0, #0xff
 	bx lr
-	arm_func_end ov29_02300D00
+	arm_func_end CheckVariousStatuses__0230172C
 
 	arm_func_start ov29_02300D50
 ov29_02300D50: ; 0x02300D50
@@ -55,7 +55,7 @@ ov29_02300D50: ; 0x02300D50
 	cmp r2, #1
 	moveq r0, #1
 	ldmeqia sp!, {r3, pc}
-	bl CheckVariousStatuses
+	bl CheckVariousStatuses__023016DC
 	ldmia sp!, {r3, pc}
 	arm_func_end ov29_02300D50
 

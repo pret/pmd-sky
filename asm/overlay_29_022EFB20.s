@@ -1,18 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022EFB04.inc"
+	.include "overlay_29_022EFB20.inc"
 
 	.text
-
-	arm_func_start IsSecretBazaarNpcBehavior
-IsSecretBazaarNpcBehavior: ; 0x022EFB04
-	add r0, r0, #0xf0
-	and r0, r0, #0xff
-	cmp r0, #4
-	movls r0, #1
-	movhi r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end IsSecretBazaarNpcBehavior
 
 	arm_func_start ov29_022EFB20
 ov29_022EFB20: ; 0x022EFB20

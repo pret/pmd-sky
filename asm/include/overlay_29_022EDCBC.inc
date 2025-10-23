@@ -19,10 +19,10 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LogMessageByIdWithPopupCheckUserUnknown
 .public ov29_022E2CA0
-.public ov29_022E56A0
 .public ov29_022E58B0
 .public ov29_022E7A30
 .public ov29_022F9840
+.public PlaySeByIdIfShouldDisplayEntity
 .public SpawnTrap
 .public SubstitutePlaceholderStringTags
 .public TRAP_BUSTER_ACTIVATION_CHANCE

@@ -268,7 +268,7 @@ _02317B70:
 	strb r1, [r4, #0xf2]
 	bl sub_01FFB62C
 	ldr r0, _02317C14 ; =0x00000115
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldr r2, _02317C18 ; =0x00000D3C
 	mov r0, r6
 	mov r1, r5
@@ -961,7 +961,7 @@ ApplyAquaRingHealing: ; 0x023183E8
 	ldrsh r0, [r3, #0x10]
 	cmp r0, r1
 	bge _02318444
-	ldr r0, _02318458 ; =ov10_022C4628
+	ldr r0, _02318458 ; =AQUA_RING_BONUS_REGEN
 	mov r3, #0
 	ldrsh r2, [r0]
 	mov r0, r4
@@ -976,7 +976,7 @@ _0231844C:
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
 _02318454: .word 0x000003E7
-_02318458: .word ov10_022C4628
+_02318458: .word AQUA_RING_BONUS_REGEN
 	arm_func_end ApplyAquaRingHealing
 
 	arm_func_start TryInflictAquaRingStatus

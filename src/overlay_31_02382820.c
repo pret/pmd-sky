@@ -41,20 +41,20 @@ extern u32 Arm9LoadUnkFieldNa0x2029EC8(u32, u8*);
 extern u8 CreateParentMenuFromStringIds(u32*, u32, struct struct_2*, u32*);
 extern u8 CreateTextBox(u32*, void (*fun)(struct Window*));
 extern u32 IsParentMenuActive(s8);
-extern u32 sub_0202AB80(s8);
+extern u32 GetWindowIdSelectedItemOnPage(s8);
 extern void Arm9StoreUnkFieldNa0x2029ED8(u32, u8);
 extern u32 GetPressedButtons(u32, u16*);
 extern void sub_0202AB94(s8, u32);
 extern void sub_0202B030(s8);
 extern void sub_0202F954(s8);
-extern struct struct_1* sub_0202ABB0(s8);
+extern struct struct_1* GetSimpleMenuResult__0202AEA4(s8);
 
 extern void CloseTextBox(s8);
 extern void CloseParentMenu(s8);
 
 extern void ov29_022EA428(u32, u32);
 extern void AdvanceFrame(u8);
-extern u32 ov29_022F0B9C(void);
+extern u32 GetLeaderActionId(void);
 extern void ov29_022E0C2C(u32);
 
 extern u32 GetFloorType(void);
@@ -62,7 +62,7 @@ extern u32 PositionIsOnHiddenStairs(struct position*);
 
 void EntryOverlay31(void) {
     struct struct_1* r0;
-    if (sub_020348E4(&DUNGEON_WINDOW_PARAMS_3) == 0) {
+    if (InitMenu(&DUNGEON_WINDOW_PARAMS_3) == 0) {
         return;
     }
     r0 = (struct struct_1*)MemAlloc(16, 0x8);
@@ -155,7 +155,7 @@ void DungeonMenuSwitch(struct Window* window)
     UpdateWindow(window);
 }
 
-u32 ov31_02382B54(void)
+u32 DungeonMenuLoop(void)
 {
     u16 pressed_buttons;
     struct struct_2 sp;
@@ -189,7 +189,7 @@ u32 ov31_02382B54(void)
 
         case 2:
             if (IsParentMenuActive(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0])) {
-                u8 tmp4 = sub_0202AB80(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0]);
+                u8 tmp4 = GetWindowIdSelectedItemOnPage(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0]);
 
                 Arm9StoreUnkFieldNa0x2029ED8(5, tmp4);
 
@@ -220,7 +220,7 @@ u32 ov31_02382B54(void)
             break;
 
         case 3:
-            OVERLAY31_UNKNOWN_POINTER__NA_238A260[1] = sub_0202ABB0(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0]);
+            OVERLAY31_UNKNOWN_POINTER__NA_238A260[1] = GetSimpleMenuResult__0202AEA4(OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->f[0]);
             OVERLAY31_UNKNOWN_POINTER__NA_238A260[0]->a++;
             return 4;
             break;
@@ -228,7 +228,7 @@ u32 ov31_02382B54(void)
     return 1;
 }
 
-void ov31_02382DAC(void)
+void FreeDungeonMenu(void)
 {
     if (OVERLAY31_UNKNOWN_POINTER__NA_238A260[0] == NULL)
         return;
@@ -245,7 +245,7 @@ struct struct_1* ov31_02382E08(void)
     return OVERLAY31_UNKNOWN_POINTER__NA_238A260[1];
 }
 
-void ov31_02382E18(struct entity* arg_1, u32 arg_2)
+void StairsMenu(struct entity* arg_1, u32 arg_2)
 {
     ov29_022EA428(6, 0);
     AdvanceFrame(0x62);
@@ -258,7 +258,7 @@ void ov31_02382E18(struct entity* arg_1, u32 arg_2)
 
     AdvanceFrame(0x62);
 
-    if (ov29_022F0B9C()) {
+    if (GetLeaderActionId()) {
         ov29_022EA428(11, 0);
     } else if (arg_2) {
         ov29_022EA428(11, 0);
@@ -271,7 +271,7 @@ void ov31_02382E18(struct entity* arg_1, u32 arg_2)
 void CreateStairsMenuState(struct entity* entity)
 {
     struct struct_3* tmp1;
-    if (sub_020348E4(&OVERLAY31_UNKNOWN_STRUCT__NA_2389E30) == 0)
+    if (InitMenu(&OVERLAY31_UNKNOWN_STRUCT__NA_2389E30) == 0)
         return;
 
     tmp1 = MemAlloc(sizeof(struct struct_3), 8);

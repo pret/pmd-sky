@@ -8,7 +8,9 @@
 .public GetPageItemYOffset
 .public GetPageStart
 .public GetPressedButtons
+.public GetSelectedMenuItemIdx
 .public GetStringFromFileVeneer
+.public GetTotalNumMenuItems
 .public GetWindowContents
 .public GetWindowRectangle
 .public InitPreprocessorArgs
@@ -58,8 +60,6 @@
 .public sub_020320C8
 .public sub_02032160
 .public sub_020323F8
-.public sub_02032578
-.public sub_0203258C
 .public sub_02032684
 .public sub_02032984
 .public sub_02033758

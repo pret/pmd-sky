@@ -351,7 +351,7 @@ _0238AA6C:
 	ldr r0, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r3, _0238B4F8 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
 	ldr r2, [r3]
 	ldr r1, [r2, #0x24]
@@ -1303,7 +1303,7 @@ _0238B774:
 	b _0238BD74
 _0238B7C0:
 	ldrsb r0, [r0, #3]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238B7DC
 	cmp r0, #2

@@ -7,6 +7,9 @@
 .public Debug_GetDebugFlag
 .public G3X_Reset
 .public GetFadeStatus
+.public GetSimpleMenuResult__0202AEA4
+.public HandleMenus
+.public InitMenu
 .public IsDialogueBoxActive
 .public IsParentMenuActive
 .public MemAlloc
@@ -52,11 +55,8 @@
 .public sub_02028E2C
 .public sub_02028E40
 .public sub_02028E88
-.public sub_0202ABB0
 .public sub_0202F334
 .public sub_02034710
-.public sub_020348E4
-.public sub_02034A80
 .public sub_0204964C
 .public sub_0204A0E8
 .public sub_020519D0

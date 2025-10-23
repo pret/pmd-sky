@@ -2403,7 +2403,7 @@ SentryState1: ; 0x0238C20C
 	ldr r0, _0238C260 ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #8
 	beq _0238C248
 	cmp r0, #9
@@ -2446,7 +2446,7 @@ SentryState3: ; 0x0238C288
 	ldr r0, _0238C3AC ; =SENTRY_DUTY_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	add r0, r0, #1
 	cmp r0, #8
 	addls pc, pc, r0, lsl #2

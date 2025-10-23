@@ -22,7 +22,7 @@ TickStatusAndHealthRegen: ; 0x02311088
 	bl IsFloorOver
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl ov29_0234B294
+	bl WaitUntilAlertBoxTextIsLoadedWrapper
 	ldr r7, [sl, #0xb4]
 	ldrb r0, [r7, #0xbf]
 	add r0, r0, #0xfe

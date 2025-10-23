@@ -222,7 +222,7 @@ ov29_0230FC24: ; 0x0230FC24
 	mov r0, r5
 	strb r1, [r4, #0x150 + OV29_0230FC24_OFFSET]
 	bl ov29_022FB718
-	bl ov29_0234B294
+	bl WaitUntilAlertBoxTextIsLoadedWrapper
 	mov r0, r5
 	bl TryWeatherFormChange
 	mov r0, r5
@@ -541,7 +541,7 @@ _023100E8:
 	cmp r0, #0
 	beq _02310124
 	ldr r0, _02310A94 ; =0x00001303
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 _02310124:
 	mov r0, r5
 	mov r1, r6
@@ -591,7 +591,7 @@ _0231013C:
 	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	bne _02310360
-	ldr r0, _02310A9C ; =ov10_022C46EC
+	ldr r0, _02310A9C ; =BAD_WEATHER_DAMAGE
 	ldr r3, _02310AA0 ; =0x0000025F
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -631,7 +631,7 @@ _023101FC:
 	bl ExclusiveItemEffectIsActiveWithLogging
 	cmp r0, #0
 	bne _02310360
-	ldr r0, _02310A9C ; =ov10_022C46EC
+	ldr r0, _02310A9C ; =BAD_WEATHER_DAMAGE
 	ldr r3, _02310AA0 ; =0x0000025F
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -659,7 +659,7 @@ _02310298:
 	mov r0, #2
 	mov r1, #0x5a
 	bl SetPreprocessorArgsIdVal
-	ldr r0, _02310A9C ; =ov10_022C46EC
+	ldr r0, _02310A9C ; =BAD_WEATHER_DAMAGE
 	mov r2, #0x19
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -684,7 +684,7 @@ _02310304:
 	mov r0, #2
 	mov r1, #0x55
 	bl SetPreprocessorArgsIdVal
-	ldr r0, _02310A9C ; =ov10_022C46EC
+	ldr r0, _02310A9C ; =BAD_WEATHER_DAMAGE
 	ldr r3, _02310AA0 ; =0x0000025F
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1145,13 +1145,13 @@ _023109D4:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r1, _02310AD8 ; =ov10_022C45F0
+	ldr r1, _02310AD8 ; =WRAP_DAMAGE_COOLDOWN
 	mov r0, r5
 	ldrsh r2, [r1]
 	mov r1, r5
 	strb r2, [r4, #0xcd]
 	bl TryEndPetrifiedOrSleepStatus
-	ldr r0, _02310ADC ; =ov10_022C45D0
+	ldr r0, _02310ADC ; =WRAP_DAMAGE
 	ldr r3, _02310AE0 ; =0x0000024A
 	ldrsh r1, [r0]
 	mov r0, r5
@@ -1184,7 +1184,7 @@ _02310A8C: .word 0x00000DE9 + OV29_0230FC24_DATA_OFFSET
 _02310A90: .word 0x00000DEA + OV29_0230FC24_DATA_OFFSET
 _02310A94: .word 0x00001303
 _02310A98: .word 0x00000DBD + OV29_0230FC24_DATA_OFFSET
-_02310A9C: .word ov10_022C46EC
+_02310A9C: .word BAD_WEATHER_DAMAGE
 _02310AA0: .word 0x0000025F
 _02310AA4: .word ov10_022C46A0
 _02310AA8: .word SPEED_BOOST_TURNS
@@ -1199,12 +1199,12 @@ _02310AC8: .word BAD_POISON_DAMAGE_COOLDOWN
 _02310ACC: .word BAD_POISON_DAMAGE_TABLE
 _02310AD0: .word ov10_022C4454
 _02310AD4: .word ov10_022C446C
-_02310AD8: .word ov10_022C45F0
-_02310ADC: .word ov10_022C45D0
+_02310AD8: .word WRAP_DAMAGE_COOLDOWN
+_02310ADC: .word WRAP_DAMAGE
 _02310AE0: .word 0x0000024A
-_02310AE4: .word ov10_022C45E8
-_02310AE8: .word ov10_022C4590
-_02310AEC: .word ov10_022C44BC
+_02310AE4: .word INGRAIN_BONUS_REGEN_COOLDOWN
+_02310AE8: .word INGRAIN_BONUS_REGEN
+_02310AEC: .word CURSE_DAMAGE_COOLDOWN
 _02310AF0: .word LEECH_SEED_DAMAGE_COOLDOWN
 _02310AF4: .word LEECH_SEED_HP_DRAIN
 _02310AF8:
@@ -1226,8 +1226,8 @@ _02310AF8:
 	bl IsFloorOver
 	cmp r0, #0
 	bne _02310FF4
-	ldr r1, _02310AE4 ; =ov10_022C45E8
-	ldr r0, _02310AE8 ; =ov10_022C4590
+	ldr r1, _02310AE4 ; =INGRAIN_BONUS_REGEN_COOLDOWN
+	ldr r0, _02310AE8 ; =INGRAIN_BONUS_REGEN
 	ldrsh r3, [r1]
 	ldrsh r2, [r0]
 	mov r0, r5
@@ -1256,7 +1256,7 @@ _02310B6C:
 	movgt r1, r0
 	mov r0, r1, asr #1
 	add r0, r1, r0, lsr #30
-	ldr r1, _02310AEC ; =ov10_022C44BC
+	ldr r1, _02310AEC ; =CURSE_DAMAGE_COOLDOWN
 	movs r6, r0, asr #2
 	ldrsh r1, [r1]
 	mov r0, #0
@@ -1464,7 +1464,7 @@ _02310E9C:
 	mov r1, #0
 	mov r0, r5
 	strb r1, [r4, #0xd2]
-	bl CheckVariousStatuses2
+	bl CheckVariousStatuses2__02301244
 	cmp r0, #0
 	bne _02310F70
 	mov r0, r5
@@ -1473,7 +1473,7 @@ _02310E9C:
 	cmp r0, #0
 	bne _02310F70
 	mov r0, r5
-	bl CheckVariousStatuses
+	bl CheckVariousStatuses__023016DC
 	cmp r0, #0
 	bne _02310F70
 	mov r0, #0

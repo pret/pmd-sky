@@ -23,7 +23,7 @@
 .public GetPartnerMemberIdx
 .public GetPerformanceFlagWithChecks
 .public GetPressedButtons
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public GetTeamMember
 .public InitPortraitParamsWithMonsterId
 .public IsDialogueBoxActive

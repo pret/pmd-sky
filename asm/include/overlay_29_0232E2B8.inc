@@ -19,11 +19,11 @@
 .public HEALING_WISH_HP_RESTORATION
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerOffensiveStat
-.public ov29_02318D98
 .public ov29_0234AFFC
 .public ov29_02353718
 .public ResetHitChanceStat
 .public RestoreAllMovePP
+.public SetReflectStatus
 .public SPATK_STAT_IDX
 .public SubstitutePlaceholderStringTags
 .public TryIncreaseHp

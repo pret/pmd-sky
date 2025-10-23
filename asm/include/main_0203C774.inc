@@ -179,6 +179,7 @@
 .public ConvertStorageItemAtIdxToItem
 .public CopyBitsFrom
 .public CopyBitsTo
+.public CopyMenuControlWindowExtraInfo
 .public CopyNStringFromId
 .public CopyProgressInfoFromScratchFrom
 .public CopyProgressInfoFromScratchTo
@@ -254,7 +255,8 @@
 .public GetRankUpEntry
 .public GetReleasedStylus
 .public GetRngSeed
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202AEA4
+.public GetSimpleMenuResult__0202B870
 .public GetSpecialEpisodeType
 .public GetSpeciesString
 .public GetStringFromFileVeneer
@@ -263,7 +265,10 @@
 .public GetType
 .public GetTypeStringId
 .public GetWindowIdPageStart
+.public GetWindowIdSelectedItemOnPage
 .public HidePortraitBox
+.public InitMenu
+.public InitMenuWithWindowExtraInfo
 .public InitMove
 .public InitPortraitParams
 .public InitPortraitParamsWithMonsterId
@@ -427,8 +432,6 @@
 .public sub_02029FBC
 .public sub_0202A2A4
 .public sub_0202AAE8
-.public sub_0202AB80
-.public sub_0202ABB0
 .public sub_0202C1E4
 .public sub_0202C620
 .public sub_0202C654
@@ -455,9 +458,6 @@
 .public sub_02030A90
 .public sub_02030AAC
 .public sub_02030EF0
-.public sub_020348E4
-.public sub_02034974
-.public sub_02034A38
 .public sub_02037468
 .public sub_0203909C
 .public sub_02039218

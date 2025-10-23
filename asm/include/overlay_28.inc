@@ -1,5 +1,6 @@
 #pragma once
 .public GetStringFromFileVeneer
+.public InitMenu
 .public MemAlloc
 .public ov28_0238ABD4
 .public ov28_0238ACFC
@@ -12,4 +13,3 @@
 .public strcpy
 .public sub_02028EE8
 .public sub_02028F88
-.public sub_020348E4

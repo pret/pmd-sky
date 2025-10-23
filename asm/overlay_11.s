@@ -15029,7 +15029,7 @@ _022E8F94:
 	bl ov11_022F7BC4
 	bl ov11_022F2188
 	bl ov11_0230D570
-	bl sub_02034A80
+	bl HandleMenus
 	bl sub_02028848
 	b _022E8E24
 _022E8FB8:

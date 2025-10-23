@@ -32,6 +32,7 @@
 .public IsExperienceLocked
 .public IsGoldenChamber
 .public IsHiddenStairsFloor
+.public IsLoneOutlaw
 .public IsOutlawMonsterHouseFloor
 .public IsSecretBazaar
 .public LoadFixedRoomData
@@ -51,7 +52,6 @@
 .public ov29_022E3580
 .public ov29_022E7F7C
 .public ov29_022EA408
-.public IsLoneOutlaw
 .public ov29_0234217C
 .public ov29_02342594
 .public ov29_023427E4

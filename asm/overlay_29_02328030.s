@@ -1519,7 +1519,7 @@ DoMoveSeismicToss: ; 0x02329258
 	bl ov29_02318A90
 	ldr r1, _023293C8 ; =0x00000221
 	mov r0, r5
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	mov r0, r5
 	bl ov29_02318AD4
 	mov r0, #0x10
@@ -1539,7 +1539,7 @@ DoMoveSeismicToss: ; 0x02329258
 	bl ov29_02318B48
 	mov r0, r5
 	mov r1, #0x210
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	mov r0, #5
 	mov r1, #0x2000
 	mov r2, #0

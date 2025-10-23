@@ -20,6 +20,7 @@
 .public GetItemInfo
 .public GetKecleonIdToSpawnByFloor
 .public GetMonsterIdToSpawn
+.public GetRandomTrapId
 .public GetTile
 .public GetTrapInfo
 .public GetVisibilityRange
@@ -45,10 +46,8 @@
 .public ov10_022C4770
 .public ov10_022C4B18
 .public ov10_022C6C7A
-.public ov29_022E56A0
 .public ov29_022E56D4
 .public ov29_022E58B0
-.public ov29_022E7A8C
 .public ov29_022E8104
 .public ov29_022E81F8
 .public ov29_022EA370
@@ -58,6 +57,7 @@
 .public ov29_02304A48
 .public ov29_02346344
 .public PITFALL_TRAP_DAMAGE
+.public PlaySeByIdIfShouldDisplayEntity
 .public PrepareItemForPrinting__02345728
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveGroundItem

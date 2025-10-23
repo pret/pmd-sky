@@ -86,7 +86,6 @@
 .public ov29_022DE5F0
 .public ov29_022E2CA0
 .public ov29_022EA370
-.public ov29_022EACCC
 .public ov29_022EACE4
 .public ov29_022ED0F4
 .public ov29_0230027C
@@ -124,6 +123,7 @@
 .public ov29_02353558
 .public ov29_0237C850
 .public PlayEffectAnimationEntity
+.public PlaySeByIdIfNotSilence
 .public RandIntSafe
 .public SetMinimapDataE447
 .public SetMinimapDataE448

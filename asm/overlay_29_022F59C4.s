@@ -136,7 +136,7 @@ _022F5ADC:
 	beq _022F5B4C
 	mov r0, sl
 	mov r1, #1
-	bl CheckVariousStatuses2
+	bl CheckVariousStatuses2__02301244
 	cmp r0, #0
 	beq _022F5B78
 _022F5B4C:

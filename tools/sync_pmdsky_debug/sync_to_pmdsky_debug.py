@@ -4,7 +4,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any, Dict, List
 from ruamel.yaml.comments import CommentedMap
-from ruamel.yaml.scalarint import HexCapsInt
+from ruamel.yaml.scalarint import HexCapsInt, HexInt
 
 from pmdsky_debug_reader import LANGUAGE_KEYS_XMAP_TO_PMDSKY_DEBUG, SYMBOLS_FOLDER, get_pmdsky_debug_location, read_pmdsky_debug_symbols
 from symbol_details import ITCM_RAM_START_ADDRESSES, NONMATCHING_SYMBOLS_ARM7, NONMATCHING_SYMBOLS_ARM9, WRAM_OFFSET, SymbolDetails
@@ -194,7 +194,7 @@ def sync_xmap_symbol(address: int, symbol: SymbolDetails, language: str, section
             if reorder_languages:
                 symbol_entry_language_addresses.move_to_end(language_key, last=False)
         else:
-            if isinstance(symbol_entry_addresses, HexCapsInt):
+            if isinstance(symbol_entry_addresses, HexCapsInt) or isinstance(symbol_entry_addresses, HexInt):
                 print(f'Converting single address into array for {base_symbol_name}.')
                 symbol_entry_addresses = [symbol_entry_addresses]
                 symbol_entry_language_addresses[language_key] = symbol_entry_addresses

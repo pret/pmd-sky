@@ -28,10 +28,10 @@
 .public LogMessageByIdWithPopupCheckUser
 .public ov10_022C4674
 .public ov10_022C46F8
-.public ov29_0234B294
 .public ov29_02353318
 .public RAIN_ABILITY_BONUS_REGEN
 .public SubstitutePlaceholderStringTags
 .public TickStatusTurnCounter
 .public UpdateStatusIconFlags
+.public WaitUntilAlertBoxTextIsLoadedWrapper
 .public WISH_BONUS_REGEN

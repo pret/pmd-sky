@@ -434,7 +434,7 @@ ov29_0234F1DC: ; 0x0234F1DC
 	mov r5, r0
 	ldr r0, _0234F214 ; =ov29_023533D0
 	mov r4, r1
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
@@ -879,7 +879,7 @@ _0234F778: .word ov29_0235340C
 ov29_0234F77C: ; 0x0234F77C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234F7B8 ; =ov29_0235342C
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0x10
@@ -967,7 +967,7 @@ _0234F8A0:
 	ldr r0, _0234F9C8 ; =ov29_0235383C
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202AB80
+	bl GetWindowIdSelectedItemOnPage
 	and r1, r0, #0xff
 	mov r0, #1
 	bl Arm9StoreUnkFieldNa0x2029ED8
@@ -984,7 +984,7 @@ _0234F8E8:
 	str r1, [r2, #0xc]
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, _0234F9C8 ; =ov29_0235383C
 	cmp r0, #8
 	str r0, [r1, #8]
@@ -1176,11 +1176,11 @@ _0234FB48:
 
 	arm_func_start ov29_0234FB50
 ov29_0234FB50: ; 0x0234FB50
-	ldr ip, _0234FB5C ; =CheckVariousStatuses2
+	ldr ip, _0234FB5C ; =CheckVariousStatuses2__02301244
 	mov r1, #1
 	bx ip
 	.align 2, 0
-_0234FB5C: .word CheckVariousStatuses2
+_0234FB5C: .word CheckVariousStatuses2__02301244
 	arm_func_end ov29_0234FB50
 
 	arm_func_start ov29_0234FB60
@@ -1208,7 +1208,7 @@ _0234FB84:
 	bne _0234FBC4
 	mov r0, r4
 	mov r1, #1
-	bl CheckVariousStatuses2
+	bl CheckVariousStatuses2__02301244
 	cmp r0, #0
 	beq _0234FBCC
 _0234FBC4:

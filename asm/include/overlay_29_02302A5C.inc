@@ -39,7 +39,6 @@
 .public ov29_022E3570
 .public ov29_022E3580
 .public ov29_022E3A40
-.public ov29_022E56A0
 .public ov29_022E6724
 .public ov29_022E6E80
 .public ov29_022EA370
@@ -69,6 +68,7 @@
 .public ov29_0237C9C5
 .public ov29_0237C9C8
 .public ov29_0237C9C9
+.public PlaySeByIdIfShouldDisplayEntity
 .public Rand16Bit
 .public SetAndPlayAnimationForAnimationControl
 .public SetMessageLogPreprocessorArgsFlagVal

@@ -13,12 +13,14 @@
 .public GetItemToUse
 .public GetLeader
 .public GetLeaderAction
+.public GetLeaderActionId
 .public GetLeaderMonster
 .public GetMessageLogPreprocessorArgs
 .public GetTile
 .public HandleMovesMenuWrapper0
 .public HideTileGrid
 .public InitMove
+.public ItemsMenu
 .public LoadOverlay
 .public MovesMenu
 .public OthersMenu
@@ -26,8 +28,6 @@
 .public ov29_022E2A78
 .public ov29_022EA370
 .public ov29_022EA428
-.public ov29_022EB398
-.public ov29_022F0B9C
 .public ov29_022F0C1C
 .public ov29_022F0C3C
 .public ov29_022F4370
@@ -45,9 +45,7 @@
 .public ov29_0235352C
 .public ov29_02382804
 .public ov31_02382E08
-.public ov31_02382E18
 .public ov31_0238367C
-.public ov31_023838E4
 .public ov31_02385FE0
 .public ov31_023860A4
 .public ov31_0238619C
@@ -55,7 +53,9 @@
 .public ov31_02387660
 .public ov31_02387688
 .public OverlayIsLoaded
+.public ResetLeaderActionFields
 .public RestMenu
+.public StairsMenu
 .public StrcpySimple
 .public StrncpySimple
 .public sub_0200B330

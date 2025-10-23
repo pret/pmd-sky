@@ -271,7 +271,7 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect)
             bool8 can_take_item;
             if (!EntityIsValid__0230827C(monster))
                 can_take_item = FALSE;
-            else if (CheckVariousConditions(monster))
+            else if (CheckVariousConditions__0230156C(monster))
                 can_take_item = FALSE;
             else
             {
@@ -1070,7 +1070,7 @@ _01FFA9A8:
 	moveq r0, #0
 	beq _01FFAAB8
 	mov r0, r4
-	bl CheckVariousConditions
+	bl CheckVariousConditions__0230156C
 	cmp r0, #0
 	movne r0, #0
 	bne _01FFAAB8

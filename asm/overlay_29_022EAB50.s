@@ -137,15 +137,15 @@ ov29_022EACBC: ; 0x022EACBC
 _022EACC8: .word sub_02017C50
 	arm_func_end ov29_022EACBC
 
-	arm_func_start ov29_022EACCC
-ov29_022EACCC: ; 0x022EACCC
+	arm_func_start PlaySeByIdIfNotSilence
+PlaySeByIdIfNotSilence: ; 0x022EACCC
 	stmdb sp!, {r3, lr}
 	cmp r0, #0x3f00
 	ldmeqia sp!, {r3, pc}
 	mov r1, #0x100
 	bl sub_02017C74
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022EACCC
+	arm_func_end PlaySeByIdIfNotSilence
 
 	arm_func_start ov29_022EACE4
 ov29_022EACE4: ; 0x022EACE4
@@ -724,8 +724,8 @@ ov29_022EB378: ; 0x022EB378
 _022EB394: .word ov29_02352030
 	arm_func_end ov29_022EB378
 
-	arm_func_start ov29_022EB398
-ov29_022EB398: ; 0x022EB398
+	arm_func_start ResetLeaderActionFields
+ResetLeaderActionFields: ; 0x022EB398
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl GetLeaderMonster
@@ -738,7 +738,7 @@ ov29_022EB398: ; 0x022EB398
 	strneh r1, [r0, #0x5a]
 	strneh r1, [r0, #0x5c]
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022EB398
+	arm_func_end ResetLeaderActionFields
 
 	arm_func_start SetLeaderActionFields
 SetLeaderActionFields: ; 0x022EB3C8

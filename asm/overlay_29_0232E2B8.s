@@ -146,7 +146,7 @@ _0232E480:
 DoMoveMetalBurst: ; 0x0232E48C
 	stmdb sp!, {r3, lr}
 	mov r2, #0xf
-	bl ov29_02318D98
+	bl SetReflectStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end DoMoveMetalBurst

@@ -74,7 +74,6 @@
 .public ov29_022EA428
 .public ov29_02318BBC
 .public ov29_02318D58
-.public ov29_02318D98
 .public ov29_02332F18
 .public ov29_0234BA54
 .public ov29_02352AD8
@@ -87,6 +86,7 @@
 .public ROLLOUT_DAMAGE_MULT_TABLE
 .public ROLLOUT_ICE_BALL_MISSED
 .public ROLLOUT_ICE_BALL_SUCCESSIVE_HITS
+.public SetReflectStatus
 .public ShouldDisplayEntityAdvanced
 .public SILVER_WIND_BOOST_CHANCE
 .public SKY_ATTACK_CRINGE_CHANCE

@@ -16,7 +16,7 @@
 .public DrawTextInWindow
 .public GetMoneyCarried
 .public GetPressedButtons
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public GetTeamMember
 .public HidePortraitBox
 .public InitPortraitParamsWithMonsterId

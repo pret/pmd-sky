@@ -3894,7 +3894,7 @@ ov19_0238D56C: ; 0x0238D56C
 	ldr r1, _0238D5F4 ; =ov11_02324DB0
 	add r0, r4, #0x9d0
 	str r4, [r1]
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	str r0, [r4, #0x9cc]
 	mvn r2, #1
 	strb r2, [r4, #0xc]

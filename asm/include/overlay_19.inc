@@ -15,6 +15,7 @@
 .public CloseInventoryMenu
 .public ClosePortraitBox
 .public CloseScrollBox
+.public CopyMenuControlWindowExtraInfo
 .public CreatePortraitBox
 .public CreateScrollBoxSingle
 .public Debug_Print0
@@ -87,7 +88,6 @@
 .public sub_02017C50
 .public sub_02017C74
 .public sub_02020868
-.public sub_02034A38
 .public sub_02039C2C
 .public sub_0203A51C
 .public sub_0203A5A8

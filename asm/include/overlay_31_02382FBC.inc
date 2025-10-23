@@ -9,6 +9,7 @@
 .public DUNGEON_WINDOW_PARAMS_6
 .public DUNGEON_WINDOW_PARAMS_7
 .public GetLeader
+.public GetSimpleMenuResult__0202AEA4
 .public IsAdvancedTextBoxActive
 .public IsParentMenuActive
 .public MemFree
@@ -20,4 +21,3 @@
 .public SetMonsterActionFields
 .public StairsSubheadingCallback
 .public StringFromId
-.public sub_0202ABB0

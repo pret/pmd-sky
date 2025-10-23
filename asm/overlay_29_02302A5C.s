@@ -774,7 +774,7 @@ _02303494:
 	bl SetMessageLogPreprocessorArgsNumberVal
 	mov r0, sl
 	mov r1, #0x204
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	ldr r2, _023034DC ; =0x00000F21
 	ldr r0, [sp, #4]
 	mov r1, sl
@@ -978,7 +978,7 @@ _02303718:
 	bl SetPreprocessorArgsIdVal
 	ldr r1, _023038C4 ; =0x0000131B
 	mov r0, sb
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	ldr r1, _023038C8 ; =0x00000F23
 	mov r0, sb
 	bl ov29_0234D484
@@ -1215,7 +1215,7 @@ _02303A30:
 	bl SetPreprocessorArgsIdVal
 	ldr r1, _02303B08 ; =0x0000131B
 	mov r0, sl
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	ldr r1, _02303B0C ; =0x00000F23
 	mov r0, sl
 	bl ov29_0234D484

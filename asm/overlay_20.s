@@ -2207,7 +2207,7 @@ _0238BE74:
 	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	mvn r1, #0
 	cmp r0, r1
 	bne _0238BEC0
@@ -2302,7 +2302,7 @@ _0238BFDC:
 	ldr r0, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r2, _0238C1D0 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D128
 	mvn r1, #0
 	ldr r3, [r2]
@@ -2901,7 +2901,7 @@ _0238C7E4:
 	ldr r0, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r1, _0238C9C8 ; =OVERLAY20_UNKNOWN_POINTER__NA_238D12C
 	ldr r2, [r1]
 	str r0, [r2, #0x1b4]

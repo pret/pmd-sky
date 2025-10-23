@@ -27,10 +27,8 @@
 .public ov29_022DE5D8
 .public ov29_022DE5F0
 .public ov29_022E3560
-.public ov29_022E56A0
 .public ov29_022E6D68
 .public ov29_022EA370
-.public ov29_022EACCC
 .public ov29_022ED0C4
 .public ov29_022ED0D4
 .public ov29_02304A48
@@ -40,6 +38,8 @@
 .public ov29_02352AD8
 .public ov29_02352B1C
 .public ov29_0237CA84
+.public PlaySeByIdIfNotSilence
+.public PlaySeByIdIfShouldDisplayEntity
 .public SetAndLoadCurrentAttackAnimation
 .public SetMessageLogPreprocessorArgsNumberVal
 .public ShouldDisplayEntityAdvanced

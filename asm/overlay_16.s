@@ -2420,7 +2420,7 @@ _0238C260: ; jump table
 	b _0238C87C ; case 41
 _0238C308:
 	ldrsb r0, [r3, #0xc3]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	ldrne r1, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldrne r1, [r1]
@@ -2587,7 +2587,7 @@ _0238C554:
 	b _0238C9B0
 _0238C56C:
 	ldrsb r0, [r3, #0xc3]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	mov r4, r0
 	bl sub_0203C9E4
 	cmp r4, #1
@@ -2672,7 +2672,7 @@ _0238C690:
 	ldr r0, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc3]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r1, _0238CADC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	mov r4, r0
 	ldr r0, [r1]

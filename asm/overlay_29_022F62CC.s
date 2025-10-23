@@ -450,7 +450,7 @@ _022F6870:
 	cmp r0, #1
 	bne _022F69E4
 	ldr r0, _022F6A00 ; =0x00001308
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	mov r0, r4
 	bl AddMoneyCarried
 	ldr r1, _022F6A04 ; =ov29_02352760
@@ -632,7 +632,7 @@ _022F6AE8:
 	b _022F6C84
 _022F6B0C:
 	ldr r0, _022F6CA0 ; =0x00001308
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	rsb r0, r6, #0
 	bl AddMoneyCarried
 	mov r6, #0

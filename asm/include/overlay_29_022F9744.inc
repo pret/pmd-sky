@@ -8,8 +8,8 @@
 .public CeilFixedPoint
 .public ChangeMonsterAnimation
 .public CheckTeamMemberIdx
-.public CheckVariousStatuses
-.public CheckVariousStatuses2
+.public CheckVariousStatuses2__02301244
+.public CheckVariousStatuses__023016DC
 .public Conversion2IsActive
 .public DefenderAbilityIsActive__022F96CC
 .public DIRECTIONS_XY

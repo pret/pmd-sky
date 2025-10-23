@@ -892,11 +892,11 @@ _0232F498:
 	mov r0, sb
 	beq _0232F4EC
 	ldr r1, _0232F83C ; =0x00001307
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	b _0232F4F4
 _0232F4EC:
 	ldr r1, _0232F840 ; =0x00001306
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 _0232F4F4:
 	bl GetMessageLogPreprocessorArgs
 	mov r3, #0

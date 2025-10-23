@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_02300BF8
-ov29_02300BF8: ; 0x02300BF8
+	arm_func_start CheckVariousConditions__02301624
+CheckVariousConditions__02301624: ; 0x02300BF8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	ldr r4, [r5, #0xb4]
@@ -28,12 +28,12 @@ ov29_02300BF8: ; 0x02300BF8
 _02300C48:
 	mov r0, r5
 	mov r1, #0
-	bl ov29_023008DC
+	bl CheckVariousStatuses2__02301308
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl ov29_02300D00
+	bl CheckVariousStatuses__0230172C
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -52,4 +52,4 @@ _02300C48:
 	movne r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_02300BF8
+	arm_func_end CheckVariousConditions__02301624

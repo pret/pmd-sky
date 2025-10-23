@@ -251,7 +251,7 @@ _022DC53C:
 _022DC54C:
 	bl sub_02006E14
 	bl sub_020039E4
-	bl sub_02034A80
+	bl HandleMenus
 	bl sub_02028848
 	b _022DC424
 _022DC560:
@@ -799,7 +799,7 @@ _022DCBC0:
 ov34_022DCBCC: ; 0x022DCBCC
 	stmdb sp!, {r3, lr}
 	ldr r0, _022DCBEC ; =OVERLAY34_UNKNOWN_STRUCT__NA_22DD014
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldrne r0, _022DCBF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	movne r1, #0
@@ -906,7 +906,7 @@ _022DCD0C:
 	ldr r0, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, _022DCDC8 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 	str r0, [r1, #4]
 	ldr r0, [r1]
@@ -960,7 +960,7 @@ _022DCDC8: .word OVERLAY34_UNKNOWN_POINTER__NA_22DD084
 ov34_022DCDCC: ; 0x022DCDCC
 	stmdb sp!, {r3, lr}
 	ldr r0, _022DCDEC ; =OVERLAY34_UNKNOWN_STRUCT__NA_22DD03C
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldrne r0, _022DCDF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	movne r1, #0
@@ -1065,7 +1065,7 @@ _022DCF04:
 	ldr r0, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, _022DCFF0 ; =OVERLAY34_UNKNOWN_POINTER__NA_22DD08C
 	str r0, [r1, #4]
 	ldr r0, [r1]

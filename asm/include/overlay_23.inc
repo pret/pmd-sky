@@ -8,6 +8,7 @@
 .public ConvertStorageItemAtIdxToBulkItem
 .public ConvertStorageItemAtIdxToItem
 .public CopyItemAtIdx
+.public CopyMenuControlWindowExtraInfo
 .public CreateDialogueBox
 .public CreatePortraitBox
 .public CreateScrollBoxSingle
@@ -16,7 +17,7 @@
 .public GetItemAtIdx
 .public GetNbItemsInBag
 .public GetPressedButtons
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public HasStorableItems
 .public HidePortraitBox
 .public InitPortraitParamsWithMonsterId
@@ -47,7 +48,6 @@
 .public sub_02010154
 .public sub_0202836C
 .public sub_0202F2C4
-.public sub_02034A38
 .public sub_02042258
 .public sub_02042664
 .public sub_020426B4

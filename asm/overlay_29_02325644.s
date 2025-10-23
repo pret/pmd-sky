@@ -1842,7 +1842,7 @@ _02326CB0: .word TryInflictGrudgeStatus
 DoMoveCounter: ; 0x02326CB4
 	stmdb sp!, {r3, lr}
 	mov r2, #4
-	bl ov29_02318D98
+	bl SetReflectStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end DoMoveCounter

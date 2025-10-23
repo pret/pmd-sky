@@ -30,7 +30,7 @@
 .public CalcDamageFixedNoCategory
 .public CALCIUM_STAT_BOOST
 .public CalcStatusDuration
-.public CheckVariousConditions
+.public CheckVariousConditions__0230156C
 .public CORSOLA_TWIG_POWER
 .public DealDamageProjectile
 .public DetermineMonsterShadow
@@ -74,7 +74,6 @@
 .public ov29_022E81F8
 .public ov29_022E9FD0
 .public ov29_022EA370
-.public ov29_022EACCC
 .public ov29_022F04F0
 .public ov29_022F0518
 .public ov29_022F9EA0
@@ -83,6 +82,7 @@
 .public ov29_02304830
 .public ov29_0230F9A4
 .public ov29_0234BA54
+.public PlaySeByIdIfNotSilence
 .public PrepareItemForPrinting__02345728
 .public PROTEIN_STAT_BOOST
 .public RARE_FOSSIL_DAMAGE

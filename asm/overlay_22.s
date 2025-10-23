@@ -4014,7 +4014,7 @@ _0238D90C:
 	b _0238E734
 _0238D938:
 	ldrsb r0, [r2, #0x4c]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	ldrne r1, _0238E794 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC70
 	ldrne r1, [r1]
@@ -4467,7 +4467,7 @@ _0238DF04:
 	b _0238E734
 _0238DFA0:
 	ldrsb r0, [r2, #0x4c]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238E058
 	cmp r0, #2
@@ -4527,7 +4527,7 @@ _0238E058:
 	b _0238E734
 _0238E07C:
 	ldrsb r0, [r2, #0x4c]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238E148
 	cmp r0, #3
@@ -4596,7 +4596,7 @@ _0238E164:
 	ldr r0, _0238E794 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x4c]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238E1E0
 	cmp r0, #5
@@ -4636,7 +4636,7 @@ _0238E1F0:
 	ldr r0, _0238E794 ; =OVERLAY22_UNKNOWN_POINTER__NA_238EC70
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x4c]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238E270
 	cmp r0, #5
@@ -4669,7 +4669,7 @@ _0238E270:
 	b _0238E734
 _0238E280:
 	ldrsb r0, [r2, #0x4c]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238E38C
 	cmp r0, #5
@@ -4747,7 +4747,7 @@ _0238E38C:
 	b _0238E734
 _0238E39C:
 	ldrsb r0, [r2, #0x4c]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238E3F8
 	cmp r0, #5
@@ -4783,7 +4783,7 @@ _0238E3F8:
 	b _0238E734
 _0238E418:
 	ldrsb r0, [r2, #0x4c]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238E544
 	cmp r0, #5

@@ -695,11 +695,11 @@ _02305020:
 	beq _02305160
 	mov r0, r8
 	mov r1, #1
-	bl CheckVariousStatuses2
+	bl CheckVariousStatuses2__02301244
 	cmp r0, #0
 	beq _023050C0
 	mov r0, r8
-	bl CheckVariousStatuses
+	bl CheckVariousStatuses__023016DC
 	cmp r0, #0
 	bne _02305160
 _023050C0:
@@ -762,7 +762,7 @@ _02305160:
 	cmp r7, #0
 	beq _0230532C
 	mov r0, #0x35
-	bl ov29_0234BA18
+	bl WaitUntilAlertBoxTextIsLoaded
 	mov r5, #0
 	b _02305314
 _023051B0:

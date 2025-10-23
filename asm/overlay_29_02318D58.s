@@ -28,8 +28,8 @@ ov29_02318D58: ; 0x02318D58
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_02318D58
 
-	arm_func_start ov29_02318D98
-ov29_02318D98: ; 0x02318D98
+	arm_func_start SetReflectStatus
+SetReflectStatus: ; 0x02318D98
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r6, r1
 	mov r7, r0
@@ -84,4 +84,4 @@ _02318E40: .word 0x00000CF3
 _02318E44: .word ov10_022C4750
 _02318E48: .word 0x00000CF2
 #endif
-	arm_func_end ov29_02318D98
+	arm_func_end SetReflectStatus

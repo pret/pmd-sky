@@ -29,7 +29,7 @@ bool8 MonsterHasQuarterHp(struct entity *monster)
     return FALSE;
 }
 
-bool8 CheckVariousStatuses2(struct entity *entity, bool8 blind_check)
+bool8 CheckVariousStatuses2__02301244(struct entity *entity, bool8 blind_check)
 {
     struct monster *pokemon_info = GetEntInfo(entity);
 
@@ -49,7 +49,7 @@ bool8 CheckVariousStatuses2(struct entity *entity, bool8 blind_check)
         return TRUE;
     if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_WRAPPED)
         return TRUE;
-    if (CheckVariousStatuses(entity))
+    if (CheckVariousStatuses__023016DC(entity))
         return TRUE;
     if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_PETRIFIED)
         return TRUE;

@@ -80,7 +80,7 @@ _0231F660:
 	beq _0231F6A8
 	mov r0, r8
 	mov r1, #0x210
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	ldr r1, _0231F6E0 ; =0x00000C07
 	mov r0, r8
 	bl LogMessageByIdWithPopupCheckUser
@@ -377,7 +377,7 @@ _0231FA58:
 	blt _0231F9C4
 	ldr r1, _0231FBF4 ; =0x00000222
 	mov r0, sl
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	ldr r0, _0231FBE4 ; =DUNGEON_PTR
 	mov r7, #0
 	ldr r0, [r0]

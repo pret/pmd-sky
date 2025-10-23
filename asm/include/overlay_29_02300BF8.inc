@@ -1,6 +1,6 @@
 #pragma once
+.public CheckVariousStatuses2__02301308
+.public CheckVariousStatuses__0230172C
 .public IsChargingAnyTwoTurnMove
 .public IsExperienceLocked
-.public ov29_023008DC
-.public ov29_02300D00
 .public ShouldMonsterRunAway

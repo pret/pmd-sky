@@ -38,7 +38,6 @@
 .public MemZero
 .public ov10_022C473C
 .public ov10_022C4800
-.public ov29_022EACCC
 .public ov29_022F6210
 .public ov29_022FF764
 .public ov29_023009CC
@@ -49,6 +48,7 @@
 .public ov29_02352760
 .public ov29_023535A8
 .public ov29_0237C9B0
+.public PlaySeByIdIfNotSilence
 .public RemoveGroundItem
 .public SetMessageLogPreprocessorArgsNumberVal
 .public SpawnItem

@@ -6,7 +6,7 @@
 #include "dungeon_util_static.h"
 #include "joined_at_checks.h"
 
-bool8 CheckVariousConditions(struct entity *entity)
+bool8 CheckVariousConditions__0230156C(struct entity *entity)
 {
     struct monster *pokemon_info = GetEntInfo(entity);
 
@@ -19,10 +19,10 @@ bool8 CheckVariousConditions(struct entity *entity)
     if (!pokemon_info->is_team_leader && ShouldMonsterRunAway(entity))
         return TRUE;
 
-    if (CheckVariousStatuses2(entity, FALSE))
+    if (CheckVariousStatuses2__02301244(entity, FALSE))
         return TRUE;
 
-    if (CheckVariousStatuses(entity))
+    if (CheckVariousStatuses__023016DC(entity))
         return TRUE;
 
     if (IsChargingAnyTwoTurnMove(entity, FALSE))

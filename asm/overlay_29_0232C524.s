@@ -7,7 +7,7 @@
 DoMoveRebound: ; 0x0232C524
 	stmdb sp!, {r3, lr}
 	mov r2, #0xa
-	bl ov29_02318D98
+	bl SetReflectStatus
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end DoMoveRebound
@@ -879,7 +879,7 @@ _0232CF70: .word ov10_022C45BC
 	arm_func_start DoMoveOneRoom
 DoMoveOneRoom: ; 0x0232CF74
 	stmdb sp!, {r3, lr}
-	bl ov29_0231EA40
+	bl MakeFloorOneRoom
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end DoMoveOneRoom

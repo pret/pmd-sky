@@ -44,7 +44,7 @@ void RunMonsterAi(struct entity *monster, u32 unused)
     {
         if (pokemon_info->monster_behavior != BEHAVIOR_RESCUE_TARGET && pokemon_info->use_held_item)
         {
-            if (CheckVariousConditions(monster))
+            if (CheckVariousConditions__0230156C(monster))
             {
                 pokemon_info->use_held_item = FALSE;
                 SubstitutePlaceholderStringTags(0, monster, 0);

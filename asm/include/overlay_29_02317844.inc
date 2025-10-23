@@ -1,5 +1,6 @@
 #pragma once
 .public AdvanceFrame
+.public AQUA_RING_BONUS_REGEN
 .public CalcStatusDuration
 .public DUNGEON_PTR
 .public DungeonRandInt
@@ -15,7 +16,6 @@
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
 .public ov10_022C4620
-.public ov10_022C4628
 .public ov10_022C4764
 .public ov10_022C4768
 .public ov10_022C4774
@@ -34,8 +34,8 @@
 .public ov29_022E4AA4
 .public ov29_022E4AF0
 .public ov29_022E4B3C
-.public ov29_022EACCC
 .public ov29_022FB984
+.public PlaySeByIdIfNotSilence
 .public SafeguardIsActive
 .public ShowPpRestoreEffect
 .public sub_01FFB62C

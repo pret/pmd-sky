@@ -811,7 +811,7 @@ _022DF6F8:
 	str r1, [r0, #0x910 + RUN_DUNGEON_OFFSET]
 	cmp r5, #0
 	bne _022DF74C
-	bl ov29_022ED888
+	bl SpawnTraps
 	bl ov29_0233873C
 	bl ov29_02344C4C
 	bl TrySpawnDoughSeedPoke
@@ -1141,7 +1141,7 @@ _022DFBC4:
 	cmp r0, #0
 	beq _022DFBE4
 	mov r0, #0x4f
-	bl ov29_0234BA18
+	bl WaitUntilAlertBoxTextIsLoaded
 	mov r0, #0x4f
 	bl ov29_0234BA54
 _022DFBE4:

@@ -2736,7 +2736,7 @@ ov23_0238C328: ; 0x0238C328
 	str r1, [r2]
 	ldr r0, [r0]
 	add r0, r0, #0x1c0
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r1, _0238C444 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	mov r2, #0xff
 	ldr r3, [r1]
@@ -2967,7 +2967,7 @@ _0238C66C:
 	b _0238CFD0
 _0238C704:
 	ldrsb r0, [r1, #0x99]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C80C
 	cmp r0, #2
@@ -3063,7 +3063,7 @@ _0238C828:
 	b _0238CFD0
 _0238C864:
 	ldrsb r0, [r1, #0x99]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C89C
 	cmp r0, #4
@@ -3096,7 +3096,7 @@ _0238C89C:
 	b _0238CFD0
 _0238C8DC:
 	ldrsb r0, [r1, #0x99]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C934
 	cmp r0, #4
@@ -3235,7 +3235,7 @@ _0238CA2C:
 	b _0238CFD0
 _0238CAE8:
 	ldrsb r0, [r1, #0x99]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238CBCC
 	cmp r0, #3
@@ -3320,7 +3320,7 @@ _0238CBE8:
 	b _0238CFD0
 _0238CC24:
 	ldrsb r0, [r1, #0x99]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238CC7C
 	cmp r0, #4
@@ -3367,7 +3367,7 @@ _0238CCBC:
 	ldr r0, _0238D090 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x99]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238CD30
 	cmp r0, #4
@@ -3434,7 +3434,7 @@ _0238CD7C:
 	b _0238CFD0
 _0238CDCC:
 	ldrsb r0, [r1, #0x99]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	ldrne r1, _0238D090 ; =OVERLAY23_UNKNOWN_POINTER__NA_238D8A0
 	ldrne r1, [r1]

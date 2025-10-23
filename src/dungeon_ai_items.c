@@ -40,7 +40,7 @@ void AiDecideUseItem(struct entity *entity)
     struct position potential_target_positions[NUM_POTENTIAL_ROCK_TARGETS];
     s32 i;
     u32 chosen_target_index;
-    if (CheckVariousConditions(entity))
+    if (CheckVariousConditions__0230156C(entity))
     {
         pokemon_info->use_held_item = FALSE;
         return;

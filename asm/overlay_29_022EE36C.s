@@ -206,7 +206,7 @@ _022EE5E8:
 	bl ov29_022FB920
 	ldr r1, _022EE624 ; =0x00000309
 	mov r0, sb
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 #ifdef JAPAN
 	mov r0, sl
 	mov r1, sb
@@ -455,7 +455,7 @@ _022EE868:
 #endif
 	mov r1, #0x308
 	mov r4, #1
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	mov r0, #0x1e
 	mov r1, #0x48
 	bl ov29_022EA370
@@ -918,7 +918,7 @@ _022EEDC4:
 	bl RemoveEmptyItemsInBagWrapper
 	ldr r1, _022EEE40 ; =0x0000130F
 	mov r0, r5
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	ldrb r1, [r4, #0x4c]
 	ldr r0, _022EEE44 ; =DIRECTIONS_XY
 	ldrsh r3, [r5, #4]
@@ -1066,7 +1066,7 @@ ApplyRandomTrapEffect: ; 0x022EEF40
 	str r3, [sp, #0x10 + APPLY_RANDOM_TRAP_EFFECT_OFFSET]
 	ldr r8, [sp, #0x88]
 	beq _022EF064
-	bl ov29_022E7A8C
+	bl GetRandomTrapId
 	ldr r1, _022EF06C ; =ov10_022C4B18
 	mov r4, r0
 	ldrb r0, [r1, r4]

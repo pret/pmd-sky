@@ -25,7 +25,7 @@
 .public GetPressedButtons
 .public GetReleasedStylus
 .public GetSentryDutyGamePoints
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public HidePortraitBox
 .public InitAnimDataFromOtherAnimDataVeneer
 .public InitPortraitParams

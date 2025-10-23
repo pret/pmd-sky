@@ -19,7 +19,6 @@
 .public MoveMonsterToPos
 .public ov29_022E5560
 .public ov29_022E55F0
-.public ov29_022E56A0
 .public ov29_022F9C74
 .public ov29_022FFB90
 .public ov29_02320AA4
@@ -27,6 +26,7 @@
 .public ov29_02336694
 .public ov29_023529B8
 .public ov29_02353700
+.public PlaySeByIdIfShouldDisplayEntity
 .public RemoveGroundItem
 .public ShouldDisplayEntityWrapper
 .public SinAbs4096

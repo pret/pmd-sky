@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_023008DC
-ov29_023008DC: ; 0x023008DC
+	arm_func_start CheckVariousStatuses2__02301308
+CheckVariousStatuses2__02301308: ; 0x023008DC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	cmp r1, #0
@@ -41,7 +41,7 @@ _02300904:
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, r5, pc}
 	mov r0, r5
-	bl ov29_02300D00
+	bl CheckVariousStatuses__0230172C
 	cmp r0, #0
 	movne r0, #1
 	ldmneia sp!, {r3, r4, r5, pc}
@@ -59,7 +59,7 @@ _02300904:
 	moveq r0, #0
 	and r0, r0, #0xff
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_023008DC
+	arm_func_end CheckVariousStatuses2__02301308
 
 	arm_func_start ov29_023009A0
 ov29_023009A0: ; 0x023009A0
@@ -72,7 +72,7 @@ ov29_023009A0: ; 0x023009A0
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
 	mov r1, #0
-	bl CheckVariousStatuses2
+	bl CheckVariousStatuses2__02301244
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_023009A0
 
