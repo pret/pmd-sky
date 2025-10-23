@@ -1133,50 +1133,6 @@ struct tile {
     struct entity* object;
 };
 
-// Data related to dungeon generation
-struct dungeon_generation_info {
-    // 0x0: Set if the floor layout is guaranteed to be a Monster House, or the dungeon generation
-    // algorithm fails
-    bool8 force_create_monster_house;
-    // 0x1: Set if the locked door on the floor has already been opened.
-    bool8 locked_door_opened;
-    // 0x2: Set if a kecleon shop was properly spawned.
-    bool8 kecleon_shop_spawned;
-    // 0x3: When a non-zero value, the one-room orb will fail.
-    u8 unk_one_room_flag;
-    bool8 dough_seed_extra_poke_flag;
-    // 0x5: Room index of Monster House on the floor. 0xFF if there's no Monster House
-    u8 monster_house_room;
-    // 0x6: Related to when a monster from a fixed room faints. Maybe to check if the floor
-    // should be over after knocking them out?
-    u8 unk_fixed_room_static_monster_tracker;
-    u8 field_0x7;
-    // 0x8: The type of the hidden stairs on the current floor.
-    enum hidden_stairs_type hidden_stairs_type;
-    // 0xC: Used to check to load the corresponding hidden fixed room and information for
-    // the corresponding type of hidden floor.
-    enum hidden_stairs_type hidden_floor_type;
-    s16 tileset_id; // 0x10
-    // 0x12: Music table index (see the same field in struct floor_properties)
-    u16 music_table_idx;
-    // 0x14: Controls which trap graphics to use for the staircase. Usually 0x2B (27) and
-    // 0x2C (28) for down and up respectively.
-    u16 staircase_visual_idx;
-    enum fixed_room_id fixed_room_id; // 0x16
-    u8 field_0x17;
-    u8 field_0x18;
-    u8 field_0x19;
-    u16 floor_generation_attempts; // 0x1A: Number of attempts at floor layout generation
-    struct tile tiles[32][56];          // 0x1C
-    struct position team_spawn_pos;     // 0x8C1C: Position of the team spawn
-    struct position stairs_pos;         // 0x8C20: Position of the stairs spawn
-    // 0x8C24: Position of the Hidden Stairs spawn, or (-1, -1) if no Hidden Stairs
-    struct position hidden_stairs_pos;
-    // 0x8C28: Spawn position of each of the team members
-    struct position individual_team_spawn_positions[4];
-    // There's another 6 words that look like spawn positions right after these 4
-};
-
 // Trap info
 struct trap {
     enum trap_id id;

@@ -3,9 +3,9 @@
 #include "dungeon_map_access.h"
 #include "math.h"
 #include "overlay_29_022F7364.h"
+#include "overlay_29_02336428.h"
 
 extern s32 GetChebyshevDistance(struct position *position_a, struct position *position_b);
-extern u8 GetStairsRoom();
 extern s32 ov29_023018AC(struct entity*, struct entity*);
 
 bool8 ShouldMonsterHeadToStairs(struct entity *entity)
