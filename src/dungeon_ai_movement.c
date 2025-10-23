@@ -19,6 +19,7 @@
 #include "overlay_29_022E1610.h"
 #include "overlay_29_022FA430.h"
 #include "overlay_29_0230827C.h"
+#include "overlay_29_02348D00.h"
 #include "position_util.h"
 
 #ifdef SDK_ARM9
@@ -55,7 +56,6 @@ extern bool8 CanMoveThroughWalls(struct entity *monster);
 extern bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 force_avoid);
 extern bool8 CanSeeTeammate(struct entity *monster);
 extern struct entity* GetLeaderIfVisible(struct entity *monster);
-extern bool8 ov29_02348D00(struct item*);
 extern bool8 IsAtJunction(struct entity *monster);
 
 bool8 ShouldMonsterRunAwayAndShowEffectOutlawCheck(struct entity *monster, bool8 show_run_away_effect)
@@ -306,7 +306,7 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect)
                                         break;
                                     }
                                 }
-                                else if (ov29_02348D00(GetItemInfo(object)))
+                                else if (IsItemUnkMissionItem2(GetItemInfo(object)))
                                 {
                                     can_take_item = FALSE;
                                     break;
@@ -1134,7 +1134,7 @@ _01FFAA58:
 _01FFAA84:
 	mov r0, r6
 	bl GetItemInfo
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	movne r0, #0
 	bne _01FFAAB8

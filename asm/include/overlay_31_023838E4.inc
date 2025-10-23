@@ -168,7 +168,7 @@
 .public ov29_023468FC
 .public ov29_02346E5C
 .public ov29_02347100
-.public ov29_02348D00
+.public IsItemUnkMissionItem2
 .public ov29_0234E988
 .public ov29_0234EA18
 .public ov29_0234EBCC

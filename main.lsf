@@ -634,6 +634,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02346834.o
 	Object src/dungeon_projectile_throw.o
 	Object asm/overlay_29_02348020.o
+	Object src/overlay_29_02348D00.o
+	Object asm/overlay_29_02348D3C.o
 	Object src/overlay_29_0234987C.o
 	Object asm/overlay_29_023498A0.o
 	Object src/overlay_29_0234BBE8.o

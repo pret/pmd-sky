@@ -66,7 +66,7 @@ TryNonLeaderItemPickUp: ; 0x0230F164
 	mov r4, r0
 	cmp r1, #0
 	beq _0230F204
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	bne _0230F624
 _0230F204:

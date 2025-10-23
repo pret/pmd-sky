@@ -932,7 +932,7 @@ _02384614:
 	cmp r0, #0
 	bne _02384634
 	mov r0, r8
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	beq _0238463C
 _02384634:
@@ -1144,7 +1144,7 @@ _023848D4:
 	bl AddDungeonSubMenuOption
 	ldr r0, [r4, #0x10]
 	bl ov29_022E1620
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	beq _02384908
 	mov r0, #0x3a
@@ -1194,7 +1194,7 @@ _02384978:
 	bl DisableDungeonSubMenuOption
 _023849A0:
 	mov r0, r8
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	beq _023849D8
 	mov r0, #0x27
@@ -1299,7 +1299,7 @@ _02384B1C:
 	cmp r0, #0
 	bne _02384B3C
 	mov r0, r8
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	beq _02384B44
 _02384B3C:
@@ -1367,7 +1367,7 @@ _02384C08:
 	cmp r0, #0
 	bne _02384C28
 	mov r0, r8
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	beq _02384C30
 _02384C28:
