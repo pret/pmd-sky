@@ -271,9 +271,7 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect)
                     }
                 }
                 else
-                {
                     has_action = CalculateAiTargetPos(monster);
-                }
             }
         }
         else

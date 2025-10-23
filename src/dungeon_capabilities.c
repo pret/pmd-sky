@@ -1,5 +1,5 @@
 #include "dungeon_capabilities.h"
-#include "dungeon_capabilities_2.h"
+#include "dungeon_capabilities_1.h"
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 
