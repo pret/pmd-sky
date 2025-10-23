@@ -1,31 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_02300D00.inc"
+	.include "overlay_29_02300D50.inc"
 
 	.text
-
-	arm_func_start CheckVariousStatuses__0230172C
-CheckVariousStatuses__0230172C: ; 0x02300D00
-	ldr r1, [r0, #0xb4]
-	ldrb r0, [r1, #0xbd]
-	cmp r0, #2
-	cmpne r0, #4
-	cmpne r0, #0
-	movne r0, #1
-	bxne lr
-	ldrb r0, [r1, #0xc4]
-	cmp r0, #1
-	moveq r0, #1
-	bxeq lr
-	cmp r0, #6
-	moveq r0, #1
-	bxeq lr
-	ldrb r0, [r1, #0xd2]
-	cmp r0, #1
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	bx lr
-	arm_func_end CheckVariousStatuses__0230172C
 
 	arm_func_start ov29_02300D50
 ov29_02300D50: ; 0x02300D50

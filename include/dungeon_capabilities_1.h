@@ -13,5 +13,7 @@ bool8 CheckVariousConditions__0230156C(struct entity *entity);
 bool8 CheckVariousConditions__02301624(struct entity *entity);
 // Returns false if none of these conditions holds for the given entity: asleep, frozen, petrified, biding.
 bool8 CheckVariousStatuses__023016DC(struct entity *entity);
+// Returns false if none of these conditions holds for the given entity: asleep, frozen, petrified, biding.
+bool8 CheckVariousStatuses__0230172C(struct entity *entity);
 
 #endif //PMDSKY_DUNGEON_CAPABILITIES_H

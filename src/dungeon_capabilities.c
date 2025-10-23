@@ -3,8 +3,6 @@
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 
-extern bool8 CheckVariousStatuses__0230172C(struct entity *entity);
-
 bool8 IsMonsterSleeping(struct entity *monster)
 {
     if (GetEntInfo(monster)->sleep_class_status.sleep == STATUS_SLEEP_SLEEP)

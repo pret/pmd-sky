@@ -454,7 +454,7 @@ Overlay OVY_29
 	Object src/dungeon_capabilities.o
 	Object asm/overlay_29_023009A0.o
 	Object src/dungeon_capabilities_1.o
-	Object asm/overlay_29_02300D00.o
+	Object asm/overlay_29_02300D50.o
 	Object src/directional_bit_masks.o
 	Object src/dungeon_capabilities_3.o
 	Object asm/overlay_29_02300FCC.o

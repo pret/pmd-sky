@@ -5,8 +5,6 @@
 #include "dungeon_util_static.h"
 #include "joined_at_checks.h"
 
-extern bool8 CheckVariousStatuses__0230172C(struct entity *entity);
-
 bool8 CheckVariousConditions__0230156C(struct entity *entity)
 {
     struct monster *pokemon_info = GetEntInfo(entity);
@@ -70,6 +68,24 @@ bool8 CheckVariousConditions__02301624(struct entity *entity)
 }
 
 bool8 CheckVariousStatuses__023016DC(struct entity *entity)
+{
+    struct monster *pokemon_info = GetEntInfo(entity);
+
+    if (pokemon_info->sleep_class_status.sleep != STATUS_SLEEP_SLEEPLESS &&
+        pokemon_info->sleep_class_status.sleep != STATUS_SLEEP_YAWNING &&
+        pokemon_info->sleep_class_status.sleep != STATUS_SLEEP_NONE)
+        return TRUE;
+    if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_FROZEN)
+        return TRUE;
+    if (pokemon_info->frozen_class_status.freeze == STATUS_FROZEN_PETRIFIED)
+        return TRUE;
+    if (pokemon_info->bide_class_status.bide == STATUS_TWO_TURN_BIDE)
+        return TRUE;
+
+    return FALSE;
+}
+
+bool8 CheckVariousStatuses__0230172C(struct entity *entity)
 {
     struct monster *pokemon_info = GetEntInfo(entity);
 
