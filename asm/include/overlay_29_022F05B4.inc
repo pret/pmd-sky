@@ -105,7 +105,7 @@
 .public ov29_022FA2F0
 .public ov29_022FA360
 .public ov29_022FB920
-.public ov29_022FBDF0
+.public IsSecretBazaarNpc
 .public ov29_022FF3F4
 .public ov29_022FF958
 .public ov29_022FFA94

@@ -1,17 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022FBDF0.inc"
+	.include "overlay_29_022FBE04.inc"
 
 	.text
-
-	arm_func_start ov29_022FBDF0
-ov29_022FBDF0: ; 0x022FBDF0
-	ldr r0, [r0, #0xb4]
-	ldr ip, _022FBE00 ; =IsSecretBazaarNpcBehavior
-	ldrb r0, [r0, #0xbc]
-	bx ip
-	.align 2, 0
-_022FBE00: .word IsSecretBazaarNpcBehavior
-	arm_func_end ov29_022FBDF0
 
 	arm_func_start ov29_022FBE04
 ov29_022FBE04: ; 0x022FBE04

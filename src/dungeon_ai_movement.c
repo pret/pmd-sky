@@ -5,6 +5,7 @@
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_capabilities_1.h"
 #include "dungeon_capabilities_4.h"
+#include "dungeon_logic_7.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util.h"
@@ -49,7 +50,6 @@ extern bool8 ShouldMonsterFollowLeader(struct entity *monster);
 extern bool8 ShouldMonsterHeadToStairs(struct entity *entity);
 extern bool8 ShouldMonsterRunAwayAndShowEffectOutlawCheck(struct entity* monster, bool8 show_run_away_effect);
 extern bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target);
-extern bool8 ov29_022FBDF0(struct entity*);
 extern s32 ov29_022FBE04(struct monster*);
 extern bool8 CanMoveThroughWalls(struct entity *monster);
 extern bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 force_avoid);
@@ -77,7 +77,7 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect)
         }
     }
 
-    if (IsTacticSet(monster, TACTIC_WAIT_THERE) || ov29_022FBDF0(monster))
+    if (IsTacticSet(monster, TACTIC_WAIT_THERE) || IsSecretBazaarNpc(monster))
         pokemon_info->action.action_id = ACTION_NOTHING;
     else if (!pokemon_info->is_team_leader && CeilFixedPoint(pokemon_info->belly) == 0)
         pokemon_info->action.action_id = ACTION_NOTHING;
@@ -688,7 +688,7 @@ _01FFA428:
 	cmp r0, #0
 	bne _01FFA44C
 	mov r0, r4
-	bl ov29_022FBDF0
+	bl IsSecretBazaarNpc
 	cmp r0, #0
 	beq _01FFA458
 _01FFA44C:

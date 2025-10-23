@@ -206,7 +206,7 @@ _022F07E8:
 	cmp r0, #0
 	beq _022F082C
 	mov r0, r7
-	bl ov29_022FBDF0
+	bl IsSecretBazaarNpc
 	cmp r0, #0
 	beq _022F082C
 	mov r0, r7

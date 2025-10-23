@@ -27,7 +27,6 @@
 .public IsDestinationFloorWithMonster
 .public IsFullFloorFixedRoom
 .public IsInvalidSpawnTile
-.public IsSecretBazaarNpcBehavior
 .public JoinedAtRangeCheck2Veneer
 .public LoadWazaP2
 .public SetMonsterLevelAndId

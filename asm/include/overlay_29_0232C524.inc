@@ -75,7 +75,7 @@
 .public ov29_022E8104
 .public ov29_022E81F8
 .public IsLoneOutlawVeneer
-.public ov29_022FBDF0
+.public IsSecretBazaarNpc
 .public ov29_022FD7A0
 .public ov29_0230D874
 .public ov29_0230D8E8

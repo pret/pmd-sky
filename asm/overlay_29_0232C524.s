@@ -472,7 +472,7 @@ DoMoveEscape: ; 0x0232CA70
 	b _0232CAF4
 _0232CAB4:
 	mov r0, r5
-	bl ov29_022FBDF0
+	bl IsSecretBazaarNpc
 	cmp r0, #0
 	moveq r0, #1
 	movne r0, #0
