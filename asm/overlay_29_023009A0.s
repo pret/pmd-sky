@@ -1,65 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_023008DC.inc"
+	.include "overlay_29_023009A0.inc"
 
 	.text
-
-	arm_func_start CheckVariousStatuses2__02301308
-CheckVariousStatuses2__02301308: ; 0x023008DC
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	cmp r1, #0
-	ldr r4, [r5, #0xb4]
-	beq _02300904
-	mov r1, #1
-	bl IsBlinded
-	cmp r0, #0
-	movne r0, #1
-	ldmneia sp!, {r3, r4, r5, pc}
-_02300904:
-	ldrb r0, [r4, #0xbd]
-	cmp r0, #1
-	moveq r0, #1
-	ldmeqia sp!, {r3, r4, r5, pc}
-	cmp r0, #5
-	moveq r0, #1
-	ldmeqia sp!, {r3, r4, r5, pc}
-	cmp r0, #3
-	moveq r0, #1
-	ldmeqia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r4, #0xd0]
-	cmp r0, #3
-	moveq r0, #1
-	ldmeqia sp!, {r3, r4, r5, pc}
-	cmp r0, #7
-	moveq r0, #1
-	ldmeqia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r4, #0xc4]
-	cmp r0, #3
-	moveq r0, #1
-	ldmeqia sp!, {r3, r4, r5, pc}
-	cmp r0, #4
-	moveq r0, #1
-	ldmeqia sp!, {r3, r4, r5, pc}
-	mov r0, r5
-	bl CheckVariousStatuses__0230172C
-	cmp r0, #0
-	movne r0, #1
-	ldmneia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r4, #0xc4]
-	cmp r0, #6
-	moveq r0, #1
-	ldmeqia sp!, {r3, r4, r5, pc}
-#ifdef JAPAN
-	ldrb r0, [r4, #0x104]
-#else
-	ldrb r0, [r4, #0x105]
-#endif
-	cmp r0, #0
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end CheckVariousStatuses2__02301308
 
 	arm_func_start ov29_023009A0
 ov29_023009A0: ; 0x023009A0

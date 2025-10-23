@@ -5,7 +5,6 @@
 #include "dungeon_util_static.h"
 #include "joined_at_checks.h"
 
-extern bool8 CheckVariousStatuses2__02301308(struct entity *entity, bool8 blind_check);
 extern bool8 CheckVariousStatuses__0230172C(struct entity *entity);
 
 bool8 CheckVariousConditions__0230156C(struct entity *entity)
