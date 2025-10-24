@@ -47,7 +47,6 @@ const s32 FACING_DIRECTION_INCREMENTS[] = {0, 1, -1, 2, -2, 3, -3, 4};
 
 extern bool8 CanTargetEntity(struct entity *user, struct entity *target);
 extern bool8 CanTargetPosition(struct entity *monster, struct position *position);
-extern s32 GetChebyshevDistance(struct position *position_a, struct position *position_b);
 extern bool8 IsBagFull();
 extern bool8 ShouldMonsterFollowLeader(struct entity *monster);
 extern bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target);

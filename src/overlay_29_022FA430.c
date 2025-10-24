@@ -5,8 +5,7 @@
 #include "overlay_29_022F7364.h"
 #include "overlay_29_023018AC.h"
 #include "overlay_29_02336428.h"
-
-extern s32 GetChebyshevDistance(struct position *position_a, struct position *position_b);
+#include "position_util.h"
 
 bool8 ShouldMonsterHeadToStairs(struct entity *entity)
 {
