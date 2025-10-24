@@ -2,6 +2,7 @@
 #include "dg_camera.h"
 #include "dg_random.h"
 #include "dungeon_action.h"
+#include "dungeon_ai_leader.h"
 #include "dungeon_ai_targeting.h"
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_capabilities_1.h"
@@ -19,7 +20,6 @@
 #include "number_util.h"
 #include "overlay_29_022E1610.h"
 #include "overlay_29_022FA430.h"
-#include "overlay_29_0230827C.h"
 #include "overlay_29_02348D00.h"
 #include "position_util.h"
 
@@ -48,7 +48,6 @@ const s32 FACING_DIRECTION_INCREMENTS[] = {0, 1, -1, 2, -2, 3, -3, 4};
 
 extern bool8 CanTargetEntity(struct entity *user, struct entity *target);
 extern bool8 CanTargetPosition(struct entity *monster, struct position *position);
-extern bool8 ShouldMonsterFollowLeader(struct entity *monster);
 extern bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target);
 extern s32 ov29_022FBE04(struct monster*);
 extern bool8 CanMoveThroughWalls(struct entity *monster);
