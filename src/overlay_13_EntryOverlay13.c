@@ -3,7 +3,7 @@
 
 extern void* MemAlloc(u32 len, u32 flags);
 void sub_0201F2E4(void);
-void sub_020348E4(const u8 *);
+void InitMenu(const u8 *);
 extern void ov11_022E6E8C(u32);
 void ov11_022E6E68(void);
 BOOL ov11_022E6EC8(void);
@@ -33,7 +33,7 @@ void EntryOverlay13(void)
     OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk0 = 0;
     OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk20 = 0;
     OVERLAY13_UNKNOWN_POINTER__NA_238CEA0->unk6 = 0xFE;
-    sub_020348E4(OVERLAY13_UNKNOWN_STRUCT__NA_238C024);
+    InitMenu(OVERLAY13_UNKNOWN_STRUCT__NA_238C024);
 }
 
 void ExitOverlay13(void)

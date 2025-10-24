@@ -29,6 +29,7 @@
 .public GetTileSafe
 .public IQ_SKILLS
 .public IsLevelResetDungeon
+.public IsLoneOutlaw
 .public IsMonsterIdInNormalRange
 .public IsOutlawOrChallengeRequestFloor
 .public IsRecruitingAllowed
@@ -49,7 +50,6 @@
 .public ov29_022EA370
 .public ov29_022ECDE4
 .public ov29_022EF7C4
-.public IsLoneOutlaw
 .public ov29_022F9B8C
 .public ov29_022FE048
 .public ov29_022FFB90

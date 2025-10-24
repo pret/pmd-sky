@@ -8,7 +8,8 @@
 .public CeilFixedPoint
 .public ChangeDungeonMusic
 .public ChangeShayminForme
-.public CheckVariousStatuses2
+.public CheckVariousStatuses2__02301244
+.public CheckVariousStatuses2__02301308
 .public ClearMonsterActionFields
 .public DirectoryFileMngr_OpenDirectoryFile
 .public DisplayMessage2
@@ -64,7 +65,6 @@
 .public ov29_022EA428
 .public ov29_022EAF20
 .public ov29_022EAF34
-.public ov29_022EB398
 .public ov29_022EB668
 .public ov29_022EFB20
 .public ov29_022EFB84
@@ -77,7 +77,6 @@
 .public ov29_022F9C34
 .public ov29_022FA02C
 .public ov29_022FBA54
-.public ov29_023008DC
 .public ov29_023009A0
 .public ov29_023021F0
 .public ov29_023038D4
@@ -93,6 +92,7 @@
 .public ov31_023877EC
 .public PrepareItemForPrinting__02345728
 .public RemoveUsedItem
+.public ResetLeaderActionFields
 .public RestoreAllMovePP
 .public SetDoughSeedFlag
 .public SetMessageLogPreprocessorArgsNumberVal

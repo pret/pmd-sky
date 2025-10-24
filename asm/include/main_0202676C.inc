@@ -43,7 +43,6 @@
 .public _0209B074
 .public _0209B07C
 .public _0209B084
-.public _0209B08C
 .public _0209B32C_JP
 .public _0209B408_JP
 .public _020AFC70
@@ -53,7 +52,6 @@
 .public _020AFD5C
 .public _020AFD60
 .public _020AFD94
-.public _020AFD98
 .public _020AFD9C
 .public _020AFDA0
 .public _020AFDA8
@@ -131,6 +129,8 @@
 .public MemFree
 .public memset
 .public MemZero
+.public MENU_CONTROL_PTR
+.public NULL_OVERLAY_LOAD_ENTRY
 .public OPTIONS_MENU_DEFAULT_WINDOW_PARAMS
 .public PARENT_MENU_DEFAULT_WINDOW_PARAMS
 .public PlaySeVolumeWrapper

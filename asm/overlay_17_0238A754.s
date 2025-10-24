@@ -749,7 +749,7 @@ ov17_0238B10C: ; 0x0238B10C
 	ldr r0, _0238B190 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #2
 	beq _0238B150
 	cmp r0, #3
@@ -976,7 +976,7 @@ ov17_0238B390: ; 0x0238B390
 	ldr r0, _0238B4CC ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	sub r0, r0, #5
 	cmp r0, #7
 	addls pc, pc, r0, lsl #2
@@ -1277,7 +1277,7 @@ ov17_0238B738: ; 0x0238B738
 	ldr r0, _0238B7A4 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #0
 	beq _0238B780
 	cmp r0, #1
@@ -1517,7 +1517,7 @@ ov17_0238B9FC: ; 0x0238B9FC
 	ldr r0, _0238BA7C ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #3
 	beq _0238BA3C
 	cmp r0, #4

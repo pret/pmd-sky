@@ -2,19 +2,25 @@
 #include "dg_camera.h"
 #include "dg_random.h"
 #include "dungeon_action.h"
+#include "dungeon_ai_leader.h"
+#include "dungeon_ai_targeting.h"
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_capabilities_1.h"
+#include "dungeon_capabilities_4.h"
+#include "dungeon_logic_7.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util.h"
 #include "dungeon_util_1.h"
 #include "dungeon_util_static.h"
 #include "dungeon_visibility.h"
+#include "main_0200EDC0.h"
 #include "main_0208655C.h"
 #include "math.h"
 #include "number_util.h"
 #include "overlay_29_022E1610.h"
-#include "overlay_29_0230827C.h"
+#include "overlay_29_022FA430.h"
+#include "overlay_29_02348D00.h"
 #include "position_util.h"
 
 #ifdef SDK_ARM9
@@ -40,23 +46,27 @@ struct can_move_in_direction_info
 
 const s32 FACING_DIRECTION_INCREMENTS[] = {0, 1, -1, 2, -2, 3, -3, 4};
 
-extern bool8 CanAiMonsterMoveInDirection(struct entity *monster, s32 direction, bool8 *out_monster_in_target_position);
 extern bool8 CanTargetEntity(struct entity *user, struct entity *target);
 extern bool8 CanTargetPosition(struct entity *monster, struct position *position);
-extern s32 GetChebyshevDistance(struct position *position_a, struct position *position_b);
-extern bool8 IsBagFull();
-extern bool8 ShouldMonsterFollowLeader(struct entity *monster);
-extern bool8 ShouldMonsterHeadToStairs(struct entity *entity);
-extern bool8 ShouldMonsterRunAwayAndShowEffectOutlawCheck(struct entity* monster, bool8 show_run_away_effect);
 extern bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target);
-extern bool8 ov29_022FBDF0(struct entity*);
 extern s32 ov29_022FBE04(struct monster*);
 extern bool8 CanMoveThroughWalls(struct entity *monster);
 extern bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 force_avoid);
 extern bool8 CanSeeTeammate(struct entity *monster);
 extern struct entity* GetLeaderIfVisible(struct entity *monster);
-extern bool8 ov29_02348D00(struct item*);
 extern bool8 IsAtJunction(struct entity *monster);
+
+bool8 ShouldMonsterRunAwayAndShowEffectOutlawCheck(struct entity *monster, bool8 show_run_away_effect)
+{
+    bool8 should_run_away = FALSE;
+    if (ShouldMonsterRunAwayAndShowEffect(monster, show_run_away_effect))
+        should_run_away = TRUE;
+    else if (GetEntInfo(monster)->monster_behavior == BEHAVIOR_FLEEING_OUTLAW)
+        should_run_away = TRUE;
+
+    return should_run_away;
+}
+
 
 // https://decomp.me/scratch/2QnEr
 #ifdef NONMATCHING
@@ -77,7 +87,7 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect)
         }
     }
 
-    if (IsTacticSet(monster, TACTIC_WAIT_THERE) || ov29_022FBDF0(monster))
+    if (IsTacticSet(monster, TACTIC_WAIT_THERE) || IsSecretBazaarNpc(monster))
         pokemon_info->action.action_id = ACTION_NOTHING;
     else if (!pokemon_info->is_team_leader && CeilFixedPoint(pokemon_info->belly) == 0)
         pokemon_info->action.action_id = ACTION_NOTHING;
@@ -259,9 +269,7 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect)
                     }
                 }
                 else
-                {
                     has_action = CalculateAiTargetPos(monster);
-                }
             }
         }
         else
@@ -271,7 +279,7 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect)
             bool8 can_take_item;
             if (!EntityIsValid__0230827C(monster))
                 can_take_item = FALSE;
-            else if (CheckVariousConditions(monster))
+            else if (CheckVariousConditions__0230156C(monster))
                 can_take_item = FALSE;
             else
             {
@@ -296,7 +304,7 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect)
                                         break;
                                     }
                                 }
-                                else if (ov29_02348D00(GetItemInfo(object)))
+                                else if (IsItemUnkMissionItem2(GetItemInfo(object)))
                                 {
                                     can_take_item = FALSE;
                                     break;
@@ -688,7 +696,7 @@ _01FFA428:
 	cmp r0, #0
 	bne _01FFA44C
 	mov r0, r4
-	bl ov29_022FBDF0
+	bl IsSecretBazaarNpc
 	cmp r0, #0
 	beq _01FFA458
 _01FFA44C:
@@ -1070,7 +1078,7 @@ _01FFA9A8:
 	moveq r0, #0
 	beq _01FFAAB8
 	mov r0, r4
-	bl CheckVariousConditions
+	bl CheckVariousConditions__0230156C
 	cmp r0, #0
 	movne r0, #0
 	bne _01FFAAB8
@@ -1124,7 +1132,7 @@ _01FFAA58:
 _01FFAA84:
 	mov r0, r6
 	bl GetItemInfo
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	movne r0, #0
 	bne _01FFAAB8

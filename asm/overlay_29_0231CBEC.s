@@ -1356,7 +1356,7 @@ _0231DC60:
 _0231DCAC:
 	mov r0, r7
 	mov r1, #0
-	bl CheckVariousStatuses2
+	bl CheckVariousStatuses2__02301244
 	cmp r0, #0
 	ldrb r0, [r8, #0xbc]
 	movne r6, #0
@@ -1458,7 +1458,7 @@ _0231DDB0:
 	mov r0, r7
 	mov r1, #0
 	mov r7, #1
-	bl ov29_023008DC
+	bl CheckVariousStatuses2__02301308
 	cmp r0, #0
 	ldrb r0, [r8, #0xbc]
 	movne r7, #0
@@ -1565,7 +1565,7 @@ _0231DF34:
 	add r0, r4, #0x4a
 	bl ov31_02386204
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	mov r6, #1
 	b _0231DE6C
 _0231DF60:
@@ -1578,7 +1578,7 @@ _0231DF60:
 	mov r1, #0
 	bl ov31_02386308
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _0231DE6C
 _0231DF8C:
 	cmp r0, #0x1e
@@ -1630,7 +1630,7 @@ _0231E008:
 	b _0231E040
 _0231E038:
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 _0231E040:
 	mov r0, r6
 _0231E044:

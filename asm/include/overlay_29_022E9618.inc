@@ -2,7 +2,7 @@
 .public _020AFC4C
 .public _s32_div_f
 .public abs
-.public CheckVariousStatuses2
+.public CheckVariousStatuses2__02301244
 .public DIRECTIONS_XY
 .public DISPLACEMENTS_WITHIN_2_LARGEST_FIRST
 .public DISPLACEMENTS_WITHIN_2_SMALLEST_FIRST

@@ -4,6 +4,7 @@
 .public ClosePortraitBox
 .public CloseScrollBox
 .public CloseSimpleMenu
+.public CopyMenuControlWindowExtraInfo
 .public HidePortraitBox
 .public InitPreprocessorArgs
 .public IsAdvancedTextBoxActive
@@ -17,7 +18,6 @@
 .public SetAdvancedTextBoxState5
 .public SetScrollBoxState7
 .public sub_0202F334
-.public sub_02034A38
 .public sub_0203A51C
 .public sub_0203A618
 .public sub_0203A9B8

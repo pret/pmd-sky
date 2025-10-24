@@ -231,7 +231,7 @@ _0234C1F4:
 	bl ov29_022DDE24
 	bl ov29_022E9F9C
 	bl HandleFadesDungeonBothScreens
-	bl sub_02034A80
+	bl HandleMenus
 	bl ov29_022EA008
 	ldr r0, _0234C2EC ; =DUNGEON_PTR
 	ldr r0, [r0]

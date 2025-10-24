@@ -213,8 +213,8 @@ _022EDF50:
 _022EDF58: .word DUNGEON_PTR
 	arm_func_end TryRevealAttackedTrap
 
-	arm_func_start ov29_022EDF5C
-ov29_022EDF5C: ; 0x022EDF5C
+	arm_func_start SubstitutePlaceholderTrapTags2
+SubstitutePlaceholderTrapTags2: ; 0x022EDF5C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -223,7 +223,7 @@ ov29_022EDF5C: ; 0x022EDF5C
 	add r0, r0, r5, lsl #2
 	str r4, [r0, #0x10]
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_022EDF5C
+	arm_func_end SubstitutePlaceholderTrapTags2
 
 	arm_func_start SubstitutePlaceholderTrapTags
 SubstitutePlaceholderTrapTags: ; 0x022EDF7C
@@ -270,7 +270,7 @@ TryTriggerTrap: ; 0x022EDFA0
 	mov r6, r0
 	ldrb r1, [r6]
 	mov r0, #0
-	bl ov29_022EDF5C
+	bl SubstitutePlaceholderTrapTags2
 	ldr r0, [sp, #0x10 + TRY_TRIGGER_TRAP_OFFSET]
 	ldr r5, [r0, #0xc]
 	cmp r5, #0
@@ -411,7 +411,7 @@ _022EE1D8:
 	beq _022EE264
 	mov r0, #0
 	mov r1, #0x11c
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	bl UpdateTrapsVisibility
 	ldrb r2, [r6]
 	mov r0, sl
@@ -422,7 +422,7 @@ _022EE1D8:
 	mov r6, r0
 	mov r0, #0
 	ldrb r1, [r6]
-	bl ov29_022EDF5C
+	bl SubstitutePlaceholderTrapTags2
 	ldr r0, _022EE308 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x1a000

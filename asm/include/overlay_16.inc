@@ -23,7 +23,7 @@
 .public GetNameRaw
 .public GetNameString
 .public GetPressedButtons
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public GetTeamMember
 .public IncrementNbEvolutions
 .public InitPortraitParamsWithMonsterId

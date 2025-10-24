@@ -1,4 +1,5 @@
 #pragma once
+.public AddMessageToAlertBox
 .public AdvanceFrame
 .public AllowPortraitDefault
 .public AnimationDelayOrSomething
@@ -97,7 +98,6 @@
 .public sub_02001808
 .public sub_02017C10
 .public sub_0202836C
-.public sub_0203010C
 .public sub_02030214
 .public sub_02047FFC
 .public sub_0204804C

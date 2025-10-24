@@ -1970,7 +1970,7 @@ _0238BB44:
 	b _0238C7E4
 _0238BBA8:
 	ldrsb r0, [r3, #0x83]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238BD24
 	cmp r0, #6
@@ -2095,7 +2095,7 @@ _0238BD40:
 	b _0238C7E4
 _0238BD7C:
 	ldrsb r0, [r3, #0x83]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238BDB8
 	cmp r0, #4
@@ -2161,7 +2161,7 @@ _0238BE10:
 	b _0238C7E4
 _0238BE60:
 	ldrsb r0, [r3, #0x83]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	ldrne r1, _0238C8D0 ; =SWAP_SHOP_MENU_DATA_PTR
 	ldrne r1, [r1]
@@ -2291,7 +2291,7 @@ _0238C014:
 	b _0238C7E4
 _0238C034:
 	ldrsb r0, [r3, #0x83]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #0xb
 	addls pc, pc, r0, lsl #2
 	b _0238C7E4
@@ -2480,7 +2480,7 @@ _0238C284:
 	b _0238C7E4
 _0238C2E8:
 	ldrsb r0, [r3, #0x83]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C324
 	cmp r0, #6
@@ -2520,7 +2520,7 @@ _0238C340:
 	b _0238C7E4
 _0238C37C:
 	ldrsb r0, [r3, #0x83]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C3B0
 	cmp r0, #4
@@ -2540,7 +2540,7 @@ _0238C3B0:
 	b _0238C7E4
 _0238C3C0:
 	ldrsb r0, [r3, #0x83]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #0xc
 	bgt _0238C3F0
 	bge _0238C3FC
@@ -2650,7 +2650,7 @@ _0238C4EC:
 	b _0238C7E4
 _0238C550:
 	ldrsb r0, [r3, #0x83]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C58C
 	cmp r0, #6

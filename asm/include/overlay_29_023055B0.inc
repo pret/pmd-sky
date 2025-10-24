@@ -2,7 +2,7 @@
 .public AbilityIsActiveVeneer
 .public CalcSpeedStageWrapper
 .public ChangeMonsterAnimation
-.public CheckVariousStatuses2
+.public CheckVariousStatuses2__02301244
 .public DUNGEON_PTR
 .public EndBlinkerClassStatus
 .public EndBurnClassStatus

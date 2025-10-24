@@ -2110,14 +2110,14 @@ _0234B27C:
 _0234B290: .word MESSAGE_LOG_INFO
 	arm_func_end LogMessageByIdWithPopupCheckParticipants
 
-	arm_func_start ov29_0234B294
-ov29_0234B294: ; 0x0234B294
-	ldr ip, _0234B2A0 ; =ov29_0234BA18
+	arm_func_start WaitUntilAlertBoxTextIsLoadedWrapper
+WaitUntilAlertBoxTextIsLoadedWrapper: ; 0x0234B294
+	ldr ip, _0234B2A0 ; =WaitUntilAlertBoxTextIsLoaded
 	mov r0, #0x50
 	bx ip
 	.align 2, 0
-_0234B2A0: .word ov29_0234BA18
-	arm_func_end ov29_0234B294
+_0234B2A0: .word WaitUntilAlertBoxTextIsLoaded
+	arm_func_end WaitUntilAlertBoxTextIsLoadedWrapper
 
 	arm_func_start LogMessageByIdWithPopupCheckUser
 LogMessageByIdWithPopupCheckUser: ; 0x0234B2A4
@@ -2544,8 +2544,8 @@ ov29_0234B768: ; 0x0234B768
 _0234B7E8: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B768
 
-	arm_func_start ov29_0234B7EC
-ov29_0234B7EC: ; 0x0234B7EC
+	arm_func_start AlertBoxIsScrolling
+AlertBoxIsScrolling: ; 0x0234B7EC
 	stmdb sp!, {r3, lr}
 	ldr r0, _0234B850 ; =MESSAGE_LOG_INFO
 	mvn r1, #1
@@ -2574,7 +2574,7 @@ _0234B848:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234B850: .word MESSAGE_LOG_INFO
-	arm_func_end ov29_0234B7EC
+	arm_func_end AlertBoxIsScrolling
 
 	arm_func_start ov29_0234B854
 ov29_0234B854: ; 0x0234B854
@@ -2648,7 +2648,7 @@ _0234B908:
 	smulbb lr, ip, r2
 	cmp r3, ip
 	bne _0234B96C
-	bl ov29_0234B7EC
+	bl AlertBoxIsScrolling
 	cmp r0, #0
 	bne _0234B9B8
 	mov r0, #1
@@ -2661,7 +2661,7 @@ _0234B96C:
 	add r2, r5, lr
 	mov r1, #0x400
 	str ip, [sp]
-	bl sub_0203010C
+	bl AddMessageToAlertBox
 	cmp r0, #0
 	moveq r0, #0
 	beq _0234B9BC
@@ -2703,8 +2703,8 @@ _0234B9C8:
 _0234BA14: .word MESSAGE_LOG_INFO
 	arm_func_end ov29_0234B854
 
-	arm_func_start ov29_0234BA18
-ov29_0234BA18: ; 0x0234BA18
+	arm_func_start WaitUntilAlertBoxTextIsLoaded
+WaitUntilAlertBoxTextIsLoaded: ; 0x0234BA18
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _0234BA50 ; =MESSAGE_LOG_INFO
 	mov r5, r0
@@ -2713,7 +2713,7 @@ _0234BA28:
 	ldr r0, [r4, #0xc98]
 	cmp r0, #0
 	bne _0234BA40
-	bl ov29_0234B7EC
+	bl AlertBoxIsScrolling
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 _0234BA40:
@@ -2724,7 +2724,7 @@ _0234BA4C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234BA50: .word MESSAGE_LOG_INFO
-	arm_func_end ov29_0234BA18
+	arm_func_end WaitUntilAlertBoxTextIsLoaded
 
 	arm_func_start ov29_0234BA54
 ov29_0234BA54: ; 0x0234BA54
@@ -2732,7 +2732,7 @@ ov29_0234BA54: ; 0x0234BA54
 	ldr r1, _0234BAB8 ; =MESSAGE_LOG_INFO
 	mov r5, r0
 	ldr r6, [r1, #4]
-	bl ov29_0234BA18
+	bl WaitUntilAlertBoxTextIsLoaded
 	mov r4, #0
 	add r6, r6, #0xc00
 	ldr r7, _0234BABC ; =ov29_0237C694

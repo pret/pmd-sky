@@ -525,7 +525,7 @@ _02325228:
 	bl LogMessageByIdWithPopupCheckUser
 	mov r0, r5
 	mov r1, #0x214
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	b _0232531C
 _023252E4:
 	cmp r0, #0x76
@@ -541,7 +541,7 @@ _023252E4:
 	add r2, r2, #0x1a000
 	ldr r3, [r2, #0x234 + OV29_023250D4_OFFSET]
 	str r3, [r2, #0x238 + OV29_023250D4_OFFSET]
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 _0232531C:
 	mov r0, sl
 	bl GetApparentWeather
@@ -556,7 +556,7 @@ _0232531C:
 	beq _02325354
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 _02325354:
 	cmp r4, #0x63
 	bne _023253C8

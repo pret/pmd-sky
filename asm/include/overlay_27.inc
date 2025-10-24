@@ -10,6 +10,7 @@
 .public ConvertStorageItemAtIdxToBulkItem
 .public ConvertStorageItemAtIdxToItem
 .public CopyItemAtIdx
+.public CopyMenuControlWindowExtraInfo
 .public CountNbOfItemsInStorage
 .public CreateDialogueBox
 .public CreateScrollBoxSingle
@@ -21,7 +22,7 @@
 .public GetNbItemsInBag
 .public GetPressedButtons
 .public GetRankStorageSize
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public InitPortraitParamsWithMonsterId
 .public InitPreprocessorArgs
 .public IsDialogueBoxActive
@@ -53,7 +54,6 @@
 .public sub_02010154
 .public sub_0202836C
 .public sub_0202F2C4
-.public sub_02034A38
 .public sub_02042258
 .public sub_02042664
 .public sub_020426B4

@@ -1494,7 +1494,7 @@ _0203DAA0:
 	ldr r0, _0203E4B0 ; =_020AFE74
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, _0203E4B0 ; =_020AFE74
 	ldr r1, [r1]
 	str r0, [r1, #0x18c]
@@ -1713,7 +1713,7 @@ _0203DDAC:
 	ldr r0, [r0]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0xa0]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r1, _0203E4B0 ; =_020AFE74
 	mov r4, r0
 	ldr r0, [r1]
@@ -8474,7 +8474,7 @@ _0204361C:
 	ldr r0, [r0, #4]
 	add r0, r0, #0x700
 	ldrsb r0, [r0, #0xd8]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r1, _02043760 ; =_020AFEB4
 	mov r4, r0
 	ldr r0, [r1, #4]
@@ -10645,7 +10645,7 @@ _02045220:
 	mov r0, #2
 	str r0, [r4]
 	ldrsb r0, [r4, #8]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	subs r0, r0, #1
 	bmi _0204526C
 	str r0, [r4, #0x6e8]
@@ -10663,7 +10663,7 @@ _0204526C:
 	b _02045290
 _02045278:
 	ldrsb r0, [r4, #8]
-	bl sub_0202AB80
+	bl GetWindowIdSelectedItemOnPage
 	str r0, [r4, #0x6e8]
 	b _02045290
 _02045288:
@@ -11748,7 +11748,7 @@ _02046074: ; jump table
 	b _020464CC ; case 18
 _020460C0:
 	ldrsb r0, [r2, #0x16]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	ldrne r1, _020465D8 ; =_020AFED4
 	ldrne r1, [r1]
@@ -11772,7 +11772,7 @@ _02046104:
 	b _0204653C
 _02046114:
 	ldrsb r0, [r2, #0x16]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	ldrne r1, _020465D8 ; =_020AFED4
 	ldrne r1, [r1]
@@ -11796,7 +11796,7 @@ _02046158:
 	b _0204653C
 _02046168:
 	ldrsb r0, [r2, #0x16]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	ldrne r1, _020465D8 ; =_020AFED4
 	ldrne r1, [r1]
@@ -11953,7 +11953,7 @@ _02046394:
 	b _0204653C
 _020463B4:
 	ldrsb r0, [r2, #0x16]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
 	b _0204653C
@@ -12303,7 +12303,7 @@ sub_02046804: ; 0x02046804
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _02046824 ; =_0209CCA0
-	bl sub_02034974
+	bl InitMenuWithWindowExtraInfo
 	cmp r0, #0
 	ldrne r0, _02046828 ; =_022AAE64
 	strneh r4, [r0]
@@ -12322,7 +12322,7 @@ sub_0204682C: ; 0x0204682C
 	ldr r1, _02046890 ; =_020AFEDC
 	str r0, [r1]
 	add r0, r0, #0x10
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r2, _02046890 ; =_020AFEDC
 	ldr r1, _02046894 ; =_022AAE64
 	ldr r3, [r2]
@@ -12916,7 +12916,7 @@ _02046FBC:
 	bl sub_020282F4
 	mov r5, r0
 	ldrsb r0, [r4]
-	bl sub_0202AB80
+	bl GetWindowIdSelectedItemOnPage
 	str r0, [r4, #0x18]
 	ldrsb r0, [r4]
 	bl IsParentMenuActive
@@ -12926,7 +12926,7 @@ _02046FBC:
 	cmp r5, r1
 	bne _02047008
 	ldrsb r0, [r4]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	str r0, [r4, #0x14]
 	mov r0, #9
 	str r0, [r4, #0xc8]
@@ -13423,7 +13423,7 @@ sub_020475B4: ; 0x020475B4
 	mov r5, r1
 	mov r4, r2
 	str ip, [r3, #4]
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	beq _02047650
 	mov r0, #0x14
@@ -16007,7 +16007,7 @@ sub_0204964C: ; 0x0204964C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _02049678 ; =_0209CDD0
-	bl sub_02034974
+	bl InitMenuWithWindowExtraInfo
 	cmp r0, #0
 	ldrne r1, _0204967C ; =_022AAEA4
 	ldrne r0, _02049680 ; =_020AFF4C
@@ -16030,7 +16030,7 @@ sub_02049684: ; 0x02049684
 	ldr r1, _020496EC ; =_020AFF4C
 	str r0, [r1]
 	add r0, r0, #0x1c
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r2, _020496EC ; =_020AFF4C
 	ldr r1, _020496F0 ; =_022AAEA4
 	ldr r3, [r2]
@@ -16310,7 +16310,7 @@ sub_02049A40: ; 0x02049A40
 	mov r2, r1
 	ldr r0, _02049A6C ; =_0209CE40
 	mov r1, r3
-	bl sub_02034974
+	bl InitMenuWithWindowExtraInfo
 	cmp r0, #0
 	ldrne r0, _02049A70 ; =_020AFF54
 	movne r1, #0
@@ -16330,7 +16330,7 @@ sub_02049A74: ; 0x02049A74
 	ldr r1, _02049ACC ; =_020AFF54
 	str r0, [r1]
 	add r0, r0, #0x10
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r1, _02049ACC ; =_020AFF54
 	ldr r1, [r1]
 	str r0, [r1, #0xc]
@@ -16565,7 +16565,7 @@ sub_02049D4C: ; 0x02049D4C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _02049D78 ; =_0209CE58
-	bl sub_02034974
+	bl InitMenuWithWindowExtraInfo
 	cmp r0, #0
 	ldrne r1, _02049D7C ; =_022AAEA8
 	ldrne r0, _02049D80 ; =_020AFF5C
@@ -16588,7 +16588,7 @@ sub_02049D84: ; 0x02049D84
 	ldr r1, _02049DEC ; =_020AFF5C
 	str r0, [r1, #4]
 	add r0, r0, #0x10
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r2, _02049DEC ; =_020AFF5C
 	ldr r1, _02049DF0 ; =_022AAEA8
 	ldr r3, [r2, #4]
@@ -16775,11 +16775,11 @@ _0204A014: .word 0x0000061C
 
 	arm_func_start sub_0204A018
 sub_0204A018: ; 0x0204A018
-	ldr ip, _0204A024 ; =sub_020348E4
+	ldr ip, _0204A024 ; =InitMenu
 	ldr r0, _0204A028 ; =_0209CE68
 	bx ip
 	.align 2, 0
-_0204A024: .word sub_020348E4
+_0204A024: .word InitMenu
 _0204A028: .word _0209CE68
 	arm_func_end sub_0204A018
 
@@ -16852,11 +16852,11 @@ _0204A0E4: .word _020AFF64
 
 	arm_func_start sub_0204A0E8
 sub_0204A0E8: ; 0x0204A0E8
-	ldr ip, _0204A0F4 ; =sub_020348E4
+	ldr ip, _0204A0F4 ; =InitMenu
 	ldr r0, _0204A0F8 ; =_0209CE78
 	bx ip
 	.align 2, 0
-_0204A0F4: .word sub_020348E4
+_0204A0F4: .word InitMenu
 _0204A0F8: .word _0209CE78
 	arm_func_end sub_0204A0E8
 

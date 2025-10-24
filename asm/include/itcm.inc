@@ -14,7 +14,6 @@
 .public RENDER_3D_FUNCTIONS
 .public Rgb8ToRgb5
 .public SetIrqFlag
-.public ShouldMonsterRunAwayAndShowEffect
 .public TRIG_TABLE
 .public UpdateWindow
 .public WINDOW_LIST

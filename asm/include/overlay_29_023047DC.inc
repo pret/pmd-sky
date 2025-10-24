@@ -3,8 +3,8 @@
 .public AdvanceFrame
 .public CheckLeaderTile
 .public CheckNonLeaderTile
-.public CheckVariousStatuses
-.public CheckVariousStatuses2
+.public CheckVariousStatuses2__02301244
+.public CheckVariousStatuses__023016DC
 .public DiscoverMinimap
 .public DUNGEON_PTR
 .public DungeonGetSpriteIndex
@@ -29,7 +29,6 @@
 .public ov29_0230FC24
 .public ov29_02346888
 .public ov29_0234AD10
-.public ov29_0234BA18
 .public ov29_0235173C
 .public ov29_0235173E
 .public ov29_02352808
@@ -44,3 +43,4 @@
 .public sub_02053038
 .public TryForcedLoss
 .public UpdateEntityPixelPos
+.public WaitUntilAlertBoxTextIsLoaded

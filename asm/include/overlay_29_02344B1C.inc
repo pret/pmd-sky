@@ -29,7 +29,6 @@
 .public LogMessageByIdWithPopupCheckUser
 .public MemAlloc
 .public MemFree
-.public ov29_022EACCC
 .public ov29_022FB920
 .public ov29_02347040
 .public ov29_02348D3C
@@ -40,6 +39,7 @@
 .public ov29_023531BC
 .public ov29_023531CC
 .public ov29_023537B0
+.public PlaySeByIdIfNotSilence
 .public RemoveEmptyItemsInBag
 .public RemoveEquivItemNoHole
 .public RemoveGroundItem

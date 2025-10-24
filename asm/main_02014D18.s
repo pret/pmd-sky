@@ -4124,10 +4124,10 @@ _02017C4C: .word 0x000003E6
 
 	arm_func_start sub_02017C50
 sub_02017C50: ; 0x02017C50
-	ldr ip, _02017C58 ; =sub_0201820C
+	ldr ip, _02017C58 ; =PlayMeById
 	bx ip
 	.align 2, 0
-_02017C58: .word sub_0201820C
+_02017C58: .word PlayMeById
 	arm_func_end sub_02017C50
 
 	arm_func_start sub_02017C5C
@@ -4639,8 +4639,8 @@ _02018204: .word 0x000003E6
 _02018208: .word _022A4BEC
 	arm_func_end sub_020181E0
 
-	arm_func_start sub_0201820C
-sub_0201820C: ; 0x0201820C
+	arm_func_start PlayMeById
+PlayMeById: ; 0x0201820C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _02018270 ; =0x000003E6
 	mov r5, r0
@@ -4669,7 +4669,7 @@ sub_0201820C: ; 0x0201820C
 	.align 2, 0
 _02018270: .word 0x000003E6
 _02018274: .word _022A4BEC
-	arm_func_end sub_0201820C
+	arm_func_end PlayMeById
 
 	arm_func_start sub_02018278
 sub_02018278: ; 0x02018278

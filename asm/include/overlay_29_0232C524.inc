@@ -55,12 +55,15 @@
 .public IsChargingTwoTurnMove
 .public IsCurrentFixedRoomBossFight
 .public IsFullFloorFixedRoom
+.public IsLoneOutlawVeneer
+.public IsSecretBazaarNpc
 .public LAST_RESORT_DAMAGE_MULT_TABLE
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
 .public LowerDefensiveStat
 .public LowerHitChanceStat
 .public LowerSpeed
+.public MakeFloorOneRoom
 .public MewSpawnCheck
 .public MistIsActive
 .public ov10_022C456C
@@ -74,8 +77,6 @@
 .public ov29_022E6784
 .public ov29_022E8104
 .public ov29_022E81F8
-.public IsLoneOutlawVeneer
-.public ov29_022FBDF0
 .public ov29_022FD7A0
 .public ov29_0230D874
 .public ov29_0230D8E8
@@ -85,8 +86,6 @@
 .public ov29_0230DAB8
 .public ov29_02318BBC
 .public ov29_02318D58
-.public ov29_02318D98
-.public ov29_0231EA40
 .public ov29_0231EDFC
 .public ov29_0231F6E4
 .public ov29_02332F18
@@ -102,6 +101,7 @@
 .public ROOST_HP_RESTORATION_TABLE
 .public SetMessageLogPreprocessorArgsString
 .public SetPreprocessorArgsIdVal
+.public SetReflectStatus
 .public SHADOW_FORCE_DAMAGE_MULTIPLIER
 .public SLEEP_TURN_RANGE
 .public SPATK_STAT_IDX

@@ -344,7 +344,7 @@ _022F5714:
 	ldr r1, _022F5988 ; =0x00000103
 	mov r0, sb
 	ldrb r7, [r8, #0x4c]
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	mov r6, #0
 	mov r5, r6
 	mov r4, #2

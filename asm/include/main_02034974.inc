@@ -1,5 +1,4 @@
 #pragma once
-.public _0209B08C
 .public _0209B09C
 .public _0209B0EC
 .public _0209B0FC
@@ -109,6 +108,7 @@
 .public Debug_SetLogFlag
 .public DrawTextInWindow
 .public FemaleToMaleForm
+.public FreeActiveMenu
 .public GetActiveRosterIndex
 .public GetActiveTeamMember
 .public GetAdvancedMenuResult
@@ -128,12 +128,14 @@
 .public GetPartner
 .public GetPartnerMemberIdx
 .public GetPressedButtons
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202AEA4
+.public GetSimpleMenuResult__0202B870
 .public GetStringFromFileVeneer
 .public GetTeamMember
 .public GetType
 .public GetWindow
 .public HidePortraitBox
+.public InitMenu
 .public InitPortraitParams
 .public IsAdvancedMenuActive2
 .public IsAdvancedTextBoxActive
@@ -155,9 +157,11 @@
 .public MemcpySimple
 .public MemFree
 .public MemZero
+.public NULL_OVERLAY_LOAD_ENTRY
 .public ov11_022E6E68
 .public ov11_0230D71C
 .public OverlayIsLoaded
+.public OverlayLoadEntriesEqual
 .public PlaySeVolumeWrapper
 .public PreprocessStringFromId
 .public SaveScriptVariableValueBytes
@@ -195,7 +199,6 @@
 .public sub_0202836C
 .public sub_020288FC
 .public sub_0202A2A4
-.public sub_0202ABB0
 .public sub_0202D59C
 .public sub_0202DF64
 .public sub_0202F16C
@@ -217,10 +220,7 @@
 .public sub_0203189C
 .public sub_020318D0
 .public sub_02031914
-.public sub_020347A0
-.public sub_020347F0
 .public sub_02034840
-.public sub_020348E4
 .public sub_0203C784
 .public sub_0203C9A0
 .public sub_02048078

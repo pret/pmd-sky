@@ -17,7 +17,7 @@
 .public GetKeyboardStringResult
 .public GetNameRaw
 .public GetNameWithGender
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public HidePortraitBox
 .public IncrementNbEggsHatched
 .public InitPortraitParamsWithMonsterId

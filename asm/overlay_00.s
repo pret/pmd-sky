@@ -2227,7 +2227,7 @@ _022BE090: .word ov00_0231D420
 ov00_022BE094: ; 0x022BE094
 	stmdb sp!, {r3, lr}
 	ldr r0, _022BE0B0 ; =ov00_02317FA0
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl ov01_0232F3F4
@@ -2238,11 +2238,11 @@ _022BE0B0: .word ov00_02317FA0
 
 	arm_func_start ov00_022BE0B4
 ov00_022BE0B4: ; 0x022BE0B4
-	ldr ip, _022BE0C0 ; =sub_020348E4
+	ldr ip, _022BE0C0 ; =InitMenu
 	ldr r0, _022BE0C4 ; =ov00_02317FB0
 	bx ip
 	.align 2, 0
-_022BE0C0: .word sub_020348E4
+_022BE0C0: .word InitMenu
 _022BE0C4: .word ov00_02317FB0
 	arm_func_end ov00_022BE0B4
 
@@ -2414,7 +2414,7 @@ _022BE304:
 	bl ov01_0232EA30
 	bl sub_020039E4
 	bl ov01_0232EC30
-	bl sub_02034A80
+	bl HandleMenus
 	bl sub_02028848
 	b _022BE1E8
 _022BE320:

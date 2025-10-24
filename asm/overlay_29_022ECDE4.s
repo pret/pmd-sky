@@ -820,8 +820,8 @@ _022ED880: .word DUNGEON_PTR
 _022ED884: .word AreLateGameTrapsEnabled
 	arm_func_end AreLateGameTrapsEnabledWrapper
 
-	arm_func_start ov29_022ED888
-ov29_022ED888: ; 0x022ED888
+	arm_func_start SpawnTraps
+SpawnTraps: ; 0x022ED888
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #8
 	ldr r0, _022ED96C ; =ov29_023526A0
@@ -886,7 +886,7 @@ _022ED94C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _022ED96C: .word ov29_023526A0
-	arm_func_end ov29_022ED888
+	arm_func_end SpawnTraps
 
 	arm_func_start SpawnEnemyTrapAtPos
 SpawnEnemyTrapAtPos: ; 0x022ED970

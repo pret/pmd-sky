@@ -9642,7 +9642,7 @@ ov01_023310B8: ; 0x023310B8
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _023310DC ; =ov01_0233B558
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldrne r0, _023310E0 ; =ov01_0233C178
 	movne r1, #0
@@ -10386,7 +10386,7 @@ _02331AA0:
 	b _023324F4
 _02331AB4:
 	ldrsb r0, [r1]
-	bl sub_0202AB80
+	bl GetWindowIdSelectedItemOnPage
 	ldr r1, _02332508 ; =ov01_0233C178
 	ldr r3, [r1]
 	ldr r2, [r3, #0x10]
@@ -10410,7 +10410,7 @@ _02331AF0:
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	cmp r0, #0x19
 	bne _02331B44
 	ldr r0, _02332508 ; =ov01_0233C178
@@ -10562,7 +10562,7 @@ _02331CE4:
 	b _023324F4
 _02331D4C:
 	ldrsb r0, [r1, #1]
-	bl sub_0202AB80
+	bl GetWindowIdSelectedItemOnPage
 	ldr r1, _02332508 ; =ov01_0233C178
 	add r3, r0, #0x64
 	ldr r2, [r1]
@@ -10587,7 +10587,7 @@ _02331D8C:
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	cmp r0, #0x21
 	cmpne r0, #1
 	bne _02331DF0
@@ -10670,7 +10670,7 @@ _02331EC0:
 	ldr r0, _02332508 ; =ov01_0233C178
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	cmp r0, #0x21
 	cmpne r0, #1
 	bne _02331F1C
@@ -11252,7 +11252,7 @@ ov01_02332698: ; 0x02332698
 	mov r1, #0
 	ldr r0, _023329C4 ; =ov01_0233B70C
 	str r1, [sp, #0xc]
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	beq _023329BC
 	ldr r0, _023329C8 ; =ov01_0233C184
@@ -11630,7 +11630,7 @@ _02332B50:
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0xe]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, _02332EDC ; =ov01_0233C184
 	ldr r2, [r1]
 	str r0, [r2, #0x62c]
@@ -12469,7 +12469,7 @@ _02333674: .word ov01_0233B764
 ov01_02333678: ; 0x02333678
 	stmdb sp!, {r3, lr}
 	ldr r0, _02333698 ; =ov01_0233B7E0
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldrne r0, _0233369C ; =ov01_0233C188
 	movne r1, #0
@@ -12722,7 +12722,7 @@ _02333968: .word 0x0000C402
 ov01_0233396C: ; 0x0233396C
 	stmdb sp!, {r3, lr}
 	ldr r0, _0233398C ; =ov01_0233B800
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldrne r0, _02333990 ; =ov01_0233C190
 	movne r1, #0
@@ -12814,7 +12814,7 @@ _02333A84:
 	ldr r0, _02333BC8 ; =ov01_0233C190
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r1, _02333BC8 ; =ov01_0233C190
 	mov r2, #2
 	str r0, [r1]
@@ -12916,7 +12916,7 @@ _02333BCC: .word ov01_02333BD0
 ov01_02333BD0: ; 0x02333BD0
 	stmdb sp!, {r3, lr}
 	ldr r0, _02333BF0 ; =ov01_0233B800
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldrne r0, _02333BF4 ; =ov01_0233C190
 	movne r1, #0
@@ -12931,7 +12931,7 @@ _02333BF4: .word ov01_0233C190
 ov01_02333BF8: ; 0x02333BF8
 	stmdb sp!, {r3, lr}
 	ldr r0, _02333C18 ; =ov01_0233B880
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldrne r0, _02333C1C ; =ov01_0233C198
 	movne r1, #0
@@ -13021,7 +13021,7 @@ _02333D08:
 	ldr r0, _02333E48 ; =ov01_0233C198
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, _02333E48 ; =ov01_0233C198
 	mov r2, #2
 	str r0, [r1]
@@ -17251,7 +17251,7 @@ ov01_023371B4: ; 0x023371B4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _023371D4 ; =ov01_0233BCAC
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldrne r0, _023371D8 ; =ov01_0233CA78
 	strne r4, [r0]
@@ -17548,11 +17548,11 @@ _02337588: .word ov01_0233CA78
 
 	arm_func_start ov01_0233758C
 ov01_0233758C: ; 0x0233758C
-	ldr ip, _02337598 ; =sub_020348E4
+	ldr ip, _02337598 ; =InitMenu
 	ldr r0, _0233759C ; =ov01_0233BCBC
 	bx ip
 	.align 2, 0
-_02337598: .word sub_020348E4
+_02337598: .word InitMenu
 _0233759C: .word ov01_0233BCBC
 	arm_func_end ov01_0233758C
 
@@ -17594,11 +17594,11 @@ _023375DC: .word ov01_0233C1B8
 
 	arm_func_start ov01_023375E0
 ov01_023375E0: ; 0x023375E0
-	ldr ip, _023375EC ; =sub_020348E4
+	ldr ip, _023375EC ; =InitMenu
 	ldr r0, _023375F0 ; =ov01_0233BCCC
 	bx ip
 	.align 2, 0
-_023375EC: .word sub_020348E4
+_023375EC: .word InitMenu
 _023375F0: .word ov01_0233BCCC
 	arm_func_end ov01_023375E0
 
@@ -17606,7 +17606,7 @@ _023375F0: .word ov01_0233BCCC
 ov01_023375F4: ; 0x023375F4
 	stmdb sp!, {r3, lr}
 	ldr r0, _02337610 ; =ov01_0233BCDC
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl ov01_0232F3F4
@@ -17635,11 +17635,11 @@ _02337630: .word ov01_0233C1D4
 
 	arm_func_start ov01_02337634
 ov01_02337634: ; 0x02337634
-	ldr ip, _02337640 ; =sub_020348E4
+	ldr ip, _02337640 ; =InitMenu
 	ldr r0, _02337644 ; =ov01_0233BCEC
 	bx ip
 	.align 2, 0
-_02337640: .word sub_020348E4
+_02337640: .word InitMenu
 _02337644: .word ov01_0233BCEC
 	arm_func_end ov01_02337634
 
@@ -17663,11 +17663,11 @@ _02337664: .word ov01_0233C1E0
 
 	arm_func_start ov01_02337668
 ov01_02337668: ; 0x02337668
-	ldr ip, _02337674 ; =sub_020348E4
+	ldr ip, _02337674 ; =InitMenu
 	ldr r0, _02337678 ; =ov01_0233BCFC
 	bx ip
 	.align 2, 0
-_02337674: .word sub_020348E4
+_02337674: .word InitMenu
 _02337678: .word ov01_0233BCFC
 	arm_func_end ov01_02337668
 
@@ -17900,11 +17900,11 @@ ov01_023378FC: ; 0x023378FC
 
 	arm_func_start ov01_02337914
 ov01_02337914: ; 0x02337914
-	ldr ip, _02337920 ; =sub_020348E4
+	ldr ip, _02337920 ; =InitMenu
 	ldr r0, _02337924 ; =ov01_0233BD0C
 	bx ip
 	.align 2, 0
-_02337920: .word sub_020348E4
+_02337920: .word InitMenu
 _02337924: .word ov01_0233BD0C
 	arm_func_end ov01_02337914
 
@@ -22223,11 +22223,11 @@ _0233AE60: .word ov01_0233CA7C
 
 	arm_func_start ov01_0233AE64
 ov01_0233AE64: ; 0x0233AE64
-	ldr ip, _0233AE70 ; =sub_020348E4
+	ldr ip, _0233AE70 ; =InitMenu
 	ldr r0, _0233AE74 ; =ov01_0233C0A4
 	bx ip
 	.align 2, 0
-_0233AE70: .word sub_020348E4
+_0233AE70: .word InitMenu
 _0233AE74: .word ov01_0233C0A4
 	arm_func_end ov01_0233AE64
 	; 0x0233AE78

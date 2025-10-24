@@ -2166,7 +2166,7 @@ ov18_0238BE90: ; 0x0238BE90
 	ldr r0, _0238BF08 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
 	b _0238BEFC
@@ -2265,7 +2265,7 @@ ov18_0238BFA8: ; 0x0238BFA8
 	ldr r0, _0238C038 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #8
 	bgt _0238BFFC
 	cmp r0, #2
@@ -2523,7 +2523,7 @@ ov18_0238C27C: ; 0x0238C27C
 	ldr r0, _0238C33C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	sub r0, r0, #5
 	cmp r0, #0xb
 	addls pc, pc, r0, lsl #2
@@ -2755,7 +2755,7 @@ ov18_0238C528: ; 0x0238C528
 	mov r5, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xa]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	sub r1, r0, #4
 	cmp r1, #0xe
 	addls pc, pc, r1, lsl #2
@@ -2987,7 +2987,7 @@ ov18_0238C808: ; 0x0238C808
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #0
 	beq _0238C850
 	cmp r0, #1
@@ -3054,7 +3054,7 @@ ov18_0238C8D0: ; 0x0238C8D0
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #0
 	beq _0238C918
 	cmp r0, #1
@@ -3336,7 +3336,7 @@ ov18_0238CC00: ; 0x0238CC00
 	ldr r0, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	sub r0, r0, #4
 	cmp r0, #9
 	addls pc, pc, r0, lsl #2
@@ -3564,7 +3564,7 @@ ov18_0238CED8: ; 0x0238CED8
 	ldr r0, _0238CF94 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	sub r0, r0, #4
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
@@ -3708,7 +3708,7 @@ ov18_0238D098: ; 0x0238D098
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #0
 	beq _0238D0E0
 	cmp r0, #1
@@ -3780,7 +3780,7 @@ ov18_0238D174: ; 0x0238D174
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #0
 	beq _0238D1BC
 	cmp r0, #1

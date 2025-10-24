@@ -113,7 +113,6 @@
 .public ov29_022ECFB8
 .public ov29_022ED030
 .public ov29_022ED0B0
-.public ov29_022ED888
 .public ov29_022EF738
 .public ov29_022EF8A4
 .public ov29_022EF9B8
@@ -195,7 +194,6 @@
 .public ov29_0234B010
 .public ov29_0234B1A4
 .public ov29_0234B4CC
-.public ov29_0234BA18
 .public ov29_0234BA54
 .public ov29_0234BB10
 .public ov29_0234BB20
@@ -231,6 +229,7 @@
 .public SpawnInitialMonsters
 .public SpawnShopkeepers
 .public SpawnTeam
+.public SpawnTraps
 .public StartFadeDungeonWrapper
 .public sub_02001808
 .public sub_02009194
@@ -259,3 +258,4 @@
 .public UpdateShouldBoostHiddenStairsSpawnChance
 .public UpdateShouldBoostKecleonShopSpawnChance
 .public UpdateTrapsVisibility
+.public WaitUntilAlertBoxTextIsLoaded

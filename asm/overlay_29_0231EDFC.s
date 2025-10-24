@@ -269,7 +269,7 @@ _0231F178:
 	cmp r0, #0
 	beq _0231F1B0
 	ldr r0, _0231F55C ; =0x00000212
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 _0231F1B0:
 	ldrsh r3, [sp, #0x42]
 	ldrsh r2, [r4, #6]

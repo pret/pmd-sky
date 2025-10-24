@@ -3,7 +3,7 @@
 .public AllocateTemp1024ByteBufferFromPool
 .public AreMovesEnabled
 .public CheckTeamMemberIdxVeneer
-.public CheckVariousStatuses2
+.public CheckVariousStatuses2__02301244
 .public DIRECTIONS_XY
 .public DisplayMessage
 .public DisplayMessage2

@@ -66,7 +66,8 @@
 .public GetPerformanceFlagWithChecks
 .public GetPressedButtons
 .public GetReleasedStylus
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202AEA4
+.public GetSimpleMenuResult__0202B870
 .public GetSosMailCount
 .public GetSpecialEpisodeType
 .public GetSpeciesString
@@ -74,8 +75,10 @@
 .public GetStringFromFileVeneer
 .public GetTeamMember
 .public GetVictoriesOnOneFloor
+.public GetWindowIdSelectedItemOnPage
 .public InitAnimationControl
 .public InitAnimationControlWithSet__0201C0B0
+.public InitMenu
 .public InitPreprocessorArgs
 .public IsAdvancedMenuActive
 .public IsAdvancedMenuActive2
@@ -291,8 +294,6 @@
 .public sub_02029FBC
 .public sub_0202A2A4
 .public sub_0202A40C
-.public sub_0202AB80
-.public sub_0202ABB0
 .public sub_0202B0A4
 .public sub_0202BC28
 .public sub_0202BC60
@@ -302,7 +303,6 @@
 .public sub_0202F954
 .public sub_02030978
 .public sub_02031914
-.public sub_020348E4
 .public sub_02035CE4
 .public sub_02036324
 .public sub_0203656C

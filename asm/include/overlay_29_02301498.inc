@@ -1,0 +1,11 @@
+#pragma once
+.public DUNGEON_PTR
+.public DungeonRandInt
+.public GetDirectionalMobilityType
+.public GetMobilityTypeCheckSlipAndFloating
+.public GetTile
+.public IqSkillIsEnabled
+.public IsCurrentTilesetBackground
+.public IsTacticSet
+.public ItemIsActive__022FF898
+.public SECONDARY_TERRAIN_TYPES

@@ -17,7 +17,7 @@
 .public DrawTextInWindow
 .public GetItemAtIdx
 .public GetSimpleMenuField0x1A4
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public HidePortraitBox
 .public InitPortraitParamsWithMonsterId
 .public InitPreprocessorArgs

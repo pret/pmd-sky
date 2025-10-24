@@ -6,6 +6,7 @@
 .public DungeonFree
 .public DungeonZInit
 .public G3X_Reset
+.public HandleMenus
 .public InitRender3dElement64
 .public MemAlloc
 .public MemFree
@@ -82,6 +83,5 @@
 .public sub_02028E40
 .public sub_02028E88
 .public sub_02034710
-.public sub_02034A80
 .public sub_0204F9CC
 .public UnloadOverlay

@@ -3,7 +3,7 @@
 .public Arm9LoadUnkFieldNa0x2029EC8
 .public Arm9StoreUnkFieldNa0x2029ED8
 .public CheckTeamMemberIdx
-.public CheckVariousStatuses2
+.public CheckVariousStatuses2__02301244
 .public CloseAdvancedTextBox
 .public CloseParentMenu
 .public CloseTextBox
@@ -23,6 +23,9 @@
 .public GetKeyboardStatus
 .public GetKeyboardStringResult
 .public GetPerformanceFlagWithChecks
+.public GetSimpleMenuResult__0202AEA4
+.public GetWindowIdSelectedItemOnPage
+.public InitMenu
 .public IsExperienceLocked
 .public IsFullFloorFixedRoom
 .public IsParentMenuActive
@@ -91,10 +94,7 @@
 .public StrncpySimpleNoPadSafe
 .public sub_0200B3D4
 .public sub_020282F4
-.public sub_0202AB80
-.public sub_0202ABB0
 .public sub_0202F954
-.public sub_020348E4
 .public sub_02037468
 .public sub_0203909C
 .public sub_02039218

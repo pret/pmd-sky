@@ -1864,7 +1864,7 @@ ov09_0233E3A4: ; 0x0233E3A4
 	mvnne r0, #0
 	ldmneia sp!,  {r3, pc}
 	add r0, r0, #8
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldmia sp!, {r3, pc}
 _0233E3D4:
 	mov r0, #0
@@ -1984,7 +1984,7 @@ _0233E54C:
 	orr r5, r5, r0
 _0233E56C:
 	add r0, r4, #8
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	mov r2, r0
 	ldr r1, [sp, #0xc]
 	add r0, r4, #8
@@ -1996,7 +1996,7 @@ _0233E56C:
 	bl ov09_0233E7F4
 _0233E598:
 	add r0, r4, #8
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldr r1, [r4, #4]
 	str r0, [r1, #8]
 	ldr r0, [sp, #0xc]
@@ -2563,13 +2563,13 @@ ov09_0233ED1C: ; 0x0233ED1C
 	add r0, r0, #8
 	cmp r1, #0
 	beq _0233ED68
-	bl sub_0203258C
+	bl GetTotalNumMenuItems
 	add r0, r0, r0, lsl #6
 	add r0, r4, r0, lsl #2
 	ldr r0, [r0, #0x100]
 	ldmia sp!, {r4, pc}
 _0233ED68:
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	add r0, r0, r0, lsl #6
 	add r0, r4, r0, lsl #2
 	ldr r0, [r0, #0x100]
@@ -2680,7 +2680,7 @@ _0233EECC:
 	orr r5, r5, r0
 _0233EEEC:
 	add r0, r4, #8
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	mov r2, r0
 	ldr r1, [sp, #0xc]
 	add r0, r4, #8
@@ -2695,7 +2695,7 @@ _0233EF18:
 	tst r2, #1
 	beq _0233EFBC
 	add r0, r4, #8
-	bl sub_02032578
+	bl GetSelectedMenuItemIdx
 	ldr r2, [r4, #4]
 	ldrb r1, [r2, #0x15]
 	cmp r1, #0

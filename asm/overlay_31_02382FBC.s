@@ -68,11 +68,11 @@ _0238308C:
 	ldr r0, _02383218 ; =ov31_0238A2A0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #1]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, _02383218 ; =ov31_0238A2A0
 	ldr r1, [r1, #4]
 	str r0, [r1, #4]
-	bl ov31_0238328C
+	bl CloseMainStairsMenu
 	ldr r0, _02383218 ; =ov31_0238A2A0
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #4]
@@ -110,7 +110,7 @@ _023830F4:
 	mov r0, #4
 	b _02383210
 _02383144:
-	bl ov31_0238328C
+	bl CloseMainStairsMenu
 	ldr r0, _02383218 ; =ov31_0238A2A0
 	mov r3, #2
 	ldr r2, [r0, #4]
@@ -207,8 +207,8 @@ _02383288: .word OVERLAY31_UNKNOWN_STRING_IDS
 	arm_func_end ov31_02383248
 
 ; https://decomp.me/scratch/oWQ5d
-	arm_func_start ov31_0238328C
-ov31_0238328C: ; 0x0238328C
+	arm_func_start CloseMainStairsMenu
+CloseMainStairsMenu: ; 0x0238328C
 	stmdb sp!, {r3, lr}
 	ldr r0, _023832EC ; =ov31_0238A2A0
 	mvn r1, #1
@@ -236,17 +236,17 @@ _023832BC:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _023832EC: .word ov31_0238A2A0
-	arm_func_end ov31_0238328C
+	arm_func_end CloseMainStairsMenu
 
 ; https://decomp.me/scratch/MmxLF
-	arm_func_start ov31_023832F0
-ov31_023832F0: ; 0x023832F0
+	arm_func_start FreeStairsMenu
+FreeStairsMenu: ; 0x023832F0
 	stmdb sp!, {r3, lr}
 	ldr r0, _02383324 ; =ov31_0238A2A0
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
-	bl ov31_0238328C
+	bl CloseMainStairsMenu
 	ldr r0, _02383324 ; =ov31_0238A2A0
 	ldr r0, [r0, #4]
 	bl MemFree
@@ -256,4 +256,4 @@ ov31_023832F0: ; 0x023832F0
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _02383324: .word ov31_0238A2A0
-	arm_func_end ov31_023832F0
+	arm_func_end FreeStairsMenu

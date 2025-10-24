@@ -57,7 +57,7 @@ _0234DE78:
 	mov r1, #0
 	bl ov29_022EA428
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	ldr r0, _0234E8EC ; =ov29_02382804
 	mvn r1, #0
 	str r1, [r0, #4]
@@ -86,7 +86,7 @@ _0234DEF8:
 	cmp r4, #1
 	bne _0234E150
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	strb r8, [sp, #0x14]
 	strb sb, [sp, #0x15]
 	strb r8, [sp, #0x16]
@@ -94,7 +94,7 @@ _0234DEF8:
 	str r8, [sp, #0x18]
 	bl GetLeader
 	add r1, sp, #0x14
-	bl ov31_023838E4
+	bl ItemsMenu
 	cmp r0, #0
 	add r0, sp, #0x14
 	movne r5, r7
@@ -103,13 +103,13 @@ _0234DEF8:
 	beq _0234DF5C
 	bl GetLeader
 	add r1, sp, #0x14
-	bl ov31_023838E4
+	bl ItemsMenu
 	cmp r0, #0
 	beq _0234DF5C
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 _0234DF5C:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0xc
 	bne _0234DF9C
 	bl GetLeader
@@ -122,7 +122,7 @@ _0234DF5C:
 	bl GetLeaderAction
 	bl ov31_0238367C
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	mov r4, #1
 	b _0234DEF8
 _0234DF9C:
@@ -139,7 +139,7 @@ _0234DF9C:
 	cmp r0, #0
 	bne _0234E140
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _0234E140
 _0234DFD8:
 	cmp r0, #0x10
@@ -155,7 +155,7 @@ _0234DFD8:
 	cmp r0, #0
 	bne _0234E140
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _0234E140
 _0234E014:
 	cmp r0, #0x2c
@@ -171,7 +171,7 @@ _0234E014:
 	cmp r0, #0
 	bne _0234E140
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _0234E140
 _0234E050:
 	cmp r0, #0x3c
@@ -180,7 +180,7 @@ _0234E050:
 	mov r1, #1
 	bl ov29_022F4370
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	mov r0, #0x78
 	mov r1, #0x4d
 	bl ov29_022EA370
@@ -194,7 +194,7 @@ _0234E084:
 	mov r1, #1
 	bl ov29_022F44F0
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	mov r0, #0x78
 	mov r1, #0x4d
 	bl ov29_022EA370
@@ -238,7 +238,7 @@ _0234E0EC:
 	cmp r0, #0
 	beq _0234DE78
 _0234E140:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0
 	bne _0234E890
 	b _0234E86C
@@ -251,12 +251,12 @@ _0234E150:
 	b _0234E2AC
 _0234E168:
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	bl GetLeader
 	bl TeamMenu
 	cmp r0, #0
 	ldrne r5, [sp, #0x10]
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x30
 	bgt _0234E1B0
 	bge _0234E1F0
@@ -317,7 +317,7 @@ _0234E214:
 	bne _0234E274
 	ldr r0, _0234E8EC ; =ov29_02382804
 	str r7, [r0, #4]
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0
 	beq _0234E28C
 	ldr r0, [sp, #4]
@@ -348,7 +348,7 @@ _0234E28C:
 _0234E2AC:
 	cmp sb, #0
 	bne _0234E168
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0
 	bne _0234E890
 	b _0234E86C
@@ -357,7 +357,7 @@ _0234E2C4:
 	bne _0234E4F0
 	mov r0, #1
 	mov r8, #0
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	mov r7, r8
 	b _0234E318
 _0234E2E0:
@@ -422,12 +422,12 @@ _0234E38C:
 	bl GetLeaderMonster
 	strb r8, [r0, #0x4e]
 	mov r0, #0
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	ldr sb, _0234E8E8 ; =DUNGEON_PTR
 	mvn r8, #0
 _0234E3CC:
 	mov r0, #0
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	ldr r3, [sp, #8]
 	add r0, sp, #0x24
 	mov r1, #0
@@ -436,14 +436,14 @@ _0234E3CC:
 	bl HandleMovesMenuWrapper0
 	cmp r0, #0
 	movne r5, r8
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x1d
 	bne _0234E40C
 	bl GetLeaderAction
 	bl ov31_02385FE0
 	b _0234E3CC
 _0234E40C:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x1e
 	bne _0234E428
 	bl GetLeaderAction
@@ -451,7 +451,7 @@ _0234E40C:
 	bl ov31_023860A4
 	b _0234E3CC
 _0234E428:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x33
 	bne _0234E444
 	bl GetLeaderAction
@@ -459,23 +459,23 @@ _0234E428:
 	bl ov31_023860A4
 	b _0234E3CC
 _0234E444:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x1f
 	bne _0234E45C
 	bl GetLeaderAction
 	bl ov31_0238619C
 	b _0234E3CC
 _0234E45C:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x20
 	beq _0234E3CC
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x21
 	beq _0234E3CC
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x14
 	beq _0234E48C
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x15
 	bne _0234E4CC
 _0234E48C:
@@ -505,7 +505,7 @@ _0234E4CC:
 	mov r2, #1
 	bl TryPointCameraToMonster
 	bl HideTileGrid
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0
 	bne _0234E890
 	b _0234E86C
@@ -530,7 +530,7 @@ _0234E4F0:
 	mov r0, #0x1d
 	bl AdvanceFrame
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	mov r0, #0
 	strb r0, [sp, #0x28]
 	mov r0, #1
@@ -541,7 +541,7 @@ _0234E4F0:
 	str r0, [sp, #0x2c]
 	bl GetLeader
 	add r1, sp, #0x28
-	bl ov31_023838E4
+	bl ItemsMenu
 	cmp r0, #0
 	add r0, sp, #0x28
 	movne r5, r7
@@ -550,13 +550,13 @@ _0234E4F0:
 	beq _0234E5A4
 	bl GetLeader
 	add r1, sp, #0x28
-	bl ov31_023838E4
+	bl ItemsMenu
 	cmp r0, #0
 	beq _0234E5A4
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 _0234E5A4:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0xc
 	bne _0234E5E4
 	bl GetLeader
@@ -569,7 +569,7 @@ _0234E5A4:
 	bl GetLeaderAction
 	bl ov31_0238367C
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	mov r4, #4
 	b _0234DEF8
 _0234E5E4:
@@ -586,7 +586,7 @@ _0234E5E4:
 	cmp r0, #0
 	bne _0234E720
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _0234E720
 _0234E620:
 	cmp r0, #0x10
@@ -602,7 +602,7 @@ _0234E620:
 	cmp r0, #0
 	bne _0234E720
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _0234E720
 _0234E65C:
 	cmp r0, #0x2c
@@ -618,7 +618,7 @@ _0234E65C:
 	cmp r0, #0
 	bne _0234E720
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _0234E720
 _0234E698:
 	cmp r0, #0xb
@@ -661,7 +661,7 @@ _0234E720:
 	mov r0, #0
 #endif
 	bl ov29_022FB920
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0
 	bne _0234E890
 	b _0234E7F8
@@ -669,10 +669,10 @@ _0234E734:
 	cmp r0, #2
 	bne _0234E75C
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	bl GetLeader
 	bl ov31_02386C6C
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0
 	bne _0234E890
 	b _0234E7F8
@@ -680,11 +680,11 @@ _0234E75C:
 	cmp r0, #5
 	bne _0234E7F8
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	bl GetLeader
 	mov r1, #1
-	bl ov31_02382E18
-	bl ov29_022F0B9C
+	bl StairsMenu
+	bl GetLeaderActionId
 	cmp r0, #0
 	beq _0234E7F8
 	mov r6, #1
@@ -694,11 +694,11 @@ _0234E78C:
 	tst r0, #0x200
 	beq _0234E7C0
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	bl GetLeader
 	mov r1, #1
-	bl ov31_02382E18
-	bl ov29_022F0B9C
+	bl StairsMenu
+	bl GetLeaderActionId
 	cmp r0, #0
 	beq _0234E7F8
 	mov r6, #1
@@ -734,7 +734,7 @@ _0234E800:
 	bl OthersMenu
 	cmp r0, #0
 	bne _0234E890
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0
 	bne _0234E890
 	mvn r5, #0
@@ -749,7 +749,7 @@ _0234E834:
 	cmp r0, #0
 	movne r6, #1
 	bne _0234E890
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0
 	movne r6, #1
 	bne _0234E890
@@ -802,8 +802,8 @@ _0234E8F4: .word 0x00000B6A
 #endif
 	arm_func_end OpenMenu
 
-	arm_func_start ov29_0234E8F8
-ov29_0234E8F8: ; 0x0234E8F8
+	arm_func_start StairsMenuAfterStep
+StairsMenuAfterStep: ; 0x0234E8F8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -811,7 +811,7 @@ ov29_0234E8F8: ; 0x0234E8F8
 	bl LoadOverlay
 	mov r0, r5
 	mov r1, r4
-	bl ov31_02382E18
+	bl StairsMenu
 	mov r0, #0x22
 	bl OverlayIsLoaded
 	cmp r0, #0
@@ -819,13 +819,13 @@ ov29_0234E8F8: ; 0x0234E8F8
 	mov r0, #0x22
 	bl UnloadOverlay
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ov29_0234E8F8
+	arm_func_end StairsMenuAfterStep
 
 	arm_func_start ov29_0234E934
 ov29_0234E934: ; 0x0234E934
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	mov r2, #0
 	strb r2, [r4]
 	strb r2, [r4, #1]

@@ -59,6 +59,7 @@
 .public IsExperienceLocked
 .public IsFloorOver
 .public IsGoldenChamber
+.public IsSecretBazaarNpc
 .public ItemZInit
 .public LEADER_PTR
 .public LogItemBlockedByEmbargo
@@ -87,8 +88,6 @@
 .public ov29_022EA370
 .public ov29_022EA3B4
 .public ov29_022EA428
-.public ov29_022EACCC
-.public ov29_022EB398
 .public ov29_022EB568
 .public ov29_022EB594
 .public ov29_022EB944
@@ -105,7 +104,6 @@
 .public ov29_022FA2F0
 .public ov29_022FA360
 .public ov29_022FB920
-.public ov29_022FBDF0
 .public ov29_022FF3F4
 .public ov29_022FF958
 .public ov29_022FFA94
@@ -141,7 +139,6 @@
 .public ov29_0234D860
 .public ov29_0234D878
 .public ov29_0234D88C
-.public ov29_0234E8F8
 .public ov29_0234FC50
 .public ov29_0234FCA8
 .public ov29_023526A8
@@ -158,6 +155,7 @@
 .public ov29_0237CFBB
 .public PlayExclamationPointEffect__022E47D4
 .public PlayQuestionMarkEffect
+.public PlaySeByIdIfNotSilence
 .public PlaySeByIdVolumeWrapper
 .public PlaySeVolumeWrapper
 .public PointCameraToMonster
@@ -168,6 +166,7 @@
 .public RemoveEquivItemNoHole
 .public RemoveGroundItem
 .public RemoveHolderForItemInBag
+.public ResetLeaderActionFields
 .public ResetTriggerFlags
 .public SetActionUseMovePlayer
 .public SetDecoyAiTracker
@@ -180,6 +179,7 @@
 .public ShouldMonsterRunAway
 .public ShouldMonsterRunAwayAndShowEffect
 .public SpawnItem
+.public StairsMenuAfterStep
 .public sub_02001AB0
 .public sub_02006B70
 .public sub_0201B9F8

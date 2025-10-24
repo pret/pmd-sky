@@ -348,7 +348,7 @@ _0231B74C:
 	mov r4, r0
 _0231B768:
 	mov r0, r7
-	bl CheckVariousConditions
+	bl CheckVariousConditions__0230156C
 	cmp r0, #0
 	movne r4, #0
 	cmp r4, #0
@@ -377,7 +377,7 @@ _0231B7B0:
 	b _0231CBA4
 _0231B7D4:
 	ldr r0, _0231C6C4 ; =0x00001317
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	mov r1, r6
 	mov r0, #0
 	bl PrepareItemForPrinting__02345728

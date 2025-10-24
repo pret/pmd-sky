@@ -35,7 +35,9 @@
 .public GetFadeStatus
 .public GetLanguage
 .public GetProcessorMode
+.public HandleMenus
 .public HardwareInterrupt
+.public InitMenu
 .public LoadOverlay
 .public MemAlloc
 .public memcmp
@@ -1075,8 +1077,6 @@
 .public sub_02028E40
 .public sub_02028E88
 .public sub_02034710
-.public sub_020348E4
-.public sub_02034A80
 .public sub_02046804
 .public sub_02049A40
 .public sub_0204A1CC

@@ -111,7 +111,7 @@ _0238A260:
 _0238A2C4:
 	add r0, r2, #0x100
 	ldrsb r0, [r0, #0x3a]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238A334
 	cmp r0, #6
@@ -167,7 +167,7 @@ _0238A350:
 _0238A394:
 	add r0, r2, #0x100
 	ldrsb r0, [r0, #0x3a]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238A3EC
 	cmp r0, #4
@@ -225,7 +225,7 @@ _0238A404:
 _0238A464:
 	add r0, r2, #0x100
 	ldrsb r0, [r0, #0x3a]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	ldrne r1, _0238A67C ; =OVERLAY25_UNKNOWN_POINTER__NA_238B5E0
 	ldrne r1, [r1]

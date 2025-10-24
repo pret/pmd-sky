@@ -146,7 +146,7 @@ _022FEF88:
 	beq _022FEFA4
 	ldr r1, _022FEFC4 ; =0x00001204
 	mov r0, r7
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 _022FEFA4:
 	add r4, r4, #1
 	cmp r4, #0x14

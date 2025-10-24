@@ -38,7 +38,7 @@ _0238A284:
 	b _0238A4D4
 _0238A2A8:
 	ldrsb r0, [r1, #0x83]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r1, _0238A4DC ; =OVERLAY15_UNKNOWN_POINTER__NA_238B180
 	mov r4, r0
 	ldr r0, [r1]

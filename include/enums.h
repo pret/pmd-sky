@@ -1,6 +1,8 @@
 #ifndef PMDSKY_ENUMS_H
 #define PMDSKY_ENUMS_H
 
+#define NUM_TACTICS TACTIC_NONE + 1
+
 // Tactic ID. These are usually encoded as bitvectors.
 enum tactic_id {
     TACTIC_LETS_GO_TOGETHER = 0,
@@ -2976,16 +2978,265 @@ enum script_var_type {
     VARTYPE_SPECIAL = 9,
     // This dummy value ensures compilation that matches the original assembly.
     // Without it, the compiler reads the enum using ldrb instead of ldrsh
-    VARTYPE_DUMMY_PADDING = 256 
+    VARTYPE_DUMMY_PADDING = 256
 };
 
+// Predefined variables available to the script engine.
+// Also see struct script_var_value_table, where the corresponding values for these variables are
+// stored.
+// TODO: replace raw address references with actual symbol names
 enum script_var_id {
+    // Its only purpose is to be checked at [NA]0x204C448, which compares the saved value to the
+    // default value in the script variable table (which is 1 in base game). If the values are not
+    // equal, then the save file is treated as corrupted, which thus gets deleted.
+    VAR_VERSION = 0,
+    // Seemingly unused?
+    VAR_CONDITION = 1,
+    // Two indexed values determined via the Top Menu. These are referenced by Unionall for general
+    // control flow.
+    // To be a bit more specific, the first coroutine run after the Top Menu is EVENT_DIVIDE, which
+    // checks for these indexed values. In doing so, the game knows when to load scripts from
+    // maingame, a Special Episode, or Rescue mode.
+    VAR_SCENARIO_SELECT = 2,
+    // Two indexed values used for maingame story progression. Typically, the first value represents
+    // the chapter, and the second represents a subsection of that chapter.
+    // This is referenced everywhere in maingame scripts and Unionall. It's especially notable in
+    // deciding which NPCs to spawn in certain overworld sections, deciding which cutscene to load
+    // after a dungeon loss, and various other control flow purposes. Used EXTENSIVELY in
+    // EVENT_DIVIDE and other related coroutines.
+    VAR_SCENARIO_MAIN = 3,
+    // Two indexed values used for Special Episode story progression. Very similar to SCENARIO_MAIN,
+    // but used on a much smaller scale.
+    VAR_SCENARIO_SIDE = 4,
+    VAR_SCENARIO_SUB1 = 5,
+    VAR_SCENARIO_SUB2 = 6,
+    VAR_SCENARIO_SUB3 = 7,
+    VAR_SCENARIO_SUB4 = 8,
+    VAR_SCENARIO_SUB5 = 9,
+    VAR_SCENARIO_SUB6 = 10,
+    VAR_SCENARIO_SUB7 = 11,
+    VAR_SCENARIO_SUB8 = 12,
+    // Three bitflags used in Special Episode 2. They're initialized to 0 when Special Episode 2
+    // begins and set to 1 when Igglybuff talks to each of his neighbors (Wooper, Smoochum, and
+    // Budew) at the start of the Special Episode.
+    VAR_SIDE02_TALK = 13,
+    // Three bitflags used in Special Episode 4. They're initialized to 0 when Special Episode 4
+    // begins and set to 1 upon exiting the Limestone Cavern paths.
+    VAR_SIDE06_ROOM = 14,
+    // A bitflag used in Special Episode 5. It's initialized to 0 when Special Episode 5 begins and
+    // is set to 1 after losing to the Barren Valley Clearing boss.
+    VAR_SIDE08_BOSS2ND = 15,
+    // A bitflag used in Special Episode 1. It's initialized to 0 when Special Episode 1 begins and
+    // is set to 1 after losing to the Deep Star Cave boss.
+    VAR_SIDE01_BOSS2ND = 16,
+    // 128 bitflags used across maingame and Special Episodes. They all serve a variety of purposes,
+    // but some of the most notable ones include:
+    //   3: The player lost in a dungeon (SCENARIO)
+    //   4: The player lost in a dungeon (REQUEST)
+    //   6: The game was saved
+    //   7: Overworld save
+    //   8: Cutscene save
+    //   10: Job day
+    //   11: Sentry Duty day
+    VAR_SCENARIO_MAIN_BIT_FLAG = 17,
+    // 256 bitflags used across maingame for a variety of purposes. These are mostly used for
+    // Treasure Town shopkeeper NPCs to make sure they don't repeat the same intro text before they
+    // open their hard-coded menu.
+    VAR_SCENARIO_TALK_BIT_FLAG = 18,
+    // Despite the name, this is one integer! This controls a wide variety of game functions, such
+    // as bag size, Treasure Box spawns, and spawn threshold (i.e. enemies can only spawn when this
+    // variable is greater than or equal to a certain value).
+    // Also see GetScenarioBalance.
+    VAR_SCENARIO_BALANCE_FLAG = 19,
+    // This shares the same features as SCENARIO_BALANCE_FLAG and actually takes priority over it in
+    // maingame if this is greater than or equal to 0. Nevertheless, we're fairly certain this is
+    // unused in the base game.
+    // Also see GetScenarioBalance.
+    VAR_SCENARIO_BALANCE_DEBUG = 20,
+    // The following 3 variables are used in the Crystal Cave overworld puzzle when a crystal
+    // changes color.
+    VAR_CRYSTAL_COLOR_01 = 21,
+    VAR_CRYSTAL_COLOR_02 = 22,
+    VAR_CRYSTAL_COLOR_03 = 23,
+    // Used to identify a cutscene save in the maingame. While SCENARIO_MAIN_BIT_FLAG[6] and
+    // SCENARIO_MAIN_BIT_FLAG[8] together identify that the game has been saved mid-cutscene, this
+    // integer marks which part of the game the cutscene save happened in.
+    VAR_COMPULSORY_SAVE_POINT = 24,
+    // Used to identify a cutscene save in a Special Episode. Acts very similar to
+    // COMPULSORY_SAVE_POINT.
+    VAR_COMPULSORY_SAVE_POINT_SIDE = 25,
+    // The backup version of SCENARIO_SELECT saved in the function ScenarioFlagBackup.
+    VAR_SCENARIO_SELECT_BACKUP = 26,
+    // The backup version of SCENARIO_MAIN_BIT_FLAG saved in the function ScenarioFlagBackup.
+    VAR_SCENARIO_MAIN_BIT_FLAG_BACKUP = 27,
+    // The Level ID (see the version-dependent script_level_id_* enums) that the player is in in the
+    // overworld.
+    VAR_GROUND_ENTER = 28,
+    // Set to 0 in Unionall, in the coroutine EVENT_FORMATION. Doesn't seem to update when
+    // transitioning to other maps in the overworld, so its true purpose is a bit unknown.
+    VAR_GROUND_ENTER_LINK = 29,
+    // The Level ID that the player just arrived from. Notoriously relied upon in Enter00 scripts to
+    // determine where the player and partner actors should spawn if a map has multiple
+    // entrances/exits.
+    VAR_GROUND_GETOUT = 30,
+    // The Level ID of the currently loaded background. Typically, this shares the same value as
+    // GROUND_ENTER, but you could have an instance where you load LEVEL_P01P01A's Enter00 script
+    // and have it display LEVEL_P01P03A's background.
+    VAR_GROUND_MAP = 31,
+    // The World Map Marker ID that determines where the player appears on the Top Screen when
+    // selecting "Map and team" in the overworld.
+    VAR_GROUND_PLACE = 32,
+    // The backup version of GROUND_ENTER saved in the function EventFlagBackup.
+    VAR_GROUND_ENTER_BACKUP = 33,
+    // The backup version of GROUND_ENTER_LINK saved in the function EventFlagBackup.
+    VAR_GROUND_ENTER_LINK_BACKUP = 34,
+    // The backup version of GROUND_GETOUT saved in the function EventFlagBackup.
+    VAR_GROUND_GETOUT_BACKUP = 35,
+    // The backup version of GROUND_MAP saved in the function EventFlagBackup.
+    VAR_GROUND_MAP_BACKUP = 36,
+    // The backup version of GROUND_PLACE saved in the function EventFlagBackup.
+    VAR_GROUND_PLACE_BACKUP = 37,
+    // The ID of the dungeon chosen from the crossroads menu. Definitely set in various places, but
+    // for sure at [NA]0x22E1DC8 and [NA]0x22DDA78.
+    VAR_DUNGEON_SELECT = 38,
+    // The ID of the dungeon being entered...sorta. It gets set in various places, and when the
+    // dungeon being entered has its mode set to DMODE_OPEN or DMODE_CLOSED (please see
+    // DUNGEON_ENTER_MODE for an explanation of dungeon modes), this matches the value of
+    // DUNGEON_SELECT. However, other dungeon modes result in it being set to 215 (written at
+    // [NA]0x204E848) or even 214 (written at [NA]0x204E8BC, checked at [NA]0x204F1D0).
+    // Also, be sure to check out [NA]0x22E8A58 and [NA]0x22DDA88.
+    VAR_DUNGEON_ENTER = 39,
+    // The "mode" of the dungeon being entered. Each dungeon has an associated "dungeon mode", which
+    // if you're familiar with ExplorerScript, you'll know as DMODE_OPEN, DMODE_CLOSED,
+    // DMODE_REQUEST, and DMODE_OPEN_AND_REQUEST. This variable stores the dungeon mode, but this is
+    // in fact represented by other variables as well.
+    // This determines which coroutine to run upon reloading Unionall after a dungeon. DMODE_OPEN
+    // and DMODE_CLOSED will make the game start from GETOUT_SCENARIO_DUNGEON, while the other two
+    // will result in GETOUT_REQUEST_DUNGEON being run.
+    // These modes will also determine if the specified dungeon appears in the crossroads menu.
+    // DMODE_OPEN will make the dungeon appear at the crossroads with an exclamation mark next to
+    // its name. DMODE_OPEN_AND_REQUEST will make the dungeon visible in the menu, but that's it.
+    // Any other modes will not show the dungeon in the menu.
+    VAR_DUNGEON_ENTER_MODE = 40,
+    // The ID of the dungeon being entered.
+    VAR_DUNGEON_ENTER_INDEX = 41,
+    // A counter of how many dungeons the player has entered. Incremented by one when a dungeon is
+    // exited, regardless of win/loss.
+    VAR_DUNGEON_ENTER_FREQUENCY = 42,
+    // The result of the dungeon being exited. 8 is a success and anything else is a failure (10 is
+    // when the Escape Orb is used). This is somewhat similar to GROUND_START_MODE, but also gets
+    // set to different values in the crossroads menu. Mid-dungeon, this is also the ID of the
+    // dungeon.
+    VAR_DUNGEON_RESULT = 43,
+    // The mode set upon entering ground mode. This is set after starting a new game or loading a
+    // save, but it's also most notable for being checked in Unionall's GETOUT coroutines to see if
+    // the player won or lost in a dungeon. 8 is a success and anything else is a failure (10 is
+    // when the Escape Orb is used).
+    // It's a bit unknown how this is used outside of exiting dungeons.
+    VAR_GROUND_START_MODE = 44,
+    // The backup version of DUNGEON_ENTER_BACKUP, which is NOT saved in the function
+    // EventFlagBackup...
+    VAR_DUNGEON_ENTER_BACKUP = 45,
+    // The backup version of DUNGEON_ENTER_MODE saved in the function EventFlagBackup.
+    VAR_DUNGEON_ENTER_MODE_BACKUP = 46,
+    // The backup version of DUNGEON_ENTER_INDEX saved in the function EventFlagBackup.
+    VAR_DUNGEON_ENTER_INDEX_BACKUP = 47,
+    // The backup version of DUNGEON_ENTER_FREQUENCY saved in the function EventFlagBackup.
+    VAR_DUNGEON_ENTER_FREQUENCY_BACKUP = 48,
+    // The backup version of DUNGEON_RESULT saved in the function EventFlagBackup.
+    VAR_DUNGEON_RESULT_BACKUP = 49,
+    // The backup version of GROUND_START_MODE saved in the function EventFlagBackup.
+    VAR_GROUND_START_MODE_BACKUP = 50,
+    // The number of Job Requests cleared in a single day. In the base game, Unionall relies on this
+    // to decide when to progress the story.
+    // One notable read is at [NA]0x22E6D34, which gets this variable's value and checks if it's
+    // less than 100. If so, it increments it by one.
+    VAR_REQUEST_CLEAR_COUNT = 51,
+    // Handles how the player actor (ACTOR_PLAYER and possibly other related actors) will display.
+    //   0: Species of Chimecho Assembly entry 0
+    //   1: Species of Chimecho Assembly entry 1
+    //   2: Nothing
+    //   3: Species of the current party leader
+    //   4: Species of ACTOR_ATTENDANT_BIPPA
+    //   5: Species of ACTOR_ATTENDANT_PUPURIN
+    //   6: Species of ACTOR_ATTENDANT_KIMAWARI
+    //   7: Species of ACTOR_ATTENDANT_FUTURE
+    //   8: Species of ACTOR_ATTENDANT_CHARMS
+    //   9+: Nothing
+    // Checked at [NA]0x20650E8 and [NA]0x2065188.
+    VAR_PLAYER_KIND = 52,
+    // Handles how the partner actor (ACTOR_ATTENDANT1 and possibly other related actors) will
+    // display. It also notably is checked in the Unionall coroutine TALK_ATTENDANT (when you press
+    // R to talk to the partner).
+    //   0: Nothing
+    //   1: Species of Chimecho Assembly entry 0
+    //   2: Species of Chimecho Assembly entry 1
+    //   3: Nothing
+    //   4: Species of the current party leader
+    //   5-9: Nothing
+    //   10: Species of ACTOR_ATTENDANT_MANAFI (who moves incredibly slowly)
+    // Checked at [NA]0x20651BC and [NA]0x22F7EEC.
+    VAR_ATTENDANT1_KIND = 53,
+    // Handles how the second partner actor (ACTOR_ATTENDANT2 and possibly other related actors)
+    // will display. If this variable is 10, then ACTOR_ATTENDANT2 will be the species of
+    // ACTOR_ATTENDANT_MANAFI. Anything else is nothing.
+    // Checked at [NA]0x20651CC.
+    VAR_ATTENDANT2_KIND = 54,
+    // The backup version of PLAYER_KIND saved in the function EventFlagBackup.
+    VAR_PLAYER_KIND_BACKUP = 55,
+    // The backup version of ATTENDANT1_KIND, saved in the function EventFlagBackup.
+    VAR_ATTENDANT1_KIND_BACKUP = 56,
+    // The backup version of ATTENDANT2_KIND, saved in the function EventFlagBackup.
+    VAR_ATTENDANT2_KIND_BACKUP = 57,
     VAR_FRIEND_SUM = 58,
     VAR_UNIT_SUM = 59,
     // The amount of money the player has on hand.
+    // TODO: This is probably backed by MONEY_CARRIED? Need to confirm.
     VAR_CARRY_GOLD = 60,
     // The amount of money stored in Duskull Bank.
+    // TODO: This is probably backed by MONEY_STORED? Need to confirm.
     VAR_BANK_GOLD = 61,
+    // The species ID of the initial starter. Saved at [NA]0x2048868, which is done by the special
+    // process INIT_MAIN_TEAM_AFTER_QUIZ.
+    // This remains unchanged even if Chimecho Assembly entry 0 is modified in any way.
+    VAR_HERO_FIRST_KIND = 62,
+    // The name of the initial starter. Saved at [NA]0x2048878, which is done by the special process
+    // INIT_MAIN_TEAM_AFTER_QUIZ.
+    // This remains unchanged even if Chimecho Assembly entry 0 is modified in any way.
+    VAR_HERO_FIRST_NAME = 63,
+    // The species ID of the initial partner. Saved at [NA]0x20488D8, which is done by the special
+    // process INIT_MAIN_TEAM_AFTER_QUIZ.
+    // This remains unchanged even if Chimecho Assembly entry 1 is modified in any way.
+    VAR_PARTNER_FIRST_KIND = 64,
+    // The name of the initial partner. Saved at [NA]0x20488E8, which is done by the special process
+    // INIT_MAIN_TEAM_AFTER_QUIZ.
+    // This remains unchanged even if Chimecho Assembly entry 1 is modified in any way.
+    VAR_PARTNER_FIRST_NAME = 65,
+    // The "talk kind" of the initial starter, typically used in scripts where the player speaks;
+    // see enum talk_kind (4, 5). This is most likely done to differentiate speech patterns between
+    // genders (this probably has a purpose in Japanese, just not in English).
+    // Saved at [NA]0x204893C, which is done by the special process INIT_MAIN_TEAM_AFTER_QUIZ. This
+    // remains unchanged even if Chimecho Assembly entry 0 is modified in any way.
+    VAR_HERO_TALK_KIND = 66,
+    // The "talk kind" of the initial partner, typically used in scripts where the partner speaks to
+    // differentiate speech patterns; see enum talk_kind (1, 2, 3). Unlike HERO_TALK_KIND, there's
+    // actually a table that maps starters to certain talk kinds ([NA]0x209CCE4). Each entry
+    // consists of a talk kind and a species ID.
+    // Saved at [NA]0x204897C, which is done by the special process INIT_MAIN_TEAM_AFTER_QUIZ. This
+    // remains unchanged even if Chimecho Assembly entry 1 is modified in any way.
+    VAR_PARTNER_TALK_KIND = 67,
+    // Determines which species the actor ACTOR_RANDOM_REQUEST_NPC03 will appear as. Saved at
+    // [NA]0x2065BA4.
+    // True to its name, this variable is randomly generated in the function [NA]0x205EB5C, which is
+    // called within GenerateDailyMissions. There also seems to be an exception where the game
+    // doesn't generate the species randomly (for Magnemite, maybe).
+    VAR_RANDOM_REQUEST_NPC03_KIND = 68,
+    // The value of the word at [NA]0x20AFF28. Saved at [NA]0x2048990, which is done by the special
+    // process INIT_MAIN_TEAM_AFTER_QUIZ. Changing the variable doesn't seem to do much, so its true
+    // purpose is unknown.
+    VAR_CONFIG_COLOR_KIND = 69,
+    // Its purpose is unknown, but it's initialized to 0 at [NA]0x204B0E4.
+    VAR_ROM_VARIATION = 70,
     // The language determined by the NDS firmware. Notably checked in some scripts to display
     // different backgrounds or objects, such as in the intro.
     //   0: Japanese
@@ -2994,23 +3245,188 @@ enum script_var_id {
     //   3: German
     //   4: Italian
     //   5: Spanish
-    PLAYED_OLD_GAME = 0x6f,
     VAR_LANGUAGE_TYPE = 71,
-    // A value to distinguish the type of game being played. This mainly differentiates between maingame and Special Episodes, and the game
+    // A value to distinguish the type of game being played; see enum game_mode and the GAME_MODE
+    // data symbol. This mainly differentiates between maingame and Special Episodes, and the game
     // checks for this value in numerous places (not necessarily in scripts) to differentiate
-    // maingame versus Special Episode behavior. 
+    // maingame versus Special Episode behavior. This can include whether to display the green
+    // window color, initializing the current party upon a new game/episode, and many other tasks.
+    // The function [NA]0x204B018 sets GAME_MODE to a new value, which gets called in various places
+    // within the function [NA]0x2065D1C. It seems dependent on the status code returned by
+    // ReadSaveHeader.
     VAR_GAME_MODE = 72,
-    // Used to distinguish which Special Episode is currently being played.
+    // Used to distinguish which Special Episode is currently being played; see enum
+    // special_episode_type. Unlike SPECIAL_EPISODE_TYPE, the base game scripts seem to prefer this
+    // variable when checking which Special Episode is run.
+    // This variable's value is backed by DEBUG_SPECIAL_EPISODE_NUMBER.
     VAR_EXECUTE_SPECIAL_EPISODE_TYPE = 73,
+    // Used to distinguish which Special Episode is currently being played. Very similar to
+    // EXECUTE_SPECIAL_EPISODE_TYPE, to the point where Adex doesn't know the intricate differences.
+    // Probably saved in multiple places, but one notable instance is at [NA]0x204C910.
+    VAR_SPECIAL_EPISODE_TYPE = 74,
+    // Eight bitflags used to mark if a Special Episode is accessible through the Top Menu. These
+    // are set at various points in the game's story in Acting scripts.
+    //   0: SE1
+    //   1: SE2
+    //   2: SE3
+    //   3: SE4
+    //   4: SE5
+    //   5: Unused
+    //   6: Unused
+    //   7: Unused
+    VAR_SPECIAL_EPISODE_OPEN = 75,
+    // Eight bitflags that are seemingly related to Special Episodes? We're fairly certain that
+    // they're unused, but can't say anything for sure. Gets set as the hero is initalized for the
+    // corresponding special episode.
+    VAR_SPECIAL_EPISODE_OPEN_OLD = 76,
+    // Eight bitflags used to mark if a Special Episode has been beaten. These are typically set in
+    // an Acting script.
+    //   0: SE1
+    //   1: SE2
+    //   2: SE3
+    //   3: SE4
+    //   4: SE5
+    //   5: Unused
+    //   6: Unused
+    //   7: Unused
+    // Checked at [NA]0x204CA30.
+    VAR_SPECIAL_EPISODE_CONQUEST = 77,
+    // 64 bitflags corresponding to various story-based unlocks. Known values:
+    // https://docs.google.com/spreadsheets/d/1NK3wkC8mOCu-tVkxULLkhpgPR-glApiD2v3zp-mdW7w
+    VAR_PERFORMANCE_PROGRESS_LIST = 78,
+    // 256 bitflags used to determine if a dungeon will appear in the crossroads menu. Each bitflag
+    // represents a dungeon ID (so 0 is Test Dungeon, 1 is Beach Cave, and so on).
+    VAR_DUNGEON_OPEN_LIST = 79,
+    // 256 bitflags that supposedly represent each dungeon. Checked at [NA]0x204CEE0. For what
+    // purpose? No clue!
+    // You'd think that this keeps track of which dungeons you've entered, but that doesn't seem to
+    // be the case.
+    VAR_DUNGEON_ENTER_LIST = 80,
+    // 256 bitflags that supposedly represent each dungeon. For what purpose? No clue!
+    VAR_DUNGEON_ARRIVE_LIST = 81,
+    // 256 bitflags used to determine if a dungeon has been beaten before. Each bitflag represents a
+    // dungeon ID (so 0 is Test Dungeon, 1 is Beach Cave, and so on).
+    VAR_DUNGEON_CONQUEST_LIST = 82,
+    // 256 bitflags that supposedly represent each dungeon. For what purpose? No clue!
+    VAR_DUNGEON_PRESENT_LIST = 83,
+    // 256 bitflags used to determine if beating a dungeon will result in the game branching to
+    // GETOUT_REQUEST_DUNGEON or GETOUT_SCENARIO_DUNGEON. Each bitflag represents a dungeon ID (so 0
+    // is Test Dungeon, 1 is Beach Cave, and so on).
+    // To clarify, if a bitflag X from here is set to 0 and DUNGEON_OPEN_LIST[X] is 1, then the
+    // dungeon will show with an exclamation mark next to its name. If beaten, the game will start
+    // running code in the Unionall coroutine GETOUT_SCENARIO_DUNGEON.
+    VAR_DUNGEON_REQUEST_LIST = 84,
+    // 320 bitflags used for...something.
+    VAR_WORLD_MAP_MARK_LIST_NORMAL = 85,
+    // 320 bitflags used for...something.
+    VAR_WORLD_MAP_MARK_LIST_SPECIAL = 86,
+    // A value used to determine which clouds block certain areas in the level S01P01A. Or it might
+    // be more accurate to say "which position of the map will be shown", but the clouds actually
+    // have an animation, so there must also be some hard-coded aspect to that level.
+    // Saved at [NA]0x204CDF8.
+    // Read at [NA]0x204CDD8.
+    VAR_WORLD_MAP_LEVEL = 87,
+    // The reason why the POSITION variables are even read is because of another command:
+    // LoadPosition. This updates an actor, object, or performer’s x, y, height, and direction using
+    // those variables
+    //
+    // Three indexed values used to save the X position of an actor, object, or performer. This
+    // value is stored as Pixel << 8.
+    // This is only updated via the script command SavePosition, which also updates the other
+    // POSITION variables.
+    // Saved at [NA]0x22E0E10.
+    // Read at [NA]0x22E0D18.
+    VAR_POSITION_X = 88,
+    // Three indexed values used to save the Y position of an actor, object, or performer. This
+    // value is stored as Pixel << 8.
+    // This is only updated via the script command SavePosition, which also updates the other
+    // POSITION variables.
+    // Saved at [NA]0x22E0E28.
+    // Read at [NA]0x22E0D30.
+    VAR_POSITION_Y = 89,
+    // Three indexed values used to save the height of an actor, object, or performer. This value is
+    // stored as Pixel << 8.
+    // This is only updated via the script command SavePosition, which also updates the other
+    // POSITION variables.
+    // Saved at [NA]0x22E0E40.
+    // Read at [NA]0x22E0D48.
+    VAR_POSITION_HEIGHT = 90,
+    // Three indexed values used to save the direction of an actor, object, or performer. See enum
+    // direction_id.
+    // This is only updated via the script command SavePosition, which also updates the other
+    // POSITION variables.
+    // Saved at [NA]0x22E0E58.
+    // Read at [NA]0x22E0D60.
+    VAR_POSITION_DIRECTION = 91,
+    // A variable used for a variety of purposes. As the name suggests, this is somewhat of a
+    // "local" variable, in that the game's convention with this is basically all over the place.
+    // Cutscenes often use it when needing to loop an actor's action. Another notable use is
+    // deciding which letter the player receives in S00P01A/DOPEN. There are also some writes/reads
+    // scattered around the game's code, but they all probably do some equally random shenanigans.
+    VAR_EVENT_LOCAL = 92,
+    // A variable used for a variety of purposes. Seems to behave similarly to EVENT_LOCAL, but the
+    // script engine doesn't use this as often. One notable use is determining the gender of the
+    // Heatran you fight (and recruit) at Giant Volcano.
+    VAR_DUNGEON_EVENT_LOCAL = 93,
+    // 32 bitflags used for...something.
+    VAR_STATION_ITEM_STATIC = 94,
+    // 32 bitflags used for...something.
+    VAR_STATION_ITEM_TEMP = 95,
+    // 16 bitflags used for...something.
+    VAR_DELIVER_ITEM_STATIC = 96,
+    // 16 bitflags used for...something.
+    VAR_DELIVER_ITEM_TEMP = 97,
+    // 5 bitflags used to conditionally show menu options in Drifblim's Gondola in Sky Peak.
+    VAR_BIT_FUWARANTE_LOCAL = 98,
+    // The result of a Prize Ticket drawing, which is determined randomly in P01P04A/S30A0601.
+    VAR_LOTTERY_RESULT = 99,
+    VAR_ITEM_BACKUP = 100,
+    VAR_ITEM_BACKUP_KUREKURE = 101,
+    VAR_ITEM_BACKUP_TAKE = 102,
+    VAR_ITEM_BACKUP_GET = 103,
+    VAR_REQUEST_THANKS_RESULT_KIND = 104,
+    VAR_REQUEST_THANKS_RESULT_VARIATION = 105,
+    // A flag used to determine if Wynaut at Spinda's Cafe should include more recyclable items in
+    // the Recycle Shop.
+    // Set to 1 at [NA]0x2012078.
+    // Set to 0 in the function [NA]0x2011AB8.
+    VAR_SUB30_TREASURE_DISCOVER = 106,
+    // A flag used to determine if Wynaut at Spinda's Cafe should unlock a dungeon.
+    // Set to 1 at [NA]0x2012100.
+    // Set to 0 in the function [NA]0x2011AB8.
+    VAR_SUB30_SPOT_DISCOVER = 107,
+    // Incremented at the Recycle Shop for every item you trade.
+    // Read at [NA]0x2012004, which is involved in determining several of the SUB30 flags being set.
+    // Set to 0 in the function [NA]0x2011AB8.
+    VAR_RECYCLE_COUNT = 108,
+    // This determines which dungeon will get unlocked by Wynaut after recycling various times.
+    // Specifically, this gets checked in the script P01P04A/S30A0501.
+    // Incremented by one at [NA]0x20120F0.
+    // Set to 0 in the function [NA]0x2011AB8.
+    VAR_SUB30_SPOT_LEVEL = 109,
+    VAR_TEAM_RANK_EVENT_LEVEL = 110,
+    // The value used to keep track of the player's answer to the Personality Quiz question "Did you
+    // play 'Explorers of Time' or 'Explorers of Darkness'?"
+    VAR_PLAY_OLD_GAME = 111,
     VAR_NOTE_MODIFY_FLAG = 112,
+    VAR_SUB30_PROJECTP = 113,
+    VAR_SUM = 114, // This seems to be an end marker or some sort of special variable?
+
+    // Local variables start at ID 0x400
+    VAR_LOCAL0 = 1024,
+    VAR_LOCAL1 = 1025,
+    VAR_LOCAL2 = 1026,
+    VAR_LOCAL3 = 1027,
 };
 
 enum special_episode_type {
+    EPISODE_NONE = -1,
     EPISODE_BIDOOFS_WISH = 0,
     EPISODE_IGGLYBUFF_THE_PRODIGY = 1,
     EPISODE_TODAYS_OH_MY_GOSH = 2,
     EPISODE_HERE_COMES_TEAM_CHARM = 3,
     EPISODE_IN_THE_FUTURE_OF_DARKNESS = 4,
+    NUM_SPECIAL_EPISODES = 5
 };
 
 #endif //PMDSKY_ENUMS_H

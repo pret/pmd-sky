@@ -22,15 +22,15 @@
 .public IsFloorOver
 .public ItemIsActive__0230F810
 .public LogMessageByIdWithPopup
-.public ov29_022EACCC
 .public ov29_022F52BC
 .public ov29_022F9EA0
 .public ov29_02345004
 .public ov29_02347040
-.public ov29_02348D00
+.public IsItemUnkMissionItem2
 .public ov29_02348D3C
 .public ov29_02348DD8
 .public ov29_02348ECC
+.public PlaySeByIdIfNotSilence
 .public PrepareItemForPrinting__02345728
 .public RemoveGroundItem
 .public ShouldMonsterRunAwayAndShowEffect

@@ -1,6 +1,0 @@
-#pragma once
-.public DefenderAbilityIsActive__02301A0C
-.public GetApparentWeather
-.public IsExperienceLocked
-.public LogMessageByIdWithPopupCheckUserTarget
-.public SubstitutePlaceholderStringTags

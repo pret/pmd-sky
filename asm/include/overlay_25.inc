@@ -16,7 +16,7 @@
 .public GetMoneyCarried
 .public GetNbItemsInBag
 .public GetPressedButtons
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public HidePortraitBox
 .public InitPortraitParamsWithMonsterId
 .public InitPreprocessorArgs

@@ -9,6 +9,7 @@ Static main
 {
 	Address 0x02000000
 	StackSize 0 2048
+	Object asm/main_rodata_020908D4.o
 	Object src/main_02000C6C.o
 	Object asm/main_02000DE0.o
 	Object src/main_02001188.o
@@ -45,6 +46,8 @@ Static main
 	Object asm/main_0200EB30.o
 	Object src/main_0200ECFC.o
 	Object asm/main_0200ED1C.o
+	Object src/main_0200EDC0.o
+	Object asm/main_0200EDFC.o
 	Object src/exclusive_item.o
 	Object asm/main_02010FC4.o
 	Object src/moves_1.o
@@ -79,8 +82,12 @@ Static main
 	Object asm/main_0204B018.o
 	Object src/scripting.o
 	Object asm/main_0204B678.o
+	Object src/main_0204C938.o
+	Object asm/main_0204C94C.o
 	Object src/dungeon_recruitment_3.o
 	Object asm/main_0204CA94.o
+	Object src/main_0204CB94.o
+	Object asm/main_0204CBE8.o
 	Object src/main_0204DA2C.o
 	Object asm/main_0204DB08.o
 	Object src/main_0204DD80.o
@@ -93,6 +100,12 @@ Static main
 	Object asm/main_02051504.o
 	Object src/main_02051760.o
 	Object asm/main_02051788.o
+	Object src/tactics_data.o
+	Object asm/main_rodata_020A190C.o
+	Object src/secondary_terrain_types.o
+	Object asm/main_rodata_020A1BB0.o
+	Object src/main_020517D4.o
+	Object asm/main_020517F4.o
 	Object src/main_020526EC.o
 	Object asm/get_category_string.o
 	Object src/main_020527A8.o
@@ -105,6 +118,8 @@ Static main
 	Object asm/main_02054C24.o
 	Object src/main_02054DC4.o
 	Object asm/main_02054E4C.o
+	Object src/main_02058C3C.o
+	Object asm/main_02058C4C.o
 	Object src/pokemon.o
 	Object asm/main_02058F24.o
 	Object src/main_0206C98C.o
@@ -138,8 +153,7 @@ Static main
 	Object asm/main_02089694.o
 	Object src/main_020897AC.o
 	Object asm/main_020897DC.o
-	Object src/secondary_terrain_types.o
-	Object asm/main_rodata_020A1BB0.o
+	Object asm/main_rodata_020A2808.o
 }
 
 Autoload ITCM
@@ -372,7 +386,6 @@ Overlay OVY_29
 	Object asm/overlay_29_022E37DC.o
 	Object src/position_util.o
 	Object asm/overlay_29_rodata_02351628.o
-	Object asm/overlay_29_022E908C.o
 	Object src/dungeon_range.o
 	Object asm/overlay_29_022E91A4.o
 	Object src/dg_uty.o
@@ -403,7 +416,7 @@ Overlay OVY_29
 	Object asm/overlay_29_rodata_0235179C.o
 	Object asm/overlay_29_022EFA6C.o
 	Object src/dungeon_logic_6.o
-	Object asm/overlay_29_022EFB04.o
+	Object asm/overlay_29_022EFB20.o
 	Object src/overlay_29_022F0590.o
 	Object asm/overlay_29_022F05B4.o
 	Object src/overlay_29_022F528C.o
@@ -421,6 +434,8 @@ Overlay OVY_29
 	Object asm/overlay_29_022F9194.o
 	Object src/overlay_29_022F9720.o
 	Object asm/overlay_29_022F9744.o
+	Object src/overlay_29_022FA430.o
+	Object asm/overlay_29_022FA524.o
 	Object src/overlay_29_022FAC98.o
 	Object asm/overlay_29_022FACBC.o
 	Object src/overlay_29_022FB538.o
@@ -430,7 +445,7 @@ Overlay OVY_29
 	Object src/joined_at_checks.o
 	Object asm/overlay_29_022FBB1C.o
 	Object src/dungeon_logic_7.o
-	Object asm/overlay_29_022FBDF0.o
+	Object asm/overlay_29_022FBE04.o
 	Object src/overlay_29_022FC99C.o
 	Object asm/overlay_29_022FC9C0.o
 	Object src/overlay_29_022FEEB8_eu.o
@@ -450,21 +465,20 @@ Overlay OVY_29
 	Object src/dungeon_logic.o
 	Object src/dungeon_logic_1.o
 	Object src/dungeon_capabilities.o
-	Object asm/overlay_29_023008DC.o
+	Object asm/overlay_29_023009A0.o
 	Object src/dungeon_capabilities_1.o
-	Object asm/overlay_29_02300BF8.o
-	Object src/dungeon_capabilities_2.o
-	Object asm/overlay_29_02300D00.o
+	Object asm/overlay_29_02300D50.o
 	Object src/directional_bit_masks.o
 	Object src/dungeon_capabilities_3.o
 	Object asm/overlay_29_02300FCC.o
 	Object src/dungeon_capabilities_4.o
-	Object asm/overlay_29_023012F8.o
+	Object asm/overlay_29_02301498.o
 	Object src/dungeon_ai_targeting.o
 	Object asm/overlay_29_023016D8.o
 	Object src/dungeon_ai_targeting_1.o
 	Object asm/overlay_29_rodata_023527C0.o
-	Object asm/overlay_29_023018AC.o
+	Object src/overlay_29_023018AC.o
+	Object asm/overlay_29_02301940.o
 	Object src/overlay_29_02301A60.o
 	Object asm/overlay_29_02301A84.o
 	Object src/dungeon_pokemon_attributes.o
@@ -489,8 +503,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02305C28.o
 	Object src/overlay_29_02307EF8.o
 	Object asm/overlay_29_02307F4C.o
-	Object src/overlay_29_0230827C.o
-	Object asm/overlay_29_023082A0.o
+	Object src/dungeon_ai_leader.o
+	Object asm/overlay_29_023082C4.o
 	Object src/dungeon_ai.o
 	Object asm/overlay_29_023085DC.o
 	Object src/overlay_29_02308FBC.o
@@ -605,6 +619,8 @@ Overlay OVY_29
 	Object src/fixed_room_data_1.o
 	Object src/run_dungeon.o
 	Object asm/overlay_29_02336224.o
+	Object src/overlay_29_02336428.o
+	Object asm/overlay_29_02336450.o
 	Object src/overlay_29_02337CA8.o
 	Object asm/overlay_29_02337CCC.o
 	Object src/dungeon_map_access_1.o
@@ -631,6 +647,8 @@ Overlay OVY_29
 	Object asm/overlay_29_02346834.o
 	Object src/dungeon_projectile_throw.o
 	Object asm/overlay_29_02348020.o
+	Object src/overlay_29_02348D00.o
+	Object asm/overlay_29_02348D3C.o
 	Object src/overlay_29_0234987C.o
 	Object asm/overlay_29_023498A0.o
 	Object src/overlay_29_0234BBE8.o

@@ -505,7 +505,7 @@ _0234515C:
 	bl sub_0200D8AC
 	mov r6, r0
 	ldr r0, _0234551C ; =0x00001308
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	mov r0, #0x62
 	bl AdvanceFrame
 	mov r0, r6
@@ -617,7 +617,7 @@ _023452D8:
 	mov r1, #1
 	bl RemoveGroundItem
 	ldr r0, _02345528 ; =0x00001304
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	add r0, sp, #0xcc
 	ldr r0, [r0, r8, lsl #2]
 	cmp r0, #0
@@ -680,7 +680,7 @@ _023453B4:
 	b _02345508
 _02345418:
 	ldr r0, _02345528 ; =0x00001304
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	add r0, sp, #0xcc
 	ldr r0, [r0, r8, lsl #2]
 	cmp r0, #0

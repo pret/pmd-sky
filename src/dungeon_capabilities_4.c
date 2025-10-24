@@ -12,6 +12,7 @@
 #include "item.h"
 #include "overlay_29_022FF898.h"
 #include "run_dungeon.h"
+#include "secondary_terrain_types.h"
 #include "targeting.h"
 
 bool8 IsMonsterCornered(struct entity *monster)
@@ -111,4 +112,64 @@ bool8 CanAttackInDirection(struct entity *monster, s32 direction)
         return FALSE;
 
     return TRUE;
+}
+
+bool8 CanAiMonsterMoveInDirection(struct entity *monster, s32 direction, bool8 *out_monster_in_target_position)
+{
+    const struct tile *front_tile;
+    enum mobility_type mobility = GetMobilityTypeCheckSlipAndFloating(monster, GetEntInfo(monster)->id);
+    *out_monster_in_target_position = FALSE;
+
+    front_tile = GetTile(monster->pos.x + DIRECTIONS_XY[direction].x, monster->pos.y + DIRECTIONS_XY[direction].y);
+    if (front_tile->terrain_flags & TERRAIN_TYPE_IMPASSABLE_WALL)
+        return FALSE;
+
+    if (front_tile->terrain_flags & TERRAIN_TYPE_IN_MONSTER_HOUSE &&
+        !DUNGEON_PTR[0]->monster_house_triggered &&
+        IqSkillIsEnabled(monster, IQ_HOUSE_AVOIDER))
+        return FALSE;
+
+    if (front_tile->object != NULL &&
+        IqSkillIsEnabled(monster, IQ_TRAP_AVOIDER) &&
+        GetEntityType(front_tile->object) == ENTITY_TRAP &&
+        (front_tile->object->is_visible || GetEntInfo(monster)->blinker_class_status.blinded == STATUS_BLINKER_EYEDROPS))
+        return FALSE;
+
+    if ((front_tile->terrain_flags & (TERRAIN_TYPE_NORMAL | TERRAIN_TYPE_SECONDARY)) == TERRAIN_TYPE_SECONDARY &&
+        SECONDARY_TERRAIN_TYPES[DUNGEON_PTR[0]->gen_info.tileset_id] == SECONDARY_TERRAIN_LAVA &&
+        IqSkillIsEnabled(monster, IQ_LAVA_EVADER))
+        return FALSE;
+
+    #ifdef JAPAN
+    if (!IsCurrentTilesetBackground())
+    {
+        if (GetEntInfo(monster)->invisible_class_status.status == STATUS_INVISIBLE_MOBILE)
+            mobility = MOBILITY_INTANGIBLE;
+        else if (ItemIsActive__022FF898(monster, ITEM_MOBILE_SCARF))
+            mobility = MOBILITY_INTANGIBLE;
+        else if (IqSkillIsEnabled(monster, IQ_ALL_TERRAIN_HIKER))
+            // BUG: If a Pokémon can normally move through walls, All-Terrain Hiker will block them from moving through walls.
+            // This bug is fixed in the NA/EU versions.
+            mobility = MOBILITY_HOVERING;
+        else if (IqSkillIsEnabled(monster, IQ_ABSOLUTE_MOVER)) {
+            if (direction & 1)
+                // Absolute Mover can't break walls diagonally.
+                mobility = MOBILITY_HOVERING;
+            else
+                mobility = MOBILITY_INTANGIBLE;
+        }
+    }
+    #else
+    mobility = GetDirectionalMobilityType(monster, mobility, direction);
+    #endif
+
+    const struct tile *current_tile = GetTile(monster->pos.x, monster->pos.y);
+    if (!(current_tile->walkable_neighbor_flags[mobility] & DIRECTIONAL_BIT_MASKS__02352770[direction & DIRECTION_MASK]))
+        return FALSE;
+
+    if (front_tile->monster == NULL)
+        return TRUE;
+
+    *out_monster_in_target_position = TRUE;
+    return FALSE;
 }

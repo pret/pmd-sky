@@ -373,7 +373,6 @@
 .public ov10_022C483C
 .public ov29_022E3FCC
 .public ov29_022E4110
-.public ov29_022E56A0
 .public ov29_022E6338
 .public ov29_022E6388
 .public ov29_022E6424
@@ -400,6 +399,7 @@
 .public ov29_0237CA80
 .public PerformDamageSequence
 .public PlayMoveAnimation
+.public PlaySeByIdIfShouldDisplayEntity
 .public PrepareItemForPrinting__02345728
 .public ROLLOUT_ICE_BALL_MISSED
 .public SetPreprocessorArgsStringToName

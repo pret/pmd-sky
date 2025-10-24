@@ -76,7 +76,7 @@ ov17_0238A140: ; 0x0238A140
 	strb r0, [r1, #8]
 	ldr r0, [lr]
 	add r0, r0, #0x84
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r1, _0238A270 ; =OVERLAY17_UNKNOWN_POINTER__NA_238BE00
 	ldr r1, [r1]
 	str r0, [r1, #0x80]

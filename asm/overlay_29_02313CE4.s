@@ -803,7 +803,7 @@ _02314718:
 _02314790:
 	mov r0, sb
 	mov r1, r6
-	bl ov29_023018AC
+	bl GetTreatmentBetweenMonstersIgnoreStatus
 	cmp r0, #1
 	bne _023147B8
 	mov r0, sl

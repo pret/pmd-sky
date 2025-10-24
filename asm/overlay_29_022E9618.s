@@ -379,7 +379,7 @@ ov29_022E9A9C: ; 0x022E9A9C
 	mov r0, sb
 	mov r1, #1
 	ldrb r4, [r8, #0x4c]
-	bl CheckVariousStatuses2
+	bl CheckVariousStatuses2__02301244
 	cmp r0, #0
 	beq _022E9B00
 	ldr r0, _022E9CA0 ; =DIRECTIONS_XY

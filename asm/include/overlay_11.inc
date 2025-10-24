@@ -76,6 +76,7 @@
 .public GetTeamMember
 .public GetType
 .public GROUND_MEMORY_ARENA_1
+.public HandleMenus
 .public IncrementNbBigTreasureWins
 .public IncrementNbDungeonsCleared
 .public IncrementNbSkyGiftsSent
@@ -601,7 +602,6 @@
 .public sub_02028E88
 .public sub_02034710
 .public sub_02034840
-.public sub_02034A80
 .public sub_02034CA4
 .public sub_02034D0C
 .public sub_02034DA8

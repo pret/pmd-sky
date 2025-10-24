@@ -31,6 +31,7 @@
 .public IsBlinded
 .public IsCurrentMissionType
 .public IsExperienceLocked
+.public IsLoneOutlawVeneer
 .public IsMonsterIdInNormalRangeVeneer
 .public IsSecretBazaarNpcBehavior
 .public IsSpecialStoryAlly
@@ -70,7 +71,6 @@
 .public ov29_022F9AF4
 .public ov29_022FB98C
 .public ov29_022FBD24
-.public IsLoneOutlawVeneer
 .public ov29_02303E0C
 .public ov29_02304830
 .public ov29_02304A48

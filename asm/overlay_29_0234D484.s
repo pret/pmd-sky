@@ -507,7 +507,7 @@ _0234DA90:
 	cmp r0, r4
 	bne _0234DAD4
 	ldrsb r0, [r2, #0x11]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, [r6]
 	mov sl, #1
 	str r0, [r1, #0x46c]

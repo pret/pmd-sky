@@ -7,8 +7,8 @@
 .public IsMonsterSleeping
 .public LogMessageByIdWithPopupCheckUser
 .public MonsterCannotAttack
-.public ov29_022E56A0
 .public ov29_022FAA04
 .public ov29_02322374
+.public PlaySeByIdIfShouldDisplayEntity
 .public SubstitutePlaceholderStringTags
 .public TickStatusTurnCounter

@@ -1,10 +1,10 @@
 #pragma once
-.public CopyBitsFrom
-.public CopyBitsTo
-.public DUNGEON_RESTRICTIONS
 .public _020A0C68
 .public _020A0C69
 .public _020A0C6C
 .public _020AFF7C
 .public _020AFF80
 .public _020AFF88
+.public CopyBitsFrom
+.public CopyBitsTo
+.public DUNGEON_RESTRICTIONS

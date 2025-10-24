@@ -206,7 +206,7 @@ _022F07E8:
 	cmp r0, #0
 	beq _022F082C
 	mov r0, r7
-	bl ov29_022FBDF0
+	bl IsSecretBazaarNpc
 	cmp r0, #0
 	beq _022F082C
 	mov r0, r7
@@ -490,13 +490,13 @@ GetLeaderAction: ; 0x022F0B8C
 	ldmia sp!, {r3, pc}
 	arm_func_end GetLeaderAction
 
-	arm_func_start ov29_022F0B9C
-ov29_022F0B9C: ; 0x022F0B9C
+	arm_func_start GetLeaderActionId
+GetLeaderActionId: ; 0x022F0B9C
 	stmdb sp!, {r3, lr}
 	bl GetLeaderMonster
 	ldrh r0, [r0, #0x4a]
 	ldmia sp!, {r3, pc}
-	arm_func_end ov29_022F0B9C
+	arm_func_end GetLeaderActionId
 
 	arm_func_start GetEntityTouchscreenArea
 GetEntityTouchscreenArea: ; 0x022F0BAC
@@ -820,13 +820,13 @@ _022F0FAC:
 	mov r0, #0xa
 	bl ov29_0234BA54
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	bl ov29_022F2FE4
 	mov r0, #0
 	bl ov29_0233A248
 	bl GetLeader
 	mov r1, #0
-	bl ov29_0234E8F8
+	bl StairsMenuAfterStep
 	bl ov29_022E0B44
 	bl sub_02006B70
 	bl GetLeaderMonster
@@ -4537,7 +4537,7 @@ _022F441C:
 	mov r0, #0
 	bl PrepareItemForPrinting__02345728
 	ldr r0, _022F44DC ; =0x00003F07
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	cmp r5, #0
 	beq _022F4494
 	ldrb r0, [r4]
@@ -4640,7 +4640,7 @@ _022F4578:
 	strb ip, [r3, r2]
 	bl PrepareItemForPrinting__02345728
 	ldr r0, _022F45C4 ; =0x00003F07
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	cmp sb, #0
 	beq _022F45AC
 	ldr r1, _022F45C8 ; =0x00000BAD
@@ -4792,7 +4792,7 @@ _022F4778:
 	mov r0, #1
 	bl PrepareItemForPrinting__02345728
 	ldr r0, _022F48C4 ; =0x00001317
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldr r1, _022F48C8 ; =0x00000BB2
 	mov r0, sl
 	bl LogMessageByIdWithPopupCheckUser
@@ -4839,7 +4839,7 @@ _022F4834:
 	mov r0, #0
 	bl PrepareItemForPrinting__02345728
 	ldr r0, _022F48C4 ; =0x00001317
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldr r1, _022F48D0 ; =0x00000BB3
 	mov r0, sl
 	bl LogMessageByIdWithPopupCheckUser
@@ -4936,7 +4936,7 @@ _022F4928:
 	add r0, sp, #0
 	bl RemoveHolderForItemInBag
 	ldr r0, _022F49D4 ; =0x00001317
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldr r1, _022F49D8 ; =0x00000BB5
 	mov r0, r6
 	bl LogMessageByIdWithPopupCheckUser
@@ -5094,7 +5094,7 @@ _022F4B24:
 _022F4B70:
 	bl RemoveEmptyItemsInBagWrapper
 	ldr r0, _022F4BD4 ; =0x00001317
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldr r1, _022F4BD8 ; =0x00000BB6
 	mov r0, r7
 	bl LogMessageByIdWithPopupCheckUser
@@ -5246,7 +5246,7 @@ _022F4D48:
 	bl ItemZInit
 	bl RemoveEmptyItemsInBagWrapper
 	ldr r0, _022F4DA0 ; =0x00001317
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	mov r0, #0
 	mov r1, r5
 	mov r2, r0
@@ -5453,7 +5453,7 @@ _022F4FDC:
 	mov r0, #1
 	bl PrepareItemForPrinting__02345728
 	ldr r0, _022F5054 ; =0x00001317
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldr r1, _022F5058 ; =0x00000BBD
 	mov r0, r8
 	bl LogMessageByIdWithPopupCheckUser
@@ -5629,7 +5629,7 @@ _022F5228:
 _022F522C:
 	bl RemoveEmptyItemsInBagWrapper
 	ldr r0, _022F5280 ; =0x00001317
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldr r1, _022F5284 ; =0x00000BBD
 	mov r0, r7
 	bl LogMessageByIdWithPopupCheckUser

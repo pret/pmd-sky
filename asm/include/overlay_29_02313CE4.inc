@@ -26,7 +26,7 @@
 .public ov29_022E51B0
 .public ov29_022E5258
 .public ov29_022E52F8
-.public ov29_023018AC
+.public GetTreatmentBetweenMonstersIgnoreStatus
 .public PlayExclamationPointEffect__022E5D4C
 .public PrepareItemForPrinting__02345728
 .public SafeguardIsActive

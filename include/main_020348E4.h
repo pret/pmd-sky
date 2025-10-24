@@ -18,6 +18,6 @@ struct struct_02AFDB8 {
     struct struct_1 b; // 0xc4
 };
 
-u32 sub_020348E4(struct struct_1* dst);
+u32 InitMenu(struct struct_1* dst);
 
 #endif //PMDSKY_MAIN_020348E4_H

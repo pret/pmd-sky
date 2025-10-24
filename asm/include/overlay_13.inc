@@ -23,7 +23,7 @@
 .public GetPersonality
 .public GetPressedButtons
 .public GetReleasedStylus
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public GetStringFromFileVeneer
 .public GetType
 .public HidePortraitBox

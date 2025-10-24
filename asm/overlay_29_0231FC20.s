@@ -219,7 +219,7 @@ _0231FED4:
 	bl ChangeMonsterAnimation
 	ldr r1, _02320164 ; =0x00000212
 	mov r0, sb
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	ldr r2, _02320168 ; =0x00000B96
 	mov r0, sl
 	mov r1, sb

@@ -1,4 +1,5 @@
 #include "position_util.h"
+#include "main_0208655C.h"
 
 const s32 POSITION_DISPLACEMENT_TO_DIRECTION[3][3] =
 {
@@ -27,4 +28,11 @@ s32 GetDirectionTowardsPosition(struct position *origin, struct position *target
         y_diff = -1;
 
     return POSITION_DISPLACEMENT_TO_DIRECTION[++y_diff][++x_diff];
+}
+
+s32 GetChebyshevDistance(struct position *position_a, struct position *position_b)
+{
+    s32 var1 = abs(position_a->x - position_b->x);
+    s32 var0 = abs(position_a->y - position_b->y);
+    return MAX(var1, var0);
 }

@@ -22,7 +22,7 @@ ov27_0238A140: ; 0x0238A140
 	str r0, [r3]
 	str r0, [r2]
 	add r0, r1, #0x800
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r1, _0238A380 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE80
 	mov r3, #0
 	ldr r4, [r1]
@@ -1948,7 +1948,7 @@ ov27_0238BA7C: ; 0x0238BA7C
 	ldr r1, _0238BB50 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	str r0, [r1]
 	add r0, r0, #0x1b8
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r1, _0238BB50 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	mov r2, #0
 	ldr r3, [r1]
@@ -2199,7 +2199,7 @@ _0238BD84:
 	b _0238C860
 _0238BE28:
 	ldrsb r0, [r1, #0x91]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238BF48
 	cmp r0, #2
@@ -2301,7 +2301,7 @@ _0238BF64:
 	b _0238C860
 _0238BFA0:
 	ldrsb r0, [r1, #0x91]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C038
 	cmp r0, #4
@@ -2360,7 +2360,7 @@ _0238C038:
 	b _0238C860
 _0238C078:
 	ldrsb r0, [r1, #0x91]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C13C
 	cmp r0, #4
@@ -2529,7 +2529,7 @@ _0238C234:
 	b _0238C860
 _0238C2F0:
 	ldrsb r0, [r1, #0x91]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C394
 	cmp r0, #3
@@ -2597,7 +2597,7 @@ _0238C3B0:
 	b _0238C860
 _0238C3EC:
 	ldrsb r0, [r1, #0x91]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C454
 	cmp r0, #4
@@ -2648,7 +2648,7 @@ _0238C494:
 	ldr r0, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0x91]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C55C
 	cmp r0, #4
@@ -2713,7 +2713,7 @@ _0238C55C:
 	b _0238C860
 _0238C59C:
 	ldrsb r0, [r1, #0x91]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	beq _0238C604
 	cmp r0, #4
@@ -2779,7 +2779,7 @@ _0238C650:
 	b _0238C860
 _0238C690:
 	ldrsb r0, [r1, #0x91]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #1
 	ldrne r1, _0238C8F8 ; =OVERLAY27_UNKNOWN_POINTER__NA_238CE84
 	ldrne r1, [r1]

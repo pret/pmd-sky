@@ -4,8 +4,8 @@
 	.text
 
 ; https://decomp.me/scratch/pyVsB
-	arm_func_start ov31_023838E4
-ov31_023838E4: ; 0x023838E4
+	arm_func_start ItemsMenu
+ItemsMenu: ; 0x023838E4
 #ifdef JAPAN
 #define OV31_023838E4_OFFSET -0xA4
 #else
@@ -932,7 +932,7 @@ _02384614:
 	cmp r0, #0
 	bne _02384634
 	mov r0, r8
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	beq _0238463C
 _02384634:
@@ -1036,7 +1036,7 @@ _02384758:
 #else
 	strb r1, [fp, #0x161]
 #endif
-	bl ov29_02300BF8
+	bl CheckVariousConditions__02301624
 	cmp r0, #0
 	moveq r0, #1
 	streq r0, [sp, #0x18]
@@ -1090,7 +1090,7 @@ _02384804:
 	bl AddDungeonSubMenuOption
 _02384840:
 	mov r0, sl
-	bl CheckVariousConditions
+	bl CheckVariousConditions__0230156C
 	cmp r0, #0
 	beq _02384860
 	mov r0, #0x37
@@ -1144,7 +1144,7 @@ _023848D4:
 	bl AddDungeonSubMenuOption
 	ldr r0, [r4, #0x10]
 	bl ov29_022E1620
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	beq _02384908
 	mov r0, #0x3a
@@ -1194,7 +1194,7 @@ _02384978:
 	bl DisableDungeonSubMenuOption
 _023849A0:
 	mov r0, r8
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	beq _023849D8
 	mov r0, #0x27
@@ -1233,7 +1233,7 @@ _023849F4:
 	ldr r4, [sp, #0x24]
 	mov r1, r0
 	ldr fp, [r1, #0xb4]
-	bl CheckVariousConditions
+	bl CheckVariousConditions__0230156C
 	cmp r0, #0
 	movne r0, #1
 	strne r0, [sp, #0x24]
@@ -1299,7 +1299,7 @@ _02384B1C:
 	cmp r0, #0
 	bne _02384B3C
 	mov r0, r8
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	beq _02384B44
 _02384B3C:
@@ -1367,7 +1367,7 @@ _02384C08:
 	cmp r0, #0
 	bne _02384C28
 	mov r0, r8
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	beq _02384C30
 _02384C28:
@@ -1474,7 +1474,7 @@ _02384D78:
 	ldr r0, [r0]
 	add r0, r0, #0x1100
 	ldrsb r0, [r0, #0x92]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	cmp r0, #0
 	blt _02384E04
 	ldr r1, _02384898 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A26C
@@ -1614,7 +1614,7 @@ _02384F88:
 	mov r1, #0
 	bl ov29_022EA428
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _02383B08
 _02384FA0:
 	cmp r0, #0x12
@@ -1703,7 +1703,7 @@ _023850B0:
 	mov r1, #0
 	bl ov29_022EA428
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _02383B08
 _023850C8:
 	mov r0, #0xb
@@ -1741,7 +1741,7 @@ _0238512C: .word 0x000008E8
 _02385130: .word 0x00000213
 _02385134: .word DUNGEON_WINDOW_PARAMS_13
 _02385138: .word DUNGEON_WINDOW_PARAMS_9
-	arm_func_end ov31_023838E4
+	arm_func_end ItemsMenu
 
 	arm_func_start ov31_0238513C
 ov31_0238513C: ; 0x0238513C
@@ -1840,7 +1840,7 @@ _0238521C:
 	mov r1, #0
 	bl DrawTileGrid
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	str r7, [sp]
 	mov r1, #0
 	mov r3, r6
@@ -1850,16 +1850,16 @@ _0238521C:
 	bl HandleMovesMenu
 	cmp r0, #0
 	bne _023853B0
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x1d
 	bne _0238529C
 	bl GetLeaderAction
 	bl ov31_02385FE0
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _02385380
 _0238529C:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x1e
 	bne _023852CC
 	mov r0, #0xb
@@ -1869,10 +1869,10 @@ _0238529C:
 	mov r1, #0
 	bl ov31_023860A4
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _02385380
 _023852CC:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x33
 	bne _023852FC
 	mov r0, #0xb
@@ -1882,10 +1882,10 @@ _023852CC:
 	mov r1, #0
 	bl ov31_023860A4
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _02385380
 _023852FC:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x1f
 	bne _02385328
 	mov r0, #0xb
@@ -1894,10 +1894,10 @@ _023852FC:
 	bl GetLeaderAction
 	bl ov31_0238619C
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _02385380
 _02385328:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x20
 	bne _02385354
 	mov r0, #0xb
@@ -1906,10 +1906,10 @@ _02385328:
 	bl GetLeaderAction
 	bl ov31_02386204
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	b _02385380
 _02385354:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0x21
 	bne _02385380
 	mov r0, #0xb
@@ -1919,9 +1919,9 @@ _02385354:
 	mov r1, #1
 	bl ov31_02386308
 	mov r0, #1
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 _02385380:
-	bl ov29_022F0B9C
+	bl GetLeaderActionId
 	cmp r0, #0
 	beq _023851E4
 	mov r0, r5
@@ -2117,7 +2117,7 @@ _023855A8:
 	mov r3, r2
 	bl DrawTileGrid
 	mov r0, #0
-	bl ov29_022EB398
+	bl ResetLeaderActionFields
 	mov r0, r6
 	bl sub_0203F9CC
 	bl sub_02041178
@@ -2773,18 +2773,18 @@ _02385D1C:
 	tst r0, #0x400
 	bne _02385D34
 	ldrsb r0, [sp, #0x1c]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	mov r5, r0
 _02385D34:
 	ldrsb r0, [sp, #0x1c]
-	bl sub_0202AB80
+	bl GetWindowIdSelectedItemOnPage
 	cmp r0, #0
 	ble _02385D78
 	mvn r0, #0
 	cmp r5, r0
 	bne _02385D78
 	ldrsb r0, [sp, #0x1c]
-	bl sub_0202AB80
+	bl GetWindowIdSelectedItemOnPage
 	add r1, sp, #0xd4
 	mov r0, r0, lsl #3
 	ldrh r1, [r1, r0]
@@ -3619,7 +3619,7 @@ _023867A0:
 	cmp r0, #0
 	bne _023867A0
 	ldr r0, [sp, #0x10]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	movs sl, r0
 	movmi r0, #1
 	strmi r0, [sp, #0xc]
@@ -4053,7 +4053,7 @@ _02386D70:
 	ldr r0, [r6]
 	add r0, r0, #0x100
 	ldrsb r0, [r0, #0x61]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, [r6]
 	sub r0, r0, #1
 	str r0, [r1, #0x124]
@@ -4446,7 +4446,7 @@ _02387278:
 _023872FC:
 	mov r0, r4
 	mov r1, #0
-	bl CheckVariousStatuses2
+	bl CheckVariousStatuses2__02301244
 	cmp r0, #0
 	movne r6, #0
 	cmp r6, #0
@@ -4574,7 +4574,7 @@ _023874B0:
 	add r0, r0, #0x600
 	bne _02387578
 	ldrsb r0, [r0, #0x94]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	subs r1, r0, #1
 	bmi _0238754C
 	ldr r0, [r4]
@@ -4613,7 +4613,7 @@ _0238754C:
 	b _02387594
 _02387578:
 	ldrsb r0, [r0, #0x94]
-	bl sub_0202AB80
+	bl GetWindowIdSelectedItemOnPage
 	mov r1, r0
 	mov r0, #0xa
 	and r1, r1, #0xff
@@ -5197,7 +5197,7 @@ _02387D10:
 	ldr r0, [r5]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0x95]
-	bl sub_0202AB80
+	bl GetWindowIdSelectedItemOnPage
 	ldr r1, [r5]
 	str r0, [r1, #0x760]
 	ldr r1, [r5]
@@ -5376,7 +5376,7 @@ _02387EC0:
 	ldr r0, [r0]
 	add r0, r0, #0x600
 	ldrsb r0, [r0, #0x95]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	subs r3, r0, #1
 	bmi _02387F24
 	ldr r0, _02388084 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A280
@@ -5862,7 +5862,7 @@ _02388564:
 	mov r1, r7
 	bl GetPressedButtons
 	ldrsb r0, [sl]
-	bl sub_0202AB80
+	bl GetWindowIdSelectedItemOnPage
 	str r0, [sl, #0x67c]
 	ldr r1, [sl, #0x6b8]
 	cmp r1, r0
@@ -5923,11 +5923,11 @@ _02388644:
 	cmp r0, #0
 	bne _023886A8
 	ldrsb r0, [sl]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	subs r0, r0, #1
 	bmi _0238869C
 	ldrsb r0, [sl]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	sub r0, r0, #1
 	str r0, [sl, #0x67c]
 	add r0, sb, r0
@@ -6094,7 +6094,7 @@ _0238884C:
 	ldr r0, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, _023889B8 ; =OVERLAY31_UNKNOWN_POINTER__NA_238A284
 	ldr r1, [r1]
 	str r0, [r1, #8]
@@ -6580,7 +6580,7 @@ ov31_02388E88: ; 0x02388E88
 	sub sp, sp, #0x84
 	sub sp, sp, #0x400
 	ldr r0, _02389164 ; =OVERLAY31_UNKNOWN_STRUCT__NA_238A144
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	beq _02389158
 	ldr r0, _02389168 ; =0x00000D98
@@ -6998,7 +6998,7 @@ _023892B8:
 	ldr r0, _023893FC ; =OVERLAY31_UNKNOWN_POINTER__NA_238A28C
 	ldr r0, [r0]
 	ldrsb r0, [r0]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	movs r4, r0
 	bmi _02389320
 	bl sub_02001808
@@ -7098,7 +7098,7 @@ _02389418: .word DrawDungeonHintContents
 ov31_0238941C: ; 0x0238941C
 	stmdb sp!, {r3, lr}
 	ldr r0, _02389458 ; =OVERLAY31_UNKNOWN_STRUCT__NA_238A190
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	mov r0, #0xc
@@ -7208,11 +7208,11 @@ _0238A838:
 	cmp r0, #0
 	bne _0238AA84
 	ldrsb r0, [r4]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	movs r6, r0
 	bmi _0238AA78
 	ldrsb r0, [r4]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	sub r0, r0, #1
 	str r0, [r4, #0x3c8]
 	add r1, r4, r0
@@ -7276,11 +7276,11 @@ _0238A950:
 	cmp r0, #0
 	bne _0238A950
 	ldrsb r0, [r4, #1]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	subs r1, r0, #1
 	bmi _0238A998
 	ldrsb r0, [r4, #1]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	sub r0, r0, #1
 	str r0, [r4, #0x3c8]
 	bl ov29_022EB804
@@ -7359,7 +7359,7 @@ _0238AA84:
 	tst r0, #8
 	beq _0238AADC
 	ldr r0, _02389914 ; =0x00003F04
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	bl sub_02001808
 	cmp r0, #0xa000
 	blt _0238AB68
@@ -7368,7 +7368,7 @@ _0238AA84:
 	mov r0, #0x3d
 	bl AdvanceFrame
 	ldrsb r0, [r4]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	sub r0, r0, #1
 	str r0, [r4, #0x3c8]
 	add r0, r4, r0
@@ -7390,7 +7390,7 @@ _0238AAFC:
 	ldrsb r0, [r4]
 	bl sub_0202B030
 	ldrsb r0, [r4]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	mov r5, r0
 	ldr r0, _02389910 ; =0x00003F07
 	mov r1, #0x100
@@ -7505,11 +7505,11 @@ _02389578:
 	cmp r0, #0
 	bne _023897C8
 	ldrsb r0, [r5]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	movs r7, r0
 	bmi _023897BC
 	ldrsb r0, [r5]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	sub r1, r0, #1
 	add r0, r5, #0x2c
 	str r1, [r5, #0x4e8]
@@ -7574,11 +7574,11 @@ _02389694:
 	cmp r0, #0
 	bne _02389694
 	ldrsb r0, [r5, #1]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	subs r1, r0, #1
 	bmi _023896DC
 	ldrsb r0, [r5, #1]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	sub r0, r0, #1
 	str r0, [r5, #0x4e8]
 	bl ov29_022EB804
@@ -7657,7 +7657,7 @@ _023897C8:
 	tst r0, #8
 	beq _02389820
 	ldr r0, _02389914 ; =0x00003F04
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	bl sub_02001808
 	cmp r0, #0xa000
 	blt _023898AC
@@ -7666,7 +7666,7 @@ _023897C8:
 	mov r0, #0x3d
 	bl AdvanceFrame
 	ldrsb r0, [r5]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	sub r0, r0, #1
 	str r0, [r5, #0x4e8]
 	add r0, r5, r0
@@ -7688,7 +7688,7 @@ _02389840:
 	ldrsb r0, [r5]
 	bl sub_0202B030
 	ldrsb r0, [r5]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	mov r4, r0
 	ldr r0, _02389910 ; =0x00003F07
 	mov r1, #0x100
@@ -8176,8 +8176,8 @@ DUNGEON_WINDOW_PARAMS_2:
 	.global DUNGEON_WINDOW_PARAMS_3
 DUNGEON_WINDOW_PARAMS_3:
 	.byte 0x0E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.word ov31_02382DAC
-	.word ov31_02382B54
+	.word FreeDungeonMenu
+	.word DungeonMenuLoop
 	.global DUNGEON_WINDOW_PARAMS_4
 DUNGEON_WINDOW_PARAMS_4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x10, 0x1C, 0x06, 0x00, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -8221,7 +8221,7 @@ ov31_02389E22:
 OVERLAY31_UNKNOWN_STRUCT__NA_2389E30:
 	.byte 0x0E, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-	.word ov31_023832F0
+	.word FreeStairsMenu
 	.word HandleStairsMenu
 	.global DUNGEON_WINDOW_PARAMS_5
 DUNGEON_WINDOW_PARAMS_5:

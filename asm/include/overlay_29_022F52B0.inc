@@ -17,7 +17,6 @@
 .public LogItemBlockedByEmbargo
 .public LogMessageByIdWithPopupCheckUser
 .public MonsterHasEmbargoStatus
-.public ov29_022E56A0
 .public ov29_022E5728
 .public ov29_022E9A9C
 .public ov29_022EA370
@@ -29,6 +28,7 @@
 .public ov29_02346FB8
 .public ov29_02347000
 .public ov29_02347518
+.public PlaySeByIdIfShouldDisplayEntity
 .public PrepareItemForPrinting__02345728
 .public PrepareItemForPrinting__02345754
 .public RemoveEmptyItemsInBagWrapper

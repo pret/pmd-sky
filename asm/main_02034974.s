@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start sub_02034974
-sub_02034974: ; 0x02034974
+	arm_func_start InitMenuWithWindowExtraInfo
+InitMenuWithWindowExtraInfo: ; 0x02034974
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r3, _02034A34 ; =_020AFDB8
 	mov r5, r1
@@ -12,7 +12,7 @@ sub_02034974: ; 0x02034974
 	mov r6, r0
 	add r1, r1, #0xc4
 	mov r4, r2
-	bl sub_020347A0
+	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	bne _02034A2C
 	ldr r0, _02034A34 ; =_020AFDB8
@@ -22,7 +22,7 @@ sub_02034974: ; 0x02034974
 	beq _020349C8
 	mov r0, r6
 	add r1, r1, #0x14
-	bl sub_020347A0
+	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	movne r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
@@ -59,10 +59,10 @@ _02034A2C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02034A34: .word _020AFDB8
-	arm_func_end sub_02034974
+	arm_func_end InitMenuWithWindowExtraInfo
 
-	arm_func_start sub_02034A38
-sub_02034A38: ; 0x02034A38
+	arm_func_start CopyMenuControlWindowExtraInfo
+CopyMenuControlWindowExtraInfo: ; 0x02034A38
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r1, _02034A7C ; =_020AFDB8
 	mov r5, r0
@@ -84,10 +84,10 @@ _02034A74:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02034A7C: .word _020AFDB8
-	arm_func_end sub_02034A38
+	arm_func_end CopyMenuControlWindowExtraInfo
 
-	arm_func_start sub_02034A80
-sub_02034A80: ; 0x02034A80
+	arm_func_start HandleMenus
+HandleMenus: ; 0x02034A80
 	stmdb sp!, {r4, r5, r6, lr}
 	sub sp, sp, #0x10
 	ldr r0, _02034C9C ; =_020AFDB8
@@ -106,7 +106,7 @@ _02034AAC:
 	add r6, ip, #0x14
 	ldmia r6, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
-	ldr r0, _02034CA0 ; =_0209B08C
+	ldr r0, _02034CA0 ; =NULL_OVERLAY_LOAD_ENTRY
 	mov r5, #0
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r6, {r0, r1, r2, r3}
@@ -117,7 +117,7 @@ _02034AD8:
 	ldrb r0, [r6, #0xc0]
 	cmp r0, #0
 	beq _02034B0C
-	ldr r0, _02034CA0 ; =_0209B08C
+	ldr r0, _02034CA0 ; =NULL_OVERLAY_LOAD_ENTRY
 	mov r5, #0
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
@@ -164,7 +164,7 @@ _02034B6C:
 	bhi _02034BE4
 	add r1, sp, #0
 	mov r0, r4
-	bl sub_020347A0
+	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	beq _02034BE4
 	ldr r0, _02034C9C ; =_020AFDB8
@@ -173,8 +173,8 @@ _02034B6C:
 	cmp r5, #4
 	str r1, [r0, #0xd4]
 	bne _02034BE4
-	bl sub_020347F0
-	ldr r0, _02034CA0 ; =_0209B08C
+	bl FreeActiveMenu
+	ldr r0, _02034CA0 ; =NULL_OVERLAY_LOAD_ENTRY
 	ldr ip, _02034C9C ; =_020AFDB8
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
@@ -189,17 +189,17 @@ _02034BE4:
 	ldrb r0, [r1, #0x10]
 	cmp r0, #0
 	beq _02034C4C
-	ldr r0, _02034CA0 ; =_0209B08C
+	ldr r0, _02034CA0 ; =NULL_OVERLAY_LOAD_ENTRY
 	mov r1, r4
-	bl sub_020347A0
+	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	bne _02034C10
-	bl sub_020347F0
+	bl FreeActiveMenu
 _02034C10:
 	ldr ip, _02034C9C ; =_020AFDB8
 	mov r5, #0
 	ldr r6, [ip]
-	ldr lr, _02034CA0 ; =_0209B08C
+	ldr lr, _02034CA0 ; =NULL_OVERLAY_LOAD_ENTRY
 	add r0, r6, #0x14
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
@@ -215,14 +215,14 @@ _02034C4C:
 	ldrb r0, [r1, #0xc0]
 	cmp r0, #0
 	beq _02034C94
-	ldr r0, _02034CA0 ; =_0209B08C
+	ldr r0, _02034CA0 ; =NULL_OVERLAY_LOAD_ENTRY
 	mov r1, r4
-	bl sub_020347A0
+	bl OverlayLoadEntriesEqual
 	cmp r0, #0
 	bne _02034C70
-	bl sub_020347F0
+	bl FreeActiveMenu
 _02034C70:
-	ldr r0, _02034CA0 ; =_0209B08C
+	ldr r0, _02034CA0 ; =NULL_OVERLAY_LOAD_ENTRY
 	ldr ip, _02034C9C ; =_020AFDB8
 	ldmia r0, {r0, r1, r2, r3}
 	stmia r4, {r0, r1, r2, r3}
@@ -236,8 +236,8 @@ _02034C94:
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02034C9C: .word _020AFDB8
-_02034CA0: .word _0209B08C
-	arm_func_end sub_02034A80
+_02034CA0: .word NULL_OVERLAY_LOAD_ENTRY
+	arm_func_end HandleMenus
 
 	arm_func_start sub_02034CA4
 sub_02034CA4: ; 0x02034CA4
@@ -438,7 +438,7 @@ sub_02034EB4: ; 0x02034EB4
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	ldr r0, _02034F1C ; =_0209B09C
-	bl sub_020348E4
+	bl InitMenu
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02034F18: .word _020AFDBC
@@ -473,7 +473,7 @@ sub_02034F20: ; 0x02034F20
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	ldr r0, _02034F94 ; =_0209B09C
-	bl sub_020348E4
+	bl InitMenu
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02034F90: .word _020AFDBC
@@ -548,7 +548,7 @@ sub_02035024: ; 0x02035024
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	ldr r0, _02035094 ; =_0209B09C
-	bl sub_020348E4
+	bl InitMenu
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _02035090: .word _020AFDBC
@@ -565,7 +565,7 @@ sub_02035098: ; 0x02035098
 	mvnne r1, #1
 	cmpne r0, r1
 	beq _020350C4
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r1, _020350D0 ; =_020AFDBC
 	str r0, [r1, #0x10]
 _020350C4:
@@ -815,7 +815,7 @@ _02035408:
 	ldrsb r0, [r0]
 	cmp r0, r1
 	beq _02035468
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r1, _02035598 ; =_020AFDBC
 	mov r4, #1
 	str r0, [r1, #0x10]
@@ -932,7 +932,7 @@ sub_0203559C: ; 0x0203559C
 	ldr r0, _020355D8 ; =_0209B0FC
 	mov r1, lr
 	strb ip, [r3]
-	bl sub_02034974
+	bl InitMenuWithWindowExtraInfo
 	cmp r0, #0
 	ldrne r0, _020355D4 ; =_020AFDD0
 	movne r1, #0
@@ -955,7 +955,7 @@ sub_020355DC: ; 0x020355DC
 	mov r1, r5
 	mov r2, lr
 	strb ip, [r3]
-	bl sub_02034974
+	bl InitMenuWithWindowExtraInfo
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r0, _02035638 ; =_020AFDD0
@@ -986,7 +986,7 @@ sub_02035640: ; 0x02035640
 	ldr r1, _02035764 ; =_020AFDD0
 	str r0, [r1, #4]
 	add r0, r0, #0xc
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r1, _02035764 ; =_020AFDD0
 	ldr r1, [r1, #4]
 	str r0, [r1, #8]
@@ -1289,7 +1289,7 @@ _02035A80:
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, _02035CCC ; =_020AFDD0
 	mov r4, r0
 	ldr r0, [r1, #4]
@@ -1455,7 +1455,7 @@ sub_02035CE4: ; 0x02035CE4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _02035DA8 ; =_0209B1B8
-	bl sub_02034974
+	bl InitMenuWithWindowExtraInfo
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	ldr r2, _02035DAC ; =_020AFDD8
@@ -1467,7 +1467,7 @@ sub_02035CE4: ; 0x02035CE4
 	ldr r1, _02035DAC ; =_020AFDD8
 	str r0, [r1, #4]
 	add r0, r0, #0xc
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r1, _02035DAC ; =_020AFDD8
 	ldr r1, [r1, #4]
 	str r0, [r1, #8]
@@ -1760,7 +1760,7 @@ _02036110:
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldrsb r0, [r0, #2]
-	bl sub_0202ABB0
+	bl GetSimpleMenuResult__0202AEA4
 	ldr r1, _0203630C ; =_020AFDD8
 	mov r4, r0
 	ldr r0, [r1, #4]
@@ -1909,7 +1909,7 @@ sub_02036324: ; 0x02036324
 	mov r2, r1
 	ldr r0, _02036350 ; =_0209B218
 	mov r1, r3
-	bl sub_02034974
+	bl InitMenuWithWindowExtraInfo
 	cmp r0, #0
 	ldrne r0, _02036354 ; =_020AFDE0
 	movne r1, #0
@@ -1930,7 +1930,7 @@ sub_02036358: ; 0x02036358
 	ldr r1, _0203642C ; =_020AFDE0
 	str r0, [r1, #4]
 	add r0, r0, #0xc
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r4, _0203642C ; =_020AFDE0
 	mov r5, #0
 	ldr r1, [r4, #4]
@@ -2089,7 +2089,7 @@ sub_0203656C: ; 0x0203656C
 	mov r2, r1
 	ldr r0, _02036598 ; =_0209B254
 	mov r1, r3
-	bl sub_02034974
+	bl InitMenuWithWindowExtraInfo
 	cmp r0, #0
 	ldrne r0, _0203659C ; =_020AFDE8
 	movne r1, #0
@@ -2110,7 +2110,7 @@ sub_020365A0: ; 0x020365A0
 	ldr r1, _02036674 ; =_020AFDE8
 	str r0, [r1, #4]
 	add r0, r0, #0xc
-	bl sub_02034A38
+	bl CopyMenuControlWindowExtraInfo
 	ldr r4, _02036674 ; =_020AFDE8
 	mov r5, #0
 	ldr r1, [r4, #4]
@@ -2269,7 +2269,7 @@ SetupAndShowKeyboard: ; 0x020367B4
 	ldr r0, _020367EC ; =_0209B298
 	mov r5, r1
 	mov r4, r2
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, r6
@@ -6198,7 +6198,7 @@ _0203934C:
 	ldr r0, _02039398 ; =_020AFE40
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldmia sp!, {r3, pc}
 _0203937C:
 	ldrsb r0, [r1, #2]
@@ -9056,7 +9056,7 @@ _0203B968:
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #6]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	cmp r0, #5
 	addls pc, pc, r0, lsl #2
 	b _0203B9E8
@@ -9368,7 +9368,7 @@ _0203BD3C:
 	ldr r0, [r0, #0x10]
 	add r0, r0, #0x500
 	ldrsb r0, [r0, #7]
-	bl GetSimpleMenuResult
+	bl GetSimpleMenuResult__0202B870
 	ldr r1, _0203BE0C ; =_020AFE5C
 	mov r0, r0, lsl #0x10
 	ldr r1, [r1, #0x10]

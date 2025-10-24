@@ -66,7 +66,7 @@ TryNonLeaderItemPickUp: ; 0x0230F164
 	mov r4, r0
 	cmp r1, #0
 	beq _0230F204
-	bl ov29_02348D00
+	bl IsItemUnkMissionItem2
 	cmp r0, #0
 	bne _0230F624
 _0230F204:
@@ -112,11 +112,11 @@ _0230F274:
 	cmp r0, #0
 	beq _0230F2A8
 	ldr r0, _0230F630 ; =0x00001305
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	b _0230F2B0
 _0230F2A8:
 	ldr r0, _0230F634 ; =0x00001308
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 _0230F2B0:
 	mov r0, r8
 	mov r1, #0x1b
@@ -240,7 +240,7 @@ _0230F408:
 	mov r1, #1
 	bl RemoveGroundItem
 	ldr r0, _0230F644 ; =0x00001304
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	add r0, sp, #0xcc
 	ldr r0, [r0, r7, lsl #2]
 	cmp r0, #0
@@ -311,11 +311,11 @@ _0230F544:
 	cmp r0, #0
 	beq _0230F55C
 	ldr r0, _0230F630 ; =0x00001305
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	b _0230F564
 _0230F55C:
 	ldr r0, _0230F644 ; =0x00001304
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 _0230F564:
 	add r0, sp, #0xcc
 	ldr r0, [r0, r7, lsl #2]

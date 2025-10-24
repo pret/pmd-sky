@@ -7,6 +7,7 @@
 .public CreateParentMenuFromStringIds
 .public CreatePortraitBox
 .public GetMessageLogPreprocessorArgs
+.public GetSimpleMenuResult__0202AEA4
 .public HidePortraitBox
 .public InitPreprocessorArgs
 .public IsDialogueBoxActive
@@ -33,7 +34,6 @@
 .public sub_02006B70
 .public sub_020282F4
 .public sub_0202AB94
-.public sub_0202ABB0
 .public sub_0202F334
 .public sub_0202F474
 .public UnloadOverlay

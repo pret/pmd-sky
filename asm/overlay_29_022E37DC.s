@@ -528,7 +528,7 @@ ov29_022E3E74: ; 0x022E3E74
 	bl PlayEffectAnimationEntity
 	ldr r1, _022E3ECC ; =0x0000030E
 	mov r0, r4
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -813,7 +813,7 @@ ov29_022E41B0: ; 0x022E41B0
 	cmp r1, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r1, _022E41C8 ; =0x00000221
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E41C8: .word 0x00000221
@@ -821,11 +821,11 @@ _022E41C8: .word 0x00000221
 
 	arm_func_start ov29_022E41CC
 ov29_022E41CC: ; 0x022E41CC
-	ldr ip, _022E41D8 ; =ov29_022E56A0
+	ldr ip, _022E41D8 ; =PlaySeByIdIfShouldDisplayEntity
 	mov r1, #0x310
 	bx ip
 	.align 2, 0
-_022E41D8: .word ov29_022E56A0
+_022E41D8: .word PlaySeByIdIfShouldDisplayEntity
 	arm_func_end ov29_022E41CC
 
 	arm_func_start ov29_022E41DC
@@ -1158,11 +1158,11 @@ ov29_022E456C: ; 0x022E456C
 
 	arm_func_start ov29_022E45B8
 ov29_022E45B8: ; 0x022E45B8
-	ldr ip, _022E45C4 ; =ov29_022E56A0
+	ldr ip, _022E45C4 ; =PlaySeByIdIfShouldDisplayEntity
 	ldr r1, _022E45C8 ; =0x00000227
 	bx ip
 	.align 2, 0
-_022E45C4: .word ov29_022E56A0
+_022E45C4: .word PlaySeByIdIfShouldDisplayEntity
 _022E45C8: .word 0x00000227
 	arm_func_end ov29_022E45B8
 
@@ -1265,11 +1265,11 @@ ov29_022E4674: ; 0x022E4674
 
 	arm_func_start ov29_022E46C0
 ov29_022E46C0: ; 0x022E46C0
-	ldr ip, _022E46CC ; =ov29_022E56A0
+	ldr ip, _022E46CC ; =PlaySeByIdIfShouldDisplayEntity
 	mov r1, #0x30c
 	bx ip
 	.align 2, 0
-_022E46CC: .word ov29_022E56A0
+_022E46CC: .word PlaySeByIdIfShouldDisplayEntity
 	arm_func_end ov29_022E46C0
 
 	arm_func_start ov29_022E46D0
@@ -1299,11 +1299,11 @@ ov29_022E46D4: ; 0x022E46D4
 
 	arm_func_start ov29_022E4704
 ov29_022E4704: ; 0x022E4704
-	ldr ip, _022E4710 ; =ov29_022E56A0
+	ldr ip, _022E4710 ; =PlaySeByIdIfShouldDisplayEntity
 	mov r1, #0x21c
 	bx ip
 	.align 2, 0
-_022E4710: .word ov29_022E56A0
+_022E4710: .word PlaySeByIdIfShouldDisplayEntity
 	arm_func_end ov29_022E4704
 
 	arm_func_start ov29_022E4714
@@ -1483,7 +1483,7 @@ ov29_022E48B8: ; 0x022E48B8
 	bl PlayEffectAnimationEntity
 	mov r0, r4
 	mov r1, #0x20c
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	add sp, sp, #0x10
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -1688,21 +1688,21 @@ _022E4B88: .word 0x00000171
 
 	arm_func_start ov29_022E4B8C
 ov29_022E4B8C: ; 0x022E4B8C
-	ldr ip, _022E4B98 ; =ov29_022E56A0
+	ldr ip, _022E4B98 ; =PlaySeByIdIfShouldDisplayEntity
 	ldr r1, _022E4B9C ; =0x0000030E
 	bx ip
 	.align 2, 0
-_022E4B98: .word ov29_022E56A0
+_022E4B98: .word PlaySeByIdIfShouldDisplayEntity
 _022E4B9C: .word 0x0000030E
 	arm_func_end ov29_022E4B8C
 
 	arm_func_start ov29_022E4BA0
 ov29_022E4BA0: ; 0x022E4BA0
-	ldr ip, _022E4BAC ; =ov29_022E56A0
+	ldr ip, _022E4BAC ; =PlaySeByIdIfShouldDisplayEntity
 	ldr r1, _022E4BB0 ; =0x0000030E
 	bx ip
 	.align 2, 0
-_022E4BAC: .word ov29_022E56A0
+_022E4BAC: .word PlaySeByIdIfShouldDisplayEntity
 _022E4BB0: .word 0x0000030E
 	arm_func_end ov29_022E4BA0
 
@@ -2562,23 +2562,23 @@ ov29_022E5650: ; 0x022E5650
 _022E569C: .word 0x00000167
 	arm_func_end ov29_022E5650
 
-	arm_func_start ov29_022E56A0
-ov29_022E56A0: ; 0x022E56A0
+	arm_func_start PlaySeByIdIfShouldDisplayEntity
+PlaySeByIdIfShouldDisplayEntity: ; 0x022E56A0
 	stmdb sp!, {r4, lr}
 	mov r4, r1
 	cmp r0, #0
 	bne _022E56BC
 	mov r0, r4
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r4, pc}
 _022E56BC:
 	bl ShouldDisplayEntityAdvanced
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022E56A0
+	arm_func_end PlaySeByIdIfShouldDisplayEntity
 
 	arm_func_start ov29_022E56D4
 ov29_022E56D4: ; 0x022E56D4
@@ -2588,7 +2588,7 @@ ov29_022E56D4: ; 0x022E56D4
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E56D4
 
@@ -2606,7 +2606,7 @@ _022E5710:
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
 	mov r0, r4
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E56F4
 
@@ -2616,17 +2616,17 @@ ov29_022E5728: ; 0x022E5728
 	cmp r1, #0
 	bne _022E5740
 	ldr r0, _022E5760 ; =0x0000130E
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r3, pc}
 _022E5740:
 	cmp r1, #1
 	bne _022E5754
 	ldr r0, _022E5764 ; =0x0000130D
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r3, pc}
 _022E5754:
 	ldr r0, _022E5768 ; =0x0000130C
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E5760: .word 0x0000130E
@@ -2642,11 +2642,11 @@ ov29_022E576C: ; 0x022E576C
 	cmp r0, #0
 	beq _022E578C
 	ldr r0, _022E5798 ; =0x00001306
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r3, pc}
 _022E578C:
 	ldr r0, _022E579C ; =0x00001307
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E5798: .word 0x00001306
@@ -2661,11 +2661,11 @@ ov29_022E57A0: ; 0x022E57A0
 	cmp r0, #0
 	beq _022E57C0
 	ldr r0, _022E57CC ; =0x00001306
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r3, pc}
 _022E57C0:
 	ldr r0, _022E57D0 ; =0x00001307
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022E57CC: .word 0x00001306
@@ -2770,7 +2770,7 @@ ov29_022E58B0: ; 0x022E58B0
 	bne _022E5944
 	mov r0, #0
 	mov r1, #0x308
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 	mov r0, #0x28
 	mov r1, #0x33
 	bl ov29_022EA370
@@ -3106,7 +3106,7 @@ _022E5D88:
 	ldreq r4, _022E5DB8 ; =0x00001309
 _022E5DA4:
 	mov r0, r4
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E5DB0: .word DUNGEON_PTR
@@ -3131,7 +3131,7 @@ _022E5DD8:
 	ldr r0, _022E5E7C ; =ov29_0235119C
 	mov r1, r4, lsl #1
 	ldrh r0, [r0, r1]
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	b _022E5E3C
 _022E5DFC:
 	ldr r0, _022E5E7C ; =ov29_0235119C
@@ -3145,7 +3145,7 @@ _022E5E10:
 	ldr r0, _022E5E80 ; =ov29_02351194
 	mov r1, r4, lsl #1
 	ldrh r0, [r0, r1]
-	bl ov29_022EACCC
+	bl PlaySeByIdIfNotSilence
 	b _022E5E3C
 _022E5E2C:
 	ldr r0, _022E5E7C ; =ov29_0235119C
@@ -3324,7 +3324,7 @@ _022E6018:
 	cmp r1, #0x3f00
 	beq _022E6034
 	mov r0, r4
-	bl ov29_022E56A0
+	bl PlaySeByIdIfShouldDisplayEntity
 _022E6034:
 	ldr r0, _022E60DC ; =ov29_0235122C
 	ldr r7, [r0, r6, lsl #2]
@@ -5383,8 +5383,8 @@ _022E7A88: .word 0x0002C932
 #endif
 	arm_func_end ov29_022E7A30
 
-	arm_func_start ov29_022E7A8C
-ov29_022E7A8C: ; 0x022E7A8C
+	arm_func_start GetRandomTrapId
+GetRandomTrapId: ; 0x022E7A8C
 	stmdb sp!, {r4, lr}
 	mov r4, #0
 	b _022E7AB0
@@ -5402,7 +5402,7 @@ _022E7AB8:
 	cmp r4, #0x1e
 	moveq r0, #0x10
 	ldmia sp!, {r4, pc}
-	arm_func_end ov29_022E7A8C
+	arm_func_end GetRandomTrapId
 
 	arm_func_start GetItemIdToSpawn
 GetItemIdToSpawn: ; 0x022E7AC4

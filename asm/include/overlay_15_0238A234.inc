@@ -14,7 +14,7 @@
 .public Debug_Print0
 .public GetMoneyCarried
 .public GetMoneyStored
-.public GetSimpleMenuResult
+.public GetSimpleMenuResult__0202B870
 .public IsDialogueBoxActive
 .public ov15_0238AD78
 .public ov15_0238ADC4

@@ -233,7 +233,7 @@ ov28_0238A468: ; 0x0238A468
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, _0238A488 ; =ov28_0238ACFC
-	bl sub_020348E4
+	bl InitMenu
 	cmp r0, #0
 	ldrne r0, _0238A48C ; =ov28_0238ADA0
 	strne r4, [r0]
