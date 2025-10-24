@@ -99,6 +99,8 @@ Static main
 	Object asm/main_02051504.o
 	Object src/main_02051760.o
 	Object asm/main_02051788.o
+	Object src/main_020517D4.o
+	Object asm/main_020517E4.o
 	Object src/main_020526EC.o
 	Object asm/get_category_string.o
 	Object src/main_020527A8.o
