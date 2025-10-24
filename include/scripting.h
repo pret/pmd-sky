@@ -4,37 +4,37 @@
 #include "enums.h"
 #include "util.h"
 
-struct script_var_definition {
-    s16 p1;
-    s16 p2;
-    s16 value_offset; // offset within SCRIPT_VAR_VALUES, or local script var values.
-    s16 p4;
-    s16 p5;
-    s16 p6;
-    s16 p7;
-    s16 p8;
+struct script_var_def {
+    enum script_var_type type; // 0x0: type of data contained in this script variable
+    u16 field_0x1;           // 0x2
+    // 0x4: value's offset into struct script_var_value_table, if type != VARTYPE_SPECIAL
+    s16 mem_offset;
+    s16 bitshift; // 0x6: bit position if type == VARTYPE_BIT
+    u16 n_values; // 0x8: number of values (>1 means this variable is an array)
+    // 0xA: 0 for every variable except VAR_VERSION, which has a default value of 1.
+    s16 default_val;
+    char* name; // 0xC: variable name
 };
 
-struct script_var_local_value {
-    u32 p1;
-};
-
-struct script_var_global_value {
-    u8 p1;
+union script_var_value {
+    u8 u8;
+    u16 u16;
+    u32 u32;
+    s8 s8;
+    s16 s16;
 };
 
 struct script_var_raw {
-    struct script_var_definition* def;
-    union {
-        struct script_var_local_value*  local;
-        struct script_var_global_value* global;
-    } value;
+    struct script_var_def* def;
+    union script_var_value *value;
 };
 
 const short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
 
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw, 
-    struct script_var_local_value sv_locals[], 
-    const enum script_variables sv_id);
+    union script_var_value sv_val_local[], 
+    const enum script_var_id sv_id);
+
+s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id);
 
 #endif //PMDSKY_SCRIPTING_H
