@@ -37,6 +37,7 @@ Static main
 	Object src/directory_file.o
 	Object asm/main_0200C4CC.o
 	Object src/item_util.o
+	Object src/item_util_4.o
 	Object asm/main_0200CAFC.o
 	Object src/item_util_1.o
 	Object asm/main_0200E7E8.o
