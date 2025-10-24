@@ -103,7 +103,7 @@ Static main
 	Object src/secondary_terrain_types.o
 	Object asm/main_rodata_020A1BB0.o
 	Object src/main_020517D4.o
-	Object asm/main_020517E4.o
+	Object asm/main_020517F4.o
 	Object src/main_020526EC.o
 	Object asm/get_category_string.o
 	Object src/main_020527A8.o

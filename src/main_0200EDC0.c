@@ -3,16 +3,16 @@
 #include "main_0204C938.h"
 #include "main_0204CB94.h"
 #include "main_020517D4.h"
+#include "scripting.h"
 
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
-extern s32 GetBagCapacitySpecialEpisode(s32 se_type);
 extern bool8 GetPerformanceFlagWithChecks(s32 flag_id);
 
 s32 GetCurrentBagCapacity()
 {
     s32 special_episode_type = GetExecuteSpecialEpisodeType();
-    if (special_episode_type == -1)
+    if (special_episode_type == EPISODE_NONE)
     {
         if (GetPerformanceFlagWithChecks(2) == 0)
             return 1;

@@ -3418,6 +3418,7 @@ enum script_var_id {
 };
 
 enum special_episode_type {
+    EPISODE_NONE = -1,
     EPISODE_BIDOOFS_WISH = 0,
     EPISODE_IGGLYBUFF_THE_PRODIGY = 1,
     EPISODE_TODAYS_OH_MY_GOSH = 2,

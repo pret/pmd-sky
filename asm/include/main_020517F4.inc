@@ -2,7 +2,6 @@
 .public ARM9_UNKNOWN_PTR__NA_20A2C84
 .public ArrayCopy32
 .public ArrayFill32
-.public BAG_CAPACITY_TABLE_SPECIAL_EPISODES
 .public DecompressAtNormalVeneer
 .public GetAtSize
 .public GetBaseForm

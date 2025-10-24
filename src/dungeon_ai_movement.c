@@ -13,6 +13,7 @@
 #include "dungeon_util_1.h"
 #include "dungeon_util_static.h"
 #include "dungeon_visibility.h"
+#include "main_0200EDC0.h"
 #include "main_0208655C.h"
 #include "math.h"
 #include "number_util.h"
@@ -47,7 +48,6 @@ const s32 FACING_DIRECTION_INCREMENTS[] = {0, 1, -1, 2, -2, 3, -3, 4};
 
 extern bool8 CanTargetEntity(struct entity *user, struct entity *target);
 extern bool8 CanTargetPosition(struct entity *monster, struct position *position);
-extern bool8 IsBagFull();
 extern bool8 ShouldMonsterFollowLeader(struct entity *monster);
 extern bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target);
 extern s32 ov29_022FBE04(struct monster*);

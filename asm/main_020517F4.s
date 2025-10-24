@@ -1,16 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_020517E4.inc"
+	.include "main_020517F4.inc"
 
 	.text
-
-	arm_func_start GetBagCapacitySpecialEpisode
-GetBagCapacitySpecialEpisode: ; 0x020517E4
-	ldr r1, _020517F0 ; =BAG_CAPACITY_TABLE_SPECIAL_EPISODES
-	ldr r0, [r1, r0, lsl #2]
-	bx lr
-	.align 2, 0
-_020517F0: .word BAG_CAPACITY_TABLE_SPECIAL_EPISODES
-	arm_func_end GetBagCapacitySpecialEpisode
 
 	arm_func_start GetRankUpEntry
 GetRankUpEntry: ; 0x020517F4
