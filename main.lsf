@@ -9,6 +9,7 @@ Static main
 {
 	Address 0x02000000
 	StackSize 0 2048
+	Object asm/main_rodata_020908D4.o
 	Object src/main_02000C6C.o
 	Object asm/main_02000DE0.o
 	Object src/main_02001188.o
@@ -99,6 +100,8 @@ Static main
 	Object asm/main_02051504.o
 	Object src/main_02051760.o
 	Object asm/main_02051788.o
+	Object src/secondary_terrain_types.o
+	Object asm/main_rodata_020A1BB0.o
 	Object src/main_020517D4.o
 	Object asm/main_020517E4.o
 	Object src/main_020526EC.o
@@ -146,8 +149,7 @@ Static main
 	Object asm/main_02089694.o
 	Object src/main_020897AC.o
 	Object asm/main_020897DC.o
-	Object src/secondary_terrain_types.o
-	Object asm/main_rodata_020A1BB0.o
+	Object asm/main_rodata_020A2808.o
 }
 
 Autoload ITCM
