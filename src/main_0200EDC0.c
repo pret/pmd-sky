@@ -1,11 +1,11 @@
 #include "main_0200EDC0.h"
+#include "main_0204C938.h"
 #include "item.h"
 
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
 extern u32 GetBagCapacity(s32 scenario_balance);
 extern s32 GetBagCapacitySpecialEpisode(s32 se_type);
-extern s32 GetExecuteSpecialEpisodeType();
 extern bool8 GetPerformanceFlagWithChecks(s32 flag_id);
 extern s32 GetScenarioBalance();
 
