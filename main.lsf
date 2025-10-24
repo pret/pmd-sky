@@ -100,6 +100,8 @@ Static main
 	Object asm/main_02051504.o
 	Object src/main_02051760.o
 	Object asm/main_02051788.o
+	Object src/tactics_data.o
+	Object asm/main_rodata_020A190C.o
 	Object src/secondary_terrain_types.o
 	Object asm/main_rodata_020A1BB0.o
 	Object src/main_020517D4.o
@@ -116,6 +118,8 @@ Static main
 	Object asm/main_02054C24.o
 	Object src/main_02054DC4.o
 	Object asm/main_02054E4C.o
+	Object src/main_02058C3C.o
+	Object asm/main_02058C4C.o
 	Object src/pokemon.o
 	Object asm/main_02058F24.o
 	Object src/main_0206C98C.o

@@ -1,6 +1,8 @@
 #ifndef PMDSKY_ENUMS_H
 #define PMDSKY_ENUMS_H
 
+#define NUM_TACTICS TACTIC_NONE + 1
+
 // Tactic ID. These are usually encoded as bitvectors.
 enum tactic_id {
     TACTIC_LETS_GO_TOGETHER = 0,
@@ -3424,6 +3426,7 @@ enum special_episode_type {
     EPISODE_TODAYS_OH_MY_GOSH = 2,
     EPISODE_HERE_COMES_TEAM_CHARM = 3,
     EPISODE_IN_THE_FUTURE_OF_DARKNESS = 4,
+    NUM_SPECIAL_EPISODES = 5
 };
 
 #endif //PMDSKY_ENUMS_H
