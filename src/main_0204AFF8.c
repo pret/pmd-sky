@@ -1,4 +1,5 @@
 #include "main_0204AFF8.h"
+#include "enums.h"
 
 extern enum game_mode GAME_MODE;
 

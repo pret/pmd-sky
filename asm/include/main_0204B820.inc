@@ -5,13 +5,9 @@
 .public Debug_Print
 .public Debug_Print0
 .public GetGameMode
-.public GetLanguageType
-.public GetMoneyCarried
-.public GetMoneyStored
-.public GetNotifyNote
-.public GetPartyMembers
 .public LoadScriptVariableRaw
 .public LoadScriptVariableValue
+.public LoadScriptVariableValueAtIndex
 .public MemcpySimple
 .public RandInt
 .public SCRIPT_VARS_VALUES
