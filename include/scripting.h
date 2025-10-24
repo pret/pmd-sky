@@ -36,5 +36,6 @@ void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     const enum script_var_id sv_id);
 
 s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id);
+s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum script_var_id id, int idx);
 
 #endif //PMDSKY_SCRIPTING_H

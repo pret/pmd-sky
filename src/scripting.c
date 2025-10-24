@@ -12,7 +12,7 @@ extern s32 GetPartyMembers(s32 param1);
 extern s32 GetMoneyCarried();
 extern s32 GetMoneyStored();
 extern s32 GetLanguageType();
-extern s32 GetGameMode();
+extern enum game_mode GetGameMode();
 extern s32 sub_0204C918();
 extern s32 GetSpecialEpisodeType();
 extern s32 GetNotifyNote();
@@ -77,9 +77,9 @@ s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_i
                     return GetGameMode();
                 case VAR_EXECUTE_SPECIAL_EPISODE_TYPE:
                     switch(GetGameMode()) {
-                        case EPISODE_IGGLYBUFF_THE_PRODIGY:
+                        case GAME_MODE_1:
                             return sub_0204C918();
-                        case EPISODE_HERE_COMES_TEAM_CHARM:
+                        case GAME_MODE_SPECIAL_EPISODE:
                             return GetSpecialEpisodeType();
                         default:
                             return -1;
@@ -89,5 +89,61 @@ s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_i
             }
     }
 
+    return 0;
+}
+
+s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum script_var_id id, int idx)
+{
+    struct script_var_raw result;
+    LoadScriptVariableRaw(&result, sv_local, id);
+
+    switch ((s16)result.def->type) {
+        case VARTYPE_NONE:
+            break;
+        case VARTYPE_BIT: {
+            u16 offset = idx + result.def->bitshift;
+            u8 val = ((u8*)result.value)[offset / 8];
+            u8 bit = (1 << (offset & (8 - 1)));
+            return (val & bit) != 0;
+        }
+        case VARTYPE_STRING:
+        case VARTYPE_UINT8:
+            return ((u8*)result.value)[idx];
+        case VARTYPE_INT8:
+            return ((s8*)result.value)[idx];
+        case VARTYPE_UINT16:
+            return ((u16*)result.value)[idx];
+        case VARTYPE_INT16:
+            return ((s16*)result.value)[idx];
+        case VARTYPE_UINT32:
+        case VARTYPE_INT32:
+            return ((u32*)result.value)[idx];
+        case VARTYPE_SPECIAL:
+            switch (id) {
+                case VAR_FRIEND_SUM:
+                    return 1;
+                case VAR_UNIT_SUM:
+                    return GetPartyMembers(0);
+                case VAR_CARRY_GOLD:
+                    return GetMoneyCarried();
+                case VAR_BANK_GOLD:
+                    return GetMoneyStored();
+                case VAR_LANGUAGE_TYPE:
+                    return GetLanguageType();
+                case VAR_GAME_MODE:
+                    return GetGameMode();
+                case VAR_EXECUTE_SPECIAL_EPISODE_TYPE:
+                    switch (GetGameMode()) {
+                        case GAME_MODE_1:
+                            return sub_0204C918();
+                        case GAME_MODE_SPECIAL_EPISODE:
+                            return GetSpecialEpisodeType();
+                        default:
+                            return -1;
+                    }
+                case VAR_NOTE_MODIFY_FLAG:
+                    return GetNotifyNote();
+            }
+    }
     return 0;
 }
