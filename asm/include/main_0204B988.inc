@@ -11,6 +11,7 @@
 .public MemcpySimple
 .public RandInt
 .public SCRIPT_VARS_VALUES
+.public SaveScriptVariableValue
 .public ScenarioFlagBackup
 .public SetMoneyCarried
 .public SetMoneyStored
