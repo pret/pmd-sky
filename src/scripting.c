@@ -16,6 +16,11 @@ extern enum game_mode GetGameMode();
 extern s32 sub_0204C918();
 extern s32 GetSpecialEpisodeType();
 extern s32 GetNotifyNote();
+extern s32 AddMoneyCarried(s32 arg0);
+extern s32 SetMoneyCarried(s32 arg0);
+extern s32 SetMoneyStored(s32 arg0);
+extern s32 SetNotifyNote(s32 arg0);
+extern s32 sub_0204C928(s32 arg0);
 
 const short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
 
@@ -146,4 +151,75 @@ s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum scrip
             }
     }
     return 0;
+}
+
+void SaveScriptVariableValue(union script_var_value sv_locals[], const enum script_var_id script_var_id, u32 new_val)
+{
+    struct script_var_raw script_var_raw;
+    LoadScriptVariableRaw(&script_var_raw, sv_locals, script_var_id);
+    
+    switch ((s16)script_var_raw.def->type) {
+        case VARTYPE_BIT:
+            u32 bitmask = 1 << script_var_raw.def->bitshift;
+            u8 truncated_bitmask = bitmask & 0xff;
+            if (new_val != FALSE) {
+                // the new value is true, so we set the bits specified in the bitmask
+                script_var_raw.value->u8 |= truncated_bitmask;
+                return;
+            }
+            // the new value is false, so we unset the bits specified in bitmask
+            u8 current_val;
+            current_val = script_var_raw.value->u8;
+            current_val |= truncated_bitmask;
+            script_var_raw.value->u8 = truncated_bitmask ^ current_val;
+            return;
+        case VARTYPE_STRING:
+        case VARTYPE_UINT8:
+            script_var_raw.value->u8 = (u8)new_val;
+            return;
+        case VARTYPE_INT8:
+            script_var_raw.value->s8 = (s8)new_val;
+            return;
+        case VARTYPE_UINT16:
+            script_var_raw.value->u16 = (u16)new_val;
+            return;
+        case VARTYPE_INT16:
+            script_var_raw.value->s16 = (s16)new_val;
+            return;
+        case VARTYPE_UINT32:
+        case VARTYPE_INT32:
+            script_var_raw.value->u32 = new_val;
+            return;
+        case VARTYPE_SPECIAL:
+            switch (script_var_id) {
+                case VAR_CARRY_GOLD:
+                    SetMoneyCarried(new_val);
+                    AddMoneyCarried(0);
+                    return;
+                case VAR_BANK_GOLD:
+                    SetMoneyStored(new_val);
+                    return;
+                case VAR_EXECUTE_SPECIAL_EPISODE_TYPE:
+                    if (GetGameMode() == GAME_MODE_1) {
+                         sub_0204C928(new_val);
+                         return;
+                    }
+                    return;
+                case VAR_NOTE_MODIFY_FLAG:
+                    u8 param;
+                    if (new_val != FALSE) {
+                        param = TRUE;
+                    } else {
+                        param = FALSE;
+                    }
+                    SetNotifyNote(param);
+                    break;
+            }
+            break;
+        
+        default:
+            return;
+        }
+
+    return;
 }
