@@ -1,5 +1,4 @@
 #pragma once
-.public AddMoneyCarried
 .public DEBUG_SPECIAL_EPISODE_NUMBER
 .public Debug_FatalError
 .public Debug_Print
@@ -12,10 +11,8 @@
 .public RandInt
 .public SCRIPT_VARS_VALUES
 .public SaveScriptVariableValue
+.public SaveScriptVariableValueAtIndex
 .public ScenarioFlagBackup
-.public SetMoneyCarried
-.public SetMoneyStored
-.public SetNotifyNote
 .public ZinitScriptVariable
 .public _0209CEAC
 .public _0209CF28

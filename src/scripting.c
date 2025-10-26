@@ -223,3 +223,67 @@ void SaveScriptVariableValue(union script_var_value sv_locals[], const enum scri
 
     return;
 }
+
+void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const enum script_var_id script_var_id, int idx, s32 new_val)
+{
+    struct script_var_raw script_var_raw;
+    LoadScriptVariableRaw(&script_var_raw, sv_locals, script_var_id);
+    
+    switch ((s16)script_var_raw.def->type) {
+        case VARTYPE_BIT:
+            // For VARTYPE_BIT, idx specifies a number of bits
+            u16 offset = idx + script_var_raw.def->bitshift;
+            u8 *val = &((u8*)script_var_raw.value)[offset / 8];
+            u8 bitmask = (1 << (offset & (8 - 1)));
+            if (new_val != FALSE) {
+                // new value is true, so we set the bits specified in the bitmask
+                *val = *val | bitmask;
+                return;
+            }
+            // new value is false, so we unset the bits specified in bitmask
+            *val = bitmask ^ (*val | bitmask);
+            return;
+        case VARTYPE_STRING:
+        case VARTYPE_UINT8:
+            ((u8*)script_var_raw.value)[idx] = new_val;
+            return;
+        case VARTYPE_INT8:
+            ((s8*)script_var_raw.value)[idx] = new_val;
+            return;
+        case VARTYPE_UINT16:
+            ((u16*)script_var_raw.value)[idx] = (u16)new_val;
+            return;
+        case VARTYPE_INT16:
+            ((s16*)script_var_raw.value)[idx] = (s16)new_val;
+            return;
+        case VARTYPE_UINT32:
+        case VARTYPE_INT32:
+            ((s32*)script_var_raw.value)[idx] = (s32)new_val;
+            return;
+        case VARTYPE_SPECIAL:
+            switch (script_var_id) {
+                case VAR_CARRY_GOLD:
+                    SetMoneyCarried(new_val);
+                    AddMoneyCarried(0);
+                    return;
+                case VAR_BANK_GOLD:
+                    SetMoneyStored(new_val);
+                    return;
+                case VAR_EXECUTE_SPECIAL_EPISODE_TYPE:
+                    if (GetGameMode() == GAME_MODE_1) {
+                         sub_0204C928(new_val);
+                         return;
+                    }
+                    return;
+                case VAR_NOTE_MODIFY_FLAG:
+                    SetNotifyNote((u8)(new_val != FALSE));
+                    break;
+            }
+            break;
+        
+        default:
+            return;
+        }
+
+    return;
+}
