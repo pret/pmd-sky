@@ -11,6 +11,7 @@
 #include "dungeon_logic_8.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
+#include "dungeon_range_2.h"
 #include "dungeon_util.h"
 #include "dungeon_util_1.h"
 #include "dungeon_util_static.h"
@@ -48,7 +49,6 @@ struct can_move_in_direction_info
 const s32 FACING_DIRECTION_INCREMENTS[] = {0, 1, -1, 2, -2, 3, -3, 4};
 
 extern bool8 CanTargetPosition(struct entity *monster, struct position *position);
-extern bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target);
 extern s32 ov29_022FBE04(struct monster*);
 extern bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 force_avoid);
 extern bool8 CanSeeTeammate(struct entity *monster);

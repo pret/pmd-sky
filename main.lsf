@@ -388,6 +388,8 @@ Overlay OVY_29
 	Object asm/overlay_29_rodata_02351628.o
 	Object src/dungeon_range.o
 	Object asm/overlay_29_022E9298.o
+	Object src/dungeon_range_2.o
+	Object asm/overlay_29_022E9488.o
 	Object src/dg_uty.o
 	Object asm/overlay_29_022E9618.o
 	Object src/overlay_29_022EA9EC.o

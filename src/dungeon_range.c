@@ -2,9 +2,8 @@
 #include "dg_camera.h"
 #include "dungeon.h"
 #include "dungeon_map_access.h"
+#include "dungeon_range_2.h"
 #include "main_0208655C.h"
-
-extern bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target);
 
 bool8 IsPositionActuallyInSight(struct position *origin, struct position *target, bool8 user_has_dropeye)
 {
