@@ -4,7 +4,7 @@
 #include "dungeon_mode.h"
 #include "util.h"
 
-bool8 IsLoneOutlaw(enum monster_behavior behavior);
+bool8 IsBehaviorLoneOutlaw(enum monster_behavior behavior);
 // Checks if a behavior ID corresponds to one of the Secret Bazaar NPCs.
 bool8 IsSecretBazaarNpcBehavior(enum monster_behavior behavior);
 

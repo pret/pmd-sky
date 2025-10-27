@@ -4,9 +4,9 @@
 #include "dungeon_util_static.h"
 #include "util.h"
 
-bool8 IsLoneOutlawVeneer(struct monster* monster_info)
+bool8 IsMonsterLoneOutlaw(struct monster* monster_info)
 {
-    return IsLoneOutlaw(monster_info->monster_behavior);
+    return IsBehaviorLoneOutlaw(monster_info->monster_behavior);
 }
 
 bool8 IsSecretBazaarNpc(struct entity *entity)

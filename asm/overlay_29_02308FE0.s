@@ -2679,7 +2679,7 @@ _0230B04C:
 	cmp r0, #0
 	beq _0230B0B4
 	mov r0, r7
-	bl IsLoneOutlawVeneer
+	bl IsMonsterLoneOutlaw
 	cmp r0, #0
 	beq _0230B0B4
 	ldrb r0, [r7, #0x62]
@@ -3283,7 +3283,7 @@ _0230A5E0:
 	cmp r0, #0
 	beq _0230A648
 	mov r0, r4
-	bl IsLoneOutlawVeneer
+	bl IsMonsterLoneOutlaw
 	cmp r0, #0
 	beq _0230A648
 	ldrb r0, [r4, #0x62]

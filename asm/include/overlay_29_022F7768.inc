@@ -29,7 +29,7 @@
 .public GetTileSafe
 .public IQ_SKILLS
 .public IsLevelResetDungeon
-.public IsLoneOutlaw
+.public IsBehaviorLoneOutlaw
 .public IsMonsterIdInNormalRange
 .public IsOutlawOrChallengeRequestFloor
 .public IsRecruitingAllowed
