@@ -6443,6 +6443,7 @@ _0205E5BC:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end sub_0205E50C
 
+; https://decomp.me/scratch/8eqok
 	arm_func_start GenerateDailyMissions
 GenerateDailyMissions: ; 0x0205E5D0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
