@@ -8,6 +8,7 @@
 #include "dungeon_capabilities_1.h"
 #include "dungeon_capabilities_4.h"
 #include "dungeon_logic_7.h"
+#include "dungeon_logic_8.h"
 #include "dungeon_map_access.h"
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_util.h"
@@ -50,7 +51,6 @@ extern bool8 CanTargetEntity(struct entity *user, struct entity *target);
 extern bool8 CanTargetPosition(struct entity *monster, struct position *position);
 extern bool8 IsPositionWithinTwoTiles(struct position *origin, struct position *target);
 extern s32 ov29_022FBE04(struct monster*);
-extern bool8 CanMoveThroughWalls(struct entity *monster);
 extern bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 force_avoid);
 extern bool8 CanSeeTeammate(struct entity *monster);
 extern struct entity* GetLeaderIfVisible(struct entity *monster);
