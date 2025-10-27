@@ -5,8 +5,6 @@
 #include "dungeon_statuses.h"
 #include "dungeon_util_static.h"
 
-extern bool8 IsPositionInSight(struct position *origin, struct position *target, bool8 user_has_dropeye);
-
 bool8 CanSeeTarget(struct entity *user, struct entity *target)
 {
     if (!EntityIsValid__022E1A1C(user))
