@@ -97,7 +97,7 @@ s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_i
     return 0;
 }
 
-s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum script_var_id id, int idx)
+s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum script_var_id id, u16 idx)
 {
     struct script_var_raw result;
     LoadScriptVariableRaw(&result, sv_local, id);
@@ -286,4 +286,75 @@ void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const en
         }
 
     return;
+}
+
+s32 LoadScriptVariableValueSum(union script_var_value sv_local[], const enum script_var_id sv_id)
+{
+    struct script_var_raw script_var_raw;
+    s32 total = 0;
+    
+    LoadScriptVariableRaw(&script_var_raw, 0, sv_id);
+    
+    for(s32 idx = 0; idx < (s16) script_var_raw.def->n_values; idx++) {
+        total += LoadScriptVariableValueAtIndex(sv_local, sv_id, (u16) idx);
+    }
+    
+    return total;
+}
+
+void LoadScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s32 num_bytes)
+{
+    struct script_var_raw sv_raw;
+    LoadScriptVariableRaw(&sv_raw, 0, sv_id);
+
+    s32 i = 0;
+    u8* val_ptr = (u8*) sv_raw.value;
+    
+    for(i = 0; i < num_bytes; i++) {
+        u8 val = *val_ptr;
+        *result = val;
+        val_ptr += 1;
+        result += 1;
+    }
+}
+
+void LoadScriptVariableValueString(const enum script_var_id sv_id, u8* result, u8 num_bytes)
+{
+    LoadScriptVariableValueBytes(sv_id, result, num_bytes);
+    result[num_bytes] = 0;
+}
+
+void SaveScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s32 num_bytes)
+{
+    struct script_var_raw sv_raw;
+    LoadScriptVariableRaw(&sv_raw, 0, sv_id);
+
+    s32 i = 0;
+    u8* val_ptr = (u8*) sv_raw.value;
+
+    for(i = 0; i < num_bytes; i++) {
+        u8 val = *result;
+        *val_ptr = val;
+        val_ptr += 1;
+        result += 1;
+    }
+}
+
+s32 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2)
+{
+    struct script_var_raw script_var_raw_1, script_var_raw_2;
+
+    LoadScriptVariableRaw(&script_var_raw_1, sv_val_ptr_local, sv_id_1);
+    LoadScriptVariableRaw(&script_var_raw_2, sv_val_ptr_local, sv_id_2);
+    
+    s32 n_values = script_var_raw_1.def->n_values;
+    
+    for(int idx = 0; idx < n_values; idx++) {
+        if (LoadScriptVariableValueAtIndex(sv_val_ptr_local, sv_id_1, idx) != 
+            LoadScriptVariableValueAtIndex(sv_val_ptr_local, sv_id_2, idx)) {
+            return 0;
+        }
+    }
+
+    return 1;
 }
