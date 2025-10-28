@@ -1,76 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204BBCC.inc"
+	.include "main_0204BCAC.inc"
 
 	.text
-
-	arm_func_start SaveScriptVariableValueBytes
-SaveScriptVariableValueBytes: ; 0x0204BBCC
-	stmdb sp!, {r3, r4, r5, lr}
-	sub sp, sp, #8
-	mov r3, r0
-	mov r5, r1
-	mov r4, r2
-	add r0, sp, #0
-	mov r2, r3
-	mov r1, #0
-	bl LoadScriptVariableRaw
-	ldr r2, [sp, #4]
-	mov r1, #0
-	b _0204BC08
-_0204BBFC:
-	ldrb r0, [r5], #1
-	add r1, r1, #1
-	strb r0, [r2], #1
-_0204BC08:
-	cmp r1, r4
-	blt _0204BBFC
-	add sp, sp, #8
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end SaveScriptVariableValueBytes
-
-	arm_func_start ScriptVariablesEqual
-ScriptVariablesEqual: ; 0x0204BC18
-	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
-	sub sp, sp, #0x10
-	mov r8, r0
-	mov r7, r1
-	mov r6, r2
-	add r0, sp, #8
-	mov r1, r8
-	mov r2, r7
-	bl LoadScriptVariableRaw
-	add r0, sp, #0
-	mov r1, r8
-	mov r2, r6
-	bl LoadScriptVariableRaw
-	ldr r0, [sp, #8]
-	mov r5, #0
-	ldrsh r4, [r0, #8]
-	b _0204BC98
-_0204BC5C:
-	mov r2, r5, lsl #0x10
-	mov r0, r8
-	mov r1, r7
-	mov r2, r2, lsr #0x10
-	bl LoadScriptVariableValueAtIndex
-	mov r2, r5, lsl #0x10
-	mov sb, r0
-	mov r0, r8
-	mov r1, r6
-	mov r2, r2, lsr #0x10
-	bl LoadScriptVariableValueAtIndex
-	cmp sb, r0
-	movne r0, #0
-	bne _0204BCA4
-	add r5, r5, #1
-_0204BC98:
-	cmp r5, r4
-	blt _0204BC5C
-	mov r0, #1
-_0204BCA4:
-	add sp, sp, #0x10
-	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end ScriptVariablesEqual
 
 	arm_func_start sub_0204BCAC
 sub_0204BCAC: ; 0x0204BCAC
