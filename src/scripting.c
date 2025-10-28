@@ -287,3 +287,33 @@ void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const en
 
     return;
 }
+
+s32 LoadScriptVariableValueSum(union script_var_value sv_local[], const enum script_var_id sv_id)
+{
+    struct script_var_raw script_var_raw;
+    s32 total = 0;
+    
+    LoadScriptVariableRaw(&script_var_raw, 0, sv_id);
+    
+    for(s32 idx = 0; idx < (s16) script_var_raw.def->n_values; idx++) {
+        total += LoadScriptVariableValueAtIndex(sv_local, sv_id, (u16) idx);
+    }
+    
+    return total;
+}
+
+void LoadScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s32 num_bytes)
+{
+    struct script_var_raw sv_raw;
+    LoadScriptVariableRaw(&sv_raw, 0, sv_id);
+
+    s32 i = 0;
+    u8* val_ptr = (u8*) sv_raw.value;
+
+    for(i = 0; i < num_bytes; i++) {
+        u8 val = *val_ptr;
+        *result = val;
+        val_ptr += 1;
+        result += 1;
+    }
+}
