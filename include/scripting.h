@@ -38,5 +38,6 @@ void SaveScriptVariableValue(union script_var_value sv_locals[], const enum scri
 void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const enum script_var_id script_var_id, int idx, s32 new_val);
 s32 LoadScriptVariableValueSum(union script_var_value sv_local[], const enum script_var_id sv_id);
 void LoadScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s32 num_bytes);
+void LoadScriptVariableValueString(const enum script_var_id sv_id, u8* result, u8 num_bytes);
 
 #endif //PMDSKY_SCRIPTING_H

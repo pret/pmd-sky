@@ -7,7 +7,6 @@
 .public LoadScriptVariableRaw
 .public LoadScriptVariableValue
 .public LoadScriptVariableValueAtIndex
-.public LoadScriptVariableValueBytes
 .public MemcpySimple
 .public RandInt
 .public SCRIPT_VARS_VALUES

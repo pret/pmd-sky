@@ -1,18 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204BBB0.inc"
+	.include "main_0204BBCC.inc"
 
 	.text
-
-	arm_func_start sub_0204BBB0
-sub_0204BBB0: ; 0x0204BBB0
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r1
-	mov r4, r2
-	bl LoadScriptVariableValueBytes
-	mov r0, #0
-	strb r0, [r5, r4]
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0204BBB0
 
 	arm_func_start SaveScriptVariableValueBytes
 SaveScriptVariableValueBytes: ; 0x0204BBCC

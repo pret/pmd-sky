@@ -317,3 +317,9 @@ void LoadScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s3
         result += 1;
     }
 }
+
+void LoadScriptVariableValueString(const enum script_var_id sv_id, u8* result, u8 num_bytes)
+{
+    LoadScriptVariableValueBytes(sv_id, result, num_bytes);
+    result[num_bytes] = 0;
+}
