@@ -19157,7 +19157,7 @@ _02023E18:
 	add r1, sp, #2
 	mov r0, #0x3f
 	mov r2, #0xa
-	bl sub_0204BBB0
+	bl LoadScriptVariableValueString
 	add r0, sp, #0x42
 	add r1, sp, #2
 	mov r2, #0xa
@@ -19169,7 +19169,7 @@ _02023E44:
 	add r1, sp, #2
 	mov r0, #0x41
 	mov r2, #0xa
-	bl sub_0204BBB0
+	bl LoadScriptVariableValueString
 	add r0, sp, #0x42
 	add r1, sp, #2
 	mov r2, #0xa

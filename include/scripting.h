@@ -31,13 +31,13 @@ struct script_var_raw {
 
 extern const short LOCAL_SCRIPT_VAR_OFFSET;
 
-void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
-    union script_var_value sv_val_local[],
-    const enum script_var_id sv_id);
-
+void LoadScriptVariableRaw(struct script_var_raw* sv_raw, union script_var_value sv_val_local[], const enum script_var_id sv_id);
 s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id);
 s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum script_var_id id, int idx);
 void SaveScriptVariableValue(union script_var_value sv_locals[], const enum script_var_id script_var_id, u32 new_val);
 void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const enum script_var_id script_var_id, int idx, s32 new_val);
+s32 LoadScriptVariableValueSum(union script_var_value sv_local[], const enum script_var_id sv_id);
+void LoadScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s32 num_bytes);
+void LoadScriptVariableValueString(const enum script_var_id sv_id, u8* result, u8 num_bytes);
 
 #endif //PMDSKY_SCRIPTING_H

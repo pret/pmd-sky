@@ -439,7 +439,7 @@
 .public sub_0200D310
 .public sub_02025480
 .public sub_020257FC
-.public sub_0204BBB0
+.public LoadScriptVariableValueString
 .public sub_0204E530
 .public sub_0204F6F8
 .public sub_0204F77C
