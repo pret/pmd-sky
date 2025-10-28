@@ -150,9 +150,9 @@
                                      36](GetPartyMembers,func) found in global main_02054E4C.o
                                      36](GetMoneyCarried,func) found in global main_0200ECFC.o
                                      36](GetMoneyStored,func) found in global main_0200EDFC.o
-                                     36](sub_0204C918,func) found in global main_0204BB00.o
+                                     36](sub_0204C918,func) found in global main_0204BBCC.o
                                       37](SaveScriptVariableValue,func) found in global scripting.o
-                                       38](sub_0204C928,func) found in global main_0204BB00.o
+                                       38](sub_0204C928,func) found in global main_0204BBCC.o
                                       37](LoadScriptVariableValue,func) found in global scripting.o
                                       37](ZinitScriptVariable,func) found in global main_0204B018.o
                                        38](InitDungeonListScriptVars,func) found in global main_0204CBE8.o
@@ -657,6 +657,7 @@
                                                                                                        102](.rodata,section) found in local overlay_28_0238A5CC.o
                                                                                                        102](.bss,section) found in local overlay_28_0238A5CC.o
                                                                                                        102](ov28_0238A184,func) found in global overlay_28.o
+                                                                                                   98](LoadScriptVariableValueSum,func) found in global scripting.o
                                                                                                    98](sub_0204CA48,func) found in global main_0204C94C.o
                                                                                                    98](sub_0204CB2C,func) found in global main_0204CA94.o
                                                                                                   97](Debug_SetLogFlag,func) found in global debug.o
@@ -968,6 +969,8 @@
                             27](CanEvolve,func) found in global main_0205283C.o
                     19](Rand32Bit,func) found in global main_0200224C.o
                     19](GetMoveRangeId,func) found in global main_02013B70.o
+                 16](LoadScriptVariableValueString,func) found in global scripting.o
+                  17](LoadScriptVariableValueBytes,func) found in global scripting.o
                  16](LoadStringFile,func) found in global main_020257FC.o
                  16](DirectoryFileMngr_LoadDirectoryFile,func) found in global directory_file_mngr.o
                  16](FileGetSize,func) found in global main_02008254.o
@@ -6083,62 +6086,65 @@
   0204B820 00000000 .text   $a	(scripting.o)
   0204B988 00000178 .text   SaveScriptVariableValueAtIndex	(scripting.o)
   0204B988 00000000 .text   $a	(scripting.o)
-  0204BB00 00000E38 .text   .text	(main_0204BB00.o)
-  0204BB00 00000064 .text   LoadScriptVariableValueSum	(main_0204BB00.o)
-  0204BB00 00000000 .text   $a	(main_0204BB00.o)
-  0204BB64 0000004C .text   LoadScriptVariableValueBytes	(main_0204BB00.o)
-  0204BBB0 0000001C .text   sub_0204BBB0	(main_0204BB00.o)
-  0204BBCC 0000004C .text   SaveScriptVariableValueBytes	(main_0204BB00.o)
-  0204BC18 00000094 .text   ScriptVariablesEqual	(main_0204BB00.o)
-  0204BCAC 000000EC .text   sub_0204BCAC	(main_0204BB00.o)
-  0204BD90 00000000 .text   $d	(main_0204BB00.o)
-  0204BD98 00000134 .text   sub_0204BD98	(main_0204BB00.o)
-  0204BD98 00000000 .text   $a	(main_0204BB00.o)
-  0204BEC4 00000000 .text   $d	(main_0204BB00.o)
-  0204BECC 00000000 .text   $a	(main_0204BB00.o)
-  0204BECC 0000000C .text   sub_0204BECC	(main_0204BB00.o)
-  0204BED4 00000000 .text   $d	(main_0204BB00.o)
-  0204BED8 00000000 .text   $a	(main_0204BB00.o)
-  0204BED8 00000038 .text   sub_0204BED8	(main_0204BB00.o)
-  0204BF10 0000004C .text   sub_0204BF10	(main_0204BB00.o)
-  0204BF5C 0000000C .text   sub_0204BF5C	(main_0204BB00.o)
-  0204BF64 00000000 .text   $d	(main_0204BB00.o)
-  0204BF68 00000020 .text   sub_0204BF68	(main_0204BB00.o)
-  0204BF68 00000000 .text   $a	(main_0204BB00.o)
-  0204BF88 00000038 .text   sub_0204BF88	(main_0204BB00.o)
-  0204BFC0 00000224 .text   EventFlagResume	(main_0204BB00.o)
-  0204C1E0 00000000 .text   $d	(main_0204BB00.o)
-  0204C1E4 00000000 .text   $a	(main_0204BB00.o)
-  0204C1E4 00000224 .text   EventFlagBackup	(main_0204BB00.o)
-  0204C404 00000000 .text   $d	(main_0204BB00.o)
-  0204C408 00000028 .text   DumpScriptVariableValues	(main_0204BB00.o)
-  0204C408 00000000 .text   $a	(main_0204BB00.o)
-  0204C42C 00000000 .text   $d	(main_0204BB00.o)
-  0204C430 00000000 .text   $a	(main_0204BB00.o)
-  0204C430 00000058 .text   RestoreScriptVariableValues	(main_0204BB00.o)
-  0204C484 00000000 .text   $d	(main_0204BB00.o)
-  0204C488 00000154 .text   InitScenarioScriptVars	(main_0204BB00.o)
-  0204C488 00000000 .text   $a	(main_0204BB00.o)
-  0204C5DC 0000003C .text   sub_0204C5DC	(main_0204BB00.o)
-  0204C618 000000B0 .text   SetScenarioScriptVar	(main_0204BB00.o)
-  0204C6C4 00000000 .text   $d	(main_0204BB00.o)
-  0204C6C8 00000000 .text   $a	(main_0204BB00.o)
-  0204C6C8 0000006C .text   sub_0204C6C8	(main_0204BB00.o)
-  0204C734 00000078 .text   sub_0204C734	(main_0204BB00.o)
-  0204C7AC 0000005C .text   sub_0204C7AC	(main_0204BB00.o)
-  0204C808 00000078 .text   sub_0204C808	(main_0204BB00.o)
-  0204C880 0000006C .text   sub_0204C880	(main_0204BB00.o)
-  0204C8EC 00000014 .text   GetSpecialEpisodeType	(main_0204BB00.o)
-  0204C8FC 00000000 .text   $d	(main_0204BB00.o)
-  0204C900 00000018 .text   SetSpecialEpisodeType	(main_0204BB00.o)
-  0204C900 00000000 .text   $a	(main_0204BB00.o)
-  0204C914 00000000 .text   $d	(main_0204BB00.o)
-  0204C918 00000010 .text   sub_0204C918	(main_0204BB00.o)
-  0204C918 00000000 .text   $a	(main_0204BB00.o)
-  0204C924 00000000 .text   $d	(main_0204BB00.o)
-  0204C928 00000010 .text   sub_0204C928	(main_0204BB00.o)
-  0204C928 00000000 .text   $a	(main_0204BB00.o)
-  0204C934 00000000 .text   $d	(main_0204BB00.o)
+  0204BB00 00000064 .text   LoadScriptVariableValueSum	(scripting.o)
+  0204BB00 00000000 .text   $a	(scripting.o)
+  0204BB64 0000004C .text   LoadScriptVariableValueBytes	(scripting.o)
+  0204BB64 00000000 .text   $a	(scripting.o)
+  0204BBB0 0000001C .text   LoadScriptVariableValueString	(scripting.o)
+  0204BBB0 00000000 .text   $a	(scripting.o)
+  0204BBCC 00000D6C .text   .text	(main_0204BBCC.o)
+  0204BBCC 00000000 .text   $a	(main_0204BBCC.o)
+  0204BBCC 0000004C .text   SaveScriptVariableValueBytes	(main_0204BBCC.o)
+  0204BC18 00000094 .text   ScriptVariablesEqual	(main_0204BBCC.o)
+  0204BCAC 000000EC .text   sub_0204BCAC	(main_0204BBCC.o)
+  0204BD90 00000000 .text   $d	(main_0204BBCC.o)
+  0204BD98 00000000 .text   $a	(main_0204BBCC.o)
+  0204BD98 00000134 .text   sub_0204BD98	(main_0204BBCC.o)
+  0204BEC4 00000000 .text   $d	(main_0204BBCC.o)
+  0204BECC 0000000C .text   sub_0204BECC	(main_0204BBCC.o)
+  0204BECC 00000000 .text   $a	(main_0204BBCC.o)
+  0204BED4 00000000 .text   $d	(main_0204BBCC.o)
+  0204BED8 00000000 .text   $a	(main_0204BBCC.o)
+  0204BED8 00000038 .text   sub_0204BED8	(main_0204BBCC.o)
+  0204BF10 0000004C .text   sub_0204BF10	(main_0204BBCC.o)
+  0204BF5C 0000000C .text   sub_0204BF5C	(main_0204BBCC.o)
+  0204BF64 00000000 .text   $d	(main_0204BBCC.o)
+  0204BF68 00000000 .text   $a	(main_0204BBCC.o)
+  0204BF68 00000020 .text   sub_0204BF68	(main_0204BBCC.o)
+  0204BF88 00000038 .text   sub_0204BF88	(main_0204BBCC.o)
+  0204BFC0 00000224 .text   EventFlagResume	(main_0204BBCC.o)
+  0204C1E0 00000000 .text   $d	(main_0204BBCC.o)
+  0204C1E4 00000000 .text   $a	(main_0204BBCC.o)
+  0204C1E4 00000224 .text   EventFlagBackup	(main_0204BBCC.o)
+  0204C404 00000000 .text   $d	(main_0204BBCC.o)
+  0204C408 00000000 .text   $a	(main_0204BBCC.o)
+  0204C408 00000028 .text   DumpScriptVariableValues	(main_0204BBCC.o)
+  0204C42C 00000000 .text   $d	(main_0204BBCC.o)
+  0204C430 00000000 .text   $a	(main_0204BBCC.o)
+  0204C430 00000058 .text   RestoreScriptVariableValues	(main_0204BBCC.o)
+  0204C484 00000000 .text   $d	(main_0204BBCC.o)
+  0204C488 00000154 .text   InitScenarioScriptVars	(main_0204BBCC.o)
+  0204C488 00000000 .text   $a	(main_0204BBCC.o)
+  0204C5DC 0000003C .text   sub_0204C5DC	(main_0204BBCC.o)
+  0204C618 000000B0 .text   SetScenarioScriptVar	(main_0204BBCC.o)
+  0204C6C4 00000000 .text   $d	(main_0204BBCC.o)
+  0204C6C8 0000006C .text   sub_0204C6C8	(main_0204BBCC.o)
+  0204C6C8 00000000 .text   $a	(main_0204BBCC.o)
+  0204C734 00000078 .text   sub_0204C734	(main_0204BBCC.o)
+  0204C7AC 0000005C .text   sub_0204C7AC	(main_0204BBCC.o)
+  0204C808 00000078 .text   sub_0204C808	(main_0204BBCC.o)
+  0204C880 0000006C .text   sub_0204C880	(main_0204BBCC.o)
+  0204C8EC 00000014 .text   GetSpecialEpisodeType	(main_0204BBCC.o)
+  0204C8FC 00000000 .text   $d	(main_0204BBCC.o)
+  0204C900 00000018 .text   SetSpecialEpisodeType	(main_0204BBCC.o)
+  0204C900 00000000 .text   $a	(main_0204BBCC.o)
+  0204C914 00000000 .text   $d	(main_0204BBCC.o)
+  0204C918 00000010 .text   sub_0204C918	(main_0204BBCC.o)
+  0204C918 00000000 .text   $a	(main_0204BBCC.o)
+  0204C924 00000000 .text   $d	(main_0204BBCC.o)
+  0204C928 00000010 .text   sub_0204C928	(main_0204BBCC.o)
+  0204C928 00000000 .text   $a	(main_0204BBCC.o)
+  0204C934 00000000 .text   $d	(main_0204BBCC.o)
   0204C938 00000000 .text   $a	(main_0204C938.o)
   0204C938 00000014 .text   GetExecuteSpecialEpisodeType	(main_0204C938.o)
   0204C948 00000000 .text   $d	(main_0204C938.o)
@@ -40962,5 +40968,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Oct 26 21:33:08 2025
-# Link end time: Sun Oct 26 21:33:09 2025
+# Link start time: Tue Oct 28 21:36:07 2025
+# Link end time: Tue Oct 28 21:36:08 2025
