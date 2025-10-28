@@ -1,0 +1,13 @@
+#pragma once
+.public DUNGEON_PTR
+.public EXCL_ITEM_EFFECTS_WEATHER_MOVE_SPEED_BOOST
+.public ExclusiveItemEffectIsActive__022FFF28
+.public GetApparentWeather
+.public GetMobilityTypeAfterIqSkills
+.public GetMobilityTypeCheckSlipAndFloating
+.public GetSpeedStatus
+.public GetTile
+.public IqSkillIsEnabled
+.public IsCurrentTilesetBackground
+.public ItemIsActive__022FF898
+.public MonsterIsType

@@ -48,7 +48,7 @@
 .public IsDestinationFloorWithHiddenOutlaw
 .public IsDestinationFloorWithMonster
 .public IsInvalidSpawnTile
-.public IsLoneOutlaw
+.public IsBehaviorLoneOutlaw
 .public IsOutlawMonsterHouseFloor
 .public IsSecretBazaarNpcBehavior
 .public IsSpecialStoryAllyOrClient

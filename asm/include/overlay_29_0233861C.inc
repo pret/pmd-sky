@@ -32,7 +32,7 @@
 .public IsExperienceLocked
 .public IsGoldenChamber
 .public IsHiddenStairsFloor
-.public IsLoneOutlaw
+.public IsBehaviorLoneOutlaw
 .public IsOutlawMonsterHouseFloor
 .public IsSecretBazaar
 .public LoadFixedRoomData

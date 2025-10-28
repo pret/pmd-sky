@@ -1,11 +1,8 @@
 #pragma once
-.public _020AFC4C
-.public abs
 .public DUNGEON_PTR
 .public EntityIsValid__022E95F4
-.public GetTile
-.public GetVisibilityRange
 .public LEADER_PTR
+.public _020AFC4C
 .public ov29_0237C888
 .public ov29_0237C88A
 .public ov29_0237C88E

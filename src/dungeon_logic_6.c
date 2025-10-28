@@ -3,7 +3,7 @@
 #include "dungeon_mode.h"
 #include "util.h"
 
-bool8 IsLoneOutlaw(enum monster_behavior behavior)
+bool8 IsBehaviorLoneOutlaw(enum monster_behavior behavior)
 {
     bool8 result;
 

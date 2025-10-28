@@ -1,62 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022E2810.inc"
+	.include "overlay_29_022E28D4.inc"
 
 	.text
-
-	arm_func_start CanTargetEntity
-CanTargetEntity: ; 0x022E2810
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r0
-	mov r4, r1
-	bl EntityIsValid__022E1A1C
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-	mov r0, r4
-	bl EntityIsValid__022E1A1C
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-	ldrb r0, [r4, #0x20]
-	cmp r0, #0
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r0, [r4]
-	cmp r0, #1
-	bne _022E28B8
-	ldr r0, [r5]
-	cmp r0, #1
-	bne _022E28A4
-	mov r0, r5
-	bl CanSeeInvisibleMonsters
-	cmp r0, #0
-	ldreq r0, [r4, #0xb4]
-	ldreqb r0, [r0, #0xef]
-	cmpeq r0, #1
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-	mov r0, r5
-	mov r1, #1
-	bl IsBlinded
-	cmp r0, #0
-	beq _022E28B8
-	mov r0, #0
-	ldmia sp!, {r3, r4, r5, pc}
-_022E28A4:
-	ldr r0, [r4, #0xb4]
-	ldrb r0, [r0, #0xef]
-	cmp r0, #1
-	moveq r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-_022E28B8:
-	mov r0, r5
-	bl HasDropeyeStatus
-	mov r2, r0
-	add r0, r5, #4
-	add r1, r4, #4
-	bl IsPositionInSight
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end CanTargetEntity
 
 	arm_func_start ov29_022E28D4
 ov29_022E28D4: ; 0x022E28D4

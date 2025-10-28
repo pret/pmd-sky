@@ -121,7 +121,7 @@ bool8 RecruitCheck(struct entity* leader, struct entity* target)
             return FALSE;
     }
 
-    if (IsLoneOutlawVeneer(target_monster_info))
+    if (IsMonsterLoneOutlaw(target_monster_info))
         return FALSE;
 
     if (!SpecificRecruitCheck(target_monster_info->id))

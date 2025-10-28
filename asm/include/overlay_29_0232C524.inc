@@ -55,7 +55,7 @@
 .public IsChargingTwoTurnMove
 .public IsCurrentFixedRoomBossFight
 .public IsFullFloorFixedRoom
-.public IsLoneOutlawVeneer
+.public IsMonsterLoneOutlaw
 .public IsSecretBazaarNpc
 .public LAST_RESORT_DAMAGE_MULT_TABLE
 .public LogMessageByIdWithPopupCheckUser

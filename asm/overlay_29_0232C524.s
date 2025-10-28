@@ -326,7 +326,7 @@ _0232C8E4:
 	cmp r0, #0
 	beq _0232C96C
 	mov r0, r7
-	bl IsLoneOutlawVeneer
+	bl IsMonsterLoneOutlaw
 	cmp r0, #0
 	bne _0232C96C
 	ldrb r0, [r7, #6]

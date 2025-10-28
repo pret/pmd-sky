@@ -1,7 +1,6 @@
 #include "dungeon_ai_leader.h"
 #include "dungeon_util_static.h"
-
-extern bool8 DoesTacticFollowLeader(enum tactic_id tactic_id);
+#include "main_02058C3C.h"
 
 bool8 EntityIsValid__0230827C(struct entity *entity)
 {

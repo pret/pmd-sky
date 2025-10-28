@@ -4,7 +4,7 @@
 #include "dungeon_mode.h"
 #include "util.h"
 
-bool8 IsLoneOutlawVeneer(struct monster* monster_info);
+bool8 IsMonsterLoneOutlaw(struct monster* monster_info);
 bool8 IsSecretBazaarNpc(struct entity *entity);
 
 #endif //PMDSKY_DUNGEON_LOGIC_7_H

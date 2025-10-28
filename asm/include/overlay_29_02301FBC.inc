@@ -8,6 +8,6 @@
 .public GetPerformanceFlagWithChecks
 .public GetSpeciesIqSkill
 .public IqSkillFlagTest
-.public IsLoneOutlawVeneer
+.public IsMonsterLoneOutlaw
 .public MIN_IQ_EXCLUSIVE_MOVE_USER
 .public MIN_IQ_ITEM_MASTER

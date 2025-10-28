@@ -1185,7 +1185,7 @@ _023393DC:
 	cmp r0, #2
 	moveq r0, r5
 	beq _02339410
-	bl IsLoneOutlaw
+	bl IsBehaviorLoneOutlaw
 _02339410:
 	cmp r0, #0
 	movne r5, #0xc
