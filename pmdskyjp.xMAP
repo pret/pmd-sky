@@ -5,6 +5,7 @@
 	unk1962a	(poly_text.o )
 	(overlay_29_022FB538.o )	[whole file]
 	(overlay_29_022FEEB8_eu.o )	[whole file]
+	(overlay_29_022FF8C8.o )	[whole file]
 
 
 # Link map of _start
@@ -230,12 +231,11 @@
                                                 47](DungeonRandInt,func) found in global dg_random.o
                                                 47](GetFloorType,func) found in global overlay_29_022E0378.o
                                                  48](EntityIsValid__022E0354,func) found in global dg.o
-                                                 48](GetLeader,func) found in global overlay_29_022E91A4.o
+                                                 48](GetLeader,func) found in global overlay_29_022E9488.o
                                                   49](EntityIsValid__022E95F4,func) found in global dg_uty.o
-                                                  49](GetVisibilityRange,func) found in global dg_camera.o
                                                  48](GetForcedLossReason,func) found in global overlay_29_022ECDE4.o
                                                   49](SpawnTrap,func) found in global overlay_29_022E1AD4.o
-                                                   50](ov29_022E2CA0,func) found in global overlay_29_022E2810.o
+                                                   50](ov29_022E2CA0,func) found in global overlay_29_022E28D4.o
                                                     51](ov29_022E34C8,func) found in global overlay_29_022E335C.o
                                                      52](AdvanceFrame,func) found in global overlay_29_022E9618.o
                                                      52](AnimationHasMoreFrames,func) found in global overlay_10_022BCC7C.o
@@ -253,7 +253,7 @@
                                                            58](ov29_02321260,func) found in global overlay_29_02320788.o
                                                            58](UpdateEntityPixelPos,func) found in global dg_object.o
                                                            58](MoveMonsterToPos,func) found in global overlay_29_022F7768.o
-                                                           58](SubstitutePlaceholderStringTags,func) found in global overlay_29_022E2810.o
+                                                           58](SubstitutePlaceholderStringTags,func) found in global overlay_29_022E28D4.o
                                                            58](ov29_023516E8,notype) found in global overlay_29_rodata_02351628.o
                                                            58](FIXED_ROOM_PROPERTIES_TABLE,notype) found in global overlay_10_022C5938.o
                                                            58](IsCurrentFixedRoomBossFight,func) found in global run_dungeon_1.o
@@ -367,6 +367,7 @@
                                                                                 79](ItemIsActive__022FF898,func) found in global overlay_29_022FF898.o
                                                                                78](HasDropeyeStatus,func) found in global dungeon_pokemon_attributes_1.o
                                                                                78](IsPositionActuallyInSight,func) found in global dungeon_range.o
+                                                                                79](GetVisibilityRange,func) found in global dg_camera.o
                                                                               77](GetTreatmentBetweenMonsters,func) found in global dungeon_ai_targeting_1.o
                                                                                78](MONSTER_TREATMENT_DATA,object) found in global dungeon_ai_targeting_1.o
                                                                               77](CanAiMonsterMoveInDirection,func) found in global dungeon_capabilities_4.o
@@ -395,13 +396,13 @@
                                                                               77](ShouldMonsterFollowLeader,func) found in global dungeon_ai_leader.o
                                                                                78](DoesTacticFollowLeader,func) found in global main_02058C3C.o
                                                                                 79](TACTICS_FOLLOW_LEADER,object) found in global tactics_data.o
-                                                                              77](CanMoveThroughWalls,func) found in global overlay_29_022FF8C8.o
-                                                                               78](ExclusiveItemEffectIsActive__022FFF28,func) found in global overlay_29_022FFF28.o
-                                                                               78](MonsterIsType,func) found in global dungeon_logic_3.o
-                                                                               78](GetSpeedStatus,func) found in global main_0205283C.o
+                                                                              77](CanMoveThroughWalls,func) found in global dungeon_logic_8.o
+                                                                              77](CanTargetEntity,func) found in global dungeon_visibility.o
+                                                                               78](IsPositionInSight,func) found in global dungeon_range.o
+                                                                                79](IsPositionWithinTwoTiles,func) found in global dungeon_range_2.o
                                                                               77](CanSeeTeammate,func) found in global overlay_29_02301FBC.o
-                                                                               78](IsLoneOutlawVeneer,func) found in global dungeon_logic_7.o
-                                                                                79](IsLoneOutlaw,func) found in global dungeon_logic_6.o
+                                                                               78](IsMonsterLoneOutlaw,func) found in global dungeon_logic_7.o
+                                                                                79](IsBehaviorLoneOutlaw,func) found in global dungeon_logic_6.o
                                                                               77](GetLeaderIfVisible,func) found in global overlay_29_023082C4.o
                                                                               77](ov29_022FBE04,func) found in global overlay_29_022FBE04.o
                                                                                78](EntityIsValid__022FC99C,func) found in global overlay_29_022FC99C.o
@@ -449,6 +450,7 @@
                                                                                    82](SafeguardIsActive,func) found in global overlay_29_02301940.o
                                                                                     83](DefenderAbilityIsActive__02301A0C,func) found in global overlay_29_02301A60.o
                                                                                    82](ExclusiveItemEffectIsActiveWithLogging,func) found in global overlay_29_02314810.o
+                                                                                   82](MonsterIsType,func) found in global dungeon_logic_3.o
                                                                                    82](SetPreprocessorArgsStringToName,func) found in global overlay_29_0230027C.o
                                                                                    82](IsProtectedFromSleepClassStatus,func) found in global overlay_29_023118D8.o
                                                                                     83](InflictSleepStatusSingle,func) found in global overlay_29_02311088.o
@@ -496,6 +498,9 @@
                                                                                             91](ov29_023201D0,func) found in global overlay_29_023201A0.o
                                                                                              92](ov29_023529B8,notype) found in global overlay_29_rodata_02352894.o
                                                                                              92](EntityIsValid__02320764,func) found in global overlay_29_02320764.o
+                                                                                             92](ov29_022FFB90,func) found in global overlay_29_022FF958.o
+                                                                                              93](ExclusiveItemEffectIsActive__022FFF28,func) found in global overlay_29_022FFF28.o
+                                                                                              93](GetSpeedStatus,func) found in global main_0205283C.o
                                                                                              92](EntityIsValid__0232017C,func) found in global overlay_29_0232017C.o
                                                                                             91](GetEntityMoveTargetAndRange,func) found in global overlay_29_0231ACAC.o
                                                                                              92](GetMoveTargetAndRange,func) found in global moves_2.o
@@ -769,6 +774,7 @@
                                                                                                            106](IsMonster__02318AB0,func) found in global overlay_29_02318AB0.o
                                                                                                           105](ov29_0231EDFC,func) found in global overlay_29_0231EDFC.o
                                                                                                            106](EntityIsValid__0231F570,func) found in global overlay_29_0231F570.o
+                                                                                                           106](ov29_022E9298,func) found in global overlay_29_022E9298.o
                                                                                                           105](GetSize,func) found in global main_0205283C.o
                                                                                                           105](TryDrought,func) found in global overlay_29_0231F594.o
                                                                                                            106](EntityIsValid__0231FBFC,func) found in global overlay_29_0231FBFC.o
@@ -34720,44 +34726,45 @@
   022E3DDC 00000000 .text   $d	(overlay_29_022E1AD4.o)
   022E3DE0 000000C4 .text   CanSeeTarget	(dungeon_visibility.o)
   022E3DE0 00000000 .text   $a	(dungeon_visibility.o)
-  022E3EA4 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E3EA4 000000C4 .text   CanTargetEntity	(overlay_29_022E2810.o)
-  022E3EA4 00000AB4 .text   .text	(overlay_29_022E2810.o)
-  022E3F68 0000005C .text   ov29_022E28D4	(overlay_29_022E2810.o)
-  022E3FC4 00000024 .text   ov29_022E2930	(overlay_29_022E2810.o)
-  022E3FE8 00000024 .text   CanTargetPosition	(overlay_29_022E2810.o)
-  022E400C 000000C0 .text   PopulateActiveMonsterPtrs	(overlay_29_022E2810.o)
-  022E40C8 00000000 .text   $d	(overlay_29_022E2810.o)
-  022E40CC 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E40CC 00000040 .text   GetTeamMemberIndex	(overlay_29_022E2810.o)
-  022E4108 00000000 .text   $d	(overlay_29_022E2810.o)
-  022E410C 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E410C 00000060 .text   ov29_022E2A78	(overlay_29_022E2810.o)
-  022E4168 00000000 .text   $d	(overlay_29_022E2810.o)
-  022E416C 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E416C 00000090 .text   SubstitutePlaceholderStringTags	(overlay_29_022E2810.o)
-  022E41F8 00000000 .text   $d	(overlay_29_022E2810.o)
-  022E41FC 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E41FC 00000104 .text   ov29_022E2B68	(overlay_29_022E2810.o)
-  022E42F0 00000000 .text   $d	(overlay_29_022E2810.o)
-  022E4300 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E4300 00000034 .text   ov29_022E2C6C	(overlay_29_022E2810.o)
-  022E4330 00000000 .text   $d	(overlay_29_022E2810.o)
-  022E4334 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E4334 0000009C .text   ov29_022E2CA0	(overlay_29_022E2810.o)
-  022E43C8 00000000 .text   $d	(overlay_29_022E2810.o)
-  022E43D0 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E43D0 0000009C .text   ov29_022E2D3C	(overlay_29_022E2810.o)
-  022E4464 00000000 .text   $d	(overlay_29_022E2810.o)
-  022E446C 00000058 .text   ov29_022E2DFC	(overlay_29_022E2810.o)
-  022E446C 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E44C0 00000000 .text   $d	(overlay_29_022E2810.o)
-  022E44C4 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E44C4 00000070 .text   PointCameraToMonster	(overlay_29_022E2810.o)
-  022E4530 00000000 .text   $d	(overlay_29_022E2810.o)
-  022E4534 00000000 .text   $a	(overlay_29_022E2810.o)
-  022E4534 00000424 .text   UpdateCamera	(overlay_29_022E2810.o)
-  022E494C 00000000 .text   $d	(overlay_29_022E2810.o)
+  022E3EA4 000000C4 .text   CanTargetEntity	(dungeon_visibility.o)
+  022E3EA4 00000000 .text   $a	(dungeon_visibility.o)
+  022E3F68 000009F0 .text   .text	(overlay_29_022E28D4.o)
+  022E3F68 0000005C .text   ov29_022E28D4	(overlay_29_022E28D4.o)
+  022E3F68 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E3FC4 00000024 .text   ov29_022E2930	(overlay_29_022E28D4.o)
+  022E3FE8 00000024 .text   CanTargetPosition	(overlay_29_022E28D4.o)
+  022E400C 000000C0 .text   PopulateActiveMonsterPtrs	(overlay_29_022E28D4.o)
+  022E40C8 00000000 .text   $d	(overlay_29_022E28D4.o)
+  022E40CC 00000040 .text   GetTeamMemberIndex	(overlay_29_022E28D4.o)
+  022E40CC 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E4108 00000000 .text   $d	(overlay_29_022E28D4.o)
+  022E410C 00000060 .text   ov29_022E2A78	(overlay_29_022E28D4.o)
+  022E410C 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E4168 00000000 .text   $d	(overlay_29_022E28D4.o)
+  022E416C 00000090 .text   SubstitutePlaceholderStringTags	(overlay_29_022E28D4.o)
+  022E416C 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E41F8 00000000 .text   $d	(overlay_29_022E28D4.o)
+  022E41FC 00000104 .text   ov29_022E2B68	(overlay_29_022E28D4.o)
+  022E41FC 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E42F0 00000000 .text   $d	(overlay_29_022E28D4.o)
+  022E4300 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E4300 00000034 .text   ov29_022E2C6C	(overlay_29_022E28D4.o)
+  022E4330 00000000 .text   $d	(overlay_29_022E28D4.o)
+  022E4334 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E4334 0000009C .text   ov29_022E2CA0	(overlay_29_022E28D4.o)
+  022E43C8 00000000 .text   $d	(overlay_29_022E28D4.o)
+  022E43D0 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E43D0 0000009C .text   ov29_022E2D3C	(overlay_29_022E28D4.o)
+  022E4464 00000000 .text   $d	(overlay_29_022E28D4.o)
+  022E446C 00000058 .text   ov29_022E2DFC	(overlay_29_022E28D4.o)
+  022E446C 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E44C0 00000000 .text   $d	(overlay_29_022E28D4.o)
+  022E44C4 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E44C4 00000070 .text   PointCameraToMonster	(overlay_29_022E28D4.o)
+  022E4530 00000000 .text   $d	(overlay_29_022E28D4.o)
+  022E4534 00000000 .text   $a	(overlay_29_022E28D4.o)
+  022E4534 00000424 .text   UpdateCamera	(overlay_29_022E28D4.o)
+  022E494C 00000000 .text   $d	(overlay_29_022E28D4.o)
   022E4958 00000024 .text   EntityIsValid__022E32E8	(dg_camera.o)
   022E4958 00000000 .text   $a	(dg_camera.o)
   022E497C 00000030 .text   ItemIsActive__022E330C	(dg_camera.o)
@@ -35334,20 +35341,22 @@
   022EA734 00000000 .text   $a	(dungeon_range.o)
   022EA734 000000D8 .text   IsPositionActuallyInSight	(dungeon_range.o)
   022EA808 00000000 .text   $d	(dungeon_range.o)
-  022EA80C 000000F4 .text   IsPositionInSight	(overlay_29_022E91A4.o)
-  022EA80C 00000000 .text   $a	(overlay_29_022E91A4.o)
-  022EA80C 00000450 .text   .text	(overlay_29_022E91A4.o)
-  022EA8FC 00000000 .text   $d	(overlay_29_022E91A4.o)
-  022EA900 00000000 .text   $a	(overlay_29_022E91A4.o)
-  022EA900 000000C4 .text   ov29_022E9298	(overlay_29_022E91A4.o)
-  022EA9C0 00000000 .text   $d	(overlay_29_022E91A4.o)
-  022EA9C4 0000012C .text   IsPositionWithinTwoTiles	(overlay_29_022E91A4.o)
-  022EA9C4 00000000 .text   $a	(overlay_29_022E91A4.o)
-  022EAAF0 000000F8 .text   ov29_022E9488	(overlay_29_022E91A4.o)
-  022EABC4 00000000 .text   $d	(overlay_29_022E91A4.o)
-  022EABE8 00000074 .text   GetLeader	(overlay_29_022E91A4.o)
-  022EABE8 00000000 .text   $a	(overlay_29_022E91A4.o)
-  022EAC54 00000000 .text   $d	(overlay_29_022E91A4.o)
+  022EA80C 00000000 .text   $a	(dungeon_range.o)
+  022EA80C 000000F4 .text   IsPositionInSight	(dungeon_range.o)
+  022EA8FC 00000000 .text   $d	(dungeon_range.o)
+  022EA900 00000000 .text   $a	(overlay_29_022E9298.o)
+  022EA900 000000C4 .text   .text	(overlay_29_022E9298.o)
+  022EA900 000000C4 .text   ov29_022E9298	(overlay_29_022E9298.o)
+  022EA9C0 00000000 .text   $d	(overlay_29_022E9298.o)
+  022EA9C4 0000012C .text   IsPositionWithinTwoTiles	(dungeon_range_2.o)
+  022EA9C4 00000000 .text   $a	(dungeon_range_2.o)
+  022EAAF0 0000016C .text   .text	(overlay_29_022E9488.o)
+  022EAAF0 000000F8 .text   ov29_022E9488	(overlay_29_022E9488.o)
+  022EAAF0 00000000 .text   $a	(overlay_29_022E9488.o)
+  022EABC4 00000000 .text   $d	(overlay_29_022E9488.o)
+  022EABE8 00000000 .text   $a	(overlay_29_022E9488.o)
+  022EABE8 00000074 .text   GetLeader	(overlay_29_022E9488.o)
+  022EAC54 00000000 .text   $d	(overlay_29_022E9488.o)
   022EAC5C 00000024 .text   EntityIsValid__022E95F4	(dg_uty.o)
   022EAC5C 00000000 .text   $a	(dg_uty.o)
   022EAC80 00000000 .text   $a	(overlay_29_022E9618.o)
@@ -35802,7 +35811,7 @@
   022F1070 00000008 .text   DebugRecruitingEnabled	(overlay_29_022EFA6C.o)
   022F1078 00000074 .text   TryActivateIqBooster	(overlay_29_022EFA6C.o)
   022F10E4 00000000 .text   $d	(overlay_29_022EFA6C.o)
-  022F10EC 0000001C .text   IsLoneOutlaw	(dungeon_logic_6.o)
+  022F10EC 0000001C .text   IsBehaviorLoneOutlaw	(dungeon_logic_6.o)
   022F10EC 00000000 .text   $a	(dungeon_logic_6.o)
   022F1108 0000001C .text   IsSecretBazaarNpcBehavior	(dungeon_logic_6.o)
   022F1108 00000000 .text   $a	(dungeon_logic_6.o)
@@ -36276,7 +36285,7 @@
   022FD15C 00000074 .text   ov29_022FBC94	(overlay_29_022FBB1C.o)
   022FD1CC 00000000 .text   $d	(overlay_29_022FBB1C.o)
   022FD1D0 00000000 .text   $a	(dungeon_logic_7.o)
-  022FD1D0 00000010 .text   IsLoneOutlawVeneer	(dungeon_logic_7.o)
+  022FD1D0 00000010 .text   IsMonsterLoneOutlaw	(dungeon_logic_7.o)
   022FD1DC 00000000 .text   $d	(dungeon_logic_7.o)
   022FD1E0 00000000 .text   $a	(dungeon_logic_7.o)
   022FD1E0 00000014 .text   IsSecretBazaarNpc	(dungeon_logic_7.o)
@@ -36392,15 +36401,16 @@
   02300B54 00000154 .text   ov29_022FF764	(overlay_29_022FF6C4.o)
   02300CA8 00000030 .text   ItemIsActive__022FF898	(overlay_29_022FF898.o)
   02300CA8 00000000 .text   $a	(overlay_29_022FF898.o)
-  02300CD8 00000000 .text   $a	(overlay_29_022FF8C8.o)
-  02300CD8 00000680 .text   .text	(overlay_29_022FF8C8.o)
-  02300CD8 00000050 .text   CanMoveThroughWalls	(overlay_29_022FF8C8.o)
-  02300D28 0000015C .text   ov29_022FF958	(overlay_29_022FF8C8.o)
-  02300E84 000000FC .text   ov29_022FFA94	(overlay_29_022FF8C8.o)
-  02300F80 0000012C .text   ov29_022FFB90	(overlay_29_022FF8C8.o)
-  023010AC 00000178 .text   CannotStandOnTile	(overlay_29_022FF8C8.o)
-  02301224 00000134 .text   CalcSpeedStage	(overlay_29_022FF8C8.o)
-  02301348 00000000 .text   $d	(overlay_29_022FF8C8.o)
+  02300CD8 00000050 .text   CanMoveThroughWalls	(dungeon_logic_8.o)
+  02300CD8 00000000 .text   $a	(dungeon_logic_8.o)
+  02300D28 0000015C .text   ov29_022FF958	(overlay_29_022FF958.o)
+  02300D28 00000630 .text   .text	(overlay_29_022FF958.o)
+  02300D28 00000000 .text   $a	(overlay_29_022FF958.o)
+  02300E84 000000FC .text   ov29_022FFA94	(overlay_29_022FF958.o)
+  02300F80 0000012C .text   ov29_022FFB90	(overlay_29_022FF958.o)
+  023010AC 00000178 .text   CannotStandOnTile	(overlay_29_022FF958.o)
+  02301224 00000134 .text   CalcSpeedStage	(overlay_29_022FF958.o)
+  02301348 00000000 .text   $d	(overlay_29_022FF958.o)
   02301358 00000024 .text   ExclusiveItemEffectIsActive__022FFF28	(overlay_29_022FFF28.o)
   02301358 00000000 .text   $a	(overlay_29_022FFF28.o)
   0230137C 00000198 .text   .text	(overlay_29_022FFF4C.o)
@@ -41215,5 +41225,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Tue Oct 28 21:50:02 2025
-# Link end time: Tue Oct 28 21:50:03 2025
+# Link start time: Tue Oct 28 21:59:32 2025
+# Link end time: Tue Oct 28 21:59:32 2025
