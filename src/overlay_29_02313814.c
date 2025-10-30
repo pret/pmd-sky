@@ -12,6 +12,12 @@ extern void ov29_022E4DCC(struct entity *pokemon, struct StatIndex);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void UpdateStatusIconFlags(struct entity *);
 
+#ifdef JAPAN
+#define LOWER_DEFENSIVE_STAT_OFFSET -0x2C0
+#else
+#define LOWER_DEFENSIVE_STAT_OFFSET 0
+#endif // JAPAN
+
 void LowerDefensiveStat(struct entity *pokemon, struct entity *target, struct StatIndex stat, s32 nStagesRaw, bool8 checkProtected, bool8 logMsgProtected)
 {
     struct monster *entityInfo;
@@ -24,11 +30,11 @@ void LowerDefensiveStat(struct entity *pokemon, struct entity *target, struct St
         return;
 
     if (stat.id != 0) {
-        CopyStringFromId(buffer1, 0xdc9);
+        CopyStringFromId(buffer1, 0xdc9 + LOWER_DEFENSIVE_STAT_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
     else {
-        CopyStringFromId(buffer1, 0xdc8);
+        CopyStringFromId(buffer1, 0xdc8 + LOWER_DEFENSIVE_STAT_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
 
@@ -45,11 +51,11 @@ void LowerDefensiveStat(struct entity *pokemon, struct entity *target, struct St
         nStages *= 2;
 
     if (nStages == 1) {
-        CopyStringFromId(buffer2, 0xdcd);
+        CopyStringFromId(buffer2, 0xdcd + LOWER_DEFENSIVE_STAT_OFFSET);
         SetMessageLogPreprocessorArgsString(2, buffer2);
     }
     else {
-        CopyStringFromId(buffer2, 0xdcc);
+        CopyStringFromId(buffer2, 0xdcc + LOWER_DEFENSIVE_STAT_OFFSET);
         SetMessageLogPreprocessorArgsString(2, buffer2);
     }
 
@@ -61,10 +67,10 @@ void LowerDefensiveStat(struct entity *pokemon, struct entity *target, struct St
 
     if (entityInfo->stat_modifiers.defensive_stages[stat.id] != newStage) {
         entityInfo->stat_modifiers.defensive_stages[stat.id] = newStage;
-        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xd90);
+        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xd90 + LOWER_DEFENSIVE_STAT_OFFSET);
     }
     else {
-        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xdd7);
+        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xdd7 + LOWER_DEFENSIVE_STAT_OFFSET);
     }
     UpdateStatusIconFlags(target);
 }
