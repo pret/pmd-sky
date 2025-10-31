@@ -14,6 +14,12 @@ extern void ov29_022E4D28(struct entity *pokemon, struct StatIndex);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void UpdateStatusIconFlags(struct entity *);
 
+#ifdef JAPAN
+#define JPN_MSG_OFFSET -0x2C0
+#else
+#define JPN_MSG_OFFSET 0
+#endif // JAPAN
+
 void LowerOffensiveStat(struct entity *pokemon, struct entity *target, struct StatIndex stat, s32 nStagesRaw, bool8 checkProtected, bool8 logMsgProtected)
 {
     struct monster *entityInfo;
@@ -26,11 +32,11 @@ void LowerOffensiveStat(struct entity *pokemon, struct entity *target, struct St
         return;
 
     if (stat.id != 0) {
-        CopyStringFromId(buffer1, 0xdcb);
+        CopyStringFromId(buffer1, 0xdcb + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
     else {
-        CopyStringFromId(buffer1, 0xdca);
+        CopyStringFromId(buffer1, 0xdca + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
 
@@ -40,13 +46,17 @@ void LowerOffensiveStat(struct entity *pokemon, struct entity *target, struct St
 
         if (ItemIsActive__02311BF8(target, ITEM_TWIST_BAND)) {
             SubstitutePlaceholderStringTags(0,target,0);
-            LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xdb2);
+            LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xdb2 + JPN_MSG_OFFSET);
             return;
         }
 
+        #ifdef JAPAN
+        if (DefenderAbilityIsActive__02311B94(pokemon, target, ABILITY_HYPER_CUTTER) && stat.id == STAT_INDEX_PHYSICAL) {
+        #else
         if (DefenderAbilityIsActive__02311B94(pokemon, target, ABILITY_HYPER_CUTTER, TRUE) && stat.id == STAT_INDEX_PHYSICAL) {
+        #endif
             SubstitutePlaceholderStringTags(0,target,0);
-            LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xd9e);
+            LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xd9e + JPN_MSG_OFFSET);
             return;
         }
     }
@@ -59,11 +69,11 @@ void LowerOffensiveStat(struct entity *pokemon, struct entity *target, struct St
         nStages *= 2;
 
     if (nStages == 1) {
-        CopyStringFromId(buffer2, 0xdcd);
+        CopyStringFromId(buffer2, 0xdcd + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(2, buffer2);
     }
     else {
-        CopyStringFromId(buffer2, 0xdcc);
+        CopyStringFromId(buffer2, 0xdcc + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(2, buffer2);
     }
 
@@ -75,19 +85,13 @@ void LowerOffensiveStat(struct entity *pokemon, struct entity *target, struct St
 
     if (entityInfo->stat_modifiers.offensive_stages[stat.id] != newStage) {
         entityInfo->stat_modifiers.offensive_stages[stat.id] = newStage;
-        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xd91);
+        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xd91 + JPN_MSG_OFFSET);
     }
     else {
-        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xdd9);
+        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xdd9 + JPN_MSG_OFFSET);
     }
     UpdateStatusIconFlags(target);
 }
-
-#ifdef JAPAN
-#define LOWER_DEFENSIVE_STAT_OFFSET -0x2C0
-#else
-#define LOWER_DEFENSIVE_STAT_OFFSET 0
-#endif // JAPAN
 
 void LowerDefensiveStat(struct entity *pokemon, struct entity *target, struct StatIndex stat, s32 nStagesRaw, bool8 checkProtected, bool8 logMsgProtected)
 {
@@ -101,11 +105,11 @@ void LowerDefensiveStat(struct entity *pokemon, struct entity *target, struct St
         return;
 
     if (stat.id != 0) {
-        CopyStringFromId(buffer1, 0xdc9 + LOWER_DEFENSIVE_STAT_OFFSET);
+        CopyStringFromId(buffer1, 0xdc9 + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
     else {
-        CopyStringFromId(buffer1, 0xdc8 + LOWER_DEFENSIVE_STAT_OFFSET);
+        CopyStringFromId(buffer1, 0xdc8 + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
     }
 
@@ -122,11 +126,11 @@ void LowerDefensiveStat(struct entity *pokemon, struct entity *target, struct St
         nStages *= 2;
 
     if (nStages == 1) {
-        CopyStringFromId(buffer2, 0xdcd + LOWER_DEFENSIVE_STAT_OFFSET);
+        CopyStringFromId(buffer2, 0xdcd + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(2, buffer2);
     }
     else {
-        CopyStringFromId(buffer2, 0xdcc + LOWER_DEFENSIVE_STAT_OFFSET);
+        CopyStringFromId(buffer2, 0xdcc + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(2, buffer2);
     }
 
@@ -138,10 +142,10 @@ void LowerDefensiveStat(struct entity *pokemon, struct entity *target, struct St
 
     if (entityInfo->stat_modifiers.defensive_stages[stat.id] != newStage) {
         entityInfo->stat_modifiers.defensive_stages[stat.id] = newStage;
-        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xd90 + LOWER_DEFENSIVE_STAT_OFFSET);
+        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xd90 + JPN_MSG_OFFSET);
     }
     else {
-        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xdd7 + LOWER_DEFENSIVE_STAT_OFFSET);
+        LogMessageByIdWithPopupCheckUserTarget(pokemon,target,0xdd7 + JPN_MSG_OFFSET);
     }
     UpdateStatusIconFlags(target);
 }
