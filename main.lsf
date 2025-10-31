@@ -542,7 +542,6 @@ Overlay OVY_29
 	Object src/overlay_29_02311BF8.o
 	Object asm/overlay_29_02311C28.o
 	Object src/overlay_29_02313814.o
-	Object asm/overlay_29_02313B08.o
 	Object src/move_orb_effects.o
 	Object asm/overlay_29_02313CE4.o
 	Object src/overlay_29_023147EC.o
