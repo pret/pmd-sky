@@ -35,7 +35,11 @@
 .public GetLanguage
 .public GetThrownItemQuantityLimit
 .public HandleSir0Translation
+.public InitItem
+.public IsAuraBow
 .public IsItemValid
+.public IsShoppableItem
+.public IsThrownItem
 .public ITEM_DATA_TABLE_PTRS
 .public ITEM_TABLES_PTRS_1
 .public LoadFileFromRom
