@@ -1,86 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204BCAC.inc"
+	.include "main_0204BD98.inc"
 
 	.text
-
-	arm_func_start sub_0204BCAC
-sub_0204BCAC: ; 0x0204BCAC
-	stmdb sp!, {r3, lr}
-	sub sp, sp, #8
-	cmp r2, #0xb
-	addls pc, pc, r2, lsl #2
-	b _0204BD68
-_0204BCC0: ; jump table
-	b _0204BCF0 ; case 0
-	b _0204BCF8 ; case 1
-	b _0204BD00 ; case 2
-	b _0204BD08 ; case 3
-	b _0204BD14 ; case 4
-	b _0204BD1C ; case 5
-	b _0204BD28 ; case 6
-	b _0204BD30 ; case 7
-	b _0204BD38 ; case 8
-	b _0204BD40 ; case 9
-	b _0204BD4C ; case 10
-	b _0204BD5C ; case 11
-_0204BCF0:
-	mov r0, r1
-	b _0204BD88
-_0204BCF8:
-	sub r0, r0, r1
-	b _0204BD88
-_0204BD00:
-	add r0, r0, r1
-	b _0204BD88
-_0204BD08:
-	mul r1, r0, r1
-	mov r0, r1
-	b _0204BD88
-_0204BD14:
-	bl _s32_div_f
-	b _0204BD88
-_0204BD1C:
-	bl _s32_div_f
-	mov r0, r1
-	b _0204BD88
-_0204BD28:
-	and r0, r0, r1
-	b _0204BD88
-_0204BD30:
-	orr r0, r0, r1
-	b _0204BD88
-_0204BD38:
-	eor r0, r0, r1
-	b _0204BD88
-_0204BD40:
-	mov r2, #1
-	orr r0, r0, r2, lsl r1
-	b _0204BD88
-_0204BD4C:
-	mov r2, #1
-	mvn r1, r2, lsl r1
-	and r0, r0, r1
-	b _0204BD88
-_0204BD5C:
-	mov r0, r1
-	bl RandInt
-	b _0204BD88
-_0204BD68:
-	ldr r1, _0204BD90 ; =_0209CEAC
-	add r0, sp, #0
-	ldr r3, [r1, #4]
-	ldr ip, [r1]
-	ldr r1, _0204BD94 ; =_0209CF28
-	str ip, [sp]
-	str r3, [sp, #4]
-	bl Debug_FatalError
-_0204BD88:
-	add sp, sp, #8
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0204BD90: .word _0209CEAC
-_0204BD94: .word _0209CF28
-	arm_func_end sub_0204BCAC
 
 	arm_func_start sub_0204BD98
 sub_0204BD98: ; 0x0204BD98
@@ -162,7 +83,7 @@ _0204BE88:
 	and r0, r2, #0xff
 	b _0204BEBC
 _0204BE9C:
-	ldr r1, _0204BEC4 ; =_0209CEAC
+	ldr r1, _0204BEC4 ; =EVENT_FLAG_PROG_POS_INFO
 	add r0, sp, #0
 	ldr r3, [r1, #0xc]
 	ldr ip, [r1, #8]
@@ -174,16 +95,16 @@ _0204BEBC:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204BEC4: .word _0209CEAC
+_0204BEC4: .word EVENT_FLAG_PROG_POS_INFO
 _0204BEC8: .word _0209CF48
 	arm_func_end sub_0204BD98
 
 	arm_func_start sub_0204BECC
 sub_0204BECC: ; 0x0204BECC
-	ldr ip, _0204BED4 ; =sub_0204BCAC
+	ldr ip, _0204BED4 ; =FlagCalc
 	bx ip
 	.align 2, 0
-_0204BED4: .word sub_0204BCAC
+_0204BED4: .word FlagCalc
 	arm_func_end sub_0204BECC
 
 	arm_func_start sub_0204BED8
@@ -196,7 +117,7 @@ sub_0204BED8: ; 0x0204BED8
 	bl LoadScriptVariableValue
 	mov r1, r5
 	mov r2, r4
-	bl sub_0204BCAC
+	bl FlagCalc
 	mov r2, r0
 	mov r0, r7
 	mov r1, r6
@@ -219,7 +140,7 @@ sub_0204BF10: ; 0x0204BF10
 	mov r1, r0
 	mov r0, r4
 	mov r2, r5
-	bl sub_0204BCAC
+	bl FlagCalc
 	mov r2, r0
 	mov r0, r8
 	mov r1, r7
