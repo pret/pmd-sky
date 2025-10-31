@@ -1,9 +1,7 @@
 #pragma once
 .public AbilityIsActiveVeneer
-.public AllocateTemp1024ByteBufferFromPool
 .public CalcStatusDuration
 .public ChangeShayminForme
-.public CopyStringFromId
 .public DIRECTIONS_XY
 .public DUNGEON_PTR
 .public DefenderAbilityIsActive__02311B94
@@ -15,13 +13,11 @@
 .public GetTreatmentBetweenMonstersIgnoreStatus
 .public IsProtectedFromNegativeStatus
 .public IsProtectedFromSleepClassStatus
-.public IsProtectedFromStatDrops
 .public ItemIsActive__02311BF8
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MonsterIsType
 .public SECONDARY_TERRAIN_TYPES
 .public SafeguardIsActive
-.public SetMessageLogPreprocessorArgsString
 .public SetPreprocessorArgsIdVal
 .public SetPreprocessorArgsStringToName
 .public SubstitutePlaceholderStringTags
@@ -53,7 +49,6 @@
 .public ov29_022E4C00
 .public ov29_022E4C4C
 .public ov29_022E4D24
-.public ov29_022E4D28
 .public ov29_022E53EC
 .public ov29_02304A48
 .public ov29_02304A84
