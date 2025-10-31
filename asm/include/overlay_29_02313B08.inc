@@ -7,5 +7,4 @@
 .public SetMessageLogPreprocessorArgsString
 .public SubstitutePlaceholderStringTags
 .public UpdateStatusIconFlags
-.public ov29_022E4E74
 .public ov29_022E4F1C
