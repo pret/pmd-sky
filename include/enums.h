@@ -3441,4 +3441,19 @@ enum game_mode
     // Possibly more?
 };
 
+enum FlagCalcOperation {
+    CALC_SET = 0,
+    CALC_SUB = 1,
+    CALC_ADD = 2,
+    CALC_MUL = 3,
+    CALC_DIV = 4,
+    CALC_MOD = 5,
+    CALC_AND = 6,
+    CALC_OR = 7,
+    CALC_XOR = 8,
+    CALC_SETBIT = 9,
+    CALC_CLEARBIT = 10,
+    CALC_RANDOM = 11,
+};
+
 #endif //PMDSKY_ENUMS_H

@@ -1,4 +1,6 @@
+#include "debug.h"
 #include "enums.h"
+#include "main_0200224C.h"
 #include "scripting.h"
 
 // Global script variable definitions
@@ -23,6 +25,9 @@ extern s32 SetNotifyNote(s32 arg0);
 extern s32 sub_0204C928(s32 arg0);
 
 const short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
+
+extern struct prog_pos_info EVENT_FLAG_PROG_POS_INFO;
+extern u8 EVENT_FLAG_EXPANSION_ERROR;
 
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     union script_var_value sv_val_local[],
@@ -357,4 +362,40 @@ s32 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], enum script_
     }
 
     return 1;
+}
+
+s32 FlagCalc(s32 param_1, s32 param_2, enum FlagCalcOperation operation)
+{
+    switch (operation) {
+        case CALC_SET:
+            return param_2;
+        case CALC_SUB:
+            return param_1 - param_2;
+        case CALC_ADD:
+            return param_1 + param_2;
+        case CALC_MUL:
+            return param_1 * param_2;
+        case CALC_DIV:
+            return param_1 / param_2;
+        case CALC_MOD:
+            return param_1 % param_2;
+        case CALC_AND:
+            return param_1 & param_2;
+        case CALC_OR:
+            return param_1 | param_2;
+        case CALC_XOR:
+            return param_1 ^ param_2;
+        case CALC_SETBIT:
+            return (1 << param_2) | param_1;
+        case CALC_CLEARBIT:
+            return param_1 & ~(1 << param_2);
+        case CALC_RANDOM:
+            return RandInt(param_2);
+        default:
+            // EVENT_FLAG_PROG_POS_INFO contains a pointer to the filename event_flag.c
+            // and a line number of 1001
+            struct prog_pos_info prog_pos_info = EVENT_FLAG_PROG_POS_INFO;
+            // EVENT_FLAG_EXPANSION_ERROR contains the string "event flag expansion error %d"
+            Debug_FatalError(&prog_pos_info, &EVENT_FLAG_EXPANSION_ERROR, operation);
+    }
 }
