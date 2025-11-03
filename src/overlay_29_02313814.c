@@ -15,6 +15,7 @@ extern void ov29_022E4F1C(struct entity *user, struct StatIndex);
 extern void ov29_022E4D28(struct entity *user, struct StatIndex);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void UpdateStatusIconFlags(struct entity *);
+extern void ov29_022E4338(struct entity *);
 
 #ifdef JAPAN
 #define JPN_MSG_OFFSET -0x2C0
@@ -254,7 +255,7 @@ void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatI
     UpdateStatusIconFlags(target);
 }
 
-enum flash_fire_status FlashFireShouldActivate(struct entity *attacker, struct entity *defender)
+enum flash_fire_status GetFlashFireStatus(struct entity *attacker, struct entity *defender)
 {
     if (!EntityIsValid__023118B4(defender))
         return FLASH_FIRE_STATUS_NONE;
@@ -273,4 +274,23 @@ enum flash_fire_status FlashFireShouldActivate(struct entity *attacker, struct e
         return FLASH_FIRE_STATUS_MAXED;
 
     return FLASH_FIRE_STATUS_NOT_MAXED;
+}
+
+void ActivateFlashFire(struct entity *pokemon, struct entity *target)
+{
+    s32 flashFireBoost;
+
+    if (EntityIsValid__023118B4(target)) {
+        struct monster * entityInfo = GetEntInfo(target);
+        SubstitutePlaceholderStringTags(0,target,0);
+        flashFireBoost = entityInfo->stat_modifiers.flash_fire_boost;
+        if (++flashFireBoost >= 2) {
+            flashFireBoost = 2;
+        }
+        if (entityInfo->stat_modifiers.flash_fire_boost != flashFireBoost) {
+            entityInfo->stat_modifiers.flash_fire_boost = flashFireBoost;
+            ov29_022E4338(target);
+        }
+        UpdateStatusIconFlags(target);
+    }
 }

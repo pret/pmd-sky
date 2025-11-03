@@ -1132,7 +1132,7 @@ _0230CB78:
 	bne _0230CC78
 	mov r0, sl
 	mov r1, sb
-	bl FlashFireShouldActivate
+	bl GetFlashFireStatus
 	movs r4, r0
 	beq _0230CC78
 	ldrb r0, [r7, #0x15c + CALC_DAMAGE_OFFSET]

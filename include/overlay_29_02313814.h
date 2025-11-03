@@ -25,6 +25,7 @@ void BoostOffensiveStat(struct entity *user, struct entity *target, struct StatI
 void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 nStagesRaw);
 // Checks whether Flash Fire should activate, assuming the defender is being hit by a Fire-type move.
 // This checks that the defender is valid and Flash Fire is active, and that Normalize isn't active on the attacker.
-enum flash_fire_status FlashFireShouldActivate(struct entity *attacker, struct entity *defender);
+enum flash_fire_status GetFlashFireStatus(struct entity *attacker, struct entity *defender);
+void ActivateFlashFire(struct entity *pokemon, struct entity *target);
 
 #endif //PMDSKY_OVERLAY_29_02313814_H

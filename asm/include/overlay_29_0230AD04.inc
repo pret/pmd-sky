@@ -11,7 +11,7 @@
 .public ExclusiveItemEffectIsActive__0230A9B8
 .public FixedPoint32To64
 .public FixedPoint64IsZero
-.public FlashFireShouldActivate
+.public GetFlashFireStatus
 .public GetApparentWeather
 .public GetTypeMatchup
 .public GhostImmunityIsActive

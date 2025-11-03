@@ -3,33 +3,6 @@
 
 	.text
 
-	arm_func_start ActivateFlashFire
-ActivateFlashFire: ; 0x02313CE4
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r1
-	mov r0, r5
-	bl EntityIsValid__023118B4
-	cmp r0, #0
-	ldmeqia sp!, {r3, r4, r5, pc}
-	mov r0, #0
-	ldr r4, [r5, #0xb4]
-	mov r1, r5
-	mov r2, r0
-	bl SubstitutePlaceholderStringTags
-	ldrsh r0, [r4, #0x30]
-	add r1, r0, #1
-	cmp r1, #2
-	movge r1, #2
-	cmp r0, r1
-	beq _02313D34
-	mov r0, r5
-	strh r1, [r4, #0x30]
-	bl ov29_022E4338
-_02313D34:
-	mov r0, r5
-	bl UpdateStatusIconFlags
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ActivateFlashFire
 
 	arm_func_start ApplyOffensiveStatMultiplier
 ApplyOffensiveStatMultiplier: ; 0x02313D40
