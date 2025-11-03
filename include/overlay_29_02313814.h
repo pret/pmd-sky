@@ -32,5 +32,6 @@ void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, st
 void ApplyDefensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage);
 void BoostHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat);
 void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat, bool8 displayMessage);
+bool8 CringeStatusTarget(struct entity *user ,struct entity *target, bool8 displayMessage, bool8 onlyCheck);
 
 #endif //PMDSKY_OVERLAY_29_02313814_H

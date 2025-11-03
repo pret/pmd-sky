@@ -2307,8 +2307,8 @@ _022E5388:
 _022E5398: .word 0x0000018D
 	arm_func_end ov29_022E52F8
 
-	arm_func_start PlayExclamationPointEffect__022E5D4C
-PlayExclamationPointEffect__022E5D4C: ; 0x022E539C
+	arm_func_start PlayCringeExclamationPointEffect
+PlayCringeExclamationPointEffect: ; 0x022E539C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -2330,7 +2330,7 @@ PlayExclamationPointEffect__022E5D4C: ; 0x022E539C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E53E8: .word 0x00000143
-	arm_func_end PlayExclamationPointEffect__022E5D4C
+	arm_func_end PlayCringeExclamationPointEffect
 
 	arm_func_start ov29_022E53EC
 ov29_022E53EC: ; 0x022E53EC

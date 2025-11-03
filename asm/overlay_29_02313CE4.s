@@ -66,7 +66,7 @@ _02314498:
 	ldrb r0, [r4, #0xd0]
 	cmp r0, #1
 	beq _02314514
-	ldr r1, _02314538 ; =ov10_022C4884
+	ldr r1, _02314538 ; =gCringeTurnRange
 	mov r2, #1
 	mov r0, r6
 	strb r2, [r4, #0xd0]
@@ -74,7 +74,7 @@ _02314498:
 	add r1, r0, #1
 	mov r0, r6
 	strb r1, [r4, #0xd1]
-	bl PlayExclamationPointEffect__022E5D4C
+	bl PlayCringeExclamationPointEffect
 	ldr r2, _0231453C ; =0x00000D02
 	mov r0, r7
 	mov r1, r6
@@ -103,7 +103,7 @@ _02314524:
 #define TRY_INFLICT_CRINGE_STATUS_OFFSET 0
 #endif
 _02314534: .word 0x00000DA2 + TRY_INFLICT_CRINGE_STATUS_OFFSET
-_02314538: .word ov10_022C4884
+_02314538: .word gCringeTurnRange
 _0231453C: .word 0x00000D02 + TRY_INFLICT_CRINGE_STATUS_OFFSET
 _02314540: .word 0x00000D03 + TRY_INFLICT_CRINGE_STATUS_OFFSET
 	arm_func_end TryInflictCringeStatus

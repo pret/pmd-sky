@@ -23,7 +23,15 @@ extern void ov29_022E52F8(struct entity *user, struct StatIndex);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void UpdateStatusIconFlags(struct entity *);
 extern void ov29_022E4338(struct entity *);
+extern void PlayCringeExclamationPointEffect(struct entity *);
 extern fx32_8 MultiplyByFixedPoint(fx32_8 a, fx32_8 b);
+extern bool8 IsProtectedFromNegativeStatus(struct entity *user ,struct entity *target, bool8 displayMessage);
+extern bool8 SafeguardIsActive(struct entity *user ,struct entity *target, bool8 displayMessage);
+extern void TryActivateSteadfast(struct entity *user ,struct entity *target);
+extern void TryActivateQuickFeet(struct entity *user ,struct entity *target);
+extern s32 CalcStatusDuration(struct entity *target, const s16 *turnRange, bool8 factorCurerSkills);
+
+extern const s16 gCringeTurnRange[2];
 
 #ifdef JAPAN
 #define JPN_MSG_OFFSET -0x2C0
@@ -532,4 +540,49 @@ void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatI
     }
 
     UpdateStatusIconFlags(target);
+}
+
+bool8 CringeStatusTarget(struct entity *user ,struct entity *target, bool8 displayMessage, bool8 onlyCheck)
+{
+    struct monster *entityInfo;
+    u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
+
+    if (!EntityIsValid__023118B4(target))
+        return FALSE;
+
+    if (SafeguardIsActive(user, target, displayMessage))
+        return FALSE;
+
+    if (IsProtectedFromNegativeStatus(user, target, displayMessage))
+        return FALSE;
+
+    #ifdef JAPAN
+    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_INNER_FOCUS)) {
+    #else
+    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_INNER_FOCUS, TRUE)) {
+    #endif
+        SubstitutePlaceholderStringTags(0,target,0);
+        if (displayMessage)
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xda2 + JPN_MSG_OFFSET);
+        return FALSE;
+    }
+
+    if (onlyCheck)
+        return TRUE;
+
+    entityInfo = GetEntInfo(target);
+    SubstitutePlaceholderStringTags(0,target,0);
+    if (entityInfo->cringe_class_status.cringe != STATUS_CRINGE_CRINGE) {
+        entityInfo->cringe_class_status.cringe = STATUS_CRINGE_CRINGE;
+        entityInfo->cringe_class_status.cringe_turns = CalcStatusDuration(target, gCringeTurnRange, TRUE) + 1;
+        PlayCringeExclamationPointEffect(target);
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xd02 + JPN_MSG_OFFSET);
+        TryActivateSteadfast(user, target);
+        TryActivateQuickFeet(user, target);
+    }
+    else {
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xd03 + JPN_MSG_OFFSET);
+    }
+    UpdateStatusIconFlags(target);
+    return TRUE;
 }

@@ -428,8 +428,8 @@ ov10_022C487C:
 	.global ov10_022C4880
 ov10_022C4880:
 	.byte 0x7F, 0x00, 0x7F, 0x00
-	.global ov10_022C4884
-ov10_022C4884:
+	.global gCringeTurnRange
+gCringeTurnRange:
 	.byte 0x01, 0x00, 0x01, 0x00
 	.global SPEED_BOOST_TURN_RANGE
 SPEED_BOOST_TURN_RANGE:

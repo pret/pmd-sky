@@ -16,7 +16,7 @@
 .public ItemIsActive__02311BF8
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MultiplyByFixedPoint
-.public ov10_022C4884
+.public gCringeTurnRange
 .public ov10_022C4894
 .public ov29_022E4240
 .public ov29_022E4338
@@ -27,7 +27,7 @@
 .public ov29_022E5258
 .public ov29_022E52F8
 .public GetTreatmentBetweenMonstersIgnoreStatus
-.public PlayExclamationPointEffect__022E5D4C
+.public PlayCringeExclamationPointEffect
 .public PrepareItemForPrinting__02345728
 .public SafeguardIsActive
 .public SetMessageLogPreprocessorArgsString
