@@ -9,10 +9,10 @@ extern void CopyStringFromId(u8* buf, u32 string_id);
 extern void SetMessageLogPreprocessorArgsString(u32 a, u8 *buf);
 extern bool8 IsProtectedFromStatDrops(struct entity *user, struct entity *target, bool8 logMsg);
 extern void SubstitutePlaceholderStringTags(int a, struct entity *entity, u32 param_3);
-extern void ov29_022E4E74(struct entity *user, struct StatIndex);
-extern void ov29_022E4DCC(struct entity *user, struct StatIndex);
-extern void ov29_022E4F1C(struct entity *user, struct StatIndex);
-extern void ov29_022E4D28(struct entity *user, struct StatIndex);
+extern void PlayOffensiveStatUpEffect(struct entity *user, struct StatIndex);
+extern void PlayDefensiveStatDownEffect(struct entity *user, struct StatIndex);
+extern void PlayDefensiveStatUpEffect(struct entity *user, struct StatIndex);
+extern void PlayOffensiveStatDownEffect(struct entity *user, struct StatIndex);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void UpdateStatusIconFlags(struct entity *);
 extern void ov29_022E4338(struct entity *);
@@ -66,7 +66,7 @@ void LowerOffensiveStat(struct entity *user, struct entity *target, struct StatI
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    ov29_022E4D28(target,stat);
+    PlayOffensiveStatDownEffect(target,stat);
 
     if (AbilityIsActiveVeneer(target, ABILITY_SIMPLE))
         nStages *= 2;
@@ -123,7 +123,7 @@ void LowerDefensiveStat(struct entity *user, struct entity *target, struct StatI
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    ov29_022E4DCC(target,stat);
+    PlayDefensiveStatDownEffect(target,stat);
 
     if (AbilityIsActiveVeneer(target, ABILITY_SIMPLE))
         nStages *= 2;
@@ -166,7 +166,7 @@ void BoostOffensiveStat(struct entity *user, struct entity *target, struct StatI
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    ov29_022E4E74(target,stat);
+    PlayOffensiveStatUpEffect(target,stat);
     if (stat.id != STAT_INDEX_PHYSICAL) {
         CopyStringFromId(buffer1, 0xdcb + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
@@ -217,7 +217,7 @@ void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatI
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    ov29_022E4F1C(target,stat);
+    PlayDefensiveStatUpEffect(target,stat);
     if (stat.id != STAT_INDEX_PHYSICAL) {
         CopyStringFromId(buffer1, 0xdc9 + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
