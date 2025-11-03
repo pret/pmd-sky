@@ -14,8 +14,12 @@ extern void PlayOffensiveStatUpEffect(struct entity *user, struct StatIndex);
 extern void PlayDefensiveStatDownEffect(struct entity *user, struct StatIndex);
 extern void PlayDefensiveStatUpEffect(struct entity *user, struct StatIndex);
 extern void PlayOffensiveStatDownEffect(struct entity *user, struct StatIndex);
-extern void ov29_022E5068(struct entity *user, struct StatIndex);
-extern void ov29_022E4FC0(struct entity *user, struct StatIndex);
+extern void PlayOffensiveStatMultiplierDownEffect(struct entity *user, struct StatIndex);
+extern void PlayOffensiveStatMultiplierUpEffect(struct entity *user, struct StatIndex);
+extern void PlayDefensiveStatMultiplierDownEffect(struct entity *user, struct StatIndex);
+extern void PlayDefensiveStatMultiplierUpEffect(struct entity *user, struct StatIndex);
+extern void ov29_022E5258(struct entity *user, struct StatIndex);
+extern void ov29_022E52F8(struct entity *user, struct StatIndex);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void UpdateStatusIconFlags(struct entity *);
 extern void ov29_022E4338(struct entity *);
@@ -346,19 +350,19 @@ void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, st
     oldMulti = entityInfo->stat_modifiers.offensive_multipliers[stat.id];
 
     if (F248LessThanInt(multiplier, 1)) {
-        ov29_022E5068(target,stat);
+        PlayOffensiveStatMultiplierDownEffect(target,stat);
     }
     else {
-        ov29_022E4FC0(target,stat);
+        PlayOffensiveStatMultiplierUpEffect(target,stat);
     }
 
     entityInfo->stat_modifiers.offensive_multipliers[stat.id] = MultiplyByFixedPoint(entityInfo->stat_modifiers.offensive_multipliers[stat.id],multiplier);
 
     if (F248LessThanFloat(entityInfo->stat_modifiers.offensive_multipliers[stat.id], 0.01)) {
-        entityInfo->stat_modifiers.offensive_multipliers[stat.id] = FloatToF248(0.01);
+        entityInfo->stat_modifiers.offensive_multipliers[stat.id] = IntToF248(0.01);
     }
     if (FloatLessThanF248(99.99, entityInfo->stat_modifiers.offensive_multipliers[stat.id])) {
-        entityInfo->stat_modifiers.offensive_multipliers[stat.id] = FloatToF248(99.99);
+        entityInfo->stat_modifiers.offensive_multipliers[stat.id] = IntToF248(99.99);
     }
 
     if (F248GreaterThan(oldMulti, entityInfo->stat_modifiers.offensive_multipliers[stat.id])) {
@@ -370,5 +374,162 @@ void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, st
     else {
         LogMessageByIdWithPopupCheckUserTarget(user,target,0xdd3 + JPN_MSG_OFFSET);
     }
+    UpdateStatusIconFlags(target);
+}
+
+void ApplyDefensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage)
+{
+    struct monster *entityInfo;
+    fx32_8 oldMulti;
+    u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
+
+    if (!EntityIsValid__023118B4(target))
+        return;
+
+    if (stat.id != STAT_INDEX_PHYSICAL) {
+        CopyStringFromId(buffer1, 0xdc9 + JPN_MSG_OFFSET);
+        SetMessageLogPreprocessorArgsString(1, buffer1);
+    }
+    else {
+        CopyStringFromId(buffer1, 0xdc8 + JPN_MSG_OFFSET);
+        SetMessageLogPreprocessorArgsString(1, buffer1);
+    }
+
+    if (F248LessThanInt(multiplier, 1) && IsProtectedFromStatDrops(user,target,displayMessage))
+        return;
+
+    entityInfo = GetEntInfo(target);
+    SubstitutePlaceholderStringTags(0,target,0);
+    oldMulti = entityInfo->stat_modifiers.defensive_multipliers[stat.id];
+
+    if (F248LessThanInt(multiplier, 1)) {
+        PlayDefensiveStatMultiplierDownEffect(target,stat);
+    }
+    else {
+        PlayDefensiveStatMultiplierUpEffect(target,stat);
+    }
+
+    entityInfo->stat_modifiers.defensive_multipliers[stat.id] = MultiplyByFixedPoint(entityInfo->stat_modifiers.defensive_multipliers[stat.id],multiplier);
+
+    if (F248LessThanFloat(entityInfo->stat_modifiers.defensive_multipliers[stat.id], 0.01)) {
+        entityInfo->stat_modifiers.defensive_multipliers[stat.id] = IntToF248(0.01);
+    }
+    if (FloatLessThanF248(99.99, entityInfo->stat_modifiers.defensive_multipliers[stat.id])) {
+        entityInfo->stat_modifiers.defensive_multipliers[stat.id] = IntToF248(99.99);
+    }
+
+    if (F248GreaterThan(oldMulti, entityInfo->stat_modifiers.defensive_multipliers[stat.id])) {
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xdcf + JPN_MSG_OFFSET);
+    }
+    else if (F248LessThan(oldMulti, entityInfo->stat_modifiers.defensive_multipliers[stat.id])) {
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xdce + JPN_MSG_OFFSET);
+    }
+    else {
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xdd2 + JPN_MSG_OFFSET);
+    }
+    UpdateStatusIconFlags(target);
+}
+
+void BoostHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat)
+{
+    struct monster *entityInfo;
+    u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
+    s16 nStages = 1;
+
+    if (!EntityIsValid__023118B4(target))
+        return;
+
+    entityInfo = GetEntInfo(target);
+    SubstitutePlaceholderStringTags(0,target,0);
+    ov29_022E5258(target,stat);
+    if (stat.id != STAT_INDEX_ACCURACY) {
+        CopyStringFromId(buffer1, 0xdc7 + JPN_MSG_OFFSET);
+        SetMessageLogPreprocessorArgsString(1, buffer1);
+    }
+    else {
+        CopyStringFromId(buffer1, 0xdc6 + JPN_MSG_OFFSET);
+        SetMessageLogPreprocessorArgsString(1, buffer1);
+    }
+
+    if (AbilityIsActiveVeneer(target, ABILITY_SIMPLE))
+        nStages *= 2;
+
+    if (entityInfo->stat_modifiers.hit_chance_stages[stat.id] < MAX_STAT_STAGE) {
+        entityInfo->stat_modifiers.hit_chance_stages[stat.id] += nStages;
+        if (entityInfo->stat_modifiers.hit_chance_stages[stat.id] > MAX_STAT_STAGE) {
+            entityInfo->stat_modifiers.hit_chance_stages[stat.id] = MAX_STAT_STAGE;
+        }
+
+        if (nStages >= 2) {
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xd95 + JPN_MSG_OFFSET);
+        }
+        else {
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xd93 + JPN_MSG_OFFSET);
+        }
+    }
+    else {
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xdd5 + JPN_MSG_OFFSET);
+    }
+
+    UpdateStatusIconFlags(target);
+}
+
+void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat, bool8 displayMessage)
+{
+    struct monster *entityInfo;
+    u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
+    s16 nStages = 1;
+
+    if (!EntityIsValid__023118B4(target))
+        return;
+
+    if (stat.id != STAT_INDEX_ACCURACY) {
+        CopyStringFromId(buffer1, 0xdc7 + JPN_MSG_OFFSET);
+        SetMessageLogPreprocessorArgsString(1, buffer1);
+    }
+    else {
+        CopyStringFromId(buffer1, 0xdc6 + JPN_MSG_OFFSET);
+        SetMessageLogPreprocessorArgsString(1, buffer1);
+    }
+
+    if (IsProtectedFromStatDrops(user,target,displayMessage))
+        return;
+
+    #ifdef JAPAN
+    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_KEEN_EYE) && stat.id == STAT_INDEX_ACCURACY) {
+    #else
+    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_KEEN_EYE, TRUE) && stat.id == STAT_INDEX_ACCURACY) {
+    #endif // JAPAN
+        if (displayMessage) {
+            SubstitutePlaceholderStringTags(0,target,0);
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xd9f + JPN_MSG_OFFSET);
+        }
+        return;
+    }
+
+    if (AbilityIsActiveVeneer(target, ABILITY_SIMPLE))
+        nStages *= 2;
+
+    entityInfo = GetEntInfo(target);
+    SubstitutePlaceholderStringTags(0,target,0);
+    ov29_022E52F8(target,stat);
+
+    if (entityInfo->stat_modifiers.hit_chance_stages[stat.id] > 0) {
+        entityInfo->stat_modifiers.hit_chance_stages[stat.id] -= nStages;
+        if (entityInfo->stat_modifiers.hit_chance_stages[stat.id] < 0) {
+            entityInfo->stat_modifiers.hit_chance_stages[stat.id] = 0;
+        }
+
+        if (nStages >= 2) {
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xd94 + JPN_MSG_OFFSET);
+        }
+        else {
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xd92 + JPN_MSG_OFFSET);
+        }
+    }
+    else {
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xdd4 + JPN_MSG_OFFSET);
+    }
+
     UpdateStatusIconFlags(target);
 }

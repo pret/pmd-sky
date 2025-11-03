@@ -2019,8 +2019,8 @@ _022E4FAC:
 _022E4FBC: .word 0x0000018E
 	arm_func_end PlayDefensiveStatUpEffect
 
-	arm_func_start ov29_022E4FC0
-ov29_022E4FC0: ; 0x022E4FC0
+	arm_func_start PlayOffensiveStatMultiplierUpEffect
+PlayOffensiveStatMultiplierUpEffect: ; 0x022E4FC0
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
@@ -2066,10 +2066,10 @@ _022E5050:
 	.align 2, 0
 _022E5060: .word 0x000001A9
 _022E5064: .word 0x00000192
-	arm_func_end ov29_022E4FC0
+	arm_func_end PlayOffensiveStatMultiplierUpEffect
 
-	arm_func_start ov29_022E5068
-ov29_022E5068: ; 0x022E5068
+	arm_func_start PlayOffensiveStatMultiplierDownEffect
+PlayOffensiveStatMultiplierDownEffect: ; 0x022E5068
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
@@ -2114,10 +2114,10 @@ _022E50F8:
 	bx lr
 	.align 2, 0
 _022E5108: .word 0x00000193
-	arm_func_end ov29_022E5068
+	arm_func_end PlayOffensiveStatMultiplierDownEffect
 
-	arm_func_start ov29_022E510C
-ov29_022E510C: ; 0x022E510C
+	arm_func_start PlayDefensiveStatMultiplierUpEffect
+PlayDefensiveStatMultiplierUpEffect: ; 0x022E510C
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
@@ -2162,10 +2162,10 @@ _022E519C:
 	bx lr
 	.align 2, 0
 _022E51AC: .word 0x0000018E
-	arm_func_end ov29_022E510C
+	arm_func_end PlayDefensiveStatMultiplierUpEffect
 
-	arm_func_start ov29_022E51B0
-ov29_022E51B0: ; 0x022E51B0
+	arm_func_start PlayDefensiveStatMultiplierDownEffect
+PlayDefensiveStatMultiplierDownEffect: ; 0x022E51B0
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
@@ -2211,7 +2211,7 @@ _022E5240:
 	.align 2, 0
 _022E5250: .word 0x0000018F
 _022E5254: .word 0x00000191
-	arm_func_end ov29_022E51B0
+	arm_func_end PlayDefensiveStatMultiplierDownEffect
 
 	arm_func_start ov29_022E5258
 ov29_022E5258: ; 0x022E5258

@@ -29,5 +29,8 @@ void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatI
 enum flash_fire_status GetFlashFireStatus(struct entity *attacker, struct entity *defender);
 void ActivateFlashFire(struct entity *pokemon, struct entity *target);
 void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage);
+void ApplyDefensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage);
+void BoostHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat);
+void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat, bool8 displayMessage);
 
 #endif //PMDSKY_OVERLAY_29_02313814_H

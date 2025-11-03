@@ -20,10 +20,10 @@
 .public ov10_022C4894
 .public ov29_022E4240
 .public ov29_022E4338
-.public ov29_022E4FC0
-.public ov29_022E5068
-.public ov29_022E510C
-.public ov29_022E51B0
+.public PlayOffensiveStatMultiplierUpEffect
+.public PlayOffensiveStatMultiplierDownEffect
+.public PlayDefensiveStatMultiplierUpEffect
+.public PlayDefensiveStatMultiplierDownEffect
 .public ov29_022E5258
 .public ov29_022E52F8
 .public GetTreatmentBetweenMonstersIgnoreStatus
