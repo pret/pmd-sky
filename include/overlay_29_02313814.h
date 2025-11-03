@@ -1,6 +1,7 @@
 #ifndef PMDSKY_OVERLAY_29_02313814_H
 #define PMDSKY_OVERLAY_29_02313814_H
 
+#include "util.h"
 #include "dungeon_mode.h"
 
 enum flash_fire_status {
@@ -27,5 +28,6 @@ void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatI
 // This checks that the defender is valid and Flash Fire is active, and that Normalize isn't active on the attacker.
 enum flash_fire_status GetFlashFireStatus(struct entity *attacker, struct entity *defender);
 void ActivateFlashFire(struct entity *pokemon, struct entity *target);
+void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage);
 
 #endif //PMDSKY_OVERLAY_29_02313814_H

@@ -3,6 +3,7 @@
 #include "overlay_29_023118B4.h"
 #include "overlay_29_02313814.h"
 #include "overlay_29_02311BF8.h"
+#include "math.h"
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern void CopyStringFromId(u8* buf, u32 string_id);
@@ -13,9 +14,12 @@ extern void PlayOffensiveStatUpEffect(struct entity *user, struct StatIndex);
 extern void PlayDefensiveStatDownEffect(struct entity *user, struct StatIndex);
 extern void PlayDefensiveStatUpEffect(struct entity *user, struct StatIndex);
 extern void PlayOffensiveStatDownEffect(struct entity *user, struct StatIndex);
+extern void ov29_022E5068(struct entity *user, struct StatIndex);
+extern void ov29_022E4FC0(struct entity *user, struct StatIndex);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void UpdateStatusIconFlags(struct entity *);
 extern void ov29_022E4338(struct entity *);
+extern fx32_8 MultiplyByFixedPoint(fx32_8 a, fx32_8 b);
 
 #ifdef JAPAN
 #define JPN_MSG_OFFSET -0x2C0
@@ -293,4 +297,78 @@ void ActivateFlashFire(struct entity *pokemon, struct entity *target)
         }
         UpdateStatusIconFlags(target);
     }
+}
+
+void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage)
+{
+    struct monster *entityInfo;
+    fx32_8 oldMulti;
+    u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
+
+    if (!EntityIsValid__023118B4(target))
+        return;
+
+    if (stat.id != STAT_INDEX_PHYSICAL) {
+        CopyStringFromId(buffer1, 0xdcb + JPN_MSG_OFFSET);
+        SetMessageLogPreprocessorArgsString(1, buffer1);
+    }
+    else {
+        CopyStringFromId(buffer1, 0xdca + JPN_MSG_OFFSET);
+        SetMessageLogPreprocessorArgsString(1, buffer1);
+    }
+
+    if (F248LessThanInt(multiplier, 1) && IsProtectedFromStatDrops(user,target,displayMessage))
+        return;
+
+    if (ItemIsActive__02311BF8(target,ITEM_TWIST_BAND) && F248LessThanInt(multiplier, 1)) {
+        SubstitutePlaceholderStringTags(0,target,0);
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xdb2 + JPN_MSG_OFFSET);
+        return;
+    }
+
+    #ifdef JAPAN
+    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_HYPER_CUTTER)
+    #else
+    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_HYPER_CUTTER, TRUE)
+    #endif // JAPAN
+        && stat.id == STAT_INDEX_PHYSICAL
+        && F248LessThanInt(multiplier, 1))
+    {
+        if (displayMessage) {
+            SubstitutePlaceholderStringTags(0,target,0);
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xd9e + JPN_MSG_OFFSET);
+        }
+        return;
+    }
+
+    entityInfo = GetEntInfo(target);
+    SubstitutePlaceholderStringTags(0,target,0);
+    oldMulti = entityInfo->stat_modifiers.offensive_multipliers[stat.id];
+
+    if (F248LessThanInt(multiplier, 1)) {
+        ov29_022E5068(target,stat);
+    }
+    else {
+        ov29_022E4FC0(target,stat);
+    }
+
+    entityInfo->stat_modifiers.offensive_multipliers[stat.id] = MultiplyByFixedPoint(entityInfo->stat_modifiers.offensive_multipliers[stat.id],multiplier);
+
+    if (F248LessThanFloat(entityInfo->stat_modifiers.offensive_multipliers[stat.id], 0.01)) {
+        entityInfo->stat_modifiers.offensive_multipliers[stat.id] = FloatToF248(0.01);
+    }
+    if (FloatLessThanF248(99.99, entityInfo->stat_modifiers.offensive_multipliers[stat.id])) {
+        entityInfo->stat_modifiers.offensive_multipliers[stat.id] = FloatToF248(99.99);
+    }
+
+    if (F248GreaterThan(oldMulti, entityInfo->stat_modifiers.offensive_multipliers[stat.id])) {
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xdd1 + JPN_MSG_OFFSET);
+    }
+    else if (F248LessThan(oldMulti, entityInfo->stat_modifiers.offensive_multipliers[stat.id])) {
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xdd0 + JPN_MSG_OFFSET);
+    }
+    else {
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xdd3 + JPN_MSG_OFFSET);
+    }
+    UpdateStatusIconFlags(target);
 }
