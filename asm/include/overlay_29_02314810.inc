@@ -12,9 +12,10 @@
 .public GetExclusiveItemWithEffectFromBag
 .public IsProtectedFromNegativeStatus
 .public ItemIsActive__0231513C
+.public LowerSpeed
 .public LogMessageByIdWithPopupCheckUserTarget
 .public ov10_022C4618
-.public ov10_022C488C
+.public gSpeedLowerTurnRange
 .public ov10_022C4890
 .public ov29_022E41CC
 .public ov29_022E44CC

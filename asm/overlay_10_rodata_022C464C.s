@@ -434,8 +434,8 @@ gCringeTurnRange:
 	.global SPEED_BOOST_TURN_RANGE
 SPEED_BOOST_TURN_RANGE:
 	.byte 0x08, 0x00, 0x0A, 0x00
-	.global ov10_022C488C
-ov10_022C488C:
+	.global gSpeedLowerTurnRange
+gSpeedLowerTurnRange:
 	.byte 0x06, 0x00, 0x08, 0x00
 	.global ov10_022C4890
 ov10_022C4890:
