@@ -6,6 +6,7 @@
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
 .public EntityIsValid__023118B4
+.public BoostSpeed
 .public EntityIsValid__02315118
 .public ExclusiveItemEffectIsActive__023147EC
 .public GetExclusiveItemWithEffectFromBag

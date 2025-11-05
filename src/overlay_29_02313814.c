@@ -28,6 +28,7 @@ extern void UpdateStatusIconFlags(struct entity *);
 extern void ov29_022E4338(struct entity *);
 extern void PlayCringeExclamationPointEffect(struct entity *);
 extern void ov29_022E4240(struct entity *);
+extern void ov29_022E44CC(struct entity *);
 extern fx32_8 MultiplyByFixedPoint(fx32_8 a, fx32_8 b);
 extern bool8 IsProtectedFromNegativeStatus(struct entity *user ,struct entity *target, bool8 displayMessage);
 extern bool8 SafeguardIsActive(struct entity *user ,struct entity *target, bool8 displayMessage);
@@ -40,9 +41,12 @@ extern struct preprocessor_args* GetMessageLogPreprocessorArgs(void);
 extern void SetPreprocessorArgsStringToName(struct preprocessor_args* preprocessor_args, u8 pos,struct monster* monster, u8 param_4, u8 name_type);
 extern void PrepareItemForPrinting__02345728(u8, struct item*);
 extern int CalcSpeedStageWrapper(struct entity* entity);
+extern int CalcSpeedStage(struct entity *, int);
 
 extern const s16 gCringeTurnRange[];
 extern const s16 gParalysisTurnRange[];
+extern const s16 SPEED_BOOST_TURN_RANGE[];
+extern const u16 ov29_02353318[];
 
 #ifdef JAPAN
 #define JPN_MSG_OFFSET -0x2C0
@@ -687,4 +691,48 @@ bool8 ExclusiveItemEffectIsActive__023147EC(struct entity *entity, enum exclusiv
         return ExclusiveItemEffectFlagTest(monster->exclusive_item_effect_flags, effect_id);
 
     return FALSE;
+}
+
+void BoostSpeed(struct entity *user, struct entity *target, s32 nStages, s32 turns, bool8 displayMessage)
+{
+    s32 speedBefore;
+    s32 i;
+    s32 speedAfter;
+    struct monster *entityInfo;
+
+    if (!EntityIsValid__023118B4(target))
+        return;
+
+    if (turns == 0) {
+        turns = CalcStatusDuration(target,SPEED_BOOST_TURN_RANGE,FALSE) + 1;
+    }
+
+    entityInfo = GetEntInfo(target);
+    SubstitutePlaceholderStringTags(0,target,0);
+    speedBefore = CalcSpeedStage(target, nStages);
+    if (speedBefore == MAX_SPEED_STAGE) {
+        if (displayMessage)
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xddb + JPN_MSG_OFFSET);
+    }
+    else {
+        for (i = 0; i < NUM_SPEED_COUNTERS; i++) {
+            if (entityInfo->speed_up_counters[i] == 0) {
+                entityInfo->speed_up_counters[i] = turns;
+                break;
+            }
+        }
+
+        speedAfter = CalcSpeedStage(target, nStages);
+        if (speedBefore == speedAfter) {
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xdda + JPN_MSG_OFFSET);
+        }
+        else {
+            ov29_022E44CC(target);
+            LogMessageByIdWithPopupCheckUserTarget(user,target,ov29_02353318[speedAfter]);
+            entityInfo->unk_sped_up_tracker = TRUE;
+            entityInfo->already_acted = FALSE;
+        }
+    }
+
+    UpdateStatusIconFlags(target);
 }

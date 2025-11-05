@@ -36,5 +36,6 @@ bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 d
 bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool8 displayMessage, bool8 onlyCheck);
 // Checks if a monster is a team member under the effects of a certain exclusive item effect.
 bool8 ExclusiveItemEffectIsActive__023147EC(struct entity *entity, enum exclusive_item_effect_id effect_id);
+void BoostSpeed(struct entity *user, struct entity *target, s32 nStages, s32 turns, bool8 displayMessage);
 
 #endif //PMDSKY_OVERLAY_29_02313814_H
