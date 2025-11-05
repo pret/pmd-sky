@@ -3,7 +3,10 @@
 #include "overlay_29_023118B4.h"
 #include "overlay_29_02313814.h"
 #include "overlay_29_02311BF8.h"
+#include "overlay_29_023018AC.h"
 #include "math.h"
+#include "dungeon_util.h"
+#include "exclusive_item.h"
 
 extern u8* AllocateTemp1024ByteBufferFromPool(void);
 extern void CopyStringFromId(u8* buf, u32 string_id);
@@ -24,14 +27,22 @@ extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct e
 extern void UpdateStatusIconFlags(struct entity *);
 extern void ov29_022E4338(struct entity *);
 extern void PlayCringeExclamationPointEffect(struct entity *);
+extern void ov29_022E4240(struct entity *);
 extern fx32_8 MultiplyByFixedPoint(fx32_8 a, fx32_8 b);
 extern bool8 IsProtectedFromNegativeStatus(struct entity *user ,struct entity *target, bool8 displayMessage);
 extern bool8 SafeguardIsActive(struct entity *user ,struct entity *target, bool8 displayMessage);
 extern void TryActivateSteadfast(struct entity *user ,struct entity *target);
 extern void TryActivateQuickFeet(struct entity *user ,struct entity *target);
 extern s32 CalcStatusDuration(struct entity *target, const s16 *turnRange, bool8 factorCurerSkills);
+extern struct tile* GetTile(int x, int y);
+extern bool8 GetExclusiveItemWithEffectFromBag(struct entity *, enum exclusive_item_effect_id effect_id, struct item *);
+extern struct preprocessor_args* GetMessageLogPreprocessorArgs(void);
+extern void SetPreprocessorArgsStringToName(struct preprocessor_args* preprocessor_args, u8 pos,struct monster* monster, u8 param_4, u8 name_type);
+extern void PrepareItemForPrinting__02345728(u8, struct item*);
+extern int CalcSpeedStageWrapper(struct entity* entity);
 
-extern const s16 gCringeTurnRange[2];
+extern const s16 gCringeTurnRange[];
+extern const s16 gParalysisTurnRange[];
 
 #ifdef JAPAN
 #define JPN_MSG_OFFSET -0x2C0
@@ -542,7 +553,7 @@ void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatI
     UpdateStatusIconFlags(target);
 }
 
-bool8 CringeStatusTarget(struct entity *user ,struct entity *target, bool8 displayMessage, bool8 onlyCheck)
+bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 displayMessage, bool8 onlyCheck)
 {
     struct monster *entityInfo;
     u8 *buffer1 = AllocateTemp1024ByteBufferFromPool();
@@ -585,4 +596,95 @@ bool8 CringeStatusTarget(struct entity *user ,struct entity *target, bool8 displ
     }
     UpdateStatusIconFlags(target);
     return TRUE;
+}
+
+bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool8 displayMessage, bool8 onlyCheck)
+{
+    struct monster *entityInfo;
+    bool8 alreadyParalyzed;
+
+    if (!EntityIsValid__023118B4(target))
+        return FALSE;
+
+    if (SafeguardIsActive(user, target, displayMessage))
+        return FALSE;
+
+    if (IsProtectedFromNegativeStatus(user, target, displayMessage))
+        return FALSE;
+
+    #ifdef JAPAN
+    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_LIMBER)) {
+    #else
+    if (DefenderAbilityIsActive__02311B94(user, target, ABILITY_LIMBER, TRUE)) {
+    #endif
+        SubstitutePlaceholderStringTags(0,target,0);
+        if (displayMessage)
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xda0 + JPN_MSG_OFFSET);
+        return FALSE;
+    }
+
+    if (ExclusiveItemEffectIsActive__023147EC(target, EXCLUSIVE_EFF_NO_PARALYSIS)) {
+        if (displayMessage) {
+            struct item item;
+
+            SubstitutePlaceholderStringTags(0,target,0);
+            GetExclusiveItemWithEffectFromBag(target, EXCLUSIVE_EFF_NO_PARALYSIS, &item);
+            PrepareItemForPrinting__02345728(1, &item);
+            LogMessageByIdWithPopupCheckUserTarget(user,target,0xda1 + JPN_MSG_OFFSET);
+        }
+        return FALSE;
+    }
+
+    if (onlyCheck)
+        return TRUE;
+
+    alreadyParalyzed = TRUE;
+    entityInfo = GetEntInfo(target);
+    SubstitutePlaceholderStringTags(0,target,0);
+    if (entityInfo->burn_class_status.burn != STATUS_BURN_PARALYSIS) {
+        entityInfo->burn_class_status.burn = STATUS_BURN_PARALYSIS;
+        entityInfo->burn_class_status.burn_turns = CalcStatusDuration(target,gParalysisTurnRange,TRUE) + 1;
+        entityInfo->burn_class_status.burn_damage_countdown = 0;
+        entityInfo->burn_class_status.badly_poisoned_damage_count = 0;
+        alreadyParalyzed = FALSE;
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xd00 + JPN_MSG_OFFSET);
+        ov29_022E4240(target);
+        CalcSpeedStageWrapper(target);
+        TryActivateQuickFeet(user, target);
+    }
+    else {
+        LogMessageByIdWithPopupCheckUserTarget(user,target,0xd01 + JPN_MSG_OFFSET);
+    }
+
+    if (AbilityIsActiveVeneer(target, ABILITY_SYNCHRONIZE) && !alreadyParalyzed) {
+        s32 i;
+        bool8 synchronizePrinted = FALSE;
+
+        for (i = 0; i < NUM_DIRECTIONS; i++) {
+            const struct tile *mapTile = GetTile(target->pos.x + DIRECTIONS_XY[i].x,target->pos.y + DIRECTIONS_XY[i].y);
+            struct entity *mapMonster = mapTile->monster;
+            if (EntityIsValid__023118B4(mapMonster) && GetEntityType(mapMonster) == ENTITY_MONSTER) {
+                if (!synchronizePrinted) {
+                    synchronizePrinted = TRUE;
+                    SetPreprocessorArgsStringToName(GetMessageLogPreprocessorArgs(),0,entityInfo,0,0);
+                    LogMessageByIdWithPopupCheckUserTarget(user,target,0xdc5 + JPN_MSG_OFFSET);
+                }
+                if (GetTreatmentBetweenMonstersIgnoreStatus(target,mapMonster) == TREATMENT_TREAT_AS_ENEMY) {
+                    TryInflictParalysisStatus(user, mapMonster, displayMessage, FALSE);
+                }
+            }
+        }
+    }
+
+    UpdateStatusIconFlags(target);
+    return TRUE;
+}
+
+bool8 ExclusiveItemEffectIsActive__023147EC(struct entity *entity, enum exclusive_item_effect_id effect_id)
+{
+    struct monster *monster = GetEntInfo(entity);
+    if (!monster->is_not_team_member)
+        return ExclusiveItemEffectFlagTest(monster->exclusive_item_effect_flags, effect_id);
+
+    return FALSE;
 }

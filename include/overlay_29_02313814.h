@@ -32,6 +32,9 @@ void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, st
 void ApplyDefensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage);
 void BoostHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat);
 void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat, bool8 displayMessage);
-bool8 CringeStatusTarget(struct entity *user ,struct entity *target, bool8 displayMessage, bool8 onlyCheck);
+bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 displayMessage, bool8 onlyCheck);
+bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool8 displayMessage, bool8 onlyCheck);
+// Checks if a monster is a team member under the effects of a certain exclusive item effect.
+bool8 ExclusiveItemEffectIsActive__023147EC(struct entity *entity, enum exclusive_item_effect_id effect_id);
 
 #endif //PMDSKY_OVERLAY_29_02313814_H

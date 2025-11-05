@@ -440,8 +440,8 @@ ov10_022C488C:
 	.global ov10_022C4890
 ov10_022C4890:
 	.byte 0x06, 0x00, 0x0C, 0x00
-	.global ov10_022C4894
-ov10_022C4894:
+	.global gParalysisTurnRange
+gParalysisTurnRange:
 	.byte 0x01, 0x00, 0x02, 0x00
 	.global ov10_022C4898
 ov10_022C4898:

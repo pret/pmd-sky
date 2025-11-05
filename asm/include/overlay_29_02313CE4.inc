@@ -17,7 +17,7 @@
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MultiplyByFixedPoint
 .public gCringeTurnRange
-.public ov10_022C4894
+.public gParalysisTurnRange
 .public ov29_022E4240
 .public ov29_022E4338
 .public PlayOffensiveStatMultiplierUpEffect
