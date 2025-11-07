@@ -1,7 +1,7 @@
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
 #include "overlay_29_023118B4.h"
-#include "overlay_29_02313814.h"
+#include "move_orb_effects_1.h"
 #include "overlay_29_02311BF8.h"
 #include "overlay_29_023018AC.h"
 #include "math.h"
@@ -21,15 +21,15 @@ extern void PlayOffensiveStatMultiplierDownEffect(struct entity *user, struct St
 extern void PlayOffensiveStatMultiplierUpEffect(struct entity *user, struct StatIndex);
 extern void PlayDefensiveStatMultiplierDownEffect(struct entity *user, struct StatIndex);
 extern void PlayDefensiveStatMultiplierUpEffect(struct entity *user, struct StatIndex);
-extern void ov29_022E5258(struct entity *user, struct StatIndex);
-extern void ov29_022E52F8(struct entity *user, struct StatIndex);
+extern void PlayHitChanceUpEffect(struct entity *user, struct StatIndex);
+extern void PlayHitChanceDownEffect(struct entity *user, struct StatIndex);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void UpdateStatusIconFlags(struct entity *);
 extern void ov29_022E4338(struct entity *);
 extern void PlayCringeExclamationPointEffect(struct entity *);
-extern void ov29_022E4240(struct entity *);
-extern void ov29_022E44CC(struct entity *);
-extern void ov29_022E451C(struct entity *);
+extern void PlayParalysisEffect(struct entity *);
+extern void PlaySpeedUpEffect(struct entity *);
+extern void PlaySpeedDownEffect(struct entity *);
 extern fx32_8 MultiplyByFixedPoint(fx32_8 a, fx32_8 b);
 extern bool8 IsProtectedFromNegativeStatus(struct entity *user ,struct entity *target, bool8 displayMessage);
 extern bool8 SafeguardIsActive(struct entity *user ,struct entity *target, bool8 displayMessage);
@@ -466,7 +466,7 @@ void BoostHitChanceStat(struct entity *user, struct entity *target, struct StatI
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    ov29_022E5258(target,stat);
+    PlayHitChanceUpEffect(target,stat);
     if (stat.id != STAT_INDEX_ACCURACY) {
         CopyStringFromId(buffer1, 0xdc7 + JPN_MSG_OFFSET);
         SetMessageLogPreprocessorArgsString(1, buffer1);
@@ -537,7 +537,7 @@ void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatI
 
     entityInfo = GetEntInfo(target);
     SubstitutePlaceholderStringTags(0,target,0);
-    ov29_022E52F8(target,stat);
+    PlayHitChanceDownEffect(target,stat);
 
     if (entityInfo->stat_modifiers.hit_chance_stages[stat.id] > 0) {
         entityInfo->stat_modifiers.hit_chance_stages[stat.id] -= nStages;
@@ -654,7 +654,7 @@ bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool
         entityInfo->burn_class_status.badly_poisoned_damage_count = 0;
         alreadyParalyzed = FALSE;
         LogMessageByIdWithPopupCheckUserTarget(user,target,0xd00 + JPN_MSG_OFFSET);
-        ov29_022E4240(target);
+        PlayParalysisEffect(target);
         CalcSpeedStageWrapper(target);
         TryActivateQuickFeet(user, target);
     }
@@ -729,7 +729,7 @@ void BoostSpeed(struct entity *user, struct entity *target, s32 nStages, s32 tur
             LogMessageByIdWithPopupCheckUserTarget(user,target,0xdda + JPN_MSG_OFFSET);
         }
         else {
-            ov29_022E44CC(target);
+            PlaySpeedUpEffect(target);
             LogMessageByIdWithPopupCheckUserTarget(user,target,ov29_02353318[speedAfter]);
             entityInfo->unk_sped_up_tracker = TRUE;
             entityInfo->already_acted = FALSE;
@@ -782,7 +782,7 @@ void LowerSpeed(struct entity *user, struct entity *target, s32 nStages, bool8 d
                 LogMessageByIdWithPopupCheckUserTarget(user,target,0xdda + JPN_MSG_OFFSET);
         }
         else {
-            ov29_022E451C(target);
+            PlaySpeedDownEffect(target);
             LogMessageByIdWithPopupCheckUserTarget(user,target,ov29_02353318[speedAfter]);
             if (speedAfter == 0) {
                 TryActivateQuickFeet(user, target);
@@ -792,3 +792,5 @@ void LowerSpeed(struct entity *user, struct entity *target, s32 nStages, bool8 d
 
     UpdateStatusIconFlags(target);
 }
+
+// If Red's file boundaries are anything to go by, this file should end just before TryInflictConfusedStatus.

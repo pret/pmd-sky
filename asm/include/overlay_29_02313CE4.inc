@@ -18,14 +18,14 @@
 .public MultiplyByFixedPoint
 .public gCringeTurnRange
 .public gParalysisTurnRange
-.public ov29_022E4240
+.public PlayParalysisEffect
 .public ov29_022E4338
 .public PlayOffensiveStatMultiplierUpEffect
 .public PlayOffensiveStatMultiplierDownEffect
 .public PlayDefensiveStatMultiplierUpEffect
 .public PlayDefensiveStatMultiplierDownEffect
-.public ov29_022E5258
-.public ov29_022E52F8
+.public PlayHitChanceUpEffect
+.public PlayHitChanceDownEffect
 .public GetTreatmentBetweenMonstersIgnoreStatus
 .public PlayCringeExclamationPointEffect
 .public PrepareItemForPrinting__02345728

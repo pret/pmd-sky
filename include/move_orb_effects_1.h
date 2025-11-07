@@ -1,5 +1,5 @@
-#ifndef PMDSKY_OVERLAY_29_02313814_H
-#define PMDSKY_OVERLAY_29_02313814_H
+#ifndef PMDSKY_MOVE_ORB_EFFECTS_1_H
+#define PMDSKY_MOVE_ORB_EFFECTS_1_H
 
 #include "util.h"
 #include "dungeon_mode.h"
@@ -40,4 +40,4 @@ void BoostSpeed(struct entity *user, struct entity *target, s32 nStages, s32 tur
 void BoostSpeedOneStage(struct entity *user, struct entity *target, s32 turns, bool8 displayMessage);
 void LowerSpeed(struct entity *user, struct entity *target, s32 nStages, bool8 displayMessage);
 
-#endif //PMDSKY_OVERLAY_29_02313814_H
+#endif //PMDSKY_MOVE_ORB_EFFECTS_1_H

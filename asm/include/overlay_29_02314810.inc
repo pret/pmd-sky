@@ -18,8 +18,8 @@
 .public gSpeedLowerTurnRange
 .public ov10_022C4890
 .public ov29_022E41CC
-.public ov29_022E44CC
-.public ov29_022E451C
+.public PlaySpeedUpEffect
+.public PlaySpeedDownEffect
 .public ov29_022E543C
 .public ov29_022E60E4
 .public ov29_02353318

@@ -863,8 +863,8 @@ ov29_022E41F0: ; 0x022E41F0
 _022E423C: .word 0x000001A7
 	arm_func_end ov29_022E41F0
 
-	arm_func_start ov29_022E4240
-ov29_022E4240: ; 0x022E4240
+	arm_func_start PlayParalysisEffect
+PlayParalysisEffect: ; 0x022E4240
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -886,7 +886,7 @@ ov29_022E4240: ; 0x022E4240
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E428C: .word 0x000001A7
-	arm_func_end ov29_022E4240
+	arm_func_end PlayParalysisEffect
 
 	arm_func_start ov29_022E4290
 ov29_022E4290: ; 0x022E4290
@@ -1083,8 +1083,8 @@ ov29_022E4480: ; 0x022E4480
 	ldmia sp!, {r4, pc}
 	arm_func_end ov29_022E4480
 
-	arm_func_start ov29_022E44CC
-ov29_022E44CC: ; 0x022E44CC
+	arm_func_start PlaySpeedUpEffect
+PlaySpeedUpEffect: ; 0x022E44CC
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -1106,10 +1106,10 @@ ov29_022E44CC: ; 0x022E44CC
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E4518: .word 0x0000018B
-	arm_func_end ov29_022E44CC
+	arm_func_end PlaySpeedUpEffect
 
-	arm_func_start ov29_022E451C
-ov29_022E451C: ; 0x022E451C
+	arm_func_start PlaySpeedDownEffect
+PlaySpeedDownEffect: ; 0x022E451C
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
 	mov r4, r0
@@ -1131,7 +1131,7 @@ ov29_022E451C: ; 0x022E451C
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _022E4568: .word 0x0000018A
-	arm_func_end ov29_022E451C
+	arm_func_end PlaySpeedDownEffect
 
 	arm_func_start ov29_022E456C
 ov29_022E456C: ; 0x022E456C
@@ -2213,8 +2213,8 @@ _022E5250: .word 0x0000018F
 _022E5254: .word 0x00000191
 	arm_func_end PlayDefensiveStatMultiplierDownEffect
 
-	arm_func_start ov29_022E5258
-ov29_022E5258: ; 0x022E5258
+	arm_func_start PlayHitChanceUpEffect
+PlayHitChanceUpEffect: ; 0x022E5258
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
@@ -2257,10 +2257,10 @@ _022E52E8:
 	ldmia sp!, {r4, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end ov29_022E5258
+	arm_func_end PlayHitChanceUpEffect
 
-	arm_func_start ov29_022E52F8
-ov29_022E52F8: ; 0x022E52F8
+	arm_func_start PlayHitChanceDownEffect
+PlayHitChanceDownEffect: ; 0x022E52F8
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r4, lr}
 	sub sp, sp, #0x10
@@ -2305,7 +2305,7 @@ _022E5388:
 	bx lr
 	.align 2, 0
 _022E5398: .word 0x0000018D
-	arm_func_end ov29_022E52F8
+	arm_func_end PlayHitChanceDownEffect
 
 	arm_func_start PlayCringeExclamationPointEffect
 PlayCringeExclamationPointEffect: ; 0x022E539C
