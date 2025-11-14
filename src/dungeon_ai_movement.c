@@ -49,7 +49,6 @@ struct can_move_in_direction_info
 
 const s32 FACING_DIRECTION_INCREMENTS[] = {0, 1, -1, 2, -2, 3, -3, 4};
 
-extern s32 IsTeamMemberOnFirstTurnInFixedRoom(struct monster*);
 extern bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 force_avoid);
 extern bool8 CanSeeTeammate(struct entity *monster);
 extern struct entity* GetLeaderIfVisible(struct entity *monster);

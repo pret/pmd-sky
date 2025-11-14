@@ -449,7 +449,7 @@ Overlay OVY_29
 	Object src/joined_at_checks.o
 	Object asm/overlay_29_022FBB1C.o
 	Object src/dungeon_logic_7.o
-	Object asm/overlay_29_022FBE04.o
+	Object asm/overlay_29_022FBE58.o
 	Object src/overlay_29_022FC99C.o
 	Object asm/overlay_29_022FC9C0.o
 	Object src/overlay_29_022FEEB8_eu.o
