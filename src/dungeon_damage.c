@@ -2,7 +2,7 @@
 #include "dungeon_logic_3.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
-#include "move_orb_effects.h"
+#include "move_orb_effects_1.h"
 #include "overlay_29_02308FBC.h"
 #include "overlay_29_0230A994.h"
 #include "overlay_29_0230AB58.h"
@@ -28,7 +28,7 @@ s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_i
     if (move_type == TYPE_NORMAL || move_type == TYPE_FIGHTING)
         check_exposed = TRUE;
 
-    if (move_type == TYPE_FIRE && FlashFireShouldActivate(user, target) != FLASH_FIRE_STATUS_NONE)
+    if (move_type == TYPE_FIRE && GetFlashFireStatus(user, target) != FLASH_FIRE_STATUS_NONE)
         return 0;
 
 #ifdef JAPAN

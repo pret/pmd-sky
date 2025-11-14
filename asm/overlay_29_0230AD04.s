@@ -308,7 +308,7 @@ _0230B14C:
 	bne _0230B198
 	mov r0, sl
 	mov r1, sb
-	bl FlashFireShouldActivate
+	bl GetFlashFireStatus
 	cmp r0, #0
 	beq _0230B198
 	ldr r1, _0230B798 ; =DUNGEON_PTR

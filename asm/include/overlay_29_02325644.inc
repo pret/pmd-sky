@@ -35,7 +35,7 @@
 .public FACADE_DAMAGE_MULTIPLIER
 .public FLAME_WHEEL_BURN_CHANCE
 .public FLAMETHROWER_BURN_CHANCE
-.public FlashFireShouldActivate
+.public GetFlashFireStatus
 .public FOCUS_PUNCH_DAMAGE_MULTIPLIER
 .public FormatMoveStringMore
 .public GetApparentWeather
