@@ -44,9 +44,9 @@ extern void PrepareItemForPrinting__02345728(u8, struct item*);
 extern int CalcSpeedStageWrapper(struct entity* entity);
 extern int CalcSpeedStage(struct entity *, int);
 
-extern const s16 gCringeTurnRange[];
-extern const s16 gParalysisTurnRange[];
-extern const s16 gSpeedLowerTurnRange[];
+extern const s16 CRINGE_TURN_RANGE[];
+extern const s16 PARALYSIS_TURN_RANGE[];
+extern const s16 SPEED_LOWER_TURN_RANGE[];
 extern const s16 SPEED_BOOST_TURN_RANGE[];
 extern const u16 ov29_02353318[];
 
@@ -591,7 +591,7 @@ bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 d
     SubstitutePlaceholderStringTags(0,target,0);
     if (entityInfo->cringe_class_status.cringe != STATUS_CRINGE_CRINGE) {
         entityInfo->cringe_class_status.cringe = STATUS_CRINGE_CRINGE;
-        entityInfo->cringe_class_status.cringe_turns = CalcStatusDuration(target, gCringeTurnRange, TRUE) + 1;
+        entityInfo->cringe_class_status.cringe_turns = CalcStatusDuration(target, CRINGE_TURN_RANGE, TRUE) + 1;
         PlayCringeExclamationPointEffect(target);
         LogMessageByIdWithPopupCheckUserTarget(user,target,0xd02 + JPN_MSG_OFFSET);
         TryActivateSteadfast(user, target);
@@ -649,7 +649,7 @@ bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool
     SubstitutePlaceholderStringTags(0,target,0);
     if (entityInfo->burn_class_status.burn != STATUS_BURN_PARALYSIS) {
         entityInfo->burn_class_status.burn = STATUS_BURN_PARALYSIS;
-        entityInfo->burn_class_status.burn_turns = CalcStatusDuration(target,gParalysisTurnRange,TRUE) + 1;
+        entityInfo->burn_class_status.burn_turns = CalcStatusDuration(target,PARALYSIS_TURN_RANGE,TRUE) + 1;
         entityInfo->burn_class_status.burn_damage_countdown = 0;
         entityInfo->burn_class_status.badly_poisoned_damage_count = 0;
         alreadyParalyzed = FALSE;
@@ -771,7 +771,7 @@ void LowerSpeed(struct entity *user, struct entity *target, s32 nStages, bool8 d
         for (counter = 0; counter < nStages; counter++) {
             for (i = 0; i < NUM_SPEED_COUNTERS; i++) {
                 if (entityInfo->speed_down_counters[i] == 0) {
-                    entityInfo->speed_down_counters[i] = CalcStatusDuration(target,gSpeedLowerTurnRange,TRUE) + 1;
+                    entityInfo->speed_down_counters[i] = CalcStatusDuration(target,SPEED_LOWER_TURN_RANGE,TRUE) + 1;
                     break;
                 }
             }

@@ -15,7 +15,7 @@
 .public LowerSpeed
 .public LogMessageByIdWithPopupCheckUserTarget
 .public ov10_022C4618
-.public gSpeedLowerTurnRange
+.public SPEED_LOWER_TURN_RANGE
 .public ov10_022C4890
 .public ov29_022E41CC
 .public PlaySpeedUpEffect

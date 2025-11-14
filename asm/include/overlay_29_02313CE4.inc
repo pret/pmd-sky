@@ -16,8 +16,8 @@
 .public ItemIsActive__02311BF8
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MultiplyByFixedPoint
-.public gCringeTurnRange
-.public gParalysisTurnRange
+.public CRINGE_TURN_RANGE
+.public PARALYSIS_TURN_RANGE
 .public PlayParalysisEffect
 .public ov29_022E4338
 .public PlayOffensiveStatMultiplierUpEffect

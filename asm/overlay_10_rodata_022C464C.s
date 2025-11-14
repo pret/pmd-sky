@@ -428,20 +428,20 @@ ov10_022C487C:
 	.global ov10_022C4880
 ov10_022C4880:
 	.byte 0x7F, 0x00, 0x7F, 0x00
-	.global gCringeTurnRange
-gCringeTurnRange:
+	.global CRINGE_TURN_RANGE
+CRINGE_TURN_RANGE:
 	.byte 0x01, 0x00, 0x01, 0x00
 	.global SPEED_BOOST_TURN_RANGE
 SPEED_BOOST_TURN_RANGE:
 	.byte 0x08, 0x00, 0x0A, 0x00
-	.global gSpeedLowerTurnRange
-gSpeedLowerTurnRange:
+	.global SPEED_LOWER_TURN_RANGE
+SPEED_LOWER_TURN_RANGE:
 	.byte 0x06, 0x00, 0x08, 0x00
 	.global ov10_022C4890
 ov10_022C4890:
 	.byte 0x06, 0x00, 0x0C, 0x00
-	.global gParalysisTurnRange
-gParalysisTurnRange:
+	.global PARALYSIS_TURN_RANGE
+PARALYSIS_TURN_RANGE:
 	.byte 0x01, 0x00, 0x02, 0x00
 	.global ov10_022C4898
 ov10_022C4898:
