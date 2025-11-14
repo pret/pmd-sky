@@ -133,7 +133,7 @@ _02308780:
 	bl ov29_022E5E84
 	mov r0, sb
 	mov r1, sl
-	bl ov29_0231EDFC
+	bl TryHurl
 _023087A8:
 	mov r0, sl
 	mov r1, sb

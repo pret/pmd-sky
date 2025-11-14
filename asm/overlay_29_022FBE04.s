@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_022FBE04
-ov29_022FBE04: ; 0x022FBE04
+	arm_func_start IsTeamMemberOnFirstTurnInFixedRoom
+IsTeamMemberOnFirstTurnInFixedRoom: ; 0x022FBE04
 	stmdb sp!, {r3, lr}
 	ldrb r0, [r0, #6]
 	cmp r0, #0
@@ -28,7 +28,7 @@ _022FBE4C:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022FBE54: .word DUNGEON_PTR
-	arm_func_end ov29_022FBE04
+	arm_func_end IsTeamMemberOnFirstTurnInFixedRoom
 
 	arm_func_start InitOtherMonsterData
 InitOtherMonsterData: ; 0x022FBE58

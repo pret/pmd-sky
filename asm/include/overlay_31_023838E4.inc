@@ -112,6 +112,7 @@
 .public IsExperienceLocked
 .public IsHeldItemInBag
 .public IsInventoryMenuActive
+.public IsItemUnkMissionItem2
 .public IsItemUsableNow
 .public IsMonsterOnTeam
 .public IsNot2TurnsMoveOrSketch
@@ -168,7 +169,6 @@
 .public ov29_023468FC
 .public ov29_02346E5C
 .public ov29_02347100
-.public IsItemUnkMissionItem2
 .public ov29_0234E988
 .public ov29_0234EA18
 .public ov29_0234EBCC

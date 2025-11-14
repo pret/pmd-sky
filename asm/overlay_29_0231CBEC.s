@@ -1275,7 +1275,7 @@ _0231DB70:
 	bl ov29_022E5AE4
 	mov r0, r4
 	mov r1, r5
-	bl ov29_023038D4
+	bl DungeonTmLearnMove
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}

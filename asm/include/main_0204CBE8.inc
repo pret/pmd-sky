@@ -1,4 +1,9 @@
 #pragma once
+.public _0209DFC8
+.public _0209DFE8
+.public _0209E008
+.public _0209E010
+.public _0209E011
 .public ARM9_UNKNOWN_TABLE__NA_209E164
 .public CopyBitsFrom
 .public CopyBitsTo
@@ -11,9 +16,9 @@
 .public FileRom_InitDataTransfer
 .public FileRom_StopDataTransfer
 .public FileRom_Veneer_FileInit
-.public GLOBAL_PROGRESS_PTR
 .public GetDexNumber
 .public GetGameMode
+.public GLOBAL_PROGRESS_PTR
 .public KAOMADO_FILEPATH
 .public KAOMADO_STREAM
 .public LoadScriptVariableValue
@@ -24,13 +29,8 @@
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueAtIndex
 .public SetAdventureLogCompleted
-.public VERSION_EXCLUSIVE_MONSTERS
-.public ZinitScriptVariable
-.public _0209DFC8
-.public _0209DFE8
-.public _0209E008
-.public _0209E010
-.public _0209E011
 .public sub_02050974
 .public sub_02050990
 .public sub_020509BC
+.public VERSION_EXCLUSIVE_MONSTERS
+.public ZinitScriptVariable

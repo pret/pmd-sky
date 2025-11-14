@@ -59,7 +59,7 @@ _02318DEC:
 	cmpne r0, #0xa
 	cmpne r0, #0xf
 	beq _02318E20
-	ldr r1, _02318E44 ; =ov10_022C4750
+	ldr r1, _02318E44 ; =SET_REFLECT_STATUS_TURN_RANGE
 	mov r0, r6
 	mov r2, #0
 	bl CalcStatusDuration
@@ -77,11 +77,11 @@ _02318E20:
 	.align 2, 0
 #ifdef JAPAN
 _02318E40: .word 0x00000A33
-_02318E44: .word ov10_022C4750
+_02318E44: .word SET_REFLECT_STATUS_TURN_RANGE
 _02318E48: .word 0x00000A32
 #else
 _02318E40: .word 0x00000CF3
-_02318E44: .word ov10_022C4750
+_02318E44: .word SET_REFLECT_STATUS_TURN_RANGE
 _02318E48: .word 0x00000CF2
 #endif
 	arm_func_end SetReflectStatus

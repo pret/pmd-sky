@@ -147,7 +147,7 @@ _022FA65C:
 #endif
 	bl ov29_022E8104
 	bl ov29_022E81F8
-	bl ov29_022E0A04
+	bl GetSuccessfulExitTracker
 	cmp r0, #1
 	mov r0, r8
 	bne _022FA6B8
@@ -164,7 +164,7 @@ _022FA6C4:
 	mov sb, #0
 	bl GetActiveTeamMember
 	mov r4, r0
-	bl ov29_022E0A04
+	bl GetSuccessfulExitTracker
 	cmp r0, #0
 	movne sb, #1
 	bne _022FA70C

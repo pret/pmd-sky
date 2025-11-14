@@ -33,7 +33,7 @@ _023055C4:
 	cmp r0, #0
 	bne _02305680
 	mov r0, r8
-	bl ov29_022FBE04
+	bl IsTeamMemberOnFirstTurnInFixedRoom
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	add r0, r8, #0x100

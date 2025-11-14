@@ -14,10 +14,10 @@
 .public GetTile
 .public GetTreatmentBetweenMonsters
 .public HasDropeyeStatus
+.public HURL_DAMAGE
 .public InitMove
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MoveMonsterToPos
-.public ov10_022C4458
 .public ov29_022E9298
 .public ov29_022EA370
 .public ov29_022FF764

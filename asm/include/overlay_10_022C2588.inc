@@ -74,7 +74,6 @@
 .public sub_0204F1B4
 .public sub_0204F1F0
 .public sub_0204F244
-.public sub_0204F55C
 .public sub_02057CE8
 .public sub_020582E0
 .public sub_020587C8
@@ -85,6 +84,7 @@
 .public sub_0205BC94
 .public sub_0205F504
 .public TEAM_MEMBER_TABLE_PTR
+.public TilesetSecondaryTerrainIsChasm
 .public UnloadFile
 .public UnloadOverlay
 .public UnloadWte

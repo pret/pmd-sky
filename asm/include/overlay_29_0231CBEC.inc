@@ -16,6 +16,7 @@
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
+.public DungeonTmLearnMove
 .public EndBurnClassStatus
 .public EndFrozenClassStatus
 .public EntityIsValid__0231CBC8
@@ -79,7 +80,6 @@
 .public ov29_022FBA54
 .public ov29_023009A0
 .public ov29_023021F0
-.public ov29_023038D4
 .public ov29_02339FF4
 .public ov29_0234BA54
 .public ov29_023529AC

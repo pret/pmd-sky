@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start ov29_0231EDFC
-ov29_0231EDFC: ; 0x0231EDFC
+	arm_func_start TryHurl
+TryHurl: ; 0x0231EDFC
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0xf4
 	mov r5, r0
@@ -463,7 +463,7 @@ _0231F454:
 	bne _0231F4B4
 	mov r3, #0
 	str r3, [sp]
-	ldr r0, _0231F568 ; =ov10_022C4458
+	ldr r0, _0231F568 ; =HURL_DAMAGE
 	ldr r1, _0231F56C ; =0x00000259
 	str r3, [sp, #4]
 	str r1, [sp, #8]
@@ -486,7 +486,7 @@ _0231F4B4:
 _0231F4D4:
 	mov r3, #0
 	str r3, [sp]
-	ldr r0, _0231F568 ; =ov10_022C4458
+	ldr r0, _0231F568 ; =HURL_DAMAGE
 	str r3, [sp, #4]
 	mov r1, #0x258
 	str r1, [sp, #8]
@@ -529,6 +529,6 @@ _0231F558: .word 0x00000E47 + OV29_0231EDFC_OFFSET
 _0231F55C: .word 0x00000212
 _0231F560: .word DIRECTIONS_XY + 2
 _0231F564: .word 0x00000163
-_0231F568: .word ov10_022C4458
+_0231F568: .word HURL_DAMAGE
 _0231F56C: .word 0x00000259
-	arm_func_end ov29_0231EDFC
+	arm_func_end TryHurl

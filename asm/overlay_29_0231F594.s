@@ -111,8 +111,8 @@ _0231F6E0: .word 0x00000C07
 #endif
 	arm_func_end TryDrought
 
-	arm_func_start ov29_0231F6E4
-ov29_0231F6E4: ; 0x0231F6E4
+	arm_func_start TryTrawl
+TryTrawl: ; 0x0231F6E4
 #ifdef JAPAN
 #define OV29_0231F6E4_OFFSET -0xA4
 #else
@@ -503,4 +503,4 @@ _0231FBF4: .word 0x00000222
 #ifndef JAPAN
 _0231FBF8: .word 0x00000BD1
 #endif
-	arm_func_end ov29_0231F6E4
+	arm_func_end TryTrawl

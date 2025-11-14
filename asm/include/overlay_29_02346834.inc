@@ -43,7 +43,6 @@
 .public MONEY_QUANTITY_TABLE
 .public MonsterHasEmbargoStatus
 .public ov10_022C4CD8
-.public ov29_022E09E8
 .public ov29_022E9488
 .public ov29_022EBB8C
 .public ov29_022EBB98
@@ -58,6 +57,7 @@
 .public PrepareItemForPrinting__02345728
 .public PrepareItemForPrinting__02345754
 .public RemoveEmptyItemsInBag
+.public SetDungeonEscapeFields
 .public SetEntityPixelPosXY
 .public SetItemAcquired
 .public SinAbs4096

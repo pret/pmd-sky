@@ -68,7 +68,6 @@
 .public MistIsActive
 .public ov10_022C456C
 .public ov10_022C45BC
-.public ov29_022E09E8
 .public ov29_022E1AAC
 .public ov29_022E1AD4
 .public ov29_022E1EF8
@@ -86,8 +85,6 @@
 .public ov29_0230DAB8
 .public ov29_02318BBC
 .public ov29_02318D58
-.public ov29_0231EDFC
-.public ov29_0231F6E4
 .public ov29_02332F18
 .public ov29_02336694
 .public ov29_0234BA54
@@ -99,6 +96,7 @@
 .public RevealStairs
 .public RevealWholeFloor
 .public ROOST_HP_RESTORATION_TABLE
+.public SetDungeonEscapeFields
 .public SetMessageLogPreprocessorArgsString
 .public SetPreprocessorArgsIdVal
 .public SetReflectStatus
@@ -117,6 +115,7 @@
 .public TryDecreaseBelly
 .public TryDrought
 .public TryEatItem
+.public TryHurl
 .public TryIncreaseHp
 .public TryInflictAquaRingStatus
 .public TryInflictBurnStatus
@@ -141,6 +140,7 @@
 .public TryRemoveTrap
 .public TrySpawnTrap
 .public TrySwitchPlace
+.public TryTrawl
 .public TryWarp
 .public UpdateMinimap
 .public UpdateTrapsVisibility

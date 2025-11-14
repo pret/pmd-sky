@@ -9,6 +9,7 @@
 .public BoostOffensiveStat
 .public CalcStatusDuration
 .public CeilFixedPoint
+.public DECOY_TURN_RANGE
 .public DetermineMonsterShadow
 .public DisplayAnimatedNumbers
 .public DUNGEON_PTR
@@ -42,7 +43,6 @@
 .public ov10_022C47A4
 .public ov10_022C47AC
 .public ov10_022C47B0
-.public ov10_022C47B4
 .public ov10_022C47BC
 .public ov10_022C47C8
 .public ov10_022C47D4

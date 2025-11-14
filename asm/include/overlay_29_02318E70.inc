@@ -2,16 +2,15 @@
 .public AbilityIsActiveVeneer
 .public CalcStatusDuration
 .public EntityIsValid__02318E4C
+.public LIGHT_SCREEN_TURN_RANGE
 .public LogMessageByIdWithPopupCheckUserTarget
-.public ov10_022C4730
-.public ov10_022C4734
-.public ov10_022C4738
-.public ov10_022C4740
+.public MAGIC_COAT_TURN_RANGE
+.public MIRROR_MOVE_TURN_RANGE
+.public MIST_TURN_RANGE
 .public ov10_022C4794
 .public ov10_022C47B8
 .public ov10_022C47CC
 .public ov10_022C47F4
-.public ov10_022C4840
 .public ov10_022C4854
 .public ov10_022C485C
 .public ov29_022E3F74
@@ -28,5 +27,6 @@
 .public ov29_022E41AC
 .public ov29_022E543C
 .public REFLECT_LIGHT_SCREEN_TURN_RANGE
+.public SAFEGUARD_TURN_RANGE
 .public SubstitutePlaceholderStringTags
 .public UpdateStatusIconFlags

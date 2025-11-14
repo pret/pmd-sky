@@ -20,7 +20,7 @@ TryInflictSafeguardStatus: ; 0x02318E70
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #2
 	beq _02318EE8
-	ldr r1, _02318F04 ; =ov10_022C4734
+	ldr r1, _02318F04 ; =SAFEGUARD_TURN_RANGE
 	mov r3, #2
 	mov r0, r5
 	mov r2, #0
@@ -45,7 +45,7 @@ _02318EF8:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02318F04: .word ov10_022C4734
+_02318F04: .word SAFEGUARD_TURN_RANGE
 #ifdef JAPAN
 _02318F08: .word 0x00000A2E
 _02318F0C: .word 0x00000A2F
@@ -72,7 +72,7 @@ TryInflictMistStatus: ; 0x02318F10
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #0xe
 	beq _02318F88
-	ldr r1, _02318FA4 ; =ov10_022C4738
+	ldr r1, _02318FA4 ; =MIST_TURN_RANGE
 	mov r3, #0xe
 	mov r0, r5
 	mov r2, #0
@@ -101,7 +101,7 @@ _02318F98:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02318FA4: .word ov10_022C4738
+_02318FA4: .word MIST_TURN_RANGE
 #ifdef JAPAN
 _02318FA8: .word 0x00000A31
 #else
@@ -178,7 +178,7 @@ TryInflictMagicCoatStatus: ; 0x0231904C
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #5
 	beq _023190C4
-	ldr r1, _023190E0 ; =ov10_022C4740
+	ldr r1, _023190E0 ; =MAGIC_COAT_TURN_RANGE
 	mov r3, #5
 	mov r0, r5
 	mov r2, #0
@@ -203,7 +203,7 @@ _023190D4:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023190E0: .word ov10_022C4740
+_023190E0: .word MAGIC_COAT_TURN_RANGE
 #ifdef JAPAN
 _023190E4: .word 0x00000A27
 _023190E8: .word 0x00000A28
@@ -230,7 +230,7 @@ TryInflictLightScreenStatus: ; 0x023190EC
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #3
 	beq _02319164
-	ldr r1, _02319180 ; =ov10_022C4730
+	ldr r1, _02319180 ; =LIGHT_SCREEN_TURN_RANGE
 	mov r3, #3
 	mov r0, r5
 	mov r2, #0
@@ -255,7 +255,7 @@ _02319174:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_02319180: .word ov10_022C4730
+_02319180: .word LIGHT_SCREEN_TURN_RANGE
 #ifdef JAPAN
 _02319184: .word 0x00000A34
 _02319188: .word 0x00000A35
@@ -496,7 +496,7 @@ TryInflictMirrorMoveStatus: ; 0x02319418
 	ldrb r0, [r4, #0xd5]
 	cmp r0, #0xb
 	beq _02319490
-	ldr r1, _023194AC ; =ov10_022C4840
+	ldr r1, _023194AC ; =MIRROR_MOVE_TURN_RANGE
 	mov r3, #0xb
 	mov r0, r5
 	mov r2, #0
@@ -521,7 +521,7 @@ _023194A0:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_023194AC: .word ov10_022C4840
+_023194AC: .word MIRROR_MOVE_TURN_RANGE
 #ifdef JAPAN
 _023194B0: .word 0x00000A9A
 _023194B4: .word 0x00000A9B

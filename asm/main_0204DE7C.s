@@ -1807,8 +1807,8 @@ _0204F4EC:
 _0204F558: .word 0x00004001
 	arm_func_end sub_0204F488
 
-	arm_func_start sub_0204F55C
-sub_0204F55C: ; 0x0204F55C
+	arm_func_start TilesetSecondaryTerrainIsChasm
+TilesetSecondaryTerrainIsChasm: ; 0x0204F55C
 	ldr r1, _0204F578 ; =SECONDARY_TERRAIN_TYPES
 	ldrb r0, [r1, r0]
 	cmp r0, #2
@@ -1818,7 +1818,7 @@ sub_0204F55C: ; 0x0204F55C
 	bx lr
 	.align 2, 0
 _0204F578: .word SECONDARY_TERRAIN_TYPES
-	arm_func_end sub_0204F55C
+	arm_func_end TilesetSecondaryTerrainIsChasm
 
 	arm_func_start GetNbFloors
 GetNbFloors: ; 0x0204F57C

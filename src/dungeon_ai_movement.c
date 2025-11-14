@@ -49,7 +49,7 @@ struct can_move_in_direction_info
 
 const s32 FACING_DIRECTION_INCREMENTS[] = {0, 1, -1, 2, -2, 3, -3, 4};
 
-extern s32 ov29_022FBE04(struct monster*);
+extern s32 IsTeamMemberOnFirstTurnInFixedRoom(struct monster*);
 extern bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 force_avoid);
 extern bool8 CanSeeTeammate(struct entity *monster);
 extern struct entity* GetLeaderIfVisible(struct entity *monster);
@@ -525,7 +525,7 @@ void AiMovement(struct entity *monster, bool8 show_run_away_effect)
                     return;
                 }
 
-                if (ov29_022FBE04(pokemon_info))
+                if (IsTeamMemberOnFirstTurnInFixedRoom(pokemon_info))
                     return;
 
                 s32 direction = GetDirectionTowardsPosition(&monster->pos, &pokemon_info_2->ai_target.ai_target_pos);
@@ -1478,7 +1478,7 @@ _01FFAF28:
 	b _01FFB2A4
 _01FFAF7C:
 	mov r0, r9
-	bl ov29_022FBE04
+	bl IsTeamMemberOnFirstTurnInFixedRoom
 	cmp r0, #0
 	bne _01FFB2A4
 	add r0, r4, #4

@@ -11,6 +11,7 @@
 .public GetExclusiveItemWithEffectFromBag
 .public GetMessageLogPreprocessorArgs
 .public GetTile
+.public GetTreatmentBetweenMonstersIgnoreStatus
 .public IsProtectedFromNegativeStatus
 .public IsProtectedFromStatDrops
 .public ItemIsActive__02311BF8
@@ -26,7 +27,6 @@
 .public ov29_022E51B0
 .public ov29_022E5258
 .public ov29_022E52F8
-.public GetTreatmentBetweenMonstersIgnoreStatus
 .public PlayExclamationPointEffect__022E5D4C
 .public PrepareItemForPrinting__02345728
 .public SafeguardIsActive

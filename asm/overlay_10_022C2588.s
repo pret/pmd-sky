@@ -1542,7 +1542,7 @@ _022C3A64:
 	b _022C3E54
 _022C3AD4:
 	mov r0, r5
-	bl sub_0204F55C
+	bl TilesetSecondaryTerrainIsChasm
 	cmp r0, #0
 	sub r0, r6, #1
 	str r0, [sp, #0x20]

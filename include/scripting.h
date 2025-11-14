@@ -41,6 +41,6 @@ void LoadScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s3
 void LoadScriptVariableValueString(const enum script_var_id sv_id, u8* result, u8 num_bytes);
 void SaveScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s32 num_bytes);
 s32 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2);
-s32 FlagCalc(s32 param_1, s32 param_2, enum FlagCalcOperation operation);
+s32 CalcScriptVariables(s32 param_1, s32 param_2, enum script_calc_operation operation);
 
 #endif //PMDSKY_SCRIPTING_H

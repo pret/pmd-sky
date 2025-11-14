@@ -25,6 +25,7 @@
 .public HandleSir0Translation
 .public HIDDEN_STAIRS_SPAWN_BLOCKED
 .public InitRender3dElement64
+.public IsBehaviorLoneOutlaw
 .public IsCurrentMissionType
 .public IsCurrentMissionTypeExact
 .public IsCurrentTilesetBackground
@@ -32,7 +33,6 @@
 .public IsExperienceLocked
 .public IsGoldenChamber
 .public IsHiddenStairsFloor
-.public IsBehaviorLoneOutlaw
 .public IsOutlawMonsterHouseFloor
 .public IsSecretBazaar
 .public LoadFixedRoomData

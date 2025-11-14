@@ -357,6 +357,7 @@
 .public LoadFileFromRom
 .public LoadScriptVariableValue
 .public LoadScriptVariableValueAtIndex
+.public LoadScriptVariableValueString
 .public LoadStringFile
 .public MemAlloc
 .public MemArenaAlloc
@@ -439,7 +440,6 @@
 .public sub_0200D310
 .public sub_02025480
 .public sub_020257FC
-.public LoadScriptVariableValueString
 .public sub_0204E530
 .public sub_0204F6F8
 .public sub_0204F77C
