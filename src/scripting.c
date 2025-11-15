@@ -27,7 +27,8 @@ extern s32 sub_0204C928(s32 arg0);
 const short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
 
 extern struct prog_pos_info EVENT_FLAG_PROG_POS_INFO;
-extern u8 EVENT_FLAG_EXPANSION_ERROR;
+// extern u8 EVENT_FLAG_EXPANSION_ERROR;
+const u8 EVENT_FLAG_EXPANSION_ERROR[] = "event flag expansion error %d";
 
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     union script_var_value sv_val_local[],
@@ -396,6 +397,6 @@ s32 FlagCalc(s32 param_1, s32 param_2, enum FlagCalcOperation operation)
             // and a line number of 1001
             struct prog_pos_info prog_pos_info = EVENT_FLAG_PROG_POS_INFO;
             // EVENT_FLAG_EXPANSION_ERROR contains the string "event flag expansion error %d"
-            Debug_FatalError(&prog_pos_info, &EVENT_FLAG_EXPANSION_ERROR, operation);
+            Debug_FatalError(&prog_pos_info, EVENT_FLAG_EXPANSION_ERROR, operation);
     }
 }
