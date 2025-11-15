@@ -29,8 +29,6 @@ struct script_var_raw {
     union script_var_value *value;
 };
 
-extern const short LOCAL_SCRIPT_VAR_OFFSET;
-
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw, union script_var_value sv_val_local[], const enum script_var_id sv_id);
 s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id);
 s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum script_var_id id, u16 idx);

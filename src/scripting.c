@@ -10,6 +10,15 @@ extern struct script_var_def SCRIPT_VARS_LOCALS[];
 // Global script variable values
 extern u8 SCRIPT_VARS_VALUES[];
 
+struct prog_pos_info prog_pos_info = {
+    0, // file name
+    0   // line number
+} ;
+
+#define DEBUG_LOC_PTR(file, line)((&((prog_pos_info){file, line})))
+#define FATAL_ERROR_ARGS(file, line, ...) Debug_FatalError(DEBUG_LOC_PTR(file, line), __VA_ARGS__ )
+#define FATAL_ERROR(...) FATAL_ERROR_ARGS(__FILE__, __LINE__, __VA_ARGS__)
+
 extern s32 GetPartyMembers(s32 param1);
 extern s32 GetMoneyCarried();
 extern s32 GetMoneyStored();
@@ -24,30 +33,56 @@ extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
 extern s32 sub_0204C928(s32 arg0);
 
-const short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
 
-extern struct prog_pos_info EVENT_FLAG_PROG_POS_INFO;
-// extern u8 EVENT_FLAG_EXPANSION_ERROR;
-const u8 EVENT_FLAG_EXPANSION_ERROR[] = "event flag expansion error %d";
+// extern struct prog_pos_info EVENT_FLAG_PROG_POS_INFO;
+extern u8 EVENT_FLAG_EXPANSION_ERROR;
+// const u8 EVENT_FLAG_EXPANSION_ERROR[] = "event flag expansion error %d";
 
-void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
-    union script_var_value sv_val_local[],
-    const enum script_var_id sv_id) {
+// @ 	.global EVENT_FLAG_PROG_POS_INFO
+// @ EVENT_FLAG_PROG_POS_INFO:
+// @ 	.word _0209CEBC
+// @ 	.byte 0xE9, 0x03, 0x00, 0x00
+// @ 	.word _0209CEBC
+// @ 	.byte 0x14, 0x04, 0x00, 0x00
+// @ 	.global _0209CEBC
+// @ _0209CEBC:
+// @ 	.byte 0x65, 0x76, 0x65, 0x6E, 0x74, 0x5F, 0x66, 0x6C
+// @ 	.byte 0x61, 0x67, 0x2E, 0x63, 0x00, 0x00, 0x00, 0x00
 
-    if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
-        // global script var
-        sv_raw->def = &SCRIPT_VARS[sv_id];
-        sv_raw->value = (union script_var_value*)
-                         &SCRIPT_VARS_VALUES[sv_raw->def->mem_offset];
-    } else {
-        // local script var
-        sv_raw->def = &SCRIPT_VARS_LOCALS[sv_id - LOCAL_SCRIPT_VAR_OFFSET];
-        sv_raw->value = &sv_val_local[sv_raw->def->mem_offset];
-    }
-}
+struct EVENT_FLAG_PROG_POS_INFO {
+    const u8* filename1;
+    s32 line1;
+    const u8* filename2;
+    s32 line2;
+};
 
-s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id)
-{
+const u8 EVENT_FLAG[] = "event_flag.c"; // _0209CEBC
+const struct EVENT_FLAG_PROG_POS_INFO EVENT_FLAG_PROG_POS_INFO = {
+    EVENT_FLAG,
+    1001,
+    EVENT_FLAG,
+    1044
+};
+        
+        void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
+            union script_var_value sv_val_local[],
+            const enum script_var_id sv_id) {
+                short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
+                
+                if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
+                    // global script var
+                    sv_raw->def = &SCRIPT_VARS[sv_id];
+                    sv_raw->value = (union script_var_value*)
+                    &SCRIPT_VARS_VALUES[sv_raw->def->mem_offset];
+                } else {
+                    // local script var
+                    sv_raw->def = &SCRIPT_VARS_LOCALS[sv_id - LOCAL_SCRIPT_VAR_OFFSET];
+                    sv_raw->value = &sv_val_local[sv_raw->def->mem_offset];
+                }
+            }
+            
+            s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id)
+            {
     struct script_var_raw result;
     LoadScriptVariableRaw(&result, sv_local, sv_id);
 
@@ -395,8 +430,16 @@ s32 FlagCalc(s32 param_1, s32 param_2, enum FlagCalcOperation operation)
         default:
             // EVENT_FLAG_PROG_POS_INFO contains a pointer to the filename event_flag.c
             // and a line number of 1001
-            struct prog_pos_info prog_pos_info = EVENT_FLAG_PROG_POS_INFO;
+            struct prog_pos_info prog_pos_info = *(struct prog_pos_info*) &EVENT_FLAG_PROG_POS_INFO;
             // EVENT_FLAG_EXPANSION_ERROR contains the string "event flag expansion error %d"
-            Debug_FatalError(&prog_pos_info, EVENT_FLAG_EXPANSION_ERROR, operation);
+            // struct prog_pos_info p = {
+            //     .file = (unsigned char *) EVENT_FLAG_PROG_POS_INFO.filename1,
+            //     .line = EVENT_FLAG_PROG_POS_INFO.line1
+            // };
+
+            // Debug_FatalError(((&((prog_pos_info){EVENT_FLAG_PROG_POS_INFO.filename1, EVENT_FLAG_PROG_POS_INFO.line1}))), EVENT_FLAG_EXPANSION_ERROR, operation);
+            //FATAL_ERROR_ARGS(EVENT_FLAG_PROG_POS_INFO.filename1, EVENT_FLAG_PROG_POS_INFO.line1, EVENT_FLAG_EXPANSION_ERROR, operation);
+
+            Debug_FatalError(&prog_pos_info, &EVENT_FLAG_EXPANSION_ERROR, operation);
     }
 }
