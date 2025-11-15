@@ -39,7 +39,7 @@
 .public FixedPoint64CmpLt
 .public FixedPoint64ToInt
 .public FixedRoomIsSubstituteRoom
-.public FlashFireShouldActivate
+.public GetFlashFireStatus
 .public GendersEqualNotGenderless
 .public GendersNotEqualNotGenderless
 .public GenerateStandardItem

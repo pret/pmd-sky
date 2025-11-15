@@ -1710,7 +1710,7 @@ DoMoveWillOWisp: ; 0x02326B24
 	sub sp, sp, #4
 	mov r6, r0
 	mov r5, r1
-	bl FlashFireShouldActivate
+	bl GetFlashFireStatus
 	movs r4, r0
 	beq _02326B94
 	ldr r3, [r5, #0xb4]

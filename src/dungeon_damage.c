@@ -28,7 +28,7 @@ s32 WeightWeakTypePicker(struct entity *user, struct entity *target, enum type_i
     if (move_type == TYPE_NORMAL || move_type == TYPE_FIGHTING)
         check_exposed = TRUE;
 
-    if (move_type == TYPE_FIRE && FlashFireShouldActivate(user, target) != FLASH_FIRE_STATUS_NONE)
+    if (move_type == TYPE_FIRE && GetFlashFireStatus(user, target) != FLASH_FIRE_STATUS_NONE)
         return 0;
 
 #ifdef JAPAN

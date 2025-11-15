@@ -1,6 +1,7 @@
 #ifndef PMDSKY_MOVE_ORB_EFFECTS_H
 #define PMDSKY_MOVE_ORB_EFFECTS_H
 
+#include "util.h"
 #include "dungeon_mode.h"
 
 enum flash_fire_status {
@@ -9,8 +10,34 @@ enum flash_fire_status {
     FLASH_FIRE_STATUS_NOT_MAXED = 2
 };
 
+#define STAT_INDEX_PHYSICAL 0 // Atk, Def
+#define STAT_INDEX_SPECIAL 1 // Sp Atk, Sp Def
+#define STAT_INDEX_ACCURACY STAT_INDEX_PHYSICAL
+#define STAT_INDEX_EVASION STAT_INDEX_SPECIAL
+
+struct StatIndex
+{
+    int id;
+};
+
+void LowerOffensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 nStagesRaw, bool8 checkProtected, bool8 logMsgProtected);
+void LowerDefensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 increment, bool8 checkProtected, bool8 logMsgProtected);
+void BoostOffensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 nStagesRaw);
+void BoostDefensiveStat(struct entity *user, struct entity *target, struct StatIndex stat, s32 nStagesRaw);
 // Checks whether Flash Fire should activate, assuming the defender is being hit by a Fire-type move.
 // This checks that the defender is valid and Flash Fire is active, and that Normalize isn't active on the attacker.
-enum flash_fire_status FlashFireShouldActivate(struct entity *attacker, struct entity *defender);
+enum flash_fire_status GetFlashFireStatus(struct entity *attacker, struct entity *defender);
+void ActivateFlashFire(struct entity *pokemon, struct entity *target);
+void ApplyOffensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage);
+void ApplyDefensiveStatMultiplier(struct entity *user, struct entity *target, struct StatIndex stat, fx32_8 multiplier, bool8 displayMessage);
+void BoostHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat);
+void LowerHitChanceStat(struct entity *user, struct entity *target, struct StatIndex stat, bool8 displayMessage);
+bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 displayMessage, bool8 onlyCheck);
+bool8 TryInflictParalysisStatus(struct entity *user, struct entity *target, bool8 displayMessage, bool8 onlyCheck);
+// Checks if a monster is a team member under the effects of a certain exclusive item effect.
+bool8 ExclusiveItemEffectIsActive__023147EC(struct entity *entity, enum exclusive_item_effect_id effect_id);
+void BoostSpeed(struct entity *user, struct entity *target, s32 nStages, s32 turns, bool8 displayMessage);
+void BoostSpeedOneStage(struct entity *user, struct entity *target, s32 turns, bool8 displayMessage);
+void LowerSpeed(struct entity *user, struct entity *target, s32 nStages, bool8 displayMessage);
 
 #endif //PMDSKY_MOVE_ORB_EFFECTS_H

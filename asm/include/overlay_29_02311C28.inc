@@ -1,6 +1,5 @@
 #pragma once
 .public AbilityIsActiveVeneer
-.public AllocateTemp1024ByteBufferFromPool
 .public CalcStatusDuration
 .public ChangeShayminForme
 .public CopyStringFromId
@@ -15,7 +14,6 @@
 .public GetTreatmentBetweenMonstersIgnoreStatus
 .public IsProtectedFromNegativeStatus
 .public IsProtectedFromSleepClassStatus
-.public IsProtectedFromStatDrops
 .public ItemIsActive__02311BF8
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MonsterIsType
@@ -44,7 +42,6 @@
 .public ov29_022E4C00
 .public ov29_022E4C4C
 .public ov29_022E4D24
-.public ov29_022E4D28
 .public ov29_022E53EC
 .public ov29_02304A48
 .public ov29_02304A84
