@@ -303,7 +303,7 @@ TryInflictSleeplessStatus: ; 0x02311F80
 	ldrb r0, [r5, #0xbd]
 	cmp r0, #2
 	beq _02312040
-	ldr r1, _0231205C ; =ov10_022C4728
+	ldr r1, _0231205C ; =SLEEPLESSNESS_TURN_RANGE
 	mov r3, #2
 	mov r0, r6
 	mov r2, #0
@@ -347,7 +347,7 @@ _02312050:
 	bl UpdateStatusIconFlags
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
-_0231205C: .word ov10_022C4728
+_0231205C: .word SLEEPLESSNESS_TURN_RANGE
 #ifdef JAPAN
 _02312060: .word 0x00000A53
 _02312064: .word 0x00000A55

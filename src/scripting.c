@@ -162,7 +162,7 @@ void SaveScriptVariableValue(union script_var_value sv_locals[], const enum scri
 {
     struct script_var_raw script_var_raw;
     LoadScriptVariableRaw(&script_var_raw, sv_locals, script_var_id);
-    
+
     switch ((s16)script_var_raw.def->type) {
         case VARTYPE_BIT:
             u32 bitmask = 1 << script_var_raw.def->bitshift;
@@ -221,7 +221,7 @@ void SaveScriptVariableValue(union script_var_value sv_locals[], const enum scri
                     break;
             }
             break;
-        
+
         default:
             return;
         }
@@ -233,7 +233,7 @@ void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const en
 {
     struct script_var_raw script_var_raw;
     LoadScriptVariableRaw(&script_var_raw, sv_locals, script_var_id);
-    
+
     switch ((s16)script_var_raw.def->type) {
         case VARTYPE_BIT:
             // For VARTYPE_BIT, idx specifies a number of bits
@@ -285,7 +285,7 @@ void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const en
                     break;
             }
             break;
-        
+
         default:
             return;
         }
@@ -297,13 +297,13 @@ s32 LoadScriptVariableValueSum(union script_var_value sv_local[], const enum scr
 {
     struct script_var_raw script_var_raw;
     s32 total = 0;
-    
+
     LoadScriptVariableRaw(&script_var_raw, 0, sv_id);
-    
+
     for(s32 idx = 0; idx < (s16) script_var_raw.def->n_values; idx++) {
         total += LoadScriptVariableValueAtIndex(sv_local, sv_id, (u16) idx);
     }
-    
+
     return total;
 }
 
@@ -314,7 +314,7 @@ void LoadScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s3
 
     s32 i = 0;
     u8* val_ptr = (u8*) sv_raw.value;
-    
+
     for(i = 0; i < num_bytes; i++) {
         u8 val = *val_ptr;
         *result = val;
@@ -351,11 +351,11 @@ s32 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], enum script_
 
     LoadScriptVariableRaw(&script_var_raw_1, sv_val_ptr_local, sv_id_1);
     LoadScriptVariableRaw(&script_var_raw_2, sv_val_ptr_local, sv_id_2);
-    
+
     s32 n_values = script_var_raw_1.def->n_values;
-    
+
     for(int idx = 0; idx < n_values; idx++) {
-        if (LoadScriptVariableValueAtIndex(sv_val_ptr_local, sv_id_1, idx) != 
+        if (LoadScriptVariableValueAtIndex(sv_val_ptr_local, sv_id_1, idx) !=
             LoadScriptVariableValueAtIndex(sv_val_ptr_local, sv_id_2, idx)) {
             return 0;
         }
@@ -364,7 +364,7 @@ s32 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], enum script_
     return 1;
 }
 
-s32 FlagCalc(s32 param_1, s32 param_2, enum FlagCalcOperation operation)
+s32 CalcScriptVariables(s32 param_1, s32 param_2, enum script_calc_operation operation)
 {
     switch (operation) {
         case CALC_SET:

@@ -41,6 +41,7 @@
 .public InitEnemyStatsAndMoves
 .public InitStandardItem
 .public IsBagFull
+.public IsBehaviorLoneOutlaw
 .public IsCurrentFixedRoomBossFight
 .public IsCurrentMissionType
 .public IsDestinationFloorWithFixedRoom
@@ -48,7 +49,6 @@
 .public IsDestinationFloorWithHiddenOutlaw
 .public IsDestinationFloorWithMonster
 .public IsInvalidSpawnTile
-.public IsBehaviorLoneOutlaw
 .public IsOutlawMonsterHouseFloor
 .public IsSecretBazaarNpcBehavior
 .public IsSpecialStoryAllyOrClient

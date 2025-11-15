@@ -8,8 +8,6 @@
 .public IsItemWithFlagsInBag
 .public LoadMonsterSprite
 .public LogMessageByIdWithPopupCheckUser
-.public PrepareItemForPrinting__02345728
-.public SubstitutePlaceholderStringTags
 .public ov29_02348ABC
 .public ov29_02348B28
 .public ov29_02348BA0
@@ -21,3 +19,5 @@
 .public ov29_0234AA98
 .public ov29_0234ABB0
 .public ov29_0234AC8C
+.public PrepareItemForPrinting__02345728
+.public SubstitutePlaceholderStringTags

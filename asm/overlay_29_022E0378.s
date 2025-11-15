@@ -4,8 +4,8 @@
 	.text
 
 ; https://decomp.me/scratch/Cgi9a
-	arm_func_start ov29_022E0378
-ov29_022E0378: ; 0x022E0378
+	arm_func_start FloorSecondaryTerrainIsChasm
+FloorSecondaryTerrainIsChasm: ; 0x022E0378
 	ldr r1, _022E03A8 ; =ov29_0237CFC0
 	ldrb r1, [r1]
 	cmp r1, #0
@@ -21,7 +21,7 @@ ov29_022E0378: ; 0x022E0378
 	.align 2, 0
 _022E03A8: .word ov29_0237CFC0
 _022E03AC: .word SECONDARY_TERRAIN_TYPES
-	arm_func_end ov29_022E0378
+	arm_func_end FloorSecondaryTerrainIsChasm
 
 	arm_func_start GetFloorType
 GetFloorType: ; 0x022E03B0

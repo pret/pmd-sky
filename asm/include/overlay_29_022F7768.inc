@@ -28,8 +28,8 @@
 .public GetTileAtEntity
 .public GetTileSafe
 .public IQ_SKILLS
-.public IsLevelResetDungeon
 .public IsBehaviorLoneOutlaw
+.public IsLevelResetDungeon
 .public IsMonsterIdInNormalRange
 .public IsOutlawOrChallengeRequestFloor
 .public IsRecruitingAllowed

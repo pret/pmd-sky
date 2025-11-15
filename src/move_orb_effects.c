@@ -1,7 +1,7 @@
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
 #include "overlay_29_023118B4.h"
-#include "move_orb_effects_1.h"
+#include "move_orb_effects.h"
 #include "overlay_29_02311BF8.h"
 #include "overlay_29_023018AC.h"
 #include "math.h"
@@ -26,7 +26,7 @@ extern void PlayHitChanceDownEffect(struct entity *user, struct StatIndex);
 extern void LogMessageByIdWithPopupCheckUserTarget(struct entity *user, struct entity *target, u32 message_id);
 extern void UpdateStatusIconFlags(struct entity *);
 extern void ov29_022E4338(struct entity *);
-extern void PlayCringeExclamationPointEffect(struct entity *);
+extern void PlayExclamationPointEffect__022E5D4C(struct entity *);
 extern void PlayParalysisEffect(struct entity *);
 extern void PlaySpeedUpEffect(struct entity *);
 extern void PlaySpeedDownEffect(struct entity *);
@@ -592,7 +592,7 @@ bool8 TryInflictCringeStatus(struct entity *user ,struct entity *target, bool8 d
     if (entityInfo->cringe_class_status.cringe != STATUS_CRINGE_CRINGE) {
         entityInfo->cringe_class_status.cringe = STATUS_CRINGE_CRINGE;
         entityInfo->cringe_class_status.cringe_turns = CalcStatusDuration(target, CRINGE_TURN_RANGE, TRUE) + 1;
-        PlayCringeExclamationPointEffect(target);
+        PlayExclamationPointEffect__022E5D4C(target);
         LogMessageByIdWithPopupCheckUserTarget(user,target,0xd02 + JPN_MSG_OFFSET);
         TryActivateSteadfast(user, target);
         TryActivateQuickFeet(user, target);

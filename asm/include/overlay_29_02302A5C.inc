@@ -24,6 +24,7 @@
 .public GetTalkLine
 .public GetTile
 .public GetUnlockedTacticFlags
+.public InitMoveWrapper
 .public InitPortraitDungeon
 .public IsExperienceLocked
 .public IsHero
@@ -50,7 +51,6 @@
 .public ov29_023021F0
 .public ov29_02304830
 .public ov29_02318D58
-.public ov29_0231EA04
 .public ov29_02338988
 .public ov29_0234B4E0
 .public ov29_0234CFA0

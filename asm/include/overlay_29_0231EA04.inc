@@ -4,13 +4,13 @@
 .public DUNGEON_PTR
 .public EnsureCanStandCurrentTile
 .public EntityIsValid__0231EDD8
+.public FloorSecondaryTerrainIsChasm
 .public GetMoveCategory
 .public GetTile
 .public GetTileSafe
 .public InitMove
 .public IsFullFloorFixedRoom
 .public LogMessageByIdWithPopupCheckUser
-.public ov29_022E0378
 .public ov29_022EA370
 .public ov29_022F9C74
 .public ov29_02305814

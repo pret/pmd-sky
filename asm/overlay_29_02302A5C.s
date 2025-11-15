@@ -900,7 +900,7 @@ _02303618:
 	add r3, sp, #0x18
 	mov r0, sb
 	add r1, r3, sl, lsl #3
-	bl ov29_0231EA04
+	bl InitMoveWrapper
 	add r2, sp, #0x1a
 	mov r1, sl, lsl #3
 	ldrh r0, [r2, r1]
@@ -1093,8 +1093,8 @@ _023038D0: .word 0x00000F25
 #endif
 	arm_func_end ov29_023034E0
 
-	arm_func_start ov29_023038D4
-ov29_023038D4: ; 0x023038D4
+	arm_func_start DungeonTmLearnMove
+DungeonTmLearnMove: ; 0x023038D4
 #ifdef JAPAN
 #define OV29_023038D4_OFFSET -4
 #else
@@ -1126,7 +1126,7 @@ _02303910:
 	mov r0, sl
 	mov r2, r6
 	add r1, r1, r4, lsl #3
-	bl ov29_0231EA04
+	bl InitMoveWrapper
 	add r2, sp, #2
 	mov r1, r4, lsl #3
 	ldrh r0, [r2, r1]
@@ -1270,7 +1270,7 @@ _02303B0C: .word 0x00000F23
 _02303B10: .word 0x00000F28
 _02303B14: .word 0x00000F24
 #endif
-	arm_func_end ov29_023038D4
+	arm_func_end DungeonTmLearnMove
 
 	arm_func_start GetMonsterMoves
 GetMonsterMoves: ; 0x02303B18

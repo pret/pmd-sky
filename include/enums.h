@@ -3441,7 +3441,7 @@ enum game_mode
     // Possibly more?
 };
 
-enum FlagCalcOperation {
+enum script_calc_operation {
     CALC_SET = 0,
     CALC_SUB = 1,
     CALC_ADD = 2,

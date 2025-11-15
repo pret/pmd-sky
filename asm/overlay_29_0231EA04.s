@@ -3,15 +3,15 @@
 
 	.text
 
-	arm_func_start ov29_0231EA04
-ov29_0231EA04: ; 0x0231EA04
+	arm_func_start InitMoveWrapper
+InitMoveWrapper: ; 0x0231EA04
 	ldr ip, _0231EA14 ; =InitMove
 	mov r0, r1
 	mov r1, r2
 	bx ip
 	.align 2, 0
 _0231EA14: .word InitMove
-	arm_func_end ov29_0231EA04
+	arm_func_end InitMoveWrapper
 
 	arm_func_start MoveIsNotPhysical
 MoveIsNotPhysical: ; 0x0231EA18
@@ -80,7 +80,7 @@ _0231EAAC:
 	bl LogMessageByIdWithPopupCheckUser
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0231EAC8:
-	bl ov29_022E0378
+	bl FloorSecondaryTerrainIsChasm
 	cmp r0, #0
 	movne r7, #3
 	moveq r7, #2

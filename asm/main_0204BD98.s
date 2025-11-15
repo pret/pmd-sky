@@ -101,10 +101,10 @@ _0204BEC8: .word _0209CF48
 
 	arm_func_start sub_0204BECC
 sub_0204BECC: ; 0x0204BECC
-	ldr ip, _0204BED4 ; =FlagCalc
+	ldr ip, _0204BED4 ; =CalcScriptVariables
 	bx ip
 	.align 2, 0
-_0204BED4: .word FlagCalc
+_0204BED4: .word CalcScriptVariables
 	arm_func_end sub_0204BECC
 
 	arm_func_start sub_0204BED8
@@ -117,7 +117,7 @@ sub_0204BED8: ; 0x0204BED8
 	bl LoadScriptVariableValue
 	mov r1, r5
 	mov r2, r4
-	bl FlagCalc
+	bl CalcScriptVariables
 	mov r2, r0
 	mov r0, r7
 	mov r1, r6
@@ -140,7 +140,7 @@ sub_0204BF10: ; 0x0204BF10
 	mov r1, r0
 	mov r0, r4
 	mov r2, r5
-	bl FlagCalc
+	bl CalcScriptVariables
 	mov r2, r0
 	mov r0, r8
 	mov r1, r7

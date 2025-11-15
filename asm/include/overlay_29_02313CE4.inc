@@ -11,6 +11,7 @@
 .public GetExclusiveItemWithEffectFromBag
 .public GetMessageLogPreprocessorArgs
 .public GetTile
+.public GetTreatmentBetweenMonstersIgnoreStatus
 .public IsProtectedFromNegativeStatus
 .public IsProtectedFromStatDrops
 .public ItemIsActive__02311BF8
@@ -26,8 +27,7 @@
 .public PlayDefensiveStatMultiplierDownEffect
 .public PlayHitChanceUpEffect
 .public PlayHitChanceDownEffect
-.public GetTreatmentBetweenMonstersIgnoreStatus
-.public PlayCringeExclamationPointEffect
+.public PlayExclamationPointEffect__022E5D4C
 .public PrepareItemForPrinting__02345728
 .public SafeguardIsActive
 .public SetMessageLogPreprocessorArgsString

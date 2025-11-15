@@ -817,7 +817,7 @@ _02348A3C:
 	bne _02348A3C
 	mov r0, #2
 	mov r1, #1
-	bl ov29_022E09E8
+	bl SetDungeonEscapeFields
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02348A90:

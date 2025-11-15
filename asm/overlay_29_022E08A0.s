@@ -126,8 +126,8 @@ FadeToBlack: ; 0x022E0968
 _022E09E4: .word DUNGEON_PTR
 	arm_func_end FadeToBlack
 
-	arm_func_start ov29_022E09E8
-ov29_022E09E8: ; 0x022E09E8
+	arm_func_start SetDungeonEscapeFields
+SetDungeonEscapeFields: ; 0x022E09E8
 	ldr r2, _022E0A00 ; =DUNGEON_PTR
 	ldr r3, [r2]
 	str r0, [r3, #0x18]
@@ -136,17 +136,17 @@ ov29_022E09E8: ; 0x022E09E8
 	bx lr
 	.align 2, 0
 _022E0A00: .word DUNGEON_PTR
-	arm_func_end ov29_022E09E8
+	arm_func_end SetDungeonEscapeFields
 
-	arm_func_start ov29_022E0A04
-ov29_022E0A04: ; 0x022E0A04
+	arm_func_start GetSuccessfulExitTracker
+GetSuccessfulExitTracker: ; 0x022E0A04
 	ldr r0, _022E0A14 ; =DUNGEON_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x18]
 	bx lr
 	.align 2, 0
 _022E0A14: .word DUNGEON_PTR
-	arm_func_end ov29_022E0A04
+	arm_func_end GetSuccessfulExitTracker
 
 	arm_func_start ov29_022E0A18
 ov29_022E0A18: ; 0x022E0A18

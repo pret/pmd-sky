@@ -51,7 +51,6 @@
 .public MESSAGE_LOG_INFO
 .public MusicTableIdxToMusicId
 .public ov10_022BFD20
-.public ov29_022E09E8
 .public ov29_022E0B60
 .public ov29_022E2CA0
 .public ov29_022E550C
@@ -88,6 +87,7 @@
 .public PreprocessString
 .public RemoveEmptyItemsInBagWrapper
 .public RemoveGroundItem
+.public SetDungeonEscapeFields
 .public SetPortraitLayout
 .public ShouldDisplayEntityWrapper
 .public ShouldMonsterHeadToStairs

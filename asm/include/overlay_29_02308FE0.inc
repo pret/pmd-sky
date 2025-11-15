@@ -31,8 +31,8 @@
 .public IsBlinded
 .public IsCurrentMissionType
 .public IsExperienceLocked
-.public IsMonsterLoneOutlaw
 .public IsMonsterIdInNormalRangeVeneer
+.public IsMonsterLoneOutlaw
 .public IsSecretBazaarNpcBehavior
 .public IsSpecialStoryAlly
 .public ItemIsActive__0230A9DC

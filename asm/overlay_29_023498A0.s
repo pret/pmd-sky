@@ -1549,7 +1549,7 @@ _0234AC40:
 	beq _0234AC68
 	mov r0, #2
 	mov r1, #1
-	bl ov29_022E09E8
+	bl SetDungeonEscapeFields
 	b _0234AC70
 _0234AC68:
 	ldr r0, _0234AC88 ; =0x00000E43

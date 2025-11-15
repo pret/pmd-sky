@@ -446,7 +446,7 @@ DoMovePounce: ; 0x0232CA4C
 	arm_func_start DoMoveTrawl
 DoMoveTrawl: ; 0x0232CA60
 	stmdb sp!, {r3, lr}
-	bl ov29_0231F6E4
+	bl TryTrawl
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end DoMoveTrawl
@@ -487,7 +487,7 @@ _0232CAB4:
 _0232CAE8:
 	mov r0, #1
 	mov r1, r0
-	bl ov29_022E09E8
+	bl SetDungeonEscapeFields
 _0232CAF4:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -1081,7 +1081,7 @@ _0232D1D8: .word 0x00000257
 	arm_func_start DoMoveHurl
 DoMoveHurl: ; 0x0232D1DC
 	stmdb sp!, {r3, lr}
-	bl ov29_0231EDFC
+	bl TryHurl
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	arm_func_end DoMoveHurl

@@ -157,7 +157,7 @@ ov29_023365E8: ; 0x023365E8
 	ldrls r0, _02336650 ; =DEFAULT_TILE
 	strls r1, [r0]
 	ldmlsia sp!, {r3, pc}
-	bl ov29_022E0378
+	bl FloorSecondaryTerrainIsChasm
 	cmp r0, #0
 	ldrne r1, _02336654 ; =ov29_02352B88
 	ldrne r0, _02336650 ; =DEFAULT_TILE

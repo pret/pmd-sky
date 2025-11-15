@@ -2,7 +2,7 @@
 #include "dungeon_logic_3.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
-#include "move_orb_effects_1.h"
+#include "move_orb_effects.h"
 #include "overlay_29_02308FBC.h"
 #include "overlay_29_0230A994.h"
 #include "overlay_29_0230AB58.h"

@@ -600,7 +600,7 @@ _022EE9D8:
 	mov r0, r6
 	mov r1, r5
 	add r2, r4, #2
-	bl ov29_022EF4B4
+	bl SpawnMonstersAroundPos
 	mov r4, r0
 	ldr r1, _022EEA28 ; =0x0000030F
 	mov r0, r5
@@ -1179,7 +1179,7 @@ ApplyGrudgeTrapEffect: ; 0x022EF074
 #endif
 	mov r1, r4
 	add r2, r2, #2
-	bl ov29_022EF4B4
+	bl SpawnMonstersAroundPos
 	cmp r0, #0
 	ble _022EF0B0
 	ldr r1, _022EF148 ; =0x0000030F
@@ -1546,8 +1546,8 @@ _022EF4AC:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov29_022EF478
 
-	arm_func_start ov29_022EF4B4
-ov29_022EF4B4: ; 0x022EF4B4
+	arm_func_start SpawnMonstersAroundPos
+SpawnMonstersAroundPos: ; 0x022EF4B4
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x10
 	mov r0, #8
@@ -1629,7 +1629,7 @@ _022EF5BC:
 	.align 2, 0
 _022EF5D0: .word 0x0000017B
 _022EF5D4: .word DIRECTIONS_XY
-	arm_func_end ov29_022EF4B4
+	arm_func_end SpawnMonstersAroundPos
 
 	arm_func_start RevealTrapsNearby
 RevealTrapsNearby: ; 0x022EF5D8

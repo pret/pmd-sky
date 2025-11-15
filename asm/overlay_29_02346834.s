@@ -64,7 +64,7 @@ ov29_02346888: ; 0x02346888
 	bne _023468F0
 	mov r0, #2
 	mov r1, #1
-	bl ov29_022E09E8
+	bl SetDungeonEscapeFields
 _023468F0:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}

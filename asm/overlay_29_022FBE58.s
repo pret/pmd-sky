@@ -1,34 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_022FBE04.inc"
+	.include "overlay_29_022FBE58.inc"
 
 	.text
-
-	arm_func_start ov29_022FBE04
-ov29_022FBE04: ; 0x022FBE04
-	stmdb sp!, {r3, lr}
-	ldrb r0, [r0, #6]
-	cmp r0, #0
-	bne _022FBE4C
-	ldr r0, _022FBE54 ; =DUNGEON_PTR
-	ldr r0, [r0]
-	ldrb r0, [r0, #0x748]
-	bl GetTurnLimit
-	ldr r1, _022FBE54 ; =DUNGEON_PTR
-	ldr r1, [r1]
-	add r1, r1, #0x700
-	ldrsh r1, [r1, #0x84]
-	cmp r1, r0
-	bne _022FBE4C
-	bl IsFullFloorFixedRoom
-	cmp r0, #0
-	movne r0, #1
-	ldmneia sp!, {r3, pc}
-_022FBE4C:
-	mov r0, #0
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_022FBE54: .word DUNGEON_PTR
-	arm_func_end ov29_022FBE04
 
 	arm_func_start InitOtherMonsterData
 InitOtherMonsterData: ; 0x022FBE58

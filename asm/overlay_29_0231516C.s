@@ -1105,7 +1105,7 @@ _02315F78:
 	mov r0, #2
 	strb r0, [r6, #0xd8]
 	ldr r0, [sl, #0xb4]
-	ldr r1, _023160D4 ; =ov10_022C47B4
+	ldr r1, _023160D4 ; =DECOY_TURN_RANGE
 	ldrb r3, [r0, #6]
 	mov r0, sb
 	mov r2, #1
@@ -1198,7 +1198,7 @@ _023160CC: .word 0x00000A86
 _023160CC: .word 0x00000D46
 #endif
 _023160D0: .word DUNGEON_PTR
-_023160D4: .word ov10_022C47B4
+_023160D4: .word DECOY_TURN_RANGE
 #ifdef JAPAN
 _023160D8: .word 0x00000A85
 #else
