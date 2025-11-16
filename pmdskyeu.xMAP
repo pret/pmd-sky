@@ -160,7 +160,7 @@
                                    34](GetStringFromFileVeneer,func) found in global main_0202593C.o
                                   33](GetColorCodePaletteOffset,func) found in global main_020265C4.o
                                 31](GetMaxPp,func) found in global moves.o
-                                31](IsLevelResetDungeon,func) found in global main_02051098.o
+                                31](IsLevelResetDungeon,func) found in global main_020512C8.o
                                 31](GetMaxMembersAllowed,func) found in global main_020513C0.o
                                 31](GroundToDungeonMoveset,func) found in global main_02013C30.o
                                  32](GetInfoMoveGround,func) found in global main_020137E8.o
@@ -231,7 +231,7 @@
                                                 47](DungeonRandInt,func) found in global dg_random.o
                                                 47](GetFloorType,func) found in global overlay_29_022E0378.o
                                                  48](EntityIsValid__022E0354,func) found in global dg.o
-                                                 48](GetLeader,func) found in global overlay_29_022E9488.o
+                                                 48](GetLeader,func) found in global dg_uty.o
                                                   49](EntityIsValid__022E95F4,func) found in global dg_uty.o
                                                  48](GetForcedLossReason,func) found in global overlay_29_022ECDE4.o
                                                   49](SpawnTrap,func) found in global overlay_29_022E1AD4.o
@@ -380,7 +380,7 @@
                                                                                78](SECONDARY_TERRAIN_TYPES,object) found in global secondary_terrain_types.o
                                                                                78](DIRECTIONAL_BIT_MASKS__02352770,object) found in global directional_bit_masks.o
                                                                               77](CalculateAiTargetPos,func) found in global dungeon_ai_movement.o
-                                                                               78](IsAtJunction,func) found in global overlay_29_02301498.o
+                                                                               78](IsAtJunction,func) found in global dungeon_capabilities_4.o
                                                                                78](FACING_DIRECTION_INCREMENTS,object) found in global dungeon_ai_movement.o
                                                                               77](CheckVariousConditions__0230156C,func) found in global dungeon_capabilities_1.o
                                                                                78](CheckVariousStatuses2__02301244,func) found in global dungeon_capabilities.o
@@ -401,15 +401,15 @@
                                                                               77](CanTargetEntity,func) found in global dungeon_visibility.o
                                                                                78](IsPositionInSight,func) found in global dungeon_range.o
                                                                                 79](IsPositionWithinTwoTiles,func) found in global dungeon_range_2.o
-                                                                              77](CanSeeTeammate,func) found in global overlay_29_02301FBC.o
-                                                                               78](IsMonsterLoneOutlaw,func) found in global dungeon_logic_7.o
-                                                                                79](IsBehaviorLoneOutlaw,func) found in global dungeon_logic_6.o
-                                                                              77](GetLeaderIfVisible,func) found in global overlay_29_023082C4.o
+                                                                              77](CanSeeTeammate,func) found in global dungeon_logic_5.o
+                                                                              77](GetLeaderIfVisible,func) found in global dungeon_ai_leader.o
                                                                               77](CanTargetPosition,func) found in global dungeon_util_2.o
                                                                               77](IsTeamMemberOnFirstTurnInFixedRoom,func) found in global dungeon_logic_7.o
+                                                                               78](GetTurnLimit,func) found in global main_020512B0.o
                                                                                78](IsFullFloorFixedRoom,func) found in global fixed_room_data_1.o
                                                                               77](GetDirectionTowardsPosition,func) found in global position_util.o
                                                                                78](POSITION_DISPLACEMENT_TO_DIRECTION,object) found in global position_util.o
+                                                                              77](ShouldAvoidFirstHit,func) found in global dungeon_ai_targeting.o
                                                                              76](ov29_0234E988,func) found in global overlay_29_0234DDF4.o
                                                                               77](EntityIsValid__0234EC14,func) found in global overlay_29_0234EC14.o
                                                                               77](GetLeaderActionId,func) found in global overlay_29_022F05B4.o
@@ -492,6 +492,7 @@
                                                                                          88](HandleCurvedProjectileThrow,func) found in global dungeon_projectile_throw.o
                                                                                           89](ItemIsActive__02347B50,func) found in global dungeon_projectile_throw.o
                                                                                           89](IsWaterTileset,func) found in global dungeon_map_access_1.o
+                                                                                          89](ov29_022E9488,func) found in global overlay_29_022E9488.o
                                                                                           89](ExclusiveItemEffectIsActive__02347B80,func) found in global dungeon_projectile_throw.o
                                                                                           89](TwoTurnMoveForcedMiss,func) found in global overlay_29_02324698.o
                                                                                           89](DoesProjectileHitTarget,func) found in global overlay_29_02348020.o
@@ -760,6 +761,8 @@
                                                                                                          104](ov29_022FAFD4,func) found in global overlay_29_022FACBC.o
                                                                                                        102](RecruitCheck,func) found in global dungeon_recruitment.o
                                                                                                         103](IsRecruitingAllowed,func) found in global dungeon_recruitment_2.o
+                                                                                                        103](IsMonsterLoneOutlaw,func) found in global dungeon_logic_7.o
+                                                                                                         104](IsBehaviorLoneOutlaw,func) found in global dungeon_logic_6.o
                                                                                                         103](SpecificRecruitCheck,func) found in global dungeon_recruitment.o
                                                                                                          104](DebugRecruitingEnabled,func) found in global overlay_29_022EFA6C.o
                                                                                                         103](HasPlayedOldGame,func) found in global dungeon_recruitment_3.o
@@ -838,11 +841,13 @@
                                                                                                    98](ResetGravity,func) found in global overlay_29_0233836C.o
                                                                                                    98](SpawnTeam,func) found in global overlay_29_022FBE58.o
                                                                                                     99](EntityIsValid__022FC99C,func) found in global overlay_29_022FC99C.o
+                                                                                                    99](ov29_023021F0,func) found in global overlay_29_02301FBC.o
                                                                                                    98](IsSecretBazaarVeneer,func) found in global overlay_29_02344178.o
                                                                                                    98](ov29_022EF738,func) found in global overlay_29_022EE36C.o
                                                                                                    98](InitDungeonRng,func) found in global overlay_29_022EA9EC.o
                                                                                                    98](ov29_022E1640,func) found in global overlay_29_022E1640.o
                                                                                                    98](ov29_022DEB40,func) found in global overlay_29_022DEAB0.o
+                                                                                                   98](sub_02051134,func) found in global main_02051098.o
                                                                                                    98](ov29_022DEADC,func) found in global overlay_29_022DEAB0.o
                                                                                                   97](ov29_0234CA68,func) found in global overlay_29_0234CA68.o
                                                                                                   97](ov29_0234CA7C,func) found in global overlay_29_0234CA68.o
@@ -6670,39 +6675,40 @@
   02051358 00000044 .text   BinToDecFixedPoint	(main_0204DE7C.o)
   0205139C 00000034 .text   CeilFixedPoint	(number_util.o)
   0205139C 00000000 .text   $a	(number_util.o)
-  020513D0 00000028 .text   sub_02051098	(main_02051098.o)
   020513D0 00000000 .text   $a	(main_02051098.o)
-  020513D0 00000300 .text   .text	(main_02051098.o)
+  020513D0 00000218 .text   .text	(main_02051098.o)
+  020513D0 00000028 .text   sub_02051098	(main_02051098.o)
   020513F8 00000028 .text   sub_020510C0	(main_02051098.o)
   02051420 0000004C .text   sub_020510E8	(main_02051098.o)
   02051460 00000000 .text   $d	(main_02051098.o)
-  0205146C 00000154 .text   sub_02051134	(main_02051098.o)
   0205146C 00000000 .text   $a	(main_02051098.o)
+  0205146C 00000154 .text   sub_02051134	(main_02051098.o)
   020515A4 00000000 .text   $d	(main_02051098.o)
-  020515C0 00000000 .text   $a	(main_02051098.o)
   020515C0 00000028 .text   DungeonGoesUp	(main_02051098.o)
+  020515C0 00000000 .text   $a	(main_02051098.o)
   020515E4 00000000 .text   $d	(main_02051098.o)
-  020515E8 00000018 .text   GetTurnLimit	(main_02051098.o)
-  020515E8 00000000 .text   $a	(main_02051098.o)
-  020515FC 00000000 .text   $d	(main_02051098.o)
-  02051600 00000000 .text   $a	(main_02051098.o)
-  02051600 00000028 .text   DoesNotSaveWhenEntering	(main_02051098.o)
-  02051624 00000000 .text   $d	(main_02051098.o)
-  02051628 00000000 .text   $a	(main_02051098.o)
-  02051628 00000028 .text   TreasureBoxDropsEnabled	(main_02051098.o)
-  0205164C 00000000 .text   $d	(main_02051098.o)
-  02051650 00000028 .text   IsLevelResetDungeon	(main_02051098.o)
-  02051650 00000000 .text   $a	(main_02051098.o)
-  02051674 00000000 .text   $d	(main_02051098.o)
-  02051678 00000018 .text   GetMaxItemsAllowed	(main_02051098.o)
-  02051678 00000000 .text   $a	(main_02051098.o)
-  0205168C 00000000 .text   $d	(main_02051098.o)
-  02051690 00000000 .text   $a	(main_02051098.o)
-  02051690 00000028 .text   IsMoneyAllowed	(main_02051098.o)
-  020516B4 00000000 .text   $d	(main_02051098.o)
-  020516B8 00000000 .text   $a	(main_02051098.o)
-  020516B8 00000018 .text   GetMaxRescueAttempts	(main_02051098.o)
-  020516CC 00000000 .text   $d	(main_02051098.o)
+  020515E8 00000000 .text   $a	(main_020512B0.o)
+  020515E8 00000018 .text   GetTurnLimit	(main_020512B0.o)
+  020515FC 00000000 .text   $d	(main_020512B0.o)
+  02051600 00000000 .text   $a	(main_020512C8.o)
+  02051600 00000028 .text   DoesNotSaveWhenEntering	(main_020512C8.o)
+  02051600 000000D0 .text   .text	(main_020512C8.o)
+  02051624 00000000 .text   $d	(main_020512C8.o)
+  02051628 00000000 .text   $a	(main_020512C8.o)
+  02051628 00000028 .text   TreasureBoxDropsEnabled	(main_020512C8.o)
+  0205164C 00000000 .text   $d	(main_020512C8.o)
+  02051650 00000000 .text   $a	(main_020512C8.o)
+  02051650 00000028 .text   IsLevelResetDungeon	(main_020512C8.o)
+  02051674 00000000 .text   $d	(main_020512C8.o)
+  02051678 00000000 .text   $a	(main_020512C8.o)
+  02051678 00000018 .text   GetMaxItemsAllowed	(main_020512C8.o)
+  0205168C 00000000 .text   $d	(main_020512C8.o)
+  02051690 00000000 .text   $a	(main_020512C8.o)
+  02051690 00000028 .text   IsMoneyAllowed	(main_020512C8.o)
+  020516B4 00000000 .text   $d	(main_020512C8.o)
+  020516B8 00000000 .text   $a	(main_020512C8.o)
+  020516B8 00000018 .text   GetMaxRescueAttempts	(main_020512C8.o)
+  020516CC 00000000 .text   $d	(main_020512C8.o)
   020516D0 00000000 .text   $a	(dungeon_recruitment_2.o)
   020516D0 00000028 .text   IsRecruitingAllowed	(dungeon_recruitment_2.o)
   020516F4 00000000 .text   $d	(dungeon_recruitment_2.o)
@@ -10804,8 +10810,8 @@
 # Exception index
   02090C6C 00000000         Exception Table Index	()
 #>02090C6C          SDK_STATIC_ETABLE_END (linker command file)
-  02090C6C 00000000 .rodata _020908D4	(main_rodata_020908D4.o)
   02090C6C 00011224 .rodata .rodata	(main_rodata_020908D4.o)
+  02090C6C 00000000 .rodata _020908D4	(main_rodata_020908D4.o)
   02090C74 00000000 .rodata _020908DC	(main_rodata_020908D4.o)
   02090C7C 00000000 .rodata _020908E4	(main_rodata_020908D4.o)
   02090C84 00000000 .rodata _020908EC	(main_rodata_020908D4.o)
@@ -11811,7 +11817,6 @@
   020A11EC 00000000 .rodata _020A0C68	(main_rodata_020908D4.o)
   020A11ED 00000000 .rodata _020A0C69	(main_rodata_020908D4.o)
   020A11EE 00000000 .rodata _020A0C6A	(main_rodata_020908D4.o)
-  020A11F0 00000000 .rodata _020A0C6C	(main_rodata_020908D4.o)
   020A11F2 00000000 .rodata _020A0C6E	(main_rodata_020908D4.o)
   020A1DE8 00000000 .rodata _020A1864	(main_rodata_020908D4.o)
   020A1DEC 00000000 .rodata _020A1868	(main_rodata_020908D4.o)
@@ -35125,13 +35130,13 @@
   022E9D08 00000000 .text   $d	(overlay_29_022E9298.o)
   022E9D0C 0000012C .text   IsPositionWithinTwoTiles	(dungeon_range_2.o)
   022E9D0C 00000000 .text   $a	(dungeon_range_2.o)
-  022E9E38 0000016C .text   .text	(overlay_29_022E9488.o)
-  022E9E38 000000F8 .text   ov29_022E9488	(overlay_29_022E9488.o)
   022E9E38 00000000 .text   $a	(overlay_29_022E9488.o)
+  022E9E38 000000F8 .text   .text	(overlay_29_022E9488.o)
+  022E9E38 000000F8 .text   ov29_022E9488	(overlay_29_022E9488.o)
   022E9F0C 00000000 .text   $d	(overlay_29_022E9488.o)
-  022E9F30 00000000 .text   $a	(overlay_29_022E9488.o)
-  022E9F30 00000074 .text   GetLeader	(overlay_29_022E9488.o)
-  022E9F9C 00000000 .text   $d	(overlay_29_022E9488.o)
+  022E9F30 00000000 .text   $a	(dg_uty.o)
+  022E9F30 00000074 .text   GetLeader	(dg_uty.o)
+  022E9F9C 00000000 .text   $d	(dg_uty.o)
   022E9FA4 00000024 .text   EntityIsValid__022E95F4	(dg_uty.o)
   022E9FA4 00000000 .text   $a	(dg_uty.o)
   022E9FC8 00000000 .text   $a	(overlay_29_022E9618.o)
@@ -36309,12 +36314,11 @@
   02301D24 00000000 .text   $a	(dungeon_capabilities_4.o)
   02301D24 000001A0 .text   CanAiMonsterMoveInDirection	(dungeon_capabilities_4.o)
   02301EB0 00000000 .text   $d	(dungeon_capabilities_4.o)
-  02301EC4 000000FC .text   IsAtJunction	(overlay_29_02301498.o)
-  02301EC4 00000000 .text   $a	(overlay_29_02301498.o)
-  02301EC4 00000120 .text   .text	(overlay_29_02301498.o)
-  02301FB8 00000000 .text   $d	(overlay_29_02301498.o)
-  02301FC0 00000024 .text   ShouldAvoidFirstHit	(overlay_29_02301498.o)
-  02301FC0 00000000 .text   $a	(overlay_29_02301498.o)
+  02301EC4 00000000 .text   $a	(dungeon_capabilities_4.o)
+  02301EC4 000000FC .text   IsAtJunction	(dungeon_capabilities_4.o)
+  02301FB8 00000000 .text   $d	(dungeon_capabilities_4.o)
+  02301FC0 00000024 .text   ShouldAvoidFirstHit	(dungeon_ai_targeting.o)
+  02301FC0 00000000 .text   $a	(dungeon_ai_targeting.o)
   02301FE4 00000000 .text   $a	(dungeon_ai_targeting.o)
   02301FE4 000000F0 .text   ShouldMonsterRunAway	(dungeon_ai_targeting.o)
   023020D0 00000000 .text   $d	(dungeon_ai_targeting.o)
@@ -36377,16 +36381,16 @@
   023029AC 00000000 .text   $a	(dungeon_pokemon_attributes_1.o)
   023029AC 0000003C .text   IqSkillIsEnabled	(dungeon_pokemon_attributes_1.o)
   023029E4 00000000 .text   $d	(dungeon_pokemon_attributes_1.o)
-  023029E8 000002C0 .text   .text	(overlay_29_02301FBC.o)
-  023029E8 00000000 .text   $a	(overlay_29_02301FBC.o)
+  023029E8 00000244 .text   .text	(overlay_29_02301FBC.o)
   023029E8 00000234 .text   UpdateIqSkills	(overlay_29_02301FBC.o)
+  023029E8 00000000 .text   $a	(overlay_29_02301FBC.o)
   02302C14 00000000 .text   $d	(overlay_29_02301FBC.o)
   02302C1C 00000000 .text   $a	(overlay_29_02301FBC.o)
   02302C1C 00000010 .text   ov29_023021F0	(overlay_29_02301FBC.o)
   02302C28 00000000 .text   $d	(overlay_29_02301FBC.o)
-  02302C2C 0000007C .text   CanSeeTeammate	(overlay_29_02301FBC.o)
-  02302C2C 00000000 .text   $a	(overlay_29_02301FBC.o)
-  02302CA4 00000000 .text   $d	(overlay_29_02301FBC.o)
+  02302C2C 00000000 .text   $a	(dungeon_logic_5.o)
+  02302C2C 0000007C .text   CanSeeTeammate	(dungeon_logic_5.o)
+  02302CA4 00000000 .text   $d	(dungeon_logic_5.o)
   02302CA8 00000000 .text   $a	(dungeon_logic_5.o)
   02302CA8 000000A0 .text   GetMoveTypeForMonster	(dungeon_logic_5.o)
   02302D44 00000000 .text   $d	(dungeon_logic_5.o)
@@ -36595,9 +36599,8 @@
   02308CA8 00000000 .text   $a	(dungeon_ai_leader.o)
   02308CCC 00000024 .text   ShouldMonsterFollowLeader	(dungeon_ai_leader.o)
   02308CCC 00000000 .text   $a	(dungeon_ai_leader.o)
-  02308CF0 0000007C .text   .text	(overlay_29_023082C4.o)
-  02308CF0 0000007C .text   GetLeaderIfVisible	(overlay_29_023082C4.o)
-  02308CF0 00000000 .text   $a	(overlay_29_023082C4.o)
+  02308CF0 0000007C .text   GetLeaderIfVisible	(dungeon_ai_leader.o)
+  02308CF0 00000000 .text   $a	(dungeon_ai_leader.o)
   02308D6C 00000000 .text   $a	(dungeon_ai.o)
   02308D6C 0000029C .text   RunMonsterAi	(dungeon_ai.o)
   02309000 00000000 .text   $d	(dungeon_ai.o)
@@ -41038,5 +41041,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Nov 15 03:09:30 2025
-# Link end time: Sat Nov 15 03:09:30 2025
+# Link start time: Sun Nov 16 05:15:15 2025
+# Link end time: Sun Nov 16 05:15:16 2025
