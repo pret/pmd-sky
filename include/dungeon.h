@@ -1823,14 +1823,27 @@ struct dungeon {
     u8 field_0x2cb13;
 };
 
+// Entry for a single dungeon in the dungeon restriction list
 struct dungeon_restriction {
+    // 0x0: flags: 2-byte bitfield
     u32 flags;
-    u8 max_rescue_attempts;
-    u8 max_items_allowed;
-    u8 max_party_size;
-    u8 pad;
-    u16 turn_limit_per_floor;
-    u16 random_movement_chance;
+    // bool8 f_dungeon_goes_up : 1;  // Dungeon goes up (stairs ascend, floors are labeled 1F, 2F, ...)
+    // bool8 f_enemies_evolve : 1;   // Enemies evolve after they defeat another monster
+    // bool8 f_enemies_give_exp : 1; // Enemies give experience
+    // bool8 f_recruitment_allowed : 1;   // Recruitment is allowed
+    // bool8 f_reset_to_level_1 : 1;      // Team members are reset to level 1 for the dungeon
+    // bool8 f_money_allowed : 1;         // Money is allowed to be brought into the dungeon
+    // bool8 f_leader_change_enabled : 1; // The team leader can be changed within the dungeon
+    // bool8 f_enter_without_saving : 1;  // If false, the game will be saved upon entering
+    // bool8 f_disable_iq_skills : 1;     // IQ skills won't work in the dungeon
+    // bool8 f_no_trap_uncovering : 1;    // Traps cannot be revealed by attacking or throwing items
+    // bool8 f_treasure_box_drops : 1;    // Enemies can drop Treasure Boxes
+    u8 max_rescue_attempts; // 0x4: 0xFF means no rescues allowed
+    u8 max_items_allowed; // 0x5: Maximum number of items that can be brought into the dungeon
+    u8 max_party_size;    // 0x6: Maximum number of team members that can enter the dungeon
+    s16 turn_limit_per_floor; // 0x8: Number of turns per floor before the wind blows you out
+    // 0xA: Chance of setting the monster::random_movement field to 1 when spawning an enemy
+    s16 random_movement_chance;
 };
 
 #endif // PMDSKY_DUNGEON_H

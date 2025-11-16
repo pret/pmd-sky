@@ -94,6 +94,8 @@ Static main
 	Object asm/main_0204DE7C.o
 	Object src/number_util.o
 	Object asm/main_02051098.o
+	Object src/main_020512B0.o
+	Object asm/main_020512C8.o
 	Object src/dungeon_recruitment_2.o
 	Object asm/main_020513C0.o
 	Object src/main_020514CC.o

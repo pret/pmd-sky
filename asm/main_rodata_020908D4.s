@@ -10402,8 +10402,6 @@ _020A0C69:
 	.global _020A0C6A
 _020A0C6A:
 	.byte 0x04, 0x00
-	.global _020A0C6C
-_020A0C6C:
 	.byte 0xE8, 0x03
 	.global _020A0C6E
 _020A0C6E:
