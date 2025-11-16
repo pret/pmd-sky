@@ -1,4 +1,5 @@
 #include "overlay_31_02382820.h"
+#include "dg_uty.h"
 #include "dungeon_ai_targeting.h"
 #include "dungeon_util_static.h"
 #include "number_util.h"
@@ -23,7 +24,6 @@ extern u16 ov31_02389E22[];
 
 extern void* MemAlloc(u32 size, u32 nmemb);
 
-extern struct entity* GetLeader(void);
 extern u32 GetMoneyCarried(void);
 extern u32 sub_0204F9E0(void);
 extern void ov29_022E2A78(u8*, void*, u32); // The third argument isn't actually used in the

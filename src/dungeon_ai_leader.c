@@ -1,10 +1,9 @@
 #include "dungeon_ai_leader.h"
+#include "dg_uty.h"
 #include "dungeon_ai_targeting_1.h"
 #include "dungeon_util_static.h"
 #include "dungeon_visibility.h"
 #include "main_02058C3C.h"
-
-extern struct entity* GetLeader(void);
 
 bool8 EntityIsValid__0230827C(struct entity *entity)
 {
