@@ -6,6 +6,5 @@
 .public GetTile
 .public IqSkillIsEnabled
 .public IsCurrentTilesetBackground
-.public IsTacticSet
 .public ItemIsActive__022FF898
 .public SECONDARY_TERRAIN_TYPES

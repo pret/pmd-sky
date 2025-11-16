@@ -111,16 +111,3 @@ _02301534:
 _0230158C: .word DUNGEON_PTR
 _02301590: .word SECONDARY_TERRAIN_TYPES
 	arm_func_end IsAtJunction
-
-	arm_func_start ShouldAvoidFirstHit
-ShouldAvoidFirstHit: ; 0x02301594
-	stmdb sp!, {r4, lr}
-	mov r4, r1
-	mov r1, #3
-	bl IsTacticSet
-	cmp r0, #0
-	cmpne r4, #0
-	movne r0, #1
-	moveq r0, #0
-	ldmia sp!, {r4, pc}
-	arm_func_end ShouldAvoidFirstHit

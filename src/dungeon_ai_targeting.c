@@ -4,6 +4,14 @@
 #include "dungeon_util_static.h"
 #include "overlay_29_023000E4.h"
 
+bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 should_avoid)
+{
+    if (IsTacticSet(monster, TACTIC_AVOID_THE_FIRST_HIT) && should_avoid)
+        return TRUE;
+
+    return FALSE;
+}
+
 extern void DisplayRunAwayIfTriggered(struct entity *monster, bool8 show_run_away_effect);
 
 bool8 ShouldMonsterRunAway(struct entity *monster)
