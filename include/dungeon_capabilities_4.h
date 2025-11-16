@@ -18,5 +18,7 @@ bool8 CanAttackInDirection(struct entity *monster, s32 direction);
 // out_monster_in_target_position: [output] True if movement was not possible because there was another monster on the target tile, false otherwise.
 // return: True if the monster can move in the specified direction, false otherwise.
 bool8 CanAiMonsterMoveInDirection(struct entity *monster, s32 direction, bool8 *out_monster_in_target_position);
+// Checks if the tile the given monster is on is considered a junction for the purposes of AI movement. This is affected by what types of terrain the monster can cross.
+bool8 IsAtJunction(struct entity *monster);
 
 #endif //PMDSKY_DUNGEON_CAPABILITIES_4_H

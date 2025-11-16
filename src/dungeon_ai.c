@@ -4,6 +4,7 @@
 #include "dungeon_action.h"
 #include "dungeon_ai_itcm.h"
 #include "dungeon_ai_items.h"
+#include "dungeon_ai_movement.h"
 #include "dungeon_capabilities_1.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_pokemon_attributes_1.h"
@@ -26,7 +27,6 @@
 extern void EndFrozenClassStatus(struct entity *user, struct entity *target, bool8 log);
 extern void SubstitutePlaceholderStringTags(u8 *string_id, struct entity *entity, u32 param_3);
 extern void LogMessageByIdWithPopupCheckUser(struct entity *user, u32 message_id);
-extern void AiMovement(struct entity *monster, bool8 show_run_away_effect);
 
 void RunMonsterAi(struct entity *monster, u32 unused)
 {
