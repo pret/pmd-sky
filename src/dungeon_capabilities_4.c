@@ -1,4 +1,5 @@
 #include "dungeon_capabilities_4.h"
+#include "dg_random.h"
 #include "direction.h"
 #include "directional_bit_masks.h"
 #include "dungeon.h"
@@ -171,5 +172,70 @@ bool8 CanAiMonsterMoveInDirection(struct entity *monster, s32 direction, bool8 *
         return TRUE;
 
     *out_monster_in_target_position = TRUE;
+    return FALSE;
+}
+
+bool8 IsAtJunction(struct entity *monster)
+{
+    enum mobility_type mobility = GetMobilityTypeCheckSlipAndFloating(monster, GetEntInfo(monster)->id);
+
+    #ifdef JAPAN
+    if (!IsCurrentTilesetBackground())
+    {
+        if (GetEntInfo(monster)->invisible_class_status.status == STATUS_INVISIBLE_MOBILE)
+            mobility = MOBILITY_INTANGIBLE;
+        else if (ItemIsActive__022FF898(monster, ITEM_MOBILE_SCARF))
+            mobility = MOBILITY_INTANGIBLE;
+        else if (IqSkillIsEnabled(monster, IQ_ALL_TERRAIN_HIKER))
+            // BUG: If a Pokémon can normally move through walls, All-Terrain Hiker will block them from moving through walls.
+            // This bug is fixed in the NA/EU versions.
+            mobility = MOBILITY_HOVERING;
+        else if (IqSkillIsEnabled(monster, IQ_ABSOLUTE_MOVER)) {
+            mobility = MOBILITY_INTANGIBLE;
+        }
+    }
+    #else
+    mobility = GetDirectionalMobilityType(monster, mobility, DIR_NONE_UNSIGNED);
+    #endif
+
+    if (mobility == MOBILITY_INTANGIBLE)
+    {
+        struct monster *pokemon_info = GetEntInfo(monster);
+        pokemon_info->mobile_turn_timer += DungeonRandInt(100);
+        if (pokemon_info->mobile_turn_timer < 200)
+            return FALSE;
+
+        pokemon_info->mobile_turn_timer = 0;
+        return TRUE;
+    }
+
+    const struct tile *map_tile;
+    if (SECONDARY_TERRAIN_TYPES[DUNGEON_PTR[0]->gen_info.tileset_id] == SECONDARY_TERRAIN_LAVA &&
+        mobility == MOBILITY_SECONDARY &&
+        IqSkillIsEnabled(monster, IQ_LAVA_EVADER))
+        mobility = MOBILITY_NORMAL;
+
+    map_tile = GetTile(monster->pos.x, monster->pos.y);
+    u8 walkable_neighbor_flags = map_tile->walkable_neighbor_flags[mobility];
+    /*
+    Check for configurations of open tiles that are considered junctions; i.e., shaped like a 'T' or '+'.
+    X=Wall, O=Open
+
+    0x54  0x51  0x45  0x15  0x55
+    XOX   XOX   XXX   XOX   XOX
+    OOO   OOX   OOO   XOO   OOO
+    XXX   XOX   XOX   XOX   XOX
+    */
+    if (walkable_neighbor_flags == 0x54)
+        return TRUE;
+    if (walkable_neighbor_flags == 0x51)
+        return TRUE;
+    if (walkable_neighbor_flags == 0x45)
+        return TRUE;
+    if (walkable_neighbor_flags == 0x15)
+        return TRUE;
+    if (walkable_neighbor_flags == 0x55)
+        return TRUE;
+
     return FALSE;
 }

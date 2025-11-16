@@ -1,11 +1,26 @@
 #include "dungeon_logic_5.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
+#include "dungeon_visibility.h"
 #include "main_02014CEC.h"
 #include "moves_2.h"
 #include "natural_gift_data.h"
 #include "overlay_29_023000E4.h"
 #include "special_move_types.h"
+
+bool8 CanSeeTeammate(struct entity *monster)
+{
+    if (GetEntInfo(monster)->is_not_team_member)
+        return FALSE;
+
+    for (s32 member_idx = 0; member_idx < MAX_TEAM_MEMBERS; member_idx++)
+    {
+        struct entity *team_member = DUNGEON_PTR[0]->monster_slots.party_members[member_idx];
+        if (EntityIsValid__023000E4(monster) && monster != team_member && CanSeeTarget(monster, team_member))
+            return TRUE;
+    }
+    return FALSE;
+}
 
 enum type_id GetMoveTypeForMonster(struct entity *entity, struct move *move)
 {

@@ -4,7 +4,7 @@
 #include "enums.h"
 #include "util.h"
 
-extern struct dungeon_restriction DUNGEON_RESTRICTIONS[];
+extern struct dungeon_restriction DUNGEON_RESTRICTIONS[256];
 
 bool8 IsRecruitingAllowed(enum dungeon_id dungeon_id)
 {

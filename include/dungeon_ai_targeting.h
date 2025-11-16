@@ -3,6 +3,11 @@
 
 #include "dungeon_mode.h"
 
+// Checks whether an AI-controlled monster should try to avoid the first hit in battle.
+// monster: Entity pointer
+// should_avoid: If true, this function always returns true.
+// return: True if the monster should try to avoid the first hit in battle.
+bool8 ShouldAvoidFirstHit(struct entity *monster, bool8 should_avoid);
 // Checks if a monster should run away from other monsters
 // return: True if the monster should run away, false otherwise
 bool8 ShouldMonsterRunAway(struct entity *monster);

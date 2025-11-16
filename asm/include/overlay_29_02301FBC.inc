@@ -1,10 +1,7 @@
 #pragma once
 .public CanLearnIqSkill
-.public CanSeeTarget
 .public DisableIqSkill
-.public DUNGEON_PTR
 .public EnableIqSkill
-.public EntityIsValid__023000E4
 .public GetPerformanceFlagWithChecks
 .public GetSpeciesIqSkill
 .public IqSkillFlagTest

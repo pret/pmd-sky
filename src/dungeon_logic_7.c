@@ -3,9 +3,8 @@
 #include "dungeon_mode.h"
 #include "dungeon_util_static.h"
 #include "fixed_room_data_1.h"
+#include "main_020512B0.h"
 #include "util.h"
-
-extern s32 GetTurnLimit(enum dungeon_id dungeon_id);
 
 bool8 IsMonsterLoneOutlaw(struct monster* monster_info)
 {
