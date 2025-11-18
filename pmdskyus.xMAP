@@ -841,7 +841,8 @@
                                                                                                    98](ResetGravity,func) found in global overlay_29_0233836C.o
                                                                                                    98](SpawnTeam,func) found in global overlay_29_022FBE58.o
                                                                                                     99](EntityIsValid__022FC99C,func) found in global overlay_29_022FC99C.o
-                                                                                                    99](ov29_023021F0,func) found in global overlay_29_02301FBC.o
+                                                                                                    99](ov29_023021F0,func) found in global overlay_29_023021F0.o
+                                                                                                     100](UpdateIqSkills,func) found in global dungeon_pokemon_attributes_1.o
                                                                                                    98](IsSecretBazaarVeneer,func) found in global overlay_29_02344178.o
                                                                                                    98](ov29_022EF738,func) found in global overlay_29_022EE36C.o
                                                                                                    98](InitDungeonRng,func) found in global overlay_29_022EA9EC.o
@@ -36341,13 +36342,13 @@
   02301F80 00000000 .text   $a	(dungeon_pokemon_attributes_1.o)
   02301F80 0000003C .text   IqSkillIsEnabled	(dungeon_pokemon_attributes_1.o)
   02301FB8 00000000 .text   $d	(dungeon_pokemon_attributes_1.o)
-  02301FBC 00000244 .text   .text	(overlay_29_02301FBC.o)
-  02301FBC 00000234 .text   UpdateIqSkills	(overlay_29_02301FBC.o)
-  02301FBC 00000000 .text   $a	(overlay_29_02301FBC.o)
-  023021E8 00000000 .text   $d	(overlay_29_02301FBC.o)
-  023021F0 00000000 .text   $a	(overlay_29_02301FBC.o)
-  023021F0 00000010 .text   ov29_023021F0	(overlay_29_02301FBC.o)
-  023021FC 00000000 .text   $d	(overlay_29_02301FBC.o)
+  02301FBC 00000000 .text   $a	(dungeon_pokemon_attributes_1.o)
+  02301FBC 00000234 .text   UpdateIqSkills	(dungeon_pokemon_attributes_1.o)
+  023021E8 00000000 .text   $d	(dungeon_pokemon_attributes_1.o)
+  023021F0 00000000 .text   $a	(overlay_29_023021F0.o)
+  023021F0 00000010 .text   .text	(overlay_29_023021F0.o)
+  023021F0 00000010 .text   ov29_023021F0	(overlay_29_023021F0.o)
+  023021FC 00000000 .text   $d	(overlay_29_023021F0.o)
   02302200 00000000 .text   $a	(dungeon_logic_5.o)
   02302200 0000007C .text   CanSeeTeammate	(dungeon_logic_5.o)
   02302278 00000000 .text   $d	(dungeon_logic_5.o)
@@ -41007,5 +41008,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Nov 16 05:13:37 2025
-# Link end time: Sun Nov 16 05:13:38 2025
+# Link start time: Tue Nov 18 06:21:40 2025
+# Link end time: Tue Nov 18 06:21:41 2025
