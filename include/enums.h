@@ -2,6 +2,7 @@
 #define PMDSKY_ENUMS_H
 
 #define NUM_TACTICS TACTIC_NONE + 1
+#define MAX_NUM_IQ_SKILLS 25
 
 // Tactic ID. These are usually encoded as bitvectors.
 enum tactic_id {
@@ -2909,6 +2910,7 @@ enum iq_skill_id {
     IQ_PIERCE_HURLER = 66,
     IQ_COLLECTOR = 67,
     IQ_TRUE_POWERIST = 68,
+    IQ_NONE_2 = 255,
 };
 
 enum movement_flag
@@ -3454,6 +3456,12 @@ enum script_calc_operation {
     CALC_SETBIT = 9,
     CALC_CLEARBIT = 10,
     CALC_RANDOM = 11,
+};
+
+// https://docs.google.com/spreadsheets/d/1NK3wkC8mOCu-tVkxULLkhpgPR-glApiD2v3zp-mdW7w
+enum performance_progress_flag
+{
+    PERFORMANCE_PROGRESS_FLAG_RANDOM_MISSION = 3
 };
 
 #endif //PMDSKY_ENUMS_H
