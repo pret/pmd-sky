@@ -49,20 +49,22 @@ extern u8 EVENT_FLAG_EXPANSION_ERROR;
 // @ 	.byte 0x65, 0x76, 0x65, 0x6E, 0x74, 0x5F, 0x66, 0x6C
 // @ 	.byte 0x61, 0x67, 0x2E, 0x63, 0x00, 0x00, 0x00, 0x00
 
-struct EVENT_FLAG_PROG_POS_INFO {
-    const u8* filename1;
+struct EVENT_FLAG_PROG_POS_INFO_TYPE {
+    const u8* file1;
     s32 line1;
-    const u8* filename2;
+    const u8* file2;
     s32 line2;
 };
 
-const u8 EVENT_FLAG[] = "event_flag.c"; // _0209CEBC
-const struct EVENT_FLAG_PROG_POS_INFO EVENT_FLAG_PROG_POS_INFO = {
-    EVENT_FLAG,
+const struct EVENT_FLAG_PROG_POS_INFO_TYPE EVENT_FLAG_PROG_POS_INFO = {
+    (u8*) 0x0209cebc,
     1001,
-    EVENT_FLAG,
+    (u8*) 0x0209cebc,
     1044
 };
+
+const u8 EVENT_FLAG[] = "event_flag.c"; // _0209CEBC
+
         
         void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
             union script_var_value sv_val_local[],
@@ -430,16 +432,16 @@ s32 FlagCalc(s32 param_1, s32 param_2, enum FlagCalcOperation operation)
         default:
             // EVENT_FLAG_PROG_POS_INFO contains a pointer to the filename event_flag.c
             // and a line number of 1001
-            struct prog_pos_info prog_pos_info = *(struct prog_pos_info*) &EVENT_FLAG_PROG_POS_INFO;
+            // struct prog_pos_info prog_pos_info = *(struct prog_pos_info*) &EVENT_FLAG_PROG_POS_INFO;
             // EVENT_FLAG_EXPANSION_ERROR contains the string "event flag expansion error %d"
-            // struct prog_pos_info p = {
-            //     .file = (unsigned char *) EVENT_FLAG_PROG_POS_INFO.filename1,
-            //     .line = EVENT_FLAG_PROG_POS_INFO.line1
-            // };
+            struct prog_pos_info p = {
+                 .file = (u8*)EVENT_FLAG_PROG_POS_INFO.file1,
+                 .line = EVENT_FLAG_PROG_POS_INFO.line1
+            };
 
             // Debug_FatalError(((&((prog_pos_info){EVENT_FLAG_PROG_POS_INFO.filename1, EVENT_FLAG_PROG_POS_INFO.line1}))), EVENT_FLAG_EXPANSION_ERROR, operation);
             //FATAL_ERROR_ARGS(EVENT_FLAG_PROG_POS_INFO.filename1, EVENT_FLAG_PROG_POS_INFO.line1, EVENT_FLAG_EXPANSION_ERROR, operation);
 
-            Debug_FatalError(&prog_pos_info, &EVENT_FLAG_EXPANSION_ERROR, operation);
+            Debug_FatalError(&p, &EVENT_FLAG_EXPANSION_ERROR, operation);
     }
 }
