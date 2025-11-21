@@ -56,14 +56,21 @@ struct EVENT_FLAG_PROG_POS_INFO_TYPE {
     s32 line2;
 };
 
+// const struct EVENT_FLAG_PROG_POS_INFO_TYPE EVENT_FLAG_PROG_POS_INFO = {
+//     (u8*) 0x0209cebc,
+//     1001,
+//     (u8*) 0x0209cebc,
+//     1044
+// };
+
+const u8 EVENT_FLAG[] = "event_flag.c"; // _0209CEBC
 const struct EVENT_FLAG_PROG_POS_INFO_TYPE EVENT_FLAG_PROG_POS_INFO = {
-    (u8*) 0x0209cebc,
+    EVENT_FLAG,
     1001,
-    (u8*) 0x0209cebc,
+    EVENT_FLAG,
     1044
 };
 
-const u8 EVENT_FLAG[] = "event_flag.c"; // _0209CEBC
 
         
         void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
