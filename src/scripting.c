@@ -10,11 +10,6 @@ extern struct script_var_def SCRIPT_VARS_LOCALS[];
 // Global script variable values
 extern u8 SCRIPT_VARS_VALUES[];
 
-struct prog_pos_info prog_pos_info = {
-    0, // file name
-    0   // line number
-} ;
-
 extern s32 GetPartyMembers(s32 param1);
 extern s32 GetMoneyCarried();
 extern s32 GetMoneyStored();
