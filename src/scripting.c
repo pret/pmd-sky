@@ -73,25 +73,25 @@ const struct EVENT_FLAG_PROG_POS_INFO_TYPE EVENT_FLAG_PROG_POS_INFO = {
 
 
         
-        void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
-            union script_var_value sv_val_local[],
-            const enum script_var_id sv_id) {
-                short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
-                
-                if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
-                    // global script var
-                    sv_raw->def = &SCRIPT_VARS[sv_id];
-                    sv_raw->value = (union script_var_value*)
-                    &SCRIPT_VARS_VALUES[sv_raw->def->mem_offset];
-                } else {
-                    // local script var
-                    sv_raw->def = &SCRIPT_VARS_LOCALS[sv_id - LOCAL_SCRIPT_VAR_OFFSET];
-                    sv_raw->value = &sv_val_local[sv_raw->def->mem_offset];
-                }
-            }
-            
-            s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id)
-            {
+void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
+union script_var_value sv_val_local[],
+const enum script_var_id sv_id) {
+    short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
+    
+    if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
+        // global script var
+        sv_raw->def = &SCRIPT_VARS[sv_id];
+        sv_raw->value = (union script_var_value*)
+        &SCRIPT_VARS_VALUES[sv_raw->def->mem_offset];
+    } else {
+        // local script var
+        sv_raw->def = &SCRIPT_VARS_LOCALS[sv_id - LOCAL_SCRIPT_VAR_OFFSET];
+        sv_raw->value = &sv_val_local[sv_raw->def->mem_offset];
+    }
+}
+
+s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id)
+{
     struct script_var_raw result;
     LoadScriptVariableRaw(&result, sv_local, sv_id);
 
