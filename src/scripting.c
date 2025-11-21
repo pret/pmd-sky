@@ -54,16 +54,7 @@ struct EVENT_FLAG_PROG_POS_INFO_TYPE {
 //     1044
 // };
 
-const u8 EVENT_FLAG[] = "event_flag.c"; // _0209CEBC
-const struct EVENT_FLAG_PROG_POS_INFO_TYPE EVENT_FLAG_PROG_POS_INFO = {
-    EVENT_FLAG,
-    1001,
-    EVENT_FLAG,
-    1044
-};
 
-
-        
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     union script_var_value sv_val_local[],
     const enum script_var_id sv_id) {
@@ -432,6 +423,13 @@ s32 FlagCalc(s32 param_1, s32 param_2, enum FlagCalcOperation operation)
             // and a line number of 1001
             // struct prog_pos_info prog_pos_info = *(struct prog_pos_info*) &EVENT_FLAG_PROG_POS_INFO;
             // EVENT_FLAG_EXPANSION_ERROR contains the string "event flag expansion error %d"
+            const u8 _0209CEBC[] = "event_flag.c"; // _0209CEBC
+            const struct EVENT_FLAG_PROG_POS_INFO_TYPE EVENT_FLAG_PROG_POS_INFO = {
+                _0209CEBC,
+                1001,
+                _0209CEBC,
+                1044
+            };
             struct prog_pos_info p = {
                  .file = (u8*)EVENT_FLAG_PROG_POS_INFO.file1,
                  .line = EVENT_FLAG_PROG_POS_INFO.line1

@@ -95,7 +95,7 @@ _0204BEBC:
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0204BEC4: .word EVENT_FLAG_PROG_POS_INFO
+_0204BEC4: .word 0x0209ceac
 _0204BEC8: .word _0209CF48
 	arm_func_end sub_0204BD98
 
