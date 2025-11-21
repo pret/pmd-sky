@@ -73,7 +73,7 @@ void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
         // global script var
         sv_raw->def = &SCRIPT_VARS[sv_id];
         sv_raw->value = (union script_var_value*)
-        &SCRIPT_VARS_VALUES[sv_raw->def->mem_offset];
+                        &SCRIPT_VARS_VALUES[sv_raw->def->mem_offset];
     } else {
         // local script var
         sv_raw->def = &SCRIPT_VARS_LOCALS[sv_id - LOCAL_SCRIPT_VAR_OFFSET];
