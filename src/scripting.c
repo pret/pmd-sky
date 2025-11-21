@@ -24,14 +24,24 @@ extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
 extern s32 sub_0204C928(s32 arg0);
 
-const short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
-
-extern struct prog_pos_info EVENT_FLAG_PROG_POS_INFO;
 extern u8 EVENT_FLAG_EXPANSION_ERROR;
+extern u8 EVENT_FLAG_RULE_ERROR;
+
+const u8 EVENT_FLAG_FILE_NAME[] = "event_flag.c";
+const struct prog_pos_info ppi_line_1011 = {
+    (u8*) EVENT_FLAG_FILE_NAME,
+    1001
+};
+const struct prog_pos_info ppi_line_1044 = {
+    (u8*) EVENT_FLAG_FILE_NAME,
+    1044
+};
 
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     union script_var_value sv_val_local[],
     const enum script_var_id sv_id) {
+
+    short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
 
     if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
         // global script var
@@ -392,10 +402,42 @@ s32 CalcScriptVariables(s32 param_1, s32 param_2, enum script_calc_operation ope
         case CALC_RANDOM:
             return RandInt(param_2);
         default:
-            // EVENT_FLAG_PROG_POS_INFO contains a pointer to the filename event_flag.c
-            // and a line number of 1001
-            struct prog_pos_info prog_pos_info = EVENT_FLAG_PROG_POS_INFO;
-            // EVENT_FLAG_EXPANSION_ERROR contains the string "event flag expansion error %d"
-            Debug_FatalError(&prog_pos_info, &EVENT_FLAG_EXPANSION_ERROR, operation);
+            struct prog_pos_info ppi = ppi_line_1011;
+            Debug_FatalError(&ppi, &EVENT_FLAG_EXPANSION_ERROR, operation);
     }
+}
+
+bool8 CompareScriptVariables(s32 param_1, s32 param_2, enum compare_operation operation)
+{
+    switch (operation) {
+        case CMP_TRUE:
+            return TRUE;
+        case CMP_FALSE:
+            return FALSE;
+        case CMP_EQ:
+            return param_1 == param_2;
+        case CMP_NE:
+            return param_1 != param_2;
+        case CMP_GT:
+            return param_1 > param_2;
+        case CMP_GE:
+            return param_1 >= param_2;
+        case CMP_LT:
+            return param_1 < param_2;
+        case CMP_LE:
+            return param_1 <= param_2;
+        case CMP_AND_NONZERO:
+            return (param_1 & param_2) != 0;
+        case CMP_XOR_NONZERO:
+            return (param_1 ^ param_2) != 0;
+        case CMP_BIT_SET:
+            if(param_1 & (1 << param_2)) {
+                return 1;
+            } else {
+                return 0;
+            }
+        default:
+            struct prog_pos_info ppi = ppi_line_1044;
+            Debug_FatalError(&ppi, &EVENT_FLAG_RULE_ERROR, operation);
+        }
 }
