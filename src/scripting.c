@@ -65,8 +65,8 @@ const struct EVENT_FLAG_PROG_POS_INFO_TYPE EVENT_FLAG_PROG_POS_INFO = {
 
         
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
-union script_var_value sv_val_local[],
-const enum script_var_id sv_id) {
+    union script_var_value sv_val_local[],
+    const enum script_var_id sv_id) {
     short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
     
     if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
