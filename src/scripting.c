@@ -15,10 +15,6 @@ struct prog_pos_info prog_pos_info = {
     0   // line number
 } ;
 
-#define DEBUG_LOC_PTR(file, line)((&((prog_pos_info){file, line})))
-#define FATAL_ERROR_ARGS(file, line, ...) Debug_FatalError(DEBUG_LOC_PTR(file, line), __VA_ARGS__ )
-#define FATAL_ERROR(...) FATAL_ERROR_ARGS(__FILE__, __LINE__, __VA_ARGS__)
-
 extern s32 GetPartyMembers(s32 param1);
 extern s32 GetMoneyCarried();
 extern s32 GetMoneyStored();
