@@ -441,3 +441,8 @@ bool8 CompareScriptVariables(s32 param_1, s32 param_2, enum compare_operation op
             Debug_FatalError(&ppi, &EVENT_FLAG_RULE_ERROR, operation);
         }
 }
+
+s32 CalcScriptVariablesVeneer(s32 param_1, s32 param_2, enum script_calc_operation operation)
+{
+    return CalcScriptVariables(param_1, param_2, operation);
+}

@@ -3616,7 +3616,7 @@ _022DF3DC:
 	bl LoadScriptVariableValue
 	mov r1, r5
 	mov r2, r7
-	bl sub_0204BECC
+	bl CalcScriptVariablesVeneer
 	mov r7, r0
 	b _022DF6FC
 _022DF424:
@@ -3641,7 +3641,7 @@ _022DF424:
 	mov r2, r7
 	mov r1, r0
 	mov r0, r5
-	bl sub_0204BECC
+	bl CalcScriptVariablesVeneer
 	mov r7, r0
 	b _022DF6FC
 _022DF484:

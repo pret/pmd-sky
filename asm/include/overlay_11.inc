@@ -626,7 +626,7 @@
 .public sub_0204AE80
 .public sub_0204AEE0
 .public sub_0204B3D0
-.public sub_0204BECC
+.public CalcScriptVariablesVeneer
 .public sub_0204BED8
 .public sub_0204BF10
 .public sub_0204BF5C

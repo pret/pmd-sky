@@ -1,15 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204BECC.inc"
+	.include "main_0204BED8.inc"
 
 	.text
-
-	arm_func_start sub_0204BECC
-sub_0204BECC: ; 0x0204BECC
-	ldr ip, _0204BED4 ; =CalcScriptVariables
-	bx ip
-	.align 2, 0
-_0204BED4: .word CalcScriptVariables
-	arm_func_end sub_0204BECC
 
 	arm_func_start sub_0204BED8
 sub_0204BED8: ; 0x0204BED8
