@@ -631,7 +631,7 @@
 .public UpdateScriptVarWithVar
 .public CompareScriptVariablesVeneer
 .public CompareScriptVarWithParam
-.public sub_0204BF88
+.public LoadAndCompareScriptVars
 .public sub_0204C5DC
 .public sub_0204C6C8
 .public sub_0204C734

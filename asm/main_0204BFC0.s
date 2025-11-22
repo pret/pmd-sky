@@ -1,25 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204BF88.inc"
+	.include "main_0204BFC0.inc"
 
 	.text
-
-	arm_func_start LoadAndCompareScriptVars
-LoadAndCompareScriptVars: ; 0x0204BF88
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r7, r0
-	mov r6, r2
-	mov r5, r3
-	bl LoadScriptVariableValue
-	mov r4, r0
-	mov r0, r7
-	mov r1, r6
-	bl LoadScriptVariableValue
-	mov r1, r0
-	mov r0, r4
-	mov r2, r5
-	bl CompareScriptVariables
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end LoadAndCompareScriptVars
 
 	arm_func_start EventFlagResume
 EventFlagResume: ; 0x0204BFC0

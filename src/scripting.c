@@ -472,3 +472,10 @@ s32 CompareScriptVarWithParam(union script_var_value sv_local[], enum script_var
     s32 value = LoadScriptVariableValue(sv_local, sv_id);
     return CompareScriptVariables(value, param, op);
 }
+
+s32 sub_0204BF88(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op)
+{
+    s32 value_1 = LoadScriptVariableValue(sv_local, sv_id_1);
+    s32 value_2 = LoadScriptVariableValue(sv_local, sv_id_2);
+    return CompareScriptVariables(value_1, value_2, op);
+}

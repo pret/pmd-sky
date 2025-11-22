@@ -3378,7 +3378,7 @@ _022DF064:
 	mov r1, r1, asr #0x10
 	mov r3, r5
 	add r0, r4, #0x6c
-	bl sub_0204BF88
+	bl LoadAndCompareScriptVars
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]
