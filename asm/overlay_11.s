@@ -3419,7 +3419,7 @@ _022DF0FC:
 	bl LoadScriptVariableValueSum
 	mov r1, r5
 	mov r2, r7
-	bl sub_0204BF5C
+	bl CompareScriptVariablesVeneer
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]
@@ -9304,7 +9304,7 @@ _022E4448:
 	mov r1, sb
 	mov r0, r7
 	mov r2, fp
-	bl sub_0204BF5C
+	bl CompareScriptVariablesVeneer
 	cmp r0, #0
 	beq _022E44A0
 	ldrh r3, [r5, #4]
@@ -9332,7 +9332,7 @@ _022E44AC:
 	ldrh r2, [r5, #2]
 	mov r1, sb
 	mov r0, r7
-	bl sub_0204BF5C
+	bl CompareScriptVariablesVeneer
 	cmp r0, #0
 	beq _022E4508
 	ldrh r3, [r5, #6]
@@ -9364,7 +9364,7 @@ _022E4514:
 	mov r1, r0
 	ldrh r2, [r5, #2]
 	mov r0, r7
-	bl sub_0204BF5C
+	bl CompareScriptVariablesVeneer
 	cmp r0, #0
 	beq _022E4580
 	ldrh r3, [r5, #6]

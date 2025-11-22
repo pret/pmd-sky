@@ -461,3 +461,8 @@ void UpdateScriptVarWithVar(union script_var_value sv_local[], enum script_var_i
     s32 result = CalcScriptVariables(value_1, value_2, operation);
     SaveScriptVariableValue(sv_local, sv_id_1, result);
 }
+
+bool8 CompareScriptVariablesVeneer(s32 param_1, s32 param_2, enum compare_operation operation)
+{
+    return CompareScriptVariables(param_1, param_2, operation);
+}

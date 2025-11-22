@@ -1,15 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204BF5C.inc"
+	.include "main_0204BF68.inc"
 
 	.text
-
-	arm_func_start sub_0204BF5C
-sub_0204BF5C: ; 0x0204BF5C
-	ldr ip, _0204BF64 ; =CompareScriptVariables
-	bx ip
-	.align 2, 0
-_0204BF64: .word CompareScriptVariables
-	arm_func_end sub_0204BF5C
 
 	arm_func_start sub_0204BF68
 sub_0204BF68: ; 0x0204BF68
