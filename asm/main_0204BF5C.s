@@ -1,30 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204BF10.inc"
+	.include "main_0204BF5C.inc"
 
 	.text
-
-	arm_func_start sub_0204BF10
-sub_0204BF10: ; 0x0204BF10
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	mov r8, r0
-	mov r6, r2
-	mov r7, r1
-	mov r5, r3
-	bl LoadScriptVariableValue
-	mov r4, r0
-	mov r0, r8
-	mov r1, r6
-	bl LoadScriptVariableValue
-	mov r1, r0
-	mov r0, r4
-	mov r2, r5
-	bl CalcScriptVariables
-	mov r2, r0
-	mov r0, r8
-	mov r1, r7
-	bl SaveScriptVariableValue
-	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_0204BF10
 
 	arm_func_start sub_0204BF5C
 sub_0204BF5C: ; 0x0204BF5C

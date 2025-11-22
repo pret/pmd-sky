@@ -1,5 +1,4 @@
 #pragma once
-.public CalcScriptVariables
 .public CompareScriptVariables
 .public DEBUG_SPECIAL_EPISODE_NUMBER
 .public Debug_Print

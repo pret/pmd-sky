@@ -447,14 +447,17 @@ s32 CalcScriptVariablesVeneer(s32 param_1, s32 param_2, enum script_calc_operati
     return CalcScriptVariables(param_1, param_2, operation);
 }
 
-void UpdateScriptVariable(union script_var_value sv_local[], const enum script_var_id script_var_id, s32 param, enum script_calc_operation operation)
+void UpdateScriptVarWithParam(union script_var_value sv_local[], const enum script_var_id script_var_id, s32 param, enum script_calc_operation operation)
 {
-    SaveScriptVariableValue(sv_local, 
-                            script_var_id, 
-                            CalcScriptVariables(
-                                LoadScriptVariableValue(
-                                    sv_local,
-                                    script_var_id), 
-                                param, 
-                                operation));
+    s32 value = LoadScriptVariableValue(sv_local, script_var_id);
+    s32 result = CalcScriptVariables(value, param, operation);
+    SaveScriptVariableValue(sv_local, script_var_id, result);
+}
+
+void UpdateScriptVarWithVar(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum script_calc_operation operation)
+{
+    s32 value_1 = LoadScriptVariableValue(sv_local, sv_id_1);
+    s32 value_2 = LoadScriptVariableValue(sv_local, sv_id_2);
+    s32 result = CalcScriptVariables(value_1, value_2, operation);
+    SaveScriptVariableValue(sv_local, sv_id_1, result);
 }
