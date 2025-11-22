@@ -1,25 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204BED8.inc"
+	.include "main_0204BF10.inc"
 
 	.text
-
-	arm_func_start sub_0204BED8
-sub_0204BED8: ; 0x0204BED8
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r5, r2
-	mov r4, r3
-	mov r7, r0
-	mov r6, r1
-	bl LoadScriptVariableValue
-	mov r1, r5
-	mov r2, r4
-	bl CalcScriptVariables
-	mov r2, r0
-	mov r0, r7
-	mov r1, r6
-	bl SaveScriptVariableValue
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_0204BED8
 
 	arm_func_start sub_0204BF10
 sub_0204BF10: ; 0x0204BF10

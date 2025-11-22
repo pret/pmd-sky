@@ -3196,7 +3196,7 @@ _022DEDC4: ; 0x022DEDC4
 	mov r3, r5
 	mov r2, r0
 	add r0, r4, #0x6c
-	bl sub_0204BED8
+	bl UpdateScriptVariable
 	b _022E2474
 _022DEE00: ; 0x022DEE00
 	ldrh r0, [r6]
@@ -14712,7 +14712,7 @@ _022E8AE4:
 	mov r1, #0x2a
 	mov r2, #1
 	mov r3, #2
-	bl sub_0204BED8
+	bl UpdateScriptVariable
 	bl sub_0204F034
 	mov r4, r0
 	bl sub_0204F050

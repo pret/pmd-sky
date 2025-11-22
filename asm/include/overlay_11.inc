@@ -627,7 +627,7 @@
 .public sub_0204AEE0
 .public sub_0204B3D0
 .public CalcScriptVariablesVeneer
-.public sub_0204BED8
+.public UpdateScriptVariable
 .public sub_0204BF10
 .public sub_0204BF5C
 .public sub_0204BF68
