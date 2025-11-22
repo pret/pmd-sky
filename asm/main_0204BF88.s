@@ -1,19 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204BF68.inc"
+	.include "main_0204BF88.inc"
 
 	.text
-
-	arm_func_start sub_0204BF68
-sub_0204BF68: ; 0x0204BF68
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r5, r2
-	mov r4, r3
-	bl LoadScriptVariableValue
-	mov r1, r5
-	mov r2, r4
-	bl CompareScriptVariables
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_0204BF68
 
 	arm_func_start sub_0204BF88
 sub_0204BF88: ; 0x0204BF88

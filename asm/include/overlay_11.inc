@@ -630,7 +630,7 @@
 .public UpdateScriptVarWithParam
 .public UpdateScriptVarWithVar
 .public CompareScriptVariablesVeneer
-.public sub_0204BF68
+.public CompareScriptVarWithParam
 .public sub_0204BF88
 .public sub_0204C5DC
 .public sub_0204C6C8

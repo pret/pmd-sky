@@ -3335,7 +3335,7 @@ _022DEFD0:
 	add r0, r4, #0x6c
 	mov r1, r1, asr #0x10
 	mov r3, #2
-	bl sub_0204BF68
+	bl CompareScriptVarWithParam
 	cmp r0, #0
 	ldrneh r0, [r6, #4]
 	ldrne r1, [r4, #0x14]
@@ -3356,7 +3356,7 @@ _022DF014:
 	mov r1, r1, asr #0x10
 	mov r3, r5
 	add r0, r4, #0x6c
-	bl sub_0204BF68
+	bl CompareScriptVarWithParam
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]
