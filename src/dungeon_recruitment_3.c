@@ -1,6 +1,6 @@
 #include "dungeon_recruitment_3.h"
 #include "enums.h"
-#include "scripting.h"
+#include "script_variable.h"
 #include "util.h"
 
 bool8 HasPlayedOldGame()

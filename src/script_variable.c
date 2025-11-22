@@ -1,7 +1,7 @@
 #include "debug.h"
 #include "enums.h"
 #include "main_0200224C.h"
-#include "scripting.h"
+#include "script_variable.h"
 
 // Global script variable definitions
 extern struct script_var_def SCRIPT_VARS[];
@@ -473,7 +473,7 @@ s32 CompareScriptVarWithParam(union script_var_value sv_local[], enum script_var
     return CompareScriptVariables(value, param, op);
 }
 
-s32 sub_0204BF88(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op)
+s32 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op)
 {
     s32 value_1 = LoadScriptVariableValue(sv_local, sv_id_1);
     s32 value_2 = LoadScriptVariableValue(sv_local, sv_id_2);

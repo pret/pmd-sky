@@ -1,5 +1,5 @@
 #include "main_0204CB94.h"
-#include "scripting.h"
+#include "script_variable.h"
 
 u8 GetScenarioBalance()
 {
