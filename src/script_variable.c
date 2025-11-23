@@ -28,11 +28,11 @@ extern u8 EVENT_FLAG_EXPANSION_ERROR;
 extern u8 EVENT_FLAG_RULE_ERROR;
 
 const u8 EVENT_FLAG_FILE_NAME[] = "event_flag.c";
-const struct prog_pos_info ppi_line_1011 = {
+const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_LINE_1011 = {
     (u8*) EVENT_FLAG_FILE_NAME,
     1001
 };
-const struct prog_pos_info ppi_line_1044 = {
+const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_LINE_1044 = {
     (u8*) EVENT_FLAG_FILE_NAME,
     1044
 };
@@ -402,7 +402,7 @@ s32 CalcScriptVariables(s32 param_1, s32 param_2, enum script_calc_operation ope
         case CALC_RANDOM:
             return RandInt(param_2);
         default:
-            struct prog_pos_info ppi = ppi_line_1011;
+            struct prog_pos_info ppi = EVENT_FLAG_PROG_POS_INFO_LINE_1011;
             Debug_FatalError(&ppi, &EVENT_FLAG_EXPANSION_ERROR, operation);
     }
 }
@@ -437,7 +437,7 @@ bool8 CompareScriptVariables(s32 param_1, s32 param_2, enum compare_operation op
                 return 0;
             }
         default:
-            struct prog_pos_info ppi = ppi_line_1044;
+            struct prog_pos_info ppi = EVENT_FLAG_PROG_POS_INFO_LINE_1044;
             Debug_FatalError(&ppi, &EVENT_FLAG_RULE_ERROR, operation);
         }
 }
