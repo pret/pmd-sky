@@ -3,7 +3,7 @@
 #include "main_0204C938.h"
 #include "main_0204CB94.h"
 #include "main_020517D4.h"
-#include "scripting.h"
+#include "script_variable.h"
 
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 

@@ -1,5 +1,5 @@
 #include "main_0204C938.h"
-#include "scripting.h"
+#include "script_variable.h"
 
 s32 GetExecuteSpecialEpisodeType()
 {

@@ -1,7 +1,7 @@
 #include "debug.h"
 #include "enums.h"
 #include "main_0200224C.h"
-#include "scripting.h"
+#include "script_variable.h"
 
 // Global script variable definitions
 extern struct script_var_def SCRIPT_VARS[];
@@ -440,4 +440,42 @@ bool8 CompareScriptVariables(s32 param_1, s32 param_2, enum compare_operation op
             struct prog_pos_info ppi = EVENT_FLAG_PROG_POS_INFO_LINE_1044;
             Debug_FatalError(&ppi, &EVENT_FLAG_RULE_ERROR, operation);
         }
+}
+
+s32 CalcScriptVariablesVeneer(s32 param_1, s32 param_2, enum script_calc_operation operation)
+{
+    return CalcScriptVariables(param_1, param_2, operation);
+}
+
+void UpdateScriptVarWithParam(union script_var_value sv_local[], const enum script_var_id script_var_id, s32 param, enum script_calc_operation operation)
+{
+    s32 value = LoadScriptVariableValue(sv_local, script_var_id);
+    s32 result = CalcScriptVariables(value, param, operation);
+    SaveScriptVariableValue(sv_local, script_var_id, result);
+}
+
+void UpdateScriptVarWithVar(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum script_calc_operation op)
+{
+    s32 value_1 = LoadScriptVariableValue(sv_local, sv_id_1);
+    s32 value_2 = LoadScriptVariableValue(sv_local, sv_id_2);
+    s32 result = CalcScriptVariables(value_1, value_2, op);
+    SaveScriptVariableValue(sv_local, sv_id_1, result);
+}
+
+bool8 CompareScriptVariablesVeneer(s32 param_1, s32 param_2, enum compare_operation op)
+{
+    return CompareScriptVariables(param_1, param_2, op);
+}
+
+s32 CompareScriptVarWithParam(union script_var_value sv_local[], enum script_var_id sv_id, s32 param, enum compare_operation op)
+{
+    s32 value = LoadScriptVariableValue(sv_local, sv_id);
+    return CompareScriptVariables(value, param, op);
+}
+
+s32 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op)
+{
+    s32 value_1 = LoadScriptVariableValue(sv_local, sv_id_1);
+    s32 value_2 = LoadScriptVariableValue(sv_local, sv_id_2);
+    return CompareScriptVariables(value_1, value_2, op);
 }

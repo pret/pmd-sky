@@ -3196,7 +3196,7 @@ _022DEDC4: ; 0x022DEDC4
 	mov r3, r5
 	mov r2, r0
 	add r0, r4, #0x6c
-	bl sub_0204BED8
+	bl UpdateScriptVarWithParam
 	b _022E2474
 _022DEE00: ; 0x022DEE00
 	ldrh r0, [r6]
@@ -3214,7 +3214,7 @@ _022DEE00: ; 0x022DEE00
 	add r0, r4, #0x6c
 	mov r2, r2, lsl #0x10
 	mov r2, r2, asr #0x10
-	bl sub_0204BF10
+	bl UpdateScriptVarWithVar
 	b _022E2474
 _022DEE44: ; 0x022DEE44
 	ldrh r0, [r6]
@@ -3335,7 +3335,7 @@ _022DEFD0:
 	add r0, r4, #0x6c
 	mov r1, r1, asr #0x10
 	mov r3, #2
-	bl sub_0204BF68
+	bl CompareScriptVarWithParam
 	cmp r0, #0
 	ldrneh r0, [r6, #4]
 	ldrne r1, [r4, #0x14]
@@ -3356,7 +3356,7 @@ _022DF014:
 	mov r1, r1, asr #0x10
 	mov r3, r5
 	add r0, r4, #0x6c
-	bl sub_0204BF68
+	bl CompareScriptVarWithParam
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]
@@ -3378,7 +3378,7 @@ _022DF064:
 	mov r1, r1, asr #0x10
 	mov r3, r5
 	add r0, r4, #0x6c
-	bl sub_0204BF88
+	bl LoadAndCompareScriptVars
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]
@@ -3419,7 +3419,7 @@ _022DF0FC:
 	bl LoadScriptVariableValueSum
 	mov r1, r5
 	mov r2, r7
-	bl sub_0204BF5C
+	bl CompareScriptVariablesVeneer
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]
@@ -3616,7 +3616,7 @@ _022DF3DC:
 	bl LoadScriptVariableValue
 	mov r1, r5
 	mov r2, r7
-	bl sub_0204BECC
+	bl CalcScriptVariablesVeneer
 	mov r7, r0
 	b _022DF6FC
 _022DF424:
@@ -3641,7 +3641,7 @@ _022DF424:
 	mov r2, r7
 	mov r1, r0
 	mov r0, r5
-	bl sub_0204BECC
+	bl CalcScriptVariablesVeneer
 	mov r7, r0
 	b _022DF6FC
 _022DF484:
@@ -9304,7 +9304,7 @@ _022E4448:
 	mov r1, sb
 	mov r0, r7
 	mov r2, fp
-	bl sub_0204BF5C
+	bl CompareScriptVariablesVeneer
 	cmp r0, #0
 	beq _022E44A0
 	ldrh r3, [r5, #4]
@@ -9332,7 +9332,7 @@ _022E44AC:
 	ldrh r2, [r5, #2]
 	mov r1, sb
 	mov r0, r7
-	bl sub_0204BF5C
+	bl CompareScriptVariablesVeneer
 	cmp r0, #0
 	beq _022E4508
 	ldrh r3, [r5, #6]
@@ -9364,7 +9364,7 @@ _022E4514:
 	mov r1, r0
 	ldrh r2, [r5, #2]
 	mov r0, r7
-	bl sub_0204BF5C
+	bl CompareScriptVariablesVeneer
 	cmp r0, #0
 	beq _022E4580
 	ldrh r3, [r5, #6]
@@ -14712,7 +14712,7 @@ _022E8AE4:
 	mov r1, #0x2a
 	mov r2, #1
 	mov r3, #2
-	bl sub_0204BED8
+	bl UpdateScriptVarWithParam
 	bl sub_0204F034
 	mov r4, r0
 	bl sub_0204F050

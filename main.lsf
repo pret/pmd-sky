@@ -80,9 +80,9 @@ Static main
 	Object asm/main_0203C774.o
 	Object src/main_0204AFF8.o
 	Object asm/main_0204B018.o
-	Object src/scripting.o
+	Object src/script_variable.o
 	Object asm/main_rodata_0209CECC.o
-	Object asm/main_0204BECC.o
+	Object asm/main_0204BFC0.o
 	Object src/main_0204C938.o
 	Object asm/main_0204C94C.o
 	Object src/dungeon_recruitment_3.o
