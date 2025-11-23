@@ -1,103 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204BD98.inc"
+	.include "main_0204BECC.inc"
 
 	.text
-
-	arm_func_start sub_0204BD98
-sub_0204BD98: ; 0x0204BD98
-	stmdb sp!, {r3, lr}
-	sub sp, sp, #8
-	cmp r2, #0xa
-	addls pc, pc, r2, lsl #2
-	b _0204BE9C
-_0204BDAC: ; jump table
-	b _0204BDD8 ; case 0
-	b _0204BDE0 ; case 1
-	b _0204BDE8 ; case 2
-	b _0204BE10 ; case 3
-	b _0204BE38 ; case 4
-	b _0204BE24 ; case 5
-	b _0204BE4C ; case 6
-	b _0204BDFC ; case 7
-	b _0204BE60 ; case 8
-	b _0204BE74 ; case 9
-	b _0204BE88 ; case 10
-_0204BDD8:
-	mov r0, #1
-	b _0204BEBC
-_0204BDE0:
-	mov r0, #0
-	b _0204BEBC
-_0204BDE8:
-	cmp r0, r1
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	b _0204BEBC
-_0204BDFC:
-	cmp r0, r1
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	b _0204BEBC
-_0204BE10:
-	cmp r0, r1
-	movgt r0, #1
-	movle r0, #0
-	and r0, r0, #0xff
-	b _0204BEBC
-_0204BE24:
-	cmp r0, r1
-	movge r0, #1
-	movlt r0, #0
-	and r0, r0, #0xff
-	b _0204BEBC
-_0204BE38:
-	cmp r0, r1
-	movlt r0, #1
-	movge r0, #0
-	and r0, r0, #0xff
-	b _0204BEBC
-_0204BE4C:
-	cmp r0, r1
-	movle r0, #1
-	movgt r0, #0
-	and r0, r0, #0xff
-	b _0204BEBC
-_0204BE60:
-	tst r0, r1
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	b _0204BEBC
-_0204BE74:
-	teq r0, r1
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	b _0204BEBC
-_0204BE88:
-	mov r2, #1
-	tst r0, r2, lsl r1
-	moveq r2, #0
-	and r0, r2, #0xff
-	b _0204BEBC
-_0204BE9C:
-	ldr r1, _0204BEC4 ; =EVENT_FLAG_PROG_POS_INFO
-	add r0, sp, #0
-	ldr r3, [r1, #0xc]
-	ldr ip, [r1, #8]
-	ldr r1, _0204BEC8 ; =_0209CF48
-	str ip, [sp]
-	str r3, [sp, #4]
-	bl Debug_FatalError
-_0204BEBC:
-	add sp, sp, #8
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0204BEC4: .word EVENT_FLAG_PROG_POS_INFO
-_0204BEC8: .word _0209CF48
-	arm_func_end sub_0204BD98
 
 	arm_func_start sub_0204BECC
 sub_0204BECC: ; 0x0204BECC
@@ -150,10 +54,10 @@ sub_0204BF10: ; 0x0204BF10
 
 	arm_func_start sub_0204BF5C
 sub_0204BF5C: ; 0x0204BF5C
-	ldr ip, _0204BF64 ; =sub_0204BD98
+	ldr ip, _0204BF64 ; =CompareScriptVariables
 	bx ip
 	.align 2, 0
-_0204BF64: .word sub_0204BD98
+_0204BF64: .word CompareScriptVariables
 	arm_func_end sub_0204BF5C
 
 	arm_func_start sub_0204BF68
@@ -164,7 +68,7 @@ sub_0204BF68: ; 0x0204BF68
 	bl LoadScriptVariableValue
 	mov r1, r5
 	mov r2, r4
-	bl sub_0204BD98
+	bl CompareScriptVariables
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0204BF68
 
@@ -182,7 +86,7 @@ sub_0204BF88: ; 0x0204BF88
 	mov r1, r0
 	mov r0, r4
 	mov r2, r5
-	bl sub_0204BD98
+	bl CompareScriptVariables
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_0204BF88
 

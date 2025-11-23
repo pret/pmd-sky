@@ -3464,4 +3464,18 @@ enum performance_progress_flag
     PERFORMANCE_PROGRESS_FLAG_RANDOM_MISSION = 3
 };
 
+enum compare_operation { // Taken from pmd-red's FlagJudgeOperation
+    CMP_TRUE,
+    CMP_FALSE,
+    CMP_EQ,
+    CMP_GT,
+    CMP_LT,
+    CMP_GE,
+    CMP_LE,
+    CMP_NE,
+    CMP_AND_NONZERO,
+    CMP_XOR_NONZERO, // logically identical to CMP_NE
+    CMP_BIT_SET,
+};
+
 #endif //PMDSKY_ENUMS_H
