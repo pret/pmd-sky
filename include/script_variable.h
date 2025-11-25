@@ -35,7 +35,7 @@ void LoadScriptVariableRaw(struct script_var_raw* sv_raw, union script_var_value
 s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id);
 s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum script_var_id id, u16 idx);
 void SaveScriptVariableValue(union script_var_value sv_locals[], const enum script_var_id script_var_id, u32 new_val);
-void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const enum script_var_id script_var_id, int idx, s32 new_val);
+void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const enum script_var_id script_var_id, u16 idx, s32 new_val);
 s32 LoadScriptVariableValueSum(union script_var_value sv_local[], const enum script_var_id sv_id);
 void LoadScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s32 num_bytes);
 void LoadScriptVariableValueString(const enum script_var_id sv_id, u8* result, u8 num_bytes);
@@ -49,5 +49,7 @@ void UpdateScriptVarWithVar(union script_var_value sv_local[], enum script_var_i
 bool8 CompareScriptVariablesVeneer(s32 param_1, s32 param_2, enum compare_operation operation);
 s32 CompareScriptVarWithParam(union script_var_value sv_local[], enum script_var_id sv_id, s32 param, enum compare_operation op);
 s32 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op);
+void EventFlagResume();
+void EventFlagBackup();
 
 #endif //PMDSKY_SCRIPTING_H

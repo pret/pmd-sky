@@ -1,8 +1,7 @@
 #pragma once
 .public DEBUG_SPECIAL_EPISODE_NUMBER
 .public Debug_Print
-.public Debug_Print0
-.public GetGameMode
+.public EventFlagBackup
 .public LoadScriptVariableRaw
 .public LoadScriptVariableValue
 .public LoadScriptVariableValueAtIndex
@@ -10,9 +9,5 @@
 .public SCRIPT_VARS_VALUES
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueAtIndex
-.public ScenarioFlagBackup
 .public ZinitScriptVariable
-.public _0209CF64
-.public _0209CF84
 .public _0209DFA0
-.public sub_0204CBE8
