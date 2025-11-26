@@ -25,6 +25,7 @@ extern s32 SetNotifyNote(s32 arg0);
 extern s32 sub_0204C928(s32 arg0);
 void sub_0204CBE8();
 void ScenarioFlagBackup();
+void MemcpySimple(u8* dest, u8* src, s32 n);
 
 extern u8 EVENT_FLAG_EXPANSION_ERROR;
 extern u8 EVENT_FLAG_RULE_ERROR;
@@ -549,4 +550,25 @@ void EventFlagBackup() {
     SaveScriptVariableValueAtIndexInline(VAR_ATTENDANT2_KIND_BACKUP, idx, LoadScriptVariableValue(0, VAR_ATTENDANT2_KIND));
 
     ScenarioFlagBackup();
+}
+
+s32 DumpScriptVariableValues(u8* target)
+{
+    EventFlagBackup();
+    MemcpySimple(target, &SCRIPT_VARS_VALUES[0], 0x400);
+    return 1;
+}
+
+u8 RestoreScriptVariableValues(u8* dest) {
+    struct script_var_raw sv_raw;
+    u8 ret_val;
+
+    LoadScriptVariableRaw(&sv_raw, 0, VAR_VERSION);
+    MemcpySimple(&SCRIPT_VARS_VALUES[0], dest, 0x400);
+    if (sv_raw.def->default_val == sv_raw.value->u32) {
+        ret_val = 1;
+    } else {
+        ret_val = 0;
+    }
+    return ret_val;
 }

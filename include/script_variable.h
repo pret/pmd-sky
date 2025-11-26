@@ -51,5 +51,7 @@ s32 CompareScriptVarWithParam(union script_var_value sv_local[], enum script_var
 s32 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op);
 void EventFlagResume();
 void EventFlagBackup();
+s32 DumpScriptVariableValues(u8* target);
+u8 RestoreScriptVariableValues(u8* dest);
 
 #endif //PMDSKY_SCRIPTING_H

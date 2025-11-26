@@ -3,48 +3,6 @@
 
 	.text
 
-	arm_func_start DumpScriptVariableValues
-DumpScriptVariableValues: ; 0x0204C408
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	bl EventFlagBackup
-	ldr r1, _0204C42C ; =SCRIPT_VARS_VALUES
-	mov r0, r4
-	mov r2, #0x400
-	bl MemcpySimple
-	mov r0, #1
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_0204C42C: .word SCRIPT_VARS_VALUES
-	arm_func_end DumpScriptVariableValues
-
-	arm_func_start RestoreScriptVariableValues
-RestoreScriptVariableValues: ; 0x0204C430
-	stmdb sp!, {r4, lr}
-	sub sp, sp, #8
-	mov r1, #0
-	mov r4, r0
-	add r0, sp, #0
-	mov r2, r1
-	bl LoadScriptVariableRaw
-	ldr r0, _0204C484 ; =SCRIPT_VARS_VALUES
-	mov r1, r4
-	mov r2, #0x400
-	bl MemcpySimple
-	ldr r1, [sp]
-	ldr r0, [sp, #4]
-	ldrsh r1, [r1, #0xa]
-	ldr r0, [r0]
-	cmp r1, r0
-	moveq r0, #1
-	movne r0, #0
-	and r0, r0, #0xff
-	add sp, sp, #8
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_0204C484: .word SCRIPT_VARS_VALUES
-	arm_func_end RestoreScriptVariableValues
-
 	arm_func_start InitScenarioScriptVars
 InitScenarioScriptVars: ; 0x0204C488
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
