@@ -23,9 +23,14 @@ extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
 extern s32 sub_0204C928(s32 arg0);
+void sub_0204CBE8();
+void ScenarioFlagBackup();
 
 extern u8 EVENT_FLAG_EXPANSION_ERROR;
 extern u8 EVENT_FLAG_RULE_ERROR;
+
+extern const u8 EVENT_FLAG_GAME_MODE_DEBUG_MSG;
+extern const u8 EVENT_FLAG_BACKUP_DEBUG_MSG;
 
 const u8 EVENT_FLAG_FILE_NAME[] = "event_flag.c";
 const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_LINE_1011 = {
@@ -239,7 +244,7 @@ void SaveScriptVariableValue(union script_var_value sv_locals[], const enum scri
     return;
 }
 
-void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const enum script_var_id script_var_id, int idx, s32 new_val)
+void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const enum script_var_id script_var_id, u16 idx, s32 new_val)
 {
     struct script_var_raw script_var_raw;
     LoadScriptVariableRaw(&script_var_raw, sv_locals, script_var_id);
@@ -478,4 +483,70 @@ s32 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_
     s32 value_1 = LoadScriptVariableValue(sv_local, sv_id_1);
     s32 value_2 = LoadScriptVariableValue(sv_local, sv_id_2);
     return CompareScriptVariables(value_1, value_2, op);
+}
+
+// This inline allows EventFlagResume to match
+static inline s32 LoadScriptVariableValueAtIndexInline(enum script_var_id sv_id, u32 idx) {
+    return LoadScriptVariableValueAtIndex(0, sv_id, idx);
+}
+
+void EventFlagResume()
+{
+    u32 game_mode = GetGameMode();
+    if (game_mode <= 1U) {
+        return;
+    }
+    u32 idx = game_mode - 2;
+    Debug_Print0(&EVENT_FLAG_GAME_MODE_DEBUG_MSG, idx);
+
+    SaveScriptVariableValue(0, VAR_GROUND_ENTER, LoadScriptVariableValueAtIndexInline(VAR_GROUND_ENTER_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_GROUND_ENTER_LINK, LoadScriptVariableValueAtIndexInline(VAR_GROUND_ENTER_LINK_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_GROUND_GETOUT, LoadScriptVariableValueAtIndexInline(VAR_GROUND_GETOUT_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_GROUND_MAP, LoadScriptVariableValueAtIndexInline(VAR_GROUND_MAP_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_GROUND_PLACE, LoadScriptVariableValueAtIndexInline(VAR_GROUND_PLACE_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_DUNGEON_ENTER, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_DUNGEON_ENTER_MODE, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_MODE_BACKUP, idx)); 
+    SaveScriptVariableValue(0, VAR_DUNGEON_ENTER_INDEX, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_INDEX_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_DUNGEON_ENTER_FREQUENCY, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_FREQUENCY_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_DUNGEON_RESULT, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_RESULT_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_GROUND_START_MODE, LoadScriptVariableValueAtIndexInline(VAR_GROUND_START_MODE_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_PLAYER_KIND, LoadScriptVariableValueAtIndexInline(VAR_PLAYER_KIND_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_ATTENDANT1_KIND, LoadScriptVariableValueAtIndexInline(VAR_ATTENDANT1_KIND_BACKUP, idx));
+    SaveScriptVariableValue(0, VAR_ATTENDANT2_KIND, LoadScriptVariableValueAtIndexInline(VAR_ATTENDANT2_KIND_BACKUP, idx));
+
+    sub_0204CBE8();
+}
+
+// This inline allows EventFlagBackup to match
+static inline s32 SaveScriptVariableValueAtIndexInline(enum script_var_id sv_id, u32 idx, u32 new_val) {
+    SaveScriptVariableValueAtIndex(0, sv_id, idx, new_val);
+}
+
+void EventFlagBackup() {
+    u32 game_mode;
+    u32 idx;
+
+    game_mode = GetGameMode();
+    if (game_mode <= 1U) {
+        return;
+    }
+    idx = game_mode - 2;
+    Debug_Print0(&EVENT_FLAG_BACKUP_DEBUG_MSG, idx);
+    
+    SaveScriptVariableValueAtIndexInline(VAR_GROUND_ENTER_BACKUP, idx, LoadScriptVariableValue(0, VAR_GROUND_ENTER));
+    SaveScriptVariableValueAtIndexInline(VAR_GROUND_ENTER_LINK_BACKUP, idx, LoadScriptVariableValue(0, VAR_GROUND_ENTER_LINK));
+    SaveScriptVariableValueAtIndexInline(VAR_GROUND_GETOUT_BACKUP, idx, LoadScriptVariableValue(0, VAR_GROUND_GETOUT));
+    SaveScriptVariableValueAtIndexInline(VAR_GROUND_MAP_BACKUP, idx, LoadScriptVariableValue(0, VAR_GROUND_MAP));
+    SaveScriptVariableValueAtIndexInline(VAR_GROUND_PLACE_BACKUP, idx, LoadScriptVariableValue(0, VAR_GROUND_PLACE));
+    SaveScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_BACKUP, idx, LoadScriptVariableValue(0, VAR_DUNGEON_ENTER));
+    SaveScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_MODE_BACKUP, idx, LoadScriptVariableValue(0, VAR_DUNGEON_ENTER_MODE));
+    SaveScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_INDEX_BACKUP, idx, LoadScriptVariableValue(0, VAR_DUNGEON_ENTER_INDEX));
+    SaveScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_FREQUENCY_BACKUP, idx, LoadScriptVariableValue(0, VAR_DUNGEON_ENTER_FREQUENCY));
+    SaveScriptVariableValueAtIndexInline(VAR_DUNGEON_RESULT_BACKUP, idx, LoadScriptVariableValue(0, VAR_DUNGEON_RESULT));
+    SaveScriptVariableValueAtIndexInline(VAR_GROUND_START_MODE_BACKUP, idx, LoadScriptVariableValue(0, VAR_GROUND_START_MODE));
+    SaveScriptVariableValueAtIndexInline(VAR_PLAYER_KIND_BACKUP, idx, LoadScriptVariableValue(0, VAR_PLAYER_KIND));
+    SaveScriptVariableValueAtIndexInline(VAR_ATTENDANT1_KIND_BACKUP, idx, LoadScriptVariableValue(0, VAR_ATTENDANT1_KIND));
+    SaveScriptVariableValueAtIndexInline(VAR_ATTENDANT2_KIND_BACKUP, idx, LoadScriptVariableValue(0, VAR_ATTENDANT2_KIND));
+
+    ScenarioFlagBackup();
 }
