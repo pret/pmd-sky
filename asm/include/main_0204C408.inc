@@ -10,4 +10,4 @@
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueAtIndex
 .public ZinitScriptVariable
-.public _0209DFA0
+.public SCENARIO_CALC_DEBUG_MSG

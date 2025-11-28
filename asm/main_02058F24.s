@@ -16155,7 +16155,7 @@ _020661B0:
 	mov r0, #2
 	mov r1, #0x36
 	mov r2, #0
-	bl SetScenarioScriptVar
+	bl UpdateProgress
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #0
@@ -16225,7 +16225,7 @@ _020662BC:
 	mov r0, #2
 	mov r1, #0x33
 	mov r2, #0
-	bl SetScenarioScriptVar
+	bl UpdateProgress
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #1
@@ -16256,7 +16256,7 @@ _02066330:
 	mov r0, #2
 	mov r1, #0x34
 	mov r2, #0
-	bl SetScenarioScriptVar
+	bl UpdateProgress
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #1

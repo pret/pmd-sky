@@ -29,8 +29,6 @@ struct script_var_raw {
     union script_var_value *value;
 };
 
-extern const short LOCAL_SCRIPT_VAR_OFFSET;
-
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw, union script_var_value sv_val_local[], const enum script_var_id sv_id);
 s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id);
 s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum script_var_id id, u16 idx);
@@ -51,7 +49,10 @@ s32 CompareScriptVarWithParam(union script_var_value sv_local[], enum script_var
 s32 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op);
 void EventFlagResume();
 void EventFlagBackup();
-s32 DumpScriptVariableValues(u8* target);
-u8 RestoreScriptVariableValues(u8* dest);
+bool8 DumpScriptVariableValues(u8* dest);
+bool8 RestoreScriptVariableValues(u8* src);
+void InitProgress();
+void LoadScriptVarValuePair(enum script_var_id script_var_id, s32* val_1, s32* val_2);
+void UpdateProgress(enum script_var_id script_var_id, s32 progress, s32 sub_progress);
 
 #endif //PMDSKY_SCRIPTING_H

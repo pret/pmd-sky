@@ -4,7 +4,7 @@
 .public Debug_Print0
 .public GAME_MODE
 .public InitDungeonListScriptVars
-.public InitScenarioScriptVars
+.public InitProgress
 .public InitWorldMapScriptVars
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueAtIndex

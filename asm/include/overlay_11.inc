@@ -490,7 +490,7 @@
 .public SetPortraitEmotion
 .public SetPortraitLayout
 .public SetPortraitOffset
-.public SetScenarioScriptVar
+.public UpdateProgress
 .public SetTeamSetupHeroAndPartnerOnly
 .public SetTeamSetupHeroOnly
 .public SetupAndShowKeyboard
@@ -632,7 +632,7 @@
 .public CompareScriptVariablesVeneer
 .public CompareScriptVarWithParam
 .public LoadAndCompareScriptVars
-.public sub_0204C5DC
+.public LoadScriptVarValuePair
 .public sub_0204C6C8
 .public sub_0204C734
 .public sub_0204C7AC

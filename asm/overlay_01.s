@@ -13063,7 +13063,7 @@ _02333DA4:
 	mov r0, #3
 	mov r1, #0x1c
 	mov r2, #0
-	bl SetScenarioScriptVar
+	bl UpdateProgress
 	mov r0, #2
 	mov r1, #6
 	mov r2, #1

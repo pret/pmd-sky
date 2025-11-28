@@ -3246,7 +3246,7 @@ _022DEE84: ; 0x022DEE84
 	mov r2, r0
 	mov r1, r4
 	mov r0, r3, asr #0x10
-	bl SetScenarioScriptVar
+	bl UpdateProgress
 	b _022E2474
 _022DEEBC: ; 0x022DEEBC
 	ldrh r0, [r6]
@@ -3255,7 +3255,7 @@ _022DEEBC: ; 0x022DEEBC
 	mov r1, #0
 	mov r2, r1
 	mov r0, r0, asr #0x10
-	bl SetScenarioScriptVar
+	bl UpdateProgress
 	b _022E2474
 _022DEEDC: ; 0x022DEEDC
 	ldrh r0, [r6]
@@ -11763,7 +11763,7 @@ _022E6474:
 	add r1, sp, #0x50
 	add r2, sp, #0x4c
 	mov r0, #2
-	bl sub_0204C5DC
+	bl LoadScriptVarValuePair
 	ldr r0, [sp, #0x4c]
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
@@ -11814,7 +11814,7 @@ _022E652C:
 	add r1, sp, #0x40
 	add r2, sp, #0x3c
 	mov r0, #2
-	bl sub_0204C5DC
+	bl LoadScriptVarValuePair
 	ldrb r1, [sp, #0x11]
 	ldr r2, [sp, #0x3c]
 	ldr r0, _022E68D4 ; =ov11_0231993C
@@ -11863,7 +11863,7 @@ _022E657C:
 	ldr r1, [sp, #0x40]
 	ldr r2, [sp, #0x3c]
 	mov r0, #2
-	bl SetScenarioScriptVar
+	bl UpdateProgress
 	ldrsh r0, [sp, #0x36]
 	ldrsh r1, [sp, #0x38]
 	bl sub_02065B80
@@ -11891,7 +11891,7 @@ _022E6644:
 	mov r1, #0
 	mov r2, r1
 	mov r0, #2
-	bl SetScenarioScriptVar
+	bl UpdateProgress
 	mov r0, #0
 	b _022E68BC
 _022E6678:
@@ -11902,7 +11902,7 @@ _022E6678:
 	add r1, sp, #0x30
 	add r2, sp, #0x2c
 	mov r0, #2
-	bl sub_0204C5DC
+	bl LoadScriptVarValuePair
 	ldr r0, [sp, #0x2c]
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
@@ -12408,7 +12408,7 @@ _022E6D70:
 	add r1, sp, #0x14
 	add r2, sp, #0x10
 	mov r0, #2
-	bl sub_0204C5DC
+	bl LoadScriptVarValuePair
 	ldr r0, [sp, #0x10]
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18
@@ -12418,7 +12418,7 @@ _022E6D70:
 	ldr r1, [sp, #0x14]
 	add r2, r0, #1
 	mov r0, #2
-	bl SetScenarioScriptVar
+	bl UpdateProgress
 	mov r0, #1
 	b _022E6E58
 _022E6DB0:
