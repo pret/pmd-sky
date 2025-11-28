@@ -3439,7 +3439,7 @@ _022DF154:
 	mov r2, r0
 	mov r0, r1, asr #0x10
 	mov r1, r5
-	bl sub_0204C6C8
+	bl IsStoryBeforePoint
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]
@@ -3459,7 +3459,7 @@ _022DF1A0:
 	mov r2, r0
 	mov r0, r1, asr #0x10
 	mov r1, r5
-	bl sub_0204C734
+	bl IsStoryBeforeOrAtPoint
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]
@@ -3479,7 +3479,7 @@ _022DF1EC:
 	mov r2, r0
 	mov r0, r1, asr #0x10
 	mov r1, r5
-	bl sub_0204C7AC
+	bl IsStoryAtPoint
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]
@@ -3499,7 +3499,7 @@ _022DF238:
 	mov r2, r0
 	mov r0, r1, asr #0x10
 	mov r1, r5
-	bl sub_0204C808
+	bl IsStoryAtOrAfterPoint
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]
@@ -3519,7 +3519,7 @@ _022DF284:
 	mov r2, r0
 	mov r0, r1, asr #0x10
 	mov r1, r5
-	bl sub_0204C880
+	bl IsStoryAtOrAfterPointStrict
 	cmp r0, #0
 	ldrneh r0, [r6, #6]
 	ldrne r1, [r4, #0x14]

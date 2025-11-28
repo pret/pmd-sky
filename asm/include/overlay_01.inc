@@ -332,8 +332,8 @@
 .public sub_0204a1cc
 .public sub_0204A1CC
 .public sub_0204AE60
-.public sub_0204C918
-.public sub_0204C928
+.public GetDebugSpecialEpisodeNumber
+.public SetDebugSpecialEpisodeNumber
 .public sub_0204C9A0
 .public sub_0204C9C8
 .public sub_0204CA1C

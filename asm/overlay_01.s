@@ -9727,7 +9727,7 @@ _02331180:
 	ldr r0, [r0, #8]
 	cmp r0, #0x20
 	bne _023311EC
-	bl sub_0204C918
+	bl GetDebugSpecialEpisodeNumber
 	b _023311F0
 _023311EC:
 	bl GetSpecialEpisodeType
@@ -10815,7 +10815,7 @@ _02332088:
 	b _023324F4
 _02332104:
 	mov r0, r1
-	bl sub_0204C928
+	bl SetDebugSpecialEpisodeNumber
 	ldr r0, _02332508 ; =ov01_0233C178
 	mov r1, #4
 	str r1, [r0, #4]
@@ -11437,7 +11437,7 @@ _02332900:
 _02332910:
 	bl GetSpecialEpisodeType
 	mov r5, r0
-	bl sub_0204C918
+	bl GetDebugSpecialEpisodeNumber
 	mvn r1, #0
 	cmp r5, r1
 	beq _02332950
@@ -11765,7 +11765,7 @@ _02332D4C:
 	mov r0, #4
 	b _02332ED4
 _02332D5C:
-	bl sub_0204C918
+	bl GetDebugSpecialEpisodeNumber
 	bl sub_0204CA1C
 	cmp r0, #0
 	beq _02332DAC

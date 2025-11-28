@@ -2,6 +2,8 @@
 #include "enums.h"
 #include "main_0200224C.h"
 #include "script_variable.h"
+#include "special_episode.h"
+#include "story_progress.h"
 
 #define LOCAL_SCRIPT_VAR_OFFSET 0x400
 
@@ -24,21 +26,19 @@ const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_LINE_1044 = {
     (u8*) EVENT_FLAG_FILE_NAME,
     1044
 };
-extern const u8 SCENARIO_CALC_DEBUG_MSG;
 
 extern s32 GetPartyMembers(s32 param1);
 extern s32 GetMoneyCarried();
 extern s32 GetMoneyStored();
 extern s32 GetLanguageType();
 extern enum game_mode GetGameMode();
-extern s32 sub_0204C918();
+extern s32 GetDebugSpecialEpisodeNumber();
 extern s32 GetSpecialEpisodeType();
 extern s32 GetNotifyNote();
 extern s32 AddMoneyCarried(s32 arg0);
 extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
-extern s32 sub_0204C928(s32 arg0);
 extern void sub_0204CBE8();
 extern void ScenarioFlagBackup();
 void MemcpySimple(u8* dest, u8* src, s32 n);
@@ -103,7 +103,7 @@ s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_i
                 case VAR_EXECUTE_SPECIAL_EPISODE_TYPE:
                     switch(GetGameMode()) {
                         case GAME_MODE_1:
-                            return sub_0204C918();
+                            return GetDebugSpecialEpisodeNumber();
                         case GAME_MODE_SPECIAL_EPISODE:
                             return GetSpecialEpisodeType();
                         default:
@@ -160,7 +160,7 @@ s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum scrip
                 case VAR_EXECUTE_SPECIAL_EPISODE_TYPE:
                     switch (GetGameMode()) {
                         case GAME_MODE_1:
-                            return sub_0204C918();
+                            return GetDebugSpecialEpisodeNumber();
                         case GAME_MODE_SPECIAL_EPISODE:
                             return GetSpecialEpisodeType();
                         default:
@@ -221,7 +221,7 @@ void SaveScriptVariableValue(union script_var_value sv_locals[], const enum scri
                     return;
                 case VAR_EXECUTE_SPECIAL_EPISODE_TYPE:
                     if (GetGameMode() == GAME_MODE_1) {
-                         sub_0204C928(new_val);
+                         SetDebugSpecialEpisodeNumber(new_val);
                          return;
                     }
                     return;
@@ -291,7 +291,7 @@ void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const en
                     return;
                 case VAR_EXECUTE_SPECIAL_EPISODE_TYPE:
                     if (GetGameMode() == GAME_MODE_1) {
-                         sub_0204C928(new_val);
+                         SetDebugSpecialEpisodeNumber(new_val);
                          return;
                     }
                     return;
@@ -614,23 +614,4 @@ void LoadScriptVarValuePair(enum script_var_id script_var_id, s32* val_1, s32* v
 {
     *val_1 = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
     *val_2 = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
-}
-
-void UpdateProgress(enum script_var_id script_var_id, s32 progress, s32 sub_progress)
-{
-    s32 old_progress = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
-    s32 old_sub_prog = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
-    Debug_Print(9, &SCENARIO_CALC_DEBUG_MSG, script_var_id, old_progress, old_sub_prog, 
-                progress, sub_progress);
-
-    // VAR_SCENARIO_MAIN stores maingame story progression
-    if (script_var_id == VAR_SCENARIO_MAIN) {
-        if ((progress!= old_progress) || (sub_progress != old_sub_prog)) {
-            // Reset Job Requests cleared in a single day when the maingame story progresses.
-            SaveScriptVariableValue(0, VAR_REQUEST_CLEAR_COUNT, 0);
-        }
-    }
-    
-    SaveScriptVariableValueAtIndex(0, script_var_id, 0, progress);
-    SaveScriptVariableValueAtIndex(0, script_var_id, 1, sub_progress);
 }

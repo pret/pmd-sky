@@ -633,11 +633,11 @@
 .public CompareScriptVarWithParam
 .public LoadAndCompareScriptVars
 .public LoadScriptVarValuePair
-.public sub_0204C6C8
-.public sub_0204C734
-.public sub_0204C7AC
-.public sub_0204C808
-.public sub_0204C880
+.public IsStoryBeforePoint
+.public IsStoryBeforeOrAtPoint
+.public IsStoryAtPoint
+.public IsStoryAtOrAfterPoint
+.public IsStoryAtOrAfterPointStrict
 .public sub_0204CA48
 .public sub_0204CB2C
 .public sub_0204CDE8

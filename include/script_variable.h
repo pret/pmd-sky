@@ -53,6 +53,5 @@ bool8 DumpScriptVariableValues(u8* dest);
 bool8 RestoreScriptVariableValues(u8* src);
 void InitProgress();
 void LoadScriptVarValuePair(enum script_var_id script_var_id, s32* val_1, s32* val_2);
-void UpdateProgress(enum script_var_id script_var_id, s32 progress, s32 sub_progress);
 
 #endif //PMDSKY_SCRIPTING_H
