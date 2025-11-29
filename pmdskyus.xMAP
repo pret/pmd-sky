@@ -151,13 +151,14 @@
                                      36](GetPartyMembers,func) found in global main_02054E4C.o
                                      36](GetMoneyCarried,func) found in global main_0200ECFC.o
                                      36](GetMoneyStored,func) found in global main_0200EDFC.o
-                                     36](sub_0204C918,func) found in global main_0204C408.o
+                                     36](sub_0204C918,func) found in global main_0204C6C8.o
                                       37](SaveScriptVariableValue,func) found in global script_variable.o
-                                       38](sub_0204C928,func) found in global main_0204C408.o
+                                       38](sub_0204C928,func) found in global main_0204C6C8.o
                                       37](LoadScriptVariableValue,func) found in global script_variable.o
-                                      37](ZinitScriptVariable,func) found in global main_0204B018.o
-                                       38](InitDungeonListScriptVars,func) found in global main_0204CBE8.o
-                                      37](EventFlagBackup,func) found in global script_variable.o
+                                    35](ZinitScriptVariable,func) found in global main_0204B018.o
+                                     36](InitDungeonListScriptVars,func) found in global main_0204CBE8.o
+                                     36](InitProgress,func) found in global script_variable.o
+                                      37](UpdateProgress,func) found in global script_variable.o
                                    34](GetStringFromFileVeneer,func) found in global main_0202593C.o
                                   33](GetColorCodePaletteOffset,func) found in global main_020265C4.o
                                 31](GetMaxPp,func) found in global moves.o
@@ -559,6 +560,7 @@
                                                                                                       101](ov26_0238AD3C,func) found in global overlay_26.o
                                                                                                        102](.data,section) found in local overlay_26.o
                                                                                                        102](.rodata,section) found in local overlay_26.o
+                                                                                                       102](LoadScriptVarValuePair,func) found in global script_variable.o
                                                                                                       101](ov25_0238B1F8,func) found in global overlay_25.o
                                                                                                        102](.rodata,section) found in local overlay_25.o
                                                                                                        102](.data,section) found in local overlay_25.o
@@ -1008,6 +1010,9 @@
                             27](GetCategoryString,func) found in global get_category_string.o
                             27](CopyNStringFromId,func) found in global main_0202593C.o
                             27](CanEvolve,func) found in global main_0205283C.o
+                    19](RestoreScriptVariableValues,func) found in global script_variable.o
+                    19](DumpScriptVariableValues,func) found in global script_variable.o
+                     20](EventFlagBackup,func) found in global script_variable.o
                     19](Rand32Bit,func) found in global main_0200224C.o
                     19](EventFlagResume,func) found in global script_variable.o
                     19](GetMoveRangeId,func) found in global main_02013B70.o
@@ -6164,35 +6169,37 @@
   0204C1E4 00000000 .text   $a	(script_variable.o)
   0204C1E4 00000224 .text   EventFlagBackup	(script_variable.o)
   0204C404 00000000 .text   $d	(script_variable.o)
-  0204C408 00000028 .text   DumpScriptVariableValues	(main_0204C408.o)
-  0204C408 00000530 .text   .text	(main_0204C408.o)
-  0204C408 00000000 .text   $a	(main_0204C408.o)
-  0204C42C 00000000 .text   $d	(main_0204C408.o)
-  0204C430 00000000 .text   $a	(main_0204C408.o)
-  0204C430 00000058 .text   RestoreScriptVariableValues	(main_0204C408.o)
-  0204C484 00000000 .text   $d	(main_0204C408.o)
-  0204C488 00000154 .text   InitScenarioScriptVars	(main_0204C408.o)
-  0204C488 00000000 .text   $a	(main_0204C408.o)
-  0204C5DC 0000003C .text   sub_0204C5DC	(main_0204C408.o)
-  0204C618 000000B0 .text   SetScenarioScriptVar	(main_0204C408.o)
-  0204C6C4 00000000 .text   $d	(main_0204C408.o)
-  0204C6C8 00000000 .text   $a	(main_0204C408.o)
-  0204C6C8 0000006C .text   sub_0204C6C8	(main_0204C408.o)
-  0204C734 00000078 .text   sub_0204C734	(main_0204C408.o)
-  0204C7AC 0000005C .text   sub_0204C7AC	(main_0204C408.o)
-  0204C808 00000078 .text   sub_0204C808	(main_0204C408.o)
-  0204C880 0000006C .text   sub_0204C880	(main_0204C408.o)
-  0204C8EC 00000014 .text   GetSpecialEpisodeType	(main_0204C408.o)
-  0204C8FC 00000000 .text   $d	(main_0204C408.o)
-  0204C900 00000018 .text   SetSpecialEpisodeType	(main_0204C408.o)
-  0204C900 00000000 .text   $a	(main_0204C408.o)
-  0204C914 00000000 .text   $d	(main_0204C408.o)
-  0204C918 00000010 .text   sub_0204C918	(main_0204C408.o)
-  0204C918 00000000 .text   $a	(main_0204C408.o)
-  0204C924 00000000 .text   $d	(main_0204C408.o)
-  0204C928 00000010 .text   sub_0204C928	(main_0204C408.o)
-  0204C928 00000000 .text   $a	(main_0204C408.o)
-  0204C934 00000000 .text   $d	(main_0204C408.o)
+  0204C408 00000000 .text   $a	(script_variable.o)
+  0204C408 00000028 .text   DumpScriptVariableValues	(script_variable.o)
+  0204C42C 00000000 .text   $d	(script_variable.o)
+  0204C430 00000000 .text   $a	(script_variable.o)
+  0204C430 00000058 .text   RestoreScriptVariableValues	(script_variable.o)
+  0204C484 00000000 .text   $d	(script_variable.o)
+  0204C488 00000154 .text   InitProgress	(script_variable.o)
+  0204C488 00000000 .text   $a	(script_variable.o)
+  0204C5DC 0000003C .text   LoadScriptVarValuePair	(script_variable.o)
+  0204C5DC 00000000 .text   $a	(script_variable.o)
+  0204C618 00000000 .text   $a	(script_variable.o)
+  0204C618 000000B0 .text   UpdateProgress	(script_variable.o)
+  0204C6C4 00000000 .text   $d	(script_variable.o)
+  0204C6C8 00000000 .text   $a	(main_0204C6C8.o)
+  0204C6C8 00000270 .text   .text	(main_0204C6C8.o)
+  0204C6C8 0000006C .text   sub_0204C6C8	(main_0204C6C8.o)
+  0204C734 00000078 .text   sub_0204C734	(main_0204C6C8.o)
+  0204C7AC 0000005C .text   sub_0204C7AC	(main_0204C6C8.o)
+  0204C808 00000078 .text   sub_0204C808	(main_0204C6C8.o)
+  0204C880 0000006C .text   sub_0204C880	(main_0204C6C8.o)
+  0204C8EC 00000014 .text   GetSpecialEpisodeType	(main_0204C6C8.o)
+  0204C8FC 00000000 .text   $d	(main_0204C6C8.o)
+  0204C900 00000000 .text   $a	(main_0204C6C8.o)
+  0204C900 00000018 .text   SetSpecialEpisodeType	(main_0204C6C8.o)
+  0204C914 00000000 .text   $d	(main_0204C6C8.o)
+  0204C918 00000000 .text   $a	(main_0204C6C8.o)
+  0204C918 00000010 .text   sub_0204C918	(main_0204C6C8.o)
+  0204C924 00000000 .text   $d	(main_0204C6C8.o)
+  0204C928 00000000 .text   $a	(main_0204C6C8.o)
+  0204C928 00000010 .text   sub_0204C928	(main_0204C6C8.o)
+  0204C934 00000000 .text   $d	(main_0204C6C8.o)
   0204C938 00000000 .text   $a	(main_0204C938.o)
   0204C938 00000014 .text   GetExecuteSpecialEpisodeType	(main_0204C938.o)
   0204C948 00000000 .text   $d	(main_0204C938.o)
@@ -11631,7 +11638,7 @@
   0209D850 00000000 .rodata _0209D850	(main_rodata_0209CECC.o)
   0209D870 00000000 .rodata SCRIPT_VARS	(main_rodata_0209CECC.o)
   0209DF70 00000000 .rodata _0209DF70	(main_rodata_0209CECC.o)
-  0209DFA0 00000000 .rodata _0209DFA0	(main_rodata_0209CECC.o)
+  0209DFA0 00000000 .rodata SCENARIO_CALC_DEBUG_MSG	(main_rodata_0209CECC.o)
   0209DFC8 00000000 .rodata _0209DFC8	(main_rodata_0209CECC.o)
   0209DFE8 00000000 .rodata _0209DFE8	(main_rodata_0209CECC.o)
   0209E008 00000000 .rodata _0209E008	(main_rodata_0209CECC.o)
@@ -41027,5 +41034,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Nov 27 04:23:36 2025
-# Link end time: Thu Nov 27 04:23:37 2025
+# Link start time: Sat Nov 29 18:17:48 2025
+# Link end time: Sat Nov 29 18:17:49 2025
