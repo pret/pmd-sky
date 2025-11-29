@@ -15,7 +15,7 @@ ov26_0238A140: ; 0x0238A140
 	add r1, sp, #0xc
 	add r2, sp, #8
 	mov r0, #2
-	bl sub_0204C5DC
+	bl LoadScriptVarValuePair
 	ldr r0, [sp, #8]
 	mov r0, r0, lsl #0x18
 	mov r0, r0, asr #0x18

@@ -360,7 +360,7 @@
 .public SetCollectionMenuField0x1B2
 .public SetPokemonJoined
 .public SetQuestionMarks
-.public SetScenarioScriptVar
+.public UpdateProgress
 .public SetSpecialEpisodeType
 .public SetSpriteIdForAnimationControl
 .public ShowPortraitInPortraitBox

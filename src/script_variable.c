@@ -3,12 +3,28 @@
 #include "main_0200224C.h"
 #include "script_variable.h"
 
+#define LOCAL_SCRIPT_VAR_OFFSET 0x400
+
 // Global script variable definitions
 extern struct script_var_def SCRIPT_VARS[];
 // Local script variable definitions
 extern struct script_var_def SCRIPT_VARS_LOCALS[];
 // Global script variable values
 extern u8 SCRIPT_VARS_VALUES[];
+extern u8 EVENT_FLAG_EXPANSION_ERROR;
+extern u8 EVENT_FLAG_RULE_ERROR;
+extern const u8 EVENT_FLAG_GAME_MODE_DEBUG_MSG;
+extern const u8 EVENT_FLAG_BACKUP_DEBUG_MSG;
+const u8 EVENT_FLAG_FILE_NAME[] = "event_flag.c";
+const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_LINE_1011 = {
+    (u8*) EVENT_FLAG_FILE_NAME,
+    1001
+};
+const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_LINE_1044 = {
+    (u8*) EVENT_FLAG_FILE_NAME,
+    1044
+};
+extern const u8 SCENARIO_CALC_DEBUG_MSG;
 
 extern s32 GetPartyMembers(s32 param1);
 extern s32 GetMoneyCarried();
@@ -23,32 +39,16 @@ extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
 extern s32 sub_0204C928(s32 arg0);
-void sub_0204CBE8();
-void ScenarioFlagBackup();
-
-extern u8 EVENT_FLAG_EXPANSION_ERROR;
-extern u8 EVENT_FLAG_RULE_ERROR;
-
-extern const u8 EVENT_FLAG_GAME_MODE_DEBUG_MSG;
-extern const u8 EVENT_FLAG_BACKUP_DEBUG_MSG;
-
-const u8 EVENT_FLAG_FILE_NAME[] = "event_flag.c";
-const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_LINE_1011 = {
-    (u8*) EVENT_FLAG_FILE_NAME,
-    1001
-};
-const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_LINE_1044 = {
-    (u8*) EVENT_FLAG_FILE_NAME,
-    1044
-};
+extern void sub_0204CBE8();
+extern void ScenarioFlagBackup();
+void MemcpySimple(u8* dest, u8* src, s32 n);
+extern void ZinitScriptVariable(u32 param_1, u32 param_2);
 
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     union script_var_value sv_val_local[],
     const enum script_var_id sv_id) {
-
-    short LOCAL_SCRIPT_VAR_OFFSET = 0x400;
-
-    if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
+    
+    if (sv_id < (s16) LOCAL_SCRIPT_VAR_OFFSET) {
         // global script var
         sv_raw->def = &SCRIPT_VARS[sv_id];
         sv_raw->value = (union script_var_value*)
@@ -486,7 +486,8 @@ s32 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_
 }
 
 // This inline allows EventFlagResume to match
-static inline s32 LoadScriptVariableValueAtIndexInline(enum script_var_id sv_id, u32 idx) {
+static inline s32 LoadScriptVariableValueAtIndexInline(enum script_var_id sv_id, u32 idx)
+{
     return LoadScriptVariableValueAtIndex(0, sv_id, idx);
 }
 
@@ -518,11 +519,13 @@ void EventFlagResume()
 }
 
 // This inline allows EventFlagBackup to match
-static inline s32 SaveScriptVariableValueAtIndexInline(enum script_var_id sv_id, u32 idx, u32 new_val) {
+static inline s32 SaveScriptVariableValueAtIndexInline(enum script_var_id sv_id, u32 idx, u32 new_val)
+{
     SaveScriptVariableValueAtIndex(0, sv_id, idx, new_val);
 }
 
-void EventFlagBackup() {
+void EventFlagBackup()
+{
     u32 game_mode;
     u32 idx;
 
@@ -549,4 +552,85 @@ void EventFlagBackup() {
     SaveScriptVariableValueAtIndexInline(VAR_ATTENDANT2_KIND_BACKUP, idx, LoadScriptVariableValue(0, VAR_ATTENDANT2_KIND));
 
     ScenarioFlagBackup();
+}
+
+// This dumps the global script variables (up to 0x400 bytes),
+// but doesn't dump the local script variables (0x400 onwards).
+bool8 DumpScriptVariableValues(u8* dest)
+{
+    EventFlagBackup();
+    MemcpySimple(dest, &SCRIPT_VARS_VALUES[0], LOCAL_SCRIPT_VAR_OFFSET);
+    return TRUE;
+}
+
+// This restores the global script variables (up to 0x400 bytes),
+// but doesn't restore the local script variables (0x400 onwards).
+bool8 RestoreScriptVariableValues(u8* src)
+{
+    struct script_var_raw sv_raw;
+    u8 ret_val;
+
+    LoadScriptVariableRaw(&sv_raw, 0, VAR_VERSION);
+    MemcpySimple(&SCRIPT_VARS_VALUES[0], src, 0x400);
+    
+    // If these values are not equal, then the save file 
+    // will be treated as corrupted, which thus gets deleted.
+    if (sv_raw.def->default_val == sv_raw.value->u32) {
+        ret_val = TRUE;
+    } else {
+        ret_val = FALSE;
+    }
+
+    return ret_val;
+}
+
+void InitProgress()
+{    
+    UpdateProgress(VAR_SCENARIO_SELECT, 0, 0);
+    UpdateProgress(VAR_SCENARIO_MAIN, 0, 0);
+    UpdateProgress(VAR_SCENARIO_SIDE, 0, 0);
+    UpdateProgress(VAR_SCENARIO_SUB1, 0, 0);
+    UpdateProgress(VAR_SCENARIO_SUB2, 0, 0);
+    UpdateProgress(VAR_SCENARIO_SUB3, 0, 0);
+    UpdateProgress(VAR_SCENARIO_SUB4, 0, 0);
+    UpdateProgress(VAR_SCENARIO_SUB5, 0, 0);
+    UpdateProgress(VAR_SCENARIO_SUB6, 0, 0);
+    UpdateProgress(VAR_SCENARIO_SUB7, 0, 0);
+    UpdateProgress(VAR_SCENARIO_SUB8, 0, 0);
+    ZinitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG);
+    ZinitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG_BACKUP);
+    s32 idx = 0;
+    do {
+        SaveScriptVariableValueAtIndex(0, VAR_SCENARIO_SELECT_BACKUP, idx, 0);
+        SaveScriptVariableValueAtIndex(0, VAR_SCENARIO_SELECT_BACKUP, (u16) (idx + 4), 0);
+        idx += 1;
+    } while (idx < 4);
+    SaveScriptVariableValue(0, VAR_SCENARIO_BALANCE_FLAG, 0);
+    SaveScriptVariableValue(0, VAR_SCENARIO_BALANCE_DEBUG, -1);
+    SaveScriptVariableValue(0, VAR_PLAY_OLD_GAME, 0);
+}
+
+void LoadScriptVarValuePair(enum script_var_id script_var_id, s32* val_1, s32* val_2)
+{
+    *val_1 = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
+    *val_2 = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
+}
+
+void UpdateProgress(enum script_var_id script_var_id, s32 progress, s32 sub_progress)
+{
+    s32 old_progress = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
+    s32 old_sub_prog = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
+    Debug_Print(9, &SCENARIO_CALC_DEBUG_MSG, script_var_id, old_progress, old_sub_prog, 
+                progress, sub_progress);
+
+    // VAR_SCENARIO_MAIN stores maingame story progression
+    if (script_var_id == VAR_SCENARIO_MAIN) {
+        if ((progress!= old_progress) || (sub_progress != old_sub_prog)) {
+            // Reset Job Requests cleared in a single day when the maingame story progresses.
+            SaveScriptVariableValue(0, VAR_REQUEST_CLEAR_COUNT, 0);
+        }
+    }
+    
+    SaveScriptVariableValueAtIndex(0, script_var_id, 0, progress);
+    SaveScriptVariableValueAtIndex(0, script_var_id, 1, sub_progress);
 }

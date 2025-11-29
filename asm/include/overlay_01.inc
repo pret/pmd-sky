@@ -244,7 +244,7 @@
 .public SetAnimationForAnimationControl
 .public SetIrqFlag
 .public SetMainTeamName
-.public SetScenarioScriptVar
+.public UpdateProgress
 .public SetSpriteIdForAnimationControl
 .public ShowKeyboard
 .public ShowStringIdInDialogueBox
