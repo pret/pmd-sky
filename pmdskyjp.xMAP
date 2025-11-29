@@ -153,14 +153,15 @@
                                      36](GetPartyMembers,func) found in global main_02054E4C.o
                                      36](GetMoneyCarried,func) found in global main_0200ECFC.o
                                      36](GetMoneyStored,func) found in global main_0200EDFC.o
-                                     36](sub_0204C918,func) found in global main_0204C6C8.o
-                                      37](SaveScriptVariableValue,func) found in global script_variable.o
-                                       38](sub_0204C928,func) found in global main_0204C6C8.o
+                                     36](GetDebugSpecialEpisodeNumber,func) found in global special_episode.o
+                                     36](GetSpecialEpisodeType,func) found in global special_episode.o
                                       37](LoadScriptVariableValue,func) found in global script_variable.o
                                     35](ZinitScriptVariable,func) found in global main_0204B018.o
+                                     36](SaveScriptVariableValue,func) found in global script_variable.o
+                                      37](SetDebugSpecialEpisodeNumber,func) found in global special_episode.o
                                      36](InitDungeonListScriptVars,func) found in global main_0204CBE8.o
                                      36](InitProgress,func) found in global script_variable.o
-                                      37](UpdateProgress,func) found in global script_variable.o
+                                      37](UpdateProgress,func) found in global story_progress.o
                                    34](GetStringFromFileVeneer,func) found in global main_0202593C.o
                                   33](GetColorCodePaletteOffset,func) found in global main_020265C4.o
                                 31](GetMaxPp,func) found in global moves.o
@@ -675,6 +676,11 @@
                                                                                                    98](CompareScriptVariablesVeneer,func) found in global script_variable.o
                                                                                                     99](CompareScriptVariables,func) found in global script_variable.o
                                                                                                    98](CalcScriptVariablesVeneer,func) found in global script_variable.o
+                                                                                                   98](IsStoryAtOrAfterPointStrict,func) found in global story_progress.o
+                                                                                                   98](IsStoryAtOrAfterPoint,func) found in global story_progress.o
+                                                                                                   98](IsStoryAtPoint,func) found in global story_progress.o
+                                                                                                   98](IsStoryBeforeOrAtPoint,func) found in global story_progress.o
+                                                                                                   98](IsStoryBeforePoint,func) found in global story_progress.o
                                                                                                    98](LoadScriptVariableValueSum,func) found in global script_variable.o
                                                                                                    98](LoadAndCompareScriptVars,func) found in global script_variable.o
                                                                                                    98](CompareScriptVarWithParam,func) found in global script_variable.o
@@ -1001,6 +1007,7 @@
                                 31](ov03_02346BE0,object) found in global overlay_03_0233CA80.o
                              28](.bss,section) found in local overlay_01.o
                              28](CardBackupError,func) found in global main_02003D2C.o
+                            27](SetSpecialEpisodeType,func) found in global special_episode.o
                             27](DirectoryFileMngr_ExtractAllDirectoryFiles,func) found in global directory_file_mngr.o
                              28](DirectoryFile_ExtractDirectoryFile,func) found in global directory_file.o
                             27](LoadTblTalk,func) found in global main_0202593C.o
@@ -6185,27 +6192,31 @@
   0204C7E8 00000000 .text   $a	(script_variable.o)
   0204C93C 0000003C .text   LoadScriptVarValuePair	(script_variable.o)
   0204C93C 00000000 .text   $a	(script_variable.o)
-  0204C978 00000000 .text   $a	(script_variable.o)
-  0204C978 000000B0 .text   UpdateProgress	(script_variable.o)
-  0204CA24 00000000 .text   $d	(script_variable.o)
-  0204CA28 00000000 .text   $a	(main_0204C6C8.o)
-  0204CA28 00000270 .text   .text	(main_0204C6C8.o)
-  0204CA28 0000006C .text   sub_0204C6C8	(main_0204C6C8.o)
-  0204CA94 00000078 .text   sub_0204C734	(main_0204C6C8.o)
-  0204CB0C 0000005C .text   sub_0204C7AC	(main_0204C6C8.o)
-  0204CB68 00000078 .text   sub_0204C808	(main_0204C6C8.o)
-  0204CBE0 0000006C .text   sub_0204C880	(main_0204C6C8.o)
-  0204CC4C 00000014 .text   GetSpecialEpisodeType	(main_0204C6C8.o)
-  0204CC5C 00000000 .text   $d	(main_0204C6C8.o)
-  0204CC60 00000000 .text   $a	(main_0204C6C8.o)
-  0204CC60 00000018 .text   SetSpecialEpisodeType	(main_0204C6C8.o)
-  0204CC74 00000000 .text   $d	(main_0204C6C8.o)
-  0204CC78 00000000 .text   $a	(main_0204C6C8.o)
-  0204CC78 00000010 .text   sub_0204C918	(main_0204C6C8.o)
-  0204CC84 00000000 .text   $d	(main_0204C6C8.o)
-  0204CC88 00000000 .text   $a	(main_0204C6C8.o)
-  0204CC88 00000010 .text   sub_0204C928	(main_0204C6C8.o)
-  0204CC94 00000000 .text   $d	(main_0204C6C8.o)
+  0204C978 00000000 .text   $a	(story_progress.o)
+  0204C978 000000B0 .text   UpdateProgress	(story_progress.o)
+  0204CA24 00000000 .text   $d	(story_progress.o)
+  0204CA28 0000006C .text   IsStoryBeforePoint	(story_progress.o)
+  0204CA28 00000000 .text   $a	(story_progress.o)
+  0204CA94 00000078 .text   IsStoryBeforeOrAtPoint	(story_progress.o)
+  0204CA94 00000000 .text   $a	(story_progress.o)
+  0204CB0C 0000005C .text   IsStoryAtPoint	(story_progress.o)
+  0204CB0C 00000000 .text   $a	(story_progress.o)
+  0204CB68 00000078 .text   IsStoryAtOrAfterPoint	(story_progress.o)
+  0204CB68 00000000 .text   $a	(story_progress.o)
+  0204CBE0 0000006C .text   IsStoryAtOrAfterPointStrict	(story_progress.o)
+  0204CBE0 00000000 .text   $a	(story_progress.o)
+  0204CC4C 00000000 .text   $a	(special_episode.o)
+  0204CC4C 00000014 .text   GetSpecialEpisodeType	(special_episode.o)
+  0204CC5C 00000000 .text   $d	(special_episode.o)
+  0204CC60 00000000 .text   $a	(special_episode.o)
+  0204CC60 00000018 .text   SetSpecialEpisodeType	(special_episode.o)
+  0204CC74 00000000 .text   $d	(special_episode.o)
+  0204CC78 00000000 .text   $a	(special_episode.o)
+  0204CC78 00000010 .text   GetDebugSpecialEpisodeNumber	(special_episode.o)
+  0204CC84 00000000 .text   $d	(special_episode.o)
+  0204CC88 00000000 .text   $a	(special_episode.o)
+  0204CC88 00000010 .text   SetDebugSpecialEpisodeNumber	(special_episode.o)
+  0204CC94 00000000 .text   $d	(special_episode.o)
   0204CC98 00000000 .text   $a	(main_0204C938.o)
   0204CC98 00000014 .text   GetExecuteSpecialEpisodeType	(main_0204C938.o)
   0204CCA8 00000000 .text   $d	(main_0204C938.o)
@@ -41275,5 +41286,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Nov 29 18:20:58 2025
-# Link end time: Sat Nov 29 18:20:59 2025
+# Link start time: Sat Nov 29 18:33:40 2025
+# Link end time: Sat Nov 29 18:33:41 2025
