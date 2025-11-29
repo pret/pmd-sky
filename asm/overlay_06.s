@@ -600,7 +600,7 @@ _0233D184:
 _0233D1CC:
 	mov r0, #2
 	mov r1, #1
-	bl sub_0204C978
+	bl SetSpecialEpisodeOpen
 #ifdef NORTH_AMERICA
 	mov r0, #0x1c
 	add r1, r0, #0x3780
@@ -1977,7 +1977,7 @@ _0233E418:
 	ldr r2, [r0]
 	mov r0, #2
 	strb r1, [r2, #0x21c]
-	bl sub_0204C978
+	bl SetSpecialEpisodeOpen
 	ldr r1, _0233E930 ; =0x000037A5
 	mov r0, #0x1c
 	bl ov06_0233CDC8

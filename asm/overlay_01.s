@@ -9890,7 +9890,7 @@ _023313FC:
 	ldr r0, [r0, #0x114]
 	cmp r0, #1
 	ble _02331480
-	bl sub_0204C9A0
+	bl IsSpecialEpisodeOpenMismatch
 	cmp r0, #0
 	beq _0233145C
 	cmp r4, #0
@@ -11173,12 +11173,12 @@ ov01_02332580: ; 0x02332580
 	ldr r4, _02332634 ; =ov01_0233B678
 	beq _023325E4
 	mov r0, r7
-	bl sub_0204CA1C
+	bl IsSpecialEpisodeBeaten
 	cmp r0, #0
 	ldrne r8, _02332638 ; =ov01_0233B6A4
 	bne _023325D8
 	mov r0, r7
-	bl sub_0204C9C8
+	bl IsSpecialEpOpenOld
 	cmp r0, #0
 	ldreq r8, _0233263C ; =ov01_0233B6B0
 _023325D8:
@@ -11766,7 +11766,7 @@ _02332D4C:
 	b _02332ED4
 _02332D5C:
 	bl GetDebugSpecialEpisodeNumber
-	bl sub_0204CA1C
+	bl IsSpecialEpisodeBeaten
 	cmp r0, #0
 	beq _02332DAC
 	ldr r0, _02332EDC ; =ov01_0233C184
@@ -12398,7 +12398,7 @@ _023335C4:
 	mvn r5, #1
 _023335D0:
 	mov r0, r7
-	bl sub_0204CA1C
+	bl IsSpecialEpisodeBeaten
 	cmp r0, #0
 	beq _02333604
 	mov r0, r7

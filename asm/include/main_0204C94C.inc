@@ -1,4 +1,0 @@
-#pragma once
-.public LoadScriptVariableValueAtIndex
-.public SaveScriptVariableValueAtIndex
-.public ScriptVariablesEqual

@@ -638,7 +638,7 @@
 .public IsStoryAtPoint
 .public IsStoryAtOrAfterPoint
 .public IsStoryAtOrAfterPointStrict
-.public sub_0204CA48
+.public SetSpecialEpisodeBeaten
 .public sub_0204CB2C
 .public sub_0204CDE8
 .public sub_0204CE48

@@ -71,7 +71,7 @@
 .public sub_0204A018
 .public sub_0204A1CC
 .public sub_0204AE60
-.public sub_0204C978
+.public SetSpecialEpisodeOpen
 .public sub_0204E210
 .public sub_02050974
 .public sub_020509BC

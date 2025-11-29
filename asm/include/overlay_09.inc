@@ -63,6 +63,6 @@
 .public sub_02032684
 .public sub_02032984
 .public sub_02033758
-.public sub_0204CA1C
+.public IsSpecialEpisodeBeaten
 .public sub_02052060
 .public UpdateWindow
