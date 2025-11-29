@@ -42,16 +42,16 @@ bool8 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], enum scrip
 s32 CalcScriptVariables(s32 param_1, s32 param_2, enum script_calc_operation operation);
 bool8 CompareScriptVariables(s32 param_1, s32 param_2, enum compare_operation operation);
 s32 CalcScriptVariablesVeneer(s32 param_1, s32 param_2, enum script_calc_operation operation);
-void UpdateScriptVarWithParam(union script_var_value sv_local[], const enum script_var_id script_var_id, s32 param, enum script_calc_operation operation);
-void UpdateScriptVarWithVar(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum script_calc_operation operation);
+void CalcAndUpdateScriptVarWithOtherValue(union script_var_value sv_local[], const enum script_var_id script_var_id, s32 param, enum script_calc_operation operation);
+void CalcAndUpdateScriptVarWithOtherScriptVar(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum script_calc_operation operation);
 bool8 CompareScriptVariablesVeneer(s32 param_1, s32 param_2, enum compare_operation operation);
-bool8 CompareScriptVarWithParam(union script_var_value sv_local[], enum script_var_id sv_id, s32 param, enum compare_operation op);
+bool8 LoadAndCompareScriptVarAndValue(union script_var_value sv_local[], enum script_var_id sv_id, s32 param, enum compare_operation op);
 bool8 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op);
 void EventFlagResume();
 void EventFlagBackup();
 bool8 DumpScriptVariableValues(u8* dest);
 bool8 RestoreScriptVariableValues(u8* src);
-void InitProgress();
+void InitScenarioScriptVars();
 void LoadScriptVarValuePair(enum script_var_id script_var_id, s32* val_1, s32* val_2);
 
 #endif //PMDSKY_SCRIPTING_H

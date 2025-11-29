@@ -35,12 +35,12 @@
 .public FACADE_DAMAGE_MULTIPLIER
 .public FLAME_WHEEL_BURN_CHANCE
 .public FLAMETHROWER_BURN_CHANCE
-.public GetFlashFireStatus
 .public FOCUS_PUNCH_DAMAGE_MULTIPLIER
 .public FormatMoveStringMore
 .public GetApparentWeather
 .public GetDamageSourceWrapper
 .public GetEffectAnimation
+.public GetFlashFireStatus
 .public GetMessageLogPreprocessorArgs
 .public GetMoveAnimation
 .public GetMoveCategory

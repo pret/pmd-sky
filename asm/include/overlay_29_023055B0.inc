@@ -27,6 +27,7 @@
 .public IsMonsterDrowsy
 .public IsMonsterMuzzled
 .public IsMonsterVisuallyImpaired
+.public IsTeamMemberOnFirstTurnInFixedRoom
 .public LogMessageByIdWithPopupCheckUser
 .public LogMessageByIdWithPopupCheckUserTarget
 .public MonsterHasAttackInterferingStatus
@@ -41,7 +42,6 @@
 .public ov29_022E3A58
 .public ov29_022E543C
 .public ov29_022EA370
-.public IsTeamMemberOnFirstTurnInFixedRoom
 .public ov29_02337D68
 .public ov29_02353318
 .public SubstitutePlaceholderStringTags

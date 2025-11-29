@@ -40,6 +40,7 @@
 .public GetAdvancedMenuResult
 .public GetAdventureLogCompleted
 .public GetAdventureLogDungeonFloor
+.public GetDebugSpecialEpisodeNumber
 .public GetHeldButtons
 .public GetHero
 .public GetKeyboardStatus
@@ -91,7 +92,10 @@
 .public IsMovesetValid
 .public IsParentMenuActive
 .public IsSimpleMenuActive
+.public IsSpecialEpisodeBeaten
 .public IsSpecialEpisodeOpen
+.public IsSpecialEpisodeOpenMismatch
+.public IsSpecialEpOpenOld
 .public IsTextBoxActive
 .public LoadScriptVariableValueAtIndex
 .public LoadWanTableEntry
@@ -242,9 +246,10 @@
 .public ResumeParentMenu
 .public SetAdvancedTextBoxState5
 .public SetAnimationForAnimationControl
+.public SetDebugSpecialEpisodeNumber
 .public SetIrqFlag
 .public SetMainTeamName
-.public UpdateProgress
+.public SetScenarioScriptVar
 .public SetSpriteIdForAnimationControl
 .public ShowKeyboard
 .public ShowStringIdInDialogueBox
@@ -332,11 +337,6 @@
 .public sub_0204a1cc
 .public sub_0204A1CC
 .public sub_0204AE60
-.public GetDebugSpecialEpisodeNumber
-.public SetDebugSpecialEpisodeNumber
-.public IsSpecialEpisodeOpenMismatch
-.public IsSpecialEpOpenOld
-.public IsSpecialEpisodeBeaten
 .public sub_0204DF54
 .public sub_0204DFB0
 .public sub_0204E02C
