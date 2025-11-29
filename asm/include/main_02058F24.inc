@@ -479,8 +479,8 @@
 .public sub_0204AB18
 .public sub_0204AF98
 .public sub_0204B018
-.public sub_0204C6C8
-.public sub_0204C918
+.public IsStoryBeforePoint
+.public GetDebugSpecialEpisodeNumber
 .public sub_0204C978
 .public sub_0204CA1C
 .public sub_0204D018

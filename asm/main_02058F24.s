@@ -12403,21 +12403,21 @@ sub_02063240: ; 0x02063240
 	mov r0, #3
 	mov r1, #0xc
 	mov r2, #0
-	bl sub_0204C6C8
+	bl IsStoryBeforePoint
 	cmp r0, #0
 	movne r0, #0
 	strneh r0, [r6, #0xa]
 	mov r0, #3
 	mov r1, #6
 	mov r2, #0
-	bl sub_0204C6C8
+	bl IsStoryBeforePoint
 	cmp r0, #0
 	movne r0, #0
 	strneh r0, [r6, #0xc]
 	mov r0, #3
 	mov r1, #8
 	mov r2, #0
-	bl sub_0204C6C8
+	bl IsStoryBeforePoint
 	cmp r0, #0
 	bne _020632B8
 	ldrb r1, [r4, #1]
@@ -16146,7 +16146,7 @@ _0206617C:
 	bl sub_0204872C
 	b _02065F20
 _020661B0:
-	bl sub_0204C918
+	bl GetDebugSpecialEpisodeNumber
 	bl SetSpecialEpisodeType
 	mov r0, #3
 	bl sub_0204B018
