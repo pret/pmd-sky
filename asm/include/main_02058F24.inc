@@ -481,8 +481,8 @@
 .public sub_0204B018
 .public IsStoryBeforePoint
 .public GetDebugSpecialEpisodeNumber
-.public sub_0204C978
-.public sub_0204CA1C
+.public SetSpecialEpisodeOpen
+.public IsSpecialEpisodeBeaten
 .public sub_0204D018
 .public sub_0204E210
 .public sub_0204E6FC

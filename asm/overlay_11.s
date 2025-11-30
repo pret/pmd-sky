@@ -3313,7 +3313,7 @@ _022DEF8C: ; 0x022DEF8C
 	blt _022DEFC0
 	sub r0, r4, #0x3e8
 	mov r1, #1
-	bl sub_0204CA48
+	bl SetSpecialEpisodeBeaten
 	ldr r0, _022DFE08 ; =ov11_02316B0C
 	sub r1, r4, #0x3e8
 	ldrb r0, [r0, r1]

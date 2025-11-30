@@ -58,7 +58,7 @@ _0233CAEC:
 	b _0233CB90
 _0233CB38:
 	ldr r0, [r7]
-	bl sub_0204CA1C
+	bl IsSpecialEpisodeBeaten
 	cmp r0, #0
 	bne _0233CB8C
 	ldr r2, [sb]
