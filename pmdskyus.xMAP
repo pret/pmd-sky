@@ -158,8 +158,8 @@
                                      36](SaveScriptVariableValue,func) found in global script_variable.o
                                       37](SetDebugSpecialEpisodeNumber,func) found in global special_episode.o
                                      36](InitDungeonListScriptVars,func) found in global main_0204CBE8.o
-                                     36](InitProgress,func) found in global script_variable.o
-                                      37](UpdateProgress,func) found in global story_progress.o
+                                     36](InitScenarioProgressScriptVars,func) found in global script_variable.o
+                                      37](SetScenarioProgressScriptVar,func) found in global story_progress.o
                                    34](GetStringFromFileVeneer,func) found in global main_0202593C.o
                                   33](GetColorCodePaletteOffset,func) found in global main_020265C4.o
                                 31](GetMaxPp,func) found in global moves.o
@@ -663,7 +663,7 @@
                                                                                                      100](ov11_022EC240,func) found in global ground_bg.o
                                                                                                      100](LoadMapType10,func) found in global ground_bg.o
                                                                                                      100](LoadMapType11,func) found in global ground_bg.o
-                                                                                                   98](UpdateScriptVarWithParam,func) found in global script_variable.o
+                                                                                                   98](CalcAndUpdateScriptVarWithOtherValue,func) found in global script_variable.o
                                                                                                     99](CalcScriptVariables,func) found in global script_variable.o
                                                                                                      100](.rodata,section) found in local script_variable.o
                                                                                                       101](EVENT_FLAG_FILE_NAME,object) found in global script_variable.o
@@ -678,17 +678,17 @@
                                                                                                    98](CompareScriptVariablesVeneer,func) found in global script_variable.o
                                                                                                     99](CompareScriptVariables,func) found in global script_variable.o
                                                                                                    98](CalcScriptVariablesVeneer,func) found in global script_variable.o
-                                                                                                   98](IsStoryAtOrAfterPointStrict,func) found in global story_progress.o
+                                                                                                   98](IsStoryAfterPoint,func) found in global story_progress.o
                                                                                                    98](IsStoryAtOrAfterPoint,func) found in global story_progress.o
                                                                                                    98](IsStoryAtPoint,func) found in global story_progress.o
                                                                                                    98](IsStoryBeforeOrAtPoint,func) found in global story_progress.o
                                                                                                    98](IsStoryBeforePoint,func) found in global story_progress.o
                                                                                                    98](LoadScriptVariableValueSum,func) found in global script_variable.o
                                                                                                    98](LoadAndCompareScriptVars,func) found in global script_variable.o
-                                                                                                   98](CompareScriptVarWithParam,func) found in global script_variable.o
+                                                                                                   98](LoadAndCompareScriptVarAndValue,func) found in global script_variable.o
                                                                                                    98](SetSpecialEpisodeBeaten,func) found in global special_episode.o
                                                                                                    98](sub_0204CB2C,func) found in global main_0204CA94.o
-                                                                                                   98](UpdateScriptVarWithVar,func) found in global script_variable.o
+                                                                                                   98](CalcAndUpdateScriptVarWithOtherScriptVar,func) found in global script_variable.o
                                                                                                   97](Debug_SetLogFlag,func) found in global debug.o
                                                                                                   97](Debug_SetDebugFlag,func) found in global debug.o
                                                                                                  96](ov29_0234BBE8,func) found in global overlay_29_0234BBE8.o
@@ -1014,7 +1014,7 @@
                                 31](ov03_02346BE0,object) found in global overlay_03_0233CA80.o
                              28](.bss,section) found in local overlay_01.o
                              28](CardBackupError,func) found in global main_02003D2C.o
-                             28](IsSpecialEpOpenOld,func) found in global special_episode.o
+                             28](IsSpecialEpisodeOpenOld,func) found in global special_episode.o
                              28](IsSpecialEpisodeOpenMismatch,func) found in global special_episode.o
                               29](ScriptVariablesEqual,func) found in global script_variable.o
                             27](SetSpecialEpisodeType,func) found in global special_episode.o
@@ -1029,7 +1029,7 @@
                      20](EventFlagBackup,func) found in global script_variable.o
                     19](Rand32Bit,func) found in global main_0200224C.o
                     19](EventFlagResume,func) found in global script_variable.o
-                    19](SetSpecialEpOpenOld,func) found in global special_episode.o
+                    19](SetSpecialEpisodeOpenOld,func) found in global special_episode.o
                     19](GetMoveRangeId,func) found in global main_02013B70.o
                  16](LoadScriptVariableValueString,func) found in global script_variable.o
                   17](LoadScriptVariableValueBytes,func) found in global script_variable.o
@@ -6167,14 +6167,14 @@
   0204BECC 00000000 .text   $a	(script_variable.o)
   0204BECC 0000000C .text   CalcScriptVariablesVeneer	(script_variable.o)
   0204BED4 00000000 .text   $d	(script_variable.o)
-  0204BED8 00000038 .text   UpdateScriptVarWithParam	(script_variable.o)
+  0204BED8 00000038 .text   CalcAndUpdateScriptVarWithOtherValue	(script_variable.o)
   0204BED8 00000000 .text   $a	(script_variable.o)
-  0204BF10 0000004C .text   UpdateScriptVarWithVar	(script_variable.o)
+  0204BF10 0000004C .text   CalcAndUpdateScriptVarWithOtherScriptVar	(script_variable.o)
   0204BF10 00000000 .text   $a	(script_variable.o)
   0204BF5C 00000000 .text   $a	(script_variable.o)
   0204BF5C 0000000C .text   CompareScriptVariablesVeneer	(script_variable.o)
   0204BF64 00000000 .text   $d	(script_variable.o)
-  0204BF68 00000020 .text   CompareScriptVarWithParam	(script_variable.o)
+  0204BF68 00000020 .text   LoadAndCompareScriptVarAndValue	(script_variable.o)
   0204BF68 00000000 .text   $a	(script_variable.o)
   0204BF88 00000038 .text   LoadAndCompareScriptVars	(script_variable.o)
   0204BF88 00000000 .text   $a	(script_variable.o)
@@ -6190,12 +6190,12 @@
   0204C430 00000000 .text   $a	(script_variable.o)
   0204C430 00000058 .text   RestoreScriptVariableValues	(script_variable.o)
   0204C484 00000000 .text   $d	(script_variable.o)
-  0204C488 00000154 .text   InitProgress	(script_variable.o)
+  0204C488 00000154 .text   InitScenarioProgressScriptVars	(script_variable.o)
   0204C488 00000000 .text   $a	(script_variable.o)
   0204C5DC 0000003C .text   LoadScriptVarValuePair	(script_variable.o)
   0204C5DC 00000000 .text   $a	(script_variable.o)
   0204C618 00000000 .text   $a	(story_progress.o)
-  0204C618 000000B0 .text   UpdateProgress	(story_progress.o)
+  0204C618 000000B0 .text   SetScenarioProgressScriptVar	(story_progress.o)
   0204C6C4 00000000 .text   $d	(story_progress.o)
   0204C6C8 0000006C .text   IsStoryBeforePoint	(story_progress.o)
   0204C6C8 00000000 .text   $a	(story_progress.o)
@@ -6205,7 +6205,7 @@
   0204C7AC 00000000 .text   $a	(story_progress.o)
   0204C808 00000078 .text   IsStoryAtOrAfterPoint	(story_progress.o)
   0204C808 00000000 .text   $a	(story_progress.o)
-  0204C880 0000006C .text   IsStoryAtOrAfterPointStrict	(story_progress.o)
+  0204C880 0000006C .text   IsStoryAfterPoint	(story_progress.o)
   0204C880 00000000 .text   $a	(story_progress.o)
   0204C8EC 00000000 .text   $a	(special_episode.o)
   0204C8EC 00000014 .text   GetSpecialEpisodeType	(special_episode.o)
@@ -6229,10 +6229,10 @@
   0204C99C 00000000 .text   $d	(special_episode.o)
   0204C9A0 00000028 .text   IsSpecialEpisodeOpenMismatch	(special_episode.o)
   0204C9A0 00000000 .text   $a	(special_episode.o)
-  0204C9C8 0000002C .text   IsSpecialEpOpenOld	(special_episode.o)
+  0204C9C8 0000002C .text   IsSpecialEpisodeOpenOld	(special_episode.o)
   0204C9C8 00000000 .text   $a	(special_episode.o)
   0204C9F4 00000000 .text   $a	(special_episode.o)
-  0204C9F4 00000028 .text   SetSpecialEpOpenOld	(special_episode.o)
+  0204C9F4 00000028 .text   SetSpecialEpisodeOpenOld	(special_episode.o)
   0204CA18 00000000 .text   $d	(special_episode.o)
   0204CA1C 0000002C .text   IsSpecialEpisodeBeaten	(special_episode.o)
   0204CA1C 00000000 .text   $a	(special_episode.o)
@@ -11532,15 +11532,15 @@
   0209CE94 00000000 .rodata _0209CE94	(main_rodata_020908D4.o)
   0209CE9C 00000000 .rodata _0209CE9C	(main_rodata_020908D4.o)
   0209CEA4 00000000 .rodata _0209CEA4	(main_rodata_020908D4.o)
-  0209CEAC 00000008 .rodata EVENT_FLAG_PROG_POS_INFO_LINE_1011	(script_variable.o)
+  0209CEAC 00000008 .rodata EVENT_FLAG_PROG_POS_INFO_CALC_SCRIPT_VARIABLES	(script_variable.o)
   0209CEAC 00000000 .rodata .rodata	(script_variable.o)
-  0209CEB4 00000008 .rodata EVENT_FLAG_PROG_POS_INFO_LINE_1044	(script_variable.o)
+  0209CEB4 00000008 .rodata EVENT_FLAG_PROG_POS_INFO_COMPARE_SCRIPT_VARIABLES	(script_variable.o)
   0209CEBC 0000000D .rodata EVENT_FLAG_FILE_NAME	(script_variable.o)
   0209CECC 00004A40 .rodata .rodata	(main_rodata_0209CECC.o)
   0209CECC 00000000 .rodata SCRIPT_VARS_LOCALS	(main_rodata_0209CECC.o)
   0209CF0C 00000000 .rodata _0209CF0C	(main_rodata_0209CECC.o)
   0209CF28 00000000 .rodata EVENT_FLAG_EXPANSION_ERROR	(main_rodata_0209CECC.o)
-  0209CF48 00000000 .rodata EVENT_FLAG_RULE_ERROR	(main_rodata_0209CECC.o)
+  0209CF48 00000000 .rodata EVENT_FLAG_COMPARE_SCRIPT_VARIABLES_ERROR	(main_rodata_0209CECC.o)
   0209CF64 00000000 .rodata EVENT_FLAG_GAME_MODE_DEBUG_MSG	(main_rodata_0209CECC.o)
   0209CF84 00000000 .rodata EVENT_FLAG_BACKUP_DEBUG_MSG	(main_rodata_0209CECC.o)
   0209CFA4 00000000 .rodata _0209CFA4	(main_rodata_0209CECC.o)
@@ -41055,5 +41055,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Nov 30 04:54:56 2025
-# Link end time: Sun Nov 30 04:54:57 2025
+# Link start time: Sun Nov 30 16:53:40 2025
+# Link end time: Sun Nov 30 16:53:41 2025
