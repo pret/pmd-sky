@@ -360,7 +360,7 @@ void SaveScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s3
     }
 }
 
-s32 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2)
+bool8 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2)
 {
     struct script_var_raw script_var_raw_1, script_var_raw_2;
 
@@ -372,11 +372,11 @@ s32 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], enum script_
     for(int idx = 0; idx < n_values; idx++) {
         if (LoadScriptVariableValueAtIndex(sv_val_ptr_local, sv_id_1, idx) !=
             LoadScriptVariableValueAtIndex(sv_val_ptr_local, sv_id_2, idx)) {
-            return 0;
+            return FALSE;
         }
     }
 
-    return 1;
+    return TRUE;
 }
 
 s32 CalcScriptVariables(s32 param_1, s32 param_2, enum script_calc_operation operation)

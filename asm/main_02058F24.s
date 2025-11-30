@@ -11467,7 +11467,7 @@ _02062694: ; jump table
 	b _020626AC ; case 5
 _020626AC:
 	mov r0, #0
-	bl sub_0204CA1C
+	bl IsSpecialEpisodeBeaten
 	cmp r0, #0
 	moveq r0, #0
 	beq _02062754
@@ -18505,7 +18505,7 @@ _020680D0:
 	cmp r0, #5
 	bne _02068158
 	mov r0, #0
-	bl sub_0204CA1C
+	bl IsSpecialEpisodeBeaten
 	cmp r0, #0
 	bne _0206812C
 	bl sub_020692B4
@@ -20987,7 +20987,7 @@ _0206A1B0:
 	bl InitPreprocessorArgs
 	mov r0, #2
 	mov r1, #1
-	bl sub_0204C978
+	bl SetSpecialEpisodeOpen
 	add r0, sp, #0x7e
 	mov r1, #0x2a
 	bl MemZero

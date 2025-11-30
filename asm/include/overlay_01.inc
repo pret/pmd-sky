@@ -334,9 +334,9 @@
 .public sub_0204AE60
 .public GetDebugSpecialEpisodeNumber
 .public SetDebugSpecialEpisodeNumber
-.public sub_0204C9A0
-.public sub_0204C9C8
-.public sub_0204CA1C
+.public IsSpecialEpisodeOpenMismatch
+.public IsSpecialEpOpenOld
+.public IsSpecialEpisodeBeaten
 .public sub_0204DF54
 .public sub_0204DFB0
 .public sub_0204E02C

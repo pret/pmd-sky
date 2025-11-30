@@ -14613,7 +14613,7 @@ InitSpecialEpisodeHero: ; 0x020484E8
 	bl sub_0204CDB8
 	mov r0, r4
 	mov r1, #1
-	bl sub_0204C9F4
+	bl SetSpecialEpOpenOld
 	cmp r4, #4
 	addls pc, pc, r4, lsl #2
 	b _02048578

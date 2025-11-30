@@ -463,7 +463,7 @@
 .public sub_02039218
 .public sub_0203931C
 .public sub_0204B028
-.public sub_0204C9F4
+.public SetSpecialEpOpenOld
 .public sub_0204CDB8
 .public sub_0204E154
 .public sub_0204E19C
