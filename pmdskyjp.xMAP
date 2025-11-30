@@ -392,7 +392,7 @@
                                                                                 79](TWO_TURN_STATUSES,object) found in global dungeon_move.o
                                                                               77](IsBagFull,func) found in global main_0200EDC0.o
                                                                                78](GetCurrentBagCapacity,func) found in global main_0200EDC0.o
-                                                                                79](GetExecuteSpecialEpisodeType,func) found in global main_0204C938.o
+                                                                                79](GetExecuteSpecialEpisodeType,func) found in global special_episode.o
                                                                                 79](GetBagCapacity,func) found in global main_020517D4.o
                                                                                  80](BAG_CAPACITY_TABLE,object) found in global main_020517D4.o
                                                                                 79](GetBagCapacitySpecialEpisode,func) found in global main_020517D4.o
@@ -684,8 +684,7 @@
                                                                                                    98](LoadScriptVariableValueSum,func) found in global script_variable.o
                                                                                                    98](LoadAndCompareScriptVars,func) found in global script_variable.o
                                                                                                    98](CompareScriptVarWithParam,func) found in global script_variable.o
-                                                                                                   98](sub_0204CA48,func) found in global main_0204C94C.o
-                                                                                                    99](ScriptVariablesEqual,func) found in global script_variable.o
+                                                                                                   98](SetSpecialEpisodeBeaten,func) found in global special_episode.o
                                                                                                    98](sub_0204CB2C,func) found in global main_0204CA94.o
                                                                                                    98](UpdateScriptVarWithVar,func) found in global script_variable.o
                                                                                                   97](Debug_SetLogFlag,func) found in global debug.o
@@ -965,6 +964,7 @@
                                   33](ov09_0233CBF8,func) found in global overlay_09.o
                                    34](.rodata,section) found in local overlay_09.o
                                    34](.data,section) found in local overlay_09.o
+                                   34](IsSpecialEpisodeBeaten,func) found in global special_episode.o
                                   33](ov08_0233E2BC,func) found in global overlay_08.o
                                    34](.rodata,section) found in local overlay_08.o
                                    34](.bss,section) found in local overlay_08.o
@@ -995,6 +995,8 @@
                                30](.bss,section) found in local overlay_06.o
                                30](.rodata,section) found in local overlay_06.o
                                30](.data,section) found in local overlay_06.o
+                               30](SetSpecialEpisodeOpen,func) found in global special_episode.o
+                               30](IsSpecialEpisodeOpen,func) found in global special_episode.o
                                30](WonderMailPasswordToMission,func) found in global main_0204DD80.o
                                 31](sub_0204DA2C,func) found in global main_0204DA2C.o
                               29](ov03_0233CB94,func) found in global overlay_03_0233CA98.o
@@ -1007,6 +1009,9 @@
                                 31](ov03_02346BE0,object) found in global overlay_03_0233CA80.o
                              28](.bss,section) found in local overlay_01.o
                              28](CardBackupError,func) found in global main_02003D2C.o
+                             28](IsSpecialEpOpenOld,func) found in global special_episode.o
+                             28](IsSpecialEpisodeOpenMismatch,func) found in global special_episode.o
+                              29](ScriptVariablesEqual,func) found in global script_variable.o
                             27](SetSpecialEpisodeType,func) found in global special_episode.o
                             27](DirectoryFileMngr_ExtractAllDirectoryFiles,func) found in global directory_file_mngr.o
                              28](DirectoryFile_ExtractDirectoryFile,func) found in global directory_file.o
@@ -1019,6 +1024,7 @@
                      20](EventFlagBackup,func) found in global script_variable.o
                     19](Rand32Bit,func) found in global main_0200224C.o
                     19](EventFlagResume,func) found in global script_variable.o
+                    19](SetSpecialEpOpenOld,func) found in global special_episode.o
                     19](GetMoveRangeId,func) found in global main_02013B70.o
                  16](LoadScriptVariableValueString,func) found in global script_variable.o
                   17](LoadScriptVariableValueBytes,func) found in global script_variable.o
@@ -6217,23 +6223,26 @@
   0204CC88 00000000 .text   $a	(special_episode.o)
   0204CC88 00000010 .text   SetDebugSpecialEpisodeNumber	(special_episode.o)
   0204CC94 00000000 .text   $d	(special_episode.o)
-  0204CC98 00000000 .text   $a	(main_0204C938.o)
-  0204CC98 00000014 .text   GetExecuteSpecialEpisodeType	(main_0204C938.o)
-  0204CCA8 00000000 .text   $d	(main_0204C938.o)
-  0204CCAC 0000002C .text   IsSpecialEpisodeOpen	(main_0204C94C.o)
-  0204CCAC 00000124 .text   .text	(main_0204C94C.o)
-  0204CCAC 00000000 .text   $a	(main_0204C94C.o)
-  0204CCD8 00000028 .text   sub_0204C978	(main_0204C94C.o)
-  0204CCFC 00000000 .text   $d	(main_0204C94C.o)
-  0204CD00 00000028 .text   sub_0204C9A0	(main_0204C94C.o)
-  0204CD00 00000000 .text   $a	(main_0204C94C.o)
-  0204CD28 0000002C .text   sub_0204C9C8	(main_0204C94C.o)
-  0204CD54 00000028 .text   sub_0204C9F4	(main_0204C94C.o)
-  0204CD78 00000000 .text   $d	(main_0204C94C.o)
-  0204CD7C 0000002C .text   sub_0204CA1C	(main_0204C94C.o)
-  0204CD7C 00000000 .text   $a	(main_0204C94C.o)
-  0204CDA8 00000028 .text   sub_0204CA48	(main_0204C94C.o)
-  0204CDCC 00000000 .text   $d	(main_0204C94C.o)
+  0204CC98 00000000 .text   $a	(special_episode.o)
+  0204CC98 00000014 .text   GetExecuteSpecialEpisodeType	(special_episode.o)
+  0204CCA8 00000000 .text   $d	(special_episode.o)
+  0204CCAC 0000002C .text   IsSpecialEpisodeOpen	(special_episode.o)
+  0204CCAC 00000000 .text   $a	(special_episode.o)
+  0204CCD8 00000000 .text   $a	(special_episode.o)
+  0204CCD8 00000028 .text   SetSpecialEpisodeOpen	(special_episode.o)
+  0204CCFC 00000000 .text   $d	(special_episode.o)
+  0204CD00 00000028 .text   IsSpecialEpisodeOpenMismatch	(special_episode.o)
+  0204CD00 00000000 .text   $a	(special_episode.o)
+  0204CD28 0000002C .text   IsSpecialEpOpenOld	(special_episode.o)
+  0204CD28 00000000 .text   $a	(special_episode.o)
+  0204CD54 00000000 .text   $a	(special_episode.o)
+  0204CD54 00000028 .text   SetSpecialEpOpenOld	(special_episode.o)
+  0204CD78 00000000 .text   $d	(special_episode.o)
+  0204CD7C 0000002C .text   IsSpecialEpisodeBeaten	(special_episode.o)
+  0204CD7C 00000000 .text   $a	(special_episode.o)
+  0204CDA8 00000000 .text   $a	(special_episode.o)
+  0204CDA8 00000028 .text   SetSpecialEpisodeBeaten	(special_episode.o)
+  0204CDCC 00000000 .text   $d	(special_episode.o)
   0204CDD0 00000024 .text   HasPlayedOldGame	(dungeon_recruitment_3.o)
   0204CDD0 00000000 .text   $a	(dungeon_recruitment_3.o)
   0204CDF4 00000000 .text   $a	(main_0204CA94.o)
@@ -41286,5 +41295,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Nov 29 18:33:40 2025
-# Link end time: Sat Nov 29 18:33:41 2025
+# Link start time: Sun Nov 30 04:21:44 2025
+# Link end time: Sun Nov 30 04:21:44 2025
