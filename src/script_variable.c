@@ -14,15 +14,15 @@ extern struct script_var_def SCRIPT_VARS_LOCALS[];
 // Global script variable values
 extern u8 SCRIPT_VARS_VALUES[];
 extern u8 EVENT_FLAG_EXPANSION_ERROR;
-extern u8 EVENT_FLAG_RULE_ERROR;
+extern u8 EVENT_FLAG_COMPARE_SCRIPT_VARIABLES_ERROR;
 extern const u8 EVENT_FLAG_GAME_MODE_DEBUG_MSG;
 extern const u8 EVENT_FLAG_BACKUP_DEBUG_MSG;
 const u8 EVENT_FLAG_FILE_NAME[] = "event_flag.c";
-const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_LINE_1011 = {
+const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_CALC_SCRIPT_VARIABLES = {
     (u8*) EVENT_FLAG_FILE_NAME,
     1001
 };
-const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_LINE_1044 = {
+const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_COMPARE_SCRIPT_VARIABLES = {
     (u8*) EVENT_FLAG_FILE_NAME,
     1044
 };
@@ -32,7 +32,6 @@ extern s32 GetMoneyCarried();
 extern s32 GetMoneyStored();
 extern s32 GetLanguageType();
 extern enum game_mode GetGameMode();
-extern s32 GetDebugSpecialEpisodeNumber();
 extern s32 GetSpecialEpisodeType();
 extern s32 GetNotifyNote();
 extern s32 AddMoneyCarried(s32 arg0);
@@ -47,7 +46,7 @@ extern void ZinitScriptVariable(u32 param_1, u32 param_2);
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     union script_var_value sv_val_local[],
     const enum script_var_id sv_id) {
-    
+
     if (sv_id < (s16) LOCAL_SCRIPT_VAR_OFFSET) {
         // global script var
         sv_raw->def = &SCRIPT_VARS[sv_id];
@@ -407,7 +406,7 @@ s32 CalcScriptVariables(s32 param_1, s32 param_2, enum script_calc_operation ope
         case CALC_RANDOM:
             return RandInt(param_2);
         default:
-            struct prog_pos_info ppi = EVENT_FLAG_PROG_POS_INFO_LINE_1011;
+            struct prog_pos_info ppi = EVENT_FLAG_PROG_POS_INFO_CALC_SCRIPT_VARIABLES;
             Debug_FatalError(&ppi, &EVENT_FLAG_EXPANSION_ERROR, operation);
     }
 }
@@ -442,8 +441,8 @@ bool8 CompareScriptVariables(s32 param_1, s32 param_2, enum compare_operation op
                 return 0;
             }
         default:
-            struct prog_pos_info ppi = EVENT_FLAG_PROG_POS_INFO_LINE_1044;
-            Debug_FatalError(&ppi, &EVENT_FLAG_RULE_ERROR, operation);
+            struct prog_pos_info ppi = EVENT_FLAG_PROG_POS_INFO_COMPARE_SCRIPT_VARIABLES;
+            Debug_FatalError(&ppi, &EVENT_FLAG_COMPARE_SCRIPT_VARIABLES_ERROR, operation);
         }
 }
 
@@ -452,14 +451,14 @@ s32 CalcScriptVariablesVeneer(s32 param_1, s32 param_2, enum script_calc_operati
     return CalcScriptVariables(param_1, param_2, operation);
 }
 
-void UpdateScriptVarWithParam(union script_var_value sv_local[], const enum script_var_id script_var_id, s32 param, enum script_calc_operation operation)
+void CalcAndUpdateScriptVarWithOtherValue(union script_var_value sv_local[], const enum script_var_id script_var_id, s32 param, enum script_calc_operation operation)
 {
     s32 value = LoadScriptVariableValue(sv_local, script_var_id);
     s32 result = CalcScriptVariables(value, param, operation);
     SaveScriptVariableValue(sv_local, script_var_id, result);
 }
 
-void UpdateScriptVarWithVar(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum script_calc_operation op)
+void CalcAndUpdateScriptVarWithOtherScriptVar(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum script_calc_operation op)
 {
     s32 value_1 = LoadScriptVariableValue(sv_local, sv_id_1);
     s32 value_2 = LoadScriptVariableValue(sv_local, sv_id_2);
@@ -472,13 +471,13 @@ bool8 CompareScriptVariablesVeneer(s32 param_1, s32 param_2, enum compare_operat
     return CompareScriptVariables(param_1, param_2, op);
 }
 
-s32 CompareScriptVarWithParam(union script_var_value sv_local[], enum script_var_id sv_id, s32 param, enum compare_operation op)
+bool8 LoadAndCompareScriptVarAndValue(union script_var_value sv_local[], enum script_var_id sv_id, s32 param, enum compare_operation op)
 {
     s32 value = LoadScriptVariableValue(sv_local, sv_id);
     return CompareScriptVariables(value, param, op);
 }
 
-s32 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op)
+bool8 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op)
 {
     s32 value_1 = LoadScriptVariableValue(sv_local, sv_id_1);
     s32 value_2 = LoadScriptVariableValue(sv_local, sv_id_2);
@@ -506,7 +505,7 @@ void EventFlagResume()
     SaveScriptVariableValue(0, VAR_GROUND_MAP, LoadScriptVariableValueAtIndexInline(VAR_GROUND_MAP_BACKUP, idx));
     SaveScriptVariableValue(0, VAR_GROUND_PLACE, LoadScriptVariableValueAtIndexInline(VAR_GROUND_PLACE_BACKUP, idx));
     SaveScriptVariableValue(0, VAR_DUNGEON_ENTER, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_BACKUP, idx));
-    SaveScriptVariableValue(0, VAR_DUNGEON_ENTER_MODE, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_MODE_BACKUP, idx)); 
+    SaveScriptVariableValue(0, VAR_DUNGEON_ENTER_MODE, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_MODE_BACKUP, idx));
     SaveScriptVariableValue(0, VAR_DUNGEON_ENTER_INDEX, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_INDEX_BACKUP, idx));
     SaveScriptVariableValue(0, VAR_DUNGEON_ENTER_FREQUENCY, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_ENTER_FREQUENCY_BACKUP, idx));
     SaveScriptVariableValue(0, VAR_DUNGEON_RESULT, LoadScriptVariableValueAtIndexInline(VAR_DUNGEON_RESULT_BACKUP, idx));
@@ -535,7 +534,7 @@ void EventFlagBackup()
     }
     idx = game_mode - 2;
     Debug_Print0(&EVENT_FLAG_BACKUP_DEBUG_MSG, idx);
-    
+
     SaveScriptVariableValueAtIndexInline(VAR_GROUND_ENTER_BACKUP, idx, LoadScriptVariableValue(0, VAR_GROUND_ENTER));
     SaveScriptVariableValueAtIndexInline(VAR_GROUND_ENTER_LINK_BACKUP, idx, LoadScriptVariableValue(0, VAR_GROUND_ENTER_LINK));
     SaveScriptVariableValueAtIndexInline(VAR_GROUND_GETOUT_BACKUP, idx, LoadScriptVariableValue(0, VAR_GROUND_GETOUT));
@@ -572,8 +571,8 @@ bool8 RestoreScriptVariableValues(u8* src)
 
     LoadScriptVariableRaw(&sv_raw, 0, VAR_VERSION);
     MemcpySimple(&SCRIPT_VARS_VALUES[0], src, 0x400);
-    
-    // If these values are not equal, then the save file 
+
+    // If these values are not equal, then the save file
     // will be treated as corrupted, which thus gets deleted.
     if (sv_raw.def->default_val == sv_raw.value->u32) {
         ret_val = TRUE;
@@ -584,19 +583,19 @@ bool8 RestoreScriptVariableValues(u8* src)
     return ret_val;
 }
 
-void InitProgress()
-{    
-    UpdateProgress(VAR_SCENARIO_SELECT, 0, 0);
-    UpdateProgress(VAR_SCENARIO_MAIN, 0, 0);
-    UpdateProgress(VAR_SCENARIO_SIDE, 0, 0);
-    UpdateProgress(VAR_SCENARIO_SUB1, 0, 0);
-    UpdateProgress(VAR_SCENARIO_SUB2, 0, 0);
-    UpdateProgress(VAR_SCENARIO_SUB3, 0, 0);
-    UpdateProgress(VAR_SCENARIO_SUB4, 0, 0);
-    UpdateProgress(VAR_SCENARIO_SUB5, 0, 0);
-    UpdateProgress(VAR_SCENARIO_SUB6, 0, 0);
-    UpdateProgress(VAR_SCENARIO_SUB7, 0, 0);
-    UpdateProgress(VAR_SCENARIO_SUB8, 0, 0);
+void InitScenarioProgressScriptVars()
+{
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SELECT, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_MAIN, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SIDE, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB1, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB2, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB3, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB4, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB5, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB6, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB7, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB8, 0, 0);
     ZinitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG);
     ZinitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG_BACKUP);
     s32 idx = 0;

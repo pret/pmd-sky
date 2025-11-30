@@ -39,12 +39,12 @@
 .public FixedPoint64CmpLt
 .public FixedPoint64ToInt
 .public FixedRoomIsSubstituteRoom
-.public GetFlashFireStatus
 .public GendersEqualNotGenderless
 .public GendersNotEqualNotGenderless
 .public GenerateStandardItem
 .public GetApparentWeather
 .public GetEquivItemIndex
+.public GetFlashFireStatus
 .public GetItemAtIdx
 .public GetMonsterGenderVeneer
 .public GetMoveCategory

@@ -11178,7 +11178,7 @@ ov01_02332580: ; 0x02332580
 	ldrne r8, _02332638 ; =ov01_0233B6A4
 	bne _023325D8
 	mov r0, r7
-	bl IsSpecialEpOpenOld
+	bl IsSpecialEpisodeOpenOld
 	cmp r0, #0
 	ldreq r8, _0233263C ; =ov01_0233B6B0
 _023325D8:
@@ -13063,7 +13063,7 @@ _02333DA4:
 	mov r0, #3
 	mov r1, #0x1c
 	mov r2, #0
-	bl UpdateProgress
+	bl SetScenarioProgressScriptVar
 	mov r0, #2
 	mov r1, #6
 	mov r2, #1

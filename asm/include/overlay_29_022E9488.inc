@@ -1,6 +1,6 @@
 #pragma once
-.public DUNGEON_PTR
 .public _020AFC4C
+.public DUNGEON_PTR
 .public ov29_0237C888
 .public ov29_0237C88A
 .public ov29_0237C88E

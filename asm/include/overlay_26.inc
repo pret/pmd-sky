@@ -20,6 +20,7 @@
 .public IsMoneyAllowed
 .public IsMonsterOnTeam
 .public LoadScriptVariableValue
+.public LoadScriptVarValuePair
 .public MemAlloc
 .public MemFree
 .public ov10_022BD56C
@@ -42,7 +43,6 @@
 .public sub_02046740
 .public sub_0204677C
 .public sub_0204AFD0
-.public LoadScriptVarValuePair
 .public sub_0204E770
 .public sub_0204E780
 .public sub_0204F0A0

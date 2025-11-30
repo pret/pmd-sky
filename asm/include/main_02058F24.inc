@@ -201,6 +201,7 @@
 .public GetBaseFormBurmyWormadamShellosGastrodonCherrim
 .public GetBodySize
 .public GetCategoryString
+.public GetDebugSpecialEpisodeNumber
 .public GetDungeonMode
 .public GetEvoParameters
 .public GetExclusiveItem
@@ -266,8 +267,10 @@
 .public IsMonsterValid
 .public IsMovesetValid
 .public IsMovesetValidInTimeDarkness
+.public IsSpecialEpisodeBeaten
 .public IsSpecialEpisodeOpen
 .public IsStorableItem
+.public IsStoryBeforePoint
 .public IsThrownItem
 .public IsValidTargetItem
 .public ITEM_DELIVERY_TABLE
@@ -360,7 +363,8 @@
 .public SetCollectionMenuField0x1B2
 .public SetPokemonJoined
 .public SetQuestionMarks
-.public UpdateProgress
+.public SetScenarioProgressScriptVar
+.public SetSpecialEpisodeOpen
 .public SetSpecialEpisodeType
 .public SetSpriteIdForAnimationControl
 .public ShowPortraitInPortraitBox
@@ -479,10 +483,6 @@
 .public sub_0204AB18
 .public sub_0204AF98
 .public sub_0204B018
-.public IsStoryBeforePoint
-.public GetDebugSpecialEpisodeNumber
-.public SetSpecialEpisodeOpen
-.public IsSpecialEpisodeBeaten
 .public sub_0204D018
 .public sub_0204E210
 .public sub_0204E6FC
