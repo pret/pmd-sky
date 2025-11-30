@@ -11178,7 +11178,7 @@ ov01_02332580: ; 0x02332580
 	ldrne r8, _02332638 ; =ov01_0233B6A4
 	bne _023325D8
 	mov r0, r7
-	bl IsSpecialEpOpenOld
+	bl IsSpecialEpisodeOpenOld
 	cmp r0, #0
 	ldreq r8, _0233263C ; =ov01_0233B6B0
 _023325D8:

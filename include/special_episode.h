@@ -10,8 +10,8 @@ s32 GetExecuteSpecialEpisodeType();
 bool8 IsSpecialEpisodeOpen(u32 idx);
 void SetSpecialEpisodeOpen(u32 idx, u32 episode_open);
 bool8 IsSpecialEpisodeOpenMismatch();
-bool8 IsSpecialEpOpenOld(u32 idx);
-void SetSpecialEpOpenOld(u32 idx, u32 val);
+bool8 IsSpecialEpisodeOpenOld(u32 idx);
+void SetSpecialEpisodeOpenOld(u32 idx, u32 val);
 bool8 IsSpecialEpisodeBeaten(u32 idx);
 void SetSpecialEpisodeBeaten(u32 idx, u32 special_ep_beaten);
 

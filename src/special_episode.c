@@ -61,7 +61,7 @@ bool8 IsSpecialEpisodeOpenMismatch()
     return ret;
 }
 
-bool8 IsSpecialEpOpenOld(u32 idx)
+bool8 IsSpecialEpisodeOpenOld(u32 idx)
 {
     s32 val = LoadScriptVariableValueAtIndex(0, VAR_SPECIAL_EPISODE_OPEN_OLD, idx);
     if(val == 0) {
@@ -71,7 +71,7 @@ bool8 IsSpecialEpOpenOld(u32 idx)
     }
 }
 
-void SetSpecialEpOpenOld(u32 idx, u32 episode_open)
+void SetSpecialEpisodeOpenOld(u32 idx, u32 episode_open)
 {
     s32 new_val;
     if(episode_open == 0) {

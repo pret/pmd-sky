@@ -95,7 +95,7 @@
 .public IsSpecialEpisodeBeaten
 .public IsSpecialEpisodeOpen
 .public IsSpecialEpisodeOpenMismatch
-.public IsSpecialEpOpenOld
+.public IsSpecialEpisodeOpenOld
 .public IsTextBoxActive
 .public LoadScriptVariableValueAtIndex
 .public LoadWanTableEntry
