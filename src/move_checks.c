@@ -11,7 +11,7 @@
 #include "math.h"
 #include "moves_3.h"
 #include "number_util.h"
-#include "overlay_29_02338390.h"
+#include "overlay_29_0233836C.h"
 #include "run_dungeon_1.h"
 #include "tileset.h"
 #include "trap.h"

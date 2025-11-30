@@ -1,7 +1,7 @@
 #include "dungeon_logic_3.h"
 #include "dungeon_pokemon_attributes.h"
 #include "dungeon_util_static.h"
-#include "overlay_29_02338390.h"
+#include "overlay_29_0233836C.h"
 
 bool8 LevitateIsActive(struct entity* entity)
 {
