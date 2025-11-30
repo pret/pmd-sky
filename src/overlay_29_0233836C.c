@@ -31,11 +31,19 @@ bool8 TryActivateGravity(struct entity *monster)
         return FALSE;
     }
     if (DUNGEON_PTR[0]->gravity) {
+#ifndef JAPAN
         LogMessageByIdWithPopupCheckUser(monster, 0xC06);
+#else 
+        LogMessageByIdWithPopupCheckUser(monster, 0x945);
+#endif
         return FALSE;
     }
     DUNGEON_PTR[0]->gravity = TRUE;
+#ifndef JAPAN
     LogMessageByIdWithPopupCheckUser(monster, 0xC05);
+#else
+    LogMessageByIdWithPopupCheckUser(monster, 0x944);
+#endif
     ov29_02306D54(monster);
     return TRUE;
 }
