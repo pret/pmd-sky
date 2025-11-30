@@ -266,7 +266,7 @@
                                                            58](IqSkillIsEnabled,func) found in global dungeon_pokemon_attributes_1.o
                                                            58](DungeonRandRange,func) found in global dg_random.o
                                                           57](EntityIsValid__02315118,func) found in global overlay_29_02315118.o
-                                                          57](GravityIsActive,func) found in global overlay_29_02338390.o
+                                                          57](GravityIsActive,func) found in global overlay_29_0233836C.o
                                                           57](TryActivateQuickFeet,func) found in global overlay_29_02314810.o
                                                            58](ItemIsActive__0231513C,func) found in global overlay_29_02315118.o
                                                             59](HasHeldItem,func) found in global dungeon_items.o
@@ -800,6 +800,7 @@
                                                                                                            106](DefenderAbilityIsActive__02332A0C,func) found in global overlay_29_023329E8.o
                                                                                                            106](MoveHitCheck,func) found in global overlay_29_0232393C.o
                                                                                                            106](GetMovePower,func) found in global overlay_29_0230231C.o
+                                                                                                          105](TryActivateGravity,func) found in global overlay_29_0233836C.o
                                                                                                           105](ov29_02318BBC,func) found in global overlay_29_02318AD4.o
                                                                                                            106](IsMonster__02318AB0,func) found in global overlay_29_02318AB0.o
                                                                                                           105](LowerHitChanceStat,func) found in global move_orb_effects.o
@@ -892,6 +893,7 @@
                                                                                             91](DoMoveConversion2,func) found in global overlay_29_02328030.o
                                                                                             91](ExclusiveItemEffectIsActive__023329E8,func) found in global overlay_29_023329E8.o
                                                                                             91](ov29_0231AD38,func) found in global overlay_29_0231AD38.o
+                                                                                           90](ov29_023383A8,func) found in global overlay_29_0233836C.o
                                                                                           89](ExclusiveItemEffectIsActive__02311064,func) found in global overlay_29_02311010.o
                                                                                           89](TryActivateBadDreams,func) found in global overlay_29_0231B1B8.o
                                                                                            90](IsMonster__0231B318,func) found in global overlay_29_0231B318.o
@@ -38507,25 +38509,24 @@
   02338350 0000001C .text   IsAdjacentToEnemyIgnoreTreatment	(overlay_29_02338350.o)
   02338350 00000000 .text   $a	(overlay_29_02338350.o)
   0233836C 00000000 .text   $a	(overlay_29_0233836C.o)
-  0233836C 00000024 .text   .text	(overlay_29_0233836C.o)
   0233836C 00000024 .text   ResetGravity	(overlay_29_0233836C.o)
   02338388 00000000 .text   $d	(overlay_29_0233836C.o)
-  02338390 00000000 .text   $a	(overlay_29_02338390.o)
-  02338390 00000018 .text   GravityIsActive	(overlay_29_02338390.o)
-  023383A4 00000000 .text   $d	(overlay_29_02338390.o)
-  023383A8 00000014 .text   ov29_023383A8	(overlay_29_023383A8.o)
-  023383A8 00000000 .text   $a	(overlay_29_023383A8.o)
-  023383A8 00000118 .text   .text	(overlay_29_023383A8.o)
-  023383B4 00000000 .text   $d	(overlay_29_023383A8.o)
-  023383BC 00000000 .text   $a	(overlay_29_023383A8.o)
-  023383BC 00000074 .text   TryActivateGravity	(overlay_29_023383A8.o)
-  02338424 00000000 .text   $d	(overlay_29_023383A8.o)
+  02338390 00000000 .text   $a	(overlay_29_0233836C.o)
+  02338390 00000018 .text   GravityIsActive	(overlay_29_0233836C.o)
+  023383A4 00000000 .text   $d	(overlay_29_0233836C.o)
+  023383A8 00000000 .text   $a	(overlay_29_0233836C.o)
+  023383A8 00000014 .text   ov29_023383A8	(overlay_29_0233836C.o)
+  023383B4 00000000 .text   $d	(overlay_29_0233836C.o)
+  023383BC 00000000 .text   $a	(overlay_29_0233836C.o)
+  023383BC 00000074 .text   TryActivateGravity	(overlay_29_0233836C.o)
+  02338424 00000000 .text   $d	(overlay_29_0233836C.o)
   02338430 0000002C .text   RevealAttackedTile	(overlay_29_023383A8.o)
+  02338430 00000090 .text   .text	(overlay_29_023383A8.o)
   02338430 00000000 .text   $a	(overlay_29_023383A8.o)
   0233845C 00000020 .text   ov29_0233845C	(overlay_29_023383A8.o)
   02338474 00000000 .text   $d	(overlay_29_023383A8.o)
-  0233847C 00000044 .text   ov29_0233847C	(overlay_29_023383A8.o)
   0233847C 00000000 .text   $a	(overlay_29_023383A8.o)
+  0233847C 00000044 .text   ov29_0233847C	(overlay_29_023383A8.o)
   023384B8 00000000 .text   $d	(overlay_29_023383A8.o)
   023384C0 00000000 .text   $a	(overlay_29_02338548.o)
   023384C0 00000018 .text   ShouldBoostKecleonShopSpawnChance	(overlay_29_02338548.o)
@@ -41054,5 +41055,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Nov 30 04:19:02 2025
-# Link end time: Sun Nov 30 04:19:02 2025
+# Link start time: Sun Nov 30 04:54:56 2025
+# Link end time: Sun Nov 30 04:54:57 2025
