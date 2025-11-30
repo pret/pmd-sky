@@ -219,7 +219,7 @@ _0204B118:
 	mov r0, #0
 	mov r1, #0x4d
 	bl ZinitScriptVariable
-	bl InitScenarioScriptVars
+	bl InitScenarioProgressScriptVars
 	bl InitWorldMapScriptVars
 	bl InitDungeonListScriptVars
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}

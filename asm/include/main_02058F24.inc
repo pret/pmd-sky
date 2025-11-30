@@ -363,7 +363,7 @@
 .public SetCollectionMenuField0x1B2
 .public SetPokemonJoined
 .public SetQuestionMarks
-.public SetScenarioScriptVar
+.public SetScenarioProgressScriptVar
 .public SetSpecialEpisodeOpen
 .public SetSpecialEpisodeType
 .public SetSpriteIdForAnimationControl

@@ -51,7 +51,7 @@ void EventFlagResume();
 void EventFlagBackup();
 bool8 DumpScriptVariableValues(u8* dest);
 bool8 RestoreScriptVariableValues(u8* src);
-void InitScenarioScriptVars();
+void InitScenarioProgressScriptVars();
 void LoadScriptVarValuePair(enum script_var_id script_var_id, s32* val_1, s32* val_2);
 
 #endif //PMDSKY_SCRIPTING_H

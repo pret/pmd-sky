@@ -503,7 +503,7 @@
 .public SetPortraitEmotion
 .public SetPortraitLayout
 .public SetPortraitOffset
-.public SetScenarioScriptVar
+.public SetScenarioProgressScriptVar
 .public SetSpecialEpisodeBeaten
 .public SetTeamSetupHeroAndPartnerOnly
 .public SetTeamSetupHeroOnly

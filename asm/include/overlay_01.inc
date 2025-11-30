@@ -249,7 +249,7 @@
 .public SetDebugSpecialEpisodeNumber
 .public SetIrqFlag
 .public SetMainTeamName
-.public SetScenarioScriptVar
+.public SetScenarioProgressScriptVar
 .public SetSpriteIdForAnimationControl
 .public ShowKeyboard
 .public ShowStringIdInDialogueBox

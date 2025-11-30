@@ -583,19 +583,19 @@ bool8 RestoreScriptVariableValues(u8* src)
     return ret_val;
 }
 
-void InitScenarioScriptVars()
+void InitScenarioProgressScriptVars()
 {
-    SetScenarioScriptVar(VAR_SCENARIO_SELECT, 0, 0);
-    SetScenarioScriptVar(VAR_SCENARIO_MAIN, 0, 0);
-    SetScenarioScriptVar(VAR_SCENARIO_SIDE, 0, 0);
-    SetScenarioScriptVar(VAR_SCENARIO_SUB1, 0, 0);
-    SetScenarioScriptVar(VAR_SCENARIO_SUB2, 0, 0);
-    SetScenarioScriptVar(VAR_SCENARIO_SUB3, 0, 0);
-    SetScenarioScriptVar(VAR_SCENARIO_SUB4, 0, 0);
-    SetScenarioScriptVar(VAR_SCENARIO_SUB5, 0, 0);
-    SetScenarioScriptVar(VAR_SCENARIO_SUB6, 0, 0);
-    SetScenarioScriptVar(VAR_SCENARIO_SUB7, 0, 0);
-    SetScenarioScriptVar(VAR_SCENARIO_SUB8, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SELECT, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_MAIN, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SIDE, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB1, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB2, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB3, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB4, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB5, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB6, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB7, 0, 0);
+    SetScenarioProgressScriptVar(VAR_SCENARIO_SUB8, 0, 0);
     ZinitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG);
     ZinitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG_BACKUP);
     s32 idx = 0;

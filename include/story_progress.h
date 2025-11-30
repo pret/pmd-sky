@@ -1,7 +1,7 @@
 #ifndef PMDSKY_STORY_PROGRESS_H
 #define PMDSKY_STORY_PROGRESS_H
 
-void SetScenarioScriptVar(enum script_var_id script_var_id, s32 chapter, s32 subsection);
+void SetScenarioProgressScriptVar(enum script_var_id script_var_id, s32 chapter, s32 subsection);
 bool8 IsStoryBeforePoint(enum script_var_id script_var_id, s32 chapter, s32 subsection);
 bool8 IsStoryBeforeOrAtPoint(enum script_var_id script_var_id, s32 chapter, s32 subsection);
 bool8 IsStoryAtPoint(enum script_var_id script_var_id, s32 chapter, s32 subsection);

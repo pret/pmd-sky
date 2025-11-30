@@ -6,7 +6,7 @@
 
 extern const u8 SCENARIO_CALC_DEBUG_MSG;
 
-void SetScenarioScriptVar(enum script_var_id script_var_id, s32 chapter, s32 subsection)
+void SetScenarioProgressScriptVar(enum script_var_id script_var_id, s32 chapter, s32 subsection)
 {
     s32 old_progress = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
     s32 old_sub_prog = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
