@@ -2,7 +2,7 @@
 #include "dungeon_util_static.h"
 #include "overlay_29_0230A994.h"
 #include "overlay_29_02318A4C.h"
-#include "overlay_29_02338390.h"
+#include "overlay_29_0233836C.h"
 #include "type_matchup_table.h"
 
 s16 GetTypeMatchup(struct entity *attacker, struct entity *defender, s16 target_type_idx, enum type_id attack_type)

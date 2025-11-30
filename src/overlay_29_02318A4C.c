@@ -1,7 +1,7 @@
 #include "overlay_29_02318A4C.h"
 #include "dungeon_util_static.h"
 #include "overlay_29_02315118.h"
-#include "overlay_29_02338390.h"
+#include "overlay_29_0233836C.h"
 
 bool8 IsFloating(struct entity *entity)
 {
