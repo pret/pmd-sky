@@ -7,14 +7,14 @@
 
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
 
-extern bool8 GetPerformanceFlagWithChecks(s32 flag_id);
+extern bool8 GetResolvedPerformanceProgressFlag(s32 flag_id);
 
 s32 GetCurrentBagCapacity()
 {
     s32 special_episode_type = GetExecuteSpecialEpisodeType();
     if (special_episode_type == EPISODE_NONE)
     {
-        if (GetPerformanceFlagWithChecks(2) == 0)
+        if (GetResolvedPerformanceProgressFlag(2) == 0)
             return 1;
 
         return GetBagCapacity(GetScenarioBalance());

@@ -535,7 +535,7 @@ _0234D148:
 	cmp r0, #0xe2
 	bne _0234D170
 	mov r0, #0x1a
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0234D170
 	ldrsh r0, [r5, #2]

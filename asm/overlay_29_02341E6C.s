@@ -1625,7 +1625,7 @@ _023433B8:
 	cmpne r0, #3
 	beq _02343678
 	mov r0, #0x17
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _02343678
 	ldr r1, [sl, #4]

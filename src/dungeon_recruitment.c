@@ -5,7 +5,7 @@
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_recruitment.h"
 #include "dungeon_recruitment_2.h"
-#include "dungeon_recruitment_3.h"
+#include "has_played_old_game.h"
 #include "dg_random.h"
 #include "dungeon_visibility.h"
 #include "enums.h"

@@ -29,7 +29,7 @@
 .public GetItemAtIdx
 .public GetLearnableIqSkills
 .public GetMaxReachedFloor
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetPressedButtons
 .public GetScenarioBalance
 .public GetSecondFormIfValid

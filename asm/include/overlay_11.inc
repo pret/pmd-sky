@@ -69,7 +69,7 @@
 .public GetNameRaw
 .public GetPartner
 .public GetPartyMembers
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetPressedButtons
 .public GetRank
 .public GetReleasedStylus
@@ -640,7 +640,7 @@
 .public sub_0204AE80
 .public sub_0204AEE0
 .public sub_0204B3D0
-.public sub_0204CB2C
+.public SetResolvedPerformanceProgressFlag
 .public sub_0204CDE8
 .public sub_0204CE48
 .public sub_0204D018

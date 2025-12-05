@@ -1162,7 +1162,7 @@ _0203D68C:
 	cmp r0, #0
 	bne _0203D6B4
 	mov r0, #0x1e
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _0203D73C
 _0203D6B4:
@@ -1183,7 +1183,7 @@ _0203D6E4:
 	cmp r0, #0
 	beq _0203D73C
 	mov r0, #0x1d
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0203D718
 	ldr r0, _0203E4B0 ; =_020AFE74
@@ -1209,7 +1209,7 @@ _0203D73C:
 	tst r0, #0x10
 	bne _0203D7C0
 	mov r0, #0x1f
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _0203D7C0
 	mov r5, #0
@@ -6813,7 +6813,7 @@ GetCheckIqMenuSkillString: ; 0x0204213C
 	cmp r5, #0x18
 	bne _02042174
 	mov r0, #3
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	b _0204217C
 _02042174:
 	mov r1, r5

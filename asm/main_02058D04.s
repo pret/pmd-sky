@@ -25,7 +25,7 @@ _02058D28:
 	cmp r7, #0x18
 	bne _02058D58
 	mov r0, #3
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	b _02058D64
 _02058D58:
 	mov r0, r8

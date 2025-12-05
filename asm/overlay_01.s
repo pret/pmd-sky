@@ -7826,7 +7826,7 @@ ov01_0232F830: ; 0x0232F830
 	add r3, sp, #0x54
 	bl DrawTextInWindow
 	mov r0, #0x16
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0232F8F0
 	ldr r2, _0232F90C ; =0x00000226
@@ -9817,7 +9817,7 @@ _02331304:
 	bl AddMainMenuOption
 _0233131C:
 	mov r0, #4
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _02331338
 	mov r0, #0xf
@@ -9825,7 +9825,7 @@ _0233131C:
 	bl AddMainMenuOption
 _02331338:
 	mov r0, #3
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _02331354
 	mov r0, #0x12
@@ -9833,7 +9833,7 @@ _02331338:
 	bl AddMainMenuOption
 _02331354:
 	mov r0, #4
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _02331370
 	mov r0, #0x11
@@ -9841,7 +9841,7 @@ _02331354:
 	bl AddMainMenuOption
 _02331370:
 	mov r0, #8
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0233138C
 	mov r0, #0x13
@@ -9849,7 +9849,7 @@ _02331370:
 	bl AddMainMenuOption
 _0233138C:
 	mov r0, #0x1a
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _023313A8
 	mov r0, #0x14
@@ -9857,7 +9857,7 @@ _0233138C:
 	bl AddSubMenuOption
 _023313A8:
 	mov r0, #1
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	mov r1, r0
 	mov r0, #8
 	bl AddSubMenuOption
@@ -12375,7 +12375,7 @@ _02333534:
 	mvn r4, #1
 _02333580:
 	ldr r0, [r6, r7, lsl #2]
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _023335B4
 	mov r0, r7

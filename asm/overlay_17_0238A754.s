@@ -361,7 +361,7 @@ _0238AC1C:
 	moveq r5, #1
 _0238AC28:
 	mov r0, #0x14
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0238AC84
 	bl GetGameMode

@@ -20495,7 +20495,7 @@ _022FEFFC:
 	add r3, sp, #0x54
 	bl DrawTextInWindow
 	mov r0, #0x16
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _022FF0AC
 	add r1, sp, #4

@@ -97,7 +97,7 @@
 .public GetNameWithGender
 .public GetNbItemsInBag
 .public GetPartner
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetPressedButtons
 .public GetRank
 .public GetRankupPoints

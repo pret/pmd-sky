@@ -871,11 +871,11 @@ _02059B04: .word CopyBitsTo
 
 	arm_func_start sub_02059B08
 sub_02059B08: ; 0x02059B08
-	ldr ip, _02059B14 ; =GetPerformanceFlagWithChecks
+	ldr ip, _02059B14 ; =GetResolvedPerformanceProgressFlag
 	mov r0, #0xa
 	bx ip
 	.align 2, 0
-_02059B14: .word GetPerformanceFlagWithChecks
+_02059B14: .word GetResolvedPerformanceProgressFlag
 	arm_func_end sub_02059B08
 
 	arm_func_start GetEvolutionPossibilities
@@ -1401,7 +1401,7 @@ GetMonsterEvoStatus: ; 0x0205A210
 	beq _0205A26C
 _0205A254:
 	mov r0, #0xa
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -2363,7 +2363,7 @@ _0205AE84:
 	strb r1, [sb, #0x42]
 	ldrb r1, [r4, #7]
 	strb r1, [sb, #0x43]
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	moveq r0, #3
 	beq _0205AFDC
@@ -6456,7 +6456,7 @@ GenerateDailyMissions: ; 0x0205E5D0
 	bl RandRangeSafe
 	mov r8, r0
 	mov r0, #3
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r2, #0
@@ -8513,7 +8513,7 @@ _02060034:
 	cmp r0, #0xc
 	bne _02060070
 	mov r0, #9
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _02060060
 	ldr r0, _02060080 ; =_020A1958
@@ -11201,7 +11201,7 @@ _020622E8:
 	cmp r0, #0
 	beq _02062324
 	mov r0, fp
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0206233C
 _02062324:
@@ -11244,7 +11244,7 @@ _02062380:
 	cmp r0, #0
 	beq _020623BC
 	mov r0, fp
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _020623D4
 _020623BC:
@@ -11287,7 +11287,7 @@ _02062418:
 	cmp r0, #0
 	beq _02062454
 	mov r0, fp
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0206246C
 _02062454:
@@ -11330,7 +11330,7 @@ _020624B0:
 	cmp r0, #0
 	beq _020624EC
 	mov r0, fp
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _02062504
 _020624EC:
@@ -11428,7 +11428,7 @@ _02062618:
 	cmp r0, #2
 	bne _02062638
 	mov r0, #6
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	moveq r0, #0
 	beq _02062754
@@ -11448,7 +11448,7 @@ _02062660:
 	cmp r0, #2
 	bne _02062750
 	mov r0, #9
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _02062750
 	mov r0, #0
@@ -11815,7 +11815,7 @@ IsMonsterMissionAllowedStory: ; 0x02062AE4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #9
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _02062B58
 	mov r2, #0
@@ -11903,7 +11903,7 @@ _02062BEC:
 	cmp r0, #1
 	bhi _02062C1C
 	mov r0, #9
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -18227,7 +18227,7 @@ sub_02067C8C: ; 0x02067C8C
 	cmp r0, #0
 	beq _02067D7C
 	mov r0, #0x16
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _02067D7C
 _02067D3C:
@@ -18475,7 +18475,7 @@ _02068054:
 	cmp r0, #0
 	beq _020680D0
 	mov r0, #0x16
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _020680D0
 _02068090:
@@ -18557,7 +18557,7 @@ _02068158:
 	cmp r0, #0
 	beq _020681B4
 	mov r0, #0x16
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _020681BC
 _020681B4:

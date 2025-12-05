@@ -8,7 +8,7 @@
 .public GetItemCategoryVeneer
 .public GetLeader
 .public GetMessageLogPreprocessorArgs
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetPlayerGender
 .public GetRandomExplorerMazeMonster
 .public IsFullFloorFixedRoom

@@ -923,7 +923,7 @@ _0234F7F8:
 	cmp r3, #8
 	blt _0234F7F8
 	mov r0, #0x1d
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	ldreq r4, _0234F9CC ; =ov29_0235343C
 	beq _0234F840
