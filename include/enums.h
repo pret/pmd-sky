@@ -2,7 +2,6 @@
 #define PMDSKY_ENUMS_H
 
 #define NUM_TACTICS TACTIC_NONE + 1
-#define MAX_NUM_IQ_SKILLS 25
 
 // Tactic ID. These are usually encoded as bitvectors.
 enum tactic_id {

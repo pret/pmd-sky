@@ -3,6 +3,7 @@
 #include "dungeon_parameters_3.h"
 #include "dungeon_parameters_4.h"
 #include "dungeon_util_static.h"
+#include "iq_skills.h"
 #include "main_02058CD8.h"
 #include "main_02058E68.h"
 #include "overlay_29_022FF898.h"
@@ -58,7 +59,7 @@ void UpdateIqSkills(struct monster *monster)
         monster->iq_skill_flags.flags[1] = 0;
         monster->iq_skill_flags.flags[2] = 0;
 
-        for (s32 i = 0; i < MAX_NUM_IQ_SKILLS; i++)
+        for (s32 i = 0; i < NUM_IQ_SKILLS_PER_GROUP; i++)
         {
             enum iq_skill_id iq_skill = GetSpeciesIqSkill(monster->id, i);
             if (iq_skill == IQ_NONE_2)
@@ -93,7 +94,7 @@ void UpdateIqSkills(struct monster *monster)
         monster->iq_skill_flags.flags[0] = 0;
         monster->iq_skill_flags.flags[1] = 0;
         monster->iq_skill_flags.flags[2] = 0;
-        for (s32 i = 0; i < MAX_NUM_IQ_SKILLS; i++)
+        for (s32 i = 0; i < NUM_IQ_SKILLS_PER_GROUP; i++)
         {
             enum iq_skill_id iq_skill = GetSpeciesIqSkill(monster->id, i);
             if (iq_skill == IQ_NONE_2)

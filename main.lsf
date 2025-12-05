@@ -108,6 +108,7 @@ Static main
 	Object asm/main_02051788.o
 	Object src/tactics_data.o
 	Object asm/main_rodata_020A190C.o
+	Object src/monster_parameters.o
 	Object src/secondary_terrain_types.o
 	Object asm/main_rodata_020A1BB0.o
 	Object src/iq_skills.o
