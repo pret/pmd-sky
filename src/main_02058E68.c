@@ -1,7 +1,6 @@
 #include "main_02058E68.h"
 #include "iq_skills.h"
-
-extern s32 GetIqGroup(s16 monster_id);
+#include "main_02052B28.h"
 
 enum iq_skill_id GetSpeciesIqSkill(s16 monster_id, u8 index)
 {
