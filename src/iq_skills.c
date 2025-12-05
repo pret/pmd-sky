@@ -1,7 +1,6 @@
 #include "iq_skills.h"
-#include "enums.h"
 
-const u8 IQ_GROUP_SKILLS[16][25] =
+const enum iq_skill_id IQ_GROUP_SKILLS[16][25] =
 {
     // Group A
     {
