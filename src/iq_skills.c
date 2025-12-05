@@ -1,5 +1,78 @@
 #include "iq_skills.h"
 
+const s32 IQ_SKILLS[69] =
+{
+    9999,       // IQ_NONE
+    105,        // IQ_TYPE_ADVANTAGE_MASTER
+    -1,         // IQ_ITEM_CATCHER
+    -1,         // IQ_COURSE_CHECKER
+    500,        // IQ_SURE_HIT_ATTACKER
+    540,        // IQ_QUICK_DODGER
+    9999,       // IQ_PP_CHECKER
+    40,         // IQ_NONTRAITOR
+    25,         // IQ_STATUS_CHECKER
+    200,        // IQ_EXP_GO_GETTER
+    10,         // IQ_EFFICIENCY_EXPERT
+    125,        // IQ_WEAK_TYPE_PICKER
+    400,        // IQ_ALL_TERRAIN_HIKER
+    990,        // IQ_ABSOLUTE_MOVER
+    240,        // IQ_TRAP_AVOIDER
+    800,        // IQ_HOUSE_AVOIDER
+    250,        // IQ_ENERGY_SAVER
+    160,        // IQ_NONSLEEPER
+    70,         // IQ_SELF_CURER
+    600,        // IQ_TRAP_SEER
+    300,        // IQ_LAVA_EVADER
+    1,          // IQ_DEDICATED_TRAVELER
+    -1,         // IQ_ITEM_MASTER
+    -1,         // IQ_EXCLUSIVE_MOVE_USER
+    1,          // IQ_ESCAPIST
+    9999,       // IQ_LOCK_PICKER
+    480,        // IQ_STAIR_SENSOR
+    150,        // IQ_COIN_WATCHER
+    320,        // IQ_EXP_ELITE
+    260,        // IQ_SHARPSHOOTER
+    550,        // IQ_FAST_FRIEND
+    55,         // IQ_PP_SAVER
+    65,         // IQ_BODYGUARD
+    9999,       // IQ_CAUTIOUS_CREEPER
+    220,        // IQ_AGGRESSOR
+    230,        // IQ_DEFENDER
+    560,        // IQ_INTIMIDATOR
+    140,        // IQ_SURVIVALIST
+    420,        // IQ_TRAP_BUSTER
+    330,        // IQ_COUNTER_HITTER
+    520,        // IQ_EXTRA_STRIKER
+    270,        // IQ_HIT_AND_RUNNER
+    9999,       // IQ_PARRY_EXPERT
+    750,        // IQ_QUICK_STRIKER
+    570,        // IQ_NO_CHARGER
+    180,        // IQ_WARY_FIGHTER
+    170,        // IQ_GAP_PROBER
+    130,        // IQ_POWER_PITCHER
+    185,        // IQ_CONCENTRATOR
+    280,        // IQ_COUNTER_BASHER
+    30,         // IQ_CHEERLEADER
+    900,        // IQ_NATURE_GIFTER
+    175,        // IQ_WISE_HEALER
+    290,        // IQ_QUICK_HEALER
+    50,         // IQ_ACUTE_SNIFFER
+    190,        // IQ_DEEP_BREATHER
+    100,        // IQ_BRICK_TOUGH
+    310,        // IQ_MULTITALENT
+    950,        // IQ_TIME_TRIPPER
+    340,        // IQ_ERRATIC_PLAYER
+    195,        // IQ_PRACTICE_SWINGER
+    9999,       // IQ_NO_DEFEATIST
+    350,        // IQ_HAGGLER
+    360,        // IQ_CLUTCH_PERFORMER
+    440,        // IQ_CRITICAL_DODGER
+    580,        // IQ_MAP_SURVEYOR
+    850,        // IQ_PIERCE_HURLER
+    370,        // IQ_COLLECTOR
+    9999,       // IQ_TRUE_POWERIST
+};
+
 const enum iq_skill_id IQ_GROUP_SKILLS[16][25] =
 {
     // Group A
