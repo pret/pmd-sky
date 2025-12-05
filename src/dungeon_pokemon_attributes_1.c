@@ -1,5 +1,7 @@
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_logic_7.h"
+#include "dungeon_parameters_3.h"
+#include "dungeon_parameters_4.h"
 #include "dungeon_util_static.h"
 #include "overlay_29_022FF898.h"
 #include "overlay_29_023000E4.h"
@@ -10,9 +12,6 @@ extern void DisableIqSkill(u32 *iq_skills_flags, enum iq_skill_id iq_id);
 extern void EnableIqSkill(u32 *iq_skills_flags, enum iq_skill_id iq_id);
 extern bool8 GetPerformanceFlagWithChecks(s32 flag_id);
 extern enum iq_skill_id GetSpeciesIqSkill(s16 monster_id, u8 index);
-
-extern s16 MIN_IQ_EXCLUSIVE_MOVE_USER;
-extern s16 MIN_IQ_ITEM_MASTER;
 
 bool8 CanSeeInvisibleMonsters(struct entity *entity)
 {

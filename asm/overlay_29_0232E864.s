@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/H0aXM
 	arm_func_start ExecuteMoveEffect
 ExecuteMoveEffect: ; 0x0232E864
 #ifdef JAPAN

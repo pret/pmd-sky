@@ -82,6 +82,10 @@ Static main
 	Object asm/main_0204B018.o
 	Object src/script_variable.o
 	Object asm/main_rodata_0209CECC.o
+	Object src/dungeon_parameters_3.o
+	Object asm/main_rodata_020A1894.o
+	Object src/dungeon_parameters_4.o
+	Object asm/main_rodata_020A18BC.o
 	Object src/story_progress.o
 	Object src/special_episode.o
 	Object src/dungeon_recruitment_3.o
