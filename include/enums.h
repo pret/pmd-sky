@@ -3066,9 +3066,13 @@ enum script_var_id {
     // Used to identify a cutscene save in a Special Episode. Acts very similar to
     // COMPULSORY_SAVE_POINT.
     VAR_COMPULSORY_SAVE_POINT_SIDE = 25,
-    // The backup version of SCENARIO_SELECT saved in the function ScenarioFlagBackup.
+    // Backup storage for two SCENARIO_SELECT values per game mode.
+    // When restoring, values for the current game mode are copied back into SCENARIO_SELECT.
+    // Layout (grouped by value then mode): Value1: modes 2-5; Value2: modes 2-5.
     VAR_SCENARIO_SELECT_BACKUP = 26,
-    // The backup version of SCENARIO_MAIN_BIT_FLAG saved in the function ScenarioFlagBackup.
+    // Backup storage for SCENARIO_MAIN_BIT_FLAG each game mode.
+    // When restoring, values for the current game mode are copied back into SCENARIO_MAIN_BIT_FLAG.
+    // Layout (grouped by mode then value): Mode 2: 128 bits; Mode 3: 128 bits etc
     VAR_SCENARIO_MAIN_BIT_FLAG_BACKUP = 27,
     // The Level ID (see the version-dependent script_level_id_* enums) that the player is in in the
     // overworld.

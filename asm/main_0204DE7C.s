@@ -637,7 +637,7 @@ _0204E63C:
 sub_0204E644: ; 0x0204E644
 	stmdb sp!, {r3, lr}
 	mov r0, #4
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0204E69C
 	bl sub_02048BFC
@@ -931,17 +931,17 @@ sub_0204E974: ; 0x0204E974
 	strb r2, [r1, #4]
 	mov r0, #7
 	strb r2, [r1, #0x11]
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	ldr r1, _0204EA4C ; =PENDING_DUNGEON_ID
 	mov r2, #0
 	strb r0, [r1, #5]
 	mov r0, #6
 	strb r2, [r1, #6]
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	ldr r1, _0204EA4C ; =PENDING_DUNGEON_ID
 	strb r0, [r1, #8]
 	mov r0, #1
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	ldr r1, _0204EA4C ; =PENDING_DUNGEON_ID
 	mov r2, #0
 	strb r0, [r1, #9]
@@ -996,16 +996,16 @@ InitDungeonInit: ; 0x0204EA5C
 	strneb r0, [r7, #8]
 	bne _0204EAF0
 	mov r0, #7
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	strb r0, [r7, #5]
 	mov r0, #5
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	strb r0, [r7, #6]
 	mov r0, #6
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	strb r0, [r7, #8]
 	mov r0, #1
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 _0204EAF0:
 	strb r0, [r7, #9]
 	mov r3, #0
@@ -1246,7 +1246,7 @@ _0204EE10:
 	b _0204EF34
 _0204EE24:
 	mov r0, #0x19
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _0204EF34
 	ldr r2, _0204EFB8 ; =_020A2A00
@@ -2182,7 +2182,7 @@ GetGroundNameId: ; 0x0204F958
 	cmp r4, #6
 	bne _0204F980
 	mov r0, #0x1b
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _0204F99C
 	ldr r0, _0204F9B0 ; =0x000042B9
@@ -2191,7 +2191,7 @@ _0204F980:
 	cmp r4, #0x15
 	bne _0204F99C
 	mov r0, #0x1c
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 #ifdef JAPAN
 	moveq r0, #0x1c4
@@ -3075,7 +3075,7 @@ _0205036C:
 	beq _02050380
 	mov r0, #0x15
 	mov r1, #1
-	bl sub_0204CB2C
+	bl SetResolvedPerformanceProgressFlag
 _02050380:
 	ldr r3, _020503C8 ; =ADVENTURE_LOG_PTR
 	mov r0, r4, asr #4
@@ -3697,7 +3697,7 @@ GetMainTeamNameWithCheck: ; 0x02050B10
 	sub sp, sp, #0x40
 	mov r4, r0
 	mov r0, #1
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	ldrne r0, _02050B70 ; =TEAM_NAME
 	ldrneb r0, [r0]
@@ -3777,7 +3777,7 @@ GetRankupPoints: ; 0x02050BB8
 	bl GetRank
 	mov r4, r0
 	mov r0, #0x16
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _02050BE4
 	cmp r4, #0xc
@@ -3817,7 +3817,7 @@ sub_02050C10: ; 0x02050C10
 	add r2, r2, r0
 	mov r0, #0x16
 	str r2, [r1, SUB_02050C10_OFFSET]
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _02050C4C
 	ldr r0, _02050C6C ; =TEAM_NAME
@@ -3864,7 +3864,7 @@ _02050CA4:
 	blo _02050C84
 _02050CAC:
 	mov r0, #0x16
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	bne _02050CC4
 	cmp r5, #8
@@ -3916,7 +3916,7 @@ sub_02050CF8: ; 0x02050CF8
 	mov r2, #0x20
 	bl CopyBitsTo
 	mov r0, #1
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	ldr r1, _02050D78 ; =TEAM_NAME
 	tst r0, #0xff
 #ifdef JAPAN

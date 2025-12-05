@@ -55,7 +55,7 @@
 .public GetNameString
 .public GetNbItemsInBag
 .public GetPartyMembers
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetRankUpEntry
 .public GetSosMailCount
 .public GetStringFromFileVeneer
@@ -88,7 +88,7 @@
 .public sub_02048CB8
 .public sub_0204ABB8
 .public sub_0204ACDC
-.public sub_0204CB2C
+.public SetResolvedPerformanceProgressFlag
 .public sub_0204CEE0
 .public sub_0204DB08
 .public sub_020515C4

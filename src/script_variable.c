@@ -1,6 +1,9 @@
 #include "debug.h"
 #include "enums.h"
 #include "main_0200224C.h"
+#include "main_0200330C.h"
+#include "main_0200ECFC.h"
+#include "scenario_flag.h"
 #include "script_variable.h"
 #include "special_episode.h"
 #include "story_progress.h"
@@ -28,19 +31,14 @@ const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_COMPARE_SCRIPT_VARIABLES = {
 };
 
 extern s32 GetPartyMembers(s32 param1);
-extern s32 GetMoneyCarried();
 extern s32 GetMoneyStored();
 extern s32 GetLanguageType();
 extern enum game_mode GetGameMode();
-extern s32 GetSpecialEpisodeType();
 extern s32 GetNotifyNote();
 extern s32 AddMoneyCarried(s32 arg0);
 extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
-extern void sub_0204CBE8();
-extern void ScenarioFlagBackup();
-void MemcpySimple(u8* dest, u8* src, s32 n);
 extern void ZinitScriptVariable(u32 param_1, u32 param_2);
 
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
@@ -514,7 +512,7 @@ void EventFlagResume()
     SaveScriptVariableValue(0, VAR_ATTENDANT1_KIND, LoadScriptVariableValueAtIndexInline(VAR_ATTENDANT1_KIND_BACKUP, idx));
     SaveScriptVariableValue(0, VAR_ATTENDANT2_KIND, LoadScriptVariableValueAtIndexInline(VAR_ATTENDANT2_KIND_BACKUP, idx));
 
-    sub_0204CBE8();
+    ScenarioFlagRestore();
 }
 
 // This inline allows EventFlagBackup to match

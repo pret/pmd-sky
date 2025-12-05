@@ -333,7 +333,7 @@
 .public GetNameString
 .public GetNbFloors
 .public GetNbFloorsPlusOne
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetStringFromFileVeneer
 .public GetTeamMember
 .public GetTypeStringId
