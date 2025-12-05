@@ -22,7 +22,7 @@
 .public GetDungeonMode
 .public GetKeyboardStatus
 .public GetKeyboardStringResult
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetSimpleMenuResult__0202AEA4
 .public GetWindowIdSelectedItemOnPage
 .public InitMenu

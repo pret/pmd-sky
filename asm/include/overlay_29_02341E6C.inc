@@ -20,7 +20,7 @@
 .public GetOutlawLeaderLevel
 .public GetOutlawLevel
 .public GetOutlawMinionLevel
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetSpecialTargetItem
 .public GetTileSafe
 .public HandleSir0Translation
