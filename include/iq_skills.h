@@ -1,0 +1,6 @@
+#ifndef PMDSKY_IQ_SKILLS_H
+#define PMDSKY_IQ_SKILLS_H
+
+extern const u8 IQ_GROUP_SKILLS[16][25];
+
+#endif //PMDSKY_IQ_SKILLS_H
