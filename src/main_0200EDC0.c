@@ -1,8 +1,7 @@
 #include "main_0200EDC0.h"
 #include "item.h"
-#include "main_0204CB94.h"
 #include "main_020517D4.h"
-#include "performance_progress.h"
+#include "progression.h"
 #include "script_variable.h"
 #include "special_episode.h"
 

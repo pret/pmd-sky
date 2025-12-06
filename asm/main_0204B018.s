@@ -336,36 +336,4 @@ _0204B41C:
 _0204B42C: .word SCRIPT_VARS
 _0204B430: .word SCRIPT_VARS_LOCALS
 	arm_func_end sub_0204B3D0
-
-	arm_func_start ZinitScriptVariable
-ZinitScriptVariable: ; 0x0204B434
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	mov r5, r1
-	cmp r5, #0x400
-	mov r6, r0
-	ldrlt r0, _0204B494 ; =SCRIPT_VARS
-	mov r8, #0
-	addlt r4, r0, r5, lsl #4
-	ldrge r1, _0204B498 ; =SCRIPT_VARS_LOCALS
-	subge r0, r5, #0x400
-	addge r4, r1, r0, lsl #4
-	mov r7, r8
-	b _0204B484
-_0204B464:
-	mov r0, r6
-	mov r1, r5
-	mov r2, r8
-	mov r3, r7
-	bl SaveScriptVariableValueAtIndex
-	add r0, r8, #1
-	mov r0, r0, lsl #0x10
-	mov r8, r0, lsr #0x10
-_0204B484:
-	ldrsh r0, [r4, #8]
-	cmp r8, r0
-	blt _0204B464
-	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	.align 2, 0
-_0204B494: .word SCRIPT_VARS
-_0204B498: .word SCRIPT_VARS_LOCALS
-	arm_func_end ZinitScriptVariable
+	

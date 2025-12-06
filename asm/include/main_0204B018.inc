@@ -11,3 +11,4 @@
 .public SCRIPT_VARS
 .public SCRIPT_VARS_LOCALS
 .public SCRIPT_VARS_VALUES
+.public ZinitScriptVariable

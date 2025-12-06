@@ -1,8 +1,17 @@
 #include "enums.h"
-#include "performance_progress.h"
+#include "progression.h"
 #include "script_variable.h"
 
 extern enum game_mode GetGameMode();
+
+bool8 HasPlayedOldGame()
+{
+    if(LoadScriptVariableValue(0, VAR_PLAY_OLD_GAME)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
 
 bool8 GetResolvedPerformanceProgressFlag(u32 idx) {
     switch (idx) {
@@ -54,4 +63,21 @@ void SetResolvedPerformanceProgressFlag(u32 idx, s32 value) {
             SaveScriptVariableValueAtIndex(0, VAR_PERFORMANCE_PROGRESS_LIST, idx, new_val);
             return;
     }
+}
+
+u8 GetScenarioBalance()
+{
+    s32 special_episode_type = LoadScriptVariableValue(0, VAR_EXECUTE_SPECIAL_EPISODE_TYPE);
+    if (special_episode_type == EPISODE_NONE)
+    {
+        s32 scenario_balance = LoadScriptVariableValue(0, VAR_SCENARIO_BALANCE_DEBUG);
+        if (scenario_balance < 0)
+            scenario_balance = LoadScriptVariableValue(0, VAR_SCENARIO_BALANCE_FLAG);
+
+        return scenario_balance;
+    }
+
+    if (special_episode_type == EPISODE_BIDOOFS_WISH)
+        return 1;
+    return 3;
 }
