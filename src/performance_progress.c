@@ -4,7 +4,7 @@
 
 extern enum game_mode GetGameMode();
 
-u8 GetResolvedPerformanceProgressFlag(u32 idx) {
+bool8 GetResolvedPerformanceProgressFlag(u32 idx) {
     switch (idx) {
         case 0:
             if (LoadScriptVariableValueAtIndex(0, VAR_SCENARIO_MAIN, 0) == 0x35) {

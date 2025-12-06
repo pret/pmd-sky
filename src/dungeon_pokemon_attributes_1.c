@@ -8,11 +8,11 @@
 #include "main_02058E68.h"
 #include "overlay_29_022FF898.h"
 #include "overlay_29_023000E4.h"
+#include "performance_progress.h"
 #include "pokemon.h"
 
 extern void DisableIqSkill(u32 *iq_skills_flags, enum iq_skill_id iq_id);
 extern void EnableIqSkill(u32 *iq_skills_flags, enum iq_skill_id iq_id);
-extern bool8 GetResolvedPerformanceProgressFlag(s32 flag_id);
 
 bool8 CanSeeInvisibleMonsters(struct entity *entity)
 {

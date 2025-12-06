@@ -2,12 +2,11 @@
 #include "item.h"
 #include "main_0204CB94.h"
 #include "main_020517D4.h"
+#include "performance_progress.h"
 #include "script_variable.h"
 #include "special_episode.h"
 
 extern struct bag_items *BAG_ITEMS_PTR_MIRROR;
-
-extern bool8 GetResolvedPerformanceProgressFlag(s32 flag_id);
 
 s32 GetCurrentBagCapacity()
 {
