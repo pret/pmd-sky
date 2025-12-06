@@ -185,9 +185,9 @@
                                30](GetStringFromFileVeneer,func) found in global main_0202593C.o
                               29](GetColorCodePaletteOffset,func) found in global main_020265C4.o
                             27](EnableAllLearnableIqSkills,func) found in global main_02058E8C.o
-                             28](EnableIqSkill,func) found in global main_02058D04.o
+                             28](EnableIqSkill,func) found in global main_02058E68.o
                               29](IQ_SKILL_RESTRICTIONS,object) found in global monster_parameters.o
-                              29](IqSkillFlagTest,func) found in global pokemon.o
+                             28](GetLearnableIqSkills,func) found in global main_02058D04.o
                               29](IQ_GROUP_SKILLS,object) found in global iq_skills.o
                               29](CanLearnIqSkill,func) found in global main_02058CD8.o
                               29](GetIqGroup,func) found in global main_02052B28.o
@@ -275,6 +275,7 @@
                                                         55](RANDOM_MUSIC_ID_TABLE,notype) found in global overlay_10_rodata_022C593C.o
                                                         55](RoundUpDiv256,func) found in global main_02001894.o
                                                         55](IqSkillIsEnabled,func) found in global dungeon_pokemon_attributes_1.o
+                                                         56](IqSkillFlagTest,func) found in global pokemon.o
                                                         55](DungeonRandRange,func) found in global dg_random.o
                                                        54](EntityIsValid__02315118,func) found in global overlay_29_02315118.o
                                                        54](GravityIsActive,func) found in global overlay_29_0233836C.o
@@ -868,6 +869,7 @@
                                                                                                  96](ov29_023021F0,func) found in global overlay_29_023021F0.o
                                                                                                   97](UpdateIqSkills,func) found in global dungeon_pokemon_attributes_1.o
                                                                                                    98](GetSpeciesIqSkill,func) found in global main_02058E68.o
+                                                                                                   98](DisableIqSkill,func) found in global main_02058E68.o
                                                                                                    98](MIN_IQ_EXCLUSIVE_MOVE_USER,object) found in global dungeon_parameters_3.o
                                                                                                    98](MIN_IQ_ITEM_MASTER,object) found in global dungeon_parameters_4.o
                                                                                                 95](IsSecretBazaarVeneer,func) found in global overlay_29_02344178.o
@@ -7499,14 +7501,15 @@
   02058FD4 00000000 .text   $a	(main_02058CD8.o)
   02058FD4 0000002C .text   CanLearnIqSkill	(main_02058CD8.o)
   02058FFC 00000000 .text   $d	(main_02058CD8.o)
-  02059000 00000164 .text   .text	(main_02058D04.o)
-  02059000 000000A0 .text   GetLearnableIqSkills	(main_02058D04.o)
   02059000 00000000 .text   $a	(main_02058D04.o)
+  02059000 000000A0 .text   .text	(main_02058D04.o)
+  02059000 000000A0 .text   GetLearnableIqSkills	(main_02058D04.o)
   0205909C 00000000 .text   $d	(main_02058D04.o)
-  020590A0 00000000 .text   $a	(main_02058D04.o)
-  020590A0 00000050 .text   DisableIqSkill	(main_02058D04.o)
-  020590F0 00000074 .text   EnableIqSkill	(main_02058D04.o)
-  02059160 00000000 .text   $d	(main_02058D04.o)
+  020590A0 00000050 .text   DisableIqSkill	(main_02058E68.o)
+  020590A0 00000000 .text   $a	(main_02058E68.o)
+  020590F0 00000000 .text   $a	(main_02058E68.o)
+  020590F0 00000074 .text   EnableIqSkill	(main_02058E68.o)
+  02059160 00000000 .text   $d	(main_02058E68.o)
   02059164 00000000 .text   $a	(main_02058E68.o)
   02059164 00000024 .text   GetSpeciesIqSkill	(main_02058E68.o)
   02059184 00000000 .text   $d	(main_02058E68.o)
@@ -41318,5 +41321,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Dec 06 19:41:33 2025
-# Link end time: Sat Dec 06 19:41:34 2025
+# Link start time: Sat Dec 06 21:18:57 2025
+# Link end time: Sat Dec 06 21:18:58 2025
