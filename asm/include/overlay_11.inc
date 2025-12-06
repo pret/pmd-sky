@@ -639,7 +639,7 @@
 .public sub_0204AE60
 .public sub_0204AE80
 .public sub_0204AEE0
-.public sub_0204B3D0
+.public DefaultInitScriptVariable
 .public SetResolvedPerformanceProgressFlag
 .public sub_0204CDE8
 .public sub_0204CE48
@@ -718,4 +718,4 @@
 .public UpdateTeamStats
 .public WorldMapSetCamera
 .public WorldMapSetMode
-.public ZinitScriptVariable
+.public ZeroInitScriptVariable

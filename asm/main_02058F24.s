@@ -15926,7 +15926,7 @@ _02065E54:
 	bl UnloadOverlay
 	mov r0, #0
 	mov r1, #0x5c
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	mov r0, #2
 	bl LoadOverlay
 	mov r0, #0xd

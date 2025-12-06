@@ -40,7 +40,21 @@ extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
 
-void ZinitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id) {
+void DefaultInitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id) {
+    struct script_var_def* def;
+
+    if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
+        def = &SCRIPT_VARS[sv_id];
+    } else {
+        def = &SCRIPT_VARS_LOCALS[sv_id - LOCAL_SCRIPT_VAR_OFFSET];
+    }
+
+    for(u16 idx = 0; idx < def->n_values; idx++) {
+        SaveScriptVariableValueAtIndex(sv_locals, sv_id, idx, def->default_val);
+    }
+}
+
+void ZeroInitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id) {
     struct script_var_def* def;
 
     if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
@@ -607,8 +621,8 @@ void InitScenarioProgressScriptVars()
     SetScenarioProgressScriptVar(VAR_SCENARIO_SUB6, 0, 0);
     SetScenarioProgressScriptVar(VAR_SCENARIO_SUB7, 0, 0);
     SetScenarioProgressScriptVar(VAR_SCENARIO_SUB8, 0, 0);
-    ZinitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG);
-    ZinitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG_BACKUP);
+    ZeroInitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG);
+    ZeroInitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG_BACKUP);
     s32 idx = 0;
     do {
         SaveScriptVariableValueAtIndex(0, VAR_SCENARIO_SELECT_BACKUP, idx, 0);
