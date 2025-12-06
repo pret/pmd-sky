@@ -8,7 +8,7 @@
 #include "special_episode.h"
 #include "story_progress.h"
 
-#define LOCAL_SCRIPT_VAR_OFFSET 0x400
+#define LOCAL_SCRIPT_VAR_OFFSET (s16) 0x400
 
 // Global script variable definitions
 extern struct script_var_def SCRIPT_VARS[];
@@ -39,7 +39,20 @@ extern s32 AddMoneyCarried(s32 arg0);
 extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
-extern void ZinitScriptVariable(u32 param_1, u32 param_2);
+
+void ZinitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id) {
+    struct script_var_def* def;
+
+    if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
+        def = &SCRIPT_VARS[sv_id];
+    } else {
+        def = &SCRIPT_VARS_LOCALS[sv_id - LOCAL_SCRIPT_VAR_OFFSET];
+    }
+
+    for(u16 idx = 0; idx < def->n_values; idx++) {
+        SaveScriptVariableValueAtIndex(sv_locals, sv_id, idx, 0);
+    }
+}
 
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     union script_var_value sv_val_local[],
