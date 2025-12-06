@@ -1,23 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_0204CD88.inc"
+	.include "main_0204CDB8.inc"
 
 	.text
-
-	arm_func_start InitWorldMapScriptVars
-InitWorldMapScriptVars: ; 0x0204CD88
-	stmdb sp!, {r3, lr}
-	mov r0, #0
-	mov r1, #0x55
-	bl ZinitScriptVariable
-	mov r0, #0
-	mov r1, #0x56
-	bl ZinitScriptVariable
-	mov r0, #0
-	mov r1, #0x57
-	mov r2, #1
-	bl SaveScriptVariableValue
-	ldmia sp!, {r3, pc}
-	arm_func_end InitWorldMapScriptVars
 
 	arm_func_start sub_0204CDB8
 sub_0204CDB8: ; 0x0204CDB8
