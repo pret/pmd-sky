@@ -233,7 +233,7 @@
 .public GetPartner
 .public GetPartnerMemberIdx
 .public GetPartyMembers
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetRank
 .public GetScenarioBalance
 .public GetSecondFormIfValid

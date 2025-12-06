@@ -1,4 +1,4 @@
-#include "dungeon_recruitment_3.h"
+#include "has_played_old_game.h"
 #include "enums.h"
 #include "script_variable.h"
 #include "util.h"

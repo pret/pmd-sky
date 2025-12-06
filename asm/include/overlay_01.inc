@@ -64,7 +64,7 @@
 .public GetNbPokemonJoined
 .public GetNbRecycled
 .public GetNbSkyGiftsSent
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetPressedButtons
 .public GetReleasedStylus
 .public GetSimpleMenuResult__0202AEA4

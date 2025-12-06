@@ -20454,7 +20454,7 @@ _02024CAC:
 	cmp r0, r1
 	bne _02024CC8
 	mov r0, #1
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _02024CE8
 _02024CC8:

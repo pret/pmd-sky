@@ -1193,7 +1193,7 @@ _0238B178:
 	cmp r0, #0
 	bne _0238B204
 	mov r0, #0x1e
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0238B204
 	bl GetRecruitableMonsterAll

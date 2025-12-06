@@ -1118,7 +1118,7 @@ ApplyGracideaEffect: ; 0x0231D9C0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r0, #0x1a
 	mov r5, r1
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _0231DA50
 	mov r0, r5

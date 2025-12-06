@@ -248,7 +248,7 @@
 .public GetNextIqSkill
 .public GetPartner
 .public GetPartnerMemberIdx
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetPpIncrease
 .public GetPressedButtons
 .public GetRank

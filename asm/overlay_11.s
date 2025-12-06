@@ -3266,7 +3266,7 @@ _022DEEDC: ; 0x022DEEDC
 	mov r1, r0
 	mov r0, r4
 	and r1, r1, #0xff
-	bl sub_0204CB2C
+	bl SetResolvedPerformanceProgressFlag
 	b _022E2474
 _022DEF04: ; 0x022DEF04
 	mov r1, #0x27
@@ -3534,7 +3534,7 @@ _022DF2D0:
 	bl ScriptParamToInt
 	mov r5, r0
 	mov r0, r7
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r5, r0
 	ldreqh r0, [r6, #4]
 	ldreq r1, [r4, #0x14]
@@ -6511,7 +6511,7 @@ _022E1CF8:
 	moveq r0, #0x298
 	beq _022E1D5C
 	mov r0, #0
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	ldrne r0, _022E2294 ; =0x00000299
 	bne _022E1D5C
@@ -14681,7 +14681,7 @@ _022E8A3C:
 	streqh r0, [sp, #2]
 	beq _022E8CD4
 	mov r0, #0
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	ldrne r0, _022E9218 ; =0x0000029F
 	strneh r0, [sp, #2]
@@ -14727,7 +14727,7 @@ _022E8AE4:
 	cmpne r4, #3
 	beq _022E8B94
 	mov r0, #0
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	ldrne r0, _022E9228 ; =0x000002A5
 	strneh r0, [sp, #2]
@@ -14758,7 +14758,7 @@ _022E8B94:
 	bl SetDungeonConquest
 _022E8BC4:
 	mov r0, #0
-	bl GetPerformanceFlagWithChecks
+	bl GetResolvedPerformanceProgressFlag
 	cmp r0, #0
 	beq _022E8CD4
 	ldr r0, _022E91E8 ; =ov11_02324FA0

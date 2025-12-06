@@ -21,7 +21,7 @@
 .public GetGameMode
 .public GetMainCharacter1MemberIdx
 .public GetPartnerMemberIdx
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetPressedButtons
 .public GetSimpleMenuResult__0202B870
 .public GetTeamMember

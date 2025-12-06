@@ -27,7 +27,7 @@
 .public GetItemMoveId16
 .public GetMoveBasePower
 .public GetMoveMaxGinsengBoost
-.public GetPerformanceFlagWithChecks
+.public GetResolvedPerformanceProgressFlag
 .public GetWeatherColorTable
 .public GINSENG_CHANCE_3
 .public GUMMI_BELLY_RESTORE_TABLE
