@@ -1,6 +1,6 @@
 #pragma once
-.public _0209DFC8
-.public _0209DFE8
+.public SCENARIO_FLAG_RESUME_DEBUG_MSG
+.public SCENARIO_FLAG_BACKUP_DEBUG_MSG
 .public _0209E008
 .public _0209E010
 .public _0209E011
