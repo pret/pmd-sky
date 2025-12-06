@@ -3160,7 +3160,7 @@ _022DED60: ; 0x022DED60
 	mov r1, r0, lsl #0x10
 	add r0, r4, #0x6c
 	mov r1, r1, asr #0x10
-	bl sub_0204B3D0
+	bl DefaultInitScriptVariable
 	b _022E2474
 _022DED7C: ; 0x022DED7C
 	ldrh r0, [r6]
@@ -3168,7 +3168,7 @@ _022DED7C: ; 0x022DED7C
 	mov r1, r0, lsl #0x10
 	add r0, r4, #0x6c
 	mov r1, r1, asr #0x10
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	b _022E2474
 _022DED98: ; 0x022DED98
 	ldrh r0, [r6]
@@ -12555,7 +12555,7 @@ ov11_022E6EE8: ; 0x022E6EE8
 	bl SaveScriptVariableValue
 	mov r0, #0
 	mov r1, #0x5c
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	cmp r4, #4
 	bne _022E6F80
 	bl sub_020573A0
@@ -14116,7 +14116,7 @@ _022E82F0:
 	bne _022E832C
 	mov r0, #0
 	mov r1, #0x5c
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	mov r0, #0x12
 	bl GroundMainLoop
 	mov r4, r0
@@ -14642,7 +14642,7 @@ _022E89FC:
 	bl Debug_Print0
 	mov r0, #0
 	mov r1, #0x5c
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	bl GroundMainNextDay
 	ldr r0, _022E91E8 ; =ov11_02324FA0
 	mov r1, #1
@@ -14706,7 +14706,7 @@ _022E8AE4:
 	bl Debug_Print0
 	mov r0, #0
 	mov r1, #0x5c
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	bl GroundMainNextDay
 	mov r0, #0
 	mov r1, #0x2a
@@ -14786,7 +14786,7 @@ _022E8C20:
 	bl Debug_Print0
 	mov r0, #0
 	mov r1, #0x5c
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	bl GroundMainNextDay
 	ldr r1, _022E91E8 ; =ov11_02324FA0
 	mov r0, #0
@@ -15358,7 +15358,7 @@ GroundMainReturnDungeon: ; 0x022E9414
 	bl Debug_Print0
 	mov r0, #0
 	mov r1, #0x5c
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	bl GroundMainNextDay
 	ldmia sp!, {r3, pc}
 	.align 2, 0

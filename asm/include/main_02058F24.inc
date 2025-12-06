@@ -550,4 +550,4 @@
 .public vsprintf
 .public WAN_TABLE
 .public ZINC_BAND_STAT_BOOST
-.public ZinitScriptVariable
+.public ZeroInitScriptVariable

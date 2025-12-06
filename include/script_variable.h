@@ -29,7 +29,8 @@ struct script_var_raw {
     union script_var_value *value;
 };
 
-void ZinitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id);
+void DefaultInitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id);
+void ZeroInitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id);
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw, union script_var_value sv_val_local[], const enum script_var_id sv_id);
 s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id);
 s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum script_var_id id, u16 idx);
