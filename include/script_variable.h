@@ -29,6 +29,7 @@ struct script_var_raw {
     union script_var_value *value;
 };
 
+void InitEventFlagScriptVars();
 void DefaultInitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id);
 void ZeroInitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id);
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw, union script_var_value sv_val_local[], const enum script_var_id sv_id);

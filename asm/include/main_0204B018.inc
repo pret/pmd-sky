@@ -13,3 +13,4 @@
 .public SCRIPT_VARS_VALUES
 .public ZeroInitScriptVariable
 .public DefaultInitScriptVariable
+.public InitEventFlagScriptVars
