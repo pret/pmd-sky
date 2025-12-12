@@ -1,5 +1,5 @@
-#ifndef PMDSKY_SCRIPTING_H
-#define PMDSKY_SCRIPTING_H
+#ifndef PMDSKY_SCRIPT_VARIABLE_H
+#define PMDSKY_SCRIPT_VARIABLE_H
 
 #include "enums.h"
 #include "util.h"
@@ -54,4 +54,4 @@ bool8 RestoreScriptVariableValues(u8* src);
 void InitScenarioProgressScriptVars();
 void LoadScriptVarValuePair(enum script_var_id script_var_id, s32* val_1, s32* val_2);
 
-#endif //PMDSKY_SCRIPTING_H
+#endif //PMDSKY_SCRIPT_VARIABLE_H

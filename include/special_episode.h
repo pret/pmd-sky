@@ -15,4 +15,4 @@ void SetSpecialEpisodeOpenOld(u32 idx, u32 val);
 bool8 IsSpecialEpisodeBeaten(u32 idx);
 void SetSpecialEpisodeBeaten(u32 idx, u32 special_ep_beaten);
 
-#endif //PMDSKY_SCRIPTING_H
+#endif //PMDSKY_SPECIAL_EPISODE_H
