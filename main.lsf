@@ -88,11 +88,10 @@ Static main
 	Object asm/main_rodata_020A18BC.o
 	Object src/story_progress.o
 	Object src/special_episode.o
-	Object src/has_played_old_game.o
-	Object src/performance_progress.o
-	Object src/main_0204CB94.o
+	Object src/progression.o
 	Object src/scenario_flag.o
-	Object asm/main_0204CD88.o
+	Object src/script_variable_2.o
+	Object asm/main_0204CDB8.o
 	Object src/main_0204DA2C.o
 	Object asm/main_0204DB08.o
 	Object src/main_0204DD80.o

@@ -5,7 +5,6 @@
 #include "dungeon_pokemon_attributes_1.h"
 #include "dungeon_recruitment.h"
 #include "dungeon_recruitment_2.h"
-#include "has_played_old_game.h"
 #include "dg_random.h"
 #include "dungeon_visibility.h"
 #include "enums.h"
@@ -14,6 +13,7 @@
 #include "main_0208655C.h"
 #include "math.h"
 #include "overlay_29_0230E578.h" // ItemIsActive__0230E578
+#include "progression.h"
 
 extern bool8 IsLegendaryChallengeFloor(void);
 extern bool8 IsCurrentMissionTypeExact(u32 mission_type, u32 mission_subtype);

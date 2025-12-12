@@ -1,0 +1,6 @@
+#ifndef PMDSKY_SCRIPT_VARIABLE_2_H
+#define PMDSKY_SCRIPT_VARIABLE_2_H
+
+void InitWorldMapScriptVars();
+
+#endif PMDSKY_SCRIPT_VARIABLE_2_H

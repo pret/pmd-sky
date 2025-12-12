@@ -74,7 +74,7 @@ _0204B0C4:
 	bl SaveScriptVariableValue
 	mov r0, #0
 	mov r1, #1
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	bl InitEventFlagScriptVars
 	mov sl, #0
 #ifdef JAPAN
@@ -212,13 +212,13 @@ _0204B118:
 	bl SaveScriptVariableValue
 	mov r0, #0
 	mov r1, #0x4b
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	mov r0, #0
 	mov r1, #0x4c
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	mov r0, #0
 	mov r1, #0x4d
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	bl InitScenarioProgressScriptVars
 	bl InitWorldMapScriptVars
 	bl InitDungeonListScriptVars
@@ -232,140 +232,3 @@ _0204B300: .word 0x00000143
 _0204B300: .word 0x00000137
 #endif
 	arm_func_end InitScriptVariableValues
-
-	arm_func_start InitEventFlagScriptVars
-InitEventFlagScriptVars: ; 0x0204B304
-	stmdb sp!, {r3, lr}
-#ifdef JAPAN
-	mov r0, #0
-	mov r1, #0x1c
-	mov r2, #0x13c
-#else
-	ldr r2, _0204B3CC ; =0x00000137
-	mov r0, #0
-	mov r1, #0x1c
-#endif
-	bl SaveScriptVariableValue
-	mov r0, #0
-	mov r2, r0
-	mov r1, #0x1d
-	bl SaveScriptVariableValue
-#ifdef JAPAN
-	mov r0, #0
-	mov r1, #0x1e
-	mov r2, #0x13c
-#else
-	ldr r2, _0204B3CC ; =0x00000137
-	mov r0, #0
-	mov r1, #0x1e
-#endif
-	bl SaveScriptVariableValue
-	mov r1, #0x1f
-	sub r2, r1, #0x20
-	mov r0, #0
-	bl SaveScriptVariableValue
-	mov r0, #0
-	mov r1, #0x20
-	mov r2, #0xbb
-	bl SaveScriptVariableValue
-	mov r0, #0
-	mov r1, #0x27
-	mov r2, r0
-	bl SaveScriptVariableValue
-	mov r0, #0
-	mov r1, #0x29
-	sub r2, r1, #0x2a
-	bl SaveScriptVariableValue
-	mov r0, #0
-	mov r1, #0x2b
-	mov r2, r0
-	bl SaveScriptVariableValue
-	mov r0, #0
-	mov r1, #0x2c
-	mov r2, r0
-	bl SaveScriptVariableValue
-	mov r0, #0
-	mov r1, #0x34
-	mov r2, r0
-	bl SaveScriptVariableValue
-	mov r0, #0
-	mov r1, #0x35
-	mov r2, #2
-	bl SaveScriptVariableValue
-	mov r0, #0
-	mov r1, #0x36
-	mov r2, r0
-	bl SaveScriptVariableValue
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-#if defined(EUROPE)
-_0204B3CC: .word 0x00000143
-#elif !defined(JAPAN)
-_0204B3CC: .word 0x00000137
-#endif
-	arm_func_end InitEventFlagScriptVars
-
-	arm_func_start sub_0204B3D0
-sub_0204B3D0: ; 0x0204B3D0
-	stmdb sp!, {r3, r4, r5, r6, r7, lr}
-	mov r4, r1
-	cmp r4, #0x400
-	mov r5, r0
-	ldrlt r0, _0204B42C ; =SCRIPT_VARS
-	ldrge r1, _0204B430 ; =SCRIPT_VARS_LOCALS
-	addlt r7, r0, r4, lsl #4
-	subge r0, r4, #0x400
-	addge r7, r1, r0, lsl #4
-	mov r6, #0
-	b _0204B41C
-_0204B3FC:
-	ldrsh r3, [r7, #0xa]
-	mov r0, r5
-	mov r1, r4
-	mov r2, r6
-	bl SaveScriptVariableValueAtIndex
-	add r0, r6, #1
-	mov r0, r0, lsl #0x10
-	mov r6, r0, lsr #0x10
-_0204B41C:
-	ldrsh r0, [r7, #8]
-	cmp r6, r0
-	blt _0204B3FC
-	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	.align 2, 0
-_0204B42C: .word SCRIPT_VARS
-_0204B430: .word SCRIPT_VARS_LOCALS
-	arm_func_end sub_0204B3D0
-
-	arm_func_start ZinitScriptVariable
-ZinitScriptVariable: ; 0x0204B434
-	stmdb sp!, {r4, r5, r6, r7, r8, lr}
-	mov r5, r1
-	cmp r5, #0x400
-	mov r6, r0
-	ldrlt r0, _0204B494 ; =SCRIPT_VARS
-	mov r8, #0
-	addlt r4, r0, r5, lsl #4
-	ldrge r1, _0204B498 ; =SCRIPT_VARS_LOCALS
-	subge r0, r5, #0x400
-	addge r4, r1, r0, lsl #4
-	mov r7, r8
-	b _0204B484
-_0204B464:
-	mov r0, r6
-	mov r1, r5
-	mov r2, r8
-	mov r3, r7
-	bl SaveScriptVariableValueAtIndex
-	add r0, r8, #1
-	mov r0, r0, lsl #0x10
-	mov r8, r0, lsr #0x10
-_0204B484:
-	ldrsh r0, [r4, #8]
-	cmp r8, r0
-	blt _0204B464
-	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	.align 2, 0
-_0204B494: .word SCRIPT_VARS
-_0204B498: .word SCRIPT_VARS_LOCALS
-	arm_func_end ZinitScriptVariable

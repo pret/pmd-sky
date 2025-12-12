@@ -33,4 +33,4 @@
 .public sub_02050990
 .public sub_020509BC
 .public VERSION_EXCLUSIVE_MONSTERS
-.public ZinitScriptVariable
+.public ZeroInitScriptVariable

@@ -8,7 +8,15 @@
 #include "special_episode.h"
 #include "story_progress.h"
 
-#define LOCAL_SCRIPT_VAR_OFFSET 0x400
+#define LOCAL_SCRIPT_VAR_OFFSET (s16) 0x400
+
+#ifdef JAPAN
+#define VAR_GROUND_ENTER_VALUE 0x13C
+#elif EUROPE
+#define VAR_GROUND_ENTER_VALUE 0x143
+#else
+#define VAR_GROUND_ENTER_VALUE 0x137
+#endif
 
 // Global script variable definitions
 extern struct script_var_def SCRIPT_VARS[];
@@ -39,7 +47,49 @@ extern s32 AddMoneyCarried(s32 arg0);
 extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
-extern void ZinitScriptVariable(u32 param_1, u32 param_2);
+
+void InitEventFlagScriptVars() {
+    SaveScriptVariableValue(0, VAR_GROUND_ENTER, VAR_GROUND_ENTER_VALUE);
+    SaveScriptVariableValue(0, VAR_GROUND_ENTER_LINK, 0);
+    SaveScriptVariableValue(0, VAR_GROUND_GETOUT, VAR_GROUND_ENTER_VALUE);
+    SaveScriptVariableValue(0, VAR_GROUND_MAP, -1);
+    SaveScriptVariableValue(0, VAR_GROUND_PLACE, 0xBB);
+    SaveScriptVariableValue(0, VAR_DUNGEON_ENTER, 0);
+    SaveScriptVariableValue(0, VAR_DUNGEON_ENTER_INDEX, -1);
+    SaveScriptVariableValue(0, VAR_DUNGEON_RESULT, 0);
+    SaveScriptVariableValue(0, VAR_GROUND_START_MODE, 0);
+    SaveScriptVariableValue(0, VAR_PLAYER_KIND, 0);
+    SaveScriptVariableValue(0, VAR_ATTENDANT1_KIND, 2);
+    SaveScriptVariableValue(0, VAR_ATTENDANT2_KIND, 0);
+}
+
+void DefaultInitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id) {
+    struct script_var_def* def;
+
+    if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
+        def = &SCRIPT_VARS[sv_id];
+    } else {
+        def = &SCRIPT_VARS_LOCALS[sv_id - LOCAL_SCRIPT_VAR_OFFSET];
+    }
+
+    for(u16 idx = 0; idx < def->n_values; idx++) {
+        SaveScriptVariableValueAtIndex(sv_locals, sv_id, idx, def->default_val);
+    }
+}
+
+void ZeroInitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id) {
+    struct script_var_def* def;
+
+    if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
+        def = &SCRIPT_VARS[sv_id];
+    } else {
+        def = &SCRIPT_VARS_LOCALS[sv_id - LOCAL_SCRIPT_VAR_OFFSET];
+    }
+
+    for(u16 idx = 0; idx < def->n_values; idx++) {
+        SaveScriptVariableValueAtIndex(sv_locals, sv_id, idx, 0);
+    }
+}
 
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     union script_var_value sv_val_local[],
@@ -594,8 +644,8 @@ void InitScenarioProgressScriptVars()
     SetScenarioProgressScriptVar(VAR_SCENARIO_SUB6, 0, 0);
     SetScenarioProgressScriptVar(VAR_SCENARIO_SUB7, 0, 0);
     SetScenarioProgressScriptVar(VAR_SCENARIO_SUB8, 0, 0);
-    ZinitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG);
-    ZinitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG_BACKUP);
+    ZeroInitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG);
+    ZeroInitScriptVariable(0, VAR_SCENARIO_MAIN_BIT_FLAG_BACKUP);
     s32 idx = 0;
     do {
         SaveScriptVariableValueAtIndex(0, VAR_SCENARIO_SELECT_BACKUP, idx, 0);

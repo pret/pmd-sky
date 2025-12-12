@@ -1,32 +1,16 @@
 	.include "asm/macros.inc"
-	.include "main_0204CD88.inc"
+	.include "main_0204CDB8.inc"
 
 	.text
 
-	arm_func_start InitWorldMapScriptVars
-InitWorldMapScriptVars: ; 0x0204CD88
-	stmdb sp!, {r3, lr}
-	mov r0, #0
-	mov r1, #0x55
-	bl ZinitScriptVariable
-	mov r0, #0
-	mov r1, #0x56
-	bl ZinitScriptVariable
-	mov r0, #0
-	mov r1, #0x57
-	mov r2, #1
-	bl SaveScriptVariableValue
-	ldmia sp!, {r3, pc}
-	arm_func_end InitWorldMapScriptVars
-
 	arm_func_start sub_0204CDB8
 sub_0204CDB8: ; 0x0204CDB8
-	ldr ip, _0204CDC8 ; =ZinitScriptVariable
+	ldr ip, _0204CDC8 ; =ZeroInitScriptVariable
 	mov r0, #0
 	mov r1, #0x56
 	bx ip
 	.align 2, 0
-_0204CDC8: .word ZinitScriptVariable
+_0204CDC8: .word ZeroInitScriptVariable
 	arm_func_end sub_0204CDB8
 
 	arm_func_start sub_0204CDCC
@@ -103,22 +87,22 @@ InitDungeonListScriptVars: ; 0x0204CE90
 	stmdb sp!, {r3, lr}
 	mov r0, #0
 	mov r1, #0x4f
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	mov r0, #0
 	mov r1, #0x54
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	mov r0, #0
 	mov r1, #0x50
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	mov r0, #0
 	mov r1, #0x51
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	mov r0, #0
 	mov r1, #0x52
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	mov r0, #0
 	mov r1, #0x53
-	bl ZinitScriptVariable
+	bl ZeroInitScriptVariable
 	ldmia sp!, {r3, pc}
 	arm_func_end InitDungeonListScriptVars
 
