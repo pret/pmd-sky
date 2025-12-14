@@ -5,6 +5,7 @@
 #include "main_0200ECFC.h"
 #include "scenario_flag.h"
 #include "script_variable.h"
+#include "script_variable_2.h"
 #include "special_episode.h"
 #include "story_progress.h"
 
@@ -47,6 +48,57 @@ extern s32 AddMoneyCarried(s32 arg0);
 extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
+extern void InitDungeonListScriptVars();
+
+void InitScriptVariableValues() {
+    for(s32 sv_id = 0; sv_id < LOCAL_SCRIPT_VAR_OFFSET; sv_id++) {
+        SCRIPT_VARS_VALUES[sv_id] = 0;
+    }
+
+    for (s16 sv_id = 0; sv_id < 114; sv_id++) {
+        struct script_var_def* def = &SCRIPT_VARS[sv_id];
+        s16 type = def->type;
+        if (type != 0 && type != 9) {
+            for (u16 idx = 0; idx < def->n_values; idx++) {
+                SaveScriptVariableValueAtIndex(0, sv_id, idx, def->default_val);
+            }
+        }
+    }
+    
+    SaveScriptVariableValue(0, VAR_ROM_VARIATION, 0);
+    ZeroInitScriptVariable(0, 1);
+    InitEventFlagScriptVars();
+    
+    for(s32 idx2 = 0; idx2 < 4; idx2++) {
+        SaveScriptVariableValueAtIndex(0, VAR_GROUND_ENTER_BACKUP, idx2, VAR_GROUND_ENTER_VALUE);
+        SaveScriptVariableValueAtIndex(0, VAR_GROUND_ENTER_LINK_BACKUP, idx2, 0);
+        SaveScriptVariableValueAtIndex(0, VAR_GROUND_GETOUT_BACKUP, idx2, VAR_GROUND_ENTER_VALUE);
+        SaveScriptVariableValueAtIndex(0, VAR_GROUND_MAP_BACKUP, idx2, -1);
+        SaveScriptVariableValueAtIndex(0, VAR_GROUND_PLACE_BACKUP, idx2, 0xBB);
+        SaveScriptVariableValueAtIndex(0, VAR_DUNGEON_ENTER_BACKUP, idx2, 0);
+        SaveScriptVariableValueAtIndex(0, VAR_DUNGEON_ENTER_INDEX_BACKUP, idx2, -1);
+        SaveScriptVariableValueAtIndex(0, VAR_DUNGEON_RESULT_BACKUP, idx2, 0);
+        SaveScriptVariableValueAtIndex(0, VAR_GROUND_START_MODE_BACKUP, idx2, 0);
+        SaveScriptVariableValueAtIndex(0, VAR_PLAYER_KIND_BACKUP, idx2, 0);
+        SaveScriptVariableValueAtIndex(0, VAR_ATTENDANT1_KIND_BACKUP, idx2, 2);
+        SaveScriptVariableValueAtIndex(0, VAR_ATTENDANT2_KIND_BACKUP, idx2, 0);
+    }
+    
+    SaveScriptVariableValue(0, VAR_DUNGEON_SELECT, -1);
+    SaveScriptVariableValue(0, VAR_REQUEST_CLEAR_COUNT, 0);
+    SaveScriptVariableValue(0, VAR_TEAM_RANK_EVENT_LEVEL, 0);
+    SaveScriptVariableValue(0, VAR_HERO_FIRST_KIND, 0);
+    SaveScriptVariableValue(0, VAR_PARTNER_FIRST_KIND, 0);
+    SaveScriptVariableValue(0, VAR_HERO_TALK_KIND, 4);
+    SaveScriptVariableValue(0, VAR_PARTNER_TALK_KIND, 1);
+    SaveScriptVariableValue(0, VAR_SPECIAL_EPISODE_TYPE, -1);
+    ZeroInitScriptVariable(0, VAR_SPECIAL_EPISODE_OPEN);
+    ZeroInitScriptVariable(0, VAR_SPECIAL_EPISODE_OPEN_OLD);
+    ZeroInitScriptVariable(0, VAR_SPECIAL_EPISODE_CONQUEST);
+    InitScenarioProgressScriptVars();
+    InitWorldMapScriptVars();
+    InitDungeonListScriptVars();
+}
 
 void InitEventFlagScriptVars() {
     SaveScriptVariableValue(0, VAR_GROUND_ENTER, VAR_GROUND_ENTER_VALUE);
@@ -63,7 +115,7 @@ void InitEventFlagScriptVars() {
     SaveScriptVariableValue(0, VAR_ATTENDANT2_KIND, 0);
 }
 
-void DefaultInitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id) {
+void DefaultInitScriptVariable(union script_var_value sv_locals[], s16 sv_id) {
     struct script_var_def* def;
 
     if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
@@ -77,7 +129,7 @@ void DefaultInitScriptVariable(union script_var_value sv_locals[], enum script_v
     }
 }
 
-void ZeroInitScriptVariable(union script_var_value sv_locals[], enum script_var_id sv_id) {
+void ZeroInitScriptVariable(union script_var_value sv_locals[], s16 sv_id) {
     struct script_var_def* def;
 
     if (sv_id < LOCAL_SCRIPT_VAR_OFFSET) {
@@ -93,7 +145,7 @@ void ZeroInitScriptVariable(union script_var_value sv_locals[], enum script_var_
 
 void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     union script_var_value sv_val_local[],
-    const enum script_var_id sv_id) {
+    const s16 sv_id) {
 
     if (sv_id < (s16) LOCAL_SCRIPT_VAR_OFFSET) {
         // global script var
@@ -107,7 +159,7 @@ void LoadScriptVariableRaw(struct script_var_raw* sv_raw,
     }
 }
 
-s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_id sv_id)
+s32 LoadScriptVariableValue(union script_var_value sv_local[], s16 sv_id)
 {
     struct script_var_raw result;
     LoadScriptVariableRaw(&result, sv_local, sv_id);
@@ -164,7 +216,7 @@ s32 LoadScriptVariableValue(union script_var_value sv_local[], enum script_var_i
     return 0;
 }
 
-s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum script_var_id id, u16 idx)
+s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], s16 id, u16 idx)
 {
     struct script_var_raw result;
     LoadScriptVariableRaw(&result, sv_local, id);
@@ -220,7 +272,7 @@ s32 LoadScriptVariableValueAtIndex(union script_var_value sv_local[], enum scrip
     return 0;
 }
 
-void SaveScriptVariableValue(union script_var_value sv_locals[], const enum script_var_id script_var_id, u32 new_val)
+void SaveScriptVariableValue(union script_var_value sv_locals[], const s16 script_var_id, u32 new_val)
 {
     struct script_var_raw script_var_raw;
     LoadScriptVariableRaw(&script_var_raw, sv_locals, script_var_id);
@@ -291,7 +343,7 @@ void SaveScriptVariableValue(union script_var_value sv_locals[], const enum scri
     return;
 }
 
-void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const enum script_var_id script_var_id, u16 idx, s32 new_val)
+void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], s16 script_var_id, u16 idx, s32 new_val)
 {
     struct script_var_raw script_var_raw;
     LoadScriptVariableRaw(&script_var_raw, sv_locals, script_var_id);
@@ -355,7 +407,7 @@ void SaveScriptVariableValueAtIndex(union script_var_value sv_locals[], const en
     return;
 }
 
-s32 LoadScriptVariableValueSum(union script_var_value sv_local[], const enum script_var_id sv_id)
+s32 LoadScriptVariableValueSum(union script_var_value sv_local[], const s16 sv_id)
 {
     struct script_var_raw script_var_raw;
     s32 total = 0;
@@ -369,7 +421,7 @@ s32 LoadScriptVariableValueSum(union script_var_value sv_local[], const enum scr
     return total;
 }
 
-void LoadScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s32 num_bytes)
+void LoadScriptVariableValueBytes(const s16 sv_id, u8* result, s32 num_bytes)
 {
     struct script_var_raw sv_raw;
     LoadScriptVariableRaw(&sv_raw, 0, sv_id);
@@ -385,13 +437,13 @@ void LoadScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s3
     }
 }
 
-void LoadScriptVariableValueString(const enum script_var_id sv_id, u8* result, u8 num_bytes)
+void LoadScriptVariableValueString(const s16 sv_id, u8* result, u8 num_bytes)
 {
     LoadScriptVariableValueBytes(sv_id, result, num_bytes);
     result[num_bytes] = 0;
 }
 
-void SaveScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s32 num_bytes)
+void SaveScriptVariableValueBytes(const s16 sv_id, u8* result, s32 num_bytes)
 {
     struct script_var_raw sv_raw;
     LoadScriptVariableRaw(&sv_raw, 0, sv_id);
@@ -407,7 +459,7 @@ void SaveScriptVariableValueBytes(const enum script_var_id sv_id, u8* result, s3
     }
 }
 
-bool8 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2)
+bool8 ScriptVariablesEqual(union script_var_value sv_val_ptr_local[], s16 sv_id_1, s16 sv_id_2)
 {
     struct script_var_raw script_var_raw_1, script_var_raw_2;
 
@@ -499,14 +551,14 @@ s32 CalcScriptVariablesVeneer(s32 param_1, s32 param_2, enum script_calc_operati
     return CalcScriptVariables(param_1, param_2, operation);
 }
 
-void CalcAndUpdateScriptVarWithOtherValue(union script_var_value sv_local[], const enum script_var_id script_var_id, s32 param, enum script_calc_operation operation)
+void CalcAndUpdateScriptVarWithOtherValue(union script_var_value sv_local[], const s16 script_var_id, s32 param, enum script_calc_operation operation)
 {
     s32 value = LoadScriptVariableValue(sv_local, script_var_id);
     s32 result = CalcScriptVariables(value, param, operation);
     SaveScriptVariableValue(sv_local, script_var_id, result);
 }
 
-void CalcAndUpdateScriptVarWithOtherScriptVar(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum script_calc_operation op)
+void CalcAndUpdateScriptVarWithOtherScriptVar(union script_var_value sv_local[], s16 sv_id_1, s16 sv_id_2, enum script_calc_operation op)
 {
     s32 value_1 = LoadScriptVariableValue(sv_local, sv_id_1);
     s32 value_2 = LoadScriptVariableValue(sv_local, sv_id_2);
@@ -519,13 +571,13 @@ bool8 CompareScriptVariablesVeneer(s32 param_1, s32 param_2, enum compare_operat
     return CompareScriptVariables(param_1, param_2, op);
 }
 
-bool8 LoadAndCompareScriptVarAndValue(union script_var_value sv_local[], enum script_var_id sv_id, s32 param, enum compare_operation op)
+bool8 LoadAndCompareScriptVarAndValue(union script_var_value sv_local[], s16 sv_id, s32 param, enum compare_operation op)
 {
     s32 value = LoadScriptVariableValue(sv_local, sv_id);
     return CompareScriptVariables(value, param, op);
 }
 
-bool8 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_var_id sv_id_1, enum script_var_id sv_id_2, enum compare_operation op)
+bool8 LoadAndCompareScriptVars(union script_var_value sv_local[], s16 sv_id_1, s16 sv_id_2, enum compare_operation op)
 {
     s32 value_1 = LoadScriptVariableValue(sv_local, sv_id_1);
     s32 value_2 = LoadScriptVariableValue(sv_local, sv_id_2);
@@ -533,7 +585,7 @@ bool8 LoadAndCompareScriptVars(union script_var_value sv_local[], enum script_va
 }
 
 // This inline allows EventFlagResume to match
-static inline s32 LoadScriptVariableValueAtIndexInline(enum script_var_id sv_id, u32 idx)
+static inline s32 LoadScriptVariableValueAtIndexInline(s16 sv_id, u32 idx)
 {
     return LoadScriptVariableValueAtIndex(0, sv_id, idx);
 }
@@ -566,7 +618,7 @@ void EventFlagResume()
 }
 
 // This inline allows EventFlagBackup to match
-static inline s32 SaveScriptVariableValueAtIndexInline(enum script_var_id sv_id, u32 idx, u32 new_val)
+static inline s32 SaveScriptVariableValueAtIndexInline(s16 sv_id, u32 idx, u32 new_val)
 {
     SaveScriptVariableValueAtIndex(0, sv_id, idx, new_val);
 }
@@ -657,7 +709,7 @@ void InitScenarioProgressScriptVars()
     SaveScriptVariableValue(0, VAR_PLAY_OLD_GAME, 0);
 }
 
-void LoadScriptVarValuePair(enum script_var_id script_var_id, s32* val_1, s32* val_2)
+void LoadScriptVarValuePair(s16 script_var_id, s32* val_1, s32* val_2)
 {
     *val_1 = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
     *val_2 = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
