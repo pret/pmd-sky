@@ -1,5 +1,5 @@
 #pragma once
-.public _0209CF0C
+.public EVENT_FLAG_SIZE_DEBUG_MSG
 .public _0209DF70
 .public Debug_Print0
 .public GAME_MODE

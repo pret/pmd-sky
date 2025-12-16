@@ -6,7 +6,7 @@
 
 extern const u8 SCENARIO_CALC_DEBUG_MSG;
 
-void SetScenarioProgressScriptVar(enum script_var_id script_var_id, s32 chapter, s32 subsection)
+void SetScenarioProgressScriptVar(s16 script_var_id, s32 chapter, s32 subsection)
 {
     s32 old_progress = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
     s32 old_sub_prog = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
@@ -25,7 +25,7 @@ void SetScenarioProgressScriptVar(enum script_var_id script_var_id, s32 chapter,
     SaveScriptVariableValueAtIndex(0, script_var_id, 1, subsection);
 }
 
-bool8 IsStoryBeforePoint(enum script_var_id script_var_id, s32 chapter, s32 subsection)
+bool8 IsStoryBeforePoint(s16 script_var_id, s32 chapter, s32 subsection)
 {
     s32 cur_chapter = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
     s32 cur_subsec = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
@@ -42,7 +42,7 @@ bool8 IsStoryBeforePoint(enum script_var_id script_var_id, s32 chapter, s32 subs
     return FALSE;
 }
 
-bool8 IsStoryBeforeOrAtPoint(enum script_var_id script_var_id, s32 chapter, s32 subsection)
+bool8 IsStoryBeforeOrAtPoint(s16 script_var_id, s32 chapter, s32 subsection)
 {
     s32 cur_chapter = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
     s32 cur_subsec = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
@@ -67,7 +67,7 @@ bool8 IsStoryBeforeOrAtPoint(enum script_var_id script_var_id, s32 chapter, s32 
     return FALSE;
 }
 
-bool8 IsStoryAtPoint(enum script_var_id script_var_id, s32 chapter, s32 subsection)
+bool8 IsStoryAtPoint(s16 script_var_id, s32 chapter, s32 subsection)
 {
     s32 cur_chapter = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
     s32 cur_subsec = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
@@ -84,7 +84,7 @@ bool8 IsStoryAtPoint(enum script_var_id script_var_id, s32 chapter, s32 subsecti
     return FALSE;
 }
 
-bool8 IsStoryAtOrAfterPoint(enum script_var_id script_var_id, s32 chapter, s32 subsection)
+bool8 IsStoryAtOrAfterPoint(s16 script_var_id, s32 chapter, s32 subsection)
 {
     s32 cur_subsec;
     s32 cur_chapter;
@@ -111,7 +111,7 @@ bool8 IsStoryAtOrAfterPoint(enum script_var_id script_var_id, s32 chapter, s32 s
     return FALSE;
 }
 
-bool8 IsStoryAfterPoint(enum script_var_id script_var_id, s32 chapter, s32 subsection)
+bool8 IsStoryAfterPoint(s16 script_var_id, s32 chapter, s32 subsection)
 {
     s32 cur_chapter = LoadScriptVariableValueAtIndex(0, script_var_id, 0);
     s32 cur_subsec = LoadScriptVariableValueAtIndex(0, script_var_id, 1);
