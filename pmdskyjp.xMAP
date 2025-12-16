@@ -1029,9 +1029,10 @@
                           25](IsSpecialEpisodeOpenMismatch,func) found in global special_episode.o
                            26](ScriptVariablesEqual,func) found in global script_variable.o
                          24](sub_0204B018,func) found in global main_0204B018.o
-                          25](InitWorldMapScriptVars,func) found in global script_variable_2.o
-                          25](InitScenarioProgressScriptVars,func) found in global script_variable.o
                          24](SetSpecialEpisodeType,func) found in global special_episode.o
+                         24](InitScriptVariableValues,func) found in global script_variable.o
+                          25](InitScenarioProgressScriptVars,func) found in global script_variable.o
+                          25](InitWorldMapScriptVars,func) found in global script_variable_2.o
                          24](DirectoryFileMngr_ExtractAllDirectoryFiles,func) found in global directory_file_mngr.o
                           25](DirectoryFile_ExtractDirectoryFile,func) found in global directory_file.o
                          24](LoadTblTalk,func) found in global main_0202593C.o
@@ -6145,16 +6146,16 @@
   0204B360 00000000 .text   $a	(main_0204AFF8.o)
   0204B360 00000020 .text   IsGameModeRescue	(main_0204AFF8.o)
   0204B37C 00000000 .text   $d	(main_0204AFF8.o)
-  0204B380 000002E8 .text   .text	(main_0204B018.o)
-  0204B380 00000000 .text   $a	(main_0204B018.o)
+  0204B380 00000034 .text   .text	(main_0204B018.o)
   0204B380 00000010 .text   sub_0204B018	(main_0204B018.o)
+  0204B380 00000000 .text   $a	(main_0204B018.o)
   0204B38C 00000000 .text   $d	(main_0204B018.o)
   0204B390 00000000 .text   $a	(main_0204B018.o)
   0204B390 00000024 .text   sub_0204B028	(main_0204B018.o)
   0204B3A8 00000000 .text   $d	(main_0204B018.o)
-  0204B3B4 000002B4 .text   InitScriptVariableValues	(main_0204B018.o)
-  0204B3B4 00000000 .text   $a	(main_0204B018.o)
-  0204B660 00000000 .text   $d	(main_0204B018.o)
+  0204B3B4 00000000 .text   $a	(script_variable.o)
+  0204B3B4 000002B4 .text   InitScriptVariableValues	(script_variable.o)
+  0204B660 00000000 .text   $d	(script_variable.o)
   0204B668 000000C8 .text   InitEventFlagScriptVars	(script_variable.o)
   0204B668 00000000 .text   $a	(script_variable.o)
   0204B730 00000000 .text   $a	(script_variable.o)
@@ -11833,12 +11834,12 @@
   0209E290 0000000D .rodata EVENT_FLAG_FILE_NAME	(script_variable.o)
   0209E2A0 000049C0 .rodata .rodata	(main_rodata_0209CECC.o)
   0209E2A0 00000000 .rodata SCRIPT_VARS_LOCALS	(main_rodata_0209CECC.o)
-  0209E2E0 00000000 .rodata _0209CF0C	(main_rodata_0209CECC.o)
+  0209E2E0 00000000 .rodata EVENT_FLAG_SIZE_DEBUG_MSG	(main_rodata_0209CECC.o)
   0209E2FC 00000000 .rodata EVENT_FLAG_EXPANSION_ERROR	(main_rodata_0209CECC.o)
   0209E31C 00000000 .rodata EVENT_FLAG_COMPARE_SCRIPT_VARIABLES_ERROR	(main_rodata_0209CECC.o)
   0209E338 00000000 .rodata EVENT_FLAG_GAME_MODE_DEBUG_MSG	(main_rodata_0209CECC.o)
   0209E358 00000000 .rodata EVENT_FLAG_BACKUP_DEBUG_MSG	(main_rodata_0209CECC.o)
-  0209E378 00000000 .rodata _0209CFA4	(main_rodata_0209CECC.o)
+  0209E378 00000000 .rodata SUM_MSG	(main_rodata_0209CECC.o)
   0209E37C 00000000 .rodata _0209CFA8	(main_rodata_0209CECC.o)
   0209E384 00000000 .rodata _0209CFB0	(main_rodata_0209CECC.o)
   0209E390 00000000 .rodata _0209CFBC	(main_rodata_0209CECC.o)
@@ -11874,7 +11875,7 @@
   0209E53C 00000000 .rodata _0209D168	(main_rodata_0209CECC.o)
   0209E54C 00000000 .rodata _0209D178	(main_rodata_0209CECC.o)
   0209E55C 00000000 .rodata _0209D188	(main_rodata_0209CECC.o)
-  0209E56C 00000000 .rodata _0209D198	(main_rodata_0209CECC.o)
+  0209E56C 00000000 .rodata SUB30_PROJECTP	(main_rodata_0209CECC.o)
   0209E57C 00000000 .rodata _0209D1A8	(main_rodata_0209CECC.o)
   0209E58C 00000000 .rodata _0209D1B8	(main_rodata_0209CECC.o)
   0209E59C 00000000 .rodata _0209D1C8	(main_rodata_0209CECC.o)
@@ -11892,7 +11893,7 @@
   0209E664 00000000 .rodata _0209D290	(main_rodata_0209CECC.o)
   0209E678 00000000 .rodata _0209D2A4	(main_rodata_0209CECC.o)
   0209E68C 00000000 .rodata _0209D2B8	(main_rodata_0209CECC.o)
-  0209E6A0 00000000 .rodata _0209D2CC	(main_rodata_0209CECC.o)
+  0209E6A0 00000000 .rodata NOTE_MODIFY_FLAG	(main_rodata_0209CECC.o)
   0209E6B4 00000000 .rodata _0209D2E0	(main_rodata_0209CECC.o)
   0209E6C8 00000000 .rodata _0209D2F4	(main_rodata_0209CECC.o)
   0209E6DC 00000000 .rodata _0209D308	(main_rodata_0209CECC.o)
@@ -41328,5 +41329,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri Dec 12 03:01:05 2025
-# Link end time: Fri Dec 12 03:01:05 2025
+# Link start time: Tue Dec 16 00:13:55 2025
+# Link end time: Tue Dec 16 00:13:56 2025
