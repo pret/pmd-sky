@@ -6,6 +6,7 @@
 #include "scenario_flag.h"
 #include "script_variable.h"
 #include "script_variable_2.h"
+#include "script_vars_locals.h"
 #include "special_episode.h"
 #include "story_progress.h"
 
@@ -22,20 +23,15 @@
 // Global script variable definitions
 extern struct script_var_def SCRIPT_VARS[];
 // Local script variable definitions
-// extern struct script_var_def SCRIPT_VARS_LOCALS[];
+//extern struct script_var_def SCRIPT_VARS_LOCALS[];
 // Global script variable values
 extern u8 SCRIPT_VARS_VALUES[];
 extern u8 EVENT_FLAG_EXPANSION_ERROR;
 extern u8 EVENT_FLAG_COMPARE_SCRIPT_VARIABLES_ERROR;
 extern const u8 EVENT_FLAG_GAME_MODE_DEBUG_MSG;
 extern const u8 EVENT_FLAG_BACKUP_DEBUG_MSG;
-extern s16 _0209DF70[18];
 
-
-// ========================================================================================
 const u8 EVENT_FLAG_FILE_NAME[] = "event_flag.c";
-
-// TODO Move out of the middle of the externs.
 const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_CALC_SCRIPT_VARIABLES = {
     (u8*) EVENT_FLAG_FILE_NAME,
     1001
@@ -44,58 +40,6 @@ const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_COMPARE_SCRIPT_VARIABLES = {
     (u8*) EVENT_FLAG_FILE_NAME,
     1044
 };
-// ========================================================================================
-
-// ========================================================================================
-static const char LOCAL2[] = "LOCAL2";
-static const char LOCAL3[] = "LOCAL3";
-static const char LOCAL1[] = "LOCAL1";
-static const char LOCAL0[] = "LOCAL0";
-
-static const struct script_var_def SCRIPT_VARS_LOCALS[] = {
-    /* 1st entry */
-    /* 4th entry */
-    {
-        .type        = (enum script_var_type)0x06,   /* from first byte */
-        .field_0x1   = 0x0007,                       /* bytes 0x01‑0x02 */
-        .mem_offset  = 0x0000,                       /* bytes 0x03‑0x04 (s16) */
-        .bitshift    = 0x0000,                       /* bytes 0x05‑0x06 */
-        .n_values    = 0x0001,                       /* bytes 0x07‑0x08 */
-        .default_val = 0x0000,                       /* bytes 0x09‑0x0A */
-        .name        = (char *)LOCAL0               /* .word _0209CE9C → points to "LOCAL0" */
-    },
-    /* 2nd entry */
-    {
-        .type        = (enum script_var_type)0x06,
-        .field_0x1   = 0x0007,
-        .mem_offset  = 0x0002,
-        .bitshift    = 0x0000,
-        .n_values    = 0x0001,
-        .default_val = 0x0000,
-        .name        = (char *)LOCAL1               /* .word _0209CEA4 → "LOCAL1" */
-    },
-    /* 3rd entry */
-    {
-        .type        = (enum script_var_type)0x06,
-        .field_0x1   = 0x0007,
-        .mem_offset  = 0x0004,
-        .bitshift    = 0x0000,
-        .n_values    = 0x0001,
-        .default_val = 0x0000,
-        .name        = (char *)LOCAL2               /* .word _0209CE8C → "LOCAL2" */
-    },
-    {
-        .type        = (enum script_var_type)0x06,
-        .field_0x1   = 0x0007,
-        .mem_offset  = 0x0006,
-        .bitshift    = 0x0000,
-        .n_values    = 0x0001,
-        .default_val = 0x0000,
-        .name        = (char *)LOCAL3               /* .word _0209CE94 → "LOCAL3" */
-    }
-};
-// ========================================================================================
-const u8 EVENT_FLAG_SIZE_DEBUG_MSG[] = "EventFlagSize %04x/%04x\0\0\0";
 
 extern s32 GetPartyMembers(s32 param1);
 extern s32 GetMoneyStored();
@@ -107,11 +51,6 @@ extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
 extern void InitDungeonListScriptVars();
-
-// TODO Rename function
-void sub_0204B028(void) {
-    Debug_Print0(EVENT_FLAG_SIZE_DEBUG_MSG, _0209DF70[18], 0x400);
-}
 
 void InitScriptVariableValues() {
     for(s32 sv_id = 0; sv_id < LOCAL_SCRIPT_VAR_OFFSET; sv_id++) {

@@ -31,7 +31,6 @@ struct script_var_raw {
 
 // See enum script_var_id for the sv_id parameters.
 
-void sub_0204B028(void);
 void InitScriptVariableValues();
 void InitEventFlagScriptVars();
 void DefaultInitScriptVariable(union script_var_value sv_locals[], s16 sv_id);

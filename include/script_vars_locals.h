@@ -1,0 +1,7 @@
+#ifndef PMDSKY_SCRIPT_VARS_LOCALS
+#define PMDSKY_SCRIPT_VARS_LOCALS
+
+extern const struct script_var_def SCRIPT_VARS_LOCALS[];
+extern const u8 EVENT_FLAG_SIZE_DEBUG_MSG[];
+
+#endif //PMDSKY_SCRIPT_VARS_LOCALS
