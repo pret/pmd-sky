@@ -79,7 +79,7 @@
 .public _0209D168
 .public _0209D178
 .public _0209D188
-.public SUB30_PROJECTP
+.public SUB30_PROJECTP_MSG
 .public _0209D1A8
 .public _0209D1B8
 .public _0209D1C8
@@ -97,7 +97,7 @@
 .public _0209D290
 .public _0209D2A4
 .public _0209D2B8
-.public NOTE_MODIFY_FLAG
+.public NOTE_MODIFY_FLAG_MSG
 .public _0209D2E0
 .public _0209D2F4
 .public _0209D308
