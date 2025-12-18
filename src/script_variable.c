@@ -29,15 +29,8 @@ extern u8 EVENT_FLAG_EXPANSION_ERROR;
 extern u8 EVENT_FLAG_COMPARE_SCRIPT_VARIABLES_ERROR;
 extern const u8 EVENT_FLAG_GAME_MODE_DEBUG_MSG;
 extern const u8 EVENT_FLAG_BACKUP_DEBUG_MSG;
-const u8 EVENT_FLAG_FILE_NAME[] = "event_flag.c";
-const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_CALC_SCRIPT_VARIABLES = {
-    (u8*) EVENT_FLAG_FILE_NAME,
-    1001
-};
-const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_COMPARE_SCRIPT_VARIABLES = {
-    (u8*) EVENT_FLAG_FILE_NAME,
-    1044
-};
+extern u8 EVENT_FLAG_SIZE_DEBUG_MSG;
+extern s16 _0209DF70[18];
 
 extern s32 GetPartyMembers(s32 param1);
 extern s32 GetMoneyStored();
@@ -49,6 +42,20 @@ extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
 extern void InitDungeonListScriptVars();
+
+const u8 EVENT_FLAG_FILE_NAME[] = "event_flag.c";
+const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_CALC_SCRIPT_VARIABLES = {
+    (u8*) EVENT_FLAG_FILE_NAME,
+    1001
+};
+const struct prog_pos_info EVENT_FLAG_PROG_POS_INFO_COMPARE_SCRIPT_VARIABLES = {
+    (u8*) EVENT_FLAG_FILE_NAME,
+    1044
+};
+
+void DebugPrintEventFlagSize() {
+    Debug_Print0(&EVENT_FLAG_SIZE_DEBUG_MSG, _0209DF70[18], 0x400);
+}
 
 void InitScriptVariableValues() {
     for(s32 sv_id = 0; sv_id < LOCAL_SCRIPT_VAR_OFFSET; sv_id++) {

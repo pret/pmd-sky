@@ -78,8 +78,7 @@ Static main
 	Object asm/main_02034974.o
 	Object src/main_0203C760.o
 	Object asm/main_0203C774.o
-	Object src/main_0204AFF8.o
-	Object asm/main_0204B018.o
+	Object src/game_mode.o
 	Object src/script_variable.o
 	Object asm/main_rodata_0209CECC.o
 	Object src/dungeon_parameters_3.o

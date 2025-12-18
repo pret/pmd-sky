@@ -1,5 +1,5 @@
 #include "overlay_29_0234BBE8.h"
-#include "main_0204AFF8.h"
+#include "game_mode.h"
 #include "overlay_29_022DC61C.h"
 #include "overlay_29_0234CA68.h"
 #include "util.h"

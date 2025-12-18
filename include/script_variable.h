@@ -30,7 +30,7 @@ struct script_var_raw {
 };
 
 // See enum script_var_id for the sv_id parameters.
-
+void DebugPrintEventFlagSize();
 void InitScriptVariableValues();
 void InitEventFlagScriptVars();
 void DefaultInitScriptVariable(union script_var_value sv_locals[], s16 sv_id);
