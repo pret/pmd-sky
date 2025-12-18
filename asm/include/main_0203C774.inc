@@ -224,6 +224,7 @@
 .public GetDexNumber
 .public GetDungeonResultString
 .public GetExecuteSpecialEpisodeType
+.public GetGameMode
 .public GetHeldButtons
 .public GetHero
 .public GetHeroMemberIdx
