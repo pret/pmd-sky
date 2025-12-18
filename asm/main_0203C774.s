@@ -14526,7 +14526,7 @@ _0204841C: .word _020AFEF4
 	arm_func_start sub_02048420
 sub_02048420: ; 0x02048420
 	stmdb sp!, {r3, lr}
-	bl sub_0204B028
+	bl DebugPrintEventFlagSize
 	bl sub_02048B74
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_02048420
@@ -18067,18 +18067,3 @@ GetGameMode: ; 0x0204AFC0
 	.align 2, 0
 _0204AFCC: .word GAME_MODE
 	arm_func_end GetGameMode
-
-	arm_func_start sub_0204AFD0
-sub_0204AFD0: ; 0x0204AFD0
-	ldr r0, _0204AFF4 ; =GAME_MODE
-	ldrb r0, [r0]
-	add r0, r0, #0xfe
-	and r0, r0, #0xff
-	cmp r0, #1
-	movls r0, #1
-	movhi r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_0204AFF4: .word GAME_MODE
-	arm_func_end sub_0204AFD0

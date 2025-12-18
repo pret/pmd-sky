@@ -15838,7 +15838,7 @@ MainLoop: ; 0x02065D1C
 	bl sub_02026E78
 	bl sub_020346C0
 	mov r0, #0
-	bl sub_0204B018
+	bl SetGameMode
 	mov r0, #2
 	bl SetBothScreensWindowsColor
 	bl sub_0204A1A4
@@ -15956,7 +15956,7 @@ _02065EE0:
 	mov r6, #0
 _02065F20:
 	mov r0, r6
-	bl sub_0204B018
+	bl SetGameMode
 	bl sub_02048624
 	cmp r8, #0
 	beq _02065FE0
@@ -16084,7 +16084,7 @@ _020660B0:
 	movne r7, #0
 _020660C8:
 	mov r0, #0
-	bl sub_0204B018
+	bl SetGameMode
 	mov r0, #1
 	bl LoadOverlay
 	mov r0, #4
@@ -16133,7 +16133,7 @@ _02066154: ; jump table
 	b _02066330 ; case 9
 _0206617C:
 	mov r0, #2
-	bl sub_0204B018
+	bl SetGameMode
 	bl sub_020484C0
 	bl sub_02048644
 	mov r0, #2
@@ -16149,7 +16149,7 @@ _020661B0:
 	bl GetDebugSpecialEpisodeNumber
 	bl SetSpecialEpisodeType
 	mov r0, #3
-	bl sub_0204B018
+	bl SetGameMode
 	bl sub_02048644
 	bl InitSpecialEpisodeHero
 	mov r0, #2
@@ -16167,7 +16167,7 @@ _020661B0:
 	b _02065F20
 _020661FC:
 	mov r0, #2
-	bl sub_0204B018
+	bl SetGameMode
 	bl sub_02048644
 	mov r0, #2
 	bl LoadOverlay
@@ -16180,7 +16180,7 @@ _020661FC:
 	b _02065F20
 _0206622C:
 	mov r0, #3
-	bl sub_0204B018
+	bl SetGameMode
 	bl sub_02048644
 	mov r0, #2
 	bl LoadOverlay
@@ -16193,7 +16193,7 @@ _0206622C:
 	b _02065F20
 _0206625C:
 	mov r0, #2
-	bl sub_0204B018
+	bl SetGameMode
 	bl sub_02048644
 	mov r0, #2
 	bl LoadOverlay
@@ -16206,7 +16206,7 @@ _0206625C:
 	b _02065F20
 _0206628C:
 	mov r0, #2
-	bl sub_0204B018
+	bl SetGameMode
 	bl sub_02048644
 	mov r0, #2
 	bl LoadOverlay
@@ -16219,7 +16219,7 @@ _0206628C:
 	b _02065F20
 _020662BC:
 	mov r0, #4
-	bl sub_0204B018
+	bl SetGameMode
 	bl sub_02048644
 	bl sub_020485C4
 	mov r0, #2
@@ -16237,7 +16237,7 @@ _020662BC:
 	b _02065F20
 _02066300:
 	mov r0, #4
-	bl sub_0204B018
+	bl SetGameMode
 	bl sub_02048644
 	mov r0, #2
 	bl LoadOverlay
@@ -16250,7 +16250,7 @@ _02066300:
 	b _02065F20
 _02066330:
 	mov r0, #5
-	bl sub_0204B018
+	bl SetGameMode
 	bl sub_02048644
 	bl sub_020485D8
 	mov r0, #2

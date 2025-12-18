@@ -482,7 +482,7 @@
 .public sub_0204A1A4
 .public sub_0204AB18
 .public sub_0204AF98
-.public sub_0204B018
+.public SetGameMode
 .public sub_0204D018
 .public sub_0204E210
 .public sub_0204E6FC
