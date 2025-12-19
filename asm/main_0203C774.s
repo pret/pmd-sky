@@ -18058,12 +18058,3 @@ sub_0204AFAC: ; 0x0204AFAC
 	.align 2, 0
 _0204AFBC: .word _022AB0A0
 	arm_func_end sub_0204AFAC
-
-	arm_func_start GetGameMode
-GetGameMode: ; 0x0204AFC0
-	ldr r0, _0204AFCC ; =GAME_MODE
-	ldrb r0, [r0]
-	bx lr
-	.align 2, 0
-_0204AFCC: .word GAME_MODE
-	arm_func_end GetGameMode

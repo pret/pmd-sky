@@ -53,6 +53,7 @@
 .public EnableIrqFlag
 .public FX_AtanIdxTable_
 .public GetProcessorMode
+.public GetGameMode
 .public gGXState
 .public GXi_DmaId
 .public GXi_VRamLockId

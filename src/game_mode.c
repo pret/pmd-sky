@@ -3,6 +3,10 @@
 
 extern enum game_mode GAME_MODE;
 
+enum game_mode GetGameMode() {
+    return GAME_MODE;
+}
+
 u8 sub_0204AFD0() {
     if ((u8)(GAME_MODE + 0xFE) <= 1) {
         return TRUE;
