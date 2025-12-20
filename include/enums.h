@@ -3481,4 +3481,18 @@ enum compare_operation { // Taken from pmd-red's FlagJudgeOperation
     CMP_BIT_SET,
 };
 
+enum top_screen_options {
+    TOP_SCREEN_CONTROLS = 0,
+    TOP_SCREEN_TEAM_STATS = 1,
+    TOP_SCREEN_TEXT_LOG = 2,
+    TOP_SCREEN_MAP_AND_TEAM = 3,
+    TOP_SCREEN_JOB = 4
+};
+
+enum bottom_screen_option {
+    BOTTOM_SCREEN_NO_MAP = 0,
+    BOTTOM_SCREEN_CLEAR_MAP = 1,
+    BOTTOM_SCREEN_SHADED_MAP = 2
+};
+
 #endif //PMDSKY_ENUMS_H

@@ -106,7 +106,7 @@
 .public SetPokemonBattled
 .public ShouldDisplayEntityWrapper
 .public SpawnDroppedItemWrapper
-.public sub_0204AF00
+.public GetDamageTurnOption
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags
 .public TryEndPetrifiedOrSleepStatus

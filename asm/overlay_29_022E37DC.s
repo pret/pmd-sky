@@ -6068,7 +6068,7 @@ FreeTeamStatsWrapper: ; 0x022E81E8
 	arm_func_start ov29_022E81F8
 ov29_022E81F8: ; 0x022E81F8
 	stmdb sp!, {r3, lr}
-	bl sub_0204AF58
+	bl IsTeamStatsOnTopScreen
 	cmp r0, #0
 	bne _022E8210
 	bl ov29_022E8104

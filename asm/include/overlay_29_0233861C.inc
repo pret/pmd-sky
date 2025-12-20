@@ -90,7 +90,7 @@
 .public sub_0201F2A0
 .public sub_0204AEA0
 .public sub_0204AEC0
-.public sub_0204AF30
+.public IsMapShownOnEitherScreen
 .public TeamMemberHasExclusiveItemEffectActive
 .public TILESET_PROPERTIES
 .public UnloadFile

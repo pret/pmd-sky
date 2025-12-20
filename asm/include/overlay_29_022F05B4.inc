@@ -189,9 +189,9 @@
 .public sub_0204AEA0
 .public sub_0204AEB0
 .public sub_0204AEC0
-.public sub_0204AF10
-.public sub_0204AF20
-.public sub_0204AF78
+.public GetDPadAttackOption
+.public GetCheckDirectionOption
+.public IsTextLogOnTopScreen
 .public SubstitutePlaceholderStringTags
 .public TryAddMonsterToActiveTeam
 .public TryLeaderItemPickUp

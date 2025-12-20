@@ -1133,7 +1133,7 @@ _02339318:
 	streq r8, [sp, #0x14]
 	moveq r8, #1
 _02339344:
-	bl sub_0204AF30
+	bl IsMapShownOnEitherScreen
 	cmp r0, #0
 	ldreq r0, _023398CC ; =ov29_0235376C
 	ldreqb r1, [r0, #1]
