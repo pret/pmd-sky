@@ -16001,7 +16001,7 @@ _02065F70:
 	bl UnloadOverlay
 _02065FCC:
 	add r0, sp, #0
-	bl sub_0204AF98
+	bl CopyFrameTypeOption
 	ldrb r0, [sp]
 	bl sub_02027180
 	bl sub_020205F8
