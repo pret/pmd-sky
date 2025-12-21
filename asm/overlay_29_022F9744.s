@@ -98,7 +98,7 @@ ov29_022F9840: ; 0x022F9840
 	movne r0, r4
 	and r4, r0, #0xff
 _022F987C:
-	bl sub_0204AEF0
+	bl GetFarOffPalsOption
 	cmp r0, #0
 	moveq r4, #0
 	cmp r4, #0

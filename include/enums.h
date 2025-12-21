@@ -3495,4 +3495,10 @@ enum bottom_screen_option {
     BOTTOM_SCREEN_SHADED_MAP = 2
 };
 
+enum touch_screen_option {
+    TOUCH_SCREEN_OFF = 0,
+    TOUCH_SCREEN_MENU_ONLY = 1,
+    TOUCH_SCREEN_USE_ANYWHERE = 2
+};
+
 #endif //PMDSKY_ENUMS_H

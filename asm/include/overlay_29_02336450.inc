@@ -37,6 +37,6 @@
 .public ov29_0237CAAC
 .public RandIntSafe
 .public SECONDARY_TERRAIN_TYPES
-.public sub_0204AED0
+.public GetGridsOption
 .public sub_02051D8C
 .public sub_02051E60

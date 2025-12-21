@@ -186,9 +186,9 @@
 .public sub_0201CF90
 .public sub_02026268
 .public sub_02027B1C
-.public sub_0204AEA0
-.public sub_0204AEB0
-.public sub_0204AEC0
+.public GetTopScreenOption
+.public SetTopScreenOption
+.public GetBottomScreenOption
 .public GetDPadAttackOption
 .public GetCheckDirectionOption
 .public IsTextLogOnTopScreen

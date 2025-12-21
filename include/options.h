@@ -17,6 +17,14 @@ struct options {
     u8 frame_type;
 };
 
+bool8 IsTouchScreenNotOff();
+bool8 IsTouchScreenUseAnywhere();
+u8 GetTopScreenOption();
+void SetTopScreenOption(u8 new_ts);
+u8 GetBottomScreenOption();
+u8 GetGridsOption();
+u8 GetSpeedOption();
+u8 GetFarOffPalsOption();
 u8 GetDamageTurnOption();
 u8 GetDPadAttackOption();
 u8 GetCheckDirectionOption();

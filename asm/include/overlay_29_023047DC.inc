@@ -39,7 +39,7 @@
 .public SetAndPlayAnimationForAnimationControl
 .public SetSpriteIdForAnimationControl
 .public ShouldDisplayEntityWrapper
-.public sub_0204AEE0
+.public GetSpeedOption
 .public sub_02053038
 .public TryForcedLoss
 .public UpdateEntityPixelPos

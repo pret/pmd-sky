@@ -37613,7 +37613,7 @@ _0230CFFC: .word ov11_0230D71C
 	arm_func_start ov11_0230D000
 ov11_0230D000: ; 0x0230D000
 	stmdb sp!, {r3, lr}
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	ldr r1, _0230D084 ; =ov11_02324DBC
 	mov r2, #1
 	ldr r1, [r1]
@@ -37660,7 +37660,7 @@ _0230D084: .word ov11_02324DBC
 	arm_func_start ov11_0230D088
 ov11_0230D088: ; 0x0230D088
 	stmdb sp!, {r3, lr}
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #4
 	addls pc, pc, r0, lsl #2
 	b _0230D0F4

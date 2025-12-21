@@ -20,7 +20,7 @@ ov31_023833D8: ; 0x023833D8
 	mov r0, #0x100
 	strb ip, [r3]
 	bl sub_020355DC
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	ldr r1, _02383430 ; =ov31_0238A2A8
 	strb r0, [r1]
 	add sp, sp, #0x98

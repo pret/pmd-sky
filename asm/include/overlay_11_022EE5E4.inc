@@ -942,7 +942,7 @@
 .public sub_020483D8
 .public sub_02048764
 .public sub_02048794
-.public sub_0204AEA0
+.public GetTopScreenOption
 .public sub_0204AFD0
 .public sub_0204CDCC
 .public sub_0204CE00

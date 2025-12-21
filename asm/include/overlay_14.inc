@@ -67,5 +67,5 @@
 .public sub_0202BC60
 .public sub_0202F334
 .public sub_0202F954
-.public sub_0204AE60
+.public IsTouchScreenNotOff
 .public UpdateWindow

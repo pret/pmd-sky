@@ -52,7 +52,7 @@
 .public SetPreprocessorArgsStringToName
 .public ShouldDisplayEntityWrapper
 .public sub_02017C50
-.public sub_0204AEF0
+.public GetFarOffPalsOption
 .public sub_02050FF8
 .public sub_02052E2C
 .public sub_02056228

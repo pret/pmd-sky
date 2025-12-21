@@ -48,8 +48,8 @@
 .public ov29_0237C888
 .public RenderWeather3D
 .public sub_0201BAC8
-.public sub_0204AEA0
-.public sub_0204AEC0
+.public GetTopScreenOption
+.public GetBottomScreenOption
 .public sub_02051E20
 .public UpdateCamera
 .public UpdateMinimap

@@ -863,7 +863,7 @@ _022DF7B4:
 	bl ov29_022EA428
 	mov r0, #1
 	bl ov29_0233A15C
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	bne _022DF7EC
 	mov r0, #1

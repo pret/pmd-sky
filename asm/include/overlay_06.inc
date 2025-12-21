@@ -70,7 +70,7 @@
 .public sub_02046D20
 .public sub_0204A018
 .public sub_0204A1CC
-.public sub_0204AE60
+.public IsTouchScreenNotOff
 .public SetSpecialEpisodeOpen
 .public sub_0204E210
 .public sub_02050974

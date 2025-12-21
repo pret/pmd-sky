@@ -3,6 +3,44 @@
 
 extern struct options _022AB0A0;
 
+bool8 IsTouchScreenNotOff() {
+    if (_022AB0A0.touch_screen >= TOUCH_SCREEN_MENU_ONLY) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 IsTouchScreenUseAnywhere() {
+    if (_022AB0A0.touch_screen >= TOUCH_SCREEN_USE_ANYWHERE) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+u8 GetTopScreenOption() {
+    return _022AB0A0.top_screen;
+}
+
+void SetTopScreenOption(u8 new_ts) {
+    _022AB0A0.top_screen = new_ts;
+}
+
+u8 GetBottomScreenOption() {
+    return _022AB0A0.bottom_screen;
+}
+
+u8 GetGridsOption() {
+    return _022AB0A0.grids;
+}
+
+u8 GetSpeedOption() {
+    return _022AB0A0.speed;
+}
+
+u8 GetFarOffPalsOption() {
+    return _022AB0A0.far_off_pals;
+}
+
 u8 GetDamageTurnOption() {
     return _022AB0A0.damage_turn;
 }

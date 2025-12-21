@@ -2088,7 +2088,7 @@ _0233E5F8:
 	add r1, sp, #6
 	mov r0, #0
 	bl GetPressedButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	add r0, sp, #0x10
 	beq _0233E61C
@@ -6822,7 +6822,7 @@ _023427CC:
 	add r1, sp, #0x14
 	mov r0, #0
 	bl GetHeldButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	moveq r0, #0
 	beq _02342818
@@ -8132,7 +8132,7 @@ _02343AC4:
 	add r1, sp, #0x12
 	mov r0, #0
 	bl GetHeldButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	moveq r0, #0
 	beq _02343B08
