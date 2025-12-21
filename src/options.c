@@ -38,3 +38,11 @@ bool8 IsTextLogOnTopScreen() {
         return FALSE;    
     }
 }
+
+void CopyFrameTypeOption(u8* dst) {
+    *dst = _022AB0A0.frame_type;
+}
+
+void SetFrameTypeOption(u8* new_ft) {
+    _022AB0A0.frame_type = *new_ft;
+}

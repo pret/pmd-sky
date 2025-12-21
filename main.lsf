@@ -79,7 +79,6 @@ Static main
 	Object src/main_0203C760.o
 	Object asm/main_0203C774.o
 	Object src/options.o
-	Object asm/main_0204AF98.o
 	Object src/game_mode.o
 	Object src/script_variable.o
 	Object asm/main_rodata_0209CECC.o

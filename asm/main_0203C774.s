@@ -16520,7 +16520,7 @@ _02049CD4:
 	mov r1, #9
 	add r0, sp, #0
 	str r1, [r2, #4]
-	bl sub_0204AF98
+	bl CopyFrameTypeOption
 	ldrb r0, [sp]
 	bl sub_02027180
 	ldr r0, _02049D34 ; =_020AFF54

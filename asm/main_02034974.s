@@ -1476,7 +1476,7 @@ sub_02035CE4: ; 0x02035CE4
 	ldr r0, _02035DAC ; =_020AFDD8
 	ldr r0, [r0, #4]
 	add r0, r0, #0xa4
-	bl sub_0204AF98
+	bl CopyFrameTypeOption
 	ldr r0, _02035DAC ; =_020AFDD8
 	mvn r3, #1
 	ldr ip, [r0, #4]
@@ -1849,7 +1849,7 @@ _02036250:
 	strb r0, [r1, #0xa4]
 	ldr r0, [r2, #4]
 	add r0, r0, #0xa4
-	bl sub_0204AFAC
+	bl SetFrameTypeOption
 	ldr r0, _0203630C ; =_020AFDD8
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xa8]

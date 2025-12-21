@@ -481,7 +481,7 @@
 .public sub_0204A198
 .public sub_0204A1A4
 .public sub_0204AB18
-.public sub_0204AF98
+.public CopyFrameTypeOption
 .public SetGameMode
 .public sub_0204D018
 .public sub_0204E210
