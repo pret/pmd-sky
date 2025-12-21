@@ -604,7 +604,7 @@ _0230A24C:
 	mov r6, #0
 	cmp r0, #0
 	beq _0230A2CC
-	bl sub_0204AF00
+	bl GetDamageTurnOption
 	cmp r0, #0
 	beq _0230A2CC
 	mov r0, sb
@@ -1708,7 +1708,7 @@ _02309820:
 	mov sl, #0
 	cmp r0, #0
 	beq _023098A0
-	bl sub_0204AF00
+	bl GetDamageTurnOption
 	cmp r0, #0
 	beq _023098A0
 	mov r0, r7

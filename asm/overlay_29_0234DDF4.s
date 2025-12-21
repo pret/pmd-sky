@@ -206,7 +206,7 @@ _0234E0B8:
 	cmpne r0, #0x27
 	cmpne r0, #0x41
 	bne _0234E0EC
-	bl sub_0204AF20
+	bl GetCheckDirectionOption
 	cmp r0, #0
 	beq _0234E140
 	bl GetLeaderAction
@@ -218,7 +218,7 @@ _0234E0B8:
 _0234E0EC:
 	cmp r0, #0x31
 	bne _0234E140
-	bl sub_0204AF20
+	bl GetCheckDirectionOption
 	cmp r0, #0
 	beq _0234E140
 	bl GetLeaderAction
@@ -479,7 +479,7 @@ _0234E45C:
 	cmp r0, #0x15
 	bne _0234E4CC
 _0234E48C:
-	bl sub_0204AF20
+	bl GetCheckDirectionOption
 	cmp r0, #0
 	beq _0234E4CC
 	bl GetLeaderAction
@@ -625,7 +625,7 @@ _0234E698:
 	cmpne r0, #0x27
 	cmpne r0, #0x41
 	bne _0234E6CC
-	bl sub_0204AF20
+	bl GetCheckDirectionOption
 	cmp r0, #0
 	beq _0234E720
 	bl GetLeaderAction
@@ -637,7 +637,7 @@ _0234E698:
 _0234E6CC:
 	cmp r0, #0x31
 	bne _0234E720
-	bl sub_0204AF20
+	bl GetCheckDirectionOption
 	cmp r0, #0
 	beq _0234E720
 	bl GetLeaderAction

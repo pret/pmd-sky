@@ -62,7 +62,7 @@
 .public sub_0200B3D4
 .public sub_020282F4
 .public sub_0202AAE8
-.public sub_0204AF20
+.public GetCheckDirectionOption
 .public TeamMenu
 .public TryPointCameraToMonster
 .public UnloadOverlay

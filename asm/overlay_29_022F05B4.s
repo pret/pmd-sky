@@ -1311,7 +1311,7 @@ _022F16A4:
 	mov r2, #4
 	bl ChangeMonsterAnimation
 _022F16F4:
-	bl sub_0204AF10
+	bl GetDPadAttackOption
 	cmp r0, #0
 	moveq r1, #0
 	beq _022F17E0
@@ -1618,7 +1618,7 @@ _022F1B5C:
 _022F1B64:
 	cmp r3, #4
 	bne _022F1B9C
-	bl sub_0204AF20
+	bl GetCheckDirectionOption
 	cmp r0, #0
 	beq _022F1B8C
 	mov r0, r6
@@ -1663,7 +1663,7 @@ _022F1BE0:
 	bl sub_02006B70
 	b _022F2970
 _022F1C04:
-	bl sub_0204AF20
+	bl GetCheckDirectionOption
 	cmp r0, #0
 	beq _022F1C28
 	add r1, sb, #0x124 + SET_LEADER_ACTION_OFFSET
@@ -1825,13 +1825,13 @@ _022F1E3C:
 	ldrh r0, [r0, #2]
 	tst r0, #2
 	beq _022F1E90
-	bl sub_0204AF78
+	bl IsTextLogOnTopScreen
 	mov r0, #4
 	bl PlaySeVolumeWrapper
 	mov r0, #0
 	mov r1, #1
 	bl OpenMessageLog
-	bl sub_0204AF78
+	bl IsTextLogOnTopScreen
 	cmp r0, #0
 	beq _022F1E88
 	bl ov29_0234BB38
@@ -2026,7 +2026,7 @@ _022F2118:
 	movs fp, r0
 	bmi _022F2180
 	mov r8, #1
-	bl sub_0204AF20
+	bl GetCheckDirectionOption
 	cmp r0, #0
 	beq _022F2150
 	mov r0, r6
@@ -3904,7 +3904,7 @@ ov29_022F3B98: ; 0x022F3B98
 	mov r8, r2
 	mov fp, r4
 	str r4, [sp]
-	bl sub_0204AF20
+	bl GetCheckDirectionOption
 	cmp r0, #0
 	moveq r0, r4
 	beq _022F3E88
