@@ -702,7 +702,8 @@
                                                                                                 95](DefaultInitScriptVariable,func) found in global script_variable.o
                                                                                                94](Debug_SetLogFlag,func) found in global debug.o
                                                                                                94](Debug_SetDebugFlag,func) found in global debug.o
-                                                                                               94](sub_0204AFAC,func) found in global main_0204AF98.o
+                                                                                               94](SetFrameTypeOption,func) found in global options.o
+                                                                                               94](CopyFrameTypeOption,func) found in global options.o
                                                                                               93](ov29_0234BBE8,func) found in global overlay_29_0234BBE8.o
                                                                                                94](ov29_022DC61C,func) found in global overlay_29_022DC61C.o
                                                                                                 95](ov29_022DC240,func) found in global poly_text.o
@@ -6133,13 +6134,12 @@
   0204AF78 00000000 .text   $a	(options.o)
   0204AF78 00000020 .text   IsTextLogOnTopScreen	(options.o)
   0204AF94 00000000 .text   $d	(options.o)
-  0204AF98 00000028 .text   .text	(main_0204AF98.o)
-  0204AF98 00000014 .text   sub_0204AF98	(main_0204AF98.o)
-  0204AF98 00000000 .text   $a	(main_0204AF98.o)
-  0204AFA8 00000000 .text   $d	(main_0204AF98.o)
-  0204AFAC 00000000 .text   $a	(main_0204AF98.o)
-  0204AFAC 00000014 .text   sub_0204AFAC	(main_0204AF98.o)
-  0204AFBC 00000000 .text   $d	(main_0204AF98.o)
+  0204AF98 00000000 .text   $a	(options.o)
+  0204AF98 00000014 .text   CopyFrameTypeOption	(options.o)
+  0204AFA8 00000000 .text   $d	(options.o)
+  0204AFAC 00000000 .text   $a	(options.o)
+  0204AFAC 00000014 .text   SetFrameTypeOption	(options.o)
+  0204AFBC 00000000 .text   $d	(options.o)
   0204AFC0 00000000 .text   $a	(game_mode.o)
   0204AFC0 00000010 .text   GetGameMode	(game_mode.o)
   0204AFCC 00000000 .text   $d	(game_mode.o)
@@ -41097,5 +41097,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Dec 21 07:01:38 2025
-# Link end time: Sun Dec 21 07:01:39 2025
+# Link start time: Sun Dec 21 22:39:10 2025
+# Link end time: Sun Dec 21 22:39:10 2025
