@@ -195,7 +195,7 @@
 .public sub_0203C984
 .public sub_020469BC
 .public sub_02048240
-.public sub_0204AE60
+.public IsTouchScreenNotOff
 .public TEAM_SELECTION_MENU_DEFAULT_WINDOW_PARAMS
 .public TEXT_BOX_DEFAULT_WINDOW_PARAMS
 .public UnloadFile

@@ -235,7 +235,7 @@
 .public sub_02009194
 .public sub_020091B0
 .public sub_02017B00
-.public sub_0204AEA0
+.public GetTopScreenOption
 .public sub_0204F1B4
 .public sub_020510E8
 .public sub_02051134

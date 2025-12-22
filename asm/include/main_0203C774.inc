@@ -297,6 +297,7 @@
 .public IsStorableItem
 .public IsStorageFull
 .public IsThrownItem
+.public IsTouchScreenNotOff
 .public IsTreasureBox
 .public LAST_NEW_MOVE
 .public LearnMoves

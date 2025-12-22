@@ -463,7 +463,7 @@ ov29_02304D20: ; 0x02304D20
 	movge r0, #0
 	strgeh r0, [sb, #0x4a]
 	ldmgeia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl sub_0204AEE0
+	bl GetSpeedOption
 	cmp r0, #0
 	movne r1, #2
 	ldr r2, _02304FD4 ; =ov29_0237C9CC
@@ -497,7 +497,7 @@ ov29_02304D20: ; 0x02304D20
 	ldr r1, [r2]
 	mul r0, r1, r0
 	str r0, [r7, #0x14]
-	bl sub_0204AEE0
+	bl GetSpeedOption
 	cmp r0, #0
 	movne r1, #2
 	ldr r5, _02304FD4 ; =ov29_0237C9CC
@@ -652,7 +652,7 @@ DisplayActions: ; 0x02304FE0
 	mov sl, r0
 	mov r7, r6
 	strb r6, [r1]
-	bl sub_0204AEE0
+	bl GetSpeedOption
 	cmp r0, #0
 	mov r5, #0
 	movne r1, #2

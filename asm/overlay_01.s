@@ -16774,7 +16774,7 @@ ov01_02336B50: ; 0x02336B50
 	cmpge r0, #6
 	mvnge r0, #0
 	strgeh r0, [r1, #0xe4]
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	moveq r0, #0
 	beq _02337000
@@ -20766,7 +20766,7 @@ _02339B54:
 	add r1, sp, #2
 	mov r0, #0
 	bl GetHeldButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	moveq r0, #0
 	beq _02339BC4
@@ -20859,7 +20859,7 @@ _02339CDC:
 	add r1, sp, #0
 	mov r0, #0
 	bl GetHeldButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	moveq r0, #0
 	beq _02339D24
@@ -21212,7 +21212,7 @@ ov01_0233A130: ; 0x0233A130
 	add r1, sp, #0
 	mov r0, #0
 	bl GetHeldButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	moveq r0, #0
 	beq _0233A184
@@ -21395,7 +21395,7 @@ ov01_0233A390: ; 0x0233A390
 	add r1, sp, #0
 	mov r0, #0
 	bl GetHeldButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	moveq r0, #0
 	beq _0233A3E4

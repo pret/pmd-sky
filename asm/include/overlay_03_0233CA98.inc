@@ -246,7 +246,7 @@
 .public sub_02046D20
 .public sub_0204A018
 .public sub_0204A1CC
-.public sub_0204AE60
+.public IsTouchScreenNotOff
 .public sub_0204DBA0
 .public sub_0204DCA0
 .public sub_0204E210

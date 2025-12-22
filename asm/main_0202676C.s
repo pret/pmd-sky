@@ -14465,7 +14465,7 @@ _020319F8:
 	orrne r5, r5, #8
 	cmp r4, #0
 	beq _02031A30
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	mov r0, r4
 	beq _02031A2C

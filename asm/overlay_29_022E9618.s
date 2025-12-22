@@ -865,7 +865,7 @@ _022EA0F8:
 	bl FlashLeaderIcon
 	b _022EA154
 _022EA140:
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	bne _022EA154
 	mov r0, #1
@@ -1198,7 +1198,7 @@ _022EA540:
 	beq _022EA614
 	mov r0, #0
 	bl ov29_0234B1A4
-	bl sub_0204AEC0
+	bl GetBottomScreenOption
 	cmp r0, #0
 	beq _022EA614
 	mov r0, #0

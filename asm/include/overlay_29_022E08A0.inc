@@ -57,6 +57,6 @@
 .public sub_0201B43C
 .public sub_0201E380
 .public sub_0201F598
-.public sub_0204AE80
+.public IsTouchScreenUseAnywhere
 .public UnloadFile
 .public UnloadWte

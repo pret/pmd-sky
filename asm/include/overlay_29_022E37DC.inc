@@ -155,7 +155,7 @@
 .public sub_020483B8
 .public sub_020483D8
 .public sub_02048400
-.public sub_0204AEA0
+.public GetTopScreenOption
 .public IsTeamStatsOnTopScreen
 .public SubstitutePlaceholderStringTags
 .public TOP_SCREEN_STATUS_PTR

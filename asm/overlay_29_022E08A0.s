@@ -258,7 +258,7 @@ _022E0B5C: .word ov29_0237C694
 	arm_func_start ov29_022E0B60
 ov29_022E0B60: ; 0x022E0B60
 	stmdb sp!, {r3, lr}
-	bl sub_0204AE80
+	bl IsTouchScreenUseAnywhere
 	cmp r0, #0
 	beq _022E0C18
 	ldr r0, _022E0C24 ; =ov29_0237C6A4

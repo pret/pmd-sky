@@ -1275,7 +1275,7 @@ _02337598:
 _023375A0:
 	cmp r0, #6
 	bne _023375CC
-	bl sub_0204AED0
+	bl GetGridsOption
 	cmp r0, #0
 #ifdef JAPAN
 	addne r0, r5, #0x9a
@@ -1392,7 +1392,7 @@ _02337700:
 _02337708:
 	cmp r0, #6
 	bne _02337724
-	bl sub_0204AED0
+	bl GetGridsOption
 	cmp r0, #0
 	ldrne sl, [sp, #0x10]
 	ldreq sl, [sp, #0x14]

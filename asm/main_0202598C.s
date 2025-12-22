@@ -769,7 +769,7 @@ sub_02025F10: ; 0x02025F10
 	moveq r0, #1
 	beq _02025FD4
 _02025F5C:
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	beq _02025FD0
 	ldrsb r0, [r5]

@@ -2561,7 +2561,7 @@ _0233ED24:
 	add r1, sp, #0xe
 	mov r0, #0
 	bl GetHeldButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	moveq r0, #0
 	beq _0233ED6C
@@ -2842,7 +2842,7 @@ _0233F13C:
 	add r1, sp, #0xc
 	mov r0, #0
 	bl GetHeldButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	moveq r0, #0
 	beq _0233F184

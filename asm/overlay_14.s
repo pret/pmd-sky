@@ -3069,7 +3069,7 @@ SentryStateGetUserChoice: ; 0x0238CA94
 	add r1, sp, #0
 	mov r0, r4
 	bl GetPressedButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	beq _0238CBCC
 	add r0, sp, #4

@@ -1410,11 +1410,11 @@ _0233970C:
 	moveq r0, r0, lsl #0x10
 	moveq r5, r0, asr #0x10
 _02339734:
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	addeq r0, r5, #0x80
 	streqh r0, [sp, #0x2e]
-	bl sub_0204AEC0
+	bl GetBottomScreenOption
 	cmp r0, #0
 	bne _02339770
 	ldr r0, _023398CC ; =ov29_0235376C
@@ -1426,7 +1426,7 @@ _02339734:
 	streqh r0, [sp, #0x2c]
 	b _0233979C
 _02339770:
-	bl sub_0204AEC0
+	bl GetBottomScreenOption
 	cmp r0, #1
 	addeq r0, r5, #0x40
 	streqh r0, [sp, #0x2c]
@@ -1569,7 +1569,7 @@ ov29_0233992C: ; 0x0233992C
 	cmpne r0, #0xc
 	moveq r4, #1
 _0233996C:
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	moveq r5, #1
 	bl GetMinimapData
@@ -1687,7 +1687,7 @@ FlashLeaderIcon: ; 0x02339A24
 	ldrb r0, [r0, #0x448]
 	cmp r0, #0
 	beq _02339BC0
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	bne _02339BC0
 	ldrh r0, [sp, #4]
@@ -1744,7 +1744,7 @@ _02339BC0:
 	ldrb r0, [r0, #0x447]
 	cmp r0, #0
 	beq _02339CB0
-	bl sub_0204AEC0
+	bl GetBottomScreenOption
 	cmp r0, #0
 	beq _02339CB0
 	ldrh r0, [sp, #4]
@@ -1839,7 +1839,7 @@ _02339D10:
 	add r6, r6, #1
 	cmp r6, #0x20
 	blt _02339D0C
-	bl sub_0204AEC0
+	bl GetBottomScreenOption
 	cmp r0, #0
 	beq _02339D54
 	bl GetMinimapData
@@ -2024,7 +2024,7 @@ _02339F84: .word sub_0200B330
 ov29_02339F88: ; 0x02339F88
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0204AEC0
+	bl GetBottomScreenOption
 	cmp r0, #0
 	beq _02339FAC
 	mov r1, r4
@@ -2048,7 +2048,7 @@ _02339FCC: .word ov29_0235376C
 ov29_02339FD0: ; 0x02339FD0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	ldmneia sp!, {r4, pc}
 	mov r1, r4
@@ -2062,7 +2062,7 @@ ov29_02339FF4: ; 0x02339FF4
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl ov29_02339F88
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	ldmneia sp!, {r4, pc}
 	mov r1, r4
@@ -2138,7 +2138,7 @@ ov29_0233A0E8: ; 0x0233A0E8
 	mov r4, r0
 	cmp r1, #1
 	bne _0233A114
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	ldmneia sp!, {r4, pc}
 	mov r0, r4
@@ -2148,7 +2148,7 @@ ov29_0233A0E8: ; 0x0233A0E8
 _0233A114:
 	cmp r1, #0
 	ldmneia sp!, {r4, pc}
-	bl sub_0204AEC0
+	bl GetBottomScreenOption
 	cmp r0, #0
 	beq _0233A138
 	mov r0, r4
@@ -2172,14 +2172,14 @@ _0233A158: .word ov29_0235376C
 ov29_0233A15C: ; 0x0233A15C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	bne _0233A17C
 	mov r0, r4
 	mov r1, #1
 	bl ov29_0233A01C
 _0233A17C:
-	bl sub_0204AEC0
+	bl GetBottomScreenOption
 	cmp r0, #0
 	beq _0233A198
 	mov r0, r4

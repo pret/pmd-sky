@@ -13021,7 +13021,7 @@ _022E7548:
 	add r1, sp, #8
 	mov r0, #0
 	bl GetPressedButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	add r0, sp, #0x68
 	beq _022E756C
@@ -14994,7 +14994,7 @@ _022E8F1C:
 	mov r0, fp
 	add r1, sp, #0
 	bl GetPressedButtons
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	add r0, sp, #0x10
 	beq _022E8F4C
@@ -17216,7 +17216,7 @@ _022EAB38:
 	moveq r0, #5
 	streq r0, [r8]
 	beq _022EAB84
-	bl sub_0204AEE0
+	bl GetSpeedOption
 	cmp r0, #0
 	movne r0, #4
 	strne r0, [r8]
@@ -17226,7 +17226,7 @@ _022EAB84:
 	ldrh r0, [sp, #6]
 	bl ov11_022EAF70
 	strb r0, [r7]
-	bl sub_0204AE80
+	bl IsTouchScreenUseAnywhere
 	cmp r0, #0
 	beq _022EAE7C
 	ldrsb r1, [r7]
@@ -17345,7 +17345,7 @@ _022EAD10:
 	mov r0, #2
 	b _022EAF54
 _022EAD48:
-	bl sub_0204AEE0
+	bl GetSpeedOption
 	cmp r0, #0
 	movne r0, #0x10
 	moveq r0, #0xf
@@ -17389,7 +17389,7 @@ _022EADD4:
 	moveq r0, #0xe
 	streq r0, [r8]
 	beq _022EAE00
-	bl sub_0204AEE0
+	bl GetSpeedOption
 	cmp r0, #0
 	movne r0, #0xd
 	strne r0, [r8]

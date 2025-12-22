@@ -5036,7 +5036,7 @@ _02040AF8:
 	b _02040F88
 _02040B10:
 	mov r4, #0
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	add r0, sp, #0x10
 	beq _02040B2C
@@ -12273,7 +12273,7 @@ sub_020467B4: ; 0x020467B4
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x24
 	mov r4, r0
-	bl sub_0204AE60
+	bl IsTouchScreenNotOff
 	cmp r0, #0
 	moveq r0, #0
 	beq _020467E8
@@ -17890,83 +17890,3 @@ sub_0204ACDC: ; 0x0204ACDC
 	.align 2, 0
 _0204AE5C: .word _022AB0A0
 	arm_func_end sub_0204ACDC
-
-	arm_func_start sub_0204AE60
-sub_0204AE60: ; 0x0204AE60
-	ldr r0, _0204AE7C ; =_022AB0A0
-	ldrb r0, [r0]
-	cmp r0, #1
-	movhs r0, #1
-	movlo r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_0204AE7C: .word _022AB0A0
-	arm_func_end sub_0204AE60
-
-	arm_func_start sub_0204AE80
-sub_0204AE80: ; 0x0204AE80
-	ldr r0, _0204AE9C ; =_022AB0A0
-	ldrb r0, [r0]
-	cmp r0, #2
-	movhs r0, #1
-	movlo r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_0204AE9C: .word _022AB0A0
-	arm_func_end sub_0204AE80
-
-	arm_func_start sub_0204AEA0
-sub_0204AEA0: ; 0x0204AEA0
-	ldr r0, _0204AEAC ; =_022AB0A0
-	ldrb r0, [r0, #2]
-	bx lr
-	.align 2, 0
-_0204AEAC: .word _022AB0A0
-	arm_func_end sub_0204AEA0
-
-	arm_func_start sub_0204AEB0
-sub_0204AEB0: ; 0x0204AEB0
-	ldr r1, _0204AEBC ; =_022AB0A0
-	strb r0, [r1, #2]
-	bx lr
-	.align 2, 0
-_0204AEBC: .word _022AB0A0
-	arm_func_end sub_0204AEB0
-
-	arm_func_start sub_0204AEC0
-sub_0204AEC0: ; 0x0204AEC0
-	ldr r0, _0204AECC ; =_022AB0A0
-	ldrb r0, [r0, #1]
-	bx lr
-	.align 2, 0
-_0204AECC: .word _022AB0A0
-	arm_func_end sub_0204AEC0
-
-	arm_func_start sub_0204AED0
-sub_0204AED0: ; 0x0204AED0
-	ldr r0, _0204AEDC ; =_022AB0A0
-	ldrb r0, [r0, #3]
-	bx lr
-	.align 2, 0
-_0204AEDC: .word _022AB0A0
-	arm_func_end sub_0204AED0
-
-	arm_func_start sub_0204AEE0
-sub_0204AEE0: ; 0x0204AEE0
-	ldr r0, _0204AEEC ; =_022AB0A0
-	ldrb r0, [r0, #4]
-	bx lr
-	.align 2, 0
-_0204AEEC: .word _022AB0A0
-	arm_func_end sub_0204AEE0
-
-	arm_func_start sub_0204AEF0
-sub_0204AEF0: ; 0x0204AEF0
-	ldr r0, _0204AEFC ; =_022AB0A0
-	ldrb r0, [r0, #5]
-	bx lr
-	.align 2, 0
-_0204AEFC: .word _022AB0A0
-	arm_func_end sub_0204AEF0

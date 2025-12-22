@@ -577,7 +577,7 @@ _022F0C90:
 ov29_022F0C98: ; 0x022F0C98
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov sl, r0
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	mov r7, r0
 	mov r0, #4
 	mov r1, #0x2f
@@ -611,7 +611,7 @@ ov29_022F0C98: ; 0x022F0C98
 	bl ov29_02338F58
 	cmp sl, #0
 	bne _022F0D24
-	bl sub_0204AEC0
+	bl GetBottomScreenOption
 	cmp r0, #0
 	bne _022F0D44
 _022F0D24:
@@ -693,7 +693,7 @@ _022F0E18:
 _022F0E30:
 	cmp sl, #0
 	bne _022F0E44
-	bl sub_0204AEC0
+	bl GetBottomScreenOption
 	cmp r0, #0
 	bne _022F0E64
 _022F0E44:
@@ -721,7 +721,7 @@ _022F0E64:
 #else
 	strb r2, [r1, #0x249]
 #endif
-	bl sub_0204AEB0
+	bl SetTopScreenOption
 	ldr r0, _022F0ECC ; =ov29_0237CFBB
 	mov r1, #1
 	strb r1, [r0]

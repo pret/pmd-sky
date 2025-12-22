@@ -6,4 +6,4 @@
 .public OVERLAY31_UNKNOWN_POINTER__NA_238A268
 .public sub_020355DC
 .public sub_02035CE4
-.public sub_0204AEA0
+.public GetTopScreenOption

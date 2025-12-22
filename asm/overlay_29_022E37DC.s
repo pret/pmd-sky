@@ -5934,7 +5934,7 @@ ov29_022E8054: ; 0x022E8054
 	ldmeqia sp!, {r3, pc}
 	mov r1, #0
 	strb r1, [r0, #0x10]
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	ldrne r0, _022E80CC ; =TOP_SCREEN_STATUS_PTR
 	movne r1, #0
@@ -6074,7 +6074,7 @@ ov29_022E81F8: ; 0x022E81F8
 	bl ov29_022E8104
 	ldmia sp!, {r3, pc}
 _022E8210:
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #1
 	bne _022E8238
 	ldr r0, _022E8240 ; =TOP_SCREEN_STATUS_PTR
@@ -6094,7 +6094,7 @@ _022E8240: .word TOP_SCREEN_STATUS_PTR
 	arm_func_start ov29_022E8244
 ov29_022E8244: ; 0x022E8244
 	stmdb sp!, {r3, lr}
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #4
 	ldreq r0, _022E826C ; =TOP_SCREEN_STATUS_PTR
 	ldreq r0, [r0]
@@ -6505,7 +6505,7 @@ _022E8704: .word TOP_SCREEN_STATUS_PTR
 	arm_func_start ov29_022E8708
 ov29_022E8708: ; 0x022E8708
 	stmdb sp!, {r3, lr}
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	cmp r0, #3
 	bne _022E8724
 	mov r0, #3
@@ -6581,7 +6581,7 @@ _022E87D8: .word TOP_SCREEN_STATUS_PTR
 	arm_func_start ov29_022E87DC
 ov29_022E87DC: ; 0x022E87DC
 	stmdb sp!, {r3, lr}
-	bl sub_0204AEA0
+	bl GetTopScreenOption
 	ldr r1, _022E87F8 ; =ov29_023515E8
 	mov r0, r0, lsl #1
 	ldrsh r0, [r1, r0]
