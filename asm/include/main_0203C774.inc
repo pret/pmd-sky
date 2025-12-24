@@ -147,7 +147,7 @@
 .public _022AAEA8
 .public _022AAEAC
 .public _022AB09C
-.public _022AB0A0
+.public OPTIONS
 .public _022AB0A1
 .public _022AB0A2
 .public _022AB0A9

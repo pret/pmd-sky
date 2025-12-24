@@ -253,7 +253,7 @@ sub_0204E154: ; 0x0204E154
 	mov r1, r3
 	bl sub_02050990
 	add r0, sp, #0
-	bl sub_0204ABB8
+	bl SaveOptionsToCtx
 	add r0, sp, #0
 	bl sub_0204F9F4
 	add r0, sp, #0
@@ -275,7 +275,7 @@ sub_0204E19C: ; 0x0204E19C
 	mov r1, r3
 	bl sub_02050974
 	add r0, sp, #0
-	bl sub_0204ACDC
+	bl LoadOptionsFromCtx
 	add r0, sp, #0
 	bl sub_0204FA0C
 	add r0, sp, #0
