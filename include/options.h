@@ -9,14 +9,18 @@ struct options {
     u8 bottom_screen;
     u8 top_screen;
     bool8 grids;
-    bool8 speed;
-    bool8 far_off_pals;
+    u8 speed;
+    u8 far_off_pals;
     bool8 damage_turn;
     bool8 d_pad_attack;
     bool8 check_direction;
     u8 frame_type;
 };
 
+void InitOptionsVeneer();
+void InitOptions();
+void GetOptions(u8* dest_opts_ptr);
+void SetOptions(u8* src_options_ptr);
 void SaveOptionsToCtx(u8* ctx);
 void LoadOptionsFromCtx(u8* ctx);
 bool8 IsTouchScreenNotOff();

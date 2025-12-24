@@ -15124,7 +15124,7 @@ _02048B40:
 	arm_func_start sub_02048B48
 sub_02048B48: ; 0x02048B48
 	stmdb sp!, {r3, lr}
-	bl sub_0204AB24
+	bl InitOptions
 	bl InitScriptVariableValues
 	bl sub_02052C74
 	bl sub_0200CABC
@@ -17649,64 +17649,3 @@ _0204AB10:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	arm_func_end sub_0204A9C8
 
-	arm_func_start sub_0204AB18
-sub_0204AB18: ; 0x0204AB18
-	ldr ip, _0204AB20 ; =sub_0204AB24
-	bx ip
-	.align 2, 0
-_0204AB20: .word sub_0204AB24
-	arm_func_end sub_0204AB18
-
-	arm_func_start sub_0204AB24
-sub_0204AB24: ; 0x0204AB24
-	stmdb sp!, {r3}
-	sub sp, sp, #4
-	ldr r0, _0204AB74 ; =OPTIONS
-	mov r1, #2
-	mov r2, #0
-	strb r1, [r0]
-	strb r2, [r0, #2]
-	mov r1, #1
-	strb r1, [r0, #1]
-	strb r1, [r0, #3]
-	strb r2, [r0, #4]
-	strb r1, [r0, #5]
-	strb r1, [r0, #6]
-	strb r2, [r0, #7]
-	strb r2, [r0, #8]
-	strb r2, [sp]
-	strb r2, [r0, #9]
-	add sp, sp, #4
-	ldmia sp!, {r3}
-	bx lr
-	.align 2, 0
-_0204AB74: .word OPTIONS
-	arm_func_end sub_0204AB24
-
-	arm_func_start sub_0204AB78
-sub_0204AB78: ; 0x0204AB78
-	ldr r3, _0204AB94 ; =OPTIONS
-	mov r2, #0xa
-_0204AB80:
-	ldrb r1, [r3], #1
-	subs r2, r2, #1
-	strb r1, [r0], #1
-	bne _0204AB80
-	bx lr
-	.align 2, 0
-_0204AB94: .word OPTIONS
-	arm_func_end sub_0204AB78
-
-	arm_func_start sub_0204AB98
-sub_0204AB98: ; 0x0204AB98
-	ldr r3, _0204ABB4 ; =OPTIONS
-	mov r2, #0xa
-_0204ABA0:
-	ldrb r1, [r0], #1
-	subs r2, r2, #1
-	strb r1, [r3], #1
-	bne _0204ABA0
-	bx lr
-	.align 2, 0
-_0204ABB4: .word OPTIONS
-	arm_func_end sub_0204AB98

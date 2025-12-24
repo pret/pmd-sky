@@ -3501,4 +3501,14 @@ enum touch_screen_option {
     TOUCH_SCREEN_USE_ANYWHERE = 2
 };
 
+enum speed_option {
+    SPEED_REGULAR = 0,
+    SPEED_FAST = 1
+};
+
+enum far_off_pals_option {
+    FAR_OFF_PALS_SELF = 0,
+    FAR_OFF_PALS_LOOK = 1
+};
+
 #endif //PMDSKY_ENUMS_H
