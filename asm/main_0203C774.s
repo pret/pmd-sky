@@ -17661,7 +17661,7 @@ _0204AB20: .word sub_0204AB24
 sub_0204AB24: ; 0x0204AB24
 	stmdb sp!, {r3}
 	sub sp, sp, #4
-	ldr r0, _0204AB74 ; =_022AB0A0
+	ldr r0, _0204AB74 ; =OPTIONS
 	mov r1, #2
 	mov r2, #0
 	strb r1, [r0]
@@ -17680,12 +17680,12 @@ sub_0204AB24: ; 0x0204AB24
 	ldmia sp!, {r3}
 	bx lr
 	.align 2, 0
-_0204AB74: .word _022AB0A0
+_0204AB74: .word OPTIONS
 	arm_func_end sub_0204AB24
 
 	arm_func_start sub_0204AB78
 sub_0204AB78: ; 0x0204AB78
-	ldr r3, _0204AB94 ; =_022AB0A0
+	ldr r3, _0204AB94 ; =OPTIONS
 	mov r2, #0xa
 _0204AB80:
 	ldrb r1, [r3], #1
@@ -17694,12 +17694,12 @@ _0204AB80:
 	bne _0204AB80
 	bx lr
 	.align 2, 0
-_0204AB94: .word _022AB0A0
+_0204AB94: .word OPTIONS
 	arm_func_end sub_0204AB78
 
 	arm_func_start sub_0204AB98
 sub_0204AB98: ; 0x0204AB98
-	ldr r3, _0204ABB4 ; =_022AB0A0
+	ldr r3, _0204ABB4 ; =OPTIONS
 	mov r2, #0xa
 _0204ABA0:
 	ldrb r1, [r0], #1
@@ -17708,185 +17708,5 @@ _0204ABA0:
 	bne _0204ABA0
 	bx lr
 	.align 2, 0
-_0204ABB4: .word _022AB0A0
+_0204ABB4: .word OPTIONS
 	arm_func_end sub_0204AB98
-
-	arm_func_start sub_0204ABB8
-sub_0204ABB8: ; 0x0204ABB8
-	stmdb sp!, {r4, lr}
-	ldr r1, _0204ACC0 ; =_022AB0A0
-	mov r2, #2
-	mov r4, r0
-	bl CopyBitsTo
-	ldr r1, _0204ACC4 ; =_022AB0A2
-	mov r0, r4
-	mov r2, #3
-	bl CopyBitsTo
-	ldr r1, _0204ACC8 ; =_022AB0A1
-	mov r0, r4
-	mov r2, #2
-	bl CopyBitsTo
-	ldr r0, _0204ACCC ; =_022AB0A0
-	mov r2, #1
-	ldrb r0, [r0, #3]
-	cmp r0, #0
-	ldrne r1, _0204ACD0 ; =_0209CE88
-	mov r0, r4
-	ldreq r1, _0204ACD4 ; =_0209CE89
-	bl CopyBitsTo
-	ldr r0, _0204ACCC ; =_022AB0A0
-	mov r2, #1
-	ldrb r0, [r0, #4]
-	cmp r0, #0
-	ldrne r1, _0204ACD0 ; =_0209CE88
-	mov r0, r4
-	ldreq r1, _0204ACD4 ; =_0209CE89
-	bl CopyBitsTo
-	ldr r0, _0204ACCC ; =_022AB0A0
-	mov r2, #1
-	ldrb r0, [r0, #5]
-	cmp r0, #0
-	ldrne r1, _0204ACD0 ; =_0209CE88
-	mov r0, r4
-	ldreq r1, _0204ACD4 ; =_0209CE89
-	bl CopyBitsTo
-	ldr r0, _0204ACCC ; =_022AB0A0
-	mov r2, #1
-	ldrb r0, [r0, #6]
-	cmp r0, #0
-	ldrne r1, _0204ACD0 ; =_0209CE88
-	mov r0, r4
-	ldreq r1, _0204ACD4 ; =_0209CE89
-	bl CopyBitsTo
-	ldr r0, _0204ACCC ; =_022AB0A0
-	mov r2, #1
-	ldrb r0, [r0, #7]
-	cmp r0, #0
-	ldrne r1, _0204ACD0 ; =_0209CE88
-	mov r0, r4
-	ldreq r1, _0204ACD4 ; =_0209CE89
-	bl CopyBitsTo
-	ldr r0, _0204ACCC ; =_022AB0A0
-	mov r2, #1
-	ldrb r0, [r0, #8]
-	cmp r0, #0
-	ldrne r1, _0204ACD0 ; =_0209CE88
-	mov r0, r4
-	ldreq r1, _0204ACD4 ; =_0209CE89
-	bl CopyBitsTo
-	ldr r1, _0204ACD8 ; =_022AB0A9
-	mov r0, r4
-	mov r2, #3
-	bl CopyBitsTo
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_0204ACC0: .word _022AB0A0
-_0204ACC4: .word _022AB0A2
-_0204ACC8: .word _022AB0A1
-_0204ACCC: .word _022AB0A0
-_0204ACD0: .word _0209CE88
-_0204ACD4: .word _0209CE89
-_0204ACD8: .word _022AB0A9
-	arm_func_end sub_0204ABB8
-
-	arm_func_start sub_0204ACDC
-sub_0204ACDC: ; 0x0204ACDC
-	stmdb sp!, {r3, r4, lr}
-	sub sp, sp, #4
-	add r1, sp, #0
-	mov r2, #2
-	mov r4, r0
-	bl CopyBitsFrom
-	ldrb r0, [sp]
-	ldr r3, _0204AE5C ; =_022AB0A0
-	add r1, sp, #0
-	and ip, r0, #3
-	mov r0, r4
-	mov r2, #3
-	strb ip, [r3]
-	bl CopyBitsFrom
-	ldrb r0, [sp]
-	ldr r3, _0204AE5C ; =_022AB0A0
-	add r1, sp, #0
-	and ip, r0, #7
-	mov r0, r4
-	mov r2, #2
-	strb ip, [r3, #2]
-	bl CopyBitsFrom
-	ldrb r0, [sp]
-	ldr r2, _0204AE5C ; =_022AB0A0
-	add r1, sp, #0
-	and r3, r0, #3
-	strb r3, [r2, #1]
-	mov r0, r4
-	mov r2, #1
-	bl CopyBitsFrom
-	ldrb r0, [sp]
-	ldr r3, _0204AE5C ; =_022AB0A0
-	add r1, sp, #0
-	tst r0, #1
-	movne ip, #1
-	moveq ip, #0
-	mov r0, r4
-	mov r2, #1
-	strb ip, [r3, #3]
-	bl CopyBitsFrom
-	ldrb r0, [sp]
-	ldr r3, _0204AE5C ; =_022AB0A0
-	add r1, sp, #0
-	tst r0, #1
-	movne ip, #1
-	moveq ip, #0
-	mov r0, r4
-	mov r2, #1
-	strb ip, [r3, #4]
-	bl CopyBitsFrom
-	ldrb r0, [sp]
-	ldr r2, _0204AE5C ; =_022AB0A0
-	add r1, sp, #0
-	tst r0, #1
-	movne r3, #1
-	moveq r3, #0
-	strb r3, [r2, #5]
-	mov r0, r4
-	mov r2, #1
-	bl CopyBitsFrom
-	ldrb r0, [sp]
-	ldr r2, _0204AE5C ; =_022AB0A0
-	add r1, sp, #0
-	tst r0, #1
-	movne r3, #1
-	moveq r3, #0
-	strb r3, [r2, #6]
-	mov r0, r4
-	mov r2, #1
-	bl CopyBitsFrom
-	ldrb r0, [sp]
-	ldr r2, _0204AE5C ; =_022AB0A0
-	add r1, sp, #0
-	tst r0, #1
-	movne r3, #1
-	moveq r3, #0
-	strb r3, [r2, #7]
-	mov r0, r4
-	mov r2, #1
-	bl CopyBitsFrom
-	ldrb r0, [sp]
-	ldr r2, _0204AE5C ; =_022AB0A0
-	add r1, sp, #0
-	tst r0, #1
-	movne r3, #1
-	moveq r3, #0
-	strb r3, [r2, #8]
-	mov r0, r4
-	mov r2, #3
-	bl CopyBitsFrom
-	ldrb r1, [sp]
-	ldr r0, _0204AE5C ; =_022AB0A0
-	and r1, r1, #7
-	strb r1, [r0, #9]
-	add sp, sp, #4
-	ldmia sp!, {r3, r4, pc}
-	.align 2, 0
-_0204AE5C: .word _022AB0A0
-	arm_func_end sub_0204ACDC
