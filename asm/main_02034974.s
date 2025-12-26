@@ -995,7 +995,7 @@ sub_02035640: ; 0x02035640
 	ldr r0, _02035764 ; =_020AFDD0
 	ldr r0, [r0, #4]
 	add r0, r0, #0xa4
-	bl sub_0204AB78
+	bl GetOptions
 	ldr r1, _02035764 ; =_020AFDD0
 	mov r0, #0
 	ldr r3, [r1, #4]
@@ -1401,7 +1401,7 @@ _02035BC0:
 	strb r0, [r1, #0xac]
 	ldr r0, [r2, #4]
 	add r0, r0, #0xa4
-	bl sub_0204AB98
+	bl SetOptions
 _02035C4C:
 	ldr r0, _02035CCC ; =_020AFDD0
 	ldr r2, [r0, #4]

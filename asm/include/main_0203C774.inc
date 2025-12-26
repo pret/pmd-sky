@@ -147,7 +147,7 @@
 .public _022AAEA8
 .public _022AAEAC
 .public _022AB09C
-.public _022AB0A0
+.public OPTIONS
 .public _022AB0A1
 .public _022AB0A2
 .public _022AB0A9
@@ -467,6 +467,7 @@
 .public DebugPrintEventFlagSize
 .public SetSpecialEpisodeOpenOld
 .public CopyFrameTypeOption
+.public InitOptions
 .public sub_0204CDB8
 .public sub_0204E154
 .public sub_0204E19C

@@ -225,8 +225,8 @@
 .public sub_0203C9A0
 .public sub_02048078
 .public sub_0204964C
-.public sub_0204AB78
-.public sub_0204AB98
+.public GetOptions
+.public SetOptions
 .public CopyFrameTypeOption
 .public SetFrameTypeOption
 .public sub_0204DA1C

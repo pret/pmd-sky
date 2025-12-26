@@ -480,7 +480,7 @@
 .public sub_02048C3C
 .public sub_0204A198
 .public sub_0204A1A4
-.public sub_0204AB18
+.public InitOptionsVeneer
 .public CopyFrameTypeOption
 .public SetGameMode
 .public sub_0204D018
