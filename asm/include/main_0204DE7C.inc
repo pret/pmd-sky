@@ -86,8 +86,8 @@
 .public sub_0200C4CC
 .public sub_02048BFC
 .public sub_02048CB8
-.public sub_0204ABB8
-.public sub_0204ACDC
+.public SaveOptionsToCtx
+.public LoadOptionsFromCtx
 .public SetResolvedPerformanceProgressFlag
 .public sub_0204CEE0
 .public sub_0204DB08

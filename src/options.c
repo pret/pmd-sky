@@ -1,76 +1,166 @@
 #include "enums.h"
 #include "options.h"
 
-extern struct options _022AB0A0;
+extern void CopyBitsFrom(u8* ctx, void* dest, u8 nbits);
+extern void CopyBitsTo(u8* ctx, void* src, s32 nbits);
+extern u8 _0209CE88;
+extern u8 _0209CE89;
+
+struct options OPTIONS = {};
+
+void SaveOptionsToCtx(u8* ctx) {
+    CopyBitsTo(ctx, &OPTIONS.touch_screen, 2);
+    CopyBitsTo(ctx, &OPTIONS.top_screen, 3);
+    CopyBitsTo(ctx, &OPTIONS.bottom_screen, 2);
+    
+    u8* src;
+    if (OPTIONS.grids) {
+        src = &_0209CE88;
+    } else {
+        src = &_0209CE89;
+    }
+    CopyBitsTo(ctx, src, 1);
+
+    if (OPTIONS.speed) {
+        src = &_0209CE88;
+    } else {
+        src = &_0209CE89;
+    }
+    CopyBitsTo(ctx, src, 1);
+
+    if (OPTIONS.far_off_pals) {
+        src = &_0209CE88;
+    } else {
+        src = &_0209CE89;
+    }
+    CopyBitsTo(ctx, src, 1);
+
+    if (OPTIONS.damage_turn) {
+        src = &_0209CE88;
+    } else {
+        src = &_0209CE89;
+    }
+    CopyBitsTo(ctx, src, 1);
+
+    if (OPTIONS.d_pad_attack) {
+        src = &_0209CE88;
+    } else {
+        src = &_0209CE89;
+    }
+    CopyBitsTo(ctx, src, 1);
+    
+    if (OPTIONS.check_direction) {
+        src = &_0209CE88;
+    } else {
+        src = &_0209CE89;
+    }
+    CopyBitsTo(ctx, src, 1);
+    CopyBitsTo(ctx, &OPTIONS.frame_type, 3);
+}
+
+void LoadOptionsFromCtx(u8* ctx) {
+    u8 dest;
+
+    CopyBitsFrom(ctx, &dest, 2U);
+    OPTIONS.touch_screen = dest & 3;
+
+    CopyBitsFrom(ctx, &dest, 3);
+    OPTIONS.top_screen = dest & 7;
+
+    CopyBitsFrom(ctx, &dest, 2);
+    OPTIONS.bottom_screen = dest & 3;
+
+    CopyBitsFrom(ctx, &dest, 1);
+    OPTIONS.grids = (dest & 1) != FALSE;
+
+    CopyBitsFrom(ctx, &dest, 1);
+    OPTIONS.speed = (dest & 1) != FALSE;
+
+    CopyBitsFrom(ctx, &dest, 1);
+    OPTIONS.far_off_pals = (dest & 1) != FALSE;
+
+    CopyBitsFrom(ctx, &dest, 1);
+    OPTIONS.damage_turn = (dest & 1) != FALSE;
+
+    CopyBitsFrom(ctx, &dest, 1);
+    OPTIONS.d_pad_attack = (dest & 1) != FALSE;
+
+    CopyBitsFrom(ctx, &dest, 1);
+    OPTIONS.check_direction = (dest & 1) != FALSE;
+
+    CopyBitsFrom(ctx, &dest, 3);
+    OPTIONS.frame_type = dest & 7;
+}
+
 
 bool8 IsTouchScreenNotOff() {
-    if (_022AB0A0.touch_screen >= TOUCH_SCREEN_MENU_ONLY) {
+    if (OPTIONS.touch_screen >= TOUCH_SCREEN_MENU_ONLY) {
         return TRUE;
     }
     return FALSE;
 }
 
 bool8 IsTouchScreenUseAnywhere() {
-    if (_022AB0A0.touch_screen >= TOUCH_SCREEN_USE_ANYWHERE) {
+    if (OPTIONS.touch_screen >= TOUCH_SCREEN_USE_ANYWHERE) {
         return TRUE;
     }
     return FALSE;
 }
 
 u8 GetTopScreenOption() {
-    return _022AB0A0.top_screen;
+    return OPTIONS.top_screen;
 }
 
 void SetTopScreenOption(u8 new_ts) {
-    _022AB0A0.top_screen = new_ts;
+    OPTIONS.top_screen = new_ts;
 }
 
 u8 GetBottomScreenOption() {
-    return _022AB0A0.bottom_screen;
+    return OPTIONS.bottom_screen;
 }
 
-u8 GetGridsOption() {
-    return _022AB0A0.grids;
+bool8 GetGridsOption() {
+    return OPTIONS.grids;
 }
 
-u8 GetSpeedOption() {
-    return _022AB0A0.speed;
+bool8 GetSpeedOption() {
+    return OPTIONS.speed;
 }
 
-u8 GetFarOffPalsOption() {
-    return _022AB0A0.far_off_pals;
+bool8 GetFarOffPalsOption() {
+    return OPTIONS.far_off_pals;
 }
 
-u8 GetDamageTurnOption() {
-    return _022AB0A0.damage_turn;
+bool8 GetDamageTurnOption() {
+    return OPTIONS.damage_turn;
 }
 
-u8 GetDPadAttackOption() {
-    return _022AB0A0.d_pad_attack;
+bool8 GetDPadAttackOption() {
+    return OPTIONS.d_pad_attack;
 }
 
-u8 GetCheckDirectionOption() {
-    return _022AB0A0.check_direction;
+bool8 GetCheckDirectionOption() {
+    return OPTIONS.check_direction;
 }
 
 bool8 IsMapShownOnEitherScreen() {
-    if (_022AB0A0.bottom_screen == BOTTOM_SCREEN_CLEAR_MAP ||
-        _022AB0A0.bottom_screen == BOTTOM_SCREEN_SHADED_MAP ||
-        _022AB0A0.top_screen == TOP_SCREEN_MAP_AND_TEAM) {
+    if (OPTIONS.bottom_screen == BOTTOM_SCREEN_CLEAR_MAP ||
+        OPTIONS.bottom_screen == BOTTOM_SCREEN_SHADED_MAP ||
+        OPTIONS.top_screen == TOP_SCREEN_MAP_AND_TEAM) {
         return TRUE;
     }
     return FALSE;
 }
 
 bool8 IsTeamStatsOnTopScreen() {
-    if (_022AB0A0.top_screen == TOP_SCREEN_TEAM_STATS) {
+    if (OPTIONS.top_screen == TOP_SCREEN_TEAM_STATS) {
         return TRUE;
     }
     return FALSE;
 }
 
 bool8 IsTextLogOnTopScreen() {
-    if (_022AB0A0.top_screen == TOP_SCREEN_TEXT_LOG) {
+    if (OPTIONS.top_screen == TOP_SCREEN_TEXT_LOG) {
         return TRUE;
     } else {
         return FALSE;    
@@ -78,9 +168,9 @@ bool8 IsTextLogOnTopScreen() {
 }
 
 void CopyFrameTypeOption(u8* dst) {
-    *dst = _022AB0A0.frame_type;
+    *dst = OPTIONS.frame_type;
 }
 
 void SetFrameTypeOption(u8* new_ft) {
-    _022AB0A0.frame_type = *new_ft;
+    OPTIONS.frame_type = *new_ft;
 }
