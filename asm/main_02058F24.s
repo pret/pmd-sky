@@ -15832,7 +15832,7 @@ MainLoop: ; 0x02065D1C
 	bl InitWanTable
 	bl sub_0201F208
 	bl DirectoryFileMngr_ExtractAllDirectoryFiles
-	bl sub_0204AB18
+	bl InitOptionsVeneer
 	bl InitKaomadoStream
 	bl sub_02025AD8
 	bl sub_02026E78

@@ -8,6 +8,51 @@ extern u8 _0209CE89;
 
 struct options OPTIONS = {};
 
+void InitOptionsVeneer() {
+    InitOptions();
+}
+
+void InitOptions() {
+    struct options *o = &OPTIONS;
+    volatile u8 unused;
+
+    o->touch_screen = TOUCH_SCREEN_USE_ANYWHERE;
+    o->top_screen = TOP_SCREEN_CONTROLS;
+    o->bottom_screen = BOTTOM_SCREEN_CLEAR_MAP;
+    o->grids = 1;
+    o->speed = SPEED_REGULAR;
+    o->far_off_pals = FAR_OFF_PALS_LOOK;
+    o->damage_turn = TRUE;
+    o->d_pad_attack = FALSE;
+    o->check_direction = FALSE;
+    unused = 0;
+    o->frame_type = 0;
+}
+
+void GetOptions(u8* dest_opts_ptr) {
+    u32 idx = 0xA;
+    u8* src_opts_ptr = (u8*)&OPTIONS;
+
+    do {
+        *dest_opts_ptr = *src_opts_ptr;
+        src_opts_ptr += 1;
+        idx -= 1;
+        dest_opts_ptr += 1;
+    } while (idx != 0);
+}
+
+void SetOptions(u8* src_options_ptr) {
+    u32 idx = 0xA;
+    u8* dest_opts_ptr = (u8*)&OPTIONS;
+
+    do {
+        *dest_opts_ptr = *src_options_ptr;
+        src_options_ptr += 1;
+        dest_opts_ptr += 1;
+        idx -= 1;
+    } while (idx != 0);
+}
+
 void SaveOptionsToCtx(u8* ctx) {
     CopyBitsTo(ctx, &OPTIONS.touch_screen, 2);
     CopyBitsTo(ctx, &OPTIONS.top_screen, 3);
@@ -21,14 +66,14 @@ void SaveOptionsToCtx(u8* ctx) {
     }
     CopyBitsTo(ctx, src, 1);
 
-    if (OPTIONS.speed) {
+    if (OPTIONS.speed != SPEED_REGULAR) {
         src = &_0209CE88;
     } else {
         src = &_0209CE89;
     }
     CopyBitsTo(ctx, src, 1);
 
-    if (OPTIONS.far_off_pals) {
+    if (OPTIONS.far_off_pals != FAR_OFF_PALS_SELF) {
         src = &_0209CE88;
     } else {
         src = &_0209CE89;
