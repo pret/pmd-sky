@@ -857,7 +857,7 @@
                                                                                                      100](AI_THROWN_ITEM_DIRECTION_IS_USED,object) found in global dungeon_ai_items.o
                                                                                                      100](AI_THROWN_ITEM_DIRECTIONS,object) found in global dungeon_ai_items.o
                                                                                                     99](GetPossibleAiArcItemTargets,func) found in global dungeon_ai_items_1.o
-                                                                                                    99](TestItemAiFlag,func) found in global item_util_3.o
+                                                                                                    99](TestItemAiFlag,func) found in global item_util_2.o
                                                                                                    98](HasStatusThatPreventsActing,func) found in global status_checks.o
                                                                                                     99](ChooseAiMove,func) found in global dungeon_ai_itcm.o
                                                                                                      100](IsMonsterCornered,func) found in global dungeon_capabilities_4.o
@@ -950,7 +950,7 @@
                                                                           73](GetDoughSeedFlag,func) found in global overlay_29_02338548.o
                                                                          72](ShouldTryEatItem,func) found in global overlay_29_0231E990.o
                                                                          72](ExclusiveItemEffectIsActive__022FAC98,func) found in global overlay_29_022FAC98.o
-                                                                        71](GetItemSpriteId,func) found in global main_0200E864.o
+                                                                        71](GetItemSpriteId,func) found in global item_util_2.o
                                                                       69](ov29_02300FCC,func) found in global overlay_29_02300FCC.o
                                                                        70](DIRECTIONAL_BIT_MASKS__02352788,object) found in global directional_bit_masks.o
                                                                        70](DIRECTIONAL_BIT_MASKS__02352790,object) found in global directional_bit_masks.o
@@ -1075,6 +1075,15 @@
                     19](SetSpecialEpisodeOpenOld,func) found in global special_episode.o
                     19](DebugPrintEventFlagSize,func) found in global script_variable.o
                     19](GetMoveRangeId,func) found in global main_02013B70.o
+                  17](GetItemName,func) found in global item_util_2.o
+                  17](GetItemActionName,func) found in global item_util_2.o
+                  17](GetItemPaletteId,func) found in global item_util_2.o
+                  17](GetItemSellPrice,func) found in global item_util_2.o
+                  17](GetItemBuyPrice,func) found in global item_util_2.o
+                  17](GetThrownItemQuantityLimit,func) found in global item_util_2.o
+                  17](GetItemMoveId,func) found in global item_util_2.o
+                 16](GetItemNameFormatted,func) found in global item_util_2.o
+                  17](SprintfStatic,func) found in local item_util_2.o
                  16](LoadScriptVariableValueString,func) found in global script_variable.o
                   17](LoadScriptVariableValueBytes,func) found in global script_variable.o
                  16](LoadStringFile,func) found in global main_020257FC.o
@@ -2312,36 +2321,37 @@
   0200E858 00000000 .text   $a	(item_util_2.o)
   0200E858 0000003C .text   EnsureValidItem	(item_util_2.o)
   0200E890 00000000 .text   $d	(item_util_2.o)
-  0200E894 00000020 .text   GetItemName	(main_0200E864.o)
-  0200E894 0000023C .text   .text	(main_0200E864.o)
-  0200E894 00000000 .text   $a	(main_0200E864.o)
-  0200E8B4 0000010C .text   GetItemNameFormatted	(main_0200E864.o)
-  0200E9AC 00000000 .text   $d	(main_0200E864.o)
-  0200E9C0 00000000 .text   $a	(main_0200E864.o)
-  0200E9C0 00000028 .text   SprintfStatic__0200E990	(main_0200E864.o)
-  0200E9E8 00000020 .text   GetItemBuyPrice	(main_0200E864.o)
-  0200EA04 00000000 .text   $d	(main_0200E864.o)
-  0200EA08 00000020 .text   GetItemSellPrice	(main_0200E864.o)
-  0200EA08 00000000 .text   $a	(main_0200E864.o)
-  0200EA24 00000000 .text   $d	(main_0200E864.o)
-  0200EA28 00000000 .text   $a	(main_0200E864.o)
-  0200EA28 00000020 .text   GetItemSpriteId	(main_0200E864.o)
-  0200EA44 00000000 .text   $d	(main_0200E864.o)
-  0200EA48 00000020 .text   GetItemPaletteId	(main_0200E864.o)
-  0200EA48 00000000 .text   $a	(main_0200E864.o)
-  0200EA64 00000000 .text   $d	(main_0200E864.o)
-  0200EA68 00000020 .text   GetItemActionName	(main_0200E864.o)
-  0200EA68 00000000 .text   $a	(main_0200E864.o)
-  0200EA84 00000000 .text   $d	(main_0200E864.o)
-  0200EA88 00000000 .text   $a	(main_0200E864.o)
-  0200EA88 00000028 .text   GetThrownItemQuantityLimit	(main_0200E864.o)
-  0200EAAC 00000000 .text   $d	(main_0200E864.o)
-  0200EAB0 00000000 .text   $a	(main_0200E864.o)
-  0200EAB0 00000020 .text   GetItemMoveId	(main_0200E864.o)
-  0200EACC 00000000 .text   $d	(main_0200E864.o)
-  0200EAD0 00000000 .text   $a	(item_util_3.o)
-  0200EAD0 00000090 .text   TestItemAiFlag	(item_util_3.o)
-  0200EB5C 00000000 .text   $d	(item_util_3.o)
+  0200E894 00000020 .text   GetItemName	(item_util_2.o)
+  0200E894 00000000 .text   $a	(item_util_2.o)
+  0200E8B4 00000000 .text   $a	(item_util_2.o)
+  0200E8B4 0000010C .text   GetItemNameFormatted	(item_util_2.o)
+  0200E9AC 00000000 .text   $d	(item_util_2.o)
+  0200E9C0 00000028 .text   SprintfStatic	(item_util_2.o)
+  0200E9C0 00000000 .text   $a	(item_util_2.o)
+  0200E9E8 00000000 .text   $a	(item_util_2.o)
+  0200E9E8 00000020 .text   GetItemBuyPrice	(item_util_2.o)
+  0200EA04 00000000 .text   $d	(item_util_2.o)
+  0200EA08 00000000 .text   $a	(item_util_2.o)
+  0200EA08 00000020 .text   GetItemSellPrice	(item_util_2.o)
+  0200EA24 00000000 .text   $d	(item_util_2.o)
+  0200EA28 00000000 .text   $a	(item_util_2.o)
+  0200EA28 00000020 .text   GetItemSpriteId	(item_util_2.o)
+  0200EA44 00000000 .text   $d	(item_util_2.o)
+  0200EA48 00000000 .text   $a	(item_util_2.o)
+  0200EA48 00000020 .text   GetItemPaletteId	(item_util_2.o)
+  0200EA64 00000000 .text   $d	(item_util_2.o)
+  0200EA68 00000000 .text   $a	(item_util_2.o)
+  0200EA68 00000020 .text   GetItemActionName	(item_util_2.o)
+  0200EA84 00000000 .text   $d	(item_util_2.o)
+  0200EA88 00000000 .text   $a	(item_util_2.o)
+  0200EA88 00000028 .text   GetThrownItemQuantityLimit	(item_util_2.o)
+  0200EAAC 00000000 .text   $d	(item_util_2.o)
+  0200EAB0 00000000 .text   $a	(item_util_2.o)
+  0200EAB0 00000020 .text   GetItemMoveId	(item_util_2.o)
+  0200EACC 00000000 .text   $d	(item_util_2.o)
+  0200EAD0 00000000 .text   $a	(item_util_2.o)
+  0200EAD0 00000090 .text   TestItemAiFlag	(item_util_2.o)
+  0200EB5C 00000000 .text   $d	(item_util_2.o)
   0200EB60 00000000 .text   $a	(main_0200EB30.o)
   0200EB60 00000028 .text   IsItemInTimeDarkness	(main_0200EB30.o)
   0200EB60 000001CC .text   .text	(main_0200EB30.o)
@@ -11022,10 +11032,10 @@
   0209832C 00000000 .rodata _02098038	(main_rodata_020908D4.o)
   02098348 00000000 .rodata _02098054	(main_rodata_020908D4.o)
   02098364 00000000 .rodata _02098070	(main_rodata_020908D4.o)
-  02098380 00000000 .rodata _0209808C	(main_rodata_020908D4.o)
-  02098390 00000000 .rodata _0209809C	(main_rodata_020908D4.o)
-  020983A0 00000000 .rodata _020980AC	(main_rodata_020908D4.o)
-  020983A4 00000000 .rodata _020980B0	(main_rodata_020908D4.o)
+  02098380 00000000 .rodata ITEM_NAME_FORMAT_YELLOW	(main_rodata_020908D4.o)
+  02098390 00000000 .rodata ITEM_NAME_FORMAT_INDIGO	(main_rodata_020908D4.o)
+  020983A0 00000000 .rodata ITEM_NAME_FORMAT_PLAIN	(main_rodata_020908D4.o)
+  020983A4 00000000 .rodata ITEM_NAME_FORMAT_CREAM	(main_rodata_020908D4.o)
   020983B4 00000000 .rodata KECLEON_SHOP_ITEM_TABLE_LISTS_1	(main_rodata_020908D4.o)
   020983C4 00000000 .rodata KECLEON_SHOP_ITEM_TABLE_LISTS_2	(main_rodata_020908D4.o)
   020983DC 00000000 .rodata EXCLUSIVE_ITEM_ATTACK_BOOSTS	(main_rodata_020908D4.o)
@@ -41355,5 +41365,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Dec 28 16:53:51 2025
-# Link end time: Sun Dec 28 16:53:52 2025
+# Link start time: Wed Dec 31 20:04:37 2025
+# Link end time: Wed Dec 31 20:04:38 2025
