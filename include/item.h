@@ -1649,9 +1649,15 @@ struct bag_items {
 
 struct item_data_entry
 {
-    /* 0x0 */ u8 *name;
+    /* 0x0 */ u16 buy_price;
+    /* 0x2 */ u16 sell_price;
     /* 0x4 */ enum item_category category;
-    u8 fill5[0xE - 0x5];
+    /* 0x5 */ u8 sprite_id;
+    u8 fill5[0x8 - 0x6];
+    /* 0x8 */ u16 move_id;
+    /* 0xA */ u8 quantity_limit[2];
+    /* 0xC */ u8 palette_id;
+    /* 0xD */ u8 action_name;
     /* 0xE */ u8 flags;
 };
 

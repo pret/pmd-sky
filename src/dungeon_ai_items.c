@@ -12,7 +12,7 @@
 #include "dungeon_util_static.h"
 #include "item.h"
 #include "item_util.h"
-#include "item_util_3.h"
+#include "item_util_2.h"
 #include "overlay_29_022E1610.h"
 #include "position_util.h"
 
