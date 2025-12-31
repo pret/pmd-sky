@@ -18,7 +18,7 @@ struct ground_move {
     u8 field_0x1;  // Probably padding since it doesn't get initialized
     u16 id; // 0x2
     u8 ginseng;      // 0x4: Ginseng boost
-    u16 field_0x5;  // Probably padding since it doesn't get initialized
+    u8 field_0x5;  // Probably padding since it doesn't get initialized
 };
 
 struct ground_monster {
