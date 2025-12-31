@@ -4,10 +4,10 @@
 #include "main_0202593C.h"
 
 extern struct item_data_entry *ITEM_DATA_TABLE_PTRS[3];
-extern const char ITEM_NAME_FORMAT_CSU;
-extern const char ITEM_NAME_FORMAT_CSZ;
+extern const char ITEM_NAME_FORMAT_YELLOW;
+extern const char ITEM_NAME_FORMAT_INDIGO;
 extern const char ITEM_NAME_FORMAT_PLAIN;
-extern const char ITEM_NAME_FORMAT_CSI;
+extern const char ITEM_NAME_FORMAT_CREAM;
 
 extern char* SprintfStatic__0200E808_EU(char*, const char*, ...);
 extern u8* strcpy(u8*, u8*);
@@ -63,7 +63,7 @@ void GetItemNameFormatted(char* name, s16 item_id, s32 flag1, s32 flag2)
     category = ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][EnsureValidItem(item_id)].category;
     if ((flag2 != 0) || ((u8)(category + 0xF4) <= 2)) {
         if (flag1 != 0) {
-            GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_CSU, raw_name);
+            GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_YELLOW, raw_name);
             return;
         }
         strcpy(name, raw_name);
@@ -71,14 +71,14 @@ void GetItemNameFormatted(char* name, s16 item_id, s32 flag1, s32 flag2)
     }
     if (category == CATEGORY_EXCLUSIVE_ITEMS) {
         if (flag1 != 0) {
-            GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_CSZ, raw_name);
+            GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_INDIGO, raw_name);
             return;
         }
         GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
         return;
     }
     if (flag1 != 0) {
-        GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_CSI, raw_name);
+        GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_CREAM, raw_name);
         return;
 
     }
