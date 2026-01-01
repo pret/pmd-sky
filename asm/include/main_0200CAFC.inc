@@ -25,7 +25,7 @@
 .public CopyBitsFrom
 .public CopyBitsTo
 .public GetDungeonGroup
-.public GetExclusiveItemOffsetEnsureValid
+.public GetExclusiveItemType
 .public GetItemActionName
 .public GetItemBuyPrice
 .public GetItemCategory

@@ -1874,18 +1874,3 @@ SprintfStatic__0200E808_EU: ; 0x0200E808
 	arm_func_end SprintfStatic__0200E808_EU
 #endif
 
-	arm_func_start GetExclusiveItemType
-GetExclusiveItemType: ; 0x0200E760
-	stmdb sp!, {r3, lr}
-	bl GetExclusiveItemOffsetEnsureValid
-	ldr r1, _0200E778 ; =ITEM_DATA_TABLE_PTRS
-#ifdef EUROPE
-	ldr r1, [r1, #4]
-#else
-	ldr r1, [r1]
-#endif
-	ldrb r0, [r1, r0, lsl #2]
-	ldmia sp!, {r3, pc}
-	.align 2, 0
-_0200E778: .word ITEM_DATA_TABLE_PTRS
-	arm_func_end GetExclusiveItemType

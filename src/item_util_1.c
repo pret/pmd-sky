@@ -1,7 +1,21 @@
 #include "item_util_1.h"
 #include "item.h"
 
+struct item_data_entry_alt {
+    u8 type;
+    u16 unk2;
+};
+
 extern struct item_data_entry *ITEM_DATA_TABLE_PTRS[3];
+
+u8 GetExclusiveItemType(s16 item_id) {
+    item_id = GetExclusiveItemOffsetEnsureValid(item_id);
+#ifdef EUROPE
+    return ((struct item_data_entry_alt**) (void**)ITEM_DATA_TABLE_PTRS)[1][item_id].type;
+#else
+    return ((struct item_data_entry_alt**) (void**)ITEM_DATA_TABLE_PTRS)[0][item_id].type;
+#endif
+}
 
 s16 GetExclusiveItemOffsetEnsureValid(s16 item_id) {
     if (item_id < ITEM_PRISM_RUFF || item_id >= NUM_ITEM_IDS) {

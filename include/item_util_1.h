@@ -3,6 +3,7 @@
 
 #include "util.h"
 
+u8 GetExclusiveItemType(s16 item_id);
 s16 GetExclusiveItemOffsetEnsureValid(s16 item_id);
 
 // Checks if an item is valid given its ID.
