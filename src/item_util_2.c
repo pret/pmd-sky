@@ -3,7 +3,7 @@
 #include "item_util_1.h"
 #include "main_0202593C.h"
 
-extern struct item_data_entry *ITEM_DATA_TABLE_PTRS[3];
+extern struct item_tables ITEM_DATA_TABLE_PTRS;
 extern const char ITEM_NAME_FORMAT_YELLOW;
 extern const char ITEM_NAME_FORMAT_INDIGO;
 extern const char ITEM_NAME_FORMAT_PLAIN;
@@ -18,7 +18,7 @@ static void SprintfStatic(char*, const char*, ...);
 enum item_category GetItemCategory(s16 item_id)
 {
     s16 valid_item_id = EnsureValidItem(item_id);
-    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][valid_item_id].category;
+    return ITEM_DATA_TABLE_PTRS.data[valid_item_id].category;
 }
 
 s16 EnsureValidItem(s16 item_id)
@@ -60,7 +60,7 @@ void GetItemNameFormatted(char* name, s16 item_id, s32 flag1, s32 flag2)
     u8* raw_name = StringFromId((u16) (EnsureValidItem(item_id) + 0x1A76));
 #endif
 
-    category = ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][EnsureValidItem(item_id)].category;
+    category = ITEM_DATA_TABLE_PTRS.data[EnsureValidItem(item_id)].category;
     if ((flag2 != 0) || ((u8)(category + 0xF4) <= 2)) {
         if (flag1 != 0) {
             GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_YELLOW, raw_name);
@@ -98,43 +98,43 @@ static void SprintfStatic(char* buf, const char* fmt, ...)
 u16 GetItemBuyPrice(s16 item_id)
 {
     item_id = EnsureValidItem(item_id);
-    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].buy_price;
+    return ITEM_DATA_TABLE_PTRS.data[item_id].buy_price;
 }
 
 u16 GetItemSellPrice(s16 item_id)
 {
     item_id = EnsureValidItem(item_id);
-    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].sell_price;
+    return ITEM_DATA_TABLE_PTRS.data[item_id].sell_price;
 }
 
 u8 GetItemSpriteId(s16 item_id)
 {
     item_id = EnsureValidItem(item_id);
-    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].sprite_id;
+    return ITEM_DATA_TABLE_PTRS.data[item_id].sprite_id;
 }
 
 u8 GetItemPaletteId(s16 item_id)
 {
     item_id = EnsureValidItem(item_id);
-    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].palette_id;
+    return ITEM_DATA_TABLE_PTRS.data[item_id].palette_id;
 }
 
 u8 GetItemActionName(s16 item_id)
 {
     item_id = EnsureValidItem(item_id);
-    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].action_name;
+    return ITEM_DATA_TABLE_PTRS.data[item_id].action_name;
 }
 
 u8 GetThrownItemQuantityLimit(s16 item_id, u8 arg1)
 {
     item_id = EnsureValidItem(item_id);
-    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].quantity_limit[arg1];
+    return ITEM_DATA_TABLE_PTRS.data[item_id].quantity_limit[arg1];
 }
 
 s16 GetItemMoveId(s16 item_id)
 {
     item_id = EnsureValidItem(item_id);
-    return ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].move_id;
+    return ITEM_DATA_TABLE_PTRS.data[item_id].move_id;
 }
 
 bool8 TestItemAiFlag(s16 item_id, s32 flag)
@@ -142,7 +142,7 @@ bool8 TestItemAiFlag(s16 item_id, s32 flag)
     if (flag == 0)
     {
         item_id = EnsureValidItem(item_id);
-        if (ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].flags & ITEM_DATA_FLAG_THROWABLE_AT_ENEMY)
+        if (ITEM_DATA_TABLE_PTRS.data[item_id].flags & ITEM_DATA_FLAG_THROWABLE_AT_ENEMY)
             return TRUE;
         return FALSE;
     }
@@ -150,13 +150,13 @@ bool8 TestItemAiFlag(s16 item_id, s32 flag)
     if (flag == 1)
     {
         item_id = EnsureValidItem(item_id);
-        if (ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].flags & ITEM_DATA_FLAG_THROWABLE_AT_ALLY)
+        if (ITEM_DATA_TABLE_PTRS.data[item_id].flags & ITEM_DATA_FLAG_THROWABLE_AT_ALLY)
             return TRUE;
         return FALSE;
     }
 
     item_id = EnsureValidItem(item_id);
-    if (ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].flags & ITEM_DATA_FLAG_CONSUMABLE)
+    if (ITEM_DATA_TABLE_PTRS.data[item_id].flags & ITEM_DATA_FLAG_CONSUMABLE)
         return TRUE;
     return FALSE;
 }

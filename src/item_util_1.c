@@ -2,12 +2,7 @@
 #include "item_util_1.h"
 #include "item.h"
 
-struct item_data_entry_alt {
-    u8 type;
-    u16 unk2;
-};
-
-extern struct item_data_entry *ITEM_DATA_TABLE_PTRS[3];
+extern struct item_tables ITEM_DATA_TABLE_PTRS;
 
 extern s32 vsprintf(u8* str, const u8* format, va_list ap);
 
@@ -22,11 +17,7 @@ void SprintfStatic__0200E808_EU(char* buf, const char* fmt, ...)
 
 u8 GetExclusiveItemType(s16 item_id) {
     item_id = GetExclusiveItemOffsetEnsureValid(item_id);
-#ifdef EUROPE
-    return ((struct item_data_entry_alt**) (void**)ITEM_DATA_TABLE_PTRS)[1][item_id].type;
-#else
-    return ((struct item_data_entry_alt**) (void**)ITEM_DATA_TABLE_PTRS)[0][item_id].type;
-#endif
+    return ITEM_DATA_TABLE_PTRS.exclusive_data[item_id].type;
 }
 
 s16 GetExclusiveItemOffsetEnsureValid(s16 item_id) {
@@ -41,7 +32,7 @@ s16 GetExclusiveItemOffsetEnsureValid(s16 item_id) {
 
 bool8 IsItemValid(s16 item_id)
 {
-    if (ITEM_DATA_TABLE_PTRS[ITEM_DATA_TABLE_PTRS_INDEX][item_id].flags & ITEM_DATA_FLAG_VALID)
+    if (ITEM_DATA_TABLE_PTRS.data[item_id].flags & ITEM_DATA_FLAG_VALID)
         return TRUE;
 
     return FALSE;
@@ -49,9 +40,5 @@ bool8 IsItemValid(s16 item_id)
 
 s16 GetExclusiveItemParameter(s16 item_id) {
     item_id = GetExclusiveItemOffsetEnsureValid(item_id);
-#ifdef EUROPE
-    return ((struct item_data_entry_alt**) (void**)ITEM_DATA_TABLE_PTRS)[1][item_id].unk2;
-#else
-    return ((struct item_data_entry_alt**) (void**)ITEM_DATA_TABLE_PTRS)[0][item_id].unk2;
-#endif
+    return ITEM_DATA_TABLE_PTRS.exclusive_data[item_id].unk2;
 }
