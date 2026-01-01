@@ -94,5 +94,6 @@ struct dungeon_init {
 
 void sub_0204E974(s8 arg0);
 void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx);
+s32 IsNoLossPenaltyDungeon(s16 dungeon_id);
 
 #endif //PMDSKY_DUNGEON_INIT
