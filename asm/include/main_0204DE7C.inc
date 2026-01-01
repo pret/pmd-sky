@@ -40,7 +40,6 @@
 .public sub_020509BC
 .public sub_0205633C
 .public sub_02056360
-.public sub_0205B77C
 .public sub_0205BB7C
 .public sub_0205BD14
 .public sub_0205F00C

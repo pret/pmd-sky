@@ -4,6 +4,12 @@
 #include "common.h"
 #include "util.h"
 
+// Unknown struct used during dungeon initialisation
+struct unk {
+    u8 padding[4];
+    u8 unk4;
+};
+
 // Unknown struct included in the dungeon_init struct
 struct unk_dungeon_init {
     u8 unk0[232];
@@ -32,7 +38,7 @@ struct dungeon_init {
     bool8 hidden_land_flag;          // 0xB: Copied into dungeon::hidden_land_flag
     bool8 skip_faint_animation_flag; // 0xC: Copied into dungeon::skip_faint_animation_flag
     // 0xD: Copied into dungeon::dungeon_objective. Read as a signed byte (?).
-    /* struct dungeon_objective_8 */ u8 dungeon_objective;
+    u8 dungeon_objective;
     s8 field_0xE;
     bool8 has_guest_pokemon; // 0xF: If true, a guest pokémon will be added to your team
     bool8 send_help_item;    // 0x10: If true, you recive an item at the start of the dungeon
@@ -86,6 +92,7 @@ struct dungeon_init {
     u8 field_0x1AB;
 };
 
+void sub_0204E974(s8 arg0);
 void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx);
 
 #endif //PMDSKY_DUNGEON_INIT

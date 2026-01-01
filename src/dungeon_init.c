@@ -4,6 +4,10 @@
 #include "progression.h"
 #include "script_variable.h"
 
+extern s8 _022AB4F8;
+extern u8 _022AB510;
+extern u8 _022AB5A8;
+extern struct dungeon_init PENDING_DUNGEON_ID;
 extern u8* GUEST_MONSTER_BANETTE;
 extern u8* GUEST_MONSTER_SKORUPI;
 extern u8* GUEST_MONSTER_BIDOOF;
@@ -23,10 +27,46 @@ extern u8* GUEST_MONSTER_BIDOOF_4;
 extern u8* GUEST_MONSTER_SHAYMIN_LAND;
 extern u8* GUEST_MONSTER_SNOVER_2;
 
+struct unk* sub_0205B77C();
+void sub_0205BB7C(void*, s8);
+void sub_0205BD14(void*, s8);
 extern s32 GetDungeonModeSpecial(s16);
 extern s8 IsNoLossPenaltyDungeon(s16);
 extern void AddGuestMonster(void*, u8, void*);
 extern s8 DungeonSwapIdxToId(s16);
+
+// Appears to be initialising a dungeon for a special case not
+// handled by InitDungeonInit
+void sub_0204E974(s8 arg0) {
+    struct unk* unk0;
+
+    unk0 = sub_0205B77C();
+    PENDING_DUNGEON_ID.dungeon_objective = 2;
+    PENDING_DUNGEON_ID.field_0xE = -1;
+    // Dungeon index 0xD6 maps to dungeon ID 0 in DUNGEON_SWAP_ID_TABLE
+    PENDING_DUNGEON_ID.dungeon_idx = 0xD6; 
+    PENDING_DUNGEON_ID.field_0x12 = arg0;
+    sub_0205BB7C(&_022AB510, arg0);
+    sub_0205BD14(&_022AB5A8, arg0);
+    PENDING_DUNGEON_ID.has_guest_pokemon = FALSE;
+    PENDING_DUNGEON_ID.send_help_item = FALSE;
+    PENDING_DUNGEON_ID.field_0x4 = 0;
+    PENDING_DUNGEON_ID.show_rescues_left = FALSE;
+    PENDING_DUNGEON_ID.nonstory_flag = GetResolvedPerformanceProgressFlag(PERFORMANCE_PROGRESS_FLAG_LEADER_SWITCH_ENABLED);
+    PENDING_DUNGEON_ID.recruiting_enabled = FALSE;
+    PENDING_DUNGEON_ID.show_potential_recruits = GetResolvedPerformanceProgressFlag(PERFORMANCE_PROGRESS_FLAG_EVOLUTION_ENABLED);
+    PENDING_DUNGEON_ID.show_team_name = GetResolvedPerformanceProgressFlag(PERFORMANCE_PROGRESS_FLAG_SHOW_TEAM_NAME);
+    PENDING_DUNGEON_ID.send_home_disabled = FALSE;
+    PENDING_DUNGEON_ID.hidden_land_flag = FALSE;
+    PENDING_DUNGEON_ID.force_disable_recruiting = FALSE;
+    PENDING_DUNGEON_ID.skip_faint_animation_flag = FALSE;
+    // 0xDA is very close to the size of DUNGEON_SWAP_ID_TABLE, which has 0xDB entries
+    if ((u32) (u8) (unk0->unk4 + 0xDA) <= 5) {
+        PENDING_DUNGEON_ID.nonstory_flag = FALSE;
+        PENDING_DUNGEON_ID.force_disable_recruiting = TRUE;
+    }
+    _022AB4F8 = 1;
+}
 
 void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx) 
 {
