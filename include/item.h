@@ -1,6 +1,7 @@
 #ifndef PMDSKY_ITEM_H
 #define PMDSKY_ITEM_H
 
+#include "file.h"
 #include "util.h"
 
 // Item ID
@@ -1666,16 +1667,17 @@ struct item_exclusive_data {
     u16 unk2;
 };
 
+struct item_tables {
+
 #ifdef EUROPE
-struct item_tables {
     struct item_data *data;
     struct item_exclusive_data *exclusive_data;
-};
 #else
-struct item_tables {
     struct item_exclusive_data *exclusive_data;
     struct item_data *data;
-};
 #endif
+
+    struct iovec langFile;
+};
 
 #endif //PMDSKY_ITEM_H

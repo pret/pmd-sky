@@ -35,11 +35,11 @@
 .public _02092EBC
 .public _02092ED0
 .public _02094D00
-.public _020983F4
-.public _02098404
-.public _02098414
-.public _02098424
-.public _02098434
+.public ST_I2N_I_BIN
+.public ST_I2N_E_BIN
+.public ST_I2N_S_BIN
+.public ST_I2N_G_BIN
+.public ST_I2N_F_BIN
 .public _02098DAC
 .public _02098DC8
 .public _02098EB0

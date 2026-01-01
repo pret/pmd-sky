@@ -4,6 +4,8 @@
 #include "item.h"
 #include "util.h"
 
+void LoadItemPspi2n(void);
+
 #ifdef EUROPE
 void SprintfStatic__0200E808_EU(char* buf, const char* fmt, ...);
 #endif

@@ -1,4 +1,5 @@
 #include "debug.h"
+#include "main_0200330C.h"
 #include "main_0202593C.h"
 #include "item.h"
 #include "item_util_1.h"
@@ -16,7 +17,14 @@ extern const char ITEM_NAME_FORMAT_YELLOW;
 extern const char ITEM_NAME_FORMAT_INDIGO;
 extern const char ITEM_NAME_FORMAT_PLAIN;
 extern const char ITEM_NAME_FORMAT_CREAM;
+extern const char ITEM_P_BIN;
+extern const char ITEM_S_P_BIN;
+extern const char ITEM_ST_I2N_BIN;
+extern char* ITEM_LANG_FILE_ARRAY[];
 
+extern void LoadFileFromRom(struct iovec* iov, const char* filepath, u32 flags);
+extern void HandleSir0Translation(void*, void*);
+extern s32 GetLanguage();
 extern u8* strcpy(u8*, u8*);
 extern s32 vsprintf(u8* str, const u8* format, va_list ap);
 
@@ -24,8 +32,28 @@ static s16 GetExclusiveItemOffsetEnsureValid(s16 item_id);
 static s16 EnsureValidItem(s16 item_id);
 static void SprintfStatic(char*, const char*, ...);
 
+
+void LoadItemPspi2n(void) {
+    struct iovec iov;
+
+    LoadFileFromRom(&iov, &ITEM_P_BIN, 1);
+    HandleSir0Translation(&ITEM_DATA_TABLE_PTRS.data, iov.iov_base);
+    LoadFileFromRom(&iov, &ITEM_S_P_BIN, 1);
+    HandleSir0Translation(&ITEM_DATA_TABLE_PTRS.exclusive_data, iov.iov_base);
+    if (PointsToZero(&ITEM_DATA_TABLE_PTRS.langFile) != 0) {
+        ZInit8(&ITEM_DATA_TABLE_PTRS.langFile);
 #ifdef EUROPE
-void SprintfStatic__0200E808_EU(char* buf, const char* fmt, ...)
+        char buf[256];
+        SprintfStatic(buf, &ITEM_ST_I2N_BIN, ITEM_LANG_FILE_ARRAY[GetLanguage()]);
+        LoadFileFromRom(&ITEM_DATA_TABLE_PTRS.langFile, buf, 1);
+#else
+        LoadFileFromRom(&ITEM_DATA_TABLE_PTRS.langFile, &ITEM_ST_I2N_BIN, 1);
+#endif
+    }
+}
+
+#ifdef EUROPE
+static void SprintfStatic(char* buf, const char* fmt, ...)
 {
     va_list args;
     va_start(args, fmt);
@@ -83,11 +111,6 @@ u8* GetItemName(s16 item_id) {
     return StringFromId((u16)(valid_item_id + ITEM_NAME_OFFSET));
 }
 
-#ifdef EUROPE
-#define GET_ITEM_NAME_FORMATTED_SPRINTF SprintfStatic__0200E808_EU
-#else
-#define GET_ITEM_NAME_FORMATTED_SPRINTF SprintfStatic
-#endif
 void GetItemNameFormatted(char* name, s16 item_id, s32 flag1, s32 flag2)
 {
     enum item_category category;
@@ -97,7 +120,7 @@ void GetItemNameFormatted(char* name, s16 item_id, s32 flag1, s32 flag2)
     category = ITEM_DATA_TABLE_PTRS.data[EnsureValidItem(item_id)].category;
     if ((flag2 != 0) || ((u8)(category + 0xF4) <= 2)) {
         if (flag1 != 0) {
-            GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_YELLOW, raw_name);
+            SprintfStatic(name, &ITEM_NAME_FORMAT_YELLOW, raw_name);
             return;
         }
         strcpy(name, raw_name);
@@ -105,18 +128,18 @@ void GetItemNameFormatted(char* name, s16 item_id, s32 flag1, s32 flag2)
     }
     if (category == CATEGORY_EXCLUSIVE_ITEMS) {
         if (flag1 != 0) {
-            GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_INDIGO, raw_name);
+            SprintfStatic(name, &ITEM_NAME_FORMAT_INDIGO, raw_name);
             return;
         }
-        GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
+        SprintfStatic(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
         return;
     }
     if (flag1 != 0) {
-        GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_CREAM, raw_name);
+        SprintfStatic(name, &ITEM_NAME_FORMAT_CREAM, raw_name);
         return;
 
     }
-    GET_ITEM_NAME_FORMATTED_SPRINTF(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
+    SprintfStatic(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
     return;
 }
 
