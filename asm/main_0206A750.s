@@ -3,35 +3,6 @@
 
 	.text
 
-	arm_func_start GetDungeonModeSpecial
-GetDungeonModeSpecial: ; 0x0206A76C
-	stmdb sp!, {r3, lr}
-	cmp r0, #0xd6
-	moveq r0, #4
-	ldmeqia sp!, {r3, pc}
-	cmp r0, #0xb4
-	blt _0206A790
-	cmp r0, #0xd3
-	movle r0, #3
-	ldmleia sp!, {r3, pc}
-_0206A790:
-	cmp r0, #0xd7
-	moveq r0, #2
-	ldmeqia sp!, {r3, pc}
-	cmp r0, #0xd8
-	moveq r0, #3
-	ldmeqia sp!, {r3, pc}
-	bl GetDungeonMode
-	cmp r0, #1
-	moveq r0, #1
-	ldmeqia sp!, {r3, pc}
-	sub r0, r0, #2
-	cmp r0, #1
-	movls r0, #2
-	movhi r0, #1
-	ldmia sp!, {r3, pc}
-	arm_func_end GetDungeonModeSpecial
-
 	arm_func_start sub_0206A7CC
 sub_0206A7CC: ; 0x0206A7CC
 	stmdb sp!, {r4, lr}

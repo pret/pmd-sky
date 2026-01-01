@@ -3,30 +3,6 @@
 
 	.text
 
-	arm_func_start IsNoLossPenaltyDungeon
-IsNoLossPenaltyDungeon: ; 0x0204EFE0
-	stmdb sp!, {r4, lr}
-	cmp r0, #0x1a
-	mov r4, #0
-	cmpne r0, #0x79
-	beq _0204F000
-	cmp r0, #0x7d
-	beq _0204F008
-	b _0204F01C
-_0204F000:
-	mov r4, #1
-	b _0204F01C
-_0204F008:
-	mov r0, r4
-	mov r1, #0x10
-	bl LoadScriptVariableValue
-	cmp r0, #0
-	moveq r4, #1
-_0204F01C:
-	mov r0, r4
-	ldmia sp!, {r4, pc}
-	arm_func_end IsNoLossPenaltyDungeon
-
 	arm_func_start sub_0204F024
 sub_0204F024: ; 0x0204F024
 	ldr r1, _0204F030 ; =PENDING_DUNGEON_ID

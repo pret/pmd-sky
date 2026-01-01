@@ -1,4 +1,5 @@
 #include "dungeon_init.h"
+#include "dungeon_init_2.h"
 #include "enums.h"
 #include "game_mode.h"
 #include "progression.h"
@@ -30,10 +31,7 @@ extern u8* GUEST_MONSTER_SNOVER_2;
 struct unk* sub_0205B77C();
 void sub_0205BB7C(void*, s8);
 void sub_0205BD14(void*, s8);
-extern s32 GetDungeonModeSpecial(s16);
-extern s8 IsNoLossPenaltyDungeon(s16);
 extern void AddGuestMonster(void*, u8, void*);
-extern s8 DungeonSwapIdxToId(s16);
 
 // Appears to be initialising a dungeon for a special case not
 // handled by InitDungeonInit
@@ -260,4 +258,23 @@ void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx)
     }
     dg_init->field_0x4 = 0;
     dg_init->show_rescues_left = FALSE;
+}
+
+s32 IsNoLossPenaltyDungeon(s16 dungeon_id) {
+    s32 return_val = FALSE;
+    switch(dungeon_id) {
+        case DUNGEON_CRYSTAL_LAKE:
+        case DUNGEON_5TH_STATION_CLEARING:
+            return_val = TRUE;
+            break;
+        case DUNGEON_DEEP_STAR_CAVE_TEAM_ROGUE:
+            if(LoadScriptVariableValue(NULL, DUNGEON_STEAM_CAVE_PEAK) == 0) {
+                return_val = TRUE;
+            }
+            break;
+        default:
+            return_val = FALSE;
+    }
+
+    return return_val;
 }
