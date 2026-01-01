@@ -3,11 +3,17 @@
 
 #include "util.h"
 
+#ifdef EUROPE
+void SprintfStatic__0200E808_EU(char* buf, const char* fmt, ...);
+#endif
+
 u8 GetExclusiveItemType(s16 item_id);
 s16 GetExclusiveItemOffsetEnsureValid(s16 item_id);
 
 // Checks if an item is valid given its ID.
 // In particular, checks if the "is valid" flag is set on its item_p.bin entry.
 bool8 IsItemValid(s16 item_id);
+
+s16 GetExclusiveItemParameter(s16 item_id);
 
 #endif //PMDSKY_ITEM_UTIL_1_H

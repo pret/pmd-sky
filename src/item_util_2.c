@@ -9,7 +9,7 @@ extern const char ITEM_NAME_FORMAT_INDIGO;
 extern const char ITEM_NAME_FORMAT_PLAIN;
 extern const char ITEM_NAME_FORMAT_CREAM;
 
-extern char* SprintfStatic__0200E808_EU(char*, const char*, ...);
+// extern char* SprintfStatic__0200E808_EU(char*, const char*, ...);
 extern u8* strcpy(u8*, u8*);
 extern s32 vsprintf(u8* str, const u8* format, va_list ap);
 

@@ -50,6 +50,7 @@
 .public MultiplyByFixedPoint
 .public PointsToZero
 .public RandRangeSafe
+.public SprintfStatic__0200E808_EU
 .public strcpy
 .public strncpy
 .public sub_0200EB64

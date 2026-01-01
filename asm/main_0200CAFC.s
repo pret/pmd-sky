@@ -1857,20 +1857,3 @@ _0200E800: .word _020AFF88_EU
 #endif
 _0200E75C: .word _02098070
 	arm_func_end LoadItemPspi2n
-
-#ifdef EUROPE
-	arm_func_start SprintfStatic__0200E808_EU
-SprintfStatic__0200E808_EU: ; 0x0200E808
-	stmdb sp!, {r0, r1, r2, r3}
-	stmdb sp!, {r3, lr}
-	add r2, sp, #0xc
-	bic r2, r2, #3
-	ldr r1, [sp, #0xc]
-	add r2, r2, #4
-	bl vsprintf
-	ldmia sp!, {r3, lr}
-	add sp, sp, #0x10
-	bx lr
-	arm_func_end SprintfStatic__0200E808_EU
-#endif
-
