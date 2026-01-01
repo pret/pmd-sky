@@ -1889,27 +1889,3 @@ GetExclusiveItemType: ; 0x0200E760
 	.align 2, 0
 _0200E778: .word ITEM_DATA_TABLE_PTRS
 	arm_func_end GetExclusiveItemType
-
-	arm_func_start GetExclusiveItemOffsetEnsureValid
-GetExclusiveItemOffsetEnsureValid: ; 0x0200E77C
-	stmdb sp!, {r4, lr}
-	mov r4, r0
-	cmp r4, #0x1bc
-	blt _0200E798
-	ldr r1, _0200E7BC ; =0x00000578
-	cmp r4, r1
-	blt _0200E7A0
-_0200E798:
-	mov r0, #0x55
-	ldmia sp!, {r4, pc}
-_0200E7A0:
-	bl IsItemValid
-	cmp r0, #0
-	subne r0, r4, #0x1bc
-	movne r0, r0, lsl #0x10
-	movne r0, r0, asr #0x10
-	moveq r0, #0x55
-	ldmia sp!, {r4, pc}
-	.align 2, 0
-_0200E7BC: .word 0x00000578
-	arm_func_end GetExclusiveItemOffsetEnsureValid

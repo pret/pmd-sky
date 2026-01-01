@@ -3,6 +3,8 @@
 
 #include "util.h"
 
+s16 GetExclusiveItemOffsetEnsureValid(s16 item_id);
+
 // Checks if an item is valid given its ID.
 // In particular, checks if the "is valid" flag is set on its item_p.bin entry.
 bool8 IsItemValid(s16 item_id);
