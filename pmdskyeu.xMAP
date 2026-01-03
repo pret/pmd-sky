@@ -38666,7 +38666,6 @@
   02339118 00000018 .text   SetDoughSeedFlag	(overlay_29_02338548.o)
   0233912C 00000000 .text   $d	(overlay_29_02338548.o)
   02339130 00000000 .text   $a	(overlay_29_02338560.o)
-  02339130 00000064 .text   .text	(overlay_29_02338560.o)
   02339130 00000064 .text   TrySpawnDoughSeedPoke	(overlay_29_02338560.o)
   0233918C 00000000 .text   $d	(overlay_29_02338560.o)
   02339194 00000000 .text   $a	(overlay_29_02338604.o)
@@ -41173,5 +41172,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Thu Jan 01 22:47:45 2026
-# Link end time: Thu Jan 01 22:47:46 2026
+# Link start time: Sat Jan 03 20:46:42 2026
+# Link end time: Sat Jan 03 20:46:43 2026
