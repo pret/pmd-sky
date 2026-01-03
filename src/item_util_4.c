@@ -4,9 +4,6 @@
 #include "item_util.h"
 #include "item_util_2.h"
 
-extern s32 GetItemSellPrice(s16);
-extern s32 GetItemBuyPrice(s16);
-extern s32 GetThrownItemQuantityLimit(s16, s32);
 extern s16 RandRangeSafe(s32, s32);
 extern s16 _020A18BC[10];
 
