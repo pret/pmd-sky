@@ -9,11 +9,7 @@ void ov29_02344E88(s16 *param_1);
 void TrySpawnDoughSeedPoke(void)
 {
     s16 arr[2];
-#ifdef JAPAN
-    if (DUNGEON_PTR[0]->traps[24].id == TRAP_NULL_TRAP) {
-#else
-    if (DUNGEON_PTR[0]->traps[65].id == TRAP_NULL_TRAP) {
-#endif
+    if (!DUNGEON_PTR[0]->gen_info.dough_seed_extra_poke_flag) {
         return;
     }
     if (!IsFullFloorFixedRoom()) {
@@ -22,11 +18,7 @@ void TrySpawnDoughSeedPoke(void)
         arr[1] = ov29_02352B5C[1];
         ov29_02344E88(arr);
     } 
-#ifdef JAPAN
-    DUNGEON_PTR[0]->traps[24].id = TRAP_NULL_TRAP;
-#else
-    DUNGEON_PTR[0]->traps[65].id = TRAP_NULL_TRAP;
-#endif
+    DUNGEON_PTR[0]->gen_info.dough_seed_extra_poke_flag = FALSE;
 }
 
 
