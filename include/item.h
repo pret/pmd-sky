@@ -1661,4 +1661,10 @@ struct item_data_entry
     /* 0xE */ u8 flags;
 };
 
+struct bulk_item
+{
+    /* 0x0 */ s16 id;
+    /* 0x2 */ u16 quantity;
+};
+
 #endif //PMDSKY_ITEM_H
