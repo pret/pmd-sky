@@ -168,7 +168,11 @@
                                            42](GetMoneyStored,func) found in global main_0200EDFC.o
                                             43](GetItemCategory,func) found in global item_util_2.o
                                              44](EnsureValidItem,func) found in global item_util_2.o
+                                            43](InitBulkItem,func) found in global item_util_4.o
+                                             44](IsThrownItem,func) found in global item_util.o
+                                             44](GetThrownItemQuantityLimit,func) found in global item_util_2.o
                                             43](IsItemInTimeDarkness,func) found in global main_0200EB30.o
+                                            43](IsTreasureBox,func) found in global item_util_4.o
                                             43](AddMoneyCarried,func) found in global main_0200ED1C.o
                                             43](GetCurrentBagCapacity,func) found in global main_0200EDC0.o
                                              44](GetExecuteSpecialEpisodeType,func) found in global special_episode.o
@@ -176,6 +180,7 @@
                                              44](GetBagCapacity,func) found in global main_020517D4.o
                                               45](BAG_CAPACITY_TABLE,object) found in global main_020517D4.o
                                              44](GetBagCapacitySpecialEpisode,func) found in global main_020517D4.o
+                                            43](IsStorableItem,func) found in global item_util_4.o
                                             43](GetItemCategoryVeneer,func) found in global item_util.o
                                            42](GetDebugSpecialEpisodeNumber,func) found in global special_episode.o
                                            42](GetSpecialEpisodeType,func) found in global special_episode.o
@@ -185,7 +190,9 @@
                                          40](sub_02011AB8,func) found in global main_02010FC4.o
                                           41](GetType,func) found in global main_0205283C.o
                                           41](RandRange,func) found in global main_0200224C.o
+                                          41](IsTicketItem,func) found in global item_util_4.o
                                           41](IQ_GUMMI_GAIN_TABLE,notype) found in global main_rodata_020A20B1.o
+                                          41](IsGummi,func) found in global item_util.o
                                           41](ZINC_STAT_BOOST,notype) found in global overlay_10_rodata_022C464C.o
                                           41](PROTEIN_STAT_BOOST,notype) found in global overlay_10_022C4394.o
                                            42](UpdateInventoryMenu,func) found in global overlay_10_022BCC7C.o
@@ -295,6 +302,7 @@
                                                                                78](LoadMonsterSpriteInner,func) found in global overlay_29_022F740C.o
                                                                                 79](DirectoryFileMngr_GetDirectoryFileSize,func) found in global directory_file_mngr.o
                                                                                 79](GetSpriteIndex__020526EC,func) found in global main_020526EC.o
+                                                                                79](GendersEqualNotGenderless,func) found in global main_02054DC4.o
                                                                               77](EntityIsValid__022F7364,func) found in global overlay_29_022F7364.o
                                                                               77](ov29_0231B4AC,func) found in global overlay_29_0231B33C.o
                                                                                78](APPLES_AND_BERRIES_ITEM_IDS,notype) found in global overlay_10_rodata_022C490C.o
@@ -341,6 +349,7 @@
                                                                                            90](SetMonsterActionFields,func) found in global dungeon_action.o
                                                                                            90](RemoveUsedItem,func) found in global overlay_29_022EB44C.o
                                                                                             91](RemoveGroundItem,func) found in global overlay_29_023456BC.o
+                                                                                            91](IsHM,func) found in global item_util.o
                                                                                             91](GetItemInfo,func) found in global overlay_29_022E1610.o
                                                                                            90](ov31_0238619C,func) found in global overlay_31_023838E4.o
                                                                                             91](.rodata,section) found in local overlay_31_023838E4.o
@@ -425,6 +434,8 @@
                                                                                                94](InitMenu,func) found in global main_020348E4.o
                                                                                              92](DisplayMessage,func) found in global overlay_29_0234CA84.o
                                                                                              92](InitMove,func) found in global moves_1.o
+                                                                                             92](GetItemMoveId16,func) found in global item_util.o
+                                                                                              93](GetItemMoveId,func) found in global item_util_2.o
                                                                                              92](GetCheckDirectionOption,func) found in global options.o
                                                                                              92](ov29_0231DD60,func) found in global overlay_29_0231CBEC.o
                                                                                              92](ov31_0238367C,func) found in global overlay_31_0238367C.o
@@ -489,6 +500,7 @@
                                                                                                        102](ItemIsActive__0230F810,func) found in global overlay_29_0230F810.o
                                                                                                        102](EntityIsValid__0230F008,func) found in global dungeon_ai_items_1.o
                                                                                                        102](GetExclusiveItemForMonsterFromBag,func) found in global main_02010FC4.o
+                                                                                                       102](IsAuraBow,func) found in global item_util.o
                                                                                                        102](UseThrowableItem,func) found in global overlay_29_022F52B0.o
                                                                                                         103](EntityIsValid__022F528C,func) found in global overlay_29_022F528C.o
                                                                                                         103](HandleCurvedProjectileThrow,func) found in global dungeon_projectile_throw.o
@@ -547,6 +559,7 @@
                                                                                                                 111](sub_02003A40,func) found in global main_020038D8.o
                                                                                                                 111](HandleMenus,func) found in global main_02034974.o
                                                                                                                  112](StrcpySimple,func) found in global main_020251AC.o
+                                                                                                                 112](sub_02054F18,func) found in global main_02054DC4.o
                                                                                                                  112](sub_0204E3C8,func) found in global main_0204DE7C.o
                                                                                                                  112](GetStringFromFileVeneer,func) found in global main_0202593C.o
                                                                                                                  112](ov11_022E6E68,func) found in global overlay_11.o
@@ -578,6 +591,11 @@
                                                                                                                      116](ov22_0238D800,func) found in global overlay_22.o
                                                                                                                       117](.data,section) found in local overlay_22.o
                                                                                                                       117](.rodata,section) found in local overlay_22.o
+                                                                                                                      117](IsShoppableItem,func) found in global item_util_4.o
+                                                                                                                       118](GetItemSellPrice,func) found in global item_util_2.o
+                                                                                                                       118](GetItemBuyPrice,func) found in global item_util_2.o
+                                                                                                                      117](InitStandardItem,func) found in global item_util_4.o
+                                                                                                                       118](InitItem,func) found in global item_util_4.o
                                                                                                                      116](SwapShopMainManager,func) found in global overlay_21.o
                                                                                                                       117](.rodata,section) found in local overlay_21.o
                                                                                                                       117](.data,section) found in local overlay_21.o
@@ -677,6 +695,7 @@
                                                                                                                       117](ExitOverlay13,func) found in global overlay_13_EntryOverlay13.o
                                                                                                                     115](StrncpySimpleNoPad,func) found in global main_020251AC.o
                                                                                                                     115](SaveScriptVariableValueBytes,func) found in global script_variable.o
+                                                                                                                    115](sub_0200CF6C,func) found in global item_util_4.o
                                                                                                                     115](Debug_GetLogFlag,func) found in global debug.o
                                                                                                                     115](GetSpriteIndex__02052724,func) found in global main_020526EC.o
                                                                                                                     115](ov10_022C3890,func) found in global overlay_10_022C2588.o
@@ -689,6 +708,7 @@
                                                                                                                       117](.bss,section) found in local overlay_34.o
                                                                                                                       117](sub_0200383C,func) found in global main_0200383C.o
                                                                                                                      116](MemsetSimple,func) found in global main_0200330C.o
+                                                                                                                     116](IsLosableItem,func) found in global item_util_4.o
                                                                                                                      116](InitEventFlagScriptVars,func) found in global script_variable.o
                                                                                                                      116](ov10_022DC224,notype) found in global overlay_10_022C5938.o
                                                                                                                     115](ov11_022EC240,func) found in global ground_bg.o
@@ -804,6 +824,7 @@
                                                                                                                     115](CanMonsterMoveInDirection,func) found in global dungeon_capabilities_3.o
                                                                                                                      116](DIRECTIONAL_BIT_MASKS__02352798,object) found in global directional_bit_masks.o
                                                                                                                     115](ov29_023085DC,func) found in global overlay_29_023085DC.o
+                                                                                                                     116](GendersNotEqualNotGenderless,func) found in global main_02054DC4.o
                                                                                                                      116](HasTypeAffectedByGravity,func) found in global overlay_29_02301E88.o
                                                                                                                      116](HasLowHealth,func) found in global dungeon_logic_4.o
                                                                                                                      116](CategoryIsNotPhysical,func) found in global overlay_29_0231EA04.o
@@ -947,12 +968,14 @@
                                                                                                           105](IsMonster__0231B318,func) found in global overlay_29_0231B318.o
                                                                                                          104](ItemIsActive__02311034,func) found in global overlay_29_02311010.o
                                                                                                     99](GetRegenSpeed,func) found in global main_0205283C.o
+                                                                                                 96](IsNotMoney,func) found in global item_util.o
                                                                                                  96](ItemIsActive__022EE318,func) found in global overlay_29_022EE348.o
                                                                                              92](ov31_02382E08,func) found in global overlay_31_02382820.o
                                                                                              92](EntryOverlay31,func) found in global overlay_31_02382820.o
                                                                                             91](ov29_022E1618,func) found in global overlay_29_022E1618.o
                                                                                             91](ov31_023837C8,func) found in global overlay_31_02383880.o
                                                                                              92](ov31_02383768,func) found in global overlay_31_02383880.o
+                                                                                            91](IsItemUsableNow,func) found in global item_util_4.o
                                                                                             91](EntityIsValidOverlay31,func) found in global overlay_31_02383478.o
                                                                                             91](ov31_02383854,func) found in global overlay_31_02383880.o
                                                                                             91](ov31_02383478,func) found in global overlay_31_02383478.o
@@ -965,6 +988,7 @@
                                                                                            90](EntityIsValid__0231CBC8,func) found in global overlay_29_0231CBC8.o
                                                                                            90](SetDoughSeedFlag,func) found in global overlay_29_02338548.o
                                                                                            90](GetDoughSeedFlag,func) found in global overlay_29_02338548.o
+                                                                                           90](IsEdible,func) found in global item_util.o
                                                                                           89](ShouldTryEatItem,func) found in global overlay_29_0231E990.o
                                                                                           89](ExclusiveItemEffectIsActive__022FAC98,func) found in global overlay_29_022FAC98.o
                                                                                          88](GetItemSpriteId,func) found in global item_util_2.o
@@ -1013,6 +1037,7 @@
                                               45](GetWeightMultiplier,func) found in global main_0205283C.o
                                               45](ApplyOffensiveStatMultiplier,func) found in global move_orb_effects.o
                                               45](ApplyDefensiveStatMultiplier,func) found in global move_orb_effects.o
+                                            43](GendersEqual,func) found in global main_02054DC4.o
                                           41](GetExclusiveItemParameter,func) found in global main_0200E7E8.o
                                         39](LoadOptionsFromCtx,func) found in global options.o
                                         39](SaveOptionsToCtx,func) found in global options.o
@@ -1079,6 +1104,7 @@
                           25](DirectoryFileMngr_ExtractAllDirectoryFiles,func) found in global directory_file_mngr.o
                            26](DirectoryFile_ExtractDirectoryFile,func) found in global directory_file.o
                           25](LoadTblTalk,func) found in global main_0202593C.o
+                          25](IsValidTargetItem,func) found in global item_util_4.o
                           25](GetCategoryString,func) found in global get_category_string.o
                           25](CanEvolve,func) found in global main_0205283C.o
                     19](RestoreScriptVariableValues,func) found in global script_variable.o
@@ -1094,10 +1120,6 @@
                   17](GetItemName,func) found in global item_util_2.o
                   17](GetItemActionName,func) found in global item_util_2.o
                   17](GetItemPaletteId,func) found in global item_util_2.o
-                  17](GetItemSellPrice,func) found in global item_util_2.o
-                  17](GetItemBuyPrice,func) found in global item_util_2.o
-                  17](GetThrownItemQuantityLimit,func) found in global item_util_2.o
-                  17](GetItemMoveId,func) found in global item_util_2.o
                  16](GetItemNameFormatted,func) found in global item_util_2.o
                  16](LoadScriptVariableValueString,func) found in global script_variable.o
                   17](LoadScriptVariableValueBytes,func) found in global script_variable.o
@@ -2226,36 +2248,49 @@
   0200CB78 00000000 .text   $a	(item_util.o)
   0200CB78 0000000C .text   GetItemCategoryVeneer	(item_util.o)
   0200CB80 00000000 .text   $d	(item_util.o)
-  0200CB84 00000000 .text   $a	(main_0200CAFC.o)
-  0200CB84 00001D0C .text   .text	(main_0200CAFC.o)
-  0200CB84 00000014 .text   GetItemMoveId16	(main_0200CAFC.o)
-  0200CB98 0000001C .text   IsThrownItem	(main_0200CAFC.o)
-  0200CBB4 00000020 .text   IsNotMoney	(main_0200CAFC.o)
-  0200CBD4 00000024 .text   IsEdible	(main_0200CAFC.o)
-  0200CBF8 00000084 .text   IsHM	(main_0200CAFC.o)
-  0200CC78 00000000 .text   $d	(main_0200CAFC.o)
-  0200CC7C 00000020 .text   IsGummi	(main_0200CAFC.o)
-  0200CC7C 00000000 .text   $a	(main_0200CAFC.o)
-  0200CC9C 00000024 .text   IsAuraBow	(main_0200CAFC.o)
-  0200CCBC 00000000 .text   $d	(main_0200CAFC.o)
-  0200CCC0 0000004C .text   IsLosableItem	(main_0200CAFC.o)
-  0200CCC0 00000000 .text   $a	(main_0200CAFC.o)
-  0200CD0C 00000024 .text   IsTreasureBox	(main_0200CAFC.o)
-  0200CD30 00000038 .text   IsStorableItem	(main_0200CAFC.o)
-  0200CD68 000000CC .text   IsShoppableItem	(main_0200CAFC.o)
-  0200CE34 0000004C .text   IsValidTargetItem	(main_0200CAFC.o)
-  0200CE78 00000000 .text   $d	(main_0200CAFC.o)
-  0200CE80 00000000 .text   $a	(main_0200CAFC.o)
-  0200CE80 0000007C .text   IsItemUsableNow	(main_0200CAFC.o)
-  0200CEFC 00000028 .text   IsTicketItem	(main_0200CAFC.o)
-  0200CF24 000000BC .text   InitItem	(main_0200CAFC.o)
-  0200CFE0 00000014 .text   InitStandardItem	(main_0200CAFC.o)
-  0200CFF0 00000000 .text   $d	(main_0200CAFC.o)
-  0200CFF4 0000000C .text   sub_0200CF6C	(main_0200CAFC.o)
-  0200CFF4 00000000 .text   $a	(main_0200CAFC.o)
-  0200CFFC 00000000 .text   $d	(main_0200CAFC.o)
-  0200D000 00000078 .text   InitBulkItem	(main_0200CAFC.o)
-  0200D000 00000000 .text   $a	(main_0200CAFC.o)
+  0200CB84 00000014 .text   GetItemMoveId16	(item_util.o)
+  0200CB84 00000000 .text   $a	(item_util.o)
+  0200CB98 0000001C .text   IsThrownItem	(item_util.o)
+  0200CB98 00000000 .text   $a	(item_util.o)
+  0200CBB4 00000020 .text   IsNotMoney	(item_util.o)
+  0200CBB4 00000000 .text   $a	(item_util.o)
+  0200CBD4 00000024 .text   IsEdible	(item_util.o)
+  0200CBD4 00000000 .text   $a	(item_util.o)
+  0200CBF8 00000000 .text   $a	(item_util.o)
+  0200CBF8 00000084 .text   IsHM	(item_util.o)
+  0200CC78 00000000 .text   $d	(item_util.o)
+  0200CC7C 00000020 .text   IsGummi	(item_util.o)
+  0200CC7C 00000000 .text   $a	(item_util.o)
+  0200CC9C 00000000 .text   $a	(item_util.o)
+  0200CC9C 00000024 .text   IsAuraBow	(item_util.o)
+  0200CCBC 00000000 .text   $d	(item_util.o)
+  0200CCC0 0000004C .text   IsLosableItem	(item_util_4.o)
+  0200CCC0 00000000 .text   $a	(item_util_4.o)
+  0200CD0C 00000024 .text   IsTreasureBox	(item_util_4.o)
+  0200CD0C 00000000 .text   $a	(item_util_4.o)
+  0200CD30 00000038 .text   IsStorableItem	(item_util_4.o)
+  0200CD30 00000000 .text   $a	(item_util_4.o)
+  0200CD68 000000CC .text   IsShoppableItem	(item_util_4.o)
+  0200CD68 00000000 .text   $a	(item_util_4.o)
+  0200CE34 00000000 .text   $a	(item_util_4.o)
+  0200CE34 0000004C .text   IsValidTargetItem	(item_util_4.o)
+  0200CE78 00000000 .text   $d	(item_util_4.o)
+  0200CE80 0000007C .text   IsItemUsableNow	(item_util_4.o)
+  0200CE80 00000000 .text   $a	(item_util_4.o)
+  0200CEFC 00000028 .text   IsTicketItem	(item_util_4.o)
+  0200CEFC 00000000 .text   $a	(item_util_4.o)
+  0200CF24 000000BC .text   InitItem	(item_util_4.o)
+  0200CF24 00000000 .text   $a	(item_util_4.o)
+  0200CFE0 00000000 .text   $a	(item_util_4.o)
+  0200CFE0 00000014 .text   InitStandardItem	(item_util_4.o)
+  0200CFF0 00000000 .text   $d	(item_util_4.o)
+  0200CFF4 00000000 .text   $a	(item_util_4.o)
+  0200CFF4 0000000C .text   sub_0200CF6C	(item_util_4.o)
+  0200CFFC 00000000 .text   $d	(item_util_4.o)
+  0200D000 00000078 .text   InitBulkItem	(item_util_4.o)
+  0200D000 00000000 .text   $a	(item_util_4.o)
+  0200D078 00000000 .text   $a	(main_0200CAFC.o)
+  0200D078 00001818 .text   .text	(main_0200CAFC.o)
   0200D078 000000B0 .text   BulkItemToItem	(main_0200CAFC.o)
   0200D128 00000030 .text   ItemToBulkItem	(main_0200CAFC.o)
   0200D158 00000048 .text   GetDisplayedBuyPrice	(main_0200CAFC.o)
@@ -2286,41 +2321,41 @@
   0200D7F4 00000000 .text   $a	(main_0200CAFC.o)
   0200D7F4 000000B0 .text   sub_0200D76C	(main_0200CAFC.o)
   0200D89C 00000000 .text   $d	(main_0200CAFC.o)
-  0200D8A4 00000000 .text   $a	(main_0200CAFC.o)
   0200D8A4 00000018 .text   ItemZInit	(main_0200CAFC.o)
+  0200D8A4 00000000 .text   $a	(main_0200CAFC.o)
   0200D8BC 00000060 .text   AreItemsEquivalent	(main_0200CAFC.o)
   0200D91C 00000018 .text   sub_0200D894	(main_0200CAFC.o)
   0200D934 00000038 .text   sub_0200D8AC	(main_0200CAFC.o)
   0200D964 00000000 .text   $d	(main_0200CAFC.o)
-  0200D96C 00000000 .text   $a	(main_0200CAFC.o)
   0200D96C 00000078 .text   sub_0200D8E4	(main_0200CAFC.o)
+  0200D96C 00000000 .text   $a	(main_0200CAFC.o)
   0200D9E0 00000000 .text   $d	(main_0200CAFC.o)
-  0200D9E4 00000000 .text   $a	(main_0200CAFC.o)
   0200D9E4 000002E8 .text   WriteItemsToSave	(main_0200CAFC.o)
+  0200D9E4 00000000 .text   $a	(main_0200CAFC.o)
   0200DCC8 00000000 .text   $d	(main_0200CAFC.o)
-  0200DCCC 00000000 .text   $a	(main_0200CAFC.o)
   0200DCCC 000002E8 .text   ReadItemsFromSave	(main_0200CAFC.o)
+  0200DCCC 00000000 .text   $a	(main_0200CAFC.o)
   0200DFB0 00000000 .text   $d	(main_0200CAFC.o)
-  0200DFB4 00000048 .text   sub_0200DF2C	(main_0200CAFC.o)
   0200DFB4 00000000 .text   $a	(main_0200CAFC.o)
+  0200DFB4 00000048 .text   sub_0200DF2C	(main_0200CAFC.o)
   0200DFFC 00000048 .text   sub_0200DF74	(main_0200CAFC.o)
   0200E044 00000028 .text   sub_0200DFBC	(main_0200CAFC.o)
   0200E06C 00000028 .text   sub_0200DFE4	(main_0200CAFC.o)
   0200E094 00000048 .text   IsItemAvailableInDungeonGroup	(main_0200CAFC.o)
   0200E0D8 00000000 .text   $d	(main_0200CAFC.o)
-  0200E0DC 000001A4 .text   GetItemIdFromList	(main_0200CAFC.o)
   0200E0DC 00000000 .text   $a	(main_0200CAFC.o)
+  0200E0DC 000001A4 .text   GetItemIdFromList	(main_0200CAFC.o)
   0200E278 00000000 .text   $d	(main_0200CAFC.o)
-  0200E280 000001A8 .text   NormalizeTreasureBox	(main_0200CAFC.o)
   0200E280 00000000 .text   $a	(main_0200CAFC.o)
+  0200E280 000001A8 .text   NormalizeTreasureBox	(main_0200CAFC.o)
   0200E424 00000000 .text   $d	(main_0200CAFC.o)
-  0200E428 00000270 .text   SortItemList	(main_0200CAFC.o)
   0200E428 00000000 .text   $a	(main_0200CAFC.o)
+  0200E428 00000270 .text   SortItemList	(main_0200CAFC.o)
   0200E698 000000C8 .text   RemoveEmptyItems	(main_0200CAFC.o)
   0200E760 000000A8 .text   LoadItemPspi2n	(main_0200CAFC.o)
   0200E7EC 00000000 .text   $d	(main_0200CAFC.o)
-  0200E808 00000028 .text   SprintfStatic__0200E808_EU	(main_0200CAFC.o)
   0200E808 00000000 .text   $a	(main_0200CAFC.o)
+  0200E808 00000028 .text   SprintfStatic__0200E808_EU	(main_0200CAFC.o)
   0200E830 0000001C .text   GetExclusiveItemType	(main_0200CAFC.o)
   0200E848 00000000 .text   $d	(main_0200CAFC.o)
   0200E84C 00000044 .text   GetExclusiveItemOffsetEnsureValid	(main_0200CAFC.o)
@@ -7223,16 +7258,20 @@
   02055134 00000000 .text   $d	(main_02054C24.o)
   02055140 00000088 .text   DexNumbersEqual	(main_02054DC4.o)
   02055140 00000000 .text   $a	(main_02054DC4.o)
-  020551C8 00003DF0 .text   .text	(main_02054E4C.o)
-  020551C8 0000002C .text   GendersEqual	(main_02054E4C.o)
-  020551C8 00000000 .text   $a	(main_02054E4C.o)
-  020551F4 00000050 .text   GendersEqualNotGenderless	(main_02054E4C.o)
-  02055244 00000050 .text   GendersNotEqualNotGenderless	(main_02054E4C.o)
-  02055294 0000002C .text   sub_02054F18	(main_02054E4C.o)
+  020551C8 0000002C .text   GendersEqual	(main_02054DC4.o)
+  020551C8 00000000 .text   $a	(main_02054DC4.o)
+  020551F4 00000050 .text   GendersEqualNotGenderless	(main_02054DC4.o)
+  020551F4 00000000 .text   $a	(main_02054DC4.o)
+  02055244 00000050 .text   GendersNotEqualNotGenderless	(main_02054DC4.o)
+  02055244 00000000 .text   $a	(main_02054DC4.o)
+  02055294 0000002C .text   sub_02054F18	(main_02054DC4.o)
+  02055294 00000000 .text   $a	(main_02054DC4.o)
+  020552C0 00000000 .text   $a	(main_02054E4C.o)
   020552C0 0000005C .text   sub_02054F44	(main_02054E4C.o)
+  020552C0 00003CF8 .text   .text	(main_02054E4C.o)
   02055314 00000000 .text   $d	(main_02054E4C.o)
-  0205531C 00000000 .text   $a	(main_02054E4C.o)
   0205531C 00000018 .text   sub_02054FA0	(main_02054E4C.o)
+  0205531C 00000000 .text   $a	(main_02054E4C.o)
   02055330 00000000 .text   $d	(main_02054E4C.o)
   02055334 00000000 .text   $a	(main_02054E4C.o)
   02055334 00000034 .text   sub_02054FB8	(main_02054E4C.o)
@@ -7246,8 +7285,8 @@
   02055494 00000000 .text   $a	(main_02054E4C.o)
   02055494 00000030 .text   sub_02055118	(main_02054E4C.o)
   020554BC 00000000 .text   $d	(main_02054E4C.o)
-  020554C4 000000F4 .text   IsMonsterOnTeam	(main_02054E4C.o)
   020554C4 00000000 .text   $a	(main_02054E4C.o)
+  020554C4 000000F4 .text   IsMonsterOnTeam	(main_02054E4C.o)
   020555AC 00000000 .text   $d	(main_02054E4C.o)
   020555B8 00000000 .text   $a	(main_02054E4C.o)
   020555B8 00000038 .text   sub_0205523C	(main_02054E4C.o)
@@ -7255,32 +7294,32 @@
   020555F0 0000011C .text   GetNbRecruited	(main_02054E4C.o)
   020555F0 00000000 .text   $a	(main_02054E4C.o)
   02055700 00000000 .text   $d	(main_02054E4C.o)
-  0205570C 00000000 .text   $a	(main_02054E4C.o)
   0205570C 00000080 .text   IsValidTeamMember	(main_02054E4C.o)
+  0205570C 00000000 .text   $a	(main_02054E4C.o)
   02055788 00000000 .text   $d	(main_02054E4C.o)
-  0205578C 00000064 .text   sub_02055410	(main_02054E4C.o)
   0205578C 00000000 .text   $a	(main_02054E4C.o)
+  0205578C 00000064 .text   sub_02055410	(main_02054E4C.o)
   020557EC 00000000 .text   $d	(main_02054E4C.o)
   020557F0 00000064 .text   sub_02055474	(main_02054E4C.o)
   020557F0 00000000 .text   $a	(main_02054E4C.o)
   02055850 00000000 .text   $d	(main_02054E4C.o)
-  02055854 00000000 .text   $a	(main_02054E4C.o)
   02055854 00000050 .text   sub_020554D8	(main_02054E4C.o)
+  02055854 00000000 .text   $a	(main_02054E4C.o)
   020558A0 00000000 .text   $d	(main_02054E4C.o)
-  020558A4 00000000 .text   $a	(main_02054E4C.o)
   020558A4 00000080 .text   IsMainCharacter	(main_02054E4C.o)
+  020558A4 00000000 .text   $a	(main_02054E4C.o)
   02055920 00000000 .text   $d	(main_02054E4C.o)
   02055924 00000000 .text   $a	(main_02054E4C.o)
   02055924 00000028 .text   GetTeamMember	(main_02054E4C.o)
   02055948 00000000 .text   $d	(main_02054E4C.o)
-  0205594C 00000000 .text   $a	(main_02054E4C.o)
   0205594C 00000080 .text   sub_020555D0	(main_02054E4C.o)
+  0205594C 00000000 .text   $a	(main_02054E4C.o)
   020559C4 00000000 .text   $d	(main_02054E4C.o)
   020559CC 00000000 .text   $a	(main_02054E4C.o)
   020559CC 0000002C .text   GetHeroMemberIdx	(main_02054E4C.o)
   020559F4 00000000 .text   $d	(main_02054E4C.o)
-  020559F8 00000000 .text   $a	(main_02054E4C.o)
   020559F8 0000002C .text   GetPartnerMemberIdx	(main_02054E4C.o)
+  020559F8 00000000 .text   $a	(main_02054E4C.o)
   02055A20 00000000 .text   $d	(main_02054E4C.o)
   02055A24 00000000 .text   $a	(main_02054E4C.o)
   02055A24 00000044 .text   GetMainCharacter1MemberIdx	(main_02054E4C.o)
@@ -7288,35 +7327,35 @@
   02055A68 00000000 .text   $a	(main_02054E4C.o)
   02055A68 00000044 .text   GetMainCharacter2MemberIdx	(main_02054E4C.o)
   02055AA8 00000000 .text   $d	(main_02054E4C.o)
-  02055AAC 00000000 .text   $a	(main_02054E4C.o)
   02055AAC 00000040 .text   GetMainCharacter3MemberIdx	(main_02054E4C.o)
+  02055AAC 00000000 .text   $a	(main_02054E4C.o)
   02055AE8 00000000 .text   $d	(main_02054E4C.o)
-  02055AEC 00000000 .text   $a	(main_02054E4C.o)
   02055AEC 00000028 .text   GetHero	(main_02054E4C.o)
+  02055AEC 00000000 .text   $a	(main_02054E4C.o)
   02055B10 00000000 .text   $d	(main_02054E4C.o)
   02055B14 00000000 .text   $a	(main_02054E4C.o)
   02055B14 0000002C .text   GetPartner	(main_02054E4C.o)
   02055B3C 00000000 .text   $d	(main_02054E4C.o)
-  02055B40 00000048 .text   GetMainCharacter1	(main_02054E4C.o)
   02055B40 00000000 .text   $a	(main_02054E4C.o)
+  02055B40 00000048 .text   GetMainCharacter1	(main_02054E4C.o)
   02055B84 00000000 .text   $d	(main_02054E4C.o)
-  02055B88 00000048 .text   GetMainCharacter2	(main_02054E4C.o)
   02055B88 00000000 .text   $a	(main_02054E4C.o)
+  02055B88 00000048 .text   GetMainCharacter2	(main_02054E4C.o)
   02055BCC 00000000 .text   $d	(main_02054E4C.o)
-  02055BD0 00000000 .text   $a	(main_02054E4C.o)
   02055BD0 00000040 .text   GetMainCharacter3	(main_02054E4C.o)
+  02055BD0 00000000 .text   $a	(main_02054E4C.o)
   02055C0C 00000000 .text   $d	(main_02054E4C.o)
-  02055C10 00000000 .text   $a	(main_02054E4C.o)
   02055C10 00000060 .text   sub_02055894	(main_02054E4C.o)
+  02055C10 00000000 .text   $a	(main_02054E4C.o)
   02055C68 00000000 .text   $d	(main_02054E4C.o)
-  02055C70 00000000 .text   $a	(main_02054E4C.o)
   02055C70 00000070 .text   GetFirstMatchingMemberIdx	(main_02054E4C.o)
+  02055C70 00000000 .text   $a	(main_02054E4C.o)
   02055CD8 00000000 .text   $d	(main_02054E4C.o)
   02055CE0 00000000 .text   $a	(main_02054E4C.o)
   02055CE0 00000074 .text   GetFirstEmptyMemberIdx	(main_02054E4C.o)
   02055D48 00000000 .text   $d	(main_02054E4C.o)
-  02055D54 00000148 .text   sub_020559D8	(main_02054E4C.o)
   02055D54 00000000 .text   $a	(main_02054E4C.o)
+  02055D54 00000148 .text   sub_020559D8	(main_02054E4C.o)
   02055E94 00000000 .text   $d	(main_02054E4C.o)
   02055E9C 00000000 .text   $a	(main_02054E4C.o)
   02055E9C 00000058 .text   sub_02055B20	(main_02054E4C.o)
@@ -7327,8 +7366,8 @@
   02056048 00000000 .text   $a	(main_02054E4C.o)
   02056048 00000080 .text   sub_02055CCC	(main_02054E4C.o)
   020560BC 00000000 .text   $d	(main_02054E4C.o)
-  020560C8 00000000 .text   $a	(main_02054E4C.o)
   020560C8 00000030 .text   sub_02055D4C	(main_02054E4C.o)
+  020560C8 00000000 .text   $a	(main_02054E4C.o)
   020560F4 00000000 .text   $d	(main_02054E4C.o)
   020560F8 00000054 .text   sub_02055D7C	(main_02054E4C.o)
   020560F8 00000000 .text   $a	(main_02054E4C.o)
@@ -7346,18 +7385,18 @@
   02056410 00000010 .text   sub_02056094	(main_02054E4C.o)
   02056410 00000000 .text   $a	(main_02054E4C.o)
   0205641C 00000000 .text   $d	(main_02054E4C.o)
-  02056420 00000000 .text   $a	(main_02054E4C.o)
   02056420 00000014 .text   sub_020560A4	(main_02054E4C.o)
+  02056420 00000000 .text   $a	(main_02054E4C.o)
   02056434 00000010 .text   sub_020560B8	(main_02054E4C.o)
   02056440 00000000 .text   $d	(main_02054E4C.o)
-  02056444 00000090 .text   RemoveActiveMembersFromAllTeams	(main_02054E4C.o)
   02056444 00000000 .text   $a	(main_02054E4C.o)
+  02056444 00000090 .text   RemoveActiveMembersFromAllTeams	(main_02054E4C.o)
   020564D0 00000000 .text   $d	(main_02054E4C.o)
-  020564D4 00000000 .text   $a	(main_02054E4C.o)
   020564D4 00000068 .text   RemoveActiveMembersFromSpecialEpisodeTeam	(main_02054E4C.o)
+  020564D4 00000000 .text   $a	(main_02054E4C.o)
   02056538 00000000 .text   $d	(main_02054E4C.o)
-  0205653C 00000068 .text   RemoveActiveMembersFromRescueTeam	(main_02054E4C.o)
   0205653C 00000000 .text   $a	(main_02054E4C.o)
+  0205653C 00000068 .text   RemoveActiveMembersFromRescueTeam	(main_02054E4C.o)
   020565A0 00000000 .text   $d	(main_02054E4C.o)
   020565A4 00000000 .text   $a	(main_02054E4C.o)
   020565A4 0000003C .text   sub_02056228	(main_02054E4C.o)
@@ -7368,8 +7407,8 @@
   02056610 00000000 .text   $a	(main_02054E4C.o)
   02056610 00000024 .text   IsMonsterIdInNormalRange	(main_02054E4C.o)
   02056630 00000000 .text   $d	(main_02054E4C.o)
-  02056634 00000014 .text   sub_020562B8	(main_02054E4C.o)
   02056634 00000000 .text   $a	(main_02054E4C.o)
+  02056634 00000014 .text   sub_020562B8	(main_02054E4C.o)
   02056648 0000004C .text   SetActiveTeam	(main_02054E4C.o)
   02056690 00000000 .text   $d	(main_02054E4C.o)
   02056694 00000000 .text   $a	(main_02054E4C.o)
@@ -7460,14 +7499,14 @@
   0205738C 00000020 .text   sub_02057010	(main_02054E4C.o)
   0205738C 00000000 .text   $a	(main_02054E4C.o)
   020573A4 00000000 .text   $d	(main_02054E4C.o)
-  020573AC 00000150 .text   sub_02057030	(main_02054E4C.o)
   020573AC 00000000 .text   $a	(main_02054E4C.o)
+  020573AC 00000150 .text   sub_02057030	(main_02054E4C.o)
   020574F8 00000000 .text   $d	(main_02054E4C.o)
-  020574FC 0000016C .text   sub_02057180	(main_02054E4C.o)
   020574FC 00000000 .text   $a	(main_02054E4C.o)
+  020574FC 0000016C .text   sub_02057180	(main_02054E4C.o)
   0205765C 00000000 .text   $d	(main_02054E4C.o)
-  02057668 00000000 .text   $a	(main_02054E4C.o)
   02057668 00000020 .text   sub_020572EC	(main_02054E4C.o)
+  02057668 00000000 .text   $a	(main_02054E4C.o)
   02057680 00000000 .text   $d	(main_02054E4C.o)
   02057688 00000000 .text   $a	(main_02054E4C.o)
   02057688 00000094 .text   sub_0205730C	(main_02054E4C.o)
@@ -7478,8 +7517,8 @@
   0205773C 00000000 .text   $a	(main_02054E4C.o)
   0205773C 00000084 .text   sub_020573C0	(main_02054E4C.o)
   020577BC 00000000 .text   $d	(main_02054E4C.o)
-  020577C0 00000020 .text   sub_02057444	(main_02054E4C.o)
   020577C0 00000000 .text   $a	(main_02054E4C.o)
+  020577C0 00000020 .text   sub_02057444	(main_02054E4C.o)
   020577D8 00000000 .text   $d	(main_02054E4C.o)
   020577E0 00000000 .text   $a	(main_02054E4C.o)
   020577E0 00000358 .text   sub_02057464	(main_02054E4C.o)
@@ -7510,8 +7549,8 @@
   02058270 00000000 .text   $a	(main_02054E4C.o)
   02058270 00000170 .text   sub_02057EF4	(main_02054E4C.o)
   020583DC 00000000 .text   $d	(main_02054E4C.o)
-  020583E0 00000000 .text   $a	(main_02054E4C.o)
   020583E0 00000060 .text   sub_02058064	(main_02054E4C.o)
+  020583E0 00000000 .text   $a	(main_02054E4C.o)
   0205843C 00000000 .text   $d	(main_02054E4C.o)
   02058440 00000000 .text   $a	(main_02054E4C.o)
   02058440 00000074 .text   sub_020580C4	(main_02054E4C.o)
@@ -7522,8 +7561,8 @@
   0205856C 00000000 .text   $a	(main_02054E4C.o)
   0205856C 000000F0 .text   ClearItem	(main_02054E4C.o)
   02058658 00000000 .text   $d	(main_02054E4C.o)
-  0205865C 00000010 .text   sub_020582E0	(main_02054E4C.o)
   0205865C 00000000 .text   $a	(main_02054E4C.o)
+  0205865C 00000010 .text   sub_020582E0	(main_02054E4C.o)
   02058668 00000000 .text   $d	(main_02054E4C.o)
   0205866C 00000000 .text   $a	(main_02054E4C.o)
   0205866C 00000170 .text   sub_020582F0	(main_02054E4C.o)
@@ -41172,5 +41211,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sat Jan 03 20:46:42 2026
-# Link end time: Sat Jan 03 20:46:43 2026
+# Link start time: Sun Jan 04 18:34:07 2026
+# Link end time: Sun Jan 04 18:34:08 2026
