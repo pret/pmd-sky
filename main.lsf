@@ -53,7 +53,6 @@ Static main
 	Object src/moves_2.o
 	Object asm/main_02013884.o
 	Object src/main_0201398C.o
-	Object asm/main_020139AC.o
 	Object src/moves_4.o
 	Object src/moves.o
 	Object src/moves_3.o
