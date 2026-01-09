@@ -56,9 +56,7 @@ Static main
 	Object src/main_0201398C.o
 	Object asm/main_020139AC.o
 	Object src/moves_4.o
-	Object asm/main_02013A30.o
 	Object src/moves.o
-	Object asm/main_02013AD0.o
 	Object src/moves_3.o
 	Object asm/main_02013B70.o
 	Object src/main_02013C04.o
@@ -119,7 +117,7 @@ Static main
 	Object src/main_020517D4.o
 	Object asm/main_020517F4.o
 	Object src/main_020526EC.o
-	Object asm/get_category_string.o
+	Object src/get_category_string.o
 	Object src/main_020527A8.o
 	Object asm/main_020527E0.o
 	Object src/main_0205283C.o

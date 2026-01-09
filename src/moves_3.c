@@ -12,3 +12,9 @@ bool8 IsUsableWhileTaunted(struct move *move)
 {
     return DUNGEON_MOVE_TABLES.moves->moves[move->id].usable_while_taunted;
 }
+
+u16 GetMoveRangeId(struct move *move)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move->id].range_string_idx;
+}
+

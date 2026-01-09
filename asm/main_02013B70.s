@@ -3,19 +3,7 @@
 
 	.text
 
-	arm_func_start GetMoveRangeId
-GetMoveRangeId: ; 0x02013B70
-	ldr r1, _02013B8C ; =DUNGEON_MOVE_TABLES
-	ldrh r2, [r0, #4]
-	ldr r1, [r1, #8]
-	mov r0, #0x1a
-	mla r0, r2, r0, r1
-	ldrb r0, [r0, #0x15]
-	bx lr
-	.align 2, 0
-_02013B8C: .word DUNGEON_MOVE_TABLES
-	arm_func_end GetMoveRangeId
-
+; https://decomp.me/scratch/zfpDG 
 	arm_func_start GetMoveActualAccuracy
 GetMoveActualAccuracy: ; 0x02013B90
 	stmdb sp!, {r3, lr}
@@ -43,15 +31,3 @@ _02013BDC:
 	.align 2, 0
 _02013BE4: .word DUNGEON_MOVE_TABLES
 	arm_func_end GetMoveActualAccuracy
-
-	arm_func_start GetMoveBasePowerFromId
-GetMoveBasePowerFromId: ; 0x02013BE8
-	mov r1, #0x1a
-	mul r1, r0, r1
-	ldr r0, _02013C00 ; =DUNGEON_MOVE_TABLES
-	ldr r0, [r0, #8]
-	ldrsh r0, [r0, r1]
-	bx lr
-	.align 2, 0
-_02013C00: .word DUNGEON_MOVE_TABLES
-	arm_func_end GetMoveBasePowerFromId

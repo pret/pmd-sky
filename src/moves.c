@@ -25,3 +25,19 @@ u32 GetMaxPp(struct move *move)
 
     return pp;
 }
+
+u8 GetMoveMaxGinsengBoost(struct move* move)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move->id].max_ginseng_boost;
+}
+
+u8 GetMoveMaxGinsengBoostGround(struct move* move)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move->flags2].max_ginseng_boost;
+}
+
+u8 GetMoveCritChance(struct move* move)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move->id].crit_chance;
+}
+
