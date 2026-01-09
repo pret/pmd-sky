@@ -9,6 +9,10 @@ bool8 IsThawingMove(struct move *move);
 bool8 IsUsableWhileTaunted(struct move *move);
 
 u16 GetMoveRangeId(struct move *move);
+s32 GetMoveActualAccuracy(s32 move_id);
+s16 GetMoveBasePowerFromId(s32 move_id);
+bool32 IsMoveRangeStringUser(struct move *move);
+
 
 
 #endif //PMDSKY_MOVES_3_H
