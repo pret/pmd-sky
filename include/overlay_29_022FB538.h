@@ -9,4 +9,7 @@
 void SetDecoyAiTracker(struct entity* entity);
 #endif
 
+u8 CheckSpawnThreshold(void);
+
+
 #endif //PMDSKY_OVERLAY_29_022FB538_H

@@ -7,16 +7,18 @@
 struct ground_move {
     // 0x0: flags: 1-byte bitfield
     // See move::flags0 for details
-    u8 f_exists : 1;
-    u8 f_subsequent_in_link_chain : 1;
-    u8 f_enabled_for_ai : 1;
-    u8 f_set : 1;
-    u8 f_last_used : 1; // unconfirmed, but probably the same as struct move
-    u8 f_disabled : 1;
-    u8 flags_unk6 : 2;
+    u8 flags0;
+
+    // u8 f_exists : 1;
+    // u8 f_subsequent_in_link_chain : 1;
+    // u8 f_enabled_for_ai : 1;
+    // u8 f_set : 1;
+    // u8 f_last_used : 1; // unconfirmed, but probably the same as struct move
+    // u8 f_disabled : 1;
+    // u8 flags_unk6 : 2;
 
     u8 field_0x1;  // Probably padding since it doesn't get initialized
-    u16 id; // 0x2
+    enum move_id id; // 0x2
     u8 ginseng;      // 0x4: Ginseng boost
     u8 field_0x5;  // Probably padding since it doesn't get initialized
 };

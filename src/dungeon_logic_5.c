@@ -5,8 +5,11 @@
 #include "main_02014CEC.h"
 #include "moves_2.h"
 #include "natural_gift_data.h"
+#include "overlay_29_022FF898.h"
 #include "overlay_29_023000E4.h"
 #include "special_move_types.h"
+
+extern s32 GetMoveBasePower(struct move*);
 
 bool8 CanSeeTeammate(struct entity *monster)
 {
@@ -41,4 +44,21 @@ enum type_id GetMoveTypeForMonster(struct entity *entity, struct move *move)
         return GetEntityWeatherBallType(entity);
 
     return GetMoveType(move);
+}
+
+s32 GetMovePower(struct entity* entity, struct move* move)
+{
+    s32 power;
+    u8 ginseng;
+
+    ginseng = move->ginseng;
+    if (move->id == MOVE_HIDDEN_POWER) {
+        struct monster *pokemon_info = GetEntInfo(entity);
+        return move->ginseng + pokemon_info->hidden_power_base_power;
+    }
+    power = ginseng + GetMoveBasePower(move);
+    if (ItemIsActive__022FF898(entity, ITEM_SPACE_GLOBE)) {
+        power *= 2;
+    }
+    return power;
 }
