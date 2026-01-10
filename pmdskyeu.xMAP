@@ -124,16 +124,15 @@
                                         39](IsShaymin,func) found in global main_02054AA4.o
                                         39](IsValidTeamMember,func) found in global main_02054E4C.o
                                         39](GetMonsterGender,func) found in global main_020527A8.o
-                                        39](GetInfoMoveGround,func) found in global main_020137E8.o
-                                         40](GetMaxPp,func) found in global moves.o
-                                          41](MULTITALENT_PP_BOOST_AMOUNT,notype) found in global main_rodata_020A1894.o
-                                          41](EXCLUSIVE_ITEM_PP_BOOST_AMOUNT,notype) found in global main_rodata_020A18BC.o
+                                        39](GetInfoMoveGround,func) found in global moves_1.o
                                         39](FemaleToMaleForm,func) found in global main_02054BE0.o
                                         39](GetDexNumber,func) found in global main_020526EC.o
                                         39](HIDDEN_POWER_BASE_POWER_TABLE,notype) found in global main_rodata_020A190C.o
                                         39](GetSpriteSize,func) found in global main_020527E0.o
                                         39](GetMonsterPreEvolution,func) found in global main_0205283C.o
                                         39](GetMovesetHmTmPtr,func) found in global main_02013884.o
+                                        39](_020A189C,notype) found in global main_rodata_020A1894.o
+                                        39](_020A18C0,notype) found in global main_rodata_020A18BC.o
                                         39](GetNbMoves,func) found in global main_02013C30.o
                                          40](CopyBitsFrom,func) found in global main_0204EFE0.o
                                         39](DexNumbersEqual,func) found in global main_02054DC4.o
@@ -188,6 +187,7 @@
                                          40](SetDebugSpecialEpisodeNumber,func) found in global special_episode.o
                                         39](sub_0200C4CC,func) found in global main_0200C4CC.o
                                          40](sub_02011AB8,func) found in global main_02010FC4.o
+                                          41](GetMaxPp,func) found in global moves.o
                                           41](GetType,func) found in global main_0205283C.o
                                           41](RandRange,func) found in global main_0200224C.o
                                           41](IsTicketItem,func) found in global item_util_4.o
@@ -246,7 +246,8 @@
                                                                62](GetTile,func) found in global dungeon_map_access.o
                                                                62](DungeonRandInt,func) found in global dg_random.o
                                                                62](GetFloorType,func) found in global overlay_29_022E0378.o
-                                                                63](IsMoneyAllowed,func) found in global main_020512C8.o
+                                                                63](IsMoneyAllowed,func) found in global dungeon_recruitment_2.o
+                                                                63](GetMaxItemsAllowed,func) found in global dungeon_recruitment_2.o
                                                                 63](EntityIsValid__022E0354,func) found in global dg.o
                                                                 63](GetLeader,func) found in global dg_uty.o
                                                                  64](EntityIsValid__022E95F4,func) found in global dg_uty.o
@@ -420,7 +421,7 @@
                                                                                              92](GetLeaderIfVisible,func) found in global dungeon_ai_leader.o
                                                                                              92](CanTargetPosition,func) found in global dungeon_util_2.o
                                                                                              92](IsTeamMemberOnFirstTurnInFixedRoom,func) found in global dungeon_logic_7.o
-                                                                                              93](GetTurnLimit,func) found in global main_020512B0.o
+                                                                                              93](GetTurnLimit,func) found in global dungeon_recruitment_2.o
                                                                                               93](IsFullFloorFixedRoom,func) found in global fixed_room_data_1.o
                                                                                              92](GetDirectionTowardsPosition,func) found in global position_util.o
                                                                                               93](POSITION_DISPLACEMENT_TO_DIRECTION,object) found in global position_util.o
@@ -522,11 +523,11 @@
                                                                                                            106](EntityIsValid__0232E840,func) found in global overlay_29_0232E840.o
                                                                                                            106](GetEntityMoveTargetAndRange,func) found in global overlay_29_0231ACAC.o
                                                                                                             107](GetMoveTargetAndRange,func) found in global moves_2.o
-                                                                                                            107](IsMoveRangeStringUser,func) found in global main_02013C04.o
+                                                                                                            107](IsMoveRangeStringUser,func) found in global moves_3.o
                                                                                                             107](ExclusiveItemEffectIsActive__0231A87C,func) found in global overlay_29_0231A87C.o
                                                                                                            106](TryActivateNondamagingDefenderExclusiveItem,func) found in global overlay_29_0232145C.o
                                                                                                            106](IsHyperBeamVariant,func) found in global overlay_29_0232393C.o
-                                                                                                            107](GetMoveNbStrikes,func) found in global main_020139AC.o
+                                                                                                            107](GetMoveNbStrikes,func) found in global main_0201398C.o
                                                                                                             107](ov29_022E28D4,func) found in global overlay_29_022E28D4.o
                                                                                                             107](IsChargingTwoTurnMove,func) found in global dungeon_move.o
                                                                                                             107](DefenderAbilityIsActive__02322D64,func) found in global overlay_29_02322DB8.o
@@ -707,6 +708,7 @@
                                                                                                                        118](.text,section) found in local overlay_34.o
                                                                                                                       117](.bss,section) found in local overlay_34.o
                                                                                                                       117](sub_0200383C,func) found in global main_0200383C.o
+                                                                                                                     116](DoesNotSaveWhenEntering,func) found in global dungeon_recruitment_2.o
                                                                                                                      116](MemsetSimple,func) found in global main_0200330C.o
                                                                                                                      116](IsLosableItem,func) found in global item_util_4.o
                                                                                                                      116](InitEventFlagScriptVars,func) found in global script_variable.o
@@ -834,7 +836,7 @@
                                                                                                                        118](GhostImmunityIsActive,func) found in global overlay_29_0230ABF0.o
                                                                                                                       117](TryRecruit,func) found in global overlay_29_0230E064.o
                                                                                                                        118](ov29_0230E5FC,func) found in global overlay_29_0230E5A8.o
-                                                                                                                        119](GetRandomMovementChance,func) found in global main_020513C0.o
+                                                                                                                        119](GetRandomMovementChance,func) found in global dungeon_recruitment_2.o
                                                                                                                         119](GetKecleonIdToSpawnByFloor,func) found in global overlay_29_022F73B4.o
                                                                                                                          120](FloorNumberIsEven,func) found in global overlay_29_022F73B4.o
                                                                                                                         119](EntityIsValid__0230E8F0,func) found in global dungeon_ai_items.o
@@ -851,6 +853,7 @@
                                                                                                                        118](GetRecruitRate2,func) found in global main_0205283C.o
                                                                                                                        118](GetRecruitRate1,func) found in global main_0205283C.o
                                                                                                                        118](ItemIsActive__0230E578,func) found in global overlay_29_0230E578.o
+                                                                                                                      117](CanEnemyEvolve,func) found in global dungeon_recruitment_2.o
                                                                                                                       117](ov29_02303E0C,func) found in global overlay_29_02302A5C.o
                                                                                                                       117](JoinedAtRangeCheck2Veneer,func) found in global overlay_29_022F7364.o
                                                                                                                        118](JoinedAtRangeCheck2,func) found in global main_02051760.o
@@ -864,8 +867,9 @@
                                                                                                                           121](ApplyDamageAndEffects,func) found in global overlay_29_023085DC.o
                                                                                                                           121](DefenderAbilityIsActive__02332A0C,func) found in global overlay_29_023329E8.o
                                                                                                                           121](MoveHitCheck,func) found in global overlay_29_0232393C.o
-                                                                                                                          121](GetMoveCritChance,func) found in global main_02013AD0.o
-                                                                                                                          121](GetMovePower,func) found in global overlay_29_0230231C.o
+                                                                                                                          121](GetMoveCritChance,func) found in global moves.o
+                                                                                                                          121](GetMovePower,func) found in global dungeon_logic_5.o
+                                                                                                                           122](GetMoveBasePower,func) found in global main_0201398C.o
                                                                                                                          120](TryActivateGravity,func) found in global overlay_29_0233836C.o
                                                                                                                          120](ov29_02318BBC,func) found in global overlay_29_02318AD4.o
                                                                                                                           121](IsMonster__02318AB0,func) found in global overlay_29_02318AB0.o
@@ -926,6 +930,7 @@
                                                                                                                   113](ResetGravity,func) found in global overlay_29_0233836C.o
                                                                                                                   113](SpawnTeam,func) found in global overlay_29_022FBE58.o
                                                                                                                    114](EntityIsValid__022FC99C,func) found in global overlay_29_022FC99C.o
+                                                                                                                   114](InitMoveCheckId,func) found in global moves_1.o
                                                                                                                    114](ov29_023021F0,func) found in global overlay_29_023021F0.o
                                                                                                                     115](UpdateIqSkills,func) found in global dungeon_pokemon_attributes_1.o
                                                                                                                      116](GetSpeciesIqSkill,func) found in global main_02058E68.o
@@ -937,8 +942,13 @@
                                                                                                                   113](InitDungeonRng,func) found in global overlay_29_022EA9EC.o
                                                                                                                   113](ov29_022E1640,func) found in global overlay_29_022E1640.o
                                                                                                                   113](ov29_022DEB40,func) found in global overlay_29_022DEAB0.o
+                                                                                                                  113](IsLevelResetDungeon,func) found in global dungeon_recruitment_2.o
                                                                                                                   113](sub_02051134,func) found in global main_02051098.o
                                                                                                                   113](ov29_022DEADC,func) found in global overlay_29_022DEAB0.o
+                                                                                                                  113](GetMaxRescueAttempts,func) found in global dungeon_recruitment_2.o
+                                                                                                                  113](DungeonGoesUp,func) found in global dungeon_recruitment_2.o
+                                                                                                                  113](IsTrapInvisibleWhenAttacking,func) found in global dungeon_recruitment_2.o
+                                                                                                                  113](IsIqEnabled,func) found in global dungeon_recruitment_2.o
                                                                                                                  112](ov29_0234CA68,func) found in global overlay_29_0234CA68.o
                                                                                                                  112](ov29_0234CA7C,func) found in global overlay_29_0234CA68.o
                                                                                                                  112](IsGameModeRescue,func) found in global game_mode.o
@@ -967,11 +977,13 @@
                                                                                                          104](TryActivateBadDreams,func) found in global overlay_29_0231B1B8.o
                                                                                                           105](IsMonster__0231B318,func) found in global overlay_29_0231B318.o
                                                                                                          104](ItemIsActive__02311034,func) found in global overlay_29_02311010.o
+                                                                                                         104](TreasureBoxDropsEnabled,func) found in global dungeon_recruitment_2.o
                                                                                                     99](GetRegenSpeed,func) found in global main_0205283C.o
                                                                                                  96](IsNotMoney,func) found in global item_util.o
                                                                                                  96](ItemIsActive__022EE318,func) found in global overlay_29_022EE348.o
                                                                                              92](ov31_02382E08,func) found in global overlay_31_02382820.o
                                                                                              92](EntryOverlay31,func) found in global overlay_31_02382820.o
+                                                                                            91](GetLeaderChangeFlag,func) found in global dungeon_recruitment_2.o
                                                                                             91](ov29_022E1618,func) found in global overlay_29_022E1618.o
                                                                                             91](ov31_023837C8,func) found in global overlay_31_02383880.o
                                                                                              92](ov31_02383768,func) found in global overlay_31_02383880.o
@@ -989,6 +1001,7 @@
                                                                                            90](SetDoughSeedFlag,func) found in global overlay_29_02338548.o
                                                                                            90](GetDoughSeedFlag,func) found in global overlay_29_02338548.o
                                                                                            90](IsEdible,func) found in global item_util.o
+                                                                                           90](GetMoveMaxGinsengBoost,func) found in global moves.o
                                                                                           89](ShouldTryEatItem,func) found in global overlay_29_0231E990.o
                                                                                           89](ExclusiveItemEffectIsActive__022FAC98,func) found in global overlay_29_022FAC98.o
                                                                                          88](GetItemSpriteId,func) found in global item_util_2.o
@@ -1020,7 +1033,8 @@
                                                                62](MarkEnemySpawns,func) found in global overlay_29_02340CE4.o
                                                                62](GenerateSecondaryTerrainFormations,func) found in global dungeon_generation.o
                                                                62](IsMapShownOnEitherScreen,func) found in global options.o
-                                                             60](GetMoveBasePp,func) found in global main_02013A30.o
+                                                             60](GetMoveBasePp,func) found in global moves_4.o
+                                                          57](JoinedAtRangeCheck,func) found in global dungeon_recruitment_2.o
                                                         55](EntityIsValid__022EF7A0,func) found in global overlay_29_022EF7A0.o
                                                        54](GetFarOffPalsOption,func) found in global options.o
                                                       53](EntityIsValidMoveEffects__0232A3D8,func) found in global overlay_29_0232A3D8.o
@@ -1032,17 +1046,20 @@
                                                   49](ov31_0238335C,func) found in global overlay_31_02383328.o
                                                   49](ov31_02383328,func) found in global overlay_31_02383328.o
                                                 47](IsTeamStatsOnTopScreen,func) found in global options.o
-                                                47](CheckSpawnThreshold,func) found in global overlay_29_022FB5EC.o
+                                                47](CheckSpawnThreshold,func) found in global overlay_29_022FB538.o
                                                 47](IsDojoDungeon,func) found in global main_020514CC.o
                                               45](GetWeightMultiplier,func) found in global main_0205283C.o
                                               45](ApplyOffensiveStatMultiplier,func) found in global move_orb_effects.o
                                               45](ApplyDefensiveStatMultiplier,func) found in global move_orb_effects.o
                                             43](GendersEqual,func) found in global main_02054DC4.o
+                                          41](GetMoveMaxGinsengBoostGround,func) found in global moves.o
+                                          41](GetMoveBasePowerGround,func) found in global main_0201398C.o
                                           41](GetExclusiveItemParameter,func) found in global main_0200E7E8.o
                                         39](LoadOptionsFromCtx,func) found in global options.o
                                         39](SaveOptionsToCtx,func) found in global options.o
                                         39](sub_0204DB08,func) found in global main_0204DB08.o
                                          40](sub_0204DA2C,func) found in global main_0204DA2C.o
+                                       38](GetMaxMembersAllowed,func) found in global dungeon_recruitment_2.o
                                     35](CopyNStringFromId,func) found in global main_0202593C.o
                                  32](ov01_02330E38,func) found in global overlay_01.o
                                  32](.rodata,section) found in local overlay_09.o
@@ -1116,10 +1133,12 @@
                      20](ScenarioFlagRestore,func) found in global scenario_flag.o
                     19](SetSpecialEpisodeOpenOld,func) found in global special_episode.o
                     19](DebugPrintEventFlagSize,func) found in global script_variable.o
-                    19](GetMoveRangeId,func) found in global main_02013B70.o
+                    19](GetMoveRangeId,func) found in global moves_3.o
                   17](GetItemName,func) found in global item_util_2.o
                   17](GetItemActionName,func) found in global item_util_2.o
                   17](GetItemPaletteId,func) found in global item_util_2.o
+                 16](GetMoveBasePowerFromId,func) found in global moves_3.o
+                 16](GetMoveActualAccuracy,func) found in global moves_3.o
                  16](GetItemNameFormatted,func) found in global item_util_2.o
                  16](LoadScriptVariableValueString,func) found in global script_variable.o
                   17](LoadScriptVariableValueBytes,func) found in global script_variable.o
@@ -2886,10 +2905,10 @@
   02013828 00000038 .text   FormatMoveStringMore	(main_02010FC4.o)
   02013860 00000030 .text   InitMove	(moves_1.o)
   02013860 00000000 .text   $a	(moves_1.o)
-  02013890 00000000 .text   $a	(main_020137E8.o)
-  02013890 00000040 .text   InitMoveCheckId	(main_020137E8.o)
-  02013890 00000058 .text   .text	(main_020137E8.o)
-  020138D0 00000018 .text   GetInfoMoveGround	(main_020137E8.o)
+  02013890 00000040 .text   InitMoveCheckId	(moves_1.o)
+  02013890 00000000 .text   $a	(moves_1.o)
+  020138D0 00000018 .text   GetInfoMoveGround	(moves_1.o)
+  020138D0 00000000 .text   $a	(moves_1.o)
   020138E8 00000000 .text   $a	(moves_2.o)
   020138E8 00000024 .text   GetMoveTargetAndRange	(moves_2.o)
   02013908 00000000 .text   $d	(moves_2.o)
@@ -2912,55 +2931,51 @@
   02013A34 00000000 .text   $a	(main_0201398C.o)
   02013A34 00000020 .text   GetMoveAiWeight	(main_0201398C.o)
   02013A50 00000000 .text   $d	(main_0201398C.o)
-  02013A54 00000060 .text   .text	(main_020139AC.o)
-  02013A54 00000000 .text   $a	(main_020139AC.o)
-  02013A54 00000020 .text   GetMoveNbStrikes	(main_020139AC.o)
-  02013A70 00000000 .text   $d	(main_020139AC.o)
-  02013A74 00000000 .text   $a	(main_020139AC.o)
-  02013A74 00000020 .text   GetMoveBasePower	(main_020139AC.o)
-  02013A90 00000000 .text   $d	(main_020139AC.o)
-  02013A94 00000020 .text   GetMoveBasePowerGround	(main_020139AC.o)
-  02013A94 00000000 .text   $a	(main_020139AC.o)
-  02013AB0 00000000 .text   $d	(main_020139AC.o)
+  02013A54 00000000 .text   $a	(main_0201398C.o)
+  02013A54 00000020 .text   GetMoveNbStrikes	(main_0201398C.o)
+  02013A70 00000000 .text   $d	(main_0201398C.o)
+  02013A74 00000000 .text   $a	(main_0201398C.o)
+  02013A74 00000020 .text   GetMoveBasePower	(main_0201398C.o)
+  02013A90 00000000 .text   $d	(main_0201398C.o)
+  02013A94 00000000 .text   $a	(main_0201398C.o)
+  02013A94 00000020 .text   GetMoveBasePowerGround	(main_0201398C.o)
+  02013AB0 00000000 .text   $d	(main_0201398C.o)
   02013AB4 00000000 .text   $a	(moves_4.o)
   02013AB4 00000024 .text   GetMoveAccuracyOrAiChance	(moves_4.o)
   02013AD4 00000000 .text   $d	(moves_4.o)
-  02013AD8 00000000 .text   $a	(main_02013A30.o)
-  02013AD8 00000020 .text   .text	(main_02013A30.o)
-  02013AD8 00000020 .text   GetMoveBasePp	(main_02013A30.o)
-  02013AF4 00000000 .text   $d	(main_02013A30.o)
+  02013AD8 00000000 .text   $a	(moves_4.o)
+  02013AD8 00000020 .text   GetMoveBasePp	(moves_4.o)
+  02013AF4 00000000 .text   $d	(moves_4.o)
   02013AF8 00000000 .text   $a	(moves.o)
   02013AF8 00000080 .text   GetMaxPp	(moves.o)
   02013B68 00000000 .text   $d	(moves.o)
-  02013B78 00000060 .text   .text	(main_02013AD0.o)
-  02013B78 00000000 .text   $a	(main_02013AD0.o)
-  02013B78 00000020 .text   GetMoveMaxGinsengBoost	(main_02013AD0.o)
-  02013B94 00000000 .text   $d	(main_02013AD0.o)
-  02013B98 00000000 .text   $a	(main_02013AD0.o)
-  02013B98 00000020 .text   GetMoveMaxGinsengBoostGround	(main_02013AD0.o)
-  02013BB4 00000000 .text   $d	(main_02013AD0.o)
-  02013BB8 00000020 .text   GetMoveCritChance	(main_02013AD0.o)
-  02013BB8 00000000 .text   $a	(main_02013AD0.o)
-  02013BD4 00000000 .text   $d	(main_02013AD0.o)
+  02013B78 00000000 .text   $a	(moves.o)
+  02013B78 00000020 .text   GetMoveMaxGinsengBoost	(moves.o)
+  02013B94 00000000 .text   $d	(moves.o)
+  02013B98 00000000 .text   $a	(moves.o)
+  02013B98 00000020 .text   GetMoveMaxGinsengBoostGround	(moves.o)
+  02013BB4 00000000 .text   $d	(moves.o)
+  02013BB8 00000000 .text   $a	(moves.o)
+  02013BB8 00000020 .text   GetMoveCritChance	(moves.o)
+  02013BD4 00000000 .text   $d	(moves.o)
   02013BD8 00000000 .text   $a	(moves_3.o)
   02013BD8 00000020 .text   IsThawingMove	(moves_3.o)
   02013BF4 00000000 .text   $d	(moves_3.o)
   02013BF8 00000000 .text   $a	(moves_3.o)
   02013BF8 00000020 .text   IsUsableWhileTaunted	(moves_3.o)
   02013C14 00000000 .text   $d	(moves_3.o)
-  02013C18 00000094 .text   .text	(main_02013B70.o)
-  02013C18 00000000 .text   $a	(main_02013B70.o)
-  02013C18 00000020 .text   GetMoveRangeId	(main_02013B70.o)
-  02013C34 00000000 .text   $d	(main_02013B70.o)
-  02013C38 00000000 .text   $a	(main_02013B70.o)
-  02013C38 00000058 .text   GetMoveActualAccuracy	(main_02013B70.o)
-  02013C8C 00000000 .text   $d	(main_02013B70.o)
-  02013C90 0000001C .text   GetMoveBasePowerFromId	(main_02013B70.o)
-  02013C90 00000000 .text   $a	(main_02013B70.o)
-  02013CA8 00000000 .text   $d	(main_02013B70.o)
-  02013CAC 00000000 .text   $a	(main_02013C04.o)
-  02013CAC 0000002C .text   IsMoveRangeStringUser	(main_02013C04.o)
-  02013CD4 00000000 .text   $d	(main_02013C04.o)
+  02013C18 00000000 .text   $a	(moves_3.o)
+  02013C18 00000020 .text   GetMoveRangeId	(moves_3.o)
+  02013C34 00000000 .text   $d	(moves_3.o)
+  02013C38 00000000 .text   $a	(moves_3.o)
+  02013C38 00000058 .text   GetMoveActualAccuracy	(moves_3.o)
+  02013C8C 00000000 .text   $d	(moves_3.o)
+  02013C90 00000000 .text   $a	(moves_3.o)
+  02013C90 0000001C .text   GetMoveBasePowerFromId	(moves_3.o)
+  02013CA8 00000000 .text   $d	(moves_3.o)
+  02013CAC 00000000 .text   $a	(moves_3.o)
+  02013CAC 0000002C .text   IsMoveRangeStringUser	(moves_3.o)
+  02013CD4 00000000 .text   $d	(moves_3.o)
   02013CD8 00000000 .text   $a	(main_02013C30.o)
   02013CD8 00000034 .text   GetMoveMessageFromId	(main_02013C30.o)
   02013CD8 000010BC .text   .text	(main_02013C30.o)
@@ -6827,64 +6842,62 @@
   02051358 00000044 .text   BinToDecFixedPoint	(main_0204EFE0.o)
   0205139C 00000034 .text   CeilFixedPoint	(number_util.o)
   0205139C 00000000 .text   $a	(number_util.o)
-  020513D0 00000000 .text   $a	(main_02051098.o)
-  020513D0 00000218 .text   .text	(main_02051098.o)
   020513D0 00000028 .text   sub_02051098	(main_02051098.o)
+  020513D0 000001F0 .text   .text	(main_02051098.o)
+  020513D0 00000000 .text   $a	(main_02051098.o)
   020513F8 00000028 .text   sub_020510C0	(main_02051098.o)
   02051420 0000004C .text   sub_020510E8	(main_02051098.o)
   02051460 00000000 .text   $d	(main_02051098.o)
   0205146C 00000000 .text   $a	(main_02051098.o)
   0205146C 00000154 .text   sub_02051134	(main_02051098.o)
   020515A4 00000000 .text   $d	(main_02051098.o)
-  020515C0 00000028 .text   DungeonGoesUp	(main_02051098.o)
-  020515C0 00000000 .text   $a	(main_02051098.o)
-  020515E4 00000000 .text   $d	(main_02051098.o)
-  020515E8 00000000 .text   $a	(main_020512B0.o)
-  020515E8 00000018 .text   GetTurnLimit	(main_020512B0.o)
-  020515FC 00000000 .text   $d	(main_020512B0.o)
-  02051600 00000000 .text   $a	(main_020512C8.o)
-  02051600 00000028 .text   DoesNotSaveWhenEntering	(main_020512C8.o)
-  02051600 000000D0 .text   .text	(main_020512C8.o)
-  02051624 00000000 .text   $d	(main_020512C8.o)
-  02051628 00000000 .text   $a	(main_020512C8.o)
-  02051628 00000028 .text   TreasureBoxDropsEnabled	(main_020512C8.o)
-  0205164C 00000000 .text   $d	(main_020512C8.o)
-  02051650 00000000 .text   $a	(main_020512C8.o)
-  02051650 00000028 .text   IsLevelResetDungeon	(main_020512C8.o)
-  02051674 00000000 .text   $d	(main_020512C8.o)
-  02051678 00000000 .text   $a	(main_020512C8.o)
-  02051678 00000018 .text   GetMaxItemsAllowed	(main_020512C8.o)
-  0205168C 00000000 .text   $d	(main_020512C8.o)
-  02051690 00000000 .text   $a	(main_020512C8.o)
-  02051690 00000028 .text   IsMoneyAllowed	(main_020512C8.o)
-  020516B4 00000000 .text   $d	(main_020512C8.o)
-  020516B8 00000000 .text   $a	(main_020512C8.o)
-  020516B8 00000018 .text   GetMaxRescueAttempts	(main_020512C8.o)
-  020516CC 00000000 .text   $d	(main_020512C8.o)
+  020515C0 00000000 .text   $a	(dungeon_recruitment_2.o)
+  020515C0 00000028 .text   DungeonGoesUp	(dungeon_recruitment_2.o)
+  020515E4 00000000 .text   $d	(dungeon_recruitment_2.o)
+  020515E8 00000000 .text   $a	(dungeon_recruitment_2.o)
+  020515E8 00000018 .text   GetTurnLimit	(dungeon_recruitment_2.o)
+  020515FC 00000000 .text   $d	(dungeon_recruitment_2.o)
+  02051600 00000000 .text   $a	(dungeon_recruitment_2.o)
+  02051600 00000028 .text   DoesNotSaveWhenEntering	(dungeon_recruitment_2.o)
+  02051624 00000000 .text   $d	(dungeon_recruitment_2.o)
+  02051628 00000000 .text   $a	(dungeon_recruitment_2.o)
+  02051628 00000028 .text   TreasureBoxDropsEnabled	(dungeon_recruitment_2.o)
+  0205164C 00000000 .text   $d	(dungeon_recruitment_2.o)
+  02051650 00000000 .text   $a	(dungeon_recruitment_2.o)
+  02051650 00000028 .text   IsLevelResetDungeon	(dungeon_recruitment_2.o)
+  02051674 00000000 .text   $d	(dungeon_recruitment_2.o)
+  02051678 00000000 .text   $a	(dungeon_recruitment_2.o)
+  02051678 00000018 .text   GetMaxItemsAllowed	(dungeon_recruitment_2.o)
+  0205168C 00000000 .text   $d	(dungeon_recruitment_2.o)
+  02051690 00000000 .text   $a	(dungeon_recruitment_2.o)
+  02051690 00000028 .text   IsMoneyAllowed	(dungeon_recruitment_2.o)
+  020516B4 00000000 .text   $d	(dungeon_recruitment_2.o)
+  020516B8 00000000 .text   $a	(dungeon_recruitment_2.o)
+  020516B8 00000018 .text   GetMaxRescueAttempts	(dungeon_recruitment_2.o)
+  020516CC 00000000 .text   $d	(dungeon_recruitment_2.o)
   020516D0 00000000 .text   $a	(dungeon_recruitment_2.o)
   020516D0 00000028 .text   IsRecruitingAllowed	(dungeon_recruitment_2.o)
   020516F4 00000000 .text   $d	(dungeon_recruitment_2.o)
-  020516F8 000000F0 .text   .text	(main_020513C0.o)
-  020516F8 00000028 .text   GetLeaderChangeFlag	(main_020513C0.o)
-  020516F8 00000000 .text   $a	(main_020513C0.o)
-  0205171C 00000000 .text   $d	(main_020513C0.o)
-  02051720 00000000 .text   $a	(main_020513C0.o)
-  02051720 00000018 .text   GetRandomMovementChance	(main_020513C0.o)
-  02051734 00000000 .text   $d	(main_020513C0.o)
-  02051738 00000000 .text   $a	(main_020513C0.o)
-  02051738 00000028 .text   CanEnemyEvolve	(main_020513C0.o)
-  0205175C 00000000 .text   $d	(main_020513C0.o)
-  02051760 00000000 .text   $a	(main_020513C0.o)
-  02051760 00000018 .text   GetMaxMembersAllowed	(main_020513C0.o)
-  02051774 00000000 .text   $d	(main_020513C0.o)
-  02051778 00000028 .text   IsIqEnabled	(main_020513C0.o)
-  02051778 00000000 .text   $a	(main_020513C0.o)
-  0205179C 00000000 .text   $d	(main_020513C0.o)
-  020517A0 00000000 .text   $a	(main_020513C0.o)
-  020517A0 00000028 .text   IsTrapInvisibleWhenAttacking	(main_020513C0.o)
-  020517C4 00000000 .text   $d	(main_020513C0.o)
-  020517C8 00000000 .text   $a	(main_020513C0.o)
-  020517C8 00000020 .text   JoinedAtRangeCheck	(main_020513C0.o)
+  020516F8 00000000 .text   $a	(dungeon_recruitment_2.o)
+  020516F8 00000028 .text   GetLeaderChangeFlag	(dungeon_recruitment_2.o)
+  0205171C 00000000 .text   $d	(dungeon_recruitment_2.o)
+  02051720 00000000 .text   $a	(dungeon_recruitment_2.o)
+  02051720 00000018 .text   GetRandomMovementChance	(dungeon_recruitment_2.o)
+  02051734 00000000 .text   $d	(dungeon_recruitment_2.o)
+  02051738 00000000 .text   $a	(dungeon_recruitment_2.o)
+  02051738 00000028 .text   CanEnemyEvolve	(dungeon_recruitment_2.o)
+  0205175C 00000000 .text   $d	(dungeon_recruitment_2.o)
+  02051760 00000000 .text   $a	(dungeon_recruitment_2.o)
+  02051760 00000018 .text   GetMaxMembersAllowed	(dungeon_recruitment_2.o)
+  02051774 00000000 .text   $d	(dungeon_recruitment_2.o)
+  02051778 00000000 .text   $a	(dungeon_recruitment_2.o)
+  02051778 00000028 .text   IsIqEnabled	(dungeon_recruitment_2.o)
+  0205179C 00000000 .text   $d	(dungeon_recruitment_2.o)
+  020517A0 00000000 .text   $a	(dungeon_recruitment_2.o)
+  020517A0 00000028 .text   IsTrapInvisibleWhenAttacking	(dungeon_recruitment_2.o)
+  020517C4 00000000 .text   $d	(dungeon_recruitment_2.o)
+  020517C8 00000020 .text   JoinedAtRangeCheck	(dungeon_recruitment_2.o)
+  020517C8 00000000 .text   $a	(dungeon_recruitment_2.o)
   020517E8 0000001C .text   IsDojoDungeon	(main_020514CC.o)
   020517E8 00000000 .text   $a	(main_020514CC.o)
   02051804 0000001C .text   IsFutureDungeon	(main_020514CC.o)
@@ -7015,7 +7028,6 @@
   02052A78 0000001C .text   GetDexNumber	(main_020526EC.o)
   02052A90 00000000 .text   $d	(main_020526EC.o)
   02052A94 00000000 .text   $a	(get_category_string.o)
-  02052A94 0000004C .text   .text	(get_category_string.o)
   02052A94 0000004C .text   GetCategoryString	(get_category_string.o)
   02052ADC 00000000 .text   $d	(get_category_string.o)
   02052AE0 00000000 .text   $a	(main_020527A8.o)
@@ -36196,9 +36208,8 @@
   022FBF44 00000000 .text   $a	(overlay_29_022FB538.o)
   022FBF44 000000B4 .text   SetDecoyAiTracker	(overlay_29_022FB538.o)
   022FBFF4 00000000 .text   $d	(overlay_29_022FB538.o)
-  022FBFF8 00000024 .text   .text	(overlay_29_022FB5EC.o)
-  022FBFF8 00000024 .text   CheckSpawnThreshold	(overlay_29_022FB5EC.o)
-  022FBFF8 00000000 .text   $a	(overlay_29_022FB5EC.o)
+  022FBFF8 00000024 .text   CheckSpawnThreshold	(overlay_29_022FB538.o)
+  022FBFF8 00000000 .text   $a	(overlay_29_022FB538.o)
   022FC01C 00000000 .text   $a	(dungeon_logic_4.o)
   022FC01C 00000068 .text   HasLowHealth	(dungeon_logic_4.o)
   022FC080 00000000 .text   $d	(dungeon_logic_4.o)
@@ -36566,9 +36577,8 @@
   02302CA8 00000000 .text   $a	(dungeon_logic_5.o)
   02302CA8 000000A0 .text   GetMoveTypeForMonster	(dungeon_logic_5.o)
   02302D44 00000000 .text   $d	(dungeon_logic_5.o)
-  02302D48 0000004C .text   .text	(overlay_29_0230231C.o)
-  02302D48 0000004C .text   GetMovePower	(overlay_29_0230231C.o)
-  02302D48 00000000 .text   $a	(overlay_29_0230231C.o)
+  02302D48 0000004C .text   GetMovePower	(dungeon_logic_5.o)
+  02302D48 00000000 .text   $a	(dungeon_logic_5.o)
   02302D94 00000020 .text   MonsterCanThrowItems	(dungeon_logic_2.o)
   02302D94 00000000 .text   $a	(dungeon_logic_2.o)
   02302DB4 00000038 .text   ov29_02302388	(overlay_29_02302388.o)
@@ -41211,5 +41221,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Sun Jan 04 18:34:07 2026
-# Link end time: Sun Jan 04 18:34:08 2026
+# Link start time: Sat Jan 10 02:06:53 2026
+# Link end time: Sat Jan 10 02:06:53 2026
