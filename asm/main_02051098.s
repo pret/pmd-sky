@@ -152,17 +152,3 @@ _02051280: .word 0x9D2C5680
 _02051284: .word 0xEFC60000
 	arm_func_end sub_02051134
 
-	arm_func_start DungeonGoesUp
-DungeonGoesUp: ; 0x02051288
-	mov r1, #0xc
-	mul r1, r0, r1
-	ldr r0, _020512AC ; =DUNGEON_RESTRICTIONS
-	ldr r0, [r0, r1]
-	tst r0, #1
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_020512AC: .word DUNGEON_RESTRICTIONS
-	arm_func_end DungeonGoesUp

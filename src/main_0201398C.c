@@ -7,3 +7,20 @@ s16 GetMoveAiWeight(struct move *move)
 {
     return DUNGEON_MOVE_TABLES.moves->moves[move->id].ai_weight;
 }
+
+u8 GetMoveNbStrikes(struct move* move)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move->id].strikes;
+}
+
+s16 GetMoveBasePower(struct move* move)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move->id].base_power;
+}
+
+s16 GetMoveBasePowerGround(struct ground_move* move)
+{
+    return DUNGEON_MOVE_TABLES.moves->moves[move->id].base_power;
+}
+
+

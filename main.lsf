@@ -50,18 +50,12 @@ Static main
 	Object src/exclusive_item.o
 	Object asm/main_02010FC4.o
 	Object src/moves_1.o
-	Object asm/main_020137E8.o
 	Object src/moves_2.o
 	Object asm/main_02013884.o
 	Object src/main_0201398C.o
-	Object asm/main_020139AC.o
 	Object src/moves_4.o
-	Object asm/main_02013A30.o
 	Object src/moves.o
-	Object asm/main_02013AD0.o
 	Object src/moves_3.o
-	Object asm/main_02013B70.o
-	Object src/main_02013C04.o
 	Object asm/main_02013C30.o
 	Object src/main_02014CEC.o
 	Object asm/main_02014D18.o
@@ -101,10 +95,7 @@ Static main
 	Object asm/main_0204EFE0.o
 	Object src/number_util.o
 	Object asm/main_02051098.o
-	Object src/main_020512B0.o
-	Object asm/main_020512C8.o
 	Object src/dungeon_recruitment_2.o
-	Object asm/main_020513C0.o
 	Object src/main_020514CC.o
 	Object asm/main_02051504.o
 	Object src/main_02051760.o
@@ -119,7 +110,7 @@ Static main
 	Object src/main_020517D4.o
 	Object asm/main_020517F4.o
 	Object src/main_020526EC.o
-	Object asm/get_category_string.o
+	Object src/get_category_string.o
 	Object src/main_020527A8.o
 	Object asm/main_020527E0.o
 	Object src/main_0205283C.o
@@ -463,7 +454,6 @@ Overlay OVY_29
 	Object src/overlay_29_022FAC98.o
 	Object asm/overlay_29_022FACBC.o
 	Object src/overlay_29_022FB538.o
-	Object asm/overlay_29_022FB5EC.o
 	Object src/dungeon_logic_4.o
 	Object asm/overlay_29_022FB678.o
 	Object src/joined_at_checks.o
@@ -513,7 +503,6 @@ Overlay OVY_29
 	Object src/dungeon_pokemon_attributes_1.o
 	Object asm/overlay_29_023021F0.o
 	Object src/dungeon_logic_5.o
-	Object asm/overlay_29_0230231C.o
 	Object src/dungeon_logic_2.o
 	Object asm/overlay_29_02302388.o
 	Object src/overlay_29_023026CC.o

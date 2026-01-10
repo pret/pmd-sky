@@ -5,6 +5,9 @@
 #include "overlay_29_022F7364.h"
 #include "targeting.h"
 
+extern u8 GetScenarioBalanceVeneer(); 
+extern u32 GetSpawnThreshold();
+
 #ifndef JAPAN
 void SetDecoyAiTracker(struct entity* entity)
 {
@@ -31,3 +34,8 @@ void SetDecoyAiTracker(struct entity* entity)
     }
 }
 #endif
+
+u8 CheckSpawnThreshold(void)
+{
+    return (GetSpawnThreshold() <= GetScenarioBalanceVeneer());
+}

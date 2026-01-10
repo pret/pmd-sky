@@ -1,9 +1,9 @@
 #include "dungeon_logic_7.h"
 #include "dungeon_logic_6.h"
 #include "dungeon_mode.h"
+#include "dungeon_recruitment_2.h"
 #include "dungeon_util_static.h"
 #include "fixed_room_data_1.h"
-#include "main_020512B0.h"
 #include "util.h"
 
 bool8 IsMonsterLoneOutlaw(struct monster* monster_info)
