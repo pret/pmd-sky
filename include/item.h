@@ -1,13 +1,8 @@
 #ifndef PMDSKY_ITEM_H
 #define PMDSKY_ITEM_H
 
+#include "file.h"
 #include "util.h"
-
-#ifdef EUROPE
-#define ITEM_DATA_TABLE_PTRS_INDEX 0
-#else
-#define ITEM_DATA_TABLE_PTRS_INDEX 1
-#endif
 
 // Item ID
 enum item_id {
@@ -1647,7 +1642,13 @@ struct bag_items {
     /* 0x384 */ struct bag_items_inner *bag_items;
 };
 
-struct item_data_entry
+struct bulk_item
+{
+    /* 0x0 */ s16 id;
+    /* 0x2 */ u16 quantity;
+};
+
+struct item_data
 {
     /* 0x0 */ u16 buy_price;
     /* 0x2 */ u16 sell_price;
@@ -1661,10 +1662,22 @@ struct item_data_entry
     /* 0xE */ u8 flags;
 };
 
-struct bulk_item
-{
-    /* 0x0 */ s16 id;
-    /* 0x2 */ u16 quantity;
+struct item_exclusive_data {
+    u8 type;
+    u16 unk2;
+};
+
+struct item_tables {
+
+#ifdef EUROPE
+    struct item_data *data;
+    struct item_exclusive_data *exclusive_data;
+#else
+    struct item_exclusive_data *exclusive_data;
+    struct item_data *data;
+#endif
+
+    struct iovec langFile;
 };
 
 #endif //PMDSKY_ITEM_H

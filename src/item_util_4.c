@@ -2,7 +2,7 @@
 #include "dungeon_util_static.h"
 #include "item.h"
 #include "item_util.h"
-#include "item_util_2.h"
+#include "item_util_1.h"
 
 extern s16 RandRangeSafe(s32, s32);
 extern s16 _020A18BC[10];

@@ -11664,21 +11664,18 @@ BAG_ITEMS_PTR_MIRROR:
 	.word _02094D00
 	.global ITEM_DATA_TABLE_PTRS
 ITEM_DATA_TABLE_PTRS:
-	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020AF6C4
-_020AF6C4:
-	.byte 0x00, 0x00, 0x00, 0x00
-	.global _020AF6C8
-_020AF6C8:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00
+	.word 0x00
+	.word 0x00
+	.word 0x00
 #ifdef EUROPE
-	.global _020AFF88_EU
-_020AFF88_EU:
-	.word _02098404
-	.word _02098434
-	.word _02098424
-	.word _020983F4
-	.word _02098414
+	.global ITEM_LANG_FILE_ARRAY
+ITEM_LANG_FILE_ARRAY:
+	.word ST_I2N_E_BIN
+	.word ST_I2N_F_BIN
+	.word ST_I2N_G_BIN
+	.word ST_I2N_I_BIN
+	.word ST_I2N_S_BIN
 #endif
 	.global _020AF6D0
 _020AF6D0:
