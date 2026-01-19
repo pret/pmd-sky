@@ -1634,15 +1634,24 @@ struct item_volatile {
 };
 
 struct bag_items_inner {
-    /* 0x0 */ struct item bag_items[INVENTORY_SIZE];
+    /* 0x0 */ struct item bag_items[INVENTORY_SIZE - 2]; 
+    // NOTE: I don't know why we have to do the subtraction  - Seth
 };
 
+#define MAIN_INVENTORY_INDEX 0
+#define SPECIAL_EPISODE_INVENTORY_INDEX 1
+#define RESCUE_INVENTORY_INDEX 2
+
 struct bag_items {
-    u8 fill0[0x384];
+    // Indexes:
+    // 0x0 - Main, default
+    // 0x1 - Special Episode
+    // 0x2 - Rescue
+    /* 0x0   */ struct bag_items_inner inventories[3];
     /* 0x384 */ struct bag_items_inner *bag_items;
-    u8 unk388;
+    /* 0x388 */ u8 active_inventory_idx;
     u8 fill2[0x1009];
-    u32 maybeMoney[]; // Unknown size, but indexed with an u8
+    u32 maybeMoney[3]; // indexed with an u8, uses same indexes as Inventory
 };
 
 struct bulk_item

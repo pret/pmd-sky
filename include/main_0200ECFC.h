@@ -1,6 +1,15 @@
 #ifndef PMDSKY_MAIN_0200ECFC_H
 #define PMDSKY_MAIN_0200ECFC_H
 
+// Init the special episode inventory and money the player is carrying
+void SpecialEpisodeInventoryZInit(void);
+
+// Init the rescue inventory and money the player is carrying
+void RescueInventoryZInit(void);
+
+// Set the active inventory to the current index
+void SetActiveInventory(s8 index);
+
 // Gets the amount of money the player is carrying.
 // return: value
 u32 GetMoneyCarried(void);
