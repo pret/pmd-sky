@@ -5,9 +5,28 @@ extern struct bag_items* BAG_ITEMS_PTR_MIRROR;
 
 extern void ItemZInit(struct item *item);
 
+void SetActiveInventoryToMain(void)
+{
+    SetActiveInventory(MAIN_INVENTORY_INDEX);
+}
+
+void AllInventoriesZInit(void)
+{
+    for(int inventory_index = MAIN_INVENTORY_INDEX; inventory_index < NUM_INVENTORIES; inventory_index++)
+    {
+        for(int bag_index = 0; bag_index < INVENTORY_SIZE - 2; bag_index++)
+        {
+            ItemZInit(&BAG_ITEMS_PTR_MIRROR->inventories[inventory_index].bag_items[bag_index]);
+        }      
+        BAG_ITEMS_PTR_MIRROR->maybeMoney[inventory_index] = 0;
+    }
+
+    SetActiveInventory(MAIN_INVENTORY_INDEX);
+}
+
 void SpecialEpisodeInventoryZInit(void)
 {
-    for(s32 index = 0; index < INVENTORY_SIZE - 2; index++)
+    for(int index = 0; index < INVENTORY_SIZE - 2; index++)
     {
         ItemZInit(&BAG_ITEMS_PTR_MIRROR->inventories[SPECIAL_EPISODE_INVENTORY_INDEX].bag_items[index]);
     }
@@ -17,7 +36,7 @@ void SpecialEpisodeInventoryZInit(void)
 
 void RescueInventoryZInit(void)
 {
-    for(s32 index = 0; index < INVENTORY_SIZE - 2; index++)
+    for(int index = 0; index < INVENTORY_SIZE - 2; index++)
     {
         ItemZInit(&BAG_ITEMS_PTR_MIRROR->inventories[RESCUE_INVENTORY_INDEX].bag_items[index]);
     }

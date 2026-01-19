@@ -1,6 +1,12 @@
 #ifndef PMDSKY_MAIN_0200ECFC_H
 #define PMDSKY_MAIN_0200ECFC_H
 
+// Set the active inventory to the main inventory
+void SetActiveInventoryToMain(void);
+
+// Init all inventories, all money the player is carrying, and set default active inventory
+void AllInventoriesZInit(void);
+
 // Init the special episode inventory and money the player is carrying
 void SpecialEpisodeInventoryZInit(void);
 
