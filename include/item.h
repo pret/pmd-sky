@@ -1640,6 +1640,9 @@ struct bag_items_inner {
 struct bag_items {
     u8 fill0[0x384];
     /* 0x384 */ struct bag_items_inner *bag_items;
+    u8 unk388;
+    u8 fill2[0x1009];
+    u32 maybeMoney[]; // Unknown size, but indexed with an u8
 };
 
 struct bulk_item
