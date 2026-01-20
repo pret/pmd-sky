@@ -5,3 +5,13 @@ s32 GetIqGroup(s16 monster_id)
 {
     return MONSTER_DATA_TABLE_PTR->entries[monster_id].iq_group;
 }
+
+u8 GetSpawnThreshold(s16 monster_id)
+{
+    return MONSTER_DATA_TABLE_PTR->entries[monster_id].spawn_threshold;
+}
+
+bool8 NeedsItemToSpawn(s16 monster_id)
+{
+    return MONSTER_DATA_TABLE_PTR->entries[monster_id].flags & 0b10000000 ? TRUE : FALSE;
+}

@@ -36,7 +36,7 @@ struct monster_data_table_entry {
     u8 shadow_size;                   // 0x2E: The size of the Pokemon's shadow.
     u8 spawn_asleep_chance;           // 0x2F: The percent chance that a Pokemon will spawn asleep. Most of the time 0x8.
     u8 hp_regeneration;               // 0x30: The rate at which a Pokemon regenerates HP. Always 0x64.
-    s8 unk_0x31;                      // 0x31: Unknown.
+    s8 spawn_threshold;               // 0x31: 
     s16 base_form_idx;                // 0x32: The base evolutionary stage of the Pokemon. Seems to always be between 0 and 600.
     s16 exclusive_item_1;             // 0x34: The first 1-star exclusive item for this Pokemon. Null if NA.
     s16 exclusive_item_2;             // 0x36: The second 1-star exclusive item for this Pokemon. Null if NA.

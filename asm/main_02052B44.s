@@ -3,34 +3,6 @@
 
 	.text
 
-	arm_func_start GetSpawnThreshold
-GetSpawnThreshold: ; 0x02052B44
-	ldr r2, _02052B5C ; =MONSTER_DATA_TABLE_PTR
-	mov r1, #0x44
-	ldr r2, [r2]
-	smlabb r0, r0, r1, r2
-	ldrb r0, [r0, #0x31]
-	bx lr
-	.align 2, 0
-_02052B5C: .word MONSTER_DATA_TABLE_PTR
-	arm_func_end GetSpawnThreshold
-
-	arm_func_start NeedsItemToSpawn
-NeedsItemToSpawn: ; 0x02052B60
-	ldr r2, _02052B88 ; =MONSTER_DATA_TABLE_PTR
-	mov r1, #0x44
-	ldr r2, [r2]
-	smlabb r0, r0, r1, r2
-	ldrb r0, [r0, #0x1a]
-	tst r0, #0x80
-	movne r0, #1
-	moveq r0, #0
-	and r0, r0, #0xff
-	bx lr
-	.align 2, 0
-_02052B88: .word MONSTER_DATA_TABLE_PTR
-	arm_func_end NeedsItemToSpawn
-
 	arm_func_start GetExclusiveItem
 GetExclusiveItem: ; 0x02052B8C
 	ldr r2, _02052BB4 ; =MONSTER_DATA_TABLE_PTR
