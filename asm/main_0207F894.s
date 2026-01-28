@@ -653,8 +653,8 @@ _020800F0:
 	ldmia sp!, {pc}
 	arm_func_end sub_020800B0
 
-	arm_func_start sub_020800FC
-sub_020800FC: ; 0x020800FC
+	arm_func_start MD5_Init
+MD5_Init: ; 0x020800FC
 	ldr r2, _0208012C ; =0x67452301
 	ldr r1, _02080130 ; =0xEFCDAB89
 	str r2, [r0]
@@ -672,10 +672,10 @@ _0208012C: .word 0x67452301
 _02080130: .word 0xEFCDAB89
 _02080134: .word 0x98BADCFE
 _02080138: .word 0x10325476
-	arm_func_end sub_020800FC
+	arm_func_end MD5_Init
 
-	arm_func_start sub_0208013C
-sub_0208013C: ; 0x0208013C
+	arm_func_start MD5_Update
+MD5_Update: ; 0x0208013C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	mov r6, r0
 	ldr r3, [r6, #0x10]
@@ -729,10 +729,10 @@ _020801EC:
 	add r1, r6, #0x18
 	bl MemcpyFast
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_0208013C
+	arm_func_end MD5_Update
 
-	arm_func_start sub_02080204
-sub_02080204: ; 0x02080204
+	arm_func_start MD5_Digest
+MD5_Digest: ; 0x02080204
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r4, r1
 	ldr r1, [r4, #0x14]
@@ -744,7 +744,7 @@ sub_02080204: ; 0x02080204
 	mov r2, #1
 	orr r6, r6, r3, lsr #29
 	mov r7, r3, lsl #3
-	bl sub_0208013C
+	bl MD5_Update
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	and r3, r0, #0x3f
@@ -782,7 +782,7 @@ _02080284:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _020802B8: .word _020B2BC0
-	arm_func_end sub_02080204
+	arm_func_end MD5_Digest
 
 	arm_func_start sub_020802BC
 sub_020802BC: ; 0x020802BC

@@ -13,8 +13,10 @@
 .public DungeonRandInt
 .public EntityIsValid__022E95F4
 .public FlashLeaderIcon
+.public GetBottomScreenOption
 .public GetLeader
 .public GetTile
+.public GetTopScreenOption
 .public GetTreatmentBetweenMonsters
 .public HandleTopScreenFades
 .public InitWeirdMinimapMatrix
@@ -48,8 +50,6 @@
 .public ov29_0237C888
 .public RenderWeather3D
 .public sub_0201BAC8
-.public GetTopScreenOption
-.public GetBottomScreenOption
 .public sub_02051E20
 .public UpdateCamera
 .public UpdateMinimap

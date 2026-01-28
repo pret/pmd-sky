@@ -139,8 +139,8 @@ _02075764:
 	bx lr
 	arm_func_end CRYPTO_RC4Init
 
-	arm_func_start sub_020757B0
-sub_020757B0: ; 0x020757B0
+	arm_func_start Crypto_RC4Encrypt
+Crypto_RC4Encrypt: ; 0x020757B0
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, lr}
 	ldrb r7, [r0]
 	ldrb r6, [r0, #1]
@@ -173,7 +173,7 @@ _02075810:
 	strb r7, [r0, #-4]
 	strb r6, [r0, #-3]
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
-	arm_func_end sub_020757B0
+	arm_func_end Crypto_RC4Encrypt
 
 	arm_func_start MTX_LookAt
 MTX_LookAt: ; 0x02075828

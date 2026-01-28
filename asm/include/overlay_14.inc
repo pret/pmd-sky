@@ -35,6 +35,7 @@
 .public IsDialogueBoxActive
 .public IsSimpleMenuActive
 .public IsTextBoxActive
+.public IsTouchScreenNotOff
 .public LoadObjectAnimData
 .public MemAlloc
 .public MemFree
@@ -67,5 +68,4 @@
 .public sub_0202BC60
 .public sub_0202F334
 .public sub_0202F954
-.public IsTouchScreenNotOff
 .public UpdateWindow

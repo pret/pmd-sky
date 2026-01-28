@@ -9815,7 +9815,7 @@ ov02_0232FE08: ; 0x0232FE08
 	ldr r4, [sp, #0x10]
 	strb r5, [r4]
 	str r4, [sp]
-	blx ov00_022CF284
+	blx recvfrom
 	pop {r3, r4, r5, pc}
 	.align 2, 0
 	thumb_func_end ov02_0232FE08
@@ -9869,7 +9869,7 @@ ov02_0232FE70: ; 0x0232FE70
 	ldr r4, [sp, #0x10]
 	strb r5, [r4]
 	str r4, [sp]
-	blx ov00_022CF338
+	blx sendto
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov02_0232FE70
 
@@ -9881,27 +9881,27 @@ ov02_0232FE80: ; 0x0232FE80
 
 	thumb_func_start ov02_0232FE84
 ov02_0232FE84: ; 0x0232FE84
-	ldr r3, _0232FE88 ; =ov00_022CF1AC
+	ldr r3, _0232FE88 ; =socket
 	bx r3
 	.align 2, 0
-_0232FE88: .word ov00_022CF1AC
+_0232FE88: .word socket
 	thumb_func_end ov02_0232FE84
 
 	thumb_func_start ov02_0232FE8C
 ov02_0232FE8C: ; 0x0232FE8C
-	ldr r3, _0232FE94 ; =ov00_022CF1D8
+	ldr r3, _0232FE94 ; =bind
 	strb r2, [r1]
 	bx r3
 	nop
-_0232FE94: .word ov00_022CF1D8
+_0232FE94: .word bind
 	thumb_func_end ov02_0232FE8C
 
 	thumb_func_start ov02_0232FE98
 ov02_0232FE98: ; 0x0232FE98
-	ldr r3, _0232FE9C ; =ov00_022CF3C8
+	ldr r3, _0232FE9C ; =CloseVeneer
 	bx r3
 	.align 2, 0
-_0232FE9C: .word ov00_022CF3C8
+_0232FE9C: .word CloseVeneer
 	thumb_func_end ov02_0232FE98
 
 	thumb_func_start ov02_0232FEA0
@@ -13648,7 +13648,7 @@ ov02_02331A48: ; 0x02331A48
 	str r1, [sp]
 	add r1, r3, #0
 	mov r3, #0
-	blx ov00_022CF338
+	blx sendto
 	cmp r0, #0
 	bge _02331A5E
 	mov r0, #3
@@ -15018,7 +15018,7 @@ _02332442:
 	mov r0, #2
 	add r1, r0, #0
 	mov r2, #0
-	blx ov00_022CF1AC
+	blx socket
 	add r4, r0, #0
 	bpl _0233245A
 	mov r0, #1
@@ -15040,7 +15040,7 @@ _0233245A:
 	strh r3, [r2, #0x16]
 	str r1, [sp, #0x28]
 	add r1, r5, #0
-	blx ov00_022CF1D8
+	blx bind
 	str r0, [sp, #8]
 	cmp r0, #0
 	bge _02332488
@@ -15061,7 +15061,7 @@ _02332490:
 	cmp r0, r1
 	blo _023324AC
 	add r0, r4, #0
-	blx ov00_022CF3C8
+	blx CloseVeneer
 	mov r0, #2
 	mvn r0, r0
 	str r0, [sp, #8]
@@ -15081,7 +15081,7 @@ _023324AC:
 	add r0, r4, #0
 	lsl r2, r2, #0xa
 	mov r3, #4
-	blx ov00_022CF284
+	blx recvfrom
 	cmp r0, #0
 	ble _023325AA
 	ldr r0, _02332718 ; =ov02_0235A204
@@ -15124,7 +15124,7 @@ _0233251C:
 	cmp r0, r1
 	blo _02332538
 	add r0, r4, #0
-	blx ov00_022CF3C8
+	blx CloseVeneer
 	mov r0, #3
 	mvn r0, r0
 	str r0, [sp, #8]
@@ -15138,7 +15138,7 @@ _02332538:
 	add r0, r4, #0
 	lsl r2, r2, #0xa
 	mov r3, #4
-	blx ov00_022CF284
+	blx recvfrom
 	cmp r0, #0
 	ble _023325AC
 	ldr r0, _02332718 ; =ov02_0235A204
@@ -15251,7 +15251,7 @@ _02332622:
 	add r0, r4, #0
 	lsl r2, r2, #0xa
 	mov r3, #4
-	blx ov00_022CF284
+	blx recvfrom
 	cmp r0, #0
 	ble _02332678
 	ldr r0, _02332718 ; =ov02_0235A204
@@ -15300,7 +15300,7 @@ _02332678:
 	cmp r0, #0xa
 	blt _023326A2
 	add r0, r4, #0
-	blx ov00_022CF3C8
+	blx CloseVeneer
 	mov r0, #1
 	mvn r0, r0
 	str r0, [sp, #8]
@@ -15404,7 +15404,7 @@ _02332780:
 	cmp r4, #0
 	beq _0233278A
 	add r0, r4, #0
-	blx ov00_022CF3C8
+	blx CloseVeneer
 _0233278A:
 	ldr r0, _023327A0 ; =ov02_023594D0
 	ldr r0, [r0, #0x10]
@@ -40221,7 +40221,7 @@ ov02_0234562C: ; 0x0234562C
 	ldr r0, [r1, #4]
 	cmp r0, #0
 	beq _02345650
-	bl ov00_022D7794
+	bl InitWfc
 	movs r5, r0
 	ldmeqia sp!, {r3, r4, r5, pc}
 _02345650:

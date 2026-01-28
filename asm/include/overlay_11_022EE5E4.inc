@@ -97,15 +97,16 @@
 .public GetNameWithGender
 .public GetNbItemsInBag
 .public GetPartner
-.public GetResolvedPerformanceProgressFlag
 .public GetPressedButtons
 .public GetRank
 .public GetRankupPoints
+.public GetResolvedPerformanceProgressFlag
 .public GetSimpleMenuResult__0202AEA4
 .public GetSimpleMenuResult__0202B870
 .public GetSpriteIndex__02052724
 .public GetStringFromFileVeneer
 .public GetTeamMember
+.public GetTopScreenOption
 .public GetWindowContents
 .public GetWindowIdPageStart
 .public GetWindowIdSelectedItemOnPage
@@ -942,7 +943,6 @@
 .public sub_020483D8
 .public sub_02048764
 .public sub_02048794
-.public GetTopScreenOption
 .public sub_0204AFD0
 .public sub_0204CDCC
 .public sub_0204CE00

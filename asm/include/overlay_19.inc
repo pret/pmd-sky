@@ -29,8 +29,8 @@
 .public GetItemAtIdx
 .public GetLearnableIqSkills
 .public GetMaxReachedFloor
-.public GetResolvedPerformanceProgressFlag
 .public GetPressedButtons
+.public GetResolvedPerformanceProgressFlag
 .public GetScenarioBalance
 .public GetSecondFormIfValid
 .public GetStringFromFileVeneer

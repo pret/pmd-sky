@@ -22,6 +22,7 @@
 .public ExclusiveItemEffectIsActiveWithLogging
 .public FreeOtherWrappedMonsters
 .public GetActiveTeamMember
+.public GetDamageTurnOption
 .public GetDirectionTowardsPosition
 .public GetExp
 .public GetIdleAnimationId
@@ -106,7 +107,6 @@
 .public SetPokemonBattled
 .public ShouldDisplayEntityWrapper
 .public SpawnDroppedItemWrapper
-.public GetDamageTurnOption
 .public SubInitMonster
 .public SubstitutePlaceholderStringTags
 .public TryEndPetrifiedOrSleepStatus

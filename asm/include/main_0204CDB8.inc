@@ -1,6 +1,4 @@
 #pragma once
-.public SCENARIO_FLAG_RESUME_DEBUG_MSG
-.public SCENARIO_FLAG_BACKUP_DEBUG_MSG
 .public _0209E008
 .public _0209E010
 .public _0209E011
@@ -28,6 +26,8 @@
 .public PORTRAIT_LAYOUTS
 .public SaveScriptVariableValue
 .public SaveScriptVariableValueAtIndex
+.public SCENARIO_FLAG_BACKUP_DEBUG_MSG
+.public SCENARIO_FLAG_RESUME_DEBUG_MSG
 .public SetAdventureLogCompleted
 .public sub_02050974
 .public sub_02050990

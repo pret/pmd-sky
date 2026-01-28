@@ -30,7 +30,7 @@ extern s32 vsprintf(u8* str, const u8* format, va_list ap);
 
 static s16 GetExclusiveItemOffsetEnsureValid(s16 item_id);
 static s16 EnsureValidItem(s16 item_id);
-static void SprintfStatic(char*, const char*, ...);
+static void SprintfStatic__0200E990(char*, const char*, ...);
 
 
 void LoadItemPspi2n(void) {
@@ -44,7 +44,7 @@ void LoadItemPspi2n(void) {
         ZInit8(&ITEM_DATA_TABLE_PTRS.langFile);
 #ifdef EUROPE
         char buf[256];
-        SprintfStatic(buf, &ITEM_ST_I2N_BIN, ITEM_LANG_FILE_ARRAY[GetLanguage()]);
+        SprintfStatic__0200E990(buf, &ITEM_ST_I2N_BIN, ITEM_LANG_FILE_ARRAY[GetLanguage()]);
         LoadFileFromRom(&ITEM_DATA_TABLE_PTRS.langFile, buf, 1);
 #else
         LoadFileFromRom(&ITEM_DATA_TABLE_PTRS.langFile, &ITEM_ST_I2N_BIN, 1);
@@ -53,7 +53,7 @@ void LoadItemPspi2n(void) {
 }
 
 #ifdef EUROPE
-static void SprintfStatic(char* buf, const char* fmt, ...)
+static void SprintfStatic__0200E990(char* buf, const char* fmt, ...)
 {
     va_list args;
     va_start(args, fmt);
@@ -120,7 +120,7 @@ void GetItemNameFormatted(char* name, s16 item_id, s32 flag1, s32 flag2)
     category = ITEM_DATA_TABLE_PTRS.data[EnsureValidItem(item_id)].category;
     if ((flag2 != 0) || ((u8)(category + 0xF4) <= 2)) {
         if (flag1 != 0) {
-            SprintfStatic(name, &ITEM_NAME_FORMAT_YELLOW, raw_name);
+            SprintfStatic__0200E990(name, &ITEM_NAME_FORMAT_YELLOW, raw_name);
             return;
         }
         strcpy(name, raw_name);
@@ -128,23 +128,23 @@ void GetItemNameFormatted(char* name, s16 item_id, s32 flag1, s32 flag2)
     }
     if (category == CATEGORY_EXCLUSIVE_ITEMS) {
         if (flag1 != 0) {
-            SprintfStatic(name, &ITEM_NAME_FORMAT_INDIGO, raw_name);
+            SprintfStatic__0200E990(name, &ITEM_NAME_FORMAT_INDIGO, raw_name);
             return;
         }
-        SprintfStatic(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
+        SprintfStatic__0200E990(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
         return;
     }
     if (flag1 != 0) {
-        SprintfStatic(name, &ITEM_NAME_FORMAT_CREAM, raw_name);
+        SprintfStatic__0200E990(name, &ITEM_NAME_FORMAT_CREAM, raw_name);
         return;
 
     }
-    SprintfStatic(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
+    SprintfStatic__0200E990(name, &ITEM_NAME_FORMAT_PLAIN, raw_name);
     return;
 }
 
 #ifndef EUROPE
-static void SprintfStatic(char* buf, const char* fmt, ...)
+static void SprintfStatic__0200E990(char* buf, const char* fmt, ...)
 {
     va_list args;
     va_start(args, fmt);

@@ -13,6 +13,7 @@
 .public DungeonRandRange
 .public FLOOR_GENERATION_STATUS
 .public GenerateSecondaryTerrainFormations
+.public GetBottomScreenOption
 .public GetFinalKecleonShopSpawnChance
 .public GetFloorType
 .public GetHiddenStairsType
@@ -21,6 +22,7 @@
 .public GetNextFixedRoomAction
 .public GetTile
 .public GetTileSafe
+.public GetTopScreenOption
 .public GetTrapInfo
 .public HandleSir0Translation
 .public HIDDEN_STAIRS_SPAWN_BLOCKED
@@ -33,6 +35,7 @@
 .public IsExperienceLocked
 .public IsGoldenChamber
 .public IsHiddenStairsFloor
+.public IsMapShownOnEitherScreen
 .public IsOutlawMonsterHouseFloor
 .public IsSecretBazaar
 .public LoadFixedRoomData
@@ -88,9 +91,6 @@
 .public sub_0200C008
 .public sub_0201B9F8
 .public sub_0201F2A0
-.public GetTopScreenOption
-.public GetBottomScreenOption
-.public IsMapShownOnEitherScreen
 .public TeamMemberHasExclusiveItemEffectActive
 .public TILESET_PROPERTIES
 .public UnloadFile

@@ -2832,7 +2832,7 @@ _0230F870:
 	ldr r2, _0230F9B8 ; =0x000005DC
 	mov r1, r8
 	mov r3, #0
-	bl ov00_022F509C
+	bl SocketRecvFrom
 	mov r2, r0
 	cmp r2, r7
 	bne _0230F958
@@ -3717,7 +3717,7 @@ _0231046C:
 	mov r0, #2
 	mov r1, r0
 	mov r2, #0
-	bl ov00_022F4FA0
+	bl SocketCreate
 	str r0, [r4]
 	cmp r5, #3
 	str r5, [r4, #0x40]
@@ -3757,12 +3757,12 @@ _023104C8:
 	beq _02310550
 	ldr r0, [r4]
 	mov r2, #8
-	bl ov00_022F4FDC
+	bl SocketBind
 	mvn r1, #0
 	cmp r0, r1
 	bne _02310550
 	ldr r0, [r4]
-	bl ov00_022F4FB4
+	bl SocketClose
 	ldr r0, [r4, #0xc]
 	bl ov00_022F4C38
 	ldr r0, [r4, #0x10]
@@ -3808,7 +3808,7 @@ ov00_023105A8: ; 0x023105A8
 	strne r0, [r4, #0x14]
 	ldmneia sp!, {r4, pc}
 	ldr r0, [r4]
-	bl ov00_022F4FB4
+	bl SocketClose
 	ldr r0, [r4, #0xc]
 	bl ov00_022F4C38
 	ldr r0, [r4, #0x10]
@@ -4074,7 +4074,7 @@ _02310928:
 	ldr r0, [r6]
 	ldr r1, [sp, #0x34]
 	ldr r2, [sp, #0x38]
-	bl ov00_022F50E0
+	bl SocketSendTo
 	mvn r1, #0
 	cmp r0, r1
 	bne _02310A70
@@ -4542,7 +4542,7 @@ _02310F68:
 	mov r2, #0x200
 	mov r3, #0
 	str r6, [sp, #4]
-	bl ov00_022F509C
+	bl SocketRecvFrom
 	mov r7, r0
 	mvn r0, #0
 	cmp r7, r0
@@ -5051,7 +5051,7 @@ ov00_02311630: ; 0x02311630
 	ldr r2, [sp, #0x18]
 	mov r3, #0
 	str ip, [sp, #4]
-	bl ov00_022F50E0
+	bl SocketSendTo
 	add sp, sp, #0x10
 	ldmia sp!, {r3, pc}
 	arm_func_end ov00_02311630
@@ -5544,7 +5544,7 @@ _02311D20:
 	ldr r0, [r2, #8]
 	cmp r0, r1
 	beq _02311D7C
-	bl ov00_022F4FB4
+	bl SocketClose
 _02311D7C:
 	ldr r0, _02311DBC ; =ov00_0231BF18
 	mvn r1, #0
@@ -5552,7 +5552,7 @@ _02311D7C:
 	ldr r0, [r0, #4]
 	cmp r0, r1
 	beq _02311D98
-	bl ov00_022F4FB4
+	bl SocketClose
 _02311D98:
 	ldr r0, _02311DBC ; =ov00_0231BF18
 	mvn r1, #0
@@ -5689,7 +5689,7 @@ ov00_02311EE0: ; 0x02311EE0
 	str r2, [r4, #0x40]
 	mov r1, r0
 	mov r2, #0
-	bl ov00_022F4FA0
+	bl SocketCreate
 	str r0, [r4]
 	mov r0, #0
 	str r0, [r4, #0x24]
@@ -5726,7 +5726,7 @@ ov00_02311FB0: ; 0x02311FB0
 	mvn r1, #0
 	cmp r0, r1
 	beq _02311FD4
-	bl ov00_022F4FB4
+	bl SocketClose
 _02311FD4:
 	mvn r0, #0
 	str r0, [r4]
@@ -5788,7 +5788,7 @@ _02312090:
 	mov r1, r6
 	mov r2, r5
 	mov r3, r4
-	bl ov00_022F509C
+	bl SocketRecvFrom
 	mov r1, r0
 	cmp r1, sl
 	beq _023120E4
@@ -6516,7 +6516,7 @@ _02312A88:
 	mov r1, r7
 	mov r2, r6
 	mov r3, fp
-	bl ov00_022F509C
+	bl SocketRecvFrom
 	mov r2, r0
 	cmp r2, r4
 	beq _02312AC4
@@ -6662,7 +6662,7 @@ _02312C78:
 	ldrne r1, [r4, #0xc4]
 	cmpne r1, #0
 	beq _02312C94
-	bl ov00_022F4FB4
+	bl SocketClose
 _02312C94:
 	mvn r0, #0
 	str r0, [r4]
@@ -7584,7 +7584,7 @@ _02313920:
 	ldr r2, [r5, #0x578]
 	mov r1, r5
 	mov r3, r8
-	bl ov00_022F50E0
+	bl SocketSendTo
 	str r7, [r5, #0x578]
 	ldr r0, [sp, #0x14]
 	cmp r0, #7
@@ -7614,7 +7614,7 @@ _0231396C:
 	ldr r2, [r5, #0x578]
 	mov r1, r5
 	mov r3, #0
-	bl ov00_022F50E0
+	bl SocketSendTo
 	add sp, sp, #0x128
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	arm_func_end ov00_02313820
@@ -8153,7 +8153,7 @@ _02314124:
 	ldr r2, [sp, #0x588]
 	add r1, sp, #0x10
 	mov r3, #0
-	bl ov00_022F50E0
+	bl SocketSendTo
 	add sp, sp, #0x18c
 	add sp, sp, #0x400
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
@@ -8182,7 +8182,7 @@ ov00_02314158: ; 0x02314158
 	ldr r2, [sp, #0x580]
 	add r1, sp, #8
 	mov r3, #0
-	bl ov00_022F50E0
+	bl SocketSendTo
 	bl ov00_022F5594
 	str r0, [r4, #0xb0]
 	add sp, sp, #0x184
@@ -8338,7 +8338,7 @@ _023143C4:
 	ldr r2, [sp, #0xb18]
 	add r1, sp, #0x5a0
 	mov r3, #0
-	bl ov00_022F50E0
+	bl SocketSendTo
 	bl ov00_022F5594
 	str r0, [sl, #0xac]
 	str r0, [sl, #0xb0]
@@ -8852,7 +8852,7 @@ _02314AAC:
 	ldr r0, [r5, #0x20]
 	add r1, sp, #0x14
 	mov r3, #0
-	bl ov00_022F50E0
+	bl SocketSendTo
 	mov r6, #1
 _02314AD0:
 	cmp r6, #0
@@ -8886,7 +8886,7 @@ ov00_02314B1C: ; 0x02314B1C
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	ldr r0, [r4, #0x20]
-	bl ov00_022F4FB4
+	bl SocketClose
 	mvn r1, #0
 	add r0, r4, #0x14
 	str r1, [r4, #0x20]
@@ -9096,7 +9096,7 @@ _02314DE8:
 	mov r0, r7
 	mov r3, #0
 	str r4, [sp, #4]
-	bl ov00_022F509C
+	bl SocketRecvFrom
 	mov r5, r0
 	mvn r0, #0
 	cmp r5, r0
@@ -10742,7 +10742,7 @@ _02316240:
 	mov r0, #2
 	mov r1, #1
 	mov r2, #0
-	bl ov00_022F4FA0
+	bl SocketCreate
 	mvn r1, #0
 	cmp r0, r1
 	str r0, [r4, #0x6b4]
@@ -10752,13 +10752,13 @@ _02316240:
 _02316278:
 	add r1, sp, #0
 	mov r2, #8
-	bl ov00_022F503C
+	bl SocketConnect
 	cmp r0, #0
 	addeq sp, sp, #0x88
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
 	ldr r0, [r4, #0x6b4]
-	bl ov00_022F4FB4
+	bl SocketClose
 	mvn r0, #0
 	str r0, [r4, #0x6b4]
 	mov r0, #3
@@ -10959,7 +10959,7 @@ _02316518:
 	mov r2, r8
 	mov r3, r5
 	sub r7, r7, #1
-	bl ov00_022F50CC
+	bl SocketSend
 	mov r6, r0
 	cmp r6, #0
 	bgt _02316590
@@ -11111,7 +11111,7 @@ _02316728:
 	mov r3, #0
 	strb r0, [r1, #1]
 	ldr r0, [r5, #0x6b4]
-	bl ov00_022F50CC
+	bl SocketSend
 	cmp r0, #0
 	bgt _0231678C
 	mov r0, r5
@@ -11214,7 +11214,7 @@ _0231689C:
 	sub r1, r1, #1
 	cmp r0, r1
 	beq _023168BC
-	bl ov00_022F4FB4
+	bl SocketClose
 _023168BC:
 	mvn r1, #0
 	mov r0, r4
@@ -12481,7 +12481,7 @@ _02317A48:
 _02317A60:
 	ldr r0, [r7, #0x6b4]
 	mov r3, r4
-	bl ov00_022F50CC
+	bl SocketSend
 	cmp r0, #0
 	bgt _02317AC0
 	mov r0, #3
@@ -12547,7 +12547,7 @@ ov00_02317B10: ; 0x02317B10
 	add r1, r1, r5
 	rsb r2, r5, #0x1000
 	mov r3, #0
-	bl ov00_022F5088
+	bl SocketRecv
 	add r1, r0, #1
 	cmp r1, #1
 	bhi _02317B64
@@ -12667,7 +12667,7 @@ _02317C28:
 	ldr r2, [sp, #0x50]
 	mov r1, r4
 	mov r3, #0
-	bl ov00_022F50CC
+	bl SocketSend
 	cmp r0, #0
 	movlt r0, #3
 	movge r0, #0
@@ -12751,7 +12751,7 @@ _02317E10:
 	mov r1, r7
 	mov r2, r6
 	mov r3, fp
-	bl ov00_022F509C
+	bl SocketRecvFrom
 	cmp r0, r4
 	beq _02317E8C
 	ldrh r2, [sp, #0xe]
@@ -12788,7 +12788,7 @@ _02317E9C:
 	cmp r0, #0x7d0
 	bls _02317EE4
 	ldr r0, [sl, #0x6b4]
-	bl ov00_022F4FB4
+	bl SocketClose
 	mvn r0, #0
 	str r0, [sl, #0x6b4]
 	mov r0, #1

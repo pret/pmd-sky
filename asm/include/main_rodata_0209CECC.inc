@@ -1,11 +1,8 @@
 #pragma once
-.public ARM9_UNKNOWN_DATA__NA_209EAAC
-.public MISSION_FLOOR_RANKS_AND_ITEM_LISTS_1
 .public _0209CE8C
 .public _0209CE94
 .public _0209CE9C
 .public _0209CEA4
-.public SUM_MSG
 .public _0209CFA8
 .public _0209CFB0
 .public _0209CFBC
@@ -41,7 +38,6 @@
 .public _0209D168
 .public _0209D178
 .public _0209D188
-.public SUB30_PROJECTP_MSG
 .public _0209D1A8
 .public _0209D1B8
 .public _0209D1C8
@@ -59,7 +55,6 @@
 .public _0209D290
 .public _0209D2A4
 .public _0209D2B8
-.public NOTE_MODIFY_FLAG_MSG
 .public _0209D2E0
 .public _0209D2F4
 .public _0209D308
@@ -218,3 +213,8 @@
 .public _0209F330
 .public _0209F394
 .public _0209F3F8
+.public ARM9_UNKNOWN_DATA__NA_209EAAC
+.public MISSION_FLOOR_RANKS_AND_ITEM_LISTS_1
+.public NOTE_MODIFY_FLAG_MSG
+.public SUB30_PROJECTP_MSG
+.public SUM_MSG

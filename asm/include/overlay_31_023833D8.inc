@@ -1,4 +1,5 @@
 #pragma once
+.public GetTopScreenOption
 .public ov31_02383328
 .public ov31_0238335C
 .public ov31_023833B4
@@ -6,4 +7,3 @@
 .public OVERLAY31_UNKNOWN_POINTER__NA_238A268
 .public sub_020355DC
 .public sub_02035CE4
-.public GetTopScreenOption
