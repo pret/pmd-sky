@@ -1,6 +1,13 @@
 #pragma once
-.public ARM9_UNKNOWN_TABLE__NA_209E280
+.public _0209E264
+.public _022AB4F8
+.public _022AB510
+.public _022AB518
+.public _022AB5A8
+.public _022AB5AC
+.public _s32_div_f
 .public ApplyLevelUpBoostsToGroundMonster
+.public ARM9_UNKNOWN_TABLE__NA_209E280
 .public CLIENT_LEVEL_TABLE
 .public CopyLogFrom
 .public CopyLogTo
@@ -18,15 +25,6 @@
 .public SaveOptionsToCtx
 .public SaveScriptVariableValue
 .public StringFromId
-.public WONDER_MAIL_BITS_SWAP
-.public WONDER_MAIL_ENCRYPTION_TABLE
-.public _0209E264
-.public _022AB4F8
-.public _022AB510
-.public _022AB518
-.public _022AB5A8
-.public _022AB5AC
-.public _s32_div_f
 .public sub_02004F80
 .public sub_0200C4CC
 .public sub_02048BFC
@@ -44,3 +42,5 @@
 .public sub_0205BD14
 .public sub_0205F00C
 .public sub_0205FE80
+.public WONDER_MAIL_BITS_SWAP
+.public WONDER_MAIL_ENCRYPTION_TABLE

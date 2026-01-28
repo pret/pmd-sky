@@ -26,6 +26,7 @@
 .public ArrayFill16
 .public ArrayFill32
 .public ArrayFill32Fast
+.public Crypto_RC4Encrypt
 .public CRYPTO_RC4Init
 .public Debug_GetDebugFlag
 .public EnableIrqFlag
@@ -39,6 +40,9 @@
 .public HardwareInterrupt
 .public InitMenu
 .public LoadOverlay
+.public MD5_Digest
+.public MD5_Init
+.public MD5_Update
 .public MemAlloc
 .public memcmp
 .public memcpy
@@ -1087,7 +1091,6 @@
 .public sub_020590DC
 .public sub_0205B77C
 .public sub_0205B80C
-.public sub_020757B0
 .public sub_020790DC
 .public sub_0207911C
 .public sub_02079550
@@ -1140,9 +1143,6 @@
 .public sub_0207F70C
 .public sub_0207F818
 .public sub_0207F828
-.public sub_020800FC
-.public sub_0208013C
-.public sub_02080204
 .public sub_0208266C
 .public sub_02082748
 .public sub_020827F4

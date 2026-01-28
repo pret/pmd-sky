@@ -21,6 +21,7 @@
 .public GetActiveTeamMember
 .public GetConversion2ConvertToType
 .public GetDirectionTowardsPosition
+.public GetFarOffPalsOption
 .public GetIdleAnimationId
 .public GetLearnableIqSkills
 .public GetMaxPpWrapper
@@ -52,7 +53,6 @@
 .public SetPreprocessorArgsStringToName
 .public ShouldDisplayEntityWrapper
 .public sub_02017C50
-.public GetFarOffPalsOption
 .public sub_02050FF8
 .public sub_02052E2C
 .public sub_02056228

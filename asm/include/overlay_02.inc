@@ -11,7 +11,9 @@
 .public ArrayFill16
 .public ArrayFill32
 .public ArrayFill32Fast
+.public bind
 .public ClearIrqFlag
+.public CloseVeneer
 .public EnableIrqFlag
 .public FileInit
 .public FX_DivS32
@@ -74,6 +76,7 @@
 .public GXS_LoadOBJPltt
 .public GXS_SetGraphicsMode
 .public GXx_SetMasterBrightness_
+.public InitWfc
 .public MemAlloc
 .public memcmp
 .public memcpy
@@ -122,11 +125,6 @@
 .public ov00_022C759C
 .public ov00_022C75D8
 .public ov00_022CEF10
-.public ov00_022CF1AC
-.public ov00_022CF1D8
-.public ov00_022CF284
-.public ov00_022CF338
-.public ov00_022CF3C8
 .public ov00_022CF674
 .public ov00_022CF7E8
 .public ov00_022CF8F8
@@ -143,7 +141,6 @@
 .public ov00_022D6C88
 .public ov00_022D6D04
 .public ov00_022D75EC
-.public ov00_022D7794
 .public ov00_022D7864
 .public ov00_022D7958
 .public ov00_022D7AB0
@@ -165,7 +162,10 @@
 .public ov00_02318160
 .public ov00_023250C8
 .public PM_ForceToPowerOff
+.public recvfrom
+.public sendto
 .public SetIrqFlag
+.public socket
 .public StartThread
 .public strcpy
 .public strlen

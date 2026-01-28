@@ -17,7 +17,7 @@ ov29_0230027C: ; 0x0230027C
 	ldr r1, _023002C4 ; =ov29_023527C0
 	add r2, sp, #0
 	mov r0, r4
-	bl SprintfStatic
+	bl SprintfStatic__0200E990
 	b _023002B8
 _023002B4:
 	bl GetMonsterName
@@ -33,8 +33,8 @@ _023002C0: .word 0x00000C32
 _023002C4: .word ov29_023527C0
 	arm_func_end ov29_0230027C
 
-	arm_func_start SprintfStatic
-SprintfStatic: ; 0x023002C8
+	arm_func_start SprintfStatic__0200E990
+SprintfStatic__0200E990: ; 0x023002C8
 	stmdb sp!, {r0, r1, r2, r3}
 	stmdb sp!, {r3, lr}
 	add r2, sp, #0xc
@@ -45,7 +45,7 @@ SprintfStatic: ; 0x023002C8
 	ldmia sp!, {r3, lr}
 	add sp, sp, #0x10
 	bx lr
-	arm_func_end SprintfStatic
+	arm_func_end SprintfStatic__0200E990
 
 	arm_func_start ov29_023002F0
 ov29_023002F0: ; 0x023002F0
@@ -61,7 +61,7 @@ ov29_023002F0: ; 0x023002F0
 	ldr r1, _02300354 ; =ov29_023527D0
 	mov r0, r5
 	mov r2, r4
-	bl SprintfStatic
+	bl SprintfStatic__0200E990
 	ldmia sp!, {r3, r4, r5, pc}
 _02300328:
 	ldrb r3, [r1, #6]

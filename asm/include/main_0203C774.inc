@@ -147,7 +147,6 @@
 .public _022AAEA8
 .public _022AAEAC
 .public _022AB09C
-.public OPTIONS
 .public _022AB0A1
 .public _022AB0A2
 .public _022AB0A9
@@ -179,6 +178,7 @@
 .public ConvertStorageItemAtIdxToItem
 .public CopyBitsFrom
 .public CopyBitsTo
+.public CopyFrameTypeOption
 .public CopyMenuControlWindowExtraInfo
 .public CopyNStringFromId
 .public CopyProgressInfoFromScratchFrom
@@ -202,6 +202,7 @@
 .public CreateTextBoxWithArg
 .public Debug_GetDebugFlag
 .public Debug_Print0
+.public DebugPrintEventFlagSize
 .public DEFAULT_HERO_ID
 .public DisableIqSkill
 .public DrawTextInWindow
@@ -249,12 +250,12 @@
 .public GetNextIqSkill
 .public GetPartner
 .public GetPartnerMemberIdx
-.public GetResolvedPerformanceProgressFlag
 .public GetPpIncrease
 .public GetPressedButtons
 .public GetRank
 .public GetRankUpEntry
 .public GetReleasedStylus
+.public GetResolvedPerformanceProgressFlag
 .public GetRngSeed
 .public GetSimpleMenuResult__0202AEA4
 .public GetSimpleMenuResult__0202B870
@@ -271,6 +272,7 @@
 .public InitMenu
 .public InitMenuWithWindowExtraInfo
 .public InitMove
+.public InitOptions
 .public InitPortraitParams
 .public InitPortraitParamsWithMonsterId
 .public InitPreprocessorArgs
@@ -309,6 +311,7 @@
 .public MemsetSimple
 .public MemZero
 .public NOTIFY_NOTE
+.public OPTIONS
 .public OS_GetLockID
 .public ov11_023061CC
 .public ov11_023061E4
@@ -356,6 +359,7 @@
 .public SetPortraitLayout
 .public SetPortraitOffset
 .public SetRngSeed
+.public SetSpecialEpisodeOpenOld
 .public SetTeamSetupHeroAndPartnerOnly
 .public SetUnkAdvancedTextBoxFn
 .public SetUnkAdvancedTextBoxWindowFn
@@ -464,10 +468,6 @@
 .public sub_0203909C
 .public sub_02039218
 .public sub_0203931C
-.public DebugPrintEventFlagSize
-.public SetSpecialEpisodeOpenOld
-.public CopyFrameTypeOption
-.public InitOptions
 .public sub_0204CDB8
 .public sub_0204E154
 .public sub_0204E19C

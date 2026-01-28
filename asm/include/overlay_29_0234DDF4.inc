@@ -9,6 +9,7 @@
 .public EntityIsValid__0234EC14
 .public EntryOverlay31
 .public GetActiveTeamMember
+.public GetCheckDirectionOption
 .public GetItemMoveId16
 .public GetItemToUse
 .public GetLeader
@@ -62,7 +63,6 @@
 .public sub_0200B3D4
 .public sub_020282F4
 .public sub_0202AAE8
-.public GetCheckDirectionOption
 .public TeamMenu
 .public TryPointCameraToMonster
 .public UnloadOverlay

@@ -26,7 +26,10 @@
 .public EntityIsValid__022F0590
 .public ExecuteMoveEffect
 .public GetActiveTeamMember
+.public GetBottomScreenOption
+.public GetCheckDirectionOption
 .public GetDirectionTowardsPosition
+.public GetDPadAttackOption
 .public GetEntityMoveTargetAndRange
 .public GetEquippedThrowableItem
 .public GetHero
@@ -45,6 +48,7 @@
 .public GetTile
 .public GetTileAtEntity
 .public GetTileSafe
+.public GetTopScreenOption
 .public GetTrapInfo
 .public GetTreatmentBetweenMonsters
 .public HasHeldItem
@@ -60,6 +64,7 @@
 .public IsFloorOver
 .public IsGoldenChamber
 .public IsSecretBazaarNpc
+.public IsTextLogOnTopScreen
 .public ItemZInit
 .public LEADER_PTR
 .public LogItemBlockedByEmbargo
@@ -176,6 +181,7 @@
 .public SetMessageLogPreprocessorArgsSpeakerId0x30000
 .public SetMessageLogPreprocessorArgsStringToName
 .public SetMonsterActionFields
+.public SetTopScreenOption
 .public ShouldMonsterRunAway
 .public ShouldMonsterRunAwayAndShowEffect
 .public SpawnItem
@@ -186,12 +192,6 @@
 .public sub_0201CF90
 .public sub_02026268
 .public sub_02027B1C
-.public GetTopScreenOption
-.public SetTopScreenOption
-.public GetBottomScreenOption
-.public GetDPadAttackOption
-.public GetCheckDirectionOption
-.public IsTextLogOnTopScreen
 .public SubstitutePlaceholderStringTags
 .public TryAddMonsterToActiveTeam
 .public TryLeaderItemPickUp

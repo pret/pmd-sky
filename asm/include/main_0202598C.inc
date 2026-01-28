@@ -32,6 +32,7 @@
 .public GetWindow
 .public GetWindowRectangle
 .public HandleSir0Translation
+.public IsTouchScreenNotOff
 .public LoadFileFromRom
 .public PreprocessStringFromId
 .public RandInt
@@ -67,7 +68,6 @@
 .public sub_02028324
 .public sub_020288DC
 .public sub_020288FC
-.public IsTouchScreenNotOff
 .public TBL_TALK_GROUP_STRING_ID_START
 .public UnloadFile
 .public UpdateWindow

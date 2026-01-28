@@ -90,6 +90,7 @@
 .public CloseSimpleMenu
 .public CloseTeamSelectionMenu
 .public CloseTextBox
+.public CopyFrameTypeOption
 .public CreateAdvancedMenu
 .public CreateAdvancedTextBox
 .public CreateDebugMenu
@@ -123,6 +124,7 @@
 .public GetMainCharacter2MemberIdx
 .public GetMainCharacter3MemberIdx
 .public GetNameString
+.public GetOptions
 .public GetOptionsMenuResult
 .public GetOptionsMenuStates
 .public GetPartner
@@ -167,8 +169,10 @@
 .public SaveScriptVariableValueBytes
 .public SetAdvancedTextBoxField0x1C2
 .public SetAdvancedTextBoxState5
+.public SetFrameTypeOption
 .public SetMainTeamName
 .public SetNotifyNote
+.public SetOptions
 .public SetSimpleMenuField0x1AC
 .public ShowDialogueBox
 .public ShowPortraitInPortraitBox
@@ -225,10 +229,6 @@
 .public sub_0203C9A0
 .public sub_02048078
 .public sub_0204964C
-.public GetOptions
-.public SetOptions
-.public CopyFrameTypeOption
-.public SetFrameTypeOption
 .public sub_0204DA1C
 .public sub_0204E210
 .public sub_0204E3C8

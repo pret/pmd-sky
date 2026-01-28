@@ -14,6 +14,7 @@
 .public EntityIsValid__0230558C
 .public GetDirectionTowardsPosition
 .public GetShadowSize
+.public GetSpeedOption
 .public GetTileAtEntity
 .public IncrementEntityPixelPosXY
 .public IsFloorOver
@@ -39,7 +40,6 @@
 .public SetAndPlayAnimationForAnimationControl
 .public SetSpriteIdForAnimationControl
 .public ShouldDisplayEntityWrapper
-.public GetSpeedOption
 .public sub_02053038
 .public TryForcedLoss
 .public UpdateEntityPixelPos

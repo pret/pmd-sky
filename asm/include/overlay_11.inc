@@ -30,6 +30,7 @@
 .public Debug_GetLogFlag
 .public Debug_Print
 .public Debug_Print0
+.public DefaultInitScriptVariable
 .public DrawTeamStats
 .public DungeonRequestsDoneWrapper
 .public DungeonSwapIdxToId
@@ -69,13 +70,14 @@
 .public GetNameRaw
 .public GetPartner
 .public GetPartyMembers
-.public GetResolvedPerformanceProgressFlag
 .public GetPressedButtons
 .public GetRank
 .public GetReleasedStylus
+.public GetResolvedPerformanceProgressFlag
 .public GetScenarioBalance
 .public GetScriptEntityMonsterId
 .public GetSosMailCount
+.public GetSpeedOption
 .public GetStringFromFileVeneer
 .public GetTalkLine
 .public GetTeamMember
@@ -105,6 +107,8 @@
 .public IsStoryAtPoint
 .public IsStoryBeforeOrAtPoint
 .public IsStoryBeforePoint
+.public IsTouchScreenNotOff
+.public IsTouchScreenUseAnywhere
 .public ItemAtTableIdx
 .public KeyWaitInit
 .public LoadAndCompareScriptVarAndValue
@@ -503,6 +507,7 @@
 .public SetPortraitEmotion
 .public SetPortraitLayout
 .public SetPortraitOffset
+.public SetResolvedPerformanceProgressFlag
 .public SetScenarioProgressScriptVar
 .public SetSpecialEpisodeBeaten
 .public SetTeamSetupHeroAndPartnerOnly
@@ -636,11 +641,6 @@
 .public sub_02048614
 .public sub_02049338
 .public sub_0204964C
-.public IsTouchScreenNotOff
-.public IsTouchScreenUseAnywhere
-.public GetSpeedOption
-.public DefaultInitScriptVariable
-.public SetResolvedPerformanceProgressFlag
 .public sub_0204CDE8
 .public sub_0204CE48
 .public sub_0204D018

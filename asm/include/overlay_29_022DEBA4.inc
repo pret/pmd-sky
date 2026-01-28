@@ -37,6 +37,7 @@
 .public GetLeader
 .public GetMaxReachedFloor
 .public GetMaxRescueAttempts
+.public GetTopScreenOption
 .public GetTurnLimit
 .public IncrementNbSteals
 .public InitAlertBoxInfo
@@ -235,7 +236,6 @@
 .public sub_02009194
 .public sub_020091B0
 .public sub_02017B00
-.public GetTopScreenOption
 .public sub_0204F1B4
 .public sub_020510E8
 .public sub_02051134

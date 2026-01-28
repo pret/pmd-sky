@@ -43,7 +43,6 @@
 .public _0209CE9C
 .public _0209CEA4
 .public _0209CEBC
-.public SUM_MSG
 .public _0209CFA8
 .public _0209CFB0
 .public _0209CFBC
@@ -79,7 +78,6 @@
 .public _0209D168
 .public _0209D178
 .public _0209D188
-.public SUB30_PROJECTP
 .public _0209D1A8
 .public _0209D1B8
 .public _0209D1C8
@@ -97,7 +95,6 @@
 .public _0209D290
 .public _0209D2A4
 .public _0209D2B8
-.public NOTE_MODIFY_FLAG
 .public _0209D2E0
 .public _0209D2F4
 .public _0209D308
@@ -263,8 +260,10 @@
 .public IsAOrBPressed
 .public memset
 .public MISSION_FLOOR_RANKS_AND_ITEM_LISTS_1
+.public NOTE_MODIFY_FLAG_MSG
 .public snprintf
 .public sprintf
+.public SUB30_PROJECTP_MSG
 .public sub_02005D14
 .public sub_02005D90
 .public sub_02005DE0
@@ -412,6 +411,7 @@
 .public sub_0209081C
 .public sub_0209086C
 .public sub_020908A8
+.public SUM_MSG
 .public TryAppendToSlice
 .public TryAssignByteWrapper
 .public UpdateAdvancedMenu

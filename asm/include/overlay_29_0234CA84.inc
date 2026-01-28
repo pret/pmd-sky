@@ -8,9 +8,9 @@
 .public GetItemCategoryVeneer
 .public GetLeader
 .public GetMessageLogPreprocessorArgs
-.public GetResolvedPerformanceProgressFlag
 .public GetPlayerGender
 .public GetRandomExplorerMazeMonster
+.public GetResolvedPerformanceProgressFlag
 .public IsFullFloorFixedRoom
 .public IsFutureDungeon
 .public IsMonster__0234D460

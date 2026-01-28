@@ -21,8 +21,8 @@
 .public GetGameMode
 .public GetMainCharacter1MemberIdx
 .public GetPartnerMemberIdx
-.public GetResolvedPerformanceProgressFlag
 .public GetPressedButtons
+.public GetResolvedPerformanceProgressFlag
 .public GetSimpleMenuResult__0202B870
 .public GetTeamMember
 .public InitPortraitParamsWithMonsterId

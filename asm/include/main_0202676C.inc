@@ -117,6 +117,7 @@
 .public InitPortraitParams
 .public InitPreprocessorArgs
 .public InitRender3dElement64
+.public IsTouchScreenNotOff
 .public IsValidPortrait
 .public KeyWaitInit
 .public LoadFileFromRom
@@ -195,7 +196,6 @@
 .public sub_0203C984
 .public sub_020469BC
 .public sub_02048240
-.public IsTouchScreenNotOff
 .public TEAM_SELECTION_MENU_DEFAULT_WINDOW_PARAMS
 .public TEXT_BOX_DEFAULT_WINDOW_PARAMS
 .public UnloadFile

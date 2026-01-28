@@ -16,6 +16,7 @@
 .public IsMissionSuspendedAndValid
 .public IsMissionTypeSpecialEpisode
 .public IsSpecialEpisodeOpen
+.public IsTouchScreenNotOff
 .public MemAlloc
 .public MemcpySimple
 .public MemFree
@@ -50,6 +51,7 @@
 .public ov01_02338EC4
 .public ov01_02339888
 .public ov01_023398A4
+.public SetSpecialEpisodeOpen
 .public ShowKeyboard
 .public sub_02003B94
 .public sub_02003BC8
@@ -70,8 +72,6 @@
 .public sub_02046D20
 .public sub_0204A018
 .public sub_0204A1CC
-.public IsTouchScreenNotOff
-.public SetSpecialEpisodeOpen
 .public sub_0204E210
 .public sub_02050974
 .public sub_020509BC

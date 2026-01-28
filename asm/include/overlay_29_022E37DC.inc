@@ -37,6 +37,7 @@
 .public GetSecondFormIfValid
 .public GetSpriteFileSize
 .public GetSpriteSize
+.public GetTopScreenOption
 .public HandleSir0Translation
 .public InitPreprocessorArgs
 .public IsBossFight
@@ -48,6 +49,7 @@
 .public IsFullFloorFixedRoom
 .public IsInSpawnList
 .public IsItemForSpecialSpawnInBag
+.public IsTeamStatsOnTopScreen
 .public LoadFileFromRom
 .public LoadFixedRoom
 .public LogMessageByIdWithPopup
@@ -155,8 +157,6 @@
 .public sub_020483B8
 .public sub_020483D8
 .public sub_02048400
-.public GetTopScreenOption
-.public IsTeamStatsOnTopScreen
 .public SubstitutePlaceholderStringTags
 .public TOP_SCREEN_STATUS_PTR
 .public UnloadFile

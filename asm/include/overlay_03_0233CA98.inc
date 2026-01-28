@@ -42,6 +42,7 @@
 .public IsMonsterIllegalForMissions
 .public IsRecruitingAllowed
 .public IsScrollBoxActive
+.public IsTouchScreenNotOff
 .public ItemZInit
 .public LoadFileFromRom
 .public MemAlloc
@@ -246,7 +247,6 @@
 .public sub_02046D20
 .public sub_0204A018
 .public sub_0204A1CC
-.public IsTouchScreenNotOff
 .public sub_0204DBA0
 .public sub_0204DCA0
 .public sub_0204E210

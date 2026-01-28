@@ -15,6 +15,7 @@
 .public GetScenarioBalance
 .public HandleSir0Translation
 .public IsCurrentTilesetBackground
+.public IsTouchScreenUseAnywhere
 .public LoadTextureUi
 .public LoadWteFromFileDirectory
 .public Memcpy32
@@ -57,6 +58,5 @@
 .public sub_0201B43C
 .public sub_0201E380
 .public sub_0201F598
-.public IsTouchScreenUseAnywhere
 .public UnloadFile
 .public UnloadWte

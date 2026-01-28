@@ -64,9 +64,9 @@
 .public GetNbPokemonJoined
 .public GetNbRecycled
 .public GetNbSkyGiftsSent
-.public GetResolvedPerformanceProgressFlag
 .public GetPressedButtons
 .public GetReleasedStylus
+.public GetResolvedPerformanceProgressFlag
 .public GetSimpleMenuResult__0202AEA4
 .public GetSimpleMenuResult__0202B870
 .public GetSosMailCount
@@ -97,6 +97,7 @@
 .public IsSpecialEpisodeOpenMismatch
 .public IsSpecialEpisodeOpenOld
 .public IsTextBoxActive
+.public IsTouchScreenNotOff
 .public LoadScriptVariableValueAtIndex
 .public LoadWanTableEntry
 .public LoadWanTableEntryFromPack
@@ -336,7 +337,6 @@
 .public sub_02049D4C
 .public sub_0204a1cc
 .public sub_0204A1CC
-.public IsTouchScreenNotOff
 .public sub_0204DF54
 .public sub_0204DFB0
 .public sub_0204E02C
