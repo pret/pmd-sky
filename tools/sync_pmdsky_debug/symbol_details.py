@@ -116,6 +116,18 @@ XMAP_TO_PMDSKY_DEBUG_SYMBOL_MAPPING = {
     'sPositionZero': 'POSITION_ZERO',
 }
 
+# These symbols intentionally have the same address as another symbol in pmdsky-debug. Don't display warnings for them.
+IGNORE_DUPLICATE_SYMBOLS = set([
+    'GUEST_MONSTER_DATA',
+    'GUEST_MONSTER_BANETTE',
+])
+
+# Symbols to always append the address onto.
+# Used for symbols that are part of multiple overlays, making it harder to detect whether there are multiple symbols with the same name.
+ALWAYS_APPEND_ADDRESS_SYMBOLS = set([
+    'SprintfStatic',
+])
+
 PMDSKY_DEBUG_TO_XMAP_SYMBOL_MAPPING = {pmdsky_debug_name: xmap_name for xmap_name, pmdsky_debug_name in XMAP_TO_PMDSKY_DEBUG_SYMBOL_MAPPING.items()}
 
 @dataclass

@@ -3,7 +3,7 @@ import yaml
 from typing import Dict, List
 
 from containing_folder import CONTAINING_FOLDER
-from symbol_details import SymbolDetails
+from symbol_details import ALWAYS_APPEND_ADDRESS_SYMBOLS, IGNORE_DUPLICATE_SYMBOLS, SymbolDetails
 
 SYMBOLS_FOLDER = 'symbols'
 pmdsky_debug_path = None
@@ -21,6 +21,9 @@ PMDSKY_DEBUG_SYMBOL_BLACKLIST = set([
     'GAME_STATE_VALUES',
     'MEMORY_ALLOCATION_TABLE'
 ])
+
+def format_symbol_with_address(symbol_name, address):
+    return f'{symbol_name}__{address:08X}'
 
 """
 Returns the file path where pmdsky-debug is located locally, defined within pmdsky_debug_location.txt.
@@ -90,17 +93,22 @@ def read_pmdsky_debug_symbols() -> Dict[str, Dict[str, Dict[int, SymbolDetails]]
                         aliases = []
 
                     def add_symbol_address(address: int, symbol_details: SymbolDetails):
-                        if address in symbols:
+                        if address in symbols and symbol_details.name not in IGNORE_DUPLICATE_SYMBOLS:
                             print(f'Warning: Duplicate symbols found for address {hex(address)}: {symbols[address].name}, {symbol_details.name}')
                         symbols[address] = symbol_details
 
+                    # If the symbol has multiple addresses in pmdsky-debug, append the address to the symbol name to ensure
+                    # that each instance of the symbol has a unique name within the decomp.
                     if isinstance(addresses, list):
                         if len(addresses) > 1:
                             for address in addresses:
-                                aliases = [f'{alias}__{address:08X}' for alias in aliases]
-                                add_symbol_address(address, SymbolDetails(f'{symbol_name}__{address:08X}', full_file_path, is_data, aliases))
+                                aliases = [format_symbol_with_address(alias, address) for alias in aliases]
+                                add_symbol_address(address, SymbolDetails(format_symbol_with_address(symbol_name, address), full_file_path, is_data, aliases))
                         else:
                             add_symbol_address(addresses[0], SymbolDetails(symbol_name, full_file_path, is_data, aliases))
+                    elif symbol_name in ALWAYS_APPEND_ADDRESS_SYMBOLS:
+                        aliases = [format_symbol_with_address(alias, address) for alias in aliases]
+                        add_symbol_address(addresses, SymbolDetails(format_symbol_with_address(symbol_name, address), full_file_path, is_data, aliases))
                     else:
                         add_symbol_address(addresses, SymbolDetails(symbol_name, full_file_path, is_data, aliases))
 

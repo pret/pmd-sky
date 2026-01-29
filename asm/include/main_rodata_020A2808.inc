@@ -1679,11 +1679,11 @@
 .public SoundLfoWave_InvalidFunc
 .public SoundLfoWave_ReverseSawFunc
 .public SoundLfoWave_SawFunc
-.public ST_I2N_E_BIN
-.public ST_I2N_F_BIN
-.public ST_I2N_G_BIN
-.public ST_I2N_I_BIN
-.public ST_I2N_S_BIN
+.public ST_I2N_E_BIN_FILE_NAME
+.public ST_I2N_F_BIN_FILE_NAME
+.public ST_I2N_G_BIN_FILE_NAME
+.public ST_I2N_I_BIN_FILE_NAME
+.public ST_I2N_S_BIN_FILE_NAME
 .public STRING_BALANCE_M_LEVEL_BIN
 .public STRING_DUNGEON_DUNGEON_BIN
 .public STRING_EFFECT_EFFECT_BIN

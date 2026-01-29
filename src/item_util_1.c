@@ -17,9 +17,9 @@ extern const char ITEM_NAME_FORMAT_YELLOW;
 extern const char ITEM_NAME_FORMAT_INDIGO;
 extern const char ITEM_NAME_FORMAT_PLAIN;
 extern const char ITEM_NAME_FORMAT_CREAM;
-extern const char ITEM_P_BIN;
-extern const char ITEM_S_P_BIN;
-extern const char ITEM_ST_I2N_BIN;
+extern const char ITEM_P_BIN_FILE_PATH;
+extern const char ITEM_S_P_BIN_FILE_PATH;
+extern const char ITEM_ST_I2N_BIN_FORMAT;
 extern char* ITEM_LANG_FILE_ARRAY[];
 
 extern void LoadFileFromRom(struct iovec* iov, const char* filepath, u32 flags);
@@ -36,18 +36,18 @@ static void SprintfStatic__0200E990(char*, const char*, ...);
 void LoadItemPspi2n(void) {
     struct iovec iov;
 
-    LoadFileFromRom(&iov, &ITEM_P_BIN, 1);
+    LoadFileFromRom(&iov, &ITEM_P_BIN_FILE_PATH, 1);
     HandleSir0Translation(&ITEM_DATA_TABLE_PTRS.data, iov.iov_base);
-    LoadFileFromRom(&iov, &ITEM_S_P_BIN, 1);
+    LoadFileFromRom(&iov, &ITEM_S_P_BIN_FILE_PATH, 1);
     HandleSir0Translation(&ITEM_DATA_TABLE_PTRS.exclusive_data, iov.iov_base);
     if (PointsToZero(&ITEM_DATA_TABLE_PTRS.langFile) != 0) {
         ZInit8(&ITEM_DATA_TABLE_PTRS.langFile);
 #ifdef EUROPE
         char buf[256];
-        SprintfStatic__0200E990(buf, &ITEM_ST_I2N_BIN, ITEM_LANG_FILE_ARRAY[GetLanguage()]);
+        SprintfStatic__0200E990(buf, &ITEM_ST_I2N_BIN_FORMAT, ITEM_LANG_FILE_ARRAY[GetLanguage()]);
         LoadFileFromRom(&ITEM_DATA_TABLE_PTRS.langFile, buf, 1);
 #else
-        LoadFileFromRom(&ITEM_DATA_TABLE_PTRS.langFile, &ITEM_ST_I2N_BIN, 1);
+        LoadFileFromRom(&ITEM_DATA_TABLE_PTRS.langFile, &ITEM_ST_I2N_BIN_FORMAT, 1);
 #endif
     }
 }
