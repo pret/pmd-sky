@@ -56,7 +56,7 @@ _0231A924:
 	ldrb r1, [r8, #0x4e]
 	mov r2, r4
 	mov r3, r5
-	bl ov29_0232145C
+	bl UseMove
 	mov r0, sb
 	bl EntityIsValid__02319F8C
 	cmp r0, #0

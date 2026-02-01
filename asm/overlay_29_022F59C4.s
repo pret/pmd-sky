@@ -529,7 +529,7 @@ _022F5F9C:
 	ldrb r1, [r8, #0x54]
 	mov r2, r4
 	mov r3, r5
-	bl ov29_0232145C
+	bl UseMove
 	bl IsFloorOver
 	cmp r0, #0
 	ldreqb r0, [r8, #0x23e + OV29_022F5F18_OFFSET]

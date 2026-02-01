@@ -48,7 +48,7 @@
 .public ov29_022EBB98
 .public ov29_022FAFD4
 .public ov29_022FB920
-.public ov29_022FBA54
+.public DoesMonsterHaveMove
 .public ov29_023009A0
 .public ov29_023457C8
 .public ov29_0234B4CC

@@ -121,7 +121,7 @@ _0234694C:
 	movne sb, r6
 	mov r0, sl
 	mov r1, r8
-	bl ov29_022FBA54
+	bl DoesMonsterHaveMove
 	cmp r0, #0
 	movne sb, r5
 	mov r0, sl
