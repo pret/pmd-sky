@@ -38,7 +38,7 @@ void ChooseAiMove(struct entity *monster)
     if (!AreMovesEnabled(DUNGEON_PTR[0]->gen_info.fixed_room_id) ||
         MonsterCannotAttack(monster, FALSE) ||
         ShouldMonsterRunAwayAndShowEffect(monster, TRUE) ||
-        GetEntInfo(monster)->monster_behavior == BEHAVIOR_FLEEING_OUTLAW && IsMonsterCornered(monster) ||
+        GetEntInfo(monster)->monster_behavior == BEHAVIOR_FLEEING_OUTLAW && CanMonsterMoveOrSwapWithAllyInAnyDirection(monster) ||
         IsTacticSet(monster, TACTIC_KEEP_YOUR_DISTANCE) ||
         (pokemon_info->cringe_class_status.cringe == STATUS_CRINGE_CONFUSED && DungeonRandOutcome__022EAB20(AI_CONFUSED_NO_ATTACK_CHANCE)))
         return;
@@ -327,7 +327,7 @@ asm void ChooseAiMove(struct entity *monster)
 	cmp r0, #3
 	bne _01FFB6CC
 	mov r0, r10
-	bl IsMonsterCornered
+	bl CanMonsterMoveOrSwapWithAllyInAnyDirection
 	cmp r0, #0
 	bne _01FFBD0C
 _01FFB6CC:
