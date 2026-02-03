@@ -41,7 +41,6 @@
                  16](_022A5970,notype) found in global main_bss_020B3380.o
                  16](sub_0200D310,func) found in global main_0200CAFC.o
                   17](sub_0200EB64,func) found in global main_0200EB30.o
-                   18](ItemZInit,func) found in global main_0200CAFC.o
                    18](BABY_EXCLUSIVE_ITEM_PAIRS,notype) found in global main_rodata_020908D4.o
                     19](sub_0204A190,func) found in global main_0203C774.o
                      20](CardPullOutWithStatus,func) found in global main_02003D2C.o
@@ -141,6 +140,7 @@
                                            42](IsUnown,func) found in global main_02054AA4.o
                                            42](IsDeoxys,func) found in global main_02054BE0.o
                                          40](StrncpySimple,func) found in global main_020251AC.o
+                                         40](ItemZInit,func) found in global main_0200CAFC.o
                                          40](StrncmpSimple,func) found in global main_020251AC.o
                                          40](StrcpyName,func) found in global main_020251F0.o
                                          40](EnableAllLearnableIqSkills,func) found in global main_02058E8C.o
@@ -173,7 +173,8 @@
                                               45](GetThrownItemQuantityLimit,func) found in global item_util_1.o
                                              44](IsItemInTimeDarkness,func) found in global main_0200EB30.o
                                              44](IsTreasureBox,func) found in global item_util_4.o
-                                             44](AddMoneyCarried,func) found in global main_0200ED1C.o
+                                             44](AddMoneyCarried,func) found in global main_0200ECFC.o
+                                              45](SetMoneyCarried,func) found in global main_0200ECFC.o
                                              44](GetCurrentBagCapacity,func) found in global main_0200EDC0.o
                                               45](GetExecuteSpecialEpisodeType,func) found in global special_episode.o
                                               45](GetScenarioBalance,func) found in global progression.o
@@ -187,9 +188,12 @@
                                          40](SaveScriptVariableValue,func) found in global script_variable.o
                                           41](SetDebugSpecialEpisodeNumber,func) found in global special_episode.o
                                          40](sub_0200C4CC,func) found in global main_0200C4CC.o
+                                          41](RescueInventoryZInit,func) found in global main_0200ECFC.o
+                                          41](SpecialEpisodeInventoryZInit,func) found in global main_0200ECFC.o
                                           41](sub_02011AB8,func) found in global main_02010FC4.o
                                            42](GetMaxPp,func) found in global moves.o
                                            42](GetType,func) found in global main_0205283C.o
+                                           42](GetExclusiveItem,func) found in global main_02052B28.o
                                            42](RandRange,func) found in global main_0200224C.o
                                            42](IsTicketItem,func) found in global item_util_4.o
                                            42](IQ_GUMMI_GAIN_TABLE,notype) found in global main_rodata_020A20B1.o
@@ -322,6 +326,7 @@
                                                                                   81](ov29_022E273C,func) found in global overlay_29_022E1AD4.o
                                                                                   81](DungeonGetSpriteIndex,func) found in global overlay_29_022F7364.o
                                                                                   81](GetLoadedAttackSpriteId,func) found in global overlay_29_022F62CC.o
+                                                                                  81](NeedsItemToSpawn,func) found in global main_02052B28.o
                                                                                   81](SpawnMonster,func) found in global overlay_29_022FC9C0.o
                                                                                    82](IsDestinationFloorWithFleeingOutlaw,func) found in global overlay_29_02348D3C.o
                                                                                     83](ov29_02348ABC,func) found in global overlay_29_02348020.o
@@ -819,7 +824,7 @@
                                                                                                                           121](GetTypeMatchup,func) found in global type_effectiveness.o
                                                                                                                            122](ExclusiveItemEffectIsActive__0230A9B8,func) found in global overlay_29_0230A994.o
                                                                                                                            122](TYPE_MATCHUP_TABLE,object) found in global type_matchup_table.o
-                                                                                                                          121](@180,object) found in local dungeon_damage.o
+                                                                                                                          121](@186,object) found in local dungeon_damage.o
                                                                                                                         119](AI_POTENTIAL_ATTACK_TARGET_DIRECTIONS,object) found in global dungeon_ai_attack.o
                                                                                                                        118](IsTargetInRange,func) found in global dungeon_ai_attack.o
                                                                                                                      116](ov29_0231A8A0,func) found in global overlay_29_0231A8A0.o
@@ -830,7 +835,8 @@
                                                                                                                       117](DIRECTIONAL_BIT_MASKS__02352798,object) found in global directional_bit_masks.o
                                                                                                                      116](ov29_023085DC,func) found in global overlay_29_023085DC.o
                                                                                                                       117](GendersNotEqualNotGenderless,func) found in global main_02054DC4.o
-                                                                                                                      117](HasTypeAffectedByGravity,func) found in global overlay_29_02301E88.o
+                                                                                                                      117](HasTypeAffectedByGravity,func) found in global dungeon_logic_3.o
+                                                                                                                       118](IsTypeAffectedByGravity,func) found in global dungeon_logic_3.o
                                                                                                                       117](HasLowHealth,func) found in global dungeon_logic_4.o
                                                                                                                       117](CategoryIsNotPhysical,func) found in global overlay_29_0231EA04.o
                                                                                                                       117](ApplyDamage,func) found in global overlay_29_02308FE0.o
@@ -1041,7 +1047,7 @@
                                                          56](EntityIsValid__022EF7A0,func) found in global overlay_29_022EF7A0.o
                                                         55](GetFarOffPalsOption,func) found in global options.o
                                                        54](EntityIsValidMoveEffects__0232A3D8,func) found in global overlay_29_0232A3D8.o
-                                                      53](ov29_02318A90,func) found in global overlay_29_02318A90.o
+                                                      53](ov29_02318A90,func) found in global overlay_29_02318A4C.o
                                                       53](BoostHitChanceStat,func) found in global move_orb_effects.o
                                                       53](EntityIsValidMoveEffects__0232800C,func) found in global overlay_29_0232800C.o
                                                   49](ov31_02383434,func) found in global overlay_31_023833D8.o
@@ -1050,6 +1056,7 @@
                                                    50](ov31_02383328,func) found in global overlay_31_02383328.o
                                                  48](IsTeamStatsOnTopScreen,func) found in global options.o
                                                  48](CheckSpawnThreshold,func) found in global overlay_29_022FB538.o
+                                                  49](GetSpawnThreshold,func) found in global main_02052B28.o
                                                  48](IsDojoDungeon,func) found in global main_020514CC.o
                                                46](GetWeightMultiplier,func) found in global main_0205283C.o
                                                46](ApplyOffensiveStatMultiplier,func) found in global move_orb_effects.o
@@ -1058,6 +1065,9 @@
                                            42](GetMoveMaxGinsengBoostGround,func) found in global moves.o
                                            42](GetMoveBasePowerGround,func) found in global main_0201398C.o
                                            42](GetExclusiveItemParameter,func) found in global item_util_1.o
+                                          41](AllInventoriesZInit,func) found in global main_0200ECFC.o
+                                           42](SetActiveInventory,func) found in global main_0200ECFC.o
+                                          41](SetActiveInventoryToMain,func) found in global main_0200ECFC.o
                                           41](LoadItemPspi2n,func) found in global item_util_1.o
                                            42](SprintfStatic__0200E990,func) found in local item_util_1.o
                                          40](LoadOptionsFromCtx,func) found in global options.o
@@ -2428,44 +2438,43 @@
   0200EB48 00000000 .text   $a	(item_util_1.o)
   0200EB48 00000090 .text   TestItemAiFlag	(item_util_1.o)
   0200EBD4 00000000 .text   $d	(item_util_1.o)
-  0200EBD8 00000000 .text   $a	(main_0200EB30.o)
   0200EBD8 00000028 .text   IsItemInTimeDarkness	(main_0200EB30.o)
-  0200EBD8 000001CC .text   .text	(main_0200EB30.o)
+  0200EBD8 00000000 .text   $a	(main_0200EB30.o)
+  0200EBD8 0000009C .text   .text	(main_0200EB30.o)
   0200EBFC 00000000 .text   $d	(main_0200EB30.o)
   0200EC00 00000000 .text   $a	(main_0200EB30.o)
   0200EC00 0000000C .text   IsItemValidVeneer	(main_0200EB30.o)
   0200EC08 00000000 .text   $d	(main_0200EB30.o)
-  0200EC0C 00000000 .text   $a	(main_0200EB30.o)
   0200EC0C 0000002C .text   sub_0200EB64	(main_0200EB30.o)
+  0200EC0C 00000000 .text   $a	(main_0200EB30.o)
   0200EC30 00000000 .text   $d	(main_0200EB30.o)
-  0200EC38 0000003C .text   ReturnEggExclusiveItem	(main_0200EB30.o)
   0200EC38 00000000 .text   $a	(main_0200EB30.o)
+  0200EC38 0000003C .text   ReturnEggExclusiveItem	(main_0200EB30.o)
   0200EC70 00000000 .text   $d	(main_0200EB30.o)
-  0200EC74 00000010 .text   SetActiveInventoryToMain	(main_0200EB30.o)
-  0200EC74 00000000 .text   $a	(main_0200EB30.o)
-  0200EC80 00000000 .text   $d	(main_0200EB30.o)
-  0200EC84 0000006C .text   AllInventoriesZInit	(main_0200EB30.o)
-  0200EC84 00000000 .text   $a	(main_0200EB30.o)
-  0200ECEC 00000000 .text   $d	(main_0200EB30.o)
-  0200ECF0 00000048 .text   SpecialEpisodeInventoryZInit	(main_0200EB30.o)
-  0200ECF0 00000000 .text   $a	(main_0200EB30.o)
-  0200ED34 00000000 .text   $d	(main_0200EB30.o)
-  0200ED38 00000000 .text   $a	(main_0200EB30.o)
-  0200ED38 00000048 .text   RescueInventoryZInit	(main_0200EB30.o)
-  0200ED7C 00000000 .text   $d	(main_0200EB30.o)
-  0200ED80 00000024 .text   SetActiveInventory	(main_0200EB30.o)
-  0200ED80 00000000 .text   $a	(main_0200EB30.o)
-  0200EDA0 00000000 .text   $d	(main_0200EB30.o)
+  0200EC74 00000000 .text   $a	(main_0200ECFC.o)
+  0200EC74 00000010 .text   SetActiveInventoryToMain	(main_0200ECFC.o)
+  0200EC80 00000000 .text   $d	(main_0200ECFC.o)
+  0200EC84 00000000 .text   $a	(main_0200ECFC.o)
+  0200EC84 0000006C .text   AllInventoriesZInit	(main_0200ECFC.o)
+  0200ECEC 00000000 .text   $d	(main_0200ECFC.o)
+  0200ECF0 00000000 .text   $a	(main_0200ECFC.o)
+  0200ECF0 00000048 .text   SpecialEpisodeInventoryZInit	(main_0200ECFC.o)
+  0200ED34 00000000 .text   $d	(main_0200ECFC.o)
+  0200ED38 00000000 .text   $a	(main_0200ECFC.o)
+  0200ED38 00000048 .text   RescueInventoryZInit	(main_0200ECFC.o)
+  0200ED7C 00000000 .text   $d	(main_0200ECFC.o)
+  0200ED80 00000000 .text   $a	(main_0200ECFC.o)
+  0200ED80 00000024 .text   SetActiveInventory	(main_0200ECFC.o)
+  0200EDA0 00000000 .text   $d	(main_0200ECFC.o)
   0200EDA4 00000000 .text   $a	(main_0200ECFC.o)
   0200EDA4 00000020 .text   GetMoneyCarried	(main_0200ECFC.o)
   0200EDC0 00000000 .text   $d	(main_0200ECFC.o)
-  0200EDC4 00000068 .text   .text	(main_0200ED1C.o)
-  0200EDC4 0000003C .text   SetMoneyCarried	(main_0200ED1C.o)
-  0200EDC4 00000000 .text   $a	(main_0200ED1C.o)
-  0200EDF8 00000000 .text   $d	(main_0200ED1C.o)
-  0200EE00 00000000 .text   $a	(main_0200ED1C.o)
-  0200EE00 0000002C .text   AddMoneyCarried	(main_0200ED1C.o)
-  0200EE24 00000000 .text   $d	(main_0200ED1C.o)
+  0200EDC4 00000000 .text   $a	(main_0200ECFC.o)
+  0200EDC4 0000003C .text   SetMoneyCarried	(main_0200ECFC.o)
+  0200EDF8 00000000 .text   $d	(main_0200ECFC.o)
+  0200EE00 00000000 .text   $a	(main_0200ECFC.o)
+  0200EE00 0000002C .text   AddMoneyCarried	(main_0200ECFC.o)
+  0200EE24 00000000 .text   $d	(main_0200ECFC.o)
   0200EE2C 0000003C .text   GetCurrentBagCapacity	(main_0200EDC0.o)
   0200EE2C 00000000 .text   $a	(main_0200EDC0.o)
   0200EE68 00000000 .text   $a	(main_0200EDC0.o)
@@ -7116,18 +7125,18 @@
   02052E60 00000000 .text   $a	(main_02052B28.o)
   02052E60 0000001C .text   GetIqGroup	(main_02052B28.o)
   02052E78 00000000 .text   $d	(main_02052B28.o)
-  02052E7C 00001F88 .text   .text	(main_02052B44.o)
-  02052E7C 00000000 .text   $a	(main_02052B44.o)
-  02052E7C 0000001C .text   GetSpawnThreshold	(main_02052B44.o)
-  02052E94 00000000 .text   $d	(main_02052B44.o)
-  02052E98 00000000 .text   $a	(main_02052B44.o)
-  02052E98 0000002C .text   NeedsItemToSpawn	(main_02052B44.o)
-  02052EC0 00000000 .text   $d	(main_02052B44.o)
-  02052EC4 00000000 .text   $a	(main_02052B44.o)
-  02052EC4 0000002C .text   GetExclusiveItem	(main_02052B44.o)
-  02052EEC 00000000 .text   $d	(main_02052B44.o)
+  02052E7C 00000000 .text   $a	(main_02052B28.o)
+  02052E7C 0000001C .text   GetSpawnThreshold	(main_02052B28.o)
+  02052E94 00000000 .text   $d	(main_02052B28.o)
+  02052E98 00000000 .text   $a	(main_02052B28.o)
+  02052E98 0000002C .text   NeedsItemToSpawn	(main_02052B28.o)
+  02052EC0 00000000 .text   $d	(main_02052B28.o)
+  02052EC4 00000000 .text   $a	(main_02052B28.o)
+  02052EC4 0000002C .text   GetExclusiveItem	(main_02052B28.o)
+  02052EEC 00000000 .text   $d	(main_02052B28.o)
   02052EF0 00000000 .text   $a	(main_02052B44.o)
   02052EF0 0000001C .text   GetFamilyIndex	(main_02052B44.o)
+  02052EF0 00001F14 .text   .text	(main_02052B44.o)
   02052F08 00000000 .text   $d	(main_02052B44.o)
   02052F0C 00000000 .text   $a	(main_02052B44.o)
   02052F0C 000000AC .text   LoadM2nAndN2m	(main_02052B44.o)
@@ -7142,8 +7151,8 @@
   02053054 00000000 .text   $a	(main_02052B44.o)
   02053064 0000000C .text   sub_02052CE8	(main_02052B44.o)
   0205306C 00000000 .text   $d	(main_02052B44.o)
-  02053070 00000138 .text   sub_02052CF4	(main_02052B44.o)
   02053070 00000000 .text   $a	(main_02052B44.o)
+  02053070 00000138 .text   sub_02052CF4	(main_02052B44.o)
   020531A8 00000024 .text   sub_02052E2C	(main_02052B44.o)
   020531CC 000000AC .text   GuestMonsterToGroundMonster	(main_02052B44.o)
   02053278 00000090 .text   SetBaseStatsMovesGroundMonster	(main_02052B44.o)
@@ -7151,20 +7160,20 @@
   0205332C 00000048 .text   StrcmpMonsterName	(main_02052B44.o)
   02053374 00000040 .text   sub_02052FF8	(main_02052B44.o)
   020533B0 00000000 .text   $d	(main_02052B44.o)
-  020533B4 0000009C .text   sub_02053038	(main_02052B44.o)
   020533B4 00000000 .text   $a	(main_02052B44.o)
+  020533B4 0000009C .text   sub_02053038	(main_02052B44.o)
   02053448 00000000 .text   $d	(main_02052B44.o)
-  02053450 000000A0 .text   sub_020530D4	(main_02052B44.o)
   02053450 00000000 .text   $a	(main_02052B44.o)
+  02053450 000000A0 .text   sub_020530D4	(main_02052B44.o)
   020534EC 00000000 .text   $d	(main_02052B44.o)
-  020534F0 00000000 .text   $a	(main_02052B44.o)
   020534F0 000000B0 .text   sub_02053174	(main_02052B44.o)
+  020534F0 00000000 .text   $a	(main_02052B44.o)
   0205359C 00000000 .text   $d	(main_02052B44.o)
   020535A0 0000002C .text   sub_02053224	(main_02052B44.o)
   020535A0 00000000 .text   $a	(main_02052B44.o)
   020535C8 00000000 .text   $d	(main_02052B44.o)
-  020535CC 00000124 .text   sub_02053250	(main_02052B44.o)
   020535CC 00000000 .text   $a	(main_02052B44.o)
+  020535CC 00000124 .text   sub_02053250	(main_02052B44.o)
   020536F0 00000128 .text   sub_02053374	(main_02052B44.o)
   02053818 00000020 .text   sub_0205349C	(main_02052B44.o)
   02053830 00000000 .text   $d	(main_02052B44.o)
@@ -7177,15 +7186,15 @@
   020539DC 0000013C .text   sub_02053660	(main_02052B44.o)
   02053B18 000000B0 .text   GetLvlUpEntry	(main_02052B44.o)
   02053BC0 00000000 .text   $d	(main_02052B44.o)
-  02053BC8 00000034 .text   GetEncodedHalfword	(main_02052B44.o)
   02053BC8 00000000 .text   $a	(main_02052B44.o)
+  02053BC8 00000034 .text   GetEncodedHalfword	(main_02052B44.o)
   02053BFC 00000084 .text   sub_02053880	(main_02052B44.o)
   02053C6C 00000000 .text   $d	(main_02052B44.o)
-  02053C80 00000108 .text   sub_02053904	(main_02052B44.o)
   02053C80 00000000 .text   $a	(main_02052B44.o)
+  02053C80 00000108 .text   sub_02053904	(main_02052B44.o)
   02053D84 00000000 .text   $d	(main_02052B44.o)
-  02053D88 00000044 .text   sub_02053A0C	(main_02052B44.o)
   02053D88 00000000 .text   $a	(main_02052B44.o)
+  02053D88 00000044 .text   sub_02053A0C	(main_02052B44.o)
   02053DCC 000000E8 .text   sub_02053A50	(main_02052B44.o)
   02053EB4 00000028 .text   sub_02053B38	(main_02052B44.o)
   02053ED8 00000000 .text   $d	(main_02052B44.o)
@@ -7222,21 +7231,21 @@
   020547FC 00000020 .text   GetMonsterIdFromSpawnEntry	(main_02052B44.o)
   020547FC 00000000 .text   $a	(main_02052B44.o)
   02054818 00000000 .text   $d	(main_02052B44.o)
-  0205481C 00000000 .text   $a	(main_02052B44.o)
   0205481C 00000008 .text   SetMonsterId	(main_02052B44.o)
+  0205481C 00000000 .text   $a	(main_02052B44.o)
   02054824 00000010 .text   SetMonsterLevelAndId	(main_02052B44.o)
   02054834 00000010 .text   GetMonsterLevelFromSpawnEntry	(main_02052B44.o)
   02054844 00000220 .text   ApplyLevelUpBoostsToGroundMonster	(main_02052B44.o)
   02054A60 00000000 .text   $d	(main_02052B44.o)
-  02054A64 00000000 .text   $a	(main_02052B44.o)
   02054A64 00000078 .text   sub_020546E8	(main_02052B44.o)
+  02054A64 00000000 .text   $a	(main_02052B44.o)
   02054ADC 0000000C .text   GetMonsterGenderVeneer	(main_02052B44.o)
   02054AE4 00000000 .text   $d	(main_02052B44.o)
-  02054AE8 00000000 .text   $a	(main_02052B44.o)
   02054AE8 0000005C .text   IsMonsterValid	(main_02052B44.o)
+  02054AE8 00000000 .text   $a	(main_02052B44.o)
   02054B3C 00000000 .text   $d	(main_02052B44.o)
-  02054B44 00000010 .text   sub_020547C8	(main_02052B44.o)
   02054B44 00000000 .text   $a	(main_02052B44.o)
+  02054B44 00000010 .text   sub_020547C8	(main_02052B44.o)
   02054B54 0000002C .text   sub_020547D8	(main_02052B44.o)
   02054B80 00000020 .text   sub_02054804	(main_02052B44.o)
   02054B9C 00000000 .text   $d	(main_02052B44.o)
@@ -7246,8 +7255,8 @@
   02054BC0 00000000 .text   $a	(main_02052B44.o)
   02054BC0 0000021C .text   sub_02054844	(main_02052B44.o)
   02054DCC 00000000 .text   $d	(main_02052B44.o)
-  02054DDC 00000000 .text   $a	(main_02052B44.o)
   02054DDC 00000028 .text   SprintfStatic__02054A60	(main_02052B44.o)
+  02054DDC 00000000 .text   $a	(main_02052B44.o)
   02054E04 0000001C .text   IsUnown	(main_02054AA4.o)
   02054E04 00000000 .text   $a	(main_02054AA4.o)
   02054E20 00000000 .text   $a	(main_02054AA4.o)
@@ -36555,10 +36564,10 @@
   02302844 00000000 .text   $a	(dungeon_logic_3.o)
   0230287C 00000038 .text   MonsterIsType	(dungeon_logic_3.o)
   0230287C 00000000 .text   $a	(dungeon_logic_3.o)
-  023028B4 00000000 .text   $a	(overlay_29_02301E88.o)
-  023028B4 00000024 .text   IsTypeAffectedByGravity	(overlay_29_02301E88.o)
-  023028B4 00000064 .text   .text	(overlay_29_02301E88.o)
-  023028D8 00000040 .text   HasTypeAffectedByGravity	(overlay_29_02301E88.o)
+  023028B4 00000024 .text   IsTypeAffectedByGravity	(dungeon_logic_3.o)
+  023028B4 00000000 .text   $a	(dungeon_logic_3.o)
+  023028D8 00000040 .text   HasTypeAffectedByGravity	(dungeon_logic_3.o)
+  023028D8 00000000 .text   $a	(dungeon_logic_3.o)
   02302918 00000034 .text   CanSeeInvisibleMonsters	(dungeon_pokemon_attributes_1.o)
   02302918 00000000 .text   $a	(dungeon_pokemon_attributes_1.o)
   0230294C 00000030 .text   IsTacticSet	(dungeon_pokemon_attributes_1.o)
@@ -37282,9 +37291,8 @@
   0231949C 00000000 .text   $d	(overlay_29_02317844.o)
   023194AC 00000044 .text   IsFloating	(overlay_29_02318A4C.o)
   023194AC 00000000 .text   $a	(overlay_29_02318A4C.o)
-  023194F0 00000020 .text   .text	(overlay_29_02318A90.o)
-  023194F0 00000020 .text   ov29_02318A90	(overlay_29_02318A90.o)
-  023194F0 00000000 .text   $a	(overlay_29_02318A90.o)
+  023194F0 00000020 .text   ov29_02318A90	(overlay_29_02318A4C.o)
+  023194F0 00000000 .text   $a	(overlay_29_02318A4C.o)
   02319510 00000024 .text   IsMonster__02318AB0	(overlay_29_02318AB0.o)
   02319510 00000000 .text   $a	(overlay_29_02318AB0.o)
   02319534 00000000 .text   $a	(overlay_29_02318AD4.o)
@@ -40172,7 +40180,7 @@
   02353478 00000000 .rodata DAMAGE_FORMULA_MAX_BASE	(overlay_29_rodata_023527C0.o)
   02353488 00000000 .rodata DAMAGE_FORMULA_MIN_BASE	(overlay_29_rodata_023527C0.o)
   02353490 00000000 .rodata .rodata	(dungeon_damage.o)
-  02353490 00000010 .rodata @180	(dungeon_damage.o)
+  02353490 00000010 .rodata @186	(dungeon_damage.o)
   023534A0 00000000 .rodata ov29_02352894	(overlay_29_rodata_02352894.o)
   023534A0 000001CC .rodata .rodata	(overlay_29_rodata_02352894.o)
   023534B0 00000000 .rodata TYPE_DAMAGE_NEGATING_EXCLUSIVE_ITEM_EFFECTS	(overlay_29_rodata_02352894.o)
@@ -41225,5 +41233,5 @@
   00000000 00000000 00004000 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Wed Jan 28 15:56:47 2026
-# Link end time: Wed Jan 28 15:56:48 2026
+# Link start time: Tue Feb 03 18:10:16 2026
+# Link end time: Tue Feb 03 18:10:17 2026
