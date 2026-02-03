@@ -107,7 +107,7 @@ void AiDecideUseItem(struct entity *entity)
     else if (IqSkillIsEnabled(entity, IQ_ITEM_MASTER))
     {
         s32 thrown_ai_flag;
-        for (s32 toolbox_index = 1; toolbox_index < INVENTORY_SIZE; toolbox_index++)
+        for (s32 toolbox_index = 1; toolbox_index < INVENTORY_SIZE + 2; toolbox_index++)
         {
             u8 selected_toolbox_index;
             if (toolbox_index == 1)

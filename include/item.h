@@ -1596,7 +1596,7 @@ enum exclusive_item_effect_id {
 
 #define GROUND_ITEM_TOOLBOX_INDEX 0x80
 #define HELD_ITEM_TOOLBOX_INDEX 0x81
-#define INVENTORY_SIZE 52
+#define INVENTORY_SIZE 50
 #define NUMBER_OF_ITEM_IDS (ITEM_UNNAMED_0x577 + 1)
 
 // Item info
@@ -1634,7 +1634,7 @@ struct item_volatile {
 };
 
 struct bag_items_inner {
-    /* 0x0 */ struct item bag_items[INVENTORY_SIZE - 2]; 
+    /* 0x0 */ struct item bag_items[INVENTORY_SIZE]; 
     // NOTE: I don't know why we have to do the subtraction  - Seth
 };
 
