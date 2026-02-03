@@ -1,11 +1,9 @@
 #pragma once
 .public DUNGEON_PTR
 .public EntityIsValid__022F7364
-.public GetBodySize
 .public GetIdleAnimationId
 .public GetTileSafe
 .public InitAnimationControlWithSet__0201C0CC
-.public IsMonster__022F9720
+.public SetSpriteIdForAnimationControl
 .public ov29_022DDA54
 .public ov29_02304830
-.public SetSpriteIdForAnimationControl

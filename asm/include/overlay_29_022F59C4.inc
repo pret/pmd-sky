@@ -41,7 +41,7 @@
 .public ov29_023009CC
 .public ov29_02304AFC
 .public ov29_0231AE3C
-.public ov29_0232145C
+.public UseMove
 .public ov29_02322374
 .public ov29_0233A248
 .public ov29_02344544

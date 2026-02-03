@@ -1,54 +1,7 @@
 	.include "asm/macros.inc"
-	.include "overlay_29_0231AF24.inc"
+	.include "overlay_29_0231AFB4.inc"
 
 	.text
-
-	arm_func_start ov29_0231AF24
-ov29_0231AF24: ; 0x0231AF24
-#ifdef JAPAN
-#define OV29_0231AF24_OFFSET -4
-#else
-#define OV29_0231AF24_OFFSET 0
-#endif
-	stmdb sp!, {r3, r4, r5, r6, lr}
-	sub sp, sp, #4
-	mov r6, r0
-	mov r5, r1
-	mov r4, r2
-	bl IsMonster__0231A9D4
-	cmp r0, #0
-	beq _0231AFAC
-	mov r0, r6
-	mov r1, r5
-	bl ov29_022FB9E0
-	mov r1, r0
-	cmp r4, #0
-	beq _0231AF98
-	cmp r1, #0
-	bge _0231AF98
-	ldr r4, [r6, #0xb4]
-	mov r1, #0
-	mov r2, r1
-	add r0, r4, #0x4a
-	bl SetActionUseMoveAi
-	mov r2, #1
-	strb r2, [r4, #0x124 + OV29_0231AF24_OFFSET]
-	add r0, r4, #0x100
-	mov r1, #0
-	strh r1, [r0, #0x26 + OV29_0231AF24_OFFSET]
-	strh r5, [r0, #0x28 + OV29_0231AF24_OFFSET]
-	strb r2, [r4, #0x12a + OV29_0231AF24_OFFSET]
-	strb r1, [r4, #0x12b + OV29_0231AF24_OFFSET]
-_0231AF98:
-	mov r3, #0
-	mov r0, r6
-	mov r2, #1
-	str r3, [sp]
-	bl ov29_0232145C
-_0231AFAC:
-	add sp, sp, #4
-	ldmia sp!, {r3, r4, r5, r6, pc}
-	arm_func_end ov29_0231AF24
 
 	arm_func_start ov29_0231AFB4
 ov29_0231AFB4: ; 0x0231AFB4

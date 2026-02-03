@@ -2886,24 +2886,24 @@ _02097FE4:
 	.byte 0x25, 0x73, 0x5B, 0x43, 0x53, 0x3A, 0x31, 0x3A, 0x52, 0x5D, 0x25, 0x73, 0x5B, 0x43, 0x52, 0x3A
 	.byte 0x31, 0x5D, 0x00, 0x00
 #ifdef EUROPE
-	.global ST_I2N_I_BIN
-ST_I2N_I_BIN:
+	.global ST_I2N_I_BIN_FILE_NAME
+ST_I2N_I_BIN_FILE_NAME:
 	.string "st_i2n_i.bin"
 	.align 4
-	.global ST_I2N_E_BIN
-ST_I2N_E_BIN:
+	.global ST_I2N_E_BIN_FILE_NAME
+ST_I2N_E_BIN_FILE_NAME:
 	.string "st_i2n_e.bin"
 	.align 4
-	.global ST_I2N_S_BIN
-ST_I2N_S_BIN:
+	.global ST_I2N_S_BIN_FILE_NAME
+ST_I2N_S_BIN_FILE_NAME:
 	.string "st_i2n_s.bin"
 	.align 4
-	.global ST_I2N_G_BIN
-ST_I2N_G_BIN:
+	.global ST_I2N_G_BIN_FILE_NAME
+ST_I2N_G_BIN_FILE_NAME:
 	.string "st_i2n_g.bin"
 	.align 4
-	.global ST_I2N_F_BIN
-ST_I2N_F_BIN:
+	.global ST_I2N_F_BIN_FILE_NAME
+ST_I2N_F_BIN_FILE_NAME:
 	.string "st_i2n_f.bin"
 	.align 4
 #endif
@@ -2914,16 +2914,16 @@ BABY_EXCLUSIVE_ITEM_PAIRS:
 	.byte 0xCF, 0x01, 0x0B, 0x01, 0xD0, 0x01, 0x46, 0x01, 0xD1, 0x01, 0x88, 0x01, 0xD2, 0x01, 0xE0, 0x01
 	.byte 0xD3, 0x01, 0xE1, 0x01, 0xD4, 0x01, 0xE2, 0x01, 0xD5, 0x01, 0xE9, 0x01, 0xD6, 0x01, 0xF4, 0x01
 	.byte 0xD7, 0x01, 0x13, 0x02
-	.global ITEM_P_BIN
-ITEM_P_BIN:
+	.global ITEM_P_BIN_FILE_PATH
+ITEM_P_BIN_FILE_PATH:
 	.string "rom0:/BALANCE/item_p.bin"
 	.align 4
-	.global ITEM_S_P_BIN
-ITEM_S_P_BIN:
+	.global ITEM_S_P_BIN_FILE_PATH
+ITEM_S_P_BIN_FILE_PATH:
 	.string "rom0:/BALANCE/item_s_p.bin"
 	.align 4
-	.global ITEM_ST_I2N_BIN
-ITEM_ST_I2N_BIN:
+	.global ITEM_ST_I2N_BIN_FORMAT
+ITEM_ST_I2N_BIN_FORMAT:
 #ifdef EUROPE
 	.string "rom0:/BALANCE/%s"
 #else

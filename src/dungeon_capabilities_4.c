@@ -16,7 +16,7 @@
 #include "secondary_terrain_types.h"
 #include "targeting.h"
 
-bool8 IsMonsterCornered(struct entity *monster)
+bool8 CanMonsterMoveOrSwapWithAllyInAnyDirection(struct entity *monster)
 {
     for (u8 i = 0; i < NUM_DIRECTIONS; i++)
     {

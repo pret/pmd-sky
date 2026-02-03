@@ -77,7 +77,7 @@
 .public ov29_022F8830
 .public ov29_022F9C34
 .public ov29_022FA02C
-.public ov29_022FBA54
+.public DoesMonsterHaveMove
 .public ov29_023009A0
 .public ov29_023021F0
 .public ov29_02339FF4

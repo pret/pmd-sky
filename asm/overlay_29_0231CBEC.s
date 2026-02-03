@@ -1235,7 +1235,7 @@ _0231DAF8:
 	mov r6, r0
 	mov r0, r7
 	mov r1, r5
-	bl ov29_022FBA54
+	bl DoesMonsterHaveMove
 	cmp r0, #0
 	mov r0, r7
 	movne r6, #0

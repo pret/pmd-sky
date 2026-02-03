@@ -3,12 +3,12 @@
 
 	.text
 
-	arm_func_start ov29_0232145C
-ov29_0232145C: ; 0x0232145C
+	arm_func_start UseMove
+UseMove: ; 0x0232145C
 #ifdef JAPAN
-#define OV29_0232145C_OFFSET -4
+#define USE_MOVE_OFFSET -4
 #else
-#define OV29_0232145C_OFFSET 0
+#define USE_MOVE_OFFSET 0
 #endif
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x34
@@ -24,7 +24,7 @@ ov29_0232145C: ; 0x0232145C
 	bge _02321A40
 	bl ResetTriggerFlags
 	mov r0, #0
-	strb r0, [r5, #0x163 + OV29_0232145C_OFFSET]
+	strb r0, [r5, #0x163 + USE_MOVE_OFFSET]
 	ldrb r1, [r5, #0xd0]
 	cmp r1, #1
 	bne _023214C4
@@ -69,7 +69,7 @@ _0232152C:
 	add r1, r5, r0, lsl #1
 	add r1, r1, #0x100
 	add r0, r0, #1
-	strh r2, [r1, #0x94 + OV29_0232145C_OFFSET]
+	strh r2, [r1, #0x94 + USE_MOVE_OFFSET]
 	cmp r0, #4
 	blt _0232152C
 	mov r1, r2
@@ -80,7 +80,7 @@ _0232154C:
 	add r2, r2, #1
 	bge _02321578
 	add r0, r5, r4, lsl #3
-	ldrb r0, [r0, #0x124 + OV29_0232145C_OFFSET]
+	ldrb r0, [r0, #0x124 + USE_MOVE_OFFSET]
 	tst r0, #2
 	beq _02321578
 	add r1, r1, #1
@@ -92,7 +92,7 @@ _02321578:
 	movge r6, #1
 	movlt r6, #0
 _02321584:
-	add r1, r5, #0x124 + OV29_0232145C_OFFSET
+	add r1, r5, #0x124 + USE_MOVE_OFFSET
 	mov r0, sl
 	add r4, r1, sb, lsl #3
 	bl EntityIsValid__02321438
@@ -183,7 +183,7 @@ _023216AC:
 	mov r0, #0
 	str r0, [sp, #0x10]
 	ldr r0, [r1, #0x18]
-	strb fp, [r5, #0x163 + OV29_0232145C_OFFSET]
+	strb fp, [r5, #0x163 + USE_MOVE_OFFSET]
 	ldrh r1, [r4, #4]
 	str r0, [sp, #0xc]
 	cmp r1, #0xe5
@@ -306,7 +306,7 @@ _02321848:
 	cmp sb, #4
 	bge _02321888
 	add r0, r5, sb, lsl #3
-	ldrb r0, [r0, #0x124 + OV29_0232145C_OFFSET]
+	ldrb r0, [r0, #0x124 + USE_MOVE_OFFSET]
 	tst r0, #2
 	bne _02321584
 _02321888:
@@ -318,10 +318,10 @@ _02321888:
 _0232189C:
 	add r0, r5, sb, lsl #1
 	add r0, r0, #0x100
-	ldrh r1, [r0, #0x94 + OV29_0232145C_OFFSET]
+	ldrh r1, [r0, #0x94 + USE_MOVE_OFFSET]
 	cmp r1, #0
 	beq _02321994
-	ldrh r1, [r0, #0x94 + OV29_0232145C_OFFSET]
+	ldrh r1, [r0, #0x94 + USE_MOVE_OFFSET]
 	add r4, sp, #0x24
 	mov r0, r4
 	bl InitMoveCheckId
@@ -445,13 +445,13 @@ _02321A40:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 #ifdef JAPAN
-#define OV29_0232145C_DATA_OFFSET -0x2BE
+#define UseMove_DATA_OFFSET -0x2BE
 #else
-#define OV29_0232145C_DATA_OFFSET 0
+#define UseMove_DATA_OFFSET 0
 #endif
-_02321A48: .word 0x00000E7C + OV29_0232145C_DATA_OFFSET
-_02321A4C: .word 0x00000E7D + OV29_0232145C_DATA_OFFSET
-_02321A50: .word 0x00000E78 + OV29_0232145C_DATA_OFFSET
+_02321A48: .word 0x00000E7C + UseMove_DATA_OFFSET
+_02321A4C: .word 0x00000E7D + UseMove_DATA_OFFSET
+_02321A50: .word 0x00000E78 + UseMove_DATA_OFFSET
 _02321A54: .word ov29_0237CA68
 #ifdef JAPAN
 _02321A5C: .word 0x00000BC1
@@ -460,13 +460,13 @@ _02322F08: .word 0x00000BC2
 _02321A58: .word 0x00000E7E
 _02321A5C: .word 0x00000E7F
 #endif
-_02321A60: .word 0x00000E81 + OV29_0232145C_DATA_OFFSET
-_02321A64: .word 0x00000E79 + OV29_0232145C_DATA_OFFSET
+_02321A60: .word 0x00000E81 + UseMove_DATA_OFFSET
+_02321A64: .word 0x00000E79 + UseMove_DATA_OFFSET
 _02321A68: .word 0x000001D1
-_02321A6C: .word 0x00000E76 + OV29_0232145C_DATA_OFFSET
-_02321A70: .word 0x00000E77 + OV29_0232145C_DATA_OFFSET
+_02321A6C: .word 0x00000E76 + UseMove_DATA_OFFSET
+_02321A70: .word 0x00000E77 + UseMove_DATA_OFFSET
 _02321A74: .word ov10_022C4714
-	arm_func_end ov29_0232145C
+	arm_func_end UseMove
 
 	arm_func_start TryActivateNondamagingDefenderAbility
 TryActivateNondamagingDefenderAbility: ; 0x02321A78

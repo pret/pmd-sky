@@ -1,0 +1,6 @@
+#ifndef PMDSKY_OVERLAY_29_0234AEA4_H
+#define PMDSKY_OVERLAY_29_0234AEA4_H
+
+void TeleportFleeingOutlaw();
+
+#endif //PMDSKY_OVERLAY_29_0234AEA4_H
