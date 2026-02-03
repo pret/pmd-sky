@@ -28,3 +28,26 @@ bool8 MonsterIsType(struct entity *entity, enum type_id type_id)
 
     return FALSE;
 }
+
+bool8 IsTypeAffectedByGravity(struct entity *entity, enum type_id type)
+{
+    if ((type == TYPE_FLYING) && (GravityIsActive())) {
+        return FALSE;
+    }
+    return TRUE;
+}
+
+bool8 HasTypeAffectedByGravity(struct entity* entity, enum type_id type)
+{
+    struct monster* info;
+
+    info = GetEntInfo(entity);
+    if (type == TYPE_NONE)
+        return FALSE;
+    if (info->types[0] == type)
+        return IsTypeAffectedByGravity(entity, type);
+    if (info->types[1] != type)
+        return FALSE;
+    else
+        return IsTypeAffectedByGravity(entity, type);
+}

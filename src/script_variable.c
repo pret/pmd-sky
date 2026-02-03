@@ -37,8 +37,6 @@ extern s32 GetMoneyStored();
 extern s32 GetLanguageType();
 extern enum game_mode GetGameMode();
 extern s32 GetNotifyNote();
-extern s32 AddMoneyCarried(s32 arg0);
-extern s32 SetMoneyCarried(s32 arg0);
 extern s32 SetMoneyStored(s32 arg0);
 extern s32 SetNotifyNote(s32 arg0);
 extern void InitDungeonListScriptVars();

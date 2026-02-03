@@ -4,3 +4,4 @@
 .public IsItemValid
 .public ITEM_DATA_TABLE_PTRS
 .public ItemZInit
+.public SetActiveInventory

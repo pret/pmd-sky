@@ -1596,7 +1596,7 @@ enum exclusive_item_effect_id {
 
 #define GROUND_ITEM_TOOLBOX_INDEX 0x80
 #define HELD_ITEM_TOOLBOX_INDEX 0x81
-#define INVENTORY_SIZE 52
+#define INVENTORY_SIZE 50
 #define NUMBER_OF_ITEM_IDS (ITEM_UNNAMED_0x577 + 1)
 
 // Item info
@@ -1634,12 +1634,25 @@ struct item_volatile {
 };
 
 struct bag_items_inner {
-    /* 0x0 */ struct item bag_items[INVENTORY_SIZE];
+    /* 0x0 */ struct item bag_items[INVENTORY_SIZE]; 
+    // NOTE: I don't know why we have to do the subtraction  - Seth
 };
 
+#define MAIN_INVENTORY_INDEX 0
+#define SPECIAL_EPISODE_INVENTORY_INDEX 1
+#define RESCUE_INVENTORY_INDEX 2
+#define NUM_INVENTORIES 3
+
 struct bag_items {
-    u8 fill0[0x384];
+    // Indexes:
+    // 0x0 - Main, default
+    // 0x1 - Special Episode
+    // 0x2 - Rescue
+    /* 0x0   */ struct bag_items_inner inventories[NUM_INVENTORIES];
     /* 0x384 */ struct bag_items_inner *bag_items;
+    /* 0x388 */ u8 active_inventory_idx;
+    u8 fill2[0x1009];
+    u32 maybeMoney[NUM_INVENTORIES]; // indexed with an u8, uses same indexes as Inventory
 };
 
 struct bulk_item

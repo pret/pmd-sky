@@ -7,4 +7,7 @@
 // In particular, this checks for Gravity and Magnet Rise.
 bool8 IsFloating(struct entity *entity);
 
+void ov29_02318A90(struct entity* entity, s8 value);
+
+
 #endif //PMDSKY_OVERLAY_29_02318A4C_H

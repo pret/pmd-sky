@@ -5,15 +5,19 @@
 
 extern struct monster_data_table *MONSTER_DATA_TABLE_PTR;
 
+struct monster_evolution_parameters {
+    s16 pre_evolution_idx;            // 0x8: The pre-evolution of the monster.
+    u16 evolution_method;             // 0xA: The evolution method required to evolve to this Pokemon from the pre-evo specified in PreEvoIndex. Null if unused.
+    u16 evolution_param_1;            // 0xC: The first parameter for the evolution method. Null if unused.
+    u16 evolution_param_2;            // 0xE: The second parameter for the evolution method. Null if unused.
+};
+
 struct monster_data_table_entry {
     u16 entity_id;                    // 0x0: A entity-unique ID to identify the entity in both of its 2 entries. Seems to match pokedex number.
     u16 unk_0x2;                      // 0x2: Unknown. Pokemon with the same category string have the same value in here.
     s16 pokedex_number;               // 0x4: The national Pokedex number, as displayed in Chimecho Assembly.
     s16 base_movement_speed;          // 0x6: The base movement speed in dungeons.
-    s16 pre_evolution_idx;            // 0x8: The pre-evolution of the monster.
-    u16 evolution_method;             // 0xA: The evolution method required to evolve to this Pokemon from the pre-evo specified in PreEvoIndex. Null if unused.
-    u16 evolution_param_1;            // 0xC: The first parameter for the evolution method. Null if unused.
-    u16 evolution_param_2;            // 0xE: The second parameter for the evolution method. Null if unused.
+    struct monster_evolution_parameters evolution_param;
     u16 sprite_index;                 // 0x10: The index of the entity's sprite. It's the index inside the three Pokemon sprite files inside the "/MONSTER/" directory!
     u8 gender;                        // 0x12: Gender of this particular entity entry.
     u8 body_size;                     // 0x13: The body size of the Pokemon. Used when determining how many Pokemon fits in the party.
@@ -36,12 +40,12 @@ struct monster_data_table_entry {
     u8 shadow_size;                   // 0x2E: The size of the Pokemon's shadow.
     u8 spawn_asleep_chance;           // 0x2F: The percent chance that a Pokemon will spawn asleep. Most of the time 0x8.
     u8 hp_regeneration;               // 0x30: The rate at which a Pokemon regenerates HP. Always 0x64.
-    s8 unk_0x31;                      // 0x31: Unknown.
+    s8 spawn_threshold;               // 0x31: 
     s16 base_form_idx;                // 0x32: The base evolutionary stage of the Pokemon. Seems to always be between 0 and 600.
-    s16 exclusive_item_1;             // 0x34: The first 1-star exclusive item for this Pokemon. Null if NA.
-    s16 exclusive_item_2;             // 0x36: The second 1-star exclusive item for this Pokemon. Null if NA.
-    s16 exclusive_item_3;             // 0x38: The 2-star exclusive item for this Pokemon. Null if NA.
-    s16 exclusive_item_4;             // 0x3A: The 3-star exclusive item for this Pokemon. Null if NA.
+    s16 exclusive_item[4];             // 0x34: The first 1-star exclusive item for this Pokemon
+                                     // 0x36: The second 1-star exclusive item for this Pokemon. Null if NA.
+                                     // 0x38: The 2-star exclusive item for this Pokemon. Null if NA.
+                                     // 0x3A: The 3-star exclusive item for this Pokemon. Null if NA.
     s16 unk_0x3c;                     // 0x3C: Unknown.
     s16 unk_0x3e;                     // 0x3E: Unknown. Often 0xF.
     s16 unk_0x40;                     // 0x40: Unknown.

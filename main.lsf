@@ -42,7 +42,6 @@ Static main
 	Object src/item_util_1.o
 	Object asm/main_0200EB30.o
 	Object src/main_0200ECFC.o
-	Object asm/main_0200ED1C.o
 	Object src/main_0200EDC0.o
 	Object asm/main_0200EDFC.o
 	Object src/exclusive_item.o
@@ -501,7 +500,6 @@ Overlay OVY_29
 	Object src/dungeon_pokemon_attributes.o
 	Object asm/overlay_29_02301D84.o
 	Object src/dungeon_logic_3.o
-	Object asm/overlay_29_02301E88.o
 	Object src/dungeon_pokemon_attributes_1.o
 	Object asm/overlay_29_023021F0.o
 	Object src/dungeon_logic_5.o
@@ -559,7 +557,6 @@ Overlay OVY_29
 	Object src/dungeon_statuses.o
 	Object asm/overlay_29_02317844.o
 	Object src/overlay_29_02318A4C.o
-	Object asm/overlay_29_02318A90.o
 	Object src/overlay_29_02318AB0.o
 	Object asm/overlay_29_02318AD4.o
 	Object src/overlay_29_02318D34.o

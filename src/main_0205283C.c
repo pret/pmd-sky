@@ -58,7 +58,7 @@ bool8 CanEvolve(s16 monster_id)
 
 s16 GetMonsterPreEvolution(s16 monster_id)
 {
-    return MONSTER_DATA_TABLE_PTR->entries[monster_id].pre_evolution_idx;
+    return MONSTER_DATA_TABLE_PTR->entries[monster_id].evolution_param.pre_evolution_idx;
 }
 
 u8 GetBaseOffensiveStat(s16 monster_id, u8 stat_idx)
