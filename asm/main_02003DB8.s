@@ -26,7 +26,7 @@ HaltProcessDisp: ; 0x02003DB8
 	b _02003E14
 _02003E04:
 	mov r0, r6
-	bl sub_02079888
+	bl OS_SleepThread
 	mov r0, r5
 	bl sub_020029B8
 _02003E14:
@@ -310,7 +310,7 @@ _020041A4:
 _020041C4:
 	bl FileRom_InitDataTransfer
 	bl sub_0207A324
-	bl sub_0207A270
+	bl DC_FlushAll
 	cmp r4, #0x24
 	addls pc, pc, r4, lsl #2
 	b _02004780
@@ -4491,7 +4491,7 @@ _020078B4:
 	cmp r6, #0x40000
 	movlt sl, r6
 	movge sl, fp
-	bl sub_0207A270
+	bl DC_FlushAll
 	ldr r3, [r4, #0x2c]
 	mov r0, sb
 	mov r1, r7
@@ -4866,7 +4866,7 @@ sub_02007D94: ; 0x02007D94
 	stmia ip!, {r0, r1, r2, r3}
 	ldmia lr, {r0, r1, r2}
 	stmia ip, {r0, r1, r2}
-	bl sub_0207A270
+	bl DC_FlushAll
 	ldr r4, [r4, #0x34]
 	ldr r3, [sp, #0x100]
 	mov r2, r5

@@ -379,7 +379,7 @@ _0207ED38:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _0207ED60:
 	add r0, r6, #0x18
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r6, #0xc]
 	tst r0, #0x40
 	beq _0207ED60
@@ -764,7 +764,7 @@ sub_0207F20C: ; 0x0207F20C
 	mov r8, #1
 _0207F26C:
 	add r0, r6, #0x14
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r6, #0x1c]
 	tst r0, #0x40
 	movne r0, r8

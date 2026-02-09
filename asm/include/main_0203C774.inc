@@ -520,7 +520,7 @@
 .public sub_02083B00
 .public sub_02083B14
 .public sub_02083B3C
-.public sub_02084304
+.public CARD_Init
 .public TEAM_MEMBER_TABLE_PTR
 .public TryPointCameraToMonster
 .public UpdateWindow

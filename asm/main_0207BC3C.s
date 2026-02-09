@@ -3,14 +3,14 @@
 
 	.text
 
-	arm_func_start sub_0207BC3C
-sub_0207BC3C: ; 0x0207BC3C
+	arm_func_start MI_SetWramBank
+MI_SetWramBank: ; 0x0207BC3C
 	ldr r1, _0207BC48 ; =0x04000247
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
 _0207BC48: .word 0x04000247
-	arm_func_end sub_0207BC3C
+	arm_func_end MI_SetWramBank
 
 	arm_func_start sub_0207BC4C
 sub_0207BC4C: ; 0x0207BC4C
@@ -59,7 +59,7 @@ sub_0207BCCC: ; 0x0207BCCC
 	mov r3, #0
 	mov r8, r0
 	mov r7, r1
-	bl sub_0207C264
+	bl MIi_CheckDma0SourceAddress
 	cmp r5, #0
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	add r0, r8, r8, lsl #1
@@ -84,8 +84,8 @@ _0207BD2C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_0207BCCC
 
-	arm_func_start sub_0207BD3C
-sub_0207BD3C: ; 0x0207BD3C
+	arm_func_start MI_DmaCopy16
+MI_DmaCopy16: ; 0x0207BD3C
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	movs r5, r3
 	mov r8, r0
@@ -94,7 +94,7 @@ sub_0207BD3C: ; 0x0207BD3C
 	ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
 	mov r2, r5
 	mov r3, #0
-	bl sub_0207C264
+	bl MIi_CheckDma0SourceAddress
 	add r0, r8, r8, lsl #1
 	add r0, r0, #2
 	mov r0, r0, lsl #2
@@ -115,7 +115,7 @@ _0207BD98:
 	tst r0, #0x80000000
 	bne _0207BD98
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
-	arm_func_end sub_0207BD3C
+	arm_func_end MI_DmaCopy16
 
 	arm_func_start sub_0207BDA8
 sub_0207BDA8: ; 0x0207BDA8
@@ -182,7 +182,7 @@ sub_0207BE6C: ; 0x0207BE6C
 	mov r8, r0
 	mov r7, r1
 	ldr r4, [sp, #0x18]
-	bl sub_0207C264
+	bl MIi_CheckDma0SourceAddress
 	cmp r5, #0
 	bne _0207BEAC
 	cmp r4, #0
@@ -226,7 +226,7 @@ sub_0207BF04: ; 0x0207BF04
 	mov r8, r0
 	mov r7, r1
 	ldr r4, [sp, #0x18]
-	bl sub_0207C264
+	bl MIi_CheckDma0SourceAddress
 	cmp r5, #0
 	bne _0207BF44
 	cmp r4, #0
@@ -273,7 +273,7 @@ sub_0207BFA4: ; 0x0207BFA4
 	mov r8, r0
 	mov r7, r1
 	ldr r4, [sp, #0x18]
-	bl sub_0207C264
+	bl MIi_CheckDma0SourceAddress
 	cmp r5, #0
 	bne _0207BFE4
 	cmp r4, #0
@@ -317,7 +317,7 @@ sub_0207C03C: ; 0x0207C03C
 	mov r8, r0
 	mov r7, r1
 	ldr r4, [sp, #0x18]
-	bl sub_0207C264
+	bl MIi_CheckDma0SourceAddress
 	cmp r5, #0
 	bne _0207C07C
 	cmp r4, #0
@@ -399,8 +399,8 @@ _0207C158:
 _0207C160: .word 0x81400001
 	arm_func_end sub_0207C0FC
 
-	arm_func_start sub_0207C164
-sub_0207C164: ; 0x0207C164
+	arm_func_start MI_StopDma
+MI_StopDma: ; 0x0207C164
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	bl EnableIrqFlag
@@ -434,7 +434,7 @@ _0207C1D4:
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207C1DC: .word 0x81400001
-	arm_func_end sub_0207C164
+	arm_func_end MI_StopDma
 
 	arm_func_start sub_0207C1E0
 sub_0207C1E0: ; 0x0207C1E0
@@ -476,8 +476,8 @@ _0207C24C:
 _0207C260: .word 0x040000B8
 	arm_func_end sub_0207C1E0
 
-	arm_func_start sub_0207C264
-sub_0207C264: ; 0x0207C264
+	arm_func_start MIi_CheckDma0SourceAddress
+MIi_CheckDma0SourceAddress: ; 0x0207C264
 	stmdb sp!, {r3, lr}
 	cmp r0, #0
 	ldmneia sp!, {r3, pc}
@@ -502,7 +502,7 @@ _0207C28C:
 _0207C2B0:
 	bl WaitForever2
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C264
+	arm_func_end MIi_CheckDma0SourceAddress
 
 	arm_func_start ArrayFill16
 ArrayFill16: ; 0x0207C2B8
@@ -941,7 +941,7 @@ sub_0207C750: ; 0x0207C750
 	mov r1, r5
 	mov r2, r7
 	mov r3, #0x1000000
-	bl sub_0207C264
+	bl MIi_CheckDma0SourceAddress
 	cmp r7, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, r6, r6, lsl #1
@@ -963,15 +963,15 @@ _0207C79C:
 _0207C7C0: .word 0xAF000001
 	arm_func_end sub_0207C750
 
-	arm_func_start sub_0207C7C4
-sub_0207C7C4: ; 0x0207C7C4
+	arm_func_start MI_Init
+MI_Init: ; 0x0207C7C4
 	stmdb sp!, {r3, lr}
 	mov r0, #3
-	bl sub_0207BC3C
+	bl MI_SetWramBank
 	mov r0, #0
-	bl sub_0207C164
+	bl MI_StopDma
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207C7C4
+	arm_func_end MI_Init
 
 	arm_func_start sub_0207C7DC
 sub_0207C7DC: ; 0x0207C7DC
@@ -1358,7 +1358,7 @@ sub_0207CC10: ; 0x0207CC10
 	ldr r0, _0207CC44 ; =_022B99F0
 	mov r2, #1
 	str r2, [r1]
-	bl sub_0207A030
+	bl OS_InitMutex
 	bl sub_0207CC70
 	bl sub_0207D380
 	ldmia sp!, {r3, pc}
@@ -1627,12 +1627,12 @@ _0207CF64:
 _0207CF98:
 	ldr r0, _0207D0C8 ; =_022B9D00
 	mov r1, #0x1800
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r1, _0207D0C4 ; =_022B9A20
 	mov r0, #7
 	ldr r1, [r1, #8]
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	bge _0207D058
 	tst sl, #1
@@ -1658,7 +1658,7 @@ _0207CFF4:
 	mov sb, r0
 	mov r0, r7
 	mov r1, r6
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	bne _0207D034
@@ -1673,7 +1673,7 @@ _0207D034:
 	ldr r1, [r4, #8]
 	mov r0, r5
 	mov r2, fp
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	blt _0207CFF4
 _0207D058:
@@ -1860,13 +1860,13 @@ sub_0207D270: ; 0x0207D270
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r1, _0207D2CC ; =sub_0207D24C
 	mov r0, #7
-	bl sub_0207DAB0
+	bl PXI_SetFifoRecvCallback
 	bl sub_0207D340
 	cmp r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
 	mov r0, #7
 	mov r1, #1
-	bl sub_0207DAFC
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 	mov r6, #0x64
@@ -1877,7 +1877,7 @@ _0207D2AC:
 	bl sub_0207B854
 	mov r0, r5
 	mov r1, r4
-	bl sub_0207DAFC
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _0207D2AC
 	ldmia sp!, {r4, r5, r6, pc}
@@ -1894,7 +1894,7 @@ _0207D2DC:
 	mov r0, r5
 	mov r1, r4
 	mov r2, r4
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	blt _0207D2DC
 	ldmia sp!, {r3, r4, r5, pc}
@@ -2022,7 +2022,7 @@ sub_0207D444: ; 0x0207D444
 	mov r1, #4
 	ldr r0, [r0]
 	add r0, r0, #4
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, _0207D46C ; =_022BB560
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
@@ -2038,7 +2038,7 @@ sub_0207D470: ; 0x0207D470
 	mov r1, #2
 	ldr r0, [r0]
 	add r0, r0, #8
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, _0207D498 ; =_022BB560
 	ldr r0, [r0]
 	ldrh r0, [r0, #8]
@@ -2053,7 +2053,7 @@ sub_0207D49C: ; 0x0207D49C
 	ldr r0, _0207D4C0 ; =_022BB560
 	mov r1, #4
 	ldr r0, [r0]
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, _0207D4C0 ; =_022BB560
 	ldr r0, [r0]
 	ldr r0, [r0]
@@ -2096,7 +2096,7 @@ _0207D51C:
 	cmp r3, #0x10
 	blt _0207D51C
 	mov r1, #0x280
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldmia sp!, {r4, pc}
 	arm_func_end sub_0207D4C4
 
@@ -2446,16 +2446,16 @@ _0207D998:
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end sub_0207D968
 
-	arm_func_start sub_0207D9A4
-sub_0207D9A4: ; 0x0207D9A4
-	ldr ip, _0207D9AC ; =sub_0207D9B0
+	arm_func_start PXI_Init
+PXI_Init: ; 0x0207D9A4
+	ldr ip, _0207D9AC ; =PXI_InitFifo
 	bx ip
 	.align 2, 0
-_0207D9AC: .word sub_0207D9B0
-	arm_func_end sub_0207D9A4
+_0207D9AC: .word PXI_InitFifo
+	arm_func_end PXI_Init
 
-	arm_func_start sub_0207D9B0
-sub_0207D9B0: ; 0x0207D9B0
+	arm_func_start PXI_InitFifo
+PXI_InitFifo: ; 0x0207D9B0
 	stmdb sp!, {r3, r4, r5, lr}
 	bl EnableIrqFlag
 	ldr r1, _0207DA94 ; =_022BB564
@@ -2479,12 +2479,12 @@ _0207D9E8:
 	ldr r1, _0207DAA4 ; =0x04000184
 	mov r0, #0x40000
 	strh r2, [r1]
-	bl sub_02078CC8
-	ldr r1, _0207DAA8 ; =sub_0207DBA8
+	bl OS_ResetRequestIrqMask
+	ldr r1, _0207DAA8 ; =PXIi_HandlerRecvFifoNotEmpty
 	mov r0, #0x40000
-	bl sub_02078A98
+	bl OS_SetIrqFunction
 	mov r0, #0x40000
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	mov r5, #0
 	ldr r3, _0207DAAC ; =0x04000180
 	mov r1, r5
@@ -2525,12 +2525,12 @@ _0207DA98: .word 0x027FFC00
 _0207DA9C: .word _022BB568
 _0207DAA0: .word 0x0000C408
 _0207DAA4: .word 0x04000184
-_0207DAA8: .word sub_0207DBA8
+_0207DAA8: .word PXIi_HandlerRecvFifoNotEmpty
 _0207DAAC: .word 0x04000180
-	arm_func_end sub_0207D9B0
+	arm_func_end PXI_InitFifo
 
-	arm_func_start sub_0207DAB0
-sub_0207DAB0: ; 0x0207DAB0
+	arm_func_start PXI_SetFifoRecvCallback
+PXI_SetFifoRecvCallback: ; 0x0207DAB0
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r4, r0
 	mov r5, r1
@@ -2551,10 +2551,10 @@ sub_0207DAB0: ; 0x0207DAB0
 	.align 2, 0
 _0207DAF4: .word _022BB568
 _0207DAF8: .word 0x027FFC00
-	arm_func_end sub_0207DAB0
+	arm_func_end PXI_SetFifoRecvCallback
 
-	arm_func_start sub_0207DAFC
-sub_0207DAFC: ; 0x0207DAFC
+	arm_func_start PXI_IsCallbackReady
+PXI_IsCallbackReady: ; 0x0207DAFC
 	ldr r2, _0207DB1C ; =0x027FFC00
 	mov r3, #1
 	add r1, r2, r1, lsl #2
@@ -2565,10 +2565,10 @@ sub_0207DAFC: ; 0x0207DAFC
 	bx lr
 	.align 2, 0
 _0207DB1C: .word 0x027FFC00
-	arm_func_end sub_0207DAFC
+	arm_func_end PXI_IsCallbackReady
 
-	arm_func_start sub_0207DB20
-sub_0207DB20: ; 0x0207DB20
+	arm_func_start PXI_SendWordByFifo
+PXI_SendWordByFifo: ; 0x0207DB20
 	stmdb sp!, {r3, lr}
 	ldr ip, [sp]
 	ldr r3, _0207DBA4 ; =0x04000184
@@ -2606,10 +2606,10 @@ _0207DB90:
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207DBA4: .word 0x04000184
-	arm_func_end sub_0207DB20
+	arm_func_end PXI_SendWordByFifo
 
-	arm_func_start sub_0207DBA8
-sub_0207DBA8: ; 0x0207DBA8
+	arm_func_start PXIi_HandlerRecvFifoNotEmpty
+PXIi_HandlerRecvFifoNotEmpty: ; 0x0207DBA8
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, lr}
 	sub sp, sp, #4
 	mvn r8, #3
@@ -2689,7 +2689,7 @@ _0207DCB0:
 	.align 2, 0
 _0207DCB8: .word 0x04000184
 _0207DCBC: .word _022BB568
-	arm_func_end sub_0207DBA8
+	arm_func_end PXIi_HandlerRecvFifoNotEmpty
 
 	arm_func_start sub_0207DCC0
 sub_0207DCC0: ; 0x0207DCC0
@@ -2796,7 +2796,7 @@ _0207DDE4:
 	mov r6, #1
 _0207DE2C:
 	add r0, r5, #0xc
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r5, #0x1c]
 	tst r0, #0x200
 	movne r0, r6
@@ -2898,7 +2898,7 @@ _0207DF54:
 	mov sb, #1
 _0207DF7C:
 	add r0, r4, #0xc
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r4, #0x1c]
 	tst r0, #0x200
 	movne r0, sb

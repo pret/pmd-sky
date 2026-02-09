@@ -33,7 +33,7 @@ sub_020038E8: ; 0x020038E8
 	beq _02003938
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 _02003938:
 	ldr r0, _0200398C ; =_020AF000
 	bl sub_02002A44
@@ -134,11 +134,11 @@ sub_02003A40: ; 0x02003A40
 	beq _02003A7C
 	strb r0, [r1, #0xa]
 	strb r2, [r1, #7]
-	bl sub_02079888
+	bl OS_SleepThread
 	b _02003A90
 _02003A7C:
 	strb r2, [r1, #9]
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, _02003AAC ; =_020AEF7C
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -200,7 +200,7 @@ _02003B30:
 	bl sub_0207B584
 	mov r0, #1
 	mov r1, #0
-	bl sub_02078A98
+	bl OS_SetIrqFunction
 	bl EnableAllInterrupts
 	ldmia sp!, {r3, pc}
 	.align 2, 0

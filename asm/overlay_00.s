@@ -2994,10 +2994,10 @@ _022BE9EC:
 	mov r0, #6
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 _022BEA00:
-	bl sub_0207D9A4
+	bl PXI_Init
 	mov r0, #0xa
 	mov r1, #1
-	bl sub_0207DAFC
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	bne _022BEA28
 	mov r0, r5
@@ -3007,7 +3007,7 @@ _022BEA00:
 _022BEA28:
 	mov r0, r6
 	mov r1, r7
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	mov r0, r4
 	mov r1, r6
 	mov r3, r7
@@ -3079,7 +3079,7 @@ _022BEB30:
 	blt _022BEB08
 	ldr r1, _022BEB70 ; =ov00_022BEE78
 	mov r0, #0xa
-	bl sub_0207DAB0
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _022BEB60 ; =ov00_0231E340
 	mov r2, #1
 	mov r0, r5
@@ -3116,7 +3116,7 @@ _022BEB9C:
 	bl ov00_022BF224
 	mov r0, #0xa
 	mov r1, #0
-	bl sub_0207DAB0
+	bl PXI_SetFifoRecvCallback
 	ldr r1, _022BEBE0 ; =ov00_0231E340
 	mov r2, #0
 	str r2, [r1, #4]
@@ -3152,7 +3152,7 @@ ov00_022BEBFC: ; 0x022BEBFC
 	ldmeqia sp!, {r3, pc}
 	ldr r0, [sp]
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, [sp]
 	ldrh r0, [r1]
 	tst r0, #0x8000
@@ -3201,7 +3201,7 @@ _022BECB4:
 	mov r1, r4
 	mov r0, #0xa
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	mov r5, r0
 	ldr r0, _022BECFC ; =ov00_0231E348
 	mov r1, r4
@@ -3236,7 +3236,7 @@ ov00_022BED00: ; 0x022BED00
 	mov r1, r5
 	mov r0, #0xa
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	mov r4, r0
 	ldr r0, _022BED6C ; =ov00_0231E348
 	mov r1, r5
@@ -3281,7 +3281,7 @@ ov00_022BED9C: ; 0x022BED9C
 	mov r1, #2
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #4]
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, _022BEDE0 ; =ov00_0231E340
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #4]
@@ -3307,7 +3307,7 @@ ov00_022BEDE4: ; 0x022BEDE4
 	mov r1, #2
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #4]
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, _022BEE74 ; =ov00_0231E340
 	ldr r3, [sp, #8]
 	ldr r0, [r0, #4]
@@ -3349,20 +3349,20 @@ ov00_022BEE78: ; 0x022BEE78
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr r0, [r4, #0x10]
 	mov r1, #0x100
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldrh r0, [r4, #0x16]
 	cmp r0, #0
 	bne _022BEEBC
 	ldr r0, [r4, #4]
 	mov r1, #0x800
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 _022BEEBC:
 	ldr r0, [r4, #0x10]
 	cmp sl, r0
 	beq _022BEED4
 	mov r0, sl
 	mov r1, #0x100
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 _022BEED4:
 	ldrh r0, [sl]
 	cmp r0, #0x2c
@@ -3395,7 +3395,7 @@ _022BEF10:
 	ldr r1, [r4, #4]
 	ldr r0, [sl, #8]
 	ldrh r1, [r1, #0x72]
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldrh r1, [sl, #6]
 	mov r0, sl
 	add r1, r4, r1, lsl #2
@@ -3429,7 +3429,7 @@ _022BEF8C:
 	ldr r1, [r4, #4]
 	ldr r0, [sl, #8]
 	ldrh r1, [r1, #0x72]
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 _022BEFCC:
 	ldrh r1, [sl]
 	cmp r1, #2
@@ -3571,7 +3571,7 @@ _022BF1BC:
 _022BF1D0:
 	ldr r0, [r4, #0x10]
 	mov r1, #0x100
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	bl ov00_022BF224
 	ldr r0, [r4, #0x10]
 	cmp sl, r0
@@ -3751,7 +3751,7 @@ ov00_022BF3E0: ; 0x022BF3E0
 	ldmeqia sp!, {r3, r4, r5, pc}
 	ldr r0, [r4, #4]
 	mov r1, #0x7d0
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	mov r1, r5
 	mov r2, #0x7d0
@@ -3775,7 +3775,7 @@ ov00_022BF42C: ; 0x022BF42C
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r0, r0, #0xc
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, [r4, #4]
 	ldr r0, [r1, #0xc]
 	cmp r0, #1
@@ -3783,7 +3783,7 @@ ov00_022BF42C: ; 0x022BF42C
 	ldmeqia sp!, {r4, pc}
 	add r0, r1, #0x3c
 	mov r1, #4
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	ldrh r0, [r0, #0x3c]
 	add r0, r0, #0x1f
@@ -3806,7 +3806,7 @@ ov00_022BF498: ; 0x022BF498
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r0, r0, #0xc
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, [r4, #4]
 	ldr r0, [r1, #0xc]
 	cmp r0, #1
@@ -3814,7 +3814,7 @@ ov00_022BF498: ; 0x022BF498
 	ldmeqia sp!, {r3, r4, r5, pc}
 	add r0, r1, #0x188
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, [r4, #4]
 	add r0, r1, #0x100
 	ldrh r0, [r0, #0x88]
@@ -3823,7 +3823,7 @@ ov00_022BF498: ; 0x022BF498
 	add r0, r1, #0x3e
 	mov r1, #2
 	movne r5, #0
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	cmp r5, #1
 	ldrh r5, [r0, #0x3e]
@@ -3833,7 +3833,7 @@ ov00_022BF498: ; 0x022BF498
 	ldmneia sp!, {r3, r4, r5, pc}
 	add r0, r0, #0xf8
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	add r1, r5, #0xc
 	ldrh r0, [r0, #0xf8]
@@ -3870,7 +3870,7 @@ _022BF5A4:
 	mov r1, #2
 	add r0, r0, #0x82
 	add r0, r0, #0x100
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r6, #4]
 	mov r1, #1
 	add r0, r0, #0x100
@@ -3932,7 +3932,7 @@ ov00_022BF660: ; 0x022BF660
 	ldmneia sp!, {r4, pc}
 	ldr r0, [r4, #4]
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, [r4, #4]
 	ldrh r0, [r1]
 	cmp r0, #9
@@ -3945,7 +3945,7 @@ _022BF6A8:
 	add r0, r1, #0x82
 	add r0, r0, #0x100
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, [r4, #4]
 	add r0, r1, #0x100
 	ldrh r0, [r0, #0x82]
@@ -3955,7 +3955,7 @@ _022BF6A8:
 _022BF6D0:
 	add r0, r1, #0xbc
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	ldrh r0, [r0, #0xbc]
 	ldmia sp!, {r4, pc}
@@ -4782,7 +4782,7 @@ _022C01AC:
 	add r0, r1, #0x82
 	add r0, r0, #0x100
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r6, #4]
 	mov r1, #1
 	add r0, r0, #0x100
@@ -4830,10 +4830,10 @@ ov00_022C021C: ; 0x022C021C
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	add r0, r4, #0x188
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	add r0, r4, #0xc6
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	add r0, r4, #0x100
 	ldrh r0, [r0, #0x88]
 	cmp r0, #0
@@ -4844,7 +4844,7 @@ ov00_022C021C: ; 0x022C021C
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	add r0, r4, #0xc
 	mov r1, #4
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r4, #0xc]
 	cmp r0, #1
 	addeq sp, sp, #0x40
@@ -4861,7 +4861,7 @@ ov00_022C021C: ; 0x022C021C
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	add r0, r4, #0x9c
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldrh r0, [r4, #0x9c]
 	cmp r0, #0
 	bne _022C0314
@@ -5004,7 +5004,7 @@ ov00_022C0498: ; 0x022C0498
 	ldmneia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	add r0, r5, #0x188
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	add r0, r5, #0x100
 	ldrh r0, [r0, #0x88]
 	cmp r0, #0
@@ -5012,12 +5012,12 @@ ov00_022C0498: ; 0x022C0498
 	add r0, r5, #0x82
 	add r0, r0, #0x100
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	add r2, r5, #0x100
 	add r0, r5, #0x86
 	mov r1, #2
 	ldrh r4, [r2, #0x82]
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 _022C0518:
 	cmp r7, #0
 	addeq sp, sp, #0x14
@@ -5029,7 +5029,7 @@ _022C0518:
 	ldmeqia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	add r0, r5, #0x7c
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r5, #0x7c]
 	cmp r7, r0
 	addeq sp, sp, #0x14
@@ -5080,7 +5080,7 @@ ov00_022C05C8: ; 0x022C05C8
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r0, r0, #0xc
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	cmp r0, #0
@@ -5113,7 +5113,7 @@ ov00_022C0638: ; 0x022C0638
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r0, r0, #0x10
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x10]
 	cmp r0, #1
@@ -5160,7 +5160,7 @@ ov00_022C06D8: ; 0x022C06D8
 	ldr r0, [r8, #4]
 	mov r1, #4
 	add r0, r0, #0x10
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r8, #4]
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
@@ -5211,7 +5211,7 @@ ov00_022C07A4: ; 0x022C07A4
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r0, r0, #0x10
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
@@ -10141,7 +10141,7 @@ _022C4B58:
 	beq _022C4B70
 	ldr r1, [sp, #4]
 	mov r0, sb
-	bl sub_0207A2DC
+	bl DC_FlushRange
 _022C4B70:
 	ldr r0, [sp, #0x10]
 	add sp, sp, #0x6c
@@ -10745,7 +10745,7 @@ ov00_022C537C: ; 0x022C537C
 	mov r5, r1
 	mov r0, r4
 	bic r1, r2, #0x1f
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	bl sub_0207A300
 	mov r0, r4
 	mov r1, r6
@@ -12334,7 +12334,7 @@ _022C692C:
 	mov r0, #0x180
 	mla r0, r5, r0, r1
 	mov r1, #0xc0
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, _022C6E80 ; =ov00_02325020
 	add r2, r4, #0x600
 	mov r0, #0x180
@@ -12342,7 +12342,7 @@ _022C692C:
 	ldrh r0, [r1]
 	add r1, r4, #0x440
 	mov r3, #0xc0
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	str r5, [r4, #0x5ec]
 	b _022C69EC
 _022C6978:
@@ -12366,7 +12366,7 @@ _022C697C:
 	mov r0, #0x180
 	mla r0, r5, r0, r1
 	mov r1, #0xc0
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, _022C6E80 ; =ov00_02325020
 	add r2, r4, #0x600
 	mov r0, #0x180
@@ -12374,7 +12374,7 @@ _022C697C:
 	ldrh r0, [r1]
 	add r1, r4, #0x440
 	mov r3, #0xc0
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	str r5, [r4, #0x5ec]
 _022C69EC:
 	ldr r2, [r4, #0x51c]
@@ -13124,7 +13124,7 @@ _022C7360:
 	bl SetIrqFlag
 	mov r0, #0xf
 	mov r1, #1
-	bl sub_0207DAFC
+	bl PXI_IsCallbackReady
 	ldr r1, _022C748C ; =ov00_02325020
 	ldr r1, [r1, #0xc]
 	add r1, r1, #0x7000
@@ -13637,7 +13637,7 @@ _022C7AB8:
 	mov r1, r6
 	bl sub_02079A64
 	mov r0, r4
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r7, #0xc0]
 	cmp r0, #0
 	beq _022C7AB8
@@ -13729,7 +13729,7 @@ ov00_022C7BAC: ; 0x022C7BAC
 	stmia sp, {ip, lr}
 	bl StartThread
 	mov r0, r5
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 _022C7C14:
 	mov r0, r4
 	bl SetIrqFlag
@@ -13830,7 +13830,7 @@ _022C7CF8:
 	streq r1, [r0]
 	mov r0, r4
 	str sb, [r4, #0xc0]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	b _022C7DC8
 _022C7D50:
 	cmp sb, r0
@@ -14187,7 +14187,7 @@ _022C819C:
 	beq _022C81D8
 	str r4, [r1, #4]
 	ldr r0, [r1]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 _022C81D8:
 	ldr r6, [r6, #0x68]
 	cmp r6, #0
@@ -14373,9 +14373,9 @@ _022C8324:
 	mov r2, #0
 	bl StartThread
 	ldr r0, _022C8494 ; =ov00_023252E0
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldr r0, _022C849C ; =ov00_02325220
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -14413,7 +14413,7 @@ ov00_022C84A8: ; 0x022C84A8
 	ldr r0, _022C84F0 ; =ov00_02325220
 	mov r2, #1
 	str r2, [r1, #0x44]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 _022C84E0:
 	mov r0, r4
 	bl SetIrqFlag
@@ -14883,7 +14883,7 @@ ov00_022C8A74: ; 0x022C8A74
 	ldmneia sp!, {r3, pc}
 	ldr r0, _022C8AC8 ; =ov00_02325078
 	ldr r0, [r0, #0x54]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -14908,7 +14908,7 @@ _022C8AFC:
 	ldr r1, [r8, #4]
 	mov r0, r5
 	str r1, [sb, #0x54]
-	bl sub_02079888
+	bl OS_SleepThread
 	str r4, [sb, #0x54]
 	ldr r1, [sb, #0x30]
 	ldr r0, [sb, #0x28]
@@ -16051,7 +16051,7 @@ _022C9A90:
 	mov r0, #0
 	str r0, [r4, #4]
 	ldr r0, [r4]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	b _022C9B58
 _022C9B4C:
 	ldr r1, [r1, #0x68]
@@ -16704,7 +16704,7 @@ _022CA348:
 	mov r0, #0
 	str r0, [r4, #4]
 	ldr r0, [r4]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov00_022CA308
 
@@ -16797,7 +16797,7 @@ _022CA528:
 	mov r0, #0
 	str r0, [r5, #4]
 	ldr r0, [r5]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 _022CA54C:
 	cmp r8, #0
 	beq _022CA710
@@ -16840,7 +16840,7 @@ _022CA554:
 	mov r0, #0
 	str r0, [r5, #4]
 	ldr r0, [r5]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 _022CA5F0:
 	cmp r7, #0
 	beq _022CA644
@@ -16861,7 +16861,7 @@ _022CA5F0:
 	mov r0, #0
 	str r0, [r5, #4]
 	ldr r0, [r5]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	b _022CA710
 _022CA644:
 	cmp r8, #0
@@ -16887,7 +16887,7 @@ _022CA65C:
 	bne _022CA710
 	str r1, [r5, #4]
 	ldr r0, [r5]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	b _022CA710
 _022CA6A4:
 	cmp r8, #0
@@ -16910,7 +16910,7 @@ _022CA6D0:
 	bne _022CA710
 	str r1, [r5, #4]
 	ldr r0, [r5]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	b _022CA710
 _022CA6F4:
 	tst r6, #1
@@ -16964,7 +16964,7 @@ _022CA774:
 	ldmneia sp!, {r3, r4, r5, r6, r7, pc}
 	str r1, [r4, #4]
 	ldr r0, [r4]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _022CA7AC:
 	ldr r2, [r4, #0x24]
@@ -16999,7 +16999,7 @@ ov00_022CA7E4: ; 0x022CA7E4
 	ldmhiia sp!, {r4, pc}
 	str r1, [r4, #4]
 	ldr r0, [r4]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldmia sp!, {r4, pc}
 	arm_func_end ov00_022CA7E4
 
@@ -17204,7 +17204,7 @@ _022CAAB4:
 	mov r0, #0
 	str r0, [r4, #4]
 	ldr r0, [r4]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	b _022CAB3C
 _022CAB04:
 	ldr r3, [r4, #0x38]
@@ -17812,7 +17812,7 @@ _022CB29C:
 	beq _022CB2F0
 	mov r0, #0
 	str r5, [sl, #4]
-	bl sub_02079888
+	bl OS_SleepThread
 _022CB2F0:
 	mov r0, sb
 	bl SetIrqFlag
@@ -17960,7 +17960,7 @@ ov00_022CB480: ; 0x022CB480
 _022CB4A8:
 	mov r0, r4
 	str r5, [r8, #4]
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r6, [r8, #0x44]
 	cmp r6, #0
 	beq _022CB4A8
@@ -17990,7 +17990,7 @@ ov00_022CB4D4: ; 0x022CB4D4
 _022CB508:
 	mov r0, r6
 	str r7, [r4, #4]
-	bl sub_02079888
+	bl OS_SleepThread
 _022CB514:
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
@@ -18729,7 +18729,7 @@ _022CBEA0:
 	strb r7, [r0, #8]
 	str r7, [r0, #4]
 	ldr r0, [r0]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	b _022CBEF8
 _022CBED8:
 	cmp r1, #4
@@ -18739,7 +18739,7 @@ _022CBED8:
 	bne _022CBEF8
 	str r6, [r0, #4]
 	ldr r0, [r0]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 _022CBEF8:
 	ldr sb, [sb, #0x68]
 	cmp sb, #0
@@ -20511,7 +20511,7 @@ ov00_022CD61C: ; 0x022CD61C
 	mov r1, r7
 	bl sub_02079DB8
 	add r0, r6, #0xe0
-	bl sub_0207A030
+	bl OS_InitMutex
 	ldrh r2, [r5]
 	add r0, r6, #0x20
 	ldr r1, _022CD68C ; =ov00_022CD288
@@ -20522,7 +20522,7 @@ ov00_022CD61C: ; 0x022CD61C
 	str ip, [sp, #4]
 	bl StartThread
 	add r0, r6, #0x20
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	add r0, r7, r4
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
@@ -21174,7 +21174,7 @@ _022CDF10:
 	mvneq r8, #5
 	beq _022CDF68
 	add r0, r6, #0x10c
-	bl sub_02079888
+	bl OS_SleepThread
 	mov r0, sl
 	bl ov00_022CF154
 	cmp r0, #0
@@ -21504,7 +21504,7 @@ _022CE398:
 	moveq r5, #0
 	beq _022CE3B0
 	add r0, r4, #0x104
-	bl sub_02079888
+	bl OS_SleepThread
 	b _022CE36C
 _022CE3B0:
 	mov r0, fp
@@ -26946,7 +26946,7 @@ _022D2BD4:
 	strb r6, [r1, #8]
 	str r6, [r1, #4]
 	ldr r0, [r1]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 _022D2C38:
 	ldr r4, [r4, #0x68]
 	cmp r4, #0
@@ -29561,7 +29561,7 @@ _022D4F98:
 	add r0, r0, #0x2000
 	ldrh r1, [r1, #0x8c]
 	ldr r0, [r0, #0x288]
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r2, _022D5064 ; =ov00_02326C4C
 	ldr r0, _022D5068 ; =ov00_022D5FFC
 	ldr r1, [r2]
@@ -29972,7 +29972,7 @@ _022D5524:
 	bl ov00_022BF240
 	mov r5, r0
 	mov r1, #2
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldrh r0, [r5]
 	cmp r0, #0
 	beq _022D5554
@@ -30854,7 +30854,7 @@ _022D6090:
 	add r0, r0, #0x2000
 	ldrh r1, [r1, #0x8c]
 	ldr r0, [r0, #0x288]
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldrh r0, [r5, #0xe]
 	mov r4, #0
 	cmp r0, #0
@@ -30926,7 +30926,7 @@ _022D6188:
 	add r0, r0, #0x2000
 	ldrh r1, [r1, #0x8c]
 	ldr r0, [r0, #0x288]
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r2, _022D62B8 ; =ov00_02326C4C
 	ldr r0, _022D62CC ; =ov00_022D5FFC
 	ldr r1, [r2]
@@ -31324,7 +31324,7 @@ _022D6708:
 	bl ov00_022D758C
 	ldr r0, [r4, #8]
 	mov r1, #0x620
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r0, [r4, #8]
 	bl ov00_022D709C
 	ldmia sp!, {r4, pc}
@@ -32023,7 +32023,7 @@ ov00_022D705C: ; 0x022D705C
 	str r2, [r1, #8]
 	ldr r0, _022D7098 ; =ov00_02326C5C
 	str r2, [r1, #4]
-	bl sub_0207A030
+	bl OS_InitMutex
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _022D7094: .word ov00_02326C50
@@ -32231,7 +32231,7 @@ _022D7318:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 _022D7330:
 	ldr r0, _022D7384 ; =ov00_02326C54
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, _022D7388 ; =ov00_02326C50
 	ldr r0, [r0, #0x24]
 	cmp r0, #0
@@ -33075,7 +33075,7 @@ _022D7DD0:
 	movs r4, r0
 	beq _022D7E08
 	mov r1, #0x20
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, _022D7E54 ; =ov00_02326C90
 	mov r0, r4
 	ldr r1, [r1, #0xc]
@@ -36137,7 +36137,7 @@ ov00_022DA58C: ; 0x022DA58C
 	ldr r0, [r1]
 	mov r1, #0x400
 	add r0, r0, #0xf00
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldrh r0, [r6, #2]
 	cmp r0, #0
 	ldreqh r0, [r6, #8]
@@ -38100,7 +38100,7 @@ ov00_022DBDC8: ; 0x022DBDC8
 	ldr r0, [r0, #8]
 	add r0, r0, #0x3d8
 	add r0, r0, #0x1000
-	bl sub_0207A030
+	bl OS_InitMutex
 	ldr r1, _022DBE70 ; =ov00_02326CB4
 	mov r2, #0
 	ldr r0, [r1, #8]
@@ -38134,7 +38134,7 @@ _022DBE24:
 	ldr r0, [r0, #8]
 	add r0, r0, #0x318
 	add r0, r0, #0x1000
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -39156,7 +39156,7 @@ _022DCBB8:
 	bl ov00_022D7140
 	mov r7, r0
 	mov r1, #6
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	cmp r7, #0
 	bne _022DCCBC
 	mov r0, r6
@@ -39194,7 +39194,7 @@ _022DCD04:
 	bl ov00_022D7184
 	mov r5, r0
 	mov r1, #0x20
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	cmp r5, #0
 	bne _022DCD44
 	mov r0, r6
@@ -39575,10 +39575,10 @@ ov00_022DD290: ; 0x022DD290
 	add r0, r0, #0x1800
 	mov r4, r1
 	str r3, [r2, #0xc10]
-	bl sub_0207A030
+	bl OS_InitMutex
 	add r0, r5, #0x218
 	add r0, r0, #0x1800
-	bl sub_0207A030
+	bl OS_InitMutex
 	add r0, r5, #0x1000
 	ldr r0, [r0, #0x18]
 	cmp r0, #1
@@ -39609,7 +39609,7 @@ _022DD30C:
 	bl StartThread
 	add r0, r5, #0x338
 	add r0, r0, #0x1800
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
@@ -40912,7 +40912,7 @@ ov00_022DE47C: ; 0x022DE47C
 	ldr r0, [r1]
 	add r0, r0, #0x1dc
 	add r0, r0, #0x1000
-	bl sub_0207A030
+	bl OS_InitMutex
 	bl ov00_022DE714
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
@@ -41092,7 +41092,7 @@ _022DE74C:
 	ldr r0, [r0]
 	add r0, r0, #0x11c
 	add r0, r0, #0x1000
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -43814,7 +43814,7 @@ _022E0C58:
 	bl ov00_022D7140
 	mov r5, r0
 	mov r1, #6
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	cmp r5, #0
 	bne _022E0C8C
 	mov r0, r6
@@ -43836,7 +43836,7 @@ _022E0C8C:
 	bl ov00_022D7184
 	mov r5, r0
 	mov r1, #0x20
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	cmp r5, #0
 	bne _022E0CE0
 	mov r0, r6
@@ -44280,7 +44280,7 @@ _022E123C:
 	ldr r0, _022E1284 ; =ov00_02326D84
 	ldr r0, [r0]
 	add r0, r0, #0x9c0
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	mov r0, #1
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, pc}
@@ -58960,42 +58960,42 @@ _022EDA0C:
 	ldr r1, [sp]
 	mov r0, #4
 	mov r2, r5
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022ED9D0
 	mov r0, #4
 	mov r1, r4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022ED9D0
 	ldr r1, [sp, #4]
 	mov r0, #4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022ED9D0
 	ldr r1, [sp, #8]
 	mov r0, #4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022ED9D0
 	ldr r1, [sp, #0xc]
 	mov r0, #4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022ED9D0
 	ldr r1, [sp, #0x10]
 	mov r0, #4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -59004,7 +59004,7 @@ _022EDAB8:
 	ldr r1, [sp, #0x14]
 	mov r0, #4
 	mov r2, r5
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -59013,35 +59013,35 @@ _022EDAD8:
 	ldr r1, [sp, #0x18]
 	mov r0, #4
 	mov r2, r5
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022EDB64
 	mov r0, #4
 	mov r1, r4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022EDB64
 	ldr r1, [sp, #0x1c]
 	mov r0, #4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022EDB64
 	ldr r1, [sp, #0x20]
 	mov r0, #4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022EDB64
 	ldr r1, [sp, #0x24]
 	mov r0, #4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -59054,21 +59054,21 @@ _022EDB74:
 	ldr r1, [sp, #0x28]
 	mov r0, #4
 	mov r2, r5
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022ED9D0
 	ldr r1, [sp, #0x2c]
 	mov r0, #4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	blt _022ED9D0
 	ldr r1, [sp, #0x30]
 	mov r0, #4
 	mov r2, #0
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -59078,7 +59078,7 @@ _022EDBCC:
 	mov r0, #4
 	add r1, r1, #0xc00
 	mov r2, r5
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -59087,7 +59087,7 @@ _022EDBF0:
 	ldr r1, _022EDD4C ; =0x03002100
 	mov r0, #4
 	mov r2, r5
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	movlt r6, #0
 	movge r6, #1
@@ -59127,7 +59127,7 @@ _022EDC74:
 _022EDC7C:
 	mov r0, sl
 	mov r1, #1
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	cmp r7, #4
 	ldrb r0, [sl]
 	bne _022EDCAC
@@ -59196,18 +59196,18 @@ ov00_022EDD58: ; 0x022EDD58
 	mov r6, r0
 	mov r0, r4
 	mov r5, r1
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	mov r8, #4
 	mov r7, #1
 _022EDD78:
 	mov r0, r8
 	mov r1, r7
-	bl sub_0207DAFC
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _022EDD78
 	ldr r1, _022EDDE4 ; =ov00_022EDF1C
 	mov r0, #4
-	bl sub_0207DAB0
+	bl PXI_SetFifoRecvCallback
 	mov r0, r5, lsl #0x10
 	mov r8, r0, lsr #0x10
 	mov r7, #0x40000
@@ -59226,7 +59226,7 @@ _022EDDA8:
 _022EDDD0:
 	mov r0, r4
 	mov r1, r5
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	mov r0, #1
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
@@ -59244,12 +59244,12 @@ ov00_022EDDE8: ; 0x022EDDE8
 _022EDE00:
 	mov r0, r5
 	mov r1, r4
-	bl sub_0207DAFC
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _022EDE00
 	ldr r1, _022EDE60 ; =ov00_022EDF1C
 	mov r0, #4
-	bl sub_0207DAB0
+	bl PXI_SetFifoRecvCallback
 	mov r0, r6
 	mov r1, r7
 	bl sub_0207A2C0
@@ -59303,12 +59303,12 @@ ov00_022EDEB0: ; 0x022EDEB0
 _022EDEBC:
 	mov r0, r5
 	mov r1, r4
-	bl sub_0207DAFC
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _022EDEBC
 	ldr r1, _022EDF18 ; =ov00_022EDF1C
 	mov r0, #4
-	bl sub_0207DAB0
+	bl PXI_SetFifoRecvCallback
 	mov r4, #0x40000
 	mov r6, #7
 	mov r5, #0
@@ -62903,7 +62903,7 @@ _022F0FF0: .word ov00_0231A5FC
 ov00_022F0FF4: ; 0x022F0FF4
 	stmdb sp!, {r3, lr}
 	ldr r0, _022F1008 ; =ov00_02327928
-	bl sub_0207A030
+	bl OS_InitMutex
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -62939,7 +62939,7 @@ _022F1034: .word ov00_02327928
 ov00_022F1038: ; 0x022F1038
 	stmdb sp!, {r3, lr}
 	ldr r0, _022F1058 ; =ov00_02327910
-	bl sub_0207A030
+	bl OS_InitMutex
 	ldr r0, _022F105C ; =ov00_0232790C
 	mov r1, #0
 	str r1, [r0]
@@ -63248,7 +63248,7 @@ ov00_022F13A0: ; 0x022F13A0
 	str ip, [sp, #4]
 	bl StartThread
 	ldr r0, _022F13DC ; =ov00_02327964
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -63664,7 +63664,7 @@ _022F18F4: .word ov00_02327960
 ov00_022F18F8: ; 0x022F18F8
 	stmdb sp!, {r3, lr}
 	ldr r0, _022F190C ; =ov00_02328228
-	bl sub_0207A030
+	bl OS_InitMutex
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
@@ -63720,7 +63720,7 @@ ov00_022F193C: ; 0x022F193C
 	str r5, [sp, #4]
 	bl StartThread
 	ldr r0, _022F19AC ; =ov00_02328260
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	mov r0, #1
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, pc}

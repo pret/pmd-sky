@@ -1699,7 +1699,7 @@ sub_0200A184: ; 0x0200A184
 	mov r0, r4
 	mov r1, r1, lsl #1
 	ldr r5, [r6, #0xc]
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r0, [r6]
 	cmp r0, #4
 	addls pc, pc, r0, lsl #2
@@ -3089,7 +3089,7 @@ sub_0200B340: ; 0x0200B340
 	ldr r1, [r4, #0x14]
 	mov r0, r5
 	ldr r6, [r4, #0x10]
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr ip, [r4, #0x14]
 	mov r2, r6
 	mov r3, r5
@@ -3319,7 +3319,7 @@ sub_0200B630: ; 0x0200B630
 	mov r0, r4
 	mov r1, r1, lsl #3
 	ldr r5, [r6, #0x18]
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r2, [r6]
 	mov r0, r5
 	mov r1, r4
@@ -3456,7 +3456,7 @@ sub_0200B76C: ; 0x0200B76C
 	ldr r1, [r2]
 	bic r1, r1, #0x10000
 	str r1, [r2]
-	bl sub_0207C164
+	bl MI_StopDma
 	bl GX_DisableBankForBG
 	bl GX_DisableBankForOBJ
 	bl GX_DisableBankForBGExtPltt

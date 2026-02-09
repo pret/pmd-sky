@@ -48,11 +48,11 @@
 .public sub_020082E0
 .public sub_02017D20
 .public sub_0201849C
-.public sub_02078A98
-.public sub_02078C68
-.public sub_02079888
-.public sub_02079940
-.public sub_0207B370
+.public OS_SetIrqFunction
+.public OS_EnableIrqMask
+.public OS_SleepThread
+.public OS_WakeupThreadDirect
+.public OS_InitVAlarm
 .public sub_0207B4A4
 .public sub_0207B4B8
 .public sub_020820E8

@@ -29,7 +29,7 @@
 .public sub_02018118
 .public sub_02018278
 .public sub_02018428
-.public sub_02078A98
-.public sub_02079888
-.public sub_02079940
+.public OS_SetIrqFunction
+.public OS_SleepThread
+.public OS_WakeupThreadDirect
 .public sub_0207B584

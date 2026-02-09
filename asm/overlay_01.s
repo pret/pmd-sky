@@ -1204,7 +1204,7 @@ _0232A3F0:
 	bne _0232A4F0
 	ldr r0, [r1, #0x6c]
 	mov r1, #0xc0
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, _0232A524 ; =ov01_0233C240
 	ldr r0, [r1, #0x60]
 	cmp r0, #0

@@ -271,7 +271,7 @@ sub_0207F748: ; 0x0207F748
 	str r0, [r6, #0xc]
 _0207F798:
 	add r0, r6, #0x18
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r6, #0xc]
 	tst r0, #0x40
 	beq _0207F798
@@ -281,7 +281,7 @@ _0207F7B0:
 	mov r8, #1
 _0207F7B8:
 	add r0, r6, #0x18
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r6, #0xc]
 	tst r0, #1
 	movne r0, r8
