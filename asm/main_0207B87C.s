@@ -3,8 +3,8 @@
 
 	.text
 
-	arm_func_start sub_0207B87C
-sub_0207B87C: ; 0x0207B87C
+	arm_func_start OS_InitReset
+OS_InitReset: ; 0x0207B87C
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r0, _0207B8C8 ; =_022B99D0
 	ldrh r1, [r0, #2]
@@ -12,23 +12,23 @@ sub_0207B87C: ; 0x0207B87C
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r1, #1
 	strh r1, [r0, #2]
-	bl sub_0207D9A4
+	bl PXI_Init
 	mov r5, #0xc
 	mov r4, #1
 _0207B8A4:
 	mov r0, r5
 	mov r1, r4
-	bl sub_0207DAFC
+	bl PXI_IsCallbackReady
 	cmp r0, #0
 	beq _0207B8A4
 	ldr r1, _0207B8CC ; =sub_0207B8D0
 	mov r0, #0xc
-	bl sub_0207DAB0
+	bl PXI_SetFifoRecvCallback
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0207B8C8: .word _022B99D0
 _0207B8CC: .word sub_0207B8D0
-	arm_func_end sub_0207B87C
+	arm_func_end OS_InitReset
 
 	arm_func_start sub_0207B8D0
 sub_0207B8D0: ; 0x0207B8D0
@@ -59,7 +59,7 @@ _0207B914:
 	mov r0, r5
 	mov r1, r6
 	mov r2, r4
-	bl sub_0207DB20
+	bl PXI_SendWordByFifo
 	cmp r0, #0
 	bne _0207B914
 	ldmia sp!, {r4, r5, r6, pc}
@@ -83,17 +83,17 @@ _0207B958:
 	mov r0, r0, lsr #0x10
 	bl sub_02083434
 	ldr r0, _0207B9C4 ; =0x00000000
-	bl sub_0207C164
+	bl MI_StopDma
 	ldr r0, _0207B9C8 ; =0x00000001
-	bl sub_0207C164
+	bl MI_StopDma
 	ldr r0, _0207B9CC ; =0x00000002
-	bl sub_0207C164
+	bl MI_StopDma
 	ldr r0, _0207B9D0 ; =0x00000003
-	bl sub_0207C164
+	bl MI_StopDma
 	ldr r0, _0207B9D4 ; =0x00040000
-	bl sub_02078C3C
+	bl OS_SetIrqMask
 	ldr r0, _0207B9D8 ; =0xFFFBFFFF
-	bl sub_02078CC8
+	bl OS_ResetRequestIrqMask
 	ldr r1, _0207B9DC ; =0x027FFC20
 	ldr r0, _0207B9E0 ; =0x00000010
 	str r4, [r1]
@@ -174,8 +174,8 @@ CountLeadingZeros: ; 0x0207BA8C
 	bx lr
 	arm_func_end CountLeadingZeros
 
-	arm_func_start sub_0207BA94
-sub_0207BA94: ; 0x0207BA94
+	arm_func_start OSi_InitVramExclusive
+OSi_InitVramExclusive: ; 0x0207BA94
 	ldr r0, _0207BAC0 ; =_022B99D4
 	mov r3, #0
 	str r3, [r0]
@@ -191,7 +191,7 @@ _0207BAA8:
 	.align 2, 0
 _0207BAC0: .word _022B99D4
 _0207BAC4: .word _022B99D8
-	arm_func_end sub_0207BA94
+	arm_func_end OSi_InitVramExclusive
 
 	arm_func_start sub_0207BAC8
 sub_0207BAC8: ; 0x0207BAC8

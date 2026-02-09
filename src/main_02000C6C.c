@@ -20,10 +20,10 @@ extern void sub_02076070();
 extern void sub_02079C14();
 extern void sub_0207A220();
 extern void sub_0207A30C();
-extern void sub_0207A36C();
+extern void OS_Init();
 extern u32 sub_0207A524(u32);
 extern u32 sub_0207A538(u32);
-extern u32 sub_0207A6EC(u32, u32);
+extern u32 OS_SetArenaLo(u32, u32);
 extern void sub_0207A95C(u32, u32);
 extern u32 sub_0207A98C(u32, u32, u32, u32);
 extern u32 sub_0207AA34(u32, u32, u32);
@@ -53,7 +53,7 @@ void NitroMain(void)
 
   u8 stack[6];
 
-  sub_0207A36C();
+  OS_Init();
   sub_020833F8(0x12);
   sub_020845D8(sub_020024D4);
   sub_0207AD54();
@@ -68,7 +68,7 @@ void NitroMain(void)
   if (sub_0207A538(0) < uVar4) {
     uVar5 = sub_0207A524(0);
     uVar7 = sub_0207A98C(0,sub_0207A538(0),uVar5,1);
-    sub_0207A6EC(0,uVar7);
+    OS_SetArenaLo(0,uVar7);
     uVar6 = sub_0207A524(0);
     uVar7 = sub_0207AA34(0,sub_0207A538(0),uVar6);
     sub_0207A95C(0,uVar7);

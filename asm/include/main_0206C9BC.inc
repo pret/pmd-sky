@@ -63,10 +63,10 @@
 .public sub_0206C688
 .public sub_02072BB8
 .public sub_02079800
-.public sub_02079888
-.public sub_02079940
+.public OS_SleepThread
+.public OS_WakeupThreadDirect
 .public sub_02079B14
-.public sub_0207A2DC
+.public DC_FlushRange
 .public sub_0207A300
 .public sub_0207C8B8
 .public sub_0207C8E0

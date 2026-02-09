@@ -371,7 +371,7 @@
 .public sub_0205B77C
 .public sub_0205B80C
 .public sub_0205BBA4
-.public sub_0207A2A4
+.public DC_InvalidateRange
 .public sub_020851AC
 .public UpdateWindow
 .public vsprintf

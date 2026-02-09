@@ -8143,7 +8143,7 @@ _0201B038:
 	mov r0, r5
 	mov r1, #0x20
 	add r6, r2, r3, lsl #1
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r0, [r7]
 	cmp r0, #4
 	addls pc, pc, r0, lsl #2

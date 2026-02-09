@@ -3,7 +3,7 @@
 .public EnableIrqFlag
 .public FileInit
 .public SetIrqFlag
-.public sub_02079888
+.public OS_SleepThread
 .public sub_0207EBA0
 .public sub_0207EBE4
 .public sub_0207EDB4

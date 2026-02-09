@@ -17271,7 +17271,7 @@ _0204A5CC: .word _020AFF6C
 	arm_func_start sub_0204A5D0
 sub_0204A5D0: ; 0x0204A5D0
 	stmdb sp!, {r4, lr}
-	bl sub_02084304
+	bl CARD_Init
 	bl OS_GetLockID
 	mov r4, r0
 	mov r0, r4, lsl #0x10

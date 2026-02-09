@@ -26,7 +26,7 @@ TaskProcBoot: ; 0x02003328
 	bl sub_02002778
 	ldr r0, _020035E4 ; =_020AF078
 	bl sub_020027E8
-	bl sub_0207B370
+	bl OS_InitVAlarm
 	ldr r0, _020035EC ; =_0229B220
 	bl sub_0207B4A4
 	mov r1, #0
@@ -37,9 +37,9 @@ TaskProcBoot: ; 0x02003328
 	bl sub_0207B4B8
 	mov r0, #1
 	ldr r1, _020035F4 ; =sub_02003704
-	bl sub_02078A98
+	bl OS_SetIrqFunction
 	mov r0, #1
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	bl EnableAllInterrupts
 	mov r0, #1
 	bl GX_VBlankIntr
@@ -226,7 +226,7 @@ sub_02003620: ; 0x02003620
 	mov sl, r7
 _02003648:
 	mov r0, sl
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r4, #0x28]
 	add r0, r0, #1
 	str r0, [r4, #0x28]
@@ -298,7 +298,7 @@ sub_02003704: ; 0x02003704
 	beq _02003744
 	ldr r0, [r1, #0x34]
 	ldr r0, [r0]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 _02003744:
 	bl sub_020082E0
 	ldmia sp!, {r3, pc}
@@ -312,7 +312,7 @@ sub_02003754: ; 0x02003754
 	ldr r1, _02003774 ; =_020AEF7C
 	ldr r0, _02003778 ; =_020AF078
 	ldr r2, [r1, #0x1c]
-	ldr ip, _0200377C ; =sub_02079940
+	ldr ip, _0200377C ; =OS_WakeupThreadDirect
 	add r2, r2, #1
 	ldr r0, [r0]
 	str r2, [r1, #0x1c]
@@ -320,7 +320,7 @@ sub_02003754: ; 0x02003754
 	.align 2, 0
 _02003774: .word _020AEF7C
 _02003778: .word _020AF078
-_0200377C: .word sub_02079940
+_0200377C: .word OS_WakeupThreadDirect
 	arm_func_end sub_02003754
 
 	arm_func_start sub_02003780

@@ -3140,7 +3140,7 @@ GX_LoadBGPltt: ; 0x02077CF8
 	bls _02077D34
 	mov r1, r4
 	add r2, lr, #0x5000000
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	ldmia sp!, {r4, pc}
 _02077D34:
 	mov r0, r4
@@ -3167,7 +3167,7 @@ GXS_LoadBGPltt: ; 0x02077D4C
 	add r2, r1, #0x400
 	mov r1, lr
 	add r2, r2, #0x5000000
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	ldmia sp!, {r3, pc}
 _02077D88:
 	add r1, r1, #0x400
@@ -3195,7 +3195,7 @@ GX_LoadOBJPltt: ; 0x02077DA4
 	add r2, r1, #0x200
 	mov r1, lr
 	add r2, r2, #0x5000000
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	ldmia sp!, {r3, pc}
 _02077DE0:
 	add r1, r1, #0x200
@@ -3223,7 +3223,7 @@ GXS_LoadOBJPltt: ; 0x02077DFC
 	add r2, r1, #0x600
 	mov r1, lr
 	add r2, r2, #0x5000000
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	ldmia sp!, {r3, pc}
 _02077E38:
 	add r1, r1, #0x600
@@ -3365,7 +3365,7 @@ GX_LoadBG0Scr: ; 0x02077FB0
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 _02077FF8:
 	mov r0, r6
@@ -3395,7 +3395,7 @@ GX_LoadBG1Scr: ; 0x02078010
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 _02078058:
 	mov r0, r6
@@ -3425,7 +3425,7 @@ GXS_LoadBG1Scr: ; 0x02078070
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 _020780B8:
 	mov r0, r6
@@ -3455,7 +3455,7 @@ GX_LoadBG2Scr: ; 0x020780D0
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 _02078118:
 	mov r0, r6
@@ -3485,7 +3485,7 @@ GX_LoadBG3Scr: ; 0x02078130
 	mov r1, r6
 	mov r3, r4
 	add r2, ip, r5
-	bl sub_0207BD3C
+	bl MI_DmaCopy16
 	ldmia sp!, {r4, r5, r6, pc}
 _02078178:
 	mov r0, r6
@@ -4131,7 +4131,7 @@ _02078930:
 	add r6, r0, #0x3c00
 _02078954:
 	mov r0, r5
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r6]
 	tst r4, r0
 	beq _02078954
@@ -4176,7 +4176,7 @@ _020789BC:
 	cmp r1, #0
 	ldmneia sp!, {r3, r4, r5, pc}
 	mov r0, r4
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020789EC: .word _022B95E4
@@ -4258,8 +4258,8 @@ sub_02078A70: ; 0x02078A70
 _02078A7C: .word sub_02078978
 	arm_func_end sub_02078A70
 
-	arm_func_start sub_02078A80
-sub_02078A80: ; 0x02078A80
+	arm_func_start OS_InitIrqTable
+OS_InitIrqTable: ; 0x02078A80
 	ldr r0, _02078A94 ; =DTCM_BSS
 	mov r1, #0
 	str r1, [r0, #4]
@@ -4267,10 +4267,10 @@ sub_02078A80: ; 0x02078A80
 	bx lr
 	.align 2, 0
 _02078A94: .word DTCM_BSS
-	arm_func_end sub_02078A80
+	arm_func_end OS_InitIrqTable
 
-	arm_func_start sub_02078A98
-sub_02078A98: ; 0x02078A98
+	arm_func_start OS_SetIrqFunction
+OS_SetIrqFunction: ; 0x02078A98
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	mov r8, #0
 	mov r2, #0xc
@@ -4311,7 +4311,7 @@ _02078B04:
 	.align 2, 0
 _02078B18: .word OS_IRQTable
 _02078B1C: .word _022B95E4
-	arm_func_end sub_02078A98
+	arm_func_end OS_SetIrqFunction
 
 	arm_func_start sub_02078B20
 sub_02078B20: ; 0x02078B20
@@ -4369,7 +4369,7 @@ sub_02078BAC: ; 0x02078BAC
 	ldr r3, _02078BEC ; =_022B95EC
 	str r1, [ip, r6]
 	str r2, [r3, r6]
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	and r1, r0, r5, lsl r4
 	ldr r0, _02078BF0 ; =_022B95E8
 	str r1, [r0, r6]
@@ -4392,7 +4392,7 @@ sub_02078BF4: ; 0x02078BF4
 	ldr r3, _02078C34 ; =_022B961C
 	str r1, [ip, r4]
 	str r2, [r3, r4]
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	ldr r0, _02078C38 ; =_022B9618
 	mov r1, #1
 	str r1, [r0, r4]
@@ -4403,8 +4403,8 @@ _02078C34: .word _022B961C
 _02078C38: .word _022B9618
 	arm_func_end sub_02078BF4
 
-	arm_func_start sub_02078C3C
-sub_02078C3C: ; 0x02078C3C
+	arm_func_start OS_SetIrqMask
+OS_SetIrqMask: ; 0x02078C3C
 	ldr r3, _02078C64 ; =0x04000208
 	mov r1, #0
 	ldrh r2, [r3]
@@ -4417,10 +4417,10 @@ sub_02078C3C: ; 0x02078C3C
 	bx lr
 	.align 2, 0
 _02078C64: .word 0x04000208
-	arm_func_end sub_02078C3C
+	arm_func_end OS_SetIrqMask
 
-	arm_func_start sub_02078C68
-sub_02078C68: ; 0x02078C68
+	arm_func_start OS_EnableIrqMask
+OS_EnableIrqMask: ; 0x02078C68
 	ldr r3, _02078C94 ; =0x04000208
 	mov r1, #0
 	ldrh r2, [r3]
@@ -4434,10 +4434,10 @@ sub_02078C68: ; 0x02078C68
 	bx lr
 	.align 2, 0
 _02078C94: .word 0x04000208
-	arm_func_end sub_02078C68
+	arm_func_end OS_EnableIrqMask
 
-	arm_func_start sub_02078C98
-sub_02078C98: ; 0x02078C98
+	arm_func_start OS_DisableIrqMask
+OS_DisableIrqMask: ; 0x02078C98
 	ldr ip, _02078CC4 ; =0x04000208
 	mov r2, #0
 	ldrh r3, [ip]
@@ -4451,10 +4451,10 @@ sub_02078C98: ; 0x02078C98
 	bx lr
 	.align 2, 0
 _02078CC4: .word 0x04000208
-	arm_func_end sub_02078C98
+	arm_func_end OS_DisableIrqMask
 
-	arm_func_start sub_02078CC8
-sub_02078CC8: ; 0x02078CC8
+	arm_func_start OS_ResetRequestIrqMask
+OS_ResetRequestIrqMask: ; 0x02078CC8
 	ldr r3, _02078CF0 ; =0x04000208
 	mov r1, #0
 	ldrh r2, [r3]
@@ -4467,10 +4467,10 @@ sub_02078CC8: ; 0x02078CC8
 	bx lr
 	.align 2, 0
 _02078CF0: .word 0x04000208
-	arm_func_end sub_02078CC8
+	arm_func_end OS_ResetRequestIrqMask
 
-	arm_func_start sub_02078CF4
-sub_02078CF4: ; 0x02078CF4
+	arm_func_start OS_SetIrqStackChecker
+OS_SetIrqStackChecker: ; 0x02078CF4
 	ldr ip, _02078D18 ; =OS_IRQTable
 	ldr r3, _02078D1C ; =0xFDDB597D
 	add r0, ip, #0x3000
@@ -4485,10 +4485,10 @@ _02078D18: .word OS_IRQTable
 _02078D1C: .word 0xFDDB597D
 _02078D20: .word 0x7BF9DD5B
 _02078D24: .word 0x00000800
-	arm_func_end sub_02078CF4
+	arm_func_end OS_SetIrqStackChecker
 
-	arm_func_start sub_02078D28
-sub_02078D28: ; 0x02078D28
+	arm_func_start OS_InitLock
+OS_InitLock: ; 0x02078D28
 	stmdb sp!, {r3, r4, r5, lr}
 	ldr r3, _02078DE4 ; =_022B9644
 	ldr r0, [r3]
@@ -4500,7 +4500,7 @@ sub_02078D28: ; 0x02078D28
 	mov r0, #0x7e
 	str r4, [r3]
 	str r2, [r1]
-	bl sub_02078E40
+	bl OS_LockByWord
 	ldr r5, _02078DE8 ; =0x027FFFF0
 	ldrh r0, [r5, #6]
 	cmp r0, #0
@@ -4532,18 +4532,18 @@ _02078D80:
 	ldrh r3, [ip]
 	orr r3, r3, #0x80
 	strh r3, [ip]
-	bl sub_02078EC4
+	bl OS_UnlockByWord
 	ldr r1, _02078DE8 ; =0x027FFFF0
 	mov r0, #0x7f
 	mov r2, #0
-	bl sub_02078E40
+	bl OS_LockByWord
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02078DE4: .word _022B9644
 _02078DE8: .word 0x027FFFF0
 _02078DEC: .word 0x027FFFB0
 _02078DF0: .word 0x04000204
-	arm_func_end sub_02078D28
+	arm_func_end OS_InitLock
 
 	arm_func_start sub_02078DF4
 sub_02078DF4: ; 0x02078DF4
@@ -4569,17 +4569,17 @@ _02078E18:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	arm_func_end sub_02078DF4
 
-	arm_func_start sub_02078E40
-sub_02078E40: ; 0x02078E40
+	arm_func_start OS_LockByWord
+OS_LockByWord: ; 0x02078E40
 	ldr ip, _02078E4C ; =sub_02078DF4
 	mov r3, #0
 	bx ip
 	.align 2, 0
 _02078E4C: .word sub_02078DF4
-	arm_func_end sub_02078E40
+	arm_func_end OS_LockByWord
 
-	arm_func_start sub_02078E50
-sub_02078E50: ; 0x02078E50
+	arm_func_start OSi_DoUnlockByWord
+OSi_DoUnlockByWord: ; 0x02078E50
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r1
 	ldrh r1, [r7, #4]
@@ -4614,16 +4614,16 @@ _02078EB8:
 _02078EBC:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end sub_02078E50
+	arm_func_end OSi_DoUnlockByWord
 
-	arm_func_start sub_02078EC4
-sub_02078EC4: ; 0x02078EC4
-	ldr ip, _02078ED0 ; =sub_02078E50
+	arm_func_start OS_UnlockByWord
+OS_UnlockByWord: ; 0x02078EC4
+	ldr ip, _02078ED0 ; =OSi_DoUnlockByWord
 	mov r3, #0
 	bx ip
 	.align 2, 0
-_02078ED0: .word sub_02078E50
-	arm_func_end sub_02078EC4
+_02078ED0: .word OSi_DoUnlockByWord
+	arm_func_end OS_UnlockByWord
 
 	arm_func_start sub_02078ED4
 sub_02078ED4: ; 0x02078ED4
@@ -4662,26 +4662,26 @@ _02078F38:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end sub_02078ED4
 
-	arm_func_start sub_02078F40
-sub_02078F40: ; 0x02078F40
-	ldr ip, _02078F54 ; =sub_02078E50
+	arm_func_start OS_UnlockCartridge
+OS_UnlockCartridge: ; 0x02078F40
+	ldr ip, _02078F54 ; =OSi_DoUnlockByWord
 	ldr r1, _02078F58 ; =0x027FFFE8
-	ldr r2, _02078F5C ; =sub_02078FA4
+	ldr r2, _02078F5C ; =OSi_FreeCartridgeBus
 	mov r3, #1
 	bx ip
 	.align 2, 0
-_02078F54: .word sub_02078E50
+_02078F54: .word OSi_DoUnlockByWord
 _02078F58: .word 0x027FFFE8
-_02078F5C: .word sub_02078FA4
-	arm_func_end sub_02078F40
+_02078F5C: .word OSi_FreeCartridgeBus
+	arm_func_end OS_UnlockCartridge
 
-	arm_func_start sub_02078F60
-sub_02078F60: ; 0x02078F60
-	ldr r1, _02078F68 ; =sub_02078F40
+	arm_func_start OS_UnLockCartridge
+OS_UnLockCartridge: ; 0x02078F60
+	ldr r1, _02078F68 ; =OS_UnlockCartridge
 	bx r1
 	.align 2, 0
-_02078F68: .word sub_02078F40
-	arm_func_end sub_02078F60
+_02078F68: .word OS_UnlockCartridge
+	arm_func_end OS_UnLockCartridge
 
 	arm_func_start sub_02078F6C
 sub_02078F6C: ; 0x02078F6C
@@ -4707,8 +4707,8 @@ sub_02078F8C: ; 0x02078F8C
 _02078FA0: .word 0x04000204
 	arm_func_end sub_02078F8C
 
-	arm_func_start sub_02078FA4
-sub_02078FA4: ; 0x02078FA4
+	arm_func_start OSi_FreeCartridgeBus
+OSi_FreeCartridgeBus: ; 0x02078FA4
 	ldr r1, _02078FB8 ; =0x04000204
 	ldrh r0, [r1]
 	orr r0, r0, #0x80
@@ -4716,28 +4716,28 @@ sub_02078FA4: ; 0x02078FA4
 	bx lr
 	.align 2, 0
 _02078FB8: .word 0x04000204
-	arm_func_end sub_02078FA4
+	arm_func_end OSi_FreeCartridgeBus
 
 	arm_func_start sub_02078FBC
 sub_02078FBC: ; 0x02078FBC
-	ldr ip, _02078FCC ; =sub_02078E40
+	ldr ip, _02078FCC ; =OS_LockByWord
 	ldr r1, _02078FD0 ; =0x027FFFE0
 	ldr r2, _02078FD4 ; =sub_02078FF4
 	bx ip
 	.align 2, 0
-_02078FCC: .word sub_02078E40
+_02078FCC: .word OS_LockByWord
 _02078FD0: .word 0x027FFFE0
 _02078FD4: .word sub_02078FF4
 	arm_func_end sub_02078FBC
 
 	arm_func_start sub_02078FD8
 sub_02078FD8: ; 0x02078FD8
-	ldr ip, _02078FE8 ; =sub_02078EC4
+	ldr ip, _02078FE8 ; =OS_UnlockByWord
 	ldr r1, _02078FEC ; =0x027FFFE0
 	ldr r2, _02078FF0 ; =sub_0207900C
 	bx ip
 	.align 2, 0
-_02078FE8: .word sub_02078EC4
+_02078FE8: .word OS_UnlockByWord
 _02078FEC: .word 0x027FFFE0
 _02078FF0: .word sub_0207900C
 	arm_func_end sub_02078FD8
@@ -4893,8 +4893,8 @@ IncrementThreadCount: ; 0x02079150
 _02079164: .word THREAD_INFO_STRUCT
 	arm_func_end IncrementThreadCount
 
-	arm_func_start sub_02079168
-sub_02079168: ; 0x02079168
+	arm_func_start OSi_InsertLinkToQueue
+OSi_InsertLinkToQueue: ; 0x02079168
 	ldr ip, [r0]
 	b _0207917C
 _02079170:
@@ -4929,7 +4929,7 @@ _020791C0:
 	str ip, [r1, #0x80]
 	str r1, [ip, #0x7c]
 	bx lr
-	arm_func_end sub_02079168
+	arm_func_end OSi_InsertLinkToQueue
 
 	arm_func_start sub_020791E0
 sub_020791E0: ; 0x020791E0
@@ -5051,8 +5051,8 @@ _02079310:
 _0207933C: .word THREAD_INFO_STRUCT
 	arm_func_end sub_020792F8
 
-	arm_func_start sub_02079340
-sub_02079340: ; 0x02079340
+	arm_func_start OS_RescheduleThread
+OS_RescheduleThread: ; 0x02079340
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r0, _02079400 ; =THREAD_INFO_STRUCT
 	ldr r1, [r0, #4]
@@ -5073,7 +5073,7 @@ _0207937C:
 	ldr r0, _02079400 ; =THREAD_INFO_STRUCT
 	ldr r0, [r0, #8]
 	ldr r6, [r0]
-	bl sub_02079968
+	bl OS_SelectThread
 	mov r5, r0
 	cmp r6, r5
 	cmpne r5, #0
@@ -5082,7 +5082,7 @@ _0207937C:
 	cmp r0, #2
 	beq _020793B8
 	mov r0, r6
-	bl sub_02079D08
+	bl OS_SaveContext
 	cmp r0, #0
 	ldmneia sp!, {r4, r5, r6, pc}
 _020793B8:
@@ -5104,15 +5104,15 @@ _020793EC:
 	ldr r1, _02079400 ; =THREAD_INFO_STRUCT
 	mov r0, r5
 	str r5, [r1, #0x28]
-	bl sub_02079D54
+	bl OS_LoadContext
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _02079400: .word THREAD_INFO_STRUCT
 _02079404: .word _022B966C
-	arm_func_end sub_02079340
+	arm_func_end OS_RescheduleThread
 
-	arm_func_start sub_02079408
-sub_02079408: ; 0x02079408
+	arm_func_start OS_InitThread
+OS_InitThread: ; 0x02079408
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	ldr r0, _02079518 ; =THREAD_INFO_STRUCT
@@ -5165,7 +5165,7 @@ _0207947C:
 	ldr r2, _02079540 ; =0x027FFFA0
 	strh r0, [r1, #0x26]
 	str r3, [r2]
-	bl sub_02079BDC
+	bl OS_SetSwitchThreadCallback
 	mov r2, #0xc8
 	str r2, [sp]
 	mov ip, #0x1f
@@ -5195,9 +5195,9 @@ _02079538: .word 0x7BF9DD5B
 _0207953C: .word _022B966C
 _02079540: .word 0x027FFFA0
 _02079544: .word _022B967C
-_02079548: .word sub_02079C04
+_02079548: .word OSi_IdleThreadProc
 _0207954C: .word _022B98C4
-	arm_func_end sub_02079408
+	arm_func_end OS_InitThread
 
 	arm_func_start sub_02079550
 sub_02079550: ; 0x02079550
@@ -5307,7 +5307,7 @@ sub_0207967C: ; 0x0207967C
 	str r1, [r5]
 	mov r1, #1
 	str r1, [r5, #0x64]
-	bl sub_02079D54
+	bl OS_LoadContext
 	ldmia sp!, {r3, r4, r5, pc}
 _020796C4:
 	mov r0, r4
@@ -5425,7 +5425,7 @@ sub_02079800: ; 0x02079800
 	cmp r1, #2
 	beq _02079824
 	add r0, r5, #0x9c
-	bl sub_02079888
+	bl OS_SleepThread
 _02079824:
 	mov r0, r4
 	bl SetIrqFlag
@@ -5453,18 +5453,18 @@ sub_02079844: ; 0x02079844
 	mov r0, r5
 	mov r1, r6
 	str r5, [r6, #0x78]
-	bl sub_02079168
+	bl OSi_InsertLinkToQueue
 _02079870:
 	mov r0, #0
 	str r0, [r6, #0x64]
-	bl sub_02079340
+	bl OS_RescheduleThread
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end sub_02079844
 
-	arm_func_start sub_02079888
-sub_02079888: ; 0x02079888
+	arm_func_start OS_SleepThread
+OS_SleepThread: ; 0x02079888
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	bl EnableIrqFlag
@@ -5477,17 +5477,17 @@ sub_02079888: ; 0x02079888
 	mov r0, r6
 	mov r1, r5
 	str r6, [r5, #0x78]
-	bl sub_02079168
+	bl OSi_InsertLinkToQueue
 _020798BC:
 	mov r0, #0
 	str r0, [r5, #0x64]
-	bl sub_02079340
+	bl OS_RescheduleThread
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
 _020798D4: .word THREAD_INFO_STRUCT
-	arm_func_end sub_02079888
+	arm_func_end OS_SleepThread
 
 	arm_func_start sub_020798D8
 sub_020798D8: ; 0x020798D8
@@ -5515,29 +5515,29 @@ _02079924:
 	mov r0, #0
 	str r0, [r7, #4]
 	str r0, [r7]
-	bl sub_02079340
+	bl OS_RescheduleThread
 _02079934:
 	mov r0, r6
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_020798D8
 
-	arm_func_start sub_02079940
-sub_02079940: ; 0x02079940
+	arm_func_start OS_WakeupThreadDirect
+OS_WakeupThreadDirect: ; 0x02079940
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
 	mov r1, #1
 	mov r4, r0
 	str r1, [r5, #0x64]
-	bl sub_02079340
+	bl OS_RescheduleThread
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_02079940
+	arm_func_end OS_WakeupThreadDirect
 
-	arm_func_start sub_02079968
-sub_02079968: ; 0x02079968
+	arm_func_start OS_SelectThread
+OS_SelectThread: ; 0x02079968
 	ldr r0, _0207998C ; =THREAD_INFO_STRUCT
 	ldr r0, [r0, #0x2c]
 	b _02079978
@@ -5551,14 +5551,14 @@ _02079978:
 	bx lr
 	.align 2, 0
 _0207998C: .word THREAD_INFO_STRUCT
-	arm_func_end sub_02079968
+	arm_func_end OS_SelectThread
 
 	arm_func_start sub_02079990
 sub_02079990: ; 0x02079990
 	stmdb sp!, {r4, lr}
 	bl EnableIrqFlag
 	mov r4, r0
-	bl sub_02079340
+	bl OS_RescheduleThread
 	mov r0, r4
 	bl SetIrqFlag
 	ldmia sp!, {r4, pc}
@@ -5612,7 +5612,7 @@ _02079A44:
 	ldr r0, [r5, #0x68]
 	str r0, [r8, #0x68]
 	str r8, [r5, #0x68]
-	bl sub_02079340
+	bl OS_RescheduleThread
 	mov r0, r7
 	bl SetIrqFlag
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
@@ -5661,7 +5661,7 @@ _02079AE4:
 	mov r0, r7
 	str r6, [r7, #0x70]
 	bl InsertThreadIntoList
-	bl sub_02079340
+	bl OS_RescheduleThread
 _02079AF4:
 	mov r0, r5
 	bl SetIrqFlag
@@ -5712,7 +5712,7 @@ sub_02079B14: ; 0x02079B14
 	mov r5, #0
 _02079B8C:
 	mov r0, r5
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	bne _02079B8C
@@ -5732,16 +5732,16 @@ sub_02079BBC: ; 0x02079BBC
 	ldr r2, [r0]
 	mov r1, #0
 	str r1, [r0]
-	ldr ip, _02079BD8 ; =sub_02079940
+	ldr ip, _02079BD8 ; =OS_WakeupThreadDirect
 	mov r0, r2
 	str r1, [r2, #0xb0]
 	bx ip
 	.align 2, 0
-_02079BD8: .word sub_02079940
+_02079BD8: .word OS_WakeupThreadDirect
 	arm_func_end sub_02079BBC
 
-	arm_func_start sub_02079BDC
-sub_02079BDC: ; 0x02079BDC
+	arm_func_start OS_SetSwitchThreadCallback
+OS_SetSwitchThreadCallback: ; 0x02079BDC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl EnableIrqFlag
@@ -5753,16 +5753,16 @@ sub_02079BDC: ; 0x02079BDC
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _02079C00: .word THREAD_INFO_STRUCT
-	arm_func_end sub_02079BDC
+	arm_func_end OS_SetSwitchThreadCallback
 
-	arm_func_start sub_02079C04
-sub_02079C04: ; 0x02079C04
+	arm_func_start OSi_IdleThreadProc
+OSi_IdleThreadProc: ; 0x02079C04
 	stmdb sp!, {r3, lr}
 	bl ClearIrqFlag
 _02079C0C:
 	bl WaitForInterrupt
 	b _02079C0C
-	arm_func_end sub_02079C04
+	arm_func_end OSi_IdleThreadProc
 
 	arm_func_start sub_02079C14
 sub_02079C14: ; 0x02079C14
@@ -5849,8 +5849,8 @@ _02079CC4:
 	bx lr
 	arm_func_end InitThread
 
-	arm_func_start sub_02079D08
-sub_02079D08: ; 0x02079D08
+	arm_func_start OS_SaveContext
+OS_SaveContext: ; 0x02079D08
 	stmdb sp!, {r0, lr}
 	add r0, r0, #0x48
 	ldr r1, _02079D50 ; =sub_02080EF0
@@ -5871,10 +5871,10 @@ sub_02079D08: ; 0x02079D08
 	bx lr
 	.align 2, 0
 _02079D50: .word sub_02080EF0
-	arm_func_end sub_02079D08
+	arm_func_end OS_SaveContext
 
-	arm_func_start sub_02079D54
-sub_02079D54: ; 0x02079D54
+	arm_func_start OS_LoadContext
+OS_LoadContext: ; 0x02079D54
 	stmdb sp!, {r0, lr}
 	add r0, r0, #0x48
 	ldr r1, _02079D94 ; =sub_02080F30
@@ -5893,7 +5893,7 @@ sub_02079D54: ; 0x02079D54
 	subs pc, lr, #4
 	.align 2, 0
 _02079D94: .word sub_02080F30
-	arm_func_end sub_02079D54
+	arm_func_end OS_LoadContext
 
 	arm_func_start sub_02079D98
 sub_02079D98: ; 0x02079D98
@@ -5948,7 +5948,7 @@ _02079E0C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02079E24:
 	mov r0, r5
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r2, [r5, #0x1c]
 	ldr r1, [r5, #0x14]
 	cmp r1, r2
@@ -5991,7 +5991,7 @@ _02079E9C:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02079EB4:
 	add r0, r6, #8
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r6, #0x1c]
 	cmp r0, #0
 	beq _02079E9C
@@ -6041,7 +6041,7 @@ _02079F44:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02079F5C:
 	mov r0, r6
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r1, [r6, #0x14]
 	ldr r0, [r6, #0x1c]
 	cmp r1, r0
@@ -6086,7 +6086,7 @@ _02079FDC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 _02079FF4:
 	add r0, r6, #8
-	bl sub_02079888
+	bl OS_SleepThread
 	ldr r0, [r6, #0x1c]
 	cmp r0, #0
 	beq _02079FDC
@@ -6104,15 +6104,15 @@ _0207A020:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end sub_02079FB4
 
-	arm_func_start sub_0207A030
-sub_0207A030: ; 0x0207A030
+	arm_func_start OS_InitMutex
+OS_InitMutex: ; 0x0207A030
 	mov r1, #0
 	str r1, [r0, #4]
 	str r1, [r0]
 	str r1, [r0, #8]
 	str r1, [r0, #0xc]
 	bx lr
-	arm_func_end sub_0207A030
+	arm_func_end OS_InitMutex
 
 	arm_func_start sub_0207A048
 sub_0207A048: ; 0x0207A048
@@ -6145,7 +6145,7 @@ _0207A090:
 _0207A0A8:
 	mov r0, r5
 	str r5, [r7, #0x84]
-	bl sub_02079888
+	bl OS_SleepThread
 	str r6, [r7, #0x84]
 	b _0207A064
 _0207A0BC:
@@ -6301,8 +6301,8 @@ _0207A24C:
 	bx lr
 	arm_func_end sub_0207A244
 
-	arm_func_start sub_0207A270
-sub_0207A270: ; 0x0207A270
+	arm_func_start DC_FlushAll
+DC_FlushAll: ; 0x0207A270
 	mov ip, #0
 	mov r1, #0
 _0207A278:
@@ -6318,10 +6318,10 @@ _0207A27C:
 	cmp r1, #0
 	bne _0207A278
 	bx lr
-	arm_func_end sub_0207A270
+	arm_func_end DC_FlushAll
 
-	arm_func_start sub_0207A2A4
-sub_0207A2A4: ; 0x0207A2A4
+	arm_func_start DC_InvalidateRange
+DC_InvalidateRange: ; 0x0207A2A4
 	add r1, r1, r0
 	bic r0, r0, #0x1f
 _0207A2AC:
@@ -6330,7 +6330,7 @@ _0207A2AC:
 	cmp r0, r1
 	blt _0207A2AC
 	bx lr
-	arm_func_end sub_0207A2A4
+	arm_func_end DC_InvalidateRange
 
 	arm_func_start sub_0207A2C0
 sub_0207A2C0: ; 0x0207A2C0
@@ -6344,8 +6344,8 @@ _0207A2C8:
 	bx lr
 	arm_func_end sub_0207A2C0
 
-	arm_func_start sub_0207A2DC
-sub_0207A2DC: ; 0x0207A2DC
+	arm_func_start DC_FlushRange
+DC_FlushRange: ; 0x0207A2DC
 	mov ip, #0
 	add r1, r1, r0
 	bic r0, r0, #0x1f
@@ -6356,7 +6356,7 @@ _0207A2E8:
 	cmp r0, r1
 	blt _0207A2E8
 	bx lr
-	arm_func_end sub_0207A2DC
+	arm_func_end DC_FlushRange
 
 	arm_func_start sub_0207A300
 sub_0207A300: ; 0x0207A300
@@ -6394,8 +6394,8 @@ _0207A338:
 	bx lr
 	arm_func_end sub_0207A330
 
-	arm_func_start sub_0207A34C
-sub_0207A34C: ; 0x0207A34C
+	arm_func_start OSi_WaitVCount0
+OSi_WaitVCount0: ; 0x0207A34C
 	mov ip, #0x4000000
 	ldr r1, [ip, #0x208]
 	str ip, [ip, #0x208]
@@ -6405,32 +6405,32 @@ _0207A358:
 	bne _0207A358
 	str r1, [ip, #0x208]
 	bx lr
-	arm_func_end sub_0207A34C
+	arm_func_end OSi_WaitVCount0
 
-	arm_func_start sub_0207A36C
-sub_0207A36C: ; 0x0207A36C
+	arm_func_start OS_Init
+OS_Init: ; 0x0207A36C
 	stmdb sp!, {r3, lr}
-	bl sub_0207A3B4
-	bl sub_0207D9A4
-	bl sub_02078D28
-	bl sub_0207A4B8
-	bl sub_02078A80
-	bl sub_02078CF4
-	bl sub_0207AB24
-	bl sub_0207C7C4
-	bl sub_0207B370
-	bl sub_0207BA94
-	bl sub_02079408
-	bl sub_0207B87C
-	bl sub_02084A4C
-	bl sub_02084304
-	bl sub_02081AC4
-	bl sub_0207A34C
+	bl OS_InitArena
+	bl PXI_Init
+	bl OS_InitLock
+	bl OS_InitArenaEx
+	bl OS_InitIrqTable
+	bl OS_SetIrqStackChecker
+	bl OS_InitException
+	bl MI_Init
+	bl OS_InitVAlarm
+	bl OSi_InitVramExclusive
+	bl OS_InitThread
+	bl OS_InitReset
+	bl CTRDG_Init
+	bl CARD_Init
+	bl PM_Init
+	bl OSi_WaitVCount0
 	ldmia sp!, {r3, pc}
-	arm_func_end sub_0207A36C
+	arm_func_end OS_Init
 
-	arm_func_start sub_0207A3B4
-sub_0207A3B4: ; 0x0207A3B4
+	arm_func_start OS_InitArena
+OS_InitArena: ; 0x0207A3B4
 	stmdb sp!, {r3, lr}
 	ldr r1, _0207A4B4 ; =_022B98C4
 	ldr r0, [r1]
@@ -6439,79 +6439,79 @@ sub_0207A3B4: ; 0x0207A3B4
 	mov r2, #1
 	mov r0, #0
 	str r2, [r1]
-	bl sub_0207A54C
+	bl OS_GetInitArenaHi
 	mov r1, r0
 	mov r0, #0
-	bl sub_0207A6D8
+	bl OS_SetArenaHi
 	mov r0, #0
-	bl sub_0207A630
+	bl OS_GetInitArenaLo
 	mov r1, r0
 	mov r0, #0
-	bl sub_0207A6EC
+	bl OS_SetArenaLo
 	mov r0, #2
 	mov r1, #0
-	bl sub_0207A6EC
+	bl OS_SetArenaLo
 	mov r0, #2
 	mov r1, #0
-	bl sub_0207A6D8
+	bl OS_SetArenaHi
 	mov r0, #3
-	bl sub_0207A54C
-	mov r1, r0
-	mov r0, #3
-	bl sub_0207A6D8
-	mov r0, #3
-	bl sub_0207A630
+	bl OS_GetInitArenaHi
 	mov r1, r0
 	mov r0, #3
-	bl sub_0207A6EC
+	bl OS_SetArenaHi
+	mov r0, #3
+	bl OS_GetInitArenaLo
+	mov r1, r0
+	mov r0, #3
+	bl OS_SetArenaLo
 	mov r0, #4
-	bl sub_0207A54C
+	bl OS_GetInitArenaHi
 	mov r1, r0
 	mov r0, #4
-	bl sub_0207A6D8
+	bl OS_SetArenaHi
 	mov r0, #4
-	bl sub_0207A630
+	bl OS_GetInitArenaLo
 	mov r1, r0
 	mov r0, #4
-	bl sub_0207A6EC
+	bl OS_SetArenaLo
 	mov r0, #5
-	bl sub_0207A54C
+	bl OS_GetInitArenaHi
 	mov r1, r0
 	mov r0, #5
-	bl sub_0207A6D8
+	bl OS_SetArenaHi
 	mov r0, #5
-	bl sub_0207A630
+	bl OS_GetInitArenaLo
 	mov r1, r0
 	mov r0, #5
-	bl sub_0207A6EC
+	bl OS_SetArenaLo
 	mov r0, #6
-	bl sub_0207A54C
+	bl OS_GetInitArenaHi
 	mov r1, r0
 	mov r0, #6
-	bl sub_0207A6D8
+	bl OS_SetArenaHi
 	mov r0, #6
-	bl sub_0207A630
+	bl OS_GetInitArenaLo
 	mov r1, r0
 	mov r0, #6
-	bl sub_0207A6EC
+	bl OS_SetArenaLo
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207A4B4: .word _022B98C4
-	arm_func_end sub_0207A3B4
+	arm_func_end OS_InitArena
 
-	arm_func_start sub_0207A4B8
-sub_0207A4B8: ; 0x0207A4B8
+	arm_func_start OS_InitArenaEx
+OS_InitArenaEx: ; 0x0207A4B8
 	stmdb sp!, {r3, lr}
 	mov r0, #2
-	bl sub_0207A54C
+	bl OS_GetInitArenaHi
 	mov r1, r0
 	mov r0, #2
-	bl sub_0207A6D8
+	bl OS_SetArenaHi
 	mov r0, #2
-	bl sub_0207A630
+	bl OS_GetInitArenaLo
 	mov r1, r0
 	mov r0, #2
-	bl sub_0207A6EC
+	bl OS_SetArenaLo
 	ldr r0, _0207A518 ; =_022B98C4
 	ldr r0, [r0, #4]
 	cmp r0, #0
@@ -6522,15 +6522,15 @@ sub_0207A4B8: ; 0x0207A4B8
 	ldmneia sp!, {r3, pc}
 _0207A504:
 	ldr r0, _0207A51C ; =_0200002B
-	bl sub_0207AB14
+	bl OS_SetProtectionRegion1
 	ldr r0, _0207A520 ; =0x023E0021
-	bl sub_0207AB1C
+	bl OS_SetProtectionRegion2
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207A518: .word _022B98C4
 _0207A51C: .word _0200002B
 _0207A520: .word 0x023E0021
-	arm_func_end sub_0207A4B8
+	arm_func_end OS_InitArenaEx
 
 	arm_func_start sub_0207A524
 sub_0207A524: ; 0x0207A524
@@ -6550,8 +6550,8 @@ sub_0207A538: ; 0x0207A538
 	bx lr
 	arm_func_end sub_0207A538
 
-	arm_func_start sub_0207A54C
-sub_0207A54C: ; 0x0207A54C
+	arm_func_start OS_GetInitArenaHi
+OS_GetInitArenaHi: ; 0x0207A54C
 	stmdb sp!, {r3, lr}
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
@@ -6621,10 +6621,10 @@ _0207A620: .word 0x00000800
 _0207A624: .word SDK_SECTION_ARENA_DTCM_START
 _0207A628: .word 0x027FF680
 _0207A62C: .word 0x037F8000
-	arm_func_end sub_0207A54C
+	arm_func_end OS_GetInitArenaHi
 
-	arm_func_start sub_0207A630
-sub_0207A630: ; 0x0207A630
+	arm_func_start OS_GetInitArenaLo
+OS_GetInitArenaLo: ; 0x0207A630
 	stmdb sp!, {r3, lr}
 	cmp r0, #6
 	addls pc, pc, r0, lsl #2
@@ -6678,25 +6678,25 @@ _0207A6C8: .word SDK_SECTION_ARENA_ITCM_START
 _0207A6CC: .word SDK_SECTION_ARENA_DTCM_START
 _0207A6D0: .word 0x027FF000
 _0207A6D4: .word 0x037F8000
-	arm_func_end sub_0207A630
+	arm_func_end OS_GetInitArenaLo
 
-	arm_func_start sub_0207A6D8
-sub_0207A6D8: ; 0x0207A6D8
+	arm_func_start OS_SetArenaHi
+OS_SetArenaHi: ; 0x0207A6D8
 	mov r0, r0, lsl #2
 	add r0, r0, #0x2700000
 	add r0, r0, #0xff000
 	str r1, [r0, #0xdc4]
 	bx lr
-	arm_func_end sub_0207A6D8
+	arm_func_end OS_SetArenaHi
 
-	arm_func_start sub_0207A6EC
-sub_0207A6EC: ; 0x0207A6EC
+	arm_func_start OS_SetArenaLo
+OS_SetArenaLo: ; 0x0207A6EC
 	mov r0, r0, lsl #2
 	add r0, r0, #0x2700000
 	add r0, r0, #0xff000
 	str r1, [r0, #0xda0]
 	bx lr
-	arm_func_end sub_0207A6EC
+	arm_func_end OS_SetArenaLo
 
 	arm_func_start sub_0207A700
 sub_0207A700: ; 0x0207A700
@@ -7028,20 +7028,20 @@ sub_0207AB00: ; 0x0207AB00
 	bx lr
 	arm_func_end sub_0207AB00
 
-	arm_func_start sub_0207AB14
-sub_0207AB14: ; 0x0207AB14
+	arm_func_start OS_SetProtectionRegion1
+OS_SetProtectionRegion1: ; 0x0207AB14
 	mcr p15, 0, r0, c6, c1, 0
 	bx lr
-	arm_func_end sub_0207AB14
+	arm_func_end OS_SetProtectionRegion1
 
-	arm_func_start sub_0207AB1C
-sub_0207AB1C: ; 0x0207AB1C
+	arm_func_start OS_SetProtectionRegion2
+OS_SetProtectionRegion2: ; 0x0207AB1C
 	mcr p15, 0, r0, c6, c2, 0
 	bx lr
-	arm_func_end sub_0207AB1C
+	arm_func_end OS_SetProtectionRegion2
 
-	arm_func_start sub_0207AB24
-sub_0207AB24: ; 0x0207AB24
+	arm_func_start OS_InitException
+OS_InitException: ; 0x0207AB24
 	ldr r0, _0207AB84 ; =0x027FFD9C
 	ldr r1, [r0]
 	cmp r1, #0x2600000
@@ -7059,7 +7059,7 @@ _0207AB50:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0207AB74
-	ldr r2, _0207AB8C ; =sub_0207AB94
+	ldr r2, _0207AB8C ; =OSi_ExceptionHandler
 	ldr r1, _0207AB84 ; =0x027FFD9C
 	ldr r0, _0207AB90 ; =0x027E3000
 	str r2, [r1]
@@ -7072,12 +7072,12 @@ _0207AB74:
 	.align 2, 0
 _0207AB84: .word 0x027FFD9C
 _0207AB88: .word _022B98F0
-_0207AB8C: .word sub_0207AB94
+_0207AB8C: .word OSi_ExceptionHandler
 _0207AB90: .word 0x027E3000
-	arm_func_end sub_0207AB24
+	arm_func_end OS_InitException
 
-	arm_func_start sub_0207AB94
-sub_0207AB94: ; 0x0207AB94
+	arm_func_start OSi_ExceptionHandler
+OSi_ExceptionHandler: ; 0x0207AB94
 	ldr ip, _0207AC10 ; =_022B98F0
 	ldr ip, [ip]
 	cmp ip, #0
@@ -7121,7 +7121,7 @@ _0207AC04:
 	.align 2, 0
 _0207AC10: .word _022B98F0
 _0207AC14: .word _secure
-	arm_func_end sub_0207AB94
+	arm_func_end OSi_ExceptionHandler
 
 	arm_func_start sub_0207AC18
 sub_0207AC18: ; 0x0207AC18
@@ -7244,9 +7244,9 @@ sub_0207AD54: ; 0x0207AD54
 	mov r2, #0xc1
 	mov r0, #8
 	strh r2, [r3]
-	bl sub_02078A98
+	bl OS_SetIrqFunction
 	mov r0, #8
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	ldr r0, _0207ADC0 ; =_022B99A0
 	mov r1, #0
 	str r1, [r0, #4]
@@ -7418,7 +7418,7 @@ _0207AFC4:
 	strh r3, [r2]
 	mov r0, #0x10
 	strh r1, [r2, #2]
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0207AFE0: .word 0x04000106
@@ -7442,7 +7442,7 @@ sub_0207AFF0: ; 0x0207AFF0
 	str r2, [r1, #4]
 	mov r0, #0x10
 	str r2, [r1, #8]
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207B02C: .word _022B99B0
@@ -7639,7 +7639,7 @@ sub_0207B280: ; 0x0207B280
 	mov r2, #0
 	mov r0, #0x10
 	strh r2, [r1]
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldr r0, _0207B368 ; =OS_IRQTable
 	add r0, r0, #0x3000
 	ldr r1, [r0, #0xff8]
@@ -7700,8 +7700,8 @@ _0207B368: .word OS_IRQTable
 _0207B36C: .word _022B99B0
 	arm_func_end sub_0207B280
 
-	arm_func_start sub_0207B370
-sub_0207B370: ; 0x0207B370
+	arm_func_start OS_InitVAlarm
+OS_InitVAlarm: ; 0x0207B370
 	stmdb sp!, {r3, lr}
 	ldr r1, _0207B3B4 ; =_022B99BC
 	ldrh r0, [r1]
@@ -7713,7 +7713,7 @@ sub_0207B370: ; 0x0207B370
 	str r2, [r1, #0xc]
 	mov r0, #4
 	str r2, [r1, #0x10]
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldr r0, _0207B3B4 ; =_022B99BC
 	mov r1, #0
 	str r1, [r0, #8]
@@ -7721,7 +7721,7 @@ sub_0207B370: ; 0x0207B370
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207B3B4: .word _022B99BC
-	arm_func_end sub_0207B370
+	arm_func_end OS_InitVAlarm
 
 	arm_func_start sub_0207B3B8
 sub_0207B3B8: ; 0x0207B3B8
@@ -7858,7 +7858,7 @@ sub_0207B544: ; 0x0207B544
 	ldr r1, _0207B57C ; =sub_0207B5CC
 	mov r4, r0
 	mov r0, #4
-	bl sub_02078A98
+	bl OS_SetIrqFunction
 	ldrsh r0, [r4, #0x10]
 	bl GX_HBlankIntr
 	ldr r2, _0207B580 ; =0x04000004
@@ -7866,7 +7866,7 @@ sub_0207B544: ; 0x0207B544
 	ldrh r1, [r2]
 	orr r1, r1, #0x20
 	strh r1, [r2]
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _0207B57C: .word sub_0207B5CC
@@ -7900,7 +7900,7 @@ _0207B5B0:
 sub_0207B5CC: ; 0x0207B5CC
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	mov r0, #4
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldr r2, _0207B734 ; =0x04000004
 	ldr r0, _0207B738 ; =OS_IRQTable
 	ldrh r1, [r2]
@@ -7952,12 +7952,12 @@ _0207B678:
 	cmpeq r0, r7
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r0, fp
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldrh r1, [r6]
 	mov r0, #4
 	bic r1, r1, #0x20
 	strh r1, [r6]
-	bl sub_02078CC8
+	bl OS_ResetRequestIrqMask
 _0207B6B4:
 	ldr r7, [sl]
 	mov r0, sl

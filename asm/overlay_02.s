@@ -4111,10 +4111,10 @@ ov02_0232CA3C: ; 0x0232CA3C
 	bl ArrayFill32
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x14]
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4, #0x14]
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r1, [r4, #0x2c]
 	mov r3, #0
 	cmp r1, #0
@@ -18924,7 +18924,7 @@ _023342AA:
 	stmia r5!, {r0, r1}
 	bl ov02_023343C0
 	ldr r0, _023342D0 ; =ov02_0235957C
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldr r1, _023342C8 ; =ov02_023594D0
 	mov r0, #1
 	str r0, [r1, #0x64]
@@ -18971,7 +18971,7 @@ _02334304:
 	ldr r4, _02334370 ; =ov02_0235957C
 _02334318:
 	add r0, r4, #0
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	add r0, r4, #0
 	bl sub_02079800
 	add r0, r4, #0
@@ -19833,7 +19833,7 @@ ov02_02334DA8: ; 0x02334DA8
 	bl ov02_0234CE84
 	ldr r1, [sp]
 	mov r4, r0
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r2, [sp]
 	mov r0, r4
 	mov r1, #0
@@ -20251,7 +20251,7 @@ ov02_023352F4: ; 0x023352F4
 	mov r4, r0
 	ldr r0, [r1]
 	mov r1, #0xc0
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r0, _02335330 ; =ov02_0235AA54
 	mov r1, #0
 	ldr r0, [r0]
@@ -26931,7 +26931,7 @@ _0233AAAC:
 _0233AAD0:
 	mov r0, r8
 	mov r1, #0x200
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	mov r0, r8
 	mov r1, #0
 	mov r2, #0x200
@@ -41723,7 +41723,7 @@ ov02_0234684C: ; 0x0234684C
 	ldmeqia sp!, {r3, pc}
 	add r0, r1, #4
 	mov r1, #0x600
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r0, _0234689C ; =ov02_0235AB34
 	mov r1, #0
 	ldr r0, [r0]
@@ -42574,7 +42574,7 @@ ov02_023472EC: ; 0x023472EC
 	add r0, r2, #0xf00
 	add r2, r2, #0x1300
 	str r2, [sp]
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldrh r0, [fp, #0xe]
 	mov sl, #0
 	cmp r0, #0
@@ -44546,7 +44546,7 @@ ov02_02348C64: ; 0x02348C64
 	mov r4, r0
 	ldr r0, [r1]
 	mov r1, #0x600
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r0, _02348CAC ; =ov02_0235AB50
 	mov r1, #0
 	ldr r0, [r0]
@@ -44822,7 +44822,7 @@ _0234900C:
 	ldr r6, [r0, #0x10]
 	mov r1, #0xc0
 	mov r0, r6
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldr r1, _02349140 ; =ov02_02352E04
 	add r0, r6, #0xc
 	mov r2, #8
@@ -44924,7 +44924,7 @@ ov02_0234914C: ; 0x0234914C
 _02349180:
 	add r0, r2, #0xf00
 	mov r1, #0x400
-	bl sub_0207A2A4
+	bl DC_InvalidateRange
 	ldrh fp, [sl, #0xe]
 	mov r6, #0
 	cmp fp, #0
@@ -49770,7 +49770,7 @@ ov02_0234D12C: ; 0x0234D12C
 	bl ov02_0234D808
 	mov r4, r0
 	mov r0, #1
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	mov r6, r0
 	cmp r5, #0
 	mov r0, #0x228
@@ -49847,7 +49847,7 @@ _0234D254:
 	bl WaitForever2
 _0234D270:
 	mov r0, r6
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	mov r0, r4
 	strb r8, [r4, #0xc]
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
@@ -50279,7 +50279,7 @@ ov02_0234D7B0: ; 0x0234D7B0
 	mov r5, r0
 	mov r0, #1
 	mov r4, r1
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldrb r2, [r5, #3]
 	mov r6, r0
 	ldrh r1, [r5]
@@ -50296,7 +50296,7 @@ _0234D7EC:
 	add r1, r5, r1, lsl #2
 	str r4, [r1, #4]
 	strb r7, [r5, #3]
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	arm_func_end ov02_0234D7B0
 
@@ -50306,7 +50306,7 @@ ov02_0234D808: ; 0x0234D808
 	mov r6, r0
 	mov r0, #1
 	mov r4, #0
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldrb r2, [r6, #3]
 	ldrb r1, [r6, #2]
 	mov r5, r0
@@ -50322,7 +50322,7 @@ ov02_0234D808: ; 0x0234D808
 	ldr r4, [r0, #4]
 _0234D850:
 	mov r0, r5
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	arm_func_end ov02_0234D808
@@ -50855,7 +50855,7 @@ ov02_0234DF40: ; 0x0234DF40
 	bne _0234DF94
 	ldr r0, [r1, #0x638]
 	mov r1, #0x6000
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r0, _0234DFC4 ; =ov02_0235AB84
 	mov r1, #0
 	ldr r0, [r0]
@@ -50866,7 +50866,7 @@ ov02_0234DF40: ; 0x0234DF40
 _0234DF94:
 	ldr r0, [r1, #0x668]
 	mov r1, #0x3000
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r0, _0234DFC4 ; =ov02_0235AB84
 	mov r1, #0x3000
 	ldr r0, [r0]
@@ -51487,7 +51487,7 @@ ov02_0234E768: ; 0x0234E768
 	mov r6, r0
 	mov r0, #1
 	mov r4, r1
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldr r1, _0234E7B0 ; =ov02_0235AB88
 	mov r5, r0
 	ldr r0, [r1]
@@ -51499,7 +51499,7 @@ ov02_0234E768: ; 0x0234E768
 	bl WaitForever2
 _0234E7A0:
 	mov r0, r5
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
@@ -51524,7 +51524,7 @@ ov02_0234E7D8: ; 0x0234E7D8
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #1
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldr r1, [r5]
 	mov r4, r0
 	cmp r1, #0
@@ -51533,7 +51533,7 @@ ov02_0234E7D8: ; 0x0234E7D8
 	ldr r0, [r0]
 	bl ov02_02329DC8
 	mov r0, r4
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	mov r0, #0
 	str r0, [r5]
 	ldmia sp!, {r3, r4, r5, pc}
@@ -51546,7 +51546,7 @@ ov02_0234E81C: ; 0x0234E81C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r0, #1
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	mov r4, r0
 	cmp r5, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
@@ -51555,7 +51555,7 @@ ov02_0234E81C: ; 0x0234E81C
 	ldr r0, [r0]
 	bl ov02_02329DC8
 	mov r0, r4
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _0234E854: .word ov02_0235AB88
@@ -52139,18 +52139,18 @@ ov02_0234EFE8: ; 0x0234EFE8
 	ldr r2, [r0]
 	ldr r0, _0234F050 ; =0x00040018
 	str r2, [r1, #4]
-	bl sub_02078C3C
+	bl OS_SetIrqMask
 	mov r0, #1
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	mov r0, #1
 	bl sub_02078B20
 	ldr r2, _0234F04C ; =ov02_0235ABA4
 	ldr r1, _0234F054 ; =ov02_0234F098
 	str r0, [r2]
 	mov r0, #1
-	bl sub_02078A98
+	bl OS_SetIrqFunction
 	mov r0, #1
-	bl sub_02078CC8
+	bl OS_ResetRequestIrqMask
 	ldr r2, _0234F058 ; =0x04000208
 	mov r0, #1
 	ldrh r1, [r2]
@@ -52174,11 +52174,11 @@ ov02_0234F05C: ; 0x0234F05C
 	ldr r0, _0234F094 ; =ov02_0235ABA4
 	strh r1, [r2]
 	ldr r0, [r0, #4]
-	bl sub_02078C3C
+	bl OS_SetIrqMask
 	ldr r1, _0234F094 ; =ov02_0235ABA4
 	mov r0, #1
 	ldr r1, [r1]
-	bl sub_02078A98
+	bl OS_SetIrqFunction
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0234F090: .word 0x04000208
@@ -52231,7 +52231,7 @@ ov02_0234F108: ; 0x0234F108
 	stmdb sp!, {r4, lr}
 	mov r4, r0
 	mov r0, #1
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldmia r4, {r2, r3}
 	str r3, [r2, #4]
 	ldr r3, [r4]
@@ -52240,7 +52240,7 @@ ov02_0234F108: ; 0x0234F108
 	str r3, [r2]
 	str r1, [r4, #4]
 	str r1, [r4]
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	ldmia sp!, {r4, pc}
 	arm_func_end ov02_0234F108
 
@@ -52250,13 +52250,13 @@ ov02_0234F140: ; 0x0234F140
 	mov r5, r0
 	mov r0, #1
 	mov r4, r1
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldr r1, [r5]
 	str r4, [r1, #4]
 	ldr r1, [r5]
 	stmia r4, {r1, r5}
 	str r4, [r5]
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	ldmia sp!, {r3, r4, r5, pc}
 	arm_func_end ov02_0234F140
 
@@ -52329,7 +52329,7 @@ ov02_0234F22C: ; 0x0234F22C
 	ldr r0, _0234F270 ; =ov02_0235ABAC
 	mov r1, #0x800
 	ldr r0, [r0]
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	ldr r0, _0234F270 ; =ov02_0235ABAC
 	mov r1, #0
 	ldr r0, [r0]
@@ -52484,7 +52484,7 @@ ov02_0234F3E4: ; 0x0234F3E4
 	mov r8, r1, asr #2
 	mov r0, #1
 	strh r8, [r6, #0xa]
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	mov r7, r0
 	cmp sl, #0
 	mov r0, #0x1a0
@@ -52564,7 +52564,7 @@ _0234F540:
 	ldrh r1, [r6, #8]
 	mov r0, r7
 	str r1, [r4]
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	mov r0, r6
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.align 2, 0
@@ -52994,7 +52994,7 @@ ov02_0234FAAC: ; 0x0234FAAC
 	strb r6, [r4, #0x10]
 	mov r0, #1
 	strb r1, [r4, #0x11]
-	bl sub_02078C98
+	bl OS_DisableIrqMask
 	ldr r1, _0234FB34 ; =ov02_0235ABE8
 	mov r5, r0
 	ldr r0, [r1]
@@ -53012,7 +53012,7 @@ _0234FB1C:
 	b _0234FB04
 _0234FB24:
 	mov r0, r5
-	bl sub_02078C68
+	bl OS_EnableIrqMask
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0

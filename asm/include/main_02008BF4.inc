@@ -119,7 +119,7 @@
 .public sub_02008980
 .public sub_02008A84
 .public sub_02019304
-.public sub_0207A2DC
-.public sub_0207C164
+.public DC_FlushRange
+.public MI_StopDma
 .public sub_02082420
 .public UnloadFile

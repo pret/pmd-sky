@@ -325,7 +325,7 @@ DseSwd_SysInit: ; 0x0206CD9C
 	mov r2, #0
 	bl StartThread
 	ldr r0, _0206CE20 ; =_022B9120
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.align 2, 0
@@ -344,7 +344,7 @@ DseSwd_SysQuit: ; 0xDseSwd_SysQuit
 	strb r2, [r1, #0xded]
 	mov r2, #1
 	strb r2, [r1, #0xdee]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldr r0, _0206CE64 ; =_022B9120
 	bl sub_02079800
 	ldr r0, _0206CE60 ; =_022B8330
@@ -368,7 +368,7 @@ DseSwd_SampleLoaderMain: ; 0x0206CE68
 _0206CE84:
 	mov r0, r8
 	strb sb, [r5, #0xdef]
-	bl sub_02079888
+	bl OS_SleepThread
 	strb r7, [r5, #0xdef]
 	ldrsb r0, [r4, #0xee]
 	cmp r0, #1
@@ -747,7 +747,7 @@ _0206D3AC:
 	ldr r0, _0206D3D4 ; =_022B9120
 	str r4, [r1, #0xeb4]
 	str r6, [r1, #0xeb8]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 _0206D3C8:
 	mov r0, r5
 	ldmia sp!, {r4, r5, r6, pc}
@@ -3976,7 +3976,7 @@ sub_0206FDB0: ; 0x0206FDB0
 	cmpne r0, #0
 	ldmeqia sp!, {r3, pc}
 	ldr r0, _0206FDDC ; =_022B9234
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0206FDD8: .word _022B9208
@@ -3999,7 +3999,7 @@ sub_0206FDE0: ; 0x0206FDE0
 	orr ip, ip, #6
 	strb ip, [r2, #0x739]
 	strb r3, [r1, #0x2a]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldr r0, _0206FE54 ; =_022B9234
 	bl sub_02079800
 	ldr r1, _0206FE50 ; =_022B9208
@@ -4008,7 +4008,7 @@ sub_0206FDE0: ; 0x0206FDE0
 	strb r2, [r1, #0xf5]
 	mov r2, #1
 	strb r2, [r1, #0xf6]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldr r0, _0206FE58 ; =_022B9300
 	bl sub_02079800
 	ldmia sp!, {r3, pc}
@@ -4039,7 +4039,7 @@ sub_0206FE5C: ; 0x0206FE5C
 	bl ArrayFill32Fast
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5]
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	mov r0, #0
 	strb r0, [sl, #0x15]
 _0206FEB0:
@@ -4324,7 +4324,7 @@ sub_020701F8: ; 0x020701F8
 	add r3, r3, #0x400
 	bl StartThread
 	ldr r0, _02070284 ; =_022B94BC
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	mov r0, #0
 	add sp, sp, #8
 	ldmia sp!, {r3, pc}
@@ -4351,7 +4351,7 @@ sub_0207028C: ; 0x0207028C
 	mov r1, #0
 	ldr r0, _020702F4 ; =_022B94BC
 	strh r1, [r2]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldr r2, _020702F0 ; =0x04000208
 	ldr r0, _020702F4 ; =_022B94BC
 	ldrh r1, [r2]
@@ -4838,11 +4838,11 @@ _02070988: .word DRIVER_WORK
 
 	arm_func_start sub_0207098C
 sub_0207098C: ; 0x0207098C
-	ldr ip, _02070998 ; =sub_02079940
+	ldr ip, _02070998 ; =OS_WakeupThreadDirect
 	ldr r0, _0207099C ; =_022B94BC
 	bx ip
 	.align 2, 0
-_02070998: .word sub_02079940
+_02070998: .word OS_WakeupThreadDirect
 _0207099C: .word _022B94BC
 	arm_func_end sub_0207098C
 
@@ -4855,7 +4855,7 @@ sub_020709A0: ; 0x020709A0
 	mov r6, #0
 _020709B4:
 	mov r0, r6
-	bl sub_02079888
+	bl OS_SleepThread
 	ldrsb r0, [r4, #0x26]
 	cmp r0, #1
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -4877,10 +4877,10 @@ _020709B4:
 	blx ip
 	mov r0, sb
 	mov r1, sl
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	mov r0, r8
 	mov r1, sl
-	bl sub_0207A2DC
+	bl DC_FlushRange
 	bl sub_0207A300
 	cmp r7, #0
 	moveq r0, fp
@@ -5204,7 +5204,7 @@ DseDriver_StartMainThread: ; 0x02070E0C
 	add r3, r3, #0x800
 	bl StartThread
 	ldr r0, _02070E98 ; =_022B9044
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	bl DseDriver_StartTickTimer
 _02070E84:
 	mov r0, #0
@@ -5225,7 +5225,7 @@ sub_02070EA0: ; 0x02070EA0
 	mov r2, #0
 	ldr r0, _02070ED8 ; =_022B9044
 	strb r2, [r1, #0xd11]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldr r0, _02070ED8 ; =_022B9044
 	bl sub_02079800
 	ldr r0, _02070ED4 ; =_022B8330
@@ -5325,7 +5325,7 @@ DseDriver_NotifyTick: ; 0x02070FD4
 	ldr r0, _02071010 ; =_022B9044
 	mov r2, #0
 	strb r2, [r1, #0xd13]
-	bl sub_02079940
+	bl OS_WakeupThreadDirect
 	ldmia sp!, {r3, pc}
 	.align 2, 0
 _0207100C: .word _022B8330
@@ -5344,7 +5344,7 @@ DseDriver_Main: ; 0x02071014
 _02071030:
 	mov r0, #0
 	strb fp, [r8, #0xd13]
-	bl sub_02079888
+	bl OS_SleepThread
 	ldrsb r0, [r5, #0xd0]
 	cmp r0, #1
 	bne _020710D0

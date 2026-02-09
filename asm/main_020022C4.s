@@ -217,7 +217,7 @@ sub_020024D4: ; 0x020024D4
 sub_020024E4: ; 0x020024E4
 	stmdb sp!, {r3, lr}
 	ldr r0, _0200256C ; =_0229AFCC
-	bl sub_0207A030
+	bl OS_InitMutex
 	ldr r0, _0200256C ; =_0229AFCC
 	bl sub_0207A048
 	mov r1, #0
@@ -311,7 +311,7 @@ _02002614:
 	mov r4, #0
 _02002618:
 	mov r0, r4
-	bl sub_02079888
+	bl OS_SleepThread
 	b _02002618
 	arm_func_end sub_020025F8
 
@@ -464,11 +464,11 @@ sub_02002778: ; 0x02002778
 
 	arm_func_start sub_020027E8
 sub_020027E8: ; 0x020027E8
-	ldr ip, _020027F4 ; =sub_02079940
+	ldr ip, _020027F4 ; =OS_WakeupThreadDirect
 	ldr r0, [r0]
 	bx ip
 	.align 2, 0
-_020027F4: .word sub_02079940
+_020027F4: .word OS_WakeupThreadDirect
 	arm_func_end sub_020027E8
 
 	arm_func_start sub_020027F8
@@ -547,7 +547,7 @@ sub_020028AC: ; 0x020028AC
 sub_020028B0: ; 0x020028B0
 	stmdb sp!, {r4, lr}
 	mov r4, r0
-	bl sub_0207A030
+	bl OS_InitMutex
 	mov r0, r4
 	bl sub_0207A048
 	bl sub_02002670
@@ -850,11 +850,11 @@ _02002C28: .word _022B966C
 
 	arm_func_start sub_02002C2C
 sub_02002C2C: ; 0x02002C2C
-	ldr ip, _02002C38 ; =sub_0207A030
+	ldr ip, _02002C38 ; =OS_InitMutex
 	ldr r0, _02002C3C ; =_0229B0F8
 	bx ip
 	.align 2, 0
-_02002C38: .word sub_0207A030
+_02002C38: .word OS_InitMutex
 _02002C3C: .word _0229B0F8
 	arm_func_end sub_02002C2C
 

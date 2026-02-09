@@ -6,7 +6,7 @@
 .public MemcpyFast
 .public MemsetFast
 .public SetIrqFlag
-.public sub_02079888
+.public OS_SleepThread
 .public sub_020798D8
 .public sub_0207DCC0
 .public sub_0207DD1C
