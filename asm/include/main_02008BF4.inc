@@ -62,6 +62,7 @@
 .public _s32_div_f
 .public ArrayFill32Fast
 .public CART_REMOVED_IMG_DATA
+.public DC_FlushRange
 .public Debug_Print0
 .public DecompressAtFromMemoryPointer
 .public G2x_SetBlendAlpha_
@@ -110,6 +111,7 @@
 .public MemFree
 .public MemZero16
 .public MemZero32
+.public MI_StopDma
 .public Rgb8ToRgb5
 .public sub_02004FF8
 .public sub_02005D30
@@ -119,7 +121,5 @@
 .public sub_02008980
 .public sub_02008A84
 .public sub_02019304
-.public DC_FlushRange
-.public MI_StopDma
 .public sub_02082420
 .public UnloadFile

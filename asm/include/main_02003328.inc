@@ -22,7 +22,12 @@
 .public HaltProcessDisp
 .public KeyWaitInit
 .public MainLoop
+.public OS_EnableIrqMask
+.public OS_InitVAlarm
 .public OS_IRQTable
+.public OS_SetIrqFunction
+.public OS_SleepThread
+.public OS_WakeupThreadDirect
 .public Rand16Bit
 .public sub_02002580
 .public sub_020025F8
@@ -48,11 +53,6 @@
 .public sub_020082E0
 .public sub_02017D20
 .public sub_0201849C
-.public OS_SetIrqFunction
-.public OS_EnableIrqMask
-.public OS_SleepThread
-.public OS_WakeupThreadDirect
-.public OS_InitVAlarm
 .public sub_0207B4A4
 .public sub_0207B4B8
 .public sub_020820E8

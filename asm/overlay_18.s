@@ -3,20 +3,20 @@
 
 	.text
 
-	arm_func_start ov18_0238A140
-ov18_0238A140: ; 0x0238A140
+	arm_func_start LinkShopEntryPoint
+LinkShopEntryPoint: ; 0x0238A140
 	stmdb sp!, {r3, lr}
 	mov r0, #0x3c4
 	mov r1, #8
 	bl MemAlloc
-	ldr r1, _0238A298 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238A298 ; =LINK_SHOP_PTR
 	mov r2, #1
 	str r0, [r1]
 	strb r2, [r0, #0x10]
 	ldr r0, [r1]
 	add r0, r0, #0x14
 	bl InitPreprocessorArgs
-	ldr r3, _0238A298 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r3, _0238A298 ; =LINK_SHOP_PTR
 	mov r1, #0
 	ldr r2, [r3]
 	sub r0, r1, #1
@@ -52,7 +52,7 @@ ov18_0238A140: ; 0x0238A140
 	bl sub_020573A0
 	bl sub_02041400
 	ldr r1, _0238A29C ; =ov11_0238A090
-	ldr r0, _0238A298 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A298 ; =LINK_SHOP_PTR
 	ldr r3, [r1]
 	ldr r2, [r0]
 	mvn r1, #1
@@ -92,14 +92,14 @@ ov18_0238A140: ; 0x0238A140
 	strb r1, [r2, #0xf]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238A298: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238A298: .word LINK_SHOP_PTR
 _0238A29C: .word ov11_0238A090
-	arm_func_end ov18_0238A140
+	arm_func_end LinkShopEntryPoint
 
 	arm_func_start ov18_0238A2A0
 ov18_0238A2A0: ; 0x0238A2A0
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A428 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #1
@@ -110,7 +110,7 @@ ov18_0238A2A0: ; 0x0238A2A0
 	beq _0238A2CC
 	bl sub_0202F334
 _0238A2CC:
-	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A428 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #2
@@ -121,7 +121,7 @@ _0238A2CC:
 	beq _0238A2F4
 	bl HidePortraitBox
 _0238A2F4:
-	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A428 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #4
@@ -132,14 +132,14 @@ _0238A2F4:
 	beq _0238A31C
 	bl sub_0202F954
 _0238A31C:
-	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A428 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x88]
 	tst r0, #0x80
 	bne _0238A334
 	bl sub_0203A618
 _0238A334:
-	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A428 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x100
@@ -150,7 +150,7 @@ _0238A334:
 	beq _0238A35C
 	bl SetAdvancedTextBoxState5
 _0238A35C:
-	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A428 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x200
@@ -161,7 +161,7 @@ _0238A35C:
 	beq _0238A384
 	bl SetAdvancedTextBoxState5
 _0238A384:
-	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A428 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x400
@@ -172,7 +172,7 @@ _0238A384:
 	beq _0238A3AC
 	bl SetScrollBoxState7
 _0238A3AC:
-	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A428 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x1000
@@ -183,7 +183,7 @@ _0238A3AC:
 	beq _0238A3D4
 	bl sub_0202BC60
 _0238A3D4:
-	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A428 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x4000
@@ -194,7 +194,7 @@ _0238A3D4:
 	beq _0238A3FC
 	bl SetAdvancedTextBoxState5
 _0238A3FC:
-	ldr r0, _0238A428 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238A428 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x10000
@@ -206,13 +206,13 @@ _0238A3FC:
 	bl sub_0202F334
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238A428: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238A428: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238A2A0
 
 	arm_func_start ov18_0238A42C
 ov18_0238A42C: ; 0x0238A42C
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #1
@@ -226,11 +226,11 @@ ov18_0238A42C: ; 0x0238A42C
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A48C
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl CloseDialogueBox
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -240,7 +240,7 @@ _0238A48C:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A498:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #2
@@ -254,11 +254,11 @@ _0238A498:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A4F4
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #1]
 	bl ClosePortraitBox
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -268,7 +268,7 @@ _0238A4F4:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A500:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #4
@@ -282,11 +282,11 @@ _0238A500:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A55C
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #2]
 	bl CloseTextBox
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -296,7 +296,7 @@ _0238A55C:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A568:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #8
@@ -310,11 +310,11 @@ _0238A568:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A5C4
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl CloseSimpleMenu
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -324,7 +324,7 @@ _0238A5C4:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A5D0:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x20
@@ -338,11 +338,11 @@ _0238A5D0:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A62C
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl CloseSimpleMenu
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -352,7 +352,7 @@ _0238A62C:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A638:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x10
@@ -366,11 +366,11 @@ _0238A638:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A694
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl CloseSimpleMenu
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -380,7 +380,7 @@ _0238A694:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A6A0:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x40
@@ -394,11 +394,11 @@ _0238A6A0:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A6FC
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
 	bl CloseSimpleMenu
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -408,7 +408,7 @@ _0238A6FC:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A708:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x88]
 	tst r0, #0x80
@@ -424,7 +424,7 @@ _0238A734:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A740:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r3, [r0]
 	ldr r2, [r3, #0x88]
 	tst r2, #0x100
@@ -449,12 +449,12 @@ _0238A774:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A7C8
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
 	bl CloseAdvancedTextBox
 	bl sub_020407C0
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -464,7 +464,7 @@ _0238A7C8:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A7D4:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x400
@@ -478,12 +478,12 @@ _0238A7D4:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A834
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #9]
 	bl CloseScrollBox
 	bl sub_02041A00
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -493,7 +493,7 @@ _0238A834:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A840:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x800
@@ -507,11 +507,11 @@ _0238A840:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A89C
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
 	bl CloseSimpleMenu
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -521,7 +521,7 @@ _0238A89C:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A8A8:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x1000
@@ -535,11 +535,11 @@ _0238A8A8:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A904
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
 	bl CloseAdvancedMenu
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -549,7 +549,7 @@ _0238A904:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A910:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x2000
@@ -563,11 +563,11 @@ _0238A910:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A96C
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc]
 	bl CloseSimpleMenu
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -577,7 +577,7 @@ _0238A96C:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A978:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x4000
@@ -591,12 +591,12 @@ _0238A978:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238A9D8
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xd]
 	bl CloseAdvancedTextBox
 	bl sub_020407C0
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -606,7 +606,7 @@ _0238A9D8:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238A9E4:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x8000
@@ -620,11 +620,11 @@ _0238A9E4:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AA40
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
 	bl CloseSimpleMenu
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -634,7 +634,7 @@ _0238AA40:
 	moveq r0, #0
 	ldmeqia sp!, {r3, pc}
 _0238AA4C:
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x10000
@@ -648,11 +648,11 @@ _0238AA4C:
 	cmp r0, #0
 	movne r2, #0
 	bne _0238AAA8
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xf]
 	bl CloseDialogueBox
-	ldr r0, _0238AABC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238AABC ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	mov r2, #1
@@ -665,7 +665,7 @@ _0238AAB4:
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238AABC: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238AABC: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238A42C
 
 	arm_func_start ov18_0238AAC0
@@ -983,7 +983,7 @@ _0238AEEC: .word 0x00000216
 	arm_func_start ov18_0238AEF0
 ov18_0238AEF0: ; 0x0238AEF0
 	stmdb sp!, {r4, lr}
-	ldr r2, _0238AF34 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r2, _0238AF34 ; =LINK_SHOP_PTR
 	mov r1, r1, lsl #0x10
 	ldr r2, [r2]
 	mov r4, r0
@@ -1000,7 +1000,7 @@ ov18_0238AEF0: ; 0x0238AEF0
 	mov r0, r4
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238AF34: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238AF34: .word LINK_SHOP_PTR
 _0238AF38: .word ov18_0238D5F8
 	arm_func_end ov18_0238AEF0
 
@@ -1055,15 +1055,15 @@ _0238AFD0: .word 0x00000225
 #endif
 	arm_func_end ov18_0238AF3C
 
-	arm_func_start ov18_0238AFD4
-ov18_0238AFD4: ; 0x0238AFD4
+	arm_func_start LinkShopDestructor
+LinkShopDestructor: ; 0x0238AFD4
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238B018 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238B018 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	cmp r0, #0
 	ldmeqia sp!, {r3, pc}
 	bl MemFree
-	ldr r0, _0238B018 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238B018 ; =LINK_SHOP_PTR
 	mov r1, #0
 	str r1, [r0]
 	bl sub_02041414
@@ -1076,14 +1076,14 @@ _0238B010:
 	bl sub_020572EC
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238B018: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
-	arm_func_end ov18_0238AFD4
+_0238B018: .word LINK_SHOP_PTR
+	arm_func_end LinkShopDestructor
 
-	arm_func_start ov18_0238B01C
-ov18_0238B01C: ; 0x0238B01C
+	arm_func_start LinkShopMainManager
+LinkShopMainManager: ; 0x0238B01C
 	stmdb sp!, {r3, r4, r5, r6, lr}
 	sub sp, sp, #0x214
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r4, [r0]
 	ldr r0, [r4, #0x74]
 	cmp r0, #3
@@ -1113,7 +1113,7 @@ _0238B078: ; jump table
 	b _0238BC88 ; case 2
 	b _0238B088 ; case 3
 _0238B088:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	mov r1, #0
 	str r1, [r4, #0x7c]
 	ldr r1, [r0]
@@ -1121,7 +1121,7 @@ _0238B088:
 	ldr r1, [r1, #0x78]
 	ldr r0, [r0, r1, lsl #2]
 	blx r0
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r3, [r0]
 	ldr r1, [r3, #0x78]
 	ldr r2, [r3, #0x80]
@@ -1138,7 +1138,7 @@ _0238B088:
 	blx r0
 _0238B0E4:
 	bl ov18_0238A2A0
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #0x7c]
@@ -1147,7 +1147,7 @@ _0238B0FC:
 	bl ov18_0238A42C
 	cmp r0, #0
 	beq _0238BCF8
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #1
@@ -1159,18 +1159,18 @@ _0238B0FC:
 	bne _0238B150
 	ldr r0, _0238BD4C ; =LINK_SHOP_WINDOW_PARAMS_11
 	bl CreateDialogueBox
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	mvn r2, #0
 	ldr r3, [r1]
 	strb r0, [r3]
 	ldr r0, [r1]
 	str r2, [r0, #0x84]
 _0238B150:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0]
 	bl ShowDialogueBox
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	mov r1, #0x1fc
 	ldr r3, [r0]
 	ldr r2, [r3, #0x84]
@@ -1198,7 +1198,7 @@ _0238B1AC:
 	cmpne r1, #0x4b
 	bne _0238B1E4
 _0238B1C8:
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r2, [r1]
 	add r1, r2, #0x300
 	ldrsh r1, [r1, #0x8c]
@@ -1209,7 +1209,7 @@ _0238B1E4:
 	mov r1, #0x1fc
 	str r1, [r3, #0x14]
 _0238B1EC:
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r3, [r1]
 	ldr r2, [r3, #0x78]
 	cmp r2, #0x4b
@@ -1408,7 +1408,7 @@ _0238B458:
 	ldr r4, _0238BD58 ; =0x00003018
 	str r1, [r3, #0x38]
 _0238B468:
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	mov r0, r0, lsl #0x10
 	ldr r3, [r1]
 	mov r5, r0, lsr #0x10
@@ -1424,7 +1424,7 @@ _0238B468:
 	mov r2, r2, lsr #0x10
 	bl ShowStringIdInDialogueBox
 _0238B4A4:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #2
@@ -1437,30 +1437,30 @@ _0238B4A4:
 	mov r1, #3
 	mov r2, #1
 	bl CreatePortraitBox
-	ldr r2, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r2, _0238BD40 ; =LINK_SHOP_PTR
 	mov r1, #0x1fc
 	ldr r3, [r2]
 	strb r0, [r3, #1]
 	ldr r0, [r2]
 	add r0, r0, #0x64
 	bl InitPortraitParamsWithMonsterId
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x64
 	bl SetPortraitLayout
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	add r0, r0, #0x64
 	bl SetPortraitEmotion
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldrsb r0, [r1, #1]
 	add r1, r1, #0x64
 	bl ShowPortraitInPortraitBox
 _0238B530:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #4
@@ -1472,11 +1472,11 @@ _0238B530:
 	ldr r0, _0238BDB0 ; =LINK_SHOP_WINDOW_PARAMS_1
 	ldr r1, _0238BDB4 ; =ov18_0238AF3C
 	bl CreateTextBox
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #2]
 _0238B56C:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #8
@@ -1492,11 +1492,11 @@ _0238B56C:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #3]
 _0238B5B8:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x20
@@ -1512,11 +1512,11 @@ _0238B5B8:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #4]
 _0238B604:
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r3, [r1]
 	ldr r0, [r3, #0x88]
 	tst r0, #0x40
@@ -1535,11 +1535,11 @@ _0238B604:
 	ldr r3, _0238BDD4 ; =LINK_SHOP_MENU_ITEMS_CONFIRM
 	add r2, r2, #0x90
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #6]
 _0238B65C:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x10
@@ -1555,11 +1555,11 @@ _0238B65C:
 	mov r2, #0
 	str r4, [sp]
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #5]
 _0238B6A8:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldr r0, [r0, #0x88]
 	tst r0, #0x80
@@ -1567,7 +1567,7 @@ _0238B6A8:
 	bl sub_0203A998
 	cmp r0, #0
 	bne _0238B6F8
-	ldr r2, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r2, _0238BD40 ; =LINK_SHOP_PTR
 	mov r3, #2
 	ldr r1, [r2]
 	mov r0, #6
@@ -1580,7 +1580,7 @@ _0238B6A8:
 	add r1, r1, #0x388
 	bl sub_02039C2C
 _0238B6F8:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r2, [r0]
 	ldr r0, [r2, #0x88]
 	tst r0, #0x100
@@ -1596,11 +1596,11 @@ _0238B6F8:
 	add r0, sp, #0x19c
 	mov r1, #3
 	bl sub_0203F150
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #7]
 _0238B744:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x200
@@ -1616,21 +1616,21 @@ _0238B744:
 	bge _0238B794
 	mov r0, #4
 	bl sub_0204018C
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #8]
 	b _0238B7B0
 _0238B794:
 	mov r0, #5
 	bl sub_0204018C
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #8]
 	b _0238B7B0
 _0238B7AC:
 	bl sub_02041178
 _0238B7B0:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r2, [r0]
 	ldr r0, [r2, #0x88]
 	tst r0, #0x400
@@ -1646,7 +1646,7 @@ _0238B7B0:
 	add r0, r0, #0x300
 	mov r1, #1
 	bl sub_02041860
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #9]
 	b _0238B820
@@ -1656,11 +1656,11 @@ _0238B800:
 	mov r1, #4
 	mov r3, #1
 	bl sub_020417A8
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #9]
 _0238B820:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x800
@@ -1670,7 +1670,7 @@ _0238B820:
 	cmp r1, r0
 	bne _0238B984
 	bl sub_02041094
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	mov r6, r0
 	ldr r0, [r1]
 	add r0, r0, #0x300
@@ -1686,7 +1686,7 @@ _0238B820:
 _0238B87C:
 	ldr r4, _0238BDE8 ; =LINK_SHOP_SUBMENU_ITEMS_7
 _0238B880:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	mov r2, #0
 	ldr r0, [r0]
 	mov r1, r2
@@ -1738,7 +1738,7 @@ _0238B934:
 	cmp ip, #4
 	blt _0238B900
 _0238B93C:
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	cmp r6, #0
 	moveq r0, #3
 	streqb r0, [r5, #4]
@@ -1753,11 +1753,11 @@ _0238B93C:
 	mov r3, r4
 	add r2, r2, #0x128
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
 _0238B984:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r2, [r0]
 	ldr r0, [r2, #0x88]
 	tst r0, #0x1000
@@ -1776,7 +1776,7 @@ _0238B984:
 	add r1, r1, #0x3a
 	mov r2, #0xa
 	bl StrncpySimpleNoPadSafe
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, _0238BDF8 ; =ov18_0238D5F8
 	ldr r0, [r0]
 	add r3, sp, #8
@@ -1784,7 +1784,7 @@ _0238B984:
 	add r0, r0, #0x300
 	mov r2, #0x46
 	bl ov18_0238AAC0
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r3, _0238BDFC ; =0x00000A3E
 	ldr r4, [r1]
 	mov r2, #0x10
@@ -1805,7 +1805,7 @@ _0238B984:
 	bl ov18_0238ABB0
 	str r0, [sp]
 	mov r1, #8
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	str r1, [sp, #4]
 	ldr r1, [r0]
 	ldr r0, _0238BE00 ; =LINK_SHOP_WINDOW_PARAMS_6
@@ -1813,11 +1813,11 @@ _0238B984:
 	ldr r1, _0238BE04 ; =0x00401833
 	ldr r3, _0238BE08 ; =ov18_0238AEF0
 	bl CreateAdvancedMenu
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xb]
 _0238BA70:
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r3, [r1]
 	ldr r0, [r3, #0x88]
 	tst r0, #0x2000
@@ -1836,11 +1836,11 @@ _0238BA70:
 	add r2, r1, #0x258
 	mov r1, #0x33
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xc]
 _0238BAC8:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x4000
@@ -1853,14 +1853,14 @@ _0238BAC8:
 	mov r2, r1
 	mov r0, #6
 	bl sub_0204018C
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xd]
 	b _0238BB10
 _0238BB0C:
 	bl sub_02041178
 _0238BB10:
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r3, [r1]
 	ldr r0, [r3, #0x88]
 	tst r0, #0x8000
@@ -1877,12 +1877,12 @@ _0238BB10:
 	strb r2, [r0, #0x39e]
 	bl sub_02041094
 	cmp r0, #4
-	ldrge r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldrge r0, _0238BD40 ; =LINK_SHOP_PTR
 	movge r1, #3
 	ldrge r0, [r0]
 	mov r3, #1
 	strgeb r1, [r0, #0x39c]
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	mov r4, #3
 	ldr r2, [r1]
 	add r0, r2, #0x39c
@@ -1896,11 +1896,11 @@ _0238BB10:
 	add r1, r4, #0x230
 	add r2, r2, #0x2f0
 	bl CreateSimpleMenuFromStringIds
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	strb r0, [r1, #0xe]
 _0238BBAC:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x10000
@@ -1911,18 +1911,18 @@ _0238BBAC:
 	bne _0238BBF0
 	ldr r0, _0238BE1C ; =LINK_SHOP_WINDOW_PARAMS_10
 	bl CreateDialogueBox
-	ldr r1, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BD40 ; =LINK_SHOP_PTR
 	mvn r2, #0
 	ldr r3, [r1]
 	strb r0, [r3, #0xf]
 	ldr r0, [r1]
 	str r2, [r0, #0x84]
 _0238BBF0:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xf]
 	bl ShowDialogueBox
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r3, [r0]
 	ldr r0, [r3, #0x78]
 	cmp r0, #0x12
@@ -1954,14 +1954,14 @@ _0238BC50:
 	ldr r0, [r3, #0x84]
 	cmp r0, r2
 	beq _0238BC74
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	str r2, [r3, #0x84]
 	ldr r0, [r0]
 	add r3, sp, #0x14c
 	ldrsb r0, [r0, #0xf]
 	bl ShowStringIdInDialogueBox
 _0238BC74:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	mov r1, #2
 	ldr r0, [r0]
 	str r1, [r0, #0x7c]
@@ -1976,7 +1976,7 @@ _0238BC88:
 	movne r0, #0
 	bne _0238BCD4
 _0238BCA8:
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	ldr r1, [r0]
 	ldr r0, [r1, #0x88]
 	tst r0, #0x10000
@@ -1991,7 +1991,7 @@ _0238BCD0:
 _0238BCD4:
 	cmp r0, #0
 	beq _0238BCF8
-	ldr r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BD40 ; =LINK_SHOP_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	str r2, [r1, #0x7c]
@@ -2004,7 +2004,7 @@ _0238BCF8:
 _0238BD00:
 	bl ov18_0238A42C
 	cmp r0, #0
-	ldrne r0, _0238BD40 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldrne r0, _0238BD40 ; =LINK_SHOP_PTR
 	movne r1, #2
 	ldrne r0, [r0]
 	strne r1, [r0, #0x74]
@@ -2013,7 +2013,7 @@ _0238BD1C:
 	mov r0, #3
 	str r0, [r4, #0x74]
 	bl ov11_022E6E68
-	bl ov18_0238AFD4
+	bl LinkShopDestructor
 	mov r0, #4
 	b _0238BD38
 _0238BD34:
@@ -2027,7 +2027,7 @@ _0238BD38:
 #else
 #define OV18_0238B01C_OFFSET 0
 #endif
-_0238BD40: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238BD40: .word LINK_SHOP_PTR
 _0238BD44: .word OVERLAY18_FUNCTION_POINTER_TABLE
 _0238BD48: .word 0x00003008
 _0238BD4C: .word LINK_SHOP_WINDOW_PARAMS_11
@@ -2111,11 +2111,11 @@ _0238BE24: .word 0x00003408
 #ifdef JAPAN
 _0238D390: .word 0x00003D26
 #endif
-	arm_func_end ov18_0238B01C
+	arm_func_end LinkShopMainManager
 
 	arm_func_start ov18_0238BE28
 ov18_0238BE28: ; 0x0238BE28
-	ldr r1, _0238BE44 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238BE44 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r1]
 	str r3, [r2, #0x7c]
@@ -2123,12 +2123,12 @@ ov18_0238BE28: ; 0x0238BE28
 	str r0, [r1, #0x80]
 	bx lr
 	.align 2, 0
-_0238BE44: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238BE44: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238BE28
 
 	arm_func_start ov18_0238BE48
 ov18_0238BE48: ; 0x0238BE48
-	ldr r0, _0238BE68 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BE68 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #1
@@ -2137,12 +2137,12 @@ ov18_0238BE48: ; 0x0238BE48
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238BE68: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238BE68: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238BE48
 
 	arm_func_start ov18_0238BE6C
 ov18_0238BE6C: ; 0x0238BE6C
-	ldr r0, _0238BE8C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BE8C ; =LINK_SHOP_PTR
 	mov r3, #0xf
 	ldr r2, [r0]
 	mov r1, #2
@@ -2151,19 +2151,19 @@ ov18_0238BE6C: ; 0x0238BE6C
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238BE8C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238BE8C: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238BE6C
 
 	arm_func_start ov18_0238BE90
 ov18_0238BE90: ; 0x0238BE90
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238BF08 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BF08 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
-	ldr r0, _0238BF08 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BF08 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #3]
 	bl GetSimpleMenuResult__0202B870
@@ -2191,12 +2191,12 @@ _0238BEFC:
 	bl ov18_0238BE28
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238BF08: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238BF08: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238BE90
 
 	arm_func_start ov18_0238BF0C
 ov18_0238BF0C: ; 0x0238BF0C
-	ldr r0, _0238BF2C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BF2C ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #4
@@ -2205,29 +2205,29 @@ ov18_0238BF0C: ; 0x0238BF0C
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238BF2C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238BF2C: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238BF0C
 
 	arm_func_start ov18_0238BF30
 ov18_0238BF30: ; 0x0238BF30
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238BF5C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BF5C ; =LINK_SHOP_PTR
 	mov r1, #0
 	ldr r0, [r0]
 	str r1, [r0, #0x88]
 	bl ov18_0238A2A0
-	ldr r0, _0238BF5C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BF5C ; =LINK_SHOP_PTR
 	mov r1, #1
 	ldr r0, [r0]
 	str r1, [r0, #0x74]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238BF5C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238BF5C: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238BF30
 
 	arm_func_start ov18_0238BF60
 ov18_0238BF60: ; 0x0238BF60
-	ldr r0, _0238BF80 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BF80 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #6
@@ -2236,12 +2236,12 @@ ov18_0238BF60: ; 0x0238BF60
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238BF80: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238BF80: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238BF60
 
 	arm_func_start ov18_0238BF84
 ov18_0238BF84: ; 0x0238BF84
-	ldr r0, _0238BFA4 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238BFA4 ; =LINK_SHOP_PTR
 	mov r3, #0x23
 	ldr r2, [r0]
 	mov r1, #7
@@ -2250,19 +2250,19 @@ ov18_0238BF84: ; 0x0238BF84
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238BFA4: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238BFA4: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238BF84
 
 	arm_func_start ov18_0238BFA8
 ov18_0238BFA8: ; 0x0238BFA8
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238C038 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C038 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
-	ldr r0, _0238C038 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C038 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #4]
 	bl GetSimpleMenuResult__0202B870
@@ -2297,12 +2297,12 @@ _0238C02C:
 	bl ov18_0238BE28
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C038: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C038: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238BFA8
 
 	arm_func_start ov18_0238C03C
 ov18_0238C03C: ; 0x0238C03C
-	ldr r0, _0238C05C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C05C ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #9
@@ -2311,23 +2311,23 @@ ov18_0238C03C: ; 0x0238C03C
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C05C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C05C: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C03C
 
 	arm_func_start ov18_0238C060
 ov18_0238C060: ; 0x0238C060
-	ldr r0, _0238C074 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C074 ; =LINK_SHOP_PTR
 	mov r1, #5
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C074: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C074: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C060
 
 	arm_func_start ov18_0238C078
 ov18_0238C078: ; 0x0238C078
-	ldr r0, _0238C098 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C098 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0xc
@@ -2336,12 +2336,12 @@ ov18_0238C078: ; 0x0238C078
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C098: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C098: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C078
 
 	arm_func_start ov18_0238C09C
 ov18_0238C09C: ; 0x0238C09C
-	ldr r0, _0238C0BC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C0BC ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0xd
@@ -2350,23 +2350,23 @@ ov18_0238C09C: ; 0x0238C09C
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C0BC: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C0BC: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C09C
 
 	arm_func_start ov18_0238C0C0
 ov18_0238C0C0: ; 0x0238C0C0
-	ldr r0, _0238C0D4 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C0D4 ; =LINK_SHOP_PTR
 	mov r1, #5
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C0D4: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C0D4: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C0C0
 
 	arm_func_start ov18_0238C0D8
 ov18_0238C0D8: ; 0x0238C0D8
-	ldr r0, _0238C0F8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C0F8 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0xf
@@ -2375,23 +2375,23 @@ ov18_0238C0D8: ; 0x0238C0D8
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C0F8: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C0F8: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C0D8
 
 	arm_func_start ov18_0238C0FC
 ov18_0238C0FC: ; 0x0238C0FC
-	ldr r0, _0238C110 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C110 ; =LINK_SHOP_PTR
 	mov r1, #5
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C110: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C110: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C0FC
 
 	arm_func_start ov18_0238C114
 ov18_0238C114: ; 0x0238C114
-	ldr r0, _0238C134 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C134 ; =LINK_SHOP_PTR
 	ldr r3, _0238C138 ; =0x00010002
 	ldr r2, [r0]
 	mov r1, #0x11
@@ -2400,13 +2400,13 @@ ov18_0238C114: ; 0x0238C114
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C134: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C134: .word LINK_SHOP_PTR
 _0238C138: .word 0x00010002
 	arm_func_end ov18_0238C114
 
 	arm_func_start ov18_0238C13C
 ov18_0238C13C: ; 0x0238C13C
-	ldr r0, _0238C15C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C15C ; =LINK_SHOP_PTR
 	ldr r3, _0238C160 ; =0x00010080
 	ldr r2, [r0]
 	mov r1, #0x12
@@ -2415,7 +2415,7 @@ ov18_0238C13C: ; 0x0238C13C
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C15C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C15C: .word LINK_SHOP_PTR
 _0238C160: .word 0x00010080
 	arm_func_end ov18_0238C13C
 
@@ -2437,12 +2437,12 @@ ov18_0238C164: ; 0x0238C164
 	mov r0, #0
 	bl PlaySeVolumeWrapper
 	bl sub_0203AAB0
-	ldr r1, _0238C218 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238C218 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x8c]
 	bl sub_0203A5F0
-	ldr r0, _0238C218 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C218 ; =LINK_SHOP_PTR
 	mov r1, #0x17
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
@@ -2457,7 +2457,7 @@ _0238C1CC:
 	bl ov18_0238BE28
 	ldmia sp!, {r3, pc}
 _0238C1EC:
-	ldr r2, _0238C218 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r2, _0238C218 ; =LINK_SHOP_PTR
 	ldr r1, [r2]
 	add r1, r1, #0x300
 	strh r0, [r1, #0x8c]
@@ -2469,12 +2469,12 @@ _0238C1EC:
 	bl ov18_0238BE28
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C218: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C218: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C164
 
 	arm_func_start ov18_0238C21C
 ov18_0238C21C: ; 0x0238C21C
-	ldr r0, _0238C23C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C23C ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x14
@@ -2483,23 +2483,23 @@ ov18_0238C21C: ; 0x0238C21C
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C23C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C23C: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C21C
 
 	arm_func_start ov18_0238C240
 ov18_0238C240: ; 0x0238C240
-	ldr r0, _0238C254 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C254 ; =LINK_SHOP_PTR
 	mov r1, #0x11
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C254: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C254: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C240
 
 	arm_func_start ov18_0238C258
 ov18_0238C258: ; 0x0238C258
-	ldr r0, _0238C278 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C278 ; =LINK_SHOP_PTR
 	mov r3, #0x90
 	ldr r2, [r0]
 	mov r1, #0x16
@@ -2508,19 +2508,19 @@ ov18_0238C258: ; 0x0238C258
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C278: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C278: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C258
 
 	arm_func_start ov18_0238C27C
 ov18_0238C27C: ; 0x0238C27C
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238C33C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C33C ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
-	ldr r0, _0238C33C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C33C ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #5]
 	bl GetSimpleMenuResult__0202B870
@@ -2550,7 +2550,7 @@ _0238C2F4:
 	bl ov18_0238BE28
 	ldmia sp!, {r3, pc}
 _0238C300:
-	ldr r0, _0238C33C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C33C ; =LINK_SHOP_PTR
 	mov r3, #0
 	ldr r2, [r0]
 	mov r1, #0x1b
@@ -2568,12 +2568,12 @@ _0238C32C:
 	bl ov18_0238BE28
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C33C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C33C: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C27C
 
 	arm_func_start ov18_0238C340
 ov18_0238C340: ; 0x0238C340
-	ldr r0, _0238C360 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C360 ; =LINK_SHOP_PTR
 	mov r3, #0x100
 	ldr r2, [r0]
 	mov r1, #0x18
@@ -2582,7 +2582,7 @@ ov18_0238C340: ; 0x0238C340
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C360: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C360: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C340
 
 	arm_func_start ov18_0238C364
@@ -2592,7 +2592,7 @@ ov18_0238C364: ; 0x0238C364
 	cmp r0, #1
 	ldmneia sp!,  {r3, pc}
 	bl sub_0203F990
-	ldr r0, _0238C394 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C394 ; =LINK_SHOP_PTR
 	mvn r2, #1
 	ldr r1, [r0]
 	mov r0, #0x11
@@ -2600,12 +2600,12 @@ ov18_0238C364: ; 0x0238C364
 	bl ov18_0238BE28
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C394: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C394: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C364
 
 	arm_func_start ov18_0238C398
 ov18_0238C398: ; 0x0238C398
-	ldr r0, _0238C3B8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C3B8 ; =LINK_SHOP_PTR
 	ldr r3, _0238C3BC ; =0x00000201
 	ldr r2, [r0]
 	mov r1, #0x1a
@@ -2614,7 +2614,7 @@ ov18_0238C398: ; 0x0238C398
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C3B8: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C3B8: .word LINK_SHOP_PTR
 _0238C3BC: .word 0x00000201
 	arm_func_end ov18_0238C398
 
@@ -2624,7 +2624,7 @@ ov18_0238C3C0: ; 0x0238C3C0
 	bl sub_020407EC
 	movs r4, r0
 	beq _0238C3E4
-	ldr r0, _0238C424 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C424 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
@@ -2650,13 +2650,13 @@ _0238C418:
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238C424: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C424: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C3C0
 
 	arm_func_start ov18_0238C428
 ov18_0238C428: ; 0x0238C428
 	stmdb sp!, {r3, lr}
-	ldr r1, _0238C474 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238C474 ; =LINK_SHOP_PTR
 	ldr r0, _0238C478 ; =TEAM_MEMBER_TABLE_PTR
 	ldr r2, [r1]
 	ldr r1, [r0]
@@ -2669,13 +2669,13 @@ ov18_0238C428: ; 0x0238C428
 	ldrsh r2, [r1, #8]
 	add r1, r1, #0x14
 	bl PrintIqSkillsMenu
-	ldr r0, _0238C474 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C474 ; =LINK_SHOP_PTR
 	mov r1, #0x1c
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C474: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C474: .word LINK_SHOP_PTR
 _0238C478: .word TEAM_MEMBER_TABLE_PTR
 	arm_func_end ov18_0238C428
 
@@ -2696,11 +2696,11 @@ ov18_0238C47C: ; 0x0238C47C
 ov18_0238C4A0: ; 0x0238C4A0
 	stmdb sp!, {r3, lr}
 	bl sub_0203FD38
-	ldr r1, _0238C4E4 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238C4E4 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	str r0, [r1, #0x3a0]
 	bl sub_02041094
-	ldr r2, _0238C4E4 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r2, _0238C4E4 ; =LINK_SHOP_PTR
 	mov ip, #0x400
 	ldr r1, [r2]
 	mov r3, #0x1e
@@ -2712,7 +2712,7 @@ ov18_0238C4A0: ; 0x0238C4A0
 	str r3, [r0, #0x80]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238C4E4: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C4E4: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C4A0
 
 	arm_func_start ov18_0238C4E8
@@ -2728,7 +2728,7 @@ ov18_0238C4E8: ; 0x0238C4E8
 
 	arm_func_start ov18_0238C504
 ov18_0238C504: ; 0x0238C504
-	ldr r0, _0238C524 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C524 ; =LINK_SHOP_PTR
 	mov r3, #0xa00
 	ldr r2, [r0]
 	mov r1, #0x20
@@ -2737,13 +2737,13 @@ ov18_0238C504: ; 0x0238C504
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C524: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C524: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C504
 
 	arm_func_start ov18_0238C528
 ov18_0238C528: ; 0x0238C528
 	stmdb sp!, {r3, r4, r5, lr}
-	ldr r0, _0238C714 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C714 ; =LINK_SHOP_PTR
 	mov r4, #0
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xa]
@@ -2751,7 +2751,7 @@ ov18_0238C528: ; 0x0238C528
 	cmp r0, #0
 	ldmneia sp!,  {r3, r4, r5, pc}
 	bl sub_02041094
-	ldr r1, _0238C714 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238C714 ; =LINK_SHOP_PTR
 	mov r5, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xa]
@@ -2871,7 +2871,7 @@ _0238C6E0:
 _0238C6E4:
 	cmp r4, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r0, _0238C714 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C714 ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #8]
@@ -2883,7 +2883,7 @@ _0238C708:
 	bl ov18_0238BE28
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
-_0238C714: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C714: .word LINK_SHOP_PTR
 _0238C718: .word 0x00003F07
 _0238C71C: .word 0x00001308
 	arm_func_end ov18_0238C528
@@ -2894,7 +2894,7 @@ ov18_0238C720: ; 0x0238C720
 	bl sub_02041094
 	mov r4, r0
 	bl sub_02041154
-	ldr r1, _0238C788 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238C788 ; =LINK_SHOP_PTR
 	cmp r4, #0
 	ldr r1, [r1]
 	str r0, [r1, #0x24]
@@ -2919,12 +2919,12 @@ _0238C77C:
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238C788: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C788: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C720
 
 	arm_func_start ov18_0238C78C
 ov18_0238C78C: ; 0x0238C78C
-	ldr r0, _0238C7AC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C7AC ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x23
@@ -2933,7 +2933,7 @@ ov18_0238C78C: ; 0x0238C78C
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C7AC: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C7AC: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C78C
 
 	arm_func_start ov18_0238C7B0
@@ -2947,7 +2947,7 @@ _0238C7BC: .word ov18_0238BE28
 
 	arm_func_start ov18_0238C7C0
 ov18_0238C7C0: ; 0x0238C7C0
-	ldr r0, _0238C7E0 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C7E0 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x25
@@ -2956,12 +2956,12 @@ ov18_0238C7C0: ; 0x0238C7C0
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C7E0: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C7E0: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C7C0
 
 	arm_func_start ov18_0238C7E4
 ov18_0238C7E4: ; 0x0238C7E4
-	ldr r0, _0238C804 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C804 ; =LINK_SHOP_PTR
 	mov r3, #0x43
 	ldr r2, [r0]
 	mov r1, #0x26
@@ -2970,20 +2970,20 @@ ov18_0238C7E4: ; 0x0238C7E4
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C804: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C804: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C7E4
 
 	arm_func_start ov18_0238C808
 ov18_0238C808: ; 0x0238C808
 	stmdb sp!, {r4, lr}
-	ldr r0, _0238C884 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C884 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
 	bl sub_02041094
-	ldr r1, _0238C884 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238C884 ; =LINK_SHOP_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
@@ -2996,7 +2996,7 @@ ov18_0238C808: ; 0x0238C808
 _0238C850:
 	mov r0, r4
 	bl sub_02041484
-	ldr r0, _0238C884 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C884 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
@@ -3009,12 +3009,12 @@ _0238C878:
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238C884: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C884: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C808
 
 	arm_func_start ov18_0238C888
 ov18_0238C888: ; 0x0238C888
-	ldr r0, _0238C8A8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C8A8 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x28
@@ -3023,12 +3023,12 @@ ov18_0238C888: ; 0x0238C888
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C8A8: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C8A8: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C888
 
 	arm_func_start ov18_0238C8AC
 ov18_0238C8AC: ; 0x0238C8AC
-	ldr r0, _0238C8CC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C8CC ; =LINK_SHOP_PTR
 	mov r3, #0x43
 	ldr r2, [r0]
 	mov r1, #0x29
@@ -3037,20 +3037,20 @@ ov18_0238C8AC: ; 0x0238C8AC
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C8CC: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C8CC: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C8AC
 
 	arm_func_start ov18_0238C8D0
 ov18_0238C8D0: ; 0x0238C8D0
 	stmdb sp!, {r4, lr}
-	ldr r0, _0238C94C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C94C ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
 	bl sub_02041094
-	ldr r1, _0238C94C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238C94C ; =LINK_SHOP_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
@@ -3063,7 +3063,7 @@ ov18_0238C8D0: ; 0x0238C8D0
 _0238C918:
 	mov r0, r4
 	bl sub_02041484
-	ldr r0, _0238C94C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C94C ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
@@ -3076,12 +3076,12 @@ _0238C940:
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238C94C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C94C: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C8D0
 
 	arm_func_start ov18_0238C950
 ov18_0238C950: ; 0x0238C950
-	ldr r0, _0238C970 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C970 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x2b
@@ -3090,7 +3090,7 @@ ov18_0238C950: ; 0x0238C950
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C970: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C970: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C950
 
 	arm_func_start ov18_0238C974
@@ -3104,7 +3104,7 @@ _0238C980: .word ov18_0238BE28
 
 	arm_func_start ov18_0238C984
 ov18_0238C984: ; 0x0238C984
-	ldr r0, _0238C9A4 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238C9A4 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x2d
@@ -3113,7 +3113,7 @@ ov18_0238C984: ; 0x0238C984
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238C9A4: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238C9A4: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C984
 
 	arm_func_start ov18_0238C9A8
@@ -3130,33 +3130,33 @@ ov18_0238C9B8: ; 0x0238C9B8
 	stmdb sp!, {r3, lr}
 	bl sub_0204159C
 	cmp r0, #0
-	ldreq r0, _0238CA14 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldreq r0, _0238CA14 ; =LINK_SHOP_PTR
 	moveq r1, #0x2f
 	ldreq r0, [r0]
 	streq r1, [r0, #0x80]
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _0238CA14 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CA14 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
 	bl ov18_0238ABB0
 	cmp r0, #0
-	ldrle r0, _0238CA14 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldrle r0, _0238CA14 ; =LINK_SHOP_PTR
 	movle r1, #0x31
 	ldrle r0, [r0]
 	strle r1, [r0, #0x80]
-	ldrgt r0, _0238CA14 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldrgt r0, _0238CA14 ; =LINK_SHOP_PTR
 	movgt r1, #0x33
 	ldrgt r0, [r0]
 	strgt r1, [r0, #0x80]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238CA14: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CA14: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238C9B8
 
 	arm_func_start ov18_0238CA18
 ov18_0238CA18: ; 0x0238CA18
-	ldr r0, _0238CA38 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CA38 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x30
@@ -3165,7 +3165,7 @@ ov18_0238CA18: ; 0x0238CA18
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238CA38: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CA38: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CA18
 
 	arm_func_start ov18_0238CA3C
@@ -3179,7 +3179,7 @@ _0238CA48: .word ov18_0238BE28
 
 	arm_func_start ov18_0238CA4C
 ov18_0238CA4C: ; 0x0238CA4C
-	ldr r0, _0238CA6C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CA6C ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x32
@@ -3188,7 +3188,7 @@ ov18_0238CA4C: ; 0x0238CA4C
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238CA6C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CA6C: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CA4C
 
 	arm_func_start ov18_0238CA70
@@ -3202,7 +3202,7 @@ _0238CA7C: .word ov18_0238BE28
 
 	arm_func_start ov18_0238CA80
 ov18_0238CA80: ; 0x0238CA80
-	ldr r0, _0238CAAC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CAAC ; =LINK_SHOP_PTR
 	mov r2, #3
 	ldr r1, [r0]
 	mov r3, #0
@@ -3214,12 +3214,12 @@ ov18_0238CA80: ; 0x0238CA80
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238CAAC: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CAAC: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CA80
 
 	arm_func_start ov18_0238CAB0
 ov18_0238CAB0: ; 0x0238CAB0
-	ldr r0, _0238CAD0 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CAD0 ; =LINK_SHOP_PTR
 	mov r3, #0x1000
 	ldr r2, [r0]
 	mov r1, #0x35
@@ -3228,7 +3228,7 @@ ov18_0238CAB0: ; 0x0238CAB0
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238CAD0: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CAD0: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CAB0
 
 	arm_func_start ov18_0238CAD4
@@ -3238,11 +3238,11 @@ ov18_0238CAD4: ; 0x0238CAD4
 	add r1, sp, #0
 	mov r0, #0
 	bl GetPressedButtons
-	ldr r0, _0238CBD8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CBD8 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
 	bl GetAdvancedMenuCurrentOption
-	ldr r1, _0238CBD8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238CBD8 ; =LINK_SHOP_PTR
 	ldr r2, [r1]
 	strh r0, [r2, #0x8c]
 	ldrh r0, [sp]
@@ -3252,13 +3252,13 @@ ov18_0238CAD4: ; 0x0238CAD4
 	ldrsb r0, [r1, #0xb]
 	ldrsh r4, [r1, #0x8c]
 	bl sub_0202C1E4
-	ldr r0, _0238CBD8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CBD8 ; =LINK_SHOP_PTR
 	mov r1, r4
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
 	bl ov18_0238ADA8
-	ldr r2, _0238CBD8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r2, _0238CBD8 ; =LINK_SHOP_PTR
 	mov lr, #0
 	ldr r1, [r2]
 	mov ip, #1
@@ -3285,7 +3285,7 @@ _0238CB8C:
 	bl IsAdvancedMenuActive2
 	cmp r0, #0
 	bne _0238CBD0
-	ldr r0, _0238CBD8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CBD8 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
 	bl GetAdvancedMenuResult
@@ -3302,12 +3302,12 @@ _0238CBD0:
 	add sp, sp, #4
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_0238CBD8: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CBD8: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CAD4
 
 	arm_func_start ov18_0238CBDC
 ov18_0238CBDC: ; 0x0238CBDC
-	ldr r0, _0238CBFC ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CBFC ; =LINK_SHOP_PTR
 	mov r3, #0x3000
 	ldr r2, [r0]
 	mov r1, #0x37
@@ -3316,24 +3316,24 @@ ov18_0238CBDC: ; 0x0238CBDC
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238CBFC: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CBFC: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CBDC
 
 	arm_func_start ov18_0238CC00
 ov18_0238CC00: ; 0x0238CC00
 	stmdb sp!, {r4, lr}
-	ldr r0, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CD84 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
 	bl GetAdvancedMenuResult
-	ldr r1, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238CD84 ; =LINK_SHOP_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #0xc]
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
-	ldr r0, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CD84 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xc]
 	bl GetSimpleMenuResult__0202B870
@@ -3353,14 +3353,14 @@ _0238CC50: ; jump table
 	b _0238CD5C ; case 8
 	b _0238CC78 ; case 9
 _0238CC78:
-	ldr r1, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238CD84 ; =LINK_SHOP_PTR
 	mov r0, r4, lsl #0x10
 	ldr r2, [r1]
 	mov r1, r0, asr #0x10
 	add r0, r2, #0x300
 	ldrsh r0, [r0, #0x8c]
 	bl ov18_0238ADA8
-	ldr r1, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238CD84 ; =LINK_SHOP_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	str r4, [r0, #0x24]
@@ -3369,14 +3369,14 @@ _0238CC78:
 	mov r0, r4
 	beq _0238CCCC
 	bl sub_0203FD14
-	ldr r0, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CD84 ; =LINK_SHOP_PTR
 	mov r1, #0x3c
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
 	ldmia sp!, {r4, pc}
 _0238CCCC:
 	bl sub_02041614
-	ldr r0, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CD84 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
@@ -3385,14 +3385,14 @@ _0238CCCC:
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
 _0238CCF0:
-	ldr r1, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238CD84 ; =LINK_SHOP_PTR
 	mov r0, r4, lsl #0x10
 	ldr r2, [r1]
 	mov r1, r0, asr #0x10
 	add r0, r2, #0x300
 	ldrsh r0, [r0, #0x8c]
 	bl ov18_0238ADA8
-	ldr r2, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r2, _0238CD84 ; =LINK_SHOP_PTR
 	mov r4, #0
 	ldr r1, [r2]
 	mov r3, #1
@@ -3413,7 +3413,7 @@ _0238CCF0:
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
 _0238CD5C:
-	ldr r0, _0238CD84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CD84 ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
@@ -3425,12 +3425,12 @@ _0238CD78:
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238CD84: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CD84: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CC00
 
 	arm_func_start ov18_0238CD88
 ov18_0238CD88: ; 0x0238CD88
-	ldr r0, _0238CDA8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CDA8 ; =LINK_SHOP_PTR
 	mov r3, #0x400
 	ldr r2, [r0]
 	mov r1, #0x39
@@ -3439,7 +3439,7 @@ ov18_0238CD88: ; 0x0238CD88
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238CDA8: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CDA8: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CD88
 
 	arm_func_start ov18_0238CDAC
@@ -3455,7 +3455,7 @@ ov18_0238CDAC: ; 0x0238CDAC
 
 	arm_func_start ov18_0238CDC8
 ov18_0238CDC8: ; 0x0238CDC8
-	ldr r0, _0238CDE8 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CDE8 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x3b
@@ -3464,7 +3464,7 @@ ov18_0238CDC8: ; 0x0238CDC8
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238CDE8: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CDE8: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CDC8
 
 	arm_func_start ov18_0238CDEC
@@ -3478,7 +3478,7 @@ _0238CDF8: .word ov18_0238BE28
 
 	arm_func_start ov18_0238CDFC
 ov18_0238CDFC: ; 0x0238CDFC
-	ldr r0, _0238CE1C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CE1C ; =LINK_SHOP_PTR
 	mov r3, #0x14000
 	ldr r2, [r0]
 	mov r1, #0x3d
@@ -3487,7 +3487,7 @@ ov18_0238CDFC: ; 0x0238CDFC
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238CE1C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CE1C: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CDFC
 
 	arm_func_start ov18_0238CE20
@@ -3496,7 +3496,7 @@ ov18_0238CE20: ; 0x0238CE20
 	bl sub_020407EC
 	movs r4, r0
 	beq _0238CE44
-	ldr r0, _0238CE84 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CE84 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
@@ -3522,24 +3522,24 @@ _0238CE78:
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238CE84: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CE84: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CE20
 
 	arm_func_start ov18_0238CE88
 ov18_0238CE88: ; 0x0238CE88
 	stmdb sp!, {r3, lr}
-	ldr r0, _0238CED4 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CED4 ; =LINK_SHOP_PTR
 	mov r1, #0xc000
 	ldr r0, [r0]
 	str r1, [r0, #0x88]
 	bl sub_02041094
 	bl sub_02041154
-	ldr r1, _0238CED4 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238CED4 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	str r0, [r1, #0x24]
 	mov r0, #4
 	bl sub_02041154
-	ldr r1, _0238CED4 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238CED4 ; =LINK_SHOP_PTR
 	mov r2, #0x3f
 	ldr r3, [r1]
 	str r0, [r3, #0x28]
@@ -3547,21 +3547,21 @@ ov18_0238CE88: ; 0x0238CE88
 	str r2, [r0, #0x80]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238CED4: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CED4: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CE88
 
 	arm_func_start ov18_0238CED8
 ov18_0238CED8: ; 0x0238CED8
 	stmdb sp!, {r3, lr}
 	bl sub_02041094
-	ldr r0, _0238CF94 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CF94 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r3, pc}
 	bl sub_0203FD38
-	ldr r0, _0238CF94 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CF94 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xe]
 	bl GetSimpleMenuResult__0202B870
@@ -3594,7 +3594,7 @@ _0238CF60:
 	bl ov18_0238BE28
 	ldmia sp!, {r3, pc}
 _0238CF6C:
-	ldr r0, _0238CF94 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238CF94 ; =LINK_SHOP_PTR
 	mvn r1, #1
 	ldr r0, [r0]
 	ldrsb r0, [r0, #0xb]
@@ -3606,7 +3606,7 @@ _0238CF88:
 	bl ov18_0238BE28
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_0238CF94: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238CF94: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CED8
 
 	arm_func_start ov18_0238CF98
@@ -3618,14 +3618,14 @@ ov18_0238CF98: ; 0x0238CF98
 	cmp r0, #4
 	blt _0238CFF0
 	bl sub_0203FD2C
-	ldr r2, _0238D030 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r2, _0238D030 ; =LINK_SHOP_PTR
 	mov r1, r0
 	ldr r0, [r2]
 	mov r2, #8
 	add r0, r0, #0xa6
 	add r0, r0, #0x300
 	bl memcpy
-	ldr r0, _0238D030 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D030 ; =LINK_SHOP_PTR
 	mov r2, #0
 	ldr r1, [r0]
 	str r2, [r1, #0x3a0]
@@ -3634,16 +3634,16 @@ ov18_0238CF98: ; 0x0238CF98
 	strh r2, [r0, #0xa4]
 	b _0238D010
 _0238CFF0:
-	ldr r0, _0238D030 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D030 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	str r4, [r0, #0x3a0]
 	bl sub_02041094
-	ldr r1, _0238D030 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238D030 ; =LINK_SHOP_PTR
 	ldr r1, [r1]
 	add r1, r1, #0x300
 	strh r0, [r1, #0xa4]
 _0238D010:
-	ldr r0, _0238D030 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D030 ; =LINK_SHOP_PTR
 	mov r3, #0x400
 	ldr r2, [r0]
 	mov r1, #0x41
@@ -3652,7 +3652,7 @@ _0238D010:
 	str r1, [r0, #0x80]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238D030: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238D030: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238CF98
 
 	arm_func_start ov18_0238D034
@@ -3668,7 +3668,7 @@ ov18_0238D034: ; 0x0238D034
 
 	arm_func_start ov18_0238D050
 ov18_0238D050: ; 0x0238D050
-	ldr r0, _0238D070 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D070 ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x43
@@ -3677,12 +3677,12 @@ ov18_0238D050: ; 0x0238D050
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238D070: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238D070: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238D050
 
 	arm_func_start ov18_0238D074
 ov18_0238D074: ; 0x0238D074
-	ldr r0, _0238D094 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D094 ; =LINK_SHOP_PTR
 	mov r3, #0x43
 	ldr r2, [r0]
 	mov r1, #0x44
@@ -3691,20 +3691,20 @@ ov18_0238D074: ; 0x0238D074
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238D094: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238D094: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238D074
 
 	arm_func_start ov18_0238D098
 ov18_0238D098: ; 0x0238D098
 	stmdb sp!, {r4, lr}
-	ldr r0, _0238D128 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D128 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
 	bl sub_02041094
-	ldr r1, _0238D128 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238D128 ; =LINK_SHOP_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
@@ -3720,12 +3720,12 @@ _0238D0E0:
 	bl sub_0203FD2C
 	ldrh r0, [r0, #4]
 	bl sub_02041614
-	ldr r0, _0238D128 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D128 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
 	bl sub_0203FD80
-	ldr r0, _0238D128 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D128 ; =LINK_SHOP_PTR
 	mov r1, #0x48
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
@@ -3735,12 +3735,12 @@ _0238D11C:
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238D128: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238D128: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238D098
 
 	arm_func_start ov18_0238D12C
 ov18_0238D12C: ; 0x0238D12C
-	ldr r0, _0238D14C ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D14C ; =LINK_SHOP_PTR
 	mov r3, #3
 	ldr r2, [r0]
 	mov r1, #0x46
@@ -3749,12 +3749,12 @@ ov18_0238D12C: ; 0x0238D12C
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238D14C: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238D14C: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238D12C
 
 	arm_func_start ov18_0238D150
 ov18_0238D150: ; 0x0238D150
-	ldr r0, _0238D170 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D170 ; =LINK_SHOP_PTR
 	mov r3, #0x43
 	ldr r2, [r0]
 	mov r1, #0x47
@@ -3763,20 +3763,20 @@ ov18_0238D150: ; 0x0238D150
 	str r1, [r0, #0x80]
 	bx lr
 	.align 2, 0
-_0238D170: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238D170: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238D150
 
 	arm_func_start ov18_0238D174
 ov18_0238D174: ; 0x0238D174
 	stmdb sp!, {r4, lr}
-	ldr r0, _0238D204 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D204 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	ldrsb r0, [r0, #6]
 	bl IsSimpleMenuActive
 	cmp r0, #0
 	ldmneia sp!,  {r4, pc}
 	bl sub_02041094
-	ldr r1, _0238D204 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r1, _0238D204 ; =LINK_SHOP_PTR
 	mov r4, r0
 	ldr r0, [r1]
 	ldrsb r0, [r0, #6]
@@ -3792,12 +3792,12 @@ _0238D1BC:
 	bl sub_0203FD2C
 	ldrh r0, [r0, #4]
 	bl sub_02041614
-	ldr r0, _0238D204 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D204 ; =LINK_SHOP_PTR
 	ldr r0, [r0]
 	add r0, r0, #0x300
 	ldrsh r0, [r0, #0x8c]
 	bl sub_0203FD80
-	ldr r0, _0238D204 ; =OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	ldr r0, _0238D204 ; =LINK_SHOP_PTR
 	mov r1, #0x4a
 	ldr r0, [r0]
 	str r1, [r0, #0x80]
@@ -3807,7 +3807,7 @@ _0238D1F8:
 	bl ov18_0238BE28
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_0238D204: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+_0238D204: .word LINK_SHOP_PTR
 	arm_func_end ov18_0238D174
 	; 0x0238D208
 
@@ -3816,7 +3816,7 @@ _0238D204: .word OVERLAY18_UNKNOWN_POINTER__NA_238D620
 ov18_0238D208:
 	.byte 0x18, 0x00, 0x9F, 0xE5, 0x03, 0x30, 0xA0, 0xE3, 0x00, 0x20, 0x90, 0xE5, 0x49, 0x10, 0xA0, 0xE3
 	.byte 0x88, 0x30, 0x82, 0xE5, 0x00, 0x00, 0x90, 0xE5, 0x80, 0x10, 0x80, 0xE5, 0x1E, 0xFF, 0x2F, 0xE1
-	.word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	.word LINK_SHOP_PTR
 	.global ov18_0238D22C
 ov18_0238D22C:
 	.byte 0x04, 0xC0, 0x9F, 0xE5, 0x11, 0x00, 0xA0, 0xE3, 0x1C, 0xFF, 0x2F, 0xE1
@@ -3826,7 +3826,7 @@ ov18_0238D23C:
 	.byte 0x18, 0x00, 0x9F, 0xE5, 0x03, 0x30, 0xA0, 0xE3, 0x00, 0x20, 0x90, 0xE5
 	.byte 0x4B, 0x10, 0xA0, 0xE3, 0x88, 0x30, 0x82, 0xE5, 0x00, 0x00, 0x90, 0xE5, 0x80, 0x10, 0x80, 0xE5
 	.byte 0x1E, 0xFF, 0x2F, 0xE1
-	.word OVERLAY18_UNKNOWN_POINTER__NA_238D620
+	.word LINK_SHOP_PTR
 	.global ov18_0238D260
 ov18_0238D260:
 	.byte 0x04, 0xC0, 0x9F, 0xE5, 0x11, 0x00, 0xA0, 0xE3
@@ -4080,6 +4080,6 @@ ov18_0238D608:
 	.byte 0x52, 0x5D, 0x00, 0x00
 
 	.data
-	.global OVERLAY18_UNKNOWN_POINTER__NA_238D620
-OVERLAY18_UNKNOWN_POINTER__NA_238D620:
+	.global LINK_SHOP_PTR
+LINK_SHOP_PTR:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

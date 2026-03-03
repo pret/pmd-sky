@@ -4,6 +4,6 @@
 .public GetIdleAnimationId
 .public GetTileSafe
 .public InitAnimationControlWithSet__0201C0CC
-.public SetSpriteIdForAnimationControl
 .public ov29_022DDA54
 .public ov29_02304830
+.public SetSpriteIdForAnimationControl

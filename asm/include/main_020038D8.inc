@@ -10,6 +10,9 @@
 .public Debug_Print0
 .public DisableAllInterrupts
 .public EnableAllInterrupts
+.public OS_SetIrqFunction
+.public OS_SleepThread
+.public OS_WakeupThreadDirect
 .public PlayBgmById
 .public StopBgmCommand
 .public sub_02002580
@@ -29,7 +32,4 @@
 .public sub_02018118
 .public sub_02018278
 .public sub_02018428
-.public OS_SetIrqFunction
-.public OS_SleepThread
-.public OS_WakeupThreadDirect
 .public sub_0207B584

@@ -48,6 +48,7 @@
 .public _s32_div_f
 .public abs
 .public CardPullOutWithStatus
+.public DC_FlushAll
 .public Debug_FatalError
 .public Debug_Print
 .public Debug_Print0
@@ -66,6 +67,7 @@
 .public MemAlloc
 .public MemFree
 .public MemLocateSet
+.public OS_SleepThread
 .public RandInt
 .public sprintf
 .public sqrtf
@@ -99,8 +101,6 @@
 .public sub_0200B76C
 .public sub_020184A8
 .public sub_02078900
-.public OS_SleepThread
-.public DC_FlushAll
 .public sub_0207A324
 .public sub_0207BE6C
 .public sub_0207BF04

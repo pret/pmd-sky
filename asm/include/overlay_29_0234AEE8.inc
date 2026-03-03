@@ -13,14 +13,11 @@
 .public InitPortraitParams
 .public InitPreprocessorArgs
 .public IsAlertBoxActive
-.public MESSAGE_LOG_INFO
 .public MemAlloc
 .public MemFree
 .public MemZero
+.public MESSAGE_LOG_INFO
 .public MusicTableIdxToMusicId
-.public PreprocessString
-.public ShouldDisplayEntityWrapper
-.public StringFromId
 .public ov10_022BFD20
 .public ov29_022E0B60
 .public ov29_022E2CA0
@@ -34,6 +31,9 @@
 .public ov29_02348A18
 .public ov29_02353214
 .public ov29_0237C694
+.public PreprocessString
+.public ShouldDisplayEntityWrapper
+.public StringFromId
 .public strlen
 .public strncmp
 .public strncpy

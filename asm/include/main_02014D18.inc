@@ -269,6 +269,7 @@
 .public CopyAndInterleave
 .public CopyAndInterleave0
 .public CopyStringFromId
+.public DC_FlushRange
 .public Debug_FatalError
 .public Debug_GetDebugFlag
 .public Debug_Print
@@ -464,7 +465,6 @@
 .public sub_0206C6BC
 .public sub_0206C754
 .public sub_0206F5C8
-.public DC_FlushRange
 .public sub_0207C9C4
 .public sub_0207C9E4
 .public sub_0207CC10

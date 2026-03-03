@@ -27,6 +27,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public ArrayFill32Fast
+.public DC_FlushRange
 .public DRIVER_WORK
 .public Dse_SetError
 .public Dse_SetError2
@@ -56,6 +57,8 @@
 .public DseVoice_UpdateParameters
 .public FileInit
 .public GetTimer0Control
+.public OS_SleepThread
+.public OS_WakeupThreadDirect
 .public SMD_EVENTS_FUN_TABLE
 .public SoundEnvelope_ForceVolume
 .public SoundLfoBank_Reset
@@ -63,10 +66,7 @@
 .public sub_0206C688
 .public sub_02072BB8
 .public sub_02079800
-.public OS_SleepThread
-.public OS_WakeupThreadDirect
 .public sub_02079B14
-.public DC_FlushRange
 .public sub_0207A300
 .public sub_0207C8B8
 .public sub_0207C8E0

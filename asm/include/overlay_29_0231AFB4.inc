@@ -5,7 +5,7 @@
 .public GetTreasureBoxChances
 .public LogMessageByIdWithPopupCheckParticipants
 .public LogMessageByIdWithPopupCheckUserTarget
-.public PrepareItemForPrinting__02345728
-.public SubstitutePlaceholderStringTags
 .public ov29_022E4110
 .public ov29_0232E80C
+.public PrepareItemForPrinting__02345728
+.public SubstitutePlaceholderStringTags

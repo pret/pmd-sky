@@ -160,6 +160,7 @@
 .public Arm9StoreUnkFieldNa0x2029ED8
 .public BAG_ITEMS_PTR_MIRROR
 .public CanMonsterUseMove
+.public CARD_Init
 .public CardBackupError
 .public CardPullOutWithStatus
 .public ClearAdventureLogStruct
@@ -520,7 +521,6 @@
 .public sub_02083B00
 .public sub_02083B14
 .public sub_02083B3C
-.public CARD_Init
 .public TEAM_MEMBER_TABLE_PTR
 .public TryPointCameraToMonster
 .public UpdateWindow

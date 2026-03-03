@@ -6232,7 +6232,7 @@ CTRDGi_UnlockByProcessor: ; 0x02084990
 	ldr r1, [r4]
 	cmp r1, #0
 	bne _020849A8
-	bl OS_UnLockCartridge
+	bl OS_UnlockCartridgeVeneer
 _020849A8:
 	ldr r0, [r4, #4]
 	bl SetIrqFlag

@@ -28,6 +28,8 @@
 .public ArrayFill32Fast
 .public Crypto_RC4Encrypt
 .public CRYPTO_RC4Init
+.public DC_FlushRange
+.public DC_InvalidateRange
 .public Debug_GetDebugFlag
 .public EnableIrqFlag
 .public FileInit
@@ -53,6 +55,10 @@
 .public memset
 .public MemsetFast
 .public MemZero
+.public MI_DmaCopy16
+.public OS_InitMutex
+.public OS_SleepThread
+.public OS_WakeupThreadDirect
 .public OSi_ReferSymbol
 .public ov00_0230E074
 .public ov00_0230E098
@@ -1022,6 +1028,10 @@
 .public ov01_0233AE64
 .public ov02_02329520
 .public PlayBgmByIdVeneer
+.public PXI_Init
+.public PXI_IsCallbackReady
+.public PXI_SendWordByFifo
+.public PXI_SetFifoRecvCallback
 .public RandInt
 .public SetIrqFlag
 .public snprintf
@@ -1097,9 +1107,7 @@
 .public sub_0207976C
 .public sub_02079800
 .public sub_02079830
-.public OS_SleepThread
 .public sub_020798D8
-.public OS_WakeupThreadDirect
 .public sub_02079990
 .public sub_020799AC
 .public sub_02079A64
@@ -1112,13 +1120,10 @@
 .public sub_02079E74
 .public sub_02079F18
 .public sub_02079FB4
-.public OS_InitMutex
 .public sub_0207A048
 .public sub_0207A0CC
 .public sub_0207A164
-.public DC_InvalidateRange
 .public sub_0207A2C0
-.public DC_FlushRange
 .public sub_0207A300
 .public sub_0207AD54
 .public sub_0207ADCC
@@ -1132,11 +1137,6 @@
 .public sub_0207B9EC
 .public sub_0207BB50
 .public sub_0207BC4C
-.public MI_DmaCopy16
-.public PXI_Init
-.public PXI_SetFifoRecvCallback
-.public PXI_IsCallbackReady
-.public PXI_SendWordByFifo
 .public sub_0207EDB4
 .public sub_0207F60C
 .public sub_0207F6C4

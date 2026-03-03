@@ -13,6 +13,7 @@
 .public ClearMonsterActionFields
 .public DirectoryFileMngr_OpenDirectoryFile
 .public DisplayMessage2
+.public DoesMonsterHaveMove
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public DungeonRandOutcome__022EAB20
@@ -77,7 +78,6 @@
 .public ov29_022F8830
 .public ov29_022F9C34
 .public ov29_022FA02C
-.public DoesMonsterHaveMove
 .public ov29_023009A0
 .public ov29_023021F0
 .public ov29_02339FF4

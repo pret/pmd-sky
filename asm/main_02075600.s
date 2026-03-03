@@ -4675,13 +4675,13 @@ _02078F58: .word 0x027FFFE8
 _02078F5C: .word OSi_FreeCartridgeBus
 	arm_func_end OS_UnlockCartridge
 
-	arm_func_start OS_UnLockCartridge
-OS_UnLockCartridge: ; 0x02078F60
+	arm_func_start OS_UnlockCartridgeVeneer
+OS_UnlockCartridgeVeneer: ; 0x02078F60
 	ldr r1, _02078F68 ; =OS_UnlockCartridge
 	bx r1
 	.align 2, 0
 _02078F68: .word OS_UnlockCartridge
-	arm_func_end OS_UnLockCartridge
+	arm_func_end OS_UnlockCartridgeVeneer
 
 	arm_func_start sub_02078F6C
 sub_02078F6C: ; 0x02078F6C
