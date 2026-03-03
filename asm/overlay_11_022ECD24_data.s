@@ -247,9 +247,9 @@
 .public ov17_0238A140
 .public ov17_0238A71C
 .public ov17_0238A754
-.public ov18_0238A140
-.public ov18_0238AFD4
-.public ov18_0238B01C
+.public LinkShopEntryPoint
+.public LinkShopDestructor
+.public LinkShopMainManager
 .public ov19_0238D5FC
 .public ov19_0238D68C
 .public ov19_0238D698
@@ -1902,9 +1902,9 @@ ov11_0232309C:
 	.global ov11_023230AC
 ov11_023230AC:
 	.byte 0x16, 0x00, 0x00, 0x00
-	.word ov18_0238A140
-	.word ov18_0238AFD4
-	.word ov18_0238B01C
+	.word LinkShopEntryPoint
+	.word LinkShopDestructor
+	.word LinkShopMainManager
 	.global ov11_023230BC
 ov11_023230BC:
 	.byte 0x17, 0x00, 0x00, 0x00
