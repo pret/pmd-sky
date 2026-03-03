@@ -555,7 +555,7 @@
                                                                                                          104](ov10_022BCC60,func) found in global overlay_10_022BCC60.o
                                                                                                          104](GetSecondFormIfValid,func) found in global main_02054BE0.o
                                                                                                          104](GetBodySize,func) found in global main_020527A8.o
-                                                                                                        103](ov18_0238B01C,func) found in global overlay_18.o
+                                                                                                        103](LinkShopMainManager,func) found in global overlay_18.o
                                                                                                          104](.data,section) found in local overlay_18.o
                                                                                                          104](.rodata,section) found in local overlay_18.o
                                                                                                           105](.text,section) found in local overlay_18.o
@@ -9681,7 +9681,7 @@
   020791BC 00000000 .text   $a	(main_02075600.o)
   02079228 00000020 .text   OS_UnlockCartridge	(main_02075600.o)
   0207923C 00000000 .text   $d	(main_02075600.o)
-  02079248 0000000C .text   OS_UnLockCartridge	(main_02075600.o)
+  02079248 0000000C .text   OS_UnlockCartridgeVeneer	(main_02075600.o)
   02079248 00000000 .text   $a	(main_02075600.o)
   02079250 00000000 .text   $d	(main_02075600.o)
   02079254 00000020 .text   sub_02078F6C	(main_02075600.o)
@@ -33109,7 +33109,7 @@
 #>0238B6A0          SDK_OVERLAY.OVY_18.START (linker command file)
 #>0238B6A0          SDK_OVERLAY.OVY_18.TEXT_START (linker command file)
   0238B6A0 000030D4 .text   .text	(overlay_18.o)
-  0238B6A0 00000160 .text   ov18_0238A140	(overlay_18.o)
+  0238B6A0 00000160 .text   LinkShopEntryPoint	(overlay_18.o)
   0238B6A0 00000000 .text   $a	(overlay_18.o)
   0238B7F8 00000000 .text   $d	(overlay_18.o)
   0238B800 0000018C .text   ov18_0238A2A0	(overlay_18.o)
@@ -33137,10 +33137,10 @@
   0238C49C 00000094 .text   ov18_0238AF3C	(overlay_18.o)
   0238C49C 00000000 .text   $a	(overlay_18.o)
   0238C528 00000000 .text   $d	(overlay_18.o)
-  0238C530 00000048 .text   ov18_0238AFD4	(overlay_18.o)
+  0238C530 00000048 .text   LinkShopDestructor	(overlay_18.o)
   0238C530 00000000 .text   $a	(overlay_18.o)
   0238C574 00000000 .text   $d	(overlay_18.o)
-  0238C578 00000E1C .text   ov18_0238B01C	(overlay_18.o)
+  0238C578 00000E1C .text   LinkShopMainManager	(overlay_18.o)
   0238C578 00000000 .text   $a	(overlay_18.o)
   0238D29C 00000000 .text   $d	(overlay_18.o)
   0238D394 00000000 .text   $a	(overlay_18.o)
@@ -33383,7 +33383,7 @@
 #>0238EB8C          SDK_OVERLAY.OVY_18.SINIT_END (linker command file)
 #>0238EBA0          SDK_OVERLAY.OVY_18.TEXT_END (linker command file)
 #>0238EBA0          SDK_OVERLAY.OVY_18.DATA_START (linker command file)
-  0238EBA0 00000000 .data   OVERLAY18_UNKNOWN_POINTER__NA_238D620	(overlay_18.o)
+  0238EBA0 00000000 .data   LINK_SHOP_PTR	(overlay_18.o)
   0238EBA0 00000010 .data   .data	(overlay_18.o)
 #>0238EBC0          SDK_OVERLAY.OVY_18.DATA_END (linker command file)
 #>0238EBC0          SDK_OVERLAY.OVY_18.END (linker command file)
@@ -41453,5 +41453,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Tue Feb 10 04:56:05 2026
-# Link end time: Tue Feb 10 04:56:06 2026
+# Link start time: Tue Mar 03 04:01:30 2026
+# Link end time: Tue Mar 03 04:01:31 2026
