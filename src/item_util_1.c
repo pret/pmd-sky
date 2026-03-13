@@ -196,15 +196,15 @@ s16 GetItemMoveId(s16 item_id)
 
 bool8 TestItemAiFlag(s16 item_id, s32 flag)
 {
-    if (flag == 0)
+    if (flag == ITEM_FLAG_CONSUMABLE)
     {
         item_id = EnsureValidItem(item_id);
-        if (ITEM_DATA_TABLE_PTRS.data[item_id].flags & ITEM_DATA_FLAG_THROWABLE_AT_ENEMY)
+        if (ITEM_DATA_TABLE_PTRS.data[item_id].flags & ITEM_DATA_FLAG_CONSUMABLE)
             return TRUE;
         return FALSE;
     }
 
-    if (flag == 1)
+    if (flag == ITEM_FLAG_THROWABLE_AT_ALLY)
     {
         item_id = EnsureValidItem(item_id);
         if (ITEM_DATA_TABLE_PTRS.data[item_id].flags & ITEM_DATA_FLAG_THROWABLE_AT_ALLY)
@@ -213,7 +213,7 @@ bool8 TestItemAiFlag(s16 item_id, s32 flag)
     }
 
     item_id = EnsureValidItem(item_id);
-    if (ITEM_DATA_TABLE_PTRS.data[item_id].flags & ITEM_DATA_FLAG_CONSUMABLE)
+    if (ITEM_DATA_TABLE_PTRS.data[item_id].flags & ITEM_DATA_FLAG_THROWABLE_AT_ENEMY)
         return TRUE;
     return FALSE;
 }
