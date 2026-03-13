@@ -1452,9 +1452,9 @@ enum item_target_flag {
 
 enum item_data_flag {
     ITEM_DATA_FLAG_VALID = 1 << 0,
-    ITEM_DATA_FLAG_CONSUMABLE = 1 << 5,
+    ITEM_DATA_FLAG_THROWABLE_AT_ENEMY = 1 << 5,
     ITEM_DATA_FLAG_THROWABLE_AT_ALLY = 1 << 6,
-    ITEM_DATA_FLAG_THROWABLE_AT_ENEMY = 1 << 7,
+    ITEM_DATA_FLAG_CONSUMABLE = 1 << 7,
 };
 
 // Exclusive effect ID. These are usually encoded as bitvectors.
@@ -1634,7 +1634,7 @@ struct item_volatile {
 };
 
 struct bag_items_inner {
-    /* 0x0 */ struct item bag_items[INVENTORY_SIZE]; 
+    /* 0x0 */ struct item bag_items[INVENTORY_SIZE];
     // NOTE: I don't know why we have to do the subtraction  - Seth
 };
 
