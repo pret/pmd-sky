@@ -3,6 +3,13 @@
 
 #define NUM_TACTICS TACTIC_NONE + 1
 
+// There are 3 independent teams that the player can control, depending on the game mode
+enum team_id {
+    TEAM_MAIN = 0,            // main team (GAME_MODE_NORMAL)
+    TEAM_SPECIAL_EPISODE = 1, // team during a special episode (GAME_MODE_SPECIAL_EPISODE)
+    TEAM_RESCUE = 2,          // team during a Pelipper Island rescue (GAME_MODE_RESCUE)
+};
+
 // Tactic ID. These are usually encoded as bitvectors.
 enum tactic_id {
     TACTIC_LETS_GO_TOGETHER = 0,

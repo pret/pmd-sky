@@ -484,7 +484,7 @@ _0233D034:
 	bl ov01_0232E94C
 	cmp r0, #0
 	bne _0233D338
-	bl sub_02058FA4
+	bl ExplorerMazeMonsterExists
 	cmp r0, #0
 	beq _0233D0D8
 	ldr r0, _0233D344 ; =ov05_0233FCCC
