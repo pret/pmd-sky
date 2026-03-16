@@ -31,6 +31,7 @@
 .public EVENTS
 .public EnableAllLearnableIqSkills
 .public EnqueueRender3dTiling
+.public ExplorerMazeMonsterExists
 .public ExplorersOfSkyMain
 .public FemaleToMaleForm
 .public FindItemInInventory
@@ -457,5 +458,4 @@
 .public sub_02056E04
 .public sub_020584F8
 .public sub_02058C30
-.public ExplorerMazeMonsterExists
 .public vsprintf
