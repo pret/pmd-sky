@@ -31,7 +31,6 @@
 .public EVENTS
 .public EnableAllLearnableIqSkills
 .public EnqueueRender3dTiling
-.public ExplorerMazeMonsterExists
 .public ExplorersOfSkyMain
 .public FemaleToMaleForm
 .public FindItemInInventory
