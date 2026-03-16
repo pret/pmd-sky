@@ -5,5 +5,6 @@
 // language of selected in this game a default team name is written to the buffer instead.
 // dest: [output] Buffer
 void GetExplorerMazeTeamName(u8 *dest);
+u64 sub_020590C0(void);
 
 #endif //PMDSKY_MAIN_02059060_H

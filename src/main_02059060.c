@@ -31,3 +31,8 @@ void GetExplorerMazeTeamName(u8 *dest)
     GetStringFromFileVeneer(dest, 0x235);
 #endif
 }
+
+u64 sub_020590C0(void)
+{
+    return TEAM_MEMBER_TABLE_PTR->field_0x9878;
+}

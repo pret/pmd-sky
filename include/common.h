@@ -123,8 +123,7 @@ struct team_member_table {
     u8 field_0x9875;       // Related to TEAM_SPECIAL_EPISODE
     u8 field_0x9876;       // Related to TEAM_RESCUE
     enum team_id active_team; // 0x9877: Currently active team
-    s32 field_0x9878;      // Somehow related to explorer maze team.
-    s32 field_0x987C;      // Somehow related to explorer maze team.
+    u64 field_0x9878;      // Somehow related to explorer maze team.
     // 0x9880: language type of explorer maze team
     s8 explorer_maze_team_native_language;
     u8 field_0x9881; // Somehow related to explorer maze team.
