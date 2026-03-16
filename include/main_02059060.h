@@ -6,5 +6,6 @@
 // dest: [output] Buffer
 void GetExplorerMazeTeamName(u8 *dest);
 u64 sub_020590C0(void);
+void sub_020590DC(u64 param0);
 
 #endif //PMDSKY_MAIN_02059060_H

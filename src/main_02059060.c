@@ -36,3 +36,8 @@ u64 sub_020590C0(void)
 {
     return TEAM_MEMBER_TABLE_PTR->field_0x9878;
 }
+
+void sub_020590DC(u64 param0)
+{
+    TEAM_MEMBER_TABLE_PTR->field_0x9878 = param0;
+}
