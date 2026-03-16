@@ -7,5 +7,6 @@
 void GetExplorerMazeTeamName(u8 *dest);
 u64 sub_020590C0(void);
 void sub_020590DC(u64 param0);
+struct ground_monster* GetExplorerMazeMonster(s16 entry_number);
 
 #endif //PMDSKY_MAIN_02059060_H

@@ -41,3 +41,8 @@ void sub_020590DC(u64 param0)
 {
     TEAM_MEMBER_TABLE_PTR->field_0x9878 = param0;
 }
+
+struct ground_monster* GetExplorerMazeMonster(s16 entry_number)
+{
+    return TEAM_MEMBER_TABLE_PTR->explorer_maze_monsters + entry_number;
+}
