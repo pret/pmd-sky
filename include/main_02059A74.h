@@ -1,0 +1,6 @@
+#ifndef PMDSKY_MAIN_02059A74_H
+#define PMDSKY_MAIN_02059A74_H
+
+u32 sub_02059A74(u32 a, u32 b);
+
+#endif //PMDSKY_MAIN_02059A74_H
