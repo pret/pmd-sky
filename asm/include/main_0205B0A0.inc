@@ -14,7 +14,6 @@
 .public CopyMovesetFrom
 .public CopyMovesetTo
 .public CreateCollectionMenu
-.public CreateMonsterSummaryFromTeamMember
 .public CreatePortraitBox
 .public DEFAULT_MISSION_REWARD_TYPE_WEIGHTS
 .public DEF_SCARF_STAT_BOOST
@@ -33,8 +32,6 @@
 .public EnqueueRender3dTiling
 .public ExplorersOfSkyMain
 .public FemaleToMaleForm
-.public GetActiveRosterIndex
-.public GetActiveTeamMember
 .public GetAdventureLogDungeonFloor
 .public GetBaseForm
 .public GetBaseFormBurmyWormadamShellosGastrodonCherrim
@@ -402,14 +399,12 @@
 .public sub_02051788
 .public sub_02052C3C
 .public sub_02052E2C
-.public sub_02053224
 .public sub_02054F18
 .public sub_02055410
 .public sub_02055474
 .public sub_020554D8
 .public sub_020555D0
 .public sub_02055F04
-.public sub_020564B0
 .public sub_020568A4
 .public sub_02056914
 .public sub_02056D70
