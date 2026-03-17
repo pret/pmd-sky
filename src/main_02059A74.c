@@ -1,4 +1,5 @@
 #include "main_02059A74.h"
+#include "progression.h"
 
 extern u32 _020A3498[];
 
@@ -36,4 +37,9 @@ void sub_02059AE8(void *p0, void *p1)
 void sub_02059AF8(void *dest, void *src)
 {
     CopyBitsTo(dest, src, 7);
+}
+
+bool8 sub_02059B08(void)
+{
+    return GetResolvedPerformanceProgressFlag(10);
 }
