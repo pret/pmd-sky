@@ -63,8 +63,8 @@ _020515B8:
 _020515C0: .word MISSION_FLOORS_FORBIDDEN
 	arm_func_end IsForbiddenFloor
 
-	arm_func_start sub_020515C4
-sub_020515C4: ; 0x020515C4
+	arm_func_start Copy16BitsTo
+Copy16BitsTo: ; 0x020515C4
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	mov r4, r1
@@ -75,7 +75,7 @@ sub_020515C4: ; 0x020515C4
 	mov r2, #8
 	bl CopyBitsTo
 	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end sub_020515C4
+	arm_func_end Copy16BitsTo
 
 	arm_func_start Copy16BitsFrom
 Copy16BitsFrom: ; 0x020515EC

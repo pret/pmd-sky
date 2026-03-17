@@ -1,85 +1,7 @@
 	.include "asm/macros.inc"
-	.include "main_02059444.inc"
+	.include "main_0205956C.inc"
 
 	.text
-
-	arm_func_start ReadMonsterFromSave
-ReadMonsterFromSave: ; 0x02059444
-	stmdb sp!, {r3, r4, r5, lr}
-	mov r4, r1
-	mov r5, r0
-	mov r0, r4
-	mov r1, #0
-	mov r2, #0x44
-	bl memset
-	mov r0, r5
-	mov r1, r4
-	mov r2, #1
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #1
-	mov r2, #7
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #4
-	mov r2, #0xb
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #2
-	bl Copy16BitsFrom
-	mov r0, r5
-	add r1, r4, #6
-	mov r2, #7
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #7
-	mov r2, #7
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #8
-	mov r2, #0xa
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #0xa
-	mov r2, #0xa
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #0xc
-	mov r2, #8
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #0xd
-	mov r2, #8
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #0xe
-	mov r2, #8
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #0xf
-	mov r2, #8
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #0x10
-	mov r2, #0x18
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #0x14
-	mov r2, #0x45
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #0x20
-	mov r2, #4
-	bl CopyBitsFrom
-	mov r0, r5
-	add r1, r4, #0x22
-	bl CopyMovesetFrom
-	mov r0, r5
-	add r1, r4, #0x3a
-	mov r2, #0x50
-	bl CopyBitsFrom
-	ldmia sp!, {r3, r4, r5, pc}
-	arm_func_end ReadMonsterFromSave
 
 	arm_func_start sub_0205956C
 sub_0205956C: ; 0x0205956C
@@ -146,7 +68,7 @@ _02059608:
 	bl CopyBitsTo
 	mov r0, sl
 	add r1, r7, #3
-	bl sub_020515C4
+	bl Copy16BitsTo
 	mov r0, sl
 	add r1, r7, #6
 	mov r2, #0xa
@@ -3288,7 +3210,7 @@ _0205BFEC:
 	bl CopyBitsTo
 	add r0, sp, #0
 	add r1, r4, #2
-	bl sub_020515C4
+	bl Copy16BitsTo
 	add r0, sp, #0
 	add r1, r4, #4
 	mov r2, #0xb
@@ -3570,7 +3492,7 @@ sub_0205C440: ; 0x0205C440
 	bl CopyBitsTo
 	mov r0, r5
 	add r1, r4, #4
-	bl sub_020515C4
+	bl Copy16BitsTo
 	mov r0, r5
 	add r1, r4, #8
 	mov r2, #0x18
@@ -7911,7 +7833,7 @@ _0205FD1C:
 	mov r0, r6
 	add r1, r1, #0x340
 	add r1, r1, r7
-	bl sub_020515C4
+	bl Copy16BitsTo
 	add r8, r8, #1
 	cmp r8, #0x10
 	blt _0205FD1C
@@ -8050,7 +7972,7 @@ sub_0205FE80: ; 0x0205FE80
 	bl CopyBitsTo
 	mov r0, r5
 	add r1, r4, #4
-	bl sub_020515C4
+	bl Copy16BitsTo
 	mov r0, r5
 	add r1, r4, #0xc
 	mov r2, #8

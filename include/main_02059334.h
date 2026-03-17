@@ -5,5 +5,6 @@
 #include "main_02059060.h"
 
 void WriteMonsterToSave(struct WriteMonsterInfoToSave_struct *write_info, struct ground_monster *monster);
+void ReadMonsterFromSave(struct WriteMonsterInfoToSave_struct *read_info, struct ground_monster *monster);
 
 #endif //PMDSKY_MAIN_02059334_H

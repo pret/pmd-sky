@@ -1949,7 +1949,7 @@ CopyLogTo: ; 0x0205054C
 	mov r0, r4
 	ldr r1, [r1]
 	add r1, r1, #0x278
-	bl sub_020515C4
+	bl Copy16BitsTo
 	ldmia sp!, {r4, pc}
 	.align 2, 0
 _02050734: .word ADVENTURE_LOG_PTR

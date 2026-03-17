@@ -52,7 +52,7 @@
 .public StrncpySimpleNoPad
 .public StrncpySimpleNoPadSafe
 .public sub_0204CEE0
-.public sub_020515C4
+.public Copy16BitsTo
 .public sub_0205EE40
 .public TEAM_MEMBER_TABLE_PTR
 .public TEAM_NAME

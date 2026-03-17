@@ -432,7 +432,7 @@
 .public sub_020510C0
 .public sub_020510E8
 .public sub_02051134
-.public sub_020515C4
+.public Copy16BitsTo
 .public sub_02051620
 .public sub_02051648
 .public sub_02051788
