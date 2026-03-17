@@ -4,7 +4,7 @@
 extern struct ground_monster* GetTeamMember(s32 member_idx);
 extern void sub_0205A340(s16 *ptr, struct ground_monster *data, s32 monster_id);
 extern const u8* GetNameString(enum monster_id monster_id);
-extern void StrncpyName(u8 *dest, const u8 *src, u32 n);
+extern void StrncpyName(char *dest, const char *src, u32 n);
 extern void SetPokemonJoined(enum monster_id monster_id);
 
 bool8 HandleShedinjaEvolution(s16 *member_idx, enum monster_id monster_id)
