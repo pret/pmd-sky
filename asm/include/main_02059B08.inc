@@ -448,4 +448,5 @@
 .public sub_02056E04
 .public sub_02058C30
 .public sub_02059AE8
+.public sub_02059AF8
 .public vsprintf

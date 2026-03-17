@@ -7,6 +7,7 @@ extern void sub_02059824(void *v0, u32 v1);
 extern void sub_020509BC(void *v0);
 extern void sub_020584F8(void *v0);
 extern void CopyBitsFrom(void *read_info, void *buf_read, s32 nbits);
+extern void CopyBitsTo(void *ctx, void *src, s32 nbits);
 
 u32 sub_02059A74(u32 a, u32 b)
 {
@@ -30,4 +31,9 @@ u32 sub_02059A74(u32 a, u32 b)
 void sub_02059AE8(void *p0, void *p1)
 {
     CopyBitsFrom(p0, p1, 7);
+}
+
+void sub_02059AF8(void *dest, void *src)
+{
+    CopyBitsTo(dest, src, 7);
 }
