@@ -42,7 +42,6 @@ struct ground_monster {
     // See enum iq_skill_id for the meaning of each bit.
     u32 iq_skill_flags[3];
     u8 tactic;     // 0x20
-    u8 field_0x21;
     struct ground_move moves[4]; // 0x22
     char name[10];               // 0x3A: Display name of the monster
 };
