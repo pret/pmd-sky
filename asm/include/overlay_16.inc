@@ -90,6 +90,6 @@
 .public sub_020572EC
 .public sub_020582E0
 .public sub_02059B08
-.public sub_0205A288
+.public HandleShedinjaEvolution
 .public sub_0205B008
 .public TEAM_MEMBER_TABLE_PTR
