@@ -4,6 +4,8 @@
 #include "item.h"
 #include "move.h"
 
+#define MAX_GROUND_TEAM_MEMBERS 555
+
 struct ground_move {
     // 0x0: flags: 1-byte bitfield
     // See move::flags0 for details
@@ -98,7 +100,7 @@ struct team_member_table {
     //
     // Subsequent entries are normal recruits. If a member is released, all subsequent members will
     // be shifted up, so there should be no gaps in the list.
-    struct ground_monster members[555];
+    struct ground_monster members[MAX_GROUND_TEAM_MEMBERS];
     // 0x936C: Currently active team members for each team, listed in team order. The first index is
     // the team ID (see enum team_id), the second is the roster index within the given team.
     //

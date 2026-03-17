@@ -157,8 +157,6 @@ def trim_merge_file_name(file_name: str) -> str:
 
 merge_prev_file = trim_merge_file_name(merge_prev_file)
 merge_next_file = trim_merge_file_name(merge_next_file)
-print(merge_prev_file)
-print(merge_next_file)
 
 print('Updating', LSF_FILE_PATH)
 with open(LSF_FILE_PATH, 'w') as lsf_file:
