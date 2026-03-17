@@ -2,5 +2,6 @@
 #define PMDSKY_MAIN_02059A74_H
 
 u32 sub_02059A74(u32 a, u32 b);
+void sub_02059AE8(void *p0, void *p1);
 
 #endif //PMDSKY_MAIN_02059A74_H
