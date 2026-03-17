@@ -1,0 +1,6 @@
+#ifndef PMDSKY_MAIN_0205B008_H
+#define PMDSKY_MAIN_0205B008_H
+
+void sub_0205B008(u32 a, u32 b);
+
+#endif //PMDSKY_MAIN_0205B008_H
