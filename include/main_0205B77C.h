@@ -1,6 +1,8 @@
 #ifndef PMDSKY_MAIN_0205B77C_H
 #define PMDSKY_MAIN_0205B77C_H
 
+// Should match the struct in main_0205B690, but haven't gotten it to match yet.
+// https://decomp.me/scratch/lmvJx
 struct unkStruct_020B0A54 {
     u32 data[44];
 };

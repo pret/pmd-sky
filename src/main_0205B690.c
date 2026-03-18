@@ -1,11 +1,13 @@
 #include "main_0205B690.h"
 
-struct unkStruct_0205B690 {
+// Should match the struct in main_0205B77C, but haven't gotten it to match yet.
+// https://decomp.me/scratch/J6Sh5
+struct unkStruct_020B0A54 {
     u8 unk0;
     u8 fill0[175];
 };
 
-extern struct unkStruct_0205B690 *_020B0A54;
+extern struct unkStruct_020B0A54 *_020B0A54;
 
 s32 sub_0205B690(void)
 {
