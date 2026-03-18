@@ -1,6 +1,5 @@
 #pragma once
 .public ARM9_UNKNOWN_TABLE__NA_20A68BC
-.public AURA_BOW_STAT_BOOST
 .public AllocateTemp1024ByteBufferFromPool
 .public BulkItemToItem
 .public CAFE_MISSION_REWARD_TYPE_WEIGHTS
@@ -16,7 +15,6 @@
 .public CreateCollectionMenu
 .public CreatePortraitBox
 .public DEFAULT_MISSION_REWARD_TYPE_WEIGHTS
-.public DEF_SCARF_STAT_BOOST
 .public DEMO_TEAMS
 .public Debug_GetDebugFlag
 .public Debug_Print0
@@ -28,7 +26,6 @@
 .public DungeonSwapIdToIdx
 .public ENTITIES
 .public EVENTS
-.public EnableAllLearnableIqSkills
 .public EnqueueRender3dTiling
 .public ExplorersOfSkyMain
 .public FemaleToMaleForm
@@ -42,7 +39,6 @@
 .public GetFirstMatchingMemberIdx
 .public GetHero
 .public GetHeroMemberIdx
-.public GetHpBoostFromExclusiveItems
 .public GetLanguageType
 .public GetMainCharacter1
 .public GetMainCharacter1MemberIdx
@@ -77,8 +73,6 @@
 .public InitScriptVariableValues
 .public InitSpecialEpisodeHero
 .public InitWanTable
-.public IqSkillFlagTest
-.public IsAuraBow
 .public IsCollectionMenuActive
 .public IsForbiddenFloor
 .public IsInvalidForMission
@@ -126,7 +120,6 @@
 .public MISSION_RANK_POINTS
 .public MISSION_STRING_IDS
 .public MISSION_VALIDATION_FUNCTION_LIST
-.public MUNCH_BELT_STAT_BOOST
 .public MainGame
 .public MemAlloc
 .public MemFree
@@ -140,7 +133,6 @@
 .public NoteSaveBase
 .public OUTLAW_MISSION_REWARD_TYPE_WEIGHTS
 .public OverlayIsLoaded
-.public POWER_BAND_STAT_BOOST
 .public PlaySeVolumeWrapper
 .public PreprocessString
 .public PreprocessStringFromId
@@ -153,7 +145,6 @@
 .public ReadSaveHeader
 .public RemoveFirstUnequippedItemOfType
 .public RetrieveFromItemList2
-.public SPECIAL_BAND_STAT_BOOST
 .public SaveScriptVariableValue
 .public SetAdventureLogStructLocation
 .public SetBothScreensWindowsColor
@@ -173,13 +164,10 @@
 .public UnloadOverlay
 .public UpdateWindow
 .public WAN_TABLE
-.public ZINC_BAND_STAT_BOOST
 .public ZeroInitScriptVariable
-.public _020A1870
 .public _020A18FC
 .public _020A1904
 .public _020A1958
-.public _020A34D2
 .public _020A353C
 .public _020A3544
 .public _020A354C
@@ -327,7 +315,6 @@
 .public sub_0200C020
 .public sub_0200CA8C
 .public sub_0200D310
-.public sub_02011220
 .public sub_0201BB3C
 .public sub_0201D7A8
 .public sub_0201DD90

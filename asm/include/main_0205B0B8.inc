@@ -1,0 +1,14 @@
+#pragma once
+.public AURA_BOW_STAT_BOOST
+.public DEF_SCARF_STAT_BOOST
+.public EnableAllLearnableIqSkills
+.public GetHpBoostFromExclusiveItems
+.public GetType
+.public IqSkillFlagTest
+.public IsAuraBow
+.public MUNCH_BELT_STAT_BOOST
+.public POWER_BAND_STAT_BOOST
+.public SPECIAL_BAND_STAT_BOOST
+.public ZINC_BAND_STAT_BOOST
+.public _020A1870
+.public sub_02011220
