@@ -2,5 +2,6 @@
 #define PMDSKY_MAIN_0205B440_H
 
 u8* sub_0205B440(void);
+void sub_0205B44C(void);
 
 #endif //PMDSKY_MAIN_0205B440_H

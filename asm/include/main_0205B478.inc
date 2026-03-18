@@ -260,9 +260,6 @@
 .public _020B0B44
 .public _020B0B48
 .public _022B57BC
-.public _022B57C0
-.public _022B580C
-.public _022B5910
 .public _022B6F10
 .public _022B7310
 .public _022B7320
@@ -393,4 +390,5 @@
 .public sub_02056E04
 .public sub_02059AE8
 .public sub_02059AF8
+.public sub_0205B44C
 .public vsprintf
