@@ -1,11 +1,10 @@
 #pragma once
+.public _020A3498
+.public _020A3499
 .public Copy16BitsFrom
 .public Copy16BitsTo
 .public CopyBitsFrom
 .public CopyBitsTo
-.public TEAM_MEMBER_TABLE_PTR
-.public _020A3498
-.public _020A3499
 .public memset
 .public sub_0200DF2C
 .public sub_0200DF74
@@ -16,3 +15,4 @@
 .public sub_02051098
 .public sub_020510C0
 .public sub_020584F8
+.public TEAM_MEMBER_TABLE_PTR

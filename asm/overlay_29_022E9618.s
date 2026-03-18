@@ -1063,7 +1063,7 @@ _022EA3B0: .word ov29_02353560
 	arm_func_start ov29_022EA3B4
 ov29_022EA3B4: ; 0x022EA3B4
 	stmdb sp!, {r4, r5, r6, lr}
-	ldr r4, _022EA3F0 ; =ov29_0237C694
+	ldr r4, _022EA3F0 ; =DUNGEON_BUTTON_INPUT
 	ldr r5, _022EA3F4 ; =ov29_02353560
 	mov r6, r0
 _022EA3C4:
@@ -1081,7 +1081,7 @@ _022EA3E0:
 	bne _022EA3C4
 	ldmia sp!, {r4, r5, r6, pc}
 	.align 2, 0
-_022EA3F0: .word ov29_0237C694
+_022EA3F0: .word DUNGEON_BUTTON_INPUT
 _022EA3F4: .word ov29_02353560
 	arm_func_end ov29_022EA3B4
 

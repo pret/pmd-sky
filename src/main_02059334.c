@@ -1,8 +1,8 @@
 #include "main_02059334.h"
 
 extern void CopyBitsTo(void *ctx, void *src, s32 nbits);
-extern void Copy16BitsTo(struct WriteMonsterInfoToSave_struct *p0, void *p1);
-extern void CopyMovesetTo(void *write_info, void *buffer_write);
+extern void Copy16BitsTo(void *write_info, void *buf_write);
+extern void CopyMovesetTo(struct WriteMonsterInfoToSave_struct *write_info, void *buffer_write);
 extern void* memset(void *s, s32 c, u32 n);
 extern void CopyBitsFrom(void *read_info, void *buf_read, s32 nbits);
 extern void Copy16BitsFrom(void *read_info, void *buf_read);

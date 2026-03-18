@@ -637,7 +637,7 @@ ov29_02335808: ; 0x02335808
 	mov r2, #0x1000
 	strh r3, [r4, #0x14]
 	str r2, [r4, #0x20]
-	bl ov29_02335864
+	bl GetPaletteBaseAddress
 	ldr r1, _02335860 ; =ov29_0237CA8C
 	str r0, [r4, #0x24]
 	mov r0, #0
@@ -647,8 +647,8 @@ ov29_02335808: ; 0x02335808
 _02335860: .word ov29_0237CA8C
 	arm_func_end ov29_02335808
 
-	arm_func_start ov29_02335864
-ov29_02335864: ; 0x02335864
+	arm_func_start GetPaletteBaseAddress
+GetPaletteBaseAddress: ; 0x02335864
 	ldr r2, _0233587C ; =_020AFC70
 	add r0, r1, r0, lsl #8
 	ldr r1, [r2]
@@ -657,7 +657,7 @@ ov29_02335864: ; 0x02335864
 	bx lr
 	.align 2, 0
 _0233587C: .word _020AFC70
-	arm_func_end ov29_02335864
+	arm_func_end GetPaletteBaseAddress
 
 	arm_func_start DisplayNumberTextureUi
 DisplayNumberTextureUi: ; 0x02335880
@@ -744,7 +744,7 @@ DisplayCharTextureUi: ; 0x02335988
 	strh r1, [r6]
 	ldrsh r1, [sp, #0x10]
 	strh r2, [r6, #2]
-	bl ov29_02335864
+	bl GetPaletteBaseAddress
 	str r0, [r6, #0x24]
 	mov r0, r5, lsl #3
 	ldrsh r1, [r4, r0]
@@ -1603,7 +1603,7 @@ ov29_02335F40: ; 0x02335F40
 	mov r1, r1, asr #0x10
 	strb r0, [sp, #0x3c]
 	str r0, [sp, #0x20]
-	bl ov29_02335864
+	bl GetPaletteBaseAddress
 	mov r3, #0x31
 	ldr r2, _023360F8 ; =ov29_0237CA8C
 	rsb r1, r3, #0x2740

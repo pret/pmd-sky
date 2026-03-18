@@ -12,7 +12,7 @@ bool8 ExplorerMazeMonsterExists(void)
     return TEAM_MEMBER_TABLE_PTR->explorer_maze_monsters[0].id != MONSTER_NONE;
 }
 
-void sub_02058FCC(struct unkStruct_sub_02058FCC *ptr)
+void sub_02058FCC(struct unkStruct_02058FCC *ptr)
 {
     if (ptr != NULL)
     {

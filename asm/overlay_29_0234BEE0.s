@@ -227,7 +227,7 @@ ov29_0234C1D8: ; 0x0234C1D8
 	beq _0234C1F4
 	bl sub_02003990
 _0234C1F4:
-	bl ov29_022E0A64
+	bl GetAndStoreButtonInput
 	bl ov29_022DDE24
 	bl ov29_022E9F9C
 	bl HandleFadesDungeonBothScreens

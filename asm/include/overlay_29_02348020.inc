@@ -4,6 +4,7 @@
 .public CanSeeTarget
 .public DisplayMessage
 .public DisplayMessage2
+.public DUNGEON_BUTTON_INPUT
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public ExclusiveItemEffectFlagTest
@@ -42,7 +43,6 @@
 .public ov29_02349AD4
 .public ov29_0234C738
 .public ov29_023537C4
-.public ov29_0237C694
 .public PrepareItemForPrinting__02345728
 .public SetDungeonEscapeFields
 .public SetMessageLogPreprocessorArgsFlagVal

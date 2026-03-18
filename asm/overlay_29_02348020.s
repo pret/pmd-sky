@@ -297,7 +297,7 @@ _023483F8:
 	mov r0, #0
 	bl ov29_0234C738
 	mov r6, #2
-	ldr r4, _0234849C ; =ov29_0237C694
+	ldr r4, _0234849C ; =DUNGEON_BUTTON_INPUT
 	b _02348424
 _0234840C:
 	mov r0, r6
@@ -340,7 +340,7 @@ _02348490:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _02348498: .word ov29_023537C4
-_0234849C: .word ov29_0237C694
+_0234849C: .word DUNGEON_BUTTON_INPUT
 	arm_func_end HandleFloorCard
 
 	arm_func_start FillMissionDestinationInfo

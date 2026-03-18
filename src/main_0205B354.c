@@ -1,6 +1,6 @@
 #include "main_0205B354.h"
 
-bool8 sub_0205B354(struct unkStruct_sub_0205B354 *ptr)
+bool8 sub_0205B354(struct unkStruct_0205B354 *ptr)
 {
     if (ptr->unk45 != 0)
     {

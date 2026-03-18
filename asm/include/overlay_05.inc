@@ -4,6 +4,7 @@
 .public CloseAdvancedMenu
 .public CreateAdvancedMenu
 .public DrawTextInWindow
+.public ExplorerMazeMonsterExists
 .public GetAdvancedMenuCurrentOption
 .public GetAdvancedMenuResult
 .public GetAdventureLogDungeonFloor
@@ -102,7 +103,6 @@
 .public sub_02055E14
 .public sub_02057010
 .public sub_02057030
-.public ExplorerMazeMonsterExists
 .public sub_02058FCC
 .public sub_020590C0
 .public sub_020590DC

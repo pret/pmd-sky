@@ -6,6 +6,7 @@
 .public DungeonFree
 .public DungeonZInit
 .public G3X_Reset
+.public GetAndStoreButtonInput
 .public HandleMenus
 .public InitRender3dElement64
 .public MemAlloc
@@ -26,7 +27,6 @@
 .public ov29_022DE300
 .public ov29_022DE498
 .public ov29_022DE868
-.public ov29_022E0A64
 .public ov29_022E0CFC
 .public ov29_022E0E8C
 .public ov29_022E0F14
