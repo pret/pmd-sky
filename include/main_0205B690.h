@@ -19,7 +19,9 @@ struct unkStruct_020B0A54 {
     union unkStruct_020B0A54_unk8 unk8;
     u8 unkC[150];
     u16 unkA2;
-    u8 unkA4[12];
+    u8 unkA4[10];
+    u8 unkAE;
+    u8 unkAF;
 };
 
 // Stupid hack but it's needed for some matches.
