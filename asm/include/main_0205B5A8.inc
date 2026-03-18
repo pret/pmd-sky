@@ -360,7 +360,6 @@
 .public sub_02048624
 .public sub_02048644
 .public sub_0204872C
-.public sub_02048C3C
 .public sub_0204A1A4
 .public sub_0204D018
 .public sub_0204E210
