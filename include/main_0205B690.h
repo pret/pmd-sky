@@ -1,0 +1,6 @@
+#ifndef PMDSKY_MAIN_0205B690_H
+#define PMDSKY_MAIN_0205B690_H
+
+s32 sub_0205B690(void);
+
+#endif //PMDSKY_MAIN_0205B690_H
