@@ -1,7 +1,7 @@
 #ifndef PMDSKY_MAIN_0205B7C8_H
 #define PMDSKY_MAIN_0205B7C8_H
 
-// Should match the struct in main_0205B77C, but haven't gotten it to match yet.
+// Should match the struct in main_0205B690, but haven't gotten it to match yet.
 // https://decomp.me/scratch/WXX6d
 struct unkStruct_020B0A54 {
     u8 f0;
