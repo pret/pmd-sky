@@ -371,7 +371,6 @@
 .public sub_02051134
 .public sub_02051620
 .public sub_02051648
-.public sub_02051788
 .public sub_02052C3C
 .public sub_02052E2C
 .public sub_02054F18
@@ -379,7 +378,6 @@
 .public sub_02055474
 .public sub_020554D8
 .public sub_020555D0
-.public sub_02055F04
 .public sub_020568A4
 .public sub_02056914
 .public sub_02056D70
