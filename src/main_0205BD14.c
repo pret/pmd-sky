@@ -4,6 +4,7 @@
 #include "main_02058FA4.h"
 #include "main_02059A74.h"
 #include "main_0205B690.h"
+#include "main_0205C440.h"
 
 extern union unkStruct_020B0A54_union _020B0A54;
 extern u32 _022B57BC;
@@ -17,7 +18,6 @@ extern void sub_020509BC(struct WriteMonsterInfoToSave_struct *write_info);
 extern void sub_020634F4(void);
 extern void sub_02050990(struct WriteMonsterInfoToSave_struct *write_info, u32 p1, u32 p2);
 extern void CopyBitsTo(void *write_info, void* buf_write, s32 nbits);
-extern void sub_0205C440(struct WriteMonsterInfoToSave_struct *write_info, const void *p1);
 extern void Copy16BitsTo(void *write_info, void *buf_write);
 extern void CopyMovesetTo(struct WriteMonsterInfoToSave_struct *write_info, void *buffer_write);
 
@@ -150,23 +150,23 @@ u32 sub_0205BFB0(u32 p0, u32 p1)
     return stack_var.result;
 }
 
-void sub_0205C19C(struct WriteMonsterInfoToSave_struct *arg0, struct unkStruct_020B0A54 *arg1)
+void sub_0205C19C(struct WriteMonsterInfoToSave_struct *write_info, struct unkStruct_020B0A54 *arg1)
 {
-    CopyBitsFrom(arg0, &arg1->unk0, 4);
-    Copy16BitsFrom(arg0, &arg1->unk4);
-    CopyBitsFrom(arg0, &arg1->unk8.monster, 24);
-    CopyBitsFrom(arg0, &arg1->unkC, 64);
-    CopyBitsFrom(arg0, &arg1->unk14, 0x40);
-    CopyBitsFrom(arg0, &arg1->unk1C, 4);
-    CopyBitsFrom(arg0, &arg1->unk1D, 0x50);
-    CopyBitsFrom(arg0, &arg1->unk32, 0x120);
-    CopyBitsFrom(arg0, &arg1->unk56, 0x240);
-    CopyBitsFrom(arg0, &arg1->unkA0, 0xb);
-    CopyBitsFrom(arg0, &arg1->unkA2, 0xb);
-    CopyBitsFrom(arg0, &arg1->unkA4, 0x40);
-    CopyBitsFrom(arg0, &arg1->unkAC, 8);
+    CopyBitsFrom(write_info, &arg1->unk0, 4);
+    Copy16BitsFrom(write_info, &arg1->unk4);
+    CopyBitsFrom(write_info, &arg1->unk8.monster, 24);
+    CopyBitsFrom(write_info, &arg1->unkC, 64);
+    CopyBitsFrom(write_info, &arg1->unk14, 0x40);
+    CopyBitsFrom(write_info, &arg1->unk1C, 4);
+    CopyBitsFrom(write_info, &arg1->unk1D, 0x50);
+    CopyBitsFrom(write_info, &arg1->unk32, 0x120);
+    CopyBitsFrom(write_info, &arg1->unk56, 0x240);
+    CopyBitsFrom(write_info, &arg1->unkA0, 0xb);
+    CopyBitsFrom(write_info, &arg1->unkA2, 0xb);
+    CopyBitsFrom(write_info, &arg1->unkA4, 0x40);
+    CopyBitsFrom(write_info, &arg1->unkAC, 8);
     bool8 temp;
-    CopyBitsFrom(arg0, &temp, 1);
+    CopyBitsFrom(write_info, &temp, 1);
     arg1->unkAD = temp != FALSE;
-    CopyBitsFrom(arg0, &arg1->unkAE, 2);
+    CopyBitsFrom(write_info, &arg1->unkAE, 2);
 }
