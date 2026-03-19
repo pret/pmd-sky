@@ -15,7 +15,8 @@ union unkStruct_020B0A54_unk8 {
 
 struct unkStruct_020B0A54 {
     u8 unk0;
-    u8 unk1[7];
+    u8 unk1[3];
+    u32 unk4;
     union unkStruct_020B0A54_unk8 unk8;
     u8 unkC[150];
     u16 unkA2;
