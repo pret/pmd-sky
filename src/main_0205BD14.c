@@ -17,3 +17,8 @@ u32 sub_0205BD40(u32 val)
 
     return val & 1 ? 2 : 1;
 }
+
+bool8 sub_0205BD5C(u32 val)
+{
+    return sub_0205BD40(val) == 0;
+}
