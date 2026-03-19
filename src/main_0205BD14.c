@@ -1,4 +1,5 @@
 #include "main_0205BD14.h"
+#include "main_0200224C.h"
 #include "main_0205B690.h"
 
 extern union unkStruct_020B0A54_union _020B0A54;
@@ -21,4 +22,9 @@ u32 sub_0205BD40(u32 val)
 bool8 sub_0205BD5C(u32 val)
 {
     return sub_0205BD40(val) == 0;
+}
+
+u8 sub_0205BD78(void)
+{
+    return RandInt(2) | 2;
 }
