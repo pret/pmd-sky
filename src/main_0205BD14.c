@@ -10,11 +10,11 @@ extern u32 _022B57BC;
 
 extern void sub_02050974(void *v0, u32 v1, u32 v2);
 extern void CopyBitsFrom(void *read_info, void *buf_read, s32 nbits);
-extern void sub_0205C19C(struct  WriteMonsterInfoToSave_struct *temp, void *src);
+extern void sub_0205C19C(struct WriteMonsterInfoToSave_struct *temp, struct unkStruct_020B0A54 *src);
 extern void* memset(void *s, s32 c, u32 n);
 extern void Copy16BitsFrom(void *read_info, void *buf_read);
 extern void CopyMovesetFrom(struct WriteMonsterInfoToSave_struct *read_info, void *dst);
-extern void sub_020509BC(struct  WriteMonsterInfoToSave_struct *temp);
+extern void sub_020509BC(struct WriteMonsterInfoToSave_struct *temp);
 extern void sub_020634F4(void);
 
 void sub_0205BD14(u32 *dest, s32 index)
@@ -50,7 +50,6 @@ u32 sub_0205BD90(u32 a0)
 u32 sub_0205BD9C(u32 arg0, u32 arg1)
 {
     struct WriteMonsterInfoToSave_struct temp;
-    struct ground_monster *monster;
 
     sub_02050974(&temp, arg0, arg1);
     CopyBitsFrom(&temp, &_022B57BC, 32);
@@ -60,7 +59,7 @@ u32 sub_0205BD9C(u32 arg0, u32 arg1)
         sub_0205C19C(&temp, &_020B0A54.struct0[i]);
     }
 
-    monster = _020B0A54.struct1.unk8.monster;
+    struct ground_monster *monster = _020B0A54.struct1.unk8.monster;
     memset(monster, 0, 68);
 
     CopyBitsFrom(&temp, &monster->is_valid, 4);
