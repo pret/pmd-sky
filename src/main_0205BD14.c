@@ -10,12 +10,16 @@ extern u32 _022B57BC;
 
 extern void sub_02050974(void *v0, u32 v1, u32 v2);
 extern void CopyBitsFrom(void *read_info, void *buf_read, s32 nbits);
-extern void sub_0205C19C(struct WriteMonsterInfoToSave_struct *temp, struct unkStruct_020B0A54 *src);
 extern void* memset(void *s, s32 c, u32 n);
 extern void Copy16BitsFrom(void *read_info, void *buf_read);
 extern void CopyMovesetFrom(struct WriteMonsterInfoToSave_struct *read_info, void *dst);
-extern void sub_020509BC(struct WriteMonsterInfoToSave_struct *temp);
+extern void sub_020509BC(struct WriteMonsterInfoToSave_struct *write_info);
 extern void sub_020634F4(void);
+extern void sub_02050990(struct WriteMonsterInfoToSave_struct *write_info, u32 p1, u32 p2);
+extern void CopyBitsTo(void *write_info, void* buf_write, s32 nbits);
+extern void sub_0205C440(struct WriteMonsterInfoToSave_struct *write_info, const void *p1);
+extern void Copy16BitsTo(void *write_info, void *buf_write);
+extern void CopyMovesetTo(struct WriteMonsterInfoToSave_struct *write_info, void *buffer_write);
 
 void sub_0205BD14(u32 *dest, s32 index)
 {
@@ -97,4 +101,72 @@ u32 sub_0205BD9C(u32 arg0, u32 arg1)
     sub_020634F4();
 
     return temp.result;
+}
+
+u32 sub_0205BFB0(u32 p0, u32 p1)
+{
+    struct WriteMonsterInfoToSave_struct stack_var;
+
+    sub_02050990(&stack_var, p0, p1);
+    CopyBitsTo(&stack_var, &_022B57BC, 32);
+
+    for (s32 i = 0; i < 32; i++)
+    {
+        sub_0205C440(&stack_var, &_020B0A54.struct0[i]);
+    }
+
+    struct ground_monster *monster = _020B0A54.struct1.unk8.monster;
+    CopyBitsTo(&stack_var, &monster->is_valid, 4);
+    CopyBitsTo(&stack_var, &monster->level, 7);
+    Copy16BitsTo(&stack_var, &monster->joined_at);
+    CopyBitsTo(&stack_var, &monster->id, 11);
+    sub_02059AF8(&stack_var, &monster->level_at_first_evo);
+    sub_02059AF8(&stack_var, &monster->level_at_second_evo);
+    CopyBitsTo(&stack_var, &monster->iq, 10);
+    CopyBitsTo(&stack_var, &monster->max_hp, 10);
+    CopyBitsTo(&stack_var, &monster->offensive_stats[0], 8);
+    CopyBitsTo(&stack_var, &monster->offensive_stats[1], 8);
+    CopyBitsTo(&stack_var, &monster->defensive_stats[0], 8);
+    CopyBitsTo(&stack_var, &monster->defensive_stats[1], 8);
+    CopyBitsTo(&stack_var, &monster->exp, 24);
+    CopyBitsTo(&stack_var, &monster->iq_skill_flags, 69);
+    CopyBitsTo(&stack_var, &monster->tactic, 4);
+    CopyMovesetTo(&stack_var, monster->moves);
+    CopyBitsTo(&stack_var, monster->name, 80);
+
+    struct unkStruct_020B0A54_unk8_inner *inner = _020B0A54.struct1.unk8.unk8;
+    CopyBitsTo(&stack_var, &inner->unk46, 11);
+    CopyBitsTo(&stack_var, &inner->unk48, 11);
+
+    CopyBitsTo(&stack_var, (void*) _020B0A54.struct1.unk4, 32);
+
+    for (s32 i = 0; i < 32; i++)
+    {
+        CopyBitsTo(&stack_var, _020B0A54.fp[1] + 4 + (i * 8), 64);
+    }
+
+    sub_020509BC(&stack_var);
+
+    return stack_var.result;
+}
+
+void sub_0205C19C(struct WriteMonsterInfoToSave_struct *arg0, struct unkStruct_020B0A54 *arg1)
+{
+    CopyBitsFrom(arg0, &arg1->unk0, 4);
+    Copy16BitsFrom(arg0, &arg1->unk4);
+    CopyBitsFrom(arg0, &arg1->unk8.monster, 24);
+    CopyBitsFrom(arg0, &arg1->unkC, 64);
+    CopyBitsFrom(arg0, &arg1->unk14, 0x40);
+    CopyBitsFrom(arg0, &arg1->unk1C, 4);
+    CopyBitsFrom(arg0, &arg1->unk1D, 0x50);
+    CopyBitsFrom(arg0, &arg1->unk32, 0x120);
+    CopyBitsFrom(arg0, &arg1->unk56, 0x240);
+    CopyBitsFrom(arg0, &arg1->unkA0, 0xb);
+    CopyBitsFrom(arg0, &arg1->unkA2, 0xb);
+    CopyBitsFrom(arg0, &arg1->unkA4, 0x40);
+    CopyBitsFrom(arg0, &arg1->unkAC, 8);
+    bool8 temp;
+    CopyBitsFrom(arg0, &temp, 1);
+    arg1->unkAD = temp != FALSE;
+    CopyBitsFrom(arg0, &arg1->unkAE, 2);
 }
