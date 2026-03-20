@@ -104,6 +104,7 @@ _0233CBC4: .word 0x000004FD
 #endif
 	arm_func_end ov09_0233CA80
 
+; https://decomp.me/scratch/Uyfr0
 	arm_func_start ov09_0233CBC8
 ov09_0233CBC8: ; 0x0233CBC8
 	stmdb sp!, {r3, lr}
