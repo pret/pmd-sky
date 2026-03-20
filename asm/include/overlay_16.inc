@@ -25,6 +25,7 @@
 .public GetPressedButtons
 .public GetSimpleMenuResult__0202B870
 .public GetTeamMember
+.public HandleShedinjaEvolution
 .public IncrementNbEvolutions
 .public InitPortraitParamsWithMonsterId
 .public InitPreprocessorArgs
@@ -90,6 +91,5 @@
 .public sub_020572EC
 .public sub_020582E0
 .public sub_02059B08
-.public sub_0205A288
 .public sub_0205B008
 .public TEAM_MEMBER_TABLE_PTR

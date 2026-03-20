@@ -3,6 +3,13 @@
 
 #define NUM_TACTICS TACTIC_NONE + 1
 
+// There are 3 independent teams that the player can control, depending on the game mode
+enum team_id {
+    TEAM_MAIN = 0,            // main team (GAME_MODE_NORMAL)
+    TEAM_SPECIAL_EPISODE = 1, // team during a special episode (GAME_MODE_SPECIAL_EPISODE)
+    TEAM_RESCUE = 2,          // team during a Pelipper Island rescue (GAME_MODE_RESCUE)
+};
+
 // Tactic ID. These are usually encoded as bitvectors.
 enum tactic_id {
     TACTIC_LETS_GO_TOGETHER = 0,
@@ -2546,40 +2553,6 @@ enum status_blinker_id {
     STATUS_BLINKER_CROSS_EYED = 2,
     STATUS_BLINKER_EYEDROPS = 3,
     STATUS_BLINKER_DROPEYE = 4,
-};
-
-// Mission type on a floor
-enum mission_type {
-    MISSION_RESCUE_CLIENT = 0,
-    MISSION_RESCUE_TARGET = 1,
-    MISSION_ESCORT_TO_TARGET = 2,
-    MISSION_EXPLORE_WITH_CLIENT = 3,
-    MISSION_PROSPECT_WITH_CLIENT = 4,
-    MISSION_GUIDE_CLIENT = 5,
-    MISSION_FIND_ITEM = 6,
-    MISSION_DELIVER_ITEM = 7,
-    MISSION_SEARCH_FOR_TARGET = 8,
-    MISSION_TAKE_ITEM_FROM_OUTLAW = 9,
-    MISSION_ARREST_OUTLAW = 10,
-    MISSION_CHALLENGE_REQUEST = 11,
-    MISSION_TREASURE_MEMO = 12,
-    MISSION_TYPE_UNK_0xD = 13,
-    MISSION_SPECIAL_EPISODE = 14,
-};
-
-// Mission subtype for MISSION_ARREST_OUTLAW
-// 0-3 all occur naturally in-game, the distinction is in intensity of the mission.
-// Each uses a different table of outlaws of varying difficulties.
-enum mission_subtype_outlaw {
-    MISSION_OUTLAW_NORMAL_0 = 0, // in mission_template, client is magnezone
-    MISSION_OUTLAW_NORMAL_1 = 1, // in mission_template, client is magnezone
-    MISSION_OUTLAW_NORMAL_2 = 2, // in mission_template, client is magnemite
-    MISSION_OUTLAW_NORMAL_3 = 3, // in mission_template, client is magnemite
-    MISSION_OUTLAW_ESCORT = 4,
-    MISSION_OUTLAW_FLEEING = 5,
-    // One of 30 specific pairings (IE: Vespiquen/Combee, Golduck/Psyduck, Cloyster/Clampearl)
-    MISSION_OUTLAW_HIDEOUT = 6,
-    MISSION_OUTLAW_MONSTER_HOUSE = 7,
 };
 
 // Fixed room ID. Fixed rooms can be full floor layouts, like most end-of-dungeon boss chambers,

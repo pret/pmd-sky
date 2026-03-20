@@ -6189,7 +6189,7 @@ ov01_0232E334: ; 0x0232E334
 	bl CopyBitsTo
 	mov r0, r7
 	add r1, r6, #5
-	bl sub_020515C4
+	bl Copy16BitsTo
 	mov r0, r7
 	add r1, r6, #8
 	mov r2, #0xb

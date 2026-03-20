@@ -17,11 +17,13 @@ parser.add_argument('asm_file')
 parser.add_argument('function_header')
 parser.add_argument('-f', '--extract_file_name')
 parser.add_argument('-n', '--nonmatching', action='store_true')
+parser.add_argument('-nm', '--no_file_merge', action='store_false')
 
 args = parser.parse_args()
 function_location = args.asm_file
 function_header = args.function_header
 extract_file_name = args.extract_file_name
+enable_file_merge = args.no_file_merge
 nonmatching = args.nonmatching
 
 if function_location.endswith('.s'):
@@ -126,16 +128,17 @@ lsf_suffix = ''
 if is_itcm:
     lsf_suffix = ' (.itcm)'
 SRC_LSF_PREFIX = '\tObject src/'
+
 for i, line in enumerate(lsf_lines):
     if line.endswith(f'{function_location}.o{lsf_suffix}\n'):
         if remove_orig_file:
             lsf_lines[i] = ''
             prev_line = lsf_lines[i - 1]
-            if prev_line.startswith(SRC_LSF_PREFIX):
+            if prev_line.startswith(SRC_LSF_PREFIX) and enable_file_merge:
                 merge_prev_file = prev_line[len(SRC_LSF_PREFIX):]
         if not include_new_asm_file and merge_prev_file is None:
             next_line = lsf_lines[i + 1]
-            if next_line.startswith(SRC_LSF_PREFIX):
+            if next_line.startswith(SRC_LSF_PREFIX) and enable_file_merge:
                 merge_next_file = next_line[len(SRC_LSF_PREFIX):]
         if merge_prev_file is None and merge_next_file is None:
             lsf_lines[i] += f'\tObject src/{extract_file_name}.o{lsf_suffix}\n'

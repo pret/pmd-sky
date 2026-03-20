@@ -6,6 +6,7 @@
 .public ChangeDungeonMusic
 .public CloseAlertBox
 .public CreateAlertBox
+.public DUNGEON_BUTTON_INPUT
 .public DUNGEON_PTR
 .public GetName
 .public GetSize0x80Buffer
@@ -30,7 +31,6 @@
 .public ov29_0233A248
 .public ov29_02348A18
 .public ov29_02353214
-.public ov29_0237C694
 .public PreprocessString
 .public ShouldDisplayEntityWrapper
 .public StringFromId

@@ -2,12 +2,13 @@
 #include "dungeon_init_2.h"
 #include "enums.h"
 #include "game_mode.h"
+#include "main_0205BD14.h"
 #include "progression.h"
 #include "script_variable.h"
 
 extern s8 _022AB4F8;
 extern u8 _022AB510;
-extern u8 _022AB5A8;
+extern u32 _022AB5A8;
 extern struct dungeon_init PENDING_DUNGEON_ID;
 extern u8* GUEST_MONSTER_BANETTE;
 extern u8* GUEST_MONSTER_SKORUPI;
@@ -30,7 +31,6 @@ extern u8* GUEST_MONSTER_SNOVER_2;
 
 struct unk* sub_0205B77C();
 void sub_0205BB7C(void*, s8);
-void sub_0205BD14(void*, s8);
 extern void AddGuestMonster(void*, u8, void*);
 
 // Appears to be initialising a dungeon for a special case not
@@ -42,7 +42,7 @@ void sub_0204E974(s8 arg0) {
     PENDING_DUNGEON_ID.dungeon_objective = 2;
     PENDING_DUNGEON_ID.field_0xE = -1;
     // Dungeon index 0xD6 maps to dungeon ID 0 in DUNGEON_SWAP_ID_TABLE
-    PENDING_DUNGEON_ID.dungeon_idx = 0xD6; 
+    PENDING_DUNGEON_ID.dungeon_idx = 0xD6;
     PENDING_DUNGEON_ID.field_0x12 = arg0;
     sub_0205BB7C(&_022AB510, arg0);
     sub_0205BD14(&_022AB5A8, arg0);
@@ -66,7 +66,7 @@ void sub_0204E974(s8 arg0) {
     _022AB4F8 = 1;
 }
 
-void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx) 
+void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx)
 {
     u8 game_mode = GetGameMode();
     dg_init->dungeon_idx = dungeon_idx;
@@ -80,7 +80,7 @@ void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx)
     dg_init->has_guest_pokemon = FALSE;
     dg_init->send_help_item = FALSE;
     dg_init->show_rescues_left = FALSE;
-    
+
     if (game_mode != GAME_MODE_NORMAL) {
         dg_init->nonstory_flag = FALSE;
         dg_init->recruiting_enabled = FALSE;
@@ -92,7 +92,7 @@ void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx)
         dg_init->show_potential_recruits = GetResolvedPerformanceProgressFlag(PERFORMANCE_PROGRESS_FLAG_EVOLUTION_ENABLED);
         dg_init->show_team_name = GetResolvedPerformanceProgressFlag(PERFORMANCE_PROGRESS_FLAG_SHOW_TEAM_NAME);
     }
-    
+
     dg_init->send_home_disabled = FALSE;
     dg_init->hidden_land_flag = FALSE;
     dg_init->force_disable_recruiting = FALSE;
@@ -141,7 +141,7 @@ void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx)
             force_disable_recruiting = FALSE;
             dg_init->dungeon_objective = OBJECTIVE_STORY;
             dg_init->skip_faint_animation_flag = IsNoLossPenaltyDungeon(dungeon_idx);
-            
+
             switch (dungeon_idx) {
                 case DUNGEON_CRAGGY_COAST_IDX:
                     AddGuestMonster(dg_init, 0, &GUEST_MONSTER_BIDOOF);
@@ -222,11 +222,11 @@ void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx)
                     AddGuestMonster(dg_init, 0, &GUEST_MONSTER_BANETTE);
                     AddGuestMonster(dg_init, 1, &GUEST_MONSTER_SKORUPI);
                     break;
-                
+
                 case DUNGEON_BARREN_VALLEY_CLEARING_IDX:
                     AddGuestMonster(dg_init, 0, &GUEST_MONSTER_DUSKNOIR);
                     break;
-                
+
                 case DUNGEON_SPRING_CAVE_PIT_IDX:
                     AddGuestMonster(dg_init, 0, &GUEST_MONSTER_LOUDRED);
                     break;
@@ -235,7 +235,7 @@ void InitDungeonInit(struct dungeon_init* dg_init, s16 dungeon_idx)
             if (hidden_land != FALSE) {
                 dg_init->hidden_land_flag = TRUE;
             }
-            
+
             if (force_disable_recruiting != FALSE) {
                 dg_init->force_disable_recruiting = TRUE;
             }

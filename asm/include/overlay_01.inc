@@ -19,6 +19,7 @@
 .public CloseTextBox
 .public ComputeSpecialCounters
 .public Copy16BitsFrom
+.public Copy16BitsTo
 .public CopyBitsFrom
 .public CopyBitsTo
 .public CopyMovesetFrom
@@ -357,7 +358,6 @@
 .public sub_02050990
 .public sub_020509BC
 .public sub_02050CD0
-.public sub_020515C4
 .public sub_02052060
 .public sub_020547C8
 .public sub_020547D8

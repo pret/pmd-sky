@@ -751,7 +751,7 @@ _0238AB9C:
 	add r0, r2, #0x44
 	add r1, r2, r1, lsl #1
 	ldrsh r1, [r1, #0xc]
-	bl sub_0205A288
+	bl HandleShedinjaEvolution
 	ldr r0, _0238B0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x44]
@@ -1893,7 +1893,7 @@ _0238BB9C:
 	add r0, r2, #0x44
 	add r1, r2, r1, lsl #1
 	ldrsh r1, [r1, #0xc]
-	bl sub_0205A288
+	bl HandleShedinjaEvolution
 	ldr r0, _0238C0CC ; =OVERLAY16_UNKNOWN_POINTER__NA_238CE40
 	ldr r0, [r0]
 	ldrsh r0, [r0, #0x44]

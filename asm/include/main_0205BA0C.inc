@@ -1,0 +1,13 @@
+#pragma once
+.public GetLanguageType
+.public GetMainTeamNameWithCheck
+.public GetMaxRescueAttempts
+.public Rand16Bit
+.public RandInt
+.public _020B0A54
+.public _022B57BC
+.public sub_020510E8
+.public sub_02051134
+.public sub_0205B560
+.public sub_020634F4
+.public sub_02063504

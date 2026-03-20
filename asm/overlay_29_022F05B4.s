@@ -635,7 +635,7 @@ _022F0D44:
 	bl ov29_022EA370
 	ldr r4, _022F0ED0 ; =ov29_0237C6A4
 	ldr r5, _022F0ECC ; =ov29_0237CFBB
-	ldr r6, _022F0ED4 ; =ov29_0237C694
+	ldr r6, _022F0ED4 ; =DUNGEON_BUTTON_INPUT
 	mov fp, #0x2f
 _022F0D78:
 	mov r0, fp
@@ -739,7 +739,7 @@ _022F0E64:
 _022F0EC8: .word DUNGEON_PTR
 _022F0ECC: .word ov29_0237CFBB
 _022F0ED0: .word ov29_0237C6A4
-_022F0ED4: .word ov29_0237C694
+_022F0ED4: .word DUNGEON_BUTTON_INPUT
 _022F0ED8: .word 0x00003F03
 	arm_func_end ov29_022F0C98
 
@@ -1061,7 +1061,7 @@ _022F12E0:
 _022F1344:
 	cmp r8, #0
 	bne _022F1364
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	tst r0, #1
 	beq _022F13B0
@@ -1320,7 +1320,7 @@ _022F16F4:
 	cmp r0, #0
 	movne r1, #0
 	bne _022F17E0
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	and r0, r0, #0xf0
 	mov r0, r0, lsl #0x10
@@ -1381,7 +1381,7 @@ _022F17E0:
 	ldr r0, [sp, #0x64]
 	cmp r0, #0
 	bne _022F18B4
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	tst r0, #2
 	beq _022F1868
@@ -1425,7 +1425,7 @@ _022F1884:
 	strne r0, [sp, #0x48]
 	bne _022F18B4
 _022F18A0:
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0, #2]
 	tst r0, #1
 	movne r0, #1
@@ -1519,7 +1519,7 @@ _022F19DC:
 	ldr r0, [sp, #0x2c]
 	cmp r0, #0
 	bne _022F1A64
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	tst r0, #2
 	beq _022F1A64
@@ -1559,7 +1559,7 @@ _022F1A64:
 	strb r1, [r0, #0x78e]
 	b _022F2970
 _022F1AA0:
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	tst r0, #0x200
 	cmpeq fp, #0
@@ -1724,7 +1724,7 @@ _022F1CC0:
 	cmp r0, #0
 	bne _022F2970
 _022F1CE0:
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0, #2]
 	tst r0, #0x400
 	beq _022F1D10
@@ -1767,7 +1767,7 @@ _022F1D10:
 	strb r0, [sp, #0xba]
 	b _022F2970
 _022F1D84:
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0, #6]
 	tst r0, #2
 	beq _022F1DB0
@@ -1796,13 +1796,13 @@ _022F1DE0: .word DIRECTIONS_XY
 _022F1DE4: .word ov29_0237C9A4
 _022F1DE8: .word 0x00000BA3 + SET_LEADER_ACTION_DATA_OFFSET
 _022F1DEC: .word ov29_0237C6A4
-_022F1DF0: .word ov29_0237C694
+_022F1DF0: .word DUNGEON_BUTTON_INPUT
 _022F1DF4: .word 0x00000B9A + SET_LEADER_ACTION_DATA_OFFSET
 _022F1DF8: .word 0x00000B9B + SET_LEADER_ACTION_DATA_OFFSET
 _022F1DFC: .word 0x00000B9C + SET_LEADER_ACTION_DATA_OFFSET
 _022F1E00: .word 0x00000708
 _022F1E04:
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	tst r0, #0x800
 	bne _022F1E3C
@@ -1817,11 +1817,11 @@ _022F1E04:
 	mov r1, #0
 	strb r1, [r0, #2]
 _022F1E3C:
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	tst r0, #0x200
 	beq _022F1E90
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0, #2]
 	tst r0, #2
 	beq _022F1E90
@@ -1842,7 +1842,7 @@ _022F1E88:
 _022F1E90:
 	mov r0, #0
 	str r0, [sp, #0x44]
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	tst r0, #0x100
 	beq _022F1ECC
@@ -1860,7 +1860,7 @@ _022F1ECC:
 	mov r1, #0
 _022F1ED4:
 	strb r1, [r0, #1]
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	mov r8, #0
 	ldrh r0, [r0, #2]
 	tst r0, #0x800
@@ -1995,11 +1995,11 @@ _022F20B8:
 	ldr r0, [sp, #0x38]
 	cmp r0, #0
 	bne _022F20E4
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	tst r0, #0x200
 	beq _022F20EC
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0, #2]
 	tst r0, #0x100
 	beq _022F20EC
@@ -2057,7 +2057,7 @@ _022F2180:
 #endif
 	cmp r0, #0
 	bne _022F21B4
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0, #2]
 	tst r0, #4
 	beq _022F21B4
@@ -2169,16 +2169,16 @@ _022F2324:
 	ldr r0, _022F1DE4 ; =ov29_0237C9A4
 	ldrb r0, [r0, #1]
 	cmp r0, #0
-	ldreq r0, _022F1DF0 ; =ov29_0237C694
+	ldreq r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldreqh r1, [r0, #2]
 	moveq r2, r1
 	beq _022F2368
 _022F234C:
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r1, [r0]
 	ldrb r0, [r5, #0x35]
 	cmp r0, #0
-	ldrne r0, _022F1DF0 ; =ov29_0237C694
+	ldrne r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrneh r2, [r0, #2]
 	moveq r2, r1
 _022F2368:
@@ -2404,7 +2404,7 @@ _022F26B8:
 	add r0, fp, #0x4a
 	mov r1, #2
 	bl SetMonsterActionFields
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	mov r1, #2
 	ldrh r0, [r0]
 	tst r0, #2
@@ -2536,7 +2536,7 @@ _022F2864:
 	strh r2, [r1, #0xda]
 	bl PlaySeVolumeWrapper
 _022F289C:
-	ldr r0, _022F1DF0 ; =ov29_0237C694
+	ldr r0, _022F1DF0 ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	tst r0, #2
 	ldreq r0, [sp, #0x3c]
@@ -3046,7 +3046,7 @@ _022F2FE0: .word 0x000003FF
 ov29_022F2FE4: ; 0x022F2FE4
 	stmdb sp!, {r4, r5, r6, r7, r8, lr}
 	ldr r1, _022F3084 ; =DUNGEON_PTR
-	ldr r2, _022F3088 ; =ov29_0237C694
+	ldr r2, _022F3088 ; =DUNGEON_BUTTON_INPUT
 	ldr r6, [r1]
 	mov r4, #0
 	ldrb r5, [r6, #0x78c]
@@ -3063,7 +3063,7 @@ ov29_022F2FE4: ; 0x022F2FE4
 	add r0, r0, #0x100
 	strh r3, [r0, #0xd8]
 	ldr r0, [r1]
-	ldr r7, _022F3088 ; =ov29_0237C694
+	ldr r7, _022F3088 ; =DUNGEON_BUTTON_INPUT
 	add r0, r0, #0x100
 	strh r3, [r0, #0xda]
 	ldrh r0, [r2]
@@ -3088,7 +3088,7 @@ _022F3070:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.align 2, 0
 _022F3084: .word DUNGEON_PTR
-_022F3088: .word ov29_0237C694
+_022F3088: .word DUNGEON_BUTTON_INPUT
 	arm_func_end ov29_022F2FE4
 
 	arm_func_start ShouldLeaderKeepRunning
@@ -3996,7 +3996,7 @@ _022F3CC8:
 	strne r0, [sp, #4]
 	b _022F3DE0
 _022F3D10:
-	ldr r0, _022F3E9C ; =ov29_0237C694
+	ldr r0, _022F3E9C ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0]
 	tst r0, #0x100
 	and r0, r0, #0xf0
@@ -4008,7 +4008,7 @@ _022F3D10:
 	mov r1, #0
 	strb r1, [r6, #1]
 	strh r1, [r6, #4]
-	ldr r1, _022F3E9C ; =ov29_0237C694
+	ldr r1, _022F3E9C ; =DUNGEON_BUTTON_INPUT
 	ldrh r1, [r1, #2]
 	and r0, r0, r1
 _022F3D4C:
@@ -4043,7 +4043,7 @@ _022F3DB0:
 	tst r7, #1
 	beq _022F3DE0
 _022F3DC0:
-	ldr r0, _022F3E9C ; =ov29_0237C694
+	ldr r0, _022F3E9C ; =DUNGEON_BUTTON_INPUT
 	ldrh r0, [r0, #2]
 	tst r0, #2
 	movne r4, #1
@@ -4110,7 +4110,7 @@ _022F3E94: .word 0x000008E7
 _022F3E94: .word 0x00000BA8
 #endif
 _022F3E98: .word ov29_0237C6A4
-_022F3E9C: .word ov29_0237C694
+_022F3E9C: .word DUNGEON_BUTTON_INPUT
 	arm_func_end ov29_022F3B98
 
 	arm_func_start ov29_022F3EA0

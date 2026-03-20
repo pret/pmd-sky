@@ -128,6 +128,59 @@ Static main
 	Object asm/main_02058E8C.o
 	Object src/pokemon.o
 	Object asm/main_02058F24.o
+	Object src/main_02058FA4.o
+	Object src/main_02059060.o
+	Object asm/main_02059224.o
+	Object src/main_02059334.o
+	Object asm/main_0205956C.o
+	Object src/main_02059A74.o
+	Object asm/main_02059B18.o
+	Object src/main_0205A288.o
+	Object asm/main_0205A340.o
+	Object src/main_0205A430.o
+	Object asm/main_0205A4B4.o
+	Object src/main_0205B008.o
+	Object asm/main_0205B0B8.o
+	Object src/main_0205B354.o
+	Object asm/main_0205B39C.o
+	Object src/main_0205B440.o
+	Object asm/main_0205B478.o
+	Object src/main_0205B554.o
+	Object asm/main_0205B5A8.o
+	Object src/main_0205B690.o
+	Object asm/main_0205B6CC.o
+	Object src/main_0205B6EC.o
+	Object asm/main_0205B738.o
+	Object src/main_0205B77C.o
+	Object asm/main_0205B80C.o
+	Object src/main_0205B9C8.o
+	Object asm/main_0205BA0C.o
+	Object src/main_0205BBFC.o
+	Object asm/main_0205BCC4.o
+	Object src/main_0205BD14.o
+	Object asm/main_0205C2A4.o
+	Object src/main_0205C440.o
+	Object asm/main_0205C548.o
+	Object src/main_0205C73C.o
+	Object asm/main_0205C934.o
+	Object src/main_0205D11C.o
+	Object asm/main_0205D1F4.o
+	Object src/main_0205E01C.o
+	Object asm/main_0205E090.o
+	Object src/main_0205E288.o
+	Object asm/main_0205E448.o
+	Object src/main_0205E954.o
+	Object asm/main_0205E984.o
+	Object src/main_0205EAC8.o
+	Object asm/main_0205EB00.o
+	Object src/main_0205EBD8.o
+	Object asm/main_0205EBF0.o
+	Object src/main_0205EC18.o
+	Object asm/main_0205EC38.o
+	Object src/main_0205EC78.o
+	Object asm/main_0205EC98.o
+	Object src/main_0205ED84.o
+	Object asm/main_0205EDA4.o
 	Object src/dungeon_init_2.o
 	Object asm/main_0206A750.o
 	Object src/main_0206C98C.o

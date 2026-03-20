@@ -5,6 +5,7 @@
 .public AnimationDelayOrSomething
 .public CopyAndInterleaveWrapper
 .public DirectoryFileMngr_OpenDirectoryFile
+.public DUNGEON_BUTTON_INPUT
 .public DUNGEON_PTR
 .public DungeonGoesUp
 .public GetBgRegionArea
@@ -37,7 +38,6 @@
 .public ov29_023510E0
 .public ov29_02353540
 .public ov29_02353544
-.public ov29_0237C694
 .public ov29_0237C696
 .public ov29_0237C698
 .public ov29_0237C6A4

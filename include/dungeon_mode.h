@@ -3,9 +3,10 @@
 
 #include "direction.h"
 #include "enums.h"
-#include "item.h"
-#include "move.h"
 #include "graphics.h"
+#include "item.h"
+#include "mission.h"
+#include "move.h"
 #include "util.h"
 
 #define NUM_PICKED_IQ_SKILLS 3

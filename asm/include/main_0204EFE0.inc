@@ -12,6 +12,7 @@
 .public ADVENTURE_LOG_PTR
 .public ARM9_UNKNOWN_DATA__NA_209E6BC
 .public Copy16BitsFrom
+.public Copy16BitsTo
 .public CopyNStringFromId
 .public DUNGEON_DATA_LIST
 .public DungeonSwapIdToIdx
@@ -52,7 +53,6 @@
 .public StrncpySimpleNoPad
 .public StrncpySimpleNoPadSafe
 .public sub_0204CEE0
-.public sub_020515C4
 .public sub_0205EE40
 .public TEAM_MEMBER_TABLE_PTR
 .public TEAM_NAME

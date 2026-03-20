@@ -968,7 +968,7 @@ ov29_0234BA54: ; 0x0234BA54
 	bl WaitUntilAlertBoxTextIsLoaded
 	mov r4, #0
 	add r6, r6, #0xc00
-	ldr r7, _0234BABC ; =ov29_0237C694
+	ldr r7, _0234BABC ; =DUNGEON_BUTTON_INPUT
 	b _0234BAAC
 _0234BA78:
 	ldrsh r0, [r6, #0x90]
@@ -990,7 +990,7 @@ _0234BAAC:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.align 2, 0
 _0234BAB8: .word MESSAGE_LOG_INFO
-_0234BABC: .word ov29_0237C694
+_0234BABC: .word DUNGEON_BUTTON_INPUT
 	arm_func_end ov29_0234BA54
 
 	arm_func_start InitPortraitDungeon

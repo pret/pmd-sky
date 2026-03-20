@@ -1,0 +1,15 @@
+#pragma once
+.public GetLanguageType
+.public GetStringFromFileVeneer
+.public Rand16Bit
+.public RandInt
+.public StrcpyName
+.public _020A3678
+.public sub_02025304_JP
+.public sub_020510E8
+.public sub_02051134
+.public sub_0205B6EC
+.public sub_0205B738
+.public sub_0205BAB0
+.public sub_020634F4
+.public sub_02063504

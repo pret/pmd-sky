@@ -176,10 +176,10 @@ ov29_022E0A18: ; 0x022E0A18
 _022E0A60: .word DUNGEON_PTR
 	arm_func_end ov29_022E0A18
 
-	arm_func_start ov29_022E0A64
-ov29_022E0A64: ; 0x022E0A64
+	arm_func_start GetAndStoreButtonInput
+GetAndStoreButtonInput: ; 0x022E0A64
 	stmdb sp!, {r3, lr}
-	ldr r1, _022E0B34 ; =ov29_0237C694
+	ldr r1, _022E0B34 ; =DUNGEON_BUTTON_INPUT
 	mov r0, #0
 	bl GetHeldButtons
 	ldr r1, _022E0B38 ; =ov29_0237C696
@@ -188,7 +188,7 @@ ov29_022E0A64: ; 0x022E0A64
 	ldr r1, _022E0B3C ; =ov29_0237C698
 	mov r0, #0
 	bl sub_020063F4
-	ldr r0, _022E0B40 ; =ov29_0237C694
+	ldr r0, _022E0B40 ; =DUNGEON_BUTTON_INPUT
 	mov r1, #0
 	strh r1, [r0, #8]
 	ldrh r1, [r0]
@@ -207,11 +207,11 @@ _022E0AB8:
 	orrlt r1, r1, #2
 	strlth r1, [r0, #8]
 _022E0AD0:
-	ldr r0, _022E0B40 ; =ov29_0237C694
+	ldr r0, _022E0B40 ; =DUNGEON_BUTTON_INPUT
 	mov r1, #0
 	strh r1, [r0, #0xa]
 _022E0ADC:
-	ldr r0, _022E0B40 ; =ov29_0237C694
+	ldr r0, _022E0B40 ; =DUNGEON_BUTTON_INPUT
 	ldrh r1, [r0]
 	tst r1, #0x100
 	ldrsh r1, [r0, #0xc]
@@ -228,31 +228,31 @@ _022E0B00:
 	orrlt r1, r1, #0x100
 	strlth r1, [r0, #8]
 _022E0B18:
-	ldr r0, _022E0B40 ; =ov29_0237C694
+	ldr r0, _022E0B40 ; =DUNGEON_BUTTON_INPUT
 	mov r1, #0
 	strh r1, [r0, #0xc]
 _022E0B24:
-	ldr r0, _022E0B40 ; =ov29_0237C694
+	ldr r0, _022E0B40 ; =DUNGEON_BUTTON_INPUT
 	ldrh r1, [r0, #8]
 	strh r1, [r0, #6]
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_022E0B34: .word ov29_0237C694
+_022E0B34: .word DUNGEON_BUTTON_INPUT
 _022E0B38: .word ov29_0237C696
 _022E0B3C: .word ov29_0237C698
-_022E0B40: .word ov29_0237C694
-	arm_func_end ov29_022E0A64
+_022E0B40: .word DUNGEON_BUTTON_INPUT
+	arm_func_end GetAndStoreButtonInput
 
 	arm_func_start ov29_022E0B44
 ov29_022E0B44: ; 0x022E0B44
 	ldr r1, _022E0B58 ; =0x000003E7
-	ldr r0, _022E0B5C ; =ov29_0237C694
+	ldr r0, _022E0B5C ; =DUNGEON_BUTTON_INPUT
 	strh r1, [r0, #0xa]
 	strh r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
 _022E0B58: .word 0x000003E7
-_022E0B5C: .word ov29_0237C694
+_022E0B5C: .word DUNGEON_BUTTON_INPUT
 	arm_func_end ov29_022E0B44
 
 	arm_func_start ov29_022E0B60

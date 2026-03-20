@@ -46,8 +46,8 @@ ov29_02373690:
 	.global ov29_0237C690
 ov29_0237C690:
 	.space 0x4
-	.global ov29_0237C694
-ov29_0237C694:
+	.global DUNGEON_BUTTON_INPUT
+DUNGEON_BUTTON_INPUT:
 	.space 0x2
 	.global ov29_0237C696
 ov29_0237C696:

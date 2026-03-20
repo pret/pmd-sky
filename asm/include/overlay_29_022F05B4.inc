@@ -21,6 +21,7 @@
 .public DIRECTIONS_XY
 .public DrawTextInWindow
 .public DrawTileGrid
+.public DUNGEON_BUTTON_INPUT
 .public DUNGEON_PTR
 .public DungeonRandInt
 .public EntityIsValid__022F0590
@@ -154,7 +155,6 @@
 .public ov29_023526F2
 .public ov29_023526F4
 .public ov29_023535A4
-.public ov29_0237C694
 .public ov29_0237C6A4
 .public ov29_0237C9A4
 .public ov29_0237CFBB

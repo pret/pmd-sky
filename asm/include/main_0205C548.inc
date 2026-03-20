@@ -1,0 +1,9 @@
+#pragma once
+.public CopyBitsTo
+.public IsMovesetValid
+.public IsMovesetValidInTimeDarkness
+.public _020A3671
+.public _020A3672
+.public sub_02051620
+.public sub_02054F18
+.public sub_0205BD40
