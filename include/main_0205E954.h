@@ -1,0 +1,6 @@
+#ifndef PMDSKY_MAIN_0205E954_H
+#define PMDSKY_MAIN_0205E954_H
+
+void sub_0205E954(void);
+
+#endif //PMDSKY_MAIN_0205E954_H
