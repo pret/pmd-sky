@@ -3,11 +3,11 @@
 
 extern struct mission_deliver_list MISSION_DELIVER_LIST_PTR;
 
-void sub_0205E448(u32 a0, struct mission* mission);
+extern s32 sub_0205E448(u32 a0, struct mission* mission);
 
-void sub_0205E954(void)
+s32 sub_0205E954(void)
 {
-    sub_0205E448(8, (struct mission*) MISSION_DELIVER_LIST_PTR.unk18);
+    return sub_0205E448(8, (struct mission*) MISSION_DELIVER_LIST_PTR.unk18);
 }
 
 struct mission* sub_0205E970(u32 index)
