@@ -2,5 +2,6 @@
 #define PMDSKY_MAIN_0205C73C_H
 
 void sub_0205C73C(void);
+void sub_0205C75C(void);
 
 #endif //PMDSKY_MAIN_0205C73C_H
