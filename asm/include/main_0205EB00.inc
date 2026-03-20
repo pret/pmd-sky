@@ -352,4 +352,5 @@
 .public sub_0205E970
 .public sub_0205E984
 .public sub_0205EAC8
+.public sub_0205EAE8
 .public vsprintf
