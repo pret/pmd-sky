@@ -173,6 +173,8 @@ Static main
 	Object asm/main_0205E984.o
 	Object src/main_0205EAC8.o
 	Object asm/main_0205EB00.o
+	Object src/main_0205EBD8.o
+	Object asm/main_0205EBF0.o
 	Object src/dungeon_init_2.o
 	Object asm/main_0206A750.o
 	Object src/main_0206C98C.o
