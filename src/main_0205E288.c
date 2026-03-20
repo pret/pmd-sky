@@ -47,3 +47,17 @@ bool8 sub_0205E2B8(u32 arg0, u8 *arg1)
 
     return FALSE;
 }
+
+bool8 sub_0205E3F8(struct unkStruct_0205E3F8 *src, s32 limit, struct unkStruct_0205E3F8 *destArray)
+{
+    for (s32 i = 0; i < limit; i++)
+    {
+        if (*(u8 *)&destArray[i] == 0)
+        {
+            destArray[i] = *src;
+            return FALSE;
+        }
+    }
+
+    return TRUE;
+}
