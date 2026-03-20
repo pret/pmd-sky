@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/juWhM
 	arm_func_start IsItemInTimeDarkness
 IsItemInTimeDarkness: ; 0x0200EB30
 	ldr r1, _0200EB54 ; =ITEM_DATA_TABLE_PTRS

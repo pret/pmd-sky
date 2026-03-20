@@ -1093,6 +1093,7 @@ _023038D0: .word 0x00000F25
 #endif
 	arm_func_end ov29_023034E0
 
+; https://decomp.me/scratch/wws4M
 	arm_func_start DungeonTmLearnMove
 DungeonTmLearnMove: ; 0x023038D4
 #ifdef JAPAN

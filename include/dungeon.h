@@ -1846,4 +1846,10 @@ struct dungeon_restriction {
     s16 random_movement_chance;
 };
 
+// A common structure for pairs of dungeon/floor values
+struct dungeon_floor_pair {
+    u8 dungeon_id;
+    u8 floor_id;
+};
+
 #endif // PMDSKY_DUNGEON_H

@@ -37,6 +37,7 @@ _0205B118:
 	ldmia sp!, {r3, pc}
 	arm_func_end sub_0205B0B8
 
+; https://decomp.me/scratch/gWhya
 	arm_func_start sub_0205B120
 sub_0205B120: ; 0x0205B120
 	stmdb sp!, {r4, r5, r6, r7, lr}

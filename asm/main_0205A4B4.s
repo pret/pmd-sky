@@ -3,6 +3,7 @@
 
 	.text
 
+; https://decomp.me/scratch/LRAYo
 	arm_func_start sub_0205A4B4
 sub_0205A4B4: ; 0x0205A4B4
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
