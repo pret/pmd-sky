@@ -110,6 +110,8 @@ Static main
 	Object asm/main_rodata_020A20B1.o
 	Object src/main_020517D4.o
 	Object asm/main_020517F4.o
+	Object src/main_02051FF0.o
+	Object asm/main_02052060.o
 	Object src/main_020526EC.o
 	Object src/get_category_string.o
 	Object src/main_020527A8.o
