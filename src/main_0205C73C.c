@@ -6,6 +6,7 @@ extern u8 _022B6F10[];
 
 extern void sub_020600CC(void);
 extern void ClearMissionData(struct mission* mission);
+extern bool8 IsMissionValid(struct mission *mission);
 
 void sub_0205C73C(void)
 {
@@ -40,4 +41,14 @@ void sub_0205C75C(void)
         *(u32 *)&MISSION_DELIVER_LIST_PTR.unk18[i * 12 + 0x344] = 0;
         *(u32 *)&MISSION_DELIVER_LIST_PTR.unk18[i * 12 + 0x348] = 0;
     }
+}
+
+bool8 IsMissionSuspendedAndValid(struct mission *mission)
+{
+    if (mission->status != MISSION_STATUS_SUSPENDED)
+    {
+        return FALSE;
+    }
+
+    return IsMissionValid(mission);
 }

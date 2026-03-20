@@ -78,6 +78,7 @@
 .public IsItemInTimeDarkness
 .public IsItemInTreasureBoxes
 .public IsItemValidVeneer
+.public IsMissionSuspendedAndValid
 .public IsMonsterValid
 .public IsSpecialEpisodeBeaten
 .public IsSpecialEpisodeOpen
