@@ -9,3 +9,8 @@ void sub_0205E954(void)
 {
     sub_0205E448(8, (struct mission*) MISSION_DELIVER_LIST_PTR.unk18);
 }
+
+struct mission* sub_0205E970(u32 index)
+{
+    return (struct mission*) (MISSION_DELIVER_LIST_PTR.unk18 + (index * 32));
+}
