@@ -71,3 +71,25 @@ u8 sub_0205C870(u32 type, s16 *ptr1, s16 *ptr2)
             return FALSE;
     }
 }
+
+bool8 sub_0205C8E0(struct unkStruct_0205C8E0 *p1, struct unkStruct_0205C8E0 *p2)
+{
+    u8 type = p1->unk0;
+
+    if (type != p2->unk0)
+        return FALSE;
+
+    if (type == 0)
+    {
+        if ((u16)p1->unk2 != (u16)p2->unk2)
+            return FALSE;
+    }
+
+    if (type == 1)
+    {
+        if (p1->unk2 != p2->unk2)
+            return FALSE;
+    }
+
+    return TRUE;
+}
