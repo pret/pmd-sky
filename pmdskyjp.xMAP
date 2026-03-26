@@ -660,15 +660,15 @@
                                                                                                    98](GetTopScreenOption,func) found in global options.o
                                                                                                    98](InitMenu,func) found in global main_020348E4.o
                                                                                                    98](EntryOverlay13,func) found in global overlay_13_EntryOverlay13.o
-                                                                                                    99](OVERLAY13_UNKNOWN_POINTER__NA_238CEA0,notype) found in global overlay_13_0238BE6C.o
-                                                                                                    99](OVERLAY13_UNKNOWN_STRUCT__NA_238C024,notype) found in global overlay_13_0238BE6C.o
-                                                                                                     100](Overlay13SwitchFunctionNa238A1C8,func) found in global overlay_13_EntryOverlay13.o
-                                                                                                      101](Overlay13SwitchFunctionNa238A574,func) found in global overlay_13.o
+                                                                                                    99](PERSONALITY_TEST_PTR,notype) found in global overlay_13_0238BE6C.o
+                                                                                                    99](OVERLAY13_LOAD_ENTRY,notype) found in global overlay_13_0238BE6C.o
+                                                                                                     100](PersonalityTestFrameUpdate,func) found in global overlay_13_EntryOverlay13.o
+                                                                                                      101](PersonalityTestMainManager,func) found in global overlay_13.o
                                                                                                        102](PORTRAIT_ATTRIBUTES,notype) found in global overlay_13_0238BE6C.o
                                                                                                        102](GetOptionStringFromID,func) found in global overlay_13_0238BDF0.o
                                                                                                        102](GetPersonality,func) found in global overlay_13_0238BDA8.o
                                                                                                        102](WaitForNextStep,func) found in global overlay_13_0238BE4C.o
-                                                                                                       102](ov13_0238BE6C,func) found in global overlay_13_0238BE6C.o
+                                                                                                       102](DrawPersonalityTestDebug,func) found in global overlay_13_0238BE6C.o
                                                                                                        102](Debug_GetDebugFlag,func) found in global debug.o
                                                                                                      100](ExitOverlay13,func) found in global overlay_13_EntryOverlay13.o
                                                                                                    98](GetExclusiveItemType,func) found in global item_util_1.o
@@ -32685,10 +32685,10 @@
   0238B6F0 00000038 .text   ExitOverlay13	(overlay_13_EntryOverlay13.o)
   0238B724 00000000 .text   $d	(overlay_13_EntryOverlay13.o)
   0238B728 00000000 .text   $a	(overlay_13_EntryOverlay13.o)
-  0238B728 000003AC .text   Overlay13SwitchFunctionNa238A1C8	(overlay_13_EntryOverlay13.o)
+  0238B728 000003AC .text   PersonalityTestFrameUpdate	(overlay_13_EntryOverlay13.o)
   0238BAD0 00000000 .text   $d	(overlay_13_EntryOverlay13.o)
   0238BAD4 00001838 .text   .text	(overlay_13.o)
-  0238BAD4 00001838 .text   Overlay13SwitchFunctionNa238A574	(overlay_13.o)
+  0238BAD4 00001838 .text   PersonalityTestMainManager	(overlay_13.o)
   0238BAD4 00000000 .text   $a	(overlay_13.o)
   0238CA58 00000000 .text   $d	(overlay_13.o)
   0238CABC 00000000 .text   $a	(overlay_13.o)
@@ -32705,13 +32705,13 @@
   0238D3CC 00000000 .text   $d	(overlay_13_0238BE4C.o)
   0238D3D0 00000000 .text   $a	(overlay_13_0238BE6C.o)
   0238D3D0 000001A8 .text   .text	(overlay_13_0238BE6C.o)
-  0238D3D0 000001A8 .text   ov13_0238BE6C	(overlay_13_0238BE6C.o)
+  0238D3D0 000001A8 .text   DrawPersonalityTestDebug	(overlay_13_0238BE6C.o)
   0238D560 00000000 .text   $d	(overlay_13_0238BE6C.o)
   0238D578 00000E80 .rodata .rodata	(overlay_13_0238BE6C.o)
   0238D578 00000000 .rodata QUIZ_BORDER_COLOR_TABLE	(overlay_13_0238BE6C.o)
   0238D57C 00000000 .rodata PORTRAIT_ATTRIBUTES	(overlay_13_0238BE6C.o)
   0238D584 00000000 .rodata QUIZ_MALE_FEMALE_BOOST_TABLE	(overlay_13_0238BE6C.o)
-  0238D58C 00000000 .rodata OVERLAY13_UNKNOWN_STRUCT__NA_238C024	(overlay_13_0238BE6C.o)
+  0238D58C 00000000 .rodata OVERLAY13_LOAD_ENTRY	(overlay_13_0238BE6C.o)
   0238D59C 00000000 .rodata QUIZ_WINDOW_PARAMS_1	(overlay_13_0238BE6C.o)
   0238D5AC 00000000 .rodata QUIZ_WINDOW_PARAMS_2	(overlay_13_0238BE6C.o)
   0238D5BC 00000000 .rodata QUIZ_WINDOW_PARAMS_3	(overlay_13_0238BE6C.o)
@@ -32729,7 +32729,7 @@
 #>0238E3FC          SDK_OVERLAY.OVY_13.SINIT_END (linker command file)
 #>0238E400          SDK_OVERLAY.OVY_13.TEXT_END (linker command file)
 #>0238E400          SDK_OVERLAY.OVY_13.DATA_START (linker command file)
-  0238E400 00000000 .data   OVERLAY13_UNKNOWN_POINTER__NA_238CEA0	(overlay_13_0238BE6C.o)
+  0238E400 00000000 .data   PERSONALITY_TEST_PTR	(overlay_13_0238BE6C.o)
   0238E400 00000110 .data   .data	(overlay_13_0238BE6C.o)
   0238E40C 00000000 .data   QUIZ_WINDOW_PARAMS_5	(overlay_13_0238BE6C.o)
   0238E41C 00000000 .data   QUIZ_WINDOW_PARAMS_6	(overlay_13_0238BE6C.o)
@@ -41612,5 +41612,5 @@
   00000000 00000000 00004060 check.ITCM
   00000000 00000000 00002880 check.DTCM
 
-# Link start time: Fri Mar 20 04:07:40 2026
-# Link end time: Fri Mar 20 04:07:41 2026
+# Link start time: Thu Mar 26 01:44:18 2026
+# Link end time: Thu Mar 26 01:44:19 2026
