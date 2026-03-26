@@ -8,7 +8,7 @@
 GetOptionStringFromID: ; 0x0238BDF0
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0x54
-	ldr r2, _0238BE40 ; =OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+	ldr r2, _0238BE40 ; =PERSONALITY_TEST_PTR
 	add ip, sp, #4
 	ldr r3, [r2]
 	ldr r2, _0238BE44 ; =ov13_0238CE70
@@ -27,7 +27,7 @@ GetOptionStringFromID: ; 0x0238BDF0
 	add sp, sp, #0x54
 	ldmia sp!, {r3, r4, pc}
 	.align 2, 0
-_0238BE40: .word OVERLAY13_UNKNOWN_POINTER__NA_238CEA0
+_0238BE40: .word PERSONALITY_TEST_PTR
 _0238BE44: .word ov13_0238CE70
 _0238BE48: .word 0x0000C402
 	arm_func_end GetOptionStringFromID

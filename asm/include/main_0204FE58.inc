@@ -1,4 +1,7 @@
 #pragma once
+.public _0209E6BD
+.public _020A192C
+.public _022AB924
 .public ADVENTURE_LOG_ENCOUNTERS_MONSTER_IDS
 .public ADVENTURE_LOG_PTR
 .public ARM9_UNKNOWN_DATA__NA_209E6BC
@@ -22,6 +25,3 @@
 .public StrncpySimpleNoPadSafe
 .public TEAM_MEMBER_TABLE_PTR
 .public TEAM_NAME
-.public _0209E6BD
-.public _020A192C
-.public _022AB924

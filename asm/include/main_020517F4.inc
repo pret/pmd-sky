@@ -1,11 +1,11 @@
 #pragma once
+.public _020B09B0
 .public ArrayCopy32
 .public ArrayFill32
 .public MemAlloc
 .public MemFree
 .public MemZero
 .public RANK_UP_TABLE
-.public _020B09B0
 .public sub_0200302C
 .public sub_020030FC
 .public sub_0200A124

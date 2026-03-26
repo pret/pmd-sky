@@ -1,10 +1,10 @@
 #pragma once
+.public _020A3678
 .public GetLanguageType
 .public GetStringFromFileVeneer
 .public Rand16Bit
 .public RandInt
 .public StrcpyName
-.public _020A3678
 .public sub_02025304_JP
 .public sub_020510E8
 .public sub_02051134
